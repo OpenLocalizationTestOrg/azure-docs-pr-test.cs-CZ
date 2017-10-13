@@ -14,40 +14,40 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/24/2017
 ms.author: joroja
-ms.openlocfilehash: cec6c6e110514a8bbe0e0780f36738ff21ae2f00
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: eb44a0d2234c9ee3801d8b3a1655d877aa2f4fef
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Návod: Integrace rozhraní REST API deklarace identity výměn v vám dobře slouží Azure AD B2C uživatele jako ověření na vstup uživatele
 
-Hello Identity rozhraní Framework (IEF) podkladovou Azure Active Directory B2C (Azure AD B2C) umožňuje hello identity vývojáře toointegrate interakci s rozhraní RESTful API cesty uživatele.  
+Framework prostředí Identity (IEF) podkladovou Azure Active Directory B2C (Azure AD B2C) umožňuje vývojáři identity integrovat interakci s rozhraní RESTful API cesty uživatele.  
 
-Na konci hello tohoto návodu bude možné toocreate cesty uživatele Azure AD B2C, která interaguje s služby RESTful.
+Na konci tohoto průvodce bude možné vytvořit cestu uživatele Azure AD B2C, která komunikuje s služby RESTful.
 
-Hello IEF odesílá data v deklaracích identity a přijímá data zpět v deklaracích identity. Hello interakci s hello rozhraní API:
+IEF odesílá data v deklaracích identity a přijímá data zpět v deklaracích identity. Interakce s rozhraním API:
 
 - Můžete třeba navrhnout jako deklarace identity systému exchange REST API nebo jako profil ověření, který se stane uvnitř na krok orchestration.
-- Obvykle ověří vstup od uživatele hello. Pokud je hodnota hello od uživatele hello zamítnutí, hello uživatele můžete to zkusit znovu tooenter platnou hodnotu s hello možnost tooreturn chybovou zprávu.
+- Obvykle ověří vstup od uživatele. Pokud se odmítne hodnota od uživatele, uživatel můžete zkusit znovu zadejte platnou hodnotu s možnost vrátí chybovou zprávu.
 
-Můžete taky navrhnout hello interakce jako krok orchestration. Další informace najdete v tématu [návod: integrace rozhraní API REST deklarací výměn v vám dobře slouží uživatele Azure AD B2C jako krok orchestration](active-directory-b2c-rest-api-step-custom.md).
+Můžete taky navrhnout interakce jako krok orchestration. Další informace najdete v tématu [návod: integrace rozhraní API REST deklarací výměn v vám dobře slouží uživatele Azure AD B2C jako krok orchestration](active-directory-b2c-rest-api-step-custom.md).
 
-Například profil hello ověření použijeme hello profil upravit uživatele cesty v souboru pack starter hello ProfileEdit.xml.
+Pro ověření profil příkladu použijeme cesty profil upravit uživatele v souboru pack starter ProfileEdit.xml.
 
-Zadaný uživatelem hello v profilu hello upravit není součástí seznamu vyloučení, abychom mohli ověřit tento název hello.
+Jsme můžete ověřit, že zadaný uživatelem v profilu upravit název není součástí seznam vyloučení.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Toocomplete nakonfigurovat klienta Azure AD B2C místní účet registrace-množství nebo přihlášení, jak je popsáno v [Začínáme](active-directory-b2c-get-started-custom.md).
-- Toointeract koncový bod REST API s. V tomto návodu, jsme zřídili ukázkový web s názvem [WingTipGames](https://wingtipgamesb2c.azurewebsites.net/) službou REST API.
+- Klient služby Azure AD B2C, nakonfigurované k dokončení registrace-množství nebo přihlášení, místní účet, jak je popsáno v [Začínáme](active-directory-b2c-get-started-custom.md).
+- Koncový bod REST API pro interakci s. V tomto návodu, jsme zřídili ukázkový web s názvem [WingTipGames](https://wingtipgamesb2c.azurewebsites.net/) službou REST API.
 
-## <a name="step-1-prepare-hello-rest-api-function"></a>Krok 1: Příprava funkce rozhraní API REST hello
+## <a name="step-1-prepare-the-rest-api-function"></a>Krok 1: Příprava funkce rozhraní REST API
 
 > [!NOTE]
-> Instalace funkce rozhraní API REST je mimo rámec tohoto článku hello. [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) poskytuje vynikající toolkit toocreate RESTful služby v cloudu hello.
+> Instalace funkce rozhraní API REST je mimo rámec tohoto článku. [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) poskytuje vynikající sada nástrojů pro vytváření služeb RESTful v cloudu.
 
-Vytvořili jsme Azure funkce, která obdrží deklarace identity, která se očekává, že jako `playerTag`. Funkce Hello ověřuje, zda existuje tuto deklaraci. Dostanete kód dokončení Azure funkce hello v [Githubu](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples).
+Vytvořili jsme Azure funkce, která obdrží deklarace identity, která se očekává, že jako `playerTag`. Funkce ověřuje, zda existuje tuto deklaraci. Dostanete kód dokončení funkce Azure v [Githubu](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples).
 
 ```csharp
 if (requestContentAsJObject.playerTag == null)
@@ -65,7 +65,7 @@ if (playerTag == "mcvinny" || playerTag == "msgates123" || playerTag == "revcott
     {
       version = "1.0.0",
       status = (int) HttpStatusCode.Conflict,
-      userMessage = $"hello player tag '{requestContentAsJObject.playerTag}' is already used."
+      userMessage = $"The player tag '{requestContentAsJObject.playerTag}' is already used."
     },
     new JsonMediaTypeFormatter(),
     "application/json");
@@ -74,14 +74,14 @@ if (playerTag == "mcvinny" || playerTag == "msgates123" || playerTag == "revcott
 return request.CreateResponse(HttpStatusCode.OK);
 ```
 
-Hello IEF očekává hello `userMessage` deklarací identity vrátí tuto hello Azure funkce. Toto tvrzení zobrazí jako uživatel toohello řetězec Pokud hello ověření selže, například když 409 – konflikt stavu je vrácený v předchozím příkladu hello.
+Očekává IEF `userMessage` deklarace identity, který vrací funkci Azure. Tuto deklaraci bude zobrazovat jako řetězec uživatelům, pokud se ověření nezdaří, například když se vrátí stav 409 – konflikt v předchozím příkladu.
 
-## <a name="step-2-configure-hello-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworkextensionsxml-file"></a>Krok 2: Konfigurace exchange deklarace identity rozhraní RESTful API hello jako technické profil v souboru TrustFrameworkExtensions.xml
+## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworkextensionsxml-file"></a>Krok 2: Konfigurace exchange deklarace identity rozhraní RESTful API jako technické profil v souboru TrustFrameworkExtensions.xml
 
-Technické profil je hello úplná konfigurace systému exchange hello požadovaného s hello služba RESTful. Otevřete soubor TrustFrameworkExtensions.xml hello a přidejte následující fragment kódu XML uvnitř hello hello `<ClaimsProviders>` elementu.
+Technické profil je úplná konfigurace exchange potřeby u služby RESTful. Otevřete soubor TrustFrameworkExtensions.xml a přidejte následující fragment kódu XML uvnitř `<ClaimsProviders>` elementu.
 
 > [!NOTE]
-> V následující XML, RESTful zprostředkovatele hello `Version=1.0.0.0` označen jako protokol hello. Považuje za jako hello funkce, která bude komunikovat s externí služba hello. <!-- TODO: A full definition of hello schema can be found...link tooRESTful Provider schema definition>-->
+> V následující soubor XML, RESTful zprostředkovatele `Version=1.0.0.0` označen jako protokol. Považuje za jako funkce, která bude komunikovat s externí služby. <!-- TODO: A full definition of the schema can be found...link to RESTful Provider schema definition>-->
 
 ```xml
 <ClaimsProvider>
@@ -109,26 +109,26 @@ Technické profil je hello úplná konfigurace systému exchange hello požadova
 </ClaimsProvider>
 ```
 
-Hello `InputClaims` element definuje hello deklarace identity, které budou odesílané z hello IEF toohello REST služby. V tomto příkladu hello obsah deklarace identity hello `givenName` odešle služba REST toohello jako `playerTag`. V tomto příkladu hello IEF neočekává deklarací zpět. Místo toho čeká na odpověď od služby REST hello a jednání podle hello stavové kódy, které obdrží.
+`InputClaims` Element definuje deklarace identity, které budou odesílané z IEF ke službě REST. V tomto příkladu obsah deklarace `givenName` zašle službě REST jako `playerTag`. V tomto příkladu IEF neočekává zpět deklarací identity. Místo toho čeká na odpověď od služby REST a jednání založené na stavové kódy, které obdrží.
 
-## <a name="step-3-include-hello-restful-service-claims-exchange-in-self-asserted-technical-profile-where-you-want-toovalidate-hello-user-input"></a>Krok 3: Zahrnout exchange deklarace identity služba RESTful hello samoobslužné uplatňovaná technické profil místo toovalidate hello uživatelský vstup
+## <a name="step-3-include-the-restful-service-claims-exchange-in-self-asserted-technical-profile-where-you-want-to-validate-the-user-input"></a>Krok 3: Zahrnout exchange deklarace identity služba RESTful samoobslužné uplatňovaná technické profil, ve které chcete ověření vstupu uživatele
 
-v hello interakce s uživatelem se nejčastěji používá Hello hello ověření kroku. Všechny interakce, kde uživatel hello je očekávané tooprovide vstupní jsou *samoobslužné prohlašovanou technické profily*. V tomto příkladu přidáme hello ověření toohello samoobslužných Asserted ProfileUpdate technické profilu. Toto je hello technické profil, který hello soubor zásad předávající stranu `Profile Edit` používá.
+Krok ověření slouží nejčastěji v interakci s uživatelem. Všechny interakce, kde se očekává poskytování vstup uživatele jsou *samoobslužné prohlašovanou technické profily*. V tomto příkladu přidáme technické profil samoobslužných Asserted ProfileUpdate ověření. Toto je technická profilu, který soubor zásad předávající stranu `Profile Edit` používá.
 
-toohello exchange deklarace identity hello tooadd samoobslužné prohlašovanou technické profil:
+Přidání deklarace identity exchange do samoobslužné uplatňovaná technické profil:
 
-1. Otevřete soubor TrustFrameworkBase.xml hello a vyhledejte `<TechnicalProfile Id="SelfAsserted-ProfileUpdate">`.
-2. Zkontrolujte konfiguraci hello tohoto technické profilu. Sledujte, jak je hello exchange s hello uživatelem definovaný jako deklarace identity, které se dotaz uživatele hello (vstupních deklarací identity) a deklarací identity, které se budou zpět od zprostředkovatele samoobslužné uplatňovaná hello (výstup deklarace identity).
+1. Otevřete soubor TrustFrameworkBase.xml a vyhledejte `<TechnicalProfile Id="SelfAsserted-ProfileUpdate">`.
+2. Zkontrolujte konfiguraci tohoto technické profilu. Sledujte, jak je exchange s uživatelem definovaný jako deklarace identity, které se dotaz uživatele (vstupních deklarací identity) a deklarací identity, které se budou zpět ze samoobslužných uplatňovaná zprostředkovatele (výstup deklarace identity).
 3. Vyhledejte `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate`a Všimněte si, že tento profil je vyvolána jako orchestration krok 6 `<UserJourney Id="ProfileEdit">`.
 
-## <a name="step-4-upload-and-test-hello-profile-edit-rp-policy-file"></a>Krok 4: Nahrání a testovací soubor zásad RP upravit profil hello
+## <a name="step-4-upload-and-test-the-profile-edit-rp-policy-file"></a>Krok 4: Nahrání a testovací soubor zásad RP úpravy profilu
 
-1. Nahrajte hello nová verze souboru TrustFrameworkExtensions.xml hello.
-2. Použití **spustit nyní** tootest hello profil upravit soubor zásad RP.
-3. Test ověření hello některým z existující názvy hello (například mcvinny) v hello **křestní jméno** pole. Pokud všechno, co je správně nastavena, měli byste obdržet zprávu, která upozorní uživatele hello že hello player značky se již používá.
+1. Nahrajte novou verzi souboru TrustFrameworkExtensions.xml.
+2. Použití **spustit nyní** k testování soubor zásad RP úpravy profilu.
+3. Test ověření některým z existující názvy (například mcvinny) v **křestní jméno** pole. Pokud všechno, co je správně nastavena, měli byste obdržet zprávu, která upozorní uživatele, že player značky se již používá.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Upravit hello profil upravit a uživatel toogather Další informace o registraci od uživatelů](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
+[Upravit profil registrace upravit a uživatelů sbírat dodatečné informace od uživatelů](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 
 [Návod: Integrace rozhraní REST API deklarace identity výměn v vám dobře slouží Azure AD B2C uživatele jako krok orchestration](active-directory-b2c-rest-api-step-custom.md)

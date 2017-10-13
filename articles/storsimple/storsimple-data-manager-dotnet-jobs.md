@@ -1,6 +1,6 @@
 ---
-title: "pro úlohy Microsoft Azure StorSimple Data Manager aaaUse .NET SDK | Microsoft Docs"
-description: "Zjistěte, jak .NET SDK toolaunch toouse StorSimple Manager dat úlohy (soukromém náhledu)."
+title: "Použití sady .NET SDK pro Microsoft Azure StorSimple Data Manager úlohy | Microsoft Docs"
+description: "Další informace o použití sady .NET SDK ke spuštění úlohy StorSimple Manager dat (soukromém náhledu)."
 services: storsimple
 documentationcenter: NA
 author: vidarmsft
@@ -14,65 +14,65 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/22/2016
 ms.author: vidarmsft
-ms.openlocfilehash: b07fe64369574c994fd28d42786aa02dca435ccc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 44d243a034b20b99faf284c8615e470bc6f9d020
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="use-hello-net-sdk-tooinitiate-data-transformation-private-preview"></a>Použití hello .net SDK transformaci dat tooinitiate (soukromém náhledu).
+# <a name="use-the-net-sdk-to-initiate-data-transformation-private-preview"></a>Pomocí .net SDK zahájíte transformace dat (soukromém náhledu).
 
 ## <a name="overview"></a>Přehled
 
-Tento článek vysvětluje, jak můžete použít funkce transformace hello dat v rámci tootransform služby StorSimple Manager dat hello data zařízení StorSimple. Hello Transformovaná data se pak spotřebované jinými službami Azure v cloudu hello. Hello článek má také návod toohelp vytvoření tooinitiate aplikace konzoly .NET ukázkové úlohy transformace dat a pak ho sledování pro dokončení.
+Tento článek vysvětluje, jak můžete použít funkci transformaci dat v rámci služby StorSimple Manager dat k transformaci dat zařízení StorSimple. Transformovaná data se pak spotřebované jinými službami Azure v cloudu. Článek má také návod k usnadnění vytváření ukázkovou aplikaci konzoly .NET zahájíte úlohu transformace dat a pak ji sledovat pro dokončení.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, zda máte:
 *   Systém s Visual Studio 2012, 2013, 2015 nebo 2017 nainstalována.
 *   Nainstalovat Azure Powershell. [Stáhnout prostředí Azure Powershell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
-*   Konfigurace nastavení tooinitialize hello transformaci dat úlohy (pokyny tooobtain tato nastavení jsou zahrnuty v tomto poli).
+*   Nastavení konfigurace k chybě při inicializaci úlohu transformace dat (pokyny k získání těchto nastavení jsou zde uvedena).
 *   Definice úlohy, který byl správně nakonfigurován v prostředku hybridní dat ve skupině prostředků.
-*   Všechny knihovny DLL hello vyžaduje. Stáhněte si tyto knihovny DLL z hello [úložiště GitHub](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls).
-*   `Get-ConfigurationParams.ps1`[skriptu](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1) z úložiště githubu hello.
+*   Všechny požadované knihovny DLL. Stáhněte si tyto knihovny DLL z [úložiště GitHub](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls).
+*   `Get-ConfigurationParams.ps1`[skriptu](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1) z úložiště githubu.
 
 ## <a name="step-by-step"></a>Podrobný postup
 
-Proveďte následující kroky toouse .NET toolaunch úlohu transformace datového hello.
+Proveďte následující kroky spusťte úlohu transformace dat pomocí rozhraní .NET.
 
-1. parametry konfigurace hello tooretrieve, hello následující kroky:
-    1. Stáhnout hello `Get-ConfigurationParams.ps1` ze skriptu úložiště github hello v `C:\DataTransformation` umístění.
-    1. Spustit hello `Get-ConfigurationParams.ps1` skript z úložiště github hello. Zadejte hello následující příkaz:
+1. Chcete-li načíst konfigurační parametry, proveďte následující kroky:
+    1. Stažení `Get-ConfigurationParams.ps1` ze skriptu úložiště github v `C:\DataTransformation` umístění.
+    1. Spustit `Get-ConfigurationParams.ps1` skript z úložiště githubu. Zadejte následující příkaz:
 
         ```
         C:\DataTransformation\Get-ConfigurationParams.ps1 -SubscriptionName "AzureSubscriptionName" -ActiveDirectoryKey "AnyRandomPassword" -AppName "ApplicationName"
          ```
-        Abyste mohli předávat žádné hodnoty pro hello ActiveDirectoryKey a AppName.
+        Abyste mohli předávat žádné hodnoty pro ActiveDirectoryKey a AppName.
 
 
-2. Skript vypíše hello následující hodnoty:
+2. Skript vypíše následující hodnoty:
     * ID klienta
     * ID tenanta
-    * Klíčů služby Active Directory (stejný jako jeden výše uvedených hello)
+    * Klíčů služby Active Directory (stejný jako ten, který je zadaný výše)
     * ID předplatného
 
 3. Pomocí sady Visual Studio 2012, 2013 nebo 2015, vytvořte konzolovou aplikaci C# .NET.
 
     1. Spusťte **Visual Studio 2012/2013 nebo 2015**.
-    1. Klikněte na tlačítko **soubor**, bod příliš**nový**a klikněte na tlačítko **projektu**.
+    1. Klikněte na **Soubor**, přejděte na **Nový** a klikněte na **Projekt**.
     2. Rozbalte **Šablony** a vyberte **Visual C#**.
-    3. Vyberte **konzolové aplikace** hello seznamu typů projektu na hello správné.
-    4. Zadejte **DataTransformationApp** pro hello **název**.
-    5. Vyberte **C:\DataTransformation** pro hello **umístění**.
-    6. Klikněte na tlačítko **OK** toocreate hello projektu.
+    3. V seznamu typů projektů napravo vyberte **Konzolová aplikace**.
+    4. Zadejte **DataTransformationApp** pro **název**.
+    5. Vyberte **C:\DataTransformation** pro **umístění**.
+    6. Kliknutím na tlačítko **OK** vytvořte projekt.
 
-4.  Nyní přidejte všechny knihovny DLL v hello [knihovny DLL](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) složky jako **odkazy** v hello projektu, který jste vytvořili. soubory knihoven dll hello toodownload, hello následující:
+4.  Nyní přidejte všechny knihovny DLL v [knihovny DLL](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) složky jako **odkazy** v projektu, který jste vytvořili. Ke stažení souborů dll, postupujte takto:
 
-    1. V sadě Visual Studio přejděte příliš**zobrazení > Průzkumníku řešení**.
-    1. Klikněte na tlačítko hello šipka doleva toohello aplikace transformaci dat projektu. Klikněte na tlačítko **odkazy** a potom klikněte pravým tlačítkem na příliš**přidat odkaz na**.
-    2. Vyhledejte umístění toohello hello balíčky složky, vyberte všechny knihovny DLL hello a klikněte na **přidat**a potom klikněte na **OK**.
+    1. V sadě Visual Studio, přejděte na **zobrazení > Průzkumníku řešení**.
+    1. Klikněte na šipku nalevo od projekt aplikace transformaci dat. Klikněte na tlačítko **odkazy** , klikněte pravým tlačítkem na **přidat odkaz na**.
+    2. Přejděte do umístění složky balíčků, vyberte všechny knihovny DLL a klikněte na tlačítko **přidat**a potom klikněte na **OK**.
 
-5. Přidejte následující hello **pomocí** příkazy toohello zdrojový soubor (Program.cs) v projektu hello.
+5. Do zdrojového souboru (Program.cs) v projektu přidejte následující příkazy **using**.
 
     ```
     using System;
@@ -84,10 +84,10 @@ Proveďte následující kroky toouse .NET toolaunch úlohu transformace datové
     ```
 
 
-6. Následující kód Hello inicializuje instance úlohy transformace dat hello. Přidejte tuto v hello **metodu Main**. Nahraďte hodnoty hello nad parametry konfigurace jako dříve získali. Zařadit hodnoty hello **název skupiny prostředků** a **název zdroje dat hybridní**. Hello **název skupiny prostředků** hello je ten, který je hostitelem hello hybridní datový prostředek, na které hello byla nakonfigurována definice úlohy.
+6. Následující kód inicializuje instance úlohy transformace data. Přidejte tuto v **metodu Main**. Nahraďte hodnoty parametrů konfigurace jako dříve získali. Zařadit hodnoty **název skupiny prostředků** a **název zdroje dat hybridní**. **Název skupiny prostředků** je ten, který hostuje datový prostředek hybridní, na kterém byl nakonfigurován definici úlohy.
 
     ```
-    // Setup hello configuration parameters.
+    // Setup the configuration parameters.
     var configParams = new ConfigurationParams
     {
         ClientId = "client-id",
@@ -98,12 +98,12 @@ Proveďte následující kroky toouse .NET toolaunch úlohu transformace datové
         ResourceName = "resource-name"
     };
 
-    // Initialize hello Data Transformation Job instance.
+    // Initialize the Data Transformation Job instance.
     DataTransformationJob dataTransformationJob = new DataTransformationJob(configParams);
 
     ```
 
-7. Zadejte hello spuštění parametry, pomocí které hello definice úlohy musí toobe
+7. Zadejte parametry, pomocí kterých je potřeba spustit definici úlohy
 
     ```
     string jobDefinitionName = "job-definition-name";
@@ -114,65 +114,65 @@ Proveďte následující kroky toouse .NET toolaunch úlohu transformace datové
 
     (NEBO)
 
-    Pokud chcete parametry definice úlohy hello toochange během doby běhu, přidejte následující kód hello:
+    Pokud chcete změnit parametry definice úlohy během doby běhu, přidejte následující kód:
 
     ```
     string jobDefinitionName = "job-definition-name";
     // Must start with a '\'
     var rootDirectories = new List<string> {@"\root"};
 
-    // Name of hello volume on hello StorSimple device.
+    // Name of the volume on the StorSimple device.
     var volumeNames = new List<string> {"volume-name"};
 
     var dataTransformationInput = new DataTransformationInput
     {
-        // If you require hello latest existing backup toobe picked else use TakeNow tootrigger a new backup.
+        // If you require the latest existing backup to be picked else use TakeNow to trigger a new backup.
         BackupChoice = BackupChoice.UseExistingLatest.ToString(),
-        // Name of hello StorSimple device.
+        // Name of the StorSimple device.
         DeviceName = "device-name",
-        // Name of hello container in Azure storage where hello files will be placed after execution.
+        // Name of the container in Azure storage where the files will be placed after execution.
         ContainerName = "container-name",
-        // File name filter (search pattern) toobe applied on files under hello root directory. * - Match all files.
+        // File name filter (search pattern) to be applied on files under the root directory. * - Match all files.
         FileNameFilter = "*",
         // List of root directories.
         RootDirectories = rootDirectories,
-        // Name of hello volume on StorSimple device on which hello relevant data is present. 
+        // Name of the volume on StorSimple device on which the relevant data is present. 
         VolumeNames = volumeNames
     };
     
     ```
 
-8. Po inicializaci hello přidejte následující kód tootrigger úlohu transformace dat v definici úlohy hello hello. Zařadit hello odpovídající **název definice úlohy**.
+8. Po inicializaci přidejte následující kód k aktivaci úlohy transformace dat v definici úlohy. Zařadit do příslušné **název definice úlohy**.
 
     ```
-    // Trigger a job, retrieve hello jobId and hello retry interval for polling.
+    // Trigger a job, retrieve the jobId and the retry interval for polling.
     int retryAfter;
     string jobId = dataTransformationJob.RunJobAsync(jobDefinitionName, 
     dataTransformationInput, out retryAfter);
 
     ```
 
-9. Tato úloha ukládání hello shodná souborech pod kořenovým adresářem hello na hello StorSimple svazku toohello zadaného kontejneru. Při odeslání souboru je vyřazeno zprávu ve frontě hello (v hello stejný účet úložiště jako kontejner hello) s hello stejný název jako definice úlohy hello. Tuto zprávu můžete použít jako aktivační událost tooinitiate, žádné další zpracování souboru hello.
+9. Tato úloha odešle odpovídající nachází v kořenovém adresáři souborů na svazku zařízení StorSimple do zadaného kontejneru. Při odeslání souboru se zahodí zprávy ve frontě (ve stejném účtu úložiště jako kontejner) se stejným názvem jako definici úlohy. Tato zpráva slouží jako trigger k zahájení dalšího zpracování souboru.
 
-10. Jakmile má byla spuštěna úloha hello, přidejte hello následující úlohu hello tootrack kód pro dokončení.
+10. Jakmile úloha byla spuštěna, přidejte následující kód se sledovat úlohu pro dokončení.
 
     ```
     Job jobDetails = null;
 
-    // Poll hello job.
+    // Poll the job.
     do
     {
         jobDetails = dataTransformationJob.GetJob(jobDefinitionName, jobId);
 
-        // Wait before polling for hello status again.
+        // Wait before polling for the status again.
         Thread.Sleep(TimeSpan.FromSeconds(retryAfter));
 
     } while (jobDetails.Status == JobStatus.InProgress);
 
-    // Completion status of hello job.
+    // Completion status of the job.
     Console.WriteLine("JobStatus: {0}", jobDetails.Status);
     
-    // toohold hello console before exiting.
+    // To hold the console before exiting.
     Console.Read();
 
     ```
@@ -180,4 +180,4 @@ Proveďte následující kroky toouse .NET toolaunch úlohu transformace datové
 
 ## <a name="next-steps"></a>Další kroky
 
-[Pomocí uživatelského rozhraní Správce dat StorSimple tootransform dat](storsimple-data-manager-ui.md).
+[Data Manager zařízení StorSimple pomocí uživatelského rozhraní pro transformaci dat](storsimple-data-manager-ui.md).

@@ -1,5 +1,5 @@
 ---
-title: "aaaLearn přístupu toodata v Azure Cosmos DB toosecure | Microsoft Docs"
+title: "Zjistěte, jak zabezpečit přístup k datům v Azure Cosmos DB | Microsoft Docs"
 description: "Seznamte se s koncepty řízení přístupu v Azure DB Cosmos, včetně hlavního klíče, klíče jen pro čtení, uživatelé a oprávnění."
 services: cosmos-db
 author: mimig1
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2017
 ms.author: mimig
-ms.openlocfilehash: fef7f8e14b488f6ceab0f2aa279a1e99d4416f08
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 383e04f91eec2f465b381ce30f2d6d24c488b731
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="securing-access-tooazure-cosmos-db-data"></a>Zabezpečení přístupu tooAzure Cosmos DB dat
-Tento článek obsahuje přehled zabezpečení toodata přístupu uložené v [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
+# <a name="securing-access-to-azure-cosmos-db-data"></a>Zabezpečení přístupu k datům v Azure Cosmos DB
+Tento článek obsahuje přehled zabezpečení přístupu k datům uloženým v [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
 
-Azure Cosmos DB používá dva typy klíčů tooauthenticate uživatelů a poskytnout přístup k tooits datům a prostředkům. 
+Azure Cosmos DB používá dva typy klíčů k ověření uživatelů a poskytovat přístup k jeho datům a prostředkům. 
 
 |Typ klíče|Zdroje|
 |---|---|
@@ -34,32 +34,32 @@ Azure Cosmos DB používá dva typy klíčů tooauthenticate uživatelů a posky
 
 ## <a name="master-keys"></a>Hlavní klíče 
 
-Hlavní klíče zadejte toohello přístup všechny prostředky pro správu hello hello databázového účtu. Hlavní klíče:  
-- Zadejte tooaccounts přístupu, databáze, uživatele a oprávnění. 
-- Nelze použít tooprovide granulární přístup toocollections a dokumenty.
-- Při vytváření hello účet vytvořen.
+Hlavní klíče poskytují přístup k všechny správce prostředky pro účet databáze. Hlavní klíče:  
+- Poskytují přístup k účtům, databází, uživatelů a oprávnění. 
+- Nelze použít k poskytování granulární přístupu do kolekcí a dokumenty.
+- Při vytváření účtu se vytvoří.
 - Může být kdykoli znovu vygenerovat.
 
-Každý účet se skládá ze dvou hlavních klíčů: primární klíč a sekundární klíč. účelem Hello dva klíče je, abyste mohli znovu vygenerovat nebo vrátit klíče, poskytující účet tooyour neustálý přístup a data. 
+Každý účet se skládá ze dvou hlavních klíčů: primární klíč a sekundární klíč. Účelem dva klíče je, abyste mohli znovu vygenerovat nebo vrátit klíče, zajištění nepřetržité přístupu pro váš účet a data. 
 
-V přidání toohello dva hlavní klíče pro účet hello Cosmos DB existují dva klíče jen pro čtení. Tyto klíče jen pro čtení Povolit jenom operací čtení na účet hello. Jen pro čtení klíčů neposkytuje přístup tooread oprávnění prostředky.
+Kromě dva hlavní klíče pro účet Cosmos DB existují dva klíče jen pro čtení. Tyto klíče jen pro čtení povolí jenom operace čtení pro účet. Neposkytuje přístup ke čtení prostředků oprávnění jen pro čtení klíče.
 
-Primární, sekundární, jen pro čtení, a pro čtení a zápis hlavního klíče se dá načíst a znovu vygenerovat pomocí hello portálu Azure. Pokyny najdete v tématu [zobrazení, kopírování a opětovné vytváření přístupových klíčů](manage-account.md#keys).
+Primární, sekundární, jen pro čtení, a pro čtení a zápis hlavního klíče se dá načíst a znovu vytvořit pomocí portálu Azure. Pokyny najdete v tématu [zobrazení, kopírování a opětovné vytváření přístupových klíčů](manage-account.md#keys).
 
-![Řízení přístupu (IAM) v hello portál Azure – ukázka zabezpečení databáze NoSQL](./media/secure-access-to-data/nosql-database-security-master-key-portal.png)
+![Řízení přístupu (IAM) na portálu Azure – ukázka zabezpečení databáze NoSQL](./media/secure-access-to-data/nosql-database-security-master-key-portal.png)
 
-proces Hello otáčení hlavní klíč je jednoduché. Přejděte toohello Azure portálu tooretrieve sekundární klíč, pak primární klíč nahradit sekundární klíč v aplikaci a potom otočit hello primární klíč v hello portálu Azure.
+Proces otáčení hlavní klíč je jednoduché. Přejděte na portál Azure k načtení sekundární klíč a potom primární klíč nahradit sekundární klíč v aplikaci a potom otočit primární klíč v portálu Azure.
 
-![Hlavní klíč otočení v hello portál Azure – ukázka zabezpečení databáze NoSQL](./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png)
+![Otočení hlavního klíče na portálu Azure – ukázka zabezpečení databáze NoSQL](./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png)
 
-### <a name="code-sample-toouse-a-master-key"></a>Ukázka toouse hlavní klíč kódu
+### <a name="code-sample-to-use-a-master-key"></a>Ukázka kódu pomocí hlavního klíče
 
-Hello následující ukázka kódu ukazuje, jak toouse Cosmos DB účet koncový bod a hlavní klíč tooinstantiate DocumentClient a vytvořit databázi. 
+Následující příklad kódu ukazuje, jak používat koncový bod účtu Cosmos DB a hlavní klíč k vytváření instancí DocumentClient a vytvořit databázi. 
 
 ```csharp
-//Read hello Azure Cosmos DB endpointUrl and authorization keys from config.
-//These values are available from hello Azure portal on hello Azure Cosmos DB account blade under "Keys".
-//NB > Keep these values in a safe and secure location. Together they provide Administrative access tooyour DocDB account.
+//Read the Azure Cosmos DB endpointUrl and authorization keys from config.
+//These values are available from the Azure portal on the Azure Cosmos DB account blade under "Keys".
+//NB > Keep these values in a safe and secure location. Together they provide Administrative access to your DocDB account.
 
 private static readonly string endpointUrl = ConfigurationManager.AppSettings["EndPointUrl"];
 private static readonly SecureString authorizationKey = ToSecureString(ConfigurationManager.AppSettings["AuthorizationKey"]);
@@ -78,40 +78,40 @@ Database database = await client.CreateDatabaseAsync(
 
 ## <a name="resource-tokens"></a>Tokeny prostředků
 
-Tokeny prostředků poskytovat přístup k toohello prostředků aplikace v databázi. Tokeny prostředků:
-- Zadejte přístup toospecific kolekce, klíče oddílů, dokumenty, přílohy, uložené procedury, triggery a UDF.
-- Jsou vytvářeny, pokud [uživatele](#users) jsou udělena [oprávnění](#permissions) tooa konkrétní prostředek.
+Tokeny prostředků poskytovat přístup k prostředkům aplikace v databázi. Tokeny prostředků:
+- Zadejte přístup ke konkrétní kolekce, klíče oddílů, dokumenty, přílohy, uložené procedury, triggery a UDF.
+- Když jsou vytvořeny [uživatele](#users) jsou udělena [oprávnění](#permissions) pro konkrétní prostředek.
 - Jsou vytvořeny při prostředek oprávnění je reagovali na ni na při volání metody POST, GET a PUT.
-- Použijte token prostředků hash vytvořená speciálně pro hello uživatelů a prostředků a oprávnění.
-- Když vázán s dobou platnosti přizpůsobitelné. Neplatný časový interval výchozí Hello je jedna hodina. Životnost tokenu, ale je možné explicitně zadat, až tooa maximálně pět hodin.
-- Zadejte bezpečné alternativní toogiving out hello hlavní klíč. 
-- Povolte klientům tooread, zápisu a odstranění prostředky v účtu Cosmos DB hello podle toohello oprávnění, která jste byla udělena.
+- Použijte token prostředků hash vytvořená speciálně pro uživatele, prostředků a oprávnění.
+- Když vázán s dobou platnosti přizpůsobitelné. Výchozí platný časový interval je jedna hodina. Životnost tokenu, ale lze explicitně zadat až pět hodin.
+- Zadejte jinou bezpečné alternativu k poskytnutí hlavního klíče. 
+- Povolte klientům číst, zapisovat a odstraňte prostředky v účtu Cosmos DB podle oprávnění, která jste uděleno.
 
-Token prostředku můžete použít (vytvořením Cosmos DB uživatele a oprávnění) Pokud chcete tooprovide tooresources přístup do vaší databáze Cosmos účtem tooa klienta, který nemůže být považován za důvěryhodný hlavní klíč hello.  
+Token prostředku můžete použít (vytvořením Cosmos DB uživatele a oprávnění) Pokud chcete poskytnout přístup k prostředkům ve vašem účtu Cosmos DB klientovi, který nemůže být považován za důvěryhodný hlavní klíč.  
 
-Tokeny prostředků cosmos DB zadejte bezpečné alternativu, která umožňuje klientům tooread, zápisu a odstranění prostředků ve vašem účtu Cosmos DB podle toohello oprávnění, která jste udělena a bez nutnosti buď hlavní nebo čtení pouze klíče.
+Tokeny prostředků cosmos DB zadejte bezpečné alternativy, která umožňuje klientům čtení, zápisu a odstraňování prostředky ve vašem účtu Cosmos DB podle oprávnění, která jste udělena a nevyžaduje pro hlavní nebo klíče jen pro čtení.
 
-Zde je typické návrhový vzor, kterým může požadovaný prostředek tokeny a způsob jejich generované a doručit tooclients:
+Zde je typické návrhový vzor, kterým může požadovaný prostředek tokeny a způsob jejich generované a předáním klientům:
 
-1. Střední vrstvě služby nastavená tooserve fotografie uživatele tooshare mobilních aplikací. 
-2. Hello střední vrstvě služby má hello hlavní klíč hello účet Cosmos DB.
-3. Hello fotografií aplikace je nainstalovaná na mobilní zařízení koncového uživatele. 
-4. Přihlašování vytvoří hello fotografií aplikace hello identitu uživatele hello službou hello střední vrstvě. Tento mechanismus identity zařízení je čistě až toohello aplikace.
-5. Po vytvoření hello identity žádosti o službu střední vrstvě hello oprávnění na základě hello identity.
-6. Hello střední vrstvě služby odešle prostředků tokenu back toohello telefonní aplikace.
-7. Hello telefonní aplikace můžete pokračovat toouse hello prostředků tokenu toodirectly přístup k Cosmos DB prostředkům definována token prostředku hello a pro interval hello povolenou token prostředku hello hello oprávnění. 
-8. Když vyprší platnost tokenu hello prostředků, následných žádostí přijímat 401 neoprávněný výjimka.  V tomto okamžiku hello telefonní aplikaci znovu naváže hello identity a vyžádá nový token prostředku.
+1. Střední vrstvě služby jsou nastaveny na mobilní aplikaci pro sdílení fotografií uživatele. 
+2. Střední vrstvě služby má hlavní klíč účtu Cosmos DB.
+3. Fotografie aplikace je nainstalovaná na mobilní zařízení koncového uživatele. 
+4. Přihlašování vytvoří aplikace fotografie identitu uživatele u služby střední vrstvě. Tento mechanismus identity zařízení je čistě až aplikace.
+5. Po vytvoření identity služby střední vrstvě požadavků oprávnění na základě identity.
+6. Střední vrstvě služby odešle token prostředků zpátky na telefonní aplikace.
+7. Telefonní aplikace můžete nadále používat token prostředku přímý přístup k prostředkům Cosmos DB s oprávněními definována token prostředku a pro interval povolený token prostředku. 
+8. Když vyprší platnost token prostředku, přijímat další požadavky 401 neoprávněný výjimka.  V tomto okamžiku telefonní aplikaci znovu naváže identitu a vyžádá nový token prostředku.
 
     ![Prostředek Azure Cosmos DB tokeny pracovního postupu](./media/secure-access-to-data/resourcekeyworkflow.png)
 
-Generování tokenů prostředků a správy se zpracovává souborem hello nativní knihovny klienta Cosmos DB; ale pokud používáte REST je nutné vytvořit hlavičky požadavku nebo ověřování hello. Další informace o vytváření ověřovacím hlavičkám pro REST naleznete v tématu [řízení přístupu u prostředků DB Cosmos](https://docs.microsoft.com/rest/api/documentdb/access-control-on-documentdb-resources) nebo hello [zdrojový kód pro naše sady SDK](https://github.com/Azure/azure-documentdb-node/blob/master/source/lib/auth.js).
+Generování tokenů prostředků a správy se zpracovává souborem nativní knihovny klienta Cosmos DB; ale pokud používáte REST je nutné vytvořit hlavičky požadavku nebo ověřování. Další informace o vytváření ověřovacím hlavičkám pro REST naleznete v tématu [řízení přístupu u prostředků DB Cosmos](https://docs.microsoft.com/rest/api/documentdb/access-control-on-documentdb-resources) nebo [zdrojový kód pro naše sady SDK](https://github.com/Azure/azure-documentdb-node/blob/master/source/lib/auth.js).
 
-Příklad služby střední vrstvy používá tokeny toogenerate nebo zprostředkovatele prostředků, najdete v části hello [ResourceTokenBroker aplikace](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers).
+Příklad ke generování nebo zprostředkovatel prostředků tokeny služby střední vrstvy, naleznete v části [ResourceTokenBroker aplikace](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers).
 
 <a id="users"></a>
 
 ## <a name="users"></a>Uživatelé
-Uživatelé DB cosmos jsou přidruženy k databázi Cosmos DB.  Každá databáze může obsahovat nula nebo více uživatelů Cosmos DB.  Dobrý den, jak následující kód ukazuje ukázka toocreate prostředek uživatele Cosmos DB.
+Uživatelé DB cosmos jsou přidruženy k databázi Cosmos DB.  Každá databáze může obsahovat nula nebo více uživatelů Cosmos DB.  Následující příklad kódu ukazuje, jak vytvořit prostředek uživatele Cosmos DB.
 
 ```csharp
 //Create a user.
@@ -124,27 +124,27 @@ docUser = await client.CreateUserAsync(UriFactory.CreateDatabaseUri("db"), docUs
 ```
 
 > [!NOTE]
-> Každý uživatel Cosmos DB má PermissionsLink vlastnost, která lze použít tooretrieve hello seznamu [oprávnění](#permissions) přidružené hello uživateli.
+> Každý uživatel Cosmos DB má PermissionsLink vlastnost, která slouží k načtení seznamu [oprávnění](#permissions) přidružené k uživateli.
 > 
 > 
 
 <a id="permissions"></a>
 
 ## <a name="permissions"></a>Oprávnění
-Prostředek Cosmos DB oprávnění je přidružen uživatele Cosmos DB.  Každý uživatel může obsahovat nula nebo více oprávnění Cosmos DB.  Prostředek oprávnění poskytuje přístup tooa token zabezpečení hello musí uživatel při pokusu o tooaccess prostředek konkrétní aplikaci.
+Prostředek Cosmos DB oprávnění je přidružen uživatele Cosmos DB.  Každý uživatel může obsahovat nula nebo více oprávnění Cosmos DB.  Prostředek oprávnění poskytuje přístup k tokenu zabezpečení, který uživatel musí při pokusu o přístup k prostředku konkrétní aplikaci.
 Existují dvě úrovně přístupu k dispozici, které může být k dispozici prostředek oprávnění:
 
-* All: hello uživatel má úplná oprávnění na hello prostředků.
-* Přečtěte si: hello uživatele může číst pouze obsah hello hello prostředku, ale nemůže provádět zápis, operace aktualizace nebo odstranění na hello prostředku.
+* All: Uživatel má úplná oprávnění k prostředku.
+* Přečtěte si: Uživatel může číst pouze obsah prostředku, ale nemůže provádět zápis, operace aktualizace nebo odstranění na prostředku.
 
 > [!NOTE]
-> V pořadí toorun Cosmos DB uložené procedury hello uživatel musí mít hello všechna oprávnění na hello kolekci, ve které hello se spustí uloženou proceduru.
+> Aby bylo možné spustit Cosmos DB uložené procedury, uživatel musí mít oprávnění All na kolekci, ve kterém se spustí uloženou proceduru.
 > 
 > 
 
-### <a name="code-sample-toocreate-permission"></a>Oprávnění toocreate ukázka kódu
+### <a name="code-sample-to-create-permission"></a>Ukázka kódu k vytvoření oprávnění
 
-Hello následující ukázka kódu ukazuje, jak toocreate prostředek oprávnění číst hello token prostředku hello oprávnění prostředku a oprávnění hello přidružit hello [uživatele](#users) vytvořili výše.
+Následující příklad kódu ukazuje, jak vytvořit prostředek oprávnění, token prostředku prostředku oprávnění číst a přidružte oprávnění s [uživatele](#users) vytvořili výše.
 
 ```csharp
 // Create a permission.
@@ -159,11 +159,11 @@ docPermission = await client.CreatePermissionAsync(UriFactory.CreateUserUri("db"
 Console.WriteLine(docPermission.Id + " has token of: " + docPermission.Token);
 ```
 
-Pokud jste zadali, že klíč oddílu pro svoji kolekci, pak hello oprávnění pro kolekci, dokumentů a příloh prostředky musí také obsahovat hello ResourcePartitionKey v přidání toohello ResourceLink.
+Pokud jste zadali klíč oddílu pro svoji kolekci, pak tato oprávnění pro kolekce, dokumentů a příloh prostředky musí obsahovat také ResourcePartitionKey kromě ResourceLink.
 
-### <a name="code-sample-tooread-permissions-for-user"></a>Oprávnění tooread ukázkový kód pro uživatele
+### <a name="code-sample-to-read-permissions-for-user"></a>Ukázka kódu ke čtení oprávnění pro uživatele
 
-tooeasily získat všechny prostředky oprávnění, které jsou spojené s konkrétní uživatele, Cosmos DB zpřístupní oprávnění kanálu pro každý objekt uživatele.  Hello následující fragment kódu ukazuje, jak oprávnění hello tooretrieve přidružené uživateli hello vytvořili výše, vytvořit seznam oprávnění a vytvořit nové instance DocumentClient jménem uživatele hello.
+Snadno získat oprávnění všechny prostředky přidružené určitého uživatele, Cosmos DB zpřístupňují oprávnění kanálu pro každý objekt uživatele.  Následující fragment kódu ukazuje, jak načíst oprávnění přidružené k uživateli vytvořili výše, vytvořit seznam oprávnění a vytvořit nové instance DocumentClient jménem uživatele.
 
 ```csharp
 //Read a permission feed.
@@ -180,6 +180,6 @@ DocumentClient userClient = new DocumentClient(new Uri(endpointUrl), permList);
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* toolearn Další informace o zabezpečení databáze Cosmos DB, najdete v části [Cosmos databáze: databáze zabezpečení](database-security.md).
-* toolearn o správě klíče hlavní a jen pro čtení, najdete v části [jak toomanage účet Azure Cosmos DB](manage-account.md#keys).
-* jak zjistit, tokeny autorizace v Azure Cosmos DB tooconstruct toolearn [řízení přístupu na prostředky Azure Cosmos DB](https://docs.microsoft.com/rest/api/documentdb/access-control-on-documentdb-resources).
+* Další informace o zabezpečení databáze Cosmos DB najdete v tématu [Cosmos databáze: databáze zabezpečení](database-security.md).
+* Další informace o správě klíče hlavní a jen pro čtení, najdete v části [Správa účtu Azure Cosmos DB](manage-account.md#keys).
+* Naučte se vytvořit databázi Cosmos Azure autorizace tokeny, najdete v tématu [řízení přístupu na prostředky Azure Cosmos DB](https://docs.microsoft.com/rest/api/documentdb/access-control-on-documentdb-resources).

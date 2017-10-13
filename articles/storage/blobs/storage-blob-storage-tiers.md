@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure za provozu, ochladí a úložiště pro objekty BLOB archivu | Microsoft Docs"
+title: "Horké, studené a archivní úložiště Azure pro objekty blob | Dokumentace Microsoftu"
 description: "Horké, studené a archivní úložiště pro účty Azure Blob Storage."
 services: storage
 documentationcenter: 
@@ -14,76 +14,76 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/05/2017
 ms.author: mihauss
-ms.openlocfilehash: 42fb699bf16147ba8a4d9f75a62debadea5af65e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 544b11d74a926fe62b8ceca51570ce9d2ee7e6e7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-preview-storage-tiers"></a>Azure Blob Storage: Horká, studená a archivní (Preview) vrstva úložiště
 
 ## <a name="overview"></a>Přehled
 
-Azure Storage nabízí tři vrstvy úložiště pro ukládání objektů blob, abyste mohli data ukládat co nejhospodárněji – to znamená podle toho, jak je používáte. Hello Azure **úroveň horkého úložiště** je optimalizovaná pro ukládání dat, která se využívají často. Hello Azure **úroveň studeného úložiště** je optimalizovaná pro ukládání dat, která se zřídka přístup a uloží pro minimálně jeden měsíc. Hello [archivu vrstvy úložiště (preview)](https://azure.microsoft.com/blog/announcing-the-public-preview-of-azure-archive-blob-storage-and-blob-level-tiering) je optimalizovaná pro ukládání dat, která se zřídka přístup a uloží pro nejméně šest měsíců s požadavky na flexibilní latence (v pořadí hello hodin). Hello *archivu* úroveň úložiště lze použít pouze na úrovni hello objektů blob a ne na účet úložiště celou hello. Data v úroveň studeného úložiště hello může tolerovat trochu horší dostupnost, ale stále vyžaduje vysoká odolnost a podobnou charakteristikou čas přístupu a propustnost jako u horkých dat.. U studených a archivních dat jsou poplatky za uložení výrazně levnější, ovšem za cenu mírně horší dostupnosti a vyšších nákladů na přístup.
+Azure Storage nabízí tři vrstvy úložiště pro ukládání objektů blob, abyste mohli data ukládat co nejhospodárněji – to znamená podle toho, jak je používáte. **Úroveň horkého úložiště** Azure je optimalizovaná pro ukládání dat, která se využívají často. **Studená vrstva úložiště** Azure je optimalizovaná pro ukládání dat, která se nevyužívají často a ukládají se nejméně na měsíc. [Archivní vrstva úložiště (Preview)](https://azure.microsoft.com/blog/announcing-the-public-preview-of-azure-archive-blob-storage-and-blob-level-tiering) je optimalizovaná pro ukládání zřídka využívaných dat, která se ukládají nejméně na šest měsíců a vyžadují flexibilní latenci (v řádu hodin). *Archivní* vrstvu úložiště je možné používat jenom na úrovni objektů blob, a ne pro celý účet úložiště. U dat ve studeném úložišti se toleruje horší dostupnost, ale přesto se u nich vyžaduje vysoká odolnost a podobná přístupová a přenosová rychlost jako u horkých dat. U studených a archivních dat jsou poplatky za uložení výrazně levnější, ovšem za cenu mírně horší dostupnosti a vyšších nákladů na přístup.
 
-V současné době data uložená v cloudu hello narůstají exponenciální rychlostí. toomanage stojí zvětšující potřebujete úložiště, je užitečné tooorganize vaše data na základě atributů jako frekvence přístup a plánované dobu uchování. Data uložená v cloudu hello může být lišit podle toho, jak je vygenerována, zpracování a přístupné přes celé jeho životnosti. Některá data se během svojí existence využívají nebo mění často. Některá data se využívají často časná v průběhu své životnosti, s přístupem k vyřazení výrazně jako stáří dat hello. Některá data zůstane nečinnosti v cloudu hello a zřídka, pokud vůbec někdy získat přístup k jednou uložené.
+Data uložená v cloudu dnes narůstají exponenciální rychlostí. Pokud chcete náklady na rozšiřující se úložiště udržet pod kontrolou, je vhodné uspořádat data podle vlastností, jako je četnost přístupu a plánovaná doba uchování. Data uložená v cloudu se liší tím, jak se generují, zpracovávají a jak se k nim přistupuje po celou dobu jejich životnosti. Některá data se během svojí existence využívají nebo mění často. Některá data se používají často v rané fázi svého životního cyklu, ale s tím jak stárnou, přístup k nim výrazně klesá. Některá data se po uložení v cloudu využívají zřídka, pokud vůbec někdy.
 
 Pro každý z těchto scénářů přístupu k datům je vhodná jiná vrstva úložiště, která je optimalizovaná pro určitý vzor přístupu. Se zavedením horké, studené a archivní vrstvy úložiště služba Azure Blob Storage vychází vstříc potřebě různých vrstvách úložiště s odlišnými cenovými modely.
 
 ## <a name="blob-storage-accounts"></a>Účty úložiště Blob
 
-**Účty úložiště Blob** jsou účty specializovaného úložiště pro ukládání nestrukturovaných dat jako blobů (objektů) v úložišti Azure Storage. S účty úložiště Blob teď můžete zvolit mezi za a úrovně studeného úložiště na úrovni účtu nebo za, cool a archivaci vrstvy na úrovni objektů blob hello podle vzorů přístupu. Ukládat málokdy načítaná data studené na hello nejnižší náklady na úložiště, méně často používaná data úložiště nižší náklady než za provozu a uložit často používaná horkých dat. hello nejnižší náklady na přístup. Účty úložiště BLOB jsou podobné tooyour existující účty úložiště pro obecné účely a sdílet všechny hello vysokou odolnost, dostupnost, škálovatelnost a výkon funkce, které použijete v současné době včetně na 100 % konzistentnost rozhraní API pro objekty BLOB bloku a připojení objekty BLOB.
+**Účty úložiště Blob** jsou účty specializovaného úložiště pro ukládání nestrukturovaných dat jako blobů (objektů) v úložišti Azure Storage. U účtů Blob Storage si teď můžete vybrat mezi horkou a studenou vrstvou úložiště na úrovni účtu, nebo mezi horkou, studenou a archivní vrstvou na úrovni objektu blob, a to v závislosti na vzorech přístupu. Ukládejte zřídka využívaná studená data s nejnižšími náklady na úložiště a méně často využívaná studená data s nižšími náklady na úložiště než horká. Nejčastěji používaná horká data ukládejte s nejnižšími náklady na přístup. Účty Blob Storage jsou podobné účtům úložiště pro obecné účely a mají stejně vysokou odolnost, dostupnost, škálovatelnost a výkonnost, a navíc mají 100% konzistentnost rozhraní API pro objekty blob bloků a doplňovací objekty blob.
 
 > [!NOTE]
 > Účty úložiště Blob podporují pouze objekty blob bloku a doplňovací objekty blob, nepodporují objekty blob stránky.
 
-Účty úložiště BLOB zpřístupňují hello **úroveň přístupu** atribut, který vám umožní toospecify hello úroveň úložiště jako **horká** nebo **nástrojů** v závislosti na hello data uložená v hello účet. Pokud dojde ke změně v hello vzor používání vašich údajů, mohou také přepínat mezi tyto vrstvy úložiště kdykoli. Hello archivu vrstvy (preview) lze použít pouze na úrovni objektů blob hello.
+Účty služby Blob Storage zpřístupňují atribut **Úroveň přístupu**, který umožňuje označit vrstvu úložiště jako **horkou** nebo **studenou** podle toho, jaká data se do účtu ukládají. Pokud začnete k datům přistupovat jinak často, můžete mezi úrovněmi úložiště kdykoliv přepnout. Archivní vrstva (Preview) je možné uplatnit jenom na úrovni objektů blob.
 
 > [!NOTE]
-> Změna hello úroveň úložiště může být spojené další poplatky. V tématu hello [cenovou a fakturace](#pricing-and-billing) další podrobnosti.
+> Se změnou úrovně úložiště můžou být spojeny další poplatky. Další informace najdete v části [Ceny a fakturace](#pricing-and-billing).
 
 ### <a name="hot-access-tier"></a>Horká vrstva přístupu
 
-Příklad scénáře použití pro úroveň horkého úložiště hello patří:
+Na úrovni horkého úložiště můžete mít třeba tyhle typy dat:
 
-* Data, která se v aktivního používání nebo očekávané toobe využívají (čtení z a zapsaný na) často.
-* Data, která jsou určená ke zpracování a eventuální migraci toohello studené úrovni úložiště.
+* Data, která se aktivně používají nebo se k nim očekává častý aktivní přístup (čtení a zápis).
+* Data, která jsou určená ke zpracování a eventuální migraci na úroveň studeného úložiště.
 
 ### <a name="cool-access-tier"></a>Studená vrstva přístupu
 
-Příklad scénáře použití pro úroveň studeného úložiště hello patří:
+Studená úroveň úložiště se hodí například pro tahle data:
 
 * Krátkodobé zálohování a datové sady pro zotavení po havárii.
-* Starší obsah a média není již nezobrazují často, ale je k dispozici očekávané toobe okamžitě.
-* Velkých datových sad, které je třeba toobe ukládají náklady efektivně, když je více dat shromážděných pro pozdější zpracování. (*Příklady:* Dlouhodobé uložení vědeckých dat, nezpracovaná telemetrická data z výrobního závodu.)
+* Starší obsah a média, které se již nezobrazují často, ale které by však měly být na vyžádání okamžitě dostupné.
+* Velké datové sady, které je potřeba levně uložit, zatímco se shromažďují další data pro budoucí zpracování. (*Příklady:* Dlouhodobé uložení vědeckých dat, nezpracovaná telemetrická data z výrobního závodu.)
 
 ### <a name="archive-access-tier-preview"></a>Archivní vrstva přístupu (Preview)
 
-[Úložiště archivu](https://azure.microsoft.com/blog/announcing-the-public-preview-of-azure-archive-blob-storage-and-blob-level-tiering) má nejnižší úložiště hello náklady a vyšší toohot náklady porovnání načtení dat a studeného úložiště.
+[Archivní úložiště](https://azure.microsoft.com/blog/announcing-the-public-preview-of-azure-archive-blob-storage-and-blob-level-tiering) má nejnižší náklady na úložiště a v porovnání s horkým a studeným úložištěm vyšší náklady na načtení dat.
 
-Když je objekt blob v archivním úložišti, nejde ho přečíst, zkopírovat, přepsat ani změnit. Není také možné pořizovat snímky objektů blob v archivním úložišti. Může však použít existující toodelete operace, seznam, získat vlastnosti nebo metadata objektu blob nebo změnit úroveň hello objektu blob služby. tooread dat v úložišti archivu, musíte nejdřív změnit úroveň hello toohot hello objektů blob nebo nástrojů. Tento proces se označuje jako rehydrataci a může trvat až too15 hodin toocomplete pro objekty BLOB menší než 50 GB. Další čas potřebný pro větší objekty BLOB se liší podle omezení propustnosti hello objektů blob.
+Když je objekt blob v archivním úložišti, nejde ho přečíst, zkopírovat, přepsat ani změnit. Není také možné pořizovat snímky objektů blob v archivním úložišti. Můžete ale využívat stávající operace k odstranění, vytvoření seznamu nebo získání vlastností/metadat objektu blob nebo ke změně jeho vrstvy. Pokud chcete načíst data v archivním úložišti, musíte nejdřív změnit vrstvu příslušného objektu blob na studenou nebo horkou. Tento proces se označuje jako dosazování a jeho dokončení může u objektů blob menších než 50 GB trvat až 15 hodin. Další čas nutný pro větší objekty blob závisí na omezení jejich propustnosti.
 
-Během rehydrataci může zkontrolovat tooconfirm vlastnosti objektů blob "archivu status" hello, pokud došlo ke změně vrstvy hello. Stav Hello čte "rehydrataci při spotřebě-čekající na vyřízení na horkého" nebo "rehydrataci při spotřebě-čekající na vyřízení na nástrojů" v závislosti na úrovni cílové hello. Po dokončení, hello "archivu stav" vlastnost objektu blob a hello "úroveň přístupu" blob vlastnost odráží hello aktivní nebo nástrojů vrstvu.  
+Během dosazování můžete zkontrolovat vlastnost stavu archivu objektu blob a ověřit, jestli se vrstva změnila. V závislosti na cílové vrstvě má tento stav hodnotu rehydrate-pending-to-hot nebo rehydrate-pending-to-cool. Po dokončení se vlastnost stavu archivu objektu blob odebere a vlastnost Vrstva přístupu odpovídá horké nebo studené vrstvě.  
 
-Příklad scénáře použití pro úroveň úložiště hello archivu patří:
+Archivní vrstva úložiště se hodí například pro tyto scénáře použití:
 
 * Dlouhodobé zálohy, archivace a datové sady pro zotavení po havárii
 * Původní (hrubá, nezpracovaná) data, která je potřeba zachovat i po jejich zpracování do konečné, použitelné podoby. (*Příklad:* Původní multimediální záznamy po překódování do jiných formátů.)
-* Dodržování předpisů a archivaci dat, který potřebuje toobe uložené po dlouhou dobu a téměř nikdy přistupuje. (*Příklady:*  Záznamy z bezpečnostních kamer, staré rentgenové snímky / snímky magnetické rezonance pro zdravotnická zařízení, zvukové záznamy a přepisy zákaznických hovorů pro finanční služby.)
+* Data pro soulad a archivaci, které je potřeba uchovat po dlouhou dobu a téměř se k nim nepřistupuje. (*Příklady:*  Záznamy z bezpečnostních kamer, staré rentgenové snímky / snímky magnetické rezonance pro zdravotnická zařízení, zvukové záznamy a přepisy zákaznických hovorů pro finanční služby.)
 
 ### <a name="recommendations"></a>Doporučení
 
 Další informace o účtech úložiště najdete v tématu [Účty Azure Storage](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-Pro aplikace, které vyžadují jenom bloku a doplňovacích objektů blob storage, doporučujeme používat účty úložiště Blob, tootake výhod hello rozlišené cenový model vrstvené úložiště. Chápeme ale, že to nemusí být možné za určitých okolností kde pomocí úložiště pro obecné účely, které by bylo účty hello toogo způsobem, jako:
+Pro aplikace, které potřebují jen úložiště objektů blob bloku a doplňovacích objektů blob doporučujeme použít účty úložiště Blob a využít tak výhody specializovaného cenového modelu úložiště děleného na úrovně. Uvědomujeme si, že za určitých okolností to nemusí být možné, protože někdy stačí použít účty úložiště pro obecné účely, třeba v těchto situacích:
 
-* Je třeba toouse tabulky, fronty, nebo soubory a chcete, objektů BLOB uložené v hello stejný účet úložiště. Všimněte si, že žádné toostoring technickou výhodu v hello stejný účet, kromě nutnosti hello stejné sdílených klíčů.
+* Potřebujete používat tabulky, fronty nebo soubory a chcete mít objekty blob uložené ve stejném účtu úložiště. Všimněte si, že kromě stejných sdílených klíčů nemá jejich uložení ve stejném účtu žádnou jinou technickou výhodu.
 
-* Model nasazení Classic hello toouse stále potřebujete. Účty úložiště BLOB jsou dostupné prostřednictvím modelu nasazení Azure Resource Manager hello jenom.
+* Stejně budete muset použít model nasazení Classic. Účty úložiště Blob jsou dostupné jen přes model nasazení Azure Resource Manager.
 
-* Je nutné toouse objekty BLOB stránky. Účty úložiště Blob nepodporují objekty blob stránky. Pokud nemáte nějaký zvláštní nebo konkrétní důvod používat objekty blob stránky, obvykle doporučujeme používat objekty blob bloku.
+* Potřebujete použít objekty blob stránky. Účty úložiště Blob nepodporují objekty blob stránky. Pokud nemáte nějaký zvláštní nebo konkrétní důvod používat objekty blob stránky, obvykle doporučujeme používat objekty blob bloku.
 
-* Použijte verzi hello [Storage Services REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx) která je starší než 2014-02-14 nebo klientskou knihovnu verze nižší než 4.x a nemůžete svoji aplikaci upgradovat.
+* Používáte verzi rozhraní [Storage Services REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx), která je starší než 14.2.2014, nebo klientskou knihovnu verze nižší než 4.x a nemůžete svoji aplikaci upgradovat.
 
 > [!NOTE]
 > Účty Blob Storage jsou aktuálně podporované ve všech oblastech Azure.
@@ -91,25 +91,25 @@ Pro aplikace, které vyžadují jenom bloku a doplňovacích objektů blob stora
 
 ## <a name="blob-level-tiering-feature-preview"></a>Funkce výběru vrstvy na úrovni objektů blob (Preview)
 
-Vrstvení objektů BLOB úrovni teď umožňuje toochange hello úroveň vaše data na úrovni objektu hello pomocí jedné operace názvem [nastavit úroveň Blob](/rest/api/storageservices/set-blob-tier). Bez nutnosti toomove data mezi účty, můžete snadno změnit úroveň přístupu hello objektu blob mezi hello aktivní, nástrojů nebo archiv vrstev jako změnu vzorů využití. Všechny změny vrstvy se provádějí okamžitě při dosazování objektu blob z archivu. Objekty BLOB ve všech tří úložiště úrovně může společně existovat v rámci hello stejný účet. Všechny objekt blob, který nemá explicitně přiřazené vrstvy zdědí nastavení úroveň přístupu účtu hello hello vrstvy.
+Výběr vrstvy na úrovni objektů blob momentálně umožňuje změnit vrstvu dat na úrovni objektu pomocí jediné operace s názvem [Set Blob Tier](/rest/api/storageservices/set-blob-tier). Současně se změnou vzorů využití můžete pro objekt blob snadno změnit vrstvu přístupu (studená, horká nebo archivní) a nemusíte přitom přesouvat data mezi účty. Všechny změny vrstvy se provádějí okamžitě při dosazování objektu blob z archivu. V rámci jednoho účtu mohou současně existovat objekty blob ve všech třech vrstvách úložiště. Každý objekt blob, který nemá explicitně přiřazenou vrstvu, zdědí nastavení vrstvy přístupu z účtu.
 
-toouse tyto funkce ve verzi preview, postupujte podle pokynů hello v hello [archivu Azure a vrstvení objektů Blob úrovni blog oznámení](https://azure.microsoft.com/blog/announcing-the-public-preview-of-azure-archive-blob-storage-and-blob-level-tiering).
+Pokud chcete tyto funkce využít ve verzi Preview, postupujte podle pokynů v [oznámení blogu věnovaném archivní vrstvě a výběru vrstev na úrovni objektů blob](https://azure.microsoft.com/blog/announcing-the-public-preview-of-azure-archive-blob-storage-and-blob-level-tiering).
 
-postupujte podle Hello uvádí některá omezení, která během náhledu pro vrstvení objektů blob úrovni použít:
+Dále jsou uvedená některá omezení, která platí pro výběr vrstvy na úrovni objektů blob ve verzi Preview:
 
 * Archivní úložiště podporují jenom nové účty Blob Storage vytvořené v oblasti USA – východ 2 po úspěšné registraci ve verzi Preview.
 
 * Výběr vrstvy na úrovni objektů blob podporují jenom nové účty Blob Storage vytvořené ve veřejných oblastech po úspěšné registraci ve verzi Preview.
 
-* Výběr vrstvy na úrovni objektů blob a archivní úložiště podporují jenom úložiště [LRS] (../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#locally-redundant-storage). [GRS](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#geo-redundant-storage) a [RA-GRS](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#read-access-geo-redundant-storage) bude podporovaný v budoucnu hello.
+* Výběr vrstvy na úrovni objektů blob a archivní úložiště podporují jenom úložiště [LRS] (../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#locally-redundant-storage). [GRS](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#geo-redundant-storage) a [RA-GRS](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#read-access-geo-redundant-storage) budou podporované v budoucnu.
 
-* Nesmí změnit úroveň hello objekt blob se snímky.
+* U objektu blob se snímky nejde změnit vrstvu.
 
 * Objekty blob v archivním úložišti nejde kopírovat a není možné z nich vytvořit snímky.
 
-## <a name="comparison-of-hello-storage-tiers"></a>Porovnání hello vrstvy úložiště
+## <a name="comparison-of-the-storage-tiers"></a>Srovnání vrstev úložiště
 
-Hello následující tabulka obsahuje porovnání hello horkého a studeného úložiště úrovně. Hello archivu blob úrovni úroveň je ve verzi preview, proto nejsou žádné SLA pro ni.
+V následující tabulce najdete porovnání studené a horké vrstvy úložiště. Archivní vrstva na úrovni objektů blob je ve verzi Preview, proto pro ni nejsou dostupné žádné smlouvy SLA.
 
 | | **Horká vrstva úložiště** | **Studená vrstva úložiště** |
 | ---- | ----- | ----- |
@@ -118,237 +118,237 @@ Hello následující tabulka obsahuje porovnání hello horkého a studeného ú
 | **Poplatky za využití** | Vyšší poplatky za úložiště, nižší poplatky za přístup a transakce | Nižší poplatky za úložiště, vyšší poplatky za přístup a transakce |
 | **Minimální velikost objektu** | Není k dispozici | Není k dispozici |
 | **Minimální doba uložení** | Není k dispozici | Není k dispozici |
-| **Latence** <br> **(Doba toofirst bajtu)** | milisekundy | milisekundy |
+| **Latence** <br> **(čas do prvního bajtu)** | milisekundy | milisekundy |
 | **Škálovatelnost a cíle výkonnosti** | Stejné jako u účtů úložiště pro obecné účely | Stejné jako u účtů úložiště pro obecné účely |
 
 > [!NOTE]
-> Úložiště objektů BLOB účty podporu hello stejný výkon a škálovatelnost cíle jako účty úložiště pro obecné účely. Další informace najdete v tématu [Škálovatelnost a cíle výkonnosti Azure Storage Scalability](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+> Účty úložiště Blob podporují stejnou škálovatelnost a cíle výkonnosti jako účty úložiště pro obecné účely. Další informace najdete v tématu [Škálovatelnost a cíle výkonnosti Azure Storage Scalability](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 
 ## <a name="pricing-and-billing"></a>Ceny a fakturace
-Účty úložiště BLOB používají cenový model pro úložiště objektů blob podle úrovně úložiště hello. Při používání účtu úložiště Blob, platí následující aspekty fakturace hello:
+Účty Blob Storage vycházejí z cenového modelu založeného na vrstvách úložiště. Při použití účtu úložiště Blob je potřeba vzít v úvahu tyto fakturační podmínky:
 
-* **Náklady na úložiště**: kromě toohello množství dat uložených hello náklady na ukládání dat se liší v závislosti na úrovni úložiště hello. je Hello za gigabajt nižší úroveň studeného úložiště hello než pro úroveň horkého úložiště hello.
+* **Cena za uložení**: Vedle uloženého množství dat se cena za uložení odvíjí také od úrovně úložiště. Na úrovni studeného úložiště je sazba za GB nižší než na horké úrovni.
 
-* **Náklady na přístup k datům**: pro data v úroveň studeného úložiště hello, budou se vám účtovat poplatek za gigabajt dat přístup pro čtení a zápisy.
+* **Cena za přístup k datům:** Přístup k datům ve studené vrstvě úložiště je zpoplatněný podle sazby za GB přečtených a zapsaných dat.
 
-* **Cena za transakci**: Na obě úrovně se vztahuje poplatek za jednotlivé transakce. Cena za transakci hello pro hello úroveň studeného úložiště je však vyšší než pro úroveň horkého úložiště hello.
+* **Cena za transakci**: Na obě úrovně se vztahuje poplatek za jednotlivé transakce. Cena za transakci je však na úrovni studeného úložiště vyšší než na úrovni horkého úložiště.
 
-* **Cena za geografickou replikaci datové přenosy**: platí jen tooaccounts s nastavenou geografickou replikací, včetně GRS a RA-GRS. Přenos dat geografické replikace je zpoplatněný podle sazby za GB.
+* **Cena za přenosy dat geografické replikace**: Ta se vztahuje jen na účty s nastavenou geografickou replikací, jako třeba GRS a RA-GRS. Přenos dat geografické replikace je zpoplatněný podle sazby za GB.
 
 * **Cena za odchozí přenosy dat**: Odchozí přenosy dat (dat přenesených směrem z oblasti Azure) jsou zpoplatněné podle využití šířky pásma sazbou za GB, stejně jako je tomu u účtů úložiště pro obecné účely.
 
-* **Změna úrovně úložiště hello**: Změna úrovně úložiště hello ze studeného toohot způsobuje rovna tooreading poplatků všechna data hello existující v hello účet úložiště pro každý přechod. Na hello druhé straně, změna úrovně úložiště hello z aktivního toocool je zdarma.
+* **Změna vrstvy úložiště:** Změna vrstvy ze studené na horkou je za každý přechod zpoplatněna částkou ve výši, která odpovídá přečtení všech dat v aktuálním účtu úložiště. Změna vrstvy úložiště z horké na studenou je naopak bezplatná.
 
 > [!NOTE]
-> Další podrobnosti o hello cenový model pro účty úložiště Blob najdete v tématu [Azure Storage – ceny](https://azure.microsoft.com/pricing/details/storage/) stránky. Další informace o hello odchozí datové přenosy poplatky v [o cenách přenosů dat](https://azure.microsoft.com/pricing/details/data-transfers/) stránky.
+> Další informace o cenovém modelu pro účty Blob Storage najdete na stránce s [cenami za Azure Storage](https://azure.microsoft.com/pricing/details/storage/). Další informace o poplatcích za odchozí přenosy dat najdete na stránce [Podrobné informace o cenách přenosů dat](https://azure.microsoft.com/pricing/details/data-transfers/).
 
 ## <a name="quickstart"></a>Rychlý start
 
-V této části ukážeme hello následující scénáře s využitím hello portálu Azure:
+V tomto oddílu si předvedeme následující scénáře použití rozhraní Azure Portal:
 
-* Jak toocreate účtu úložiště Blob.
-* Jak toomanage účtu úložiště Blob.
+* Vytvoření účtu úložiště Blob.
+* Správa účtu úložiště Blob.
 
-Nelze nastavit tooarchive úroveň přístupu hello v hello následující příklady, protože toto nastavení se použije účet toohello celou úložiště. Nastavení Archiv je možné použít jenom pro konkrétní objekty blob.
+V následujících příkladech nejde nastavit archivní vrstvu přístupu, protože toto nastavení se vztahuje na celý účet úložiště. Nastavení Archiv je možné použít jenom pro konkrétní objekty blob.
 
-### <a name="create-a-blob-storage-account-using-hello-azure-portal"></a>Vytvoření účtu úložiště Blob pomocí portálu Azure hello
+### <a name="create-a-blob-storage-account-using-the-azure-portal"></a>Vytvoření účtu úložiště Blob přes web Azure Portal
 
-1. Přihlaste se toohello [portál Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. V nabídce centra hello vyberte **nový** > **Data + úložiště** > **účet úložiště**.
+2. V nabídce centra vyberte **Nový** > **Data a úložiště** > **Účet úložiště**.
 
 3. Zadejte název účtu úložiště.
    
-    Tento název musí být globálně jedinečný; používá se jako součást hello URL použít tooaccess hello objekty v účtu úložiště hello.  
+    Název musí být globálně jedinečný, protože je součástí adresy URL pro přístup k objektům v účtu úložiště.  
 
-4. Vyberte **Resource Manager** jako model nasazení hello.
+4. Jako model nasazení vyberte **Resource Manager**.
    
-    Vrstvené úložiště lze použít pouze s účty úložiště Resource Manager; Toto je doporučená model nasazení pro nové prostředky hello. Další informace, podívejte se na hello [přehled Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md).  
+    Úrovně úložiště lze použít jen s účty úložiště Resource Manageru, proto u nových prostředků doporučujeme tento model nasazení. Další informace najdete v článku [Přehled Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md).  
 
-5. V rozevíracím seznamu hello typ účtu, vyberte **úložiště objektů Blob**.
+5. V rozevíracím seznamu Druh účtu vyberte **Blob Storage**.
    
-    Toto je, kde můžete vybrat hello typ účtu úložiště. Vrstvené úložiště není k dispozici v úložiště pro obecné účely; je k dispozici v hello typ účtu úložiště Blob.     
+    Tady vybíráte typ účtu úložiště. Úrovně úložiště nejsou dostupné v úložišti pro obecné účely. Využít je můžete jen s účtem typu Blob Storage.     
    
-    Všimněte si, že při výběru tato úroveň výkonu hello je tooStandard nastavit. Vrstvené úložiště není k dispozici úroveň výkonu hello Premium.
+    Všimněte si, že když tuto možnost vyberete, úroveň výkonu se nastaví na Standardní. V úrovni výkonu Premium nejsou úrovně úložiště dostupné.
 
-6. Vyberte možnost hello replikace pro účet úložiště hello: **LRS**, **GRS**, nebo **RA-GRS**. Výchozí hodnota Hello je **RA-GRS**.
+6. Vyberte možnost replikace pro účet úložiště: **LRS**, **GRS** nebo **RA-GRS**. Výchozí hodnota je **RA-GRS**.
    
-    LRS = místně redundantního úložiště; GRS = geograficky redundantní úložiště (2 oblastech); RA-GRS je geograficky redundantní úložiště s přístupem pro čtení (2 oblasti čtení přístup k toohello druhý).
+    LRS = místně redundantní úložiště; GRS = geograficky redundantní úložiště (2 oblasti); RA GRS je geograficky redundantní úložiště s oprávněním ke čtení (2 oblasti s oprávněním ke čtení v té druhé).
    
     Další informace o možnostech replikace v Azure Storage najdete v článku [Replikace Azure Storage](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-7. Vyberte hello úroveň správné úložiště pro vaše potřeby: Sada hello **úroveň přístupu** tooeither **nástrojů** nebo **horká**. Výchozí hodnota Hello je **horká**. 
+7. Vyberte si úroveň úložiště, která vám vyhovuje: **Úroveň přístupu** nastavte na **Studená** nebo **Horká**. Výchozí hodnota je **Hot**. 
 
-8. Vyberte hello předplatné, ve kterém chcete toocreate hello nový účet úložiště.
+8. Vyberte předplatné, ve kterém chcete vytvořit nový účet úložiště.
 
 9. Zadejte novou skupinu prostředků nebo vyberte existující skupinu prostředků. Další informace o skupinách prostředků najdete v článku [Přehled Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md).
 
-10. Vyberte oblast hello vašeho účtu úložiště.
+10. K účtu úložiště přiřaďte oblast.
 
-11. Klikněte na tlačítko **vytvořit** účet úložiště toocreate hello.
+11. Vytvořte účet úložiště kliknutím na **Vytvořit**.
 
-### <a name="change-hello-storage-tier-of-a-blob-storage-account-using-hello-azure-portal"></a>Úroveň úložiště hello účtu úložiště Blob pomocí portálu Azure hello změnit.
+### <a name="change-the-storage-tier-of-a-blob-storage-account-using-the-azure-portal"></a>Změna úrovně úložiště u účtu úložiště Blob přes web Azure Portal
 
-1. Přihlaste se toohello [portál Azure](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 
-2. účet úložiště tooyour toonavigate, vyberte všechny prostředky a potom vyberte svůj účet úložiště.
+2. Klikněte na možnost Všechny prostředky a kliknutím na účet úložiště do účtu přejděte.
 
-3. V okně Nastavení hello, klikněte na tlačítko **konfigurace** tooview nebo změna konfigurace účtu hello.
+3. V okně Nastavení klikněte na **Konfigurace**, odkud můžete zobrazit nebo změnit konfiguraci účtu.
 
-4. Vyberte hello úroveň správné úložiště pro vaše potřeby: Sada hello **úroveň přístupu** tooeither **nástrojů** nebo **horká**...
+4. Vyberte si vrstvu úložiště, která vám vyhovuje: **Vrstva přístupu** nastavte na **Studená** nebo **Horká**.
 
-5. Kliknutím na Uložit hello horní části okna hello.
+5. V horní části okna klikněte na možnost Uložit.
 
 > [!NOTE]
-> Změna hello úroveň úložiště může být spojené další poplatky. V tématu hello [ceny a fakturace](#pricing-and-billing) další podrobnosti.
+> Se změnou úrovně úložiště můžou být spojeny další poplatky. Další informace najdete v části [Ceny a fakturace](#pricing-and-billing).
 
 
-## <a name="evaluating-and-migrating-tooblob-storage-accounts"></a>Vyhodnocení a migrace účtů úložiště tooBlob
-Hello účelem v této části je toohelp uživatelé toomake plynulého přechod toousing účty úložiště Blob. Jako uživatel stojíte před jednou z těchto dvou možností:
+## <a name="evaluating-and-migrating-to-blob-storage-accounts"></a>Vyhodnocení služby a migrace na účty úložiště Blob
+V tomto oddílu chceme uživatelům pomoci s pohodlným přechodem k účtům úložiště Blob. Jako uživatel stojíte před jednou z těchto dvou možností:
 
-* Máte stávající účet úložiště pro obecné účely a chcete tooevaluate tooa změnu účtu úložiště Blob se hello správné úložiště vrstvou.
-* Jste se rozhodli toouse účtu úložiště Blob nebo již máte jeden a chcete tooevaluate, zda byste měli používat vrstvy úložiště aktivní nebo nástrojů hello.
+* Máte účet úložiště pro obecné účely a chcete vyhodnotit přechod k účtu úložiště Blob s vhodnou úrovní úložiště.
+* Rozhodli jste se používat účet úložiště Blob, nebo už ho dokonce máte, a chcete vyhodnotit, jestli si vybrat horkou nebo studenou úroveň.
 
-V obou případech hello firmy of první pořadí je tooestimate hello náklady na ukládání a přístup k datům uložené v účtu úložiště Blob a který porovnávat s náklady na aktuální.
+V obou případech je nejdřív na místě odhadnout cenu ukládání a přístupu k datům uloženým na účtu úložiště Blob a srovnat ji s aktuálními náklady.
 
 ## <a name="evaluating-blob-storage-account-tiers"></a>Vyhodnocení úrovní účtu úložiště Blob
 
-V pořadí tooestimate hello náklady na ukládání a přístup k datům, které jsou uložené v účtu úložiště Blob třeba tooevaluate svůj aktuální vzor používání nebo přibližná vaší očekávané využití vzoru. Obecně je vhodné tooknow:
+Abyste stanovili přibližnou cenu za ukládání a přístup k datům uloženým v účtu Blob Storage, musíte vyhodnotit, jak v současné době k datům přistupujete, nebo odhadnout, jak k nim přistupovat budete. Celkově vzato potřebujete vědět:
 
 * Spotřebu úložiště – Kolik dat ukládáte a jak se toto množství měsíc od měsíce mění?
 
-* Váš přístup vzor úložiště – kolik dat se číst z a účet napsané toohello (včetně nových dat)? Ke kolika transakcím dochází při přístupu k datům a o jaké transakce se jedná?
+* Vzorec přistupování k úložišti – Kolik dat se na účtu čte a zapisuje (včetně nových dat)? Ke kolika transakcím dochází při přístupu k datům a o jaké transakce se jedná?
 
 ## <a name="monitoring-existing-storage-accounts"></a>Monitorování existujících účtů úložiště
 
-toomonitor stávající úložiště účtů a shromažďovat tato data, můžete nastavit, používání Azure Storage Analytics, která provádí protokolování a poskytuje data metriky pro účet úložiště. Analytika úložiště můžete ukládat metriky, které zahrnují transakce souhrnné statistiky a kapacity data o toohello žádosti o služby úložiště objektů Blob pro účty úložiště pro obecné účely jak účty úložiště Blob. Tato data jsou ukládána v dobře známé tabulek v hello stejný účet úložiště.
+K monitorování existujících účtů úložiště a sesbírání dat můžete využít službu Azure Storage Analytics, která aktivitu zaprotokoluje a na účtu úložiště naměří potřebné údaje. Služba Storage Analytics může naměřená data, včetně souhrnné statistiky transakcí a dat o kapacitě požadavků na službu Blob Storage, ukládat jak pro účty úložiště pro obecné účely, tak pro účty úložiště Blob. Tato data se ukládají do známých tabulek na tom samém účtu úložiště.
 
 Další podrobnosti najdete na stránkách věnovaných [metrikám Storage Analytics](https://msdn.microsoft.com/library/azure/hh343258.aspx) a [tabulkovému schématu metrik Storage Analytics](https://msdn.microsoft.com/library/azure/hh343264.aspx).
 
 > [!NOTE]
-> Účty úložiště BLOB zpřístupňují koncový bod služby tabulek hello pouze pro ukládání a přístup k datům hello metriky pro tento účet.
+> Účet úložiště Blob zpřístupňuje koncový bod tabulkové služby jenom pro účely ukládání a zpřístupnění dat naměřených tomuto účtu.
 
-Spotřeba úložiště hello toomonitor pro hello služby úložiště objektů Blob, musíte metriky kapacity tooenable hello.
-Tuto funkci povolíte, kapacity data jsou zaznamenány každý den pro účet úložiště služby objektů Blob a zaznamená jako záznam tabulky, které jsou zapsány toohello *$MetricsCapacityBlob* tabulky v rámci hello stejný účet úložiště.
+Pokud chcete monitorovat spotřebu služby Blob Storage, je potřeba povolit kapacitní metriky.
+Když tuto funkci zapnete, data o kapacitě služby Blob pro daný účet úložiště se budou denně zaznamenávat jako zápisy do tabulky *$MetricsCapacityBlob* v rámci stejného účtu úložiště.
 
-hello toomonitor hello data vzor přístupu pro službu úložiště objektů Blob, musíte tooenable hello hodinové transakce metriky na úrovni rozhraní API. Tuto funkci povolíte, na rozhraní API transakce jsou agregovat každou hodinu a zaznamenává jako záznam tabulky, které jsou zapsány toohello *$MetricsHourPrimaryTransactionsBlob* tabulky v rámci hello stejný účet úložiště. Hello *$MetricsHourSecondaryTransactionsBlob* záznamů tabulky hello sekundární koncový bod transakce toohello při použití účtů úložiště RA-GRS.
+Aby bylo možné pro službu Blob Storage monitorovat vzor přístupu k datům, je potřeba povolit hodinovou metriku transakcí na úrovni API. Když tuto funkci zapnete, data o transakcích API se budou každou hodinu shromažďovat a zaznamenávat jako zápisy do tabulky *$MetricsHourPrimaryTransactionsBlob* v rámci stejného účtu úložiště. Při použití účtů úložiště RA-GRS zaznamenává tabulka *$MetricsHourSecondaryTransactionsBlob* transakce do sekundárního koncového bodu.
 
 > [!NOTE]
-> Pokud máte účet úložiště pro obecné účely, ve kterém jsou uložené objekty blob stránek a disky virtuálních počítačů vedle dat doplňovacích objektů blob, odhad tímto postupem provést nepůjde. Je to proto, že se už rozlišování kapacitu a transakce metriky na základě hello typu Objekt blob pro pouze blokovat a doplňovací objekty BLOB, které lze migrovat tooa účtu úložiště Blob.
+> Pokud máte účet úložiště pro obecné účely, ve kterém jsou uložené objekty blob stránek a disky virtuálních počítačů vedle dat doplňovacích objektů blob, odhad tímto postupem provést nepůjde. A to proto, že nebude možné rozlišit, která naměřená kapacita a transakce patří jenom k objektům blob bloku nebo jenom k doplňovacím objektům blob, které je možné migrovat do účtu Blob Storage.
 
-tooget dobrým odhadem spotřeby dat a vzor přístupu, doporučujeme vybrat dobu uchování hello metriky, který je typický pro vaše regulární využití a odvodit. Jednou z možností je tooretain hello metriky dat pro 7 dní a shromažďování hello data každý týden pro analýzu na konci hello měsíci hello. Další možností je tooretain hello metriky, dat pro hello posledních 30 dnů a shromáždění a analýza dat hello na konci hello hello období 30 dnů.
+Pokud chcete dobře odhadnout spotřebu dat a přístup k nim, doporučujeme pro měření dat vybrat takovou dobu uchování, která dobře vystihuje pravidelné používání, a potom údaje extrapolovat. Můžete například měřená data uchovávat po sedm dní, sesbírat jednou za týden a analyzovat je na konci měsíce. Nebo změřte a nasbírejte data za posledních 30 dní a na konci 30denního období je analyzujte.
 
 Podrobnosti o povolení, shromažďování a zobrazování dat metrik najdete v tématu [Povolení metrik Azure Storage a zobrazení dat metrik](../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 > [!NOTE]
 > Uložení, zobrazování a stahování analyzovaných data se účtuje stejně jako běžná uživatelská data.
 
-### <a name="utilizing-usage-metrics-tooestimate-costs"></a>Využitím náklady tooestimate metriky využití
+### <a name="utilizing-usage-metrics-to-estimate-costs"></a>Odhadnutí nákladů s pomocí naměřených údajů o využití
 
 ### <a name="storage-costs"></a>Cena za uložení
 
-Hello nejnovější záznam v tabulce metriky kapacity hello *$MetricsCapacityBlob* s klíčem řádku hello *'údaje'* ukazuje hello kapacitu úložiště, které jsou využívány službou data uživatele. Hello nejnovější záznam v tabulce metriky kapacity hello *$MetricsCapacityBlob* s klíčem řádku hello *'analytics'* ukazuje hello hello analýzy protokolů spotřebovávají kapacitu úložiště.
+Poslední položka v tabulce kapacitní metriky *$MetricsCapacityBlob* s klíčem řádku *data* zobrazuje kapacitu úložiště spotřebovanou uživatelskými daty. Poslední položka v tabulce kapacitní metriky *$MetricsCapacityBlob* s klíčem řádku *analytics* zobrazuje kapacitu úložiště spotřebovanou protokoly analýzy.
 
-Tato celková kapacita spotřebovávají oba uživatele data a analýzy protokolů (Pokud je povoleno) lze použít tooestimate hello náklady na ukládání dat v účtu úložiště hello. Hello stejnou metodu lze použít také k odhadování náklady na úložiště pro bloku a doplňovacích objektů BLOB v účtech úložiště pro obecné účely.
+Celková kapacita spotřebovaná uživatelskými daty a protokoly analýzy (pokud jsou povoleny) se potom dají použít k odhadu nákladů za uložení dat v účtu úložiště. Stejnou metodu lze použít taky pro odhad nákladů za uložení blob bloků a doplňujících objektů blob v účtech úložiště pro obecné účely.
 
 ### <a name="transaction-costs"></a>Cena za transakce
 
-Součet Hello *'TotalBillableRequests'*, přes všechny záznamy pro rozhraní API v transakci hello metriky tabulka udává hello celkový počet transakcí pro toto konkrétní rozhraní API. *Například*, hello celkový počet *'Getblob –'* transakce v daném časovém období, lze vypočítat podle hello součet celkové fakturovatelné požadavků pro všechny záznamy s klíčem řádku hello *' uživatele. Getblob – '*.
+Součet *TotalBillableRequests* všech položek rozhraní API v tabulce metrik transakcí udává celkový počet transakcí daného rozhraní API. *Například* celkový počet transakcí *GetBlob* v daném časovém období se dá vypočítat jako celkový součet fakturovatelných požadavků všech položek s klíčem řádku *user;GetBlob*.
 
-V pořadí tooestimate transakce náklady na účty úložiště Blob musíte toobreak dolů hello transakce do tří skupin vzhledem k tomu, že jsou cenově jinak.
+Pokud chcete pro účet Blob Storage odhadnout náklady za transakce, je potřeba rozdělit transakce do tří skupin, protože se cenově liší.
 
 * Transakce zápisu jako *PutBlob*, *PutBlock*, *PutBlockList*, *AppendBlock*, *ListBlobs*, *ListContainers*, *CreateContainer*, *SnapshotBlob* a *CopyBlob*.
 * Transakce odstranění jako *DeleteBlob* a *DeleteContainer*.
 * Veškeré ostatní transakce.
 
-Pořadí tooestimate transakce náklady pro účty úložiště pro obecné účely je nutné tooaggregate všechny transakce, bez ohledu na operaci hello nebo rozhraní API.
+Pokud chcete odhadnout náklady za transakce v účtu úložiště pro obecné účely, je potřeba započítat všechny transakce bez ohledu na operaci či rozhraní API.
 
 ### <a name="data-access-and-geo-replication-data-transfer-costs"></a>Přístup k datům a cena za přenos dat – geografická replikace
 
-Během analytika úložiště neposkytuje hello množství dat číst z a zapisovat tooa účet úložiště, ho můžete být zhruba odhadnout na základě hello transakce metriky tabulky. Součet Hello *'TotalIngress'* napříč všechny záznamy pro rozhraní API v hello transakce metriky tabulka udává celkovou velikost hello příchozí přenos dat v bajtech pro toto konkrétní rozhraní API. Podobně hello součet *'TotalEgress'* označuje celkovou velikost hello odchozí data v bajtech.
+Analýza úložiště sice k účtu úložiště nevypíše množství přečtených a zapsaných dat, toto množství lze ale zhruba odhadnout z tabulky metriky transakcí. Součet *TotalBillableRequests* všech položek rozhraní API v tabulce metrik transakcí udává celkové množství příchozích dat k tomuto rozhraní API v bajtech. Podobně součet *TotalEgress* udává celkové množství odchozích dat v bajtech.
 
-Pořadí tooestimate hello data nákladů na přístup pro účty úložiště Blob je nutné toobreak dolů hello transakce do dvou skupin. 
+Pokud chcete pro účet Blob Storage odhadnout náklady za přístup k datům, je potřeba transakce rozdělit do dvou skupin. 
 
-* Hello množství dat načtených z účtu úložiště hello se dá odhadnout prohlížením hello součet *'TotalEgress'* pro především hello *'Getblob –'* a *'CopyBlob'* operace.
+* Množství dat načtených z účtu úložiště lze odhadnout ze součtu *TotalEgress* především u operací *GetBlob* a *CopyBlob*.
 
-* Hello množství dat zapsaných toohello účet úložiště se dá odhadnout prohlížením hello součet *'TotalIngress'* pro především hello *'PutBlob'*, *'PutBlock'*, *'CopyBlob'* a *'AppendBlock'* operace.
+* Množství dat zapsaných do účtu úložiště lze odhadnout ze součtu *TotalIngress* především u operací *PutBlob*, *PutBlock*, *CopyBlob* a *AppendBlock*.
 
-Hello náklady na přenos dat geografické replikace pro účty úložiště, lze vypočítat také pomocí hello odhad pro hello množství dat zapsaných při použití GRS nebo RA-GRS účtu úložiště objektů Blob.
+Také cena za přenos geograficky replikovaných dat účtů Blob Storage se v případě účtu úložiště typu GRS nebo RA-GRS dá vypočítat pomocí toho, že odhadnete množství zapsaných dat.
 
 > [!NOTE]
-> Podrobnější příklad o výpočet hello náklady na použití hello aktivní nebo studeného úložiště vrstvy, prohlédněte si hello – nejčastější dotazy s názvem *"jaké jsou aktivní a nástrojů úrovní přístupu a jak měli určit které jeden toouse?"* v hello [stránce s cenami úložiště Azure](https://azure.microsoft.com/pricing/details/storage/).
+> Podrobnější příklad výpočtu ceny za využívání horké či studené vrstvy úložiště najdete v odpovědi na často kladenou otázku *Co jsou horká a studená vrstva přístupu a jak určit, která z nich se má použít?* na stránce [Ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
  
 ## <a name="migrating-existing-data"></a>Migrace existujících dat
 
-Účet úložiště Blob se specializuje pouze na ukládání objektů blob bloku a doplňovacích objektů blob. Existující účty úložiště pro obecné účely, které umožňují toostore tabulky, fronty, soubory a disky, jakož i objekty BLOB, nemůže být převedená tooBlob účty úložiště. toouse hello vrstvy úložiště, třeba toocreate nové účty úložiště Blob a svoje existující data migrovat do hello nově vytvořené účty.
+Účet úložiště Blob se specializuje pouze na ukládání objektů blob bloku a doplňovacích objektů blob. Existující účty úložiště pro obecné účely, ve kterých můžete ukládat tabulky, fronty, soubory a disky i objekty blob, se nedají převést na účty Blob Storage. Pokud chcete využívat vrstvy úložiště, budete muset vytvořit nové účty Blob Storage a existující data migrovat do těchto nových účtů.
 
-Můžete použít následující metody toomigrate existujících dat do účtů úložiště Blob z místní úložiště zařízení, z poskytovatelů úložiště cloudu třetích stran nebo z existující účty úložiště pro obecné účely v Azure hello:
+Následující metody můžete použít pro migraci existujících dat do účtů úložiště Blob z místních úložných zařízení, z cloudového úložiště jiných poskytovatelů nebo z existujícího účtu úložiště Azure pro obecné účely:
 
 ### <a name="azcopy"></a>AzCopy
 
-AzCopy je nástroj příkazového řádku Windows určený pro vysoce výkonné kopírování dat tooand ze služby Azure Storage. Do svého účtu úložiště Blob, můžete použít AzCopy toocopy data do svého účtu úložiště Blob z vaší existující účty úložiště pro obecné účely nebo tooupload data z vaší místní úložiště zařízení.
+AzCopy je nástroj Windows, který se spouští z příkazového řádku a který je určený pro vysoce výkonné kopírování dat do Azure Storage a z Azure Storage. Pomocí nástroje AzCopy můžete kopírovat data do svého účtu úložiště Blob z existujících účtů úložiště pro obecné účely nebo ukládat data z lokálních úložných zařízení do svého účtu úložiště Blob.
 
-Další podrobnosti najdete v tématu [přenos dat pomocí příkazového řádku Azcopy hello](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Další informace najdete v tématu [Přenos dat pomocí nástroje příkazového řádku AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ### <a name="data-movement-library"></a>Knihovna pro přesun dat
 
-Azure knihovna pro přesun dat úložiště pro .NET je založená na hello přesun základních dat, využívá nástroj AzCopy. Hello knihovna je určená pro vysoce výkonné, spolehlivé, a snadného přenosu dat podobné tooAzCopy operace. To vám umožní tootake naplno využívat výhody hello funkcí AzCopy ve vaší aplikaci nativně bez nutnosti toodeal spouštět a sledovat externí instance nástroje AzCopy.
+Knihovna pro přesun dat v Azure Storage pro .NET je založená na platformě pro přesun základních dat, kterou využívá nástroj AzCopy. Knihovna je určená pro vysoce výkonné, spolehlivé a snadné operace přenosu dat, podobně jako AzCopy. Díky tomu můžete naplno využívat výhody funkcí AzCopy ve svojí aplikaci nativně, bez nutnosti spouštět a sledovat externí instance nástroje AzCopy.
 
 Další informace najdete v tématu [Knihovna pro přesun dat v Azure Storage pro .Net](https://github.com/Azure/azure-storage-net-data-movement).
 
 ### <a name="rest-api-or-client-library"></a>Rozhraní REST API nebo klientská knihovna
 
-Můžete vytvořit vlastní aplikaci toomigrate dat do účtu úložiště Blob pomocí jedné z knihoven klienta Azure hello nebo hello Azure storage services REST API. Azure Storage poskytuje množství knihoven klienta pro různé jazyky a platformy, jako například .NET, Java, C++, Node.JS, PHP, Ruby nebo Python. Hello knihovny klienta nabízí pokročilé funkce, jako je například logika opakovaných pokusů, protokolování a paralelní ukládání. Také můžete vyvíjet přímo na hello REST API, které může zavolat jakýkoli jazyk schopný požadavky HTTP/HTTPS.
+Pomocí některé z knihoven klienta Azure nebo rozhraní REST API služeb úložiště Azure můžete vytvořit vlastní aplikaci pro migraci dat do účtu úložiště Blob. Azure Storage poskytuje množství knihoven klienta pro různé jazyky a platformy, jako například .NET, Java, C++, Node.JS, PHP, Ruby nebo Python. Knihovny klienta nabízí pokročilé možnosti a funkce, jako je například logika opakovaných pokusů, protokolování a paralelní ukládání. Můžete také psát aplikace přímo na rozhraní REST API, které může zavolat jakýkoli jazyk schopný vytvářet požadavky přes HTTP/HTTPS.
 
 Další informace najdete v tématu [Začínáme s úložištěm Azure Blob](storage-dotnet-how-to-use-blobs.md).
 
 > [!NOTE]
-> Objekty BLOB šifrované pomocí šifrování na straně klienta ukládají metadata šifrování uložená s objektem blob hello. Je absolutně nezbytné, že všechny mechanizmus kopírování zajistil, hello metadata objektu blob a hlavně hello metadata šifrování, je zachovaná. Pokud zkopírujete objekty BLOB hello bez těchto metadat, obsah objektu blob hello nelze znovu načíst. Podrobnější informace o šifrování metadat najdete v článku o [Azure Storage a šifrování na straně klienta](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+> Objekty blob šifrované na straně klienta ukládají metadata šifrování uložená s objektem blob. Je absolutně nezbytné, aby každý použitý mechanizmus kopírování zajistil, aby zůstala zachovaná metadata objektu blob, především metadata šifrování. Pokud objekty blob zkopírujete bez těchto metadat, obsah objektu blob bude nenávratně ztracený. Podrobnější informace o šifrování metadat najdete v článku o [Azure Storage a šifrování na straně klienta](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
  
 ## <a name="faq"></a>Nejčastější dotazy
 
 1. **Jsou existující účty úložiště stále dostupné?**
    
-    Ano, existující účty úložiště jsou stále dostupné a jejich funkce ani cena se nemění.  Jejich nemají hello možnost toochoose vrstvy úložiště a nebude mít ani v budoucnu hello.
+    Ano, existující účty úložiště jsou stále dostupné a jejich funkce ani cena se nemění.  Není u nich možné vybrat úroveň úložiště a tato možnost nebude ani v budoucnosti.
 
 2. **Proč a kdy bych měl/a začít používat účty úložiště Blob?**
    
-    Účty úložiště BLOB se specializují na ukládání objektů BLOB a umožňují nám toointroduce nové funkce. Do budoucna, účty úložiště Blob jsou hello doporučená způsob pro ukládání objektů BLOB, jako funkce hierarchických úložišť a vrstvení budou zavedeny založené na tento typ účtu. Je však až tooyou Chcete-li toomigrate na základě požadavků vaší firmy.
+    Účty úložiště Blob se specializují na ukládání objektů blob a umožňují nám zavádět nové funkce pro objekty blob. Výhledově se pro ukládání objektů blob budou doporučovat účty úložiště Blob, protože budou mít funkce hierarchie a úrovní úložiště podle typu účtu. Kdy budete chtít migrovat ale záleží na vás a vašich obchodních potřebách.
 
-3. **Můžete převést Můj stávající účet tooa úložiště účtu úložiště Blob?**
+3. **Můžu převést svůj existující účet úložiště na účet úložiště Blob?**
    
     Ne. Účet Blob Storage je jiný druh účtu úložiště. Budete si muset vytvořit nový a do něj pak migrovat existující data, jak jsme vysvětlili dříve.
 
-4. **Můžete ukládat objekty v obou vrstvách úložiště v hello stejný účet?**
+4. **Můžu na jednom účtu ukládat objekty do obou úrovní úložiště?**
    
-    Hello *'úroveň přístupu,* atribut určuje hodnotu hello hello vrstvy úložiště nastavit na úrovni účtu a platí tooall objekty v daném účtu. Ale hello blob úrovni vrstvení funkce (preview) vám umožní vám tooset hello úroveň přístupu na konkrétní objekty BLOB a tím se přepíše na účet hello hello nastavení úrovně přístupu. 
+    Atribut *Vrstva přístupu* indikuje vrstvu úložiště nastavenou na úrovni účtu vztahuje se na všechny objekty v tomto účtu. Funkce výběru vrstvy na úrovni objektů blob (Preview) vám ale umožní nastavit vrstvu přístupu u konkrétních objektů blob, která přepíše nastavení vrstvy přístupu v účtu. 
 
-5. **Můžete změnit úroveň úložiště hello svého účtu úložiště Blob?**
+5. **Můžu účtu úložiště Blob změnit úroveň úložiště?**
    
-    Ano. Můžete změnit úroveň úložiště hello nastavení hello *'úroveň přístupu,* atribut na účet úložiště hello. Změna úrovně úložiště hello platí tooall objekty uložené v účtu hello. Změna úrovně úložiště hello z aktivního toocool není vám účtovat žádné poplatky, zatímco Změna ze studené toohot nesnižuje za náklady na GB pro čtení všech hello dat v účtu hello.
+    Ano. Vrstvu úložiště můžete změnit nastavením atributu *Vrstva přístupu* v účtu úložiště. Změna vrstvy úložiště se projeví u všech objektů uložených v tomto účtu. Vrstvy úložiště můžete z horké na studenou změnit bezplatně, ale změna ze studené na horkou je zpoplatněna částkou, která odpovídá přečtení všech dat v účtu podle platné sazby za GB.
 
-6. **Jak často můžete změnit úroveň úložiště hello svého účtu úložiště Blob?**
+6. **Jak často můžu účtu úložiště Blob změnit úroveň úložiště?**
    
-    Když jsme Nevynucovat omezení toho, jak často se smí měnit úroveň úložiště hello, mějte na paměti, že změna úrovně úložiště hello ze studeného toohot můžete znamená výrazné náklady. Změna úrovně úložiště hello často nedoporučujeme.
+    Možnost měnit vrstvu úložiště v tomto směru neomezujeme, ale vezměte na vědomí, že změna vrstvy úložiště ze studené na horkou s sebou může nést značné náklady. Nedoporučujeme měnit úroveň úložiště často.
 
-7. **Hello objektů BLOB v hello úroveň studeného úložiště chovat jinak než ty, které v úroveň horkého úložiště hello hello?**
+7. **Budou se objekty blob ve studené vrstvě úložiště chovat jinak než objekty blob v horké vrstvě úložiště?**
    
-    Objekty BLOB v hello horké úrovni úložiště mají hello stejnou latenci jako objekty BLOB v účtech úložiště pro obecné účely. Objekty BLOB v hello studené úrovni úložiště mají podobnou latenci (v milisekundách) jako objekty BLOB v účtech úložiště pro obecné účely.
+    Objekty blob v horké úrovni úložiště mají stejnou latenci jako objekty blob v účtech úložiště pro obecné účely. Objekty blob ve studené úrovni úložiště mají podobnou latenci (v řádech milisekund) jako objekty blob v účtech úložiště pro obecné účely.
    
-    Objekty BLOB v hello studené úrovni úložiště mají mírně horší dostupnosti úrovní služeb (SLA) než objekty BLOB hello uložené v hello úroveň horkého úložiště. Další informace najdete v tématu [SLA pro úložiště](https://azure.microsoft.com/support/legal/sla/storage).
+    Objekty blob ve studené vrstvě úložiště budou mít trochu nižší úroveň dostupnosti služeb (SLA) než objekty blob uložené v horké vrstvě úložiště. Další informace najdete v tématu [SLA pro úložiště](https://azure.microsoft.com/support/legal/sla/storage).
 
 8. **Můžu do účtů úložiště Blob ukládat objekty blob stránky a disky virtuálních počítačů?**
    
-    Účty úložiště Blob podporují pouze objekty blob bloku a doplňovací objekty blob, nepodporují objekty blob stránky. Disky virtuálních počítačů Azure se opírají o objekty BLOB stránky a v důsledku účty úložiště Blob nelze použít toostore disky virtuálního počítače. Je ale možné toostore zálohy hello disky virtuálního počítače jako objekty BLOB bloku v účtu úložiště Blob.
+    Účty úložiště Blob podporují pouze objekty blob bloku a doplňovací objekty blob, nepodporují objekty blob stránky. Disky virtuálních počítačů Azure se opírají o objekty blob stránky, proto se účty úložiště Blob nedají použít k uložení disků virtuálních počítačů. Zálohy disků virtuálních počítačů se ale dají do účtu úložiště Blob uložit jako objekty blob bloku.
 
-9. **Je nutné toochange mé existující aplikace toouse účty úložiště Blob?**
+9. **Musím změnit svoje existující aplikace, aby používaly účty Blob Storage?**
    
-    Účty úložiště Blob mají rozhraní API 100% konzistentní s účty úložiště pro obecné účely pro objekty blob bloku a doplňující objekty blob. Jak dlouho, dokud vaše aplikace používá objekty BLOB bloku nebo doplňovací objekty BLOB a používáte verze 2014-02-14 hello hello [Storage Services REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx) nebo novější, vaše aplikace by měla fungovat. Pokud používáte starší verzi protokolu hello, je nutné aktualizovat vaše nové verze aplikace toouse hello tak jako toowork bezproblémově s oběma typy účtů úložiště. Obecně platí vždy doporučujeme používat nejnovější verzi hello bez ohledu na to, jaký typ účtu úložiště používáte.
+    Účty úložiště Blob mají rozhraní API 100% konzistentní s účty úložiště pro obecné účely pro objekty blob bloku a doplňující objekty blob. Pokud aplikace používá objekty blob bloku nebo objekty blob připojení a vy používáte verzi rozhraní [služby úložiště REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx) z 14. 2. 2014 nebo novější, měla by aplikace fungovat. Pokud používáte starší verzi protokolu, budete muset aplikaci aktualizovat, aby používala novou verzi, a mohla tak bez problémů pracovat s oběma typy účtů úložiště. Celkově vždy doporučujeme používat nejnovější verzi bez ohledu na to, který typ účtu úložiště používáte.
 
 10. **Budu muset něco dělat jinak?**
     
-    Účty úložiště BLOB jsou velmi podobné tooa účty úložiště pro obecné účely pro ukládání bloku a doplňovací objekty BLOB a podporují všechny klíčové funkce hello Azure Storage, včetně vysoké odolnosti a dostupnosti, škálovatelnosti, výkonnosti a zabezpečení. Než hello funkcí a omezení konkrétní tooBlob úložiště účtů a jeho vrstvy úložiště, které jsme je popsali výše, by všechno hello else zůstává stejné.
+    Účty úložiště Blob jsou velmi podobné účtům úložiště pro obecné účely pro ukládání objektů blob bloku a doplňovacích objektů blob a podporují všechny klíčové funkce Azure Storage, včetně vysoké odolnosti a dostupnosti, škálovatelnosti, výkonnosti a zabezpečení. Kromě funkcí a omezení charakteristických pro účty a úrovně úložiště Blob, jak jsme popsali výše, všechno ostatní zůstává při starém.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -366,8 +366,8 @@ Další informace najdete v tématu [Začínáme s úložištěm Azure Blob](sto
 
 [Začínáme s úložištěm Azure Blob](storage-dotnet-how-to-use-blobs.md)
 
-[Přesun dat tooand ze služby Azure Storage](../common/storage-moving-data.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+[Přesunutí dat z Azure Storage a do Azure Storage](../common/storage-moving-data.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-[Přenos dat pomocí příkazového řádku Azcopy hello](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+[Přenos dat pomocí nástroje příkazového řádku AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
 [Procházení a prozkoumání účtů úložiště](http://storageexplorer.com/)

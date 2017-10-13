@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s PerformanceCentre | Microsoft Docs'
-description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a PerformanceCentre."
+description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a PerformanceCentre."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,111 +13,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 19781c0087093a67c70dc90072cf1a119bb2ade0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e86adaf4bd9b4752f2aece8207a8a423ec5590a6
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-performancecentre"></a>Kurz: Azure Active Directory integrace s PerformanceCentre
 
-V tomto kurzu zjistíte, jak toointegrate PerformanceCentre s Azure Active Directory (Azure AD).
+V tomto kurzu zjistěte, jak integrovat PerformanceCentre s Azure Active Directory (Azure AD).
 
-Integrace PerformanceCentre s Azure AD poskytuje hello následující výhody:
+Integrace PerformanceCentre s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup tooPerformanceCentre
-- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooPerformanceCentre (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup k PerformanceCentre
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k PerformanceCentre (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Integrace služby Azure AD s PerformanceCentre tooconfigure, je třeba hello následující položky:
+Konfigurace integrace Azure AD s PerformanceCentre, potřebujete následující položky:
 
 - Předplatné služby Azure AD
 - PerformanceCentre jednotné přihlašování povolené předplatné
 
 > [!NOTE]
-> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
+Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání PerformanceCentre z Galerie hello
+1. Přidání PerformanceCentre z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-performancecentre-from-hello-gallery"></a>Přidání PerformanceCentre z Galerie hello
-tooconfigure hello integrace PerformanceCentre do Azure AD, je nutné tooadd PerformanceCentre hello Galerie tooyour seznamu spravovaných aplikací SaaS.
+## <a name="adding-performancecentre-from-the-gallery"></a>Přidání PerformanceCentre z Galerie
+Při konfiguraci integrace PerformanceCentre do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS PerformanceCentre z galerie.
 
-**tooadd PerformanceCentre z Galerie hello, proveďte následující kroky hello:**
+**Pokud chcete přidat PerformanceCentre z galerie, proveďte následující kroky:**
 
-1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
+1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
+2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
 
     ![Aplikace][3]
 
-4. Hello vyhledávacího pole zadejte **PerformanceCentre**.
+4. Do vyhledávacího pole zadejte **PerformanceCentre**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-performancecentre-tutorial/tutorial_performancecentre_search.png)
 
-5. Na panelu výsledků hello vyberte **PerformanceCentre**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.
+5. Na panelu výsledků vyberte **PerformanceCentre**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-performancecentre-tutorial/tutorial_performancecentre_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s PerformanceCentre podle testovacího uživatele názvem "Britta Simon".
 
-Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v PerformanceCentre je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v PerformanceCentre musí toobe navázat.
+Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v PerformanceCentre je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v PerformanceCentre musí navázat.
 
-V PerformanceCentre, přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.
+V PerformanceCentre, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
 
-tooconfigure a testu Azure AD jednotné přihlašování s PerformanceCentre, potřebujete následující stavební bloky hello toocomplete:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s PerformanceCentre, je třeba dokončit následující stavební bloky:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele PerformanceCentre](#creating-a-performancecentre-test-user)**  -toohave protějšek Britta Simon v PerformanceCentre, která je propojená toohello Azure AD reprezentace uživatele.
-4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele PerformanceCentre](#creating-a-performancecentre-test-user)**  – Pokud chcete mít protějšek Britta Simon v PerformanceCentre propojeném s Azure AD reprezentace daného uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci PerformanceCentre.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci PerformanceCentre.
 
-**tooconfigure Azure AD jednotné přihlašování s PerformanceCentre, proveďte následující kroky hello:**
+**Ke konfiguraci Azure AD jednotné přihlašování s PerformanceCentre, proveďte následující kroky:**
 
-1. V portálu Azure, na hello hello **PerformanceCentre** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na portálu Azure na **PerformanceCentre** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
+2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-performancecentre-tutorial/tutorial_performancecentre_samlbase.png)
 
-3. Na hello **PerformanceCentre domény a adresy URL** část, proveďte následující kroky hello:
+3. Na **PerformanceCentre domény a adresy URL** část, proveďte následující kroky:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-performancecentre-tutorial/tutorial_performancecentre_url.png)
 
-    a. V hello **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`http://companyname.performancecentre.com/saml/SSO`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`http://companyname.performancecentre.com/saml/SSO`
 
-    b. V hello **identifikátor** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`http://companyname.performancecentre.com`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`http://companyname.performancecentre.com`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Aktualizovat tyto hodnoty s hello skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory PerformanceCentre klienta](https://www.performancecentre.com/contact-us/) tooget tyto hodnoty. 
+    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory PerformanceCentre klienta](https://www.performancecentre.com/contact-us/) k získání těchto hodnot. 
 
-4. Na hello **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat hello ve vašem počítači.
+4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-performancecentre-tutorial/tutorial_performancecentre_certificate.png) 
 
@@ -125,17 +125,17 @@ V této části můžete povolit Azure AD jednotné přihlašování v hello por
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-performancecentre-tutorial/tutorial_general_400.png)
 
-6. Na hello **PerformanceCentre konfigurace** klikněte na tlačítko **konfigurace PerformanceCentre** tooopen **konfigurovat přihlášení** okno. Kopírování hello **SAML Entity ID a SAML jeden přihlašování adresa URL služby** z hello **Stručná referenční příručka části.**
+6. Na **PerformanceCentre konfigurace** klikněte na tlačítko **konfigurace PerformanceCentre** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML Entity ID a SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-performancecentre-tutorial/tutorial_performancecentre_configure.png) 
 
-7. Přihlášení tooyour **PerformanceCentre** společnosti lokality jako správce.
+7. Přihlášení k vaší **PerformanceCentre** společnosti lokality jako správce.
 
-8. Na kartě hello na levé straně hello, klikněte na tlačítko **konfigurace**.
+8. Na kartě na levé straně klikněte na tlačítko **konfigurace**.
    
     ![Azure AD jednotné přihlášení][10]
 
-9. Na kartě hello na levé straně hello, klikněte na tlačítko **různé**a potom klikněte na **jednotné přihlašování**.
+9. Na kartě na levé straně klikněte na tlačítko **různé**a potom klikněte na **jednotné přihlašování**.
    
     ![Azure AD jednotné přihlášení][11]
 
@@ -143,91 +143,91 @@ V této části můžete povolit Azure AD jednotné přihlašování v hello por
    
     ![Azure AD jednotné přihlášení][12]
 
-11. Otevřete váš soubor stažený metadata v poznámkovém bloku kopie hello obsahu, vložte jej do hello **metadat zprostředkovatelů Identity** textovému poli a potom klikněte na **Uložit**.
+11. V poznámkovém bloku otevřete váš soubor stažený metadata, kopírovat obsah, vložte jej do **metadat zprostředkovatelů Identity** textovému poli a potom klikněte na **Uložit**.
    
     ![Azure AD jednotné přihlášení][13]
 
-12. Ověřte, zda text hello hello hodnoty pro **Entity základní adresa URL** a **Entity ID URL** jsou správné.
+12. Ověřte, že hodnoty **Entity základní adresa URL** a **Entity ID URL** jsou správné.
     
      ![Azure AD jednotné přihlášení][14]
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
+Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
+**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
 
-1. V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
+1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_01.png) 
 
-2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.
+3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_03.png) 
 
-4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
+4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_04.png) 
 
-    a. V hello **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textovému poli, typ **BrittaSimon**.
 
-    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-a-performancecentre-test-user"></a>Vytvoření zkušebního uživatele PerformanceCentre
 
-Hello cílem této části je toocreate volal Britta Simon v PerformanceCentre uživatele.
+Cílem této části je vytvoření uživatele v PerformanceCentre nazývá Britta Simon.
 
-**toocreate uživatel volal Britta Simon v PerformanceCentre, proveďte následující kroky hello:**
+**Vytvoření uživatele v PerformanceCentre nazývá Britta Simon, proveďte následující kroky:**
 
-1. Přihlaste se na tooyour PerformanceCentre společnosti lokality jako správce.
+1. Přihlásit se k serveru vaší společnosti PerformanceCentre jako správce.
 
-2. V nabídce hello hello vlevo, klikněte na **Interrelate**a potom klikněte na **vytvořit účastník**.
+2. V nabídce na levé straně klikněte na tlačítko **Interrelate**a potom klikněte na **vytvořit účastník**.
    
     ![Vytvoření uživatele][400]
 
-3. Na hello **vztah mezi – vytvoření účastník** dialogové okno, proveďte následující kroky hello:
+3. Na **vztah mezi – vytvoření účastník** dialogové okno, proveďte následující kroky:
    
     ![Vytvoření uživatele][401]
     
-    a. Zadejte atributy hello požadované pro Britta Simon do související textových polí.
+    a. Zadejte povinné atributy pro Britta Simon do související textových polí.
     
     >[!IMPORTANT]
-    >Britta na uživatelské jméno, které musí být atribut v PerformanceCentre hello stejná hodnota jako hello uživatelské jméno ve službě Azure AD.
+    >Atribut Britta na uživatelské jméno v PerformanceCentre musí být stejné jako uživatelské jméno ve službě Azure AD.
     
     b. Vyberte **správce klienta** jako **zvolte roli**.
     
     c. Klikněte na **Uložit**. 
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
+### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte tak, že udělíte přístup tooPerformanceCentre toouse Britta Simon Azure jednotné přihlašování.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu PerformanceCentre.
 
 ![Přiřadit uživatele][200] 
 
-**tooassign Britta Simon tooPerformanceCentre, proveďte následující kroky hello:**
+**Pokud chcete přiřadit Britta Simon PerformanceCentre, proveďte následující kroky:**
 
-1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikace hello vyberte **PerformanceCentre**.
+2. V seznamu aplikací vyberte **PerformanceCentre**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-performancecentre-tutorial/tutorial_performancecentre_app.png) 
 
-3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
+3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
@@ -235,7 +235,7 @@ V této části povolíte tak, že udělíte přístup tooPerformanceCentre toou
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -243,13 +243,13 @@ V této části povolíte tak, že udělíte přístup tooPerformanceCentre toou
     
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-Hello cílem této části je tootest pomocí konfigurace Azure AD jednotného přihlašování k přístupovému panelu hello.  
+Cílem této části je testování konfigurace Azure AD jednotného přihlašování k použití na přístupovém panelu.  
 
-Když kliknete na dlaždici PerformanceCentre hello v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour PerformanceCentre aplikace.
+Když kliknete na dlaždici PerformanceCentre na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci PerformanceCentre.
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

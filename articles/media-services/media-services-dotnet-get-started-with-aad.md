@@ -1,6 +1,6 @@
 ---
-title: "aaaUse Azure AD authentication tooaccess rozhraní API služby Azure Media Services s .NET | Microsoft Docs"
-description: "Toto téma ukazuje, jak toouse tooaccess ověřování Azure Active Directory (Azure AD) Azure Media Services (AMS) rozhraní API pomocí rozhraní .NET."
+title: "Ověřování pomocí Azure AD pro přístup k rozhraní API služby Azure Media Services s .NET | Microsoft Docs"
+description: "Toto téma ukazuje, jak používat ověřování Azure Active Directory (Azure AD) pro přístup k rozhraní API Azure Media Services (AMS) pomocí rozhraní .NET."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -13,88 +13,88 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: juliako
-ms.openlocfilehash: 2f750e460d9e476ad92e96adeac6500cb692cd77
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a9355200a05a3aa1b494b76977d38ddc42bfe179
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="use-azure-ad-authentication-tooaccess-azure-media-services-api-with-net"></a>Azure AD authentication tooaccess rozhraní API služby Azure Media Services pomocí rozhraní .NET
+# <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>Používat ověřování Azure AD pro přístup k rozhraní API služby Azure Media Services pomocí rozhraní .NET
 
-Počínaje windowsazure.mediaservices 4.0.0.4, Azure Media Services podporuje ověřování založené na Azure Active Directory (Azure AD). Toto téma ukazuje, jak toouse Azure AD authentication tooaccess rozhraní API služby Azure Media Services pomocí rozhraní Microsoft .NET.
+Počínaje windowsazure.mediaservices 4.0.0.4, Azure Media Services podporuje ověřování založené na Azure Active Directory (Azure AD). Toto téma ukazuje, jak používat ověřování Azure AD pro přístup k rozhraní API služby Azure Media Services pomocí rozhraní Microsoft .NET.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure. Podrobnosti najdete na stránce [bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
-- Účet Media Services. Další informace najdete v tématu [vytvoření účtu Azure Media Services pomocí portálu Azure hello](media-services-portal-create-account.md).
-- Hello nejnovější [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) balíčku.
-- Znalost hello tématu [přístup k Azure Media Services API s Přehled ověřování AAD](media-services-use-aad-auth-to-access-ams-api.md). 
+- Účet Media Services. Další informace najdete v tématu [vytvoření účtu Azure Media Services pomocí webu Azure portal](media-services-portal-create-account.md).
+- Nejnovější [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) balíčku.
+- Znalost tématu [přístup k Azure Media Services API s Přehled ověřování AAD](media-services-use-aad-auth-to-access-ams-api.md). 
 
 Pokud používáte ověřování Azure AD pomocí služby Azure Media Services, můžete ověřovat v jednom ze dvou způsobů:
 
-- **Ověření uživatele** ověřuje osoba, která používá toointeract aplikace hello s prostředky Azure Media Services. interaktivní aplikace Hello měli nejdřív hello uživatele vyzve k přihlašovací údaje. Příkladem je konzolovou aplikaci správy, který je používán oprávněným uživatelům toomonitor kódování úlohy nebo živé streamování. 
+- **Ověření uživatele** ověřuje osoba, která používá aplikace komunikovat s prostředky Azure Media Services. Interaktivní aplikace by měla nejprve vyzvou uživatele k zadání přihlašovacích údajů. Příkladem je konzolovou aplikaci správy, která se používá Autorizovaní uživatelé k monitorování kódování úloh nebo živé streamování. 
 - **Objekt zabezpečení ověřování služby** ověřuje služby. Aplikace, které běžně používají tuto metodu ověřování jsou aplikace, které běží služby démon, střední vrstvy služby nebo naplánované úlohy, jako jsou webové aplikace, funkce aplikací, aplikace logiky, rozhraní API nebo mikroslužeb.
 
 >[!IMPORTANT]
->Azure Media Service aktuálně podporuje model ověřování služby Řízení přístupu Azure. Řízení přístupu autorizace však bude toobe zastaralé na 1. června 2018. Doporučujeme, abyste co nejdříve migraci tooan model ověřování Azure Active Directory.
+>Azure Media Service aktuálně podporuje model ověřování služby Řízení přístupu Azure. Řízení přístupu autorizace však bude na 1. června 2018 zastaralá. Doporučujeme migrovat na Azure Active Directory authentication model co nejdříve.
 
 ## <a name="get-an-azure-ad-access-token"></a>Získání tokenu přístupu Azure AD
 
-tooconnect toohello rozhraní API služby Azure Media Services pomocí ověřování Azure AD, klientská aplikace hello musí toorequest přístupový token služby Azure AD. Při použití klienta hello Media Services .NET SDK, řadu hello podrobnosti o tom, jak jsou tooacquire přístupový token služby Azure AD zabalené a zjednodušená pro vás v hello [AzureAdTokenProvider](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.Authentication/AzureAdTokenProvider.cs) a [AzureAdTokenCredentials ](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.Authentication/AzureAdTokenCredentials.cs) třídy. 
+Pro připojení k Azure Media Services API pomocí ověřování Azure AD, klientská aplikace musí požádat o token přístupu Azure AD. Pokud používáte klienta Media Services .NET SDK, řadu podrobnosti o tom, jak získat přístupový token služby Azure AD jsou zabalená a zjednodušená pro v [AzureAdTokenProvider](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.Authentication/AzureAdTokenProvider.cs) a [AzureAdTokenCredentials](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.Authentication/AzureAdTokenCredentials.cs)třídy. 
 
-Například nepotřebujete autority tooprovide hello Azure AD, identifikátor URI prostředku Media Services nebo nativní podrobností o aplikaci Azure AD. Toto jsou známé hodnoty, které už jsou nakonfigurované hello třídy zprostředkovatele tokenu přístupu Azure AD. 
+Například nemusíte poskytnutí autority Azure AD, identifikátor URI prostředku Media Services nebo nativní podrobností o aplikaci Azure AD. Toto jsou známé hodnoty, které už jsou nakonfigurované v třídě zprostředkovatel tokenu přístupu Azure AD. 
 
-Pokud nepoužíváte .NET SDK služby Azure Media Service, doporučujeme použít hello [knihovna ověřování Azure AD](../active-directory/develop/active-directory-authentication-libraries.md). tooget hodnoty parametrů hello, je nutné, aby toouse s knihovna ověřování Azure AD, najdete v části [použít nastavení ověřování Azure tooaccess portálu Azure AD hello](media-services-portal-get-started-with-aad.md).
+Pokud nepoužíváte .NET SDK služby Azure Media Service, doporučujeme použít [knihovna ověřování Azure AD](../active-directory/develop/active-directory-authentication-libraries.md). Chcete-li získat hodnoty pro parametry, které budete muset použít s knihovna ověřování Azure AD, přečtěte si téma [používat portál Azure pro přístup k nastavení ověřování Azure AD](media-services-portal-get-started-with-aad.md).
 
-Máte také možnost hello nahrazení hello výchozí implementaci třídy hello **AzureAdTokenProvider** s vlastní implementaci.
+Máte také možnost nahradit výchozí implementaci **AzureAdTokenProvider** s vlastní implementaci.
 
 ## <a name="install-and-configure-azure-media-services-net-sdk"></a>Instalace a konfigurace Azure Media Services .NET SDK
 
 >[!NOTE] 
->ověřování toouse Azure AD s hello sady Media Services .NET SDK, je nutné toohave hello nejnovější [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) balíčku. Také přidat odkaz na toohello **Microsoft.IdentityModel.Clients.ActiveDirectory** sestavení. Pokud používáte stávající aplikace, zahrnout hello **Microsoft.WindowsAzure.MediaServices.Client.Common.Authentication.dll** sestavení. 
+>Pokud chcete používat ověřování Azure AD pomocí .NET SDK služby Media Services, musíte mít nejnovější [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) balíčku. Také přidat odkaz na **Microsoft.IdentityModel.Clients.ActiveDirectory** sestavení. Pokud používáte stávající aplikace, zahrnout **Microsoft.WindowsAzure.MediaServices.Client.Common.Authentication.dll** sestavení. 
 
 1. Vytvořte novou aplikaci konzoly C# v sadě Visual Studio.
-2. Použití hello [windowsazure.mediaservices](https://www.nuget.org/packages/windowsazure.mediaservices) tooinstall balíček NuGet **Azure Media Services .NET SDK**. 
+2. Použití [windowsazure.mediaservices](https://www.nuget.org/packages/windowsazure.mediaservices) balíček NuGet k instalaci **Azure Media Services .NET SDK**. 
 
-    odkazy na tooadd pomocí NuGet, trvat hello následující kroky: v **Průzkumníku řešení**, klikněte pravým tlačítkem na název projektu hello a pak vyberte **spravovat balíčky NuGet balíčky**. Poté vyhledejte **windowsazure.mediaservices** a vyberte **nainstalovat**.
+    Přidání odkazů pomocí NuGet, proveďte následující kroky: v **Průzkumníku řešení**, klikněte pravým tlačítkem na název projektu a pak vyberte **spravovat balíčky NuGet balíčky**. Poté vyhledejte **windowsazure.mediaservices** a vyberte **nainstalovat**.
     
     -nebo-
 
-    Spuštění hello následující příkaz v **Konzola správce balíčků** v sadě Visual Studio.
+    Spusťte následující příkaz **Konzola správce balíčků** v sadě Visual Studio.
 
         Install-Package windowsazure.mediaservices -Version 4.0.0.4
 
-3. Přidat **pomocí** tooyour zdrojového kódu.
+3. Přidat **pomocí** ke zdrojovému kódu.
 
         using Microsoft.WindowsAzure.MediaServices.Client; 
 
 ## <a name="use-user-authentication"></a>Použít ověření uživatele
 
-tooconnect toohello rozhraní API služby Azure Media s možností ověřování uživatele hello, klientská aplikace hello potřebuje toorequest tokenu Azure AD pomocí hello následující parametry:  
+Pro připojení k Azure Media Service API s možností ověřování uživatelů, klientská aplikace potřebuje k vyžádání tokenu Azure AD pomocí následujících parametrů:  
 
-- Koncový bod pro klienta Azure AD. informace o Hello klienta lze načíst z hello portálu Azure. Podržte ukazatel nad hello přihlášeného uživatele v pravém horním rohu hello.
+- Koncový bod pro klienta Azure AD. Informace o klienta můžete načíst z portálu Azure. Podržte ukazatel nad přihlášeného uživatele v pravém horním rohu.
 - Identifikátor URI prostředku Media Services.
 - ID klienta aplikace Media Services (nativní). 
 - Identifikátor URI pro přesměrování služby Media Services (nativní) aplikace. 
 
-Hello hodnoty pro tyto parametry lze nalézt v **AzureEnvironments.AzureCloudEnvironment**. Hello **AzureEnvironments.AzureCloudEnvironment** konstanta pomocné rutiny v tooget hello .NET SDK je hello nastavení proměnné prostředí správné pro veřejné datového centra Azure. 
+Hodnoty pro tyto parametry lze nalézt v **AzureEnvironments.AzureCloudEnvironment**. **AzureEnvironments.AzureCloudEnvironment** konstanta je pomocné rutiny v sadě SDK .NET pro získání správné prostředí proměnné nastavení pro veřejné datového centra Azure. 
 
-Obsahuje nastavení předem definované prostředí pro přístup k Media Services v pouze hello veřejné datových centrech. Pro suverénní nebo státní cloudových oblastí, můžete použít **AzureChinaCloudEnvironment**, **AzureUsGovernmentEnvrionment**, nebo **AzureGermanCloudEnvironment** v uvedeném pořadí.
+Obsahuje nastavení předem definované prostředí pro přístup k Media Services v pouze veřejné datových centrech. Pro suverénní nebo státní cloudových oblastí, můžete použít **AzureChinaCloudEnvironment**, **AzureUsGovernmentEnvrionment**, nebo **AzureGermanCloudEnvironment** v uvedeném pořadí.
 
-Následující ukázka kódu Hello vytvoří token:
+Následující příklad kódu vytvoří token:
     
     var tokenCredentials = new AzureAdTokenCredentials("microsoft.onmicrosoft.com", AzureEnvironments.AzureCloudEnvironment);
     var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
   
-toostart programové ošetření Media Services, budete potřebovat toocreate **CloudMediaContext** instanci, která představuje kontext server hello. Hello **CloudMediaContext** obsahuje odkazy na kolekce tooimportant včetně úloh, prostředky, soubory, zásady přístupu a lokátory. 
+Pokud chcete spustit programové ošetření Media Services, musíte vytvořit **CloudMediaContext** instanci, která představuje kontext serveru. **CloudMediaContext** obsahuje odkazy na důležité kolekcí včetně úloh, prostředky, soubory, zásady přístupu a lokátory. 
 
-Musíte taky toopass hello **identifikátor URI pro Media REST Services** toohello **CloudMediaContext** konstruktor. identifikátor URI prostředku hello tooget pro Media Services REST, přihlášení toohello portál Azure, vyberte svůj účet Azure Media Services, vyberte **přístup pomocí rozhraní API**a potom vyberte **připojit tooAzure Media Services s uživatelem ověřování**. 
+Musíte také předat **identifikátor URI pro Media REST Services** k **CloudMediaContext** konstruktor. Chcete-li získat identifikátor URI pro Media Services REST, přihlášený k portálu Azure vyberte svůj účet Azure Media Services, vyberte **přístup pomocí rozhraní API**a potom vyberte **připojit k Azure Media Services s ověřováním uživatele**. 
 
-Hello následující příklad kódu vytvoří **CloudMediaContext** instance:
+Následující příklad kódu vytvoří **CloudMediaContext** instance:
 
     CloudMediaContext context = new CloudMediaContext(new Uri("YOUR REST API ENDPOINT HERE"), tokenProvider);
 
-Hello následující příklad ukazuje, jak toocreate hello token a hello kontextu Azure AD:
+Následující příklad ukazuje, jak vytvořit token Azure AD a kontextu:
 
     namespace AADAuthSample
     {
@@ -121,19 +121,19 @@ Hello následující příklad ukazuje, jak toocreate hello token a hello kontex
     }
 
 >[!NOTE]
->Pokud dojde k výjimce, která uvádí, že "hello na vzdálený server vrátil chybu: (401) Neautorizováno" v tématu hello [řízení přístupu](media-services-use-aad-auth-to-access-ams-api.md#access-control) části přístup k API služby Azure Media Services s Přehled ověřování Azure AD.
+>Pokud dojde k výjimce, která uvádí, že "vzdálený server vrátil chybu: (401) Neautorizováno" v tématu [řízení přístupu](media-services-use-aad-auth-to-access-ams-api.md#access-control) části přístup k API služby Azure Media Services s Přehled ověřování Azure AD.
 
 ## <a name="use-service-principal-authentication"></a>Objekt zabezpečení ověřování pomocí služby
     
-tooconnect toohello rozhraní API služby Azure Media Services s možností hlavní služby hello, vaše aplikace střední vrstvy (webového rozhraní API nebo webové aplikace) musí toorequests tokenu Azure AD s hello následující parametry:  
+Pro připojení k rozhraní API služby Azure Media Services s hlavní možností služby, aplikace střední vrstvy (webové rozhraní API nebo webovou aplikaci) musí požadavky tokenu Azure AD s následujícími parametry:  
 
-- Koncový bod pro klienta Azure AD. informace o Hello klienta lze načíst z hello portálu Azure. Podržte ukazatel nad hello přihlášeného uživatele v pravém horním rohu hello.
+- Koncový bod pro klienta Azure AD. Informace o klienta můžete načíst z portálu Azure. Podržte ukazatel nad přihlášeného uživatele v pravém horním rohu.
 - Identifikátor URI prostředku Media Services.
-- Hodnoty aplikace Azure AD: hello **ID klienta** a **tajný klíč klienta**.
+- Hodnoty aplikace Azure AD: **ID klienta** a **tajný klíč klienta**.
 
-Hello hodnoty pro hello **ID klienta** a **tajný klíč klienta** parametry lze nalézt v hello portálu Azure. Další informace najdete v tématu [Začínáme s Azure AD authentication pomocí portálu Azure hello](media-services-portal-get-started-with-aad.md).
+Hodnoty **ID klienta** a **tajný klíč klienta** parametry lze nalézt v portálu Azure. Další informace najdete v tématu [Začínáme s ověřováním Azure AD pomocí portálu Azure](media-services-portal-get-started-with-aad.md).
 
-Hello následující příklad kódu vytvoří token pomocí hello **AzureAdTokenCredentials** konstruktor, který přebírá **AzureAdClientSymmetricKey** jako parametr: 
+Následující příklad kódu vytvoří token pomocí **AzureAdTokenCredentials** konstruktor, který přebírá **AzureAdClientSymmetricKey** jako parametr: 
     
     var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}", 
                                 new AzureAdClientSymmetricKey("{YOUR CLIENT ID HERE}", "{YOUR CLIENT SECRET}"), 
@@ -141,21 +141,21 @@ Hello následující příklad kódu vytvoří token pomocí hello **AzureAdToke
 
     var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
-Můžete také zadat hello **AzureAdTokenCredentials** konstruktor, který přebírá **AzureAdClientCertificate** jako parametr. 
+Můžete také určit **AzureAdTokenCredentials** konstruktor, který přebírá **AzureAdClientCertificate** jako parametr. 
 
-Další informace o tom toocreate a konfiguraci certifikátu v formulář, který lze použít Azure AD, najdete v části [ověřování tooAzure AD v aplikacích démon s certifikáty - postup ruční konfigurace](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/Manual-Configuration-Steps.md).
+Pokyny o tom, jak vytvořit a nakonfigurovat certifikát ve formuláři, který můžete použít Azure AD najdete v tématu [ověřování do služby Azure AD v aplikacích démon s certifikáty - postup ruční konfigurace](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/Manual-Configuration-Steps.md).
 
     var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}", 
                                 new AzureAdClientCertificate("{YOUR CLIENT ID HERE}", "{YOUR CLIENT CERTIFICATE THUMBPRINT}"), 
                                 AzureEnvironments.AzureCloudEnvironment);
 
-toostart programové ošetření Media Services, budete potřebovat toocreate **CloudMediaContext** instanci, která představuje kontext server hello. Musíte taky toopass hello **identifikátor URI pro Media REST Services** toohello **CloudMediaContext** konstruktor. Můžete získat hello **identifikátor URI pro Media REST Services** hodnotu z hello také portálu Azure.
+Pokud chcete spustit programové ošetření Media Services, musíte vytvořit **CloudMediaContext** instanci, která představuje kontext serveru. Musíte také předat **identifikátor URI pro Media REST Services** k **CloudMediaContext** konstruktor. Můžete získat **identifikátor URI pro Media REST Services** hodnotu z webu Azure portal.
 
-Hello následující příklad kódu vytvoří **CloudMediaContext** instance:
+Následující příklad kódu vytvoří **CloudMediaContext** instance:
 
     CloudMediaContext context = new CloudMediaContext(new Uri("YOUR REST API ENDPOINT HERE"), tokenProvider);
     
-Hello následující příklad ukazuje, jak toocreate hello token a hello kontextu Azure AD:
+Následující příklad ukazuje, jak vytvořit token Azure AD a kontextu:
 
     namespace AADAuthSample
     {
@@ -187,4 +187,4 @@ Hello následující příklad ukazuje, jak toocreate hello token a hello kontex
 
 ## <a name="next-steps"></a>Další kroky
 
-Začínáme s [nahrávání souborů tooyour účet](media-services-dotnet-upload-files.md).
+Začínáme s [nahrávání souborů do účtu](media-services-dotnet-upload-files.md).

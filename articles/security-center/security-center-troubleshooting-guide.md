@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure Průvodce odstraňováním potíží Security Center | Microsoft Docs"
-description: "Tento dokument pomůže tootroubleshoot problémy v Azure Security Center."
+title: "Průvodce odstraňováním potíží se službou Azure Security Center | Dokumentace Microsoftu"
+description: "Tento dokument vám pomůže při odstraňování potíží se službou Azure Security Center."
 services: security-center
 documentationcenter: na
 author: YuriDio
@@ -14,62 +14,62 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2017
 ms.author: yurid
-ms.openlocfilehash: 78b3c49eb66fe3a4f80efbba3a47a87b039c07ac
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 0e0a0ce5c0795cec0e47cd5f729099f4762381a2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Průvodce odstraňováním potíží pro službu Azure Security Center
-Tato příručka je pro odborníky informačních technologií (IT) informace, analytikům zabezpečení informací a můžou správci cloudové jejichž organizace používá Azure Security Center a potřebovat problémy související s tootroubleshoot Security Center.
+Tento průvodce je určený odborníkům na informační technologie (IT), analytikům zabezpečení informací a správcům cloudů, jejichž společnosti používají službu Azure Security Center a potřebují odstraňovat potíže týkající se služby Security Center.
 
 >[!NOTE] 
->Počínaje časná 2017 června, Security Center používá hello agenta Microsoft Monitoring Agent toocollect a uložit data. V tématu [Azure Security Center platformy migrace](security-center-platform-migration.md) toolearn Další. Hello informace v tomto článku představuje funkce Security Center po přechodu toohello agenta Microsoft Monitoring Agent.
+>Od začátku června 2017 používá Security Center ke shromažďování a ukládání dat agenta Microsoft Monitoring Agent. Další informace najdete v článku o [migraci platformy pro Azure Security Center](security-center-platform-migration.md). Informace v tomto článku představují funkce služby Security Center po přechodu na agenta Microsoft Monitoring Agent.
 >
 
 ## <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
-Tato příručka vysvětluje, jak tootroubleshoot Security Center související problémy. Většina hello provést v Centru zabezpečení řešení potíží s probíhá nejprve kontrolou hello [protokol auditování](https://azure.microsoft.com/updates/audit-logs-in-azure-preview-portal/) záznamy pro hello se nezdařilo součásti. Na základě protokolů auditu můžete zjistit:
+Tento průvodce vysvětluje, jak odstraňovat potíže související se službou Security Center. U většiny postupů odstraňování potíží prováděných v rámci služby Security Center je třeba nejprve si prohlédnout záznamy [protokolu auditu](https://azure.microsoft.com/updates/audit-logs-in-azure-preview-portal/) pro komponentu, u které se potíže vyskytly. Na základě protokolů auditu můžete zjistit:
 
 * Které operace proběhly
-* Kdo je inicioval hello operaci
-* Pokud došlo k operaci hello
-* Hello stav operace hello
-* Hello hodnotách jiných vlastností, které vám můžou pomoct zkoumání operaci hello
+* Kdo operaci zahájil
+* Kdy k operaci došlo
+* Stav operace
+* Hodnoty dalších vlastností, které vám mohou pomoci při zkoumání operace
 
-protokol auditování Hello obsahuje všechny operace zápisu (PUT, POST, DELETE) provést na vašich prostředků, ale nezahrnuje operace čtení (GET).
+Protokol auditu obsahuje všechny operace zápisu (PUT, POST, DELETE) prováděné s vašimi prostředky, ale neobsahuje operace čtení (GET).
 
 ## <a name="microsoft-monitoring-agent"></a>Microsoft Monitoring Agent
-Security Center používá hello agenta Microsoft Monitoring Agent – to je hello používá stejné agenta hello Operations Management Suite a analýzy protokolů služba – toocollect zabezpečení dat z Azure virtuální počítače. Po povolení shromažďování dat a je správně nainstalován hello agent v hello cílový počítač, níže hello procesu musí být ve spuštění:
+Security Center používá agenta Microsoft Monitoring Agent – to je stejný agent, kterého používá Operations Management Suite a služba Log Analytics – ke shromažďování dat zabezpečení z virtuálních počítačů Azure. Po povolení shromažďování dat a řádné instalaci agenta v cílovém počítači by se měl provádět tento proces:
 
 * HealthService.exe
 
-Pokud otevřete konzolu pro správu služby hello (services.msc), zobrazí se také spuštěna služba Microsoft Monitoring Agent hello jak je uvedeno níže:
+Pokud otevřete konzolu pro správu služeb (services.msc), uvidíte také spuštěnou službu Microsoft Monitoring Agent, jak je znázorněno na následujícím obrázku:
 
 ![Služby](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig5.png)
 
-Otevřete toosee, kterou verzi hello agenta, budete mít, **Správce úloh**, v hello **procesy** karta najít hello **služba Microsoft Monitoring Agent**, klikněte pravým tlačítkem myši na něm a Klikněte na tlačítko **vlastnosti**. V hello **podrobnosti** kartě, podívejte hello verze souboru, jak je uvedeno níže:
+Pokud chcete zjistit, kterou verzi agenta máte, otevřete **Správce úloh**, na kartě **Procesy** vyhledejte **Služba Microsoft Monitoring Agent**, klikněte na ni pravým tlačítkem myši a klikněte na **Vlastnosti**. Na kartě **Podrobnosti** vyhledejte verzi souboru, jak je znázorněno níže:
 
 ![File](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
    
 
 ## <a name="microsoft-monitoring-agent-installation-scenarios"></a>Scénáře instalace služby Microsoft Monitoring Agent
-Existují dva scénáře instalace, které mohou mít různé výsledky při instalaci hello agenta Microsoft Monitoring Agent do vašeho počítače. Hello Podporované scénáře jsou:
+Existují dva scénáře instalace služby Microsoft Monitoring Agent na počítač, které mohou přinést různé výsledky. Podporované scénáře:
 
-* **Agent nainstalovaný automaticky pomocí služby Security Center**: v tomto scénáři bude možné tooview hello výstrahy v umístění, Security Center a hledání protokolů. Obdržíte e-mailových oznámení toohello e-mailovou adresu, který byl nakonfigurován v zásadách zabezpečení hello pro hello předplatné hello prostředek patří.
+* **Agent nainstalovaný automaticky službou Security Center**: V tomto scénáři se budete moci podívat na výstrahy v obou umístěních – ve službě Security Center i v Hledání v protokolu. E-mailová oznámení budete dostávat na e-mailovou adresu, kterou jste si nakonfigurovali v zásadách zabezpečení pro předplatné, do něhož prostředek patří.
 .
-* **Agent ručně nainstalovat na virtuální počítač nachází v Azure**: v tomto scénáři, pokud používáte agenty stáhli a nainstalovali ručně předchozí tooFebruary 2017, nebudete moct tooview hello výstrahy Security Center portálu hello pouze v případě, že můžete filtrovat hello pracovní prostor hello předplatné patří. V případě filtru na hello předplatné hello prostředku patří pro vás nebudou moct toosee žádné výstrahy. Obdržíte e-mailových oznámení toohello e-mailovou adresu, která byla konfigurována pro hello předplatné hello prostoru patří do zásady zabezpečení hello.
+* **Agent ručně nainstalovaný na virtuálním počítači umístěném v Azure**: V tomto scénáři – pokud používáte agenty, které jste stáhli a nainstalovali ručně před únorem 2017 – se budete moci podívat na výstrahy na portálu Security Center jenom v případě, že si vyfiltrujete předplatné, do kterého pracovní prostor patří. Pokud si vyfiltrujete předplatné, do kterého prostředek patří, neuvidíte žádné jiné výstrahy. E-mailová oznámení budete dostávat na e-mailovou adresu, kterou jste si nakonfigurovali v zásadách zabezpečení pro předplatné, do něhož pracovní prostor patří.
 
 >[!NOTE]
-> chování hello tooavoid hello podrobně druhý, ujistěte se, že si stáhnout nejnovější verzi agenta hello hello.
+> Pokud se chcete vyhnout chování uvedenému v druhém scénáři, stáhněte si nejnovější verzi agenta.
 > 
 
 ## <a name="troubleshooting-monitoring-agent-network-requirements"></a>Odstraňování potíží se síťovými požadavky na agenta monitorování
-Pro agenty tooconnect tooand registr s Centrem zabezpečení musí mít přístup k prostředkům toonetwork, včetně hello čísla portů a adres URL domény.
+Agenti, kteří se připojují ke službě Security Center a registrují se v ní, musí mít přístup k síťovým prostředkům, včetně čísel portů a doménových adres URL.
 
-- Pro proxy servery budete potřebovat tooensure, který hello odpovídající proxy serveru, které prostředky jsou nakonfigurované v nastavení agenta. Přečtěte si další informace v tomto článku [jak toochange hello nastavení proxy serveru](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-windows-agents#configure-proxy-settings).
-- Pro brány firewall, které omezují přístup toohello Internet je nutné tooconfigure tooOMS přístup toopermit vaší brány firewall. V nastavení agenta nemusíte nic konfigurovat.
+- U proxy serverů musíte zajistit konfiguraci příslušných prostředků proxy serveru v nastavení agenta. Přečtěte si tento článek, ve kterém se dozvíte další informace o [tom, jak změnit nastavení proxy](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-windows-agents#configure-proxy-settings).
+- Pokud používáte k omezení přístupu k internetu bránu firewall, je nutné ji nakonfigurovat tak, aby povolovala přístup k OMS. V nastavení agenta nemusíte nic konfigurovat.
 
-Hello následující tabulka ukazuje prostředky potřebné pro komunikaci.
+V následující tabulce najdete přehled prostředků potřebných pro komunikaci.
 
 | Prostředek agenta | Porty | Obejít kontrolu protokolu HTTPS |
 |---|---|---|
@@ -78,40 +78,40 @@ Hello následující tabulka ukazuje prostředky potřebné pro komunikaci.
 | *.blob.core.windows.net | 443 | Ano |
 | *.azure-automation.net | 443 | Ano |
 
-Pokud narazíte na potíže registrace s agentem hello, ujistěte se, že článek hello tooread [jak problémy registrace služby Operations Management Suite tootroubleshoot](https://support.microsoft.com/en-us/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues).
+Pokud narazíte na problémy s registrací agenta, přečtěte si článek [Řešení potíží s registrací v Operations Management Suite](https://support.microsoft.com/en-us/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues).
 
 
 ## <a name="troubleshooting-endpoint-protection-not-working-properly"></a>Řešení potíží s tím, že ochrana koncových bodů nefunguje správně
 
-agent hosta Hello je proces nadřazené hello všechno hello [Antimalware od Microsoftu](../security/azure-security-antimalware.md) nemá rozšíření. Při procesu agenta hosta hello selže, může selhat také hello spouštěný jako podřízený proces agenta hosta hello Antimalware od Microsoftu.  Ve scénářích, jako je doporučené tooverify hello následující možnosti:
+Agent hosta je nadřazený proces pro všechno, co dělá rozšíření [Microsoft Antimalware](../security/azure-security-antimalware.md). Pokud proces agenta hosta selže, může se stát, že selže i Microsoft Antimalware, který je spuštěný jako jeho podřízený proces.  V podobných situacích se doporučuje ověřit následující možnosti:
 
-- Pokud hello cílovém virtuálním počítači je vlastní image a hello Tvůrce hello virtuálních počítačů nikdy nainstalován agent hosta.
-- Pokud cílový hello je virtuální počítač s Linuxem místo virtuální počítač s Windows následnou instalaci verze systému Windows hello hello antimalwarových rozšíření na virtuální počítač s Linuxem se nezdaří. agent hosta Linux Hello má specifické požadavky z hlediska verze operačního systému a požadované balíčky a pokud nejsou splněny tyto požadavky nebude hello agenta virtuálního počítače fungovat existuje buď. 
-- Pokud hello virtuálního počítače byl vytvořen s stará verze agenta hosta. Pokud byl, byste měli vědět, že některé staré agenty nelze automatickou aktualizaci samotné toohello novější verze a to může vést toothis problém. Vždy používejte nejnovější verzi agenta hosta hello, pokud vytváření vlastních bitových kopií.
-- Některý software třetích stran správy může zakázat agenta hosta hello nebo blokovat přístup k umístění souborů toocertain. Pokud máte nainstalovaný na vašem virtuálním počítači třetích stran, zajistěte, aby byl tento agent hello v seznamu vyloučení hello.
-- Určitá nastavení brány firewall nebo skupina zabezpečení sítě (NSG) může blokovat tooand provoz sítě z agenta hosta.
+- Pokud je cílový virtuální počítač založený na vlastní imagi a tvůrce virtuálního počítače nikdy nenainstaloval agent hosta.
+- Pokud cílový virtuální počítač místo Windows používá Linux, instalace verze antimalwarového rozšíření pro Windows na linuxovém virtuálním počítači selže. Linuxový agent hosta má specifické požadavky na verzi operačního systému a požadované balíčky. Pokud tyto požadavky nejsou splněny, agent virtuálního počítače také nebude fungovat. 
+- Pokud se při vytvoření virtuálního počítače použila stará verze agenta hosta. Pokud ano, měli byste vědět, že u některých starých agentů nefunguje automatická aktualizace na novější verzi a to by mohlo vést k tomuto problému. Pokud vytváříte vlastní image, vždy používejte nejnovější verzi agenta hosta.
+- Některé softwary pro správu třetích stran mohou zakázat agenta hosta nebo blokovat přístup k určitým umístěním souborů. Pokud máte ve virtuálním počítači nainstalovaný software třetích stran, ujistěte se, že agent je uvedený v seznamu vyloučení.
+- Určitá nastavení brány firewall nebo skupiny zabezpečení sítě (NSG) mohou zablokovat síťový provoz do a z agenta hosta.
 - Některé seznamy řízení přístupu (ACL) mohou bránit v přístupu k disku.
-- Nedostatek místa na disku můžete blokovat agenta hosta hello nebude fungovat správně. 
+- Nedostatek místa na disku může blokovat agent hosta a ten nebude fungovat správně. 
 
-Ve výchozím nastavení hello Microsoft Antimalware uživatelské rozhraní je zakázána, číst [povolení Microsoft Antimalware uživatelské rozhraní na Azure Resource Manager virtuální počítače po nasazení](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/09/enabling-microsoft-antimalware-user-interface-post-deployment/) Další informace o tom, tooenable ho potřebujete.
+Ve výchozím nastavení je uživatelské rozhraní rozšíření Microsoft Antimalware zablokované. Další informace o tom, jak ho v případě potřeby povolit, najdete v tématu věnovaném [povolení uživatelského rozhraní rozšíření Microsoft Antimalware ve virtuálních počítačích s Azure Resource Managerem po nasazení](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/09/enabling-microsoft-antimalware-user-interface-post-deployment/).
 
-## <a name="troubleshooting-problems-loading-hello-dashboard"></a>Řešení potíží s problémy s načtením hello řídicí panel
+## <a name="troubleshooting-problems-loading-the-dashboard"></a>Odstraňování potíží s načtením řídicího panelu
 
-Pokud máte problémy načítání řídicího panelu Security Center hello, ujistěte se, že hello uživatele, který registruje hello předplatné tooSecurity Center (tj. hello první uživatel jeden, který otevřel Security Center s předplatným hello) a hello uživatel, který chcete tooturn na shromažďování dat musí být *vlastníka* nebo *Přispěvatel* v předplatném hello. Od této chvíle také uživatelé s *čtečky* na hello předplatné můžete zobrazit hello řídicí panel nebo výstrahy nebo doporučení nebo zásad.
+Pokud dochází k problémům s načtením řídicího panelu služby Security Center, ujistěte se, že uživatel, který předplatné ke službě Security Center registruje (tj. uživatel, který s tímto předplatným otevřel službu Security Center) a uživatel, který chce zapnout shromažďování dat, mají u daného předplatného roli *Vlastník* nebo *Přispěvatel*. Od této chvíle budou moci i uživatelé, kteří u předplatného mají roli *Čtenář*, zobrazovat řídicí panel, upozornění, doporučení a zásady.
 
 ## <a name="contacting-microsoft-support"></a>Kontaktování oddělení podpory společnosti Microsoft
-Některé problémy lze identifikovat pomocí hello pokynů v tomto článku, ostatní můžete také vyhledat popsané na stránce hello Security Center veřejné [fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter). Pokud však potřebujete odstraňovat potíže mimo tento rámec, můžete vytvořit novou žádost o podporu prostřednictvím webu **Azure Portal**, jak je znázorněno níže: 
+Některé potíže lze identifikovat podle pokynů v tomto článku, některé další jsou také dokumentovány ve veřejném [fóru](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter) služby Security Center. Pokud však potřebujete odstraňovat potíže mimo tento rámec, můžete vytvořit novou žádost o podporu prostřednictvím webu **Azure Portal**, jak je znázorněno níže: 
 
 ![Podpora společnosti Microsoft](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 
 
 ## <a name="see-also"></a>Viz také
-V tomto dokumentu jste se naučili jak tooconfigure zásady zabezpečení v Azure Security Center. toolearn Další informace o službě Azure Security Center, najdete v části hello následující:
+V tomto dokumentu jste zjistili, jak ve službě Azure Security Center konfigurovat zásady zabezpečení. Pokud se o službě Azure Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-* [Průvodce Azure Security Center plánováním a provozem](security-center-planning-and-operations-guide.md) – Další informace jak tooplan a pochopit hello návrhu aspekty tooadopt Azure Security Center.
-* [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – zjistěte, jak toomonitor hello stav svých prostředků Azure
-* [Správa a zda odpovídá toosecurity výstrahy v Azure Security Center](security-center-managing-and-responding-alerts.md) – Další informace jak toomanage a reakce toosecurity výstrahy
-* [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – zjistěte, jak toomonitor hello stav vašich partnerských řešení.
-* [Nejčastější dotazy k Azure Security Center](security-center-faq.md) – přečtěte si nejčastější dotazy o použití služby hello
+* [Průvodce plánováním a provozem služby Azure Security Center](security-center-planning-and-operations-guide.md) – Zjistěte, jak naplánovat a pochopit aspekty návrhu, abyste mohli přejít na Azure Security Center.
+* [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se sledovat stav svých prostředků Azure
+* [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně
+* [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
+* [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Přečtěte si nejčastější dotazy o použití této služby
 * [Blog o zabezpečení Azure](http://blogs.msdn.com/b/azuresecurity/) – Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů
 

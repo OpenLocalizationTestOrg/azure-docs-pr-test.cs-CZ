@@ -1,5 +1,5 @@
 ---
-title: "aaaImplement Oracle Golden brány na virtuální počítač Azure Linux | Microsoft Docs"
+title: "Implementace Oracle Golden brány ve virtuálním počítači Azure Linux | Microsoft Docs"
 description: "Rychle získáte bránou Golden Oracle nahoru a spouštění v prostředí Azure."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,27 +15,27 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: rclaus
-ms.openlocfilehash: 320cafd5d23ee472f0af9f92577bc6f432f65778
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a05711357d345267647c02e42336fd37c09e1bff
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Implementace Oracle Golden brány ve virtuálním počítači Azure Linux 
 
-Hello rozhraní příkazového řádku Azure je použité toocreate a spravovat prostředky Azure z hello příkazového řádku nebo ve skriptech. Tento průvodce podrobnosti, jak toouse hello rozhraní příkazového řádku Azure toodeploy Oracle 12c databáze z bitové kopie Galerie hello Azure Marketplace. 
+Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. Tento průvodce detailně používání rozhraní příkazového řádku Azure k nasazení databáze Oracle 12c z Galerie image Azure Marketplace. 
 
-Tento dokument vám názorně ukáže, jak toocreate, instalaci a konfiguraci brány Golden Oracle na virtuální počítač Azure.
+Tento dokument popisuje krok za krokem k vytvoření, instalace a konfigurace brány Golden Oracle na virtuální počítač Azure.
 
-Než začnete, ujistěte se, že byla nainstalována rozhraní příkazového řádku Azure hello. Další informace najdete v tématu [Průvodce instalací Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Než začnete, ujistěte se, že je rozhraní Azure CLI nainstalované. Další informace najdete v tématu [Průvodce instalací Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-## <a name="prepare-hello-environment"></a>Příprava prostředí hello
+## <a name="prepare-the-environment"></a>Příprava prostředí
 
-instalace brány Golden Oracle hello tooperform, je nutné toocreate dva virtuální počítače Azure na hello stejné skupině dostupnosti. Hello Marketplace image použít toocreate hello virtuálních počítačů je **Oracle: Oracle – databáze-Ee:12.1.0.2:latest**.
+K provedení instalace brány Golden Oracle, potřebujete vytvořit dva virtuální počítače Azure ve stejné skupině dostupnosti. Bitová kopie Marketplace použijete k vytvoření virtuálních počítačů je **Oracle: Oracle – databáze-Ee:12.1.0.2:latest**.
 
-Také potřebujete toobe obeznámeni s Unix editor vi a mají základní znalosti o x11 (X Windows).
+Také musíte znát Unix editor vi a mají základní znalosti o x11 (X Windows).
 
-Hello Následuje souhrn hello prostředí konfigurace:
+Následuje souhrn konfigurace prostředí:
 > 
 > |  | **Primární lokalita** | **Replikace webu** |
 > | --- | --- | --- |
@@ -48,9 +48,9 @@ Hello Následuje souhrn hello prostředí konfigurace:
 > | **Proces Golden brány** |EXTORA |REPORA|
 
 
-### <a name="sign-in-tooazure"></a>Přihlaste se tooAzure 
+### <a name="sign-in-to-azure"></a>Přihlášení k Azure 
 
-Přihlaste se tooyour předplatné s hello [az přihlášení](/cli/azure/#login) příkaz. Potom postupujte podle hello na obrazovce pokynů.
+Přihlaste se k předplatnému Azure s [az přihlášení](/cli/azure/#login) příkaz. Potom postupujte podle na obrazovce pokynů.
 
 ```azurecli
 az login
@@ -58,9 +58,9 @@ az login
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků s hello [vytvořit skupinu az](/cli/azure/group#create) příkaz. Skupinu prostředků Azure je logický kontejner, do které prostředky Azure jsou nasazeny a z které mohly být spravovány. 
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#create). Skupinu prostředků Azure je logický kontejner, do které prostředky Azure jsou nasazeny a z které mohly být spravovány. 
 
-Hello následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` v hello `westus` umístění.
+Následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` v umístění `westus`.
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -68,7 +68,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>Vytvoření skupiny dostupnosti
 
-Hello následující krok je volitelný, ale doporučené. Další informace najdete v tématu [Azure dostupnosti nastaví průvodce](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines).
+Následující krok je volitelný, ale doporučené. Další informace najdete v tématu [Azure dostupnosti nastaví průvodce](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines).
 
 ```azurecli
 az vm availability-set create \
@@ -80,9 +80,9 @@ az vm availability-set create \
 
 ### <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Vytvoření virtuálního počítače s hello [vytvořit virtuální počítač az](/cli/azure/vm#create) příkaz. 
+Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#create). 
 
-Hello následující příklad vytvoří dva virtuální počítače s názvem `myVM1` a `myVM2`. Pokud už neexistují ve výchozím umístění klíče, vytvoření klíčů SSH. toouse konkrétní nastavení klíčů, použijte hello `--ssh-key-value` možnost.
+Následující příklad vytvoří dva virtuální počítače s názvem `myVM1` a `myVM2`. Pokud už neexistují ve výchozím umístění klíče, vytvoření klíčů SSH. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
 
 #### <a name="create-myvm1-primary"></a>Vytvořte myVM1 (primární):
 ```azurecli
@@ -95,7 +95,7 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-Po hello, kterou virtuální počítač byl vytvořen hello rozhraní příkazového řádku Azure znázorňuje následující ukázka podobné toohello informace. (Poznamenejte hello `publicIpAddress`. Tato adresa je použité tooaccess hello virtuálních počítačů).
+Po vytvoření virtuálního počítače, rozhraní příkazového řádku Azure se zobrazují informace podobně jako v následujícím příkladu. (Poznamenejte si `publicIpAddress`. Tato adresa se používá pro přístup k virtuálnímu počítači.)
 
 ```azurecli
 {
@@ -121,13 +121,13 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-Poznamenejte si hello `publicIpAddress` i po jeho vytvoření.
+Poznamenejte si `publicIpAddress` i po jeho vytvoření.
 
-### <a name="open-hello-tcp-port-for-connectivity"></a>Otevřete port TCP hello pro připojení k síti
+### <a name="open-the-tcp-port-for-connectivity"></a>Otevřete port TCP pro připojení k síti
 
-dalším krokem Hello je tooconfigure externí koncové body, které umožňují databáze Oracle hello tooaccess vzdáleně. tooconfigure hello externí koncové body, spusťte následující příkazy hello.
+Dalším krokem je konfigurace externí koncové body, které vám umožní přístup k databázi Oracle vzdáleně. Pokud chcete nakonfigurovat externí koncové body, spusťte následující příkazy.
 
-#### <a name="open-hello-port-for-myvm1"></a>Otevřete port hello pro myVM1:
+#### <a name="open-the-port-for-myvm1"></a>Otevřete port pro myVM1:
 
 ```azurecli
 az network nsg rule create --resource-group myResourceGroup\
@@ -137,7 +137,7 @@ az network nsg rule create --resource-group myResourceGroup\
     --destination-address-prefix '*' --destination-port-range 1521 --access allow
 ```
 
-výsledky Hello by měl vypadat podobně jako toohello následující odpověď:
+Výsledky by měl vypadat podobně jako následující odpověď:
 
 ```bash
 {
@@ -158,7 +158,7 @@ výsledky Hello by měl vypadat podobně jako toohello následující odpověď:
 }
 ```
 
-#### <a name="open-hello-port-for-myvm2"></a>Otevřete port hello pro Můjvp2:
+#### <a name="open-the-port-for-myvm2"></a>Otevřete port pro Můjvp2:
 
 ```azurecli
 az network nsg rule create --resource-group myResourceGroup\
@@ -168,25 +168,25 @@ az network nsg rule create --resource-group myResourceGroup\
     --destination-address-prefix '*' --destination-port-range 1521 --access allow
 ```
 
-### <a name="connect-toohello-virtual-machine"></a>Připojit toohello virtuálního počítače
+### <a name="connect-to-the-virtual-machine"></a>Připojení k virtuálnímu počítači
 
-Použití hello následující příkaz toocreate na relace SSH s hello virtuálního počítače. Nahraďte IP adresu hello hello `publicIpAddress` virtuálního počítače.
+Pomocí následujícího příkazu vytvořte s virtuálním počítačem relaci SSH. IP adresu nahraďte pomocí adresy `publicIpAddress` vašeho virtuálního počítače.
 
 ```bash 
 ssh <publicIpAddress>
 ```
 
-### <a name="create-hello-database-on-myvm1-primary"></a>Vytvořit databázi hello na myVM1 (primární)
+### <a name="create-the-database-on-myvm1-primary"></a>Vytvořit databázi na myVM1 (primární)
 
-Hello Oracle softwaru je již nainstalován na bitovou kopii Marketplace hello, takže hello dalším krokem je tooinstall hello databáze. 
+Oracle software je již nainstalována na bitovou kopii Marketplace, takže dalším krokem je pro instalaci databáze. 
 
-Spusťte hello softwaru jako superuživatele, oracle, hello:
+Spusťte software jako superuživatele, oracle':
 
 ```bash
 sudo su - oracle
 ```
 
-Vytvořte databázi hello:
+Vytvoření databáze:
 
 ```bash
 $ dbca -silent \
@@ -207,7 +207,7 @@ $ dbca -silent \
    -storageType FS \
    -ignorePreReqs
 ```
-Výstupy by měl vypadat podobně jako toohello následující odpověď:
+Výstupy by měl vypadat podobně jako následující odpověď:
 
 ```bash
 Copying database files
@@ -236,10 +236,10 @@ Completing Database Creation
 Creating Pluggable Databases
 78% complete
 100% complete
-Look at hello log file "/u01/app/oracle/cfgtoollogs/dbca/cdb1/cdb1.log" for more details.
+Look at the log file "/u01/app/oracle/cfgtoollogs/dbca/cdb1/cdb1.log" for more details.
 ```
 
-Nastavení proměnných ORACLE_SID a ORACLE_HOME hello.
+Nastavení proměnných ORACLE_SID a ORACLE_HOME.
 
 ```bash
 $ ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
@@ -247,7 +247,7 @@ $ ORACLE_SID=gg1; export ORACLE_SID
 $ LD_LIBRARY_PATH=ORACLE_HOME/lib; export LD_LIBRARY_PATH
 ```
 
-Volitelně můžete přidat ORACLE_HOME a ORACLE_SID toohello .bashrc souboru, tak, aby tato nastavení se uloží pro budoucí přihlášení:
+Volitelně můžete přidat ORACLE_HOME a ORACLE_SID soubor .bashrc, tak, aby tato nastavení se uloží pro budoucí přihlášení:
 
 ```bash
 # add oracle home
@@ -264,12 +264,12 @@ $ sudo su - oracle
 $ lsnrctl start
 ```
 
-### <a name="create-hello-database-on-myvm2-replicate"></a>Vytvořit databázi hello na Můjvp2 (Replikovat)
+### <a name="create-the-database-on-myvm2-replicate"></a>Vytvořit databázi na Můjvp2 (Replikovat)
 
 ```bash
 sudo su - oracle
 ```
-Vytvořte databázi hello:
+Vytvoření databáze:
 
 ```bash
 $ dbca -silent \
@@ -290,7 +290,7 @@ $ dbca -silent \
    -storageType FS \
    -ignorePreReqs
 ```
-Nastavení proměnných ORACLE_SID a ORACLE_HOME hello.
+Nastavení proměnných ORACLE_SID a ORACLE_HOME.
 
 ```bash
 $ ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
@@ -298,7 +298,7 @@ $ ORACLE_SID=cdb1; export ORACLE_SID
 $ LD_LIBRARY_PATH=ORACLE_HOME/lib; export LD_LIBRARY_PATH
 ```
 
-Volitelně můžete přidaný ORACLE_HOME a ORACLE_SID toohello .bashrc soubor, tak, aby tato nastavení se uloží pro budoucí přihlášení.
+Volitelně můžete přidané ORACLE_HOME a ORACLE_SID soubor .bashrc, tak, aby tato nastavení se uloží pro budoucí přihlášení.
 
 ```bash
 # add oracle home
@@ -316,7 +316,7 @@ $ lsnrctl start
 ```
 
 ## <a name="configure-golden-gate"></a>Konfigurace brány Golden 
-tooconfigure Golden brány, proveďte kroky hello v této části.
+Pokud chcete konfigurovat Golden brány, postupujte podle kroků v této části.
 
 ### <a name="enable-archive-log-mode-on-myvm1-primary"></a>Povolit režim protokolu archiv na myVM1 (primární)
 
@@ -346,24 +346,24 @@ SQL> EXIT;
 ```
 
 ### <a name="download-golden-gate-software"></a>Stáhnout software Golden brány
-toodownload a příprava softwaru brány Golden Oracle hello, dokončení hello následující kroky:
+Chcete-li stáhnout a příprava softwaru Oracle Golden brány, proveďte následující kroky:
 
-1. Stáhnout hello **fbo_ggs_Linux_x64_shiphome.zip** soubor z hello [stránky pro stažení Oracle Golden brány](http://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). V části hello stáhnout název **12.x.x.x Oracle GoldenGate pro Oracle Linux x86-64**, měla by existovat sadu toodownload soubory .zip.
+1. Stažení **fbo_ggs_Linux_x64_shiphome.zip** souboru z [stránky pro stažení Oracle Golden brány](http://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). Pod názvem stažení **12.x.x.x Oracle GoldenGate pro Oracle Linux x86-64**, měla by existovat sadu .zip soubory ke stažení.
 
-2. Po stažení hello .zip soubory tooyour klientský počítač pomocí protokolu Secure kopírování (SCP) toocopy hello soubory tooyour virtuálních počítačů:
+2. Po stažení soubory .zip na klientský počítač, zkopírujte soubory do virtuálního počítače pomocí protokolu Secure kopírování (SCP):
 
   ```bash
   $ scp fbo_ggs_Linux_x64_shiphome.zip <publicIpAddress>:<folder>
   ```
 
-3. Přesunout toohello soubory .zip hello **/ opt** složky. Potom změňte vlastníka hello hello souborů následujícím způsobem:
+3. Přesuňte soubory .zip **/ opt** složky. Potom změňte vlastníka soubory takto:
 
   ```bash
   $ sudo su -
   # mv <folder>/*.zip /opt
   ```
 
-4. Rozbalte soubory hello (instalace hello Linux rozbalte nástroj, pokud ještě nejsou nainstalované):
+4. Rozbalte soubory (instalace sady Linux rozbalte nástroj, pokud ještě nejsou nainstalované):
 
   ```bash
   # yum install unzip
@@ -377,24 +377,24 @@ toodownload a příprava softwaru brány Golden Oracle hello, dokončení hello 
   # chown -R oracle:oinstall /opt/fbo_ggs_Linux_x64_shiphome
   ```
 
-### <a name="prepare-hello-client-and-vm-toorun-x11-for-windows-clients-only"></a>Příprava klienta hello a virtuálních počítačů toorun x11 (pro pouze klienty systému Windows)
+### <a name="prepare-the-client-and-vm-to-run-x11-for-windows-clients-only"></a>Příprava klienta a virtuálních počítačů, které ke spuštění x11 (pro pouze klienty systému Windows)
 Toto je volitelný krok. Pokud používáte klienta Linux nebo už máte x11, můžete přeskočit tento krok instalace.
 
-1. Stáhněte si PuTTY a Xming tooyour počítač se systémem Windows:
+1. Stáhněte si PuTTY a Xming do počítače se systémem Windows:
 
   * [Stáhněte si PuTTY](http://www.putty.org/)
   * [Stáhnout Xming](https://xming.en.softonic.com/)
 
-2.  Po instalaci PuTTY v hello PuTTY složky (například C:\Program Files\PuTTY), spusťte puttygen.exe (generátor PuTTY klíč).
+2.  Po instalaci PuTTY, ve složce PuTTY (například C:\Program Files\PuTTY), spusťte puttygen.exe (generátor PuTTY klíč).
 
 3.  V generátoru PuTTY klíče:
 
-  - toogenerate klíč, vyberte hello **generování** tlačítko.
-  - Kopírovat obsah hello hello klíče (**Ctrl + C**).
-  - Vyberte hello **uložit privátní klíč** tlačítko.
-  - Ignorovat upozornění hello, který se zobrazí a potom vyberte **OK**.
+  - Chcete-li vygenerovat klíč, vyberte **generování** tlačítko.
+  - Zkopírujte obsah klíče (**Ctrl + C**).
+  - Vyberte **uložit privátní klíč** tlačítko.
+  - Ignorovat upozornění, že se zobrazí a potom vyberte **OK**.
 
-    ![Snímek obrazovky stránky PuTTY klíče generátor hello](./media/oracle-golden-gate/puttykeygen.png)
+    ![Snímek obrazovky stránky PuTTY klíče generátor](./media/oracle-golden-gate/puttykeygen.png)
 
 4.  Ve vašem virtuálním počítači spusťte tyto příkazy:
 
@@ -404,61 +404,61 @@ Toto je volitelný krok. Pokud používáte klienta Linux nebo už máte x11, m�
   $ cd .ssh
   ```
 
-5. Vytvořte soubor s názvem **authorized_keys**. Vložte obsah hello hello klíče v tomto souboru a potom uložte soubor hello.
+5. Vytvořte soubor s názvem **authorized_keys**. Umožňuje vložit obsah klíče v tomto souboru a pak soubor uložte.
 
   > [!NOTE]
-  > Hello klíč musí obsahovat řetězec hello `ssh-rsa`. Obsah hello hello klíče musí být také, jeden řádek textu.
+  > Klíč musí obsahovat řetězec `ssh-rsa`. Obsah klíče musí být jeden řádek textu.
   >  
 
-6. Spusťte PuTTY. V hello **kategorie** podokně, vyberte **připojení** > **SSH** > **Auth**. V hello **soubor privátního klíče pro ověřování** pole, procházet toohello klíč, který jste vygenerovali dříve.
+6. Spusťte PuTTY. V **kategorie** podokně, vyberte **připojení** > **SSH** > **Auth**. V **soubor privátního klíče pro ověřování** pole, přejděte na klíč, který jste vygenerovali dříve.
 
-  ![Snímek obrazovky stránky hello nastavit privátní klíč](./media/oracle-golden-gate/setprivatekey.png)
+  ![Snímek obrazovky stránky nastavit privátní klíč](./media/oracle-golden-gate/setprivatekey.png)
 
-7. V hello **kategorie** podokně, vyberte **připojení** > **SSH** > **X11**. Potom vyberte hello **povolit X11 předávání** pole.
+7. V **kategorie** podokně, vyberte **připojení** > **SSH** > **X11**. Vyberte **povolit X11 předávání** pole.
 
-  ![Snímek obrazovky stránky povolit X11 hello](./media/oracle-golden-gate/enablex11.png)
+  ![Snímek obrazovky stránky povolit X11](./media/oracle-golden-gate/enablex11.png)
 
-8. V hello **kategorie** podokně přejděte příliš**relace**. Zadejte informace o hostiteli hello a potom vyberte **otevřete**.
+8. V **kategorie** podokně, přejděte na **relace**. Zadejte informace o hostiteli a potom vyberte **otevřete**.
 
-  ![Snímek obrazovky stránky relace hello](./media/oracle-golden-gate/puttysession.png)
+  ![Snímek obrazovky stránky relace](./media/oracle-golden-gate/puttysession.png)
 
 ### <a name="install-golden-gate-software"></a>Instalovat software Golden brány
 
-tooinstall Oracle Golden brány, dokončení hello následující kroky:
+K instalaci brány Golden Oracle, proveďte následující kroky:
 
-1. Přihlaste se jako oracle. (Musí být schopný toosign v aniž byste byli vyzváni k zadání hesla.) Ujistěte se, že Xming běží před zahájením instalace hello.
+1. Přihlaste se jako oracle. (Nyní byste měli mít pro přihlášení vyzváni k zadání hesla.) Ujistěte se, že Xming běží před zahájením instalace.
  
   ```bash
   $ cd /opt/fbo_ggs_Linux_x64_shiphome/Disk1
   $ ./runInstaller
   ```
-2. Vyberte, Oracle GoldenGate pro databázi Oracle 12c'. Potom vyberte **Další** toocontinue.
+2. Vyberte, Oracle GoldenGate pro databázi Oracle 12c'. Potom vyberte **Další** pokračujte.
 
-  ![Snímek obrazovky stránky instalace vyberte Instalační program hello](./media/oracle-golden-gate/golden_gate_install_01.png)
+  ![Snímek obrazovky stránky instalace vyberte Instalační program](./media/oracle-golden-gate/golden_gate_install_01.png)
 
-3. Změnit umístění softwaru hello. Potom vyberte hello **spustit správce** pole a zadejte umístění databáze hello. Vyberte **Další** toocontinue.
+3. Změňte umístění softwaru. Vyberte **spustit správce** pole a zadejte umístění databáze. Vyberte **Další** pokračujte.
 
-  ![Snímek obrazovky stránky instalace vyberte hello](./media/oracle-golden-gate/golden_gate_install_02.png)
+  ![Snímek obrazovky stránky vyberte instalace](./media/oracle-golden-gate/golden_gate_install_02.png)
 
-4. Změňte adresář hello inventáře a potom vyberte **Další** toocontinue.
+4. Změňte adresář inventáře a potom vyberte **Další** pokračujte.
 
-  ![Snímek obrazovky stránky instalace vyberte hello](./media/oracle-golden-gate/golden_gate_install_03.png)
+  ![Snímek obrazovky stránky vyberte instalace](./media/oracle-golden-gate/golden_gate_install_03.png)
 
-5. Na hello **Souhrn** obrazovku, vyberte **nainstalovat** toocontinue.
+5. Na **Souhrn** obrazovku, vyberte **nainstalovat** pokračujte.
 
-  ![Snímek obrazovky stránky instalace vyberte Instalační program hello](./media/oracle-golden-gate/golden_gate_install_04.png)
+  ![Snímek obrazovky stránky instalace vyberte Instalační program](./media/oracle-golden-gate/golden_gate_install_04.png)
 
-6. Může být výzvami toorun skript jako "kořenový". Pokud ano, otevřete relaci samostatné ssh toohello virtuálních počítačů, sudo tooroot a spusťte skript hello. Vyberte **OK** pokračovat.
+6. Může se zobrazit výzva ke spuštění skriptu jako "kořenový". Pokud ano, otevřete relaci samostatné ssh k virtuálnímu počítači, sudo pro kořenový adresář a pak spusťte skript. Vyberte **OK** pokračovat.
 
-  ![Snímek obrazovky stránky instalace vyberte hello](./media/oracle-golden-gate/golden_gate_install_05.png)
+  ![Snímek obrazovky stránky vyberte instalace](./media/oracle-golden-gate/golden_gate_install_05.png)
 
-7. Po dokončení instalace hello vyberte **Zavřít** toocomplete hello procesu.
+7. Po dokončení instalace, vyberte **Zavřít** proces dokončete.
 
-  ![Snímek obrazovky stránky instalace vyberte hello](./media/oracle-golden-gate/golden_gate_install_06.png)
+  ![Snímek obrazovky stránky vyberte instalace](./media/oracle-golden-gate/golden_gate_install_06.png)
 
 ### <a name="set-up-service-on-myvm1-primary"></a>Nastavení služby v myVM1 (primární)
 
-1. Vytvořit nebo aktualizovat souboru tnsnames.ora hello:
+1. Vytvořit nebo aktualizovat souboru tnsnames.ora:
 
   ```bash
   $ cd $ORACLE_HOME/network/admin
@@ -491,29 +491,29 @@ tooinstall Oracle Golden brány, dokončení hello následující kroky:
     )
   ```
 
-2. Vytvořte hello Golden brány vlastníka a uživatelské účty.
+2. Vytvoření brány Golden vlastníka a uživatelských účtů.
 
   > [!NOTE]
-  > Hello vlastníka účet musí mít předponu C ##.
+  > Účet vlastníka, musí mít předponu C ##.
   >
 
     ```bash
     $ sqlplus / as sysdba
     SQL> CREATE USER C##GGADMIN identified by ggadmin;
     SQL> EXEC dbms_goldengate_auth.grant_admin_privilege('C##GGADMIN',container=>'ALL');
-    SQL> GRANT DBA tooC##GGADMIN container=all;
+    SQL> GRANT DBA to C##GGADMIN container=all;
     SQL> connect C##GGADMIN/ggadmin
     SQL> ALTER SESSION SET CONTAINER=PDB1;
     SQL> EXIT;
     ```
 
-3. Vytvořte hello Golden brány testovací uživatelský účet:
+3. Vytvoření brány Golden testovací uživatelský účet:
 
   ```bash
   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
   $ sqlplus system/OraPasswd1@pdb1
   SQL> CREATE USER test identified by test DEFAULT TABLESPACE USERS TEMPORARY TABLESPACE TEMP;
-  SQL> GRANT connect, resource, dba tootest;
+  SQL> GRANT connect, resource, dba TO test;
   SQL> ALTER USER test QUOTA 100M on USERS;
   SQL> connect test/test@pdb1
   SQL> @demo_ora_create
@@ -521,9 +521,9 @@ tooinstall Oracle Golden brány, dokončení hello následující kroky:
   SQL> EXIT;
   ```
 
-4. Nakonfigurujte soubor parametrů extrakce hello.
+4. Konfigurace souboru parametr extrakce.
 
- Spuštění rozhraní příkazového řádku zlaté brány hello (ggsci):
+ Spuštění rozhraní příkazového řádku zlaté brány (ggsci):
 
   ```bash
   $ sudo su - oracle
@@ -537,7 +537,7 @@ tooinstall Oracle Golden brány, dokončení hello následující kroky:
 
   GGSCI> EDIT PARAMS EXTORA
   ```
-5. Přidejte hello následující toohello EXTRAKCE parametr soubor (pomocí příkazů vi). Stisknutím klávesy Esc, ': QW!. toosave soubor. 
+5. Přidejte následující EXTRAHOVAT parametr soubor (pomocí příkazů vi). Stisknutím klávesy Esc, ': QW!. Uložte soubor. 
 
   ```bash
   EXTRACT EXTORA
@@ -578,7 +578,7 @@ tooinstall Oracle Golden brány, dokončení hello následující kroky:
 
   GGSCI>  START EXTRACT EXTORA
 
-  Sending START request tooMANAGER ...
+  Sending START request to MANAGER ...
   EXTRACT EXTORA starting
 
   GGSCI > info all
@@ -588,7 +588,7 @@ tooinstall Oracle Golden brány, dokončení hello následující kroky:
   MANAGER     RUNNING
   EXTRACT     RUNNING     EXTORA      00:00:11      00:00:04
   ```
-V tomto kroku najít hello od oznámení změny stavu, který se použije později v jiné části:
+V tomto kroku můžete najít počáteční oznámení změny stavu, který se použije později v jiné části:
 
   ```bash
   $ sqlplus / as sysdba
@@ -620,7 +620,7 @@ V tomto kroku najít hello od oznámení změny stavu, který se použije pozdě
 ### <a name="set-up-service-on-myvm2-replicate"></a>Nastavení služby v Můjvp2 (Replikovat)
 
 
-1. Vytvořit nebo aktualizovat souboru tnsnames.ora hello:
+1. Vytvořit nebo aktualizovat souboru tnsnames.ora:
 
   ```bash
   $ cd $ORACLE_HOME/network/admin
@@ -659,7 +659,7 @@ V tomto kroku najít hello od oznámení změny stavu, který se použije pozdě
   $ sqlplus / as sysdba
   SQL> alter session set container = pdb1;
   SQL> create user repuser identified by rep_pass container=current;
-  SQL> grant dba toorepuser;
+  SQL> grant dba to repuser;
   SQL> exec dbms_goldengate_auth.grant_admin_privilege('REPUSER',container=>'PDB1');
   SQL> connect repuser/rep_pass@pdb1 
   SQL> EXIT;
@@ -671,14 +671,14 @@ V tomto kroku najít hello od oznámení změny stavu, který se použije pozdě
   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
   $ sqlplus system/OraPasswd1@pdb1
   SQL> CREATE USER test identified by test DEFAULT TABLESPACE USERS TEMPORARY TABLESPACE TEMP;
-  SQL> GRANT connect, resource, dba tootest;
+  SQL> GRANT connect, resource, dba TO test;
   SQL> ALTER USER test QUOTA 100M on USERS;
   SQL> connect test/test@pdb1
   SQL> @demo_ora_create
   SQL> EXIT;
   ```
 
-4. REPLICAT parametr souboru tooreplicate změny: 
+4. Soubor parametrů REPLICAT k replikaci změn: 
 
   ```bash
   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
@@ -718,22 +718,22 @@ V tomto kroku najít hello od oznámení změny stavu, který se použije pozdě
   GGSCI> ADD REPLICAT INITREP, SPECIALRUN
   ```
 
-### <a name="set-up-hello-replication-myvm1-and-myvm2"></a>Nastavení replikace hello (myVM1 a Můjvp2)
+### <a name="set-up-the-replication-myvm1-and-myvm2"></a>Nastavení replikace (myVM1 a Můjvp2)
 
-#### <a name="1-set-up-hello-replication-on-myvm2-replicate"></a>1. Nastavení replikace hello na Můjvp2 (Replikovat)
+#### <a name="1-set-up-the-replication-on-myvm2-replicate"></a>1. Nastavení replikace na Můjvp2 (Replikovat)
 
   ```bash
   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
   $ ./ggsci
   GGSCI> EDIT PARAMS MGR
   ```
-Aktualizujte soubor hello hello následující:
+Aktualizujte soubor s následujícími službami:
 
   ```bash
   PORT 7809
   ACCESSRULE, PROG *, IPADDR *, ALLOW
   ```
-Potom restartujte službu Manager hello:
+Potom restartujte službu Manager:
 
   ```bash
   GGSCI> STOP MGR
@@ -741,9 +741,9 @@ Potom restartujte službu Manager hello:
   GGSCI> EXIT
   ```
 
-#### <a name="2-set-up-hello-replication-on-myvm1-primary"></a>2. Nastavení replikace hello na myVM1 (primární)
+#### <a name="2-set-up-the-replication-on-myvm1-primary"></a>2. Nastavení replikace na myVM1 (primární)
 
-Spusťte počáteční zatížení hello a zkontrolujte chyby:
+Spustíte počáteční zatížení a zkontrolujte chyby:
 
 ```bash
 $ cd /u01/app/oracle/product/12.1.0/oggcore_1
@@ -751,53 +751,53 @@ $ ./ggsci
 GGSCI> START EXTRACT INITEXT
 GGSCI> VIEW REPORT INITEXT
 ```
-#### <a name="3-set-up-hello-replication-on-myvm2-replicate"></a>3. Nastavení replikace hello na Můjvp2 (Replikovat)
+#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>3. Nastavení replikace na Můjvp2 (Replikovat)
 
-Změna hello oznámení změny stavu číslo s číslem hello jste předtím získali:
+Změna oznámení změny stavu číslo s číslem, které se předtím získali:
 
   ```bash
   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
   $ ./ggsci
   START REPLICAT REPORA, AFTERCSN 1857887
   ```
-zahájení replikace Hello a jej můžete otestovat pomocí vkládání nových záznamů tooTEST tabulek.
+Zahájení replikace a jej můžete otestovat pomocí vkládání nových záznamů do testovací tabulek.
 
 
 ### <a name="view-job-status-and-troubleshooting"></a>Zobrazení stavu úlohy a řešení potíží
 
 #### <a name="view-reports"></a>Zobrazení sestav
-tooview hlásí myVM1, spusťte následující příkazy hello:
+Chcete-li zobrazit sestavy myVM1, spusťte následující příkazy:
 
   ```bash
   GGSCI> VIEW REPORT EXTORA 
   ```
  
-tooview hlásí Můjvp2, spusťte následující příkazy hello:
+Chcete-li zobrazit sestavy Můjvp2, spusťte následující příkazy:
 
   ```bash
   GGSCI> VIEW REPORT REPORA
   ```
 
 #### <a name="view-status-and-history"></a>Zobrazit stav a historie
-tooview stav a historie na myVM1, spusťte následující příkazy hello:
+Chcete-li zobrazit stav a historie na myVM1, spusťte následující příkazy:
 
   ```bash
   GGSCI> dblogin userid c##ggadmin, password ggadmin 
   GGSCI> INFO EXTRACT EXTORA, DETAIL
   ```
 
-tooview stav a historie na Můjvp2, spusťte následující příkazy hello:
+Chcete-li zobrazit stav a historie na Můjvp2, spusťte následující příkazy:
 
   ```bash
   GGSCI> dblogin userid repuser@pdb1 password rep_pass 
   GGSCI> INFO REP REPORA, DETAIL
   ```
-Tím se dokončí hello instalaci a konfiguraci brány Golden na Oracle linux.
+Tím dokončíte instalaci a konfiguraci brány Golden na Oracle linux.
 
 
-## <a name="delete-hello-virtual-machine"></a>Odstranění hello virtuálního počítače
+## <a name="delete-the-virtual-machine"></a>Odstranění virtuálního počítače
 
-Když už je potřeba, může být hello následující příkaz skupiny prostředků použít tooremove hello, virtuálních počítačů a všechny související prostředky.
+Už je potřeba, následující příkaz lze použít k odebrání skupiny prostředků, virtuální počítač a všechny související prostředky.
 
 ```azurecli
 az group delete --name myResourceGroup

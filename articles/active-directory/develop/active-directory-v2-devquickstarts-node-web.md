@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure služby Active Directory v2.0 Node.js webové aplikace přihlášení | Microsoft Docs"
-description: "Zjistěte, jak toobuild Node.js webová aplikace, který se přihlásí uživatel pomocí účtu Microsoft osobní i pracovní nebo školní účet."
+title: "Azure Active Directory v2.0 Node.js webové aplikace přihlášení | Microsoft Docs"
+description: "Naučte se vytvářet webové aplikace Node.js, který se přihlásí uživatel pomocí účtu Microsoft osobní i pracovní nebo školní účet."
 services: active-directory
 documentationcenter: nodejs
 author: navyasric
@@ -15,42 +15,42 @@ ms.topic: article
 ms.date: 05/13/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: f8ce6e2b841c215cb14e82bcf444fe849634cc88
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6d49c742f72440e22830915c90de009d9188db2a
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="add-sign-in-tooa-nodejs-web-app"></a>Přidání webové aplikace Node.js tooa přihlášení
+# <a name="add-sign-in-to-a-nodejs-web-app"></a>Přidání přihlašování do webové aplikace Node.js
 
 > [!NOTE]
-> Ne všechny funkce a scénáře Azure Active Directory fungovat s koncovým bodem v2.0 hello. toodetermine zda byste měli používat koncového bodu v2.0 hello nebo koncový bod hello verze 1.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
+> Ne všechny funkce a scénáře Azure Active Directory fungovat s koncovým bodem v2.0. Pokud chcete zjistit, zda by měl používat koncového bodu v2.0 nebo koncový bod verze 1.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
 > 
 
-V tomto kurzu používáme Passport toodo hello následující úlohy:
+V tomto kurzu používáme Passport provádění následujících úloh:
 
-* Ve webové aplikaci Přihlaste se pomocí služby Azure Active Directory (Azure AD) hello uživatele a hello koncového bodu v2.0.
-* Zobrazení informací o uživateli hello.
-* Přihlašovací hello uživatele mimo aplikaci hello.
+* Ve webové aplikaci přihlaste uživatele pomocí služby Azure Active Directory (Azure AD) a koncový bod v2.0.
+* Zobrazí informace o uživateli.
+* Přihlášení uživatele mimo aplikaci.
 
-**Passport** je ověřovací middleware pro Node.js. Flexibilní a modulární, můžete do jakéhokoli nenápadně vyřadit Passport využívající Express nebo restify webové aplikace. Komplexní sada strategií Passport, podporují ověřování pomocí uživatelského jména a hesla, Facebook, Twitter a další možnosti. Vyvinuli jsme strategii pro Azure AD. V tomto článku jsme ukážeme, jak tooinstall hello modul a poté přidejte hello Azure AD `passport-azure-ad` modulu plug-in.
+**Passport** je ověřovací middleware pro Node.js. Flexibilní a modulární, můžete do jakéhokoli nenápadně vyřadit Passport využívající Express nebo restify webové aplikace. Komplexní sada strategií Passport, podporují ověřování pomocí uživatelského jména a hesla, Facebook, Twitter a další možnosti. Vyvinuli jsme strategii pro Azure AD. V tomto článku jsme ukazují, jak nainstalovat modul a poté přidejte Azure AD `passport-azure-ad` modulu plug-in.
 
 ## <a name="download"></a>Ke stažení
-Hello kód v tomto kurzu se udržuje [na Githubu](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs). toofollow hello kurzu můžete [stáhnout kostru aplikace hello jako soubor ZIP](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/skeleton.zip) nebo hello kostru klonovat:
+Kód k tomuto kurzu je udržovaný [na GitHubu](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs). Chcete-li postupovat v kurzu, můžete [stáhnout kostru aplikace jako soubor ZIP](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/skeleton.zip) nebo tuto kostru klonovat:
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git```
 
-Také můžete získat aplikace hello dokončit na konci hello tohoto kurzu.
+Také můžete získat hotová aplikace na konci tohoto kurzu.
 
 ## <a name="1-register-an-app"></a>1: registrace aplikace
-Vytvoření nové aplikace v [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), nebo postupujte podle [tyto podrobné kroky](active-directory-v2-app-registration.md) tooregister aplikace. Ověřte, že je:
+Vytvoření nové aplikace v [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), nebo postupujte podle [tyto podrobné kroky](active-directory-v2-app-registration.md) k registraci aplikace. Ověřte, že je:
 
-* Kopírování hello **Id aplikace** přiřazené tooyour aplikace. Budete ho potřebovat pro účely tohoto kurzu.
-* Přidat hello **webové** platformu pro vaši aplikaci.
-* Kopírování hello **identifikátor URI pro přesměrování** z portálu hello. Musíte použít hello výchozí hodnota URI `urn:ietf:wg:oauth:2.0:oob`.
+* Kopírování **Id aplikace** přiřazené vaší aplikaci. Budete ho potřebovat pro účely tohoto kurzu.
+* Přidat **webové** platformu pro vaši aplikaci.
+* Kopírování **identifikátor URI pro přesměrování** z portálu. Musíte použít výchozí hodnotu identifikátoru URI `urn:ietf:wg:oauth:2.0:oob`.
 
-## <a name="2-add-prerequisities-tooyour-directory"></a>2: Přidat prerequisities tooyour adresář
-Na příkazovém řádku změňte adresáře toogo tooyour kořenové složky, pokud si nejste již existuje. Spusťte následující příkazy hello:
+## <a name="2-add-prerequisities-to-your-directory"></a>2: Přidání prerequisities do adresáře
+Na příkazovém řádku změňte adresáře na přejděte do kořenové složky, pokud si nejste již existuje. Spusťte následující příkazy:
 
 * `npm install express`
 * `npm install ejs`
@@ -65,22 +65,22 @@ Na příkazovém řádku změňte adresáře toogo tooyour kořenové složky, p
 * `npm install express-session`
 * `npm install cookie-parser`
 
-Kromě toho používáme `passport-azure-ad` v hello kostře rychlého startu hello:
+Kromě toho používáme `passport-azure-ad` v kostře rychlého startu:
 
 * `npm install passport-azure-ad`
 
-To nainstaluje knihovny hello který `passport-azure-ad` používá.
+Tím se nainstaluje do knihoven, `passport-azure-ad` používá.
 
-## <a name="3-set-up-your-app-toouse-hello-passport-node-js-strategy"></a>3: nastavení strategie passport uzlu js hello toouse aplikace
-Nastavte hello Express middleware toouse hello ověřovacího protokolu OpenID Connect. Použití požadavků na přihlášení a odhlášení tooissue Passport, spravovat relace hello uživatele a získat informace o uživateli hello, mimo jiné.
+## <a name="3-set-up-your-app-to-use-the-passport-node-js-strategy"></a>3: nastavení aplikace pro použití strategie passport uzlu js
+Nastavte Express middleware pro použití ověřovacího protokolu OpenID Connect. Používání služby Passport pro zasílání požadavků na přihlášení a odhlášení, správu relace uživatele a získat informace o uživateli, mimo jiné.
 
-1.  V kořenovém hello hello projektu otevřete hello souboru Config.js. V hello `exports.creds` zadejte hodnoty konfigurace vaší aplikace.
+1.  V kořenovém adresáři projektu otevřete souboru Config.js. V `exports.creds` zadejte hodnoty konfigurace vaší aplikace.
   
-  * `clientID`: hello **Id aplikace** který je přiřazený tooyour aplikace v hello portálu Azure.
-  * `returnURL`: hello **identifikátor URI pro přesměrování** kterou jste zadali v portálu hello.
-  * `clientSecret`: hello tajný klíč, který jste vygenerovali hello portálu.
+  * `clientID`: **Id aplikace** přiřazené k aplikaci na portálu Azure.
+  * `returnURL`: **Identifikátor URI pro přesměrování** kterou jste zadali v portálu.
+  * `clientSecret`: Tajný klíč, který jste vygenerovali na portálu.
 
-2.  V kořenovém hello hello projektu otevřete soubor App.js hello. tooinvoke hello OIDCStrategy stratey, který se dodává s `passport-azure-ad`, přidejte následující volání hello:
+2.  V kořenovém adresáři projektu otevřete soubor App.js. K vyvolání stratey OIDCStrategy, který se dodává s `passport-azure-ad`, přidejte následující volání:
 
   ```JavaScript
   var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
@@ -91,12 +91,12 @@ Nastavte hello Express middleware toouse hello ověřovacího protokolu OpenID C
   });
   ```
 
-3.  toohandle vaší žádostí o přihlášení, použijte hello strategie, kterou jste právě přidanou:
+3.  Pro zpracování vaší žádosti o přihlášení, použijte strategie, kterou jste právě odkazuje:
 
   ```JavaScript
-  // Use hello OIDCStrategy within Passport (section 2)
+  // Use the OIDCStrategy within Passport (section 2)
   //
-  //   Strategies in Passport require a `validate` function. hello function accepts
+  //   Strategies in Passport require a `validate` function. The function accepts
   //   credentials (in this case, an OpenID identifier), and invokes a callback
   //   with a user object.
   passport.use( new OIDCStrategy({
@@ -131,23 +131,23 @@ Nastavte hello Express middleware toouse hello ověřovacího protokolu OpenID C
   ));
   ```
 
-Passport používá podobný Princip pro všechny svoje strategie (Twitteru, Facebooku a tak dále). Vzor toohello řídí všichni tvůrci strategií. Předat hello strategie `function()` token, který používá a `done` jako parametry. strategie Hello se vrátí po dělá svou práci. Uložení hello uživatele a dočasné ukládání hello token, takže není nutné tooask pro něj znovu.
+Passport používá podobný Princip pro všechny svoje strategie (Twitteru, Facebooku a tak dále). Řídí všichni autoři strategií se vzorem. Předat strategie `function()` token, který používá a `done` jako parametry. Strategie se vrátí po dělá svou práci. Uložení uživatele a skrytí tokenu, takže je nebudete muset požadovat znovu.
 
   > [!IMPORTANT]
-  > Hello předchozí kód přijme všechny uživatele, který může ověřit tooyour serveru. To se označuje jako Automatická registrace. Na provozním serveru nebude chcete toolet každý, kdo v bez toho, aby předtím prošli registračním procesem, který zvolíte. Je to obvykle hello vzor, který můžete vidět u uživatelských aplikací. aplikace Hello může povolit tooregister službou Facebook, ale pak musíte tooenter Další informace. Pokud v tomto kurzu nebyly pomocí příkazového řádku programu, může extrahuje hello e-mailu z hello tokenu objekt, který je vrácen. Potom může zobrazit dotaz hello uživatele tooenter Další informace. Protože se jedná o testovací server, můžete přidat uživatele hello přímo toohello databázi v paměti.
+  > Předchozí kód přijme všechny uživatele, který může ověřit na váš server. To se označuje jako Automatická registrace. Na provozním serveru byste neměli chtít vpouštět každý, kdo bez toho, aby předtím prošli registračním procesem, který zvolíte. To je obvykle vzor, který můžete vidět u uživatelských aplikací. Aplikace může umožňují registraci pomocí Facebooku, ale následně požádá, můžete k zadání dalších informací. Pokud v tomto kurzu nebyly pomocí příkazového řádku programu, může extrahovat e-mail z vráceného objektu tokenu. Potom může požádat uživatele k zadání dalších informací. Protože se jedná o testovací server, je třeba přidat uživatele přímo k databázi v paměti.
   > 
   > 
 
-4.  Přidejte metody hello použít tookeep sledování uživatelů, kteří se přihlásili, jak vyžaduje Passport. To zahrnuje serializaci a deserializaci informací o uživateli hello:
+4.  Přidejte metody, které můžete použít ke sledování uživatelů, kteří se přihlásili, jak vyžaduje Passport. To zahrnuje serializaci a deserializaci informací o uživateli:
 
   ```JavaScript
 
   // Passport session setup (section 2)
 
-  //   toosupport persistent login sessions, Passport needs toobe able to
-  //   serialize users into, and deserialize users out of, hello session. Typically,
-  //   this is as simple as storing hello user ID when serializing, and finding
-  //   hello user by ID when deserializing.
+  //   To support persistent login sessions, Passport needs to be able to
+  //   serialize users into, and deserialize users out of, the session. Typically,
+  //   this is as simple as storing the user ID when serializing, and finding
+  //   the user by ID when deserializing.
   passport.serializeUser(function(user, done) {
     done(null, user.email);
   });
@@ -158,7 +158,7 @@ Passport používá podobný Princip pro všechny svoje strategie (Twitteru, Fac
     });
   });
 
-  // Array toohold signed-in users
+  // Array to hold signed-in users
   var users = [];
 
   var findByEmail = function(email, fn) {
@@ -173,7 +173,7 @@ Passport používá podobný Princip pro všechny svoje strategie (Twitteru, Fac
   };
   ```
 
-5.  Přidejte hello kód, který načte hello modulu Express. Použijte výchozí /views hello a /routes vzor, který Express poskytuje:
+5.  Přidejte kód, který načte modulu Express. Použijte výchozí /views a /routes vzor, který Express poskytuje:
 
   ```JavaScript
 
@@ -189,7 +189,7 @@ Passport používá podobný Princip pro všechny svoje strategie (Twitteru, Fac
     app.use(cookieParser());
     app.use(expressSession({ secret: 'keyboard cat', resave: true, saveUninitialized: false }));
     app.use(bodyParser.urlencoded({ extended : true }));
-    // Initialize Passport!  Also use passport.session() middleware, toosupport
+    // Initialize Passport!  Also use passport.session() middleware, to support
     // persistent login sessions (recommended).
     app.use(passport.initialize());
     app.use(passport.session());
@@ -199,31 +199,31 @@ Passport používá podobný Princip pro všechny svoje strategie (Twitteru, Fac
 
   ```
 
-6.  Přidat hello POST tras, že můžete předat hello skutečné žádostí o přihlášení toohello `passport-azure-ad` modul:
+6.  Přidání tras této můžete předat skutečné přihlášení žádosti, které chcete v příspěvku `passport-azure-ad` modul:
 
   ```JavaScript
 
   // Auth routes (section 3)
 
   // GET /auth/openid
-  //   Use passport.authenticate() as route middleware tooauthenticate the
-  //   request. hello first step in OpenID authentication involves redirecting
-  //   hello user toohello user's OpenID provider. After authenticating, hello OpenID
-  //   provider redirects hello user back toothis application at
+  //   Use passport.authenticate() as route middleware to authenticate the
+  //   request. The first step in OpenID authentication involves redirecting
+  //   the user to the user's OpenID provider. After authenticating, the OpenID
+  //   provider redirects the user back to this application at
   //   /auth/openid/return.
 
   app.get('/auth/openid',
     passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
     function(req, res) {
-      log.info('Authentication was called in hello sample');
+      log.info('Authentication was called in the sample');
       res.redirect('/');
     });
 
   // GET /auth/openid/return
-  //   Use passport.authenticate() as route middleware tooauthenticate the
-  //   request. If authentication fails, hello user is redirected back toothe
-  //   sign-in page. Otherwise, hello primary route function is called.
-  //   In this example, it redirects hello user toohello home page.
+  //   Use passport.authenticate() as route middleware to authenticate the
+  //   request. If authentication fails, the user is redirected back to the
+  //   sign-in page. Otherwise, the primary route function is called.
+  //   In this example, it redirects the user to the home page.
   app.get('/auth/openid/return',
     passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
     function(req, res) {
@@ -232,10 +232,10 @@ Passport používá podobný Princip pro všechny svoje strategie (Twitteru, Fac
     });
 
   // POST /auth/openid/return
-  //   Use passport.authenticate() as route middleware tooauthenticate the
-  //   request. If authentication fails, hello user is redirected back toothe
-  //   sign-in page. Otherwise, hello primary route function is called. 
-  //   In this example, it redirects hello user toohello home page.
+  //   Use passport.authenticate() as route middleware to authenticate the
+  //   request. If authentication fails, the user is redirected back to the
+  //   sign-in page. Otherwise, the primary route function is called. 
+  //   In this example, it redirects the user to the home page.
 
   app.post('/auth/openid/return',
     passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
@@ -245,10 +245,10 @@ Passport používá podobný Princip pro všechny svoje strategie (Twitteru, Fac
     });
   ```
 
-## <a name="4-use-passport-tooissue-sign-in-and-sign-out-requests-tooazure-ad"></a>4: použití Passport tooissue přihlášení a odhlášení požadavky tooAzure AD
-Aplikace je teď nastavený toocommunicate s hello koncového bodu v2.0 pomocí ověřovacího protokolu OpenID Connect hello. Hello `passport-azure-ad` strategie postará všechny podrobnosti hello věnujte zpráv ověřování, ověřování tokenů z Azure AD a údržbě hello uživatelské relace. Všechny, který se nechá toodo je toogive uživatelům způsob toosign v a přihlaste se na více systémů a toogather Další informace o hello uživatele, který je přihlášený.
+## <a name="4-use-passport-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>4: použití služby Passport pro zasílání požadavků na přihlášení a odhlášení do Azure AD
+Aplikace je teď nastavený pro komunikaci s koncovým bodem v2.0 pomocí ověřovacího protokolu OpenID Connect. `passport-azure-ad` Strategie postará všechny podrobnosti o věnujte zpráv ověřování, ověřování tokenů z Azure AD a údržbě uživatelské relace. Je již zbývá chcete umožnit uživatelům způsob přihlášení a odhlášení a získat další informace o uživateli, který je přihlášený.
 
-1.  Přidat hello **výchozí**, **přihlášení**, **účet**, a **odhlášení** souboru App.js tooyour metody:
+1.  Přidat **výchozí**, **přihlášení**, **účet**, a **odhlášení** metody do souboru App.js:
 
   ```JavaScript
 
@@ -265,7 +265,7 @@ Aplikace je teď nastavený toocommunicate s hello koncového bodu v2.0 pomocí 
   app.get('/login',
     passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
     function(req, res) {
-      log.info('Login was called in hello sample');
+      log.info('Login was called in the sample');
       res.redirect('/');
   });
 
@@ -276,22 +276,22 @@ Aplikace je teď nastavený toocommunicate s hello koncového bodu v2.0 pomocí 
 
   ```
 
-  Zde jsou hello podrobnosti:
+  Zde jsou uvedeny podrobnosti:
     
-    * Hello `/` trasa přesměruje toohello index.ejs zobrazení. Pak předá hello uživatele v požadavku hello (pokud existuje).
-    * Hello `/account` směrovat nejprve *zajistí, že jsou ověří* (můžete implementovat, hello následující kód). Pak předá hello uživatele v požadavku hello. Toto je, abyste získali další informace o uživateli hello.
-    * Hello `/login` směrování volání vaše `azuread-openidconnect` authenticator z `passport-azuread`. Pokud není úspěšné, je přesměrován zpět uživatele hello příliš`/login`.
-    * Hello `/logout` trasy volá hello logout.ejs zobrazení (a směrování). Zruší soubory cookie a pak vrátí hello back tooindex.ejs uživatele.
+    * `/` Trasa přesměruje na zobrazení index.ejs. Pak předá uživatele v požadavku (pokud existuje).
+    * `/account` Směrovat nejprve *zajistí, že jsou ověří* (implementujete, v následujícím kódu). Poté předá uživatele v požadavku. Toto je, abyste získali další informace o uživateli.
+    * `/login` Směrování volání vaše `azuread-openidconnect` authenticator z `passport-azuread`. Pokud není úspěšné, ho přesměruje uživatele zpět na `/login`.
+    * `/logout` Trasy volá logout.ejs zobrazení (a směrování). Vymaže soubory cookie a poté vrátí uživatele zpět na index.ejs.
 
-2.  Přidat hello **EnsureAuthenticated** metoda, která jste použili výše v `/account`:
+2.  Přidat **EnsureAuthenticated** metoda, která jste použili výše v `/account`:
 
   ```JavaScript
 
-  // Route middleware tooensure hello user is authenticated (section 4)
+  // Route middleware to ensure the user is authenticated (section 4)
 
-  //   Use this route middleware on any resource that needs toobe protected. If
-  //   hello request is authenticated (typically via a persistent login session),
-  //   hello request proceeds. Otherwise, hello user is redirected toothe
+  //   Use this route middleware on any resource that needs to be protected. If
+  //   the request is authenticated (typically via a persistent login session),
+  //   the request proceeds. Otherwise, the user is redirected to the
   //   sign-in page.
   function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) { return next(); }
@@ -300,7 +300,7 @@ Aplikace je teď nastavený toocommunicate s hello koncového bodu v2.0 pomocí 
 
   ```
 
-3.  V App.js vytvořte hello serveru:
+3.  V App.js vytvořte serveru:
 
   ```JavaScript
 
@@ -309,10 +309,10 @@ Aplikace je teď nastavený toocommunicate s hello koncového bodu v2.0 pomocí 
   ```
 
 
-## <a name="5-create-hello-views-and-routes-in-express-that-you-show-your-user-on-hello-website"></a>5: vytvoření hello zobrazení a trasy v Express uživatelům zobrazí na webu hello
-Přidejte hello trasy a zobrazení, které se zobrazí informace o toohello uživatele. Hello trasy a zobrazení, zpracovávají také dříve hello `/logout` a `/login` tras, které jste vytvořili.
+## <a name="5-create-the-views-and-routes-in-express-that-you-show-your-user-on-the-website"></a>5: vytvoření zobrazení a trasy v Express uživatelům zobrazí na webu
+Přidáte trasy a zobrazení, které se zobrazí informace o uživateli. Trasy a zobrazení, zpracovávají také dříve `/logout` a `/login` tras, které jste vytvořili.
 
-1. V kořenovém adresáři hello, vytvořte hello `/routes/index.js` trasy.
+1. V kořenovém adresáři vytvořte `/routes/index.js` trasy.
 
   ```JavaScript
 
@@ -325,7 +325,7 @@ Přidejte hello trasy a zobrazení, které se zobrazí informace o toohello uži
   };
   ```
 
-2.  V kořenovém adresáři hello, vytvořte hello `/routes/user.js` trasy.
+2.  V kořenovém adresáři vytvořte `/routes/user.js` trasy.
 
   ```JavaScript
 
@@ -338,9 +338,9 @@ Přidejte hello trasy a zobrazení, které se zobrazí informace o toohello uži
   };
   ```
 
-  `/routes/index.js`a `/routes/user.js` jsou jednoduché trasy, které předávají hello požadavek tooyour zobrazení, včetně hello uživatele, pokud je k dispozici.
+  `/routes/index.js`a `/routes/user.js` jsou jednoduché trasy, které předávají žádosti zobrazením, včetně uživatele, pokud je k dispozici.
 
-3.  V kořenovém adresáři hello, vytvořte hello `/views/index.ejs` zobrazení. Tato stránka volá vaše **přihlášení** a **odhlášení** metody. Můžete také použít hello `/views/index.ejs` zobrazit informace o účtu toocapture. Můžete použít hello podmíněného `if (!user)` jako uživatel hello předávány prostřednictvím v žádosti o hello. Je důkaz, že máte přihlášení uživatele.
+3.  V kořenovém adresáři vytvořte `/views/index.ejs` zobrazení. Tato stránka volá vaše **přihlášení** a **odhlášení** metody. Můžete také použít `/views/index.ejs` zobrazení k zaznamenání informací o účtu. Můžete využít podmínku `if (!user)` jako uživatel předávány prostřednictvím v požadavku. Je důkaz, že máte přihlášení uživatele.
 
   ```JavaScript
   <% if (!user) { %>
@@ -353,7 +353,7 @@ Přidejte hello trasy a zobrazení, které se zobrazí informace o toohello uži
   <% } %>
   ```
 
-4.  V kořenovém adresáři hello, vytvořte hello `/views/account.ejs` zobrazení. Hello `/views/account.ejs` zobrazení můžete další informace o tooview, `passport-azuread` převádí na žádost uživatele hello.
+4.  V kořenovém adresáři vytvořte `/views/account.ejs` zobrazení. `/views/account.ejs` Zobrazení umožňuje zobrazit další informace, `passport-azuread` převádí na žádost uživatele.
 
   ```Javascript
   <% if (!user) { %>
@@ -372,7 +372,7 @@ Přidejte hello trasy a zobrazení, které se zobrazí informace o toohello uži
   <% } %>
   ```
 
-5.  Přidáte rozložení. V kořenovém adresáři hello, vytvořte hello `/views/layout.ejs` zobrazení.
+5.  Přidáte rozložení. V kořenovém adresáři vytvořte `/views/layout.ejs` zobrazení.
 
   ```HTML
 
@@ -399,20 +399,20 @@ Přidejte hello trasy a zobrazení, které se zobrazí informace o toohello uži
   </html>
   ```
 
-6.  toobuild a spuštění aplikace, spustit `node app.js`. Pak přejděte příliš`http://localhost:3000`.
+6.  Sestavení a spuštění aplikace, spustit `node app.js`. Potom přejděte na `http://localhost:3000`.
 
-7.  Přihlaste se pomocí osobního účtu Microsoft nebo pracovní nebo školní účet. Upozorňujeme, že identita hello uživatele v seznamu /account hello. 
+7.  Přihlaste se pomocí osobního účtu Microsoft nebo pracovní nebo školní účet. Upozorňujeme, že je v seznamu /account identitu uživatele. 
 
 Nyní máte webovou aplikaci, která je zabezpečená službou pomocí standardních protokolů. Uživatelé ve vaší aplikaci, můžete ověřovat pomocí svoje osobní i pracovní nebo školní účty.
 
 ## <a name="next-steps"></a>Další kroky
-Pro srovnání je hello dokončit ukázka (bez vašich hodnot nastavení) k dispozici jako [soubor .zip](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/complete.zip). Vám může ho také klonovat z Githubu:
+Pro srovnání je hotová ukázka (bez vašich hodnot nastavení) k dispozici jako [soubor .zip](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/complete.zip). Vám může ho také klonovat z Githubu:
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git```
 
-Potom můžete přesunout na toomore advanced témata. Můžete chtít tootry:
+Potom můžete přesunout pokročilejší témata. Můžete se pokusit:
 
-[Zabezpečit webové rozhraní API Node.js pomocí koncového bodu v2.0 hello](active-directory-v2-devquickstarts-node-api.md)
+[Zabezpečit webové rozhraní API Node.js pomocí koncového bodu v2.0](active-directory-v2-devquickstarts-node-api.md)
 
 Zde jsou některé další zdroje informací:
 
@@ -420,5 +420,5 @@ Zde jsou některé další zdroje informací:
 * [Značka "azure-active-directory" přetečení zásobníku](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
 ### <a name="get-security-updates-for-our-products"></a>Získejte bezpečnostní aktualizace našich produktů
-Doporučujeme toosign až toobe upozorněni, když bezpečnostních incidentech. Na hello [technické oznámení zabezpečení Microsoft](https://technet.microsoft.com/security/dd252948) stránky, přihlášení k odběru tooSecurity zpravodaje výstrahy.
+Doporučujeme registrace oznámení o bezpečnostních incidentech. Na [technické oznámení zabezpečení Microsoft](https://technet.microsoft.com/security/dd252948) stránky, odběr výstrah zpravodaje zabezpečení.
 

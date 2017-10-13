@@ -1,6 +1,6 @@
 ---
-title: "aaaGet Začínáme s ověřováním pro Mobile Apps v Xamarin iOS"
-description: "Zjistěte, jak toouse Mobile Apps tooauthenticate uživatele vaší aplikace Xamarin iOS prostřednictvím řady různých zprostředkovatelů identity, včetně AAD, Google, Facebook, Twitter a Microsoft."
+title: "Začínáme s ověřováním pro Mobile Apps v Xamarin iOS"
+description: "Další informace o použití mobilní aplikace ověřovat uživatele vaší aplikace Xamarin iOS prostřednictvím řady různých zprostředkovatelů identity, včetně AAD, Google, Facebook, Twitter a Microsoft."
 services: app-service\mobile
 documentationcenter: xamarin
 author: ggailey777
@@ -14,56 +14,56 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: glenga
-ms.openlocfilehash: 6458e9651b03df61c86b88b11953792e04bfa5b2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 454b2df5a9bf8cfba93befea54370957ab044d95
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="add-authentication-tooyour-xamarinios-app"></a>Přidat aplikaci Xamarin.iOS tooyour ověřování
+# <a name="add-authentication-to-your-xamarinios-app"></a>Přidání ověřování do aplikace Xamarin.iOS
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-Toto téma ukazuje, jak uživatelé tooauthenticate aplikace App Service Mobile z klientské aplikace. V tomto kurzu přidáte ověřování toohello Xamarin.iOS rychlý start projekt pomocí zprostředkovatele identity, která je podporována službou App Service. Po se úspěšně ověří a autorizuje pomocí mobilní aplikace, zobrazí se hodnota ID uživatele hello a bude moct tooaccess omezený dat v tabulce.
+Toto téma ukazuje, jak ověřovat uživatele aplikace služby mobilní aplikace z klientské aplikace. V tomto kurzu přidání ověřování do projektu pro rychlý start Xamarin.iOS pomocí zprostředkovatele identity, která je podporována službou App Service. Poté, co se úspěšně ověří a autorizuje pomocí mobilní aplikace, zobrazí se hodnota ID uživatele a bude mít přístup k datům s omezeným přístupem tabulky.
 
-Je třeba nejprve provést hello kurzu [vytvoření aplikace Xamarin.iOS]. Pokud nepoužijete hello stáhli úvodní serverový projekt, je nutné přidat hello ověřování rozšíření balíčku tooyour projektu. Další informace o balíčcích rozšíření serveru najdete v tématu [pracovat s hello .NET back-end serveru SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+Musíte nejdřív dokončit tento kurz [vytvoření aplikace Xamarin.iOS]. Pokud použijete serverový projekt stažené rychlý start, musíte přidat balíček rozšíření ověřování do projektu. Další informace o balíčcích rozšíření serveru najdete v tématu [pracovat s .NET back-end serveru SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
 ## <a name="register-your-app-for-authentication-and-configure-app-services"></a>Registrace aplikace pro ověřování a nakonfigurujte aplikační služby
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="add-your-app-toohello-allowed-external-redirect-urls"></a>Přidání adresy URL pro vaše aplikace toohello povoleno externí přesměrování
+## <a name="add-your-app-to-the-allowed-external-redirect-urls"></a>Přidání aplikace do adresy URL pro povolené externí přesměrování
 
-Zabezpečené ověřování vyžaduje, můžete definovat nové schéma adresy URL pro vaši aplikaci. To umožňuje hello ověřování systému tooredirect back tooyour aplikaci po dokončení procesu ověřování hello. V tomto kurzu používáme schéma adresy URL hello _appname_ v průběhu. Můžete však použít žádné schéma adresy URL, které zvolíte. Mělo by být jedinečný tooyour mobilních aplikací. tooenable hello přesměrování na straně serveru hello:
+Zabezpečené ověřování vyžaduje, můžete definovat nové schéma adresy URL pro vaši aplikaci. To umožňuje ověřování systému přesměrovat zpět do aplikace po dokončení procesu ověřování. V tomto kurzu používáme schématu adresy URL _appname_ v průběhu. Můžete však použít žádné schéma adresy URL, které zvolíte. Musí být jedinečné pro mobilní aplikace. Chcete povolit přesměrování na straně serveru:
 
-1. V [portál Azure] hello vyberte App Service.
+1. V [portál Azure] vyberte App Service.
 
-2. Klikněte na tlačítko hello **ověřování / autorizace** možnost nabídky.
+2. Klikněte **ověřování / autorizace** možnost nabídky.
 
-3. V hello **povoleno externí adres URL pro přesměrování**, zadejte `url_scheme_of_your_app://easyauth.callback`.  Hello **url_scheme_of_your_app** v tento řetězec je hello schéma adresy URL pro mobilní aplikace.  Měl by splňovat specifikaci normální adresu URL pro určitý protokol (používejte písmena a čísla pouze a začněte s písmenem).  Měli byste si poznamenat hello řetězce, který zvolíte, bude nutné tooadjust kód mobilní aplikace s hello schéma adresy URL na několika místech.
+3. V **povoleno externí adres URL pro přesměrování**, zadejte `url_scheme_of_your_app://easyauth.callback`.  **Url_scheme_of_your_app** v tento řetězec je schéma adresy URL pro mobilní aplikace.  Měl by splňovat specifikaci normální adresu URL pro určitý protokol (používejte písmena a čísla pouze a začněte s písmenem).  Měli byste si poznamenat řetězce, který zvolíte, jako je třeba upravit kód mobilní aplikace s schéma adresy URL na několika místech.
 
 4. Klikněte na **OK**.
 
 5. Klikněte na **Uložit**.
 
-## <a name="restrict-permissions-tooauthenticated-users"></a>Omezte oprávnění tooauthenticated
+## <a name="restrict-permissions-to-authenticated-users"></a>Omezit oprávnění k ověření uživatelé
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-&nbsp;&nbsp;4. V sadě Visual Studio nebo Xamarin Studio spusťte hello klientského projektu na emulátoru nebo zařízení. Ověřte, že se po spuštění aplikace hello vyvolá k neošetřené výjimce s stavový kód 401 (Neautorizováno). selhání Hello je zaznamenané toohello konzole ladicího programu hello. Proto v sadě Visual Studio, měli byste vidět hello selhání v okně výstupu hello.
+&nbsp;&nbsp;4. V sadě Visual Studio nebo Xamarin Studio spuštění klientského projektu na emulátoru nebo zařízení. Ověřte, že k neošetřené výjimce s stavový kód 401 (Neautorizováno) se vyvolá po spuštění aplikace. Toto selhání se zaprotokoluje ke konzole ladicího programu. Proto v sadě Visual Studio, měli byste vidět selhání v okně výstupu.
 
-&nbsp;&nbsp;Toto selhání neoprávněným dojde proto, že aplikace hello pokusí tooaccess váš back-end mobilní aplikace jako neověřený uživatel. Hello *TodoItem* tabulka nyní vyžaduje ověření.
+&nbsp;&nbsp;Toto selhání neoprávněným se stane, protože se aplikace pokusí o přístup k váš back-end mobilní aplikace jako neověřený uživatel. *TodoItem* tabulka nyní vyžaduje ověření.
 
-Potom aktualizujte hello klienta aplikace toorequest prostředky z back-end mobilní aplikace hello s ověřeného uživatele.
+Potom bude aktualizujte klientskou aplikaci pro požadavky na prostředky z back-end mobilní aplikace s ověřeného uživatele.
 
-## <a name="add-authentication-toohello-app"></a>Přidat aplikaci toohello ověřování
-V této části upravíte toodisplay aplikace hello obrazovka pro přihlášení, než se zobrazí data. Při spuštění aplikace hello nepřipojí tooyour služby App Service a nebudou zobrazovat žádná data. Po prvním hello této hello uživatel provede hello gesto aktualizace, zobrazí se obrazovka pro přihlášení hello; Po úspěšném přihlášení hello seznam položek todo se zobrazí.
+## <a name="add-authentication-to-the-app"></a>Přidání ověřování do aplikace
+V této části upravíte aplikace zobrazíte obrazovka pro přihlášení, než se zobrazí data. Při spuštění aplikace, nebude se připojit do vaší služby App Service a nebudou zobrazovat žádná data. Po prvním uživatel provádí aktualizace gesto, zobrazí se obrazovka pro přihlášení; Po úspěšném přihlášení se zobrazí seznam položek todo.
 
-1. V projektu klienta hello, otevřete soubor hello **QSTodoService.cs** a přidejte následující hello pomocí příkazu a `MobileServiceUser` s přistupujícího objektu toohello QSTodoService třídy:
+1. V projektu klienta, otevřete soubor **QSTodoService.cs** a přidejte následující příkaz using a `MobileServiceUser` s přistupujícím k třídě QSTodoService:
  
         using UIKit;
        
         // Logged in user
         private MobileServiceUser user;
         public MobileServiceUser User { get { return user; } }
-2. Přidat novou metodu s názvem **ověřit** příliš**QSTodoService** s hello následující definice:
+2. Přidat novou metodu s názvem **ověřit** k **QSTodoService** s následující definice:
 
         public async Task Authenticate(UIViewController view)
         {
@@ -78,9 +78,9 @@ V této části upravíte toodisplay aplikace hello obrazovka pro přihlášení
             }
         }
 
-    >[AZURE.NOTE] Pokud používáte zprostředkovatele identity než Facebook, změňte hodnotu hello předán příliš**LoginAsync** výše tooone následující hello: _MicrosoftAccount_, _Twitter_, _Google_, nebo _WindowsAzureActiveDirectory_.
+    >[AZURE.NOTE] Pokud používáte zprostředkovatele identity než Facebook, změňte hodnotu předaný **LoginAsync** výše na jednu z následujících: _MicrosoftAccount_, _Twitter_, _Google_, nebo _WindowsAzureActiveDirectory_.
 
-3. Otevřete **QSTodoListViewController.cs**. Upravit definici metoda hello **ViewDidLoad** odebrání hello volání příliš**RefreshAsync()** téměř hello end:
+3. Otevřete **QSTodoListViewController.cs**. Upravit definici metoda **ViewDidLoad** odebrání volání **RefreshAsync()** v blízkosti end:
    
         public override async void ViewDidLoad ()
         {
@@ -93,10 +93,10 @@ V této části upravíte toodisplay aplikace hello obrazovka pro přihlášení
                 await RefreshAsync();
             }
    
-            // Comment out hello call tooRefreshAsync
+            // Comment out the call to RefreshAsync
             // await RefreshAsync();
         }
-4. Změňte metodu hello **RefreshAsync** tooauthenticate Pokud hello **uživatele** vlastnost má hodnotu null. Přidejte následující kód v horní části hello hello metoda definice hello:
+4. Změňte metodu **RefreshAsync** k ověření, pokud **uživatele** vlastnost má hodnotu null. Přidejte následující kód v horní části definici metody:
    
         // start of RefreshAsync method
         if (todoService.User == null) {
@@ -107,7 +107,7 @@ V této části upravíte toodisplay aplikace hello obrazovka pro přihlášení
             }
         }
         // rest of RefreshAsync method
-5. Otevřete **AppDelegate.cs**, přidejte následující metodu hello:
+5. Otevřete **AppDelegate.cs**, přidejte následující metodu:
 
         public static Func<NSUrl, bool> ResumeWithURL;
 
@@ -115,10 +115,10 @@ V této části upravíte toodisplay aplikace hello obrazovka pro přihlášení
         {
             return ResumeWithURL != null && ResumeWithURL(url);
         }
-6. Otevřete **Info.plist** souboru, přejděte příliš**URL typy** v hello **Upřesnit** části. Teď nakonfigurovat hello **identifikátor** a hello **schémata URL** typ adresy URL a klikněte na tlačítko **přidat adresu URL typu**. **Schémata URL** by měla být stejná jako vaše {url_scheme_of_your_app} hello.
-7. V sadě Visual Studio nebo Xamarin Studio připojené tooyour Xamarin sestavení hostitele na počítači Mac, spusťte projekt klienta hello cílení na emulátoru nebo zařízení. Ověřte, že tuto aplikaci hello nezobrazí žádná data.
+6. Otevřete **Info.plist** souboru, přejděte na **URL typy** v **Upřesnit** části. Teď nakonfigurovat **identifikátor** a **schémata URL** typ adresy URL a klikněte na tlačítko **přidat adresu URL typu**. **Schémata URL** by měla být stejná jako vaše {url_scheme_of_your_app}.
+7. V sadě Visual Studio nebo Xamarin Studio připojený k hostiteli sestavení Xamarin na počítači Mac, spuštění klientského projektu cílení na emulátoru nebo zařízení. Ověřte, že aplikace zobrazí žádná data.
    
-    Proveďte aktualizaci gesto hello přidáváním dolů hello seznam položek, které způsobí, že hello přihlašovací obrazovky tooappear. Jakmile úspěšně jste zadali platné přihlašovací údaje, hello aplikace se zobrazí hello seznam položek todo a můžete provést aktualizace toohello data.
+    Proveďte aktualizaci gesto přidáváním dolů v seznamu položek, které způsobí, že přihlašovací obrazovce se objeví. Jakmile úspěšně jste zadali platné přihlašovací údaje, aplikace se zobrazí seznam položek todo a data můžete provádět aktualizace.
 
 <!-- URLs. -->
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582

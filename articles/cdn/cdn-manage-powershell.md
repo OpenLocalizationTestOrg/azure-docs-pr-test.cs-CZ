@@ -1,6 +1,6 @@
 ---
-title: "aaaManage CDN Azure pomocí prostředí PowerShell | Microsoft Docs"
-description: "Zjistěte, jak toouse hello toomanage rutin prostředí Azure PowerShell Azure CDN."
+title: "Správa Azure CDN pomocí prostředí PowerShell | Microsoft Docs"
+description: "Další informace o použití rutin prostředí Azure PowerShell ke správě Azure CDN."
 services: cdn
 documentationcenter: 
 author: zhangmanling
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 269373136d4ef018e4d31f147456b4be2253b463
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5bd2eed7b34cafa43e8f38279890405d4ae55568
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="manage-azure-cdn-with-powershell"></a>Správa Azure CDN pomocí prostředí PowerShell
-PowerShell poskytuje jednu z metod toomanage nejpružnější hello koncové body a profilů Azure CDN.  Prostředí PowerShell můžete použít interaktivní nebo psaní skriptů tooautomate úlohy správy.  Tento kurz představuje některé z nejčastějších úloh, hello můžete provést pomocí prostředí PowerShell toomanage koncové body a profilů Azure CDN.
+PowerShell poskytuje jednu z metod nejpružnější ke správě profilů Azure CDN a koncové body.  Interaktivní nebo psaní skriptů můžete použít PowerShell k automatizaci úloh správy.  Tento kurz představuje některé z nejčastějších úloh, můžete provést pomocí prostředí PowerShell ke správě profilů Azure CDN a koncové body.
 
 ## <a name="prerequisites"></a>Požadavky
-prostředí PowerShell toomanage toouse profilů Azure CDN a koncových bodů, musíte mít nainstalován modul Azure PowerShell hello.  toolearn jak tooinstall prostředí Azure PowerShell a připojte se pomocí hello tooAzure `Login-AzureRmAccount` rutiny, najdete v části [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
+Ke správě profilů Azure CDN a koncové body pomocí prostředí PowerShell, musí mít instalace modulu Azure PowerShell.  Další informace o instalaci prostředí Azure PowerShell a připojte se k Azure pomocí `Login-AzureRmAccount` rutiny, najdete v části [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
 
 > [!IMPORTANT]
 > Musíte se přihlásit s `Login-AzureRmAccount` před spuštěním rutin prostředí Azure PowerShell.
 > 
 > 
 
-## <a name="listing-hello-azure-cdn-cmdlets"></a>Seznam rutin Azure CDN hello
-Můžete vytvořit seznam všech rutin Azure CDN hello pomocí hello `Get-Command` rutiny.
+## <a name="listing-the-azure-cdn-cmdlets"></a>Seznam rutin Azure CDN
+Seznam všech rutin Azure CDN pomocí `Get-Command` rutiny.
 
 ```text
 PS C:\> Get-Command -Module AzureRM.Cdn
@@ -62,7 +62,7 @@ Cmdlet          Unpublish-AzureRmCdnEndpointContent                2.0.0      Az
 ```
 
 ## <a name="getting-help"></a>Získání nápovědy
-Můžete získat pomoc s žádným z těchto rutin pomocí hello `Get-Help` rutiny.  `Get-Help`poskytuje syntaxi a použití a volitelně zobrazuje příklady.
+Můžete získat pomoc s žádným z těchto rutin pomocí `Get-Help` rutiny.  `Get-Help`poskytuje syntaxi a použití a volitelně zobrazuje příklady.
 
 ```text
 PS C:\> Get-Help Get-AzureRmCdnProfile
@@ -86,59 +86,59 @@ DESCRIPTION
 RELATED LINKS
 
 REMARKS
-    toosee hello examples, type: "get-help Get-AzureRmCdnProfile -examples".
+    To see the examples, type: "get-help Get-AzureRmCdnProfile -examples".
     For more information, type: "get-help Get-AzureRmCdnProfile -detailed".
     For technical information, type: "get-help Get-AzureRmCdnProfile -full".
 
 ```
 
 ## <a name="listing-existing-azure-cdn-profiles"></a>Výpis existující profilů Azure CDN
-Hello `Get-AzureRmCdnProfile` rutina bez parametrů načte všechny vaše stávající profily CDN.
+`Get-AzureRmCdnProfile` Rutina bez parametrů načte všechny vaše stávající profily CDN.
 
 ```powershell
 Get-AzureRmCdnProfile
 ```
 
-Vytvoření kanálu toocmdlets pro výčet může být tento výstup.
+Tento výstup lze přesměrovat do rutin pro výčet.
 
 ```powershell
-# Output hello name of all profiles on this subscription.
+# Output the name of all profiles on this subscription.
 Get-AzureRmCdnProfile | ForEach-Object { Write-Host $_.Name }
 
 # Return only **Azure CDN from Verizon** profiles.
 Get-AzureRmCdnProfile | Where-Object { $_.Sku.Name -eq "StandardVerizon" }
 ```
 
-Můžete se taky vrátit jediného profilu tak, že zadáte název a prostředek skupiny profilu hello.
+Můžete se taky vrátit jediného profilu tak, že zadáte název a prostředek skupiny profilu.
 
 ```powershell
 Get-AzureRmCdnProfile -ProfileName CdnDemo -ResourceGroupName CdnDemoRG
 ```
 
 > [!TIP]
-> Je možné toohave CDN více profilů s hello stejný název, tak dlouho, dokud jsou v různých skupinách prostředků.  Vynechání hello `ResourceGroupName` parametr vrátí všechny profily s odpovídajícím názvem.
+> Je možné mít víc profilů CDN se stejným názvem, tak dlouho, dokud jsou v různých skupinách prostředků.  Vynechání `ResourceGroupName` parametr vrátí všechny profily s odpovídajícím názvem.
 > 
 > 
 
 ## <a name="listing-existing-cdn-endpoints"></a>Výpis stávající koncové body CDN
-`Get-AzureRmCdnEndpoint`může načíst koncový bod jednotlivé nebo všechny koncové body hello v profilu.  
+`Get-AzureRmCdnEndpoint`může načíst koncový bod jednotlivé nebo všechny koncové body v profilu.  
 
 ```powershell
 # Get a single endpoint.
 Get-AzureRmCdnEndpoint -ProfileName CdnDemo -ResourceGroupName CdnDemoRG -EndpointName cdndocdemo
 
-# Get all of hello endpoints on a given profile. 
+# Get all of the endpoints on a given profile. 
 Get-AzureRmCdnEndpoint -ProfileName CdnDemo -ResourceGroupName CdnDemoRG
 
-# Return all of hello endpoints on all of hello profiles.
+# Return all of the endpoints on all of the profiles.
 Get-AzureRmCdnProfile | Get-AzureRmCdnEndpoint
 
-# Return all of hello endpoints in this subscription that are currently running.
+# Return all of the endpoints in this subscription that are currently running.
 Get-AzureRmCdnProfile | Get-AzureRmCdnEndpoint | Where-Object { $_.ResourceState -eq "Running" }
 ```
 
 ## <a name="creating-cdn-profiles-and-endpoints"></a>Vytváření profilů CDN a koncové body
-`New-AzureRmCdnProfile`a `New-AzureRmCdnEndpoint` jsou koncové body a použít toocreate profilů CDN.
+`New-AzureRmCdnProfile`a `New-AzureRmCdnEndpoint` slouží k vytváření profilů CDN a koncové body.
 
 ```powershell
 # Create a new profile
@@ -159,16 +159,16 @@ New-AzureRmCdnProfile -ProfileName CdnPoshDemo -ResourceGroupName CdnDemoRG -Sku
 # Retrieve availability
 $availability = Get-AzureRmCdnEndpointNameAvailability -EndpointName "cdnposhdoc"
 
-# If available, write a message toohello console.
+# If available, write a message to the console.
 If($availability.NameAvailable) { Write-Host "Yes, that endpoint name is available." }
 Else { Write-Host "No, that endpoint name is not available." }
 ```
 
 ## <a name="adding-a-custom-domain"></a>Přidání vlastní domény
-`New-AzureRmCdnCustomDomain`Přidá vlastní domény název tooan existující koncový bod.
+`New-AzureRmCdnCustomDomain`Přidá vlastního názvu domény do existující koncový bod.
 
 > [!IMPORTANT]
-> Musíte vytvořit hello CNAME u svého poskytovatele DNS jak je popsáno v [jak toomap vlastní domény tooContent Delivery Network (CDN) endpoint](cdn-map-content-to-custom-domain.md).  Můžete otestovat hello mapování před změnou váš koncový bod pomocí `Test-AzureRmCdnCustomDomain`.
+> Musíte vytvořit CNAME u svého poskytovatele DNS jak je popsáno v [jak namapovat vlastní doménu na koncový bod Content Delivery Network (CDN)](cdn-map-content-to-custom-domain.md).  Můžete otestovat mapování před změnou váš koncový bod pomocí `Test-AzureRmCdnCustomDomain`.
 > 
 > 
 
@@ -176,10 +176,10 @@ Else { Write-Host "No, that endpoint name is not available." }
 # Get an existing endpoint
 $endpoint = Get-AzureRmCdnEndpoint -ProfileName CdnPoshDemo -ResourceGroupName CdnDemoRG -EndpointName cdnposhdoc
 
-# Check hello mapping
+# Check the mapping
 $result = Test-AzureRmCdnCustomDomain -CdnEndpoint $endpoint -CustomDomainHostName "cdn.contoso.com"
 
-# Create hello custom domain on hello endpoint
+# Create the custom domain on the endpoint
 If($result.CustomDomainValidated){ New-AzureRmCdnCustomDomain -CustomDomainName Contoso -HostName "cdn.contoso.com" -CdnEndpoint $endpoint }
 ```
 
@@ -194,7 +194,7 @@ $endpoint = Get-AzureRmCdnEndpoint -ProfileName CdnPoshDemo -ResourceGroupName C
 $endpoint.IsCompressionEnabled = $true
 $endpoint.ContentTypesToCompress = "text/javascript","text/css","application/json"
 
-# Save hello changed endpoint and apply hello changes
+# Save the changed endpoint and apply the changes
 Set-AzureRmCdnEndpoint -CdnEndpoint $endpoint
 ```
 
@@ -213,10 +213,10 @@ Get-AzureRmCdnProfile | Get-AzureRmCdnEndpoint | Unpublish-AzureRmCdnEndpointCon
 ```
 
 ## <a name="startingstopping-cdn-endpoints"></a>Koncové body CDN spuštění nebo zastavení
-`Start-AzureRmCdnEndpoint`a `Stop-AzureRmCdnEndpoint` lze použít toostart a ukončete jednotlivé koncové body nebo skupiny koncových bodů.
+`Start-AzureRmCdnEndpoint`a `Stop-AzureRmCdnEndpoint` lze spustit a zastavit jednotlivé koncové body nebo skupiny koncových bodů.
 
 ```powershell
-# Stop hello cdndocdemo endpoint
+# Stop the cdndocdemo endpoint
 Stop-AzureRmCdnEndpoint -ProfileName CdnDemo -ResourceGroupName CdnDemoRG -EndpointName cdndocdemo
 
 # Stop all endpoints
@@ -227,13 +227,13 @@ Get-AzureRmCdnProfile | Get-AzureRmCdnEndpoint | Start-AzureRmCdnEndpoint
 ```
 
 ## <a name="deleting-cdn-resources"></a>Odstranění prostředků CDN
-`Remove-AzureRmCdnProfile`a `Remove-AzureRmCdnEndpoint` lze použít tooremove profily a koncové body.
+`Remove-AzureRmCdnProfile`a `Remove-AzureRmCdnEndpoint` slouží k odebrání profily a koncové body.
 
 ```powershell
 # Remove a single endpoint
 Remove-AzureRmCdnEndpoint -ProfileName CdnPoshDemo -ResourceGroupName CdnDemoRG -EndpointName cdnposhdoc
 
-# Remove all hello endpoints on a profile and skip confirmation (-Force)
+# Remove all the endpoints on a profile and skip confirmation (-Force)
 Get-AzureRmCdnProfile -ProfileName CdnPoshDemo -ResourceGroupName CdnDemoRG | Get-AzureRmCdnEndpoint | Remove-AzureRmCdnEndpoint -Force
 
 # Remove a single profile
@@ -241,7 +241,7 @@ Remove-AzureRmCdnProfile -ProfileName CdnPoshDemo -ResourceGroupName CdnDemoRG
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Zjistěte, jak tooautomate Azure CDN s [.NET](cdn-app-dev-net.md) nebo [Node.js](cdn-app-dev-node.md).
+Přečtěte si informace o automatizaci Azure CDN s [.NET](cdn-app-dev-net.md) nebo [Node.js](cdn-app-dev-node.md).
 
-toolearn o funkcích CDN, najdete v části [přehled CDN](cdn-overview.md).
+Další informace o funkcích CDN najdete v tématu [přehled CDN](cdn-overview.md).
 

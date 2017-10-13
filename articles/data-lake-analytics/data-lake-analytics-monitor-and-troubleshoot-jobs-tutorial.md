@@ -1,6 +1,6 @@
 ---
-title: "aaaTroubleshoot úlohy Azure Data Lake Analytics pomocí portálu Azure | Microsoft Docs"
-description: "Zjistěte, jak toouse hello úloh Data Lake Analytics tootroubleshoot portálu Azure. "
+title: "Řešení potíží s úlohy Azure Data Lake Analytics pomocí portálu Azure | Microsoft Docs"
+description: "Naučte se používat portál Azure k řešení potíží s úloh Data Lake Analytics. "
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-ms.openlocfilehash: e810d56bab8f1a8254721ec9906bb6a4508dc22a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b9c7453cc0a94f70d0098ed83e5f127832065a62
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="troubleshoot-azure-data-lake-analytics-jobs-using-azure-portal"></a>Řešení potíží s úlohy Azure Data Lake Analytics pomocí portálu Azure
-Zjistěte, jak toouse hello úloh Data Lake Analytics tootroubleshoot portálu Azure.
+Naučte se používat portál Azure k řešení potíží s úloh Data Lake Analytics.
 
-V tomto kurzu se nastavit chybějící problém zdrojový soubor a používat hello portálu Azure tootroubleshoot hello problém.
+V tomto kurzu instalační program chybějící problém zdrojového souboru a pomocí webu Azure Portal k vyřešení tohoto problému.
 
 ## <a name="submit-a-data-lake-analytics-job"></a>Odeslání úlohy Data Lake Analytics
 
-Odešlete hello následující úlohy U-SQL:
+Odeslání následující úlohy U-SQL:
 
 ```
 @searchlog =
@@ -42,38 +42,38 @@ Odešlete hello následující úlohy U-SQL:
    USING Extractors.Tsv();
 
 OUTPUT @searchlog   
-   too"/output/SearchLog-from-adls.csv"
+   TO "/output/SearchLog-from-adls.csv"
    USING Outputters.Csv();
 ```
     
-Hello zdrojový soubor definované ve skriptu hello je **/Samples/Data/SearchLog.tsv1**, kde by měly být **/Samples/Data/SearchLog.tsv**.
+Zdrojový soubor definované ve skriptu je **/Samples/Data/SearchLog.tsv1**, kde by měly být **/Samples/Data/SearchLog.tsv**.
 
 
-## <a name="troubleshoot-hello-job"></a>Řešení potíží s hello úlohy
+## <a name="troubleshoot-the-job"></a>Řešení potíží s úlohy
 
-**toosee všechny hello úlohy**
+**Chcete-li zobrazit všechny úlohy**
 
-1. Z hello portálu Azure, klikněte na tlačítko **Microsoft Azure** v levém horním rohu hello.
-2. Klikněte na dlaždici hello s název účtu Data Lake Analytics.  Hello úlohy souhrnu se zobrazí na hello **úlohy správy** dlaždici.
+1. Z portálu Azure klikněte na tlačítko **Microsoft Azure** v levém horním rohu.
+2. Klikněte na dlaždici s názvem účtu Data Lake Analytics.  Úlohu souhrnu se zobrazí na **úlohy správy** dlaždici.
 
     ![Správa úloh Azure Data Lake Analytics](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-job-management.png)
 
-    Hello úlohy správy poskytuje přehled o stavu úlohy hello. Všimněte si, že je neúspěšnou úlohu.
-3. Klikněte na tlačítko hello **úlohy správy** dlaždici toosee hello úlohy. Hello úlohy jsou rozdělené do **systémem**, **zařazeno ve frontě**, a **ukončeno**. Zobrazí se vaše neúspěšnou úlohu v hello **ukončeno** části. Použije se první z nich v seznamu hello. Pokud máte mnoho úloh, můžete kliknout na **filtru** toohelp jste toolocate úlohy.
+    Úlohy správy poskytuje přehled o stavu úlohy. Všimněte si, že je neúspěšnou úlohu.
+3. Klikněte **úlohy správy** dlaždice zobrazíte úlohy. Úlohy jsou rozdělené do **systémem**, **zařazeno ve frontě**, a **ukončeno**. Zobrazí se vaše neúspěšnou úlohu v **ukončeno** části. Použije se první z nich v seznamu. Pokud máte mnoho úloh, můžete kliknout na **filtru** můžete vyhledat úlohy.
 
     ![Filtrujte úlohy Azure Data Lake Analytics](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-filter-jobs.png)
-4. Klikněte na tlačítko hello neúspěšnou úlohu z podrobnosti úlohy hello seznamu tooopen hello v novém okně:
+4. Klikněte na možnost neúspěšné úlohy ze seznamu otevřete nové okno Podrobnosti úlohy:
 
     ![Azure Data Lake Analytics se nezdařilo úlohy](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-failed-job.png)
 
-    Všimněte si hello **odešlete znovu** tlačítko. Po vyřešení problému hello znovu odešlete hello úlohy.
-5. Klikněte na tlačítko zvýrazněná část z hello předchozí snímek obrazovky tooopen hello podrobnosti o chybě.  Zobrazí se něco podobného jako:
+    Upozornění **odešlete znovu** tlačítko. Po vyřešení problému znovu odešlete úlohu.
+5. Klikněte na tlačítko zvýrazněná část na předchozím snímku obrazovky Otevřít podrobnosti o chybě.  Zobrazí se něco podobného jako:
 
     ![Azure Data Lake Analytics se nezdařilo podrobnosti úlohy](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-failed-job-details.png)
 
-    Zde zjistíte, že nebyl nalezen hello zdrojové složky.
+    Zde zjistíte, že zdrojová složka nebyla nalezena.
 6. Klikněte na tlačítko **duplicitní skriptu**.
-7. Aktualizace hello **FROM** toohello následující cesty:
+7. Aktualizace **FROM** cesta pro následující:
 
     "/ Samples/Data/SearchLog.tsv"
 8. Klikněte na **Odeslat úlohu**.

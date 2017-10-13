@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure Mobile Engagement uživatelské rozhraní - Reach"
-description: "Zjistěte, jak tooreach toohello uživatelů vaší aplikace pomocí nabízených oznámení pomocí Azure Mobile Engagement"
+title: "Azure Mobile Engagement uživatelské rozhraní - Reach"
+description: "Zjistěte, jak k oslovení uživatelů vaší aplikace pomocí nabízených oznámení pomocí Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,67 +14,67 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 40d5162ddeccec82c2c9f5b0d72b4cb10c9ddc38
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ce30456e41ff1a2f4824bcb64246ee115fdd1ef7
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-tooreach-out-toohello-users-of-your-application-with-push-notifications"></a>Jak tooreach toohello uživatelů vaší aplikace pomocí nabízených oznámení
-Tento článek popisuje hello **dosáhnout** kartě hello **Mobile Engagement** portálu. Použít hello **Mobile Engagement** portálu toomonitor a spravovat své mobilní aplikace. Všimněte si, že toostart hello portálu musíte nejprve toocreate **Azure Mobile Engagement** účtu. Další informace najdete v tématu [vytvoření účtu Azure Mobile Engagement](mobile-engagement-create.md).
+# <a name="how-to-reach-out-to-the-users-of-your-application-with-push-notifications"></a>Postup oslovení uživatelů vaší aplikace pomocí nabízených oznámení
+Tento článek popisuje **dosáhnout** kartě **Mobile Engagement** portálu. Můžete použít **Mobile Engagement** portálu ke sledování a správě mobilních aplikací. Všimněte si, že pokud chcete začít používat portál musíte nejprve vytvořit **Azure Mobile Engagement** účtu. Další informace najdete v tématu [vytvoření účtu Azure Mobile Engagement](mobile-engagement-create.md).
 
-Hello připojit části hello uživatelského rozhraní je hello nabízené kampaně nástroj pro správu kde můžete vytvořit nebo upravit nebo aktivovat nebo dokončit nebo monitorování a získat statistiky kampaní nabízených oznámení a funkce, které je přístupný také prostřednictvím hello Reach API (a některé prvky hello nízkou úroveň Push rozhraní API). Mějte na paměti, že ať používáte hello rozhraní API nebo hello uživatelského rozhraní, budete potřebovat toointegrate Azure Mobile Engagement a Reach do své aplikace pro každou platformu s hello SDK, abyste mohli používat kampaně Reach.
+Části Reach uživatelské rozhraní je nástroj správy kampaň nabízených kde můžete vytvořit nebo upravit nebo aktivovat nebo dokončit nebo monitorování a získat statistiky kampaní nabízených oznámení a funkce, které lze také přistupovat přes rozhraní Reach API (a některé prvky nízkou úroveň Push rozhraní API) . Mějte na paměti, jestli používáte rozhraní API nebo uživatelského rozhraní, bude potřeba integrovat Azure Mobile Engagement a Reach do své aplikace pro každou platformu sadou SDK, abyste mohli používat kampaně Reach.
 
 > [!NOTE]
-> Mnoho oddílů hello **Mobile Engagement** portál uživatelského rozhraní obsahovat hello **zobrazit NÁPOVĚDU k** tlačítko. Stisknutím tohoto tlačítka tooget další kontextové informace o oddílu.
+> Mnoho části **Mobile Engagement** portál obsahovat uživatelského rozhraní **zobrazit NÁPOVĚDU k** tlačítko. Chcete-li získat další kontextové informace o oddílu na toto tlačítko.
 > 
 > 
 
 ## <a name="four-types-of-push-notifications"></a>Čtyři typy nabízená oznámení
-1. Oznámení – umožňují toousers toosend reklamní zprávy, který přesměruje je umístění tooanother uvnitř vaší aplikace nebo toosend je webová stránka tooa nebo uložit mimo vaší aplikace. 
-2. Hlasování - povolit informace toogather koncovým uživatelům ve formě odpovědí na otázky.
-3. Datová oznámení - povolit toosend base64 nebo binární datový soubor. se Hello informace obsažené v datovém oznámení odeslaných tooyour aplikace toomodify aktuální zkušeností uživatelů ve vaší aplikaci. Aplikace musí toobe možné tooprocess hello dat v datových oznámeních.
+1. Oznámení – umožňují odesílat reklamní zprávy pro uživatele, kteří přesměruje je to jiné umístění uvnitř vaší aplikace a odešlete je webová stránka nebo úložiště mimo vaší aplikace. 
+2. Hlasování – umožňují od koncových uživatelů sbírat informace ve formě odpovědí na otázky.
+3. Datová oznámení - umožňují odesílat binární nebo base64 datový soubor. Informace obsažené v datovém oznámení se odešlou do vaší aplikace změnit aktuální zkušeností uživatelů ve vaší aplikaci. Aplikace musí umět zpracovat data v datovém oznámení.
 
 ## <a name="campaign-details"></a>Podrobnosti kampaně
-Můžete upravit, klonování, odstranit nebo aktivovat kampaní, které nebyly ještě aktivována podržením ukazatele nad jejich názvy, nebo můžete kliknout na tooopen je. Může klonovat kampaní, které již byla aktivována podržením ukazatele nad jejich názvy nebo můžete kliknout na tooopen je. Jakmile byl aktivován však nelze změnit na kampaň.
+Můžete upravit, klonování, odstranit nebo aktivovat kampaní, které nebyly ještě aktivována podržením ukazatele nad jejich názvy nebo můžete kliknout na k jejich otevření. Může klonovat kampaní, které již byla aktivována podržením ukazatele nad jejich názvy nebo můžete kliknout na k jejich otevření. Jakmile byl aktivován však nelze změnit na kampaň.
 
 ![Reach1][18]
 
 ## <a name="reach-feedback"></a>Dosažení zpětné vazby
-Klikněte na **statistiky** toosee hello podrobnosti kampaně Reach. Hello **jednoduché** zobrazení nabízí vizuální znázornění hello tvar pruhový graf sloupec o co se stalo po kampaň aktivovala. Hello **Upřesnit** zobrazení obsahuje podrobnější informace o hello nabízené kampaně. Tyto údaje nebudou dostupné při odesílání zkušební kampaně tj nabízené odeslané tooa testovací zařízení. Zde je, jak by měl interpretovat tyto podrobnosti:
+Klikněte na **statistiky** a zobrazit podrobnosti kampaně Reach. **Jednoduché** zobrazení nabízí vizuální znázornění ve formě pruhový graf sloupec o co se stalo po kampaň aktivovala. **Upřesnit** zobrazení obsahuje podrobnější informace o nabízené kampaně. Tyto údaje nebudou dostupné, pokud odesíláte zkušební kampaně tj oznámení odeslat testovací zařízení. Zde je, jak by měl interpretovat tyto podrobnosti:
 
-1. **Poslat** -určuje hello počet zpráv nabídnutých toohello zařízení. Tento počet bude záviset na hello cílovou skupinu, kterou jste zadali při vytváření kampaně nabízených hello. Pokud nezadáte žádné cílové skupiny, pak tato nabízená bude odesílat tooall hello zaregistrované zařízení. Podobně jako všechny ostatní nabízených služeb, jsme není nabízená oznámení hello přímo toohello zařízení, ale místo toho je push příslušné platformy toohello konkrétní služeb nabízených oznámení (PNS - APNS nebo GCM/WNS) tak, aby se doručení oznámení hello toohello zařízení. 
-2. **Doručit** -určuje hello počet zpráv, které jsou úspěšně doručil hello systém PNS toohello zařízení a potvrzené jako přijaté Mobile Engagement SDK. 
+1. **Poslat** -určuje počet zpráv nabídnutých do zařízení. Tento počet bude záviset na cílovou skupinu, kterou jste zadali při vytváření nabízené kampaně. Pokud nezadáte žádné cílové skupiny, pak tato nabízená bude odesílat pro všechna registrovaná zařízení. Podobně jako všechny ostatní nabízených služeb, jsme není nabízených oznámení přímo do zařízení, ale místo toho je odešlete do příslušné platformy konkrétní služeb nabízených oznámení (PNS - APNS nebo GCM/WNS) tak, aby jejich doručování oznámení do zařízení. 
+2. **Doručit** -určuje počet zpráv, které jsou úspěšně doručil systém oznámení platformy a zařízení a potvrzené jako přijaté Mobile Engagement SDK. 
    
    *Důvody pro doručené počet je menší než počet stisknutí:*
    
-   1. Pokud uživatel hello odinstaloval hello aplikace ze zařízení hello ale hello systém PNS neví o něm v době hello pošleme nabízené toohello hello systém PNS bude zrušeno uvítací zprávu.
-   2. Pokud zařízení hello má aplikace hello ale hello zařízeními jsou v režimu offline pro dlouhou dobu, pak hello systém PNS selže toodeliver hello zpráva toohello zařízení. 
-   3. Pokud hello zprávu získat doručit toohello zařízení, ale hello Mobile Engagement SDK v aplikaci hello nerozpoznal hello obsah zprávy hello, pak zahodí zprávy. Toto může nastat, pokud hello přizpůsobení hello oznámení v aplikaci hello vygeneruje výjimku, která jsme catch hello SDK a drop uvítací zprávu. Situace může také nastat, pokud aplikace hello na hello zařízení používáte verzi hello Mobile Engagement SDK, která není možné toounderstand hello novější verzi hello nabízená zpráva odeslaný hello platformy, ale toto je pouze v případě, že aplikace hello byl upgradován po hello oznámení byl odeslán z platformy service hello. Hello **Upřesnit** kartě zjistit, kolik zpráv byly vyřazeny. 
-   4. Na zařízeních s iOS někdy není získat doručeny zprávy je buď hello zařízení na nízký stav baterie. nebo pokud aplikace hello spotřebovává významné množství power při zpracování vzdáleného oznámení. Jedná se o omezení hello zařízení iOS.   
-3. **Zobrazí** -určuje hello počet zpráv, které jsou úspěšně zobrazený toohello aplikace uživatele na zařízení hello hello tvar systémové oznámení nabízených nebo out z – aplikaci v centru oznámení hello nebo oznámení v aplikaci v rámci hello mobilní aplikace.  Hello **Upřesnit** na kartě se zjistit, kolik byly systémová oznámení a kolik byly oznámení v aplikaci. 
+   1. Pokud má uživatel ze zařízení odinstaluje aplikaci, ale systém PNS neví o tom, v době, kdy chcete systém PNS odeslat nabízeného oznámení potom zpráva se zahodí.
+   2. Pokud zařízení je aplikace, ale jsou v režimu offline se zařízeními pro dlouhou dobu, systém PNS se nepodaří doručit zprávu do zařízení. 
+   3. Pokud zpráva získat doručit do zařízení, ale v aplikaci Mobile Engagement SDK obsah zprávy nerozpozná, pak zahodí zprávy. Toto může nastat, pokud přizpůsobení oznámení v aplikaci vygeneruje výjimku, která jsme catch SDK a drop zprávy. To může také nastat, pokud aplikace na zařízení používá verzi sady Mobile Engagement SDK, která není možné zjistit, novější verze nabízené zprávy odeslané ze platformy, ale toto je pouze v případě, že aplikace byl upgradován po oznámení byl odeslán z t Použí služby platformy. **Upřesnit** kartě zjistit, kolik zpráv byly vyřazeny. 
+   4. Na zařízeních s iOS někdy není získat doručeny zprávy je buď zařízení na nízký stav baterie. nebo pokud aplikace využívá významné množství power při zpracování vzdáleného oznámení. Jedná se o omezení zařízení iOS.   
+3. **Zobrazí** -určuje počet zpráv, které jsou úspěšně zobrazí uživateli aplikace na zařízení ve formě systémové oznámení nabízených nebo out z – aplikaci v centru oznámení, nebo oznámení v aplikaci v mobilní aplikaci.  **Upřesnit** na kartě se zjistit, kolik byly systémová oznámení a kolik byly oznámení v aplikaci. 
    
-   *Důvody pro zobrazené počet je menší než počet doručené (čekání toobe zobrazí)*
+   *Důvody pro zobrazené počet je menší než počet doručené (čekání na který se má zobrazit.)*
    
-   1. Pokud kampaň oznámení hello měl koncové datum v jej, pak je možné, že byla doručena hello oznámení, ale když přišel čas hello tooopen a zobrazit ji toohello aplikace uživatele, byl již vypršela, a proto se nikdy zobrazit.   
-   2. Pokud hello oznámení je oznámení v aplikaci pak hello oznámení se zobrazí pouze když uživatel aplikace hello otevře aplikace hello. V případech, kdy uživatel aplikace hello neotevřel aplikace hello hello SDK oznámí, že byla oznámení hello doručit ale ještě nebyla nezobrazí, dokud otevření aplikace hello. 
-   3. Pokud hello oznámení je oznámení v aplikaci a nakonfigurovat toobe zobrazen na konkrétní aktivity nebo obrazovce pak také hello oznámení se ohlásí jako doručen, ale ještě doručit, dokud není hello uživatel otevře aplikaci hello na konkrétní obrazovce. 
-4. **Interakce uživatele** -určuje hello počet zpráv, které uživatel aplikace hello má zpracoval s a bude obsahovat hello zprávy, které jsou zpracované nebo ukončené. 
+   1. Pokud tato kampaň oznámení na něm měli koncové datum je možné, že byla doručena oznámení, ale při čas dodán otevřít a zobrazit ji pro uživatele aplikace, je již platnost vypršela, se nikdy zobrazovat.   
+   2. Pokud oznámení je oznámení v aplikaci, pak oznámení se zobrazí, jenom když aplikace uživatel otevře aplikaci. V případech, kdy uživatel aplikace neotevřel aplikace sady SDK oznámí, že byla oznámení doručit ale ještě nebyla nezobrazí, dokud otevření aplikace. 
+   3. Pokud oznámení je oznámení v aplikaci a nakonfigurovat zobrazený na konkrétní aktivity nebo obrazovce pak také oznámení se ohlásí jako doručen, ale ještě není doručit neprojeví, dokud uživatel otevře aplikaci na konkrétní obrazovce. 
+4. **Interakce uživatele** -určuje počet zpráv, které má uživatel aplikace zpracoval s a bude obsahovat zprávy, které jsou zpracované nebo ukončené. 
    
-   * *uživatel aplikace Hello může akce oznámení v některém z následujících způsobů hello:*
+   * *Uživatel aplikace může oznámení v některém z následujících způsobů:*
      
-     1. Pokud hello oznámení systému nebo na více systémů z – aplikace se oznámení nebo oznámení v aplikaci odesílá jen oznámení potom hello aplikace uživatel klikne na hello oznámení.
-     2. Pokud hello oznámení je oznámení v aplikaci s textem nebo webové zobrazení nebo hlasování pak hello aplikace uživatel klikne na hello tlačítko akce v hello oznámení.
-     3. Pokud se oznámení hello oznámení v aplikaci s webové zobrazení pak hello aplikace uživatel klikne na na adrese URL hello webové pouze v zobrazení [Android]
-   * *uživatel aplikace Hello můžete ukončit oznámení v některém z následujících způsobů hello:*
+     1. Pokud se oznámení o oznámení systému nebo na více systémů z – aplikaci nebo oznámení v aplikaci, pak aplikace uživatel klikne na oznámení odeslaných jen oznámení.
+     2. Pokud oznámení je oznámení v aplikaci s text nebo webového zobrazení nebo hlasování aplikace uživatel klikne na tlačítko akce v oznámení.
+     3. Pokud oznámení je oznámení v aplikaci s webové zobrazení pak aplikace uživatel klikne na adresu URL webové pouze v zobrazení [Android]
+   * *Uživatel aplikace můžete ukončit oznámení v některém z následujících způsobů:*
      
-     1. Kliknutím na tlačítko Zavřít hello na hello oznámení přímo. 
-     2. K načtení rychle nebo odstraněním hello oznámení. 
-     3. Oznámení v aplikaci s text nebo webového obsahu a hlasování jsou obvykle zobrazených toohello aplikace uživatele ve dvou krocích. Nejprve zobrazí oznámení a po kliknutí na něm, zobrazí se jim hello následné obsahu text/web/dotazování. uživatel aplikace Hello můžete ukončit oznámení v některém z těchto kroků a hello podrobností v rozšířeném zobrazení hello zachytí to. 
-5. **Reakcemi** -určuje hello počet zpráv, které byly explicitně reakcemi uživatelem aplikace hello. Toto je nejvíce zajímavé číslo hello jako to informuje o tom, kolik uživatelů aplikace byly zajímají o uvítací zprávu, kterou instalováni v hello oznámení. 
+     1. Klepnutím na tlačítko Zavřít na oznámení přímo. 
+     2. K načtení rychle nebo odstraněním oznámení. 
+     3. Oznámení v aplikaci s text nebo webového obsahu a dotazuje se obvykle zobrazují uživateli aplikace ve dvou krocích. Nejprve zobrazí oznámení a po kliknutí na něm, zobrazí se jim následné obsahu text/web/dotazování. Uživatel aplikace můžete ukončit oznámení v některém z těchto kroků a podrobností v rozšířeném zobrazení zachytí to. 
+5. **Reakcemi** -určuje počet zpráv, které byly explicitně reakcemi uživatelem aplikace. Toto je počet nejvíce zajímavé, jak to ukazuje, kolik uživatelů aplikace byly zajímají o zprávu, kterou instalováni v oznámení. 
 
 > [!NOTE]
-> Na iOS & platformy systému Windows, pokud má uživatel hello hello aplikaci otevřete a hello kampaň byla kampaň "Kdykoliv" je možné, že oba mimo oznámení v aplikaci a aplikace se zobrazují v hello stejnou dobu. To může způsobit vyšší než hello doručené zobrazené počtu. Pokud uživatel hello pracuje nebo akce hello oznámení, pak i hello uživatelské interakce/Actioned počet může být větší než doručené. 
+> Na iOS a Windows otevřete platformy, pokud má uživatel aplikace a tato kampaň byla kampaň "Kdykoliv" potom je možné, že oba mimo aplikaci a oznámení v aplikaci se zobrazují ve stejnou dobu. To může způsobit vyšší, než doručené zobrazené počtu. Pokud uživatel pracuje nebo akce oznámení a pak i počet uživatelské interakce/Actioned může být větší než doručené. 
 > 
 > 
 

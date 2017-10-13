@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure dokumentace k Batch – kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
-description: "Zjistěte, jak toouse Batch efektivně toorun rozsáhlé paralelní a vysoce výkonné výpočetní aplikace. Kurzy, reference k rozhraní API a další dokumentace"
+title: "Dokumentace ke službě Azure Batch – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
+description: "Zjistěte, jak služba Batch umožňuje efektivně spouštět rozsáhlé paralelní aplikace a aplikace vysokovýkonného výpočetního prostředí. Kurzy, reference k rozhraní API a další dokumentace"
 services: batch
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 25172c7b3462794643d1cba539fcd0d9a6c4c62e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 31e15ecb995f0a5b1164296132db15e8de7e4363
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="batch-documentation"></a>Dokumentace ke službě Batch
 
-Zjistěte, jak hello toouse Batch toorun rozsáhlé paralelní a vysoce výkonné aplikace výpočetní efektivně v cloudu. Kurzy, odkazy na rozhraní API a další dokumentaci ukazují, jak toodefine hello Azure výpočetní prostředky tooexecute aplikace paralelně nebo ve velkém měřítku bez ruční konfigurace a správa infrastruktury.
+Zjistěte, jak služba Batch umožňuje efektivně spouštět rozsáhlé paralelní aplikace a aplikace vysokovýkonného výpočetního prostředí v cloudu. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak můžete definovat výpočetní prostředky Azure, abyste mohli spouštět vaše aplikace paralelně nebo ve velkém měřítku bez nutnosti ruční konfigurace a správy infrastruktury.
 
 <ul class="panelContent cardsFTitle">
     <li>

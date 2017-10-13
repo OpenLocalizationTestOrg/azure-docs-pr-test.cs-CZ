@@ -1,9 +1,9 @@
 ---
-title: "na základě aaaURL obsahu směrování přehled | Microsoft Docs"
-description: "Tato stránka obsahuje přehled hello na základě adresy URL aplikace brány obsahu směrování, konfigurace UrlPathMap a PathBasedRouting pravidlo."
+title: "Přehled směrování obsahu na základě adresy URL | Dokumentace Microsoftu"
+description: "Tato stránka poskytuje přehled směrování obsahu na základě adresy URL, konfigurace UrlPathMap a pravidla PathBasedRouting ve službě Application Gateway."
 documentationcenter: na
 services: application-gateway
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: 
 ms.assetid: 4409159b-e22d-4c9a-a103-f5d32465d163
@@ -13,31 +13,31 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
-ms.author: gwallace
-ms.openlocfilehash: 5094b42625baffeb395beace68db0d269e46080c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.author: davidmu
+ms.openlocfilehash: b94e879de8136eeaddbf2a277d9634025dc99bc1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="url-path-based-routing-overview"></a>Přehled směrování na základě cest URL
 
-Směrování na základě cesty adres URL umožňuje vám tooroute provoz tooback-end serveru fondy podle cest URL požadavku hello. 
+Směrování na základě cesty URL umožňuje směrovat provoz do fondů back-end serveru na základě cest URL požadavku. 
 
-Jedním z hello scénáře je tooroute požadavky pro různé typy obsahu toodifferent back-end serveru fondy.
+Jedním ze scénářů je směrování požadavků na různé typy obsahu do různých fondů back-endové serveru.
 
-V následujícím příkladu hello, Application Gateway obsluhuje přenosy dat pro contoso.com ze tří fondů back-end serverů například: VideoServerPool, ImageServerPool a DefaultServerPool.
+V následujícím příkladu služba Application Gateway obsluhuje provoz pro contoso.com ze tří fondů back-endového serveru, například: VideoFondServeru, ObrazkyFondServeru a VychoziFondServeru.
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
-Požadavky pro http://contoso.com/video * jsou směrované tooVideoServerPool a http://contoso.com/images * jsou směrované tooImageServerPool. DefaultServerPool je vybraná, pokud cesta vzory hello neodpovídají.
+Požadavky na http://contoso.com/video* jsou směrovány na VideoFondServeru a požadavky na http://contoso.com/images* jsou směrovány na ObrazkyFondServeru. Pokud nevyhovuje žádný vzor cesty, vybere se VychoziFondServeru.
 
 > [!IMPORTANT]
-> Pravidla se zpracovávají v pořadí hello, jsou uvedeny v portálu hello. Je první předchozí tooconfiguring velmi doporučené tooconfigure naslouchací procesy více lokalit základní naslouchací proces.  Tím se zajistí ukončení tento provoz získá směrované toohello přímo zpět. Pokud je základní naslouchací proces uveden jako první a odpovídá příchozímu požadavku, požadavek se zpracuje tímto naslouchacím procesem.
+> Pravidla se zpracovávají v pořadí, v jakém jsou uvedena na portálu. Důrazně doporučujeme nakonfigurovat naslouchací procesy pro více webů před konfigurací základního naslouchacího procesu.  Tím se zajistí směrování provozu do správného back-endu. Pokud je základní naslouchací proces uveden jako první a odpovídá příchozímu požadavku, požadavek se zpracuje tímto naslouchacím procesem.
 
 ## <a name="urlpathmap-configuration-element"></a>Konfigurační prvek UrlPathMap
 
-Hello urlPathMap element je použité toospecify cesta vzory tooback-end serveru fondu mapování. Hello následující ukázka kódu je fragment kódu hello elementu urlPathMap ze souboru šablony.
+Prvek UrlPathMap slouží k určení vzorů cest pro mapování fondů back-end serveru. Následující ukázka kódu je fragment prvku UrlPathMap ze souboru šablony.
 
 ```json
 "urlPathMaps": [{
@@ -69,13 +69,13 @@ Hello urlPathMap element je použité toospecify cesta vzory tooback-end serveru
 ```
 
 > [!NOTE]
-> PathPattern: Toto nastavení je seznam vzorů toomatch cesta. Každý musí začínat znakem / a jediným místem hello "*" je povolena, je v hello end následující "/". Hello řetězec dodáni toohello cesta objekt přiřazení vzorce nezahrnuje jakýkoli text po hello nejprve? nebo # a tyto znaky nejsou povoleny v tomto poli.
+> PathPattern: Toto nastavení je seznam vzorů cest, které je nutné splnit. Každý vzor musí začínat znakem „/“ a znak „*“ lze použít pouze na konci za znakem „/“. Řetězec předávaný ke kontrole cesty neobsahuje žádný text po počátečním znaku „?“ nebo „#“ a tyto znaky zde nejsou povolené.
 
 Více informací najdete v dokumentu [Šablona Resource Manageru používající směrování na základě adresy URL](https://azure.microsoft.com/documentation/templates/201-application-gateway-url-path-based-routing).
 
 ## <a name="pathbasedrouting-rule"></a>Pravidlo PathBasedRouting
 
-RequestRoutingRule typu PathBasedRouting je použité toobind urlPathMap tooa naslouchací proces. Všechny požadavky přijaté tímto naslouchacím procesem jsou směrovány na základě zásad zadaných v UrlPathMap.
+Pravidlo RequestRoutingRule typu PathBasedRouting slouží k vytvoření vazby mezi naslouchacím procesem a UrlPathMap. Všechny požadavky přijaté tímto naslouchacím procesem jsou směrovány na základě zásad zadaných v UrlPathMap.
 Fragment pravidla PathBasedRouting:
 
 ```json
@@ -100,4 +100,4 @@ Fragment pravidla PathBasedRouting:
 
 ## <a name="next-steps"></a>Další kroky
 
-Po seznamovat založené na adrese URL obsahu směrování, přejděte příliš[vytvoření služby application gateway pomocí směrování na základě adresy URL](application-gateway-create-url-route-portal.md) toocreate aplikační brány s pravidel směrování adres URL.
+Po získání informací o směrování obsahu na základě adresy URL přejděte k tématu [Vytvoření služby Application Gateway používající směrování na základě adresy URL](application-gateway-create-url-route-portal.md) a vytvořte službu Application Gateway s pravidly směrování adres URL.

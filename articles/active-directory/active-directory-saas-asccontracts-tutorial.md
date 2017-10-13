@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace se smlouvami ASC | Microsoft Docs'
-description: "Zjistěte, jak tooconfigure jednotného přihlašování služby Azure Active Directory a jiné smlouvy ASC."
+description: "Zjistěte, jak nakonfigurovat jednotné přihlašování v Azure Active Directory a jiné smlouvy ASC."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,111 +13,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2017
 ms.author: jeedes
-ms.openlocfilehash: 8320af8acfda3e3d37e589c9887cd697d5ab651c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 87ea3cc55f9683e7d5b9912a87d675575cea0347
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asc-contracts"></a>Kurz: Azure Active Directory integrace se smlouvami ASC
 
-V tomto kurzu zjistíte, jak toointegrate ASC měnící se službou Azure Active Directory (Azure AD).
+V tomto kurzu zjistěte, jak integrovat ASC kontrakty s Azure Active Directory (Azure AD).
 
-Integrace ASC kontrakty s Azure AD poskytuje hello následující výhody:
+Integrace ASC kontrakty s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup tooASC kontrakty
-- Můžete povolit tooautomatically vaši uživatelé získat přihlášeného tooASC kontrakty (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup k kontrakty ASC
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k kontrakty ASC (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-tooconfigure integrace Azure AD s ASC kontrakty, je třeba hello následující položky:
+Konfigurace integrace Azure AD s ASC kontrakty, potřebujete následující položky:
 
 - Předplatné služby Azure AD
 - ASC kontrakty jednotného přihlašování povolené předplatné
 
 > [!NOTE]
-> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
+Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání smluv ASC z Galerie hello
+1. Přidání smluv ASC z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-asc-contracts-from-hello-gallery"></a>Přidání smluv ASC z Galerie hello
-tooconfigure hello integrace ASC smluv do Azure AD, je nutné tooadd ASC kontrakty hello Galerie tooyour seznamu spravovaných aplikací SaaS.
+## <a name="adding-asc-contracts-from-the-gallery"></a>Přidání smluv ASC z Galerie
+Při konfiguraci integrace ASC smluv do služby Azure AD, potřebujete přidat ASC kontrakty z Galerie si na seznam spravovaných aplikací SaaS.
 
-**tooadd ASC kontrakty z Galerie hello, proveďte následující kroky hello:**
+**Pokud chcete přidat ASC kontrakty z galerie, proveďte následující kroky:**
 
-1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
+1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
+2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
 
     ![Aplikace][3]
 
-4. Hello vyhledávacího pole zadejte **ASC kontrakty**.
+4. Do vyhledávacího pole zadejte **ASC kontrakty**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-asccontracts-tutorial/tutorial_asccontracts_search.png)
 
-5. Na panelu výsledků hello vyberte **ASC kontrakty**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.
+5. Na panelu výsledků vyberte **ASC kontrakty**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-asccontracts-tutorial/tutorial_asccontracts_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s kontrakty ASC podle testovacího uživatele názvem "Britta Simon."
 
-Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v kontraktech ASC je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v kontraktech ASC musí toobe navázat.
+Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v kontraktech ASC je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v kontraktech ASC musí navázat.
 
-Přiřazením hello hodnotu hello je vytvořen vztah tento odkaz **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** v kontraktech ASC.
+Tento vztah propojení se navazuje se hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v kontraktech ASC.
 
-tooconfigure a testu Azure AD jednotné přihlašování s ASC kontrakty, potřebujete následující stavební bloky hello toocomplete:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s ASC kontrakty, je třeba dokončit následující stavební bloky:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytváření testovacího uživatele ASC kontrakty](#creating-an-asc-contracts-test-user)**  -toohave protějšek Britta Simon v kontraktech ASC, která je propojená toohello Azure AD reprezentace uživatele.
-4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytváření testovacího uživatele ASC kontrakty](#creating-an-asc-contracts-test-user)**  – Pokud chcete mít protějšek Britta Simon v kontraktech ASC, propojené služby Azure AD reprezentace daného uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci kontrakty ASC.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci kontrakty ASC.
 
-**tooconfigure Azure AD jednotné přihlašování s ASC kontrakty, proveďte následující kroky hello:**
+**Ke konfiguraci Azure AD jednotné přihlašování s ASC kontrakty, proveďte následující kroky:**
 
-1. V portálu Azure, na hello hello **ASC kontrakty** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na portálu Azure na **ASC kontrakty** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
+2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-asccontracts-tutorial/tutorial_asccontracts_samlbase.png)
 
-3. Na hello **ASC kontrakty domény a adresy URL** část, proveďte následující kroky hello:
+3. Na **ASC kontrakty domény a adresy URL** část, proveďte následující kroky:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-asccontracts-tutorial/tutorial_asccontracts_url.png)
 
-    a. V hello **identifikátor** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<subdomain>.asccontracts.com/shibboleth`
+    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.asccontracts.com/shibboleth`
 
-    b. V hello **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<subdomain>.asccontracts.com/shibboleth.sso/login`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.asccontracts.com/shibboleth.sso/login`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte pomocí hello skutečné identifikátor dotazů a odpovědí adresy URL. Obraťte se na tým ASC sítě Inc. (ASC) na **613.599.6178** tooget tyto hodnoty.
+    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem a adresa URL odpovědi. Obraťte se na tým ASC sítě Inc. (ASC) na **613.599.6178** k získání těchto hodnot.
 
-4. Na hello **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat hello ve vašem počítači.
+4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-asccontracts-tutorial/tutorial_asccontracts_certificate.png) 
 
@@ -125,63 +125,63 @@ V této části můžete povolit Azure AD jednotné přihlašování v hello por
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-asccontracts-tutorial/tutorial_general_400.png)
 
-6. tooconfigure jednotného přihlašování na **ASC kontrakty** straně, obraťte se na podporu ASC sítě Inc. (ASC) na **613.599.6178** a poskytnout hello Stáhnout **soubor XML s metadaty**. Nastavují tuto aplikaci toohave hello jednotné přihlašování SAML připojení správně nastavena na obou stranách.
+6. Konfigurace jednotného přihlašování na **ASC kontrakty** straně, obraťte se na podporu ASC sítě Inc. (ASC) na **613.599.6178** a jim poskytnout stažené **soubor XML s metadaty**. Nastavené tuto aplikaci tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
+Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
+**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
 
-1. V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
+1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-asccontracts-tutorial/create_aaduser_01.png) 
 
-2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-asccontracts-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.
+3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-asccontracts-tutorial/create_aaduser_03.png) 
 
-4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
+4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-asccontracts-tutorial/create_aaduser_04.png) 
 
-    a. V hello **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textovému poli, typ **BrittaSimon**.
 
-    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-an-asc-contracts-test-user"></a>Vytváření testovacího uživatele kontrakty ASC
 
-Práce s tým podpory ASC sítě Inc. (ASC) na **613.599.6178** tooget hello uživatelů přidaných v platformě ASC kontrakty hello.
+Práce s tým podpory ASC sítě Inc. (ASC) na **613.599.6178** získat přidané v platformě ASC kontrakty uživatele.
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
+### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte tak, že udělíte přístup kontrakty tooASC toouse Britta Simon Azure jednotné přihlašování.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu kontrakty ASC.
 
 ![Přiřadit uživatele][200] 
 
-**tooassign Britta Simon tooASC kontrakty, proveďte následující kroky hello:**
+**Pokud chcete přiřadit Britta Simon ASC kontrakty, proveďte následující kroky:**
 
-1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikace hello vyberte **ASC kontrakty**.
+2. V seznamu aplikací vyberte **ASC kontrakty**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-asccontracts-tutorial/tutorial_asccontracts_app.png) 
 
-3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
+3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
@@ -189,7 +189,7 @@ V této části povolíte tak, že udělíte přístup kontrakty tooASC toouse B
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -197,13 +197,13 @@ V této části povolíte tak, že udělíte přístup kontrakty tooASC toouse B
     
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.
+V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
-Po kliknutí na tlačítko hello ASC kontrakty dlaždici v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour ASC kontrakty aplikace. Další informace o na přístupovém panelu najdete v tématu. [Úvod do přístupového panelu](https://msdn.microsoft.com/library/dn308586).
+Když kliknete na dlaždici ASC kontrakty na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci kontrakty ASC. Další informace o na přístupovém panelu najdete v tématu. [Úvod do přístupového panelu](https://msdn.microsoft.com/library/dn308586).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

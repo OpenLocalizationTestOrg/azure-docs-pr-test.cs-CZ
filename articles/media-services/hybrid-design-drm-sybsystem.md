@@ -1,5 +1,5 @@
 ---
-title: "návrh aaaHybrid DRM subsystem(s) využívající Azure Media Services | Microsoft Docs"
+title: "Hybridního návrhu DRM subsystem(s) využívající Azure Media Services | Microsoft Docs"
 description: "Toto téma popisuje hybridního návrhu DRM subsystem(s) využívající Azure Media Services."
 services: media-services
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: willzhan;juliako
-ms.openlocfilehash: 4206248420ccd4dbfc9a87a86f4763534c6254a1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 841b1164db6fd1a2c029b98392509c15f23158e2
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>Hybridního návrhu DRM subsystem(s)
 
@@ -26,26 +26,26 @@ Toto téma popisuje hybridního návrhu DRM subsystem(s) využívající Azure M
 
 ## <a name="overview"></a>Přehled
 
-Azure Media Services poskytuje podporu pro následující tři systému DRM hello:
+Azure Media Services poskytuje podporu pro následující tři DRM systému:
 
 * PlayReady
 * Widevine (modulární)
 * FairPlay
 
-Podpora DRM Hello zahrnuje šifrování DRM (dynamické šifrování) a doručování licencí, s podporuje všechny 3 technologiemi DRM jako prohlížeč přehrávač SDK Azure Media Player.
+Podpora DRM zahrnuje šifrování DRM (dynamické šifrování) a doručování licencí, s podporuje všechny 3 technologiemi DRM jako prohlížeč přehrávač SDK Azure Media Player.
 
-Podrobné zpracování DRM nebo CENC subsystému návrhu a implementace, najdete v tématu hello dokument s názvem [CENC s více technologiemi DRM a řízením přístupu](media-services-cenc-with-multidrm-access-control.md).
+Pro podrobné zpracování DRM nebo CENC subsystému návrhu a implementace, najdete v dokumentu s názvem [CENC s více technologiemi DRM a řízením přístupu](media-services-cenc-with-multidrm-access-control.md).
 
-I když jsme plně podporují pro tři systémy DRM, někdy nutné zákazníci toouse různých částí vlastní infrastrukturu nebo subsystémy v přidání tooAzure Media Services toobuild hybridní subsystému DRM.
+I když jsme plně podporují pro tři systémy DRM, někdy zákazníci muset pomocí různých částí vlastní infrastrukturu nebo subsystémy kromě Azure Media Services můžete vytvářet hybridní subsystému DRM.
 
 Níže jsou některé běžné dotazy požaduje od zákazníků:
 
 * "Je možné pomocí vlastní servery licence DRM?" (V tomto případě zákazníků investovaly do serverové farmy licence DRM s embedded obchodní logiku).
 * "Je možné pomocí pouze vaše doručování licencí DRM ve službě Azure Media Services bez hostování obsahu v AMS?"
 
-## <a name="modularity-of-hello-ams-drm-platform"></a>Modularitu hello platformy AMS DRM
+## <a name="modularity-of-the-ams-drm-platform"></a>Modularitu platformy AMS DRM
 
-V rámci komplexní cloudové platformy, video má Azure Media Services DRM návrh s flexibilitu a modularitu v paměti. Azure Media Services můžete použít s žádným z hello následující různé kombinace popsané v následující tabulce hello, (následuje vysvětlení hello zápis použitý v tabulce hello). 
+V rámci komplexní cloudové platformy, video má Azure Media Services DRM návrh s flexibilitu a modularitu v paměti. Azure Media Services můžete použít s žádným z následujících různé kombinace popsané v následující tabulce (následuje vysvětlení zápis použitý v tabulce). 
 
 |**Hostování obsahu & počátek**|**Šifrování obsahu**|**Doručování licencí DRM**|
 |---|---|---|
@@ -74,24 +74,24 @@ V rámci komplexní cloudové platformy, video má Azure Media Services DRM náv
 
 ### <a name="content-key"></a>Klíč obsahu
 
-Prostřednictvím konfigurace klíč obsahu můžete řídit následující atributy AMS dynamického šifrování a doručení licenční služby AMS hello:
+Prostřednictvím konfigurace klíč obsahu můžete řídit následujícími atributy AMS dynamického šifrování a doručení licenční služby AMS:
 
-* klíč obsahu Hello používá pro dynamické šifrování DRM.
-* Obsahu toobe licence DRM doručil služeb doručování licence: práva, klíče k obsahu a omezení.
+* Klíč obsahu pro dynamické šifrování DRM.
+* Obsah licence DRM tak, aby přijímá služeb doručování licence: práva, klíče k obsahu a omezení.
 * Typ **obsahu omezení zásad autorizace pro klíč**: otevřete, IP adresu nebo omezení s tokenem.
-* Pokud **tokenu** typ **slouží k omezení zásad autorizace klíče obsahu**, hello **obsahu omezení zásad autorizace pro klíč** musí být splněné před vydáním licenci.
+* Pokud **tokenu** typ **slouží k omezení zásad autorizace klíče obsahu**, **obsahu omezení zásad autorizace pro klíč** musí být splněné před vydáním licenci.
 
 ### <a name="asset-delivery-policy"></a>Zásady doručení assetu
 
-Prostřednictvím konfigurace zásady pro doručení assetu můžete řídit hello následující atributy používané dynamické Balíčkovač AMS a dynamické šifrování AMS koncový bod streamování:
+Prostřednictvím konfigurace zásady pro doručení assetu můžete řídit následujícími atributy používané dynamické Balíčkovač AMS a dynamické šifrování koncový bod streamování AMS:
 
 * Streamování kombinace šifrování DRM a protokolu, jako je například DASH pod CENC (PlayReady a Widevine), funkce smooth streaming v rámci technologie PlayReady, HLS pod Widevine nebo PlayReady.
-* Hello výchozí nebo vložených licence doručení adresy URL pro každou hello podílejí technologiemi DRM.
+* Výchozí nebo vložených licence doručení adresy URL pro každou související se situací technologiemi DRM.
 * Jestli licence získání adresy URL (LA_URLs) v DASH MPD nebo HLS seznam stop obsahovat řetězec dotazu klíče ID (DĚTSKÝ) pro Widevine a FairPlay, v uvedeném pořadí.
 
 ## <a name="scenarios-and-samples"></a>Scénáře a ukázky
 
-Podle toho, vysvětlení hello v předchozí části hello, hello následujících pět hybridní scénáře použití příslušných **klíč obsahu**-**zásady doručení Assetu** kombinace konfigurací (hello Tabulka hello podle ukázky uvedený v posledním sloupci hello):
+Podle vysvětlení v předchozí části, použijte následující pět hybridní scénáře příslušných **klíč obsahu**-**zásady doručení Assetu** kombinace konfigurací (ukázky uvedený v posledním sloupci, postupujte podle kroků v tabulce):
 
 |**Hostování obsahu & počátek**|**Šifrování DRM**|**Doručování licencí DRM**|**Konfigurace klíč obsahu**|**Konfigurace zásad doručení assetu**|**Ukázka**|
 |---|---|---|---|---|---|
@@ -101,7 +101,7 @@ Podle toho, vysvětlení hello v předchozí části hello, hello následující
 |AMS|Třetí strany|Mimo|Ne|Ne|Ukázka 4|
 |Třetí strany|Třetí strany|AMS|Ano|Ne|    
 
-V hello ukázky PlayReady ochrany funguje pro DASH a technologie smooth streaming. Hello video se adresy URL níže technologie smooth streaming adresy URL. tooget hello odpovídající adresy URL DASH, stačí připojit "(formát = mpd. čas csf)". Můžete použít hello [testování azure media player](http://aka.ms/amtest) tootest v prohlížeči. Umožňuje tooconfigure který streamování toouse protokol, pod které technologie. Podpora technologie PlayReady prostřednictvím EME IE11 a MS Edge ve Windows 10. Další informace najdete v tématu [podrobnosti o hello testovací nástroj](https://blogs.msdn.microsoft.com/playready4/2016/02/28/azure-media-test-tool/).
+V ukázkách funguje ochrana technologií PlayReady pro DASH a technologie smooth streaming. Video adresy URL. níže jsou technologie smooth streaming adresy URL. Pokud chcete získat odpovídající adresy URL DASH, stačí připojit "(formát = mpd. čas csf)". Můžete použít [testování azure media player](http://aka.ms/amtest) k testování v prohlížeči. Umožňuje nakonfigurovat které protokol pro streamování chcete použít, pod které technologie. Podpora technologie PlayReady prostřednictvím EME IE11 a MS Edge ve Windows 10. Další informace najdete v tématu [podrobné informace o nástroji test](https://blogs.msdn.microsoft.com/playready4/2016/02/28/azure-media-test-tool/).
 
 ### <a name="sample-1"></a>Ukázka 1
 

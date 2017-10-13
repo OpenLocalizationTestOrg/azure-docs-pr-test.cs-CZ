@@ -1,6 +1,6 @@
 ---
-title: "obsah aaaPublish Azure Media Services pomocí REST"
-description: "Zjistěte, jak toocreate Lokátor, který je použité toobuild adresu URL pro streamování. Kód Hello používá rozhraní REST API."
+title: "Publikovat obsah Azure Media Services pomocí REST"
+description: "Naučte se vytvořit lokátor, který je použit k vytvoření adresy URL streamování. Kód používá rozhraní REST API."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.openlocfilehash: f849e21b3103b9b33bc652e886b2016ea495b19a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d1e0a112040f6aa4cfa9e8c323507b1c0a223f3e
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="publish-azure-media-services-content-using-rest"></a>Publikovat obsah Azure Media Services pomocí REST
 > [!div class="op_single_selector"]
@@ -29,40 +29,40 @@ ms.lasthandoff: 10/06/2017
 > 
 
 ## <a name="overview"></a>Přehled
-Můžete datového proudu s adaptivní přenosovou rychlostí sady souborů MP4 vytvořením Lokátor streamování OnDemand a vytvoření adresy URL streamování. Hello [kódování prostředek](media-services-rest-encode-asset.md) téma ukazuje, jak nastavit tooencode do MP4 adaptivní přenosovou rychlostí. Pokud váš obsah je zašifrován, konfigurace zásad doručení assetu (jak je popsáno v [to](media-services-rest-configure-asset-delivery-policy.md) tématu) před vytvořením lokátoru. 
+Můžete datového proudu s adaptivní přenosovou rychlostí sady souborů MP4 vytvořením Lokátor streamování OnDemand a vytvoření adresy URL streamování. [Kódování prostředek](media-services-rest-encode-asset.md) téma ukazuje, jak ke kódování do sady souborů MP4 adaptivní přenosovou rychlostí. Pokud váš obsah je zašifrován, konfigurace zásad doručení assetu (jak je popsáno v [to](media-services-rest-configure-asset-delivery-policy.md) tématu) před vytvořením lokátoru. 
 
-Můžete také použít toobuild Lokátor tento bod tooMP4 soubory, které lze progresivně stáhnout – adresy URL pro streamování OnDemand.  
+Lokátor streamování OnDemand. můžete také použít k vytvoření adresy URL, které odkazují na soubory MP4, které lze progresivně stáhnout.  
 
-Toto téma ukazuje, jak toocreate Lokátor streamování OnDemand v pořadí váš asset toopublish a sestavení Smooth, MPEG DASH a adresy URL streamování HLS. Také ukazuje aktivní toobuild adresa URL progresivního stahování.
+Toto téma ukazuje, jak vytvořit lokátor, aby bylo možné publikování asset a vytvoření Smooth, MPEG DASH a adresy URL streamování HLS streamování OnDemand. Také ukazuje aktivní pro vytvoření adres URL progresivního stahování.
 
-Hello [následující](#types) část ukazuje hello typy výčtu, jejichž hodnoty se používají ve voláních REST hello.   
+[Následující](#types) část ukazuje typy výčtu, jejichž hodnoty se používají ve voláních REST.   
 
 > [!NOTE]
 > Při přístupu k entity ve službě Media Services, musíte nastavit specifická pole hlaviček a hodnoty ve své žádosti HTTP. Další informace najdete v tématu [instalační program pro Media Services REST API vývoj](media-services-rest-how-to-use.md).
 > 
 
-## <a name="connect-toomedia-services"></a>Připojení služby tooMedia
+## <a name="connect-to-media-services"></a>Připojení ke službě Media Services
 
-Informace o tom, jak tooconnect toohello AMS rozhraní API, najdete v části [hello přístup k rozhraní API služby Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Informace o tom, jak připojit k rozhraní API pro AMS najdete v tématu [přístup k Azure Media Services API pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
 >[!NOTE]
->Po úspěšném připojení toohttps://media.windows.net, obdržíte 301 přesměrování zadání jiném identifikátoru URI Media Services. Je nutné provést následující volání toohello nový identifikátor URI.
+>Po úspěšném připojení k https://media.windows.net, obdržíte 301 přesměrování zadání jiném identifikátoru URI Media Services. Je nutné provést následující volání nový identifikátor URI.
 
 ## <a name="create-an-ondemand-streaming-locator"></a>Vytvořit lokátor streamování OnDemand.
-toocreate hello Lokátor streamování OnDemand a získání adres URL je třeba toodo hello následující:
+Vytvořit lokátor streamování OnDemand a získání adres URL musíte udělat následující:
 
-1. Pokud obsah hello je zašifrován, definujte zásady přístupu.
+1. Pokud je obsah šifrovat, definujte zásady přístupu.
 2. Vytvořte Lokátor streamování OnDemand.
-3. Pokud máte v plánu toostream, získáte hello vysílání datového proudu souboru manifestu (.ism) v hello asset. 
+3. Pokud máte v plánu k vysílání datového proudu, získáte streamování souboru manifestu (.ism) v prostředku. 
    
-   Pokud máte v plánu tooprogressively stahování, získáte hello názvy souborů MP4 v hello asset. 
-4. Vytvoření souboru manifestu toohello adresy URL nebo soubory MP4. 
+   Pokud budete chtít progresivně stahovat, získáte názvy soubory MP4 v prostředku. 
+4. Sestavení adresy URL k souboru manifestu nebo soubory MP4. 
 5. Všimněte si, že nemůžete vytvořit lokátor streamování pomocí AccessPolicy, která zahrnuje zapsat nebo odstranit oprávnění.
 
 ### <a name="create-an-access-policy"></a>Vytvoření zásad přístupu
 
 >[!NOTE]
->Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Měli byste použít hello stejné ID zásad, pokud vždy používáte hello stejné dny / přístupová oprávnění, například zásady pro lokátory, které jsou určený tooremain zavedené po dlouhou dobu (bez odeslání zásady). Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) tématu.
+>Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Pokud vždy používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odeslání), měli byste použít stejné ID zásad. Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) tématu.
 
 Žádost:
 
@@ -100,7 +100,7 @@ Odpověď:
     {"odata.metadata":"https://media.windows.net/api/$metadata#AccessPolicies/@Element","Id":"nb:pid:UUID:69c80d98-7830-407f-a9af-e25f4b0d3e5f","Created":"2015-02-18T06:52:09.8862191Z","LastModified":"2015-02-18T06:52:09.8862191Z","Name":"access policy","DurationInMinutes":43200.0,"Permissions":1}
 
 ### <a name="create-an-ondemand-streaming-locator"></a>Vytvořit lokátor streamování OnDemand.
-Vytvoření lokátoru hello hello daný prostředek a zásady asset.
+Vytvořte Lokátor pro daný prostředek a zásady assetu.
 
 Žádost:
 
@@ -138,7 +138,7 @@ Odpověď:
     {"odata.metadata":"https://media.windows.net/api/$metadata#Locators/@Element","Id":"nb:lid:UUID:be245661-2bbd-4fc6-b14f-9cf9a1492e5e","ExpirationDateTime":"2015-03-20T06:34:47.267872+00:00","Type":2,"Path":"http://amstest1.streaming.mediaservices.windows.net/be245661-2bbd-4fc6-b14f-9cf9a1492e5e/","BaseUri":"http://amstest1.streaming.mediaservices.windows.net","ContentAccessComponent":"be245661-2bbd-4fc6-b14f-9cf9a1492e5e","AccessPolicyId":"nb:pid:UUID:1480030d-c481-430a-9687-535c6a5cb272","AssetId":"nb:cid:UUID:cc1e445d-1500-80bd-538e-f1e4b71b465e","StartTime":"2015-02-18T06:34:47.267872+00:00","Name":null}
 
 ### <a name="build-streaming-urls"></a>Vytvoření adresy URL pro streamování
-Použití hello **cesta** vrácena hodnota po vytvoření hello hello Lokátor toobuild hello Smooth, HLS a MPEG DASH adresy URL. 
+Použití **cesta** vrácena hodnota po vytvoření lokátoru vytvářet Smooth, HLS a MPEG DASH adresy URL. 
 
 Technologie Smooth Streaming: **cesta** + název souboru manifestu + "/ manifest"
 
@@ -161,7 +161,7 @@ Příklad:
 
 
 ### <a name="build-progressive-download-urls"></a>Vytvoření adres URL progresivního stahování
-Použití hello **cesta** vrácena hodnota po vytvoření hello hello Lokátor toobuild hello progresivní stahování adresy URL.   
+Použití **cesta** vrácena hodnota po vytvoření lokátoru sestavit adresu URL progresivního stahování.   
 
 Adresa URL: **cesta** + asset soubor mp4 název
 

@@ -1,5 +1,5 @@
 ---
-title: aaaAzure integraci sady Android SDK Mobile Engagement
+title: Integraci sady Azure Mobile Engagement Android SDK
 description: "Nejnovější aktualizace a postupy pro Android SDK pro Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,24 +14,24 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: piyushjo
-ms.openlocfilehash: e81230cbc99a209f2909cc163c4e566df67dc828
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0282abbf44406cac89c13520bc2a4e375817ed1f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toointegrate-gcm-with-mobile-engagement"></a>Jak tooIntegrate GCM s Mobile Engagement
+# <a name="how-to-integrate-gcm-with-mobile-engagement"></a>Postup pro integraci služby GCM Mobile Engagement
 > [!IMPORTANT]
-> Postupujte podle hello integrace postup popsaný v hello jak tooIntegrate Engagement v systému Android dokumentu před těchto pokynů.
+> Postupujte podle integrace postup popsaný v tom, jak integrovat Engagement Android dokumentu před těchto pokynů.
 > 
-> Tento dokument je užitečný jenom v případě, že jste již integrované hello dosáhnout modulu a plán toopush Google Play zařízení. kampaně Reach toointegrate ve vaší aplikaci, přečtěte si nejprve jak tooIntegrate Engagement Reach v systému Android.
+> Tento dokument je užitečný jenom v případě, že jste již integrované modul kampaně Reach a plán tak, aby nabízel zařízení Google Play. Chcete-li integrovat kampaně Reach ve vaší aplikaci, přečtěte si nejprve postupy integrovat Engagement Reach v systému Android.
 > 
 > 
 
 ## <a name="introduction"></a>Úvod
-Integrace služby GCM umožňuje vaší aplikace toobe poslat.
+Integrace služby GCM umožňuje poslat vaší aplikace.
 
-Datové části GCM nabídnutých toohello SDK vždy obsahovat hello `azme` klíče v hello datový objekt. Proto pokud používáte GCM pro jiný účel ve vaší aplikaci, můžete filtrovat podle klíči nabízených oznámení.
+Datové části GCM nabídnutých do sady SDK vždy obsahovat `azme` klíče v datový objekt. Proto pokud používáte GCM pro jiný účel ve vaší aplikaci, můžete filtrovat podle klíči nabízených oznámení.
 
 > [!IMPORTANT]
 > Jenom zařízení se systémem Android 2.2 nebo vyšší, s Google Play nainstalovaná a má Google pozadí připojení povoleno mohou poslat pomocí služby GCM; Můžete však integrovat tento kód bezpečně na nepodporované zařízení (používá právě záměry).
@@ -43,19 +43,19 @@ Datové části GCM nabídnutých toohello SDK vždy obsahovat hello `azme` klí
 
 ## <a name="sdk-integration"></a>Integrace sady SDK
 ### <a name="managing-device-registrations"></a>Správa registrace zařízení
-Každé zařízení musí odeslat příkaz toohello registrace servery Googlu, jinak nelze získat přístup.
+Každé zařízení musí odeslat příkaz registrace na servery Googlu, jinak nelze získat přístup.
 
-Zařízení můžete také zrušit registraci oznámení GCM (hello zařízení se automaticky registrace, když se odinstaluje aplikace hello).
+Zařízení můžete také zrušit registraci oznámení GCM (zařízení je automaticky registrace, pokud odinstalaci aplikace).
 
-Pokud nepoužijete [Google Play SDK] nebo jste již Neodesílat hello registrace záměr sami, můžete provést Engagement registrovat zařízení hello automaticky za vás.
+Pokud nepoužijete [Google Play SDK] nebo jste již Neodesílat záměr registrace sami, můžete provést Engagement registraci zařízení automaticky za vás.
 
-tooenable, přidejte následující tooyour hello `AndroidManifest.xml` souboru uvnitř hello `<application/>` značky:
+Chcete-li povolit, přidejte následující příkaz pro vaše `AndroidManifest.xml` souboru uvnitř `<application/>` značky:
 
-            <!-- If only 1 sender, don't forget hello \n, otherwise it will be parsed as a negative number... -->
+            <!-- If only 1 sender, don't forget the \n, otherwise it will be parsed as a negative number... -->
             <meta-data android:name="engagement:gcm:sender" android:value="<Your Google Project Number>\n" />
 
-### <a name="communicate-registration-id-toohello-engagement-push-service-and-receive-notifications"></a>Komunikaci registrace id toohello Engagement nabízené služby a přijímat oznámení
-V pořadí toocommunicate hello id registrace toohello zařízení hello Engagement nabízené služby a jeho oznámení dostávat, přidat následující tooyour hello `AndroidManifest.xml` souboru uvnitř hello `<application/>` značky (i v případě registrace zařízení spravujete sami):
+### <a name="communicate-registration-id-to-the-engagement-push-service-and-receive-notifications"></a>Id registrace ke službě Engagement Push komunikovat a přijímat oznámení
+Abyste mohli komunikovat id registrace zařízení ke službě Engagement Push a jeho oznámení dostávat, přidejte následující příkaz pro vaše `AndroidManifest.xml` souboru uvnitř `<application/>` značky (i v případě registrace zařízení spravujete sami):
 
             <receiver android:name="com.microsoft.azure.engagement.gcm.EngagementGCMEnabler"
               android:exported="false">
@@ -72,13 +72,13 @@ V pořadí toocommunicate hello id registrace toohello zařízení hello Engagem
               </intent-filter>
             </receiver>
 
-Ujistěte se, máte následující oprávnění v hello vaše `AndroidManifest.xml` (po hello `</application>` značka).
+Ujistěte se, máte následující oprávnění ve vaší `AndroidManifest.xml` (po `</application>` značka).
 
             <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
             <uses-permission android:name="<your_package_name>.permission.C2D_MESSAGE" />
             <permission android:name="<your_package_name>.permission.C2D_MESSAGE" android:protectionLevel="signature" />
 
-## <a name="grant-mobile-engagement-access-tooyour-gcm-api-key"></a>Mobile Engagement udělení přístupu tooyour klíč rozhraní API GCM
-Postupujte podle [Tato příručka](mobile-engagement-android-get-started.md#grant-mobile-engagement-access-to-your-gcm-api-key) toogrant Mobile Engagement přístup tooyour klíč rozhraní API GCM.
+## <a name="grant-mobile-engagement-access-to-your-gcm-api-key"></a>Udělení přístupu aplikaci Mobile Engagement k vašemu klíči rozhraní API GCM
+Postupujte podle [Tato příručka](mobile-engagement-android-get-started.md#grant-mobile-engagement-access-to-your-gcm-api-key) k udělení přístupu Mobile Engagement k vašemu klíči rozhraní API GCM.
 
 [Google Play SDK]:https://developers.google.com/cloud-messaging/android/start

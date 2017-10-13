@@ -1,5 +1,5 @@
 ---
-title: "aaaIntroduction tooweb application firewall (firewall webových aplikací) pro Azure Application Gateway | Microsoft Docs"
+title: "Úvod do Firewallu webových aplikací (WAF) služby Azure Application Gateway | Dokumentace Microsoftu"
 description: "Na této stránce najdete přehled firewallu webových aplikací (WAF) služby Application Gateway."
 documentationcenter: na
 services: application-gateway
@@ -14,45 +14,45 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: amsriva
-ms.openlocfilehash: 5a42ce0fb2bd12a391844099e2de8fa2571195e6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 50863b60f2843f033bdb07f4564d937cd6f0b7be
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="web-application-firewall-waf"></a>Firewall webových aplikací (WAF)
 
 Firewall webových aplikací (WAF) je funkce služby Application Gateway poskytující centralizovanou ochranu webových aplikací před běžným zneužitím a ohrožením zabezpečení. 
 
-Brány firewall webových aplikací je na základě pravidel z hello [sady pravidel základní OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 nebo 2.2.9. Webové aplikace se čím dál častěji stávají cílem škodlivých útoků, které zneužívají běžně známé chyby zabezpečení. Jsou běžné mezi tyto zneužitím prostřednictvím injektáže SQL, skriptování mezi weby útoků tooname pár. Zabránění takové útoky v kódu aplikace může být náročné což může vyžadovat přísných Údržba, opravy a monitorování v několika vrstev topologie aplikace hello. Brány firewall centralizované webových aplikací pomáhá zkontrolujte mnohem jednodušší správu zabezpečení a nabízí lepší záruku tooapplication správci proti hrozbám nebo vniknutí. Řešení firewall webových aplikací můžete rovněž reagovat ohrožení zabezpečení tooa rychlejší podle opravy známých ohrožení zabezpečení do centrálního umístění a zabezpečení těchto jednotlivých webových aplikací. Existující application Gateway může být snadno převedený tooa webové aplikace povolena brána firewall aplikační brány.
+Firewall webových aplikací je založený na základě [základní sady pravidel OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 nebo 2.2.9. Webové aplikace se čím dál častěji stávají cílem škodlivých útoků, které zneužívají běžně známé chyby zabezpečení. Mezi tyto běžné typy zneužití patří mimo jiné například útoky prostřednictvím injektáže SQL nebo skriptování mezi weby. Předcházet takovým útokům v kódu aplikace může být náročné a může vyžadovat pečlivou údržbu, opravy a monitorování několika vrstev topologie aplikace. Centralizovaný firewall webových aplikací značně zjednodušuje správu zabezpečení a nabízí správcům lepší ochranu aplikací před hrozbami neoprávněného vniknutí. Řešení Firewall webových aplikací (WAF) může také rychleji reagovat na ohrožení zabezpečení, protože opravuje známé chyby zabezpečení v centrálním umístění, namísto zabezpečování jednotlivých webových aplikací. Stávající aplikační brány je možné jednoduše převést na aplikační brány doplněné webovým aplikačním firewallem.
 
 ![imageURLroute](./media/application-gateway-web-application-firewall-overview/WAF1.png)
 
-Aplikační brána funguje jako aplikaci doručení řadič a nabízí ukončení protokolu SSL, spřažení relace na základě souborů cookie, distribuce zatížení pomocí kruhového dotazování, na základě obsahu směrování, možnost toohost několik vylepšení weby a zabezpečení. Vylepšení zabezpečení, které nabízí Application Gateway patří Správa zásad protokolu SSL, tooend end podporu protokolu SSL. Podle firewall webových aplikací (brány firewall webových aplikací), je přímo integrovaná do nabídky hello ADC je nyní posílit zabezpečení aplikací. To zajišťuje toomanage centrální umístění snadno tooconfigure a chránit proti známých chyb zabezpečení webové webových aplikací.
+Application Gateway funguje jako řadič doručování aplikací a zajišťuje zakončení protokolu SSL, spřažení relace na základě souborů cookie, distribuci zatížení pomocí kruhového dotazování, směrování na základě obsahu, schopnost hostovat více webů a vylepšení zabezpečení. Vylepšení zabezpečení nabízená službou Application Gateway zahrnují správu zásad protokolu SSL a podporu koncového šifrování protokolu SSL. Zabezpečení aplikací je nyní posíleno integrací firewallu webových aplikací (WAF) přímo do nabídky ADC. Získáte tak snadno konfigurovatelné centrální umístění pro správu a ochranu svých webových aplikací před běžnými webovými chybami zabezpečení.
 
 ## <a name="benefits"></a>Výhody
 
-Hello následují hello základní výhody, které poskytují brány firewall aplikační brány a webových aplikací:
+Tady jsou základní výhody, které poskytují Application Gateway s firewallem webových aplikací:
 
 ### <a name="protection"></a>Ochrana
 
-* Chraňte před ohrožení zabezpečení webové a útoky bez úpravy kódu toobackend webové aplikace.
+* Ochráníte své webové aplikace před webovými chybami zabezpečení a útoky bez nutnosti upravovat back-endový kód.
 
-* Ochrana více webových aplikací na hello stejný čas za služby application gateway. Aplikační brána podporuje, hostování až too20 weby za jednu bránu, která by mohla všechny chráněné proti útokům na web s firewall webových aplikací.
+* Ochráníte více webových aplikací současně za službou Application Gateway. Služba Application Gateway podporuje za jednou bránou hostování až 20 webů, které můžete ochránit před webovými útoky pomocí WAF.
 
 ### <a name="monitoring"></a>Monitorování
 
-* Můžete monitorovat útoky na své webové aplikace pomocí protokolu WAF generovaného v reálném čase. Tento protokol je integrovaná s [Azure monitorování](../monitoring-and-diagnostics/monitoring-overview.md) tootrack firewall webových aplikací výstrah a protokoly a snadno monitorovat trendy.
+* Můžete monitorovat útoky na své webové aplikace pomocí protokolu WAF generovaného v reálném čase. Tento protokol je integrovaný s [Azure Monitorem](../monitoring-and-diagnostics/monitoring-overview.md) a umožňuje sledování výstrah a protokolů WAF a snadnou identifikaci trendů.
 
-* Brzy budeme integrovat WAF do služby Azure Security Center. Azure Security Center umožňuje centrální zobrazení stavu zabezpečení hello všech vašich prostředků Azure.
+* Brzy budeme integrovat WAF do služby Azure Security Center. Azure Security Center vám poskytne centrální přehled o stavu zabezpečení všech vašich prostředků Azure.
 
 ### <a name="customization"></a>Přizpůsobení
 
-* Hello možnost toocustomize firewall webových aplikací pravidla a pravidla skupiny toosuit vaše požadavky aplikací a eliminovat falešně pozitivních zjištění.
+* Díky možnosti přizpůsobit pravidla firewallu webových aplikací a pravidla skupin podle potřeb vaší aplikace můžete eliminovat falešně pozitivní nálezy.
 
 ## <a name="features"></a>Funkce
 
-Vybavená předem nakonfigurovaným rozhraním řádku 3.0 ve výchozím nastavení brány firewall webových aplikací nebo můžete zvolit toouse 2.2.9. CRS 3.0 dosahuje menšího počtu falešně pozitivních nálezů oproti verzi 2.2.9. Hello možnost příliš[přizpůsobit pravidla toosuit potřeb](application-gateway-customize-waf-rules-portal.md) je k dispozici. Některé z běžných chyb webové hello které brány firewall webových aplikací chrání před zahrnuje:
+Firewall webových aplikací se poskytuje s předem nakonfigurovanou sadou pravidel CRS 3.0, nebo můžete použít verzi 2.2.9. CRS 3.0 dosahuje menšího počtu falešně pozitivních nálezů oproti verzi 2.2.9. Je zajištěna možnost [přizpůsobit si pravidla, podle vašich potřeb](application-gateway-customize-waf-rules-portal.md). Mezi běžné webové zranitelnosti, proti kterým firewall webových aplikací chrání, patří tyto:
 
 * Ochrana před útoky prostřednictvím injektáže SQL.
 * Ochrana před skriptováním mezi weby.
@@ -62,7 +62,7 @@ Vybavená předem nakonfigurovaným rozhraním řádku 3.0 ve výchozím nastave
 * Ochrana před roboty, prohledávacími moduly a skenery.
 * Detekce běžných chyb v konfiguraci aplikací (tj. Apache, IIS atd.).
 
-Podrobnější seznam pravidel a jejich ochrany naleznete v následujících hello [základní sady pravidel](#core-rule-sets).
+Podrobnější seznam pravidel a ochrany, kterou poskytují, naleznete v popisu [základních sad pravidel](#core-rule-sets).
 
 ### <a name="core-rule-sets"></a>Základní sady pravidel
 
@@ -70,61 +70,61 @@ Application Gateway podporuje dvě sady pravidel, CRS 3.0 a CRS 2.2.9. Tyto zák
 
 #### <a name="owasp30"></a>OWASP_3.0
 
-Sada pravidel základní Hello 3.0 poskytuje má 13 skupiny pravidel, jak je znázorněno v následující tabulce hello. Každá z těchto skupin obsahuje několik pravidel, která mohou být zakázána.
+Základní sada pravidel 3.0 má 13 skupin pravidel, shrnutých v následující tabulce. Každá z těchto skupin obsahuje několik pravidel, která mohou být zakázána.
 
 |RuleGroup|Popis|
 |---|---|
-|**[REQUEST-910-IP-REPUTATION](application-gateway-crs-rulegroups-rules.md#crs910)**|Obsahuje pravidla tooprotect proti známé nevyžádanou poštu nebo škodlivé aktivity.|
-|**[REQUEST-911-METHOD-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs911)**|Obsahuje pravidla toolock metod down (PUT, PATCH <...)|
-|**[REQUEST-912-DOS-PROTECTION](application-gateway-crs-rulegroups-rules.md#crs912)**| Obsahuje pravidla tooprotect proti útokům na dostupnost služby (DoS).|
-|**[REQUEST-913-SCANNER-DETECTION](application-gateway-crs-rulegroups-rules.md#crs913)**| Obsahuje pravidla tooprotect proti skenery port a prostředí.|
-|**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920)**|Obsahuje pravidla tooprotect proti kódování problémy a protokolu.|
-|**[REQUEST-921-PROTOCOL-ATTACK](application-gateway-crs-rulegroups-rules.md#crs921)**|Obsahuje pravidla tooprotect proti vkládání záhlaví, podvržení požadavku a odpovědi rozdělení|
-|**[REQUEST-930-APPLICATION-ATTACK-LFI](application-gateway-crs-rulegroups-rules.md#crs930)**|Obsahuje pravidla tooprotect proti útokům na soubor a cestu.|
-|**[REQUEST-931-APPLICATION-ATTACK-RFI](application-gateway-crs-rulegroups-rules.md#crs931)**|Obsahuje pravidla tooprotect proti zahrnutí vzdáleného souboru (RFI)|
-|**[REQUEST-932-APPLICATION-ATTACK-RCE](application-gateway-crs-rulegroups-rules.md#crs932)**|Obsahuje pravidla tooprotect znovu vzdálené spuštění kódu.|
-|**[REQUEST-933-APPLICATION-ATTACK-PHP](application-gateway-crs-rulegroups-rules.md#crs933)**|Obsahuje pravidla tooprotect před útoky vkládání PHP.|
+|**[REQUEST-910-IP-REPUTATION](application-gateway-crs-rulegroups-rules.md#crs910)**|Obsahuje pravidla chránící před známými spammery a škodlivou aktivitou.|
+|**[REQUEST-911-METHOD-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs911)**|Obsahuje pravidla pro uzamčení metod (PUT, PATCH< ..)|
+|**[REQUEST-912-DOS-PROTECTION](application-gateway-crs-rulegroups-rules.md#crs912)**| Obsahuje pravidla pro ochranu před útoky DoS (Denial of Service).|
+|**[REQUEST-913-SCANNER-DETECTION](application-gateway-crs-rulegroups-rules.md#crs913)**| Obsahuje pravidla pro ochranu před skenery portů a prostředí.|
+|**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920)**|Obsahuje pravidla pro ochranu před problémy s protokoly a kódováním.|
+|**[REQUEST-921-PROTOCOL-ATTACK](application-gateway-crs-rulegroups-rules.md#crs921)**|Obsahuje pravidla s cílem zajistit ochranu proti vkládání záhlaví, podvržení požadavku a rozdělení odpovědi.|
+|**[REQUEST-930-APPLICATION-ATTACK-LFI](application-gateway-crs-rulegroups-rules.md#crs930)**|Obsahuje pravidla pro ochranu před útoky na soubory a cesty.|
+|**[REQUEST-931-APPLICATION-ATTACK-RFI](application-gateway-crs-rulegroups-rules.md#crs931)**|Obsahuje pravidla pro ochranu před útoky RFI (Remote File Inclusion).|
+|**[REQUEST-932-APPLICATION-ATTACK-RCE](application-gateway-crs-rulegroups-rules.md#crs932)**|Obsahuje pravidla pro ochranu před vzdáleným spuštěním kódu.|
+|**[REQUEST-933-APPLICATION-ATTACK-PHP](application-gateway-crs-rulegroups-rules.md#crs933)**|Obsahuje pravidla pro ochranu před útoky vkládáním kódu PHP.|
 |**[REQUEST-941-APPLICATION-ATTACK-XSS](application-gateway-crs-rulegroups-rules.md#crs941)**|Obsahuje pravidla pro ochranu před křížovým skriptováním.|
 |**[REQUEST-942-APPLICATION-ATTACK-SQLI](application-gateway-crs-rulegroups-rules.md#crs942)**|Obsahuje pravidla pro ochranu před injektáží SQL.|
-|**[REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION](application-gateway-crs-rulegroups-rules.md#crs943)**|Obsahuje pravidla tooprotect proti útokům záznam relace.|
+|**[REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION](application-gateway-crs-rulegroups-rules.md#crs943)**|Obsahuje pravidla pro ochranu před útokem fixací na relaci.|
 
 #### <a name="owasp229"></a>OWASP_2.2.9
 
-Sada pravidel základní Hello 2.2.9 poskytuje má 10 skupiny pravidel, jak je znázorněno v následující tabulce hello. Každá z těchto skupin obsahuje několik pravidel, která mohou být zakázána.
+Základní sada pravidel 2.2.9 má 10 skupin pravidel, shrnutých v následující tabulce. Každá z těchto skupin obsahuje několik pravidel, která mohou být zakázána.
 
 |RuleGroup|Popis|
 |---|---|
-|**[crs_20_protocol_violations](application-gateway-crs-rulegroups-rules.md#crs20)**|Obsahuje pravidla tooprotect proti porušení protocol (neplatné znaky, GET s textu žádosti atd.)|
-|**[crs_21_protocol_anomalies](application-gateway-crs-rulegroups-rules.md#crs21)**|Obsahuje pravidla tooprotect proti záhlaví nesprávné informace.|
-|**[crs_23_request_limits](application-gateway-crs-rulegroups-rules.md#crs23)**|Obsahuje pravidla tooprotect proti argumentů nebo soubory, které překračují omezení.|
-|**[crs_30_http_policy](application-gateway-crs-rulegroups-rules.md#crs30)**|Obsahuje pravidla tooprotect před s omezeným přístupem metody a hlavičky a typy souborů. |
-|**[crs_35_bad_robots](application-gateway-crs-rulegroups-rules.md#crs35)**|Obsahuje pravidla tooprotect proti webové prohledávací moduly a skenerů.|
-|**[crs_40_generic_attacks](application-gateway-crs-rulegroups-rules.md#crs40)**|Obsahuje pravidla tooprotect před obecné útoky (záznam relace vzdáleného souboru zahrnutí, vkládání PHP, atd.)|
-|**[crs_41_sql_injection_attacks](application-gateway-crs-rulegroups-rules.md#crs41sql)**|Obsahuje pravidla tooprotect před útoky vkládání SQL|
-|**[crs_41_xss_attacks](application-gateway-crs-rulegroups-rules.md#crs41xss)**|Obsahuje pravidla tooprotect proti křížové skriptování.|
-|**[crs_42_tight_security](application-gateway-crs-rulegroups-rules.md#crs42)**|Obsahuje pravidla tooprotect před útoky traversal cesta|
-|**[crs_45_trojans](application-gateway-crs-rulegroups-rules.md#crs45)**|Obsahuje pravidla tooprotect proti trojskými koni.|
+|**[crs_20_protocol_violations](application-gateway-crs-rulegroups-rules.md#crs20)**|Obsahuje pravidla pro ochranu před porušením protokolu (neplatné znaky, GET s tělem žádosti atd.)|
+|**[crs_21_protocol_anomalies](application-gateway-crs-rulegroups-rules.md#crs21)**|Obsahuje pravidla pro ochranu před nesprávným obsahem záhlaví.|
+|**[crs_23_request_limits](application-gateway-crs-rulegroups-rules.md#crs23)**|Obsahuje pravidla pro ochranu před argumenty nebo soubory, které překračují omezení.|
+|**[crs_30_http_policy](application-gateway-crs-rulegroups-rules.md#crs30)**|Obsahuje pravidla pro ochranu před omezenými metodami, záhlavími a typy souborů. |
+|**[crs_35_bad_robots](application-gateway-crs-rulegroups-rules.md#crs35)**|Obsahuje pravidla pro ochranu před roboty procházejícími web a před skenery.|
+|**[crs_40_generic_attacks](application-gateway-crs-rulegroups-rules.md#crs40)**|Obsahuje pravidla pro ochranu před obecnými útoky (fixace na relaci, zahrnutí vzdáleného souboru, vkládání kódu PHP atd.)|
+|**[crs_41_sql_injection_attacks](application-gateway-crs-rulegroups-rules.md#crs41sql)**|Obsahuje pravidla pro ochranu před injektáží SQL.|
+|**[crs_41_xss_attacks](application-gateway-crs-rulegroups-rules.md#crs41xss)**|Obsahuje pravidla pro ochranu před křížovým skriptováním.|
+|**[crs_42_tight_security](application-gateway-crs-rulegroups-rules.md#crs42)**|Obsahuje pravidla pro ochranu před útoky typu path traversal.|
+|**[crs_45_trojans](application-gateway-crs-rulegroups-rules.md#crs45)**|Obsahuje pravidla pro ochranu před trojskými koni.|
 
 ### <a name="waf-modes"></a>Režimy WAF
 
-Aplikace brány firewall webových aplikací může být nakonfigurované toorun v hello následujících dvou režimů:
+Firewall webových aplikací (WAF) služby Application Gateway lze nakonfigurovat ke spuštění v těchto dvou režimech:
 
-* **Detekce režimu** – Pokud nakonfigurované toorun v režimu detekce aplikace brány firewall webových aplikací sleduje a zaznamená všechny výstrahy hrozba v souboru protokolu tooa. Diagnostiku protokolování pro službu Application Gateway by měl být zapnut pomocí hello **diagnostiky** části. Musíte taky tooensure, který hello firewall webových aplikací je vybraná a zapnuta protokolu. když je firewall webových aplikací spuštěný v režimu detekce, neblokuje příchozí požadavky.
-* **Prevence režimu** – když nakonfigurované toorun v režimu prevence, Application Gateway aktivně blokuje napadením zjistil jeho pravidly. Hello útočník obdrží 403 výjimce neoprávněného přístupu a hello připojení bude ukončeno. Prevence režimu pokračuje toolog takové útoky v protokolech hello firewall webových aplikací.
+* **Režim detekce** – Když je nakonfigurován ke spuštění v režimu detekce, WAF služby Application Gateway monitoruje a protokoluje všechny výstrahy na hrozby do souboru protokolu. Diagnostika protokolování pro službu Application Gateway by měla být v části **Diagnostika** zapnutá. Bude také třeba zajistit, aby byl vybrán a zapnut protokol WAF. když je firewall webových aplikací spuštěný v režimu detekce, neblokuje příchozí požadavky.
+* **Režim prevence** – Když je nakonfigurován ke spuštění v režimu prevence, služba Application Gateway aktivně blokuje vniknutí a útoky detekované pomocí svých pravidel. Útočník obdrží výjimku 403 – Neoprávněný přístup a připojení se ukončí. Režim prevence takové útoky nadále protokoluje do protokolů WAF.
 
 ### <a name="application-gateway-waf-reports"></a>Monitorování WAF
 
-Monitorování stavu hello svoji službu application gateway je důležité. Monitorování stavu hello vaší webové aplikace brány firewall a hello aplikací, které chrání je zajišťována prostřednictvím protokolování a integraci s Azure monitorování, Azure Security Center (už brzy) a analýzy protokolů.
+Monitorování stavu službu Application Gateway je velmi důležité. Monitorování stavu vašeho firewallu webových aplikací a aplikací, které chrání, je zajišťována protokolováním a integrací se službami Azure Monitor, Azure Security Center (už brzy) a Log Analytics.
 
 ![Diagnostika](./media/application-gateway-web-application-firewall-overview/diagnostics.png)
 
 #### <a name="azure-monitor"></a>Azure Monitor
 
-Každý protokol aplikační brány je integrovaný do služby [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md).  To vám umožní tootrack diagnostické informace, včetně výstrahy firewall webových aplikací a protokoly.  Tato funkce je uvedené v hello prostředku aplikační brány hello portálu v části hello **diagnostiky** kartě nebo přímo prostřednictvím hello Azure monitorování služby. toolearn najdete informace o povolení diagnostických protokolů pro službu application gateway [diagnostics Application Gateway](application-gateway-diagnostics.md)
+Každý protokol aplikační brány je integrovaný do služby [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md).  To umožňuje sledovat diagnostické informace, včetně výstrah a protokolů WAF.  Tato možnost je poskytována v rámci prostředku Application Gateway na portálu na kartě **Diagnostika** nebo přímo prostřednictvím služby Azure Monitor. Další informace o povolení diagnostických protokolů pro službu Application Gateway najdete na stránkách o [diagnostice služby Application Gateway](application-gateway-diagnostics.md)
 
 #### <a name="azure-security-center"></a>Azure Security Center
 
-[Azure Security Center](../security-center/security-center-intro.md) pomáhá zabránit, zjišťovat a odpovědět toothreats s lepší přehled a kontrolu nad hello zabezpečení vašich prostředků Azure. Služba Application Gateway je nyní [integrována do služby Azure Security Center](application-gateway-integration-security-center.md). Azure Security Center vyhledá prostředí toodetect nechráněné webových aplikací. Ji můžete nyní doporučujeme aplikace brány firewall webových aplikací tooprotect tyto prostředky snadno napadnutelný. Aplikace brány firewall webových aplikací můžete vytvořit přímo z hello Azure Security Center.  Tyto instance firewall webových aplikací jsou integrované s Azure Security Center a bude posílat upozornění a informace o stavu zpět tooAzure Security Center pro vytváření sestav.
+[Azure Security Center](../security-center/security-center-intro.md) pomáhá předcházet hrozbám, rozpoznávat je a reagovat na ně a nabízí lepší přehled o zabezpečení prostředků Azure a kontrolu nad nimi. Služba Application Gateway je nyní [integrována do služby Azure Security Center](application-gateway-integration-security-center.md). Azure Security Center prohledává vaše prostředí a rozpoznává nechráněné webové aplikace. Nyní může doporučovat firewall webových aplikací (WAF) služby Application Gateway k ochraně těchto citlivých prostředků. Firewall webových aplikací (WAF) služby Application Gateway můžete vytvořit přímo ve službě Azure Security Center.  Tyto instance firewallu webových aplikací (WAF) jsou integrovány se službou Azure Security Center a budou posílat upozornění a informace o stavu zpět do služby Azure Security Center za účelem vytváření sestav.
 
 ![Obrázek 1](./media/application-gateway-web-application-firewall-overview/figure1.png)
 
@@ -164,11 +164,11 @@ Firewall webových aplikací (WAF) služby Application Gateway poskytuje podrobn
 
 ## <a name="application-gateway-waf-sku-pricing"></a>Ceny SKU WAF služby Application Gateway
 
-Firewall webových aplikací je k dispozici jako nová položka WAF SKU. Tato SKU je k dispozici pouze v modelu zřizování Azure Resource Manager a není v rámci modelu nasazení classic hello. WAF SKU je navíc dostupný jen pro střední a velké instance aplikační brány. Všechny hello limity pro službu application gateway platí také toohello SKU firewall webových aplikací. Ceny jsou založeny na hodinové sazbě za instanci brány a na poplatcích za zpracování dat. Hodinová sazba za bránu se pro položku WAF SKU liší od sazby pro standardní položky SKU. Sazby jsou uvedeny v článku [Podrobnosti o cenách Application Gateway](https://azure.microsoft.com/pricing/details/application-gateway/). Zpracování dat, které zůstanou poplatky hello stejné. Neexistují žádné poplatky za pravidla nebo skupiny pravidel. Můžete chránit několika webových aplikací za hello stejné webové aplikace brány firewall a neexistují žádné další poplatky za podporu více aplikací. 
+Firewall webových aplikací je k dispozici jako nová položka WAF SKU. Tato položka SKU je k dispozici pouze v modelu zřizování Azure Resource Manager, nikoli v rámci klasického modelu nasazení. WAF SKU je navíc dostupný jen pro střední a velké instance aplikační brány. Všechna omezení pro aplikační brány platí také pro WAF SKU. Ceny jsou založeny na hodinové sazbě za instanci brány a na poplatcích za zpracování dat. Hodinová sazba za bránu se pro položku WAF SKU liší od sazby pro standardní položky SKU. Sazby jsou uvedeny v článku [Podrobnosti o cenách Application Gateway](https://azure.microsoft.com/pricing/details/application-gateway/). Poplatky za zpracování dat zůstávají stejné. Neexistují žádné poplatky za pravidla nebo skupiny pravidel. Jedna aplikační brána může chránit několik webových aplikací a další aplikace nejsou zpoplatněny. 
 
-Pro firewall webových aplikací, začne běžet fakturace efektivně 5/5/2017, dokud pak hello brány firewall webových aplikací SKU pokračuje toobe výši standardních sazeb.
+Fakturace za WAF bude zahájena 5. 5. 2017, do té doby budou položky WAF SKU fakturovány podle standardních sazeb.
 
 ## <a name="next-steps"></a>Další kroky
 
-Po dozvědět další informace o možnostech hello firewall webových aplikací, navštivte [jak tooconfigure web application firewall na aplikační brána](application-gateway-web-application-firewall-portal.md).
+Až se podrobněji seznámíte se schopnostmi WAF, přečtěte si článek [Postup konfigurace Firewallu webových aplikací ve službě Application Gateway](application-gateway-web-application-firewall-portal.md).
 

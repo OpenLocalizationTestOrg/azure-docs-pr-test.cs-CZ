@@ -1,6 +1,6 @@
 ---
-title: "aaaService Fabric spolehlivé aktéři přehled | Microsoft Docs"
-description: "Úvod toohello Service Fabric programovacího modelu Reliable Actors."
+title: "Služba Fabric Reliable Actors přehled | Microsoft Docs"
+description: "Úvod do programovacího modelu Service Fabric Reliable Actors."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,66 +14,66 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.openlocfilehash: ab010cbf936c6cf723b3d453ef95a9bf51f76c95
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e89be04a0d6fe90a89e293e67d42f0204eb7000a
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="introduction-tooservice-fabric-reliable-actors"></a>Úvod tooService Reliable Actors prostředků infrastruktury
-Reliable Actors je architektura aplikace Service Fabric podle hello [virtuální objektu Actor](http://research.microsoft.com/en-us/projects/orleans/) vzor. Hello spolehlivé aktéři API poskytuje programovací model jednovláknové založený na škálovatelnost a spolehlivost záruky hello poskytované Service Fabric.
+# <a name="introduction-to-service-fabric-reliable-actors"></a>Seznámení se službou Service Fabric Reliable Actors
+Reliable Actors je architektura aplikace Service Fabric na základě [virtuální objektu Actor](http://research.microsoft.com/en-us/projects/orleans/) vzor. Rozhraní API spolehlivé aktéři poskytuje programovací model jednovláknové založený na škálovatelnost a spolehlivost záruk poskytnutých Service Fabric.
 
 ## <a name="what-are-actors"></a>Jaké jsou aktéři?
-Objekt actor je s jednotkou izolované, nezávislé výpočetních operací a stavu s jedním podprocesem provádění. Hello [vzor objektu actor](https://en.wikipedia.org/wiki/Actor_model) je výpočetní model souběžných nebo distribuovaných systémů, ve které velké množství těchto aktéři mohou být prováděny současně a nezávisle na sobě navzájem. Aktéři mohou komunikovat navzájem a mohou vytvářet další aktéři.
+Objekt actor je s jednotkou izolované, nezávislé výpočetních operací a stavu s jedním podprocesem provádění. [Vzor objektu actor](https://en.wikipedia.org/wiki/Actor_model) je výpočetní model souběžných nebo distribuovaných systémů, ve které velké množství těchto aktéři mohou být prováděny současně a nezávisle na sobě navzájem. Aktéři mohou komunikovat navzájem a mohou vytvářet další aktéři.
 
-### <a name="when-toouse-reliable-actors"></a>Když toouse Reliable Actors
-Služba Fabric Reliable Actors je implementace tohoto vzoru návrhu objektu actor hello. Stejně jako u jakékoli vzoru návrhu softwaru hello rozhodnutí, jestli se provádí specifického vzoru toouse podle zda softwaru návrh problém vyhovuje vzoru hello.
+### <a name="when-to-use-reliable-actors"></a>Kdy použít Reliable Actors
+Služba Fabric Reliable Actors je implementace tohoto vzoru návrhu objektu actor. Rozhodnutí, jestli se má používat specifického vzoru se provádí podle zda softwaru návrh problém stejně jako u jakékoli vzoru návrhu softwaru vyhovuje vzoru.
 
-I když vzoru návrhu objektu actor hello může být dobrým shody tooa počet distribuovaných systémů problémy a scénáře, pečlivě zvážit omezení hello vzor hello a hello framework implementace, které musí být provedeny. Jako obecné pokyny vezměte v úvahu hello objektu actor vzor toomodel problém nebo scénář pokud:
+I když objektu actor návrh vzor dobrou vejdou na počet distribuovaných systémů problémy a scénáře, postupujte opatrně, že musí být provedeny zvážení omezení vzoru a rozhraní ho implementujete. Jako obecné pokyny vezměte v úvahu vzor objektu actor pro modelování problém nebo scénář, pokud:
 
 * Váš prostor problém zahrnuje velký počet (tisíc nebo více) malé, nezávislé a izolované jednotek stavu a logiku.
-* Chcete toowork s jedním podprocesem objekty, které nevyžadují významné interakce z externí součásti, včetně dotaz na stav mezi sadu aktéři.
+* Budete chtít pracovat s jedním podprocesem objekty, které nevyžadují významné interakce z externí součásti, včetně dotaz na stav mezi sadu aktéři.
 * Vaše instance objektu actor neblokuje volající s nepředvídatelným zpoždění vydáním vstupně-výstupních operací.
 
 ## <a name="actors-in-service-fabric"></a>Aktéři v Service Fabric
-V Service Fabric, kteří se implementují ve hello Reliable Actors framework: na základě objektu actor vzor aplikační rozhraní založené na [spolehlivé služby Service Fabric](service-fabric-reliable-services-introduction.md). Každý spolehlivé objektu Actor službu, kterou píšete je ve skutečnosti oddílů, stavová spolehlivá služba.
+V Service Fabric aktéři jsou implementované v rámci Reliable Actors: na základě objektu actor vzor aplikační rozhraní založené na [spolehlivé služby Service Fabric](service-fabric-reliable-services-introduction.md). Každý spolehlivé objektu Actor službu, kterou píšete je ve skutečnosti oddílů, stavová spolehlivá služba.
 
-Každý objektu actor je definován jako instance typu objektu actor, způsob identické toohello objekt .NET je instance typu .NET. Například může být typ objektu actor, který implementuje hello funkce kalkulačky a může být mnoho aktéři daného typu, které jsou rozmístěny v různých uzlech v clusteru. Každé takové objektu actor je jedinečně identifikovaný identifikátor objektu actor.
+Každý objekt actor je definován jako instanci objektu actor typu identické způsobem, jakým objekt .NET je instance typu .NET. Například může být typ objektu actor, která implementuje funkce kalkulačky a může být mnoho aktéři daného typu, které jsou rozmístěny v různých uzlech v clusteru. Každé takové objektu actor je jedinečně identifikovaný identifikátor objektu actor.
 
 ### <a name="actor-lifetime"></a>Doba života objektu actor
-Service Fabric aktéři jsou virtuální, což znamená, že své životnosti není vázanou tootheir reprezentací v paměti. V důsledku toho nepotřebují toobe explicitně vytvořen nebo zničeno. modul runtime Reliable Actors Hello automaticky aktivuje objektu actor hello poprvé obdrží žádost pro ID tohoto objektu actor. Pokud objekt actor se nepoužívá pro určitou dobu, hello Reliable Actors runtime uvolňování paměti – shromažďuje hello objektů v paměti. Také zachová znalostní báze hello objektu actor existence měli toobe později znovu aktivovat. Další podrobnosti najdete v tématu [kolekce paměti a životního cyklu objektu Actor](service-fabric-reliable-actors-lifecycle.md).
+Service Fabric aktéři jsou virtuální, což znamená, že své životnosti není vázaný k jejich reprezentaci v paměti. V důsledku toho se nemusíte být explicitně vytvořen nebo zničeno. Modul runtime Reliable Actors automaticky aktivuje doba objektu actor první obdrží žádost pro ID tohoto objektu actor. Pokud objekt actor se nepoužívá pro určitou dobu, modul runtime Reliable Actors uvolňování paměti – shromažďuje objekt v paměti. Také zachová znalostní báze objektu actor existence měli později znovu aktivovat. Další podrobnosti najdete v tématu [kolekce paměti a životního cyklu objektu Actor](service-fabric-reliable-actors-lifecycle.md).
 
-Tato abstrakce doba života objektu actor virtuální představuje některé upozornění v důsledku hello virtuální objektu actor modelu a ve skutečnosti odchylují hello Reliable Actors implementace v některých případech z tohoto modelu.
+Tato abstrakce doba života objektu actor virtuální představuje některé upozornění v důsledku virtuální objektu actor modelu a ve skutečnosti implementace Reliable Actors odchylují někdy z tohoto modelu.
 
-* Objekt actor se automaticky aktivuje (což objektu actor objekt toobe sestavený) hello poprvé, je odeslána zpráva ID tooits objektu actor. Po nějaké časové období je objekt actor hello uvolnění z paměti. V hello budoucí, znovu pomocí ID objektu actor hello způsobí, že nového objektu actor toobe objekt vytvořený. Stav objektu actor outlives doba života objektu hello při uložené v hello správce stavu.
-* Voláním jakékoli metody objektu actor pro ID objektu actor aktivuje tohoto objektu actor. Z tohoto důvodu objektu actor typy mají jejich Konstruktor volá implicitně hello runtime. Kód klienta proto nelze předat parametry toohello objektu actor konstruktoru typu, i když parametry mohou být předaná toohello objektu actor konstruktor samotnou službu hello. Hello výsledkem je, že aktéři může zkonstruovat ve stavu částečně inicializovat pomocí hello, když se nazývají jiné metody, pokud objektu actor hello vyžaduje inicializační parametry z klienta hello. Neexistuje jeden vstupní bod pro aktivaci hello objektu actor z klienta hello.
-* I když Reliable Actors implicitně vytvořit objekty objektu actor; Máte tooexplicitly hello možnost odstranit objekt actor a její stav.
+* Objekt actor se automaticky aktivuje (což objekt actor tak, aby zkonstruovat) při prvním přijetí zprávy jeho ID objektu actor. Po nějaké časové období je objekt actor uvolnění z paměti. V budoucnu znovu pomocí ID objektu actor, způsobí, že objekt nového objektu actor zkonstruovat. Stav objektu actor outlives doba života objektu, když uložené v správce stavu.
+* Voláním jakékoli metody objektu actor pro ID objektu actor aktivuje tohoto objektu actor. Z tohoto důvodu objektu actor typy mají jejich konstruktor volána implicitně modulem runtime. Kód klienta proto nemůžete předat parametry do konstruktoru objektu actor typu, i když může být předány parametry objektu actor konstruktor samotné služby. Výsledkem je, že aktéři může zkonstruovat ve stavu částečně inicializovat podle času, které se nazývají jiné metody, pokud objektu actor vyžaduje inicializační parametry z klienta. Neexistuje jeden vstupní bod pro aktivaci objektu actor z klienta.
+* I když Reliable Actors implicitně vytvořit objekty objektu actor; Máte možnost explicitně odstranit objekt actor a její stav.
 
 ### <a name="distribution-and-failover"></a>Distribuce a převzetí služeb při selhání
-tooprovide škálovatelnost a spolehlivost, Service Fabric distribuuje aktéři v rámci clusteru hello a automaticky migruje je z selhání uzlů toohealthy ty, které jsou podle potřeby. Toto je abstrakci přes [oddílů, stavová služba spolehlivé](service-fabric-concepts-partitioning.md). Distribuce, škálovatelnost, spolehlivost a automatické převzetí služeb při selhání jsou všechny poskytované na základě hello skutečnost, že aktéři běží ve stavové spolehlivá služba s názvem hello *služby objektu Actor*.
+Zajistit škálovatelnost a spolehlivost, Service Fabric distribuuje aktéři v rámci clusteru a automaticky je migraci z selhání uzlů do pořádku ty, které jsou podle potřeby. Toto je abstrakci přes [oddílů, stavová služba spolehlivé](service-fabric-concepts-partitioning.md). Distribuce, škálovatelnost, spolehlivost a automatické převzetí služeb při selhání jsou k všechny dispozici základě skutečnost, že aktéři běží ve stavové služby spolehlivé volat *služby objektu Actor*.
 
-Aktéři jsou rozmístěny v hello oddíly hello služby objektu Actor a tyto oddíly jsou rozmístěny v hello uzlů v clusteru Service Fabric. Každý oddíl služby obsahuje sadu aktéři. Service Fabric spravuje distribuce a převzetí služeb při selhání oddílů služby hello.
+Aktéři jsou distribuovány na oddíly služby objektu Actor a tyto oddíly jsou rozdělené mezi uzly v clusteru Service Fabric. Každý oddíl služby obsahuje sadu aktéři. Service Fabric spravuje distribuce a převzetí služeb při selhání oddílů služby.
 
-Například služby objektu actor s devět oddíly nasadit toothree, které by thusly distribuována uzlů pomocí hello výchozí objektu actor oddílu umístění:
+Například služby objektu actor s devět oddíly, které jsou nasazené na tři uzly pomocí výchozí umístění oddílu objektu actor by distribuována thusly:
 
 ![Spolehlivé aktéři distribuce][2]
 
-oddíl schématu a klíč nastavení rozsahu pro vás spravuje Hello objektu Actor Framework. Zjednodušuje některé možnosti, ale také představuje některé pozornost:
+Rozhraní objektu Actor oddílu schéma a klíč nastavení rozsahu pro vás spravuje. Zjednodušuje některé možnosti, ale také představuje některé pozornost:
 
-* Spolehlivé služby vám umožní toochoose schéma rozdělení oddílů, klíče rozsah (při použití rozsah dělení schéma) a počet oddílů. Reliable Actors je omezená toohello rozsah schéma rozdělení oddílů (hello uniform Int64 schéma) a vyžaduje, že používáte hello plný Int64 klíče rozsah.
+* Spolehlivé služby umožňuje vyberte schéma rozdělení oddílů, klíče rozsah (při použití rozsah dělení schéma) a počet oddílu. Reliable Actors je omezen na rozsah dělení schéma (uniform Int64 schéma) a vyžaduje, že používáte plný rozsah klíče Int64.
 * Ve výchozím nastavení se umístí do oddílů, které jsou výsledkem uniform distribuční náhodně aktéři.
 * Protože aktéři jsou náhodně umístěn, je třeba očekávat, objektu actor operace budou vždy vyžadovat komunikaci sítě, včetně serializace a deserializace dat volání metody, by docházelo k latenci a zatížení.
-* V pokročilých scénářích je možné toocontrol objektu actor oddílu umístění pomocí objektu actor Int64 ID, které mapují toospecific oddíly. Ale to tak může způsobit jako nevyváženou distribučního aktéři napříč oddíly.
+* V pokročilých scénářích je možné umístění oddílu objektu actor ovládacího prvku pomocí objektu actor Int64 ID, které mapují na konkrétní oddíly. Ale to tak může způsobit jako nevyváženou distribučního aktéři napříč oddíly.
 
-Další informace o tom, jak jsou služby objektu actor do několika oddílů, najdete v části příliš[dělení koncepty pro aktéři](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors).
+Další informace o tom, jak jsou služby objektu actor do několika oddílů, najdete v části [dělení koncepty pro aktéři](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors).
 
 ### <a name="actor-communication"></a>Komunikace objektu actor
-Interakce objektu actor jsou definovány v rozhraní, které sdílí objektu actor hello, který implementuje rozhraní hello a hello klienta, který získá proxy objektu actor tooan prostřednictvím hello stejné rozhraní. Protože toto rozhraní je tooinvoke použitých actor metody asynchronně, musí být každou metodu na rozhraní hello vrácení úloh.
+Interakce objektu actor jsou definovány v rozhraní, které sdílí objektu actor, který implementuje rozhraní a klienta, který získá proxy serveru k objektu actor prostřednictvím stejné rozhraní. Protože toto rozhraní se použije k vyvolání metody objektu actor asynchronně, musí být každý metoda v rozhraní vrácení úloh.
 
-Volání metod a jejich odpovědi nakonec za následek síťové požadavky napříč hello clusteru, takže hello argumentů a typy výsledků hello hello úloh, že vrací musejí být serializovatelná platformou hello. Konkrétně musí být [kontraktů dat serializovatelný](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
+Volání metod a jejich odpovědi konečným výsledkem je síťové požadavky napříč clusterem, takže argumenty a typy výsledků úlohy, které vracejí musejí být serializovatelná platformou. Konkrétně musí být [kontraktů dat serializovatelný](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
 
-#### <a name="hello-actor-proxy"></a>Proxy Server Hello objektu actor
-Hello Reliable Actors klientského rozhraní API poskytuje komunikaci mezi instanci objektu actor a objektu actor klienta. toocommunicate s objektu actor, klient vytvoří objekt objektu actor proxy serveru, který implementuje rozhraní objektu actor hello. Hello klient komunikuje s objektu actor hello volajícím metody u objektu proxy hello. proxy objektu actor Hello lze použít pro komunikaci klienta do objektu actor a objektu actor actor.
+#### <a name="the-actor-proxy"></a>Proxy objektu actor
+Klient Reliable Actors rozhraní API poskytuje komunikaci mezi instanci objektu actor a objektu actor klienta. Ke komunikaci s objektu actor, klient vytvoří objekt actor proxy, který implementuje rozhraní objektu actor. Klient komunikuje s objektu actor vyvoláním metody pro objekt proxy serveru. Proxy objektu actor lze použít pro komunikaci klienta do objektu actor a objektu actor actor.
 
 ```csharp
 // Create a randomly distributed actor ID
@@ -82,7 +82,7 @@ ActorId actorId = ActorId.CreateRandom();
 // This only creates a proxy object, it does not activate an actor or invoke any methods yet.
 IMyActor myActor = ActorProxy.Create<IMyActor>(actorId, new Uri("fabric:/MyApp/MyActorService"));
 
-// This will invoke a method on hello actor. If an actor with hello given ID does not exist, it will be activated by this method call.
+// This will invoke a method on the actor. If an actor with the given ID does not exist, it will be activated by this method call.
 await myActor.DoWorkAsync();
 ```
 
@@ -93,54 +93,54 @@ ActorId actorId = new ActorId("Actor1");
 // This only creates a proxy object, it does not activate an actor or invoke any methods yet.
 MyActor myActor = ActorProxyBase.create(actorId, new URI("fabric:/MyApp/MyActorService"), MyActor.class);
 
-// This will invoke a method on hello actor. If an actor with hello given ID does not exist, it will be activated by this method call.
+// This will invoke a method on the actor. If an actor with the given ID does not exist, it will be activated by this method call.
 myActor.DoWorkAsync().get();
 ```
 
 
-Hello dva údaje použity toocreate hello objektu actor proxy – objekt jsou hello objekt actor s ID a název aplikace hello. ID objektu actor Hello jednoznačně identifikuje objektu actor hello, zatímco název aplikace hello identifikuje hello [aplikace Service Fabric](service-fabric-reliable-actors-platform.md#application-model) kde je nasazená objektu actor hello.
+Upozorňujeme, že jsou dva kusy informace, které slouží k vytvoření objektu actor proxy objektu objekt actor s ID a název aplikace. ID objektu actor jednoznačně identifikuje objektu actor, zatímco identifikuje název aplikace [aplikace Service Fabric](service-fabric-reliable-actors-platform.md#application-model) kde je nasazená objektu actor.
 
-Hello `ActorProxy`(C#) nebo `ActorProxyBase`– třída (Java) na straně klienta hello provede hello nezbytné řešení toolocate objektu actor hello podle ID a otevřete komunikační kanál s ním. Opakuje také toolocate hello objektu actor v případech hello selhání komunikace a převzetí služeb při selhání. V důsledku toho doručování zpráv má hello následující vlastnosti:
+`ActorProxy`(C#) nebo `ActorProxyBase`– třída (Java) na straně klienta provádí nezbytné řešení pro vyhledání objektu actor podle ID a otevřete komunikační kanál s ním. Také se pokusí najít objektu actor v případě selhání komunikace a převzetí služeb při selhání. V důsledku toho doručování zpráv má následující vlastnosti:
 
 * Doručení zpráv je nejlepší úsilí.
-* Aktéři mohou se zobrazit duplicitní zprávy z hello stejného klienta.
+* Aktéři může se zobrazit duplicitní zprávy ze stejného klienta.
 
 ### <a name="concurrency"></a>Souběžnost
-Hello Reliable Actors runtime poskytuje jednoduché přístupu na základě zapněte model pro přístup k objektu actor metody. To znamená, že kdykoli může být aktivní uvnitř objekt actor kód více než jedno vlákno. Není nutné pro synchronizaci mechanismy pro přístup k datům přístupu na základě zapnout výrazně zjednodušuje souběžných systémy. Taky to znamená, že systémy musí být vytvořeny s zvláštní upozornění pro hello jednovláknové přístup povaze každá instance objektu actor.
+Modul runtime Reliable Actors poskytuje jednoduché přístupu na základě zapněte model pro přístup k objektu actor metody. To znamená, že kdykoli může být aktivní uvnitř objekt actor kód více než jedno vlákno. Není nutné pro synchronizaci mechanismy pro přístup k datům přístupu na základě zapnout výrazně zjednodušuje souběžných systémy. Taky to znamená, že systémy musí být vytvořeny s zvláštní upozornění pro jednovláknové přístup povaze každá instance objektu actor.
 
-* Více než jeden požadavek nelze zpracovat instance jednoho objektu actor v čase. Instance objektu actor může způsobit úzkým místem propustnost, pokud je očekávaný toohandle souběžných požadavků.
-* Aktéři můžete zablokování na sobě navzájem, pokud je požadavek cyklické mezi dvěma aktéři při Přišla žádost o externí tooone hello aktéři současně. Hello objektu actor runtime bude automaticky času odhlašování v objektu actor volá a k vyvolání k výjimce toohello volající toointerrupt situacích možné zablokování.
+* Více než jeden požadavek nelze zpracovat instance jednoho objektu actor v čase. Instance objektu actor může způsobit úzkým místem propustnost, pokud se očekává, zpracování souběžných požadavků.
+* Aktéři můžete zablokování na sobě navzájem, pokud je požadavek cyklické mezi dvěma aktéři při externí požadavku na jednu z aktéři současně. Modul runtime objektu actor automaticky vypršení časového limitu při volání objektu actor a způsobí výjimku volajícího k přerušení situacích možné zablokování.
 
 ![Spolehlivé aktéři komunikace][3]
 
 #### <a name="turn-based-access"></a>Přístupu na základě zapnout
-Zapněte se skládá z hello dokončení provádění metody objektu actor v žádosti o tooa odpovědi jiných klientů nebo aktéři nebo hello dokončení provádění [časovače nebo připomenutí](service-fabric-reliable-actors-timers-reminders.md) zpětného volání. I když jsou tyto metody a zpětná volání asynchronní, hello aktéři runtime není prokládání dat je. Předtím, než je povolený nový zapnout, musí být plně dokončení zapnout. Jinými slovy objektu actor metoda nebo časovače nebo připomenutí zpětné volání, které je aktuálně spuštěných musí být plně dokončení před nové metody tooa volání nebo zpětné volání je povolen. Metoda nebo zpětného volání považuje za toohave dokončení Pokud hello provádění vrátila z metody hello nebo dokončení zpětného volání a hello úlohy vrácený metodou hello nebo zpětného volání. Je vhodné zdůraznění, že na základě zapnout concurrency je dodržena i přes různé metody, časovače a zpětná volání.
+Zapněte se skládá z dokončení provádění metody objektu actor v reakci na žádost o jiných klientů nebo aktéři nebo dokončení provádění [časovače nebo připomenutí](service-fabric-reliable-actors-timers-reminders.md) zpětného volání. I když jsou tyto metody a zpětná volání asynchronní, modul runtime aktéři není prokládání dat je. Předtím, než je povolený nový zapnout, musí být plně dokončení zapnout. Jinými slovy musí být plně dokončení před nové volání do metody objektu actor metoda nebo časovače nebo připomenutí zpětné volání, které právě probíhá nebo je povoleno zpětného volání. Metoda nebo zpětné volání se považuje dokončily, pokud provádění vrátila z metody nebo dokončení zpětného volání a úloha vrácená metoda nebo zpětného volání. Je vhodné zdůraznění, že na základě zapnout concurrency je dodržena i přes různé metody, časovače a zpětná volání.
 
-Hello aktéři runtime vynucuje na základě zapnout souběžnosti získávání zámku na objektu actor na začátku hello zapnout a uvolněním hello zámku na konci hello hello vypnout. Na základě zapnout souběžnosti je proto vynucují na základě za objekt actor a není mezi aktéři. Metody objektu actor a zpětná volání časovače nebo připomenutí můžete spustit současně jménem různých aktéři.
+Modul runtime aktéři vynucuje na základě zapnout souběžnosti získávání zámku na objektu actor na začátku zapnout a uvolnění uzamčení na konci zapnout. Na základě zapnout souběžnosti je proto vynucují na základě za objekt actor a není mezi aktéři. Metody objektu actor a zpětná volání časovače nebo připomenutí můžete spustit současně jménem různých aktéři.
 
-Hello následující příklad znázorňuje hello výše koncepty. Vezměte v úvahu typ objektu actor, který implementuje dvě asynchronní metody (Řekněme, *Method1* a *Method2*), a časovač a připomenutí. Hello následující diagram ukazuje příklad časovou osu pro hello provádění těchto metod a zpětná volání jménem dvě aktéři (*ActorId1* a *ActorId2*), patří toothis objektu actor typu.
+Následující příklad ilustruje výše koncepty. Vezměte v úvahu typ objektu actor, který implementuje dvě asynchronní metody (Řekněme, *Method1* a *Method2*), a časovač a připomenutí. Následující diagram ukazuje příklad časovou osu pro provádění těchto metod a zpětná volání jménem dvě aktéři (*ActorId1* a *ActorId2*), patří do tohoto typu objektu actor.
 
 ![Spolehlivé aktéři modul runtime na základě zapnout souběžnosti a přístup][1]
 
 Tento diagram dodržovat tyto konvence:
 
-* Každé svislé čáry zobrazuje hello logický tok provádění metody nebo zpětné volání jménem konkrétního objektu actor.
-* Hello na každé svislé čáry označit k událostem v chronologickém pořadí s novější událostí pod starší.
-* Různé barvy se používají pro odpovídající aktéři toodifferent časové osy.
-* Zvýraznění je použité tooindicate hello duration, pro které hello je blokován zámek na objektu actor jménem metoda nebo zpětného volání.
+* Každé svislé čáry zobrazuje logický tok provádění metody nebo zpětné volání jménem konkrétního objektu actor.
+* V chronologickém pořadí s novější událostí pod starší dochází k události na každé svislé čáry označit.
+* Různé barvy se používají pro odpovídající různých aktéři časové osy.
+* Zvýraznění je slouží k určení doby trvání, pro který zámek na objektu actor trvá jménem metoda nebo zpětného volání.
 
-Některé důležité body tooconsider:
+Některé důležité body vzít v úvahu:
 
-* Při *Method1* provádí jménem *ActorId2* v odpovědi tooclient požadavku *xyz789*, další požadavek klienta (*abc123*) dorazí, který taky vyžaduje *Method1* toobe provedený *ActorId2*. Ale hello druhý provádění *Method1* nemá na začátku až do dokončení předchozí provádění hello. Podobně, zobrazí se připomenutí registrovaných *ActorId2* aktivuje se při *Method1* je spouštěna v odpovědi tooclient požadavku *xyz789*. Hello zpětného volání připomenutí se spustí až po obou spuštěních z *Method1* jsou dokončeny. Všechny tyto je z důvodu souběžnosti na základě tooturn vynucení pro *ActorId2*.
-* Podobně se na základě zapnout souběžnosti také vynucuje pro *ActorId1*, jak je znázorněno pomocí hello provádění *Method1*, *Method2*, a hello zpětné volání časovače jménem *ActorId1* děje sériové způsobem.
+* Při *Method1* provádí jménem *ActorId2* v reakci na žádost klienta *xyz789*, další požadavek klienta (*abc123*) dorazí, který taky vyžaduje *Method1* být vykonán *ActorId2*. Ale druhý provádění *Method1* nemá na začátku až do dokončení předchozí provádění. Podobně, zobrazí se připomenutí registrovaných *ActorId2* aktivuje se při *Method1* je spouštěna v reakci na žádost klienta *xyz789*. Zpětné volání připomenutí se spustí až po obou spuštěních z *Method1* jsou dokončeny. Všechny tyto je z důvodu souběžnosti na základě zapnout vynucení pro *ActorId2*.
+* Podobně se na základě zapnout souběžnosti také vynucuje pro *ActorId1*, jak je znázorněno pomocí provádění *Method1*, *Method2*a zpětné volání časovače jménem  *ActorId1* děje sériové způsobem.
 * Provádění *Method1* jménem *ActorId1* se překrývá s jeho spuštění jménem *ActorId2*. Je to proto, že na základě zapnout concurrency se vynucuje jenom v rámci objektu actor a není napříč aktéři.
-* V některých hello metoda/zpětného volání spuštěních hello `Task`(C#) nebo `CompletableFuture`(Java) vrácený hello metoda/zpětného volání dokončení po návratu metody hello. V některých jiných hello asynchronní operace již byla dokončena hello doby, vrátí hodnotu hello metoda/zpětného volání. V obou případech zámku na objektu actor hello vydání až po obě metody nebo zpětné hello volání vrátí, dokončení asynchronní operace hello.
+* V některých spuštěních metoda/zpětného volání `Task`(C#) nebo `CompletableFuture`(Java) vrácený dokončení metoda/zpětného volání po vrátí metoda. V některých jiných asynchronní operace již byla dokončena o dobu, kterou vrátí metoda zpětného volání. V obou případech zámek na objektu actor vydání až po, vrátí metoda zpětného volání i dokončení asynchronní operace.
 
 #### <a name="reentrancy"></a>Vícenásobný přístup
-Hello aktéři runtime umožňuje vícenásobný přístup ve výchozím nastavení. To znamená, že pokud metoda objektu actor *objektu Actor A* volá metodu na *objektu Actor B*, která volá jinou metodu na *objektu Actor A*, že metoda může toorun. Důvodem je, že je součástí hello stejné logické řetězce volání kontextu. Všechna volání časovače a připomenutí začínat hello nové logické volání kontextu. V tématu hello [vícenásobný přístup Reliable Actors](service-fabric-reliable-actors-reentrancy.md) další podrobnosti.
+Modul runtime aktéři umožňuje vícenásobný přístup ve výchozím nastavení. To znamená, že pokud metoda objektu actor *objektu Actor A* volá metodu na *objektu Actor B*, která volá jinou metodu na *objektu Actor A*, že je metoda může spustit. Je to proto, že je součástí stejného logického řetězce volání kontextu. Všechna volání časovače a připomenutí začínat nový kontext logické volání. Najdete v článku [vícenásobný přístup Reliable Actors](service-fabric-reliable-actors-reentrancy.md) další podrobnosti.
 
 #### <a name="scope-of-concurrency-guarantees"></a>Rozsah záruky souběžnosti
-modul runtime aktéři Hello poskytuje tyto záruky souběžnosti v situacích, kde se řídí hello volání z těchto metod. Například poskytuje tyto záruky pro hello volání metod, které se provádějí v požadavku klienta tooa odpověď, a také pro zpětné volání časovače a připomenutí. Ale pokud hello objektu actor kód přímo vyvolá tyto metody mimo hello mechanismus hello aktéři runtime, hello runtime nelze zadejte žádné záruky souběžnosti. Například pokud hello metoda je volána v kontextu hello některé úlohy, který není spojen s hello úloh vrácených metody objektu actor hello, hello runtime nelze zadejte souběžnosti záruky. Pokud hello metoda je volána z vlákna tohoto objektu actor hello vytvoří sama o sobě, pak hello runtime také neposkytuje souběžnosti záruky. Proto měli používat aktéři tooperform operace na pozadí, [objektu actor časovače a upomínek objektu actor](service-fabric-reliable-actors-timers-reminders.md) , respektují na základě zapnout souběžnosti.
+Modul runtime aktéři poskytuje tyto záruky souběžnosti v situacích, kde se řídí volání z těchto metod. Například poskytuje tyto záruky pro volání metod, které se provádějí v odpovědi na požadavek klienta, a také pro zpětné volání časovače a připomenutí. Ale pokud kód objektu actor přímo vyvolá tyto metody mimo mechanismy, které poskytuje modulem runtime aktéři, modul runtime nelze zadejte jakékoli záruky souběžnosti. Například pokud metoda je volána v rámci některých úloh, který není spojen s Úloha vrácená metody objektu actor, modul runtime nelze zadejte souběžnosti záruky. Pokud je metoda je vyvolána z vlákna, která objektu actor vytvoří sama o sobě, modul runtime nelze zadejte také souběžnosti záruky. Proto k provedení operace na pozadí, měli používat aktéři [objektu actor časovače a upomínek objektu actor](service-fabric-reliable-actors-timers-reminders.md) , respektují na základě zapnout souběžnosti.
 
 ## <a name="next-steps"></a>Další kroky
 * Začínáme se ve vaší první službě Reliable Actors:

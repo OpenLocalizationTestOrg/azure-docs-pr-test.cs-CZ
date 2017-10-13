@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure dokumentace k rozhraní API správy – kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
-description: "Zjistěte, jak toouse API Management toopublish rozhraní API bezpečně a ve velkém měřítku. Dokumentace ukazuje jak toocreate moderní bran rozhraní API pro stávající služby back-end."
+title: "Dokumentace ke službě Azure API Management – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
+description: "Naučte se využívat API Management k bezpečnému a škálovanému publikování rozhraní API. Dokumentace ukazuje, jak vytvořit moderní brány rozhraní API pro stávající služby back-end."
 services: api-management
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: c2bd5d7dc7c6df3ad01a704fdd28c9437d39a04b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: de56e8b5fb7866183b0f06c4ac877d7b80a282f9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="api-management-documentation"></a>Dokumentace ke službě API Management
 
-Zjistěte, jak toouse API Management toopublish rozhraní API tooexternal partnera a zaměstnanec vývojáři bezpečně a ve velkém měřítku. Kurzy, odkazy na rozhraní API a další dokumentaci ukazují, jak toocreate a správě brány moderní rozhraní API pro stávající back-end služby hostované odkudkoli.
+Naučte se využívat API Management k bezpečnému a škálovanému publikování rozhraní API vývojářům ze strany externích dodavatelů, partnerů i zaměstnanců. Kurzy, reference k rozhraní API a další dokumentace ukazují postupy vytváření a správy moderních bran rozhraní API pro stávající služby back-end, ať už jsou hostované kdekoli.
 
 <ul class="panelContent cardsFTitle">
     <li>

@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate a používání SSH dvojice klíčů pro virtuální počítače s Linuxem v Azure | Microsoft Docs"
-description: "Jak toocreate a použití SSH pár veřejného a privátního klíče pro virtuální počítače s Linuxem v Azure tooimprove hello zabezpečení procesu ověřování hello."
+title: "Vytvoření a použití páru klíčů SSH pro virtuální počítače s Linuxem v Azure | Dokumentace Microsoftu"
+description: "Jak vytvořit a použít pár veřejného a privátního klíče SSH pro virtuální počítače s Linuxem v Azure k vylepšení zabezpečení procesu ověřování."
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -15,24 +15,24 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/14/2017
 ms.author: iainfou
-ms.openlocfilehash: 7fb94841d34d5bc006f3134adf91102ddce5f174
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 6fcdcc96c7762e2362aebf909ef25f4a5ab62f99
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-toocreate-and-use-an-ssh-public-and-private-key-pair-for-linux-vms-in-azure"></a>Jak spárujte toocreate a používání veřejné a privátní klíč SSH pro virtuální počítače s Linuxem v Azure
-Klíče dvojice zabezpečené shell (SSH) můžete vytvořit virtuální počítače (VM) v Azure, který používat klíče SSH k ověření, což eliminuje potřebu hello toolog hesla v. Tento článek ukazuje, jak tooquickly vygenerování a použití veřejného a privátního klíče souboru dvojici SSH verze 2 protokolu RSA pro virtuální počítače s Linuxem. Další kroky a další příklady najdete v tématu [podrobné kroky toocreate páry klíčů SSH a certifikáty](create-ssh-keys-detailed.md).
+# <a name="how-to-create-and-use-an-ssh-public-and-private-key-pair-for-linux-vms-in-azure"></a>Vytvoření a použití páru veřejného a privátního klíče SSH pro virtuální počítače s Linuxem v Azure
+Pomocí páru klíčů SSH (Secure Shell) můžete v Azure vytvořit virtuální počítače, které k ověřování používají klíče SSH. Není potom potřeba používat k přihlašování hesla. Tento článek ukazuje, jak rychle vygenerovat a použít pár souborů veřejného a privátního klíče protokolu SSH verze 2 RSA pro virtuální počítače s Linuxem. Podrobný postup a další příklady najdete v tématu, které se věnuje [podrobným postupům vytvoření párů klíčů SSH a certifikátů](create-ssh-keys-detailed.md).
 
 ## <a name="create-an-ssh-key-pair"></a>Vytvoření páru klíčů SSH
-Použití hello `ssh-keygen` příkaz toocreate SSH veřejné a soukromé klíče soubory, které jsou ve výchozím nastavení, které jsou vytvořené v hello `~/.ssh` adresáře, ale můžete zadat jiné umístění a další přístupové heslo (heslo tooaccess hello souborem soukromého klíče) při výzva. Spusťte následující příkaz z prostředí Bash hello, když si odpovíte hello vyzve nahraďte svými vlastními informacemi.
+Pomocí příkazu `ssh-keygen` vytvořte soubory veřejného a privátního klíče SSH, které se automaticky vytvoří v adresáři `~/.ssh`, ale na vyzvání můžete zadat jiné umístění a dodatečné přístupové heslo (heslo pro přístup k souboru privátního klíče). Spusťte následující příkaz z prostředí Bash a na vyžádání zadejte vlastní údaje.
 
 ```bash
 ssh-keygen -t rsa -b 2048
 ```
 
-## <a name="use-hello-ssh-key-pair"></a>Používat pár klíčů SSH hello
-Hello veřejný klíč, který můžete umístit na virtuálním počítačům s Linuxem v Azure je ve výchozím nastavení uložená v `~/.ssh/id_rsa.pub`, pokud jste změnili umístění hello při jejich vytváření. Pokud používáte hello [Azure CLI 2.0](/cli/azure) toocreate virtuálního počítače, zadejte umístění hello tohoto veřejného klíče, pokud použijete hello [vytvořit virtuální počítač az](/cli/azure/vm#create) s hello `--ssh-key-path` možnost. Pokud zkopírujte a vložte obsah hello hello soubor veřejného klíče toouse hello portál Azure nebo šablony Resource Manageru, ujistěte se, že zkopírujete nemáte žádné další prázdný znak. Například pokud použijete OS X, můžete předat hello soubor veřejného klíče (ve výchozím nastavení, **~/.ssh/id_rsa.pub**) příliš**pbcopy** toocopy hello obsah (existují další programy Linux, které hello totéž, jako je například `xclip`).
+## <a name="use-the-ssh-key-pair"></a>Použití páru klíčů SSH
+Veřejný klíč, který umístíte na virtuální počítač s Linuxem v Azure, se ve výchozím nastavení uloží do souboru `~/.ssh/id_rsa.pub`, pokud umístění při vytváření nezměníte. Pokud k vytvoření virtuálního počítače použijete [Azure CLI 2.0](/cli/azure), umístění veřejného klíče můžete zadat při použití příkazu [az vm create](/cli/azure/vm#create) pomocí možnosti `--ssh-key-path`. Pokud obsah souboru veřejného klíče kopírujete a vkládáte za účelem použití na webu Azure Portal nebo v šabloně Resource Manageru, ujistěte se, že nekopírujete žádné prázdné znaky. Pokud například používáte systém OS X, můžete soubor veřejného klíče (ve výchozím nastavení **~/.ssh/id_rsa.pub**) předat příkazu **pbcopy**, který jeho obsah zkopíruje (existují i další linuxové programy, které dělají to samé, například `xclip`).
 
 Pokud s veřejnými klíči SSH teprve začínáte, můžete svůj veřejný klíč zobrazit spuštěním příkazu `cat`, jak je uvedeno níže, a nahrazením hodnoty `~/.ssh/id_rsa.pub` za umístění vašeho souboru veřejného klíče:
 
@@ -40,20 +40,20 @@ Pokud s veřejnými klíči SSH teprve začínáte, můžete svůj veřejný kl�
 cat ~/.ssh/id_rsa.pub
 ```
 
-S veřejným klíčem hello na vašem virtuálním počítači Azure, SSH tooyour virtuální počítač pomocí hello IP adresu nebo název DNS vašeho virtuálního počítače (mějte na paměti, tooreplace `azureuser` a `myvm.westus.cloudapp.azure.com` níže uživatelské jméno správce hello a hello plně kvalifikovaný název domény – nebo IP adresa):
+Jakmile budete mít veřejný klíč na virtuálním počítači Azure, připojte se k virtuálnímu počítači pomocí SSH za použití jeho IP adresy nebo názvu DNS (nezapomeňte nahradit níže uvedené hodnoty `azureuser` a `myvm.westus.cloudapp.azure.com` uživatelským jménem správce a plně kvalifikovaným názvem domény nebo IP adresou):
 
 ```bash
 ssh azureuser@myvm.westus.cloudapp.azure.com
 ```
 
-Pokud jste zadali heslo, když jste vytvořili dvojici klíčů, zadejte heslo hello po zobrazení výzvy během procesu přihlášení hello. (Přidat hello server tooyour `~/.ssh/known_hosts` složce a nebudou vyzváni tooconnect znovu, dokud hello veřejný klíč na změny virtuálního počítače Azure nebo název serveru hello se odebere z `~/.ssh/known_hosts`.)
+Pokud jste při vytváření páru klíčů zadali přístupové heslo, zadejte jej na vyzvání během procesu přihlašování. (Server se přidá do vaší složky `~/.ssh/known_hosts` a nové připojení se nebude vyžadovat, dokud se nezmění veřejný klíč na virtuálním počítači Azure nebo se neodebere název serveru ze složky `~/.ssh/known_hosts`.)
 
 ## <a name="next-steps"></a>Další kroky
 
-Virtuální počítače vytvořené pomocí klíče SSH, jsou ve výchozím nastavení nakonfigurované s hesly zakázáno, toomake hrubou silou uhodnutí pokusí významně nákladnější a proto obtížná. Toto téma popisuje vytvoření jednoduchého páru klíčů SSH pro rychlé použití. Pokud potřebujete další pomoc při vytváření dvojici klíčů SSH nebo vyžadovat další certifikáty, najdete v části [podrobné kroky toocreate páry klíčů SSH a certifikáty](create-ssh-keys-detailed.md).
+Virtuální počítače Azure vytvořené pomocí páru klíčů SSH jsou ve výchozím nastavení nakonfigurované se zakázaným heslem, aby byly pokusy o rozluštění hesla útokem hrubou silou výrazně nákladnější a tedy obtížnější. Toto téma popisuje vytvoření jednoduchého páru klíčů SSH pro rychlé použití. Pokud potřebujete další pomoc s vytvořením páru klíčů SSH nebo potřebujete další certifikáty, přečtěte si téma [Podrobný postup vytvoření párů klíčů SSH a certifikátů](create-ssh-keys-detailed.md).
 
-Můžete vytvořit virtuální počítače, které používají dvojici klíčů SSH pomocí hello portálu Azure, rozhraní příkazového řádku a šablony:
+Virtuální počítače používající pár klíčů SSH můžete vytvořit pomocí webu Azure Portal, rozhraní Azure CLI a šablon Azure:
 
-* [Vytvoření zabezpečeného virtuálního počítače s Linuxem pomocí portálu Azure hello](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Vytvoření zabezpečeného virtuálního počítače s Linuxem pomocí hello Azure CLI 2.0)](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Vytvoření zabezpečeného virtuálního počítače s Linuxem pomocí webu Azure Portal](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Vytvoření zabezpečeného virtuálního počítače s Linuxem pomocí Azure CLI 2.0](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Vytvoření zabezpečeného virtuálního počítače s Linuxem pomocí šablony Azure](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

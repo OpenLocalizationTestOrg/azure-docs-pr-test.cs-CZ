@@ -1,11 +1,11 @@
 # Přehled
 ## [Azure a IoT](iot-suite-what-is-azure-iot.md)
 ## [Co je IoT Suite?](iot-suite-overview.md)
-## [Jaké jsou hello předkonfigurované řešení?](iot-suite-what-are-preconfigured-solutions.md)
+## [Co jsou předkonfigurovaná řešení?](iot-suite-what-are-preconfigured-solutions.md)
 
 
 # Začínáme
-## [Začínáme s hello předkonfigurované řešení](iot-suite-getstarted-preconfigured-solutions.md)
+## [Začínáme s předkonfigurovanými řešeními](iot-suite-getstarted-preconfigured-solutions.md)
 ## [Oprávnění na webu azureiotsuite.com](iot-suite-permissions.md)
 ## [Přehled řešení prediktivní údržby](iot-suite-predictive-overview.md)
 ## [Přehled řešení propojené továrny](iot-suite-connected-factory-overview.md)
@@ -30,11 +30,11 @@
 ### [C ve Windows](iot-suite-connecting-devices.md)
 ### [C v Linuxu](iot-suite-connecting-devices-linux.md)
 ### [Node.js](iot-suite-connecting-devices-node.md)
-## [Připojit aplikaci logiky toohello řešení vzdáleného monitorování](iot-suite-logic-apps-tutorial.md)
+## [Připojení aplikace logiky k řešení vzdáleného monitorování](iot-suite-logic-apps-tutorial.md)
 ## [Přizpůsobení předkonfigurovaného řešení](iot-suite-guidance-on-customizing-preconfigured-solutions.md)
-## [Použití dynamické telemetrie s hello řešení vzdáleného sledování](iot-suite-dynamic-telemetry.md)
-## [Vytvoření vlastního pravidla v řešení vzdáleného monitorování hello](iot-suite-custom-rule.md)
-## [Informace o zařízení v řešení vzdáleného sledování hello](iot-suite-remote-monitoring-device-info.md)
+## [Použití dynamické telemetrie s řešením vzdáleného monitorování](iot-suite-dynamic-telemetry.md)
+## [Vytvoření vlastního pravidla v řešení vzdáleného monitorování](iot-suite-custom-rule.md)
+## [Informace o zařízení v řešení vzdáleného monitorování](iot-suite-remote-monitoring-device-info.md)
 ## [Nasazení brány pro propojenou továrnu](iot-suite-connected-factory-gateway-deployment.md)
 ## [Přizpůsobení propojené továrny](iot-suite-connected-factory-customize.md)
 
@@ -42,7 +42,7 @@
 ## [Architektura zabezpečení](iot-security-architecture.md)
 ## [Osvědčené postupy zabezpečení](iot-security-best-practices.md)
 ## [Zabezpečení nasazení IoT](iot-suite-security-deployment.md)
-## [Zabezpečení z hello pozadí](securing-iot-ground-up.md)
+## [Zabezpečení od počátku](securing-iot-ground-up.md)
 
 # Související
 ## [Stream Analytics](/azure/stream-analytics/)

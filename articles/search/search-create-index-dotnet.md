@@ -1,6 +1,6 @@
 ---
-title: "AAA \"Vytvoření indexu (rozhraní .NET API - Azure Search) | Microsoft Docs\""
-description: "Vytvořte index v kódu pomocí hello Azure Search .NET SDK."
+title: "Vytvoření indexu (.NET API – Azure Search) | Dokumentace Microsoftu"
+description: "Vytvořte index v kódu pomocí sady Azure Search .NET SDK."
 services: search
 documentationcenter: 
 author: brjohnstmsft
@@ -15,13 +15,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 05/22/2017
 ms.author: brjohnst
-ms.openlocfilehash: 7fa4030b8c3565bc02b1d6bb4426331657cf3a5f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: fac41903c3e5731d17f832ff58145fe74dfa29f1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-an-azure-search-index-using-hello-net-sdk"></a>Vytvoření indexu Azure Search pomocí .NET SDK hello
+# <a name="create-an-azure-search-index-using-the-net-sdk"></a>Vytvoření indexu Azure Search pomocí sady .NET SDK
 > [!div class="op_single_selector"]
 > * [Přehled](search-what-is-an-index.md)
 > * [Azure Portal](search-create-index-portal.md)
@@ -30,34 +30,34 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Tento článek vás provede procesem vytvoření Azure Search hello [index](https://docs.microsoft.com/rest/api/searchservice/Create-Index) pomocí hello [Azure Search .NET SDK](https://aka.ms/search-sdk).
+Tento článek vás provede procesem vytvoření [indexu](https://docs.microsoft.com/rest/api/searchservice/Create-Index) Azure Search pomocí sady [Azure Search .NET SDK](https://aka.ms/search-sdk).
 
 Předtím, než podle těchto pokynů vytvoříte index, byste už měli mít [vytvořenou službu Azure Search](search-create-service-portal.md).
 
 > [!NOTE]
-> Ukázkový kód v tomto článku je napsán v jazyce C#. Hello úplný zdrojový kód najdete [na Githubu](http://aka.ms/search-dotnet-howto). Můžete si také přečíst o hello [Azure Search .NET SDK](search-howto-dotnet-sdk.md) pro podrobnější procházení prostřednictvím hello ukázek kódu.
+> Ukázkový kód v tomto článku je napsán v jazyce C#. Úplný zdrojový kód najdete [na GitHubu](http://aka.ms/search-dotnet-howto). Můžete si také přečíst článek o sadě [Azure Search .NET SDK](search-howto-dotnet-sdk.md), který vás podrobněji provede ukázkovým kódem.
 
 
 ## <a name="identify-your-azure-search-services-admin-api-key"></a>Identifikace klíče rozhraní API správce služby Azure Search
-Teď, když máte zřízenou službu Azure Search, jste skoro hotový tooissue požadavky na váš koncový bod služby, pomocí hello .NET SDK. Nejprve budete potřebovat tooobtain mezi hello správce klíče api Key vytvořených pro hello vyhledávací službu, kterou jste zřídili. Hello .NET SDK odešle tento klíč rozhraní api služby tooyour každý požadavek. Platný klíč vytváří na základě žádosti mezi hello aplikace odesílání hello požadavku a hello služby, která ji zpracovává vztah důvěryhodnosti.
+Teď, když máte zřízenou službu Azure Search, jste skoro připraveni vydávat žádosti na koncový bod služby pomocí sady .NET SDK. Nejprve budete muset získat jeden z klíčů správce (api-key) vytvořených pro vyhledávací službu, kterou jste zřídili. .NET SDK bude tento klíč api-key odesílat v každém požadavku na vaši službu. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
-1. toofind klíče služby api Key, přihlaste se toohello [portálu Azure](https://portal.azure.com/)
-2. Okno služby Azure Search přejděte tooyour
-3. Klikněte na hello ikonu klíčů."
+1. Pokud chcete najít klíče api-key svojí služby, přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+2. Přejděte do okna služby Azure Search.
+3. Klikněte na ikonu klíčů.
 
 Vaše služba bude mít *klíče správce* a *klíče dotazů*.
 
-* Primární a sekundární *klíče správce* udělit úplná práva tooall operace, včetně hello možnost toomanage hello služby, vytvářet a odstraňovat indexy, indexery a zdroje dat.. Existují dva klíče, aby mohl pokračovat toouse hello sekundární klíč, pokud se rozhodnete tooregenerate hello primární klíč a naopak.
-* Vaše *klíče dotazů* udělit oprávnění jen pro čtení tooindexes a dokumentům a obvykle distribuované tooclient aplikace, které vydávají požadavky hledání.
+* Primární a sekundární *klíče správce* udělují úplná práva ke všem operacím, včetně možnosti spravovat službu, vytvářet a odstraňovat indexy, indexery a zdroje dat. Existují dva klíče, takže pokud se rozhodnete znovu vygenerovat primární klíč, můžete dál používat sekundární klíč, a naopak.
+* Vaše *klíče dotazů* udělují přístup jen pro čtení k indexům a dokumentům a obvykle se distribuují klientským aplikacím, které vydávají požadavky hledání.
 
-Pro účely vytvoření indexu hello, můžete použít buď vaší primární nebo sekundární klíč správce.
+Pro účely vytvoření indexu můžete použít primární nebo sekundární klíč správce.
 
 <a name="CreateSearchServiceClient"></a>
 
-## <a name="create-an-instance-of-hello-searchserviceclient-class"></a>Vytvoření instance třídy SearchServiceClient hello
-pomocí toostart hello .NET SDK služby Azure Search, budete potřebovat toocreate instanci hello `SearchServiceClient` třídy. Tato třída obsahuje několik konstruktorů. Dobrý den, ten, který chcete přebírá název vaší vyhledávací služby a `SearchCredentials` jako parametry. `SearchCredentials` zabalí váš klíč api-key.
+## <a name="create-an-instance-of-the-searchserviceclient-class"></a>Vytvoření instance třídy SearchServiceClient
+Chcete-li začít používat sadu Azure Search .NET SDK, budete muset vytvořit instanci třídy `SearchServiceClient`. Tato třída obsahuje několik konstruktorů. Ten, který chcete, přijímá jako parametry název vaší vyhledávací služby a objekt `SearchCredentials`. `SearchCredentials` zabalí váš klíč api-key.
 
-Hello následující kód vytvoří novou `SearchServiceClient` pomocí hodnot pro název vyhledávací služby hello a rozhraní api-key, které jsou uložené v konfiguračním souboru aplikace hello (`appsettings.json` v případě hello hello [ukázkové aplikace](http://aka.ms/search-dotnet-howto)):
+Následující kód vytvoří novou instanci `SearchServiceClient` pomocí hodnot pro název vyhledávací služby a klíč api-key, které jsou uložené v konfiguračním souboru aplikace (v případě [ukázkové aplikace](http://aka.ms/search-dotnet-howto) `appsettings.json`):
 
 ```csharp
 private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)
@@ -70,29 +70,29 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
 }
 ```
 
-`Indexes` má vlastnost `SearchServiceClient`. Tato vlastnost poskytuje všechny metody hello potřebovat toocreate, seznam, aktualizace nebo odstranění indexů Azure Search.
+`Indexes` má vlastnost `SearchServiceClient`. Tato vlastnost poskytuje všechny metody, které potřebujete k vytváření, výpisu, aktualizaci nebo odstranění indexů Azure Search.
 
 > [!NOTE]
-> Hello `SearchServiceClient` třída spravuje připojení tooyour vyhledávací službu. V pořadí tooavoid otevírání příliš mnoha připojení, že byste měli zkusit tooshare jednu instanci `SearchServiceClient` ve vaší aplikaci pokud je to možné. Její metody jsou bezpečné pro přístup z více vláken tooenable takové sdílení.
+> Třída `SearchServiceClient` spravuje připojení k vyhledávací službě. Aby se zabránilo otevírání příliš mnoha připojení, měli byste se pokusit sdílet jednu instanci třídy `SearchServiceClient` v rámci aplikace, pokud je to možné. Její metody jsou bezpečné pro přístup z více vláken a takové sdílení umožňují.
 > 
 > 
 
 <a name="DefineIndex"></a>
 
 ## <a name="define-your-azure-search-index"></a>Definování indexu Azure Search
-Jednoho volání toohello `Indexes.Create` metoda vytvoří váš index. Tato metoda přebírá jako parametr objekt `Index`, který definuje index Azure Search. Je třeba toocreate `Index` objektu a provést jeho inicializaci následujícím způsobem:
+Jediné volání metody `Indexes.Create` vytvoří váš index. Tato metoda přebírá jako parametr objekt `Index`, který definuje index Azure Search. Je nutné vytvořit objekt `Index` a provést jeho inicializaci následujícím způsobem:
 
-1. Sada hello `Name` vlastnost hello `Index` objekt toohello název indexu.
-2. Sada hello `Fields` vlastnost hello `Index` pole tooan objektu `Field` objekty. Hello nejjednodušší způsob, jak toocreate hello `Field` objekty, je volání hello `FieldBuilder.BuildForType` metodu předáním třídu modelu pro parametr typu hello. Třídu modelu má vlastnosti, které mapování polí toohello indexu. To vám umožní toobind dokumenty z vaší tooinstances indexu vyhledávání vaší třídy modelu.
+1. Nastavte vlastnost `Name` objektu `Index` na název indexu.
+2. Nastavte vlastnost `Fields` objektu `Index` na pole objektů `Field`. Nejjednodušším způsobem vytvoření objektů `Field` je zavolání metody `FieldBuilder.BuildForType` a předání třídy modelu pro příslušný parametr typu. Třída modelu obsahuje vlastnosti, které se mapují na pole vašeho indexu. Díky tomu můžete vytvořit vazbu mezi dokumenty z indexu Search a instancemi třídy modelu.
 
 > [!NOTE]
-> Pokud neplánujete toouse třídu modelu, stále můžete definovat indexu vytvořením `Field` objekty přímo. Můžete zadat název hello hello pole toohello konstruktoru, společně s datovým typem hello (nebo analyzátor pro pole řetězce). Můžete také nastavit další vlastnosti, například `IsSearchable`, `IsFilterable` atd.
+> Pokud nemáte v úmyslu používat třídu modelu, stále můžete definovat index přímým vytvořením objektů `Field`. Můžete zadat název pole do konstruktoru, společně s datovým typem (nebo analyzátor pro pole řetězce). Můžete také nastavit další vlastnosti, například `IsSearchable`, `IsFilterable` atd.
 >
 >
 
-Je důležité, aby byl vyhledávání uživatelské prostředí a obchodní potřeby v úvahu při navrhování indexu, protože každé pole musí mít přiřazen hello [příslušné vlastnosti](https://docs.microsoft.com/rest/api/searchservice/Create-Index). Tyto vlastnosti určují, které funkce vyhledávání (filtrování, používání faset, řazení fulltextového vyhledávání atd.) použít toowhich pole. Pro vlastnost, kterou nenastavíte explicitně, hello `Field` třída výchozí toodisabling hello odpovídající funkce hledání, pokud ji specificky nepovolíte.
+Při navrhování indexu je důležité zohlednit činnost koncového uživatele při vyhledávání a potřeby podniku, protože každému poli se musí přiřadit [vhodné vlastnosti](https://docs.microsoft.com/rest/api/searchservice/Create-Index). Tyto vlastnosti určují, které funkce vyhledávání (filtrování, používání omezujících vlastností, řazení fulltextového vyhledávání atd.) se použijí u kterých polí. Pro vlastnost, kterou nenastavíte explicitně, se použije jako výchozí hodnota třídy `Field` zákaz odpovídající funkce hledání, pokud ji specificky nepovolíte.
 
-V našem příkladu jsme nazvali index „hotels“ a pole jsme definovali pomocí třídy modelu. Každá vlastnost třídy modelu hello má atributy, které určují chování související s vyhledávání hello hello odpovídající index pole. třídy modelu Hello je definován následujícím způsobem:
+V našem příkladu jsme nazvali index „hotels“ a pole jsme definovali pomocí třídy modelu. Každá vlastnost třídy modelu má atributy, které určují chování odpovídajícího pole indexu při vyhledávání. Třída modelu je definována takto:
 
 ```csharp
 using System;
@@ -101,9 +101,9 @@ using Microsoft.Azure.Search.Models;
 using Microsoft.Spatial;
 using Newtonsoft.Json;
 
-// hello SerializePropertyNamesAsCamelCase attribute is defined in hello Azure Search .NET SDK.
-// It ensures that Pascal-case property names in hello model class are mapped toocamel-case
-// field names in hello index.
+// The SerializePropertyNamesAsCamelCase attribute is defined in the Azure Search .NET SDK.
+// It ensures that Pascal-case property names in the model class are mapped to camel-case
+// field names in the index.
 [SerializePropertyNamesAsCamelCase]
 public partial class Hotel
 {
@@ -148,14 +148,14 @@ public partial class Hotel
 }
 ```
 
-Pečlivě zvolili hello atributy pro každou vlastnost závislosti na tom, jak myslíme si, že se pravděpodobně použijí v aplikaci. Například je pravděpodobné, že lidé hledající hotely se budou zajímat klíčového slova v hello `description` pole, takže jsme povolit fulltextové vyhledávání pro toto pole přidáním hello `IsSearchable` atribut toohello `Description` vlastnost.
+Atributy jsme pro každou vlastnost pečlivě zvolili podle toho, jak se pravděpodobně použijí v aplikaci. Například je pravděpodobné, že lidé hledající hotely se budou zajímat o výskyty klíčových slov v poli `description`, takže jsme pro toto pole povolili fulltextové vyhledávání přidáním atributu `IsSearchable` do vlastnosti `Description`.
 
-Upozorňujeme, že právě jedno pole v indexu typu `string` musí být hello určeny jako hello *klíč* pole přidáním hello `Key` atribut (viz `HotelId` v hello výše příklad).
+Upozorňujeme, že právě jedno pole typu `string` v indexu musí být určené jako *klíčové* pole, a to přidáním atributu `Key` (viz `HotelId` v předchozím příkladu).
 
-výše uvedená definice indexu Hello používá analyzátor jazyka pro hello `description_fr` pole, protože je určený toostore francouzského textu. V tématu [tématu jazykové podpory hello](https://docs.microsoft.com/rest/api/searchservice/Language-support) a také odpovídající hello [příspěvku na blogu](https://azure.microsoft.com/blog/language-support-in-azure-search/) Další informace o analyzátorech jazyka.
+Výše uvedená definice indexu používá pro pole `description_fr` analyzátor jazyka, protože je určené k ukládání francouzského textu. Další informace o analyzátorech jazyka najdete v [tématu jazykové podpory](https://docs.microsoft.com/rest/api/searchservice/Language-support) a příslušném [příspěvku na blogu](https://azure.microsoft.com/blog/language-support-in-azure-search/).
 
 > [!NOTE]
-> Ve výchozím nastavení je hello název každé vlastnosti ve třídě modelu slouží jako název hello hello odpovídající pole v indexu hello. Pokud chcete toomap vlastnost názvy toocamel případ názvy všech polí, označte hello třídu s hello `SerializePropertyNamesAsCamelCase` atribut. Pokud chcete, aby toomap tooa jiný název, můžete použít hello `JsonProperty` atribut jako hello `DescriptionFr` vlastnost výše. Hello `JsonProperty` atribut má přednost před hello `SerializePropertyNamesAsCamelCase` atribut.
+> Ve výchozím nastavení se název názvy jednotlivých vlastností v třídě modelu použijí jako názvy odpovídajících polí v indexu. Pokud chcete namapovat všechny názvy vlastností na názvy polí ve stylu CamelCase, označte třídu atributem `SerializePropertyNamesAsCamelCase`. Pokud chcete názvy vlastností namapovat na jiné názvy, můžete k tomu použít atribut `JsonProperty`, jako je tomu u výše uvedené vlastnosti `DescriptionFr`. Atribut `JsonProperty` má přednost před atributem `SerializePropertyNamesAsCamelCase`.
 > 
 > 
 
@@ -169,26 +169,26 @@ var definition = new Index()
 };
 ```
 
-## <a name="create-hello-index"></a>Vytvořte hello index
-Teď, když jste inicializovali `Index` objekt, můžete vytvořit hello index jednoduchým voláním `Indexes.Create` na vaše `SearchServiceClient` objektu:
+## <a name="create-the-index"></a>Vytvoření indexu
+Nyní, když jste inicializovali objekt `Index`, můžete vytvořit index jednoduchým voláním metody `Indexes.Create` pro objekt `SearchServiceClient`:
 
 ```csharp
 serviceClient.Indexes.Create(definition);
 ```
 
-Pro úspěšné žádosti hello metoda vrátí normálně. Pokud dojde k problému s hello žádostí, jako je například neplatný parametr, vyvolá výjimku hello metoda `CloudException`.
+V případě úspěšného požadavku dojde k normálnímu vrácení z metody. Pokud dojde k problému s požadavkem, jako je například neplatný parametr, vyvolá metoda výjimku `CloudException`.
 
-Když jste hotovi s toodelete indexu a chcete ho, stačí zavolat hello `Indexes.Delete` metoda na vaše `SearchServiceClient`. Jedná se například jak jsme odstranili index "hotels" hello:
+Pokud jste s indexem hotovi a chcete ho odstranit, stačí zavolat metodu `Indexes.Delete` pro objekt `SearchServiceClient`. Takto bychom například odstranili index „hotels“:
 
 ```csharp
 serviceClient.Indexes.Delete("hotels");
 ```
 
 > [!NOTE]
-> Hello ukázkový kód v tomto článku používá pro jednoduchost synchronní metody hello hello Azure Search .NET SDK. Doporučujeme použít hello asynchronních metod v tookeep vlastní aplikace je škálovatelné a dobře reagovaly. Například v hello příklady výše můžete použít `CreateAsync` a `DeleteAsync` místo `Create` a `Delete`.
+> Příklad kódu v tomto článku používá pro jednoduchost synchronní metody sady Azure Search .NET SDK. Doporučujeme ve vlastních aplikacích použít asynchronní metody, aby aplikace byly škálovatelné a dobře reagovaly. Například ve výše uvedených příkladech můžete použít `CreateAsync` a `DeleteAsync` namísto `Create` a `Delete`.
 > 
 > 
 
 ## <a name="next-steps"></a>Další kroky
-Po vytvoření indexu Azure Search, budete moci příliš[nahrát obsah do indexu hello](search-what-is-data-import.md) , abyste mohli začít prohledávat data.
+Po vytvoření indexu Azure Search budete připravení [nahrát do indexu obsah](search-what-is-data-import.md), abyste mohli začít prohledávat data.
 

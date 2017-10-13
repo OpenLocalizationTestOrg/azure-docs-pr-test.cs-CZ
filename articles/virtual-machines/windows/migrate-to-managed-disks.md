@@ -1,6 +1,6 @@
 ---
-title: "aaaMigrate tooManaged disky virtuálních počítačů Azure | Microsoft Docs"
-description: "Migrujte virtuální počítače Azure vytvořené pomocí nespravované disky v toouse účty úložiště spravované disky."
+title: "Migrovat virtuální počítače Azure k spravovaná diskům | Microsoft Docs"
+description: "Migrujte virtuální počítače Azure vytvořené pomocí nespravované disky v účtech úložiště použít spravované disky."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,53 +15,53 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 29420f13c4ffd5b25726e0ef1aafe89347286a89
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e23697b390e03bd2b71f2c905882070d864d62ed
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="migrate-azure-vms-toomanaged-disks-in-azure"></a>Migrovat virtuální počítače Azure tooManaged disky v Azure
+# <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>Migrovat virtuální počítače Azure k spravovaná diskům v Azure
 
-Disky systému Azure spravované usnadňuje správu úložiště odebráním hello nutné tooseparately spravovat účty úložiště.  Vaše stávající toobenefit tooManaged disky virtuálních počítačích Azure můžete také migrovat z vyšší spolehlivost virtuálních počítačů ve skupině dostupnosti. Zajišťuje, že hello disky pro různé virtuální počítače ve skupině dostupnosti bude dostatečně izolované od každé další tooavoid jediný bod selhání. Automaticky umístí disky pro různé virtuální počítače do skupiny dostupnosti v různých jednotek škálování úložiště (razítka) omezující hello dopad chyby škálování jednotky jednoho úložiště se nezdařila z důvodu z důvodu selhání toohardware a softwaru.
+Disky spravované Azure zjednodušuje správu vašeho úložiště odebráním potřeba samostatně spravovat účty úložiště.  Můžete také migrovat existující virtuální počítače Azure spravované disků, abyste mohli využívat výhod vyšší spolehlivost virtuálních počítačů ve skupině dostupnosti. Zajišťuje, že disky různé virtuální počítače ve skupině dostupnosti bude dostatečně od sebe navzájem oddělené předejdete jediný bod selhání. Automaticky umístí disky pro různé virtuální počítače do skupiny dostupnosti v různých jednotek škálování úložiště (razítka) omezující vliv jednoho úložiště škálování jednotky chyby způsobené hardwaru a chyby softwaru.
 V závislosti na vašich potřebách můžete vybrat ze dvou typů možností úložiště:
 
-- [Pro prémiové disky spravované](../../storage/common/storage-premium-storage.md) jsou plnou stavu jednotky SSD (Solid-State Drive) založené na úložná média, který dodává highperformance, podporu disků s nízkou latencí pro virtuální počítače běžící I náročnými úlohy. Můžete využít výhod hello rychlosti a výkonu z těchto disků pomocí migrace tooPremium spravované disky.
+- [Pro prémiové disky spravované](../../storage/common/storage-premium-storage.md) jsou plnou stavu jednotky SSD (Solid-State Drive) založené na úložná média, který dodává highperformance, podporu disků s nízkou latencí pro virtuální počítače běžící I náročnými úlohy. Migrací prémiové disky spravované můžete využít výhod rychlosti a výkonu z těchto disků.
 
-- [Standardní disky spravované](../../storage/common/storage-standard-storage.md) používat jednotku pevného disku (HDD) na základě paměťových médií a jsou nejvhodnější pro vývoj/testování a další úlohy nepravidelným přístupu, které jsou méně citlivou variabilita tooperformance.
+- [Standardní disky spravované](../../storage/common/storage-standard-storage.md) používat jednotku pevného disku (HDD) na základě paměťových médií a jsou nejvhodnější pro vývoj/testování a další úlohy nepravidelným přístup, které jsou menší citlivá s ohledem na výkon proměnlivost.
 
-Můžete migrovat tooManaged disky v těchto scénářích:
+Můžete migrovat do spravované disky v těchto scénářích:
 
 | Migrujte...                                            | Dokumentace k propojení                                                                                                                                                                                                                                                                  |
 |----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Převést samostatný virtuální počítače a virtuální počítače discích toomanaged sadu dostupnosti   | [Převeďte disky toouse spravovat virtuální počítače](convert-unmanaged-to-managed-disks.md) |
-| Jeden virtuální počítač z classic tooResource Manager na discích spravovaných     | [Migrovat jeden virtuální počítač](migrate-single-classic-to-resource-manager.md)  | 
-| Všechny virtuální počítače hello ve virtuální síti ze classic tooResource Manager na discích spravovaných     | [Migrovat prostředky infrastruktury z classic tooResource Manager](migration-classic-resource-manager-ps.md) a potom [převést virtuální počítač z nespravovaných disky toomanaged disků](convert-unmanaged-to-managed-disks.md) | 
+| Převést samostatný virtuální počítače a virtuální počítače ve skupině dostupnosti nastavena na spravované disky   | [Převést virtuální počítače použít spravované disky](convert-unmanaged-to-managed-disks.md) |
+| Jeden virtuální počítač z classic do Resource Manager na discích spravovaných     | [Migrovat jeden virtuální počítač](migrate-single-classic-to-resource-manager.md)  | 
+| Všechny virtuální počítače ve virtuální síti z classic do Resource Manager na discích spravovaných     | [Migrovat prostředky infrastruktury z classic do Resource Manager](migration-classic-resource-manager-ps.md) a potom [převeďte virtuální počítač z disků nespravované na spravované disky](convert-unmanaged-to-managed-disks.md) | 
 
 
 
 
 
 
-## <a name="plan-for-hello-conversion-toomanaged-disks"></a>Plánování pro převod hello tooManaged disky
+## <a name="plan-for-the-conversion-to-managed-disks"></a>Plán pro převod na spravované disky
 
-Tato část vám pomůže toomake hello nejlepší rozhodnutí o typy virtuálního počítače a disku.
+V této části můžete vytvořit nejlepší rozhodnutí o typech virtuálního počítače a disku.
 
 
 ## <a name="location"></a>Umístění
 
-Vyberte umístění, kde Azure spravované disky jsou dostupné. Je-li přesouváte tooPremium spravované disky, zkontrolujte také, že úložiště Premium je k dispozici v hello oblasti, kde jsou plánování toomove k. V tématu [služby Azure podle oblasti](https://azure.microsoft.com/regions/#services) aktuální informace o dostupných umístění.
+Vyberte umístění, kde Azure spravované disky jsou dostupné. Pokud přecházíte na prémiové disky spravované, ujistěte se také, že úložiště Premium je k dispozici v oblasti, kde máte v úmyslu přesunout do. V tématu [služby Azure podle oblasti](https://azure.microsoft.com/regions/#services) aktuální informace o dostupných umístění.
 
 ## <a name="vm-sizes"></a>Velikost virtuálních počítačů
 
-Při migraci disků spravovaných tooPremium, máte tooupdate hello velikost virtuálního počítače tooPremium hello podporující velikost úložiště k dispozici v hello oblasti, kde je umístěn virtuální počítač. Zkontrolujte hello velikosti virtuálních počítačů, které jsou podporující Storage úrovně Premium. Specifikace velikosti virtuálního počítače Azure Hello jsou uvedeny v [velikosti virtuálních počítačů](sizes.md).
-Zkontrolujte hello výkonové charakteristiky virtuálních počítačů, které pracovat s Storage úrovně Premium a zvolte hello nejvhodnější velikost virtuálního počítače, který nejlépe vyhovuje vaší zatížení. Ujistěte se, zda je dostatečnou šířku pásma k dispozici na disku provozu hello toodrive virtuálních počítačů.
+Pokud provádíte migraci na disky spravované Premium, budete muset aktualizovat velikost virtuálního počítače do Storage úrovně Premium podporující velikost dostupné v oblasti, kde je umístěn virtuální počítač. Zkontrolujte velikosti virtuálních počítačů, které jsou podporující Storage úrovně Premium. Specifikace velikosti virtuálního počítače Azure, jsou uvedeny v [velikosti virtuálních počítačů](sizes.md).
+Zkontrolujte vlastnosti výkonu virtuálních počítačů, které pracovat Storage úrovně Premium a vyberete nejvhodnější velikost virtuálního počítače, který nejlépe vyhovuje vaší zatížení. Ujistěte se, že je dostatečnou šířku pásma dostupné na vašem virtuálním počítači k řízení provozu disku.
 
 ## <a name="disk-sizes"></a>Velikost disků
 
 **Premium spravované disky**
 
-Existují sedm typy premium spravované disky, které lze použít s vaší virtuálních počítačů a každá z nich má konkrétní IOPs a propustnost omezení. Vzít v úvahu tyto limity při výběru hello Premium typ disku pro virtuální počítač podle potřeb hello vaší aplikace z hlediska kapacity, výkon, škálovatelnost a načte ve špičce.
+Existují sedm typy premium spravované disky, které lze použít s vaší virtuálních počítačů a každá z nich má konkrétní IOPs a propustnost omezení. Vzít v úvahu tyto limity při výběru typu Premium disku pro virtuální počítač podle potřeb vaší aplikace z hlediska kapacity, výkon, škálovatelnost a načte ve špičce.
 
 | Disky typu Premium  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
@@ -71,7 +71,7 @@ Existují sedm typy premium spravované disky, které lze použít s vaší virt
 
 **Standardní disky spravované**
 
-Existují sedm typy standardní spravovaných disků, které lze použít s virtuálního počítače. Každý z nich mají různé kapacity ale mít stejné IOPS a omezení propustnosti. Vyberte typ hello standardní spravovaných disků na základě potřeb kapacity hello vaší aplikace.
+Existují sedm typy standardní spravovaných disků, které lze použít s virtuálního počítače. Každý z nich mají různé kapacity ale mít stejné IOPS a omezení propustnosti. Vyberte typ standardní spravovaných disků na základě potřeb kapacitu vaší aplikace.
 
 | Disk typu Standard  | S4               | S6               | S10              | S20              | S30              | S40              | S50              | 
 |---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------| 
@@ -83,11 +83,11 @@ Existují sedm typy standardní spravovaných disků, které lze použít s virt
 
 **Premium spravované disky**
 
-Ve výchozím nastavení, je disk ukládání do mezipaměti zásad *jen pro čtení* pro všechny hello Premium datových disků, a *pro čtení a zápis* pro disk operačního systému Premium hello připojené toohello virtuálních počítačů. Toto nastavení konfigurace se doporučuje tooachieve hello optimální výkon pro aplikace IOs. Těžký zápisu nebo pouze pro zápis datové disky (například soubory protokolu serveru SQL Server) zakažte ukládání do mezipaměti disku, takže můžete dosáhnout lepší výkon aplikace.
+Ve výchozím nastavení, je disk ukládání do mezipaměti zásad *jen pro čtení* pro všechny Premium datových disků, a *pro čtení a zápis* pro disk operačního systému Premium připojen k virtuálnímu počítači. Toto nastavení konfigurace se doporučuje pro dosažení optimálního výkonu pro vaše aplikace IOs. Těžký zápisu nebo pouze pro zápis datové disky (například soubory protokolu serveru SQL Server) zakažte ukládání do mezipaměti disku, takže můžete dosáhnout lepší výkon aplikace.
 
 ## <a name="pricing"></a>Ceny
 
-Zkontrolujte hello [ceny pro spravované disky](https://azure.microsoft.com/en-us/pricing/details/managed-disks/). Ceny disků spravované Premium je stejný jako hello nespravované prémiové disky. Ale ceny pro standardní disky spravované se liší od standardní nespravované disky.
+Zkontrolujte [ceny pro spravované disky](https://azure.microsoft.com/en-us/pricing/details/managed-disks/). Ceny disků spravované Premium je stejný jako nespravované prémiové disky. Ale ceny pro standardní disky spravované se liší od standardní nespravované disky.
 
 
 

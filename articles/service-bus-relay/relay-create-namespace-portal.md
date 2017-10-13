@@ -1,6 +1,6 @@
 ---
-title: "hello aaaCreate obor názvů typu předávání pomocí portálu Azure | Microsoft Docs"
-description: "Jak hello toocreate předávání oboru názvů pomocí portálu Azure."
+title: "Vytvoření oboru názvů typu Relay pomocí webu Azure Portal | Dokumentace Microsoftu"
+description: "Postup vytvoření oboru názvů pro Relay pomocí webu Azure Portal"
 services: service-bus-relay
 documentationcenter: .net
 author: sethmanheim
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 08/23/2017
 ms.author: sethm
-ms.openlocfilehash: ab3abedbe63aa2d806ffd3a0db7e4aa3c99c4b0d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 27cc817fd4fc2d88b0b7d87f99d58795a6b8b864
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="create-a-relay-namespace-using-hello-azure-portal"></a>Vytvoření oboru názvů předávání pomocí hello portálu Azure
-Obor názvů je společný kontejner pro všechny součásti Azure Relay. Součástí jednoho oboru názvů může být několik přenosů, přičemž obory názvů často slouží jako kontejnery aplikací. Nejsou aktuálně dvěma různými způsoby toocreate předávání názvů.
+# <a name="create-a-relay-namespace-using-the-azure-portal"></a>Vytvoření oboru názvů přenosu pomocí webu Azure Portal
+Obor názvů je společný kontejner pro všechny součásti Azure Relay. Součástí jednoho oboru názvů může být několik přenosů, přičemž obory názvů často slouží jako kontejnery aplikací. Obory názvů přenosu je v současnosti možné vytvořit dvěma způsoby.
 
 1. Portál Azure Portal (tento článek)
 2. Šablony [Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md)
 
-## <a name="create-a-namespace-in-hello-azure-portal"></a>Vytvoření oboru názvů v hello portálu Azure
+## <a name="create-a-namespace-in-the-azure-portal"></a>Vytvoření oboru názvů na webu Azure Portal
 
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 

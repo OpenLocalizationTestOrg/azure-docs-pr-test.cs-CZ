@@ -1,8 +1,8 @@
 ---
-title: aaaAzure funkce Stretch Database dokumentaci k serveru SQL - kurzy | Microsoft Docs
-description: "Zjistěte, jak toouse SQL Server Stretch Database toomigrate pomaleji přístupná data bezpečně tooAzure beze změny dotazy nebo aplikace. Kurzy a další dokumentace"
+title: "Dokumentace ke službě Azure SQL Server Stretch Database – kurzy | Dokumentace Microsoftu"
+description: "Naučte se používat SQL Server Stretch Database k bezpečné migraci studených dat do Azure beze změny dotazů nebo aplikací. Kurzy a další dokumentace"
 services: sql-server-stretch-database
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 2b009d80224a62d940ec8b11de22ad8c0865d869
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: cbdd210f2fe46228daa8c138815826df2b3b0fd7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="sql-server-stretch-database-documentation"></a>Dokumentace k funkci SQL Server Stretch Database
 
-Zjistěte, jak toouse systému SQL Server Stretch databáze toomigrate pomaleji přístupná data transparentně a bezpečně toohello Azure cloud. Kurzy a další dokumentaci nápovědy, které nastavíte nákladově efektivní dostupnost pro databáze s zřídka používaný datový bez nutnosti změny tooexisting dotazů ani aplikací.
+Naučte se používat SQL Server Stretch Database k transparentní a bezpečné migraci studených dat do cloudu Azure. Kurzy a další dokumentace vám pomůžou zajistit nákladově efektivní dostupnost pro databáze se zřídka používanými daty bez nutnosti změn stávajících dotazů nebo aplikací.
 
 
 <ul class="panelContent cardsFTitle">
@@ -89,7 +89,7 @@ Zjistěte, jak toouse systému SQL Server Stretch databáze toomigrate pomaleji 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začněte používat Průvodce hello SQL Server Stretch Database</h3>
+                        <h3>Začínáme s průvodcem SQL Server Stretch Database</h3>
                     </div>
                 </div>
             </div>

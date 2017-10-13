@@ -1,6 +1,6 @@
 ---
-title: aaaAzure sestavy intelligence threat Security Center | Microsoft Docs
-description: "Tento dokument vám pomůže toouse Azure Security Center Threat inteligentního sestavy během šetření toofind Další informace týkající se výstraha zabezpečení."
+title: "Sestava analýzy hrozeb v Azure Security Center | Dokumentace Microsoftu"
+description: "Tento dokument vám pomůže s použitím sestav analýzy hrozeb v Azure Security Center během vyšetřování za účelem nalezení dalších informací týkajících se výstrahy zabezpečení."
 services: security-center
 documentationcenter: na
 author: YuriDio
@@ -14,64 +14,64 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: yurid
-ms.openlocfilehash: c888cfac1dd8b057616a6b8e6c6f6b67b552f2e9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: b4310cf4e6849c67031b3ec8b1fd5957e35f7ea6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-security-center-threat-intelligence-report"></a>Sestava analýzy hrozeb v Azure Security Center
 Tento dokument vysvětluje, jakým způsobem vám mohou sestavy analýzy hrozeb v Azure Security Center pomoci zjistit více o hrozbě, který vygenerovala výstrahu zabezpečení.
 
 ## <a name="what-is-a-threat-intelligence-report"></a>Co je sestava analýzy hrozeb?
-Detekce hrozeb Security Center funguje tak, že monitorování zabezpečení informací v prostředky Azure, sítě hello a připojených partnerských řešení. Analyzuje tyto informace, často korelace informace z více zdrojů, tooidentify hrozeb. Tento proces je součástí hello Security Center [možností detekce](security-center-detection-capabilities.md).
+Detekce hrozeb v Security Center funguje tak, že monitoruje informace o zabezpečení z prostředků Azure, ze sítě a připojených partnerských řešení. Za účelem identifikace hrozeb služba tyto informace analyzuje a často přitom koreluje data z různých zdrojů. Tento proces je součástí [možností detekce](security-center-detection-capabilities.md) v Security Center.
 
-Když Security Center identifikuje hrozbu, aktivuje [výstrahu zabezpečení](security-center-managing-and-responding-alerts.md), která obsahuje podrobné informace týkající se konkrétní události, včetně návrhů na odstranění problémů. reakce na incidenty týmy tooassist prozkoumat ohrožení a oprava, Security Center obsahuje sestavu intelligence hrozba, která obsahuje informace o hello hrozba, která byla zjištěna, včetně informací, jako:
+Když Security Center identifikuje hrozbu, aktivuje [výstrahu zabezpečení](security-center-managing-and-responding-alerts.md), která obsahuje podrobné informace týkající se konkrétní události, včetně návrhů na odstranění problémů. Security Center za účelem pomoci týmům reakce na incidenty s vyšetřením a odstraněním hrozeb zahrnuje sestavu analýzy hrozeb, která obsahuje informace o detekované hrozbě, včetně informací jako například:
 
 * Identita nebo přidružení útočníka (pokud je tato informace k dispozici)
 * Cíle útočníků
 * Současné a historické útočné kampaně (pokud je tato informace k dispozici)
 * Taktika, nástroje a postupy útočníků
 * Přidružené ukazatele ohrožení zabezpečení, například adresy URL a hodnoty hash souborů
-* Victimology, což je oborový hello a jejich zeměpisné rozšíření tooassist můžete při určování, zda vašich prostředků Azure jsou v ohrožení
+* Viktimologie, což je oborové a geografické rozšíření, které vám pomůže určit, zda jsou vaše prostředky Azure v ohrožení
 * Informace o zmírnění a odstraňování problémů
 
 > [!NOTE]
-> Hello množství informací v konkrétní sestavách se bude lišit; Hello úroveň podrobností vychází z aktivity a jejich rozšíření hello malwaru.
+> Množství informací v jednotlivých konkrétních sestavách se bude lišit. Úroveň podrobností závisí na aktivitě a rozšíření malwaru.
 >
 >
 
-Security Center má tři typy sestav hrozeb, které se může lišit podle toohello útoku. jsou k dispozici Hello sestavy:
+Security Center obsahuje tři typy sestav hrozeb, které se mohou lišit podle útoku. K dispozici jsou tyto sestavy:
 
 * **Sestava skupiny aktivit**: poskytuje podrobné informace o útočnících, jejich cílech a taktice.
 * **Sestava kampaně**: zaměřuje se na podrobnosti o konkrétních útočných kampaních.
-* **Souhrnná sestava hrozby**: obsahuje všechny položky hello v předchozí dva sestavách hello.
+* **Sestava shrnutí hrozby**: pokrývá všechny položky v předchozích dvou sestavách.
 
-Tento typ informací je velmi užitečná při hello [reakcí na incidenty](security-center-incident-response.md) procesy, kterých je zdrojem probíhající šetření toounderstand hello hello útoku, útočník hello motivace a co toodo toomitigate to problém postoupíte.
+Tento typ informací je velmi užitečný během procesu [reakce na incidenty](security-center-incident-response.md), při kterém probíhá vyšetřování za účelem pochopení zdroje útoku, motivací útočníka a toho, co dělat pro zmírnění dalšího postupu tohoto problémů.
 
-## <a name="how-tooaccess-hello-threat-intelligence-report"></a>Jak tooaccess hello threat intelligence sestavy?
-Aktuální výstrahy můžete zkontrolovat prohlížením hello **výstrahy zabezpečení** dlaždici. Otevřete hello portálu Azure a postupujte podle kroků hello toosee další podrobnosti o každé výstraze:
+## <a name="how-to-access-the-threat-intelligence-report"></a>Jak získat přístup k sestavě analýzy hrozeb?
+Aktuální výstrahy můžete zkontrolovat jejich prohlížením na dlaždici **Výstrahy zabezpečení**. Otevřete Azure Portal a podle následujících pokynů zobrazte podrobnosti o jednotlivých výstrahách:
 
-1. Na řídicím panelu Security Center hello, uvidíte hello **výstrahy zabezpečení** dlaždici.
-2. Klikněte na tlačítko hello dlaždice tooopen hello **výstrahy zabezpečení** okno, které obsahuje další podrobnosti o výstrahách hello a klikněte na v hello výstrahu zabezpečení, které chcete tooobtain Další informace o.
+1. Na řídicím panelu Security Center uvidíte dlaždici **Výstrahy zabezpečení**.
+2. Kliknutím na dlaždici otevřete okno **Výstrahy zabezpečení**, které obsahuje podrobnosti o výstrahách, a klikněte na výstrahu zabezpečení, o které chcete získat další informace.
 
     ![Výstrahy zabezpečení](./media/security-center-threat-report/security-center-threat-report-fig1.png)
-3. V takovém případě hello **podezřelé proces spuštěný** hello podrobnosti o výstraze hello, jak je znázorněno na následujícím obrázku hello se zobrazí okno:
+3. V tomto případě se v okně **Spuštění podezřelého procesu** zobrazí podrobnosti o výstraze, jak je znázorněno níže:
 
     ![Podrobnosti výstrahy zabezpečení](./media/security-center-threat-report/security-center-threat-report-fig2.png)
-4. Hello množství informací, které jsou k dispozici pro každou výstrahu zabezpečení se budou lišit podle typu toohello výstrahy. V hello **sestavy** pole máte sestavu intelligence odkaz toohello hrozeb. Klikněte na něj a otevře se další okno prohlížeče se souborem PDF.
+4. Množství dostupných informací pro jednotlivé výstrahy zabezpečení se bude lišit podle typu výstrahy. V poli **SESTAVY** máte odkaz na sestavu analýzy hrozeb. Klikněte na něj a otevře se další okno prohlížeče se souborem PDF.
 
    ![Výběr úložiště](./media/security-center-threat-report/security-center-threat-report-fig3.png)
 
-Odsud můžete stáhnout hello PDF pro tuto sestavu a číst informace o zabezpečení hello problém, která byla zjištěna a provádět akce založené na informacích hello.
+Odtud si můžete stáhnout soubor PDF pro tuto sestavu a přečíst si více o detekovaných potížích se zabezpečením a provést akce na základě poskytnutých informací.
 
 ## <a name="see-also"></a>Viz také
-V tomto dokumentu jste se dozvěděli, jak mohou sestavy analýzy hrozeb v Azure Security Center pomoci během vyšetřování výstrah zabezpečení. toolearn Další informace o službě Azure Security Center, najdete v části hello následující:
+V tomto dokumentu jste se dozvěděli, jak mohou sestavy analýzy hrozeb v Azure Security Center pomoci během vyšetřování výstrah zabezpečení. Pokud se o službě Azure Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-* [Azure Security Center – nejčastější dotazy](security-center-faq.md). Nejčastější dotazy o použití hello služby najít.
+* [Azure Security Center – nejčastější dotazy](security-center-faq.md). Přečtěte si nejčastější dotazy o použití této služby.
 * [Využití Azure Security Center při reakci na incidenty](security-center-incident-response.md)
 * [Možnosti detekce v Azure Security Center](security-center-detection-capabilities.md)
-* [Průvodce plánováním a provozem služby Azure Security Center](security-center-planning-and-operations-guide.md). Zjistěte, jak tooplan a pochopit hello návrhu aspekty tooadopt Azure Security Center.
-* [Správa a zda odpovídá toosecurity výstrahy v Azure Security Center](security-center-managing-and-responding-alerts.md). Zjistěte, jak toomanage a reakce toosecurity výstrahy.
+* [Průvodce plánováním a provozem služby Azure Security Center](security-center-planning-and-operations-guide.md). Zjistěte, jak naplánovat a pochopit aspekty návrhu, abyste mohli přejít na Azure Security Center.
+* [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md). Zjistěte, jak spravovat a zpracovávat výstrahy zabezpečení.
 * [Řešení bezpečnostních incidentů v Azure Security Center](security-center-incident.md)
 * [Blog o zabezpečení Azure](http://blogs.msdn.com/b/azuresecurity/). Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.

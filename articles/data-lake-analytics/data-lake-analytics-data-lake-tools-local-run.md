@@ -1,6 +1,6 @@
 ---
-title: "aaaTest a ladění úloh U-SQL pomocí místního spuštění a hello Azure Data Lake U-SQL SDK | Microsoft Docs"
-description: "Zjistěte, jak úlohy nástroje toouse Azure Data Lake pro Visual Studio a tootest hello SDK Azure Data Lake U-SQL a ladění U-SQL na místní pracovní stanici."
+title: "Testování a ladění úloh U-SQL pomocí místní spuštění a sadu SDK Azure Data Lake U-SQL | Microsoft Docs"
+description: "Další informace o použití nástroje Azure Data Lake pro Visual Studio a sadu SDK Azure Data Lake U-SQL pro testování a ladění úloh U-SQL na místní pracovní stanici."
 services: data-lake-analytics
 documentationcenter: 
 author: mumian
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/15/2016
 ms.author: yanacai
-ms.openlocfilehash: be04558a504acf6a088e207608ee2d4a011d3ffc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 771a96df5cc66bac46e7144785be8cc072b57b31
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="test-and-debug-u-sql-jobs-by-using-local-run-and-hello-azure-data-lake-u-sql-sdk"></a>Testování a ladění úloh U-SQL pomocí místního spuštění a hello Azure Data Lake U-SQL SDK
+# <a name="test-and-debug-u-sql-jobs-by-using-local-run-and-the-azure-data-lake-u-sql-sdk"></a>Testování a ladění úloh U-SQL pomocí místního spuštění a sadu SDK Azure Data Lake U-SQL
 
-Nástroje služby Azure Data Lake pro Visual Studio a úloh U-SQL toorun hello SDK Azure Data Lake U-SQL můžete použít na pracovní stanici, stejně jako ve službě Azure Data Lake hello. Tyto dvě místně spouštěné funkce vám šetří čas při testování a ladění úloh U-SQL.
+Nástroje Azure Data Lake pro Visual Studio a sadu Azure Data Lake U-SQL SDK můžete použít k místnímu spouštění úloh U-SQL na pracovní stanici, stejně jako byste je spouštěli ve službě Azure Data Lake. Tyto dvě místně spouštěné funkce vám šetří čas při testování a ladění úloh U-SQL.
 
-## <a name="understand-hello-data-root-folder-and-hello-file-path"></a>Pochopení hello kořenové datové složce a cesta k souboru hello
+## <a name="understand-the-data-root-folder-and-the-file-path"></a>Pochopení dat kořenové složky a cesta k souboru
 
-Místní spuštění a hello U-SQL sady SDK vyžadovat kořenové datové složce. Hello kořenové datové složce je pro účet místního výpočetní hello "místní úložiště". Je ekvivalentní toohello účtu Azure Data Lake Store účtu Data Lake Analytics. Přepínání tooa různé kořenové datové složce je stejně jako přepínání tooa úložiště jiný účet. Pokud budete chtít tooaccess běžně sdílí data pomocí různých dat kořenové složky, je nutné použít absolutní cesty ve skriptech. Nebo vytvořte symbolické odkazy systému souborů (například **mklink** na systém souborů NTFS) v části hello kořenové datové složce toopoint toohello sdílená data.
+Místní spuštění i U-SQL sady SDK vyžadovat kořenové datové složce. Data kořenové složky je pro účet místního výpočetní "místní úložiště". Je ekvivalentní k účtu Azure Data Lake Store účtu Data Lake Analytics. Přepnutí na jiný data kořenová složka je stejně jako přepnutí na účet jiné úložiště. Pokud chcete pro přístup k běžně sdílený data pomocí různých dat kořenové složky, je nutné použít absolutní cesty ve skriptech. Nebo vytvořte symbolické odkazy systému souborů (například **mklink** na systém souborů NTFS) v kořenové datové složce tak, aby odkazoval sdílená data.
 
-Hello kořenové datové složce se používá pro:
+Data kořenové složky se používá pro:
 
 - Ukládání metadat, včetně databází, tabulky, funkce vracející tabulku (Tvf) a sestavení.
-- Vyhledání hello vstupní a výstupní cesty, které jsou definovány jako relativní cesty v U-SQL. Pomocí relativní cesty umožňuje snazší toodeploy vaše projekty tooAzure U-SQL.
+- Vyhledání vstupní a výstupní cesty, které jsou definovány jako relativní cesty v U-SQL. Pomocí relativní cesty usnadňuje nasazení vašich projektů U-SQL Azure.
 
-Můžete je relativní cesta a místní cestou absolutní v skriptů U-SQL. relativní cesta Hello je cesta ke složce relativní toohello zadaný kořenový data. Doporučujeme vám, že můžete použít "/" jako hello cesta oddělovače toomake skripty kompatibilní s hello na straně serveru. Zde jsou některé příklady relativní cesty a jejich ekvivalent absolutní cesty. V těchto příkladech je C:\LocalRunDataRoot hello kořenové datové složce.
+Můžete je relativní cesta a místní cestou absolutní v skriptů U-SQL. Relativní cesta je relativní k cestě zadané kořenové datové složce. Doporučujeme vám, že používáte "/" jako oddělovač cesty upravit skripty kompatibilní se na straně serveru. Zde jsou některé příklady relativní cesty a jejich ekvivalent absolutní cesty. V těchto příkladech je C:\LocalRunDataRoot kořenové datové složce.
 
 |Relativní cesta|Absolutní cesty|
 |-------------|-------------|
@@ -47,65 +47,65 @@ Nástroje data Lake pro Visual Studio poskytuje možnosti místní spuštění U
 
 - Spusťte skript U-SQL, který je místně, společně s sestavení C#.
 - Ladění sestavení C# místně.
-- Vytvořit, zobrazit a odstranění katalogů U-SQL (místních databází, sestavení, schémat a tabulek) z Průzkumníka serveru. Můžete také získat místní katalog hello také z Průzkumníka serveru.
+- Vytvořit, zobrazit a odstranění katalogů U-SQL (místních databází, sestavení, schémat a tabulek) z Průzkumníka serveru. Můžete také získat místní katalog také z Průzkumníka serveru.
 
     ![Nástroje data Lake pro Visual Studio místní spuštění místního katalogu](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-local-catalog.png)
 
-Instalační program nástroje Data Lake Hello vytvoří toobe složky C:\LocalRunRoot použít jako hello výchozí kořenové datové složce. paralelismus místní spuštění Hello výchozí je 1.
+Instalační program nástroje Data Lake vytvoří složku C:\LocalRunRoot má být použit jako výchozí kořenové datové složce. Místní spuštění paralelismus výchozí je 1.
 
-### <a name="tooconfigure-local-run-in-visual-studio"></a>tooconfigure místní spuštění v sadě Visual Studio
+### <a name="to-configure-local-run-in-visual-studio"></a>Konfigurace místního spuštění v sadě Visual Studio
 
 1. Otevřete sadu Visual Studio.
 2. Otevřete **Průzkumníka serveru**.
 3. Rozbalte položku **Azure** > **Data Lake Analytics**.
-4. Klikněte na tlačítko hello **Data Lake** nabídce a pak klikněte na tlačítko **možnosti a nastavení**.
-5. Rozbalte ve stromu levém hello **Azure Data Lake**a potom rozbalte **Obecné**.
+4. Klikněte **Data Lake** nabídce a pak klikněte na tlačítko **možnosti a nastavení**.
+5. Ve stromu vlevo rozbalte **Azure Data Lake**a potom rozbalte **Obecné**.
 
     ![Konfigurace nástrojů data Lake pro Visual Studio spustit místní nastavení](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-configure.png)
 
 Projekt Visual Studio U-SQL je vyžadována pro provádění místní spuštění. Tato část se liší od spuštění skriptů U-SQL z Azure.
 
-### <a name="toorun-a-u-sql-script-locally"></a>skript U-SQL toorun místně
+### <a name="to-run-a-u-sql-script-locally"></a>Místně spustíte skript U-SQL
 1. Ze sady Visual Studio otevřete projekt U-SQL.   
 2. Skript U-SQL v Průzkumníku řešení klikněte pravým tlačítkem myši a pak klikněte na **odeslat skript**.
-3. Vyberte **(místní)** jako hello účtu Analytics toorun váš skript místně.
-Můžete také kliknout na hello **(místní)** účet na hello horní části okna skript a potom klikněte na **odeslání** (nebo použijte hello Ctrl + F5 klávesové zkratky).
+3. Vyberte **(místní)** jako účet Analytics, který chcete spustit skript místně.
+Můžete také kliknutím **(místní)** účet horní okně Skript a potom klikněte na **odeslání** (nebo použít kombinaci kláves Ctrl + F5 klávesové zkratky).
 
     ![Nástroje data Lake pro Visual Studio spustit místní odeslání úlohy](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-submit-job.png)
 
 ### <a name="debug-scripts-and-c-assemblies-locally"></a>Místní ladění skriptů a sestavení C#
 
-Sestavení C# můžete ladit bez odeslali a zaregistrovali tooAzure služba Data Lake Analytics. V obou hello souboru kódu i v odkazovaném projektu C# můžete nastavit zarážky.
+Sestavení C# můžete ladit bez odeslali a zaregistrovali k službě Azure Data Lake Analytics. V souboru kódu i v odkazovaném projektu C# můžete nastavit zarážky.
 
-#### <a name="toodebug-local-code-in-code-behind-file"></a>toodebug místního kódu v souboru kódu
+#### <a name="to-debug-local-code-in-code-behind-file"></a>Postup ladění místního kódu v souboru kódu
 
-1. Nastavte zarážky v souboru kódu hello.
-2. Stisknutím klávesy F5 toodebug hello skript místně.
+1. Nastavte zarážky v souboru kódu.
+2. Stisknutím klávesy F5 místně laďte skript.
 
 > [!NOTE]
-   > Následující postup lze použít pouze v sadě Visual Studio 2015 Hello. Ve starší sadě Visual Studio může potřebujete toomanually přidat soubory pdb hello.  
+   > Následující postup funguje pouze v sadě Visual Studio 2015. Ve starší sadě Visual Studio je pravděpodobně nutné ručně přidat soubory PDB.  
    >
    >
 
-#### <a name="toodebug-local-code-in-a-referenced-c-project"></a>toodebug místního kódu v odkazovaném projektu C#
+#### <a name="to-debug-local-code-in-a-referenced-c-project"></a>Postup ladění místního kódu v odkazovaném projektu C#
 
-1. Vytvořte projekt sestavení C# a sestavte jej toogenerate hello výstupní knihovnu dll.
-2. Zaregistrujte hello knihovny dll pomocí příkazu U-SQL:
+1. Vytvořte projekt sestavení C# a sestavte jej tak, aby generoval výstupní knihovnu DLL.
+2. Zaregistruje knihovnu DLL pomocí příkazu U-SQL:
 
         CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
         
-3. Nastavte zarážky v hello kód C#.
-4. Stisknutím klávesy F5 toodebug hello skriptu s odkazujícím hello C# knihovnu dll.
+3. Nastavte zarážky v kódu C#.
+4. Stisknutím klávesy F5 a laďte skript s odkazujícím C# knihovny dll místně.
 
-## <a name="use-local-run-from-hello-data-lake-u-sql-sdk"></a>Použití místního spuštění z hello Data Lake U-SQL SDK
+## <a name="use-local-run-from-the-data-lake-u-sql-sdk"></a>Použití místní spuštění ze sady SDK pro Data Lake U-SQL
 
-Kromě toorunning U-SQL skriptů místně pomocí sady Visual Studio, můžete použít skripty U-SQL toorun SDK Azure Data Lake U-SQL hello místně pomocí příkazového řádku a programovací rozhraní. Pomocí těchto je možné škálovat svůj místní test U-SQL.
+Kromě spuštění skriptů U-SQL místně pomocí sady Visual Studio, můžete použít sadu SDK Azure Data Lake U-SQL ke spouštění skriptů U-SQL místně pomocí příkazového řádku a programovací rozhraní. Pomocí těchto je možné škálovat svůj místní test U-SQL.
 
 Další informace o [SDK Azure Data Lake U-SQL](data-lake-analytics-u-sql-sdk.md).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-* toosee komplexnější dotaz, najdete v části [analýza webových protokolů pomocí Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
-* Podrobnosti úlohy tooview, najdete v tématu [použití úlohy prohlížeče a zobrazení úloh pro úlohy Azure Data Lake Analytics](data-lake-analytics-data-lake-tools-view-jobs.md).
-* zobrazení provádění vrcholů toouse hello, najdete v části [použití hello nebo zobrazení provádění vrcholů v nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md).
+* Pokud chcete zobrazit komplexnější dotaz, najdete v části [analýza webových protokolů pomocí Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
+* Chcete-li zobrazit podrobnosti o úlohách, najdete v části [použití úlohy prohlížeče a zobrazení úloh pro úlohy Azure Data Lake Analytics](data-lake-analytics-data-lake-tools-view-jobs.md).
+* Chcete-li použít zobrazení provádění vrcholů, přečtěte si téma [použít zobrazení provádění vrcholů v nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md).

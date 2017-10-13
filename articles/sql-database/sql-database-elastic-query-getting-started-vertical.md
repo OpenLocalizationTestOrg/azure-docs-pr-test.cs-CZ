@@ -1,6 +1,6 @@
 ---
-title: "aaaGet začít s dotazy mezidatabázové (vertikální dělení) | Microsoft Docs"
-description: "jak toouse elastické databáze dotaz s svisle na oddíly databáze"
+title: "Začínáme s dotazy mezidatabázové (vertikální dělení) | Microsoft Docs"
+description: "pomocí dotazu elastické databáze s svisle na oddíly databáze"
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2016
 ms.author: torsteng
-ms.openlocfilehash: 9e6183268e8bf87e3ac28f502711fcc05a7a3f52
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 17158c4960e9ba9251524659c90af9aec1316774
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>Začínáme s dotazy mezidatabázové (vertikální dělení) (preview)
-Dotaz elastické databáze (preview) pro databázi SQL Azure vám umožní toorun dotazů T-SQL, které jsou rozmístěny v několika databází pomocí jednoho připojení bodu. Toto téma se týká příliš[svisle na oddíly databáze](sql-database-elastic-query-vertical-partitioning.md).  
+Dotaz elastické databáze (preview) pro databázi SQL Azure umožňuje spouštět dotazy T-SQL, které jsou rozmístěny v několika databází pomocí jednoho připojení bodu. Toto téma se týká [svisle na oddíly databáze](sql-database-elastic-query-vertical-partitioning.md).  
 
-Po dokončení bude: Zjistěte, jak tooconfigure a používání Azure SQL Database tooperform dotazuje tohoto rozpětí více související databází. 
+Po dokončení bude: Zjistěte, jak konfigurovat a používat Azure SQL Database provádět dotazy, které jsou rozmístěny v několika související databází. 
 
-Další informace o funkci dotazu hello elastické databáze, najdete v tématu [přehled dotazu elastické databáze Azure SQL Database](sql-database-elastic-query-overview.md). 
+Další informace o funkci dotazu elastické databáze, najdete v tématu [přehled dotazu elastické databáze Azure SQL Database](sql-database-elastic-query-overview.md). 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít oprávnění ALTER ANY EXTERNAL DATA SOURCE. Toto oprávnění je součástí hello oprávnění ALTER DATABASE. Oprávnění ALTER ANY externí zdroj dat se zdroji dat toohello potřebné toorefer.
+Musíte mít oprávnění ALTER ANY EXTERNAL DATA SOURCE. Toto oprávnění je součástí oprávnění ALTER DATABASE. K odkazování na podkladový zdroj dat jsou potřeba oprávnění ALTER ANY EXTERNAL DATA SOURCE.
 
-## <a name="create-hello-sample-databases"></a>Vytvoření hello ukázkové databáze
-toostart s potřebujeme toocreate dvě databáze, **zákazníci** a **objednávky**, buď v hello stejný nebo jiný logické servery.   
+## <a name="create-the-sample-databases"></a>Vytvoření ukázkové databáze
+Abyste mohli začít, potřebujeme vytvořit dvě databáze, **zákazníci** a **objednávky**, buď na stejný nebo jiný logického serveru.   
 
-Provést následující dotazy na hello hello **objednávky** databáze toocreate hello **OrderInformation** tabulky a vstup hello ukázková data. 
+Spusťte tyto dotazy na **objednávky** databáze slouží k vytvoření **OrderInformation** tabulky a vstup ukázková data. 
 
     CREATE TABLE [dbo].[OrderInformation]( 
         [OrderID] [int] NOT NULL, 
@@ -46,7 +46,7 @@ Provést následující dotazy na hello hello **objednávky** databáze toocreat
     INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (321, 1) 
     INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (564, 8) 
 
-Nyní, spustit následující dotaz na hello **zákazníci** databáze toocreate hello **CustomerInformation** tabulky a vstup hello ukázková data. 
+Nyní, spustit následující dotaz na **zákazníci** databáze slouží k vytvoření **CustomerInformation** tabulky a vstup ukázková data. 
 
     CREATE TABLE [dbo].[CustomerInformation]( 
         [CustomerID] [int] NOT NULL, 
@@ -61,18 +61,18 @@ Nyní, spustit následující dotaz na hello **zákazníci** databáze toocreate
 ## <a name="create-database-objects"></a>Vytvoření databázových objektů
 ### <a name="database-scoped-master-key-and-credentials"></a>Hlavní klíč a přihlašovací údaje na obor definovaný databází
 1. Spusťte aplikaci SQL Server Management Studio nebo SQL Server Data Tools v sadě Visual Studio.
-2. Připojení databáze objednávky toohello a spusťte následující příkazy T-SQL hello:
+2. Připojení k databázi objednávek a spuštěním následujících příkazů T-SQL:
    
         CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>'; 
         CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred 
         WITH IDENTITY = '<username>', 
         SECRET = '<password>';  
    
-    Hello "username" a "password" by se měly hello uživatelské jméno a heslo použít toologin do databáze hello zákazníků.
+    "Username" a "password" by měl být uživatelské jméno a heslo použité k přihlášení do databáze zákazníků.
     Ověřování pomocí služby Azure Active Directory s elastické dotazy není aktuálně podporován.
 
 ### <a name="external-data-sources"></a>Externích zdrojů dat.
-toocreate externího zdroje dat, spusťte následující příkaz v databázi objednávky hello hello: 
+Pokud chcete vytvořit externího zdroje dat, spusťte následující příkaz v databázi objednávky: 
 
     CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH 
         (TYPE = RDBMS, 
@@ -82,7 +82,7 @@ toocreate externího zdroje dat, spusťte následující příkaz v databázi ob
     ) ;
 
 ### <a name="external-tables"></a>Externí tabulky
-Vytvoření externí tabulky v databázi hello objednávky, který by odpovídal hello Definice tabulky CustomerInformation hello:
+Vytvoření externí tabulky v databázi objednávky, který odpovídá definici tabulky CustomerInformation:
 
     CREATE EXTERNAL TABLE [dbo].[CustomerInformation] 
     ( [CustomerID] [int] NOT NULL, 
@@ -92,7 +92,7 @@ Vytvoření externí tabulky v databázi hello objednávky, který by odpovídal
     ( DATA_SOURCE = MyElasticDBQueryDataSrc) 
 
 ## <a name="execute-a-sample-elastic-database-t-sql-query"></a>Spuštění ukázkového dotazu T-SQL elastické databáze
-Jakmile definujete zdroj externích dat a vaše externí tabulky můžete nyní používat T-SQL tooquery externí tabulky. Spusťte tento dotaz na databázi objednávky hello: 
+Jakmile definujete zdroj externích dat a externí tabulky teď můžete T-SQL pro dotaz na externí tabulky. Spusťte tento dotaz na databázi objednávky: 
 
     SELECT OrderInformation.CustomerID, OrderInformation.OrderId, CustomerInformation.CustomerName, CustomerInformation.Company 
     FROM OrderInformation 
@@ -100,7 +100,7 @@ Jakmile definujete zdroj externích dat a vaše externí tabulky můžete nyní 
     ON CustomerInformation.CustomerID = OrderInformation.CustomerID 
 
 ## <a name="cost"></a>Náklady
-V současné době funkce dotazu hello elastické databáze je zahrnut do hello náklady na vaší databázi SQL Azure.  
+V současné době funkce dotazu elastické databáze je zahrnut do náklady na vaší databázi SQL Azure.  
 
 Informace o cenách najdete v části [SQL Database – ceny](https://azure.microsoft.com/pricing/details/sql-database). 
 

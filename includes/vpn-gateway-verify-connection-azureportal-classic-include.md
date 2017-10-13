@@ -1,13 +1,13 @@
-V hello portálu Azure můžete zobrazit stav připojení hello pro bránu VPN klasické virtuální sítě tak, že přejdete toohello připojení. Hello následující kroky ukazují jedním ze způsobů toonavigate tooyour připojení a ověřte.
+Na webu Azure Portal můžete zobrazit stav připojení VPN Gateway klasické virtuální sítě otevřením připojení. Následující postup ukazuje jeden ze způsobů přechodu k připojení a jeho ověření.
 
-1. V hello [portál Azure](http://portal.azure.com), klikněte na tlačítko **všechny prostředky** a přejděte tooyour klasickou virtuální síť.
-2. V okně hello virtuální sítě, klikněte na tlačítko **přehled** tooaccess hello **připojení k síti VPN** části okna hello.
-3. Obrázek připojení VPN hello klikněte na server hello.
+1. Na webu [Azure Portal](http://portal.azure.com) klikněte na **Všechny prostředky** a přejděte ke klasické virtuální síti.
+2. V okně virtuální sítě klikněte na **Přehled**, abyste se dostali k části okna **Připojení VPN**.
+3. Na obrázku připojení VPN klikněte na web.
 
     ![Místní web](./media/vpn-gateway-verify-connection-azureportal-classic/localsitename.png "místní web")
-4. Na hello **připojení Site-to-site VPN** okně zobrazení hello informace o vašem webu.
+4. V okně **Připojení VPN typu Site-to-Site** zobrazíte informace o vašem webu.
 
     ![Stav připojení](./media/vpn-gateway-verify-connection-azureportal-classic/siteconnectstatus.png "stav připojení")
-5. tooview Další informace o hello připojení, klikněte na název hello hello připojení tooopen hello **připojení Site-to-site VPN** okno.
+5. Pokud chcete zobrazit další informace o připojení, klikněte na název připojení a otevřete okno **Připojení VPN typu Site-to-Site**.
 
     ![Stav připojení – další informace](./media/vpn-gateway-verify-connection-azureportal-classic/connections4.png "Stav připojení – další informace")

@@ -1,6 +1,6 @@
 ---
-title: aaaUse miniatur videa v Azure Media tooCreate Videosouhrnu | Microsoft Docs
-description: "Videosouhrn vám pomůžou vytvořit souhrnných informací o dlouho videa automaticky výběrem zajímavé fragmenty kódu z hello zdroj videa. To je užitečné, když chcete, aby tooprovide rychlý přehled toho, jaké tooexpect v dlouho videa."
+title: "Použít miniatur videa Azure Media k vytvoření Videosouhrn | Microsoft Docs"
+description: "Videosouhrn vám pomůžou vytvořit souhrnných informací o dlouho videa automaticky výběrem zajímavé fragmenty kódu z zdroj videa. To je užitečné, pokud byste chtěli poskytnout rychlý přehled toho, co očekávat při dlouhé video."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,26 +14,26 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: milanga;juliako;
-ms.openlocfilehash: 0a8f0bba6c12a948b940114fe4937e675688a8c7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5d5afdaf22ffea8f3b77a154acb5d0a8dda74405
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="use-azure-media-video-thumbnails-toocreate-a-video-summarization"></a>Použití miniatur videa v Azure Media tooCreate Videosouhrnu
+# <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Použít miniatur videa Azure Media k vytvoření Videosouhrn
 ## <a name="overview"></a>Přehled
-Hello **miniatur videa Azure Media** procesor médií (PP) vám umožní toocreate souhrn video, které je užitečné toocustomers, který právě má toopreview souhrn dlouhé video. Zákazníci mohou například, toosee krátké "souhrnné video" Pokud myší na miniaturu. Podle postupně je upravujte hello parametry **miniatur videa v Azure Media** prostřednictvím konfigurace přednastavení, můžete používat Výkonné snímek detekce hello MP a zřetězení technologie tooalgorithmically generovat popisný subclip.  
+**Miniatur videa Azure Media** procesor médií (PP) můžete vytvořit souhrn video, které jsou užitečné pro zákazníky, kteří právě chcete zobrazit náhled souhrn dlouhé video. Například mohou zákazníci chtějí krátké "souhrn video" v tématu kdy myší na miniaturu. Podle postupně je upravujte parametry **miniatur videa v Azure Media** prostřednictvím konfigurace přednastavení, můžete použít sady MP výkonná snímek zřetězení a zjišťování technologie algorithmically generovat popisný subclip.  
 
-Hello **Azure Media Video miniaturu** MP je aktuálně ve verzi Preview.
+**Azure Media Video miniaturu** MP je aktuálně ve verzi Preview.
 
-Toto téma uvádí podrobnosti o **Azure Media Video miniaturu** a ukazuje, jak toouse ho pomocí sady Media Services SDK pro .NET.
+Toto téma uvádí podrobnosti o **Azure Media Video miniaturu** a ukazuje, jak pomocí sady Media Services SDK pro .NET.
 
 ## <a name="limitations"></a>Omezení
 
-V některých případech Pokud videa se skládá z různých děje to, výstup hello je jen jeden snímek.
+V některých případech Pokud videa není skládá z různých scény výstup bude pouze jeden snímek.
 
 ## <a name="video-summary-example"></a>Příklad videa souhrn
-Tady jsou některé příklady procesor médií jaké hello miniatur videa v Azure média můžete udělat:
+Tady jsou některé příklady co můžete dělat procesor médií miniatur videa v Azure média:
 
 ### <a name="original-video"></a>Původní video
 [Původní video](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Faed33834-ec2d-4788-88b5-a4505b3d032c%2FMicrosoft%27s%20HoloLens%20Live%20Demonstration.ism%2Fmanifest)
@@ -42,26 +42,26 @@ Tady jsou některé příklady procesor médií jaké hello miniatur videa v Azu
 [Video miniatur výsledek](http://ampdemo.azureedge.net/azuremediaplayer.html?url=http%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Ff5c91052-4232-41d4-b531-062e07b6a9ae%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
 
 ## <a name="task-configuration-preset"></a>Konfigurace úlohy (přednastavených)
-Při vytváření miniatur videa úlohy s **miniatur videa Azure Media**, je nutné zadat jedno z přednastavení konfigurace. Hello výše miniatur ukázka byla vytvořena s hello následující základní konfiguraci JSON:
+Při vytváření miniatur videa úlohy s **miniatur videa Azure Media**, je nutné zadat jedno z přednastavení konfigurace. Ukázka výše miniatur byl vytvořen s následující konfigurací základní JSON:
 
     {"version":"1.0"}
 
-V současné době můžete změnit hello následující parametry:
+V současné době můžete změnit následující parametry:
 
 | Param | Popis |
 | --- | --- |
-| outputAudio |Určuje, zda hello výsledné video obsahuje všechny zvukovém souboru. <br/>Povolené hodnoty jsou: True nebo False. Výchozí hodnota je True. |
-| fadeInFadeOut |Určuje, jestli Objevování přejde se používají mezi hello samostatné pohybu miniatur.  <br/>Povolené hodnoty jsou: True nebo False.  Výchozí hodnota je True. |
-| maxMotionThumbnailDurationInSecs |Musí být celé číslo, které určuje, jak dlouho hello celé výsledné video.  Výchozí hodnota závisí na původní video doba trvání. |
+| outputAudio |Určuje, zda výsledné video obsahuje všechny zvukovém souboru. <br/>Povolené hodnoty jsou: True nebo False. Výchozí hodnota je True. |
+| fadeInFadeOut |Určuje, jestli Objevování přejde se používají mezi samostatnou pohybu miniatur.  <br/>Povolené hodnoty jsou: True nebo False.  Výchozí hodnota je True. |
+| maxMotionThumbnailDurationInSecs |Celé číslo, které určuje, jak dlouho musí být celé výsledné video.  Výchozí hodnota závisí na původní video doba trvání. |
 
-Hello následující tabulka popisuje hello výchozí doba, kdy **maxMotionThumbnailInSecs** nepoužívá.
+Následující tabulka popisuje výchozí doba, kdy **maxMotionThumbnailInSecs** nepoužívá.
 
 |  |  |  |
 | --- | --- | --- | --- | --- |
 | Video doba trvání |d < 3 min |3 min < d < 15 minut |
 | Doba trvání miniatur |15 sekundu (scény 2-3) |30 sekund (scény 3 až 5) |
 
-Hello následujícím kódu JSON nastaví dostupné parametry.
+Následujícím kódu JSON nastaví dostupné parametry.
 
     {
         "version": "1.0",
@@ -74,10 +74,10 @@ Hello následujícím kódu JSON nastaví dostupné parametry.
 
 ## <a name="net-sample-code"></a>Ukázkový kód rozhraní .NET
 
-ukazuje programu Hello následující postup:
+Program zobrazí následující postup:
 
-1. Vytvořte asset a nahrajte soubor média do hello asset.
-2. Vytvoří úlohu s video miniatur úloh podle konfigurační soubor, který obsahuje následující json přednastavených hello. 
+1. Vytvořte asset a nahrajte soubor média do assetu.
+2. Vytvoří úlohu s video miniatur úloh podle konfigurační soubor, který obsahuje následující přednastavení json. 
    
         {                
             "version": "1.0",
@@ -87,11 +87,11 @@ ukazuje programu Hello následující postup:
                 "fadeInFadeOut": "false"
             }
         }
-3. Stáhne hello výstupní soubory. 
+3. Výstupní soubory stáhne. 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
-Nastavení vývojového prostředí a naplnění souboru app.config hello s informace o připojení, jak je popsáno v [vývoj pro Media Services s .NET](media-services-dotnet-how-to-use.md). 
+Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
 
 #### <a name="example"></a>Příklad
 
@@ -107,7 +107,7 @@ Nastavení vývojového prostředí a naplnění souboru app.config hello s info
     {
         class Program
         {
-            // Read values from hello App.config file.
+            // Read values from the App.config file.
             private static readonly string _AADTenantDomain =
                 ConfigurationManager.AppSettings["AADTenantDomain"];
             private static readonly string _RESTAPIEndpoint =
@@ -124,17 +124,17 @@ Nastavení vývojového prostředí a naplnění souboru app.config hello s info
                 _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
 
 
-                // Run hello thumbnail job.
+                // Run the thumbnail job.
                 var asset = RunVideoThumbnailJob(@"C:\supportFiles\VideoThumbnail\BigBuckBunny.mp4",
                                             @"C:\supportFiles\VideoThumbnail\config.json");
 
-                // Download hello job output asset.
+                // Download the job output asset.
                 DownloadAsset(asset, @"C:\supportFiles\VideoThumbnail\Output");
             }
 
             static IAsset RunVideoThumbnailJob(string inputMediaFilePath, string configurationFile)
             {
-                // Create an asset and upload hello input media file toostorage.
+                // Create an asset and upload the input media file to storage.
                 IAsset asset = CreateAssetAndUploadSingleFile(inputMediaFilePath,
                     "My Video Thumbnail Input Asset",
                     AssetCreationOptions.None);
@@ -142,38 +142,38 @@ Nastavení vývojového prostředí a naplnění souboru app.config hello s info
                 // Declare a new job.
                 IJob job = _context.Jobs.Create("My Video Thumbnail Job");
 
-                // Get a reference tooAzure Media Video Thumbnails.
+                // Get a reference to Azure Media Video Thumbnails.
                 string MediaProcessorName = "Azure Media Video Thumbnails";
 
                 var processor = GetLatestMediaProcessorByName(MediaProcessorName);
 
-                // Read configuration from hello specified file.
+                // Read configuration from the specified file.
                 string configuration = File.ReadAllText(configurationFile);
 
-                // Create a task with hello encoding details, using a string preset.
+                // Create a task with the encoding details, using a string preset.
                 ITask task = job.Tasks.AddNew("My Video Thumbnail Task",
                     processor,
                     configuration,
                     TaskOptions.None);
 
-                // Specify hello input asset.
+                // Specify the input asset.
                 task.InputAssets.Add(asset);
 
-                // Add an output asset toocontain hello results of hello job.
+                // Add an output asset to contain the results of the job.
                 task.OutputAssets.AddNew("My Video Thumbnail Output Asset", AssetCreationOptions.None);
 
-                // Use hello following event handler toocheck job progress.  
+                // Use the following event handler to check job progress.  
                 job.StateChanged += new EventHandler<JobStateChangedEventArgs>(StateChanged);
 
-                // Launch hello job.
+                // Launch the job.
                 job.Submit();
 
-                // Check job execution and wait for job toofinish.
+                // Check job execution and wait for job to finish.
                 Task progressJobTask = job.GetExecutionProgressTask(CancellationToken.None);
 
                 progressJobTask.Wait();
 
-                // If job state is Error, hello event handling
+                // If job state is Error, the event handling
                 // method for job progress should log errors.  Here we check
                 // for error state and exit if needed.
                 if (job.State == JobState.Error)

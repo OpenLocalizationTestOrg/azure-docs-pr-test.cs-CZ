@@ -1,15 +1,26 @@
 ---
+title: "Dokumentace ke službě Azure Network Watcher – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
+description: "Naučte se používat Network Watcher k monitorování a diagnostice podmínek na úrovni sítě."
+services: network-watcher
+author: czeumault
+manager: carolz
 layout: LandingPage
-description: "Zjistěte, jak toomonitor toouse sledovací proces sítě a diagnostikovat podmínek na úrovni sítě."
-ms.openlocfilehash: 6c5fcdb2e5095eaceb759e45ae3d35875a0c3fc7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.assetid: 
+ms.service: network-watcher
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
+ms.openlocfilehash: 897f526801dc94f6f370dfa253f321f7b8f765e9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-network-watcher-documentation"></a>Dokumentace ke službě Azure Network Watcher
 
-Zjistěte, jak toouse sledovací proces sítě, služba, která umožňuje vám toomonitor a diagnostikovat podmínky na úrovni sítě scénář. Kurzy, odkazy na rozhraní API a další dokumentaci ukazují, jak moc získat přehled o vaší síti Azure s nástroji, jako zachytáváním paketů, topologie a další.
+Naučte se používat Network Watcher. Tato služba vám umožní monitorovat a diagnostikovat podmínky na úrovni síťového scénáře. Kurzy, reference k rozhraní API a další dokumentace vám ukážou, jak získat přehled o síti Azure Network pomocí nástrojů, jako je zachytávání paketů, topologie a další.
 
 <ul class="panelContent cardsFTitle">
     <li>

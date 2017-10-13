@@ -14,13 +14,13 @@
 ## [Zjišťování zdrojů dat](data-catalog-how-to-discover.md)
 ## [Přidání poznámek ke zdrojům dat](data-catalog-how-to-annotate.md)
 ## [Dokumentování zdrojů dat](data-catalog-how-to-documentation.md)
-## [Připojit toodata zdroje](data-catalog-how-to-connect.md)
+## [Připojení ke zdrojům dat](data-catalog-how-to-connect.md)
 ## [Práce s velkým objemem dat](data-catalog-how-to-big-data.md)
 ## [Zdroje dat profilů dat](data-catalog-how-to-data-profile.md)
 ## [Správa datových prostředků](data-catalog-how-to-manage.md)
 ## [Uložení hledání a připnutí datových prostředků](data-catalog-how-to-save-pin.md)
-## [Nastavit obchodní Glosář hello](data-catalog-how-to-business-glossary.md)
-## [Zabezpečený přístup toodata katalogu](data-catalog-how-to-secure-catalog.md)
+## [Jak nastavit obchodní glosář](data-catalog-how-to-business-glossary.md)
+## [Zabezpečený přístup ke katalogu dat](data-catalog-how-to-secure-catalog.md)
 ## [Zobrazení souvisejících datových prostředků](data-catalog-how-to-view-related-data-assets.md) 
 
 # Referenční informace

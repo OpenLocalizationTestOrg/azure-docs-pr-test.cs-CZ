@@ -1,5 +1,5 @@
 ---
-title: "aaaAbout bitových kopií pro virtuální počítače s Windows | Microsoft Docs"
+title: "O bitových kopií pro virtuální počítače s Windows | Microsoft Docs"
 description: "Další informace o použití bitové kopie s virtuální počítače s Windows v Azure."
 services: virtual-machines-windows
 documentationcenter: 
@@ -15,35 +15,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: cynthn
-ms.openlocfilehash: c7cfa1d018a5e99d5b68f559ec9ae1f14e4dec8b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d421cee0becabdf81d865036d0c98b12b077152b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="about-images-for-windows-virtual-machines"></a>O bitových kopií pro virtuální počítače s Windows
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic hello. Společnost Microsoft doporučuje, aby většina nových nasazení používala model Resource Manager hello. Informace o hledání a používání imagí v modelu Resource Manager hello najdete v tématu [zde](../../virtual-machines-windows-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Informace o hledání a používání imagí v modelu Resource Manager najdete v tématu [zde](../../virtual-machines-windows-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-classic-about-images](../../../../includes/virtual-machines-common-classic-about-images.md)]
 
 ## <a name="working-with-images"></a>Práce s obrázky
 
-Můžete použít modul Azure PowerShell hello a hello Azure portálu toomanage hello bitové kopie k dispozici tooyour předplatného Azure. modul Azure PowerShell Hello poskytuje další parametry příkazu, takže lze přesně určit, jak přesné toosee nebo proveďte. Hello portál Azure poskytuje grafické rozhraní pro řadu úloh správy každý den hello.
+Modul Azure PowerShell a portálu Azure můžete použít ke správě bitových kopií, která je k dispozici k předplatnému Azure. Modul Azure PowerShell poskytuje další parametry příkazu, takže přesně určit pouze požadované anebo najdete v článku. Portál Azure poskytuje grafickým uživatelským rozhraním pro řadu každodenních úloh pro správu.
 
-Zde jsou některé příklady, které používají modul Azure PowerShell hello.
+Zde jsou některé příklady, které používají modulu Azure PowerShell.
 
-* **Získat všechny image**:`Get-AzureVMImage`vrátí seznam všech hello obrázků dostupné v aktuálním předplatném: vaše Image a ty poskytovaný Azure nebo partnerů. Výsledný seznam Hello může být velký. Zobrazit další příklady jak Hello tooget seznam kratší.
+* **Získat všechny image**:`Get-AzureVMImage`vrátí seznam hodnot všechny bitové kopie k dispozici v aktuálním předplatném: vaše Image a ty poskytovaný Azure nebo partnerů. V rozevíracím seznamu může být velký. Další příklady ukazují, jak získat seznam kratší.
 * **Získat image rodiny**:`Get-AzureVMImage | select ImageFamily` získá seznam image rodiny zobrazením řetězce **ImageFamily** vlastnost.
 * **Získat všechny bitové kopie v konkrétní rodině**:`Get-AzureVMImage | Where-Object {$_.ImageFamily -eq $family}`
-* **Najít Image virtuálních počítačů**: `Get-AzureVMImage | where {(gm –InputObject $_ -Name DataDiskConfigurations) -ne $null} | Select -Property Label, ImageName` Tato rutina funguje tak, že filtrování hello DataDiskConfiguration vlastnosti, která se vztahuje pouze tooVM bitové kopie. Tento příklad také vyfiltruje hello výstup tooonly hello label a název obrázku.
+* **Najít Image virtuálních počítačů**: `Get-AzureVMImage | where {(gm –InputObject $_ -Name DataDiskConfigurations) -ne $null} | Select -Property Label, ImageName` Tato rutina funguje tak, že filtrování DataDiskConfiguration vlastnost, která se vztahuje pouze na Image virtuálních počítačů. Tento příklad také vyfiltruje výstup jenom na název popisku a bitové kopie.
 * **Uložte bitovou kopii zobecněný**:`Save-AzureVMImage –ServiceName "myServiceName" –Name "MyVMtoCapture" –OSState "Generalized" –ImageName "MyVmImage" –ImageLabel "This is my generalized image"`
 * **Uložte bitovou kopii specializované**:`Save-AzureVMImage –ServiceName "mySvc2" –Name "MyVMToCapture2" –ImageName "myFirstVMImageSP" –OSState "Specialized" -Verbose`
 
   > [!TIP]
-  > Parametr OSState Hello je požadovaná toocreate image virtuálního počítače, který zahrnuje hello disk operačního systému a datové disky připojené. Pokud nepoužijete parametr hello, hello rutina vytvoří bitovou kopii operačního systému. Hello hodnota parametru hello označuje, zda obrázek hello je zobecněn nebo specializuje, na základě na tom, jestli disk operačního systému hello připravený pro opakované použití.
+  > Parametr OSState je potřeba k vytvoření image virtuálního počítače, která obsahuje disk operačního systému a datové disky připojené. Pokud nepoužijete parametr, rutina vytvoří bitovou kopii operačního systému. Hodnota parametru udává, zda obrázek zobecněn nebo specializuje, na základě na tom, jestli disk operačního systému je připravena pro opakované použití.
 
 * **Odstranit bitovou kopii**:`Remove-AzureVMImage –ImageName "MyOldVmImage"`
 
 ## <a name="next-steps"></a>Další kroky
-Můžete také [vytvoření počítače s Windows pomocí portálu Azure hello](tutorial.md).
+Můžete také [vytvoření počítače s Windows pomocí portálu Azure](tutorial.md).

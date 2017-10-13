@@ -1,27 +1,27 @@
-Postupujte podle těchto kroků tooinstall a spusťte MongoDB virtuálního počítače se systémem Windows Server.
+Postupujte podle těchto kroků k instalaci a spuštění MongoDB ve virtuálním počítači s Windows serverem.
 
 > [!IMPORTANT]
-> Funkce zabezpečení MongoDB, jako je ověřování a vazbu IP adresy, nejsou povolené ve výchozím nastavení. Před nasazením MongoDB tooa produkčním prostředí by měl povolit funkce zabezpečení.  Další informace najdete v tématu [zabezpečení a ověřování](http://www.mongodb.org/display/DOCS/Security+and+Authentication).
+> Funkce zabezpečení MongoDB, jako je ověřování a vazbu IP adresy, nejsou povolené ve výchozím nastavení. Před nasazením MongoDB v produkčním prostředí by měl povolit funkce zabezpečení.  Další informace najdete v tématu [zabezpečení a ověřování](http://www.mongodb.org/display/DOCS/Security+and+Authentication).
 >
 >
 
-1. Po připojení toohello virtuálního počítače pomocí vzdálené plochy, otevřete Internet Explorer z hello **spustit** nabídky hello virtuálního počítače.
-2. Vyberte hello **nástroje** tlačítko v pravém horním rohu hello.  V **Možnosti Internetu**, vyberte hello **zabezpečení** a pak vyberte hello **Důvěryhodné servery** ikonu a nakonec klikněte na tlačítko hello **lokality** tlačítko. Přidat *https://\*. mongodb.org* toohello seznam důvěryhodných serverů.
-3. Přejděte příliš[stáhne - MongoDB](https://www.mongodb.com/download-center#community).
-4. Najde hello **aktuální stabilní verzi** z **komunity serveru**, vyberte nejnovější hello **64-bit** verze ve sloupci Windows hello. Stáhněte a spusťte instalační program MSI hello.
-5. MongoDB je obvykle nainstalován v C:\Program Files\MongoDB. Vyhledejte proměnné prostředí na ploše hello a přidejte hello MongoDB binární soubory cesta toohello proměnné PATH. Například můžete zjistit hello binárních souborů v C:\Program Files\MongoDB\Server\3.4\bin na váš počítač.
-6. Vytváření adresářů MongoDB protokolu a data v hello datový disk (například disk **F:**) jste vytvořili v předchozích krocích hello. Z **spustit**, vyberte **příkazového řádku** tooopen okno příkazového řádku.  Zadejte:
+1. Po připojení k virtuálnímu počítači pomocí vzdálené plochy, otevřete Internet Explorer z **spustit** nabídky na virtuálním počítači.
+2. Vyberte **nástroje** tlačítko v pravém horním rohu.  V **Možnosti Internetu**, vyberte **zabezpečení** a potom vyberte **Důvěryhodné servery** ikonu a nakonec klikněte **lokality** tlačítko. Přidat *https://\*. mongodb.org* do seznamu důvěryhodných serverů.
+3. Přejděte na [stáhne - MongoDB](https://www.mongodb.com/download-center#community).
+4. Najít **aktuální stabilní verzi** z **komunity serveru**, vyberte nejnovější **64-bit** verze ve sloupci systému Windows. Stáhněte a spusťte instalační program MSI.
+5. MongoDB je obvykle nainstalován v C:\Program Files\MongoDB. Vyhledejte proměnné prostředí na ploše a přidat cestu binární soubory MongoDB do proměnné PATH. Například může najít binární soubory na C:\Program Files\MongoDB\Server\3.4\bin na váš počítač.
+6. Vytváření adresářů MongoDB protokolu a data na disku data (například disk **F:**) jste vytvořili v předchozích krocích. Z **spustit**, vyberte **příkazového řádku** otevřete okno příkazového řádku.  Zadejte:
 
         C:\> F:
         F:\> mkdir \MongoData
         F:\> mkdir \MongoLogs
-7. toorun hello databáze, spusťte:
+7. Chcete-li spustit databázi, spusťte:
 
         F:\> C:
         C:\> mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log
 
-    Všechny zprávy protokolu jsou řízené toohello *F:\MongoLogs\mongolog.log* souborů jako mongod.exe server spustí a preallocates soubory deníku. Může trvat několik minut, než MongoDB toopreallocate soubory deníku hello a zahájit naslouchání pro připojení. příkazový řádek Hello zůstává zaměřují se na tato úloha je spuštěna MongoDB instance.
-8. hello toostart MongoDB prostředí pro správu, otevřete další okno příkaz z **spustit** a typ hello následující příkazy:
+    Všechny zprávy protokolu jsou směrované *F:\MongoLogs\mongolog.log* souborů jako mongod.exe server spustí a preallocates soubory deníku. To může trvat několik minut, než MongoDB předběžné přidělení soubory deníku a zahájit naslouchání pro připojení. Do příkazového řádku zůstává zaměřují se na tato úloha je spuštěna MongoDB instance.
+8. Pokud chcete spustit prostředí pro správu MongoDB, otevřete další okno příkaz z **spustit** a zadejte následující příkazy:
 
         C:\> cd \my_mongo_dir\bin  
         C:\my_mongo_dir\bin> mongo  
@@ -36,30 +36,30 @@ Postupujte podle těchto kroků tooinstall a spusťte MongoDB virtuálního poč
         ...  
         > help  
 
-    Hello databáze byla vytvořena ve hello insert.
+    Databáze je vytvořená úlohy insert.
 9. Alternativně můžete nainstalovat mongod.exe jako služba:
 
         C:\> mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log --logappend  --install
 
-    Je nainstalována služba s názvem MongoDB s popisem "Mongo DB". Hello `--logpath` možnost musí být použité toospecify soubor protokolu, od hello spuštěna služba nemá na příkaz okna toodisplay výstup.  Hello `--logappend` možnost určuje, že restartování služby hello způsobí, že výstupní tooappend toohello existující soubor protokolu.  Hello `--dbpath` možnost určuje umístění hello hello dat adresáře. Další související se službou možnosti příkazového řádku najdete v tématu [související se službou možnosti příkazového řádku][MongoWindowsSvcOptions].
+    Je nainstalována služba s názvem MongoDB s popisem "Mongo DB". `--logpath` Možnost se musí použít k určení souboru protokolu, vzhledem k tomu, že běžící služba nemá okno příkazového řádku k zobrazení výstupu.  `--logappend` Možnost určuje, že restartování služby způsobí, že výstupní má být připojen ke stávajícímu souboru protokolu.  `--dbpath` Možnost určuje umístění do adresáře dat. Další související se službou možnosti příkazového řádku najdete v tématu [související se službou možnosti příkazového řádku][MongoWindowsSvcOptions].
 
-    toostart hello služba, spusťte tento příkaz:
+    Chcete-li spustit službu, spusťte tento příkaz:
 
         C:\> net start MongoDB
-10. Teď, když MongoDB je nainstalován a spuštěn, je nutné tooopen port v bráně Windows Firewall, abyste mohli vzdáleně připojte tooMongoDB.  Z hello **spustit** nabídce vyberte možnost **nástroje pro správu** a potom **brány Windows Firewall s pokročilým zabezpečením**.
-11. (a) v levém podokně hello vyberte **příchozí pravidla**.  V hello **akce** podokně na hello práva, vyberte **nové pravidlo...** .
+10. Teď, když MongoDB je nainstalován a spuštěn, budete muset otevřít port v bráně Windows Firewall, abyste mohli vzdáleně připojte k MongoDB.  Z **spustit** nabídce vyberte možnost **nástroje pro správu** a potom **brány Windows Firewall s pokročilým zabezpečením**.
+11. (a) v levém podokně vyberte **příchozí pravidla**.  V **akce** podokně na pravé straně vyberte **nové pravidlo...** .
 
     ![Brána Windows Firewall][Image1]
 
-    b) v hello **pravidla Průvodce vytvořením nového příchozího**, vyberte **Port** a pak klikněte na **Další**.
+    b) v **pravidla Průvodce vytvořením nového příchozího**, vyberte **Port** a pak klikněte na **Další**.
 
     ![Brána Windows Firewall][Image2]
 
-    c) vyberte **TCP** a potom **určité místní porty**.  Zadejte port "27017" (hello výchozí port MongoDB naslouchá na) a klikněte na tlačítko **Další**.
+    c) vyberte **TCP** a potom **určité místní porty**.  Zadejte port "27017" (výchozí port MongoDB naslouchá na) a klikněte na tlačítko **Další**.
 
     ![Brána Windows Firewall][Image3]
 
-    d) vyberte **povolit připojení hello** a klikněte na tlačítko **Další**.
+    d) vyberte **povolit připojení** a klikněte na tlačítko **Další**.
 
     ![Brána Windows Firewall][Image4]
 
@@ -67,24 +67,24 @@ Postupujte podle těchto kroků tooinstall a spusťte MongoDB virtuálního poč
 
     ![Brána Windows Firewall][Image5]
 
-    f) zadejte název pravidla hello, jako je například "MongoPort" a klikněte na tlačítko **Dokončit**.
+    f) zadejte název pravidla, jako je například "MongoPort" a klikněte na tlačítko **Dokončit**.
 
     ![Brána Windows Firewall][Image6]
 
-12. Pokud koncový bod nenakonfigurovali pro MongoDB při vytváření hello virtuálního počítače, můžete provést nyní. Je třeba pravidla brány firewall hello i hello koncový bod toobe možné tooconnect tooMongoDB vzdáleně.
+12. Pokud koncový bod nebylo nakonfigurovat pro MongoDB, když vytvoříte virtuální počítač, můžete provést nyní. Potřebujete pravidlo brány firewall a aby mohli vzdáleně připojit k MongoDB.
 
-  V hello portálu Azure, klikněte na **virtuálních počítačů (klasické)**, klikněte na tlačítko hello název nového virtuálního počítače a pak klikněte na tlačítko **koncové body**.
+  Na portálu Azure klikněte na tlačítko **virtuálních počítačů (klasické)**, klikněte na název nového virtuálního počítače a pak klikněte na tlačítko **koncové body**.
 
     ![Koncové body][Image7]
 
 13. Klikněte na tlačítko **Přidat**.
 
-14. Přidat koncový bod s názvem "Mongo", protokol **TCP**a obě **veřejné** a **privátní** porty sadu příliš "27017". Otevření tento port umožňuje přístup ke vzdálené toobe MongoDB.
+14. Přidat koncový bod s názvem "Mongo", protokol **TCP**a obě **veřejné** a **privátní** porty nastavena na "27017". MongoDB vzdálený přístup k otevření tohoto portu umožňuje.
 
     ![Koncové body][Image9]
 
 > [!NOTE]
-> Hello 27017 je hello výchozí port používaný MongoDB. Tento výchozí port můžete změnit zadáním hello `--port` parametr při spuštění serveru mongod.exe hello. Ujistěte se, že toogive hello stejné číslo portu v bráně firewall hello a hello "Mongo" koncového bodu v předchozích pokynů hello.
+> Port 27017 je výchozí port je používán MongoDB. Tento výchozí port můžete změnit zadáním `--port` parametr při spuštění serveru mongod.exe. Zajistěte, aby dát stejné číslo portu v bráně firewall a endpoint "Mongo" v předchozích pokynů.
 >
 >
 

@@ -1,6 +1,6 @@
 ---
-title: "Přehled služby Správce prostředků aaaAzure | Microsoft Docs"
-description: "Popisuje, jak toouse Azure Resource Manageru pro nasazení, správu a řízení přístupu prostředků v Azure."
+title: "Přehled Azure Resource Manageru | Dokumentace Microsoftu"
+description: "Popisuje, jak Azure Resource Manager využívat k nasazení, správě a řízení přístupu k prostředkům v Azure."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,82 +14,82 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/19/2017
 ms.author: tomfitz
-ms.openlocfilehash: a44fccd96d722c006224145d71cc44292255debf
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f539931e0704f904f4b942f185f086a790caf4da
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-resource-manager-overview"></a>Přehled Azure Resource Manageru
-Hello infrastrukturu aplikace obvykle tvoří celá řada komponent, může být virtuální počítač, účet úložiště a virtuální síti, nebo webové aplikace, databáze, databázový server a služby 3. stran. Tyto komponenty nevidíte jako samostatné entity, ale jako související a vzájemně provázané části jedné entity. Chcete toodeploy, spravovat a monitorovat jako skupinu. Azure Resource Manager umožňuje toowork s hello prostředky ve vašem řešení jako se skupinou. Můžete nasadit, aktualizovat nebo odstranit všechny hello prostředky pro vaše řešení v rámci jediné koordinované operace. Pro nasazení použijete šablonu a tato šablona může fungovat v různých prostředích, jako například v testovacím, přípravném nebo produkčním prostředí. Resource Manager poskytuje zabezpečení, auditování a označování funkce toohelp spravovat prostředky po nasazení. 
+Infrastrukturu aplikace obvykle tvoří celá řada komponent, může to být třeba virtuální počítač, účet úložiště a virtuální síť nebo webová aplikace, databáze, databázový server a služby jiných výrobců. Tyto komponenty nevidíte jako samostatné entity, ale jako související a vzájemně provázané části jedné entity. Chcete je nasadit, spravovat a monitorovat jako skupinu. Azure Resource Manager umožňuje pracovat s prostředky ve vašem řešení jako se skupinou. Všechny prostředky pro vaše řešení můžete nasadit, aktualizovat nebo odstranit v rámci jediné koordinované operace. Pro nasazení použijete šablonu a tato šablona může fungovat v různých prostředích, jako například v testovacím, přípravném nebo produkčním prostředí. Resource Manager poskytuje funkce zabezpečení, auditování a označování, které vám po nasazení pomohou prostředky spravovat. 
 
 ## <a name="terminology"></a>Terminologie
-Pokud jste nový tooAzure Resource Manager, nejsou některé podmínky, které nemusí být obeznámeni s.
+Pokud je pro vás Azure Resource Manager novinkou, následuje pár termínů, se kterými byste nemuseli být obeznámeni.
 
 * **prostředek** - Spravovatelná položka, která je k dispozici prostřednictvím služby Azure. Mezi běžné prostředky patří virtuální počítač, účet úložiště, webová aplikace, databáze nebo virtuální síť, ale existuje i mnoho dalších.
-* **skupina prostředků** – Kontejner, který obsahuje související prostředky pro řešení Azure. Skupina prostředků Hello může zahrnovat všechny hello prostředky pro řešení hello nebo jenom prostředky, které chcete toomanage jako skupina. Můžete určit, jak mají prostředky tooallocate tooresource skupin podle díky hello nejvhodnější pro vaši organizaci. Viz [Skupiny prostředků](#resource-groups).
-* **Poskytovatel prostředků** -služba poskytující prostředky hello můžete nasadit a spravovat prostřednictvím Resource Manageru. Každý poskytovatel prostředků nabízí operace pro práci s hello prostředky, které jsou nasazeny. Některé běžné zprostředkovatelé prostředků jsou Microsoft.Compute, který poskytuje hello prostředek virtuálního počítače, Microsoft.Storage, který poskytuje prostředků účtu úložiště hello, a Microsoft.Web, který poskytuje prostředky související tooweb aplikace. Viz [Poskytovatelé prostředků](#resource-providers).
-* **Šablony Resource Manageru** -soubor A JavaScript Object Notation (JSON), který definuje jeden nebo více prostředků toodeploy tooa skupinu prostředků. Definuje také hello závislosti mezi prostředky hello nasazení. Hello šablony lze použít toodeploy hello prostředky konzistentně a opakovaně. Viz [Nasazení šablon](#template-deployment).
-* **deklarativní syntaxe** -syntaxi, která vám umožní stavu "je zde I hodlají toocreate" bez nutnosti toowrite hello posloupnost programování toocreate příkazy ho. šablony Resource Manageru Hello je příkladem deklarativní syntaxe. V souboru hello definujete hello vlastnosti tooAzure toodeploy hello infrastruktury. 
+* **skupina prostředků** – Kontejner, který obsahuje související prostředky pro řešení Azure. Skupina prostředků může zahrnovat všechny prostředky pro řešení nebo pouze ty prostředky, které chcete spravovat jako skupinu. Na základě toho, co je pro vaši organizaci nejvhodnější, rozhodnete, jakým způsobem se mají prostředky přidělovat do skupin prostředků. Viz [Skupiny prostředků](#resource-groups).
+* **poskytovatel prostředků** - Služba poskytující prostředky, které můžete nasadit a spravovat prostřednictvím Resource Manageru. Každý poskytovatel prostředků nabízí operace pro práci s nasazenými prostředky. Mezi běžné poskytovatele prostředků patří Microsoft.Compute, který poskytuje prostředek virtuálních počítačů, Microsoft.Storage, který poskytuje prostředek účtu úložiště, a Microsoft.Web, který poskytuje prostředky vztahující se k webovým aplikacím. Viz [Poskytovatelé prostředků](#resource-providers).
+* **šablona Resource Manageru** - Soubor formátu JavaScript Object Notation (JSON), který definuje jeden nebo více prostředků k nasazení do skupiny prostředků. Definuje také závislosti mezi nasazenými prostředky. Šablony lze použít k nasazení prostředků konzistentně a opakovaně. Viz [Nasazení šablon](#template-deployment).
+* **deklarativní syntaxe** – Syntaxe, která umožňuje prohlásit „Toto mám v úmyslu vytvořit“, aniž by k tomu bylo nutné psát sekvence programových příkazů. Šablona Resource Manageru je příkladem deklarativní syntaxe. V souboru definujete vlastnosti pro infrastrukturu k nasazení do Azure. 
 
-## <a name="hello-benefits-of-using-resource-manager"></a>Hello výhody použití Resource Manager
+## <a name="the-benefits-of-using-resource-manager"></a>Výhody použití Resource Manageru
 Resource Manager poskytuje několik výhod:
 
-* Můžete nasadit, spravovat a monitorovat všechny hello prostředky pro vaše řešení jako skupina, nikoli zpracovávat jednotlivě.
-* Můžete opakovaně nasadit řešení v celém hello životního cyklu a mít přitom jistotu, že vaše prostředky jsou nasazeny v konzistentním stavu.
+* Můžete všechny prostředky pro vaše řešení nasadit, spravovat a monitorovat jako skupinu a nemusíte je zpracovávat jednotlivě.
+* Můžete svoje řešení opakovaně nasadit v průběhu životního cyklu a mít přitom jistotu, že se prostředky nasadí konzistentně.
 * Infrastrukturu můžete spravovat pomocí deklarativních šablon místo skriptů.
-* Můžete definovat hello závislosti mezi prostředky, takže se nasadí ve správném pořadí hello.
-* Služby tooall řízení přístupu můžete použít ve vaší skupině prostředků, protože do platformy pro správu hello je nativně integrováno řízení přístupu na základě Role (RBAC).
-* Můžete použít značky tooresources toologically uspořádat všechny prostředky hello ve vašem předplatném.
-* Můžete zpřehlednit fakturaci vaší organizace zobrazením náklady pro skupinu prostředků, sdílení hello stejnou značku.  
+* Můžete definovat závislosti mezi prostředky, takže se nasadí ve správném pořadí.
+* Můžete využít řízení přístupu pro všechny služby ve vaší skupině prostředků, protože do platformy pro správu je nativně integrováno řízení přístupu na základě role (RBAC).
+* Můžete označit prostředky pomocí značek a logicky tak uspořádat všechny prostředky ve svém předplatném.
+* Můžete zpřehlednit fakturaci svojí organizace zobrazením nákladů na skupinu prostředků, které sdílejí stejnou značku.  
 
-Resource Manager poskytuje nový způsob toodeploy a správy vašich řešení. Pokud jste použili hello dřívější model nasazení a chcete toolearn o změnách hello naleznete [nasazení Resource Manager principy a nasazení classic](resource-manager-deployment-model.md).
+Resource Manager poskytuje nový způsob nasazení a správy vašich řešení. Pokud jste využívali dřívější model nasazení a chcete se dozvědět o změnách, přečtěte si článek věnovaný [nasazení Resource Manageru a klasickému nasazení](resource-manager-deployment-model.md).
 
 ## <a name="consistent-management-layer"></a>Konzistentní vrstva správy
-Resource Manager poskytuje pro hello úlohy, které můžete provést pomocí prostředí Azure PowerShell, rozhraní příkazového řádku Azure, portál Azure, rozhraní REST API a nástroje pro vývoj konzistentní vrstva správy. Všechny nástroje hello použijte sadu běžných operací. Použijete hello nástroje, které pro vás nejvhodnější a můžete je zcela zaměnitelným významem bez nejasnostem. 
+Resource Manager poskytuje konzistentní vrstvu správy pro úlohy prováděné prostřednictvím Azure PowerShellu, rozhraní příkazového řádku Azure, webu Azure Portal, rozhraní REST API a vývojových nástrojů. Všechny tyto nástroje používají společnou sadu operací. Můžete používat nástroje, které vám nejvíce vyhovují, a používat je zaměnitelně, aniž by to vedlo k nějakým nejasnostem. 
 
-Hello následující obrázek ukazuje způsob, jakým všechny nástroje hello interakci s hello stejné rozhraní API Správce prostředků Azure. Hello API předá požadavky služby Správce prostředků toohello, který provádí ověřování a autorizaci požadavků hello. Správce prostředků pak směruje hello požadavky toohello odpovídající prostředek zprostředkovatele.
+Následující obrázek znázorňuje, jakým způsobem všechny tyto nástroje interagují se stejným rozhraním API Azure Resource Manageru. Rozhraní API předává požadavky do služby Resource Manageru, která je ověřuje a autorizuje. Resource Manager následně směruje požadavky do příslušných poskytovatelů prostředků.
 
 ![Model požadavku Resource Manageru](./media/resource-group-overview/consistent-management-layer.png)
 
 ## <a name="guidance"></a>Doprovodné materiály
-Hello následující návrhy vám pomohou při práci s vašimi řešeními využít výhod Resource Manager.
+Následující návrhy vám pomohou při práci s vašimi řešeními plně využít výhod Resource Manageru.
 
-1. Definovat a nasazovat infrastruktury prostřednictvím hello deklarativní syntaxi v šablonách Resource Manageru, nikoli imperativní příkazy.
-2. Definujte všechny kroky nasazení a konfigurace v šabloně hello. K nastavení svého řešení byste neměli využívat žádné ruční kroky.
-3. Spustit imperativní příkazy toomanage vaše prostředky, jako je například toostart nebo zastavení aplikace nebo počítače.
-4. Uspořádá prostředky s hello stejný životní cyklus ve skupině prostředků. K ostatnímu uspořádání prostředků využijte značky.
+1. K definování a nasazení infrastruktury využijte deklarativní syntaxi v šablonách Resource Manageru, nikoli imperativní příkazy.
+2. V šabloně definujte všechny kroky nasazení a konfigurace. K nastavení svého řešení byste neměli využívat žádné ruční kroky.
+3. Ke správě vašich prostředků využijte imperativní příkazy, například pro spuštění nebo zastavení aplikace nebo počítače.
+4. Prostředky se stejným životním cyklem uspořádejte do skupiny prostředků. K ostatnímu uspořádání prostředků využijte značky.
 
 Další doporučení k šablonám najdete v tématu [Osvědčené postupy pro vytváření šablon Azure Resource Manageru](resource-manager-template-best-practices.md).
 
-Pokyny k použití Resource Manager tooeffectively podniky můžou spravovat předplatná najdete v tématu [Azure enterprise vygenerované uživatelské rozhraní – zásady správného řízení doporučený předplatné](resource-manager-subscription-governance.md).
+Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](resource-manager-subscription-governance.md).
 
 ## <a name="resource-groups"></a>Skupiny prostředků
-Při definování skupin prostředků se tooconsider některé důležité faktory:
+Při definování skupin prostředků byste měli vzít v úvahu některé důležité faktory:
 
-1. Všechny prostředky hello ve vaší skupině by měly sdílet stejný životní cyklus hello. Nasazujete, aktualizujete a odstraňujete je společně. Pokud některý z prostředků, jako je například databázový server, potřebuje tooexist na mít jiný cyklus nasazení by měla být v jiné skupině prostředků.
+1. Všechny prostředky ve skupině by měly sdílet stejný životní cyklus. Nasazujete, aktualizujete a odstraňujete je společně. Pokud některý z prostředků, například databázový server, musí mít jiný cyklus nasazení, měl by být v jiné skupině prostředků.
 2. Každý prostředek může být jenom v jedné skupině prostředků.
-3. Můžete přidat nebo odebrat skupinu prostředků tooa prostředků kdykoli.
-4. Prostředek můžete přesunout z jedné skupiny tooanother skupiny prostředků. Další informace najdete v tématu [přesunout skupiny prostředků toonew prostředků nebo předplatného](resource-group-move-resources.md).
+3. Prostředky je možné do skupiny prostředků kdykoli přidat nebo naopak odebrat.
+4. Prostředky je možné přesouvat mezi skupinami. Další informace najdete v tématu, které se zabývá [přesunutím prostředků do nové skupiny prostředků nebo předplatného](resource-group-move-resources.md).
 5. Skupina prostředků může obsahovat prostředky, které se nacházejí v různých oblastech.
-6. Skupina prostředků může být použit tooscope řízení přístupu pro akce správy.
-7. Prostředek může interagovat s prostředky v dalších skupinách prostředků. Tato interakce je běžné při hello dva prostředky souvisí, ale nesdílejí stejný životní cyklus (například webové aplikace pro připojení databáze tooa) hello.
+6. Skupinu prostředků lze využít k určení rozsahu řízení přístupu pro akce správy.
+7. Prostředek může interagovat s prostředky v dalších skupinách prostředků. Tato interakce je běžná v případě, že spolu tyto dva prostředky souvisejí, ale nesdílejí stejný životní cyklus (například webové aplikace, které se připojují k databázi).
 
-Při vytváření skupiny prostředků, je třeba tooprovide umístění pro danou skupinu prostředků. Asi vás zajímá, proč skupina prostředků potřebuje umístění. A, pokud hello prostředků může mít jiné umístění než hello skupinu prostředků, proč umístění skupiny prostředků hello vás vůbec?" Skupina prostředků Hello ukládají metadata o hello prostředky. Proto když zadáte umístění pro skupinu prostředků hello, určíte se uloží aby metadata. Pro dodržování předpisů, pravděpodobně bude třeba tooensure data uložená v určité oblasti.
+Při vytváření skupiny prostředků pro ni musíte zadat umístění. Asi vás zajímá, proč skupina prostředků potřebuje umístění. A proč vůbec záleží na umístění skupiny prostředků, pokud prostředky mohou mít jiná umístění než skupina prostředků. Skupina prostředků ukládá metadata o prostředcích. Při zadávání umístění skupiny prostředků tedy určujete, kde se tato metadata ukládají. Z důvodu dodržování předpisů může být nutné zajistit, aby se data ukládala v určité oblasti.
 
 ## <a name="resource-providers"></a>Poskytovatelé prostředků
-Každý poskytovatel prostředků nabízí sadu prostředků a operací pro práci se službou Azure. Například pokud chcete toostore klíče a tajné klíče, pracujete s hello **Microsoft.KeyVault** poskytovatele prostředků. Tento poskytovatel prostředků nabízí typ prostředku nazvaný **trezory** pro vytvoření trezoru klíčů hello. 
+Každý poskytovatel prostředků nabízí sadu prostředků a operací pro práci se službou Azure. Pokud například chcete ukládat klíče a tajné klíče, využijete poskytovatele prostředků **Microsoft.KeyVault**. Tento poskytovatel prostředků nabízí typ prostředků nazvaný **trezory** pro vytvoření trezoru klíčů. 
 
-Hello název typu prostředku je ve formátu hello: **{poskytovatele prostředků} / {typ prostředku}**. Je například typ trezoru klíčů hello **Microsoft.KeyVault/vaults**.
+Název typu prostředku má formát: **{poskytovatel prostředku}/{typ prostředku}**. Například typ trezoru klíčů je **Microsoft.KeyVault/vaults**.
 
-Než začnete s nasazením vaše prostředky by měly pomoci porozumět hello dostupných poskytovatelů prostředků. Znalost hello názvy prostředků, zprostředkovatele a prostředky pomáhá definovat prostředky chcete toodeploy tooAzure. Navíc musíte tooknow hello platné umístění a verze rozhraní API pro každý typ prostředku. Další informace najdete v tématu [Zprostředkovatelé a typy prostředků](resource-manager-supported-services.md).
+Než začnete nasazovat prostředky, měli byste získat přehled o dostupných poskytovatelích prostředků. Znalost názvů poskytovatelů prostředků a samotných prostředků vám umožní definovat prostředky, které chcete nasadit do Azure. Také je potřeba vědět platná umístění a verze rozhraní API pro každý typ prostředku. Další informace najdete v tématu [Zprostředkovatelé a typy prostředků](resource-manager-supported-services.md).
 
 ## <a name="template-deployment"></a>Nasazení šablon
-S Resource Managerem, můžete vytvořit šablonu (ve formátu JSON), která definuje infrastrukturu hello a konfiguraci řešení Azure. Pomocí šablony můžete řešení opakovaně nasadit v průběhu životního cyklu a mít přitom jistotu, že se prostředky nasadí konzistentně. Když vytvoříte řešení z portálu hello, hello řešení automaticky zahrnovat šablonu nasazení. Nemáte toocreate šablony ze začátku protože můžete začít s hello šablony pro vaše řešení a přizpůsobit toomeet svých konkrétních potřeb. Šablonu pro stávající skupinu prostředků můžete načíst export hello aktuální stav hello skupinu prostředků, nebo zobrazení hello Šablona používaná pro konkrétní nasazení. Zobrazení hello [vyexportované šablony](resource-manager-export-template.md) je vám pomůže blíže toolearn o syntaxi šablony hello.
+Pomocí Resource Manageru můžete vytvořit šablonu (ve formátu JSON), která definuje infrastrukturu a konfiguraci vašeho řešení Azure. Pomocí šablony můžete řešení opakovaně nasadit v průběhu životního cyklu a mít přitom jistotu, že se prostředky nasadí konzistentně. Když vytvoříte řešení z portálu, bude toto řešení automaticky zahrnovat šablonu nasazení. Šablonu nemusíte vytvářet od začátku, protože můžete začít se šablonou pro svoje řešení a upravit ji tak, aby vyhovovala vašim konkrétním potřebám. Šablonu pro stávající skupinu prostředků můžete načíst tak, že vyexportujete aktuální stav této skupiny prostředků, nebo zobrazením šablony použité pro konkrétní nasazení. Zobrazení [vyexportované šablony](resource-manager-export-template.md) vám pomůže blíže se seznámit se syntaxí šablony.
 
-toolearn o formátu hello hello šablony a jak vytvořit, najdete v části [vytvoření vaší první šablony Azure Resource Manager](resource-manager-create-first-template.md). tooview hello syntaxe JSON pro typy prostředků, najdete v části [definování zdrojů v šablonách Azure Resource Manager](/azure/templates/).
+Další informace o formátu šablony a způsobu jejího vytvoření najdete v tématu [Vytvoření první šablony Azure Resource Manageru](resource-manager-create-first-template.md). Syntaxi JSON pro typy prostředků najdete v tématu [Definování prostředků v šablonách Azure Resource Manageru](/azure/templates/).
 
-Správce prostředků zpracovává hello šablony jako ostatní žádosti (viz obrázek hello pro [konzistentní vrstva správy](#consistent-management-layer)). Analyzuje hello šablony a převede jeho syntaxe operace REST API pro poskytovatele prostředků odpovídající hello. Například když Resource Manager obdrží šablonu s hello následující definice prostředků:
+Resource Manager zpracovává šablonu stejně jako ostatní požadavky (viz obrázek [Konzistentní vrstva správy](#consistent-management-layer)). Parsuje šablonu a převede její syntaxi na operace rozhraní REST API pro příslušné poskytovatele prostředků. Když například Resource Manager obdrží šablonu s následující definicí prostředku:
 
 ```json
 "resources": [
@@ -108,7 +108,7 @@ Správce prostředků zpracovává hello šablony jako ostatní žádosti (viz o
 ]
 ```
 
-Převede ji toohello definice hello následující operace REST API, která se posílají poskytovatele prostředků Microsoft.Storage toohello:
+Převede definici na následující operaci rozhraní REST API, která se odešle do poskytovatele prostředků Microsoft.Storage:
 
 ```HTTP
 PUT
@@ -125,29 +125,29 @@ REQUEST BODY
 }
 ```
 
-Jak můžete definovat skupiny prostředků a šablony je zcela až tooyou a jakým způsobem chcete toomanage řešení. Například můžete nasadit aplikaci tři vrstvy prostřednictvím jediné šabloně tooa jedna skupina prostředků.
+Záleží pouze na vás, jak definujete šablony a skupiny prostředků a jak chcete spravovat své řešení. Například můžete nasadit svou třívrstvou aplikaci prostřednictvím jediné šablony do jedné skupiny prostředků.
 
 ![třívrstvá šablona](./media/resource-group-overview/3-tier-template.png)
 
-Ale není nutné toodefine celou infrastrukturu v jediné šabloně. Často má smysl toodivide požadavky nasazení do sadu cílových, zaměřené na konkrétní účel šablony. Tyto šablony můžete snadno opakovaně použít pro různá řešení. toodeploy konkrétní řešení, vytvoříte hlavní šablonu, která propojí všechny hello požadované šablony. Hello následující obrázek ukazuje, jak toodeploy tři vrstvy řešení prostřednictvím nadřazené šablonu, která obsahuje tři vnořené šablony.
+Není však nutné definovat celou infrastrukturu v jediné šabloně. Často má smysl rozdělit požadavky nasazení do několika cílených šablon, které jsou zaměřené na konkrétní účel. Tyto šablony můžete snadno opakovaně použít pro různá řešení. Chcete-li nasadit konkrétní řešení, vytvoříte hlavní šablonu, která propojí všechny požadované šablony. Následující obrázek znázorňuje způsob nasazení třívrstvého řešení prostřednictvím nadřazené šablony, která obsahuje tři vnořené šablony.
 
 ![šablona vnořených vrstev](./media/resource-group-overview/nested-tiers-template.png)
 
-Pokud vaše vrstev s samostatné životních představ, můžete nasadit vaší skupiny prostředků tooseparate třech úrovních. Všimněte si hello prostředky mohou být stále propojené tooresources v další skupiny zdrojů.
+Pokud si představíte, že vaše vrstvy mají tři samostatné životní cykly, můžete tyto tři vrstvy nasadit do samostatných skupin prostředků. Všimněte si, že prostředky mohou být stále propojené s prostředky v jiných skupinách prostředků.
 
 ![šablona vrstvy](./media/resource-group-overview/tier-templates.png)
 
 Další rady k navrhování šablon najdete v tématu [Způsoby navrhování šablon Azure Resource Manageru](best-practices-resource-manager-design-templates.md). Informace o vnořených šablonách najdete v tématu [Použití propojených šablon s Azure Resource Managerem](resource-group-linked-templates.md).
 
-Azure Resource Manager analyzuje závislosti, které tooensure prostředky vytvoří ve správném pořadí hello. Pokud jeden prostředek závisí na hodnotě z jiného prostředku (například virtuální počítač potřebuje účet úložiště pro disky), nastavíte závislost. Další informace najdete v tématu [Definování závislostí v šablonách Azure Resource Manageru](resource-group-define-dependencies.md).
+Azure Resource Manager analyzuje závislosti a zajistí, že se prostředky vytvoří ve správném pořadí. Pokud jeden prostředek závisí na hodnotě z jiného prostředku (například virtuální počítač potřebuje účet úložiště pro disky), nastavíte závislost. Další informace najdete v tématu [Definování závislostí v šablonách Azure Resource Manageru](resource-group-define-dependencies.md).
 
-Hello šablonu můžete použít také pro aktualizace toohello infrastrukturu. Můžete například přidat řešení tooyour prostředek a konfigurační pravidla pro hello prostředky, které jsou už nasazené. Pokud hello Šablona specifikuje vytvoření prostředku, ale tento prostředek již existuje, Azure Resource Manager provede aktualizaci místo vytvoření nového prostředku. Azure Resource Manager aktualizace hello existující asset toohello stejné stavu, protože by byl nový.  
+Šablony můžete také využít pro aktualizace infrastruktury. Můžete například ke svému řešení přidat prostředek a konfigurační pravidla pro prostředky, které jsou už nasazené. Pokud šablona specifikuje vytvoření nového prostředku, ale tento prostředek již existuje, Azure Resource Manager místo vytvoření nového assetu provede jeho aktualizaci. Azure Resource Manager aktualizuje stávající asset do stejného stavu, jako kdyby byl nový.  
 
-Pokud potřebujete další operace, jako je instalace konkrétního softwaru, který není zahrnutý v instalačním programu hello Resource Manager poskytuje rozšíření pro scénáře. Pokud již využíváte službu pro správu konfigurace, jako je DSC, Chef nebo Puppet, můžete tuto službu s pomocí rozšíření používat i nadále. Informace o rozšířeních virtuálních počítačů najdete v tématu [Funkce a rozšíření virtuálních počítačů](../virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Resource Manager poskytuje rozšíření pro scénáře, kdy potřebujete další operace, jako je třeba instalace konkrétního softwaru, který není zahrnutý v původní instalaci. Pokud již využíváte službu pro správu konfigurace, jako je DSC, Chef nebo Puppet, můžete tuto službu s pomocí rozšíření používat i nadále. Informace o rozšířeních virtuálních počítačů najdete v tématu [Funkce a rozšíření virtuálních počítačů](../virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
-Nakonec hello šablony stane součástí hello zdrojového kódu pro vaši aplikaci. Můžete zkontrolovat v tooyour úložiště zdrojového kódu a jej aktualizovat, protože vaše aplikace vyvíjet. Můžete upravit šablonu hello pomocí sady Visual Studio.
+Šablona se také stane součástí zdrojového kódu vaší aplikace. Můžete ji vrátit se změnami do vašeho úložiště zdrojového kódu a aktualizovat ji podle toho, jak se bude vaše aplikace vyvíjet. K úpravě šablony můžete použít Visual Studio.
 
-Po definování šablony, jsou připravené toodeploy hello prostředky tooAzure. Hello příkazy toodeploy hello zdroje najdete v následujících tématech:
+Po definování šablony jste připraveni k nasazení prostředků Azure. Příkazy pro nasazení prostředků najdete v těchto tématech:
 
 * [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](resource-group-template-deploy.md)
 * [Nasazení prostředků pomocí šablon Resource Manageru a rozhraní příkazového řádku Azure](resource-group-template-deploy-cli.md)
@@ -155,11 +155,11 @@ Po definování šablony, jsou připravené toodeploy hello prostředky tooAzure
 * [Nasazení prostředků pomocí šablon Resource Manageru a jeho rozhraní REST API](resource-group-template-deploy-rest.md)
 
 ## <a name="tags"></a>Značky
-Resource Manager poskytuje funkci označování, která vám umožní toocategorize prostředky podle požadavků tooyour pro správu nebo fakturaci. Použití značek, když máte komplexní kolekci prostředků a jejich skupin a potřebujete toovisualize tyto prostředky hello takovým způsobem, který umožňuje hello většina tooyou smysl. Můžete například označit prostředky, které ve vaší organizaci poskytovat podobnou roli nebo patří toohello stejného oddělení. Bez značky, uživatelé ve vaší organizaci můžete vytvořit různé prostředky, které může být obtížné toolater identifikovat a spravovat. Například můžete toodelete všechny hello prostředky pro konkrétní projekt. Pokud tyto prostředky nejsou označeny pro projekt hello, máte toomanually, kde je najít. Označení může také hrát důležitou roli můžete tooreduce zbytečných nákladů ve vašem předplatném. 
+Resource Manager nabízí funkci označování, která umožňuje kategorizovat prostředky podle požadavků na správu nebo fakturaci. Značky použijte v případě, že máte komplexní kolekci prostředků a skupin prostředků a potřebujete tyto assety vizualizovat co nejsmysluplnějším způsobem. Můžete například označit prostředky, které mají v rámci organizace podobnou roli nebo které patří do stejného oddělení. Uživatelé ve vaší organizaci mohou vytvořit různé prostředky, které se bez použití značek budou později těžko identifikovat a spravovat. Můžete například chtít odstranit všechny prostředky pro konkrétní projekt. Pokud ale tyto prostředky nejsou označené značkami, musíte je vyhledat ručně. Označení může také hrát důležitou roli při omezení zbytečných nákladů ve vašem předplatném. 
 
-Prostředky nemusí tooreside v hello stejné tooshare skupiny prostředků značku. Můžete vytvořit vlastní značky taxonomii tooensure, že všichni uživatelé ve vaší organizaci používat společné značky spíše než neúmyslně zavádět mírně odlišné značky (třeba odd"místo"oddělení").
+Prostředky se stejnou značkou nemusí být umístěné ve stejné skupině prostředků. Můžete vytvořit vlastní taxonomii značek a zajistit tak, že všichni uživatelé ve vaší organizaci budou využívat společné značky a nebudou neúmyslně zavádět vlastní (třeba odd. místo oddělení).
 
-Hello následující příklad ukazuje značky použít tooa virtuálního počítače.
+Následující příklad ukazuje značku použitou u virtuálního počítače.
 
 ```json
 "resources": [    
@@ -176,66 +176,66 @@ Hello následující příklad ukazuje značky použít tooa virtuálního poč�
 ]
 ```
 
-použít všechny prostředky hello s hodnotou značky tooretrieve hello následující rutiny prostředí PowerShell:
+Pokud chcete načíst všechny prostředky s určitou hodnotou značky, použijte následující rutinu prostředí PowerShell:
 
 ```powershell
 Find-AzureRmResource -TagName costCenter -TagValue Finance
 ```
 
-Nebo hello následující příkaz Azure CLI 2.0:
+Nebo následující příkaz Azure CLI 2.0:
 
 ```azurecli
 az resource list --tag costCenter=Finance
 ```
 
-Můžete také zobrazit s příznakem prostředkům prostřednictvím hello portálu Azure.
+Označené prostředky můžete také zobrazit přes Azure Portal.
 
-Hello [sestav využití](../billing/billing-understand-your-bill.md) pro vaše předplatné zahrnuje značka názvy a hodnoty, což vám umožní toobreak out náklady podle značky. Další informace o značkách najdete v tématu [pomocí značky tooorganize vašich prostředků Azure](resource-group-using-tags.md).
+[Sestava využití](../billing/billing-understand-your-bill.md) pro vaše předplatné obsahuje názvy a hodnoty značek, což umožňuje rozdělit náklady podle značek. Další informace o značkách najdete v tématu [Použití značek k uspořádání prostředků Azure](resource-group-using-tags.md).
 
 ## <a name="access-control"></a>Řízení přístupu
-Resource Manager umožňuje toocontrol, který má přístup toospecific akce pro vaši organizaci. Nativně integruje řízení přístupu na základě role (RBAC) do platformy pro správu hello a použije tento přístup řízení tooall services ve vaší skupině prostředků. 
+Resource Manager umožňuje určit, kdo má přístup ke konkrétním akcím pro vaši organizaci. Nativně integruje řízení přístupu na základě rolí (RBAC) do platformy pro správu a toto řízení přístupu využívá pro všechny služby ve vaší skupině prostředků. 
 
-Existují dvě hlavní koncepty toounderstand při práci s řízení přístupu na základě rolí:
+Existují dva hlavní koncepty, které musíte pochopit, když pracujete s řízením přístupu na základě rolí:
 
 * Definice rolí – popisují sadu oprávnění a lze je použít v mnoha přiřazeních.
-* Přiřazení rolí – přidružují definici k identitě (uživatel nebo skupina) určitého oboru (předplatné, skupina prostředků nebo prostředek). nižší obory dědí Hello přiřazení.
+* Přiřazení rolí – přidružují definici k identitě (uživatel nebo skupina) určitého oboru (předplatné, skupina prostředků nebo prostředek). Toto přiřazení dědí nižší obory.
 
-Můžete přidat uživatele definované toopre platformy a rolím pro konkrétní prostředky. Můžete například využít výhod hello předdefinovanou roli s názvem čtečka, která umožňuje uživatelům tooview prostředků, ale nemohli je změnit. Přidání uživatelů ve vaší organizaci, kteří potřebují tento typ role Čtenář toohello přístup a použití hello role toohello předplatné, skupinu prostředků nebo prostředek.
+Můžete přidat uživatele k předdefinovaným rolím pro konkrétní platformy a prostředky. Například můžete využít předdefinovanou roli Čtenář, která uživatelům umožňuje zobrazovat prostředky, ale bez možnosti je měnit. Uživatele ve vaší organizaci, kteří potřebují tento typ přístupu, přidáte k roli Čtenář a tuto roli použijete pro předplatné, skupinu prostředků nebo prostředek.
 
-Azure poskytuje následující čtyři role platformy hello:
+Azure poskytuje následující čtyři role pro celou platformu:
 
 1. Vlastník: Může spravovat vše, včetně přístupu.
 2. Přispěvatel: Může spravovat všechno kromě přístupu.
 3. Čtenář: Může vše zobrazit, ale nemůže provádět změny.
-4. Správce uživatelského přístupu – můžete spravovat prostředky tooAzure přístupu uživatelů
+4. Správce uživatelských přístupů: Může spravovat uživatelský přístup k prostředkům Azure.
 
 Azure poskytuje také několik rolí specifických pro prostředky. Mezi ty běžné patří:
 
-1. Přispěvatel virtuálních počítačů – můžete spravovat virtuální počítače, ale nejsou udělena přístup toothem a nemůže ani spravovat hello virtuální sítě nebo úložiště účet toowhich, které jsou připojeny
-2. Přispěvatel sítě – můžete spravovat všechny síťové prostředky, ale nejsou udělena toothem přístup
-3. Přispěvatel účet úložiště – můžete spravovat účty úložiště, ale nejsou udělena toothem přístup
+1. Přispěvatel virtuálních počítačů: Může spravovat virtuální počítače, ale bez možnosti udělovat k nim přístup, a nemůže spravovat virtuální síť nebo účet úložiště, ke kterým jsou připojené.
+2. Přispěvatel sítě: Může spravovat všechny síťové prostředky, ale bez možnosti udělovat k nim přístup.
+3. Přispěvatel účtů úložiště: Může spravovat účty úložiště, ale bez možnosti udělovat k nim přístup.
 4. Přispěvatel SQL Serveru: Může spravovat servery a databáze SQL, ale ne jejich zásady zabezpečení.
-5. Přispěvatel webu – můžete spravovat weby, ale není hello toowhich plány webové, které jsou připojeny
+5. Přispěvatel webů: Může spravovat weby, ale ne webové plány, ke kterým jsou připojené.
 
-Hello úplný seznam rolí a povolených akcí naleznete v tématu [RBAC: integrovaným rolím](../active-directory/role-based-access-built-in-roles.md). Další informace o řízení přístupu na základě rolí najdete v tématu [Řízení přístupu na základě role v Azure](../active-directory/role-based-access-control-configure.md). 
+Úplný seznam rolí a povolených akcí najdete v tématu [RBAC: vestavěné role](../active-directory/role-based-access-built-in-roles.md). Další informace o řízení přístupu na základě rolí najdete v tématu [Řízení přístupu na základě role v Azure](../active-directory/role-based-access-control-configure.md). 
 
-V některých případech chcete toorun kódu nebo skriptu, který má přístup k prostředkům, ale nechcete, aby toorun ho pověřeními uživatele. Místo toho chcete toocreate identity pro aplikace hello volat hlavní služby a přiřaďte hello vhodnou roli pro hello instanční objekt. Resource Manager umožňuje toocreate přihlašovací údaje pro aplikace hello a ověření prostřednictvím kódu programu hello aplikace. toolearn o vytváření objektů služby, naleznete v následujících tématech:
+V některých případech chcete spustit kód nebo skript, který bude mít přístup k prostředkům, ale ne tak, aby běžel pod přihlašovacími údaji určitého uživatele. Místo toho pro aplikaci vytvoříte identitu, která se označuje jako instanční objekt (nebo také objekt služby), a přiřadíte jí odpovídající roli. V Resource Manageru můžete pro tuto aplikaci vytvořit přihlašovací údaje a ověřit ji pomocí kódu programu. Další informace o vytváření instančních objektů najdete v následujících tématech:
 
-* [Použití Azure PowerShell toocreate hlavní tooaccess prostředky služby](resource-group-authenticate-service-principal.md)
-* [Pomocí rozhraní příkazového řádku Azure toocreate hlavní tooaccess prostředky služby](resource-group-authenticate-service-principal-cli.md)
-* [Použít aplikaci portálu toocreate Azure Active Directory a objektu služby, které mají přístup k prostředkům](resource-group-create-service-principal-portal.md)
+* [Vytvoření instančního objektu pro přístup k prostředkům pomocí Azure PowerShellu](resource-group-authenticate-service-principal.md)
+* [Vytvoření instančního objektu pro přístup k prostředkům pomocí rozhraní příkazového řádku Azure](resource-group-authenticate-service-principal-cli.md)
+* [Vytvoření aplikace Azure Active Directory a instančního objektu s přístupem k prostředkům pomocí portálu](resource-group-create-service-principal-portal.md)
 
-Je také možné explicitně zamknout důležité prostředky tooprevent uživatele z jejich změně nebo odstranění. Další informace najdete v tématu [Zamknutí prostředků pomocí Azure Resource Manageru](resource-group-lock-resources.md).
+Je také možné explicitně zamknout důležité prostředky a zabránit tak uživatelům v jejich změně nebo odstranění. Další informace najdete v tématu [Zamknutí prostředků pomocí Azure Resource Manageru](resource-group-lock-resources.md).
 
 ## <a name="activity-logs"></a>Protokoly aktivit
-Resource Manager protokoluje všechny operace vedoucí k vytvoření, úpravě nebo odstranění prostředku. Můžete použít hello aktivity protokoly toofind k chybě při odstraňování problémů s nebo toomonitor jak uživatele ve vaší organizaci upravit prostředek. Vyberte protokoly hello toosee, **protokoly aktivity** v hello **nastavení** okno pro skupinu prostředků. Protokoly hello můžete filtrovat podle mnoha různých hodnot, včetně kterou operaci hello inicializované uživatelem. Informace o práci s protokoly aktivity hello najdete v tématu [zobrazení aktivity protokoly toomanage Azure prostředky](resource-group-audit.md).
+Resource Manager protokoluje všechny operace vedoucí k vytvoření, úpravě nebo odstranění prostředku. Protokoly aktivit můžete použít k vyhledání chyby při řešení potíží nebo k monitorování, jak uživatel ve vaší organizaci změnil prostředek. Pokud chcete zobrazit protokoly, vyberte **Protokoly aktivit** v okně **Nastavení** pro skupinu prostředků. Protokoly můžete filtrovat podle mnoha různých hodnot, například podle uživatele, který operaci spustil. Informace o využití protokolů aktivit najdete v tématu [Použití protokolů aktivit při správě prostředků Azure](resource-group-audit.md).
 
 ## <a name="customized-policies"></a>Přizpůsobené zásady
-Resource Manager umožňuje přizpůsobit toocreate zásady pro správu vašich prostředků. Hello typy zásad, které vytvoříte, mohou zahrnovat různé scénáře. Můžete u prostředků vynutit dodržování zásad vytváření názvů, omezit, které typy a instance prostředků lze nasadit, nebo omezit, které oblasti mohou hostovat konkrétní typ prostředku. Může vyžadovat hodnota značky na prostředky tooorganize fakturace po odděleních. Můžete vytvořit zásady toohelp snížit náklady a zajistit konzistenci v rámci vašeho předplatného. 
+Resource Manager umožňuje vytvářet vlastní zásady pro správu prostředků. Typy zásad, které vytvoříte, mohou zahrnovat nejrůznější scénáře. Můžete u prostředků vynutit dodržování zásad vytváření názvů, omezit, které typy a instance prostředků lze nasadit, nebo omezit, které oblasti mohou hostovat konkrétní typ prostředku. Můžete od prostředků vyžadovat značky a díky tomu zajistit fakturaci po odděleních. Zásady pomáhají omezit náklady a zajistit konzistenci v rámci předplatného. 
 
-Zásady definujete ve formátu JSON a pak je použijete v celém předplatném nebo u určité skupiny prostředků. Zásady jsou jiné než řízení přístupu na základě rolí, protože jsou použité tooresource typy.
+Zásady definujete ve formátu JSON a pak je použijete v celém předplatném nebo u určité skupiny prostředků. Zásady se liší od řízení přístupu na základě rolí tím, že se uplatňují u typů prostředků.
 
-Hello následující příklad ukazuje zásadu, která zajišťuje značka konzistence zadáním, že všechny prostředky zahrnují costCenter značku.
+Následující příklad ukazuje zásadu, která zajišťuje konzistenci značek tím, že specifikuje, že všechny prostředky zahrnují značku costCenter.
 
 ```json
 {
@@ -251,7 +251,7 @@ Hello následující příklad ukazuje zásadu, která zajišťuje značka konzi
 }
 ```
 
-Existuje mnoho dalších typů zásad, které lze vytvořit. Další informace najdete v tématu [zásady používání toomanage prostředků a řízení přístupu](resource-manager-policy.md).
+Existuje mnoho dalších typů zásad, které lze vytvořit. Další informace najdete v tématu [Použití zásad ke správě prostředků a řízení přístupu](resource-manager-policy.md).
 
 ## <a name="sdks"></a>Sady SDK
 Sady Azure SDK jsou k dispozici pro různé jazyky a platformy. Každá z těchto implementací jazyka je k dispozici prostřednictvím správce balíčků jejího ekosystému a GitHubu.
@@ -273,14 +273,14 @@ Informace o používání těchto jazyků s vašimi prostředky najdete na násl
 * [Azure pro vývojáře v Pythonu](/python/azure/)
 
 > [!NOTE]
-> Pokud hello SDK neposkytuje hello požadované funkce, můžete také zavolat toohello [rozhraní REST API Azure](https://docs.microsoft.com/rest/api/resources/) přímo.
+> Pokud sada SDK neobsahuje požadovanou funkci, můžete také přímo zavolat [rozhraní Azure REST API](https://docs.microsoft.com/rest/api/resources/).
 > 
 > 
 
 ## <a name="next-steps"></a>Další kroky
-* Jednoduchý úvod tooworking se šablonami, najdete v části [Export šablony Azure Resource Manageru ze stávajících prostředků](resource-manager-export-template.md).
+* Jednoduchý úvod k práci se šablonami najdete v článku, který popisuje [export šablony Azure Resource Manageru ze stávajících prostředků](resource-manager-export-template.md).
 * Podrobnější pokyny k vytvoření šablony najdete v tématu [Vytvoření první šablony Azure Resource Manageru](resource-manager-create-first-template.md).
-* Funkce hello toounderstand můžete použít v šabloně, najdete v části [šablony funkcí](resource-group-template-functions.md)
+* Funkce, které můžete v šabloně, využít, jsou popsané v článku [Funkce šablon](resource-group-template-functions.md)
 * Informace o použití sady Visual Studio s Resource Managerem najdete v tématu [Vytvoření a nasazení skupin prostředků Azure pomocí sady Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
 
 Zde je videoukázka tohoto přehledu:

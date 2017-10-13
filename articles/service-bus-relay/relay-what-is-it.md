@@ -1,5 +1,5 @@
 ---
-title: "aaaWhat je předávání přes Azure a proč ji používat přehled | Microsoft Docs"
+title: "Přehled služby Azure Relay a důvodů pro její používání | Dokumentace Microsoftu"
 description: "Přehled služby Azure Relay"
 services: service-bus-relay
 documentationcenter: .net
@@ -14,28 +14,28 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 08/23/2017
 ms.author: sethm
-ms.openlocfilehash: 4cfd77048210a435c446b908b7896737cad0edbf
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 77ee85db0bcc701514a1a98da9405a79d658d49d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-azure-relay"></a>Co je Azure Relay?
 
-Hello předávání přes Azure service usnadňuje hybridní aplikace povolením toosecurely můžete vystavit služby, které se nacházejí v podnikové síti toohello veřejného cloudu, bez nutnosti tooopen připojení brány firewall, nebo vyžadovat nežádoucí změny tooa podnikové síťové infrastruktury. Služba Relay podporuje různé přenosové protokoly a standardy webových služeb.
+Služba Azure Relay hybridním aplikacím usnadňuje práci tím, že vám umožní bezpečně vystavit veřejnému cloudu služby, které se nacházejí v podnikové síti, a to bez nutnosti otevřít připojení brány firewall nebo provést výraznější změny v infrastruktuře podnikové sítě. Služba Relay podporuje různé přenosové protokoly a standardy webových služeb.
 
-Hello předávací služba podporuje tradiční jednosměrný, požadavků a odpovědí a provoz peer-to-peer. Také podporuje distribuci událostí na úrovni Internetu tooenable publikování a přihlášení k odběru scénáře a obousměrnou soketovou komunikací pro zvýšenou point-to-point efektivitu. 
+Služba Relay podporuje tradiční jednosměrný provoz, provoz typu požadavek/odpověď a provoz peer-to-peer. Taky podporuje distribuci událostí na úrovni internetu, která umožňuje scénáře typu publikování+odběr a obousměrnou soketovou komunikací pro zvýšenou účinnost mezi body. 
 
-V hello přes předávací službu vzorek přenos dat k místní službě toohello předávací služba se připojuje přes odchozí port a vytvoří obousměrný soket pro komunikaci vázanou tooa konkrétní potkávací adresu. Hello Klient pak může komunikovat s místní službou hello odesláním provoz toohello předávací služba cílení hello potkávací adresa. Hello předávací služba pak "předává" místní služba toohello data prostřednictvím klienta vyhrazené tooeach obousměrný soket. Hello klient nepotřebuje přímé spojení toohello místní služby, není požadovaná tooknow kde hello služba nachází, a hello lokální služba nepotřebuje mít žádné příchozí porty otevřít v bráně firewall hello.
+V přenosu dat s předáváním se lokální služba připojí k službě Relay přes port pro odchozí spojení a vytvoří obousměrný soket pro komunikaci vázanou na konkrétní potkávací adresu. Klient pak může komunikovat s místní službou odesíláním provozu do služby Relay s tím, že cílem je potkávací adresa. Služba Relay pak data „předá“ místní službě přes obousměrný soket vyhrazený pro jednotlivé klienty. Klient nepotřebuje přímé spojení s lokální službou, nemusí ani vědět, kde se služba nachází, a lokální služba nepotřebuje mít ve firewallu otevřené žádné příchozí porty.
 
-elementy Hello klíče schopnosti poskytované předávání jsou obousměrný, bez vyrovnávací paměti komunikaci napříč síťovými hranicemi s TCP jako omezení, koncový bod zjišťování, stavu připojení a jako překryvný obrázek zabezpečení koncového bodu. funkce předávání Hello se liší od technologie integrace na úrovni sítě, například ze sítě VPN, v této předávání může být koncový bod vymezená tooa jednu aplikaci na jednom počítači, technologie VPN je mnohem více obtěžující, jako je závislé na změnu hello síťového prostředí .
+Mezi klíčové schopnosti, které služba Relay nabízí, patří obousměrná komunikace bez vyrovnávací paměti přes hranice sítí s omezováním toku dat (podobně jako u protokolu TCP), zjišťování koncových bodů, stav připojení a překrývající se zabezpečení koncových bodů. Schopnosti služby Relay se liší od integračních technologií na úrovni sítě, jako je například síť VPN, tím, že službu Relay lze omezit na jediný koncový bod aplikace na jednom počítači, zatímco technologie sítě VPN se spoléhá na upravování síťového prostředí a mnohem víc do něj zasahuje.
 
 Azure Relay má dvě funkce:
 
-1. [Hybridní připojení](#hybrid-connections) – používá hello otevřete standardní webové sokety povolení s více platformami.
-2. [Předávací službu WCF](#wcf-relays) -používá Windows Communication Foundation (WCF) tooenable vzdáleného volání procedur. Předávání WCF je starší verze přenosového hello nabídky, které již využívají mnoho zákazníků s jejich WCF programovací modely.
+1. [Hybridní připojení](#hybrid-connections) – Pomocí otevřených webových soketů umožňuje scénáře s podporou více platforem.
+2. [Přenosy WCF](#wcf-relays) – Pomocí technologie Windows Communication Foundation (WCF) umožňuje vzdálená volání procedur. WCF Relay je starší verze nabídky přenosu, kterou již mnozí uživatelé používají ve svých programovacích modelech WCF.
 
-Hybridní připojení a předávací službu WCF umožňují tooassets zabezpečené připojení, který neexistuje v podnikové síti. Použití jednoho přes hello jiných je závislá na konkrétních potřeb, jak je popsáno v následující tabulce hello:
+Hybridní připojení i přenosy WCF umožňují zabezpečené připojení k prostředkům existujícím v rámci podnikové sítě. Použití jedné nebo druhé funkce závisí na konkrétních požadavcích, jak je popsáno v následující tabulce:
 
 |  | WCF Relay | Hybridní připojení |
 | --- |:---:|:---:|
@@ -48,20 +48,20 @@ Hybridní připojení a předávací službu WCF umožňují tooassets zabezpeč
 
 ## <a name="hybrid-connections"></a>Hybridní připojení
 
-Hello [Azure předávání hybridní připojení](relay-hybrid-connections-protocol.md) funkce je zabezpečené, otevřete protokol vývoj hello existující funkce předávání, které se dají implementovat na jakékoli platformě a v libovolném jazyce, který má základní funkce protokolu WebSocket, který explicitně zahrnuje hello WebSocket API v běžné webových prohlížečů. Hybridní připojení jsou založená na protokolech HTTP a WebSocket.
+Schopnost zabezpečených [hybridních připojení služby Azure Relay](relay-hybrid-connections-protocol.md) s podporou otevřených protokolů je důsledkem vývoje stávajících funkcí služby Relay. Hybridní připojení můžete nasadit na jakékoli platformě a v libovolném jazyku se základní podporou protokolu WebSocket, konkrétně rozhraní WebSocket API v běžných webových prohlížečích. Hybridní připojení jsou založená na protokolech HTTP a WebSocket.
 
 ### <a name="service-history"></a>Historie služby
 
-Hybridní připojení supplants hello dřívějším, podobně jako s názvem "BizTalk Services" funkce, který byl postavený na hello předávání přes Azure Service Bus WCF. Nová funkce hybridních připojení Hello doplňuje stávající funkce předávání WCF hello a možnosti tyto dvě služby existují souběžného ve službě předávání přes Azure hello. Sdílejí sice společnou bránu, jinak se ale jedná o rozdílné implementace.
+Hybridní připojení nahrazuje starší funkci služby BizTalk Services s podobným názvem, která byla postavená na službě Azure Service Bus WCF Relay. Nová schopnost Hybrid Connections doplňuje stávající funkci WCF Relay a tyto dvě schopnosti existují ve službě Azure Relay vedle sebe. Sdílejí sice společnou bránu, jinak se ale jedná o rozdílné implementace.
 
 ## <a name="wcf-relays"></a>Přenosy WCF
 
-Hello WCF předávání funguje pro hello úplné rozhraní .NET Framework (NETFX) a pro WCF. Zahájení hello připojení mezi místní službou a předávací službou vytvoříte hello pomocí skupiny "předávání" vazeb WCF. Pozadí se děje hello hello předávací vazby mapují toonew přenosu vazby prvky určené toocreate komponentů kanálu WCF které se integrují se službou Service Bus v cloudu hello.
+Služba WCF Relay funguje s celým rozhraním .NET Framework (NETFX) i s technologií WCF. Propojení místní služby se službou Relay vytvoříte pomocí skupiny „předávacích“ vazeb WCF. Na pozadí se děje to, že předávací vazby mapují do nových elementů přenosové vazby určené k vytvoření komponentů kanálu WCF, které se integrují se službou Service Bus v cloudu.
 
 ## <a name="architecture-processing-of-incoming-relay-requests"></a>Architektura: Zpracování příchozích požadavků na předání
-Když klient odešle požadavek toohello [předávání přes Azure](/azure/service-bus-relay/) služby pro vyrovnávání zatížení Azure hello směruje tooany uzlů brány hello. Pokud hello jedná o požadavek na poslech, uzel brány hello vytvoří nové propojení. Pokud je požadavek hello konkrétnímu propojení tooa žádost o připojení, hello uzel brány předá hello připojení žádost toohello uzel brány, který vlastní hello propojení. Hello uzel brány, který vlastní hello propojení, odešle potkávací požadavek toohello naslouchání, toocreate hello naslouchací proces s dotazem, uzel brány toohello dočasný kanál, který obdržel požadavek na připojení hello.
+Když klient odešle požadavek do služby [Azure Relay](/azure/service-bus-relay/), nástroj pro vyrovnávání zatížení Azure ho přesměruje do některého z uzlů brány. Pokud se jedná o požadavek na poslech, uzel brány vytvoří nové propojení. Pokud se jedná o požadavek na připojení ke konkrétnímu propojení, uzel brány předá požadavek na spojení uzlu brány, který vlastní požadované propojení. Uzel brány, který vlastní požadované propojení, pošle čekajícímu klientovi požadavek na setkání a pokyn, aby klient vytvořil dočasný kanál pro uzel brány, který obdržel požadavek na připojení.
 
-Když se vytvoří předávací spojení hello, hello klienti si můžou vyměňovat zprávy přes uzel brány hello, který se používá pro potkávací hello.
+Když se vytvoří předávací spojení, klienti si můžou vyměňovat zprávy přes uzel brány, který se používá pro setkání.
 
 ![Zpracování příchozích událostí požadavků na předání WCF](./media/relay-what-is-it/ic690645.png)
 

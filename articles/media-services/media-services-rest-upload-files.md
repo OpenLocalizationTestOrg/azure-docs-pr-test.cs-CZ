@@ -1,6 +1,6 @@
 ---
-title: "aaaUpload souborů do účtu Media Services pomocí REST | Microsoft Docs"
-description: "Zjistěte, jak tooget média obsahu ve službě Media Services pomocí vytvoření a odeslání prostředky."
+title: "Nahrání souborů do účtu Media Services pomocí REST | Microsoft Docs"
+description: "Další informace o získání mediálního obsahu ve službě Media Services pomocí vytvoření a odeslání prostředky."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: juliako
-ms.openlocfilehash: 2a92cecdc32d747d7a478946f069c15931eb32b9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 955356ffe6fc524c1528364add7e2c2a336137b7
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Nahrání souborů do účtu Media Services pomocí REST
 > [!div class="op_single_selector"]
@@ -28,57 +28,57 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Ve službě Media Services můžete digitální soubory nahrát do assetu. Hello [Asset](https://docs.microsoft.com/rest/api/media/operations/asset) entita může obsahovat video, zvuk, obrázky, kolekci miniatur, text sleduje a titulků soubory (a hello metadata o těchto souborech.)  Jakmile hello soubory jsou odeslány do hello asset, váš obsah bezpečně uložen v hello cloudu pro další zpracování a streamování. 
+Ve službě Media Services můžete digitální soubory nahrát do assetu. [Asset](https://docs.microsoft.com/rest/api/media/operations/asset) entita může obsahovat video, zvuk, obrázky, kolekci miniatur, text sleduje a titulků soubory (a metadata o těchto souborech.)  Jakmile soubory odešlete do assetu, váš obsah bezpečně uložen v cloudu pro další zpracování a streamování. 
 
 > [!NOTE]
-> použít Hello následující aspekty:
+> Platí následující aspekty:
 > 
-> * Služba Media Services použije hello hodnotu hello IAssetFile.Name vlastnost při sestavování adresy URL pro hello streamování obsahu (například http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) Z tohoto důvodu není povoleno kódování v procentech. Hello hodnotu hello **název** vlastnost nemůže mít žádné z následujících hello [procent kódování vyhrazené znaky](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Navíc může existovat pouze jedna '.' pro příponu názvu souboru hello.
-> * Délka Hello hello názvu by neměla být větší než 260 znaků.
-> * Existuje limit toohello maximální velikost souboru pro zpracování ve službě Media Services podporována. Najdete v tématu [to](media-services-quotas-and-limitations.md) téma podrobné informace o omezení velikosti souborů hello.
+> * Služba Media Services použije hodnotu vlastnosti IAssetFile.Name při sestavování adresy URL pro streamování obsah (například http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) Z tohoto důvodu není povoleno kódování v procentech. Hodnota **název** vlastnost nemůže mít žádné z následujících [procent kódování vyhrazené znaky](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Navíc může existovat pouze jedna '.' pro příponu názvu souboru.
+> * Délka názvu nesmí být větší než 260 znaků.
+> * Maximální velikost souboru podporovaná při zpracování ve službě Media Services je omezená. Podrobnosti o omezení velikosti souboru najdete [tady](media-services-quotas-and-limitations.md).
 > 
 
-Hello základní pracovní postup pro odesílání prostředky je rozdělené do následujících částí hello:
+Základní pracovní postup pro odesílání prostředky je rozdělené do následujících částí:
 
 * Vytvořit prostředek
 * Šifrování prostředek (volitelné)
-* Nahrát soubor tooblob úložiště
+* Nahrát soubor do úložiště objektů blob
 
-AMS taky umožňuje tooupload prostředky hromadně. Další informace najdete v [tomto](media-services-rest-upload-files.md#upload_in_bulk) oddílu.
+AMS můžete také nahrát prostředky hromadně. Další informace najdete v [tomto](media-services-rest-upload-files.md#upload_in_bulk) oddílu.
 
 > [!NOTE]
 > Při přístupu k entity ve službě Media Services, musíte nastavit specifická pole hlaviček a hodnoty ve své žádosti HTTP. Další informace najdete v tématu [instalační program pro Media Services REST API vývoj](media-services-rest-how-to-use.md).
 > 
 
-## <a name="connect-toomedia-services"></a>Připojení služby tooMedia
+## <a name="connect-to-media-services"></a>Připojení ke službě Media Services
 
-Informace o tom, jak tooconnect toohello AMS rozhraní API, najdete v části [hello přístup k rozhraní API služby Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Informace o tom, jak připojit k rozhraní API pro AMS najdete v tématu [přístup k Azure Media Services API pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
 >[!NOTE]
->Po úspěšném připojení toohttps://media.windows.net, obdržíte 301 přesměrování zadání jiném identifikátoru URI Media Services. Je nutné provést následující volání toohello nový identifikátor URI.
+>Po úspěšném připojení k https://media.windows.net, obdržíte 301 přesměrování zadání jiném identifikátoru URI Media Services. Je nutné provést následující volání nový identifikátor URI.
 
 ## <a name="upload-assets"></a>Nahrát prostředky
 
 ### <a name="create-an-asset"></a>Vytvořit prostředek
 
-Prostředek je kontejner pro více typů nebo sady objektů ve službě Media Services, včetně video, zvuk, obrázky, kolekci miniatur, textové stopy a soubory titulků. V rozhraní REST API, vytváření prostředek vyžaduje odesílání POST hello požadovat tooMedia služby a umístění žádné vlastnosti informace o váš asset v textu žádosti hello.
+Prostředek je kontejner pro více typů nebo sady objektů ve službě Media Services, včetně video, zvuk, obrázky, kolekci miniatur, textové stopy a soubory titulků. Vytvoření prostředek v rozhraní REST API vyžaduje odesílání požadavku POST ke službě Media Services a umístění žádné vlastnosti informace o váš asset v textu požadavku.
 
-Jedna z vlastností hello, které můžete zadat při vytváření prostředek je **možnosti**. **Možnosti** je hodnota výčtu, která popisuje možnosti hello šifrování, které prostředek může být vytvořen pomocí. Platná hodnota je jedna z hodnot hello hello seznamu níže, není kombinace hodnot. 
+Jedna z vlastností, které můžete zadat při vytváření prostředek je **možnosti**. **Možnosti** je hodnota výčtu, která popisuje možnosti šifrování, které prostředek může být vytvořen pomocí. Platná hodnota je jedna z hodnot v seznamu níže není kombinace hodnot. 
 
-* **Žádný** = **0**: použije se žádné šifrování. Toto je výchozí hodnota hello. Všimněte si, že při použití této možnosti není váš obsah chráněný během přenosu ani umístěná v úložišti.
-    Tuto možnost použijte, pokud máte v plánu toodeliver MP4 pomocí progresivního stahování. 
-* **StorageEncrypted** = **1**: Zadejte, pokud chcete použít pro vaše soubory toobe zašifrované pomocí 256bitového šifrování AES 256 pro odesílání a úložiště.
+* **Žádný** = **0**: použije se žádné šifrování. Toto je výchozí hodnota. Všimněte si, že při použití této možnosti není váš obsah chráněný během přenosu ani umístěná v úložišti.
+    Pokud chcete pomocí progresivního stahování dodávat obsah ve formátu MP4, použijte tuto možnost. 
+* **StorageEncrypted** = **1**: Zadejte, pokud chcete použít pro vaše soubory k zašifrování s AES 256 bitové šifrování pro odesílání a úložiště.
   
     Pokud váš asset používá šifrování úložiště, musíte nakonfigurovat zásady doručení assetu. Další informace najdete v části [konfigurace zásad doručení assetu](media-services-rest-configure-asset-delivery-policy.md).
 * **CommonEncryptionProtected** = **2**: Zadejte, pokud odesíláte soubory chráněné pomocí běžnou metodu šifrování (např. PlayReady). 
-* **EnvelopeEncryptionProtected** = **4**: Zadejte, pokud odesíláte HLS se šifrováním pomocí standardu AES soubory. Všimněte si, že hello soubory musí být kódovaný a zašifrované pomocí Správce transformací.
+* **EnvelopeEncryptionProtected** = **4**: Zadejte, pokud odesíláte HLS se šifrováním pomocí standardu AES soubory. Pamatujte, že soubory musí být zakódované a zašifrované pomocí správce transformací.
 
 > [!NOTE]
-> Pokud váš asset používat šifrování, musíte vytvořit **ContentKey** a propojit jej tooyour asset, jak je popsáno v následujícím tématu hello:[jak toocreate ContentKey](media-services-rest-create-contentkey.md). Všimněte si, že po odeslání souborů hello do hello asset, je nutné tooupdate hello šifrování vlastnosti hello **AssetFile** entity hello hodnotami, které jste získali při hello **Asset** šifrování. To provést pomocí hello **SLOUČENÍ** požadavek HTTP. 
+> Pokud váš asset používat šifrování, musíte vytvořit **ContentKey** a tu propojit na váš asset, jak je popsáno v následujícím tématu:[postup vytvoření ContentKey](media-services-rest-create-contentkey.md). Poznámka: po odeslání souborů do assetu, budete muset aktualizovat vlastnosti šifrování na **AssetFile** entity s hodnotami, které jste získali při **Asset** šifrování. To provést pomocí **SLOUČENÍ** požadavek HTTP. 
 > 
 > 
 
-Následující příklad ukazuje, jak Hello toocreate prostředek.
+Následující příklad ukazuje, jak vytvořit prostředek.
 
 **Požadavek HTTP**
 
@@ -96,7 +96,7 @@ Následující příklad ukazuje, jak Hello toocreate prostředek.
 
 **Odpověď HTTP**
 
-V případě úspěchu se vrátí hello následující:
+V případě úspěchu se vrátí následující:
 
     HTP/1.1 201 Created
     Cache-Control: no-cache
@@ -125,11 +125,11 @@ V případě úspěchu se vrátí hello následující:
     }
 
 ### <a name="create-an-assetfile"></a>Vytvoření AssetFile
-Hello [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) entity představuje soubor video nebo zvuk, který je uložený v kontejneru objektů blob. Soubor asset je vždy přidružena k assetu a prostředek může obsahovat mnoho soubory asset. Hello Media Services Encoder úloh selže, pokud objekt souboru asset není spojen s digitálnímu souboru v kontejneru objektů blob.
+[AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) entity představuje soubor video nebo zvuk, který je uložený v kontejneru objektů blob. Soubor asset je vždy přidružena k assetu a prostředek může obsahovat mnoho soubory asset. Media Services Encoder úloh selže, pokud objekt souboru asset není spojen s digitálnímu souboru v kontejneru objektů blob.
 
-Všimněte si, že hello **AssetFile** instance a hello samotný mediální soubor jsou dva odlišné objekty. Hello AssetFile instance obsahuje metadata o hello soubor média, zatímco soubor média hello obsahuje hello samotný mediální obsah.
+Všimněte si, že **AssetFile** instance a samotný mediální soubor jsou dva odlišné objekty. AssetFile instance obsahuje metadata o souboru média, zatímco souboru média obsahuje samotný mediální obsah.
 
-Po odeslání souboru digitálního média do kontejneru objektů blob, budete používat hello **SLOUČENÍ** HTTP žádost tooupdate hello AssetFile s informacemi o souboru média (jak je uvedeno dále v tématu hello). 
+Po odeslání souboru digitálního média do kontejneru objektů blob, kterou použijete **SLOUČENÍ** HTTP žádost o aktualizaci AssetFile s informacemi o souboru média (Jak uvidíte později v tomto tématu). 
 
 **Požadavek HTTP**
 
@@ -186,14 +186,14 @@ Po odeslání souboru digitálního média do kontejneru objektů blob, budete p
        "ContentChecksum":null
     }
 
-### <a name="creating-hello-accesspolicy-with-write-permission"></a>Vytvoření hello AccessPolicy pomocí oprávnění k zápisu.
+### <a name="creating-the-accesspolicy-with-write-permission"></a>Vytváření AccessPolicy s oprávnění k zápisu.
 
 >[!NOTE]
->Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Měli byste použít hello stejné ID zásad, pokud vždy používáte hello stejné dny / přístupová oprávnění, například zásady pro lokátory, které jsou určený tooremain zavedené po dlouhou dobu (bez odeslání zásady). Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) tématu.
+>Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Pokud vždy používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odeslání), měli byste použít stejné ID zásad. Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) tématu.
 
-Před nahráním do úložiště objektů blob všechny soubory, nastavení přístupu hello zásady oprávnění pro zápis tooan asset. nastavit toodo, který POST toohello požadavku HTTP AccessPolicies entity. Zadejte hodnotu doba trvání v minutách, po vytvoření nebo obdržíte zprávu 500 Chyba interní Server zpět v odpovědi. Další informace o AccessPolicies najdete v tématu [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy).
+Před nahráním do úložiště objektů blob všechny soubory, nastavení přístupu zásady oprávnění pro zápis do prostředek. Kvůli tomu odeslat požadavek HTTP do sady entit AccessPolicies. Zadejte hodnotu doba trvání v minutách, po vytvoření nebo obdržíte zprávu 500 Chyba interní Server zpět v odpovědi. Další informace o AccessPolicies najdete v tématu [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy).
 
-Následující příklad ukazuje, jak Hello toocreate AccessPolicy:
+Následující příklad ukazuje, jak vytvořit AccessPolicy:
 
 **Požadavek HTTP**
 
@@ -211,7 +211,7 @@ Následující příklad ukazuje, jak Hello toocreate AccessPolicy:
 
 **Požadavek HTTP**
 
-    If successful, hello following response is returned:
+    If successful, the following response is returned:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -236,20 +236,20 @@ Následující příklad ukazuje, jak Hello toocreate AccessPolicy:
        "Permissions":2
     }
 
-### <a name="get-hello-upload-url"></a>Získat hello adresa URL pro odeslání
-tooreceive hello URL skutečného odeslání, vytvoření lokátoru SAS. Lokátory definovat hello počáteční čas a typ koncového bodu připojení pro klienty, kteří mají tooaccess soubory v prostředek. Požadavky a požadavky, můžete vytvořit více entit Lokátor pro danou AccessPolicy a Asset pár toohandle jiným klientem. Každý z těchto lokátory pomocí hodnoty StartTime hello plus hodnota Doba trvání v minutách hello hello AccessPolicy toodetermine hello délky doba, kterou lze použít adresu URL. Další informace najdete v tématu [Lokátor](https://docs.microsoft.com/rest/api/media/operations/locator).
+### <a name="get-the-upload-url"></a>Získat adresu URL pro odeslání
+Pokud chcete získat adresu URL skutečného odeslání, vytvoření lokátoru SAS. Lokátory zadejte čas spuštění a typ koncového bodu připojení pro klienty, kteří mají přístup k souborům v prostředek. Můžete vytvořit více Lokátor entit pro danou AccessPolicy a Asset dvojici pro zpracování různých klientských požadavků a potřebách. Každý z těchto lokátory pomocí hodnoty StartTime plus hodnota Doba trvání v minutách AccessPolicy můžete určit dobu, kterou lze použít adresu URL. Další informace najdete v tématu [Lokátor](https://docs.microsoft.com/rest/api/media/operations/locator).
 
-Adresa URL typu SAS má následující formát hello:
+Adresa URL typu SAS má následující formát:
 
     {https://myaccount.blob.core.windows.net}/{asset name}/{video file name}?{SAS signature}
 
 Musí být splněny určité předpoklady:
 
 * Nemůže mít více než pět jedinečný lokátory spojené s danou Asset najednou. Další informace najdete v tématu lokátoru.
-* Pokud potřebujete tooupload vaše soubory okamžitě, byste měli nastavit vaše StartTime hodnota toofive minut před aktuálním časem hello. Je to proto, že je možné, hodiny zkosení mezi klientský počítač a služba Media Services. V hello formátu data a času musí být také hodnota pro čas spuštění: rrrr-MM-ddTHH (například "2014-05-23T17:53:50Z").    
-* Může být druhý 30-40 zpoždění po vytvoření lokátoru toowhen je k dispozici pro použití. Tento problém se vztahuje tooboth SAS adresa URL a lokátory původu.
+* Pokud potřebujete k nahrání souborů okamžitě, byste měli nastavit vaše hodnoty StartTime 5 minut před aktuálním časem. Je to proto, že je možné, hodiny zkosení mezi klientský počítač a služba Media Services. V následujícím formátu data a času musí být také hodnota pro čas spuštění: rrrr-MM-ddTHH (například "2014-05-23T17:53:50Z").    
+* Může být druhý 30-40 zpoždění po vytvoření lokátoru k případě, že je k dispozici pro použití. Tento problém se vztahuje na SAS adresa URL a lokátory původu.
 
-Hello následující příklad ukazuje, jak toocreate lokátoru SAS adresa URL, podle definice hello vlastnost typu v textu žádosti hello ("1" pro Lokátor SAS) a "2" pro Lokátor původ na vyžádání. Hello **cesta** vlastnost vrátil obsahuje adresu URL hello, musíte použít tooupload souboru.
+Následující příklad ukazuje, jak vytvořit lokátor SAS adresa URL, podle definice vlastnost typu v textu požadavku ("1" pro Lokátor SAS) a "2" pro Lokátor původ na vyžádání. **Cesta** vlastnost vrátil obsahuje adresu URL, kterou musíte použít k odeslání souboru.
 
 **Požadavek HTTP**
 
@@ -271,7 +271,7 @@ Hello následující příklad ukazuje, jak toocreate lokátoru SAS adresa URL, 
 
 **Odpověď HTTP**
 
-V případě úspěchu se vrátí hello následující odpověď:
+V případě úspěchu se vrátí následující odpověď:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -302,17 +302,17 @@ V případě úspěchu se vrátí hello následující odpověď:
     }
 
 ### <a name="upload-a-file-into-a-blob-storage-container"></a>Nahrát soubor do kontejneru úložiště objektů blob
-Jakmile máte hello AccessPolicy a Lokátor sady, skutečný soubor hello je nahrané tooan kontejneru Azure Blob Storage pomocí hello rozhraní API REST úložiště Azure. Soubory hello musíte nahrát jako objekty BLOB bloku. Objekty BLOB stránky nejsou podporovány službou Azure Media Services.  
+Jakmile máte AccessPolicy a Lokátor nastavit, skutečný soubor nahraje do kontejneru Azure Blob Storage pomocí rozhraní API REST úložiště Azure. Soubory musíte nahrát jako objekty BLOB bloku. Objekty BLOB stránky nejsou podporovány službou Azure Media Services.  
 
 > [!NOTE]
-> Musíte přidat název souboru hello hello souboru chcete tooupload toohello Lokátor **cesta** přijaté v předchozí části hello hodnoty. Například https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . . 
+> Musíte přidat název souboru pro soubor, který chcete nahrát do Lokátor **cesta** přijaté v předchozí části hodnoty. Například https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . . 
 > 
 > 
 
 Další informace o práci s objekty BLOB úložiště Azure najdete v tématu [rozhraní API REST služby objektů Blob](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 
-### <a name="update-hello-assetfile"></a>Aktualizace hello AssetFile
-Teď, když jste odeslali souboru, aktualizujte informace hello FileAsset velikost (a další). Například:
+### <a name="update-the-assetfile"></a>Aktualizace AssetFile
+Teď, když jste odeslali souboru, aktualizujte informace FileAsset velikost (a další). Například:
 
     MERGE https://media.windows.net/api/Files('nb%3Acid%3AUUID%3Af13a0137-0a62-9d4c-b3b9-ca944b5142c5') HTTP/1.1
     Content-Type: application/json
@@ -335,9 +335,9 @@ Teď, když jste odeslali souboru, aktualizujte informace hello FileAsset veliko
 
 **Odpověď HTTP**
 
-Pokud úspěšné, následující hello je vrácena: HTTP/1.1 204 ne obsahu
+Pokud úspěšné, následující, je vrácena: HTTP/1.1 204 ne obsahu
 
-### <a name="delete-hello-locator-and-accesspolicy"></a>Odstranit hello Lokátor a AccessPolicy
+### <a name="delete-the-locator-and-accesspolicy"></a>Odstraňte Lokátor a AccessPolicy
 **Požadavek HTTP**
 
     DELETE https://media.windows.net/api/Locators('nb%3Alid%3AUUID%3Aaf57bdd8-6751-4e84-b403-f3c140444b54') HTTP/1.1
@@ -351,7 +351,7 @@ Pokud úspěšné, následující hello je vrácena: HTTP/1.1 204 ne obsahu
 
 **Odpověď HTTP**
 
-V případě úspěchu se vrátí hello následující:
+V případě úspěchu se vrátí následující:
 
     HTTP/1.1 204 No Content 
     ...
@@ -369,14 +369,14 @@ V případě úspěchu se vrátí hello následující:
 
 **Odpověď HTTP**
 
-V případě úspěchu se vrátí hello následující:
+V případě úspěchu se vrátí následující:
 
     HTTP/1.1 204 No Content 
     ...
 
 ## <a id="upload_in_bulk"></a>Nahrát prostředky hromadně
-### <a name="create-hello-ingestmanifest"></a>Vytvoření hello IngestManifest
-Hello IngestManifest je kontejner pro sadu prostředky, soubory prostředků a statistiky informace, které lze použít toodetermine hello průběh hromadné příjem pro sadu hello.
+### <a name="create-the-ingestmanifest"></a>Vytvořte IngestManifest
+IngestManifest je kontejner pro sadu prostředky, soubory prostředků a statistiky informace, které můžete použít k určení průběh hromadné příjem pro sadu.
 
 **Požadavek HTTP**
 
@@ -394,7 +394,7 @@ Hello IngestManifest je kontejner pro sadu prostředky, soubory prostředků a s
     { "Name" : "ExampleManifestREST" }
 
 ### <a name="create-assets"></a>Vytvořit prostředky
-Před vytvořením hello IngestManifestAsset, je nutné toocreate hello Asset, který bude možné provést pomocí hromadné příjem. Prostředek je kontejner pro více typů nebo sady objektů ve službě Media Services, včetně video, zvuk, obrázky, kolekci miniatur, textové stopy a soubory titulků. Vytvoření prostředek v hello REST API, vyžaduje odesílání tooMicrosoft požadavek HTTP POST Azure Media Services a umístění žádné vlastnosti informace o váš asset v textu žádosti hello. V tomto příkladu se vytvoří hello Asset pomocí možnosti StorageEncrption(1) hello zahrnuté do textu žádosti hello.
+Před vytvořením IngestManifestAsset, musíte vytvořit Asset, který bude možné provést pomocí hromadné příjem. Prostředek je kontejner pro více typů nebo sady objektů ve službě Media Services, včetně video, zvuk, obrázky, kolekci miniatur, textové stopy a soubory titulků. Vytvoření prostředek v rozhraní REST API vyžaduje odesílání požadavku HTTP POST do Microsoft Azure Media Services a umístění žádné vlastnosti informace o váš asset v textu požadavku. V tomto příkladu se vytvoří Asset pomocí možnosti StorageEncrption(1) zahrnuté do textu žádosti.
 
 **Odpověď HTTP**
 
@@ -411,8 +411,8 @@ Před vytvořením hello IngestManifestAsset, je nutné toocreate hello Asset, k
 
     { "Name" : "ExampleManifestREST_Asset", "Options" : 1 }
 
-### <a name="create-hello-ingestmanifestassets"></a>Vytvoření hello IngestManifestAssets
-IngestManifestAssets představují prostředky v rámci IngestManifest, které se používají s hromadné příjem. Hello v podstatě propojit hello asset toohello manifestu. Azure Media Services sleduje interně pro nahrávání souborů hello založené na kolekci spojenou toohello IngestManifestFiles IngestManifestAsset. Jakmile tyto soubory jsou odeslány, hello asset byla dokončena. Můžete vytvořit nové IngestManifestAsset s požadavek HTTP POST. V textu žádosti hello zahrnují hello IngestManifest Id a hello Asset Id této hello IngestManifestAsset měli propojit pro příjem hromadně.
+### <a name="create-the-ingestmanifestassets"></a>Vytvořte IngestManifestAssets
+IngestManifestAssets představují prostředky v rámci IngestManifest, které se používají s hromadné příjem. V podstatě propojit manifest prostředku. Azure Media Services sleduje interně pro nahrávání souborů na základě IngestManifestFiles kolekce přidružené k IngestManifestAsset. Jakmile tyto soubory jsou odeslány, asset byla dokončena. Můžete vytvořit nové IngestManifestAsset s požadavek HTTP POST. V textu požadavku zahrnují IngestManifest Id a Asset Id, které IngestManifestAsset by měl společně odkaz pro příjem hromadně.
 
 **Odpověď HTTP**
 
@@ -429,8 +429,8 @@ IngestManifestAssets představují prostředky v rámci IngestManifest, které s
     { "ParentIngestManifestId" : "nb:mid:UUID:5c77f186-414f-8b48-8231-17f9264e2048", "Asset" : { "Id" : "nb:cid:UUID:b757929a-5a57-430b-b33e-c05c6cbef02e"}}
 
 
-### <a name="create-hello-ingestmanifestfiles-for-each-asset"></a>Vytvoření hello IngestManifestFiles pro každý prostředek
-IngestManifestFile představuje skutečný video nebo zvuk blob objekt, který v rámci hromadné příjem pro určitý prostředek, nebude možné odesílat. Vlastnosti nejsou vyžadovány, pokud hello asset používá možnost šifrování související s šifrování. Příklad Hello použitý v této části ukazuje, že vytvoření IngestManifestFile, který používá StorageEncryption pro hello, které vytvořili Asset.
+### <a name="create-the-ingestmanifestfiles-for-each-asset"></a>Vytvořte IngestManifestFiles pro každý prostředek
+IngestManifestFile představuje skutečný video nebo zvuk blob objekt, který v rámci hromadné příjem pro určitý prostředek, nebude možné odesílat. Vlastnosti nejsou vyžadovány, pokud asset používá možnost šifrování související s šifrování. Příkladu v této části ukazuje, že vytvoření IngestManifestFile, který používá StorageEncryption pro prostředek vytvořili.
 
 **Odpověď HTTP**
 
@@ -447,23 +447,23 @@ IngestManifestFile představuje skutečný video nebo zvuk blob objekt, který v
 
     { "Name" : "REST_Example_File.wmv", "ParentIngestManifestId" : "nb:mid:UUID:5c77f186-414f-8b48-8231-17f9264e2048", "ParentIngestManifestAssetId" : "nb:maid:UUID:beed8531-9a03-9043-b1d8-6a6d1044cdda", "IsEncrypted" : "true", "EncryptionScheme" : "StorageEncryption", "EncryptionVersion" : "1.0", "EncryptionKeyId" : "nb:kid:UUID:32e6efaf-5fba-4538-b115-9d1cefe43510" }
 
-### <a name="upload-hello-files-tooblob-storage"></a>Nahrát hello soubory tooBlob úložiště
-Můžete použít libovolná aplikace klienta vysokorychlostní schopná odesílání hello asset soubory toohello kontejner úložiště objektů blob poskytované hello BlobStorageUriForUpload vlastnost hello IngestManifest identifikátor Uri. Je jedna služba nahrávání významné vysokorychlostní [Aspera na vyžádání pro aplikaci Azure](http://go.microsoft.com/fwlink/?LinkId=272001).
+### <a name="upload-the-files-to-blob-storage"></a>Odeslat soubory do úložiště objektů Blob
+Můžete použít libovolná aplikace klienta vysokorychlostní schopná nahrávání souborů asset ke kontejneru úložiště objektů blob Uri poskytované vlastnost BlobStorageUriForUpload IngestManifest. Je jedna služba nahrávání významné vysokorychlostní [Aspera na vyžádání pro aplikaci Azure](http://go.microsoft.com/fwlink/?LinkId=272001).
 
 ### <a name="monitor-bulk-ingest-progress"></a>Monitorování hromadné Ingestování průběh
-Můžete sledovat průběh hello hromadné příjem operací pro IngestManifest pomocí cyklického dotazování hello statistiky vlastnost hello IngestManifest. Zda je vlastnost komplexního typu, [IngestManifestStatistics](https://docs.microsoft.com/rest/api/media/operations/ingestmanifeststatistics). hello toopoll vlastnost statistiky, odešlete požadavek HTTP GET předávání hello IngestManifest Id.
+Můžete sledovat průběh hromadné příjem operací pro IngestManifest pomocí cyklického dotazování vlastnost statistiky IngestManifest. Zda je vlastnost komplexního typu, [IngestManifestStatistics](https://docs.microsoft.com/rest/api/media/operations/ingestmanifeststatistics). Dotazování vlastnost statistiky, odešlete požadavek HTTP GET předáním IngestManifest.
 
 ## <a name="create-contentkeys-used-for-encryption"></a>Vytvoření ContentKeys pro šifrování
-Pokud váš asset používat šifrování, musíte vytvořit toobe ContentKey hello použitý k šifrování před vytvořením hello soubory prostředků. Šifrování úložiště hello zahrnovat následující vlastnosti by v textu žádosti hello.
+Pokud váš asset používat šifrování, musíte vytvořit ContentKey, který se má použít pro šifrování před vytvořením soubory prostředků. Šifrování úložiště by měla zahrnovat následující vlastnosti v textu požadavku.
 
 | Vlastnost text žádosti | Popis |
 | --- | --- |
-| ID |Hello ContentKey Id, které se vygeneruje označována pomocí hello následující formátu, "nb:kid:UUID:<NEW GUID>". |
-| ContentKeyType |Toto je typ obsahu klíče hello jako celé číslo pro tento klíč obsahu. Jsme předejte hello hodnotu 1 pro šifrování úložiště. |
-| EncryptedContentKey |Vytvoříme novou hodnotu obsahu klíče, což je hodnota 256 bitů (32 bajtů). Hello je klíč zašifrovaný pomocí hello úložiště šifrování X.509 certifikátu, který načteme ze služby Microsoft Azure Media Services spuštěním požadavek HTTP GET pro hello GetProtectionKeyId a GetProtectionKey metody. |
-| ProtectionKeyId |To je hello ochrany id klíče pro hello úložiště šifrovací X.509 certifikát, který byl použité tooencrypt naše klíč obsahu. |
-| ProtectionKeyType |Toto je typ šifrování hello hello ochrany klíče, který byl klíč obsahu použité tooencrypt hello. Tato hodnota je StorageEncryption(1) pro náš příklad. |
-| Kontrolní součet |Hello MD5 počítané kontrolního součtu pro klíč obsahu hello. Výpočet je šifrování obsahu hello Id obsahu klíčem hello. Hello příklad kódu ukazuje, jak toocalculate hello kontrolního součtu. |
+| ID |ContentKey Id, které jsme si generovat v následujícím formátu "nb:kid:UUID:<NEW GUID>". |
+| ContentKeyType |Toto je typ obsahu klíče jako celé číslo pro tento klíč obsahu. Jsme předejte hodnotu 1 pro šifrování úložiště. |
+| EncryptedContentKey |Vytvoříme novou hodnotu obsahu klíče, což je hodnota 256 bitů (32 bajtů). Že je klíč zašifrovaný pomocí certifikátu X.509 šifrování úložiště, který načteme ze služby Microsoft Azure Media Services spuštěním požadavek HTTP GET pro GetProtectionKeyId a GetProtectionKey metody. |
+| ProtectionKeyId |Jedná se o ochranu id klíče pro certifikát X.509 šifrování úložiště, který slouží k šifrování naše klíč obsahu. |
+| ProtectionKeyType |Jedná se o typ šifrování pro ochranu klíč, který slouží k šifrování klíče obsahu. Tato hodnota je StorageEncryption(1) pro náš příklad. |
+| Kontrolní součet |Algoritmus MD5 počítané kontrolního součtu pro klíč k obsahu. Výpočet je šifrování obsahu Id obsahu klíčem. Příklad kódu ukazuje, jak k výpočtu kontrolního součtu. |
 
 **Odpověď HTTP**
 
@@ -480,8 +480,8 @@ Pokud váš asset používat šifrování, musíte vytvořit toobe ContentKey he
 
     {"Id" : "nb:kid:UUID:316d14d4-b603-4d90-b8db-0fede8aa48f8", "ContentKeyType" : 1, "EncryptedContentKey" : "Y4NPej7heOFa2vsd8ZEOcjjpu/qOq3RJ6GRfxa8CCwtAM83d6J2mKOeQFUmMyVXUSsBCCOdufmieTKi+hOUtNAbyNM4lY4AXI537b9GaY8oSeje0NGU8+QCOuf7jGdRac5B9uIk7WwD76RAJnqyep6U/OdvQV4RLvvZ9w7nO4bY8RHaUaLxC2u4aIRRaZtLu5rm8GKBPy87OzQVXNgnLM01I8s3Z4wJ3i7jXqkknDy4VkIyLBSQvIvUzxYHeNdMVWDmS+jPN9ScVmolUwGzH1A23td8UWFHOjTjXHLjNm5Yq+7MIOoaxeMlKPYXRFKofRY8Qh5o5tqvycSAJ9KUqfg==", "ProtectionKeyId" : "7D9BB04D9D0A4A24800CADBFEF232689E048F69C", "ProtectionKeyType" : 1, "Checksum" : "TfXtjCIlq1Y=" }
 
-### <a name="link-hello-contentkey-toohello-asset"></a>Odkaz hello ContentKey toohello Asset
-Hello ContentKey je přidružené tooone nebo další prostředky odesláním požadavku HTTP POST. Hello následující požadavek je příklad toolink hello příklad ContentKey toohello příklad prostředek podle Id.
+### <a name="link-the-contentkey-to-the-asset"></a>Odkaz ContentKey pro daný prostředek
+ContentKey je přidružena k jedné nebo více prostředků odesláním požadavku HTTP POST. Následující požadavek je příklad propojení příklad ContentKey pro daný prostředek příklad podle Id.
 
 **Odpověď HTTP**
 
@@ -513,7 +513,7 @@ Hello ContentKey je přidružené tooone nebo další prostředky odesláním po
 
 Nyní můžete kódovat nahrané assety. Další informace najdete v tématu [Kódování assetů](media-services-portal-encode.md).
 
-Můžete také použít Azure Functions tootrigger úlohu kódování na základě souboru přicházejících do kontejneru hello nakonfigurované. Další informace najdete v [této ukázce](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ ).
+Můžete také použít službu Azure Functions k aktivaci úlohy kódování při příchodu souboru do nakonfigurovaného kontejneru. Další informace najdete v [této ukázce](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ ).
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
@@ -521,5 +521,5 @@ Můžete také použít Azure Functions tootrigger úlohu kódování na základ
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-[How tooGet a Media Processor]: media-services-get-media-processor.md
+[How to Get a Media Processor]: media-services-get-media-processor.md
 

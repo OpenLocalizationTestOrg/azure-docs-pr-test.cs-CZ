@@ -1,6 +1,6 @@
 ---
 title: "Odkazovat na vlastní image ve šablonu sady Azure škálování | Microsoft Docs"
-description: "Zjistěte, jak tooadd vlastní obrázek tooan existující šablonu Azure Škálovací sadu virtuálních počítačů"
+description: "Zjistěte, jak přidat vlastní image do stávající šablony sadu škálování virtuálního počítače Azure"
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: gatneil
@@ -15,25 +15,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/10/2017
 ms.author: negat
-ms.openlocfilehash: 6a17d989e44d241b460238c0106350c3ef038e56
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: cf52fc9e95267c4bc5c0106aadf626685ddd5c24
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="add-a-custom-image-tooan-azure-scale-set-template"></a>Přidat že vlastní image tooan Azure škálování nastavení šablony
+# <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>Přidat vlastní image na šablonu sady Azure škálování
 
-Tento článek ukazuje, jak toomodify hello [minimální přijatelná měřítko nastavit šablonu](./virtual-machine-scale-sets-mvss-start.md) toodeploy z vlastní image.
+Tento článek ukazuje, jak upravit [minimální přijatelná měřítko nastavit šablonu](./virtual-machine-scale-sets-mvss-start.md) k nasazení z vlastní image.
 
-## <a name="change-hello-template-definition"></a>Změna definice šablony hello
+## <a name="change-the-template-definition"></a>Změna definice šablony
 
-Nakonfigurujte šablonu naše minimální přijatelná škálování si můžete prohlédnout [sem](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json), a naše šablona pro nasazování sad z vlastní image hello škálování si můžete prohlédnout [zde](https://raw.githubusercontent.com/gatneil/mvss/custom-image/azuredeploy.json). Podívejme se na toocreate hello rozdílové použít tuto šablonu (`git diff minimum-viable-scale-set custom-image`) část podle část:
+Nakonfigurujte šablonu naše minimální přijatelná škálování si můžete prohlédnout [sem](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json), a naše šablony pro nasazení měřítka, nastavte z vlastní image můžete vidět [zde](https://raw.githubusercontent.com/gatneil/mvss/custom-image/azuredeploy.json). Podívejme se na rozdílové použít k vytvoření této šablony (`git diff minimum-viable-scale-set custom-image`) část podle část:
 
 ### <a name="creating-a-managed-disk-image"></a>Vytvoření image spravovaných disků
 
 Pokud již máte vlastní spravovaných disků na obrázku (prostředek typu `Microsoft.Compute/images`), potom můžete tuto část přeskočit.
 
-Nejprve přidáme `sourceImageVhdUri` parametr, který je hello URI toohello zobecněn objektů blob v Azure Storage, který obsahuje vlastní image toodeploy hello z.
+Nejprve přidáme `sourceImageVhdUri` parametr, který je identifikátor URI pro zobecněný objektu blob ve službě Azure Storage, který obsahuje vlastní image pro nasazení.
 
 
 ```diff
@@ -44,14 +44,14 @@ Nejprve přidáme `sourceImageVhdUri` parametr, který je hello URI toohello zob
 +    "sourceImageVhdUri": {
 +      "type": "string",
 +      "metadata": {
-+        "description": "hello source of hello generalized blob containing hello custom image"
++        "description": "The source of the generalized blob containing the custom image"
 +      }
      }
    },
    "variables": {},
 ```
 
-Potom přidáme prostředek typu `Microsoft.Compute/images`, což je hello spravovaných disků na image založena na blob hello zobecněn nacházející se v identifikátoru URI `sourceImageVhdUri`. Tento obrázek musí být ve hello stejné oblasti jako hello škálovací sadu, která jej používá. Ve vlastnostech hello hello bitové kopie, můžeme zadat typ hello operačního systému, hello umístění objektu hello blob (z hello `sourceImageVhdUri` parametr) a typ účtu úložiště hello:
+Potom přidáme prostředek typu `Microsoft.Compute/images`, které je založené na zobecněný umístěné v identifikátoru URI objektu blob bitové kopie spravovaného disku `sourceImageVhdUri`. Tato bitová kopie musí být ve stejné oblasti jako sada škálování, která jej používá. Ve vlastnostech bitovou kopii, určíme typ operačního systému, umístění objektu blob (z `sourceImageVhdUri` parametr) a typ účtu úložiště:
 
 ```diff
    "resources": [
@@ -78,7 +78,7 @@ Potom přidáme prostředek typu `Microsoft.Compute/images`, což je hello sprav
 
 ```
 
-V hello sady škálování prostředku, přidáme `dependsOn` klauzule odkazující toohello vlastní image toomake zda hello image získá vytvořili předtím, než hello škálovací sadu pokusí toodeploy z této bitové kopie:
+V měřítka nastavení prostředku, přidáme `dependsOn` klauzule odkazující na vlastní obrázek, který má zkontrolujte, zda se vytvoří před měřítka pokusí nasazení z této bitové kopie:
 
 ```diff
        "location": "[resourceGroup().location]",
@@ -93,9 +93,9 @@ V hello sady škálování prostředku, přidáme `dependsOn` klauzule odkazují
 
 ```
 
-### <a name="changing-scale-set-properties-toouse-hello-managed-disk-image"></a>Změna měřítka nastavit vlastnosti toouse hello spravovaných disků na obrázek
+### <a name="changing-scale-set-properties-to-use-the-managed-disk-image"></a>Změna měřítka nastavit vlastnosti používat bitovou kopii, spravovaný disku
 
-V hello `imageReference` hello měřítka nastavit `storageProfile`, místo zadání hello vydavatele, nabídky, sku a verzi image platformy, určíme hello `id` z hello `Microsoft.Compute/images` prostředků:
+V `imageReference` měřítka nastavit `storageProfile`, místo zadání vydavatele, nabídky, sku a verzi image platformy, určíme `id` z `Microsoft.Compute/images` prostředků:
 
 ```diff
          "virtualMachineProfile": {
@@ -111,7 +111,7 @@ V hello `imageReference` hello měřítka nastavit `storageProfile`, místo zad�
            "osProfile": {
 ```
 
-V tomto příkladu používáme hello `resourceId` funkce tooget hello ID prostředku bitové kopie hello vytvořené v hello stejné šablony. Pokud jste vytvořili image spravovaného disku hello předem, měli byste poskytnout hello id této bitové kopie. Toto id musí být ve formátu hello: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Compute/images/<image-name>`.
+V tomto příkladu používáme `resourceId` funkce získat ID prostředku bitové kopie vytvořené v stejné šablony. Pokud jste vytvořili bitové kopie disku spravované předem, měli byste poskytnout id této bitové kopie. Toto id musí být ve tvaru: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Compute/images/<image-name>`.
 
 
 ## <a name="next-steps"></a>Další kroky

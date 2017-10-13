@@ -1,5 +1,5 @@
 ---
-title: "aaaTroubleshooting a monitorování systému SAP HANA v Azure (velké instance) | Microsoft Docs"
+title: "Řešení potíží a monitorování SAP HANA v Azure (velké instance) | Microsoft Docs"
 description: "Řešení potíží a monitorovat SAP HANA na Azure (velké instance)."
 services: virtual-machines-linux
 documentationcenter: 
@@ -14,39 +14,39 @@ ms.workload: infrastructure
 ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1f1cd35820e227fd99af495431cd4b826aa53600
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ee5be707b443cbe42bf4a492d79390e534d4b91f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-tootroubleshoot-and-monitor-sap-hana-large-instances-on-azure"></a>Jak tootroubleshoot a monitorování SAP HANA (velké instance) na Azure
+# <a name="how-to-troubleshoot-and-monitor-sap-hana-large-instances-on-azure"></a>Postup řešení potíží a monitorovat SAP HANA (velké instance) na Azure
 
 
 ## <a name="monitoring-in-sap-hana-on-azure-large-instances"></a>Monitorování v SAP HANA v Azure (velké instance)
 
-SAP HANA v Azure (velké instance) se neliší od jiných IaaS nasazení – stačí toomonitor co hello operační systém a aplikace hello je dělat a jak tyto využívat hello následující prostředky:
+Se neliší od jiných IaaS nasazení SAP HANA v Azure (velké instance), je nutné sledovat operačním systémem a aplikace je činnosti a jak tyto využívat následující prostředky:
 
 - Procesor
 - Memory (Paměť)
 - Šířka pásma sítě
 - Místo na disku
 
-Jak pomocí Azure Virtual Machines, je nutné toofigure out jestli postačí hello třídy prostředků s názvem výše, nebo jestli tyto získat vyčerpané. Tady je podrobněji na každém z různých tříd hello:
+Jak pomocí Azure Virtual Machines, je třeba zjistit, jestli jsou dostatečná třídy prostředků s názvem výše, nebo jestli tyto získat vyčerpané. Tady je podrobněji na každém z různých tříd:
 
-**Využití prostředků procesoru:** hello poměr, která SAP definována pro určité úlohy proti HANA je vynucené toomake, že by měl být dostatek procesoru prostředky k dispozici toowork prostřednictvím hello data, která je uložená v paměti. Nicméně může být případech, kde HANA spotřebovává velké množství procesoru zpracování dotazů kvůli toomissing indexy nebo podobné problémy. To znamená, že je třeba sledovat využití prostředků procesoru hello HANA instance velké jednotky, jakož i spotřebovávají hello konkrétní HANA služby prostředků procesoru.
+**Využití prostředků procesoru:** poměr, která SAP definována pro určité úlohy proti HANA se nevynutí a ujistěte se, že by měla být k dispozici fungovat prostřednictvím data, která je uložená v paměti dostatek prostředků procesoru. Nicméně může být případech, kde HANA spotřebovává velké množství provádění dotazů procesoru z důvodu chybějící indexy nebo podobné problémy. To znamená, že je třeba sledovat využití prostředků procesoru HANA velké instance jednotky a také spotřebovávají určitým službám HANA prostředků procesoru.
 
-**Využití paměti:** je důležité toomonitor z v rámci HANA i mimo HANA na jednotce hello. V rámci HANA sledujte, jak hello dat spotřebovává přidělené paměti v toostay pořadí v rámci hello požadované změny velikosti pokyny SAP HANA. Chcete taky toomonitor využití paměti na hello velké Instance úrovně toomake se, že další nainstalovaný jiný HANA softwaru není využívat příliš mnoho paměti a proto pokouší s HANA paměti.
+**Využití paměti:** je důležité monitorovat z v rámci HANA i mimo HANA na jednotce. V rámci HANA sledujte, jak data spotřebovává přidělené paměti, aby bylo možné zůstat v požadované velikosti pokynů SAP HANA. Chcete monitorovat využití paměti na úrovni Instance velké a ujistěte se, že další nainstalovaný jiný HANA softwaru nepodporuje využívat příliš mnoho paměti a proto pokouší s HANA paměti.
 
-**Šířka pásma sítě:** brány virtuální sítě Azure hello je omezena šířka pásma dat Přesun do hello virtuální síť Azure, takže je vhodné hello toomonitor hello data přijatá všechny virtuální počítače Azure v rámci virtuální sítě toofigure na tom, jak zavřít jsou toohello omezení hello Azure Brána SKU, které jste vybrali. Na jednotce hello HANA velké Instance zkontrolujte smysl toomonitor příchozí a odchozí síťový provoz i a sledovat tookeep hello svazků, které jsou zpracovávány v čase.
+**Šířka pásma sítě:** brány virtuální sítě Azure je omezena šířka pásma dat Přesun do virtuální sítě Azure, takže je vhodné pro monitorování dat přijatých všechny virtuální počítače pro Azure v rámci virtuální sítě a pokuste se zjistit, jak jste se k omezení Azure skladová položka brány samoobslužné braný. Na jednotce HANA velké Instance ho dává smysl pro příchozí a odchozí síťový provoz i monitorování a ke sledování svazků, které jsou zpracovány v čase.
 
-**Místo na disku:** využívání místa na disku obvykle zvyšuje v čase. Existuje mnoho důvodů pro to, ale většina všech: datový svazek se zvyšuje, provádění zálohování transakčního protokolu, ukládání trasovacích souborů a provádění úložiště snímků. Proto je důležité toomonitor využití místa na disku a spravovat místo na disku hello spojené s jednotkou HANA velké Instance hello.
+**Místo na disku:** využívání místa na disku obvykle zvyšuje v čase. Existuje mnoho důvodů pro to, ale většina všech: datový svazek se zvyšuje, provádění zálohování transakčního protokolu, ukládání trasovacích souborů a provádění úložiště snímků. Proto je důležité monitorovat využití místa na disku a spravovat místo na disku spojené s jednotkou HANA velké Instance.
 
 ## <a name="monitoring-and-troubleshooting-from-hana-side"></a>Monitorování a řešení potíží s ze strany HANA
 
-V pořadí tooeffectively analyzovat problémy související tooSAP HANA v Azure (velké instance), je užitečné toonarrow dolů hello hlavní příčinu problému. SAP publikovali velké množství toohelp dokumentaci vám.
+Chcete-li efektivně analyzovat problémy související s SAP HANA v Azure (velké instance), je užitečné zúžit hlavní příčinu problému. SAP publikovali velké množství dokumentaci.
 
-Použít nejčastější dotazy související tooSAP HANA výkonu najdete v následující poznámky k SAP hello:
+Použít nejčastější dotazy týkající se výkonu SAP HANA naleznete v následující poznámky k SAP:
 
 - [Poznámka SAP #2222200 – nejčastější dotazy: SAP HANA sítě](https://launchpad.support.sap.com/#/notes/2222200)
 - [Poznámka SAP #2100040 – nejčastější dotazy: SAP HANA procesoru](https://launchpad.support.sap.com/#/notes/0002100040)
@@ -57,49 +57,49 @@ Použít nejčastější dotazy související tooSAP HANA výkonu najdete v nás
 
 **Výstrahy SAP HANA**
 
-Jako první krok protokolech hello aktuální SAP HANA výstrahy. V systému SAP HANA Studio přejděte příliš**konzole pro správu: upozornění: Zobrazit: všechny výstrahy**. Na této kartě se zobrazí všechny výstrahy SAP HANA pro konkrétní hodnoty (Volná fyzická paměť, využití procesoru atd.), které spadají mimo hello nastavit minimální a maximální prahové hodnoty. Ve výchozím nastavení kontroluje se automaticky aktualizují každých 15 minut.
+Jako první krok zkontrolujte aktuální výstrahy protokoly SAP HANA. V systému SAP HANA Studio přejděte do **konzole pro správu: upozornění: Zobrazit: všechny výstrahy**. Na této kartě se zobrazí všechny výstrahy SAP HANA pro konkrétní hodnoty (Volná fyzická paměť, využití procesoru atd.), které spadají mimo sadu minimální a maximální prahové hodnoty. Ve výchozím nastavení kontroluje se automaticky aktualizují každých 15 minut.
 
-![V systému SAP HANA Studio přejděte tooAdministration konzoly: upozornění: zobrazení: všechny výstrahy](./media/troubleshooting-monitoring/image1-show-alerts.png)
+![V systému SAP HANA Studio přejděte do konzoly pro správu: upozornění: zobrazení: všechny výstrahy](./media/troubleshooting-monitoring/image1-show-alerts.png)
 
 **VYUŽITÍ PROCESORU**
 
-Pro aktivaci z důvodu nastavení prahové hodnoty tooimproper výstrahu řešení je tooreset toohello výchozí hodnota nebo přijatelnější prahovou hodnotu.
+Pro aktivaci z důvodu nesprávné prahová hodnota nastavení výstrahu řešení je resetovat na výchozí hodnotu nebo přijatelnější prahovou hodnotu.
 
-![Obnovit výchozí hodnotu toohello nebo přijatelnější prahová hodnota](./media/troubleshooting-monitoring/image2-cpu-utilization.png)
+![Obnoví na výchozí hodnotu nebo přijatelnější prahová hodnota](./media/troubleshooting-monitoring/image2-cpu-utilization.png)
 
-Hello následující upozornění může znamenat problémy prostředků procesoru:
+Tyto výstrahy může znamenat problémy prostředků procesoru:
 
 - Využití procesoru hostitele (výstrah 5)
 - Poslední operace úložného bodu (výstrah 28)
 - Doba trvání uloženého bodu (výstrah 54)
 
-Můžete si všimnout vysoké spotřeby procesoru ve vaší databázi SAP HANA z jednoho z následujících hello:
+Můžete si všimnout vysoké spotřeby procesoru ve vaší databázi SAP HANA z jednoho z následujících akcí:
 
 - Výstrahy 5 (využití procesoru hostitele) se vyvolá pro aktuální nebo posledních využití procesoru
-- Hello zobrazené na úvodní obrazovka přehled využití procesoru
+- Zobrazit využití procesoru na obrazovce Přehled
 
-![Zobrazí využití procesoru na úvodní obrazovka Přehled](./media/troubleshooting-monitoring/image3-cpu-usage.png)
+![Zobrazit využití procesoru na obrazovce Přehled](./media/troubleshooting-monitoring/image3-cpu-usage.png)
 
-Hello zatížení graf může zobrazit vysoké využití procesoru, nebo vysoké spotřebu v posledních hello:
+Grafu, pro zatížení může zobrazit vysoké využití procesoru, nebo vysoké spotřebu v minulosti:
 
-![Hello zatížení graf může zobrazit vysoké využití procesoru, nebo vysoké spotřebu v posledních hello](./media/troubleshooting-monitoring/image4-load-graph.png)
+![Grafu, pro zatížení může zobrazit vysoké využití procesoru, nebo vysoké spotřebu v minulosti.](./media/troubleshooting-monitoring/image4-load-graph.png)
 
-Výstraha aktivuje kvůli využití toohigh procesoru může být způsobeno několik důvodů, včetně, mimo jiné: provádění určitých transakcí, načítání dat, ukotvených úloh, dlouho běžící příkazů jazyka SQL a výkonu chybných dotazů (například s BW na HANA datové krychle).
+Výstraha aktivuje z důvodu vysoké využití procesoru může být způsobeno několik důvodů, včetně, mimo jiné: provádění určitých transakcí, načítání dat, ukotvených úloh, dlouho běžící příkazů jazyka SQL a výkonu chybných dotazů (například s BW na HANA datové krychle).
 
-Odkazovat toohello [řešení potíží s SAP HANA: související způsobí, že využití procesoru a řešení](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4f/bc915462db406aa2fe92b708b95189/content.htm?frameset=/en/db/6ca50424714af8b370960c04ce667b/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=46&amp;show_children=false) lokality podrobné kroky řešení problémů.
+Odkazovat [řešení potíží s SAP HANA: související způsobí, že využití procesoru a řešení](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4f/bc915462db406aa2fe92b708b95189/content.htm?frameset=/en/db/6ca50424714af8b370960c04ce667b/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=46&amp;show_children=false) lokality podrobné kroky řešení problémů.
 
 **Operační systém**
 
-Jedním z nejdůležitějších hello kontrol pro SAP HANA v systému Linux je toomake jistotu, že transparentní obrovské stránky je zakázáno najdete v tématu [SAP Poznámka #2131662 – transparentní obrovské stránky (THP) na serverech SAP HANA](https://launchpad.support.sap.com/#/notes/2131662).
+Jedním z nejdůležitějších kontroly pro SAP HANA v systému Linux se ujistěte, že transparentní obrovské stránky je zakázáno, najdete v článku [SAP Poznámka #2131662 – transparentní obrovské stránky (THP) na serverech SAP HANA](https://launchpad.support.sap.com/#/notes/2131662).
 
-- Můžete zkontrolovat, zda transparentní obrovské stránky jsou povoleny prostřednictvím hello následující příkaz Linux: **cat /sys/kernel/mm/transparent\_hugepage/povoleno**
-- Pokud _vždy_ je uzavřený v závorkách, jak je uvedeno níže, znamená, že jsou povoleny hello transparentní obrovské stránky: [vždy] madvise nikdy; Pokud _nikdy_ je uzavřený v závorkách, jak je uvedeno níže, znamená to, že hello průhledný Velký stránky jsou zakázány: vždy madvise [nikdy]
+- Můžete zkontrolovat, zda jsou povoleny transparentní obrovské stránky pomocí následujícího příkazu Linux: **cat /sys/kernel/mm/transparent\_hugepage/povoleno**
+- Pokud _vždy_ je uzavřený v závorkách, jak je uvedeno níže, znamená to povolení transparentní obrovské stránky: [vždy] madvise nikdy; Pokud _nikdy_ je uzavřený v závorkách, jak je uvedeno níže, znamená to, že transparentní velký Stránky jsou zakázány: vždy madvise [nikdy]
 
-Následující příkaz Linux Hello by měla vrátit nic: **ot. / min - qa | grep ulimit.** Pokud se zobrazí _ulimit_ je nainstalovaný, odinstalovat okamžitě.
+Příkaz Linux by měla vrátit nic: **ot. / min - qa | grep ulimit.** Pokud se zobrazí _ulimit_ je nainstalovaný, odinstalovat okamžitě.
 
 **Paměť**
 
-Můžete pozorovat tato šířka hello paměti přidělené hello SAP HANA databáze je vyšší, než se očekávalo. Hello následující výstrahy signalizují potíže s velké množství paměti:
+Může sledovat, zda je množství paměti přidělené databázi SAP HANA vyšší, než se očekávalo. Tyto výstrahy signalizují potíže s velké množství paměti:
 
 - Využití hostitele fyzické paměti (výstrahy 1)
 - Využití paměti název serveru (upozornění 12)
@@ -108,64 +108,64 @@ Můžete pozorovat tato šířka hello paměti přidělené hello SAP HANA datab
 - Využití paměti hlavní úložiště sloupec úložiště tabulek (45 výstrah)
 - Soubory modulu runtime výpisu (výstrah 46)
 
-Odkazovat toohello [řešení potíží s SAP HANA: problémy s pamětí](http://help.sap.com/saphelp_hanaplatform/helpdata/en/db/6ca50424714af8b370960c04ce667b/content.htm?frameset=/en/59/5eaa513dde43758b51378ab3315ebb/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=26&amp;show_children=false) lokality podrobné kroky řešení problémů.
+Odkazovat [řešení potíží s SAP HANA: problémy s pamětí](http://help.sap.com/saphelp_hanaplatform/helpdata/en/db/6ca50424714af8b370960c04ce667b/content.htm?frameset=/en/59/5eaa513dde43758b51378ab3315ebb/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=26&amp;show_children=false) lokality podrobné kroky řešení problémů.
 
 **Síť**
 
-Odkazovat příliš[SAP Poznámka #2081065 – řešení potíží s SAP HANA sítě](https://launchpad.support.sap.com/#/notes/2081065) a proveďte kroky v této Poznámka SAP řešení potíží se sítí hello.
+Odkazovat na [SAP Poznámka #2081065 – řešení potíží s SAP HANA sítě](https://launchpad.support.sap.com/#/notes/2081065) a provádět sítě řešení potíží s kroky v této Poznámka SAP.
 
 1. Analýza odezvy čas mezi serverem a klientem.
-  A. Spuštění skriptu SQL hello [ _HANA\_sítě\_klienti_](https://launchpad.support.sap.com/#/notes/1969700)_._
+  A. Spusťte skript SQL [ _HANA\_sítě\_klienti_](https://launchpad.support.sap.com/#/notes/1969700)_._
   
 2. Analýza internodium komunikace.
   A. Spuštění skriptu SQL [ _HANA\_sítě\_služby_](https://launchpad.support.sap.com/#/notes/1969700)_._
 
-3. Spusťte příkaz Linux **ifconfig** (hello výstup ukazuje, pokud se vyskytnou ztráty paketů).
+3. Spusťte příkaz Linux **ifconfig** (výstup zobrazuje, pokud se vyskytnou ztráty paketů).
 4. Spusťte příkaz Linux **tcpdump**.
 
-Můžete také použít s otevřeným zdrojem hello [IPERF](https://iperf.fr/) nástroje (nebo podobnou) výkon sítě toomeasure reálné aplikaci.
+Rovněž použijte open source [IPERF](https://iperf.fr/) nástroje (nebo podobnou) k měření výkonu sítě reálné aplikaci.
 
-Odkazovat toohello [řešení potíží s SAP HANA: výkon sítě a problémů s připojením k](http://help.sap.com/saphelp_hanaplatform/helpdata/en/a3/ccdff1aedc4720acb24ed8826938b6/content.htm?frameset=/en/dc/6ff98fa36541e997e4c719a632cbd8/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=142&amp;show_children=false) lokality podrobné kroky řešení problémů.
+Odkazovat [řešení potíží s SAP HANA: výkon sítě a problémů s připojením k](http://help.sap.com/saphelp_hanaplatform/helpdata/en/a3/ccdff1aedc4720acb24ed8826938b6/content.htm?frameset=/en/dc/6ff98fa36541e997e4c719a632cbd8/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=142&amp;show_children=false) lokality podrobné kroky řešení problémů.
 
-**Úložiště**
+**Storage**
 
-Z hlediska koncový uživatel aplikace (nebo hello systém jako celek) běží pomalu, neodpovídá nebo můžete i zdá se, že toohang Pokud dochází k potížím s výkonem vstupně-výstupní operace. V hello **svazky** kartě v SAP HANA Studio uvidíte hello připojené svazky a svazky, které jsou používány jednotlivých služeb.
+Z hlediska koncový uživatel aplikace (nebo na systém jako celek) běží pomalu, neodpovídá nebo můžete dokonce se zdá, že zablokuje, pokud dochází k potížím s výkonem vstupně-výstupní operace. V **svazky** kartě v SAP HANA Studio uvidíte připojené svazky a svazky, které jsou používány jednotlivých služeb.
 
-![Na kartě hello svazky v SAP HANA Studio vidíte, že hello připojené svazky a svazky, které jsou používány každé služby](./media/troubleshooting-monitoring/image5-volumes-tab-a.png)
+![Na kartě svazky v SAP HANA Studio uvidíte připojené svazky a svazky, které jsou používány každé služby](./media/troubleshooting-monitoring/image5-volumes-tab-a.png)
 
-Připojené svazky v dolní části hello úvodní obrazovka, které se zobrazí podrobnosti o hello svazků, jako jsou soubory a vstupně-výstupních operací statistiky.
+Připojené svazky v dolní části obrazovky se zobrazí podrobnosti o na svazcích, jako jsou soubory a vstupně-výstupních operací statistiky.
 
-![Připojené svazky v dolní části hello úvodní obrazovka, které se zobrazí podrobnosti o hello svazků, jako jsou soubory a vstupně-výstupních operací statistiky](./media/troubleshooting-monitoring/image6-volumes-tab-b.png)
+![Připojené svazky v dolní části obrazovky se zobrazí podrobnosti o na svazcích, jako jsou soubory a vstupně-výstupních operací statistiky](./media/troubleshooting-monitoring/image6-volumes-tab-b.png)
 
-Odkazovat toohello [řešení potíží s SAP HANA: vstupně-výstupních operací souvisejících hlavní příčiny a řešení](http://help.sap.com/saphelp_hanaplatform/helpdata/en/dc/6ff98fa36541e997e4c719a632cbd8/content.htm?frameset=/en/47/4cb08a715c42fe9f7cc5efdc599959/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=55&amp;show_children=false) a [řešení potíží s SAP HANA: disku související hlavní příčiny a řešení](http://help.sap.com/saphelp_hanaplatform/helpdata/en/47/4cb08a715c42fe9f7cc5efdc599959/content.htm?frameset=/en/44/3e1db4f73d42da859008df4f69e37a/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=53&amp;show_children=false) lokality podrobné kroky řešení problémů.
+Odkazovat [řešení potíží s SAP HANA: vstupně-výstupních operací souvisejících hlavní příčiny a řešení](http://help.sap.com/saphelp_hanaplatform/helpdata/en/dc/6ff98fa36541e997e4c719a632cbd8/content.htm?frameset=/en/47/4cb08a715c42fe9f7cc5efdc599959/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=55&amp;show_children=false) a [řešení potíží s SAP HANA: disku související hlavní příčiny a řešení](http://help.sap.com/saphelp_hanaplatform/helpdata/en/47/4cb08a715c42fe9f7cc5efdc599959/content.htm?frameset=/en/44/3e1db4f73d42da859008df4f69e37a/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=53&amp;show_children=false) lokality podrobné kroky řešení problémů.
 
 **Diagnostické nástroje**
 
 Provést kontrolu stavu SAP HANA prostřednictvím HANA\_konfigurace\_Minichecks. Tento nástroj vrátí potenciálně kritickým technických problémů, které by měl mít bylo vyvoláno už jako výstrahy v SAP HANA Studio.
 
-Odkazovat příliš[SAP Poznámka #1969700 – kolekce příkaz SQL pro SAP HANA](https://launchpad.support.sap.com/#/notes/1969700) a stáhnout hello SQL Statements.zip souboru připojené toothat Poznámka. Uložte tento soubor .zip na místní pevný disk hello.
+Odkazovat na [SAP Poznámka #1969700 – kolekce příkaz SQL pro SAP HANA](https://launchpad.support.sap.com/#/notes/1969700) a stáhněte si soubor SQL Statements.zip poznámka připojena. Uložte tento soubor .zip na místní pevný disk.
 
-V nástroji Studio SAP HANA na hello **informace o systému** kartě, klikněte pravým tlačítkem na hello **název** sloupce a vyberte **příkazů SQL Import**.
+V nástroji SAP HANA Studio na **informace o systému** kartě, klikněte pravým tlačítkem myši **název** sloupce a vyberte **příkazů SQL Import**.
 
-![V nástroji Studio SAP HANA na kartě hello informace o systému klikněte pravým tlačítkem na název sloupce hello a vyberte Import SQL příkazy](./media/troubleshooting-monitoring/image7-import-statements-a.png)
+![V systému SAP HANA Studio, na kartě informace o systému klikněte pravým tlačítkem na název sloupce a vyberte Import SQL příkazy](./media/troubleshooting-monitoring/image7-import-statements-a.png)
 
-Vyberte hello SQL Statements.zip souboru uložené místně a budou importovány do složky s hello odpovídajících příkazů SQL. V tomto okamžiku hello mnoho různých diagnostiky kontroly můžete spustit pomocí těchto příkazů SQL.
+Vyberte soubor SQL Statements.zip uložené místně, a budou importovány do složky s odpovídajících příkazů SQL. V tomto okamžiku mnoho různých diagnostiky kontroly lze spustit pomocí těchto příkazů SQL.
 
-Například nároky na šířku pásma replikaci systému SAP HANA tootest, klikněte pravým tlačítkem na hello **šířky pásma** příkaz pod **replikace: šířky pásma** a vyberte **otevřete** v konzole SQL.
+Například k testování replikace systému SAP HANA nároky na šířku pásma, klikněte pravým tlačítkem myši **šířky pásma** příkaz pod **replikace: šířky pásma** a vyberte **otevřete** v Konzola SQL.
 
-příkaz SQL Hello otevře povolení toobe vstupních parametrů (změna oddílu), změnit a potom spuštěn.
+Příkaz SQL otevře povolení vstupních parametrů (změna oddílu), změnit a potom spuštěn.
 
-![příkaz SQL Hello otevře změnit a potom spuštěn povolení toobe vstupních parametrů (Změna část)](./media/troubleshooting-monitoring/image8-import-statements-b.png)
+![Příkaz SQL otevře povolení vstupních parametrů (změna oddílu), změnit a potom spuštěn](./media/troubleshooting-monitoring/image8-import-statements-b.png)
 
-Dalším příkladem je klikněte pravým tlačítkem na v příkazech hello pod **replikace: Přehled**. Vyberte **Execute** hello místní nabídce:
+Dalším příkladem je klikněte pravým tlačítkem na v příkazech v části **replikace: Přehled**. Vyberte **Execute** v místní nabídce:
 
-![Dalším příkladem je klikněte pravým tlačítkem na v příkazech hello pod replikace: Přehled. Vyberte možnost spustit místní nabídce hello](./media/troubleshooting-monitoring/image9-import-statements-c.png)
+![Dalším příkladem je klikněte pravým tlačítkem na v příkazech v části replikace: Přehled. Vyberte možnost spustit z místní nabídky](./media/troubleshooting-monitoring/image9-import-statements-c.png)
 
 Výsledkem je informace, které pomáhají při řešení problémů:
 
 ![Tato akce způsobí informace, které pomáhají při řešení problémů](./media/troubleshooting-monitoring/image10-import-statements-d.png)
 
-Hello stejné pro HANA\_konfigurace\_Minichecks a zkontrolujte všechny _X_ značky v hello _C_ sloupce (kritické).
+Totéž proveďte pro HANA\_konfigurace\_Minichecks a zkontrolujte všechny _X_ označí v _C_ sloupce (kritické).
 
 Ukázka výstupu:
 
@@ -181,11 +181,11 @@ Ukázka výstupu:
 
 ![HANA\_služby\_statistiku pro SAP HANA informace o služby ](./media/troubleshooting-monitoring/image13-services-statistics.png)
 
-**HANA\_konfigurace\_přehled\_Rev110 +** obecné informace o instanci hello SAP HANA.
+**HANA\_konfigurace\_přehled\_Rev110 +** obecné informace o instanci SAP HANA.
 
-![HANA\_konfigurace\_přehled\_Rev110 + obecné informace o instanci hello SAP HANA](./media/troubleshooting-monitoring/image14-configuration-overview.png)
+![HANA\_konfigurace\_přehled\_Rev110 + obecné informace o instanci SAP HANA](./media/troubleshooting-monitoring/image14-configuration-overview.png)
 
-**HANA\_konfigurace\_parametry\_Rev70 +** toocheck parametry SAP HANA.
+**HANA\_konfigurace\_parametry\_Rev70 +** Zkontrolujte parametry SAP HANA.
 
-![HANA\_konfigurace\_parametry\_parametry SAP HANA toocheck Rev70 +](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
+![HANA\_konfigurace\_parametry\_Rev70 + Zkontrolujte parametry SAP HANA](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
 

@@ -1,6 +1,6 @@
 ---
-title: "aaaUse hello Azure portálu toocreate služby IoT Hub | Microsoft Docs"
-description: "Toocreate, jak spravovat a odstranit Azure IoT hubs prostřednictvím hello portálu Azure. Obsahuje informace o cenových úrovní, škálování, zabezpečení a zasílání zpráv konfigurace."
+title: "Vytvoření služby IoT Hub pomocí portálu Azure | Microsoft Docs"
+description: "Postup vytvoření, správě a odstranění služby Azure IoT hubs prostřednictvím portálu Azure. Obsahuje informace o cenových úrovní, škálování, zabezpečení a zasílání zpráv konfigurace."
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -14,52 +14,52 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2017
 ms.author: dobett
-ms.openlocfilehash: 383968c90ee7ef3bff85a6c90efbf5f0e8fbb208
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: bca7eea5f44bbed3b784b56edaac235161b43e5e
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="create-an-iot-hub-using-hello-azure-portal"></a>Vytvoření služby IoT hub pomocí hello portálu Azure
+# <a name="create-an-iot-hub-using-the-azure-portal"></a>Vytvoření služby IoT hub pomocí portálu Azure
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
 Tento článek popisuje:
 
-* Jak toofind hello služby IoT Hub v portálu Azure hello.
-* Jak toocreate a spravovat centra IoT.
+* Jak najít službu IoT Hub v portálu Azure.
+* Jak vytvořit a spravovat centra IoT.
 
-## <a name="where-toofind-hello-iot-hub-service"></a>Kde toofind hello služby IoT Hub
+## <a name="where-to-find-the-iot-hub-service"></a>Kde najít službu IoT Hub
 
-Hello služby IoT Hub naleznete v následujících umístění portálu hello hello:
+Služba IoT Hub můžete najít v následujících umístěních na portálu:
 
 * Zvolte **+ nový**, zvolte **Internet věcí**.
-* V hello Marketplace, zvolte **Internet věcí**.
+* Na webu Marketplace, zvolte **Internet věcí**.
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
-Můžete vytvořit služby IoT hub pomocí hello následující metody:
+Můžete vytvořit služby IoT hub pomocí následujících metod:
 
-* Hello **+ nový** možnost otevře okno hello ukazuje následující snímek obrazovky hello. Hello kroky pro vytvoření služby IoT hub hello prostřednictvím této metody a prostřednictvím hello marketplace jsou identické.
-* V hello Marketplace, zvolte **vytvořit** okno hello tooopen ukazuje následující snímek obrazovky hello.
+* **+ Nový** možnost otevře okno znázorněno na následujícím snímku obrazovky. Kroky pro vytvoření služby IoT hub prostřednictvím této metody a přes marketplace jsou identické.
+* Na webu Marketplace, zvolte **vytvořit** otevřete okno znázorněno na následujícím snímku obrazovky.
 
-Hello následující části popisují hello několik kroků toocreate služby IoT hub:
+Následující části popisují několik kroků pro vytvoření služby IoT hub:
 
-### <a name="choose-hello-name-of-hello-iot-hub"></a>Zvolte název hello hello centra IoT
+### <a name="choose-the-name-of-the-iot-hub"></a>Vyberte název centra IoT
 
-toocreate služby IoT hub, musí název hello IoT hub. Tento název musí být jedinečný mezi všechny služby IoT hubs.
+Vytvoření služby IoT hub, název služby IoT hub. Tento název musí být jedinečný mezi všechny služby IoT hubs.
 
 [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
-### <a name="choose-hello-pricing-tier"></a>Vyberte cenovou úroveň hello
+### <a name="choose-the-pricing-tier"></a>Vyberte cenovou úroveň
 
-Můžete si vybrat z čtyři úrovně: **volné**, **standardní 1** a **standardní 2**, a **úrovně Standard S3**. úroveň free Hello umožňuje pouze 500 toobe zařízení připojené toohello IoT hub a až too8 000 zpráv za den.
+Můžete si vybrat z čtyři úrovně: **volné**, **standardní 1** a **standardní 2**, a **úrovně Standard S3**. Úroveň free umožňuje pouze 500 zařízení k připojení ke službě IoT hub a maximálně 8 000 jednotek zpráv za den.
 
-**Standard S1**: použití hello S1 edition pro počítače s řešeními IoT s velký počet zařízení, že každý generovat malé množství dat. Jednotlivé jednotky hello S1 edition umožňuje až too400 000 zpráv za den ve všech připojených zařízeních.
+**Standard S1**: pomocí edice S1 pro řešení IoT velký počet zařízení, že každý generovat malé množství dat. Každá jednotka edice S1 umožňuje přenášet v rámci všech připojených zařízení až 400 000 zpráv denně.
 
-**Standard S2**: použití hello S2 edition pro počítače s řešení IoT, ve kterých zařízení generovat velké objemy dat. Jednotlivé jednotky hello S2 edition umožňuje až too6 mil. zpráv za den mezi všech připojených zařízeních.
+**Standard S2**: pro řešení IoT, ve kterých zařízení generovat velké objemy dat použít edici S2. Jednotlivé jednotky S2 edice umožňuje až 6 milionu zpráv za den mezi všech připojených zařízeních.
 
-**Úrovně Standard S3**: použití hello S3 edition pro počítače s řešení IoT, které generují velké objemy dat. Jednotlivé jednotky hello S3 edition umožňuje až too300 mil. zpráv za den mezi všech připojených zařízeních.
+**Úrovně Standard S3**: pro řešení IoT, které generují velké objemy dat použít edici S3. Jednotlivé jednotky S3 edice umožňuje až 300 milionů zpráv za den mezi všech připojených zařízeních.
 
 ![][4]
 
@@ -68,77 +68,77 @@ Můžete si vybrat z čtyři úrovně: **volné**, **standardní 1** a **standar
 
 ### <a name="iot-hub-units"></a>Jednotky centra IoT hub
 
-Hello počet zpráv povolených na jednotku za den závisí na vaše Centrum cenovou úroveň. Například pokud chcete hello IoT hub toosupport příchozího 700 000 zpráv, zvolte dvě jednotky vrstvy S1.
+Počet zpráv povolených na jednotku za den závisí na vaše Centrum cenovou úroveň. Například pokud chcete službu IoT hub pro podporu příchozího 700 000 zpráv, zvolte dvě jednotky vrstvy S1.
 
-### <a name="device-toocloud-partitions-and-resource-group"></a>Oddíly toocloud zařízení a skupině prostředků
+### <a name="device-to-cloud-partitions-and-resource-group"></a>Zařízení do cloudu oddíly a skupiny prostředků
 
-Můžete změnit hello počet oddílů pro Centrum IoT. Hello výchozí počet oddílů je 4, můžete vybrat jiné číslo z rozevíracího seznamu hello.
+Můžete změnit počet oddílů pro Centrum IoT. Výchozí počet oddílů je 4, můžete v rozevíracím seznamu jiné číslo.
 
-Není nutné tooexplicitly vytvořte skupinu prostředků prázdný. Když vytvoříte prostředek, můžete zvolit buď toocreate a nové nebo použít existující skupinu prostředků.
+Není nutné explicitně vytvořit skupinu prostředků prázdný. Když vytvoříte prostředek, můžete zvolit buď vytvořit novou nebo použít existující skupinu prostředků.
 
 ![][5]
 
 ### <a name="choose-subscription"></a>Zvolte předplatné
 
-Azure IoT Hub automaticky seznamy hello předplatná Azure hello uživatelský účet je přiřazen. Můžete použít Centrum IoT hello předplatného Azure tooassociate hello k.
+Azure IoT Hub automaticky uvádí uživatelský účet je spojena se předplatná Azure. Můžete přidružit IoT hub, která předplatné Azure.
 
-### <a name="choose-hello-location"></a>Vyberte umístění hello
+### <a name="choose-the-location"></a>Vyberte umístění
 
-možnosti umístění Hello poskytuje seznam hello oblastí, kde je k dispozici služby IoT Hub.
+Možnosti umístění obsahuje seznam oblastí, kde je k dispozici služby IoT Hub.
 
-### <a name="create-hello-iot-hub"></a>Vytvoření centra IoT hello
+### <a name="create-the-iot-hub"></a>Vytvoření centra IoT
 
-Po dokončení všech předchozích kroků můžete vytvořit hello IoT hub. Klikněte na tlačítko **vytvořit** toostart hello toocreate proces back-end a nasadit hello IoT hub pro hello možnosti, které jste zvolili.
+Po dokončení všech předchozích kroků můžete vytvořit službu IoT hub. Klikněte na tlačítko **vytvořit** spuštění procesu back-end pro vytvoření a nasazení služby IoT hub s možnostmi, které jste zvolili.
 
-Může trvat několik minut toocreate hello IoT hub jako trvá dobu hello back-end nasazení toorun na serverech příslušné umístění hello.
+To může trvat několik minut pro vytvoření služby IoT hub jako trvá dobu pro spuštění na serverech příslušné umístění nasazení back-end.
 
-## <a name="change-hello-settings-of-hello-iot-hub"></a>Změňte nastavení hello hello IoT hub
+## <a name="change-the-settings-of-the-iot-hub"></a>Změňte nastavení centra IoT
 
-Po vytvoření z hello okno centra IoT, můžete změnit nastavení hello stávající služby IoT hub.
+Nastavení stávající služby IoT hub můžete změnit po vytvoření v okně služby IoT Hub.
 
 ![][8]
 
-**Sdílené zásady přístupu**: tyto zásady určují hello oprávnění pro zařízení a služeb tooconnect tooIoT rozbočovače. Tyto zásady můžete přístupu kliknutím **zásady sdíleného přístupu** pod **Obecné**. V tomto okně můžete upravit existující zásady nebo přidání nové zásady.
+**Sdílené zásady přístupu**: tyto zásady určují oprávnění pro zařízení a služeb pro připojení ke službě IoT Hub. Tyto zásady můžete přístupu kliknutím **zásady sdíleného přístupu** pod **Obecné**. V tomto okně můžete upravit existující zásady nebo přidání nové zásady.
 
 ### <a name="create-a-policy"></a>Vytvořit zásadu
 
-* Klikněte na tlačítko **přidat** tooopen okno. Zadejte název nové zásady hello a hello oprávnění, která má tooassociate s těmito zásadami, jak je znázorněno v následující hello obrázek:
+* Klikněte na tlačítko **přidat** a otevřete okno. Zde můžete zadat nový název zásady a oprávnění, které chcete přidružit k této zásadě, jak je znázorněno na následujícím obrázku:
 
-    Jsou k dispozici několik oprávnění, které může být spojeno s tyto sdílené zásady. Hello **registru číst** a **registru zápisu** zásady udělit ke čtení a registru identit toohello práva k zápisu. Výběrem možnosti zápisu hello automaticky zvolí možnost čtení hello.
+    Jsou k dispozici několik oprávnění, které může být spojeno s tyto sdílené zásady. **Registru číst** a **registru zápisu** zásady udělit oprávnění ke čtení a zápis do registru identit. Výběrem možnosti zápisu automaticky zvolí možnost pro čtení.
 
-    Hello **služba připojit** zásad uděluje oprávnění tooaccess koncové body služby, jako **přijímat zařízení cloud**. Hello **zařízení připojit** zásad uděluje oprávnění pro odesílání a přijímání zpráv pomocí koncových bodů hello straně zařízení IoT Hub.
+    **Služba připojit** zásad uděluje oprávnění k přístupu koncové body služby, jako například **přijímat zařízení cloud**. **Zařízení připojit** zásad uděluje oprávnění pro odesílání a přijímání zpráv pomocí koncových bodů na straně zařízení IoT Hub.
 
-* Klikněte na tlačítko **vytvořit** tooadd tomto nově vytvořený zásad toohello existujícího seznamu.
+* Klikněte na tlačítko **vytvořit** to nově vytvořený zásad do existujícího seznamu přidat.
 
 ![][10]
 
 ## <a name="endpoints"></a>Koncové body
 
-Klikněte na tlačítko **koncové body** toodisplay seznam koncových bodů pro hello IoT hub, který chcete upravit. Existují dva typy koncových bodů: koncové body, které jsou součástí hello IoT hub a koncové body přidejte toohello IoT hub po jeho vytvoření.
+Klikněte na tlačítko **koncové body** zobrazíte seznam koncových bodů pro službu IoT hub, který chcete upravit. Existují dva typy koncových bodů: koncové body, které jsou součástí služby IoT hub a koncové body, které přidáte do služby IoT hub po jeho vytvoření.
 
 ![][11]
 
 ### <a name="built-in-endpoints"></a>Předdefinované koncové body
 
-Existují dva předdefinované koncové body: **cloudu zpětné vazby toodevice** a **události**.
+Existují dva předdefinované koncové body: **cloudu na zařízení připomínky** a **události**.
 
-* **Cloud zpětné vazby toodevice** nastavení: Toto nastavení má dva subsettings: **cloudu tooDevice TTL** (time-to-live) a **dobu uchování** (v hodinách) pro zprávy hello. Při první vytvoření služby IoT hub, obě tato nastavení mají hello výchozí hodnotu 1 hodina. tooadjust tato nastavení použít posuvníky hello nebo zadat hodnoty hello.
-* **Události** nastavení: Toto nastavení má několik subsettings, z nichž některé jsou jen pro čtení. Hello následující seznam popisuje tato nastavení:
+* **Cloudu na zařízení připomínky** nastavení: Toto nastavení má dva subsettings: **cloudu do zařízení TTL** (time-to-live) a **dobu uchování** (v hodinách) pro zprávy. Při první vytvoření služby IoT hub, obě tato nastavení mají výchozí hodnotu 1 hodina. Chcete-li tato nastavení upravit, pomocí posuvníků nebo zadejte hodnoty.
+* **Události** nastavení: Toto nastavení má několik subsettings, z nichž některé jsou jen pro čtení. Následující seznam popisuje tato nastavení:
 
-  * **Oddíly**: výchozí hodnota je nastavena, když je vytvořen hello IoT hub. Hello počet oddílů pomocí tohoto nastavení můžete změnit.
+  * **Oddíly**: výchozí hodnota je nastavena při vytvoření služby IoT hub. Počet oddílů pomocí tohoto nastavení můžete změnit.
 
-  * **Název kompatibilní s centrem událostí a koncového bodu**: Po vytvoření služby IoT hub hello centra událostí se může potřebovat přistupovat toounder určitých okolností interně vytvoří. Nelze přizpůsobit název a koncový bod hodnoty hello kompatibilní s centrem událostí, ale můžete je zkopírovat kliknutím **kopie**.
+  * **Název kompatibilní s centrem událostí a koncového bodu**: centra událostí je vytvořili interně, že potřebujete přístup k za určitých okolností, vzniká, když IoT hub. Nelze upravit hodnoty název a koncový bod kompatibilní s centrem událostí, ale můžete je zkopírovat kliknutím **kopie**.
 
-  * **Doba uchování**: ve výchozím nastavení tooone den, ale můžete změnit pomocí rozevíracího seznamu hello. Tato hodnota je ve dnech pro nastavení zařízení cloud hello.
+  * **Doba uchování**: ve výchozím nastavení má jeden den, ale můžete změnit pomocí rozevíracího seznamu. Tato hodnota je ve dnech pro nastavení zařízení cloud.
 
-  * **Skupiny příjemců**: skupiny příjemců povolit více zpráv tooread čtečky nezávisle hello IoT hub. Každé centrum IoT je vytvořen s výchozí skupina příjemců. Můžete ale přidat nebo odstranit příjemce skupiny tooyour IoT hubs pomocí tohoto nastavení.
+  * **Skupiny příjemců**: skupiny příjemců povolit více uživatelům nezávisle číst zprávy z centra IoT. Každé centrum IoT je vytvořen s výchozí skupina příjemců. Můžete ale přidat nebo odstranit skupiny uživatelů do vašeho centra IoT použití tohoto nastavení.
 
   > [!NOTE]
-  > Výchozí skupina příjemců Hello nelze upravit ani odstranit.
+  > Výchozí skupina příjemců nelze upravit ani odstranit.
 
 ### <a name="custom-endpoints"></a>Vlastní koncové body
 
-Ve službě IoT hub pomocí portálu hello můžete přidat vlastní koncové body. Z hello **koncové body** okně klikněte na tlačítko **přidat** v hello nejvyšší tooopen hello **přidání koncového bodu** okno. Zadejte hello požadované informace a potom klikněte na tlačítko **OK**. Svůj vlastní koncový bod je nyní obsažena v hello hlavní **koncové body** okno.
+Ve službě IoT hub pomocí portálu můžete přidat vlastní koncové body. Z **koncové body** okně klikněte na tlačítko **přidat** v horní části otevřete **přidání koncového bodu** okno. Zadejte požadované informace a pak klikněte na **OK**. Svůj vlastní koncový bod je nyní obsažena v hlavní **koncové body** okno.
 
 ![][13]
 
@@ -146,42 +146,42 @@ Další informace o vlastní koncové body v [odkaz – koncové body centra IoT
 
 ## <a name="routes"></a>Trasy
 
-Klikněte na tlačítko **trasy** toomanage jak IoT Hub odešle zprávu vaše zprávy typu zařízení cloud.
+Klikněte na tlačítko **trasy** ke správě, jak IoT Hub odešle zprávu vaše zprávy typu zařízení cloud.
 
 ![][14]
 
-Kliknutím můžete přidat trasy tooyour IoT hub **přidat** hello horní části hello **trasy*** okně zadáním hello požadované informace a kliknutím na tlačítko **OK**. Vaše trasy, pak je uvedena ve hello hlavní **trasy** okno. Trasa můžete upravit kliknutím na hello seznam tras. tooenable trasu, klikněte na něj v seznamu hello tras a nastavit hello **povoleno** přepnutí příliš**vypnout**. Změna hello toosave, klikněte na tlačítko **OK** v hello dolní části okna hello.
+Kliknutím můžete přidat trasy do služby IoT hub **přidat** v horní části **trasy*** okno, zadáte požadované informace a kliknutím na **OK**. Vaše trasy je pak uveden v hlavní **trasy** okno. Trasa můžete upravit kliknutím na seznam tras. Chcete-li povolit trasu, klikněte na něj v seznamu tras a nastavte **povoleno** přepnutím **vypnout**. Chcete-li uložit změny, klikněte na tlačítko **OK** v dolní části okna.
 
 ![][15]
 
 ## <a name="pricing-and-scale"></a>Ceny a škálování
 
-Hello ceny z stávající služby IoT hub lze změnit pomocí hello **cenová** nastavení s hello následující výjimky:
+Ceny stávající služby IoT hub lze změnit pomocí **cenová** nastavení s těmito výjimkami:
 
-* V aktuální implementace hello, nelze změnit centrum IoT se volné SKU tooone vrstev z hello placené SKU, nebo naopak.
-* Může existovat pouze jedna úroveň free IoT hub v hello předplatného Azure.
+* V aktuální implementace služby IoT hub s bezplatnou SKU nelze změnit vrstvy do jednoho z placené SKU, nebo naopak.
+* Může existovat pouze jedna úroveň free IoT hub v rámci předplatného Azure.
 
 ![][12]
 
-Můžete přesunout z vyšší úroveň toolower jenom v případě, že hello počet zpráv odeslaných daný den překročení hello kvóty pro nižší úroveň hello. Například pokud hello počet zpráv za den překračuje 400,000, pak hello vrstva pro hello IoT hub lze změnit. Ale pokud změníte úroveň S1 toohello pak hello IoT hub je omezen pro daný den.
+Můžete přesunout z vyššího nižší úrovně jenom v případě, že počet zpráv odeslaných daný den překročili kvótu pro nižší úroveň. Například pokud počet zpráv za den překračuje 400,000, pak vrstvy pro službu IoT hub lze změnit. Ale pokud změníte k vrstvě S1 pak službu IoT hub je omezen pro daný den.
 
-## <a name="delete-hello-iot-hub"></a>Odstranit centrum IoT hello
+## <a name="delete-the-iot-hub"></a>Odstranit službu IoT hub
 
-Můžete procházet toohello IoT hub chcete toodelete kliknutím **Procházet**, a pak vyberete hello toodelete odpovídající rozbočovače. toodelete hello služby IoT hub, klikněte na tlačítko hello **odstranit** tlačítko pod hello název centra IoT.
+Můžete procházet ke službě IoT hub, který chcete odstranit kliknutím **Procházet**a pak vyberete příslušné rozbočovače k odstranění. Pokud chcete odstranit centrum IoT, klikněte na tlačítko **odstranit** tlačítko pod název centra IoT.
 
 ## <a name="next-steps"></a>Další kroky
 
-Použijte tyto odkazy toolearn informace o správě Azure IoT Hub:
+Další informace o správě Azure IoT Hub na následujících odkazech:
 
 * [Hromadné spravovat zařízení IoT][lnk-bulk]
 * [Metriky služby IoT Hub][lnk-metrics]
 * [Monitorování operací][lnk-monitor]
 
-toofurther prozkoumat hello služby IoT Hub, najdete v tématu:
+Pokud chcete prozkoumat další možnosti IoT Hub, najdete v části:
 
 * [Příručka vývojáře pro službu IoT Hub][lnk-devguide]
 * [Simulaci zařízení s hranou IoT][lnk-iotedge]
-* [Zabezpečení řešení IoT z hello pozadí][lnk-securing]
+* [Zabezpečení řešení IoT od základů nahoru][lnk-securing]
 
 [4]: ./media/iot-hub-create-through-portal/create-iothub.png
 [5]: ./media/iot-hub-create-through-portal/location1.png

@@ -1,8 +1,8 @@
 ### <a name="server-auth"></a>Postup: Ověřování pomocí zprostředkovatele (tok na straně serveru)
-toohave Mobile Apps spravovat hello proces ověřování v aplikaci, je nutné zaregistrovat vaší aplikace pomocí zprostředkovatele identity. V Azure App Service, budete potřebovat ID aplikace hello tooconfigure a tajný klíč poskytované poskytovatelem.
-Další informace najdete v tématu hello kurzu [přidat ověřování tooyour aplikace](../articles/app-service-mobile/app-service-mobile-cordova-get-started-users.md).
+Pokud chcete, aby funkce Mobile Apps spravovala proces ověřování ve vaší aplikaci, je třeba aplikaci zaregistrovat u vašeho zprostředkovatele identity. Potom je nutné ve službě Azure App Service nakonfigurovat ID aplikace a tajný klíč, který vám poskytne zprostředkovatel.
+Další informace najdete v kurzu [Přidání ověřování do aplikace](../articles/app-service-mobile/app-service-mobile-cordova-get-started-users.md).
 
-Po registraci zprostředkovatele identity volání hello `.login()` metoda s hello název poskytovatele. Například toologin službou Facebook použít hello následující kód:
+Jakmile budete zaregistrováni u zprostředkovatele identity, zavolejte metodu `.login()` s názvem vašeho zprostředkovatele. Například pro přihlášení přes Facebook použijte následující kód:
 
 ```
 client.login("facebook").done(function (results) {
@@ -12,16 +12,16 @@ client.login("facebook").done(function (results) {
 });
 ```
 
-Hello platné hodnoty pro zprostředkovatele hello jsou 'aad', 'facebook., 'google', 'microsoftaccount' a "twitter".
+Platné hodnoty pro zprostředkovatele jsou „aad“, „facebook“, „google“, „microsoftaccount“ a „twitter“.
 
 > [!NOTE]
-> Ověřování Google přes tok na straně serveru aktuálně nefunguje.  tooauthenticate službou Google, je nutné použít [tok klienta metoda](#client-auth).
+> Ověřování Google přes tok na straně serveru aktuálně nefunguje.  K ověřování Google je třeba použít [metodu toku na straně klienta](#client-auth).
 
-Azure App Service v tomto případě spravuje tok ověřování hello OAuth 2.0.  Zobrazí přihlašovací stránku hello hello vybraného zprostředkovatele a vygeneruje ověřovací token služby App Service za úspěšného přihlášení pomocí zprostředkovatele identity hello. Funkce Hello přihlášení, po dokončení vrátí objekt JSON, který zveřejňuje hello ID uživatele a služby App Service ověřovací token v hello pole ID uživatele a authenticationToken, v uvedeném pořadí. Tento token se může uložit do mezipaměti a znovu požívat do vypršení platnosti.
+V tomto případě služba Azure App Service spravuje tok ověřování OAuth 2.0.  Zobrazí přihlašovací stránku vybraného zprostředkovatele a po úspěšném přihlášení pomocí zprostředkovatele identity vygeneruje ověřovací token služby App Service. Funkce login po dokončení vrátí objekt JSON, který vystaví ID uživatele a ověřovací token služby App Service v polích userId a authenticationToken. Tento token se může uložit do mezipaměti a znovu požívat do vypršení platnosti.
 
 ###<a name="client-auth"></a>Postup: Ověřování pomocí zprostředkovatele (tok na straně klienta)
 
-Aplikace můžete také nezávisle obraťte se na zprostředkovatele identity hello a pak zadejte hello vrátil tokenu tooyour služby App Service pro ověřování. Tento tok klienta umožňuje tooprovide jednom přihlášení pro uživatele nebo tooretrieve další uživatelské dat od poskytovatele identity hello.
+Vaše aplikace také může nezávisle kontaktovat zprostředkovatele identity a následně poskytnout navrácený token službě App Service k ověření. Tento tok na straně klienta vám umožní poskytnout uživatelům jednotné přihlašování nebo od zprostředkovatele identity načíst další uživatelská data.
 
 #### <a name="social-authentication-basic-example"></a>Základní příklad sociálního ověřování
 
@@ -38,11 +38,11 @@ client.login(
 });
 
 ```
-Tento příklad předpokládá token tuto hello zadaný hello příslušného poskytovatele sady SDK je uložen v tokenu proměnná hello.
+Tento příklad předpokládá, že token poskytnutý příslušnou sadou SDK zprostředkovatele je uložený v proměnné token.
 
 #### <a name="microsoft-account-example"></a>Příklad s účtem Microsoft
 
-Následující příklad používá Hello hello Live SDK, která podporuje – jednotné přihlášení pro aplikace Windows Store pomocí Account Microsoft:
+Následující příklad používá sadu Live SDK, která podporuje jednotné přihlašování v aplikacích pro Windows Store pomocí účtu Microsoft:
 
 ```
 WL.login({ scope: "wl.basic"}).then(function (result) {
@@ -59,11 +59,11 @@ WL.login({ scope: "wl.basic"}).then(function (result) {
 
 ```
 
-Tento příklad získá token z Live připojení, který je zadaný tooyour služby App Service při volání funkce hello přihlášení.
+Tento příklad získá token ze služby Live Connect a zavoláním funkce login jej předá vaší službě App Service.
 
-###<a name="auth-getinfo"></a>Postupy: získání informací o hello ověřeného uživatele
+###<a name="auth-getinfo"></a>Postup: Získání informací o ověřeném uživateli
 
-informace o ověřování Hello lze načíst z hello `/.auth/me` volání koncového bodu pomocí protokolu HTTP s žádnou knihovnu AJAX.  Ujistěte se, nastavíte hello `X-ZUMO-AUTH` záhlaví tooyour ověřovací token.  Hello ověřovací token je uložen v `client.currentUser.mobileServiceAuthenticationToken`.  Například toouse hello načtení rozhraní API:
+Ověřovací informace můžete načíst z koncového bodu `/.auth/me` voláním HTTP pomocí libovolné knihovny AJAX.  Ujistěte se, že jste hlavičku `X-ZUMO-AUTH` nastavili na váš ověřovací token.  Ověřovací token je uložen v `client.currentUser.mobileServiceAuthenticationToken`.  Například pokud chcete použít rozhraní Fetch API:
 
 ```
 var url = client.applicationUrl + '/.auth/me';
@@ -73,8 +73,8 @@ fetch(url, { headers: headers })
     .then(function (data) {
         return data.json()
     }).then(function (user) {
-        // hello user object contains hello claims for hello authenticated user
+        // The user object contains the claims for the authenticated user
     });
 ```
 
-Fetch je k dispozici jako [balíček npm](https://www.npmjs.com/package/whatwg-fetch) nebo ke stažení přes prohlížeč na webu [CDNJS](https://cdnjs.com/libraries/fetch). Můžete také použít jQuery nebo jiné informace hello toofetch AJAX API.  Přijatá data jsou ve formátu objektu JSON.
+Fetch je k dispozici jako [balíček npm](https://www.npmjs.com/package/whatwg-fetch) nebo ke stažení přes prohlížeč na webu [CDNJS](https://cdnjs.com/libraries/fetch). K načtení informací můžete použít také jQuery nebo jiné rozhraní AJAX API.  Přijatá data jsou ve formátu objektu JSON.

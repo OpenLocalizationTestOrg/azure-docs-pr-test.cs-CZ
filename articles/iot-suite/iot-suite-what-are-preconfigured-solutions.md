@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure IoT předkonfigurovanými řešeními | Microsoft Docs"
-description: "Popis hello Azure IoT předkonfigurovaného řešení a jejich architektury spolu s odkazy tooadditional prostředky."
+title: "Začínáme s předkonfigurovanými řešeními Azure IoT | Dokumentace Microsoftu"
+description: "Popis předkonfigurovaných řešení Azure IoT a jejich architektury spolu s odkazy na další prostředky"
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -15,27 +15,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.openlocfilehash: bd059d08ab458fdb0b6f49b3ac469db930dab09e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: e0e79cb3b4c71c5d424f3b46af72fcb8b2f63ead
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="what-are-hello-azure-iot-suite-preconfigured-solutions"></a>Jaké jsou hello Azure předkonfigurovaná řešení IoT Suite?
+# <a name="what-are-the-azure-iot-suite-preconfigured-solutions"></a>Co jsou předkonfigurovaná řešení Azure IoT Suite?
 
-Hello Azure předkonfigurovaná řešení IoT Suite jsou implementací běžných vzorů řešení IoT, můžete nasadit tooAzure pomocí svého předplatného. Můžete použít hello předkonfigurované řešení:
+Předkonfigurovaná řešení Azure IoT Suite jsou implementací běžných vzorů řešení IoT, která můžete nasadit v Azure pomocí svého předplatného. Předkonfigurovaná řešení můžete použít následovně:
 
 * Jako výchozí bod pro své vlastní řešení IoT.
-* toolearn o běžných vzorech v návrhu řešení IoT a vývoj.
+* K získání informací o běžných vzorech v designu a vývoji řešení IoT.
 
-Každé předkonfigurované řešení je kompletní, začátku do konce implementace, používá simulované zařízení toogenerate telemetrie.
+Každé předkonfigurované řešení je kompletní a komplexní implementace, která využívá telemetrická simulovaná zařízení ke generování telemetrie.
 
-Můžete stáhnout hello úplný zdrojový kód toocustomize a rozšířit řešení toomeet hello vašich specifických požadavků IoT.
+Můžete si stáhnout kompletní zdrojový kód a upravit a rozšířit řešení tak, aby odpovídalo vašim specifickým požadavkům na IoT.
 
 > [!NOTE]
-> toodeploy jeden hello předkonfigurovaných řešení, navštivte [Microsoft Azure IoT Suite][lnk-azureiotsuite]. článek Hello [začít pracovat s hello přednastavenými řešeními IoT] [ lnk-getstarted-preconfigured] poskytuje další informace o tom, jak toodeploy a spusťte jeden z hello řešení.
+> Pokud chcete nasadit některé z předkonfigurovaných řešení, navštivte web [Microsoft Azure IoT Suite][lnk-azureiotsuite]. Další informace o nasazení a spuštění jednoho z řešení najdete v článku [Začínáme s předkonfigurovanými řešeními IoT][lnk-getstarted-preconfigured].
 
-Hello následující tabulka ukazuje, jak hello řešení mapují toospecific IoT funkce:
+Následující tabulka ukazuje, jak se řešení mapují na určité funkce IoT.
 
 | Řešení | Přijímání dat | Identita zařízení | Správa zařízení | Příkazy a ovládání | Pravidla a akce | Prediktivní analýza |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -43,64 +43,64 @@ Hello následující tabulka ukazuje, jak hello řešení mapují toospecific Io
 | [Prediktivní údržba][lnk-predictive-maintenance] |Ano |Ano |- |Ano |Ano |Ano |
 | [Propojená továrna][lnk-getstarted-factory] |Ano |Ano |Ano |Ano |Ano |- |
 
-* *Přijímání dat*: příchozí přenos dat v cloudu toohello škálování.
-* *Identita zařízení*: Správa identit jedinečný zařízení a řídit řešení toohello přístupu k zařízení.
+* *Přijímání dat*: Přijímání škálovaných dat do cloudu.
+* *Identita zařízení:* Správa jedinečných identit zařízení a řízení přístupu zařízení k řešení.
 * *Správa zařízení:* Správa metadat zařízení a provádění operací, jako například restartování zařízení a upgrady firmwaru.
-* *Příkazy a ovládání*: toocause hello zařízení tootake na akci, odesílat zprávy tooa zařízení z cloudu hello.
-* *Pravidla a akce*: tooact na konkrétní zařízení cloud data, back-end hello řešení používá pravidla.
-* *Prediktivní analýzy*: back-end hello řešení analyzuje data typu zařízení cloud toopredict při konkrétní akce má být provedena. Například analýza toodetermine telemetrická data motoru letadla po platnosti stroj údržby.
+* *Příkazy a ovládání:* Pokud chcete, aby zařízení provedlo nějakou akci, odešlete do zařízení zprávu z cloudu.
+* *Pravidla a akce:* Back-end řešení k reakci na konkrétní data typu zařízení-cloud používá pravidla.
+* *Prediktivní analýza:* Back-end řešení analyzuje data typu zařízení-cloud a z nich pak předpovídá, kdy by mělo dojít k určitým událostem. Například může analyzovat telemetrická data motoru letadla a určit, kdy bude zapotřebí provést údržbu.
 
 ## <a name="remote-monitoring-preconfigured-solution-overview"></a>Přehled předkonfigurovaného řešení vzdáleného monitorování
 
-Rozhodli jsme, že toodiscuss hello předkonfigurovaného řešení vzdáleného monitorování v tomto článku, protože ilustruje mnoho běžných prvků návrhu, které hello jiné sdílené složce řešení.
+V tomto článku se budeme zabývat předkonfigurovaným řešením vzdáleného monitorování, protože ilustruje mnoho běžných prvků návrhu, které sdílejí i jiná řešení.
 
-Hello následující diagram ilustruje klíčové prvky řešení vzdáleného sledování hello hello. Hello následující části obsahují další informace o těchto prvcích.
+Následující diagram ilustruje klíčové prvky řešení vzdáleného monitorování. Následující části poskytují další informace o těchto prvcích.
 
 ![Architektura předkonfigurovaného řešení vzdáleného monitorování][img-remote-monitoring-arch]
 
 ## <a name="devices"></a>Zařízení
 
-Když nasadíte předkonfigurované řešení vzdáleného sledování hello, čtyři Simulovaná zařízení jsou předem zřízená hello řešení, které simulující chladicí zařízení. Tato simulovaná zařízení mají předdefinovaný model teploty a vlhkosti, který vysílá telemetrická data. Tato simulovaná zařízení jsou zahrnuta, protože:
+Když nasadíte předkonfigurované řešení vzdáleného monitorování, bude obsahovat čtyři předem zřízená simulovaná zařízení, simulující chladicí zařízení. Tato simulovaná zařízení mají předdefinovaný model teploty a vlhkosti, který vysílá telemetrická data. Tato simulovaná zařízení jsou zahrnuta, protože:
 
-- Znázornění hello začátku do konce tok dat hello řešení.
+- Znázorňují tok dat řešením od začátku do konce.
 - Poskytují praktický zdroj telemetrie.
-- Zadejte cíl pro metody nebo příkazy, pokud jste vývojář back-end pomocí hello řešení jako výchozí bod pro vlastní implementaci.
+- Můžou být cílem pro metody nebo příkazy, pokud jste vývojář back-endu a používáte řešení jako výchozí bod pro vlastní implementaci.
 
-Hello simulované zařízení do řešení hello může reagovat toohello následující komunikace cloud zařízení:
+Simulovaná zařízení v tomto řešení můžou reagovat na následující komunikace typu cloud-zařízení:
 
-- *Metody ([přímé metody][lnk-direct-methods])*: kde připojeném zařízení je očekávané toorespond okamžitě metodu obousměrné komunikace.
-- *Příkazy (zpráv typu cloud zařízení)*: kde zařízení načte hello příkaz z trvalé fronty metodu jednosměrnou komunikaci.
+- *Metody ([přímé metody][lnk-direct-methods]):* Způsob obousměrné komunikace, u kterého se očekává, že připojené zařízení bude reagovat okamžitě.
+- *Příkazy (zprávy typu cloud-zařízení):* Způsob jednosměrné komunikace, při které zařízení načítá příkazy z trvalé fronty.
 
 Porovnání těchto rozdílných přístupů najdete v [doprovodných materiálech ke komunikaci typu cloud-zařízení][lnk-c2d-guidance].
 
-Když se zařízení poprvé připojí tooIoT centra v hello předkonfigurované řešení, odešle rozbočovači toohello zpráva informace o zařízení. Tato zpráva zobrazí hello metod, které hello zařízení může reagovat. V hello předkonfigurovanému řešení vzdáleného monitorování Simulovaná zařízení podporuje tyto metody:
+Když se zařízení poprvé připojí ke službě IoT Hub v rámci předkonfigurovaného řešení, odešle do služby zprávu s informacemi o zařízení. V této zprávě bude uveden seznam metod, na které zařízení může reagovat. V předkonfigurovaném řešení vzdáleného monitorování podporují simulovaná zařízení tyto metody:
 
-* *Zahájit aktualizaci firmwaru*: Tato metoda zahájí asynchronní úlohu na hello zařízení tooperform aktualizaci firmwaru. asynchronní úloha Hello používá hlášené vlastnosti toodeliver stav aktualizace toohello řídicí panel řešení.
-* *Restartovat*: Tato metoda způsobí, že tooreboot hello simulované zařízení.
-* *FactoryReset*: Tato metoda se aktivuje tovární nastavení hello simulované zařízení.
+* *Initiate Firmware Update* (Zahájit aktualizaci firmwaru): Tato metoda v zařízení zahájí asynchronní úlohu, která provede aktualizaci firmwaru. Asynchronní úloha pomocí ohlášených vlastností doručuje aktualizace stavu do řídicího panelu služby.
+* *Reboot* (Restartovat): Tato metoda způsobí, že se simulované zařízení restartuje.
+* *FactoryReset* (Obnovení do výrobního nastavení): Tato metoda v simulovaném zařízení aktivuje obnovení do výrobního nastavení.
 
-Když se zařízení poprvé připojí tooIoT centra v hello předkonfigurované řešení, odešle rozbočovači toohello zpráva informace o zařízení. Tato zpráva zobrazí hello příkazy, které hello zařízení může reagovat. Hello předkonfigurovanému řešení vzdáleného monitorování Simulovaná zařízení podporují tyto příkazy:
+Když se zařízení poprvé připojí ke službě IoT Hub v rámci předkonfigurovaného řešení, odešle do služby zprávu s informacemi o zařízení. V této zprávě bude uveden seznam příkazů, na které zařízení může reagovat. V předkonfigurovaném řešení vzdáleného monitorování podporují simulovaná zařízení tyto příkazy:
 
-* *Příkaz ping zařízení*: hello zařízení odpovídá toothis příkaz potvrzením. Tento příkaz je užitečné pro kontrolu, že toto zařízení hello je stále aktivní a naslouchá.
-* *Spustit Telemetrii*: dá pokyn toostart hello zařízení odesílat telemetrii.
-* *Zastavit Telemetrii*: dá pokyn toostop hello zařízení odesílat telemetrii.
-* *Změňte nastavení bodu teploty*: ovládací prvky hello simulované teplotní telemetrie hodnoty hello zařízení odesílá. Tímto příkazem snadno otestujete logiku back-endu.
-* *Diagnostická Telemetrie*: ovládá, zda text hello zařízení odesílat hello externí teplotu jako telemetrický údaj.
-* *Změny stavu zařízení*: Nastaví hello vlastnost metadata stavu v zařízení, která hello sestavy zařízení. Tímto příkazem snadno otestujete logiku back-endu.
+* *Ping Device* (Odeslat do zařízení příkaz ping): Zařízení na tento příkaz odpoví potvrzením. Tímto příkazem snadno zjistíte, zda je zařízení stále aktivní a naslouchá.
+* *Start Telemetry* (Spustit telemetrii): Dá zařízení pokyn, aby začalo odesílat telemetrii.
+* *Stop Telemetry* (Zastavit telemetrii): Dá zařízení pokyn, aby přestalo odesílat telemetrii.
+* *Change Set Point Temperature* (Změnit nastavenou teplotu): Ovládá hodnoty simulované teplotní telemetrie, které zařízení odesílá. Tímto příkazem snadno otestujete logiku back-endu.
+* *Diagnostic Telemetry* (Diagnostická telemetrie): Ovládá, zda má zařízení odesílat externí teplotu jako telemetrický údaj.
+* *Change Device State* (Změnit stav zařízení): Nastaví vlastnosti metadat o stavu zařízení, která zařízení odesílá. Tímto příkazem snadno otestujete logiku back-endu.
 
-Můžete přidat další Simulovaná zařízení toohello řešení, které emitování hello stejná telemetrická data a reakce toohello stejné metody a příkazy.
+Do řešení můžete přidat další simulovaná zařízení, která vysílají stejnou telemetrii a reagují na stejné metody a příkazy.
 
-Kromě toho tooresponding toocommands a metody hello řešení používá [dvojčata zařízení][lnk-device-twin]. Zařízení používají zařízení dvojčata tooreport vlastnost hodnoty toohello back-end řešení. řídicí panel řešení Hello používá hodnoty vlastností toonew potřeby tooset dvojčata zařízení na zařízení. Například během hello firmware aktualizace proces hello simulované zařízení sestavy hello stav hello aktualizovat pomocí hlášené vlastností.
+Řešení kromě reagování na příkazy a metody využívá i [dvojčata zařízení][lnk-device-twin]. Zařízení pomocí dvojčat zařízení hlásí hodnoty vlastností do back-endu řešení. Řídicí panel řešení používá dvojčata zařízení k nastavení nových hodnot požadovaných vlastností v zařízeních. Například během procesu aktualizace firmwaru simulované zařízení pomocí ohlášených vlastností hlásí stav aktualizace.
 
 ## <a name="iot-hub"></a>IoT Hub
 
-V tomto předkonfigurovaném řešení hello odpovídá instance IoT Hubu toohello *Cloudová brána* v typické [architektuře řešení IoT][lnk-what-is-azure-iot].
+V tomto předkonfigurovaném řešení odpovídá instance služby IoT Hub *cloudové bráně* v typické [architektuře řešení IoT][lnk-what-is-azure-iot].
 
-Centrum IoT získává telemetrická data ze zařízení hello v jednom koncovém bodě. Centrum IoT také udržuje zařízení specifické koncové body, kde každé zařízení může načíst hello příkazy, které se odesílají tooit.
+Centrum IoT získává telemetrická data ze zařízení v jednom koncovém bodě. IoT Hub také udržuje pro každé zařízení specifické koncové body, odkud zařízení získávají příkazy, které do nich byly zaslány.
 
-Hello IoT hub zpřístupní telemetrie hello přijatých prostřednictvím koncový bod čtení telemetrických dat na hello straně služby.
+Centrum IoT zpřístupňuje získaná telemetrická data přes koncový bod čtení telemetrických dat na straně služby.
 
-Hello možnosti správy zařízení služby IoT Hub umožňuje vám toomanage vlastnosti vaše zařízení z hello řešení portálu a plán úlohy, které provádění operací, jako:
+Možnost správy zařízení služby IoT Hub umožňuje spravovat vlastnosti zařízení z portálu řešení a plánovat úlohy provádějící operace, jako třeba:
 
 - Restartování zařízení
 - Změna stavu zařízení
@@ -108,64 +108,64 @@ Hello možnosti správy zařízení služby IoT Hub umožňuje vám toomanage vl
 
 ## <a name="azure-stream-analytics"></a>Azure Stream Analytics
 
-Hello předkonfigurované řešení používá tři [Azure Stream Analytics] [ lnk-asa] datový proud (ASA) úlohy toofilter hello telemetrie ze zařízení hello:
+Předkonfigurované řešení používá tři úlohy [Azure Stream Analytics][lnk-asa] (ASA), jejichž pomocí filtruje datový proud telemetrických dat ze zařízení:
 
-* *Úloha DeviceInfo* -výstupy data tooan události rozbočovače, který směruje zprávy specifické pro registraci zařízení, toohello registru zařízení řešení. Tento registr zařízení je databáze Azure Cosmos DB. Tyto zprávy jsou odesílány, když se zařízení poprvé připojí nebo v odpovědi tooa **změnit stav zařízení** příkaz.
-* *Úloha telemetrie* – odesílá všechny úložiště objektů blob tooAzure nezpracovaná telemetrická data uloží málo používaná data a vypočítá telemetrie agregace, které se zobrazují na řídicí panel řešení hello.
-* *Úloha pravidla* – filtry hello datový proud telemetrie podle hodnot, které přesahují stanovené mezní hodnoty pravidel a výstupy hello centra událostí tooan data. Jakmile se spustí pravidlo hello řídicím panelu portálu řešení Tato událost objeví jako nový řádek v tabulce historie alarmů hello. Tato pravidla mohou také spustit akci založenou na nastaveních hello definovaných hello **pravidla** a **akce** zobrazení na portálu řešení hello.
+* *Úloha DeviceInfo* (Informace o zařízení) – Odesílá výstupní data do centra událostí, které do registru zařízení pro řešení směruje zprávy specifické pro registraci zařízení. Tento registr zařízení je databáze Azure Cosmos DB. Tyto zprávy se odešlou ve chvíli, kdy se zařízení poprvé připojí, nebo v reakci na příkaz **Change Device State** (Změnit stav zařízení).
+* *Úloha Telemetry (Telemetrie)* – Odesílá veškerá nezpracovaná telemetrická data do služby Azure Blob Storage, uloží málo používaná data a vypočítá ze získaných telemetrických dat agregované hodnoty, které se zobrazují na řídicím panelu řešení.
+* *Úloha Rules (Pravidla)* – Filtruje datový proud telemetrie podle hodnot, které přesahují stanovené mezní hodnoty pravidel. Výstupní data odesílá do centra událostí. Jakmile se spustí pravidlo, na řídicím panelu portálu řešení se tato událost objeví jako nový řádek v tabulce historie alarmů. Tato pravidla můžou také aktivovat akce v závislosti na nastaveních definovaných v zobrazeních **Pravidla** a **Akce** na portálu řešení.
 
-V tomto předkonfigurovaném řešení hello ASA úlohy jsou součástí toohello **back-endu IoT řešení** v typické [architektuře řešení IoT][lnk-what-is-azure-iot].
+V tomto předkonfigurovaném řešení jsou úlohy ASA součástí **back-endu řešení IoT** v typické [architektuře řešení IoT][lnk-what-is-azure-iot].
 
 ## <a name="event-processor"></a>Procesor událostí
 
-V tomto předkonfigurovaném řešení hello procesor událostí součástí hello **back-endu IoT řešení** v typické [architektuře řešení IoT][lnk-what-is-azure-iot].
+V tomto předkonfigurovaném řešení je procesor událostí součástí **back-endu řešení IoT** v typické [architektuře řešení IoT][lnk-what-is-azure-iot].
 
-Hello **DeviceInfo** a **pravidla** úlohy ASA odeslat jejich výstup tooEvent centra pro doručení tooother back endové služby. řešení Hello používá [EventProcessorHost] [ lnk-event-processor] běhu instance [webové úlohy][lnk-web-job], tooread hello zprávy z těchto Center událostí. Hello **EventProcessorHost** používá:
-- Hello **DeviceInfo** data tooupdate hello zařízení dat v databázi Cosmos DB hello.
-- Hello **pravidla** tooinvoke hello logiku aplikace a aktualizace hello upozornění na data zobrazit na portálu řešení hello.
+Úlohy ASA **DeviceInfo** a **Rules** odesílají výstup do center událostí, odkud se přeposílají do dalších služeb back-endu. Toto řešení využívá instanci třídy [EventPocessorHost][lnk-event-processor] spuštěnou v rámci [webové úlohy][lnk-web-job] ke čtení zpráv z těchto center událostí. Instance **EventProcessorHost** využívá:
+- Data úlohy **DeviceInfo** k aktualizaci dat zařízení v databázi Cosmos DB.
+- Data úlohy **Rules** k vyvolání aplikace logiky a aktualizaci zobrazování upozornění na portálu řešení.
 
 ## <a name="device-identity-registry-device-twin-and-cosmos-db"></a>Registr identit zařízení, dvojče zařízení a služba Cosmos DB
 
-Každá služba IoT Hub obsahuje [registr identit zařízení][lnk-identity-registry], který ukládá klíče zařízení. IoT Hub používá tuto informaci ověřování zařízení – zařízení musí být registrováno a mít platný klíč, aby se může připojit toohello rozbočovače.
+Každá služba IoT Hub obsahuje [registr identit zařízení][lnk-identity-registry], který ukládá klíče zařízení. IoT Hub používá tuto informaci k ověřování zařízení – pokud se má zařízení připojit k centru, musí být registrováno a mít platný klíč.
 
-A [dvojče zařízení] [ lnk-device-twin] je dokument JSON spravuje hello IoT Hub. Dvojče každého zařízení obsahuje:
+[Dvojče zařízení][lnk-device-twin] je dokument JSON spravovaný službou IoT Hub. Dvojče každého zařízení obsahuje:
 
-- Hlášené vlastnosti poslal hello zařízení toohello rozbočovače. Tyto vlastnosti můžete zobrazit na portálu řešení hello.
-- Požadované vlastnosti, které mají toosend toohello zařízení. Tyto vlastnosti můžete nastavit v portálu řešení hello.
-- Značky, které existují pouze v hello dvojče zařízení a ne na hello zařízení. Tyto seznamy toofilter značky zařízení můžete použít na portálu řešení hello.
+- Ohlášené vlastnosti, které zařízení odeslalo do služby IoT Hub. Tyto vlastnosti můžete zobrazit na portálu řešení.
+- Požadované vlastnosti, které chcete odeslat do zařízení. Tyto vlastnosti můžete nastavit na portálu řešení.
+- Značky, které existují pouze ve dvojčeti zařízení a nikoli v samotném zařízení. Pomocí těchto značek můžete na portálu řešení filtrovat seznamy zařízení.
 
-Toto řešení používá metadat zařízení toomanage dvojčata zařízení. Hello řešení používá také dat Cosmos DB databáze toostore další zařízení, specifická řešení například hello příkazy podporované jednotlivých zařízení a hello historii příkazů.
+Toto řešení využívá dvojčata zařízení ke správě metadat zařízení. Řešení také využívá databázi Cosmos DB, ve které ukládá další data zařízení specifická pro řešení, jako jsou příkazy podporované jednotlivými zařízeními nebo historie příkazů.
 
-Hello řešení musí také udržovat informace hello v registru identit zařízení hello synchronizované s obsahem hello hello Cosmos DB databáze. Hello **EventProcessorHost** hello používá data z **DeviceInfo** úlohy stream analytics se toomanage hello synchronizace.
+Řešení také musí stále udržovat synchronizované informace v registru identit zařízení s obsahem databáze Cosmos DB. Příkaz **EventProcessorHost** používá k řízení synchronizace data z úlohy analýzy datového proudu **DeviceInfo**.
 
 ## <a name="solution-portal"></a>Portál řešení
 
 ![portál řešení][img-dashboard]
 
-portál řešení Hello je uživatelské rozhraní založené na webu, který je nasazen jako součást hello předkonfigurované řešení toohello cloudu. Umožňuje:
+Portál řešení je uživatelské rozhraní, které je založené na webu a nasazené v cloudu jako součást předkonfigurovaného řešení. Umožňuje:
 
 * Zobrazovat historii telemetrie a alarmů na řídicím panelu.
 * Zřizovat nová zařízení.
 * Spravovat a sledovat zařízení.
-* Odesílat příkazy toospecific zařízení.
+* Odesílat příkazy na konkrétní zařízení.
 * Vyvolávat metody v konkrétních zařízeních.
 * Upravovat pravidla a akce.
-* Plán úlohy toorun na jeden nebo více zařízení.
+* Plánovat spouštění úloh v jednom nebo více zařízeních.
 
-V tomto předkonfigurovaném řešení hello portál řešení součástí hello **back-endu IoT řešení** a součástí hello **zpracování a obchodní připojení** v typické hello [řešení IoT Architektura][lnk-what-is-azure-iot].
+V tomto předkonfigurovaném řešení je portál řešení součástí **back-endu řešení IoT** a součástí **připojení pro zpracování a obchodní logiku** v typické [architektuře řešení IoT][lnk-what-is-azure-iot].
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o architekturách řešení IoT najdete v tématu [Služby Microsoft Azure IoT: Referenční architektura][lnk-refarch].
 
-Teď víte, jaké předkonfigurované řešení je, abyste mohli začít nasazením hello *vzdálené monitorování* předkonfigurované řešení: [začít pracovat s hello předkonfigurované řešení] [ lnk-getstarted-preconfigured].
+Nyní víte, co je to předem nakonfigurované řešení a můžete začít nasazením předkonfigurovaného řešení *vzdáleného monitorování*: [Začínáme s předkonfigurovanými řešeními][lnk-getstarted-preconfigured].
 
 [img-remote-monitoring-arch]: ./media/iot-suite-what-are-preconfigured-solutions/remote-monitoring-arch1.png
 [img-dashboard]: ./media/iot-suite-what-are-preconfigured-solutions/dashboard.png
 [lnk-what-is-azure-iot]: iot-suite-what-is-azure-iot.md
 [lnk-asa]: https://azure.microsoft.com/documentation/services/stream-analytics/
 [lnk-event-processor]: ../event-hubs/event-hubs-programming-guide.md#event-processor-host
-[lnk-web-job]: ../app-service-web/web-sites-create-web-jobs.md
+[lnk-web-job]: ../app-service/web-sites-create-web-jobs.md
 [lnk-identity-registry]: ../iot-hub/iot-hub-devguide-identity-registry.md
 [lnk-predictive-maintenance]: iot-suite-predictive-overview.md
 [lnk-azureiotsuite]: https://www.azureiotsuite.com/

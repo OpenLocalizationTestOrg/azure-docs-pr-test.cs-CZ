@@ -1,4 +1,4 @@
-1. Zkopírujte hello instalační program tooa místní složku (třeba C:\Temp) na serveru hello, které chcete tooprotect. Spusťte hello jako správce na příkazovém řádku následující příkazy:
+1. Zkopírujte instalační službu do místní složky (například C:\Temp) na serveru, který chcete chránit. Jako správce na příkazovém řádku spusťte následující příkazy:
 
   ```
   cd C:\Temp
@@ -6,12 +6,12 @@
   MobilityServiceInstaller.exe /q /x:C:\Temp\Extracted
   cd C:\Temp\Extracted.
   ```
-2. tooinstall služby Mobility, spusťte následující příkaz hello:
+2. Pro instalaci služby Mobility, spusťte následující příkaz:
 
   ```
   UnifiedAgent.exe /Role "MS" /InstallLocation "C:\Program Files (x86)\Microsoft Azure Site Recovery" /Platform "VmWare" /Silent
   ```
-3. Teď je potřeba agenta hello toobe zaregistrována hello konfigurační Server.
+3. Nyní agent musí být registrováno s konfiguračním serverem.
 
   ```
   cd C:\Program Files (x86)\Microsoft Azure Site Recovery\agent
@@ -28,12 +28,12 @@ UnifiedAgent.exe /Role <MS|MT> /InstallLocation <Install Location> /Platform “
 | Parametr|Typ|Popis|Možné hodnoty|
 |-|-|-|-|
 |/ Role|Povinné|Určuje, zda by měly být nainstalovány služby Mobility (MS) nebo MasterTarget(MT) by měly být nainstalovány.|MS </br> MT –|
-|/InstallLocation|Nepovinné|Umístění, kde je nainstalovaná služba Mobility|Libovolné složky v počítači hello|
-|/ Platform|Povinné|Určuje hello platformy, na které hello služba Mobility je získávání nainstalovaná </br> </br>- **VMware** : tuto hodnotu použijte, pokud k instalaci služby mobility na virtuálním počítači systémem *VMware vSphere hostitelích ESXi*, *hostitelů Hyper-V* a *Phsyical servery* </br> - **Azure** : tuto hodnotu použijte, pokud instalujete agenta na virtuálním počítači Azure IaaS| VMware </br> Azure|
-|/ Tichou|Nepovinné|Určuje toorun hello instalačního programu v bezobslužném režimu| Není k dispozici|
+|/InstallLocation|Nepovinné|Umístění, kde je nainstalovaná služba Mobility|Libovolná složka v počítači|
+|/ Platform|Povinné|Určuje platformu, na kterém služba Mobility je získávání nainstalovaná </br> </br>- **VMware** : tuto hodnotu použijte, pokud k instalaci služby mobility na virtuálním počítači systémem *VMware vSphere hostitelích ESXi*, *hostitelů Hyper-V* a *Phsyical servery* </br> - **Azure** : tuto hodnotu použijte, pokud instalujete agenta na virtuálním počítači Azure IaaS| VMware </br> Azure|
+|/ Tichou|Nepovinné|Určuje, spusťte instalační program v bezobslužném režimu| Není k dispozici|
 
 >[!TIP]
-> Hello instalační protokoly naleznete v části %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log
+> Instalační protokoly naleznete v části %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log
 
 #### <a name="mobility-service-registration-command-line-arguments"></a>Argumenty příkazového řádku registrace služby mobility
 
@@ -44,9 +44,9 @@ UnifiedAgentConfigurator.exe”  /CSEndPoint <CSIP> /PassphraseFilePath <Passphr
 
   | Parametr|Typ|Popis|Možné hodnoty|
   |-|-|-|-|
-  |/ CSEndPoint |Povinné|IP adresa serveru konfigurace hello| Všechny platnou IP adresu|
-  |/PassphraseFilePath|Povinné|Umístění hello heslo |Všechny platné UNC nebo místní cesta|
+  |/ CSEndPoint |Povinné|IP adresa konfiguračního serveru| Všechny platnou IP adresu|
+  |/PassphraseFilePath|Povinné|Umístění heslo |Všechny platné UNC nebo místní cesta|
 
 
 >[!TIP]
-> Hello AgentConfiguration protokoly najdete v části %ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log
+> Protokoly AgentConfiguration naleznete v části %ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log

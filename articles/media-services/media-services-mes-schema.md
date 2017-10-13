@@ -1,6 +1,6 @@
 ---
-title: "schéma standardu pro kodér aaaMedia | Microsoft Docs"
-description: "Hello téma nabízí přehled hello Media Encoder Standard schématu."
+title: "Media Encoder Standard schématu | Microsoft Docs"
+description: "Téma nabízí přehled Media Encoder Standard schématu."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: juliako
-ms.openlocfilehash: 82bad27b9546f75557ac691ff148b46990647632
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0d034e2c3827b297173262d294a2e566a6b45fac
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard schématu
-Toto téma popisuje některé prvky hello a typy schématu XML hello, na kterém [Media Encoder Standard přednastavení](media-services-mes-presets-overview.md) jsou založené. Hello tématu poskytuje vysvětlení elementů a jejich platné hodnoty. úplné schématu Hello bude publikována později.  
+Toto téma popisuje některé prvky a typy schématu XML, na kterém [Media Encoder Standard přednastavení](media-services-mes-presets-overview.md) jsou založené. Téma obsahuje vysvětlení elementů a jejich platné hodnoty. Úplné schéma bude publikována později.  
 
 ## <a name="Preset"></a>Přednastavení (kořenový element)
 Definuje předvolby kódování.  
@@ -29,16 +29,16 @@ Definuje předvolby kódování.
 ### <a name="elements"></a>Elementy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **Kódování** |[Kódování](media-services-mes-schema.md#Encoding) |Kořenový element udává, že vstupní zdroje hello toobe kódování. |
+| **Kódování** |[Kódování](media-services-mes-schema.md#Encoding) |Kořenový element udává, že kódovaný vstupního zdroje. |
 | **Výstupy** |[Výstupy](media-services-mes-schema.md#Output) |Kolekce požadovaný výstupní soubory. |
 
 ### <a name="attributes"></a>Atributy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **Verze**<br/><br/> Požaduje se |**xs:decimal** |Hello přednastavené verze. Hello se vztahují následující omezení: hodnota xs:fractionDigits = "1" a xs:minInclusive value = "1", například **verze = "1.0"**. |
+| **Verze**<br/><br/> Požaduje se |**xs:decimal** |Přednastavené verze. Platí následující omezení: hodnota xs:fractionDigits = "1" a xs:minInclusive value = "1", například **verze = "1.0"**. |
 
 ## <a name="Encoding"></a>Kódování
-Obsahuje posloupnost hello následující prvky.  
+Obsahuje posloupnost následující prvky.  
 
 ### <a name="elements"></a>Elementy
 | Name (Název) | Typ | Popis |
@@ -54,20 +54,20 @@ Obsahuje posloupnost hello následující prvky.
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
 | **TwoPass**<br/><br/> Hodnota minOccurs = "0" |**xs:Boolean** |V současné době je podporováno pouze jeden průchodu kódování. |
-| **KeyFrameInterval**<br/><br/> Hodnota minOccurs = "0"<br/><br/> **Výchozí = "00: 00:02"** |**: Time** |Určuje hello pevné mezery mezi IDR rámce v jednotkách sekund. Také označuje tooas hello GOP trvání. V tématu **SceneChangeDetection** (pod) pro řízení zda hello encoder můžete odchylují od tuto hodnotu. |
-| **SceneChangeDetection**<br/><br/> Hodnota minOccurs = "0"<br/><br/> Výchozí = "false" |**xs:Boolean** |Pokud sada tootrue, pokusy kodér toodetect scény změnit v hello video a vloží již IDR rámečku. |
-| **Složitost**<br/><br/> Hodnota minOccurs = "0"<br/><br/> Výchozí = "Rovnováha" |**xs:String** |Ovládací prvky hello kompromis mezi zakódovat kvality rychlost a video. Může mít jednu z následujících hodnot hello: **rychlost**, **Rovnováha**, nebo **kvality**<br/><br/> Výchozí hodnota: **vyrovnáváním** |
+| **KeyFrameInterval**<br/><br/> Hodnota minOccurs = "0"<br/><br/> **Výchozí = "00: 00:02"** |**: Time** |Určuje pevné mezery mezi IDR rámce v jednotkách sekund. Také označuje jako GOP doba trvání. V tématu **SceneChangeDetection** (dole) pro řízení, zda kodér může lišit od tuto hodnotu. |
+| **SceneChangeDetection**<br/><br/> Hodnota minOccurs = "0"<br/><br/> Výchozí = "false" |**xs:Boolean** |Pokud nastaven na hodnotu true, kodér pokouší rozpoznat změnu scény ve videu a vloží již IDR rámečku. |
+| **Složitost**<br/><br/> Hodnota minOccurs = "0"<br/><br/> Výchozí = "Rovnováha" |**xs:String** |Ovládací prvky o kompromisu mezi kódování kvality rychlost a video. Může mít jednu z následujících hodnot: **rychlost**, **Rovnováha**, nebo **kvality**<br/><br/> Výchozí hodnota: **vyrovnáváním** |
 | **SyncMode**<br/><br/> Hodnota minOccurs = "0" | |V budoucích verzích se zveřejní funkce. |
 | **H264Layers**<br/><br/> Hodnota minOccurs = "0" |[H264Layers](media-services-mes-schema.md#H264Layers) |Kolekce vrstev výstupu videa. |
 
 ### <a name="attributes"></a>Atributy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **Podmínka** |**xs:String** | Pokud vstup hello žádné video, může být vhodné tooforce hello kodér tooinsert černobílý video sledovat. toodo, který použít podmínku = "InsertBlackIfNoVideoBottomLayerOnly" (tooinsert videa na pouze nejnižší přenosovou rychlostí hello) nebo podmínku = "InsertBlackIfNoVideo" (tooinsert videa na všechny přenosových rychlostí výstup). Další informace najdete v [tomto](media-services-advanced-encoding-with-mes.md#no_video) tématu.|
+| **Podmínka** |**xs:String** | Pokud je vstupní žádné video, můžete vynutit kodér vložit černobílý video sledovat. K tomu použít podmínku = "InsertBlackIfNoVideoBottomLayerOnly" (Chcete-li vložit video na pouze nejnižší přenosovou rychlostí) nebo podmínku = "InsertBlackIfNoVideo" (Vložit video vůbec výstup přenosových rychlostí). Další informace najdete v [tomto](media-services-advanced-encoding-with-mes.md#no_video) tématu.|
 
 ## <a name="H264Layers"></a>H264Layers
 
-Ve výchozím nastavení odeslání vstupní toohello kodér, který obsahuje pouze zvuk a obraz, bude obsahovat hello výstupní asset soubory s pouze zvuk data. Některé přehrávače nemusí být možné toohandle takové výstupní datové proudy. Můžete použít hello H264Video **InsertBlackIfNoVideo** atribut nastavení tooforce hello kodér tooadd toohello výstup sledovat videa v tomto scénáři. Další informace najdete v [tomto](media-services-advanced-encoding-with-mes.md#no_video) tématu.
+Ve výchozím nastavení odeslání vstup kodéru, který obsahuje pouze zvuk a obraz, bude obsahovat výstupní asset soubory s pouze zvuk data. Některé přehrávače nemusí být schopná zpracovat takové výstupní datové proudy. Můžete použít H264Video **InsertBlackIfNoVideo** atribut nastavení vynucení kodér přidat video sledovat ve výstupu v tomto scénáři. Další informace najdete v [tomto](media-services-advanced-encoding-with-mes.md#no_video) tématu.
               
 ### <a name="elements"></a>Elementy
 | Name (Název) | Typ | Popis |
@@ -76,56 +76,56 @@ Ve výchozím nastavení odeslání vstupní toohello kodér, který obsahuje po
 
 ## <a name="H264Layer"></a>H264Layer
 > [!NOTE]
-> Video omezení jsou založené na hodnoty hello popsané v hello [H264 úrovně](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC#Levels) tabulky.  
+> Video omezení jsou založené na hodnotách, které jsou popsané v [H264 úrovně](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC#Levels) tabulky.  
 > 
 > 
 
 ### <a name="elements"></a>Elementy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **Profil**<br/><br/> Hodnota minOccurs = "0"<br/><br/> Výchozí = "Auto" |**xs:String** |Může být jedna z následujících hello **xs:string** hodnoty: **automaticky**, **směrného plánu**, **hlavní**, **vysokou**. |
+| **Profil**<br/><br/> Hodnota minOccurs = "0"<br/><br/> Výchozí = "Auto" |**xs:String** |Může být jeden z následujících **xs:string** hodnoty: **automaticky**, **směrného plánu**, **hlavní**, **vysokou**. |
 | **Úroveň**<br/><br/> Hodnota minOccurs = "0"<br/><br/> Výchozí = "Auto" |**xs:String** | |
-| **Přenosovou rychlostí**<br/><br/> Hodnota minOccurs = "0" |**xs:int** |Hello přenosovou rychlostí použít pro tuto vrstvu videa zadaný v kb/s. |
-| **MaxBitrate**<br/><br/> Hodnota minOccurs = "0" |**xs:int** |Hello maximální přenosovou rychlostí použít pro tuto vrstvu videa zadaný v kb/s. |
-| **BufferWindow**<br/><br/> Hodnota minOccurs = "0"<br/><br/> Výchozí = "00: 00:05" |**: Time** |Délka vyrovnávací paměti video hello. |
-| **Šířka**<br/><br/> Hodnota minOccurs = "0" |**xs:int** |Šířka rámečku, videa hello výstup v pixelech.<br/><br/> Všimněte si, že v současné době musíte zadat šířku a výšku. Hello šířka a výška potřebovat toobe sudým číslům. |
-| **Výška**<br/><br/> Hodnota minOccurs = "0" |**xs:int** |Výška rámečku, videa hello výstup v pixelech.<br/><br/> Všimněte si, že v současné době musíte zadat šířku a výšku. Hello šířka a výška potřebovat toobe sudým číslům.|
+| **Přenosovou rychlostí**<br/><br/> Hodnota minOccurs = "0" |**xs:int** |Přenosovou rychlostí, použít pro tuto vrstvu videa zadaný v kb/s. |
+| **MaxBitrate**<br/><br/> Hodnota minOccurs = "0" |**xs:int** |Maximální přenosová použít pro tuto vrstvu videa zadaný v kb/s. |
+| **BufferWindow**<br/><br/> Hodnota minOccurs = "0"<br/><br/> Výchozí = "00: 00:05" |**: Time** |Délka video vyrovnávací paměti. |
+| **Šířka**<br/><br/> Hodnota minOccurs = "0" |**xs:int** |Šířka rámečku video výstup v pixelech.<br/><br/> Všimněte si, že v současné době musíte zadat šířku a výšku. Šířka a výška muset být sudé číslo. |
+| **Výška**<br/><br/> Hodnota minOccurs = "0" |**xs:int** |Výška rámečku video výstup v pixelech.<br/><br/> Všimněte si, že v současné době musíte zadat šířku a výšku. Šířka a výška muset být sudé číslo.|
 | **BFrames**<br/><br/> Hodnota minOccurs = "0" |**xs:int** |Počet snímků B mezi odkaz snímky. |
 | **ReferenceFrames**<br/><br/> Hodnota minOccurs = "0"<br/><br/> Výchozí = "3" |**xs:int** |Počet snímků odkaz v GOP. |
-| **EntropyMode**<br/><br/> Hodnota minOccurs = "0"<br/><br/> Výchozí = "Cabac" |**xs:String** |Může mít jednu z následujících hodnot hello: **Cabac** a **Cavlc**. |
-| **Kmitočet snímků**<br/><br/> Hodnota minOccurs = "0" |racionální číslo |Určuje hello obnovovací frekvence hello výstupu videa. Použijte výchozí hodnotu "0 nebo 1" toolet hello kodér použití hello stejné rámce míra jako hello vstup videa. Povolené hodnoty jsou očekávané toobe běžné frekvenci snímků videa, jak je uvedeno níže. Libovolný platný rozumné je však povolena. Příklad 1 nebo 1 by 1 fps a je platný.<br/><br/> -12/1 (12 fps)<br/><br/> -15/1 (15 fps)<br/><br/> -24/1 (24 fps)<br/><br/> 24000/1001 (23.976 fps)<br/><br/> -25/1 (25 fps)<br/><br/>  -30/1 (30 fps)<br/><br/> 30000/1001 (29,97 fps) <br/> <br/>**Poznámka:** při vytváření vlastní přednastavení pro více přenosovými rychlostmi kódování, pak všechny vrstvy hello přednastavení **musí** použití hello stejná hodnota kmitočet snímků.|
+| **EntropyMode**<br/><br/> Hodnota minOccurs = "0"<br/><br/> Výchozí = "Cabac" |**xs:String** |Může mít jednu z následujících hodnot: **Cabac** a **Cavlc**. |
+| **Kmitočet snímků**<br/><br/> Hodnota minOccurs = "0" |racionální číslo |Určuje obnovovací frekvence výstupu videa. Použijte výchozí nastavení 0 nebo 1"Pokud chcete, aby služba kodér použít stejné obnovovací frekvence jako vstup videa. Povolené hodnoty jsou očekávány běžné frekvenci snímků videa, jak je uvedeno níže. Libovolný platný rozumné je však povolena. Příklad 1 nebo 1 by 1 fps a je platný.<br/><br/> -12/1 (12 fps)<br/><br/> -15/1 (15 fps)<br/><br/> -24/1 (24 fps)<br/><br/> 24000/1001 (23.976 fps)<br/><br/> -25/1 (25 fps)<br/><br/>  -30/1 (30 fps)<br/><br/> 30000/1001 (29,97 fps) <br/> <br/>**Poznámka:** při vytváření vlastní předvolbu pro více přenosovými rychlostmi kódování, pak všechny vrstvy přednastavení **musí** použít stejnou hodnotu kmitočet snímků.|
 | **AdaptiveBFrame**<br/><br/> Hodnota minOccurs = "0" |**xs:Boolean** |Zkopírujte z Azure media encoder |
 | **Řezy**<br/><br/> Hodnota minOccurs = "0"<br/><br/> Výchozí = "0" |**xs:int** |Určuje, kolik řezy rámeček je rozdělené do. Doporučujeme používat výchozí. |
 
 ## <a name="AACAudio"></a>AACAudio
- Obsahuje posloupnost hello následující prvky a skupiny.  
+ Obsahuje posloupnost následující prvky a skupiny.  
 
  Další informace o AAC najdete v tématu [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding).  
 
 ### <a name="elements"></a>Elementy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **Profil**<br/><br/> Hodnota minOccurs = "0"<br/><br/> Výchozí = "AACLC" |**xs:String** |Může mít jednu z následujících hodnot hello: **AACLC**, **HEAACV1**, nebo **HEAACV2**. |
+| **Profil**<br/><br/> Hodnota minOccurs = "0"<br/><br/> Výchozí = "AACLC" |**xs:String** |Může mít jednu z následujících hodnot: **AACLC**, **HEAACV1**, nebo **HEAACV2**. |
 
 ### <a name="attributes"></a>Atributy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **Podmínka** |**xs:String** |tooforce hello kodér tooproduce asset, který obsahuje tichou zvuk sledovat, kdy se vstup neobsahuje žádný zvuk, zadejte hodnotu "InsertSilenceIfNoAudio" hello.<br/><br/> Ve výchozím nastavení Pokud odesíláte vstupní toohello kodér, který obsahuje pouze video a žádné zvuk, pak hello výstupní asset bude obsahovat soubory, které obsahují pouze video data. Některé přehrávače nemusí být možné toohandle takové výstupní datové proudy. V tomto scénáři můžete použít tato nastavení tooforce hello kodér tooadd výstup toohello tichou zvuk sledovat. |
+| **Podmínka** |**xs:String** |Chcete-li vynutit kodér k vytvoření asset, který obsahuje tichou zvuk sledovat, kdy se vstup neobsahuje žádný zvuk, zadejte hodnotu "InsertSilenceIfNoAudio".<br/><br/> Ve výchozím nastavení Pokud odesíláte vstup kodéru, který obsahuje pouze video a žádné zvuk, pak výstupní asset bude obsahovat soubory, které obsahují pouze video data. Některé přehrávače nemusí být schopná zpracovat takové výstupní datové proudy. Toto nastavení slouží k vynucení kodér přidat tichou zvuk sledovat ve výstupu v tomto scénáři. |
 
 ### <a name="groups"></a>Skupiny
 | Referenční informace | Popis |
 | --- | --- |
-| [AudioGroup](media-services-mes-schema.md#AudioGroup)<br/><br/> Hodnota minOccurs = "0" |Popis [AudioGroup](media-services-mes-schema.md#AudioGroup) tooknow hello odpovídající počet kanálů, vzorkovací frekvenci a přenosovou rychlost, která může být nastavena pro každý profil. |
+| [AudioGroup](media-services-mes-schema.md#AudioGroup)<br/><br/> Hodnota minOccurs = "0" |Popis [AudioGroup](media-services-mes-schema.md#AudioGroup) vědět odpovídající počet kanálů, vzorkovací frekvenci a přenosovou rychlost, která může být nastavena pro každý profil. |
 
 ## <a name="AudioGroup"></a>AudioGroup
-Podrobnosti o tom, jaké hodnoty jsou platné pro každý profil najdete v tématu Tabulka "Zvuk kodeků podrobnosti" hello, který následuje.  
+Podrobnosti o tom, jaké hodnoty jsou platné pro každý profil najdete v tabulce "Zvuk kodeků podrobnosti", který následuje.  
 
 ### <a name="elements"></a>Elementy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **Kanály**<br/><br/> Hodnota minOccurs = "0" |**xs:int** |Hello počet zvukových kanálů kódování. Hello následují platné možnosti: 1, 2, 5, 6, 8.<br/><br/> Výchozí: 2. |
-| **SamplingRate**<br/><br/> Hodnota minOccurs = "0" |**xs:int** |Hello zvuk vzorkovací frekvenci, zadaný v Hz. |
-| **Přenosovou rychlostí**<br/><br/> Hodnota minOccurs = "0" |**xs:int** |přenosovou rychlostí Hello používá při kódování hello zvuk zadané v kb/s. |
+| **Kanály**<br/><br/> Hodnota minOccurs = "0" |**xs:int** |Počet zvukových kanálů kódování. Platné možnosti jsou následující: 1, 2, 5, 6, 8.<br/><br/> Výchozí: 2. |
+| **SamplingRate**<br/><br/> Hodnota minOccurs = "0" |**xs:int** |Zvuk vzorkovací frekvenci zadaný v Hz. |
+| **Přenosovou rychlostí**<br/><br/> Hodnota minOccurs = "0" |**xs:int** |Přenosovou rychlostí, používá při kódování zvuk, zadané v kb/s. |
 
 ### <a name="audio-codec-details"></a>Podrobnosti o zvukových kodeků
 Zvukových kodeků|Podrobnosti  
@@ -139,25 +139,25 @@ Zvukových kodeků|Podrobnosti
 ### <a name="attributes"></a>Atributy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **Čas spuštění** |**xs** |Určuje čas zahájení hello prezentace. Hodnota Hello StartTime musí vstupní videa hello toomatch časová razítka absolutní hello. Například pokud hello první snímek hello vstupní video má časovým razítkem 12:00:10.000, pak čas spuštění by mělo obsahovat aspoň 12:00:10.000 nebo vyšší. |
-| **Doba trvání** |**xs** |Určuje dobu trvání hello prezentace (například vzhled překrytí v hello video). |
+| **Čas spuštění** |**xs** |Určuje počáteční čas prezentace. Hodnota čas spuštění musí odpovídat absolutní časová razítka vstupní videa. Například pokud první snímek vstupní video má časovým razítkem 12:00:10.000, pak čas spuštění by měl alespoň 12:00:10.000 nebo vyšší. |
+| **Doba trvání** |**xs** |Určuje dobu trvání prezentace (například vzhled překrytí v video). |
 
 ## <a name="Output"></a>Výstup
 ### <a name="attributes"></a>Atributy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **Název souboru** |**xs:String** |Název Hello hello výstupního souboru.<br/><br/> Můžete použít makra popsané v následující názvy výstupního souboru tabulky toobuild hello hello. Například:<br/><br/> **"Výstupy": [{"Název souboru": "{Basename}*{řešení}*.mp4 {přenosovou rychlostí}", "Format": {"Typ": "MP4Format"}}] ** |
+| **Název souboru** |**xs:String** |Název výstupního souboru.<br/><br/> Makra popsané v následující tabulce můžete použít k vytvoření názvy výstupního souboru. Například:<br/><br/> **"Výstupy": [{"Název souboru": "{Basename}*{řešení}*.mp4 {přenosovou rychlostí}", "Format": {"Typ": "MP4Format"}}] ** |
 
 ### <a name="macros"></a>Makra
 | – Makro | Popis |
 | --- | --- |
-| **{Basename}** |Při provádění VoD kódování, je nejprve 32 znaků hello AssetFile.Name vlastnosti hello primární soubor v vstupní asset hello hello hello {Basename}.<br/><br/> Pokud vstupní asset hello za provozu archivu, pak hello {Basename} je odvozená od hello trackName atributy v manifestu server hello. Pokud jste odeslali úlohu subclip pomocí hello TopBitrate, jako v: "< VideoStream\>TopBitrate < / VideoStream\>" a hello výstupní soubor obsahuje video a potom hello {Basename} je hello nejprve 32 znaků hello trackName Dobrý den vrstvu videa s nejvyšší přenosovou rychlostí hello.<br/><br/> Pokud místo toho jsou odesílání úlohu subclip pomocí všechny hello vstupní přenosových rychlostí, například "< VideoStream\>* < / VideoStream\>" a hello výstupní soubor obsahuje video a potom {Basename} je hello nejprve 32 znaků hello trackName systému Hello odpovídající vrstvu videa. |
-| **{Kodeků}** |Mapuje příliš "H264" pro video a "AAC" pro zvukovém souboru. |
-| **{Přenosovou rychlostí}** |Hello cíl video přenosovou rychlostí Pokud hello výstupní soubor obsahuje videa a zvuku, nebo zvuk přenosovou rychlostí cíl Pokud hello výstup souboru obsahuje pouze zvuk. Hello používá, je hello přenosovou rychlostí v kb/s. |
-| **{Kanál}** |Počet zvukových kanál Pokud hello soubor obsahuje zvukovém souboru. |
-| **{Šířka}** |Šířka hello video, v pixelech, ve výstupním souboru hello, pokud soubor hello obsahuje video. |
-| **{Výška}** |Výška hello video, v pixelech, ve výstupním souboru hello, pokud soubor hello obsahuje video. |
-| **{Rozšíření}** |Dědí od hello vlastnost "Type" pro hello výstupní soubor. název výstupního souboru Hello bude mít příponu, což je jedna z: "mp4", "ts", "jpg", "png" nebo "bmp". |
+| **{Basename}** |Pokud byste VoD kódování, {Basename} je nejdřív 32 znaků AssetFile.Name vlastnosti primárního souboru v vstupní prostředku.<br/><br/> Pokud vstupní asset za provozu archivu, {Basename} je odvozená od trackName atributy v manifestu serveru. Pokud jste odeslali úlohu subclip pomocí TopBitrate, jako v: "< VideoStream\>TopBitrate < / VideoStream\>" a výstupní soubor obsahuje video a potom {Basename} je prvních 32 znaků trackName video vrstvy s nejvyšší přenosovou rychlostí.<br/><br/> Pokud místo toho jsou odesílání úlohu subclip pomocí všechny vstupní přenosových rychlostí, například "< VideoStream\>* < / VideoStream\>" a výstupní soubor obsahuje video a potom {Basename} je prvních 32 znaků trackName odpovídající video vrstvy. |
+| **{Kodeků}** |Mapuje pro video "H264" a "AAC" pro zvukovém souboru. |
+| **{Přenosovou rychlostí}** |Video přenosovou cíl Pokud výstupní soubor obsahuje video a zvuk nebo zvuk přenosovou rychlostí cíl, pokud výstupní soubor obsahuje pouze zvuk. Hodnota použitá je přenosovou rychlostí v kb/s. |
+| **{Kanál}** |Pokud soubor obsahuje zvuk zvuk kanál počet. |
+| **{Šířka}** |Šířka videa v pixelech, ve výstupním souboru, pokud soubor obsahuje video. |
+| **{Výška}** |Výška videa v pixelech, ve výstupním souboru, pokud soubor obsahuje video. |
+| **{Rozšíření}** |Dědí z vlastnosti "Type" pro výstupní soubor. Název výstupního souboru bude mít příponu, což je jedna z: "mp4", "ts", "jpg", "png" nebo "bmp". |
 | **{Index}** |Povinné pro miniaturu. Mají jenom přítomen jednou. |
 
 ## <a name="Video"></a>Video (komplexní typ dědí od kodeků)
@@ -167,20 +167,20 @@ Zvukových kodeků|Podrobnosti
 | **Start** |**xs:String** | |
 | **Krok** |**xs:String** | |
 | **Rozsah** |**xs:String** | |
-| **PreserveResolutionAfterRotation** |**xs:Boolean** |Podrobné vysvětlení, najdete v následující části hello: [PreserveResolutionAfterRotation](media-services-mes-schema.md#PreserveResolutionAfterRotation) |
+| **PreserveResolutionAfterRotation** |**xs:Boolean** |Podrobné vysvětlení, najdete v následující části: [PreserveResolutionAfterRotation](media-services-mes-schema.md#PreserveResolutionAfterRotation) |
 
 ### <a name="PreserveResolutionAfterRotation"></a>PreserveResolutionAfterRotation
-Je doporučeno toouse hello PreserveResolutionAfterRotation příznak v kombinaci s hodnotami řešení vyjádřené v procentech (Width = "100 %", výška = "100 %").  
+Doporučuje se použít příznak PreserveResolutionAfterRotation v kombinaci s hodnotami řešení vyjádřené v procentech (Width = "100 %", výška = "100 %").  
 
-Ve výchozím nastavení zakódovat hello nastavení překladu (šířka a výška) v hello přednastavení Media Encoder Standard (MES) se budou zaměřovat na videa s otočení 0 stupňů. Například pokud vaše vstupní video 1280 × 720 nulové stupeň otáčení, pak hello výchozí přednastavení zajistěte, aby hello výstup hello stejné řešení. Viz následující obrázek.  
+Ve výchozím nastavení řešení kódovat (šířka a výška) v přednastavení Media Encoder Standard (MES) cílí na videa s otočení 0 stupňů. Například pokud vaše vstupní video 1280 × 720 nulové stupeň otáčení, pak jsou výchozí přednastavení zajistěte, aby výstup stejné rozlišení. Viz následující obrázek.  
 
 ![MESRoation1](./media/media-services-shemas/media-services-mes-roation1.png) 
 
-Nicméně to znamená, že pokud vstupní video hello se zaznamenala s nenulovou hodnotou otočení (např. tablet nebo smartphone uchovávat svisle), pak MES ve výchozím nastavení budou platit hello kódování řešení nastavení (šířka a výška) toohello vstupní video a potom kompenzovat otočení hello. Například viz následující obrázek hello. Hello přednastavených používá Width = "100 %", výška = "100 %", který MES interpretuje jako vyžadování hello výstup toobe 1 280 pixelů na šířku a výšku 720 pixelů. Po rotaci hello video, pak zaplňování hello obrázek toofit do tohoto okna a úvodní oblasti toopillar pole na hello vlevo a vpravo.  
+Nicméně to znamená, že pokud vstupní video má zaznamenala s nenulovou hodnotou otočení (např. tablet nebo smartphone uchovávat svisle), pak MES ve výchozím nastavení použije nastavení překladu kódovat (šířka a výška) vstup videa a pak kompenzovat otočení. Například viz následující obrázek. Přednastavení používá Width = "100 %", výška = "100 %", který MES interpretuje jako vyžadování výstup 1 280 pixelů na šířku a výšku 720 pixelů. Po rotaci videa, pak zaplňování na obrázku a nevejde se do okna, což pillar-box oblasti vlevo a vpravo.  
 
 ![MESRoation2](./media/media-services-shemas/media-services-mes-roation2.png) 
 
-Pokud hello výše není hello požadovaného chování, pak provedete použití hello PreserveResolutionAfterRotation příznak a nastavte ji příliš "PRAVDA" (výchozí hodnota je "false"). Takže pokud vaše přednastavené má šířku = "100 %", výška = "100 %" a nastavte příliš "PRAVDA", vstupní video, který je 1 280 pixelů a 720 pixelů výšku s 90 stupeň otočení vytvoří výstup s nulové otočení míry, ale 720 pixelů široké a 1280 PreserveResolutionAfterRotation Vysoký pixelů. Viz následující obrázek hello.  
+Pokud výše není požadované chování, pak můžete provést pomocí příznaku PreserveResolutionAfterRotation a nastavte ji na "PRAVDA" (výchozí hodnota je "false"). Proto pokud vaše přednastavené má šířku = "100 %", výška = "100 %" a PreserveResolutionAfterRotation nastavena na hodnotu true, vstupní video, což je 1 280 pixelů a 720 pixelů výšku s 90 stupeň otočení způsobí výstup s nulové stupeň otočení, ale 720 pixelů a výšku 1 280 pixelů. Viz následující obrázek.  
 
 ![MESRoation3](./media/media-services-shemas/media-services-mes-roation3.png) 
 

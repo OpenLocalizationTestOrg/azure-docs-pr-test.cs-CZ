@@ -1,6 +1,6 @@
 ---
-title: "aaaProtect back-endu webového rozhraní API pomocí Azure Active Directory a API Management | Microsoft Docs"
-description: "Zjistěte, jak tooprotect back-endu webového rozhraní API pomocí Azure Active Directory a API Management."
+title: "Ochrana back-endu webového rozhraní API pomocí Azure Active Directory a API Management | Microsoft Docs"
+description: "Zjistěte, jak k ochraně back-endu webového rozhraní API pomocí Azure Active Directory a API Management."
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -14,79 +14,79 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: f4b323034354aa09579c643bade47257fbf1e5c3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0dfb4102904c2e972e6617fd3851fb1c50147357
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="how-tooprotect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>Jak tooprotect back-endu webového rozhraní API pomocí Azure Active Directory a API Management
-následující video ukazuje, jak Hello toobuild back-end webového rozhraní API a chránit pomocí Azure Active Directory a rozhraní API správy protokolu OAuth 2.0.  Tento článek obsahuje přehled a další informace o hello kroky hello video. Následující 24 minutu video ukazuje, jak na:
+# <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>Jak chránit, back-endu webového rozhraní API pomocí Azure Active Directory a API Management
+Následující video ukazuje, jak vytvářet back-end webového rozhraní API a chránit pomocí Azure Active Directory a rozhraní API správy protokolu OAuth 2.0.  Tento článek obsahuje přehled a další informace o kroky v videa. Následující 24 minutu video ukazuje, jak na:
 
 * Sestavení webového rozhraní API back-end a zabezpečte ji pomocí AAD - počínaje 1:30
-* Importovat rozhraní API hello do rozhraní API Management – počínaje 7:10
-* Konfigurace hello vývojáře portálu toocall hello API – počínaje 9:09
-* Konfigurace desktopová aplikace toocall hello API – od 18:08
-* Konfigurace JWT ověření zásad toopre-autorizaci požadavků - začínající na 20:47
+* Importovat rozhraní API do rozhraní API Management – počínaje 7:10
+* Konfigurace portálu pro vývojáře pro volání rozhraní API – počínaje 9:09
+* Konfigurace aplikace pro volání rozhraní API – od 18:08
+* Konfigurace zásad ověřování tokenů JWT předem autorizovat požadavky - začínající na 20:47
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Protecting-Web-API-Backend-with-Azure-Active-Directory-and-API-Management/player]
 > 
 > 
 
 ## <a name="create-an-azure-ad-directory"></a>Vytvořte adresář služby Azure AD
-toosecure zálohovaný vašeho webového rozhraní API pomocí Azure Active Directory je nutné nejdříve vytvořit klienta služby AAD. V tomto videu klienta s názvem **APIMDemo** se používá. toocreate klienta služby AAD přihlášení toohello [portálu Azure Classic](https://manage.windowsazure.com) a klikněte na tlačítko **nový**->**App Services**->**Active Adresář**->**Directory**->**vytvořit vlastní**. 
+K zabezpečení vašeho webového rozhraní API zálohovaný pomocí Azure Active Directory je nutné nejdříve vytvořit klienta služby AAD. V tomto videu klienta s názvem **APIMDemo** se používá. Vytvoření klienta služby AAD, přihlaste se do [portálu Azure Classic](https://manage.windowsazure.com) a klikněte na tlačítko **nový**->**App Services**->**služby Active Directory**->**Directory**->**vytvořit vlastní**. 
 
 ![Azure Active Directory][api-management-create-aad-menu]
 
-V tomto příkladu adresář s názvem **APIMDemo** je vytvořena s výchozí doménu s názvem **DemoAPIM.onmicrosoft.com**. Tento adresář se používá napříč hello video.
+V tomto příkladu adresář s názvem **APIMDemo** je vytvořena s výchozí doménu s názvem **DemoAPIM.onmicrosoft.com**. Tento adresář se používá napříč videa.
 
 ![Azure Active Directory][api-management-create-aad]
 
 ## <a name="create-a-web-api-service-secured-by-azure-active-directory"></a>Vytvoření webového rozhraní API služby Zabezpečené přes Azure Active Directory
-V tomto kroku se vytvoří webového rozhraní API back-end pomocí Visual Studio 2013. Tento krok hello video se spustí v 1:30. toocreate webového rozhraní API back-end projektu v sadě Visual Studio klikněte na položku **soubor**->**nový**->**projektu**a zvolte **technologie ASP.NET Aplikace** z hello **webové** seznamu šablon. V této video hello projektu jmenuje **APIMAADDemo**. Klikněte na tlačítko **OK** toocreate hello projektu. 
+V tomto kroku se vytvoří webového rozhraní API back-end pomocí Visual Studio 2013. Tento krok videa se spustí v 1:30. Vytvoření projektu webového rozhraní API back-end v sadě Visual Studio klikněte na položku **soubor**->**nový**->**projektu**a zvolte **webové aplikace ASP.NET** z **webové** seznamu šablon. V tomto videu projektu jmenuje **APIMAADDemo**. Kliknutím na tlačítko **OK** vytvořte projekt. 
 
 ![Visual Studio][api-management-new-web-app]
 
-Klikněte na tlačítko **webového rozhraní API** z hello **vyberte seznam šablony** toocreate projekt webového rozhraní API. Klikněte na tlačítko tooconfigure ověřování Azure Directory **změna ověřování**.
+Klikněte na tlačítko **webového rozhraní API** z **vyberte seznam šablony** k vytvoření projektu webového rozhraní API. Ke konfiguraci klikněte na tlačítko Azure Directory Authentication **změna ověřování**.
 
 ![Nový projekt][api-management-new-project]
 
-Klikněte na tlačítko **účty organizace**a zadejte hello **domény** klienta služby AAD. Tento příklad hello domény je **DemoAPIM.onmicrosoft.com**. hello domény adresáře můžete získat hello **domén** svůj adresář.
+Klikněte na tlačítko **účty organizace**a zadejte **domény** klienta služby AAD. V tomto příkladu Doména je **DemoAPIM.onmicrosoft.com**. Můžete získat doménu adresáře **domén** svůj adresář.
 
 ![Domény][api-management-aad-domains]
 
-Konfigurace nastavení hello potřeby v hello **změna ověřování** dialogové okno a klikněte na tlačítko **OK**.
+Nakonfigurujte požadovaná nastavení v **změna ověřování** dialogové okno a klikněte na tlačítko **OK**.
 
 ![Změna ověřování][api-management-change-authentication]
 
-Když kliknete na tlačítko **OK** Visual Studio se pokusí tooregister vaší aplikace pomocí svého adresáře Azure AD a může být výzvami toosign ve Visual Studio. Přihlaste se pomocí účtu správce pro váš adresář.
+Když kliknete na tlačítko **OK** Visual Studio se pokusí o aplikaci zaregistrovat u svého adresáře Azure AD a budete vyzváni k přihlášení pomocí sady Visual Studio. Přihlaste se pomocí účtu správce pro váš adresář.
 
-![Přihlaste se tooVisual Studio][api-management-sign-in-vidual-studio]
+![Přihlaste se k sadě Visual Studio][api-management-sign-in-vidual-studio]
 
-tooconfigure tohoto projektu jako hello webového rozhraní API Azure zkontrolujte pole pro **hostitel v cloudu hello** a pak klikněte na **OK**.
+Konfigurace tohoto projektu jako webového rozhraní API Azure, zaškrtněte políčko pro **hostitel v cloudu** a pak klikněte na **OK**.
 
 ![Nový projekt][api-management-new-project-cloud]
 
-Může být výzvami toosign v tooAzure, a pak můžete nakonfigurovat hello webové aplikace.
+Můžete být vyzváni k přihlášení do Azure a pak můžete nakonfigurovat webové aplikace.
 
 ![Konfigurace][api-management-configure-web-app]
 
 V tomto příkladu a nové **plán služby App Service** s názvem **APIMAADDemo** je zadán.
 
-Klikněte na tlačítko **OK** tooconfigure hello webové aplikace a vytvoření projektu hello.
+Klikněte na tlačítko **OK** ke konfiguraci webové aplikace a vytvořte tak projekt.
 
-## <a name="add-hello-code-toohello-web-api-project"></a>Přidat projekt webového rozhraní API toohello hello kódu
-Hello další krok v hello video přidá projekt webového rozhraní API toohello hello kódu. Tento krok se spustí při 4:35.
+## <a name="add-the-code-to-the-web-api-project"></a>Přidejte do projektu webového rozhraní API kód
+Dalším krokem při přehrávání videa kód přidá do projektu webového rozhraní API. Tento krok se spustí při 4:35.
 
-Hello webového rozhraní API v tomto příkladu implementuje základní kalkulačky služby pomocí modelu a kontroleru. Klikněte pravým tlačítkem na model hello tooadd pro službu hello, **modely** v **Průzkumníku řešení** a zvolte **přidat**, **třída**. Název třídy hello `CalcInput` a klikněte na tlačítko **přidat**.
+Webové rozhraní API v tomto příkladu implementuje základní kalkulačky služby pomocí modelu a kontroleru. Chcete-li přidat model pro službu, klikněte pravým tlačítkem **modely** v **Průzkumníku řešení** a zvolte **přidat**, **třída**. Název třídy `CalcInput` a klikněte na tlačítko **přidat**.
 
-Přidejte následující hello `using` příkaz toohello začátek hello `CalcInput.cs` souboru.
+Přidejte následující `using` příkaz do horní části `CalcInput.cs` souboru.
 
 ```c#
 using Newtonsoft.Json;
 ```
 
-Nahraďte hello generované třídy hello následující kód.
+Generovaná třída nahraďte následujícím kódem.
 
 ```c#
 public class CalcInput
@@ -99,11 +99,11 @@ public class CalcInput
 }
 ```
 
-Klikněte pravým tlačítkem na **řadiče** v **Průzkumníku řešení** a zvolte **přidat**->**řadič**. Zvolte **webové rozhraní API 2 řadiče - prázdný** a klikněte na tlačítko **přidat**. Typ **CalcController** hello řadiče název a klikněte na tlačítko **přidat**.
+Klikněte pravým tlačítkem na **řadiče** v **Průzkumníku řešení** a zvolte **přidat**->**řadič**. Zvolte **webové rozhraní API 2 řadiče - prázdný** a klikněte na tlačítko **přidat**. Typ **CalcController** pro řadič název a klikněte na tlačítko **přidat**.
 
 ![Přidání Kontroleru][api-management-add-controller]
 
-Přidejte následující hello `using` příkaz toohello začátek hello `CalcController.cs` souboru.
+Přidejte následující `using` příkaz do horní části `CalcController.cs` souboru.
 
 ```c#
 using System.IO;
@@ -111,7 +111,7 @@ using System.Web;
 using APIMAADDemo.Models;
 ```
 
-Třída controller hello generované nahraďte hello následující kód. Tento kód implementuje hello `Add`, `Subtract`, `Multiply`, a `Divide` operace hello rozhraní API základní kalkulačky.
+Třídy generované kontroleru nahraďte následujícím kódem. Tento kód implementuje `Add`, `Subtract`, `Multiply`, a `Divide` operace rozhraní API základní kalkulačky.
 
 ```c#
 [Authorize]
@@ -159,41 +159,41 @@ public class CalcController : ApiController
 }
 ```
 
-Stiskněte klávesu **F6** toobuild a ověřte hello řešení.
+Stiskněte klávesu **F6** sestavení a ověřte řešení.
 
-## <a name="publish-hello-project-tooazure"></a>Publikování projektu tooAzure hello
-Tento krok hello Visual Studio je projekt publikované tooAzure. Tento krok hello video začíná na 5:45.
+## <a name="publish-the-project-to-azure"></a>Publikování projektu do Azure
+V tomto kroku sady Visual Studio publikování projektu do Azure. Tento krok videa začíná na 5:45.
 
-toopublish hello tooAzure projektu, klikněte pravým tlačítkem na hello **APIMAADDemo** projektu v sadě Visual Studio a zvolte **publikovat**. Ponechat výchozí nastavení hello v hello **Publikovat Web** dialogové okno a klikněte na tlačítko **publikovat**.
+K publikování tohoto projektu v Azure, klikněte pravým tlačítkem myši **APIMAADDemo** projektu v sadě Visual Studio a zvolte **publikovat**. Potvrďte výchozí nastavení **Publikovat Web** dialogové okno a klikněte na tlačítko **publikovat**.
 
 ![Publikování webu][api-management-web-publish]
 
-## <a name="grant-permissions-toohello-azure-ad-backend-service-application"></a>Udělení oprávnění aplikace služby back-end toohello Azure AD
-V adresáři služby Azure AD jako součást konfigurace hello a proces publikování projektu webového rozhraní API je vytvořena nová aplikace pro hello back-end službu. V tomto kroku hello video od 6:13 oprávnění toohello webového rozhraní API back-end.
+## <a name="grant-permissions-to-the-azure-ad-backend-service-application"></a>Udělení oprávnění k back-end aplikace služby Azure AD
+V adresáři služby Azure AD jako součást procesu konfigurace a publikování projektu webového rozhraní API je vytvořena nová aplikace pro back-end službu. V tomto kroku videa, od 6:13 jsou udělena oprávnění pro back-end webového rozhraní API.
 
 ![Aplikace][api-management-aad-backend-app]
 
-Klikněte na název hello hello aplikace tooconfigure hello požadované oprávnění. Přejděte toohello **konfigurace** a přejděte dolů toohello **oprávnění tooother aplikace** části. Klikněte na tlačítko hello **oprávnění aplikací** rozevíracího seznamu vedle položky **Windows** **Azure Active Directory**, zaškrtněte políčko hello pro **čtení dat adresáře**a klikněte na tlačítko **Uložit**.
+Klikněte na název aplikace a nakonfigurujte požadovaná oprávnění. Přejděte na **konfigurace** kartě a přejděte dolů k položce **oprávnění k ostatním aplikacím** části. Klikněte **oprávnění aplikací** rozevíracího seznamu vedle položky **Windows** **Azure Active Directory**, zaškrtněte políčko pro **čtení dat adresáře**a klikněte na tlačítko **Uložit**.
 
 ![Přidání oprávnění][api-management-aad-add-permissions]
 
 > [!NOTE]
-> Pokud **Windows** **Azure Active Directory** nejsou uvedené v části oprávnění tooother aplikace, klikněte na tlačítko **přidat aplikaci** a přidejte ho do seznamu hello.
+> Pokud **Windows** **Azure Active Directory** nejsou uvedené v části oprávnění k ostatním aplikacím, klikněte na tlačítko **přidat aplikaci** a přidejte ji ze seznamu.
 > 
 > 
 
-Poznamenejte si hello **identifikátor Id URI aplikace** pro použití v následném kroku při aplikaci Azure AD je nakonfigurován pro portál pro vývojáře hello API Management.
+Poznamenejte si **identifikátor Id URI aplikace** pro použití v následném kroku při aplikaci Azure AD je nakonfigurován pro portál pro vývojáře API Management.
 
 ![Id URI aplikace][api-management-aad-sso-uri]
 
-## <a name="import-hello-web-api-into-api-management"></a>Importovat hello webového rozhraní API do rozhraní API Management
-Rozhraní API se konfigurují na hello rozhraní API portálu vydavatele, který je přístupný prostřednictvím hello portálu Azure. tooreach, klikněte na tlačítko **portál vydavatele** z hello nástrojů služby API Management. Pokud jste instanci služby API Management ještě nevytvořili, přečtěte si téma [vytvoření instance API Management] [ Create an API Management service instance] v hello [Správa vašeho prvního rozhraní API] [ Manage your first API] kurzu.
+## <a name="import-the-web-api-into-api-management"></a>Importovat webové rozhraní API do rozhraní API Management
+Rozhraní API se konfigurují na rozhraní API portálu vydavatele, který je přístupný prostřednictvím portálu Azure. K dosažení ho, klikněte na tlačítko **portál vydavatele** na panelu nástrojů služby API Management. Pokud jste instanci služby API Management ještě nevytvořili, přečtěte si téma [vytvoření instance API Management] [ Create an API Management service instance] v [Správa vašeho prvního rozhraní API] [ Manage your first API] kurzu.
 
 ![Portál vydavatele][api-management-management-console]
 
-Operace jde [tooAPIs přidat ručně](api-management-howto-add-operations.md), nebo může být importován. V tomto videu se operace importují ve formátu Swagger od 6:40.
+Operace jde [ručně přidat do rozhraní API](api-management-howto-add-operations.md), nebo může být importován. V tomto videu se operace importují ve formátu Swagger od 6:40.
 
-Vytvořte soubor s názvem `calcapi.json` s následující obsah a uložit ho tooyour počítače. Ujistěte se, že hello `host` atribut odkazuje tooyour webového rozhraní API back-end. V tomto příkladu `"host": "apimaaddemo.azurewebsites.net"` se používá.
+Vytvořte soubor s názvem `calcapi.json` s následující obsah a uložte ho do počítače. Ujistěte se, že `host` atribut body back-end vašeho webového rozhraní API. V tomto příkladu `"host": "apimaaddemo.azurewebsites.net"` se používá.
 
 ```json
 {
@@ -337,29 +337,29 @@ Vytvořte soubor s názvem `calcapi.json` s následující obsah a uložit ho to
 }
 ```
 
-tooimport hello kalkulačky rozhraní API, klikněte na tlačítko **rozhraní API** z hello **API Management** nabídky na levé hello a pak klikněte na tlačítko **rozhraní API pro Import**.
+Pokud chcete importovat rozhraní API kalkulačky, klikněte v nabídce **API Management** na levé straně na **Rozhraní API** a potom na **Importovat rozhraní API**.
 
 ![Tlačítko Importovat rozhraní API][api-management-import-api]
 
-Proveďte následující kroky rozhraní API kalkulačky hello tooconfigure hello.
+Proveďte následující kroky konfigurace rozhraní API kalkulačky.
 
-1. Klikněte na tlačítko **ze souboru**, procházet toohello `calculator.json` soubor uložit a klikněte na tlačítko hello **Swagger** přepínač.
-2. Typ **calc** do hello **přípona adresy URL webového rozhraní API** textové pole.
-3. Klikněte na tlačítko v hello **produkty (volitelné)** pole a zvolte **Starter**.
-4. Klikněte na tlačítko **Uložit** tooimport hello rozhraní API.
+1. Klikněte na tlačítko **ze souboru**, vyhledejte `calculator.json` soubor uložit a klikněte na tlačítko **Swagger** přepínač.
+2. Typ **calc** do **přípona adresy URL webového rozhraní API** textové pole.
+3. Klikněte do pole **Produkty (volitelné)** a zvolte **Starter**.
+4. Kliknutím na **Uložit** naimportujte rozhraní API.
 
 ![Přidání nového rozhraní API][api-management-import-new-api]
 
-Po importu rozhraní API hello hello souhrnná stránka rozhraní API hello zobrazí na portálu vydavatele hello.
+Po importu rozhraní API se na portálu vydavatele zobrazí souhrnná stránka rozhraní.
 
-## <a name="call-hello-api-unsuccessfully-from-hello-developer-portal"></a>Volání rozhraní API hello neúspěšně z portálu pro vývojáře hello
-V tomto okamžiku hello rozhraní API byla naimportována do rozhraní API správy, ale nejde ještě volat úspěšně z portálu pro vývojáře hello protože hello back-end službu chráněné pomocí ověřování Azure AD. Tento postup je znázorněn v hello videa začínající na 7:40 pomocí hello následující kroky.
+## <a name="call-the-api-unsuccessfully-from-the-developer-portal"></a>Volání rozhraní API neúspěšně z portálu pro vývojáře
+V tomto okamžiku rozhraní API byla naimportována do rozhraní API správy, ale nejde ještě volat úspěšně z portálu pro vývojáře protože službě back-end je chráněn pomocí ověřování Azure AD. Tento postup je znázorněn ve videu od 7:40 pomocí následujících kroků.
 
-Klikněte na tlačítko **portál pro vývojáře** z hello horní pravé části portálu vydavatele hello.
+Klikněte na tlačítko **portál pro vývojáře** z pravé horní části portálu vydavatele.
 
 ![Portál pro vývojáře][api-management-developer-portal-menu]
 
-Klikněte na tlačítko **rozhraní API** a klikněte na tlačítko hello **kalkulačky** rozhraní API.
+Klikněte na tlačítko **rozhraní API** a klikněte na **kalkulačky** rozhraní API.
 
 ![Portál pro vývojáře][api-management-dev-portal-apis]
 
@@ -367,43 +367,43 @@ Klikněte na tlačítko **vyzkoušet**.
 
 ![Vyzkoušet][api-management-dev-portal-try-it]
 
-Klikněte na tlačítko **odeslat** a poznamenejte si stav odezvy hello **401 – Neověřeno**.
+Klikněte na tlačítko **odeslat** a poznamenejte si stav odpovědi **401 – Neověřeno**.
 
 ![Odeslat][api-management-dev-portal-send-401]
 
-Hello požadavek není autorizovaný, protože hello back-end rozhraní API je chráněn službou Azure Active Directory. Před úspěšně volání rozhraní API hello portál pro vývojáře hello musí být nakonfigurované tooauthorize vývojáře, kteří používají OAuth 2.0. Tento proces je popsán v následující části hello.
+Požadavek není autorizovaný, protože rozhraní API back-end je chráněn službou Azure Active Directory. Před úspěšně voláním rozhraní API vývojář portál musí být nakonfigurované k autorizaci vývojáře, kteří používají OAuth 2.0. Tento proces je popsán v následujících částech.
 
-## <a name="register-hello-developer-portal-as-an-aad-application"></a>Zaregistrujte se jako aplikaci AAD hello portál pro vývojáře
-Hello prvním krokem při konfiguraci hello vývojáře portálu tooauthorize vývojáře, kteří používají OAuth 2.0 je portál pro vývojáře hello tooregister jako aplikaci AAD. Tento postup je znázorněn od 8:27 v hello video.
+## <a name="register-the-developer-portal-as-an-aad-application"></a>Zaregistrujte se jako aplikaci AAD portál pro vývojáře
+Prvním krokem při konfiguraci portálu pro vývojáře k autorizaci vývojáře, kteří používají OAuth 2.0 je k registraci portál pro vývojáře jako aplikaci AAD. Tento postup je znázorněn od 8:27 na videu.
 
-Přejděte toohello Azure AD tenant z první krok hello toto video, v tomto příkladu **APIMDemo** a přejděte toohello **aplikace** kartě.
+Přejděte na klienta Azure AD v prvním kroku toto video, v tomto příkladu **APIMDemo** a přejděte do **aplikace** kartě.
 
 ![Nová aplikace][api-management-aad-new-application-devportal]
 
-Klikněte na tlačítko hello **přidat** tlačítko toocreate novou aplikaci Azure Active Directory a vyberte **přidat aplikaci, kterou vyvíjí Moje organizace**.
+Klikněte **přidat** tlačítko Vytvořit novou aplikaci Azure Active Directory a vyberte **přidat aplikaci, kterou vyvíjí Moje organizace**.
 
 ![Nová aplikace][api-management-new-aad-application-menu]
 
-Zvolte **webové aplikace nebo webové rozhraní API**, zadejte název a klikněte na šipku další hello. V tomto příkladu **APIMDeveloperPortal** se používá.
+Zvolte **webové aplikace nebo webové rozhraní API**, zadejte název a klikněte na šipku Další. V tomto příkladu **APIMDeveloperPortal** se používá.
 
 ![Nová aplikace][api-management-aad-new-application-devportal-1]
 
-Pro **přihlašovací adresa URL** zadejte adresu URL hello služby API Management a připojte `/signin`. V tomto příkladu `https://contoso5.portal.azure-api.net/signin` se používá.
+Pro **přihlašovací adresa URL** zadejte adresu URL služby API Management a připojit `/signin`. V tomto příkladu `https://contoso5.portal.azure-api.net/signin` se používá.
 
-Pro **URL Id aplikace** zadejte adresu URL hello služby API Management a připojte některé jedinečných znaků. To může být jakékoli požadované znaky a v tomto příkladu `https://contoso5.portal.azure-api.net/dp` se používá. Když hello potřeby **vlastností aplikace** jsou nakonfigurovaná, klikněte na tlačítko hello zaškrtnutí toocreate hello aplikace.
+Pro **URL Id aplikace** zadejte adresu URL služby API Management a připojit některé jedinečných znaků. To může být jakékoli požadované znaky a v tomto příkladu `https://contoso5.portal.azure-api.net/dp` se používá. Pokud požadovaný **vlastností aplikace** jsou nakonfigurovaná, klikněte na tlačítko zaškrtnutí pro vytvoření aplikace.
 
 ![Nová aplikace][api-management-aad-new-application-devportal-2]
 
 ## <a name="configure-an-api-management-oauth-20-authorization-server"></a>Konfigurace serveru autorizace OAuth 2.0 rozhraní API Management
-dalším krokem Hello je tooconfigure serveru autorizace OAuth 2.0 ve službě API Management. Tento krok je znázorněn v videa začínající na 9:43 hello.
+Dalším krokem je konfigurace serveru autorizace OAuth 2.0 ve službě API Management. Tento krok je znázorněn v videa začínající na 9:43.
 
-Klikněte na tlačítko **zabezpečení** hello API Management na nabídce hello vlevo, klikněte na tlačítko **OAuth 2.0**a potom klikněte na **přidat autorizační** serveru.
+Klikněte na tlačítko **zabezpečení** nabídce API Management na levé straně klikněte na **OAuth 2.0**a potom klikněte na **přidat autorizační** serveru.
 
 ![Přidání serveru ověřování][api-management-add-authorization-server]
 
-Zadejte název a volitelný popis v hello **název** a **popis** pole. Tato pole jsou použité tooidentify hello OAuth 2.0 autorizace serveru v rámci instance služby API Management hello. V tomto příkladu **ukázkový server autorizace** se používá. Později při zadávání toobe server OAuth 2.0 používat k ověřování pro rozhraní API, vyberete tento název.
+Zadejte název a volitelný popis v **název** a **popis** pole. Tato pole se používají k identifikaci serveru ověřování OAuth 2.0 v rámci instance služby API Management. V tomto příkladu **ukázkový server autorizace** se používá. Později při zadávání serveru OAuth 2.0, který se má použít pro ověření pro rozhraní API, vyberete tento název.
 
-Pro hello **adresa URL stránky registrace klienta** zadejte hodnotu zástupného symbolu, jako `http://localhost`.  Hello **adresa URL stránky registrace klienta** body toohello stránka, kterou můžou uživatelé použít toocreate a nakonfigurovat svoje vlastní účty zprostředkovatelů OAuth 2.0, které podporují správu uživatelské účty. V tomto příkladu uživatele není vytvořit a nakonfigurovat svoje vlastní účty, tak se používá zástupný symbol.
+Pro **adresa URL stránky registrace klienta** zadejte hodnotu zástupného symbolu, jako `http://localhost`.  **Adresa URL stránky registrace klienta** odkazuje na stránku, uživatelé můžete vytvořit a nakonfigurovat svoje vlastní účty zprostředkovatelů OAuth 2.0, které podporují správu uživatelské účty. V tomto příkladu uživatele není vytvořit a nakonfigurovat svoje vlastní účty, tak se používá zástupný symbol.
 
 ![Přidání serveru ověřování][api-management-add-authorization-server-1]
 
@@ -411,92 +411,92 @@ Potom zadejte **adresu URL koncového bodu autorizace** a **adresu URL koncovéh
 
 ![Autorizace serveru][api-management-add-authorization-server-1a]
 
-Tyto hodnoty lze získat z hello **koncových bodů aplikace** stránku hello AAD aplikace, které jste vytvořili pro portál pro vývojáře hello. Koncové body hello tooaccess přejděte toohello **konfigurace** hello AAD aplikace a klikněte na **zobrazit koncové body**.
+Tyto hodnoty lze získat z **koncových bodů aplikace** stránky AAD aplikace, který jste vytvořili pro portál pro vývojáře. Pro přístup koncových bodů, přejděte na **konfigurace** AAD aplikace a klikněte na **zobrazit koncové body**.
 
 ![Aplikace][api-management-aad-devportal-application]
 
 ![Zobrazit koncové body][api-management-aad-view-endpoints]
 
-Kopírování hello **koncový bod autorizace OAuth 2.0** a vložte jej do hello **adresu URL koncového bodu autorizace** textové pole.
+Kopírování **koncový bod autorizace OAuth 2.0** a vložte ji do **adresu URL koncového bodu autorizace** textové pole.
 
 ![Přidání serveru ověřování][api-management-add-authorization-server-2]
 
-Kopírování hello **koncový bod tokenu OAuth 2.0** a vložte jej do hello **adresu URL koncového bodu Token** textové pole.
+Kopírování **koncový bod tokenu OAuth 2.0** a vložte ji do **adresu URL koncového bodu Token** textové pole.
 
 ![Přidání serveru ověřování][api-management-add-authorization-server-2a]
 
-Kromě toho toopasting v hello koncovému bodu tokenu, přidáte další text parametr s názvem **prostředků** a pro hodnotu hello používat hello **identifikátor Id URI aplikace** z hello AAD aplikace hello back-end službu, která byla vytvoří, když byla publikována hello projektu sady Visual Studio.
+Kromě vkládání v koncový bod token, přidáte další text parametr s názvem **prostředků** a používat hodnotu **identifikátor Id URI aplikace** z AAD aplikace pro back-end službu, která byla vytvořena, když byla publikována projekt Visual Studio.
 
 ![Id URI aplikace][api-management-aad-sso-uri]
 
-Potom zadejte pověření klienta hello. Tyto jsou hello přihlašovací údaje pro prostředek hello chcete tooaccess, v takovém případě hello portál pro vývojáře.
+Potom zadejte pověření klienta. Jedná se o pověření pro prostředek, který má přístup, v tomto případě portál pro vývojáře.
 
 ![Pověření klienta][api-management-client-credentials]
 
-tooget hello **Id klienta**, přejděte toohello **konfigurace** kartě hello AAD aplikace pro vývojáře hello portál a zkopírujte hello **Id klienta**.
+Chcete-li získat **Id klienta**, přejděte na **konfigurace** AAD aplikace pro portál pro vývojáře a zkopírujte **Id klienta**.
 
-tooget hello **tajný klíč klienta** klikněte na tlačítko hello **vyberte dobu trvání** rozevírací seznam v hello **klíče** části a zadat interval. V tomto příkladu se používá 1 rok.
+Získat **tajný klíč klienta** klikněte na tlačítko **vyberte dobu trvání** rozevírací seznam v **klíče** části a zadat interval. V tomto příkladu se používá 1 rok.
 
 ![ID klienta][api-management-aad-client-id]
 
-Klikněte na tlačítko **Uložit** toosave hello konfiguraci a zobrazení hello klíč. 
+Klikněte na tlačítko **Uložit** zobrazí klíč a uložte konfiguraci. 
 
 > [!IMPORTANT]
-> Tento klíč si poznamenejte. Po zavření okna konfigurace Azure Active Directory hello hello klíč nelze zobrazit znovu.
+> Tento klíč si poznamenejte. Po zavření okna konfigurace Azure Active Directory, klíč nelze zobrazit znovu.
 > 
 > 
 
-Kopírování hello klíče toohello schránky, portál vydavatele back toohello přepínače, vložte klíč hello do hello **tajný klíč klienta** textovému poli a klikněte na tlačítko **Uložit**.
+Klíč zkopírujte do schránky, přepněte zpět na portálu vydavatele, vložte klíč do **tajný klíč klienta** textovému poli a klikněte na tlačítko **Uložit**.
 
 ![Přidání serveru ověřování][api-management-add-authorization-server-3]
 
-Hned za hello pověření klienta je udělení autorizačního kódu. Zkopírujte tento autorizační kód a přepínač back tooyour aplikace portálu služby Azure AD vývojáře konfigurace stránky a vložte udělení autorizace hello do hello **adresa URL odpovědi** pole a klikněte na tlačítko **Uložit** znovu.
+Okamžitě následující pověření klienta je udělení autorizačního kódu. Kopírování tento autorizační kód a přepínač zpět do aplikace Azure AD vývojáře portálu konfigurace stránky a vložte udělení autorizace do **adresa URL odpovědi** pole a klikněte na tlačítko **Uložit** znovu.
 
 ![Adresa URL odpovědi][api-management-aad-reply-url]
 
-dalším krokem Hello je tooconfigure hello oprávnění pro portál pro vývojáře hello AAD aplikace. Klikněte na tlačítko **oprávnění aplikací** a zaškrtněte políčko hello pro **čtení dat adresáře**. Klikněte na tlačítko **Uložit** toosave to změnit a potom klikněte na **přidat aplikaci**.
+Dalším krokem je konfigurace oprávnění pro portál pro vývojáře AAD aplikace. Klikněte na tlačítko **oprávnění aplikací** a zaškrtněte políčko pro **čtení dat adresáře**. Klikněte na tlačítko **Uložit** uložte tuto změnu, a pak klikněte na **přidat aplikaci**.
 
 ![Přidání oprávnění][api-management-add-devportal-permissions]
 
-Klikněte na ikonu hledání hello, typ **APIM** do hello počínaje pole, vyberte **APIMAADDemo**a klikněte na tlačítko zaškrtnutí toosave hello.
+Klikněte na ikonu hledání typu **APIM** do počáteční s poli, vyberte **APIMAADDemo**a klikněte na políčko pro uložení.
 
 ![Přidání oprávnění][api-management-aad-add-app-permissions]
 
-Klikněte na tlačítko **delegovaná oprávnění** pro **APIMAADDemo** a zaškrtněte políčko hello pro **přístup APIMAADDemo**a klikněte na tlačítko **Uložit**. To umožňuje vývojáři hello aplikace portálu tooaccess hello back-end službu.
+Klikněte na tlačítko **delegovaná oprávnění** pro **APIMAADDemo** a zaškrtněte políčko pro **přístup APIMAADDemo**a klikněte na tlačítko **Uložit**. To umožňuje vývojáři aplikace portálu přístup ke službě back-end.
 
 ![Přidání oprávnění][api-management-aad-add-delegated-permissions]
 
-## <a name="enable-oauth-20-user-authorization-for-hello-calculator-api"></a>Povolení autorizace uživatelů OAuth 2.0 pro rozhraní API kalkulačky hello
-Teď, když hello OAuth 2.0 je server nakonfigurovaný, můžete je zadat v hello nastavení zabezpečení pro vaše rozhraní API. Tento krok je znázorněn v hello videa začínající na 14:30.
+## <a name="enable-oauth-20-user-authorization-for-the-calculator-api"></a>Povolení autorizace uživatelů OAuth 2.0 pro rozhraní API kalkulačky
+Teď, když server OAuth 2.0 je nakonfigurovaný, můžete v nastavení zabezpečení pro vaše rozhraní API. Tento krok je znázorněn v videa začínající na 14:30.
 
-Klikněte na tlačítko **rozhraní API** v levé nabídce text hello a klikněte na tlačítko **kalkulačky** tooview a konfigurovat jeho nastavení.
+Klikněte na tlačítko **rozhraní API** v levé nabídce a klikněte na **kalkulačky** můžete zobrazit a konfigurovat jeho nastavení.
 
 ![API kalkulačky][api-management-calc-api]
 
-Přejděte toohello **zabezpečení** kartě, zkontrolujte hello **OAuth 2.0** zaškrtávací políčko, vyberte hello serveru požadované ověřování z hello **serveru ověřování** rozevíracího seznamu a klikněte na tlačítko **Uložit**.
+Přejděte na **zabezpečení** zaškrtněte políčko **OAuth 2.0** zaškrtávací políčko, vyberte požadované autorizace server z **serveru ověřování** rozevíracího seznamu a klikněte na tlačítko **Uložit**.
 
 ![API kalkulačky][api-management-enable-aad-calculator]
 
-## <a name="successfully-call-hello-calculator-api-from-hello-developer-portal"></a>Úspěšně hello rozhraní API kalkulačky volejte z portálu pro vývojáře hello
-Teď, když na hello rozhraní API je nakonfigurováno autorizace hello OAuth 2.0, můžete jeho operace úspěšně volat z středisku pro vývojáře hello. Tento krok je znázorněn v hello videa začínající na 15:00.
+## <a name="successfully-call-the-calculator-api-from-the-developer-portal"></a>Rozhraní API kalkulačky úspěšně volejte z portálu pro vývojáře
+Teď, když autorizace OAuth 2.0 je nakonfigurovaná na volání rozhraní API, můžete jeho operace úspěšně volat z středisku pro vývojáře. Tento krok je znázorněn v videa začínající na 15:00.
 
-Přejděte zpět toohello **přidat dvě celá čísla** operaci hello kalkulačky služby v portálu pro vývojáře hello a klikněte na **vyzkoušet**. Poznámka: hello novou položku hello **autorizace** části odpovídající serveru ověřování toohello jste právě přidali.
+Přejděte zpět **přidat dvě celá čísla** operaci kalkulačky služby v portálu pro vývojáře a klikněte na **vyzkoušet**. Poznámka: novou položku **autorizace** části odpovídající serveru ověřování, který jste právě přidali.
 
 ![API kalkulačky][api-management-calc-authorization-server]
 
-Vyberte **autorizační kód** z hello autorizace rozevíracího seznamu a zadejte přihlašovací údaje účtu toouse hello hello. Pokud jste již přihlášeni pomocí účtu hello nemusí zobrazí se výzva.
+Vyberte **autorizační kód** z autorizace rozevíracího seznamu a zadejte přihlašovací údaje pro účet, který chcete použít. Pokud jste již přihlášeni pomocí účtu, nemusí se zobrazí výzva.
 
 ![API kalkulačky][api-management-devportal-authorization-code]
 
-Klikněte na tlačítko **odeslat** a Poznámka hello **stav odpovědi** z **200 OK** a výsledky hello hello operace v obsahu odpovědi hello.
+Klikněte na tlačítko **odeslat** a poznamenejte si **stav odpovědi** z **200 OK** a výsledky operace v obsahu odpovědi.
 
 ![API kalkulačky][api-management-devportal-response]
 
-## <a name="configure-a-desktop-application-toocall-hello-api"></a>Konfigurace desktopová aplikace toocall hello rozhraní API
-Další postup Hello v hello video začíná na 16:30 a nakonfiguruje hello toocall jednoduchou aplikaci plochy rozhraní API. prvním krokem Hello je tooregister hello desktopová aplikace ve službě Azure AD a poskytněte přístup toohello adresář a toohello back-end službu. Na 18:25 je ukázka aplikace pracovní plochy hello volání operace na API kalkulačky hello.
+## <a name="configure-a-desktop-application-to-call-the-api"></a>Konfigurace aplikace pro volání rozhraní API
+Následující postup ve videu začíná na 16:30 a nakonfiguruje jednoduché aplikace pracovní plochy pro volání rozhraní API. Prvním krokem je registrace klientů aplikace ve službě Azure AD a poskytněte přístup k adresáři a ke službě back-end. Na 18:25 je ukázka aplikace pracovní plochy volání operace na rozhraní API kalkulačky.
 
-## <a name="configure-a-jwt-validation-policy-toopre-authorize-requests"></a>Konfigurace JWT ověření zásad toopre-autorizaci požadavků
-Hello poslední postup v hello video začíná na 20:48 a ukazuje, jak toouse hello [ověření JWT](https://msdn.microsoft.com/library/azure/034febe3-465f-4840-9fc6-c448ef520b0f#ValidateJWT) zásad toopre-autorizaci požadavků na ověřením hello přístupové tokeny každého příchozího požadavku. Pokud hello požadavek není ověřen hello zásady ověřování tokenů JWT, žádost o hello je blokována API Management a není předají toohello back-end.
+## <a name="configure-a-jwt-validation-policy-to-pre-authorize-requests"></a>Konfigurace zásad ověřování JWT předem autorizovat požadavků
+Poslední postup ve videu začíná na 20:48 a ukazuje, jak používat [ověření JWT](https://msdn.microsoft.com/library/azure/034febe3-465f-4840-9fc6-c448ef520b0f#ValidateJWT) zásad předem autorizovat požadavky ověřením přístupových tokenů každého příchozího požadavku. Pokud požadavek není ověřen pomocí zásad ověřování tokenů JWT, žádost je blokována API Management a není předají back-end.
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
@@ -509,11 +509,11 @@ Hello poslední postup v hello video začíná na 20:48 a ukazuje, jak toouse he
 </validate-jwt>
 ```
 
-Jiné předvedení konfiguraci a použití této zásady, najdete v části [cloudu zahrnují díl 177: víc funkcí správy rozhraní API](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) a převinutí vpřed too13:50. Rychlé převinutí vpřed too15:00 toosee hello zásady nakonfigurované v editoru zásad hello, a potom too18:50 pro předvedení volání operace z portálu pro vývojáře hello s i bez hello vyžaduje autorizační token.
+Jiné předvedení konfiguraci a použití této zásady, najdete v části [cloudu zahrnují díl 177: víc funkcí správy rozhraní API](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) a rychlé převíjení vpřed na 13:50. Rychlé převinutí vpřed do 15:00 v tématu Zásady nakonfigurované v editoru zásad a potom do 18:50 pro předvedení volání operace z portálu pro vývojáře s i bez požadované autorizační token.
 
 ## <a name="next-steps"></a>Další kroky
 * Podívejte se na další [videa](https://azure.microsoft.com/documentation/videos/index/?services=api-management) o službě API Management.
-* Pro jiné způsoby toosecure službě back-end, najdete v části [vzájemného ověření certifikátů](api-management-howto-mutual-certificates.md).
+* Další způsoby zabezpečení back-end službu, naleznete v části [vzájemného ověření certifikátů](api-management-howto-mutual-certificates.md).
 
 [api-management-management-console]: ./media/api-management-howto-protect-backend-with-aad/api-management-management-console.png
 

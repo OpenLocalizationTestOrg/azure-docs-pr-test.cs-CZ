@@ -1,5 +1,5 @@
 ---
-title: "aaaDMZ příklad – sestavení DMZ tooProtect sítím pomocí brány Firewall, UDR a NSG | Microsoft Docs"
+title: "Příklad DMZ – sestavení DMZ k ochraně sítě s bránu Firewall, UDR a NSG | Microsoft Docs"
 description: "Sestavení DMZ s bránou Firewall, uživatelem definované směrování (UDR) a skupiny zabezpečení sítě (NSG)"
 services: virtual-network
 documentationcenter: na
@@ -14,48 +14,48 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: cc121f9cd5fe3c3e9ac2c70fbb7d982a80bb345d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: fdb3c5cbd3acee90386352c6f180a71aa81f54fe
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="example-3--build-a-dmz-tooprotect-networks-with-a-firewall-udr-and-nsg"></a>Příklad 3 – vytvoření DMZ tooProtect sítím pomocí brány Firewall, UDR a NSG
-[Vrátí toohello stránku osvědčené postupy zabezpečení hranic][HOME]
+# <a name="example-3--build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>Příklad 3 – vytvoření DMZ k ochraně sítě s bránu Firewall, UDR a NSG
+[Návrat na stránku osvědčené postupy zabezpečení hranic][HOME]
 
-Tento příklad vytvoří DMZ s bránou firewall, čtyři servery windows, uživatele definované směrování, předávání IP adres a skupin zabezpečení sítě. Je také provede všechny relevantní příkazy tooprovide hello podrobnější vysvětlení jednotlivých kroků. K dispozici je také provozu scénář části tooprovide na podrobné podrobné jak provoz pokračuje prostřednictvím hello vrstev obrany ve hello hraniční sítě. Nakonec v části odkazy hello je kompletní kód hello a instrukce toobuild tento tootest prostředí a experimentů pomocí různé scénáře. 
+Tento příklad vytvoří DMZ s bránou firewall, čtyři servery windows, uživatele definované směrování, předávání IP adres a skupin zabezpečení sítě. Je také provede každou z relevantních příkazů, které poskytují podrobnější vysvětlení jednotlivých kroků. Je také části provoz scénář zajistit podrobné krok za krokem, jak se provoz pokračuje prostřednictvím vrstev obrany v hraniční síti. Nakonec v odkazy na části je kompletní kód a pokyny k vytvoření tohoto prostředí pro testování a experimentovat s různými scénáři. 
 
 ![DMZ obousměrně s hodnocení chyb zabezpečení, NSG a UDR][1]
 
 ## <a name="environment-setup"></a>Nastavení prostředí
-V tomto příkladu je předplatné, které obsahuje hello následující:
+V tomto příkladu je odběr, který obsahuje následující:
 
 * Tři cloudové služby: "SecSvc001", "FrontEnd001" a "BackEnd001"
 * Virtuální síť "CorpNetwork", s tři podsítě: "SecNet", "FrontEnd" a "Back-end"
-* Virtuální zařízení sítě, v tomto příkladu bránu firewall, připojení toohello SecNet podsítě
+* Virtuální zařízení sítě, v tomto příkladu bránu firewall, připojený k podsíti SecNet
 * Windows Server, který představuje server webových aplikací ("IIS01")
 * Dva windows servery, které představují aplikace zpět ukončení servery ("AppVM01", "AppVM02")
 * Windows server, který představuje server DNS ("DNS01")
 
-V části hello odkazy níže je skript prostředí PowerShell, který bude vytvořit většinu hello prostředí popsané výše. Vytváření hello virtuálních počítačů a virtuálních sítí, i když provádějí hello ukázkový skript, nejsou popsané podrobně v tomto dokumentu.
+V části odkazy níže je skript prostředí PowerShell, který bude vytvořit většinu prostředí popsané výše. Vytváření virtuálních počítačů a virtuálních sítí, i když provádějí ukázkový skript, nejsou podrobně popsané v tomto dokumentu.
 
-toobuild hello prostředí:
+K vytvoření prostředí:
 
-1. Uložit hello sítě konfigurační soubor xml v oddíle odkazy hello (aktualizovat název, umístění a IP adresy toomatch hello zadané scénář)
-2. Aktualizace hello uživatelské proměnné ve hello skriptu toomatch hello prostředí hello skriptu je toobe spouštění (odběry, názvy služeb atd.)
-3. Spuštění skriptu hello v prostředí PowerShell
+1. Uložte soubor xml konfigurace sítě v oddíle odkazy (aktualizovat název, umístění a IP adresy, které odpovídají danému scénáři)
+2. Aktualizace uživatelské proměnné ve skriptu tak, aby odpovídaly prostředí, ve kterém je skript ke spouštění (odběry, názvy služeb atd.)
+3. Spusťte skript v prostředí PowerShell
 
-**Poznámka:**: oblast hello označený ve hello skript prostředí PowerShell musí odpovídat hello oblast označený ve hello sítě konfigurační soubor xml.
+**Poznámka:**: oblasti označený ve skriptu PowerShell musí odpovídat oblasti označeny v souboru xml konfigurace sítě.
 
-Po úspěšném spuštění skriptu hello mohou být přijata hello kroků po skriptu:
+Po úspěšném spuštění skriptu mohou být přijata po skriptu takto:
 
-1. Nastavit hello pravidla brány firewall, najdete v části hello níže, s názvem: popis pravidla brány Firewall.
-2. Volitelně můžete v části odkazy hello jsou dva skripty tooset hello webového serveru a aplikačního serveru s tooallow jednoduché webové aplikace testování s touto konfigurací hraniční sítě.
+1. Nastavit pravidla brány firewall, najdete v následující části s názvem: popis pravidla brány Firewall.
+2. Volitelně můžete v části odkazy jsou dva skripty k nastavení webového serveru a aplikačního serveru s jednoduchou webovou aplikaci umožňující testování s touto konfigurací DMZ.
 
-Po úspěšném spuštění skriptu hello hello pravidla brány firewall třeba toobe dokončit, najdete v části hello s názvem: pravidla brány Firewall.
+Jakmile se skript spustí úspěšně bránu firewall, která pravidla bude třeba provést, najdete v části s názvem: pravidla brány Firewall.
 
 ## <a name="user-defined-routing-udr"></a>Uživatelem definované směrování (UDR)
-Ve výchozím nastavení jsou hello následující systémové trasy definované jako:
+Ve výchozím nastavení následující systémové trasy, které jsou definované jako:
 
         Effective routes : 
          Address Prefix    Next hop type    Next hop IP address Status   Source     
@@ -67,35 +67,35 @@ Ve výchozím nastavení jsou hello následující systémové trasy definované
          {172.16.0.0/12}   Null                                 Active   Default    
          {192.168.0.0/16}  Null                                 Active   Default
 
-Hello VNETLocal je vždy hello definované adresu prefix(es) Dobrý den virtuální sítě pro tuto konkrétní síť (ie se změní ze tooVNet virtuální sítě v závislosti na tom, jak je definována každý konkrétní virtuální sítě). systémové trasy zbývající Hello statické a výchozí jak je uvedeno výše.
+VNETLocal je vždy prefix(es) definovaných adresních sítě vnet pro tuto konkrétní síť (ie se změní z virtuální sítě do virtuální sítě v závislosti na tom, jak je definována každý konkrétní virtuální sítě). Zbývající systémové trasy statické a výchozí jak je uvedeno výše.
 
-Jako prioritu trasy se zpracovávají prostřednictvím metody hello nejdelší shody předpony (LPM), proto hello nejvíce trasy v tabulce hello by použijí tooa zadané cílové adresy.
+Jako prioritu trasy se zpracovávají prostřednictvím metody nejdelší shody předpony (LPM), proto by nejvíce trasy v tabulce platí pro danou cílovou adresu.
 
-Přenos (například toohello DNS01 server, 10.0.2.4) určený pro hello místní sítě (10.0.0.0/16) by se tedy směrován přes hello virtuální síť tooits cílové kvůli toohello 10.0.0.0/16 trasy. Jinými slovy pro 10.0.2.4, trasy 10.0.0.0/16 hello je hello nejvíce trasy, i když hello 10.0.0.0/8 a 0.0.0.0/0 také může použít, ale vzhledem k tomu, že jsou méně specifické neovlivňuje tento provoz. Proto hello provoz too10.0.2.4 by měla mít další segment z hello virtuální místní síť a jednoduše trasy toohello cílový.
+Proto by provozu (třeba k serveru DNS01 10.0.2.4) určený pro místní síť (10.0.0.0/16) směrovat přes síť VNet do cíle z důvodu 10.0.0.0/16 trasy. Jinými slovy pro 10.0.2.4, 10.0.0.0/16 trasy, která je nejvíce trasy, i když 10.0.0.0/8 a 0.0.0.0/0 také může použít, ale vzhledem k tomu, že jsou menší konkrétní neovlivňují tento provoz. Proto provoz do 10.0.2.4 by mít dalšího směrování místní sítě vnet a jednoduše směrovat do cílového umístění.
 
-Pokud se provoz určený pro 10.1.1.1 například, nebude platit hello 10.0.0.0/16 trasy, ale hello 10.0.0.0/8 by hello nejvíce a by tento provoz hello vyřadit ("černé dírkového"), protože hello další směrování je Null. 
+Pokud se provoz určený pro 10.1.1.1 například, 10.0.0.0/16 trasy, která nebude platit, ale 10.0.0.0/8 by nejvíce konkrétní a provoz by to byl vyřazen ("černé dírkového"), protože dalšího směrování je Null. 
 
-Pokud cílový hello nepoužil tooany hello Null předpony nebo hello VNETLocal předpony, postupujte podle jeho by hello nejméně specifická směrování, 0.0.0.0/0 a směrovat odhlásit toohello Internetu jako další segment hello a proto si Azure a internet okraj.
+Pokud k některému z předpony hodnotu Null nebo VNETLocal předpony nepoužil, cíl, pak by postupujte podle nejméně specifická směrování, 0.0.0.0/0 a připojit k Internetu jako další segment a proto si Azure a internet okraj.
 
-Pokud ve směrovací tabulce hello existují dva identické předpony, hello následuje hello pořadí podle priority na základě atributu "zdroj" hello trasy:
+Pokud existují dva identické předpony v tabulce směrování, zde je v pořadí podle preference podle atributu "zdroje" trasy:
 
-1. "VirtualAppliance" = tabulku ručně přidaná toohello uživatelem definovaná trasa
-2. "Brána VPN" = dynamické směrování protokolu BGP (při použití s hybridní sítě), přidal protokol dynamické sítě, tyto trasy v průběhu času mění jako dynamický protokol hello automaticky odráží změny v peered sítě
-3. "Výchozí" = hello systémové trasy, jak je znázorněno v výše uvedené tabulce směrování hello hello místní virtuální síť a hello statické záznamy.
+1. "VirtualAppliance" = trasu definovaná uživatelem ručně přidat do tabulky
+2. "Brána VPN" = dynamické směrování protokolu BGP (při použití s hybridní sítě), přidal protokol dynamické sítě, tyto trasy v průběhu času mění jako protokol dynamické automaticky odráží změny v peered sítě
+3. "Výchozí" = systémové trasy, místní virtuální síť a statické záznamy, jak je znázorněno v předchozí tabulce směrování.
 
 > [!NOTE]
-> Teď můžete použít uživatele definované směrování (UDR) s ExpressRoute a VPN Gateway tooforce odchozí a příchozí mezi různými místy provoz toobe tooa směrované sítě virtuální zařízení (hodnocení chyb zabezpečení).
+> Teď můžete použít uživatele definované směrování (UDR) s ExpressRoute a VPN Gateway vynutit odchozí a příchozí provoz směrovat na virtuální síťové zařízení (hodnocení chyb zabezpečení) mezi různými místy.
 > 
 > 
 
-#### <a name="creating-hello-local-routes"></a>Vytváření hello místní trasy
-V tomto příkladu jsou potřeba dvou směrovacích tabulek, jeden pro každé podsítě front-endové a back-end hello. Každá tabulka je načtena s statické trasy, které jsou vhodné pro danou podsíť hello. Za účelem hello tohoto příkladu každá tabulka měla tři trasy:
+#### <a name="creating-the-local-routes"></a>Vytváření místní trasy
+V tomto příkladu jsou potřeba dvou směrovacích tabulek, jeden pro každé podsítě front-endové a back-end. Každá tabulka je načtena s statické trasy, které jsou vhodné pro dané podsíti. Pro účely tohoto příkladu každá tabulka měla tři trasy:
 
-1. Provozu místních podsítí s žádné další směrování definované tooallow místní podsíti provozu toobypass hello brány firewall
-2. Virtuální síťový provoz s další směrování definovat jako bránu firewall, přepíše se hello výchozí pravidlo, které přímo umožňuje místní tooroute provoz virtuální sítě
-3. Veškerý zbývající provoz (0/0) s další směrování definován jako hello brány firewall
+1. Provozu místních podsítí s žádné další směrování definované umožňující provozu místních podsítí obejít bránu firewall
+2. Virtuální síťový provoz s další směrování definovat jako bránu firewall, přepíše výchozí pravidlo, které umožňuje místní virtuální síť provoz směrovat přímo
+3. Veškerý zbývající provoz (0/0) se na další směrování definovat jako bránu firewall
 
-Jakmile jsou vytvořeny hello směrovacích tabulek nejsou vázané tootheir podsítě. Pro hello front-endu podsíť směrovací tabulky po vytvoření a vázaný toohello podsíť by měla vypadat takto:
+Po vytvoření směrovacích tabulek jsou vázány na podsítě. Pro podsíť Frontend směrovací tabulky, po vytvoření a vázaný k podsíti by měl vypadat takto:
 
         Effective routes : 
          Address Prefix    Next hop type    Next hop IP address Status   Source     
@@ -105,33 +105,33 @@ Jakmile jsou vytvořeny hello směrovacích tabulek nejsou vázané tootheir pod
          {0.0.0.0/0}       VirtualAppliance 10.0.0.4            Active
 
 
-V tomto příkladu hello následující příkazy, jsou použité toobuild hello směrovací tabulka, přidejte trasu definovanou uživatelem a pak vytvořte vazbu hello trasy tabulky tooa podsítě (Poznámka; všechny položky pod počínaje znak dolaru (např: $BESubnet) jsou proměnné definované uživatelem z hello skript v Hello odkaz části tohoto dokumentu):
+V tomto příkladu se používají následující příkazy pro vytváření směrovací tabulka, přidejte trasu definovanou uživatelem a pak vytvořte vazbu tabulku směrování pro podsíť (Poznámka; všechny položky pod počínaje znak dolaru (např: $BESubnet) jsou uživatelem definované proměnné ve skriptu v části odkaz na tohoto dokumentu):
 
-1. První hello základní směrovací tabulky musí být vytvořeny. Tento fragment kódu ukazuje vytvoření hello hello tabulky pro podsíť hello back-end. Ve skriptu hello je vytvořen pro podsíť Frontend hello také odpovídající tabulku.
+1. Základní směrovací tabulky musí být nejprve vytvořen. Tento fragment kódu ukazuje vytvoření tabulky pro podsíť back-end. Ve skriptu je pro podsíť Frontend také vytvořit odpovídající tabulku.
    
      Nové AzureRouteTable-název $BERouteTableName.
    
          -Location $DeploymentLocation `
          -Label "Route table for $BESubnet subnet"
-2. Po vytvoření hello směrovací tabulka se dá přidat trasy definované uživatelem konkrétní. V tomto uvádíme veškerý provoz (0.0.0.0/0) budou směrovány přes virtuální zařízení hello (proměnné, $VMIP [0], je použít toopass v přiřazené při vytvoření virtuálního zařízení hello dříve ve skriptu hello hello IP adresy). Ve skriptu hello se také vytvoří odpovídající pravidlo v tabulce front-endu hello.
+2. Po vytvoření směrovací tabulka se dá přidat trasy definované uživatelem konkrétní. V tomto uvádíme veškerý provoz (0.0.0.0/0) budou směrovány přes virtuální zařízení (proměnné, $VMIP [0], je sloužící k předávání IP adresu přiřadit při vytvoření virtuálního zařízení ve skriptu dříve). Ve skriptu se také vytvoří odpovídající pravidlo v tabulce front-endu.
    
      Get-AzureRouteTable $BERouteTableName | `
    
-         Set-AzureRoute -RouteName "All traffic tooFW" -AddressPrefix 0.0.0.0/0 `
+         Set-AzureRoute -RouteName "All traffic to FW" -AddressPrefix 0.0.0.0/0 `
          -NextHopType VirtualAppliance `
          -NextHopIpAddress $VMIP[0]
-3. přepíše Hello výše položka trasy hello výchozí "0.0.0.0/0" trasu, ale stále existuje, který by umožnil hello výchozí 10.0.0.0/16 pravidlo provozu v rámci virtuální sítě tooroute hello přímo toohello cíl a toohello virtuální síťové zařízení. toocorrect, je nutné přidat toto chování hello postupujte podle pravidlo.
+3. Výše uvedené položky trasy přepíše výchozí "0.0.0.0/0" trasu, ale stále existuje výchozí pravidlo 10.0.0.0/16 který by umožnil provoz v rámci virtuální sítě pro směrování přímo do cílového umístění, ne na virtuální síťové zařízení. Pro správné toto chování postupujte podle pravidla musí být přidaný.
    
         Get-AzureRouteTable $BERouteTableName | `
-            Set-AzureRoute -RouteName "Internal traffic tooFW" -AddressPrefix $VNetPrefix `
+            Set-AzureRoute -RouteName "Internal traffic to FW" -AddressPrefix $VNetPrefix `
             -NextHopType VirtualAppliance `
             -NextHopIpAddress $VMIP[0]
-4. V tomto okamžiku je volba toobe, provedeny. S hello výše dvě trasy bude směrovat veškerý provoz toohello brány firewall pro vyhodnocení, i provoz v rámci jedné podsíti. To může být požaduje, ale tooallow provozu v rámci podsítě tooroute místně bez zásahu hello brány firewall, lze přidat třetí, velmi konkrétní pravidlo. Tato trasa stavy, které libovolná adresa destine pro místní podsíti hello můžete právě směrovat existuje přímo (NextHopType = VNETLocal).
+4. V tomto okamžiku je volbou má být provedeno. Pomocí výše uvedené dvě cesty bude směrovat veškerý provoz do brány firewall pro vyhodnocení, i provoz v rámci jedné podsíti. To může být požaduje, ale pokud chcete povolit přenosy v rámci jedné podsítě pro směrování místně bez zásahu bránu firewall jiného, mohou být přidány velmi konkrétní pravidlo. Tato trasa stavy, které libovolná adresa destine pro místní podsíti může právě směrovat existuje přímo (NextHopType = VNETLocal).
    
         Get-AzureRouteTable $BERouteTableName | `
             Set-AzureRoute -RouteName "Allow Intra-Subnet Traffic" -AddressPrefix $BEPrefix `
             -NextHopType VNETLocal
-5. S hello směrovací tabulky vytvořeny a naplněny s trasy definované uživatelem, nakonec hello tabulky musí být nyní vázané tooa podsítě. Ve skriptu hello hello front-endu směrovací tabulka je také vázané toohello podsítě front-endu. Zde je hello vazby skript pro podsíť hello back-end.
+5. Nakonec se do směrovací tabulky vytvořeny a naplněny s trasy definované uživatelem v tabulce musí nyní být vázána na podsíť. Ve skriptu je front-end směrovací tabulka také vázána podsítě front-endu. Zde je vazba skript pro podsíť back-end.
    
      Set-AzureSubnetRouteTable - VirtualNetworkName $VNetName.
    
@@ -139,42 +139,42 @@ V tomto příkladu hello následující příkazy, jsou použité toobuild hello
         -RouteTableName $BERouteTableName
 
 ## <a name="ip-forwarding"></a>Předávání IP
-Funkce doprovodné tooUDR je předávání IP. Toto je, že nastavení na virtuální zařízení, který umožní tooreceive provozu není konkrétně řešit toohello zařízení a pak předávat této cílové ultimate tooits provoz.
+Doprovodná funkce, která UDR, je předávání IP. Je toto nastavení na virtuální zařízení, která umožňuje přijímání dat adresovaných není konkrétně pro zařízení, a pak tento přenosu do konečného ultimate.
 
-Jako příklad Pokud provoz z AppVM01 provede požadavek toohello DNS01 server, by UDR směrovat tato toohello brána firewall. S povoleno předávání IP bude akceptovat hello zařízení (10.0.0.4) hello provoz pro cíl DNS01 hello (10.0.2.4) a tooits ultimate cílové (10.0.2.4), předá. Bez předávání IP adres na hello brány Firewall povolená by se provoz přijímat hello zařízení Přestože hello směrovací tabulka má hello brány firewall jako další segment hello. 
+Jako příklad Pokud provoz z AppVM01 provede požadavek na server DNS01 UDR by směrovat to do brány firewall. S povoleno předávání IP přenosy dat pro cílový DNS01 (10.0.2.4) akceptovat zařízení (10.0.0.4) a potom předána do cílového ultimate (10.0.2.4). Bez předávání IP zapnuta brána Firewall nebude možné provoz přijímat zařízení Přestože směrovací tabulka má bránu firewall jako další segment. 
 
 > [!IMPORTANT]
-> Je důležité tooremember tooenable předávání IP adres ve spojení s směrování definovaného uživatele.
+> Je důležité si pamatovat, abyste povolili předávání IP ve spojení s směrování definovaného uživatele.
 > 
 > 
 
-Nastavení předávání IP adres je jeden příkaz a lze provést v okamžiku vytvoření virtuálního počítače. Pro hello toku tento fragment kódu hello příklad je hello konci hello skriptu a seskupuje hello UDR příkazy:
+Nastavení předávání IP adres je jeden příkaz a lze provést v okamžiku vytvoření virtuálního počítače. Pro tok tohoto příkladu fragmentu kódu je na konci skript a seskupuje UDR příkazy:
 
-1. Volání hello instance virtuálního počítače, který je virtuálního zařízení, v takovém případě hello brány firewall a povolení předávání IP adres (Poznámka; libovolnou položku v red počínaje znak dolaru (např: $VMName[0]) je uživatelem definované proměnné ze skriptu hello v hello odkaz části tohoto dokumentu. Hello nula v hranatých závorkách [0], představuje hello první virtuální počítač v poli hello virtuálních počítačů, pro hello příklad skriptu toowork bez úprav, brány firewall hello hello, musí být první virtuální počítač (VM 0)):
+1. Volání instance virtuálního počítače, který v tomto případě je vaše virtuální zařízení brány firewall a povolení předávání IP adres (Poznámka; libovolnou položku v red počínaje znak dolaru (např: $VMName[0]) je uživatelem definované proměnné ve skriptu v části odkaz na tohoto dokumentu. Nula v hranatých závorkách [0], představuje první virtuální počítač v poli virtuálních počítačů pro ukázkový skript pracovat bez úprav, první virtuální počítač (VM 0) musí být bránu firewall):
    
      Get-AzureVM-název $VMName [0] - ServiceName $ServiceName [0] | `
    
         Set-AzureIPForwarding -Enable
 
 ## <a name="network-security-groups-nsg"></a>Skupiny zabezpečení sítě (NSG)
-V tomto příkladu je skupina NSG vytvořené a pak načten s jedním pravidlem. Tato skupina je pak vázaný jenom toohello front-endové a back-end podsítě (ne hello SecNet). Deklarativně se sestavuje hello následující pravidlo:
+V tomto příkladu je skupina NSG vytvořené a pak načten s jedním pravidlem. Tato skupina je pak vázán pouze na podsítě front-endové a back-end (ne SecNet). Deklarativně se sestavuje následující pravidlo:
 
-1. Jakýkoli přenos (všechny porty) z Internetu toohello hello celý virtuální síť (všechny podsítě) byl odepřen.
+1. Přenosy dat (všechny porty) z Internetu do celý virtuální sítě (všechny podsítě) byl odepřen.
 
-I když v tomto příkladu se používají skupiny Nsg, je hlavním účelem jako vrstva sekundární ochranu proti ruční chybné konfigurace. Chceme tooblock všechny příchozí provoz z hello internet tooeither hello front-end nebo back-end podsítě, provoz by měl pouze procházet skrz hello SecNet podsíť toohello brány firewall (a pak v případě vhodné na toohello front-end nebo back-end podsítě). Plus s pravidly UDR hello v místě, přenosy, který do hello front-end nebo back-end podsítí by přesměrováni na toohello brány firewall (Děkujeme tooUDR). brány firewall Hello by to zobrazit jako asymetrický toku a by vyřadit hello odchozí přenosy. Proto existují tři vrstvy zabezpečení chránící hello front-endu a back-end podsítě; 1) bez otevřete koncových bodů na hello FrontEnd001 a BackEnd001 cloudové služby, 2) skupiny Nsg odepření přenosy z Internetu, brána firewall 3) hello vyřazení asymetrické provoz hello.
+I když v tomto příkladu se používají skupiny Nsg, je hlavním účelem jako vrstva sekundární ochranu proti ruční chybné konfigurace. Chceme blokovat všechna příchozí provoz z Internetu do buď front-end nebo back-end podsítě, provoz by měl pouze procházet skrz SecNet podsítě do brány firewall (a pak v případě vhodné k front-end nebo back-end podsítě). Plus s pravidly UDR v místě, jakýkoli přenos, který zkontrolujte do podsítí front-end nebo back-end by přesměrováni se do brány firewall (díky UDR). Brána firewall by to zobrazit jako asymetrický toku a by vyřadit odchozí přenosy. Proto existují tři vrstvy zabezpečení, ochraně podsítě front-endu a back-end; 1) žádné otevřete koncové body na FrontEnd001 a BackEnd001 cloudových služeb, skupin Nsg 2), odepření přenosy z Internetu, 3) brána firewall vyřazování asymetrické provoz.
 
-Jeden bod zajímavé týkající se hello skupinu zabezpečení sítě v tomto příkladu je, že obsahuje pouze jedno pravidlo, viz následující obrázek, který je toodeny internetové přenosy toohello celý virtuální síti, která bude zahrnovat podsítě zabezpečení hello. 
+Jeden bod zajímavé týkající se skupina zabezpečení sítě v tomto příkladu je, že obsahuje pouze jedno pravidlo, viz následující obrázek, který je tak, aby odepřel internetové přenosy na celý virtuální síť, která bude zahrnovat podsítě zabezpečení. 
 
     Get-AzureNetworkSecurityGroup -Name $NSGName | `
-        Set-AzureNetworkSecurityRule -Name "Isolate hello $VNetName VNet `
-        from hello Internet" `
+        Set-AzureNetworkSecurityRule -Name "Isolate the $VNetName VNet `
+        from the Internet" `
         -Type Inbound -Priority 100 -Action Deny `
         -SourceAddressPrefix INTERNET -SourcePortRange '*' `
         -DestinationAddressPrefix VIRTUAL_NETWORK `
         -DestinationPortRange '*' `
         -Protocol *
 
-Ale protože hello NSG je pouze vazbu toohello front-endu a back-end podsítě, hello pravidlo není zpracován na provoz příchozí toohello zabezpečení podsítě. V důsledku toho Přestože pravidla NSG hello uvádí žádné internetové přenosy tooany adresy na hello virtuální síť, protože hello NSG se nikdy vázán podsítě zabezpečení toohello, bude přenos toohello zabezpečení podsítě.
+Ale vzhledem k tomu, že NSG je vázaný jenom na podsítě front-endové a back-end, pravidlo není zpracován na provoz příchozí na podsíť. možnosti zabezpečení. Výsledkem je i když pravidla NSG uvádí žádné internetový provoz pro každou adresu, na virtuální síti, protože NSG se nikdy vázána na podsíť. možnosti zabezpečení, bude přenos na podsíť. možnosti zabezpečení.
 
     Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName `
         -SubnetName $FESubnet -VirtualNetworkName $VNetName
@@ -183,131 +183,131 @@ Ale protože hello NSG je pouze vazbu toohello front-endu a back-end podsítě, 
         -SubnetName $BESubnet -VirtualNetworkName $VNetName
 
 ## <a name="firewall-rules"></a>Pravidla brány firewall
-V bráně firewall hello předávání pravidla potřebovat toobe vytvořili. Vzhledem k tomu, že brána firewall hello je blokování nebo předávání všechny vstupní, výstupní a intra-VNet provoz, je potřeba řada pravidla brány firewall. Navíc se veškerý příchozí provoz setkají hello služby zabezpečení veřejnou IP adresu (v jiné porty), toobe zpracuje bránou hello firewall. Osvědčeným postupem je toodiagram hello logické toky před nastavením přepracování tooavoid pravidla brány firewall a podsítí hello později. Hello následující obrázek je logickém zobrazení hello pravidla brány firewall v tomto příkladu:
+V bráně firewall předávání pravidla bude nutné vytvořit. Vzhledem k tomu, že brána firewall je blokování nebo předávání všechny vstupní, výstupní a intra-VNet provoz, je potřeba řada pravidla brány firewall. Navíc veškerý příchozí provoz, se setkají služby zabezpečení veřejnou IP adresu (na jiné porty), mají být zpracovány bránou firewall. Osvědčeným postupem je diagram logické toky před nastavením podsítě a pravidla brány firewall, aby se zabránilo přepracování později. Na následujícím obrázku je logický zobrazení pravidla brány firewall v tomto příkladu:
 
-![Logickém zobrazení hello pravidla brány Firewall][2]
+![Logickém zobrazení pravidla brány Firewall][2]
 
 > [!NOTE]
-> Podle hello virtuální síťové zařízení používá, se liší hello porty pro správu. V tomto příkladu, které se odkazuje Barracuda NextGen Firewall, který používá porty 22, 801 a 807. Přečtěte si hello zařízení dodavatele dokumentaci toofind hello přesný porty používané pro správu zařízení hello používá.
+> Založená na síti virtuální zařízení používá, se liší porty pro správu. V tomto příkladu, které se odkazuje Barracuda NextGen Firewall, který používá porty 22, 801 a 807. Najdete v dokumentaci výrobce zařízení najít přesnou porty používané ke správě zařízení používá.
 > 
 > 
 
 ### <a name="logical-rule-description"></a>Popis logické pravidla
-V hello logického diagramu výše se nezobrazí podsítě zabezpečení hello vzhledem k tomu, že brána firewall hello je hello pouze prostředků na této podsíti a tohoto diagramu se zobrazuje hello pravidla brány firewall a jak se logicky povolit nebo odepřít tok přenosů dat a není hello skutečné směrované cesty. Navíc hello externí porty vybraný pro hello provoz protokolu RDP jsou porty vyšší pohyboval (8014 – 8026) a byly vybrané toosomewhat zarovnané s hello poslední dva oktety hello místní IP adresu pro snazší čitelnost (například místní server adresu 10.0.1.4 přidružen port externí 8014), ale může použít jakékoli vyšší-konfliktní porty.
+Ve výše uvedeném logického diagramu se nezobrazí podsítě zabezpečení vzhledem k tomu, že brána firewall je pouze prostředků na této podsíti a tohoto diagramu se zobrazuje pravidla brány firewall a jak se logicky povolit nebo odepřít tok přenosů dat a ne skutečné směrované cesty. Také externí porty, vybraný pro provoz protokolu RDP jsou vyšší pohyboval porty (8014 – 8026) a nebyly vybrány poněkud vyrovnání v posledních dvou oktety místní IP adresu pro snazší čitelnost (například místní server adresu 10.0.1.4 je přidružen externí port 8014), ale může použít jakékoli vyšší-konfliktní porty.
 
 V tomto příkladu budeme potřebovat 7 typy pravidel, tyto typy pravidel jsou popsány takto:
 
 * Externí pravidla (pro příchozí provoz):
-  1. Pravidlo brány firewall správy: Toto pravidlo přesměrování aplikace umožňuje provoz toopass toohello správu porty hello síťové virtuální zařízení.
-  2. Pravidla protokolu RDP (pro každý server systému windows): tyto čtyři pravidla (jeden pro každý server) vám umožní správu hello jednotlivé servery prostřednictvím protokolu RDP. To může také seskupeny do jedno pravidlo v závislosti na možnosti hello hello sítě používá virtuální zařízení.
-  3. Pravidla pro provoz aplikace: Existují dvě pravidla pro provoz aplikace, hello nejprve pro hello front-end webový provoz a hello druhý pro přenosy back-end hello (např webový server toodata vrstva). Konfigurace Hello pravidla bude záviset na hello síťovou architekturu (kde jsou umístěné vaše servery) a tok přenosů dat (které směr hello přenosy dat a používaných portů).
-     * první pravidlo Hello vám umožní hello skutečné aplikace provoz tooreach hello aplikačního serveru. Při hello ostatní pravidla povolit pro zabezpečení, správy, atd., jsou aplikace pravidla povolit externích uživatelů nebo služeb tooaccess aplikace hello. V tomto příkladu je jednom webovém serveru na portu 80, proto jediné aplikace pravidlo firewallu přesměruje příchozí provoz toohello externí IP, toohello webové servery interní IP adresu. Hello přesměrování provozu relace by být NAT měl toohello interního serveru.
-     * Hello je druhé pravidlo pro provoz aplikace hello back-end pravidlo tooallow hello Webový Server tootalk toohello AppVM01 serveru (ale ne AppVM02) prostřednictvím libovolný port.
+  1. Pravidlo brány firewall správy: Toto pravidlo přesměrování aplikace umožňuje přenos dat na porty správy zařízení virtuální sítě.
+  2. Pravidla protokolu RDP (pro každý server systému windows): tyto čtyři pravidla (jeden pro každý server) vám umožní správu jednotlivých serverů prostřednictvím protokolu RDP. To může také seskupeny do jedno pravidlo v závislosti na možnosti síťového virtuální zařízení používá.
+  3. Pravidla pro provoz aplikace: Existují dvě pravidla provoz aplikace první pro webový provoz front-endu a druhý pro přenosy back-end (např. webový server na datové vrstvě). Konfigurace tato pravidla se závisí na síťovou architekturu (kde jsou umístěné vaše servery) a provoz toků (směru tok přenosů dat a který porty se používají).
+     * První pravidlo povolí provoz skutečné aplikaci připojit k serveru aplikace. Zatímco ostatní pravidla povolit pro zabezpečení, správy, atd., jsou pravidla aplikace co povolit externích uživatelů nebo služeb pro přístup k aplikace. V tomto příkladu je jednom webovém serveru na portu 80, proto jediné aplikace pravidlo firewallu přesměruje příchozí přenosy na externí IP adresu, na webové servery interní IP adresu. Relace přesměrovaného přenosy by se NAT i interního serveru.
+     * Druhé pravidlo pro provoz aplikace je back-end pravidlo, kterým povolíte Webový Server, aby komunikoval s AppVM01 serveru (ale ne AppVM02) prostřednictvím libovolný port.
 * Vnitřní pravidla (pro provoz intra-VNet)
-  1. TooInternet odchozí pravidlo: Toto pravidlo povolí přenosy z jakékoli sítě toopass toohello vybrané sítě. Toto pravidlo je obvykle výchozí pravidlo už v bráně firewall hello, ale v zakázaném stavu. Toto pravidlo by měly být povoleny v tomto příkladu.
-  2. Pravidlo DNS: Toto pravidlo umožňuje pouze (port 53) provoz toopass toohello DNS server DNS. Toto pravidlo pro toto prostředí, které se většina přenos dat z hello front-endu toohello back-end je blokován, konkrétně umožňuje DNS z jakékoli místní podsítě.
-  3. Podsíť tooSubnet pravidlo: Toto pravidlo je tooallow jakýkoli server na hello back end podsíť tooconnect tooany server na hello podsítě front end (ale není hello zpětné).
-* Pohotovostního pravidlo (pro provoz, který nesplňuje některé z výše uvedených hello):
-  1. Všechny přenosy pravidlo odepřít: To by mělo být vždy hello konečné pravidlo (z hlediska priorita) a jako takový Pokud přenosy dat se nezdaří toomatch žádné hello předcházející pravidla, která se zahodí tímto pravidlem. Toto je výchozí pravidlo a obvykle aktivaci žádné je obecně nutné provést změny.
+  1. Odchozí do internetové pravidlo: Toto pravidlo povolí provoz od všech sítí, které mají být předána do vybraných sítí. Toto pravidlo je obvykle výchozí pravidlo už v bráně firewall, ale v zakázaném stavu. Toto pravidlo by měly být povoleny v tomto příkladu.
+  2. Pravidlo DNS: Toto pravidlo umožňuje předat serveru DNS pouze provoz DNS (port 53). Toto pravidlo pro toto prostředí, které se většina provoz z front-endu na back-end je blokovaný, konkrétně umožňuje DNS z jakékoli místní podsítě.
+  3. Pravidlo podsítě pro podsíť: Toto pravidlo se má povolit všechny servery v podsíti back-end připojení k libovolnému serveru na podsítě front end (ale nikoli naopak).
+* Pohotovostního pravidlo (pro přenosy, které nesplňují výše uvedených možností):
+  1. Všechny přenosy pravidlo odepřít: To by mělo být vždy poslední pravidlo (z hlediska priorita) a jako takový Pokud přenosy dat se nezdaří tak, aby odpovídaly některé z předchozích pravidel, které se zahodí tímto pravidlem. Toto je výchozí pravidlo a obvykle aktivaci žádné je obecně nutné provést změny.
 
 > [!TIP]
-> Na hello druhý aplikace pravidlo pro provoz jakéhokoli portu je povolen pro snadné tohoto příkladu, skutečné scénář hello nejvíce konkrétní port a rozsahy adres musí být použité tooreduce hello prostor pro útok toto pravidlo.
+> Na druhé pravidlo provoz aplikace jakéhokoli portu je povolen pro snadné tohoto příkladu, ve scénáři skutečné nejvíce konkrétní port a rozsahy adres se má použít pro snížení rizika útoku tohoto pravidla.
 > 
 > 
 
 <br />
 
 > [!IMPORTANT]
-> Jakmile všechny hello výše pravidla vytvořeny, je důležité tooreview hello prioritu každé pravidlo tooensure provozu se povoluje nebo odepírá podle potřeby. V tomto příkladu jsou hello pravidla v pořadí podle priority. Je snadno toobe zamknout z brány firewall hello kvůli toomis seřazených pravidel. Minimálně zkontrolujte, zda hello správy pro bránu firewall hello samotné vždy hello pravidlo absolutní nejvyšší prioritou.
+> Po vytvoření všech výše uvedených pravidel, je důležité zkontrolovat prioritu každé pravidlo zajistit provoz se povolí nebo zakáže podle potřeby. V tomto příkladu jsou pravidla v pořadí podle priority. Je snadné se uzamkne mimo bránu firewall kvůli nemá seřazené pravidla. Minimálně zkontrolujte, zda správy pro bránu firewall, samotné vždy absolutní pravidlo nejvyšší prioritou.
 > 
 > 
 
 ### <a name="rule-prerequisites"></a>Pravidla požadavků
-Jeden požadovaných hello virtuální počítač spuštěný hello brány firewall jsou veřejné koncové body. Pro přenosy tooprocess hello brány firewall musí být otevřený hello odpovídající veřejné koncové body. Existují tři typy přenosů dat v tomto příkladu; 1) správu provoz toocontrol hello bránu firewall a pravidla brány firewall, servery windows hello toocontrol provoz protokolu RDP 2) a provoz 3) aplikace. Toto jsou tři sloupce hello typů přenosů v horním hello polovinu logickém zobrazení pravidla brány firewall hello výše.
+Jeden předpoklad pro virtuální počítač spuštěný brány firewall jsou veřejné koncové body. Pro bránu firewall pro zpracování provozu je třeba otevřít odpovídající veřejné koncové body. Existují tři typy přenosů dat v tomto příkladu; Provoz protokolu RDP 1) provoz správy pro řízení brány firewall a pravidla brány firewall, 2) k řízení serverů se systémem windows a provoz 3) aplikace. Toto jsou tři sloupce typů přenosů v horní polovině logickém zobrazení pravidla brány firewall výše.
 
 > [!IMPORTANT]
-> Je zde klíče takeway tooremember, **všechny** provoz se odešlou přes bránu firewall hello. Ano tooremote plochy toohello IIS01 serveru, i když je v hello Front End cloudové služby a v hello podsítě Front End, tooaccess tento server, které je nutné zadat tooRDP toohello brány firewall na portu 8014 a pak umožnit hello brány firewall tooroute hello RDP požadavek interně toohello IIS01 portu RDP. Hello portál Azure "připojit" tlačítko nebude fungovat, protože neexistuje žádná přímá cesta tooIIS01 protokolu RDP (jde o hello portálu uvidí). To znamená, všechna připojení z hello Internetu bude toohello služby zabezpečení a Port, například secscv001.cloudapp.net:xxxx (referenční dokumentace hello výše diagram hello mapování portů externí, interní IP a Port).
+> Je zde klíče takeway nezapomeňte, že **všechny** provoz se odešlou přes bránu firewall. Proto vzdálené plochy k serveru IIS01, i když je počítač v cloudové službě Front End a na podsítě Front End, pro přístup k tomuto serveru jsme bude muset RDP do brány firewall na portu 8014 a potom povolit bránu firewall pro směrování požadavku protokolu RDP interně k portu RDP IIS01. Tlačítko "Připojit" portálu Azure nebude fungovat, protože neexistuje přímé cesta protokolu RDP na IIS01 (jde o můžete zobrazit na portálu). To znamená, že všechna připojení z Internetu bude služby zabezpečení a Port, například secscv001.cloudapp.net:xxxx (referenční dokumentace diagramu pro mapování portů externí, interní IP a Port).
 > 
 > 
 
-Koncový bod lze otevřít buď v době hello vytvoření virtuálního počítače nebo odeslat sestavení je provést v hello ukázkový skript a znázorněném na tento fragment kódu (Poznámka; všechny položky počínaje znak dolaru (např: $VMName[$i]) je uživatelem definované proměnné ze skriptu hello v hello referen část CE v tomto dokumentu. Hello "$i" v hranatých závorkách [$i] představuje hello pole počet konkrétní virtuální počítač v matici virtuálních počítačů):
+Koncový bod lze otevřít buď při vytváření virtuálních počítačů a post sestavení, jak se provádí v ukázkový skript a znázorněném na tento fragment kódu (Poznámka; všechny položky počínaje znak dolaru (např: $VMName[$i]) je uživatelem definované proměnné ve skriptu v části odkaz na tohoto dokumentu. "$I" v hranatých závorkách [$i] představuje číslo pole konkrétní virtuální počítač v matici virtuálních počítačů):
 
     Add-AzureEndpoint -Name "HTTP" -Protocol tcp -PublicPort 80 -LocalPort 80 `
         -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | `
         Update-AzureVM
 
-I když se zobrazují zde není jasně kvůli toohello použití proměnných, ale koncové body jsou **pouze** otevřít na hello zabezpečení cloudové služby. Toto je tooensure, že se zpracovává veškerý příchozí provoz (směrovat, NAT měl, vynechané) bránou hello firewall.
+I když se zobrazují zde není jasně kvůli použití proměnných, ale koncové body jsou **pouze** otevřít v cloudové službě zabezpečení. Tím je zajištěno, že se zpracovává veškerý příchozí provoz (směrovat, NAT měl, vynechané) bránou firewall.
 
-Klient správy bude potřebovat toobe nainstalovaný na počítači toomanage hello firewall a vytvoření konfigurací hello potřeby. V tom, jak toomanage hello zařízení najdete v článku dodavatele hello dokumentace z brány firewall (nebo jiné hodnocení chyb zabezpečení). Hello zbytek této části a hello další části, vytváření pravidel brány Firewall, popíše hello konfigurace brány firewall hello, samostatně, prostřednictvím klienta pro správu dodavatelé hello (tzn. ne hello portál Azure nebo PowerShell).
+Klient správy bude potřeba nainstalovat na počítač pro správu brány firewall a vytvoření konfigurací potřeby. O tom, jak spravovat zařízení, najdete v článku dodavatele dokumentace z brány firewall (nebo jiné hodnocení chyb zabezpečení). Zbývající část tohoto tématu a v další části vytváření pravidel brány Firewall, bude popisují konfiguraci brány firewall, samostatně, prostřednictvím dodavatele správy klienta (tzn. ne portál Azure nebo PowerShell).
 
-Pokyny pro stažení klienta a připojování toohello Barracuda použité v tomto příkladu naleznete zde: [Barracuda NG správce](https://techlib.barracuda.com/NG61/NGAdmin)
+Pokyny pro stažení klienta a připojení k Barracuda použité v tomto příkladu naleznete zde: [Barracuda NG správce](https://techlib.barracuda.com/NG61/NGAdmin)
 
-Po přihlášení na hello brány firewall, ale před vytvořením pravidel brány firewall, existují dvě třídy požadovaných objektů, které může usnadnit vytváření pravidel hello; Objekty, síť a služby.
+Po přihlášení na bránu firewall, ale před vytvořením pravidel brány firewall, existují dvě třídy požadovaných objektů, které můžou vytváření pravidel snadněji; Objekty, síť a služby.
 
-V tomto příkladu tři objekty pojmenované síti musí být definované (jeden pro podsíť Frontend hello a hello back-end podsíť, také síťového objektu pro hello IP adresu serveru DNS hello). toocreate pojmenované síti; od hello Barracuda NG správce klienta řídicí panel, přejděte na kartě Konfigurace toohello, v hello provozní konfigurační oddíl klikněte Ruleset, pak klikněte na tlačítko "Sítě" v části nabídky hello objekty brány Firewall a pak klikněte na nový v nabídce Upravit sítě hello. objekt Hello sítě může být nyní vytvořen přidáním hello název a předponu hello:
+V tomto příkladu tři objekty pojmenované síti musí být definované (jeden pro podsítě front-endu a back-end podsíť, také síťového objektu pro IP adresu serveru DNS). Vytvořit síť s názvem; spouštění z řídicího panelu Barracuda NG správce klienta, přejděte na kartu Konfigurace, v části Konfigurace provozní klikněte Ruleset, pak klikněte na tlačítko "Sítě" v nabídce objekty brány Firewall a pak v nabídce Upravit sítě klikněte na tlačítko Nový. Objekt sítě může být nyní vytvořen přidáním názvu a předponu:
 
 ![Vytvoření objektu front-endové síti][3]
 
-Tím se vytvoří pojmenované sítě pro podsíť FrontEnd hello, podobně jako objekt měl být vytvořen pro hello back-end i podsíť. Nyní hello podsítě lze snadněji odkazovat podle názvu v pravidlech brány firewall hello.
+Tím se vytvoří pojmenované sítě pro podsíť FrontEnd, podobně jako objekt měl být vytvořen v back-end podsíti. Nyní podsítě lze snadněji odkazovat podle názvu v pravidlech brány firewall.
 
-Pro hello objekt serveru DNS:
+Pro objekt serveru DNS:
 
 ![Vytvořit objekt serveru DNS][4]
 
-V pravidle DNS později v dokumentu hello použije tento jeden odkaz na IP adresu.
+V pravidle DNS později v dokumentu použije tento jeden odkaz na IP adresu.
 
-Hello druhý požadované objekty jsou objekty služby. Toto bude reprezentovat hello porty pro připojení RDP pro každý server. Vzhledem k tomu, že hello existující objekt služby RDP je vázané toohello, výchozí port protokolu RDP, 3389, nové služby lze vytvořit tooallow provoz z externí porty hello (8014-8026). nové porty Hello také nelze přidat existující službu RDP toohello, ale pro usnadnění ukázku, můžete vytvořit jednotlivých pravidel pro každý server. toocreate nové pravidlo protokolu RDP pro server; od hello Barracuda NG správce klienta řídicí panel, přejděte na kartě Konfigurace toohello, v hello provozní konfiguraci části klikněte na tlačítko Ruleset, pak klikněte na tlačítko "Služby" v části hello objekty brány Firewall nabídky, přejděte dolů hello seznam služeb a vyberte hello Služba "RDP". Klikněte pravým tlačítkem a vyberte kopie, pak klikněte pravým tlačítkem a vyberte vložení. Je nyní objekt služby RDP Copy1, který lze upravovat. Klikněte pravým tlačítkem na RDP Copy1 a vyberte upravit, hello upravit objekt služby objeví se okno si, jak je vidět tady:
+Druhý požadované objekty jsou objekty služby. Toto bude reprezentovat porty pro připojení RDP pro každý server. Vzhledem k tomu, že existující objekt služby RDP je vázána výchozí port protokolu RDP, 3389, nové služby můžete vytvořit Pokud chcete povolit přenosy z externí porty (8014-8026). Nové porty nebylo možné přidat také do existující služba protokolu RDP, ale pro usnadnění ukázku, můžete vytvořit jednotlivých pravidel pro každý server. Chcete-li vytvořit nové pravidlo protokolu RDP pro server; spouštění z řídicího panelu Barracuda NG správce klienta, přejděte na kartu Konfigurace, v provozní konfigurační oddíl klikněte na Ruleset, pak klikněte na tlačítko "Služby" v nabídce objekty brány Firewall, přejděte dolů v seznamu služeb a vyberte službu "RDP". Klikněte pravým tlačítkem a vyberte kopie, pak klikněte pravým tlačítkem a vyberte vložení. Je nyní objekt služby RDP Copy1, který lze upravovat. Klikněte pravým tlačítkem na RDP Copy1 a vyberte upravit, upravit objekt služby okno bude pop až, jak je vidět tady:
 
 ![Kopii výchozí pravidlo protokolu RDP][5]
 
-Hello hodnoty mohou být potom upravenou toorepresent hello služba protokolu RDP pro určitý server. Pro AppVM01 hello nad výchozí pravidlo protokolu RDP by měl být upravené tooreflect nový název služby, popis, a používá externí Port protokolu RDP v hello diagram obrázek 8 (Poznámka: porty hello se změnil z hello RDP výchozí 3389 portu externí toohello, které se používá pro tento konkrétní server, v případě hello AppVM01 hello externí portu je 8025) hello upravené služby jsou uvedeny níže:
+Hodnoty lze upravit k reprezentaci služba protokolu RDP pro určitý server. Pro AppVM01 výše uvedené výchozí pravidlo protokolu RDP by měl být upraven tak, aby odrážela nový název služby, popis a externí portu RDP v diagramu obrázek 8 (Poznámka: porty jsou změnit z výchozích RDP 3389 k externí port používán pro tento konkrétní server, v případě AppVM01 externí Port je 8025) upravené služby jsou uvedeny níže :
 
 ![Pravidlo AppVM01][6]
 
-Tento proces musí být opakovaných toocreate služby protokolu RDP pro hello zbývající servery; AppVM02, DNS01 a IIS01. Vytvoření Hello tyto služby budou vytvoření pravidla hello jednodušší a zřejmější v další části hello.
+Tento proces opakuje pro vytvoření služby protokolu RDP pro ostatní servery; AppVM02, DNS01 a IIS01. Vytvoření tyto služby budou vytvoření pravidla jednodušší a zřejmější v další části.
 
 > [!NOTE]
-> Služby protokolu RDP pro hello brány Firewall není potřeba dvou důvodů; je 1) první hello brána firewall virtuálních počítačů založenými na systému Linux obrázku tak, aby použila SSH port 22 pro správu virtuálních počítačů místo protokolu RDP a 2) port 22, a dva další správu porty jsou povolené v první pravidlo správy hello popsané dál tooallow pro možnosti připojení správy.
+> Služby protokolu RDP pro bránu Firewall není potřeba dvou důvodů; první 1) brána firewall virtuálního počítače je bitová kopie založenými na systému Linux tak, aby SSH se použije na port 22 pro správu virtuálních počítačů místo protokolu RDP a 2) port 22, a dva další správu porty jsou povolené v první pravidlo správy popsané dál umožňující možnosti připojení správy.
 > 
 > 
 
 ### <a name="firewall-rules-creation"></a>Vytvoření pravidla brány firewall
 Existují tři typy pravidel brány firewall použité v tomto příkladu, všechny mají odlišné ikony:
 
-pravidlo přesměrování aplikace Hello: ![přesměrování ikona aplikace][7]
+Pravidlo aplikace přesměrování: ![přesměrování ikona aplikace][7]
 
-pravidlo NAT cílové Hello: ![ikonu cílové NAT][8]
+Pravidlo NAT cílové: ![ikonu cílové NAT][8]
 
-pravidlo průchodu Hello: ![předat ikonu][9]
+Pravidlo průchodu: ![předat ikonu][9]
 
-Další informace o těchto pravidel lze najít na hello Barracuda webové stránky.
+Další informace o těchto pravidel lze najít na webu Barracuda.
 
-toocreate hello následující pravidla (nebo ověřit existující výchozí pravidla), od hello Barracuda NG správce klienta řídicí panel, přejděte na kartě Konfigurace toohello, v hello provozní konfigurace oddíl, klikněte na Ruleset. Mřížka názvem, zobrazí "Hlavní pravidla" hello existující aktivní a deaktivované pravidla v této bráně firewall. V horním pravém rohu hello tento mřížky je malý, zelená "+" tlačítko, klikněte na tento toocreate nové pravidlo (Poznámka: Brána firewall může být "uzamčen" změny, pokud se zobrazí tlačítko označené "Zámek" a jsou nelze toocreate nebo upravit pravidla, klikněte na toto tlačítko příliš "odemknout" hello se pravidlo t a povolení úprav). Pokud chcete tooedit existující pravidlo, vyberte toto pravidlo, klikněte pravým tlačítkem a vyberte Upravit pravidlo.
+Vytvořit následující pravidla (nebo ověřit existující výchozí pravidla), od řídicím panelu Barracuda NG správce klienta, přejděte na kartu Konfigurace, v provozní konfiguraci oddíl, klikněte na Ruleset. Mřížka názvem, zobrazí "Hlavní pravidla" existující pravidla aktivní a deaktivované na tato brána firewall. V pravém horním rohu mřížce je malý, zelená "+" tlačítko, klepněte sem a vytvořit nové pravidlo (Poznámka: Brána firewall může "zamknout" změny, pokud se zobrazí tlačítko označené "Zamknout" a nelze vytvořit nebo upravit pravidla, klikněte na toto tlačítko "odemknutí" je sada pravidel a povolit úpravy). Pokud chcete upravit existující pravidlo, vyberte toto pravidlo, klikněte pravým tlačítkem a vyberte Upravit pravidlo.
 
-Jakmile pravidel se vytvořit nebo upravit, musí být nabídnutých toohello brány firewall a pak se aktivuje, pokud to neuděláte hello pravidlo změny se neprojeví. Hello nabízení a aktivace proces je popsán níže hello podrobnosti pravidlo popisy.
+Jakmile jsou pravidla vytvořit nebo upravit, musí být nabídnutých do brány firewall a pak se aktivuje, pokud to neuděláte pravidlo změny neprojeví. Nabízení a aktivace proces je popsán níže popisy pravidlo podrobnosti.
 
-Specifikace Hello každé pravidlo vyžaduje toocomplete v tomto příkladu jsou popsány následovně:
+Jaké jsou specifikace každé pravidlo mohou provést pouze v tomto příkladu jsou popsány následovně:
 
-* **Brány firewall pravidla správy**: Tato aplikace přesměrování pravidlo umožňuje provoz toopass toohello správu porty hello sítě virtuální zařízení, v tomto příkladu Barracuda NextGen Firewall. Hello správu porty jsou 801, 807 a volitelně 22. Hello externí i interní porty jsou hello stejné (tj. žádné překlad port). Toto pravidlo, instalační program-MGMT-přístup, je výchozí pravidlo a povolena ve výchozím nastavení (Barracuda NextGen Firewall verze 6.1).
+* **Brány firewall pravidla správy**: Tato aplikace přesměrování pravidlo umožňuje předat porty správu zařízení virtuální sítě v tomto příkladu Barracuda NextGen Firewall provoz. Porty pro správu jsou 801, 807 a volitelně 22. Externí i interní porty jsou stejné (tj. žádné překlad port). Toto pravidlo, instalační program-MGMT-přístup, je výchozí pravidlo a povolena ve výchozím nastavení (Barracuda NextGen Firewall verze 6.1).
   
     ![Pravidlo brány firewall správy][10]
 
 > [!TIP]
-> Hello zdroj adresní prostor v tomto pravidle je všechny, pokud hello správu rozsahů IP adres jsou známé, tento zúžíte by také snížit hello útoku prostor toohello správu porty.
+> Adresní prostor zdroje v tomto pravidle je existuje, pokud se ví, že rozsahy správy IP adres, snižuje tento obor by také omezit možnost útoku na porty správy.
 > 
 > 
 
-* **Pravidla RDP**: pravidla NAT tyto cílové vám umožní správu hello jednotlivé servery prostřednictvím protokolu RDP.
-  Toto pravidlo existují čtyři toocreate kritické potřebná pole:
+* **Pravidla RDP**: pravidla NAT tyto cílové vám umožní správu jednotlivých serverů prostřednictvím protokolu RDP.
+  Existují čtyři kritické pole, které jsou potřebné k vytvoření tohoto pravidla:
   
-  1. Zdroj – tooallow RDP z libovolného místa, odkaz hello "Žádný" se používá v pole hello zdroje.
-  2. Služba – použít odpovídající objekt služby vytvořený v tomto případě "AppVM01 RDP" hello, externí porty hello přesměrování toohello servery místní IP adresu a tooport 3386 (hello výchozí port protokolu RDP). Tato konkrétní pravidlo je tooAppVM01 přístup RDP.
-  3. Cíl – musí být hello *místního portu v bráně firewall hello*, "IP místní server DHCP 1" nebo eth0, pokud se používá statické IP adresy. Hello řadová číslovka (eth0, eth1 atd.) může být odlišné, pokud vaše síťové zařízení má více místní rozhraní. Je to hello port odesílá hello brány firewall z (může být hello stejné jako hello přijetí port), skutečný směrované cíl hello je v poli cílového seznamu hello.
-  4. Přesměrování – v této části informuje virtuální zařízení hello kde tooultimately přesměrování tento provoz. Nejjednodušší přesměrování Hello je tooplace hello IP a portu (volitelné) v poli cílového seznamu hello. Pokud není port je použité hello cílový port na hello příchozí požadavek bude používat (ie žádné překlad), pokud je port určený hello port bude také NAT by spolu s hello IP adres.
+  1. Zdroj – chcete-li povolit RDP z libovolného místa, odkaz na "Žádný" se používá v poli zdroje.
+  2. Služba – použít na příslušný objekt služby vytvořený v tomto případě "AppVM01 RDP", externí porty přesměrování na servery místní IP adresu a port 3386 (výchozí port protokolu RDP). Tato konkrétní pravidlo je pro přístup k protokolu RDP na AppVM01.
+  3. Cíl – musí být *místního portu v bráně firewall*, "IP místní server DHCP 1" nebo eth0, pokud se používá statické IP adresy. Řadová číslovka (eth0, eth1 atd.), může lišit, pokud vaše síťové zařízení má více místní rozhraní. Toto je port brány firewall odesílá z (může být stejný jako přijímající port), skutečný směrované cíl je v poli cílového seznamu.
+  4. Přesměrování – v této části informuje virtuální zařízení kde nakonec přesměrování tento provoz. Nejjednodušší přesměrování je umístit do cílového seznamu pole IP adresy a portu (volitelné). Pokud žádné port je používán cílový port na příchozí žádosti bude používat (ie žádné překlad), pokud je port určený port bude také NAT by spolu s IP adres.
      
      ![Pravidlo brány firewall protokolu RDP][11]
      
-     Celkem čtyři pravidla RDP potřebovat toobe vytvořit: 
+     Celkem čtyři pravidla RDP bude muset vytvořit: 
      
      | Název pravidla | Server | Služba | Cílového seznamu |
      | --- | --- | --- | --- |
@@ -317,272 +317,272 @@ Specifikace Hello každé pravidlo vyžaduje toocomplete v tomto příkladu jsou
      | RDP AppVM02 |AppVM02 |AppVm02 protokolu RDP |10.0.2.6:3389 |
 
 > [!TIP]
-> Zužující hello oboru hello zdroje a pole služby se zmenší prostor pro útoky hello. Hello nejvíc omezenou oboru, který vám umožní funkce je třeba použít.
+> Zužující dolů oboru pole zdrojové a služby se zmenší prostor pro útoky. Většina omezeným oborem, který vám umožní funkce je třeba použít.
 > 
 > 
 
-* **Pravidla pro provoz aplikace**: existují dvě pravidla pro provoz aplikace, hello nejprve pro hello front-end webový provoz a hello druhý pro přenosy back-end hello (např webový server toodata vrstva). Tato pravidla bude záviset na hello síťovou architekturu (kde jsou umístěné vaše servery) a tok přenosů dat (které směr hello přenosy dat a používaných portů).
+* **Pravidla pro provoz aplikace**: existují dvě pravidla provoz aplikace první pro webový provoz front-endu a druhý pro přenosy back-end (např. webový server na datové vrstvě). Tato pravidla se závisí na síťovou architekturu (kde jsou umístěné vaše servery) a provoz toků (směru tok přenosů dat a který porty se používají).
   
-    Nejprve popsané je pravidlo hello front-endu pro webový provoz:
+    Nejprve popsané je pravidlo front-endu pro webový provoz:
   
     ![Pravidla brány firewall na webu][12]
   
-    Toto pravidlo NAT cílové umožňuje hello skutečné aplikace provoz tooreach hello aplikačnímu serveru. Při hello ostatní pravidla povolit pro zabezpečení, správy, atd., jsou aplikace pravidla povolit externích uživatelů nebo služeb tooaccess aplikace hello. V tomto příkladu je jednom webovém serveru na portu 80, proto hello jediné aplikace pravidlo firewallu přesměruje příchozí provoz toohello externí IP, toohello webové servery interní IP adresu.
+    Toto pravidlo NAT cílové umožňuje přenos skutečné aplikaci připojit k serveru aplikace. Zatímco ostatní pravidla povolit pro zabezpečení, správy, atd., jsou pravidla aplikace co povolit externích uživatelů nebo služeb pro přístup k aplikace. V tomto příkladu je jednom webovém serveru na portu 80, proto jediné aplikaci pravidlo firewallu přesměruje příchozí přenosy na externí IP adresu, na webové servery interní IP adresu.
   
-    **Poznámka:**: že neexistuje žádná portu přiřazené do pole cílového seznamu hello, proto hello příchozí port 80 (nebo 443 pro hello služby vybrali) bude použita v hello přesměrování hello webového serveru. Pokud hello webový server naslouchá na jiný port, například port 8080, hello cílového seznamu pole může být tooallow aktualizované too10.0.1.4:8080 hello Port také přesměrování.
+    **Poznámka:**: že neexistuje žádná portu přiřazené do pole cílového seznamu, proto příchozí port 80 (nebo 443 pro službu vybrané) se použije v přesměrování webového serveru. Pokud webový server naslouchá na jiný port, například port 8080, mohlo dojít k aktualizaci pole cílového seznamu k 10.0.1.4:8080 umožňující také přesměrování portu.
   
-    Dobrý den, je další pravidlo pro provoz aplikace hello back-end pravidlo tooallow hello Webový Server tootalk toohello AppVM01 serveru (ale ne AppVM02) prostřednictvím jakékoli služby:
+    Pravidlo pro provoz další aplikace je back-end pravidlo, kterým povolíte Webový Server, aby komunikoval s AppVM01 serveru (ale ne AppVM02) prostřednictvím jakékoli služby:
   
     ![Pravidlo brány firewall AppVM01][13]
   
-    Toto pravidlo průchodu umožňuje žádné serveru IIS na hello front-endu podsíť tooreach hello AppVM01 (IP adresa 10.0.2.5) na libovolném portu pomocí jakékoli protokol tooaccess dat, které hello webové aplikace.
+    Toto pravidlo průchodu umožňuje jakýkoli server služby IIS na podsíť Frontend vás zastihnout AppVM01 (IP adresa 10.0.2.5) na libovolném portu pomocí libovolný protokol pro přístup k datům, které jsou potřebné pro webovou aplikaci.
   
-    V tento snímek obrazovky "\<explicitní dest\>" se používá v hello cílového pole toosignify 10.0.2.5 jako cíl hello. To může být buď explicitní znázorněné nebo názvem objektu sítě (stejně jako ve hello požadavky pro hello DNS server). Toto je až toohello Správce brány firewall hello jako toowhich metoda se použije. dvakrát klikněte na první prázdný řádek hello pod tooadd 10.0.2.5 jako Explict Desitnation \<explicitní dest\> a zadejte adresu hello v okně hello, která se objeví.
+    V tento snímek obrazovky "\<explicitní dest\>" se používá v poli cílové místo 10.0.2.5 jako cíl. To může být buď explicitní znázorněné nebo názvem objektu sítě (stejně jako ve požadavky pro DNS server). Toto je až správce brány firewall, která se použije metoda. Přidat Explict Desitnation 10.0.2.5, dvakrát klikněte na první prázdný řádek pod \<explicitní dest\> a v okně, které se zobrazí, zadejte adresu.
   
-    S tímto pravidlem předat je potřeba žádné NAT vzhledem k tomu, že toto je interní provoz, takže hello metodu připojení lze nastavit příliš "Ne překládat pomocí SNAT".
+    Toto pravidlo předat není nutné žádné NAT vzhledem k tomu, že toto je interní provoz, takže metodu připojení může být nastaven na "Ne překládat pomocí SNAT".
   
-    **Poznámka:**: hello zdrojové síti v tomto pravidle je jakýkoli prostředek na podsíť FrontEnd hello, pokud budou existovat jenom jedna nebo známé konkrétní počet webových serverů, objekt síťový prostředek může být vytvořena toobe konkrétnější toothose přesnou IP adresy místo Hello celé podsítě front-endu.
+    **Poznámka:**: zdrojový sítě v tomto pravidle je jakémukoli prostředku, na podsíť FrontEnd, pokud bude existovat pouze jedna nebo známé konkrétní počet webových serverů, prostředek objektu sítě by bylo možné vytvořit být konkrétnější těchto přesnou IP adresy místo celé podsítě front-endu.
 
 > [!TIP]
-> Toto pravidlo používá službu hello "Žádné" toomake hello jednodušší toosetup ukázkové aplikace a používat, to také umožní ICMPv4 (ping) v jediné pravidlo. Je to ale není doporučený postup. Hello porty a protokoly ("služby") by měl být zúžit toohello minimální možné, že umožňuje aplikaci operaci tooreduce hello útok napříč tuto hranici.
+> Toto pravidlo používá službu "Žádné" usnadnění ukázkovou aplikaci nastavit a používat, to také umožní ICMPv4 (ping) v jediné pravidlo. Je to ale není doporučený postup. Porty a protokoly ("služby") by měl být zúžit možné minimální, který umožňuje aplikaci operace redukovat prostor pro útok napříč tuto hranici.
 > 
 > 
 
 <br />
 
 > [!TIP]
-> I když toto pravidlo zobrazuje odkaz na explicitní dest používá, je třeba použít jednotný přístup v rámci konfigurace brány firewall hello. Doporučuje se použít tento hello s názvem objektu sítě v rámci pro snazší čitelnost a podpoře. explicitní Hello-dest je použité tooshow sem pouze odkaz na alternativní metoda a se obecně nedoporučuje (hlavně u komplexní konfigurace).
+> I když toto pravidlo zobrazuje odkaz na explicitní dest používá, je třeba použít jednotný přístup v rámci konfigurace brány firewall. Doporučuje se použít s názvem objektu sítě v rámci pro snazší čitelnost a podpoře. Explicitní dest tady je použita pouze k zobrazení metodu alternativní odkaz a se obecně nedoporučuje (hlavně u komplexní konfigurace).
 > 
 > 
 
-* **TooInternet odchozí pravidlo**: předat toto pravidlo povolí provoz z jakékoli zdroj toopass toohello vybrané cílové sítě. Toto pravidlo je výchozí pravidlo obvykle již v hello Barracuda NextGen firewall, ale je v zakázaném stavu. Pravým tlačítkem myši na toto pravidlo můžete přístup k příkazu aktivovat pravidlo hello. pravidlo Hello tady uvedené byl upravený tooadd hello dvě místní podsítě, které byly vytvořeny jako odkazy v hello požadovaných části tohoto dokumentu toohello zdrojového atributu tohoto pravidla.
+* **Odchozí do internetové pravidlo**: předat toto pravidlo povolí provoz z jakékoli zdrojové síti mají být předána do vybrané cílové sítě. Toto pravidlo je výchozí pravidlo obvykle už v bráně firewall Barracuda NextGen, ale je v zakázaném stavu. Pravým tlačítkem myši na toto pravidlo můžete přístup k příkazu aktivovat pravidlo. Přidejte dva místní podsítě, které byly vytvořeny jako odkazy v části požadavků tohoto dokumentu ke zdrojovému atributu tohoto pravidla se změnilo pravidlo zobrazeny zde.
   
     ![Odchozí pravidlo brány firewall][14]
-* **Pravidlo DNS**: předat toto pravidlo umožňuje pouze (port 53) provoz toopass toohello DNS server DNS. Pro toto prostředí, které se většina přenos dat z hello front-endu toohello back-end je blokován konkrétně toto pravidlo umožňuje DNS.
+* **Pravidlo DNS**: předat toto pravidlo umožňuje předat serveru DNS pouze provoz DNS (port 53). Pro toto prostředí, které se většina provoz z front-endu na back-end je blokovaný konkrétně toto pravidlo umožňuje DNS.
   
     ![Pravidlo brány firewall DNS][15]
   
-    **Poznámka:**: na této obrazovce je součástí snímek hello metodu připojení. Vzhledem k tomu, že toto pravidlo je pro interní IP toointernal IP adresu provoz, není třeba žádné NATing, tento hello způsob připojení nastaven příliš "Ne překládat pomocí SNAT" pro toto pravidlo průchodu.
-* **Podsíť tooSubnet pravidlo**: předat toto pravidlo je výchozí pravidlo, které byl aktivován a upravené tooallow jakýkoli server na hello zpět končí na podsíť tooconnect tooany server hello podsítě front end. Toto pravidlo je všechny interní provoz, takže hello metodu připojení lze nastavit tooNo překládat pomocí SNAT.
+    **Poznámka:**: na této obrazovce snímek metoda připojení je součástí. Protože toto pravidlo je pro interní IP adresu pro interní IP adresu provoz, žádné NATing je vyžadován, tato metoda připojení nastavena na "Ne překládat pomocí SNAT" pro toto pravidlo průchodu.
+* **Pravidlo podsítě pro podsíť**: předat toto pravidlo je výchozí pravidlo, které se aktivuje a upravit tak, aby povolit všechny servery v podsíti back-end připojení k libovolnému serveru na podsítě front end. Toto pravidlo je všechny interní provoz, takže metodu připojení může být nastaven na žádný překládat pomocí SNAT.
   
     ![Pravidlo brány firewall Intra-VNet][16]
   
-    **Poznámka:**: zaškrtávací políčko hello obousměrný nastavení není kontrolován (ani je zaregistrováno většina pravidla), to je důležité pro toto pravidlo, umožňuje tato pravidla "jeden směrové", připojení lze inicializovat z hello back-end podsíť toohello front-endu sítě, ale není hello zpětného. Pokud toto zaškrtávací políčko je zaškrtnuto, by toto pravidlo povolit obousměrný přenos, který je z našich logického diagramu není žádoucí.
-* **Všechny přenosy pravidlo Odepřít**: to by mělo být vždy hello konečné pravidlo (z hlediska priorita), a jako takový Pokud přenosem toků selže toomatch některé z předchozích pravidel hello ho budou vynechána tímto pravidlem. Toto je výchozí pravidlo a obvykle aktivaci žádné je obecně nutné provést změny. 
+    **Poznámka:**: zaškrtávací políčko obousměrný nastavení není kontrolován (ani je zaregistrováno většina pravidla), to je důležité pro toto pravidlo, umožňuje tato pravidla "jeden směrové", připojení lze inicializovat z back-end podsítě síť front-end, ale nikoli naopak. Pokud toto zaškrtávací políčko je zaškrtnuto, by toto pravidlo povolit obousměrný přenos, který je z našich logického diagramu není žádoucí.
+* **Všechny přenosy pravidlo Odepřít**: to by mělo být vždy poslední pravidlo (z hlediska priorita), a jako takový Pokud selže tak, aby odpovídaly některé z přenosy podle předchozích pravidel se zahodí tímto pravidlem. Toto je výchozí pravidlo a obvykle aktivaci žádné je obecně nutné provést změny. 
   
     ![Pravidlo brány firewall Odepřít][17]
 
 > [!IMPORTANT]
-> Jakmile všechny hello výše pravidla vytvořeny, je důležité tooreview hello prioritu každé pravidlo tooensure provozu se povoluje nebo odepírá podle potřeby. V tomto příkladu jsou hello pravidla v hello pořadí, ve kterém by se zobrazit v hello hlavní mřížku předávání pravidla v hello Barracuda klienta pro správu.
+> Po vytvoření všech výše uvedených pravidel, je důležité zkontrolovat prioritu každé pravidlo zajistit provoz se povolí nebo zakáže podle potřeby. V tomto příkladu jsou pravidla v pořadí, ve kterém by se zobrazit v hlavní mřížky předávání pravidla v Barracuda správy klienta.
 > 
 > 
 
 ## <a name="rule-activation"></a>Aktivace pravidla
-Hello ruleset hello ruleset upravit toohello specifikaci diagram hello logiku, musí být odeslán toohello brány firewall a pak se aktivuje.
+S ruleset upravit tak, aby specifikace diagramu logiku musí být nahrán do brány firewall a pak se aktivuje ruleset.
 
 ![Aktivace pravidla brány firewall][18]
 
-V pravém horním rohu hello hello správy klienta jsou součástí clusteru tlačítka. Klikněte na tlačítko hello "odeslat změny" tlačítko toosend hello upravit pravidla brány firewall toohello a pak klikněte na tlačítko "Aktivovat" hello.
+V pravém horním rohu správy klienta jsou součástí clusteru tlačítka. Kliknutím na tlačítko "Změny odeslat" poslat upravené pravidla brány firewall a potom klikněte na tlačítko "Aktivovat".
 
-Tento příklad prostředí sestavení je s hello aktivace sada pravidel brány firewall pro hello dokončena.
+S aktivace sada pravidel brány firewall pro tento příklad prostředí sestavení je dokončena.
 
 ## <a name="traffic-scenarios"></a>Provoz scénáře
 > [!IMPORTANT]
-> Klíče takeway je tooremember, **všechny** provoz se odešlou přes bránu firewall hello. Ano tooremote plochy toohello IIS01 serveru, i když je v hello Front End cloudové služby a v hello podsítě Front End, tooaccess tento server, které je nutné zadat tooRDP toohello brány firewall na portu 8014 a pak umožnit hello brány firewall tooroute hello RDP požadavek interně toohello IIS01 portu RDP. Hello portál Azure "připojit" tlačítko nebude fungovat, protože neexistuje žádná přímá cesta tooIIS01 protokolu RDP (jde o hello portálu uvidí). To znamená, všechna připojení z hello Internetu bude toohello služby zabezpečení a Port, například secscv001.cloudapp.net:xxxx.
+> Nezapomeňte, že klíče takeway je **všechny** provoz se odešlou přes bránu firewall. Proto vzdálené plochy k serveru IIS01, i když je počítač v cloudové službě Front End a na podsítě Front End, pro přístup k tomuto serveru jsme bude muset RDP do brány firewall na portu 8014 a potom povolit bránu firewall pro směrování požadavku protokolu RDP interně k portu RDP IIS01. Tlačítko "Připojit" portálu Azure nebude fungovat, protože neexistuje přímé cesta protokolu RDP na IIS01 (jde o můžete zobrazit na portálu). To znamená, že všechna připojení z Internetu bude služby zabezpečení a Port, například secscv001.cloudapp.net:xxxx.
 > 
 > 
 
-Pro tyto scénáře hello následující pravidla brány firewall musí být k dispozici:
+Pro tyto scénáře následující pravidla brány firewall musí být k dispozici:
 
 1. Správa brány firewall
-2. TooIIS01 protokolu RDP
-3. TooDNS01 protokolu RDP
-4. TooAppVM01 protokolu RDP
-5. TooAppVM02 protokolu RDP
-6. Provoz aplikace toohello Web
-7. TooAppVM01 provoz aplikace
-8. Odchozí toohello Internetu
-9. TooDNS01 front-endu
-10. Přenosy mezi podsítěmi (back-end toofront end pouze)
+2. RDP na IIS01
+3. RDP na DNS01
+4. RDP na AppVM01
+5. RDP na AppVM02
+6. Provoz aplikace na webu
+7. Provoz aplikace AppVM01
+8. Odchozí do Internetu
+9. Front-endu do DNS01
+10. Přenosy mezi podsítěmi (back-endu front-endu pouze)
 11. Odepřít vše
 
-Hello skutečné brány firewall ruleset bude mít s největší pravděpodobností mnoha dalším pravidlům v přidání toothese, pravidla hello na jakékoli dané brány firewall bude také obsahovat čísla jinou prioritu než těch, které jsou zde uvedeny hello. Tento seznam a přidružená čísla jsou tooprovide relevance mezi právě tyto 11 pravidla a relativní Priorita hello jedna z nich. Jinými slovy; hello "RDP tooIIS01" na hello skutečné brány firewall, může být číslo pravidla 5, ale také je nad pravidlo "RDP tooDNS01" hello, které by zarovnané s hello záměr v tomto seznamu a pravidel "Správa brány Firewall" hello. seznam Hello bude také pomáhají při hello níže scénáře povolení jako stručný výtah; například "Pravidlo FW 9 (DNS)". Jako stručný výtah hello čtyři pravidla RDP bude souhrnně nazývané také, "hello RDP pravidla" po nesouvisejícími tooRDP hello provoz scénář.
+Ruleset skutečné brány firewall budou s největší pravděpodobností mít mnoho pravidla kromě těchto, pravidla na jakékoli dané brány firewall bude také obsahovat čísla jinou prioritu než ty, které jsou zde uvedeny. Tento seznam a přidružená čísla jsou zajistit relevance mezi právě tyto 11 pravidla a relativní Priorita jedna z nich. Jinými slovy; v bráně firewall skutečné "protokolu RDP na IIS01" může být číslo pravidla 5, ale dokud je nižší než pravidlo "Brány Firewall správy" a výše "Protokolu RDP na DNS01" pravidlo by zarovnat tak, aby tento seznam. V seznamu bude také pomáhají při níže scénáře povolení jako stručný výtah; například "Pravidlo FW 9 (DNS)". Také jako stručný výtah čtyři pravidla RDP souhrnně volaná, "pravidla RDP" Pokud scénář provoz nesouvisí s RDP.
 
-Odvolat také, že skupiny zabezpečení sítě jsou na místě pro příchozí přenosy z Internetu na hello front-endu a back-end podsítě.
+Taky odvolat, že skupiny zabezpečení sítě jsou místní pro příchozí přenosy z Internetu v podsítích front-endové a back-end.
 
-#### <a name="allowed-internet-tooweb-server"></a>(Povoleno) Internet tooWeb serveru
+#### <a name="allowed-internet-to-web-server"></a>(Povoleno) Internet na webový Server
 1. Internet uživatelské požadavky HTTP stránky z SecSvc001.CloudApp.Net (Internet čelí cloudové služby)
-2. Cloudové služby předává přenos prostřednictvím otevřených koncových bodů na portu 80 toofirewall rozhraní na 10.0.0.4:80
-3. Žádné skupiny NSG přiřazené podsítě tooSecurity, tak pravidla NSG systému povolit provoz toofirewall
-4. Provoz dotkne interní IP adresu brány firewall hello (10.0.1.4)
+2. Cloudové služby předává přenos prostřednictvím otevřených koncových bodů na portu 80 k rozhraní brány firewall na 10.0.0.4:80
+3. Žádné skupiny NSG přiřazené podsítě zabezpečení, tak pravidla NSG systému povolit provoz do brány firewall
+4. Provoz dotkne interní IP adresu brány firewall (10.0.1.4)
 5. Brány firewall zahájí zpracování pravidla:
-   1. Netýká FW pravidla 1 (FW Mgmt), přesunete toonext pravidlo
-   2. Nemusíte použít, přesunout toonext pravidlo FW pravidla 2 až 5 (RDP pravidla)
-   3. FW pravidla 6 (aplikace: webové) použít, provoz je povolený, zařízení brány firewall NAT. ho too10.0.1.4 (IIS01)
-6. podsíť Frontend Hello zahájí zpracování příchozí pravidlo:
-   1. Netýká NSG pravidlo 1 (bloku Internet) (Tento provoz byl NAT by bránou hello firewall, proto hello zdrojové adresy je nyní hello brány firewall, která je v podsíti hello zabezpečení a prohlížet podsíť Frontend hello "místní" provoz toobe NSG a je proto povoleno), přesunout toonext pravidlo
-   2. Výchozí pravidla NSG povolit podsíť toosubnet provoz, provoz je povolený, zastavit zpracování pravidel NSG
-7. IIS01 naslouchá pro webový provoz, získá tento požadavek a spustí zpracování požadavku hello
-8. IIS01 pokusí tooinitiates tooAppVM01 relace FTP v podsíti back-end
-9. Hello UDR trasy na podsíť Frontend provede další segment hello hello brány firewall
+   1. Není použít, přejděte k další pravidla FW pravidla 1 (FW Mgmt)
+   2. Nemusíte použít, přejděte k další pravidla FW pravidla 2 až 5 (RDP pravidla)
+   3. FW pravidla 6 (aplikace: webové) použít, provoz je povolený, zařízení brány firewall NAT. jeho 10.0.1.4 (IIS01)
+6. Podsíť Frontend zahájí zpracování příchozí pravidlo:
+   1. Netýká NSG pravidlo 1 (bloku Internet) (Tento provoz byl NAT by bránou firewall, proto je zdrojovou adresu nyní brány firewall, která je v podsíti, zabezpečení a prohlížet podsíť Frontend NSG jako "místní" provoz a je proto povolen), přesunout do dalšího pravidla
+   2. Výchozí pravidla NSG povolit podsítě pro podsíť provozu, provoz je povolený, zastavit zpracování pravidel NSG
+7. IIS01 naslouchá pro webový provoz, získá tento požadavek a spustí zpracování požadavku
+8. IIS01 pokusy o zahájí relace FTP na AppVM01 v podsíti back-end
+9. UDR trasy na podsíť Frontend umožňuje bráně firewall dalšího směrování
 10. Žádná odchozí pravidla na podsíť Frontend provoz je povolený.
 11. Brány firewall zahájí zpracování pravidla:
-    1. Netýká FW pravidla 1 (FW Mgmt), přesunete toonext pravidlo
-    2. Nemusíte použít FW pravidlo 2 až 5 (RDP pravidla), přesunete toonext pravidlo
-    3. FW pravidla 6 (aplikace: webové) není použít, přesuňte toonext pravidlo
-    4. FW pravidla 7 (aplikace: back-end) použít, provoz je povolený, brány firewall předává too10.0.2.5 provoz (AppVM01)
-12. podsíť back-end Hello zahájí zpracování příchozí pravidlo:
-    1. Netýká NSG pravidlo 1 (bloku Internet), přesunete toonext pravidlo
-    2. Výchozí pravidla NSG povolit podsíť toosubnet provoz, provoz je povolený, zastavit zpracování pravidel NSG
-13. AppVM01 obdrží požadavek na hello a inicializuje hello relace a odpovídá
-14. Hello UDR trasy v podsíti back-end umožňuje další segment hello hello brány firewall
-15. Vzhledem k tomu, že neexistují žádná odchozí pravidla NSG na hello back-end podsíť hello odpovědi je povoleno
-16. Protože to vrací provoz na bránu firewall navázanou relaci hello předá hello odpověď zpět toohello webový server (IIS01)
+    1. Není použít, přejděte k další pravidla FW pravidla 1 (FW Mgmt)
+    2. Nemusíte použít, přejděte k další pravidla FW pravidlo 2 až 5 (RDP pravidla)
+    3. FW pravidla 6 (aplikace: webové) není použít, přejděte k další pravidla
+    4. FW pravidla 7 (aplikace: back-end) použít, provoz je povolený, brány firewall předává přenos do 10.0.2.5 (AppVM01)
+12. Podsíť back-end zahájí zpracování příchozí pravidlo:
+    1. Není použít, přejděte k další pravidla NSG pravidlo 1 (bloku Internet)
+    2. Výchozí pravidla NSG povolit podsítě pro podsíť provozu, provoz je povolený, zastavit zpracování pravidel NSG
+13. AppVM01 obdrží požadavek a inicializuje relaci a odpovídá
+14. UDR trasy v podsíti back-end umožňuje bráně firewall dalšího směrování
+15. Vzhledem k tomu, že neexistují žádná odchozí pravidla NSG na podsítě back-end odpovědi je povoleno
+16. Protože to vrací provoz na navázanou relaci předává odpověď zpět do webového serveru (IIS01)
 17. Podsíť frontend zahájí zpracování příchozí pravidlo:
-    1. Netýká NSG pravidlo 1 (bloku Internet), přesunete toonext pravidlo
-    2. Výchozí pravidla NSG povolit podsíť toosubnet provoz, provoz je povolený, zastavit zpracování pravidel NSG
-18. server služby IIS Hello obdrží odpověď hello, dokončení transakce hello s AppVM01 a potom dokončí vytváření hello odpověď HTTP, tato odpověď HTTP odeslán toohello žadatele
-19. Vzhledem k tomu, že neexistují žádná odchozí pravidla NSG na hello odpovědi hello podsítě front-endu je povoleno
-20. Hello HTTP odpovědi přístupů hello brány firewall a vzhledem k tomu, že toto je tooan odpovědi hello navázat relaci NAT přijat bránou hello firewall
-21. brány firewall Hello pak přesměruje hello odpověď zpět toohello Internet uživatele
-22. Vzhledem k tomu, že neexistují žádné odchozí pravidla NSG nebo UDR směrování na podsíť Frontend hello je povoleno hello odpovědi a hello Internet uživatel obdrží webovou stránku hello požadovaný.
+    1. Není použít, přejděte k další pravidla NSG pravidlo 1 (bloku Internet)
+    2. Výchozí pravidla NSG povolit podsítě pro podsíť provozu, provoz je povolený, zastavit zpracování pravidel NSG
+18. Server služby IIS obdrží odpověď, dokončení transakce s AppVM01 a potom dokončí vytváření odpovědi HTTP, tato odpověď HTTP posílá žadatel
+19. Vzhledem k tomu, že neexistují žádná odchozí pravidla NSG na podsítě front-endu odpovědi je povoleno
+20. Odpověď HTTP dotkne brány firewall a vzhledem k tomu, že toto je odpověď na navázanou relaci NAT přijat branou firewall
+21. Brána firewall pak přesměruje odpověď zpět do Internetu uživatele
+22. Vzhledem k tomu, že neexistují žádná odchozí pravidla NSG nebo UDR směrování na front-endu podsítě, které je povoleno odpovědi a Internet uživatel obdrží požadované webové stránky.
 
-#### <a name="allowed-internet-rdp-toobackend"></a>(Povoleno) TooBackend Internet RDP
-1. Správce serveru na Internetu požadavky tooAppVM01 relace RDP prostřednictvím SecSvc001.CloudApp.Net:8025, kde 8025 je číslo portu hello přiřazeného uživatele pro pravidlo brány firewall "RDP tooAppVM01" hello
-2. Hello Cloudová služba předá provoz prostřednictvím hello otevřených koncových bodů na portu 8025 toofirewall rozhraní na 10.0.0.4:8025
-3. Žádné skupiny NSG přiřazené podsítě tooSecurity, tak pravidla NSG systému povolit provoz toofirewall
+#### <a name="allowed-internet-rdp-to-backend"></a>(Povoleno) Internet protokolu RDP na back-end
+1. Správce serveru na Internetu požadavky protokolu RDP relace AppVM01 prostřednictvím SecSvc001.CloudApp.Net:8025, kde 8025 je číslo portu přiřazeného uživatele pro pravidlo brány firewall "Protokolu RDP na AppVM01"
+2. Cloudové služby předá provoz prostřednictvím otevřených koncových bodů na portu 8025 rozhraní brány firewall na 10.0.0.4:8025
+3. Žádné skupiny NSG přiřazené podsítě zabezpečení, tak pravidla NSG systému povolit provoz do brány firewall
 4. Brány firewall zahájí zpracování pravidla:
-   1. Netýká FW pravidla 1 (FW Mgmt), přesunete toonext pravidlo
-   2. Netýká FW pravidla 2 (RDP IIS), přesunete toonext pravidlo
-   3. Netýká FW pravidla 3 (RDP DNS01), přesunete toonext pravidlo
-   4. Použít FW pravidla 4 (RDP AppVM01), provoz je povolený, zařízení brány firewall NAT. ho too10.0.2.5:3386 (portu RDP na AppVM01)
-5. podsíť back-end Hello zahájí zpracování příchozí pravidlo:
-   1. Netýká NSG pravidlo 1 (bloku Internet) (Tento provoz byl NAT by bránou hello firewall, proto hello zdrojové adresy je nyní hello brány firewall, která je v podsíti hello zabezpečení a prohlížet hello back-end podsítě provoz "local" toobe NSG a je proto povoleno), přesunout toonext pravidlo
-   2. Výchozí pravidla NSG povolit podsíť toosubnet provoz, provoz je povolený, zastavit zpracování pravidel NSG
+   1. Není použít, přejděte k další pravidla FW pravidla 1 (FW Mgmt)
+   2. FW pravidla 2 (RDP IIS) není použít, přejděte k další pravidla
+   3. FW pravidla 3 (RDP DNS01) není použít, přejděte k další pravidla
+   4. Použít FW pravidla 4 (RDP AppVM01), provoz je povolený, zařízení brány firewall NAT. jeho 10.0.2.5:3386 (portu RDP na AppVM01)
+5. Podsíť back-end zahájí zpracování příchozí pravidlo:
+   1. Netýká NSG pravidlo 1 (bloku Internet) (Tento provoz byl NAT by bránou firewall, proto je zdrojovou adresu nyní brány firewall, která je v podsíti, zabezpečení a prohlížet podsíť back-end NSG jako "místní" provoz a je proto povolen), přesunout do dalšího pravidla
+   2. Výchozí pravidla NSG povolit podsítě pro podsíť provozu, provoz je povolený, zastavit zpracování pravidel NSG
 6. AppVM01 naslouchá pro provoz protokolu RDP a odpovídá
 7. Žádná odchozí pravidla NSG použít výchozí pravidla a návratový provoz je povolený
-8. UDR trasy odchozí provoz brány firewall toohello jako další segment hello
-9. Protože to vrací provoz na bránu firewall navázanou relaci hello předá hello odpověď zpět toohello internet uživatele
+8. UDR odchozí provoz směrovat na bránu firewall jako další segment
+9. Protože to vrací provoz na navázanou relaci předává odpověď zpět do Internetu uživatele
 10. Je povoleno relaci protokolu RDP.
 11. AppVM01 vyzve k zadání názvu heslo uživatele
 
 #### <a name="allowed-web-server-dns-lookup-on-dns-server"></a>(Povoleno) Webový Server DNS vyhledávání na serveru DNS
-1. Webový Server, IIS01, požadavky datového kanálu v www.data.gov, ale potřebuje tooresolve hello adresu.
-2. Hello konfiguraci sítě pro virtuální síť seznamy hello DNS01 (10.0.2.4 v podsíti hello back-end) jako primární server DNS hello IIS01 odešle tooDNS01 požadavek DNS hello
-3. UDR trasy odchozí provoz brány firewall toohello jako další segment hello
-4. Podsíť Frontend vázané toohello žádná odchozí pravidla NSG se provoz je povolený
+1. Webový Server, IIS01, požadavky datového kanálu v www.data.gov, ale musí pro překlad adres.
+2. Konfigurace sítě pro virtuální síť seznamy DNS01 (10.0.2.4 v podsíti back-end) jako primární server DNS, IIS01 odešle žádost DNS do DNS01
+3. UDR odchozí provoz směrovat na bránu firewall jako další segment
+4. Žádná odchozí pravidla NSG je vázána na podsíť Frontend, provoz je povolený
 5. Brány firewall zahájí zpracování pravidla:
-   1. Netýká FW pravidla 1 (FW Mgmt), přesunete toonext pravidlo
-   2. Nemusíte použít FW pravidlo 2 až 5 (RDP pravidla), přesunete toonext pravidlo
-   3. Nemusíte použít, přesuňte toonext pravidlo FW pravidla 6 a 7 (pravidla aplikace)
-   4. Netýká FW pravidlo 8 (tooInternet), přesunete toonext pravidlo
-   5. Použít FW pravidlo 9 (DNS), provoz je povolený, brány firewall předává too10.0.2.4 provoz (DNS01)
-6. podsíť back-end Hello zahájí zpracování příchozí pravidlo:
-   1. Netýká NSG pravidlo 1 (bloku Internet), přesunete toonext pravidlo
-   2. Výchozí pravidla NSG povolit podsíť toosubnet provoz, provoz je povolený, zastavit zpracování pravidel NSG
-7. DNS server obdrží požadavek hello
-8. DNS server nemá hello adresu do mezipaměti a požádá kořenový server DNS na hello Internetu
-9. UDR trasy odchozí provoz brány firewall toohello jako další segment hello
+   1. Není použít, přejděte k další pravidla FW pravidla 1 (FW Mgmt)
+   2. Nemusíte použít, přejděte k další pravidla FW pravidlo 2 až 5 (RDP pravidla)
+   3. Nemusíte použít, přejděte k další pravidla FW pravidla 6 a 7 (pravidla aplikace)
+   4. FW pravidlo 8 (Internet k) není použít, přejděte k další pravidla
+   5. Použít FW pravidlo 9 (DNS), provoz je povolený, brány firewall předává přenos do 10.0.2.4 (DNS01)
+6. Podsíť back-end zahájí zpracování příchozí pravidlo:
+   1. Není použít, přejděte k další pravidla NSG pravidlo 1 (bloku Internet)
+   2. Výchozí pravidla NSG povolit podsítě pro podsíť provozu, provoz je povolený, zastavit zpracování pravidel NSG
+7. DNS server obdrží požadavek
+8. DNS server nemá adresu do mezipaměti a požádá kořenový server DNS na Internetu
+9. UDR odchozí provoz směrovat na bránu firewall jako další segment
 10. Žádná odchozí pravidla NSG na podsítě back-end provoz je povolený.
 11. Brány firewall zahájí zpracování pravidla:
-    1. Netýká FW pravidla 1 (FW Mgmt), přesunete toonext pravidlo
-    2. Nemusíte použít FW pravidlo 2 až 5 (RDP pravidla), přesunete toonext pravidlo
-    3. Nemusíte použít, přesuňte toonext pravidlo FW pravidla 6 a 7 (pravidla aplikace)
-    4. Použít pravidlo 8 FW (tooInternet), provoz je povolený, relace je překládat pomocí SNAT out tooroot server DNS na Internetu hello
-12. Server DNS pro Internet odpoví, vzhledem k tomu, že tuto relaci bylo inicializováno hello brány firewall, hello odpověď byla přijata bránou hello firewall
-13. Protože se jedná navázanou relaci, brány firewall hello předává toohello hello odpověď inicializace serveru DNS01
-14. podsíť back-end Hello zahájí zpracování příchozí pravidlo:
-    1. Netýká NSG pravidlo 1 (bloku Internet), přesunete toonext pravidlo
-    2. Výchozí pravidla NSG povolit podsíť toosubnet provoz, provoz je povolený, zastavit zpracování pravidel NSG
-15. Hello DNS server obdrží a ukládá do mezipaměti odpovědi hello a poté odpoví back tooIIS01 toohello úvodního požadavku
-16. Hello UDR trasy v podsíti back-end umožňuje další segment hello hello brány firewall
-17. Neexistují žádná odchozí pravidla NSG v podsíti hello back-end, provoz je povolený
-18. Toto je navázanou relaci v bráně firewall hello, odpověď hello předá serveru IIS back toohello hello brány firewall
+    1. Není použít, přejděte k další pravidla FW pravidla 1 (FW Mgmt)
+    2. Nemusíte použít, přejděte k další pravidla FW pravidlo 2 až 5 (RDP pravidla)
+    3. Nemusíte použít, přejděte k další pravidla FW pravidla 6 a 7 (pravidla aplikace)
+    4. Použít pravidlo 8 FW (do Internetu), provoz je povolený, relace je překládat pomocí SNAT na kořenový server DNS na Internetu
+12. Server DNS pro Internet odpoví, protože tato relace byla inicializována z brány firewall, odpovědi je přijímán bránou firewall
+13. Protože se jedná navázanou relaci, brána firewall předává odpověď na inicializace serveru DNS01
+14. Podsíť back-end zahájí zpracování příchozí pravidlo:
+    1. Není použít, přejděte k další pravidla NSG pravidlo 1 (bloku Internet)
+    2. Výchozí pravidla NSG povolit podsítě pro podsíť provozu, provoz je povolený, zastavit zpracování pravidel NSG
+15. DNS server obdrží odpověď do mezipaměti a poté odpoví na počáteční žádost zpět na IIS01
+16. UDR trasy v podsíti back-end umožňuje bráně firewall dalšího směrování
+17. Neexistují žádná odchozí pravidla NSG na podsítě back-end, provoz je povolený
+18. Toto je navázanou relaci v bráně firewall, odpověď se předá brány firewall zpět na server služby IIS
 19. Podsíť frontend zahájí zpracování příchozí pravidlo:
-    1. Neexistuje žádné pravidlo NSG, která se použije tooInbound provozu z podsítě hello back-end podsíť toohello front-endu, tak pravidla NSG hello nepoužijí
-    2. Hello výchozí systému pravidlo umožňuje provoz mezi podsítěmi umožňuje tento provoz, provoz hello je povolený
-20. IIS01 obdrží odpověď hello z DNS01
+    1. Neexistuje žádná skupina NSG pravidlo, které platí pro příchozí provoz z back-end podsítě pro podsíť Frontend, aby žádný z NSG pravidla použít
+    2. Výchozí pravidlo systému umožňuje provoz mezi podsítěmi by povolit tento provoz, provoz je povoleno
+20. IIS01 obdrží odpověď od DNS01
 
-#### <a name="allowed-backend-server-toofrontend-server"></a>(Povoleno) Back-end serveru tooFrontend serveru
-1. Správce přihlášený tooAppVM02 prostřednictvím protokolu RDP požádá o soubor přímo ze serveru IIS01 hello pomocí Průzkumníka souborů systému windows
-2. Hello UDR trasy v podsíti back-end umožňuje další segment hello hello brány firewall
-3. Vzhledem k tomu, že neexistují žádná odchozí pravidla NSG na hello back-end podsíť hello odpovědi je povoleno
+#### <a name="allowed-backend-server-to-frontend-server"></a>(Povoleno) Back-end serveru na server pro front-endu
+1. Správce přihlášený k AppVM02 prostřednictvím protokolu RDP požádá o soubor přímo ze serveru IIS01 pomocí Průzkumníka souborů systému windows
+2. UDR trasy v podsíti back-end umožňuje bráně firewall dalšího směrování
+3. Vzhledem k tomu, že neexistují žádná odchozí pravidla NSG na podsítě back-end odpovědi je povoleno
 4. Brány firewall zahájí zpracování pravidla:
-   1. Netýká FW pravidla 1 (FW Mgmt), přesunete toonext pravidlo
-   2. Nemusíte použít FW pravidlo 2 až 5 (RDP pravidla), přesunete toonext pravidlo
-   3. Nemusíte použít, přesuňte toonext pravidlo FW pravidla 6 a 7 (pravidla aplikace)
-   4. Netýká FW pravidlo 8 (tooInternet), přesunete toonext pravidlo
-   5. Netýká FW pravidlo 9 (DNS), přesunete toonext pravidlo
-   6. Použít pravidlo 10 FW (Intra-podsítě), provoz je povolený, brány firewall předá too10.0.1.4 provoz (IIS01)
+   1. Není použít, přejděte k další pravidla FW pravidla 1 (FW Mgmt)
+   2. Nemusíte použít, přejděte k další pravidla FW pravidlo 2 až 5 (RDP pravidla)
+   3. Nemusíte použít, přejděte k další pravidla FW pravidla 6 a 7 (pravidla aplikace)
+   4. FW pravidlo 8 (Internet k) není použít, přejděte k další pravidla
+   5. Není použít, přejděte k další pravidla FW pravidlo 9 (DNS)
+   6. Použít pravidlo 10 FW (Intra-podsítě), provoz je povolený, brány firewall předá provoz 10.0.1.4 (IIS01)
 5. Podsíť frontend zahájí zpracování příchozí pravidlo:
-   1. Netýká NSG pravidlo 1 (bloku Internet), přesunete toonext pravidlo
-   2. Výchozí pravidla NSG povolit podsíť toosubnet provoz, provoz je povolený, zastavit zpracování pravidel NSG
-6. Za předpokladu, že správné ověření a autorizaci, IIS01 přijme požadavek hello a odpoví
-7. Hello UDR trasy na podsíť Frontend provede další segment hello hello brány firewall
-8. Vzhledem k tomu, že neexistují žádná odchozí pravidla NSG na hello odpovědi hello podsítě front-endu je povoleno
-9. Protože se jedná o existující relaci v bráně firewall hello této odpovědi je povoleno a brány firewall hello vrátí tooAppVM02 odpovědi hello
+   1. Není použít, přejděte k další pravidla NSG pravidlo 1 (bloku Internet)
+   2. Výchozí pravidla NSG povolit podsítě pro podsíť provozu, provoz je povolený, zastavit zpracování pravidel NSG
+6. Za předpokladu, že správné ověření a autorizaci, IIS01 přijme žádost a odpovídá
+7. UDR trasy na podsíť Frontend umožňuje bráně firewall dalšího směrování
+8. Vzhledem k tomu, že neexistují žádná odchozí pravidla NSG na podsítě front-endu odpovědi je povoleno
+9. Protože se jedná o existující relaci v bráně firewall této odpovědi je povolen a bránu firewall vrátí odpověď na AppVM02
 10. Back-end podsíť zahájí zpracování příchozí pravidlo:
-    1. Netýká NSG pravidlo 1 (bloku Internet), přesunete toonext pravidlo
-    2. Výchozí pravidla NSG povolit podsíť toosubnet provoz, provoz je povolený, zastavit zpracování pravidel NSG
-11. AppVM02 obdrží odpověď hello
+    1. Není použít, přejděte k další pravidla NSG pravidlo 1 (bloku Internet)
+    2. Výchozí pravidla NSG povolit podsítě pro podsíť provozu, provoz je povolený, zastavit zpracování pravidel NSG
+11. AppVM02 obdrží odpověď
 
-#### <a name="denied-internet-direct-tooweb-server"></a>(Byl odepřen) Internet přímé tooWeb serveru
-1. Uživatel Internetu pokusí tooaccess hello webový server, IIS01, prostřednictvím hello FrontEnd001.CloudApp.Net služby
-2. Vzhledem k tomu, že jsou pro přenos HTTP otevřené žádné koncové body, se nebude předávat hello cloudové služby a nebude kontaktovat hello server
-3. Pokud z nějakého důvodu byly otevřené hello koncových bodů, by tento provoz blokovat hello NSG (bloku Internet) na podsíť Frontend hello
-4. Nakonec hello front-endu podsíť UDR trasy byste odesílali všechny odchozí přenosy z brány firewall toohello IIS01 jako další segment hello a brány firewall hello by tato objeví jako asymetrický provoz a vyřadit hello odchozí odpovědi zacílí existují aspoň tři nezávislá vrstev Defense mezi hello Internetu a IIS01 přes jeho Cloudová služba, která brání Neautorizováno nevhodných přístupu.
+#### <a name="denied-internet-direct-to-web-server"></a>(Byl odepřen) Internet přímo na webovém serveru
+1. Uživatel Internetu pokusí o přístup k webovému serveru, IIS01, prostřednictvím služby FrontEnd001.CloudApp.Net
+2. Vzhledem k tomu, že jsou pro přenos HTTP otevřené žádné koncové body, se nebude předávat cloudové služby a nebude moci připojit k serveru
+3. Pokud z nějakého důvodu byly otevřené koncových bodů, by tento provoz blokovat NSG (bloku Internet) na podsíť Frontend
+4. Nakonec trasy UDR podsítě front-endu byste odesílali všechny odchozí přenosy z IIS01 do brány firewall jako další segment a bránu firewall by najdete jako asymetrický provoz a vyřadit odchozí odpovědi proto existují aspoň tři nezávislá vrstev obrany mezi internet a IIS01 přes jeho Cloudová služba, která brání Neautorizováno nevhodných přístupu.
 
-#### <a name="denied-internet-toobackend-server"></a>(Byl odepřen) Internet tooBackend serveru
-1. Uživatel Internetu pokusí tooaccess souboru na AppVM01 prostřednictvím hello BackEnd001.CloudApp.Net služby
-2. Vzhledem k tomu, že jsou pro sdílené složky otevřené žádné koncové body, se nebude předat hello cloudové služby a nebude kontaktovat hello server
-3. Pokud z nějakého důvodu byly otevřené hello koncových bodů, by tento provoz blokovat hello NSG (bloku Internet)
-4. Nakonec hello UDR trasy byste odesílali všechny odchozí přenosy z brány firewall toohello AppVM01 jako další segment hello a brány firewall hello by tato objeví jako asymetrický provoz a vyřadit hello odchozí odpovědi zacílí existují aspoň tři nezávislá vrstev obrany mezi Hello Internetu a AppVM01 přes jeho Cloudová služba, která brání Neautorizováno nevhodných přístupu.
+#### <a name="denied-internet-to-backend-server"></a>(Byl odepřen) Internet back-end server
+1. Internet uživatel pokusí přistoupit k souboru na AppVM01 prostřednictvím služby BackEnd001.CloudApp.Net
+2. Vzhledem k tomu, že jsou pro sdílené složky otevřené žádné koncové body, se nebude předat cloudové služby a nebude moci připojit k serveru
+3. Pokud z nějakého důvodu byly otevřené koncových bodů, by tento provoz blokovat NSG (bloku Internet)
+4. Nakonec UDR trasy, která byste odesílali všechny odchozí přenosy z AppVM01 do brány firewall jako další segment a bránu firewall by najdete jako asymetrický provoz a vyřadit odchozí odpovědi proto existují aspoň tři nezávislá vrstev obrany mezi internet a AppVM01 přes jeho Cloudová služba, která brání Neautorizováno nevhodných přístupu.
 
-#### <a name="denied-frontend-server-toobackend-server"></a>(Byl odepřen) Front-endu server tooBackend serveru
-1. Předpokládejme, IIS01 došlo k ohrožení a běží škodlivý kód při tooscan hello back-end podsíť servery.
-2. Hello front-endu podsíť UDR trasy byste odesílali všechny odchozí přenosy z brány firewall toohello IIS01 jako další segment hello. Toto není něco, co může být změněna pomocí hello ohrožené virtuálních počítačů.
-3. brány firewall Hello by zpracovat hello provoz, pokud byl požadavek hello tooAppVM01 nebo toohello serveru DNS pro vyhledávání DNS, které provoz může být potenciálně povolený bránou firewall hello (z důvodu tooFW pravidla 7 a 9). Všechny ostatní přenosy by se zablokovaly podle FW pravidlo 11 (odmítnout vše).
-4. Pokud rozšířené detekce hrozeb byl povolen v bráně firewall hello (který není zahrnuté v tomto dokumentu, najdete v dokumentaci dodavatele hello pro vaše konkrétní síťové zařízení advanced threat možnosti), dokonce i provoz, který bude mít možnost podle hello základní předávání pravidla popsané v tomto dokumentu může zabránit, pokud provoz hello obsažené známé podpisům a vzorů, které příznak pravidlo rozšířené hrozba.
+#### <a name="denied-frontend-server-to-backend-server"></a>(Byl odepřen) Front-endu serveru back-end server
+1. Předpokládejme, IIS01 došlo k ohrožení a běží škodlivý kód pokusu o zjištění podsíť back-end servery.
+2. Trasy UDR podsítě front-endu byste odesílali všechny odchozí přenosy z IIS01 do brány firewall jako další segment. To však není něco, co může být změněna ohrožené virtuální počítač.
+3. Brána firewall by zpracovat provoz, pokud se požadavek na AppVM01 nebo na server DNS pro vyhledávání DNS, které provoz může být potenciálně povolený bránou firewall (z důvodu FW pravidla 7 a 9). Všechny ostatní přenosy by se zablokovaly podle FW pravidlo 11 (odmítnout vše).
+4. Pokud rozšířené detekce hrozeb byl povolen v bráně firewall (který není zahrnuté v tomto dokumentu, najdete v dokumentaci dodavatele pro vaše konkrétní síťové zařízení advanced threat možnosti), i provoz, který bude mít možnost pravidly základní předávání popisovaný v tomto dokumentu může zabránit, pokud provoz obsažené známé podpisům a vzorů, které příznak pravidlo rozšířené hrozba.
 
 #### <a name="denied-internet-dns-lookup-on-dns-server"></a>(Byl odepřen) Vyhledávání DNS pro Internet na serveru DNS
-1. Uživatel Internetu pokusí toolookup interní DNS záznam na DNS01 BackEnd001.CloudApp.Net pomocí služby 
-2. Vzhledem k tomu, že jsou pro přenosy DNS otevřené žádné koncové body, se nebude předávat hello cloudové služby a nebude kontaktovat hello server
-3. Pokud z nějakého důvodu byly otevřené hello koncových bodů, by tento provoz blokovat pravidla NSG hello (bloku Internet) na podsíť Frontend hello
-4. Nakonec hello back-end podsíť UDR trasy byste odesílali všechny odchozí přenosy z brány firewall toohello DNS01 jako další segment hello a brány firewall hello by tato objeví jako asymetrický provoz a vyřadit hello odchozí odpovědi zacílí existují aspoň tři nezávislá vrstev Defense mezi hello Internetu a DNS01 přes jeho Cloudová služba, která brání Neautorizováno nevhodných přístupu.
+1. Internet uživatel se pokusí vyhledat interní DNS záznam na DNS01 BackEnd001.CloudApp.Net pomocí služby 
+2. Vzhledem k tomu, že jsou pro přenosy DNS otevřené žádné koncové body, se nebude předávat cloudové služby a nebude moci připojit k serveru
+3. Pokud z nějakého důvodu byly otevřené koncových bodů, by tento provoz blokovat pravidla NSG (bloku Internet) na podsíť Frontend
+4. Nakonec směrování back-endu podsíť UDR byste odesílali všechny odchozí přenosy z DNS01 do brány firewall jako další segment a bránu firewall by najdete jako asymetrický provoz a vyřadit odchozí odpovědi proto existují aspoň tři nezávislá vrstev obrany mezi internet a DNS01 přes jeho Cloudová služba, která brání Neautorizováno nevhodných přístupu.
 
-#### <a name="denied-internet-toosql-access-through-firewall"></a>(Byl odepřen) Přístup k Internetu tooSQL prostřednictvím brány Firewall
+#### <a name="denied-internet-to-sql-access-through-firewall"></a>(Byl odepřen) Internetu, aby SQL přístup přes bránu Firewall
 1. Internet uživatel požádá o dat SQL z SecSvc001.CloudApp.Net (Internet čelí cloudové služby)
-2. Vzhledem k tomu, že nejsou otevřené pro SQL koncové body, se nebude předat hello cloudové služby a nebude dosáhnout hello brány firewall
-3. Pokud z nějakého důvodu byly otevřené koncové body SQL, brány firewall hello se začne zpracování pravidla:
-   1. Netýká FW pravidla 1 (FW Mgmt), přesunete toonext pravidlo
-   2. Nemusíte použít, přesunout toonext pravidlo FW pravidla 2 až 5 (RDP pravidla)
-   3. Nemusíte použít, přesunout pravidlo toonext FW pravidla 6 a 7 (pravidla pro aplikace)
-   4. Netýká FW pravidlo 8 (tooInternet), přesunete toonext pravidlo
-   5. Netýká FW pravidlo 9 (DNS), přesunete toonext pravidlo
-   6. Netýká FW pravidlo 10 (Intra-podsítě), přesunete toonext pravidlo
+2. Vzhledem k tomu, že nejsou otevřené pro SQL koncové body, se nebude předat cloudové služby a nebude kontaktovat bránu firewall
+3. Pokud z nějakého důvodu byly otevřené koncové body SQL, brány firewall se začne zpracování pravidla:
+   1. Není použít, přejděte k další pravidla FW pravidla 1 (FW Mgmt)
+   2. Nemusíte použít, přejděte k další pravidla FW pravidla 2 až 5 (RDP pravidla)
+   3. Nemusíte použít, přejděte k další pravidla FW pravidla 6 a 7 (pravidla pro aplikace)
+   4. FW pravidlo 8 (Internet k) není použít, přejděte k další pravidla
+   5. Není použít, přejděte k další pravidla FW pravidlo 9 (DNS)
+   6. FW pravidlo 10 (Intra-podsítě) není použít, přejděte k další pravidla
    7. Použít FW pravidlo 11 (odmítnout vše), provoz je zpracování blokované, zastavení pravidla
 
 ## <a name="references"></a>Odkazy
 ### <a name="main-script-and-network-config"></a>Hlavní skript a konfiguraci sítě
-Uložte hello úplné skript v souboru skriptu prostředí PowerShell. Uložte do souboru s názvem "NetworkConf2.xml" hello konfiguraci sítě.
-Podle potřeby změňte hello proměnné definované uživatelem. Spusťte skript hello a potom postupujte podle hello brány Firewall pravidla instalace instrukce výše.
+Uložte úplné skript v souboru skriptu prostředí PowerShell. Uložte konfiguraci sítě do souboru s názvem "NetworkConf2.xml".
+Podle potřeby změňte proměnné definované uživatelem. Spusťte skript a potom postupujte podle pokynů instalace pravidlo brány Firewall výše.
 
 #### <a name="full-script"></a>Úplné skriptu
-Tento skript bude na základě proměnných uživatelsky definované hello:
+Tento skript bude na základě uživatelsky definované proměnných:
 
-1. Připojit tooan předplatného Azure
+1. Připojení k předplatnému Azure
 2. Vytvořit nový účet úložiště
-3. Vytvořit novou virtuální síť a tři podsítě, jak jsou definovány v souboru konfigurace sítě hello
+3. Vytvořit novou virtuální síť a tři podsítě, jak jsou definovány v souboru konfigurace sítě
 4. Sestavení pět virtuálních počítačů brány firewall 1 a 4 windows server virtuálních počítačů
 5. Konfigurace, včetně UDR:
    1. Vytváření dva nové směrovací tabulky
-   2. Přidání tras toohello tabulek
-   3. Vytvoření vazby tabulky tooappropriate podsítě
-6. Povolení předávání IP adres na hello hodnocení chyb zabezpečení
+   2. Přidání tras do tabulky
+   3. Vytvořit vazbu tabulky k příslušné podsítě
+6. Povolení předávání IP na hodnocení chyb zabezpečení
 7. Konfigurace, včetně NSG:
    1. Vytváření skupina NSG
    2. Přidávání pravidla
-   3. Vazba hello NSG toohello příslušné podsítě
+   3. Vytvoření vazby skupinu NSG na příslušné podsítě
 
 Tento skript prostředí PowerShell je vhodné spustit místně na Internetu připojený počítač nebo server.
 
@@ -601,21 +601,21 @@ Tento skript prostředí PowerShell je vhodné spustit místně na Internetu př
        - Three new cloud services
        - Three Subnets (SecNet, FrontEnd, and BackEnd subnets)
        - A Network Virtual Appliance (NVA), in this case a Barracuda NextGen Firewall
-       - One server on hello FrontEnd Subnet
-       - Three Servers on hello BackEnd Subnet
-       - IP Forwading from hello FireWall out toohello internet
-       - User Defined Routing FrontEnd and BackEnd Subnets toohello NVA
+       - One server on the FrontEnd Subnet
+       - Three Servers on the BackEnd Subnet
+       - IP Forwading from the FireWall out to the internet
+       - User Defined Routing FrontEnd and BackEnd Subnets to the NVA
 
-      Before running script, ensure hello network configuration file is created in
-      hello directory referenced by $NetworkConfigFile variable (or update the
-      variable tooreflect hello path and file name of hello config file being used).
+      Before running script, ensure the network configuration file is created in
+      the directory referenced by $NetworkConfigFile variable (or update the
+      variable to reflect the path and file name of the config file being used).
 
      .Notes
       Everyone's security requirements are different and can be addressed in a myriad of ways.
-      Please be sure that any sensitive data or applications are behind hello appropriate
-      layer(s) of protection. This script serves as an example of some of hello techniques
+      Please be sure that any sensitive data or applications are behind the appropriate
+      layer(s) of protection. This script serves as an example of some of the techniques
       that can be used, but should not be used for all scenarios. You are responsible to
-      assess your security needs and hello appropriate protections needed, and then effectively
+      assess your security needs and the appropriate protections needed, and then effectively
       implement those protections.
 
       Security Service (SecNet subnet 10.0.0.0/24)
@@ -632,7 +632,7 @@ Tento skript prostředí PowerShell je vhodné spustit místně na Internetu př
     #>
 
     # Fixed Variables
-        $LocalAdminPwd = Read-Host -Prompt "Enter Local Admin Password toobe used for all VMs"
+        $LocalAdminPwd = Read-Host -Prompt "Enter Local Admin Password to be used for all VMs"
         $VMName = @()
         $ServiceName = @()
         $VMFamily = @()
@@ -642,8 +642,8 @@ Tento skript prostředí PowerShell je vhodné spustit místně na Internetu př
         $VMIP = @()
 
     # User Defined Global Variables
-      # These should be changes tooreflect your subscription and services
-      # Invalid options will fail in hello validation section
+      # These should be changes to reflect your subscription and services
+      # Invalid options will fail in the validation section
 
       # Subscription Access Details
         $subID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -680,10 +680,10 @@ Tento skript prostředí PowerShell je vhodné spustit místně na Internetu př
         $NSGName = "MyVNetSG"
 
     # User Defined VM Specific Config
-        # Note: tooensure UDR and IP forwarding is setup
-        # properly this script requires VM 0 be hello NVA.
+        # Note: To ensure UDR and IP forwarding is setup
+        # properly this script requires VM 0 be the NVA.
 
-        # VM 0 - hello Network Virtual Appliance (NVA)
+        # VM 0 - The Network Virtual Appliance (NVA)
           $VMName += "myFirewall"
           $ServiceName += $SecureService
           $VMFamily += "Firewall"
@@ -692,7 +692,7 @@ Tento skript prostředí PowerShell je vhodné spustit místně na Internetu př
           $SubnetName += $SecNet
           $VMIP += "10.0.0.4"
 
-        # VM 1 - hello Web Server
+        # VM 1 - The Web Server
           $VMName += "IIS01"
           $ServiceName += $FrontEndService
           $VMFamily += "Windows"
@@ -701,7 +701,7 @@ Tento skript prostředí PowerShell je vhodné spustit místně na Internetu př
           $SubnetName += $FESubnet
           $VMIP += "10.0.1.4"
 
-        # VM 2 - hello First Appliaction Server
+        # VM 2 - The First Appliaction Server
           $VMName += "AppVM01"
           $ServiceName += $BackEndService
           $VMFamily += "Windows"
@@ -710,7 +710,7 @@ Tento skript prostředí PowerShell je vhodné spustit místně na Internetu př
           $SubnetName += $BESubnet
           $VMIP += "10.0.2.5"
 
-        # VM 3 - hello Second Appliaction Server
+        # VM 3 - The Second Appliaction Server
           $VMName += "AppVM02"
           $ServiceName += $BackEndService
           $VMFamily += "Windows"
@@ -719,7 +719,7 @@ Tento skript prostředí PowerShell je vhodné spustit místně na Internetu př
           $SubnetName += $BESubnet
           $VMIP += "10.0.2.6"
 
-        # VM 4 - hello DNS Server
+        # VM 4 - The DNS Server
           $VMName += "DNS01"
           $ServiceName += $BackEndService
           $VMFamily += "Windows"
@@ -745,8 +745,8 @@ Tento skript prostředí PowerShell je vhodné spustit místně na Internetu př
         Else {Write-Host "Creating Storage Account" -ForegroundColor Cyan 
               New-AzureStorageAccount -Location $DeploymentLocation -StorageAccountName $StorageAccountName}
 
-      # Update Subscription Pointer tooNew Storage Account
-        Write-Host "Updating Subscription Pointer tooNew Storage Account" -ForegroundColor Cyan 
+      # Update Subscription Pointer to New Storage Account
+        Write-Host "Updating Subscription Pointer to New Storage Account" -ForegroundColor Cyan 
         Set-AzureSubscription –SubscriptionId $subID -CurrentStorageAccountName $StorageAccountName -ErrorAction Stop
 
     # Validation
@@ -757,33 +757,33 @@ Tento skript prostředí PowerShell je vhodné spustit místně na Internetu př
          $FatalError = $true}
 
     If (Test-AzureName -Service -Name $SecureService) { 
-        Write-Host "hello SecureService service name is already in use, please pick a different service name." -ForegroundColor Yellow
+        Write-Host "The SecureService service name is already in use, please pick a different service name." -ForegroundColor Yellow
         $FatalError = $true}
-    Else { Write-Host "hello FrontEndService service name is valid for use." -ForegroundColor Green}
+    Else { Write-Host "The FrontEndService service name is valid for use." -ForegroundColor Green}
 
     If (Test-AzureName -Service -Name $FrontEndService) { 
-        Write-Host "hello FrontEndService service name is already in use, please pick a different service name." -ForegroundColor Yellow
+        Write-Host "The FrontEndService service name is already in use, please pick a different service name." -ForegroundColor Yellow
         $FatalError = $true}
-    Else { Write-Host "hello FrontEndService service name is valid for use" -ForegroundColor Green}
+    Else { Write-Host "The FrontEndService service name is valid for use" -ForegroundColor Green}
 
     If (Test-AzureName -Service -Name $BackEndService) { 
-        Write-Host "hello BackEndService service name is already in use, please pick a different service name." -ForegroundColor Yellow
+        Write-Host "The BackEndService service name is already in use, please pick a different service name." -ForegroundColor Yellow
         $FatalError = $true}
-    Else { Write-Host "hello BackEndService service name is valid for use." -ForegroundColor Green}
+    Else { Write-Host "The BackEndService service name is valid for use." -ForegroundColor Green}
 
     If (-Not (Test-Path $NetworkConfigFile)) { 
-        Write-Host 'hello network config file was not found, please update hello $NetworkConfigFile variable toopoint toohello network config xml file.' -ForegroundColor Yellow
+        Write-Host 'The network config file was not found, please update the $NetworkConfigFile variable to point to the network config xml file.' -ForegroundColor Yellow
         $FatalError = $true}
-    Else { Write-Host "hello network config file was found" -ForegroundColor Green
+    Else { Write-Host "The network config file was found" -ForegroundColor Green
             If (-Not (Select-String -Pattern $DeploymentLocation -Path $NetworkConfigFile)) {
-                Write-Host 'hello deployment location was not found in hello network config file, please check hello network config file tooensure hello $DeploymentLocation varible is correct and hello netowrk config file matches.' -ForegroundColor Yellow
+                Write-Host 'The deployment location was not found in the network config file, please check the network config file to ensure the $DeploymentLocation varible is correct and the netowrk config file matches.' -ForegroundColor Yellow
                 $FatalError = $true}
-            Else { Write-Host "hello deployment location was found in hello network config file." -ForegroundColor Green}}
+            Else { Write-Host "The deployment location was found in the network config file." -ForegroundColor Green}}
 
     If ($FatalError) {
-        Write-Host "A fatal error has occured, please see hello above messages for more information." -ForegroundColor Red
+        Write-Host "A fatal error has occured, please see the above messages for more information." -ForegroundColor Red
         Return}
-    Else { Write-Host "Validation passed, now building hello environment." -ForegroundColor Green}
+    Else { Write-Host "Validation passed, now building the environment." -ForegroundColor Green}
 
     # Create VNET
         Write-Host "Creating VNET" -ForegroundColor Cyan 
@@ -806,11 +806,11 @@ Tento skript prostředí PowerShell je vhodné spustit místně na Internetu př
                     Set-AzureSubnet  –SubnetNames $SubnetName[$i] | `
                     Set-AzureStaticVNetIP -IPAddress $VMIP[$i] | `
                     New-AzureVM –ServiceName $ServiceName[$i] -VNetName $VNetName -Location $DeploymentLocation
-                # Set up all hello EndPoints we'll need once we're up and running
-                # Note: All traffic goes through hello firewall, so we'll need tooset up all ports here.
-                #       Also, hello firewall will be redirecting traffic tooa new IP and Port in a forwarding
-                #       rule, so all of these endpoint have hello same public and local port and hello firewall
-                #       will do hello mapping, NATing, and/or redirection as declared in hello firewall rules.
+                # Set up all the EndPoints we'll need once we're up and running
+                # Note: All traffic goes through the firewall, so we'll need to set up all ports here.
+                #       Also, the firewall will be redirecting traffic to a new IP and Port in a forwarding
+                #       rule, so all of these endpoint have the same public and local port and the firewall
+                #       will do the mapping, NATing, and/or redirection as declared in the firewall rules.
                 Add-AzureEndpoint -Name "MgmtPort1" -Protocol tcp -PublicPort 801  -LocalPort 801  -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | Update-AzureVM
                 Add-AzureEndpoint -Name "MgmtPort2" -Protocol tcp -PublicPort 807  -LocalPort 807  -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | Update-AzureVM
                 Add-AzureEndpoint -Name "HTTP"      -Protocol tcp -PublicPort 80   -LocalPort 80   -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | Update-AzureVM
@@ -818,7 +818,7 @@ Tento skript prostředí PowerShell je vhodné spustit místně na Internetu př
                 Add-AzureEndpoint -Name "RDPApp1"   -Protocol tcp -PublicPort 8025 -LocalPort 8025 -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | Update-AzureVM
                 Add-AzureEndpoint -Name "RDPApp2"   -Protocol tcp -PublicPort 8026 -LocalPort 8026 -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | Update-AzureVM
                 Add-AzureEndpoint -Name "RDPDNS01"  -Protocol tcp -PublicPort 8024 -LocalPort 8024 -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | Update-AzureVM
-                # Note: A SSH endpoint is automatically created on port 22 when hello appliance is created.
+                # Note: A SSH endpoint is automatically created on port 22 when the appliance is created.
                 }
             Else
                 {
@@ -837,8 +837,8 @@ Tento skript prostředí PowerShell je vhodné spustit místně na Internetu př
     # Configure UDR and IP Forwarding
         Write-Host "Configuring UDR" -ForegroundColor Cyan
 
-      # Create hello Route Tables
-        Write-Host "Creating hello Route Tables" -ForegroundColor Cyan 
+      # Create the Route Tables
+        Write-Host "Creating the Route Tables" -ForegroundColor Cyan 
         New-AzureRouteTable -Name $BERouteTableName `
             -Location $DeploymentLocation `
             -Label "Route table for $BESubnet subnet"
@@ -846,33 +846,33 @@ Tento skript prostředí PowerShell je vhodné spustit místně na Internetu př
             -Location $DeploymentLocation `
             -Label "Route table for $FESubnet subnet"
 
-      # Add Routes tooRoute Tables
-        Write-Host "Adding Routes toohello Route Tables" -ForegroundColor Cyan 
+      # Add Routes to Route Tables
+        Write-Host "Adding Routes to the Route Tables" -ForegroundColor Cyan 
         Get-AzureRouteTable $BERouteTableName `
-            |Set-AzureRoute -RouteName "All traffic tooFW" -AddressPrefix 0.0.0.0/0 `
+            |Set-AzureRoute -RouteName "All traffic to FW" -AddressPrefix 0.0.0.0/0 `
             -NextHopType VirtualAppliance `
             -NextHopIpAddress $VMIP[0]
         Get-AzureRouteTable $BERouteTableName `
-            |Set-AzureRoute -RouteName "Internal traffic tooFW" -AddressPrefix $VNetPrefix `
+            |Set-AzureRoute -RouteName "Internal traffic to FW" -AddressPrefix $VNetPrefix `
             -NextHopType VirtualAppliance `
             -NextHopIpAddress $VMIP[0]
         Get-AzureRouteTable $BERouteTableName `
             |Set-AzureRoute -RouteName "Allow Intra-Subnet Traffic" -AddressPrefix $BEPrefix `
             -NextHopType VNETLocal
         Get-AzureRouteTable $FERouteTableName `
-            |Set-AzureRoute -RouteName "All traffic tooFW" -AddressPrefix 0.0.0.0/0 `
+            |Set-AzureRoute -RouteName "All traffic to FW" -AddressPrefix 0.0.0.0/0 `
             -NextHopType VirtualAppliance `
             -NextHopIpAddress $VMIP[0]
         Get-AzureRouteTable $FERouteTableName `
-            |Set-AzureRoute -RouteName "Internal traffic tooFW" -AddressPrefix $VNetPrefix `
+            |Set-AzureRoute -RouteName "Internal traffic to FW" -AddressPrefix $VNetPrefix `
             -NextHopType VirtualAppliance `
             -NextHopIpAddress $VMIP[0]
         Get-AzureRouteTable $FERouteTableName `
             |Set-AzureRoute -RouteName "Allow Intra-Subnet Traffic" -AddressPrefix $FEPrefix `
             -NextHopType VNETLocal
 
-      # Assoicate hello Route Tables with hello Subnets
-        Write-Host "Binding Route Tables toohello Subnets" -ForegroundColor Cyan 
+      # Assoicate the Route Tables with the Subnets
+        Write-Host "Binding Route Tables to the Subnets" -ForegroundColor Cyan 
         Set-AzureSubnetRouteTable -VirtualNetworkName $VNetName `
             -SubnetName $BESubnet `
             -RouteTableName $BERouteTableName
@@ -880,49 +880,49 @@ Tento skript prostředí PowerShell je vhodné spustit místně na Internetu př
             -SubnetName $FESubnet `
             -RouteTableName $FERouteTableName
 
-     # Enable IP Forwarding on hello Virtual Appliance
+     # Enable IP Forwarding on the Virtual Appliance
         Get-AzureVM -Name $VMName[0] -ServiceName $ServiceName[0] `
             |Set-AzureIPForwarding -Enable
 
     # Configure NSG
-        Write-Host "Configuring hello Network Security Group (NSG)" -ForegroundColor Cyan
+        Write-Host "Configuring the Network Security Group (NSG)" -ForegroundColor Cyan
 
-      # Build hello NSG
-        Write-Host "Building hello NSG" -ForegroundColor Cyan
+      # Build the NSG
+        Write-Host "Building the NSG" -ForegroundColor Cyan
         New-AzureNetworkSecurityGroup -Name $NSGName -Location $DeploymentLocation -Label "Security group for $VNetName subnets in $DeploymentLocation"
 
       # Add NSG Rule
-        Write-Host "Writing rules into hello NSG" -ForegroundColor Cyan
-        Get-AzureNetworkSecurityGroup -Name $NSGName | Set-AzureNetworkSecurityRule -Name "Isolate hello $VNetName VNet from hello Internet" -Type Inbound -Priority 100 -Action Deny `
+        Write-Host "Writing rules into the NSG" -ForegroundColor Cyan
+        Get-AzureNetworkSecurityGroup -Name $NSGName | Set-AzureNetworkSecurityRule -Name "Isolate the $VNetName VNet from the Internet" -Type Inbound -Priority 100 -Action Deny `
             -SourceAddressPrefix INTERNET -SourcePortRange '*' `
             -DestinationAddressPrefix VIRTUAL_NETWORK -DestinationPortRange '*' `
             -Protocol *
 
-      # Assign hello NSG tootwo Subnets
-        # hello NSG is *not* bound toohello Security Subnet. hello result
-        # is that internet traffic flows only toohello Security subnet
-        # since hello NSG bound toohello Frontend and Backback subnets
-        # will Deny internet traffic toothose subnets.
-        Write-Host "Binding hello NSG tootwo subnets" -ForegroundColor Cyan
+      # Assign the NSG to two Subnets
+        # The NSG is *not* bound to the Security Subnet. The result
+        # is that internet traffic flows only to the Security subnet
+        # since the NSG bound to the Frontend and Backback subnets
+        # will Deny internet traffic to those subnets.
+        Write-Host "Binding the NSG to two subnets" -ForegroundColor Cyan
         Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName -SubnetName $FESubnet -VirtualNetworkName $VNetName
         Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName -SubnetName $BESubnet -VirtualNetworkName $VNetName
 
     # Optional Post-script Manual Configuration
       # Configure Firewall
-      # Install Test Web App (Run Post-Build Script on hello IIS Server)
-      # Install Backend resource (Run Post-Build Script on hello AppVM01)
+      # Install Test Web App (Run Post-Build Script on the IIS Server)
+      # Install Backend resource (Run Post-Build Script on the AppVM01)
       Write-Host
       Write-Host "Build Complete!" -ForegroundColor Green
       Write-Host
       Write-Host "Optional Post-script Manual Configuration Steps" -ForegroundColor Gray
       Write-Host " - Configure Firewall" -ForegroundColor Gray
-      Write-Host " - Install Test Web App (Run Post-Build Script on hello IIS Server)" -ForegroundColor Gray
-      Write-Host " - Install Backend resource (Run Post-Build Script on hello AppVM01)" -ForegroundColor Gray
+      Write-Host " - Install Test Web App (Run Post-Build Script on the IIS Server)" -ForegroundColor Gray
+      Write-Host " - Install Backend resource (Run Post-Build Script on the AppVM01)" -ForegroundColor Gray
       Write-Host
 
 
 #### <a name="network-config-file"></a>Soubor konfigurace sítě
-Uložte tento soubor xml s aktualizované umístění a přidáte odkaz toothis hello souboru toohello $NetworkConfigFile proměnné ve skriptu hello výše.
+Uložte tento soubor xml s aktualizované umístění a přidat odkaz na tohoto souboru do $NetworkConfigFile proměnné ve skriptu výše.
 
     <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
       <VirtualNetworkConfiguration>
@@ -958,11 +958,11 @@ Uložte tento soubor xml s aktualizované umístění a přidáte odkaz toothis 
     </NetworkConfiguration>
 
 #### <a name="sample-application-scripts"></a>Ukázkové skripty aplikace
-Pokud chcete tooinstall ukázková aplikace pro toto a další příklady DMZ jeden bylo zadáno v hello následující odkaz: [ukázkový skript aplikace][SampleApp]
+Pokud chcete nainstalovat ukázkovou aplikaci pro toto a další příklady hraniční sítě, jednu bylo zadáno na následující odkaz: [ukázkový skript aplikace][SampleApp]
 
 <!--Image References-->
 [1]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/example3design.png "DMZ obousměrně s hodnocení chyb zabezpečení, NSG a UDR"
-[2]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/example3firewalllogical.png "Logickém zobrazení hello pravidla brány Firewall"
+[2]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/example3firewalllogical.png "Logickém zobrazení pravidla brány Firewall"
 [3]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectfrontend.png "Vytvoření objektu front-endové síti"
 [4]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectdns.png "Vytvořit objekt serveru DNS"
 [5]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectrdpa.png "Kopii výchozí pravidlo protokolu RDP"

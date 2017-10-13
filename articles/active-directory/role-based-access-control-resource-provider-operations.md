@@ -1,6 +1,6 @@
 ---
-title: aaaAzure operace poskytovatele Resource Manager | Microsoft Docs
-description: "Podrobnosti o hello operací dostupných na hello zprostředkovatelé prostředků Microsoft Azure Resource Manager"
+title: Operace poskytovatele Azure Resource Manager | Microsoft Docs
+description: "Podrobnosti o operací dostupných na poskytovateli prostředků Microsoft Azure Resource Manager"
 services: active-directory
 documentationcenter: 
 author: jboeshart
@@ -12,33 +12,33 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/28/2017
 ms.author: jaboes
-ms.openlocfilehash: 2d2f912ecbade335667d68fdc42ce03a2930a0eb
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 95c6a1e9cfadeb19a0ec5a53fffb15ef220bfec0
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operace v Azure Resource Manager poskytovatele prostředků
 
-Tento dokument uvádí hello operací dostupných pro každý poskytovatel prostředků Microsoft Azure Resource Manager. Ty lze použít ve vlastní role tooprovide granulární řízení přístupu na základě Role (RBAC) tooresources oprávnění v Azure. Poznámka: Toto není kompletní seznam a operace může přidat nebo odebrat, protože každý poskytovatel je aktualizovat. Operace řetězce podle hello formát `Microsoft.<ProviderName>/<ChildResourceType>/<action>`. Pro komplexní a aktuální seznam použijte `Get-AzureRmProviderOperation` (v prostředí PowerShell) nebo `azure provider operations show` (v Azure CLI) toolist operations poskytovatelů prostředků Azure.
+Tento dokument obsahuje seznam operací dostupných pro každý poskytovatel prostředků Microsoft Azure Resource Manager. To umožňuje v vlastní role poskytují podrobné řízení přístupu na základě Role (RBAC) oprávnění k prostředkům v Azure. Poznámka: Toto není kompletní seznam a operace může přidat nebo odebrat, protože každý poskytovatel je aktualizovat. Operace řetězce použijte formát `Microsoft.<ProviderName>/<ChildResourceType>/<action>`. Pro komplexní a aktuální seznam použijte `Get-AzureRmProviderOperation` (v prostředí PowerShell) nebo `azure provider operations show` (v Azure CLI) k operacím seznamu zprostředkovatelů prostředků Azure.
 
 ## <a name="microsoftadhybridhealthservice"></a>Microsoft.ADHybridHealthService
 
 | Operace | Popis |
 |---|---|
 |/ configuration/akce|Konfigurace aktualizací klienta.|
-|/ services/akce|Aktualizace instance služby v klientovi hello.|
+|/ services/akce|Aktualizace instance služby v klientovi.|
 |/ configuration/zápisu|Vytvoří konfiguraci klienta.|
-|/Configuration/Read|Přečte hello konfiguraci klienta.|
-|/ services/zápisu|Vytvoří instanci služby v klientovi hello.|
-|/Services/Read|Přečte hello instance služby v klientovi hello.|
-|/Services/DELETE|Odstraní instanci služby v klientovi hello.|
-|/Services/servicemembers/Action|Vytvoří instanci člen služby ve službě hello.|
-|/Services/servicemembers/Read|Přečte instanci člen hello služby ve službě hello.|
-|/Services/servicemembers/DELETE|Odstraní instanci člen služby ve službě hello.|
-|/Services/servicemembers/Alerts/Read|Přečte hello výstrahy pro člena služby.|
-|/Services/Alerts/Read|Přečte hello výstrahy pro službu.|
-|/Services/Alerts/Read|Přečte hello výstrahy pro službu.|
+|/Configuration/Read|Načte konfiguraci klienta.|
+|/ services/zápisu|Vytvoří instanci služby v klientovi.|
+|/Services/Read|Přečte instance služby v klientovi.|
+|/Services/DELETE|Odstraní instanci služby v klientovi.|
+|/Services/servicemembers/Action|Vytvoří instanci člen služby ve službě.|
+|/Services/servicemembers/Read|Přečte člen instance služby ve službě.|
+|/Services/servicemembers/DELETE|Odstraní instanci člen služby ve službě.|
+|/Services/servicemembers/Alerts/Read|Přečte výstrahy pro člena služby.|
+|/Services/Alerts/Read|Přečte výstrahy pro službu.|
+|/Services/Alerts/Read|Přečte výstrahy pro službu.|
 
 ## <a name="microsoftadvisor"></a>Microsoft.Advisor
 
@@ -46,7 +46,7 @@ Tento dokument uvádí hello operací dostupných pro každý poskytovatel prost
 |---|---|
 |/ generateRecommendations nebo akce|Vygeneruje doporučení|
 |/ suppressions nebo akce|Vytvoření nebo aktualizace suppressions|
-|/ registrace nebo akce|Zaregistruje hello předplatné pro Microsoft Advisor hello|
+|/ registrace nebo akce|Zaregistruje předplatné pro Microsoft Advisor|
 |/generateRecommendations/Read|Získá generovat stav doporučení|
 |/Recommendations/Read|Přečte doporučení|
 |/suppressions/Read|Získá suppressions|
@@ -56,11 +56,11 @@ Tento dokument uvádí hello operací dostupných pro každý poskytovatel prost
 
 | Operace | Popis |
 |---|---|
-|/Servers/Read|Načte informace hello hello zadat Analysis serveru.|
-|/ servery a zápis|Vytvoří nebo aktualizuje hello zadaný Analysis serveru.|
-|/Servers/DELETE|Odstranění hello Analysis serveru.|
-|/Servers/suspend/Action|Pozastaví hello Analysis serveru.|
-|/Servers/Resume/Action|Obnoví hello Analysis serveru.|
+|/Servers/Read|Načte informace zadaný Analysis serveru.|
+|/ servery a zápis|Vytvoří nebo aktualizuje zadaný Analysis serveru.|
+|/Servers/DELETE|Odstraní Analysis serveru.|
+|/Servers/suspend/Action|Pozastaví Analysis serveru.|
+|/Servers/Resume/Action|Obnoví Analysis serveru.|
 |/ servery/checkNameAvailability<br>/action|Kontroluje, zda zadaný Analysis Server je platný název a ne v používání.|
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
@@ -75,30 +75,30 @@ Tento dokument uvádí hello operací dostupných pro každý poskytovatel prost
 |/Service/DELETE|Odstranění instance služby API Management|
 |/Service/updatehostname/Action|Instalační program, aktualizovat nebo odebrat vlastní názvy domén pro služby API Management|
 |/Service/uploadcertificate/Action|Nahrajte certifikát SSL pro službu správy rozhraní API|
-|/Service/Backup/Action|Zálohování služby API Management toohello zadaný kontejner v uživatel zadaný účet úložiště|
-|/Service/Restore/Action|Obnovení služby API Management ze zadaného kontejneru hello v uživatel zadaný účet úložiště|
+|/Service/Backup/Action|Zálohování službu správy rozhraní API a zadaného kontejneru. v uživatel zadaný účet úložiště|
+|/Service/Restore/Action|Obnovení ze zadaného kontejneru v uživatel zadaný účet úložiště služby API Management|
 |/Service/managedeployments/Action|Změnit SKU nebo jednotky, přidat nebo odebrat místní nasazení služby API Management|
-|/Service/getssotoken/Action|Získá token jednotného přihlašování, které můžou být použité toologin starší verze služby API Management portálu jako správce|
-|/Service/applynetworkconfigurationupdates/Action|Aktualizace hello Microsoft.ApiManagement prostředky spuštěna ve virtuální síti toopick aktualizovat nastavení sítě.|
+|/Service/getssotoken/Action|Získá token jednotného přihlašování, který lze použít k přihlášení na portál starší verze služby API Management jako správce|
+|/Service/applynetworkconfigurationupdates/Action|Aktualizuje Microsoft.ApiManagement prostředky spuštěna ve virtuální síti a vyberte aktualizované nastavení sítě.|
 |/Service/operationresults/Read|Získá aktuální stav operace probíhající dlouhou dobu|
-|/Service/networkStatus/Read|Získá stav přístupu hello síťových prostředků.|
+|/Service/networkStatus/Read|Získá stav přístupu síťových prostředků.|
 |/Service/loggers/Read|Získání seznamu protokolovačů nebo získat podrobnosti o protokolovacího nástroje|
 |/Service/loggers/Write|Přidat nové protokoly nebo aktualizovat existující podrobnosti protokolovacího nástroje|
 |/Service/loggers/DELETE|Odeberte existující protokolovacího nástroje.|
 |/Service/Users/Read|Získat seznam registrovaní uživatelé nebo získat podrobnosti o účtu uživatele|
 |/Service/Users/Write|Zaregistrovat nového uživatele nebo účet podrobnosti aktualizace stávajícího uživatele|
 |/Service/Users/DELETE|Odebrat uživatelský účet|
-|/Service/Users/generateSsoUrl/Action|Generování adresy URL jednotné přihlašování. Adresa URL Hello může být použité tooaccess portál pro správu|
+|/Service/Users/generateSsoUrl/Action|Generování adresy URL jednotné přihlašování. Adresa URL slouží pro přístup k portálu pro správu|
 |/Service/Users/Subscriptions/Read|Získat seznam uživatelů odběrů|
 |/Service/Users/Keys/Read|Získat seznam klíčů uživatele|
 |/Service/Users/groups/Read|Získání seznamu skupin uživatelů|
 |/Service/tenant/operationResults/Read|Získejte seznam výsledky operace nebo získat výsledek určité operace|
-|/Service/tenant/Policy/Read|Získání zásad konfigurace pro klienta hello|
-|/Service/tenant/Policy/Write|Nastavení zásad konfigurace pro klienta hello|
-|/Service/tenant/Policy/DELETE|Odebrat konfiguraci zásad pro klienta hello|
-|/Service/tenant/Configuration/Save/Action|Vytvoří potvrzení se konfigurace snímku toohello zadaný větve v úložišti hello|
-|/Service/tenant/Configuration/Deploy/Action|Spustí úlohu nasazení tooapply změny z hello zadaný git větve toohello konfigurace v databázi.|
-|/Service/tenant/Configuration/Validate/Action|Ověří změny z větve zadaný git hello|
+|/Service/tenant/Policy/Read|Získat konfiguraci zásad pro klienta|
+|/Service/tenant/Policy/Write|Nastavení zásad konfigurace pro klienta|
+|/Service/tenant/Policy/DELETE|Odebrat konfiguraci zásad pro klienta|
+|/Service/tenant/Configuration/Save/Action|Vytvoří potvrzení s snímku konfigurace pro zadaný větve v úložišti|
+|/Service/tenant/Configuration/Deploy/Action|Spustí úlohu nasazení provést změny z větve zadaný git konfigurace v databázi.|
+|/Service/tenant/Configuration/Validate/Action|Ověří změny z větve zadaný git|
 |/Service/tenant/Configuration/operationResults/Read|Získejte seznam výsledky operace nebo získat výsledek určité operace|
 |/Service/tenant/Configuration/syncState/Read|Získat stav poslední synchronizace git|
 |/Service/tenant/Access/Read|Získat podrobné informace o klientovi přístup|
@@ -109,8 +109,8 @@ Tento dokument uvádí hello operací dostupných pro každý poskytovatel prost
 |/Service/identityProviders/Write|Vytvořit nový zprostředkovatel Identity nebo aktualizace podrobnosti existujícího poskytovatele Identity|
 |/Service/identityProviders/DELETE|Odeberte existující zprostředkovatele Identity|
 |/Service/Subscriptions/Read|Získat seznam předplatných produktů nebo získat podrobnosti o odběru produktu|
-|/Service/Subscriptions/Write|Přihlášení k odběru existující uživatele tooan existující produkt nebo aktualizovat existující podrobnosti o předplatném. Tato operace může být použité toorenew předplatného|
-|/Service/Subscriptions/DELETE|Odstraňte odběr. Tato operace může být použité toodelete předplatného|
+|/Service/Subscriptions/Write|Přihlášení k odběru stávajícího uživatele k existujícímu produktu nebo aktualizovat existující podrobnosti o předplatném. Tato operace slouží k obnovení odběru|
+|/Service/Subscriptions/DELETE|Odstraňte odběr. Tato operace slouží k odstranění předplatného|
 |/Service/Subscriptions/regeneratePrimaryKey/Action|Znova vygenerovat primární klíč předplatného|
 |/Service/Subscriptions/regenerateSecondaryKey/Action|Znova vygenerovat sekundární klíč předplatného|
 |/Service/backends/Read|Získání seznamu back-EndY nebo získat podrobnosti o back-end|
@@ -132,8 +132,8 @@ Tento dokument uvádí hello operací dostupných pro každý poskytovatel prost
 |/Service/Products/Write|Vytvořit nového produktu nebo aktualizovat existující podrobnosti o produktu|
 |/Service/Products/DELETE|Odeberte existující produktu|
 |/Service/Products/Subscriptions/Read|Získání seznamu předplatných produktu|
-|/Service/Products/APIs/Read|Získání seznamu rozhraní API přidat tooexisting produktu|
-|/Service/Products/APIs/Write|Přidat existující produkt tooexisting rozhraní API|
+|/Service/Products/APIs/Read|Získání seznamu rozhraní API, které jsou přidány do existujících produktu|
+|/Service/Products/APIs/Write|Přidání existujícího rozhraní API pro stávající produkt|
 |/Service/Products/APIs/DELETE|Odeberte existující rozhraní API z existující produktu|
 |/Service/Products/Policy/Read|Získání konfigurace zásad existující produktu|
 |/Service/Products/Policy/Write|Nastavení zásad konfigurace pro stávající produkt|
@@ -154,7 +154,7 @@ Tento dokument uvádí hello operací dostupných pro každý poskytovatel prost
 |/Service/groups/Write|Vytvořit novou skupinu nebo aktualizovat existující skupiny podrobnosti|
 |/Service/groups/DELETE|Odeberte existující skupinu|
 |/Service/groups/Users/Read|Získání seznamu skupin uživatelů|
-|/Service/groups/Users/Write|Přidat existující tooexisting skupinu uživatelů|
+|/Service/groups/Users/Write|Přidat stávajícího uživatele do stávající skupiny|
 |/Service/groups/Users/DELETE|Odebrat existující uživatele z existující skupiny|
 |/Service/authorizationServers/Read|Získat seznam serverů autorizace nebo získat podrobnosti o serveru ověřování|
 |/Service/authorizationServers/Write|Vytvořit nový server autorizace nebo podrobné informace o aktualizaci existujícího serveru autorizace|
@@ -172,21 +172,21 @@ Tento dokument uvádí hello operací dostupných pro každý poskytovatel prost
 
 | Operace | Popis |
 |---|---|
-|/ appidentities/čtení|Vrátí hello prostředků (webový server) zaregistrována hello brány.|
+|/ appidentities/čtení|Vrátí prostředků (webový server) zaregistroval u brány.|
 |/ appidentities/zápisu|Vytvoří novou identitu aplikace.|
 |/ appidentities/odstranit|Odstraní existující Identity aplikace.|
-|/deploymenttemplates/listMetadata/Action|Uvádí uživatelského rozhraní Metadata spojená s hello balíček aplikace API.|
-|/deploymenttemplates/Generate/Action|Vrátí tooprovision šablonu nasazení aplikace API instance.|
-|/ brány/čtení|Vrátí instanci brány hello.|
+|/deploymenttemplates/listMetadata/Action|Uvádí uživatelského rozhraní Metadata spojená s tímto balíčkem aplikace API.|
+|/deploymenttemplates/Generate/Action|Vrátí šablony nasazení a zajišťují instance aplikace API.|
+|/ brány/čtení|Vrátí instanci brány.|
 |/ brány/zápisu|Vytvoří novou bránu nebo aktualizuje existující.|
 |/ brány/odstranit|Odstraní existující instanci brány.|
 |/gateways/listLoginUris/Action|Naplní úložiště tokenů a vrátí přihlášení OAuth. identifikátory URI.|
 |/gateways/listKeys/Action|Vrátí tajné klíče brány.|
-|/gateways/tokens/Write|Vytvoří nový záhlaví Zumo Token s daným názvem hello.|
-|/gateways/Registrations/Read|Vrátí hello prostředků (webový server) zaregistrována hello brány.|
-|/gateways/Registrations/Write|Zaregistruje prostředku (webový server) se hello brány.|
-|/gateways/Registrations/DELETE|Zruší registraci prostředku (webový server) z hello brány.|
-|/ apiapps/čtení|Vrátí hello instanci aplikace API.|
+|/gateways/tokens/Write|Vytvoří nový záhlaví Zumo Token s daným názvem.|
+|/gateways/Registrations/Read|Vrátí prostředků (webový server) zaregistroval u brány.|
+|/gateways/Registrations/Write|Zaregistruje prostředku (webový server) s bránou.|
+|/gateways/Registrations/DELETE|Zruší registraci prostředku (webový server) z brány.|
+|/ apiapps/čtení|Vrátí instanci aplikace API.|
 |/ apiapps/zápisu|Vytvoří novou aplikaci API nebo aktualizuje existující.|
 |/ apiapps/odstranit|Odstraní existující instanci aplikace API.|
 |/apiapps/listStatus/Action|Vrátí stav aplikace API.|
@@ -197,27 +197,27 @@ Tento dokument uvádí hello operací dostupných pro každý poskytovatel prost
 
 | Operace | Popis |
 |---|---|
-|/ elevateAccess nebo akce|Uděluje hello volající přístup správce přístupu uživatelů na obor klienta hello|
-|/classicAdministrators/Read|Přečte hello správce pro předplatné hello.|
-|/ classicAdministrators/zápisu|Přidat nebo změnit správce předplatného tooa.|
-|/classicAdministrators/DELETE|Odebere hello správce z předplatného hello.|
-|/Locks/Read|Získá zámky v hello zadaný obor.|
-|/ zámky a zápis|Umožňuje přidat zámky v hello zadaný obor.|
-|/Locks/DELETE|Odstranit zámky v hello zadaný obor.|
+|/ elevateAccess nebo akce|Udělí volajícímu přístup Správce uživatelských přístupů v oboru tenanta.|
+|/classicAdministrators/Read|Umožňuje načíst správce předplatného.|
+|/ classicAdministrators/zápisu|Umožňuje přidat nebo změnit správce předplatného.|
+|/classicAdministrators/DELETE|Umožňuje odebrat správce z předplatného.|
+|/Locks/Read|Umožňuje načíst zámky v zadaném oboru.|
+|/ zámky a zápis|Umožňuje přidat zámky v zadaném oboru.|
+|/Locks/DELETE|Umožňuje odstranit zámky v zadaném oboru.|
 |/policyAssignments/Read|Získání informací o přiřazení zásady|
-|/ policyAssignments/zápisu|Vytvoření zásady přiřazení v hello zadaný obor.|
-|/policyAssignments/DELETE|Odstraní přiřazení zásady v hello zadaný obor.|
-|/Permissions/Read|Seznam všech hello oprávnění, která má volající hello v daném oboru.|
+|/ policyAssignments/zápisu|Vytvoření přiřazení zásady v zadaném oboru|
+|/policyAssignments/DELETE|Odstranění přiřazení zásady v zadaném oboru|
+|/Permissions/Read|Umožňuje vypsat seznam všech oprávnění, která má volající v daném oboru.|
 |/roleDefinitions/Read|Umožňuje načíst informace o definici role.|
 |/ roleDefinitions/zápisu|Odstraňte nebo aktualizujte definice vlastních rolí s určenými oprávněními a přiřaditelnými obory.|
-|/roleDefinitions/DELETE|Odstranit hello zadané definice vlastních rolí.|
+|/roleDefinitions/DELETE|Odstraňte zadané definice vlastních rolí.|
 |/providerOperations/Read|Získejte operace pro všechny poskytovatele prostředků, které je možné použít v definicích rolí.|
 |/policyDefinitions/Read|Získání informací o definici zásady|
 |/ policyDefinitions/zápisu|Vytvoření vlastních zásad pro definice.|
 |/policyDefinitions/DELETE|Odstraní definici zásady.|
 |/roleAssignments/Read|Umožňuje načíst informace o přiřazení role.|
-|/ roleAssignments/zápisu|Umožňuje vytvořit roli přiřazení v hello zadaný obor.|
-|/roleAssignments/DELETE|Odstranit přiřazení role v hello zadaný obor.|
+|/ roleAssignments/zápisu|Umožňuje vytvořit přiřazení role v zadaném oboru.|
+|/roleAssignments/DELETE|Umožňuje odstranit přiřazení role v zadaném oboru.|
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
@@ -252,8 +252,8 @@ Tento dokument uvádí hello operací dostupných pro každý poskytovatel prost
 |/automationAccounts/Jobs/stop/Action|Zastaví úlohu Azure Automation|
 |/automationAccounts/Jobs/suspend/Action|Pozastaví úlohu Azure Automation|
 |/automationAccounts/Jobs/Resume/Action|Obnoví úlohu automatizace Azure|
-|/automationAccounts/Jobs/runbookContent/Action|Získá obsah hello hello Azure Automation runbook v době provádění úlohy hello hello|
-|/automationAccounts/Jobs/Output/Action|Získá hello výstup úlohy|
+|/automationAccounts/Jobs/runbookContent/Action|Získá obsah runbooku automatizace Azure při provádění úlohy|
+|/automationAccounts/Jobs/Output/Action|Načte výstup úlohy|
 |/automationAccounts/Jobs/Read|Získá úlohu automatizace Azure|
 |/automationAccounts/Jobs/Write|Vytvoří úlohu Azure Automation|
 |/automationAccounts/Jobs/stop/Action|Zastaví úlohu Azure Automation|
@@ -266,15 +266,15 @@ Tento dokument uvádí hello operací dostupných pro každý poskytovatel prost
 |/automationAccounts/Variables/Read|Přečte variabilní prostředek Azure Automation.|
 |/automationAccounts/Variables/Write|Vytvoří nebo aktualizuje variabilní prostředek Azure Automation.|
 |/automationAccounts/Variables/DELETE|Odstraní variabilní prostředek Azure Automation.|
-|/automationAccounts/runbooks/readContent/Action|Získá hello obsah runbooku automatizace Azure|
+|/automationAccounts/runbooks/readContent/Action|Získá obsah runbooku automatizace Azure|
 |/automationAccounts/runbooks/Read|Načte runbook služby automatizace Azure|
 |/automationAccounts/runbooks/Write|Vytvoří nebo aktualizuje runbook služby automatizace Azure|
 |/automationAccounts/runbooks/DELETE|Odstraní runbook služby automatizace Azure|
-|/automationAccounts/runbooks/draft/readContent/Action|Získá hello obsah konceptu runbooku služby Azure Automation.|
-|/automationAccounts/runbooks/draft/writeContent/Action|Vytvoří hello obsah konceptu runbooku služby Azure Automation.|
+|/automationAccounts/runbooks/draft/readContent/Action|Získá obsah konceptu runbooku služby Azure Automation.|
+|/automationAccounts/runbooks/draft/writeContent/Action|Vytvoří obsah konceptu runbooku služby Azure Automation.|
 |/automationAccounts/runbooks/draft/Read|Získá koncept runbooku služby Azure Automation.|
 |/automationAccounts/runbooks/draft/Publish/Action|Publikuje koncept runbooku služby Azure Automation.|
-|/automationAccounts/runbooks/draft/undoEdit/Action|Vrátit zpět koncept runbooku automatizace Azure tooan úpravy|
+|/automationAccounts/runbooks/draft/undoEdit/Action|Vrátit zpět úpravy konceptu runbooku služby Azure Automation.|
 |/automationAccounts/runbooks/draft/testJob/Read|Získá testovací úlohu konceptu runbooku automatizace Azure.|
 |/automationAccounts/runbooks/draft/testJob/Write|Vytvoří testovací úlohu konceptu runbooku automatizace Azure.|
 |/automationAccounts/runbooks/draft/testJob/stop/Action|Zastaví testovací úlohu konceptu runbooku automatizace Azure.|
@@ -293,21 +293,21 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 
 | Operace | Popis |
 |---|---|
-|/ registrace nebo akce|Zaregistruje předplatné hello hello poskytovatele prostředků Batch a umožňuje vytvoření hello účty Batch|
+|/ registrace nebo akce|Zaregistruje předplatné pro poskytovatele prostředků Batch a povolí vytvoření účtů Batch|
 |/ batchAccounts/zápisu|Vytvoří nový účet Batch nebo aktualizuje existující účet Batch|
-|/batchAccounts/Read|Zobrazí seznam účtů Batch nebo získá hello vlastnosti účtu Batch|
+|/batchAccounts/Read|Zobrazí seznam účtů Batch nebo načte vlastnosti účtu Batch|
 |/batchAccounts/DELETE|Odstraní účet Batch|
 |/batchAccounts/listkeys/Action|Seznamy přístupové klíče pro účet Batch|
 |/batchAccounts/regeneratekeys/Action|Obnoví přístupové klíče pro účet Batch|
-|/batchAccounts/syncAutoStorageKeys/Action|Synchronizuje přístupové klíče pro účet úložiště automaticky hello nakonfigurované pro účet Batch|
-|/batchAccounts/Applications/Read|Seznam aplikací, nebo získá hello vlastností aplikace|
+|/batchAccounts/syncAutoStorageKeys/Action|Synchronizuje přístupové klíče pro účet úložiště automaticky nakonfigurován pro účet Batch|
+|/batchAccounts/Applications/Read|Seznam aplikací, nebo načte vlastnosti aplikace|
 |/batchAccounts/Applications/Write|Vytvoří novou aplikaci nebo aktualizuje existující aplikace|
 |/batchAccounts/Applications/DELETE|Odstraní aplikaci|
-|/batchAccounts/Applications/versions/Read|Získá vlastnosti hello balíček aplikace|
+|/batchAccounts/Applications/versions/Read|Získá vlastnosti balíčku aplikace|
 |/batchAccounts/Applications/versions/Write|Vytvoří nový balíček aplikace nebo aktualizuje existující balíček aplikace|
 |/batchAccounts/Applications/versions/Activate/Action|Aktivuje balíček aplikace|
 |/batchAccounts/Applications/versions/DELETE|Odstraní balíček aplikace|
-|/Locations/Quotas/Read|Získá dávkové kvóty Dobrý den zadaný odběr v zadané oblasti Azure hello|
+|/Locations/Quotas/Read|Získá Batch kvóty předplatného zadané v zadané oblasti Azure|
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 
@@ -322,39 +322,39 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/ mapApis/čtení|Operace čtení|
 |/ mapApis/zápisu|Operace zápisu|
 |/ mapApis/odstranit|Operace odstranění|
-|/mapApis/regenerateKey/Action|Regeneruje hello klíč|
-|/mapApis/listSecrets/Action|Seznam hello tajné klíče|
-|/mapApis/listSingleSignOnToken/Action|Čtení jednoho přihlášení na autorizační Token pro hello prostředků|
-|/ Operací/čtení|Popis hello operace.|
+|/mapApis/regenerateKey/Action|Znovu vygeneruje klíč.|
+|/mapApis/listSecrets/Action|Uvádí tajné klíče.|
+|/mapApis/listSingleSignOnToken/Action|Přečíst autorizační token jednotného přihlašování pro prostředek|
+|/ Operací/čtení|Popis operace.|
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
 
 | Operace | Popis |
 |---|---|
 |/ checknameavailability nebo akce|Ověří, zda název je k dispozici pro použití s novou mezipaměť Redis|
-|/ registrace nebo akce|Registruje zprostředkovatele prostředků 'Microsoft.Cache' hello s předplatným|
-|nebo zrušit registraci nebo akce|Zrušení registrace poskytovatele prostředků 'Microsoft.Cache' hello s předplatným|
-|/ redis a zápis|Upravit hello na nastavení a konfiguraci Redis Cache na portálu pro správu hello|
-|/redis/Read|Zobrazit nastavení a konfiguraci hello Redis Cache na portálu správy hello|
-|/redis/DELETE|Odstranění hello celý Redis Cache|
-|/redis/listKeys/Action|Zobrazení hello hodnotu přístupové klíče služby Redis Cache na portálu pro správu hello|
-|/redis/regenerateKey/Action|Změnit hodnotu hello přístupové klíče služby Redis Cache na portálu pro správu hello|
+|/ registrace nebo akce|Registruje zprostředkovatele prostředků 'Microsoft.Cache' s předplatným|
+|nebo zrušit registraci nebo akce|Zrušení registrace poskytovatele prostředků 'Microsoft.Cache' s předplatným|
+|/ redis a zápis|Upravit nastavení a konfiguraci služby Redis Cache na portálu pro správu|
+|/redis/Read|Zobrazit nastavení a konfiguraci Redis Cache na portálu pro správu|
+|/redis/DELETE|Odstranit celou službu Redis Cache|
+|/redis/listKeys/Action|Zobrazit hodnotu přístupových klíčů služby Redis Cache na portálu pro správu|
+|/redis/regenerateKey/Action|Změnit hodnotu přístupových klíčů služby Redis Cache na portálu pro správu|
 |/redis/import/Action|Import dat určeného formátu z víc objektů blob do Redis|
-|/redis/export/Action|Export Redis objektů BLOB storage tooprefixed dat v zadaném formátu.|
+|/redis/export/Action|Export dat Redis v určeném formátu do objektů blob úložiště označených prefixem|
 |/redis/forceReboot/Action|Vynuťte restartování instance mezipaměti, což ale může mít za následek ztrátu dat.|
 |/redis/stop/Action|Zastavte instance mezipaměti.|
 |/redis/Start/Action|Spuštění instance mezipaměti.|
-|/redis/metricDefinitions/Read|Získá hello dostupné metriky pro Redis Cache|
-|/redis/firewallRules/Read|Získat hello IP brány firewall pravidla mezipaměti Redis|
-|/redis/firewallRules/Write|Úprava pravidla brány firewall IP hello mezipaměti Redis|
+|/redis/metricDefinitions/Read|Načte dostupné metriky pro Redis Cache.|
+|/redis/firewallRules/Read|Získat IP pravidla brány firewall Redis Cache|
+|/redis/firewallRules/Write|Úprava pravidla brány firewall IP Redis Cache|
 |/redis/firewallRules/DELETE|Odstranit pravidla firewallu IP mezipaměti Redis|
-|/redis/listUpgradeNotifications/Read|Seznam hello nejnovějších upozornění na upgrady pro klienta mezipaměti hello.|
+|/redis/listUpgradeNotifications/Read|Vypíše seznam nejnovějších upozornění na upgrady pro klienta mezipaměti.|
 |/redis/linkedservers/Read|Získáte odkazované servery přidružené k mezipaměti redis.|
-|/redis/linkedservers/Write|Přidat odkazovaný Server tooa Redis Cache|
+|/redis/linkedservers/Write|Odkazovaný Server přidat do mezipaměti Redis|
 |/redis/linkedservers/DELETE|Odstranit odkazovaný Server z mezipaměti Redis|
-|/redis/patchSchedules/Read|Získá hello opravy plán Redis Cache|
-|/redis/patchSchedules/Write|Upravit hello opravy plán Redis Cache|
-|/redis/patchSchedules/DELETE|Odstranit plán oprava hello mezipaměti Redis|
+|/redis/patchSchedules/Read|Získá oprav plán Redis Cache|
+|/redis/patchSchedules/Write|Změnit plán oprav mezipaměti Redis|
+|/redis/patchSchedules/DELETE|Odstranit plán oprava mezipaměti Redis|
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 
@@ -362,192 +362,192 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |---|---|
 |/ provisionGlobalAppServicePrincipalInUserTenant nebo akce|Zřízení instančního objektu pro objekt zabezpečení služby aplikace|
 |/ validateCertificateRegistrationInformation nebo akce|Ověření objektu nákupu certifikát bez odeslání|
-|/ registrace nebo akce|Registrace poskytovatele prostředků hello Certificates společnosti Microsoft pro předplatné hello|
+|/ registrace nebo akce|Registrace poskytovatele prostředků Certificates společnosti Microsoft pro předplatné|
 |/ certificateOrders/zápisu|Přidat nové certificateOrder nebo aktualizovat stávající|
 |/ certificateOrders/odstranit|Odstraňte existující AppServiceCertificate|
-|/ certificateOrders/čtení|Získání seznamu hello CertificateOrders|
+|/ certificateOrders/čtení|Získání seznamu CertificateOrders|
 |/certificateOrders/reissue/Action|Opakujte existující certificateorder|
 |/certificateOrders/renew/Action|Obnovit existující certificateorder|
-|/certificateOrders/retrieveCertificateActions/Action|Načtení seznamu hello akce certifikátu|
+|/certificateOrders/retrieveCertificateActions/Action|Načtení seznamu akce certifikátu|
 |/certificateOrders/retrieveEmailHistory/Action|Načtení historie certifikát e-mailu|
 |/certificateOrders/resendEmail/Action|Znovu odeslat e-mail certifikátu|
 |/certificateOrders/verifyDomainOwnership/Action|Ověřit vlastnictví domény|
-|/certificateOrders/resendRequestEmails/Action|Znovu odeslat žádost o e-mailů tooanother e-mailová adresa|
+|/certificateOrders/resendRequestEmails/Action|Znovu odeslat žádost o e-mailů jinou e-mailová adresa|
 |/certificateOrders/resendRequestEmails/Action|Načtení lokality zapečetění vydaného certifikátu služby aplikace|
 |/certificateOrders/Certificates/Write|Přidat nový certifikát nebo aktualizovat stávající|
 |/certificateOrders/Certificates/DELETE|Odstraňte existující certifikát|
-|/certificateOrders/Certificates/Read|Získání seznamu hello certifikátů|
+|/certificateOrders/Certificates/Read|Získat seznam certifikátů|
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.Network
 
 | Operace | Popis |
 |---|---|
-|/ registrace nebo akce|Zaregistrovat tooClassic výpočetní|
-|/ checkDomainNameAvailability nebo akce|Zkontroluje dostupnost hello zadaného názvu domény.|
-|/ moveSubscriptionResources nebo akce|Přesune všechny klasické prostředky tooa jiné předplatné.|
-|/ validateSubscriptionMoveAvailability nebo akce|Ověřte dostupnost hello předplatného pro operaci přesunutí classic.|
-|/operatingSystemFamilies/Read|Uvádí hello hostovaného operačního systému rodiny dostupné v Microsoft Azure a také uvádí verze operačního systému hello k dispozici pro každý f
-|/Capabilities/Read|Ukazuje možnosti hello|
-|/operatingSystems/Read|Obsahuje seznam verzí hello hello hostovaného operačního systému, které jsou aktuálně k dispozici v Microsoft Azure.|
-|/resourceTypes/skus/Read|Získá seznam hello Sku pro typy podporovaných prostředků.|
-|/domainNames/Read|Vrátí hello názvy domén pro prostředky.|
-|/ domainNames/zápisu|Přidat nebo změnit hello názvy domén pro prostředky.|
-|/domainNames/DELETE|Odeberte hello názvy domén pro prostředky.|
-|/domainNames/swap/Action|Zamění hello pracovní pozici toohello produkční slot.|
-|/domainNames/serviceCertificates/Read|Vrátí hello používané certifikáty služeb.|
-|/domainNames/serviceCertificates/Write|Přidat nebo změnit používané certifikáty služeb hello.|
-|/domainNames/serviceCertificates/DELETE|Odstraňte používané certifikáty služeb hello.|
-|/domainNames/serviceCertificates/operationStatuses/Read|Přečte stav operace hello pro certifikáty služeb názvů domény hello.|
-|/domainNames/Capabilities/Read|Ukazuje možnosti názvu domény hello|
-|/domainNames/Extensions/Read|Vrátí hello rozšíření názvu domény.|
-|/domainNames/Extensions/Write|Přidejte rozšíření názvu domény hello.|
-|/domainNames/Extensions/DELETE|Odeberte rozšíření názvu domény hello.|
-|/domainNames/Extensions/operationStatuses/Read|Přečte stav operace hello pro rozšíření názvů domény hello.|
-|/domainNames/Active/Write|Nastaví název domény služby active hello.|
-|/domainNames/slots/Read|Zobrazuje hello nasazovací sloty.|
-|/domainNames/slots/Write|Umožňuje vytvořit nebo aktualizovat hello nasazení.|
+|/ registrace nebo akce|Registrovat pro klasické výpočetní prostředky|
+|/ checkDomainNameAvailability nebo akce|Umožňuje zkontrolovat dostupnost zadaného názvu domény.|
+|/ moveSubscriptionResources nebo akce|Přesune všechny klasické prostředky do jiného předplatného.|
+|/ validateSubscriptionMoveAvailability nebo akce|Ověří dostupnost klasické operace přesunu u předplatného.|
+|/operatingSystemFamilies/Read|Uvádí hostovaného operačního systému rodiny, který je k dispozici ve službě Microsoft Azure a také uvádí verze operačního systému k dispozici pro každý f
+|/Capabilities/Read|Umožňuje zobrazit schopnosti.|
+|/operatingSystems/Read|Vypíše seznam verzí hostovaných operačních systémů, které jsou aktuálně dostupné v Microsoft Azure.|
+|/resourceTypes/skus/Read|Načte seznam skladových položek pro podporované typy prostředků.|
+|/domainNames/Read|Umožňuje načíst názvy domén pro prostředky.|
+|/ domainNames/zápisu|Umožňuje přidat nebo změnit názvy domén pro prostředky.|
+|/domainNames/DELETE|Umožňuje odebrat názvy domén pro prostředky.|
+|/domainNames/swap/Action|Umožňuje přepnout přípravný slot na produkční.|
+|/domainNames/serviceCertificates/Read|Umožňuje načíst používané certifikáty služeb.|
+|/domainNames/serviceCertificates/Write|Umožňuje přidat nebo změnit používané certifikáty služeb.|
+|/domainNames/serviceCertificates/DELETE|Umožňuje odstranit používané certifikáty služeb.|
+|/domainNames/serviceCertificates/operationStatuses/Read|Přečte stav operace pro certifikáty služeb názvů domén.|
+|/domainNames/Capabilities/Read|Ukazuje možnosti názvu domény|
+|/domainNames/Extensions/Read|Vrátí rozšíření názvu domény.|
+|/domainNames/Extensions/Write|Přidá rozšíření názvu domény.|
+|/domainNames/Extensions/DELETE|Odebere rozšíření názvu domény.|
+|/domainNames/Extensions/operationStatuses/Read|Přečte stav operace pro rozšíření názvů domén.|
+|/domainNames/Active/Write|Slouží k nastavení názvu aktivní domény.|
+|/domainNames/slots/Read|Umožňuje zobrazit sloty pro nasazení.|
+|/domainNames/slots/Write|Umožňuje vytvořit nebo aktualizovat slot pro nasazení.|
 |/domainNames/slots/DELETE|Umožňuje odstranit zadaný slot pro nasazení.|
 |/domainNames/slots/Start/Action|Umožňuje spustit slot pro nasazení.|
-|/domainNames/slots/stop/Action|Pozastaví hello nasazovací slot.|
-|/domainNames/slots/operationStatuses/Read|Přečte hello stav operace pro sloty názvů domény hello.|
-|/domainNames/slots/Roles/Read|Získáte hello role pro hello nasazovací slot.|
-|/domainNames/slots/Roles/extensionReferences/Read|Vrátí hello odkaz na rozšíření u role slotu nasazení hello.|
-|/domainNames/slots/Roles/extensionReferences/Write|Přidat nebo změnit hello odkaz na rozšíření u role slotu nasazení hello.|
-|/domainNames/slots/Roles/extensionReferences/DELETE|Odeberte hello odkaz na rozšíření u role slotu nasazení hello.|
-|/domainNames/slots/Roles/extensionReferences/operationStatuses/Read|Přečte stav operace hello pro hello domény názvy přihrádek reference na rozšíření rolí.|
-|/domainNames/slots/Roles/roleInstances/Read|Získá instanci role hello.|
+|/domainNames/slots/stop/Action|Umožňuje pozastavit slot pro nasazení.|
+|/domainNames/slots/operationStatuses/Read|Přečte stav operace pro sloty názvů domén.|
+|/domainNames/slots/Roles/Read|Umožňuje načíst roli slotu pro nasazení.|
+|/domainNames/slots/Roles/extensionReferences/Read|Vrátí odkaz na rozšíření u role slotu nasazení.|
+|/domainNames/slots/Roles/extensionReferences/Write|Přidá nebo upraví odkaz na rozšíření u role slotu nasazení.|
+|/domainNames/slots/Roles/extensionReferences/DELETE|Odebere odkaz na rozšíření u role slotu nasazení.|
+|/domainNames/slots/Roles/extensionReferences/operationStatuses/Read|Přečte stav operace pro reference na rozšíření rolí slotů názvů domén.|
+|/domainNames/slots/Roles/roleInstances/Read|Umožňuje načíst instanci role.|
 |/domainNames/slots/Roles/roleInstances/restart/Action|Restartování instance role.|
-|/domainNames/slots/Roles/roleInstances/reimage/Action|Reimages hello role instance.|
-|/domainNames/slots/Roles/roleInstances/operationStatuses/Read|Přečte stav operace hello pro instance rolí u hello domény názvy přihrádek rolí.|
-|/domainNames/slots/State/Start/Write|Změny hello toostopped Stav slotu nasazení.|
-|/domainNames/slots/State/stop/Write|Změny hello toostarted Stav slotu nasazení.|
-|/domainNames/slots/upgradeDomain/Write|Provede upgrade hello domény.|
-|/domainNames/internalLoadBalancers/Read|Získá hello interní služby load balancer.|
+|/domainNames/slots/Roles/roleInstances/reimage/Action|Umožňuje obnovit instanci role z image.|
+|/domainNames/slots/Roles/roleInstances/operationStatuses/Read|Přečte stav operace pro instance rolí u rolí slotů názvů domén.|
+|/domainNames/slots/State/Start/Write|Umožňuje změnit stav slotu pro nasazení na Zastavený.|
+|/domainNames/slots/State/stop/Write|Umožňuje změnit stav slotu pro nasazení na Spuštěný.|
+|/domainNames/slots/upgradeDomain/Write|Umožňuje upgradovat doménu.|
+|/domainNames/internalLoadBalancers/Read|Umožňuje načíst interní nástroje pro vyrovnávání zatížení.|
 |/domainNames/internalLoadBalancers/Write|Umožňuje vytvořit nový interní nástroj pro vyrovnávání zatížení.|
 |/domainNames/internalLoadBalancers/DELETE|Umožňuje odebrat interní nástroj pro vyrovnávání zatížení.|
-|/domainNames/internalLoadBalancers/operationStatuses/Read|Přečte stav operace hello pro interní služby load balancer názvů domén hello.|
-|/domainNames/loadBalancedEndpointSets/Read|Zobrazuje hello sady koncových bodů s vyrovnáváním zatížení|
-|/domainNames/loadBalancedEndpointSets/operationStatuses/Read|Přečte stav operace hello pro sady koncových bodů s vyrovnáváním zatížení názvů domén hello.|
-|/domainNames/availabilitySets/Read|Zobrazit hello sadu dostupnosti pro prostředek hello.|
-|/Quotas/Read|Získáte hello kvót pro předplatné hello.|
+|/domainNames/internalLoadBalancers/operationStatuses/Read|Přečte stav operace pro interní služby Load Balancer názvů domén.|
+|/domainNames/loadBalancedEndpointSets/Read|Umožňuje zobrazit skupiny koncových bodů s vyrovnáváním zatížení.|
+|/domainNames/loadBalancedEndpointSets/operationStatuses/Read|Přečte stav operace pro sady koncových bodů s vyrovnaným zatížením u názvů domén.|
+|/domainNames/availabilitySets/Read|Umožňuje zobrazit skupinu dostupnosti pro prostředek.|
+|/Quotas/Read|Umožňuje načíst kvótu pro předplatné.|
 |/virtualMachines/Read|Umožňuje načíst seznam virtuálních počítačů.|
 |/ virtuálních počítačů a zápis|Umožňuje přidat nebo upravit virtuální počítače.|
 |/virtualMachines/DELETE|Odebere virtuální počítače.|
-|/virtualMachines/Start/Action|Spusťte virtuální počítač hello.|
-|/virtualMachines/redeploy/Action|Opětovně nasadí hello virtuálního počítače.|
+|/virtualMachines/Start/Action|Umožňuje spustit virtuální počítač.|
+|/virtualMachines/redeploy/Action|Opětovně nasadí virtuální počítač.|
 |/virtualMachines/restart/Action|Restartuje virtuální počítače.|
-|/virtualMachines/stop/Action|Zastaví hello virtuálního počítače.|
-|/virtualMachines/Shutdown/Action|Vypnutí hello virtuálního počítače.|
-|/virtualMachines/attachDisk/Action|Připojí data disku tooa virtuálního počítače.|
+|/virtualMachines/stop/Action|Umožňuje zastavit virtuální počítač.|
+|/virtualMachines/Shutdown/Action|Umožňuje vypnout virtuální počítač.|
+|/virtualMachines/attachDisk/Action|Umožňuje připojit datový disk k virtuálnímu počítači.|
 |/virtualMachines/detachDisk/Action|Umožňuje odpojit datový disk od virtuálního počítače.|
-|/virtualMachines/downloadRemoteDesktopConnectionFile/Action|Stáhne hello soubor RDP pro virtuální počítač.|
-|/virtualMachines/networkInterfaces /<br>associatedNetworkSecurityGroups/čtení|Načte skupinu zabezpečení sítě hello přidružené hello síťové rozhraní.|
-|/virtualMachines/networkInterfaces /<br>associatedNetworkSecurityGroups a zápis|Přidá skupinu zabezpečení sítě spojenou s hello síťové rozhraní.|
-|/virtualMachines/networkInterfaces /<br>associatedNetworkSecurityGroups nebo odstranění|Odstraní skupinu zabezpečení sítě hello spojenou s hello síťové rozhraní.|
-|/virtualMachines/networkInterfaces /<br>associatedNetworkSecurityGroups/operationStatuses/čtení|Přečte stav operace hello hello virtuálních počítačů spojené skupiny zabezpečení sítě.|
-|/virtualMachines/providers/Microsoft.Insights/metricDefinitions/Read|Získá hello Definice metrik.|
-|/virtualMachines/providers/Microsoft.Insights/diagnosticSettings/Read|Získáte nastavení diagnostiky hello.|
+|/virtualMachines/downloadRemoteDesktopConnectionFile/Action|Umožňuje stáhnout soubor RDP pro virtuální počítač.|
+|/virtualMachines/networkInterfaces /<br>associatedNetworkSecurityGroups/čtení|Načte skupinu zabezpečení sítě spojenou se síťovým rozhraním.|
+|/virtualMachines/networkInterfaces /<br>associatedNetworkSecurityGroups a zápis|Přidá skupinu zabezpečení sítě spojenou se síťovým rozhraním.|
+|/virtualMachines/networkInterfaces /<br>associatedNetworkSecurityGroups nebo odstranění|Odstraní skupinu zabezpečení sítě spojenou se síťovým rozhraním.|
+|/virtualMachines/networkInterfaces /<br>associatedNetworkSecurityGroups/operationStatuses/čtení|Přečte stav operace pro skupiny zabezpečení sítě spojené s virtuálními počítači.|
+|/virtualMachines/providers/Microsoft.Insights/metricDefinitions/Read|Umožňuje načíst definice metrik.|
+|/virtualMachines/providers/Microsoft.Insights/diagnosticSettings/Read|Umožňuje načíst nastavení diagnostiky.|
 |/virtualMachines/providers/Microsoft.Insights/diagnosticSettings/Write|Umožňuje přidat nebo změnit nastavení diagnostiky.|
-|/virtualMachines/Metrics/Read|Získá metriky hello.|
-|/virtualMachines/operationStatuses/Read|Přečte stav operace hello hello virtuálních počítačů.|
-|/virtualMachines/Extensions/Read|Získá hello rozšíření virtuálního počítače.|
-|/virtualMachines/Extensions/Write|Vloží hello rozšíření virtuálního počítače.|
-|/virtualMachines/Extensions/operationStatuses/Read|Přečte stav operace hello pro rozšíření virtuálních počítačů hello.|
-|/virtualMachines/asyncOperations/Read|Získá hello možných asynchronních operací.|
+|/virtualMachines/Metrics/Read|Umožňuje načíst metriky.|
+|/virtualMachines/operationStatuses/Read|Přečte stav operace pro virtuální počítače|
+|/virtualMachines/Extensions/Read|Umožňuje načíst rozšíření virtuálního počítače.|
+|/virtualMachines/Extensions/Write|Umožňuje vložit rozšíření virtuálního počítače.|
+|/virtualMachines/Extensions/operationStatuses/Read|Přečte stav operace pro rozšíření virtuálních počítačů.|
+|/virtualMachines/asyncOperations/Read|Umožňuje získat seznam možných asynchronních operací.|
 |/virtualMachines/Disks/Read|Umožňuje načíst seznam datových disků.|
-|/virtualMachines/associatedNetworkSecurityGroups/Read|Načte skupinu zabezpečení sítě hello spojenou s virtuálním počítačem hello.|
-|/virtualMachines/associatedNetworkSecurityGroups/Write|Přidá skupinu zabezpečení sítě spojenou s hello virtuálního počítače.|
-|/virtualMachines/associatedNetworkSecurityGroups/DELETE|Odstraní skupinu zabezpečení sítě hello spojenou s virtuálním počítačem hello.|
-|/virtualMachines/associatedNetworkSecurityGroups/operationStatuses/Read|Přečte stav operace hello hello virtuálních počítačů spojené skupiny zabezpečení sítě.|
+|/virtualMachines/associatedNetworkSecurityGroups/Read|Načte skupinu zabezpečení sítě spojenou s virtuálním počítačem.|
+|/virtualMachines/associatedNetworkSecurityGroups/Write|Přidá skupinu zabezpečení sítě spojenou s virtuálním počítačem.|
+|/virtualMachines/associatedNetworkSecurityGroups/DELETE|Odstraní skupinu zabezpečení sítě spojenou s virtuálním počítačem.|
+|/virtualMachines/associatedNetworkSecurityGroups/operationStatuses/Read|Přečte stav operace pro skupiny zabezpečení sítě spojené s virtuálními počítači.|
 
 ## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
 
 | Operace | Popis |
 |---|---|
-|/ registrace nebo akce|Zaregistrovat tooClassic sítě|
-|/gatewaySupportedDevices/Read|Načte hello seznam podporovaných zařízení.|
-|/reservedIps/Read|Získá hello vyhrazené IP adresy|
+|/ registrace nebo akce|Registrace pro klasickou síť|
+|/gatewaySupportedDevices/Read|Umožňuje načíst seznam podporovaných zařízení.|
+|/reservedIps/Read|Umožňuje načíst vyhrazené IP adresy.|
 |/ rezervovaných adres IP a zápis|Umožňuje přidat novou vyhrazenou IP adresu.|
 |/reservedIps/DELETE|Umožňuje odstranit vyhrazenou IP adresu.|
 |/reservedIps/Link/Action|Odkaz na rezervovanou IP adresu|
 |/reservedIps/JOIN/Action|Připojit se k rezervované IP adrese|
-|/reservedIps/operationStatuses/Read|Přečte stav operace hello pro hello vyhrazené IP adresy.|
-|/virtualNetworks/Read|Získáte hello virtuální sítě.|
+|/reservedIps/operationStatuses/Read|Přečte stav operace pro rezervované IP adresy.|
+|/virtualNetworks/Read|Umožňuje načíst virtuální síť.|
 |/ virtualNetworks/zápisu|Umožňuje přidat novou virtuální síť.|
-|/virtualNetworks/DELETE|Odstraní hello virtuální sítě.|
+|/virtualNetworks/DELETE|Umožňuje odstranit virtuální síť.|
 |/virtualNetworks/peer/Action|Vytvoří partnerskou virtuální síť s jinou virtuální sítí.|
-|/virtualNetworks/JOIN/Action|Spojí hello virtuální sítě.|
-|/virtualNetworks/checkIPAddressAvailability/Action|Zkontroluje dostupnost dané IP adresy ve virtuální síti hello.|
-|/virtualNetworks/Capabilities/Read|Ukazuje možnosti hello|
-|/virtualNetworks/podsítě /<br>associatedNetworkSecurityGroups/čtení|Načte skupinu zabezpečení sítě hello spojenou s podsítí hello.|
-|/virtualNetworks/podsítě /<br>associatedNetworkSecurityGroups a zápis|Přidá skupinu zabezpečení sítě spojenou s podsítí hello.|
-|/virtualNetworks/podsítě /<br>associatedNetworkSecurityGroups nebo odstranění|Odstraní skupinu zabezpečení sítě hello spojenou s podsítí hello.|
-|/virtualNetworks/podsítě /<br>associatedNetworkSecurityGroups/operationStatuses/čtení|Přečte stav operace hello pro skupinu zabezpečení sítě spojené s podsítí hello virtuální sítě.|
-|/virtualNetworks/operationStatuses/Read|Přečte stav operace hello hello virtuálních sítí.|
-|/virtualNetworks/gateways/Read|Získá hello brány virtuální sítě.|
+|/virtualNetworks/JOIN/Action|Připojí se k virtuální síti.|
+|/virtualNetworks/checkIPAddressAvailability/Action|Zkontroluje dostupnost dané IP adresy ve virtuální síti.|
+|/virtualNetworks/Capabilities/Read|Umožňuje zobrazit schopnosti.|
+|/virtualNetworks/podsítě /<br>associatedNetworkSecurityGroups/čtení|Načte skupinu zabezpečení sítě spojenou s podsítí.|
+|/virtualNetworks/podsítě /<br>associatedNetworkSecurityGroups a zápis|Přidá skupinu zabezpečení sítě spojenou s podsítí.|
+|/virtualNetworks/podsítě /<br>associatedNetworkSecurityGroups nebo odstranění|Odstraní skupinu zabezpečení sítě spojenou s podsítí.|
+|/virtualNetworks/podsítě /<br>associatedNetworkSecurityGroups/operationStatuses/čtení|Přečte stav operace pro skupinu zabezpečení sítě spojenou s podsítí virtuální sítě.|
+|/virtualNetworks/operationStatuses/Read|Přečte stav operace pro virtuální sítě.|
+|/virtualNetworks/gateways/Read|Umožňuje načíst brány virtuální sítě.|
 |/virtualNetworks/gateways/Write|Umožňuje přidat bránu virtuální sítě.|
-|/virtualNetworks/gateways/DELETE|Odstraní hello brány virtuální sítě.|
-|/virtualNetworks/gateways/startDiagnostics/Action|Umožňuje spustit diagnostiku pro bránu virtuální sítě hello.|
-|/virtualNetworks/gateways/stopDiagnostics/Action|Zastaví hello diagnostiku pro bránu virtuální sítě hello.|
-|/virtualNetworks/gateways/downloadDiagnostics/Action|Stáhne diagnostiku brány hello.|
-|/virtualNetworks/gateways/listCircuitServiceKey/Action|Načte klíč služby okruhů hello.|
-|/virtualNetworks/gateways/downloadDeviceConfigurationScript/Action|Stáhne skript pro konfiguraci zařízení hello.|
-|/virtualNetworks/gateways/listPackage/Action|Uvádí hello balíček bran virtuální sítě.|
-|/virtualNetworks/gateways/operationStatuses/Read|Přečte stav operace hello hello bran virtuálních sítí.|
-|/virtualNetworks/gateways/Packages/Read|Získá hello balíček bran virtuální sítě.|
-|/virtualNetworks/gateways/Connections/Read|Načte hello seznam připojení.|
-|/virtualNetworks/gateways/Connections/Connect/Action|Připojí připojení site toosite brány.|
-|/virtualNetworks/gateways/Connections/Disconnect/Action|Odpojí připojení site toosite brány.|
-|/virtualNetworks/gateways/Connections/test/Action|Otestuje připojení site toosite brány.|
-|/virtualNetworks/gateways/clientRevokedCertificates/Read|Čtení hello odvolané klientské certifikáty.|
+|/virtualNetworks/gateways/DELETE|Umožňuje odstranit bránu virtuální sítě.|
+|/virtualNetworks/gateways/startDiagnostics/Action|Umožňuje spustit diagnostiku pro bránu virtuální sítě.|
+|/virtualNetworks/gateways/stopDiagnostics/Action|Umožňuje zastavit diagnostiku pro bránu virtuální sítě.|
+|/virtualNetworks/gateways/downloadDiagnostics/Action|Umožňuje stáhnout diagnostiku brány.|
+|/virtualNetworks/gateways/listCircuitServiceKey/Action|Umožňuje načíst klíč služby okruhů.|
+|/virtualNetworks/gateways/downloadDeviceConfigurationScript/Action|Umožňuje stáhnout skript pro konfiguraci zařízení.|
+|/virtualNetworks/gateways/listPackage/Action|Umožňuje vypsat balíček bran virtuální sítě.|
+|/virtualNetworks/gateways/operationStatuses/Read|Přečte stav operace pro brány virtuálních sítí.|
+|/virtualNetworks/gateways/Packages/Read|Umožňuje načíst balíček bran virtuální sítě.|
+|/virtualNetworks/gateways/Connections/Read|Umožňuje načíst seznam připojení.|
+|/virtualNetworks/gateways/Connections/Connect/Action|Umožňuje připojit lokalitu k připojení brány lokality.|
+|/virtualNetworks/gateways/Connections/Disconnect/Action|Umožňuje odpojit lokalitu od připojení brány lokality.|
+|/virtualNetworks/gateways/Connections/test/Action|Umožňuje otestovat připojení lokality k bráně lokality.|
+|/virtualNetworks/gateways/clientRevokedCertificates/Read|Umožňuje načíst odvolané klientské certifikáty.|
 |/virtualNetworks/gateways/clientRevokedCertificates/Write|Umožňuje odvolat klientský certifikát.|
 |/virtualNetworks/gateways/clientRevokedCertificates/DELETE|Umožňuje zrušit odvolání klientského certifikátu.|
-|/virtualNetworks/gateways/clientRootCertificates/Read|Najde hello klientské kořenové certifikáty.|
+|/virtualNetworks/gateways/clientRootCertificates/Read|Umožňuje vyhledat klientské kořenové certifikáty.|
 |/virtualNetworks/gateways/clientRootCertificates/Write|Umožňuje nahrát nový klientský kořenový certifikát.|
-|/virtualNetworks/gateways/clientRootCertificates/DELETE|Odstraní klientský certifikát brány virtuální sítě hello.|
+|/virtualNetworks/gateways/clientRootCertificates/DELETE|Umožňuje odstranit klientský certifikát brány virtuální sítě.|
 |/virtualNetworks/gateways/clientRootCertificates/download/Action|Umožňuje stáhnout certifikát podle kryptografického otisku.|
-|/virtualNetworks/gateways/clientRootCertificates/listPackage/Action|Uvádí hello balíček certifikátů bran virtuální sítě.|
-|/networkSecurityGroups/Read|Načte skupinu zabezpečení sítě hello.|
+|/virtualNetworks/gateways/clientRootCertificates/listPackage/Action|Vypíše balíček certifikátů bran virtuální sítě.|
+|/networkSecurityGroups/Read|Načte skupinu zabezpečení sítě.|
 |/ skupin zabezpečení sítě a zápis|Přidá novou skupinu zabezpečení sítě.|
-|/networkSecurityGroups/DELETE|Odstraní skupinu zabezpečení sítě hello.|
-|/networkSecurityGroups/operationStatuses/Read|Přečte stav operace hello pro skupinu zabezpečení sítě hello.|
-|/networkSecurityGroups/securityRules/Read|Získá hello pravidlo zabezpečení.|
+|/networkSecurityGroups/DELETE|Odstraní skupinu zabezpečení sítě.|
+|/networkSecurityGroups/operationStatuses/Read|Přečte stav operace pro skupinu zabezpečení sítě.|
+|/networkSecurityGroups/securityRules/Read|Načte pravidlo zabezpečení.|
 |/networkSecurityGroups/securityRules/Write|Přidá nebo aktualizuje pravidlo zabezpečení.|
-|/networkSecurityGroups/securityRules/DELETE|Odstraní pravidlo zabezpečení hello.|
-|/networkSecurityGroups/securityRules/operationStatuses/Read|Přečte stav operace hello pro pravidla zabezpečení skupiny zabezpečení sítě hello.|
-|/Quotas/Read|Získáte hello kvót pro předplatné hello.|
+|/networkSecurityGroups/securityRules/DELETE|Odstraní pravidlo zabezpečení.|
+|/networkSecurityGroups/securityRules/operationStatuses/Read|Přečte stav operace pro pravidla zabezpečení skupiny u zabezpečení sítě.|
+|/Quotas/Read|Umožňuje načíst kvótu pro předplatné.|
 
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
 
 | Operace | Popis |
 |---|---|
-|/ registrace nebo akce|Zaregistrovat tooClassic úložiště|
-|/ checkStorageAccountAvailability nebo akce|Zkontroluje dostupnost hello účtu úložiště.|
-|/Capabilities/Read|Ukazuje možnosti hello|
-|/publicImages/Read|Načte obrázek hello veřejné virtuálního počítače.|
-|/Images/Read|Vrátí obrázek hello.|
-|/storageAccounts/Read|Vrátí hello účet úložiště s hello zadaný účet.|
+|/ registrace nebo akce|Umožňuje registraci v klasickém úložišti.|
+|/ checkStorageAccountAvailability nebo akce|Umožňuje zkontrolovat dostupnost účtu úložiště.|
+|/Capabilities/Read|Umožňuje zobrazit schopnosti.|
+|/publicImages/Read|Načte veřejnou image virtuálního počítače.|
+|/Images/Read|Vrátí image.|
+|/storageAccounts/Read|Umožňuje načíst účet úložiště se zadaným účtem.|
 |/ storageAccounts/zápisu|Umožňuje přidat nový účet úložiště.|
-|/storageAccounts/DELETE|Odstraňte účet úložiště hello.|
-|/storageAccounts/listKeys/Action|Uvádí hello přístupových klíčů pro účty úložiště hello.|
-|/storageAccounts/regenerateKey/Action|Regeneruje hello existující přístupové klíče pro účet úložiště hello.|
-|/storageAccounts/operationStatuses/Read|Přečte stav operace hello hello prostředku.|
-|/storageAccounts/Images/Read|Vrátí hello image účtu storage.|
+|/storageAccounts/DELETE|Umožňuje odstranit účet úložiště.|
+|/storageAccounts/listKeys/Action|Umožňuje vypsat seznam přístupových klíčů pro účty úložiště.|
+|/storageAccounts/regenerateKey/Action|Umožňuje znovu vytvořit existující přístupové klíče pro účet úložiště.|
+|/storageAccounts/operationStatuses/Read|Umožňuje načíst stav operace pro prostředek.|
+|/storageAccounts/Images/Read|Vrátí image účtu Storage.|
 |/storageAccounts/Images/DELETE|Odstraní danou image účtu Storage.|
-|/storageAccounts/Disks/Read|Vrátí hello disku účet úložiště.|
+|/storageAccounts/Disks/Read|Vrátí disk účtu úložiště.|
 |/storageAccounts/Disks/Write|Přidá disk účtu úložiště.|
 |/storageAccounts/Disks/DELETE|Odstraní daný disk účtu úložiště.|
-|/storageAccounts/Disks/operationStatuses/Read|Přečte stav operace hello hello prostředku.|
-|/storageAccounts/osImages/Read|Vrátí hello image operačního systému pro účet storage.|
+|/storageAccounts/Disks/operationStatuses/Read|Umožňuje načíst stav operace pro prostředek.|
+|/storageAccounts/osImages/Read|Vrátí image operačního systému pro účet Storage.|
 |/storageAccounts/osImages/DELETE|Odstraní danou image operačního systému pro účet Storage.|
-|/storageAccounts/Services/Read|Získáte služby k dispozici hello.|
-|/storageAccounts/Services/metricDefinitions/Read|Získá hello Definice metrik.|
-|/storageAccounts/Services/Metrics/Read|Získá metriky hello.|
-|/storageAccounts/Services/diagnosticSettings/Read|Získáte nastavení diagnostiky hello.|
+|/storageAccounts/Services/Read|Umožňuje načíst dostupné služby.|
+|/storageAccounts/Services/metricDefinitions/Read|Umožňuje načíst definice metrik.|
+|/storageAccounts/Services/Metrics/Read|Umožňuje načíst metriky.|
+|/storageAccounts/Services/diagnosticSettings/Read|Umožňuje načíst nastavení diagnostiky.|
 |/storageAccounts/Services/diagnosticSettings/Write|Umožňuje přidat nebo změnit nastavení diagnostiky.|
-|/Disks/Read|Vrátí hello disku účet úložiště.|
-|/osImages/Read|Vrátí image operačního systému hello.|
-|/Quotas/Read|Získáte hello kvót pro předplatné hello.|
+|/Disks/Read|Vrátí disk účtu úložiště.|
+|/osImages/Read|Vrátí image operačního systému.|
+|/Quotas/Read|Umožňuje načíst kvótu pro předplatné.|
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
@@ -559,103 +559,103 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/Accounts/listKeys/Action|Seznam klíčů|
 |/Accounts/regenerateKey/Action|Znovu vygenerovat klíč|
 |/Accounts/skus/Read|Načte dostupné SKU pro existující prostředek.|
-|/Accounts/usages/Read|Získáte hello kvóty využití pro existující prostředek.|
-|/ Operací/čtení|Popis hello operace.|
+|/Accounts/usages/Read|Získáte využití kvóty pro existující prostředek.|
+|/ Operací/čtení|Popis operace.|
 
 ## <a name="microsoftcommerce"></a>Microsoft.Commerce
 
 | Operace | Popis |
 |---|---|
-|/ RateCard/čtení|Vrátí nabízejí dat, prostředku nebo měření metadata a sazby za hello zadané předplatné.|
-|/ UsageAggregates/čtení|Získá předplatné Microsoft Azure spotřeby. Hello výsledek obsahuje agreguje data o využití, předplatné a prostředků související informace, na konkrétní časové rozmezí.|
+|/ RateCard/čtení|Vrátí nabízejí data, prostředku nebo měření metadata a sazby pro dané předplatné.|
+|/ UsageAggregates/čtení|Získá předplatné Microsoft Azure spotřeby. Výsledek obsahuje agreguje data o využití, předplatné a prostředků související informace, na konkrétní časové rozmezí.|
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 | Operace | Popis |
 |---|---|
 |/ registrace nebo akce|Umožňuje registrovat předplatné zprostředkovatele prostředků Microsoft.Compute.|
-|/restorePointCollections/Read|Získat vlastnosti hello kolekce bodu obnovení|
+|/restorePointCollections/Read|Umožňuje získat vlastnosti kolekce bodu obnovení|
 |/ restorePointCollections/zápisu|Vytvoří novou kolekci bodu obnovení nebo aktualizuje existující|
-|/restorePointCollections/DELETE|Odstranění hello kolekce bod obnovení a obsažené body obnovení|
-|/restorePointCollections/restorePoints/Read|Získat vlastnosti hello bodu obnovení|
+|/restorePointCollections/DELETE|Odstranění obnovení bodu kolekce a obsažené bodů obnovení|
+|/restorePointCollections/restorePoints/Read|Umožňuje získat vlastnosti bod obnovení|
 |/restorePointCollections/restorePoints/Write|Vytvoří nový bod obnovení|
-|/restorePointCollections/restorePoints/DELETE|Odstraní bod obnovení hello|
-|/restorePointCollections/restorePoints/retrieveSasUris/Action|Získat vlastnosti hello bodu obnovení společně s identifikátory URI SAS objektu blob|
-|/virtualMachineScaleSets/Read|Získat vlastnosti hello sady škálování virtuálního počítače|
+|/restorePointCollections/restorePoints/DELETE|Odstraní bodu obnovení|
+|/restorePointCollections/restorePoints/retrieveSasUris/Action|Umožňuje získat vlastnosti bod obnovení společně s identifikátory URI SAS objektu blob|
+|/virtualMachineScaleSets/Read|Umožňuje získat vlastnosti škálovací sady virtuálních počítačů.|
 |/ virtualMachineScaleSets/zápisu|Umožňuje vytvořit novou nebo aktualizovat stávající škálovací sadu virtuálních počítačů.|
-|/virtualMachineScaleSets/DELETE|Odstraní škálovací sadu virtuálních počítačů hello|
-|/virtualMachineScaleSets/Start/Action|Spustí hello instance škálovací sady virtuálního počítače hello|
-|/virtualMachineScaleSets/powerOff/Action|Umožňuje vypnout instance škálovací sadu virtuálních počítačů hello hello|
-|/virtualMachineScaleSets/restart/Action|Restartuje hello instance škálovací sady virtuálního počítače hello|
-|/virtualMachineScaleSets/deallocate/Action|Umožňuje vypnout a verze hello výpočetní prostředky pro hello instance škálovací sady virtuálního počítače hello |
-|/virtualMachineScaleSets/manualUpgrade/Action|Umožňuje ručně aktualizovat instance toolatest model škálovací sadu virtuálních počítačů hello|
+|/virtualMachineScaleSets/DELETE|Umožňuje odstranit škálovací sadu virtuálních počítačů.|
+|/virtualMachineScaleSets/Start/Action|Umožňuje spustit instance škálovací sady virtuálních počítačů.|
+|/virtualMachineScaleSets/powerOff/Action|Umožňuje vypnout instance škálovací sady virtuálních počítačů.|
+|/virtualMachineScaleSets/restart/Action|Umožňuje restartovat instance škálovací sady virtuálních počítačů.|
+|/virtualMachineScaleSets/deallocate/Action|Umožňuje vypnout instance škálovací sady virtuálních počítačů a uvolnit výpočetní prostředky, které tyto instance zabíraly. |
+|/virtualMachineScaleSets/manualUpgrade/Action|Umožňuje ručně aktualizovat instance na poslední model škálovací sady virtuálních počítačů.|
 |/virtualMachineScaleSets/Scale/Action|Škálování v / set horizontální navýšení kapacity počet instancí existující škálování virtuálních počítačů|
-|/virtualMachineScaleSets/instanceView/Read|Získá hello zobrazení instance škálovací sadu virtuálních počítačů hello|
-|/virtualMachineScaleSets/skus/Read|Seznamy hello platných SKU pro existující škálovací sadu virtuálních počítačů|
-|/virtualMachineScaleSets/virtualMachines/Read|Načte hello vlastnosti virtuálního počítače ve Škálovací sadě virtuálních počítačů|
+|/virtualMachineScaleSets/instanceView/Read|Umožňuje získat zobrazení instance škálovací sady virtuálních počítačů.|
+|/virtualMachineScaleSets/skus/Read|Umožňuje zobrazit seznam platných SKU pro existující škálovací sadu virtuálních počítačů.|
+|/virtualMachineScaleSets/virtualMachines/Read|Umožňuje načíst vlastnosti virtuálního počítače ve škálovací sadě virtuálních počítačů.|
 |/virtualMachineScaleSets/virtualMachines/DELETE|Umožňuje odstranit konkrétní virtuální počítač ve škálovací sadě virtuálních počítačů.|
 |/virtualMachineScaleSets/virtualMachines/Start/Action|Umožňuje spustit instanci virtuálního počítače ve škálovací sadě virtuálních počítačů.|
 |/virtualMachineScaleSets/virtualMachines/powerOff/Action|Umožňuje vypnout instanci virtuálního počítače ve škálovací sadě virtuálních počítačů.|
 |/virtualMachineScaleSets/virtualMachines/restart/Action|Umožňuje restartovat instanci virtuálního počítače ve škálovací sadě virtuálních počítačů.|
-|/virtualMachineScaleSets/virtualMachines/deallocate/Action|Umožňuje vypnout a verze hello výpočetní prostředky pro virtuální počítač ve Škálovací sadě virtuálních počítačů.|
-|/virtualMachineScaleSets/virtualMachines/instanceView/Read|Načte hello zobrazení instance virtuálního počítače ve Škálovací sadě virtuálních počítačů.|
-|/Images/Read|Získat vlastnosti hello hello bitové kopie|
+|/virtualMachineScaleSets/virtualMachines/deallocate/Action|Umožňuje vypnout a uvolnit výpočetní prostředky pro virtuální počítač ve škálovací sadě virtuálních počítačů.|
+|/virtualMachineScaleSets/virtualMachines/instanceView/Read|Umožňuje načíst zobrazení instance virtuálního počítače ve škálovací sadě virtuálních počítačů.|
+|/Images/Read|Umožňuje získat vlastnosti bitové kopie|
 |/ bitové kopie a zápis|Vytvoří novou bitovou kopii nebo aktualizuje existující|
-|/Images/DELETE|Odstraní hello image|
+|/Images/DELETE|Odstraní bitovou kopii|
 |/Operations/Read|Umožňuje zobrazit seznam operací dostupných na zprostředkovateli prostředků Microsoft.Compute.|
-|/Disks/Read|Získat vlastnosti hello disku|
+|/Disks/Read|Získá vlastnosti disku.|
 |/ disků a zápis|Vytvoří nový disk nebo aktualizuje stávající.|
-|/Disks/DELETE|Odstranění hello disku|
-|/Disks/beginGetAccess/Action|Získat hello URI SAS hello disku pro přístup k objektu blob|
-|/Disks/endGetAccess/Action|Odvolat hello URI SAS disku hello|
-|/snapshots/Read|Získat vlastnosti hello snímku|
+|/Disks/DELETE|Odstraní disky.|
+|/Disks/beginGetAccess/Action|Získat identifikátor URI SAS disku pro přístup k objektu blob|
+|/Disks/endGetAccess/Action|Odvolá identifikátor URI SAS disku|
+|/snapshots/Read|Získat vlastnosti snímku|
 |/ snímky a zápis|Vytvoří nový snímek nebo aktualizuje stávající.|
 |/snapshots/DELETE|Odstranit snímek|
-|/availabilitySets/Read|Získat hello vlastnosti sady dostupnosti.|
+|/availabilitySets/Read|Umožňuje získat vlastnosti sady dostupnosti.|
 |/ availabilitySets/zápisu|Umožňuje vytvořit novou nebo aktualizovat stávající sadu dostupnosti.|
-|/availabilitySets/DELETE|Odstraní skupinu dostupnosti hello|
-|/availabilitySets/vmSizes/Read|Seznam dostupných velikostí pro vytváření nebo aktualizaci virtuálního počítače v sadě dostupnosti hello|
-|/virtualMachines/Read|Získat vlastnosti hello virtuálního počítače|
+|/availabilitySets/DELETE|Umožňuje odstranit sadu dostupnosti.|
+|/availabilitySets/vmSizes/Read|Umožňuje zobrazit seznam dostupných velikostí pro vytváření nebo aktualizaci virtuálního počítače v sadě dostupnosti.|
+|/virtualMachines/Read|Umožňuje získat vlastnosti virtuálního počítače.|
 |/ virtuálních počítačů a zápis|Umožňuje vytvořit nový nebo aktualizovat stávající virtuální počítač.|
-|/virtualMachines/DELETE|Odstraní hello virtuální počítač|
-|/virtualMachines/Start/Action|Virtuální počítač spustí hello|
-|/virtualMachines/powerOff/Action|Umožňuje vypnout virtuální počítač hello. Všimněte si, že hello virtuální počítač bude toobe účtují.|
+|/virtualMachines/DELETE|Umožňuje odstranit virtuální počítač.|
+|/virtualMachines/Start/Action|Umožňuje spustit virtuální počítač.|
+|/virtualMachines/powerOff/Action|Umožňuje vypnout virtuální počítač. Všimněte si, že virtuální počítač bude dál účtovat.|
 |/virtualMachines/redeploy/Action|Opětovně nasadí virtuální počítač|
-|/virtualMachines/restart/Action|Restartuje hello virtuálního počítače|
-|/virtualMachines/deallocate/Action|Umožňuje vypnout hello virtuální počítač a uvolnit hello výpočetní prostředky|
-|/virtualMachines/generalize/Action|Nastaví tooGeneralized stavu hello virtuálního počítače a připraví na zachycení hello virtuálního počítače|
-|/virtualMachines/Capture/Action|Zaznamená hello virtuální počítač zkopírováním virtuálních pevných disků a vygenerováním šablony, kterou lze použít toocreate podobných virtuálních počítačů.|
-|/virtualMachines/convertToManagedDisks/Action|Převede hello objektů blob na základě disky disky toomanaged hello virtuálního počítače|
-|/virtualMachines/vmSizes/Read|Seznam dostupných velikostí, které budou aktualizovány hello virtuálního počítače|
-|/virtualMachines/instanceView/Read|Získá hello podrobný stav runtime hello virtuálního počítače a jeho prostředků|
-|/virtualMachines/Extensions/Read|Získat vlastnosti hello rozšíření virtuálního počítače.|
+|/virtualMachines/restart/Action|Umožňuje restartovat virtuální počítač.|
+|/virtualMachines/deallocate/Action|Umožňuje vypnout virtuální počítač a uvolnit výpočetní prostředky.|
+|/virtualMachines/generalize/Action|Umožňuje nastavit stav virtuálního počítače na Zobecněno a připravit virtuální počítač na zachycení.|
+|/virtualMachines/Capture/Action|Umožňuje zachytit virtuální počítač zkopírováním virtuálních pevných disků a vygenerováním šablony, kterou je možné použít k vytvoření podobných virtuálních počítačů.|
+|/virtualMachines/convertToManagedDisks/Action|Převede objekt blob na základě disky virtuálního počítače na spravovaného disky|
+|/virtualMachines/vmSizes/Read|Umožňuje zobrazit seznam dostupných velikostí, na které je možné virtuální počítač aktualizovat.|
+|/virtualMachines/instanceView/Read|Umožňuje získat podrobný stav runtime virtuálního počítače a jeho prostředků.|
+|/virtualMachines/Extensions/Read|Umožňuje získat vlastnosti rozšíření virtuálního počítače.|
 |/virtualMachines/Extensions/Write|Umožňuje vytvořit nové nebo aktualizovat stávající rozšíření virtuálního počítače.|
-|/virtualMachines/Extensions/DELETE|Odstraní hello rozšíření virtuálního počítače.|
+|/virtualMachines/Extensions/DELETE|Umožňuje odstranit rozšíření virtuálního počítače.|
 |/Locations/vmSizes/Read|Umožňuje zobrazit seznam dostupných velikostí virtuálních počítačů v daném umístění.|
-|/Locations/usages/Read|Získá limity služby a aktuální využívaná množství výpočetních prostředků předplatného hello v umístění|
-|/Locations/Operations/Read|Získá hello stav asynchronní operace|
+|/Locations/usages/Read|Umožňuje získat limity služby a aktuální využívaná množství výpočetních prostředků předplatného v daném umístění.|
+|/Locations/Operations/Read|Umožňuje získat stav asynchronní operace.|
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
 | Operace | Popis |
 |---|---|
-|/ registrace nebo akce|Zaregistruje hello předplatného pro poskytovatele prostředků registru hello kontejneru a umožňuje hello vytvoření kontejneru registrech.|
+|/ registrace nebo akce|Zaregistruje předplatné pro zprostředkovatele prostředků registru kontejneru a umožňuje vytvoření kontejneru registrech.|
 |/checknameavailability/Read|Ověří, že název registru je platný a není používán.|
-|/registries/Read|Vrátí hello seznam registrech kontejneru nebo získá hello vlastnosti pro zadaný kontejner registru hello.|
-|/ registrech a zápis|Vytvoří kontejner registr s využitím zadaných parametrů hello nebo aktualizovat hello vlastnosti a značky pro zadaný kontejner registru hello.|
+|/registries/Read|Vrátí seznam registrech kontejneru nebo načte vlastnosti zadaného kontejneru registru.|
+|/ registrech a zápis|Vytvoří kontejner registru se zadanými parametry nebo aktualizovat vlastnosti a značky pro zadaný kontejner registru.|
 |/registries/DELETE|Odstraní existujícího registru kontejneru.|
-|/registries/listCredentials/Action|Uvádí hello přihlašovací údaje pro zadaný kontejner registru hello.|
-|/registries/regenerateCredential/Action|Regeneruje hello přihlašovací údaje pro zadaný kontejner registru hello.|
+|/registries/listCredentials/Action|Uvádí přihlašovací údaje pro zadaný kontejner registru.|
+|/registries/regenerateCredential/Action|Regeneruje přihlašovací údaje pro zadaný kontejner registru.|
 
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
 
 | Operace | Popis |
 |---|---|
-|/containerServices/Subscriptions/Read|Get hello určené služby kontejneru na základě předplatného.|
-|/containerServices/resourceGroups/Read|Get hello určené služby kontejneru na základě skupiny prostředků|
-|/containerServices/resourceGroups/ContainerServiceName/Read|Získá hello zadaný kontejner služby|
-|/containerServices/resourceGroups/ContainerServiceName/Write|PUT nebo aktualizace hello zadaný kontejner služby|
-|/containerServices/resourceGroups/ContainerServiceName/DELETE|Odstranění hello zadaný kontejner služby|
+|/containerServices/Subscriptions/Read|Získá určené služby kontejneru na základě předplatného.|
+|/containerServices/resourceGroups/Read|Získá určené služby kontejneru na základě skupiny prostředků.|
+|/containerServices/resourceGroups/ContainerServiceName/Read|Získá určenou službu kontejneru.|
+|/containerServices/resourceGroups/ContainerServiceName/Write|Použije nebo aktualizuje určenou službu kontejneru.|
+|/containerServices/resourceGroups/ContainerServiceName/DELETE|Odstraní určenou službu kontejneru.|
 
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
 
@@ -678,10 +678,10 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/hubs/Read|Číst všechny statistiky centra Azure zákazníků|
 |/ hubs a zápis|Vytvořit nebo aktualizovat všechny statistiky centra Azure zákazníků|
 |/hubs/DELETE|Odstranit všechny statistiky Centrum Azure zákazníků|
-|/hubs/providers/Microsoft.Insights/metricDefinitions/Read|Získá hello dostupné metriky pro prostředek|
-|/hubs/providers/Microsoft.Insights/diagnosticSettings/Read|Získá hello nastavení diagnostiky pro prostředek hello|
-|/hubs/providers/Microsoft.Insights/diagnosticSettings/Write|Vytvoří nebo aktualizuje hello nastavení diagnostiky pro prostředek hello|
-|/hubs/providers/Microsoft.Insights/logDefinitions/Read|Získá dostupné protokoly hello pro prostředek|
+|/hubs/providers/Microsoft.Insights/metricDefinitions/Read|Načte dostupné metriky pro prostředek|
+|/hubs/providers/Microsoft.Insights/diagnosticSettings/Read|Získá nastavení diagnostiky pro tento prostředek.|
+|/hubs/providers/Microsoft.Insights/diagnosticSettings/Write|Vytvoří nebo aktualizuje nastavení diagnostiky pro tento prostředek.|
+|/hubs/providers/Microsoft.Insights/logDefinitions/Read|Získá dostupné protokoly pro prostředek|
 |/hubs/authorizationPolicies/Read|Přečtěte si, že žádné přehledy Azure zákazníků sdílené zásady přístupu podpis|
 |/hubs/authorizationPolicies/Write|Vytvořit nebo aktualizovat žádné zásady Azure zákazníků Statistika sdílený přístupový podpis|
 |/hubs/authorizationPolicies/DELETE|Odstranit všechny zásady Azure zákazníků Statistika sdílený přístupový podpis|
@@ -713,8 +713,8 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |---|---|
 |/ checkNameAvailability nebo akce|Zkontroluje dostupnost názvu katalogu pro klienta.|
 |/catalogs/Read|Načíst vlastnosti pro katalogu nebo katalogů pod předplatné nebo skupinu prostředků.|
-|/ katalogů a zápis|Vytvoří katalogu nebo aktualizace hello značek a vlastnosti pro katalog hello.|
-|/catalogs/DELETE|Odstraní hello katalogu.|
+|/ katalogů a zápis|Katalog vytvoří nebo aktualizuje značky a vlastnosti pro katalog.|
+|/catalogs/DELETE|Odstraní katalogu.|
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
@@ -740,20 +740,20 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 
 | Operace | Popis |
 |---|---|
-|/Accounts/Read|Získání informací o hello DataLakeAnalytics účtu.|
-|/ účty a zápis|Vytvořit nebo aktualizovat účet DataLakeAnalytics hello.|
-|/Accounts/DELETE|Odstranění účtu DataLakeAnalytics hello.|
+|/Accounts/Read|Získání informací o účtu DataLakeAnalytics.|
+|/ účty a zápis|Vytvořit nebo aktualizovat účet DataLakeAnalytics.|
+|/Accounts/DELETE|Odstranění účtu DataLakeAnalytics.|
 |/Accounts/firewallRules/Read|Získání informací o pravidlo brány firewall.|
 |/Accounts/firewallRules/Write|Vytvořit nebo aktualizovat pravidlo brány firewall.|
 |/Accounts/firewallRules/DELETE|Odstraňte pravidlo brány firewall.|
-|/Accounts/storageAccounts/Read|Získáte propojený účet úložiště pro hello DataLakeAnalytics účtu.|
-|/Accounts/storageAccounts/Write|Odkaz toohello účet úložiště DataLakeAnalytics účtu.|
-|/Accounts/storageAccounts/DELETE|Zrušit propojení účtu úložiště z hello DataLakeAnalytics účtu.|
-|/Accounts/storageAccounts/Containers/Read|Získat kontejnery v účtu úložiště hello|
-|/Accounts/storageAccounts/Containers/listSasTokens/Action|Seznam tokeny SAS pro kontejner úložiště hello|
-|/Accounts/dataLakeStoreAccounts/Read|Získáte účet propojené DataLakeStore pro hello DataLakeAnalytics účtu.|
-|/Accounts/dataLakeStoreAccounts/Write|Odkaz DataLakeStore účet toohello DataLakeAnalytics účtu.|
-|/Accounts/dataLakeStoreAccounts/DELETE|Zrušit propojení účtu DataLakeStore z hello DataLakeAnalytics účtu.|
+|/Accounts/storageAccounts/Read|U účtu DataLakeAnalytics získáte propojený účet úložiště.|
+|/Accounts/storageAccounts/Write|Účet úložiště propojte DataLakeAnalytics účtu.|
+|/Accounts/storageAccounts/DELETE|Zrušit propojení účtu úložiště z účtu DataLakeAnalytics.|
+|/Accounts/storageAccounts/Containers/Read|Získat kontejnery v účtu úložiště|
+|/Accounts/storageAccounts/Containers/listSasTokens/Action|Seznam tokeny SAS pro kontejner úložiště|
+|/Accounts/dataLakeStoreAccounts/Read|Získáte účet propojené DataLakeStore DataLakeAnalytics účtu.|
+|/Accounts/dataLakeStoreAccounts/Write|Účet DataLakeStore propojte DataLakeAnalytics účtu.|
+|/Accounts/dataLakeStoreAccounts/DELETE|Zrušit propojení účtu DataLakeStore z DataLakeAnalytics účtu.|
 
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
 
@@ -773,18 +773,18 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 
 | Operace | Popis |
 |---|---|
-|/ registrace nebo akce|Registrovat předplatné hello pro hello IotHub prostředků zprostředkovatele a umožňuje hello vytváření prostředků IotHub|
+|/ registrace nebo akce|Registrace předplatného pro poskytovatele prostředků IotHub a umožňuje vytváření prostředků IotHub|
 |/ checkNameAvailability nebo akce|Zkontrolujte, zda je název IotHub-li k dispozici|
 |/ použití nebo pro čtení|Získáte podrobnosti o použití předplatné pro tohoto zprostředkovatele.|
 |/ operací/čtení|Získat všechny operace ResourceProvider|
-|/ iotHubs/čtení|Získá prostředky IotHub hello|
+|/ iotHubs/čtení|Získá prostředky IotHub|
 |/ iotHubs/zápisu|Vytvořit nebo aktualizovat prostředek IotHub|
 |/ iotHubs/odstranit|Odstranit prostředek IotHub|
 |/iotHubs/listkeys/Action|Získat všechny klíče IotHub|
 |/iotHubs/exportDevices/Action|Export zařízení|
 |/iotHubs/importDevices/Action|Import zařízení|
-|/ IotHubs/metricDefinitions/čtení|Získá hello dostupné metriky pro hello služby IotHub|
-|/iotHubs/iotHubKeys/listkeys/Action|Získat klíč IotHub pro hello křestní jméno|
+|/ IotHubs/metricDefinitions/čtení|Načte dostupné metriky pro službu IotHub|
+|/iotHubs/iotHubKeys/listkeys/Action|Získat klíč IotHub pro daným názvem.|
 |/iotHubs/iotHubStats/Read|Získat statistiku IotHub|
 |/iotHubs/quotaMetrics/Read|Získat metriky kvóty|
 |/iotHubs/eventHubEndpoints/consumerGroups/Write|Vytvoření skupiny příjemců EventHub|
@@ -792,25 +792,25 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/iotHubs/eventHubEndpoints/consumerGroups/DELETE|Odstranění skupiny příjemců EventHub|
 |/iotHubs/Routing/Routes/$ testall nebo akce|Testovací zpráva proti všechny existující trasy|
 |/iotHubs/Routing/Routes/$ testnew nebo akce|Testovací zpráva proti testu zadané trasy|
-|/ IotHubs/diagnosticSettings/čtení|Získá hello nastavení diagnostiky pro prostředek hello|
-|/ IotHubs/diagnosticSettings/zápis|Vytvoří nebo aktualizuje hello nastavení diagnostiky pro prostředek hello|
+|/ IotHubs/diagnosticSettings/čtení|Získá nastavení diagnostiky pro tento prostředek.|
+|/ IotHubs/diagnosticSettings/zápis|Vytvoří nebo aktualizuje nastavení diagnostiky pro tento prostředek.|
 |/iotHubs/skus/Read|Získání platných SKU IotHub|
 |/iotHubs/Jobs/Read|Získání úloh Podrobnosti odeslaného na daný IotHub|
-|/iotHubs/routingEndpointsHealth/Read|Získá stav hello všechny koncové body směrování pro platformou IotHub|
+|/iotHubs/routingEndpointsHealth/Read|Získá stav všech směrování koncové body pro platformou IotHub|
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
 | Operace | Popis |
 |---|---|
-|/ Předplatné nebo registrace nebo akce|Zaregistruje předplatné hello|
+|/ Předplatné nebo registrace nebo akce|Zaregistruje předplatné|
 |/Labs/DELETE|Odstraňte laboratoře.|
 |/Labs/Read|Přečtěte si laboratoře.|
 |/ labs a zápis|Přidat nebo změnit laboratoře.|
 |/Labs/ListVhds/Action|Zobrazí seznam bitových kopií disku k dispozici pro vytvoření vlastní image.|
-|/Labs/GenerateUploadUri/Action|Generovat identifikátor URI pro nahrávání tooa bitové kopie disku vlastní testovacího prostředí.|
+|/Labs/GenerateUploadUri/Action|Generovat identifikátor URI pro nahrávání vlastní diskové Image do testovacího prostředí.|
 |/Labs/CreateEnvironment/Action|Vytvoření virtuálních počítačů v testovacím prostředí.|
-|/Labs/ClaimAnyVm/Action|Deklarace identity náhodných vymahatelných virtuálního počítače v testovacím prostředí hello.|
-|/Labs/ExportResourceUsage/Action|Exportuje hello využití prostředků testovacího prostředí do účtu úložiště|
+|/Labs/ClaimAnyVm/Action|Deklarace identity náhodných vymahatelných virtuálního počítače v testovacím prostředí.|
+|/Labs/ExportResourceUsage/Action|Exportuje využití prostředků testovacího prostředí do účtu úložiště|
 |/Labs/Users/DELETE|Odstraňte profily uživatelů.|
 |/Labs/Users/Read|Číst profily uživatelů.|
 |/Labs/Users/Write|Přidat nebo upravit profily uživatelů.|
@@ -823,8 +823,8 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/Labs/Users/Disks/DELETE|Odstraňte disky.|
 |/Labs/Users/Disks/Read|Přečtěte si disky.|
 |/Labs/Users/Disks/Write|Přidat nebo změnit disky.|
-|/Labs/Users/Disks/Attach/Action|Připojit a vytvořit hello zapůjčení hello disku toohello virtuálního počítače.|
-|/Labs/Users/Disks/Detach/Action|Odpojte a zalomení hello zapůjčení hello disku připojen toohello virtuálního počítače.|
+|/Labs/Users/Disks/Attach/Action|Připojit a vytvořit zapůjčení disku k virtuálnímu počítači.|
+|/Labs/Users/Disks/Detach/Action|Odpojte a rozdělit zapůjčení disk připojený k virtuálnímu počítači.|
 |/Labs/customImages/DELETE|Odstraňte vlastní Image.|
 |/Labs/customImages/Read|Přečtěte si vlastních bitových kopií.|
 |/Labs/customImages/Write|Přidat nebo upravit vlastní Image.|
@@ -835,7 +835,7 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/Labs/artifactSources/Read|Přečtěte si artefaktů zdroje.|
 |/Labs/artifactSources/Write|Přidat nebo změnit artefaktů zdroje.|
 |/Labs/artifactSources/artifacts/Read|Přečtěte si artefakty.|
-|/Labs/artifactSources/artifacts/GenerateArmTemplate/Action|Generuje šablony ARM pro hello zadané artefaktů, odešle účet úložiště tooa hello požadované soubory a ověří hello generované artefaktů.|
+|/Labs/artifactSources/artifacts/GenerateArmTemplate/Action|Generuje šablony ARM pro danou artefaktů, odešle požadovaných souborů do účtu úložiště a ověří generovaného artefaktů.|
 |/Labs/artifactSources/armTemplates/Read|Přečtěte si šablony správce prostředků azure.|
 |/Labs/costs/Read|Přečtěte si náklady.|
 |/Labs/costs/Write|Přidat nebo změnit náklady.|
@@ -860,9 +860,9 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/Labs/virtualMachines/Write|Umožňuje přidat nebo upravit virtuální počítače.|
 |/Labs/virtualMachines/Start/Action|Spuštění virtuálního počítače.|
 |/Labs/virtualMachines/stop/Action|Zastavit virtuální počítač|
-|/Labs/virtualMachines/ApplyArtifacts/Action|Použijte počítač toovirtual artefakty.|
-|/Labs/virtualMachines/AddDataDisk/Action|Připojte počítač toovirtual disku s nový nebo existující data.|
-|/Labs/virtualMachines/DetachDataDisk/Action|Odpojte hello zadaný disk z virtuálního počítače hello.|
+|/Labs/virtualMachines/ApplyArtifacts/Action|Artefakty se vztahují na virtuální počítač.|
+|/Labs/virtualMachines/AddDataDisk/Action|Připojte nové nebo stávající datový disk k virtuálnímu počítači.|
+|/Labs/virtualMachines/DetachDataDisk/Action|Zadaný disk z virtuálního počítače odpojte.|
 |/Labs/virtualMachines/Claim/Action|Převzetí vlastnictví existujícího virtuálního počítače|
 |/Labs/virtualMachines/ListApplicableSchedules/Action|Zobrazí všechny příslušné plány|
 |/Labs/virtualMachines/Schedules/DELETE|Odstraňte plány.|
@@ -872,7 +872,7 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/Labs/notificationChannels/DELETE|Odstraňte notificationchannels.|
 |/Labs/notificationChannels/Read|Přečtěte si notificationchannels.|
 |/Labs/notificationChannels/Write|Přidat nebo změnit notificationchannels.|
-|/Labs/notificationChannels/Notify/Action|Odešlete tooprovided kanál oznámení.|
+|/Labs/notificationChannels/Notify/Action|Odeslat oznámení na zadané kanálu.|
 |/Schedules/DELETE|Odstraňte plány.|
 |/Schedules/Read|Plánuje pro čtení.|
 |/ plány a zápis|Přidat nebo změnit plány.|
@@ -889,20 +889,20 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/ databaseAccounts/zápisu|Aktualizace databáze účtů.|
 |/databaseAccounts/listKeys/Action|Seznam klíčů účtu databáze|
 |/databaseAccounts/regenerateKey/Action|Otočit klíče účtu databáze|
-|/databaseAccounts/listConnectionStrings/Action|Získat hello připojovací řetězce pro databázový účet|
+|/databaseAccounts/listConnectionStrings/Action|Získat připojovací řetězce pro databázový účet|
 |/databaseAccounts/changeResourceGroup/Action|Změnit skupinu prostředků účtu databáze|
-|/databaseAccounts/failoverPriorityChange/Action|Změnit priorit převzetí služeb při selhání oblastí databázového účtu. Toto je použité tooperform ruční převzetí služeb při selhání operace|
-|/databaseAccounts/DELETE|Odstraní hello databáze účtů.|
-|/databaseAccounts/metricDefinitions/Read|Přečte hello databázový účet definice metrik.|
-|/databaseAccounts/Metrics/Read|Přečte metriky účtu databáze hello.|
-|/databaseAccounts/usages/Read|Přečte použití účtu databáze hello.|
-|/databaseAccounts/Databases/Collections/metricDefinitions/Read|Načte kolekci hello Definice metrik.|
-|/databaseAccounts/Databases/Collections/Metrics/Read|Přečte hello kolekce metriky.|
-|/databaseAccounts/Databases/Collections/usages/Read|Načte kolekci použití hello.|
-|/databaseAccounts/Databases/metricDefinitions/Read|Načte definice metrik hello databáze|
-|/databaseAccounts/Databases/Metrics/Read|Přečte metriky hello databáze.|
-|/databaseAccounts/Databases/usages/Read|Přečte použití databáze hello.|
-|/databaseAccounts/readonlykeys/Read|Přečte hello databázového účtu jen pro čtení klíče.|
+|/databaseAccounts/failoverPriorityChange/Action|Změnit priorit převzetí služeb při selhání oblastí databázového účtu. To se používá k provedení operace ruční převzetí služeb při selhání|
+|/databaseAccounts/DELETE|Odstraní účty databáze.|
+|/databaseAccounts/metricDefinitions/Read|Čte databázi definice metrik účtu.|
+|/databaseAccounts/Metrics/Read|Přečte metriky účtu databáze.|
+|/databaseAccounts/usages/Read|Čte databázi použití účtu.|
+|/databaseAccounts/Databases/Collections/metricDefinitions/Read|Načte kolekci definice metrik.|
+|/databaseAccounts/Databases/Collections/Metrics/Read|Načte kolekci metriky.|
+|/databaseAccounts/Databases/Collections/usages/Read|Načte kolekci použití.|
+|/databaseAccounts/Databases/metricDefinitions/Read|Čte databázi definice metrik|
+|/databaseAccounts/Databases/Metrics/Read|Přečte metriky databáze.|
+|/databaseAccounts/Databases/usages/Read|Přečte použití databáze.|
+|/databaseAccounts/readonlykeys/Read|Čte databázi, klíče účtu jen pro čtení.|
 
 ## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
 
@@ -911,9 +911,9 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/ generateSsoRequest nebo akce|Generovat žádost o přihlášení k doméně řídicí centrum.|
 |/ validateDomainRegistrationInformation nebo akce|Ověření objektu nákupu domény bez odeslání|
 |/ checkDomainAvailability nebo akce|Zkontrolujte, jestli je možné zakoupit domény|
-|/ listDomainRecommendations nebo akce|Načtení hello seznamu domény doporučení na základě klíčových slov|
-|/ registrace nebo akce|Registrace poskytovatele prostředků Domains Microsoft hello hello předplatného|
-|/ domény/čtení|Získání seznamu hello domén|
+|/ listDomainRecommendations nebo akce|Načtení seznamu domény doporučení na základě klíčových slov|
+|/ registrace nebo akce|Registrace poskytovatele prostředků Microsoft Domains pro předplatné|
+|/ domény/čtení|Získat seznam domén|
 |/ domény/zápisu|Přidat novou doménu nebo aktualizovat stávající|
 |/ domény/odstranit|Odstraňte existující domény.|
 |/Domains/operationresults/Read|Získat operace domény|
@@ -922,40 +922,40 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 
 | Operace | Popis |
 |---|---|
-|/lcsprojects/Read|Zobrazení služby životního cyklu aplikace Microsoft Dynamics projektů, které patří tooa uživatele|
-|/ lcsprojects/zápisu|Vytvářet a aktualizovat projekty služby Microsoft Dynamics životního cyklu, které patří toohello uživatele. Lze aktualizovat pouze vlastnosti hello název a popis. Hello předplatném a umístění přidružené hello projektu nelze aktualizovat, po vytvoření|
-|/lcsprojects/DELETE|Odstranění služby životního cyklu aplikace Microsoft Dynamics projekty, které patří toohello uživatele|
-|/lcsprojects/clouddeployments/Read|Zobrazit Microsoft Dynamics AX 2012 R3 vyhodnocení nasazení v projektu služby životního cyklu aplikace Microsoft Dynamics, které patří tooa uživatele|
-|/lcsprojects/clouddeployments/Write|Vytvořte Microsoft Dynamics AX 2012 R3 vyhodnocení nasazení v projektu služby životního cyklu aplikace Microsoft Dynamics, které patří tooa uživatele. Nasazení lze provádět z portálu správy Azure|
-|/lcsprojects/Connectors/Read|Přečtěte si konektory, které patří tooa služby Microsoft Dynamics životního cyklu projektu|
-|/lcsprojects/Connectors/Write|Vytváření a aktualizaci konektory, které patří tooa služby Microsoft Dynamics životního cyklu projektu|
+|/lcsprojects/Read|Zobrazení služby životního cyklu aplikace Microsoft Dynamics projektů, které patří uživateli|
+|/ lcsprojects/zápisu|Vytvářet a aktualizovat projekty služby Microsoft Dynamics životního cyklu, které patří uživateli. Lze aktualizovat pouze vlastnosti název a popis. Po vytvoření nelze aktualizovat předplatné a umístění přidružený k projektu|
+|/lcsprojects/DELETE|Odstranění služby životního cyklu aplikace Microsoft Dynamics projekty, které patří uživateli|
+|/lcsprojects/clouddeployments/Read|V projektu služby Microsoft Dynamics životního cyklu, které patří uživateli zobrazit Microsoft Dynamics AX 2012 R3 vyhodnocení nasazení|
+|/lcsprojects/clouddeployments/Write|Vytvořte Microsoft Dynamics AX 2012 R3 vyhodnocení nasazení v projektu služby Microsoft Dynamics životního cyklu, které patří uživateli. Nasazení lze provádět z portálu správy Azure|
+|/lcsprojects/Connectors/Read|Konektory pro čtení, které patří do služby Microsoft Dynamics životního cyklu projektu|
+|/lcsprojects/Connectors/Write|Vytváření a aktualizaci konektory, které patří do služby Microsoft Dynamics životního cyklu projektu|
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 
 | Operace | Popis |
 |---|---|
 |/ checkNameAvailability nebo akce|Zkontroluje dostupnost oboru názvů v daném předplatném.|
-|/ registrace nebo akce|Zaregistruje hello předplatného pro poskytovatele prostředků EventHub hello a umožňuje vytvoření hello EventHub prostředků|
-|/ obory názvů a zápis|Vytvořte prostředek Namespace a aktualizujte jeho vlastnosti. Značky a stav hello Namespace jsou hello vlastností, které lze aktualizovat.|
-|/namespaces/Read|Získání seznamu hello Namespace prostředků popisu|
+|/ registrace nebo akce|Zaregistruje předplatné pro poskytovatele prostředků EventHub a povolí vytváření prostředků EventHub.|
+|/ obory názvů a zápis|Vytvořte prostředek Namespace a aktualizujte jeho vlastnosti. Značky a stav Namespace jsou vlastnosti, které lze aktualizovat.|
+|/namespaces/Read|Získá seznam popisů prostředku oboru názvů.|
 |/ obory názvů/odstranit|Odstranit prostředek Namespace|
 |/namespaces/metricDefinitions/Read|Získání seznamu Namespace metrik popisy prostředků|
-|/namespaces/authorizationRules/Read|Získání seznamu hello popisu obory názvů autorizačních pravidel.|
-|/namespaces/authorizationRules/Write|Autorizační pravidla úrovni Namespace vytvořit a aktualizujte jeho vlastnosti. mohou být aktualizovány Hello autorizační pravidla přístupová práva, hello primární a sekundární klíče.|
-|/namespaces/authorizationRules/DELETE|Odstraňte Namespace autorizační pravidlo. Hello výchozí Namespace autorizační pravidlo nelze odstranit. |
-|/namespaces/authorizationRules/listkeys/Action|Získat připojovací řetězec toohello hello Namespace|
-|/namespaces/authorizationRules/regenerateKeys/Action|Znovu vygenerovat hello primární nebo sekundární klíče toohello prostředků|
+|/namespaces/authorizationRules/Read|Získá seznam popisů autorizačních pravidel oboru názvů.|
+|/namespaces/authorizationRules/Write|Autorizační pravidla úrovni Namespace vytvořit a aktualizujte jeho vlastnosti. Autorizační pravidla přístupová práva, primární a sekundární klíče lze aktualizovat.|
+|/namespaces/authorizationRules/DELETE|Odstraňte Namespace autorizační pravidlo. Výchozí Namespace autorizační pravidlo nelze odstranit. |
+|/namespaces/authorizationRules/listkeys/Action|Získat připojovací řetězec k oboru názvů|
+|/namespaces/authorizationRules/regenerateKeys/Action|Znovu vygeneruje primární nebo sekundární klíč k prostředku.|
 |/namespaces/eventhubs/Write|Vytvoření nebo aktualizace EventHub vlastnosti.|
 |/namespaces/eventhubs/Read|Získání seznamu popisů EventHub prostředků|
-|/namespaces/eventhubs/DELETE|Operace toodelete EventHub prostředků|
+|/namespaces/eventhubs/DELETE|Operace odstranění EventHub prostředků|
 |/namespaces/eventHubs/consumergroups/Write|Vytvoření nebo aktualizace ConsumerGroup vlastnosti.|
 |/namespaces/eventHubs/consumergroups/Read|Získání seznamu popisů ConsumerGroup prostředků|
-|/namespaces/eventHubs/consumergroups/DELETE|Operace toodelete ConsumerGroup prostředků|
-|/namespaces/eventhubs/authorizationRules/Read| Získání seznamu hello EventHub autorizačních pravidel|
-|/namespaces/eventhubs/authorizationRules/Write|Centrum EventHub autorizační pravidla vytvořit a aktualizujte jeho vlastnosti. mohou být aktualizovány Hello autorizační pravidla přístupová práva, hello primární a sekundární klíče.|
-|/namespaces/eventhubs/authorizationRules/DELETE|Operace toodelete EventHub autorizační pravidla|
-|/namespaces/eventhubs/authorizationRules/listkeys/Action|Získat připojovací řetězec tooEventHub hello|
-|/namespaces/eventhubs/authorizationRules/regenerateKeys/Action|Znovu vygenerovat hello primární nebo sekundární klíče toohello prostředků|
+|/namespaces/eventHubs/consumergroups/DELETE|Operace odstranění ConsumerGroup prostředků|
+|/namespaces/eventhubs/authorizationRules/Read| Získání seznamu EventHub autorizační pravidla|
+|/namespaces/eventhubs/authorizationRules/Write|Centrum EventHub autorizační pravidla vytvořit a aktualizujte jeho vlastnosti. Autorizační pravidla přístupová práva, primární a sekundární klíče lze aktualizovat.|
+|/namespaces/eventhubs/authorizationRules/DELETE|Operace odstranění EventHub autorizační pravidla|
+|/namespaces/eventhubs/authorizationRules/listkeys/Action|Získat připojovací řetězec k centru EventHub|
+|/namespaces/eventhubs/authorizationRules/regenerateKeys/Action|Znovu vygeneruje primární nebo sekundární klíč k prostředku.|
 |/namespaces/diagnosticSettings/Read|Získání seznamu popisů Namespace nastavení pro diagnostiku prostředků|
 |/namespaces/diagnosticSettings/Write|Získání seznamu popisů Namespace nastavení pro diagnostiku prostředků|
 |/namespaces/logDefinitions/Read|Získání seznamu protokolů Namespace popisy prostředků|
@@ -964,9 +964,9 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 
 | Operace | Popis |
 |---|---|
-|/providers/features/Read|Získá hello funkci předplatného v daném zprostředkovateli prostředků.|
-|/providers/features/Register/Action|Registruje hello funkci pro předplatné v daném zprostředkovateli prostředků.|
-|/features/Read|Získá funkce předplatného hello.|
+|/providers/features/Read|Získá funkci předplatného v daném zprostředkovateli prostředků.|
+|/providers/features/Register/Action|Registruje funkci pro předplatné v daném zprostředkovateli prostředků.|
+|/features/Read|Získá funkce předplatného.|
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 
@@ -986,19 +986,19 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 
 | Operace | Popis |
 |---|---|
-|/ registrace nebo akce|Zaregistruje hello předplatného pro poskytovatele prostředků hello importu a exportu a umožňuje hello vytvoření úlohy importu a exportu.|
-|/ úlohy/zápisu|Vytvoří úlohu s hello zadané parametry nebo aktualizovat vlastnosti hello nebo značky pro zadanou úlohu hello.|
-|/Jobs/Read|Získá hello vlastnosti pro zadanou úlohu hello nebo vrátí hello seznam úloh.|
-|/Jobs/listBitLockerKeys/Action|Získá hello klíče nástroje BitLocker pro zadanou úlohu hello.|
+|/ registrace nebo akce|Zaregistruje předplatné pro poskytovatele prostředků importu a exportu a umožňuje vytvoření úlohy importu a exportu.|
+|/ úlohy/zápisu|Vytvoří úlohu se zadanými parametry nebo aktualizovat vlastnosti a značky pro zadanou úlohu.|
+|/Jobs/Read|Získá vlastnosti pro zadanou úlohu nebo vrátí seznam úloh.|
+|/Jobs/listBitLockerKeys/Action|Získá klíče nástroje BitLocker pro zadanou úlohu.|
 |/Jobs/DELETE|Odstraní stávající úloze.|
-|/Locations/Read|Získá vlastnosti hello hello zadaného umístění nebo vrátí hello seznam umístění.|
+|/Locations/Read|Získá vlastnosti pro zadané umístění nebo vrátí seznam umístění.|
 
 ## <a name="microsoftinsights"></a>Microsoft.Insights
 
 | Operace | Popis |
 |---|---|
-|/ Registrace nebo akce|Registrace zprostředkovatele Statistika microsoft hello|
-|/ AlertRules/zápis|Zápis tooan pravidlo upozornění konfigurace|
+|/ Registrace nebo akce|Registrovat poskytovatele platformy Microsoft Insights|
+|/ AlertRules/zápis|Zapisuje se do konfigurace pravidla výstrahy.|
 |AlertRules nebo odstranění|Odstraňuje se konfigurace pravidla výstrahy.|
 |/ AlertRules/čtení|Čte se konfigurace pravidla výstrahy.|
 |/ AlertRules nebo aktivovat nebo akce|Pravidlo výstrahy, které jsou aktivované|
@@ -1009,21 +1009,21 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/eventtypes/Values/Read|Číst hodnoty typů událostí správy|
 |/eventtypes/digestevents/Read|Číst výtah typů událostí správy|
 |/ Metriky/čtení|Číst metriky|
-|/ LogProfiles/zápis|Zápis konfiguraci profilu protokolu tooa|
+|/ LogProfiles/zápis|Zápis do protokolu konfigurace profilu|
 |LogProfiles nebo odstranění|Odstranit konfiguraci profilů protokolu|
 |/ LogProfiles/čtení|Profily protokolu pro čtení|
-|/ AutoscaleSettings/zápis|Zápis tooan škálování nastavení konfigurace|
+|/ AutoscaleSettings/zápis|Zapisuje se do konfigurace nastavení automatického škálování.|
 |AutoscaleSettings nebo odstranění|Odstraňuje se konfigurace nastavení automatického škálování.|
 |/ AutoscaleSettings/čtení|Čte se konfigurace nastavení automatického škálování.|
 |/ AutoscaleSettings/Scaleup nebo akce|Operace automatického vertikálního navýšení kapacity|
 |/ AutoscaleSettings/Scaledown nebo akce|Škálování vertikálně operace|
 |/AutoscaleSettings/providers/Microsoft.Insights/MetricDefinitions/Read|Číst definice metrik|
-|/ ActivityLogAlerts nebo aktivovat nebo akce|Spouštěná hello aktivity protokolu výstrah|
-|/ DiagnosticSettings/zápis|Konfigurace nastavení toodiagnostic zápis|
+|/ ActivityLogAlerts nebo aktivovat nebo akce|Aktivoval výstrahu protokolu aktivit|
+|/ DiagnosticSettings/zápis|Zapisuje se do konfiguračního nastavení diagnostiky.|
 |DiagnosticSettings nebo odstranění|Odstraňuje se konfigurace nastavení pro diagnostiku|
 |/ DiagnosticSettings/čtení|Čte se konfigurační nastavení diagnostiky.|
 |/ LogDefinitions/čtení|Číst definice protokolu|
-|/ ExtendedDiagnosticSettings/zápis|Konfigurace nastavení pro diagnostiku tooextended zápis|
+|/ ExtendedDiagnosticSettings/zápis|Zápis do konfigurace rozšířených nastavení diagnostiky|
 |ExtendedDiagnosticSettings nebo odstranění|Odstraňuje se konfigurace rozšířených nastavení diagnostiky|
 |/ ExtendedDiagnosticSettings/čtení|Čtení konfigurace rozšířených nastavení diagnostiky|
 
@@ -1033,56 +1033,56 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |---|---|
 |/ registrace nebo akce|Zaregistruje předplatné|
 |/checkNameAvailability/Read|Zkontroluje, jestli je název trezoru klíčů platný a jestli se nepoužívá.|
-|/vaults/Read|Zobrazení vlastností hello trezoru klíčů|
-|/ trezory a zápis|Vytvoření nového klíče trezoru nebo aktualizace hello vlastnosti existující trezor klíčů|
+|/vaults/Read|Zobrazí vlastnosti trezoru klíčů.|
+|/ trezory a zápis|Vytvoří nový trezor klíčů nebo aktualizuje vlastnosti existujícího trezoru klíčů.|
 |/vaults/DELETE|Odstranění trezoru klíčů|
-|/vaults/Deploy/Action|Umožňuje přístup k toosecrets v trezoru klíčů při nasazování prostředků Azure|
-|/vaults/secrets/Read|Zobrazit vlastnosti hello tajný klíč, ale nikoli jeho hodnotu|
-|/vaults/secrets/Write|Vytvořte novou hodnotu hello tajný klíč nebo aktualizaci existujícího tajného klíče|
-|/vaults/accessPolicies/Write|Aktualizovat existující zásady přístupu slučování nebo výměna nebo přidat nový trezor tooa zásad přístupu.|
-|/deletedVaults/Read|Zobrazení vlastností hello soft odstranit trezorů klíčů|
-|/Locations/operationResults/Read|Výsledek kontroly hello dlouho spuštění operace|
-|/Locations/deletedVaults/Read|Zobrazení vlastností hello obnovitelného odstranit trezor klíčů|
+|/vaults/Deploy/Action|Umožňuje přístup k tajných klíčů v trezoru klíčů při nasazování prostředků Azure|
+|/vaults/secrets/Read|Zobrazí vlastnosti tajného kódu, ale ne jeho hodnotu.|
+|/vaults/secrets/Write|Vytvoří nový tajný kód nebo aktualizuje hodnotu existujícího tajného kódu.|
+|/vaults/accessPolicies/Write|Existující zásady přístupu můžete aktualizovat sloučením nebo nahrazením, případně můžete do trezoru přidat nové zásady přístupu.|
+|/deletedVaults/Read|Zobrazení vlastností logicky odstraněné trezorů klíčů|
+|/Locations/operationResults/Read|Zkontrolujte výsledek operace dlouho spustit|
+|/Locations/deletedVaults/Read|Zobrazení vlastností logicky odstraněné trezoru klíčů|
 |/Locations/deletedVaults/PURGE/Action|Vyprázdnění logicky odstraněné trezoru klíčů|
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
 | Operace | Popis |
 |---|---|
-|/workflows/Read|Přečte hello pracovního postupu.|
-|/ pracovní postupy a zápis|Vytvoří nebo aktualizuje hello pracovního postupu.|
-|/workflows/DELETE|Odstraní pracovní postup hello.|
-|/workflows/Run/Action|Spustí spustit hello pracovního postupu.|
-|/workflows/disable/Action|Zakáže hello pracovního postupu.|
-|/workflows/enable/Action|Umožňuje hello pracovního postupu.|
-|/workflows/Validate/Action|Ověří hello pracovního postupu.|
-|/workflows/Move/Action|Přesune pracovního postupu z jeho existující skupinu prostředků id předplatného, skupinu prostředků nebo id jiného předplatného tooa názvu, nebo název.|
-|/workflows/listSwagger/Action|Získá swagger definice pracovního postupu hello.|
-|/workflows/regenerateAccessKey/Action|Regeneruje klíče tajné klíče hello přístup.|
-|/workflows/listCallbackUrl/Action|Získá adresu URL hello zpětného volání pro pracovní postup.|
-|/workflows/versions/Read|Přečte verze hello pracovního postupu.|
-|/workflows/versions/Triggers/listCallbackUrl/Action|Získá adresu URL hello zpětného volání pro aktivační událost.|
-|/ pracovních/spouští/číst|Přečte hello workflow spustit.|
-|/workflows/runs/Cancel/Action|Zruší hello spuštění pracovního postupu.|
-|/workflows/runs/Actions/Read|Přečte hello pracovní postup spustit akci.|
-|/workflows/runs/Operations/Read|Přečte hello workflow běžet stav operace.|
-|/workflows/Triggers/Read|Přečte hello aktivační události.|
-|/workflows/Triggers/Run/Action|Provede hello aktivační události.|
-|/workflows/Triggers/listCallbackUrl/Action|Získá adresu URL hello zpětného volání pro aktivační událost.|
-|/workflows/Triggers/histories/Read|Přečte historií hello aktivační události.|
-|/workflows/Triggers/histories/resubmit/Action|Znovu odešle aktivační událost pracovního postupu hello.|
-|/workflows/accessKeys/Read|Přečte hello přístupový klíč.|
-|/workflows/accessKeys/Write|Vytvoří nebo aktualizuje hello přístupový klíč.|
-|/workflows/accessKeys/DELETE|Odstraní hello přístupový klíč.|
-|/workflows/accessKeys/list/Action|Obsahuje seznam klíčů tajné klíče hello přístup.|
-|/workflows/accessKeys/regenerate/Action|Regeneruje klíče tajné klíče hello přístup.|
-|/Locations/workflows/Validate/Action|Ověří hello pracovního postupu.|
+|/workflows/Read|Načte pracovní postup.|
+|/ pracovní postupy a zápis|Vytvoří nebo aktualizuje pracovní postup.|
+|/workflows/DELETE|Odstraní pracovní postup.|
+|/workflows/Run/Action|Spustí běh pracovního postupu.|
+|/workflows/disable/Action|Zakáže pracovní postup.|
+|/workflows/enable/Action|Povolí pracovní postup.|
+|/workflows/Validate/Action|Ověří pracovní postup.|
+|/workflows/Move/Action|Přesune pracovní postup z existujícího ID předplatného, skupiny prostředků a/nebo názvu na jiné ID předplatného, skupinu prostředků nebo název.|
+|/workflows/listSwagger/Action|Získá swagger definice pracovního postupu.|
+|/workflows/regenerateAccessKey/Action|Obnoví tajné přístupové klíče.|
+|/workflows/listCallbackUrl/Action|Získá adresu URL zpětné volání pro pracovní postup.|
+|/workflows/versions/Read|Načte verzi pracovního postupu.|
+|/workflows/versions/Triggers/listCallbackUrl/Action|Získá adresu URL zpětné volání pro aktivační událost.|
+|/ pracovních/spouští/číst|Načte běh pracovního postupu.|
+|/workflows/runs/Cancel/Action|Zruší běh pracovního postupu.|
+|/workflows/runs/Actions/Read|Načte akci běhu pracovního postupu.|
+|/workflows/runs/Operations/Read|Načte stav operace běhu pracovního postupu.|
+|/workflows/Triggers/Read|Načte trigger.|
+|/workflows/Triggers/Run/Action|Spustí trigger.|
+|/workflows/Triggers/listCallbackUrl/Action|Získá adresu URL zpětné volání pro aktivační událost.|
+|/workflows/Triggers/histories/Read|Načte historie triggerů.|
+|/workflows/Triggers/histories/resubmit/Action|Znovu odešle aktivační událost pracovního postupu.|
+|/workflows/accessKeys/Read|Načte přístupový klíč.|
+|/workflows/accessKeys/Write|Vytvoří nebo aktualizuje přístupový klíč.|
+|/workflows/accessKeys/DELETE|Odstraní přístupový klíč.|
+|/workflows/accessKeys/list/Action|Zobrazí seznam tajných přístupových klíčů.|
+|/workflows/accessKeys/regenerate/Action|Obnoví tajné přístupové klíče.|
+|/Locations/workflows/Validate/Action|Ověří pracovní postup.|
 
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
 
 | Operace | Popis |
 |---|---|
-|/ registrace nebo akce|Zaregistruje předplatné hello hello strojového učení zprostředkovatel prostředků webové služby a umožňuje vytvoření hello webových služeb.|
+|/ registrace nebo akce|Zaregistruje předplatné pro strojové učení zprostředkovatel prostředků webové služby a povolí vytvoření webových služeb.|
 |/ webovým službám nebo akce|Vytvořit místní vlastnosti webové služby pro podporované oblasti|
 |/commitmentPlans/Read|Číst všechny strojového učení závazků plán|
 |/ commitmentPlans/zápisu|Vytvořit nebo aktualizovat každého Machine Learning závazků plánu|
@@ -1122,46 +1122,46 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 
 | Operace | Popis |
 |---|---|
-|/ registrace nebo akce|Zaregistruje předplatné hello|
-|nebo zrušit registraci nebo akce|Zruší registraci předplatného hello|
-|/ checkTrafficManagerNameAvailability nebo akce|Zkontroluje dostupnost hello názvu DNS relativní Traffic Manageru.|
-|/dnszones/Read|Získáte hello zóny DNS, ve formátu JSON. Hello vlastnosti zóny zahrnují značky, etag, numberOfRecordSets a maxNumberOfRecordSets. Všimněte si, že tento příkaz nenačítá sady záznamů hello obsažených v zóně hello.|
-|/ dnszones/zápisu|Vytvořit nebo aktualizovat zónu DNS v rámci skupiny prostředků.  Použít tooupdate hello značek u prostředku zóny DNS. Všimněte si, že tento příkaz nelze použít toocreate nebo aktualizace sady záznamů v zóně hello.|
-|/dnszones/DELETE|Odstraňte zónu DNS hello, ve formátu JSON. Hello vlastnosti zóny zahrnují značky, etag, numberOfRecordSets a maxNumberOfRecordSets.|
-|/dnszones/MX/Read|Získáte hello sadu záznamů typu "MX", ve formátu JSON. Hello sada záznamů obsahuje seznam záznamů, jakož i hello TTL, značky a etag.|
-|/dnszones/MX/Write|Vytvořit nebo aktualizovat sadu záznamů typu "MX" v rámci zóny DNS. zaznamenává Hello zadaný nahradí hello aktuální záznamy v sadě záznamů hello.|
-|/dnszones/MX/DELETE|Odebrat hello sadu záznamů daného názvu a typu "MX" ze zóny DNS.|
+|/ registrace nebo akce|Zaregistruje předplatné|
+|nebo zrušit registraci nebo akce|Zruší registraci předplatného|
+|/ checkTrafficManagerNameAvailability nebo akce|Zkontroluje dostupnost názvu DNS relativní Traffic Manageru.|
+|/dnszones/Read|Umožňuje načíst zónu DNS, ve formátu JSON. Vlastnosti zóny zahrnují značky, etag, numberOfRecordSets a maxNumberOfRecordSets. Všimněte si, že tento příkaz nenačítá sady záznamů v rámci zóny.|
+|/ dnszones/zápisu|Vytvořit nebo aktualizovat zónu DNS v rámci skupiny prostředků.  Použít k aktualizaci značek u prostředku zóny DNS. Všimněte si, že tento příkaz nelze použít k vytvoření nebo aktualizaci sad záznamů v rámci zóny.|
+|/dnszones/DELETE|Odstraňte zónu DNS, ve formátu JSON. Vlastnosti zóny zahrnují značky, etag, numberOfRecordSets a maxNumberOfRecordSets.|
+|/dnszones/MX/Read|Načíst sadu záznamů typu "MX", ve formátu JSON. Sada záznamů obsahuje seznam záznamů, jakož i TTL, značky a etag.|
+|/dnszones/MX/Write|Vytvořit nebo aktualizovat sadu záznamů typu "MX" v rámci zóny DNS. Zadané záznamy nahradí aktuální záznamy v sadě záznamů.|
+|/dnszones/MX/DELETE|Odebrat sadu záznamů daného názvu a typu "MX" ze zóny DNS.|
 |/dnszones/NS/Read|Získá DNS sadu záznamů typu NS|
 |/dnszones/NS/Write|Vytvoří nebo aktualizuje DNS sadu záznamů typu NS|
-|/dnszones/NS/DELETE|Odstraní hello DNS sadu záznamů typu NS|
-|/dnszones/AAAA/Read|Získáte hello sadu záznamů typu 'AAAA, ve formátu JSON. Hello sada záznamů obsahuje seznam záznamů, jakož i hello TTL, značky a etag.|
-|/dnszones/AAAA/Write|Vytvořit nebo aktualizovat sadu záznamů typu 'AAAA, v rámci zóny DNS. zaznamenává Hello zadaný nahradí hello aktuální záznamy v sadě záznamů hello.|
-|/dnszones/AAAA/DELETE|Odebrat hello sadu záznamů daného názvu a typu 'AAAA, umožňuje ze zóny DNS.|
-|/dnszones/CNAME/Read|Získáte hello sadu záznamů typu 'CNAME' ve formátu JSON. sady záznamů Hello obsahuje hello TTL, značky a etag.|
-|/dnszones/CNAME/Write|Vytvořit nebo aktualizovat sadu záznamů typu, CNAME, v rámci zóny DNS. zaznamenává Hello zadaný nahradí hello aktuální záznamy v sadě záznamů hello.|
-|/dnszones/CNAME/DELETE|Odebrat hello sadu záznamů daného názvu a typu, CNAME, umožňuje ze zóny DNS.|
+|/dnszones/NS/DELETE|Umožňuje odstranit sadu záznamů typu NS DNS|
+|/dnszones/AAAA/Read|Načíst sadu záznamů typu 'AAAA, ve formátu JSON. Sada záznamů obsahuje seznam záznamů, jakož i TTL, značky a etag.|
+|/dnszones/AAAA/Write|Vytvořit nebo aktualizovat sadu záznamů typu 'AAAA, v rámci zóny DNS. Zadané záznamy nahradí aktuální záznamy v sadě záznamů.|
+|/dnszones/AAAA/DELETE|Odebrat sadu záznamů daného názvu a typu 'AAAA, umožňuje ze zóny DNS.|
+|/dnszones/CNAME/Read|Načíst sadu záznamů typu 'CNAME' ve formátu JSON. Sada záznamů obsahuje TTL, značky a etag.|
+|/dnszones/CNAME/Write|Vytvořit nebo aktualizovat sadu záznamů typu, CNAME, v rámci zóny DNS. Zadané záznamy nahradí aktuální záznamy v sadě záznamů.|
+|/dnszones/CNAME/DELETE|Odebrat sadu záznamů daného názvu a typu, CNAME, umožňuje ze zóny DNS.|
 |/dnszones/SOA/Read|Získá sadu záznamů DNS typu SOA|
 |/dnszones/SOA/Write|Vytvoří nebo aktualizuje DNS sadu záznamů typu SOA|
-|/dnszones/SRV/Read|Získáte hello sadu záznamů typu 'SRV' ve formátu JSON. Hello sada záznamů obsahuje seznam záznamů, jakož i hello TTL, značky a etag.|
+|/dnszones/SRV/Read|Načíst sadu záznamů typu 'SRV' ve formátu JSON. Sada záznamů obsahuje seznam záznamů, jakož i TTL, značky a etag.|
 |/dnszones/SRV/Write|Vytvořit nebo aktualizovat sadu záznamů typu SRV|
-|/dnszones/SRV/DELETE|Odebrat hello sadu záznamů daného názvu a typu SRV "služby" ze zóny DNS.|
-|/dnszones/PTR/Read|Získáte hello sadu záznamů typu 'PTR, ve formátu JSON. Hello sada záznamů obsahuje seznam záznamů, jakož i hello TTL, značky a etag.|
-|/dnszones/PTR/Write|Vytvořit nebo aktualizovat sadu záznamů typu 'PTR, v rámci zóny DNS. zaznamenává Hello zadaný nahradí hello aktuální záznamy v sadě záznamů hello.|
-|/dnszones/PTR/DELETE|Odebrat hello sadu záznamů daného názvu a typu 'PTR, umožňuje ze zóny DNS.|
-|/dnszones/A/Read|Získáte hello sadu záznamů typu "A", ve formátu JSON. Hello sada záznamů obsahuje seznam záznamů, jakož i hello TTL, značky a etag.|
-|/dnszones/A/Write|Vytvořit nebo aktualizovat sadu záznamů typu "A" v rámci zóny DNS. zaznamenává Hello zadaný nahradí hello aktuální záznamy v sadě záznamů hello.|
-|/dnszones/A/DELETE|Odebrat hello sadu záznamů daného názvu a typu "A" ze zóny DNS.|
-|/dnszones/txt/Read|Získáte hello sadu záznamů typu 'TXT, ve formátu JSON. Hello sada záznamů obsahuje seznam záznamů, jakož i hello TTL, značky a etag.|
-|/dnszones/txt/Write|Vytvořit nebo aktualizovat sadu záznamů typu 'TXT, v rámci zóny DNS. zaznamenává Hello zadaný nahradí hello aktuální záznamy v sadě záznamů hello.|
-|/dnszones/txt/DELETE|Odebrat hello sadu záznamů daného názvu a typu 'TXT, umožňuje ze zóny DNS.|
+|/dnszones/SRV/DELETE|Odebrat sadu záznamů daného názvu a typu SRV "služby" ze zóny DNS.|
+|/dnszones/PTR/Read|Načíst sadu záznamů typu 'PTR, ve formátu JSON. Sada záznamů obsahuje seznam záznamů, jakož i TTL, značky a etag.|
+|/dnszones/PTR/Write|Vytvořit nebo aktualizovat sadu záznamů typu 'PTR, v rámci zóny DNS. Zadané záznamy nahradí aktuální záznamy v sadě záznamů.|
+|/dnszones/PTR/DELETE|Odebrat sadu záznamů daného názvu a typu 'PTR, umožňuje ze zóny DNS.|
+|/dnszones/A/Read|Načíst sadu záznamů typu "A", ve formátu JSON. Sada záznamů obsahuje seznam záznamů, jakož i TTL, značky a etag.|
+|/dnszones/A/Write|Vytvořit nebo aktualizovat sadu záznamů typu "A" v rámci zóny DNS. Zadané záznamy nahradí aktuální záznamy v sadě záznamů.|
+|/dnszones/A/DELETE|Odebrat sadu záznamů daného názvu a typu "A" ze zóny DNS.|
+|/dnszones/txt/Read|Načíst sadu záznamů typu 'TXT, ve formátu JSON. Sada záznamů obsahuje seznam záznamů, jakož i TTL, značky a etag.|
+|/dnszones/txt/Write|Vytvořit nebo aktualizovat sadu záznamů typu 'TXT, v rámci zóny DNS. Zadané záznamy nahradí aktuální záznamy v sadě záznamů.|
+|/dnszones/txt/DELETE|Odebrat sadu záznamů daného názvu a typu 'TXT, umožňuje ze zóny DNS.|
 |/dnszones/recordsets/Read|Získá sady záznamů DNS mezi typy|
 |/networkInterfaces/Read|Získá definici rozhraní sítě. |
 |/ networkInterfaces/zápisu|Vytvoří rozhraní sítě nebo aktualizuje existující rozhraní sítě. |
-|/networkInterfaces/JOIN/Action|Spojí tooa síťové rozhraní virtuálního počítače|
+|/networkInterfaces/JOIN/Action|Virtuální počítač připojí k síťovému rozhraní|
 |/networkInterfaces/DELETE|Odstraní rozhraní sítě|
-|/networkInterfaces/effectiveRouteTable/Action|Získejte tabulku směrování nakonfigurovaný v síťovém rozhraní hello virtuálních počítačů|
-|/networkInterfaces/effectiveNetworkSecurityGroups/Action|Získat skupiny zabezpečení sítě nakonfigurované na síťové rozhraní z hello virtuálních počítačů|
-|/networkInterfaces/loadBalancers/Read|Získá všechny hello Vyrovnávání zatížení, které hello síťové rozhraní je součástí|
+|/networkInterfaces/effectiveRouteTable/Action|Získejte tabulku směrování nakonfigurovaný v síťovém rozhraní virtuálního počítače|
+|/networkInterfaces/effectiveNetworkSecurityGroups/Action|Získat skupiny zabezpečení sítě nakonfigurované na síťové rozhraní z virtuálního počítače|
+|/networkInterfaces/loadBalancers/Read|Získá všech služeb Vyrovnávání zatížení, které je součástí rozhraní sítě|
 |/networkInterfaces/ipconfigurations/Read|Získá definici konfigurace ip rozhraní sítě. |
 |/publicIPAddresses/Read|Získá definici veřejné ip adresy.|
 |/ publicipaddresses, na které a zápis|Vytvoří veřejnou Ip adresu nebo aktualizuje existující veřejnou Ip adresu. |
@@ -1174,26 +1174,26 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/routeFilters/Rules/Read|Získá definici pravidla filtru trasy|
 |/routeFilters/Rules/Write|Vytvoří pravidlo filtru trasu nebo aktualizuje existující pravidlo filtru trasy|
 |/routeFilters/Rules/DELETE|Odstraní definici směrovací filtr pravidlo|
-|/networkWatchers/Read|Získat definici sledovací proces sítě hello|
+|/networkWatchers/Read|Získat definici sledovací proces sítě|
 |/ networkWatchers/zápisu|Sledovací proces sítě vytvoří nebo aktualizuje existující sledovací proces sítě|
 |/networkWatchers/DELETE|Odstraní sledovací proces sítě|
 |/networkWatchers/configureFlowLog/Action|Nakonfiguruje toku protokolování pro cílový prostředek.|
-|/networkWatchers/ipFlowVerify/Action|Vrátí, zda hello paket povolený nebo zakázaný tooor z konkrétní cíl.|
-|/networkWatchers/nextHop/Action|U zadaného cíle a cílové IP adresy vrátí typ dalšího směrování hello a další naděje IP adresu.|
-|/networkWatchers/queryFlowLogStatus/Action|Získá stav hello toku protokolování na prostředku.|
-|/networkWatchers/queryTroubleshootResult/Action|Získá hello řešení potíží s výsledek z již dříve spuštěna hello nebo řešení potíží s operace spuštěna.|
-|/networkWatchers/securityGroupView/Action|Zobrazit hello nakonfigurované a pravidel skupiny zabezpečení sítě efektivní použita na virtuálním počítači.|
+|/networkWatchers/ipFlowVerify/Action|Vrátí, jestli je paket povolený nebo zakázaný do nebo z konkrétní cíl.|
+|/networkWatchers/nextHop/Action|U zadaného cíle a cílové IP adresy vrátí typ dalšího směrování a další naděje IP adresu.|
+|/networkWatchers/queryFlowLogStatus/Action|Získá stav toku protokolování na prostředku.|
+|/networkWatchers/queryTroubleshootResult/Action|Získá řešení potíží výsledek z dříve spuštění nebo aktuálně spuštěna operace odstraňování potíží.|
+|/networkWatchers/securityGroupView/Action|Zobrazení pravidel skupiny zabezpečení sítě nakonfigurované a efektivní použita na virtuálním počítači.|
 |/networkWatchers/Topology/Action|Získá úrovně zobrazení síťových prostředků a jejich vztahů ve skupině prostředků.|
 |/networkWatchers/troubleshoot/Action|Spustí se Poradce při potížích s na prostředku sítě v Azure.|
 |/networkWatchers/packetCaptures/queryStatus/Action|Získá informace o vlastnostech a stav prostředku zachytávání paketů.|
-|/networkWatchers/packetCaptures/stop/Action|Zastavte hello spuštění relace zachytávání paketů.|
-|/networkWatchers/packetCaptures/Read|Načtení definice zachytávání paketů hello|
+|/networkWatchers/packetCaptures/stop/Action|Zastavte spuštěné relaci zachytávání paketů.|
+|/networkWatchers/packetCaptures/Read|Získat definici zachytávání paketů|
 |/networkWatchers/packetCaptures/Write|Vytvoří zachytávání paketů|
 |/networkWatchers/packetCaptures/DELETE|Odstraní zachytávání paketů|
 |/loadBalancers/Read|Získá definici nástroje pro vyrovnávání zatížení.|
 |/ loadBalancers/zápisu|Vytvoří nástroj pro vyrovnávání zatížení nebo aktualizuje existující pro vyrovnávání zatížení|
 |/loadBalancers/DELETE|Odstraní nástroj pro vyrovnávání zatížení|
-|/loadBalancers/networkInterfaces/Read|Získá odkazy tooall hello rozhraní sítě pod nástrojem pro vyrovnávání zatížení|
+|/loadBalancers/networkInterfaces/Read|Získá odkazy na rozhraní sítě pod nástrojem pro vyrovnávání zatížení|
 |/loadBalancers/loadBalancingRules/Read|Získá zatížení nástroje pro vyrovnávání zatížení vyrovnávání definici pravidla|
 |/loadBalancers/backendAddressPools/Read|Získá definici fondu adres back-end zatížení nástroje pro vyrovnávání|
 |/loadBalancers/backendAddressPools/JOIN/Action|Spojí fond back-end adresy Vyrovnávání zatížení.|
@@ -1205,12 +1205,12 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/loadBalancers/inboundNatRules/JOIN/Action|Spojí pravidlo příchozí nat nástroje pro vyrovnávání zatížení.|
 |/loadBalancers/outboundNatRules/Read|Získá definici pravidla odchozí nat nástroje pro vyrovnávání zatížení|
 |/loadBalancers/probes/Read|Získá sondu nástroje pro vyrovnávání zatížení|
-|/loadBalancers/virtualMachines/Read|Získá odkazy tooall hello virtuální počítače pod nástrojem pro vyrovnávání zatížení|
+|/loadBalancers/virtualMachines/Read|Získá odkazy na všechny virtuální počítače pod nástrojem pro vyrovnávání zatížení|
 |/loadBalancers/frontendIPConfigurations/Read|Získá definice konfigurace IP front-endu nástroje pro vyrovnávání zatížení|
-|/trafficManagerGeographicHierarchies/Read|Získá hello Traffic Manager Geographic hierarchie obsahující oblastí, které se dají použít s hello metodu směrování provozu geografické|
+|/trafficManagerGeographicHierarchies/Read|Získá obsahující oblastí, které se dají použít s metodu směrování provozu geografické hierarchii Geographic Traffic Manager|
 |/bgpServiceCommunities/Read|Získat komunit protokolu Bgp služby|
 |/applicationGatewayAvailableWafRuleSets/Read|Získá aplikační bránu, kterou sad pravidel k dispozici firewall webových aplikací|
-|/virtualNetworks/Read|Získat definici virtuální sítě hello|
+|/virtualNetworks/Read|Získat definici virtuální sítě|
 |/ virtualNetworks/zápisu|Vytvoří virtuální síť nebo aktualizuje existující virtuální síť|
 |/virtualNetworks/DELETE|Odstraní virtuální sítě|
 |/virtualNetworks/peer/Action|Partnerský vztah virtuální síť s jinou virtuální sítí|
@@ -1221,18 +1221,18 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/virtualNetworks/subnets/Write|Vytvoří podsíť virtuální sítě nebo aktualizuje existující podsíť virtuální sítě|
 |/virtualNetworks/subnets/DELETE|Odstraní podsíť virtuální sítě|
 |/virtualNetworks/subnets/JOIN/Action|Připojí virtuální sítě|
-|/virtualNetworks/subnets/joinViaServiceTunnel/Action|Spojí prostředků, jako je účet úložiště nebo SQL databáze tooa služby tunelové propojení povoleno podsítě.|
-|/virtualNetworks/subnets/virtualMachines/Read|Získá odkazy tooall hello virtuální počítače v podsíti virtuální sítě|
-|/virtualNetworks/checkIpAddressAvailability/Read|Zkontrolujte, jestli je k dispozici v zadané virtuální síti hello Ip adresu|
-|/virtualNetworks/virtualMachines/Read|Získá odkazy tooall hello virtuální počítače ve virtuální síti|
+|/virtualNetworks/subnets/joinViaServiceTunnel/Action|Spojí prostředků, jako je například účet úložiště nebo SQL database k podsíti tunelování služby povolena.|
+|/virtualNetworks/subnets/virtualMachines/Read|Získá odkazy na všechny virtuální počítače v podsíti virtuální sítě|
+|/virtualNetworks/checkIpAddressAvailability/Read|Zkontrolujte, jestli je k dispozici v zadané virtuální síti Ip adresy|
+|/virtualNetworks/virtualMachines/Read|Získá odkazy na všechny virtuální počítače ve virtuální síti|
 |/expressRouteServiceProviders/Read|Získá poskytovatele služeb Expressroute|
 |/dnsoperationresults/Read|Získá výsledky operace DNS|
 |/localnetworkgateways/Read|Získá LocalNetworkGateway|
 |/ localnetworkgateways/zápisu|Vytvoří nebo aktualizuje existující LocalNetworkGateway|
 |/localnetworkgateways/DELETE|Odstraní LocalNetworkGateway|
-|/trafficManagerProfiles/Read|Získání konfigurace profilu Správce provozu hello. To zahrnuje nastavení DNS, nastavení směrování provozu, nastavení monitorování koncového bodu a hello seznam koncových bodů směrovaných tímto profilem Traffic Manager.|
-|/ trafficManagerProfiles/zápisu|Vytvoření profilu Správce provozu nebo změnit konfiguraci hello existující profil Traffic Manageru. To zahrnuje zapnutí nebo vypnutí profilu a změna nastavení DNS, nastavení směrování provozu nebo nastavení monitorování koncového bodu. Koncových bodů směrovaných tímto profil služby Traffic Manager hello můžete přidat, odebrat, povolit nebo zakázat.|
-|/trafficManagerProfiles/DELETE|Odstraňte profil služby Traffic Manager hello. Všechna nastavení spojená s hello profil služby Traffic Manager se ztratí a hello profil už se nedá použít tooroute provoz.|
+|/trafficManagerProfiles/Read|Získání konfigurace profilu Správce provozu. To zahrnuje nastavení DNS, nastavení směrování provozu, nastavení monitorování koncového bodu a seznam koncových bodů směrovaných tímto profilem Traffic Manager.|
+|/ trafficManagerProfiles/zápisu|Vytvoření profilu Správce provozu nebo úprava konfigurace existujícího profilu Správce provozu. To zahrnuje zapnutí nebo vypnutí profilu a změna nastavení DNS, nastavení směrování provozu nebo nastavení monitorování koncového bodu. Koncových bodů směrovaných tímto profilem správce provozu můžete přidat, odebrat, povolit nebo zakázat.|
+|/trafficManagerProfiles/DELETE|Odstraňte profil služby Traffic Manager. Všechna nastavení spojená s profilem správce provozu se ztratí a profil slouží už pro směrování provozu.|
 |/dnsoperationstatuses/Read|Získá stav operace DNS |
 |/Operations/Read|Získat dostupné operace|
 |/expressRouteCircuits/Read|Získat ExpressRouteCircuit|
@@ -1277,67 +1277,67 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/routeTables/Routes/Write|Vytvoří trasu nebo aktualizuje existující trasu.|
 |/routeTables/Routes/DELETE|Odstraní definici směrovací|
 |/Locations/operationResults/Read|Získá výsledek operace asynchronní POST nebo operace odstranění|
-|/Locations/checkDnsNameAvailability/Read|Ověří, zda je název dns je k dispozici na hello zadané umístění|
-|/Locations/usages/Read|Získá metriky využití prostředků hello|
+|/Locations/checkDnsNameAvailability/Read|Zkontroluje, jestli je popisek dns k dispozici v zadaném umístění|
+|/Locations/usages/Read|Získá metriky využití prostředků|
 |/Locations/Operations/Read|Získá prostředek operace, který reprezentuje stav asynchronní operace|
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 
 | Operace | Popis |
 |---|---|
-|/ registrace nebo akce|Zaregistruje hello předplatného pro poskytovatele prostředků NotifciationHubs hello a umožní hello vytváření oborů názvů a NotificationHubs|
-|/ CheckNamespaceAvailability nebo akce|Kontroluje, zda zadaný název prostředku Namespace je k dispozici v rámci hello NotificationHub služby.|
-|A obory názvů/zápis|Vytvořte prostředek Namespace a aktualizujte jeho vlastnosti. Značky a stav hello Namespace jsou hello vlastností, které lze aktualizovat.|
-|/ Obory názvů/čtení|Získání seznamu hello Namespace prostředků popisu|
+|/ registrace nebo akce|Zaregistruje předplatné u poskytovatele prostředků NotificationHubs a povolí vytváření oborů názvů a NotificationHubs.|
+|/ CheckNamespaceAvailability nebo akce|Zkontroluje, jestli je ve službě NotificationHub k dispozici název prostředku oboru názvů, nebo ne.|
+|A obory názvů/zápis|Vytvořte prostředek Namespace a aktualizujte jeho vlastnosti. Značky a stav Namespace jsou vlastnosti, které lze aktualizovat.|
+|/ Obory názvů/čtení|Získá seznam popisů prostředku oboru názvů.|
 |Obory názvů nebo odstranění|Odstranit prostředek Namespace|
-|/ Obory názvů nebo authorizationRules nebo akce|Získání seznamu hello popisu obory názvů autorizačních pravidel.|
+|/ Obory názvů nebo authorizationRules nebo akce|Získá seznam popisů autorizačních pravidel oboru názvů.|
 |/ Obory názvů nebo CheckNotificationHubAvailability nebo akce|Zkontroluje, jestli je v oboru názvů k dispozici název NotificationHub, nebo ne.|
-|A obory názvů nebo authorizationRules/zápis|Autorizační pravidla úrovni Namespace vytvořit a aktualizujte jeho vlastnosti. mohou být aktualizovány Hello autorizační pravidla přístupová práva, hello primární a sekundární klíče.|
-|/ Obory názvů nebo authorizationRules/čtení|Získání seznamu hello popisu obory názvů autorizačních pravidel.|
-|Obory názvů, authorizationRules nebo odstranění|Odstraňte Namespace autorizační pravidlo. Hello výchozí Namespace autorizační pravidlo nelze odstranit. |
-|/ Obory názvů nebo authorizationRules/listkeys nebo akce|Získat připojovací řetězec toohello hello Namespace|
-|/ Obory názvů nebo authorizationRules/regenerateKeys nebo akce|Namespace autorizační pravidlo znovu vygenerovat primární nebo sekundární klíč, zadejte hello klíč, který potřebuje toobe znovu vygeneroval.|
+|A obory názvů nebo authorizationRules/zápis|Autorizační pravidla úrovni Namespace vytvořit a aktualizujte jeho vlastnosti. Autorizační pravidla přístupová práva, primární a sekundární klíče lze aktualizovat.|
+|/ Obory názvů nebo authorizationRules/čtení|Získá seznam popisů autorizačních pravidel oboru názvů.|
+|Obory názvů, authorizationRules nebo odstranění|Odstraňte Namespace autorizační pravidlo. Výchozí Namespace autorizační pravidlo nelze odstranit. |
+|/ Obory názvů nebo authorizationRules/listkeys nebo akce|Získat připojovací řetězec k oboru názvů|
+|/ Obory názvů nebo authorizationRules/regenerateKeys nebo akce|Autorizační pravidlo oboru názvů – opětovné vygenerování primárního nebo sekundárního klíče. Zadejte klíč, který je nutné znovu vygenerovat.|
 |A obory názvů nebo NotificationHubs/zápis|Vytvoření centra oznámení a aktualizujte jeho vlastnosti. Jeho vlastnosti především zahrnovat přihlašovací údaje systému PNS. Autorizační pravidla a hodnota TTL|
 |/ Obory názvů nebo NotificationHubs/čtení|Získá seznam popisů prostředků Centra oznámení.|
 |Obory názvů, NotificationHubs nebo odstranění|Odstranit prostředek centra oznámení|
-|/ Obory názvů nebo NotificationHubs/authorizationRules nebo akce|Získání seznamu hello oznámení centra autorizačních pravidel|
+|/ Obory názvů nebo NotificationHubs/authorizationRules nebo akce|Získá seznam autorizačních pravidel Centra oznámení.|
 |/ Obory názvů nebo NotificationHubs/pnsCredentials nebo akce|Získáte všechna pověření systému PNS centra oznámení. To zahrnuje, přihlašovací údaje WNS, MPNS, APNS, GCM a Baidu|
 |/ Obory názvů nebo NotificationHubs/debugSend nebo akce|Poslat testovací nabízené oznámení|
 |/ Obory názvů nebo NotificationHubs/metricDefinitions/čtení|Získání seznamu Namespace metrik popisy prostředků|
-|/Namespaces/NotificationHubs /<br>authorizationRules a zápis|Vytvoření pravidla autorizace centra oznámení a aktualizujte jeho vlastnosti. mohou být aktualizovány Hello autorizační pravidla přístupová práva, hello primární a sekundární klíče.|
-|/Namespaces/NotificationHubs /<br>authorizationRules/čtení|Získání seznamu hello oznámení centra autorizačních pravidel|
+|/Namespaces/NotificationHubs /<br>authorizationRules a zápis|Vytvoření pravidla autorizace centra oznámení a aktualizujte jeho vlastnosti. Autorizační pravidla přístupová práva, primární a sekundární klíče lze aktualizovat.|
+|/Namespaces/NotificationHubs /<br>authorizationRules/čtení|Získá seznam autorizačních pravidel Centra oznámení.|
 |/Namespaces/NotificationHubs /<br>authorizationRules nebo odstranění|Odstranit autorizační pravidla Centra oznámení|
-|/Namespaces/NotificationHubs /<br>authorizationRules/listkeys nebo akce|Získat toohello hello připojovací řetězec centra oznámení|
-|/Namespaces/NotificationHubs /<br>authorizationRules/regenerateKeys nebo akce|Oznámení centra autorizační pravidlo znovu vygenerovat primární nebo sekundární klíč, zadejte hello klíč, který potřebuje toobe znovu vygeneroval.|
+|/Namespaces/NotificationHubs /<br>authorizationRules/listkeys nebo akce|Získá připojovací řetězec k Centru oznámení.|
+|/Namespaces/NotificationHubs /<br>authorizationRules/regenerateKeys nebo akce|Autorizační pravidlo Centra oznámení – opětovné vygenerování primárního nebo sekundárního klíče. Zadejte klíč, který je nutné znovu vygenerovat.|
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
 | Operace | Popis |
 |---|---|
-|/ registrace nebo akce|Registrace poskytovatele prostředků tooa předplatné.|
-|/linkTargets/Read|Zobrazí seznam stávajících účtů, které nejsou přidružené předplatné Azure. toolink tento pracovní prostor tooa předplatné Azure, použijte id zákazníka vrácená touto operací ve vlastnosti id zákazníka hello hello operaci vytvořit pracovní prostor.|
-|/ pracovních prostorů a zápis|Vytvoří nový pracovní prostor nebo existujícímu pracovnímu prostoru tooan odkazy tím, že poskytuje id zákazníka hello z hello existujícímu pracovnímu prostoru.|
+|/ registrace nebo akce|Registrujte předplatné zprostředkovatele prostředků.|
+|/linkTargets/Read|Zobrazí seznam stávajících účtů, které nejsou přidružené předplatné Azure. Toto předplatné odkaz na pracovním prostoru, použijte id zákazníka vrácená touto operací ve vlastnosti id zákazníka operace vytvořit pracovní prostor.|
+|/ pracovních prostorů a zápis|Vytvoří nový pracovní prostor nebo odkazy k existujícímu pracovnímu prostoru tím, že poskytuje id zákazníka z existující pracovního prostoru.|
 |/workspaces/Read|Získá existujícímu pracovnímu prostoru|
-|/workspaces/DELETE|Odstraní pracovního prostoru. Pokud bylo propojeno hello prostoru hello existujícímu pracovnímu prostoru tooan pak při vytvoření pracovního prostoru, který byl odkazovaný toois nebyl odstraněn.|
-|/workspaces/generateregistrationcertificate/Action|Vygeneruje certifikát o registraci pro hello prostoru. Tento certifikát je použité tooconnect Microsoft System Center Operation Manager toohello prostoru.|
-|/workspaces/sharedKeys/Action|Načte hello sdíleného klíče pro pracovní prostor hello. Tyto klíče jsou použité tooconnect statistice provozu Microsoft agenty toohello prostoru.|
+|/workspaces/DELETE|Odstraní pracovního prostoru. Pokud byl pracovním prostoru propojený k existujícímu pracovnímu prostoru v okamžiku vytvoření není odstranit pracovní prostor, který byl propojen s.|
+|/workspaces/generateregistrationcertificate/Action|Generuje registrační certifikát pro pracovní prostor. Tento certifikát se používá k připojení do pracovního prostoru Microsoft System Center Operation Manager.|
+|/workspaces/sharedKeys/Action|Načte se sdílené klíče pro pracovní prostor. Tyto klíče se používají k připojení agentů statistice provozu Microsoft do pracovního prostoru.|
 |/workspaces/Search/Action|Provede vyhledávací dotaz.|
 |/workspaces/Datasources/Read|Získáte zdrojů dat v pracovním prostoru.|
 |/workspaces/Datasources/Write|Vytvořit nebo aktualizovat zdroje dat v pracovním prostoru.|
 |/workspaces/Datasources/DELETE|Odstraňte zdrojů dat v pracovním prostoru.|
-|/workspaces/managementGroups/Read|Získá hello názvy a metadat pro System Center Operations Manager pracovního prostoru toothis připojené skupiny správy.|
-|/workspaces/Schema/Read|Získá hello vyhledávání schématu pro hello prostoru.  Hledání schématu zahrnuje hello zveřejněné pole a jejich typy.|
-|/workspaces/usages/Read|Získá data o využití pro pracovní prostor, včetně hello množství dat číst hello prostoru.|
-|/workspaces/intelligencepacks/Read|Obsahuje seznam všech intelligence Pack, které jsou viditelné pro danou worksapce a také uvádí, jestli je povolený nebo zakázaný pracovního prostoru hello pack.|
+|/workspaces/managementGroups/Read|Získá názvy a metadat pro připojení k tomuto pracovnímu prostoru skupiny pro správu System Center Operations Manager.|
+|/workspaces/Schema/Read|Získá schéma vyhledávání pro pracovní prostor.  Hledání schématu zahrnuje zveřejněné pole a jejich typy.|
+|/workspaces/usages/Read|Získá data o využití pro pracovní prostor, včetně množství dat číst v pracovním prostoru.|
+|/workspaces/intelligencepacks/Read|Obsahuje seznam všech intelligence Pack, které jsou viditelné pro danou worksapce a také uvádí, jestli je sada povolit nebo zakázat pracovního prostoru.|
 |/workspaces/intelligencepacks/enable/Action|Umožňuje intelligence pack pro daný pracovní prostor.|
 |/workspaces/intelligencepacks/disable/Action|Zakáže intelligence pack pro daný pracovní prostor.|
-|/workspaces/sharedKeys/Read|Načte hello sdíleného klíče pro pracovní prostor hello. Tyto klíče jsou použité tooconnect statistice provozu Microsoft agenty toohello prostoru.|
+|/workspaces/sharedKeys/Read|Načte se sdílené klíče pro pracovní prostor. Tyto klíče se používají k připojení agentů statistice provozu Microsoft do pracovního prostoru.|
 |/workspaces/savedSearches/Read|Získá uložené vyhledávací dotaz.|
 |/workspaces/savedSearches/Write|Vytvoří uložené vyhledávací dotaz.|
 |/workspaces/savedSearches/DELETE|Odstraní uložené vyhledávací dotaz.|
-|/workspaces/storageinsightconfigs/Write|Vytvoří novou konfiguraci úložiště. Tyto konfigurace jsou použité toopull data z umístění, do stávající účet úložiště.|
+|/workspaces/storageinsightconfigs/Write|Vytvoří novou konfiguraci úložiště. Tyto konfigurace se používají k načítání dat z umístění, do stávající účet úložiště.|
 |/workspaces/storageinsightconfigs/Read|Získá konfiguraci úložiště.|
-|/workspaces/storageinsightconfigs/DELETE|Odstraní konfigurace úložiště. To se zastaví statistice provozu Microsoft z čtení dat z účtu úložiště hello.|
+|/workspaces/storageinsightconfigs/DELETE|Odstraní konfigurace úložiště. To se zastaví statistice provozu Microsoft z čtení dat z účtu úložiště.|
 |/workspaces/configurationScopes/Read|Získání konfigurace oboru|
 |/workspaces/configurationScopes/Write|Nastavení konfigurace oboru|
 |/workspaces/configurationScopes/DELETE|Odstranit konfigurace oboru|
@@ -1346,7 +1346,7 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 
 | Operace | Popis |
 |---|---|
-|/ registrace nebo akce|Registrace poskytovatele prostředků tooa předplatné.|
+|/ registrace nebo akce|Registrujte předplatné zprostředkovatele prostředků.|
 |/ řešení a zápis|Vytvořte nové řešení OMS|
 |/Solutions/Read|Získat ukončení OMS řešení|
 |/Solutions/DELETE|Odstraňte existující řešení OMS|
@@ -1357,20 +1357,20 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |---|---|
 |/ Trezory/backupJobsExport nebo akce|Export úloh|
 |A trezory/zápis|Operace Vytvořit trezor vytvoří prostředek Azure typu trezor.|
-|/ Trezory/čtení|Hello operace získání trezoru získá objekt, který reprezentuje hello prostředků Azure typu 'trezoru.|
-|Trezory nebo odstranění|Hello odstranit trezor operaci odstranění hello zadaný Azure prostředek typu 'trezoru.|
-|/ Trezory/refreshContainers/čtení|Aktualizuje seznam kontejneru hello|
-|/ Trezory/backupJobsExport/operationResults/čtení|Vrátí hello výsledek exportovat úlohy operací.|
+|/ Trezory/čtení|Operace získání trezoru získá objekt, který reprezentuje prostředků Azure typu 'trezoru.|
+|Trezory nebo odstranění|Operace odstranění trezoru Odstraní zadaný prostředek Azure typu 'trezoru.|
+|/ Trezory/refreshContainers/čtení|Aktualizuje seznam kontejneru|
+|/ Trezory/backupJobsExport/operationResults/čtení|Vrátí výsledek operace úlohy exportu.|
 |/ Trezory/backupOperationResults/čtení|Vrátí výsledek operace zálohování trezoru Recovery Services.|
-|/ Trezory/monitoringAlerts/čtení|Získá hello výstrahy pro trezor služeb zotavení hello.|
-|/Vaults/monitoringAlerts / {uniqueAlertId} / číst|Získá hello podrobnosti výstrahy hello.|
+|/ Trezory/monitoringAlerts/čtení|Získá výstrahy pro trezor služeb zotavení.|
+|/Vaults/monitoringAlerts / {uniqueAlertId} / číst|Získá podrobnosti výstrahy.|
 |/ Trezory/backupSecurityPIN/čtení|Vrátí zabezpečení PIN kódu informace pro obnovení služeb trezoru.|
 |/vaults/replicationEvents/Read|Číst všechny události|
 |/ Trezory/backupProtectableItems/čtení|Vrátí seznam chránitelných položek.|
 |/vaults/replicationFabrics/Read|Číst všechny prostředky infrastruktury|
 |/vaults/replicationFabrics/Write|Vytvořit nebo aktualizovat všechny prostředky infrastruktury|
 |/vaults/replicationFabrics/Remove/Action|Odebrání infrastruktury|
-|/vaults/replicationFabrics/checkConsistency/Action|Kontroly konzistence hello prostředků infrastruktury|
+|/vaults/replicationFabrics/checkConsistency/Action|Zkontroluje konzistenci prostředí infrastruktury.|
 |/vaults/replicationFabrics/DELETE|Odstranit všechny prostředky infrastruktury|
 |/vaults/replicationFabrics/renewcertificate/Action||
 |/vaults/replicationFabrics/deployProcessServerImage/Action|Nasadit Image procesového serveru|
@@ -1426,27 +1426,27 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/vaults/replicationRecoveryPlans/testFailoverCleanup/Action|Plán obnovení testovací převzetí služeb při selhání čištění|
 |/vaults/replicationRecoveryPlans/failoverCommit/Action|Plán obnovení potvrzení převzetí služeb při selhání|
 |/vaults/replicationRecoveryPlans/reProtect/Action|Znovu nastavte ochranu plánu obnovení|
-|/ Trezory/extendedInformation/čtení|Získá Hello získat rozšířené informace o operaci představující hello prostředků Azure typu informace o rozšířených objektu? trezoru?|
-|A trezory/extendedInformation/zápis|Získá Hello získat rozšířené informace o operaci představující hello prostředků Azure typu informace o rozšířených objektu? trezoru?|
-|Trezory, extendedInformation nebo odstranění|Získá Hello získat rozšířené informace o operaci představující hello prostředků Azure typu informace o rozšířených objektu? trezoru?|
+|/ Trezory/extendedInformation/čtení|Operace Získat rozšířené informace získá rozšířené informace o objektu, který představuje prostředek Azure typu trezor.|
+|A trezory/extendedInformation/zápis|Operace Získat rozšířené informace získá rozšířené informace o objektu, který představuje prostředek Azure typu trezor.|
+|Trezory, extendedInformation nebo odstranění|Operace Získat rozšířené informace získá rozšířené informace o objektu, který představuje prostředek Azure typu trezor.|
 |/ Trezory/backupManagementMetaData/čtení|Vrátí metadata správy zálohování trezoru Recovery Services.|
-|/ Trezory/backupProtectionContainers/čtení|Vrátí všechny kontejnery patřící toohello předplatného|
-|/ Trezory/backupFabrics/operationResults/čtení|Vrátí stav operace hello|
+|/ Trezory/backupProtectionContainers/čtení|Vrátí všechny kontejnery, které patří k předplatnému|
+|/ Trezory/backupFabrics/operationResults/čtení|Vrátí stav operace|
 |/ Trezory/backupFabrics/protectionContainers/čtení|Vrátí všechny registrované kontejnery|
 |/ Trezory/backupFabrics/protectionContainers /<br>operationResults/čtení|Načte výsledky operace provedené na kontejneru ochrany.|
-|/ Trezory/backupFabrics/protectionContainers /<br>protectedItems/čtení|Vrátí objekt podrobnosti hello chráněné položce|
+|/ Trezory/backupFabrics/protectionContainers /<br>protectedItems/čtení|Vrátí podrobnosti o objektu chráněné položky|
 |/ Trezory/backupFabrics/protectionContainers /<br>protectedItems a zápis|Vytvoření zálohy chráněné položky|
 |/ Trezory/backupFabrics/protectionContainers /<br>protectedItems nebo odstranění|Odstranění chráněné položky|
 |/ Trezory/backupFabrics/protectionContainers /<br>protectedItems/zálohování nebo akce|Provede zálohování chráněné položky.|
 |/ Trezory/backupFabrics/protectionContainers /<br>protectedItems/operationResults/čtení|Načte výsledky operace provedené na chráněných položkách.|
-|/ Trezory/backupFabrics/protectionContainers /<br>protectedItems/operationStatus/čtení|Vrátí stav hello operace provedené na chráněné položky.|
+|/ Trezory/backupFabrics/protectionContainers /<br>protectedItems/operationStatus/čtení|Načte stav operace provedené na chráněných položkách.|
 |/ Trezory/backupFabrics/protectionContainers /<br>protectedItems/recoveryPoints/čtení|Načíst body obnovení pro chráněné položky|
 |/ Trezory/backupFabrics/protectionContainers /<br>protectedItems/recoveryPoints /<br>obnovení nebo akce|Obnoví body obnovení pro chráněné položky|
 |/ Trezory/backupFabrics/protectionContainers /<br>protectedItems/recoveryPoints /<br>provisionInstantItemRecovery nebo akce|Zřízení rychlých položky obnovení pro chráněné položky|
 |/ Trezory/backupFabrics/protectionContainers /<br>protectedItems/recoveryPoints /<br>revokeInstantItemRecovery nebo akce|Odvolat rychlých položky obnovení pro chráněné položky|
 |/ Trezory nebo použití/čtení|Vrátí podrobnosti využití trezoru Recovery Services.|
 |/vaults/usages/Read|Číst všechny použití trezoru|
-|A trezory/certifikátů/zápis|Hello operace aktualizace prostředek certifikátu aktualizuje certifikát přihlašovacích údajů hello prostředků nebo trezoru.|
+|A trezory/certifikátů/zápis|Operace aktualizace prostředek certifikátu aktualizuje prostředek nebo trezoru certifikát přihlašovacích údajů.|
 |/ Trezory/tokenInfo/čtení|Vrátí token informace o trezoru služeb zotavení.|
 |/vaults/replicationAlertSettings/Read|Číst všechny nastavení výstrah|
 |/vaults/replicationAlertSettings/Write|Vytvořit nebo aktualizovat nastavení výstrah|
@@ -1454,13 +1454,13 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/ Trezory/storageConfig/čtení|Vrátí konfiguraci úložiště pro obnovení služeb trezoru.|
 |A trezory/storageConfig/zápis|Aktualizace konfiguraci úložiště pro obnovení služeb trezoru.|
 |/ Trezory/backupUsageSummaries/čtení|Vrátí souhrny pro chráněné položky a chráněné servery pro služeb zotavení.|
-|/ Trezory/backupProtectedItems/čtení|Vrátí seznam hello všechny chráněné položky.|
+|/ Trezory/backupProtectedItems/čtení|Vrátí seznam všech chráněných položek.|
 |/ Trezory/backupconfig/vaultconfig/čtení|Vrátí konfiguraci pro obnovení služeb trezoru.|
 |A trezory/backupconfig/vaultconfig/zápis|Konfigurace aktualizací pro obnovení služeb trezoru.|
-|A trezory/registeredIdentities/zápis|Hello operaci zaregistrovat kontejneru služby lze použít tooregister kontejner službou obnovení.|
-|/ Trezory/registeredIdentities/čtení|Získat kontejnery Hello, lze operace získání hello kontejnery zaregistrovat pro prostředek.|
-|Trezory, registeredIdentities nebo odstranění|Hello operaci zrušit registraci kontejneru se dá použít toounregister kontejner.|
-|/ Trezory/registeredIdentities/operationResults/čtení|operaci odeslání Hello získat operace lze použít získat stav operace hello a vést u hello asynchronně výsledky operace|
+|A trezory/registeredIdentities/zápis|Operaci zaregistrovat kontejneru služby lze použít k registraci kontejner službou obnovení.|
+|/ Trezory/registeredIdentities/čtení|Získat kontejnerů, které můžete použít operaci získat kontejnery zaregistrovat pro prostředek.|
+|Trezory, registeredIdentities nebo odstranění|Zrušit registraci kontejneru operaci lze použít se zrušit registraci kontejneru.|
+|/ Trezory/registeredIdentities/operationResults/čtení|Výsledky operace Get, lze operace získat stav operace a výsledek asynchronně odeslaná operaci|
 |/vaults/replicationJobs/Read|Číst všechny úlohy|
 |/vaults/replicationJobs/Cancel/Action|Zrušení úlohy|
 |/vaults/replicationJobs/restart/Action|Restartujte úlohu|
@@ -1470,11 +1470,11 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |Trezory, backupPolicies nebo odstranění|Odstranění zásady ochrany|
 |/ Trezory/backupPolicies/operationResults/čtení|Načte výsledky operace zásad.|
 |/ Trezory/backupPolicies/operationStatus/čtení|Načíst stav operace zásad.|
-|/ Trezory/vaultTokens/čtení|Hello trezoru tokenu operace může být použité tooget trezoru tokenu pro operace trezoru úrovně back-end.|
-|/ Trezory/monitoringConfigurations/notificationConfiguration/čtení|Získá konfigurace oznámení trezoru služeb zotavení hello.|
+|/ Trezory/vaultTokens/čtení|Trezor tokenu operaci lze použít k získání tokenu trezoru pro operace trezoru úrovně back-end.|
+|/ Trezory/monitoringConfigurations/notificationConfiguration/čtení|Získá konfigurace oznámení trezoru služby pro obnovení.|
 |/ Trezory/backupJobs/čtení|Vrátí všechny objekty úlohy|
-|/ Trezory/backupJobs nebo zrušit nebo akce|Zrušit hello úlohy|
-|/ Trezory/backupJobs/operationResults/čtení|Vrátí hello výsledek operace úlohy.|
+|/ Trezory/backupJobs nebo zrušit nebo akce|Zrušení úlohy|
+|/ Trezory/backupJobs/operationResults/čtení|Vrátí výsledek operace úlohy.|
 |/Locations/allocateStamp/Action|AllocateStamp je interní operace, které používá služba|
 |/Locations/allocatedStamp/Read|GetAllocatedStamp je interní operace, kterou používá služba|
 
@@ -1483,41 +1483,41 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 | Operace | Popis |
 |---|---|
 |/ checkNamespaceAvailability nebo akce|Zkontroluje dostupnost oboru názvů v daném předplatném.|
-|/ registrace nebo akce|Zaregistruje hello předplatného pro poskytovatele prostředků hello předávání a umožňuje vytvoření hello předávání prostředků|
-|/ obory názvů a zápis|Vytvořte prostředek Namespace a aktualizujte jeho vlastnosti. Značky a stav hello Namespace jsou hello vlastností, které lze aktualizovat.|
-|/namespaces/Read|Získání seznamu hello Namespace prostředků popisu|
+|/ registrace nebo akce|Zaregistruje předplatné u poskytovatele prostředků Relay a povolí vytváření prostředků Relay.|
+|/ obory názvů a zápis|Vytvořte prostředek Namespace a aktualizujte jeho vlastnosti. Značky a stav Namespace jsou vlastnosti, které lze aktualizovat.|
+|/namespaces/Read|Získá seznam popisů prostředku oboru názvů.|
 |/ obory názvů/odstranit|Odstranit prostředek Namespace|
-|/namespaces/authorizationRules/Write|Autorizační pravidla úrovni Namespace vytvořit a aktualizujte jeho vlastnosti. mohou být aktualizovány Hello autorizační pravidla přístupová práva, hello primární a sekundární klíče.|
-|/namespaces/authorizationRules/DELETE|Odstraňte Namespace autorizační pravidlo. Hello výchozí Namespace autorizační pravidlo nelze odstranit. |
-|/namespaces/authorizationRules/listkeys/Action|Získat připojovací řetězec toohello hello Namespace|
+|/namespaces/authorizationRules/Write|Autorizační pravidla úrovni Namespace vytvořit a aktualizujte jeho vlastnosti. Autorizační pravidla přístupová práva, primární a sekundární klíče lze aktualizovat.|
+|/namespaces/authorizationRules/DELETE|Odstraňte Namespace autorizační pravidlo. Výchozí Namespace autorizační pravidlo nelze odstranit. |
+|/namespaces/authorizationRules/listkeys/Action|Získat připojovací řetězec k oboru názvů|
 |/namespaces/HybridConnections/Write|Vytvoření nebo aktualizace HybridConnection vlastnosti.|
 |/namespaces/HybridConnections/Read|Získání seznamu popisů HybridConnection prostředků|
-|/namespaces/HybridConnections/DELETE|Operace toodelete HybridConnection prostředků|
-|/namespaces/HybridConnections/authorizationRules/Write|Vytvořte HybridConnection autorizační pravidla a aktualizujte jeho vlastnosti. mohou být aktualizovány Hello autorizační pravidla přístupová práva, hello primární a sekundární klíče.|
-|/namespaces/HybridConnections/authorizationRules/DELETE|Operace toodelete HybridConnection autorizační pravidla|
-|/namespaces/HybridConnections/authorizationRules/listkeys/Action|Získat připojovací řetězec tooHybridConnection hello|
+|/namespaces/HybridConnections/DELETE|Operace odstranění HybridConnection prostředků|
+|/namespaces/HybridConnections/authorizationRules/Write|Vytvořte HybridConnection autorizační pravidla a aktualizujte jeho vlastnosti. Autorizační pravidla přístupová práva, primární a sekundární klíče lze aktualizovat.|
+|/namespaces/HybridConnections/authorizationRules/DELETE|Operace odstranění HybridConnection autorizační pravidla|
+|/namespaces/HybridConnections/authorizationRules/listkeys/Action|Získat připojovací řetězec k HybridConnection|
 |/namespaces/WcfRelays/Write|Vytvoření nebo aktualizace WcfRelay vlastnosti.|
 |/namespaces/WcfRelays/Read|Získání seznamu popisů WcfRelay prostředků|
-|/namespaces/WcfRelays/DELETE|Operace toodelete WcfRelay prostředků|
-|/namespaces/WcfRelays/authorizationRules/Write|Vytvořte WcfRelay autorizační pravidla a aktualizujte jeho vlastnosti. mohou být aktualizovány Hello autorizační pravidla přístupová práva, hello primární a sekundární klíče.|
-|/namespaces/WcfRelays/authorizationRules/DELETE|Operace toodelete WcfRelay autorizační pravidla|
-|/namespaces/WcfRelays/authorizationRules/listkeys/Action|Získat připojovací řetězec tooWcfRelay hello|
+|/namespaces/WcfRelays/DELETE|Operace odstranění WcfRelay prostředků|
+|/namespaces/WcfRelays/authorizationRules/Write|Vytvořte WcfRelay autorizační pravidla a aktualizujte jeho vlastnosti. Autorizační pravidla přístupová práva, primární a sekundární klíče lze aktualizovat.|
+|/namespaces/WcfRelays/authorizationRules/DELETE|Operace odstranění WcfRelay autorizační pravidla|
+|/namespaces/WcfRelays/authorizationRules/listkeys/Action|Získat připojovací řetězec k WcfRelay|
 
 ## <a name="microsoftresourcehealth"></a>Microsoft.ResourceHealth
 
 | Operace | Popis |
 |---|---|
-|/ AvailabilityStatuses/čtení|Získá hello dostupnosti stavy pro všechny prostředky v hello zadaný obor|
-|/ AvailabilityStatuses/aktuální/čtení|Získá stav dostupnosti hello hello zadaný prostředek|
+|/ AvailabilityStatuses/čtení|Získá stavy dostupnosti pro všechny prostředky v zadaném rozsahu.|
+|/ AvailabilityStatuses/aktuální/čtení|Získá stav dostupnosti pro zadaný prostředek.|
 
 ## <a name="microsoftresources"></a>Microsoft.Resources
 
 | Operace | Popis |
 |---|---|
-|/ checkResourceName nebo akce|Zkontrolujte správnost názvu prostředku hello.|
-|/providers/Read|Získání seznamu hello zprostředkovatelů.|
-|/subscriptions/Read|Získá seznam hello předplatných.|
-|/subscriptions/operationresults/Read|Pořiďte si předplatné hello výsledky operace.|
+|/ checkResourceName nebo akce|Zkontroluje správnost názvu prostředku.|
+|/providers/Read|Načte seznam zprostředkovatelů.|
+|/subscriptions/Read|Získá výpis předplatných.|
+|/subscriptions/operationresults/Read|Načte výsledky operací s předplatným.|
 |/subscriptions/providers/Read|Načte nebo vypíše zprostředkovatele prostředků.|
 |/subscriptions/tagNames/Read|Načte nebo vypíše značky předplatného.|
 |/subscriptions/tagNames/Write|Přidá značku předplatného.|
@@ -1529,19 +1529,19 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/subscriptions/resourceGroups/Read|Načte nebo vypíše skupinu prostředků.|
 |/subscriptions/resourceGroups/Write|Vytvoří nebo aktualizuje skupinu prostředků.|
 |/subscriptions/resourceGroups/DELETE|Odstraní skupinu prostředků a všechny její prostředky.|
-|/subscriptions/resourceGroups/moveResources/Action|Přesune prostředky z tooanother skupiny jeden prostředek.|
-|/subscriptions/resourceGroups/validateMoveResources/Action|Ověřte přesun prostředků z tooanother skupiny jeden prostředek.|
-|/subscriptions/resourcegroups/Resources/Read|Získá hello prostředky pro skupinu prostředků hello.|
+|/subscriptions/resourceGroups/moveResources/Action|Přesune prostředky z jedné skupiny prostředků do jiné.|
+|/subscriptions/resourceGroups/validateMoveResources/Action|Ověří přesun prostředků z jedné skupiny prostředků do jiné.|
+|/subscriptions/resourcegroups/Resources/Read|Načte prostředky pro skupinu prostředků.|
 |/subscriptions/resourcegroups/Deployments/Read|Načte nebo vypíše nasazení.|
 |/subscriptions/resourcegroups/Deployments/Write|Vytvoří nebo aktualizuje nasazení.|
 |/subscriptions/resourcegroups/Deployments/operationstatuses/Read|Načte nebo vypíše stavy operace nasazení.|
 |/subscriptions/resourcegroups/Deployments/Operations/Read|Načte nebo vypíše operace nasazení.|
-|/subscriptions/Locations/Read|Získá hello seznam podporovaných umístění.|
+|/subscriptions/Locations/Read|Získá výpis podporovaných umístění.|
 |/Links/Read|Načte nebo vypíše odkazy na prostředek.|
 |/ odkazy a zápis|Vytvoří nebo aktualizuje odkaz na prostředek.|
 |/Links/DELETE|Odstraní odkaz na prostředek.|
-|/tenants/Read|Získá seznam hello klientům.|
-|/Resources/Read|Získejte hello seznam prostředků na základě filtrů.|
+|/tenants/Read|Získá výpis klientů.|
+|/Resources/Read|Načte seznam prostředků na základě filtrů.|
 |/Deployments/Read|Načte nebo vypíše nasazení.|
 |/ nasazení a zápis|Vytvoří nebo aktualizuje nasazení.|
 |/Deployments/DELETE|Odstraní nasazení.|
@@ -1569,40 +1569,40 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 
 | Operace | Popis |
 |---|---|
-|/ registrace nebo akce|Zaregistruje hello předplatného pro poskytovatele prostředků hello vyhledávání a umožňuje hello vytvoření služby vyhledávání.|
-|/ checkNameAvailability nebo akce|Zkontroluje dostupnost hello název služby.|
-|/ searchServices/zápisu|Vytvoří nebo aktualizuje hello službu vyhledávání.|
-|/searchServices/Read|Přečte hello službu vyhledávání.|
-|/searchServices/DELETE|Odstraní hello službu vyhledávání.|
-|/searchServices/Start/Action|Spustí službu vyhledávání hello.|
-|/searchServices/stop/Action|Zastaví službu vyhledávání hello.|
-|/searchServices/listAdminKeys/Action|Přečte hello klíče správce.|
-|/searchServices/regenerateAdminKey/Action|Znovu vygeneruje klíč správce hello.|
-|/searchServices/createQueryKey/Action|Vytvoří hello klíč dotazu.|
-|/searchServices/queryKey/Read|Přečte hello klíče dotazu.|
-|/searchServices/queryKey/DELETE|Odstraní hello klíč dotazu.|
+|/ registrace nebo akce|Zaregistruje předplatné pro poskytovatele vyhledávání prostředků a umožňuje vytvoření služby vyhledávání.|
+|/ checkNameAvailability nebo akce|Zkontroluje dostupnost názvu služby.|
+|/ searchServices/zápisu|Vytvoří nebo aktualizuje službu vyhledávání.|
+|/searchServices/Read|Načte službu vyhledávání.|
+|/searchServices/DELETE|Odstraní službu vyhledávání.|
+|/searchServices/Start/Action|Spustí službu vyhledávání.|
+|/searchServices/stop/Action|Zastaví službu vyhledávání.|
+|/searchServices/listAdminKeys/Action|Načte klíče správce.|
+|/searchServices/regenerateAdminKey/Action|Znovu vygeneruje klíč správce.|
+|/searchServices/createQueryKey/Action|Vytvoří klíč dotazu.|
+|/searchServices/queryKey/Read|Načte klíče dotazu.|
+|/searchServices/queryKey/DELETE|Odstraní klíč dotazu.|
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
 
 | Operace | Popis |
 |---|---|
-|/jitNetworkAccessPolicies/Read|Získá zásad přístupu k síti za běhu hello|
+|/jitNetworkAccessPolicies/Read|Získá zásad přístupu k síti za běhu|
 |/ jitNetworkAccessPolicies/zápisu|Vytvoří nové zásady přístupu k síti za běhu nebo aktualizuje existující|
 |/jitNetworkAccessPolicies/initiate/Action|Inicializuje zásady přístupu k síti za běhu|
-|/securitySolutionsReferenceData/Read|Získá řešení zabezpečení hello referenční data|
-|/securityStatuses/Read|Získá stav stavy hello zabezpečení pro prostředky Azure|
-|/webApplicationFirewalls/Read|Získá hello webové aplikace brány firewall|
+|/securitySolutionsReferenceData/Read|Získá referenční data řešení zabezpečení|
+|/securityStatuses/Read|Získá stavy stavu zabezpečení prostředků Azure|
+|/webApplicationFirewalls/Read|Získá webové aplikace brány firewall|
 |/ webApplicationFirewalls/zápisu|Vytvoří nové brány firewall webových aplikací nebo aktualizuje existující|
 |/webApplicationFirewalls/DELETE|Odstraní brány firewall webových aplikací|
-|/securitySolutions/Read|Získá řešení zabezpečení hello|
+|/securitySolutions/Read|Získá řešení zabezpečení|
 |/ securitySolutions/zápisu|Vytvoří nové řešení zabezpečení nebo aktualizuje existující|
 |/securitySolutions/DELETE|Odstraní zabezpečení řešení|
 |/Tasks/Read|Získá všechny dostupné zabezpečení doporučení|
 |/Tasks/dismiss/Action|Zavření doporučení zabezpečení|
 |/Tasks/Activate/Action|Aktivovat doporučení zabezpečení|
-|/Policies/Read|Získá zásady zabezpečení hello|
-|/ Zásady/zápisu|Aktualizace hello zásady zabezpečení|
-|/applicationWhitelistings/Read|Získá whitelistings aplikace hello|
+|/Policies/Read|Získá zásady zabezpečení|
+|/ Zásady/zápisu|Aktualizace nastavení zásad zabezpečení|
+|/applicationWhitelistings/Read|Získá whitelistings aplikace|
 |/ applicationWhitelistings/zápisu|Vytvoří nové vytvoření seznamu povolených aplikací nebo aktualizuje existující|
 
 ## <a name="microsoftservermanagement"></a>Microsoft.ServerManagement
@@ -1613,8 +1613,8 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/ brány a zápis|Vytvoří nebo aktualizuje brány|
 |/gateways/DELETE|Odstraní brány|
 |/gateways/Read|Získá brány|
-|/gateways/regenerateprofile/Action|Regeneruje profil brány hello|
-|/gateways/upgradetolatest/Action|Upgrady hello brány toohello nejnovější verzi|
+|/gateways/regenerateprofile/Action|Regeneruje profil brány|
+|/gateways/upgradetolatest/Action|Upgraduje bránu na nejnovější verzi|
 |/ uzly a zápis|Vytvoří nebo aktualizuje uzlu|
 |/Nodes/DELETE|Odstraní uzel|
 |/Nodes/Read|Získá uzel|
@@ -1627,41 +1627,41 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 | Operace | Popis |
 |---|---|
 |/ checkNameAvailability nebo akce|Zkontroluje dostupnost oboru názvů v daném předplatném.|
-|/ registrace nebo akce|Zaregistruje hello předplatného pro poskytovatele prostředků sběrnice hello a umožňuje vytvoření hello sběrnice prostředků|
-|/ obory názvů a zápis|Vytvořte prostředek Namespace a aktualizujte jeho vlastnosti. Značky a stav hello Namespace jsou hello vlastností, které lze aktualizovat.|
-|/namespaces/Read|Získání seznamu hello Namespace prostředků popisu|
+|/ registrace nebo akce|Zaregistruje předplatné u poskytovatele prostředků ServiceBus a povolí vytváření prostředků ServiceBus.|
+|/ obory názvů a zápis|Vytvořte prostředek Namespace a aktualizujte jeho vlastnosti. Značky a stav Namespace jsou vlastnosti, které lze aktualizovat.|
+|/namespaces/Read|Získá seznam popisů prostředku oboru názvů.|
 |/ obory názvů/odstranit|Odstranit prostředek Namespace|
 |/namespaces/metricDefinitions/Read|Získání seznamu Namespace metrik popisy prostředků|
-|/namespaces/authorizationRules/Write|Autorizační pravidla úrovni Namespace vytvořit a aktualizujte jeho vlastnosti. mohou být aktualizovány Hello autorizační pravidla přístupová práva, hello primární a sekundární klíče.|
-|/namespaces/authorizationRules/Read|Získání seznamu hello popisu obory názvů autorizačních pravidel.|
-|/namespaces/authorizationRules/DELETE|Odstraňte Namespace autorizační pravidlo. Hello výchozí Namespace autorizační pravidlo nelze odstranit. |
-|/namespaces/authorizationRules/listkeys/Action|Získat připojovací řetězec toohello hello Namespace|
-|/namespaces/authorizationRules/regenerateKeys/Action|Znovu vygenerovat hello primární nebo sekundární klíče toohello prostředků|
+|/namespaces/authorizationRules/Write|Autorizační pravidla úrovni Namespace vytvořit a aktualizujte jeho vlastnosti. Autorizační pravidla přístupová práva, primární a sekundární klíče lze aktualizovat.|
+|/namespaces/authorizationRules/Read|Získá seznam popisů autorizačních pravidel oboru názvů.|
+|/namespaces/authorizationRules/DELETE|Odstraňte Namespace autorizační pravidlo. Výchozí Namespace autorizační pravidlo nelze odstranit. |
+|/namespaces/authorizationRules/listkeys/Action|Získat připojovací řetězec k oboru názvů|
+|/namespaces/authorizationRules/regenerateKeys/Action|Znovu vygeneruje primární nebo sekundární klíč k prostředku.|
 |/namespaces/diagnosticSettings/Read|Získání seznamu popisů Namespace nastavení pro diagnostiku prostředků|
 |/namespaces/diagnosticSettings/Write|Získání seznamu popisů Namespace nastavení pro diagnostiku prostředků|
 |/namespaces/Queues/Write|Vytvoření nebo aktualizace fronty vlastnosti.|
 |/namespaces/Queues/Read|Získání seznamu popisů fronty prostředků|
-|/namespaces/Queues/DELETE|Operace toodelete fronty prostředků|
-|/namespaces/Queues/authorizationRules/Write|Vytvoření fronty autorizační pravidla a aktualizujte jeho vlastnosti. mohou být aktualizovány Hello autorizační pravidla přístupová práva, hello primární a sekundární klíče.|
-|/namespaces/Queues/authorizationRules/Read| Získání seznamu hello fronty autorizačních pravidel|
-|/namespaces/Queues/authorizationRules/DELETE|Operace toodelete fronty autorizační pravidla|
-|/namespaces/Queues/authorizationRules/listkeys/Action|Získat připojovací řetězec tooQueue hello|
-|/namespaces/Queues/authorizationRules/regenerateKeys/Action|Znovu vygenerovat hello primární nebo sekundární klíče toohello prostředků|
+|/namespaces/Queues/DELETE|Operace odstranění fronty prostředků|
+|/namespaces/Queues/authorizationRules/Write|Vytvoření fronty autorizační pravidla a aktualizujte jeho vlastnosti. Autorizační pravidla přístupová práva, primární a sekundární klíče lze aktualizovat.|
+|/namespaces/Queues/authorizationRules/Read| Získání seznamu fronty autorizační pravidla|
+|/namespaces/Queues/authorizationRules/DELETE|Operace odstranění fronty autorizační pravidla|
+|/namespaces/Queues/authorizationRules/listkeys/Action|Získat připojovací řetězec do fronty|
+|/namespaces/Queues/authorizationRules/regenerateKeys/Action|Znovu vygeneruje primární nebo sekundární klíč k prostředku.|
 |/namespaces/logDefinitions/Read|Získání seznamu protokolů Namespace popisy prostředků|
 |/namespaces/topics/Write|Vytvoření nebo aktualizace tématu vlastnosti.|
 |/namespaces/topics/Read|Získání seznamu popisů tématu prostředků|
-|/namespaces/topics/DELETE|Operace toodelete tématu prostředků|
-|/namespaces/topics/authorizationRules/Write|Vytvoření tématu autorizační pravidla a aktualizujte jeho vlastnosti. mohou být aktualizovány Hello autorizační pravidla přístupová práva, hello primární a sekundární klíče.|
-|/namespaces/topics/authorizationRules/Read| Získání seznamu hello tématu autorizačních pravidel|
-|/namespaces/topics/authorizationRules/DELETE|Operace toodelete tématu autorizační pravidla|
-|/namespaces/topics/authorizationRules/listkeys/Action|Získat připojovací řetězec tooTopic hello|
-|/namespaces/topics/authorizationRules/regenerateKeys/Action|Znovu vygenerovat hello primární nebo sekundární klíče toohello prostředků|
+|/namespaces/topics/DELETE|Operace odstranění prostředků tématu|
+|/namespaces/topics/authorizationRules/Write|Vytvoření tématu autorizační pravidla a aktualizujte jeho vlastnosti. Autorizační pravidla přístupová práva, primární a sekundární klíče lze aktualizovat.|
+|/namespaces/topics/authorizationRules/Read| Získání seznamu tématu autorizační pravidla|
+|/namespaces/topics/authorizationRules/DELETE|Operace odstranění tématu autorizační pravidla|
+|/namespaces/topics/authorizationRules/listkeys/Action|Získat připojovací řetězec k tématu|
+|/namespaces/topics/authorizationRules/regenerateKeys/Action|Znovu vygeneruje primární nebo sekundární klíč k prostředku.|
 |/namespaces/topics/Subscriptions/Write|Vytvoření nebo aktualizace TopicSubscription vlastnosti.|
 |/namespaces/topics/Subscriptions/Read|Získání seznamu popisů TopicSubscription prostředků|
-|/namespaces/topics/Subscriptions/DELETE|Operace toodelete TopicSubscription prostředků|
+|/namespaces/topics/Subscriptions/DELETE|Operace odstranění TopicSubscription prostředků|
 |/namespaces/topics/Subscriptions/Rules/Write|Vytvořit nebo aktualizovat pravidlo vlastnosti.|
 |/namespaces/topics/Subscriptions/Rules/Read|Získání seznamu popisů pravidlo prostředků|
-|/namespaces/topics/Subscriptions/Rules/DELETE|Operace toodelete pravidlo prostředků|
+|/namespaces/topics/Subscriptions/Rules/DELETE|Operace se odstranit pravidlo prostředků|
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
@@ -1670,24 +1670,24 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/Servers/Read|Vrátí seznam serverů ve skupině prostředků na předplatné|
 |/ servery a zápis|Vytvořit nový server nebo upravit vlastnosti stávajícího serveru ve skupině prostředků na předplatné|
 |/Servers/DELETE|Odstraňte server a všechny obsažené databáze i elastické fondy|
-|/Servers/import/Action|Vytvoření nové databáze na serveru hello a nasadit schéma a data z balíčku DacPac|
-|/Servers/upgrade/Action|Nové funkce, které jsou k dispozici v nejnovější verzi serveru hello povolíte a zadáte databáze edice převod mapy|
+|/Servers/import/Action|Vytvoření nové databáze na serveru a nasadit schéma a data z balíčku DacPac|
+|/Servers/upgrade/Action|Nové funkce, které jsou k dispozici v nejnovější verzi serveru povolíte a zadáte databáze edice převod mapy|
 |/Servers/VulnerabilityAssessmentScans/Action|Spuštění kontroly serveru assessment ohrožení zabezpečení|
-|/Servers/operationResults/Read|Operace se používá tootrack postup upgradu serveru z nižší verze toohigher|
+|/Servers/operationResults/Read|Operace se používá ke sledování postup upgradu serveru z nižší verze vyšší|
 |/Servers/operationResults/DELETE|Zrušení upgrade verze serveru v průběhu|
-|/Servers/securityAlertPolicies/Read|Načtení podrobností hello serveru threat detekce zásady nakonfigurované na daném serveru|
-|/Servers/securityAlertPolicies/Write|Změnit server hello služba detekce hrozeb pro daný server|
-|/Servers/securityAlertPolicies/operationResults/Read|Načíst výsledky hello serveru zásad detekce hrozeb operace nastavení|
+|/Servers/securityAlertPolicies/Read|Načíst podrobnosti o zásadě detekce hrozeb server nakonfigurovaný na daném serveru|
+|/Servers/securityAlertPolicies/Write|Změnit detekce hrozeb serveru pro daný server|
+|/Servers/securityAlertPolicies/operationResults/Read|Načíst výsledky zásad detekce hrozeb operace nastavení serveru|
 |/Servers/Administrators/Read|Načíst podrobnosti o správce serveru|
 |/Servers/Administrators/Write|Vytvořit nebo aktualizovat Správce serveru|
-|/Servers/Administrators/DELETE|Odstranit správce serveru z hello server|
-|/Servers/recoverableDatabases/Read|Tato operace se používá pro zotavení po havárii online databáze toorestore databáze toolast známé dobré bodu zálohy. Vrací informace o poslední správné zálohy hello, ale nepodporuje obnovení ve skutečnosti hello databáze.|
+|/Servers/Administrators/DELETE|Odstranit správce serveru ze serveru|
+|/Servers/recoverableDatabases/Read|Tato operace se používá pro zotavení po havárii živé databáze k obnovení databáze pro poslední známá funkční bodu zálohy. Vrací informace o poslední správné zálohy, ale nepodporuje obnovení ve skutečnosti databáze.|
 |/Servers/serviceObjectives/Read|Načtení seznamu cílů na úrovni služby (také označované jako úrovně výkonu) k dispozici na daném serveru|
 |/Servers/firewallRules/Read|Načíst podrobnosti o pravidlo brány firewall serveru|
-|/Servers/firewallRules/Write|Vytvořit nebo aktualizovat pravidlo brány firewall serveru, který určuje rozsah IP adres povoleny tooconnect toohello serveru|
-|/Servers/firewallRules/DELETE|Odstranit pravidlo brány firewall ze serveru hello|
+|/Servers/firewallRules/Write|Vytvořit nebo aktualizovat pravidlo brány firewall serveru, který určuje rozsah IP adres povolené připojení k serveru|
+|/Servers/firewallRules/DELETE|Odstranit pravidlo brány firewall ze serveru|
 |/Servers/administratorOperationResults/Read|Načíst výsledky operace správce serveru|
-|/Servers/recommendedElasticPools/Read|Načíst doporučení pro náklady tooreduce fondy elastické databáze nebo zlepšení výkonu na základě využití prostředků historica|
+|/Servers/recommendedElasticPools/Read|Načtení doporučení pro fondy elastické databáze pro snížení nákladů na nebo vylepšení výkonu na základě využití prostředků historica|
 |/Servers/recommendedElasticPools/Metrics/Read|Načtení metriky pro fondy doporučené elastické databáze pro daný server|
 |/Servers/recommendedElasticPools/Databases/Read|Načtení databází, které mají být přidány do doporučené fondy elastických databází pro daný server|
 |/Servers/elasticPools/Read|Načíst podrobnosti o fondu elastické databáze na daném serveru|
@@ -1695,239 +1695,239 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/Servers/elasticPools/DELETE|Odstraňte existující fond elastické databáze|
 |/Servers/elasticPools/operationResults/Read|Načíst podrobnosti o fondu operace dané elastické databáze|
 |/Servers/elasticPools/providers/Microsoft.Insights/<br>metricDefinitions/čtení|Návratové typy metriky, které jsou k dispozici pro fondy elastické databáze|
-|/Servers/elasticPools/providers/Microsoft.Insights/<br>diagnosticSettings/čtení|Získá hello nastavení diagnostiky pro prostředek hello|
-|/Servers/elasticPools/providers/Microsoft.Insights/<br>diagnosticSettings a zápis|Vytvoří nebo aktualizuje hello nastavení diagnostiky pro prostředek hello|
+|/Servers/elasticPools/providers/Microsoft.Insights/<br>diagnosticSettings/čtení|Získá nastavení diagnostiky pro tento prostředek.|
+|/Servers/elasticPools/providers/Microsoft.Insights/<br>diagnosticSettings a zápis|Vytvoří nebo aktualizuje nastavení diagnostiky pro tento prostředek.|
 |/Servers/elasticPools/Metrics/Read|Vrátí metriky využití prostředků fondu elastické databáze|
 |/Servers/elasticPools/elasticPoolDatabaseActivity/Read|Načtení činnosti a údaje na danou databázi, která je součástí fondu elastické databáze|
-|/Servers/elasticPools/advisors/Read|Vrátí seznam poradci, které jsou k dispozici pro elastický fond hello|
+|/Servers/elasticPools/advisors/Read|Vrátí seznam poradci pro elastický fond k dispozici|
 |/Servers/elasticPools/advisors/Write|Aktualizace automatického – spuštění stav advisor na úrovni elastického fondu.|
-|/Servers/elasticPools/advisors/recommendedActions/Read|Vrátí seznam doporučené akce zadané pro elastický fond hello Poradce|
-|/Servers/elasticPools/advisors/recommendedActions/Write|Použít hello Doporučená akce na hello elastického fondu|
+|/Servers/elasticPools/advisors/recommendedActions/Read|Vrátí seznam doporučených akcí zadaný advisor pro elastický fond|
+|/Servers/elasticPools/advisors/recommendedActions/Write|Použít akci doporučenou v elastického fondu|
 |/Servers/elasticPools/elasticPoolActivity/Read|Načtení činnosti a údaje na danou databázi elastického fondu|
 |/Servers/elasticPools/Databases/Read|Načtení seznamu a podrobnosti databáze, které jsou součástí fondu elastické databáze na daném serveru|
-|/Servers/auditingPolicies/Read|Načíst podrobnosti o hello výchozí server tabulky auditování zásady nakonfigurované na daném serveru|
-|/Servers/auditingPolicies/Write|Změnit hello výchozí server tabulka auditování pro daný server|
+|/Servers/auditingPolicies/Read|Načíst podrobnosti o serveru tabulky výchozí zásady na daném serveru nakonfigurován auditování|
+|/Servers/auditingPolicies/Write|Změňte výchozí server tabulky auditování pro daný server|
 |/Servers/disasterRecoveryConfiguration/operationResults/Read|Získat výsledky operace konfigurace obnovení po havárii|
-|/Servers/advisors/Read|Vrátí seznam poradci, které jsou k dispozici pro hello server|
+|/Servers/advisors/Read|Vrátí seznam poradci, které jsou k dispozici pro server|
 |/Servers/advisors/Write|Aktualizace automatického – spuštění stav advisor na úrovni serveru.|
-|/Servers/advisors/recommendedActions/Read|Vrátí seznam doporučených akcí zadaný advisor pro hello server|
-|/Servers/advisors/recommendedActions/Write|Použít hello Doporučená akce na hello server|
-|/Servers/usages/Read|Vrátí kvóty DTU serveru a aktuální consuption DTU všemi databázemi v rámci hello server|
+|/Servers/advisors/recommendedActions/Read|Vrátí seznam doporučených akcí zadaný advisor pro server|
+|/Servers/advisors/recommendedActions/Write|Použití doporučenou akci na server|
+|/Servers/usages/Read|Vrátí kvóty DTU serveru a aktuální consuption DTU všemi databázemi v rámci serveru|
 |/Servers/elasticPoolEstimates/Read|Vrátí seznam odhad elastického fondu vytvořeny již pro tento server|
 |/Servers/elasticPoolEstimates/Write|Vytvoří nový odhad elastického fondu pro seznam databází poskytuje|
-|/Servers/auditingSettings/Read|Načíst podrobnosti o objektu blob server hello auditování zásady nakonfigurované na daném serveru|
-|/Servers/auditingSettings/Write|Změnit hello auditování objektů blob serveru pro daný server|
-|/Servers/auditingSettings/operationResults/Read|Načíst výsledek objektu blob server hello operace nastavení zásad auditování|
-|/Servers/backupLongTermRetentionVaults/Read|Tato operace je použité tooget trezoru zálohování dlouhodobé uchovávání. Vrátí informace o serveru registrované toothis hello trezoru.|
+|/Servers/auditingSettings/Read|Načíst podrobnosti o zásadě auditování objektů blob serveru na daném serveru nakonfigurován|
+|/Servers/auditingSettings/Write|Změnit nastavení auditování serveru objekt blob pro daný server|
+|/Servers/auditingSettings/operationResults/Read|Načíst výsledek operace nastavení zásad auditování objektu blob serveru|
+|/Servers/backupLongTermRetentionVaults/Read|Tato operace se používá k získání trezoru zálohování dlouhodobé uchovávání. Vrátí informace o úložišti registrované k tomuto serveru.|
 |/Servers/backupLongTermRetentionVaults/Write|Zaregistrovat k trezoru zálohování dlouhodobé uchovávání|
 |/Servers/restorableDroppedDatabases/Read|Načíst seznam databází, které byly vyřazeny na daném serveru, které jsou stále v rámci zásady uchovávání informací. Tato operace vrátí seznam databází a související metadata, jako je datum odstranění.|
 |/Servers/Databases/Read|Vrátí seznam serverů ve skupině prostředků na předplatné|
 |/Servers/Databases/Write|Vytvořit nový server nebo upravit vlastnosti stávajícího serveru ve skupině prostředků na předplatné|
 |/Servers/Databases/DELETE|Odstraňte server a všechny obsažené databáze i elastické fondy|
-|/Servers/Databases/export/Action|Vytvoření nové databáze na serveru hello a nasadit schéma a data z balíčku DacPac|
+|/Servers/Databases/export/Action|Vytvoření nové databáze na serveru a nasadit schéma a data z balíčku DacPac|
 |/Servers/Databases/VulnerabilityAssessmentScans/Action|Spusťte kontrolu databáze assessment ohrožení zabezpečení.|
 |/Servers/Databases/pause/Action|Pozastavení edici databáze datového skladu|
 |/Servers/Databases/Resume/Action|Obnovit databázi datového skladu edition|
-|/Servers/Databases/operationResults/Read|Operace se používá tootrack průběh operace probíhající dlouhou dobu databáze, jako je například škálování.|
+|/Servers/Databases/operationResults/Read|Operace se používá ke sledování průběhu dlouhotrvající operace databáze, jako je například škálování.|
 |/Servers/Databases/replicationLinks/Read|Návratový podrobnosti o propojení replikace navázána pro konkrétní databázi|
-|/Servers/Databases/replicationLinks/DELETE|Ukončení relace replikace hello vynuceně a potenciální ztráty dat.|
-|/Servers/Databases/replicationLinks/Unlink/Action|Ukončení relace replikace hello vynuceně nebo po synchronizaci s partnerem hello|
-|/Servers/Databases/replicationLinks/Failover/Action|Převzetí služeb při selhání po synchronizaci všech změn z hello primární, provedení této databáze do vztahu replikace hello hello primární a provedení vzdálené primární do sekundárního|
-|/Servers/Databases/replicationLinks/forceFailoverAllowDataLoss/Action|Převzetí služeb při selhání okamžitě potenciální ztrátě dat, provedení této databáze do vztahu replikace hello hello primární a provedení vzdálené primární do sekundárního|
-|/Servers/Databases/replicationLinks/updateReplicationMode/Action|Aktualizovat režim replikace pro odkaz toosynchronous nebo asynchronním režimu|
+|/Servers/Databases/replicationLinks/DELETE|Ukončení relace replikace vynuceně a potenciální ztráty dat.|
+|/Servers/Databases/replicationLinks/Unlink/Action|Ukončení relace replikace vynuceně nebo po synchronizaci s partnera|
+|/Servers/Databases/replicationLinks/Failover/Action|Převzetí služeb při selhání po synchronizaci všech změní z primární, provedení této databáze do primární vztah replikace a přijímání vzdálených primární do sekundárního|
+|/Servers/Databases/replicationLinks/forceFailoverAllowDataLoss/Action|Převzetí služeb při selhání okamžitě potenciální ztrátě dat, provedení této databáze do primární vztah replikace a přijímání vzdálených primární do sekundárního|
+|/Servers/Databases/replicationLinks/updateReplicationMode/Action|Režim aktualizace replikace pro odkaz na synchronní nebo asynchronní režim|
 |/Servers/Databases/replicationLinks/operationResults/Read|Načíst stav operace dlouho běžící na odkazy replikace databáze|
-|/Servers/Databases/dataMaskingPolicies/Read|Načtení podrobností maskování zásady nakonfigurované na danou databázi hello dat|
+|/Servers/Databases/dataMaskingPolicies/Read|Načtení podrobností maskování zásady nakonfigurované na danou databázi dat|
 |/Servers/Databases/dataMaskingPolicies/Write|Změnit zásady pro danou databázi maskování dat.|
-|/Servers/Databases/dataMaskingPolicies/Rules/Read|Načtení podrobností maskování pravidlo zásad, které jsou nakonfigurované na danou databázi hello dat|
+|/Servers/Databases/dataMaskingPolicies/Rules/Read|Načtení podrobností pravidla zásad, které jsou nakonfigurované na danou databázi maskování dat|
 |/Servers/Databases/dataMaskingPolicies/Rules/Write|Změňte pravidla zásad pro danou databázi maskování dat.|
-|/Servers/Databases/securityAlertPolicies/Read|Načtení podrobností zásady detekce hrozeb hello nakonfigurované na danou databázi|
-|/Servers/Databases/securityAlertPolicies/Write|Změnit hello zásady detekce hrozeb pro danou databázi|
+|/Servers/Databases/securityAlertPolicies/Read|Načíst podrobnosti o zásadě detekce hrozeb nakonfigurované na danou databázi|
+|/Servers/Databases/securityAlertPolicies/Write|Změna zásad detekce hrozeb pro danou databázi|
 |/Servers/Databases/providers/Microsoft.Insights/<br>metricDefinitions/čtení|Návratové typy metriky, které jsou k dispozici pro databáze|
-|/Servers/Databases/providers/Microsoft.Insights/<br>diagnosticSettings/čtení|Získá hello nastavení diagnostiky pro prostředek hello|
-|/Servers/Databases/providers/Microsoft.Insights/<br>diagnosticSettings a zápis|Vytvoří nebo aktualizuje hello nastavení diagnostiky pro prostředek hello|
-|/Servers/Databases/providers/Microsoft.Insights/<br>logDefinitions/čtení|Získá dostupné protokoly hello pro databáze|
+|/Servers/Databases/providers/Microsoft.Insights/<br>diagnosticSettings/čtení|Získá nastavení diagnostiky pro tento prostředek.|
+|/Servers/Databases/providers/Microsoft.Insights/<br>diagnosticSettings a zápis|Vytvoří nebo aktualizuje nastavení diagnostiky pro tento prostředek.|
+|/Servers/Databases/providers/Microsoft.Insights/<br>logDefinitions/čtení|Získá dostupné protokoly pro databáze|
 |/Servers/Databases/topQueries/Read|Vrátí statistiku modulu runtime pro vybraný dotaz agregovat do vybrané časové období|
-|/Servers/Databases/topQueries/queryText/Read|Vrátí text hello Transact-SQL pro ID vybraný dotaz|
+|/Servers/Databases/topQueries/queryText/Read|Vrátí text Transact-SQL pro ID vybraný dotaz|
 |/Servers/Databases/topQueries/Statistics/Read|Vrátí statistiku modulu runtime pro vybraný dotaz agregovat do vybrané časové období|
-|/Servers/Databases/connectionPolicies/Read|Načtení podrobností hello připojení zásady nakonfigurované na danou databázi|
+|/Servers/Databases/connectionPolicies/Read|Načíst podrobnosti o zásadě připojení nakonfigurovaná na danou databázi|
 |/Servers/Databases/connectionPolicies/Write|Změnit zásady připojení pro danou databázi|
 |/Servers/Databases/Metrics/Read|Vrátí metriky využití prostředků databáze|
-|/Servers/Databases/auditRecords/Read|Načtení záznamů auditu blob hello databáze|
+|/Servers/Databases/auditRecords/Read|Načtení záznamů auditu databáze objektů blob|
 |/Servers/Databases/transparentDataEncryption/Read|Načíst stav a podrobnosti o funkce zabezpečení dat transparentní šifrování pro danou databázi|
 |/Servers/Databases/transparentDataEncryption/Write|Povolit nebo zakázat transparentní šifrování dat pro danou databázi|
 |/Servers/Databases/transparentDataEncryption/operationResults/Read|Načíst stav a podrobnosti o funkce zabezpečení dat transparentní šifrování pro danou databázi|
-|/Servers/Databases/auditingPolicies/Read|Načtení podrobností hello tabulky auditování zásady nakonfigurované na danou databázi|
-|/Servers/Databases/auditingPolicies/Write|Změna zásad auditování hello tabulky pro danou databázi|
-|/Servers/Databases/dataWarehouseQueries/Read|Vrátí informace o hello datovém skladu distribuční dotazu pro vybraný dotaz ID|
-|/ servery/databáze/dataWarehouseQueries /<br>dataWarehouseQuerySteps/čtení|Vrátí hello distribuovaných dotazů krok informace o dotazu datový sklad pro vybraný krok ID|
-|/Servers/Databases/serviceTierAdvisors/Read|Vrátí návrhu o škálování databáze nahoru nebo dolů na základě výkonu tooimprove statistik provádění dotazů nebo snížení nákladů|
-|/Servers/Databases/advisors/Read|Vrátí seznam poradci, které jsou k dispozici pro databázi hello|
+|/Servers/Databases/auditingPolicies/Read|Načtení podrobností tabulky auditování zásady, které jsou nakonfigurované na danou databázi|
+|/Servers/Databases/auditingPolicies/Write|Změna zásad auditování tabulka pro danou databázi|
+|/Servers/Databases/dataWarehouseQueries/Read|Vrátí distribuční dotazu informace o datovém skladu pro vybraný dotaz ID|
+|/ servery/databáze/dataWarehouseQueries /<br>dataWarehouseQuerySteps/čtení|Vrátí informace o kroku distribuovaného dotazu dotazu datový sklad pro vybraný krok ID|
+|/Servers/Databases/serviceTierAdvisors/Read|Vrátí návrhu o škálování databáze nahoru nebo dolů na základě statistik provádění dotazu na výkon nebo snížit náklady na|
+|/Servers/Databases/advisors/Read|Vrátí seznam poradci, které jsou k dispozici pro databázi|
 |/Servers/Databases/advisors/Write|Aktualizace automatického – spuštění stav advisor na úrovni databáze.|
-|/Servers/Databases/advisors/recommendedActions/Read|Vrátí seznam doporučených akcí zadaný advisor pro databázi hello|
-|/Servers/Databases/advisors/recommendedActions/Write|Použít hello Doporučená akce v databázi hello|
+|/Servers/Databases/advisors/recommendedActions/Read|Vrátí seznam doporučené akce zadané pro databázi Poradce pro|
+|/Servers/Databases/advisors/recommendedActions/Write|Použít akci doporučenou v databázi|
 |/Servers/Databases/usages/Read|Vrátí maximální velikost databáze, které lze přejít a aktuální velikost obsazena dat|
-|/Servers/Databases/queryStore/Read|Vrátí aktuální hodnoty nastavení úložiště dotazů pro databázi hello|
-|/Servers/Databases/queryStore/Write|Aktualizace nastavení úložiště dotazů pro databázi hello|
-|/Servers/Databases/auditingSettings/Read|Načtení podrobností hello blob auditování zásady nakonfigurované na danou databázi|
-|/Servers/Databases/auditingSettings/Write|Změna zásad auditování hello objektů blob pro danou databázi|
+|/Servers/Databases/queryStore/Read|Vrátí aktuální hodnoty nastavení úložiště dotazů pro databázi|
+|/Servers/Databases/queryStore/Write|Aktualizace nastavení úložiště dotazů pro databázi|
+|/Servers/Databases/auditingSettings/Read|Načíst podrobnosti o objektu blob auditování zásady, které jsou nakonfigurované na danou databázi|
+|/Servers/Databases/auditingSettings/Write|Změna zásad auditování objektů blob pro danou databázi|
 |/Servers/Databases/schemas/Tables/recommendedIndexes/Read|Načíst seznam doporučení indexu v databázi|
 |/Servers/Databases/schemas/Tables/recommendedIndexes/Write|Použít doporučení indexu|
 |/Servers/Databases/schemas/Tables/Columns/Read|Načíst seznam sloupců tabulky.|
-|/Servers/Databases/missingindexes/Read|Vrátí návrhy o toocreate indexů databáze, upravit nebo odstranit v výkon dotazů tooimprove pořadí|
+|/Servers/Databases/missingindexes/Read|Vrátí návrhy o indexy databáze k vytvoření, úpravě nebo odstranění za účelem zlepšení výkonu dotazů|
 |/Servers/Databases/missingindexes/Write|Použít databázi doporučení indexu v konkrétní databázi|
 |/Servers/Databases/importExportOperationResults/Read|Vrátí podrobnosti o import databáze nebo operace exportu z DacPac umístěný v účtu úložiště|
-|/Servers/importExportOperationResults/Read|Vrátí seznam hello s podrobnostmi o databázové operace importu z účtu úložiště na daném serveru|
+|/Servers/importExportOperationResults/Read|Vrátí seznam s podrobnostmi o databázové operace importu z účtu úložiště na daném serveru|
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 | Operace | Popis |
 |---|---|
-|/ registrace nebo akce|Zaregistruje hello předplatného pro poskytovatele prostředků úložiště hello a umožňuje hello vytvoření účtů úložiště.|
+|/ registrace nebo akce|Zaregistruje předplatné pro zprostředkovatele prostředku úložiště a povolí vytvoření účtů úložiště.|
 |/checknameavailability/Read|Zkontroluje, že název účtu je platný a nepoužívá se.|
-|/ storageAccounts/zápisu|Vytvoří účet úložiště s hello zadané parametry nebo aktualizace hello vlastnosti a značky nebo přidá vlastní doménu pro hello zadaný účet úložiště.|
+|/ storageAccounts/zápisu|Vytvoří účet úložiště se zadanými parametry, aktualizuje vlastnosti a značky nebo přidá vlastní doménu pro zadaný účet úložiště.|
 |/storageAccounts/DELETE|Odstraní existující účet úložiště.|
-|/storageAccounts/listkeys/Action|Vrátí hello přístupové klíče pro hello zadaný účet úložiště.|
-|/storageAccounts/regeneratekey/Action|Regeneruje hello přístupové klíče pro hello zadaný účet úložiště.|
-|/storageAccounts/Read|Vrátí hello seznam účtů úložiště nebo získá hello vlastnosti hello zadaný účet úložiště.|
-|/storageAccounts/listAccountSas/Action|Vrátí token SAS účtu hello hello zadaný účet úložiště.|
+|/storageAccounts/listkeys/Action|Vrátí přístupové klíče pro zadaný účet úložiště.|
+|/storageAccounts/regeneratekey/Action|Obnoví přístupové klíče pro zadaný účet úložiště.|
+|/storageAccounts/Read|Vrátí seznam účtů úložišť nebo načte vlastnosti zadaného účtu.|
+|/storageAccounts/listAccountSas/Action|Vrátí token SAS účtu pro zadaný účet úložiště.|
 |/storageAccounts/listServiceSas/Action|Token SAS služby úložiště|
 |/storageAccounts/Services/diagnosticSettings/Write|Vytvořit nebo aktualizovat nastavení diagnostiky účet úložiště.|
-|/skus/Read|Uvádí hello SKU nepodporuje Microsoft.Storage.|
-|/usages/Read|Vrátí hello limit a hello aktuální počet použití pro prostředky v hello zadané předplatné|
-|/Operations/Read|Hlasování hello stav asynchronní operace.|
+|/skus/Read|Zobrazí seznam SKU nepodporuje Microsoft.Storage.|
+|/usages/Read|Vrací limit a aktuální počet použití pro zdroje v zadaném odběru|
+|/Operations/Read|Zadá dotaz na stav asynchronní operace.|
 |/Locations/deleteVirtualNetworkOrSubnets/Action|Microsoft.Storage upozorní, že virtuální síť nebo podsíť, Probíhá odstranění|
 
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
 
 | Operace | Popis |
 |---|---|
-|/Managers/clearAlerts/Action|Vymažte všechny výstrahy hello přidružená ke Správci zařízení hello.|
-|/Managers/getActivationKey/Action|Získáte aktivační klíč pro správce zařízení hello.|
-|/Managers/regenerateActivationKey/Action|Znovu vygenerujte aktivační klíč pro správce zařízení hello.|
-|/Managers/regenarateRegistationCertificate/Action|Znovu vygenerujte registrační certifikát pro hello Správci zařízení.|
-|/Managers/getEncryptionKey/Action|Získání šifrovacího klíče pro správce zařízení hello.|
-|/Managers/Read|Uvádí nebo získá hello Správce zařízení.|
-|/Managers/DELETE|Odstraní hello Správce zařízení.|
-|/ Správci a zápis|Vytvořit nebo aktualizovat hello Správce zařízení.|
+|/Managers/clearAlerts/Action|Vymažte všechny výstrahy spojené se Správce zařízení.|
+|/Managers/getActivationKey/Action|Získáte aktivační klíč pro správce zařízení.|
+|/Managers/regenerateActivationKey/Action|Znovu vygenerujte aktivační klíč pro správce zařízení.|
+|/Managers/regenarateRegistationCertificate/Action|Znovu vygenerujte registrační certifikát pro správce zařízení.|
+|/Managers/getEncryptionKey/Action|Získání šifrovacího klíče pro správce zařízení.|
+|/Managers/Read|Uvádí nebo získá správce zařízení|
+|/Managers/DELETE|Odstraní Správci zařízení|
+|/ Správci a zápis|Vytvořit nebo aktualizovat Správci zařízení|
 |/Managers/configureDevice/Action|Konfiguruje zařízení|
-|/Managers/listActivationKey/Action|Získá klíč aktivace hello hello Správce zařízení StorSimple.|
+|/Managers/listActivationKey/Action|Získá aktivační klíč Správce zařízení StorSimple.|
 |/Managers/listPublicEncryptionKey/Action|Seznam veřejný šifrovací klíče nástroje Správce zařízení StorSimple.|
 |/Managers/listPrivateEncryptionKey/Action|Získá privátní šifrovací klíč pro správce zařízení StorSimple.|
 |/Managers/provisionCloudAppliance/Action|Vytvořte nové zařízení cloudu.|
 |A správci/zápis|Operace Vytvořit trezor vytvoří prostředek Azure typu trezor.|
-|/ Správci/čtení|Hello operace získání trezoru získá objekt, který reprezentuje hello prostředků Azure typu 'trezoru.|
-|Správci nebo odstranění|Hello odstranit trezor operaci odstranění hello zadaný Azure prostředek typu 'trezoru.|
-|/Managers/storageAccountCredentials/Write|Vytvořit nebo aktualizovat přihlašovací údaje účtu úložiště hello|
-|/Managers/storageAccountCredentials/Read|Uvádí nebo získá přihlašovací údaje účtu úložiště hello|
-|/Managers/storageAccountCredentials/DELETE|Odstraní hello přihlašovacích údajů účtu úložiště|
+|/ Správci/čtení|Operace získání trezoru získá objekt, který reprezentuje prostředků Azure typu 'trezoru.|
+|Správci nebo odstranění|Operace odstranění trezoru Odstraní zadaný prostředek Azure typu 'trezoru.|
+|/Managers/storageAccountCredentials/Write|Vytvořit nebo aktualizovat údaje k účtu úložiště|
+|/Managers/storageAccountCredentials/Read|Uvádí nebo získá přihlašovací údaje účtu úložiště|
+|/Managers/storageAccountCredentials/DELETE|Odstraní údaje k účtu úložiště|
 |/Managers/storageAccountCredentials/listAccessKey/Action|Seznam přístupových klíčů přihlašovacích údajů účtu úložiště|
-|/Managers/accessControlRecords/Read|Uvádí nebo získá hello záznamy řízení přístupu|
-|/Managers/accessControlRecords/Write|Vytvořit nebo aktualizovat hello záznamy řízení přístupu|
-|/Managers/accessControlRecords/DELETE|Odstraní záznamy řízení přístupu hello|
-|/Managers/Metrics/Read|Uvádí nebo získá hello metriky|
-|/Managers/bandwidthSettings/Read|Seznam nastavení šířky pásma hello (pouze řady 8000)|
+|/Managers/accessControlRecords/Read|Uvádí nebo získá záznamy řízení přístupu|
+|/Managers/accessControlRecords/Write|Vytvořit nebo aktualizovat záznamy řízení přístupu|
+|/Managers/accessControlRecords/DELETE|Odstraní záznamy řízení přístupu|
+|/Managers/Metrics/Read|Uvádí nebo získá metriky|
+|/Managers/bandwidthSettings/Read|Seznam nastavení šířky pásma (pouze 8000 řada)|
 |/Managers/bandwidthSettings/Write|Vytvoří novou nebo aktualizuje nastavení šířky pásma (pouze řady 8000)|
 |/Managers/bandwidthSettings/DELETE|Odstraní existující nastavení šířky pásma (pouze řady 8000)|
-|/ Správci/extendedInformation/čtení|Získá Hello získat rozšířené informace o operaci představující hello prostředků Azure typu informace o rozšířených objektu? trezoru?|
-|A správci/extendedInformation/zápis|Získá Hello získat rozšířené informace o operaci představující hello prostředků Azure typu informace o rozšířených objektu? trezoru?|
-|Správci, extendedInformation nebo odstranění|Získá Hello získat rozšířené informace o operaci představující hello prostředků Azure typu informace o rozšířených objektu? trezoru?|
-|/Managers/Alerts/Read|Uvádí nebo získá hello výstrahy|
-|/Managers/storageDomains/Read|Uvádí nebo získá hello úložiště domén|
-|/Managers/storageDomains/Write|Vytvořit nebo aktualizovat hello úložiště domén|
-|/Managers/storageDomains/DELETE|Odstraní hello úložiště domén|
+|/ Správci/extendedInformation/čtení|Operace Získat rozšířené informace získá rozšířené informace o objektu, který představuje prostředek Azure typu trezor.|
+|A správci/extendedInformation/zápis|Operace Získat rozšířené informace získá rozšířené informace o objektu, který představuje prostředek Azure typu trezor.|
+|Správci, extendedInformation nebo odstranění|Operace Získat rozšířené informace získá rozšířené informace o objektu, který představuje prostředek Azure typu trezor.|
+|/Managers/Alerts/Read|Uvádí nebo získá výstrahy|
+|/Managers/storageDomains/Read|Uvádí nebo získá domén úložiště|
+|/Managers/storageDomains/Write|Vytvořit nebo aktualizovat domén úložiště|
+|/Managers/storageDomains/DELETE|Odstraní domén úložiště|
 |/Managers/Devices/scanForUpdates/Action|Vyhledávání aktualizací v zařízení.|
 |/Managers/Devices/download/Action|Stažení aktualizací pro zařízení.|
 |/Managers/Devices/Install/Action|Instalaci aktualizací na zařízení.|
-|/Managers/Devices/Read|Uvádí nebo získá hello zařízení|
-|/Managers/Devices/Write|Vytvořit nebo aktualizovat hello zařízení|
-|/Managers/Devices/DELETE|Vymaže zařízení hello|
+|/Managers/Devices/Read|Uvádí nebo získá zařízení|
+|/Managers/Devices/Write|Vytvořit nebo aktualizovat zařízení|
+|/Managers/Devices/DELETE|Odstraní zařízení|
 |/Managers/Devices/Deactivate/Action|Deaktivuje zařízení.|
 |/Managers/Devices/publishSupportPackage/Action|Publikujte balíček pro podporu zařízení pro řešení potíží s Microsoft Support.|
-|/Managers/Devices/Failover/Action|Převzetí služeb při selhání hello zařízení.|
-|/Managers/Devices/sendTestAlertEmail/Action|Odesílání výstrah e-mailů testovací tooconfigured příjemců e-mailu.|
-|/Managers/Devices/installUpdates/Action|Nainstaluje aktualizace hello zařízení|
-|/Managers/Devices/listFailoverSets/Action|Seznam hello převzetí služeb při selhání se nastaví pro ze stávajících zařízení.|
-|/Managers/Devices/listFailoverTargets/Action|Seznam cílů převzetí služeb při selhání hello zařízení|
-|/Managers/Devices/publicEncryptionKey/Action|Seznam veřejný šifrovací klíč Správce zařízení hello|
-|/ Správci/zařízení nebo hardwareComponentGroups /<br>Pro čtení|Seznam hello hardwaru skupiny součástí|
+|/Managers/Devices/Failover/Action|Převzetí služeb při selhání zařízení.|
+|/Managers/Devices/sendTestAlertEmail/Action|Odeslat testovací výstrahy e-mailu k příjemce nakonfigurované e-mailů.|
+|/Managers/Devices/installUpdates/Action|Nainstaluje aktualizace zařízení|
+|/Managers/Devices/listFailoverSets/Action|Zobrazí seznam sady převzetí služeb při selhání ze stávajících zařízení.|
+|/Managers/Devices/listFailoverTargets/Action|Seznam cílů převzetí služeb při selhání zařízení|
+|/Managers/Devices/publicEncryptionKey/Action|Seznam veřejný šifrovací klíč Správce zařízení|
+|/ Správci/zařízení nebo hardwareComponentGroups /<br>Pro čtení|Seznam skupin součástí hardwaru|
 |/ Správci/zařízení nebo hardwareComponentGroups /<br>changeControllerPowerState nebo akce|Změnit stav napájení řadiče hardwaru skupiny součástí|
-|/Managers/Devices/Metrics/Read|Uvádí nebo získá hello metriky|
-|/Managers/Devices/chapSettings/Write|Vytvořit nebo aktualizovat nastavení Chap hello|
-|/Managers/Devices/chapSettings/Read|Uvádí nebo získá hello Chap nastavení|
-|/Managers/Devices/chapSettings/DELETE|Odstraní nastavení Chap hello|
-|/Managers/Devices/backupScheduleGroups/Read|Uvádí nebo získá hello skupiny plánu zálohování|
-|/Managers/Devices/backupScheduleGroups/Write|Vytvořit nebo aktualizovat skupiny plánu zálohování hello|
-|/Managers/Devices/backupScheduleGroups/DELETE|Odstraní hello skupiny plánu zálohování|
-|/Managers/Devices/updateSummary/Read|Uvádí nebo získá hello souhrn aktualizace|
+|/Managers/Devices/Metrics/Read|Uvádí nebo získá metriky|
+|/Managers/Devices/chapSettings/Write|Vytvořit nebo aktualizovat nastavení Chap|
+|/Managers/Devices/chapSettings/Read|Uvádí nebo získá nastavení Chap|
+|/Managers/Devices/chapSettings/DELETE|Odstraní nastavení Chap|
+|/Managers/Devices/backupScheduleGroups/Read|Uvádí nebo získá skupiny plánu zálohování|
+|/Managers/Devices/backupScheduleGroups/Write|Vytvořit nebo aktualizovat skupiny plánu zálohování|
+|/Managers/Devices/backupScheduleGroups/DELETE|Odstraní plán zálohování skupiny|
+|/Managers/Devices/updateSummary/Read|Uvádí nebo získá souhrn aktualizace|
 |/ Správci/zařízení nebo migrationSourceConfigurations /<br>Import nebo akce|Import konfigurace zdroje pro migraci.|
-|/ Správci/zařízení nebo migrationSourceConfigurations /<br>startMigrationEstimate nebo akce|Spusťte úlohu tooestimate hello dobu trvání procesu migrace hello.|
+|/ Správci/zařízení nebo migrationSourceConfigurations /<br>startMigrationEstimate nebo akce|Spustíte úlohu k odhad doby trvání procesu migrace.|
 |/ Správci/zařízení nebo migrationSourceConfigurations /<br>startMigration nebo akce|Spustit migraci pomocí zdroj konfigurace|
 |/ Správci/zařízení nebo migrationSourceConfigurations /<br>confirmMigration nebo akce|Potvrzuje úspěšné migrace a potvrďte ho.|
-|/ Správci/zařízení nebo migrationSourceConfigurations /<br>fetchMigrationEstimate nebo akce|Načtěte stav hello pro úlohu odhad migrace hello.|
-|/ Správci/zařízení nebo migrationSourceConfigurations /<br>fetchMigrationStatus nebo akce|Načtěte stav hello hello migrace.|
-|/ Správci/zařízení nebo migrationSourceConfigurations /<br>fetchConfirmMigrationStatus nebo akce|Načtení hello potvrdit stav migrace.|
-|/Managers/Devices/alertSettings/Read|Uvádí nebo získá hello nastavení výstrah|
-|/Managers/Devices/alertSettings/Write|Vytvořit nebo aktualizovat nastavení výstrah hello|
-|/Managers/Devices/networkSettings/Read|Uvádí nebo získá hello nastavení sítě|
+|/ Správci/zařízení nebo migrationSourceConfigurations /<br>fetchMigrationEstimate nebo akce|Načtěte stav odhad úlohy migrace.|
+|/ Správci/zařízení nebo migrationSourceConfigurations /<br>fetchMigrationStatus nebo akce|Načtěte stav migrace.|
+|/ Správci/zařízení nebo migrationSourceConfigurations /<br>fetchConfirmMigrationStatus nebo akce|Načtěte stav potvrdit migrace.|
+|/Managers/Devices/alertSettings/Read|Uvádí nebo získá nastavení výstrah|
+|/Managers/Devices/alertSettings/Write|Vytvořit nebo aktualizovat nastavení výstrah|
+|/Managers/Devices/networkSettings/Read|Uvádí nebo získá nastavení sítě|
 |/Managers/Devices/networkSettings/Write|Vytvoří novou nebo aktualizovat nastavení sítě|
-|/Managers/Devices/Jobs/Read|Uvádí nebo získá hello úlohy|
+|/Managers/Devices/Jobs/Read|Uvádí nebo získá úlohy|
 |/Managers/Devices/Jobs/Cancel/Action|Zrušení spuštěné úlohy|
-|/Managers/Devices/metricsDefinitions/Read|Uvádí nebo získá definice metrik hello|
+|/Managers/Devices/metricsDefinitions/Read|Uvádí nebo získá definice metrik|
 |/Managers/Devices/volumeContainers/Write|Vytvoří novou nebo aktualizuje kontejnery svazků (pouze řady 8000)|
-|/Managers/Devices/volumeContainers/Read|Seznam kontejnery svazků hello (pouze řady 8000)|
+|/Managers/Devices/volumeContainers/Read|Seznam kontejnery svazků (pouze 8000 řada)|
 |/Managers/Devices/volumeContainers/DELETE|Odstraní existující kontejnery svazků (pouze řady 8000)|
 |/Managers/Devices/volumeContainers/listEncryptionKeys/Action|Seznam šifrování klíče kontejnery svazků|
 |/Managers/Devices/volumeContainers/rolloverEncryptionKey/Action|Šifrování klíče výměny kontejnery svazků|
-|/Managers/Devices/volumeContainers/Metrics/Read|Seznam hello metriky|
-|/Managers/Devices/volumeContainers/Volumes/Read|Hello seznamu svazků|
+|/Managers/Devices/volumeContainers/Metrics/Read|Seznam metriky|
+|/Managers/Devices/volumeContainers/Volumes/Read|Seznam svazků|
 |/Managers/Devices/volumeContainers/Volumes/Write|Vytvoří novou nebo aktualizuje svazky|
 |/Managers/Devices/volumeContainers/Volumes/DELETE|Odstraní existující svazky|
-|/Managers/Devices/volumeContainers/Volumes/Metrics/Read|Seznam hello metriky|
-|/Managers/Devices/volumeContainers/Volumes/metricsDefinitions/Read|Seznam hello Definice metrik|
-|/Managers/Devices/volumeContainers/metricsDefinitions/Read|Seznam hello Definice metrik|
-|/Managers/Devices/iscsiservers/Read|Uvádí nebo získá hello iSCSI servery|
-|/Managers/Devices/iscsiservers/Write|Vytvořit nebo aktualizovat hello iSCSI servery|
-|/Managers/Devices/iscsiservers/DELETE|Odstraní hello iSCSI servery|
+|/Managers/Devices/volumeContainers/Volumes/Metrics/Read|Seznam metriky|
+|/Managers/Devices/volumeContainers/Volumes/metricsDefinitions/Read|Seznam definice metrik|
+|/Managers/Devices/volumeContainers/metricsDefinitions/Read|Seznam definice metrik|
+|/Managers/Devices/iscsiservers/Read|Uvádí nebo získá iSCSI servery|
+|/Managers/Devices/iscsiservers/Write|Vytvořit nebo aktualizovat iSCSI servery|
+|/Managers/Devices/iscsiservers/DELETE|Odstraní iSCSI servery|
 |/Managers/Devices/iscsiservers/Backup/Action|Proveďte zálohování serveru iSCSI.|
-|/Managers/Devices/iscsiservers/Metrics/Read|Uvádí nebo získá hello metriky|
-|/Managers/Devices/iscsiservers/Disks/Read|Uvádí nebo získá hello disky|
-|/Managers/Devices/iscsiservers/Disks/Write|Vytvořit nebo aktualizovat hello disky|
-|/Managers/Devices/iscsiservers/Disks/DELETE|Odstraní hello disky|
-|/Managers/Devices/iscsiservers/Disks/Metrics/Read|Uvádí nebo získá hello metriky|
-|/Managers/Devices/iscsiservers/Disks/metricsDefinitions/Read|Uvádí nebo získá definice metrik hello|
-|/Managers/Devices/iscsiservers/metricsDefinitions/Read|Uvádí nebo získá definice metrik hello|
-|/Managers/Devices/backups/Read|Uvádí nebo získá hello zálohovacího skladu|
-|/Managers/Devices/backups/DELETE|Odstranění hello zálohovacího skladu|
-|/Managers/Devices/backups/Restore/Action|Obnovte všechny svazky hello ze zálohovacího skladu.|
+|/Managers/Devices/iscsiservers/Metrics/Read|Uvádí nebo získá metriky|
+|/Managers/Devices/iscsiservers/Disks/Read|Uvádí nebo získá disky|
+|/Managers/Devices/iscsiservers/Disks/Write|Vytvořit nebo aktualizovat disky|
+|/Managers/Devices/iscsiservers/Disks/DELETE|Odstraní disky|
+|/Managers/Devices/iscsiservers/Disks/Metrics/Read|Uvádí nebo získá metriky|
+|/Managers/Devices/iscsiservers/Disks/metricsDefinitions/Read|Uvádí nebo získá definice metrik|
+|/Managers/Devices/iscsiservers/metricsDefinitions/Read|Uvádí nebo získá definice metrik|
+|/Managers/Devices/backups/Read|Uvádí nebo získá zálohovacího skladu|
+|/Managers/Devices/backups/DELETE|Odstraní zálohovacího skladu|
+|/Managers/Devices/backups/Restore/Action|Všechny svazky obnovte ze zálohovacího skladu.|
 |/Managers/Devices/backups/Elements/clone/Action|Klonování sdílené složky nebo svazku pomocí zálohování elementu.|
 |/Managers/Devices/backupPolicies/Write|Vytvoří novou nebo aktualizovat zásady zálohování (pouze řady 8000)|
-|/Managers/Devices/backupPolicies/Read|Seznam hello zásady zálohování (pouze řady 8000)|
+|/Managers/Devices/backupPolicies/Read|Seznam zálohování zásady (pouze 8000 řada)|
 |/Managers/Devices/backupPolicies/DELETE|Odstraní existující zásady zálohování (pouze řady 8000)|
-|/Managers/Devices/backupPolicies/Backup/Action|Proveďte zálohování svazků hello je chrání zásady hello toocreate ruční zálohování na vyžádání.|
+|/Managers/Devices/backupPolicies/Backup/Action|Proveďte zálohu ručně vytvořit na vyžádání zálohování všech svazků chráněnými zásadami.|
 |/Managers/Devices/backupPolicies/Schedules/Write|Vytvoří novou nebo aktualizovat plány|
-|/Managers/Devices/backupPolicies/Schedules/Read|Seznam hello plány|
+|/Managers/Devices/backupPolicies/Schedules/Read|Seznam plány|
 |/Managers/Devices/backupPolicies/Schedules/DELETE|Odstraní existující plán|
-|/Managers/Devices/securitySettings/Update/Action|Aktualizujte nastavení zabezpečení hello.|
-|/Managers/Devices/securitySettings/Read|Seznam hello nastavení zabezpečení|
-|/ Správci/zařízení nebo securitySettings /<br>syncRemoteManagementCertificate nebo akce|Synchronizujte hello certifikát vzdálené správy pro zařízení.|
+|/Managers/Devices/securitySettings/Update/Action|Aktualizujte nastavení zabezpečení.|
+|/Managers/Devices/securitySettings/Read|Seznam nastavení zabezpečení|
+|/ Správci/zařízení nebo securitySettings /<br>syncRemoteManagementCertificate nebo akce|Synchronizujte certifikát vzdálené správy pro zařízení.|
 |/Managers/Devices/securitySettings/Write|Vytvoří novou nebo aktualizuje nastavení zabezpečení|
-|/Managers/Devices/fileservers/Read|Uvádí nebo získá hello souborové servery|
-|/Managers/Devices/fileservers/Write|Vytvořit nebo aktualizovat hello souborové servery|
-|/Managers/Devices/fileservers/DELETE|Odstraní hello souborové servery|
+|/Managers/Devices/fileservers/Read|Uvádí nebo získá souborových serverů|
+|/Managers/Devices/fileservers/Write|Vytvořit nebo aktualizovat souborových serverů|
+|/Managers/Devices/fileservers/DELETE|Odstraní souborových serverů|
 |/Managers/Devices/fileservers/Backup/Action|Proveďte zálohování souborového serveru.|
-|/Managers/Devices/fileservers/Metrics/Read|Uvádí nebo získá hello metriky|
-|/Managers/Devices/fileservers/shares/Write|Vytvořit nebo aktualizovat hello sdílené složky|
-|/Managers/Devices/fileservers/shares/Read|Uvádí nebo získá hello sdílené složky|
-|/Managers/Devices/fileservers/shares/DELETE|Odstraní hello sdílené složky|
-|/Managers/Devices/fileservers/shares/Metrics/Read|Uvádí nebo získá hello metriky|
-|/Managers/Devices/fileservers/shares/metricsDefinitions/Read|Uvádí nebo získá definice metrik hello|
-|/Managers/Devices/fileservers/metricsDefinitions/Read|Uvádí nebo získá definice metrik hello|
-|/Managers/Devices/timeSettings/Read|Uvádí nebo získá nastavení času hello|
+|/Managers/Devices/fileservers/Metrics/Read|Uvádí nebo získá metriky|
+|/Managers/Devices/fileservers/shares/Write|Vytvořit nebo aktualizovat sdílené složky|
+|/Managers/Devices/fileservers/shares/Read|Uvádí nebo získá sdílené složky|
+|/Managers/Devices/fileservers/shares/DELETE|Odstraní sdílené složky|
+|/Managers/Devices/fileservers/shares/Metrics/Read|Uvádí nebo získá metriky|
+|/Managers/Devices/fileservers/shares/metricsDefinitions/Read|Uvádí nebo získá definice metrik|
+|/Managers/Devices/fileservers/metricsDefinitions/Read|Uvádí nebo získá definice metrik|
+|/Managers/Devices/timeSettings/Read|Uvádí nebo získá nastavení času|
 |/Managers/Devices/timeSettings/Write|Vytvoří novou nebo aktualizuje nastavení času|
-|A správci/certifikátů/zápis|Hello operace aktualizace prostředek certifikátu aktualizuje certifikát přihlašovacích údajů hello prostředků nebo trezoru.|
-|/Managers/cloudApplianceConfigurations/Read|Seznam hello cloudu zařízení podporované konfigurace|
-|/Managers/metricsDefinitions/Read|Uvádí nebo získá definice metrik hello|
-|/Managers/encryptionSettings/Read|Uvádí nebo získá hello nastavení šifrování|
+|A správci/certifikátů/zápis|Operace aktualizace prostředek certifikátu aktualizuje prostředek nebo trezoru certifikát přihlašovacích údajů.|
+|/Managers/cloudApplianceConfigurations/Read|Seznam zařízení cloudu podporované konfigurace|
+|/Managers/metricsDefinitions/Read|Uvádí nebo získá definice metrik|
+|/Managers/encryptionSettings/Read|Uvádí nebo získá nastavení šifrování|
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 
@@ -1938,10 +1938,10 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/ streamingjobs/čtení|Úlohy Stream Analytics pro čtení|
 |/ streamingjobs/zápisu|Zápis úlohy Stream Analytics|
 |/ streamingjobs/odstranit|Odstranit úlohy Stream Analytics|
-|/streamingjobs/providers/Microsoft.Insights/metricDefinitions/Read|Získá hello dostupné metriky pro streamingjobs|
+|/streamingjobs/providers/Microsoft.Insights/metricDefinitions/Read|Načte dostupné metriky pro streamingjobs|
 |/streamingjobs/providers/Microsoft.Insights/diagnosticSettings/Read|Nastavení diagnostiky pro čtení.|
 |/streamingjobs/providers/Microsoft.Insights/diagnosticSettings/Write|Zápis nastavení diagnostiky.|
-|/streamingjobs/providers/Microsoft.Insights/logDefinitions/Read|Získá dostupné protokoly hello pro streamingjobs|
+|/streamingjobs/providers/Microsoft.Insights/logDefinitions/Read|Získá dostupné protokoly pro streamingjobs|
 |/streamingjobs/Transformations/Read|Číst Stream Analytics úlohy transformace|
 |/streamingjobs/Transformations/Write|Zápis transformace úlohy Stream Analytics|
 |/streamingjobs/Transformations/DELETE|Odstranit transformaci úlohy Stream Analytics|
@@ -1956,25 +1956,25 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 
 | Operace | Popis |
 |---|---|
-|/ registrace nebo akce|Zaregistruje tooSupport poskytovatele prostředků|
-|/supportTickets/Read|Získat podrobnosti lístku podpory (včetně stavu, závažnosti, podrobnosti kontaktu a komunikací) nebo získá hello seznam lístky žádostí o podporu ve předplatných.|
+|/ registrace nebo akce|Registruje zprostředkovatele prostředků podpory.|
+|/supportTickets/Read|Umožňuje získat podrobnosti lístku podpory (včetně stavu, závažnosti, podrobností kontaktu a komunikací) nebo seznam lístků podpory pro všechna předplatná.|
 |/ supportTickets/zápisu|Vytvoří nebo aktualizuje lístek podpory. Můžete vytvořit lístek podpory pro Technical, fakturace, kvóty nebo správy předplatného související problémy. Můžete aktualizovat závažnost, podrobnosti kontaktu a komunikace pro existující lístky žádostí o podporu.|
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 
 | Operace | Popis |
 |---|---|
-|nebo zrušit registraci nebo akce|Zrušte registraci poskytovatele prostředků Microsoft.Web pro předplatné hello.|
+|nebo zrušit registraci nebo akce|Zrušte registraci poskytovatele prostředků Microsoft.Web pro předplatné.|
 |/ ověření nebo akce|Ověření.|
-|/ registrace nebo akce|Registrace poskytovatele prostředků Microsoft.Web pro předplatné hello.|
-|/ hostingEnvironments/čtení|Získat vlastnosti hello služby App Service Environment|
+|/ registrace nebo akce|Registrace poskytovatele prostředků Microsoft.Web pro předplatné.|
+|/ hostingEnvironments/čtení|Umožňuje získat vlastnosti služby App Service Environment|
 |/ hostingEnvironments/zápisu|Vytvoření nové služby App Service Environment nebo aktualizovat existující|
 |/ hostingEnvironments/odstranit|Odstranění služby App Service Environment|
 |/hostingEnvironments/reboot/Action|Restartujte všechny počítače ve službě App Service Environment|
 |/hostingenvironments/Resume/Action|Obnovte hostitelská prostředí.|
 |/hostingenvironments/suspend/Action|Pozastavte hostitelská prostředí.|
 |/hostingenvironments/metricdefinitions/Read|Získat hostování prostředí definice metrik.|
-|/hostingEnvironments/workerPools/Read|Získat vlastnosti hello fondu pracovních procesů ve službě App Service Environment|
+|/hostingEnvironments/workerPools/Read|Umožňuje získat vlastnosti fondu pracovních procesů ve službě App Service Environment|
 |/hostingEnvironments/workerPools/Write|Vytvořit nový fond pracovních procesů ve službě App Service Environment nebo aktualizovat stávající|
 |/hostingenvironments/workerpools/metricdefinitions/Read|Získat hostování prostředí Workerpools metrika definice.|
 |/hostingenvironments/workerpools/Metrics/Read|Získat hostování prostředí Workerpools metriky.|
@@ -1985,7 +1985,7 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/hostingenvironments/usages/Read|Získat hostování použití prostředí.|
 |/hostingenvironments/capacities/Read|Získat hostování prostředí kapacity.|
 |/hostingenvironments/Operations/Read|Získat hostování prostředí operace.|
-|/hostingEnvironments/multiRolePools/Read|Získat vlastnosti hello front-endu fondu ve službě App Service Environment|
+|/hostingEnvironments/multiRolePools/Read|Umožňuje získat vlastnosti fondu front-endu ve službě App Service Environment|
 |/hostingEnvironments/multiRolePools/Write|Vytvořit nový fond front-endové služby App Service Environment, nebo aktualizaci existující|
 |/hostingenvironments/multirolepools/metricdefinitions/Read|Získat hostování definice metrik u fondy prostředí.|
 |/hostingenvironments/multirolepools/Metrics/Read|Získat hostování prostředí u fondy metriky.|
@@ -1995,8 +1995,8 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/publishingusers/Read|Uživatelé získat publikování.|
 |/ publishingusers/zápisu|Aktualizace publikování uživatelů.|
 |/checknameavailability/Read|Zkontrolujte, zda název prostředku je k dispozici.|
-|/ geoRegions/čtení|Získejte hello seznam geografických oblastech.|
-|/ weby/čtení|Získat vlastnosti hello webové aplikace|
+|/ geoRegions/čtení|Získejte seznam geografických oblastech.|
+|/ weby/čtení|Umožňuje získat vlastnosti webové aplikace|
 |/ weby/zápisu|Vytvořit novou webovou aplikaci nebo aktualizovat stávající|
 |/ weby/odstranit|Odstranit stávající webovou aplikaci|
 |/Sites/Backup/Action|Vytvoří novou zálohu webové aplikace|
@@ -2007,7 +2007,7 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/Sites/stop/Action|Zastavení webové aplikace|
 |/Sites/slotsswap/Action|Prohodit sloty nasazení webové aplikace|
 |/Sites/slotsdiffs/Action|Získat rozdíly v konfiguraci mezi sloty a webové aplikace|
-|/Sites/applySlotConfig/Action|Aplikovat konfiguraci slot webové aplikace z cílového slotu toohello aktuální webové aplikace|
+|/Sites/applySlotConfig/Action|Použít konfiguraci webové aplikace slotu z cílového slotu na aktuální webové aplikace|
 |/Sites/resetSlotConfig/Action|Resetovat konfiguraci webové aplikace|
 |/Sites/Functions/Action|Funkce Web Apps.|
 |/Sites/listsyncfunctiontriggerstatus/Action|Seznam synchronizace funkce aktivační událost stavu webových aplikací.|
@@ -2054,9 +2054,9 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/Sites/slots/stop/Action|Zastavit Slot webové aplikace|
 |/Sites/slots/slotsswap/Action|Prohodit sloty nasazení webové aplikace|
 |/Sites/slots/slotsdiffs/Action|Získat rozdíly v konfiguraci mezi sloty a webové aplikace|
-|/Sites/slots/applySlotConfig/Action|Aplikovat konfiguraci slot webové aplikace z cílového slotu toohello aktuální pozici.|
+|/Sites/slots/applySlotConfig/Action|Použít konfiguraci webové aplikace slotu z cílového slotu na aktuální pozici.|
 |/Sites/slots/resetSlotConfig/Action|Resetovat konfiguraci slot webové aplikace|
-|/Sites/slots/Read|Získat vlastnosti hello slot nasazení webové aplikace|
+|/Sites/slots/Read|Umožňuje získat vlastnosti nasazovací slot webové aplikace|
 |/Sites/slots/newpassword/Action|Sloty nové_heslo webové aplikace.|
 |/Sites/slots/Sync/Action|Sloty webové aplikace synchronizace.|
 |/Sites/slots/operationresults/Read|Získáte výsledky operace sloty webové aplikace.|
@@ -2098,7 +2098,7 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/Sites/slots/sourcecontrols/DELETE|Odstranění nastavení konfigurace správy zdrojů Slot webové aplikace|
 |/Sites/slots/Restore/Read|Získáte obnovení sloty webové aplikace.|
 |/Sites/slots/analyzecustomhostname/Read|Získat webové aplikace sloty analyzovat vlastní název hostitele.|
-|/Sites/slots/backups/Read|Získat vlastnosti hello zálohy se sloty webové aplikace|
+|/Sites/slots/backups/Read|Umožňuje získat vlastnosti zálohování se sloty webové aplikace|
 |/Sites/slots/backups/list/Action|Seznam webových aplikací sloty zálohování.|
 |/Sites/slots/backups/Restore/Action|Obnovte zálohy sloty webové aplikace.|
 |/Sites/slots/Deployments/DELETE|Odstraňte nasazení sloty webové aplikace.|
@@ -2109,7 +2109,7 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/Sites/hybridconnection/Read|Získáte webové aplikace hybridní připojení.|
 |/Sites/hybridconnection/Write|Aktualizace webové aplikace hybridní připojení.|
 |/Sites/recommendationhistory/Read|Zobrazit historii doporučení webové aplikace.|
-|/Sites/Recommendations/Read|Získejte hello seznam doporučení pro webovou aplikaci.|
+|/Sites/Recommendations/Read|Získejte seznam doporučení pro webovou aplikaci.|
 |/Sites/Recommendations/disable/Action|Zakážete doporučení webové aplikace.|
 |/Sites/config/Read|Získat nastavení konfigurace webové aplikace|
 |/Sites/config/list/Action|Seznam webové aplikace citlivé nastavení zabezpečení, jako je například publikování přihlašovací údaje, nastavení aplikace a připojovacích řetězců|
@@ -2124,7 +2124,7 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/Sites/sourcecontrols/DELETE|Odstranění nastavení konfigurace správy zdrojů webové aplikace|
 |/Sites/Restore/Read|Získáte obnovení webové aplikace.|
 |/Sites/analyzecustomhostname/Read|Analýza vlastní název hostitele.|
-|/Sites/backups/Read|Získat vlastnosti hello zálohování webové aplikace|
+|/Sites/backups/Read|Umožňuje získat vlastnosti zálohování webové aplikace|
 |/Sites/backups/list/Action|Seznam webových aplikací zálohování.|
 |/Sites/backups/Restore/Action|Obnovte zálohy webové aplikace.|
 |/Sites/snapshots/Read|Získáte snímky webové aplikace.|
@@ -2145,10 +2145,10 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/Sites/Diagnostics/frebanalysis/Read|Získáte webové analýzy FREB diagnostiky aplikace.|
 |/availablestacks/Read|Získáte zásobníky k dispozici.|
 |/isusernameavailable/Read|Zkontrolujte, zda uživatelské jméno je k dispozici.|
-|/Microsoft.Web/apiManagementAccounts/<br>rozhraní API/čtení|Získání seznamu hello rozhraní API.|
+|/Microsoft.Web/apiManagementAccounts/<br>rozhraní API/čtení|Získejte seznam rozhraní API.|
 |/Microsoft.Web/apiManagementAccounts/<br>rozhraní API a zápis|Přidání nového rozhraní Api nebo aktualizovat existující.|
 |/Microsoft.Web/apiManagementAccounts/<br>rozhraní API nebo odstranění|Odstranění existujícího rozhraní Api.|
-|/Microsoft.Web/apiManagementAccounts/<br>rozhraní API nebo připojení/čtení|Získejte hello seznam připojení.|
+|/Microsoft.Web/apiManagementAccounts/<br>rozhraní API nebo připojení/čtení|Získejte seznam připojení.|
 |/Microsoft.Web/apiManagementAccounts/<br>rozhraní API a připojení/zápis|Uložení nové připojení nebo aktualizuje stávající.|
 |/Microsoft.Web/apiManagementAccounts/<br>rozhraní API, připojení nebo odstranění|Odstraňte existující připojení.|
 |/Microsoft.Web/apiManagementAccounts/<br>rozhraní API nebo připojení/connectionAcls nebo pro čtení|ConnectionAcls pro čtení|
@@ -2158,7 +2158,7 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/Microsoft.Web/apiManagementAccounts/<br>rozhraní API/apiAcls/čtení|ConnectionAcls pro čtení|
 |/Microsoft.Web/apiManagementAccounts/<br>rozhraní API a apiAcls/zápis|Vytvořit nebo aktualizovat seznamy ACL rozhraní Api|
 |/Microsoft.Web/apiManagementAccounts/<br>rozhraní API, apiAcls nebo odstranění|Odstranit rozhraní Api seznamy řízení přístupu|
-|/ serverfarms/čtení|Získat vlastnosti hello na plán služby App Service|
+|/ serverfarms/čtení|Umožňuje získat vlastnosti na plán služby App Service|
 |/ serverfarms/zápisu|Nový plán služby App Service umožňuje vytvořit nebo aktualizovat stávající|
 |/ serverfarms/odstranit|Odstranit existující plán služby App Service|
 |/serverfarms/restartSites/Action|Restartujte všechny webové aplikace v plán služby App Service|
@@ -2182,24 +2182,24 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/serverfarms/usages/Read|Získáte použití plány služby App Service.|
 |/serverfarms/hybridconnectionnamespaces/relays/Sites/Read|Získáte plány služby App Service hybridní připojení obory názvů předávací webové aplikace.|
 |/ishostnameavailable/Read|Zkontrolujte, zda název hostitele je k dispozici.|
-|/ connectionGateways/čtení|Získejte seznam hello připojení brány.|
+|/ connectionGateways/čtení|Získejte seznam připojení brány.|
 |/ connectionGateways/zápisu|Vytvoří nebo aktualizuje připojení brány.|
 |/ connectionGateways/odstranit|Odstraní připojení brány.|
 |/connectionGateways/JOIN/Action|Spojí připojení brány.|
 |/classicmobileservices/Read|Získáte Classic mobilních služeb.|
 |/skus/Read|Získáte SKU.|
-|/ certifikátů/čtení|Získání seznamu hello certifikátů.|
+|/ certifikátů/čtení|Získáte seznam certifikátů.|
 |/ certifikátů/zápisu|Přidat nový certifikát nebo aktualizovat existující.|
 |/ certifikátů/odstranit|Odstraňte existující certifikát.|
 |/Operations/Read|Získejte operace.|
-|/ doporučení/čtení|Získejte hello seznam doporučení pro předplatné.|
+|/ doporučení/čtení|Získejte seznam doporučení pro předplatné.|
 |/ishostingenvironmentnameavailable/Read|Získáte, pokud je k dispozici hostování název prostředí.|
-|/ apiManagementAccounts/čtení|Získejte seznam hello ApiManagementAccounts.|
+|/ apiManagementAccounts/čtení|Získejte seznam ApiManagementAccounts.|
 |/ apiManagementAccounts/zápisu|Přidat nové ApiManagementAccount nebo aktualizovat stávající|
 |/ apiManagementAccounts/odstranit|Odstraňte existující ApiManagementAccount|
-|/apiManagementAccounts/connectionAcls/Read|Získejte hello seznam ACL připojení.|
+|/apiManagementAccounts/connectionAcls/Read|Získání seznamu ACL připojení.|
 |/apiManagementAccounts/apiAcls/Read|ConnectionAcls pro čtení|
-|/ připojení/čtení|Získejte hello seznam připojení.|
+|/ připojení/čtení|Získejte seznam připojení.|
 |/ připojení/zápisu|Vytvoří nebo aktualizuje připojení.|
 |/ připojení/odstranit|Odstraní připojení.|
 |/Connections/JOIN/Action|Spojí připojení.|
@@ -2214,12 +2214,12 @@ Tento zprostředkovatel není úplná zprostředkovatele ARM a neposkytuje žád
 |/Locations/managedapis/Read|Získáte umístění spravovaná rozhraní API.|
 |/Locations/apioperations/Read|Získejte operace umístění rozhraní API.|
 |/Locations/connectiongatewayinstallations/Read|Získáte umístění připojení brány instalace.|
-|/ listSitesAssignedToHostName/čtení|Získáte názvy lokalit, které jsou přiřazené toohostname.|
+|/ listSitesAssignedToHostName/čtení|Získáte názvy lokalit, které jsou přiřazeny k hostitele.|
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zjistěte, jak příliš[vytvořit vlastní roli](role-based-access-control-custom-roles.md).
+- Zjistěte, jak [vytvořit vlastní roli](role-based-access-control-custom-roles.md).
 
-- Zkontrolujte hello [integrovaným rolím RBAC](role-based-access-built-in-roles.md).
+- Zkontrolujte [integrovaným rolím RBAC](role-based-access-built-in-roles.md).
 
-- Zjistěte, jak toomanage přistupovat k přiřazení [uživatelem](role-based-access-control-manage-assignments.md) nebo [prostředkem](role-based-access-control-configure.md) 
+- Zjistěte, jak spravovat přístup k přiřazení [uživatelem](role-based-access-control-manage-assignments.md) nebo [prostředkem](role-based-access-control-configure.md) 

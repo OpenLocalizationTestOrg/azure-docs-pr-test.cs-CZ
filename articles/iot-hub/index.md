@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure dokumentace IoT Hub - kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
-description: "Zjistěte, jak toouse tooconnect IoT Hub, monitorování a řízení až miliardy Internet věcí prostředků. Kurzy, reference k rozhraní API, videa a další dokumentace"
+title: "Dokumentace ke službě Azure IoT Hub – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
+description: "Zjistěte, jak můžete IoT Hub použít k propojení, monitorování a řízení milionů assetů Internetu věcí. Kurzy, reference k rozhraní API, videa a další dokumentace"
 services: iot-hub
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: b4d9e66dad55417cff6b9252379cf7265fb542fb
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 270d1aec5855ee3bb9cc121526d311ab78d989c9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="iot-hub-documentation"></a>Dokumentace ke službě IoT Hub 
 
-Zjistěte, jak toouse tooconnect IoT Hub, monitorování a řízení až miliardy Internet věcí prostředků. Kurzy, reference k rozhraní API, videa a další dokumentace pomáhají nasadit spolehlivou a obousměrnou komunikaci mezi zařízeními IoT a back-endem řešení. 
+Zjistěte, jak můžete IoT Hub použít k propojení, monitorování a řízení milionů assetů Internetu věcí. Kurzy, reference k rozhraní API, videa a další dokumentace pomáhají nasadit spolehlivou a obousměrnou komunikaci mezi zařízeními IoT a back-endem řešení. 
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -106,7 +106,7 @@ Zjistěte, jak toouse tooconnect IoT Hub, monitorování a řízení až miliard
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Příručka vývojáře pro čtení hello</h3>
+                        <h3>Přečíst příručku pro vývojáře</h3>
                     </div>
                 </div>
             </div>

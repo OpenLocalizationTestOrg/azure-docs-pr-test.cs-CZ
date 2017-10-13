@@ -1,6 +1,6 @@
 ---
-title: "Řešení potíží: Chybějící data v hello protokol činnosti Azure Active Directory | Microsoft Docs"
-description: "Seznamy hello různých dostupných sestav pro Azure Active Directory"
+title: "Řešení potíží: Chybějící data v protokolech aktivity služby Azure Active Directory | Dokumentace Microsoftu"
+description: "Obsahuje seznam různých dostupných sestav pro Azure Active Directory."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,31 +15,31 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7bbec94ab42eb5b54a7e65e124060d057b4a1a34
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 47617f8f727027de113a0f503308c8accc58859e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="i-cant-find-some-actions-that-i-performed-in-hello-azure-active-directory-activity-log"></a>Nelze nalézt některé akce provedené v protokolu aktivit hello Azure Active Directory
+# <a name="i-cant-find-some-actions-that-i-performed-in-the-azure-active-directory-activity-log"></a>Nemůžu v protokolu aktivity Azure Active Directory najít některé provedené akce
 
 
 ## <a name="symptoms"></a>Příznaky
 
-I provést některé akce v hello portál Azure a v hello byl očekáván toosee hello protokoly auditu pro tyto akce `Activity logs > Audit Logs` okno, ale I jejich nelze najít.
+Provedl jsem nějaké akce na webu Azure Portal a očekával jsem pro tyto akce zobrazení protokolu auditu v okně `Activity logs > Audit Logs`, ale nemůžu je najít.
 
  ![Vytváření sestav](./media/active-directory-reporting-troubleshoot-missing-audit-data/01.png)
  
 
 ## <a name="cause"></a>Příčina
 
-Akce při protokol auditování aktivity hello nezobrazí okamžitě. Ho může trvat od 15 minut, po které protokoly tooan hodinu toosee hello auditu portálu hello z hello době hello operace.
+Akce se v protokolu auditu aktivity nezobrazí okamžitě. Zobrazení operací v protokolech auditu na portálu může od jejich provedení trvat 15 minut až jednu hodinu.
 
 ## <a name="resolution"></a>Řešení
 
-Počkejte hodinu tooan 15 minut a zobrazit, pokud hello akce se zobrazí v protokolu hello. Pokud je stále nevidíte, vytvořte prosím lístek podpory a my se na to podíváme.
+Počkejte 15 minut až hodinu a pak se podívejte, jestli se akce v protokolu zobrazily. Pokud je stále nevidíte, vytvořte prosím lístek podpory a my se na to podíváme.
 
 
 ## <a name="next-steps"></a>Další kroky
-V tématu hello [Azure Active Directory, vytváření sestav – nejčastější dotazy](active-directory-reporting-faq.md).
+Přečtěte si [nejčastější dotazy ke generování sestav v Azure Active Directory](active-directory-reporting-faq.md).
 

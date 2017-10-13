@@ -1,5 +1,5 @@
 ---
-title: "aaaMedia pracovního postupu Premium kodér formáty a kodeky | Microsoft Docs"
+title: "Formáty Media Encoder Premium pracovního postupu a kodeky | Microsoft Docs"
 description: "Toto téma poskytuje přehled Media Encoder Premium pracovního postupu formáty formáty a kodeky"
 services: media-services
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: e781384ca8f08926f00c83b6710fd413ce2a3e1c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e18de2adc9aac585d6890dd7b43a54f1a0ca177e
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>Formáty Media Encoder Premium pracovního postupu a kodeky
 > [!NOTE]
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Tento dokument obsahuje seznam formáty vstupních a výstupních souborů a kodeků, které jsou podporovány verze verzi public preview hello hello **Media Encoder Premium pracovního postupu** kodér.
+Tento dokument obsahuje seznam formáty vstupních a výstupních souborů a kodeků, které jsou podporovány ve verzi public preview verzi **Media Encoder Premium pracovního postupu** kodér.
 
 [Media Encoder Premium Worflow vstup formáty a kodeky](#input_formats)
 
@@ -37,7 +37,7 @@ Tento dokument obsahuje seznam formáty vstupních a výstupních souborů a kod
 **Pracovní postup Premium Media Encoder** podporuje titulky popsané v [to](#closed_captioning) části. 
 
 ## <a id="input_formats"></a>Pracovní postup Premium Media Encoder vstupní formáty a kodeky
-Hello následující části jsou uvedené hello kodeků a soubor formáty, které podporuje tento procesor médií jako vstup.
+V následující části jsou uvedeny kodeky a soubor formátů, které podporuje tento procesor médií jako vstup.
 
 ### <a name="input-containerfile-formats"></a>Zadejte kontejner nebo formátů
 * Adobe® Flash® F4V
@@ -50,11 +50,11 @@ Hello následující části jsou uvedené hello kodeků a soubor formáty, kter
 * AVI (nekomprimované 8bitové/10 bitů)
 
 ### <a name="input-video-codecs"></a>Vstupní Video kodeky
-* AVC 8-bit nebo 10-bit, až too4:2:2, včetně AVCIntra
+* AVC 8-bit nebo 10-bit, až 4:2:2, včetně AVCIntra
 * Avid DNxHD (v MXF)
 * DVCPro/DVCProHD (v MXF)
 * JPEG2000
-* MPEG-2 (too422 profil a vysokou úroveň, včetně například XDCAM, XDCAM HD, XDCAM IMX, CableLabs® a D10 variant)
+* MPEG-2 (až 422 profil a vysokou úroveň, včetně například XDCAM, XDCAM HD, XDCAM IMX, CableLabs® a D10 variant)
 * MPEG-1
 * Windows Media Video/VC-1
 
@@ -62,14 +62,14 @@ Hello následující části jsou uvedené hello kodeků a soubor formáty, kter
 * AES (SMPTE 331 M a 302 M, AES3-2003)
 * Dolby® E
 * Digitální Dolby® (AC3)
-* AAC (AAC-LC, AAC HE a AAC-HEv2; nahoru too5.1)
+* AAC (AAC-LC, AAC HE a AAC-HEv2; až 5.1)
 * MPEG vrstvy 2
 * MP3 (MPEG-1 zvuk vrstvy 3)
 * Zvuk média systému Windows
 * WAV NEBO PCM
 
 ## <a id="output_format"></a>Media Encoder Premium pracovního postupu výstupní formáty a kodeky
-Hello následující části jsou uvedeny hello kodeků a soubor formáty, které jsou podporované jako výstup z tohoto média procesoru.
+V následující části jsou uvedeny formáty kodeky a souborů, které jsou podporované jako výstup z tohoto média procesoru.
 
 ### <a name="output-containerfile-formats"></a>Výstup kontejneru nebo formátů
 * Adobe® Flash® F4V
@@ -83,10 +83,10 @@ Hello následující části jsou uvedeny hello kodeků a soubor formáty, kter�
 * MPEG-TS 
 
 ### <a name="output-video-codecs"></a>Výstup kodeky videa
-* AVC (H.264; 8bitové; až tooHigh profilu, úroveň 5.2; Ultra HD 4 kB; Uvnitř AVC)
+* AVC (H.264; 8bitové; až profil vysokou úroveň 5.2; 4 kB Ultra HD; Uvnitř AVC)
 * Avid DNxHD (v MXF)
 * DVCPro/DVCProHD (v MXF)
-* MPEG-2 (too422 profil a vysokou úroveň, včetně například XDCAM, XDCAM HD, XDCAM IMX, CableLabs® a D10 variant)
+* MPEG-2 (až 422 profil a vysokou úroveň, včetně například XDCAM, XDCAM HD, XDCAM IMX, CableLabs® a D10 variant)
 * MPEG-1
 * Windows Media Video/VC-1
 * Vytváření miniatur JPEG
@@ -94,14 +94,14 @@ Hello následující části jsou uvedeny hello kodeků a soubor formáty, kter�
 ### <a name="output-audio-codecs"></a>Výstup zvukových kodeků
 * AES (SMPTE 331 M a 302 M, AES3-2003)
 * Digitální Dolby® (AC3)
-* Dolby® Digital Plus (E-AC3) až too7.1
-* AAC (AAC-LC, AAC HE a AAC-HEv2; nahoru too5.1)
+* Dolby® Digital Plus (E-AC3) až 7.1
+* AAC (AAC-LC, AAC HE a AAC-HEv2; až 5.1)
 * MPEG vrstvy 2
 * MP3 (MPEG-1 zvuk vrstvy 3)
 * Zvuk média systému Windows
 
 >[!NOTE]
->Pokud kódování tooDolby® digitální (AC3), výstup hello lze zapsat pouze do souboru ISO MP4.
+>Pokud jste dekódovat digitální® Dolby (AC3), výstup lze zapsat pouze do souboru ISO MP4.
 
 ## <a id="closed_captioning"></a>Podpora pro titulků
 Na ingestování, **Media Encoder Premium pracovního postupu** podporuje:
@@ -111,19 +111,19 @@ Na ingestování, **Media Encoder Premium pracovního postupu** podporuje:
 3. CEA-608/CEA-708 – provádí jako uživatelská data (SEI zpráv H.264 základní datové proudy, ATSC/53, SCTE20) nebo provádět jako pomocnou dat v souborech MXF/GXF
 4. Soubory subtitle STL
 
-Na výstupu jsou k dispozici hello následující možnosti:
+Na výstupu jsou k dispozici následující možnosti:
 
-1. Překlad tooCEA 708 CEA 608
+1. CEA 608 k CEA 708 překlad
 2. CEA-608/CEA-708 předávání (vložených v SEI zprávy základní datové proudy H.264 nebo provádět jako pomocnou dat v souborech MXF)
 3. SCC
 4. Text SMPTE vypršel časový limit (ze zdroje CEA 608 za SMPTE RP2052, včetně vytváření souborů DFXP)
 5. Soubor Subtitle SRT aplikace
 6. Subtitle DVB datové proudy
 
-Poznámka: všechny hello výše výstupní formáty jsou podporována pro doručení pomocí vysílání datového proudu ve službě Azure Media Services.
+Poznámka: výše uvedené výstupním formátu jsou podporovány pro doručení pomocí vysílání datového proudu ve službě Azure Media Services.
 
 ## <a name="known-issues"></a>Známé problémy
-Pokud vaše vstupní video neobsahuje titulků, hello výstupní že Asset bude stále obsahovat prázdný soubor TTML. 
+Pokud vaše vstupní video neobsahuje uzavřen, přidávání titulků, výstup Asset bude stále obsahovat prázdný soubor TTML. 
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

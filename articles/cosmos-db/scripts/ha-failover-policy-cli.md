@@ -1,5 +1,5 @@
 ---
-title: "rozhraní příkazového řádku skriptu-vytvořit zásadu převzetí služeb při selhání pro zajištění vysoké dostupnosti aaaAzure | Microsoft Docs"
+title: "Azure CLI skriptu-vytvořit zásadu převzetí služeb při selhání pro zajištění vysoké dostupnosti | Microsoft Docs"
 description: "Azure CLI skriptu ukázkové – vytvořte zásadu převzetí služeb při selhání pro zajištění vysoké dostupnosti"
 services: cosmos-db
 documentationcenter: cosmosdb
@@ -16,27 +16,27 @@ ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 06/02/2017
 ms.author: mimig
-ms.openlocfilehash: 9076f4ef23fceb4208c934c57ac6899f0b58ffd3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 96083d66cc1a2ef179f9313c1b3ed04162c1c048
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="create-a-failover-policy-for-high-availability-using-hello-azure-cli"></a>Vytvořit zásadu převzetí služeb při selhání pro zajištění vysoké dostupnosti pomocí hello rozhraní příkazového řádku Azure
+# <a name="create-a-failover-policy-for-high-availability-using-the-azure-cli"></a>Vytvořit zásadu převzetí služeb při selhání pro vysokou dostupnost, pomocí rozhraní příkazového řádku Azure
 
 Tento ukázkový skript rozhraní příkazového řádku vytvoří účet Azure Cosmos DB a nakonfiguruje jej pro vysokou dostupnost.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud zvolte tooinstall a místně pomocí hello rozhraní příkazového řádku, v tomto tématu vyžaduje, že používáte hello Azure CLI verze 2.0 nebo novější. Spustit `az --version` toofind hello verze. Pokud potřebujete tooinstall nebo aktualizace, přečtěte si [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-[!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/high-availability-cosmosdb-configure-failover/high-availability-cosmosdb-configure-failover.sh?highlight=23-27 "Create an Azure Cosmos DB failover policy")]
+[!code-azurecli-interactive[hlavní](../../../cli_scripts/cosmosdb/high-availability-cosmosdb-configure-failover/high-availability-cosmosdb-configure-failover.sh?highlight=23-27 "vytvořit zásadu pro Azure Cosmos DB převzetí služeb při selhání")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Po spuštění ukázka skriptu hello hello následující příkaz může být skupiny prostředků použít tooremove hello a všechny prostředky, které jsou s ním spojená.
+Po spuštění ukázka skriptu, následující příkaz lze použít k odebrání skupiny prostředků a všechny prostředky, které jsou s ním spojená.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
@@ -44,7 +44,7 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá hello následující příkazy. Každý příkaz v hello tabulky odkazů toocommand konkrétní dokumentaci.
+Tento skript používá následující příkazy. Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.
 
 | Příkaz | Poznámky |
 |---|---|
@@ -55,6 +55,6 @@ Tento skript používá hello následující příkazy. Každý příkaz v hello
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o hello rozhraní příkazového řádku Azure najdete v tématu [dokumentaci k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview).
+Další informace o rozhraní příkazového řádku Azure najdete v tématu [dokumentaci k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview).
 
-Další ukázky skript příkazového řádku DB Cosmos Azure lze nalézt v hello [dokumentace Azure Cosmos DB CLI](../cli-samples.md).
+Další ukázky skript příkazového řádku DB Cosmos Azure lze nalézt v [dokumentace Azure Cosmos DB CLI](../cli-samples.md).

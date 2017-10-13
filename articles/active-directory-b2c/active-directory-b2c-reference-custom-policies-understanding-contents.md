@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory B2C: Seznámení vlastní zásady sady starter hello | Microsoft Docs"
+title: "Azure Active Directory B2C: Seznámení vlastní zásady sady starter | Microsoft Docs"
 description: "Téma na Azure Active Directory B2C vlastní zásady"
 services: active-directory-b2c
 documentationcenter: 
@@ -14,89 +14,89 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/25/2017
 ms.author: joroja
-ms.openlocfilehash: 3484e8cc6fa6a9d57c2aa14c0cc9616065892d10
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 9847bcfcc139a769847678c1cca6a8b9c3a30e93
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="understanding-hello-custom-policies-of-hello-azure-ad-b2c-custom-policy-starter-pack"></a>Principy hello vlastní zásady vlastní zásady pro spuštění sady hello Azure AD B2C
+# <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>Seznámení s vlastní zásady Startovní sady Azure AD B2C vlastních zásad
 
-Tato část uvádí všechny elementy základní hello hello B2C_1A_base zásad, která se dodává s hello **Starter Pack** a který je využít k vytváření vlastních zásad prostřednictvím hello dědičnosti třídy hello *B2C_1A_base_ rozšíření zásad*.
+V této části jsou uvedeny všechny základní prvky B2C_1A_base zásad, která se dodává s **Starter Pack** a který je využít k vytváření vlastních zásad pro prostřednictvím dědičnosti třídy *B2C_1A_base_extensions zásad* .
 
-Jako takový ho více zvlášť zaměřen na hello již definována deklarace identity typy, transformace deklarací, obsahu definice, poskytovatelů deklarací identity s jejich technické profily a hello základní uživatelské cesty.
+Jako takový ho zejména zaměřen na typy už definované deklarací identity, transformace deklarací, obsahu definice, poskytovatelů deklarací identity s jejich technické profily a cesty uživatele jádra.
 
 > [!IMPORTANT]
-> Společnost Microsoft neposkytuje žádné záruky, vyjádřené nebo předpokládané, s ohledem na toohello informací uvedených níže. V době GA nebo po může kdykoli před časem GA zavedeny změny.
+> Společnost Microsoft neposkytuje žádné záruky, vyjádřené nebo předpokládané, s ohledem na informacích uvedených níže. V době GA nebo po může kdykoli před časem GA zavedeny změny.
 
-Vlastní zásady a hello B2C_1A_base_extensions zásady můžete přepsat tyto definice a prodloužit tuto zásadu nadřazené tím, že poskytuje další ty, které jsou podle potřeby.
+Zásady B2C_1A_base_extensions i svoje vlastní zásady můžete přepsat tyto definice a prodloužit tuto zásadu nadřazené tím, že poskytuje další ty, které jsou podle potřeby.
 
-Hello základní prvky hello *B2C_1A_base zásad* jsou typy deklarací identity, transformace deklarací a definic obsahu. Tyto prvky můžete náchylný toobe odkazovaný ve vlastní zásady také jako hello *B2C_1A_base_extensions zásad*.
+Základní prvky *B2C_1A_base zásad* jsou typy deklarací identity, transformace deklarací a definic obsahu. Tyto prvky můžete odkazovat ve vlastní zásady, stejně jako v náchylné *B2C_1A_base_extensions zásad*.
 
 ## <a name="claims-schemas"></a>Schémata deklarace identity
 
 Tato deklarace identity, schémata je rozdělené do tří částí:
 
-1.  První oddíl, který obsahuje seznam hello minimální deklarací, které jsou požadovány pro hello uživatele cesty toowork správně.
-2.  Druhý oddíl, seznamy hello deklarace identity, které jsou potřebné pro parametrů řetězce dotazu a jiné speciální parametry toobe předána tooother zprostředkovatelů deklarací identit, zejména login.microsoftonline.com pro ověřování. **Neměňte prosím tyto deklarace**.
-3.  A nakonec třetí oddíl, který obsahuje seznam dalších, volitelných deklarace identity, které mohou být shromažďovány z hello uživatele uložené v adresáři hello a odeslány v tokenech během přihlášení. V této části mohou být přidány nové deklarace identity typu toobe shromážděných z hello uživatele nebo odeslat v tokenu hello.
+1.  První oddíl, který obsahuje minimální deklarace identity, které jsou požadovány pro uživatele cesty správně fungovat.
+2.  Druhý oddíl, který obsahuje seznam deklarací potřebné pro parametrů řetězce dotazu a další speciální parametry mají být předány jiných zprostředkovatelů deklarací identity, zejména login.microsoftonline.com pro ověřování. **Neměňte prosím tyto deklarace**.
+3.  A nakonec třetí oddíl, který obsahuje seznam dalších, volitelných deklarace identity, které mohou být shromažďovány z uživatele, uložené v adresáři a odeslány v tokenech během přihlášení. V této části můžete přidat nový typ deklarace identity a shromažďovat od uživatelů nebo odeslat v tokenu.
 
 > [!IMPORTANT]
-> schéma Hello deklarací identity obsahuje omezení na určité deklarace identity, jako jsou uživatelská jména a hesla. Hello zásady důvěryhodnosti Framework TF zpracovává Azure AD jako ostatní poskytovatele deklarací identity a všechny její omezení jsou modelována v hello premium zásad. Zásady může být upravený tooadd další omezení, nebo pomocí jiného poskytovatele deklarací identity pro úložiště přihlašovacích údajů, který bude mít svůj vlastní omezení.
+> Schéma deklarací identity obsahuje omezení na určité deklarace identity, jako jsou uživatelská jména a hesla. Zásady důvěryhodnosti Framework TF zpracovává Azure AD jako ostatní poskytovatele deklarací identity a všechny její omezení jsou modelována v zásadách premium. Zásady je možné upravovat přidat další omezení, nebo použijte jiného poskytovatele deklarací identity pro úložiště přihlašovacích údajů, který bude mít svůj vlastní omezení.
 
-Níže jsou uvedeny typy deklarací identity k dispozici Hello.
+Typy deklarací identity k dispozici jsou uvedeny níže.
 
-### <a name="claims-that-are-required-for-hello-user-journeys"></a>Deklarace identity, které jsou požadovány pro cesty uživatele hello
+### <a name="claims-that-are-required-for-the-user-journeys"></a>Deklarace identity, které jsou požadovány pro cesty uživatele
 
-Hello následující deklarace identity jsou požadovány pro uživatele cesty toowork správně:
+Následující deklarace identity jsou požadovány pro uživatele cesty ke správné funkci:
 
 | Typ deklarace identity | Popis |
 |-------------|-------------|
 | *ID uživatele* | Uživatelské jméno |
 | *signInName* | Přihlaste se název |
-| *tenantId* | Identifikátor klienta (ID) hello objektu uživatele v Azure AD B2C Premium |
-| *objectId* | Identifikátor objektu (ID) hello objektu uživatele v Azure AD B2C Premium |
+| *tenantId* | Identifikátor klienta (ID) objektu uživatele v Azure AD B2C Premium |
+| *objectId* | Identifikátor objektu (ID) objektu uživatele v Azure AD B2C Premium |
 | *heslo* | Heslo |
 | *nové_heslo* | |
 | *reenterPassword* | |
-| *passwordPolicies* | Zásady pro hesla používané síly hesla toodetermine Premium Azure AD B2C, vypršení platnosti, atd. |
+| *passwordPolicies* | Zásady pro hesla používají Azure AD B2C Premium k určení síly hesla, vypršení platnosti, atd. |
 | *Sub –* | |
 | *alternativeSecurityId* | |
 | *identityProvider* | |
 | *displayName* | |
 | *strongAuthenticationPhoneNumber* | Telefonní číslo uživatele |
 | *Verified.strongAuthenticationPhoneNumber* | |
-| *e-mailu* | E-mailovou adresu, kterou lze použít toocontact hello uživatele |
-| *signInNamesInfo.emailAddress* | E-mailovou adresu, která hello uživatele můžete použít toosign v |
-| *otherMails* | E-mailové adresy, které se dají použít toocontact hello uživatele |
-| *userPrincipalName* | Uživatelské jméno, jak je uložen v hello Azure AD B2C Premium |
+| *e-mailu* | E-mailovou adresu, které je možné kontaktovat uživatele |
+| *signInNamesInfo.emailAddress* | E-mailovou adresu, která uživatel může použít pro přihlášení |
+| *otherMails* | E-mailové adresy, které lze použít ke kontaktování uživatele |
+| *userPrincipalName* | Uživatelské jméno dle záznamu v Azure AD B2C Premium |
 | *upnUserName* | Uživatelské jméno pro vytváření hlavní název uživatele |
-| *mailNickName* | Uživatelské jméno e-mailu nick uložen v hello Azure AD B2C Premium |
+| *mailNickName* | Uživatelské jméno e-mailu nick uložen v Azure AD B2C Premium |
 | *newUser* | |
-| *provést vstup SelfAsserted* | Deklarace identity, která určuje, zda byly shromažďovány atributy od uživatele hello |
-| *provést vstup PhoneFactor* | Deklarace identity, která určuje, zda nové telefonní číslo bylo odebráno od uživatele hello |
-| *authenticationSource* | Určuje, zda byla ověřena hello uživatele na sociálních zprostředkovatele Identity, login.microsoftonline.com nebo místní účet |
+| *provést vstup SelfAsserted* | Deklarace identity, která určuje, zda byly shromažďovány atributy od uživatele |
+| *provést vstup PhoneFactor* | Deklarace identity, která určuje, zda nové telefonní číslo bylo odebráno od uživatele |
+| *authenticationSource* | Určuje, zda byl uživatel ověřený v sociálních zprostředkovatele Identity, login.microsoftonline.com nebo místní účet |
 
 ### <a name="claims-required-for-query-string-parameters-and-other-special-parameters"></a>Deklarace identity, které jsou potřebné pro parametrů řetězce dotazu a další speciální parametry
 
-Hello následující deklarace identity jsou požadované toopass na zprostředkovatelů deklarací identit tooother speciální parametry (včetně některých parametrů řetězce dotazu):
+Následující deklarace identit vyžadují speciální parametrů (včetně některých parametrů řetězce dotazu) předat do jiných zprostředkovatelů deklarací identity:
 
 | Typ deklarace identity | Popis |
 |-------------|-------------|
-| *Nux* | Byl předán pro místní účet ověřování toologin.microsoftonline.com speciální parametr. |
-| *NCA* | Byl předán pro místní účet ověřování toologin.microsoftonline.com speciální parametr. |
-| *řádku* | Byl předán pro místní účet ověřování toologin.microsoftonline.com speciální parametr. |
-| *mkt* | Byl předán pro místní účet ověřování toologin.microsoftonline.com speciální parametr. |
-| *LC* | Byl předán pro místní účet ověřování toologin.microsoftonline.com speciální parametr. |
-| *grant_type* | Byl předán pro místní účet ověřování toologin.microsoftonline.com speciální parametr. |
-| *obor* | Byl předán pro místní účet ověřování toologin.microsoftonline.com speciální parametr. |
-| *client_id* | Byl předán pro místní účet ověřování toologin.microsoftonline.com speciální parametr. |
-| *objectIdFromSession* | Parametr poskytované systém hello výchozí relace správy zprostředkovatele tooindicate hello id objektu načtení z relace jednotného přihlašování |
-| *isActiveMFASession* | Parametr poskytované hello MFA relace správy tooindicate, že tento uživatel hello má aktivní relaci vícefaktorového ověřování |
+| *Nux* | Speciální parametr předaný pro místní účet ověřování login.microsoftonline.com |
+| *NCA* | Speciální parametr předaný pro místní účet ověřování login.microsoftonline.com |
+| *řádku* | Speciální parametr předaný pro místní účet ověřování login.microsoftonline.com |
+| *mkt* | Speciální parametr předaný pro místní účet ověřování login.microsoftonline.com |
+| *LC* | Speciální parametr předaný pro místní účet ověřování login.microsoftonline.com |
+| *grant_type* | Speciální parametr předaný pro místní účet ověřování login.microsoftonline.com |
+| *obor* | Speciální parametr předaný pro místní účet ověřování login.microsoftonline.com |
+| *client_id* | Speciální parametr předaný pro místní účet ověřování login.microsoftonline.com |
+| *objectIdFromSession* | Zadaný parametr výchozí zprostředkovatel správy relace k označení, že id objektu načtení z relace jednotného přihlašování |
+| *isActiveMFASession* | Zadaný parametr správou relace MFA k označení, že uživatel má aktivní relaci vícefaktorového ověřování |
 
 ### <a name="additional-optional-claims-that-can-be-collected"></a>Další (volitelné) deklarace identity, které se můžou shromažďovat
 
-Následující Hello deklarací se další deklarace identity, které mohou být shromažďovány z hello uživatele uložené v adresáři hello a odesílají v tokenu hello. Jak je uvedeno před, další deklarace identity se dá přidat toothis seznamu.
+Následující deklarace identity jsou další deklarace identity, které můžete shromažďovat od uživatelů, uložené v adresáři a odesílají v tokenu. Jak je uvedeno před, další deklarace identity lze přidat do tohoto seznamu.
 
 | Typ deklarace identity | Popis |
 |-------------|-------------|
@@ -106,7 +106,7 @@ Následující Hello deklarací se další deklarace identity, které mohou být
 
 ## <a name="claim-transformations"></a>Transformace deklarací identity
 
-transformace deklarace identity k dispozici Hello jsou uvedeny níže.
+Transformace deklarace identity k dispozici jsou uvedeny níže.
 
 | Transformace deklarací identity | Popis |
 |----------------------|-------------|
@@ -119,7 +119,7 @@ transformace deklarace identity k dispozici Hello jsou uvedeny níže.
 
 ## <a name="content-definitions"></a>Definice obsahu
 
-Tato část popisuje hello obsahu definice již byl deklarován v hello *B2C_1A_base* zásad. Tyto definice obsahu jsou náchylné toobe odkazovat, přepsat nebo rozšířené podle potřeby v svoje vlastní zásady také jako hello *B2C_1A_base_extensions* zásad.
+Tato část popisuje obsahu definice již byl deklarován v *B2C_1A_base* zásad. Jsou náchylné k odkazuje, přepsat nebo rozšířené podle potřeby v svoje vlastní zásady, stejně jako v těchto obsahu definice *B2C_1A_base_extensions* zásad.
 
 | Poskytovatele deklarací identity | Popis |
 |-----------------|-------------|
@@ -136,7 +136,7 @@ Tato část popisuje hello obsahu definice již byl deklarován v hello *B2C_1A_
 
 ## <a name="technical-profiles"></a>Technické profily
 
-Tato část znázorňuje hello technické profily už deklarovaný za poskytovatele deklarací identity v hello *B2C_1A_base* zásad. Tyto technické profily jsou náchylné toobe další odkazuje, přepsat nebo rozšířené podle potřeby v svoje vlastní zásady také jako hello *B2C_1A_base_extensions* zásad.
+Znázorňuje technické profily už deklarovaný za poskytovatele deklarací identity v této části *B2C_1A_base* zásad. Tyto technické profily jsou náchylné k se dál odkazovat, přepsat nebo rozšířené podle potřeby v svoje vlastní zásady, stejně jako v *B2C_1A_base_extensions* zásad.
 
 ### <a name="technical-profiles-for-facebook"></a>Technické profily pro Facebook
 
@@ -162,7 +162,7 @@ Tato část znázorňuje hello technické profily už deklarovaný za poskytovat
 
 | Technické profilu | Popis |
 |-------------------|-------------|
-| *Běžné AAD* | Technické profil podle hello jiných profilů technické AAD xxx |
+| *Běžné AAD* | Technické profil podle jiných AAD xxx technické profilů |
 | *AAD UserWriteUsingAlternativeSecurityId* | Technické profil pro sociálních přihlášení |
 | *AAD UserReadUsingAlternativeSecurityId* | Technické profil pro sociálních přihlášení |
 | *AAD. UserReadUsingAlternativeSecurityId NoError* | Technické profil pro sociálních přihlášení |
@@ -171,7 +171,7 @@ Tato část znázorňuje hello technické profily už deklarovaný za poskytovat
 | *AAD UserWriteProfileUsingObjectId* | Aktualizace záznamu uživatele pomocí objectId technické profilu |
 | *AAD UserWritePhoneNumberUsingObjectId* | Aktualizace záznamu uživatele pomocí objectId technické profilu |
 | *AAD UserWritePasswordUsingObjectId* | Aktualizace záznamu uživatele pomocí objectId technické profilu |
-| *AAD UserReadUsingObjectId* | Technické profil je použité tooread dat po ověření uživatele |
+| *AAD UserReadUsingObjectId* | Technické profil slouží k načtení dat po ověření uživatele |
 
 ### <a name="technical-profiles-for-self-asserted"></a>Technické profily pro samoobslužné prohlašovanou
 
@@ -192,13 +192,13 @@ Tato část znázorňuje hello technické profily už deklarovaný za poskytovat
 |-------------------|-------------|
 | *SM-nedojde k žádné akci* | |
 | *SM AAD* | |
-| *SM SocialSignup* | Název profilu je se použité toodisambiguate AAD relace mezi Přihlaste se a přihlaste se |
+| *SM SocialSignup* | Název profilu se používá k rozlišení AAD relace mezi přihlašovací nahoru a přihlášení |
 | *SM SocialLogin* | |
 | *SM MFA* | |
 
 ### <a name="technical-profiles-for-trustframework-policy-engine-technicalprofiles"></a>Technické profily pro TechnicalProfiles modul zásad Trustframework
 
-V současné době jsou definovány žádné technické profily pro hello **TechnicalProfiles modul zásad Trustframework** poskytovatele deklarací identity.
+V současné době jsou definovány žádné technické profily pro **TechnicalProfiles modul zásad Trustframework** poskytovatele deklarací identity.
 
 ### <a name="technical-profiles-for-token-issuer"></a>Technické profily pro vydavatel tokenu
 
@@ -208,7 +208,7 @@ V současné době jsou definovány žádné technické profily pro hello **Tech
 
 ## <a name="user-journeys"></a>Uživatel cesty
 
-Tato část znázorňuje cesty uživatele hello již byl deklarován v hello *B2C_1A_base* zásad. Tyto cesty uživatele jsou náchylné toobe další odkazuje, přepsat nebo rozšířené podle potřeby v svoje vlastní zásady také jako hello *B2C_1A_base_extensions* zásad.
+Znázorňuje cesty uživatel již byl deklarován v této části *B2C_1A_base* zásad. Tyto cesty uživatele jsou náchylné k se dál odkazovat, přepsat nebo rozšířené podle potřeby v svoje vlastní zásady, stejně jako v *B2C_1A_base_extensions* zásad.
 
 | Uživatel cesty | Popis |
 |--------------|-------------|

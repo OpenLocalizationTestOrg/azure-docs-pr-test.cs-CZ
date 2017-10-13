@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure dokumentace prostředí HDInsight - kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
-description: "Naučte se používat Hadoop v HDInsightu. Dokumentace se dozvíte, jak toouse Hadoop, Spark, HBase, R Server a další tooprocess analyzují a získáte přehled o z velkých objemů dat."
+title: "Dokumentace ke službě Azure HDInsight – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
+description: "Naučte se používat Hadoop v HDInsightu. Z dokumentace se dozvíte, jak pomocí Hadoopu, Sparku, HBase, R-Serveru a dalších technologií zpracovávat, analyzovat a zkoumat velké objemy dat."
 services: hdinsight
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 592c31863df2e90886c9e9596b1a24edea79e990
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7d639ca03261f3a9cad537dd92103c5aa6cd0af9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="azure-hdinsight-documentation"></a>Dokumentace ke službě HDInsight
 
-Zjistěte, jak cloudové v hello toouse Hadoop na HDInsight tooanalyze streamování nebo historická data. Kurzy a další dokumentaci ukazují, jak toocreate clusterů, zpracování a analyzují velké objemy dat a vývoj řešení s Hadoop, Spark, HBase, R Server, Storm a dalších technologiích v ekosystému Hadoop hello.
+Naučte se používat Hadoop v cloudu v HDInsight pro analýzu streamování nebo historických dat. V kurzech a další dokumentaci se dozvíte, jak vytvářet clustery, zpracovávat a analyzovat velké objemy dat a vyvíjet řešení s použitím Hadoopu, Sparku, HBase, R-Serveru, Stormu a dalších technologií v ekosystému Hadoop.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -125,6 +125,24 @@ Zjistěte, jak cloudové v hello toouse Hadoop na HDInsight tooanalyze streamov�
                     </div>
                     <div class="cardText">
                         <h3>Začínáme se službou HDInsight a clustery Apache Storm</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+<li>
+        <a href="https://github.com/hdinsight/hdinsight-dev-guide/blob/master/HDInsight%20Developer%20Guide.pdf">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/tutorial.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Příručka pro vývojáře v HDInsightu</h3>
                     </div>
                 </div>
             </div>

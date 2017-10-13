@@ -1,6 +1,6 @@
 ---
-title: "Připojte počítač tooan virtuální síť Azure pomocí Point-to-Site a ověření certifikátem: prostředí PowerShell | Microsoft Docs"
-description: "Bezpečně připojte virtuální síť tooyour počítače tak, že vytvoříte připojení k bráně VPN Point-to-Site ověřování pomocí certifikátů. Tento článek vztahuje toohello modelu nasazení Resource Manager a používá prostředí PowerShell."
+title: "Připojení počítače k virtuální síti Azure typu Point-to-Site s použitím nativního ověřování certifikátů Azure: PowerShell | Dokumentace Microsoftu"
+description: "Připojte počítač bezpečně k virtuální síti vytvořením připojení brány VPN typu Point-to-Site s použitím nativního ověřování certifikátů Azure ve službě VPN Gateway. Tento článek se týká modelu nasazení Resource Manager a používá PowerShell."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/10/2017
+ms.date: 09/25/2017
 ms.author: cherylmc
-ms.openlocfilehash: b962e4b1946a4ae17d4eb2b920ed54437bc26b61
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8c4b2d578a8a586fc63c972ab5da694b2dd9d571
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="configure-a-point-to-site-connection-tooa-vnet-using-certificate-authentication-powershell"></a>Konfigurace tooa připojení Point-to-Site virtuální síť ověřování pomocí certifikátů: prostředí PowerShell
+# <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Konfigurace připojení typu Point-to-Site k virtuální síti s použitím nativního ověřování certifikátů Azure: PowerShell
 
-Tento článek ukazuje, jak toocreate virtuální síť s připojením Point-to-Site v nasazení Resource Manager hello modelu pomocí prostředí PowerShell. Tato konfigurace používá certifikáty tooauthenticate hello připojení klienta. Můžete také vytvořit této konfigurace pomocí nástroje pro jiné nasazení nebo model nasazení tak, že vyberete jinou možnost z hello následující seznamu:
+Tento článek ukazuje postup vytvoření virtuální sítě s připojením typu Point-to-Site v modelu nasazení Resource Manager pomocí PowerShellu. Tato konfigurace využívá k ověřování certifikáty. V této konfiguraci provede ověření certifikátu služba Azure VPN Gateway, a ne server RADIUS. Tuto konfiguraci můžete vytvořit také pomocí jiného nástroje nasazení nebo pro jiný model nasazení, a to výběrem jiné možnosti z následujícího seznamu:
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
@@ -32,54 +32,67 @@ Tento článek ukazuje, jak toocreate virtuální síť s připojením Point-to-
 >
 >
 
-Brána sítě VPN typu Point-to-Site (P2S) umožňuje vytvoření bezpečného připojení virtuální sítě tooyour z jednotlivých klientských počítačů. Připojení point-to-Site VPN jsou užitečné, když chcete, aby tooconnect tooyour virtuální síti ze vzdáleného umístění, například při jsou telefonicky z domova nebo z konference. Síť VPN P2S je také užitečné řešení toouse místo Site-to-Site VPN, pokud máte pouze několik klientů, kteří potřebují tooconnect tooa virtuální sítě.
+Brána VPN typu Point-to-Site (P2S) umožňuje vytvořit zabezpečené připojení k virtuální síti z jednotlivých klientských počítačů. Připojení VPN typu Point-to-Site jsou užitečná, když se chcete ke své virtuální síti připojit ze vzdáleného umístění, například při práci z domova nebo z místa konání konference. Síť VPN P2S je také užitečným řešením nahrazujícím síť VPN Site-to-Site, pokud máte pouze několik klientů, kteří se potřebují připojit k virtuální síti. Připojení VPN typu P2S se zahájí ze zařízení se systémem Windows nebo Mac. 
 
-Používá P2S hello Secure Socket SSTP (Tunneling Protocol), což je protokol VPN založené na protokolu SSL. Připojení P2S VPN je vytvořeno spuštěním z hello klientského počítače.
+Klienti při připojování mohou využít následující metody ověřování:
 
-![Připojení počítače tooan virtuální síť Azure – diagram připojení Point-to-Site](./media/vpn-gateway-howto-point-to-site-rm-ps/point-to-site-diagram.png)
+* Server RADIUS – aktuálně ve verzi Preview
+* Nativní ověřování certifikátů Azure ve službě VPN Gateway
 
-Připojení point-to-Site certifikát ověřování vyžadovat hello následující:
+Tento článek vám pomůže nakonfigurovat konfiguraci P2S s ověřováním pomocí nativního ověřování certifikátů Azure. Pokud chcete RADIUS využít k ověřování připojujících se uživatelů, přečtěte si téma věnované [P2S s využitím ověřování pomocí protokolu RADIUS](point-to-site-how-to-radius-ps.md).
+
+![Připojení počítače k virtuální síti Azure – diagram připojení Point-to-Site](./media/vpn-gateway-howto-point-to-site-rm-ps/p2snativeps.png)
+
+Připojení typu Point-to-Site nevyžadují zařízení VPN ani veřejnou IP adresu. P2S vytvoří připojení VPN prostřednictvím protokolu SSTP (Secure Socket Tunneling Protocol) nebo protokolu IKEv2.
+
+* SSTP je tunel VPN založený na SSL, který se podporuje jenom na klientských platformách Windows. Může proniknout branami firewall a díky tomu je ideální možností pro připojení k Azure odkudkoli. Na straně serveru podporujeme SSTP verze 1.0, 1.1 a 1.2. Klient rozhodne, která verze se má použít. Pro Windows 8.1 a novější se standardně používá SSTP verze 1.2.
+
+* IKEv2 VPN, řešení IPsec VPN založené na standardech. IKEv2 VPN je možné použít k připojení ze zařízení se systémem Mac (OSX verze 10.11 a vyšší). IKEv2 je aktuálně ve verzi Preview.
+
+>[!NOTE]
+>IKEv2 pro P2S je aktuálně ve verzi Preview.
+>
+
+Připojení typu Point-to-Site s nativním ověřováním certifikátů Azure vyžadují následující:
 
 * Bránu VPN typu RouteBased.
-* Hello veřejný klíč (soubor .cer) pro kořenový certifikát, který je nahraný tooAzure. Po nahrání certifikátu hello je považován za důvěryhodný certifikát a slouží k ověřování.
-* Klientský certifikát, který je generována z hello kořenový certifikát a nainstalovat na každý klientský počítač, který se bude připojovat toohello virtuální sítě. Tento certifikát se používá k ověřování klienta.
-* Konfigurační balíček klienta VPN. balíček konfigurace klienta VPN Hello obsahuje nezbytné informace hello hello klienta tooconnect toohello virtuální sítě. balíček Hello nakonfiguruje hello existující klienta VPN, který je nativní toohello operačního systému Windows. Každý klient, který se připojuje musí být nakonfigurovaný pomocí konfiguračního balíčku hello.
+* Veřejný klíč (soubor .cer) pro kořenový certifikát nahraný do Azure. Jakmile je certifikát nahraný, považuje za důvěryhodný certifikát a používá se k ověřování.
+* Klientský certifikát vygenerovaný z kořenového certifikátu a nainstalovaný na každém klientském počítači, který se bude k virtuální síti připojovat. Tento certifikát se používá k ověřování klienta.
+* Konfigurace klienta VPN. Konfigurační soubory klienta VPN obsahují informace potřebné pro připojení klienta k virtuální síti. Soubory konfigurují stávajícího klienta VPN nativního pro příslušný operační systém. Každý klient, který se připojuje, musí být nakonfigurovaný pomocí nastavení v konfiguračních souborech.
 
-Připojení typu Point-to-Site nevyžadují zařízení VPN ani místní veřejnou IP adresu. Vytvoří se Hello připojení VPN prostřednictvím protokolu SSTP (Secure Socket Tunneling Protocol). Na straně serveru hello podporujeme SSTP verze 1.0, 1.1 a 1.2. Klient Hello, rozhodne se které toouse verze. Pro Windows 8.1 a novější se standardně používá SSTP verze 1.2. 
+Další informace o připojení Point-to-Site najdete v tématu věnovaném [připojením typu Point-to-Site](point-to-site-about.md).
 
-Další informace o připojení Point-to-Site najdete v tématu hello [Point-to-Site – nejčastější dotazy](#faq) na konci hello tohoto článku.
-
-## <a name="before-beginning"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 * Ověřte, že máte předplatné Azure. Pokud ještě nemáte předplatné Azure, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial).
-* Nainstalujte nejnovější verzi rutin Powershellu pro Azure Resource Manager hello hello. Další informace o instalaci rutin prostředí PowerShell najdete v tématu [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
+* Nainstalujte nejnovější verzi rutin PowerShellu pro Resource Manager. Další informace o instalaci rutin prostředí PowerShell najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).
 
 ### <a name="example"></a>Příklady hodnot
 
-Můžete použít hello Příklad hodnoty toocreate testovací prostředí nebo najdete hodnoty toothese toobetter pochopit hello příklady v tomto článku. Nastaví proměnné hello v části [1](#declare) hello článku. Můžete buď použít jako návod hello kroky a použít hello hodnoty bez jejich změny nebo změnit je tooreflect prostředí. 
+Příklady hodnot můžete použít k vytvoření testovacího prostředí nebo můžou sloužit k lepšímu pochopení příkladů v tomto článku. Nastavíme proměnné uvedené v části [1](#declare) článku. Můžete buď využít kroky jako podrobný postup a převzít hodnoty beze jejich změny, nebo je změnit tak, aby odpovídaly vašemu prostředí.
 
 * **Název: VNet1**
-* **Adresní prostor: 192.168.0.0/16** a **10.254.0.0/16**<br>V tomto příkladu používáme více než jeden tooillustrate místo adres, který tato konfigurace funguje s více adresní prostory. Více adresních prostorů pro ni ale není potřeba.
+* **Adresní prostor: 192.168.0.0/16** a **10.254.0.0/16**<br>V tomto příkladu se používá více adresních prostorů k ilustraci, že tato konfigurace funguje s více adresními prostory. Více adresních prostorů pro ni ale není potřeba.
 * **Název podsítě: FrontEnd**
   * **Rozsah adres podsítě: 192.168.1.0/24**
 * **Název podsítě: BackEnd**
   * **Rozsah adres podsítě: 10.254.1.0/24**
-* **Název podsítě: GatewaySubnet**<br>název podsítě Hello *GatewaySubnet* je povinné pro toowork brány VPN hello.
+* **Název podsítě: GatewaySubnet**<br>Název podsítě *GatewaySubnet* je pro správnou funkci brány VPN Gateway povinný.
   * **Rozsah adres podsítě brány: 192.168.200.0/24** 
-* **Fond adres klienta VPN: 172.16.201.0/24**<br>Klienti VPN, které se připojují toohello sítě VNet pomocí tohoto připojení Point-to-Site získali IP adresu z hello fond adres klienta VPN.
-* **Předplatné:** Pokud máte více než jedno předplatné, ověřte, že používáte hello správná.
+* **Fond adres klienta VPN: 172.16.201.0/24**<br>Klienti VPN, kteří se budou k síti VNet připojovat pomocí tohoto připojení Point-to-Site, dostanou IP adresu ze zadaného fondu adres klienta VPN.
+* **Předplatné:** Ujistěte se, že máte správné předplatné, pokud máte více než jedno.
 * **Skupina prostředků: TestRG**
 * **Umístění: Východní USA**
-* **Serveru DNS: IP adresa** chcete toouse pro překlad názvu serveru DNS hello.
+* **Server DNS: IP adresa** serveru DNS, který chcete používat pro překlad názvů. (volitelné)
 * **Název brány: Vnet1GW**
 * **Název veřejné IP adresy: VNet1GWPIP**
 * **Typ sítě VPN: RouteBased** 
 
 ## <a name="declare"></a>1. Přihlášení a nastavení proměnných
 
-V této části se přihlaste a deklarovat hello hodnoty používané pro tuto konfiguraci. Hello deklarovat hodnoty se používají v hello ukázkové skripty. Změňte hodnoty tooreflect hello svého vlastního prostředí. Nebo můžete použít hello deklarovaný hodnoty a projít hello kroky jako cvičení.
+V této části se přihlásíte a deklarujete hodnoty používané pro tuto konfiguraci. Deklarované hodnoty jsou použity v ukázkových skriptech. Změňte hodnoty tak, aby odpovídaly vašemu prostředí. Můžete také použít deklarované hodnoty a projít kroky jako cvičení.
 
-1. Otevřete konzolu prostředí PowerShell se zvýšenými oprávněními a přihlaste se tooyour účet Azure. Tato rutina vás vyzve k zadání přihlašovacích údajů hello. Po přihlášení stahování nastavení svého účtu, aby byly k dispozici tooAzure prostředí PowerShell.
+1. Otevřete konzolu PowerShellu se zvýšenými oprávněními a přihlaste se ke svému účtu Azure. Tato rutina vás vyzve k zadání přihlašovacích údajů. Po přihlášení se stáhne nastavení účtu, aby bylo dostupné v prostředí Azure PowerShell.
 
   ```powershell
   Login-AzureRmAccount
@@ -89,12 +102,12 @@ V této části se přihlaste a deklarovat hello hodnoty používané pro tuto k
   ```powershell
   Get-AzureRmSubscription
   ```
-3. Zadejte hello předplatné, které chcete toouse.
+3. Určete předplatné, které chcete použít.
 
   ```powershell
   Select-AzureRmSubscription -SubscriptionName "Name of subscription"
   ```
-4. Deklarujte hello proměnné, které chcete toouse. Použijte hello následující ukázka, nahraďte hello hodnoty pro vlastní, pokud je to nezbytné.
+4. Deklarujte proměnné, které chcete použít. Použijte následující příklad a dle potřeby nahraďte v něm uvedené hodnoty vlastními.
 
   ```powershell
   $VNetName  = "VNet1"
@@ -109,7 +122,6 @@ V této části se přihlaste a deklarovat hello hodnoty používané pro tuto k
   $VPNClientAddressPool = "172.16.201.0/24"
   $RG = "TestRG"
   $Location = "East US"
-  $DNS = "10.1.1.3"
   $GWName = "VNet1GW"
   $GWIPName = "VNet1GWPIP"
   $GWIPconfName = "gwipconf"
@@ -122,27 +134,27 @@ V této části se přihlaste a deklarovat hello hodnoty používané pro tuto k
   ```powershell
   New-AzureRmResourceGroup -Name $RG -Location $Location
   ```
-2. Vytvoření konfigurací podsítě pro virtuální síť hello jejich názvů hello *front-endu*, *back-end*, a *GatewaySubnet*. Tyto předpony musí být součástí hello adresní prostor sítě VNet, která je deklarován.
+2. Vytvořte konfigurace podsítí pro virtuální síť, podsítě pojmenujte *FrontEnd*, *BackEnd* a *GatewaySubnet*. Tyto předpony musí být součástí adresního prostoru virtuální sítě deklarovaného výše.
 
   ```powershell
   $fesub = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName -AddressPrefix $FESubPrefix
   $besub = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubName -AddressPrefix $BESubPrefix
   $gwsub = New-AzureRmVirtualNetworkSubnetConfig -Name $GWSubName -AddressPrefix $GWSubPrefix
   ```
-3. Vytvoření virtuální sítě hello.
+3. Vytvořte virtuální síť.
 
-  V tomto příkladu hello DNS server je volitelné. Zadání hodnoty nevytvoří nový server DNS. Hello IP adresa serveru DNS, který zadáte musí být server DNS, který může překládat názvy hello hello prostředků, ke kterému se připojujete. V tomto příkladu jsme použili privátní IP adresy, ale je pravděpodobné, že se nejedná hello IP adresu serveru DNS. Být jisti toouse vlastní hodnoty.
+  V tomto příkladu je parametr serveru -DnsServer volitelný. Zadání hodnoty nevytvoří nový server DNS. Server DNS, jehož IP adresu zadáte, by měl být server DNS, který dokáže přeložit názvy pro prostředky, ke kterým se ze své virtuální sítě připojujete. V tomto příkladu jsme použili privátní IP adresu, ale je pravděpodobné, že to není IP adresa vašeho serveru DNS. Je potřeba, abyste použili svoje vlastní hodnoty. Hodnotu, kterou zadáte, použijí prostředky, které nasadíte do virtuální sítě, a ne připojení P2S nebo klient VPN.
 
   ```powershell
-  New-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $RG -Location $Location -AddressPrefix $VNetPrefix1,$VNetPrefix2 -Subnet $fesub, $besub, $gwsub -DnsServer $DNS
+  New-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $RG -Location $Location -AddressPrefix $VNetPrefix1,$VNetPrefix2 -Subnet $fesub, $besub, $gwsub -DnsServer 10.2.1.3
   ```
-4. Zadejte proměnné hello hello virtuální sítě, kterou jste vytvořili.
+4. Určete proměnné pro virtuální síť, kterou jste vytvořili.
 
   ```powershell
   $vnet = Get-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $RG
   $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
   ```
-5. Brána VPN musí mít veřejnou IP adresu. Nejprve požádali o prostředek hello IP adresy a pak odkazovat tooit při vytváření brány virtuální sítě. Hello je přiřazená IP adresa dynamicky toohello prostředků při vytváření brány VPN hello. Služba VPN Gateway aktuálně podporuje pouze *dynamické* přidělení veřejné IP adresy. Nemůžete si vyžádat statické přiřazení IP adresy. Však neznamená, že hello IP adresa změní po byl přiřazen tooyour brány VPN. Hello jenom jednou hello změny veřejné IP adresy je při hello brány je odstraní a znovu vytvoří. V případě změny velikosti, resetování nebo jiné operace údržby/upgradu vaší brány VPN se nezmění.
+5. Brána VPN musí mít veřejnou IP adresu. Nejprve si vyžádáte prostředek IP adresy a pak na něj budete odkazovat při vytváření brány virtuální sítě. IP adresa se dynamicky přiřadí k prostředku po vytvoření brány VPN. Služba VPN Gateway aktuálně podporuje pouze *dynamické* přidělení veřejné IP adresy. Nemůžete si vyžádat statické přiřazení IP adresy. To ale neznamená, že se IP adresa po přiřazení k vaší bráně VPN bude měnit. Veřejná IP adresa se změní pouze v případě odstranění a nového vytvoření brány. V případě změny velikosti, resetování nebo jiné operace údržby/upgradu vaší brány VPN se nezmění.
 
   Požádejte o dynamicky přidělovanou veřejnou IP adresu.
 
@@ -151,22 +163,23 @@ V této části se přihlaste a deklarovat hello hodnoty používané pro tuto k
   $ipconf = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
   ```
 
-## <a name="creategateway"></a>3. Vytvoření brány VPN hello
+## <a name="creategateway"></a>3. Vytvoření brány VPN
 
-Nakonfigurujte a vytvořte hello brány virtuální sítě pro virtuální síť.
+Nakonfigurujte a vytvořte bránu virtuální sítě pro svou virtuální síť.
 
-* Hello *- GatewayType* musí být **Vpn** a hello *- VpnType* musí být **RouteBased**.
-* Brána sítě VPN může trvat až minut toocomplete too45, v závislosti na hello [skladová položka brány](vpn-gateway-about-vpn-gateway-settings.md) vyberete.
+* Parametr *-GatewayType* musí mít hodnotu **Vpn** a parametr *-VpnType* musí mít hodnotu **RouteBased**.
+* -VpnClientProtocols se používá k zadání typů tunelů, které chcete povolit. Dostupné jsou dvě možnosti, **SSTP** a **IKEv2**. Můžete si vybrat, jestli povolíte jednu z nich nebo obě. Pokud chcete povolit obě, zadejte oba názvy oddělené čárkou. Klient Strongswan v Androidu a Linuxu a nativní klient IKEv2 VPN v iOS a OSX budou pro připojení používat jenom tunel IKEv2. Klienti Windows nejdřív vyzkoušejí IKEv2 a pokus se nepřipojí, přejdou zpátky k SSTP.
+* Dokončení brány VPN může trvat až 45 minut v závislosti na vybrané [skladové jednotce brány](vpn-gateway-about-vpn-gateway-settings.md). V tomto příkladu používáme protokol IKEv2, který je aktuálně dostupný ve verzi Preview.
 
 ```powershell
 New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 -Location $Location -IpConfigurations $ipconf -GatewayType Vpn `
--VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 `
+-VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientProtocols "IKEv2"
 ```
 
-## <a name="addresspool"></a>4. Přidejte fond adres klienta VPN hello
+## <a name="addresspool"></a>4. Přidání fondu adres klienta VPN
 
-Po dokončení vytvoření brány VPN hello můžete přidat fond adres klienta VPN hello. Hello fond adres klienta VPN je hello rozsah, ze kterého klienti VPN hello přijímat IP adresu pro připojení. Použijte privátní rozsah IP adres, který se nepřekrývá hello místní umístění, které můžete připojit z nebo s hello virtuální sítě, který chcete tooconnect k. V tomto příkladu hello fond adres klienta VPN je deklarován jako [proměnná](#declare) v kroku 1.
+Po dokončení vytváření brány VPN můžete přidat fond adres klienta VPN. Fond adres klienta VPN je rozsah, ze kterého dostanou klienti VPN IP adresu při svém připojení. Použijte rozsah privátních IP adres, který se nepřekrývá s místním umístěním, ze kterého se připojujete, ani s virtuální sítí, ke které se chcete připojit. V tomto příkladu je fond adres klienta VPN deklarován jako [proměnná](#declare) v kroku 1.
 
 ```powershell
 $Gateway = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
@@ -175,11 +188,11 @@ Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $Gateway -VpnClientAddre
 
 ## <a name="Certificates"></a>5. Generování certifikátů
 
-Certifikáty se používají klienti VPN Azure tooauthenticate pro sítě Point-to-Site VPN. Můžete nahrát informace veřejného klíče hello z hello kořenový certifikát tooAzure. Hello veřejný klíč je pak považován za 'důvěryhodné'. Klientské certifikáty musí být vygenerovat z hello důvěryhodného kořenového certifikátu a následně je nainstalován na každém klientském počítači v úložišti certifikátů certifikáty – aktuální uživatel nebo osobní hello. certifikát Hello je použité tooauthenticate hello klienta při zahájí toohello připojení virtuální sítě. 
+Azure používá certifikáty k ověřování klientů VPN pro sítě VPN Point-to-Site. Nahrajete do Azure informace o veřejném klíči kořenového certifikátu. Veřejný klíč se pak bude považovat za důvěryhodný. Klientské certifikáty musí být vygenerované z důvěryhodného kořenového certifikátu a pak nainstalované na každém klientském počítači v úložišti certifikátů v adresáři Certificates-Current User/Personal. Tento certifikát se používá k ověřování klienta při zahájení připojení k virtuální síti. 
 
-Pokud používáte certifikáty podepsané svým držitelem, musí se vytvořit pomocí konkrétních parametrů. Můžete vytvořit certifikát podepsaný svým držitelem pomocí hello pokyny pro [prostředí PowerShell a Windows 10](vpn-gateway-certificates-point-to-site.md), nebo pokud nemáte Windows 10, můžete použít [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md). Je důležité, postupujte podle kroků hello v hello pokyny, při generování vlastních kořenových certifikátů a klientské certifikáty. Jinak hodnota hello certifikátů, který generovat nebudou kompatibilní s připojení P2S a taky bude docházet k chybě připojení.
+Pokud používáte certifikáty podepsané svým držitelem, musí se vytvořit pomocí konkrétních parametrů. Certifikát podepsaný svým držitelem můžete vytvořit podle pokynů pro [PowerShell a Windows 10](vpn-gateway-certificates-point-to-site.md). Pokud nemáte Windows 10, můžete použít [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md). Je důležité, abyste při generování kořenových certifikátů podepsaných svým držitelem a klientských certifikátů postupovali podle pokynů. Jinak certifikáty, které vytvoříte, nebudou kompatibilní s připojeními typu P2S a zobrazí se chyba připojení.
 
-### <a name="cer"></a>1. Získat soubor .cer hello pro hello kořenový certifikát
+### <a name="cer"></a>1. Získání souboru .cer pro kořenový certifikát
 
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-p2s-rootcert-include.md)]
 
@@ -188,16 +201,16 @@ Pokud používáte certifikáty podepsané svým držitelem, musí se vytvořit 
 
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-p2s-clientcert-include.md)]
 
-## <a name="upload"></a>6. Nahrát hello kořenový certifikát informací veřejného klíče
+## <a name="upload"></a>6. Nahrání informací o veřejném klíči kořenového certifikátu
 
-Ověřte, že se dokončilo vytváření brány VPN. Po jeho dokončení můžete nahrát hello souboru .cer (obsahující informace veřejného klíče hello) pro tooAzure důvěryhodný kořenový certifikát. Po nahrání souboru a.cer Azure můžete ji použít tooauthenticate klientů, které jste nainstalovali klientský certifikát generují z hello důvěryhodný kořenový certifikát. V případě potřeby můžete nahrávat další důvěryhodný kořenový certifikát soubory – až tooa celkem 20 – později.
+Ověřte, že se dokončilo vytváření brány VPN. Po dokončení můžete nahrát soubor .cer (obsahující informace o veřejném klíči) důvěryhodného kořenového certifikátu do Azure. Jakmile je soubor .cer nahraný, Azure ho může použít k ověřování klientů s nainstalovaným klientským certifikátem vygenerovaným z důvěryhodného kořenového certifikátu. Později můžete podle potřeby nahrát další soubory s důvěryhodnými kořenovými certifikáty – celkem až 20.
 
-1. Deklarujte hello proměnná pro název certifikátu, nahraďte hello hodnoty vlastními.
+1. Deklarujte proměnnou pro název certifikátu a nahraďte hodnotu vlastní hodnotou.
 
   ```powershell
   $P2SRootCertName = "P2SRootCert.cer"
   ```
-2. Nahraďte cesta k souboru hello vlastní a pak spusťte rutiny hello.
+2. Cestu k souboru nahraďte vlastní cestou a potom spusťte rutiny.
 
   ```powershell
   $filePathForCert = "C:\cert\P2SRootCert.cer"
@@ -205,52 +218,52 @@ Ověřte, že se dokončilo vytváření brány VPN. Po jeho dokončení můžet
   $CertBase64 = [system.convert]::ToBase64String($cert.RawData)
   $p2srootcert = New-AzureRmVpnClientRootCertificate -Name $P2SRootCertName -PublicCertData $CertBase64
   ```
-3. Nahrajte tooAzure hello informace o veřejném klíči. Po odeslání informací o certifikátu hello Azure zvažuje tento toobe důvěryhodný kořenový certifikát.
+3. Nahrajte informace o veřejném klíči do Azure. Jakmile jsou informace o certifikátu nahrané, Azure ho považuje za důvěryhodný kořenový certifikát.
 
-   ```powershell
+  ```powershell
   Add-AzureRmVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName -VirtualNetworkGatewayname "VNet1GW" -ResourceGroupName "TestRG" -PublicCertData $CertBase64
   ```
 
-## <a name="clientconfig"></a>7. Stáhněte si balíček konfigurace klienta VPN hello
+## <a name="clientcertificate"></a>7. Instalace exportovaného klientského certifikátu
 
-tooconnect tooa sítě VNet pomocí sítě VPN Point-to-Site, každý klient musíte nainstalovat balíček konfigurace klienta, který konfiguruje hello Nativní klient VPN s nastavením hello a soubory, které jsou nezbytné tooconnect toohello virtuální sítě. balíček konfigurace klienta VPN Hello nakonfiguruje Nativní klient VPN ve Windows hello, neinstaluje klienta VPN nové nebo jiné. 
+Pokud chcete vytvořit připojení P2S z jiného klientského počítače, než který jste použili k vytvoření klientských certifikátů, budete muset klientský certifikát nainstalovat. Při instalaci klientského certifikátu budete potřebovat heslo, které bylo vytvořeno při jeho exportu.
 
-Hello stejné konfigurace klienta VPN pomocí balíčku v každém klientském počítači, můžete použít také hello verze odpovídá hello architektura pro klienta hello. Seznam hello klientské operační systémy, které jsou podporovány, naleznete v části hello [připojeníPoint-to-Site – nejčastější dotazy](#faq) na konci hello tohoto článku.
+Zkontrolujte, že se klientský certifikát vyexportoval jako soubor .pfx spolu s celým řetězem certifikátů (to je výchozí nastavení). Jinak informace o kořenovém certifikátu na klientském počítači nejsou a klient se nebude moct správně ověřit. 
 
-1. Po vytvoření brány hello můžete vygenerovat a stáhněte balíček konfigurace klienta hello. Tento příklad stáhne hello balíček pro 64bitové klienty. Pokud chcete toodownload hello 32bitová verze klienta, nahraďte 'Amd64' 'x86'. Můžete také stáhnout hello klienta VPN pomocí hello portálu Azure.
+Postup instalace najdete v tématu věnovaném [instalaci klientského certifikátu](point-to-site-how-to-vpn-client-install-azure-cert.md).
 
-  ```powershell
-  Get-AzureRmVpnClientPackage -ResourceGroupName $RG `
-  -VirtualNetworkGatewayName $GWName -ProcessorArchitecture Amd64
-  ```
-2. Zkopírujte a vložte hello odkaz, který je vrácen tooa webového prohlížeče toodownload hello balíčku, dbejte na to tooremove hello uvozovky, které obaluje hello odkaz. 
-3. Stáhněte a nainstalujte balíček hello na klientském počítači hello. Pokud se zobrazí automaticky otevírané okno filtru SmartScreen, klikněte na **Další informace** a potom na **Přesto spustit**. Můžete také uložit balíček tooinstall hello na další klientské počítače.
-4. V počítači klienta hello přejděte příliš**nastavení sítě** a klikněte na tlačítko **VPN**. Hello připojení VPN se zobrazuje název hello hello virtuální sítě, který se připojuje ke službě.
+## <a name="clientconfig"></a>8. Konfigurace nativního klienta VPN
 
-## <a name="clientcertificate"></a>8. Instalace exportovaného klientského certifikátu
+Konfigurační soubory klienta VPN obsahují nastavení pro konfiguraci zařízení, která umožňuje připojit se k virtuální síti přes připojení P2S. Pokyny pro generování a instalaci konfiguračních souborů klienta VPN najdete v tématu věnovaném [vytvoření a instalaci konfiguračních souborů klienta VPN pro konfigurace PS2 s nativním ověřováním certifikátů Azure](point-to-site-vpn-client-configuration-azure-cert.md).
 
-Pokud chcete připojení toocreate P2S z klientského počítače, než hello, kterou používá toogenerate hello klientské certifikáty, musíte tooinstall klientský certifikát. Při instalaci klientského certifikátu, je nutné hello heslo, které byla vytvořena, když byl exportován hello klientský certifikát. Obvykle je právě řádu dvakrát kliknete na soubor certifikátu hello a nainstalujte ho.
+## <a name="connect"></a>9. Připojení k Azure
 
-Zkontrolujte, zda text hello klientský certifikát byl exportován jako .pfx společně s hello celý řetěz certifikátů (což je výchozí hello). Jinak hello kořenový certifikát informace není přítomna na klientském počítači hello a hello klient nebude moct tooauthenticate správně. Další informace najdete v tématu [Instalace exportovaného klientského certifikátu](vpn-gateway-certificates-point-to-site.md#install). 
+### <a name="to-connect-from-a-windows-vpn-client"></a>Připojení z klienta VPN systému Windows
 
-## <a name="connect"></a>9. Připojit tooAzure
+1. Chcete-li se připojit ke své síti VNet, přejděte na klientském počítači na připojení VPN a vyhledejte připojení VPN, které jste vytvořili. Bude mít stejný název jako vaše virtuální síť. Klikněte na **Připojit**. Může se zobrazit místní zpráva týkající se použití certifikátu. Klikněte na **Pokračovat** pro použití zvýšených oprávnění. 
+2. Připojení spustíte kliknutím na tlačítko **Připojit** na stavové stránce **Připojení**. Pokud uvidíte obrazovku **Výběr certifikátu**, ujistěte se, že zobrazený klientský certifikát je ten, který chcete pro připojení použít. Pokud není, vyberte pomocí šipky rozevíracího seznamu správný certifikát, a poté klikněte na **OK**.
 
-1. tooconnect tooyour virtuální síť, v klientském počítači hello přejděte tooVPN připojení a vyhledejte hello připojení VPN, který jste vytvořili. Je název hello stejný název jako vaše virtuální síť. Klikněte na **Připojit**. Zobrazí se zpráva se zobrazí s odkazuje toousing hello certifikátu. Klikněte na tlačítko **pokračovat** toouse se zvýšenými oprávněními. 
-2. Na hello **připojení** stavové stránce klikněte na tlačítko **připojit** toostart hello připojení. Pokud se zobrazí **vybrat certifikát** obrazovky, ověřte, zda je zobrazení certifikátu klienta hello hello jeden, které chcete toouse tooconnect. Pokud není, použijte hello šipku tooselect hello správný certifikát a pak klikněte na tlačítko **OK**.
-
-  ![Klient VPN připojí tooAzure](./media/vpn-gateway-howto-point-to-site-rm-ps/clientconnect.png)
+  ![Připojení klienta VPN k Azure](./media/vpn-gateway-howto-point-to-site-rm-ps/clientconnect.png)
 3. Vaše připojení bylo vytvořeno.
 
   ![Vytvořené připojení](./media/vpn-gateway-howto-point-to-site-rm-ps/connected.png)
 
-#### <a name="troubleshooting-p2s-connections"></a>Řešení potíží s připojeními P2S
+#### <a name="troubleshooting-windows-client-p2s-connections"></a>Řešení potíží s připojeními P2S u klientů se systémem Windows
 
 [!INCLUDE [client certificates](../../includes/vpn-gateway-certificates-verify-client-cert-include.md)]
 
-## <a name="verify"></a>10. Ověření stavu připojení
+### <a name="to-connect-from-a-mac-vpn-client"></a>Připojení z klienta VPN systému Mac
 
-1. tooverify, že je připojení k síti VPN aktivní, otevřete příkazový řádek se zvýšenými oprávněními a spusťte *ipconfig/all*.
-2. Zobrazení výsledků hello. Všimněte si, že hello IP adresu, kterou jste obdrželi je jednou z adres hello v rámci hello Point-to-Site fond adres klienta v síti VPN, který jste zadali v konfiguraci. výsledky Hello jsou podobné toothis příklad:
+V dialogovém okně Síť vyhledejte klientský profil, který chcete použít, a potom klikněte na **Připojit**.
+
+  ![Připojení v systému Mac](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
+
+## <a name="verify"></a>Ověření stavu připojení
+
+Tyto pokyny platí pro klienty se systémem Windows.
+
+1. Chcete-li ověřit, zda je připojení VPN aktivní, v příkazovém řádku se zvýšenými oprávněními spusťte příkaz *ipconfig/all*.
+2. Zkontrolujte výsledky. Všimněte si, že IP adresa, kterou jste obdrželi, je jedna z adres z fondu adres klienta VPN připojení Point-to-Site, který jste určili během konfigurace. Výsledky jsou podobné tomuto příkladu:
 
   ```
   PPP adapter VNet1:
@@ -265,23 +278,25 @@ Zkontrolujte, zda text hello klientský certifikát byl exportován jako .pfx sp
       NetBIOS over Tcpip..............: Enabled
   ```
 
-## <a name="connectVM"></a>Připojit tooa virtuálního počítače
+## <a name="connectVM"></a>Připojení k virtuálnímu počítači
 
-[!INCLUDE [Connect tooa VM](../../includes/vpn-gateway-connect-vm-p2s-include.md)]
+Tyto pokyny platí pro klienty se systémem Windows.
+
+[!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-p2s-include.md)]
 
 ## <a name="addremovecert"></a>Přidání nebo odebrání kořenového certifikátu
 
-Důvěryhodný kořenový certifikát můžete do Azure přidat nebo ho z Azure odebrat. Když odeberete kořenový certifikát, klienti, kteří mají certifikát generují z hello kořenový certifikát nemůže ověřit, nebude možné tooconnect. Pokud chcete klienta tooauthenticate a připojit, je nutné vygenerovat nový klientský certifikát z kořenového certifikátu, který je důvěryhodný (nahrané) tooAzure tooinstall.
+Důvěryhodný kořenový certifikát můžete do Azure přidat nebo ho z Azure odebrat. Když odeberete kořenový certifikát, klienti s certifikátem vygenerovaným z kořenového certifikátu se nebudou moc ověřit ani připojit. Pokud chcete, aby se klient mohl i nadále ověřovat a připojovat, je nutné nainstalovat nový klientský certifikát vygenerovaný z kořenového certifikátu, který Azure považuje za důvěryhodný (je do Azure nahraný).
 
-### <a name="addtrustedroot"></a>tooadd důvěryhodného kořenového certifikátu
+### <a name="addtrustedroot"></a>Přidání důvěryhodného kořenového certifikátu
 
-Můžete přidat až too20 kořenový certifikát .cer soubory tooAzure. Hello následující kroky nápovědy přidat kořenový certifikát:
+Do Azure můžete přidat až 20 souborů .cer s kořenovými certifikáty. Kořenový certifikát můžete přidat provedením následujících kroků:
 
 #### <a name="certmethod1"></a>Metoda 1
 
-Toto je hello nejúčinnější metoda tooupload kořenový certifikát.
+Toto je nejefektivnější metoda nahrání kořenového certifikátu.
 
-1. Příprava tooupload soubor .cer hello:
+1. Připravte soubor .cer k nahrání:
 
   ```powershell
   $filePathForCert = "C:\cert\P2SRootCert3.cer"
@@ -289,13 +304,13 @@ Toto je hello nejúčinnější metoda tooupload kořenový certifikát.
   $CertBase64_3 = [system.convert]::ToBase64String($cert.RawData)
   $p2srootcert = New-AzureRmVpnClientRootCertificate -Name $P2SRootCertName -PublicCertData $CertBase64_3
   ```
-2. Nahrajte soubor hello. Najednou můžete nahrát jenom jeden soubor.
+2. Nahrajte soubor. Najednou můžete nahrát jenom jeden soubor.
 
   ```powershell
   Add-AzureRmVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName -VirtualNetworkGatewayname "VNet1GW" -ResourceGroupName "TestRG" -PublicCertData $CertBase64_3
   ```
 
-3. tooverify tento soubor certifikátu hello odeslat:
+3. Ověřte nahrání souboru certifikátu:
 
   ```powershell
   Get-AzureRmVpnClientRootCertificate -ResourceGroupName "TestRG" `
@@ -304,38 +319,38 @@ Toto je hello nejúčinnější metoda tooupload kořenový certifikát.
 
 #### <a name="certmethod2"></a>Metoda 2
 
-Tato metoda je nemá další kroky než metoda 1, ale má hello stejného výsledku. Je zahrnut v případě, že potřebujete data certifikátu tooview hello.
+Tato metoda zahrnuje více kroků než metoda 1, ale má stejný výsledek. Přikládáme ji pro případ, že potřebujete zobrazit data certifikátu.
 
-1. Vytvoření a přípravě hello nového kořenového certifikátu tooadd tooAzure. Export hello veřejného klíče, protože kódování Base-64 X.509 (. CER) a otevřete jej pomocí textového editoru. Zkopírujte hodnoty hello, jak je znázorněno v hello následující ukázka:
+1. Vytvořte a připravte nový kořenový certifikát, který chcete přidat do Azure. Exportujte veřejný klíč ve formátu X.509, kódování Base-64 (CER) a otevřete jej v textovém editoru. Zkopírujte hodnoty, jak je znázorněno v následujícím příkladu:
 
   ![certifikát](./media/vpn-gateway-howto-point-to-site-rm-ps/copycert.png)
 
   > [!NOTE]
-  > Při kopírování dat hello certifikátu, ujistěte se, že zkopírujete hello text jako jeden řádek průběžné bez návrat na začátek a odřádkování. Může být nutné toomodify zobrazení hello textového editoru too'Show Symbol/zobrazit všechny znaky toosee hello znaků CR vrátí a řádek informačních kanálů.
+  > Při kopírování dat certifikátu se ujistěte, že kopírujete text jako jeden souvislý řádek bez konců řádků nebo odřádkování. Pokud chcete zobrazit konce řádků a odřádkování, může být nutné upravit zobrazení v textovém editoru na Zobrazit symbol / Zobrazit všechny znaky.
   >
   >
 
-2. Zadejte název certifikátu hello a informace o klíči jako proměnnou. Informace o hello nahraďte vlastním, jak je uvedené v hello následující příklad:
+2. Zadejte název certifikátu a informace o klíči jako proměnnou. Nahraďte tyto informace svými vlastními, jak je ukázáno na následujícím příkladu:
 
   ```powershell
   $P2SRootCertName2 = "ARMP2SRootCert2.cer"
   $MyP2SCertPubKeyBase64_2 = "MIIC/zCCAeugAwIBAgIQKazxzFjMkp9JRiX+tkTfSzAJBgUrDgMCHQUAMBgxFjAUBgNVBAMTDU15UDJTUm9vdENlcnQwHhcNMTUxMjE5MDI1MTIxWhcNMzkxMjMxMjM1OTU5WjAYMRYwFAYDVQQDEw1NeVAyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyjIXoWy8xE/GF1OSIvUaA0bxBjZ1PJfcXkMWsHPzvhWc2esOKrVQtgFgDz4ggAnOUFEkFaszjiHdnXv3mjzE2SpmAVIZPf2/yPWqkoHwkmrp6BpOvNVOpKxaGPOuK8+dql1xcL0eCkt69g4lxy0FGRFkBcSIgVTViS9wjuuS7LPo5+OXgyFkAY3pSDiMzQCkRGNFgw5WGMHRDAiruDQF1ciLNojAQCsDdLnI3pDYsvRW73HZEhmOqRRnJQe6VekvBYKLvnKaxUTKhFIYwuymHBB96nMFdRUKCZIiWRIy8Hc8+sQEsAML2EItAjQv4+fqgYiFdSWqnQCPf/7IZbotgQIDAQABo00wSzBJBgNVHQEEQjBAgBAkuVrWvFsCJAdK5pb/eoCNoRowGDEWMBQGA1UEAxMNTXlQMlNSb290Q2VydIIQKazxzFjMkp9JRiX+tkTfSzAJBgUrDgMCHQUAA4IBAQA223veAZEIar9N12ubNH2+HwZASNzDVNqspkPKD97TXfKHlPlIcS43TaYkTz38eVrwI6E0yDk4jAuPaKnPuPYFRj9w540SvY6PdOUwDoEqpIcAVp+b4VYwxPL6oyEQ8wnOYuoAK1hhh20lCbo8h9mMy9ofU+RP6HJ7lTqupLfXdID/XevI8tW6Dm+C/wCeV3EmIlO9KUoblD/e24zlo3YzOtbyXwTIh34T0fO/zQvUuBqZMcIPfM1cDvqcqiEFLWvWKoAnxbzckye2uk1gHO52d8AVL3mGiX8wBJkjc/pMdxrEvvCzJkltBmqxTM6XjDJALuVh16qFlqgTWCIcb7ju"
   ```
-3. Přidáte nový certifikát kořenové hello. Nelze přidat více certifikátů současně.
+3. Přidejte nový kořenový certifikát. Nelze přidat více certifikátů současně.
 
   ```powershell
   Add-AzureRmVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName2 -VirtualNetworkGatewayname "VNet1GW" -ResourceGroupName "TestRG" -PublicCertData $MyP2SCertPubKeyBase64_2
   ```
-4. Můžete ověřit, že tento nový certifikát hello pomocí hello následující ukázka správně přidány:
+4. Pomocí následujícího příkladu můžete ověřit, zda byl nový certifikát přidán správně:
 
   ```powershell
   Get-AzureRmVpnClientRootCertificate -ResourceGroupName "TestRG" `
   -VirtualNetworkGatewayName "VNet1GW"
   ```
 
-### <a name="removerootcert"></a>tooremove kořenového certifikátu
+### <a name="removerootcert"></a>Odebrání kořenového certifikátu
 
-1. Deklarujte proměnné hello.
+1. Deklarujte proměnné.
 
   ```powershell
   $GWName = "Name_of_virtual_network_gateway"
@@ -343,12 +358,12 @@ Tato metoda je nemá další kroky než metoda 1, ale má hello stejného výsle
   $P2SRootCertName2 = "ARMP2SRootCert2.cer"
   $MyP2SCertPubKeyBase64_2 = "MIIC/zCCAeugAwIBAgIQKazxzFjMkp9JRiX+tkTfSzAJBgUrDgMCHQUAMBgxFjAUBgNVBAMTDU15UDJTUm9vdENlcnQwHhcNMTUxMjE5MDI1MTIxWhcNMzkxMjMxMjM1OTU5WjAYMRYwFAYDVQQDEw1NeVAyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyjIXoWy8xE/GF1OSIvUaA0bxBjZ1PJfcXkMWsHPzvhWc2esOKrVQtgFgDz4ggAnOUFEkFaszjiHdnXv3mjzE2SpmAVIZPf2/yPWqkoHwkmrp6BpOvNVOpKxaGPOuK8+dql1xcL0eCkt69g4lxy0FGRFkBcSIgVTViS9wjuuS7LPo5+OXgyFkAY3pSDiMzQCkRGNFgw5WGMHRDAiruDQF1ciLNojAQCsDdLnI3pDYsvRW73HZEhmOqRRnJQe6VekvBYKLvnKaxUTKhFIYwuymHBB96nMFdRUKCZIiWRIy8Hc8+sQEsAML2EItAjQv4+fqgYiFdSWqnQCPf/7IZbotgQIDAQABo00wSzBJBgNVHQEEQjBAgBAkuVrWvFsCJAdK5pb/eoCNoRowGDEWMBQGA1UEAxMNTXlQMlNSb290Q2VydIIQKazxzFjMkp9JRiX+tkTfSzAJBgUrDgMCHQUAA4IBAQA223veAZEIar9N12ubNH2+HwZASNzDVNqspkPKD97TXfKHlPlIcS43TaYkTz38eVrwI6E0yDk4jAuPaKnPuPYFRj9w540SvY6PdOUwDoEqpIcAVp+b4VYwxPL6oyEQ8wnOYuoAK1hhh20lCbo8h9mMy9ofU+RP6HJ7lTqupLfXdID/XevI8tW6Dm+C/wCeV3EmIlO9KUoblD/e24zlo3YzOtbyXwTIh34T0fO/zQvUuBqZMcIPfM1cDvqcqiEFLWvWKoAnxbzckye2uk1gHO52d8AVL3mGiX8wBJkjc/pMdxrEvvCzJkltBmqxTM6XjDJALuVh16qFlqgTWCIcb7ju"
   ```
-2. Odeberte certifikát hello.
+2. Odeberte certifikát.
 
   ```powershell
   Remove-AzureRmVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName2 -VirtualNetworkGatewayName $GWName -ResourceGroupName $RG -PublicCertData $MyP2SCertPubKeyBase64_2
   ```
-3. Hello použijte následující příklad tooverify, který hello certifikátu byla úspěšně odebrána.
+3. Pomocí následujícího příkladu můžete ověřit, zda byl certifikát úspěšně odebrán.
 
   ```powershell
   Get-AzureRmVpnClientRootCertificate -ResourceGroupName "TestRG" `
@@ -357,15 +372,15 @@ Tato metoda je nemá další kroky než metoda 1, ale má hello stejného výsle
 
 ## <a name="revoke"></a>Odvolání klientského certifikátu
 
-Certifikáty klientů lze odvolat. Hello certifikátu, seznamu odvolaných certifikátů můžete tooselectively Odepřít připojení Point-to-Site na základě jednotlivých klientských certifikátů. To se liší od odebrání důvěryhodného kořenového certifikátu. Pokud odeberete z Azure důvěryhodného kořenového certifikátu .cer, odvolá hello přístup pro všechny klientské certifikáty generované podepsané pomocí hello odvolané kořenový certifikát. Odvolání certifikátu klienta, nikoli hello kořenový certifikát, umožňuje hello další certifikáty, které byly generovány od hello kořenový certifikát toocontinue toobe používá k ověřování.
+Certifikáty klientů lze odvolat. Seznam odvolaných certifikátů umožňuje selektivně odepřít připojení Point-to-Site na základě jednotlivých klientských certifikátů. To se liší od odebrání důvěryhodného kořenového certifikátu. Pokud odeberete z Azure důvěryhodný kořenový certifikát v souboru .cer, dojde k odvolání přístupu pro všechny klientské certifikáty, které byly tímto odvolaným kořenovým certifikátem vygenerovány nebo podepsány. Odvolání klientského certifikátu namísto kořenového certifikátu umožňuje používat k ověřování další certifikáty vygenerované z kořenového certifikátu.
 
-běžnou praxí Hello je toouse hello kořenový certifikát toomanage přístup na tým nebo organizace úrovních, při použití odvolané klientské certifikáty pro řízení přístupu podrobných na jednotlivé uživatele.
+Běžnou praxí je použití kořenového certifikátu pro řízení přístupu na úrovni týmu nebo organizace, přičemž odvolání klientských certifikátů slouží pro detailní kontrolu přístupu jednotlivých uživatelů.
 
-### <a name="revokeclientcert"></a>toorevoke certifikát klienta
+### <a name="revokeclientcert"></a>Odvolání klientského certifikátu
 
-1. Načtěte hello kryptografický otisk certifikátu klienta. Další informace najdete v tématu [jak tooretrieve hello kryptografického otisku certifikátu](https://msdn.microsoft.com/library/ms734695.aspx).
-2. Zkopírujte hello informace tooa textovém editoru a odeberte všechny mezery tak, aby se souvislý řetězec. Tento řetězec je deklarován jako proměnné v dalším kroku hello.
-3. Deklarujte proměnné hello. Ujistěte se, že kryptografický otisk toodeclare hello, který jste získali v předchozím kroku hello.
+1. Načtěte kryptografický otisk klientského certifikátu. Další informace najdete v tématu [Postup načtení kryptografického otisku certifikátu](https://msdn.microsoft.com/library/ms734695.aspx).
+2. Zkopírujte údaje do textového editoru a smažte všechny mezery, aby vznikl souvislý řetězec. Řetězec je v dalším kroku deklarován jako proměnná.
+3. Deklarujte proměnné. Ujistěte se, že deklarujete kryptografický otisk, který jste získali v předchozím kroku.
 
   ```powershell
   $RevokedClientCert1 = "NameofCertificate"
@@ -373,25 +388,25 @@ běžnou praxí Hello je toouse hello kořenový certifikát toomanage přístup
   $GWName = "Name_of_virtual_network_gateway"
   $RG = "Name_of_resource_group"
   ```
-4. Přidejte hello kryptografický otisk toohello seznam odvolaných certifikátů. Zobrazí "Succeeded", pokud byl přidán hello kryptografický otisk.
+4. Přidejte kryptografický otisk do seznamu odvolaných certifikátů. Po přidání kryptografického otisku se zobrazí zpráva „Úspěch“.
 
   ```powershell
   Add-AzureRmVpnClientRevokedCertificate -VpnClientRevokedCertificateName $RevokedClientCert1 `
   -VirtualNetworkGatewayName $GWName -ResourceGroupName $RG `
   -Thumbprint $RevokedThumbprint1
   ```
-5. Ověřte, že kryptografický otisk tohoto hello byl přidán toohello seznam odvolaných certifikátů.
+5. Zkontrolujte, zda byl daný kryptografický otisk přidán do seznamu odvolaných certifikátů.
 
   ```powershell
   Get-AzureRmVpnClientRevokedCertificate -VirtualNetworkGatewayName $GWName -ResourceGroupName $RG
   ```
-6. Po přidání hello kryptografický otisk certifikátu hello se už nedá použité tooconnect. Klienti, které se pokusí použít tento certifikát tooconnect zobrazí zpráva, že tento certifikát hello již není platný.
+6. Po přidání kryptografického otisku už nebude možné certifikát použít k připojení. Klientům, kteří se pokusí připojit pomocí tohoto certifikátu, se zobrazí zpráva s informací o neplatnosti certifikátu.
 
-### <a name="reinstateclientcert"></a>tooreinstate certifikát klienta
+### <a name="reinstateclientcert"></a>Obnovení klientského certifikátu
 
-Odebráním hello kryptografický otisk z hello seznam odvolané klientské certifikáty lze obnovit certifikát klienta.
+Klientský certifikát lze obnovit odebráním jeho kryptografického otisku ze seznamu odvolaných klientských certifikátů.
 
-1. Deklarujte proměnné hello. Ujistěte se, že deklarujete hello správné kryptografický otisk certifikátu hello, které chcete tooreinstate.
+1. Deklarujte proměnné. Ujistěte se, že deklarujete správný kryptografický otisk pro certifikát, který chcete obnovit.
 
   ```powershell
   $RevokedClientCert1 = "NameofCertificate"
@@ -399,13 +414,13 @@ Odebráním hello kryptografický otisk z hello seznam odvolané klientské cert
   $GWName = "Name_of_virtual_network_gateway"
   $RG = "Name_of_resource_group"
   ```
-2. Kryptografický otisk certifikátu hello odeberte ze seznamu odvolaných certifikátů hello.
+2. Odeberte kryptografický otisk certifikátu ze seznamu odvolaných certifikátů.
 
   ```powershell
   Remove-AzureRmVpnClientRevokedCertificate -VpnClientRevokedCertificateName $RevokedClientCert1 `
   -VirtualNetworkGatewayName $GWName -ResourceGroupName $RG -Thumbprint $RevokedThumbprint1
   ```
-3. Zkontrolujte, pokud kryptografický otisk hello se odebral ze seznamu odvolaných hello.
+3. Zkontrolujte, za byl kryptografický otisk ze seznamu odebrán.
 
   ```powershell
   Get-AzureRmVpnClientRevokedCertificate -VirtualNetworkGatewayName $GWName -ResourceGroupName $RG
@@ -413,7 +428,7 @@ Odebráním hello kryptografický otisk z hello seznam odvolané klientské cert
 
 ## <a name="faq"></a>Nejčastější dotazy týkající se připojení Point-to-Site
 
-[!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-point-to-site-faq-include.md)]
+[!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
 ## <a name="next-steps"></a>Další kroky
-Po dokončení připojení můžete přidat virtuální počítače tooyour virtuální sítě. Další informace najdete v tématu [Virtuální počítače](https://docs.microsoft.com/azure/#pivot=services&panel=Compute). toounderstand Další informace o sítě a virtuálních počítačů najdete v části [přehled sítě Azure a virtuální počítač s Linuxem](../virtual-machines/linux/azure-vm-network-overview.md).
+Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Další informace najdete v tématu [Virtuální počítače](https://docs.microsoft.com/azure/#pivot=services&panel=Compute). Bližší informace o sítích a virtuálních počítačích najdete v tématu s [přehledem sítě virtuálních počítačů s Linuxem v Azure](../virtual-machines/linux/azure-vm-network-overview.md).

@@ -1,6 +1,6 @@
 ---
-title: aaaCreate Scala aplikace toorun na clustery Spark - Azure HDInsight | Microsoft Docs
-description: "Vytvoření Spark aplikace napsané v jazyce Scala s Apache Maven jako hello sestavení pro Scala poskytované IntelliJ IDEA systému a existující archetype Maven."
+title: "Vytvoření aplikace Scala ke spuštění na clustery Spark - Azure HDInsight | Microsoft Docs"
+description: "Vytvoření Spark aplikace napsané v jazyce Scala s Apache Maven jako systém sestavení a existující archetype Maven pro Scala poskytované IntelliJ IDEA."
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -16,24 +16,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: nitinme
-ms.openlocfilehash: b25291b60921021486f55d78b4832a070a54d163
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 95dba08744357f8800b05e3d4b892e3a363d5985
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="create-a-scala-maven-application-toorun-on-apache-spark-cluster-on-hdinsight"></a>Vytvoření Scala Maven toorun aplikace na cluster Apache Spark v HDInsight
+# <a name="create-a-scala-maven-application-to-run-on-apache-spark-cluster-on-hdinsight"></a>Vytvoření aplikace Scala Maven ke spuštění v clusteru Apache Spark v HDInsight
 
-Zjistěte, jak toocreate Spark aplikace napsané v jazyce Scala pomocí nástroje Maven s IntelliJ IDEA. článek Hello používá Apache Maven hello sestavení systému a začíná existující archetype Maven pro Scala poskytované IntelliJ IDEA.  Vytvoření aplikace Scala v IntelliJ IDEA zahrnuje hello následující kroky:
+Zjistěte, jak vytvořit aplikaci Spark napsané v jazyce Scala pomocí nástroje Maven s IntelliJ IDEA. Článek používá Apache Maven jako systém sestavení a spuštění se existující archetype Maven Scala poskytované IntelliJ IDEA.  Vytvoření aplikace Scala v IntelliJ IDEA zahrnuje následující kroky:
 
-* Použijte Maven jako systém sestavení hello.
-* Aktualizujte projektu objektu modelu (POM) souboru tooresolve Spark modulu závislosti.
+* Používání Maven jako systém sestavení.
+* Aktualizujte soubor projektu objektu modelu (POM) o vyřešení závislostí modulu Spark.
 * Zápis v jazyce Scala vaší aplikace.
-* Generovat soubor jar, který může být odeslaná tooHDInsight clustery Spark.
-* Spusťte aplikaci hello na clusteru Spark pomocí Livy.
+* Generovat soubor jar, který lze odeslat do clusterů HDInsight Spark.
+* Spuštění aplikace na clusteru Spark pomocí Livy.
 
 > [!NOTE]
-> HDInsight také poskytuje IntelliJ IDEA modulu plug-in nástroje tooease hello procesu vytváření a odesílání aplikací tooan clusteru HDInsight Spark na systému Linux. Další informace najdete v tématu [pomocí modulu plug-in nástroje HDInsight pro IntelliJ IDEA toocreate a odesílání aplikací Spark](hdinsight-apache-spark-intellij-tool-plugin.md).
+> HDInsight také poskytuje nástroj k usnadnění procesu vytváření a odesílání aplikací do clusteru HDInsight Spark v Linux na IntelliJ IDEA modulu plug-in. Další informace najdete v tématu [pomocí modulu plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření a odesílání aplikací Spark](hdinsight-apache-spark-intellij-tool-plugin.md).
 > 
 > 
 
@@ -45,41 +45,41 @@ Zjistěte, jak toocreate Spark aplikace napsané v jazyce Scala pomocí nástroj
 * Java IDE. Tento článek používá IntelliJ IDEA 15.0.1. Můžete nainstalovat z [zde](https://www.jetbrains.com/idea/download/).
 
 ## <a name="install-scala-plugin-for-intellij-idea"></a>Instalace modulu plug-in Scala pro IntelliJ IDEA
-Pokud instalace IntelliJ IDEA není nebyl vyzván k povolení modulu plug-in Scala, spusťte IntelliJ IDEA a projít hello následující modul plug-in hello tooinstall kroky:
+Pokud instalace IntelliJ IDEA není nebyl vyzván k povolení modulu plug-in Scala, spusťte IntelliJ IDEA a projít následující kroky k instalaci modulu plug-in:
 
 1. Spusťte IntelliJ IDEA a na úvodní obrazovce klikněte na **konfigurace** a pak klikněte na **modulů plug-in**.
    
     ![Povolení modulu plug-in scala](./media/hdinsight-apache-spark-create-standalone-application/enable-scala-plugin.png)
-2. Hello na další obrazovce klikněte na tlačítko **JetBrains instalace modulu plug-in** z levého dolního rohu hello. V hello **procházet modulů plug-in JetBrains** dialogové okno otevře, vyhledejte Scala a pak klikněte na **nainstalovat**.
+2. Na další obrazovce klikněte na tlačítko **JetBrains instalace modulu plug-in** z levého dolního rohu. V **procházet modulů plug-in JetBrains** dialogové okno otevře, vyhledejte Scala a pak klikněte na **nainstalovat**.
    
     ![Instalace modulu plug-in scala](./media/hdinsight-apache-spark-create-standalone-application/install-scala-plugin.png)
-3. Po hello modul plug-in nainstaluje úspěšně, klikněte na tlačítko hello **tlačítko Restartovat IntelliJ IDEA** toorestart hello IDE.
+3. Poté, co modul plug-in nainstaluje úspěšně, klikněte na tlačítko **restartujte IntelliJ IDEA tlačítko** restartování rozhraní IDE.
 
 ## <a name="create-a-standalone-scala-project"></a>Vytvoření projektu samostatné Scala
-1. Spusťte IntelliJ IDEA a vytvoření nového projektu. V hello projektu dialogové okno Nový, zkontrolujte hello následující možnosti a pak klikněte na **Další**.
+1. Spusťte IntelliJ IDEA a vytvoření nového projektu. V dialogovém okně Nový projekt vyberte následující možnosti a pak klikněte na tlačítko **Další**.
    
     ![Vytvořte projekt Maven](./media/hdinsight-apache-spark-create-standalone-application/create-maven-project.png)
    
-   * Vyberte **Maven** jako typ projektu hello.
-   * Zadejte **projektu SDK**. Kliknutím na tlačítko Nová a přejděte toohello Java instalační adresář, obvykle `C:\Program Files\Java\jdk1.8.0_66`.
-   * Vyberte hello **vytvořit z archetype** možnost.
-   * Vyberte ze seznamu hello archetypes, **org.scala tools.archetypes:scala archetype jednoduchý**. Tato akce vytvoří hello správné adresářovou strukturu a stáhnout požadované hello výchozí závislosti toowrite Scala program.
+   * Vyberte **Maven** jako typ projektu.
+   * Zadejte **projektu SDK**. Kliknutím na tlačítko Nová a přejděte do instalačního adresáře nástroje Java, obvykle `C:\Program Files\Java\jdk1.8.0_66`.
+   * Vyberte **vytvořit z archetype** možnost.
+   * V seznamu archetypes vyberte **org.scala tools.archetypes:scala archetype jednoduchý**. Tato akce vytvoří správné adresářovou strukturu a stáhnout požadované výchozí závislosti zápis Scala program.
 2. Zadejte příslušné hodnoty pro **GroupId**, **ArtifactId**, a **verze**. Klikněte na **Další**.
-3. V hello další dialogové okno, kde zadáte domovský adresář Maven a další nastavení uživatele, přijměte výchozí hodnoty hello a klikněte na **Další**.
-4. V hello poslední dialogové okno, zadejte název projektu a umístění a pak klikněte na tlačítko **Dokončit**.
-5. Odstranit hello **MySpec.Scala** souborů **src\test\scala\com\microsoft\spark\example**. Pro aplikace hello to nepotřebujete.
-6. V případě potřeby přejmenujte hello výchozí zdroj a testovací soubory. V levém podokně hello v hello IntelliJ IDEA přejděte příliš**src\main\scala\com.microsoft.spark.example**. Klikněte pravým tlačítkem na **App.scala**, klikněte na tlačítko **Refaktorovat**, klikněte na tlačítko přejmenovat soubor a v dialogovém okně hello, zadejte nový název hello hello aplikace a klikněte **Refaktorovat**.
+3. V další dialogové okno, kde můžete zadat domovský adresář Maven a další nastavení uživatele, přijměte výchozí hodnoty a klikněte na **Další**.
+4. V dialogovém okně poslední zadejte název projektu a umístění a pak klikněte na tlačítko **Dokončit**.
+5. Odstranit **MySpec.Scala** souborů **src\test\scala\com\microsoft\spark\example**. Není to nutné pro aplikaci.
+6. V případě potřeby přejmenujte výchozí zdroj a testovací soubory. V levém podokně IntelliJ IDEA, přejděte na **src\main\scala\com.microsoft.spark.example**. Klikněte pravým tlačítkem na **App.scala**, klikněte na tlačítko **Refaktorovat**klikněte přejmenovat soubor a v dialogovém okně zadejte nový název pro aplikaci a pak na **Refaktorovat**.
    
     ![Přejmenování souborů](./media/hdinsight-apache-spark-create-standalone-application/rename-scala-files.png)  
-7. V následujících krocích hello aktualizujte hello pom.xml toodefine hello závislosti pro hello aplikací Spark Scala. Pro tyto závislosti toobe stáhli a vyřešit automaticky, že je nutné nakonfigurovat Maven odpovídajícím způsobem.
+7. V dalších krocích aktualizujte pom.xml k definování závislostí u aplikací Spark Scala. Tyto závislosti se stáhnou a automaticky vyřešen musíte nakonfigurovat Maven odpovídajícím způsobem.
    
     ![Konfigurace Maven pro automatické stahování](./media/hdinsight-apache-spark-create-standalone-application/configure-maven.png)
    
-   1. Z hello **soubor** nabídky, klikněte na tlačítko **nastavení**.
-   2. V hello **nastavení** dialogové okno pole, přejděte příliš**sestavení, provádění nasazení** > **nástroje sestavení** > **Maven**  >  **Import**.
-   3. Vyberte možnost hello příliš**automaticky importovat projekty Maven**.
+   1. Z **soubor** nabídky, klikněte na tlačítko **nastavení**.
+   2. V **nastavení** dialogové okno pole, přejděte na **sestavení, provádění nasazení** > **nástroje sestavení** > **Maven**  >  **Import**.
+   3. Vyberte možnost **automaticky importovat projekty Maven**.
    4. Klikněte na tlačítko **použít**a potom klikněte na **OK**.
-8. Aktualizujte hello Scala zdrojového souboru tooinclude kódu aplikace. Otevřete a nahraďte hello existující ukázkový kód s hello následující kód a uložte změny hello. Tento kód čte hello data z hello HVAC.csv (k dispozici na všech clusterech HDInsight Spark), načte hello řádky, které mají ve sloupci šesté hello pouze jednu číslici a zapíše výstup hello příliš**/HVACOut** pod hello výchozí úložiště kontejner pro hello cluster.
+8. Aktualizujte Scala zdrojový soubor, který patří kódu aplikace. Otevřete existující ukázkového kódu nahraďte následujícím kódem a uložte změny. Tento kód čte data z HVAC.csv (k dispozici na všech clusterech HDInsight Spark), načte řádky, které mají ve sloupci šesté pouze jednu číslici a zapíše výstup do **/HVACOut** pod výchozí kontejner úložiště pro cluster.
    
         package com.microsoft.spark.example
    
@@ -87,7 +87,7 @@ Pokud instalace IntelliJ IDEA není nebyl vyzván k povolení modulu plug-in Sca
         import org.apache.spark.SparkContext
    
         /**
-          * Test IO toowasb
+          * Test IO to wasb
           */
         object WasbIOTest {
           def main (arg: Array[String]): Unit = {
@@ -96,20 +96,20 @@ Pokud instalace IntelliJ IDEA není nebyl vyzván k povolení modulu plug-in Sca
    
             val rdd = sc.textFile("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
    
-            //find hello rows which have only one digit in hello 7th column in hello CSV
+            //find the rows which have only one digit in the 7th column in the CSV
             val rdd1 = rdd.filter(s => s.split(",")(6).length() == 1)
    
             rdd1.saveAsTextFile("wasb:///HVACout")
           }
         }
-9. Aktualizujte hello pom.xml.
+9. Aktualizace souboru pom.xml.
    
-   1. V rámci `<project>\<properties>` přidat hello následující:
+   1. V rámci `<project>\<properties>` přidejte následující:
       
           <scala.version>2.10.4</scala.version>
           <scala.compat.version>2.10.4</scala.compat.version>
           <scala.binary.version>2.10</scala.binary.version>
-   2. V rámci `<project>\<dependencies>` přidat hello následující:
+   2. V rámci `<project>\<dependencies>` přidejte následující:
       
            <dependency>
              <groupId>org.apache.spark</groupId>
@@ -117,38 +117,38 @@ Pokud instalace IntelliJ IDEA není nebyl vyzván k povolení modulu plug-in Sca
              <version>1.4.1</version>
            </dependency>
       
-      Uložte změny toopom.xml.
-10. Vytvoření souboru .jar hello. IntelliJ IDEA umožňuje vytváření JAR jako artefakt projektu. Proveďte následující kroky hello.
+      Uložte změny do pom.xml.
+10. Vytvoření souboru .jar. IntelliJ IDEA umožňuje vytváření JAR jako artefakt projektu. Proveďte následující kroky.
     
-    1. Z hello **soubor** nabídky, klikněte na tlačítko **strukturu projektu**.
-    2. V hello **strukturu projektu** dialogové okno, klikněte na tlačítko **artefakty** a pak klikněte na symbol plus – hello. Z rozbalovací dialogové hello, klikněte na tlačítko **JAR**a potom klikněte na **z modulů se závislostmi**.
+    1. Z **soubor** nabídky, klikněte na tlačítko **strukturu projektu**.
+    2. V **strukturu projektu** dialogové okno, klikněte na tlačítko **artefakty** a pak klikněte na plus symbol. V dialogovém okně automaticky otevírané okno klikněte na **JAR**a potom klikněte na **z modulů se závislostmi**.
        
         ![Vytvoření JAR](./media/hdinsight-apache-spark-create-standalone-application/create-jar-1.png)
-    3. V hello **vytvořit JAR z modulů** dialogové okno pole, klikněte na tlačítko se třemi tečkami hello (![třemi tečkami](./media/hdinsight-apache-spark-create-standalone-application/ellipsis.png) ) proti hello **hlavní třídy**.
-    4. V hello **vyberte třídu hlavní** dialogové okno, vyberte hello třídu, která se zobrazí ve výchozím nastavení a pak klikněte na tlačítko **OK**.
+    3. V **vytvořit JAR z modulů** dialogové okno pole, klikněte na tlačítko se třemi tečkami (![třemi tečkami](./media/hdinsight-apache-spark-create-standalone-application/ellipsis.png) ) proti **hlavní třídy**.
+    4. V **vyberte třídu hlavní** dialogovém okně vyberte třídu, která se zobrazí ve výchozím nastavení a pak klikněte na tlačítko **OK**.
        
         ![Vytvoření JAR](./media/hdinsight-apache-spark-create-standalone-application/create-jar-2.png)
-    5. V hello **vytvořit JAR z modulů** dialogové okno zkontrolujte, zda tuto možnost hello příliš**extrahovat toohello cíl JAR** je vybrána a potom klikněte na **OK**. Tím se vytvoří jeden JAR s všechny závislosti.
+    5. V **vytvořit JAR z modulů** dialogové okno pole, ujistěte se, že možnost **extrahovat k cíli JAR** je vybrána a potom klikněte na **OK**. Tím se vytvoří jeden JAR s všechny závislosti.
        
         ![Vytvoření JAR](./media/hdinsight-apache-spark-create-standalone-application/create-jar-3.png)
-    6. Karta rozložení výstup Hello uvádí všechny hello JAR, které jsou součástí projekt Maven hello. Můžete vybrat a odstranění hello těch, které jsou na kterém hello Scala aplikace nemá žádné přímé závislostí. Pro aplikace hello tady vytváříme, můžete odebrat všechny ale hello naposledy (**SparkSimpleApp kompilace výstup**). Vyberte hello JAR toodelete a pak klikněte na hello **odstranit** ikonu.
+    6. Karta Výstup rozložení uvádí všechny JAR, které jsou součástí na projekt Maven. Můžete vybrat a odstranit ty, na kterém aplikace Scala má žádné přímé závislost. Pro aplikaci tady vytváříme, můžete odebrat všechny uzly s výjimkou poslední (**SparkSimpleApp kompilace výstup**). Vyberte JAR odstranit a potom klikněte na **odstranit** ikonu.
        
         ![Vytvoření JAR](./media/hdinsight-apache-spark-create-standalone-application/delete-output-jars.png)
        
-        Zajistěte, aby **sestavení na Ujistěte se,** je políčko zaškrtnuto, což zajistí, že jar hello se vytvoří pokaždé, když je vytvořené nebo aktualizované hello projektu. Klikněte na tlačítko **použít** a potom **OK**.
-    7. V řádku nabídek hello, klikněte na **sestavení**a potom klikněte na **zkontrolujte projektu**. Můžete také kliknout na **sestavení artefaktů** toocreate hello jar. Hello jar výstup se vytvořil v rámci **\out\artifacts**.
+        Zajistěte, aby **sestavení na Ujistěte se,** je políčko zaškrtnuto, který zajistí, aby jar vytvořit pokaždé, když je vytvořené nebo aktualizované projektu. Klikněte na tlačítko **použít** a potom **OK**.
+    7. V řádku nabídek klikněte na **sestavení**a potom klikněte na **zkontrolujte projektu**. Můžete také kliknout na **sestavení artefaktů** vytvořit jar. Výstup jar se vytvořil v rámci **\out\artifacts**.
        
         ![Vytvoření JAR](./media/hdinsight-apache-spark-create-standalone-application/output.png)
 
-## <a name="run-hello-application-on-hello-spark-cluster"></a>Spuštění aplikace hello na clusteru Spark hello
-aplikace hello toorun na hello clusteru, je nutné provést následující hello:
+## <a name="run-the-application-on-the-spark-cluster"></a>Spuštění aplikace na clusteru Spark
+Ke spuštění aplikace v clusteru, postupujte takto:
 
-* **Kopírování hello aplikace jar toohello objektu blob úložiště Azure** přidruženého k hello clusteru. Můžete použít [ **AzCopy**](../storage/common/storage-use-azcopy.md), příkaz řádku nástroje pro toodo tak. Existuje mnoho dalších klientů i, které můžete použít tooupload data. Můžete najít další informace o nich v [nahrávání dat pro úlohy Hadoop do HDInsight](hdinsight-upload-data.md).
-* **Vzdáleně pomocí Livy toosubmit úlohu aplikace** toohello clusteru Spark. Clustery Spark v HDInsight zahrnuje Livy, který zveřejňuje REST koncové body tooremotely odeslání úlohy Spark. Další informace najdete v tématu [úlohy odeslání Spark vzdáleně pomocí Spark pomocí Livy clusterů v HDInsight](hdinsight-apache-spark-livy-rest-interface.md).
+* **Zkopírujte jar aplikace do objektu blob úložiště Azure** přidružen ke clusteru. Můžete použít [ **AzCopy**](../storage/common/storage-use-azcopy.md), nástroj příkazového řádku, tak. Existuje mnoho také ostatní klienty, který můžete použít k nahrání dat. Můžete najít další informace o nich v [nahrávání dat pro úlohy Hadoop do HDInsight](hdinsight-upload-data.md).
+* **Odeslat úlohu aplikaci vzdáleně pomocí Livy** do clusteru Spark. Clustery Spark v HDInsight zahrnuje Livy, který zveřejňuje koncové body REST pro vzdálené odesílání úloh Spark. Další informace najdete v tématu [úlohy odeslání Spark vzdáleně pomocí Spark pomocí Livy clusterů v HDInsight](hdinsight-apache-spark-livy-rest-interface.md).
 
 ## <a name="next-step"></a>Další krok
 
-V tomto článku jste se naučili jak toocreate k Spark scala aplikaci. ADVANCE toohello další článek toolearn jak toorun této aplikace na HDInsight Spark clusteru pomocí Livy.
+V tomto článku jste zjistili, jak vytvořit aplikaci Spark scala. Přechodu na další článku se dozvíte, jak ke spuštění této aplikace v clusteru HDInsight Spark pomocí Livy.
 
 > [!div class="nextstepaction"]
 >[Vzdálené spouštění úloh na clusteru Sparku pomocí Livy](hdinsight-apache-spark-livy-rest-interface.md)

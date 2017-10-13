@@ -1,9 +1,9 @@
 ---
-title: "aaaCreate směřujících Internetu pro vyrovnávání zátěže – prostředí PowerShell Azure classic | Microsoft Docs"
-description: "Zjistěte, jak toocreate přístupem Internetu pro vyrovnávání zátěže v klasickém režimu pomocí prostředí PowerShell"
+title: "Vytvoření internetového nástroje pro vyrovnávání zatížení – Azure PowerShell Classic | Dokumentace Microsoftu"
+description: "Zjistěte, jak vytvořit internetový nástroj pro vyrovnávání zatížení v režimu Classic pomocí prostředí PowerShell"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 tags: azure-service-management
 ms.assetid: 73e8bfa4-8086-4ef0-9e35-9e00b24be319
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-ms.openlocfilehash: 76d9a712a0acda223fc86b80be9c35c0ed9f3a50
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 66afcf703a5b6270569f36ca1663cd778ed6f495
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-classic-in-powershell"></a>Začínáme vytvářet internetový nástroj pro vyrovnávání zatížení (Classic) v prostředí PowerShell
 
@@ -31,22 +31,22 @@ ms.lasthandoff: 10/06/2017
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
 > [!IMPORTANT]
-> Než začnete pracovat s prostředky Azure, je důležité toounderstand Azure aktuálně má dva modely nasazení: Azure Resource Manager a Klasický model. Před zahájením práce s jakýmikoli prostředky Azure se ujistěte, že rozumíte [modelům nasazení a příslušným nástrojům](../azure-classic-rm.md). Hello dokumentaci k různým nástrojům můžete zobrazit kliknutím na karty hello hello horní části tohoto článku. Tento článek se týká modelu nasazení classic hello. Můžete také [zjistěte, jak toocreate přístupem Internetu pro vyrovnávání zátěže pomocí Azure Resource Manager](load-balancer-get-started-internet-arm-ps.md).
+> Než začnete pracovat s prostředky Azure, je potřeba si uvědomit, že Azure má v současné době dva modely nasazení: Azure Resource Manager a klasický. Před zahájením práce s jakýmikoli prostředky Azure se ujistěte, že rozumíte [modelům nasazení a příslušným nástrojům](../azure-classic-rm.md). Dokumentaci k různým nástrojům můžete zobrazit kliknutím na karty v horní části tohoto článku. Tento článek se týká modelu nasazení Classic. Případně [zjistěte, jak vytvořit internetový nástroj pro vyrovnávání zatížení pomocí Azure Resource Manageru](load-balancer-get-started-internet-arm-ps.md).
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
 ## <a name="set-up-load-balancer-using-powershell"></a>Nastavení nástroje pro vyrovnávání zatížení pomocí prostředí PowerShell
 
-tooset si nástroj pro vyrovnávání zatížení pomocí prostředí powershell, postupujte podle kroků hello níže:
+Pokud chcete nastavit nástroj pro vyrovnávání zatížení pomocí PowerShellu, proveďte následující kroky:
 
-1. Pokud jste prostředí Azure PowerShell nikdy nepoužívali, projděte si téma [jak tooInstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) a postupujte podle pokynů hello všechny toohello hello způsob ukončení toosign do Azure a vybrat své předplatné.
-2. Po vytvoření virtuálního počítače, můžete použít tooadd rutiny prostředí PowerShell nástroje pro vyrovnávání zatížení tooa virtuálního počítače v rámci hello stejné cloudové služby.
+1. Pokud jste prostředí Azure PowerShell nikdy nepoužívali, přejděte na téma [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) a proveďte všechny pokyny, abyste se mohli přihlásit k Azure a vybrat své předplatné.
+2. Po vytvoření virtuálního počítače můžete pomocí rutin prostředí PowerShell přidat nástroj pro vyrovnávání zatížení do virtuálního počítače v rámci stejné cloudové služby.
 
-V hello následující příklad, že přidáte skupinu nástroje pro vyrovnávání zatížení názvem toocloud "webová farma" služby "mytestcloud" (nebo myctestcloud.cloudapp.net), přidání toovirtual nástroje pro vyrovnávání zátěže hello koncové body pro hello počítačů s názvem "web1" a "web2". Hello nástroj pro vyrovnávání zatížení přijímá síťový provoz na portu 80 a vyrovnává zatížení mezi virtuálními počítači hello definované hello místní koncový bod (v této případu port 80) pomocí protokolu TCP.
+V následujícím příkladu přidáte sadu nástroje pro vyrovnávání zatížení s názvem webfarm do cloudové služby mytestcloud (nebo mytestcloud.cloudapp.net). Zároveň pro nástroj pro vyrovnávání zatížení přidáte koncové body do virtuálních počítačů s názvy web1 a web2. Nástroj pro vyrovnávání zatížení přijímá síťový provoz na portu 80 a vyrovnává zatížení mezi virtuální počítače definované místním koncovým bodem (v tomto případě portem 80) pomocí protokolu TCP.
 
 ### <a name="step-1"></a>Krok 1
 
-Vytvořte skupinu s vyrovnáváním zatížení koncový bod pro server web1"hello první virtuální počítač"
+Vytvořte koncový bod s vyrovnáváním zatížení pro první virtuální počítač web1.
 
 ```powershell
 Get-AzureVM -ServiceName "mytestcloud" -Name "web1" | Add-AzureEndpoint -Name "HttpIn" -Protocol "tcp" -PublicPort 80 -LocalPort 80 -LBSetName "WebFarm" -ProbePort 80 -ProbeProtocol "http" -ProbePath '/' | Update-AzureVM
@@ -54,7 +54,7 @@ Get-AzureVM -ServiceName "mytestcloud" -Name "web1" | Add-AzureEndpoint -Name "H
 
 ### <a name="step-2"></a>Krok 2
 
-Vytvořte jiný koncový bod pro hello druhý virtuální počítač "webu 2" hello pomocí stejné načíst název sady vyrovnávání
+Vytvořte další koncový bod pro druhý virtuální počítač web2 a použijte k tomu stejný název sady nástroje pro vyrovnávání zatížení.
 
 ```powershell
 Get-AzureVM -ServiceName "mytestcloud" -Name "web2" | Add-AzureEndpoint -Name "HttpIn" -Protocol "tcp" -PublicPort 80 -LocalPort 80 -LBSetName "WebFarm" -ProbePort 80 -ProbeProtocol "http" -ProbePath '/' | Update-AzureVM
@@ -62,7 +62,7 @@ Get-AzureVM -ServiceName "mytestcloud" -Name "web2" | Add-AzureEndpoint -Name "H
 
 ## <a name="remove-a-virtual-machine-from-a-load-balancer"></a>Odebrání virtuálního počítače z nástroje pro vyrovnávání zatížení
 
-Můžete odebrat AzureEndpoint tooremove koncový bod virtuálního počítače z nástroje pro vyrovnávání zatížení hello
+K odebrání koncového bodu virtuálního počítače z nástroje pro vyrovnávání zatížení můžete použít příkaz Remove-AzureEndpoint.
 
 ```powershell
 Get-azureVM -ServiceName mytestcloud  -Name web1 |Remove-AzureEndpoint -Name httpin | Update-AzureVM
@@ -72,4 +72,4 @@ Get-azureVM -ServiceName mytestcloud  -Name web1 |Remove-AzureEndpoint -Name htt
 
 Můžete také [začít vytvářet interní nástroj pro vyrovnávání zatížení](load-balancer-get-started-ilb-classic-ps.md) a nakonfigurovat, jaký typ [distribučního režimu](load-balancer-distribution-mode.md) se má použít pro konkrétní chování nástroje pro vyrovnávání zatížení síťového provozu.
 
-Pokud aplikace potřebuje tookeep připojení zachování připojení pro servery za službou Vyrovnávání zatížení, můžete lépe porozumět o [nečinnosti nastavení časového limitu TCP pro vyrovnávání zatížení](load-balancer-tcp-idle-timeout.md). Pokud používáte nástroj pro vyrovnávání zatížení Azure ho pomůže toolearn o chování nečinné připojení.
+Pokud vaše aplikace potřebuje udržovat aktivní připojení serverů, které jsou za nástrojem pro vyrovnávání zatížení, můžete zjistit více o [nastavení časového limitu nečinnosti protokolu TCP pro nástroj pro vyrovnávání zatížení](load-balancer-tcp-idle-timeout.md). Pomůže vám to pochopit chování nečinného připojení při používání služby Azure Load Balancer.

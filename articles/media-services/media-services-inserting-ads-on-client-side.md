@@ -1,6 +1,6 @@
 ---
-title: "aaaInserting reklamy na straně klienta hello | Microsoft Docs"
-description: "Toto téma ukazuje, jak hello tooinsert reklamy na straně klienta."
+title: "Vkládání reklam na straně klienta | Microsoft Docs"
+description: "Toto téma ukazuje, jak vložit reklamy na straně klienta."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-ms.openlocfilehash: e6eab4aa92918ad734db8ac3a4e7818d02ed7fe4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 52ba731f88c630830560e3cf8406ba2e9613c8a5
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="inserting-ads-on-hello-client-side"></a>Vkládání reklam na straně klienta hello
-Toto téma obsahuje informace o tom, tooinsert různých typů reklamy na straně klienta hello.
+# <a name="inserting-ads-on-the-client-side"></a>Vkládání reklam na straně klienta
+Toto téma obsahuje informace o tom, jak vložit různých typů reklamy na straně klienta.
 
 Informace o podpoře uzavřené přidávání titulků a ad v živé streamování videa najdete v tématu [podporované titulky a standardy vložení Ad](media-services-live-streaming-with-onprem-encoders.md#cc_and_ads).
 
@@ -31,15 +31,15 @@ Informace o podpoře uzavřené přidávání titulků a ad v živé streamován
 > 
 
 ## <a id="insert_ads_into_media"></a>Vkládání reklamy do vašeho média
-Azure Media Services poskytuje podporu pro vkládání reklam prostřednictvím hello platformu Windows Media: architektury přehrávačů. Architektury přehrávačů s podporou ad jsou dostupné pro zařízení s Windows 8, Silverlight, Windows Phone 8 a iOS. Každý player framework obsahuje ukázkový kód, který ukazuje, jak tooimplement aplikace přehrávače. Existují tři různé druhy služby Active Directory, které lze vložit do seznamu média: seznam.
+Azure Media Services poskytuje podporu pro vkládání reklam prostřednictvím platformu Windows Media: architektury přehrávačů. Architektury přehrávačů s podporou ad jsou dostupné pro zařízení s Windows 8, Silverlight, Windows Phone 8 a iOS. Každý player framework obsahuje ukázkový kód, který ukazuje, jak implementovat aplikace přehrávače. Existují tři různé druhy služby Active Directory, které lze vložit do seznamu média: seznam.
 
-* **Lineární** – úplné rámce služby Active Directory, které pozastavit hlavní video hello.
-* **Nelineární** – reklamy překrytí, které se zobrazují jako přehrávání videa hlavní hello, obvykle logo nebo jiné statický obrázek umístit hello přehrávač.
-* **Doprovodná** – reklamy, které se zobrazují mimo hello přehrávač.
+* **Lineární** – úplné rámce služby Active Directory, které pozastavit hlavní video.
+* **Nelineární** – reklamy překrytí, které se zobrazují jako přehrávání videa hlavní, obvykle logo nebo jiné statický obrázek umístit přehrávač.
+* **Doprovodná** – reklamu, které se zobrazují mimo přehrávač.
 
-Služby Active Directory mohou být umístěny v libovolném bodě hello video hlavní časovou osu. Se musí zjistit hello player při tooplay hello ad a které tooplay služby Active Directory. To se provádí pomocí sady standardní soubory formátu XML: Video Ad služby šablony (VAST), více Ad seznam stop (VMAP) ve digitální Video, šablony abstraktní sekvencování na média (STOŽÁRŮ) a digitální Video Player Ad rozhraní definice (VPAID). VELKÁ soubory zadejte co toodisplay služby Active Directory. Soubory VMAP určete, kdy tooplay různé reklamy a obsahovat velká XML. STOŽÁRŮ soubory jsou jiný způsob toosequence reklamy, které také může obsahovat velká XML. Soubory VPAID definovat rozhraní mezi hello přehrávání videa a hello ad nebo serveru služby ad.
+Služby Active Directory mohou být umístěny v libovolném bodě hlavní video časovou osu. Přehrávač musí zjistit, kdy přehrávání ad a které reklamy přehrávání. To se provádí pomocí sady standardní soubory formátu XML: Video Ad služby šablony (VAST), více Ad seznam stop (VMAP) ve digitální Video, šablony abstraktní sekvencování na média (STOŽÁRŮ) a digitální Video Player Ad rozhraní definice (VPAID). VELKÁ soubory zadejte co zobrazit reklamy. Soubory VMAP určete, kdy k přehrávání různých reklamy a obsahují velká XML. STOŽÁRŮ soubory jsou jiný způsob, jak pořadí služby Active Directory, které také může obsahovat velká XML. Soubory VPAID definovat rozhraní mezi přehrávání videa a ad nebo serveru služby ad.
 
-Každý player framework funguje jinak, každý bude uvedena v jeho vlastní tématu. Toto téma popisuje hello základní mechanismy, které používá tooinsert služby Active Directory. Aplikací pro přehrávání videa žádost služby Active Directory ze serveru služby ad. server služby ad Hello může reagovat v mnoha různými způsoby:
+Každý player framework funguje jinak, každý bude uvedena v jeho vlastní tématu. Toto téma popisuje základní mechanismus používaný k vkládání reklam. Aplikací pro přehrávání videa žádost služby Active Directory ze serveru služby ad. Serveru služby ad může reagovat v mnoha různými způsoby:
 
 * Vrátí soubor velká
 * Vrátí VMAP soubor (s embedded VAST)
@@ -47,7 +47,7 @@ Každý player framework funguje jinak, každý bude uvedena v jeho vlastní té
 * Vrátí velká soubor s VPAID služby Active Directory
 
 ### <a name="using-a-video-ad-service-template-vast-file"></a>Pomocí souboru šablony (VAST) služby Video Ad
-Soubor velká Určuje, jaké ad nebo toodisplay služby Active Directory. Hello následující kód XML je příkladem soubor velká pro lineární ad:
+Soubor velká Určuje, jaké ad nebo zobrazit reklamy. Následující kód XML je příkladem soubor velká pro lineární ad:
 
     <VAST version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
       <Ad id="115571748">
@@ -91,9 +91,9 @@ Soubor velká Určuje, jaké ad nebo toodisplay služby Active Directory. Hello 
       </Ad>
     </VAST>
 
-Lineární ad Hello je popsán hello <**lineární**> elementu. Určuje dobu trvání hello hello ad, sledování událostí, klikněte na tlačítko prostřednictvím, klikněte na sledování a několika **MediaFile** elementy. Sledování události jsou určené v rámci hello <**TrackingEvents**> elementu a povolit služby ad serveru tootrack různých událostí, ke kterým došlo při prohlížení hello ad. V takovém případě hello start a středový, dokončení a rozbalte události se sledují. Hello počáteční události dojde, když se zobrazí hello ad. Hello středový události dojde, když alespoň, že byl zobrazen 50 % hello ad osy. událost complete Hello nastane, když hello ad byla spuštěna toohello end. Hello rozšířené události dojde, když uživatel hello rozbalí úvodní obrazovka toofull přehrávání videa. Se zadaným Clickthroughs <**interaktivní**> v rámci <**VideoClicks**> elementu a určuje toodisplay prostředků tooa identifikátoru URI při hello uživatel klikne na hello ad. ClickTracking je uveden v <**ClickTracking**> element také v rámci hello <**VideoClicks**> elementu a určuje sledování prostředků pro hello player toorequest při kliknutí hello na hello ad.hello <**MediaFile**> elementy zadejte informace o konkrétní kódování ad. Když je více než jedna <**MediaFile**> elementu přehrávání videa hello můžete zvolit nejvhodnější kódování hello pro platformu hello. 
+Lineární ad je popsán <**lineární**> elementu. Určuje dobu trvání ad, sledování událostí, klikněte na tlačítko prostřednictvím, klikněte na sledování a několika **MediaFile** elementy. Sledování události jsou určené v rámci <**TrackingEvents**> elementu a povolit serveru služby ad sledovat různé události, ke kterým došlo při prohlížení ad. V tomto případě začátku středový, dokončení a rozbalte události se sledují. Událost spuštění nastane, když se zobrazí ad. Středový událost nastane, když alespoň, že byl zobrazen 50 % osy ad. Událost complete nastane, když ad byla spuštěna na konec. Rozbalte událost nastane, když uživatel rozšíří přehrávání videa na celou obrazovku. Se zadaným Clickthroughs <**interaktivní**> v rámci <**VideoClicks**> elementu a určuje identifikátoru URI prostředku zobrazíte, když uživatel klikne na ad. ClickTracking je uveden v <**ClickTracking**> elementu, také uvnitř <**VideoClicks**> elementu a určuje sledování prostředků pro player k vyžádání, když uživatel klikne na ad. <**MediaFile**> elementy zadejte informace o konkrétní kódování ad. Když je více než jedna <**MediaFile**> elementu přehrávání videa můžete zvolit nejvhodnější kódování pro platformu. 
 
-Lineární reklamy lze zobrazit v zadaném pořadí. toodo, přidejte další <Ad> elementy toohello VAST souboru a zadejte hello pořadí pomocí hello atribut sekvence. To ukazuje následující příklad Hello:
+Lineární reklamy lze zobrazit v zadaném pořadí. Chcete-li to provést, přidejte další <Ad> elementy na VAST souboru a určit pořadí, pomocí pořadí atributu. Následující příklad ilustruje toto:
 
     <VAST version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
       <Ad id="1" sequence="0">
@@ -138,7 +138,7 @@ Lineární reklamy lze zobrazit v zadaném pořadí. toodo, přidejte další <A
       </Ad>
     </VAST>
 
-Nelineární reklamy jsou určené v <Creative> také element. Následující příklad ukazuje Hello <Creative> element, který popisuje nelineární ad.
+Nelineární reklamy jsou určené v <Creative> také element. Následující příklad ukazuje <Creative> element, který popisuje nelineární ad.
 
     <Creative id="video" sequence="1" AdID="">
       <NonLinearAds>
@@ -154,20 +154,20 @@ Nelineární reklamy jsou určené v <Creative> také element. Následující p�
     </Creative>
 
 
-Hello <**NonLinearAds**> element může obsahovat jednu nebo více <**NonLinear**> prvky, z nichž každý lze popsat nelineární ad. Hello <**NonLinear**> element určuje hello prostředků pro nelineární ad hello. Hello prostředek může být <**StaticResouce**>, <**IFrameResource**>, nebo <**HTMLResouce**>. <**StaticResource**> popisuje prostředků jiného typu než HTML a definuje creativeType atribut, který určuje, jak se zobrazí hello prostředků:
+<**NonLinearAds**> element může obsahovat jednu nebo více <**NonLinear**> prvky, z nichž každý lze popsat nelineární ad. <**NonLinear**> element určuje prostředek pro nelineární ad. Prostředek může být <**StaticResouce**>, <**IFrameResource**>, nebo <**HTMLResouce**>. <**StaticResource**> popisuje prostředků jiného typu než HTML a definuje creativeType atribut, který určuje, jak se zobrazí prostředku:
 
-Bitové kopie nebo gif, image nebo jpeg, image nebo png – hello prostředků se zobrazí v kódu HTML <**img**> značky.
+Bitové kopie nebo gif, image nebo jpeg, image nebo png – prostředku se zobrazí v kódu HTML <**img**> značky.
 
-Application/x-javascript – hello prostředků se zobrazí v kódu HTML <**skriptu**> značky.
+Application/x-javascript – prostředku se zobrazí v kódu HTML <**skriptu**> značky.
 
-Application/x-shockwave-flash – hello prostředků se zobrazí v Flash player.
+Application/x-shockwave-flash – prostředku se zobrazí v Flash player.
 
-**IFrameResource** popisuje prostředek HTML, který lze zobrazit v elementu IFrame. **HTMLResource** popisuje kód HTML, který lze vložit do webové stránky. **TrackingEvents** zadejte sledování událostí a hello URI toorequest při výskytu události hello. V této ukázkové hello jsou sledovány acceptInvitation a sbalit události. Další informace o hello **NonLinearAds** elementu a jeho podřízených položek, najdete v části IAB.NET/VAST. Všimněte si, že hello **TrackingEvents** element se nachází v rámci hello **NonLinearAds** prvek spíše než hello **NonLinear** element.
+**IFrameResource** popisuje prostředek HTML, který lze zobrazit v elementu IFrame. **HTMLResource** popisuje kód HTML, který lze vložit do webové stránky. **TrackingEvents** zadejte sledování událostí a identifikátor URI požadavku dojde k události. V této ukázce jsou sledovány acceptInvitation a sbalit události. Další informace o **NonLinearAds** elementu a jeho podřízených položek, najdete v části IAB.NET/VAST. Všimněte si, že **TrackingEvents** se nachází v rámci elementu **NonLinearAds** element místo **NonLinear** element.
 
-Doprovodná reklamy jsou definovány v rámci <CompanionAds> elementu. Hello <CompanionAds> element může obsahovat jednu nebo více <Companion> elementy. Každý <Companion> element popisuje doprovodné ad a může obsahovat <StaticResource>, <IFrameResource>, nebo <HTMLResource> které jsou určené v hello stejným způsobem jako v nelineárních ad. VELKÁ soubor může obsahovat více doprovodných reklamy a aplikace přehrávače hello můžete zvolit nejvhodnější ad toodisplay hello. Další informace o VAST najdete v tématu [velká 3.0](http://www.iab.net/media/file/VASTv3.0.pdf).
+Doprovodná reklamy jsou definovány v rámci <CompanionAds> elementu. <CompanionAds> Element může obsahovat jednu nebo více <Companion> elementy. Každý <Companion> element popisuje doprovodné ad a může obsahovat <StaticResource>, <IFrameResource>, nebo <HTMLResource> které je určené stejným způsobem jako nelineární ad. VELKÁ soubor může obsahovat více doprovodných reklamy a aplikace přehrávače můžete zvolit nejvhodnější ad k zobrazení. Další informace o VAST najdete v tématu [velká 3.0](http://www.iab.net/media/file/VASTv3.0.pdf).
 
 ### <a name="using-a-digital-video-multiple-ad-playlist-vmap-file"></a>Použití více soubor seznamu stop (VMAP) Ad digitální Video
-Soubor VMAP vám umožní toospecify, když dojde k zalomení ad, jak dlouho je každý konec, kolik reklamy, může se zobrazit v rámci zalomení a jaké typy služby Active Directory může být při zalomení zobrazovat. Hello následující v soubor VMAP příklad, který definuje zalomení jeden ad:
+Soubor VMAP umožňuje zadat, když dojde k zalomení ad, jak dlouho je každý konec, kolik reklamy, může se zobrazit v rámci zalomení a jaké typy služby Active Directory může být při zalomení zobrazovat. Následující soubor VMAP příklad, který definuje zalomení jeden ad:
 
     <vmap:VMAP xmlns:vmap="http://www.iab.net/vmap-1.0" version="1.0">
       <vmap:AdBreak breakType="linear" breakId="mypre" timeOffset="start">
@@ -216,34 +216,34 @@ Soubor VMAP vám umožní toospecify, když dojde k zalomení ad, jak dlouho je 
       </vmap:AdBreak>
     </vmap:VMAP>
 
-Soubor VMAP začíná <VMAP> element, který obsahuje jeden nebo více <AdBreak> elementy, každý definování přerušení služby ad. Každý ad zalomení Určuje typ ukončení, pozastavení ID a posun času. Určuje typ hello ad, která může být přehráván během pozastavení hello Hello breakType atribut: lineární, nelineární, nebo zobrazení. Zobrazení reklam mapovat tooVAST doprovodné reklamy. Více než jeden typ ad můžete zadat seznam oddělený čárkami (bez mezer). Hello breakID je volitelné identifikátor pro hello ad. Hello timeOffset Určuje, kdy má být zobrazena hello ad. Určit lze v jednom z následujících způsobů hello:
+Soubor VMAP začíná <VMAP> element, který obsahuje jeden nebo více <AdBreak> elementy, každý definování přerušení služby ad. Každý ad zalomení Určuje typ ukončení, pozastavení ID a posun času. Atribut breakType Určuje typ ad, která může být přehráván během rozdělení: lineární, nelineární, nebo zobrazení. Pro velká doprovodné reklamy zobrazit reklamy mapy. Více než jeden typ ad můžete zadat seznam oddělený čárkami (bez mezer). BreakID je volitelné identifikátor pro služby ad. TimeOffset Určuje, kdy má být zobrazena ad. Určit lze v jednom z následujících způsobů:
 
-1. Čas – ve formátu hh: mm: nebo hh:mm:ss.mmm kde .mmm je milisekundách. Hodnota tohoto atributu Hello Určuje dobu hello z hello začátku hello video časová osa toohello začátku hello ad přerušení.
-2. Procento – ve formátu n %, kde n je procento hello tooplay hello video časová osa před přehrávání hello ad
-3. Počáteční nebo koncové – Určuje, že ad by měla zobrazit před nebo po hello video byla zobrazena.
-4. Pozice – určuje pořadí hello ad zalomení při hello načasování zalomení ad hello je neznámý, například v živé vysílání datového proudu. Hello pořadí od konce každé ad zadané ve formátu hello #n, kde n je celé číslo větší nebo 1. 1 znamená, že neexistuje hello ad by měla být přehráván při první příležitosti hello 2 označuje hello ad by měla být přehráván při hello druhý příležitosti a tak dále.
+1. Čas – ve formátu hh: mm: nebo hh:mm:ss.mmm kde .mmm je milisekundách. Hodnota tohoto atributu určuje dobu od začátku video časovou osu na začátek rozdělení ad.
+2. Procento – ve formátu n % tam, kde n je procento video časovou osu přehrávání před přehrávání ad
+3. Počáteční nebo koncové – Určuje, že ad by měla zobrazit před nebo po video byla zobrazena.
+4. Pozice – určuje pořadí zalomení ad, když načasování zalomení ad je neznámý, například v živé vysílání datového proudu. Pořadí od konce každé ad je zadána ve formátu #n, kde n je celé číslo větší nebo 1. 1 znamená, že neexistuje ad by měla být přehráván při první příležitosti 2 označuje, že ad by měla být přehráván na druhou možnost a tak dále.
 
-V rámci hello <**AdBreak**> existuje element může být jedna <**AdSource**> elementu. Hello <**AdSource**> element obsahuje hello následující atributy:
+V rámci <**AdBreak**> existuje element může být jedna <**AdSource**> elementu. <**AdSource**> element obsahuje následující atributy:
 
-1. ID – Určuje identifikátor zdroje ad hello
-2. allowMultipleAds – logická hodnota, která určuje, zda lze zobrazit více reklamy během pozastavení ad hello
-3. followRedirects – volitelné logickou hodnotu, která určuje, pokud by měl respektovat přehrávání videa hello přesměruje v rámci odpověď ad
+1. ID – Určuje identifikátor zdroje ad
+2. allowMultipleAds – logická hodnota, která určuje, zda lze zobrazit více reklamy během pozastavení ad
+3. followRedirects – přesměruje volitelné logickou hodnotu, která určuje, pokud by měl respektovat přehrávání videa v rámci odpověď ad
 
-Hello <**AdSource**> element poskytuje hello player odpověď ad vložené nebo odpověď ad tooan odkaz. Může obsahovat jednu z hello následující prvky:
+<**AdSource**> element poskytuje přehrávač odpověď ad vložené nebo odkaz na odpověď ad. Může obsahovat jeden z následujících elementů:
 
-* <VASTAdData>Označuje, že odpověď velká ad vložené v souboru VMAP hello
+* <VASTAdData>Označuje, že odpověď velká ad vložené v rámci tohoto souboru VMAP
 * <AdTagURI>identifikátor URI, který odkazuje na odpověď ad z jiného systému
 * <CustomAdData>-an libovolný řetězec této respresents-velká odpověď
 
-V tomto příkladu je definován odpověď ad v řádku s <VASTAdData> element, který obsahuje odpověď velká ad. Další informace o hello najdete v části Další prvky [VMAP](http://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap).
+V tomto příkladu je definován odpověď ad v řádku s <VASTAdData> element, který obsahuje odpověď velká ad. Další informace o dalších prvků najdete v tématu [VMAP](http://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap).
 
-Hello <**AdBreak**> element může také obsahovat jednu <**TrackingEvents**> elementu. Hello <**TrackingEvents**> element umožňuje tootrack hello počáteční nebo koncový přerušení služby ad nebo zda došlo k chybě během pozastavení ad hello. Hello <**TrackingEvents**> element obsahuje jeden nebo více <**sledování**> prvky, z nichž každý určuje sledování událostí a sledování identifikátor URI. jsou Hello možné sledování události:
+<**AdBreak**> element může také obsahovat jednu <**TrackingEvents**> elementu. <**TrackingEvents**> elementu umožňuje sledovat počáteční nebo koncový přerušení služby ad nebo zda došlo k chybě během pozastavení ad. <**TrackingEvents**> element obsahuje jeden nebo více <**sledování**> prvky, z nichž každý určuje sledování událostí a sledování identifikátor URI. Jsou možné sledování události:
 
-1. breakStart – sleduje hello začátku přerušení služby ad
-2. breakEnd – dokončení hello sledovat přerušení služby ad
-3. Chyba – sleduje chybu, ke které došlo k chybě během pozastavení ad hello
+1. breakStart – sleduje začátku přerušení služby ad
+2. breakEnd – sledování dokončení přerušení služby ad
+3. Chyba – sleduje chybu, ke které došlo k chybě během pozastavení ad
 
-Hello následující příklad ukazuje VMAP soubor, který určuje sledování událostí
+Následující příklad ukazuje VMAP soubor, který určuje sledování událostí
 
     <vmap:VMAP xmlns:vmap="http://www.iab.net/vmap-1.0" version="1.0">
       <vmap:AdBreak breakType="linear" breakId="mypre" timeOffset="start">
@@ -266,10 +266,10 @@ Hello následující příklad ukazuje VMAP soubor, který určuje sledování u
       </vmap:AdBreak>
     </vmap:VMAP>
 
-Další informace o hello <**TrackingEvents**> elementu a jeho podřízených položek, najdete v části http://iab.org/VMAP.pdf
+Další informace o <**TrackingEvents**> elementu a jeho podřízených položek, najdete v části http://iab.org/VMAP.pdf
 
 ### <a name="using-a-media-abstract-sequencing-template-mast-file"></a>Pomocí médií abstraktní, pořadí úloh souboru šablony (STOŽÁRŮ)
-Soubor STOŽÁRŮ umožňuje toospecify aktivační události, které definují, kdy se má zobrazit ad. Hello následující příklad je STOŽÁRŮ soubor obsahující aktivačních událostí pro před kumulativní ad, střední kumulativní ad a po vrácení ad.
+Soubor STOŽÁRŮ umožňuje zadat aktivační události, které definují, kdy se má zobrazit ad. Následující příklad je STOŽÁRŮ soubor obsahující aktivačních událostí pro před kumulativní ad, střední kumulativní ad a po vrácení ad.
 
     <MAST xsi:schemaLocation="http://openvideoplayer.sf.net/mast http://openvideoplayer.sf.net/mast/mast.xsd" xmlns="http://openvideoplayer.sf.net/mast" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <triggers>
@@ -290,7 +290,7 @@ Soubor STOŽÁRŮ umožňuje toospecify aktivační události, které definují,
           </startConditions>
           <endConditions>
             <condition type="event" name="OnItemEnd"/>
-            <!--This 'resets' hello trigger for hello next clip-->
+            <!--This 'resets' the trigger for the next clip-->
           </endConditions>
           <sources>
             <source uri="http://smf.blob.core.windows.net/samples/win8/ads/vast_linear.xml" format="vast">
@@ -314,16 +314,16 @@ Soubor STOŽÁRŮ umožňuje toospecify aktivační události, které definují,
 
 
 
-Soubor STOŽÁRŮ začíná **STOŽÁRŮ** element, který obsahuje jeden **aktivační události** elementu. Hello <triggers> element obsahuje jeden nebo více **aktivační událost** prvky, které definují, kdy by měly být přehrány ad. 
+Soubor STOŽÁRŮ začíná **STOŽÁRŮ** element, který obsahuje jeden **aktivační události** elementu. <triggers> Element obsahuje jeden nebo více **aktivační událost** prvky, které definují, kdy by měly být přehrány ad. 
 
-Hello **aktivační událost** obsahuje element **startConditions** element, který zadat, když ad by měl začínat tooplay. Hello **startConditions** element obsahuje jeden nebo více <condition> elementy. Při každé <condition> vyhodnotí tootrue aktivační procedury je zahájeno nebo odebrán, podle toho, jestli se hello <condition> je obsažena v **startConditions** nebo **endConditions** – element v uvedeném pořadí. Když více <condition> elementy jsou přítomny, jsou považovány za implicitní OR, způsobí, že všechny podmínky vyhodnocení tootrue tooinitiate hello aktivační události. <condition>elementy mohou být použity. Když podřízené <condition> jsou přednastavení elementy, jsou považovány za implicitní a, všechny podmínky se musí vyhodnotit tootrue pro tooinitiate hello aktivační události. Hello <condition> prvek obsahuje následující atributy, které definují podmínky hello hello: 
+**Aktivační událost** obsahuje element **startConditions** element, který zadat, pokud by měl začínat ad přehrávání. **StartConditions** element obsahuje jeden nebo více <condition> elementy. Při každé <condition> vyhodnotí jako true aktivační událost se zahájí nebo odebrán, podle toho, jestli <condition> je obsažena v **startConditions** nebo **endConditions** element v uvedeném pořadí. Když více <condition> elementy jsou přítomny, jsou považovány za implicitní nebo, aktivační událost zahájíte způsobí, že všechny podmínky vyhodnocení na hodnotu true. <condition>elementy mohou být použity. Když podřízené <condition> jsou přednastavení elementy, jsou považovány za implicitní a, všechny podmínky musí vyhodnotit na hodnotu true pro aktivační událost k zahájení. <condition> Prvek obsahuje následující atributy, které definují podmínky: 
 
-1. **typ** – Určuje typ hello podmínku, události nebo vlastnosti
-2. **název** – hello název vlastnosti nebo události toobe hello používá během vyhodnocení
-3. **Hodnota** – hello hodnotu, která vlastnost vyhodnotí proti
-4. **operátor** – hello operaci toouse během vyhodnocení: EQ (stejná), NEQ (není rovno), GTR (větší), GEQ (větší nebo rovna), LT (menší než), LEQ (je menší než nebo rovno), MOD (modulo)
+1. **typ** – Určuje typ podmínky, události nebo vlastnosti
+2. **název** – název vlastnosti nebo událost, která má použít při vyhodnocení
+3. **Hodnota** – hodnota, která vlastnost vyhodnotí proti
+4. **operátor** – operaci má použít při vyhodnocení: EQ (stejná), NEQ (není rovno), GTR (větší), GEQ (větší nebo rovna), LT (menší než), LEQ (je menší než nebo rovno), MOD (modulo)
 
-**endConditions** také obsahovat <condition> elementy. Pokud je podmínka vyhodnocena jako aktivační událost hello tootrue není reset.hello <trigger> také obsahuje element <sources> element, který obsahuje jeden nebo více <source> elementy. Hello <source> elementy definovat hello URI toohello ad odpovědi a hello typ odpovědi ad. V tomto příkladu je zadána identifikátoru URI odpovědi tooa velká. 
+**endConditions** také obsahovat <condition> elementy. Pokud je podmínka vyhodnocena jako true aktivační událost se resetuje. <trigger> Také obsahuje element <sources> element, který obsahuje jeden nebo více <source> elementy. <source> Elementy zadejte identifikátor URI odpovědi ad a typ odpovědi ad. V tomto příkladu je identifikátor URI zadána odpověď na velká. 
 
     <trigger id="postroll" description="postroll"  >
       <startConditions>
@@ -338,39 +338,39 @@ Hello **aktivační událost** obsahuje element **startConditions** element, kte
 
 
 ### <a name="using-video-player-ad-interface-definition-vpaid"></a>Pomocí definice rozhraní Video Player ve službě Active Directory (VPAID)
-VPAID je rozhraní API pro povolení toocommunicate jednotky spustitelné ad s přehrávání videa. To umožňuje prostředí vysoce interaktivní ad. uživatel Hello komunikovat s hello ad a hello ad může reagovat tooactions provedenou hello prohlížeč. Například ad může zobrazit tlačítka, která umožňují tooview hello uživatele Další informace nebo delší verzi hello ad. přehrávání videa Hello musí podporovat hello VPAID rozhraní API a hello spustitelné ad musí implementovat rozhraní API hello. Když přehrávač požadavků ad serveru služby ad serveru hello odpoví velká odpovědi, která obsahuje VPAID ad.
+VPAID je rozhraní API pro povolení spustitelné ad jednotky ke komunikaci s přehrávání videa. To umožňuje prostředí vysoce interaktivní ad. Uživatel může komunikovat s ad a služby ad může reagovat na akce provedené v prohlížeči. Například ad může zobrazit tlačítka, která umožňují uživateli zobrazit další informace nebo delší verze služby ad. Přehrávání videa musí podporovat rozhraní API VPAID a spustitelné ad musí implementovat rozhraní API. Když přehrávač požadavky že ze serveru služby ad serveru ad může být použit velká odpovědi, která obsahuje VPAID ad.
 
-Spustitelný soubor ad se vytvoří v kódu, který je třeba spustit v prostředí runtime například Adobe Flash™ nebo JavaScript, může být spuštěn ve webovém prohlížeči. Po návratu velká odpověď obsahující VPAID ad serveru služby ad hello hodnotu atributu apiFramework hello hello <MediaFile> element musí být "VPAID". Tento atribut určuje, že tuto reklamu hello obsažené je spustitelný soubor ad VPAID. Hello typ musí být nastaven typ MIME toohello hello spustitelného souboru, například "application/x-shockwave-flash" nebo "application/x-javascript". Hello následující fragment kódu XML zobrazuje hello <MediaFile> element z velká odpověď obsahující spustitelné ad VPAID. 
+Spustitelný soubor ad se vytvoří v kódu, který je třeba spustit v prostředí runtime například Adobe Flash™ nebo JavaScript, může být spuštěn ve webovém prohlížeči. Po návratu velká odpověď obsahující VPAID ad serveru služby ad hodnotu apiFramework atribut <MediaFile> element musí být "VPAID". Tento atribut určuje, že obsahují ad je spustitelný soubor ad VPAID. Atribut type musí být nastaven na typ MIME ke spustitelnému souboru, například "application/x-shockwave-flash" nebo "application/x-javascript". Následující fragment kódu ukazuje XML <MediaFile> element z velká odpověď obsahující spustitelné ad VPAID. 
 
     <MediaFiles>
        <MediaFile id="1" delivery="progressive" type=”application/x-shockwaveflash”
                   width=”640” height=”480” apiFramework=”VPAID”>
-           <!-- CDATA wrapped URI tooexecutable ad -->
+           <!-- CDATA wrapped URI to executable ad -->
        </MediaFile>
     </MediaFiles>
 
 
-Spustitelný soubor ad může být inicializována pomocí hello <AdParameters> v rámci hello <Linear> nebo <NonLinear> elementy v odpovědi na velká. Další informace o hello <AdParameters> elementu, najdete v části [velká 3.0](http://www.iab.net/media/file/VASTv3.0.pdf). Další informace o hello VPAID API najdete v tématu [VPAID 2.0](http://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf).
+Spustitelný soubor ad může být inicializována pomocí <AdParameters> v rámci <Linear> nebo <NonLinear> elementy v odpovědi na velká. Další informace o <AdParameters> elementu, najdete v části [velká 3.0](http://www.iab.net/media/file/VASTv3.0.pdf). Další informace o rozhraní API VPAID najdete v tématu [VPAID 2.0](http://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf).
 
 ## <a name="implementing-a-windows-or-windows-phone-8-player-with-ad-support"></a>Implementace systému Windows nebo Windows Phone 8 hráče s podpora služby Ad
-Hello média platformy společnosti Microsoft: Player Framework pro Windows 8 a Windows Phone 8 obsahuje kolekci ukázkové aplikace, které ukazují, jak tooimplement aplikace přehrávání videa pomocí hello framework. Si můžete stáhnout přehrávač Framework a hello ukázky hello z [Player Framework pro Windows 8 a Windows Phone 8](https://playerframework.codeplex.com).
+Platforma Microsoft média: Player Framework pro Windows 8 a Windows Phone 8 obsahuje kolekci ukázkové aplikace, které ukazují, jak implementovat přehrávání videa aplikace pomocí rozhraní. Můžete si stáhnout přehrávač Framework a ukázky z [Player Framework pro Windows 8 a Windows Phone 8](https://playerframework.codeplex.com).
 
-Když otevřete řešení Microsoft.PlayerFramework.Xaml.Samples hello uvidíte počet složek v rámci projektu hello. Hello inzerování složka obsahuje hello ukázkový kód relevantní toocreating přehrávání videa s podpora služby ad. Uvnitř hello inzerování složka je, jak počet XAML nebo cs každý z které zobrazit soubory reklamy tooinsert jiným způsobem. Hello následující seznam popisuje každý:
+Když otevřete řešení Microsoft.PlayerFramework.Xaml.Samples uvidíte počet složek v projektu. Inzerování složka obsahuje ukázkový kód, který je důležité pro vytvoření přehrávání videa s podpora služby ad. Uvnitř reklama složka je počet XAML nebo cs soubory, které ukazují, jak vložit reklamy jiným způsobem. Následující seznam popisuje všechny:
 
-* AdPodPage.xaml ukazuje, jak pod toodisplay ad.
-* Zobrazuje AdSchedulingPage.xaml jak tooschedule reklamy.
-* FreeWheelPage.xaml ukazuje, jak toouse hello FreeWheel modulu plug-in tooschedule služby Active Directory.
-* Zobrazuje MastPage.xaml jak tooschedule reklam s STOŽÁRŮ souboru.
-* ProgrammaticAdPage.xaml ukazuje, jak naplánovat tooprogrammatically reklamy do video.
-* Zobrazuje ScheduleClipPage.xaml jak tooschedule ad bez velká souboru.
-* Zobrazuje VastLinearCompanionPage.xaml jak tooinsert lineární a doprovodné ad.
-* Zobrazuje VastNonLinearPage.xaml jak tooinsert – lineární ad.
-* Zobrazuje VmapPage.xaml jak toospecify reklam s VMAP souboru.
+* AdPodPage.xaml ukazuje způsob zobrazení pod služby ad.
+* AdSchedulingPage.xaml ukazuje, jak při plánování služby Active Directory.
+* FreeWheelPage.xaml ukazuje, jak naplánování služby Active Directory pomocí modulu plug-in FreeWheel.
+* MastPage.xaml ukazuje, jak při plánování služby Active Directory pomocí souboru STOŽÁRŮ.
+* ProgrammaticAdPage.xaml ukazuje, jak programově naplánování služby Active Directory do video.
+* ScheduleClipPage.xaml ukazuje, jak naplánovat ad bez velká souboru.
+* VastLinearCompanionPage.xaml ukazuje, jak k vložení lineární a doprovodné ad.
+* VastNonLinearPage.xaml ukazuje, jak vložit – lineární ad.
+* VmapPage.xaml ukazuje, jak zadat soubor VMAP služby Active Directory.
 
-Všechny tyto ukázky používá třídu Media Player hello definované hello player framework. Většina ukázek pomocí modulů plug-in, který přidat podporu pro různými formáty odpovědi ad. Ukázka ProgrammaticAdPage Hello prostřednictvím kódu programu komunikuje s instancí Media Player.
+Všechny tyto ukázky používá třídu Media Player definované rozhraní přehrávač. Většina ukázek pomocí modulů plug-in, který přidat podporu pro různými formáty odpovědi ad. Ukázka ProgrammaticAdPage prostřednictvím kódu programu komunikuje s instancí Media Player.
 
 ### <a name="adpodpage-sample"></a>Ukázka AdPodPage
-Tato ukázka používá hello AdSchedulerPlugin toodefine při toodisplay ad. V tomto příkladu je střední kumulativní inzerování naplánované toobe přehrávají po 5 sekund. pod ad Hello (skupina služby Active Directory toodisplay v pořadí) je zadána v velká souboru, kterou vrátil server služby ad. Hello URI toohello velká soubor je zadán v hello <RemoteAdSource> elementu.
+Tato ukázka používá AdSchedulerPlugin definovat, kdy se mají zobrazit ad. V tomto příkladu inzerování střední kumulativní oprava má být přehráván po 5 sekund. Pod ad (skupina služby Active Directory pro zobrazení v pořadí) je zadána v velká souboru, kterou vrátil server služby ad. Identifikátor URI pro velká souboru je uveden v <RemoteAdSource> elementu.
 
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
 
@@ -390,10 +390,10 @@ Tato ukázka používá hello AdSchedulerPlugin toodefine při toodisplay ad. V 
         </mmppf:MediaPlayer.Plugins>
     </mmppf:MediaPlayer>
 
-Další informace o hello AdSchedulerPlugin najdete v tématu [inzerování v hello Player rozhraní Windows 8 a Windows Phone 8](http://playerframework.codeplex.com/wikipage?title=Advertising&referringTitle=Windows%208%20Player%20Documentation)
+Další informace o AdSchedulerPlugin najdete v tématu [inzerování v rámci Player ve Windows 8 a Windows Phone 8](http://playerframework.codeplex.com/wikipage?title=Advertising&referringTitle=Windows%208%20Player%20Documentation)
 
 ### <a name="adschedulingpage"></a>AdSchedulingPage
-Tato ukázka používá také hello AdSchedulerPlugin. Naplánuje tři služby Active Directory, ad před, střední kumulativní ad a po vrácení ad. Hello URI toohello VAST pro každou reklamu je uveden v <RemoteAdSource> elementu.
+Tato ukázka používá také AdSchedulerPlugin. Naplánuje tři služby Active Directory, ad před, střední kumulativní ad a po vrácení ad. Zadaný identifikátor URI pro VAST u každé reklamy v <RemoteAdSource> elementu.
 
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
                 <mmppf:MediaPlayer.Plugins>
@@ -426,7 +426,7 @@ Tato ukázka používá také hello AdSchedulerPlugin. Naplánuje tři služby A
 
 
 ### <a name="freewheelpage"></a>FreeWheelPage
-Tato ukázka používá hello FreeWheelPlugin, který určuje zdrojový atribut, který určuje URI souboru SmartXML tooa body, které určuje ad obsah a také informace o plánování ad.
+Tato ukázka používá FreeWheelPlugin, který určuje zdrojový atribut, který určuje identifikátor URI, který ukazuje na soubor SmartXML, který určuje ad obsahu a také informace o plánování ad.
 
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
                 <mmppf:MediaPlayer.Plugins>
@@ -436,7 +436,7 @@ Tato ukázka používá hello FreeWheelPlugin, který určuje zdrojový atribut,
             </mmppf:MediaPlayer>
 
 ### <a name="mastpage"></a>MastPage
-Tato ukázka používá hello MastSchedulerPlugin, který vám umožní toouse STOŽÁRŮ souboru. Zdrojový atribut Hello určuje hello umístění souboru STOŽÁRŮ hello.
+Tato ukázka používá MastSchedulerPlugin, která umožňuje použít soubor STOŽÁRŮ. Zdrojový atribut určuje umístění souboru STOŽÁRŮ.
 
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
                 <mmppf:MediaPlayer.Plugins>
@@ -446,11 +446,11 @@ Tato ukázka používá hello MastSchedulerPlugin, který vám umožní toouse S
             </mmppf:MediaPlayer>
 
 ### <a name="programmaticadpage"></a>ProgrammaticAdPage
-Tato ukázka prostřednictvím kódu programu komunikuje s hello Media Player. soubor ProgrammaticAdPage.xaml Hello vytvoří hello Media Player:
+Tato ukázka prostřednictvím kódu programu komunikuje s Media Player. Soubor ProgrammaticAdPage.xaml vytvoří Media Player:
 
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4"/>
 
-soubor ProgrammaticAdPage.xaml.cs Hello vytvoří AdHandlerPlugin, při ad mají být zobrazeny a potom přidá obslužné rutiny pro hello MarkerReached událost, která načte RemoteAdSource, zadání soubor velká tooa URI a potom hraje přidává TimelineMarker toospecify Hello ad.
+Soubor ProgrammaticAdPage.xaml.cs vytvoří AdHandlerPlugin, přidá TimelineMarker zadat při ad mají být zobrazeny a potom přidá obslužné rutiny pro MarkerReached událost, která načte RemoteAdSource, určující identifikátor URI pro velká soubor a pak hraje ad.
 
     public sealed partial class ProgrammaticAdPage : Microsoft.PlayerFramework.Samples.Common.LayoutAwarePage
         {
@@ -481,7 +481,7 @@ soubor ProgrammaticAdPage.xaml.cs Hello vytvoří AdHandlerPlugin, při ad mají
             }
 
 ### <a name="scheduleclippage"></a>ScheduleClipPage
-Tato ukázka používá hello AdSchedulerPlugin tooschedule ad střední kumulativní zadáním soubor .wmv, který obsahuje hello ad.
+Tato ukázka používá AdSchedulerPlugin k naplánování střední kumulativní ad zadáním soubor .wmv, který obsahuje ad.
 
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.cloudapp.net/html5/media/bigbuck.mp4">
                 <mmppf:MediaPlayer.Plugins>
@@ -505,7 +505,7 @@ Tato ukázka používá hello AdSchedulerPlugin tooschedule ad střední kumulat
             </mmppf:MediaPlayer>
 
 ### <a name="vastlinearcompanionpage"></a>VastLinearCompanionPage
-Tato ukázka znázorňuje, jak toouse hello AdSchedulerPlugin tooschedule střední kumulativní lineární ad s doprovodné ad. Hello <RemoteAdSource> element určuje umístění hello velká souboru hello.
+Tato ukázka znázorňuje, jak naplánovat střední kumulativní lineární ad s ad doprovodné pomocí AdSchedulerPlugin. <RemoteAdSource> Element určuje umístění souboru velká.
 
     <mmppf:MediaPlayer Grid.Row="1"  x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
                 <mmppf:MediaPlayer.Plugins>
@@ -525,7 +525,7 @@ Tato ukázka znázorňuje, jak toouse hello AdSchedulerPlugin tooschedule střed
             </mmppf:MediaPlayer>
 
 ### <a name="vastlinearnonlinearpage"></a>VastLinearNonLinearPage
-Tato ukázka používá hello AdSchedulerPlugin tooschedule lineární a -lineární ad. Hello umístění velká souboru je definován s hello <RemoteAdSource> elementu.
+Tato ukázka používá AdSchedulerPlugin při plánování lineární a -lineární ad. Umístění souboru velká zadaný <RemoteAdSource> elementu.
 
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
                 <mmppf:MediaPlayer.Plugins>
@@ -545,7 +545,7 @@ Tato ukázka používá hello AdSchedulerPlugin tooschedule lineární a -lineá
             </mmppf:MediaPlayer>
 
 ### <a name="vmappage"></a>VMAPPage
-Této ukázky používá hello VmapSchedulerPlugin tooschedule reklam pomocí souboru VMAP. Hello URI toohello VMAP soubor je zadán v hello zdrojový atribut hello <VmapSchedulerPlugin> elementu.
+Této ukázky používá k naplánování služby Active Directory pomocí souboru VMAP VmapSchedulerPlugin. Zadaný identifikátor URI k souboru VMAP v zdrojový atribut <VmapSchedulerPlugin> elementu.
 
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
                 <mmppf:MediaPlayer.Plugins>
@@ -555,13 +555,13 @@ Této ukázky používá hello VmapSchedulerPlugin tooschedule reklam pomocí so
             </mmppf:MediaPlayer>
 
 ## <a name="implementing-an-ios-video-player-with-ad-support"></a>Implementace iOS Video hráče s podpora služby Ad
-Hello média platformy společnosti Microsoft: architektura Player pro iOS obsahuje kolekci ukázkové aplikace, které ukazují, jak tooimplement aplikace přehrávání videa pomocí hello framework. Si můžete stáhnout přehrávač Framework a hello ukázky hello z [Azure Media Player Framework](https://github.com/Azure/azure-media-player-framework). Hello github stránce má odkaz tooa Wiki, který obsahuje další informace o hello player framework a úvod toohello player ukázková: [Wiki přehrávač médií Azure](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework).
+Platforma Microsoft média: Architektura Player pro iOS obsahuje kolekci ukázkové aplikace, které ukazují, jak implementovat přehrávání videa aplikace pomocí rozhraní. Můžete si stáhnout přehrávač Framework a ukázky z [Azure Media Player Framework](https://github.com/Azure/azure-media-player-framework). Stránku githubu obsahuje odkaz na Wiki, který obsahuje další informace o rozhraní player a úvod do ukázka player: [Wiki přehrávač médií Azure](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework).
 
 ### <a name="scheduling-ads-with-vmap"></a>Plánování služby Active Directory s VMAP
-Následující příklad ukazuje, jak Hello tooschedule služby Active Directory pomocí souboru VMAP.
+Následující příklad ukazuje, jak při plánování služby Active Directory pomocí souboru VMAP.
 
-    // How tooschedule an Ad using VMAP.
-    //First download hello VMAP manifest
+    // How to schedule an Ad using VMAP.
+    //First download the VMAP manifest
 
     if (![framework.adResolver downloadManifest:&manifest withURL:[NSURL URLWithString:@"http://portalvhdsq3m25bf47d15c.blob.core.windows.net/vast/PlayerTestVMAP.xml"]])
             {
@@ -569,7 +569,7 @@ Následující příklad ukazuje, jak Hello tooschedule služby Active Directory
             }
             else
             {
-                // Schedule a list of ads using hello downloaded VMAP manifest
+                // Schedule a list of ads using the downloaded VMAP manifest
                 if (![framework scheduleVMAPWithManifest:manifest])
                 {
                     [self logFrameworkError];
@@ -577,17 +577,17 @@ Následující příklad ukazuje, jak Hello tooschedule služby Active Directory
             }
 
 ### <a name="scheduling-ads-with-vast"></a>Plánování služby Active Directory s VAST
-Hello následující ukázka ukazuje, jak tooschedule ad velká pozdní vazby.
+Následující příklad ukazuje, jak naplánovat pozdní vazby velká ad.
 
-    //Example:3 How tooschedule a late binding VAST ad.
-    // set hello start time for hello ad
+    //Example:3 How to schedule a late binding VAST ad.
+    // set the start time for the ad
     adLinearTime.startTime = 13;
     adLinearTime.duration = 0;
-    // Specify hello URI of hello VAST file
+    // Specify the URI of the VAST file
     NSString *vastAd1=@"http://portalvhdsq3m25bf47d15c.blob.core.windows.net/vast/PlayerTestVAST.xml";
     // Create an AdInfo object
      AdInfo *vastAdInfo1 = [[[AdInfo alloc] init] autorelease];
-    // set URL tooVAST file
+    // set URL to VAST file
     vastAdInfo1.clipURL = [NSURL URLWithString:vastAd1];
     // set running time of ad
     vastAdInfo1.mediaTime = [[[MediaTime alloc] init] autorelease];
@@ -604,8 +604,8 @@ Hello následující ukázka ukazuje, jak tooschedule ad velká pozdní vazby.
         [self logFrameworkError];
     }
 
-   Hello následující ukázka ukazuje, jak tooschedule ad pro velká časné vazby.
-Příklad: 4 plán časné vazby velká ad //Download hello VAST souboru pokud (! [[ framework.adResolver downloadManifest: & manifestu withURL: [nsurl, který URLWithString: @"http://portalvhdsq3m25bf47d15c.blob.core.windows.net/vast/PlayerTestVAST.xml"]]) {[vlastní logFrameworkError];} else {adLinearTime.startTime = 7; adLinearTime.duration = 0;
+   Následující příklad ukazuje, jak naplánovat ad pro velká časné vazby.
+Příklad: 4 plán časná //Download velká ad vazbu VAST souboru pokud (! [[ framework.adResolver downloadManifest: & manifestu withURL: [nsurl, který URLWithString: @"http://portalvhdsq3m25bf47d15c.blob.core.windows.net/vast/PlayerTestVAST.xml"]]) {[vlastní logFrameworkError];} else {adLinearTime.startTime = 7; adLinearTime.duration = 0;
 
         // Create AdInfo instance
         AdInfo *vastAdInfo2 = [[[AdInfo alloc] init] autorelease];
@@ -621,9 +621,9 @@ Příklad: 4 plán časné vazby velká ad //Download hello VAST souboru pokud (
         }
     }
 
-Hello následující ukázka ukazuje, jak tooinsert ad pomocí hrubý vyjmout úpravy (RCE)
+Následující příklad ukazuje, jak vložit ad pomocí hrubý vyjmout úpravy (RCE)
 
-    //Example:1 How toouse RCE.
+    //Example:1 How to use RCE.
     // specify manifest for ad content
     NSString *secondContent=@"http://wamsblureg001orig-hs.cloudapp.net/6651424c-a9d1-419b-895c-6993f0f48a26/The%20making%20of%20Microsoft%20Surface-m3u8-aapl.ism/Manifest(format=m3u8-aapl)";
 
@@ -637,18 +637,18 @@ Hello následující ukázka ukazuje, jak tooinsert ad pomocí hrubý vyjmout ú
         [self logFrameworkError];
     }
 
-Hello následující příklad ukazuje, jak pod tooschedule ad.
+Následující příklad ukazuje, jak naplánovat pod služby ad.
 
     //Example:5 Schedule an ad Pod.
     // Set start time for ad
     adLinearTime.startTime = 23;
     adLinearTime.duration = 0;
 
-    // Specify URL toocontent
+    // Specify URL to content
     NSString *adpodSt1=@"https://portalvhdsq3m25bf47d15c.blob.core.windows.net/asset-e47b43fd-05dc-4587-ac87-5916439ad07f/Windows%208_%20Cliffjumpers.mp4?st=2012-11-28T16%3A31%3A57Z&se=2014-11-28T16%3A31%3A57Z&sr=c&si=2a6dbb1e-f906-4187-a3d3-7e517192cbd0&sig=qrXYZBekqlbbYKqwovxzaVZNLv9cgyINgMazSCbdrfU%3D";
     // Create an AdInfo instance
     AdInfo *adpodInfo1 = [[[AdInfo alloc] init] autorelease];
-    // set URI tooad content
+    // set URI to ad content
     adpodInfo1.clipURL = [NSURL URLWithString:adpodSt1];
     // Set ad running time
     adpodInfo1.mediaTime = [[[MediaTime alloc] init] autorelease];
@@ -665,10 +665,10 @@ Hello následující příklad ukazuje, jak pod tooschedule ad.
         [self logFrameworkError];
     }
 
-Následující příklad ukazuje, jak Hello tooschedule-rychlých ad střední vrácení. Rychlých ad pouze přehraje po bez ohledu na jakékoli požádat o hello prohlížeč provede.
+Následující příklad ukazuje, jak naplánovat-rychlých ad střední vrácení. Rychlých ad pouze přehraje po bez ohledu na jakékoli vyhledávání se provádí v prohlížeči.
 
     //Example:6 Schedule a single non sticky mid roll Ad
-    // specify URL toocontent
+    // specify URL to content
     NSString *oneTimeAd=@"http://wamsblureg001orig-hs.cloudapp.net/5389c0c5-340f-48d7-90bc-0aab664e5f02/Windows%208_%20You%20and%20Me%20Together-m3u8-aapl.ism/Manifest(format=m3u8-aapl)";
 
     // create an AdInfo instance
@@ -692,13 +692,13 @@ Následující příklad ukazuje, jak Hello tooschedule-rychlých ad střední v
         [self logFrameworkError];
     }
 
-Následující příklad ukazuje, jak Hello tooschedule rychlých ad střední vrácení. Rychlých ad se zobrazí pokaždé, když bod v časové osy video hello je dosaženo specifikovaného hello.
+Následující příklad ukazuje, jak naplánovat rychlých ad střední vrácení. Rychlých ad se zobrazí pokaždé, když je dosaženo Zadaný bod na video časovou osu.
 
     //Example:7 Schedule a single sticky mid roll Ad
     NSString *stickyAd=@"http://wamsblureg001orig-hs.cloudapp.net/2e4e7d1f-b72a-4994-a406-810c796fc4fc/The%20Surface%20Movement-m3u8-aapl.ism/Manifest(format=m3u8-aapl)";
     // create AdInfo instance
     AdInfo *stickyAdInfo = [[[AdInfo alloc] init] autorelease];
-    // set URI tooad
+    // set URI to ad
     stickyAdInfo.clipURL = [NSURL URLWithString:stickyAd];
     stickyAdInfo.mediaTime = [[[MediaTime alloc] init] autorelease];
     stickyAdInfo.mediaTime.clipBeginMediaTime = 0;
@@ -717,7 +717,7 @@ Následující příklad ukazuje, jak Hello tooschedule rychlých ad střední v
     }
 
 
-Hello následující ukázka ukazuje, jak tooschedule po vrácení ad.
+Následující příklad ukazuje, jak naplánovat po vrácení ad.
 
     //Example:8 Schedule Post Roll Ad
     NSString *postAdURLString=@"http://wamsblureg001orig-hs.cloudapp.net/aa152d7f-3c54-487b-ba07-a58e0e33280b/wp-m3u8-aapl.ism/Manifest(format=m3u8-aapl)";
@@ -737,7 +737,7 @@ Hello následující ukázka ukazuje, jak tooschedule po vrácení ad.
         [self logFrameworkError];
     }
 
-Hello následující ukázka ukazuje, jak tooschedule před ad.
+Následující příklad ukazuje, jak naplánovat před ad.
 
     //Example:9 Schedule Pre Roll Ad
     NSString *adURLString = @"http://wamsblureg001orig-hs.cloudapp.net/2e4e7d1f-b72a-4994-a406-810c796fc4fc/The%20Surface%20Movement-m3u8-aapl.ism/Manifest(format=m3u8-aapl)";
@@ -757,7 +757,7 @@ Hello následující ukázka ukazuje, jak tooschedule před ad.
         [self logFrameworkError];
     }
 
-Následující ukázka Hello ukazuje, jak tooschedule střední kumulativní překrytí ad.
+Následující příklad ukazuje, jak naplánovat ad střední kumulativní překrytí.
 
     // Example10: Schedule a Mid Roll overlay Ad
     NSString *adURLString = @"https://portalvhdsq3m25bf47d15c.blob.core.windows.net/asset-e47b43fd-05dc-4587-ac87-5916439ad07f/Windows%208_%20Cliffjumpers.mp4?st=2012-11-28T16%3A31%3A57Z&se=2014-11-28T16%3A31%3A57Z&sr=c&si=2a6dbb1e-f906-4187-a3d3-7e517192cbd0&sig=qrXYZBekqlbbYKqwovxzaVZNLv9cgyINgMazSCbdrfU%3D";

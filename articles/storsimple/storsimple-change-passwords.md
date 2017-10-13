@@ -1,6 +1,6 @@
 ---
-title: "aaaChange hesla pomocí Správce zařízení StorSimple | Microsoft Docs"
-description: "Popisuje, jak toouse hello toochange služby StorSimple Manager správce hesla služby StorSimple Snapshot Manager a zařízení."
+title: "Změna hesla pomocí Správce zařízení StorSimple | Microsoft Docs"
+description: "Popisuje, jak změnit správce hesla služby StorSimple Snapshot Manager a zařízení pomocí služby StorSimple Manager."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,46 +14,46 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-ms.openlocfilehash: b2836eb4d3a05e1d2a5eeeeefe66c75f63ba38ed
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d890b59595628ca3eeff1df258847c2bb54d29ff
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="use-hello-storsimple-manager-service-toochange-your-storsimple-passwords"></a>Použít toochange služby StorSimple Manager hello hesla služby StorSimple
+# <a name="use-the-storsimple-manager-service-to-change-your-storsimple-passwords"></a>Použití služby StorSimple Manager, chcete-li změnit hesla služby StorSimple
 ## <a name="overview"></a>Přehled
-portál Azure classic Hello **konfigurace** stránka obsahuje všechny parametry hello zařízení, které můžete změnit konfiguraci na zařízení StorSimple, který je spravovaný nástrojem služby StorSimple Manager. Tento kurz vysvětluje, jak je možné používat hello **konfigurace** stránka toochange Správce zařízení nebo heslo Snapshot Manager zařízení StorSimple.
+Portál Azure classic **konfigurace** stránka obsahuje všechny parametry zařízení, které můžete změnit konfiguraci na zařízení StorSimple, který je spravovaný nástrojem služby StorSimple Manager. Tento kurz popisuje, jak můžete použít **konfigurace** stránky změnit správce zařízení nebo heslo Snapshot Manager zařízení StorSimple.
 
-## <a name="change-hello-device-administrator-password"></a>Heslo správce zařízení hello změn
-Pokud používáte zařízení StorSimple hello tooaccess rozhraní Windows PowerShell, se vyžaduje tooenter hesla správce zařízení. Pokud služba není zaregistrována hello prvního zařízení StorSimple, hello výchozí heslo pro toto rozhraní je *Heslo1*. Hello zabezpečení vašich dat, se vyžaduje toochange toto heslo v hello konci procesu registrace hello. Nelze ukončit proces registrace hello beze změny toto heslo. Další informace najdete v tématu [krok 3: Konfigurace a registrace zařízení hello pomocí Windows Powershellu pro StorSimple](storsimple-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
+## <a name="change-the-device-administrator-password"></a>Změna hesla správce zařízení
+Pokud použijete rozhraní Windows PowerShell k přístupu k zařízení StorSimple, musíte k zadání hesla správce zařízení. Pokud služba není zaregistrována prvního zařízení StorSimple, výchozí heslo pro toto rozhraní je *Heslo1*. Pro zabezpečení vašich dat musíte změnit toto heslo na konci procesu registrace. Nelze ukončit proces registrace beze změny toto heslo. Další informace najdete v tématu [krok 3: Konfigurace a registrace zařízení pomocí Windows Powershellu pro StorSimple](storsimple-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
 
-Hello heslo, které se nejprve nastavit pomocí rozhraní Windows PowerShell hello během registrace lze potom změnit prostřednictvím hello portál Azure classic. Proveďte následující heslo správce zařízení hello toochange kroky hello.
+Heslo, které se nejdřív nastavit pomocí rozhraní Windows PowerShell během registrace lze potom změnit prostřednictvím portálu Azure classic. Proveďte následující kroky, chcete-li změnit heslo správce zařízení.
 
-#### <a name="toochange-hello-device-administrator-password"></a>heslo správce zařízení toochange hello
-1. Na portálu classic hello, klikněte na tlačítko **zařízení** > **konfigurace** pro vaše zařízení.
-2. Projděte dolů toohello **heslo správce zařízení** části. Zadejte heslo správce, který obsahuje z 8 znaků too15. Hello heslo musí být kombinací 3 nebo více velká písmena, malá písmena, číselné a speciální znaky.
-3. Potvrzení hesla hello.
-4. Klikněte na tlačítko **Uložit** v hello dolní části stránky hello.
+#### <a name="to-change-the-device-administrator-password"></a>Chcete-li změnit heslo správce zařízení
+1. Na portálu classic klikněte na tlačítko **zařízení** > **konfigurace** pro vaše zařízení.
+2. Přejděte dolů k položce **heslo správce zařízení** části. Zadejte heslo správce, který obsahuje 8 až 15 znaků. Heslo musí být kombinací 3 nebo více velká písmena, malá písmena, číselné a speciální znaky.
+3. Potvrzení hesla.
+4. V dolní části stránky klikněte na **Uložit**.
 
-Nyní je třeba aktualizovat heslo správce zařízení Hello. Můžete použít rozhraní Windows PowerShell hello tooaccess této změny hesla.
+Nyní je třeba aktualizovat heslo správce zařízení. Můžete toto upravené heslo pro přístup k rozhraní Windows PowerShell.
 
-## <a name="change-hello-storsimple-snapshot-manager-password"></a>Změnit heslo Snapshot Manager zařízení StorSimple hello
-Software Snapshot Manager zařízení StorSimple se nachází na hostiteli s Windows a umožňuje správci toomanage zálohy zařízení StorSimple ve formě hello místních a cloudových snímků.
+## <a name="change-the-storsimple-snapshot-manager-password"></a>Změňte heslo Snapshot Manager zařízení StorSimple
+Software Snapshot Manager zařízení StorSimple se nachází na hostiteli systému Windows a umožňuje správcům spravovat zálohy zařízení StorSimple ve formě místních a cloudových snímků.
 
-Při konfiguraci zařízení ve Snapshot Manageru zařízení StorSimple, zobrazí se výzva tooprovide hello zařízení IP adresu a heslo tooauthenticate zařízení úložiště. Toto heslo je nejprve nakonfigurovat přes rozhraní Windows PowerShell hello. Další informace najdete v tématu [krok 3: Konfigurace a registrace zařízení hello pomocí Windows Powershellu pro StorSimple](storsimple-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
+Při konfiguraci zařízení ve Snapshot Manageru zařízení StorSimple, budete vyzváni k zadání zařízení IP adresu a heslo k ověření zařízení úložiště. Toto heslo je nejprve nakonfigurovat přes rozhraní Windows PowerShell. Další informace najdete v tématu [krok 3: Konfigurace a registrace zařízení pomocí Windows Powershellu pro StorSimple](storsimple-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
 
-Hello heslo, které se nejprve nastavit pomocí rozhraní Windows PowerShell hello během registrace lze potom změnit prostřednictvím portálu classic hello. Proveďte následující kroky toochange hello StorSimple Snapshot Manager heslo hello.
+Heslo, které se nejdřív nastavit pomocí rozhraní Windows PowerShell během registrace lze potom změnit prostřednictvím portálu classic. Proveďte následující kroky, chcete-li změnit heslo Snapshot Manager zařízení StorSimple.
 
-#### <a name="toochange-hello-storsimple-snapshot-manager-password"></a>heslo Snapshot Manager zařízení StorSimple toochange hello
-1. Na portálu classic hello, klikněte na tlačítko **zařízení** > **konfigurace** pro vaše zařízení.
-2. Projděte dolů toohello **StorSimple Snapshot Manager** části. Zadejte heslo, které je tvořeno 14 až 15 znaků. Zajistěte, aby že toto heslo hello obsahuje kombinaci 3 nebo více velká písmena, malá písmena, číselné a speciální znaky.
-3. Potvrzení hesla hello.
-4. Klikněte na tlačítko **Uložit** v hello dolní části stránky hello.
+#### <a name="to-change-the-storsimple-snapshot-manager-password"></a>Chcete-li změnit heslo Snapshot Manager zařízení StorSimple
+1. Na portálu classic klikněte na tlačítko **zařízení** > **konfigurace** pro vaše zařízení.
+2. Přejděte dolů k položce **StorSimple Snapshot Manager** části. Zadejte heslo, které je tvořeno 14 až 15 znaků. Ujistěte se, zda heslo obsahuje kombinaci 3 nebo více velká písmena, malá písmena, číselné a speciální znaky.
+3. Potvrzení hesla.
+4. V dolní části stránky klikněte na **Uložit**.
 
-Nyní je třeba aktualizovat heslo Snapshot Manager zařízení StorSimple Hello.
+Nyní je třeba aktualizovat heslo Snapshot Manager zařízení StorSimple.
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o [zabezpečení zařízení StorSimple](storsimple-security.md).
 * Další informace o [úprava konfiguraci zařízení](storsimple-modify-device-config.md).
-* Další informace o [pomocí hello tooadminister služby StorSimple Manager zařízení StorSimple](storsimple-manager-service-administration.md).
+* Další informace o [pomocí služby StorSimple Manager ke správě zařízení StorSimple](storsimple-manager-service-administration.md).
 

@@ -1,6 +1,6 @@
 ---
-title: "aaaInstall aktualizace 0,5 v poli virtuální zařízení StorSimple | Microsoft Docs"
-description: "Popisuje, jak toouse hello pole virtuální zařízení StorSimple webového uživatelského rozhraní tooapply aktualizací pomocí hello Azure portal a opravy hotfix – metoda"
+title: "Instalaci aktualizace 0,5 v poli virtuální zařízení StorSimple | Microsoft Docs"
+description: "Popisuje způsob použití pole virtuální zařízení StorSimple webového uživatelského rozhraní na aktualizace pomocí metody Azure portal a opravy hotfix"
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,107 +14,107 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/10/2017
 ms.author: alkohli
-ms.openlocfilehash: c38daa85daa0086e67cf0206d76cb19d9c8b21b3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c47da5b90c16e2d5b5709e2a6affc026238b9468
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="install-update-05-on-your-storsimple-virtual-array"></a>Nainstalujte aktualizace 0,5 na pole virtuální zařízení StorSimple
 
 ## <a name="overview"></a>Přehled
 
-Tento článek popisuje hello kroky požadované tooinstall aktualizace 0,5 na pole virtuální zařízení StorSimple prostřednictvím hello místního webového uživatelského rozhraní a prostřednictvím hello portálu Azure. Je nutné tooapply softwarové aktualizace a opravy hotfix tookeep pole virtuální zařízení StorSimple aktuální.
+Tento článek popisuje kroky potřebné k instalaci aktualizace 0,5 pole virtuální zařízení StorSimple prostřednictvím místního webového uživatelského rozhraní a prostřednictvím portálu Azure. Budete muset použít aktualizace softwaru nebo opravy hotfix, které k zachování aktualizovaného stavu pole virtuální zařízení StorSimple.
 
-Před instalací aktualizace, doporučujeme je provést hello svazky nebo sdílené složky offline na hello nejprve hostitele a pak hello zařízení. Tím se minimalizují možnost poškození dat. Jakmile hello svazky nebo sdílené složky jsou offline, můžete také provést ruční zálohování hello zařízení.
+Než použijete aktualizaci, doporučujeme vám věnovat svazky nebo sdílené složky do offline režimu na hostiteli první a pak zařízení. Tím se minimalizují možnost poškození dat. Jakmile svazky nebo sdílené složky jsou offline, můžete také provést ruční zálohování zařízení.
 
 > [!IMPORTANT]
-> - Aktualizace 0,5 odpovídá příliš**10.0.10290.0** verze softwaru ve vašem zařízení. Informace na to, co je nového v této aktualizaci najdete příliš[poznámky k verzi pro aktualizaci 0,5](storsimple-virtual-array-update-05-release-notes.md).
+> - Aktualizace 0,5 odpovídá **10.0.10290.0** verze softwaru ve vašem zařízení. Informace na to, co je nového v této aktualizaci najdete na [poznámky k verzi pro aktualizaci 0,5](storsimple-virtual-array-update-05-release-notes.md).
 >
-> - Pokud používáte verzi Update 0,2 nebo novější, doporučujeme, aby instalaci aktualizací hello prostřednictvím hello portálu Azure. Pokud používáte Update 0.1 nebo verze GA softwaru, musíte použít opravu hotfix metody hello přes hello místního webového uživatelského rozhraní tooinstall aktualizace 0,5.
+> - Pokud používáte verzi Update 0,2 nebo novější, doporučujeme, aby instalujete aktualizace prostřednictvím portálu Azure. Pokud používáte Update 0.1 nebo verze GA softwaru, musíte použít metodu opravu hotfix prostřednictvím místního webového uživatelského rozhraní pro instalaci aktualizace 0,5.
 >
-> - Mějte na paměti, který instaluje aktualizaci nebo opravu hotfix restartuje vaše zařízení. Zadaná, hello pole virtuální zařízení StorSimple je jeden uzel zařízení, dojde k narušení všechny vstupně-výstupních operací v průběhu a zařízení dojde k výpadku.
+> - Mějte na paměti, který instaluje aktualizaci nebo opravu hotfix restartuje vaše zařízení. Vzhledem k tomu, že pole virtuální zařízení StorSimple je jeden uzel zařízení, dojde k narušení všechny vstupně-výstupních operací v průběhu a zařízení dojde k výpadku.
 
-## <a name="use-hello-azure-portal"></a>Hello použití portálu Azure
+## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-Pokud aktualizace 0,2 a novější, doporučujeme instalovat aktualizace prostřednictvím hello portálu Azure. Postup portálu Hello vyžaduje tooscan uživatele hello, stáhněte a nainstalujte aktualizace hello. Tento postup trvá asi 7 minut toocomplete. Proveďte následující hello kroky tooinstall hello aktualizaci nebo opravu hotfix.
+Pokud aktualizace 0,2 a novější, doporučujeme instalovat aktualizace prostřednictvím portálu Azure. Portál postup vyžaduje, aby uživatel ke kontrole, stáhněte a nainstalujte aktualizace. Tento postup trvá asi 7 minut. Proveďte následující kroky k instalaci, aktualizaci nebo opravu hotfix.
 
 [!INCLUDE [storsimple-virtual-array-install-update-via-portal](../../includes/storsimple-virtual-array-install-update-via-portal-04.md)]
 
-Hello instalace po dokončení, přejděte tooyour služby StorSimple Manager zařízení. Vyberte **zařízení** a pak vyberte a klikněte na zařízení hello k aktualizaci. Přejděte příliš**Nastavení > Správa > aktualizace zařízení**. verze softwaru Hello zobrazí musí být **10.0.10290.0**.
+Po dokončení instalace, přejděte do služby StorSimple Manager zařízení. Vyberte **zařízení** a poté vyberte a klikněte na zařízení k aktualizaci. Přejděte na **Nastavení > Správa > aktualizace zařízení**. Zobrazit software verze musí být **10.0.10290.0**.
 
-## <a name="use-hello-local-web-ui"></a>Použít místní hello webového uživatelského rozhraní
+## <a name="use-the-local-web-ui"></a>Použití místního webového uživatelského rozhraní
 
-Existují dva kroky při použití hello místního webového uživatelského rozhraní:
+Existují dva kroky při použití místního webového uživatelského rozhraní:
 
-* Stáhnout hello aktualizaci nebo opravu hotfix hello
-* Nainstalujte hello aktualizaci nebo opravu hotfix hello
+* Stáhnout aktualizace nebo opravy hotfix
+* Instalovat aktualizace nebo opravy hotfix
 
-### <a name="download-hello-update-or-hello-hotfix"></a>Stáhnout hello aktualizaci nebo opravu hotfix hello
+### <a name="download-the-update-or-the-hotfix"></a>Stáhnout aktualizace nebo opravy hotfix
 
-Proveďte následující kroky toodownload hello softwarové aktualizace z katalogu služby Microsoft Update hello hello.
+Provedením následujících kroků si stáhněte aktualizace softwaru z Katalogu služby Microsoft Update.
 
-#### <a name="toodownload-hello-update-or-hello-hotfix"></a>toodownload hello aktualizace nebo hello oprav hotfix
+#### <a name="to-download-the-update-or-the-hotfix"></a>Chcete-li stáhnout aktualizace nebo opravy hotfix
 
-1. Spusťte Internet Explorer a přejděte příliš[http://catalog.update.microsoft.com](http://catalog.update.microsoft.com).
+1. Spusťte Internet Explorer a přejděte na [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com).
 
-2. Pokud používáte hello katalogu služby Microsoft Update na tomto počítači poprvé, klikněte na tlačítko **nainstalovat** při výzvami tooinstall hello rozšíření katalogu služby Microsoft Update.
+2. Pokud na tomto počítači používáte Katalog služby Microsoft Update poprvé, po zobrazení výzvy k instalaci doplňku Katalog služby Microsoft Update klikněte na **Nainstalovat**.
 
-3. Do vyhledávacího pole hello hello katalogu služby Microsoft Update, zadejte číslo znalostní báze Knowledge Base (KB) hello hello opravy hotfix, kterou chcete toodownload. Zadejte **4021576** pro aktualizace 0,5 a pak klikněte na tlačítko **vyhledávání**.
+3. Do vyhledávacího pole katalogu služby Microsoft Update zadejte číslo znalostní báze Knowledge Base (KB) opravy hotfix, které chcete stáhnout. Zadejte **4021576** pro aktualizace 0,5 a pak klikněte na tlačítko **vyhledávání**.
    
-    Hello opravu hotfix seznamu se zobrazí, například **aktualizace pole virtuálního zařízení StorSimple 0,5**.
+    Zobrazí se seznam oprav hotfix, například **aktualizace pole virtuálního zařízení StorSimple 0,5**.
    
     ![Prohledávání katalogu](./media/storsimple-virtual-array-install-update-05/download1.png)
 
 4. Klikněte na **Stáhnout**. 
 
-5. Měli byste vidět dva soubory toodownload *.msu* a *.cab* souboru. Stáhněte si každý z těchto souborů tooa složky. Hello složce může být také síťové sdílené složky zkopírovaný tooa, který je dosažitelný z hello zařízení.
+5. Měli byste vidět dva soubory ke stažení, *.msu* a *.cab* souboru. Stáhněte si každý z těchto souborů do složky. Složku je také možné zkopírovat do sdílené síťové složky dostupné ze zařízení.
 
-6. Otevřete složku hello, kde jsou umístěny soubory hello.
-    ![Soubory v balíčku hello](./media/storsimple-virtual-array-install-update-05/update05folder.png)
+6. Otevřete složku, kde jsou umístěny soubory.
+    ![Soubory v balíčku](./media/storsimple-virtual-array-install-update-05/update05folder.png)
 
     Zobrazí:
-    -  Soubor balíčku samostatné aktualizace Microsoft `WindowsTH-KB3011067-x64`. Tento soubor je software, zařízení používaných tooupdate hello.
-    - Soubor balíčku agenta monitorování Genevy `GenevaMonitoringAgentPackageInstaller`. Tento soubor je použité tooupdate hello monitorovací a diagnostické služby (MDS) agenta. Poklikejte na soubor cab hello. Zobrazí se .msi. Vyberte hello souboru, klikněte pravým tlačítkem a potom **extrahovat** hello souboru. Budete používat hello _.msi_ souboru tooupdate hello agenta.
+    -  Soubor balíčku samostatné aktualizace Microsoft `WindowsTH-KB3011067-x64`. Tento soubor se používá k aktualizaci softwaru zařízení.
+    - Soubor balíčku agenta monitorování Genevy `GenevaMonitoringAgentPackageInstaller`. Tento soubor se používá k aktualizaci agenta monitorovací a diagnostické služby (MDS). Poklikejte na soubor cab. Zobrazí se .msi. Vyberte soubor, klikněte pravým tlačítkem a potom **extrahovat** soubor. Budete používat _.msi_ soubor aktualizace agenta.
 
         ![Extrahujte soubor aktualizace agenta služby MDS](./media/storsimple-virtual-array-install-update-05/extract-geneva-monitoring-agent-installer.png)
         
     
 
-### <a name="install-hello-update-or-hello-hotfix"></a>Nainstalujte hello aktualizaci nebo opravu hotfix hello
+### <a name="install-the-update-or-the-hotfix"></a>Instalovat aktualizace nebo opravy hotfix
 
-Předchozí toohello instalace aktualizace nebo opravy hotfix, ujistěte se, že máte hello aktualizace nebo opravy hotfix hello stáhli buď místně na vašem hostiteli nebo přístupné přes síťové sdílené složky.
+Před instalací aktualizace nebo opravy hotfix ověřte, že aktualizaci nebo opravu hotfix stažené buď místně na vašem hostiteli nebo přístupné přes síťové sdílené složky.
 
-Tato metoda tooinstall aktualizace použít na zařízení se systémem GA nebo aktualizovat 0,1 verze softwaru. Tento postup trvá méně než 2 minuty toocomplete. Proveďte následující hello kroky tooinstall hello aktualizaci nebo opravu hotfix.
+Tuto metodu použijte k instalaci aktualizací do zařízení se systémem GA nebo aktualizovat 0,1 verze softwaru. Tento postup trvá méně než 2 minut. Proveďte následující kroky k instalaci, aktualizaci nebo opravu hotfix.
 
-#### <a name="tooinstall-hello-update-or-hello-hotfix"></a>tooinstall hello aktualizace nebo hello oprav hotfix
+#### <a name="to-install-the-update-or-the-hotfix"></a>K instalaci aktualizace nebo opravy hotfix
 
-1. Hello místního webového uživatelského rozhraní, přejděte v příliš**údržby** > **aktualizace softwaru**.
+1. V místní webového uživatelského rozhraní, přejděte do **údržby** > **aktualizace softwaru**.
    
     ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
-2. V **cesta k souboru aktualizace**, zadejte název souboru hello pro aktualizaci hello nebo hello opravu hotfix. Pokud je umístěn ve sdílené síťové složce, procházet toohello aktualizaci nebo opravu hotfix instalační soubor. Klikněte na tlačítko **Použít**.
+2. V **cesta k souboru aktualizace**, zadejte název souboru pro aktualizaci nebo opravu hotfix. Můžete také procházet k instalačnímu souboru aktualizaci nebo opravu hotfix Pokud umístěn ve sdílené síťové složce. Klikněte na tlačítko **Použít**.
    
     ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-05/update2m.png)
 
-3. Zobrazí se upozornění. Zadaný to je jeden uzel zařízení, po instalaci aktualizace hello, hello zařízení restartuje a dojde k výpadku. Klikněte na ikonu zaškrtnutí hello.
+3. Zobrazí se upozornění. Zadaný to je jeden uzel zařízení, když tuto aktualizaci nenainstalujete, restartování zařízení a dojde k výpadku. Klikněte na ikonu zaškrtnutí.
    
    ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-05/update3m.png)
 
-4. Hello aktualizace spustí. Po úspěšné aktualizaci hello zařízení restartuje. Hello místního uživatelského rozhraní není dostupný v této hodnotě duration.
+4. Aktualizace spustí. Po úspěšné aktualizaci zařízení restartuje. Místní uživatelské rozhraní není dostupný v této hodnotě duration.
    
     ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-05/update5m.png)
 
-5. Po dokončení restartování hello přejdete toohello **přihlášení** stránky. tooverify, která se aktualizovala hello zařízení software, hello místního webového uživatelského rozhraní, přejděte příliš**údržby** > **aktualizace softwaru**. verze softwaru Hello zobrazí musí být **10.0.0.0.0.10290.0** pro aktualizaci 0,5.
+5. Po dokončení restartování se otevře **přihlášení** stránky. Chcete-li ověřit, že zařízení software byl aktualizován, v místní webového uživatelského rozhraní, přejděte na **údržby** > **aktualizace softwaru**. Zobrazit software verze musí být **10.0.0.0.0.10290.0** pro aktualizaci 0,5.
    
    > [!NOTE]
-   > Jsme sestavy verze softwaru hello mírně jiným způsobem v hello místního webového uživatelského rozhraní a hello portálu Azure. Například hello místní webové sestavy nástroje uživatelského rozhraní **10.0.0.0.0.10290** a hello Azure portálu sestavy **10.0.10290.0** pro hello stejnou verzi.
+   > Verze softwaru jsme sestavu mírně odlišné způsobem místního webového uživatelského rozhraní a portálu Azure. Například místní webového uživatelského rozhraní sestavy **10.0.0.0.0.10290** a Azure portálu sestavy **10.0.10290.0** pro stejnou verzi.
    
     ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-05/update6m.png)
 
-6. dalším krokem Hello je tooupdate hello MDS agenta. V hello **aktualizace softwaru** stránky, přejděte toohello **cesta k souboru aktualizace** a procházet toohello `GenevaMonitoringAgentPackageInstaller.msi` souboru. Opakujte kroky 2 – 4. Po restartování hello virtuální pole, přihlaste se k hello místního webového uživatelského rozhraní.
+6. Dalším krokem je aktualizovat agenta služby MDS. V **aktualizace softwaru** stránky, přejděte na **cesta k souboru aktualizace** a přejděte do `GenevaMonitoringAgentPackageInstaller.msi` souboru. Opakujte kroky 2 – 4. Po restartování virtuální pole, přihlaste se k místní webového uživatelského rozhraní.
 
-Nyní po dokončení aktualizace Hello.
+Nyní po dokončení aktualizace.
 
 ## <a name="next-steps"></a>Další kroky
 

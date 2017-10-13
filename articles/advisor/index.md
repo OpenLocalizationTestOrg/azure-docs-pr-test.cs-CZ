@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure dokumentace k Advisor – kurzy | Microsoft Docs"
+title: "Dokumentace ke službě Azure Advisor – kurzy | Dokumentace Microsoftu"
 description: 
 services: advisor
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 1a1f8280c89b4e38af8c9cb2f5e55486a78186d3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 30d8d4f3565fcc5e4c5c514a74f94c3ce24819e6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-advisor-documentation"></a>Dokumentace ke službě Azure Advisor
 
-Azure Advisor je konzultantem přizpůsobené cloudu, který vám pomůže sledovat osvědčené postupy toooptimize svá nasazení Azure. Analyzuje telemetrii využití a konfiguraci prostředků. Potom doporučí řešení toohelp zlepšit výkon hello, zabezpečení, a náklady na vysokou dostupnost vašich prostředků při hledání příležitosti tooreduce vaše celkové Azure.
+Azure Advisor je přizpůsobený cloudový konzultant, který pomáhá dodržovat osvědčené postupy pro optimalizaci nasazení Azure. Analyzuje telemetrii využití a konfiguraci prostředků. Na jejich základě doporučuje řešení, která pomáhají zajistit vysoký výkon, zabezpečení a dostupnost vašich prostředků, a současně hledá možnosti, jak snížit vaše celkové náklady na Azure.
 
 <ul class="panelContent cardsFTitle">
     <li>

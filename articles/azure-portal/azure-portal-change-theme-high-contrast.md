@@ -1,6 +1,6 @@
 ---
-title: "aaaTurn na vysoký kontrast na portálu Azure | Microsoft Docs"
-description: "Zjistěte, jak tooturn na vysoký kontrast nebo změňte hello Azure portálu motivu."
+title: "Zapnutí vysokého kontrastu na portálu Azure | Microsoft Docs"
+description: "Další informace o zapnutí vysokého kontrastu nebo změna motivu portálu Azure."
 services: azure-portal
 keywords: 
 author: cwatson-cat
@@ -10,31 +10,31 @@ ms.topic: how to
 ms.service: multiple
 ms.custom: accessibility
 manager: timlt
-ms.openlocfilehash: 5f3e6032361a31567508039f74c731955d9a1cd0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 87ef9bf72f110ea3c27d0554e461d8c12132d422
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="turn-on-high-contrast-or-change-hello-theme-in-hello-azure-portal"></a>Zapnutí vysokého kontrastu nebo změňte hello motiv hello portálu Azure
-Pokud potřebujete další kontrast nebo chcete toochange hello barevné schéma v hello portál Azure, přejděte toohello nastavení portálu toomake hello změnu. 
+# <a name="turn-on-high-contrast-or-change-the-theme-in-the-azure-portal"></a>Zapnutí vysokého kontrastu nebo změňte motiv na portálu Azure
+Pokud potřebujete další kontrast nebo chcete změnit barevné schéma portálu Azure, přejděte na nastavení portálu udělat změnu. 
 
 ## <a name="turn-on-high-contrast"></a>Zapnout vysoký kontrast
-1. Na hello top napravo od hello [portál Azure](https://portal.azure.com), vyberte **nastavení**. 
+1. V horní části vpravo [portál Azure](https://portal.azure.com), vyberte **nastavení**. 
 
-    ![Snímek obrazovky, který se zobrazí ikona ozubené kolečko hello nastavení portálu v hello portálu Azure](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
+    ![Snímek obrazovky, který ukazuje, že nastavení portálu zařízení ikonu na portálu Azure](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
 1. Zvolte **White** nebo **černé**.
 
-    ![Snímek obrazovky, který ukazuje možnosti vysoký kontrast v hello Azure nastavení portálu](./media/azure-portal-change-theme-high-contrast/azure-portal-highcontrast-options.png)
+    ![Snímek obrazovky zobrazující možnosti vysoký kontrast v nastavení portálu Azure](./media/azure-portal-change-theme-high-contrast/azure-portal-highcontrast-options.png)
 1. Vyberte **Použít**.
 
 ## <a name="change-theme"></a>Změna motivu
-1. Na hello top napravo od hello [portál Azure](https://portal.azure.com), vyberte **nastavení**.
+1. V horní části vpravo [portál Azure](https://portal.azure.com), vyberte **nastavení**.
 
-    ![Snímek obrazovky, který se zobrazí ikona ozubené kolečko hello nastavení portálu v hello portálu Azure](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
+    ![Snímek obrazovky, který ukazuje, že nastavení portálu zařízení ikonu na portálu Azure](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
 1. Zvolte jen motiv.
 
-    ![Snímek obrazovky, který ukazuje možnosti motivu hello hello Azure nastavení portálu](./media/azure-portal-change-theme-high-contrast/azure-portal-theme-options.png)
+    ![Snímek obrazovky zobrazující možnosti motivu v nastavení portálu Azure](./media/azure-portal-change-theme-high-contrast/azure-portal-theme-options.png)
 1. Vyberte **Použít**.
 
 ## <a name="next-steps"></a>Další kroky

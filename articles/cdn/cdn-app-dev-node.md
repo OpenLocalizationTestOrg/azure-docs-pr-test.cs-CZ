@@ -1,6 +1,6 @@
 ---
-title: "aaaGet práce s hello Azure CDN SDK pro Node.js | Microsoft Docs"
-description: "Zjistěte, jak toomanage aplikace Node.js toowrite Azure CDN."
+title: "Začínáme s Azure CDN SDK pro Node.js | Microsoft Docs"
+description: "Informace o psaní aplikací Node.js ke správě Azure CDN."
 services: cdn
 documentationcenter: nodejs
 author: zhangmanling
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 6c805e5fb8e0b471e8b248cb2f4b29efd6c85940
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 46ae8cd9775432d126cbde856c1fb06ea319297e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Začínáme s vývojem pro Azure CDN
 > [!div class="op_single_selector"]
@@ -27,34 +27,34 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Můžete použít hello [Azure CDN SDK pro Node.js](https://www.npmjs.com/package/azure-arm-cdn) tooautomate vytváření a Správa profilů CDN a koncové body.  Tento kurz vás provede hello vytvoření jednoduché konzolovou aplikaci Node.js, která ukazuje několik operací hello k dispozici.  V tomto kurzu není určený toodescribe všechny aspekty hello Azure CDN SDK pro Node.js podrobně.
+Můžete použít [Azure CDN SDK pro Node.js](https://www.npmjs.com/package/azure-arm-cdn) k automatizaci vytváření a Správa profilů CDN a koncové body.  Tento kurz vás provede vytvoření jednoduché konzolovou aplikaci Node.js, která ukazuje několik operací, k dispozici.  V tomto kurzu není určeno k podrobně popisují všechny aspekty CDN Azure SDK pro Node.js.
 
-toocomplete v tomto kurzu byste již měli mít [Node.js](http://www.nodejs.org) **4.x.x** nebo vyšší nainstalována a nakonfigurována.  Můžete použít libovolný textový editor, který chcete toocreate aplikace Node.js.  toowrite tento kurz používá I [Visual Studio Code](https://code.visualstudio.com).  
+K dokončení tohoto kurzu, byste již měli mít [Node.js](http://www.nodejs.org) **4.x.x** nebo vyšší nainstalována a nakonfigurována.  Můžete použít libovolný textový editor, kterou chcete vytvořit aplikace Node.js.  Zápis v tomto kurzu, použití [Visual Studio Code](https://code.visualstudio.com).  
 
 > [!TIP]
-> Hello [dokončený projekt z tohoto kurzu](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74) je k dispozici ke stažení na webu MSDN.
+> [Dokončený projekt z tohoto kurzu](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74) je k dispozici ke stažení na webu MSDN.
 > 
 > 
 
 [!INCLUDE [cdn-app-dev-prep](../../includes/cdn-app-dev-prep.md)]
 
 ## <a name="create-your-project-and-add-npm-dependencies"></a>Vytvořte projekt a přidejte NPM závislosti
-Teď, když jsme vytvořili skupinu prostředků pro naše profily CDN a daného naše profilů CDN toomanage oprávnění aplikace Azure AD a koncové body v rámci dané skupiny, můžeme začít vytváření aplikace.
+Teď, když jsme vytvořili skupinu prostředků pro naše profily CDN a získá naše Azure AD aplikace oprávnění ke správě profilů CDN a koncové body v rámci dané skupiny, můžeme začít vytváření aplikace.
 
-Vytvořte složku toostore vaší aplikace.  Z konzoly nástroje Node.js hello v aktuální cestě nastavte vaše aktuální umístění toothis novou složku a inicializovat spuštěním projektu:
+Vytvořte složku pro uložení vaší aplikace.  Z konzoly nástroje Node.js v aktuální cestě nastavte vaše aktuální umístění do této nové složky a inicializovat spuštěním projektu:
 
     npm init
 
-Pak bude zobrazovat řadu otázek tooinitialize projektu.  Pro **vstupní bod**, tento kurz používá *app.js*.  Můžete zobrazit Moje jiné možnosti hello následující ukázka.
+Potom zobrazí řadu otázek, k chybě při inicializaci projektu.  Pro **vstupní bod**, tento kurz používá *app.js*.  Můžete zobrazit Moje další možnosti v následujícím příkladu.
 
 ![Init – výstupní NPM](./media/cdn-app-dev-node/cdn-npm-init.png)
 
-Naše projektu je nyní inicializován s *packages.json* souboru.  Naše projektu přechází toouse některé knihovny Azure obsažené v NPM balíčky.  Použijeme hello Runtime klienta Azure pro platformu Node.js (ms-rest azure) a hello Azure CDN Klientská knihovna pro Node.js (azure arm cd).  Umožňuje přidat tyto toohello projekt jako závislosti.
+Naše projektu je nyní inicializován s *packages.json* souboru.  Naše projektu bude používat některé knihovny Azure obsažené v NPM balíčky.  Použijeme modulu Runtime klienta Azure pro platformu Node.js (ms-rest azure) a Azure CDN klientské knihovny pro Node.js (azure arm cd).  Umožňuje přidat do projektu jako závislosti.
 
     npm install --save ms-rest-azure
     npm install --save azure-arm-cdn
 
-Po hello balíčky jsou provést instalaci, hello *package.json* soubor by měl vypadat podobně jako příklad toothis (verze čísla se mohou lišit):
+Poté, co jsou balíčky dokončí instalaci, *package.json* soubor by měl vypadat podobně jako tento příklad (verze čísla se mohou lišit):
 
 ``` json
 {
@@ -74,18 +74,18 @@ Po hello balíčky jsou provést instalaci, hello *package.json* soubor by měl 
 }
 ```
 
-Nakonec pomocí textového editoru, vytvořte prázdný textový soubor a uložit ho hello kořenové složky naše projektu jako *app.js*.  Nemohli jsme teď připravena toobegin psaní kódu.
+Nakonec pomocí textového editoru, vytvořte prázdný textový soubor a uložte jej do kořenové složky naše projektu jako *app.js*.  Nyní připraveni začít psaní kódu.
 
 ## <a name="requires-constants-authentication-and-structure"></a>Vyžaduje, konstanty, ověřování a struktury
-S *app.js* otevřete v našem editoru, Pojďme hello základní struktura naše programu zapsána.
+S *app.js* otevřete v našem editoru, Pojďme základní strukturu naše programu zapsána.
 
-1. Přidejte hello "vyžaduje" pro naše balíčky NPM v horní části hello s hello následující:
+1. Přidejte "vyžaduje" pro naše balíčky NPM v horní části s následujícími službami:
    
     ``` javascript
     var msRestAzure = require('ms-rest-azure');
     var cdnManagementClient = require('azure-arm-cdn');
     ```
-2. Potřebujeme toodefine některé konstanty, který bude používat naše metody.  Přidejte následující hello.  Být jisti tooreplace hello zástupné symboly, včetně hello  **&lt;lomené závorky&gt;**, s vlastní hodnoty, podle potřeby.
+2. Je potřeba definovat některé konstanty, který bude používat naše metody.  Přidejte následující.  Ujistěte se, zda jste nahradili zástupné symboly, včetně  **&lt;lomené závorky&gt;**, s vlastní hodnoty, podle potřeby.
    
     ``` javascript
     //Tenant app constants
@@ -98,7 +98,7 @@ S *app.js* otevřete v našem editoru, Pojďme hello základní struktura naše 
     const resourceGroupName = "CdnConsoleTutorial";
     const resourceLocation = "<YOUR PREFERRED AZURE LOCATION, SUCH AS Central US>";
     ```
-3. V dalším kroku jsme budete doložit hello CDN správy klienta a dejte mu naše přihlašovací údaje.
+3. V dalším kroku jsme budete doložit klient správy CDN a dejte mu naše přihlašovací údaje.
    
     ``` javascript
     var credentials = new msRestAzure.ApplicationTokenCredentials(clientId, tenantId, clientSecret);
@@ -108,7 +108,7 @@ S *app.js* otevřete v našem editoru, Pojďme hello základní struktura naše 
     Pokud používáte ověřování jednotlivých uživatelů, bude vypadat tyto dva řádky mírně lišit.
    
    > [!IMPORTANT]
-   > Tato ukázka kódu použijte, pouze pokud zvolíte ověřování jednotlivých uživatelů toohave místo objekt služby.  Být opatrní tooguard pověření jednotlivé uživatele a bezpečně je tajný.
+   > Tato ukázka kódu použijte, pouze pokud zvolíte ověřování jednotlivého uživatele místo objekt služby.  Pečlivě chránit pověření jednotlivé uživatele a bezpečně je tajný.
    > 
    > 
    
@@ -118,8 +118,8 @@ S *app.js* otevřete v našem editoru, Pojďme hello základní struktura naše 
     var cdnClient = new cdnManagementClient(credentials, subscriptionId);
     ```
    
-    Být jisti tooreplace hello položky v  **&lt;lomené závorky&gt;**  s hello opravte informace.  Pro `<redirect URI>`, použijte identifikátor URI, které jste zadali při registraci aplikace hello ve službě Azure AD hello přesměrování.
-4. Naše konzolovou aplikaci Node.js přechází tootake některé parametry příkazového řádku.  Umožňuje ověřit, že aspoň jeden parametr byl předán.
+    Nezapomeňte nahradit položky v  **&lt;lomené závorky&gt;**  se správnými informacemi.  Pro `<redirect URI>`, použijte identifikátor URI, které jste zadali při registraci aplikace ve službě Azure AD přesměrování.
+4. Naše konzolovou aplikaci Node.js bude trvat některé parametry příkazového řádku.  Umožňuje ověřit, že aspoň jeden parametr byl předán.
    
    ```javascript
    //Collect command-line parameters
@@ -133,7 +133,7 @@ S *app.js* otevřete v našem editoru, Pojďme hello základní struktura naše 
        process.exit(1);
    }
    ```
-5. Díky které nám toohello hlavní část naší programu, které jsme větev vypnout tooother funkce založené na jaké parametry byly předány.
+5. Která přináší nám pro hlavní část naší programu, které jsme větev na jiné funkce založené na jaké parametry byly předány.
    
     ```javascript
     switch(parms[0].toLowerCase())
@@ -159,7 +159,7 @@ S *app.js* otevřete v našem editoru, Pojďme hello základní struktura naše 
             process.exit(1);
     }
     ```
-6. Na několika místech v našem programu budeme potřebovat toomake hello správné počet parametrů byly předány v a zobrazit pomoc, pokud jejich nevypadají správné.  Umožňuje vytvořit funkce toodo který.
+6. Na několika místech v našem programu potřebujeme zkontrolujte, zda číslo správné parametry byly předány v a zobrazit pomoc, pokud jejich nevypadají správné.  Umožňuje vytvořit kvůli tomu funkce.
    
    ```javascript
    function requireParms(parmCount) {
@@ -197,7 +197,7 @@ S *app.js* otevřete v našem editoru, Pojďme hello základní struktura naše 
        }
    }
    ```
-7. Nakonec jsou asynchronní, hello funkce, které budeme používat na klienta pro správu CDN hello, takže potřebují metoda toocall zpět v případě, že hotovi.  Můžeme si ho, že můžete zobrazit výstup hello hello CDN správy klienta (pokud existuje) a hello program řádně ukončit.
+7. Nakonec jsou asynchronní, funkcích, které budeme používat v klientovi správu CDN, takže potřebují metodu volat zpět při jejich hotovi.  Pojďme si ho, můžete zobrazit výstup z klienta správy CDN (pokud existuje) a ukončení programu řádně.
    
     ```javascript
     function callback(err, result, request, response) {
@@ -211,10 +211,10 @@ S *app.js* otevřete v našem editoru, Pojďme hello základní struktura naše 
     }
     ```
 
-Teď, když je zapsán hello základní struktura naše programu, vytvoříme by měl hello funkce volané založené na našem parametrů.
+Teď, když je zapsán základní struktura naše programu, vytvoříme by měl funkce volané založené na našem parametrů.
 
 ## <a name="list-cdn-profiles-and-endpoints"></a>Koncové body a seznam profilů CDN
-Začněme s toolist kódu, naše stávající profily a koncové body.  Vlastní kód komentář zadejte hello očekávána syntaxe, abychom věděli, kde každý parametr přejde.
+Začněme s kódem k zobrazení seznamu naše stávající profily a koncové body.  Vlastní kód komentář poskytují očekávaný syntaxe, abychom věděli, kde každý parametr přejde.
 
 ```javascript
 // list profiles
@@ -242,7 +242,7 @@ function cdnList(){
 ```
 
 ## <a name="create-cdn-profiles-and-endpoints"></a>Vytvoření profilů CDN a koncové body
-Dále jsme budete napište hello funkce toocreate profily a koncové body.
+V dalším kroku jsme budete napsat funkce vytvářet profily a koncové body.
 
 ```javascript
 function cdnCreate() {
@@ -294,7 +294,7 @@ function cdnCreateEndpoint() {
 ```
 
 ## <a name="purge-an-endpoint"></a>Vyprázdnění koncového bodu
-Za předpokladu, že byl vytvořen koncový bod hello, běžných úloh, může chceme tooperform v našem programu je mazání obsahu v našem koncový bod.
+Za předpokladu, že byl vytvořen koncový bod, jeden běžný úkol, který jsme může být třeba provést v našem programu je mazání obsahu v našem koncový bod.
 
 ```javascript
 // purge <profile name> <endpoint name> <path>
@@ -307,7 +307,7 @@ function cdnPurge() {
 ```
 
 ## <a name="delete-cdn-profiles-and-endpoints"></a>Odstranit profily CDN a koncové body
-Hello poslední funkci, kterou jsme bude obsahovat odstraní koncových bodů a profily.
+Poslední funkci, kterou jsme bude obsahovat odstraní koncových bodů a profily.
 
 ```javascript
 function cdnDelete() {
@@ -335,11 +335,11 @@ function cdnDelete() {
 }
 ```
 
-## <a name="running-hello-program"></a>Spuštění programu hello
-Můžeme spouštět naše program Node.js pomocí našich oblíbených ladicí program nyní nebo v konzole hello.
+## <a name="running-the-program"></a>Spuštění programu
+Můžeme spouštět naše program Node.js pomocí našich oblíbených ladicí program nyní nebo v konzole.
 
 > [!TIP]
-> Pokud používáte Visual Studio Code jako ladicí program, budete potřebovat tooset do vašeho prostředí toopass v hello parametry příkazového řádku.  Visual Studio Code tomu v hello **lanuch.json** souboru.  Vyhledejte vlastnost s názvem **argumentů** a přidejte řetězcové hodnoty pro parametry, pole, aby vypadal podobně jako toothis: `"args": ["list", "profiles"]`.
+> Pokud používáte Visual Studio Code jako ladicí program, budete muset nastavit svoje prostředí předávat parametry příkazového řádku.  Visual Studio Code tomu **lanuch.json** souboru.  Vyhledejte vlastnost s názvem **argumentů** a přidejte řetězcové hodnoty pro parametry, pole, aby vypadal podobně jako tento: `"args": ["list", "profiles"]`.
 > 
 > 
 
@@ -360,11 +360,11 @@ Umožňuje odstranit nakonec naše profil.
 ![Odstranit profil](./media/cdn-app-dev-node/cdn-delete-profile.png)
 
 ## <a name="next-steps"></a>Další kroky
-Projekt hello dokončit toosee z tohoto návodu [stažení ukázky hello](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74).
+Zobrazíte dokončený projekt z tohoto návodu [stáhnout vzorek](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74).
 
-referenční dokumentace hello toosee pro hello Azure CDN SDK pro Node.js hello zobrazení [odkaz](http://azure.github.io/azure-sdk-for-node/azure-arm-cdn/latest/).
+Pokud chcete zobrazit odkaz pro Azure CDN SDK pro Node.js, zobrazit [odkaz](http://azure.github.io/azure-sdk-for-node/azure-arm-cdn/latest/).
 
-Další dokumentaci toofind na hello Azure SDK pro Node.js hello zobrazení [úplné referenční](http://azure.github.io/azure-sdk-for-node/).
+Chcete-li zjistit další dokumentaci týkající se sady Azure SDK pro Node.js, podívejte se [úplné referenční](http://azure.github.io/azure-sdk-for-node/).
 
 Spravovat prostředky CDN s [prostředí PowerShell](cdn-manage-powershell.md).
 

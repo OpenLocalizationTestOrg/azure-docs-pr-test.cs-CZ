@@ -1,47 +1,47 @@
-### <a name="noconnection"></a>toomodify místní síťové brány IP předpon adres – žádné připojení brány
+### <a name="noconnection"></a>Úprava předpon IP adres místní síťové brány – žádné připojení brány
 
-#### <a name="tooadd-additional-address-prefixes"></a>tooadd Další předpony adresy:
+#### <a name="to-add-additional-address-prefixes"></a>Přidání dalších předpon adres:
 
-1. Na hello prostředku bránu místní sítě, v hello **nastavení** klikněte na tlačítko **konfigurace**.
-2. Přidání hello adresní prostor IP adres v hello *přidat další rozsah adres* pole.
-3. Klikněte na tlačítko **Uložit** toosave nastavení.
+1. Na bráně místní sítě prostředku v **nastavení** klikněte na tlačítko **konfigurace**.
+2. Přidejte adresní prostor IP adres v *přidat další rozsah adres* pole.
+3. Klikněte na tlačítko **Uložit** uložte nastavení.
 
-#### <a name="tooremove-address-prefixes"></a>předpony adres tooremove:
+#### <a name="to-remove-address-prefixes"></a>Odebrání předpon adres:
 
-1. Na hello prostředku bránu místní sítě, v hello **nastavení** klikněte na tlačítko **konfigurace**.
-2. Klikněte na tlačítko hello **"..."** na hello řádek obsahující hello předponu chcete tooremove.
+1. Na bráně místní sítě prostředku v **nastavení** klikněte na tlačítko **konfigurace**.
+2. Klikněte **'...** na řádek obsahující předponu, která chcete odebrat.
 3. Klikněte na tlačítko **odebrat**.
-4. Klikněte na tlačítko **Uložit** toosave nastavení.
+4. Klikněte na tlačítko **Uložit** uložte nastavení.
 
-### <a name="withconnection"></a>toomodify předpon brány místní sítě IP adresy - existující připojení brány
+### <a name="withconnection"></a>Úprava předpon IP adres místní síťové brány – existující připojení brány
 
-Chcete-li mít připojení brány a tooadd nebo odebrat předpony IP adres hello obsažené v bránu místní sítě, je nutné toodo hello následující kroky v pořadí. Způsobí to určitý výpadek připojení VPN. Úpravy předpon adres IP, nepotřebujete toodelete hello VPN gateway. Potřebujete jenom tooremove hello připojení.
+Pokud máte připojení k bráně a chcete přidat nebo odebrat předpony IP adres obsažené v bráně místní sítě, musíte v uvedeném pořadí provést následující kroky. Způsobí to určitý výpadek připojení VPN. Při upravování předpon IP adres není potřeba odstraňovat bránu VPN. Stačí jenom odebrat připojení.
 
-#### <a name="1-remove-hello-connection"></a>1. Odeberte připojení hello.
+#### <a name="1-remove-the-connection"></a>1. Odeberte připojení.
 
-1. Na hello prostředku bránu místní sítě, v hello **nastavení** klikněte na tlačítko **připojení**.
-2. Klikněte na tlačítko hello **...**  na hello řádek pro každé připojení, potom klikněte na **odstranit**.
-3. Klikněte na tlačítko **Uložit** toosave nastavení.
+1. Na bráně místní sítě prostředku v **nastavení** klikněte na tlačítko **připojení**.
+2. Klikněte **...**  na řádek pro každé připojení klikněte **odstranit**.
+3. Klikněte na tlačítko **Uložit** uložte nastavení.
 
-#### <a name="2-modify-hello-address-prefixes"></a>2. Úprava předpon adres hello.
+#### <a name="2-modify-the-address-prefixes"></a>2. Úprava předpon adres.
 
-tooadd Další předpony adresy:
+Přidání dalších předpon adres:
 
-1. Na hello prostředku bránu místní sítě, v hello **nastavení** klikněte na tlačítko **konfigurace**.
-2. Přidejte hello adresní prostor IP adres.
-3. Klikněte na tlačítko **Uložit** toosave nastavení.
+1. Na bráně místní sítě prostředku v **nastavení** klikněte na tlačítko **konfigurace**.
+2. Přidejte adresní prostor IP adres.
+3. Klikněte na tlačítko **Uložit** uložte nastavení.
 
-předpony adres tooremove:
+Odebrání předpon adres:
 
-1. Na hello prostředku bránu místní sítě, v hello **nastavení** klikněte na tlačítko **konfigurace**.
-2. Klikněte na tlačítko hello **...**  na hello řádek obsahující hello předponu chcete tooremove.
+1. Na bráně místní sítě prostředku v **nastavení** klikněte na tlačítko **konfigurace**.
+2. Klikněte **...**  na řádek obsahující předpona, kterou chcete odebrat.
 3. Klikněte na tlačítko **odebrat**.
-4. Klikněte na tlačítko **Uložit** toosave nastavení.
+4. Klikněte na tlačítko **Uložit** uložte nastavení.
 
-#### <a name="3-recreate-hello-connection"></a>3. Znovu vytvořte připojení hello.
+#### <a name="3-recreate-the-connection"></a>3. Znovu vytvořte připojení.
 
-1. Přejděte toohello brány virtuální sítě pro virtuální síť. (Není hello bránu místní sítě.)
-2. Na hello brány virtuální sítě, v hello **nastavení** klikněte na tlačítko **připojení**.
-3. Klikněte na tlačítko hello **+ přidat** tooopen hello **přidat připojení** okno.
+1. Přejděte k bráně virtuální sítě pro virtuální síť. (Nikoli brány místní sítě.)
+2. Na bráně virtuální sítě v **nastavení** klikněte na tlačítko **připojení**.
+3. Klikněte **+ přidat** otevřete **přidat připojení** okno.
 4. Znovu vytvořte připojení.
-5. Klikněte na tlačítko **OK** toocreate hello připojení.
+5. Klikněte na tlačítko **OK** k vytvoření připojení.

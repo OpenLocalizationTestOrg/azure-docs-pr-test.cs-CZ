@@ -1,6 +1,6 @@
 ---
-title: "aaaSet až Key Vault pro virtuální počítače Linux s hello 1.0 rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Jak hello tooset až Key Vault pro použití s se virtuální počítač Azure Resource Manager pomocí Azure CLI 1.0."
+title: "Nastavení pro virtuální počítače s Linuxem se 1.0 rozhraní příkazového řádku Azure Key Vault | Microsoft Docs"
+description: "Jak nastavit Key Vault pro použití s virtuálním počítačem správce prostředků Azure pomocí Azure CLI 1.0."
 services: virtual-machines-linux
 documentationcenter: 
 author: singhkays
@@ -15,30 +15,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2017
 ms.author: singhkay
-ms.openlocfilehash: 275022e4e7e26d7363784c289dd7512047c07bad
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: fed612a354d45f34619f2a66bd40d78740c43ac7
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager-with-hello-azure-cli-10"></a>Nastavení pro virtuální počítače ve službě Správce prostředků Azure s hello 1.0 rozhraní příkazového řádku Azure Key Vault
-V zásobníku hello Azure Resource Manager jsou tajné klíče nebo certifikáty modelován jako prostředky, které jsou k dispozici zprostředkovatelem hello prostředku Key Vault. toolearn Další informace o Azure Key Vault najdete v části [co je Azure Key Vault?](../../key-vault/key-vault-whatis.md) Aby mohl používat s virtuálními počítači Azure Resource Manager toobe Key Vault, hello *EnabledForDeployment* musí být nastavena vlastnost v Key Vault tootrue. To provedete v různých klientech. Tento článek ukazuje, jak tooset až Key Vault pro použití s virtuálními počítači Azure.
+# <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager-with-the-azure-cli-10"></a>Nastavení pro virtuální počítače ve Správci prostředků pomocí Azure CLI 1.0 Azure Key Vault
+V zásobníku Azure Resource Manager tajných klíčů nebo certifikáty jsou modelovat jako prostředky, které jsou poskytovány zprostředkovatele prostředku Key Vault. Další informace o Azure Key Vault najdete v tématu [co je Azure Key Vault?](../../key-vault/key-vault-whatis.md) V pořadí pro Key Vault pro použití s Azure Resource Manager virtuální počítače *EnabledForDeployment* vlastnost v Key Vault musí být nastavena na hodnotu true. To provedete v různých klientech. Tento článek ukazuje, jak nastavit Key Vault pro použití s virtuálními počítači Azure.
 
-## <a name="cli-versions-toocomplete-hello-task"></a>Úloha hello toocomplete verze rozhraní příkazového řádku
-Dokončení úkolů hello pomocí jedné z hello následující verze rozhraní příkazového řádku
+## <a name="cli-versions-to-complete-the-task"></a>Verze rozhraní příkazového řádku pro dokončení úlohy
+Můžete dokončit úlohu pomocí jedné z následujících verzí rozhraní příkazového řádku
 
-- [Azure CLI 1.0](#quick-commands) – naše rozhraní příkazového řádku pro hello classic a resource správy nasazení modelů (v tomto článku)
-- [Azure CLI 2.0](../windows/key-vault-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) -naší nové generace rozhraní příkazového řádku pro model nasazení správy prostředků hello
+- [Azure CLI 1.0](#quick-commands) – naše rozhraní příkazového řádku pro classic a resource správu modelech nasazení (v tomto článku)
+- [Azure CLI 2.0](../windows/key-vault-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) – naše rozhraní příkazového řádku nové generace pro model nasazení správy prostředků
 
-## <a name="use-cli-10-tooset-up-key-vault"></a>Pomocí rozhraní příkazového řádku 1.0 tooset až Key Vault
-toocreate trezoru klíčů pomocí hello rozhraní příkazového řádku (CLI), najdete v části [Key Vault spravovat pomocí rozhraní příkazového řádku](../../key-vault/key-vault-manage-with-cli2.md#create-a-key-vault).
+## <a name="use-cli-10-to-set-up-key-vault"></a>Nastavit Key Vault pomocí rozhraní příkazového řádku 1.0
+Vytvoření trezoru klíčů pomocí rozhraní příkazového řádku (CLI), naleznete v části [Key Vault spravovat pomocí rozhraní příkazového řádku](../../key-vault/key-vault-manage-with-cli2.md#create-a-key-vault).
 
-Pro rozhraní příkazového řádku 1.0 máte trezoru klíčů hello toocreate před přiřazením hello nasazení zásad. Pak můžete přiřadit zásady hello pomocí hello následující příkaz:
+Pro rozhraní příkazového řádku 1.0 budete muset vytvořit trezor klíčů, před přiřazením zásady nasazení. Pak můžete přiřadit zásady pomocí následujícího příkazu:
 
     azure keyvault set-policy ContosoKeyVault –enabled-for-deployment true
 
-## <a name="use-templates-tooset-up-key-vault"></a>Použití šablony tooset až Key Vault
-Pokud použijete šablonu, budete potřebovat tooset hello `enabledForDeployment` vlastnost příliš`true` pro hello prostředku Key Vault.
+## <a name="use-templates-to-set-up-key-vault"></a>Použití šablon nastavit Key Vault
+Pokud použijete šablonu, je nutné nastavit `enabledForDeployment` vlastnost `true` prostředku Key Vault.
 
     {
       "type": "Microsoft.KeyVault/vaults",

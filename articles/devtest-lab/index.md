@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure dokumentace k Devtest Labs – kurzy | Microsoft Docs"
-description: "Zjistěte, jak tooquickly vytvořit testovací prostředí aplikace pomocí opakovaně použitelné artefakty. Kurzy, videa a další ukazují, jak toocreate, spravovat a zabezpečit laboratoře."
+title: "Dokumentace ke službě Azure DevTest Labs – kurzy | Dokumentace Microsoftu"
+description: "Zjistěte, jak můžete rychle vytvořit testovací prostředí aplikace pomocí opakovaně použitelných artefaktů. Kurzy, videa a další ukazují, jak můžete vytvářet, spravovat a zabezpečit laboratoře."
 services: devtest-lab
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: b403eeda791425bc8f74ee4430224479e39d727c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 92aab190dfba196d48feacbfcc81a0097102b810
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="devtest-labs-documentation"></a>Dokumentace k DevTest Labs
 
-Zjistěte, jak toouse Devtest Labs tooquickly vytvořit testovací prostředí aplikace pomocí opakovaně použitelné artefakty. Kurzy, videa a další dokumentaci ukazují, jak toocreate, spravovat a labs, zabezpečení a přidávat a spravovat artefakty.
+Zjistěte, jak můžete použít službu Devtest Labs k rychlému vytvoření testovacích prostředí aplikace pomocí opakovaně použitelných artefaktů. Kurzy, videa a další dokumentace ukazují, jak můžete vytvářet, spravovat a zabezpečit laboratoře a jak přidávat a spravovat artefakty.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -70,7 +70,7 @@ Zjistěte, jak toouse Devtest Labs tooquickly vytvořit testovací prostředí a
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáme s Azure DevTest Labs pomocí hello portálu Azure</h3>
+                        <h3>Začínáme s Azure Devtest Labs s využitím webu Azure Portal</h3>
                     </div>
                 </div>
             </div>

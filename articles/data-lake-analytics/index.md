@@ -1,9 +1,9 @@
 ---
-title: "aaaAzure Data Lake Analytics dokumentace - kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
-description: "Naučte se analyzovat velké objemy dat s použitím služby Data Lake Analytics. Kurzy vám ukážou, jak toorun dávky, v reálném čase a interaktivní analýzy a jak dotazy toowrite U-SQL."
+title: "Dokumentace ke službě Azure Data Lake Analytics – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
+description: "Naučte se analyzovat velké objemy dat s použitím služby Data Lake Analytics. V kurzech se naučíte spouštět dávkové analýzy, analýzy v reálném čase a interaktivní analýzy a psát dotazy v jazyce U-SQL."
 services: data-lake-analytics
-author: saveenr
-manager: saveenr
+author: czeumault
+manager: carolz
 layout: LandingPage
 ms.assetid: 
 ms.service: data-lake-analytics
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 515ad4c2a9023e970f1da05785bf3583d37cfccf
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 0cad8acb88494755522e0772c77afcc4793d8e74
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-lake-analytics-documentation"></a>Dokumentace ke službě Data Lake Analytics
 
-Zjistěte, jak toouse Data Lake Analytics toorun analýzy velkých objemů dat úloh této sady dat toomassive škálování. Kurzy a další dokumentaci ukazují, jak toocreate a spravovat batch v reálném čase a úlohy interaktivních analytics a jak pomocí tooquery hello jazykem U-SQL.
+Naučte se používat službu Data Lake Analytics ke spouštění analytických úloh pro velké objemy dat, které se přizpůsobí obrovským datovým sadám. V kurzech a další dokumentaci se naučíte vytvářet a spravovat úlohy dávkové analýzy, analýzy v reálném čase a interaktivní analýzy a zadávat dotazy s použitím jazyka U-SQL.
 
 <ul class="panelContent cardsFTitle">
     <li>

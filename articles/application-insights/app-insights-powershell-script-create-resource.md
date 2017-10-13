@@ -1,5 +1,5 @@
 ---
-title: "aaaPowerShell skriptu toocreate prostředek Application Insights | Microsoft Docs"
+title: "Skript prostředí PowerShell pro vytvoření prostředek Application Insights | Microsoft Docs"
 description: "Automatizovat vytváření prostředků Application Insights."
 services: application-insights
 documentationcenter: windows
@@ -13,28 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2016
 ms.author: bwren
-ms.openlocfilehash: 2ac00376d38026d64c2c5deabfaca60588924510
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a828af9c7d207dd84cc626fc70206018fd67e2dd
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="powershell-script-toocreate-an-application-insights-resource"></a>Toocreate skript prostředí PowerShell prostředek Application Insights
+# <a name="powershell-script-to-create-an-application-insights-resource"></a>Rutina PowerShell pro vytvoření prostředku Application Insights
 
 
-Když chcete toomonitor novou aplikaci - nebo nová verze aplikace - s [Azure Application Insights](https://azure.microsoft.com/services/application-insights/), můžete nastavit nový prostředek v Microsoft Azure. Tento prostředek je, kde je hello telemetrická data z vaší aplikace analyzovat a zobrazí. 
+Pokud chcete monitorování nové aplikace - nebo nová verze aplikace - s [Azure Application Insights](https://azure.microsoft.com/services/application-insights/), můžete nastavit nový prostředek v Microsoft Azure. Tento prostředek je, kde analyzovat a zobrazí data telemetrie z vaší aplikace. 
 
-Hello vytvoření nového prostředku můžete automatizovat pomocí prostředí PowerShell.
+Vytvoření nového prostředku můžete automatizovat pomocí prostředí PowerShell.
 
-Například pokud vyvíjíte aplikace mobilních zařízení, je pravděpodobné, že, kdykoli bude několik publikované verze aplikace používá vašich zákazníků. Nechcete tooget hello telemetrie výsledky z různých verzí ve smíšeném. Proto zobrazí vaše toocreate procesu sestavení nový prostředek pro každé sestavení.
+Například pokud vyvíjíte aplikace mobilních zařízení, je pravděpodobné, že, kdykoli bude několik publikované verze aplikace používá vašich zákazníků. Nechcete získat výsledky telemetrická data z různých verzí ve smíšeném. Získáte tak vaše sestavení postup vytvoření nového prostředku pro každé sestavení.
 
 > [!NOTE]
-> Pokud chcete toocreate sadu prostředků vše na hello stejný čas, zvažte [vytváření hello prostředků pomocí šablony Azure](app-insights-powershell.md).
+> Pokud chcete vytvořit sadu prostředků všechny najednou, zvažte [vytváření prostředků pomocí šablony Azure](app-insights-powershell.md).
 > 
 > 
 
-## <a name="script-toocreate-an-application-insights-resource"></a>Skript toocreate prostředek Application Insights
-Zobrazit hello příslušné rutiny specifikace:
+## <a name="script-to-create-an-application-insights-resource"></a>Skript pro vytvoření prostředek Application Insights
+Zobrazit specifikace příslušné rutiny:
 
 * [Nové AzureRmResource](https://msdn.microsoft.com/library/mt652510.aspx)
 * [New-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt678995.aspx)
@@ -48,31 +48,31 @@ Zobrazit hello příslušné rutiny specifikace:
 # Set Values
 ###########################################
 
-# If running manually, uncomment before hello first 
-# execution toologin toohello Azure Portal:
+# If running manually, uncomment before the first 
+# execution to login to the Azure Portal:
 
 # Add-AzureRmAccount / Login-AzureRmAccount
 
-# Set hello name of hello Application Insights Resource
+# Set the name of the Application Insights Resource
 
 $appInsightsName = "TestApp"
 
-# Set hello application name used for hello value of hello Tag "AppInsightsApp" 
+# Set the application name used for the value of the Tag "AppInsightsApp" 
 
 $applicationTagName = "MyApp"
 
-# Set hello name of hello Resource Group toouse.  
-# Default is hello application name.
+# Set the name of the Resource Group to use.  
+# Default is the application name.
 $resourceGroupName = "MyAppResourceGroup"
 
 ###################################################
-# Create hello Resource and Output hello name and iKey
+# Create the Resource and Output the name and iKey
 ###################################################
 
-# Select hello azure subscription
+# Select the azure subscription
 Select-AzureSubscription -SubscriptionName "MySubscription"
 
-# Create hello App Insights Resource
+# Create the App Insights Resource
 
 
 $resource = New-AzureRmResource `
@@ -84,7 +84,7 @@ $resource = New-AzureRmResource `
   -PropertyObject @{"Application_Type"="web"} `
   -Force
 
-# Give owner access toohello team
+# Give owner access to the team
 
 New-AzureRmRoleAssignment `
   -SignInName "myteam@fabrikam.com" `
@@ -98,10 +98,10 @@ Write-Host "IKey = " $resource.Properties.InstrumentationKey
 
 ```
 
-## <a name="what-toodo-with-hello-ikey"></a>Jaké toodo s hello iKey
-Každý prostředek, je identifikován svůj klíč instrumentace (iKey). Hello iKey je výstup skriptu pro vytváření prostředků hello. Skript buildu by měl poskytovat hello iKey toohello, které Application Insights SDK vložených do aplikace.
+## <a name="what-to-do-with-the-ikey"></a>Co dělat s iKey
+Každý prostředek, je identifikován svůj klíč instrumentace (iKey). IKey je výstup skriptu pro vytváření prostředků. Skript buildu by měl poskytovat iKey do Application Insights SDK vloženému ve vaší aplikaci.
 
-Existují dva způsoby toomake hello iKey dostupné toohello SDK:
+Existují dva způsoby, jak zpřístupnit iKey k sadě SDK:
 
 * V [souboru ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md): 
   * `<instrumentationkey>`*ikey*`</instrumentationkey>`

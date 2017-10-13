@@ -1,6 +1,6 @@
 ---
-title: Tabulka aaaCreate jako vyberte (funkce CTAS) v SQL Data Warehouse | Microsoft Docs
-description: "Tipy pro psaní kódu s použitím hello vytvořit tabulku jako vyberte příkaz (funkce CTAS) v Azure SQL Data Warehouse na vývoj řešení."
+title: "Vytvoření tabulky jako vyberte (funkce CTAS) v SQL Data Warehouse | Microsoft Docs"
+description: "Tipy pro kódování s tabulkou vytvořit jako SELECT (funkce CTAS) v Azure SQL Data Warehouse na vývoj řešení."
 services: sql-data-warehouse
 documentationcenter: NA
 author: shivaniguptamsft
@@ -15,14 +15,14 @@ ms.workload: data-services
 ms.custom: queries
 ms.date: 01/30/2017
 ms.author: shigu;barbkess
-ms.openlocfilehash: e381601a0a4d94e189d8f9115bf2e7593025410b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: cb08313726e8135feaa9b413937c2197ea397f4b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-table-as-select-ctas-in-sql-data-warehouse"></a>Vytvoření tabulky jako vyberte (funkce CTAS) v SQL Data Warehouse
-Vytvoření tabulky jako vyberte nebo `CTAS` je jedním z hello nejdůležitější funkce T-SQL dostupné. Je plně parallelized operaci, která vytvoří novou tabulku podle hello výstup příkazu SELECT. `CTAS`je snadno a rychle toocreate hello kopii tabulky. Tento dokument obsahuje příklady a osvědčené postupy pro `CTAS`.
+Vytvoření tabulky jako vyberte nebo `CTAS` je jedním z nejdůležitějších funkcích T-SQL k dispozici. Je plně parallelized operaci, která vytvoří novou tabulku ve výstupu příkazu SELECT. `CTAS`je nejjednodušší a nejrychlejší způsob, jak vytvořit kopii tabulky. Tento dokument obsahuje příklady a osvědčené postupy pro `CTAS`.
 
 ## <a name="selectinto-vs-ctas"></a>VYBERTE... DO vs. CTAS
 Můžete zvážit `CTAS` jako extrémně účtovat verze `SELECT..INTO`.
@@ -35,11 +35,11 @@ INTO    [dbo].[FactInternetSales_new]
 FROM    [dbo].[FactInternetSales]
 ```
 
-V předchozím příkladu hello `[dbo].[FactInternetSales_new]` by se vytvořily jako ROUND_ROBIN distribuované tabulku s INDEXEM COLUMNSTORE v clusteru na něm jsou tyto výchozí hodnoty tabulky hello v Azure SQL Data Warehouse.
+V předchozím příkladu `[dbo].[FactInternetSales_new]` by se vytvořily jako ROUND_ROBIN distribuované tabulku s INDEXEM COLUMNSTORE v clusteru na něm jsou tyto výchozí hodnoty tabulky v Azure SQL Data Warehouse.
 
-`SELECT..INTO`však neumožňuje toochange index buď hello distribuční metody nebo hello zadejte v rámci operace hello. To je, kdy `CTAS` odeslán.
+`SELECT..INTO`ale neumožňuje změnit metodu distribuce nebo typ indexu v rámci operace. To je, kdy `CTAS` odeslán.
 
-tooconvert hello výše příliš`CTAS` je poměrně jednoduché:
+Chcete-li převést výše a `CTAS` je poměrně jednoduché:
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_new]
@@ -54,17 +54,17 @@ FROM    [dbo].[FactInternetSales]
 ;
 ```
 
-S `CTAS` jsou možné toochange obě hello distribuci dat v tabulce hello, jakož i hello typ tabulky. 
+S `CTAS` budete moci změnit rozdělení dat v tabulce, jakož i typu tabulky. 
 
 > [!NOTE]
-> Pokud zkoušíte pouze toochange hello index v vaší `CTAS` operace a hello zdrojová tabulka je distribuovat algoritmu hash a vaše `CTAS` provede operaci nejvhodnější, pokud chcete zachovat hello stejného typu distribuční sloupce a data. Tím se vyhnete křížové distribuční přesun dat během operace hello, což je efektivnější.
+> Pokud se pouze pokoušíte změnit index v vaše `CTAS` operace a zdrojová tabulka je distribuovat algoritmu hash pak vaší `CTAS` operace provede nejlépe, pokud chcete zachovat stejné distribuční typ sloupce a data. Tím se vyhnete křížové distribuční přesun dat během operace, které je efektivnější.
 > 
 > 
 
-## <a name="using-ctas-toocopy-a-table"></a>Pomocí funkce CTAS toocopy tabulku
-Možná jedním z nejčastějších hello používá `CTAS` vytváří kopie tabulku, ve kterém můžete změnit hello DDL. Pokud třeba jste původně vytvořili tabulku jako `ROUND_ROBIN` a teď ho chcete změnit distribuovaných tooa tabulky na sloupci, `CTAS` je, jak by změna hello distribuční sloupce. `CTAS`může být také použít toochange typy rozdělení do oddílů, indexování nebo sloupec.
+## <a name="using-ctas-to-copy-a-table"></a>Pomocí funkce CTAS zkopírujte tabulku
+Možná jedním z většiny běžných používá `CTAS` vytváří kopie tabulku, ve kterém můžete změnit DDL. Pokud třeba jste původně vytvořili tabulku jako `ROUND_ROBIN` a teď chcete ho změnit na tabulku rozdělit na sloupci, `CTAS` je, jak by sloupec distribuční změnit. `CTAS`lze také změnit typy rozdělení do oddílů, indexování nebo sloupec.
 
-Řekněme, že jste vytvořili tuto tabulku pomocí hello výchozí typ distribuce `ROUND_ROBIN` distribuované vzhledem k tomu, že žádný distribuční sloupec byl zadán v hello `CREATE TABLE`.
+Řekněme, že jste vytvořili tuto tabulku pomocí výchozí typ distribuce tohoto `ROUND_ROBIN` distribuované vzhledem k tomu, že žádný distribuční sloupec byl zadán v `CREATE TABLE`.
 
 ```sql
 CREATE TABLE FactInternetSales
@@ -95,7 +95,7 @@ CREATE TABLE FactInternetSales
 );
 ```
 
-Nyní chcete toocreate novou kopii této tabulce s indexem Columnstore v clusteru tak, aby můžete využít výhod hello výkon tabulky Columnstore v clusteru. Chcete taky toodistribute této tabulky na ProductKey vzhledem k tomu, že se očekává spojení na tomto sloupci a chcete tooavoid přesun dat během spojení na ProductKey. Nakonec chcete taky tooadd vytváření oddílů na OrderDateKey, takže můžete rychle odstranit stará data odstranit staré oddíly. Zde je hello funkce CTAS příkaz, který by vaše staré tabulka zkopírujte do nové tabulky.
+Teď chcete vytvořit novou kopii této tabulky s clusterovaný Columnstore Index, takže můžete využít výhod výkonu tabulky Columnstore v clusteru. Můžete také chcete distribuovat tuto tabulku na ProductKey vzhledem k tomu, že se očekává spojení na tomto sloupci a chcete zabránit přesunu dat během spojení na ProductKey. Nakonec chcete také přidat dělení na OrderDateKey, takže můžete rychle odstranit stará data odstranit staré oddíly. Zde je funkce CTAS příkaz, který by vaše staré tabulka zkopírujte do nové tabulky.
 
 ```sql
 CREATE TABLE FactInternetSales_new
@@ -116,36 +116,36 @@ WITH
 AS SELECT * FROM FactInternetSales;
 ```
 
-Nakonec můžete přejmenovat vaší tooswap tabulky v nové tabulce a pak vyřadit staré tabulky.
+Nakonec můžete přejmenovat vaše tabulky odkládacího souboru v nové tabulce a pak vyřadit staré tabulky.
 
 ```sql
-RENAME OBJECT FactInternetSales tooFactInternetSales_old;
-RENAME OBJECT FactInternetSales_new tooFactInternetSales;
+RENAME OBJECT FactInternetSales TO FactInternetSales_old;
+RENAME OBJECT FactInternetSales_new TO FactInternetSales;
 
 DROP TABLE FactInternetSales_old;
 ```
 
 > [!NOTE]
-> Azure SQL Data Warehouse zatím nepodporuje automatické vytváření ani automatickou aktualizaci statistik.  V pořadí tooget hello nejlepší výkon ze své dotazy je důležité, aby se statistiky vytvořily pro všechny sloupce všech tabulek po prvním načtením hello nebo dojít k významné změny v datech hello.  Podrobné vysvětlení statistiky najdete v tématu hello [statistiky] [ Statistics] tématu ve skupině témat věnovaných vývoji hello.
+> Azure SQL Data Warehouse zatím nepodporuje automatické vytváření ani automatickou aktualizaci statistik.  Aby vám dotazy vracely co nejlepší výsledky, je důležité, aby se statistiky vytvořily pro všechny sloupce všech tabulek po prvním načtením nebo kdykoli, kdy v datech dojde k podstatným změnám.  Podrobné vysvětlení statistiky najdete v tématu [Statistika][Statistics] ve skupině témat věnovaných vývoji.
 > 
 > 
 
-## <a name="using-ctas-toowork-around-unsupported-features"></a>Pomocí funkce CTAS toowork kolem nepodporované funkce
-`CTAS`může být také použít toowork kolem počet níže uvedené hello nepodporované funkce. Často to může být toobe win/win situaci jako pouze váš kód bude kompatibilní, ale je často spustí rychleji SQL Data Warehouse. Toto je v důsledku plně parallelized návrh. Mezi scénáře, které může být kolem pracovali funkce CTAS patří:
+## <a name="using-ctas-to-work-around-unsupported-features"></a>Pomocí funkce CTAS obejít nepodporované funkce
+`CTAS`Můžete také použít obejít počet níže uvedené nepodporované funkce. To může být často na win/win situaci, protože pouze váš kód bude kompatibilní, ale je často spustí rychleji SQL Data Warehouse. Toto je v důsledku plně parallelized návrh. Mezi scénáře, které může být kolem pracovali funkce CTAS patří:
 
 * ANSI spojení na aktualizace
 * ANSI spojení na odstranění
 * MERGE – příkaz
 
 > [!NOTE]
-> Zkuste toothink "funkce CTAS první". Pokud se domníváte, že vám může pomoct vyřešit problém pomocí `CTAS` a který je obvykle hello nejlepší způsob, jak tooapproach ho - i v případě, že v důsledku píšete další data.
+> Zamyslete se nad "funkce CTAS první". Pokud se domníváte, že vám může pomoct vyřešit problém pomocí `CTAS` , je obecně nejlepší způsob, jak postupovat, je - i v případě, že v důsledku píšete další data.
 > 
 > 
 
 ## <a name="ansi-join-replacement-for-update-statements"></a>Připojení k nahrazení ANSI pro příkazy aktualizace
-Můžete zjistit, že máte komplexní aktualizace, která spojuje více než dvě tabulky pomocí ANSI připojení syntaxe tooperform hello aktualizovat nebo odstranit.
+Můžete zjistit, že máte komplexní aktualizace, které spojí dohromady pomocí ANSI připojení syntaxe k provedení aktualizace nebo odstranění více než dvě tabulky.
 
-Představte si, že jste měli tooupdate v této tabulce:
+Představte si, že jste museli aktualizovat v této tabulce:
 
 ```sql
 CREATE TABLE [dbo].[AnnualCategorySales]
@@ -160,7 +160,7 @@ WITH
 ;
 ```
 
-původní dotaz Hello může mít hledá přibližně takto:
+Původní dotaz může mít hledá přibližně takto:
 
 ```sql
 UPDATE    acs
@@ -185,9 +185,9 @@ AND    [acs].[CalendarYear]                = [fis].[CalendarYear]
 ;
 ```
 
-Vzhledem k tomu, že SQL Data Warehouse nepodporuje ANSI Příkazy JOIN v hello `FROM` klauzuli `UPDATE` prohlášení, nelze zkopírovat tento kód přes bez provedení změn mírně.
+Vzhledem k tomu, že SQL Data Warehouse nepodporuje ANSI Příkazy JOIN v `FROM` klauzuli `UPDATE` prohlášení, nelze zkopírovat tento kód přes bez provedení změn mírně.
 
-Můžete použít kombinaci `CTAS` a implicitní připojení tooreplace tento kód:
+Můžete použít kombinaci `CTAS` a implicitní spojení nahraďte tento kód:
 
 ```sql
 -- Create an interim table
@@ -208,7 +208,7 @@ GROUP BY
 ,        [CalendarYear]
 ;
 
--- Use an implicit join tooperform hello update
+-- Use an implicit join to perform the update
 UPDATE  AnnualCategorySales
 SET     AnnualCategorySales.TotalSalesAmount = CTAS_ACS.TotalSalesAmount
 FROM    CTAS_acs
@@ -216,13 +216,13 @@ WHERE   CTAS_acs.[EnglishProductCategoryName] = AnnualCategorySales.[EnglishProd
 AND     CTAS_acs.[CalendarYear]               = AnnualCategorySales.[CalendarYear]
 ;
 
---Drop hello interim table
+--Drop the interim table
 DROP TABLE CTAS_acs
 ;
 ```
 
 ## <a name="ansi-join-replacement-for-delete-statements"></a>Odstranit připojení k nahrazení ANSI pro příkazy
-Někdy hello nejlepší přístup pro odstranění dat je toouse `CTAS`. Místo odstranění dat hello jednoduše vyberte hello data, která chcete tookeep. Tato především pro `DELETE` příkazy, které používají připojení syntaxe, protože SQL Data Warehouse nepodporuje spojení ANSI v hello ansi `FROM` klauzuli `DELETE` příkaz.
+Někdy je nejlepší metodou pro odstranění dat použít `CTAS`. Místo odstraněním dat jednoduše vyberte data, která chcete zachovat. Tato především pro `DELETE` příkazy, které používají ansi spojující syntaxe, protože SQL Data Warehouse nepodporuje ANSI Příkazy JOIN v `FROM` klauzuli `DELETE` příkaz.
 
 Příklad převedený příkazu DELETE je k dispozici následující:
 
@@ -232,7 +232,7 @@ WITH
 (   Distribution=HASH(ProductKey)
 ,   CLUSTERED INDEX (ProductKey)
 )
-AS -- Select Data you wish tookeep
+AS -- Select Data you wish to keep
 SELECT     p.ProductKey
 ,          p.EnglishProductName
 ,          p.Color
@@ -241,12 +241,12 @@ RIGHT JOIN dbo.stg_DimProduct s
 ON         p.ProductKey = s.ProductKey
 ;
 
-RENAME OBJECT dbo.DimProduct        tooDimProduct_old;
-RENAME OBJECT dbo.DimProduct_upsert tooDimProduct;
+RENAME OBJECT dbo.DimProduct        TO DimProduct_old;
+RENAME OBJECT dbo.DimProduct_upsert TO DimProduct;
 ```
 
 ## <a name="replace-merge-statements"></a>Nahraďte příkazy merge
-Příkazy Merge lze nahradit, alespoň v rámci, pomocí `CTAS`. Může konsolidovat hello `INSERT` a hello `UPDATE` do jednoho příkazu. Odstraněné záznamy potřebovat toobe vypnout byl uzavřen za druhý příkaz.
+Příkazy Merge lze nahradit, alespoň v rámci, pomocí `CTAS`. Může konsolidovat `INSERT` a `UPDATE` do jednoho příkazu. Odstraněné záznamy by třeba ukončit vypnout v druhém příkazu.
 
 Příklad `UPSERT` je k dispozici následující:
 
@@ -275,8 +275,8 @@ WHERE NOT EXISTS
 )
 ;
 
-RENAME OBJECT dbo.[DimProduct]          too[DimProduct_old];
-RENAME OBJECT dbo.[DimpProduct_upsert]  too[DimProduct];
+RENAME OBJECT dbo.[DimProduct]          TO [DimProduct_old];
+RENAME OBJECT dbo.[DimpProduct_upsert]  TO [DimProduct];
 
 ```
 
@@ -297,9 +297,9 @@ SELECT @d*@f
 ;
 ```
 
-Instinktivně si myslíte by bylo nutné migrovat tento kód tooa funkce CTAS a by byly správné. Je však skrytá problém tady.
+Instinktivně si myslíte měli byste migrovat tento kód na funkce CTAS a by byly správné. Je však skrytá problém tady.
 
-Hello následující kód nepřinese hello stejný výsledek:
+Následující kód nepřinese stejný výsledek:
 
 ```sql
 DECLARE @d decimal(7,2) = 85.455
@@ -313,9 +313,9 @@ SELECT @d*@f as result
 ;
 ```
 
-Všimněte si, hello sloupec "výsledek" představuje předat hodnoty typu a možnost použití hodnoty NULL dat hello hello výrazu. To může způsobit toosubtle odchylky hodnoty, pokud nejste opatrní.
+Všimněte si sloupec "výsledek" představuje předat hodnoty datového typu a možnost použití hodnoty Null výrazu. To může vést k jemně odchylky v hodnoty, pokud nejste opatrní.
 
-Zkuste následující hello jako příklad:
+Zkuste následující kroky jako příklad:
 
 ```sql
 SELECT result,result*@d
@@ -327,17 +327,17 @@ from ctas_r
 ;
 ```
 
-Hodnota Hello uložené pro výsledek se liší. Jako hello trvalou hodnotu ve sloupci výsledek hello se používá v jiné se změní i větších výrazy hello chyby.
+Hodnota uložená pro výsledek se liší. Jako trvalé hodnoty ve sloupci Výsledek se používá v jiné výrazy se změní i větších chyba.
 
 ![][1]
 
-To je zvlášť důležité pro data migrace. I když je pravděpodobně přesnější hello druhého dotazu došlo k potížím. Hello dat by být různých porovnání toohello zdrojovém systému a který vede tooquestions integrita hello migraci. Toto je jedna z výjimečných případech, kdy hello "nesprávný" odpovědí ve skutečnosti hello vpravo jeden!
+To je zvlášť důležité pro data migrace. I když je pravděpodobně přesnější druhého dotazu došlo k potížím. Data byla odlišná ve srovnání s zdrojovém systému a který vede k otázky integrity migrace. Toto je jedna z těchto výjimečných případech, kdy "nesprávný" odpověď je ve skutečnosti ten správný!
 
-Hello důvod vidíme tento rozdíl mezi dvěma hello výsledky je mimo provoz tooimplicit typ přetypování. V hello první tabulky hello příklad definuje hello definici sloupce. Pokud je vložit řádek hello dochází k konverzi implicitní typu. V druhém příkladu hello neexistuje žádný typ implicitní převod jako hello výraz definuje datový typ sloupce hello. Všimněte si že také hello sloupce v druhém příkladu hello byla definována jako sloupec s možnou hodnotou Null zatímco v prvním příkladu hello má není. Když hello tabulka byla vytvořena v byl explicitně definován hello první příklad sloupec možnost použití hodnoty Null. V druhém příkladu hello byl právě zůstane toohello výraz a ve výchozím nastavení to by způsobilo definici hodnotu NULL.  
+Z důvodu, že vidíte tento rozdíl mezi dvěma výsledky je dolů implicitní typ přetypování. V prvním příkladu definuje tabulky definice sloupce. Když je vložit řádek dojde k konverzi implicitní typu. V druhém příkladu není žádný typ implicitní převod jako výraz definuje datový typ sloupce. Všimněte si také, že sloupec v druhém příkladu jako sloupec s možnou hodnotou Null byla definována zatímco v prvním příkladu má není. Při vytváření tabulky v první Nullable sloupce příklad byl explicitně definován. Ve druhém příkladu, který je právě bylo výrazu a ve výchozím nastavení to by způsobilo definici hodnotu NULL.  
 
-tooresolve těchto problémů musíte explicitně nastavit převod typů hello a možnost použití hodnoty Null v hello `SELECT` část hello `CTAS` příkaz. Nelze nastavit tyto vlastnosti v hello vytvořit část tabulky.
+Chcete-li vyřešit tyto problémy musíte explicitně nastavit převodu typu a možnost použití hodnoty Null v `SELECT` část `CTAS` příkaz. V části Vytvoření tabulky nelze nastavit tyto vlastnosti.
 
-Hello Příklad dole ukazuje, jak toofix hello kódu:
+Následující příklad ukazuje, jak opravit kód:
 
 ```sql
 DECLARE @d decimal(7,2) = 85.455
@@ -349,19 +349,19 @@ AS
 SELECT ISNULL(CAST(@d*@f AS DECIMAL(7,2)),0) as result
 ```
 
-Vezměte na vědomí následující hello:
+Je třeba počítat s následujícím:
 
 * CAST nebo CONVERT byl použit
-* ISNULL je použité tooforce možnost použití hodnoty Null nejsou COALESCE
-* ISNULL je nejzevnější funkce hello
-* Druhá část hello ISNULL Hello je konstanta, tzn. 0
+* IsNull – slouží k vynucení možnost použití hodnoty Null nejsou COALESCE
+* ISNULL je nejzevnější funkce
+* Druhá část ISNULL je konstanta, tzn. 0
 
 > [!NOTE]
-> Pro možnost použití hodnoty Null toobe hello správně nastavené je životně důležité toouse `ISNULL` a není `COALESCE`. `COALESCE`není deterministický funkce a tak hello výsledek výrazu hello bude vždy s možnou hodnotou Null. `ISNULL`se liší. Je deterministický. Proto když hello druhou částí hello `ISNULL` funkce je konstanta, nebo literál pak bude hello výsledná hodnota není NULL.
+> Pro možnost použití hodnoty Null, být správně nastavena je potřeba použít `ISNULL` a není `COALESCE`. `COALESCE`není deterministický funkce a tak výsledkem výrazu bude vždy s možnou hodnotou Null. `ISNULL`se liší. Je deterministický. Proto když druhou částí `ISNULL` funkce je konstanta, nebo literál pak bude výsledná hodnota není NULL.
 > 
 > 
 
-Tento tip není právě užitečné pro zajištění integrity hello vaší výpočtů. Je také důležité k přepnutí oddílu tabulky. Představte si, že máte tato tabulka definován jako vaše fakt:
+Tento tip není právě užitečné k zajištění integrity výpočtů. Je také důležité k přepnutí oddílu tabulky. Představte si, že máte tato tabulka definován jako vaše fakt:
 
 ```sql
 CREATE TABLE [dbo].[Sales]
@@ -384,9 +384,9 @@ WITH
 ;
 ```
 
-Hello hodnota pole je však počítané výraz, který není součástí hello zdrojová data.
+Hodnota pole je však počítané výraz, který není součástí zdrojová data.
 
-toocreate oddílů datovou sadu můžete chtít toodo toto:
+Vytvoření oddílů datovou sadu můžete chtít provést:
 
 ```sql
 CREATE TABLE [dbo].[Sales_in]
@@ -410,7 +410,7 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create')
 ;
 ```
 
-dotaz Hello by spustit perfektně dobře. Hello problém se dodává se při tooperform hello oddílu přepínače. definice tabulek Hello se neshodují. definice tabulek hello toomake odpovídat hello funkce CTAS musí toobe upravit.
+Dotaz by byl spuštěn perfektně dobře. Problém je při pokusu o provedení přepínač oddílu. Definice tabulek se neshodují. Chcete-li definice tabulky odpovídat funkce CTAS má být změněn.
 
 ```sql
 CREATE TABLE [dbo].[Sales_in]
@@ -433,9 +433,9 @@ FROM [stg].[source]
 OPTION (LABEL = 'CTAS : Partition IN table : Create');
 ```
 
-Můžete zobrazit proto konzistenci typu a udržování možnost použití hodnoty NULL vlastnosti funkce CTAS je vhodné engineering nejlepší. Pomáhá toomaintain integrity do výpočtů a také zajistí, že přepnutí oddílu je možné.
+Můžete zobrazit proto konzistenci typu a udržování možnost použití hodnoty NULL vlastnosti funkce CTAS je vhodné engineering nejlepší. Pomáhá zachovat integritu do výpočtů a také zajistí, že přepnutí oddílu je možné.
 
-Další informace o používání naleznete tooMSDN [funkce CTAS][CTAS]. Je jedním z nejdůležitějších příkazy hello v Azure SQL Data Warehouse. Ujistěte se, že rozumíte důkladně.
+Naleznete na webu MSDN pro další informace o použití [funkce CTAS][CTAS]. Je jedním z nejdůležitějších příkazy v Azure SQL Data Warehouse. Ujistěte se, že rozumíte důkladně.
 
 ## <a name="next-steps"></a>Další kroky
 Další tipy pro vývoj, najdete v části [přehled vývoje][development overview].

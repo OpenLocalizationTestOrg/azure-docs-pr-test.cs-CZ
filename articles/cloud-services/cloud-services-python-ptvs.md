@@ -1,6 +1,6 @@
 ---
-title: "aaaGet začít s Python a Azure Cloud Services | Microsoft Docs"
-description: "Přehled použití nástrojů Python Tools pro Visual Studio toocreate cloudových služeb Azure včetně webových rolí a rolí pracovního procesu."
+title: "Začínáme se službou Azure Cloud Services a Pythonem| Dokumentace Microsoftu"
+description: "Přehled vytváření cloudových služeb Azure včetně webových rolí a rolí pracovního procesu pomocí nástrojů Python Tools pro Visual Studio"
 services: cloud-services
 documentationcenter: python
 author: thraka
@@ -14,15 +14,15 @@ ms.devlang: python
 ms.topic: hero-article
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.openlocfilehash: f5fd85e754839f146abe912351c59dc4a148c990
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 030a09c05ac4b480c9326b8a9ebc585339f312b5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Webové role a role pracovních procesů Pythonu při použití nástrojů Python Tools for Visual Studio
 
-Tento článek obsahuje přehled používání webových rolí a rolí pracovních procesů Python pomocí nástrojů [Python Tools for Visual Studio][Python Tools for Visual Studio]. Zjistěte, jak toocreate toouse Visual Studio a nasazení základní Cloudová služba, která používá Python.
+Tento článek obsahuje přehled používání webových rolí a rolí pracovních procesů Python pomocí nástrojů [Python Tools for Visual Studio][Python Tools for Visual Studio]. Dozvíte se, jak použít službu Visual Studio k vytvoření a nasazení základní cloudové služby, která používá Python.
 
 ## <a name="prerequisites"></a>Požadavky
 * [Visual Studio 2013, 2015 nebo 2017](https://www.visualstudio.com/)
@@ -35,45 +35,45 @@ Tento článek obsahuje přehled používání webových rolí a rolí pracovní
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ## <a name="what-are-python-web-and-worker-roles"></a>Co jsou webové role a role pracovních procesů Pythonu?
-Azure nabízí tři počítačové modely pro spouštění aplikací: [funkci Web Apps v Azure App Service][execution model-web sites], [Azure Virtual Machines][execution model-vms] a [Azure Cloud Services][execution model-cloud services]. Všechny tři modely podporují Python. Služby Cloud Services, které obsahují webové role a role pracovních procesů, zajišťují *PaaS (Platform as a Service)*. V rámci cloudové služby webové role poskytuje vyhrazené toohost front-end webového serveru web Internetové informační služby (IIS) aplikace, zatímco role pracovních procesů spuštěním asynchronní, dlouhotrvající nebo trvalé úlohy, které jsou nezávislé na vstupu nebo interakci uživatelů.
+Azure nabízí tři počítačové modely pro spouštění aplikací: [funkci Web Apps v Azure App Service][execution model-web sites], [Azure Virtual Machines][execution model-vms] a [Azure Cloud Services][execution model-cloud services]. Všechny tři modely podporují Python. Služby Cloud Services, které obsahují webové role a role pracovních procesů, zajišťují *PaaS (Platform as a Service)*. Webová role v rámci cloudové služby poskytuje vyhrazený webový server Internetové informační služby (IIS) pro hostování front-endových webových aplikací, zatímco role pracovních procesů dokážou spouštět asynchronní, dlouhotrvající nebo trvalé úlohy, které jsou nezávislé na vstupu nebo interakci uživatelů.
 
 Další informace najdete v článku [Co je cloudová služba?].
 
 > [!NOTE]
-> *Hledáte toobuild jednoduchý Web?*
-> Pokud váš scénář zahrnuje jen jednoduchý Web front-end, zvažte použití odlehčené funkce Web Apps hello v Azure App Service. Můžete snadno upgradovat tooa cloudové služby jako váš web rozroste a vaše požadavky se změní. V tématu hello <a href="/develop/python/">středisku pro vývojáře Python</a> pro články, které se týkají vývoj hello funkce Web Apps v Azure App Service.
+> *Chcete si vytvořit jednoduchý web?*
+> Pokud váš scénář zahrnuje jen jednoduchý front-endový web, zvažte použití odlehčené funkce Web Apps v rámci Azure App Service. V případě potřeby budete moct snadno upgradovat na Cloud Service, až se váš web rozroste a vaše požadavky se změní. Ve <a href="/develop/python/">středisku pro vývojáře programující v Pythonu</a> najdete články věnované vývoji funkce Web Apps v rámci Azure App Service.
 > <br />
 > 
 > 
 
 ## <a name="project-creation"></a>Vytvoření projektu
-V sadě Visual Studio, můžete vybrat **Azure Cloud Service** v hello **nový projekt** dialogovém **Python**.
+V sadě Visual Studio můžete v dialogovém okně **Nový projekt** v části **Python** vybrat **Cloudová služba Azure**.
 
 ![Dialogové okno Nový projekt](./media/cloud-services-python-ptvs/new-project-cloud-service.png)
 
-V Průvodci hello Azure Cloud Service můžete vytvořit nový web a rolí pracovního procesu.
+V průvodci cloudovou službou Azure můžete vytvořit novou webovou roli a roli pracovního procesu.
 
 ![Dialog Cloudová služba Azure](./media/cloud-services-python-ptvs/new-service-wizard.png)
 
-součástí šablony role pracovního procesu Hello je často používaný kód tooconnect tooan účtu úložiště Azure nebo Azure Service Bus.
+Součástí šablony role pracovního procesu je často používaný kód k připojení k účtu služeb Azure Storage nebo Azure Service Bus.
 
 ![Řešení cloudových služeb](./media/cloud-services-python-ptvs/worker.png)
 
-Kdykoli můžete přidat web nebo worker role tooan stávající cloudovou službu.  Můžete vybrat existující projekty tooadd ve vašem řešení, nebo vytvořit nové.
+Do existující cloudové služby můžete kdykoli přidat webovou roli nebo roli pracovního procesu.  Můžete je buď přidat do existujících projektů ve vašem řešení, nebo můžete vytvořit nové.
 
 ![Příkaz pro přidání role](./media/cloud-services-python-ptvs/add-new-or-existing-role.png)
 
 Cloudové služby můžou obsahovat role implementované v různých jazycích.  Můžete mít například webovou roli Pythonu implementovanou pomocí rolí pracovního procesu Django, Python nebo C#.  Mezi svými rolemi můžete snadno komunikovat pomocí front služeb Storage nebo Service Bus.
 
-## <a name="install-python-on-hello-cloud-service"></a>Instalaci Pythonu na hello cloudové služby
+## <a name="install-python-on-the-cloud-service"></a>Instalace Pythonu v cloudové službě
 > [!WARNING]
-> Hello instalačních skriptů, které jsou nainstalované s Visual Studio (v době hello, poslední aktualizace v tomto článku) nefungují. Tato část popisuje alternativní řešení.
+> Skripty pro nastavení, které jsou nainstalovány se službou Visual Studio (v době poslední instalace tohoto článku), nefungují. Tato část popisuje alternativní řešení.
 > 
 > 
 
-Hello hlavní problém s skripty instalace hello je, že python není nainstalovaný. Nejprve definovat dvě [spuštění úlohy](cloud-services-startup-tasks.md) v hello [ServiceDefinition.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) souboru. první úlohou Hello (**PrepPython.ps1**) se stáhne a nainstaluje modul Python runtime hello. druhé úloze Hello (**PipInstaller.ps1**) spouští pip tooinstall všechny závislosti může mít.
+Hlavní problém se skripty pro nastavení spočívá v tom, že neinstalují Python. Nejprve definujte dvě [počáteční úlohy](cloud-services-startup-tasks.md) v souboru [ServiceDefinition.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef). První úloha (**PrepPython.ps1**) stáhne a nainstaluje modul runtime Pythonu. Druhá úloha (**PipInstaller.ps1**) spustí program pip, který nainstaluje všechny případné závislosti.
 
-Hello následující skripty byly napsány cílení Python 3.5. Pokud chcete, aby toouse hello verze 2.x jazyka python, sada hello **PYTHON2** proměnné souboru příliš**na** hello dvou spuštění úlohy a úkolů runtime hello: `<Variable name="PYTHON2" value="<mark>on</mark>" />`.
+Následující skripty byly napsány pro Python 3.5. Pokud chcete použít verzi 2.x Pythonu, nastavte soubor proměnné **PYTHON2** na hodnotu **on** pro obě počáteční úlohy spuštění a úlohu runtime: `<Variable name="PYTHON2" value="<mark>on</mark>" />`.
 
 ```xml
 <Startup>
@@ -100,7 +100,7 @@ Hello následující skripty byly napsány cílení Python 3.5. Pokud chcete, ab
 </Startup>
 ```
 
-Hello **PYTHON2** a **PYPATH** proměnné je nutné přidat úloha spuštění toohello pracovního procesu. Hello **PYPATH** proměnná se používá, pokud hello **PYTHON2** proměnná se nastaví příliš**na**.
+Proměnné **PYTHON2** a **PYPATH** je třeba přidat do počáteční úlohy pracovního procesu. Proměnná **PYPATH** se použije pouze v případě, že je proměnná **PYTHON2** nastavena na hodnotu **on**.
 
 ```xml
 <Runtime>
@@ -166,10 +166,10 @@ Hello **PYTHON2** a **PYPATH** proměnné je nutné přidat úloha spuštění t
 
 
 
-Dále vytvořte hello **PrepPython.ps1** a **PipInstaller.ps1** soubory v hello **. / bin** složky role.
+Dále vytvořte soubory **PrepPython.ps1** a **PipInstaller.ps1** ve složce **./bin** vaší role.
 
 #### <a name="preppythonps1"></a>PrepPython.ps1
-Tento skript nainstaluje Python. Pokud hello **PYTHON2** proměnná prostředí se nastaví příliš**na**, pak je nainstalován jazyk Python 2.7, v opačném případě je nainstalován jazyk Python 3.5.
+Tento skript nainstaluje Python. Pokud je proměnná prostředí **PYTHON2** nastavená na hodnotu **on**, nainstaluje se Python 2.7; v opačném případě se nainstaluje Python 3.5.
 
 ```powershell
 $is_emulated = $env:EMULATED -eq "true"
@@ -195,7 +195,7 @@ if (-not $is_emulated){
             $outFile = "${env:TEMP}\python-2.7.12.amd64.msi"
         }
 
-        Write-Output "Not found, downloading $url too$outFile$nl"
+        Write-Output "Not found, downloading $url to $outFile$nl"
         Invoke-WebRequest $url -OutFile $outFile
         Write-Output "Installing$nl"
 
@@ -215,7 +215,7 @@ if (-not $is_emulated){
 ```
 
 #### <a name="pipinstallerps1"></a>PipInstaller.ps1
-Tento skript volá až pip a nainstaluje všechny závislosti hello hello **requirements.txt** souboru. Pokud hello **PYTHON2** proměnná prostředí se nastaví příliš**na**, pak se používá Python 2.7, v opačném případě se používá Python 3.5.
+Tento skript volá program pip a instaluje všechny závislosti v souboru **requirements.txt**. Pokud je proměnná prostředí **PYTHON2** nastavená na hodnotu **on**, použije se Python 2.7; v opačném případě se použije Python 3.5.
 
 ```powershell
 $is_emulated = $env:EMULATED -eq "true"
@@ -244,13 +244,13 @@ if (-not $is_emulated){
 
 #### <a name="modify-launchworkerps1"></a>Úprava souboru LaunchWorker.ps1
 > [!NOTE]
-> V případě hello **role pracovního procesu** projektu **LauncherWorker.ps1** soubor je soubor spuštění požadované tooexecute hello. V **webovou roli** projektu, hello spuštění souboru se místo toho definované v okně Vlastnosti projektu hello.
+> V případě projektu **role pracovního procesu** je ke spuštění spouštěcího souboru vyžadován soubor **LauncherWorker.ps1**. U projektu **webové role** je spouštěcí soubor definován ve vlastnostech projektu.
 > 
 > 
 
-Hello **bin\LaunchWorker.ps1** byl původně vytvořen toodo spoustu přípravný pracovní, ale ve skutečnosti nefunguje. Hello obsah v tomto souboru nahraďte hello následující skript.
+Soubor **bin\LaunchWorker.ps1** byl původně vytvořen pro větší množství přípravných prací, ve skutečnosti však tento cíl neplní. Nahraďte obsah daného souboru následujícím skriptem.
 
-Tento skript volá hello **worker.py** soubor z projektu python. Pokud hello **PYTHON2** proměnná prostředí se nastaví příliš**na**, pak se používá Python 2.7, v opačném případě se používá Python 3.5.
+Tento skript volá soubor **worker.py** z projektu v Pythonu. Pokud je proměnná prostředí **PYTHON2** nastavená na hodnotu **on**, použije se Python 2.7; v opačném případě se použije Python 3.5.
 
 ```powershell
 $is_emulated = $env:EMULATED -eq "true"
@@ -274,7 +274,7 @@ else
 {
     Write-Output "Running (EMULATED) worker.py$nl"
 
-    # Customize tooyour local dev environment
+    # Customize to your local dev environment
 
     if ($is_python2) {
         cd..
@@ -288,7 +288,7 @@ else
 ```
 
 #### <a name="pscmd"></a>ps.cmd
-šablony sady Visual Studio Hello měli jste vytvořili **ps.cmd** souboru v hello **. / bin** složky. Tento skript prostředí volá out hello prostředí PowerShell obálku skripty výše a zajišťuje protokolování na základě názvu hello obálku prostředí PowerShell hello volat. Pokud tento soubor nebyl vytvořen, zde je uveden jeho očekávaný obsah. 
+Šablony služby Visual Studio měly vytvořit soubor **ps.cmd** ve složce **./bin**. Tento skript prostředí volá obálkové skripty prostředí PowerShell uvedené výše a zajišťuje protokolování na základě názvu volaného obálkového skriptu prostředí PowerShell. Pokud tento soubor nebyl vytvořen, zde je uveden jeho očekávaný obsah. 
 
 ```bat
 @echo off
@@ -302,38 +302,38 @@ if not exist "%DiagnosticStore%\LogFiles" mkdir "%DiagnosticStore%\LogFiles"
 
 
 ## <a name="run-locally"></a>Spuštění v místním prostředí
-Pokud projekt cloudové služby nastavíte jako projekt po spuštění hello a stiskněte klávesu F5, spustí hello cloudové služby v hello emulátoru místního prostředí Azure.
+Pokud si projekt cloudové služby nastavíte jako projekt po spuštění a stisknete F5, spustí se cloudová služba v emulátoru místního prostředí Azure.
 
-Nástroje PTVS sice podporují spouštění v emulátoru hello, ladění (například zarážky) není funkční.
+Nástroje PTVS sice podporují spouštění v emulátoru, nebude ale fungovat ladění (například zarážky).
 
-toodebug webových a pracovních rolí, můžete nastavit jako spouštěný projekt hello hello projekt role a ladit místo.  Můžete také nastavit více projektů po spuštění.  Klikněte pravým tlačítkem na hello řešení a potom vyberte **nastavit projekty po spuštění**.
+Když budete chtít webové role a role pracovních procesů ladit, můžete jako projekt po spuštění nastavit projekt role a ladit místo toho ten.  Můžete také nastavit více projektů po spuštění.  Klikněte pravým tlačítkem myši na řešení a pak vyberte **Nastavit projekty po spuštění**.
 
 ![Vlastnosti projektu po spuštění pro řešení](./media/cloud-services-python-ptvs/startup.png)
 
-## <a name="publish-tooazure"></a>Publikování tooAzure
-Klikněte pravým tlačítkem na projekt cloudové služby v řešení hello hello toopublish a potom vyberte **publikovat**.
+## <a name="publish-to-azure"></a>Publikování aplikací do Azure
+Když budete chtít aplikaci publikovat, klikněte pravým tlačítkem na projekt cloudové služby v řešení a pak vyberte **Publikovat**.
 
 ![Přihlášení pro publikování v Microsoft Azure](./media/cloud-services-python-ptvs/publish-sign-in.png)
 
-Postupujte podle pokynů Průvodce hello. V případě potřeby povolte vzdálenou plochu. Vzdálená plocha je užitečné, když potřebujete, aby toodebug něco.
+Postupujte podle pokynů průvodce. V případě potřeby povolte vzdálenou plochu. Vzdálená plocha je užitečné, když potřebujete něco ladit.
 
 Po dokončení nastavení konfigurace klikněte na **Publikovat**.
 
-V okně výstupu hello se zobrazí průběh a pak se zobrazí okno protokoly aktivit Microsoft Azure hello.
+V okně výstupu uvidíte průběh a pak se zobrazí okno Protokoly aktivit Microsoft Azure.
 
 ![Okno Protokoly aktivit Microsoft Azure](./media/cloud-services-python-ptvs/publish-activity-log.png)
 
-Nasazení trvá několik minut toocomplete, pak váš web nebo rolí pracovního procesu spustit v Azure!
+Pár minut bude probíhat nasazování a pak už vám na Azure začne běžet webová role a role pracovního procesu.
 
 ### <a name="investigate-logs"></a>Prozkoumání protokolů
-Po hello cloudové služby virtuálního počítače po spuštění a nainstaluje Python, můžete si prohlédnout hello protokoly toofind zprávy o selhání. Tyto protokoly jsou umístěné v hello **C:\Resources\Directory\\{role} \LogFiles** složky. **PrepPython.err.txt** má alespoň jednu chybu v ní z když hello skript pokusí toodetect, pokud je nainstalován jazyk Python a **PipInstaller.err.txt** může stěžují na zastaralou verzi pip.
+Po spuštění virtuálního počítače cloudové služby a instalaci Pythonu si můžete prohlédnou protokoly a hledat případné zprávy o neúspěchu. Tyto protokoly jsou umístěné ve složce **C:\Resources\Directory\\{role}\LogFiles**. Soubor **PrepPython.err.txt** obsahuje alespoň jednu chybu, protože se skript pokusil zjistit, zda je nainstalován Python, a soubor **PipInstaller.err.txt** může obsahovat zprávu ohledně zastaralé verze programu pip.
 
 ## <a name="next-steps"></a>Další kroky
-Podrobnější informace o práci s webových a pracovních rolí v nástrojích Python Tools pro sadu Visual Studio najdete v dokumentaci k těmto nástrojům hello:
+Další podrobné informace o práci s webovými rolemi a rolemi pracovních procesů v nástrojích Python Tools for Visual Studio najdete v dokumentaci k těmto nástrojům:
 
 * [Projekty cloudových služeb][Cloud Service Projects]
 
-Podrobnosti o používání služeb Azure z vaší webové a pracovní role, například pomocí Azure Storage nebo Service Bus, najdete v části hello následující články:
+Další podrobnosti o používání služeb Azure z vaší webové role a role pracovního procesu, například pomocí služeb Azure Storage nebo Azure Service Bus, najdete v následujících článcích:
 
 * [Služba Blob][Blob Service]
 * [Služba Table][Table Service]
@@ -344,7 +344,7 @@ Podrobnosti o používání služeb Azure z vaší webové a pracovní role, nap
 <!--Link references-->
 
 [Co je cloudová služba?]: cloud-services-choose-me.md
-[execution model-web sites]: ../app-service-web/app-service-web-overview.md
+[execution model-web sites]: ../app-service/app-service-web-overview.md
 [execution model-vms]:../virtual-machines/windows/overview.md
 [execution model-cloud services]: cloud-services-choose-me.md
 [Python Developer Center]: /develop/python/

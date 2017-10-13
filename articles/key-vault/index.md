@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure dokumentace k trezoru klíč – kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
-description: "Zjistěte, jak toocreate toouse Key Vault a udržovat klíče, které k přístupu a šifrování vaší cloudové prostředky, aplikace a řešení. Kurzy, reference k rozhraní API a další zdroje informací"
+title: "Dokumentace ke službě Azure Key Vault – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
+description: "Naučte se využívat službu Key Vault k vytváření a správě klíčů, kterí zajišťují přístup k vašim cloudovým prostředků, aplikacím a řešením a jejich šifrování. Kurzy, reference k rozhraní API a další zdroje informací"
 services: key-vault
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: a7fbebf94b3f345731ccba0ab788c83efa4c021e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 3267373f6db336c34d13709cc0392631531313f4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="key-vault-documentation"></a>Dokumentace ke službě Key Vault
 
-Zjistěte, jak toosafeguard toouse Key Vault a spravovat kryptografické klíče a tajné klíče používané cloudovými aplikacemi a službami. Kurzy, odkazy na rozhraní API a další dokumentaci ukazují, jak toocreate a udržovat klíče, které k přístupu a šifrování prostředků a řešení.
+Naučte se využívat službu Azure Key Vault k ochraně kryptografických a tajných klíčů používaných cloudovými aplikacemi a službami. Kurzy, reference k rozhraní API a další dokumentace ukazují postupy vytváření a správy klíčů, které umožňují přístup k vašim prostředkům a řešením a jejich šifrování.
 
 <ul class="panelContent cardsFTitle">
     <li>

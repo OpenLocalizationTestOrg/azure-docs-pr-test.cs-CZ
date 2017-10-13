@@ -1,6 +1,6 @@
 ---
-title: "aaaHardware pro StorSimple 10 GbE rozhraní | Microsoft Docs"
-description: "Popisuje hello podporované malé formuláře factor modulární (SFP) vysílače, kabely a přepínače hello 10 GbE síťových rozhraní zařízení StorSimple."
+title: "Rozhraní hardwaru pro zařízení StorSimple 10 GbE | Microsoft Docs"
+description: "Popisuje podporované malé faktor formuláře modulární vysílače (SFP), kabely a přepínače pro rozhraní sítě 10 GbE zařízení StorSimple."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
-ms.openlocfilehash: 3e6769380040ab08d9a57ef7221bf62c6c855137
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: db03b3cd668bf8e35913872ac4225de6d4d3edd1
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="supported-hardware-for-hello-10-gbe-network-interfaces-on-your-storsimple-device"></a>Podporovaný hardware pro hello 10 GbE síťová rozhraní zařízení StorSimple
+# <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>Podporovaném hardwaru 10 GbE síťových rozhraních zařízení StorSimple
 ## <a name="overview"></a>Přehled
 Tento článek obsahuje informace o doplňující hardwaru, který funguje s zařízení s Microsoft Azure StorSimple.
 
 ## <a name="list-of-devices-tested-by-microsoft"></a>Seznam zařízení testovaná společností Microsoft
-Společnost Microsoft testovala hello následující malé formuláře factor modulární vysílače (SFP), kabely a přepínače tooensure, aby fungovaly optimálně s zařízení. (hello následující tabulky bude aktualizovat, protože je testován nový hardware.)
+Společnost Microsoft testovala následující malé formuláře factor modulární vysílače (SFP), kabely a přepínače zajistit, aby fungovaly optimálně s zařízení. (V následujících tabulkách bude aktualizovat, protože je testován nový hardware.)
 
 ### <a name="sfp-transceivers"></a>SFP + vysílače
 | Ujistěte se | Model |
@@ -47,8 +47,8 @@ Společnost Microsoft testovala hello následující malé formuláře factor mo
 | 2. |Cisco |N3K-C3048-ZM – F |
 | 3. |Cisco |N5K-C5596UP – DM |
 
-## <a name="list-of-devices-tested-in-hello-field"></a>Seznam zařízení otestována hello pole
-Tato část obsahuje hello seznam zařízení, která byla úspěšně nasazena v poli hello StorSimple zákazníků. Nebyly testovány společností Microsoft, ale jsou pravděpodobně toowork s vaším zařízením StorSimple.
+## <a name="list-of-devices-tested-in-the-field"></a>Seznam zařízení testována v poli
+Tato část obsahuje seznam zařízení, která byla úspěšně nasazena v poli StorSimple zákazníků. Nebyly testovány společností Microsoft, ale pravděpodobně pracovat s zařízení StorSimple.
 
 | Parametr | Hodnota |
 | --- | --- |
@@ -64,10 +64,10 @@ Tato část obsahuje hello seznam zařízení, která byla úspěšně nasazena 
 | Verze softwaru zařízení StorSimple |6.3.9600.17491 |
 
 ## <a name="list-of-devices-tested-by-oem-provider-mellanox"></a>Seznam zařízení testována poskytovatelem OEM (Mellanox)
-Mellanox testovala hello následující malé formuláře factor modulární vysílače (SFP), kabely a přepínače tooensure, aby fungovaly optimálně s Mellanox síťových rozhraní, například hello 10 GbE síťových rozhraní v zařízení StorSimple.
+Mellanox testovala následující malé formuláře factor modulární vysílače (SFP), kabely a přepínače zajistit, aby fungovaly optimálně s Mellanox síťových rozhraní, například 10 GbE síťových rozhraní zařízení StorSimple.
 
 ### <a name="cables-and-modules-supported-by-mellanox"></a>Kabelů a moduly nepodporuje Mellanox
-Hello následující tabulka uvádí hello kabelů a moduly nepodporuje Mellanox. Nebyly testovány společností Microsoft, ale jsou pravděpodobně toowork s vaším zařízením StorSimple.
+Následující tabulka uvádí kabelů a moduly nepodporuje Mellanox. Nebyly testovány společností Microsoft, ale pravděpodobně pracovat s zařízení StorSimple.
 
 | Sér. Ne. | Rychlost | Model | Popis | Ujistěte se |
 | --- | --- | --- | --- | --- |
@@ -78,7 +78,7 @@ Hello následující tabulka uvádí hello kabelů a moduly nepodporuje Mellanox
 | 5. |10 GbE |Cisco SFP-H10GBCU1M |Cisco SFP + kabel |Cisco |
 | 6. |10 GbE |Cisco SFP-H10GBCU3M |Cisco SFP + kabel |Cisco |
 | 7. |10 GbE |Cisco SFP-H10GBCU5M |Cisco SFP + kabel |Cisco |
-| 8. |10 GbE |J9281B HP X242 10 G |SFP + tooSFP + 1 milion přímé mědi kabelové připojení |HP |
+| 8. |10 GbE |J9281B HP X242 10 G |SFP + pro SFP + 1 milion mědi kabel s přímým přístupem |HP |
 | 9. |10 GbE |BLc 455883 B21 HP |10Gb SR SFP + Opt |HP |
 | 10. |10 GbE |BLc 455886 B21 HP |10Gb LR SFP + Opt |HP |
 | 11. |10 GbE |BLc 487649 B21 HP |SFP + m 0,5 10GbE Cu kabel |HP |
@@ -97,18 +97,18 @@ Hello následující tabulka uvádí hello kabelů a moduly nepodporuje Mellanox
 | 24. |10 GbE |JD095B HP |X240 10 G SFP + SFP + 0.65 m DAC kabel |HP |
 | 25. |10 GbE |JD096B HP |X240 10 G SFP + SFP + 1.2 m DAC kabel |HP |
 | 26. |10 GbE |JD097B HP |X240 10 G SFP + SFP + 3 m DAD kabel |HP |
-| 27. |10 GbE |MAM1Q00A QSA Mellanox |QSFP tooSFP + adaptéru |Mellanox technologie |
-| 28. |10 GbE |MT MC2309124-006 – |Pasivní mědi kabel 1 x SFP + tooQSFP 10Gb/s 24awg 7m |Mellanox technologie |
-| 29. |10 GbE |MC2309124 007 Mt |Pasivní mědi kabel 1 x SFP + tooQSFP 10Gb/s 24awg 7m |Mellanox technologie |
-| 30. |10 GbE |Mt MC2309130 003 |Pasivní mědi kabel 1 x SFP + tooQSFP 10Gb/s 30awg 3m |Mellanox technologie |
-| 31. |10 GbE |Mt MC2309130 00A |Pasivní mědi kabel 1 x SFP + tooQSFP 10Gb/s 30awg 0,5 m |Mellanox technologie |
+| 27. |10 GbE |MAM1Q00A QSA Mellanox |QSFP SFP + adaptéru |Mellanox technologie |
+| 28. |10 GbE |MT MC2309124-006 – |X SFP+ pasivní mědi kabel 1 do 10 Gb/s 24awg QSFP 7 m |Mellanox technologie |
+| 29. |10 GbE |MC2309124 007 Mt |X SFP+ pasivní mědi kabel 1 do 10 Gb/s 24awg QSFP 7 m |Mellanox technologie |
+| 30. |10 GbE |Mt MC2309130 003 |X SFP+ pasivní mědi kabel 1 do 10 Gb/s 30awg QSFP 3 m |Mellanox technologie |
+| 31. |10 GbE |Mt MC2309130 00A |X SFP+ pasivní mědi kabel 1 do 10 Gb/s 30awg QSFP 0,5 m |Mellanox technologie |
 | 32. |10 GbE |Mt MC3309124 005 |Pasivní mědi zapojení 1 24awg 10 Gb/s x SFP+ 5 m |Mellanox technologie |
 | 33. |10 GbE |MC3309124 007 Mt |Pasivní mědi zapojení 1 24awg 10 Gb/s x SFP+ 7 m |Mellanox technologie |
 | 34. |10 GbE |Mt MC3309130 003 |Pasivní mědi zapojení 1 30awg 10 Gb/s x SFP+ 3 m |Mellanox technologie |
 | 35. |10 GbE |Mt MC3309130 00A |Pasivní mědi zapojení 1 30awg 10 Gb/s x SFP+ 0,5 m |Mellanox technologie |
 
 ### <a name="switches-supported-by-mellanox"></a>Přepínače nepodporuje Mellanox
-Hello následující tabulka obsahuje seznam přepínačů hello nepodporuje Mellanox. Nebyly testovány společností Microsoft, ale jsou pravděpodobně toowork s vaším zařízením StorSimple.
+Následující tabulka uvádí přepínače nepodporuje Mellanox. Nebyly testovány společností Microsoft, ale pravděpodobně pracovat s zařízení StorSimple.
 
 | Sér. Ne. | Rychlost | Model | Popis | Ujistěte se |
 | --- | --- | --- | --- | --- |

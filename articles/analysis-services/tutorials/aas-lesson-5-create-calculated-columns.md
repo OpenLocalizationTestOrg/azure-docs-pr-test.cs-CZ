@@ -1,118 +1,136 @@
 ---
-Title: aaa "Azure Analysis Services kurz Lekce 5: vytvoření počítané sloupce | Microsoft Docs"Popis: Popisuje způsob výpočtu toocreate sloupců v kurzu projekt hello Azure Analysis Services. služby: documentationcenter služby analysis services: '' Autor: minewiskan správce: erikre editor: '' značky: "
-
-MS.AssetID: ms.service: ms.devlang služby analysis services: NA ms.topic: get-started-article ms.tgt_pltfrm: NA ms.workload: na ms.date: 01/06/2017 ms.author: owend
+title: "Kurz služby Azure Analysis Services – Lekce 5: Vytvoření počítaných sloupců | Dokumentace Microsoftu"
+description: "Popisuje, jak vytvořit počítané sloupce v projektu Kurz služby Azure Analysis Services."
+services: analysis-services
+documentationcenter: 
+author: Minewiskan
+manager: erikre
+editor: 
+tags: 
+ms.assetid: 
+ms.service: analysis-services
+ms.devlang: NA
+ms.topic: get-started-article
+ms.tgt_pltfrm: NA
+ms.workload: na
+ms.date: 09/20/2017
+ms.author: owend
+ms.openlocfilehash: eab74fbadc6a143ca5a2bc57a1762539a6d489c1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="lesson-5-create-calculated-columns"></a>Lekce 5: Vytvoření počítaných sloupců
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-V této lekci vytvoříte v modelu data přidáním počítaných sloupců. Můžete vytvořit počítané sloupce (jako vlastní sloupce) při použití načíst Data, pomocí hello editoru dotazů, nebo později v hello modelu návrháře jako jste to zde. Další, najdete v části toolearn [počítaných sloupců](https://docs.microsoft.com/sql/analysis-services/tabular-models/ssas-calculated-columns).
+V této lekci vytvoříte v modelu data přidáním počítaných sloupců. Počítané sloupce (jako vlastní sloupce) můžete vytvořit při používání funkce Získání dat, pomocí editoru dotazů nebo později v návrháři modelů, jako to uděláte tady. Další informace najdete v tématu [Počítané sloupce](https://docs.microsoft.com/sql/analysis-services/tabular-models/ssas-calculated-columns).
   
-Vytvoříte pět nových počítaných sloupců ve třech různých tabulkách. Postup Hello je mírně odlišný pro každý úkol zobrazující existuje několik způsobů toocreate sloupců, přejmenujte je a umístit je na různých místech v tabulce.  
+Vytvoříte pět nových počítaných sloupců ve třech různých tabulkách. Postupy pro každý úkol se mírně liší, aby ukázaly několik způsobů vytvoření sloupců, jejich přejmenování a umístění na různá místa v tabulce.  
 
-V této lekci také poprvé použijete jazyk DAX (Data Analysis Expressions). DAX je speciální jazyk pro vytváření vysoce přizpůsobitelných výrazů se vzorci pro tabelární modely. V tomto kurzu použijete toocreate počítaného sloupce, míry a role filtry jazyka DAX. Další, najdete v části toolearn [jazyka DAX v tabulkové modely](https://docs.microsoft.com/sql/analysis-services/tabular-models/understanding-dax-in-tabular-models-ssas-tabular). 
+V této lekci také poprvé použijete jazyk DAX (Data Analysis Expressions). DAX je speciální jazyk pro vytváření vysoce přizpůsobitelných výrazů se vzorci pro tabelární modely. V tomto kurzu pomocí jazyka DAX vytvoříte počítané sloupce, míry a filtry rolí. Další informace najdete v tématu [DAX v tabelárních modelech](https://docs.microsoft.com/sql/analysis-services/tabular-models/understanding-dax-in-tabular-models-ssas-tabular). 
   
-Odhadovaný čas toocomplete této lekci: **15 minut**  
+Odhadovaný čas dokončení této lekce: **15 minut**  
   
 ## <a name="prerequisites"></a>Požadavky  
-Toto téma je součástí kurzu tabelárního modelování, který by se měl dokončit v daném pořadí. Před provedením úlohy hello v této lekci, by měl mít dokončit předchozí lekci hello: [Lekce 4: vytvoření vztahů](../tutorials/aas-lesson-4-create-relationships.md). 
+Toto téma je součástí kurzu tabelárního modelování, který by se měl dokončit v daném pořadí. Před provedením úkolů v této lekci byste měli mít dokončenou předchozí lekci: [Lekce 4: Vytvoření relací](../tutorials/aas-lesson-4-create-relationships.md). 
   
 ## <a name="create-calculated-columns"></a>Vytvoření počítaných sloupců  
   
-#### <a name="create-a-monthcalendar-calculated-column-in-hello-dimdate-table"></a>Vytvoření MonthCalendar počítaného sloupce v tabulce DimDate hello  
+#### <a name="create-a-monthcalendar-calculated-column-in-the-dimdate-table"></a>Vytvoření počítaného sloupce MonthCalendar v tabulce DimDate  
   
-1.  Klikněte na tlačítko hello **modelu** nabídky > **zobrazení modelu** > **zobrazení dat**.  
+1.  Klikněte na nabídku **Model** > **Zobrazení modelu** > **Zobrazení dat**.  
   
-    Počítané sloupce lze vytvořit pouze pomocí návrháře hello model dat zobrazení.  
+    Počítané sloupce je možné vytvořit pouze pomocí návrháře modelů v zobrazení dat.  
   
-2.  V Návrháři hello model, klikněte na tlačítko hello **DimDate** tabulky (karta).  
+2.  V návrháři modelů klikněte na tabulku (kartu) **DimDate**.  
   
-3.  Klikněte pravým tlačítkem na hello **CalendarQuarter** záhlaví sloupce a pak klikněte na tlačítko **vložit sloupec**.  
+3.  Klikněte pravým tlačítkem na záhlaví sloupce **CalendarQuarter** a potom klikněte na **Vložit sloupec**.  
   
-    Nový sloupec s názvem **počítaného sloupce 1** je vložené toohello nalevo od hello **čtvrtletí kalendáře** sloupce.  
+    Nový sloupec **Počítaný sloupec 1** se vloží nalevo od sloupce **CalendarQuarter**.  
   
-4.  V řádku vzorců hello výše hello tabulky, zadejte následující vzorec DAX hello: automatického dokončování pomáhá zadáte hello plně kvalifikované názvy sloupců a tabulek a seznamů hello funkce, které jsou k dispozici.  
+4.  Na řádku vzorců nad tabulkou zadejte následující vzorec DAX: automatické dokončování vám pomůže zadat plně kvalifikované názvy sloupců a tabulek a vypíše dostupné funkce.  
   
     ```  
     =RIGHT(" " & FORMAT([MonthNumberOfYear],"#0"), 2) & " - " & [EnglishMonthName]  
     ``` 
   
-    Hodnoty jsou pak vyplněný pro všechny řádky hello v počítaném sloupci hello. Pokud přejděte dolů prostřednictvím tabulky hello zobrazí řádky může mít různé hodnoty pro tento sloupec na základě dat hello v jednotlivých řádcích.    
+    Hodnoty se potom vyplní do všech řádků počítaného sloupce. Když přejdete tabulkou dolů, uvidíte, že řádky v tomto sloupci můžou mít různé hodnoty v závislosti na datech v příslušném řádku.    
   
-5.  Přejmenujte tento sloupec příliš**MonthCalendar**. 
+5.  Přejmenujte tento sloupec na **MonthCalendar**. 
 
     ![aas-lesson5-newcolumn](../tutorials/media/aas-lesson5-newcolumn.png) 
   
-počítaný sloupec Hello MonthCalendar poskytuje řazení název pro měsíc.  
+Počítaný sloupec MonthCalendar umožňuje řazení podle názvu měsíce.  
   
-#### <a name="create-a-dayofweek-calculated-column-in-hello-dimdate-table"></a>Vytvoření DayOfWeek počítaného sloupce v tabulce DimDate hello  
+#### <a name="create-a-dayofweek-calculated-column-in-the-dimdate-table"></a>Vytvoření počítaného sloupce DayOfWeek v tabulce DimDate  
   
-1.  S hello **DimDate** tabulky stále aktivní, klikněte na tlačítko hello **sloupec** nabídce a pak klikněte na tlačítko **přidat sloupec**.  
+1.  Když je tabulka **DimDate** stále aktivní, klikněte na nabídku **Sloupec** a potom na **Přidat sloupec**.  
   
-2.  V řádku vzorců hello zadejte hello následující vzorec:  
+2.  Na řádku vzorců zadejte následující vzorec:  
     
     ```
     =RIGHT(" " & FORMAT([DayNumberOfWeek],"#0"), 2) & " - " & [EnglishDayNameOfWeek]  
     ```
     
-    Pokud jste dokončili vytváření hello vzorec, stiskněte klávesu ENTER. nový sloupec Hello se přidá toohello nejvíce vpravo hello tabulky.  
+    Jakmile budete hotovi s vytvářením vzorce, stiskněte klávesu ENTER. Nový sloupec se přidá do tabulky úplně vpravo.  
   
-3.  Přejmenovat sloupec hello příliš**DayOfWeek**.  
+3.  Přejmenujte sloupec na **DayOfWeek**.  
   
-4.  Kliknutím na záhlaví sloupce hello a poté přetáhněte hello sloupce mezi hello **EnglishDayNameOfWeek** sloupce a hello **DayNumberOfMonth** sloupce.  
+4.  Klikněte na záhlaví sloupce a přesuňte ho mezi sloupce **EnglishDayNameOfWeek** a **DayNumberOfMonth**.  
   
     > [!TIP]  
-    > Přesunutí sloupců v tabulce je snazší toonavigate.  
+    > Přesouvání sloupců usnadňuje navigaci v tabulce.  
   
-počítaný sloupec Hello DayOfWeek poskytuje řazení název hello den v týdnu.  
+Počítaný sloupec DayOfWeek umožňuje řazení podle dne v týdnu.  
   
-#### <a name="create-a-productsubcategoryname-calculated-column-in-hello-dimproduct-table"></a>Vytvoření ProductSubcategoryName počítaného sloupce v tabulce DimProduct hello  
+#### <a name="create-a-productsubcategoryname-calculated-column-in-the-dimproduct-table"></a>Vytvoření počítaného sloupce ProductSubcategoryName v tabulce DimProduct  
   
   
-1.  V hello **DimProduct** tabulky, posuňte toohello daleko vpravo od hello tabulky. Všimněte si hello nejvíce vpravo sloupec nazýval **přidat sloupec** (kurzívou), kliknutím na záhlaví sloupce hello.  
+1.  V tabulce **DimProduct** přejděte úplně vpravo. Všimněte si, že sloupec úplně vpravo má název **Přidat sloupec** (kurzívou), a klikněte na záhlaví sloupce.  
   
-2.  V řádku vzorců hello zadejte hello následující vzorec:  
+2.  Na řádku vzorců zadejte následující vzorec:  
     
     ```
     =RELATED('DimProductSubcategory'[EnglishProductSubcategoryName])  
     ```
   
-3.  Přejmenovat sloupec hello příliš**ProductSubcategoryName**.  
+3.  Přejmenujte sloupec na **ProductSubcategoryName**.  
   
-počítaný sloupec ProductSubcategoryName Hello je použité toocreate hierarchie v tabulce DimProduct hello, které zahrnují data z hello EnglishProductSubcategoryName sloupec v tabulce DimProductSubcategory hello. Hierarchie nemůžou zahrnovat víc než jednu tabulku. Hierarchie vytvoříte později v lekci 9.  
+Počítaný sloupec ProductSubcategoryName slouží k vytvoření hierarchie v tabulce DimProduct, která zahrnuje data ze sloupce EnglishProductSubcategoryName v tabulce DimProductSubcategory. Hierarchie nemůžou zahrnovat víc než jednu tabulku. Hierarchie vytvoříte později v lekci 9.  
   
-#### <a name="create-a-productcategoryname-calculated-column-in-hello-dimproduct-table"></a>Vytvoření ProductCategoryName počítaného sloupce v tabulce DimProduct hello  
+#### <a name="create-a-productcategoryname-calculated-column-in-the-dimproduct-table"></a>Vytvoření počítaného sloupce ProductCategoryName v tabulce DimProduct  
   
-1.  S hello **DimProduct** tabulky stále aktivní, klikněte na tlačítko hello **sloupec** nabídce a pak klikněte na tlačítko **přidat sloupec**.  
+1.  Když je tabulka **DimProduct** stále aktivní, klikněte na nabídku **Sloupec** a potom na **Přidat sloupec**.  
   
-2.  V řádku vzorců hello zadejte hello následující vzorec:  
+2.  Na řádku vzorců zadejte následující vzorec:  
   
     ```
     =RELATED('DimProductCategory'[EnglishProductCategoryName]) 
     ```
     
-3.  Přejmenovat sloupec hello příliš**ProductCategoryName**.  
+3.  Přejmenujte sloupec na **ProductCategoryName**.  
   
-počítaný sloupec ProductCategoryName Hello je použité toocreate hierarchie v tabulce DimProduct hello, které zahrnují data z hello EnglishProductCategoryName sloupec v tabulce DimProductCategory hello. Hierarchie nemůžou zahrnovat víc než jednu tabulku.  
+Počítaný sloupec ProductCategoryName slouží k vytvoření hierarchie v tabulce DimProduct, která zahrnuje data ze sloupce EnglishProductCategoryName v tabulce DimProductCategory. Hierarchie nemůžou zahrnovat víc než jednu tabulku.  
   
-#### <a name="create-a-margin-calculated-column-in-hello-factinternetsales-table"></a>Vytvoření okraj počítaného sloupce v tabulce FactInternetSales hello  
+#### <a name="create-a-margin-calculated-column-in-the-factinternetsales-table"></a>Vytvoření počítaného sloupce Margin v tabulce FactInternetSales  
   
-1.  V Návrháři hello modelu, vyberte hello **FactInternetSales** tabulky.  
+1.  V návrháři modelů vyberte tabulku **FactInternetSales**.  
   
-2.  Vytvořit nový počítaný sloupec mezi hello **SalesAmount** sloupce a hello **TaxAmt** sloupce.  
+2.  Vytvořte nový počítaný sloupec mezi sloupci **SalesAmount** a **TaxAmt**.  
   
-3.  V řádku vzorců hello zadejte hello následující vzorec:  
+3.  Na řádku vzorců zadejte následující vzorec:  
   
     ```
     =[SalesAmount]-[TotalProductCost]
     ``` 
 
-4.  Přejmenovat sloupec hello příliš**okraj**.  
+4.  Přejmenujte sloupec na **Margin**.  
  
       ![aas-lesson5-newmargin](../tutorials/media/aas-lesson5-newmargin.png)
       
-    počítaný sloupec Hello okraj je použité tooanalyze zisku okrajů pro každý prodej.  
+    Počítaný sloupec Margin slouží k analýze ziskových marží u jednotlivých prodejů.  
   
 ## <a name="whats-next"></a>Co dále?
 [Lekce 6: Vytvoření měřítek](../tutorials/aas-lesson-6-create-measures.md)

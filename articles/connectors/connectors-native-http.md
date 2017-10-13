@@ -1,5 +1,5 @@
 ---
-title: "aaaCommunicate s žádný koncový bod přes protokol HTTP - Azure Logic Apps | Microsoft Docs"
+title: "Komunikovat s žádný koncový bod přes protokol HTTP - Azure Logic Apps | Microsoft Docs"
 description: "Vytvoření aplikace logiky, která může komunikovat s žádný koncový bod přes protokol HTTP"
 services: logic-apps
 author: jeffhollan
@@ -15,39 +15,39 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: 9793601839437a2b880bdb81e15881270cacc963
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d422a07a27ffa62a673bd2d471ae4fc837251dee
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="get-started-with-hello-http-action"></a>Začínáme s hello akce HTTP
+# <a name="get-started-with-the-http-action"></a>Začínáme s akce HTTP
 
-S hello akce HTTP můžete rozšířit pracovní postupy pro vaši organizaci a koncový bod tooany komunikaci pomocí protokolu HTTP.
+Pomocí akce HTTP můžete rozšířit pracovní postupy pro vaši organizaci a komunikaci pomocí protokolu HTTP pro libovolný koncový bod.
 
 Můžete:
 
 * Vytvořte logiku aplikace pracovní postupy, které aktivovat (aktivační události), kdy web, který spravujete přestane fungovat.
-* Komunikují koncový bod tooany přes HTTP tooextend vaše pracovní postupy k dalším službám.
+* Komunikovat s žádný koncový bod přes protokol HTTP rozšířit vaše pracovní postupy k dalším službám.
 
-tooget spuštění pomocí hello HTTP akce v aplikaci logiky, aplikaci najdete v části [vytvoření aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md).
+Chcete-li začít používat akce HTTP v aplikaci logiky, přečtěte si téma [vytvoření aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md).
 
-## <a name="use-hello-http-trigger"></a>Použít aktivační událost hello HTTP
-Aktivační událost je událost, která lze použít toostart hello workflow, který je definován v aplikaci logiky. [Další informace o aktivační události](connectors-overview.md).
+## <a name="use-the-http-trigger"></a>Pomocí triggeru protokolu HTTP
+Aktivační událost je událost, která můžete použít ke spuštění pracovního postupu, který je definován v aplikaci logiky. [Další informace o aktivační události](connectors-overview.md).
 
-Zde je příklad posloupnosti jak aktivovat tooset až hello HTTP v hello návrhář aplikace logiky.
+Zde je v sekvenci příklad toho, jak nastavit triggeru protokolu HTTP v Návrháři logiku aplikace.
 
-1. Přidejte hello triggeru protokolu HTTP v aplikaci logiky.
-2. Vyplňte hello parametry pro koncový bod hello HTTP, které chcete toopoll.
-3. Změna intervalu opakování hello na tom, jak často má dotazovat.
+1. Přidejte triggeru protokolu HTTP v aplikaci logiky.
+2. Zadejte parametry pro koncový bod HTTP, které chcete dotazovat.
+3. Změna intervalu opakování na tom, jak často má dotazovat.
 
-   aplikace logiky Hello teď aktivuje s obsahem, který je vrácen během každé kontroly.
+   Aplikace logiky teď aktivuje s obsahem, který je vrácen během každé kontroly.
 
    ![Trigger HTTP](./media/connectors-native-http/using-trigger.png)
 
-### <a name="how-hello-http-trigger-works"></a>Jak funguje hello triggeru protokolu HTTP
+### <a name="how-the-http-trigger-works"></a>Jak funguje triggeru protokolu HTTP
 
-Aktivace protokolu HTTP Hello odešle tooHTTP koncový bod volání na intervalu opakování. Ve výchozím kódu odpovědi HTTP, která je nižší než 300 způsobí, že toorun logiku aplikace. toospecify zda by měly aktivovat aplikaci logiky hello, můžete upravit aplikaci logiky hello v zobrazení kódu a přidejte podmínku, která vyhodnotí po hello volání protokolu HTTP. Tady je příklad HTTP aktivační událost, která aktivuje se v případě hello vrátil kód stavu je větší než nebo roven hodnotě příliš`400`.
+Aktivace protokolu HTTP odešle volání koncový bod protokolu HTTP na intervalu opakování. Ve výchozím kódu odpovědi HTTP, která je nižší než 300 způsobí, že aplikace logiky ke spuštění. Chcete-li určit, zda by měly aktivovat aplikaci logiky, můžete upravit aplikaci logiky v zobrazení kódu a přidejte podmínku, která vyhodnotí po volání protokolu HTTP. Tady je příklad HTTP aktivační událost, která aktivuje se v případě vrácený kód stavu je větší než nebo rovno `400`.
 
 ```javascript
 "Http":
@@ -72,57 +72,57 @@ Aktivace protokolu HTTP Hello odešle tooHTTP koncový bod volání na intervalu
 }
 ```
 
-Úplné podrobnosti o parametrech hello HTTP aktivační události jsou k dispozici na [MSDN](https://msdn.microsoft.com/library/azure/mt643939.aspx#HTTP-trigger).
+Úplné podrobnosti o parametrech aktivace protokolu HTTP jsou k dispozici na [MSDN](https://msdn.microsoft.com/library/azure/mt643939.aspx#HTTP-trigger).
 
-## <a name="use-hello-http-action"></a>Pomocí akce hello HTTP
+## <a name="use-the-http-action"></a>Pomocí akce HTTP
 
-Akce je operace, která se provádí v pracovním postupu hello, která je definována v aplikaci logiky. 
+Akce je operace, která se provádí v pracovním postupu, který je definován v aplikaci logiky. 
 [Další informace o akcích](connectors-overview.md).
 
 1. Zvolte **nový krok** > **přidat akci**.
-3. Hello akce vyhledávacího pole zadejte **http** toolist hello HTTP akce.
+3. Zadejte do vyhledávacího pole Akce **http** seznam akce HTTP.
    
-    ![Vyberte akci hello HTTP](./media/connectors-native-http/using-action-1.png)
+    ![Vyberte akci HTTP](./media/connectors-native-http/using-action-1.png)
 
-4. Přidejte všechny požadované parametry pro volání hello protokolu HTTP.
+4. Přidejte všechny požadované parametry pro volání protokolu HTTP.
    
-    ![Dokončení hello akce HTTP](./media/connectors-native-http/using-action-2.png)
+    ![Dokončení akce HTTP](./media/connectors-native-http/using-action-2.png)
 
-5. Na hello návrháře nástrojů, klikněte na tlačítko **Uložit**. Uložení a publikování (aktivovaný) na hello svou aplikaci logiky stejnou dobu.
+5. Na panelu nástrojů návrháře, klikněte na tlačítko **Uložit**. Aplikace logiky uložení a publikování (aktivovaný) ve stejnou dobu.
 
 ## <a name="http-trigger"></a>Trigger HTTP
-Tady jsou hello podrobnosti hello aktivační událost, která tento konektor podporuje. konektor HTTP Hello má jedna aktivační událost.
+Tady jsou uvedené podrobnosti pro aktivační událost, která tento konektor podporuje. Konektor protokolu HTTP má jedna aktivační událost.
 
 | Aktivační události | Popis |
 | --- | --- |
-| HTTP |Provede volání protokolu HTTP a vrátí obsah odpovědi hello. |
+| HTTP |Provede volání protokolu HTTP a vrátí obsahu odpovědi. |
 
 ## <a name="http-action"></a>Akce HTTP
-Tady jsou hello podrobnosti hello akce, který podporuje tento konektor. konektor HTTP Hello má jednu možné akci.
+Tady jsou uvedené podrobnosti pro akci, která tento konektor podporuje. Konektor protokolu HTTP má jednu možné akci.
 
 | Akce | Popis |
 | --- | --- |
-| HTTP |Provede volání protokolu HTTP a vrátí obsah odpovědi hello. |
+| HTTP |Provede volání protokolu HTTP a vrátí obsahu odpovědi. |
 
 ## <a name="http-details"></a>Podrobnosti protokolu HTTP
-Hello následující tabulky popisují hello požadované a volitelné vstupních polí pro akce hello a hello odpovídající výstup podrobností, které jsou spojené s použitím akce hello.
+Následující tabulky popisují požadované a volitelné vstupních polí pro akce a odpovídající výstup podrobnosti, které jsou spojené s použitím akce.
 
 #### <a name="http-request"></a>Požadavek HTTP
-Hello následují vstupní pole pro hello akce, která umožňuje odchozí požadavku HTTP.
+Níže jsou uvedeny vstupních polí pro akce, která umožňuje odchozí požadavku HTTP.
 A * znamená, že je povinné pole.
 
 | Zobrazované jméno | Název vlastnosti | Popis |
 | --- | --- | --- |
-| Metoda * |– Metoda |příkaz toouse Hello HTTP |
-| IDENTIFIKÁTOR URI * |identifikátor URI |Hello identifikátor URI pro požadavek hello HTTP |
-| Záhlaví |Záhlaví |Objekt JSON tooinclude hlavičky protokolu HTTP |
-| Tělo |Text |Hello požadavku HTTP |
-| Authentication |Ověřování |Podrobnosti v hello [ověřování](#authentication) části |
+| Metoda * |– Metoda |Příkaz protokolu HTTP k použití |
+| IDENTIFIKÁTOR URI * |identifikátor URI |Identifikátor URI pro požadavek HTTP |
+| Záhlaví |Záhlaví |Objekt JSON zahrnují hlaviček protokolu HTTP |
+| Tělo |Text |Požadavek HTTP |
+| Authentication |Ověřování |Podrobnosti v [ověřování](#authentication) části |
 
 <br>
 
 #### <a name="output-details"></a>Podrobnosti o výstupu
-Hello následují výstup podrobnosti hello odpověď HTTP.
+Níže jsou uvedeny podrobnosti výstup pro odpověď HTTP.
 
 | Název vlastnosti | Datový typ | Popis |
 | --- | --- | --- |
@@ -131,7 +131,7 @@ Hello následují výstup podrobnosti hello odpověď HTTP.
 | Stavový kód |celá čísla |Stavový kód protokolu HTTP |
 
 ## <a name="authentication"></a>Authentication
-Funkce Logic Apps Hello umožňuje toouse různé typy ověřování proti koncových bodů protokolu HTTP. Toto ověřování můžete použít s hello **HTTP**,  **[HTTP + Swagger](connectors-native-http-swagger.md)**, a  **[Webhooku protokolu HTTP](connectors-native-webhook.md)**  konektory. Hello následující typy ověřování se dají konfigurovat:
+Funkce Logic Apps umožňuje používat různé typy ověřování proti koncových bodů protokolu HTTP. Můžete použít tento ověřování s **HTTP**,  **[HTTP + Swagger](connectors-native-http-swagger.md)**, a  **[Webhooku protokolu HTTP](connectors-native-webhook.md)**  konektory. Následující typy ověřování se dají konfigurovat:
 
 * [Základní ověřování](#basic-authentication)
 * [Ověřování certifikátu klienta](#client-certificate-authentication)
@@ -139,17 +139,17 @@ Funkce Logic Apps Hello umožňuje toouse různé typy ověřování proti konco
 
 #### <a name="basic-authentication"></a>Základní ověřování
 
-Hello následující ověřování objektu je potřeba pro základní ověřování.
+Následující objekt ověřování je potřeba pro základní ověřování.
 A * znamená, že je povinné pole.
 
 | Název vlastnosti | Datový typ | Popis |
 | --- | --- | --- |
 | Typ * |type |Typ ověřování (musí být `Basic` pro základní ověřování) |
-| Uživatelské jméno * |uživatelské jméno |Název tooauthenticate uživatele |
-| Heslo * |heslo |Tooauthenticate heslo |
+| Uživatelské jméno * |uživatelské jméno |Uživatelské jméno k ověření |
+| Heslo * |heslo |Heslo k ověření |
 
 > [!TIP]
-> Pokud chcete toouse heslo, které nelze načíst z definice hello, použijte `securestring` parametr a hello `@parameters()`  
+> Pokud chcete použít heslo, které nelze načíst z definice, použití `securestring` parametr a `@parameters()`  
 >  [funkce definice pracovního postupu](http://aka.ms/logicappdocs).
 
 Například:
@@ -164,16 +164,16 @@ Například:
 
 #### <a name="client-certificate-authentication"></a>Ověřování klientských certifikátů
 
-Hello následující ověřování objektu je potřeba pro ověřování pomocí certifikátu klienta. A * znamená, že je povinné pole.
+Následující objekt ověřování je potřeba pro ověřování pomocí certifikátu klienta. A * znamená, že je povinné pole.
 
 | Název vlastnosti | Datový typ | Popis |
 | --- | --- | --- |
-| Typ * |type |typ ověřování Hello (musí být `ClientCertificate` pro klientské certifikáty SSL) |
-| SOUBOR PFX * |Soubor PFX |Hello kódováním Base64 obsah souboru hello Personal Information Exchange (PFX) |
-| Heslo * |heslo |Hello heslo tooaccess hello souboru PFX |
+| Typ * |type |Typ ověřování (musí být `ClientCertificate` pro klientské certifikáty SSL) |
+| SOUBOR PFX * |Soubor PFX |Obsah kódováním Base64 soubor Personal Information Exchange (PFX) |
+| Heslo * |heslo |Heslo pro přístup k souboru PFX |
 
 > [!TIP]
-> toouse parametr, který nebude možné číst v definici hello po uložení hello aplikace logiky, můžete použít `securestring` parametr a hello `@parameters()`  
+> Chcete-li použít parametr, který nebude možné číst v definici po uložení aplikaci logiky, můžete použít `securestring` parametr a `@parameters()`  
 >  [funkce definice pracovního postupu](http://aka.ms/logicappdocs).
 
 Například:
@@ -187,18 +187,18 @@ Například:
 ```
 
 #### <a name="azure-ad-oauth-authentication"></a>Ověřování služby Azure AD OAuth
-Hello následující ověřování objektu je potřeba pro ověřování Azure AD OAuth. A * znamená, že je povinné pole.
+Následující objekt ověřování je potřeba pro ověřování Azure AD OAuth. A * znamená, že je povinné pole.
 
 | Název vlastnosti | Datový typ | Popis |
 | --- | --- | --- |
-| Typ * |type |typ ověřování Hello (musí být `ActiveDirectoryOAuth` pro Azure AD OAuth) |
-| Klienta * |Klienta |identifikátor Hello klienta pro klienta hello Azure AD |
-| Cílová skupina * |Cílová skupina |prostředek Hello jste požádali toouse autorizace. Příklad: `https://management.core.windows.net/` |
-| Klient ID * |clientId |Hello identifikátor klienta pro aplikaci hello Azure AD |
-| Tajný klíč * |tajný klíč |tajný klíč Hello hello klienta, který žádá o hello token |
+| Typ * |type |Typ ověřování (musí být `ActiveDirectoryOAuth` pro Azure AD OAuth) |
+| Klienta * |Klienta |Identifikátor klienta pro klienta Azure AD |
+| Cílová skupina * |Cílová skupina |Prostředek se požaduje autorizaci používat. Příklad: `https://management.core.windows.net/` |
+| Klient ID * |clientId |Identifikátor klienta pro aplikaci Azure AD |
+| Tajný klíč * |tajný klíč |Tajný klíč klienta, který požaduje tokenu |
 
 > [!TIP]
-> Můžete použít `securestring` parametr a hello `@parameters()` [funkce definice pracovního postupu](http://aka.ms/logicappdocs) toouse parametr, který nebude možné číst v definici hello po uložení.
+> Můžete použít `securestring` parametr a `@parameters()` [funkce definice pracovního postupu](http://aka.ms/logicappdocs) použít parametr, který nebude možné číst v definici po uložení.
 > 
 > 
 
@@ -215,5 +215,5 @@ Například:
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Teď vyzkoušet hello platformy a [vytvoření aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md). Můžete prozkoumat hello dalších dostupných konektorů v Logic Apps pohledem na našem [rozhraní API seznamu](apis-list.md).
+Teď vyzkoušet platformu a [vytvoření aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md). Ostatní konektory k dispozici v Logic Apps můžete prozkoumat pohledem na našem [rozhraní API seznamu](apis-list.md).
 

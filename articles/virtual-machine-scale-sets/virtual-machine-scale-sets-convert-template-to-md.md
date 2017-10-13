@@ -1,6 +1,6 @@
 ---
-title: "aaaConvert škálování Azure Resource Manager nastavte spravovaných disků na šablony toouse | Microsoft Docs"
-description: "Převeďte šablonu tooa spravovaných disků na škálování sada škálování sada šablony."
+title: "Převést šablonu Azure Resource Manager škálování sadu používat spravovaných disků na | Microsoft Docs"
+description: "Převeďte na šablonu sady škálování spravovaných disků na šablonu sady škálování."
 keywords: "Sady škálování virtuálního počítače"
 services: virtual-machine-scale-sets
 documentationcenter: 
@@ -16,19 +16,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/18/2017
 ms.author: negat
-ms.openlocfilehash: 66c2217647e57ed2cfa39660c0175710ae2e63be
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2f5cb85703888c5056611d466f508547ee72e44b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="convert-a-scale-set-template-tooa-managed-disk-scale-set-template"></a>Převést šablonu tooa spravovaných disků na škálování sada škálování sada šablony
+# <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>Převést na šablonu sady škálování spravovaných disků na šablonu sady škálování
 
-Zákazníci pomocí šablony Resource Manageru pro vytváření škálování nastavit nepoužíváte spravovaných disků může přát toomodify ho toouse spravované disku. Tento článek ukazuje, jak toodo se používá jako příklad žádost o přijetí změn z hello [šablon Azure rychlý Start](https://github.com/Azure/azure-quickstart-templates), úložišti komunitou vytvářený pro ukázkové šablony Resource Manageru. Zde můžete zjistit žádost o úplné přijetí změn Hello: [https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998), a odpovídající části hello hello rozdílové jsou níže, společně s vysvětlení:
+Zákazníci pomocí šablony Resource Manageru pro vytváření škálovací sadu nepoužíváte spravovaných disků na chtít upravit tak, aby pomocí spravovaného disku. Tento článek ukazuje, jak na to, jako příklad použijeme žádost o přijetí změn z [šablon Azure rychlý Start](https://github.com/Azure/azure-quickstart-templates), úložišti komunitou vytvářený pro ukázkové šablony Resource Manageru. Zde můžete zjistit úplné přijetí žádosti o: [https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998), a jsou v příslušných částech rozdílové níže, společně s vysvětlení:
 
-## <a name="making-hello-os-disks-managed"></a>Vytváření disků operačního systému hello spravované
+## <a name="making-the-os-disks-managed"></a>Provedení spravované disky operačního systému
 
-V rozdílové hello níže jsme se zobrazí, jsme odebrali několik proměnné související toostorage vlastností účtu a disku. Typ účtu úložiště už není nutné (Standard_LRS je výchozí hello), ale může stále určíme ho Pokud jsme nepřeje. Jsou podporovány pouze Standard_LRS a Premium_LRS s spravovaného disku. Nová přípona účet úložiště, pole jedinečné řetězce a počet sa byly používány v hello původní šablony toogenerate názvy účtů úložiště. Tyto proměnné již nejsou potřebné v nové šabloně hello protože spravovaných disků na účty úložiště automaticky vytvoří jménem zákazníka hello. Podobně název kontejneru virtuálního pevného disku a název disku operačního systému již nejsou potřebné protože spravovaných disků na názvy automaticky hello základní kontejnery úložiště objektů blob a disků.
+V rozdílů, které jsou níže jsme se zobrazí, že jsme odebrali několika proměnných související s vlastností účtu a disku úložiště. Typ účtu úložiště už není nutné (Standard_LRS je výchozí nastavení), ale může stále určíme ho Pokud jsme nepřeje. Jsou podporovány pouze Standard_LRS a Premium_LRS s spravovaného disku. Nová přípona účet úložiště, pole jedinečné řetězce a počet sa byly použity v původní šabloně vygenerovat názvy účtů úložiště. Tyto proměnné již nejsou potřebné v nové šabloně protože spravovaných disků na účty úložiště automaticky vytvoří jménem zákazníka. Podobně název kontejneru virtuálního pevného disku a název disku operačního systému již nejsou potřebné protože spravovaných disků na názvy automaticky základní kontejnery úložiště objektů blob a disků.
 
 ```diff
    "variables": {
@@ -52,7 +52,7 @@ V rozdílové hello níže jsme se zobrazí, jsme odebrali několik proměnné s
 ```
 
 
-V hello rozdílové níže, jsme můžete najdete, že byl aktualizován hello výpočetní rozhraní api verze too2016-04-30-preview, což je hello nejdříve požadovaná verze spravovaných disků na podporu pro sady škálování. Upozorňujeme, že jsme může stále použít nespravované disky v nové verzi rozhraní api hello pomocí staré syntaxe hello v případě potřeby. Jinými slovy Pokud jsme aktualizovat pouze hello výpočetní verze rozhraní api a neměnit cokoliv jiného, hello šablony by měly pokračovat ve toowork jako před.
+V rozdílů, které jsou níže, vidíme, že byl aktualizován výpočetní verze rozhraní api pro 2016-04-30-preview, což je nejdříve požadovaná verze spravovaných disků na podporu pro sady škálování. Upozorňujeme, že jsme může stále použít nespravované disky v nové verzi rozhraní api pomocí staré syntaxe v případě potřeby. Jinými slovy Pokud jsme výpočetní aktualizovat pouze verze rozhraní api a neměnit cokoliv jiného, šablona by měly být nadále fungovat jako předtím.
 
 ```diff
 @@ -86,7 +74,7 @@
@@ -66,7 +66,7 @@ V hello rozdílové níže, jsme můžete najdete, že byl aktualizován hello v
    },
 ```
 
-V rozdílové hello níže jsme se zobrazí, že jsme odebírání prostředků účtu úložiště hello z pole prostředky hello úplně. Už potřebujeme je vzhledem k tomu, že spravovaných disků je automaticky vytvoří naším jménem.
+V rozdílů, které jsou níže jsme se zobrazí, že jsme odebírání prostředků účtu úložiště z pole prostředkům úplně. Už potřebujeme je vzhledem k tomu, že spravovaných disků je automaticky vytvoří naším jménem.
 
 ```diff
 @@ -113,19 +101,6 @@
@@ -91,7 +91,7 @@ V rozdílové hello níže jsme se zobrazí, že jsme odebírání prostředků 
        "location": "[resourceGroup().location]",
 ```
 
-V hello rozdílové níže, jsme můžete najdete odebírání hello závisí na klauzule odkazující hello škálování sadu toohello smyčky, který byl vytváření účtů úložiště. V původní šabloně hello to byla zajistíte, že účty úložiště hello byly vytvořeny před hello škálovací sadu začal vytvoření, ale tuto klauzuli už není nutné u spravovaných disků na. Jsme také odeberte vlastnost kontejnery vhd hello a hello vlastnost název disku operačního systému, jak tyto vlastnosti jsou automaticky zpracovávány pod pokličkou hello spravovaného disku. Pokud jsme si přáli, může přidáme `"managedDisk": { "storageAccountType": "Premium_LRS" }` v konfiguraci "osDisk" hello, pokud jsme chtěli prémiové disky operačního systému. Pouze virtuální počítače s velkým nebo na malá ' v hello virtuálních počítačů můžete použít sku prémiové disky.
+V rozdílů, které jsou níže, uvidíme jsme odebrání závisí na klauzule odkazující od stupnice nastavena na smyčky, která byla vytváření účtů úložiště. V původní šabloně to byla zajistit, aby byly účty úložiště vytvořené před škálovací sadu začal vytvoření, ale tuto klauzuli už není nutné u spravovaných disků na. Jsme také odstranit vlastnost kontejnery vhd a vlastnost název disku operačního systému jako tyto vlastnosti jsou automaticky zpracovávány pod pokličkou spravovaného disku. Pokud jsme si přáli, může přidáme `"managedDisk": { "storageAccountType": "Premium_LRS" }` v konfiguraci "osDisk" Pokud jsme chtěli prémiové disky operačního systému. Pouze virtuální počítače s velkým nebo na malá ' ve virtuálním počítači můžete použít sku prémiové disky.
 
 ```diff
 @@ -183,7 +158,6 @@
@@ -120,12 +120,12 @@ V hello rozdílové níže, jsme můžete najdete odebírání hello závisí na
 
 ```
 
-Konfigurace sady škálování hello jestli toouse spravované nebo nespravované disku není žádný explicitní vlastnost. Sada škálování Hello ví, které toouse na základě hello vlastností, které se nacházejí v profilu úložiště hello. Proto je důležité při úpravě tooensure hello šablony, které vlastnosti hello oprávnění jsou v profilu úložiště hello škálovací sady hello.
+Neexistuje žádné explicitní vlastnost v konfiguraci sady škálování pro jestli se má používat disku spravované nebo nespravované. Sada škálování ví, který se použije na základě vlastností, které se nacházejí v profilu úložiště. Proto je důležité při úpravě šablonu, zajistěte, aby vlastnosti oprávnění v profilu úložiště škálovací sady.
 
 
 ## <a name="data-disks"></a>Datové disky
 
-Změny hello výše hello škálování sady používá spravovaných disků pro hello operačního systému na disku, ale co o datových disků? tooadd datových disků, přidejte vlastnost hello "dataDisks" v části "storageProfile" na stejné úrovni jako "osDisk" hello. Hello hello vlastnost hodnotu JSON seznam objektů, z nichž každá má vlastnosti "lun" (které musí být jedinečný pro každé datový disk na virtuálním počítači), "createOption" ("prázdná" je aktuálně hello jen podporované možnosti) a "diskSizeGB" (hello velikost hello disku v gigabajtech; musí být větší než 0 a menší než 1024) jako v hello následující ukázka: 
+S výše změny škálování sady používá spravované disky pro operační systém na disku, ale co o datových disků? Chcete-li přidat datových disků, přidejte vlastnost "dataDisks" v části "storageProfile" na stejné úrovni jako "osDisk". Hodnota vlastnosti je JSON seznam objektů, z nichž každá má vlastnosti "lun" (které musí být jedinečný pro každé datový disk na virtuálním počítači), "createOption" ("prázdný" je aktuálně jedinou možností podporovaných) a "diskSizeGB" (velikost disku v gigabajtech; musí být větší než 0 a menší než 1024) jako v následujícím příkladu: 
 
 ```
 "dataDisks": [
@@ -137,13 +137,13 @@ Změny hello výše hello škálování sady používá spravovaných disků pro
 ]
 ```
 
-Pokud zadáte `n` disky v toto pole, jednotlivé virtuální počítače ve škálovací hello nastavit získá `n` datových disků. Upozorňujeme však, že jsou tyto datové disky nezpracované zařízení. Jejich nejsou formátovány. Je tooattach toohello zákazníka, paritition a formát hello disků před jejich používání. Volitelně může také určíme `"managedDisk": { "storageAccountType": "Premium_LRS" }` v každé data toospecify objektu disku, je nutné premium datový disk. Pouze virtuální počítače s velkým nebo na malá ' v hello virtuálních počítačů můžete použít sku prémiové disky.
+Pokud zadáte `n` disky v toto pole, jednotlivé virtuální počítače v měřítka nastavit získá `n` datových disků. Upozorňujeme však, že jsou tyto datové disky nezpracované zařízení. Jejich nejsou formátovány. Je zákazník připojit, paritition a před jejich použitím disky naformátujte. Volitelně může také určíme `"managedDisk": { "storageAccountType": "Premium_LRS" }` v každý datový disk objekt k určení, že by měl být premium datový disk. Pouze virtuální počítače s velkým nebo na malá ' ve virtuálním počítači můžete použít sku prémiové disky.
 
-toolearn Další informace o datových disků pomocí sad škálování, najdete v části [v tomto článku](./virtual-machine-scale-sets-attached-disks.md).
+Další informace o datových disků pomocí sady škálování najdete v tématu [v tomto článku](./virtual-machine-scale-sets-attached-disks.md).
 
 
 ## <a name="next-steps"></a>Další kroky
-Například šablony Resource Manageru pomocí sad škálování, vyhledejte "vmss" v hello [úložiště github šablon Azure rychlý Start](https://github.com/Azure/azure-quickstart-templates).
+Například šablony Resource Manageru pomocí sad škálování, vyhledejte "vmss" v [úložiště github šablon Azure rychlý Start](https://github.com/Azure/azure-quickstart-templates).
 
-Obecné informace, podívejte se na hello [hlavní cílová stránka pro sady škálování](https://azure.microsoft.com/services/virtual-machine-scale-sets/).
+Obecné informace, podívejte se [hlavní cílová stránka pro sady škálování](https://azure.microsoft.com/services/virtual-machine-scale-sets/).
 

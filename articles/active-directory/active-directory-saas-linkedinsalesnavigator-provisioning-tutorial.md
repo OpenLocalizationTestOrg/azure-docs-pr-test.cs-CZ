@@ -1,6 +1,6 @@
 ---
 title: "Kurz: Konfigurace LinkedIn prodej navigátor pro zřizování automatické uživatelů s Azure Active Directory | Microsoft Docs"
-description: "Zjistěte, jak tooconfigure Azure Active Directory tooautomatically zřídit a deaktivace zřízení uživatelských účtů tooLinkedIn Navigátor organizační jednotky prodej."
+description: "Informace o konfiguraci Azure Active Directory a automaticky zřizovat a zrušte zřízení uživatelských účtů do Navigátor prodej LinkedIn."
 services: active-directory
 documentationcenter: 
 author: asmalser-msft
@@ -14,110 +14,110 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: asmalser-msft
-ms.openlocfilehash: 322c5271535994c13a9fafadbf74f356cdfe865d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 86357949c8e6927f78ca5bb8b7e20a6b88c37ef3
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-configuring-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Kurz: Konfigurace LinkedIn prodeje navigátor pro zřizování automatické uživatelů
 
 
-cílem Hello tohoto kurzu je tooshow hello kroky nutné tooperform v Navigátor prodej LinkedIn a Azure AD tooautomatically zřídit a deaktivace zřízení uživatelských účtů z Azure AD tooLinkedIn Navigátor prodej. 
+Cílem tohoto kurzu je tak, aby zobrazovalo kroky, které je třeba provést v Navigátor prodej LinkedIn a Azure AD a automaticky zřizovat a zrušte zřízení uživatelských účtů ze služby Azure AD do Navigátor prodej LinkedIn. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Hello scénáři uvedeném v tomto kurzu se předpokládá, že už máte hello následující položky:
+Scénář uvedených v tomto kurzu se předpokládá, že už máte následující položky:
 
 *   Klient služby Azure Active Directory
 *   Navigátor prodej LinkedIn klienta 
-*   Účet správce v LinkedIn prodej Navigátor s toohello přístup k centru účtů LinkedIn
+*   Účet správce v LinkedIn prodej Navigátor přístup k centru účtů LinkedIn
 
 > [!NOTE]
-> Azure Active Directory se integruje s Navigátor prodej LinkedIn pomocí hello [SCIM](http://www.simplecloud.info/) protokolu.
+> Azure Active Directory se integruje s LinkedIn prodej Navigátor pomocí [SCIM](http://www.simplecloud.info/) protokolu.
 
-## <a name="assigning-users-toolinkedin-sales-navigator"></a>Přiřazení uživatelů tooLinkedIn Navigátor prodeje
+## <a name="assigning-users-to-linkedin-sales-navigator"></a>Přiřazení uživatelů k LinkedIn prodej Navigátor
 
-Azure Active Directory používá koncept názvem "přiřazení" toodetermine uživatelů, kteří obdrželi přístup tooselected aplikace. V kontextu hello zřizování účtu automatické uživatele se budou synchronizovat pouze hello uživatelů a skupin, které byly "přiřazeny" tooan aplikace ve službě Azure AD. 
+Azure Active Directory používá koncept označované jako "úlohy" k určení uživatelů, kteří obdrželi přístup k vybrané aplikace. V kontextu uživatele automatické zřizování účtu se budou synchronizovat pouze uživatelé a skupiny, které byly "přiřazeny" aplikace ve službě Azure AD. 
 
-Než nakonfigurujete a povolíte hello zřizování služby, budete potřebovat toodecide jaké uživatelů nebo skupin ve službě Azure AD představují hello uživatele, kteří potřebují přístup k tooLinkedIn Navigátor organizační jednotky prodej. Jakmile se rozhodli, můžete přiřadit tyto uživatele tooLinkedIn Navigátor prodeje podle pokynů hello tady:
+Před konfigurací a povolení zřizování služby, musíte se rozhodnout, jaké uživatelů nebo skupin ve službě Azure AD představují uživatele, kteří potřebují přístup k Navigátor prodej LinkedIn. Jakmile se rozhodli, můžete přiřadit těmto uživatelům LinkedIn prodej Navigátor podle pokynů tady:
 
-[Přiřadit uživatele nebo skupinu tooan firemní aplikace](active-directory-coreapps-assign-user-azure-portal.md)
+[Přiřazení uživatele nebo skupiny do aplikace enterprise](active-directory-coreapps-assign-user-azure-portal.md)
 
-### <a name="important-tips-for-assigning-users-toolinkedin-sales-navigator"></a>Důležité tipy pro přiřazení uživatelů tooLinkedIn Navigátor prodeje
+### <a name="important-tips-for-assigning-users-to-linkedin-sales-navigator"></a>Důležité tipy pro přiřazování uživatelů do LinkedIn prodej Navigátor
 
-*   Dále je doporučeno jednoho uživatele Azure AD přiřadit tooLinkedIn prodej Navigátor tootest hello zřizování konfigurace. Další uživatele nebo skupiny může být přiřazen později.
+*   Dále je doporučeno jednoho uživatele Azure AD pro LinkedIn prodej Navigátor přidělí otestovat konfiguraci zřizování. Další uživatele nebo skupiny může být přiřazen později.
 
-*   Při přiřazování uživatele tooLinkedIn Navigátor prodej, je nutné vybrat hello **uživatele** role v dialogovém okně přiřazení hello. role "Výchozí přístup" Hello nefunguje pro zřizování.
+*   Při přiřazení uživatele k Navigátor LinkedIn prodej, je nutné vybrat **uživatele** role v dialogovém okně přiřazení. Roli "Výchozí přístup" nefunguje pro zřizování.
 
 
-## <a name="configuring-user-provisioning-toolinkedin-sales-navigator"></a>Konfigurace tooLinkedIn prodej Navigátor zřizování uživatelů
+## <a name="configuring-user-provisioning-to-linkedin-sales-navigator"></a>Konfiguraci zřizování uživatelů pro LinkedIn prodej Navigátor
 
-Tato část vás provede připojením vaší služby Azure AD tooLinkedIn prodej Navigátor na SCIM uživatelský účet zřizování rozhraní API a konfigurace hello zřizování služby toocreate, aktualizovat a zakázat přiřazené uživatelské účty v Navigátor LinkedIn prodeje podle uživatele a přiřazení skupiny ve službě Azure AD.
+Tato část vás provede připojení k Navigátor prodej LinkedIn SCIM uživatelský účet zřizování rozhraní API služby Azure AD a konfiguraci zřizování služby vytvářet, aktualizovat a zakázat přiřadit uživatelské účty v Navigátor prodej LinkedIn na základě uživatele a přiřazení skupiny ve službě Azure AD.
 
 > [!TIP]
-> Můžete také zvolit tooenabled na základě SAML jednotné přihlašování pro prodej Navigátor LinkedIn, hello pokynů uvedených v [portál Azure](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce vzájemně doplňují.
+> Můžete také pro LinkedIn prodej Navigátor povoleno na základě SAML jednotné přihlašování, postupujte podle pokynů uvedených v [portál Azure](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce vzájemně doplňují.
 
 
-### <a name="tooconfigure-automatic-user-account-provisioning-toolinkedin-sales-navigator-in-azure-ad"></a>tooconfigure automatické uživatelský účet zřizování tooLinkedIn prodej Navigátor ve službě Azure AD:
+### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-sales-navigator-in-azure-ad"></a>Konfigurace automatického účet zřizování uživatelů na LinkedIn prodej v tabulce v Azure AD:
 
 
-prvním krokem Hello je tooretrieve LinkedIn přístupový token. Pokud jste správce podnikové sítě, můžete zřídit samoobslužné přístupový token. V centru váš účet, přejděte příliš**nastavení &gt; globální nastavení** a otevřete hello **SCIM instalace** panelu.
+Prvním krokem je načíst LinkedIn přístupový token. Pokud jste správce podnikové sítě, můžete zřídit samoobslužné přístupový token. V centru váš účet, přejděte na **nastavení &gt; globální nastavení** a otevřete **SCIM instalace** panelu.
 
 > [!NOTE]
-> Pokud se připojujete centra účtů hello přímo a nikoli v rámci odkaz, můžete dosáhnout pomocí následujících kroků hello.
+> Pokud se připojujete centra účtů přímo a nikoli v rámci odkaz, můžete dosáhnout pomocí následujících kroků.
 
-1)  Přihlaste se tooAccount Center.
+1)  Přihlaste se k účtu Center.
 
 2)  Vyberte **správce &gt; nastavení správce** .
 
-3)  Klikněte na tlačítko **Advanced integrace** na levém bočním panelu hello. Jste směrovanou toohello centra účtů.
+3)  Klikněte na tlačítko **Advanced integrace** na levém bočním panelu. Budete přesměrováni do centra účtů.
 
-4)  Klikněte na tlačítko **+ přidat novou konfiguraci SCIM** a použijte postup hello vyplněním každé pole.
+4)  Klikněte na tlačítko **+ přidat novou konfiguraci SCIM** a postupujte podle pokynů podle hodnot v každé pole.
 
 > Když autoassign licencí není povolen, znamená to, že je synchronizovat pouze data uživatele.
 
 ![Navigátor prodeje LinkedIn zřizování](./media/active-directory-saas-linkedinsalesnavigator-provisioning-tutorial/linkedin_1.PNG)
 
-> Pokud je povoleno autolicense přiřazení, budete potřebovat toonote instanci aplikace a typ licence. Licence jsou přiřazeny na první přijde, nejprve sloužit základ, dokud jsou provedeny všechny licence hello.
+> Pokud je povoleno autolicense přiřazení, budete muset poznamenejte si instanci aplikace a typ licence. Licence jsou přiřazeny na první přijde, nejprve sloužit základ, dokud všechny licence se provádějí.
 
 ![Navigátor prodeje LinkedIn zřizování](./media/active-directory-saas-linkedinsalesnavigator-provisioning-tutorial/linkedin_2.PNG)
 
-5)  Klikněte na tlačítko **vygenerovat token**. Měli byste vidět zobrazení tokenu přístupu v části hello **přístupový token** pole.
+5)  Klikněte na tlačítko **vygenerovat token**. Měli byste vidět zobrazení tokenu přístupu v části **přístupový token** pole.
 
-6)  Uložte přístup tokenu tooyour schránky nebo počítač před opuštěním stránky hello.
+6)  Uložte přístupový token do schránky nebo počítač před opuštěním stránky.
 
-7) V dalším kroku přihlásit toohello [portál Azure](https://portal.azure.com)a vyhledejte toohello **Azure Active Directory > podnikové aplikace > všechny aplikace** části.
+7) V dalším kroku se přihlaste k [portál Azure](https://portal.azure.com)a přejděte do **Azure Active Directory > podnikové aplikace > všechny aplikace** části.
 
-8) Pokud jste již nakonfigurovali LinkedIn prodej navigátor pro jednotné přihlašování, vyhledejte instanci Navigátor prodej LinkedIn pomocí hello vyhledávací pole. Jinak vyberte možnost **přidat** a vyhledejte **LinkedIn prodej Navigátor** v galerii aplikací hello. Vyberte LinkedIn prodej Navigátor z výsledků hledání hello a přidejte ji tooyour seznam aplikací.
+8) Pokud jste již nakonfigurovali LinkedIn prodej navigátor pro jednotné přihlašování, vyhledejte instanci Navigátor prodej LinkedIn pomocí pole hledání. Jinak vyberte možnost **přidat** a vyhledejte **LinkedIn prodej Navigátor** v galerii aplikací. Vyberte LinkedIn prodej Navigátor ve výsledcích hledání a přidejte ji do seznamu aplikací.
 
-9)  Vyberte instanci Navigátor prodej LinkedIn a pak vyberte hello **zřizování** kartě.
+9)  Vyberte instanci Navigátor prodej LinkedIn a pak vyberte **zřizování** kartě.
 
-10) Sada hello **režimu zřizování** příliš**automatické**.
+10) Nastavte **režimu zřizování** k **automatické**.
 
 ![Navigátor prodeje LinkedIn zřizování](./media/active-directory-saas-linkedinsalesnavigator-provisioning-tutorial/linkedin_3.PNG)
 
-11)  Vyplňte následující pole v části hello **přihlašovací údaje správce** :
+11)  Vyplňte následující pole v části **přihlašovací údaje správce** :
 
-* V hello **URL klienta** zadejte https://api.linkedin.com.
+* V **URL klienta** zadejte https://api.linkedin.com.
 
-* V hello **tajný klíč tokenu** pole, zadejte hello přístupový token jste vygenerovali v kroku 1 a klikněte na **Test připojení** .
+* V **tajný klíč tokenu** pole, zadejte přístupový token, který jste vygenerovali v kroku 1 a klikněte na **Test připojení** .
 
-* Měli byste vidět úspěšné oznámení na straně ÚETUChcete hello portálu.
+* Měli byste vidět úspěšné oznámení na straně ÚETUChcete portálu.
 
-12) Zadejte hello e-mailovou adresu uživatele nebo skupiny, který by měly dostávat oznámení zřizování Chyba v hello **e-mailové oznámení** pole a zaškrtněte políčko hello níže.
+12) Zadejte e-mailovou adresu uživatele nebo skupiny, který by měly dostávat oznámení zřizování Chyba v **e-mailové oznámení** pole a zaškrtněte políčko níže.
 
 13) Klikněte na **Uložit**. 
 
-14) V hello **mapování atributů** , projděte si atributy hello uživatelů a skupin, které se mají synchronizovat ze služby Azure AD tooLinkedIn Navigátor prodej. Všimněte si, že hello atributy vybrán jako **párování** vlastnosti budou použité toomatch hello uživatelské účty a skupiny v LinkedIn prodej navigátor pro operace aktualizace. Vyberte toocommit tlačítko hello uložit změny.
+14) V **mapování atributů** , projděte si atributy uživatelů a skupin, které budou synchronizované z Azure AD Navigátor prodej LinkedIn. Všimněte si, že atributy vybrán jako **párování** vlastnosti se použije tak, aby odpovídaly uživatelské účty a skupiny v LinkedIn prodej navigátor pro operace aktualizace. Kliknutím na tlačítko Uložit potvrzení změny.
 
 ![Navigátor prodeje LinkedIn zřizování](./media/active-directory-saas-linkedinsalesnavigator-provisioning-tutorial/linkedin_4.PNG)
 
-15) tooenable hello zřizování služby Azure AD pro LinkedIn prodej Navigátor, změna hello **Stav zřizování** příliš**na** v hello **nastavení** části
+15) Povolit zřizování služby pro LinkedIn prodej Navigátor Azure AD, změňte **Stav zřizování** k **na** v **nastavení** části
 
 16) Klikněte na **Uložit**. 
 
-Tato akce spustí hello počáteční synchronizaci všech uživatelů a skupiny přiřazené tooLinkedIn Navigátor prodej v části Uživatelé a skupiny hello. Všimněte si, že počáteční synchronizace hello bude trvat déle tooperform než následné synchronizace, ke kterým dochází přibližně každých 20 minut, dokud se službou hello. Můžete použít hello **podrobnosti synchronizace** části toomonitor průběh a postupujte podle pokynů odkazy tooprovisioning aktivity sestavy, které popisují všechny akce prováděné hello zřizování služby ve vaší aplikaci Navigátor prodej LinkedIn.
+Tato akce spustí počáteční synchronizaci všech uživatelů a skupiny přiřazené na LinkedIn prodej v tabulce v části Uživatelé a skupiny. Všimněte si, že počáteční synchronizace bude trvat déle než následné synchronizace, ke kterým dochází přibližně každých 20 minut, dokud je služba spuštěná. Můžete použít **podrobnosti synchronizace** oddílu monitorovat průběh a odkazech zřízení sestavy aktivity, které popisují všechny akce prováděné při zřizování služby ve vaší aplikaci Navigátor prodej LinkedIn.
 
 
 ## <a name="additional-resources"></a>Další zdroje

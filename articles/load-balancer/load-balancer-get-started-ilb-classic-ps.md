@@ -1,9 +1,9 @@
 ---
-title: "aaaCreate interní Azure pro vyrovnávání zátěže - PowerShell classic | Microsoft Docs"
-description: "Zjistěte, jak toocreate na interní nástroj pro vyrovnávání pomocí prostředí PowerShell v modelu nasazení classic hello zatížení"
+title: "Vytvoření interního nástroje pro vyrovnávání zatížení – PowerShell Classic | Dokumentace Microsoftu"
+description: "Zjistěte, jak vytvořit interní nástroj pro vyrovnávání zatížení pomocí prostředí PowerShell v modelu nasazení Classic"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 editor: 
 tags: azure-service-management
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-ms.openlocfilehash: 382db80c42ffab09905513019b72e85a4f9dfeff
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 85fd757bdd6dd9906a23977b760f01bb1f85bf77
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-creating-an-internal-load-balancer-classic-using-powershell"></a>Začínáme vytvářet interní nástroj pro vyrovnávání zatížení (Classic) pomocí prostředí PowerShell
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/06/2017
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../azure-resource-manager/resource-manager-deployment-model.md).  Tento článek se zabývá pomocí modelu nasazení classic hello. Společnost Microsoft doporučuje, aby většina nových nasazení používala model Resource Manager hello. Zjistěte, jak příliš[proveďte tyto kroky, pomocí modelu Resource Manager hello](load-balancer-get-started-ilb-arm-ps.md).
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../azure-resource-manager/resource-manager-deployment-model.md).  Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Zjistěte, jak [provést tento postup pomocí modelu Resource Manageru](load-balancer-get-started-ilb-arm-ps.md).
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
@@ -39,28 +39,28 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="create-an-internal-load-balancer-set-for-virtual-machines"></a>Vytvoření sady interního nástroje pro vyrovnávání zatížení pro virtuální počítače
 
-toocreate interní nástroj nastavit a hello servery, které se odesílají tooit jejich provoz, máte následující toodo hello:
+Pokud chcete vytvořit sadu interního nástroje pro vyrovnávání zatížení a servery, které do ní budou posílat provoz, musíte provést následující:
 
-1. Vytvoření instance interní Vyrovnávání zatížení, bude koncový bod hello příchozí provoz toobe vyrovnáváno zatížení napříč servery hello sady Vyrovnávání zatížení sítě.
-2. Přidáte koncové body odpovídající toohello virtuálních počítačů, které bude moci přijmout příchozí provoz hello.
-3. Konfiguraci hello serverů, které se budou odesílat, že hello provoz toobe s vyrovnáváním zatížení se toosend jejich provoz toohello virtuální adresa IP (VIP) instance hello interní Vyrovnávání zatížení.
+1. Vytvořte instanci interního vyrovnávání zatížení, která bude koncovým bodem příchozího provozu, u kterého se bude vyrovnávat zatížení napříč servery sady s vyrovnáváním zatížení.
+2. Přidejte koncové body odpovídající virtuálním počítačům, které budou přijímat příchozí provoz.
+3. Nakonfigurujte servery, které budou posílat provoz k vyrovnání zatížení, aby posílaly provoz na virtuální IP adresu instance interního vyrovnávání zatížení.
 
 ### <a name="step-1-create-an-internal-load-balancing-instance"></a>Krok 1: Vytvoření instance interního vyrovnávání zatížení
 
-Pro stávající cloudovou službu nebo cloudové služby nasadit v rámci regionální virtuální síť můžete vytvořit instanci interní Vyrovnávání zatížení s hello následující příkazy prostředí Windows PowerShell:
+Pro existující cloudovou službu nebo cloudovou službu nasazenou v regionální virtuální síti můžete vytvořit instanci interního vyrovnávání zatížení pomocí následujících příkazů prostředí Windows PowerShell:
 
 ```powershell
 $svc="<Cloud Service Name>"
 $ilb="<Name of your ILB instance>"
-$subnet="<Name of hello subnet within your virtual network>"
-$IP="<hello IPv4 address toouse on hello subnet-optional>"
+$subnet="<Name of the subnet within your virtual network>"
+$IP="<The IPv4 address to use on the subnet-optional>"
 
 Add-AzureInternalLoadBalancer -ServiceName $svc -InternalLoadBalancerName $ilb –SubnetName $subnet –StaticVNetIPAddress $IP
 ```
 
-Všimněte si, že toto využití hello [přidat AzureEndpoint](https://msdn.microsoft.com/library/dn495300.aspx) rutiny prostředí Windows PowerShell používá sada parametrů DefaultProbe hello. Více informací o dalších sadách parametrů najdete v dokumentaci k rutině [Add-AzureEndpoint](https://msdn.microsoft.com/library/dn495300.aspx).
+Všimněte si, že toto použití rutiny prostředí Windows PowerShell [Add-AzureEndpoint](https://msdn.microsoft.com/library/dn495300.aspx) používá sadu parametrů DefaultProbe. Více informací o dalších sadách parametrů najdete v dokumentaci k rutině [Add-AzureEndpoint](https://msdn.microsoft.com/library/dn495300.aspx).
 
-### <a name="step-2-add-endpoints-toohello-internal-load-balancing-instance"></a>Krok 2: Přidáte instanci interní Vyrovnávání zatížení toohello koncové body
+### <a name="step-2-add-endpoints-to-the-internal-load-balancing-instance"></a>Krok 2: Přidání koncových bodů do instance interního vyrovnávání zatížení
 
 Zde naleznete příklad:
 
@@ -76,47 +76,47 @@ $ilb="ilbset"
 Get-AzureVM –ServiceName $svc –Name $vmname | Add-AzureEndpoint -Name $epname -Lbset $lbsetname -Protocol $prot -LocalPort $locport -PublicPort $pubport –DefaultProbe -InternalLoadBalancerName $ilb | Update-AzureVM
 ```
 
-### <a name="step-3-configure-your-servers-toosend-their-traffic-toohello-new-internal-load-balancing-endpoint"></a>Krok 3: Konfigurace vaše servery toosend jejich provoz toohello nový interní Vyrovnávání zatížení koncového bodu
+### <a name="step-3-configure-your-servers-to-send-their-traffic-to-the-new-internal-load-balancing-endpoint"></a>Krok 3: Konfigurace serverů pro posílání provozu do nového koncového bodu interního vyrovnávání zatížení
 
-Nakonfigurujete mít příliš hello servery, jejichž provoz je probíhající toobe skupinu s vyrovnáváním zatížení toouse hello novou IP adresu (hello VIP) hello instanci interní Vyrovnávání zatížení. Toto je adresa hello, na které hello interní Vyrovnávání zatížení naslouchá instance. Ve většině případů potřebujete toojust přidat nebo upravit záznam DNS pro hello VIP instance hello interní Vyrovnávání zatížení.
+Servery, u jejichž provozu se bude vyrovnávat zatížení, je nutné nakonfigurovat pro používání nové IP adresy (virtuální IP adresy) instance interního vyrovnávání zatížení. Jedná se o adresu, na které tato instance interního vyrovnávání zatížení naslouchá. Ve většině případů je třeba pouze přidat nebo upravit záznam DNS pro virtuální IP adresu instance interního vyrovnávání zatížení.
 
-Pokud jste zadali IP adresu hello během vytváření hello instance hello interní Vyrovnávání zatížení, už máte hello VIP. Jinak uvidíte hello VIP z hello následující příkazy:
+Pokud jste zadali IP adresu během vytváření instance interního vyrovnávání zatížení, pak již virtuální IP adresu máte. Jinak můžete virtuální IP adresu zjistit pomocí následujících příkazů:
 
 ```powershell
 $svc="<Cloud Service Name>"
 Get-AzureService -ServiceName $svc | Get-AzureInternalLoadBalancer
 ```
 
-toouse tyto příkazy, vyplňte hodnoty hello a odebrat hello < a >. Zde naleznete příklad:
+Pokud chcete použít tyto příkazy, vyplňte požadované hodnoty a odeberte znaky < a >. Zde naleznete příklad:
 
 ```powershell
 $svc="mytestcloud"
 Get-AzureService -ServiceName $svc | Get-AzureInternalLoadBalancer
 ```
 
-Z hello zobrazení hello příkaz Get-AzureInternalLoadBalancer poznamenejte si hello IP adresu a zajistěte, aby hello potřebné změny tooyour servery nebo tooensure záznamy DNS, který získá data odeslaná toohello VIP.
+Ze zobrazení příkazu Get-AzureInternalLoadBalancer si poznamenejte IP adresu a proveďte potřebné změny svých serverů nebo záznamů DNS, abyste se ujistili, že se provoz bude posílat na virtuální IP adresu.
 
 > [!NOTE]
-> Platforma Microsoft Azure Hello používá statické veřejně směrovatelné IPv4 adresu pro různé scénáře pro správu. Hello IP adresa je 168.63.129.16. Tuto IP adresu by neměla blokovat žádná brána firewall, protože by to mohlo způsobit neočekávané chování.
-> S ohledem tooAzure interní Vyrovnávání zatížení tato IP adresa je používán monitorování sondy z hello zatížení vyrovnávání toodetermine hello stav pro virtuální počítače v skupinu s vyrovnáváním zatížení. Pokud skupina zabezpečení sítě je použité toorestrict provoz tooAzure virtuálních počítačů v sadu interně Vyrovnávání zatížení sítě nebo je použité tooa podsíť virtuální sítě, ujistěte se, zda pravidla zabezpečení sítě je přidána tooallow provoz z 168.63.129.16.
+> Platforma Microsoft Azure používá pro řadu scénářů správy statickou, veřejně směrovatelnou IPv4 adresu. Jedná se o IP adresu 168.63.129.16. Tuto IP adresu by neměla blokovat žádná brána firewall, protože by to mohlo způsobit neočekávané chování.
+> Vzhledem k internímu vyrovnávání zatížení Azure slouží tato IP adresa monitorovacím testům z nástroje pro vyrovnávání zatížení k určování stavu virtuálních počítačů v sadě s vyrovnáváním zatížení. Pokud se k omezení provozu na virtuální počítače Azure v sadě s interním vyrovnáváním zatížení používá skupina zabezpečení sítě nebo pokud je použita na podsíti virtuální sítě, ujistěte se, že je přidáno pravidlo zabezpečení sítě umožňující provoz z adresy 168.63.129.16.
 
 ## <a name="example-of-internal-load-balancing"></a>Příklad interního vyrovnávání zatížení
 
-toostep prostřednictvím hello koncoví tooend proces vytváření sadu Vyrovnávání zatížení sítě pro dvě konfigurace příklad zobrazí hello následující části.
+Jednotlivé kroky názorného postupu vytvoření sady s vyrovnáváním zatížení pro dvě ukázkové konfigurace najdete v následujících oddílech.
 
 ### <a name="an-internet-facing-multi-tier-application"></a>Internetová, vícevrstvá aplikace
 
-Chcete tooprovide služby Vyrovnávání zatížení databáze pro sadu internetové webové servery. Hostitelem obou sad serverů je jedna cloudová služba Azure. Webový server provoz tooTCP port 1433 musí být distribuována mezi dvěma virtuálními počítači v hello databázové vrstvy. Obrázek 1 zobrazuje konfiguraci hello.
+Chcete poskytnout databázovou službu s vyrovnáváním zatížení sadě internetových webových serverů. Hostitelem obou sad serverů je jedna cloudová služba Azure. Provoz webového serveru posílaný na port TCP 1433 se musí distribuovat mezi dva virtuální počítače na databázové vrstvě. Taková konfigurace je znázorněna na obrázku 1.
 
-![Interní sada Vyrovnávání zatížení sítě pro hello databázové vrstvy](./media/load-balancer-internal-getstarted/IC736321.png)
+![Interní sada s vyrovnáváním zatížení pro databázovou vrstvu](./media/load-balancer-internal-getstarted/IC736321.png)
 
-Konfigurace Hello se skládá z následujících hello:
+Konfigurace se skládá z následujících částí:
 
-* Hello stávající cloudovou službu hostování hello virtuálních počítačů je s názvem mytestcloud.
-* Hello dvě existující databázové servery jsou pojmenované DB1 DB2.
-* Webové servery v hello webová vrstva připojit servery databáze toohello hello databázové vrstvy pomocí hello privátní IP adresu. Další možností je toouse vlastní DNS pro virtuální síť hello a ruční registraci záznamu A pro sadu Nástroje pro vyrovnávání zatížení interní hello.
+* Existující cloudová služba hostující virtuální počítače má název mytestcloud.
+* Dva existující databázové servery mají názvy DB1 a DB2.
+* Webové servery na webové vrstvě se k databázovým serverům na databázové vrstvě připojují pomocí privátní IP adresy. Další možností je použít pro virtuální síť vlastní DNS a ručně zaregistrovat záznam A pro sadu interního nástroje pro vyrovnávání zatížení.
 
-Hello následující příkazy nakonfigurujte novou instanci interní Vyrovnávání zatížení s názvem **ILBset** a přidat koncové body toohello virtuálních počítačů odpovídající toohello dva databázové servery:
+Následující příkazy nakonfigurují novou instanci interního vyrovnávání zatížení s názvem **ILBset** a přidají koncové body do virtuálních počítačů odpovídajících těmto dvěma databázovým serverům:
 
 ```powershell
 $svc="mytestcloud"
@@ -137,16 +137,16 @@ Get-AzureVM –ServiceName $svc –Name $vmname | Add-AzureEndpoint -Name $epnam
 
 ## <a name="remove-an-internal-load-balancing-configuration"></a>Odebrání konfigurace interního vyrovnávání zatížení
 
-tooremove virtuálního počítače jako koncový bod z instance nástroje pro vyrovnávání zatížení interní hello použijte následující příkazy:
+K odebrání virtuálního počítače jako koncového bodu z instance interního nástroje pro vyrovnávání zatížení použijte následující příkazy:
 
 ```powershell
 $svc="<Cloud service name>"
-$vmname="<Name of hello VM>"
-$epname="<Name of hello endpoint>"
+$vmname="<Name of the VM>"
+$epname="<Name of the endpoint>"
 Get-AzureVM -ServiceName $svc -Name $vmname | Remove-AzureEndpoint -Name $epname | Update-AzureVM
 ```
 
-toouse tyto příkazy vyplnit hello hodnoty, odstranění hello < a >.
+Pokud chcete použít tyto příkazy, vyplňte požadované hodnoty a odeberte znaky < a >.
 
 Zde naleznete příklad:
 
@@ -157,14 +157,14 @@ $epname="TCP-1433-1433"
 Get-AzureVM -ServiceName $svc -Name $vmname | Remove-AzureEndpoint -Name $epname | Update-AzureVM
 ```
 
-tooremove instance nástroje pro vyrovnávání zatížení interní z cloudové služby, hello použijte následující příkazy:
+K odebrání instance interního nástroje pro vyrovnávání zatížení z cloudové služby použijte následující příkazy:
 
 ```powershell
 $svc="<Cloud service name>"
 Remove-AzureInternalLoadBalancer -ServiceName $svc
 ```
 
-Zadejte hodnotu hello toouse tyto příkazy, a odeberte hello < a >.
+Pokud chcete použít tyto příkazy, vyplňte požadovanou hodnotu a odeberte znaky < a >.
 
 Zde naleznete příklad:
 
@@ -175,7 +175,7 @@ Remove-AzureInternalLoadBalancer -ServiceName $svc
 
 ## <a name="additional-information-about-internal-load-balancer-cmdlets"></a>Další informace o rutinách interního nástroje pro vyrovnávání zatížení
 
-tooobtain Další informace o rutinách interní Vyrovnávání zatížení, spusťte následující příkazy příkazového řádku Windows Powershellu hello:
+Pokud chcete získat další informace o rutinách interního vyrovnávání zatížení, v příkazovém řádku prostředí Windows PowerShell spusťte následující příkazy:
 
 ```powershell
 Get-Help New-AzureInternalLoadBalancerConfig -full

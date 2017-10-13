@@ -12,7 +12,7 @@
 ### [Omezování](biztalk-throttling-thresholds.md)
 ### [Nastavení a monitorování služby](biztalk-dashboard-monitor-scale-tabs.md)
 ## Migrace
-### [BizTalk Server EDI řešení tooBizTalk služeb](biztalk-migrating-to-edi-guide.md)
+### [Řešení EDI z BizTalk Serveru do BizTalk Services](biztalk-migrating-to-edi-guide.md)
 ## Monitorování
 ### [Úlohy, které závisí na stavy služby](biztalk-service-state-chart.md)
 ## Zabezpečení

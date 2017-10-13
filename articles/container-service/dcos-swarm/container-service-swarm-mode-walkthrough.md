@@ -1,6 +1,6 @@
 ---
-title: aaaQuickstart - clusteru Azure Docker CE pro Linux | Microsoft Docs
-description: "Naučte se rychle toocreate clusteru Docker CE Linux kontejnerů v Azure Container Service s hello rozhraní příkazového řádku Azure."
+title: "Rychlý start – Cluster Azure Docker CE pro Linux | Dokumentace Microsoftu"
+description: "Rychle se naučíte, jak pomocí Azure CLI vytvořit cluster Docker CE pro kontejnery Linuxu ve službě Azure Container Service."
 services: container-service
 documentationcenter: 
 author: neilpeterson
@@ -17,27 +17,27 @@ ms.workload: na
 ms.date: 08/25/2017
 ms.author: nepeters
 ms.custom: 
-ms.openlocfilehash: 6c26c12ed085ec379c3486095a5fa51379afc5a2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 01357ceca1d78c80c901c9fbec08ce85f02fb958
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-docker-ce-cluster"></a>Nasazení clusteru Docker CE
 
-V této úvodní clusteru Docker CE je nasazená pomocí hello rozhraní příkazového řádku Azure. Aplikace více kontejneru, který se skládá z webového front-endu a instanci Redis nasazení a poté běží na clusteru hello. Po dokončení aplikace hello je přístupné prostřednictvím Internetu hello.
+V tomto rychlém startu se nasadí cluster Docker CE pomocí Azure CLI. Následně se na tomto clusteru nasadí a spustí vícekontejnerová aplikace skládající se z webu front-end a instance Redis. Po dokončení bude aplikace přístupná přes internet.
 
 Docker CE ve službě Azure Container Service je ve verzi Preview a **neměl by se používat pro produkční úlohy**.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-Pokud zvolíte tooinstall a místně pomocí hello rozhraní příkazového řádku, tento rychlý start vyžaduje, že používáte verzi rozhraní příkazového řádku Azure hello verze 2.0.4 nebo novější. Spustit `az --version` toofind hello verze. Pokud potřebujete tooinstall nebo aktualizace, přečtěte si [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít rozhraní příkazového řádku Azure ve verzi 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků s hello [vytvořit skupinu az](/cli/azure/group#create) příkaz. Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure.
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#create). Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure.
 
-Hello následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v hello *ukwest* umístění.
+Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *ukwest*.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location ukwest
@@ -60,19 +60,21 @@ Výstup:
 
 ## <a name="create-docker-swarm-cluster"></a>Vytvoření clusteru Docker Swarm
 
-Vytvoření clusteru Docker CE v Azure Container Service s hello [vytvořit acs az](/cli/azure/acs#create) příkaz. 
+Vytvořte cluster Docker CE ve službě Azure Container Service pomocí příkazu [az acs create](/cli/azure/acs#create). 
 
-Hello následující příklad vytvoří cluster s názvem *mySwarmCluster* s Linuxem jeden hlavní uzel a tři uzly Linux agent.
+Následující příklad vytvoří cluster *mySwarmCluster* s jedním hlavním linuxovým uzlem a třemi agentskými linuxovými uzly.
 
 ```azurecli-interactive
 az acs create --name mySwarmCluster --orchestrator-type dockerce --resource-group myResourceGroup --generate-ssh-keys
 ```
 
-Po několika minutách hello příkaz dokončí a vrátí formátu json informace o clusteru hello.
+V některých případech, například s omezenou zkušební verzí, má předplatné Azure omezený přístup k prostředkům Azure. Pokud se nasazení nezdaří kvůli omezenému počtu dostupných jader, snižte výchozí počet agentů přidáním možnosti `--agent-count 1` do příkazu [az acs create](/cli/azure/acs#create). 
 
-## <a name="connect-toohello-cluster"></a>Připojte toohello cluster
+Po několika minutách se příkaz dokončí a vrátí informace o clusteru ve formátu JSON.
 
-V rámci této úvodní musíte hello plně kvalifikovaný název domény hello Docker Swarm hlavní a hello Docker agenta fondu. Spusťte následující příkaz tooreturn hello obě hello hlavní a agent plně kvalifikované názvy domén.
+## <a name="connect-to-the-cluster"></a>Připojení ke clusteru
+
+V průběhu tohoto rychlého startu budete potřebovat plně kvalifikovaný název domény hlavního uzlu Dockeru Swarm i fondu agentských uzlů Dockeru. Spusťte následující příkaz, který vrátí plně kvalifikované názvy domén hlavního uzlu i agentských uzlů.
 
 
 ```bash
@@ -87,24 +89,24 @@ Master                                                               Agent
 myswarmcluster-myresourcegroup-d5b9d4mgmt.ukwest.cloudapp.azure.com  myswarmcluster-myresourcegroup-d5b9d4agent.ukwest.cloudapp.azure.com
 ```
 
-Vytvořte hlavní Swarm toohello tunelového propojení SSH. Nahraďte `MasterFQDN` s adresou hello plně kvalifikovaný název domény hlavního serveru Swarm hello.
+Vytvořte tunel SSH k hlavnímu uzlu Swarm. Nahraďte `MasterFQDN` adresou plně kvalifikovaného názvu domény hlavního uzlu Swarm.
 
 ```bash
 ssh -p 2200 -fNL localhost:2374:/var/run/docker.sock azureuser@MasterFQDN
 ```
 
-Sada hello `DOCKER_HOST` proměnné prostředí. To vám umožní toorun docker příkazy proti hello Docker Swarm bez nutnosti toospecify hello název hostitele hello.
+Nastavte proměnnou prostředí `DOCKER_HOST`. To vám umožní spouštět příkazy Dockeru pro Docker Swarm, aniž byste museli zadávat název hostitele.
 
 ```bash
 export DOCKER_HOST=localhost:2374
 ```
 
-Nyní je připraven toorun Docker služeb v hello Docker Swarm.
+Nyní jste připraveni spustit služby Dockeru v Dockeru Swarm.
 
 
-## <a name="run-hello-application"></a>Spuštění aplikace hello
+## <a name="run-the-application"></a>Spuštění aplikace
 
-Vytvořte soubor s názvem `azure-vote.yaml` a kopírování hello do něj následující obsah.
+Vytvořte soubor `azure-vote.yaml` a zkopírujte do něj následující obsah.
 
 
 ```yaml
@@ -123,7 +125,7 @@ services:
         - "80:80"
 ```
 
-Spustit hello [docker zásobníku nasazení](https://docs.docker.com/engine/reference/commandline/stack_deploy/) příkaz toocreate hello Azure hlas služby.
+Spuštěním příkazu [docker stack deploy](https://docs.docker.com/engine/reference/commandline/stack_deploy/) vytvořte službu Azure Vote.
 
 ```bash
 docker stack deploy azure-vote --compose-file azure-vote.yaml
@@ -137,13 +139,13 @@ Creating service azure-vote_azure-vote-back
 Creating service azure-vote_azure-vote-front
 ```
 
-Použití hello [docker zásobníku ps](https://docs.docker.com/engine/reference/commandline/stack_ps/) příkaz tooreturn hello stav nasazení aplikace hello.
+Použijte příkaz [docker stack ps](https://docs.docker.com/engine/reference/commandline/stack_ps/), který vrátí stav nasazení aplikace.
 
 ```bash
 docker stack ps azure-vote
 ```
 
-Jednou hello `CURRENT STATE` každé služby je `Running`, hello aplikace je připravena.
+Aplikace bude připravena, jakmile bude mít `CURRENT STATE` každé služby hodnotu `Running`.
 
 ```bash
 ID                  NAME                            IMAGE                                 NODE                               DESIRED STATE       CURRENT STATE                ERROR               PORTS
@@ -151,30 +153,30 @@ tnklkv3ogu3i        azure-vote_azure-vote-front.1   microsoft/azure-vote-front:r
 lg99i4hy68r9        azure-vote_azure-vote-back.1    redis:latest                          swarmm-agentpool0-66066781000002   Running             Running about a minute ago
 ```
 
-## <a name="test-hello-application"></a>Testování aplikace hello
+## <a name="test-the-application"></a>Testování aplikace
 
-Procházejte toohello plně kvalifikovaný název domény hello Swarm agenta fondu tootest out hello hlas Azure aplikace.
+Přejděte na plně kvalifikovaný název domény fondu agentských uzlů Swarm a otestujte aplikaci Azure Vote.
 
-![Obrázek procházení tooAzure hlas](media/container-service-docker-swarm-mode-walkthrough/azure-vote.png)
+![Obrázek přechodu na aplikaci Azure Vote](media/container-service-docker-swarm-mode-walkthrough/azure-vote.png)
 
 ## <a name="delete-cluster"></a>Odstranění clusteru
-Pokud hello cluster je již nepotřebujete, můžete použít hello [odstranění skupiny az](/cli/azure/group#delete) příkaz skupiny prostředků hello tooremove, container service a všechny související prostředky.
+Pokud už cluster nepotřebujete, můžete k odebrání skupiny prostředků, služby kontejneru a všech souvisejících prostředků použít příkaz [az group delete](/cli/azure/group#delete).
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-## <a name="get-hello-code"></a>Získat kód hello
+## <a name="get-the-code"></a>Získání kódu
 
-V této úvodní předem vytvořené kontejneru bitové kopie byly použité toocreate Docker služby. Hello související s kódu aplikace, soubor Docker, a soubor vytvářené jsou dostupné na Githubu.
+V tomto rychlém startu se k vytvoření služby Docker použily předem vytvořené image kontejneru. Související kód aplikace, soubor Dockerfile a soubor Compose jsou k dispozici na GitHubu.
 
 [https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis.git)
 
 ## <a name="next-steps"></a>Další kroky
 
-V této úvodní nasazení clusteru Docker Swarm a nasadit aplikace s více kontejnerů tooit.
+V tomto rychlém startu jste nasadili cluster Docker Swarm a do něj jste nasadili vícekontejnerovou aplikaci.
 
-toolearn o Docker záložním integraci s Visual Studio Team Services, pokračovat toohello CI/CD s Docker Swarm a služby VSTS.
+Informace o integraci Dockeru Swarm s Visual Studio Team Services najdete v tématu věnovaném průběžné integraci a doručování s využitím Dockeru Swarm a VSTS.
 
 > [!div class="nextstepaction"]
 > [CI/CD s Docker Swarm a VSTS](./container-service-docker-swarm-setup-ci-cd.md)

@@ -1,6 +1,6 @@
 ---
-title: "Přehled o výkonu aaaQuery pro Azure SQL Database | Microsoft Docs"
-description: "Monitorování výkonu dotazu identifikuje hello většina využívání procesoru dotazy pro Azure SQL Database."
+title: "Přehled o výkonu dotazu pro Azure SQL Database | Microsoft Docs"
+description: "Monitorování výkonu dotazu identifikuje většinu využívání procesoru dotazů pro databázi SQL Azure."
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -15,70 +15,70 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 07/05/2017
 ms.author: sstein
-ms.openlocfilehash: 01cca26f85193c679365585cd676449c9db00e1e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1925d4ff8f5b16a0df56de987f8653cfd8441c52
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-sql-database-query-performance-insight"></a>Informace o výkonu dotazů databáze Azure SQL
-Správa a ladění výkonu hello relačních databází je náročné úlohu, která vyžaduje značné znalosti a investice čas. Informace o výkonu dotazů můžete toospend méně času řešení potíží s výkonem databáze tím, že poskytuje hello následující:
+Správa a ladění výkonu relačních databází je náročné úlohu, která vyžaduje značné znalosti a investice čas. Informace o výkonu dotazů umožňuje trávit méně času řešení potíží s výkonem databáze tím, že poskytuje následující:
 
 * Podrobnější přehled o vaší spotřeby prostředků (DTU) databází. 
-* Hello nejčastějších dotazů podle počtu procesorů a doba trvání nebo provádění, který lze ladit potenciálně pro zlepšení výkonu.
-* Dobrý den možnost toodrill dolů do hello podrobnosti o dotazu, zobrazit historii využití prostředků a text. 
+* Nejčastějších dotazů podle počtu procesorů a doba trvání nebo provádění, který lze ladit potenciálně pro zlepšení výkonu.
+* Možnost k podrobnostem na podrobné informace o dotazu, zobrazit jeho historie využití prostředků a text. 
 * Poznámky, které se zobrazí akce prováděné při ladění výkonu [Advisor databáze SQL Azure](sql-database-advisor.md)  
 
 
 
 ## <a name="prerequisites"></a>Požadavky
-* Query Performance Insight vyžaduje, aby [úložiště dotazů](https://msdn.microsoft.com/library/dn817826.aspx) je aktivní databáze. Pokud není spuštěné úložiště dotazů, portál hello vás vyzve k tooturn ho na.
+* Query Performance Insight vyžaduje, aby [úložiště dotazů](https://msdn.microsoft.com/library/dn817826.aspx) je aktivní databáze. Pokud není spuštěné úložiště dotazů, vyzve k portálu můžete zapnout.
 
 ## <a name="permissions"></a>Oprávnění
-Následující Hello [řízení přístupu na základě role](../active-directory/role-based-access-control-what-is.md) oprávnění jsou požadované toouse Query Performance Insight: 
+Následující [řízení přístupu na základě role](../active-directory/role-based-access-control-what-is.md) používat informace o výkonu dotazů jsou potřeba oprávnění: 
 
-* **Čtečka**, **vlastníka**, **Přispěvatel**, **Přispěvatel databází SQL**, nebo **Přispěvatel serveru SQL** jsou oprávnění vyžaduje tooview hello nejvyšší na prostředky dotazy a grafy. 
-* **Vlastník**, **Přispěvatel**, **Přispěvatel databází SQL**, nebo **SQL serveru Přispěvatel** oprávnění jsou požadované tooview text dotazu.
+* **Čtečka**, **vlastníka**, **Přispěvatel**, **Přispěvatel databází SQL**, nebo **Přispěvatel serveru SQL** se vyžadují oprávnění k zobrazení nejvyšší prostředku využívání dotazy a grafy. 
+* **Vlastník**, **Přispěvatel**, **Přispěvatel databází SQL**, nebo **SQL serveru Přispěvatel** oprávnění jsou vyžadována k zobrazení text dotazu.
 
 ## <a name="using-query-performance-insight"></a>Pomocí Query Performance Insight
-Informace o výkonu dotazů je snadno toouse:
+Informace o výkonu dotazů se snadno používá:
 
-* Otevřete [portál Azure](https://portal.azure.com/) a najít databáze, které chcete tooexamine. 
+* Otevřete [portál Azure](https://portal.azure.com/) a najít databázi, které chcete prověřit. 
   * Z nabídky na levé straně, v rámci podpory a řešení potíží vyberte "Query Performance Insight".
-* Na první kartě hello projděte si hello seznam nejčastějších dotazů využívání prostředků.
-* Vyberte konkrétní dotaz tooview její podrobnosti.
+* Na první kartě projděte si seznam nejčastějších dotazů využívání prostředků.
+* Vyberte jednotlivé dotazy zobrazíte její podrobnosti.
 * Otevřete [Poradce pro funkci SQL Azure Database](sql-database-advisor.md) a zkontrolujte, zda jsou k dispozici žádná doporučení.
-* Pomocí posuvníků nebo zvětšení ikony toochange zjištěnými intervalu.
+* Pomocí posuvníků nebo zvětšení ikon do zjištěnou interval změnit.
   
     ![řídicí panel výkonu](./media/sql-database-query-performance/performance.png)
 
 > [!NOTE]
-> Několik hodin dat. musí toobe zachycenou úložiště dotazů pro databázi SQL tooprovide query performance Insight. Pokud nemá žádnou aktivitu hello databáze nebo úložiště dotazů nebyl aktivní během určitého časového období, grafy hello bude prázdný, při zobrazení toto časové období. Pokud není spuštěna, může kdykoli povolit úložiště dotazů.   
+> Několik hodin dat musí být zachyceny úložiště dotazů pro databázi SQL zajistit přehled o výkonu dotazu. Pokud databáze nemá žádnou aktivitu nebo úložiště dotazů nebyl aktivní během určitého časového období, grafy bude prázdný, při zobrazení toto časové období. Pokud není spuštěna, může kdykoli povolit úložiště dotazů.   
 > 
 > 
 
 ## <a name="review-top-cpu-consuming-queries"></a>Zkontrolujte nejvíce využívají dotazy procesor
-V hello [portál](http://portal.azure.com) hello následující:
+V [portál](http://portal.azure.com) postupujte takto:
 
-1. Procházet tooa SQL database a klikněte na tlačítko **všechna nastavení** > **podporu + Poradce při potížích s** > **dotaz na informace o výkonu**. 
+1. Přejděte do databáze SQL a klikněte na tlačítko **všechna nastavení** > **podporu + Poradce při potížích s** > **dotaz na informace o výkonu**. 
    
     ![Query Performance Insight][1]
    
-    Otevře zobrazení Hello nejčastějších dotazů a jsou uvedeny hello nejvyšší procesoru náročné dotazy.
-2. Klikněte na kolem grafu hello podrobnosti.<br>Hello horní řádek zobrazuje celkový počet jednotek DTU % pro databázi hello, zatímco hello řádky zobrazit využití procesoru % spotřebovávají hello vybrané dotazy během intervalu vybrané hello (například pokud **za minulý týden** je vybrána každý řádek představuje jeden den).
+    Otevře zobrazení nejčastějších dotazů a jsou uvedeny nejčastějších dotazů využívání procesoru.
+2. Klikněte na kolem grafu podrobnosti.<br>Na začátek řádku zobrazuje celkový počet jednotek DTU % pro databázi, zatímco pruhy zobrazit využití procesoru % spotřebovávají vybrané dotazy během vybrané intervalu (například pokud **za minulý týden** je vybrána každý řádek představuje jeden den).
    
     ![nejčastějších dotazů][2]
    
-    Hello dolní mřížky představuje souhrnné informace pro dotazy viditelné hello.
+    Mřížky dolní představuje souhrnné informace pro viditelné dotazy.
    
    * ID dotazu – jedinečný identifikátor dotazu v databázi.
    * Procesor na dotaz během pozorovatelné intervalu (záleží na agregační funkce).
    * Doba trvání za dotazu (záleží na agregační funkce).
    * Celkový počet spuštěních pro konkrétní dotaz.
      
-     Vyberte nebo zrušte tooinclude jednotlivé dotazy nebo vyloučit z hello grafu pomocí zaškrtávacích políček.
-3. Pokud vaše data zastaralá, klikněte na tlačítko hello **aktualizovat** tlačítko.
-4. Pomocí posuvníků a přiblížení tlačítka toochange pozorovacím intervalu a prozkoumat špičky: ![nastavení](./media/sql-database-query-performance/zoom.png)
+     Vyberte nebo zrušte jednotlivé dotazy zahrnout nebo vyloučit z grafu pomocí zaškrtávacích políček.
+3. Pokud vaše data zastaralá, klikněte na tlačítko **aktualizovat** tlačítko.
+4. Pomocí posuvníků a přiblížení tlačítka změnit interval pozorování a prozkoumat špičky: ![nastavení](./media/sql-database-query-performance/zoom.png)
 5. Případně, pokud chcete jiné zobrazení, můžete vybrat **vlastní** kartě a nastavte:
    
    * Metrika (procesor, doba trvání, počet provedení)
@@ -89,98 +89,98 @@ V hello [portál](http://portal.azure.com) hello následující:
      ![settings](./media/sql-database-query-performance/custom-tab.png)
 
 ## <a name="viewing-individual-query-details"></a>Zobrazení podrobností o jednotlivých dotazů
-Podrobnosti o tooview dotazu:
+Chcete-li zobrazit podrobnosti o dotazu:
 
-1. Klikněte na jakýkoli dotaz ve hello seznam nejčastějších dotazů.
+1. Klikněte na jakýkoli dotaz ve seznam nejčastějších dotazů.
    
     ![Podrobnosti](./media/sql-database-query-performance/details.png)
-2. Otevře zobrazení podrobností Hello a počet energie a doba trvání nebo provádění procesorů dotazy hello je rozdělena v čase.
-3. Klikněte na kolem grafu hello podrobnosti.
+2. Otevře zobrazení podrobností a počet procesorů energie a doba trvání nebo provádění dotazů je rozdělena v čase.
+3. Klikněte na kolem grafu podrobnosti.
    
-   * Horní graf znázorňuje řádek s celkovou % DTU databáze a hello řádky jsou využívány službou hello vybraný dotaz % využití procesoru.
-   * Druhý graf zobrazuje celkovou dobu trvání podle hello vybraný dotaz.
-   * Dolní graf zobrazuje celkový počet spuštěních podle hello vybraný dotaz.
+   * Horní graf znázorňuje řádek s celkovou % DTU databáze a pruhy jsou využívány službou vybraný dotaz % využití procesoru.
+   * Druhý graf zobrazuje celkovou dobu trvání podle vybraný dotaz.
+   * Dolní graf zobrazuje celkový počet spuštěních podle vybraný dotaz.
      
      ![Podrobnosti o dotazu][3]
-4. V případě potřeby pomocí posuvníků, přiblíží tlačítka nebo klikněte na tlačítko **nastavení** toocustomize zobrazení dotaz na data nebo toopick na jiné časové období.
+4. V případě potřeby pomocí posuvníků, přiblíží tlačítka nebo klikněte na tlačítko **nastavení** přizpůsobit zobrazení dat dotazu, nebo vyberte jiné časové období.
 
 ## <a name="review-top-queries-per-duration"></a>Zkontrolujte nejčastějších dotazů za doba trvání
-V poslední aktualizaci hello sady Query Performance Insight, zavedli jsme dvě nové metriky, které pomáhají identifikovat potenciální problémová místa: doba trvání a provádění count.<br>
+V poslední aktualizaci Query Performance Insight, zavedli jsme dvě nové metriky, které pomáhají identifikovat potenciální problémová místa: doba trvání a provádění count.<br>
 
-Dlouho běžící dotazy mají hello největší případným zamykání prostředky delší blokování jiných uživatelů a omezení škálovatelnosti. Jsou i hello nejlepší kandidáty pro optimalizaci.<br>
+Dlouho běžící dotazy mít největší potenciálně pro uzamčení prostředky delší blokování jiných uživatelů a omezení škálovatelnosti. Jsou také nejlepší kandidáty pro optimalizaci.<br>
 
-tooidentify dlouho běžící dotazy:
+K identifikaci dlouho běžící dotazy:
 
 1. Otevřete **vlastní** kartě v Query Performance Insight pro vybrané databáze
-2. Změnit metriky toobe **doba trvání**
+2. Změnit metriky být **doba trvání**
 3. Vyberte počet dotazů a pozorovacím intervalu.
 4. Vyberte funkci agregace
    
    * **Součet** sečte všechny doba provádění dotazu během celého pozorovacím intervalu.
    * **Maximální počet** vyhledá dotazy byl v celé pozorovacím intervalu maximální dobu spuštění.
-   * **Průměr** najde Průměrná doba provádění všech dotazování spuštěních a ukazují hello horní mimo tyto průměry. 
+   * **Průměr** najde průměrný čas provádění všech spuštění dotazu a zobrazit je nejlepší mimo tyto průměry. 
      
      ![Doba trvání dotazu][4]
 
 ## <a name="review-top-queries-per-execution-count"></a>Zkontrolujte nejčastějších dotazů na počet provedení
 Vysoký počet spuštěních nemusí ovlivňovat samotná databáze a může být využití prostředků nízké, ale může získat celkový aplikace pomalé.
 
-V některých případech může vést provádění velmi vysoký počet tooincrease síťových přenosů. Odezev výrazně ovlivnit výkon. Jsou to subjektu toonetwork latenci a dobu toodownstream serveru. 
+V některých případech počet velmi vysoká provedení může vést ke zvýšení z síťových přenosů. Odezev výrazně ovlivnit výkon. Jsou předmětem latence sítě a podřízený server latence. 
 
-Například mnoho řízené daty weby výraznou přístup hello databázi pro každý požadavek uživatele. Při připojení sdružování pomůže, hello více síťových přenosů a zatížení na serveru databáze hello může nepříznivě ovlivnit výkon.  Obecné Rady, jak je tookeep zaokrouhlí absolutní minimální tooan služebních cest.
+Například mnoho řízené daty weby výraznou přístup k databázi pro každý požadavek uživatele. Při připojení sdružování pomůže, zvýšená síťový provoz a zpracování na serveru databáze může nepříznivě ovlivnit výkon.  Obecné Rady, jak se má zachovat odezev na absolutním minimu.
 
-tooidentify provést nejčastější dotazy ("chatty") dotazy:
+Chcete-li identifikovat často spustit dotazy dotazy ("chatty"):
 
 1. Otevřete **vlastní** kartě v Query Performance Insight pro vybrané databáze
-2. Změnit metriky toobe **počet provedení**
+2. Změnit metriky být **počet provedení**
 3. Vyberte počet dotazů a pozorovacím intervalu.
    
     ![počet provedení dotazu][5]
 
 ## <a name="understanding-performance-tuning-annotations"></a>Principy poznámky vyladění výkonu
-Při prohlížení zatížení Query Performance Insight, můžete si všimnout ikony s svislá čára nad hello grafu.<br>
+Při prohlížení zatížení Query Performance Insight, můžete si všimnout ikony s svislá čára nad grafu.<br>
 
-Tyto ikony jsou poznámky; představují výkonu by to ovlivnilo provedené akce [Poradce pro funkci SQL Azure Database](sql-database-advisor.md). Ve výběru ukázáním poznámky získáte základní informace o hello akce:
+Tyto ikony jsou poznámky; představují výkonu by to ovlivnilo provedené akce [Poradce pro funkci SQL Azure Database](sql-database-advisor.md). Ve výběru ukázáním poznámky získáte základní informace o akci:
 
 ![dotaz – Poznámka][6]
 
-Chcete-li další tooknow nebo použít doporučení služby advisor, klikněte na ikonu hello. Otevře se podrobnosti akce. Pokud je aktivní doporučení můžete provést okamžitou pomocí příkazu.
+Pokud chcete další informace nebo použít doporučení služby advisor, klikněte na ikonu. Otevře se podrobnosti akce. Pokud je aktivní doporučení můžete provést okamžitou pomocí příkazu.
 
 ![Podrobnosti o dotazu – Poznámka][7]
 
 ### <a name="multiple-annotations"></a>Více poznámek.
-Je možné, že kvůli úroveň přiblížení, bude získat poznámky, které jsou zavřít tooeach jiných sbalené do jednoho. To bude reprezentovat speciální ikonou, kliknutím ji bude otevřete nové okno, kde seznam seskupené poznámky se zobrazí.
-Korelace dotazy a ladění akce výkonu může pomoci toobetter pochopit vaše úlohy. 
+Je možné, že kvůli úroveň přiblížení, bude získat poznámky, které mezi sebou blíží sbalené do jednoho. To bude reprezentovat speciální ikonou, kliknutím ji bude otevřete nové okno, kde seznam seskupené poznámky se zobrazí.
+Korelace dotazy a ladění akce výkonu vám může pomoct lépe pochopit, vaše úlohy. 
 
-## <a name="optimizing-hello-query-store-configuration-for-query-performance-insight"></a>Optimalizace hello konfigurace úložiště dotazů pro Query Performance Insight
-Během používání Query Performance Insight může dojít k hello následující úložiště dotazů zprávy:
+## <a name="optimizing-the-query-store-configuration-for-query-performance-insight"></a>Optimalizace konfigurace úložiště dotazů pro Query Performance Insight
+Během používání Query Performance Insight může dojít k následující zprávy úložiště dotazů:
 
-* "Úložiště dotazů není správně nakonfigurována v této databázi. Kliknutím sem toolearn Další."
-* "Úložiště dotazů není správně nakonfigurována v této databázi. Kliknutím sem nastavení toochange." 
+* "Úložiště dotazů není správně nakonfigurována v této databázi. Kliknutím sem získáte další informace."
+* "Úložiště dotazů není správně nakonfigurována v této databázi. Kliknutím zde proveďte změnu nastavení." 
 
-Tyto zprávy se obvykle zobrazují, když úložiště dotazů není možné toocollect nová data. 
+Tyto zprávy se obvykle zobrazují, když úložiště dotazů není moct shromažďovat nová data. 
 
 Prvním případě se stane, když úložiště dotazů je ve stavu jen pro čtení a parametry nejsou nastavené optimálně. Můžete opravit zvýšit velikost úložiště dotazů nebo vymazání úložiště dotazů.
 
 ![tlačítko qds][8]
 
-Druhém případě se stane, když úložiště dotazů je vypnutý nebo parametry nejsou nastavené optimálně. <br>Hello uchovávání a zachycení zásady a povolit úložiště dotazů, můžete změnit tak, že spustíte následující příkazy nebo přímo z portálu:
+Druhém případě se stane, když úložiště dotazů je vypnutý nebo parametry nejsou nastavené optimálně. <br>Můžete změnit zásady uchovávání informací a zachycení a povolit úložiště dotazů spuštěním níže uvedené příkazy nebo přímo z portálu:
 
 ![tlačítko qds][9]
 
 ### <a name="recommended-retention-and-capture-policy"></a>Doporučené zásady uchovávání informací a zachycení
 Existují dva typy zásad uchovávání informací:
 
-* Na základě velikosti – když je dosaženo tooAUTO sadu vyčistí dat automaticky při skoro maximální velikost.
-* Čas na základě – ve výchozím nastavení jsme bude nastavena too30 dní, což znamená, pokud úložiště dotazů se dostatek místa, odstraní se dotazovat informací, které jsou starší než 30 dní
+* Velikost na základě - li nastavit na hodnotu AUTO ho bude vyčistit data automaticky, když je dosaženo blíží maximální velikost.
+* Na základě času – ve výchozím nastavení, které jsme bude nastavena na 30 dní, což znamená, pokud úložiště dotazů se dostatek místa, odstraní se dotazu informace, které jsou starší než 30 dní
 
 Zaznamenat zásad může být nastaven na:
 
 * **Všechny** -zaznamená všechny dotazy.
-* **Automatické** -málo časté dotazy a dotazy s zanedbatelný kompilace a provádění trvání jsou ignorovány. Interně jsou určit prahové hodnoty pro počet, kompilace a runtime dobu provádění. Toto je výchozí možnost hello.
+* **Automatické** -málo časté dotazy a dotazy s zanedbatelný kompilace a provádění trvání jsou ignorovány. Interně jsou určit prahové hodnoty pro počet, kompilace a runtime dobu provádění. Toto je výchozí možnost.
 * **Žádný** -úložiště dotazů zastaví sběr nové dotazy, ale jsou stále shromážděných statistik modulu runtime pro již zaznamenané dotazy.
 
-Doporučujeme nastavení všechny zásady tooAUTO a vyčištění zásad too30 dnů:
+Doporučujeme nastavení všech zásad AUTOMATICKY a vyčištění zásad do 30 dnů:
 
     ALTER DATABASE [YourDB] 
     SET QUERY_STORE (SIZE_BASED_CLEANUP_MODE = AUTO);
@@ -191,15 +191,15 @@ Doporučujeme nastavení všechny zásady tooAUTO a vyčištění zásad too30 d
     ALTER DATABASE [YourDB] 
     SET QUERY_STORE (QUERY_CAPTURE_MODE = AUTO);
 
-Zvětšete velikost úložiště dotazů. To může mít provádět při připojování tooa databáze a vystavují následující dotaz:
+Zvětšete velikost úložiště dotazů. To můžete provést připojení k databázi a vydání následující dotaz:
 
     ALTER DATABASE [YourDB]
     SET QUERY_STORE (MAX_STORAGE_SIZE_MB = 1024);
 
-Použití těchto nastavení budou nakonec úložiště dotazů shromažďování nové dotazy, ale pokud nechcete, aby toowait můžete vymazat úložiště dotazů. 
+Použití těchto nastavení budou nakonec úložiště dotazů shromažďování nové dotazy, ale pokud nechcete čekat můžete vymazat úložiště dotazů. 
 
 > [!NOTE]
-> Provádění následující dotaz odstraní všechny informace aktuální v hello úložiště dotazů. 
+> Provádění následující dotaz odstraní všechny aktuální informace v úložišti dotazů. 
 > 
 > 
 
@@ -207,10 +207,10 @@ Použití těchto nastavení budou nakonec úložiště dotazů shromažďován�
 
 
 ## <a name="summary"></a>Souhrn
-Informace o výkonu dotazů vám pomůže pochopit hello dopad dotazu úlohy a jak se týká toodatabase spotřeby prostředků. Pomocí této funkce se další informace o hello nejnáročnější dotazy a snadno identifikovat hello ty, které jsou toofix dřív, než narostou problém.
+Informace o výkonu dotazů vám pomůže pochopit dopad dotazu úlohy a jak se týká spotřeby prostředků databáze. Pomocí této funkce se další informace o nejnáročnější dotazy a snadno identifikovat ty opravit dřív, než narostou problém.
 
 ## <a name="next-steps"></a>Další kroky
-Další doporučení týkající se vylepšení výkonu hello vaší databáze SQL, klikněte na tlačítko [doporučení](sql-database-advisor.md) na hello **Query Performance Insight** okno.
+Další doporučení týkající se vylepšení výkonu SQL databáze, klikněte na tlačítko [doporučení](sql-database-advisor.md) na **Query Performance Insight** okno.
 
 ![Poradce pro výkon](./media/sql-database-query-performance/ia.png)
 

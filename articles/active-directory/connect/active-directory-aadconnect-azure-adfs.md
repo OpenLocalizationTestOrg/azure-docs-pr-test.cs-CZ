@@ -1,7 +1,7 @@
 ---
-title: aaaActive Directory Federation Services v Azure | Microsoft Docs
-description: "V tomto dokumentu se dozvíte, jak toodeploy AD FS v Azure pro vysoké dostupnosti probíhá."
-keywords: "nasazení služby AD FS v azure, nasazení azure AD FS, azure AD FS, azure ad fs, nasazení služby AD FS, nasazení služby ad fs, služba AD FS v azure, nasazení služby AD FS v azure, nasazení služby AD FS v azure, azure AD FS, úvod tooAD služby FS, Azure, služby AD FS ve službě Azure iaas, služba AD FS, přesuňte tooazure služby AD FS"
+title: "Služba AD FS (Active Directory Federation Services) v Azure | Dokumentace Microsoftu"
+description: "V tomto dokumentu se dozvíte, jak nasadit služby AD FS v Azure a zajistit vysokou dostupnost."
+keywords: "nasazení AD FS v Azure, nasazení Azure AD FS, Azure AD FS, Azure ADFS, nasazení AD FS, nasazení AD FS, AD FS v Azure, nasazení ADFS v Azure, nasazení AD FS v Azure, AD FS Azure, úvod do služby AD FS, Azure, AD FS v Azure, IAAS, ADFS, přesunutí AD FS do Azure"
 services: active-directory
 documentationcenter: 
 author: anandyadavmsft
@@ -16,103 +16,103 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2c39271f7569b9ce395dce2f53f5ba5a4897b132
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ddd29a1230286de8999175498ee793f3b3ea24e2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Nasazení služby AD FS (Active Directory Federation Service) v Azure
-Služby AD FS nabízí zjednodušené možnosti zabezpečené federace identit a jednotného přihlašování na webu (SSO). Federace se službou Azure AD nebo O365 umožňuje uživatelům tooauthenticate pomocí místní přihlašovací údaje a přístup ke všem prostředkům v cloudu. V důsledku toho bude důležité tooensure infrastruktury toohave vysokou dostupnost služby AD FS přístup tooresources jak místně a v cloudu hello. Nasazení služby AD FS v Azure může pomoci dosáhnout vysoké dostupnosti hello požadované s minimálním úsilí.
+Služby AD FS nabízí zjednodušené možnosti zabezpečené federace identit a jednotného přihlašování na webu (SSO). Federace pomocí Azure AD nebo O365 uživatelům umožňuje ověřování pomocí místních přihlašovacích údajů a přístup ke všem prostředkům v cloudu. V důsledku toho je důležité mít vysoce dostupnou infrastrukturu služby AD FS, která zajistí přístup k místním prostředkům i k prostředkům v cloudu. Nasazení služby AD FS v Azure může zajistit požadovanou vysokou dostupnost při minimálním úsilí.
 Níže uvádíme některé z řady výhod, které nasazení služby AD FS v Azure přináší:
 
-* **Vysoká dostupnost** -s výkonem hello sad dostupnosti Azure, zkontrolujte infrastrukturu vysoce dostupný.
-* **Snadno tooScale** – potřebovat další výkonu? Efektivní počítače toomore snadno migrujte pomocí několika kliknutí v Azure
-* **Mezi geografická redundance** – s můžete si být jistí, že vaše infrastruktura je vysoce dostupný v celém světě hello s Azure geografickou redundancí
-* **Snadno tooManage** – s možnostmi vysoce zjednodušenou správu na portálu Azure, Správa infrastruktuře je velmi snadné a bezproblémové 
+* **Vysoká dostupnost** – výkon skupin dostupnosti Azure vám zajistí vysokou dostupnost infrastruktury.
+* **Jednoduché škálování** – potřebujete více výkonu? Pomocí několika kliknutí můžete v Azure snadno migrovat na výkonnější počítače.
+* **Redundance mezi geografickými lokalitami** – s geografickou redundancí Azure se můžete spolehnout na vysokou dostupnost infrastruktury po celém světě.
+* **Snadná správa** – velmi zjednodušené možnosti správy na portálu Azure nabízejí snadnou a bezproblémovou správu infrastruktury. 
 
 ## <a name="design-principles"></a>Principy návrhu
 ![Návrh nasazení](./media/active-directory-aadconnect-azure-adfs/deployment.png)
 
-Hello diagramu výše zobrazuje hello doporučená toostart základní topologie nasazení infrastruktury služby AD FS v Azure. Principy Hello za hello různé součásti hello topologie jsou uvedeny níže:
+Výše uvedený diagram zobrazuje doporučenou základní topologii, podle které můžete začít nasazovat infrastrukturu služby AD FS v Azure. Principy, na kterých stojí různé součásti topologie, jsou uvedeny níže:
 
-* **Řadič domény a servery služby AD FS**: Pokud máte méně než 1000 uživatelů, můžete roli služby AD FS jednoduše nainstalovat na řadiče domény. Pokud nechcete, aby žádný vliv na výkon na řadičích domény hello nebo pokud máte více než 1 000 uživatelů, pak nasazení služby AD FS na samostatných serverech.
-* **WAP Server** – je nezbytné toodeploy Proxy serverech webových aplikací, aby uživatelé dosáhnout hello AD FS, když nejsou v síti společnosti hello také.
-* **DMZ**: hello Proxy serverech webových aplikací bude uložena v umístění hello DMZ a mezi hello DMZ a hello interní podsíť je povolen přístup pouze TCP/443.
-* **Nástroje pro vyrovnávání zatížení**: tooensure vysokou dostupnost serverů služby AD FS a Proxy webových aplikací, doporučujeme používat interní nástroj pro servery služby AD FS a vyrovnávání zatížení Azure pro servery služby Proxy webových aplikací.
-* **Skupiny dostupnosti**: tooprovide redundance tooyour AD FS nasazení, doporučujeme seskupit dva nebo více virtuálních počítačů do skupiny dostupnosti pro podobné úlohy. Tato konfigurace zajišťuje, aby během plánované nebo neplánované události údržby zůstal dostupný alespoň jeden virtuální počítač.
-* **Účty úložiště**: se doporučuje toohave dva účty úložiště. S účet jednoho úložiště může vést toocreation jediný bod selhání a může způsobit hello nasazení toobecome není k dispozici ve scénáři s nepravděpodobné, kde se účet úložiště hello ocitne mimo provoz. Když budete mít dva účty úložiště, můžete ke každé chybové linii přidružit jeden účet úložiště.
-* **Oddělení sítí**: Proxy servery webových aplikací musí být nasazené v samostatné síti DMZ. Můžete rozdělit na dvě podsítě jednu virtuální síť a pak nasadit servery služby Proxy webových aplikací hello v izolované podsíti. Jednoduše můžete nakonfigurovat nastavení skupiny zabezpečení sítě hello pro každou podsíť a povolit pouze požadované komunikaci mezi dvěma podsítěmi hello. Další podrobnosti jsou popsány v níže uvedeném scénáři nasazení.
+* **Řadič domény a servery služby AD FS**: Pokud máte méně než 1000 uživatelů, můžete roli služby AD FS jednoduše nainstalovat na řadiče domény. Pokud nechcete ovlivnit výkon řadičů domény nebo pokud máte více než 1000 uživatelů, potom službu AD FS nasaďte na samostatné servery.
+* **Server WAP** – je nutné nasadit proxy servery webových aplikací, aby se uživatelé mohli spojit se službou AD FS i když jsou mimo síť společnosti.
+* **DMZ**: Proxy servery webových aplikací budou umístěny v zóně DMZ a mezi zónou DMZ a interní podsítí je povolený přístup jenom prostřednictvím protokolu TCP a portu 443.
+* **Nástroje pro vyrovnávání zatížení**: Pokud chcete zajistit vysokou dostupnost služby AD FS a proxy serverů webových aplikací, doporučujeme na serverech služby AD FS používat interní nástroj pro vyrovnávání zatížení a na proxy serverech webových aplikací zase službu Azure Load Balancer.
+* **Skupiny dostupnosti**: Pokud chcete zajistit redundanci pro nasazení služby AD FS, doporučujeme v případě podobných zatížení seskupit dva nebo více virtuálních počítačů do skupiny dostupnosti. Tato konfigurace zajišťuje, aby během plánované nebo neplánované události údržby zůstal dostupný alespoň jeden virtuální počítač.
+* **Účty úložiště**: Je doporučeno mít dva účty úložiště. Pokud máte jen jeden účet úložiště, může se takový účet stát jediným bodem selhání a může způsobit nedostupnost nasazení v nepravděpodobném scénáři, kdy se účet úložiště ocitne mimo provoz. Když budete mít dva účty úložiště, můžete ke každé chybové linii přidružit jeden účet úložiště.
+* **Oddělení sítí**: Proxy servery webových aplikací musí být nasazené v samostatné síti DMZ. Jednu virtuální síť můžete rozdělit do dvou podsítí a potom můžete proxy servery webových aplikací nasadit v izolované podsíti. Nastavení skupiny zabezpečení sítě můžete jednoduše nakonfigurovat pro každou podsíť a potom mezi nimi povolte jenom požadovanou komunikaci. Další podrobnosti jsou popsány v níže uvedeném scénáři nasazení.
 
-## <a name="steps-toodeploy-ad-fs-in-azure"></a>Kroky toodeploy služby AD FS v Azure
-Hello kroků v této části outline hello Průvodce toodeploy hello níže použité v ukázkách infrastruktury služby AD FS v Azure.
+## <a name="steps-to-deploy-ad-fs-in-azure"></a>Postup nasazení služby AD FS v Azure
+Kroky uvedené v této části popisují postup nasazení níže znázorněné infrastruktury služby AD FS v Azure.
 
-### <a name="1-deploying-hello-network"></a>1. Nasazení sítě hello
-Jak je uvedeno výše, můžete buď vytvořit dvě podsítě v jedné virtuální síti, nebo můžete vytvořit dvě zcela odlišné virtuální sítě (VNet). Tento článek se zaměří na nasazení jedné virtuální sítě a její rozdělení na dvě podsítě. Toto je momentálně snadnější přístup jako dva samostatné virtuální sítě by vyžadovaly bránu VNet tooVNet pro komunikaci.
+### <a name="1-deploying-the-network"></a>1. Nasazení sítě
+Jak je uvedeno výše, můžete buď vytvořit dvě podsítě v jedné virtuální síti, nebo můžete vytvořit dvě zcela odlišné virtuální sítě (VNet). Tento článek se zaměří na nasazení jedné virtuální sítě a její rozdělení na dvě podsítě. Tento způsob je snazší, protože dvě samostatné virtuální sítě by pro komunikaci vyžadovaly bránu VNnet To VNet.
 
 **1.1 Vytvoření virtuální sítě**
 
 ![Vytvoření virtuální sítě](./media/active-directory-aadconnect-azure-adfs/deploynetwork1.png)
 
-V hello portálu Azure můžete nasadit vyberte virtuální síť a jste hello virtuální sítě a jednu podsíť okamžitě s jedním kliknutím. INT podsíť je rovněž definovaný a je nyní připraven pro virtuální počítače toobe přidat.
-dalším krokem Hello je tooadd jinou podsíť toohello sítí, tj hello DMZ podsítě. toocreate hello podsíti DMZ, jednoduše
+Na portálu Azure vyberte virtuální síť. Jedním kliknutím můžete virtuální síť a jednu podsíť okamžitě nasadit. Podsíť INT je také definována a připravená na přidání virtuálních počítačů.
+Dalším krokem je přidání další podsítě do sítě, tj. podsítě DMZ. Pokud chcete vytvořit podsíť DMZ, stačí provést následující:
 
-* Vyberte síť, nově vytvořený hello
-* Ve vlastnostech hello vyberte podsíť
-* V podsíti hello panelu klikněte na hello tlačítko Přidat
-* Zadejte hello podsíť název a adresu místa informace toocreate hello podsítě
+* vyberte nově vytvořenou síť,
+* ve vlastnostech vyberte podsíť,
+* na panelu podsítě klikněte na tlačítko Přidat,
+* zadejte název podsítě a údaje o adresním prostoru, které jsou k vytvoření podsítě potřeba.
 
 ![Podsíť](./media/active-directory-aadconnect-azure-adfs/deploynetwork2.png)
 
 ![Podsíť DMZ](./media/active-directory-aadconnect-azure-adfs/deploynetwork3.png)
 
-**1.2. Vytváření skupin zabezpečení sítě hello**
+**1.2. Vytvoření skupin zabezpečení sítě**
 
-Skupina zabezpečení sítě (NSG) obsahuje seznam pravidel seznamu řízení přístupu (ACL), která povolují nebo odpírají síťový provoz tooyour instance virtuálních počítačů ve virtuální síti. Skupiny NSG můžou být přidružené buď k podsítím, nebo k jednotlivým instancím virtuálních počítačů v této podsíti. Pokud je skupina NSG přidružená k podsíti, pravidla seznamu ACL hello platí tooall hello instance virtuálních počítačů v této podsíti.
-Za účelem hello tyto pokyny, vytvoříme dvě skupiny Nsg: jeden pro interní síť a zónou DMZ. Budou označeny NSG_INT a NSG_DMZ.
+Skupina zabezpečení sítě (NSG) obsahuje seznam pravidel seznamu řízení přístupu (ACL), která instancím virtuálních počítačů ve službě Virtual Network povolují nebo odpírají síťový provoz. Skupiny NSG můžou být přidružené buď k podsítím, nebo k jednotlivým instancím virtuálních počítačů v této podsíti. Pokud je skupina zabezpečení sítě přidružená k podsíti, pravidla seznamu ACL platí pro všechny instance virtuálních počítačů v této podsíti.
+Pro potřeby těchto pokynů vytvoříme dvě skupiny zabezpečení sítě – jednu pro interní síť a jednu pro DMZ. Budou označeny NSG_INT a NSG_DMZ.
 
 ![Vytvoření skupiny zabezpečení sítě](./media/active-directory-aadconnect-azure-adfs/creatensg1.png)
 
-Po hello je vytvořena skupina NSG bude 0 příchozí a 0 odchozí pravidla. Jakmile jsou hello role na příslušných serverech hello nainstalovaná a funkční, pak hello příchozí a odchozí pravidla můžete provést podle potřeby toohello úroveň zabezpečení.
+Po vytvoření skupiny zabezpečení sítě bude 0 příchozích a 0 odchozích pravidel. Jakmile budou role na příslušných serverech nainstalované a funkční, můžete v závislosti na požadované úrovni zabezpečení vytvořit příchozí a odchozí pravidla.
 
 ![Inicializace skupiny zabezpečení sítě](./media/active-directory-aadconnect-azure-adfs/nsgint1.png)
 
-Po vytvoření skupiny Nsg hello přidružení podsítě NSG_INT INT a NSG_DMZ s podsítí hraniční sítě. Níže je uvedený snímek obrazovky s příkladem:
+Po vytvoření skupin zabezpečení sítě přidružte NSG_INT k podsíti INT a NSG_DMZ k podsíti DMZ. Níže je uvedený snímek obrazovky s příkladem:
 
 ![Konfigurace skupiny zabezpečení sítě](./media/active-directory-aadconnect-azure-adfs/nsgconfigure1.png)
 
-* Klikněte na panel hello tooopen podsítě pro podsítě
-* Vyberte podsíť tooassociate hello s hello NSG 
+* Kliknutím na Podsítě otevřete panel podsítí.
+* Vyberte podsíť, kterou chcete přidružit ke skupině zabezpečení sítě. 
 
-Po konfiguraci hello panel pro podsítě by měl vypadat jako následující:
+Po konfiguraci by měl panel podsítí vypadat následovně:
 
 ![Panel Podsítě po přidružení ke skupinám zabezpečení sítě](./media/active-directory-aadconnect-azure-adfs/nsgconfigure2.png)
 
-**1.3. Vytvoření tooon místní připojení**
+**1.3. Vytvoření připojení k místnímu systému**
 
-Potřebujeme tooon místních připojení v pořadí toodeploy hello řadiče domény (DC) v azure. Azure nabízí různé možnosti tooconnect připojení vaší místní infrastruktury tooyour infrastruktury Azure.
+Abychom mohli nasadit řadič domény (DC) v Azure, budeme potřebovat připojení k místnímu systému. Azure nabízí různé možnosti propojení místní infrastruktury s infrastrukturou Azure.
 
 * Point-to-Site
 * Virtuální síť s připojením typu Site-to-Site
 * ExpressRoute
 
-Doporučujeme toouse ExpressRoute. ExpressRoute vám umožňuje vytvářet privátní připojení mezi datovými centry Azure a infrastrukturou, která se nachází ve vašem umístění nebo v prostředí ve společném umístění. Připojení ExpressRoute se nepřenášejí prostřednictvím hello veřejného Internetu. Nabízí další spolehlivost, vyšší rychlost, nižší latenci a vyšší zabezpečení než Typická připojení přes hello Internet.
-Když se doporučuje toouse ExpressRoute, můžete zvolit libovolnou metodu připojení pro vaši organizaci nejvhodnější. Další informace o ExpressRoute a hello toolearn číst různé možnosti připojení pomocí služby ExpressRoute, [technický přehled ExpressRoute](https://aka.ms/Azure/ExpressRoute).
+Doporučujeme použít ExpressRoute. ExpressRoute vám umožňuje vytvářet privátní připojení mezi datovými centry Azure a infrastrukturou, která se nachází ve vašem umístění nebo v prostředí ve společném umístění. Připojení ExpressRoute se nepřenášejí prostřednictvím veřejného internetu. Nabízejí větší spolehlivost, vyšší rychlost, nižší latenci a vyšší zabezpečení než typická připojení přes internet.
+Přestože doporučujeme používat ExpressRoute, můžete si zvolit jakoukoli metodu připojení, která vaší organizaci vyhovuje. Další informace o ExpressRoute a různých možnostech připojení pomocí ExpressRoute najdete v článku [Technický přehled ExpressRoute](https://aka.ms/Azure/ExpressRoute).
 
 ### <a name="2-create-storage-accounts"></a>2. Vytvoření účtů úložiště
-V pořadí toomaintain vysokou dostupnost a vyhnout závislost na účet jedno úložiště, můžete vytvořit dva účty úložiště. Rozdělení hello počítačů v každé sadě dostupnosti do dvou skupin a potom přiřadit každé skupiny účet samostatného úložiště.
+Abyste udrželi vysokou dostupnost a vyhnuli se závislost na jednom účtu úložiště, můžete si vytvořit dva účty úložiště. Rozdělte počítače v každé skupině dostupnosti do dvou skupin a potom každé skupině přiřaďte samostatný účet úložiště.
 
 ![Vytvoření účtů úložiště](./media/active-directory-aadconnect-azure-adfs/storageaccount1.png)
 
 ### <a name="3-create-availability-sets"></a>3. Vytvoření skupin dostupnosti
-Pro každou roli (řadiče domény nebo AD FS připojeném protokolem WAP) vytvořte skupiny dostupnosti, které budou obsahovat 2 počítače každý hello minimální. Tím dosáhnete vyšší dostupnost pro každou roli. Při vytváření dostupnosti hello nastaví, je nezbytné toodecide na hello následující:
+Pro každou roli (řadič domény/AD FS a WAP) vytvořte skupiny dostupnosti tak, aby každá obsahovala minimálně dva počítače. Tím dosáhnete vyšší dostupnost pro každou roli. Při vytváření skupin dostupnosti je nezbytné rozhodnout o následujícím:
 
-* **Poruch domén**: hello virtuálních počítačů v doméně se stejným selhání sdílejí hello stejný zdroj energie a fyzický síťový přepínač. Jako minimum doporučujeme dvě domény selhání. Hello výchozí hodnota je 3 a můžete nechat ji jako je pro hello účel tohoto nasazení
-* **Aktualizovat domén**: počítače, které patří toohello jedné aktualizační doméně se během aktualizace restartují společně. Chcete toohave minimálně 2 aktualizaci domény. Hello výchozí hodnota je 5 a můžete nechat ji jako je pro hello účel tohoto nasazení
+* **Domény selhání**: Virtuální počítače ve stejné doméně selhání sdílejí stejný zdroj napájení a fyzický síťový přepínač. Jako minimum doporučujeme dvě domény selhání. Výchozí hodnota je tři a pro potřeby tohoto nasazení to tak můžete nechat.
+* **Aktualizační domény**: Počítače, které patří do stejné aktualizační domény, se během aktualizace restartují společně. Jako minimum doporučujeme dvě aktualizační domény. Výchozí hodnota je pět a pro potřeby tohoto nasazení to tak můžete nechat.
 
 ![Skupiny dostupnosti](./media/active-directory-aadconnect-azure-adfs/availabilityset1.png)
 
-Vytvořte následující skupiny dostupnosti hello
+Vytvoření následujících skupin dostupnosti
 
 | Skupina dostupnosti | Role | Domény selhání | Aktualizační domény |
 |:---:|:---:|:---:|:--- |
@@ -120,7 +120,7 @@ Vytvořte následující skupiny dostupnosti hello
 | contosowapset |WAP |3 |5 |
 
 ### <a name="4-deploy-virtual-machines"></a>4. Nasazení virtuálních počítačů
-dalším krokem Hello je toodeploy virtuálních počítačů, které budou hostiteli hello různé role ve vaší infrastruktuře. Jako minimum doporučujeme dva počítače v každé skupině dostupnosti. Vytvořte čtyři virtuální počítače pro základní nasazení hello.
+Dalším krokem je nasazení virtuálních počítačů, které budou hostiteli různých rolí ve vaší infrastruktuře. Jako minimum doporučujeme dva počítače v každé skupině dostupnosti. Vytvořte čtyři virtuální počítače pro základní nasazení.
 
 | Počítač | Role | Podsíť | Skupina dostupnosti | Účet úložiště | IP adresa |
 |:---:|:---:|:---:|:---:|:---:|:---:|
@@ -129,116 +129,116 @@ dalším krokem Hello je toodeploy virtuálních počítačů, které budou host
 | contosowap1 |WAP |DMZ |contosowapset |contososac1 |Statická |
 | contosowap2 |WAP |DMZ |contosowapset |contososac2 |Statická |
 
-Pravděpodobně jste si všimli, že jsme nezadali žádnou skupinu zabezpečení sítě. Je to proto, že azure umožňuje použít NSG na úrovni podsítě hello. Potom můžete řídit síťový provoz počítače pomocí hello jednotlivých NSG přidruženého buď hello podsíť, jinak se objekt síťové karty hello. Další informace si můžete přečíst v článku [Skupina zabezpečení sítě (NSG)](https://aka.ms/Azure/NSG).
-Statická IP adresa se doporučuje, když spravujete hello DNS. Můžete použít Azure DNS a místo toho v hello záznamy DNS pro doménu, označují toohello nové počítače kvalifikovanými jejich Azure.
-Vaše podokně virtuální počítač by měl vypadat jako níže po dokončení nasazení hello:
+Pravděpodobně jste si všimli, že jsme nezadali žádnou skupinu zabezpečení sítě. Důvodem je to, že Azure umožňuje používání skupin zabezpečení sítě na úrovni podsítě. Potom můžete řídit síťový provoz počítačů pomocí jednotlivých skupin zabezpečení sítě, které jsou přidružené buď k podsíti, nebo k objektu síťové karty. Další informace si můžete přečíst v článku [Skupina zabezpečení sítě (NSG)](https://aka.ms/Azure/NSG).
+Pokud spravujete DNS, doporučujeme statickou IP adresu. Můžete použít Azure DNS a v záznamech DNS domény můžete odkazovat na nové počítače podle jejich plně kvalifikovaných názvů domén v Azure.
+Po dokončení nasazení by mělo podokno virtuálního počítače vypadat následovně:
 
 ![Nasazené virtuální počítače](./media/active-directory-aadconnect-azure-adfs/virtualmachinesdeployed_noadfs.png)
 
-### <a name="5-configuring-hello-domain-controller--ad-fs-servers"></a>5. Konfigurace hello řadič domény nebo servery služby AD FS
- V pořadí tooauthenticate budou potřebovat všechny příchozí žádosti o služby AD FS řadič domény toocontact hello. toosave hello nákladná cesty od Azure tooon místní řadič domény pro ověřování, je doporučeno toodeploy repliku řadiče domény hello v Azure. V pořadí tooattain vysokou dostupnost doporučujeme toocreate řadičů domény 2 alespoň sadu dostupnosti.
+### <a name="5-configuring-the-domain-controller--ad-fs-servers"></a>5. Konfigurace řadiče domény a serverů služby AD FS
+ Abyste mohli ověřit jakékoli příchozí žádosti, musí služba AD FS kontaktovat řadič domény. Pokud chcete ušetřit nákladné spojení z Azure do řadiče místní domény kvůli ověřování, doporučujeme v Azure nasadit repliku řadiče domény. Abyste dosáhli vysoké dostupnosti, doporučujeme vytvořit skupinu dostupnosti s alespoň dvěma řadiči domény.
 
 | Řadič domény | Role | Účet úložiště |
 |:---:|:---:|:---:|
 | contosodc1 |Replika |contososac1 |
 | contosodc2 |Replika |contososac2 |
 
-* Povýšit hello dva servery repliky řadičů domény s DNS
-* Konfigurace serverů hello služby AD FS instalací role hello služby AD FS pomocí Správce serveru hello.
+* Povýšení dvou serverů na repliky řadičů domény s DNS
+* Nakonfigurujte servery služby AD FS tím, že pomocí správce serveru nainstalujete roli služby AD FS.
 
 ### <a name="6-deploying-internal-load-balancer-ilb"></a>6. Nasazení interního nástroje pro vyrovnávání zatížení (ILB)
-**6.1. Vytvoření hello ILB**
+**6.1. Vytvoření interního nástroje pro vyrovnávání zatížení**
 
-toodeploy ILB, vyberte Vyrovnávání zatížení v hello portál Azure a kliknutím na tlačítko Přidat (+).
+Pokud chcete nasadit interní nástroj pro vyrovnávání zatížení, vyberte na portálu Azure možnost Nástroje pro vyrovnávání zatížení a klikněte na Přidat (+).
 
 > [!NOTE]
-> Pokud se nezobrazí **nástroje pro vyrovnávání zatížení** v nabídce, klikněte na tlačítko **Procházet** v hello snížit nalevo od hello portál a přejděte do části **nástroje pro vyrovnávání zatížení**.  Pak klikněte na hvězdičky tooadd hello žlutý ho tooyour nabídky. Nyní vyberte hello novou konfiguraci služby Vyrovnávání zatížení ikonu tooopen hello panely toobegin nástroje pro vyrovnávání zatížení hello.
+> Pokud se v nabídce nezobrazí **Nástroje pro vyrovnávání zatížení**, klikněte v levém dolním rohu portálu na tlačítko **Procházet** a pomocí posuvníku přejděte k možnosti **Nástroje pro vyrovnávání zatížení**.  Potom ji kliknutím na žlutou hvězdičku přidejte do nabídky. Vyberte ikonu nového nástroje pro vyrovnávání zatížení a otevřete panel, pomocí kterého můžete začít s konfigurací nástroje.
 > 
 > 
 
 ![Vyhledání nástroje pro vyrovnávání zatížení](./media/active-directory-aadconnect-azure-adfs/browseloadbalancer.png)
 
-* **Název**: poskytnout všech Vyrovnávání zatížení toohello vhodný název
-* **Schéma**: vzhledem k tomu, že tato služba Vyrovnávání zatížení bude umístěna před hello služby AD FS servery a je určen pro připojení k interní síti, vyberte "Interní"
-* **Virtuální síť**: Zvolte hello virtuální sítě, který nasazujete službě AD FS
-* **Podsíť**: Zvolte hello interní podsíť
+* **Název**: Dejte nástroji pro vyrovnávání zatížení libovolný vhodný název.
+* **Schéma**: Vzhledem k tomu, že tento nástroj pro vyrovnávání zatížení bude umístěn před servery služby AD FS a je určen JENOM pro interní síťová připojení, vyberte Interní.
+* **Virtuální síť**: Zvolte virtuální síť, do které službu AD FS nasazujete.
+* **Podsíť**: Tady zvolte interní podsíť.
 * **Přiřazení IP adresy**: Statické.
 
 ![Interní nástroj pro vyrovnávání zatížení](./media/active-directory-aadconnect-azure-adfs/ilbdeployment1.png)
 
-Po kliknutí na tlačítko Vytvořit a je nasazena hello ILB, byste měli vidět v seznamu hello nástrojů pro vyrovnávání zatížení:
+Po kliknutí na tlačítko Vytvořit a po nasazení interního nástroje pro vyrovnávání zatížení byste měli nástroj vidět v seznamu nástrojů pro vyrovnávání zatížení:
 
 ![Nástroje pro vyrovnávání zatížení, po nasazení interního nástroje pro vyrovnávání zatížení](./media/active-directory-aadconnect-azure-adfs/ilbdeployment2.png)
 
-Dalším krokem je tooconfigure hello fond back-end a back-end kontroly hello.
+Dalším krokem je konfigurace back-endového fondu a back-endového testu.
 
 **6.2. Konfigurace back-endového fondu interního nástroje pro vyrovnávání zatížení**
 
-Vyberte hello nově vytvořený ILB panelu hello nástroje pro vyrovnávání zatížení. Otevře se panel nastavení hello. 
+Na panelu nástrojů pro vyrovnávání zatížení vyberte nově vytvořený nástroj. Otevře se panel nastavení. 
 
-1. Vyberte back-endové fondy z panelu nastavení hello
-2. V hello přidat panel fond back-end, kliknutím na tlačítko Přidat virtuální počítač
+1. Výběr back-endových fondů na panelu nastavení
+2. Na panelu Přidání back-endového fondu klikněte na Přidat virtuální počítač.
 3. Zobrazí se panel, na kterém můžete vybrat skupinu dostupnosti.
-4. Vyberte sadu dostupnosti hello služby AD FS
+4. Výběr skupiny dostupnosti služby AD FS
 
 ![Konfigurace back-endového fondu interního nástroje pro vyrovnávání zatížení](./media/active-directory-aadconnect-azure-adfs/ilbdeployment3.png)
 
 **6.3. Konfigurace testu**
 
-V panelu nastavení ILB hello vyberte sondy.
+Na panelu nastavení interního nástroje pro vyrovnávání zatížení vyberte Testy.
 
 1. Klikněte na Přidat.
-2. Zadejte podrobnosti testu. a. **Název**: Název testu. b. **Protokol**: TCP. c. **Port**: 443 (HTTPS). d. **Interval**: 5 (výchozí hodnota) – Toto je hello interval, ve kterém bude ILB testu hello počítače ve fondu back-end hello e. **Prahová hodnota špatného stavu limit**: 2 (výchozí val ue) – Toto je po sobě jdoucích test selhání, po které bude ILB deklarovat na počítač v hello back-end fondu přestane reagovat a zastavení odesílání přenosů tooit hello prahovou hodnotu.
+2. Zadejte podrobnosti testu. a. **Název**: Název testu. b. **Protokol**: TCP. c. **Port**: 443 (HTTPS). d. **Interval**: 5 (výchozí hodnota) – jedná se o interval, ve kterém bude interní nástroj pro vyrovnávání zatížení testovat počítače v back-endovém fondu. e. **Chybný limit prahové hodnoty**: 2 (výchozí hodnota) – jedná se o prahovou hodnotu po sobě jdoucích selhání testu, po kterých bude interní nástroj pro vyrovnávání zatížení deklarovat počítač v back-endovém fondu jako nereagující a přestane na něj směrovat provoz.
 
 ![Konfigurace testu interního nástroje pro vyrovnávání zatížení](./media/active-directory-aadconnect-azure-adfs/ilbdeployment4.png)
 
 **6.4. Vytvoření pravidel vyrovnávání zatížení**
 
-V pořadí tooeffectively vyrovnávání hello přenosů by měly být nakonfigurované hello ILB pravidla Vyrovnávání zatížení. V pořadí toocreate pravidlo Vyrovnávání zatížení, 
+Kvůli efektivnímu vyrovnání provozu je nutné nakonfigurovat nástroj pro vyrovnávání zátěže pomocí pravidel vyrovnávání zatížení. Pokud chcete vytvořit pravidlo vyrovnávání zatížení, postupujte následovně: 
 
-1. Vyberte z panelu nastavení hello hello ILB pravidlo Vyrovnávání zatížení
-2. Klikněte na Přidat v hello panely pravidlo Vyrovnávání zatížení
-3. V hello přidat načíst vyrovnávání panely pravidlo. **Název**: Zadejte název pravidla hello b. **Protokol**: Vyberte TCP. c. **Port**: 443. d. **Back-endový port**: 443. e. **Fond back-end**: vyberte fond hello jste vytvořili pro hello služby AD FS clusteru starší f. **Test**: Test vyberte hello předtím vytvořili pro servery služby AD FS
+1. na panelu nastavení interního nástroje pro vyrovnávání zatížení vyberte pravidlo vyrovnávání zatížení,
+2. na panelu pravidla vyrovnávání zatížení klikněte na Přidat.
+3. Na panelu pro přidání pravidla vyrovnávání zatížení proveďte následující: a. **Název**: Zadejte název pravidla. b. **Protokol**: Vyberte TCP. c. **Port**: 443. d. **Back-endový port**: 443. e. **Back-endový fond**: Vyberte fond, který jste už dříve vytvořili pro cluster služby AD FS. f. **Test**: Vyberte test, který jste už dříve vytvořili pro servery služby AD FS.
 
 ![Konfigurace pravidel interního nástroje pro vyrovnávání zatížení](./media/active-directory-aadconnect-azure-adfs/ilbdeployment5.png)
 
 **6.5. Aktualizace DNS pomocí interního nástroje pro vyrovnávání zatížení**
 
-Přejděte tooyour DNS server a vytvořit záznam CNAME pro hello ILB. Hello CNAME musí být pro službu federation hello s IP adresou hello odkazující hello ILB toohello IP adresu. Například pokud hello ILB DIP adresu 10.3.0.8 a služba hello federation service je fs.contoso.com, pak vytvořte záznam CNAME pro fs.contoso.com odkazující too10.3.0.8.
-Tím bude zajištěno, že všechny komunikace týkající se konec fs.contoso.com až na hello ILB a jsou správně směrované.
+Přejděte na server DNS a vytvořte záznam CNAME pro interní nástroj pro vyrovnávání zatížení. Záznam CNAME musí pro službu FS obsahovat IP adresu, která odkazuje na IP adresu interního nástroje pro vyrovnávání zatížení. Pokud má interní nástroj pro vyrovnávání zatížení vyhrazenou IP adresu 10.3.0.8 a služba FS je nainstalovaná na webu fs.contoso.com, potom pro fs.contoso.com vytvořte záznam CNAME, který odkazuje na adresu 10.3.0.8.
+Tím zajistíte, že se veškerá komunikace (která se týká fs.contoso.com) dostane do interního nástroje pro vyrovnávání zatížení a bude odpovídajícím způsobem směrovaná.
 
-### <a name="7-configuring-hello-web-application-proxy-server"></a>7. Konfigurace serveru služby Proxy webových aplikací hello
-**7.1. Konfigurace hello Proxy serverech webových aplikací servery tooreach AD FS**
+### <a name="7-configuring-the-web-application-proxy-server"></a>7. Konfigurace proxy serverů webových aplikací
+**7.1. Konfigurace proxy serverů webových aplikací, aby se mohly spojit se servery služby AD FS**
 
-V pořadí tooensure, zda jsou servery Proxy webových aplikací mít tooreach hello služby AD FS servery za hello ILB vytvořte záznam v hello %systemroot%\system32\drivers\etc\hosts pro hello ILB. Všimněte si, že hello rozlišující název (DN) musí být název federační služby hello, třeba fs.contoso.com. A hello IP adresu by měl být u hello ILB IP adresu (10.3.0.8 jako hello příkladu).
+Aby se proxy servery webových aplikací mohly spojit se servery služby AD FS za interním nástrojem pro vyrovnávání zatížení, vytvořte pro nástroj záznam %systemroot%\system32\drivers\etc\hosts. Všimněte si, že rozlišující název (DN) musí být názvem služby FS, například fs.contoso.com. A IP adresa musí odpovídat IP adrese interního nástroje pro vyrovnávání zatížení (10.3.0.8 – jako v příkladu).
 
-**7.2. Instalace role Proxy webových aplikací hello**
+**7.2. Instalace role proxy webových aplikací**
 
-Po zajištění, že jsou servery Proxy webových aplikací mít tooreach hello služby AD FS servery za ILB, můžete nainstalovat další servery Proxy webových aplikací hello. Webové servery služby Proxy aplikace není třeba toohello připojené k doméně. Nainstalujte role Proxy webových aplikací hello na dvou serverech Proxy webových aplikací hello výběrem hello role vzdáleného přístupu. Správce serveru Hello Průvodce toocomplete hello WAP instalace.
-Další informace o tom, přečtěte si toodeploy WAP, [instalaci a konfiguraci Proxy serveru webové aplikace hello](https://technet.microsoft.com/library/dn383662.aspx).
+Jakmile si budete jistí, že se proxy servery webových aplikací můžou spojit se servery služby AD FS za interním nástrojem pro vyrovnávání zatížení, můžete v dalším kroku nainstalovat proxy servery webových aplikací. Proxy servery webových aplikací nesmí být připojené k doméně. Výběrem role vzdáleného přístupu nainstalujte role proxy webových aplikací na dva proxy servery webových aplikací. Správce serveru vás provede až do konce instalace WAP.
+Další informace o nasazování WAPu najdete v článku [Instalace a konfigurace proxy serveru webových aplikací](https://technet.microsoft.com/library/dn383662.aspx).
 
-### <a name="8--deploying-hello-internet-facing-public-load-balancer"></a>8.  Nasazení hello Internet Facing (veřejných) pro vyrovnávání zatížení
+### <a name="8--deploying-the-internet-facing-public-load-balancer"></a>8.  Nasazení internetového (veřejného) nástroje pro vyrovnávání zatížení
 **8.1.  Vytvoření internetového (veřejného) nástroje pro vyrovnávání zatížení**
 
-V hello portálu Azure vyberte nástroje pro vyrovnávání zatížení a potom klikněte na Přidat. V panelu Nástroje pro vyrovnávání zatížení hello vytvořit zadejte následující informace hello
+Na portálu Azure vyberte Nástroje pro vyrovnávání zatížení a potom klikněte na Přidat. Na panelu Vytvoření nástroje pro vyrovnávání zatížení zadejte následující informace:
 
-1. **Název**: název pro vyrovnávání zatížení hello
+1. **Název**: Název nástroje pro vyrovnávání zatížení.
 2. **Schéma**: Veřejné – tato možnost informuje Azure, že nástroj pro vyrovnávání zatížení bude potřebovat veřejnou adresu.
 3. **IP adresa**: Vytvořte novou IP adresu (dynamickou).
 
 ![Internetový nástroj pro vyrovnávání zatížení](./media/active-directory-aadconnect-azure-adfs/elbdeployment1.png)
 
-Po nasazení nástroje pro vyrovnávání zatížení hello objeví v seznamu nástroje pro vyrovnávání zatížení hello.
+Po nasazení se nástroj pro vyrovnávání zatížení zobrazí v seznamu nástrojů pro vyrovnávání zatížení.
 
 ![Seznam nástrojů pro vyrovnávání zatížení](./media/active-directory-aadconnect-azure-adfs/elbdeployment2.png)
 
-**8.2. Přiřadit DNS popisek toohello veřejnou IP adresu**
+**8.2. Přiřazení názvu DNS k veřejné IP adrese**
 
-Klikněte na položku Nástroje pro vyrovnávání zatížení hello nově vytvořený v hello zatížení nástroje pro vyrovnávání panely toobring až hello panelů pro konfiguraci. Postupujte podle níže popisek DNS hello tooconfigure kroky pro veřejnou IP adresu hello:
+Na panelu nástrojů pro vyrovnávání zatížení klikněte na nově vytvořenou položku nástroje pro vyrovnávání zatížení a vyvolejte konfigurační panel. Podle následujících kroků nakonfigurujte název DNS pro veřejnou IP adresu:
 
-1. Klikněte na hello veřejnou IP adresu. Otevře se panel hello pro hello veřejnou IP adresu a nastavení
+1. Klikněte na veřejnou IP adresu. Tím otevřete panel veřejné IP adresy a její nastavení.
 2. Klikněte na Konfigurace.
-3. Zadejte název DNS. To se stane hello veřejný název DNS, může přistupovat z libovolného místa, například contosofs.westus.cloudapp.azure.com. Můžete přidat položku v hello externí službu DNS pro hello federační služby (např. fs.contoso.com), která přeloží popisek DNS toohello hello externí službu Vyrovnávání zatížení (contosofs.westus.cloudapp.azure.com).
+3. Zadejte název DNS. Ten se stane veřejným názvem DNS, ke kterému budete mít přístup odkudkoli, například contosofs.westus.cloudapp.azure.com. Do externí DNS můžete přidat záznam pro službu FS (například fs.contoso.com), který se přeloží do názvu DNS externího nástroje pro vyrovnávání zatížení (contosofs.westus.cloudapp.azure.com).
 
 ![Konfigurace internetového nástroje pro vyrovnávání zatížení](./media/active-directory-aadconnect-azure-adfs/elbdeployment3.png) 
 
@@ -246,42 +246,42 @@ Klikněte na položku Nástroje pro vyrovnávání zatížení hello nově vytvo
 
 **8.3. Konfigurace back-endového fondu internetového (veřejného) nástroje pro vyrovnávání zatížení** 
 
-Postupujte podle hello stejné kroky jako vytváření Vyrovnávání zatížení pro vnitřní hello tooconfigure hello back-endový fond pro Internet Facing (veřejných) nástroj pro vyrovnávání zatížení jako hello dostupnosti nastavit pro serverech WAP hello. Například contosowapset.
+Postupujte stejným způsobem jako při vytváření interního nástroje pro vyrovnávání zatížení a nakonfigurujte back-endový fond internetového (veřejného) nástroje pro vyrovnávání zatížení jako skupinu dostupnosti pro servery WAP. Například contosowapset.
 
 ![Konfigurace back-endového fondu internetového nástroje pro vyrovnávání zatížení](./media/active-directory-aadconnect-azure-adfs/elbdeployment5.png)
 
 **8.4. Konfigurace testu**
 
-Postupujte podle stejné kroky jako konfigurace hello hello sondu tooconfigure nástroje pro vyrovnávání zatížení interní pro hello fond back-end serverech WAP hello.
+Postupujte stejným způsobem jako při konfiguraci interního nástroje pro vyrovnávání zatížení a nakonfigurujte test pro back-endový fond serverů WAP.
 
 ![Konfigurace testu internetového nástroje pro vyrovnávání zatížení](./media/active-directory-aadconnect-azure-adfs/elbdeployment6.png)
 
 **8.5. Vytvoření pravidel vyrovnávání zatížení**
 
-Postupujte podle kroků stejná jako Vyrovnávání zatížení pro hello ILB tooconfigure pravidla pro TCP 443 hello.
+Postupujte stejným způsobem jako v interním nástroji pro vyrovnávání zatížení a nakonfigurujte pravidlo vyrovnávání zatížení pro protokol TCP 443.
 
 ![Konfigurace pravidel vyrovnávání pro internetový nástroj pro vyrovnávání zatížení](./media/active-directory-aadconnect-azure-adfs/elbdeployment7.png)
 
-### <a name="9-securing-hello-network"></a>9. Zabezpečení sítě hello
-**9.1. Zabezpečení interní podsíť hello**
+### <a name="9-securing-the-network"></a>9. Zabezpečení sítě
+**9.1. Zabezpečení interní podsítě**
 
-Celkově platí budete potřebovat hello následující pravidla tooefficiently zabezpečit vaše interní podsíť (v pořadí hello, jak je uvedeno níže)
+Celkově budete k efektivnímu zabezpečení interní podsítě (v pořadí, jak je uvedeno níže) potřebovat následující pravidla:
 
 | Pravidlo | Popis | Tok |
 |:--- |:--- |:---:|
-| AllowHTTPSFromDMZ |Povolit komunikaci pomocí protokolu HTTPS hello z hraniční sítě |Příchozí |
-| DenyInternetOutbound |Žádný přístup toointernet |Odchozí |
+| AllowHTTPSFromDMZ |Povolení komunikace z DMZ pomocí protokolu HTTPS |Příchozí |
+| DenyInternetOutbound |Bez přístupu k internetu |Odchozí |
 
 ![pravidla přístupu INT (příchozí)](./media/active-directory-aadconnect-azure-adfs/nsg_int.png)
 
 [komentář]: <> (![pravidla přístupu INT (příchozí)](./media/active-directory-aadconnect-azure-adfs/nsgintinbound.png)) [komentář]: <> (![pravidla přístupu INT (odchozí)](./media/active-directory-aadconnect-azure-adfs/nsgintoutbound.png))
 
-**9.2. Zabezpečení podsíti DMZ hello**
+**9.2. Zabezpečení podsítě DMZ**
 
 | Pravidlo | Popis | Tok |
 |:--- |:--- |:---:|
-| AllowHTTPSFromInternet |Povolit HTTPS z Internetu toohello hraniční sítě |Příchozí |
-| DenyInternetOutbound |Jiný než HTTPS toointernet je blokovaný |Odchozí |
+| AllowHTTPSFromInternet |Povolení komunikace pomocí protokolu HTTPS z internetu do podsítě DMZ |Příchozí |
+| DenyInternetOutbound |Všechno kromě komunikace pomocí protokolu HTTPS do internetu je blokováno. |Odchozí |
 
 ![pravidla přístupu EXT (příchozí)](./media/active-directory-aadconnect-azure-adfs/nsg_dmz.png)
 
@@ -292,13 +292,13 @@ Celkově platí budete potřebovat hello následující pravidla tooefficiently 
 > 
 > 
 
-### <a name="10-test-hello-ad-fs-sign-in"></a>10. Testování přihlášení hello služby AD FS
-Hello nejjednodušší způsob je tootest, které se služba AD FS pomocí hello IdpInitiatedSignon.aspx stránky. V pořadí toobe toodo možné, že je požadovaná tooenable hello IdpInitiatedSignOn na vlastnosti hello služby AD FS. Postupujte podle kroků hello tooverify vaší instalace služby AD FS
+### <a name="10-test-the-ad-fs-sign-in"></a>10. Test přihlášení ke službě AD FS
+Nejjednodušší způsob otestování služby AD FS je pomocí stránky IdpInitiatedSignon.aspx. Abyste to mohli provést, musíte ve vlastnostech služby AD FS povolit IdpInitiatedSignOn. Pomocí níže uvedených pokynů ověřte nastavení služby AD FS.
 
-1. Spustit hello níže na server hello AD FS, pomocí prostředí PowerShell, tooset rutinu ho tooenabled.
+1. Pomocí PowerShellu spusťte níže uvedenou rutinu na serveru služby AD FS a povolte požadovanou možnost.
    Set-AdfsProperties -EnableIdPInitiatedSignonPage $true 
 2. Z jakékoli externího počítače zobrazte https://adfs.thecloudadvocate.com/adfs/ls/IdpInitiatedSignon.aspx  
-3. Měli byste vidět stránku hello služby AD FS, jako níže:
+3. Měla by se zobrazit stránka služby AD FS podobná níže uvedenému příkladu:
 
 ![Přihlašovací stránka testu](./media/active-directory-aadconnect-azure-adfs/test1.png)
 
@@ -307,39 +307,39 @@ Po úspěšném přihlášení zobrazí zprávu o úspěchu, jak je uvedeno ní�
 ![Úspěch testu](./media/active-directory-aadconnect-azure-adfs/test2.png)
 
 ## <a name="template-for-deploying-ad-fs-in-azure"></a>Šablona pro nasazení AD FS v Azure
-Šablona Hello nasadí instalace 6 počítači s 2 pro řadiče domény, služba AD FS a WAP.
+Šablona nasadí nastavení pro šest počítačů, po dvou pro každý řadič domény, službu AD FS a protokol WAP.
 
 [Šablona pro nasazení AD FS v Azure](https://github.com/paulomarquesc/adfs-6vms-regular-template-based)
 
-Při nasazování této šablony můžete použít stávající virtuální síť nebo vytvořit novou. Hello různé parametry, které jsou k dispozici pro přizpůsobení hello nasazení jsou uvedeny níže s hello popis použití parametru hello v procesu nasazení hello. 
+Při nasazování této šablony můžete použít stávající virtuální síť nebo vytvořit novou. Níže najdete různé parametry, pomocí nichž si můžete přizpůsobit nasazení, a popis jejich využití v procesu nasazení. 
 
 | Parametr | Popis |
 |:--- |:--- |
-| Umístění |Hello oblast toodeploy hello prostředky do, například východní USA. |
-| StorageAccountType |Typ Hello hello vytvořený účet úložiště |
+| Umístění |Oblast, do které se mají nasadit prostředky, například Východní USA. |
+| StorageAccountType |Typ vytvořeného účtu úložiště |
 | VirtualNetworkUsage |Označuje, zda se vytvoří nová virtuální síť nebo se použije již existující. |
-| VirtualNetworkName |Název Hello tooCreate hello virtuální sítě, povinná na využití existující nebo nové virtuální sítě |
-| VirtualNetworkResourceGroupName |Určuje název skupiny prostředků hello, kde se nachází existující virtuální síť hello hello. Při použití existující virtuální síť, to všechno bude povinný parametr, hello nasazení můžete zjistit ID hello hello existující virtuální síť |
-| VirtualNetworkAddressRange |rozsah adres hello Hello nové sítě VNET, povinné, pokud se vytváří nové virtuální sítě |
-| InternalSubnetName |Název Hello hello interní podsíť, povinná na obě možnosti využití virtuální sítě (nový nebo existující) |
-| InternalSubnetAddressRange |rozsah adres Hello hello interní podsíť, která obsahuje hello řadičů domény a služby AD FS servery, povinné, pokud vytvoření nové virtuální sítě. |
-| DMZSubnetAddressRange |rozsah adres Hello hello dmz podsítě, který obsahuje hello Windows aplikace proxy servery, povinné, pokud se vytváří nové virtuální sítě. |
-| DMZSubnetName |Název Hello hello interní podsíť, povinná na obě možnosti využití virtuální sítě (nový nebo existující). |
-| ADDC01NICIPAddress |hello Hello interní IP adresu z prvního řadiče domény, tuto IP adresu budou staticky přiřazeny toohello řadič domény a musí být platná ip adresa v podsíti interní hello |
-| ADDC02NICIPAddress |Hello interní IP adresu hello druhého řadiče domény, tuto IP adresu budou staticky přiřazeny toohello řadič domény a musí být platná ip adresa v podsíti interní hello |
-| ADFS01NICIPAddress |Hello interní IP adresu serveru služby AD FS první hello, tuto IP adresu budou staticky přiřazeny serveru služby AD FS toohello a musí být platná ip adresa v podsíti interní hello |
-| ADFS02NICIPAddress |Hello interní IP adresu serveru služby AD FS druhý hello, tuto IP adresu budou staticky přiřazeny serveru služby AD FS toohello a musí být platná ip adresa v podsíti interní hello |
-| WAP01NICIPAddress |Hello interní IP adresu prvního serveru WAP hello, tuto IP adresu budou staticky přiřazeny serveru WAP toohello a musí být platná ip adresa v podsíti DMZ hello |
-| WAP02NICIPAddress |Hello interní IP adresu hello druhý server WAP, tuto IP adresu budou staticky přiřazeny serveru WAP toohello a musí být platná ip adresa v podsíti DMZ hello |
-| ADFSLoadBalancerPrivateIPAddress |Nástroj pro vyrovnávání zatížení Hello interní IP adresu hello služby AD FS, tuto IP adresu budou staticky přiřazeny toohello nástroj pro vyrovnávání zatížení a musí být platná ip adresa v podsíti interní hello |
+| VirtualNetworkName |Název virtuální sítě, která se má vytvořit. Tento parametr je povinný bez ohledu na to, zda použijete existující virtuální síť nebo vytvoříte novou. |
+| VirtualNetworkResourceGroupName |Určuje název skupiny prostředků, ve které se nachází existující virtuální síť. Při použití existující virtuální sítě je tento parametr povinný, aby nasazení našlo ID existující virtuální sítě. |
+| VirtualNetworkAddressRange |Rozsah adres nové virtuální sítě. Parametr je povinný při vytváření nové virtuální sítě. |
+| InternalSubnetName |Název interní podsítě. Tento parametr je povinný pro obě možnosti použití virtuální sítě (nové nebo existující). |
+| InternalSubnetAddressRange |Rozsah adres interní podsítě, která obsahuje řadiče domény a servery ADFS. Parametr je povinný při vytváření nové virtuální sítě. |
+| DMZSubnetAddressRange |Rozsah adres podsítě DMZ, která obsahuje proxy servery aplikací pro Windows. Parametr je povinný při vytváření nové virtuální sítě. |
+| DMZSubnetName |Název interní podsítě. Tento parametr je povinný pro obě možnosti použití virtuální sítě (nové nebo existující). |
+| ADDC01NICIPAddress |Interní IP adresa prvního řadiče domény. Tato IP adresa se staticky přiřadí řadiči domény. Musí se jednat o platnou IP adresu v rámci interní podsítě. |
+| ADDC02NICIPAddress |Interní IP adresa druhého řadiče domény. Tato IP adresa se staticky přiřadí řadiči domény. Musí se jednat o platnou IP adresu v rámci interní podsítě. |
+| ADFS01NICIPAddress |Interní IP adresa prvního serveru ADFS. Tato IP adresa se staticky přiřadí serveru ADFS. Musí se jednat o platnou IP adresu v rámci interní podsítě. |
+| ADFS02NICIPAddress |Interní IP adresa druhého serveru ADFS. Tato IP adresa se staticky přiřadí serveru ADFS. Musí se jednat o platnou IP adresu v rámci interní podsítě. |
+| WAP01NICIPAddress |Interní IP adresa prvního serveru WAP. Tato IP adresa se staticky přiřadí serveru WAP. Musí se jednat o platnou IP adresu v rámci podsítě DMZ. |
+| WAP02NICIPAddress |Interní IP adresa druhého serveru WAP. Tato IP adresa se staticky přiřadí serveru WAP. Musí se jednat o platnou IP adresu v rámci podsítě DMZ. |
+| ADFSLoadBalancerPrivateIPAddress |Interní IP adresa nástroje pro vyrovnávání zatížení ADFS. Tato IP adresa se staticky přiřadí nástroji pro vyrovnávání zatížení. Musí se jednat o platnou IP adresu v rámci interní podsítě. |
 | ADDCVMNamePrefix |Prefix názvu virtuálního počítače pro řadiče domény |
 | ADFSVMNamePrefix |Prefix názvu virtuálního počítače pro servery ADFS |
 | WAPVMNamePrefix |Prefix názvu virtuálního počítače pro servery WAP |
-| ADDCVMSize |velikost virtuálního počítače Hello hello řadiče domény |
-| ADFSVMSize |velikost virtuálního počítače Hello hello serverů služby AD FS |
-| WAPVMSize |velikost virtuálního počítače Hello hello WAP serverů |
-| AdminUserName |Název Hello hello místního správce hello virtuálních počítačů |
-| AdminPassword |Hello heslo pro účet místního správce hello hello virtuálních počítačů |
+| ADDCVMSize |Velikost virtuálního počítače řadičů domény |
+| ADFSVMSize |Velikost virtuálního počítače serverů ADFS |
+| WAPVMSize |Velikost virtuálního počítače serverů WAP |
+| AdminUserName |Jméno místního správce virtuálních počítačů |
+| AdminPassword |Heslo k účtu místního správce virtuálních počítačů |
 
 ## <a name="additional-resources"></a>Další zdroje
 * [Skupiny dostupnosti](https://aka.ms/Azure/Availability) 

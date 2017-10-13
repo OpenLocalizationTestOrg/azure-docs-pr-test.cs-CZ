@@ -1,6 +1,6 @@
 ---
-title: "aaaWhat toodo v události hello narušení služby Azure, který má vliv na Azure Key Vault | Microsoft Docs"
-description: "Zjistěte, jaké toodo v události hello narušení služby Azure, který má vliv na Azure Key Vault."
+title: "Co dělat v případě Azure služby přerušení, která má vliv na Azure Key Vault | Microsoft Docs"
+description: "Zjistěte, co dělat v případě přerušení služby Azure, který má vliv na Azure Key Vault."
 services: key-vault
 documentationcenter: 
 author: adamglick
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: sumedhb;aglick
-ms.openlocfilehash: 88eec82ada401a28323b3eea126168185ba4cdb0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6419d54c54e7d19103419262b79e7a5268b2268c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure Key Vault dostupnost a redundance
-Azure Key Vault funkce více vrstev redundance toomake klíče a tajné klíče zůstat k dispozici tooyour aplikace i v případě, že jednotlivé součásti aplikace hello služby nezdaří.
+Azure Key Vault funkce více vrstev redundance a ujistěte se, že klíče a tajné klíče zůstanou k dispozici pro vaše aplikace i v případě jednotlivé komponenty služby selžou.
 
-Hello obsah trezoru klíčů jsou replikované v rámci oblasti hello a sekundární oblasti tooa aspoň 150 miles ji okamžitě, ale v rámci hello stejné geography. Tím se zachová vysokou odolnost klíčů a tajných klíčů. Najdete v části hello [Azure spárovat oblasti](https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions) dokumentu podrobnosti o páry určité oblasti.
+Obsah trezoru klíčů se replikují do oblasti a do sekundární oblasti aspoň 150 miles ji okamžitě, ale v rámci stejné geography. Tím se zachová vysokou odolnost klíčů a tajných klíčů. Najdete v článku [Azure spárovat oblasti](https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions) dokumentu podrobnosti o konkrétní oblasti páry.
 
-V případě jednotlivých součástí v rámci hello trezor klíčů služby selžou, alternativní součásti v rámci oblasti hello krok v tooserve vaše žádost o toomake se, že žádné snížení funkčnosti. Není nutné tootake všechny akce tootrigger to. To se stane automaticky a bude průhledná tooyou.
+Pokud jednotlivých součástí v rámci trezoru klíčů služby selže, krok alternativní součásti v rámci oblasti v poskytovat vaši žádost a ujistěte se, že neexistuje žádná snížení funkčnosti. Není nutné provádět žádnou akci k aktivaci to. To se stane automaticky a budou průhledné vám.
 
-V hello výjimečná událost, není k dispozici celý oblasti Azure, se automaticky směrují hello požadavků, které provedete z Azure Key Vault v daném regionu (*převzetí služeb při selhání*) tooa sekundární oblast. Když primární oblasti hello opět k dispozici, požadavky na směrují zpět (*zpět se nezdařilo*) toohello primární oblasti. Znovu není nutné tootake žádnou akci vzhledem k tomu, že k tomu dojde automaticky.
+V výjimečná událost, že není k dispozici celý oblasti Azure, se automaticky směrují požadavky, které budete z Azure Key Vault v daném regionu (*převzetí služeb při selhání*) do sekundární oblasti. Když primární oblasti opět k dispozici, požadavky na směrují zpět (*zpět se nezdařilo*) primární oblasti. Znovu není nutné provádět žádnou akci, protože to probíhá automaticky.
 
-Existují vědět několik toobe upozornění:
+Existuje několik aspektů zajímat:
 
-* V události hello selhání oblast se může trvat několik minut, než hello služby toofail. Odesílat požadavky provedené během této doby může selhat, dokud se nedokončí hello převzetí služeb při selhání.
+* V případě selhání oblast ho může trvat několik minut, než služba převzetí služeb při selhání. Odesílat požadavky provedené během této doby může selhat, dokud se nedokončí převzetí služeb při selhání.
 * Po dokončení převzetí služeb trezoru klíčů je v režimu jen pro čtení. Požadavky, které jsou podporovány v tomto režimu jsou:
   * Seznam trezorů klíčů
   * Získat vlastnosti trezorů klíčů

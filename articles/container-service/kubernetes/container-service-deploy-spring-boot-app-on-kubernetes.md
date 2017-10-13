@@ -1,6 +1,6 @@
 ---
-title: "aaaDeploy pružiny spouštění aplikace na Kubernetes v Azure Container Service | Microsoft Docs"
-description: "Tento kurz vás provede, když hello kroky toodeploy pružiny spuštění aplikace v clusteru s podporou Kubernetes v Microsoft Azure."
+title: "Nasazení aplikace spouštěcí pružiny na Kubernetes v Azure Container Service | Microsoft Docs"
+description: "Tento kurz vás provede když kroky k nasazení aplikace spouštěcí Spring v Kubernetes clusteru v Microsoft Azure."
 services: container-service
 documentationcenter: java
 author: rmcmurray
@@ -15,24 +15,24 @@ ms.topic: article
 ms.date: 08/04/2017
 ms.author: asirveda;robmcm
 ms.custom: mvc
-ms.openlocfilehash: 2bf9df459f874a1f478f43cdd29992d86c370837
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7f726436b2d459b8c16abb02e07de099abfd8974
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="deploy-a-spring-boot-application-on-a-kubernetes-cluster-in-hello-azure-container-service"></a>Nasazení aplikace spouštěcí pružiny na Kubernetes Cluster hello Azure Container Service
+# <a name="deploy-a-spring-boot-application-on-a-kubernetes-cluster-in-the-azure-container-service"></a>Nasazení aplikace Spring Boot Application v clusteru Kubernetes ve službě Azure Container Service
 
-Hello  **[pružiny Framework]**  oblíbených rozhraní open source, které pomáhá vytvářet webové, mobilní a aplikacích API vývojáře v jazyce Java. Tento kurz používá ukázkovou aplikaci vytvořený [pružiny spouštěcí], konvence přístupu při použití pružiny tooget rychle začít.
+ **[Pružiny Framework]**  oblíbených rozhraní open source, které pomáhá vytvářet webové, mobilní a aplikacích API vývojáře v jazyce Java. Tento kurz používá ukázkovou aplikaci vytvořený [pružiny spouštěcí], konvence přístupu při použití pružiny rychle začít.
 
-**[Kubernetes]**  a  **[Docker]**  jsou open-source řešení, která pomáhají vývojáři automatizovat, hello nasazení, škálování a správu svých aplikací běžících v kontejnerech.
+**[Kubernetes]**  a  **[Docker]**  jsou open-source řešení, která pomáhají vývojáři automatizovat nasazení, škálování a správu jejich aplikace běžící v kontejnery.
 
-Tento kurz vás provede, když kombinace těchto dvou oblíbených, open-source technologie toodevelop a nasaďte tooMicrosoft pružiny spouštěcí aplikace Azure. Přesněji řečeno, použijete  *[pružiny spouštěcí]*  pro vývoj aplikací  *[Kubernetes]*  pro nasazení kontejneru a hello [Azure Container Service (ACS)] toohost vaší aplikace.
+Tento kurz vás provede, když kombinaci těchto dvou oblíbených, open-source technologií pro vývoj a nasazení spouštěcí pružiny aplikace do služby Microsoft Azure. Přesněji řečeno, použijete  *[pružiny spouštěcí]*  pro vývoj aplikací  *[Kubernetes]*  pro kontejner nasazení a [ Azure Container Service (ACS)] kvůli hostování vaší aplikace.
 
 ### <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure; Pokud nemáte předplatné Azure, můžete si aktivovat vaší [výhody pro předplatitele MSDN] nebo si zaregistrovat [bezplatný účet Azure].
-* Hello [rozhraní příkazového řádku Azure (CLI)].
+* [Rozhraní příkazového řádku Azure (CLI)].
 * Aktuální [Java Developer Kit (JDK)].
 * Apache na [Maven] sestavení nástroj (verze 3).
 * A [Git] klienta.
@@ -40,14 +40,14 @@ Tento kurz vás provede, když kombinace těchto dvou oblíbených, open-source 
 
 > [!NOTE]
 >
-> Z důvodu toohello virtualizace požadavky tohoto kurzu nelze sledovat hello kroky v tomto článku na virtuálním počítači; fyzický počítač musí používat s funkcemi virtualizace.
+> Z důvodu požadavků na virtualizace tohoto kurzu nelze na virtuálním počítači; podle kroků v tomto článku fyzický počítač musí používat s funkcemi virtualizace.
 >
 
-## <a name="create-hello-spring-boot-on-docker-getting-started-web-app"></a>Vytvoření hello pružiny spouštěcí na Docker Začínáme webové aplikace
+## <a name="create-the-spring-boot-on-docker-getting-started-web-app"></a>Vytvoření spouštěcích pružiny ve webové aplikaci Docker Začínáme
 
-Hello následující kroky vás provede procesem vytváření webové aplikace pružiny spouštěcí a místní testování.
+Následující postup vás provede procesem vytváření webové aplikace pružiny spouštěcí a místní testování.
 
-1. Otevřete příkazový řádek a vytvářet toohold místního adresáře aplikace a změnit adresář toothat; například:
+1. Otevřete příkazový řádek a vytvořte místní adresář pro uložení aplikace, změnit do tohoto adresáře; například:
    ```
    md C:\SpringBoot
    cd C:\SpringBoot
@@ -58,56 +58,56 @@ Hello následující kroky vás provede procesem vytváření webové aplikace p
    cd /users/robert/SpringBoot
    ```
 
-1. Klon hello [pružiny spouštěcí na Docker Začínáme] ukázkový projekt do adresáře hello.
+1. Klon [pružiny spouštěcí na Docker Začínáme] ukázkový projekt do adresáře.
    ```
    git clone https://github.com/spring-guides/gs-spring-boot-docker.git
    ```
 
-1. Změňte adresář toohello dokončení projektu.
+1. Změňte adresář na dokončený projekt.
    ```
    cd gs-spring-boot-docker
    cd complete
    ```
 
-1. Používejte Maven toobuild a spuštění hello ukázkovou aplikaci.
+1. Používání Maven k sestavení a spuštění ukázkové aplikace.
    ```
    mvn package spring-boot:run
    ```
 
-1. Testování hello webové aplikace procházením toohttp://localhost:8080 nebo s následující hello `curl` příkaz:
+1. Test webové aplikace tak, že přejde na adrese http://localhost: 8080 nebo s následující `curl` příkaz:
    ```
    curl http://localhost:8080
    ```
 
-1. Měli byste vidět hello následující zpráva: **Hello, World Docker**
+1. Měli byste vidět zobrazenou následující zprávu: **Hello Docker World**
 
    ![Procházet ukázkovou aplikaci místně][SB01]
 
-## <a name="create-an-azure-container-registry-using-hello-azure-cli"></a>Vytvoření registru kontejneru služby Azure pomocí hello rozhraní příkazového řádku Azure
+## <a name="create-an-azure-container-registry-using-the-azure-cli"></a>Vytvoření registru kontejneru služby Azure pomocí rozhraní příkazového řádku Azure
 
 1. Otevřete příkazový řádek.
 
-1. Přihlaste se tooyour účet Azure:
+1. Přihlaste se k účtu Azure:
    ```azurecli
    az login
    ```
 
-1. Vytvořte skupinu prostředků pro hello použité v tomto kurzu prostředky Azure.
+1. Vytvořte skupinu prostředků pro použité v tomto kurzu prostředky Azure.
    ```azurecli
    az group create --name=wingtiptoys-kubernetes --location=eastus
    ```
 
-1. Vytvořte kontejner privátní Azure registru ve skupině prostředků hello. kurz Hello doručí hello ukázkové aplikace jako soubor Docker image toothis registru v dalších krocích. Nahraďte `wingtiptoysregistry` s jedinečným názvem pro vaše registru.
+1. Vytvořte kontejner privátní Azure registru ve skupině prostředků. Kurz doručí ukázková aplikace jako obrázek na Docker tento registru v dalších krocích. Nahraďte `wingtiptoysregistry` s jedinečným názvem pro vaše registru.
    ```azurecli
    az acr create --admin-enabled --resource-group wingtiptoys-kubernetes--location eastus \
     --name wingtiptoysregistry --sku Basic
    ```
 
-## <a name="push-your-app-toohello-container-registry"></a>Push vaší aplikace toohello kontejneru registru
+## <a name="push-your-app-to-the-container-registry"></a>Push vaší aplikace do registru kontejneru
 
-1. Přejděte toohello konfiguračního adresáře pro instalaci Maven (výchozí ~/.m2/ nebo C:\Users\username\.m2) a otevřené hello *souborech settings.xml* soubor v textovém editoru.
+1. Přejděte do adresáře konfigurace pro instalaci Maven (výchozí ~/.m2/ nebo C:\Users\username\.m2) a otevřete *souborech settings.xml* soubor v textovém editoru.
 
-1. Načtení hello hesla pro vaše kontejneru registru z hello rozhraní příkazového řádku Azure.
+1. Načtení hesla pro vaše kontejneru registru z příkazového řádku Azure.
    ```azurecli
    az acr credential show --name wingtiptoysregistry --query passwords[0]
    ```
@@ -119,8 +119,8 @@ Hello následující kroky vás provede procesem vytváření webové aplikace p
    }
    ```
 
-1. Přidání vaší registru kontejner Azure id a heslo tooa nové `<server>` kolekce v hello *souborech settings.xml* souboru.
-Hello `id` a `username` jsou hello název registru hello. Použití hello `password` hodnotu z předchozí příkaz hello (bez uvozovek).
+1. Přidat kontejner registru Azure id a heslo na nový `<server>` kolekce *souborech settings.xml* souboru.
+`id` a `username` jsou název registru. Použití `password` hodnotu z předchozí příkaz (bez uvozovek).
 
    ```xml
    <servers>
@@ -132,9 +132,9 @@ Hello `id` a `username` jsou hello název registru hello. Použití hello `passw
    </servers>
    ```
 
-1. Přejděte toohello dokončit adresáři projektu pro vaši aplikaci pružiny spouštěcí (například "*C:\SpringBoot\gs-spring-boot-docker\complete*"nebo"*/users/robert/SpringBoot/gs-spring-boot-docker / dokončení*") a otevřete hello *pom.xml* soubor v textovém editoru.
+1. Přejděte do adresáře dokončený projekt pro vaše aplikace pružiny spouštěcí (například "*C:\SpringBoot\gs-spring-boot-docker\complete*"nebo"*/users/robert/SpringBoot/gs-spring-boot-docker/complete* ") a otevřete *pom.xml* soubor v textovém editoru.
 
-1. Aktualizace hello `<properties>` kolekce v hello *pom.xml* soubor s hodnotou server hello přihlášení pro vaše registru kontejner Azure.
+1. Aktualizace `<properties>` kolekce *pom.xml* soubor s hodnotou server přihlášení pro vaše registru kontejner Azure.
 
    ```xml
    <properties>
@@ -143,7 +143,7 @@ Hello `id` a `username` jsou hello název registru hello. Použití hello `passw
    </properties>
    ```
 
-1. Aktualizace hello `<plugins>` kolekce v hello *pom.xml* souboru, který hello `<plugin>` obsahuje hello přihlašovací adresu a registru název serveru pro váš registru kontejner Azure.
+1. Aktualizace `<plugins>` kolekce *pom.xml* souboru tak, aby `<plugin>` obsahuje přihlašovací adresu a registru název serveru pro váš registru kontejner Azure.
 
    ```xml
    <plugin>
@@ -166,7 +166,7 @@ Hello `id` a `username` jsou hello název registru hello. Použití hello `passw
    </plugin>
    ```
 
-1. Přejděte toohello dokončit adresáři projektu pro vaši aplikaci pružiny spouštěcí a spusťte následující příkaz toobuild hello Docker kontejneru a nabízených hello image toohello registru hello:
+1. Přejděte do adresáře dokončený projekt pro vaše aplikace pružiny spouštěcí a spusťte následující příkaz a vytvořit kontejner Docker push bitovou kopii do registru:
 
    ```
    mvn package docker:build -DpushImage
@@ -174,13 +174,13 @@ Hello `id` a `username` jsou hello název registru hello. Použití hello `passw
 
 > [!NOTE]
 >
->  Zobrazí chybovou zprávu, která je podobné tooone hello následující při Maven nabízených oznámení tooAzure hello bitové kopie:
+>  Zobrazí chybovou zprávu, která je jednu z následujících při Maven sami bitovou kopii do Azure:
 >
-> * `[ERROR] Failed tooexecute goal com.spotify:docker-maven-plugin:0.4.11:build (default-cli) on project gs-spring-boot-docker: Exception caught: no basic auth credentials`
+> * `[ERROR] Failed to execute goal com.spotify:docker-maven-plugin:0.4.11:build (default-cli) on project gs-spring-boot-docker: Exception caught: no basic auth credentials`
 >
-> * `[ERROR] Failed tooexecute goal com.spotify:docker-maven-plugin:0.4.11:build (default-cli) on project gs-spring-boot-docker: Exception caught: Incomplete Docker registry authorization credentials. Please provide all of username, password, and email or none.`
+> * `[ERROR] Failed to execute goal com.spotify:docker-maven-plugin:0.4.11:build (default-cli) on project gs-spring-boot-docker: Exception caught: Incomplete Docker registry authorization credentials. Please provide all of username, password, and email or none.`
 >
-> Pokud se tato chyba, přihlaste se tooAzure z příkazového řádku Dockeru hello.
+> Pokud se tato chyba přihlášení k Azure z příkazového řádku Dockeru.
 >
 > `docker login -u wingtiptoysregistry -p "AbCdEfGhIjKlMnOpQrStUvWxYz" wingtiptoysregistry.azurecr.io`
 >
@@ -188,59 +188,59 @@ Hello `id` a `username` jsou hello název registru hello. Použití hello `passw
 >
 > `docker push wingtiptoysregistry.azurecr.io/gs-spring-boot-docker`
 
-## <a name="create-a-kubernetes-cluster-on-acs-using-hello-azure-cli"></a>Vytvoření clusteru s podporou Kubernetes na ACS pomocí hello rozhraní příkazového řádku Azure
+## <a name="create-a-kubernetes-cluster-on-acs-using-the-azure-cli"></a>Vytvoření clusteru s podporou Kubernetes na ACS pomocí rozhraní příkazového řádku Azure
 
-1. Vytvoření clusteru Kubernetes v Azure Container Service. Hello následující příkaz vytvoří *kubernetes* clusteru v hello *Northwind kubernetes* prostředků skupiny s *Northwind containerservice* jako hello cluster název, a *Northwind kubernetes* jako předpona DNS hello:
+1. Vytvoření clusteru Kubernetes v Azure Container Service. Následující příkaz vytvoří *kubernetes* v clusteru *Northwind kubernetes* prostředků skupiny s *Northwind containerservice* jako název clusteru, a *Northwind kubernetes* jako DNS předpony:
    ```azurecli
    az acs create --orchestrator-type=kubernetes --resource-group=wingtiptoys-kubernetes \ 
     --name=wingtiptoys-containerservice --dns-prefix=wingtiptoys-kubernetes
    ```
-   Tento příkaz může chvíli trvat toocomplete.
+   Tento příkaz může trvat nějakou dobu pro dokončení.
 
-1. Nainstalujte `kubectl` pomocí hello rozhraní příkazového řádku Azure. Linux uživatelé mohou mít tooprefix tento příkaz s `sudo` vzhledem k tomu, že nasadí hello Kubernetes CLI příliš`/usr/local/bin`.
+1. Nainstalujte `kubectl` pomocí rozhraní příkazového řádku Azure. Linux uživatelé mohou mít k předpony tento příkaz s `sudo` vzhledem k tomu, že ji nasadí Kubernetes rozhraní příkazového řádku pro `/usr/local/bin`.
    ```azurecli
    az acs kubernetes install-cli
    ```
 
-1. Stáhněte si informace o konfiguraci clusteru hello tak můžete spravovat cluster z hello Kubernetes webové rozhraní a `kubectl`. 
+1. Stáhněte si informace o konfiguraci clusteru, můžete spravovat cluster z webové rozhraní Kubernetes a `kubectl`. 
    ```azurecli
    az acs kubernetes get-credentials --resource-group=wingtiptoys-kubernetes  \ 
     --name=wingtiptoys-containerservice
    ```
 
-## <a name="deploy-hello-image-tooyour-kubernetes-cluster"></a>Nasazení clusteru Kubernetes tooyour image hello
+## <a name="deploy-the-image-to-your-kubernetes-cluster"></a>Nasazení bitové kopie do clusteru Kubernetes
 
-V tomto kurzu nasadí hello aplikace pomocí `kubectl`, pak umožňují tooexplore hello nasazení prostřednictvím hello Kubernetes webového rozhraní.
+V tomto kurzu nasadí aplikace pomocí `kubectl`, pak umožňují prozkoumat nasazení pomocí rozhraní web Kubernetes.
 
-### <a name="deploy-with-hello-kubernetes-web-interface"></a>Nasazení s hello Kubernetes webové rozhraní
+### <a name="deploy-with-the-kubernetes-web-interface"></a>Nasazení s Kubernetes webové rozhraní
 
 1. Otevřete příkazový řádek.
 
-1. Otevřít web hello konfigurace pro váš cluster Kubernetes ve výchozím prohlížeči:
+1. Otevřete stránku konfigurace pro váš cluster Kubernetes ve výchozím prohlížeči:
    ```
    az acs kubernetes browse --resource-group=wingtiptoys-kubernetes --name=wingtiptoys-containerservice
    ```
 
-1. Když hello Kubernetes konfigurace webu se otevře v prohlížeči, klikněte na odkaz hello příliš**nasadit kontejnerizované aplikaci**:
+1. Když web konfigurace Kubernetes otevře v prohlížeči, klikněte na odkaz **nasadit kontejnerizované aplikaci**:
 
    ![Kubernetes konfigurace webu][KB01]
 
-1. Když hello **nasadit kontejnerizované aplikaci** se zobrazí stránka, zadejte hello následující možnosti:
+1. Když **nasadit kontejnerizované aplikaci** se zobrazí stránka, určete následující možnosti:
 
    a. Vyberte **zadejte níže uvedené podrobnosti o aplikaci**.
 
-   b. Zadejte název aplikace pružiny spouštěcí pro hello **název aplikace**; například: "*gs pružiny spouštěcí docker*".
+   b. Zadejte název aplikace pružiny spouštěcí pro **název aplikace**; například: "*gs pružiny spouštěcí docker*".
 
-   c. Zadejte přihlašovací serveru a kontejneru bitové kopie z dříve hello **kontejneru image**; například: "*wingtiptoysregistry.azurecr.io/gs-spring-boot-docker:latest*".
+   c. Zadejte přihlašovací serveru a kontejneru bitové kopie z dříve pro **kontejneru image**; například: "*wingtiptoysregistry.azurecr.io/gs-spring-boot-docker:latest*".
 
-   d. Zvolte **externí** pro hello **služby**.
+   d. Zvolte **externí** pro **služby**.
 
-   e. Zadejte vaše externí i interní portů v hello **Port** a **cíle port** textových polí.
+   e. Zadejte vaše externí i interní porty **Port** a **cíle port** textová pole.
 
    ![Kubernetes konfigurace webu][KB02]
 
 
-1. Klikněte na tlačítko **nasadit** toodeploy hello kontejneru.
+1. Klikněte na tlačítko **nasadit** nasaďte kontejner.
 
    ![Nasazení kontejneru][KB05]
 
@@ -248,7 +248,7 @@ V tomto kurzu nasadí hello aplikace pomocí `kubectl`, pak umožňují tooexplo
 
    ![Kubernetes služby][KB06]
 
-1. Pokud kliknete na odkaz hello **externí koncové body**, uvidíte pružiny spouštěcí aplikace spuštěné v Azure.
+1. Pokud kliknete na odkaz **externí koncové body**, uvidíte pružiny spouštěcí aplikace spuštěné v Azure.
 
    ![Kubernetes služby][KB07]
 
@@ -259,31 +259,31 @@ V tomto kurzu nasadí hello aplikace pomocí `kubectl`, pak umožňují tooexplo
 
 1. Otevřete příkazový řádek.
 
-1. Spusťte vašeho kontejneru v clusteru Kubernetes hello pomocí hello `kubectl run` příkaz. Zadejte název služby pro aplikaci v Kubernetes a název hello úplnou bitovou kopii. Například:
+1. Spuštění vaší kontejneru v clusteru Kubernetes pomocí `kubectl run` příkaz. Zadejte název služby pro aplikaci v Kubernetes a názvu úplnou bitovou kopii. Například:
    ```
    kubectl run gs-spring-boot-docker --image=wingtiptoysregistry.azurecr.io/gs-spring-boot-docker:latest
    ```
    V tomto příkazu:
 
-   * název kontejneru Hello `gs-spring-boot-docker` je zadán ihned po hello `run` příkaz
+   * Název kontejneru `gs-spring-boot-docker` je zadán ihned po `run` příkaz
 
-   * Hello `--image` parametr určuje hello kombinaci přihlášení na server a název bitové kopie jako`wingtiptoysregistry.azurecr.io/gs-spring-boot-docker:latest`
+   * `--image` Parametr určuje název serveru a bitové kopie kombinované přihlášení jako`wingtiptoysregistry.azurecr.io/gs-spring-boot-docker:latest`
 
-1. Vystavení clusteru Kubernetes externě pomocí hello `kubectl expose` příkaz. Zadejte název vaší služby, hello veřejné TCP port používaný tooaccess hello aplikace a hello interní cílový port, který aplikace naslouchá na. Například:
+1. Vystavení clusteru Kubernetes externě pomocí `kubectl expose` příkaz. Zadejte název vaší služby, veřejné port TCP používá pro přístup k aplikaci a interní cílový port, který aplikace naslouchá na. Například:
    ```
    kubectl expose deployment gs-spring-boot-docker --type=LoadBalancer --port=80 --target-port=8080
    ```
    V tomto příkazu:
 
-   * název kontejneru Hello `gs-spring-boot-docker` je zadán ihned po hello `expose deployment` příkaz
+   * Název kontejneru `gs-spring-boot-docker` je zadán ihned po `expose deployment` příkaz
 
-   * Hello `--type` parametr určuje, že cluster hello používá nástroj pro vyrovnávání zatížení
+   * `--type` Parametr určuje, zda cluster používá nástroj pro vyrovnávání zatížení
 
-   * Hello `--port` parametr určuje hello veřejné TCP port 80. Máte přístup k aplikaci hello na tento port.
+   * `--port` Parametr určuje veřejné port TCP 80. Máte přístup k aplikaci na tomto portu.
 
-   * Hello `--target-port` parametr určuje hello interní TCP port 8080. Nástroj pro vyrovnávání zatížení Hello předává požadavky tooyour aplikace na tomto portu.
+   * `--target-port` Parametr určuje vnitřní TCP port 8080. Nástroje pro vyrovnávání zatížení předá požadavky na aplikace na tomto portu.
 
-1. Po nasazení aplikace hello toohello clusteru dotaz hello externí IP adresu a otevřete ve webovém prohlížeči:
+1. Po nasazení aplikace do clusteru, dotazování na externí IP adresu a otevřete ve webovém prohlížeči:
 
    ```
    kubectl get services -o jsonpath={.items[*].status.loadBalancer.ingress[0].ip} --namespace=${namespace}
@@ -294,54 +294,54 @@ V tomto kurzu nasadí hello aplikace pomocí `kubectl`, pak umožňují tooexplo
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o používání spouštěcí Spring v Azure najdete v části hello následující články:
+Další informace o používání spouštěcí Spring v Azure najdete v následujících článcích:
 
-* [Nasazení aplikace spouštěcí pružiny toohello Azure App Service](../../app-service/app-service-deploy-spring-boot-web-app-on-azure.md)
-* [Nasazení aplikace pružiny spouštění v systému Linux v hello Azure Container Service](container-service-deploy-spring-boot-app-on-linux.md)
+* [Nasazení aplikace spouštěcí pružiny do Azure App Service](../../app-service/app-service-deploy-spring-boot-web-app-on-azure.md)
+* [Nasazení aplikace pružiny spouštění v systému Linux v Azure Container Service](container-service-deploy-spring-boot-app-on-linux.md)
 
-Další informace o používání Azure v jazyce Java, najdete v tématu hello [Azure střediska pro vývojáře Java] a hello [Java nástrojů pro Visual Studio Team Services].
+Další informace o používání Javy v Azure najdete na webu [Středisko pro vývojáře Java] a [Java Tools for Visual Studio Team Services] (Nástroje Java pro Visual Studio Team Services).
 
-Další informace o hello pružiny spouštěcí na Docker ukázkový projekt najdete v tématu [pružiny spouštěcí na Docker Začínáme].
+Další informace o spouštění pružiny na Docker ukázkový projekt najdete v tématu [pružiny spouštěcí na Docker Začínáme].
 
-Hello následující odkazy obsahují další informace o vytváření aplikací pro spouštěcí pružiny:
+Následující odkazy obsahují další informace o vytváření aplikací pro spouštěcí pružiny:
 
-* Další informace o vytvoření jednoduché aplikace pružiny spouštěcí najdete v části hello Spring Initializr v https://start.spring.io/.
+* Další informace o vytvoření jednoduché aplikace pružiny spouštěcí najdete v části Initializr Spring v https://start.spring.io/.
 
-Hello následující odkazy obsahují další informace o používání Kubernetes s Azure:
+Následující odkazy obsahují další informace o používání Kubernetes s Azure:
 
 * [Začínáme s Kubernetes cluster Container Service](https://docs.microsoft.com/azure/container-service/container-service-kubernetes-walkthrough)
-* [Pomocí hello Kubernetes webové uživatelské rozhraní s Azure Container Service](https://docs.microsoft.com/azure/container-service/container-service-kubernetes-ui)
+* [Pomocí Azure Container Service Kubernetes webového uživatelského rozhraní](https://docs.microsoft.com/azure/container-service/container-service-kubernetes-ui)
 
-Další informace o používání rozhraní příkazového řádku Kubernetes je k dispozici v hello **kubectl** v uživatelské příručce <https://kubernetes.io/docs/user-guide/kubectl/>.
+Další informace o používání rozhraní příkazového řádku Kubernetes je k dispozici v **kubectl** v uživatelské příručce <https://kubernetes.io/docs/user-guide/kubectl/>.
 
-Hello Kubernetes web má několik články, které popisují pomocí bitové kopie v privátní registrech:
+Kubernetes web má několik články, které popisují pomocí bitové kopie v privátní registrech:
 
 * [Konfigurace služby pro pracovními stanicemi soustředěnými kolem účtů]
 * [Obory názvů]
 * [Stahování bitovou kopii z privátní registru]
 
-Další příklady jak toouse vlastní Docker obrázků s Azure, najdete v části [pomocí vlastní image Docker pro webové aplikace Azure v systému Linux].
+Další příklady použití vlastních imagí Dockeru s Azure, najdete v části [pomocí vlastní image Docker pro webové aplikace Azure v systému Linux].
 
 <!-- URL List -->
 
-[rozhraní příkazového řádku Azure (CLI)]: /cli/azure/overview
-[Azure Container Service (ACS)]: https://azure.microsoft.com/services/container-service/
-[Azure střediska pro vývojáře Java]: https://azure.microsoft.com/develop/java/
+[Rozhraní příkazového řádku Azure (CLI)]: /cli/azure/overview
+[ Azure Container Service (ACS)]: https://azure.microsoft.com/services/container-service/
+[Středisko pro vývojáře Java]: https://azure.microsoft.com/develop/java/
 [Azure portal]: https://portal.azure.com/
-[Create a private Docker container registry using hello Azure portal]: /azure/container-registry/container-registry-get-started-portal
+[Create a private Docker container registry using the Azure portal]: /azure/container-registry/container-registry-get-started-portal
 [pomocí vlastní image Docker pro webové aplikace Azure v systému Linux]: /azure/app-service-web/app-service-linux-using-custom-docker-image
 [Docker]: https://www.docker.com/
 [bezplatný účet Azure]: https://azure.microsoft.com/pricing/free-trial/
 [Git]: https://github.com/
 [Java Developer Kit (JDK)]: http://www.oracle.com/technetwork/java/javase/downloads/
-[Java nástrojů pro Visual Studio Team Services]: https://java.visualstudio.com/
+[Java Tools for Visual Studio Team Services]: https://java.visualstudio.com/
 [Kubernetes]: https://kubernetes.io/
 [Kubernetes Command-Line Interface (kubectl)]: https://kubernetes.io/docs/user-guide/kubectl-overview/
 [Maven]: http://maven.apache.org/
 [výhody pro předplatitele MSDN]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
 [pružiny spouštěcí]: http://projects.spring.io/spring-boot/
 [pružiny spouštěcí na Docker Začínáme]: https://github.com/spring-guides/gs-spring-boot-docker
-[pružiny Framework]: https://spring.io/
+[Pružiny Framework]: https://spring.io/
 [Konfigurace služby pro pracovními stanicemi soustředěnými kolem účtů]: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
 [Obory názvů]: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
 [Stahování bitovou kopii z privátní registru]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/

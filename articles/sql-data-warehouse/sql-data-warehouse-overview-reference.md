@@ -1,5 +1,5 @@
 ---
-title: "témata odkazů datového skladu aaaSQL | Microsoft Docs"
+title: "Témata s referenčními informacemi SQL Data Warehouse | Microsoft Docs"
 description: "Referenční obsahu odkazy pro SQL Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: reference
 ms.date: 10/31/2016
 ms.author: barbkess
-ms.openlocfilehash: 649a0b7da81b6817c435ad820642318a8cbf92d1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c56c1c262aa1a88e3f7a3d6638176cb9f97011d3
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="reference-topics-for-sql-data-warehouse"></a>Témata odkazů pro SQL Data Warehouse
 Tyto články obsahují referenční informace pro SQL Data Warehouse.

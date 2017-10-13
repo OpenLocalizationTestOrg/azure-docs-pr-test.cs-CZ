@@ -1,6 +1,6 @@
 ---
-title: "aaaHow tooenable jednotného přihlašování napříč aplikacemi v systému Android pomocí ADAL | Microsoft Docs"
-description: "Jak funkce hello toouse hello ADAL SDK tooenable jednotné přihlašování v aplikacích. "
+title: "Postup povolení jednotného přihlašování napříč aplikacemi v systému Android pomocí ADAL | Microsoft Docs"
+description: "Jak používat funkce sady ADAL SDK povolit jednotné přihlašování v rámci vaší aplikace. "
 services: active-directory
 documentationcenter: 
 author: danieldobalian
@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 04/07/2017
 ms.author: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 3867e15030e5516464e4dbd92ba35894430daf00
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 9c7e959530a836fe5ddf74708363a636c39b3cc6
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-tooenable-cross-app-sso-on-android-using-adal"></a>Jak tooenable jednotného přihlašování napříč aplikacemi v systému Android pomocí ADAL
-Poskytuje jednotné přihlašování (SSO), aby uživatelé pouze potřebovat tooenter jejich přihlašovací údaje jednou a mají tyto přihlašovací údaje automaticky pracovní aplikace je nyní očekávanou zákazníků. Hello potíže při zadání uživatelského jména a hesla na malou obrazovku, často časy v kombinaci s další faktor (2FA) jako telefonní hovor nebo kód zasílání zpráv SMS, má za následek rychlé nespokojenosti, pokud uživatel má toodo to více než jednou pro svůj produkt.
+# <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Postup povolení jednotného přihlašování napříč aplikacemi v systému Android pomocí ADAL
+Pokud jednotné přihlašování (SSO), aby uživatelé stačí jednou zadat své přihlašovací údaje a mají tyto přihlašovací údaje automaticky fungovat na všech aplikací nyní očekává zákazníků. Problémy se zadáním uživatelského jména a hesla na malou obrazovku, často časy v kombinaci s další faktor (2FA) jako telefonní hovor nebo kód zasílání zpráv SMS, má za následek rychlé nespokojenosti, pokud uživatel má k tomu více než jednou pro svůj produkt.
 
-Kromě toho pokud použijete identity platforma, která mohou používat jiné aplikace například Accounts Microsoft nebo pracovní účet z Office 365, zákazníci očekávat, že tyto přihlašovací údaje toobe dostupné toouse na všechny svoje aplikace bez ohledu na dodavatele hello.
+Kromě toho pokud použijete identity platforma, která mohou používat jiné aplikace například Accounts Microsoft nebo pracovní účet z Office 365, zákazníci očekávají, že ty pověření být k dispozici pro použití na všechny svoje aplikace bez ohledu na dodavatele.
 
-Hello platformy Microsoft Identity, společně s naše sady SDK Microsoft Identity funguje všechny tento pevný a poskytuje hello možnost toodelight zákazníků pomocí jednotného přihlašování, buď v rámci vlastní sadu aplikací, nebo jako s naše schopností zprostředkovatele a Authenticator aplikacemi, v rámci celého zařízení hello.
+Do platformy Microsoft Identity, společně s naše sady SDK Identity Microsoft nepodporuje tento pevný pracovní pro vás a vám dává možnost delight zákazníků pomocí jednotného přihlašování, buď v rámci vlastní sada aplikací nebo, stejně jako u našich schopností zprostředkovatele a ověřovací aplikacemi, v rámci celého zařízení.
 
-Tento návod vám oznámí, jak tooconfigure naše sady SDK v rámci vaší aplikace tooprovide této výhody tooyour zákazníků.
+Tento návod popisuje postup konfigurace naše sady SDK v rámci aplikace umožní vašim zákazníkům poskytovat této výhody.
 
 Tento postup platí pro:
 
@@ -37,36 +37,36 @@ Tento postup platí pro:
 * Azure Active Directory s B2B
 * Podmíněný přístup k Azure Active Directory
 
-předchozí Hello dokumentu se předpokládá, víte, jak příliš[zřídit aplikace hello starší verze portálu pro Azure Active Directory](active-directory-how-to-integrate.md) a integraci aplikace s hello [Microsoft Identity Android SDK](https://github.com/AzureAD/azure-activedirectory-library-for-android) .
+Předchozí dokument předpokládá, že víte, jak [zřídit aplikace na portálu pro starší verze pro Azure Active Directory](active-directory-how-to-integrate.md) a integrované aplikace s [Microsoft Identity Android SDK](https://github.com/AzureAD/azure-activedirectory-library-for-android).
 
-## <a name="sso-concepts-in-hello-microsoft-identity-platform"></a>Koncepty jednotné přihlašování v hello Microsoft Identity Platform
+## <a name="sso-concepts-in-the-microsoft-identity-platform"></a>Koncepty jednotné přihlašování v platformě Microsoft Identity
 ### <a name="microsoft-identity-brokers"></a>Zprostředkovatelé Microsoft Identity
-Microsoft poskytuje aplikace pro každou platformu mobilních, které umožňují hello přemostění přihlašovacích údajů napříč aplikacemi od různých dodavatelů a umožňuje pro speciální rozšířené funkce, které vyžadují jeden bezpečné místo, odkud toovalidate přihlašovací údaje. Tyto říkáme **makléřům**. Na iOS a Android tyto položky jsou poskytovány prostřednictvím ke stažení aplikací, aby zákazníci nainstalovat nezávisle na, nebo můžete poslat toohello zařízení ve společnosti, který spravuje některé nebo všechny hello zařízení pro své zaměstnance. Správa zabezpečení těchto zprostředkovatelé podporují jenom pro některé aplikace nebo hello zařízení podle potřeby co správci IT. V systému Windows je tato funkce poskytuje výběru účtu, který je součástí operačního systému toohello, technicky říká hello zprostředkovatele webového ověření.
+Společnost Microsoft poskytuje aplikace pro každou platformu mobilních umožňujících přemostění přihlašovacích údajů napříč aplikacemi od různých dodavatelů a umožňuje pro speciální rozšířené funkce, které vyžadují jeden bezpečné místo, odkud se ověřit přihlašovací údaje. Tyto říkáme **makléřům**. Na iOS a Android tyto položky jsou poskytovány prostřednictvím ke stažení aplikací, aby zákazníci nainstalovat nezávisle na, nebo můžete nabídnutých do zařízení ve společnosti, který spravuje některých nebo všech zařízení pro své zaměstnance. Správa zabezpečení těchto zprostředkovatelé podporují jenom pro některé aplikace nebo ze zařízení podle potřeby co správci IT. V systému Windows je tato funkce poskytuje výběru účtu, který je součástí operačního systému, známé technicky jako zprostředkovatele webového ověření.
 
-Další informace o tom, použijeme tyto zprostředkovatelé a jak vaši zákazníci mohou zobrazit je v jejich toku přihlášení pro platformu Microsoft Identity hello číst na.
+Další informace o tom, použijeme tyto zprostředkovatelé a jak vaši zákazníci mohou zobrazit je v jejich toku přihlášení pro čtení na platformu Microsoft Identity.
 
 ### <a name="patterns-for-logging-in-on-mobile-devices"></a>Vzory pro přihlašování na mobilních zařízeních
-Toocredentials přístup na zařízení podle dva základní vzory pro platformu Microsoft Identity hello:
+Přístup k přihlašovacím údajům v zařízení podle dva základní vzory pro platformu Microsoft Identity:
 
 * Přihlášení odbornou bez zprostředkovatele
 * Zprostředkovatel odbornou přihlášení
 
 #### <a name="non-broker-assisted-logins"></a>Přihlášení odbornou bez zprostředkovatele
-Přihlášení odbornou non-broker jsou přihlášení prostředí, které dojít vložené s hello aplikací a použít místní úložiště hello na hello zařízení pro tuto aplikaci. Toto úložiště může být sdíleny s aplikací, ale hello přihlašovací údaje jsou úzce vázané toohello aplikace nebo sadu aplikací pomocí tohoto pověření. Jste s největší pravděpodobností došlo k to v mnoha mobilních aplikacích. když zadáte uživatelské jméno a heslo v rámci vlastní aplikace hello.
+Přihlášení odbornou non-broker jsou možností přihlášení, které dojít vložené s aplikací a použít místní úložiště na zařízení pro tuto aplikaci. Toto úložiště může být sdíleny s aplikací, ale přihlašovací údaje jsou úzce vázaný aplikace nebo sadu aplikací pomocí tohoto pověření. Jste s největší pravděpodobností došlo k to v mnoha mobilních aplikacích. když zadáte uživatelské jméno a heslo v rámci vlastní aplikace.
 
-Tyto přihlášení mít hello následující výhody:
+Tyto přihlášení mají následující výhody:
 
-* Činnost koncového uživatele existuje zcela v rámci aplikace hello.
-* Přihlašovací údaje můžete sdílet mezi aplikací, které jsou podepsány hello stejný certifikát, poskytuje prostředí přihlašování tooyour sady aplikací.
-* Ovládací prvek kolem hello prostředí přihlášení je k dispozici toohello aplikace před a po přihlášení.
+* Činnost koncového uživatele zcela v aplikaci existuje.
+* Přihlašovací údaje můžete sdílet mezi aplikací, které jsou podepsány stejný certifikát, poskytování jeden přihlašování pro vaše sada aplikací.
+* Ovládací prvek kolem možností přihlášení je k dispozici do aplikace před a po přihlášení.
 
-Tyto přihlášení mít hello následující nevýhody:
+Tyto přihlášení mají tyto nevýhody:
 
 * Uživatele nelze jednotného přihlašování napříč všechny aplikace, které používají Microsoft Identity pouze v rámci těchto Identities Microsoft, které má vaše aplikace nakonfigurovaná.
-* Aplikaci nelze použít s pokročilejší obchodní funkce jako je například podmíněný přístup nebo použití hello InTune sadu produktů.
+* Aplikaci nelze použít s dalších pokročilých funkcí firmy, jako je například podmíněný přístup, nebo použijte produktů sady InTune.
 * Aplikace nepodporuje ověřování pomocí certifikátů pro uživatele.
 
-Zde je reprezentace jak hello Microsoft Identity sady SDK pracovat s hello sdílené úložiště vaše aplikace tooenable jednotné přihlašování:
+Zde je reprezentace fungování sadami SDK služby Microsoft Identity se sdíleným úložištěm aplikací k povolení přihlášení SSO:
 
 ```
 +------------+ +------------+  +-------------+
@@ -83,35 +83,35 @@ Zde je reprezentace jak hello Microsoft Identity sady SDK pracovat s hello sdíl
 ```
 
 #### <a name="broker-assisted-logins"></a>Zprostředkovatel odbornou přihlášení
-S pomocí zprostředkovatele přihlášení jsou přihlášení prostředí, v rámci aplikace hello zprostředkovatele, které používají úložiště hello a zabezpečení hello zprostředkovatele tooshare přihlašovací údaje ve všech aplikacích na hello zařízení, které se vztahují hello platformy Microsoft Identity. To znamená, že vaše aplikace závisí na hello zprostředkovatele toosign uživatele v. Na iOS a Android tyto zprostředkovatelé jsou k dispozici ke stažení aplikace, aby zákazníci nainstalovat nezávisle na, nebo můžete poslat toohello zařízení ve společnosti, který spravuje hello zařízení pro svoje uživatele. Příkladem tento typ aplikace je aplikace Microsoft Authenticator hello v systému iOS. V systému Windows je tato funkce poskytuje výběru účtu, který je součástí operačního systému toohello, technicky říká hello zprostředkovatele webového ověření.
-Hello prostředí se liší podle platformy a v některých případech může být rušivý toousers není správně spravovat. Jste pravděpodobně nejvíce obeznámeni s tento vzor, pokud máte nainstalovanou aplikací hello Facebook a použijete Facebook připojit z jiné aplikace. Hello používá platformy Microsoft Identity hello stejného vzoru.
+S pomocí zprostředkovatele přihlášení jsou přihlášení prostředí, v rámci zprostředkovatele aplikace, které používají úložiště a security zprostředkovatele sdílet přihlašovací údaje ve všech aplikací v zařízení, které se vztahují na platformu Microsoft Identity. To znamená, že vaše aplikace závisí na broker k přihlášení uživatele. Na iOS a Android tyto zprostředkovatelé jsou k dispozici ke stažení aplikace, aby zákazníci nainstalovat nezávisle na, nebo můžete nabídnutých do zařízení ve společnosti, který spravuje zařízení pro svoje uživatele. Příkladem tento typ aplikace je aplikace Microsoft Authenticator v systému iOS. V systému Windows je tato funkce poskytuje výběru účtu, který je součástí operačního systému, známé technicky jako zprostředkovatele webového ověření.
+Možnosti se liší podle platformy a v některých případech můžou narušovat běh produktu uživatelům není správně spravovat. Jste pravděpodobně nejvíce obeznámeni s tento vzor, pokud máte nainstalovanou aplikací služby Facebook a použijete Facebook připojit z jiné aplikace. Platforma Microsoft Identity používá stejného vzoru.
 
-Pro iOS důsledkem tooa "přechodu" animace kam aplikace je odeslána toohello pozadí při aplikace Microsoft Authenticator hello dodává popředí toohello pro uživatele tooselect hello účtu, který mu toosign s.  
+Pro iOS, které to vede k "přechodu" animace, kdy se vaše aplikace odesílají na pozadí při aplikace Microsoft Authenticator obsahuje popředí pro uživatele k výběru účtu, který se chcete přihlásit.  
 
-Pro Android a Windows hello účet výběru, zobrazí se na aplikace, což je méně rušivý toohello uživatele.
+Pro Android a Windows výběru účtu, zobrazí se na aplikace, což je méně rušivý uživateli.
 
-#### <a name="how-hello-broker-gets-invoked"></a>Jak získá vyvolána hello zprostředkovatele
-Pokud je v hello zařízení, jako jsou hello Microsoft Authenticator aplikace hello SDK služby Microsoft Identity bude automaticky nainstalován kompatibilní zprostředkovatele hello pracovní vyvolání hello zprostředkovatele pro vás, když uživatel označuje, že si přejí toolog pomocí libovolného účtu z Platforma Microsoft Identity Hello. Tento účet může být osobní Account Microsoft, pracovní nebo školní účet, nebo účtu, který zadáte a hostitele v Azure pomocí našich produktů B2C a B2B. 
+#### <a name="how-the-broker-gets-invoked"></a>Jak se zprostředkovatel volán
+Pokud je kompatibilní zprostředkovatel nainstalovaný na zařízení, jako je aplikace Microsoft Authenticator sadami SDK služby Microsoft Identity automaticky provede práci při vyvolání zprostředkovatele pro vás, když uživatel označuje, že se chcete přihlásit pomocí libovolného účtu z platformy Microsoft Identity. Tento účet může být osobní Account Microsoft, pracovní nebo školní účet, nebo účtu, který zadáte a hostitele v Azure pomocí našich produktů B2C a B2B. 
  
- #### <a name="how-we-ensure-hello-application-is-valid"></a>Jak jsme zkontrolujte aplikace hello je platný
+ #### <a name="how-we-ensure-the-application-is-valid"></a>Jakým způsobem je zajištěno aplikace je platný
  
- Hello nutné tooensure hello identita broker hello volání aplikace je zásadní toohello zabezpečení, které poskytujeme v s pomocí zprostředkovatele přihlášení. IOS ani Android vynucuje jedinečné identifikátory, které jsou platné pouze pro danou aplikaci, tak, aby škodlivé aplikace může "zfalšovat" identifikátor legitimní aplikace a přijímat tokeny hello určená pro aplikaci legitimní hello. tooensure, které jsme vždy komunikují s hello správné aplikace za běhu, požádáme hello vývojáře tooprovide vlastní redirectURI při registraci své aplikace se společností Microsoft. **Jak vývojáři měli vytvořit tento identifikátor URI pro přesměrování je podrobněji níže.** Tato vlastní redirectURI obsahuje kryptografický otisk certifikátu hello hello aplikace a je zajištěna toobe jedinečný toohello aplikace hello Google Play Storu. Pokud aplikace volá zprostředkovatele hello hello zprostředkovatele požádá tooprovide operační systém Android hello její hello kryptografický otisk certifikátu tohoto zprostředkovatele volané hello. Zprostředkovatel Hello poskytuje tooMicrosoft kryptografický otisk tohoto certifikátu v hello volání tooour identity systému. Pokud během registrace zadat toous vývojářem hello hello certifikát, že kryptografický otisk aplikace hello neodpovídá hello kryptografický otisk certifikátu, jsme odepře přístup toohello tokeny pro hello prostředků hello aplikace požaduje. Tato kontrola zajistí, že pouze hello aplikace registrovaných hello vývojáře přijímá tokeny.
+ Je třeba zajistit identity volání aplikace, které je zásadní zabezpečení, které poskytujeme ve zprostředkovateli zprostředkovatele s asistencí přihlášení. IOS ani Android vynucuje jedinečné identifikátory, které jsou platné pouze pro danou aplikaci, tak, aby škodlivé aplikace může "zfalšovat" identifikátor legitimní aplikace a přijímat tokeny určená pro oprávněné aplikaci. Ujistěte se, že jsme vždy komunikují pomocí správné aplikace za běhu, požádáme vývojáři poskytnout vlastní redirectURI při registraci své aplikace se společností Microsoft. **Jak vývojáři měli vytvořit tento identifikátor URI pro přesměrování je podrobněji níže.** Tato vlastní redirectURI obsahuje kryptografický otisk certifikátu aplikace a je zajištěna jedinečnost do aplikace obchod Google Play. Pokud aplikace zavolá zprostředkovatele, požádá zprostředkovatele operační systém Android poskytnout kryptografický otisk certifikátu, který volá zprostředkovatele. Zprostředkovatel poskytuje kryptografický otisk tohoto certifikátu společnosti Microsoft ve volání naše systém identit. Pokud kryptografický otisk certifikátu aplikace neodpovídá kryptografický otisk certifikátu uvedenou nám vývojáře při registraci, jsme odepře přístup na tokeny pro prostředek, který aplikace požaduje. Tato kontrola zajistí, že pouze aplikace, které jsou zaregistrované vývojáře přijímá tokeny.
 
-**Hello vývojáře má hello volbu, pokud hello Microsoft Identity SDK volá zprostředkovatele hello nebo používá odbornou toku hello bez zprostředkovatele.** Ale pokud hello vývojáře vybere není toouse hello s asistencí služby broker toku nich došlo ke ztrátě výhodou hello pomocí jednotného přihlašování k přihlašovacích údajů tohoto uživatele hello může mít již přidán do zařízení hello a zabrání jejich aplikaci z používá s funkcemi obchodní Microsoft nabízí svým zákazníkům, jako je například podmíněný přístup, možnosti správy Intune a ověřování pomocí certifikátů.
+**Vývojář musí volba, pokud sada SDK Microsoft Identity volá zprostředkovatele nebo používá odbornou toku bez zprostředkovatele.** Ale pokud vývojář vybere nepoužívat toku s asistencí služby broker nich došlo ke ztrátě výhodou použití jednotného přihlašování k přihlašovací údaje, které uživatel může na zařízení již přidali a zabrání jejich aplikaci z používaný s funkcí business, které společnost Microsoft poskytuje svým zákazníkům, jako je například podmíněný přístup, možnosti správy Intune a ověřování pomocí certifikátů.
 
-Tyto přihlášení mít hello následující výhody:
+Tyto přihlášení mají následující výhody:
 
-* Uživatel narazí na všechny svoje aplikace bez ohledu na dodavatele hello jednotné přihlašování.
-* Aplikace můžete použít dalších pokročilých funkcí firmy, jako je například podmíněný přístup nebo pomocí sady InTune hello produktů.
+* Uživatel vyskytne jednotného přihlašování na všechny svoje aplikace bez ohledu na dodavatele.
+* Aplikace můžete použít dalších pokročilých funkcí firmy, jako je například podmíněný přístup nebo používat sadu InTune produktů.
 * Aplikace může podporovat ověřování pomocí certifikátů pro uživatele.
-* Mnohem bezpečnější přihlašování hello identity aplikace hello a hello uživatele jsou ověřené aplikací hello zprostředkovatele s další bezpečnostní algoritmů hash a šifrování.
+* Mnohem bezpečnější přihlašovat jako identita aplikace a uživatel se ověřit pomocí zprostředkovatele aplikace s další bezpečnostní algoritmů hash a šifrování.
 
-Tyto přihlášení mít hello následující nevýhody:
+Tyto přihlášení mají tyto nevýhody:
 
-* V iOS převedena hello uživatele mimo prostředí vaší aplikace, když je možné zvolit přihlašovací údaje.
-* Ztrátě hello možnost toomanage hello přihlašovací prostředí pro vaši zákazníci v rámci vaší aplikace.
+* V iOS převedena uživatele mimo prostředí vaší aplikace, když je možné zvolit přihlašovací údaje.
+* Ztráta schopnost spravovat přihlašování pro vaši zákazníci v rámci vaší aplikace.
 
-Zde je reprezentace jak pracují SDK služby Microsoft Identity hello se hello zprostředkovatel aplikace tooenable jednotné přihlašování:
+Zde je reprezentace fungování sadami SDK služby Microsoft Identity s aplikacemi zprostředkovatele k povolení přihlášení SSO:
 
 ```
 +------------+ +------------+   +-------------+
@@ -138,27 +138,27 @@ Zde je reprezentace jak pracují SDK služby Microsoft Identity hello se hello z
 
 ```
 
-Díky této základní informace musí být schopný toobetter pochopit a implementovat jednotné přihlašování v rámci vaší aplikace pomocí platformy Microsoft Identity hello a sady SDK.
+Díky této základní informace, které byste měli mít lépe pochopit a implementovat jednotné přihlašování v rámci vaší aplikace pomocí platformy Microsoft Identity a sady SDK.
 
 ## <a name="enabling-cross-app-sso-using-adal"></a>Povolení jednotného přihlašování napříč aplikacemi pomocí ADAL
-Tady používáme hello ADAL sady SDK pro Android na:
+Tady používáme ADAL Android SDK:
 
 * Zapněte bez zprostředkovatele s pomocí jednotného přihlašování pro vaše sada aplikací
 * Zapnutí podpory pro jednotné přihlašování s asistencí zprostředkovatele
 
 ### <a name="turning-on-sso-for-non-broker-assisted-sso"></a>Zapnout jednotné přihlašování pro bez zprostředkovatele s pomocí jednotného přihlašování
-Bez zprostředkovatele odbornou jednotné přihlašování napříč aplikacemi spravovat hello SDK služby Microsoft Identity mnohem složitější hello přihlašování pro vás. To zahrnuje hello správné uživatelské hledání v mezipaměti hello a udržování seznam přihlášeného uživatele pro tooquery je.
+Bez zprostředkovatele odbornou jednotné přihlašování napříč aplikacemi spravovat sadami SDK služby Microsoft Identity velkou část složitosti jednotného přihlašování pro vás. To zahrnuje správné uživatelské hledání v mezipaměti a udržování seznam přihlášeného uživatele pro vás k dotazování.
 
-tooenable jednotného přihlašování napříč aplikacemi, které vlastníte, které že budete potřebovat toodo hello následující:
+K povolení jednotného přihlašování napříč aplikacemi, které vlastníte, že musíte udělat následující:
 
-1. Ujistěte se, všechna vaše aplikace uživatele hello stejné ID klienta, nebo ID aplikace.
-2. Zajistěte, aby že všechny aplikace mají hello stejné SharedUserID nastavit.
-3. Zajistěte, aby všechny vaše aplikace hello sdílené složky stejný podpisový certifikát z hello Google Play úložiště tak, že můžete sdílet úložiště.
+1. Zkontrolujte všechny uživatelské aplikace stejné ID klienta nebo ID aplikace.
+2. Zajistěte, aby že všechny aplikace mají stejnou sadu SharedUserID.
+3. Ujistěte se, že všechny aplikace sdílet stejný podpisový certifikát z obchodu Google Play tak, že můžete sdílet úložiště.
 
-#### <a name="step-1-using-hello-same-client-id--application-id-for-all-hello-applications-in-your-suite-of-apps"></a>Krok 1: Použití hello stejné ID klienta / ID aplikace pro všechny aplikace ve vaší sadě aplikace hello
-Aby tooknow platformy Microsoft Identity hello, že je povolená tooshare tokeny mezi aplikací každý z vašich aplikací bude nutné tooshare hello stejné ID klienta, nebo ID aplikace. Toto je hello jedinečný identifikátor, který byl poskytnut tooyou při registraci vaší první aplikace hello portálu.
+#### <a name="step-1-using-the-same-client-id--application-id-for-all-the-applications-in-your-suite-of-apps"></a>Krok 1: Použití stejné ID klienta / ID aplikace pro všechny aplikace ve vaší sadě aplikací
+V pořadí pro platformu Microsoft Identity vědět, že má povolené sdílet tokeny ve vašich aplikací každý z vašich aplikací bude nutné sdílejí stejné ID klienta nebo ID aplikace. Toto je jedinečný identifikátor, který jste získali při registraci vaší první aplikace v portálu.
 
-Asi vás zajímá, jak bude identifikujete různé aplikace hello toohello služba Microsoft Identity, pokud používá stejné ID aplikace je Hello odpověď s hello **identifikátory URI přesměrování**. Každá aplikace může mít několik přesměrování identifikátory URI registrován v portálu registrace hello. Každá aplikace ve vaší sadě bude mít na jiný identifikátor URI přesměrování. Zde je příklad, jak to vypadá:
+Asi vás zajímá, jak bude identifikujete různé aplikace ke službě Microsoft Identity, pokud používá stejné ID aplikace Je odpověď **identifikátory URI přesměrování**. Každá aplikace může mít několik přesměrování identifikátory URI registrován v portálu registrace. Každá aplikace ve vaší sadě bude mít na jiný identifikátor URI přesměrování. Zde je příklad, jak to vypadá:
 
 Identifikátor URI přesměrování app1:`msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D`
 
@@ -168,7 +168,7 @@ Identifikátor URI přesměrování App3:`msauth://com.example.userapp2/Pt85PxIy
 
 ....
 
-Tyto jsou vnořeny pod stejným ID klienta hello / ID aplikace a vyhledávat na základě hello redirect URI vrátíte toous v konfiguraci sady SDK.
+Tyto jsou vnořeny pod stejným ID klienta nebo ID aplikace a vyhledávat podle identifikátor URI návratu do us ve vaší konfiguraci SDK přesměrování.
 
 ```
 +-------------------+
@@ -194,31 +194,31 @@ Tyto jsou vnořeny pod stejným ID klienta hello / ID aplikace a vyhledávat na 
 ```
 
 
-*Všimněte si, že hello formát tyto identifikátory URI přesměrování jsou vysvětleny níže. Může použít jakékoli identifikátor URI pro přesměrování, pokud chcete toosupport hello zprostředkovatele, v takovém případě se musí vypadat podobně jako výše hello*
+*Všimněte si, že formát tyto identifikátory URI přesměrování jsou vysvětleny níže. Můžete použít všechny URI přesměrování, pokud chcete pro podporu zprostředkovatele, v takovém případě se musí vypadat podobně jako výše*
 
 #### <a name="step-2-configuring-shared-storage-in-android"></a>Krok 2: Konfigurace sdílené úložiště v Android
-Nastavení hello `SharedUserID` , je nad rámec hello rámec tohoto dokumentu, ale je možné zjistit načtením hello Google Android dokumentaci na hello [Manifest](http://developer.android.com/guide/topics/manifest/manifest-element.html). Co je důležité se rozhodnout, jaké má vaše sharedUserID bude volána a použít na všechny aplikace.
+Nastavení `SharedUserID` je nad rámec tohoto dokumentu, ale je možné zjistit přečíst v dokumentaci Google Android na [Manifest](http://developer.android.com/guide/topics/manifest/manifest-element.html). Co je důležité se rozhodnout, jaké má vaše sharedUserID bude volána a použít na všechny aplikace.
 
-Jakmile máte hello `SharedUserID` ve svých aplikacích jsou připravené toouse jednotné přihlašování.
+Jakmile máte `SharedUserID` ve svých aplikacích budete chtít používat jednotné přihlašování.
 
 > [!WARNING]
-> Při sdílení úložišť na vaší aplikace pro všechny aplikace můžete odstranit uživatele nebo horší odstranit všechny tokeny hello napříč aplikací. To je zvlášť katastrofální, pokud máte aplikace, které jsou závislé na práce pozadí toodo tokeny hello. Sdílení úložiště znamená, že musí být velmi opatrní při odebrání všech operací prostřednictvím hello SDK služby Microsoft Identity.
+> Při sdílení úložišť na vaší aplikace pro všechny aplikace můžete odstranit uživatele nebo horší odstranit všechny tokeny napříč aplikací. To je zvlášť katastrofální, pokud máte aplikace, které jsou závislé na tokeny pro práci na pozadí. Sdílení úložiště znamená, že musí být velmi opatrní při odebrání všech operací prostřednictvím sadami SDK služby Microsoft Identity.
 > 
 > 
 
-A to je vše! Hello Microsoft Identity SDK bude nyní sdílet přihlašovací údaje ve všech aplikací. seznam uživatelů Hello bude také sdílet mezi instancemi aplikace.
+A to je vše! Sada SDK Microsoft Identity bude nyní sdílet přihlašovací údaje ve všech aplikací. Seznam uživatelů bude také sdílet mezi instancemi aplikace.
 
 ### <a name="turning-on-sso-for-broker-assisted-sso"></a>Zapnout jednotné přihlašování pro zprostředkovatele s pomocí jednotného přihlašování
-Hello schopnost aplikaci toouse všechny zprostředkovatele, který je nainstalován na zařízení hello je **ve výchozím nastavení vypnuté**. V pořadí toouse vaší aplikace pomocí zprostředkovatele hello musí provést některé další konfiguraci a přidejte některé aplikaci tooyour kódu.
+Možnost pro aplikace pro použití žádné zprostředkovatele, který je nainstalován na zařízení je **ve výchozím nastavení vypnuté**. Chcete-li použít vaší aplikace pomocí zprostředkovatele musí provést některé další konfiguraci a přidejte nějaký kód do vaší aplikace.
 
-toofollow Hello kroky jsou:
+Jak postupovat, jsou:
 
-1. Povolit režim zprostředkovatele v kódu aplikace volání toohello MS SDK
-2. Vytvořit nový identifikátor URI přesměrování a zadejte aplikaci hello tooboth a registrace aplikace
-3. Nastavení hello správná oprávnění v hello manifestu systému Android.
+1. Povolit režim zprostředkovatele v kódu aplikace volání sady SDK MS
+2. Vytvořit nový identifikátor URI přesměrování a stanovit, že aplikace a registrace aplikace
+3. Nastavení správná oprávnění v manifestu systému Android.
 
 #### <a name="step-1-enable-broker-mode-in-your-application"></a>Krok 1: Povolení režimu zprostředkovatele v aplikaci
-Hello možnost pro vaše aplikace toouse hello broker zapnutý, při vytváření hello "nastavení" nebo počáteční nastavení vaší instance ověřování. To provedete nastavením vašeho typu ApplicationSettings ve vašem kódu:
+Možnosti pro aplikace pomocí zprostředkovatele zapnutý, při vytváření "nastavení" nebo počáteční nastavení vaší instance ověřování. To provedete nastavením vašeho typu ApplicationSettings ve vašem kódu:
 
 ```
 AuthenticationSettings.Instance.setUseBroker(true);
@@ -226,18 +226,18 @@ AuthenticationSettings.Instance.setUseBroker(true);
 
 
 #### <a name="step-2-establish-a-new-redirect-uri-with-your-url-scheme"></a>Krok 2: Vytvoření na nový identifikátor URI s vaše schéma adresy URL přesměrování
-V pořadí tooensure, že se vždy vrací, že pověření hello tokeny toohello správnou aplikaci potřebujeme toomake se, že jsme zpětné volání, můžete ověřit tooyour aplikace tak, aby hello operační systém Android. operační systém Android Hello používá hello algoritmus hash certifikátu hello v hello obchodu Google Play. To nelze maskování podvodný aplikace. Proto jsme využít to společně s hello URI naše tooensure aplikace zprostředkovatele že hello tokeny jsou vráceny toohello správnou aplikaci. Je nutné, můžete tooestablish tento jedinečný identifikátor URI pro přesměrování jak v aplikaci a sadu jako identifikátor URI přesměrování v našem portál pro vývojáře.
+Aby se zajistilo, že vrátíme vždy tokeny přihlašovacích údajů pro správnou aplikaci, musíme Ujistěte se, že jsme zpětné volání do vaší aplikace tak, aby operační systém Android můžete ověřit. Operační systém Android používá hodnotu hash certifikátu v obchodě Google Play. To nelze maskování podvodný aplikace. Proto jsme využít to společně se identifikátor URI aplikace zprostředkovatele k zajištění, že tokeny jsou vráceny správné aplikace. Je nutné vytvořit tento jedinečný identifikátor URI pro přesměrování oba ve vaší aplikaci a nastavit jako identifikátor URI přesměrování v našem portál pro vývojáře.
 
-Váš identifikátor URI pro přesměrování musí být ve formátu správné hello:
+Váš identifikátor URI pro přesměrování musí být ve správném formátu:
 
 `msauth://packagename/Base64UrlencodedSignature`
 
 například: *msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D*
 
-Tento identifikátor URI pro přesměrování musí toobe zadaný v registraci vaší aplikace pomocí hello [portál Azure](https://portal.azure.com/). Další informace o registraci aplikace Azure AD najdete v tématu [integraci s Azure Active Directory](active-directory-how-to-integrate.md).
+Tento identifikátor URI pro přesměrování musí být zadána v registrace vaší aplikace pomocí [portál Azure](https://portal.azure.com/). Další informace o registraci aplikace Azure AD najdete v tématu [integraci s Azure Active Directory](active-directory-how-to-integrate.md).
 
-#### <a name="step-3-set-up-hello-correct-permissions-in-your-application"></a>Krok 3: Nastavení hello správná oprávnění v aplikaci
-Naše aplikace zprostředkovatele v Android používá funkce Správce účtů hello hello operační systém Android toomanage přihlašovacích údajů napříč aplikacemi. V pořadí toouse hello zprostředkovatele Android manifest aplikace musí mít oprávnění toouse AccountManager účty. To je podrobněji v hello [zde Google dokumentace pro účet správce](http://developer.android.com/reference/android/accounts/AccountManager.html)
+#### <a name="step-3-set-up-the-correct-permissions-in-your-application"></a>Krok 3: Nastavení správná oprávnění v aplikaci
+Naše aplikace zprostředkovatele v Android používá funkci Správce účtů operační systém Android ke správě přihlašovacích údajů napříč aplikacemi. Chcete-li použít zprostředkovatele v Android manifest aplikace musí mít oprávnění k používání AccountManager účtů. To je podrobněji v [zde Google dokumentace pro účet správce](http://developer.android.com/reference/android/accounts/AccountManager.html)
 
 Konkrétně tato oprávnění jsou:
 
@@ -248,5 +248,5 @@ MANAGE_ACCOUNTS
 ```
 
 ### <a name="youve-configured-sso"></a>Jednotné přihlašování jste nakonfigurovali!
-Nyní hello Microsoft Identity SDK budou automaticky sdílet přihlašovací údaje v rámci aplikace i vyvolání zprostředkovatele hello, pokud je k dispozici na svém zařízení.
+Nyní Microsoft Identity SDK budou automaticky sdílet přihlašovací údaje v rámci aplikace i vyvolání zprostředkovatele, pokud je k dispozici na svém zařízení.
 

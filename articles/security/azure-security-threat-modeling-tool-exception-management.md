@@ -1,6 +1,6 @@
 ---
-title: "aaaException Management - Microsoft Threat modelování nástroj – Azure | Microsoft Docs"
-description: "způsoby zmírnění hrozeb v hello nástroj modelování hrozeb"
+title: "Výjimka Management - nástroj Microsoft Threat modelování – Azure | Microsoft Docs"
+description: "způsoby zmírnění hrozeb, které jsou zveřejněné v nástroji pro modelování hrozeb"
 services: security
 documentationcenter: na
 author: RodSan
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 247096c10deeca94ebb9b19df7ba60e442ca1e4d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: bbf357b902474a1812eb7a5a2c914d0c8b91934b
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="security-frame-exception-management--mitigations"></a>Zabezpečení rámce: Správa výjimek | Způsoby zmírnění rizik 
 | Produktům a službám | Článek |
 | --------------- | ------- |
 | **WCF** | <ul><li>[WCF – nezahrnujte serviceDebug uzlu v konfiguračním souboru](#servicedebug)</li><li>[WCF – nezahrnujte serviceMetadata uzlu v konfiguračním souboru](#servicemetadata)</li></ul> |
 | **Webové rozhraní API** | <ul><li>[Zajistit, že je v rozhraní ASP.NET Web API správné zpracování výjimek](#exception)</li></ul> |
-| **Webové aplikace** | <ul><li>[Podrobné informace o zabezpečení v chybových zprávách, neuvádějí](#messages)</li><li>[Implementace výchozí chyba zpracování stránky](#default)</li><li>[Nastavte metodu nasazení tooRetail ve službě IIS](#deployment)</li><li>[Výjimky má bezpečně selhat.](#fail)</li></ul> |
+| **Webové aplikace** | <ul><li>[Podrobné informace o zabezpečení v chybových zprávách, neuvádějí](#messages)</li><li>[Implementace výchozí chyba zpracování stránky](#default)</li><li>[Nastavte metodu nasazení prodejní ve službě IIS](#deployment)</li><li>[Výjimky má bezpečně selhat.](#fail)</li></ul> |
 
 ## <a id="servicedebug"></a>WCF – nezahrnujte serviceDebug uzlu v konfiguračním souboru
 
@@ -36,10 +36,10 @@ ms.lasthandoff: 10/06/2017
 | **Použít technologie** | Obecné, NET Framework 3 |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.fortify.com/en/vulncat/index.html) |
-| **Kroky** | Komunikace Framework služby Windows (WCF) může být nakonfigurované tooexpose ladicí informace. Ladění informace nesmí použít v produkčním prostředí. Hello `<serviceDebug>` značky definuje, zda je povolena hello ladicí informace funkce služby WCF. Pokud atribut hello třídu includeExceptionDetailInFaults nastavena tootrue, informace o výjimce z aplikace hello, bude vrácen tooclients. Útočníci mohou využívat hello Další informace, které se získají z ladění výstupu toomount útoky cílené na hello framework, databázi nebo jiným prostředkům, které používá aplikace hello. |
+| **Kroky** | Ke zveřejnění informace o ladění lze nakonfigurovat komunikaci Framework služby Windows (WCF). Ladění informace nesmí použít v produkčním prostředí. `<serviceDebug>` Značky definuje, zda je povolena funkce informace o ladění služby WCF. Pokud třídu includeExceptionDetailInFaults atributu je nastavena na hodnotu true, informace o výjimce z aplikace, bude vrácen klientům. Útočníci můžou využít další informace, které získají z ladění výstupu připojit útoků, které cílí na rozhraní, databázi nebo jiným prostředkům, které používá aplikace. |
 
 ### <a name="example"></a>Příklad
-Hello následující konfigurační soubor obsahuje hello `<serviceDebug>` značky: 
+Zahrnuje následující konfigurační soubor `<serviceDebug>` značky: 
 ```
 <configuration> 
 <system.serviceModel> 
@@ -49,7 +49,7 @@ Hello následující konfigurační soubor obsahuje hello `<serviceDebug>` znač
 <serviceDebug includeExceptionDetailInFaults=""True"" httpHelpPageEnabled=""True""/> 
 ... 
 ```
-Zakažte ladicí informace ve službě hello. Toho lze dosáhnout odebráním hello `<serviceDebug>` značky z konfiguračního souboru aplikace. 
+Zakažte ladicí informace ve službě. Toho lze dosáhnout odebráním `<serviceDebug>` značky z konfiguračního souboru aplikace. 
 
 ## <a id="servicemetadata"></a>WCF – nezahrnujte serviceMetadata uzlu v konfiguračním souboru
 
@@ -60,7 +60,7 @@ Zakažte ladicí informace ve službě hello. Toho lze dosáhnout odebráním he
 | **Použít technologie** | Obecné |
 | **Atributy**              | Obecné, NET Framework 3 |
 | **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.fortify.com/en/vulncat/index.html) |
-| **Kroky** | Útočníkům cenné přehled o tom, jak může zneužít hello služby můžete poskytnout veřejně odhalení informací o služby. Hello `<serviceMetadata>` značky povolí funkci publikování metadat hello. Metadata služby můžou obsahovat citlivé informace, které by neměl být veřejně přístupná. Minimálně povolte jenom důvěryhodní uživatelé tooaccess hello metadata a ujistěte se, že nebude vystavena, víc informací. Ještě lepší zcela zakážete hello možnost toopublish metadat. Bezpečné konfigurace WCF nebude obsahovat hello `<serviceMetadata>` značky. |
+| **Kroky** | Útočníkům cenné přehled o tom, jak mohou využívat služby můžete poskytnout veřejně odhalení informací o služby. `<serviceMetadata>` Značky povolí funkci publikování metadat. Metadata služby můžou obsahovat citlivé informace, které by neměl být veřejně přístupná. Minimálně povolíte jenom důvěryhodným uživatelům přístup k metadatům a ujistěte se, že nebude vystavena, víc informací. Ještě lepší zcela zakážete možnost publikování metadat. Nebude obsahovat bezpečné konfigurace WCF `<serviceMetadata>` značky. |
 
 ## <a id="exception"></a>Zajistit, že je v rozhraní ASP.NET Web API správné zpracování výjimek
 
@@ -74,7 +74,7 @@ Zakažte ladicí informace ve službě hello. Toho lze dosáhnout odebráním he
 | **Kroky** | Ve výchozím nastavení jsou nejvíce nezachycená výjimek v rozhraní ASP.NET Web API přeložit na odpovědi HTTP se stavovým kódem`500, Internal Server Error`|
 
 ### <a name="example"></a>Příklad
-toocontrol hello stavový kód vrácený hello rozhraní API, `HttpResponseException` je možné, jak je uvedeno níže: 
+K řízení vrátil rozhraní API, kód stavu `HttpResponseException` je možné, jak je uvedeno níže: 
 ```C#
 public Product GetProduct(int id)
 {
@@ -88,7 +88,7 @@ public Product GetProduct(int id)
 ```
 
 ### <a name="example"></a>Příklad
-Pro další ovládání na odpověď výjimka hello hello `HttpResponseMessage` třídu lze použít, jak je uvedeno níže: 
+Pro další ovládací prvek v odpovědi výjimka `HttpResponseMessage` třídu lze použít, jak je uvedeno níže: 
 ```C#
 public Product GetProduct(int id)
 {
@@ -105,7 +105,7 @@ public Product GetProduct(int id)
     return item;
 }
 ```
-toocatch neošetřené výjimky, které nejsou typu hello `HttpResponseException`, lze použít filtry výjimek. Filtry výjimek implementovat hello `System.Web.Http.Filters.IExceptionFilter` rozhraní. Nejjednodušší způsob, jak toowrite Hello filtru výjimek je tooderive z hello `System.Web.Http.Filters.ExceptionFilterAttribute` třídy a přepsat metodu OnException hello. 
+K zachycení neošetřených výjimek, které nejsou typu `HttpResponseException`, lze použít filtry výjimek. Filtry výjimek implementovat `System.Web.Http.Filters.IExceptionFilter` rozhraní. Nejjednodušší způsob, jak zápis filtru výjimek je odvozena od `System.Web.Http.Filters.ExceptionFilterAttribute` třídy a přepsat metodu OnException. 
 
 ### <a name="example"></a>Příklad
 Tady je filtr, který převádí `NotImplementedException` výjimky do stavového kódu protokolu HTTP `501, Not Implemented`: 
@@ -130,13 +130,13 @@ namespace ProductStore.Filters
 }
 ```
 
-Existuje několik způsobů tooregister filtr výjimek webového rozhraní API:
+Existuje několik způsobů, jak zaregistrovat filtr výjimek webového rozhraní API:
 - Akce
 - Adaptérem
 - Globálně
 
 ### <a name="example"></a>Příklad
-tooapply hello filtrovat tooa určité akce, přidejte filtr hello jako atribut toohello akce: 
+Pokud chcete použít filtr na určité akce, přidejte filtr jako atribut na akci: 
 ```C#
 public class ProductsController : ApiController
 {
@@ -148,7 +148,7 @@ public class ProductsController : ApiController
 }
 ```
 ### <a name="example"></a>Příklad
-tooapply hello filtru tooall hello akcí na `controller`, přidejte filtr hello jako atributu toohello `controller` třídy: 
+Filtr pro všechny akce, které použijete na `controller`, přidejte filtr jako atributu `controller` – třída: 
 
 ```C#
 [NotImplExceptionFilter]
@@ -159,14 +159,14 @@ public class ProductsController : ApiController
 ```
 
 ### <a name="example"></a>Příklad
-tooapply hello filtrovat globálně tooall webového rozhraní API řadiče, přidá instanci hello filtru toohello `GlobalConfiguration.Configuration.Filters` kolekce. Filtry výjimek v této kolekci použít tooany akce kontroleru webového rozhraní API. 
+Pokud chcete použít filtr globálně na všechny řadiče webového rozhraní API, přidá instanci filtr, který má `GlobalConfiguration.Configuration.Filters` kolekce. Filtry výjimek v této kolekci platí pro všechny akce kontroleru webového rozhraní API. 
 ```C#
 GlobalConfiguration.Configuration.Filters.Add(
     new ProductStore.NotImplExceptionFilterAttribute());
 ```
 
 ### <a name="example"></a>Příklad
-Pro ověření modelu můžete stav modelu hello předán tooCreateErrorResponse metoda, jak je uvedeno níže: 
+Pro ověření modelu stav modelu, který lze předat CreateErrorResponse metoda, jak je uvedeno níže: 
 ```C#
 public HttpResponseMessage PostProduct(Product item)
 {
@@ -178,7 +178,7 @@ public HttpResponseMessage PostProduct(Product item)
 }
 ```
 
-Zkontrolujte hello odkazy v části hello odkazy na další podrobnosti o výjimečných zpracování a ověření modelu v rozhraní ASP.Net Web API 
+Zkontrolujte na odkazy v části odkazy na další podrobnosti o výjimečných zpracování a ověření modelu v rozhraní ASP.Net Web API 
 
 ## <a id="messages"></a>Podrobné informace o zabezpečení v chybových zprávách, neuvádějí
 
@@ -189,7 +189,7 @@ Zkontrolujte hello odkazy v části hello odkazy na další podrobnosti o výjim
 | **Použít technologie** | Obecné |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | Není k dispozici  |
-| **Kroky** | <p>Obecné chybové zprávy jsou poskytovány přímo toohello uživatele bez včetně dat citlivé aplikaci. Příklady citlivých dat:</p><ul><li>Názvy serverů</li><li>Připojovací řetězce</li><li>Uživatelská jména</li><li>Hesla</li><li>Postupy SQL</li><li>Podrobnosti o selhání dynamické SQL</li><li>Trasování zásobníku a řádky kódu</li><li>Proměnné uložené v paměti</li><li>Umístění jednotky a složky</li><li>Body instalace aplikací</li><li>Nastavení konfigurace hostitele</li><li>Další podrobnosti o interní aplikace</li></ul><p>Zachycení všech chyb v aplikaci a poskytuje obecné chybové zprávy, jakož i povolení vlastní chyby v rámci služby IIS vám pomůže zabránili odhalení informací. Databáze systému SQL Server a .NET zpracování výjimek, mezi jiné chybě zpracování architektury, jsou uživatel se zlými úmysly zejména podrobné a velmi užitečné tooa profilace aplikace. To není přímo hello zobrazení obsahu třídy odvozené od třídy výjimky .NET hello a zajistěte, abyste měli správné zpracování výjimek, aby neočekávané výjimky nechtěně není vyvolána přímo toohello uživatele.</p><ul><li>Poskytují obecné chybové zprávy přímo toohello uživatele, který abstraktní tokeny konkrétní podrobnosti najít přímo v hello výjimky nebo chybové zprávě</li><li>Není obsah zobrazení hello výjimky .NET přímo třídu toohello uživatele</li><li>Depeše všechny chybové zprávy a podle potřeby informovat uživatele hello prostřednictvím obecnou chybovou zprávu odeslané toohello aplikace klienta</li><li>Nevystavujte hello obsah třídy výjimek hello přímo toohello uživatele, zejména hello návratová hodnota z `.ToString()`, nebo hello hodnoty vlastností hello zpráv nebo trasování zásobníku. Bezpečně protokolu tyto informace a zobrazit více neškodné uživatele toohello zpráv</li></ul>|
+| **Kroky** | <p>Obecné chybové zprávy jsou poskytovány přímo na uživatele bez včetně dat citlivé aplikaci. Příklady citlivých dat:</p><ul><li>Názvy serverů</li><li>Připojovací řetězce</li><li>Uživatelská jména</li><li>Hesla</li><li>Postupy SQL</li><li>Podrobnosti o selhání dynamické SQL</li><li>Trasování zásobníku a řádky kódu</li><li>Proměnné uložené v paměti</li><li>Umístění jednotky a složky</li><li>Body instalace aplikací</li><li>Nastavení konfigurace hostitele</li><li>Další podrobnosti o interní aplikace</li></ul><p>Zachycení všech chyb v aplikaci a poskytuje obecné chybové zprávy, jakož i povolení vlastní chyby v rámci služby IIS vám pomůže zabránili odhalení informací. Databáze systému SQL Server a .NET zpracování výjimek, mezi jiné chybě zpracování architektury, jsou obzvláště podrobné a uživatel se zlými úmysly profilace aplikace velmi užitečné. Ne přímo zobrazit obsah třídy odvozené od třídy výjimky .NET a zajistěte, abyste měli správné zpracování výjimek, aby neočekávanou výjimku není vyvolána nechtěně přímo na uživatele.</p><ul><li>Zadejte obecné chybové zprávy přímo na uživatele, který abstraktní tokeny konkrétní podrobnosti najít přímo v výjimky nebo chybové zprávě</li><li>Nezobrazovat obsah třídy výjimky .NET přímo na uživatele</li><li>Depeše všechny chybové zprávy a podle potřeby informovat uživatele na základě obecnou chybovou zprávu odeslat klientovi aplikace</li><li>Nevystavujte obsah třídy výjimek, přímo na uživatele, zejména vrácená hodnota z `.ToString()`, nebo hodnoty vlastností zpráv nebo trasování zásobníku. Bezpečně protokolu tyto informace a zobrazit více neškodné zprávu pro uživatele</li></ul>|
 
 ## <a id="default"></a>Implementace výchozí chyba zpracování stránky
 
@@ -200,9 +200,9 @@ Zkontrolujte hello odkazy v části hello odkazy na další podrobnosti o výjim
 | **Použít technologie** | Obecné |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | [Upravit dialogové okno nastavení stránky ASP.NET chyby](https://technet.microsoft.com/library/dd569096(WS.10).aspx) |
-| **Kroky** | <p>Pokud aplikace ASP.NET nezdaří a dojde HTTP/1.x 500 Vnitřní chyba serveru nebo konfigurace funkcí (například filtrování požadavků) zabraňuje zobrazení stránky, se budou generovat chybovou zprávu. Můžou správci rozhodnout, zda má aplikace hello zobrazit popisnou zprávu toohello klienta, podrobné chybové zprávy toohello klienta nebo podrobné chybové zprávy jenom toolocalhost. Hello <customErrors> v souboru web.config hello má tři režimy:</p><ul><li>**Na:** Určuje, že jsou povoleny vlastní chyby. Pokud není zadán žádný atribut defaultRedirect, uživatelé uvidí Obecná chyba. vlastní chyby Hello jsou zobrazeny toohello vzdálení klienti a toohello místního hostitele</li><li>**Vypnutí:** Určuje, že vlastní chyby jsou vypnuté. Hello podrobné chyby technologie ASP.NET se zobrazují toohello vzdálení klienti a toohello místního hostitele</li><li>**RemoteOnly:** Určuje, že vlastní chyby jsou zobrazeny pouze toohello vzdálení klienti a že ASP.NET chyby jsou zobrazeny toohello místního hostitele. Toto je výchozí hodnota hello</li></ul><p>Otevřete hello `web.config` souboru hello aplikace nebo webu a zkontrolujte, zda text hello značka má `<customErrors mode="RemoteOnly" />` nebo `<customErrors mode="On" />` definované.</p>|
+| **Kroky** | <p>Pokud aplikace ASP.NET nezdaří a dojde HTTP/1.x 500 Vnitřní chyba serveru nebo konfigurace funkcí (například filtrování požadavků) zabraňuje zobrazení stránky, se budou generovat chybovou zprávu. Můžou správci rozhodnout, zda aplikace by měla pro klienta, podrobných chybových zpráv klientovi nebo podrobné chybové zprávy na localhost jenom zobrazit přátelskou zprávou. <customErrors> v souboru web.config má tři režimy:</p><ul><li>**Na:** Určuje, že jsou povoleny vlastní chyby. Pokud není zadán žádný atribut defaultRedirect, uživatelé uvidí Obecná chyba. Vlastní chyby jsou zobrazeny ke vzdáleným klientům a na místního hostitele</li><li>**Vypnutí:** Určuje, že vlastní chyby jsou vypnuté. Podrobné chyby technologie ASP.NET se zobrazí ke vzdáleným klientům a místního hostitele</li><li>**RemoteOnly:** Určuje, že vlastní chyby jsou zobrazeny pouze ke vzdáleným klientům, a že ASP.NET chyby jsou zobrazeny na místního hostitele. Toto je výchozí hodnota</li></ul><p>Otevřete `web.config` souboru aplikace nebo webu a zkontrolujte, zda má značky buď `<customErrors mode="RemoteOnly" />` nebo `<customErrors mode="On" />` definované.</p>|
 
-## <a id="deployment"></a>Nastavte metodu nasazení tooRetail ve službě IIS
+## <a id="deployment"></a>Nastavte metodu nasazení prodejní ve službě IIS
 
 | Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -211,7 +211,7 @@ Zkontrolujte hello odkazy v části hello odkazy na další podrobnosti o výjim
 | **Použít technologie** | Obecné |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | [nasazení – Element (schéma nastavení ASP.NET)](https://msdn.microsoft.com/library/ms228298(VS.80).aspx) |
-| **Kroky** | <p>Hello `<deployment retail>` přepínač je určená pro produkční servery služby IIS. Tento přepínač je použité toohelp se spouští s hello nejlepší možný výkon aplikace a nejmenší informace o zabezpečení, že úniků zakázáním hello aplikace možnost toogenerate výstup trasování na stránce, zákaz toodisplay možnost hello podrobná chyba Uživatelé tooend zprávy a deaktivace hello ladění přepínače.</p><p>Často, přepínače a možnosti, které jsou zaměřené na vývojáře, například se nezdařilo žádosti o trasování a ladění, jsou povolené během vývoje aktivní. Doporučuje se, že hello metodu nasazení na žádném serveru pro produkční nastavit tooretail. Otevřete soubor hello souboru machine.config a ujistěte se, že `<deployment retail="true" />` zůstane nastavit tootrue.</p>|
+| **Kroky** | <p>`<deployment retail>` Přepínač je určená pro produkční servery služby IIS. Tento přepínač se používá k pomoci se spouští s nejmenšími možnými úniků informace o zabezpečení a nejlepší možný výkon zakázáním schopnost aplikace generovat výstup trasování na stránce, zakázání schopnost zobrazovat podrobné chybové zprávy pro koncové uživatele a zakázání přepínač ladění aplikace.</p><p>Často, přepínače a možnosti, které jsou zaměřené na vývojáře, například se nezdařilo žádosti o trasování a ladění, jsou povolené během vývoje aktivní. Doporučuje se, že metoda nasazení na žádném serveru pro produkční být nastavená na prodejní. otevření souboru machine.config a ujistěte se, že `<deployment retail="true" />` zůstane nastavený na hodnotu true.</p>|
 
 ## <a id="fail"></a>Výjimky má bezpečně selhat.
 
@@ -222,7 +222,7 @@ Zkontrolujte hello odkazy v části hello odkazy na další podrobnosti o výjim
 | **Použít technologie** | Obecné |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | [Bezpečně nezdaří](https://www.owasp.org/index.php/Fail_securely) |
-| **Kroky** | Aplikace má bezpečně selhat. Libovolné metody, která vrací logickou hodnotu, podle které určité rozhoduje, měli pečlivě vytvořit bloku výjimky. Existuje mnoho logických chyb z důvodu nárůstu problémy zabezpečení toowhich v při neuváženě zápisu bloku výjimky hello.|
+| **Kroky** | Aplikace má bezpečně selhat. Libovolné metody, která vrací logickou hodnotu, podle které určité rozhoduje, měli pečlivě vytvořit bloku výjimky. Existuje mnoho logické chyby kvůli které problémy se zabezpečením nárůstu v při neuváženě zápisu bloku výjimky.|
 
 ### <a name="example"></a>Příklad
 ```C#
@@ -238,7 +238,7 @@ Zkontrolujte hello odkazy v části hello odkazy na další podrobnosti o výjim
 
                     if (string.Compare(domain, replyDomain, StringComparison.OrdinalIgnoreCase) != 0)
                     {
-                        //// Adding additional check tooenable CMS urls if they are not hosted on same domain.
+                        //// Adding additional check to enable CMS urls if they are not hosted on same domain.
                         if (!string.IsNullOrWhiteSpace(Utilities.CmsBase))
                         {
                             var cmsDomain = RetrieveDomain(new Uri(Utilities.Base.Trim()));
@@ -265,4 +265,4 @@ Zkontrolujte hello odkazy v části hello odkazy na další podrobnosti o výjim
             }
         }
 ```
-Hello výše metoda vždy vrátí hodnotu True, pokud dojde k výjimce. Pokud koncový uživatel hello poskytuje poškozená adresa URL, které hello ohledech prohlížeče, ale hello `Uri()` konstruktor není to vyvolá výjimku a postižené hello se provedou toohello platný, ale chybná adresa URL. 
+Výše metoda vždy vrátí hodnotu True, pokud dojde k výjimce. Pokud koncový uživatel poskytuje poškozená adresa URL, která respektuje prohlížeče, ale `Uri()` konstruktor není to vyvolá výjimku a napadené budete přesměrováni na adresu URL platná, ale poškozený. 

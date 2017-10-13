@@ -1,6 +1,6 @@
 ---
-title: "aaaManage výpočetní výkon v Azure SQL Data Warehouse (portál Azure) | Microsoft Docs"
-description: "Portál Azure úlohy toomanage výpočetní výkon. Škálovat výpočetní prostředky úpravou Dwu. Nebo, pozastavení a obnovení toosave náklady na výpočetní prostředky."
+title: "Spravovat výpočetní výkon v Azure SQL Data Warehouse (portál Azure) | Microsoft Docs"
+description: "Azure úkoly portálu pro správu výpočetního výkonu. Škálovat výpočetní prostředky úpravou Dwu. Nebo, pozastavení a obnovení výpočetní prostředky, abyste ušetřili náklady."
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
-ms.openlocfilehash: b2e84b3763e97ce88c190eecfb64b2d06f727229
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 63888d5dd103b585cf18e4787d3e779810163e3d
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-azure-portal"></a>Spravovat výpočetní výkon v Azure SQL Data Warehouse (portál Azure)
 > [!div class="op_single_selector"]
@@ -35,15 +35,15 @@ ms.lasthandoff: 10/06/2017
 ## <a name="scale-compute-power"></a>Škálování výpočetní výkon
 [!INCLUDE [SQL Data Warehouse scale DWUs description](../../includes/sql-data-warehouse-scale-dwus-description.md)]
 
-toochange výpočetní prostředky:
+Chcete-li změnit výpočetní prostředky:
 
-1. Otevřete hello [portál Azure][Azure portal], otevřete databázi a klikněte na tlačítko **škálování**.
+1. Otevřete [portál Azure][Azure portal], otevřete databázi a klikněte na tlačítko **škálování**.
 
     ![Klikněte na škálování][1]
-2. V okně škálování hello hello posuvník doleva nebo pravým nastavení DWU toochange hello.
+2. V okně škálování nastavte posuvník doleva nebo doprava, chcete-li změnit nastavení DWU.
 
     ![Posuvník][2]
-3. Klikněte na **Uložit**. Zobrazí potvrzovací zpráva. Klikněte na tlačítko **Ano** tooconfirm nebo **žádné** toocancel.
+3. Klikněte na **Uložit**. Zobrazí potvrzovací zpráva. Klikněte na tlačítko **Ano** potvrďte nebo **žádné** zrušit.
 
     ![Kliknutí na Uložit][3]
 
@@ -52,16 +52,16 @@ toochange výpočetní prostředky:
 ## <a name="pause-compute"></a>Pozastavit výpočetní
 [!INCLUDE [SQL Data Warehouse pause description](../../includes/sql-data-warehouse-pause-description.md)]
 
-toopause databáze:
+Chcete-li pozastavit databázi:
 
-1. Otevřete hello [portál Azure] [ Azure portal] a otevřete vaší databáze. Všimněte si, že hello stav je **Online**.
+1. Otevřete [portál Azure] [ Azure portal] a otevřete vaší databáze. Všimněte si, že je stav **Online**.
 
     ![Online stav][6]
-2. Klikněte na tlačítko toosuspend paměťovou a výpočetní prostředky, **pozastavení**, a pak se zobrazí potvrzovací zpráva. Klikněte na tlačítko **Ano** tooconfirm nebo **žádné** toocancel.
+2. Chcete-li pozastavit paměťovou a výpočetní prostředky, klikněte na tlačítko **pozastavení**, a pak se zobrazí potvrzovací zpráva. Klikněte na tlačítko **Ano** potvrďte nebo **žádné** zrušit.
 
     ![Potvrďte pozastavení][7]
-3. Při spouštění hello databáze SQL Data Warehouse, je stav hello **pozastaveno**.
-4. Pokud je stav hello **pozastaveno**, se provádí operace pozastavení hello a jsou už se vám účtována Dwu.
+3. Během spouštění databáze SQL Data Warehouse, je stav **pozastaveno**.
+4. Pokud je stav **pozastaveno**, se provádí operace pozastavení a jsou už se vám účtována Dwu.
 
     ![Pozastavení stav][4]
 
@@ -70,16 +70,16 @@ toopause databáze:
 ## <a name="resume-compute"></a>Obnovit výpočetní
 [!INCLUDE [SQL Data Warehouse resume description](../../includes/sql-data-warehouse-resume-description.md)]
 
-tooresume databáze:
+Chcete-li obnovit databázi:
 
-1. Otevřete hello [portál Azure] [ Azure portal] a otevřete vaší databáze. Všimněte si, že hello stav je **pozastaveno**.
+1. Otevřete [portál Azure] [ Azure portal] a otevřete vaší databáze. Všimněte si, že je stav **pozastaveno**.
 
     ![Pozastavení databáze][4]
-2. Klikněte na databázi hello tooresume **spustit**, a pak se zobrazí potvrzovací zpráva. Klikněte na tlačítko **Ano** tooconfirm nebo **žádné** toocancel.
+2. Obnovit databázi, klikněte na tlačítko **spustit**, a pak se zobrazí potvrzovací zpráva. Klikněte na tlačítko **Ano** potvrďte nebo **žádné** zrušit.
 
     ![Potvrďte obnovení][5]
-3. Při spouštění hello databáze SQL Data Warehouse, je stav hello "Obnovování".
-4. Pokud je stav hello **online**, hello databáze je připravena.
+3. Během spouštění databáze SQL Data Warehouse, je stav "Obnovování".
+4. Pokud je stav **online**, databáze je připravena.
 
     ![Online stav][6]
 

@@ -1,6 +1,6 @@
 ---
-title: "aaaReliable aktéři časovače a upomínek | Microsoft Docs"
-description: "Tootimers úvod a připomenutí pro Service Fabric Reliable Actors."
+title: "Spolehlivé aktéři časovače a upomínek | Microsoft Docs"
+description: "Úvod do časovače a upomínek pro Service Fabric Reliable Actors."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.openlocfilehash: c5116ec1923014e131130b9f4e86dd1e133bbf7e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 06b026ce06e0f16a77ac238de0af2263f272933c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="actor-timers-and-reminders"></a>Časovače objektu actor a upomínek
-Aktéři můžete naplánovat pravidelné práce na samotných tak, že zaregistrujete časovače nebo připomenutí. Tento článek ukazuje, jak toouse časovače a připomenutí a vysvětluje hello rozdíly mezi nimi.
+Aktéři můžete naplánovat pravidelné práce na samotných tak, že zaregistrujete časovače nebo připomenutí. Tento článek ukazuje, jak použít časovačů a připomenutí a vysvětluje rozdíly mezi nimi.
 
 ## <a name="actor-timers"></a>Časovače objektu actor
-Časovače objektu actor poskytují jednoduché obálku kolem časovač tooensure .NET nebo Java, metody zpětného volání hello respektují hello na základě zapnout souběžnosti záruky, které hello aktéři poskytuje modul runtime.
+Časovače objektu actor poskytují jednoduché obálku kolem .NET nebo Java časovač zajistit, že metody zpětného volání respektují souběžnosti na základě zapnout zaručuje, že poskytuje modul runtime aktéři.
 
-Aktéři můžete použít hello `RegisterTimer`(C#) nebo `registerTimer`(Java) a `UnregisterTimer`(C#) nebo `unregisterTimer`metody (Java) na jejich základní třídy tooregister a zrušit jejich časovače. Následující příklad Hello ukazuje použití hello časovače rozhraní API. Hello rozhraní API jsou velmi podobné časovače .NET toohello nebo Java časovače. V tomto příkladu po splatnosti, hello časovače hello aktéři runtime zavolá hello `MoveObject`(C#) nebo `moveObject`– metoda (Java). Metoda Hello záruku, že toorespect hello na základě zapnout souběžnosti. To znamená, že žádné další metody objektu actor nebo zpětná volání časovače nebo připomenutí bude v průběhu až po dokončení provádění této zpětného volání.
+Můžete použít aktéři `RegisterTimer`(C#) nebo `registerTimer`(Java) a `UnregisterTimer`(C#) nebo `unregisterTimer`metody (Java) na jejich základní třída pro registraci a zrušit jejich časovače. Následující příklad ukazuje použití časovače rozhraní API. Rozhraní API jsou velmi podobné .NET časovačem nebo Java časovače. V tomto příkladu po splatnosti, časovač runtime aktéři zavolá `MoveObject`(C#) nebo `moveObject`– metoda (Java). Metoda záruku, respektují souběžnosti na základě vypněte. To znamená, že žádné další metody objektu actor nebo zpětná volání časovače nebo připomenutí bude v průběhu až po dokončení provádění této zpětného volání.
 
 ```csharp
 class VisualObjectActor : Actor, IVisualObject
@@ -44,9 +44,9 @@ class VisualObjectActor : Actor, IVisualObject
 
         _updateTimer = RegisterTimer(
             MoveObject,                     // Callback method
-            null,                           // Parameter toopass toohello callback method
-            TimeSpan.FromMilliseconds(15),  // Amount of time toodelay before hello callback is invoked
-            TimeSpan.FromMilliseconds(15)); // Time interval between invocations of hello callback method
+            null,                           // Parameter to pass to the callback method
+            TimeSpan.FromMilliseconds(15),  // Amount of time to delay before the callback is invoked
+            TimeSpan.FromMilliseconds(15)); // Time interval between invocations of the callback method
 
         return base.OnActivateAsync();
     }
@@ -93,9 +93,9 @@ public class VisualObjectActorImpl extends FabricActor implements VisualObjectAc
                     this.registerTimer(
                             (o) -> this.moveObject(o),                        // Callback method
                             "moveObject",
-                            null,                                             // Parameter toopass toohello callback method
-                            Duration.ofMillis(10),                            // Amount of time toodelay before hello callback is invoked
-                            Duration.ofMillis(timerIntervalInMilliSeconds));  // Time interval between invocations of hello callback method
+                            null,                                             // Parameter to pass to the callback method
+                            Duration.ofMillis(10),                            // Amount of time to delay before the callback is invoked
+                            Duration.ofMillis(timerIntervalInMilliSeconds));  // Time interval between invocations of the callback method
                     return null;
                 });
     }
@@ -126,16 +126,16 @@ public class VisualObjectActorImpl extends FabricActor implements VisualObjectAc
 }
 ```
 
-Hello další období hello časovače spustí po dokončení provádění zpětného volání hello. To znamená, že tento časovač hello je zastavena v průběhu hello zpětného volání provádí a jestli je spuštěná při dokončení zpětného volání hello.
+Další období časovač spustí po dokončení provádění zpětného volání. To znamená, že časovač je zastavena v průběhu zpětné volání provádí a jestli je spuštěná při dokončení zpětného volání.
 
-modul runtime aktéři Hello uloží změny provedené správce stavu objektu actor toohello po dokončení zpětné volání hello. Pokud dojde k chybě při ukládání stavu hello, bude tento objekt actor deaktivovat a aktivuje novou instanci.
+Modul runtime aktéři uloží změny provedené správce stavu objektu actor po dokončení zpětné volání. Pokud dojde k chybě při ukládání stavu, bude tento objekt actor deaktivovat a aktivuje novou instanci.
 
-Při deaktivaci objektu actor hello jako součást uvolňování paměti, zastaví se všechny časovače. Poté jsou vyvolány žádná zpětná volání časovače. Navíc hello aktéři runtime nezachovává žádné informace o hello časovače, které byly spuštěné před deaktivace. Je to toohello objektu actor tooregister žádné časovače, které je nutné při opětovné aktivaci v budoucnu hello. Další informace najdete v tématu část hello na [uvolňování objektu actor](service-fabric-reliable-actors-lifecycle.md).
+Při deaktivaci objektu actor v rámci uvolňování paměti, zastaví se všechny časovače. Poté jsou vyvolány žádná zpětná volání časovače. Modul runtime aktéři navíc nezachovává žádné informace o časovače, které byly spuštěné před deaktivace. Je objektu actor k registraci všech časovače, které je nutné, když se znovu aktivuje v budoucnu. Další informace najdete v části na [uvolňování objektu actor](service-fabric-reliable-actors-lifecycle.md).
 
 ## <a name="actor-reminders"></a>Připomenutí objektu actor
-Připomenutí jsou tootrigger mechanismus trvalé zpětná volání v objektu actor v zadán vícekrát. Podobně jako tootimers je jejich funkce. Ale na rozdíl od časovače, připomenutí aktivaci za všech okolností dokud objektu actor hello explicitně zrušení registrace je nebo je explicitně odstranit objektu actor hello. Konkrétně připomenutí se aktivují napříč objektu actor deaktivací a převzetí služeb při selhání, protože hello aktéři runtime potrvají informace o objektu actor hello připomenutí.
+Připomenutí jsou mechanismus pro aktivaci trvalé zpětná volání v objektu actor časech. Jejich funkce je podobná časovače. Ale na rozdíl od časovače, připomenutí aktivaci za všech okolností dokud objektu actor explicitně Odregistruje nebo objektu actor je explicitně odstranit. Konkrétně připomenutí se aktivují napříč objektu actor deaktivací a převzetí služeb při selhání, protože runtime aktéři potrvají informace o objektu actor připomenutí.
 
-tooregister připomenutí volání objektu actor hello `RegisterReminderAsync` metoda zadaný na hello základní třídu, jak je znázorněno v hello následující ukázka:
+K registraci, zobrazí se připomenutí, volání objektu actor `RegisterReminderAsync` metoda zadaný na základní třídy, jak je znázorněno v následujícím příkladu:
 
 ```csharp
 protected override async Task OnActivateAsync()
@@ -161,14 +161,14 @@ protected CompletableFuture onActivateAsync()
     ActorReminder reminderRegistration = this.registerReminderAsync(
             reminderName,
             state,
-            dueTime,    //hello amount of time toodelay before firing hello reminder
-            period);    //hello time interval between firing of reminders
+            dueTime,    //The amount of time to delay before firing the reminder
+            period);    //The time interval between firing of reminders
 }
 ```
 
-V tomto příkladu `"Pay cell phone bill"` je název připomenutí hello. Toto je řetězec, který hello používá objektu actor toouniquely identifikovat připomenutí. `BitConverter.GetBytes(amountInDollars)`(C#) je hello kontext, který je přidružen hello připomenutí. Bude předáno objektu actor back toohello jako argumentu toohello připomenutí zpětného volání, tj. `IRemindable.ReceiveReminderAsync`(C#) nebo `Remindable.receiveReminderAsync`(Java).
+V tomto příkladu `"Pay cell phone bill"` je název připomenutí. Toto je řetězec, který objektu actor používá k jedinečné identifikaci připomenutí. `BitConverter.GetBytes(amountInDollars)`(C#) je kontext, který je přidružen připomenutí. Bude předáno zpět do objektu actor jako argument funkci zpětného volání připomenutí tj `IRemindable.ReceiveReminderAsync`(C#) nebo `Remindable.receiveReminderAsync`(Java).
 
-Aktéři, které používají připomenutí musí implementovat hello `IRemindable` rozhraní, jak je znázorněno v následujícím příkladu hello.
+Aktéři, které používají připomenutí musí implementovat `IRemindable` rozhraní, jak je znázorněno v následujícím příkladu.
 
 ```csharp
 public class ToDoListActor : Actor, IToDoListActor, IRemindable
@@ -209,11 +209,11 @@ public class ToDoListActorImpl extends FabricActor implements ToDoListActor, Rem
 
 ```
 
-Když se aktivuje připomenutí hello Reliable Actors runtime vyvolá hello `ReceiveReminderAsync`(C#) nebo `receiveReminderAsync`na hello objektu Actor – metoda (Java). Objekt actor můžete zaregistrovat několik připomenutí a hello `ReceiveReminderAsync`(C#) nebo `receiveReminderAsync`(Java) metoda je volána při některé z těchto připomenutí se aktivuje. Hello objektu actor můžete použít hello připomenutí název, který se předává v toohello `ReceiveReminderAsync`(C#) nebo `receiveReminderAsync`toofigure – metoda (Java), které položky byla aktivována připomenutí.
+Když se aktivuje připomenutí bude vyvolání runtime Reliable Actors `ReceiveReminderAsync`(C#) nebo `receiveReminderAsync`(Java) metoda objektu Actor. Objekt actor můžete zaregistrovat několik připomenutí a `ReceiveReminderAsync`(C#) nebo `receiveReminderAsync`(Java) metoda je volána při některé z těchto připomenutí se aktivuje. Objektu actor můžete použít připomenutí název, který je předán `ReceiveReminderAsync`(C#) nebo `receiveReminderAsync`(Java) metoda zjistěte, které připomenutí byla aktivována.
 
-Hello aktéři runtime uloží stav objektu actor hello při hello `ReceiveReminderAsync`(C#) nebo `receiveReminderAsync`dokončení volání (Java). Pokud dojde k chybě při ukládání stavu hello, bude tento objekt actor deaktivovat a aktivuje novou instanci.
+Aktéři runtime uloží objektu actor stavu, kdy `ReceiveReminderAsync`(C#) nebo `receiveReminderAsync`dokončení volání (Java). Pokud dojde k chybě při ukládání stavu, bude tento objekt actor deaktivovat a aktivuje novou instanci.
 
-toounregister připomenutí volání objektu actor hello `UnregisterReminderAsync`(C#) nebo `unregisterReminderAsync`(Java) metoda, jak je znázorněno v následující příklady hello.
+Zrušení registrace připomenutí, volání objektu actor `UnregisterReminderAsync`(C#) nebo `unregisterReminderAsync`(Java) metoda, jak je znázorněno v následujících příkladech.
 
 ```csharp
 IActorReminder reminder = GetReminder("Pay cell phone bill");
@@ -224,7 +224,7 @@ ActorReminder reminder = getReminder("Pay cell phone bill");
 CompletableFuture reminderUnregistration = unregisterReminderAsync(reminder);
 ```
 
-Jako v příkladu nahoře, hello `UnregisterReminderAsync`(C#) nebo `unregisterReminderAsync`(Java) metoda přijímá `IActorReminder`(C#) nebo `ActorReminder`rozhraní (Java). Hello podporuje základní třída objektu actor `GetReminder`(C#) nebo `getReminder`(Java) metoda, kterou lze použít tooretrieve hello `IActorReminder`(C#) nebo `ActorReminder`(Java) rozhraní předáním v názvu připomenutí hello. To je vhodné, protože objektu actor hello nemusí toopersist hello `IActorReminder`(C#) nebo `ActorReminder`rozhraní (Java), který byl vrácen ze hello `RegisterReminder`(C#) nebo `registerReminder`volání metody (Java).
+Jako v příkladu nahoře, `UnregisterReminderAsync`(C#) nebo `unregisterReminderAsync`(Java) metoda přijímá `IActorReminder`(C#) nebo `ActorReminder`rozhraní (Java). Podporuje základní třída objektu actor `GetReminder`(C#) nebo `getReminder`(Java) metoda, která slouží k načtení `IActorReminder`(C#) nebo `ActorReminder`(Java) rozhraní předáním v názvu připomenutí. To je vhodné, protože není potřeba zachovat objektu actor `IActorReminder`(C#) nebo `ActorReminder`rozhraní (Java), který byl vrácen ze `RegisterReminder`(C#) nebo `registerReminder`volání metody (Java).
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o události objektu Actor spolehlivé a vícenásobný přístup:

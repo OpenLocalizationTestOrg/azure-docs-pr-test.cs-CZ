@@ -6,11 +6,11 @@
 
 # Postup
 ## Integrace
-### [Web Apps](../app-service-web/app-service-web-tutorial-content-delivery-network.md?toc=%2fazure%2fcdn%2ftoc.json)
+### [Web Apps](../app-service/app-service-web-tutorial-content-delivery-network.md?toc=%2fazure%2fcdn%2ftoc.json)
 ### [Cloud Services](cdn-cloud-service-with-cdn.md)
 ### [Storage](cdn-create-a-storage-account-with-cdn.md)
 ### [Sdílení prostředků různého původu](cdn-cors.md)
-### [Mapa tooCDN vlastní doménu.](cdn-map-content-to-custom-domain.md)
+### [Mapování vlastní domény na CDN](cdn-map-content-to-custom-domain.md)
 ### [Povolení HTTPS pro vlastní doménu](cdn-custom-ssl.md)
 ## Optimalizace obsahu
 ### [Přehled optimalizace](cdn-optimization-overview.md)
@@ -19,7 +19,7 @@
 ####[Akcelerace dynamického webu](cdn-dynamic-site-acceleration.md)
  
 ## Spravovat
-### [Správa pomocí PowerShellu](cdn-manage-powershell.md)
+### [Správa pomocí Azure PowerShellu](cdn-manage-powershell.md)
 ### Konfigurace hodnoty TTL (time-to-live)
 #### [Obsah služeb Web Apps / Cloud Services, ASP.NET nebo IIS](cdn-manage-expiration-of-cloud-service-content.md)
 #### [Obsah služby Storage Blob](cdn-manage-expiration-of-blob-content.md)
@@ -37,11 +37,13 @@
 ### [Podpora HTTP/2](cdn-http2.md)
 
 ## Analýza
-### [Analýza vzorců používání](cdn-analyze-usage-patterns.md)
-### [Generování pokročilých sestav HTTP](cdn-advanced-http-reports.md)
-### [Zobrazení statistik v reálném čase](cdn-real-time-stats.md)
-### [Analýza výkonu hraničních uzlů](cdn-edge-performance.md)
-### [Export metrik s využitím diagnostických protokolů](cdn-log-analysis.md)
+### [Analýza vzorů využití Azure CDN](cdn-log-analysis.md)
+#### [Základní sestavy od Verizonu](cdn-analyze-usage-patterns.md)
+#### [Protokoly diagnostiky Azure](cdn-azure-diagnostic-logs.md)
+### Analytické nástroje pro Azure CDN od Verizonu
+#### [Generování pokročilých sestav HTTP](cdn-advanced-http-reports.md)
+#### [Zobrazení statistik v reálném čase](cdn-real-time-stats.md)
+#### [Analýza výkonu hraničních uzlů](cdn-edge-performance.md)
 
 ## Vývoj
 ### [.NET](cdn-app-dev-net.md)
@@ -53,7 +55,7 @@
 
 # Referenční informace
 ## [Ukázky kódu](https://azure.microsoft.com/en-us/resources/samples/?service=cdn)
-## [PowerShell](/powershell/module/azurerm.cdn)
+## [Azure PowerShell](/powershell/module/azurerm.cdn)
 ## [.NET](/dotnet/api/microsoft.azure.management.cdn)
 ## [Java](/java/api/com.microsoft.azure.management.cdn)
 ## [REST](/rest/api/cdn/)

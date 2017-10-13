@@ -1,6 +1,6 @@
 ---
 title: "Azure AD B2C: Zabezpečení webového rozhraní API pomocí Node.js | Dokumentace Microsoftu"
-description: "Jak toobuild Node.js webové rozhraní API, které přijímá tokeny z klienta B2C"
+description: "Jak sestavit webové rozhraní API Node.js, které přijímá tokeny z klienta B2C"
 services: active-directory-b2c
 documentationcenter: 
 author: dstrockis
@@ -14,96 +14,96 @@ ms.devlang: javascript
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: xerners
-ms.openlocfilehash: 47f5bae025a9ba2f486e36acef36aa37cfb43543
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 2315f5d0ebb142561c65224cd9d06299466a7ee4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Azure AD B2C: Zabezpečení webového rozhraní API pomocí Node.js
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
 
-S Azure Active Directory (Azure AD) B2C můžete zabezpečit webové rozhraní API pomocí přístupových tokenů OAuth 2.0. Tyto tokeny umožňují vaší klientské aplikace, které používají Azure AD B2C tooauthenticate toohello API. Tento článek ukazuje, jak toocreate rozhraní API "seznam úkolů", umožňuje uživatelům tooadd a seznam úloh. Hello webového rozhraní API zabezpečené pomocí Azure AD B2C a pouze umožňuje ověřeným uživatelům toomanage jejich seznamu úkolů.
+S Azure Active Directory (Azure AD) B2C můžete zabezpečit webové rozhraní API pomocí přístupových tokenů OAuth 2.0. Tyto tokeny umožňují ověření přístupu klientských aplikací, které používají Azure AD B2C, do rozhraní API. Tento článek ukazuje, jak vytvořit rozhraní API „seznam úkolů“, které umožňuje uživatelům přidávat úkoly a vypisovat jejich seznam. Webové rozhraní API je zabezpečeno pomocí Azure AD B2C a umožňuje pouze ověřeným uživatelům spravovat své seznamy úkolů.
 
 > [!NOTE]
-> Tato ukázka byla napsána toobe připojené tooby pomocí našich [ukázkové aplikace iOS B2C](active-directory-b2c-devquickstarts-ios.md). Nejprve hello aktuální návodu a pak postupujte podle ukázky.
+> Tato ukázka byla napsána pro připojení pomocí naší [ukázkové aplikace iOS B2C](active-directory-b2c-devquickstarts-ios.md). Nejprve pokračujte podle aktuálního návodu a poté postupujte podle příslušné ukázky.
 >
 >
 
-**Passport** je ověřovací middleware pro Node.js. Passport je flexibilní a modulární a lze ho snadno nainstalovat v jakékoli webové aplikaci využívající Express nebo Restify. Komplexní sada strategií podporuje ověřování pomocí uživatelského jména a hesla, Facebooku, Twitteru a dalších. Vyvinuli jsme strategii pro Azure Active Directory (Azure AD). Nainstalujete tento modul a poté přidejte hello Azure AD `passport-azure-ad` modulu plug-in.
+**Passport** je ověřovací middleware pro Node.js. Passport je flexibilní a modulární a lze ho snadno nainstalovat v jakékoli webové aplikaci využívající Express nebo Restify. Komplexní sada strategií podporuje ověřování pomocí uživatelského jména a hesla, Facebooku, Twitteru a dalších. Vyvinuli jsme strategii pro Azure Active Directory (Azure AD). Nainstalujte tento modul a poté přidejte modul plug-in Azure AD `passport-azure-ad`.
 
-toodo této ukázce, budete muset:
+Chcete-li postupovat podle této ukázky, budete muset:
 
 1. Zaregistrovat aplikaci s Azure AD.
-2. Nastavení vaší aplikace toouse Passport je `azure-ad-passport` modulu plug-in.
-3. Konfigurace klienta aplikace toocall hello "seznam úkolů" webového rozhraní API.
+2. Nastavit aplikaci pro používání modulu plug-in `passport-azure-ad` Passportu.
+3. Nakonfigurovat klientskou aplikaci, aby volala webové rozhraní API „seznam úkolů“.
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Získání adresáře služby Azure AD B2C
 Před použitím Azure AD B2C musíte vytvořit adresář, nebo klienta.  Adresář je kontejner pro všechny uživatele, aplikace, skupiny a další.  Pokud ho ještě nemáte, [vytvořte adresář B2C](active-directory-b2c-get-started.md) předtím, než budete pokračovat.
 
 ## <a name="create-an-application"></a>Vytvoření aplikace
-Dále musíte toocreate aplikace ve svém adresáři B2C, která poskytne Azure AD nějaké informace, že tato služba vyžaduje toosecurely komunikaci s vaší aplikací. V takovém případě hello klientská aplikace i webové rozhraní API jsou reprezentované pomocí jedné **ID aplikace**, protože společně tvoří jednu logickou aplikaci. toocreate na aplikace, postupujte podle [tyto pokyny](active-directory-b2c-app-registration.md). Ujistěte se, že:
+Dále musíte ve svém adresáři B2C vytvořit aplikaci, která poskytne Azure AD informace potřebné k bezpečné komunikaci s vaší aplikací. V tomto případě mají klientská aplikace i webové rozhraní API stejné **ID aplikace**, protože společně tvoří jednu logickou aplikaci. Chcete-li vytvořit aplikaci, postupujte podle [těchto pokynů](active-directory-b2c-app-registration.md). Ujistěte se, že:
 
-* Zahrnout **webovou aplikaci nebo webové rozhraní api** v aplikaci hello
-* Jste do pole **Adresa URL odpovědi** vyplnili `http://localhost/TodoListService`. Je hello výchozí adresa URL pro tuto ukázku kódu.
-* Vytvořte pro aplikaci **tajný klíč aplikace** a poznamenejte si ho. Tato data budete potřebovat později. Všimněte si, že tato hodnota se musí toobe [uvozena v XML](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape) dříve, než ho použijete.
-* Kopírování hello **ID aplikace** který je přiřazený tooyour aplikace. Tato data budete potřebovat později.
+* Jste do aplikace zahrnuli **webovou aplikaci nebo webové rozhraní API**.
+* Jste do pole **Adresa URL odpovědi** vyplnili `http://localhost/TodoListService`. To je výchozí URL pro tento příklad.
+* Vytvořte pro aplikaci **tajný klíč aplikace** a poznamenejte si ho. Tato data budete potřebovat později. Před tím, než tuto hodnotu použijete, musí být [uvozena v XML](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape).
+* Poznamenejte si **ID aplikace** přiřazené vaší aplikaci. Tato data budete potřebovat později.
 
 [!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## <a name="create-your-policies"></a>Vytvořte svoje zásady
-V Azure AD B2C je každé uživatelské rozhraní definováno [zásadou](active-directory-b2c-reference-policies.md). Tato aplikace obsahuje dvě možnosti pro identitu: registraci a přihlášení. Je třeba jedna zásada toocreate každého typu, jak je popsáno v [článku o zásadách](active-directory-b2c-reference-policies.md#create-a-sign-up-policy).  Když vytváříte tyto tři zásady, nezapomeňte:
+V Azure AD B2C je každé uživatelské rozhraní definováno [zásadou](active-directory-b2c-reference-policies.md). Tato aplikace obsahuje dvě možnosti pro identitu: registraci a přihlášení. Pro každý typ rozhraní musíte vytvořit zásadu, jak je popsáno v [článku o zásadách](active-directory-b2c-reference-policies.md#create-a-sign-up-policy).  Když vytváříte tyto tři zásady, nezapomeňte:
 
-* Zvolte hello **zobrazovaný název** a další atributy registrace ve svojí registrační zásadě.
-* Zvolte hello **zobrazovaný název** a **ID objektu** deklarace identity aplikace v každé zásadě.  Můžete zvolit i další deklarace identity.
-* Poznamenejte hello **název** po jejím vytvoření každé zásady. Měl by mít předponu hello `b2c_1_`.  Tyto názvy zásad budete potřebovat později.
+* Zvolit **Zobrazovaný název** a další atributy registrace ve svojí registrační zásadě.
+* Zvolit deklarace identity aplikace **Zobrazovaný název** a **ID objektu** v každé zásadě.  Můžete zvolit i další deklarace identity.
+* Po vytvoření každé zásady si poznamenejte její **Název**. Měl by mít předponu `b2c_1_`.  Tyto názvy zásad budete potřebovat později.
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-Po vytvoření tří zásad jste připravené toobuild vaší aplikace.
+Po vytvoření těchto tří zásad jste připraveni k sestavení aplikace.
 
-toolearn o tom, jak fungují zásady v Azure AD B2C, začněte s hello [webové aplikace kurzem Začínáme .NET](active-directory-b2c-devquickstarts-web-dotnet.md).
+Chcete-li se dozvědět, jak fungují zásady v Azure AD B2C, začněte [kurzem Začínáme s webovými aplikacemi .NET](active-directory-b2c-devquickstarts-web-dotnet.md).
 
-## <a name="download-hello-code"></a>Stáhněte si kód hello
-Hello kód pro tento kurz [je udržovaný na Githubu](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS). Ukázka hello toobuild jako můžete přejít, můžete [stáhnout kostru projektu v souboru ZIP](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/skeleton.zip). Můžete také hello kostru klonovat:
+## <a name="download-the-code"></a>Stáhněte si kód
+Kód k tomuto kurzu [je udržovaný na GitHubu](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS). Chcete-li během čtení tohoto návodu rovnou sestavit ukázku, můžete si [stáhnout kostru projektu v souboru ZIP](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/skeleton.zip). Kostru můžete také klonovat:
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS.git
 ```
 
-aplikace Hello dokončit, je také [k dispozici jako soubor ZIP](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/complete.zip) nebo na hello `complete` větve hello stejného úložiště.
+Dokončená aplikace je také [k dispozici jako soubor ZIP](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/complete.zip) nebo ve větvi `complete` stejného úložiště.
 
 ## <a name="download-nodejs-for-your-platform"></a>Stažení Node.js pro vaši platformu
-toosuccessfully tuto ukázku použít, potřebujete funkční instalací Node.js.
+Pro úspěšné fungování této ukázky je třeba mít funkční instalaci Node.js.
 
 Nainstalujte si Node.js z [nodejs.org](http://nodejs.org).
 
 ## <a name="install-mongodb-for-your-platform"></a>Instalace MongoDB pro vaši platformu
-toosuccessfully tuto ukázku použít, potřebujete funkční instalací MongoDB. MongoDB toomake používáme napříč instancemi serveru trvalé rozhraní REST API.
+Pro úspěšné fungování této ukázky je třeba mít funkční instalaci MongoDB. MongoDB budeme používat k zajištění trvalosti REST API napříč instancemi serveru.
 
 Nainstalujte MongoDB z [mongodb.org](http://www.mongodb.org).
 
 > [!NOTE]
-> Tento podrobný návod předpokládá, že používáte hello výchozí instalaci a koncové body serveru pro MongoDB, které jsou v době psaní tohoto textu hello je `mongodb://localhost`.
+> Tento návod předpokládá, že používáte výchozí instalaci a koncové body serveru pro MongoDB, což je v době psaní tohoto návodu `mongodb://localhost`.
 >
 >
 
-## <a name="install-hello-restify-modules-in-your-web-api"></a>Instalace modulů Restify hello ve vašem webovém rozhraní API
-Restify toobuild používáme REST API. Restify je minimalistické a flexibilní rozhraní Node.js odvozené z Express. Obsahuje robustní sadu funkcí pro sestavování rozhraní REST API postavených na protokolu Connect.
+## <a name="install-the-restify-modules-in-your-web-api"></a>Instalace modulů Restify ve webovém rozhraní API
+Restify použijeme k sestavení REST API. Restify je minimalistické a flexibilní rozhraní Node.js odvozené z Express. Obsahuje robustní sadu funkcí pro sestavování rozhraní REST API postavených na protokolu Connect.
 
 ### <a name="install-restify"></a>Instalace Restify
-Hello příkazovém řádku přejděte do adresáře příliš`azuread`. Pokud hello `azuread` adresář neexistuje, vytvořte ho.
+V příkazovém řádku přejděte do adresáře `azuread`. Pokud adresář `azuread` neexistuje, vytvořte ho.
 
 `cd azuread` nebo `mkdir azuread;`
 
-Zadejte hello následující příkaz:
+Zadejte následující příkaz:
 
 `npm install restify`
 
 Tento příkaz nainstaluje Restify.
 
 #### <a name="did-you-get-an-error"></a>Obdrželi jste chybu?
-V některých operačních systémech, při použití `npm`, může se zobrazit chyba hello `Error: EPERM, chmod '/usr/local/bin/..'` a žádost o hello účet Spustit jako správce. Pokud vznikne tento problém používat hello `sudo` příkaz toorun `npm` na vyšší úrovni oprávnění.
+Při použití příkazu `npm` můžete v některých operačních systémech obdržet chybu `Error: EPERM, chmod '/usr/local/bin/..'` s žádostí, abyste spustili účet jako správce. Pokud se vyskytne tento problém, použijte příkaz `sudo` ke spuštění příkazu `npm` na vyšší úrovni oprávnění.
 
 #### <a name="did-you-get-a-dtrace-error"></a>Obdrželi jste chybu DTrace?
 Při instalaci Restify se může zobrazit podobný text:
@@ -127,7 +127,7 @@ npm WARN optional dep failed, continuing dtrace-provider@0.2.8
 
 Restify poskytuje výkonný mechanismus pro trasování volání REST pomocí DTrace. Nicméně, na mnoha operačních systémech není DTrace k dispozici. Tyto chyby můžete bezpečně ignorovat.
 
-výstup Hello hello příkazu by měla vypadat podobně jako toothis text:
+Výstup příkazu by měl vypadat podobně jako tento text:
 
     restify@2.6.1 node_modules/restify
     ├── assert-plus@0.1.4
@@ -151,33 +151,33 @@ výstup Hello hello příkazu by měla vypadat podobně jako toothis text:
     └── bunyan@0.22.0 (mv@0.0.5)
 
 ## <a name="install-passport-in-your-web-api"></a>Instalace Passportu ve vašem webovém rozhraní API
-Hello příkazovém řádku přejděte do adresáře příliš`azuread`, pokud ještě není.
+V příkazovém řádku přejděte do adresáře `azuread`, pokud v něm ještě nejste.
 
-Instalace Passportu pomocí hello následující příkaz:
+Nainstalujte Passport pomocí následujícího příkazu:
 
 `npm install passport`
 
-Hello výstup hello příkazu by měl vypadat podobně jako toothis text:
+Výstup příkazu by měl se měl podobat tomuto textu:
 
     passport@0.1.17 node_modules\passport
     ├── pause@0.0.1
     └── pkginfo@0.2.3
 
-## <a name="add-passport-azuread-tooyour-web-api"></a>Přidání passport-azuread tooyour webového rozhraní API
-V dalším kroku přidejte strategii OAuth hello pomocí `passport-azuread`, sady strategií, které propojují Azure AD s Passport. Použijte tuto strategii pro nosné tokeny v ukázce REST API hello.
+## <a name="add-passport-azuread-to-your-web-api"></a>Přidání passport-azuread do webového rozhraní API
+Nyní přidejte strategii OAuth pomocí `passport-azuread` – sady strategií, které propojují Azure AD s Passportem. Použijte tuto strategii pro nosné tokeny v ukázce REST API.
 
 > [!NOTE]
-> Přestože OAuth2 poskytuje rozhraní, ve kterém mohou být vydávané všechny známé typy tokenů, rozšířeného využití se dostalo pouze určitým typům tokenů. Hello tokeny pro ochranu koncových bodů jsou nosné tokeny. Tyto typy tokenů jsou hello nejčastěji vydané v OAuth2. Mnoho implementací předpokládá, že jsou nosné tokeny jediným typem vydávaných tokenů hello.
+> Přestože OAuth2 poskytuje rozhraní, ve kterém mohou být vydávané všechny známé typy tokenů, rozšířeného využití se dostalo pouze určitým typům tokenů. Tokeny pro ochranu koncových bodů jsou nosné tokeny. Tyto typy tokenů jsou v OAuth2 vydávány nejčastěji. Mnoho implementací předpokládá, že jsou nosné tokeny jediným typem vydávaných tokenů.
 >
 >
 
-Hello příkazovém řádku přejděte do adresáře příliš`azuread`, pokud ještě není.
+V příkazovém řádku přejděte do adresáře `azuread`, pokud v něm ještě nejste.
 
-Nainstalujte hello Passport `passport-azure-ad` modulu pomocí hello následující příkaz:
+Nainstalujte modulu `passport-azure-ad` Passport pomocí následujícího příkazu:
 
 `npm install passport-azure-ad`
 
-Hello výstup hello příkazu by měl vypadat podobně jako toothis text:
+Výstup příkazu by měl se měl podobat tomuto textu:
 
 ``
 passport-azure-ad@1.0.0 node_modules/passport-azure-ad
@@ -194,19 +194,19 @@ passport-azure-ad@1.0.0 node_modules/passport-azure-ad
 └── xml2js@0.4.9 (sax@0.6.1, xmlbuilder@2.6.4)
 ``
 
-## <a name="add-mongodb-modules-tooyour-web-api"></a>Přidání modulů MongoDB tooyour rozhraní web API
+## <a name="add-mongodb-modules-to-your-web-api"></a>Přidání modulů MongoDB do webového rozhraní API
 V této ukázce se jako úložiště dat používá MongoDB. Pro tento účel nainstalujte Mongoose, což je běžně používaný modul plug-in pro správu modelů a schémat.
 
 * `npm install mongoose`
 
 ## <a name="install-additional-modules"></a>Instalace dalších modulů
-Dále nainstalujte zbývající požadované moduly hello.
+Dále nainstalujte zbývající požadované moduly.
 
-Hello příkazovém řádku přejděte do adresáře příliš`azuread`, pokud ještě není:
+V příkazovém řádku přejděte do adresáře `azuread`, pokud v něm ještě nejste:
 
 `cd azuread`
 
-Instalace modulů hello ve vaší `node_modules` directory:
+Nainstalujte moduly v adresáři `node_modules`:
 
 * `npm install assert-plus`
 * `npm install ejs`
@@ -215,13 +215,13 @@ Instalace modulů hello ve vaší `node_modules` directory:
 * `npm install bunyan`
 
 ## <a name="create-a-serverjs-file-with-your-dependencies"></a>Vytvoření souboru server.js se závislostmi
-Hello `server.js` soubor poskytuje hello většina hello funkce pro server webového rozhraní API.
+Soubor `server.js` poskytuje většinu funkčnosti vašeho serveru webového rozhraní API.
 
-Hello příkazovém řádku přejděte do adresáře příliš`azuread`, pokud ještě není:
+V příkazovém řádku přejděte do adresáře `azuread`, pokud v něm ještě nejste:
 
 `cd azuread`
 
-V editoru vytvořte soubor `server.js`. Přidejte hello následující informace:
+V editoru vytvořte soubor `server.js`. Přidejte následující informace:
 
 ```Javascript
 'use strict';
@@ -240,27 +240,27 @@ var passport = require('passport');
 var OIDCBearerStrategy = require('passport-azure-ad').BearerStrategy;
 ```
 
-Uložte soubor hello. Vrátí tooit později.
+Uložte soubor. Vrátíte se k němu později.
 
-## <a name="create-a-configjs-file-toostore-your-azure-ad-settings"></a>Vytvoření toostore souboru config.js nastavení Azure AD
-Tento soubor s kódem předává parametry konfigurace hello z vaší portálu Azure AD toohello `Passport.js` souboru. Tyto hodnoty konfigurace jste vytvořili, když jste přidali hello webové rozhraní API toohello portálu v první části návodu hello hello. Po zkopírování hello kód objasníme, jaké tooput v hello hodnoty těchto parametrů.
+## <a name="create-a-configjs-file-to-store-your-azure-ad-settings"></a>Vytvoření souboru config.js pro ukládání nastavení Azure AD
+Tento soubor s kódem předává parametry konfigurace z portálu Azure AD do souboru `Passport.js`. Tyto hodnoty konfigurace jste vytvořili, když jste přidali webové rozhraní API do portálu v první části tohoto návodu.  Vysvětlíme, co zadat jako hodnoty těchto parametrů, až zkopírujete kód.
 
-Hello příkazovém řádku přejděte do adresáře příliš`azuread`, pokud ještě není:
+V příkazovém řádku přejděte do adresáře `azuread`, pokud v něm ještě nejste:
 
 `cd azuread`
 
-V editoru vytvořte soubor `config.js`. Přidejte hello následující informace:
+V editoru vytvořte soubor `config.js`. Přidejte následující informace:
 
 ```Javascript
-// Don't commit this file tooyour public repos. This config is for first-run
+// Don't commit this file to your public repos. This config is for first-run
 exports.creds = {
-clientID: <your client ID for this Web API you created in hello portal>
+clientID: <your client ID for this Web API you created in the portal>
 mongoose_auth_local: 'mongodb://localhost/tasklist', // Your mongo auth uri goes here
-audience: '<your audience URI>', // hello Client ID of hello application that is calling your API, usually a web API or native client
-identityMetadata: 'https://login.microsoftonline.com/<tenant name>/.well-known/openid-configuration', // Make sure you add hello B2C tenant name in hello <tenant name> area
+audience: '<your audience URI>', // the Client ID of the application that is calling your API, usually a web API or native client
+identityMetadata: 'https://login.microsoftonline.com/<tenant name>/.well-known/openid-configuration', // Make sure you add the B2C tenant name in the <tenant name> area
 tenantName:'<tenant name>',
-policyName:'b2c_1_<sign in policy name>' // This is hello policy you'll want toovalidate against in B2C. Usually this is your Sign-in policy (as users sign in toothis API)
-passReqToCallback: false // This is a node.js construct that lets you pass hello req all hello way back tooany upstream caller. We turn this off as there is no upstream caller.
+policyName:'b2c_1_<sign in policy name>' // This is the policy you'll want to validate against in B2C. Usually this is your Sign-in policy (as users sign in to this API)
+passReqToCallback: false // This is a node.js construct that lets you pass the req all the way back to any upstream caller. We turn this off as there is no upstream caller.
 };
 
 ```
@@ -268,40 +268,40 @@ passReqToCallback: false // This is a node.js construct that lets you pass hello
 [!INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
 ### <a name="required-values"></a>Požadované hodnoty
-`clientID`: hello ID klienta aplikace webového rozhraní API.
+`clientID`: ID klienta aplikace webového rozhraní API.
 
-`IdentityMetadata`: Tady bude `passport-azure-ad` vyhledá konfigurační data pro zprostředkovatele identity hello. Vypadá to také pro webové tokeny hello JSON toovalidate hello klíče.
+`IdentityMetadata`: Tady `passport-azure-ad` hledá konfigurační data pro zprostředkovatele identity. Také zde hledá klíče pro ověření webových tokenů JSON.
 
-`audience`: identifikátor URI (URI) z hello portálu, který identifikuje volající aplikace hello.
+`audience`: Identifikátor URI z portálu, který identifikuje vaši volající aplikaci.
 
 `tenantName`: Název vašeho klienta (například **contoso.onmicrosoft.com**).
 
-`policyName`: hello zásady, které chcete toovalidate hello tokenů přicházejících tooyour serveru. Tato zásada by měla být hello stejné zásady, které používáte pro přihlášení na hello klientské aplikace.
+`policyName`: Zásada, kterou chcete použít k ověřování tokenů přicházejících na váš server. Tato zásada by měla být stejná jako ta, kterou používáte pro přihlašování na klientské aplikaci.
 
 > [!NOTE]
-> Prozatím použijte hello stejné zásady v nastavení klient i server. Pokud jste již dokončili návod a tyto zásady vytvořili, nemusíte toodo proto znovu. Vzhledem k tomu, že jste dokončili návod hello, neměli byste potřebovat tooset si nové zásady u návodů pro klienty v lokalitě hello.
+> Použijte stejné zásady v nastavení klienta i serveru. Pokud jste již dokončili návod a tyto zásady jste už vytvořili, nemusíte to dělat znovu. Vzhledem k tomu, že jste návod dokončili, nemělo by být třeba nastavovat nové zásady u návodů pro klienty na této stránce.
 >
 >
 
-## <a name="add-configuration-tooyour-serverjs-file"></a>Přidání konfiguračního souboru server.js tooyour
-tooread hello hodnoty z hello `config.js` souboru, kterou jste vytvořili, přidejte hello `.config` souboru jako požadovaný prostředek vaší aplikace a pak nastavte globální proměnné toothose hello v hello `config.js` dokumentu.
+## <a name="add-configuration-to-your-serverjs-file"></a>Přidání konfigurace do souboru server.js
+Chcete-li načíst hodnoty z vytvořeného souboru `config.js` přidejte soubor `.config` jako požadovaný prostředek ve vaší aplikaci a pak nastavte globální proměnné na hodnoty v dokumentu `config.js`.
 
-Hello příkazovém řádku přejděte do adresáře příliš`azuread`, pokud ještě není:
+V příkazovém řádku přejděte do adresáře `azuread`, pokud v něm ještě nejste:
 
 `cd azuread`
 
-Otevřete hello `server.js` souboru v editoru. Přidejte hello následující informace:
+V editoru otevřete soubor `server.js`. Přidejte následující informace:
 
 ```Javascript
 var config = require('./config');
 ```
-Přidání nové části příliš`server.js` hello následující kód, který obsahuje:
+Do souboru `server.js` přidejte nový oddíl s následujícím kódem:
 
 ```Javascript
-// We pass these options in toohello ODICBearerStrategy.
+// We pass these options in to the ODICBearerStrategy.
 
 var options = {
-    // hello URL of hello metadata document for your app. We put hello keys for token validation from hello URL found in hello jwks_uri tag of hello in hello metadata.
+    // The URL of the metadata document for your app. We put the keys for token validation from the URL found in the jwks_uri tag of the in the metadata.
     identityMetadata: config.creds.identityMetadata,
     clientID: config.creds.clientID,
     tenantName: config.creds.tenantName,
@@ -313,10 +313,10 @@ var options = {
 };
 ```
 
-V dalším kroku přidejme některé zástupné symboly pro uživatele hello obdržíme od našich volání aplikací.
+V dalším kroku přidáme několik zástupných symbolů pro uživatele obdržené z volajících aplikací.
 
 ```Javascript
-// array toohold logged in users and hello current logged in user (owner)
+// array to hold logged in users and the current logged in user (owner)
 var users = [];
 var owner = null;
 ```
@@ -330,32 +330,32 @@ var log = bunyan.createLogger({
 });
 ```
 
-## <a name="add-hello-mongodb-model-and-schema-information-by-using-mongoose"></a>Přidat hello informace modelu a schématu MongoDB pomocí Mongoose
-Hello předchozí Příprava platí přineste tyto tři soubory dohromady ve službu REST API.
+## <a name="add-the-mongodb-model-and-schema-information-by-using-mongoose"></a>Přidání informací o modelu a schématu MongoDB pomocí Mongoose
+Předchozí příprava se vyplatí, protože tyto tři soubory spojíte dohromady ve službu REST API.
 
-Pro tento návod použijte MongoDB toostore úkolů, jak je popsáno výše.
+Pro tento návod použijte k ukládání úkolů MongoDB, jak je uvedeno výše.
 
-V hello `config.js` souboru, jste nazvali databázi **tasklist**. Tento název se taky uveďte na konci hello hello `mongoose_auth_local` adresy URL pro připojení. Nepotřebujete toocreate tato databáze předem v MongoDB. Vytvoří hello databáze pro vás při hello prvního spuštění vaší serverové aplikace.
+V souboru `config.js` jste databázi nazvali **tasklist**. Tento název jste také vložili na konec adresy URL připojení `mongoose_auth_local`. Tuto databázi nemusíte předem vytvářet v MongoDB. Databáze se vytvoří během prvního spuštění vaší serverové aplikace.
 
-Poté, co sdělíte serveru hello které toouse databázi MongoDB, musíte toowrite některé další kód toocreate hello modelu a schématu pro serverové úlohy.
+Poté, co sdělíte serveru, kterou databázi MongoDB má použít, budete muset napsat další kód pro vytvoření modelu a schématu pro serverové úlohy.
 
-### <a name="expand-hello-model"></a>Rozbalte položku modelu hello
+### <a name="expand-the-model"></a>Rozšíření modelu
 Tento model schématu je jednoduchý. Podle potřeby ho můžete rozšířit.
 
-`owner`: Kdo je přiřazen toohello úloh. Tento objekt je typu **string**.  
+`owner`: Kdo je přiřazen k úloze. Tento objekt je typu **string**.  
 
-`Text`: vlastní úloha hello. Tento objekt je typu **string**.
+`Text`: Vlastní úloha. Tento objekt je typu **string**.
 
-`date`: data hello je kvůli tuto úlohu hello. Tento objekt je typu **datetime**.
+`date`: Doba, kdy se má úloha vykonat. Tento objekt je typu **datetime**.
 
-`completed`: Pokud hello úkol je dokončen. Tento objekt je typu **Boolean**.
+`completed`: Pokud je úloha dokončena. Tento objekt je typu **Boolean**.
 
-### <a name="create-hello-schema-in-hello-code"></a>Vytvoření hello schématu v kódu hello
-Hello příkazovém řádku přejděte do adresáře příliš`azuread`, pokud ještě není:
+### <a name="create-the-schema-in-the-code"></a>Vytvoření schématu v kódu
+V příkazovém řádku přejděte do adresáře `azuread`, pokud v něm ještě nejste:
 
 `cd azuread`
 
-Otevřete hello `server.js` souboru v editoru. Přidejte následující informace pod položku konfigurace hello hello:
+V editoru otevřete soubor `server.js`. Pod položku konfigurace přidejte následující informace:
 
 ```Javascript
 // MongoDB setup
@@ -363,12 +363,12 @@ Otevřete hello `server.js` souboru v editoru. Přidejte následující informac
 var serverPort = process.env.PORT || 3000; // Note we are hosting our API on port 3000
 var serverURI = (process.env.PORT) ? config.creds.mongoose_auth_mongohq : config.creds.mongoose_auth_local;
 
-// Connect tooMongoDB
+// Connect to MongoDB
 global.db = mongoose.connect(serverURI);
 var Schema = mongoose.Schema;
 log.info('MongoDB Schema loaded');
 
-// Here we create a schema toostore our tasks and users. Pretty simple schema for now.
+// Here we create a schema to store our tasks and users. Pretty simple schema for now.
 var TaskSchema = new Schema({
     owner: String,
     Text: String,
@@ -376,17 +376,17 @@ var TaskSchema = new Schema({
     date: Date
 });
 
-// Use hello schema tooregister a model
+// Use the schema to register a model
 mongoose.model('Task', TaskSchema);
 var Task = mongoose.model('Task');
 ```
-Nejprve vytvoříte schéma hello a pak vytvoříte objekt modelu, který používáte toostore dat napříč hello kódu při definování vaše **trasy**.
+Nejprve vytvoříte schéma a poté vytvoříte objekt modelu, který použijete k ukládání dat napříč kódem, když definujete svoje **trasy**.
 
 ## <a name="add-routes-for-your-rest-api-task-server"></a>Přidání tras pro serveru úloh REST API
-Teď, když máte toowork modelu databázi s, přidejte hello trasy, který použijete pro svůj server REST API.
+Teď, když máte model databáze, se kterým můžete pracovat, přidejte trasy, které budete používat pro svůj server REST API.
 
 ### <a name="about-routes-in-restify"></a>O trasách v Restify
-Trasy v Restify ve fungovat hello stejné jako pracují při použití balíku Express hello. Trasy se definují pomocí identifikátoru URI, které předpokládáte hello klienta aplikace toocall hello.
+Trasy v Restify fungují stejně jako při použití balíku Express. Trasy se definují pomocí identifikátoru URI, který by měly volat klientské aplikace. 
 
 Typický vzor trasy Restify je:
 
@@ -395,22 +395,22 @@ function createObject(req, res, next) {
 // do work on Object
 _object.name = req.params.object; // passed value is in req.params under object
 ///...
-return next(); // keep hello server going
+return next(); // keep the server going
 }
 ....
 server.post('/service/:add/:object', createObject); // calls createObject on routes that match this.
 ```
 
-Restify a Express poskytují mnohem hlubší funkčnost, jako například definování typů aplikací a provádění komplexního trasování napříč různými koncovými body. Pro účely tohoto kurzu hello jsme zjednodušení tyto trasy.
+Restify a Express poskytují mnohem hlubší funkčnost, jako například definování typů aplikací a provádění komplexního trasování napříč různými koncovými body. Pro účely tohoto kurzu ponecháme tyto trasy co nejjednodušší.
 
-#### <a name="add-default-routes-tooyour-server"></a>Přidat výchozí trasy tooyour server
-Nyní přidáte hello základní trasy CRUD **vytvořit** a **seznamu** pro naše REST API. Dalším postupům lze nalézt v hello `complete` větve hello ukázky.
+#### <a name="add-default-routes-to-your-server"></a>Přidání výchozích tras na server
+Nyní pro příslušné rozhraní REST API přidejte trasy základních operací CRUD **vytvoření** a **vypsání seznamu**. Další trasy najdete ve větvi `complete` ukázky.
 
-Hello příkazovém řádku přejděte do adresáře příliš`azuread`, pokud ještě není:
+V příkazovém řádku přejděte do adresáře `azuread`, pokud v něm ještě nejste:
 
 `cd azuread`
 
-Otevřete hello `server.js` souboru v editoru. Pod položky databáze hello provedené vyšší přidat hello následující informace:
+V editoru otevřete soubor `server.js`. Pod položky databáze, které jste vytvořili dříve, přidejte následující informace:
 
 ```Javascript
 /**
@@ -422,13 +422,13 @@ Otevřete hello `server.js` souboru v editoru. Pod položky databáze hello prov
 
 function createTask(req, res, next) {
 
-    // Resitify currently has a bug which doesn't allow you tooset default headers
-    // This headers comply with CORS and allow us toomongodbServer our response tooany origin
+    // Resitify currently has a bug which doesn't allow you to set default headers
+    // This headers comply with CORS and allow us to mongodbServer our response to any origin
 
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
 
-    // Create a new task model, fill it up and save it tooMongodb
+    // Create a new task model, fill it up and save it to Mongodb
     var _task = new Task();
 
     if (!req.params.Text) {
@@ -445,7 +445,7 @@ function createTask(req, res, next) {
 
     _task.save(function(err) {
         if (err) {
-            req.log.warn(err, 'createTask: unable toosave');
+            req.log.warn(err, 'createTask: unable to save');
             next(err);
         } else {
             res.send(201, _task);
@@ -459,11 +459,11 @@ function createTask(req, res, next) {
 ```
 
 ```Javascript
-/// Simple returns hello list of TODOs that were loaded.
+/// Simple returns the list of TODOs that were loaded.
 
 function listTasks(req, res, next) {
-    // Resitify currently has a bug which doesn't allow you tooset default headers
-    // This headers comply with CORS and allow us toomongodbServer our response tooany origin
+    // Resitify currently has a bug which doesn't allow you to set default headers
+    // This headers comply with CORS and allow us to mongodbServer our response to any origin
 
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -482,7 +482,7 @@ function listTasks(req, res, next) {
         }
 
         if (!data.length) {
-            log.warn(err, "There is no tasks in hello database. Add one!");
+            log.warn(err, "There is no tasks in the database. Add one!");
         }
 
         if (!owner) {
@@ -499,13 +499,13 @@ function listTasks(req, res, next) {
 ```
 
 
-#### <a name="add-error-handling-for-hello-routes"></a>Přidání zpracování chyb pro trasy hello
-Přidáte nějaké zpracování chyb, aby mohl komunikovat potíže narazíte back toohello klienta tak, že můžete porozumět.
+#### <a name="add-error-handling-for-the-routes"></a>Přidání zpracování chyb pro trasy
+Přidejte postupy zpracování chyb, abyste mohli srozumitelně sdělit klientu informace o jakýchkoli problémech, na které narazíte.
 
-Přidejte následující kód hello:
+Přidejte následující kód:
 
 ```Javascript
-///--- Errors for communicating something interesting back toohello client
+///--- Errors for communicating something interesting back to the client
 function MissingTaskError() {
 restify.RestError.call(this, {
 statusCode: 409,
@@ -542,9 +542,9 @@ util.inherits(TaskNotFoundError, restify.RestError);
 
 
 ## <a name="create-your-server"></a>Vytvoření serveru
-Nyní jste definovali databázi a přidali trasy. Hello poslední věcí, kterou jste toodo je instance serveru hello tooadd, která spravuje vaše volání.
+Nyní jste definovali databázi a přidali trasy. Poslední věcí, kterou musíte udělat, je přidání instance serveru, která spravuje vaše volání.
 
-Restify a Express poskytují široké možnosti přizpůsobení serveru REST API, ale tady používáme hello nejzákladnější nastavení.
+Restify a Express poskytují široké možnosti přizpůsobení serveru REST API, ale zde použijeme to nejzákladnější nastavení.
 
 ```Javascript
 
@@ -570,21 +570,21 @@ server.pre(restify.pre.userAgentConnection());
 // Set a per request bunyan logger (with requestid filled in)
 server.use(restify.requestLogger());
 
-// Allow 5 requests/second by IP, and burst too10
+// Allow 5 requests/second by IP, and burst to 10
 server.use(restify.throttle({
     burst: 10,
     rate: 5,
     ip: true,
 }));
 
-// Use hello common stuff you probably want
+// Use the common stuff you probably want
 server.use(restify.acceptParser(server.acceptable));
 server.use(restify.dateParser());
 server.use(restify.queryParser());
 server.use(restify.gzipResponse());
 server.use(restify.bodyParser({
     mapParams: true
-})); // Allows for JSON mapping tooREST
+})); // Allows for JSON mapping to REST
 server.use(restify.authorizationParser()); // Looks for authorization headers
 
 // Let's start using Passport.js
@@ -594,7 +594,7 @@ server.use(passport.session()); // Provides session support
 
 
 ```
-## <a name="add-hello-routes-toohello-server-without-authentication"></a>Přidání serveru toohello hello tras (bez ověřování)
+## <a name="add-the-routes-to-the-server-without-authentication"></a>Přidání tras na server (bez ověřování)
 ```Javascript
 server.get('/api/tasks', passport.authenticate('oauth-bearer', {
     session: false
@@ -655,9 +655,9 @@ server.listen(serverPort, function() {
     var consoleMessage = '\n Microsoft Azure Active Directory Tutorial';
     consoleMessage += '\n +++++++++++++++++++++++++++++++++++++++++++++++++++++';
     consoleMessage += '\n %s server is listening at %s';
-    consoleMessage += '\n Open your browser too%s/api/tasks\n';
+    consoleMessage += '\n Open your browser to %s/api/tasks\n';
     consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n';
-    consoleMessage += '\n !!! why not try a $curl -isS %s | json tooget some ideas? \n';
+    consoleMessage += '\n !!! why not try a $curl -isS %s | json to get some ideas? \n';
     consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n';
 
     //log.info(consoleMessage, server.name, server.url, server.url, server.url);
@@ -666,20 +666,20 @@ server.listen(serverPort, function() {
 
 ```
 
-## <a name="add-authentication-tooyour-rest-api-server"></a>Přidat server REST API tooyour ověřování
+## <a name="add-authentication-to-your-rest-api-server"></a>Přidání ověřování na server REST API
 Když teď máte fungující server REST API, můžete ho využít s Azure AD.
 
-Hello příkazovém řádku přejděte do adresáře příliš`azuread`, pokud ještě není:
+V příkazovém řádku přejděte do adresáře `azuread`, pokud v něm ještě nejste:
 
 `cd azuread`
 
-### <a name="use-hello-oidcbearerstrategy-that-is-included-with-passport-azure-ad"></a>Hello použití OIDCBearerStrategy, která je součástí passport-azure-ad
+### <a name="use-the-oidcbearerstrategy-that-is-included-with-passport-azure-ad"></a>Použití OIDCBearerStrategy, která je součástí passport-azure-ad
 > [!TIP]
-> Při psaní rozhraní API, byste vždy měli propojit hello data toosomething jedinečné z hello token, který hello uživatel nemůže zfalšovat. Pokud hello server ukládá položky úkolů, nebude proto podle hello **oid** hello uživatele v hello tokenu (zavolaném prostřednictvím token.oid), které je třeba do pole hello "vlastník". Tato hodnota zajišťuje, že pouze tento uživatel bude mít přístup ke svým vlastním položkám ToDo. Není nijak neprojevuje v hello rozhraní API "vlastník", takže externí uživatel může požadovat položkám úkolů jiných uživatelů, i když jsou ověřeni.
+> Při psaní rozhraní API byste vždy měli propojit data s něčím jedinečným z tokenu, co uživatel nemůže zfalšovat. Server ukládá položky úkolů na základě hodnoty **oid** uživatele v tokenu (zavolaném prostřednictvím token.oid) a ten se ukládá do pole „vlastník“. Tato hodnota zajišťuje, že pouze tento uživatel bude mít přístup ke svým vlastním položkám ToDo. V rozhraní API se „vlastník“ nijak neprojevuje, takže externí uživatelé nemohou přistupovat k položkám úkolů jiných uživatelů ani když jsou ověřeni.
 >
 >
 
-Dále použijte nosnou strategii hello, která se dodává s `passport-azure-ad`.
+Dále použijte nosnou strategii, která je součástí `passport-azure-ad`.
 
 ```Javascript
 var findById = function(id, fn) {
@@ -696,8 +696,8 @@ var findById = function(id, fn) {
 
 var oidcStrategy = new OIDCBearerStrategy(options,
     function(token, done) {
-        log.info('verifying hello user');
-        log.info(token, 'was hello token retreived');
+        log.info('verifying the user');
+        log.info(token, 'was the token retreived');
         findById(token.sub, function(err, user) {
             if (err) {
                 return done(err);
@@ -718,21 +718,21 @@ var oidcStrategy = new OIDCBearerStrategy(options,
 passport.use(oidcStrategy);
 ```
 
-Passport používá hello stejný vzor pro všechny svoje strategie. Předáváte jí `function()`, která jako parametry přijímá `token` a `done`. Hello strategie vrátí tooyou po dokončení veškeré práce. By pak uložte hello uživatele a uložit hello token, abyste tooask pro ni není nutné znovu.
+Passport používá stejný vzor pro všechny své strategie. Předáváte jí `function()`, která jako parametry přijímá `token` a `done`. Po dokončení veškeré práce se k vám strategie vrátí. Poté byste měli uložit uživatele a token, abyste ho nemuseli znovu vyžadovat.
 
 > [!IMPORTANT]
-> výše uvedený kód Hello přijímá každý uživatel, který se stane tooauthenticate tooyour serveru. Tento proces se nazývá automatická registrace. Na produkčních serverech Nenechte v jakéhokoli rozhraní API hello přístup uživatelé bez toho, aby předtím prošli registračním procesem. Tento proces je obvykle hello vzor, který můžete vidět u uživatelských aplikací, které umožňují tooregister pomocí Facebooku, ale poté vás požádají toofill Další informace. Pokud tento program nebyl příkazového řádku programu, mohli bychom extrahovat hello e-mailu z hello tokenu objektu, který je vrácen a poté požádat uživatele toofill Další informace. Protože to je ukázka, přidáme je tooan databáze v paměti.
+> Výše uvedený kód přijímá jakéhokoli uživatele, který se na vašem serveru ověří. Tento proces se nazývá automatická registrace. Na produkčních serverech neumožňujte žádným uživatelům přístup k rozhraní API bez toho, aby předtím prošli registračním procesem. Tento proces představujte obvyklý vzor, který můžete vidět u uživatelských aplikací, které vám umožňují zaregistrovat se pomocí Facebooku, ale poté vás požádají o vyplnění dodatečných informací. Pokud by se nejednalo o program v příkazovém řádku, mohli bychom extrahovat e-mail z vráceného objektu tokenu a poté požádat uživatele o vyplnění dodatečných informací. Jelikož toto je ukázka, přidáme je do databáze v paměti.
 >
 >
 
-## <a name="run-your-server-application-tooverify-that-it-rejects-you"></a>Spuštění vaší aplikace tooverify serveru to vás odmítne
-Můžete použít `curl` toosee, pokud máte nyní chráněné pomocí OAuth2 koncové body. Hello hlavičky vrátil by měl být dostatek tootell jste, že jste na správné cestě hello.
+## <a name="run-your-server-application-to-verify-that-it-rejects-you"></a>Spuštění serverové aplikace kvůli ověření, že vás odmítne
+Můžete použít příkaz `curl`, abyste zjistili, zda jsou již koncové body chráněné pomocí OAuth2. Vrácené hlavičky by vám měly dostatečně napovědět, že jste na správné cestě.
 
 Ujistěte se, že je spuštěna instance MongoDB.
 
     $sudo mongodb
 
-Změňte adresář toohello a spuštění hello serveru:
+Přejděte do adresáře a spusťte server:
 
     $ cd azuread
     $ node server.js
@@ -751,12 +751,12 @@ Date: Tue, 14 Jul 2015 05:45:03 GMT
 Transfer-Encoding: chunked
 ```
 
-Chyba 401 je reakce na hello. Označuje, že vrstva Passportu hello se pokouší tooredirect toohello zajistí autorizaci koncového bodu.
+Chyba 401 je odpověď, kterou si přejete. Označuje, že se vrstva Passportu pokouší přesměrovat na koncový bod ověření.
 
 ## <a name="you-now-have-a-rest-api-service-that-uses-oauth2"></a>Nyní máte službu REST API, která používá OAuth2
-Implementovali jste rozhraní REST API s použitím Restify a OAuth! Nyní máte dostatečný kód, aby mohli pokračovat toodevelop služby a na tomto příkladu stavět. S tímto serverem jste došli nejdál, co to jde bez použití klienta kompatibilního s OAuth2. Tento další krok použít další návod jako naše [připojit tooa webového rozhraní API pomocí iOS s B2C](active-directory-b2c-devquickstarts-ios.md) návod.
+Implementovali jste rozhraní REST API s použitím Restify a OAuth! Nyní máte dostatek kódu pro pokračování ve vývoji vlastní služby a navázání na tento příklad. S tímto serverem jste došli nejdál, co to jde bez použití klienta kompatibilního s OAuth2. Pro tento další krok použijte další podrobný postup, například náš návod [Připojení k webovému rozhraní API pomocí iOS s B2C](active-directory-b2c-devquickstarts-ios.md).
 
 ## <a name="next-steps"></a>Další kroky
-Nyní se můžete přesunout toomore advanced témata, jako například:
+Nyní se můžete přesunout k pokročilejším tématům, jako například:
 
-[Připojit tooa webového rozhraní API pomocí iOS s B2C](active-directory-b2c-devquickstarts-ios.md)
+[Připojení k webovému rozhraní API pomocí iOS s B2C](active-directory-b2c-devquickstarts-ios.md)

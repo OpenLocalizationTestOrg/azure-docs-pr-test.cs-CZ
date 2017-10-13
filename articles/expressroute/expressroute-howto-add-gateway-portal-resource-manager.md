@@ -1,6 +1,6 @@
 ---
-title: "Přidání tooa brány virtuální sítě VNet pro ExpressRoute: portál: Azure | Microsoft Docs"
-description: "Tento článek vás provede přidáním tooan brány virtuální sítě už vytvořený virtuální sítě Resource Manageru pro ExpressRoute."
+title: "Přidat bránu virtuální sítě k virtuální síti pro ExpressRoute: portál: Azure | Microsoft Docs"
+description: "Tento článek vás provede přidáním bránu virtuální sítě k již vytvořené virtuální sítě Resource Manageru pro ExpressRoute."
 documentationcenter: na
 services: expressroute
 author: cherylmc
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2017
 ms.author: cherylmc
-ms.openlocfilehash: 9e922af1f3676eeebc569b57c3ae3a22d4e0b395
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2bd0cf8be87937044ad515a2c6f253b1711bb2bf
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="configure-a-virtual-network-gateway-for-expressroute-using-hello-azure-portal"></a>Konfigurace brány virtuální sítě pro ExpressRoute pomocí hello portálu Azure
+# <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Konfigurace brány virtuální sítě pro ExpressRoute pomocí webu Azure portal
 > [!div class="op_single_selector"]
 > * [Resource Manager – Azure Portal](expressroute-howto-add-gateway-portal-resource-manager.md)
 > * [Resource Manager – PowerShell](expressroute-howto-add-gateway-resource-manager.md)
@@ -30,12 +30,12 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Tento článek vás provede kroky tooadd hello bránu virtuální sítě pro už existující virtuální síť. Tento článek vás provede kroky tooadd hello, přizpůsobit a odebrat bránu virtuální sítě (VNet) pro už existující virtuální síť. Hello kroky pro tuto konfiguraci jsou speciálně určené pro virtuální sítě vytvořené pomocí modelu nasazení Resource Manager hello, který se použije v konfiguraci ExpressRoute. Další informace o brány virtuální sítě a nastavení konfigurace brány ExpressRoute najdete v tématu [o brány virtuální sítě pro ExpressRoute](expressroute-about-virtual-network-gateways.md). 
+Tento článek vás provede kroky k přidání brány virtuální sítě pro už existující virtuální síť. Tento článek vás provede kroky k přidání, změně velikosti a odebrání brány virtuální sítě (VNet) pro už existující virtuální síť. Kroky pro tuto konfiguraci jsou speciálně určené pro virtuální sítě vytvořené pomocí modelu nasazení Resource Manager, který se použije v konfiguraci ExpressRoute. Další informace o brány virtuální sítě a nastavení konfigurace brány ExpressRoute najdete v tématu [o brány virtuální sítě pro ExpressRoute](expressroute-about-virtual-network-gateways.md). 
 
 
 ## <a name="before-beginning"></a>Před zahájením
 
-Hello kroky pro tuto úlohu použijte virtuální sítě na základě hello hodnot v hello následující referenční seznam konfigurace. V našem příkladu kroky jsme pomocí tohoto seznamu. Toouse hello seznamu můžete kopírovat jako odkaz, nahraďte hello hodnoty vlastními.
+Kroky pro tuto úlohu použijte virtuální sítě na základě hodnot v následujícím seznamu odkaz konfigurace. V našem příkladu kroky jsme pomocí tohoto seznamu. Seznam, aby používal jako odkaz, můžete zkopírovat nahraďte hodnoty vlastními.
 
 **Seznam odkazů konfigurace**
 
@@ -54,36 +54,36 @@ Hello kroky pro tuto úlohu použijte virtuální sítě na základě hello hodn
 
 Můžete zobrazit [Video](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network) z těchto kroků před zahájením konfigurace.
 
-## <a name="create-hello-gateway-subnet"></a>Vytvořit podsíť brány hello
+## <a name="create-the-gateway-subnet"></a>Vytvoření podsítě brány
 
-1. V hello [portál](http://portal.azure.com), přejděte toohello Resource Manager virtuální sítě, pro které chcete toocreate bránu virtuální sítě.
-2. V hello **nastavení** části okně vaší virtuální sítě, klikněte na tlačítko **podsítě** okno podsítě tooexpand hello.
-3. Na hello **podsítě** okně klikněte na tlačítko **+ podsíť brány** tooopen hello **přidat podsíť** okno. 
+1. Na [portálu](http://portal.azure.com) přejděte na virtuální síť Resource Manageru, pro kterou chcete vytvořit bránu virtuální sítě.
+2. V okně vaší virtuální sítě v části **Nastavení** klikněte na **Podsítě** a rozbalte okno Podsítě.
+3. V okně **Podsítě** kliknutím na **+Podsíť brány** otevřete okno **Přidat podsíť**. 
    
-    ![Přidání podsítě brány hello](./media/expressroute-howto-add-gateway-portal-resource-manager/addgwsubnet.png "přidat podsíť brány hello")
+    ![Přidání podsítě brány](./media/expressroute-howto-add-gateway-portal-resource-manager/addgwsubnet.png "Přidání podsítě brány")
 
 
-4. Hello **název** pro podsíť je automaticky vyplněno hello hodnotu "GatewaySubnet". Tato hodnota je nutná pro podsíť hello Azure toorecognize jako hello podsíť brány. Upravit hello automaticky vyplněné **rozsahu adres** hodnoty toomatch vaše požadavky na konfiguraci. Doporučujeme vytvořit podsíť brány/27 nebo větší (/ 26, / 25 atd.). Potom klikněte na **OK** toosave hello hodnoty a vytvořit podsíť brány hello.
+4. **Název** podsítě se automaticky vyplní hodnotou GatewaySubnet. To je požadovaná hodnota, aby služba Azure podsíť rozpoznala jako podsíť brány. Upravte automaticky vyplněné hodnoty **Rozsah adres** tak, aby odpovídaly požadavkům vaší konfigurace. Doporučujeme vytvořit podsíť brány/27 nebo větší (/ 26, / 25 atd.). Potom klikněte na **OK** uložte hodnoty a vytvořit podsíť brány.
 
-    ![Přidání podsítě hello](./media/expressroute-howto-add-gateway-portal-resource-manager/addsubnetgw.png "přidání podsítě hello")
+    ![Přidání podsítě](./media/expressroute-howto-add-gateway-portal-resource-manager/addsubnetgw.png "Přidání podsítě")
 
-## <a name="create-hello-virtual-network-gateway"></a>Vytvoření brány virtuální sítě hello
+## <a name="create-the-virtual-network-gateway"></a>Vytvoření brány virtuální sítě
 
-1. Hello portálu na levé straně hello, klikněte na tlačítko  **+**  a zadejte brány virtuální sítě v hledání. Vyhledejte **Brána virtuální sítě** v hello vyhledávání vrátí a klikněte na položku hello. Na hello **Brána virtuální sítě** okně klikněte na tlačítko **vytvořit** v hello dolní části okna hello. Tím se otevře hello **vytvořit bránu virtuální sítě** okno.
-2. Na hello **vytvořit bránu virtuální sítě** okno vyplňte hello hodnoty pro bránu virtuální sítě.
+1. Na levé straně portálu klikněte na **+** a do vyhledávacího pole zadejte text „Brána virtuální sítě“. Ve výsledcích hledání vyhledejte položku **Brána virtuální sítě** a klikněte na ni. V dolní části okna **Brána virtuální sítě** klikněte na **Vytvořit**. Tím otevřete okno **Vytvořit bránu virtuální sítě**.
+2. V okně **Vytvořit bránu virtuální sítě** zadejte hodnoty pro příslušnou bránu virtuální sítě.
 
     ![Pole v okně Vytvořit bránu virtuální sítě](./media/expressroute-howto-add-gateway-portal-resource-manager/gw.png "Pole v okně Vytvořit bránu virtuální sítě")
-3. **Název**: Zadejte pro bránu název. Toto není hello stejné jako podsítě brány. To je hello název objektu hello brány, kterou vytváříte.
+3. **Název**: Zadejte pro bránu název. Toto není název podsítě brány. Jedná se o název objektu brány, který vytváříte.
 4. **Typ brány**: vyberte **ExpressRoute**.
-5. **Skladová položka**: skladová položka brány hello vyberte z rozevíracího seznamu hello.
-6. **Umístění**: Upravit hello **umístění** pole toopoint toohello umístění, kde se nachází virtuální sítě. Umístění hello neukazuje toohello oblasti, kde je umístěn virtuální sítě, virtuální sítě hello nezobrazí v rozevíracím seznamu "Zvolte virtuální síť" hello.
-7. Vyberte virtuální síť toowhich hello tooadd chcete tuto bránu. Klikněte na tlačítko **virtuální síť** tooopen hello **vyberte virtuální síť** okno. Vyberte hello virtuální sítě. Pokud nevidíte virtuální síť, ujistěte se, zda text hello **umístění** pole ukazovat toohello oblast, ve kterém se nachází virtuální sítě.
-9. Zvolte veřejnou IP adresu. Klikněte na tlačítko **veřejnou IP adresu** tooopen hello **zvolte veřejnou IP adresu** okno. Klikněte na tlačítko **+ vytvořit nový** tooopen hello **vytvořit veřejnou IP adresu okno**. Zadejte název veřejné IP adresy. Toto okno vytvoří veřejné toowhich IP adresu objektu, bude dynamicky přiřadit veřejnou IP adresu. Klikněte na tlačítko **OK** toosave okno toothis vaše změny.
-10. **Předplatné**: Ověřte, že hello správný, Vybrat předplatné.
-11. **Skupina prostředků**: Toto nastavení je dáno hello virtuální síť, kterou vyberete.
-12. Neupravovat hello **umístění** po zadání hello předchozí nastavení.
-13. Ověřte nastavení hello. Pokud chcete, aby vaše tooappear brány na řídicím panelu hello, můžete si vybrat **Pin toodashboard** v hello dolní části okna hello.
-14. Klikněte na tlačítko **vytvořit** toobegin vytváření hello brány. ověření nastavení Hello a nasadí hello brány. Vytvoření brány virtuální sítě může trvat až toocomplete too45 minut.
+5. **SKU**: Z rozevíracího seznamu vyberte SKU brány.
+6. **Umístění**: Upravte pole **Umístění** tak, aby odkazovalo na umístění, ve kterém se nachází vaše virtuální síť. Pokud umístění neukazuje na oblast, ve které je vaše virtuální síť umístěná, tato síť se nezobrazí v rozevírací nabídce Zvolit virtuální síť.
+7. Zvolte virtuální síť, do které chcete tuto bránu přidat. Klikněte na **Virtuální síť** a otevře se okno **Zvolit virtuální síť**. Vyberte virtuální síť. Pokud svou virtuální síť nevidíte, zkontrolujte, že pole **Umístění** odkazuje na oblast, ve které se nachází vaše virtuální síť.
+9. Zvolte veřejnou IP adresu. Kliknutím na **Veřejná IP adresa** otevřete okno **Zvolte veřejnou IP adresu**. Kliknutím na **+Vytvořit novou** otevřete okno **Vytvořit veřejnou IP adresu**. Zadejte název veřejné IP adresy. Prostřednictvím tohoto okna můžete vytvořit objekt veřejné IP adresy, ke kterému bude dynamicky přiřazena veřejná IP adresa. Kliknutím na tlačítko **OK** uložte změny v tomto okně.
+10. **Předplatné**: Zkontrolujte, jestli je vybráno správné předplatné.
+11. **Skupina prostředků**: Toto nastavení je určeno vámi vybranou virtuální sítí.
+12. Po zadání předchozích nastavení už hodnotu **Umístění** neupravujte.
+13. Ověřte nastavení. Pokud chcete, aby se brána zobrazovala na řídicím panelu, můžete v dolní části okna vybrat **Připnout na řídicí panel**.
+14. Kliknutím na **Vytvořit** zahajte proces vytváření brány. Nastavení se ověří a provede se nasazení brány. Vytvoření brány virtuální sítě může trvat až 45 minut na dokončení.
 
 ## <a name="next-steps"></a>Další kroky
-Po vytvoření brány virtuální sítě hello, můžete se propojit vaší virtuální sítě tooan okruh ExpressRoute. V tématu [propojení virtuální sítě tooan okruh ExpressRoute](expressroute-howto-linkvnet-portal-resource-manager.md).
+Po vytvoření brány virtuální sítě, můžete se propojit virtuální sítě k okruhu ExpressRoute. V tématu [propojení virtuální sítě k okruhu ExpressRoute](expressroute-howto-linkvnet-portal-resource-manager.md).

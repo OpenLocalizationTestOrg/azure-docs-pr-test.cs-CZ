@@ -2,25 +2,25 @@
 
 Vytvořte nový soubor JavaScript s názvem `listener.js`.
 
-### <a name="add-hello-relay-npm-package"></a>Přidání balíčku NPM předávání hello
+### <a name="add-the-relay-npm-package"></a>Přidání balíčku NPM služby Relay
 
 Spusťte z příkazového řádku uzlu ve složce projektu příkaz `npm install hyco-ws`.
 
-### <a name="write-some-code-tooreceive-messages"></a>Napsat kód tooreceive zprávy
+### <a name="write-some-code-to-receive-messages"></a>Napsání kódu pro přijímání zpráv
 
-1. Přidejte následující konstanty toohello horní části hello hello `listener.js` souboru.
+1. Na začátek souboru `listener.js` přidejte následující konstantu.
    
     ```js
     const WebSocket = require('hyco-ws');
     ```
-2. Přidejte následující konstanty toohello hello `listener.js` hello hybridní připojení podrobnosti v souboru. Nahraďte zástupné symboly hello v závorkách hello hodnoty, které jste získali při vytváření hello hybridní připojení.
+2. Do souboru `listener.js` přidejte následující konstanty s podrobnostmi o hybridním připojení. Zástupné symboly v závorkách nahraďte hodnotami, které jste získali při vytváření hybridního připojení.
    
-   1. `const ns`-hello předávání názvů. Být jisti toouse hello obor názvů plně kvalifikovaný název; například `{namespace}.servicebus.windows.net`.
-   2. `const path`-Název hello hello hybridní připojení.
-   3. `const keyrule`-hello název klíče SAS hello.
-   4. `const key`-hello hodnotu klíče SAS.
+   1. `const ns` – Obor názvů služby Relay. Nezapomeňte použít plně kvalifikovaný obor názvů, například `{namespace}.servicebus.windows.net`.
+   2. `const path` – Název hybridního připojení.
+   3. `const keyrule` – Název klíče SAS.
+   4. `const key` – Hodnota klíče SAS.
 
-3. Přidejte následující kód toohello hello `listener.js` souboru:
+3. Do souboru `listener.js` přidejte následující kód:
    
     ```js
     var wss = WebSocket.createRelayedServer(

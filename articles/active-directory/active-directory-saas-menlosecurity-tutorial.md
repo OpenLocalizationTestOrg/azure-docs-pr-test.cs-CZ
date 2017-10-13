@@ -1,6 +1,6 @@
 ---
 title: "Kurz: Azure Active Directory integrace s Menlo zabezpečení | Microsoft Docs"
-description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a Menlo zabezpečení."
+description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Menlo zabezpečení."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,111 +13,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 193d12eedf31f4f08e1d141936d6e918c36a2109
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 75366abafa551d21630b0edddb65db23b9ea9d42
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-menlo-security"></a>Kurz: Azure Active Directory integrace s Menlo zabezpečení
 
-V tomto kurzu zjistíte, jak toointegrate Menlo zabezpečení v Azure Active Directory (Azure AD).
+V tomto kurzu zjistěte, jak integrovat Menlo zabezpečení v Azure Active Directory (Azure AD).
 
-Integrace Menlo zabezpečení s Azure AD poskytuje hello následující výhody:
+Integrace Menlo zabezpečení s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup tooMenlo zabezpečení
-- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooMenlo zabezpečení (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup k Menlo zabezpečení
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k zabezpečení Menlo (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v článku. [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, přečtěte si téma. [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-tooconfigure integrace Azure AD s Menlo zabezpečení, je třeba hello následující položky:
+Konfigurace integrace Azure AD s Menlo zabezpečení, potřebujete následující položky:
 
 - Předplatné služby Azure AD
 - Zabezpečení Menlo jednotného přihlašování povolené předplatné
 
 > [!NOTE]
-> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
+Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Menlo zabezpečení z Galerie hello
+1. Přidání Menlo zabezpečení z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-menlo-security-from-hello-gallery"></a>Přidání Menlo zabezpečení z Galerie hello
-tooconfigure hello integraci Menlo zabezpečení do služby Azure AD, je nutné tooadd Menlo zabezpečení hello Galerie tooyour seznamu spravovaných aplikací SaaS.
+## <a name="adding-menlo-security-from-the-gallery"></a>Přidání Menlo zabezpečení z Galerie
+Při konfiguraci integrace Menlo zabezpečení do služby Azure AD, musíte zvýšit zabezpečení Menlo z Galerie váš seznam spravovaných aplikací SaaS.
 
-**tooadd Menlo zabezpečení z Galerie hello, proveďte následující kroky hello:**
+**Pokud chcete přidat Menlo zabezpečení z galerie, proveďte následující kroky:**
 
-1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
+1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
+2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
 
     ![Aplikace][3]
 
-4. Hello vyhledávacího pole zadejte **Menlo zabezpečení**.
+4. Do vyhledávacího pole zadejte **Menlo zabezpečení**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-menlosecurity-tutorial/tutorial_menlosecurity_search.png)
 
-5. Na panelu výsledků hello vyberte **Menlo zabezpečení**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.
+5. Na panelu výsledků vyberte **Menlo zabezpečení**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-menlosecurity-tutorial/tutorial_menlosecurity_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s Menlo zabezpečení založené na testovacího uživatele názvem "Britta Simon."
 
-Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v Menlo zabezpečení je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v Menlo zabezpečení musí toobe navázat.
+Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Menlo zabezpečení je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Menlo zabezpečení je nutné stanovit.
 
-Přiřazením hello hodnotu hello je vytvořen vztah tento odkaz **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** v Menlo zabezpečení.
+Tento vztah propojení se navazuje se hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v Menlo zabezpečení.
 
-tooconfigure a testu Azure AD jednotné přihlašování s Menlo zabezpečení, potřebujete následující stavební bloky hello toocomplete:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Menlo zabezpečení, je třeba dokončit následující stavební bloky:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Menlo zabezpečení](#creating-a-menlo-security-test-user)**  -toohave protějšek Britta Simon v Menlo zabezpečení, která je propojená toohello Azure AD reprezentace uživatele.
-4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele Menlo zabezpečení](#creating-a-menlo-security-test-user)**  – Pokud chcete mít protějšek Britta Simon v Menlo zabezpečení, který je propojený s Azure AD reprezentace daného uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci Menlo zabezpečení.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Menlo zabezpečení.
 
-**tooconfigure Azure AD jednotné přihlašování s Menlo zabezpečení, proveďte následující kroky hello:**
+**Ke konfiguraci Azure AD jednotné přihlašování s Menlo zabezpečení, proveďte následující kroky:**
 
-1. V portálu Azure, na hello hello **Menlo zabezpečení** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na portálu Azure na **Menlo zabezpečení** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
+2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-menlosecurity-tutorial/tutorial_menlosecurity_samlbase.png)
 
-3. Na hello **Menlo zabezpečení domény a adresy URL** část, proveďte následující kroky hello:
+3. Na **Menlo zabezpečení domény a adresy URL** část, proveďte následující kroky:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-menlosecurity-tutorial/tutorial_menlosecurity_url.png)
 
-    a. V hello **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<subdomain>.menlosecurity.com/account/login`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.menlosecurity.com/account/login`
 
-    b. V hello **identifikátor** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<subdomain>.menlosecurity.com/safeview-auth-server/saml/metadata`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.menlosecurity.com/safeview-auth-server/saml/metadata`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné hello. Aktualizovat tyto hodnoty s hello skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory zabezpečení klienta Menlo](https://www.menlosecurity.com/menlo-contact) tooget tyto hodnoty. 
+    > Tyto hodnoty nejsou reálné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory zabezpečení klienta Menlo](https://www.menlosecurity.com/menlo-contact) k získání těchto hodnot. 
  
-4. Na hello **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu hello ve vašem počítači.
+4. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-menlosecurity-tutorial/tutorial_menlosecurity_certificate.png) 
 
@@ -125,86 +125,86 @@ V této části můžete povolit Azure AD jednotné přihlašování v hello por
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-menlosecurity-tutorial/tutorial_general_400.png)
 
-6. Na hello **konfigurace zabezpečení Menlo** klikněte na tlačítko **konfigurace zabezpečení Menlo** tooopen **konfigurovat přihlášení** okno. Kopírování hello **SAML Entity ID**, a **SAML jeden přihlašování adresa URL služby** z hello **Stručná referenční příručka části.**
+6. Na **konfigurace zabezpečení Menlo** klikněte na tlačítko **konfigurace zabezpečení Menlo** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML Entity ID**, a **SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-menlosecurity-tutorial/tutorial_menlosecurity_configure.png) 
 
-7. tooconfigure jednotného přihlašování na **Menlo zabezpečení** straně, přihlášení toohello **Menlo zabezpečení** webu jako správce.
+7. Konfigurace jednotného přihlašování na **Menlo zabezpečení** straně, přihlášení, které **Menlo zabezpečení** webu jako správce.
 
-8. V části **nastavení** přejděte příliš**ověřování** a proveďte následující akce:
+8. V části **nastavení** přejděte na **ověřování** a proveďte následující akce:
     
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-menlosecurity-tutorial/menlo_user_setup.png)
 
-    a. Zaškrtněte políčko hello **povolení ověřování uživatele pomocí SAML**.
+    a. Zaškrtněte políčka **povolení ověřování uživatele pomocí SAML**.
 
-    b. Vyberte **povolit externí přístup** příliš**Ano**.
+    b. Vyberte **povolit externí přístup** k **Ano**.
 
     c. V části **SAML zprostředkovatele**, vyberte **Azure Active Directory**.
 
-    d. **Koncový bod SAML 2.0** : vložení hello **SAML jeden přihlašování adresa URL služby** který jste zkopírovali z portálu Azure.
+    d. **Koncový bod SAML 2.0** : vložení **SAML jeden přihlašování adresa URL služby** který jste zkopírovali z portálu Azure.
 
-    e. **Identifikátor služby (Vystavitel)** : vložení hello **SAML Entity ID** který jste zkopírovali z portálu Azure.
+    e. **Identifikátor služby (Vystavitel)** : vložení **SAML Entity ID** který jste zkopírovali z portálu Azure.
 
-    f. **Certifikát X.509** : Otevřete hello **certifikátu (Base64)** stáhli z portálu Azure hello v programu Poznámkový blok a vložte ho v tomto poli.
+    f. **Certifikát X.509** : Otevřete **certifikátu (Base64)** stáhli z portálu Azure v programu Poznámkový blok a vložte ho v tomto poli.
 
-    g. Klikněte na tlačítko **Uložit** toosave hello nastavení.
+    g. Klikněte na tlačítko **Uložit** uložte nastavení.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
  
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
+Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
+**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
 
-1. V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
+1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-menlosecurity-tutorial/create_aaduser_01.png) 
 
-2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-menlosecurity-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.
+3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-menlosecurity-tutorial/create_aaduser_03.png) 
 
-4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
+4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-menlosecurity-tutorial/create_aaduser_04.png) 
 
-    a. V hello **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textovému poli, typ **BrittaSimon**.
 
-    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-a-menlo-security-test-user"></a>Vytvoření zkušebního uživatele Menlo zabezpečení
  
-V této části vytvoříte volal Britta Simon v Menlo zabezpečení uživatele. Práce s [tým podpory zabezpečení klienta Menlo](https://www.menlosecurity.com/menlo-contact) tooadd hello uživatelé v platformě Menlo zabezpečení hello. Uživatelé musí být vytvořen a aktivovat dříve, než použijete jednotné přihlašování. 
+V této části vytvoříte volal Britta Simon v Menlo zabezpečení uživatele. Práce s [tým podpory Menlo zabezpečení klienta](https://www.menlosecurity.com/menlo-contact) přidat uživatele do platformy Menlo zabezpečení. Uživatelé musí být vytvořen a aktivovat dříve, než použijete jednotné přihlašování. 
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
+### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte tak, že udělíte přístup tooMenlo zabezpečení Britta Simon toouse Azure jednotné přihlašování.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Menlo zabezpečení.
 
 ![Přiřadit uživatele][200] 
 
-**tooassign Britta Simon tooMenlo zabezpečení, proveďte následující kroky hello:**
+**Pokud chcete přiřadit Britta Simon Menlo zabezpečení, proveďte následující kroky:**
 
-1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikace hello vyberte **Menlo zabezpečení**.
+2. V seznamu aplikací vyberte **Menlo zabezpečení**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-menlosecurity-tutorial/tutorial_menlosecurity_app.png) 
 
-3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
+3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
@@ -212,7 +212,7 @@ V této části povolíte tak, že udělíte přístup tooMenlo zabezpečení Br
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -222,11 +222,11 @@ V této části povolíte tak, že udělíte přístup tooMenlo zabezpečení Br
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování v konfiguraci.
 
-Otevřete okno prohlížeče v "InPrivate" nebo "Incognito" režimu tootrigger nové ověřování.  V aplikaci Internet Explorer použijte kombinaci kláves Ctrl + Shift + P.  V prohlížeči Chrome použijte kombinaci kláves Ctrl + Shift + N.  V okně privátní procházení hello procházet tooa chráněný prostředek a provést přihlášení Azure AD.  Po úspěšném přihlášení bude požadovaný webu přijatá toohello v relaci izolace.
+Otevřete okno prohlížeče v režimu "InPrivate" nebo "Incognito" k aktivaci nové ověřování.  V aplikaci Internet Explorer použijte kombinaci kláves Ctrl + Shift + P.  V prohlížeči Chrome použijte kombinaci kláves Ctrl + Shift + N.  V okně privátní procházení přejděte k chráněnému prostředku a provést přihlášení Azure AD.  Po úspěšném přihlášení ověření budete přesměrováni na požadovaný server v relaci izolace.
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

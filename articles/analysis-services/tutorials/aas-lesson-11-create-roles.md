@@ -1,76 +1,94 @@
 ---
-Title: aaa "Azure Analysis Services kurz lekce 11: vytvoření role | Microsoft Docs"Popis: Popisuje, jak hello toocreate rolí v kurzu projektu Azure Analysis Services. služby: documentationcenter služby analysis services: '' Autor: minewiskan správce: erikre editor: '' značky: "
-
-MS.AssetID: ms.service: ms.devlang služby analysis services: NA ms.topic: get-started-article ms.tgt_pltfrm: NA ms.workload: na ms.date: 05/26 nebo 2017 ms.author: owend
+title: "Kurz služby Azure Analysis Services – Lekce 11: Vytvoření rolí | Dokumentace Microsoftu"
+description: "Popisuje, jak vytvořit role v projektu Kurz služby Azure Analysis Services."
+services: analysis-services
+documentationcenter: 
+author: Minewiskan
+manager: erikre
+editor: 
+tags: 
+ms.assetid: 
+ms.service: analysis-services
+ms.devlang: NA
+ms.topic: get-started-article
+ms.tgt_pltfrm: NA
+ms.workload: na
+ms.date: 09/20/2017
+ms.author: owend
+ms.openlocfilehash: 0dfcb9d9fc8cd32f95c5097ec653864364b27bcc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="lesson-11-create-roles"></a>Lekce 11: Vytvoření rolí
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-V této lekci vytvoříte role. Role poskytují modelu zabezpečení objektů a dat databázi omezením přístupu tooonly uživatelům, kteří jsou členy role. Každá role je definována s jediným oprávněním: Žádné, Čtení, Čtení a zpracování, Zpracování nebo Správce. Role je možné definovat při vytváření modelu pomocí Správce rolí. Po nasazení modelu můžete role spravovat pomocí aplikace SQL Server Management Studio (SSMS). Další, najdete v části toolearn [role](https://docs.microsoft.com/sql/analysis-services/tabular-models/roles-ssas-tabular).
+V této lekci vytvoříte role. Role poskytují objekt databáze modelu a zabezpečení dat tím, že omezují přístup pouze na uživatele, kteří jsou členy dané role. Každá role je definována s jediným oprávněním: Žádné, Čtení, Čtení a zpracování, Zpracování nebo Správce. Role je možné definovat při vytváření modelu pomocí Správce rolí. Po nasazení modelu můžete role spravovat pomocí aplikace SQL Server Management Studio (SSMS). Další informace najdete v tématu [Role](https://docs.microsoft.com/sql/analysis-services/tabular-models/roles-ssas-tabular).
   
 > [!NOTE]  
-> Vytváření rolí není nutné toocomplete v tomto kurzu. Ve výchozím nastavení hello účet, který jste právě přihlášeni, má oprávnění správce na hello modelu. Ale pro ostatní uživatelé ve vaší organizaci toobrowse pomocí sestav klienta, musíte vytvořit alespoň jednu roli čtení oprávnění a tyto uživatele přidejte jako členy.  
+> Vytvoření rolí není nezbytné pro dokončení tohoto kurzu. Ve výchozím nastavení má účet, ke kterému jste právě přihlášeni, oprávnění správce modelu. Aby však mohli data procházet pomocí klienta sestav ostatní uživatelé ve vaší organizaci, musíte vytvořit alespoň jednu roli s oprávněním Čtení a přidat tyto uživatele jako členy.  
   
 Vytvoříte tři role:  
   
--   **Vedoucí prodeje** – tato role může obsahovat uživatele ve vaší organizaci, pro které chcete objekty modelu tooall oprávnění pro čtení toohave a data.  
+-   **Manažer prodeje** – Tato role může zahrnovat uživatele ve vaší organizaci, u kterých chcete, aby měli oprávnění Čtení ke všem objektům a datům modelu.  
   
--   **Prodejní analytik USA** – tato role může obsahovat uživatele ve vaší organizaci, pro které chcete jenom data možné toobrowse toobe související toosales ve Spojených státech amerických hello. Pro tuto roli použijete toodefine vzorce DAX *řádkový filtr*, což omezuje členy toobrowse dat pouze pro hello Spojených státech amerických.  
+-   **Analytik prodeje v USA** – Tato role může zahrnovat uživatele ve vaší organizaci, u kterých chcete, aby mohli procházet pouze data související s prodejem v USA. Pro tuto roli pomocí vzorce DAX nadefinujete *Filtr řádků*, který členům umožní procházet pouze data pro USA.  
   
--   **Správce** – tato role může obsahovat uživatele, pro které chcete toohave oprávnění správce, které umožňuje neomezený přístup a oprávnění tooperform úlohy správy na hello modelové databáze.  
+-   **Správce** – Tato role může zahrnovat uživatele, u kterých chcete, aby měli oprávnění Správce, což jim poskytne neomezený přístup a oprávnění k provádění úloh správy s databází modelu.  
   
-Protože jsou jedinečné účty uživatelů a skupin systému Windows ve vaší organizaci, můžete přidat účty z vaší organizace konkrétní toomembers. Ale pro účely tohoto kurzu můžete také ponechat hello členy prázdné. Testování účinku hello každou roli později v lekce 12: analyzovat v aplikaci Excel.  
+Protože jsou účty uživatelů a skupin systému Windows ve vaší organizaci jedinečné, můžete mezi členy přidat účty z konkrétní organizace. Pro účely tohoto kurzu však můžete členy také ponechat prázdné. Účinky jednotlivých rolí otestujete později v lekci 12: Analýza v aplikaci Excel.  
   
-Odhadovaný čas toocomplete této lekci: **15 minut**  
+Odhadovaný čas dokončení této lekce: **15 minut**  
   
 ## <a name="prerequisites"></a>Požadavky  
-Toto téma je součástí kurzu tabelárního modelování, který by se měl dokončit v daném pořadí. Před provedením úlohy hello v této lekci, by měl mít dokončit předchozí lekci hello: [lekce 10: vytvoření oddílů](../tutorials/aas-lesson-10-create-partitions.md).  
+Toto téma je součástí kurzu tabelárního modelování, který by se měl dokončit v daném pořadí. Před provedením úkolů v této lekci byste měli mít dokončenou předchozí lekci: [Lekce 10: Vytvoření oddílů](../tutorials/aas-lesson-10-create-partitions.md).  
   
 ## <a name="create-roles"></a>Vytvoření rolí  
   
-#### <a name="toocreate-a-sales-manager-user-role"></a>toocreate roli uživatele správce prodeje  
+#### <a name="to-create-a-sales-manager-user-role"></a>Vytvoření role uživatele Manažer prodeje  
   
 1.  V Průzkumníku tabelárních modelů klikněte pravým tlačítkem na **Role** > **Role**.  
   
 2.  Ve Správci rolí klikněte na **Nový**.  
   
-3.  Klikněte na tlačítko Nová role hello a potom v hello **název** sloupce, přejmenujte roli hello příliš**vedoucí prodeje**.  
+3.  Klikněte na novou roli a potom ji ve sloupci **Název** přejmenujte na **Manažer prodeje**.  
   
-4.  V hello **oprávnění** sloupce, klikněte na tlačítko hello rozevíracího seznamu a pak vyberte hello **čtení** oprávnění. 
+4.  Ve sloupci **Oprávnění** klikněte na rozevírací seznam a vyberte oprávnění **Čtení**. 
 
     ![aas-lesson11-new-role](../tutorials/media/aas-lesson11-new-role.png) 
   
-5.  Volitelné: Klikněte na tlačítko hello **členy** a pak klikněte **přidat**. V hello **vybrat uživatele nebo skupiny** dialogové okno, zadejte uživatele Windows hello nebo skupiny z vaší organizace mají tooinclude v roli hello.  
+5.  Volitelné: Klikněte na kartu **Členové** a pak na **Přidat**. V dialogovém okně **Vybrat uživatele nebo skupiny** zadejte uživatele nebo skupiny systému Windows z vaší organizace, které chcete zahrnout do role.  
   
-#### <a name="toocreate-a-sales-analyst-us-user-role"></a>toocreate roli uživatele analytik prodej USA  
+#### <a name="to-create-a-sales-analyst-us-user-role"></a>Vytvoření role uživatele Analytik prodej v USA  
   
 1.  Ve Správci rolí klikněte na **Nový**.    
   
-2.  Přejmenujte roli hello příliš**prodej analytik USA**.  
+2.  Přejmenujte roli na **Analytik prodeje v USA**.  
   
 3.  Přidělte této roli oprávnění **Čtení**.  
   
-4.  Klikněte na kartu filtry řádek hello a pak pro hello **DimGeography** tabulky, sloupce filtru DAX hello, typ hello následující vzorec:  
+4.  Klikněte na kartu Filtry řádků a pak jenom pro tabulku **DimGeography** zadejte do sloupce Filtr DAX následující vzorec:  
   
     ```Administrator
     =DimGeography[CountryRegionCode] = "US" 
     ```
     
-    Vzorec A řádkový filtr je třeba vyřešit tooa hodnota logická hodnota (TRUE/FALSE). Pomocí tohoto vzorce určíte, že pouze řádky s hello kód země/oblasti hodnotu "US" jsou viditelné toohello uživatele.  
+    Vzorec filtru řádků se musí přeložit na logickou hodnotu (TRUE/FALSE). Pomocí tohoto vzorce určujete, že pro uživatele budou viditelné pouze řádky, na kterých má kód země nebo oblasti hodnotu USA.  
     ![aas-lesson11-role-filter](../tutorials/media/aas-lesson11-role-filter.png) 
   
-6.  Volitelné: Klikněte na tlačítko hello **členy** a pak klikněte **přidat**. V hello **vybrat uživatele nebo skupiny** dialogové okno, zadejte uživatele Windows hello nebo skupiny z vaší organizace mají tooinclude v roli hello.  
+6.  Volitelné: Klikněte na kartu **Členové** a pak na **Přidat**. V dialogovém okně **Vybrat uživatele nebo skupiny** zadejte uživatele nebo skupiny systému Windows z vaší organizace, které chcete zahrnout do role.  
   
-#### <a name="toocreate-an-administrator-user-role"></a>toocreate role uživatele správce  
+#### <a name="to-create-an-administrator-user-role"></a>Vytvoření role uživatele Správce  
   
 1.  Klikněte na možnost **Nové**.  
   
-2.  Přejmenujte roli hello příliš**správce**.  
+2.  Přejmenujte roli na **Správce**.  
   
 3.  Přidělte této roli oprávnění **Správce**.  
   
-4.  Volitelné: Klikněte na tlačítko hello **členy** a pak klikněte **přidat**. V hello **vybrat uživatele nebo skupiny** dialogové okno, zadejte uživatele Windows hello nebo skupiny z vaší organizace mají tooinclude v roli hello. 
+4.  Volitelné: Klikněte na kartu **Členové** a pak na **Přidat**. V dialogovém okně **Vybrat uživatele nebo skupiny** zadejte uživatele nebo skupiny systému Windows z vaší organizace, které chcete zahrnout do role. 
   
   
 ## <a name="whats-next"></a>Co dále?

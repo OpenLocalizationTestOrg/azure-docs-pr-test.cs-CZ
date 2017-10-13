@@ -1,6 +1,6 @@
 ---
-title: "aaaManage Azure Data Lake Analytics pomocí Azure Java SDK | Microsoft Docs"
-description: "Použití sady Java SDK Azure Data Lake Analytics toodevelop aplikace"
+title: "Správa Azure Data Lake Analytics pomocí sady Azure Java SDK | Microsoft Docs"
+description: "Použití sady Java SDK Azure Data Lake Analytics k vývoji aplikací"
 services: data-lake-analytics
 documentationcenter: 
 author: matt1883
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/18/2017
 ms.author: saveenr
-ms.openlocfilehash: 79e5fa1bacd5fd65072a1c3c480482a8e51d94b6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 8a0c1c7aab89f3bb62d0eb9f42e8ac65309d617e
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="manage--azure-data-lake-analytics-using-java-sdk"></a>Správa Azure Data Lake Analytics pomocí sady Java SDK
 
@@ -26,17 +26,17 @@ V tomto kurzu budete vyvíjet konzolovou aplikaci Java, která provádí běžn�
 
 ## <a name="prerequisites"></a>Požadavky
 * **Java Development Kit (JDK) 8** (využívající jazyk Java verze 1.8).
-* **IntelliJ** nebo jiné vhodné vývojové prostředí Java. Hello pokyny v tomto dokumentu používají IntelliJ.
-* Vytvoření aplikace Azure Active Directory (AAD) a načtení **ID klienta**, **ID tenanta**, a **Klíče**. Další informace o AAD aplikace a pokyny o tom, najdete v části tooget ID klienta, [vytvoření aplikace Active Directory a objektu zabezpečení pomocí portálu](../azure-resource-manager/resource-group-create-service-principal-portal.md). až budete mít hello aplikace vytvořené a generování klíče, je dostupná z portálu, hello Hello Reply URI a klíč.
+* **IntelliJ** nebo jiné vhodné vývojové prostředí Java. Pokyny v tomto dokumentu používají IntelliJ.
+* Vytvoření aplikace Azure Active Directory (AAD) a načtení **ID klienta**, **ID tenanta**, a **Klíče**. Další informace o aplikacích AAD a pokyny k získání ID klienta naleznete v tématu [Vytvoření aplikace Active Directory a objektu služby pomocí portálu](../azure-resource-manager/resource-group-create-service-principal-portal.md). Reply URI a klíč je dostupná z portálu, jakmile je aplikace vytvořené a generování klíče.
 
 ## <a name="authenticating-using-azure-active-directory"></a>Ověřování pomocí služby Azure Active Directory
 
-Následující fragment kódu obsahuje kód pro kód Hello **neinteraktivní** ověřování, kde hello aplikace poskytuje svoje vlastní přihlašovací údaje.
+Následující fragment kódu obsahuje kód pro kód **neinteraktivní** ověřování, kdy aplikace poskytuje svoje vlastní přihlašovací údaje.
 
 ## <a name="create-a-java-application"></a>Vytvoření aplikace Java
-1. Otevřete IntelliJ a vytvoření projektu Java pomocí hello **aplikace příkazového řádku** šablony.
-2. Klikněte pravým tlačítkem na projekt hello na hello levé straně obrazovky a klikněte na tlačítko **přidat podporu architektury**. Vyberte možnost **Maven** a klikněte na tlačítko **OK**.
-3. Otevřete hello nově vytvořený **"pom.xml"** souboru a přidejte následující fragment textu mezi hello hello  **\</version >** značky a hello  **\< /project >** značky:
+1. Otevřete IntelliJ a vytvoření projektu Java pomocí **aplikace příkazového řádku** šablony.
+2. Klikněte pravým tlačítkem na projekt na levé straně obrazovky a klikněte na možnost **Přidat podporu architektury**. Vyberte možnost **Maven** a klikněte na tlačítko **OK**.
+3. Otevřete nově vytvořený soubor **pom.xml** a mezi značky **\</version>** a **\</project>** přidejte následující fragment textu:
 
 ```
 <repositories>
@@ -89,9 +89,9 @@ Následující fragment kódu obsahuje kód pro kód Hello **neinteraktivní** o
 </dependencies>
 ```
 
-Přejděte příliš**soubor > Nastavení > sestavení > provádění > nasazení**. Vyberte **nástroje sestavení > Maven > Import**. Zkontrolujte **automaticky importovat projekty Maven**.
+Přejděte na **soubor > Nastavení > sestavení > provádění > nasazení**. Vyberte **nástroje sestavení > Maven > Import**. Zkontrolujte **automaticky importovat projekty Maven**.
 
-Otevřete `Main.java` a nahraďte hello stávající blok kódu s hello následující fragment kódu:
+Otevřete `Main.java` a stávající blok kódu nahraďte následující fragment kódu:
 
 ```
 package com.company;
@@ -175,10 +175,10 @@ public class Main {
         WaitForNewline("File created.", "Submitting a job.");
 
         // ----------------------------------------
-        // Submit a job tooData Lake Analytics
+        // Submit a job to Data Lake Analytics
         // ----------------------------------------
 
-string script = "@input =  EXTRACT Data string FROM \"/input1.csv\" USING Extractors.Csv(); OUTPUT @input too@\"/output1.csv\" USING Outputters.Csv();", "testJob";
+string script = "@input =  EXTRACT Data string FROM \"/input1.csv\" USING Extractors.Csv(); OUTPUT @input TO @\"/output1.csv\" USING Outputters.Csv();", "testJob";
         UUID jobId = SubmitJobByScript(script);
         WaitForNewline("Job submitted.", "Getting job status.");
 
@@ -201,13 +201,13 @@ string script = "@input =  EXTRACT Data string FROM \"/input1.csv\" USING Extrac
 }
 ```
 
-Zadejte hello hodnoty pro parametry ve fragmentu kódu hello:
+Zadejte hodnoty pro parametry ve fragmentu kódu:
 * `localFolderPath`
 * `_adlaAccountName`
 * `_adlsAccountName`
 * `_resourceGroupName`
 
-Nahraďte zástupné symboly hello:
+Nahraďte zástupné symboly pro:
 * `CLIENT-ID`,
 * `CLIENT-SECRET`,
 * `TENANT-ID`
@@ -239,7 +239,7 @@ public static void WaitForNewline(String reason, String nextAction)
     if (nextAction == null)
         nextAction = "";
 
-    System.out.println(reason + "\r\nPress ENTER toocontinue...");
+    System.out.println(reason + "\r\nPress ENTER to continue...");
     try{System.in.read();}
     catch(Exception e){}
 
@@ -379,6 +379,6 @@ public static String GetJobStatus(UUID jobId) throws IOException, CloudException
 
 ## <a name="next-steps"></a>Další kroky
 
-* toolearn U-SQL, najdete v části [Začínáme s jazykem Azure Data Lake Analytics U-SQL](data-lake-analytics-u-sql-get-started.md), a [referenční příručka jazyka U-SQL](http://go.microsoft.com/fwlink/?LinkId=691348).
+* Pokud se chcete naučit jazyk U-SQL, informace najdete v tématu [Začínáme s jazykem U-SQL Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md) a [Referenční informace pro jazyk U-SQL](http://go.microsoft.com/fwlink/?LinkId=691348).
 * Informace týkající se úloh správy najdete v tématu [Správa služby Azure Data Lake Analytics pomocí webu Azure Portal](data-lake-analytics-manage-use-portal.md).
-* tooget uvádí přehled Data Lake Analytics najdete v části [přehled Azure Data Lake Analytics](data-lake-analytics-overview.md).
+* Přehled Data Lake Analytics najdete v tématu [Přehled Azure Data Lake Analytics](data-lake-analytics-overview.md).

@@ -1,6 +1,6 @@
 ---
-title: "Azure AD Connect: Aktualizace hello certifikát SSL pro farmy služby Active Directory Federation Services (AD FS) | Microsoft Docs"
-description: "Tento dokument podrobnosti hello kroky tooupdate hello certifikátu SSL farmu služby AD FS pomocí Azure AD Connect."
+title: "Azure AD Connect: Aktualizovat certifikát SSL pro farmy služby Active Directory Federation Services (AD FS) | Microsoft Docs"
+description: "Tato dokument podrobně popisuje postup aktualizace certifikátu SSL farmu služby AD FS pomocí Azure AD Connect."
 services: active-directory
 keywords: "služby Azure ad connect, aktualizace ssl služby AD FS, aktualizace certifikátů služby AD FS, změnit certifikát služby AD FS, nový certifikát služby AD FS, certifikát služby AD FS, aktualizace služby AD FS certifikát ssl, aktualizace ssl certifikát služby AD FS, nakonfigurovat certifikát ssl služby AD FS, služba AD FS, ssl, certifikát, certifikát komunikace služby AD FS, federation aktualizace, konfigurace federace, aad connect"
 authors: anandyadavmsft
@@ -14,93 +14,93 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: anandy
-ms.openlocfilehash: bce7f75aab83b6abacb8472a6895054d137e10e0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 87807a203d71b3abfe3e93132eb7d0b82b14b4ee
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="update-hello-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Aktualizovat certifikát SSL hello pro farmu služby Active Directory Federation Services (AD FS)
+# <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Aktualizovat certifikát SSL pro farmy služby Active Directory Federation Services (AD FS)
 
 ## <a name="overview"></a>Přehled
-Tento článek popisuje, jak můžete použít certifikát SSL hello tooupdate Azure AD Connect pro farmu služby Active Directory Federation Services (AD FS). Můžete certifikát SSL hello tooeasily hello Azure AD Connect nástroje aktualizace pro farmu hello AD FS, i v případě, že není vybraná metoda přihlašovací hello uživatele služby AD FS.
+Tento článek popisuje, jak používat Azure AD Connect aktualizovat certifikát SSL pro farmy služby Active Directory Federation Services (AD FS). Nástroj Azure AD Connect můžete snadno aktualizovat certifikát SSL pro farmy služby AD FS, i když uživatel přihlásit metoda vybrané není služby AD FS.
 
-Můžete provést hello celou operaci aktualizace certifikát SSL pro farmy hello AD FS ve všech federace a servery Proxy webové aplikace (WAP) ve třech jednoduchých kroků:
+Můžete provést celou operaci aktualizace certifikát SSL pro farmy služby AD FS ve všech federace a servery Proxy webové aplikace (WAP) ve třech jednoduchých kroků:
 
 ![Tři kroky](./media/active-directory-aadconnectfed-ssl-update/threesteps.png)
 
 
 >[!NOTE]
->toolearn Další informace o certifikáty, které používají službu AD FS, najdete v části [Principy certifikátů používaných službou AD FS](https://technet.microsoft.com/library/cc730660.aspx).
+>Další informace o certifikátech, které používají služby AD FS najdete v tématu [Principy certifikátů používaných službou AD FS](https://technet.microsoft.com/library/cc730660.aspx).
 
 ## <a name="prerequisites"></a>Požadavky
 
 * **Farma služby AD FS**: Ujistěte se, že farmu služby AD FS je založená na Windows Server 2012 R2 nebo novější.
-* **Azure AD Connect**: Ujistěte se, že hello verze služby Azure AD Connect je 1.1.443.0 nebo novější. Budete používat hello úloh **certifikát SSL služby FS aktualizace AD**.
+* **Azure AD Connect**: Zkontrolujte, zda je verze služby Azure AD Connect 1.1.443.0 nebo novější. Použijete-li úlohu **certifikát SSL služby FS aktualizace AD**.
 
 ![Úloha aktualizace SSL](./media/active-directory-aadconnectfed-ssl-update/updatessltask.png)
 
 ## <a name="step-1-provide-ad-fs-farm-information"></a>Krok 1: Zadání informací farmy služby AD FS
 
-Azure AD Connect automaticky pokusí tooobtain informace o farmu hello AD FS:
-1. Dotaz na informace farmy hello ze služby AD FS (Windows Server 2016 nebo novější).
-2. Odkazování na hello informace z předchozích spuštění, které jsou uloženy místně službou Azure AD Connect.
+Azure AD Connect se pokusí získat informace o farmu služby AD FS automaticky:
+1. Dotaz na informace farmy služby AD FS (Windows Server 2016 nebo novější).
+2. Odkazy na informace z předchozích spuštění, které jsou uložené místně službou Azure AD Connect.
 
-Můžete upravit hello seznam serverů, které se zobrazují přidáním nebo odebráním hello servery tooreflect hello aktuální konfiguraci farmy hello AD FS. Jakmile je poskytována informace o serveru hello, Azure AD Connect zobrazí hello připojení a aktuální stav certifikátu protokolu SSL.
+Můžete upravit seznam serverů, které se zobrazují přidáním nebo odebráním servery tak, aby odrážela aktuální konfiguraci farmy služby AD FS. Jakmile se poskytuje informace o serveru, Azure AD Connect zobrazí připojení a aktuální stav certifikátu protokolu SSL.
 
 ![Informace o serveru AD FS](./media/active-directory-aadconnectfed-ssl-update/adfsserverinfo.png)
 
-Pokud seznam hello obsahuje server, který je už součástí farmy hello AD FS, klikněte na tlačítko **odebrat** toodelete hello server hello seznamu serverů ve farmě služby AD FS.
+Pokud seznam obsahuje server, který je už součástí farmy služby AD FS, klikněte na tlačítko **odebrat** se odstranit server ze seznamu serverů ve farmě služby AD FS.
 
 ![Offline serveru v seznamu](./media/active-directory-aadconnectfed-ssl-update/offlineserverlist.png)
 
 >[!NOTE]
-> Odebrání serveru z hello seznam serverů služby AD FS farmy v Azure AD Connect je místní operace a aktualizace hello informace pro hello farmu služby AD FS, která udržuje Azure AD Connect místně. Azure AD Connect nezmění konfigurace hello při změně hello tooreflect služby AD FS.    
+> Odebrání serveru ze seznamu serverů pro farmu služby AD FS ve službě Azure AD Connect je místní operace a aktualizuje informace pro farmu služby AD FS, která udržuje Azure AD Connect místně. Azure AD Connect nezmění konfigurace ve službě AD FS, aby odrážely změny.    
 
 ## <a name="step-2-provide-a-new-ssl-certificate"></a>Krok 2: Zadejte nový certifikát SSL
 
-Když jste potvrdili hello informace o serverech farmy služby AD FS, Azure AD Connect požádá o nový certifikát SSL hello. Zadejte chráněný heslem PFX toocontinue hello instalaci certifikátu.
+Když jste potvrdili informace o servery ve farmě služby AD FS, Azure AD Connect požádá o nový certifikát SSL. Zadejte certifikát PFX chráněný heslem pokračujte v instalaci.
 
 ![Certifikát SSL](./media/active-directory-aadconnectfed-ssl-update/certificate.png)
 
-Po zadání hello certifikát Azure AD Connect projde řadu požadavky. Ověřte, zda je správný pro farmu služby AD FS hello tooensure hello certifikát, který hello certifikátu:
+Po zadání certifikát Azure AD Connect projde řadu požadavky. Ověření certifikátu k zajištění, že certifikát je správný pro farmu služby AD FS:
 
--   Hello subjektu název nebo alternativní název subjektu certifikátu hello je stejný jako název federační služby hello hello, nebo je certifikát se zástupným znakem.
--   Hello certifikát je platný pro více než 30 dní.
--   řetěz certifikátů Hello certifikát je platný.
--   Hello certifikát je chráněný heslem.
+-   Předmět názvu nebo alternativní název subjektu certifikátu je buď stejný jako název federační služby, nebo je certifikát se zástupným znakem.
+-   Certifikát je platný pro více než 30 dní.
+-   Řetězu certifikátů je platný.
+-   Certifikát je chráněný heslem.
 
-## <a name="step-3-select-servers-for-hello-update"></a>Krok 3: Vyberte servery pro aktualizaci hello
+## <a name="step-3-select-servers-for-the-update"></a>Krok 3: Vyberte servery pro aktualizaci
 
-V dalším kroku hello vyberte hello servery, které je třeba certifikát SSL hello toohave aktualizovat. Servery, které jsou offline nelze vybrat pro aktualizaci hello.
+V dalším kroku vyberte servery, které je potřeba aktualizovat certifikát SSL. Servery, které jsou offline nelze vybrat pro aktualizaci.
 
-![Vyberte servery tooupdate](./media/active-directory-aadconnectfed-ssl-update/selectservers.png)
+![Vyberte servery a aktualizace](./media/active-directory-aadconnectfed-ssl-update/selectservers.png)
 
-Po dokončení konfigurace hello Azure AD Connect zobrazí hello zprávu, která označuje stav hello hello aktualizace a poskytuje možnost tooverify hello služby AD FS přihlášení.
+Po dokončení konfigurace Azure AD Connect zobrazí zprávu, která označuje stav aktualizace a nabízí možnost ověření přihlášení služby AD FS.
 
 ![Dokončení konfigurace](./media/active-directory-aadconnectfed-ssl-update/configurecomplete.png)   
 
 ## <a name="faqs"></a>Nejčastější dotazy
 
-* **Co by měla být hello název subjektu certifikátu hello pro nový certifikát SSL služby AD FS hello?**
+* **Název subjektu certifikátu pro nový certifikát SSL služby AD FS, co by měla být?**
 
-    Azure AD Connect kontroluje, zda subjektu název nebo alternativní název subjektu hello hello certifikátu obsahuje název federační služby hello. Například pokud název vaší služby federačního serveru fs.contoso.com, musí být název subjektu název nebo alternativní subjektu hello fs.contoso.com.  Certifikáty se zástupnými znaky, jsou také přijaty.
+    Azure AD Connect kontroluje, zda subjektu název nebo alternativní název subjektu certifikátu obsahuje název federační služby. Například pokud je název vaší služby federačního serveru fs.contoso.com, předmět názvu nebo alternativní název subjektu musí být fs.contoso.com.  Certifikáty se zástupnými znaky, jsou také přijaty.
 
-* **Proč se zobrazuje zpráva pro přihlašovací údaje znovu na stránce server hello WAP?**
+* **Proč se zobrazuje zpráva pro přihlašovací údaje znovu na stránce server WAP?**
 
-    Pokud hello přihlašovacích údajů, které zadáte pro připojení serverů služby FS tooAD také nemají hello oprávnění toomanage hello WAP servery, pak Azure AD Connect vyzve k zadání přihlašovacích údajů, které mají oprávnění správce na serverech WAP hello.
+    Pokud přihlašovacích údajů, které zadáte pro připojení k serverům služby AD FS taky nemáte oprávnění ke správě serverů WAP, pak Azure AD Connect vyzve k zadání přihlašovacích údajů, které mají oprávnění správce na serverech WAP.
 
-* **Hello server se zobrazuje v režimu offline. Co bych měl/a dělat?**
+* **Serveru se zobrazuje v režimu offline. Co bych měl/a dělat?**
 
-    Azure AD Connect nelze provést všechny operace, pokud je hello server offline. Pokud je hello server součástí hello farmu služby AD FS, zkontrolujte hello připojení toohello serveru. Poté, co jste hello problém vyřešili, stiskněte tlačítko hello aktualizace ikonu tooupdate hello stav v Průvodci hello. Pokud hello server byl součástí z hello farmy dříve, ale teď už existuje, klikněte na **odebrat** toodelete hello seznamu serverů, které Azure AD Connect udržuje. Odebrání serveru hello hello seznamu ve službě Azure AD Connect není změnit hello konfigurace služby AD FS, sám sebe. Pokud používáte služby AD FS v systému Windows Server 2016 nebo novější, zůstanou server hello v nastavení konfigurace hello a zobrazí se znovu hello příštím hello úloha je spuštěna.
+    Azure AD Connect nelze provádět všechny operace, pokud je server offline. Pokud je server součástí farmy služby AD FS, zkontrolujte připojení k serveru. Poté, co jste vyřešit problém, stiskněte ikonu aktualizace se bude aktualizovat stav v průvodci. Pokud byl server součástí farmy dříve, ale teď už existuje, klikněte na tlačítko **odebrat** odstranit ze seznamu serverů, že Azure AD Connect udržuje. Odebrání serveru ze seznamu ve službě Azure AD Connect není změnit konfiguraci služby AD FS, sám sebe. Pokud používáte služby AD FS v systému Windows Server 2016 nebo novější, zůstanou serveru v nastavení konfigurace a se zobrazí při příštím spuštění úlohy.
 
-* **Můžete aktualizovat podmnožinu Moje servery ve farmě s hello nový certifikát SSL?**
+* **Můžete aktualizovat podmnožinu Moje servery ve farmě s novým certifikátem SSL?**
 
-    Ano. Hello úlohu lze spustit vždy **certifikát SSL aktualizace** znovu tooupdate hello zbývající servery. Na hello **vyberte servery pro protokol SSL certifikát aktualizace** stránky, můžete řadit hello seznam serverů na **datum vypršení platnosti SSL** tooeasily přístup hello servery, které ještě nejsou aktualizovány.
+    Ano. Možné vždy spouštět úlohy **aktualizovat certifikát SSL** aktualizovat na ostatní servery. Na **vyberte servery pro protokol SSL certifikát aktualizace** stránky, lze seřadit seznam serverů na **datum vypršení platnosti SSL** snadný přístup k serveru, které ještě nejsou aktualizovány.
 
-* **Po odebrání hello server hello předchozí, spuštění, ale stále se zobrazuje jako offline a uvedené na stránce hello AD FS servery. Proč je hello offline serveru stále existují i po jeho po odebrání?**
+* **Po odebrání serveru při předchozím spuštění, ale stále se zobrazuje jako offline a uvedené na stránce servery služby AD FS. Proč je offline serveru stále existují i po jeho po odebrání?**
 
-    Odebrání serveru hello hello seznamu ve službě Azure AD Connect neodstraní v hello konfigurace služby AD FS. Azure AD Connect odkazuje služby AD FS (Windows Server 2016 nebo vyšší) pro žádné informace o hello farmy. Pokud hello server se stále nachází na hello konfigurace služby AD FS, objeví se zpět v seznamu hello.  
+    Odebrání serveru ze seznamu ve službě Azure AD Connect, neodstraní se v konfiguraci služby AD FS. Azure AD Connect odkazuje služby AD FS (Windows Server 2016 nebo vyšší) pro žádné informace o farmy. Pokud je server stále existuje v konfiguraci služby AD FS, objeví se zpět v seznamu.  
 
 ## <a name="next-steps"></a>Další kroky
 

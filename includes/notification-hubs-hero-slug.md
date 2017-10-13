@@ -1,7 +1,7 @@
 
-Hello cílem tohoto tématu je toohelp, které můžete začít používat co nejrychlejší centra oznámení. Toto téma představuje velmi jednoduchý příklad vysílání v pořadí tooconcentrate na hello základní koncepty služby Notification Hubs.
+Cílem tohoto článku je pomoct vám s co nejrychlejším zahájením práce se službou Azure Notification Hubs. Tento článek představuje scénář velmi jednoduchého vysílání se zaměřením na základní koncepty služby Notification Hubs.
 
-Pokud jste již obeznámeni s Notification Hubs, se může má tooselect jiné téma hello vlevo nebo zobrazit hello odkazy v [další kroky](#next-steps).
+Pokud už jste se se službou Notification Hubs seznámili, můžete si v levém navigačním panelu vybrat jiné téma nebo přejít na související články v části Další kroky.
 
-Záleží nám na vašem názoru. Pokud máte jakékoli problémy dokončení tohoto tématu nebo doporučit vylepšení tohoto obsahu, by nám chcete sdělit svůj názor hello dolní části stránky hello.
+Záleží nám na vašem názoru. Pokud máte s tímto tématem nějaké potíže nebo máte doporučení k vylepšení tohoto obsahu, na konci článku nám můžete poskytnout zpětnou vazbu.
 

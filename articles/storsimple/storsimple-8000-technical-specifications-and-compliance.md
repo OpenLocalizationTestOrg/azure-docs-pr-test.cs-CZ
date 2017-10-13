@@ -1,6 +1,6 @@
 ---
-title: "technických specifikací aaaStorSimple | Microsoft Docs"
-description: "Popisuje hello technické údaje a informace o kompatibilitě zákonných norem pro hello StorSimple hardwarové součásti."
+title: "Technických specifikací StorSimple | Microsoft Docs"
+description: "Popisuje technické údaje a informace o kompatibilitě zákonných norem pro StorSimple hardwarové součásti."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 98fa3307e2a929551c74e8b3179bb0fb61c0ab53
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d7cd31dcb2278284ada6e7ac1d8beab9e1b5b1df
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="technical-specifications-and-compliance-for-hello-storsimple-device"></a>Technických specifikací a dodržování předpisů pro zařízení StorSimple hello
+# <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Technických specifikací a dodržování předpisů pro zařízení StorSimple
 
 ## <a name="overview"></a>Přehled
 
-Hello hardwarové součásti služby Microsoft Azure StorSimple zařízení splňovat zákonné standardy uvedených v tomto článku a toohello technických specifikací. Hello technických specifikací popisují kapacitu úložiště hello napájení a chlazení moduly (PCMs), diskové jednotky a skříně. informace o kompatibilitě Hello popisuje prvků jako mezinárodní standardy, zabezpečení a emisí a kabeláž.
+Hardwarové součásti zařízení Microsoft Azure StorSimple dodržovat technických specifikací a zákonných norem uvedených v tomto článku. Technických specifikací popisují napájení a chlazení moduly (PCMs), diskové jednotky, kapacity úložiště a skříně. Informace o kompatibilitě popisuje prvků jako mezinárodní standardy, zabezpečení a emisí a kabeláž.
 
 ## <a name="power-and-cooling-module-specifications"></a>Specifikace energii a chlazení modulu
 
-zařízení StorSimple Hello má dva 100 240 V duální ventilátor, kompatibilní se standardem SBB moduly Power chlazení (PCMs). To poskytuje redundantní napájení konfigurace. Pokud se nezdaří PCM, hello zařízení toooperate normálně pokračuje na hello je nahrazeno jiných PCM do hello selhání modulu.
+Zařízení StorSimple má dva 100 240 V duální ventilátor, kompatibilní se standardem SBB moduly Power chlazení (PCMs). To poskytuje redundantní napájení konfigurace. Pokud se nezdaří PCM, zařízení nadále normálně na jiné PCM, dokud se nahradí modulu se nezdařilo.
 
-Hello EBOD skříň používá 580 W PCM a primární skříň 764 W PCM. Hello následující tabulky obsahují seznam hello technických specifikací přidružené hello PCMs.
+Skříň EBOD používá 580 W PCM a primární skříň 764 W PCM. V následujících tabulkách seznamu technických specifikací přidružené PCMs.
 
 | Specifikace | 580 W PCM (EBOD) | 764 W PCM (primární) |
 | --- | --- | --- |
@@ -49,7 +49,7 @@ Hello EBOD skříň používá 580 W PCM a primární skříň 764 W PCM. Hello 
 
 ## <a name="power-consumption-statistics"></a>Statistické údaje o spotřebě energie
 
-Hello následující tabulka uvádí hello typické spotřebě energie (skutečné hodnoty se liší od hello publikovaná) pro hello různé modely zařízení StorSimple.
+Následující tabulka uvádí datům o spotřebě typické power (skutečné hodnoty se liší od k publikovanému) pro různé typy zařízení StorSimple.
 
 | Podmínky | 240 V AC | 240 V AC | 240 V AC | 110 V AC | 110 V AC | 110 V AC |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -62,11 +62,11 @@ Hello následující tabulka uvádí hello typické spotřebě energie (skutečn
 
 ## <a name="disk-drive-specifications"></a>Specifikace diskovou jednotku
 
-Zařízení StorSimple podporuje až too12 3,5 formuláře Multi-Factor Serial Attached (SCSI SAS) disky. Hello skutečné jednotky se může jednat o kombinaci disků SSD (Solid-State Drive) nebo pevných disků (HDD), v závislosti na konfiguraci produktu hello. Hello 12 disku sloty jsou umístěné v konfiguraci 3 ve 4 před hello skříň. Hello EBOD skříň umožňuje další úložiště pro jiné 12 diskové jednotky. Toto jsou vždy pevné disky.
+Zařízení StorSimple podporuje až 12 disky Serial Attached (SCSI SAS) multi-Factor 3,5 formuláře. Skutečné jednotky se může jednat o kombinaci disků SSD (Solid-State Drive) nebo pevných disků (HDD), v závislosti na konfiguraci produktu. 12 sloty disku jsou umístěny v konfiguraci 3 ve 4 před skříni. Skříň EBOD umožňuje další úložiště pro jiné 12 diskové jednotky. Toto jsou vždy pevné disky.
 
 ## <a name="storage-specifications"></a>Specifikace úložiště
 
-zařízení StorSimple Hello mít směs pevných disků a jednotek SSD pro obě hello 8100 a 8600. Hello celkové kapacity použitelné pro hello 8100 a 8600 se přibližně 15 TB a 38 TB. Následující tabulka Hello dokumenty hello podrobnosti o SSD a HDD, kapacity cloudu v kontextu hello hello kapacity řešení StorSimple.
+Zařízení StorSimple 8100 i 8600 mít směs pevných disků a jednotek SSD. Celková kapacita použitelné pro 8100 a 8600 se přibližně 15 TB a 38 TB. Následující tabulka obsahuje informace o podrobnosti o SSD a HDD, kapacity cloudu v kontextu kapacity řešení StorSimple.
 
 | Model zařízení / kapacity | 8100 | 8600 |
 | --- | --- | --- |
@@ -80,37 +80,37 @@ zařízení StorSimple Hello mít směs pevných disků a jednotek SSD pro obě 
 | Celkový počet použitelné kapacity * |~ 15 TB |~ 38 TB |
 | Řešení maximální kapacity (včetně cloudu) |200 TB |500 TB |
 
-<sup>* </sup>- *Celková kapacita použitelné Hello zahrnuje kapacity hello k dispozici pro data, metadat a vyrovnávací paměti.*
+<sup>* </sup>- *Celková kapacita použitelné zahrnuje dostupné kapacity pro data, metadat a vyrovnávací paměti.*
 
 ## <a name="enclosure-dimensions-and-weight-specifications"></a>Skříň dimenze a specifikace váhy
 
-Následující seznam tabulek Hello hello různé specifikace skříň pro dimenze a váhy.
+V následujících tabulkách najdete různé specifikace skříň pro dimenze a váhy.
 
 ### <a name="enclosure-dimensions"></a>Skříň dimenze
 
-Hello následující tabulka uvádí hello rozměry hello skříň v milimetrech a palců.
+Následující tabulka uvádí dimenze skříni v milimetrech a palců.
 
 | Skříň | Milimetry | Palců |
 | --- | --- | --- |
 | Výška |87.9 |3.46 |
 | Šířka napříč příruby připojení |483 |19.02 |
 | Šířka napříč textu skříň |443 |17.44 |
-| Hloubka z front připojení příruby tooextremity těla skříň |577 |22.72 |
-| Hloubka operacích panelu toofurthest okraje skříň |630.5 |24.82 |
-| Hloubka z připojení příruby toofurthest okraje skříň |603 |23.74 |
+| Hloubka od předního okraj textu skříň |577 |22.72 |
+| Hloubka operations panelu nejvzdálenější okraj skříň |630.5 |24.82 |
+| Hloubka z připojení příruby nejvzdálenější okraj skříň |603 |23.74 |
 
 ### <a name="enclosure-weight"></a>Váha skříň
 
-V závislosti na konfiguraci hello skříni úplným načtením primární můžete naváží z 21 too33 kg a vyžaduje dvě osoby toohandle ho.
+V závislosti na konfiguraci úplným načtením primární skříň můžete naváží z 21 33 kg a vyžaduje dvě osoby se nezdařilo.
 
 | Skříň | Váha |
 | --- | --- |
-| Maximální váhy (závisí na konfiguraci hello) |30 kg – 33 kg |
+| Maximální váhy (závisí na konfiguraci) |30 kg – 33 kg |
 | Prázdný (namontováno žádné jednotky) |21 – 23 kg |
 
 ## <a name="enclosure-environment-specifications"></a>Specifikace prostředí skříň
 
-Tato část uvádí hello specifikace související toohello skříň prostředí. Hello teploty, vlhkosti, výšku, rázu, vibrace, orientaci, zabezpečení a elektromagnetické kompatibility (EMC) jsou zahrnuty v této kategorii.
+V této části jsou uvedeny specifikace související s prostředím skříň. Teploty, vlhkosti, výšku, rázu, vibrace, orientaci, zabezpečení a kompatibility elektromagnetické (EMC) jsou zahrnuty v této kategorii.
 
 ### <a name="temperature-and-humidity"></a>Teploty a vlhkosti
 
@@ -123,56 +123,56 @@ Tato část uvádí hello specifikace související toohello skříň prostřed�
 
 | Skříň | Provozní specifikace |
 | --- | --- |
-| Proud vzduchu |Systém vzduchu je přední toorear. Systém musí provozovat s Nízkotlaké zadní výfukového instalaci. Back přetížení vytvořené dveře do racku a překážek nesmí překročit 5 pascalech (0,5 mm horních měřidla). |
-| Výška, provozní |-30 měřidla too3045 měřidla (too10 nohou-100, 000 nohou) s maximální provozní teplota zrušte hodnocení o 5 ° C výše 7000 nohou. |
-| Výška, nefunkční |-305 až měřidla too12, 192 měřidla (-1,000 nohou too40 000 nohou) |
+| Proud vzduchu |Systém vzduchu je přední zadní. Systém musí provozovat s Nízkotlaké zadní výfukového instalaci. Back přetížení vytvořené dveře do racku a překážek nesmí překročit 5 pascalech (0,5 mm horních měřidla). |
+| Výška, provozní |-30 měřidla k 3045 měřidla (nohou-100 do 10 000 nohou) s maximální provozní teplota zrušte hodnocení o 5 ° C výše 7000 nohou. |
+| Výška, nefunkční |m-305 až do 12 192 měřidla (-1,000 nohou na 40 000 stopy) |
 | Proudem, provozní |5g 10 ms, půlvlnný sinus |
 | Proudem, nefunkční |30g 10 ms, půlvlnný sinus |
 | Vibrace provozní |0.21g RMS 5 500 Hz náhodných |
 | Vibrace nefunkční |1.04g RMS 2 – 200 Hz náhodných |
 | Vibrace, přemístění |3g 2 – 200 Hz sinus |
 | Orientace a připojení |19" namontovat do racku (2 EIA jednotky) |
-| Které rack |toofit minimální 700 mm (31.50 palců) hloubka stojany kompatibilní s IEC 297 |
+| Které rack |Přizpůsobit minimální 700 mm (31.50 palců) hloubka racků kompatibilní s IEC 297 |
 | Zabezpečení a schválení |CE a UL EN 61000-3, IEC 61000-3, UL 61000 – 3 |
 | EMC |EN55022 (CISPR - A), FCC A |
 
 ## <a name="international-standards-compliance"></a>Mezinárodní standardy dodržování předpisů
 
-Microsoft Azure StorSimple zařízení splňuje následující mezinárodní standardy hello:  
+Zařízení s Microsoft Azure StorSimple splňuje následující mezinárodní normy:  
 
 * CE - EN 60950-1
-* Označení CB sestavy tooIEC 60950-1
-* UL a cUL tooUL 60950-1
+* Označení CB sestavy IEC 60950-1
+* UL a cUL k UL 60950-1
 
 ## <a name="safety-compliance"></a>Dodržování předpisů zabezpečení
 
-Zařízení s Microsoft Azure StorSimple splňuje následující bezpečnostní hodnocení hello:
+Zařízení s Microsoft Azure StorSimple splňuje následující bezpečnostní hodnocení:
 
 * Schválení typ produktu System: UL, cUL CE
 * Dodržování předpisů zabezpečení: UL 60950, IEC 60950, EN 60950
 
 ## <a name="emc-compliance"></a>Dodržování předpisů EMC
 
-Zařízení s Microsoft Azure StorSimple splňuje hello následující EMC hodnocení.
+Zařízení s Microsoft Azure StorSimple splňuje následující EMC hodnocení.
 
 ### <a name="emissions"></a>Emisí
 
-Hello zařízení kompatibilní se standardem EMC emisí provedeny a vyzářený úrovně.
+Zařízení je kompatibilní se standardem EMC emisí provedeny a vyzářený úrovně.
 
 * Provedeny emisí omezení úrovní: část 47 CFR 15B – třída A EN55022 třídy A CISPR třída A
 * Vyzářený emisí omezení úrovní: část 47 CFR 15B – třída A EN55022 třídy A CISPR třída A
 
 ### <a name="harmonics-and-flicker"></a>Harmonické a blikání
 
-Hello zařízení v souladu s EN61000-3-2 nebo 3.
+Bude zařízení v souladu s EN61000-3-2 nebo 3.
 
 ### <a name="immunity-limit-levels"></a>Omezení úrovně odolnosti
 
-Hello zařízení v souladu s EN55024.
+Bude zařízení v souladu s EN55024.
 
 ## <a name="ac-power-cord-compliance"></a>AC power kabel dodržování předpisů
 
-Hello moduly a hello dokončení sestavení kabel power musí splňovat hello standardy, které jsou vhodné pro hello země, ve které hello je používán zařízení a musí mít bezpečnostní schválení, které jsou přípustné v dané země. Hello následující tabulky obsahují seznam standardy hello USA a Evropě.
+Moduly a sestavení kabel dokončení power musejí splňovat standardy, které jsou vhodné pro zemi, ve kterém je používán zařízení a musí mít bezpečnostní schválení, které jsou přípustné v dané země. V následujících tabulkách najdete standardy pro USA a Evropě.
 
 ### <a name="ac-power-cords---usa-must-be-nrtl-listed"></a>AC napájecích kabelů – USA (musí být NRTL uvedené)
 
@@ -191,9 +191,9 @@ Hello moduly a hello dokončení sestavení kabel power musí splňovat hello st
 
 ## <a name="supported-network-cables"></a>Podporované síťové kabely
 
-Hello 10 GbE síťová rozhraní DATA 2 a DATA 3, najdete v části toohello [seznam podporovaných síťových kabelů a moduly](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
+10 GbE síťová rozhraní DATA 2 a DATA 3 najdete [seznam podporovaných síťových kabelů a moduly](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Jste nyní připraven toodeploy zařízení StorSimple ve vašem datovém centru. Další informace najdete v tématu [nasazení místního zařízení](storsimple-8000-deployment-walkthrough-u2.md).
+Nyní jste připraveni k nasazení zařízení StorSimple ve vašem datovém centru. Další informace najdete v tématu [nasazení místního zařízení](storsimple-8000-deployment-walkthrough-u2.md).
 

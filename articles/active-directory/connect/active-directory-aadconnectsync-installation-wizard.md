@@ -1,7 +1,7 @@
 ---
-title: "Opětovným spuštěním Průvodce instalací hello Azure AD Connect | Microsoft Docs"
-description: "Vysvětluje, jak Průvodce instalací hello funguje hello druhý čas spuštění."
-keywords: "Průvodce instalací Hello Azure AD Connect vám umožní nakonfigurovat nastavení hello údržby druhý čas spuštění"
+title: "Znovu spustit Azure AD Connect Průvodce instalací | Microsoft Docs"
+description: "Vysvětluje, jak funguje Průvodce instalací druhá, když jej spustíte."
+keywords: "Průvodce instalací služby Azure AD Connect vám umožní nakonfigurovat nastavení údržby druhý čas spuštění"
 services: active-directory
 documentationcenter: 
 author: andkjell
@@ -15,29 +15,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 83cc74aca471ef9b4f65f7f3582e3e48d3d81cfe
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 42855b785c0ab334e33a622c8db912ce2438c627
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="azure-ad-connect-sync-running-hello-installation-wizard-a-second-time"></a>Synchronizace Azure AD Connect: spuštění Průvodce instalací hello podruhé
-Hello poprvé spustíte Průvodce instalací hello Azure AD Connect, provede vás procesem tooconfigure instalace. Pokud znovu spustíte Průvodce instalací hello, nabízí možnosti pro údržbu.
+# <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Synchronizace Azure AD Connect: opětovným spuštěním Průvodce instalací
+Při prvním spuštění Průvodce instalací služby Azure AD Connect, se vás provede procesem konfigurace instalace. Pokud znovu spustíte Průvodce instalací, nabízí možnosti pro údržbu.
 
-Průvodce instalací hello můžete najít v nabídce start hello s názvem **Azure AD Connect**.
+Průvodce instalací můžete najít v nabídce start s názvem **Azure AD Connect**.
 
 ![Nabídka Start](./media/active-directory-aadconnectsync-installation-wizard/startmenu.png)
 
-Když spustíte Průvodce instalací hello, zobrazí se stránka pomocí těchto možností:
+Když spustíte Průvodce instalací, zobrazí se stránka pomocí těchto možností:
 
 ![Stránka s seznam dalších úloh](./media/active-directory-aadconnectsync-installation-wizard/additionaltasks.png)
 
-Pokud jste nainstalovali služby AD FS službou Azure AD Connect, máte i další možnosti. Další možnosti, které máte služby AD FS jsou dokumentovány v článku Hello [správu služby AD FS](active-directory-aadconnect-federation-management.md#manage-ad-fs).
+Pokud jste nainstalovali služby AD FS službou Azure AD Connect, máte i další možnosti. Další možnosti máte služby AD FS jsou dokumentovány v článku [správu služby AD FS](active-directory-aadconnect-federation-management.md#manage-ad-fs).
 
-Vyberte jednu z úloh hello a klikněte na tlačítko **Další** toocontinue.
+Vyberte jednu z úloh a klikněte na **Další** pokračujte.
 
 > [!IMPORTANT]
-> Při otevření Průvodce instalací hello, jsou všechny operace v hello synchronizační modul pozastavit. Ujistěte se, že zavřete průvodce instalací hello Jakmile dokončíte změny konfigurace.
+> Při otevření Průvodce instalací, jsou všechny operace v synchronizační modul pozastavit. Ujistěte se, že jakmile dokončíte změny konfigurace se zavřete průvodce instalací.
 >
 >
 
@@ -46,45 +46,45 @@ Tato možnost poskytuje rychlý přehled o aktuálně nakonfigurované možnosti
 
 ![Stránka se seznam všech možností a jejich stavu](./media/active-directory-aadconnectsync-installation-wizard/viewconfig.png)
 
-Klikněte na tlačítko **předchozí** toogo zpět. Pokud vyberete **ukončení**, zavřete průvodce instalací hello.
+Klikněte na tlačítko **předchozí** a vraťte se. Pokud vyberete **ukončení**, zavřete průvodce instalací.
 
 ## <a name="customize-synchronization-options"></a>Přizpůsobit možnosti synchronizace
-Tato možnost je použít toomake změny toohello synchronizace konfigurace. Zobrazí podmnožinu možnosti z cesty instalace hello vlastní konfigurace. Tato možnost zobrazí i v případě začátku použít rychlé instalace.
+Tato možnost slouží k provádět změny konfigurace synchronizace. Zobrazí podmnožinu možnosti z cesty instalace vlastní konfigurace. Tato možnost zobrazí i v případě začátku použít rychlé instalace.
 
 * [Další adresáře přidat](active-directory-aadconnect-get-started-custom.md#connect-your-directories). Odebírání adresáře, najdete v části [odstranit konektor](active-directory-aadconnectsync-service-manager-ui-connectors.md#delete).
 * [Změnit doménu a organizační jednotku filtrování](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering).
 * Odstranit skupinu filtrování.
 * [Změnit volitelné funkce](active-directory-aadconnect-get-started-custom.md#optional-features).
 
-Hello další možnosti z hello počáteční instalaci nelze změnit a nejsou k dispozici. Tyto možnosti jsou:
+Další možnosti z počáteční instalaci nelze změnit a nejsou k dispozici. Tyto možnosti jsou:
 
-* Změnit hello toouse atribut userPrincipalName a sourceAnchor.
-* Změnit hello propojení metody pro objekty z jiné doménové struktuře.
+* Změňte atribut, který chcete použít pro userPrincipalName a sourceAnchor.
+* Změňte metodu spojující pro objekty z jiné doménové struktuře.
 * Povolte filtrování podle skupiny.
 
 ## <a name="refresh-directory-schema"></a>Aktualizace schématu adresáře
-Tato možnost se používá, pokud jste změnili hello schéma v jednom z místními doménovými strukturami služby AD DS. Například by mohl mít nainstalován Exchange nebo upgradovat schématu tooa systému Windows Server 2012 s objekty zařízení. V takovém případě budete potřebovat tooinstruct Azure AD Connect tooread hello schéma znovu ze služby AD DS a aktualizovat své mezipaměti. Tato akce také regeneruje hello synchronizačního pravidla. Pokud přidáte hello Exchange schématu, jako příklad, přidána hello synchronizační pravidla pro Exchange toohello konfigurace.
+Tato možnost se používá, pokud jste změnili schéma v jednom z místními doménovými strukturami služby AD DS. Například je může Exchange nainstalovali nebo upgradovali schématu systému Windows Server 2012 s objekty zařízení. V takovém případě budete muset pokyn Azure AD Connect číst schéma znovu ze služby AD DS a aktualizovat své mezipaměti. Tato akce také regeneruje pravidla synchronizace. Pokud přidáte schéma Exchange jako příklad, pravidla synchronizace pro Exchange se přidají do konfigurace.
 
-Když vyberete tuto možnost, jsou uvedeny všechny adresáře hello ve vaší konfiguraci. Můžete ponechat výchozí nastavení hello a aktualizovat všechny doménové struktury nebo zrušit výběr některé z nich.
+Když vyberete tuto možnost, jsou uvedeny všechny adresáře ve vaší konfiguraci. Můžete ponechat výchozí nastavení a aktualizujte všechny doménové struktury nebo zrušení výběru některé z nich.
 
-![Stránka s seznamu všech adresářů v prostředí hello](./media/active-directory-aadconnectsync-installation-wizard/refreshschema.png)
+![Stránka s seznamu všech adresářů v prostředí](./media/active-directory-aadconnectsync-installation-wizard/refreshschema.png)
 
 ## <a name="configure-staging-mode"></a>Konfigurovat pracovní režim
-Tato možnost umožňuje tooenable a vypněte pracovní režim na serveru hello. Další informace o pracovním režimu a způsobu jejich použití naleznete v [operace](active-directory-aadconnectsync-operations.md#staging-mode).
+Tato možnost umožňuje povolit nebo zakázat pracovní režim na serveru. Další informace o pracovním režimu a způsobu jejich použití naleznete v [operace](active-directory-aadconnectsync-operations.md#staging-mode).
 
-Hello možnost zobrazí, pokud pracovní aktuálně povolená nebo zakázaná:  
-![Možnost, která se také zobrazuje aktuální stav hello pracovní režim](./media/active-directory-aadconnectsync-installation-wizard/stagingmodecurrentstate.png)
+Možnost ukazuje, zda je aktuálně povolena nebo zakázána pracovní:  
+![Možnost, která se také zobrazuje aktuální stav pracovní režim](./media/active-directory-aadconnectsync-installation-wizard/stagingmodecurrentstate.png)
 
-toochange hello stavu, vyberte tuto možnost a vyberte nebo zrušit výběr hello zaškrtávací políčko.  
-![Možnost, která se také zobrazuje aktuální stav hello pracovní režim](./media/active-directory-aadconnectsync-installation-wizard/stagingmodeenable.png)
+Na změnu stavu, vyberte tuto možnost a vyberte nebo zrušte výběr zaškrtávací políčko.  
+![Možnost, která se také zobrazuje aktuální stav pracovní režim](./media/active-directory-aadconnectsync-installation-wizard/stagingmodeenable.png)
 
 ## <a name="change-user-sign-in"></a>Změnit přihlášení uživatele
-Tato možnost umožňuje toochange z toofederation synchronizace hesel nebo hello opačným způsobem. Nelze změnit, příliš**nekonfigurujte**.
+Tato možnost umožňuje změnit z synchronizaci hesla k federaci nebo naopak. Nelze změnit na **nekonfigurujte**.
 
 Další informace o této možnosti najdete v tématu [přihlášení uživatele](active-directory-aadconnect-user-signin.md#changing-the-user-sign-in-method).
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o hello konfigurační model používá synchronizaci Azure AD Connect v [Principy deklarativní zřizování](active-directory-aadconnectsync-understanding-declarative-provisioning.md).
+* Další informace o konfiguraci modelu používá synchronizaci Azure AD Connect v [Principy deklarativní zřizování](active-directory-aadconnectsync-understanding-declarative-provisioning.md).
 
 **Témata s přehledem**
 

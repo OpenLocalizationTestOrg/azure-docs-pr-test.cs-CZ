@@ -1,5 +1,5 @@
 ---
-title: "aaaOverview fronty, témata a odběry pro zasílání zpráv Azure Service Bus | Microsoft Docs"
+title: "Přehled fronty, témata a odběry pro zasílání zpráv Azure Service Bus | Microsoft Docs"
 description: "Přehled služby Service Bus entity pro zasílání zpráv."
 services: service-bus-messaging
 documentationcenter: na
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2017
 ms.author: sethm
-ms.openlocfilehash: 73135d2658e341c14dbb114ab938faed91578ff1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 00f9f38fbae028486270053dedb4df580a3f1a44
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Fronty, témata a odběry služby Service Bus
 
-Microsoft Azure Service Bus podporuje sadu založené na cloudu, orientovaný na zprávy middleware technologie včetně služby Řízení front zpráv spolehlivé a trvanlivé publikování a přihlášení k odběru zasílání zpráv. Tyto funkce "zprostředkovaného" přenosu zpráv může považovat za odpojeného zasílání zpráv funkce, které podpora publikování a odběru, dočasné oddělení a vyvažování zátěže scénáře s využitím infrastruktury zasílání zpráv Service Bus hello. Oddělená komunikace má mnoho výhod – klienti a servery se například můžou spojit podle potřeby a provádět své operace asynchronním způsobem.
+Microsoft Azure Service Bus podporuje sadu založené na cloudu, orientovaný na zprávy middleware technologie včetně služby Řízení front zpráv spolehlivé a trvanlivé publikování a přihlášení k odběru zasílání zpráv. Tyto funkce "zprostředkovaného" přenosu zpráv můžete představit jako odpojené zasílání zpráv funkce, které podpora publikování a odběru, časové oddělení a scénáře s využitím prostředků infrastruktury pro zprávy sběrnice služby Vyrovnávání zatížení. Oddělená komunikace má mnoho výhod – klienti a servery se například můžou spojit podle potřeby a provádět své operace asynchronním způsobem.
 
-Hello entity zasílání zpráv, které tvoří jádro hello Dobrý den, zasílání zpráv možnosti v Service Bus jsou fronty, témata a odběry a pravidla nebo akce.
+Entit pro zasílání zpráv, které tvoří základní možnosti zasílání zpráv ve sběrnici Service Bus jsou fronty, témata a odběry a pravidla nebo akce.
 
 ## <a name="queues"></a>Fronty
 
-Fronty nabízejí *First In, Out první* tooone doručování zpráv (metodou FIFO) nebo další konkurenčních spotřebitelů. To znamená že zprávy jsou obvykle očekávané toobe přijme a zpracuje hello příjemci v hello pořadí, ve kterém byly přidány toohello fronty, a každou zprávu přijme a zpracuje jenom jeden příjemce zprávy. Klíčovou výhodou použití front je tooachieve "časové oddělení" součásti aplikace. Jinými slovy, hello producenti (odesílatelé) a spotřebitelé (příjemci) nemusí toobe odesílání a příjem zpráv v hello stejné času, protože zprávy jsou bezpečně uložené ve frontě hello. Kromě toho hello producent neobsahovala toowait na odpověď od příjemce hello v pořadí toocontinue tooprocess a odesílání zpráv.
+Fronty nabízejí *First In, Out první* doručování zpráv (metodou FIFO) na jeden nebo několik konkurenčních spotřebitelů. To znamená zprávy se očekává obvykle přijímají a zpracovávají v pořadí, ve kterém byly přidány do fronty, a každou zprávu přijme a zpracuje jenom jeden příjemce zprávy. Klíčovou výhodou použití front je dosáhnout "časové oddělení" součástí aplikace. Jinými slovy producenti (odesílatelé) a spotřebitelé (příjemci) nemusí být odesílání a přijímání zpráv ve stejnou dobu, protože zprávy jsou bezpečně uložené ve frontě. Kromě toho Autor nemusí čekat na odpověď od příjemce, aby bylo možné pokračovat se zpracováním a odesláním zprávy.
 
-Výhodou je "zatížení vyrovnávání,", který umožňuje producenti a spotřebitelé toosend a přijímat zprávy různými rychlostmi. V mnoha aplikacích zatížení systému hello se liší v čase; ale hello zpracování čas potřebný pro jednotlivé jednotky práce je obvykle stálá. Propojovací producenti a spotřebitelé zpráv s frontou znamená, že tento hello použití jenom aplikace nemá toobe zřízené toobe možné toohandle průměrnou zátěž místo zátěž ve špičce. Hello hloubka fronty hello s měnící hello příchozí zátěží se mění. To znamená přímou úsporu nákladů s ohledem toohello množství infrastruktury požadované tooservice hello aplikace zatížení. Jako hello zátěž zvyšuje, další pracovních procesů může být přidané tooread z fronty hello. Každou zprávu zpracovává jenom jeden hello pracovních procesů. Kromě toho tato Vyrovnávání zatížení založené na operaci pull umožňuje optimální využívání pracovních počítačů hello i v případě hello pracovní počítače liší s ohledem tooprocessing výkonu, jak se bude načítat zprávy na svou vlastním maximální rychlostí. Toto chování se často říká vzor "neslučitelných příjemce" hello.
+Výhodou je, "vyrovnávání zátěže," což umožňuje odesílatelům a spotřebitelům umožňuje odesílat a přijímat zprávy různými rychlostmi. V mnoha aplikacích zatížení systému se liší v čase; ale zpracování čas potřebný pro jednotlivé jednotky práce je obvykle stálá. Propojovací producenti a spotřebitelé zpráv s frontou znamená, že spotřebitelskou aplikaci pouze musí být zřízená být schopna zpracovávat průměrnou zátěž místo zátěž ve špičce. S měnící se příchozí zátěží se mění hloubka fronty. To znamená přímou úsporu nákladů s ohledem na množství infrastruktury nutné pro zvládání zatížení aplikace. Při rostoucí zátěži, lze přidat další pracovní procesy ke čtení z fronty. Každou zprávu zpracovává jen jeden pracovní proces. Kromě toho tato Vyrovnávání zatížení založené na operaci pull umožňuje optimální využívání pracovních počítačů i v případě, že pracovní počítače liší s ohledem na výpočetní výkon, jak se bude načítat zprávy na svou vlastním maximální rychlostí. Toto chování se často říká vzor "neslučitelných příjemce".
 
-Pomocí fronty toointermediate mezi producenti a spotřebitelé zpráv poskytuje vyplývajících volné párování mezi součástmi hello. Protože producenti a spotřebitelé nemají informace o sobě navzájem, bez nutnosti nijak neprojeví na hello producent lze upgradovat příjemce.
+Pomocí fronty pro zprostředkující mezi producenti a spotřebitelé zpráv poskytuje vyplývajících volné párování mezi součástmi. Protože producenti a spotřebitelé nemají informace o sobě navzájem, bez nutnosti nijak neprojeví na Autor lze upgradovat příjemce.
 
-Vytvoření fronty je několika krocích. Provádět operace správy pro Service Bus (fronty a témata) entity prostřednictvím hello zasílání zpráv [Microsoft.ServiceBus.NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager#microsoft_servicebus_namespacemanager) třídy, která je vytvořená zadáním hello bázové adresy hello Service Bus obor názvů a hello přihlašovací údaje uživatele. [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager#microsoft_servicebus_namespacemanager) poskytuje metody toocreate, výčet a odstranění entit přenosu zpráv. Po vytvoření [Microsoft.ServiceBus.TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider#microsoft_servicebus_tokenprovider) objekt objektu hello SAS název a klíč a správu oboru názvů služby, můžete použít hello [Microsoft.ServiceBus.NamespaceManager.CreateQueue](/dotnet/api/microsoft.servicebus.namespacemanager#Microsoft_ServiceBus_NamespaceManager_CreateQueue_System_String_) metoda toocreate hello fronty. Například:
+Vytvoření fronty je několika krocích. Provádět operace správy pro Service Bus (fronty a témata) entity pro zasílání zpráv prostřednictvím [Microsoft.ServiceBus.NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager#microsoft_servicebus_namespacemanager) třídy, která je vytvořená zadáním bázové adresy oboru názvů Service Bus a přihlašovací údaje uživatele. [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager#microsoft_servicebus_namespacemanager) poskytuje metody pro vytvoření, výčet a odstranění entit přenosu zpráv. Po vytvoření [Microsoft.ServiceBus.TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider#microsoft_servicebus_tokenprovider) objekt objektu pomocí názvu SAS a klíč a správu oboru názvů služby, můžete použít [Microsoft.ServiceBus.NamespaceManager.CreateQueue](/dotnet/api/microsoft.servicebus.namespacemanager#Microsoft_ServiceBus_NamespaceManager_CreateQueue_System_String_)metodu pro vytvoření fronty. Například:
 
 ```csharp
 // Create management credentials
@@ -43,7 +43,7 @@ TokenProvider credentials = TokenProvider.CreateSharedAccessSignatureTokenProvid
 NamespaceManager namespaceClient = new NamespaceManager(ServiceBusEnvironment.CreateServiceUri("sb", ServiceNamespace, string.Empty), credentials);
 ```
 
-Potom můžete vytvořit objekt fronty a objekt zasílání zpráv s hello identifikátor URI služby Service Bus jako argument. Například:
+Potom můžete vytvořit objekt fronty a objekt zasílání zpráv s identifikátor URI služby Service Bus jako argument. Například:
 
 ```csharp
 QueueDescription myQueue;
@@ -52,7 +52,7 @@ MessagingFactory factory = MessagingFactory.Create(ServiceBusEnvironment.CreateS
 QueueClient myQueueClient = factory.CreateQueueClient("TestQueue");
 ```
 
-Potom může odeslat toohello fronty zpráv. Například, pokud máte seznam zprostředkovaných zpráv názvem `MessageList`, podobně jako následující toohello se zobrazí kód hello:
+Pak můžete odesílat zprávy do fronty. Například, pokud máte seznam zprostředkovaných zpráv názvem `MessageList`, zobrazí se tento kód podobný následujícímu:
 
 ```csharp
 for (int count = 0; count < 6; count++)
@@ -63,7 +63,7 @@ for (int count = 0; count < 6; count++)
 }
 ```
 
-Potom zobrazí zprávy z fronty hello následujícím způsobem:
+Potom zobrazí zprávy z fronty následujícím způsobem:
 
 ```csharp
 while ((message = myQueueClient.Receive(new TimeSpan(hours: 0, minutes: 0, seconds: 5))) != null)
@@ -76,20 +76,20 @@ while ((message = myQueueClient.Receive(new TimeSpan(hours: 0, minutes: 0, secon
     }
 ```
 
-V hello [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) přijímat hello režimu, je jednorázová operace; to znamená, když Service Bus přijme požadavek hello, označí uvítací zprávu jako spotřebovávanou a vrátí ji toohello aplikace. **ReceiveAndDelete** režimu je hello nejjednodušší model a funguje nejlépe ve scénářích, které hello aplikace může tolerovat hello události selhání se zpráva nezpracuje. toounderstand, představte si třeba situaci v problémy, které příjemce hello hello přijímání požadavků a pak dojde k chybě před zpracováním ho. Vzhledem k tomu, že Service Bus označí uvítací zprávu jako spotřebovávanou, když aplikace hello restartuje a začne znovu přijímat zprávy, ji budou neuskutečnily uvítací zprávu, která byla spotřebované předchozí toohello havárií.
+V [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) režim, operace příjmu je jednorázová; to znamená, když Service Bus přijme požadavek, označí zprávu jako spotřebovávanou a vrátí ji do aplikace. **ReceiveAndDelete** režimu je nejjednodušší model a funguje nejlépe ve scénářích, kde aplikace může tolerovat selhání se zpráva nezpracuje. Pro lepší vysvětlení si představte scénář, ve kterém spotřebitel vyšle požadavek na přijetí, ale než ji může zpracovat, dojde v něm k chybě a ukončí se. Vzhledem k tomu, že Service Bus, označí zprávu jako spotřebovávanou, když se aplikace restartuje a začne znovu přijímat zprávy, se neuskutečnily zprávu, která se spotřebovala před havárii.
 
-V [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode) přijímat hello režimu, operace se stane dvoufázová, proto je možné toosupport aplikace, které nemůžou tolerovat vynechání zpráv. Když Service Bus přijme požadavek hello, vyhledá hello další zprávy toobe využívat, uzamkne ji tooprevent dalšími uživateli, příjem a vrátí ji toohello aplikace. Po hello aplikace dokončí zpracování zprávy hello (nebo ji bezpečně uloží pro pozdější zpracování), tím potvrdí dokončení druhé fáze hello hello přijímat proces voláním [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) na uvítací přijal zprávu. Když Service Bus uvidí hello **Complete** volání, která se označuje uvítací zprávu jako spotřebovávanou.
+V [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode) režimu operace příjmu stane dvoufázová, které umožňuje podporuje aplikace, které nemůžou tolerovat vynechání zpráv. Když Service Bus přijme požadavek, najde zprávu, který se má používat, uzamkne ji proti spotřebování jinými odběrateli příjem ho a vrátí ji do aplikace. Když aplikace dokončí zpracování zprávy (nebo ji bezpečně uloží pro pozdější zpracování), zavolá na přijatou zprávu [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete), a tím potvrdí dokončení druhé fáze přijetí. Když Service Bus uvidí **Complete** volání, označí zprávu jako spotřebovávanou.
 
-Pokud aplikace hello nedokáže tooprocess hello zprávy z nějakého důvodu, může zavolat hello [Abandon](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon) na hello přijal zprávu (místo [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete)). To umožňuje Service Bus toounlock uvítací zprávu a nastavit jej jako dostupné toobe přijetí, buď hello příjemce stejné nebo jiné konkurence mezi spotřebiteli. Za druhé existuje je přidružen vypršení časového limitu zámku hello a pokud aplikace hello selže tooprocess hello zprávy vyprší časový limit uzamčení hello (například pokud hello aplikace spadne), pak Service Bus odemkne uvítací zprávu a je k dispozici toobe přijetí (v podstatě provádění [Abandon](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon) operace ve výchozím nastavení).
+Pokud aplikace nemůže zpracovat zprávu z nějakého důvodu, může zavolat [Abandon](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon) metoda na přijatou zprávu (místo [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete)). To umožňuje služba Service Bus zprávu odemkne a zpřístupní ji pro další přijetí, příjemci stejné nebo jiné konkurence mezi spotřebiteli. Za druhé je vypršení časového limitu přidružené zámek a aplikace nepodaří zprávu zpracovat vyprší časový limit uzamčení (například pokud aplikace spadne), pak Service Bus zprávu odemkne a je-li k dispozici být přijata znovu) v podstatě provádění [Abandon](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon) operace ve výchozím nastavení).
 
-Všimněte si, že v hello událost, která hello aplikace spadne po zpracování uvítací zprávu, ale před hello **Complete** požadavku, uvítací zprávu je víckrát toohello aplikace odešle znovu. To se často označuje jako *nejméně jednou* zpracování; to znamená, že každá zpráva se zpracuje alespoň jednou. Ale v některých situacích hello může doručit víckrát. Pokud hello scénář nemůže tolerovat zpracování duplicitní, pak v hello duplikáty toodetect aplikace, které lze dosáhnout na základě hello je vyžadován další logiku **MessageId** vlastnost uvítací zprávu, která zůstává Konstanta mezi pokusy o doručení. To se označuje jako *právě jednou* zpracování.
+Všimněte si, že v případě, že aplikace spadne po zpracování zprávy, ale předtím, než **Complete** požadavku, zpráva se víckrát do aplikace odešle znovu. To se často označuje jako *nejméně jednou* zpracování; to znamená, že každá zpráva se zpracuje alespoň jednou. Ale v některých situacích může doručit víckrát stejnou zprávu. Pokud scénář nemůže tolerovat zpracování duplicitní, pak je potřeba další logiku v aplikaci vyhledat duplicity, které lze dosáhnout na základě **MessageId** vlastnosti zprávy, která zůstává konstantní napříč pokusy o doručení. To se označuje jako *právě jednou* zpracování.
 
 ## <a name="topics-and-subscriptions"></a>Témata a předplatná
-V kontrastu tooqueues, ve kterém je každá zpráva zpracuje jeden spotřebitel, *témata* a *odběry* poskytovat ve formuláři na více komunikace, *publikování a přihlášení k odběru* vzor. Užitečné pro škálování toovery velký počet příjemců, každá publikovaná zpráva se provádí k dispozici tooeach odběru registrovanému pro téma hello. Zprávy jsou odesílány tooa tématu a doručené tooone nebo více přidružených odběrů, v závislosti na pravidla filtru, které lze nastavit na základě za předplatné. odběry Hello můžete použít další filtry toorestrict hello zprávy, že chcete tooreceive. Zprávy jsou odesílány tooa téma v hello stejný způsobem se odešlou tooa fronty, ale nejsou přijaty zprávy z tématu hello přímo. Místo toho jsou přijímány z předplatného. Předplatné tématu se podobá virtuální frontě, která obdrží kopii zprávy hello, které jsou odesílány toohello tématu. Jsou přijaty zprávy z odběru stejně jako toohello způsob příjmu z fronty.
+Na rozdíl od front, ve kterých každou zprávu zpracuje jeden spotřebitel, *témata* a *odběry* poskytovat ve formuláři na více komunikace, *publikování a přihlášení k odběru* vzor. Tato možnost je užitečná pro škálování pro velmi velký počet příjemců, každá publikovaná zpráva je k dispozici všem odběrům registrovaným pro příslušné téma. Zprávy odeslané do tématu se doručí na jeden nebo více přidružených odběrů, v závislosti na pravidla filtru, které lze nastavit na základě za předplatné. Odběry můžete použít další filtry a omezit zprávy, které chcete dostávat. Se odesílají zprávy do tématu stejným způsobem, se odešlou do fronty, ale nejsou v tématu přímo přijaty zprávy. Místo toho jsou přijímány z předplatného. Předplatné tématu se podobá virtuální frontě, která obdrží kopii zprávy, které jsou odeslány do tématu. Zprávy se přijaté z odběru stejně jako způsob příjmu z fronty.
 
-Prostřednictvím porovnání, hello funkce odesílání zpráv z fronty mapuje přímo tooa téma a jeho funkce příjem zpráv mapuje tooa předplatné. Kromě jiných věcí, to znamená, že odběry podporují stejné vzory dříve popisované v této části s ohledem tooqueues hello: konkurence mezi spotřebiteli, časové oddělení, Vyrovnávání zatížení a vyrovnávání zatížení.
+Prostřednictvím porovnání funkci zasílání zpráv fronty mapuje přímo do tématu a jeho funkce příjem zpráv se mapuje na předplatné. Kromě jiných věcí, to znamená, že odběry podporují stejné vzory dříve popisované v této části s ohledem na fronty: konkurence mezi spotřebiteli, časové oddělení, Vyrovnávání zatížení a vyrovnávání zatížení.
 
-Vytvoření tématu je podobný toocreating fronty, jak je znázorněno v příkladu hello v předchozí části hello. Vytvoření služby hello URI a pak použijte hello [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) třída toocreate hello obor názvů klienta. Potom můžete vytvořit téma pomocí hello [CreateTopic](/dotnet/api/microsoft.servicebus.namespacemanager#Microsoft_ServiceBus_NamespaceManager_CreateTopic_System_String_) metoda. Například:
+Vytvoření tématu je podobná vytváření fronty, jak je znázorněno v příkladu v předchozí části. Vytvořit URI služby a pak použít [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) třídy za účelem vytvoření oboru názvů klienta. Potom můžete vytvořit téma pomocí [CreateTopic](/dotnet/api/microsoft.servicebus.namespacemanager#Microsoft_ServiceBus_NamespaceManager_CreateTopic_System_String_) metoda. Například:
 
 ```csharp
 TopicDescription dataCollectionTopic = namespaceClient.CreateTopic("DataCollectionTopic");
@@ -109,7 +109,7 @@ MessagingFactory factory = MessagingFactory.Create(serviceUri, tokenProvider);
 TopicClient myTopicClient = factory.CreateTopicClient(myTopic.Path)
 ```
 
-Pomocí odesílatele zprávy hello, můžete odesílat a přijímat zprávy tooand hello tématu, jak je uvedeno v předchozí části hello. Například:
+Pomocí odesílatele zprávy, můžete odesílat a přijímat zprávy do tématu, jak je uvedeno v předchozí části. Například:
 
 ```csharp
 foreach (BrokeredMessage message in messageList)
@@ -120,10 +120,10 @@ foreach (BrokeredMessage message in messageList)
 }
 ```
 
-Podobně jako tooqueues zprávy byly přijaty z předplatného pomocí [SubscriptionClient](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient) objektu místo [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) objektu. Vytvoření klienta hello předplatné, předávání hello název tématu hello hello název hello odběru, a (volitelně) hello přijímat režimu jako parametry. Například s hello **inventáře** předplatného:
+Podobně jako u front, jsou přijaty zprávy pomocí předplatného [SubscriptionClient](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient) objektu místo [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) objektu. Vytvoření klienta předplatné, předávání název tématu, názvu předplatné a (volitelně) režimu receive jako parametry. Například s **inventáře** předplatného:
 
 ```csharp
-// Create hello subscription client
+// Create the subscription client
 MessagingFactory factory = MessagingFactory.Create(serviceUri, tokenProvider); 
 
 SubscriptionClient agentSubscriptionClient = factory.CreateSubscriptionClient("IssueTrackingTopic", "Inventory", ReceiveMode.PeekLock);
@@ -145,20 +145,20 @@ while ((message = auditSubscriptionClient.Receive(TimeSpan.FromSeconds(5))) != n
 ```
 
 ### <a name="rules-and-actions"></a>Pravidla a akce
-V mnoha případech je nutné zpracovat zprávy, které mají určité charakteristické vlastnosti různými způsoby. tooenable, můžete nakonfigurovat odběry toofind zprávy, které mají požadovaných vlastností a pak provést určité úpravy toothose vlastnosti. Při všech zpráv odeslaných toohello tématu odběry služby Service Bus najdete kopírovat můžete pouze podmnožinu těchto fronty zpráv toohello virtuální odběru. To se provádí pomocí filtrů odběrů. Tyto změny se nazývají *akce filtru*. Při vytváření odběru zadáte výraz filtru, který funguje na hello vlastnosti uvítací zprávu, jak hello vlastnosti systému (například **popisek**) a vlastností vlastní aplikaci (například **StoreName**.) hello SQL výraz filtru se v takovém případě; volitelné bez výraz filtru SQL filtru akce definované na předplatné bude třeba provést na všechny zprávy hello pro toto předplatné.
+V mnoha případech je nutné zpracovat zprávy, které mají určité charakteristické vlastnosti různými způsoby. Chcete-li povolit, můžete nakonfigurovat odběry najít zprávy, které mají požadovaných vlastností a pak provést určité úpravy tyto vlastnosti. Při odběry služby Service Bus zobrazit všechny zprávy odeslané do tématu, kopírovat můžete pouze podmnožinu těchto zpráv do fronty virtuální odběru. To se provádí pomocí filtrů odběrů. Tyto změny se nazývají *akce filtru*. Když je vytvořen předplatné, můžete zadat výraz filtru, který funguje na vlastnosti zprávy, vlastnosti systému (například **popisek**) a vlastností vlastní aplikaci (například  **StoreName**.) Výraz filtru SQL je volitelné v tomto případě; bez výraz filtru SQL filtru akce definované na předplatné bude třeba provést na všechny zprávy pro toto předplatné.
 
-Pomocí hello předchozí příklad, toofilter zprávy přicházející pouze z **Store1**, by vytvořit řídicí panel předplatné hello takto:
+Použijeme předchozí příklad, k filtrování zprávy přicházející pouze z **Store1**, by vytvořit řídicí panel předplatné takto:
 
 ```csharp
 namespaceManager.CreateSubscription("IssueTrackingTopic", "Dashboard", new SqlFilter("StoreName = 'Store1'"));
 ```
 
-K tomuto filtru předplatné v místě, jen zprávy, které mají hello `StoreName` vlastností nastavenou příliš`Store1` jsou zkopírované toohello virtuální fronty pro hello `Dashboard` předplatné.
+K tomuto filtru předplatné v místě, jen zprávy, které mají `StoreName` vlastnost nastavena na hodnotu `Store1` se zkopírují do virtuální fronty pro `Dashboard` předplatné.
 
-Další informace o možných filtru hodnoty, najdete v dokumentaci hello hello [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) a [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) třídy. Viz také hello [zprostředkované zasílání zpráv: rozšířené filtry](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749) a [tématu filtry](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters) ukázky.
+Další informace o možných filtru hodnoty, najdete v dokumentaci pro [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) a [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) třídy. Další informace naleznete [zprostředkované zasílání zpráv: rozšířené filtry](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749) a [tématu filtry](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters) ukázky.
 
 ## <a name="next-steps"></a>Další kroky
-Viz následující hello advanced témata pro další informace a příklady použití zasílání zpráv Service Bus.
+Najdete zde advanced témata pro další informace a příklady použití zasílání zpráv Service Bus.
 
 * [Přehled přenosu zpráv ve službě Service Bus](service-bus-messaging-overview.md)
 * [Kurz .NET pro zprostředkované zasílání zpráv ve službě Service Bus](service-bus-brokered-tutorial-dotnet.md)

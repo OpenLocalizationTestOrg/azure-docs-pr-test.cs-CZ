@@ -1,6 +1,6 @@
 ---
-title: aaaPython skriptu tooretrieve dat z Azure Log Analytics | Microsoft Docs
-description: "Hello Log Analytics protokolu vyhledávání API umožňuje libovolného klienta REST API tooretrieve data z pracovního prostoru analýzy protokolů.  Tento článek obsahuje ukázkový skript v jazyce Python pomocí hello rozhraní API pro vyhledávání protokolu."
+title: "Skript v jazyce Python k načtení dat z Azure Log Analytics | Microsoft Docs"
+description: "Log Analytics protokolu vyhledávání API umožňuje libovolného klienta REST API k načtení dat z pracovního prostoru analýzy protokolů.  Tento článek obsahuje ukázkový skript v jazyce Python pomocí rozhraní API pro vyhledávání protokolu."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/28/2017
 ms.author: bwren
-ms.openlocfilehash: a45693b04cd388301b859e7186ca671786d0229e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 56d7c6dc648a01e7b0efc167cb65c94bac5468ec
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="retrieve-data-from-log-analytics-with-a-python-script"></a>Načtení dat z analýzy protokolů se skript v jazyce Python
-Hello [Log Analytics protokolu vyhledávání API](log-analytics-log-search-api.md) umožňuje libovolného klienta REST API tooretrieve data z pracovního prostoru analýzy protokolů.  Tento článek představuje ukázkový skript Python, který používá hello Log Analytics protokolu vyhledávání API.  
+[Log Analytics protokolu vyhledávání API](log-analytics-log-search-api.md) umožňuje libovolného klienta REST API k načtení dat z pracovního prostoru analýzy protokolů.  Tento článek představuje ukázka Python skript, který používá rozhraní API protokolu analýzy protokolů hledání.  
 
 ## <a name="authentication"></a>Authentication
-Tento skript používá objekt služby v Azure Active Directory tooauthenticate toohello prostoru.  Objekty služby povolit klienta aplikace toorequest, který hello služby ověření účtu i v případě, že klient hello nemá název účtu hello. Před spuštěním tohoto skriptu, musíte vytvořit hlavní název služby pomocí procesu hello v [používat portál toocreate aplikaci Azure Active Directory a objektu služby, které mají přístup k prostředkům](../azure-resource-manager/resource-group-create-service-principal-portal.md).  Budete potřebovat tooprovide hello ID aplikace, ID klienta a ověřovací klíč toohello skriptu. 
+Tento skript používá objekt služby v Azure Active Directory k ověření do pracovního prostoru.  Objekty služby povolit klientskou aplikaci, aby žádosti, že služba ověření účtu i v případě, že klient nemá název účtu. Před spuštěním tohoto skriptu, musíte vytvořit hlavní název služby pomocí procesu v [použití portálu k vytvoření aplikace a služby objekt zabezpečení, které mají přístup k prostředkům Azure Active Directory](../azure-resource-manager/resource-group-create-service-principal-portal.md).  Budete muset zadat ID aplikace, ID klienta a ověřovací klíč do skriptu. 
 
 > [!NOTE]
-> Pokud jste [vytvoření účtu Azure Automation](../automation/automation-create-standalone-account.md), hlavní název služby je vytvořena a který je vhodný toouse s Tento skript.  Pokud již máte objekt služby vytvořené automatizace Azure. měla by být možné toouse ho místo vytvoření nové, i když může být nutné příliš[vytvořit ověřovací klíč](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key) Pokud již nemá.
+> Pokud jste [vytvoření účtu Azure Automation](../automation/automation-create-standalone-account.md), je vytvořen objekt služby, který je vhodný pro použití s Tento skript.  Pokud už máte vytvořené automatizace Azure. hlavní název služby, pak byste měli použít místo vytvoření nové, i když budete muset [vytvořit ověřovací klíč](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key) Pokud již nemá.
 
 ## <a name="script"></a>Skript
 ``` python
@@ -40,7 +40,7 @@ from pprint import pprint
 resource_group = 'xxxxxxxx'
 workspace = 'xxxxxxxx'
 
-# Details of query.  Modify these tooyour requirements.
+# Details of query.  Modify these to your requirements.
 query = "Type=Event"
 end_time = datetime.datetime.utcnow()
 start_time = end_time - datetime.timedelta(hours=24)
@@ -61,7 +61,7 @@ context = adal.AuthenticationContext('https://login.microsoftonline.com/' + tena
 token_response = context.acquire_token_with_client_credentials('https://management.core.windows.net/', application_id, application_key)
 access_token = token_response.get('accessToken')
 
-# Add token tooheader
+# Add token to header
 headers = {
     "Authorization": 'Bearer ' + access_token,
     "Content-Type":'application/json'
@@ -90,7 +90,7 @@ response = requests.post(uri,json=search_params,headers=headers)
 # Response of 200 if successful
 if response.status_code == 200:
 
-    # Parse hello response tooget hello ID and status
+    # Parse the response to get the ID and status
     data = response.json()
     search_id = data["id"].split("/")
     id = search_id[len(search_id)-1]
@@ -99,12 +99,12 @@ if response.status_code == 200:
     # If status is pending, then keep checking until complete
     while status == "Pending":
 
-        # Build URL tooget search from ID and send request
+        # Build URL to get search from ID and send request
         uri_search = uri_search + '/' + id
         uri = uri_search + '?' + uri_api
         response = requests.get(uri,headers=headers)
 
-        # Parse hello response tooget hello status
+        # Parse the response to get the status
         data = response.json()
         status = data["__metadata"]["Status"]
 
@@ -119,4 +119,4 @@ print ("Returned top:" + str(data["__metadata"]["top"]))
 pprint (data["value"])
 ```
 ## <a name="next-steps"></a>Další kroky
-- Další informace o hello [Log Analytics protokolu vyhledávání API](log-analytics-log-search-api.md).
+- Další informace o [Log Analytics protokolu vyhledávání API](log-analytics-log-search-api.md).

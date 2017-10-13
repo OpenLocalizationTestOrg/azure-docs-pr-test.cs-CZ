@@ -16,7 +16,7 @@
 ### [Vlastní nastavení](active-directory-aadconnect-get-started-custom.md)
 ### [Upgrade z nástroje DirSync](active-directory-aadconnect-dirsync-upgrade-get-started.md)
 ### [Upgrade z předchozí verze](active-directory-aadconnect-upgrade-previous-version.md)
-
+### [Instalace s využitím existující databáze ADSync](active-directory-aadconnect-existing-database.md)
 
 # Postup
 ## Plánování a návrh
@@ -27,6 +27,7 @@
 ### [Pokud už máte Azure AD](active-directory-aadconnect-existing-tenant.md)
 ## [Správa služby Azure AD Connect](active-directory-aadconnect-whats-next.md)
 ### [Obnovení certifikátů pro O365 a Azure AD](active-directory-aadconnect-o365-certs.md)
+### [Aktualizace certifikátu SSL pro farmu Active Directory Federation Services (AD FS)](active-directory-aadconnectfed-ssl-update.md)
 ### [Povolení zpětného zápisu zařízení](active-directory-aadconnect-feature-device-writeback.md)
 ### [Možnosti přihlášení uživatele](active-directory-aadconnect-user-signin.md)
 #### [Bezproblémové jednotné přihlašování](active-directory-aadconnect-sso.md)
@@ -42,6 +43,7 @@
 ##### [Inteligentní uzamčení](active-directory-aadconnect-pass-through-authentication-smart-lockout.md)
 ##### [Nejčastější dotazy](active-directory-aadconnect-pass-through-authentication-faq.md)
 ##### [Řešení problémů](active-directory-aadconnect-troubleshoot-pass-through-authentication.md)
+##### [Podrobné informace o zabezpečení](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md)
 ### [Podpora více domén pro federaci](active-directory-aadconnect-multiple-domains.md)
 ### [Automatický upgrade](active-directory-aadconnect-feature-automatic-upgrade.md)
 ### [Použití zprostředkovatele identity (IdP) SAML 2.0 pro Jednotné přihlašování](active-directory-aadconnect-federation-saml-idp.md)
@@ -53,13 +55,13 @@
 ### [Synchronizace hesel](active-directory-aadconnectsync-implement-password-synchronization.md)
 ### [Účet služby Azure AD](active-directory-aadconnectsync-howto-azureadaccount.md)
 ### [Průvodce instalací](active-directory-aadconnectsync-installation-wizard.md)
-### [Změna hello výchozí konfigurace](active-directory-aadconnectsync-best-practices-changing-default-configuration.md)
+### [Změna výchozí konfigurace](active-directory-aadconnectsync-best-practices-changing-default-configuration.md)
 ### [Konfigurace filtrování](active-directory-aadconnectsync-configure-filtering.md)
 ### [Scheduler](active-directory-aadconnectsync-feature-scheduler.md)
 ### [Rozšíření adresáře](active-directory-aadconnectsync-feature-directory-extensions.md)
 
-### [Změna hesla účtu služby Azure AD Sync hello](active-directory-aadconnectsync-change-serviceacct-pass.md)
-### [Změna hesla účtu hello AD DS](active-directory-aadconnectsync-change-addsacct-pass.md)
+### [Změna hesla účtu služby Azure AD Sync](active-directory-aadconnectsync-change-serviceacct-pass.md)
+### [Změna hesla účtu služby AD DS](active-directory-aadconnectsync-change-addsacct-pass.md)
 ### [Povolení odpadkového koše AD](active-directory-aadconnectsync-recycle-bin.md)
 
 ### [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md)
@@ -80,7 +82,7 @@
 ### [Objekt není synchronizovaný](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)
 ### [Synchronizace hesel](active-directory-aadconnectsync-troubleshoot-password-synchronization.md)
 ### [Chyba LargeObject způsobená certifikátem userCertificate](active-directory-aadconnectsync-largeobjecterror-usercertificate.md)
-### [Jak toorecover z limitu LocalDB 10 GB](active-directory-aadconnect-recover-from-localdb-10gb-limit.md)
+### [Jak provést obnovení při dosažení 10GB limitu pro LocalDB](active-directory-aadconnect-recover-from-localdb-10gb-limit.md)
 
 # Referenční informace
 ## [Ukázky kódu](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
@@ -91,7 +93,7 @@
 ## [Účty a oprávnění](active-directory-aadconnect-accounts-permissions.md)
 
 ## Synchronizace služby Azure AD Connect
-### [Atributy synchronizované tooAzure služby Active Directory](active-directory-aadconnectsync-attributes-synchronized.md)
+### [Atributy synchronizované se službou Azure Active Directory](active-directory-aadconnectsync-attributes-synchronized.md)
 ### [Historie vydaných verzí konektoru](active-directory-aadconnectsync-connector-version-history.md)
 ### [Reference k funkcím](active-directory-aadconnectsync-functions-reference.md)
 ### [Provozní úlohy a důležité informace](active-directory-aadconnectsync-operations.md)
@@ -103,7 +105,7 @@
 
 
 # Související
-## [Monitorování vaší místní infrastruktury identit a synchronizace služeb v cloudu hello](../connect-health/active-directory-aadconnect-health.md)
+## [Monitorování místní infrastruktury identit a synchronizačních služeb v cloudu](../connect-health/active-directory-aadconnect-health.md)
 ## [Příručka návrhu hybridní identity](https://azure.microsoft.com/documentation/articles/active-directory-hybrid-identity-design-considerations-overview/)
 
 

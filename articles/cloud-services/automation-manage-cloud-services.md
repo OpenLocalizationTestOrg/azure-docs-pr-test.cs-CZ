@@ -1,6 +1,6 @@
 ---
-title: "aaaManage Azure Cloud Services pomocí Azure Automation | Microsoft Docs"
-description: "Informace o tom, jak hello služby Azure Automation může být použité toomanage cloudových služeb Azure ve velkém měřítku."
+title: "Správa cloudových služeb Azure pomocí Azure Automation | Microsoft Docs"
+description: "Další informace o používání služby Azure Automation ke správě cloudových služeb Azure ve velkém měřítku."
 services: cloud-services, automation
 documentationcenter: 
 author: jodoglevy
@@ -14,32 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2016
 ms.author: timlt
-ms.openlocfilehash: 8e920fb94955466bfec71cc332444f5f0ee497a7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6b5acac1b8647c324988c316cd5602b3dba98a1d
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="managing-azure-cloud-services-using-azure-automation"></a>Správa cloudových služeb Azure pomocí Azure Automation.
-Tento průvodce vás seznámí toohello služba Azure Automation a jak může být použité toosimplify správy Azure cloudových služeb.
+Tento průvodce vás seznámí s služba Azure Automation a jak může sloužit ke zjednodušení správy Azure cloudových služeb.
 
 ## <a name="what-is-azure-automation"></a>Co je Azure Automation?
-[Služby Azure Automation](https://azure.microsoft.com/services/automation/) je služba Azure pro zjednodušenou správu cloudu pomocí Automatizace procesu. Pomocí Azure Automation, může být časově náročné, ruční, problematických a často se opakujících úloh, automatizované tooincrease spolehlivost, efektivitu a toovalue čas pro vaši organizaci.
+[Služby Azure Automation](https://azure.microsoft.com/services/automation/) je služba Azure pro zjednodušenou správu cloudu pomocí Automatizace procesu. Pomocí Azure Automation, dlouhotrvajících, ruční, problematických a často se opakujících úloh je možné automatizovat zvýšit spolehlivost, efektivitu a času na hodnotu pro vaši organizaci.
 
-Azure Automation nabízí modulu provádění vysoce spolehlivé a vysoce dostupné pracovního postupu, který přizpůsobí vašim potřebám toomeet podle růstu vaší organizace. Ve službě Azure Automation procesů může být spuštěna ručně, 3. stran systémy, nebo v naplánovaných intervalech tak, aby úlohy dojít přesně v případě potřeby.
+Azure Automation nabízí modul provádění vysoce spolehlivé a vysoce dostupné pracovního postupu, který rozšiřuje podle vašich potřeb podle růstu vaší organizace. Ve službě Azure Automation procesů může být spuštěna ručně, 3. stran systémy, nebo v naplánovaných intervalech tak, aby úlohy dojít přesně v případě potřeby.
 
-Nižší provozní režie a uvolněte IT / DevOps zaměstnanci toofocus na práci, kterou přidá obchodní hodnotu přesunutím vaší toobe úlohy správy cloudu automaticky spouštěné v Azure Automation.
+Nižší provozní režie a uvolněte IT / DevOps zaměstnanci a zaměřit se na práci, kterou přidá obchodní value přesunutím vašeho cloudu spuštění úloh správy se automaticky automatizace Azure.
 
 ## <a name="how-can-azure-automation-help-manage-azure-cloud-services"></a>Jak Azure Automation pomoci spravovat cloudové služby Azure?
-Cloudové služby Azure lze spravovat ve službě Azure Automation pomocí rutin prostředí PowerShell text hello, které jsou k dispozici v hello [nástroje Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx). Automatizace Azure má tyto k dispozici cloudové rutiny prostředí PowerShell služby předinstalované hello, aby mohli provést všechny úkoly správy cloudové služby v rámci služby hello. Tyto rutiny ve službě Azure Automation pomocí hello rutin pro ostatní služby Azure, tooautomate složité úlohy může také párovat napříč službami Azure a systémech 3. stran.
+Cloudové služby Azure lze spravovat ve službě Azure Automation pomocí rutin prostředí PowerShell, které jsou k dispozici v [nástroje Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx). Automatizace Azure má tyto k dispozici cloudové rutiny prostředí PowerShell služby předinstalované, aby mohli provést všechny úkoly správy cloudové služby v rámci služby. Může také párovat tyto rutiny ve službě Azure Automation pomocí rutin pro jinými službami Azure, na automatizují komplexní úlohy v služeb Azure a systémech 3. stran.
 
-Některé příklad používá z toomanage Azure Automation, které patří Azure Cloud Services:
+Některé příklad použití Azure Automation pro správu Azure Cloud Services patří:
 
 * [Nepřetržité nasazení cloudové služby při každé aktualizaci cscfg nebo cspkg v Azure Blob storage](https://gallery.technet.microsoft.com/scriptcenter/Continuous-Deployment-of-A-eeebf3a6)
 * [Restartování instance cloudové služby paralelně jednu upgradovací doménu najednou](https://gallery.technet.microsoft.com/scriptcenter/Reboot-Cloud-Service-PaaS-b337a06d)
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste se naučili základy hello Azure Automation a jak může být použité toomanage cloudové služby Azure, použijte tyto odkazy toolearn Další informace o Azure Automation.
+Teď, když jste se naučili základy Azure Automation a jak může sloužit ke správě cloudových služeb Azure, postupujte podle následujících odkazech na další informace o Azure Automation.
 
 * [Přehled služby Azure Automation](../automation/automation-intro.md)
 * [Můj první runbook](../automation/automation-first-runbook-graphical.md)

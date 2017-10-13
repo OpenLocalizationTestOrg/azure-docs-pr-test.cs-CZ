@@ -24,7 +24,7 @@
 
 ## Zabezpečení
 ### [Sledování prostředků](oms-security-monitoring-resources.md)
-### [Odpověď toosecurity výstrahy](oms-security-responding-alerts.md)
+### [Reakce na výstrahy zabezpečení](oms-security-responding-alerts.md)
 ### [Vyhodnocení standardních hodnot](oms-security-baseline.md)
 ### [Posouzení malwaru](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [Posouzení aktualizace systému](../log-analytics/log-analytics-system-update.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)

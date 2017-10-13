@@ -1,5 +1,5 @@
 #### <a name="expressroute-limits"></a>Omezení ExpressRoute
-Hello následující omezení platí tooExpressRoute prostředky podle předplatného.
+Následující omezení se vztahují na prostředků ExpressRoute za předplatné.
 
 | Prostředek | Výchozí omezení |
 | --- | --- |

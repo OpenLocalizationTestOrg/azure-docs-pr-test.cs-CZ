@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure AD v2 Windows Desktop Začínáme - Config | Microsoft Docs"
+title: "Azure AD v2 Windows Desktop získávání spuštěno – konfigurace | Microsoft Docs"
 description: "Aplikace Windows Desktop .NET (XAML) jak získat přístupový token a volat rozhraní API chráněné službou Azure Active Directory v2 koncový bod. | Microsoft Azure | Microsoft Azure"
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,26 +15,26 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 39c257e3e0cb09491f6fe005877601bd46824d12
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1dfaa7ade664e43dcb9aa788b0197ca17e6ec4cc
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 ## <a name="create-an-application-express"></a>Vytvoření aplikace (Express)
-Nyní je třeba tooregister svoji aplikaci v hello *portálu pro registraci aplikace Microsoft*:
-1. Registrace vaší aplikace prostřednictvím hello [portálu pro registraci aplikace Microsoft](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=windowsDesktop&step=configure)
+Nyní je nutné zaregistrovat aplikaci v *portálu pro registraci aplikace Microsoft*:
+1. Registrace vaší aplikace pomocí [portálu pro registraci aplikace Microsoft](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=windowsDesktop&step=configure)
 2.  Zadejte název vaší aplikace a e-mailu
-3.  Ujistěte se, že je zaškrtnuté políčko hello pro instalaci na základě
-4.  Postupujte podle ID aplikace hello pokyny tooobtain hello a vložte jej do vašeho kódu
+3.  Ujistěte se, že je zaškrtnuté políčko pro instalaci na základě
+4.  Postupujte podle pokynů a získat ID aplikace a vložte jej do vašeho kódu
 
-### <a name="add-your-application-registration-information-tooyour-solution-advanced"></a>Přidat řešení aplikace registrační informace tooyour (Upřesnit)
-Nyní je třeba tooregister svoji aplikaci v hello *portálu pro registraci aplikace Microsoft*:
-1. Přejděte toohello [portálu pro registraci aplikace Microsoft](https://apps.dev.microsoft.com/portal/register-app) tooregister aplikace
+### <a name="add-your-application-registration-information-to-your-solution-advanced"></a>Přidat informace o registraci aplikace k řešení (Upřesnit)
+Nyní je nutné zaregistrovat aplikaci v *portálu pro registraci aplikace Microsoft*:
+1. Přejděte na [portálu pro registraci aplikace Microsoft](https://apps.dev.microsoft.com/portal/register-app) zaregistrovat aplikaci
 2. Zadejte název vaší aplikace a e-mailu 
-3. Ujistěte se, že není zaškrtnuto políčko hello pro instalaci na základě
+3. Ujistěte se, že není zaškrtnuto políčko pro instalaci na základě
 4. Klikněte na tlačítko `Add Platform`, zvolte položku `Native Application` a klikněte na tlačítko Uložit
-5. Zkopírujte hello identifikátor GUID v ID aplikace, přejděte zpět tooVisual Studio otevřete `App.xaml.cs` a nahraďte `your_client_id_here` s hello ID aplikace, které jste právě zaregistrovali:
+5. Zkopírovat identifikátor GUID v ID aplikace, přejděte zpět do Visual Studio, otevřete `App.xaml.cs` a nahraďte `your_client_id_here` s ID aplikace, který jste právě zaregistrovali:
 
 ```csharp
 private static string ClientId = "your_application_id_here";

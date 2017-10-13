@@ -1,6 +1,6 @@
 ---
-title: aaaCI/CD s Azure Container Service a Swarm | Microsoft Docs
-description: "Pomocí Docker Swarm, registru kontejner Azure a Visual Studio Team Services toodeliver nepřetržitě aplikace .NET Core více kontejnerů Azure Container Service"
+title: CI/CD s Azure Container Service a Swarm | Microsoft Docs
+description: "Dostat nepřetržitě aplikace .NET Core více kontejnerů pomocí Docker Swarm, registru kontejner Azure a Visual Studio Team Services pomocí Azure Container Service"
 services: container-service
 documentationcenter: " "
 author: jcorioland
@@ -15,48 +15,48 @@ ms.workload: na
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 35348800aa620469fb62ab3e5a02b33834359446
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 99c27c37218a35d2a3416d6edd5e0a871cd5c011
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="full-cicd-pipeline-toodeploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-visual-studio-team-services"></a>Úplné CI/CD kanálu toodeploy aplikace s více kontejnerů v Azure Container Service pomocí nástroje Docker Swarm, pomocí sady Visual Studio Team Services
+# <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-visual-studio-team-services"></a>Úplné kanálu CI nebo CD pro nasazení aplikace s více kontejnerů v Azure Container Service pomocí nástroje Docker Swarm, pomocí sady Visual Studio Team Services
 
-Jeden z hello nejnáročnějších úkolů při vývoj moderních aplikací pro hello cloud se může toodeliver tyto aplikace průběžně. V tomto článku se dozvíte, jak vytvářet tooimplement úplné průběžnou integraci a nasazení (CI/CD) kanálu Azure Container Service pomocí Docker Swarm, registru kontejner Azure a Visual Studio Team Services a správa verzí.
+Jeden z největších problémů při vývoji moderní aplikace pro cloud je schopnost poskytovat nepřetržitě tyto aplikace. V tomto článku zjistěte, jak implementovat úplné průběžnou integraci a nasazení (CI/CD) kanálu Azure Container Service pomocí Docker Swarm, registru kontejner Azure a Visual Studio Team Services sestavení a správa verzí.
 
-Tento článek vychází jednoduchou aplikaci, k dispozici na [Githubu](https://github.com/jcorioland/MyShop/tree/acs-docs), vyvinuté pomocí ASP.NET Core. Hello aplikace se skládá ze čtyř různých služeb: tři webového rozhraní API a jeden web front-endu:
+Tento článek vychází jednoduchou aplikaci, k dispozici na [Githubu](https://github.com/jcorioland/MyShop/tree/acs-docs), vyvinuté pomocí ASP.NET Core. Aplikace se skládá ze čtyř různých služeb: tři webového rozhraní API a jeden web front-endu:
 
 ![MyShop ukázkové aplikace](./media/container-service-docker-swarm-setup-ci-cd/myshop-application.png)
 
-cíl Hello je toodeliver tuto aplikaci nepřetržitě v clusteru Docker Swarm, pomocí sady Visual Studio Team Services. Hello následující obrázek podrobnosti tohoto kanálu nastavené průběžné doručování:
+Cílem je zajistit tuto aplikaci nepřetržitě v clusteru Docker Swarm, pomocí sady Visual Studio Team Services. Následující obrázek podrobnosti tohoto kanálu nastavené průběžné doručování:
 
 ![MyShop ukázkové aplikace](./media/container-service-docker-swarm-setup-ci-cd/full-ci-cd-pipeline.png)
 
-Následuje stručné vysvětlení hello kroky:
+Následuje stručné vysvětlení kroky:
 
-1. Změny kódu jsou potvrzené toohello úložiště zdrojového kódu (tady Githubu) 
+1. Změny kódu se zaměřuje na úložiště zdrojového kódu (tady Githubu) 
 2. GitHub aktivuje build ve Visual Studio Team Services 
-3. Visual Studio Team Services získá hello nejnovější verzi hello zdroje a vytvoří všechny hello bitové kopie, které tvoří aplikace hello 
-4. Visual Studio Team Services doručí registru Docker tooa každé bitové kopie vytvořené pomocí služby Azure kontejneru registru hello 
+3. Visual Studio Team Services získá nejnovější verzi zdroje a vytvoří všechny bitové kopie, které tvoří aplikace 
+4. Visual Studio Team Services doručí každé bitové kopie do registru Docker vytvořené pomocí služby Azure kontejneru registru 
 5. Visual Studio Team Services aktivuje novou verzí 
-6. verze Hello spouští některé příkazy hlavního uzlu clusteru serveru hello Azure container service pomocí protokolu SSH 
-7. Docker Swarm hello clusteru si hello nejnovější verzi hello obrázků 
-8. Hello nové verze aplikace hello se nasazuje pomocí Docker Compose 
+6. Verze spouští některé příkazy na hlavního uzlu clusteru Azure container service pomocí protokolu SSH 
+7. Vrátí nejnovější verzi bitové kopie docker Swarm v clusteru 
+8. Nová verze aplikace se nasazuje pomocí Docker Compose 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před zahájením tohoto kurzu potřebujete toocomplete hello následující úlohy:
+Před zahájením tohoto kurzu, budete muset provést následující úlohy:
 
 - [Vytvoření clusteru Swarm v Azure Container Service](container-service-deployment.md)
-- [Propojení s clusterem Swarm hello v Azure Container Service](../container-service-connect.md)
+- [Propojení s clusterem Swarm ve službě Azure Container Service](../container-service-connect.md)
 - [Vytvoření služby Azure kontejneru registru](../../container-registry/container-registry-get-started-portal.md)
 - [Máte účet a tým projekt Visual Studio Team Services vytvořen](https://www.visualstudio.com/en-us/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services)
-- [Rozvětvení hello Githubu úložiště tooyour účet GitHub](https://github.com/jcorioland/MyShop/)
+- [Větev úložiště GitHub ke svému účtu GitHub](https://github.com/jcorioland/MyShop/)
 
 [!INCLUDE [container-service-swarm-mode-note](../../../includes/container-service-swarm-mode-note.md)]
 
-Budete také potřebovat počítače Ubuntu (14.04 a 16.04) s Docker nainstalována. Tento počítač se používá ve Visual Studio Team Services během hello sestavení a verze procesy. Jedním ze způsobů toocreate tento počítač je k dispozici v hello image hello toouse [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/canonicalandmsopentech/dockeronubuntuserver1404lts/). 
+Budete také potřebovat počítače Ubuntu (14.04 a 16.04) s Docker nainstalována. Tento počítač používá Visual Studio Team Services během procesy sestavení a verze. Jeden způsob, jak vytvořit tento počítač je používat k dispozici v bitovou kopii [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/canonicalandmsopentech/dockeronubuntuserver1404lts/). 
 
 ## <a name="step-1-configure-your-visual-studio-team-services-account"></a>Krok 1: Konfigurace účtu Visual Studio Team Services 
 
@@ -64,78 +64,78 @@ V této části můžete nakonfigurovat účet Visual Studio Team Services.
 
 ### <a name="configure-a-visual-studio-team-services-linux-build-agent"></a>Konfigurace agenta pro Visual Studio Team Services Linux sestavení
 
-toocreate imagí Dockeru a nabízených sestavení těchto bitových kopií do služby Azure kontejneru registru z Visual Studio Team Services, musíte tooregister agenta systému Linux. Máte tyto možnosti instalace:
+K vytvoření imagí Dockeru a vkládání těchto bitových kopií do registru kontejner Azure ze sestavení sady Visual Studio Team Services, potřebujete zaregistrovat agenta systému Linux. Máte tyto možnosti instalace:
 
 * [Nasazení agenta v systému Linux](https://www.visualstudio.com/docs/build/admin/agents/v2-linux)
 
-* [Pomocí Docker toorun hello služby VSTS agenta](https://hub.docker.com/r/microsoft/vsts-agent)
+* [Spusťte služby VSTS agenta pomocí Docker](https://hub.docker.com/r/microsoft/vsts-agent)
 
-### <a name="install-hello-docker-integration-vsts-extension"></a>Instalace rozšíření služby VSTS integrace Dockeru hello
+### <a name="install-the-docker-integration-vsts-extension"></a>Nainstalujte rozšíření služby VSTS integrace Docker
 
-Společnost Microsoft poskytuje toowork služby VSTS rozšíření s Docker v sestavení a verze procesy. Toto rozšíření je k dispozici v hello [služby VSTS Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-vscs-rm.docker). Klikněte na tlačítko **nainstalovat** tooadd tento účet služby VSTS tooyour rozšíření:
+Společnost Microsoft poskytuje rozšíření služby VSTS práci s Docker v sestavení a verze procesy. Toto rozšíření je k dispozici v [služby VSTS Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-vscs-rm.docker). Klikněte na tlačítko **nainstalovat** k účtu služby VSTS přidat tuto příponu:
 
-![Nainstalujte hello integrace Dockeru](./media/container-service-docker-swarm-setup-ci-cd/install-docker-vsts.png)
+![Nainstalujte integrace Dockeru](./media/container-service-docker-swarm-setup-ci-cd/install-docker-vsts.png)
 
-Zobrazí se výzva tooconnect tooyour služby VSTS účtu pomocí svých přihlašovacích údajů. 
+Zobrazí se výzva k připojení k účtu služby VSTS pomocí svých přihlašovacích údajů. 
 
 ### <a name="connect-visual-studio-team-services-and-github"></a>Připojit Visual Studio Team Services a GitHub
 
 Nastavte připojení mezi projektu služby VSTS a účtu Githubu.
 
-1. V projektu Visual Studio Team Services, klikněte na tlačítko hello **nastavení** v hello nástrojů a vyberte ikonu **služby**.
+1. V projektu Visual Studio Team Services, klikněte **nastavení** v panelu nástrojů a vyberte ikonu **služby**.
 
     ![Visual Studio Team Services - externí připojení](./media/container-service-docker-swarm-setup-ci-cd/vsts-services-menu.png)
 
-2. Na levé straně hello, klikněte na tlačítko **nový koncový bod služby** > **Githubu**.
+2. Na levé straně klikněte na tlačítko **nový koncový bod služby** > **Githubu**.
 
     ![Visual Studio Team Services - GitHub](./media/container-service-docker-swarm-setup-ci-cd/vsts-github.png)
 
-3. služby VSTS toowork tooauthorize s vaším účtem Githubu, klikněte na tlačítko **Authorize** a použijte postup hello v otevřeném okně hello.
+3. Chcete-li autorizovat služby VSTS pro práci s účtu Githubu, klikněte na tlačítko **Authorize** a postupujte podle pokynů v okně, které se otevře.
 
     ![Visual Studio Team Services - autorizovat Githubu](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-authorize.png)
 
-### <a name="connect-vsts-tooyour-azure-container-registry-and-azure-container-service-cluster"></a>Připojení služby VSTS tooyour kontejner Azure registru a cluster Azure Container Service
+### <a name="connect-vsts-to-your-azure-container-registry-and-azure-container-service-cluster"></a>Služby VSTS připojení k registru kontejner Azure a cluster Azure Container Service
 
-Hello poslední kroky před získáním do kanálu hello CI/CD jsou tooconfigure externí připojení tooyour kontejneru registru a cluster Docker Swarm v Azure. 
+Poslední kroky před získáním do kanálu CI/CD jsou nakonfigurovat externí připojení k registru systému kontejneru a clusteru Docker Swarm v Azure. 
 
-1. V hello **služby** nastavení projektu Visual Studio Team Services přidat koncový bod služby typu **Docker registru**. 
+1. V **služby** nastavení projektu Visual Studio Team Services přidat koncový bod služby typu **Docker registru**. 
 
-2. V překryvném hello, které se otevře zadejte hello URL a pověření hello registru systému Windows Azure kontejneru.
+2. V místní nabídce, která otevře zadejte adresu URL a pověření registru systému Windows Azure kontejneru.
 
     ![Visual Studio Team Services - Docker registru](./media/container-service-docker-swarm-setup-ci-cd/vsts-registry.png)
 
-3. Pro cluster hello Docker Swarm, přidání koncového bodu typu **SSH**. Zadejte informace o připojení SSH hello clusteru Swarm.
+3. Pro cluster Docker Swarm, přidání koncového bodu typu **SSH**. Zadejte informace o clusteru Swarm připojení SSH.
 
     ![Visual Studio Team Services - SSH](./media/container-service-docker-swarm-setup-ci-cd/vsts-ssh.png)
 
-Všechny konfigurace hello je nyní provádí. V dalších krocích hello můžete vytvořit hello CI/CD kanálu, který vytvoří a nasadí hello aplikace toohello Docker Swarm clusteru. 
+Všechny konfigurace se provádí teď. V dalších krocích můžete vytvořit kanál CI/CD, který vytvoří a nasadí aplikaci do clusteru Docker Swarm. 
 
-## <a name="step-2-create-hello-build-definition"></a>Krok 2: Vytvoření definici sestavení hello
+## <a name="step-2-create-the-build-definition"></a>Krok 2: Vytvoření definici sestavení
 
-V tomto kroku můžete nastavit definitionfor sestavení projektu služby VSTS a definovat hello sestavení pracovního postupu pro kontejner obrázků
+V tomto kroku můžete nastavit definitionfor sestavení projektu služby VSTS a definovat sestavení pracovního postupu pro kontejner obrázků
 
 ### <a name="initial-definition-setup"></a>Definice počáteční instalace
 
-1. toocreate definice sestavení, připojit tooyour Visual Studio Team Services projektu a klikněte na tlačítko **sestavení a verze**. 
+1. K vytvoření definice sestavení, připojení k vašemu projektu Visual Studio Team Services a klikněte na tlačítko **sestavení a verze**. 
 
-2. V hello **sestavení definice** klikněte na tlačítko **+ nový**. Vyberte hello **prázdný** šablony.
+2. V **sestavení definice** klikněte na tlačítko **+ nový**. Vyberte **prázdný** šablony.
 
     ![Visual Studio Team Services – nové sestavení definice](./media/container-service-docker-swarm-setup-ci-cd/create-build-vsts.png)
 
-3. Konfigurace nového sestavení hello se zdrojem úložiště Githubu, zkontrolujte **průběžnou integraci**a vyberte hello agenta fronty, kde jste zaregistrovali Linux agent. Klikněte na tlačítko **vytvořit** toocreate hello sestavení definice.
+3. Konfigurace nového sestavení se zdrojem úložiště Githubu, zkontrolujte **průběžnou integraci**a vyberte frontu agenta, kde jste zaregistrovali Linux agent. Klikněte na tlačítko **vytvořit** k vytvoření definice sestavení.
 
     ![Visual Studio Team Services – vytvoření definice sestavení](./media/container-service-docker-swarm-setup-ci-cd/vsts-create-build-github.png)
 
-4. Na hello **definice sestavení** stránky, poprvé otevřete hello **úložiště** a nakonfigurujte hello sestavení toouse hello rozvětvení hello MyShop projektu, který jste vytvořili v hello požadavky. Ujistěte se, že jste vybrali *acs dokumentace* jako hello **výchozí větev**.
+4. Na **definice sestavení** stránky, poprvé otevřete **úložiště** a nakonfigurujte sestavení používat pokračovatelem MyShop projekt, který jste vytvořili v požadavky. Ujistěte se, že jste vybrali *acs dokumentace* jako **výchozí větev**.
 
     ![Visual Studio Team Services - úložiště konfigurace sestavení](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-repo-conf.png)
 
-5. Na hello **aktivační události** nakonfigurujte hello sestavení toobe spustí po každém potvrzení. Vyberte **průběžnou integraci** a **dávky změny**.
+5. Na **aktivační události** nakonfigurujte sestavení, aby se spouštěly po každém potvrzení. Vyberte **průběžnou integraci** a **dávky změny**.
 
     ![Visual Studio Team Services - konfigurace aktivační události sestavení](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-trigger-conf.png)
 
-### <a name="define-hello-build-workflow"></a>Definování hello sestavení pracovního postupu
-Další kroky Hello definovat hello sestavení pracovního postupu. Existují pět toobuild bitové kopie kontejner pro hello *MyShop* aplikace. Každé bitové kopie je sestaven pomocí hello soubor Docker umístěný v hello složky projektu:
+### <a name="define-the-build-workflow"></a>Definice pracovního postupu sestavení
+Další kroky definovat sestavení pracovního postupu. Pět kontejneru Image na sestavení pro *MyShop* aplikace. Každé bitové kopie je sestaven pomocí soubor Docker umístěný ve složce projektu:
 
 * ProductsApi
 * Proxy server
@@ -143,89 +143,89 @@ Další kroky Hello definovat hello sestavení pracovního postupu. Existují p�
 * RecommandationsApi
 * ShopFront
 
-Budete potřebovat dva kroky Docker tooadd každé bitové kopie, jednu toobuild hello image a jednu image hello toopush v registru kontejner Azure hello. 
+Je nutné přidat dva kroky Docker pro každé bitové kopie, jeden vytvořit bitovou kopii a jeden pro uložení image v registru kontejner Azure. 
 
-1. Klikněte na tlačítko tooadd krok v postupu sestavení hello **+ přidat krok sestavení** a vyberte **Docker**.
+1. Chcete-li přidat krok v pracovním postupu sestavení, klikněte na tlačítko **+ přidat krok sestavení** a vyberte **Docker**.
 
     ![Visual Studio Team Services - přidat kroky sestavení](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-add-task.png)
 
-2. Pro každé bitové kopie, nakonfigurovat jeden krok, který používá hello `docker build` příkaz.
+2. Pro každé bitové kopie, nakonfigurovat jeden krok, který používá `docker build` příkaz.
 
     ![Visual Studio Team Services - Docker sestavení](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-build.png)
 
-    Pro hello sestavení operaci, vyberte kontejner Azure registr, hello **vytvořit bitovou kopii** akce a hello soubor Docker, která definuje každé bitové kopie. Sada hello **sestavení kontextu** jako hello soubor Docker kořenový adresář a definujte hello **název bitové kopie**. 
+    Pro operaci sestavení, vyberte kontejner Azure registr, **vytvořit bitovou kopii** akce a soubor Docker, která definuje každé bitové kopie. Nastavte **sestavení kontextu** jako soubor Docker kořenový adresář a definujte **název bitové kopie**. 
     
-    Jak je vidět na předchozím obrazovky hello, začněte název bitové kopie hello hello URI registru systému Windows Azure kontejneru. (Můžete také použít značku sestavení proměnné tooparameterize hello hello Image, jako je například identifikátor hello sestavení v tomto příkladu.)
+    Jak je znázorněno na předchozí obrazovce, spusťte název bitové kopie s identifikátorem URI registru systému Windows Azure kontejneru. (Můžete také použijete sestavení proměnnou o parametrizaci značka obrázku, jako je například identifikátor sestavení v tomto příkladu.)
 
-3. Pro každé bitové kopie, nakonfigurujte druhý krok, který používá hello `docker push` příkaz.
+3. Pro každé bitové kopie, nakonfigurujte druhý krok, který používá `docker push` příkaz.
 
     ![Visual Studio Team Services - nabízené Docker](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-push.png)
 
-    Pro hello pomocí operace push, vyberte kontejner Azure registr, hello **Push bitovou kopii** akce a zadejte hello **název bitové kopie** který je vytvořen v předchozím kroku hello.
+    Pomocí operace push, vyberte možnost kontejner Azure registr, **Push bitovou kopii** akce a zadejte **název bitové kopie** který je vytvořen v předchozím kroku.
 
-4. Po dokončení můžete konfigurovat hello sestavení a push kroky pro každý hello pět bitových kopií, přidejte že dva další kroky v hello sestavení pracovního postupu.
+4. Po dokončení konfigurace sestavení a nabízených kroky pro každý z pěti bitové kopie, přidejte dva další kroky v pracovním postupu sestavení.
 
-    a. Úlohu příkazového řádku, která se používá bash skriptu tooreplace hello *BuildNumber* výskyt v soubor docker-compose.yml hello s hello aktuální sestavení ID. V tématu hello následující obrazovka podrobnosti.
+    a. Úlohu příkazového řádku, která používá skript bash nahradit *BuildNumber* sestavení výskyt v soubor docker-compose.yml s aktuálním ID. V následující obrazovku podrobnosti.
 
     ![Visual Studio Team Services - vytvářené aktualizace souboru](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-replace-build-number.png)
 
-    b. Úloha, která zahodí hello aktualizovat vytvářené souboru, protože sestavení artefaktů, je možné v hello verzi. V tématu hello následující obrazovka podrobnosti.
+    b. Úloha, která zahodí aktualizovaný soubor vytvářené jako sestavení artefaktů, takže ho můžete použít ve verzi. V následující obrazovku podrobnosti.
 
     ![Visual Studio Team Services - publikování vytvářené souboru](./media/container-service-docker-swarm-setup-ci-cd/vsts-publish-compose.png) 
 
 5. Klikněte na tlačítko **Uložit** a název vaší definice sestavení.
 
-## <a name="step-3-create-hello-release-definition"></a>Krok 3: Vytvoření definice verze hello
+## <a name="step-3-create-the-release-definition"></a>Krok 3: Vytvoření definice verze
 
-Visual Studio Team Services umožňuje příliš[Správa verzí v různých prostředích](https://www.visualstudio.com/team-services/release-management/). Průběžné nasazování toomake nasazení aplikace na vašich různých prostředích (například vývojářů, testovací, předprodukční a produkční) smooth způsobem můžete povolit. Můžete vytvořit nové prostředí, které představuje váš cluster Azure Container Service Docker Swarm.
+Visual Studio Team Services umožňuje [Správa verzí v různých prostředích](https://www.visualstudio.com/team-services/release-management/). Průběžné nasazování, abyste měli jistotu, že vaše aplikace je nasazená na vaše různých prostředích (například vývojářů, testovací, předprodukční a produkční) smooth způsobem můžete povolit. Můžete vytvořit nové prostředí, které představuje váš cluster Azure Container Service Docker Swarm.
 
-![Visual Studio Team Services - tooACS verze](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-acs.png) 
+![Visual Studio Team Services - verze služby ACS](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-acs.png) 
 
 ### <a name="initial-release-setup"></a>Instalační program původní verze
 
-1. Klikněte na tlačítko toocreate definici verze **verze** > **+ verze**
+1. K vytvoření definice vydání, klikněte na tlačítko **verze** > **+ verze**
 
-2. tooconfigure hello artefaktů zdroje, klikněte na tlačítko **artefakty** > **odkaz na zdroj artefaktů**. Zde propojte tento nový definice toohello sestavení pro vydání který jste zadali v předchozím kroku hello. Díky tomu je k dispozici v procesu verze hello soubor docker-compose.yml hello.
+2. Chcete-li nastavit zdroj artefaktů, klikněte na tlačítko **artefakty** > **odkaz na zdroj artefaktů**. Tato nová verze definice zde odkaz na sestavení, který jste zadali v předchozím kroku. Díky tomu je k dispozici v procesu verze soubor docker-compose.yml.
 
     ![Visual Studio Team Services - artefakty verze](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-artefacts.png) 
 
-3. tooconfigure hello verze aktivační událost, klikněte na tlačítko **aktivační události** a vyberte **průběžné nasazování**. Aktivační událost hello sadu pro hello stejný zdroj artefaktů. Toto nastavení zajistí, že začne novou verzi také hello sestavení se dokončí úspěšně.
+3. Konfigurace verze aktivační událost, klikněte na tlačítko **aktivační události** a vyberte **průběžné nasazování**. Nastavte aktivační události na stejném zdroji artefaktů. Toto nastavení zajistí, že začne novou verzi také sestavení se dokončí úspěšně.
 
     ![Visual Studio Team Services - verze aktivační události](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-trigger.png) 
 
-### <a name="define-hello-release-workflow"></a>Definice pracovního postupu verze hello
+### <a name="define-the-release-workflow"></a>Zadejte verzi pracovního postupu
 
-verze Hello pracovní postup se skládá z dvě úlohy, které přidáte.
+Verze pracovní postup se skládá z dvě úlohy, které přidáte.
 
-1. Konfigurace úloh toosecurely kopie hello tvoří soubor tooa *nasazení* složky na hello Docker Swarm hlavního uzlu, pomocí připojení SSH hello jste nakonfigurovali dříve. V tématu hello následující obrazovka podrobnosti.
+1. Nakonfigurujte úlohu bezpečně zkopírovat soubor vytvářené *nasazení* složky na Docker Swarm hlavního uzlu pomocí připojení SSH jste nakonfigurovali dříve. V následující obrazovku podrobnosti.
 
     ![Visual Studio Team Services - verze spojovací bod služby](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-scp.png)
 
-2. Nakonfigurujte druhý tooexecute úloh příkaz toorun bash `docker` a `docker-compose` příkazů na hlavní uzel hello. V tématu hello následující obrazovka podrobnosti.
+2. Nakonfigurujte druhý úlohy ke spuštění příkazu bash ke spuštění `docker` a `docker-compose` příkazů na hlavní uzel. V následující obrazovku podrobnosti.
 
     ![Visual Studio Team Services - Bash verze](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-bash.png)
 
-    příkaz Hello proveden na hello hello hlavní pomocí příkazového řádku Dockeru a hello Docker Compose CLI toodo hello následující úlohy:
+    Příkaz provést v hlavní použijte rozhraní příkazového řádku Dockeru a rozhraní příkazového řádku Docker Compose k provádění následujících úloh:
 
-    - Přihlášení toohello kontejner Azure registru (používá tři variab'les sestavení, která jsou definována v hello **proměnné** karty)
-    - Definování hello **DOCKER_HOST** proměnné toowork koncovému bodu Swarm hello (: 2375)
-    - Přejděte toohello *nasazení* složky, který byl vytvořen hello předcházející úlohy zabezpečené kopie a který obsahuje soubor docker-compose.yml hello 
-    - Spuštění `docker-compose` příkazy, které hello nové bitové kopie, pro vyžádání obsahu zastavení služeb hello, odeberte hello služby a vytvoření kontejnerů hello.
+    - Přihlášení k Azure kontejneru registru (používá tři variab'les sestavení, která jsou definována v **proměnné** karty)
+    - Definování **DOCKER_HOST** proměnnou pro práci s koncovému bodu Swarm (: 2375)
+    - Přejděte na *nasazení* složky, který byl vytvořen předchozí zabezpečené kopírování úlohy a který obsahuje soubor docker-compose.yml 
+    - Spuštění `docker-compose` příkazy, které nových bitových kopií pro vyžádání obsahu zastavení služeb, odeberte služby a vytvoření kontejnerů.
 
     >[!IMPORTANT]
-    > Jak je vidět na předchozím obrazovky hello, nechte hello **nezdaří do datového proudu STDERR** nezaškrtnuté políčko. To je důležité nastavit, protože `docker-compose` vytiskne několik diagnostické zprávy, jako jsou kontejnery se zastavit nebo se na výstup hello standardní chyba odstraněn. Pokud zaškrtnete políčko hello, hlásí Visual Studio Team Services nastaly chyby během hello verzi, i pokud všechno proběhne správně.
+    > Jak je znázorněno na předchozí obrazovce, ponechte **nezdaří do datového proudu STDERR** nezaškrtnuté políčko. To je důležité nastavit, protože `docker-compose` vytiskne několik diagnostické zprávy, jako jsou kontejnery se zastavit nebo odstraňuje na standardní chyba výstup. Pokud zaškrtnete políčko, Visual Studio Team Services hlásí, že nastaly chyby během verzí, i v případě, že všechno proběhne správně.
     >
 3. Uložte tuto novou verzi definici.
 
 
 >[!NOTE]
->Toto nasazení obsahuje výpadky, protože jsme zastavení služeb staré hello a systémem hello nový. Ho je možné tooavoid to pomocí tohoto postupu nasazení blue zeleně.
+>Toto nasazení obsahuje výpadky, protože jsme zastavení staré služeb a systémem novým. Je možné, abyste tomu předešli díky blue zelená nasazení.
 >
 
-## <a name="step-4-test-hello-cicd-pipeline"></a>Krok 4. Test hello CI/CD kanálu
+## <a name="step-4-test-the-cicd-pipeline"></a>Krok 4. Testování CI/CD kanálu
 
-Teď, když jste hotovi s konfigurací hello, je čas tootest tento nový kanál CI/CD. Hello nejjednodušší způsob, jak tootest je hello tooupdate hello zdrojového kódu a provést změny do úložiště GitHub. Několik sekund poté, co push hello kód, zobrazí se nové sestavení spuštěná ve Visual Studio Team Services. Po úspěšném dokončení novou verzi se spustí a provede nasazení nové verze aplikace hello na clusteru Azure Container Service hello hello.
+Teď, když jste hotovi s konfigurací, je otestovat, tento nový kanál CI/CD. Aktualizujte zdrojový kód a provést změny do úložiště GitHub je nejjednodušší způsob, jak otestovat. Několik sekund poté, co push kód, zobrazí se nové sestavení spuštěná ve Visual Studio Team Services. Po úspěšném dokončení novou verzi se spustí a provede nasazení nové verze aplikace v clusteru Azure Container Service.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o CI/CD s Visual Studio Team Services najdete v tématu hello [služby VSTS sestavení přehled](https://www.visualstudio.com/docs/build/overview).
+* Další informace o CI/CD s Visual Studio Team Services najdete v tématu [služby VSTS sestavení přehled](https://www.visualstudio.com/docs/build/overview).

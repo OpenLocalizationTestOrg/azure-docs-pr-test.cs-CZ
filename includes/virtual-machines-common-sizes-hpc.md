@@ -1,10 +1,10 @@
 <!-- A-series - compute-intensive instances, H-series -->
 
-Hello velikosti A8-A11 a H-series se také označují jako *náročné instance*. Hello hardwaru, který spouští tyto velikosti je navržena a optimalizována pro náročné a aplikace, modelování a simulace clusteru aplikace náročné na sítě, včetně vysoce výkonné výpočetní (HPC). Hello A8-A11 řady používá Intel Xeon E5-. 2670 @ 2.6 GHZ a hello H-series. Intel Xeon E5-2667 v3 @ 3,2 GHz. 
+Velikosti A8-A11 a H-series se také označují jako *náročné na výpočetní výkon*. Hardware pro hostování těchto velikostí je navržený a optimalizovaný pro úlohy náročné na výpočty a síťový provoz, včetně clusterovaného vysokovýkonného výpočetního prostředí (HPC), například pro modelování a simulace. Řady A8-A11-series používají Intel Xeon E5-2670 @ 2,6 GHz a H-series používá Intel Xeon E5-2667 v3 @ 3,2 GHz. 
 
-Virtuální počítače Azure H-series jsou hello další generace s vysokým výkonem, že virtuální počítače zaměřené na výpočetní potřeby vysoké end, jako molekulární modelování a výpočet dynamiky kapaliny. Tyto 8 až 16 virtuálních procesorů virtuální počítače jsou postavené na technologii procesoru hello Intel. Haswell E5-2667 V3 s funkcí DDR4 paměti a založená na SSD – dočasné úložiště. 
+Virtuální počítače Azure H-series jsou další generací počítačů s vysokým výpočetním výkonem a jsou zaměřené na výpočetně vysoce náročné úlohy, jako je např. molekulární modelování, výpočty dynamiky tekutin a podobně. Tyto virtuální počítače s 8 a 16 virtuálními procesory jsou postavené na technologii procesorů Intel Haswell E5-2667 V3, které nabízejí paměti DDR4 a dočasné úložiště založené na jednotkách SSD. 
 
-Kromě toho toohello významné výkon procesoru, hello H-series nabízí různé možnosti sítě s nízkou latencí RDMA pomocí FDR InfiniBand a několik paměti konfigurace toosupport náročné výpočetní požadavky na paměť.
+Řada H-series nabízí kromě značného výkonu procesorů i řadu možností přímého přístupu do paměti vzdáleného počítače (RDMA) s nízkou latencí díky technologii FDR InfiniBand, a množství konfigurací paměti pro podporu požadavků na vysoce paměťově náročné výpočetní operace.
 
 
 

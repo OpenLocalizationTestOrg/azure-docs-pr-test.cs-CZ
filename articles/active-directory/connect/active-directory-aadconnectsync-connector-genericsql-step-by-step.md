@@ -1,6 +1,6 @@
 ---
-title: aaaGeneric krok konektor SQL za krok | Microsoft Docs
-description: "Tento článek je proti můžete prostřednictvím jednoduchý systém HR podrobné pomocí hello obecné konektor SQL."
+title: "Obecné konektor SQL krok za krokem | Microsoft Docs"
+description: "Tento článek je proti prostřednictvím jednoduchý systém HR podrobné pomocí obecné konektoru SQL."
 services: active-directory
 documentationcenter: 
 author: AndKjell
@@ -14,89 +14,89 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: b1b5f89ab588de6f92f173a7bc00f97180067669
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3fdc1b405b95180d031aa4ad45b406f7fc149d8f
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="generic-sql-connector-step-by-step"></a>Podrobný postup pro obecný konektor SQL
 Toto téma je podrobný průvodce. Vytvoří databáze HR jednoduchého ukázkového a použít jej pro import někteří uživatelé a jejich členství ve skupině.
 
-## <a name="prepare-hello-sample-database"></a>Příprava hello ukázkové databáze
-Na serveru se systémem SQL Server, spusťte skript SQL hello najít v [příloha A](#appendix-a). Tento skript vytvoří ukázkovou databázi s názvem hello GSQLDEMO. Hello objektový model pro hello vytvořit databázi vypadá podobně jako tento obrázek:  
+## <a name="prepare-the-sample-database"></a>Příprava ukázkové databáze
+Na serveru systémem SQL Server, spusťte skript SQL v nalezen [příloha A](#appendix-a). Tento skript vytvoří ukázkovou databázi s názvem GSQLDEMO. Objektový model pro vytvořené databáze vypadá na tomto obrázku:  
 ![Objektový Model](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/objectmodel.png)
 
-Také vytvořte uživatele chcete toouse tooconnect toohello databáze. V tomto návodu je uživatel hello názvem FABRIKAM\SQLUser a umístěné v doméně hello.
+Také vytvořte uživatele, které chcete použít pro připojení k databázi. V tomto návodu je uživatel názvem FABRIKAM\SQLUser a umístěné v doméně.
 
-## <a name="create-hello-odbc-connection-file"></a>Vytvoření souboru připojení ODBC hello
-Hello obecné konektor SQL je pomocí rozhraní ODBC tooconnect toohello vzdáleného serveru. Nejdřív potřebujeme toocreate soubor s hello informace o připojení ODBC.
+## <a name="create-the-odbc-connection-file"></a>Vytvoření souboru připojení rozhraní ODBC
+Obecné konektor SQL je pomocí rozhraní ODBC pro připojení ke vzdálenému serveru. Nejprve musíme vytvořit soubor s informacemi o připojení ODBC.
 
-1. Spusťte nástroj pro správu rozhraní ODBC hello na serveru:  
+1. Spusťte nástroj pro správu rozhraní ODBC na serveru:  
    ![ODBC](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/odbc.png)
-2. Karta vyberte hello **souborové DSN**. Klikněte na tlačítko **přidat...** .  
+2. Vyberte kartu **souborové DSN**. Klikněte na tlačítko **přidat...** .  
    ![ODBC1](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/odbc1.png)
-3. Hello out-of-box ovladačů funguje přesně, takže vyberte ho a klikněte na tlačítko **Další >**.  
+3. Funguje out-of-box ovladačů, přesně, takže vyberte ho a klikněte na tlačítko **Další >**.  
    ![ODBC2](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/odbc2.png)
-4. Pojmenujte soubor hello, jako například **GenericSQL**.  
+4. Pojmenujte soubor, jako například **GenericSQL**.  
    ![ODBC3](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/odbc3.png)
 5. Klikněte na **Dokončit**.  
    ![ODBC4](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/odbc4.png)
-6. Čas tooconfigure hello připojení. Zadejte zdroj dat hello funkční popis a zadejte název hello hello serveru se systémem SQL Server.  
+6. Čas ke konfiguraci připojení. Zadejte zdroj dat funkční popis a zadejte název serveru se systémem SQL Server.  
    ![ODBC5](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/odbc5.png)
-7. Vyberte, jak tooauthenticate pomocí SQL. V tomto případě používáme ověřování systému Windows.  
+7. Vyberte způsob ověřování SQL. V tomto případě používáme ověřování systému Windows.  
    ![ODBC6](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/odbc6.png)
-8. Zadejte jméno hello hello ukázkové databáze, **GSQLDEMO**.  
+8. Zadejte název ukázkové databáze **GSQLDEMO**.  
    ![ODBC7](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/odbc7.png)
 9. Udržování všechno výchozí na této obrazovce. Klikněte na **Dokončit**.  
    ![ODBC8](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/odbc8.png)
-10. Klikněte na možnost vše funguje podle očekávání, tooverify **Test zdroje dat**.  
+10. Chcete-li ověřit, všechno funguje podle očekávání, klikněte na tlačítko **Test zdroje dat**.  
     ![ODBC9](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/odbc9.png)
-11. Zajistěte, aby hello test je úspěšné.  
+11. Ujistěte se, že test je úspěšné.  
     ![ODBC10](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/odbc10.png)
-12. konfigurační soubor rozhraní ODBC Hello by teď měly být viditelné v souboru DSN.  
+12. Nyní měli být viditelné v souborové DSN ODBC konfigurační soubor.  
     ![ODBC11](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/odbc11.png)
 
-Nyní je k dispozici soubor hello budeme potřebovat a můžete začít vytvářet hello konektor.
+Nyní je k dispozici soubor budeme potřebovat a můžete začít vytvářet konektor.
 
-## <a name="create-hello-generic-sql-connector"></a>Vytvoření hello obecné konektor SQL
-1. V hello uživatelského rozhraní Správce služby synchronizace, vyberte **konektory** a **vytvořit**. Vyberte **obecné SQL (Microsoft)** a pojmenujte ho popisný název.  
+## <a name="create-the-generic-sql-connector"></a>Vytvořit konektor obecné SQL
+1. V uživatelském rozhraní Synchronization Service Manager vyberte **konektory** a **vytvořit**. Vyberte **obecné SQL (Microsoft)** a pojmenujte ho popisný název.  
    ![Connector1](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/connector1.png)
-2. Najít soubor hello názvu DSN, kterou jste vytvořili v předchozí části hello a nahrajte ho toohello serveru. Zadejte hello pověření tooconnect toohello databáze.  
+2. Vyhledejte soubor DSN, který jste vytvořili v předchozí části a nahrajte na server. Zadejte pověření pro připojení k databázi.  
    ![Connector2](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/connector2.png)
 3. V tomto návodu budeme jsou a usnadnit tak nám a Řekněme, že existují dva typy objektů, **uživatele** a **skupiny**.
    ![Connector3](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/connector3.png)
-4. atributy hello toofind, chceme hello konektor toodetect těmito atributy prohlížením samotné tabulky hello. Vzhledem k tomu **uživatelé** je vyhrazené slovo v SQL, potřebujeme tooprovide v hranaté závorky [].  
+4. Pro vyhledání atributů, chceme konektor ke zjištění těchto atributů prohlížením samotné tabulky. Vzhledem k tomu **uživatelé** je vyhrazené slovo v SQL, je potřeba zadat v hranaté závorky [].  
    ![Connector4](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/connector4.png)
-5. Čas toodefine hello ukotvení atribut a atribut rozlišující název hello. Pro **uživatelé**, používáme hello kombinace uživatelského jména hello dva atributy a EmployeeID. Pro **skupiny**, používáme GroupName (ne realistické ve skutečném, ale pro tento postup funguje).
+5. Čas k definování ukotvení atribut a atribut rozlišující název. Pro **uživatelé**, používáme kombinace uživatelského jména dva atributy a EmployeeID. Pro **skupiny**, používáme GroupName (ne realistické ve skutečném, ale pro tento postup funguje).
    ![Connector5](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/connector5.png)
-6. Ne všechny typy atributů lze zjistit v databázi SQL. Typ atributu Hello odkaz na konkrétní nelze. Pro typ objektu skupiny hello potřebujeme toochange hello ID vlastníka a MemberID tooreference.  
+6. Ne všechny typy atributů lze zjistit v databázi SQL. Typ atributu odkaz na konkrétní nelze. Typ objektu skupiny je nutné změnit ID vlastníka a MemberID, chcete-li.  
    ![Connector6](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/connector6.png)
-7. atributy Hello jsme vybrali jako atributy typu odkaz v předchozím kroku hello vyžadují hello typ objektu, který tyto hodnoty jsou odkaz na. V našem případě hello typ objektu uživatele.  
+7. Atributy, které jsme vybrali jako atributy typu odkaz v předchozím kroku vyžaduje typ objektu tyto hodnoty jsou odkaz na. V našem případě typ objektu uživatele.  
    ![Connector7](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/connector7.png)
-8. Na stránce globální parametry hello vyberte **vodoznak** jako hello rozdílů strategie. Také zadat ve formátu data a času hello **rrrr MM-dd hh: mm:**.
+8. Na stránce globální parametry vyberte **vodoznak** jako strategie delta. Také zadejte ve formátu data a času **rrrr MM-dd hh: mm:**.
    ![Connector8](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/connector8.png)
-9. Na hello **konfigurace oddílů a hierarchií** vyberte oba typy objektů.
+9. Na **konfigurace oddílů a hierarchií** vyberte oba typy objektů.
    ![Connector9](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/connector9.png)
-10. Na hello **vyberte typy objektů** a **vybrat atributy**, vyberte typy objektů a všech atributů. Na hello **konfigurace kotvy** klikněte na tlačítko **Dokončit**.
+10. Na **vyberte typy objektů** a **vybrat atributy**, vyberte typy objektů a všech atributů. Na **konfigurace kotvy** klikněte na tlačítko **Dokončit**.
 
 ## <a name="create-run-profiles"></a>Vytvoření profilů spuštění
-1. V hello uživatelského rozhraní Správce služby synchronizace, vyberte **konektory**, a **konfigurovat profily spuštění**. Klikněte na tlačítko **nový profil**. Začneme s **úplný Import**.  
+1. V uživatelském rozhraní Synchronization Service Manager vyberte **konektory**, a **konfigurovat profily spuštění**. Klikněte na tlačítko **nový profil**. Začneme s **úplný Import**.  
    ![Runprofile1](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/runprofile1.png)
-2. Vyberte typ hello **úplný Import (jenom fázi)**.  
+2. Vyberte typ **úplný Import (jenom fázi)**.  
    ![Runprofile2](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/runprofile2.png)
-3. Vyberte oddíl hello **OBJEKT = uživatele**.  
+3. Vyberte oddíl, **OBJEKT = uživatele**.  
    ![Runprofile3](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/runprofile3.png)
-4. Vyberte **tabulky** a typ **[uživatelé]**. Posuňte se dolů toohello více hodnot objektu typu oddílu a zadejte hello data jako hello následující obrázek. Vyberte **Dokončit** toosave hello krok.  
+4. Vyberte **tabulky** a typ **[uživatelé]**. Přejděte do části Typ objektu s více hodnotami a zadejte data jako na následujícím obrázku. Vyberte **Dokončit** uložit v kroku.  
    ![Runprofile4a](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/runprofile4a.png)  
    ![Runprofile4b](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/runprofile4b.png)  
-5. Vyberte **nový krok**. Tentokrát vyberte **OBJEKT = skupiny**. Na poslední stránku hello použijte hello konfiguraci jako hello následující obrázek. Klikněte na **Dokončit**.  
+5. Vyberte **nový krok**. Tentokrát vyberte **OBJEKT = skupiny**. Na poslední stránce použijte konfiguraci jako na následujícím obrázku. Klikněte na **Dokončit**.  
    ![Runprofile5a](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/runprofile5a.png)  
    ![Runprofile5b](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/runprofile5b.png)  
-6. Volitelné: Pokud chcete, můžete nakonfigurovat další profilů spuštění. V tomto návodu se používá pouze hello úplný Import.
-7. Klikněte na tlačítko **OK** toofinish změna profilů spuštění.
+6. Volitelné: Pokud chcete, můžete nakonfigurovat další profilů spuštění. V tomto návodu se používá pouze úplný Import.
+7. Klikněte na tlačítko **OK** pro dokončení změny profilů spuštění.
 
-## <a name="add-some-test-data-and-test-hello-import"></a>Přidat některé testovací data a testovací import hello
+## <a name="add-some-test-data-and-test-the-import"></a>Přidat některé testovacích dat a testování importu
 Vyplňte nějaká testovací data v ukázkové databázi. Až budete připravení, vyberte **spustit** a **úplný import**.
 
 Zde je uživatel s dvě telefonní čísla a skupiny se některé členy.  
@@ -104,13 +104,13 @@ Zde je uživatel s dvě telefonní čísla a skupiny se některé členy.
 ![CS2](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/cs2.png)  
 
 ## <a name="appendix-a"></a>Příloha A
-**SQL skriptu toocreate hello ukázkové databáze**
+**Skript SQL k vytvoření ukázkové databáze**
 
 ```SQL
----Creating hello Database---------
+---Creating the Database---------
 Create Database GSQLDEMO
 Go
--------Using hello Database-----------
+-------Using the Database-----------
 Use [GSQLDEMO]
 Go
 -------------------------------------

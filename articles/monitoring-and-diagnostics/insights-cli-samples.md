@@ -1,6 +1,6 @@
 ---
-title: "Ukázky úvodní aaaAzure monitorování 1.0 rozhraní příkazového řádku. | Dokumentace Microsoftu"
-description: "Vzorové příkazy rozhraní příkazového řádku 1.0 pro Azure monitorování funkce. Azure monitorování je služba Microsoft Azure, což vám umožní toosend oznámení o výstrahách, volání webové adresy URL založené na hodnotách nakonfigurované telemetrická data a škálování cloudové služby, virtuální počítače a webové aplikace."
+title: "Ukázek Azure CLI 1.0 monitorování rychlý start. | Dokumentace Microsoftu"
+description: "Vzorové příkazy rozhraní příkazového řádku 1.0 pro Azure monitorování funkce. Azure monitorování je služba Microsoft Azure, který umožňuje odeslat oznámení o výstrahách, volání webové adresy URL založené na hodnotách nakonfigurované telemetrická data a škálování cloudové služby, virtuální počítače a webové aplikace."
 author: kamathashwin
 manager: orenr
 editor: 
@@ -14,101 +14,101 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: ashwink
-ms.openlocfilehash: 6cd9cd62b3a1977276563f5e43f5384ccca66247
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ec4512500dc3c77a40d2ebd1e6b460d5bb005811
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="azure-monitor--cross-platform-cli-10-quick-start-samples"></a>Ukázek Azure CLI monitorování napříč platformami 1.0 rychlý start
-Tento článek ukazuje ukázkové toohelp příkazy rozhraní příkazového řádku (CLI) měli přístup k funkcím monitorování Azure. Azure monitorování umožňuje tooAutoScale cloudové služby, virtuální počítače a webové aplikace a toosend oznámení výstrah nebo volání webové adresy URL založené na hodnotách nakonfigurované telemetrická data.
+Tento článek ukazuje ukázku, že příkazy rozhraní příkazového řádku (CLI) můžete získat přístup k funkcím Azure monitorování. Azure monitorování umožňuje škálování cloudové služby, virtuální počítače a webových aplikací a odesílat oznámení o výstrahách nebo volání webové adresy URL založené na hodnotách nakonfigurované telemetrická data.
 
 > [!NOTE]
-> Azure monitorování je hello nový název pro co byla volána "Statistika Azure" až 25 září 2016. Ale hello obory názvů a proto níže uvedené příkazy hello stále obsahovat hello "insights".
+> Azure monitorování je nový název pro co byla volána "Statistika Azure" až 25 září 2016. Však obory názvů a proto níže uvedených příkazů stále obsahovat "insights".
 > 
 > 
 
 ## <a name="prerequisites"></a>Požadavky
-Pokud jste ještě nenainstalovali hello příkazového řádku Azure CLI, přečtěte si téma [hello instalace rozhraní příkazového řádku Azure](../cli-install-nodejs.md). Pokud jste obeznámeni s rozhraní příkazového řádku Azure, můžete přečíst další informace naleznete na [hello použití Azure CLI pro Mac, Linux a Windows pomocí Azure Resource Manageru](../xplat-cli-azure-resource-manager.md).
+Pokud jste ještě nenainstalovali Azure CLI, přečtěte si téma [nainstalovat Azure CLI](../cli-install-nodejs.md). Pokud jste obeznámeni s rozhraní příkazového řádku Azure, můžete přečíst další informace naleznete na [pomocí rozhraní příkazového řádku Azure CLI pro Mac, Linux a Windows pomocí Azure Resource Manageru](../xplat-cli-azure-resource-manager.md).
 
-V systému Windows, nainstalujte npm z hello [Node.js webu](https://nodejs.org/). Po dokončení instalace hello CMD.exe pomocí oprávnění spustit jako správce, spusťte následující hello ze složky hello nainstalovanou npm:
+V systému Windows, nainstalujte npm z [Node.js webu](https://nodejs.org/). Po dokončení instalace pomocí CMD.exe s oprávněním spustit jako správce, spusťte ze složky, kde je nainstalován npm následující:
 
 ```console
 npm install azure-cli --global
 ```
 
-Dále přejděte tooany složku nebo umístění chcete a zadejte hello příkazového řádku:
+Potom přejděte na všechny složky nebo umístění chcete a zadejte v příkazovém řádku:
 
 ```console
 azure help
 ```
 
-## <a name="log-in-tooazure"></a>Přihlaste se tooAzure
-prvním krokem Hello je toologin tooyour účet Azure.
+## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+Prvním krokem je přihlášení k účtu Azure.
 
 ```console
 azure login
 ```
 
-Po spuštění tohoto příkazu, máte toosign v prostřednictvím hello pokyny na obrazovce hello. Potom zobrazí váš účet, TenantId a výchozí ID předplatného. Všechny příkazy lze použít v kontextu hello předplatného výchozí.
+Po spuštění tohoto příkazu, budete muset přihlásit pomocí pokynů na obrazovce. Potom zobrazí váš účet, TenantId a výchozí ID předplatného. Všechny příkazy fungovat v rámci vašeho předplatného výchozí.
 
-toolist hello podrobnosti o vaším aktuálním předplatným, použijte následující příkaz hello.
+K zobrazení seznamu podrobnosti vaším aktuálním předplatným, použijte následující příkaz.
 
 ```console
 azure account show
 ```
 
-toochange pracovní kontext tooa jiného předplatného, hello použijte následující příkaz.
+Chcete-li změnit pracovní kontext do jiného předplatného, použijte následující příkaz.
 
 ```console
 azure account set "subscription ID or subscription name"
 ```
 
-toouse Azure Resource Manager a monitorování Azure příkazů, je nutné toobe v režimu Azure Resource Manager.
+Pokud chcete používat příkazy Azure Resource Manager a monitorování Azure, musíte být v režimu Azure Resource Manager.
 
 ```console
 azure config mode arm
 ```
 
-tooview seznam všechny podporované příkazy Azure monitorování, proveďte následující hello.
+Chcete-li zobrazit seznam všech podporovaných příkazů monitorování Azure, postupujte takto.
 
 ```console
 azure insights
 ```
 
 ## <a name="view-activity-log-for-a-subscription"></a>Zobrazit protokol aktivity pro předplatné
-tooview seznam aktivity protokolu událostí, proveďte následující hello.
+Chcete-li zobrazit seznam aktivity protokolu události, postupujte takto.
 
 ```console
 azure insights logs list [options]
 ```
 
-Zkuste hello následující tooview všechny dostupné možnosti.
+Zkuste následující příkaz a zobrazí všechny dostupné možnosti.
 
 ```console
 azure insights logs list -help
 ```
 
-Tady je příklad toolist protokoly podle resourceGroup
+Tady je příklad do seznamu protokolů podle resourceGroup
 
 ```console
 azure insights logs list --resourceGroup "myrg1"
 ```
 
-Příklad toolist protokoly volající
+Příklad do seznamu protokolů volající
 
 ```console
 azure insights logs list --caller "myname@company.com"
 ```
 
-Příklad toolist protokoly volající na typ prostředku, v rámci počáteční a koncové datum
+Příklad seznamu protokolů volající na typ prostředku v rámci počáteční a koncové datum
 
 ```console
 azure insights logs list --resourceProvider "Microsoft.Web" --caller "myname@company.com" --startTime 2016-03-08T00:00:00Z --endTime 2016-03-16T00:00:00Z
 ```
 
 ## <a name="work-with-alerts"></a>Práce s výstrahami
-V části toowork hello s výstrahami, můžete použít informace hello.
+Informace v části slouží k práci s výstrahami.
 
 ### <a name="get-alert-rules-in-a-resource-group"></a>Získat pravidla výstrah ve skupině prostředků
 ```console
@@ -134,7 +134,7 @@ azure insights alerts rule delete abhingrgtest123 andy0323
 ```
 
 ## <a name="log-profiles"></a>Profily protokolu
-Použijte hello informace v této části toowork pomocí protokolu profilů.
+Použijte informace v této části pro práci s profily protokolu.
 
 ### <a name="get-a-log-profile"></a>Získat profil protokolu
 ```console
@@ -165,7 +165,7 @@ azure insights logprofile add --name default --storageId /subscriptions/1a66ce04
 
 
 ## <a name="diagnostics"></a>Diagnostika
-Použijte hello informace v této části toowork se nastavení diagnostiky.
+Použijte informace v této části pro práci s nastavení diagnostiky.
 
 ### <a name="get-a-diagnostic-setting"></a>Získat nastavení diagnostiky
 ```console
@@ -184,7 +184,7 @@ azure insights diagnostic set --resourceId /subscriptions/df602c9c-7aa0-407d-a6f
 
 
 ## <a name="autoscale"></a>Automatické škálování
-Použijte hello informace v této části toowork s nastavení automatického škálování. Je nutné toomodify tyto příklady.
+Použijte informace v této části pro práci s nastavení automatického škálování. Budete muset upravit tyto příklady.
 
 ### <a name="get-autoscale-settings-for-a-resource-group"></a>Získat nastavení automatického škálování pro skupinu prostředků.
 ```console

@@ -1,6 +1,6 @@
 ---
-title: aaaConfiguring telemetrie Azure Media Services se zbytkem | Microsoft Docs
-description: "Tento článek ukazuje, jak toouse hello telemetrie Azure Media Services pomocí rozhraní REST API..."
+title: "Konfigurace služby Azure Media Services telemetrie se zbytkem | Microsoft Docs"
+description: "V tomto článku se dozvíte, jak používat Azure Media Services telemetrii pomocí rozhraní REST API..."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,36 +14,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.openlocfilehash: d0b6798c49be756fcebecf2e1e6ea497edd27cf0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7d785c6eb9a9e16ae4853cded3c7c142080c7a09
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="configuring-azure-media-services-telemetry-with-rest"></a>Konfigurace služby Azure Media Services telemetrie se zbytkem
 
-Toto téma popisuje obecné kroky, které může provést při konfiguraci telemetrie hello Azure Media Services (AMS) pomocí rozhraní REST API. 
+Toto téma popisuje obecné kroky, které může provést při konfiguraci telemetrie Azure Media Services (AMS) pomocí rozhraní REST API. 
 
 >[!NOTE]
->Pro hello podrobné vysvětlení, co je AMS telemetrie a jak tooconsume, najdete v části hello [přehled](media-services-telemetry-overview.md) tématu.
+>Podrobné vysvětlení, co je AMS telemetrie a jak ho zpracovat, najdete v části [přehled](media-services-telemetry-overview.md) tématu.
 
-Hello kroky popsané v tomto tématu jsou:
+Podle pokynů popsaných v tomto tématu jsou:
 
-- Získávání hello účtu úložiště přidruženého k účtu Media Services
-- Získávání hello koncových bodů oznámení
+- Získání účtu úložiště přidruženého k účtu Media Services
+- Získání koncových bodů oznámení
 - Vytvoření koncového bodu oznámení pro monitorování. 
 
-    toocreate koncový bod oznámení nastavit hello EndPointType tooAzureTable (2) a endPontAddress nastavit toohello úložiště tabulku (například https://telemetryvalidationstore.table.core.windows.net/).
+    Vytvoření koncového bodu oznámení, nastavte EndPointType AzureTable (2) a endPontAddress nastavení do tabulky úložiště (například https://telemetryvalidationstore.table.core.windows.net/).
   
-- Získání konfigurace sledování hello
+- Získání konfigurace monitorování
 
-    Vytvořit nastavení konfigurace sledování hello služeb, které chcete toomonitor. Více než jeden monitorování nastavení konfigurace je povolen. 
+    Vytvořte monitorování konfiguraci nastavení pro služby, které chcete monitorovat. Více než jeden monitorování nastavení konfigurace je povolen. 
 
 - Přidat konfiguraci monitorování
 
 
  
-## <a name="get-hello-storage-account-associated-with-a-media-services-account"></a>Získat účet úložiště hello přidružený účet Media Services
+## <a name="get-the-storage-account-associated-with-a-media-services-account"></a>Získat účet úložiště, které jsou přidružené k účtu Media Services
 
 ###<a name="request"></a>Žádost
 
@@ -71,7 +71,7 @@ Hello kroky popsané v tomto tématu jsou:
     
     {"d":{"results":[{"__metadata":{"id":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts('telemetryvalidationstore')","uri":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts('telemetryvalidationstore')","type":"Microsoft.Cloud.Media.Vod.Rest.Data.Models.StorageAccount"},"Name":"telemetryvalidationstore","IsDefault":true,"BytesUsed":null}]}}
 
-## <a name="get-hello-notification-endpoints"></a>Získat koncových bodů oznámení hello
+## <a name="get-the-notification-endpoints"></a>Získat koncových bodů oznámení
 
 ###<a name="request"></a>Žádost
 
@@ -125,7 +125,7 @@ Hello kroky popsané v tomto tématu jsou:
     }
 
 >[!NOTE]
->Nezapomeňte toochange hello "https://telemetryvalidationstore.table.core.windows.net" hodnota tooyour účet úložiště.
+>Nezapomeňte, chcete-li změnit hodnotu "https://telemetryvalidationstore.table.core.windows.net" k vašemu účtu úložiště.
 
 ###<a name="response"></a>Odpověď
 
@@ -146,7 +146,7 @@ Hello kroky popsané v tomto tématu jsou:
     
     {"d":{"__metadata":{"id":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints('nb%3Anepid%3AUUID%3A76bb4faf-ea29-4815-840a-9a8e20102fc4')","uri":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints('nb%3Anepid%3AUUID%3A76bb4faf-ea29-4815-840a-9a8e20102fc4')","type":"Microsoft.Cloud.Media.Vod.Rest.Data.Models.NotificationEndPoint"},"Id":"nb:nepid:UUID:76bb4faf-ea29-4815-840a-9a8e20102fc4","Name":"monitoring","Created":"\/Date(1449033042667)\/","EndPointAddress":"https://telemetryvalidationstore.table.core.windows.net/","EndPointType":2}}
  
-## <a name="get-hello-monitoring-configurations"></a>Získání konfigurace sledování hello
+## <a name="get-the-monitoring-configurations"></a>Získání konfigurace monitorování
 
 ### <a name="request"></a>Žádost
 

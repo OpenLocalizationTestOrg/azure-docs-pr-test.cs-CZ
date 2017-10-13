@@ -1,9 +1,9 @@
 ---
-title: "aaaCreate Azure interní nástroj pro vyrovnávání - zatížení, prostředí PowerShell | Microsoft Docs"
-description: "Zjistěte, jak toocreate na interní vyrovnávání zátěže pomocí prostředí PowerShell ve službě Správce prostředků"
+title: "Vytvoření interního nástroje pro vyrovnávání zatížení – PowerShell | Dokumentace Microsoftu"
+description: "Zjistěte, jak vytvořit interní nástroj pro vyrovnávání zatížení pomocí prostředí PowerShell v Resource Manageru"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: c6c98981-df9d-4dd7-a94b-cc7d1dc99369
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 4b9657c77aa32a142de49ff7871ed6a396b22223
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 1215ca8ff4d45e3b910b8e0ec0bd6833e4bfc308
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-internal-load-balancer-using-powershell"></a>Vytvoření interního nástroje pro vyrovnávání zatížení pomocí prostředí PowerShell
 
@@ -28,32 +28,34 @@ ms.lasthandoff: 10/06/2017
 > * [Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > * [Šablona](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
 
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 > [!NOTE]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../azure-resource-manager/resource-manager-deployment-model.md).  Tento článek popisuje použití modelu nasazení Resource Manager hello, které společnost Microsoft doporučuje pro většinu nasazení nové místo hello [modelu nasazení classic](load-balancer-get-started-ilb-classic-ps.md).
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../azure-resource-manager/resource-manager-deployment-model.md).  Tento článek se věnuje modelu nasazení Resource Manager, který Microsoft doporučuje pro většinu nových nasazení namísto [klasického modelu nasazení](load-balancer-get-started-ilb-classic-ps.md).
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
-Hello následující kroky popisují, jak toocreate na interní vyrovnávání zátěže pomocí Azure Resource Manager pomocí prostředí PowerShell. S Azure Resource Manager, hello položky toocreate Vyrovnávání zatížení pro vnitřní jsou konfigurovat individuálně a potom v kombinaci toocreate nástroj pro vyrovnávání zatížení.
+V následujícím postupu se dozvíte, jak vytvořit interní nástroj pro vyrovnávání zatížení pomocí Azure Resource Manageru s prostředím PowerShell. S Azure Resource Managerem se jednotlivé položky k vytvoření interního nástroje pro vyrovnávání zatížení nakonfigurují zvlášť, následně se spojí dohromady a vytvoří nástroj pro vyrovnávání zatížení.
 
-Je třeba toocreate a nakonfigurovat hello následující objekty toodeploy nástroj pro vyrovnávání zatížení:
+Pokud chcete nasadit nástroj pro vyrovnávání zatížení, vytvořte a nakonfigurujte následující objekty:
 
-* Koncová konfigurace IP front - nakonfiguruje hello privátní IP adresu pro příchozí síťový provoz
-* Fond adres back-end - nakonfiguruje hello síťových rozhraní, které budou přijímat provoz hello skupinu s vyrovnáváním zatížení, který přichází z fondu IP front-endu
-* Pravidla Vyrovnávání zatížení – zdroj a konfigurace místního portu pro hello nástroj pro vyrovnávání zatížení.
-* Sondy – konfiguruje test stavu hello stavu pro instance virtuálních počítačů hello.
-* Příchozí pravidla NAT – konfiguruje hello portu pravidla toodirectly přístup, jednu z instancí virtuálního počítače hello.
+* Front-endová konfigurace protokolu IP – konfiguruje privátní IP adresu pro příchozí síťový provoz.
+* Back-endový fond adres – konfiguruje síťová rozhraní, která přijímají provoz s vyrovnáváním zatížení přicházející z front-endového fondu IP adres.
+* Pravidla vyrovnávání zatížení – konfigurace zdrojového a cílového portu pro nástroj pro vyrovnávání zatížení.
+* Testy – konfiguruje test stavu pro instance virtuálních počítačů.
+* Pravidla příchozího překladu adres (NAT) – konfiguruje pravidla portů pro přímý přístup k některé z instancí virtuálních počítačů.
 
-Další informace o komponentách nástroje pro vyrovnávání zatížení s Azure Resource Managerem najdete v tématu [Podpora nástroje Load Balancer v Azure Resource Manageru](load-balancer-arm.md).
+Další informace o komponentách nástroje pro vyrovnávání zatížení s Azure Resource Managerem najdete v tématu [Podpora nástroje pro vyrovnávání zatížení v Azure Resource Manageru](load-balancer-arm.md).
 
-Hello následující kroky popisují, jak tooconfigure Vyrovnávání zatížení mezi dvěma virtuálními počítači.
+V následujícím postupu se dozvíte, jak nakonfigurovat nástroj pro vyrovnávání zatížení mezi dvěma virtuálními počítači.
 
-## <a name="setup-powershell-toouse-resource-manager"></a>Instalace prostředí PowerShell toouse Resource Manager
+## <a name="set-up-powershell-to-use-resource-manager"></a>Nastavení prostředí PowerShell pro použití Resource Manageru
 
-Ujistěte se, že máte hello nejnovější produkční verzi hello Azure modul pro prostředí PowerShell a mít PowerShell nastavit správně tooaccess vašeho předplatného Azure.
+Ujistěte se, že máte nejnovější produkční verzi modulu Azure pro PowerShell, a že je PowerShell správně nastaven pro přístup k vašemu předplatnému Azure.
 
 ### <a name="step-1"></a>Krok 1
 
@@ -63,17 +65,17 @@ Login-AzureRmAccount
 
 ### <a name="step-2"></a>Krok 2
 
-Zkontrolujte předplatná hello pro účet hello
+Zkontrolujte předplatná pro příslušný účet.
 
 ```powershell
 Get-AzureRmSubscription
 ```
 
-Výzvami tooAuthenticate bude pomocí svých přihlašovacích údajů.
+Zobrazí se výzva k ověření pomocí přihlašovacích údajů.
 
 ### <a name="step-3"></a>Krok 3
 
-Zvolte, které vaše toouse předplatných Azure.
+Zvolte předplatné Azure, které chcete použít.
 
 ```powershell
 Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
@@ -87,13 +89,13 @@ Vytvořte novou skupinu prostředků (tento krok přeskočte, pokud používáte
 New-AzureRmResourceGroup -Name NRP-RG -location "West US"
 ```
 
-Azure Resource Manager vyžaduje, aby všechny skupiny prostředků určily umístění. To slouží jako hello výchozí umístění pro prostředky v příslušné skupině prostředků. Zajistěte, aby všechny příkazy hello toocreate nástroj pro vyrovnávání zatížení bude používat stejné skupiny prostředků.
+Azure Resource Manager vyžaduje, aby všechny skupiny prostředků určily umístění. Toto umístění slouží jako výchozí umístění pro prostředky v příslušné skupině prostředků. Ujistěte se, že všechny příkazy k vytvoření nástroje pro vyrovnávání zatížení používají stejnou skupinu prostředků.
 
-V hello příkladu výše jsme vytvořili skupinu prostředků s názvem "NRP-RG" a umístěním "Západní USA".
+V předchozím příkladu jsme vytvořili skupinu prostředků s názvem **NRP-RG** a umístěním **Západní USA**.
 
-## <a name="create-virtual-network-and-a-private-ip-address-for-front-end-ip-pool"></a>Vytvoření virtuální sítě a privátní IP adresy pro front-endový fond IP adres
+## <a name="create-a-virtual-network-and-a-private-ip-address-for-a-front-end-ip-pool"></a>Vytvoření virtuální sítě a privátní IP adresy pro front-endový fond IP adres
 
-Vytvoří podsíť virtuální sítě hello a přiřadí toovariable $backendSubnet
+Vytvoří podsíť virtuální sítě a přiřadí ji do proměnné $backendSubnet.
 
 ```powershell
 $backendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name LB-Subnet-BE -AddressPrefix 10.0.2.0/24
@@ -105,15 +107,15 @@ Vytvořte virtuální síť:
 $vnet= New-AzureRmVirtualNetwork -Name NRPVNet -ResourceGroupName NRP-RG -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $backendSubnet
 ```
 
-Vytvoří virtuální síť hello a přidá hello podsíť virtuální sítě se podsíť lb toohello NRPVNet a přiřadí toovariable $vnet
+Vytvoří virtuální síť NRPVNet, přidá do ní podsíť lb-subnet-be, a přiřadí ji do proměnné $vnet.
 
-## <a name="create-front-end-ip-pool-and-backend-address-pool"></a>Vytvoření front-endového fondu IP adres a back-endového fondu adres
+## <a name="create-a-front-end-ip-pool-and-back-end-address-pool"></a>Vytvoření front-endového fondu IP adres a back-endového fondu adres
 
-Nastavení fondu IP front-endu pro příchozí hello zatížení nástroje pro vyrovnávání zatížení sítě a back-end adresy fondu tooreceive hello přenosy přesměrované vyrovnáváním zatížení.
+Nastavení front-endového fondu IP adres pro příchozí síťový provoz nástroje pro vyrovnávání zatížení a back-endového fondu adres pro přijímání provozu s vyrovnáváním zatížení.
 
 ### <a name="step-1"></a>Krok 1
 
-Vytvoření fondu IP front-endu pomocí hello privátní IP adresu 10.0.2.5 pro hello podsíť 10.0.2.0/24 kterým bude hello příchozí síťový provoz koncový bod.
+Vytvořte front-endový fond IP adres pomocí privátní IP adresy 10.0.2.5 pro podsíť 10.0.2.0/24, která je koncovým bodem příchozího síťového provozu.
 
 ```powershell
 $frontendIP = New-AzureRmLoadBalancerFrontendIpConfig -Name LB-Frontend -PrivateIpAddress 10.0.2.5 -SubnetId $vnet.subnets[0].Id
@@ -121,15 +123,15 @@ $frontendIP = New-AzureRmLoadBalancerFrontendIpConfig -Name LB-Frontend -Private
 
 ### <a name="step-2"></a>Krok 2
 
-Nastavení fondu back-end adresy použít tooreceive příchozí provoz z fondu IP front-endu:
+Nastavte back-endový fond adres, který slouží k přijímání příchozího provozu z front-endového fondu IP adres:
 
 ```powershell
 $beaddresspool= New-AzureRmLoadBalancerBackendAddressPoolConfig -Name "LB-backend"
 ```
 
-## <a name="create-lb-rules-nat-rules-probe-and-load-balancer"></a>Vytvoření pravidel nástroje pro vyrovnávání zatížení, pravidel překladu adres (NAT), testu a nástroje pro vyrovnávání zatížení
+## <a name="create-load-balancing-rules-nat-rules-probe-and-load-balancer"></a>Vytvoření pravidel vyrovnávání zatížení, pravidel překladu adres (NAT), testu a nástroje pro vyrovnávání zatížení
 
-Po vytvoření hello fond IP front-endu a back-endových adres hello, budete potřebovat toocreate hello pravidla, která bude patřit toohello prostředek pro vyrovnávání zatížení:
+Po vytvoření front-endového fondu IP adres a back-endového fondu adres vytvořte pravidla, která patří do prostředku nástroje pro vyrovnávání zatížení:
 
 ### <a name="step-1"></a>Krok 1
 
@@ -143,16 +145,16 @@ $healthProbe = New-AzureRmLoadBalancerProbeConfig -Name "HealthProbe" -RequestPa
 $lbrule = New-AzureRmLoadBalancerRuleConfig -Name "HTTP" -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $healthProbe -Protocol Tcp -FrontendPort 80 -BackendPort 80
 ```
 
-výše uvedený příklad Hello vytváří hello následující položky:
+Předchozí příklad vytváří následující položky:
 
-* Pravidlo NAT, které všechny příchozí přenosy tooport 3441 přejde tooport 3389.
-* druhé pravidlo NAT, která všechny příchozí přenosy tooport 3442 přejde tooport 3389.
-* pravidlo Vyrovnávání zatížení, která načte vyrovnávat veškerý příchozí provoz na veřejném portu 80 toolocal portu 80 ve fondu adres hello back-end.
-* pravidlo testu, který zkontroluje hello stav pro cestu "HealthProbe.aspx"
+* Pravidlo překladu adres (NAT), podle kterého je veškerý příchozí provoz na portu 3441 směrován na port 3389.
+* Druhé pravidlo překladu adres (NAT), podle kterého je veškerý příchozí provoz na portu 3442 směrován na port 3389.
+* Pravidlo nástroje pro vyrovnávání zatížení, které vyrovnává zatížení veškerého příchozího provozu na veřejném portu 80 na místní port 80 v back-endovém fondu adres.
+* Pravidlo testu, které kontroluje stav na stránce HealthProbe.aspx.
 
 ### <a name="step-2"></a>Krok 2
 
-Vytvořte nástroj pro vyrovnávání zatížení hello společně přidání všechny objekty (pravidla NAT, pravidla nástroje pro vyrovnávání zatížení, test konfigurace):
+Vytvořte nástroj pro vyrovnávání zatížení spojením všech objektů (pravidla překladu adres (NAT), pravidla nástroje pro vyrovnávání zatížení, konfigurace testů) dohromady:
 
 ```powershell
 $NRPLB = New-AzureRmLoadBalancer -ResourceGroupName "NRP-RG" -Name "NRP-LB" -Location "West US" -FrontendIpConfiguration $frontendIP -InboundNatRule $inboundNATRule1,$inboundNatRule2 -LoadBalancingRule $lbrule -BackendAddressPool $beAddressPool -Probe $healthProbe
@@ -160,11 +162,11 @@ $NRPLB = New-AzureRmLoadBalancer -ResourceGroupName "NRP-RG" -Name "NRP-LB" -Loc
 
 ## <a name="create-network-interfaces"></a>Vytvoření síťových rozhraní
 
-Po vytvoření hello interní vyrovnávání zátěže, třeba definovat rozhraní sítě, která bude moci přijmout hello příchozí skupinu s vyrovnáváním zatížení síťový provoz, pravidla NAT a kontroly. v takovém případě Hello síťové rozhraní konfigurované jednotlivě a lze přiřadit tooa virtuální počítač později.
+Po vytvoření interního nástroje pro vyrovnávání zatížení je potřeba definovat, která síťová rozhraní můžou přijímat příchozí síťový provoz s vyrovnáváním zatížení, pravidla překladu adres (NAT) a test. Síťové rozhraní je v tomto případě nakonfigurované samostatně a k virtuálnímu počítači jej lze přiřadit později.
 
 ### <a name="step-1"></a>Krok 1
 
-Získáte prostředek hello virtuální síť a podsíť toocreate síťových rozhraní:
+Získejte virtuální síť a podsíť prostředku pro vytvoření síťových rozhraní:
 
 ```powershell
 $vnet = Get-AzureRmVirtualNetwork -Name NRPVNet -ResourceGroupName NRP-RG
@@ -172,7 +174,7 @@ $vnet = Get-AzureRmVirtualNetwork -Name NRPVNet -ResourceGroupName NRP-RG
 $backendSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name LB-Subnet-BE -VirtualNetwork $vnet
 ```
 
-Tento krok vytvoří rozhraní sítě, která bude patřit toohello fond back-end, Vyrovnávání zatížení a přidružit hello první pravidlo NAT RDP pro toto síťové rozhraní:
+V tomto kroku se vytvoří síťové rozhraní, které patří do back-endového fondu nástroje pro vyrovnávání zatížení, a k němu se přidruží první pravidlo překladu adres (NAT) pro protokol RDP:
 
 ```powershell
 $backendnic1= New-AzureRmNetworkInterface -ResourceGroupName "NRP-RG" -Name lb-nic1-be -Location "West US" -PrivateIpAddress 10.0.2.6 -Subnet $backendSubnet -LoadBalancerBackendAddressPool $nrplb.BackendAddressPools[0] -LoadBalancerInboundNatRule $nrplb.InboundNatRules[0]
@@ -182,13 +184,13 @@ $backendnic1= New-AzureRmNetworkInterface -ResourceGroupName "NRP-RG" -Name lb-n
 
 Vytvořte druhé síťové rozhraní s názvem: LB-Nic2-BE:
 
-Tento krok vytvoří druhé síťové rozhraní, přiřazení toohello stejné Vyrovnávání zatížení zpět ukončení fondu a přidružení hello druhé pravidlo NAT pro RDP vytvořit:
+V tomto kroku se vytvoří druhé síťové rozhraní, přiřadí se ke stejnému back-endovému fondu nástroje pro vyrovnávání zatížení a přidruží se k němu druhé pravidlo překladu adres (NAT) vytvořené pro protokol RDP:
 
 ```powershell
 $backendnic2= New-AzureRmNetworkInterface -ResourceGroupName "NRP-RG" -Name lb-nic2-be -Location "West US" -PrivateIpAddress 10.0.2.7 -Subnet $backendSubnet -LoadBalancerBackendAddressPool $nrplb.BackendAddressPools[0] -LoadBalancerInboundNatRule $nrplb.InboundNatRules[1]
 ```
 
-Konečný výsledek Hello zobrazí hello následující:
+Konečný výsledek zobrazí následující výstup:
 
     $backendnic1
 
@@ -240,17 +242,17 @@ Očekávaný výstup:
 
 ### <a name="step-3"></a>Krok 3
 
-Používejte hello příkaz Add-AzureRmVMNetworkInterface tooassign hello seskupování tooa virtuální počítač.
+Pomocí příkazu Add-AzureRmVMNetworkInterface přiřaďte síťové rozhraní k virtuálnímu počítači.
 
-Můžete najít hello pokyny krok za krokem toocreate virtuálního počítače a přiřaďte tooa seskupování následující dokumentaci hello: [vytvoření virtuálního počítače Azure pomocí prostředí PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json).
+Podrobné pokyny k vytvoření virtuálního počítače a jeho přiřazení k síťovému rozhraní najdete v dokumentaci: [Vytvoření virtuálního počítače Azure pomocí prostředí PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json).
 
-## <a name="add-hello-network-interface"></a>Přidejte hello síťové rozhraní
+## <a name="add-the-network-interface"></a>Přidání síťového rozhraní
 
-Pokud již máte virtuální počítač vytvořený, můžete přidat hello síťové rozhraní s hello následující kroky:
+Pokud již máte vytvořený virtuální počítač, můžete síťové rozhraní přidat následujícím postupem:
 
 ### <a name="step-1"></a>Krok 1
 
-Načte prostředek pro vyrovnávání zatížení hello do proměnné (Pokud jste to neudělali, ještě). Proměnná Hello používá je názvem $lb a hello použijte stejné názvy z prostředek pro vyrovnávání zatížení hello vytvořili výše.
+Načtěte prostředek nástroje pro vyrovnávání zatížení do proměnné (pokud jste tak ještě neučinili). Použijte proměnnou s názvem $lb a stejné názvy z prostředku nástroje pro vyrovnávání zatížení, který jste vytvořili v předchozích krocích.
 
 ```powershell
 $lb = Get-AzureRmLoadBalancer –name NRP-LB -resourcegroupname NRP-RG
@@ -258,15 +260,15 @@ $lb = Get-AzureRmLoadBalancer –name NRP-LB -resourcegroupname NRP-RG
 
 ### <a name="step-2"></a>Krok 2
 
-Načíst proměnnou tooa konfigurace back-end hello.
+Načtěte konfiguraci back-endu do proměnné.
 
 ```powershell
-$backend = Get-AzureRmLoadBalancerBackendAddressPoolConfig -name backendpool1 -LoadBalancer $lb
+$backend = Get-AzureRmLoadBalancerBackendAddressPoolConfig -name LB-backend -LoadBalancer $lb
 ```
 
 ### <a name="step-3"></a>Krok 3
 
-Zatížení hello už vytvořené síťové rozhraní do proměnné. Název proměnné Hello používá je $ síťový adaptér. název síťového rozhraní Hello používá stejný je hello z výše uvedeném příkladu hello.
+Načtěte již vytvořené síťové rozhraní do proměnné. Název této proměnné je $nic. Název síťového rozhraní je stejný jako v předchozím příkladu.
 
 ```powershell
 $nic = Get-AzureRmNetworkInterface –name lb-nic1-be -resourcegroupname NRP-RG
@@ -274,7 +276,7 @@ $nic = Get-AzureRmNetworkInterface –name lb-nic1-be -resourcegroupname NRP-RG
 
 ### <a name="step-4"></a>Krok 4
 
-Změna konfigurace back-end hello hello síťového rozhraní.
+Změňte konfiguraci back-endu na síťovém rozhraní.
 
 ```powershell
 $nic.IpConfigurations[0].LoadBalancerBackendAddressPools=$backend
@@ -282,18 +284,18 @@ $nic.IpConfigurations[0].LoadBalancerBackendAddressPools=$backend
 
 ### <a name="step-5"></a>Krok 5
 
-Uložte objekt rozhraní sítě hello.
+Uložte objekt síťového rozhraní.
 
 ```powershell
 Set-AzureRmNetworkInterface -NetworkInterface $nic
 ```
 
-Po přidání toohello fond back-end Vyrovnávání zatížení rozhraní sítě začne přijímat síťové přenosy podle pravidel pro tento prostředek pro vyrovnávání zatížení vyrovnávání zatížení hello.
+Síťového rozhraní po přidání do back-endového fondu nástroje pro vyrovnávání zatížení začne přijímat síťový provoz na základě pravidel vyrovnávání zatížení pro daný prostředek nástroje pro vyrovnávání zatížení.
 
 ## <a name="update-an-existing-load-balancer"></a>Aktualizace stávajícího nástroje pro vyrovnávání zatížení
 
 ### <a name="step-1"></a>Krok 1
-Použití služby Vyrovnávání zatížení hello z hello příkladu výše, přiřadíte toovariable objekt nástroje pro vyrovnávání zatížení $slb pomocí Get-AzureRmLoadBalancer
+Použijte nástroj pro vyrovnávání zatížení z předchozího příkladu k přiřazení objektu nástroje pro vyrovnávání zatížení do proměnné $slb pomocí příkazu Get-AzureRmLoadBalancer.
 
 ```powershell
 $slb = Get-AzureRmLoadBalancer -Name NRPLB -ResourceGroupName NRP-RG
@@ -301,7 +303,7 @@ $slb = Get-AzureRmLoadBalancer -Name NRPLB -ResourceGroupName NRP-RG
 
 ### <a name="step-2"></a>Krok 2
 
-V následujícím příkladu hello přidáte nové pravidlo příchozí NAT přes port 81 v hello front end a port 8181 pro hello back end fondu tooan existující nástroj pro vyrovnávání zatížení
+V následujícím příkladu do stávajícího nástroje pro vyrovnávání zatížení přidáte nové pravidlo příchozího překladu adres (NAT) pomocí portu 81 ve front-endovém fondu a portu 8181 pro back-endový fond.
 
 ```powershell
 $slb | Add-AzureRmLoadBalancerInboundNatRuleConfig -Name NewRule -FrontendIpConfiguration $slb.FrontendIpConfigurations[0] -FrontendPort 81  -BackendPort 8181 -Protocol Tcp
@@ -309,7 +311,7 @@ $slb | Add-AzureRmLoadBalancerInboundNatRuleConfig -Name NewRule -FrontendIpConf
 
 ### <a name="step-3"></a>Krok 3
 
-Uložte novou konfiguraci hello pomocí Set-AzureLoadBalancer
+Uložte novou konfiguraci pomocí příkazu Set-AzureLoadBalancer.
 
 ```powershell
 $slb | Set-AzureRmLoadBalancer
@@ -317,14 +319,14 @@ $slb | Set-AzureRmLoadBalancer
 
 ## <a name="remove-a-load-balancer"></a>Odebrání nástroje pro vyrovnávání zatížení
 
-Použít hello příkaz Remove-AzureRmLoadBalancer toodelete Vyrovnávání zatížení dříve vytvořenou s názvem "NRP-LB" ve skupině prostředků názvem "NRP-RG"
+Použijte příkaz Remove-AzureRmLoadBalancer k odstranění dříve vytvořeného nástroje pro vyrovnávání zatížení s názvem NRP-LB ve skupině prostředků s názvem NRP-RG.
 
 ```powershell
 Remove-AzureRmLoadBalancer -Name NRPLB -ResourceGroupName NRP-RG
 ```
 
 > [!NOTE]
-> Můžete použít hello volitelný přepínač - Force tooavoid hello řádku pro odstranění.
+> Můžete použít volitelný přepínač -Force, abyste se vyhnuli zobrazení výzvy k odstranění.
 
 ## <a name="next-steps"></a>Další kroky
 

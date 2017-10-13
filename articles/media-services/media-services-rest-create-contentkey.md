@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate obsahu klíče se zbytkem | Microsoft Docs"
-description: "Zjistěte, jak toocreate obsahu klíče, které zajišťují zabezpečený přístup k tooAssets."
+title: "Vytváření obsahu klíčů se zbytkem | Microsoft Docs"
+description: "Informace o vytváření obsahu klíče, které zajišťují zabezpečený přístup k prostředkům."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: juliako
-ms.openlocfilehash: cb3b74bdb72c43ab5b375c0376b6704f4a93bb8b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ece09277d26fafb7c0eebf62730031c4dc01bfe0
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-content-keys-with-rest"></a>Vytváření obsahu klíčů se zbytkem
 > [!div class="op_single_selector"]
@@ -27,26 +27,26 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Media Services umožňuje toocreate nové a doručovat šifrované prostředky. A **ContentKey** poskytuje zabezpečený přístup tooyour **Asset**s. 
+Služba Media Services umožňuje vytvořit nový a doručovat šifrované prostředky. A **ContentKey** zajišťuje zabezpečený přístup k vaší **Asset**s. 
 
-Při vytváření nového prostředku (například před [nahrání souborů](media-services-rest-upload-files.md)), můžete zadat následující možnosti šifrování hello: **StorageEncrypted**, **CommonEncryptionProtected**, nebo **EnvelopeEncryptionProtected**. 
+Při vytváření nového prostředku (například před [nahrání souborů](media-services-rest-upload-files.md)), můžete zadat následující možnosti šifrování: **StorageEncrypted**, **CommonEncryptionProtected**, nebo **EnvelopeEncryptionProtected**. 
 
-Při předvádění prostředky tooyour klientů, můžete [konfigurace pro toobe prostředky dynamicky šifrovat](media-services-rest-configure-asset-delivery-policy.md) s jedním z následujících dvou šifrování hello: **DynamicEnvelopeEncryption** nebo  **DynamicCommonEncryption**.
+Při předvádění prostředky pro klienty, můžete [konfigurace pro prostředky dynamicky šifrovat](media-services-rest-configure-asset-delivery-policy.md) s jedním z následujících dvou šifrování: **DynamicEnvelopeEncryption** nebo  **DynamicCommonEncryption**.
 
-Šifrované prostředky mají toobe přidružené **ContentKey**s. Tento článek popisuje, jak toocreate klíč obsahu.
+Šifrované prostředky musí být přidružený **ContentKey**s. Tento článek popisuje postup vytvoření klíče k obsahu.
 
-Hello následují obecné kroky pro generování obsahu klíčů, které se spojují s prostředky, které chcete toobe zašifrovaná. 
+Následují obecné kroky pro generování obsahu klíčů, které se spojují s prostředky, které chcete šifrovat. 
 
 1. Náhodně generovat klíče AES 16 bajtů (pro běžné a obálky šifrování) nebo klíče AES 32 bajtů (pro šifrování úložiště). 
    
-    Bude jím hello klíč obsahu pro váš asset, což znamená, všechny soubory, které jsou spojené s tohoto prostředku bude potřebovat toouse hello stejný klíč obsahu během dešifrování. 
-2. Volání hello [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) a [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) metody tooget hello správné certifikátu X.509, který musí být použité tooencrypt klíč obsahu.
-3. Šifrování klíče obsahu hello veřejným klíčem hello certifikát X.509. 
+    Bude jím klíč k obsahu pro váš asset, což znamená, že všechny soubory přidružené k této asset bude nutné použít stejný klíč k obsahu během dešifrování. 
+2. Volání [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) a [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) metod k získání správného certifikátu X.509, který použije k zašifrování obsahu klíče.
+3. Zašifrování obsahu klíče pomocí veřejného klíče certifikátu X.509. 
    
-   Media Services .NET SDK používá RSA s OAEP při provádění šifrování hello.  Můžete zobrazit příklad v hello [EncryptSymmetricKeyData funkce](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
-4. Vytvoří hodnotu kontrolního součtu (podle hello PlayReady AES – algoritmus klíče kontrolního součtu) pomocí identifikátoru klíče hello a klíč obsahu. Další informace najdete v tématu nachází hello hello PlayReady hlavičky objektu dokumentu v části "PlayReady AES klíč kontrolního součtu algoritmus" [zde](http://www.microsoft.com/playready/documents/).
+   Media Services .NET SDK používá RSA s OAEP při provádění šifrování.  Můžete zobrazit příklad v [EncryptSymmetricKeyData funkce](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
+4. Vytvoří hodnotu kontrolního součtu (založený na algoritmu PlayReady AES klíče kontrolního součtu) pomocí identifikátoru klíče a klíč obsahu. Další informace najdete v části "PlayReady AES klíč kontrolního součtu algoritmus" dokumentu PlayReady záhlaví objekt nachází [zde](http://www.microsoft.com/playready/documents/).
    
-   Následuje příklad rozhraní .NET, která vypočítá kontrolního součtu hello pomocí hello GUID součástí identifikátoru klíče hello Hello a hello zrušte klíč obsahu.
+   Následuje příklad rozhraní .NET, která vypočítá kontrolního součtu pomocí identifikátoru GUID části identifikátoru klíče a vymazat obsah klíče.
 
          public static string CalculateChecksum(byte[] contentKey, Guid keyId)
          {
@@ -65,24 +65,24 @@ Hello následují obecné kroky pro generování obsahu klíčů, které se spoj
             Array.Copy(array, array2, 8);
             return Convert.ToBase64String(array2);
          }
-5. Vytvořte klíč obsahu hello s hello **EncryptedContentKey** (převést řetězec s kódováním toobase64), **ProtectionKeyId**, **ProtectionKeyType**,  **ContentKeyType**, a **kontrolního součtu** hodnoty, které jste dostali v předchozích krocích.
-6. Přidružení hello **ContentKey** entita s vaší **Asset** entity prostřednictvím operace hello $links.
+5. Vytvořte klíč obsahu se **EncryptedContentKey** (převést na řetězec s kódováním base64), **ProtectionKeyId**, **ProtectionKeyType**,  **ContentKeyType**, a **kontrolního součtu** hodnoty, které jste dostali v předchozích krocích.
+6. Přidružení **ContentKey** entita s vaší **Asset** entity prostřednictvím operace $links.
 
-Všimněte si, že v tomto tématu nezobrazuje jak šifrování klíče hello toogenerate AES klíč a vypočítat kontrolní součet hello. 
+Všimněte si, že v tomto tématu není ukazují, jak generovat klíč standardu AES, šifrování klíče a vypočítat kontrolní součet. 
 
 >[!NOTE]
 
 >Při přístupu k entity ve službě Media Services, musíte nastavit specifická pole hlaviček a hodnoty ve své žádosti HTTP. Další informace najdete v tématu [instalační program pro Media Services REST API vývoj](media-services-rest-how-to-use.md).
 
-## <a name="connect-toomedia-services"></a>Připojení služby tooMedia
+## <a name="connect-to-media-services"></a>Připojení ke službě Media Services
 
-Informace o tom, jak tooconnect toohello AMS rozhraní API, najdete v části [hello přístup k rozhraní API služby Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Informace o tom, jak připojit k rozhraní API pro AMS najdete v tématu [přístup k Azure Media Services API pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
 >[!NOTE]
->Po úspěšném připojení toohttps://media.windows.net, obdržíte 301 přesměrování zadání jiném identifikátoru URI Media Services. Je nutné provést následující volání toohello nový identifikátor URI.
+>Po úspěšném připojení k https://media.windows.net, obdržíte 301 přesměrování zadání jiném identifikátoru URI Media Services. Je nutné provést následující volání nový identifikátor URI.
 
-## <a name="retrieve-hello-protectionkeyid"></a>Načtení hello ProtectionKeyId
-Hello následující příklad ukazuje, jak tooretrieve hello ProtectionKeyId, kryptografický otisk certifikátu pro certifikát hello, které musí použít při šifrování klíče obsahu. Proveďte tento krok toomake jistotu, že už máte příslušný certifikát hello na počítači.
+## <a name="retrieve-the-protectionkeyid"></a>Načtení ProtectionKeyId
+Následující příklad ukazuje, jak načíst ProtectionKeyId, kryptografický otisk certifikátu pro certifikát, který je nutné použít při šifrování klíče obsahu. Proveďte tento krok, abyste měli jistotu, že už máte příslušný certifikát na počítači.
 
 Žádost:
 
@@ -113,8 +113,8 @@ Odpověď:
 
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#Edm.String","value":"7D9BB04D9D0A4A24800CADBFEF232689E048F69C"}
 
-## <a name="retrieve-hello-protectionkey-for-hello-protectionkeyid"></a>Načtení hello ProtectionKey pro hello ProtectionKeyId
-Hello následující příklad ukazuje, jak certifikát X.509 hello tooretrieve pomocí hello ProtectionKeyId jste obdrželi v předchozím kroku hello.
+## <a name="retrieve-the-protectionkey-for-the-protectionkeyid"></a>Získání ProtectionKey ProtectionKeyId
+Následující příklad ukazuje, jak načíst pomocí ProtectionKeyId certifikátu X.509, který že jste dostali v předchozím kroku.
 
 Žádost:
 
@@ -149,17 +149,17 @@ Odpověď:
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#Edm.String",
     "value":"MIIDSTCCAjGgAwIBAgIQqf92wku/HLJGCbMAU8GEnDANBgkqhkiG9w0BAQQFADAuMSwwKgYDVQQDEyN3YW1zYmx1cmVnMDAxZW5jcnlwdGFsbHNlY3JldHMtY2VydDAeFw0xMjA1MjkwNzAwMDBaFw0zMjA1MjkwNzAwMDBaMC4xLDAqBgNVBAMTI3dhbXNibHVyZWcwMDFlbmNyeXB0YWxsc2VjcmV0cy1jZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzR0SEbXefvUjb9wCUfkEiKtGQ5Gc328qFPrhMjSo+YHe0AVviZ9YaxPPb0m1AaaRV4dqWpST2+JtDhLOmGpWmmA60tbATJDdmRzKi2eYAyhhE76MgJgL3myCQLP42jDusWXWSMabui3/tMDQs+zfi1sJ4Ch/lm5EvksYsu6o8sCv29VRwxfDLJPBy2NlbV4GbWz5Qxp2tAmHoROnfaRhwp6WIbquk69tEtu2U50CpPN2goLAqx2PpXAqA+prxCZYGTHqfmFJEKtZHhizVBTFPGS3ncfnQC9QIEwFbPw6E5PO5yNaB68radWsp5uvDg33G1i8IT39GstMW6zaaG7cNQIDAQABo2MwYTBfBgNVHQEEWDBWgBCOGT2hPhsvQioZimw8M+jOoTAwLjEsMCoGA1UEAxMjd2Ftc2JsdXJlZzAwMWVuY3J5cHRhbGxzZWNyZXRzLWNlcnSCEKn/dsJLvxyyRgmzAFPBhJwwDQYJKoZIhvcNAQEEBQADggEBABcrQPma2ekNS3Wc5wGXL/aHyQaQRwFGymnUJ+VR8jVUZaC/U/f6lR98eTlwycjVwRL7D15BfClGEHw66QdHejaViJCjbEIJJ3p2c9fzBKhjLhzB3VVNiLIaH6RSI1bMPd2eddSCqhDIn3VBN605GcYXMzhYp+YA6g9+YMNeS1b+LxX3fqixMQIxSHOLFZ1G/H2xfNawv0VikH3djNui3EKT1w/8aRkUv/AAV0b3rYkP/jA1I0CPn0XFk7STYoiJ3gJoKq9EMXhit+Iwfz0sMkfhWG12/XO+TAWqsK1ZxEjuC9OzrY7pFnNxs4Mu4S8iinehduSpY+9mDd3dHynNwT4="}
 
-## <a name="create-hello-contentkey"></a>Vytvoření hello ContentKey
-Po načíst certifikát X.509 hello a používá svůj veřejný klíč tooencrypt vašeho obsahu klíče, vytvoření **ContentKey** entity a sady jeho vlastnost hodnoty odpovídajícím způsobem.
+## <a name="create-the-contentkey"></a>Vytvořte ContentKey
+Po načíst certifikát X.509 a používá svůj veřejný klíč k šifrování vašeho obsahu klíče, vytvoření **ContentKey** entity a sady jeho vlastnost hodnoty odpovídajícím způsobem.
 
-Jedna z hodnot hello musí nastavit při vytváření hello obsahu, že je klíč hello typu. Vyberte jednu z následujících hodnot hello.
+Jedna z hodnot musí nastavit při vytváření obsahu je typ klíče. Vyberte jednu z následujících hodnot.
 
     public enum ContentKeyType
     {
         /// <summary>
         /// Specifies a content key for common encryption.
         /// </summary>
-        /// <remarks>This is hello default value.</remarks>
+        /// <remarks>This is the default value.</remarks>
         CommonEncryption = 0,
 
         /// <summary>
@@ -179,7 +179,7 @@ Jedna z hodnot hello musí nastavit při vytváření hello obsahu, že je klí�
     }
 
 
-Následující příklad ukazuje, jak Hello toocreate **ContentKey** s **ContentKeyType** nastavení pro šifrování úložiště ("1") a hello **ProtectionKeyType** nastavit příliš "0" tooindicate, který hello ochrany klíče Id je kryptografický otisk certifikátu X.509 hello.  
+Následující příklad ukazuje, jak vytvořit **ContentKey** s **ContentKeyType** nastavit šifrování úložiště ("1") a **ProtectionKeyType** nastaven na hodnotu "0" k označení, že klíč ochrany Id je kryptografický otisk certifikátu X.509.  
 
 Žádost
 
@@ -229,8 +229,8 @@ Odpověď:
     "ProtectionKeyType":0,
     "Checksum":"calculated checksum"}
 
-## <a name="associate-hello-contentkey-with-an-asset"></a>Přidružit hello ContentKey prostředek
-Po vytvoření hello ContentKey, přidružte ho Asset pomocí operace hello $links, jak ukazuje následující příklad hello:
+## <a name="associate-the-contentkey-with-an-asset"></a>ContentKey přidružit prostředek
+Po vytvoření ContentKey, přidružte ho Asset pomocí operace $links, jak je znázorněno v následujícím příkladu:
 
 Žádost:
 

@@ -1,5 +1,5 @@
 ---
-title: "aaaLogic aplikace B2B edifact dekódovat vyřešit UNH2.5 - Azure Logic Apps | Microsoft Docs"
+title: "B2B aplikace logiky edifact dekódovat vyřešit UNH2.5 - Azure Logic Apps | Microsoft Docs"
 description: "Azure B2B aplikace logiky edifact dekódovat vyřešit UNH2.5"
 services: logic-apps
 documentationcenter: .net,nodejs,java
@@ -14,40 +14,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 6d85242d0f828fa52cdc9689938f3ba1e51b1183
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 62ad8183cc6e9f56255b2729a04ee7710d00a21a
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toohandle-edifact-documents-having-unh25-segment"></a>Jak toohandle EDIFACT dokumentů s UNH2.5 segmentu
-Když je k dispozici v dokumentu EDIFACT hello UNH2.5, ho se používá pro vyhledávání schématu. 
+# <a name="how-to-handle-edifact-documents-having-unh25-segment"></a>Postupy: zpracování EDIFACT dokumenty s UNH2.5 segmentu
+Pokud je k dispozici v dokumentu EDIFACT UNH2.5, ho se používá pro vyhledávání schématu. 
 
-Příklad: pole UNH hello je **EAN008** ve zprávě EDIFACT hello  
+Příklad: Pole UNH je **EAN008** ve zprávě EDIFACT  
 UNH + SSDD1 + OBJEDNÁVKY: D: 03B: ZRUŠENÍ:**EAN008**.  
 
-Kroky toofollow toohandle uvítací zprávu 
-1. Aktualizovat schéma hello
-2. Zkontrolujte nastavení smlouvy hello  
+Postup pro zpracování zprávy 
+1. Aktualizovat schéma.
+2. Zkontrolujte nastavení smlouvy  
 
-## <a name="update-hello-schema"></a>Aktualizovat schéma hello
-tooprocess uvítací zprávu, budete potřebovat toodeploy schématu s název hello UNH2.5 kořenového uzlu.  Pro danou příklad, bude název kořenové schématu hello **EFACT_D03B_ORDERS_EAN008**  
+## <a name="update-the-schema"></a>Aktualizovat schéma.
+Zpracovat zprávu, budete muset nasadit schématu s UNH2.5 název kořenového uzlu.  Pro danou příklad, název kořenového schématu by **EFACT_D03B_ORDERS_EAN008**  
 
-Pro každý D03B_ORDERS různých UNH2.5 segmentu byste měli toodeploy jednotlivých schématu.  
+Pro každý D03B_ORDERS různých UNH2.5 segmentu je třeba nasadit jednotlivých schématu.  
 
-## <a name="add-schema-toohello-edifact-agreement"></a>Přidání smlouvy EDIFACT toohello schématu
+## <a name="add-schema-to-the-edifact-agreement"></a>Přidání schématu do smlouvy EDIFACT
 ### <a name="edifact-decode"></a>Dekódovat EDIFACT
-tooDecode hello příchozí zprávy, nakonfigurujte hello schématu v hello EDIFACT smlouvy obdrží nastavení
-1. Přidat účet integrace toohello schématu hello    
-2. Konfigurace hello schématu v hello EDIFACT smlouvy obdrží nastavení. 
-3. Vyberte smlouvy EDIFACT a klikněte na **upravit jako JSON**.  Přidejte hodnotu UNH2.5 v hello přijetí smlouvy **schemaReferences**
+Dekódování příchozí zprávy, se konfigurace schématu v EDIFACT smlouvy obdrží nastavení
+1. Přidat schéma k účtu integrace    
+2. Konfigurace schématu v EDIFACT smlouvy obdrží nastavení. 
+3. Vyberte smlouvy EDIFACT a klikněte na **upravit jako JSON**.  Přidejte hodnotu UNH2.5 Smlouvy přijímat **schemaReferences**
 ![](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image1.png)
 
 ### <a name="edifact-encode"></a>EDIFACT kódování
-tooEncode hello příchozí zprávy, nakonfigurujte hello schématu hello EDIFACT smlouvy odeslání
-1. Přidat účet integrace toohello schématu hello    
-2. Nakonfigurujte hello schématu hello EDIFACT smlouvy odeslání. 
-3. Vyberte smlouvy EDIFACT a klikněte na **upravit jako JSON**.  Přidejte hodnotu UNH2.5 v hello odeslat smlouvy **schemaReferences**
+Ke kódování příchozí zpráva, nakonfigurujte v nastavení odesílání smlouvy EDIFACT schéma
+1. Přidat schéma k účtu integrace    
+2. V nastavení odesílání smlouvy EDIFACT nakonfigurujte schématu. 
+3. Vyberte smlouvy EDIFACT a klikněte na **upravit jako JSON**.  Přidejte hodnotu UNH2.5 Smlouvy odeslat **schemaReferences**
 ![](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image2.png)
 
 ## <a name="next-steps"></a>Další kroky

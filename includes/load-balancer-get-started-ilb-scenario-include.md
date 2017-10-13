@@ -1,6 +1,6 @@
 ## <a name="scenario"></a>Scénář
 
-Při vytváření interní nástroj podle toohello podle scénáře
+Vytváříte interní nástroje pro vyrovnávání zatížení podle následujícího scénáře.
 
 ![POPISEK OBRÁZKU](./media/load-balancer-get-started-ilb-scenario-include/figure1.png)
 

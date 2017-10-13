@@ -1,6 +1,6 @@
 ---
-title: "Ukázky aaaAzure úložiště pomocí rozhraní .NET | Microsoft Docs"
-description: "Zobrazit, stáhnout a spustit ukázkový kód a aplikace pro Azure Storage. Umožňuje zjistit Začínáme ukázky pro objekty BLOB, fronty, tabulky a soubory, pomocí knihovny klienta úložiště hello .NET."
+title: "Ukázek Azure Storage pomocí rozhraní .NET | Microsoft Docs"
+description: "Zobrazit, stáhnout a spustit ukázkový kód a aplikace pro Azure Storage. Umožňuje zjistit Začínáme ukázky pro objekty BLOB, fronty, tabulky a soubory, pomocí knihovny klienta úložiště .NET."
 services: storage
 documentationcenter: na
 author: seguler
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 01/12/2017
 ms.author: seguler
-ms.openlocfilehash: 6b02b596f77845fc5fa474fa235c2b5df6e94ad7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 74777ed14ebb41ad31657f814e86724ff1e5e62e
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-storage-samples-using-net"></a>Ukázek Azure Storage pomocí rozhraní .NET
 
 ## <a name="net-sample-index"></a>Ukázka index rozhraní .NET
 
-Hello následující tabulka obsahuje přehled ukázek scénáře úložiště a hello zahrnutých v každém vzorku. Klikněte na hello odkazy tooview hello odpovídající ukázkový kód v Githubu.
+Následující tabulka obsahuje přehled o našem úložišti ukázky a pokryté v každé ukázkové scénáře. Kliknutím na odkazy k zobrazení odpovídající ukázkový kód v Githubu.
 
 <table style="font-size:90%"><thead><tr><th style="font-size:110%">Koncový bod</th><th style="font-size:110%">Scénář</th><th style="font-size:110%">Ukázkový kód</th></tr></thead><tbody> 
 <tr> 
@@ -197,13 +197,13 @@ Hello následující tabulka obsahuje přehled ukázek scénáře úložiště a
 
 ## <a name="azure-code-samples-library"></a>Knihovna Azure ukázky kódu
 
-tooview hello ucelenou ukázku knihovny, přejděte toohello [ukázky kódu Azure](https://azure.microsoft.com/resources/samples/?service=storage) knihovny, která obsahuje ukázky pro úložiště Azure, které můžete stáhnout a spustit místně. Hello knihovně ukázka kódu obsahuje ukázkový kód ve formátu ZIP. Alternativně můžete procházet a klonovat úložiště GitHub hello pro jednotlivé vzorky.
+Chcete-li zobrazit knihovně ucelenou ukázku, přejděte na [ukázky kódu Azure](https://azure.microsoft.com/resources/samples/?service=storage) knihovny, která obsahuje ukázky pro úložiště Azure, které můžete stáhnout a spustit místně. Knihovna ukázka kódu obsahuje ukázkový kód ve formátu ZIP. Alternativně můžete procházet a naklonujte úložiště GitHub pro jednotlivé vzorky.
 
 [!INCLUDE [storage-dotnet-samples-include](../../../includes/storage-dotnet-samples-include.md)]
 
 ## <a name="getting-started-guides"></a>Získávání příručky Začínáme
 
-Podívejte se na následující příručky, pokud hledáte pokyny, jak hello tooinstall a začátek práce s hello knihovny klienta Azure Storage.
+Pokud hledáte pokyny, jak nainstalovat a začít pracovat s knihovny klienta Azure Storage, projděte si následující příručky.
 
 * [Začínáme se službou objektů Blob v Azure v rozhraní .NET](../blobs/storage-dotnet-how-to-use-blobs.md)
 * [Začínáme se službou Azure fronty v rozhraní .NET](../storage-dotnet-how-to-use-queues.md)

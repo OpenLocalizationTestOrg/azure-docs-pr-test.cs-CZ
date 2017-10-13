@@ -1,6 +1,6 @@
 ---
-title: aaaDownload hello Azure SDK pro jazyk PHP
-description: "Zjistěte, jak toodownload a nainstalujte hello Azure SDK pro jazyk PHP."
+title: "Stažení sady Azure SDK pro PHP"
+description: "Zjistěte, jak stáhnout a nainstalovat sadu Azure SDK pro jazyk PHP."
 documentationcenter: php
 services: app-service\web
 author: allclark
@@ -14,41 +14,41 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 06/01/2016
 ms.author: allclark;yaqiyang
-ms.openlocfilehash: 94f56fc4f91bb175c08b9f7a43cb221c827694a8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: fd3d28b133ef8e646f5c2f1c1127f654daa61b95
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="download-hello-azure-sdk-for-php"></a>Stáhnout hello Azure SDK pro jazyk PHP
+# <a name="download-the-azure-sdk-for-php"></a>Stažení sady Azure SDK pro PHP
 ## <a name="overview"></a>Přehled
-Hello Azure SDK pro jazyk PHP obsahuje součásti, které vám umožňují toodevelop, nasazení a Správa aplikací PHP pro Azure. Konkrétně hello Azure SDK pro jazyk PHP obsahuje hello následující:
+Azure SDK pro jazyk PHP obsahuje součásti, které vám umožní vyvíjet, nasazovat a spravovat aplikace PHP pro Azure. Konkrétně sadu Azure SDK pro jazyk PHP zahrnuje následující:
 
-* **Hello PHP klientské knihovny pro Azure**. Tyto knihovny tříd poskytují rozhraní pro přístup k Azure funkcí, jako jsou služby pro správu dat a cloudových služeb.  
-* **Hello rozhraní příkazového řádku Azure pro Mac, Linux a Windows (Azure CLI)**. Toto je sadu příkazů pro nasazení a správu služby Azure, jako jsou weby Azure a virtuálních počítačích Azure. rozhraní příkazového řádku Azure pracovní na jakékoli platformě, včetně Mac, Linux a Windows Hello.
+* **PHP klientské knihovny pro Azure**. Tyto knihovny tříd poskytují rozhraní pro přístup k Azure funkcí, jako jsou služby pro správu dat a cloudových služeb.  
+* **Rozhraní příkazového řádku Azure pro Mac, Linux a Windows (Azure CLI)**. Toto je sadu příkazů pro nasazení a správu služby Azure, jako jsou weby Azure a virtuálních počítačích Azure. Rozhraní příkazového řádku Azure práce na jakékoli platformě, včetně Mac, Linux a Windows.
 * **Prostředí Azure PowerShell (jenom Windows)**. To je sada rutin prostředí PowerShell pro nasazení a Správa služby Azure, jako je cloudových služeb a virtuálních počítačů.
-* **Hello (pouze Windows) Azure emulátorů**. Hello emulátorů výpočetního prostředí a úložiště jsou místní emulátorů cloudové služby a služby pro data, které vám umožňují tootest aplikace místně. Hello Azure emulátorů lze spustit pouze v systému Windows.
+* **(Jenom Windows) Azure emulátorů**. Emulátorů výpočetního prostředí a úložiště jsou místní emulátorů cloudové služby a služby pro data, které vám umožní testovat aplikaci místně. Emulátorů Azure lze spustit pouze v systému Windows.
 
-Hello části níže popisují, jak toodownload a nainstalujte hello komponent popsaných výše.
+V níže uvedených částech popisují, jak stáhnout a nainstalovat komponenty popsané výše.
 
-Hello pokyny v tomto tématu se předpokládá, že máte [PHP] [ install-php] nainstalována.
+Podle pokynů v tomto tématu se předpokládá, že máte [PHP] [ install-php] nainstalována.
 
 > [!NOTE]
-> PHP 5.5 nebo vyšší toouse hello PHP klientské knihovny musí mít pro Azure.
+> Musíte mít PHP 5.5 nebo vyšší použít knihovny klienta PHP pro Azure.
 > 
 > 
 
 ## <a name="php-client-libraries-for-azure"></a>Klientské knihovny PHP pro Azure
-Hello PHP klientské knihovny pro Azure poskytují rozhraní pro přístup k Azure funkcí, jako jsou služby pro správu dat a cloudové služby ve všech operačních systémech. Tyto knihovny se může nainstalovat prostřednictvím hello autora.
+PHP klientské knihovny pro Azure poskytují rozhraní pro přístup k Azure funkcí, jako jsou služby pro správu dat a cloudové služby ve všech operačních systémech. Tyto knihovny se může nainstalovat prostřednictvím autora.
 
-Informace o tom, jak toouse hello PHP klientské knihovny pro Azure najdete v tématu [jak tooUse hello služby objektů Blob][blob-service], [jak tooUse hello služby Table] [ table-service] a [jak tooUse hello služby front][queue-service].
+Informace o tom, jak použít knihovny klienta PHP pro Azure najdete v tématu [jak používat služby objektů Blob][blob-service], [použití služby Table] [ table-service]a [jak používat fronty služby][queue-service].
 
 ### <a name="install-via-composer"></a>Nainstalovat prostřednictvím autora
 1. [Nainstalovat Git][install-git].
 
-    > [AZURE.NOTE] V systému Windows budete také potřebovat proměnné prostředí PATH spustitelné tooyour Git tooadd hello.
+    > [AZURE.NOTE] V systému Windows bude také muset přidat Git spustitelný soubor do vaší proměnné prostředí PATH.
 
-1. Vytvořte soubor s názvem **composer.json** v kořenu projektu hello a přidejte následující kód tooit hello:
+1. Vytvořte soubor s názvem **composer.json** v kořenu projektu a přidejte do ní následující kód:
    
         {
             "require": {
@@ -61,17 +61,17 @@ Informace o tom, jak toouse hello PHP klientské knihovny pro Azure najdete v t�
         php composer.phar install
 
 ## <a name="azure-powershell-and-azure-emulators"></a>Prostředí Azure PowerShell a Azure emulátorů
-Prostředí Azure PowerShell je sada rutin prostředí PowerShell pro nasazení a Správa služby Azure (například cloudové služby a virtuální počítače). Hello Azure emulátorů jsou emulátorů cloudové služby a služby pro data, které vám umožňují tootest aplikace místně. Tyto součásti jsou podporovány pouze v systému Windows.
+Prostředí Azure PowerShell je sada rutin prostředí PowerShell pro nasazení a Správa služby Azure (například cloudové služby a virtuální počítače). Emulátorů Azure jsou emulátorů cloudové služby a služby pro data, které vám umožní testovat aplikaci místně. Tyto součásti jsou podporovány pouze v systému Windows.
 
-Hello doporučeným způsobem tooinstall prostředí Azure PowerShell a hello emulátorů Azure je toouse hello [instalačního programu webové platformy Microsoft][download-wpi]. Všimněte si, že je také možné tooinstall jiné komponenty, vývoj, například PHP, SQL Server, hello Drivers společnosti Microsoft pro systém SQL Server pro PHP a službě WebMatrix.
+Doporučený způsob, jak nainstalovat Azure PowerShell a emulátorů Azure je použití [instalačního programu webové platformy Microsoft][download-wpi]. Všimněte si, že můžete nainstalovat jiné komponenty, vývoj, například PHP, SQL Server, Drivers společnosti Microsoft pro systém SQL Server pro PHP a službě WebMatrix.
 
-Informace o tom najdete v části toouse prostředí Azure PowerShell [jak tooUse prostředí Azure PowerShell][powershell-tools].
+Informace o tom, jak pomocí prostředí Azure PowerShell najdete v tématu [jak používat Azure PowerShell][powershell-tools].
 
 ## <a name="azure-cli"></a>Azure CLI
-Hello rozhraní příkazového řádku Azure je sadu příkazů pro nasazení a správu služby Azure, jako jsou weby Azure a virtuálních počítačích Azure. Informace o instalaci rozhraní příkazového řádku Azure najdete v tématu [hello instalace rozhraní příkazového řádku Azure](cli-install-nodejs.md).
+Rozhraní příkazového řádku Azure je sadu příkazů pro nasazení a správu služby Azure, jako jsou weby Azure a virtuálních počítačích Azure. Informace o instalaci rozhraní příkazového řádku Azure najdete v tématu [nainstalovat Azure CLI](cli-install-nodejs.md).
 
 ## <a name="next-steps"></a>Další kroky
-Další informace najdete v tématu hello [středisku pro vývojáře PHP](/develop/php/).
+Další informace najdete v tématu [středisku pro vývojáře PHP](/develop/php/).
 
 [install-php]: http://www.php.net/manual/en/install.php
 [composer-github]: https://github.com/composer/composer

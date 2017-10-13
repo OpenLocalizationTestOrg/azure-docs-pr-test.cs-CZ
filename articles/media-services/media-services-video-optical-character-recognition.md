@@ -1,6 +1,6 @@
 ---
-title: "aaaDigitize textu pomocí Azure Media Analytics rozpoznávání znaků | Microsoft Docs"
-description: "Rozpoznávání Azure Media Analytics znaků (optické rozpoznávání znaků) umožňuje tooconvert textového obsahu v video soubory do upravovat, vyhledávat digitální textu.  To vám umožní tooautomate hello extrakce smysluplný metadata z hello signál video média."
+title: "Digitalizace textu pomocí Azure Media Analytics rozpoznávání znaků | Microsoft Docs"
+description: "Rozpoznávání Azure Media Analytics znaků (optické rozpoznávání znaků) umožňuje převést textového obsahu v video soubory upravovat, vyhledávat digitální text.  To umožňuje automatizovat extrakce smysluplný metadata z video signál média."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,40 +14,40 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: juliako
-ms.openlocfilehash: 0476c3ba3942b2c5182a34a429909adbf5c75ac9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 43f5b3a9bbec243e668c79702045094fcfedbdda
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="use-azure-media-analytics-tooconvert-text-content-in-video-files-into-digital-text"></a>Pomocí Azure Media Analytics tooconvert textového obsahu v video soubory do digitální textu
+# <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Použití Azure Media Analytics k převodu textového obsahu v videosouborů na digitální text
 ## <a name="overview"></a>Přehled
-Pokud potřebujete tooextract textového obsahu z video soubory a generovat upravovat, vyhledávat digitální text, měli byste použít rozpoznávání Azure Media Analytics znaků (optické rozpoznávání znaků). Tento procesor médií Azure zjistí textového obsahu v video soubory a vygeneruje textových souborů pro vaše použití. Rozpoznávání znaků umožňuje vám tooautomate hello extrakce smysluplný metadata z hello signál video média.
+Pokud potřebujete k extrahování obsahu text z video soubory a generování upravovat, vyhledávat digitální text, měli byste použít rozpoznávání Azure Media Analytics znaků (optické rozpoznávání znaků). Tento procesor médií Azure zjistí textového obsahu v video soubory a vygeneruje textových souborů pro vaše použití. Rozpoznávání znaků umožňuje automatizovat extrakce smysluplný metadata z video signál média.
 
-Při použití ve spojení s vyhledávacího webu, můžete snadno indexu médiu podle textu a vylepšit možnosti rozpoznání hello obsahu. To je velmi užitečné v vysoce textovou video, jako je záznam videa nebo snímek obrazovky prezentace prezentace. Hello procesor médií rozpoznávání znaků Azure je optimalizovaná pro digitální text.
+Při použití ve spojení s vyhledávacího webu, můžete snadno indexu médiu podle textu a vylepšit možnosti rozpoznání obsahu. To je velmi užitečné v vysoce textovou video, jako je záznam videa nebo snímek obrazovky prezentace prezentace. Procesor médií rozpoznávání znaků Azure je optimalizovaná pro digitální text.
 
-Hello **rozpoznávání Azure Media znaků** procesor médií je aktuálně ve verzi Preview.
+**Rozpoznávání Azure Media znaků** procesor médií je aktuálně ve verzi Preview.
 
-Toto téma uvádí podrobnosti o **rozpoznávání Azure Media znaků** a ukazuje, jak toouse ho pomocí sady Media Services SDK pro .NET. Další informace a příklady naleznete v tématu [tomto blogu](https://azure.microsoft.com/blog/announcing-video-ocr-public-preview-new-config/).
+Toto téma uvádí podrobnosti o **rozpoznávání Azure Media znaků** a ukazuje, jak pomocí sady Media Services SDK pro .NET. Další informace a příklady naleznete v tématu [tomto blogu](https://azure.microsoft.com/blog/announcing-video-ocr-public-preview-new-config/).
 
 ## <a name="ocr-input-files"></a>Vstupní soubory rozpoznávání znaků
-Video soubory. V současné době jsou podporovány následující formáty hello: MP4, MOV a WMV.
+Video soubory. V současné době jsou podporovány následující formáty: MP4, MOV a WMV.
 
 ## <a name="task-configuration"></a>Konfigurace úlohy
 Konfigurace úlohy (přednastavených). Při vytváření úlohy s **rozpoznávání Azure Media znaků**, je nutné zadat konfiguraci přednastavení pomocí XML nebo JSON. 
 
 >[!NOTE]
->modul rozpoznávání znaků Hello pouze vezme oblast bitové kopie s minimální pixelů toomaximum 32000 40 pixelů jako platnou hodnotu v obou výšky a šířky.
+>Modul rozpoznávání znaků pouze jako platný vstup v obou výška a šířka trvá oblast bitové kopie s minimální 40 pixelů na maximální délku 32 000 pixelů.
 >
 
 ### <a name="attribute-descriptions"></a>Atribut popisy
 | Název atributu | Popis |
 | --- | --- |
-|AdvancedOutput| Pokud jste nastavili AdvancedOutput tootrue, budou obsahovat výstup JSON hello poziční data pro každou jednoho slova (v přidání toophrases a oblasti). Pokud nechcete, aby toosee tyto podrobnosti, nastavte příznak toofalse hello. Hello výchozí hodnota je false. Další informace najdete v tématu [tomto blogu](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/).|
-| Jazyk |(volitelné) popisuje hello jazyk textu, pro které toolook. Jedna z následujících hello: AutoDetect (výchozí), Arabské, ChineseSimplified, ChineseTraditional, čeština dánština, holandština, angličtina, finština, francouzština, němčina, řečtina, maďarština, italština, japonština, korejština, norština, polština, portugalština, rumunština, ruština, SerbianCyrillic, SerbianLatin, slovenština, španělština, švédština, turečtina. |
-| TextOrientation |(volitelné) popisuje hello orientaci textu, pro které toolook.  "Left" prostředky, které hello horní části všechna písmena jsou odkazoval směrem doleva hello.  Výchozí text (např., které lze nalézt v podobě knihy) je možné volat "Nahoru" orientované.  Jedna z následujících hello: AutoDetect (výchozí), až, vpravo, dolů, doleva. |
-| TimeInterval |(volitelné) popisuje hello vzorkovací frekvenci.  Výchozí hodnota je každou sekundu 1/2.<br/>Formát JSON – hh: mm:. Služby Zabezpečené úložiště (výchozí 00:00:00.500)<br/>Formát XML – doba trvání primitivní W3C XSD (výchozí PT0.5) |
-| DetectRegions |(volitelné) Pole objektů DetectRegion určení oblasti v rámci video hello v textu, který toodetect.<br/>Objekt DetectRegion je tvořen hello následující čtyři celočíselné hodnoty:<br/>Vlevo – pixelů z levého okraje hello<br/>TOP – pixelů z hello horní margin<br/>Šířka – Šířka hello oblast v pixelech<br/>Výška – výšku oblasti hello v pixelech |
+|AdvancedOutput| Pokud nastavíte AdvancedOutput na hodnotu true, budou obsahovat výstup JSON poziční data pro každou jednoho slova (kromě frází a oblasti). Pokud nechcete tyto podrobnosti zobrazíte, nastavte příznak na hodnotu false. Výchozí hodnota je false. Další informace najdete v tématu [tomto blogu](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/).|
+| Jazyk |(volitelné) popisuje jazyk textu, pro které chcete hledat. Jeden z následujících: AutoDetect (výchozí), Arabské, ChineseSimplified, ChineseTraditional, čeština dánština, holandština, angličtina, finština, francouzština, němčina, řečtina, maďarština, italština, japonština, korejština, norština, polština, portugalština, rumunština, ruština, SerbianCyrillic, SerbianLatin, slovenština, španělština, švédština, turečtina. |
+| TextOrientation |(volitelné) popisuje orientaci textu, pro které chcete hledat.  "Vlevo" znamená horní části všechna písmena jsou nasměruje levé straně.  Výchozí text (např., které lze nalézt v podobě knihy) je možné volat "Nahoru" orientované.  Jeden z následujících: AutoDetect (výchozí), až, vpravo, dolů, doleva. |
+| TimeInterval |(volitelné) popisuje míry vzorkování.  Výchozí hodnota je každou sekundu 1/2.<br/>Formát JSON – hh: mm:. Služby Zabezpečené úložiště (výchozí 00:00:00.500)<br/>Formát XML – doba trvání primitivní W3C XSD (výchozí PT0.5) |
+| DetectRegions |(volitelné) Pole objektů DetectRegion zadáte oblasti v rámci video rámce, ve kterém k detekci text.<br/>Objekt DetectRegion sestávající ze čtyř logického:<br/>Vlevo – pixelů z levého okraje<br/>TOP – pixelů z horní okraj<br/>Šířka – Šířka oblasti v pixelech<br/>Výška – výšku oblasti v pixelech |
 
 #### <a name="json-preset-example"></a>Příklad přednastavené JSON
 
@@ -91,33 +91,33 @@ Konfigurace úlohy (přednastavených). Při vytváření úlohy s **rozpoznáv�
     </VideoOcrPreset>
 
 ## <a name="ocr-output-files"></a>Rozpoznávání znaků výstupní soubory
-výstup Hello hello rozpoznávání znaků média procesoru je soubor JSON.
+Výstup procesor médií rozpoznávání znaků je soubor JSON.
 
-### <a name="elements-of-hello-output-json-file"></a>Elementy výstupního souboru JSON, hello
-výstup Hello Video rozpoznávání znaků poskytuje segmentované čas data hello znaků, které jsou součástí videa.  Atributy, jako je například jazyk nebo orientaci toohone-in můžete použít na přesně hello slova, že máte zájem analýza. 
+### <a name="elements-of-the-output-json-file"></a>Elementy výstupního souboru JSON
+Výstup Video rozpoznávání znaků poskytuje segmentované čas data na znaky v videa nalezen.  Atributy, jako je například jazyk nebo orientaci můžete použít k hone-in na přesně slova, že máte zájem analýza. 
 
-výstup Hello obsahuje hello následující atributy:
+Výstup obsahuje následující atributy:
 
 | Element | Popis |
 | --- | --- |
-| Časová osa |"rysky" za sekundu hello videa |
+| Časová osa |"rysky" za sekundu videa |
 | Posun |časového posunu pro časová razítka. Ve verzi 1.0 rozhraní API, Video bude vždy 0. |
-| kmitočet snímků |Počet snímků za sekundu hello video |
-| Šířka |Šířka hello videa v pixelech |
-| Výška |Výška hello videa v pixelech |
-| fragmenty |pole založené na čase bloků dat videa, do které hello metadata blokové |
+| kmitočet snímků |Počet snímků za sekundu videa |
+| Šířka |Šířka videa v pixelech |
+| Výška |Výška videa v pixelech |
+| fragmenty |pole založené na čase bloků dat videa, do kterého je blokové metadata |
 | start |Počáteční čas fragment v "rysky" |
 | Doba trvání |Délka fragment v "rysky" |
-| interval |Interval jednotlivých událostí v rámci hello zadaný fragment |
+| Interval |Interval jednotlivých událostí v rámci dané fragment |
 | stránka events |pole obsahující oblastí |
 | Oblast |objekt představující zjistil slova nebo fráze |
-| Jazyk |jazyk textu hello zjistil v rámci oblasti |
-| orientace |orientaci textu hello zjistil v rámci oblasti |
+| Jazyk |jazyk textu zjistil v rámci oblasti |
+| orientace |orientaci textu zjistil v rámci oblasti |
 | řádky |pole řádků textu zjistil v rámci oblasti |
-| Text |vlastní text Hello |
+| Text |vlastní text |
 
 ### <a name="json-output-example"></a>Příklad výstupu JSON
-Hello následující příklad výstupu obsahuje obecné informace video hello a několik video fragmenty. V každé video fragmentu obsahuje každou oblast, který je zjišťován pomocí MP rozpoznávání znaků s jazykem hello a jeho orientaci textu. Hello oblast také obsahuje každý řádek aplikace word v této oblasti s textem hello řádku, pozice řádku hello a každý word informace (word obsahu, pozice a spolehlivosti) v tomto řádku. Následuje příklad Hello a umístíte některé vložené komentáře.
+Následující příklad výstupu obsahuje obecné informace videa a několik video fragmenty. V každé video fragmentu obsahuje každou oblast, který je zjišťován pomocí MP rozpoznávání znaků s jazyk a jeho orientaci textu. Oblast také obsahuje každý řádek aplikace word v této oblasti na řádku textu, pozice na řádku a každý word informace (word obsahu, pozice a spolehlivosti) v tomto řádku. Následuje příklad a umístíte některé vložené komentáře.
 
     {
         "version": 1, 
@@ -130,14 +130,14 @@ Hello následující příklad výstupu obsahuje obecné informace video hello a
             {
                 "start": 0, 
                 "duration": 180000, 
-                "interval": 90000,  // hello time information about this fragment
+                "interval": 90000,  // the time information about this fragment
                 "events": [
                     [
                        { 
-                            "region": { // hello detected region array in this fragment 
+                            "region": { // the detected region array in this fragment 
                                 "language": "English",  // region language
                                 "orientation": "Up",  // text orientation
-                                "lines": [  // line information array in this region, including hello text and hello position
+                                "lines": [  // line information array in this region, including the text and the position
                                     {
                                         "text": "One Two", 
                                         "left": 10, 
@@ -174,15 +174,15 @@ Hello následující příklad výstupu obsahuje obecné informace video hello a
 
 ## <a name="net-sample-code"></a>Ukázkový kód rozhraní .NET
 
-ukazuje programu Hello následující postup:
+Program zobrazí následující postup:
 
-1. Vytvořte asset a nahrajte soubor média do hello asset.
+1. Vytvořte asset a nahrajte soubor média do assetu.
 2. Vytvoření úlohy se souborem konfigurace nebo přednastavených rozpoznávání znaků.
-3. Stáhněte soubory JSON výstup hello. 
+3. Stáhněte soubory JSON výstupu. 
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
-Nastavení vývojového prostředí a naplnění souboru app.config hello s informace o připojení, jak je popsáno v [vývoj pro Media Services s .NET](media-services-dotnet-how-to-use.md). 
+Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
 
 #### <a name="example"></a>Příklad
 
@@ -198,7 +198,7 @@ Nastavení vývojového prostředí a naplnění souboru app.config hello s info
     {
         class Program
         {
-            // Read values from hello App.config file.
+            // Read values from the App.config file.
             private static readonly string _AADTenantDomain =
                 ConfigurationManager.AppSettings["AADTenantDomain"];
             private static readonly string _RESTAPIEndpoint =
@@ -214,17 +214,17 @@ Nastavení vývojového prostředí a naplnění souboru app.config hello s info
 
                 _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
 
-                // Run hello OCR job.
+                // Run the OCR job.
                 var asset = RunOCRJob(@"C:\supportFiles\OCR\presentation.mp4",
                                             @"C:\supportFiles\OCR\config.json");
 
-                // Download hello job output asset.
+                // Download the job output asset.
                 DownloadAsset(asset, @"C:\supportFiles\OCR\Output");
             }
 
             static IAsset RunOCRJob(string inputMediaFilePath, string configurationFile)
             {
-                // Create an asset and upload hello input media file toostorage.
+                // Create an asset and upload the input media file to storage.
                 IAsset asset = CreateAssetAndUploadSingleFile(inputMediaFilePath,
                     "My OCR Input Asset",
                     AssetCreationOptions.None);
@@ -232,38 +232,38 @@ Nastavení vývojového prostředí a naplnění souboru app.config hello s info
                 // Declare a new job.
                 IJob job = _context.Jobs.Create("My OCR Job");
 
-                // Get a reference tooAzure Media OCR.
+                // Get a reference to Azure Media OCR.
                 string MediaProcessorName = "Azure Media OCR";
 
                 var processor = GetLatestMediaProcessorByName(MediaProcessorName);
 
-                // Read configuration from hello specified file.
+                // Read configuration from the specified file.
                 string configuration = File.ReadAllText(configurationFile);
 
-                // Create a task with hello encoding details, using a string preset.
+                // Create a task with the encoding details, using a string preset.
                 ITask task = job.Tasks.AddNew("My OCR Task",
                     processor,
                     configuration,
                     TaskOptions.None);
 
-                // Specify hello input asset.
+                // Specify the input asset.
                 task.InputAssets.Add(asset);
 
-                // Add an output asset toocontain hello results of hello job.
+                // Add an output asset to contain the results of the job.
                 task.OutputAssets.AddNew("My OCR Output Asset", AssetCreationOptions.None);
 
-                // Use hello following event handler toocheck job progress.  
+                // Use the following event handler to check job progress.  
                 job.StateChanged += new EventHandler<JobStateChangedEventArgs>(StateChanged);
 
-                // Launch hello job.
+                // Launch the job.
                 job.Submit();
 
-                // Check job execution and wait for job toofinish.
+                // Check job execution and wait for job to finish.
                 Task progressJobTask = job.GetExecutionProgressTask(CancellationToken.None);
 
                 progressJobTask.Wait();
 
-                // If job state is Error, hello event handling
+                // If job state is Error, the event handling
                 // method for job progress should log errors.  Here we check
                 // for error state and exit if needed.
                 if (job.State == JobState.Error)

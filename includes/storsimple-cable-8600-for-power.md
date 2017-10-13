@@ -1,25 +1,25 @@
 <!--author=alkohli last changed: 9/16/15-->
 
 
-#### <a name="toocable-your-device-for-power"></a>toocable vašeho zařízení z hlediska výkonu
+#### <a name="to-cable-your-device-for-power"></a>Chcete-li zapojení kabeláže zařízení pro napájení
 > [!NOTE]
-> Obě skříně zařízení StorSimple zahrnují redundantní PCMs. Pro každou skříň hello PCMs musí být nainstalovaný a připojený toodifferent power zdroje tooensure vysokou dostupnost.
+> Obě skříně zařízení StorSimple zahrnují redundantní PCMs. Pro každou skříň musí být nainstalované PCMs a připojené k jiné power zdroje k zajištění vysoké dostupnosti.
 > 
 > 
 
-1. Zajistěte, aby hello napájení přepínače na všechny PCMs hello byla v pozici hello OFF.
-2. Na hello primární skříň připojte hello power kabelů tooboth PCMs. Hello napájecích kabelů jsou identifikovány červeně hello power kabelů diagramu níže.
-3. Ujistěte se, který hello dvě PCMs na hello primární skříň použití samostatných power zdroje.
-4. Připojte hello power kabelů toohello zapnutí jednotek pro distribuci rack hello jak je znázorněno v hello power kabelů diagram.
-5. Opakujte kroky 2 až 4 pro hello EBOD skříň.
-6. Zapněte hello EBOD skříň překlopení hello vypínač na každý PCM toohello ON pozici.
-7. Ověřte, že tento hello EBOD skříň zapnutý kontrolou, že jsou hello zelená LED na hello zadní hello EBOD řadiče povolena ON.
-8. Zapněte primární skříň hello překlopení každý PCM přepínač toohello ON pozici.
-9. Ověřte, že hello systému je na zajištěním řadiče zařízení hello, které jste zapnuli LED.
-10. Ujistěte se, že hello připojení mezi řadiči EBOD hello a řadiče zařízení hello je aktivní pomocí ověření, že budou zelené hello čtyři LED další toohello SAS portů na řadiči EBOD hello.
+1. Zajistěte, aby napájení přepínače na všechny PCMs byla v pozici OFF.
+2. Na primární skříň připojte k obou PCMs napájecích kabelů. Napájecích kabelů jsou identifikovány červeně v diagramu kabeláže napájení.
+3. Ujistěte se, že dvě PCMs na primární skříni používají zdrojů energie samostatné.
+4. K zapnutí jednotek pro distribuci rack připojte napájecích kabelů, jak je znázorněno v power kabelů diagram.
+5. Opakujte kroky 2 až 4 pro EBOD skříň.
+6. Zapněte skříni EBOD překlopení vypínač na každý PCM na pozici ON.
+7. Ověřte, jestli je zapnutá skříni EBOD kontrolou, že jsou zelená LED na zadní straně řadičem EBOD povolena ON.
+8. Zapněte primární skříň překlopení každý přepínač PCM na pozici ON.
+9. Ověřte, že systém je na zajištěním řadiče zařízení, které jste zapnuli LED.
+10. Ujistěte se, že je spojení mezi řadičem EBOD a řadiče zařízení aktivní pomocí ověření, že jsou čtyři LED vedle SAS portů na řadiči EBOD zelená.
     
     > [!IMPORTANT]
-    > tooensure vysoká dostupnost pro váš systém, doporučujeme striktně dodržovat toohello power kabelů hello následující diagram znázorňuje schéma.
+    > K zajištění vysoké dostupnosti pro váš systém, doporučujeme, budete striktně dodržovat power kabelů schéma vidět v následujícím diagramu.
     > 
     > 
     

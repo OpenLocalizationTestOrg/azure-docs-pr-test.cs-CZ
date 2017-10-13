@@ -1,9 +1,9 @@
 ---
-title: "AAA Začínáme s Azure Automation | Microsoft Docs"
-description: "Tento článek obsahuje přehled služby Azure Automation kontrolou hello návrhu a implementace podrobnosti v hello tooonboard přípravy nabídky z Azure Marketplace."
+title: "Začínáme s Azure Automation | Dokumentace Microsoftu"
+description: "Tento článek obsahuje přehled služby Azure Automation. Najdete tu popis návrhu a podrobnosti implementace v rámci přípravy na zprovoznění nabídky z Azure Marketplace."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 
@@ -12,39 +12,39 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/18/2017
+ms.date: 08/31/2017
 ms.author: magoedte
-ms.openlocfilehash: 434e8ea28c55ff9bda1d2e46a7a6b8378a3baa0a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: fad13053895c5d6e3c41835fea3cf0bdd3380cd4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started-with-azure-automation"></a>Začínáme s Azure Automation
 
-Tato příručka Začínáme představuje základní koncepty související toohello nasazení služby Azure Automation. Pokud jste nový tooAutomation v Azure nebo máte zkušenosti s automatizace pracovního postupu software System Center Orchestrator, tento průvodce vám pomůže pochopit jak tooprepare a zařadit automatizace.  Budou se pak se připravit toobegin vývoj runbooky na podporu vašich automatizačních potřeb procesu. 
+Tato příručka Začínáme představuje základní koncepty související s nasazením služby Azure Automation. Ať už se službou Automation v Azure teprve začínáte nebo máte zkušenostmi se softwarem pro pracovní postupy automatizace, jako je System Center Orchestrator, tento průvodce vám pomůže porozumět přípravě a zprovoznění služby Automation.  Potom budete připraveni začít vyvíjet runbooky na podporu vašich potřeb automatizace procesů. 
 
 
 ## <a name="automation-architecture-overview"></a>Přehled architektury služby Automation
 
 ![Přehled Azure Automation](media/automation-offering-get-started/automation-infradiagram-networkcomms.png)
 
-Služby Azure Automation je software jako služba (SaaS) aplikace, která poskytuje škálovatelného a spolehlivého, víceklientské prostředí tooautomate procesů pomocí runbooků a spravovat tooWindows změny konfigurace a použití konfigurace požadovaného stavu systémy Linux (DSC) v Azure, jiné cloudové služby, nebo místní. Entity obsažené ve vašem účtu Automation, jako jsou runbooky, prostředky a účty Spustit jako, jsou izolované od ostatních účtů Automation v rámci vašeho předplatného a ostatních předplatných.  
+Azure Automation je aplikace SaaS (software jako služba), která poskytuje škálovatelné a spolehlivé víceklientské prostředí pro automatizaci procesů pomocí runbooků a správu změn konfigurace v systémech Windows a Linux s využitím konfigurace požadovaného stavu (DSC) v Azure, ostatních cloudových službách nebo místním prostředí. Entity obsažené ve vašem účtu Automation, jako jsou runbooky, prostředky a účty Spustit jako, jsou izolované od ostatních účtů Automation v rámci vašeho předplatného a ostatních předplatných.  
 
-Runbooky, které spouštíte v Azure, běží v sandboxech Automation, které jsou hostované ve virtuálních počítačích Azure typu platforma jako služba (PaaS).  Sandboxy Automation poskytují izolaci tenantů pro všechny aspekty spuštění runbooků – moduly, úložiště, paměť, síťové komunikace, datové proudy úlohy atd. Tato role je spravované službou hello a není přístupný z účtu Azure nebo Azure Automation, který jste toocontrol.         
+Runbooky, které spouštíte v Azure, běží v sandboxech Automation, které jsou hostované ve virtuálních počítačích Azure typu platforma jako služba (PaaS).  Sandboxy Automation poskytují izolaci tenantů pro všechny aspekty spuštění runbooků – moduly, úložiště, paměť, síťové komunikace, datové proudy úlohy atd. Tato role je spravovaná službou, není dostupná z vašeho účtu Azure nebo Azure Automation a nemůžete ji řídit.         
 
-tooautomate hello nasazení a správu prostředků ve vašem místním datovém centru nebo jiných cloudových služeb, po vytvoření účtu Automation, můžete určit jeden nebo více počítačů toorun hello [Hybrid Runbook Worker (HRW)](automation-hybrid-runbook-worker.md) role.  Každý HRW vyžaduje hello Agent pro správu Microsoft pomocí pracovního prostoru analýzy protokolů tooa připojení a účet Automation.  Analýzy protokolů je použité toobootstrap hello instalaci, údržbě hello Microsoft Management agenta a monitorování funkce hello hello HRW.  Hello doručování sady runbook a hello toorun instrukce, které je provádí Azure Automation.
+K automatizaci nasazení a správy prostředků v místním datovém centru nebo jiných cloudových službách můžete po vytvoření účtu Automation určit jeden nebo několik počítačů, na kterých poběží role [Hybrid Runbook Worker (HRW)](automation-hybrid-runbook-worker.md).  Každý proces HRW vyžaduje agenta Microsoft Management Agent s připojením k pracovnímu prostoru Log Analytics a účet Automation.  Log Analytics se používá ke spuštění instalace, údržbě agenta Microsoft Management Agent a monitorování procesu HRW.  Doručování runbooků a instrukce k jejich spuštění provádí Azure Automation.
 
-Můžete nasadit více HRW tooprovide vysoké dostupnosti pro své sady runbook, úlohy sady runbook Vyrovnávání zatížení a v některých případech je vyhradit pro konkrétní úlohy nebo prostředí.  Hello agenta Microsoft Monitoring Agent na hello HRW inicializuje komunikaci s hello služby Automation přes TCP port 443 a neexistují žádné brány firewall pro příchozí požadavky.  Jakmile máte runbook systémem HRW prostředí hello a má hello runbook tooperform úlohy správy na jiné počítače nebo služby v rámci prostředí, může být jiné porty, které hello runbook potřebuje přístup k.  Pokud vaše zásady zabezpečení IT neumožňují počítačů ve vaší síti tooconnect toohello Internet, přečtěte si článek hello [OMS brány](../log-analytics/log-analytics-oms-gateway.md), které slouží jako proxy pro hello HRW toocollect stav úlohy a přijímat informace o konfiguraci z váš účet Automation.
+Můžete nasadit několik HRW k zajištění vysoké dostupnosti pro runbooky, vyrovnávání zatížení runboiokových úloh a v některých případech je můžete vyhradit pro konkrétní úlohy nebo prostředí.  Microsoft Monitoring Agent v procesu HRW navazuje komunikaci se službou Automation přes port TCP 443 a nemá žádné požadavky na bránu firewall pro příchozí provoz.  Když je runbook spuštěný v procesu HRW v rámci prostředí a chcete ho využít k provádění úloh správy pro jiné počítače nebo služby v tomto prostředí, je možné, že runbook bude potřebovat přístup i k dalším portům.  Pokud zásady zabezpečení IT neumožňují, aby se počítače ve vaší síti připojovaly k internetu, přečtěte si článek o [bráně OMS](../log-analytics/log-analytics-oms-gateway.md), která pro HRW funguje jako proxy pro shromažďování stavu úloh a příjem konfiguračních informací z vašeho účtu Automation.
 
-Runbooky, které běží na HRW spustit v kontextu hello hello místní systémový účet v počítači hello, který se hello doporučuje kontext zabezpečení při provádění akce správy v místním počítači Windows hello. Pokud chcete hello runbook toorun úlohy s prostředky mimo hello místního počítače, musíte toodefine prostředků zabezpečení přihlašovacích údajů v hello účet Automation, můžete přístup z hello runbooku a tooauthenticate pomocí externí prostředek hello. Můžete použít [pověření](automation-credentials.md), [certifikát](automation-certificates.md), a [připojení](automation-connections.md) prostředky ve vašem runbooku pomocí rutin, které umožní toospecify pověření tak je, můžete ověřovat.
+Runbooky, které běží v HRW, se spouští v kontextu místního systémového účtu v počítači, který je doporučeným kontextem zabezpečení při provádění akcí správy v místním počítači s Windows. Pokud chcete, aby runbook spouštěl úlohy s využitím prostředků mimo místní počítač, je možné, že budete muset definovat zabezpečené assety přihlašovacích údajů v účtu Automation, ke kterému máte z runbooku přístup, a používat je k ověřování pro externí zdroj. Assety [Přihlašovací údaje](automation-credentials.md), [Certifikát](automation-certificates.md) a [Propojení](automation-connections.md) ve vašem runbooku můžete používat s rutinami, které umožňují specifikovat přihlašovací údaje, abyste je mohli ověřit.
 
-Konfigurace DSC uložené ve službě Azure Automation může být přímo použité tooAzure virtuálních počítačů. Další fyzické a virtuální počítače může požádat o konfigurace z načítacího serveru Azure Automation DSC hello.  Pro správu konfigurace vaší místní fyzické nebo virtuální systémy Windows a Linux, není nutné toodeploy všechny infrastruktury toosupport hello server Automation DSC za, jenom odchozí přístup k Internetu z každého systému toobe spravuje Automation DSC , komunikaci přes TCP port 443 toohello OMS služby.   
+Konfigurace DSC uložené ve službě Azure Automation je možné použít přímo na virtuálních počítačích Azure. Ostatní fyzické a virtuální počítače mohou žádat o konfigurace ze serveru vyžádané replikace Azure Automation DSC.  Pro správu konfigurací vašich místních fyzických nebo virtuálních systémů Windows a Linux nemusíte nasazovat žádnou infrastrukturu pro podporu serveru vyžádané replikace Automatizace DSC. Stačí, aby byl odchozí internetový přístup z každého systému spravovaný Automatizací DSC a aby se ke komunikaci se službou OMS využíval port TCP 443.   
 
 ## <a name="prerequisites"></a>Požadavky
 
 ### <a name="automation-dsc"></a>Automatizace DSC
-Azure Automation DSC lze použít toomanage různé počítače:
+Azure Automation DSC se dá využít ke správě různých počítačů:
 
 * Virtuální počítače Azure (klasické) s Windows nebo Linuxem
 * Virtuální počítače Azure s Windows nebo Linuxem
@@ -52,73 +52,73 @@ Azure Automation DSC lze použít toomanage různé počítače:
 * Fyzické nebo virtuální počítače s Windows v místním prostředí nebo v jiném cloudu než Azure nebo AWS
 * Fyzické nebo virtuální počítače s Linuxem v místním prostředí nebo v jiném cloudu než Azure nebo AWS
 
-pro agenta hello DSC prostředí PowerShell pro Windows toobe možné toocommunicate u automatizace Azure, musí být nainstalováno Hello nejnovější verze WMF 5. nejnovější verzi hello Hello [DSC Powershellu agenta pro Linux](https://www.microsoft.com/en-us/download/details.aspx?id=49150) pro Linux toobe možné toocommunicate u automatizace Azure, musí být nainstalováno.
+K zajištění komunikace Windows s Azure Automation musí být nainstalovaná nejnovější verze WMF 5 pro agenta PowerShell DSC. K zajištění komunikace Linuxu s Azure Automation musí být nainstalovaná nejnovější verze [agenta PowerShell DSC pro Linux](https://www.microsoft.com/en-us/download/details.aspx?id=49150).
 
 ### <a name="hybrid-runbook-worker"></a>Hybrid Runbook Worker  
-Při určování runbook počítače toorun hybridní úlohy, v tomto počítači musí být hello následující:
+Počítač pro spuštění hybridních runbookových úloh musí splňovat tyto podmínky:
 
 * Windows Server 2012 nebo novější
-* Windows PowerShell 4.0 nebo novější  Doporučujeme, abyste instalaci prostředí Windows PowerShell 5.0 hello počítače, pro větší spolehlivost. Hello novou verzi si můžete stáhnout z hello [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=50395)
+* Windows PowerShell 4.0 nebo novější  Pro zvýšení spolehlivosti doporučujeme na tento počítač nainstalovat Windows PowerShell 5.0. Nejnovější verzi si můžete stáhnout z webu [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=50395).
 * Minimálně dvě jádra
 * Minimálně 4 GB paměti RAM
 
-### <a name="permissions-required-toocreate-automation-account"></a>Oprávnění požadované toocreate účet Automation.
-toocreate nebo aktualizace účtu Automation, musí mít hello následující konkrétní oprávnění a vyžadují oprávnění toocomplete v tomto tématu.   
+### <a name="permissions-required-to-create-automation-account"></a>Oprávnění požadovaná k vytvoření účtu Automation
+Pokud chcete vytvořit nebo aktualizovat účet Automation, musíte mít následující specifická oprávnění vyžadovaná k dokončení tohoto tématu.   
  
-* V pořadí toocreate účet Automation, účtu uživatele AD musí toobe přidané tooa role s roli vlastníka ekvivalentní toohello oprávnění pro Microsoft.Automation prostředky podle pokynů v článku [řízení přístupu na základě Role ve službě Azure Automation ](automation-role-based-access-control.md).  
-* Pokud registrace aplikace hello nastavení je nastaven příliš**Ano**, mohou uživatelé bez oprávnění správce v klientovi služby Azure AD [registraci aplikací AD](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions).  Pokud registrace aplikace hello nastavení je nastaven příliš**ne**, uživatel hello provedení této akce musí být globálním správcem ve službě Azure AD. 
+* Abyste mohli vytvořit účet Automation, váš uživatelský účet AD musí být přidán do role se stejnými oprávněními jako role vlastníka pro prostředky Microsoft.Automation, jak je uvedeno v článku [Řízení přístupu na základě role ve službě Azure Automation](automation-role-based-access-control.md).  
+* Pokud je nastavení Registrace aplikací nastaveno na **Ano**, uživatelé ve vašem tenantovi Azure AD, kteří nejsou správci, můžou [registrovat aplikace služby AD](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions).  Pokud je nastavení Registrace aplikací nastaveno na **Ne**, uživatel provádějící tuto akci musí být globálním správcem služby Azure AD. 
 
-Pokud si nejste členem instanci Active Directory hello předplatné, předtím, než jsou přidány toohello globální správce nebo řidičská-administrator role hello předplatné, se přidají tooActive Directory jako Host. V takovém případě se zobrazí "Nemáte oprávnění toocreate..." upozornění na hello **přidat účet Automation** okno. Uživatelé, kteří byly přidány toohello globální správce nebo řidičská-administrator role nejprve lze odebrat z instance služby Active Directory hello předplatného a znova se přidal toomake je úplné uživatelské ve službě Active Directory. tooverify této situaci se z hello **Azure Active Directory** podokně hello portál Azure, vyberte **uživatelů a skupin**, vyberte **všichni uživatelé** a po výběru hello konkrétního uživatele, vyberte **profil**. Hello hodnotu hello **typ uživatele** atribut v profilu uživatele hello nesmí rovnat **hosta**.
+Pokud před přidáním do role globálního správce nebo spolusprávce nejste členem instance Active Directory příslušného předplatného, budete do služby Active Directory přidaní jako host. V takové situaci se zobrazí upozornění Nemáte oprávnění k vytvoření... v okně **Přidání účtu Automation**. Uživatele, kteří byli nejdřív přidaní do role globálního správce nebo spolusprávce, je možné z instance Active Directory předplatného odebrat a potom je znovu přidat – tak se z nich ve službě Active Directory stanou úplní uživatelé. Takovou situaci můžete ověřit v podokně **Azure Active Directory** na webu Azure Portal. Vyberte **Uživatelé a skupiny**, potom **Všichni uživatelé** a po výběru konkrétního uživatele vyberte **Profil**. Hodnota atributu **Typ uživatele** v profilu uživatele by neměla být **Host**.
 
 ## <a name="authentication-planning"></a>Plánování ověřování
-Automatizace Azure umožňuje tooautomate úlohy s prostředky v Azure, místně a u jiných poskytovatelů cloudu.  Aby runbook tooperform požadované akce, musí mít oprávnění toosecurely přístup k hello prostředkům s minimálními požadovanými v rámci předplatného hello právy hello.  
+Azure Automation umožňuje automatizovat úlohy s prostředky v Azure, v místním prostředí a u jiných poskytovatelů cloudu.  Aby mohl runbook provádět požadované akce, musí mít oprávnění pro bezpečný přístup k prostředkům s minimálními požadovanými právy v rámci předplatného.  
 
 ### <a name="what-is-an-automation-account"></a>Co je účet Automation 
-Všechny úlohy hello automation, který děláte s prostředky pomocí hello rutin Azure ve službě Azure Automation ověření tooAzure použití ověřování na základě přihlašovacích údajů organizační identity Azure Active Directory.  Účet automatizace je oddělené od hello účet používáte toosign v portálu tooconfigure toohello a použijte prostředků Azure.  Součástí účtu prostředky služby Automation jsou hello následující:
+Všechny úlohy automatizace, které s prostředky provádíte pomocí rutin Azure ve službě Azure Automation, se ověřují pro Azure pomocí ověřování na základě přihlašovacích údajů organizační identity v Azure Active Directory.  Účet Automation nesouvisí s účtem, který používáte k přihlášení na portál a konfiguraci a použití prostředků Azure.  Součástí účtu Automation jsou následující prostředky služby Automation:
 
 * **Certifikáty** – obsahuje certifikát používaný k ověřování z runbooku nebo konfigurace DSC nebo je možné ho přidat.
-* **Připojení** – obsahuje ověřování a konfigurace požadované informace tooconnect tooan externí služby nebo aplikace ze sady runbook nebo konfigurace DSC.
-* **Přihlašovací údaje** -je objekt PSCredential, který obsahuje zabezpečovací přihlašovací údaje, jako je například uživatelské jméno a heslo požadované tooauthenticate ze sady runbook nebo konfigurace DSC.
-* **Integrační moduly** -jsou moduly Powershellu, které jsou součástí Azure Automation účet toomake použití rutin v runboocích a konfiguracích DSC.
+* **Připojení** – obsahuje ověřovací a konfigurační údaje vyžadované pro připojení k externí službě nebo aplikaci z runbooku nebo konfigurace DSC.
+* **Přihlašovací údaje** – jedná se o objekt PSCredential obsahující přihlašovací údaje zabezpečení, jako je uživatelské jméno a heslo, vyžadované pro ověření z runbooku nebo konfigurace DSC.
+* **Integrační moduly** – jedná se o moduly PowerShellu zahrnuté v účtu Azure Automation, které umožňují používání rutin v rámci runbooků a konfigurací DSC.
 * **Plány** – obsahuje plány, které v zadaném čase spouští nebo zastavují runbooky, včetně frekvencí opakování.
 * **Proměnné** – obsahuje hodnoty, které jsou dostupné z runbooku nebo konfigurace DSC.
-* **Konfigurace DSC** -jsou skripty prostředí PowerShell, které popisuje, jak tooconfigure funkce operačního systému nebo nastavení, nebo nainstalovat aplikace na počítači s Windows nebo Linux.  
+* **Konfigurace DSC** – jsou skripty PowerShellu popisující, jak nakonfigurovat funkci nebo nastavení operačního systému nebo jak nainstalovat aplikaci na počítači s Windows nebo Linuxem.  
 * **Runbooky** – jsou sady úloh, které provádějí určité automatizované procesy v Azure Automation na základě Windows PowerShellu.    
 
-Hello prostředky Automation jednotlivých účtů Automation jsou přidružené k jedné oblasti Azure, ale účty Automation můžou spravovat všechny prostředky hello ve vašem předplatném. Vytvoření účtů Automation v různých oblastech, pokud máte zásady, které vyžadují datům a prostředkům toobe izolované tooa určité oblasti.
+Prostředky Automation jednotlivých účtů Automation jsou přidružené k jedné oblasti Azure, ale účty Automation mohou spravovat veškeré prostředky v rámci předplatného. Účty Automation vytvořte v různých oblastech, pokud máte zásady, které vyžadují izolaci dat a prostředků v určité oblasti.
 
 > [!NOTE]
-> Účty Automation a hello prostředky, které obsahují jsou vytvořené v hello portálu Azure, nelze získat přístup v hello portál Azure classic. Pokud chcete toomanage tyto účty nebo jejich prostředky pomocí prostředí Windows PowerShell, je nutné použít hello moduly Azure Resource Manageru.
+> Účty Automation a v nich obsažené prostředky, které jsou vytvořené pomocí portálu Azure, nemůžete otevírat pomocí portálu Azure Classic. Pokud chcete tyto účty nebo jejich prostředky spravovat pomocí rozhraní Windows PowerShell, použijte moduly Azure Resource Manageru.
 > 
 
-Když vytvoříte účet služby Automation v hello portálu Azure, můžete vytvořit automaticky dvě entity ověřování:
+Když na webu Azure Portal vytvoříte účet Automation, automaticky se vytvoří dvě ověřovací entity:
 
-* Účet Spustit jako. Tento účet vytvoří instanční objekt ve službě Azure Active Directory (Azure AD) a certifikát. Také přiřadí hello Přispěvatel přístupu na základě role řízení (RBAC), která spravuje prostředky Resource Manageru pomocí sad runbook.
-* Účet Spustit jako pro Azure Classic. Tento účet odešle certifikát správy, což je použité toomanage klasické prostředky pomocí sad runbook.
+* Účet Spustit jako. Tento účet vytvoří instanční objekt ve službě Azure Active Directory (Azure AD) a certifikát. Přiřadí také řízení přístupu na základě role Přispěvatel (RBAC), které spravuje prostředky Resource Manageru pomocí runbooků.
+* Účet Spustit jako pro Azure Classic. Tento účet nahraje certifikát pro správu, který se používá ke správě klasických prostředků pomocí runbooků.
 
-Řízení přístupu na základě role je k dispozici s Azure Resource Manager toogrant povolené akce tooan Azure AD uživatelský účet a účet Spustit jako a ověřování takového objektu služby.  Čtení [řízení přístupu na základě Role v Azure Automation článku](automation-role-based-access-control.md) pro další informace o toohelp vývojem vašeho modelu pro správu oprávnění automatizace.  
+Řízení přístupu na základě role je dostupné v aplikaci Azure Resource Manager pro udělování povolených akcí na uživatelském účtu služby Azure AD a účtu Spustit jako a ověřování takového objektu služby.  Přečtěte si článek [Řízení přístupu na základě role ve službě Azure Automation](automation-role-based-access-control.md), kde najdete další informace, které vám pomůžou s vývojem vašeho modelu pro správu oprávnění ve službě Automation.  
 
 #### <a name="authentication-methods"></a>Metody ověřování
-Hello následující tabulka shrnuje hello různé metody ověřování pro jednotlivá prostředí podporovaná službou Azure Automation.
+Následující tabulka shrnuje různé metody ověřování pro jednotlivá prostředí podporovaná službou Azure Automation.
 
 | Metoda | Prostředí 
 | --- | --- | 
 | Účet Spustit jako pro Azure a Spustit jako pro Azure Classic |Azure Resource Manager a nasazení Azure Classic |  
 | Uživatelský účet Azure AD |Azure Resource Manager a nasazení Azure Classic |  
-| Ověřování systému Windows |Místní datové centrum nebo jiného poskytovatele cloudu pomocí hello hybridní pracovní proces Runbooku |  
+| Ověřování systému Windows |Místní datové centrum nebo jiný poskytovatele cloudu s využitím procesu Hybrid Runbook Worker |  
 | Přihlašovací údaje služby Amazon Web Services |Amazon Web Services |  
 
-V části hello **jak to\Authentication a zabezpečení** část, jsou podporu články poskytuje přehled a doporučený postup tooconfigure ověřování pro tato prostředí, buď pomocí existující nebo nové účet vyhradit pro prostředí.  Hello spustit v Azure jako a účet Classic spustit jako, hello tématu [aktualizace účtu Automation spustit jako](automation-create-runas-account.md) popisuje, jak tooupdate existujícího účtu automatizace s hello spustit jako účty z hello portálu nebo pomocí prostředí PowerShell, pokud nebyl původně nakonfigurovaný s účtem spustit jako nebo Classic spustit jako. Pokud chcete toocreate spustit jako a účet Classic spustit jako s certifikát vydaný certifikační autoritou (CA) rozlehlé sítě, přečtěte si tento článek toolearn jak účtů toocreate hello pomocí této konfigurace.     
+V části **Postupy\Ověřování a zabezpečení** najdete doprovodné články s přehledem a postupem implementace pro konfiguraci ověřování v těchto prostředích, a to buď pomocí stávajícího účtu, nebo nového účtu, který vyhradíte pro příslušné prostředí.  Pro účty Spustit jako pro Azure a Spustit jako pro Azure Classic téma [Aktualizace účtu Automation Spustit jako](automation-create-runas-account.md) popisuje, jak aktualizovat stávající účet Automation s účty Spustit jako z portálu nebo pomocí PowerShellu, pokud původně nebyl s účtem Spustit jako pro Azure nebo Spustit jako pro Azure Classic nakonfigurovaný. Pokud chcete vytvořit účet Spustit jako a účet Spustit jako pro Azure Classic s využitím certifikátu vydaného certifikační autoritou (CA) vaší organizace, přečtěte si tento článek, ve kterém zjistíte, jak vytvořit účty s touto konfigurací.     
  
 ## <a name="network-planning"></a>Plánování sítě
-Pro hello hybridní pracovní proces Runbooku tooconnect tooand registrace s Microsoft Operations Management Suite (OMS) musí mít číslo portu toohello přístupu a adresy URL hello popsané dole.  Toto je navíc toohello [portů a adres URL potřebných pro agenta Microsoft Monitoring Agent hello](../log-analytics/log-analytics-windows-agents.md#network) tooconnect tooOMS. Pokud používáte proxy server pro komunikaci mezi hello agenta a hello OMS služby, je třeba tooensure, jestli jsou dostupné odpovídající prostředky hello. Pokud používáte bránu firewall toorestrict přístup toohello Internet, musíte tooconfigure přístup toopermit brány firewall.
+Aby se Hybrid Runbook Worker připojil k sadě Microsoft Operations Management Suite (OMS) a registroval, musí mít přístup k portu a adresám URL, které jsou uvedené dál.  To je navíc k [portům a adresám URL požadovaným pro agenta MMA (Microsoft Monitoring Agent)](../log-analytics/log-analytics-windows-agents.md#network) pro připojení k OMS. Pokud ke komunikaci mezi agentem a službou OMS používáte proxy server, budete se muset ujistit, že jsou dostupné příslušné prostředky. Pokud používáte k omezení přístupu k internetu bránu firewall, je nutné ji nakonfigurovat tak, aby povolovala přístup.
 
-Následující seznam hello portů a adres URL, které jsou požadovány pro hello hybridní pracovní proces Runbooku toocommunicate s automatizace Hello informace.
+Dál jsou uvedené informace o portu a adresách URL, které jsou potřeba k tomu, aby Hybrid Runbook Worker mohl komunikovat se službou Automation.
 
 * Port: Vyžaduje se jenom TCP 443 pro odchozí internetový přístup.
 * Globální adresa URL: *.azure-automation.net
 
-Pokud máte účet Automation definované pro konkrétní oblasti a chcete toorestrict komunikaci s místní datového centra, hello následující tabulka obsahuje hello DNS záznam pro každou oblast.
+Pokud máte účet Automation definovaný pro konkrétní oblast a chcete komunikaci s tímto datovým centrem omezit, následující tabulka obsahuje záznam DNS pro každou oblast.
 
 | **Oblast** | **Záznam DNS** |
 | --- | --- |
@@ -135,60 +135,59 @@ Pokud máte účet Automation definované pro konkrétní oblasti a chcete toore
 | Spojené království – jih | uks-jobruntimedata-prod-su1.azure-automation.net |
 | USA (Gov) – Virginia | usge-jobruntimedata-prod-su1.azure-automation.us |
 
-Seznam IP adres namísto názvů, stáhnout a revidovat hello [Azure Datacenter IP adresu](https://www.microsoft.com/download/details.aspx?id=41653) souboru xml z hello Microsoft Download Center. 
+Pokud chcete seznam IP adres místo názvů, z Microsoft Download Center si stáhněte a prohlédněte soubor XML [IP adresy datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653). 
 
 > [!NOTE]
-> Tento soubor obsahuje hello rozsahy IP adres (včetně rozsahů výpočty, SQL a úložiště) používané v hello datová centra služby Microsoft Azure. Aktualizovaný soubor je odeslat každý týden, což odráží hello aktuálně nasazená rozsahů a rozsahů IP toohello žádné nadcházející změny. Nové rozsahy, které jsou uvedeny v souboru hello nebudou použity v datových centrech hello alespoň jeden týden. Prosím nové xml hello stažení souboru každý týden a provést potřebné změny hello na svém webu toocorrectly identifikovat služby spuštěné v Azure. Expresní trasy uživatelé mohou Poznámka: Tento soubor použít tooupdate hello inzerování protokolu BGP Azure místa v hello první týden v měsíci. 
+> Tento soubor obsahuje rozsahy IP adres (včetně rozsahů pro Compute, SQL a službu Storage), které se používají v datacentrech Microsoft Azure. Každý týden se zveřejňuje aktualizovaný soubor odrážející aktuálně nasazené rozsahy a všechny nadcházející změny rozsahů IP adres. Rozsahy, které jsou v souboru uvedeny nově, se v datacentrech nebudou používat ještě minimálně týden. Každý týden si stáhněte nový soubor XML a proveďte na svém webu potřebné změny pro zajištění správné identifikace služeb spuštěných v Azure. Uživatelé ExpressRoute si můžou všimnout, že se tento soubor používá k aktualizaci inzerování prostoru Azure pomocí protokolu BGP, která probíhá první týden každého měsíce. 
 > 
 
 ## <a name="creating-an-automation-account"></a>Vytvoření účtu Automation
 
-Existují různé způsoby, můžete vytvořit účet Automation v hello portálu Azure.  Hello následující tabulka uvádí každý typ nasazení a rozdíly mezi nimi.  
+Účet Automation můžete na webu Azure Portal vytvořit několika různými způsoby.  Následující tabulka uvádí jednotlivé typy nasazení a rozdíly mezi nimi.  
 
 |Metoda | Popis |
 |-------|-------------|
-| Vyberte ovládací prvek a automatizace hello Marketplace. | Nabídky, která vytvoří účtu Automation a pracovním prostorem OMS propojené tooone druhou v hello stejné skupiny prostředků a oblast.  Integrace s OMS také zahrnuje hello výhodou používání toomonitor analýzy protokolů a analyzovat runbook úlohy stav úlohy datové proudy a v čase a využívat pokročilé funkce tooescalate nebo prozkoumat problémy. Hello nabídka také nasadí sledování změn a Správa aktualizací hello řešení, které jsou ve výchozím nastavení povolené. |
-| Vyberte automatizace hello Marketplace. | Vytvoří účet Automation ve skupině nový nebo existující prostředek, který není pracovním prostorem OMS propojené tooan a neobsahuje žádné dostupné řešení z nabídky hello automatizace a řízení. Toto je základní konfigurace, která vás seznámí tooAutomation a pomáhají vám pochopit, jak toowrite sady runbook, konfigurace DSC a použití hello možnosti služby hello. |
-| Vybraná řešení pro správu | Pokud vyberete řešení –  **[správy aktualizací](../operations-management-suite/oms-solution-update-management.md)**,  **[spuštění a zastavení virtuálních počítačů během mimo špičku](automation-solution-vm-management.md)**, nebo  **[ Sledování změn](../log-analytics/log-analytics-change-tracking.md)**  vyzvat vás tooselect existující automatizace a pracovním prostorem OMS nebo nabízejí hello možnost toocreate jako požadovány pro toobe hello řešení nasazené v rámci vašeho předplatného. |
+| Výběr Automation and Control z Marketplace | Nabídka, která vytvoří vzájemně propojený účet Automation a pracovní prostor OMS ve stejné skupině prostředků a oblasti.  Jednou z výhod integrace s OMS je také možnost použít službu Log Analytics k monitorování a analýze stavů úloh runbooků a datových proudů úloh v průběhu času a využít pokročilé funkce k eskalaci nebo vyšetření problémů. Tato nabídka také nasadí řešení Change Tracking a Update Management, které jsou ve výchozím nastavení povolené. |
+| Výběr Automation z Marketplace | Vytvoří účet Automation v nové nebo stávající skupině prostředků, který není propojený s pracovním prostorem OMS a neobsahuje žádné dostupné řešení z nabídky Automation and Control. Toto je základní konfigurace, která vás seznámí se službou Automation. Můžete se jejím prostřednictvím naučit, jak psát runbooky, konfigurovat DSC a využívat funkce této služby. |
+| Vybraná řešení pro správu | Pokud vyberete řešení – **[Správa aktualizací](../operations-management-suite/oms-solution-update-management.md)**, **[Spustit nebo zastavit virtuální počítače mimo pracovní dobu](automation-solution-vm-management.md)** nebo **[Sledování změn](../log-analytics/log-analytics-change-tracking.md)**, vyzve vás k výběru existujícího účtu Automation a pracovního prostoru OMS nebo vám nabídne možnost vytvořit tento účet i prostor tak, jak to řešení k nasazení ve vašem předplatném potřebuje. |
 
-Toto téma vás provede procesem vytváření účet Automation a pracovním prostorem OMS registrace hello automatizace a řízení nabídky.  toocreate samostatný účet Automation pro testování nebo toopreview hello službu, zkontrolujte hello následujícího článku [vytvořit účet Automation samostatné](automation-create-standalone-account.md).  
+Toto téma vás provede vytvořením účtu Automation a pracovního prostoru OMS připojením nabídky Automation and Control.  Pokud chcete vytvořit samostatný účet Automation pro testování nebo zobrazení náhledu služby, přečtěte si článek [Vytvoření samostatného účtu Automation](automation-create-standalone-account.md).  
 
 ### <a name="create-automation-account-integrated-with-oms"></a>Vytvoření účtu Automation integrovaného s OMS
-Hello doporučená metoda tooonboard, automatizace se tak, že vyberete hello automatizace & ovládacího prvku nabídka z hello Marketplace.  Tím se vytvoří účet Automation a vytváří hello integrace s pracovním prostorem OMS, včetně hello možnost tooinstall hello správu řešení, které jsou k dispozici s hello nabídky.  
+Doporučenou metodou připojení služby Automation je výběr nabídky Automation and Control z Marketplace.  Tím se vytvoří účet Automation a naváže integrace s pracovním prostorem OMS, včetně možnosti instalovat řešení pro správu, které jsou pro tuto nabídku dostupné.  
 
-1. Přihlaste se toohello portálu Azure pomocí účtu, který je členem role Správci předplatného hello a spolusprávce předplatného hello.
+1. Přihlaste se k webu Azure Portal pomocí účtu, který je členem role správců předplatného a spolusprávcem předplatného.
 
 2. Klikněte na možnost **Nové**.<br><br> ![Výběr možnosti Nové na webu Azure Portal](media/automation-offering-get-started/automation-portal-martketplacestart.png)<br>  
 
-3. Vyhledejte **automatizace** a pak v hello výsledky hledání vyberte **automatizace a řízení***.<br><br> ![Hledání a výběr Automation &amp; Control na Marketplace](media/automation-offering-get-started/automation-portal-martketplace-select-automationandcontrol.png)<br>   
+3. Vyhledejte **Automation** a potom ve výsledcích hledání vyberte **Automation and Control***.<br><br> ![Hledání a výběr Automation &amp; Control na Marketplace](media/automation-offering-get-started/automation-portal-martketplace-select-automationandcontrol.png)<br>   
 
-4. Po přečtení hello popis hello nabídky, klikněte na tlačítko **vytvořit**.  
+4. Přečtěte si popis této nabídky a klikněte na **Vytvořit**.  
 
-5. Na hello **automatizace a řízení** okno nastavení, vyberte **pracovním prostorem OMS**.  Na hello **pracovních prostorů OMS** okně vyberte toohello propojené pracovní prostor OMS stejného předplatného Azure, který hello účet Automation je v nebo vytvořte pracovní prostor služby OMS.  Pokud nemáte pracovním prostorem OMS, vyberte **vytvořit nový pracovní prostor** a na hello **pracovním prostorem OMS** okno provést hello následující: 
-   - Zadejte název nové hello **pracovním prostorem OMS**.
-   - Vyberte **předplatné** toolink tooby výběr z rozevíracího seznamu hello Pokud hello výchozí vybraný není vhodná.
+5. V okně nastavení **Automation and Control** vyberte **Pracovní prostor OMS**.  V okně **Pracovní prostory OMS** vyberte pracovní prostor OMS propojený s předplatným Azure, které obsahuje příslušný účet Automation, nebo vytvořte nový pracovní prostor OMS.  Pokud nemáte pracovní prostor OMS, můžete vybrat **Vytvořit nový pracovní prostor** a v okně **Pracovní prostor OMS** provést následující kroky: 
+   - Zadejte název pro nový **pracovní prostor OMS**.
+   - Vyberte **předplatné**, které má být cílem propojení, výběrem z rozevíracího seznamu, pokud výchozí vybrané předplatné není vhodné.
    - U položky **Skupina prostředků** můžete vytvořit skupinu prostředků nebo vybrat už existující skupinu prostředků.  
-   - Vyberte **Umístění**.  V současné době jsou k dispozici pouze umístění hello **Austrálie – jihovýchod**, **východní USA**, **jihovýchodní Asie**, **– Západ střední USA**a  **Západní Evropa**.
-   - Vyberte možnost u položky **Cenová úroveň**.  Hello řešení je k dispozici v dvou vrstev: uvolněte a vrstvy na uzel (OMS).  úroveň free Hello může mít na hello množství dat shromážděných denně, doba uchování dat a minut runtime úlohy sady runbook.  úroveň Hello na uzel (OMS) nemá na hello množství dat denně shromážděných omezení.  
-   - Vyberte **Účet Automation**.  Pokud vytváříte nový pracovní prostor OMS, je nutné tooalso vytvořit účet Automation, který je spojena s hello nový pracovní prostor OMS dříve, zadaný včetně vašeho předplatného Azure, skupinu prostředků a oblast.  Můžete vybrat **vytvořit účet Automation** a na hello **účet Automation** okno, zadejte následující hello: 
-  - V hello **název** pole, zadejte název hello hello účet Automation.
+   - Vyberte **Umístění**.  Další informace najdete na stránce uvádějící [oblasti, ve kterých je dostupná služba Azure Automation](https://azure.microsoft.com/regions/services/).  Řešení se nabízejí ve dvou úrovních: úroveň Free a úroveň Per Node (OMS).  V úrovni Free je omezen objem dat shromážděných za den, doba uchovávání a počet minut běhu úloh runbooku.  V úrovni Per Node (OMS) není objem dat shromážděných za den nijak omezený.  
+   - Vyberte **Účet Automation**.  Pokud vytváříte nový pracovní prostor OMS, bude potřeba, abyste vytvořili i nový účet služby Automation, který je přidružený k novému pracovnímu prostoru OMS určenému dříve, a to včetně vašeho předplatného Azure, skupiny prostředků a oblasti.  Můžete vybrat **Vytvořit účet Automation** a v okně **čet Automation** zadat následující údaje: 
+  - Do pole **Název** zadejte název účtu služby Automation.
 
-    Všechny ostatní možnosti se vyplní automaticky v závislosti na vybrané pracovní prostor OMS hello a tyto možnosti nelze změnit.  Účet spustit v Azure jako je metoda ověřování výchozí hello hello nabídky.  Po kliknutí na tlačítko **OK**, možnosti konfigurace hello se ověří a vytvoření hello účet Automation.  V části jeho průběh můžete sledovat **oznámení** nabídce hello. 
+    Všechny ostatní možnosti se vyplní automaticky na základě vybraného pracovního prostoru OMS. Tyto možnosti nelze upravovat.  Účet Spustit v Azure jako představuje výchozí metodu ověřování pro tuto nabídku.  Po kliknutí na **OK** se ověří možnosti konfigurace a vytvoří se účet služby Automation.  Průběh zpracování můžete sledovat prostřednictvím možnosti nabídky **Oznámení**. 
 
-    Další možností je vybrat existující účet služby Automation Spustit jako.  Hello účet, který jste vybrali již nemůže být pracovní prostor OMS propojené tooanother, v opačném případě se zobrazí oznámení v okně hello.  Pokud už je propojená, třeba tooselect jiný účet Automation spustit jako nebo vytvořit.
+    Další možností je vybrat existující účet služby Automation Spustit jako.  Účet, který vyberete, nemůže být propojený s jiným pracovním prostorem OMS. V opačném případě se v okně zobrazí příslušné oznámení.  Pokud je toto propojení už vytvořené, je potřeba vybrat jiný účet služby Automation Spustit jako nebo vytvořit nový.
 
-    Po dokončení hello požadované informace, klikněte na tlačítko **vytvořit**.  ověření Hello informace a vytvoření účtů hello účet Automation a spustit jako.  Jste vráceni toohello **pracovním prostorem OMS** okno automaticky.  
+    Po dokončení požadovaných informací klikněte na **Vytvořit**.  Informace se ověří a vytvoří se účet Automation a účet Spustit jako.  Automaticky se vrátíte do okna **Pracovní prostor OMS**.  
 
-6. Po zadání hello požadované informace na hello **pracovním prostorem OMS** okně klikněte na tlačítko **vytvořit**.  Při ověření hello informace a při vytváření pracovního prostoru hello, můžete sledovat průběh v části **oznámení** nabídce hello.  Jste vráceni toohello **přidat řešení** okno.  
+6. Po zadání požadovaných informací v okně **Pracovní prostor OMS** klikněte na **Vytvořit**.  Během ověřování informací a vytváření pracovního prostoru můžete průběh zpracování sledovat prostřednictvím položky nabídky **Oznámení**.  Vrátíte se zpátky do okna **Přidat řešení**.  
 
-7. Na hello **automatizace a řízení** okno nastavení, potvrďte chcete tooinstall hello doporučená předem vybraného řešení. Pokud výběr některého z nich zrušíte, můžete ho nainstalovat později.  
+7. V okně nastavení **Automation and Control** potvrďte, že chcete nainstalovat doporučená předem vybraná řešení. Pokud výběr některého z nich zrušíte, můžete ho nainstalovat později.  
 
-8. Klikněte na tlačítko **vytvořit** tooproceed s registrací ve službě Automation a pracovním prostorem OMS. Všechna nastavení se ověří a následně se ho pokusí toodeploy hello nabídky v rámci vašeho předplatného.  Tento proces může trvat několik sekund toocomplete a vy můžete sledovat v jeho průběhu **oznámení** nabídce hello. 
+8. Klikněte na **Vytvořit** a pokračujte ve zprovozňování služby Automation a pracovního prostoru OMS. Všechna nastavení se ověří a potom se provede pokus o nasazení nabídky v rámci vašeho předplatného.  Dokončení tohoto procesu může trvat několik sekund a průběh zpracování můžete sledovat prostřednictvím možnosti nabídky **Oznámení**. 
 
-Po hello nabídka je zařazený nemá, můžete začít vytvářet sady runbook, pracují s hello jste povolili řešení pro správu, nasazení [hybridní pracovní proces Runbooku](automation-hybrid-runbook-worker.md) role nebo začít pracovat s [analýzy protokolů](https://docs.microsoft.com/azure/log-analytics) toocollect data generována prostředků ve vašem prostředí cloudu nebo místně.   
+Po zprovoznění nabídky můžete začít vytvářet runbooky, pracovat s řešeními pro správu, která jste povolili, nasadit roli [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) nebo začít využívat službu [Log Analytics](https://docs.microsoft.com/azure/log-analytics) ke shromažďování dat vygenerovaných vašimi prostředky v cloudových nebo místních prostředích.   
 
 ## <a name="next-steps"></a>Další kroky
 * Pokud chcete ověřit, že nový účet Automation umožňuje ověřování prostřednictvím prostředků Azure, prohlédněte si [test ověřování účtu Azure Automation Spustit jako](automation-verify-runas-authentication.md).
-* tooget začít s vytvářením sad runbook, přečtěte si nejprve hello [typy runbooků Automation](automation-runbook-types.md) podporována a související informace před zahájením vytváření.
+* Pokud chcete začít s vytvářením runbooků, před samotným vytváření nejprve zkontrolujte podporované [Typy runbooků ve službě Automation](automation-runbook-types.md) a související důležité informace.
 
 

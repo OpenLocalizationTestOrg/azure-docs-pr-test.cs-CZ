@@ -1,6 +1,6 @@
 ---
-title: aaaGeneric konektor LDAP | Microsoft Docs
-description: "Tento článek popisuje, jak tooconfigure Microsoft obecné konektor LDAP."
+title: "Generický konektor LDAP | Microsoft Docs"
+description: "Tento článek popisuje, jak nakonfigurovat obecná konektor LDAP společnosti Microsoft."
 services: active-directory
 documentationcenter: 
 author: AndKjell
@@ -14,37 +14,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 25031b4da196bd073902b04b0705762bfa0118b9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: adb174526bc377f484be5fb0a71b28e8daaaa6fd
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="generic-ldap-connector-technical-reference"></a>Technické informace o obecné konektor LDAP
-Tento článek popisuje hello obecné konektor LDAP. Hello článek se týká toohello následující produkty:
+Tento článek popisuje obecný konektor LDAP. Se článek vztahuje následující produkty:
 
 * Microsoft Identity Manager 2016 (MIM2016)
 * Forefront Identity Manageru 2010 R2 (FIM2010R2)
   * Musíte použít opravu hotfix 4.1.3671.0 nebo novější [KB3092178](https://support.microsoft.com/kb/3092178).
 
-Pro MIM2016 a FIM2010R2, je k dispozici ke stažení z hello hello konektor [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=717495).
+Pro MIM2016 a FIM2010R2, je k dispozici ke stažení z konektoru [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=717495).
 
-Při odkazování dokumenty RFC tooIETF, tento dokument je formátu hello (RFC [RFC číslo] nebo [oddílu v dokumentu RFC]), například (RFC 4512/4.3).
-Další informace najdete v http://tools.ietf.org/html/rfc4500 (je třeba tooreplace 4500 RFC číslem správné hello).
+Při odkazování na dokumenty IETF RFC, tento dokument je ve formátu (RFC [RFC číslo] nebo [oddílu v dokumentu RFC]), například (RFC 4512/4.3).
+Další informace najdete v http://tools.ietf.org/html/rfc4500 (budete muset nahraďte správné číslo RFC 4500).
 
-## <a name="overview-of-hello-generic-ldap-connector"></a>Přehled hello obecné konektor LDAP
-Hello obecné konektor LDAP umožňuje vám toointegrate hello synchronizační služby se serverem LDAP v3.
+## <a name="overview-of-the-generic-ldap-connector"></a>Přehled generický konektor LDAP
+Obecné konektor LDAP umožňuje integraci se serverem LDAP v3 synchronizační služby.
 
-Některé operace a prvky schématu, například těch, které potřeby tooperform Rozdílový import, nebyly zadány v dokumentech hello IETF RFC. Pro tyto operace jsou podporovány pouze adresáře LDAP explicitně určena.
+Některé operace a prvky schématu, jako jsou ty, které vyžaduje k provedení Rozdílový import, nebyly zadány v dokumentech IETF RFC. Pro tyto operace jsou podporovány pouze adresáře LDAP explicitně určena.
 
-Z hlediska vysoké úrovně podporuje hello aktuální verzi konektoru hello hello následující funkce:
+Z hlediska vysoké úrovně služba aktuální verzi konektor podporuje následující funkce:
 
 | Funkce | Podpora |
 | --- | --- |
-| Připojeného zdroje dat |Hello konektor je podporována u všech serverů LDAP v3 (specifikaci RFC 4510). Byl testován s hello následující: <li>Microsoft Active Directory Lightweight Directory Services (AD LDS)</li><li>Microsoft Active Directory globální katalog (AD GC)</li><li>389 adresářový Server</li><li>Apache adresářový Server</li><li>IBM Tivoli DS</li><li>Isode adresáře</li><li>NetIQ eDirectory</li><li>Novell eDirectory</li><li>Otevřete DJ</li><li>Otevřete DS</li><li>Otevřete LDAP (openldap.org)</li><li>Oracle (dříve Sun) Directory Server Enterprise Edition</li><li>Virtuální adresář serveru RadiantOne (VDS)</li><li>Jeden Sun Directory Server</li>**Významné adresářů není podporována:** <li>Microsoft Active Directory Domain Services (AD DS) [použití hello integrovaného konektoru služby Active Directory místo]</li><li>Oracle Internet adresáře (OID)</li> |
+| Připojeného zdroje dat |Konektor je podporována u všech serverů LDAP v3 (specifikaci RFC 4510). Byl testován s následujícími službami: <li>Microsoft Active Directory Lightweight Directory Services (AD LDS)</li><li>Microsoft Active Directory globální katalog (AD GC)</li><li>389 adresářový Server</li><li>Apache adresářový Server</li><li>IBM Tivoli DS</li><li>Isode adresáře</li><li>NetIQ eDirectory</li><li>Novell eDirectory</li><li>Otevřete DJ</li><li>Otevřete DS</li><li>Otevřete LDAP (openldap.org)</li><li>Oracle (dříve Sun) Directory Server Enterprise Edition</li><li>Virtuální adresář serveru RadiantOne (VDS)</li><li>Jeden Sun Directory Server</li>**Významné adresářů není podporována:** <li>Microsoft Active Directory Domain Services (AD DS) [integrovaného konektoru služby Active Directory použijte místo toho]</li><li>Oracle Internet adresáře (OID)</li> |
 | Scénáře |<li>Správa životního cyklu objektu</li><li>Správa skupin</li><li>Správa hesel</li> |
-| Operace |Hello následující operace jsou podporovány na všechny adresáře LDAP: <li>Úplný Import</li><li>Export</li>Hello následující operace jsou podporovány pouze na zadaných adresářích:<li>Rozdílový import</li><li>Nastavení hesla, změnit heslo</li> |
-| Schéma |<li>Schéma je zjištěna ze schématu LDAP hello (RFC3673 a RFC4512 nebo 4.2)</li><li>Podporuje strukturální třídy, aux třídy a třída objektu extensibleObject (RFC4512/4.3)</li> |
+| Operace |Podporovány jsou následující operace pro všechny adresáře LDAP: <li>Úplný Import</li><li>Export</li>Tyto operace jsou podporovány pouze na zadaných adresářích:<li>Rozdílový import</li><li>Nastavení hesla, změnit heslo</li> |
+| Schéma |<li>Schéma je zjištěna ze schématu protokolu LDAP (RFC3673 a RFC4512 nebo 4.2)</li><li>Podporuje strukturální třídy, aux třídy a třída objektu extensibleObject (RFC4512/4.3)</li> |
 
 ### <a name="delta-import-and-password-management-support"></a>Podpora správy Rozdílový import a heslo
 Rozdílový import a Správa hesel podporováno adresáře:
@@ -93,31 +93,31 @@ Rozdílový import a Správa hesel podporováno adresáře:
   * Podporuje nastavit heslo a změnit heslo
 
 ### <a name="prerequisites"></a>Požadavky
-Než použijete hello konektor, zkontrolujte, zda že máte na serveru pro synchronizaci hello hello následující:
+Než použijete tento konektor, ujistěte se, že máte k dispozici následující na serveru synchronizace:
 
 * 4.5.2 rozhraní Microsoft .NET Framework nebo novější
 
-### <a name="detecting-hello-ldap-server"></a>Zjišťování serveru LDAP hello
-Hello konektor závisí na různých technik toodetect a identifikovat hello LDAP server. Konektor používá Hello hello DSE kořenové, název dodavatele a verzi, a jeho kontroluje hello toofind jedinečný objekty a atributy schématu známé tooexist v určitých serverů LDAP. Tato data, pokud nalezen, je použít toopre-naplnit hello možnosti konfigurace v hello konektor.
+### <a name="detecting-the-ldap-server"></a>Zjišťování serveru LDAP
+Konektor závisí na různých technik ke zjišťování a identifikaci serveru LDAP. Konektor používá DSE kořenové, dodavatele název, verzi a ho kontroluje schéma najít jedinečný objektů a atributů ví, že existují v určitých serverů LDAP. Tato data, pokud nalezen, bude použita k předběžnému naplnění možnosti konfigurace v konektoru.
 
 ### <a name="connected-data-source-permissions"></a>Oprávnění připojených zdrojů dat
-tooperform import a export operací na hello objekty v hello připojený adresář, hello konektor účet musí mít dostatečná oprávnění. konektor Hello potřebuje zápisu možné tooexport toobe oprávnění a možnost tooimport toobe oprávnění číst. Konfigurace oprávnění se provádí v rámci hello správu zkušenosti hello cílový adresář sám sebe.
+Chcete-li provést import a export operací na objektech v adresáři připojené, musí mít účet konektoru dostatečná oprávnění. Konektor musí být schopni export oprávnění k zápisu a oprávnění ke čtení pro moci importovat. Konfigurace oprávnění se provádí v rámci správy zkušenosti cílový adresář sám sebe.
 
 ### <a name="ports-and-protocols"></a>Porty a protokoly
-konektor Hello používá číslo portu hello zadaný v konfiguraci hello, který ve výchozím nastavení je 389 pro LDAP a 636 pro LDAPS.
+Konektor používá číslo portu, který je zadaný v konfiguraci, který ve výchozím nastavení je 389 pro LDAP a 636 pro LDAPS.
 
 Pro LDAPS musí používat protokol SSL 3.0 nebo TLS. Protokol SSL 2.0 není podporována a nelze aktivovat.
 
 ### <a name="required-controls-and-features"></a>Požadovaný ovládací prvky a funkce
-Hello následující LDAP ovládací prvky na funkce musí být k dispozici na serveru LDAP hello hello konektor toowork správně:  
+Tyto ovládací prvky LDAP nebo funkce musí být k dispozici na serveru LDAP pro konektor správně fungovat:  
 `1.3.6.1.4.1.4203.1.5.3`Filtry true nebo False
 
-Filtr hodnotu True nebo False Hello není hlášena často podporuje adresáře LDAP a může zobrazovat ve hello **globální stránky** pod **povinné funkce nebyla nalezena**. Je použité toocreate **nebo** filtry v dotazech LDAP, například při importu více typů objektu. Pokud importujete více než jeden typ objektu, serveru LDAP podporuje tuto funkci.
+Filtr hodnotu True nebo False není hlášena často podporuje adresáře LDAP a může zobrazovat ve **globální stránky** pod **povinné funkce nebyla nalezena**. Se používá k vytvoření **nebo** filtry v dotazech LDAP, například při importu více typů objektu. Pokud importujete více než jeden typ objektu, serveru LDAP podporuje tuto funkci.
 
-Pokud používáte adresář, kde je jedinečný identifikátor hello ukotvení hello následující musí být také k dispozici (Další informace najdete v tématu hello [konfigurace kotvy](#configure-anchors) část):  
+Pokud používáte adresář, kde je jedinečný identifikátor ukotvení následující musí být také k dispozici (Další informace najdete v tématu [konfigurace kotvy](#configure-anchors) část):  
 `1.3.6.1.4.1.4203.1.5.1`Všechny provozní atributy
 
-Pokud má hello adresář více objektů, než co můžete začlenit v jednom adresáři toohello volání, doporučujeme toouse stránkování. Pro toowork stránkování budete potřebovat hello následující možnosti:
+Pokud adresář má více objektů, než co vejde na jedno volání do adresáře, pak se doporučuje použít stránkování. Pro stránkování pracovat, je třeba jeden z následujících možností:
 
 **Možnost 1:**  
 `1.2.840.113556.1.4.319`pagedResultsControl
@@ -126,122 +126,122 @@ Pokud má hello adresář více objektů, než co můžete začlenit v jednom ad
 `2.16.840.1.113730.3.4.9`VLVControl  
 `1.2.840.113556.1.4.473`SortControl
 
-Pokud obě možnosti jsou povolené v konfiguraci konektoru hello, použije se pagedResultsControl.
+Pokud obě možnosti jsou povolené v konfiguraci konektoru, použije se pagedResultsControl.
 
 `1.2.840.113556.1.4.417`ShowDeletedControl
 
-ShowDeletedControl používá jenom s hello USNChanged Rozdílový import metoda toobe možné toosee odstranit objekty.
+ShowDeletedControl používá pouze pro metodu USNChanged Rozdílový import do Zobrazit odstraněné objekty.
 
-konektor Hello pokusí toodetect hello možnosti nachází na serveru hello. Když hello možnosti nelze rozpoznat, upozornění se nachází na stránce globální hello ve vlastnostech konektoru hello. Ne všechny servery LDAP nachází všechny ovládací prvky nebo funkce se podporují a i v případě, že toto upozornění je k dispozici, hello konektoru může fungovat bez problémů.
+Konektor se pokusí zjistit možnosti nachází na serveru. Když možnosti nelze rozpoznat, upozornění se nachází na stránce globální ve vlastnostech konektoru. Ne všechny servery LDAP nachází všechny ovládací prvky nebo funkce podporují a i v případě, že toto upozornění je k dispozici, konektor může fungovat bez problémů.
 
 ### <a name="delta-import"></a>Rozdílový import
-Rozdílový import je k dispozici, pouze pokud byla zjištěna podpora adresáře. Hello následující metody se aktuálně používají:
+Rozdílový import je k dispozici, pouze pokud byla zjištěna podpora adresáře. Aktuálně se používají následující metody:
 
 * LDAP Accesslog. V tématu [http://www.openldap.org/doc/admin24/overlays.html#Access protokolování](http://www.openldap.org/doc/admin24/overlays.html#Access Logging)
 * Protokol LDAP změn. V tématu [http://tools.ietf.org/html/draft-good-ldap-changelog-04](http://tools.ietf.org/html/draft-good-ldap-changelog-04)
-* Časové razítko. Novell/NetIQ eDirectory hello konektor používá poslední datum a čas tooget vytvořit a aktualizovat objekty. Novell/NetIQ eDirectory neposkytuje ekvivalentní znamená tooretrieve odstranit objekty. Tuto možnost lze také Pokud žádnou jinou metodu Rozdílový import je aktivní na serveru LDAP hello. Tato možnost není možné tooimport odstranit objekty.
+* Časové razítko. Pro Novell/NetIQ eDirectory konektor používá datum a čas poslední potřebujete vytvořit a aktualizovat objekty. Novell/NetIQ eDirectory neposkytuje ekvivalentní prostředky k načtení odstraněných objektů. Tuto možnost lze také Pokud žádnou jinou metodu Rozdílový import je aktivní na serveru LDAP. Tato možnost není možné odstranit import objektů.
 * USNChanged. Přejděte na téma: [https://msdn.microsoft.com/library/ms677627.aspx](https://msdn.microsoft.com/library/ms677627.aspx)
 
 ### <a name="not-supported"></a>Nepodporuje se
-Následující funkce LDAP Hello nejsou podporovány:
+Nejsou podporovány následující funkce LDAP:
 
 * Referenční seznamy LDAP mezi servery (RFC 4511/4.1.10)
 
 ## <a name="create-a-new-connector"></a>Vytvořit nový konektor
-tooCreate generický konektor LDAP v **synchronizační služba** vyberte **agenta pro správu** a **vytvořit**. Vyberte hello **obecné LDAP (Microsoft)** konektor.
+Chcete-li vytvořit generický konektor LDAP, v **synchronizační služba** vyberte **agenta pro správu** a **vytvořit**. Vyberte **obecné LDAP (Microsoft)** konektor.
 
 ![CreateConnector](./media/active-directory-aadconnectsync-connector-genericldap/createconnector.png)
 
 ### <a name="connectivity"></a>Připojení
-Na stránce hello připojení je nutné zadat hello hostitelů, Port a vazba informace. V závislosti na tom, které je vazba vybrané, další informace může být potřeba zadat ve hello následující části.
+Na stránce připojení musíte určit informace o hostiteli, Port a vazby. V závislosti na tom, které je vazba vybrané, další mohou být dodány informace v následujících částech.
 
 ![Připojení](./media/active-directory-aadconnectsync-connector-genericldap/connectivity.png)
 
-* Hello časový limit připojení nastavení slouží pouze pro hello prvního připojení toohello serveru při zjišťování hello schématu.
+* Časový limit připojení nastavení slouží pouze pro první připojení k serveru při zjišťování schématu.
 * Pokud vazba je anonymní, pak ani uživatelského jména a hesla ani certifikát se používají.
 * Pro další vazby, zadejte informace o buď v uživatelské jméno / heslo nebo vyberte certifikát.
-* Pokud používáte tooauthenticate protokolu Kerberos, zadejte také hello sféry nebo domény hello uživatele.
+* Pokud používáte protokol Kerberos k ověření, zadejte také sféry nebo domény uživatele.
 
-Hello **atribut aliasy** textového pole se používá pro atributy definované ve schématu hello se syntaxí RFC4522. Tyto atributy nebyl nalezen při rozpoznávání schématu a hello konektor musí pomoct tooidentify těmito atributy. Například následující musí být zadaný v hello atribut aliasy pole toocorrectly hello Identifikujte hello userCertificate atribut jako binární atribut:
+**Atribut aliasy** textového pole se používá pro atributy definované ve schématu se syntaxí RFC4522. Tyto atributy nebyl nalezen při rozpoznávání schématu a konektor musí nápovědy k identifikaci těchto atributů. V poli atributů aliasy správně identifikovat atribut userCertificate jako binární atribut je třeba zadat například následující:
 
 `userCertificate;binary`
 
-Hello následuje příklad, jak může vypadat tuto konfiguraci:
+Následuje příklad, jak může vypadat tuto konfiguraci:
 
 ![Připojení](./media/active-directory-aadconnectsync-connector-genericldap/connectivityattributes.png)
 
-Vyberte hello **zahrnout provozní atributy do schématu** tooalso políčko zahrnout atributy vytvořená serverem hello. Mezi ně patří atributy, jako když hello objekt byl vytvořen a čas poslední aktualizace.
+Vyberte **zahrnout provozní atributy do schématu** políčko zahrnout také atributy vytvořená serverem. Mezi ně patří atributy, jako je například když objekt byl vytvořen a čas poslední aktualizace.
 
-Vyberte **zahrnout extensible atributy do schématu** budou použita rozšiřitelné objekty (RFC4512/4.3) a povolení této možnosti umožňuje každý atribut toobe použít na všechny objektu. Tato možnost vám hello schématu velké, pokud připojený adresář hello používá toto doporučení hello funkce je tookeep hello možnost zrušit.
+Vyberte **zahrnout extensible atributy do schématu** budou použita rozšiřitelné objekty (RFC4512/4.3) a povolením této možnosti umožníte každý atribut, který se má použít na všechny objektu. Tato možnost vám schéma velké, pokud je připojený adresář pomocí této funkce doporučujeme ponechat možnost zrušit.
 
 ### <a name="global-parameters"></a>Globální parametry
-Na stránce globální parametry hello nakonfigurujete protokol změn delta toohello hello rozlišující název a další funkce LDAP. stránku Hello je již nastavena hello informace poskytované serverem LDAP hello.
+Na stránce globální parametry konfigurace DN rozdílů protokol změn a další funkce LDAP. Stránce je již nastavena informace poskytované serverem LDAP.
 
 ![Připojení](./media/active-directory-aadconnectsync-connector-genericldap/globalparameters.png)
 
-horní části Hello zobrazí informace poskytované hello samotného serveru, jako je například název hello serveru hello. Hello konektor také ověří, zda hello povinné ovládací prvky jsou k dispozici v hello DSE kořenové. Pokud tyto ovládací prvky nejsou na seznamu, se zobrazí upozornění. Některé adresáře LDAP, neuvádějte všem funkcím v hello DSE kořenové a je možné, že konektor funguje bez problémů text hello, i když je k dispozici upozornění.
+V horní části zobrazí informace poskytované serverem samostatně, jako je název serveru. Konektor také ověří, zda povinné ovládací prvky jsou k dispozici v DSE kořenové. Pokud tyto ovládací prvky nejsou na seznamu, se zobrazí upozornění. Některé adresáře LDAP, neuvádějte všem funkcím v DSE kořenové a je možné, že konektor funguje bez problémů, i když upozornění je k dispozici.
 
-Hello **podporované ovládací prvky** zaškrtávací políčka kontrolovat hello chování pro určité operace:
+**Podporované ovládací prvky** zaškrtávací políčka řídí chování pro určité operace:
 
-* Pomocí stromové struktury odstranit vybrané, se odstraní hierarchie s jedno volání LDAP. S stromu odstranit zrušit nemá hello konektor odstranit rekurzivní v případě potřeby.
-* S stránkových výsledků vybraného nemá hello konektor stránkové import s hello velikost zadaná v hello spustit kroky.
-* Hello VLVControl a SortControl je model alternativní toohello pagedResultsControl tooread data z adresáře LDAP hello.
-* Pokud jsou všechny tři možnosti (pagedResultsControl, VLVControl a SortControl) nezaškrtnuté hello pak konektor importuje všech objektů v rámci jedné operace, které může selhat, pokud je to velké adresář.
-* ShowDeletedControl se používá pouze v případě metody import Delta hello USNChanged.
+* Pomocí stromové struktury odstranit vybrané, se odstraní hierarchie s jedno volání LDAP. S stromu odstranit zrušit konektor nebude odstranění rekurzivní v případě potřeby.
+* Konektor s stránkových výsledků vybraného, nemá stránkové import s zadaná velikost na spuštění kroky.
+* VLVControl a SortControl je alternativa k pagedResultsControl číst data z adresáře LDAP.
+* Pokud jsou všechny tři možnosti (pagedResultsControl, VLVControl a SortControl) nezaškrtnuté konektor importuje všech objektů v rámci jedné operace, které může selhat, pokud je to velké adresář.
+* ShowDeletedControl se používá pouze v případě metody import Delta USNChanged.
 
-Protokol změn Hello rozlišující název je názvový kontext hello používá protokol změn hello rozdílů, například **cn = protokol změn**. Tato hodnota musí být zadán toobe možné toodo Rozdílový import.
+Protokol změn rozlišující název je názvový kontext, který používá protokol změn rozdílů, například **cn = protokol změn**. Abyste mohli provést Rozdílový import je třeba zadat tuto hodnotu.
 
-Hello následuje seznam protokol změn výchozí DNs:
+Následuje seznam protokol změn výchozí DNs:
 
 | Adresář | Protokol změn rozdílů |
 | --- | --- |
 | Uvolňování paměti Microsoft AD LDS a AD |Automaticky zjištěna. USNChanged. |
 | Apache adresářový Server |Není k dispozici. |
-| Directory 389 |Protokol změn. Výchozí hodnota toouse: **cn = protokol změn** |
-| IBM Tivoli DS |Protokol změn. Výchozí hodnota toouse: **cn = protokol změn** |
-| Isode adresáře |Protokol změn. Výchozí hodnota toouse: **cn = protokol změn** |
-| Novell/NetIQ eDirectory |Není k dispozici. Časové razítko. Hello konektor používá poslední aktualizované datum a čas tooget přidají a záznamy. |
-| Otevřete DJ/DS |Protokol změn.  Výchozí hodnota toouse: **cn = protokol změn** |
-| Otevřete LDAP |Přístup k protokolu. Výchozí hodnota toouse: **cn = accesslog** |
-| Oracle DSEE |Protokol změn. Výchozí hodnota toouse: **cn = protokol změn** |
-| RadiantOne VDS |Virtuální adresář. Závisí na tooVDS directory připojené hello. |
-| Jeden Sun Directory Server |Protokol změn. Výchozí hodnota toouse: **cn = protokol změn** |
+| Directory 389 |Protokol změn. Výchozí hodnota použití: **cn = protokol změn** |
+| IBM Tivoli DS |Protokol změn. Výchozí hodnota použití: **cn = protokol změn** |
+| Isode adresáře |Protokol změn. Výchozí hodnota použití: **cn = protokol změn** |
+| Novell/NetIQ eDirectory |Není k dispozici. Časové razítko. Konektor používá poslední datum a čas získat aktualizace a aktualizace záznamů. |
+| Otevřete DJ/DS |Protokol změn.  Výchozí hodnota použití: **cn = protokol změn** |
+| Otevřete LDAP |Přístup k protokolu. Výchozí hodnota použití: **cn = accesslog** |
+| Oracle DSEE |Protokol změn. Výchozí hodnota použití: **cn = protokol změn** |
+| RadiantOne VDS |Virtuální adresář. Závisí na adresář, připojený k VDS. |
+| Jeden Sun Directory Server |Protokol změn. Výchozí hodnota použití: **cn = protokol změn** |
 
-atribut password Hello je název hello hello atribut hello konektor by měl používat heslo hello tooset v změny hesla a heslo množinové operace.
-Tato hodnota je ve výchozím nastavení obsahuje příliš**userPassword** však lze změnit v případě potřeby pro konkrétní systém LDAP.
+Atribut password je název atributu, který konektor by měl použít k nastavení hesla v změny hesla a operace nastavené heslo.
+Tato hodnota je výchozím nastavením **userPassword** však lze změnit v případě potřeby pro konkrétní systém LDAP.
 
-V seznamu hello další oddíly je možné tooadd další obory názvů, automaticky zjištěna. Například můžete toto nastavení použít, pokud několik serverů, které tvoří logickou cluster, který by měl všechny importovat v hello stejnou dobu. Stejně jako služby Active Directory může mít několik domén v jedné doménové struktuře, ale všechny domény sdílet jedno schéma, hello stejné můžete simulated zadáním hello další obory názvů v tomto poli. Každý obor názvů můžete importovat z různých serverů a je nakonfigurované na stránce konfigurace oddílů a hierarchií hello. Pomocí kombinace kláves Ctrl + Enter tooget nový řádek.
+V seznamu další oddíly je možné přidat další obory názvů automaticky zjištěna. Toto nastavení můžete například použijí, pokud několik serverů, které tvoří logickou cluster, který by měl být importovány všechny ve stejnou dobu. Stejně jako všechny domény sdílet jedno schéma služby Active Directory může mít v jedné doménové struktuře víc domén však můžete zadáním další obory názvů v tomto poli simulated stejné. Každý obor názvů můžete importovat z různých serverů a je nakonfigurované na stránce konfigurace oddílů a hierarchií. Ctrl + Enter použijte k získání nového řádku.
 
 ### <a name="configure-provisioning-hierarchy"></a>Konfigurace hierarchie zřizování
-Tato stránka je použité toomap hello rozlišující název součásti, například organizační jednotku, toohello typ objektu, který by měl být zřízený, například organizationalUnit.
+Tato stránka slouží k mapování komponentu rozlišující název, například organizační jednotku, na typu objektu, který by měl být zřízený, například organizationalUnit.
 
 ![Zřizování hierarchie](./media/active-directory-aadconnectsync-connector-genericldap/provisioninghierarchy.png)
 
-Konfigurace hierarchie zřizování, můžete konfigurovat konektor tooautomatically hello vytvořit strukturu v případě potřeby. Například, pokud je obor názvů dc = contoso, řadič domény com a nový objekt cn = Jan, ou = = Seattle, c = US, řadič domény = contoso, dc = com je zřízený a pak hello konektor můžete vytvořit objekt typu země pro USA a organizationalUnit pro Seattle, pokud těch, které ještě nejsou existuje v adresáři hello.
+Konfigurace hierarchie zřizování, můžete konfigurovat konektor pro automatické vytvoření struktury v případě potřeby. Například pokud je obor názvů dc = contoso, řadič domény com a nový objekt cn = Jan, ou = = Seattle, c = US, řadič domény = contoso, řadič domény = com je zřízený a pak tento konektor můžete vytvořit objekt typu země pro USA a organizationalUnit pro Seattle, pokud těch, které se již nenacházejí v adresáři.
 
 ### <a name="configure-partitions-and-hierarchies"></a>Konfigurace oddílů a hierarchií
-Na stránce hello oddílů a hierarchií, vyberte všechny obory názvů s objekty plánujete tooimport a export.
+Na stránce oddílů a hierarchií vyberte všechny obory názvů s objekty, které chcete importovat a exportovat.
 
 ![Oddíly](./media/active-directory-aadconnectsync-connector-genericldap/partitions.png)
 
-Pro každý obor názvů je také možné tooconfigure nastavení připojení, které by se mělo přepsat hello hodnoty zadané na obrazovce připojení hello. Pokud tyto hodnoty jsou ponechána tootheir výchozí prázdnou hodnotu, se používá hello informace z úvodní obrazovka připojení.
+Pro každý obor názvů je také možné nakonfigurovat nastavení připojení, které by se mělo přepsat hodnoty zadané na obrazovce připojení. Pokud tyto hodnoty jsou ponechána na jejich výchozí prázdné hodnoty, použije se informace na obrazovce připojení.
 
-Je také možné tooselect které kontejnery a organizační jednotky hello by měl import a export na konektoru.
+Je také možné vybrat, které kontejnery a organizační jednotky by měl import a export na konektoru.
 
-Při prohledávání probíhá přes všechny kontejnery v oddílu hello. V případech, kde je velké množství kontejnerů toto chování způsobí snížení tooperformance.
+Při prohledávání probíhá přes všechny kontejnery v oddílu. V případech, kde je velké množství kontejnerů toto chování způsobí snížení výkonu.
 
 >[!NOTE]
-Počínaje hello března 2017 aktualizace toohello obecné LDAP konektor hledání omezené v kontejnerech hello vybrané tooonly oboru. To lze provést výběrem hello políčko "vyhledávání pouze ve vybrané kontejnery, jak ukazuje následující obrázek hello.
+Počínaje března 2017 aktualizace obecné LDAP konektor hledání omezené v oboru pouze vybrané kontejnery. Tento krok můžete provést zaškrtnutím políčka 'vyhledávání pouze ve vybrané kontejnery, jak je znázorněno na obrázku níže.
 
 ![Vyhledávat pouze vybrané kontejnerů](./media/active-directory-aadconnectsync-connector-genericldap/partitions-only-selected-containers.png)
 
 ### <a name="configure-anchors"></a>Konfigurace ukotvení
-Tato stránka nemá vždy hodnotu předkonfigurované a nedá se změnit. Pokud byla zjištěna hello serveru dodavatele, může hello ukotvení naplněno s atributem neměnné pro příklad hello identifikátor GUID pro objekt. Pokud nebyl nalezen nebo je známý toonot neměnné atribut a potom hello konektor jako kotvu hello používá rozlišující název (rozlišující název).
+Tato stránka nemá vždy hodnotu předkonfigurované a nedá se změnit. Pokud byla zjištěna dodavatele serveru, může se nedá změnit atribut, například identifikátor GUID pro objekt naplněno ukotvení. Pokud nebyl nalezen nebo je zřejmé, nemá atribut neměnné, pak tento konektor využívá jako kotvu rozlišující název (rozlišující název).
 
 ![ukotvení](./media/active-directory-aadconnectsync-connector-genericldap/anchors.png)
 
 
-Hello následuje seznam serverů LDAP a ukotvení hello používá:
+Následuje seznam serverů LDAP a ukotvení používá:
 
 | Adresář | Atribut kotvy |
 | --- | --- |
@@ -258,14 +258,14 @@ Hello následuje seznam serverů LDAP a ukotvení hello používá:
 | Jeden Sun Directory Server |rozlišující název |
 
 ## <a name="other-notes"></a>Další poznámky
-Tato část obsahuje informace o aspektů, které jsou specifické toothis konektoru nebo z jiných důvodů jsou důležité tooknow.
+Tato část obsahuje informace o aspektů, které jsou specifické pro tento konektor nebo z jiných důvodů jsou důležité vědět.
 
 ### <a name="delta-import"></a>Rozdílový import
-vodoznak Hello rozdílů v otevřené LDAP je datum a čas UTC. Z tohoto důvodu musí být synchronizovány hello hodiny mezi synchronizační služba FIM a hello otevřete LDAP. Pokud ne, může být některé položky v hello rozdílové změny protokolu vynechán.
+Vodoznak rozdílů v otevřené LDAP je datum a čas UTC. Z tohoto důvodu musí být synchronizovány hodiny mezi synchronizační služba FIM a otevřete LDAP. Pokud ne, může tento parametr vynechán některé položky v protokolu rozdílové změny.
 
-Pro Novell eDirectory není rozdílový import hello zjišťování žádné odstranění objektu. Z tohoto důvodu je nutné toorun úplnou pravidelný import toofind odstranit objekty.
+Pro Novell eDirectory není rozdílový import zjišťování žádné odstranění objektu. Z tohoto důvodu je nutné spustit úplný import pravidelně chcete najít všechny odstraněné objekty.
 
-Adresáře s rozdílový změn protokolu, který je založen na datum a čas, se důrazně doporučuje toorun úplný import v pravidelných dobu. Tento proces umožňuje hello synchronizační modul toofind a rozdíly mezi hello LDAP server a co je aktuálně v prostoru konektoru hello.
+Pro adresáře s protokol změn rozdílů, který je založen na datum a čas důrazně doporučujeme spustit úplný import v pravidelných časech. Tento proces umožňuje synchronizační modul najít a rozdíly mezi serverem LDAP a co je aktuálně v prostoru konektoru.
 
 ## <a name="troubleshooting"></a>Řešení potíží
-* Informace o tom, jak protokolování tooenable tootroubleshoot hello konektoru najdete v tématu hello [jak tooEnable trasování ETW pro konektory](http://go.microsoft.com/fwlink/?LinkId=335731).
+* Informace o tom, jak povolit protokolování pro řešení potíží s konektoru najdete v tématu [postup povolení trasování ETW pro konektory](http://go.microsoft.com/fwlink/?LinkId=335731).

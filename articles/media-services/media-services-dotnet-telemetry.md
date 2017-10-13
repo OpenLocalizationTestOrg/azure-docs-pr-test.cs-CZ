@@ -1,6 +1,6 @@
 ---
-title: aaaConfiguring telemetrie Azure Media Services s .NET | Microsoft Docs
-description: "Tento článek ukazuje, jak toouse hello telemetrie Azure Media Services pomocí sady .NET SDK."
+title: "Konfigurace služby Azure Media Services telemetrie s .NET | Microsoft Docs"
+description: "Tento článek ukazuje, jak používat telemetrie Azure Media Services pomocí sady .NET SDK."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,40 +14,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
-ms.openlocfilehash: 4019fa7d080ca3f8a8709bd1e666f7062b883954
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1d857f3d062d8d1b15c64fa4b8c3e27ad6c2247e
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="configuring-azure-media-services-telemetry-with-net"></a>Konfigurace služby Azure Media Services telemetrie s rozhraním .NET
 
-Toto téma popisuje obecné kroky, které může provést při konfiguraci telemetrie hello Azure Media Services (AMS) pomocí sady .NET SDK. 
+Toto téma popisuje obecné kroky, které může provést při konfiguraci telemetrie Azure Media Services (AMS) pomocí sady .NET SDK. 
 
 >[!NOTE]
->Pro hello podrobné vysvětlení, co je AMS telemetrie a jak tooconsume, najdete v části hello [přehled](media-services-telemetry-overview.md) tématu.
+>Podrobné vysvětlení, co je AMS telemetrie a jak ho zpracovat, najdete v části [přehled](media-services-telemetry-overview.md) tématu.
 
-Můžete využívat telemetrická data v jednom z následujících způsobů hello:
+Můžete využívat telemetrická data v jednom z následujících způsobů:
 
-- Číst data přímo z úložiště tabulek Azure (např. pomocí hello sada SDK úložiště). Popis hello telemetrie úložiště tabulek naleznete v tématu hello **využívání telemetrické informace** v [to](https://msdn.microsoft.com/library/mt742089.aspx) tématu.
+- Číst data přímo z úložiště tabulek Azure (např. pomocí sady SDK úložiště). Popis telemetrie úložiště tabulek naleznete v tématu **využívání telemetrické informace** v [to](https://msdn.microsoft.com/library/mt742089.aspx) tématu.
 
 Nebo
 
-- Podpora použití hello v hello sady Media Services .NET SDK pro čtení dat úložiště. Toto téma ukazuje, jak tooenable telemetrie hello zadán účet AMS a jak hello tooquery hello metriky pomocí Azure Media Services .NET SDK.  
+- Použijte podporu v .NET SDK služby Media Services pro čtení dat úložiště. Toto téma ukazuje, jak povolit telemetrii pro zadaný účet AMS a jak dotazovat metriky pomocí Azure Media Services .NET SDK.  
 
 ## <a name="configuring-telemetry-for-a-media-services-account"></a>Konfigurace telemetrie pro účet Media Services
 
-Hello následující kroky jsou potřebné tooenable telemetrie:
+Chcete-li povolit telemetrii vyžaduje následující kroky:
 
-- Získáte přihlašovací údaje hello hello úložiště připojeného účtu toohello účtu Media Services. 
-- Vytvoření koncového bodu oznámení s **EndPointType** nastavit příliš**AzureTable** a endPointAddress odkazující tabulce toohello úložiště.
+- Získání přihlašovacích údajů účtu úložiště připojené k účtu Media Services. 
+- Vytvoření koncového bodu oznámení s **EndPointType** nastavena na **AzureTable** a endPointAddress odkazující na tabulku úložiště.
 
         INotificationEndPoint notificationEndPoint = 
                       _context.NotificationEndPoints.Create("monitoring", 
                       NotificationEndPointType.AzureTable,
                       "https://" + _mediaServicesStorageAccountName + ".table.core.windows.net/");
 
-- Vytvořit nastavení konfigurace sledování hello služeb, které chcete toomonitor. Více než jeden monitorování nastavení konfigurace je povolen. 
+- Vytvořte monitorování konfiguraci nastavení pro služby, které chcete monitorovat. Více než jeden monitorování nastavení konfigurace je povolen. 
   
         IMonitoringConfiguration monitoringConfiguration = _context.MonitoringConfigurations.Create(notificationEndPoint.Id,
             new List<ComponentMonitoringSetting>()
@@ -62,15 +62,15 @@ Informace o využívání telemetrické informace najdete v tématu [to](media-s
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
-1. Nastavení vývojového prostředí a naplnění souboru app.config hello s informace o připojení, jak je popsáno v [vývoj pro Media Services s .NET](media-services-dotnet-how-to-use.md). 
+1. Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
 
-2. Přidejte následující element příliš hello**appSettings** definované v souboru app.config:
+2. Přidejte následující element pro **appSettings** definované v souboru app.config:
 
     <add key="StorageAccountName" value="storage_name" />
  
 ## <a name="example"></a>Příklad  
     
-Hello následující příklad ukazuje, jak tooenable telemetrie hello zadán účet AMS a jak hello tooquery hello metriky pomocí Azure Media Services .NET SDK.  
+Následující příklad ukazuje, jak povolit telemetrii pro zadaný účet AMS a jak dotazovat metriky pomocí Azure Media Services .NET SDK.  
 
     using System;
     using System.Collections.Generic;
@@ -192,7 +192,7 @@ Hello následující příklad ukazuje, jak tooenable telemetrie hello zadán ú
 
             var channelMetrics = telemetry.GetChannelHeartbeats(timerangeStart, timerangeEnd);
 
-            // Print hello channel metrics.
+            // Print the channel metrics.
             Console.WriteLine("Channel metrics:");
 
             foreach (var channelHeartbeat in channelMetrics.OrderBy(x => x.ObservedTime))

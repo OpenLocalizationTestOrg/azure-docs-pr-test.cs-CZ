@@ -1,6 +1,6 @@
 ---
-title: "aaaCollect Azure služby protokoly a metriky pro analýzy protokolů | Microsoft Docs"
-description: "Konfigurace diagnostiky na prostředky Azure toowrite protokoly a metriky tooLog Analytics."
+title: "Shromažďovat protokoly služby Azure a metriky pro analýzy protokolů | Microsoft Docs"
+description: "Konfigurace diagnostiky na prostředky pro zápis protokoly a metriky k analýze protokolů Azure."
 services: log-analytics
 documentationcenter: 
 author: MGoedtel
@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1cede9a94ec83c4e3a95853dc2ec355d8df06d6e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7a3785e39f0d1cf849dbbf0d83d89eaed58c5b0b
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Shromažďovat protokoly služby Azure a metriky pro použití v analýzy protokolů
 
 Existují čtyři různé způsoby shromažďování protokolů a metriky pro služby Azure:
 
-1. Azure diagnostics přímé tooLog Analytics (*diagnostiky* v hello následující tabulka)
-2. Azure diagnostics tooAzure úložiště tooLog Analytics (*úložiště* v hello následující tabulka)
-3. Konektory pro služby Azure (*konektory* v hello následující tabulka)
-4. Skriptů toocollect a pak následná data do analýzy protokolů (prázdné buňky v následující tabulce hello a pro služby, které nejsou uvedené)
+1. Azure diagnostics přímo k Log Analytics (*diagnostiky* v následující tabulce)
+2. Azure diagnostics do úložiště Azure k analýze protokolů (*úložiště* v následující tabulce)
+3. Konektory pro služby Azure (*konektory* v následující tabulce)
+4. Skripty ke sběru a následně je publikovat data do analýzy protokolů (prázdné buňky v následující tabulce a pro služby, které nejsou uvedené)
 
 
 | Služba                 | Typ prostředku                           | Logs        | Metriky     | Řešení |
@@ -60,22 +60,22 @@ Existují čtyři různé způsoby shromažďování protokolů a metriky pro sl
 
 
 > [!NOTE]
-> U monitorování na virtuálních počítačích Azure (Linux a Windows), doporučujeme nainstalovat hello [rozšíření virtuálního počítače Log Analytics](log-analytics-azure-vm-extension.md). Hello agent vám poskytne přehled shromážděných z virtuálních počítačů. Můžete také použít hello rozšíření pro sady škálování virtuálního počítače.
+> U monitorování na virtuálních počítačích Azure (Linux a Windows), doporučujeme nainstalovat [rozšíření virtuálního počítače Log Analytics](log-analytics-azure-vm-extension.md). Agent poskytuje přehled shromážděných z virtuálních počítačů. Můžete taky rozšíření pro sady škálování virtuálního počítače.
 >
 >
 
-## <a name="azure-diagnostics-direct-toolog-analytics"></a>Azure diagnostics přímé tooLog Analytics
-Mnoho prostředků Azure jsou možné toowrite diagnostické protokoly a metriky přímo tooLog analýzy a tato je hello upřednostňovaný způsob shromažďování dat hello k analýze. Pokud používáte Azure diagnostics, data se zapisují okamžitě tooLog analýzy a není bez nutnosti toofirst zápisu hello data toostorage.
+## <a name="azure-diagnostics-direct-to-log-analytics"></a>Azure diagnostics přímo k Log Analytics
+Mnoho prostředků Azure jsou schopni zapisovat diagnostické protokoly a metriky přímo na analýzy protokolů a toto je upřednostňovaný způsob shromažďování dat pro analýzu. Pokud používáte Azure diagnostics, data se zapisují okamžitě k analýze protokolů a není nutné nejprve zapsat data do úložiště.
 
-Prostředky Azure, které podporují [Azure monitorování](../monitoring-and-diagnostics/monitoring-overview.md) může poslat jejich protokoly a metriky přímo tooLog Analytics.
+Prostředky Azure, které podporují [Azure monitorování](../monitoring-and-diagnostics/monitoring-overview.md) může poslat jejich protokoly a metriky přímo k Log Analytics.
 
-* Podrobnosti hello k dispozici metrik hello najdete příliš[podporované metriky s Azure monitorování](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
-* Podrobnosti hello hello k dispozici protokoly najdete příliš[podporované služby a schématu pro diagnostické protokoly](../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md).
+* Podrobnosti k dispozici metrik [podporované metriky s Azure monitorování](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
+* Podrobnosti o dostupných protokolů, najdete v části [podporované služby a schématu pro diagnostické protokoly](../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md).
 
 ### <a name="enable-diagnostics-with-powershell"></a>Povolení diagnostiky pomocí PowerShellu
-Hello listopadu 2016 (v2.3.0) nebo novější vydání [prostředí Azure PowerShell](/powershell/azure/overview).
+Potřebujete listopadu 2016 (v2.3.0) nebo novější vydání [prostředí Azure PowerShell](/powershell/azure/overview).
 
-Následující příklad ukazuje prostředí PowerShell jak Hello toouse [Set-AzureRmDiagnosticSetting](/powershell/module/azurerm.insights/set-azurermdiagnosticsetting) tooenable diagnostics na skupinu zabezpečení sítě. Hello stejný přístup se dá použít pro všechny podporované prostředky – nastavit `$resourceId` id prostředku toohello chcete tooenable diagnostiky pro prostředek hello.
+Následující příklad PowerShell ukazuje, jak používat [Set-AzureRmDiagnosticSetting](/powershell/module/azurerm.insights/set-azurermdiagnosticsetting) povolí se Diagnostika na skupinu zabezpečení sítě. Ve stejný přístup se dá použít pro všechny podporované prostředky – nastavit `$resourceId` k prostředku, které chcete povolit diagnostiku pro id prostředku.
 
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -87,7 +87,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $ResourceId  -WorkspaceId $workspaceId 
 
 ### <a name="enable-diagnostics-with-resource-manager-templates"></a>Povolte diagnostiku pomocí šablony Resource Manageru
 
-tooenable diagnostics na prostředek, když je vytvořen a odeslali hello diagnostiky tooyour pracovní prostor analýzy protokolů, které můžete použít šablonu podobné toohello, jeden níže. V tomto příkladu je pro účet Automation, ale funguje pro všechny typy podporovaných prostředků.
+K povolení diagnostiky pro prostředek, kdy je vytvořen a Diagnostika odeslali do pracovního prostoru analýzy protokolů můžete použít podobná té následující šablonu. V tomto příkladu je pro účet Automation, ale funguje pro všechny typy podporovaných prostředků.
 
 ```json
         {
@@ -116,11 +116,11 @@ tooenable diagnostics na prostředek, když je vytvořen a odeslali hello diagno
 
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
-## <a name="azure-diagnostics-toostorage-then-toolog-analytics"></a>Azure diagnostics toostorage pak tooLog Analytics
+## <a name="azure-diagnostics-to-storage-then-to-log-analytics"></a>Azure diagnostics do úložiště a k analýze protokolů
 
-Pro shromažďování protokolů z v rámci některé prostředky, je možné toosend hello protokoly tooAzure úložiště a pak nakonfigurujte analýzy protokolů tooread hello protokoly z úložiště.
+Pro shromažďování protokolů z v rámci některé prostředky, je možné odeslat protokoly do úložiště Azure a pak nakonfigurujte analýzy protokolů číst protokoly z úložiště.
 
-Analýzy protokolů můžete použít tento přístup toocollect Diagnostika z úložiště Azure pro hello následující prostředky a protokoly:
+Analýzy protokolů můžete použít tento přístup ke shromažďování diagnostiky z úložiště Azure pro protokoly a následující prostředky:
 
 | Prostředek | Logs |
 | --- | --- |
@@ -129,26 +129,26 @@ Analýzy protokolů můžete použít tento přístup toocollect Diagnostika z �
 | Webové role <br> Role pracovního procesu |Linux Syslog <br> Události systému Windows <br> Protokol IIS <br> Windows ETWEvent |
 
 > [!NOTE]
-> Budou se účtovat normální Azure datové sazby za úložiště a transakce při odeslání diagnostiky tooa účet úložiště a když analýzy protokolů čte hello data z účtu úložiště.
+> Budou se účtovat normální Azure datové sazby za úložiště a transakce při odeslání diagnostiky do účtu úložiště a při analýze protokolů čte data z vašeho účtu úložiště.
 >
 >
 
-V tématu [pomocí úložiště objektů blob pro službu IIS a tabulka úložiště pro události](log-analytics-azure-storage-iis-table.md) toolearn více informací o jak analýzy protokolů shromáždit tyto protokoly.
+V tématu [pomocí úložiště objektů blob pro službu IIS a tabulka úložiště pro události](log-analytics-azure-storage-iis-table.md) Další informace o jak analýzy protokolů shromáždit tyto protokoly.
 
 ## <a name="connectors-for-azure-services"></a>Konektory pro služby Azure
 
-Je konektor pro službu Application Insights, což umožňuje data shromažďovaná společností odeslané tooLog Analytics toobe Application Insights.
+Je konektor pro službu Application Insights, což umožňuje data shromážděná pomocí Application Insights k odeslání do analýzy protokolů.
 
-Další informace o hello [Application Insights konektor](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/).
+Další informace o [Application Insights konektor](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/).
 
-## <a name="scripts-toocollect-and-post-data-toolog-analytics"></a>Skripty toocollect a post data tooLog Analytics
+## <a name="scripts-to-collect-and-post-data-to-log-analytics"></a>Skripty ke shromažďování a odesílání dat k analýze protokolů
 
-Pro služby Azure, které neposkytuje tooLog přímý způsob toosend protokoly a metriky Analytics můžete použít Azure Automation skriptu toocollect hello protokolu a metriky. skript může Hello pak odeslat hello dat tooLog Analytics pomocí hello [kolekcí dat rozhraní API](log-analytics-data-collector-api.md)
+Pro služby Azure, které neposkytuje přímý způsob, jak odeslat protokoly a metriky k analýze protokolů můžete použít skript Azure Automation ke shromažďování protokolů a metriky. Skript může pak posílat data pomocí analýzy protokolů [kolekcí dat rozhraní API](log-analytics-data-collector-api.md)
 
-Galerie Hello šablony Azure má [příklady použití Azure Automation](https://azure.microsoft.com/en-us/resources/templates/?term=OMS) toocollect data ze služby a odesláním tooLog Analytics.
+Galerie šablony Azure má [příklady použití Azure Automation](https://azure.microsoft.com/en-us/resources/templates/?term=OMS) shromažďovat data ze služby a odesláním k analýze protokolů.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Používání úložiště blob pro službu IIS a tabulka úložiště pro události](log-analytics-azure-storage-iis-table.md) tooread hello protokoly služby Azure, které zápis diagnostiky tootable úložiště nebo IIS protokoluje napsané tooblob úložiště.
-* [Povolit řešení](log-analytics-add-solutions.md) tooprovide vhled do dat hello.
-* [Použijte vyhledávací dotazy](log-analytics-log-searches.md) tooanalyze hello data.
+* [Používání úložiště blob pro službu IIS a tabulka úložiště pro události](log-analytics-azure-storage-iis-table.md) číst protokoly pro tuto diagnostiku zápisu do table storage nebo protokoly služby IIS zapisovat do úložiště objektů blob služby Azure.
+* [Povolit řešení](log-analytics-add-solutions.md) zajistit přehled o data.
+* [Použijte vyhledávací dotazy](log-analytics-log-searches.md) analyzovat data.

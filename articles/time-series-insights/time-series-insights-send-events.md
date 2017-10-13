@@ -1,6 +1,6 @@
 ---
-title: "aaaSend události tooAzure časové řady Přehled prostředí | Microsoft Docs"
-description: "Tento kurz se zaměřuje hello kroky toopush události tooyour časové řady Přehled prostředí"
+title: "Odesílání událostí do prostředí Azure Time Series Insights | Dokumentace Microsoftu"
+description: "Tento kurz nabízí postup pro odesílání událostí do prostředí Time Series Insights."
 keywords: 
 services: tsi
 documentationcenter: 
@@ -15,45 +15,45 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/21/2017
 ms.author: venkatja
-ms.openlocfilehash: dbccc23f61351a0033cd48c1a02fb3841b45d560
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: b4ef96a045393f28b3cd750068fe82a5a8411afa
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="send-events-tooa-time-series-insights-environment-using-event-hub"></a>Odeslání události tooa časové řady Statistika prostředí pomocí centra událostí
+# <a name="send-events-to-a-time-series-insights-environment-using-event-hub"></a>Odesílání událostí do prostředí Time Series Insights pomocí centra událostí
 
-Tento kurz vysvětluje, jak toocreate a konfiguraci centra událostí a spuštění ukázkové aplikace toopush události. Pokud máte existující centrum událostí s událostmi ve formátu JSON, přeskočte tento kurz a zobrazte své prostředí v [Time Series Insights](https://insights.timeseries.azure.com).
+Tento kurz vysvětluje, jak vytvořit a nakonfigurovat centrum událostí a jak spustit ukázkovou aplikaci odesílající události. Pokud máte existující centrum událostí s událostmi ve formátu JSON, přeskočte tento kurz a zobrazte své prostředí v [Time Series Insights](https://insights.timeseries.azure.com).
 
 ## <a name="configure-an-event-hub"></a>Konfigurace centra událostí
-1. toocreate centra událostí, postupujte podle pokynů z hello centra událostí [dokumentaci](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
+1. Pokud chcete vytvořit centrum událostí, postupujte podle pokynů uvedených v [dokumentaci](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) ke službě Event Hubs.
 
 2. Ujistěte se, že vytváříte skupinu příjemců, kterou používá výhradně váš zdroj událostí Time Series Insights.
 
   > [!IMPORTANT]
-  > Zajistěte, aby tuto skupinu příjemců nepoužívala žádná jiná služba (například úloha služby Stream Analytics nebo jiné prostředí Time Series Insights). Pokud je skupina uživatelů používají i jiné služby, přečtěte si, že operace je negativně ovlivňovat to pro toto prostředí a hello dalších služeb. Pokud používáte "$Default" jako hello skupiny příjemců, je by mohlo vést toopotential opakované použití jiných čtečky.
+  > Zajistěte, aby tuto skupinu příjemců nepoužívala žádná jiná služba (například úloha služby Stream Analytics nebo jiné prostředí Time Series Insights). Pokud skupinu příjemců používají další služby, bude negativně ovlivněna operace čtení pro toto prostředí i ostatní služby. Pokud jako skupinu příjemců používáte $Default, může potenciálně dojít k jejímu opakovanému použití jinými čtenáři.
 
   ![Výběr skupiny příjemců centra událostí](media/send-events/consumer-group.png)
 
-3. Vytvořte "MySendPolicy" na hello centra událostí, který je použité toosend události v ukázce csharp hello.
+3. V centru událostí vytvořte zásadu MySendPolicy, která v ukázce csharp slouží k odesílání událostí.
 
   ![Vyberte Zásady sdíleného přístupu a klikněte na tlačítko Přidat.](media/send-events/shared-access-policy.png)  
 
   ![Přidání nové zásady sdíleného přístupu](media/send-events/shared-access-policy-2.png)  
 
 ## <a name="create-time-series-insights-event-source"></a>Vytvoření zdroje událostí Time Series Insights
-1. Pokud jste dosud nevytvořili zdroje událostí, postupujte podle [tyto pokyny](time-series-insights-add-event-source.md) toocreate zdroje událostí.
+1. Pokud jste ještě nevytvořili zdroj událostí, postupujte podle [těchto pokynů](time-series-insights-add-event-source.md) a vytvořte ho.
 
-2. Zadejte "deviceTimestamp" jako název vlastnosti časové razítko hello – tato vlastnost se používá jako hello skutečné časové razítko v ukázce csharp hello. Název vlastnosti Hello časové razítko je malá a velká písmena a hodnoty musí mít formát hello __rrrr-MM-ddTHH. FFFFFFFK__ při odeslání jako JSON tooevent rozbočovače. Pokud vlastnost hello hello události neexistuje, pak hello čas události rozbočovače zařazených do fronty se používá.
+2. Zadejte „deviceTimestamp“ jako název vlastnosti časového razítka – tato vlastnost se v ukázce csharp používá jako časové razítko. V názvu vlastnosti časového razítka se rozlišují malá a velká písmena a při odesílání hodnot do centra událostí ve formátu JSON musí mít formát __yyyy-MM-ddTHH:mm:ss.FFFFFFFK__. Pokud v události tato vlastnost chybí, použije se čas zařazení do fronty centra událostí.
 
   ![Vytvoření zdroje událostí](media/send-events/event-source-1.png)
 
-## <a name="sample-code-toopush-events"></a>Ukázka kódu toopush události
-1. Přejděte zásady centra událostí toohello "MySendPolicy" a zkopírujte připojovací řetězec hello klíčem hello zásad.
+## <a name="sample-code-to-push-events"></a>Vzorový kód pro odesílání událostí
+1. Přejděte do zásady centra událostí MySendPolicy a zkopírujte připojovací řetězec s klíčem zásady.
 
   ![Zkopírování připojovacího řetězce zásady MySendPolicy](media/send-events/sample-code-connection-string.png)
 
-2. Spusťte následující kód hello této události toosend 600 pro každou z hello tři zařízení. Nahraďte `eventHubConnectionString` vaším připojovacím řetězcem.
+2. Spusťte následující kód, který za každé ze tří zařízení odešle 600 událostí. Nahraďte `eventHubConnectionString` vaším připojovacím řetězcem.
 
 ```csharp
 using System;
@@ -113,7 +113,7 @@ namespace Microsoft.Rdx.DataGenerator
                 sw.Flush();
                 ms.Position = 0;
 
-                // Send JSON tooevent hub.
+                // Send JSON to event hub.
                 EventData eventData = new EventData(ms);
                 eventHubClient.Send(eventData);
             }
@@ -144,7 +144,7 @@ Jednoduchý objekt JSON.
 ### <a name="sample-2"></a>Ukázka 2
 
 #### <a name="input"></a>Vstup
-Pole JSON se dvěma objekty JSON. Každý objekt JSON, bude převedený tooan událostí.
+Pole JSON se dvěma objekty JSON. Oba objekty JSON se převedou na událost.
 ```json
 [
     {
@@ -185,7 +185,7 @@ Objekt JSON s vnořeným polem JSON, které obsahuje dva objekty JSON.
 
 ```
 #### <a name="output---2-events"></a>Výstup – 2 události
-Všimněte si, že je vlastnost hello "umístění" zkopíruje přes tooeach hello události.
+Všimněte si, že vlastnost „location“ (umístění) se kopíruje do obou událostí.
 
 |location|events.id|events.timestamp|
 |--------|---------------|----------------------|
@@ -196,7 +196,7 @@ Všimněte si, že je vlastnost hello "umístění" zkopíruje přes tooeach hel
 
 #### <a name="input"></a>Vstup
 
-Objekt JSON s vnořeným polem JSON, které obsahuje dva objekty JSON. Tento vstup ukazuje, že vlastnosti globálních hello může být zastoupena hello komplexní objekt JSON.
+Objekt JSON s vnořeným polem JSON, které obsahuje dva objekty JSON. Tento vstup ukazuje, že globální vlastnosti může reprezentovat komplexní objekt JSON.
 
 ```json
 {

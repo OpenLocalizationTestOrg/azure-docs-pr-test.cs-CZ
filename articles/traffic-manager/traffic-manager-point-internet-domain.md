@@ -1,6 +1,6 @@
 ---
-title: "aaaPoint společnosti internetové domény tooa název domény Traffic Manageru | Microsoft Docs"
-description: "Tento článek vám pomůže bodu domény název tooa Traffic Manager název domény vaší společnosti."
+title: "Nasměrování internetové domény společnosti na název domény Traffic Manageru | Dokumentace Microsoftu"
+description: "Tento článek vám pomůže nasměrovat název domény společnosti na název domény Traffic Manageru."
 services: traffic-manager
 documentationcenter: 
 author: kumudd
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: kumud
-ms.openlocfilehash: 84c428f60a1dc70452bf957d98a68c95e0b51715
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0322b3510cfd4f94031d8c1db8f1cc032b997fa8
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="point-a-company-internet-domain-tooan-azure-traffic-manager-domain"></a>Nasměrování společnosti internetové domény tooan Azure Traffic Manager domény
+# <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>Nasměrování internetové domény společnosti na doménu Azure Traffic Manageru
 
-Když vytvoříte profil Traffic Manageru, Azure mu automaticky přiřadí název DNS. toouse název ze zóny DNS vytvořit záznam CNAME DNS, který mapuje název domény toohello vašeho profilu Traffic Manageru. Název domény Traffic Manageru hello můžete najít v hello **Obecné** části na stránce konfigurace hello hello profil služby Traffic Manager.
+Když vytvoříte profil Traffic Manageru, Azure mu automaticky přiřadí název DNS. Pokud chcete použít název z vaší zóny DNS, vytvořte záznam DNS CNAME, který se namapuje na název domény vašeho profilu Traffic Manageru. Název domény Traffic Manageru najdete v části **Obecné** na stránce Konfigurace pro příslušný profil Traffic Manageru.
 
-Například toopoint název www.contoso.com toohello contoso.trafficmanager.net název DNS Traffic Manageru, vytvořili byste hello následující záznam prostředku DNS:
+Pokud byste například chtěli nasměrovat název www.contoso.com na název DNS Traffic Manageru contoso.trafficmanager.net, aktualizovali byste následující záznam prostředku DNS:
 
     www.contoso.com IN CNAME contoso.trafficmanager.net
 
-Veškeré požadavky na provoz příliš*www.contoso.com* získat směrované příliš*contoso.trafficmanager.net*.
+Veškeré žádosti o přenos na *www.contoso.com* se budou směrovat na *contoso.trafficmanager.net*.
 
 > [!IMPORTANT]
-> Nemůže odkazovat domény druhé úrovně, jako například *contoso.com*, toohello doménu Traffic Manageru. Standardy protokolu DNS nepovolují záznamy CNAME pro názvy domén druhé úrovně.
+> Doménu druhé úrovně, například *contoso.com*, nelze nasměrovat na doménu Traffic Manageru. Standardy protokolu DNS nepovolují záznamy CNAME pro názvy domén druhé úrovně.
 
 ## <a name="next-steps"></a>Další kroky
 

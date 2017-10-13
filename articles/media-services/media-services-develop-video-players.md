@@ -1,6 +1,6 @@
 ---
-title: "aaaDevelop aplikací pro přehrávání videa"
-description: "Hello téma obsahuje odkazy tooPlayer rozhraní a moduly plug-in, které můžete použít toodevelop vlastních klientských aplikací, které můžou využívat streamovaná média ze služby Media Services."
+title: "Vývoj aplikací videopřehrávače"
+description: "Téma obsahuje odkazy na architektury přehrávačů a moduly plug-in, který můžete použít pro vývoj vlastních klientských aplikací, které můžou využívat streamovaná média ze služby Media Services."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,34 +14,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
-ms.openlocfilehash: a66daa4f006a1f05271cc9ed6a02ea7ee460321d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0e88baed8188890e80d4c2e7ee9d510fdabf6e43
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="develop-video-player-applications"></a>Vývoj aplikací videopřehrávače
 ## <a name="overview"></a>Přehled
-Azure Media Services poskytuje hello nástroje budete potřebovat toocreate bohaté aplikací pro dynamické klientské přehrávače pro většinu platforem včetně: zařízení iOS, zařízení se systémem Android, Windows, Windows Phone, Xbox a Set top polí. Toto téma obsahuje také odkazy tooSDKs a architektury přehrávačů, které můžete použít toodevelop vlastních klientských aplikací, které můžou využívat streamovaná média ze služby Azure Media Services.
+Služba Azure Media Services nabízí nástroje, které potřebujete k vytvoření dynamických aplikací pro klientské přehrávače pro většinu platforem včetně: zařízení iOS, zařízení Android, Windows, Windows Phone, Xbox a set top boxy. Toto téma obsahuje také odkazy na sady SDK a architektury přehrávačů, můžete použít pro vývoj vlastních klientských aplikací, které můžou využívat streamovaná média ze služby Azure Media Services.
 
 >[!NOTE]
->Při vytvoření účtu AMS **výchozí** koncový bod streamování se přidá účet tooyour hello **Zastaveno** stavu. toostart streamování vašeho obsahu a proveďte výhod dynamického balení dynamické šifrování, hello streamování koncový bod, ze kterého mají být má obsah toostream toobe v hello **systémem** stavu. 
+>Po vytvoření účtu AMS se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno**. Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování, ze kterého chcete streamovat obsah, být ve stavu **Spuštěno**. 
  
 ## <a name="azure-media-player"></a>Přehrávač médií Azure
-[Azure Media Player](http://aka.ms/ampinfo) přehrávání videa webové vychází tooplay back mediální obsah ze služby Microsoft Azure Media Services na širokou škálu prohlížečích a zařízeních. Azure Media Player využívá oborové standardy, jako je například HTML5, rozšíření zdrojového média (MSE) a šifrované rozšíření média (EME) tooprovide provádět rozšířené adaptivní streamování prostředí. Při těchto standardů nejsou k dispozici v zařízení nebo v prohlížeči, přehrávač médií Azure používá jako záložní technologie Flash a Silverlight. Bez ohledu na technologii přehrávání hello používá bude mít vývojáři tooaccess jednotné rozhraní JavaScript rozhraní API. To umožňuje obsah obsluhuje Azure Media Services toobe přehrávají napříč celou rozsah zařízení a prohlížeče, které nemají žádné další úsilí.
+[Azure Media Player](http://aka.ms/ampinfo) je přehrávání videa webové vytvořená tak, aby přehrání mediálního obsahu z Microsoft Azure Media Services na širokou škálu prohlížečích a zařízeních. Azure Media Player využívá oborové standardy, jako je například HTML5, rozšíření zdrojového média (MSE) a šifrované rozšíření média (EME) vám umožňuje provádět rozšířené adaptivní streamování prostředí. Při těchto standardů nejsou k dispozici v zařízení nebo v prohlížeči, přehrávač médií Azure používá jako záložní technologie Flash a Silverlight. Bez ohledu na to technologie přehrávání používá bude mít vývojáři jednotné rozhraní JavaScript pro přístup k rozhraní API. To umožňuje obsah obsluhuje Azure Media Services má být přehráván napříč celou rozsah zařízení a prohlížeče, které nemají žádné další úsilí.
 
-Microsoft Azure Media Services umožňuje obsahu toobe zpracovat s DASH, technologie Smooth Streaming a tooplay formátů streamování HLS zpět obsah. Azure Media Player bere v úvahu tyto různými formáty a automaticky plní hello nejlepší odkaz možnostem hello platformy nebo prohlížeče. Microsoft Azure Media Services také umožňuje dynamické šifrování prostředků s šifrování PlayReady nebo AES-128 bitů obálky šifrování. Azure Media Player umožňuje dešifrování PlayReady a AES-128 bitů šifrovaný obsah, když správně nakonfigurovaný. 
+Microsoft Azure Media Services umožňuje zpracovat s DASH, technologie Smooth Streaming a formátů streamování HLS veškerý obsah k přehrávání obsahu. Azure Media Player bere v úvahu tyto různými formáty a automaticky hraje odkaz doporučené možnostem platformy nebo prohlížeče. Microsoft Azure Media Services také umožňuje dynamické šifrování prostředků s šifrování PlayReady nebo AES-128 bitů obálky šifrování. Azure Media Player umožňuje dešifrování PlayReady a AES-128 bitů šifrovaný obsah, když správně nakonfigurovaný. 
 
 Další informace:
 
 * [Přehrávač médií Azure](http://aka.ms/ampinfo)
 * [Dokumentace k Azure Media Player](http://aka.ms/ampdocs) 
 * [Přehrávač médií Azure získávání spuštění Blog](https://azure.microsoft.com/blog/2015/04/15/announcing-azure-media-player/)
-* [Zaregistrujte si toostay až toodate s hello nejnovější z Azure Media Player](http://aka.ms/ampsignup)
+* [Zaregistrujte si nejnovější informace ze přehrávač médií Azure](http://aka.ms/ampsignup)
 * [Přidat nové žádosti o funkce, nápady, zpětné vazby](http://aka.ms/ampuservoice) 
 
 ## <a name="other-tools-for-creating-player-applications"></a>Další nástroje pro vytváření aplikací pro přehrávání
-Také můžete použít některý z následujících sad SDK hello:
+Také můžete použít některý z následujících sad SDK:
 
 * [Klient funkce Smooth Streaming SDK](http://www.iis.net/downloads/microsoft/smooth-streaming) 
 * [Technologie Smooth Streaming aplikace pro Windows Store](media-services-build-smooth-streaming-apps.md)
@@ -52,15 +52,15 @@ Také můžete použít některý z následujících sad SDK hello:
 * [Vývoj aplikací Video XBOX](http://xbox.create.msdn.com/) 
 
 ## <a name="advertising"></a>Inzerování
-Azure Media Services poskytuje podporu pro vkládání reklam prostřednictvím hello platformu Windows Media: architektury přehrávačů. Architektury přehrávačů s podporou ad jsou dostupné pro zařízení s Windows 8, Silverlight, Windows Phone 8 a iOS. Každý player framework obsahuje ukázkový kód, který ukazuje, jak tooimplement aplikace přehrávače. Existují tři různé druhy reklamy, které můžete vložit do médií:
+Azure Media Services poskytuje podporu pro vkládání reklam prostřednictvím platformu Windows Media: architektury přehrávačů. Architektury přehrávačů s podporou ad jsou dostupné pro zařízení s Windows 8, Silverlight, Windows Phone 8 a iOS. Každý player framework obsahuje ukázkový kód, který ukazuje, jak implementovat aplikace přehrávače. Existují tři různé druhy reklamy, které můžete vložit do médií:
 
-Lineární – úplná rámce služby Active Directory, které pozastavit hello hlavní video
+Lineární – úplná rámce služby Active Directory, které pozastavit hlavní video
 
-Nelineární – reklamy překrytí, které se zobrazují jako přehrávání videa hlavní hello, obvykle logo nebo jiné statický obrázek umístit hello player
+Nelineární – reklamy překrytí, které se zobrazují jako přehrávání videa hlavní, obvykle logo nebo jiné statický obrázek umístěny v rámci prohlížeče
 
-Doprovodná – reklamy, které se zobrazují mimo hello player
+Doprovodná – reklamu, které se zobrazují mimo přehrávač
 
-Služby Active Directory mohou být umístěny v libovolném bodě hello video hlavní časovou osu. Se musí zjistit hello player při tooplay hello ad a které tooplay služby Active Directory. To se provádí pomocí sady standardní soubory formátu XML: Video Ad služby šablony (VAST), více Ad seznam stop (VMAP) ve digitální Video, šablony abstraktní sekvencování na média (STOŽÁRŮ) a digitální Video Player Ad rozhraní definice (VPAID). VELKÁ soubory zadejte co toodisplay služby Active Directory. Soubory VMAP určete, kdy tooplay různé reklamy a obsahovat velká XML. STOŽÁRŮ soubory jsou jiný způsob toosequence reklamy, které také může obsahovat velká XML. Soubory VPAID definovat rozhraní mezi hello přehrávání videa a hello ad nebo serveru služby ad. Další informace najdete v tématu [vkládání reklam](https://msdn.microsoft.com/library/dn387398.aspx).
+Služby Active Directory mohou být umístěny v libovolném bodě hlavní video časovou osu. Přehrávač musí zjistit, kdy přehrávání ad a které reklamy přehrávání. To se provádí pomocí sady standardní soubory formátu XML: Video Ad služby šablony (VAST), více Ad seznam stop (VMAP) ve digitální Video, šablony abstraktní sekvencování na média (STOŽÁRŮ) a digitální Video Player Ad rozhraní definice (VPAID). VELKÁ soubory zadejte co zobrazit reklamy. Soubory VMAP určete, kdy k přehrávání různých reklamy a obsahují velká XML. STOŽÁRŮ soubory jsou jiný způsob, jak pořadí služby Active Directory, které také může obsahovat velká XML. Soubory VPAID definovat rozhraní mezi přehrávání videa a ad nebo serveru služby ad. Další informace najdete v tématu [vkládání reklam](https://msdn.microsoft.com/library/dn387398.aspx).
 
 Informace o titulků a podpoře služby Active Directory v živé streamování videa najdete v tématu [podporované titulky a standardy vložení Ad](https://msdn.microsoft.com/library/c49e0b4d-357e-4cca-95e5-2288924d1ff3#caption_ad).
 

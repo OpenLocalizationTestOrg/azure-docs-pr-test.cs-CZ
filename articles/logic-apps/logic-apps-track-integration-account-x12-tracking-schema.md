@@ -1,6 +1,6 @@
 ---
-title: "schémata sledování aaaX12 pro monitorování B2B - Azure Logic Apps | Microsoft Docs"
-description: "Použijte X12 sledování zpráv toomonitor B2B schémata z transakcí ve vašem účtu integrace Azure."
+title: "X12 sledování schémata B2B monitorování - Azure Logic Apps | Microsoft Docs"
+description: "Ke sledování zpráv B2B z transakcí v účtu Azure integrace použít X12 sledování schémat."
 author: padmavc
 manager: anneta
 editor: 
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ed1b338730214dcae12c367ebff025d7122328fe
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3782c0a76ea8728a146b3d73774f74c31187cbfd
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="start-or-enable-tracking-of-x12-messages-toomonitor-success-errors-and-message-properties"></a>Počáteční nebo povolit sledování X12 zprávy toomonitor úspěch, chyb a vlastnosti zprávy
-Můžete použít tyto X12 sledování schémata ve vašem účtu toohelp integrace se službou Azure sledování transakcí business-to-business (B2B):
+# <a name="start-or-enable-tracking-of-x12-messages-to-monitor-success-errors-and-message-properties"></a>Počáteční nebo povolit sledování X12 zprávy k úspěchu monitorování, chyb a vlastnosti zprávy
+Můžete použít tyto X12 sledování schémata ve vašem účtu integrace se službou Azure vám pomohou monitorovat transakce business-to-business (B2B):
 
 * X12 transakce nastavení sledování schématu
 * X12 transakce nastavit potvrzení sledování schématu
@@ -68,18 +68,18 @@ Můžete použít tyto X12 sledování schémata ve vašem účtu toohelp integr
 | senderIdentifier | Řetězec | Odešlete identifikátor partnera. (Povinné) |
 | receiverQualifier | Řetězec | Zobrazí kvalifikátor partnera. (Povinné) |
 | receiverIdentifier | Řetězec | Zobrazí identifikátor partnera. (Povinné) |
-| agreementName | Řetězec | Název hello X12 smlouvy toowhich hello zpráv se překládají. (Volitelné) |
-| Směr | výčet | Směr toku zpráv hello, přijímat nebo odesílat. (Povinné) |
+| agreementName | Řetězec | Název X12 smlouvy, ke kterému jsou vyřešeny zprávy. (Volitelné) |
+| Směr | výčet | Směr toku zpráv přijímat nebo odesílat. (Povinné) |
 | interchangeControlNumber | Řetězec | Interchange číslo ovládacího prvku. (Volitelné) |
 | functionalGroupControlNumber | Řetězec | Funkční řízení číslo. (Volitelné) |
 | transactionSetControlNumber | Řetězec | Transakce nastavit počet ovládacího prvku. (Volitelné) |
 | correlationMessageId | Řetězec | ID korelace zprávy. Kombinace {AgreementName} {*GroupControlNumber*} {TransactionSetControlNumber}. (Volitelné) |
 | Typ zprávy | Řetězec | Transakce nastavit nebo typ dokumentu. (Volitelné) |
-| isMessageFailed | Logická hodnota | Jestli hello X12 se nezdařilo. (Povinné) |
-| isTechnicalAcknowledgmentExpected | Logická hodnota | Jestli je nakonfigurovaný technické potvrzení hello hello X12 smlouvy. (Povinné) |
-| isFunctionalAcknowledgmentExpected | Logická hodnota | Jestli je nakonfigurovaný funkční potvrzení hello hello X12 smlouvy. (Povinné) |
-| needAk2LoopForValidMessages | Logická hodnota | Jestli je vyžadován platný zprávy hello AK2 smyčky. (Povinné) |
-| segmentsCount | Integer | Nastavit počet segmentů v hello X12 transakci. (Volitelné) |
+| isMessageFailed | Logická hodnota | Jestli X12 zpráv se nezdařilo. (Povinné) |
+| isTechnicalAcknowledgmentExpected | Logická hodnota | Jestli je v X12 nakonfigurovaný technické potvrzení smlouvy. (Povinné) |
+| isFunctionalAcknowledgmentExpected | Logická hodnota | Zda je funkční potvrzení nakonfigurovaný v X12 smlouvy. (Povinné) |
+| needAk2LoopForValidMessages | Logická hodnota | Zda je požadovaná platné zprávy AK2 smyčky. (Povinné) |
+| segmentsCount | Integer | Počet segmentů X12 sadu transakce. (Volitelné) |
 
 ## <a name="x12-transaction-set-acknowledgement-tracking-schema"></a>X12 transakce nastavit potvrzení sledování schématu
 ````java
@@ -123,24 +123,24 @@ Můžete použít tyto X12 sledování schémata ve vašem účtu toohelp integr
 | senderIdentifier | Řetězec | Odešlete identifikátor partnera. (Povinné) |
 | receiverQualifier | Řetězec | Zobrazí kvalifikátor partnera. (Povinné) |
 | receiverIdentifier | Řetězec | Zobrazí identifikátor partnera. (Povinné) |
-| agreementName | Řetězec | Název hello X12 smlouvy toowhich hello zpráv se překládají. (Volitelné) |
-| Směr | výčet | Směr toku zpráv hello, přijímat nebo odesílat. (Povinné) |
-| interchangeControlNumber | Řetězec | Interchange řízení počet potvrzení funkční hello. Hodnota naplní pouze pro straně odesílání hello kde hello zprávy odeslané toopartner přijato potvrzení funkční. (Volitelné) |
-| functionalGroupControlNumber | Řetězec | Funkční skupiny řízení počet potvrzení funkční hello. Hodnota naplní pouze pro straně odesílání hello kde hello zprávy odeslané toopartner přijato potvrzení funkční. (Volitelné) |
-| isaSegment | Řetězec | Segment ISA hello zprávy. Hodnota naplní pouze pro straně odesílání hello kde hello zprávy odeslané toopartner přijato potvrzení funkční. (Volitelné) |
-| gsSegment | Řetězec | Segment GS hello zprávy. Hodnota naplní pouze pro straně odesílání hello kde hello zprávy odeslané toopartner přijato potvrzení funkční. (Volitelné) |
+| agreementName | Řetězec | Název X12 smlouvy, ke kterému jsou vyřešeny zprávy. (Volitelné) |
+| Směr | výčet | Směr toku zpráv přijímat nebo odesílat. (Povinné) |
+| interchangeControlNumber | Řetězec | Interchange řízení počet funkční potvrzení. Hodnota naplní pouze pro straně odesílání, kde přijato potvrzení funkční zprávy odeslané na partnera. (Volitelné) |
+| functionalGroupControlNumber | Řetězec | Funkční skupiny řízení počet funkční potvrzení. Hodnota naplní pouze pro straně odesílání, kde přijato potvrzení funkční zprávy odeslané na partnera. (Volitelné) |
+| isaSegment | Řetězec | Segment ISA zprávy. Hodnota naplní pouze pro straně odesílání, kde přijato potvrzení funkční zprávy odeslané na partnera. (Volitelné) |
+| gsSegment | Řetězec | Segment GS zprávy. Hodnota naplní pouze pro straně odesílání, kde přijato potvrzení funkční zprávy odeslané na partnera. (Volitelné) |
 | respondingfunctionalGroupControlNumber | Řetězec | Neodpovídá výměnu řízení číslo. (Volitelné) |
-| respondingFunctionalGroupId | Řetězec | Neodpovídá ID funkční skupiny, která mapuje tooAK101 v hello potvrzení. (Volitelné) |
+| respondingFunctionalGroupId | Řetězec | Neodpovídá ID funkční skupiny, která se mapuje na AK101 na potvrzení. (Volitelné) |
 | respondingtransactionSetControlNumber | Řetězec | Odpovídá transakce nastavit počet ovládacího prvku. (Volitelné) |
-| respondingTransactionSetId | Řetězec | Odpovídá transakce nastavit ID, který mapuje tooAK201 v hello potvrzení. (Volitelné) |
+| respondingTransactionSetId | Řetězec | Odpovídá transakce nastavit ID, která se mapuje na AK201 na potvrzení. (Volitelné) |
 | statusCode | Logická hodnota | Transakce nastavit potvrzení stavový kód. (Povinné) |
 | segmentsCount | výčet | Potvrzení stavový kód. Povolené hodnoty jsou **platných**, **zamítnutý**, a **AcceptedWithErrors**. (Povinné) |
-| StavZpracování | výčet | Stav zpracování hello potvrzení. Povolené hodnoty jsou **přijaté**, **generované**, a **odeslané**. (Povinné) |
+| StavZpracování | výčet | Stav zpracování potvrzení. Povolené hodnoty jsou **přijaté**, **generované**, a **odeslané**. (Povinné) |
 | correlationMessageId | Řetězec | ID korelace zprávy. Kombinace {AgreementName} {*GroupControlNumber*} {TransactionSetControlNumber}. (Volitelné) |
-| isMessageFailed | Logická hodnota | Jestli hello X12 se nezdařilo. (Povinné) |
-| ak2Segment | Řetězec | Přijato potvrzení pro sadu transakce v rámci hello funkční skupiny. (Volitelné) |
+| isMessageFailed | Logická hodnota | Jestli X12 zpráv se nezdařilo. (Povinné) |
+| ak2Segment | Řetězec | Potvrzení transakce nastavit v rámci přijaté funkční skupiny. (Volitelné) |
 | ak3Segment | Řetězec | Sestavy chyb v datového segmentu. (Volitelné) |
-| ak5Segment | Řetězec | Určí, zda transakce hello nastavit identifikované v segmentu hello AK2 přijetí nebo zamítnutí a proto. (Volitelné) |
+| ak5Segment | Řetězec | Určí, zda transakce nastavit identifikované v segmentu AK2 přijetí nebo zamítnutí a proto. (Volitelné) |
 
 ## <a name="x12-interchange-tracking-schema"></a>X12 interchange sledování schématu
 ````java
@@ -180,12 +180,12 @@ Můžete použít tyto X12 sledování schémata ve vašem účtu toohelp integr
 | senderIdentifier | Řetězec | Odešlete identifikátor partnera. (Povinné) |
 | receiverQualifier | Řetězec | Zobrazí kvalifikátor partnera. (Povinné) |
 | receiverIdentifier | Řetězec | Zobrazí identifikátor partnera. (Povinné) |
-| agreementName | Řetězec | Název hello X12 smlouvy toowhich hello zpráv se překládají. (Volitelné) |
-| Směr | výčet | Směr toku zpráv hello, přijímat nebo odesílat. (Povinné) |
+| agreementName | Řetězec | Název X12 smlouvy, ke kterému jsou vyřešeny zprávy. (Volitelné) |
+| Směr | výčet | Směr toku zpráv přijímat nebo odesílat. (Povinné) |
 | interchangeControlNumber | Řetězec | Interchange číslo ovládacího prvku. (Volitelné) |
 | isaSegment | Řetězec | Segment ISA zprávy. (Volitelné) |
-| isTechnicalAcknowledgmentExpected | Logická hodnota | Jestli je nakonfigurovaný technické potvrzení hello hello X12 smlouvy. (Povinné) |
-| isMessageFailed | Logická hodnota | Jestli hello X12 se nezdařilo. (Povinné) |
+| isTechnicalAcknowledgmentExpected | Logická hodnota | Jestli je v X12 nakonfigurovaný technické potvrzení smlouvy. (Povinné) |
+| isMessageFailed | Logická hodnota | Jestli X12 zpráv se nezdařilo. (Povinné) |
 | isa09 | Řetězec | X12 dokumentu výměnu datum. (Volitelné) |
 | isa10 | Řetězec | X12 dokumentů výměnu čas. (Volitelné) |
 | isa11 | Řetězec | X12 interchange řízení identifikátor standardů. (Volitelné) |
@@ -229,12 +229,12 @@ Můžete použít tyto X12 sledování schémata ve vašem účtu toohelp integr
 | senderIdentifier | Řetězec | Odešlete identifikátor partnera. (Povinné) |
 | receiverQualifier | Řetězec | Zobrazí kvalifikátor partnera. (Povinné) |
 | receiverIdentifier | Řetězec | Zobrazí identifikátor partnera. (Povinné) |
-| agreementName | Řetězec | Název hello X12 smlouvy toowhich hello zpráv se překládají. (Volitelné) |
-| Směr | výčet | Směr toku zpráv hello, přijímat nebo odesílat. (Povinné) |
-| interchangeControlNumber | Řetězec | Interchange řízení počet hello technické potvrzení, které se získaly od partnerů. (Volitelné) |
-| isaSegment | Řetězec | Segment ISA pro hello technické potvrzení, které se získaly od partnerů. (Volitelné) |
-| respondingInterchangeControlNumber |Řetězec | Interchange číslo ovládací prvek pro hello technické potvrzení, které se získaly od partnerů. (Volitelné) |
-| isMessageFailed | Logická hodnota | Jestli hello X12 se nezdařilo. (Povinné) |
+| agreementName | Řetězec | Název X12 smlouvy, ke kterému jsou vyřešeny zprávy. (Volitelné) |
+| Směr | výčet | Směr toku zpráv přijímat nebo odesílat. (Povinné) |
+| interchangeControlNumber | Řetězec | Interchange řízení počet technické potvrzení, které se získaly od partnerů. (Volitelné) |
+| isaSegment | Řetězec | Segment ISA pro technické potvrzení, které se získaly od partnerů. (Volitelné) |
+| respondingInterchangeControlNumber |Řetězec | Interchange číslo ovládací prvek pro technické potvrzení, které se získaly od partnerů. (Volitelné) |
+| isMessageFailed | Logická hodnota | Jestli X12 zpráv se nezdařilo. (Povinné) |
 | statusCode | výčet | Interchange potvrzení stavový kód. Povolené hodnoty jsou **platných**, **zamítnutý**, a **AcceptedWithErrors**. (Povinné) |
 | StavZpracování | výčet | Stav potvrzení. Povolené hodnoty jsou **přijaté**, **generované**, a **odeslané**. (Povinné) |
 | TA102 | Řetězec | Interchange datum. (Volitelné) |
@@ -281,14 +281,14 @@ Můžete použít tyto X12 sledování schémata ve vašem účtu toohelp integr
 | senderIdentifier | Řetězec | Odešlete identifikátor partnera. (Povinné) |
 | receiverQualifier | Řetězec | Zobrazí kvalifikátor partnera. (Povinné) |
 | receiverIdentifier | Řetězec | Zobrazí identifikátor partnera. (Povinné) |
-| agreementName | Řetězec | Název hello X12 smlouvy toowhich hello zpráv se překládají. (Volitelné) |
-| Směr | výčet | Směr toku zpráv hello, přijímat nebo odesílat. (Povinné) |
+| agreementName | Řetězec | Název X12 smlouvy, ke kterému jsou vyřešeny zprávy. (Volitelné) |
+| Směr | výčet | Směr toku zpráv přijímat nebo odesílat. (Povinné) |
 | interchangeControlNumber | Řetězec | Interchange číslo ovládacího prvku. (Volitelné) |
 | functionalGroupControlNumber | Řetězec | Funkční řízení číslo. (Volitelné) |
 | gsSegment | Řetězec | Zpráva GS segmentu. (Volitelné) |
-| isTechnicalAcknowledgmentExpected | Logická hodnota | Jestli je nakonfigurovaný technické potvrzení hello hello X12 smlouvy. (Povinné) |
-| isFunctionalAcknowledgmentExpected | Logická hodnota | Jestli je nakonfigurovaný funkční potvrzení hello hello X12 smlouvy. (Povinné) |
-| isMessageFailed | Logická hodnota | Jestli hello X12 se nezdařilo. (Povinné)|
+| isTechnicalAcknowledgmentExpected | Logická hodnota | Jestli je v X12 nakonfigurovaný technické potvrzení smlouvy. (Povinné) |
+| isFunctionalAcknowledgmentExpected | Logická hodnota | Zda je funkční potvrzení nakonfigurovaný v X12 smlouvy. (Povinné) |
+| isMessageFailed | Logická hodnota | Jestli X12 zpráv se nezdařilo. (Povinné)|
 | gs01 | Řetězec | Funkční identifikačního kódu. (Volitelné) |
 | gs02 | Řetězec | Kód aplikace odesílatele. (Volitelné) |
 | gs03 | Řetězec | Kód aplikace příjemce. (Volitelné) |
@@ -335,24 +335,24 @@ Můžete použít tyto X12 sledování schémata ve vašem účtu toohelp integr
 | senderIdentifier | Řetězec | Odešlete identifikátor partnera. (Povinné) |
 | receiverQualifier | Řetězec | Zobrazí kvalifikátor partnera. (Povinné) |
 | receiverIdentifier | Řetězec | Zobrazí identifikátor partnera. (Povinné) |
-| agreementName | Řetězec | Název hello X12 smlouvy toowhich hello zpráv se překládají. (Volitelné) |
-| Směr | výčet | Směr toku zpráv hello, přijímat nebo odesílat. (Povinné) |
-| interchangeControlNumber | Řetězec | Výměnu řízení číslo, které naplňuje pro straně odesílání hello při přijetí technické potvrzení od partnerů. (Volitelné) |
-| functionalGroupControlNumber | Řetězec | Po přijetí technické potvrzení od partnerů, funkční skupiny řízení počet technické potvrzení hello, který naplní pro hello odeslat straně. (Volitelné) |
+| agreementName | Řetězec | Název X12 smlouvy, ke kterému jsou vyřešeny zprávy. (Volitelné) |
+| Směr | výčet | Směr toku zpráv přijímat nebo odesílat. (Povinné) |
+| interchangeControlNumber | Řetězec | Interchange číslo ovládací prvek, který naplní pro straně odeslání, když je obdržena technické potvrzení od partnerů. (Volitelné) |
+| functionalGroupControlNumber | Řetězec | Funkční skupiny řízení počet technické potvrzení, který naplní pro straně odeslání, když je obdržena technické potvrzení od partnerů. (Volitelné) |
 | isaSegment | Řetězec | Stejné jako výměnu řídit číslo, ale vyplněná pouze v určitých případech. (Volitelné) |
 | gsSegment | Řetězec | Stejná jako skupina funkčnosti řídit číslo, ale vyplněná pouze v určitých případech. (Volitelné) |
-| respondingfunctionalGroupControlNumber | Řetězec | Ovládací prvek počet hello původní funkční skupiny. (Volitelné) |
-| respondingFunctionalGroupId | Řetězec | Mapuje tooAK101 v ID hello potvrzení funkční skupiny. (Volitelné) |
-| isMessageFailed | Logická hodnota | Jestli hello X12 se nezdařilo. (Povinné) |
+| respondingfunctionalGroupControlNumber | Řetězec | Ovládací prvek počet původní funkční skupiny. (Volitelné) |
+| respondingFunctionalGroupId | Řetězec | ID mapuje AK101 ve skupině funkčnosti potvrzení. (Volitelné) |
+| isMessageFailed | Logická hodnota | Jestli X12 zpráv se nezdařilo. (Povinné) |
 | statusCode | výčet | Potvrzení stavový kód. Povolené hodnoty jsou **platných**, **zamítnutý**, a **AcceptedWithErrors**. (Povinné) |
-| StavZpracování | výčet | Stav zpracování hello potvrzení. Povolené hodnoty jsou **přijaté**, **generované**, a **odeslané**. (Povinné) |
+| StavZpracování | výčet | Stav zpracování potvrzení. Povolené hodnoty jsou **přijaté**, **generované**, a **odeslané**. (Povinné) |
 | ak903 | Řetězec | Počet přijatých sad transakce. (Volitelné) |
-| ak904 | Řetězec | Počet transakcí sad akceptovány v hello identifikovat funkční skupiny. (Volitelné) |
-| ak9Segment | Řetězec | Zda je funkční skupiny hello identifikovat v segmentu hello AK1 přijetí nebo odmítnutí a proč. (Volitelné) |
+| ak904 | Řetězec | Počet transakcí sad přijaté ve skupině identifikovaných funkčnosti. (Volitelné) |
+| ak9Segment | Řetězec | Jestli funkční skupiny identifikovat v segmentu AK1 přijetí nebo zamítnutí a proto. (Volitelné) |
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o [sledování zpráv B2B](logic-apps-monitor-b2b-message.md).
 * Další informace o [schémata sledování AS2](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md).
 * Další informace o [B2B vlastní sledování schémata](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md).
-* Další informace o [sledování zpráv B2B portálu Operations Management Suite hello](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
-* Další informace o hello [Enterprise integračního balíčku](../logic-apps/logic-apps-enterprise-integration-overview.md).  
+* Další informace o [sledování zpráv B2B na portálu služby Operations Management Suite](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+* Další informace o [Enterprise integračního balíčku](../logic-apps/logic-apps-enterprise-integration-overview.md).  

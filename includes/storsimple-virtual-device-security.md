@@ -1,8 +1,8 @@
 <!--v-sharos 10/13/2105 virtual device security-->
 
-Udržovat hello následující důležité informace o zabezpečení v úvahu při použití virtuálního zařízení StorSimple hello:
+Při použití virtuálního zařízení StorSimple, mít na paměti následující aspekty zabezpečení:
 
-* Hello virtuální zařízení, je zabezpečena pomocí předplatného Microsoft Azure. To znamená, že pokud používáte virtuální zařízení hello a dojde k ohrožení bezpečnosti vašeho předplatného Azure, hello data uložená na virtuální zařízení je také náchylné.
-* veřejný klíč certifikátu používaného tooencrypt hello, data uložená v Azure StorSimple je bezpečně Hello provedené dostupné toohello portál Azure classic a hello privátní klíč zůstane s hello zařízení StorSimple. Na hello virtuálního zařízení StorSimple oba hello veřejné a soukromé klíče jsou uloženy v Azure.
-* virtuální zařízení Hello je hostován v datovém centru hello Microsoft Azure.
+* Virtuální zařízení, je zabezpečena pomocí předplatného Microsoft Azure. To znamená, že pokud používáte virtuální zařízení a dojde k ohrožení bezpečnosti vašeho předplatného Azure, data uložená na virtuální zařízení je také napadnutelné.
+* Veřejný klíč certifikátu používaného k šifrování dat uložených v Azure StorSimple bezpečně je k dispozici na portálu Azure classic a privátní klíč zůstane s zařízení StorSimple. Na virtuální zařízení StorSimple veřejné a soukromé klíče jsou uložené v Azure.
+* Virtuální zařízení je hostován v datovém centru Microsoft Azure.
 

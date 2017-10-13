@@ -1,6 +1,6 @@
 ---
-title: "aaaConnect tooAzure malin platformy IoT Suite pomocí jazyka C s simulovanou telemetrii | Microsoft Docs"
-description: "Použijte hello Microsoft Azure IoT Starter Kit pro hello malin pí 3 a Azure IoT Suite. Použít C tooconnect vaše řešení vzdáleného sledování toohello malin Pi, odesílání simulovanou telemetrii toohello cloudu a reagovat toomethods volat z řídicí panel řešení hello."
+title: "Připojení k Azure IoT Suite pomocí jazyka C s simulovanou telemetrii malin platformy | Microsoft Docs"
+description: "Pomocí Startovní sady Microsoft Azure IoT Malinová pí 3 a sady Azure IoT Suite. Použití jazyka C pro vaše platformy malin připojení k řešení vzdáleného monitorování, odeslání simulovanou telemetrii do cloudu a reagovat na metody vyvolané z řídicího panelu řešení."
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -14,95 +14,95 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.openlocfilehash: 3c4fa43b381385d1a7896cada34aa3aa0b8e5fb4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 43b82e5fb6a309283979f23d8c87af600595bc55
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="connect-your-raspberry-pi-3-toohello-remote-monitoring-solution-and-send-simulated-telemetry-using-c"></a>Připojit vaše řešení vzdáleného sledování malin pí 3 toohello a odeslat simulovanou telemetrii pomocí jazyka C
+# <a name="connect-your-raspberry-pi-3-to-the-remote-monitoring-solution-and-send-simulated-telemetry-using-c"></a>Připojení k řešení vzdáleného monitorování vaší malin pí 3 a odeslat simulovanou telemetrii pomocí jazyka C
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-selector](../../includes/iot-suite-raspberry-pi-kit-selector.md)]
 
-Tento kurz ukazuje, jak cloudové toouse hello malin pí 3 toosimulate teploty a vlhkosti data toosend toohello. kurz Hello používá:
+V tomto kurzu se dozvíte, jak používat pí 3 malin k simulaci teploty a vlhkosti data k odeslání do cloudu. Tento kurz používá:
 
-- Raspbian operačního systému, programovací jazyk hello C a hello sady SDK pro aplikaci Microsoft Azure IoT pro C tooimplement ukázka zařízení.
-- vzdálené monitorování Hello IoT Suite předkonfigurované řešení jako hello cloudové back-end.
+- Raspbian operačního systému, programovací jazyk C a Microsoft Azure IoT SDK pro jazyk C implementovat ukázka zařízení.
+- Sadě IoT Suite předkonfigurované řešení vzdáleného monitorování jako cloudové back-end.
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-overview-simulator](../../includes/iot-suite-raspberry-pi-kit-overview-simulator.md)]
 
 [!INCLUDE [iot-suite-provision-remote-monitoring](../../includes/iot-suite-provision-remote-monitoring.md)]
 
 > [!WARNING]
-> Hello vzdálené monitorování zřídí řešení sadu služeb Azure ve vašem předplatném Azure. nasazení Hello odráží architektura skutečné enterprise. tooavoid nepotřebné využití platformy Azure poplatky, odstraňte instanci hello předkonfigurované řešení na azureiotsuite.com po dokončení s ním. Pokud třeba hello předkonfigurované řešení znovu, můžete ho snadno obnovit. Další informace o snížení spotřeby při hello vzdálené monitorování spustí řešení najdete v tématu [konfigurace Azure IoT Suite předkonfigurovaných řešení pro účely ukázky][lnk-demo-config].
+> Řešení vzdáleného monitorování zřídí sadu služeb Azure ve vašem předplatném Azure. Nasazení odráží architektura skutečné enterprise. Aby se zabránilo zbytečným využití platformy Azure poplatky, odstraňte instanci předkonfigurované řešení na azureiotsuite.com po dokončení s ním. Pokud budete znovu potřebovat předkonfigurované řešení, můžete ho snadno obnovit. Další informace o snížení spotřeby průběhu řešení vzdáleného monitorování najdete v tématu [konfigurace Azure IoT Suite předkonfigurovaných řešení pro účely ukázky][lnk-demo-config].
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-view-solution](../../includes/iot-suite-raspberry-pi-kit-view-solution.md)]
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-prepare-pi-simulator](../../includes/iot-suite-raspberry-pi-kit-prepare-pi-simulator.md)]
 
-## <a name="download-and-configure-hello-sample"></a>Stáhnout a nakonfigurovat ukázka hello
+## <a name="download-and-configure-the-sample"></a>Stáhnout a nakonfigurovat vzorku
 
-Nyní můžete stáhnout a nakonfigurovat hello vzdálené monitorování klientské aplikace na vaše malin pí.
+Teď můžete stáhnout a nakonfigurovat vzdálené monitorování klientskou aplikaci na vaše malin platformy.
 
-### <a name="clone-hello-repositories"></a>Klonování úložiště hello
+### <a name="clone-the-repositories"></a>Klonování úložiště
 
-Pokud jste tak již neučinili, požadované klon hello hello úložiště tak, že spustíte následující příkazy v terminálu na vaše platformy:
+Pokud jste tak již neučinili, klonování vyžaduje úložiště spuštěním následujících příkazů v terminálu na vaše platformy:
 
 ```sh
 cd ~
 git clone --recursive https://github.com/Azure-Samples/iot-remote-monitoring-c-raspberrypi-getstartedkit.git
 ```
 
-### <a name="update-hello-device-connection-string"></a>Aktualizovat hello zařízení připojovací řetězec
+### <a name="update-the-device-connection-string"></a>Aktualizovat připojovací řetězec zařízení
 
-Otevřete hello ukázka zdrojový soubor v hello **nano** editor pomocí hello následující příkaz:
+Otevření zdrojového souboru ukázka v **nano** editor pomocí následujícího příkazu:
 
 ```sh
 nano ~/iot-remote-monitoring-c-raspberrypi-getstartedkit/simulator/remote_monitoring/remote_monitoring.c
 ```
 
-Vyhledejte hello následující řádky:
+Vyhledejte následující řádky:
 
 ```c
 static const char* deviceId = "[Device Id]";
 static const char* connectionString = "HostName=[IoTHub Name].azure-devices.net;DeviceId=[Device Id];SharedAccessKey=[Device Key]";
 ```
 
-Hello zástupné hodnoty nahraďte hello zařízení a informace služby IoT Hub vytvořili a uložili při spuštění hello tohoto kurzu. Uložte změny (**Ctrl-O**, **Enter**) a ukončete editor hello (**Ctrl-X**).
+Zástupné hodnoty nahraďte zařízení a informace služby IoT Hub vytvořili a uložili na začátku tohoto kurzu. Uložte změny (**Ctrl-O**, **Enter**) a ukončete editor (**Ctrl-X**).
 
-## <a name="build-hello-sample"></a>Vytvoření ukázkové hello
+## <a name="build-the-sample"></a>Sestavit ukázku
 
-Nainstalujte hello požadovaných balíčků hello Microsoft Azure IoT zařízení SDK pro jazyk C tak, že spustíte následující příkazy v terminálu na hello malin pí hello:
+Nainstalujte požadované balíčky pro Microsoft Azure IoT zařízení SDK pro jazyk C spuštěním následujících příkazů v terminálu na malin platformy:
 
 ```sh
 sudo apt-get update
 sudo apt-get install g++ make cmake git libcurl4-openssl-dev libssl-dev uuid-dev
 ```
 
-Teď můžete sestavit hello aktualizované ukázkové řešení na hello malin platformy:
+Teď můžete sestavit řešení aktualizovaný ukázkový na malin platformy:
 
 ```sh
 chmod +x ~/iot-remote-monitoring-c-raspberrypi-getstartedkit/simulator/build.sh
 ~/iot-remote-monitoring-c-raspberrypi-getstartedkit/simulator/build.sh
 ```
 
-Ukázka programu hello teď můžete spustit na hello malin pí. Zadejte příkaz hello:
+Teď můžete spustit ukázkový program na malin pí. Zadejte příkaz:
 
 ```sh
 sudo ~/cmake/remote_monitoring/remote_monitoring
 ```
 
-Hello následující ukázkový výstup je příklad výstupu hello, uvidíte hello příkazového řádku na hello malin platformy:
+Následující ukázkový výstup je příklad výstupu, které vidíte na příkazovém řádku na malin platformy:
 
 ![Výstup z aplikace Malinová platformy][img-raspberry-output]
 
-Stiskněte klávesu **Ctrl-C** programu hello tooexit kdykoli.
+Stiskněte klávesu **Ctrl-C** ukončete program kdykoli.
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-view-telemetry-simulator](../../includes/iot-suite-raspberry-pi-kit-view-telemetry-simulator.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-Navštivte hello [Azure IoT Dev Center](https://azure.microsoft.com/develop/iot/) Další ukázky a dokumentace na Azure IoT.
+Přejděte [Azure IoT Dev Center](https://azure.microsoft.com/develop/iot/) Další ukázky a dokumentace na Azure IoT.
 
 [img-raspberry-output]: ./media/iot-suite-raspberry-pi-kit-c-get-started-simulator/appoutput.png
 

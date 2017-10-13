@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure dokumentace k centra událostí – kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
-description: "Zjistěte, jak připojené toouse Event Hubs tooingest miliony událostí za sekundu ze zařízení IoT a aplikací na širokou škálu platformy."
+title: "Dokumentace ke službě Azure Event Hubs – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
+description: "Naučte se využívat službu Event Hubs k ingestování milionů událostí za sekundu z připojených aplikací a zařízení IoT na široké škále platformy."
 services: event-hubs
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: b75a4f958f66afdbca2fc612e2359df241164818
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d24139de04b36044bbb88d0e9b9a1feb6d8edfa8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="event-hubs-documentation"></a>Dokumentace ke službě Event Hubs
 
-Zjistěte, jak toocollect toouse Event Hubs a spravovat miliony událostí za sekundu z připojených zařízení IoT a aplikace. Kurzy, reference k rozhraní API a další dokumentace ukazují postupy nastavení škálovatelného ingestování událostí na široké škále platforem.
+Naučte se využívat službu Event Hubs ke shromažďování a správě milionů událostí za sekundu z připojených aplikací a zařízení IoT. Kurzy, reference k rozhraní API a další dokumentace ukazují postupy nastavení škálovatelného ingestování událostí na široké škále platforem.
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -70,7 +70,7 @@ Zjistěte, jak toocollect toouse Event Hubs a spravovat miliony událostí za se
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáme s Průvodce programováním hello Event Hubs</h3>
+                        <h3>Začínáme s programováním pro službu Event Hubs</h3>
                     </div>
                 </div>
             </div>
@@ -88,7 +88,7 @@ Zjistěte, jak toocollect toouse Event Hubs a spravovat miliony událostí za se
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáme se službou Event Hubs pomocí hello portálu Azure</h3>
+                        <h3>Začínáme se službou Event Hubs pomocí webu Azure Portal</h3>
                     </div>
                 </div>
             </div>

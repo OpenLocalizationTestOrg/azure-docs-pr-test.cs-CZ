@@ -1,6 +1,6 @@
 ---
-title: "AAA\"nahrávání souborů do účtu Media Services pomocí hello portálu Azure | Microsoft Docs\""
-description: "Tento kurz vás provede kroky hello odesílání souborů do účtu Media Services pomocí hello portálu Azure"
+title: "Nahrání souborů do účtu Media Services na webu Azure Portal | Dokumentace Microsoftu"
+description: "Tento kurz vás provede postupem nahrání souborů do účtu Media Services na webu Azure Portal."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,58 +14,54 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/07/2017
 ms.author: juliako
-ms.openlocfilehash: 4ce1e133c72854532735ba7c72a43c92a75bc240
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7ddfe44918b358a1749640d1c93dba490855cc5a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="upload-files-into-a-media-services-account-using-hello-azure-portal"></a>Nahrání souborů do účtu Media Services pomocí hello portálu Azure
+# <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>Nahrání souborů do účtu Media Services na webu Azure Portal
 > [!div class="op_single_selector"]
 > * [Azure Portal](media-services-portal-upload-files.md)
 > * [.NET](media-services-dotnet-upload-files.md)
 > * [REST](media-services-rest-upload-files.md)
 > 
 > [!NOTE]
-> toocomplete tohoto kurzu potřebujete účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
+> K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete na stránce [bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
 > 
 
+Ve službě Azure Media Services nahráváte digitální soubory do prostředku. Prostředek může obsahovat video, zvuk, obrázky, kolekce miniatur, textové stopy a soubory titulků (a metadata o těchto souborech). Po nahrání souborů bude váš obsah bezpečně uložen v cloudu pro další zpracování a streamování.
 
-Ve službě Media Services můžete digitální soubory nahrát do assetu. Hello prostředku může obsahovat video, zvuk, obrázky, kolekci miniatur, text sleduje a titulků soubory (a hello metadata o těchto souborech.) Jakmile hello soubory jsou odeslány, váš obsah bezpečně uložen v hello cloudu pro další zpracování a streamování.
-
-
-## <a name="upload-files"></a>Nahrání souborů
-
->[!NOTE]
->Existuje limit toohello maximální velikost souboru pro zpracování ve službě Media Services podporována. Najdete v tématu [to](media-services-quotas-and-limitations.md) téma podrobné informace o omezení velikosti souborů hello.
+> [!NOTE]
+> Služba Media Services má pro zpracování souborů omezení maximální velikosti souboru. Podrobnosti o omezeních velikosti souboru najdete v tématu [Kvóty a omezení služby Media Services](media-services-quotas-and-limitations.md).
 >
 
-1. V hello [portál Azure](https://portal.azure.com/), vyberte svůj účet Azure Media Services.
-2. Na hello **nastavení** okně klikněte na tlačítko **prostředky**.
+## <a name="upload-files"></a>Nahrání souborů
+1. Na webu [Azure Portal](https://portal.azure.com/) zvolte účet Azure Media Services.
+2. Vyberte **Nastavení** > **Assety**. Pak vyberte tlačítko **Nahrát**.
    
     ![Nahrání souborů](./media/media-services-portal-vod-get-started/media-services-upload.png)
-3. Klikněte na tlačítko hello **nahrát** tlačítko.
    
-    Hello **nahrát asset videa** se zobrazí v okně.
+    Zobrazí se okno **Nahrát asset videa**.
    
    > [!NOTE]
-   > Velikost souboru není nijak omezená.
-   > 
-   > 
-4. Procházet toohello požadovaného video ve vašem počítači, vyberte ho a klikněte na OK.  
+   > Služba Media Services pro nahrávání videí neomezuje velikost souboru.
+ 
+3. Na svém počítači přejděte k videu, které chcete nahrát. Vyberte video a pak vyberte **OK**.  
    
-    Spustí nahrávání Hello a zobrazí se průběh hello pod názvem souboru hello.  
+    Spustí se nahrávání. Průběh můžete sledovat pod názvem souboru.  
 
-Po dokončení nahrávání hello uvidíte hello nový prostředek zobrazí v hello **prostředky** okno. 
-
-## <a name="next-steps"></a>Další kroky
-Nyní můžete kódovat nahrané assety. Další informace najdete v tématu [Kódování assetů](media-services-portal-encode.md).
-
-Můžete také použít Azure Functions tootrigger úlohu kódování na základě souboru přicházejících do kontejneru hello nakonfigurované. Další informace najdete v [této ukázce](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ ).
+Po dokončení nahrávání bude nový prostředek uvedený v podokně **Prostředky**. 
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
+## <a name="next-steps"></a>Další kroky
+* Zjistěte, jak [kódovat nahrané prostředky](media-services-portal-encode.md).
+
+* Můžete také použít službu Azure Functions k aktivaci úlohy kódování při doručení souboru do nakonfigurovaného kontejneru. Další informace najdete v ukázce v tématu [Media Services: Integrace služby Azure Media Services se službou Azure Functions a Logic Apps](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/).
+
 

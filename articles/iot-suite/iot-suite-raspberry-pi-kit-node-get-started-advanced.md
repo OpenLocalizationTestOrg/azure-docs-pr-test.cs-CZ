@@ -1,6 +1,6 @@
 ---
-title: "aktualizace aaaConnect tooAzure malin platformy IoT Suite pomocí firmwaru toosupport Node.js | Microsoft Docs"
-description: "Použijte hello Microsoft Azure IoT Starter Kit pro hello malin pí 3 a Azure IoT Suite. Pomocí Node.js tooconnect vaše řešení vzdáleného sledování toohello malin Pi, odesílat telemetrická data ze senzorů toohello cloudu a provést aktualizaci firmwaru vzdálené."
+title: "Připojení k Azure IoT Suite pomocí Node.js pro podporu aktualizace firmwaru malin platformy | Microsoft Docs"
+description: "Pomocí Startovní sady Microsoft Azure IoT Malinová pí 3 a sady Azure IoT Suite. Použití Node.js pro vaše platformy malin připojení k řešení vzdáleného monitorování, odesílat telemetrická data ze snímače do cloudu a provést aktualizaci firmwaru vzdálené."
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -14,164 +14,164 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.openlocfilehash: 43bd3f16ee3d292cd9cffa8bfe7d4ca721e5c39c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 54503d5d6a636239d240509d7d09cf334234bac7
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="connect-your-raspberry-pi-3-toohello-remote-monitoring-solution-and-enable-remote-firmware-updates-using-nodejs"></a>Připojit vaše řešení vzdáleného sledování malin pí 3 toohello a povolit vzdálenou firmware aktualizace pomocí Node.js
+# <a name="connect-your-raspberry-pi-3-to-the-remote-monitoring-solution-and-enable-remote-firmware-updates-using-nodejs"></a>Připojení k řešení vzdáleného monitorování vaší malin pí 3 a povolit vzdálenou firmware aktualizace pomocí Node.js
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-selector](../../includes/iot-suite-raspberry-pi-kit-selector.md)]
 
-Tento kurz ukazuje, jak toouse hello Microsoft Azure IoT Starter Kit pro malin pí 3 na:
+Tento kurz ukazuje, jak pomocí Startovní sady Microsoft Azure IoT pro malin pí 3 pro:
 
-* Vývoj čtečku teploty a vlhkosti, který může komunikovat s hello cloudu.
-* Povolit a provádět vzdálenou firmware aktualizace tooupdate hello klientskou aplikaci na hello malin pí.
+* Vývoj čtečku teploty a vlhkosti, který může komunikovat s cloudem.
+* Povolit a provádět vzdálenou firmware aktualizace nebo aktualizace klientská aplikace na malin pí.
 
-kurz Hello používá:
+Tento kurz používá:
 
-- Raspbian OS hello Node.js programovací jazyk a hello Microsoft Azure IoT SDK pro Node.js tooimplement ukázka zařízení.
-- vzdálené monitorování Hello IoT Suite předkonfigurované řešení jako hello cloudové back-end.
+- Raspbian operačního systému, programovací jazyk Node.js a Microsoft Azure IoT SDK pro Node.js implementovat ukázka zařízení.
+- Sadě IoT Suite předkonfigurované řešení vzdáleného monitorování jako cloudové back-end.
 
 ## <a name="overview"></a>Přehled
 
-V tomto kurzu dokončení hello následující kroky:
+V tomto kurzu je provést následující kroky:
 
-- Nasaďte instanci hello vzdálené monitorování předkonfigurované řešení tooyour předplatného Azure. Tento krok automaticky nasadí a nakonfiguruje více služeb Azure.
-- Nastavte vaše zařízení a senzory toocommunicate s počítačem a hello řešení vzdáleného sledování.
-- Aktualizujte hello ukázka zařízení kódu tooconnect toohello řešení vzdáleného monitorování a odesílat telemetrická data, která můžete zobrazit na řídicí panel řešení hello.
-- Pomocí klienta aplikace hello kód tooupdate hello ukázka zařízení.
+- Nasaďte instanci předkonfigurovaného řešení vzdáleného monitorování k předplatnému Azure. Tento krok automaticky nasadí a nakonfiguruje více služeb Azure.
+- Nastavte zařízením a senzory ke komunikaci s vaším počítačem a řešení vzdáleného monitorování.
+- Aktualizujte zařízení ukázkový kód pro připojení k řešení vzdáleného monitorování a odesílat telemetrická data, která můžete zobrazit na řídicí panel řešení.
+- Ukázkový kód zařízení použijte k aktualizaci klientské aplikace.
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-prerequisites](../../includes/iot-suite-raspberry-pi-kit-prerequisites.md)]
 
 [!INCLUDE [iot-suite-provision-remote-monitoring](../../includes/iot-suite-provision-remote-monitoring.md)]
 
 > [!WARNING]
-> Hello vzdálené monitorování zřídí řešení sadu služeb Azure ve vašem předplatném Azure. nasazení Hello odráží architektura skutečné enterprise. tooavoid nepotřebné využití platformy Azure poplatky, odstraňte instanci hello předkonfigurované řešení na azureiotsuite.com po dokončení s ním. Pokud třeba hello předkonfigurované řešení znovu, můžete ho snadno obnovit. Další informace o snížení spotřeby při hello vzdálené monitorování spustí řešení najdete v tématu [konfigurace Azure IoT Suite předkonfigurovaných řešení pro účely ukázky][lnk-demo-config].
+> Řešení vzdáleného monitorování zřídí sadu služeb Azure ve vašem předplatném Azure. Nasazení odráží architektura skutečné enterprise. Aby se zabránilo zbytečným využití platformy Azure poplatky, odstraňte instanci předkonfigurované řešení na azureiotsuite.com po dokončení s ním. Pokud budete znovu potřebovat předkonfigurované řešení, můžete ho snadno obnovit. Další informace o snížení spotřeby průběhu řešení vzdáleného monitorování najdete v tématu [konfigurace Azure IoT Suite předkonfigurovaných řešení pro účely ukázky][lnk-demo-config].
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-view-solution](../../includes/iot-suite-raspberry-pi-kit-view-solution.md)]
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-prepare-pi](../../includes/iot-suite-raspberry-pi-kit-prepare-pi.md)]
 
-## <a name="download-and-configure-hello-sample"></a>Stáhnout a nakonfigurovat ukázka hello
+## <a name="download-and-configure-the-sample"></a>Stáhnout a nakonfigurovat vzorku
 
-Nyní můžete stáhnout a nakonfigurovat hello vzdálené monitorování klientské aplikace na vaše malin pí.
+Teď můžete stáhnout a nakonfigurovat vzdálené monitorování klientskou aplikaci na vaše malin platformy.
 
 ### <a name="install-nodejs"></a>Instalovat Node.js
 
-Pokud jste tak ještě neučinili, nainstalujte na vaše platformy malin Node.js. Hello IoT SDK pro Node.js vyžaduje verzi 0.11.5 Node.js nebo novější. Hello následující kroky ukazují, jak tooinstall Node.js v6.10.2 na vaše malin platformy:
+Pokud jste tak ještě neučinili, nainstalujte na vaše platformy malin Node.js. Sada IoT SDK pro Node.js vyžaduje verzi 0.11.5 Node.js nebo novější. Následující kroky vám ukážou, jak nainstalovat Node.js v6.10.2 na vaše malin platformy:
 
-1. Použijte následující příkaz tooupdate hello vaší malin platformy:
+1. Použijte následující příkaz k aktualizaci vašeho malin platformy:
 
     ```sh
     sudo apt-get update
     ```
 
-1. Použijte následující příkaz toodownload hello Node.js binární soubory tooyour malin pí hello:
+1. Stažení Node.js binární soubory pro vaše platformy malin použijte následující příkaz:
 
     ```sh
     wget https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-armv7l.tar.gz
     ```
 
-1. Použijte následující příkaz tooinstall hello binární soubory hello:
+1. Použijte následující příkaz pro instalaci binárních souborů:
 
     ```sh
     sudo tar -C /usr/local --strip-components 1 -xzf node-v6.10.2-linux-armv7l.tar.gz
     ```
 
-1. Použijte následující příkaz tooverify jste úspěšně nainstalovali Node.js v6.10.2 hello:
+1. Pomocí následujícího příkazu ověřte, že jste úspěšně nainstalovali Node.js v6.10.2:
 
     ```sh
     node --version
     ```
 
-### <a name="clone-hello-repositories"></a>Klonování úložiště hello
+### <a name="clone-the-repositories"></a>Klonování úložiště
 
-Pokud jste tak ještě neučinili, požadované klon hello hello úložiště tak, že spustíte následující příkazy na vaše platformy:
+Pokud jste tak ještě neučinili, klonování vyžaduje úložiště spuštěním následujících příkazů na vašeho platformy:
 
 ```sh
 cd ~
 git clone --recursive https://github.com/Azure-Samples/iot-remote-monitoring-node-raspberrypi-getstartedkit.git
 ```
 
-### <a name="update-hello-device-connection-string"></a>Aktualizovat hello zařízení připojovací řetězec
+### <a name="update-the-device-connection-string"></a>Aktualizovat připojovací řetězec zařízení
 
-Otevřete hello vzorový konfigurační soubor v hello **nano** editor pomocí hello následující příkaz:
+Otevřete konfigurační soubor ukázka v **nano** editor pomocí následujícího příkazu:
 
 ```sh
 nano ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/advanced/config/deviceinfo
 ```
 
-Hello zástupné hodnoty nahraďte hello id zařízení a informace služby IoT Hub vytvořili a uložili při spuštění hello tohoto kurzu.
+Zástupné hodnoty nahraďte id zařízení a informace služby IoT Hub vytvořili a uložili na začátku tohoto kurzu.
 
-Až skončíte, hello obsah souboru deviceinfo hello by měl vypadat podobně jako hello následující ukázka:
+Až skončíte, obsah souboru deviceinfo by měl vypadat jako v následujícím příkladu:
 
 ```conf
 yourdeviceid
 HostName=youriothubname.azure-devices.net;DeviceId=yourdeviceid;SharedAccessKey=yourdevicekey
 ```
 
-Uložte změny (**Ctrl-O**, **Enter**) a ukončete editor hello (**Ctrl-X**).
+Uložte změny (**Ctrl-O**, **Enter**) a ukončete editor (**Ctrl-X**).
 
-## <a name="run-hello-sample"></a>Spuštění ukázkové hello
+## <a name="run-the-sample"></a>Spustit ukázku
 
-Hello spusťte následující příkazy tooinstall hello požadované balíčky pro hello ukázku:
+Spusťte následující příkazy pro instalaci požadovaných balíčků pro ukázku:
 
 ```sh
 cd ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/advance/1.0
 npm install
 ```
 
-Ukázka programu hello teď můžete spustit na hello malin pí. Zadejte příkaz hello:
+Teď můžete spustit ukázkový program na malin pí. Zadejte příkaz:
 
 ```sh
 sudo node ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/advanced/1.0/remote_monitoring.js
 ```
 
-Hello následující ukázkový výstup je příklad výstupu hello, uvidíte hello příkazového řádku na hello malin platformy:
+Následující ukázkový výstup je příklad výstupu, které vidíte na příkazovém řádku na malin platformy:
 
 ![Výstup z aplikace Malinová platformy][img-raspberry-output]
 
-Stiskněte klávesu **Ctrl-C** programu hello tooexit kdykoli.
+Stiskněte klávesu **Ctrl-C** ukončete program kdykoli.
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-view-telemetry-advanced](../../includes/iot-suite-raspberry-pi-kit-view-telemetry-advanced.md)]
 
-1. Na řídicím panelu řešení hello, klikněte na tlačítko **zařízení** toovisit hello **zařízení** stránky. Vyberte platformy vaší malin v hello **seznam zařízení**. Zvolte **metody**:
+1. Na řídicím panelu řešení, klikněte na tlačítko **zařízení** přejděte **zařízení** stránky. Vyberte vaše Malinová platformy v **seznam zařízení**. Zvolte **metody**:
 
     ![Seznam zařízení na řídicím panelu][img-list-devices]
 
-1. Na hello **vyvolání metody** vyberte **InitiateFirmwareUpdate** v hello **metoda** rozevíracího seznamu.
+1. Na **vyvolání metody** vyberte **InitiateFirmwareUpdate** v **metoda** rozevíracího seznamu.
 
-1. V hello **FWPackageURI** zadejte **https://raw.githubusercontent.com/Azure-Samples/iot-remote-monitoring-node-raspberrypi-getstartedkit/master/advanced/2.0/raspberry.js**. Tento soubor obsahuje hello implementace 2.0 verzi firmwaru hello.
+1. V **FWPackageURI** zadejte **https://raw.githubusercontent.com/Azure-Samples/iot-remote-monitoring-node-raspberrypi-getstartedkit/master/advanced/2.0/raspberry.js**. Tento soubor obsahuje implementace 2.0 verzi firmwaru.
 
-1. Zvolte **InvokeMethod**. aplikace Hello na hello malin pí odešle řídicí panel řešení back toohello potvrzení. Pak spustí proces aktualizace firmwaru hello stažením hello novou verzi firmwaru hello:
+1. Zvolte **InvokeMethod**. Aplikace na platformy malin odešle na potvrzení zpět na řídicí panel řešení. Pak spustí proces aktualizace firmwaru stažením novou verzi firmwaru:
 
     ![Zobrazit historii – metoda][img-method-history]
 
-## <a name="observe-hello-firmware-update-process"></a>Sledovat proces aktualizace firmwaru hello
+## <a name="observe-the-firmware-update-process"></a>Sledovat firmware proces aktualizovat.
 
-Můžete sledovat proces aktualizace firmwaru hello při jeho spuštění v zařízení hello a zobrazením hello hlášené vlastnosti v řídicí panel řešení hello:
+Můžete sledovat firmware proces aktualizovat. při jeho spuštění v zařízení a zobrazením hlášen vlastnostech na řídicím panelu řešení:
 
-1. Průběh hello v procesu aktualizace hello můžete zobrazit na hello malin platformy:
+1. Postup v procesu aktualizace lze zobrazit na malin platformy:
 
     ![Ukázat průběh aktualizace][img-update-progress]
 
     > [!NOTE]
-    > vzdálené monitorování aplikace Hello restartuje bezobslužně po dokončení aktualizace hello. Použijte příkaz hello `ps -ef` tooverify je spuštěná. Pokud chcete proces hello tooterminate, použijte hello `kill` s id procesu hello.
+    > Vzdálené monitorování aplikace se restartuje bez upozornění po dokončení aktualizace. Použijte příkaz `ps -ef` ověření je spuštěná. Pokud chcete ukončit proces, pomocí `kill` s id procesu.
 
-1. Stav hello hello aktualizace firmwaru, můžete zobrazit podle hello zařízení na portálu řešení hello. Hello následující snímek obrazovky ukazuje stav hello a doba trvání u každé fáze procesu aktualizace hello a nová verze firmwaru hello:
+1. Podle zařízení, na portálu řešení můžete zobrazit stav aktualizace firmwaru. Následující snímek obrazovky ukazuje stav a doba trvání u každé fáze procesu aktualizace a nová verze firmwaru:
 
     ![Zobrazit stav úlohy][img-job-status]
 
-    Pokud přejdete zpět toohello řídicího panelu, můžete ověřit, že hello zařízení stále odesílá telemetrii následující aktualizaci firmwaru hello.
+    Pokud přejdete zpět na řídicí panel, můžete ověřit, že zařízení je stále odesílat telemetrii následující aktualizace firmwaru.
 
 > [!WARNING]
-> Pokud necháte hello vzdálené monitorování řešení, které jsou spuštěné v účtu Azure, se vám účtuje hello, když ji spustí. Další informace o snížení spotřeby při hello vzdálené monitorování spustí řešení najdete v tématu [konfigurace Azure IoT Suite předkonfigurovaných řešení pro účely ukázky][lnk-demo-config]. Po dokončení používat, odstraňte hello předkonfigurované řešení z účtu Azure.
+> Pokud necháte řešení vzdáleného monitorování spuštěné v účtu Azure, se vám účtuje v době spuštění. Další informace o snížení spotřeby průběhu řešení vzdáleného monitorování najdete v tématu [konfigurace Azure IoT Suite předkonfigurovaných řešení pro účely ukázky][lnk-demo-config]. Odstraňte předkonfigurované řešení z účtu Azure, když přestanete používat.
 
 ## <a name="next-steps"></a>Další kroky
 
-Navštivte hello [Azure IoT Dev Center](https://azure.microsoft.com/develop/iot/) Další ukázky a dokumentace na Azure IoT.
+Přejděte [Azure IoT Dev Center](https://azure.microsoft.com/develop/iot/) Další ukázky a dokumentace na Azure IoT.
 
 
 [img-raspberry-output]: ./media/iot-suite-raspberry-pi-kit-node-get-started-advanced/app-output.png

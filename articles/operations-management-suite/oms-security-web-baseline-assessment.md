@@ -1,6 +1,6 @@
 ---
-title: "Vyhodnocení směrného plánu v Operations Management Suite zabezpečení a Audit řešení základní aaaWeb | Microsoft Docs"
-description: "Tento dokument popisuje, jak toouse webové vyhodnocení směrného plánu v OMS zabezpečení a Audit řešení tooperform směrného plánu hodnocení všech monitorovaných webových serverů za účelem dodržování předpisů a zabezpečení."
+title: "Vyhodnocování standardních hodnot webu v základních hodnotách řešení Operations Management Suite Security and Audit | Dokumentace Microsoftu"
+description: "Tento dokument popisuje, jak pomocí vyhodnocování standardních hodnot webu v řešení OMS Security and Audit provádět vyhodnocování standardních hodnot u všech monitorovaných webových serverů za účelem dodržování předpisů a zabezpečení."
 services: operations-management-suite
 documentationcenter: na
 author: YuriDio
@@ -15,67 +15,67 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: yurid
-ms.openlocfilehash: dafa9d3d93fae31748306b60ee40b285dd59c802
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 40b0c6ca933ea02ac9f5fe3bfaaf87a310542a8d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="web-baseline-assessment-in-operations-management-suite-security-and-audit-solution"></a>Vyhodnocování standardních hodnot webu v řešení Zabezpečení a audit pro Operations Management Suite
-Tento dokument vám pomůže používat OMS zabezpečení a Audit webové směrného plánu vyhodnocení možnosti tooaccess hello zabezpečené stavu monitorovaných prostředků.
+Tento dokument vám pomůže s použitím schopností vyhodnocování standardních hodnot webu v řešení OMS Security and Audit pro přístup ke stavu zabezpečení monitorovaných prostředků.
 
 ## <a name="what-is-web-baseline-assessment"></a>Co je vyhodnocování standardních hodnot webu?
-Zabezpečení v OMS v současné době umožňuje vyhodnocování standardních hodnot zabezpečení pro operační systémy. Prohledá hello nastavení operačního systému serverů každých 24 hodin a poskytuje pohled na potenciálně citlivé nastavení. Další informace najdete v tématu [Vyhodnocování standardních hodnot v řešení Zabezpečení a audit pro Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/oms-security-baseline).
+Zabezpečení v OMS v současné době umožňuje vyhodnocování standardních hodnot zabezpečení pro operační systémy. Každých 24 hodin prohledá nastavení operačního systému vašich serverů a zobrazí potenciálně ohrožená nastavení. Další informace najdete v tématu [Vyhodnocování standardních hodnot v řešení Zabezpečení a audit pro Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/oms-security-baseline).
 
-cílem Hello hello assessment webové směrného plánu je nastavení toofind potenciálně citlivé webového serveru. Hello tři primární zdroje pro hello webové standardních hodnot konfigurace jsou: Konfigurace rozhraní .NET, ASP.NET a služby IIS.  Stejně jako hello vyhodnocení směrného plánu operační systém, zabezpečení OMS přechází tooscan vaše webových serverů, každý 24hrs a zadejte pohled na stav zabezpečení z nich.  V Internetové informační služby (IIS), konfigurace jsou vysoce přizpůsobitelné, která umožňuje různé webu nebo aplikace toobe úrovně přepsat. skener Hello kontroluje hello nastavení na úrovni jednotlivých aplikací nebo na webu v přidání toohello výchozí kořenové úrovni. To vám pomůže tooidentify potenciálně citlivé nastavení a rychle napravit, včetně Naše doporučení pro taková nastavení.
+Cílem vyhodnocování standardních hodnot webu je najít potenciálně ohrožená nastavení webového serveru. Tři hlavní zdroje konfigurace standardních hodnot webu jsou: .NET, ASP.NET a konfigurace služby IIS.  Stejně jako v případě vyhodnocování standardních hodnot operačního systému bude Zabezpečení v OMS každých 24 hodin prohledávat vaše webové servery a zobrazí stav jejich zabezpečení.  Konfigurace v Internetové informační službě (IIS) jsou vysoce přizpůsobitelné, což umožňuje přepsání úrovní různých webů a aplikací. Skener kromě výchozí kořenové úrovně kontroluje i nastavení na jednotlivých úrovních aplikace nebo webu. Díky tomu můžete identifikovat potenciálně ohrožená nastavení a s našimi doporučeními k těmto nastavením je rychle opravit.
 
 >[!NOTE] 
->Můžete si stáhnout hello běžné identifikátory konfigurace a standardních pravidel používané OMS zabezpečení v tomto [stránky](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335?redir=0).
+>Identifikátory obecných konfigurací a základní pravidla používaná zabezpečením OMS si můžete stáhnout na této [stránce](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335?redir=0).
 
 
 ## <a name="web-security-baseline-assessment"></a>Vyhodnocování standardních hodnot zabezpečení webu
 
-Pro tuto verzi preview je přístupný prostřednictvím hello možnost hledání OMS a hello OMS zabezpečení a Audit řídicí panel funkce hello. Postupujte podle kroků hello níže tooperform hello přidělena dotazu:
+Ve verzi Preview se k této funkci přistupuje prostřednictvím možnosti Vyhledávání v OMS a řídicího panelu řešení OMS Security and Audit. Postupujte podle následujících kroků a proveďte odpovídající dotaz:
 
-1. V hello **Microsoft Operations Management Suite** hlavní řídicí panel, klikněte na tlačítko **zabezpečení a Audit** dlaždici.
-2. V hello **zabezpečení a Audit** řídicí panel, uvidíte hello základní webové perspektivy další toohello OS směrného plánu perspektivy.
+1. Na hlavním řídicím panelu **Microsoft Operations Management Suite** klikněte na dlaždici **Zabezpečení a audit**.
+2. Na řídicím panelu řešení **Security and Audit** se vedle perspektivy standardních hodnot operačního systému zobrazí perspektiva standardních hodnot webu.
    
     ![Vyhodnocování standardních hodnot zabezpečení webu v řešení OMS Security and Audit](./media/oms-security-web-baseline/oms-security-web-baseline-fig5.png)
 
-3. Hello levém podokně se zobrazují hello počet standardních hodnot toohello webové servery porovnání hello průměrnou procentuální hodnotu pravidla, které předávají ve všech serverech hello vyhodnotit a hello seznam serverů, které byly vyhodnoceny.
-4. Hello v pravém podokně zobrazí hello jedinečný pravidla, která se nezdařila v důsledku *závažnost*, a *typ pravidla*. Kliknutím na žádné z pravidel hello pravém podokně se zobrazí hello podrobnosti o tomto pravidle. Příklad je uveden v hello pod obrázkem. pravidlo Hello, který se vyhodnotí je uveden v části *nastavení pravidla*. Hello *AzId* pole, které je jedinečný identifikátor pro každé pravidlo, které společnost Microsoft používá pro sledování hello standardních pravidel. Kromě toho toothat uživatelé mohou vidět hello *očekávaný výsledek* (společnosti Microsoft Doporučená hodnota), a další podrobnosti týkající se zabezpečení dopad hello hello pravidla.
+3. V levém podokně se zobrazí počet webových serverů v porovnání se standardními hodnotami, průměrné procento pravidel, která prošla na všech vyhodnocovaných serverech, a seznam hodnocených serverů.
+4. V pravém podokně je seznam jedinečných pravidel, která selhala, podle *závažnosti* a *typu pravidla*. Po kliknutí na libovolné pravidlo v pravém podokně se zobrazí podrobnosti o tomto pravidle. Příklad je uveden na obrázku níže. Vyhodnocované pravidlo je uvedeno v části *Nastavení pravidla*. Pole *AzId* je jedinečný identifikátor každého pravidla, který Microsoft používá ke sledování základních pravidel. Kromě toho můžou uživatelé zobrazit *Očekávaný výsledek* (doporučená hodnota od Microsoftu) a další podrobnosti související s dopadem pravidla na zabezpečení.
     
     ![Dotaz](./media/oms-security-web-baseline/oms-security-web-baseline-fig6.png)
 
-5. Můžete vytvořit své vlastní dotazy tooreview hello výsledky. 
+5. Pro kontrolu výsledků můžete vytvářet vlastní dotazy. 
 
-Hello první dotaz, který můžete použít se hello **souhrn hodnocení základní webové**. V hello **Begin vyhledávání zde** pole, zadejte tento dotaz: *typ = SecurityBaselineSummary BaselineType = webové*. Hello následuje Ukázka výstupu:
+Jako první dotaz můžete použít **Souhrn vyhodnocení standardních hodnot webu**. Do pole **Zahájit hledání** zadejte tento dotaz: *Type=SecurityBaselineSummary BaselineType=Web*. Následuje ukázka výstupu:
 
 ![Výsledek dotazu](./media/oms-security-web-baseline/oms-security-web-baseline-fig7.png)
 
 >[!NOTE] 
 >V tomto dotazu každý záznam označuje souhrn vyhodnocení na jednom serveru.
 
-Jakmile jste na hello **hledání protokolů**, tooobtain různé dotazy můžete zadat další informace o vyhodnocení směrného plánu webové hello. Kromě toho toohello předchozího dotazu, můžete také použít hello následující těch, které jsou v této verzi preview:
+Když jste v **Prohledávání protokolu**, můžete zadáním různých dotazů získat další informace o vyhodnocení standardních hodnot webu. Kromě předchozího dotazu můžete ve verzi Preview použít také následující dotazy:
 
-**Vyhodnocení pravidel standardních hodnot webu:** Každý záznam představuje jedno vyhodnocení pravidla standardních hodnot webu na jednom serveru. Obsahuje všechna data v případě selhání pravidla hello *SitePath* na které hello pravidlo bylo vyhodnoceno, hello *očekávaný výsledek*a hello *skutečný výsledek*.
+**Vyhodnocení pravidel standardních hodnot webu:** Každý záznam představuje jedno vyhodnocení pravidla standardních hodnot webu na jednom serveru. Obsahuje všechna data pro pravidlo, které selhalo, *Cestu k webu*, na které se pravidlo vyhodnocovalo, *Očekávaný výsledek* a *Skutečný výsledek*.
 
 Dotaz: *Type=SecurityBaseline BaselineType=Web AnalyzeResult=Failed*
 
 ![Výsledek dotazu 2](./media/oms-security-web-baseline/oms-security-web-baseline-fig8.png)
 
-**Zobrazit všechny výsledky pro určitý server**: Tento dotaz zobrazí jak toosee výsledků konkrétní serveru: dotaz: *typ = SecurityBaseline BaselineType = počítač webového = BaselineTestVM1*
+**Zobrazení všech výsledků pro konkrétní server:** Tento dotaz předvádí, jak zobrazit výsledky konkrétního serveru: Dotaz: *Type=SecurityBaseline BaselineType=Web Computer=BaselineTestVM1*
 
 ![Výsledek dotazu 3](./media/oms-security-web-baseline/oms-security-web-baseline-fig3.png)
 
-Tyto záznamy nebo dotazy toocreate můžete použít vlastní řídicí panely, sestavy nebo výstrahy. Zde je ukázka ovládacího prvku uživatelského rozhraní, můžete přidat řídicí panel tooyour. Dozvíte, jak toovisualize svá data pomocí návrháře zobrazení OMS [zde](https://blogs.technet.microsoft.com/msoms/2016/06/30/oms-view-designer-visualize-your-data-your-way/). úvodní obrazovka dole je příklad jak hello dlaždici bude vypadat podobně jako Jakmile provedete toto vlastní nastavení.
+Tyto záznamy a dotazy můžete použít k vytvoření vlastních řídicích panelů, sestav nebo upozornění. Tady je ukázka ovládacího prvku uživatelského rozhraní, který můžete přidat na svůj řídicí panel. [Tady](https://blogs.technet.microsoft.com/msoms/2016/06/30/oms-view-designer-visualize-your-data-your-way/) můžete zjistit, jak vizualizovat data pomocí Návrháře zobrazení v OMS. Na následující obrazovce je příklad toho, jak bude dlaždice vypadat po přizpůsobení.
 
 ![řídicí panel](./media/oms-security-web-baseline/oms-security-web-baseline-fig4.png)
 
 ## <a name="see-also"></a>Viz také
-V tomto dokumentu jste se dozvěděli o vyhodnocování standardních hodnot webu v řešení OMS Security and Audit. Další informace o zabezpečení OMS toolearn najdete hello následující články:
+V tomto dokumentu jste se dozvěděli o vyhodnocování standardních hodnot webu v řešení OMS Security and Audit. Další informace o zabezpečení v OMS najdete v následujících článcích:
 
 * [Přehled Operations Management Suite (OMS)](operations-management-suite-overview.md)
-* [Monitorování a výstrahy tooSecurity odpovídá v Operations Management Suite zabezpečení a Audit řešení](oms-security-responding-alerts.md)
+* [Monitorování a reagování na výstrahy zabezpečení v řešení Zabezpečení a audit v Operations Management Suite](oms-security-responding-alerts.md)
 * [Monitorování prostředků v řešení Zabezpečení a audit v Operations Management Suite](oms-security-monitoring-resources.md)
 

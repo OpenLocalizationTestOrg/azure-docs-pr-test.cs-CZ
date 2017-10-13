@@ -1,6 +1,6 @@
 ---
-title: aaaOptimize Hive dotazuje v Azure HDInsight | Microsoft Docs
-description: "Zjistěte, jak toooptimize vaše Hive dotazuje na Hadoop v HDInsight."
+title: "Optimalizace dotazů Hive v Azure HDInsight | Microsoft Docs"
+description: "Informace o optimalizaci své dotazy Hive pro Hadoop v HDInsight."
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -16,46 +16,46 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/26/2016
 ms.author: jgao
-ms.openlocfilehash: d27f8100e1e9f4823040ff9f693e7b78d6192c6e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: edbf797e6277a65b5311e4939f5ab72776b11557
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="optimize-hive-queries-in-azure-hdinsight"></a>Optimalizace dotazů Hive v Azure HDInsight
 
-Ve výchozím nastavení nejsou clusterů systému Hadoop optimalizované pro výkon. Tento článek se zabývá některé nejběžnější Hive optimalizace metody údajů o výkonu, můžete použít tooyour dotazy.
+Ve výchozím nastavení nejsou clusterů systému Hadoop optimalizované pro výkon. Tento článek se zabývá některé nejběžnější Hive výkonu optimalizace metody, které můžete použít pro své dotazy.
 
 ## <a name="scale-out-worker-nodes"></a>Horizontální navýšení kapacity uzlů pracovního procesu
 
-Zvýšení hello počet uzlů pracovního procesu v clusteru, můžete využít další mappers a přechodky toobe souběžně. Existují dva způsoby, jak můžete zvýšit možností horizontálního rozšíření kapacity v HDInsight:
+Zvýšit počet uzlů pracovního procesu v clusteru s podporou můžete využít další mappers a přechodky ke spuštění paralelně. Existují dva způsoby, jak můžete zvýšit možností horizontálního rozšíření kapacity v HDInsight:
 
-* Během hello zřizování můžete zadat hello počet uzlů pracovního procesu pomocí hello portálu Azure, Azure PowerShell nebo rozhraní příkazového řádku pro různé platformy.  Další informace najdete v tématu [Vytvoření clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md). Hello následující snímek obrazovky ukazuje hello pracovní konfigurace uzlu na hello portálu Azure:
+* Během zřizování můžete zadat počet uzlů pracovního procesu pomocí portálu Azure, Azure PowerShell nebo rozhraní příkazového řádku pro různé platformy.  Další informace najdete v tématu [Vytvoření clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md). Následující snímek obrazovky ukazuje pracovního procesu konfigurace uzlu na portálu Azure:
   
     ![scaleout_1][image-hdi-optimize-hive-scaleout_1]
-* V hello běh můžete taky škálovat cluster bez nutnosti opětovného vytvoření jeden:
+* Za běhu můžete taky škálovat cluster bez nutnosti opětovného vytvoření jeden:
 
     ![scaleout_1][image-hdi-optimize-hive-scaleout_2]
 
-Další informace o hello různé virtuální počítače podporované v prostředí HDInsight najdete v tématu [HDInsight ceny](https://azure.microsoft.com/pricing/details/hdinsight/).
+Další informace o různé virtuální počítače podporované v prostředí HDInsight najdete v tématu [HDInsight ceny](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 ## <a name="enable-tez"></a>Povolení Tez
 
-[Apache Tez](http://hortonworks.com/hadoop/tez/) je modul alternativní provádění modul toohello MapReduce:
+[Apache Tez](http://hortonworks.com/hadoop/tez/) je modul alternativní provádění k modulu MapReduce:
 
 ![tez_1][image-hdi-optimize-hive-tez_1]
 
 Tez je rychlejší, protože:
 
-* **Spuštění směrované Acyklické grafu (DAG) jako jednu úlohu v modulu MapReduce hello**. Hello DAG vyžaduje každou sadu mappers toobe následuje jednu sadu přechodky. To způsobí, že více toobe úlohy MapReduce spuštěné pro každý dotaz Hive. Tez nemá takové omezení a může zpracovat komplexní DAG jako jednu úlohu, čímž dojde k minimalizaci režie spuštění úlohy.
-* **Zabraňuje zbytečným zápisy**. Z důvodu toomultiple úlohy se spouštějí pro hello stejný dotaz Hive v hello MapReduce stroje, výstup hello Každá úloha se zapíše tooHDFS pro mezilehlá data. Vzhledem k tomu, že minimalizuje počet úloh pro každý dotaz Hive Tez je možné tooavoid nepotřebné zápisu.
-* **Minimalizuje zpoždění spuštění**. Tez je lepší zpoždění spuštění možné toominimize snížením hello počet mappers, které potřebuje toostart a také vylepšení optimalizace v průběhu.
-* **Opětovně používá kontejnery**. Vždy, když možné Tez je možné tooreuse kontejnery tooensure této latence kvůli toostarting až kontejnery se snižuje.
-* **Techniky průběžné optimalizace**. Optimalizace tradičně bylo provedeno během fáze kompilace. Ale je k dispozici další informace o hello vstupy, které umožňují lepší optimalizace za běhu. Tez používá průběžné optimalizace technik, které umožňuje toooptimize hello Další plán do fáze runtime hello.
+* **Spuštění směrované Acyklické grafu (DAG) jako jednu úlohu v modulu MapReduce**. DAG vyžaduje každou sadu mappers pro jednu sadu přechodky následovat. To způsobí, že se pro každý dotaz Hive spuštěné více úloh MapReduce. Tez nemá takové omezení a může zpracovat komplexní DAG jako jednu úlohu, čímž dojde k minimalizaci režie spuštění úlohy.
+* **Zabraňuje zbytečným zápisy**. Z důvodu několik úloh, které se spouštějí pro stejný dotaz Hive v rámci stroje MapReduce výstup každé úlohy zapsán do HDFS pro mezilehlá data. Vzhledem k tomu, že minimalizuje počet úloh pro každý dotaz Hive Tez je k tomu nepotřebné zápisu.
+* **Minimalizuje zpoždění spuštění**. Tez je lépe minimalizovat snížení počtu mappers, musí se spustit a také vylepšení optimalizace v rámci zpoždění spuštění.
+* **Opětovně používá kontejnery**. Vždy, když je možné Tez mohli znovu použít kontejnery zajistit, že se snižuje latence kvůli spuštění kontejnery.
+* **Techniky průběžné optimalizace**. Optimalizace tradičně bylo provedeno během fáze kompilace. Ale je k dispozici další informace o vstupních hodnot, které umožňují lepší optimalizace za běhu. Tez používá průběžné optimalizace technik, které umožní Optimalizace plánu další do fáze modulu runtime.
 
 Další podrobnosti o těchto pojmech najdete v tématu [Apache TEZ](http://hortonworks.com/hadoop/tez/).
 
-Můžete použít jakýkoli dotaz Hive Tez povoleno pomocí prefixu hello dotazu s nastavením hello níže:
+Můžete použít jakýkoli dotaz Hive Tez povoleno pomocí prefixu dotaz pomocí tohoto nastavení:
 
     set hive.execution.engine=tez;
 
@@ -64,19 +64,19 @@ Clustery HDInsight se systémem Linux mít Tez ve výchozím nastavení povolen�
 
 ## <a name="hive-partitioning"></a>Hive, vytváření oddílů
 
-Vstupně-výstupní operace je hello potíže hlavní výkonu pro spouštění dotazů Hive. je možné zlepšit výkon Hello, pokud hello množství dat, který potřebuje toobe přečíst, může být nižší. Ve výchozím nastavení kontrolu dotazů Hive celých tabulek Hive. Toto je skvělá pro dotazy jako prohledávání tabulky. Ale pro dotazy, které stačí tooscan malé množství dat (například dotazy s filtrování), toto chování vytvoří nepotřebné režie. Vytváření oddílů Hive umožňuje Hive dotazy tooaccess pouze hello nezbytné množství dat v tabulek Hive.
+Vstupně-výstupní operace je potíže hlavní výkonu pro spouštění dotazů Hive. Pokud se může snížit množství dat, který vyžaduje čtení, je možné zlepšit výkon. Ve výchozím nastavení kontrolu dotazů Hive celých tabulek Hive. Toto je skvělá pro dotazy jako prohledávání tabulky. Ale pro dotazy, které stačí ke kontrole malé množství dat (například dotazy s filtrování), toto chování vytvoří nepotřebné režie. Vytváření oddílů Hive umožňuje dotazů Hive přístup pouze nezbytné množství dat v tabulek Hive.
 
-Vytváření oddílů Hive je implementováno modulem reorganizace hello nezpracovaná data do nového adresáře s každý oddíl má svou vlastní directory – kde je definován hello oddílu uživatelem hello. Hello následující diagram znázorňuje dělení tabulku Hive podle sloupce hello *roku*. Pro každý rok se vytvoří nový adresář.
+Vytváření oddílů Hive je implementováno modulem reorganizace nezpracovaná data do nového adresáře s každý oddíl má svou vlastní directory – kde je oddíl definovaných uživatelem. Následující diagram znázorňuje dělení tabulku Hive podle sloupce *roku*. Pro každý rok se vytvoří nový adresář.
 
 ![Dělení na oddíly][image-hdi-optimize-hive-partitioning_1]
 
 Některé rozdělení aspekty:
 
-* **Proveďte není v oddílu** – vytváření oddílů pro sloupce s pouze několik hodnot může způsobit několik oddílů. Například vytváření oddílů na pohlaví pouze vytvoří dva oddíly toobe vytvořili (mužského a ženského), tedy pouze snížit latenci hello nejvýše o polovinu.
-* **Proveďte nikoli prostřednictvím oddílu** – na jiné extreme Dobrý den, vytváření oddílů u sloupce s jedinečnou hodnotu (například ID uživatele) způsobí, že více oddílů. V oddílu způsobí, že mnoho přízvuk na hello clusteru namenode jako má toohandle hello velký počet adresářů.
-* **Vyhněte se data zkosení** -vyberte klíč rozdělení dobře tak, aby všechny oddíly jsou i velikost. Příklad rozdělení do oddílů na *stavu* může způsobit hello počet záznamů v části kalifornské toobe téměř 30 x u Vermont kvůli toohello rozdíl v naplnění.
+* **Proveďte není v oddílu** – vytváření oddílů pro sloupce s pouze několik hodnot může způsobit několik oddílů. Například vytváření oddílů na pohlaví vytvoří pouze dva oddíly, které mají být vytvořené (mužského a ženského), tedy pouze snížit latenci nejvýše o polovinu.
+* **Proveďte nikoli prostřednictvím oddílu** – na jiné extreme, vytváření oddílů u sloupce s jedinečnou hodnotu (například ID uživatele) způsobí, že více oddílů. V oddílu způsobí, že mnoho přízvuk na namenode clusteru jako má zpracovat velký počet adresářů.
+* **Vyhněte se data zkosení** -vyberte klíč rozdělení dobře tak, aby všechny oddíly jsou i velikost. Příklad rozdělení do oddílů na *stavu* může způsobit, že počet záznamů v části kalifornské být téměř 30 x u Vermont kvůli rozdílu ve naplnění.
 
-toocreate tabulku oddílů použijte hello *rozdělena na oddíly pomocí* klauzule:
+Chcete-li vytvořit tabulku oddílu, použijte *rozdělena na oddíly pomocí* klauzule:
 
     CREATE TABLE lineitem_part
         (L_ORDERKEY INT, L_PARTKEY INT, L_SUPPKEY INT,L_LINENUMBER INT,
@@ -88,9 +88,9 @@ toocreate tabulku oddílů použijte hello *rozdělena na oddíly pomocí* klauz
     ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
     STORED AS TEXTFILE;
 
-Po vytvoření hello dělenou tabulku můžete buď vytvořit statické dělení nebo dynamické rozdělení.
+Po vytvoření oddílů tabulky, můžete buď vytvořit statické dělení nebo dynamické rozdělení.
 
-* **Statické dělení** znamená, že máte již horizontálně dělená data v hello příslušným adresáře a můžete požádat Hive oddíly ručně podle umístění adresáře hello. Následující fragment kódu Hello je příklad.
+* **Statické dělení** znamená, že máte již horizontálně dělená data v adresáři odpovídající a můžete požádat Hive oddíly ručně v závislosti na umístění adresáře. Následující fragment kódu je příklad.
   
         INSERT OVERWRITE TABLE lineitem_part
         PARTITION (L_SHIPDATE = ‘5/23/1996 12:00:00 AM’)
@@ -99,7 +99,7 @@ Po vytvoření hello dělenou tabulku můžete buď vytvořit statické dělení
   
         ALTER TABLE lineitem_part ADD PARTITION (L_SHIPDATE = ‘5/23/1996 12:00:00 AM’))
         LOCATION ‘wasb://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
-* **Dynamické vytváření oddílů** znamená, že oddíly toocreate Hive automaticky za vás. Vzhledem k tomu, že jsme vytvořili již hello vytváření oddílů tabulky z hello pracovní tabulky, všechny potřebujeme toodo je tabulka toohello rozdělena na oddíly vložení dat:
+* **Dynamické vytváření oddílů** znamená, že Hive, aby pro vás automaticky vytvořil oddíly. Vzhledem k tomu, že jsme vytvořili již rozdělení tabulky z pracovní tabulky, je potřeba udělat je vložit data do oddílů tabulky:
   
         SET hive.exec.dynamic.partition = true;
         SET hive.exec.dynamic.partition.mode = nonstrict;
@@ -112,21 +112,21 @@ Po vytvoření hello dělenou tabulku můžete buď vytvořit statické dělení
 
 Další podrobnosti najdete v tématu [rozdělena na oddíly tabulky](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-PartitionedTables).
 
-## <a name="use-hello-orcfile-format"></a>Použijte formát ORCFile hello
+## <a name="use-the-orcfile-format"></a>Použijte formát ORCFile
 Hive podporuje jiné formáty souborů. Například:
 
-* **Text**: Toto je výchozí formát souboru hello a funguje s většinu scénářů
+* **Text**: Toto je výchozí formát souboru a spolupracuje s většinu scénářů
 * **Avro**: funguje dobře pro scénáře interoperability
 * **ORC/Parquet**: nejvhodnější pro výkon
 
-Formát ORC (optimalizované řádek sloupcovém) je vysoce efektivní způsob toostore Hive data. Porovnání tooother formátů, ORC má hello následující výhody:
+Formát ORC (optimalizované řádek sloupcovém) je vysoce efektivní způsob, jak ukládat Hive data. Porovnání s jinými formáty, ORC má následující výhody:
 
 * Podpora pro komplexní typy, včetně data a času a částečně strukturovaných a komplexní typy
-* až too70 % komprese
+* až 70 % komprese
 * indexy každých 10 000 řádky, které povolit přeskočení řádků
 * významné pokles v běhu provádění
 
-Formát ORC tooenable, nejprve vytvoříte tabulku s klauzulí hello *uložené jako ORC*:
+Pokud chcete povolit ORC formátu, nejprve vytvoříte tabulku s klauzulí *uložené jako ORC*:
 
     CREATE TABLE lineitem_orc_part
         (L_ORDERKEY INT, L_PARTKEY INT,L_SUPPKEY INT, L_LINENUMBER INT,
@@ -137,7 +137,7 @@ Formát ORC tooenable, nejprve vytvoříte tabulku s klauzulí hello *uložené 
     PARTITIONED BY(L_SHIPDATE STRING)
     STORED AS ORC;
 
-V dalším kroku vložení dat toohello ORC tabulky z hello pracovní tabulky. Například:
+V dalším kroku vkládání dat do tabulky ORC z pracovní tabulky. Například:
 
     INSERT INTO TABLE lineitem_orc
     SELECT L_ORDERKEY as L_ORDERKEY, 
@@ -158,13 +158,13 @@ V dalším kroku vložení dat toohello ORC tabulky z hello pracovní tabulky. N
            L_COMMENT as L_COMMENT
     FROM lineitem;
 
-Si můžete přečíst informace o formátu ORC hello [zde](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC).
+Další informace o formátu ORC [zde](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC).
 
 ## <a name="vectorization"></a>Vectorization
 
-Vectorization umožňuje Hive tooprocess dávky 1024 řádků společně, namísto zpracování jeden řádek v čase. Znamená to, že jednoduché operace jsou rychlejší provést, protože menší interní kód potřebuje toorun.
+Vectorization umožňuje Hive ke zpracování dávku řádků 1024 společně místo zpracování jeden řádek v čase. Znamená to, že jednoduché operace jsou rychlejší provést, protože menší interní kód je potřeba spustit.
 
-tooenable vectorization předpony dotaz Hive s hello následující nastavení:
+Chcete-li povolit předpony vectorization dotaz Hive s následujícím nastavením:
 
     set hive.vectorized.execution.enabled = true;
 
@@ -173,18 +173,18 @@ Další informace najdete v tématu [Vectorized provádění dotazu](https://cwi
 ## <a name="other-optimization-methods"></a>Ostatní metody optimalizace
 Existují další metody optimalizace, které můžete zvážit, například:
 
-* **Hive bucketing:** technika, který umožňuje toocluster nebo segment velkého objemu dat výkonu dotazů toooptimize.
-* **Připojení k optimalizaci:** optimalizace spouštění dotazů Hive na plánování tooimprove hello efektivitu spojení a snížit hello potřebu pomocné parametry uživatele. Další informace najdete v tématu [připojení optimalizace](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization).
+* **Hive bucketing:** technika, který umožňuje clusteru nebo segmentovat velké nastaví dat za účelem optimalizace výkonu dotazů.
+* **Připojení k optimalizaci:** optimalizace spouštění dotazů Hive na plánování ke zlepšení efektivity spojení a snížit nutnost pomocné parametry uživatele. Další informace najdete v tématu [připojení optimalizace](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization).
 * **Zvýšit přechodky**.
 
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jste se naučili několik běžné metody optimalizace dotazů Hive. toolearn více, najdete v části hello následující články:
+V tomto článku jste se naučili několik běžné metody optimalizace dotazů Hive. Další informace naleznete v následujících článcích:
 
 * [Používání Apache Hive v HDInsight](hdinsight-use-hive.md)
 * [Analýza dat zpoždění letu pomocí Hive v HDInsight](hdinsight-analyze-flight-delay-data.md)
 * [Analýza dat Twitteru pomocí Hive v HDInsight](hdinsight-analyze-twitter-data.md)
-* [Analýza dat snímačů pomocí hello Hive dotaz konzoly systému Hadoop v HDInsight](hdinsight-hive-analyze-sensor-data.md)
-* [Použijte Hive s HDInsight tooanalyze protokoly z webů](hdinsight-hive-analyze-website-log.md)
+* [Analýza dat snímačů v konzole dotaz Hive na Hadoop v HDInsight](hdinsight-hive-analyze-sensor-data.md)
+* [Použijte Hive s HDInsight k analýze protokolů z webů](hdinsight-hive-analyze-website-log.md)
 
 [image-hdi-optimize-hive-scaleout_1]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_1.png
 [image-hdi-optimize-hive-scaleout_2]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_2.png

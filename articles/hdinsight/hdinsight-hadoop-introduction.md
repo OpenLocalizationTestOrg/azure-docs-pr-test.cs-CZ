@@ -1,7 +1,7 @@
 ---
-title: "aaaWhat jsou HDInsight, zásobníku technologie hello Hadoop a clusterů? – Azure | Dokumentace Microsoftu"
-description: "Zásobníku Úvod tooHDInsight a hello Hadoop technologie a součástí, včetně Spark, Kafka, Hive, HBase pro analýzu velkých objemů dat."
-keywords: "Azure hadoop, hadoop azure, úvod hadoop, úvod hadoop, technologie zásobníku hadoop, toohadoop úvod, úvod toohadoop, co je cluster hadoop, co je hadoop cluster, co je hadoop používá pro"
+title: "Co jsou HDInsight, technologie Hadoop a clustery? – Azure | Dokumentace Microsoftu"
+description: "Úvod do HDInsight, technologie Hadoop a jejích komponent včetně systémů Spark, Kafka, Hive a HBase pro analýzu velkých objemů dat."
+keywords: "azure hadoop, hadoop azure, hadoop úvod, úvod hadoop, technologie hadoop, úvod do technologie hadoop, úvod k technologii hadoop, co je cluster hadoop, co je hadoop cluster, k čemu slouží hadoop"
 services: hdinsight
 documentationcenter: 
 author: cjgronlund
@@ -16,27 +16,27 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/20/2017
 ms.author: cgronlun
-ms.openlocfilehash: 0aed3d1a6cf3c0cdc3b036cfa4865a2e0b58e2c3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: e5ed09ddb1556e6c76813e71bcb31cf4f792b616
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="introduction-tooazure-hdinsight-hello-hadoop-technology-stack-and-hadoop-clusters"></a>Úvod tooAzure HDInsight, zásobníku technologie hello Hadoop a clustery systému Hadoop
- Tento článek obsahuje úvod tooAzure HDInsight, cloudové distribuční hello Hadoop technologie zásobníku. Také se v něm dozvíte, co je cluster Hadoop a kdy ho můžete použít. 
+# <a name="introduction-to-azure-hdinsight-the-hadoop-technology-stack-and-hadoop-clusters"></a>Úvod do Azure HDInsight, technologie a clusterů Hadoop
+ Tento článek obsahuje úvod do Azure HDInsight, cloudové distribuce založené na technologii Hadoop. Také se v něm dozvíte, co je cluster Hadoop a kdy ho můžete použít. 
 
-## <a name="what-is-hdinsight-and-hello-hadoop-technology-stack"></a>Co je HDInsight a hello zásobníku technologie Hadoop? 
-Azure HDInsight je distribuce cloudu hello Hadoop součásti ze hello [Hortonworks Data Platform (HDP)](https://hortonworks.com/products/data-center/hdp/). [Apache Hadoop](http://hadoop.apache.org/) byla hello původní open-source rozhraní pro distribuované zpracování a analýzu velkých datových sad v clusterech počítačů. 
+## <a name="what-is-hdinsight-and-the-hadoop-technology-stack"></a>Co je HDInsight a technologie Hadoop? 
+Azure HDInsight je cloudová distribuce komponent Hadoop z platformy [Hortonworks Data Platform (HDP)](https://hortonworks.com/products/data-center/hdp/). Původní open source architekturou pro distribuované zpracování a analýzu velkých datových sad v počítačových clusterech byl systém [Apache Hadoop](http://hadoop.apache.org/). 
 
 
-zásobníku technologie Hadoop Hello zahrnuje související softwaru a nástrojů, včetně Apache Hive HBase, Spark, Kafka a mnohé další. toosee dostupné technologie zásobníku komponent systému Hadoop v HDInsight, najdete v části [součásti a verze, které jsou k dispozici s HDInsight][component-versioning]. tooread Další informace o Hadoop v HDInsight, najdete v části hello [stránky funkce Azure pro HDInsight](https://azure.microsoft.com/services/hdinsight/).
+Součástí technologie Hadoop je potřebný software a nástroje, jako je Apache Hive, HBase, Spark, Kafka a řada dalších. Komponenty technologie Hadoop dostupné ve službě HDInsight najdete v tématu [Dostupné komponenty a verze ve službě HDInsight][component-versioning]. Další informace o platformě Hadoop v prostředí HDInsight najdete v tématu [Funkce Azure pro HDInsight](https://azure.microsoft.com/services/hdinsight/).
 
 ## <a name="what-is-a-hadoop-cluster-and-when-do-you-use-it"></a>Co je cluster Hadoop a kdy se používá?
 *Hadoop* je také typ clusteru, který obsahuje:
 
 * YARN pro plánování úloh a správu prostředků
 * MapReduce pro paralelní zpracování
-* systém souborů Hadoop distributed Hello (HDFS)
+* Distribuovaný souborový systém Hadoop (HDFS)
   
 Clustery Hadoop se nejčastěji používají pro dávkové zpracování uložených dat. Jiné druhy clusterů ve službě HDInsight mají další funkce: Spark je stále oblíbenější díky rychlejšímu zpracování v paměti. Podrobnosti najdete v tématu [Typy clusterů ve službě HDInsight](#overview).
 
@@ -47,42 +47,42 @@ Velké objemy dat označují všechny rozsáhlé soubory s digitálními informa
 * Údaje o aktivitě zákazníka na webové stránce
 * Informační kanál sítě Twitter
 
-Velké objemy dat se shromažďují v narůstajícím množství, vyšší rychlostí a ve větší pestrosti formátů. Může být historických (tj. uložené) nebo v reálném čase (tj. streamovaných ze zdroje hello). 
+Velké objemy dat se shromažďují v narůstajícím množství, vyšší rychlostí a ve větší pestrosti formátů. Může se to týkat historických dat (tj. uložených) nebo dat v reálném čase (tj. streamovaných ze zdroje). 
 
 ## <a name="overview"></a>Typy clusterů ve službě HDInsight
 HDInsight zahrnuje specifické typy clusterů a možnosti přizpůsobení clusterů, jako je například přidávání komponent, nástrojů a jazyků.
 
-### <a name="spark-kafka-interactive-hive-hbase-customized-and-other-cluster-types"></a>Spark, Kafka, interaktivní Hive, HBase, přizpůsobené clustery a další typy clusterů
-HDInsight nabízí hello následující typy clusteru:
+### <a name="spark-kafka-interactive-query-hbase-customized-and-other-cluster-types"></a>Spark, Kafka, Interactive Query, HBase, přizpůsobené clustery a další typy clusterů
+HDInsight nabízí následující typy clusteru:
 
-* **[Apache Hadoop](https://wiki.apache.org/hadoop)**: používá [HDFS](#hdfs), [YARN](#yarn) správy prostředků a jednoduchý [MapReduce](#mapreduce) programovací model tooprocess a Analýza dat dávky paralelně.
-* **[Apache Spark](http://spark.apache.org/)**: rozhraní paralelní zpracování, které podporuje zpracování v paměti tooboost hello výkon aplikací pro analýzu velkých objemů dat, Spark pro SQL, streamování dat a strojové učení. Přečtěte si téma [Co je Apache Spark v prostředí HDInsight?](hdinsight-apache-spark-overview.md)
+* **[Apache Hadoop](https://wiki.apache.org/hadoop):** Používá [HDFS](#hdfs), správu prostředků [YARN](#yarn) a jednoduchý programovací model [MapReduce](#mapreduce) pro paralelní zpracování a analýzu dat dávek.
+* **[Apache Spark](http://spark.apache.org/)**: rozhraní pro paralelní zpracování, které podporuje  zpracování v paměti pro zvýšení výkonu aplikací pro analýzu velkých objemů dat, úlohy Spark pro SQL, streamování dat a strojové učení. Přečtěte si téma [Co je Apache Spark v prostředí HDInsight?](hdinsight-apache-spark-overview.md)
 * **[Apache HBase](http://hbase.apache.org/)**: Databáze NoSQL postavená na systému Hadoop, která umožňuje náhodný přístup a zajišťuje velkou konzistenci pro velké objemy nestrukturovaných a částečně strukturovaných dat – potenciálně až miliardy řádků krát miliony sloupců. Přečtěte si téma [Co je HBase v HDInsight?](hdinsight-hbase-overview.md)
-* **[Microsoft R Server](https://msdn.microsoft.com/microsoft-r/rserver)**: Server pro hostování a správu paralelních, distribuovaných procesů R. Poskytne datových vědců statistikami a programátory v jazyce R tooscalable přístup na vyžádání, distribuované metody analýz v HDInsight. Viz [Přehled R Serveru ve službě HDInsight](hdinsight-hadoop-r-server-overview.md).
+* **[Microsoft R Server](https://msdn.microsoft.com/microsoft-r/rserver)**: Server pro hostování a správu paralelních, distribuovaných procesů R. Poskytuje datovým vědcům, statistikům a programátorům v R přístup ke škálovatelným, distribuovaným analytickým metodám služby HDInsight na vyžádání. Viz [Přehled R Serveru ve službě HDInsight](hdinsight-hadoop-r-server-overview.md).
 * **[Apache Storm](https://storm.incubator.apache.org/)**: distribuovaný výpočetní systém v reálném čase pro rychlé zpracování velkých streamů dat. Storm je poskytován jako spravovaný cluster v prostředí HDInsight. Viz [Analýza dat snímačů v reálném čase pomocí nástrojů Storm a Hadoop](hdinsight-storm-sensor-data-analysis.md).
-* **[Apache Interactive Hive ve verzi Preview (také označované LLAP (Live Long and Process))](https://cwiki.apache.org/confluence/display/Hive/LLAP)**: Ukládání do mezipaměti pro interaktivní a rychlejší dotazy Hivu. Viz [Použití Interactive Hivu ve službě HDInsight](hdinsight-hadoop-use-interactive-hive.md).
-* **[Apache Kafka](https://kafka.apache.org/)**: Open source platforma sloužící k vytváření aplikací a kanálů pro streamovaná data. Kafka také poskytuje funkce fronta zpráv, které vám umožní toopublish a přihlášení k odběru toodata datových proudů. V tématu [Úvod tooApache Kafka v HDInsight](hdinsight-apache-kafka-introduction.md).
+* **[Apache Interactive Query ve verzi Preview (také označované LLAP (Live Long and Process)):](https://cwiki.apache.org/confluence/display/Hive/LLAP)** Ukládání do mezipaměti pro interaktivnější a rychlejší dotazy Hive. Viz [Použití Interactive Query ve službě HDInsight](hdinsight-hadoop-use-interactive-hive.md).
+* **[Apache Kafka](https://kafka.apache.org/)**: Open source platforma sloužící k vytváření aplikací a kanálů pro streamovaná data. Kafka také poskytuje funkce propojující fronty zpráv, pomocí kterých můžete publikovat datové streamy a přihlašovat se k jejich odběru. Viz [Úvod k Apache Kafka ve službě HDInsight](hdinsight-apache-kafka-introduction.md).
 
-Můžete taky nakonfigurovat pomocí hello následující metody:
-* **[Připojené k doméně clustery preview](hdinsight-domain-joined-introduction.md)**: cluster připojený k doméně služby Active Directory tooan tak, aby mohl řízení přístupu a poskytovat zásad správného řízení pro data.
+Clustery můžete konfigurovat také pomocí následujících metod:
+* **[Clustery připojené k doméně ve verzi Preview](hdinsight-domain-joined-introduction.md)**: Cluster připojený k doméně služby Active Directory umožňující řízení přístupu a poskytující zásady správného řízení pro data.
 * **[Vlastní clustery s akcemi skriptů](hdinsight-hadoop-customize-cluster-linux.md)**: Clustery se skripty, které se spouštějí během zřizování a instalují další komponenty.
 
 ### <a name="example-cluster-customization-scripts"></a>Příklady skriptů pro přizpůsobení clusterů
-Akce skriptů jsou skripty Bash v systému Linux, na kterých běží při zřizování clusteru a který lze použít tooinstall další součásti v clusteru hello. 
+Akce skriptů jsou skripty Bash v systému Linux, které se spouštějí během zřizování clusteru a lze je použít k instalaci dalších komponent clusteru. 
 
-Hello následující příklady skriptů poskytovaných týmem HDInsight hello:
+Následují příklady skriptů poskytovaných týmem HDInsight:
 
-* **[HUE](hdinsight-hadoop-hue-linux.md)**: Sada webových aplikací používaných toointeract s clusterem. Pouze clustery v Linuxu.
-* **[Giraph](hdinsight-hadoop-giraph-install-linux.md)**: grafu zpracování toomodel vztahů mezi věcmi nebo osobami.
+* **[Hue](hdinsight-hadoop-hue-linux.md)**: Sada webových aplikací používaných pro interakci s clusterem. Pouze clustery v Linuxu.
+* **[Giraph](hdinsight-hadoop-giraph-install-linux.md)**: Zpracování grafů pro modelování vztahů mezi věcmi nebo osobami.
 * **[Solr](hdinsight-hadoop-solr-install-linux.md)**: Vyhledávací podniková platforma, která umožňuje fulltextové vyhledávání dat.
 
 Informace o vývoji vlastních akcí skriptů naleznete v tématu [Vývoj akcí skriptů v prostředí HDInsight](hdinsight-hadoop-script-actions-linux.md).
 
 ## <a name="components-and-utilities-on-hdinsight-clusters"></a>Komponenty a nástroje v clusterech HDInsight
-Hello následující součásti a nástroje jsou zahrnuty v clusterech HDInsight:
+Clustery prostředí HDInsight obsahují následující součásti a nástroje:
 
 * **[Ambari](#ambari)**: zřizování, správa, monitorování a nástroje clusterů.
-* **[Avro](#avro)**  (knihovna Microsoft .NET pro Avro): serializaci dat pro prostředí Microsoft .NET hello. 
+* **[Avro](#avro)** (knihovna Microsoft .NET pro Avro): serializaci dat pro prostředí Microsoft .NET. 
 * **[Hive &amp; HCatalog](#hive)**: Dotazování typu strukturovaného dotazovacího jazyka (SQL) a vrstva správy tabulek a ukládání.
 * **[Mahout](#mahout)**: pro škálovatelné aplikace strojového učení.
 * **[MapReduce](#mapreduce)**: starší verze rozhraní pro distribuované zpracování a správu prostředků systému Hadoop. Viz [YARN](#yarn).
@@ -90,59 +90,59 @@ Hello následující součásti a nástroje jsou zahrnuty v clusterech HDInsight
 * **[Phoenix](#phoenix)**: vrstva relační databáze nad HBase.
 * **[Pig](#pig)**: jednodušší skriptování pro transformace prostředí MapReduce.
 * **[Sqoop](#sqoop)**: import a export dat.
-* **[Tez](#tez)**: efektivně umožňuje toorun datově náročných procesů ve velkém měřítku.
-* **[YARN](#yarn)**: Správa prostředků, který je součástí základní knihovny hello Hadoop.
+* **[Tez](#tez)**: umožňuje efektivní provádění datově náročných procesů ve velkém rozsahu.
+* **[YARN](#yarn)**: Správa prostředků, která je součástí hlavní knihovny systému Hadoop.
 * **[ZooKeeper](#zookeeper)**: koordinace procesů v distribuovaných systémech.
 
 > [!NOTE]
-> Informace o konkrétní součásti hello a informace o verzi najdete v tématu [Hadoop součásti a verzí v HDInsight][component-versioning]
+> Informace o konkrétních komponentách a informace o verzi najdete v tématu [Komponenty a verze systému Hadoop v prostředí HDInsight][component-versioning].
 >
 >
 
 ### <a name="ambari"></a>Ambari
-Apache Ambari slouží k zřizování, správě a monitoringu clusterů systému Apache Hadoop. Obsahuje intuitivní nástrojů pro operátory a výkonnou sadu rozhraní API, které překonávají složitost hello systému Hadoop a zjednodušují operace hello s clustery. Clustery HDInsight v Linuxu poskytují hello webovému uživatelskému rozhraní Ambari i hello Ambari REST API. Zobrazení Ambari v clusterech prostředí HDInsight umožňují funkce zásuvných uživatelských rozhraní.
+Apache Ambari slouží k zřizování, správě a monitoringu clusterů systému Apache Hadoop. Obsahuje intuitivní sadu nástrojů pro operátory a výkonnou sadu rozhraní API, které překonávají složitost systému Hadoop a zjednodušují operace s clustery. Clustery HDInsight v Linuxu nabízí webové uživatelské rozhraní Ambari i rozhraní Ambari REST API. Zobrazení Ambari v clusterech prostředí HDInsight umožňují funkce zásuvných uživatelských rozhraní.
 Viz [Správa clusterů HDInsight pomocí zobrazení Ambari](hdinsight-hadoop-manage-ambari.md) a <a target="_blank" href="https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md">Rozhraní API v zobrazení Apache Ambari – referenční informace</a>.
 
 ### <a name="avro"></a>Avro (knihovna rozhraní Microsoft .NET pro Avro)
-Hello knihovně Microsoft .NET pro Avro implementuje hello Apache Avro kompaktní binární formát pro předávání dat pro serializaci prostředí Microsoft .NET hello. Definuje jazykově nezávislé schéma, aby data sériovaná v jednom jazyce bylo možné číst v jiném jazyce. Podrobné informace o formátu hello naleznete v hello < target = _ "blank" href = "http://avro.apache.org/docs/current/spec.html" > Apache Avro Specification</a>. Formát Avro soubory podporuje hello Hello distribuované programovací model MapReduce: soubory jsou "rozdělitelné", což znamená, můžete vyhledat libovolný bod v souboru a začít číst od určitého bloku. toofind jak, najdete v části [serializace dat pomocí hello knihovny Microsoft .NET pro Avro](hdinsight-dotnet-avro-serialization.md). Toocome podpora clusteru se systémem Linux.
+V knihovně Microsoft .NET pro Avro implementuje Apache Avro kompaktní binární formát pro předávání dat pro serializaci prostředí Microsoft .NET. Definuje jazykově nezávislé schéma, aby data sériovaná v jednom jazyce bylo možné číst v jiném jazyce. Podrobné informace o formátu lze nalézt v odkazu <a target=_"blank" href="http://avro.apache.org/docs/current/spec.html">Apache Avro Specification</a>. Formát souborů Avro podporuje distribuovaný programovací model MapReduce: Soubory jsou „dělitelné“, což znamená, že v nich můžete vyhledat libovolný bod a začít se čtením dat od konkrétního bloku. Postup naleznete v tématu [Serializace dat pomocí knihovny Microsoft .NET pro Avro](hdinsight-dotnet-avro-serialization.md). Do budoucna se plánuje podpora clusterů založených na Linuxu.
 
 ### <a name="hdfs"></a>HDFS
-Hadoop Distributed File System (HDFS) je systém souborů, který se YARN a MapReduce, je základní hello technologie Hadoop. To je hello standardní systém souborů pro clustery Hadoop v HDInsight. Přečtěte si téma [Dotazování dat z úložiště kompatibilního se systémem HDFS](hdinsight-hadoop-use-blob-storage.md).
+Distribuovaný souborů systém Hadoop (HDFS) je spolu s nástroji YARN a MapReduce základem technologie Hadoop. Jde o standardní systém souborů pro clustery Hadoop v HDInsight. Přečtěte si téma [Dotazování dat z úložiště kompatibilního se systémem HDFS](hdinsight-hadoop-use-blob-storage.md).
 
 ### <a name="hive"></a>Hive &amp; HCatalog
-<a target="_blank" href="http://hive.apache.org/">Apache Hive</a> datového skladu postavená na Hadoop, který vám umožní tooquery softwaru a správu rozsáhlých datových sad v distribuovaném úložišti pomocí jazyka SQL jako nazývaného HiveQL. Hive je stejně jako Pig abstrakce vycházející z nástroje MapReduce a překládá dotazy do řady úloh MapReduce. Hive je blíže systému správy relačních databází tooa než Pig a používá s více strukturovanými daty. Pro Nestrukturovaná data Pig je lepší volbou hello. Viz [Použití nástroje Hive se systémem Hadoop v prostředí HDInsight](hdinsight-use-hive.md).
+<a target="_blank" href="http://hive.apache.org/">Apache Hive</a> je software datového skladu postavený na platformě Hadoop, který umožňuje dotazování a správu rozsáhlých datových sad v distribuovaném úložišti pomocí jazyka typu SQL nazývaného HiveQL. Hive je stejně jako Pig abstrakce vycházející z nástroje MapReduce a překládá dotazy do řady úloh MapReduce. Hive má blíže k systému pro správu relačních databází a používá se u strukturovanějších dat. Pro nestrukturovaná data je vhodnější Pig. Viz [Použití nástroje Hive se systémem Hadoop v prostředí HDInsight](hdinsight-use-hive.md).
 
 <a target="_blank" href="https://cwiki.apache.org/confluence/display/Hive/HCatalog/">Apache HCatalog</a> je vrstva správy úložiště a tabulek pro systém Hadoop, která poskytuje relační zobrazení dat. V HCatalogu můžete číst a zapisovat soubory v libovolném formátu, který je použitelný pro Hive SerDe (serializátor-deserializátor).
 
 ### <a name="mahout"></a>Mahout
-<a target="_blank" href="https://mahout.apache.org/">Apache Mahout</a> představuje knihovnu algoritmů strojového učení, které se dají spouštět v systému Hadoop. S využitím principů statistiky učí aplikace strojového učení systémy toolearn z dat a toouse po výstupy toodetermine budoucího chování. Viz [Generování doporučení pomocí nástroje Mahout v systému Hadoop](hdinsight-mahout.md).
+<a target="_blank" href="https://mahout.apache.org/">Apache Mahout</a> představuje knihovnu algoritmů strojového učení, které se dají spouštět v systému Hadoop. S využitím principů statistiky učí aplikace strojového učení systémy učit se z dat a využívat dřívější výstupy ke zjištění budoucího chování. Viz [Generování doporučení pomocí nástroje Mahout v systému Hadoop](hdinsight-mahout.md).
 
 ### <a name="mapreduce"></a>MapReduce
-MapReduce je hello starší verze softwarového rozhraní pro Hadoop pro psaní aplikací toobatch zpracování velkých sad paralelně. Úloha MapReduce rozdělí rozsáhlé datové sady a uspořádá hello data do páry klíč hodnota pro zpracování. Úlohy MapReduce je možné spustit na technologii [YARN](#yarn). V tématu <a target="_blank" href="http://wiki.apache.org/hadoop/MapReduce">MapReduce</a> v hello Hadoop Wiki.
+MapReduce je starší verze softwarového rozhraní pro Hadoop, určeného k psaní aplikací pro paralelní dávkové zpracování velkých sad dat. Úloha MapReduce rozdělí rozsáhlé datové sady a uspořádá data pro zpracování do párů hodnot klíčů. Úlohy MapReduce je možné spustit na technologii [YARN](#yarn). Další informace najdete na wikiwebu systému Hadoop v tématu <a target="_blank" href="http://wiki.apache.org/hadoop/MapReduce">MapReduce</a>.
 
 ### <a name="oozie"></a>Oozie
-<a target="_blank" href="http://oozie.apache.org/">Apache Oozie</a> je systém koordinace pracovních postupů, který spravuje úlohy platformy Hadoop. Je integrován s hello zásobníku Hadoop a podporuje úlohy systému Hadoop pro MapReduce, Pig, Hive a Sqoop. Lze také použít tooschedule systém tooa konkrétní úlohy, jako jsou programy v jazyce Java nebo skripty prostředí. Viz [Použití Oozie se systémem Hadoop](hdinsight-use-oozie-linux-mac.md).
+<a target="_blank" href="http://oozie.apache.org/">Apache Oozie</a> je systém koordinace pracovních postupů, který spravuje úlohy platformy Hadoop. Je integrován do zásobníku Hadoop a podporuje úlohy systému Hadoop pro MapReduce, Pig, Hive a Sqoop. Lze jej také použít při plánování úloh pro konkrétní systém, jako jsou programy v jazyce Java nebo skripty prostředí. Viz [Použití Oozie se systémem Hadoop](hdinsight-use-oozie-linux-mac.md).
 
 ### <a name="phoenix"></a>Phoenix
-<a  target="_blank" href="http://phoenix.apache.org/">Apache Phoenix</a> je vrstva relační databáze nad HBase. Phoenix zahrnuje ovladač JDBC, který vám umožní tooquery a správu tabulek SQL přímo. Phoenix přeloží dotazy a další příkazy do nativních volání rozhraní API typu NoSQL, místo použití prostředí MapReduce, což umožní rychlejší aplikace nad uloženými daty NoSQL. Viz [Použití nástrojů Apache Phoenix a SQuirreL s clustery HBase](hdinsight-hbase-phoenix-squirrel.md).
+<a  target="_blank" href="http://phoenix.apache.org/">Apache Phoenix</a> je vrstva relační databáze nad HBase. Phoenix zahrnuje ovladač JDBC, který umožňuje přímé dotazování a správu tabulek SQL. Phoenix přeloží dotazy a další příkazy do nativních volání rozhraní API typu NoSQL, místo použití prostředí MapReduce, což umožní rychlejší aplikace nad uloženými daty NoSQL. Viz [Použití nástrojů Apache Phoenix a SQuirreL s clustery HBase](hdinsight-hbase-phoenix-squirrel.md).
 
 ### <a name="pig"></a>Pig
-<a  target="_blank" href="http://pig.apache.org/">Apache Pig</a> je vysokoúrovňová platforma, která vám umožní tooperform komplexní transformace MapReduce na rozsáhlých datových sad pomocí jednoduchého skriptovacího jazyka nazvaného Pig Latin. Pig překládá skripty hello Pig Latin, budete spustit v systému Hadoop. Můžete vytvořit uživatelem definované funkce (UDF) tooextend Pig Latin. Viz [Použití Pig se systémem Hadoop](hdinsight-use-pig.md).
+<a  target="_blank" href="http://pig.apache.org/">Apache Pig</a> je vysokoúrovňová platforma, která umožňuje provádět komplexní transformace MapReduce na rozsáhlých datových sadách pomocí jednoduchého skriptovacího jazyka nazvaného Pig Latin. Pig překládá skripty jazyka Pig Latin, aby je bylo možno spustit v systému Hadoop. Pig Latin můžete rozšířit vytvořením uživatelsky definovaných funkcí (UDF). Viz [Použití Pig se systémem Hadoop](hdinsight-use-pig.md).
 
 ### <a name="sqoop"></a>Sqoop
 <a  target="_blank" href="http://sqoop.apache.org/">Apache Sqoop</a> je nástroj pro co nejefektivnější hromadný přenos dat mezi platformou Hadoop a relačními databázemi jako SQL nebo dalšími strukturovanými datovými úložišti. Viz [Použití nástroje Sqoop se systémem Hadoop](hdinsight-use-sqoop.md).
 
 ### <a name="tez"></a>Tez
-<a  target="_blank" href="http://tez.apache.org/">Apache Tez</a> je aplikační rozhraní založené na technologii Hadoop YARN, které vytváří komplexní acyklické grafy obecného zpracování dat. Je pružnější a výkonnější nástupce toohello MapReduce rozhraní, které umožňuje datově náročných procesů, například Hive, toorun efektivněji ve velkém měřítku. Viz [„Použití rozhraní Apache Tez pro zlepšení výkonu“ v tématu Použití Hive a HiveQL](hdinsight-use-hive.md#usetez).
+<a  target="_blank" href="http://tez.apache.org/">Apache Tez</a> je aplikační rozhraní založené na technologii Hadoop YARN, které vytváří komplexní acyklické grafy obecného zpracování dat. Je to pružnější a výkonnější nástupce rozhraní MapReduce, který umožňuje efektivní spouštění datově náročných procesů, například Hive, ve velkém rozsahu. Viz [„Použití rozhraní Apache Tez pro zlepšení výkonu“ v tématu Použití Hive a HiveQL](hdinsight-use-hive.md#usetez).
 
 ### <a name="yarn"></a>YARN
-Apache YARN je nová generace prostředí MapReduce (MapReduce 2.0 nebo MRv2) hello a podporuje scénáře zpracování dat nad rámec dávkového zpracování s větší škálovatelností a zpracováním v reálném čase prostředí MapReduce. YARN poskytuje správu prostředků a distribuované aplikační rozhraní. Úlohy MapReduce je možné spustit na technologii YARN. Přečtěte si téma <a target="_blank" href="http://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html">Apache Hadoop NextGen MapReduce (YARN)</a>.
+Apache YARN je nová generace prostředí MapReduce (MapReduce 2.0 nebo MRv2), která podporuje scénáře zpracování dat nad rámec dávkového zpracování prostředí MapReduce s větší škálovatelností a zpracováním v reálném čase. YARN poskytuje správu prostředků a distribuované aplikační rozhraní. Úlohy MapReduce je možné spustit na technologii YARN. Přečtěte si téma <a target="_blank" href="http://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html">Apache Hadoop NextGen MapReduce (YARN)</a>.
 
 ### <a name="zookeeper"></a>ZooKeeper
-<a  target="_blank" href="http://zookeeper.apache.org/">Apache ZooKeeper</a> koordinuje procesy ve velkých distribuovaných systémech pomocí sdíleného hierarchického oboru názvů datových registrů (znodes). Znodes obsahují malé množství meta informace potřebné toocoordinate procesů: stav, umístění, konfigurace a tak dále. Podívejte se na příklad uzlu [ZooKeeper s clusterem HBase a vrstvou Apache Phoenix](hdinsight-hbase-phoenix-squirrel-linux.md). 
+<a  target="_blank" href="http://zookeeper.apache.org/">Apache ZooKeeper</a> koordinuje procesy ve velkých distribuovaných systémech pomocí sdíleného hierarchického oboru názvů datových registrů (znodes). Znodes obsahují malé množství metainformací potřebných ke koordinaci procesů: stav, umístění, konfigurace atd. Podívejte se na příklad uzlu [ZooKeeper s clusterem HBase a vrstvou Apache Phoenix](hdinsight-hbase-phoenix-squirrel-linux.md). 
 
 ## <a name="programming-languages-on-hdinsight"></a>Programovací jazyky v prostředí HDInsight
-Clustery – Spark, HBase, Kafka, Hadoop a další – podporují řadu programovacích jazyků, ale některé nejsou ve výchozím nastavení nainstalované. Pro knihovny, moduly nebo balíčky nejsou nainstalované ve výchozím nastavení [použít skript akce tooinstall hello součást](hdinsight-hadoop-script-actions-linux.md). 
+Clustery – Spark, HBase, Kafka, Hadoop a další – podporují řadu programovacích jazyků, ale některé nejsou ve výchozím nastavení nainstalované. Pro knihovny, moduly nebo balíčky, které nejsou ve výchozím nastavení nainstalovány, [použijte akci skriptu pro instalaci součásti](hdinsight-hadoop-script-actions-linux.md). 
 
 ### <a name="default-programming-language-support"></a>Výchozí podpora programovacích jazyků
 Ve výchozím nastavení podporují clustery prostředí HDInsight tyto jazyky:
@@ -153,7 +153,7 @@ Ve výchozím nastavení podporují clustery prostředí HDInsight tyto jazyky:
 Další jazyky lze nainstalovat pomocí [příkazů skriptů](hdinsight-hadoop-script-actions-linux.md).
 
 ### <a name="java-virtual-machine-jvm-languages"></a>Jazyky Java virtual machine (JVM)
-Řadu jiných jazyků než Java lze spustit na nástroje Java virtual machine (JVM); spuštění některých z těchto jazyků však může vyžadovat další součásti nainstalované v clusteru hello.
+Řadu jiných jazyků než Java je možné spouštět v prostředí Java Virtual Machine (JVM); spuštění některých z těchto jazyků však může vyžadovat další součásti nainstalované v clusteru.
 
 Clustery prostředí HDInsight podporují následující jazyky založené na JVM:
 
@@ -162,20 +162,20 @@ Clustery prostředí HDInsight podporují následující jazyky založené na JV
 * Scala
 
 ### <a name="hadoop-specific-languages"></a>Jazyky pro Hadoop
-Clustery prostředí HDInsight podporují následující jazyky, které jsou zásobníku technologie Hadoop konkrétní toohello hello:
+Clustery HDInsight podporují následující jazyky, které jsou určené konkrétně pro technologii Hadoop:
 
 * Pig Latin pro úlohy Pig
 * HiveQL pro úlohy Hive a SparkSQL
 
 ## <a name="hdinsight-standard-and-hdinsight-premium"></a>HDInsight Standard a HDInsight Premium
-HDInsight nabízí cloud pro velké objemy dat ve dvou kategoriích, Standard a Premium. HDInsight Standard poskytuje cluster v podnikovém měřítku, organizace můžete použít toorun jejich velkých objemů dat pracovního vytížení. HDInsight Premium vychází z funkcí úrovně Standard a poskytuje rozšířené analytické a bezpečnostní možnosti pro cluster prostředí HDInsight. Další informace viz [Azure HDInsight Premium](hdinsight-component-versioning.md#hdinsight-standard-and-hdinsight-premium)
+HDInsight nabízí cloud pro velké objemy dat ve dvou kategoriích, Standard a Premium. HDInsight Standard poskytuje cluster v podnikovém měřítku, který mohou organizace použít ke spouštění úloh s velkými objemy dat. HDInsight Premium vychází z funkcí úrovně Standard a poskytuje rozšířené analytické a bezpečnostní možnosti pro cluster prostředí HDInsight. Další informace viz [Azure HDInsight Premium](hdinsight-component-versioning.md#hdinsight-standard-and-hdinsight-premium)
 
 ## <a name="microsoft-business-intelligence-and-hdinsight"></a>Microsoft business intelligence a HDInsight
-Nástroje známé business intelligence (BI) načíst, analyzovat a generování sestav dat integrovaných v prostředí HDInsight pomocí doplňku Power Query buď hello nebo hello ovladače ODBC Microsoft Hive:
+Známé nástroje business intelligence (BI) načítají, analyzují a vykazují data integrovaná v prostředí HDInsight buď pomocí doplňku Power Query, nebo ovladače Microsoft Hive ODBC Driver:
 
-* [Připojení aplikace Excel tooHadoop doplněk Power Query](hdinsight-connect-excel-power-query.md): Zjistěte, jak hello tooconnect Excel toohello účet úložiště Azure, která ukládá data z clusteru HDInsight pomocí Microsoft Power Query pro Excel. Jsou vyžadovány pracovní stanice Windows. 
-* [Připojení aplikace Excel tooHadoop s hello ovladače ODBC Microsoft Hive](hdinsight-connect-excel-hive-odbc-driver.md): Zjistěte, jak hello tooimport data z prostředí HDInsight pomocí ovladače ODBC Microsoft Hive. Jsou vyžadovány pracovní stanice Windows. 
-* [Cloudová platforma Microsoft](http://www.microsoft.com/server-cloud/solutions/business-intelligence/default.aspx): Přečtěte si informace o službě Power BI pro Office 365, stáhněte si zkušební verzi systému SQL Server hello a nastavte si SharePoint Server 2013 a SQL Server BI.
+* [Připojení aplikace Excel k systému Hadoop pomocí Power Query:](hdinsight-connect-excel-power-query.md) Zjistěte, jak připojit Excel k účtu služby Azure Storage, kde se ukládají data z vašeho clusteru HDInsight, pomocí doplňku Microsoft Power Query pro Excel. Jsou vyžadovány pracovní stanice Windows. 
+* [Připojení aplikace Excel k systému Hadoop pomocí ovladače ODBC Microsoft Hive](hdinsight-connect-excel-hive-odbc-driver.md): Zjistěte, jak importovat data z prostředí HDInsight pomocí ovladače ODBC Microsoft Hive. Jsou vyžadovány pracovní stanice Windows. 
+* [Cloudová platforma Microsoft](http://www.microsoft.com/server-cloud/solutions/business-intelligence/default.aspx): Získejte informace o službě Power BI pro Office 365, stáhněte si zkušební verzi serveru SQL Server a nastavte si SharePoint Server 2013 a SQL Server BI.
 * [SQL Server Analysis Services](http://msdn.microsoft.com/library/hh231701.aspx)
 * [SQL Server Reporting Services](http://msdn.microsoft.com/library/ms159106.aspx)
 
@@ -185,7 +185,7 @@ Nástroje známé business intelligence (BI) načíst, analyzovat a generování
 * [Začínáme se systémem Hadoop v prostředí HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md): Rychlý kurz zřizování clusterů systému Hadoop HDInsight a spuštění ukázkových dotazů nástroje Hive.
 * [Začínáme se Spark v prostředí HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md): Rychlý kurz vytvoření clusteru Spark a spouštění interaktivních dotazů Spark SQL.
 * [Použití R Serveru v prostředí HDInsight](hdinsight-hadoop-r-server-get-started.md): Zahájení práce s R Serverem v prostředí HDInsight Premium.
-* [Zřizování clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md): Zjistěte, jak hello tooprovision clusteru HDInsight Hadoop prostřednictvím portálu Azure, rozhraní příkazového řádku Azure nebo Azure PowerShell.
+* [Zřízení clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md): Naučte se zřizovat clustery Hadoop ve službě HDInsight prostřednictvím webu Azure Portal, prostředí Azure CLI nebo Azure PowerShellu.
 
 
 [component-versioning]: hdinsight-component-versioning.md

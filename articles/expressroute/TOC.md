@@ -13,30 +13,31 @@
 ## [Pracovní postupy](expressroute-workflows.md)
 ## [Požadavky směrování](expressroute-routing.md)
 ## [Požadavky QoS](expressroute-qos.md)
-## [O přesun okruhů z classic tooResource Manager](expressroute-move.md)
+## [Informace o přesunu okruhů z modelu nasazení Classic do Resource Manageru](expressroute-move.md)
 
 # Postup
 ## Vytvoření a změny okruhu
 ### [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
-### [PowerShell](expressroute-howto-circuit-arm.md)
+### [Azure PowerShell](expressroute-howto-circuit-arm.md)
 ### [Azure CLI](howto-circuit-cli.md)
 ## Vytvoření a změny konfigurace partnerského vztahu
 ### [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
-### [PowerShell](expressroute-howto-routing-arm.md)
+### [Azure PowerShell](expressroute-howto-routing-arm.md)
 ### [Azure CLI](howto-routing-cli.md)
-## Propojení virtuální sítě tooan okruh ExpressRoute
+## Propojení virtuální sítě k okruhu ExpressRoute
 ### [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
-### [PowerShell](expressroute-howto-linkvnet-arm.md)
+### [Azure PowerShell](expressroute-howto-linkvnet-arm.md)
 ### [Azure CLI](howto-linkvnet-cli.md)
 ## Konfigurace brány virtuální sítě pro ExpressRoute
 ### [Azure Portal](expressroute-howto-add-gateway-portal-resource-manager.md)
-### [PowerShell](expressroute-howto-add-gateway-resource-manager.md)
+### [Azure PowerShell](expressroute-howto-add-gateway-resource-manager.md)
 ## [Konfigurace společně používaných připojení typu Site-to-Site a ExpressRoute](expressroute-howto-coexist-resource-manager.md)
 ## Konfigurace filtrů směrování pro partnerský vztah Microsoftu
 ### [Azure Portal](how-to-routefilter-portal.md)
-### [PowerShell](how-to-routefilter-powershell.md)
-## [Přesun okruhu z classic tooResource Manager](expressroute-howto-move-arm.md)
-## [Migrace z classic tooResource Manager přidružené virtuální sítě](expressroute-migration-classic-resource-manager.md)
+### [Azure PowerShell](how-to-routefilter-powershell.md)
+### [Azure CLI](how-to-routefilter-cli.md)
+## [Přesun okruhu z modelu nasazení Classic do Resource Manageru](expressroute-howto-move-arm.md)
+## [Migrace přidružených virtuálních sítí z modelu nasazení Classic do Resource Manageru](expressroute-migration-classic-resource-manager.md)
 ## Konfigurace směrovače pro ExpressRoute
 ### [Konfigurace směrovače](expressroute-config-samples-routing.md)
 ### [Ukázky konfigurace směrovače pro překlad adres (NAT)](expressroute-config-samples-nat.md)
@@ -45,7 +46,7 @@
 ### [Osvědčené postupy pro zabezpečení sítě a cloudové služby](../best-practices-network-security.md)
 ### [Optimalizace směrování](expressroute-optimize-routing.md)
 ### [Asymetrické směrování](expressroute-asymmetric-routing.md)
-### [NAT pro ExpressRoute](expressroute-routing-nat.md)
+### [NAT pro ExpressRoute](expressroute-nat.md)
 
 ## Řešení potíží
 ### [Ověření připojení ExpressRoute](expressroute-troubleshooting-expressroute-overview.md)
@@ -53,7 +54,7 @@
 ### [Získání tabulek protokolu ARP (Classic)](expressroute-troubleshooting-arp-classic.md)
 
 # Referenční informace
-## [PowerShell](/powershell/module/azurerm.network/?view=azurermps-4.0.0#expressroute)
+## [Azure PowerShell](/powershell/module/azurerm.network/?view=azurermps-4.0.0#expressroute)
 ## [Azure CLI](/cli/azure/network/express-route)
 ## [REST](https://msdn.microsoft.com/library/azure/mt586720)
 ## [REST (Classic)](https://msdn.microsoft.com/library/azure/dn606310)
@@ -75,12 +76,12 @@
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
 ## [Předplatné a omezení služeb](../azure-subscription-service-limits.md?toc=%2fazure%2fexpressroute%2ftoc.json)
 ## [Videa](https://azure.microsoft.com/documentation/videos/index/?services=expressroute)
-### [Připojit okruh tooa brány virtuální sítě](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit/)
+### [Připojení brány virtuální sítě k okruhu](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit/)
 ### [Vytvoření virtuální sítě pro ExpressRoute](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-virtual-network/)
 ### [Vytvoření brány virtuální sítě pro ExpressRoute](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network/)
 ### [Vytvoření okruhu ExpressRoute](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit/)
 ### [Rozvíjení připojitelnosti vaší síťové infrastruktury](https://go.microsoft.com/fwlink/p/?LinkId=615124)
-### [Jak tooset až soukromý partnerský vztah pro váš okruh.](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit/)
+### [Jak nastavit privátní partnerské vztahy pro váš okruh](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit/)
 ### [Hybridní partnerství: Povolení místních scénářů](https://go.microsoft.com/fwlink/p/?LinkId=615125)
 ### [Nastavení partnerského vztahu Microsoftu pro váš okruh](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit/)
 ### [Nastavení veřejného partnerského vztahu pro váš okruh](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit/)

@@ -1,4 +1,4 @@
-Hello následující tabulka uvádí možné nahrávání hello a zachycení kombinace Linux zobecněn a specializuje bitové kopie operačního systému. Hello kombinace, které bude zpracovávat bez y jsou vypsány žádné chyby, a ty, které vyvolá výjimku chyby jsou označeny N. hello příčiny a řešení hello různých chyb, které se spustí do mají níže uvedená tabulka hello.
+Následující tabulka uvádí možné nahrávání a zachycení kombinace Linux zobecněn a specializuje bitové kopie operačního systému. Kombinace, které bude zpracovávat bez chyb jsou vypsány y, a ty, které vyvolá výjimku chyby jsou označeny N. Příčiny a řešení pro různé chyby, na které se spustí do jsou uvedeny níže v tabulce.
 
 | Operační systém | Nahrajte specifikace. | Nahrajte. generace. | Zaznamenejte specifikace. | Zaznamenejte. generace. |
 | --- | --- | --- | --- | --- |

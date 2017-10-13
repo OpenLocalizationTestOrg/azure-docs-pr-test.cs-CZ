@@ -1,5 +1,5 @@
 ---
-title: "aaaCreate odběr tématu Azure Service Bus a pravidla pomocí šablony Azure Resource Manager | Microsoft Docs"
+title: "Vytvořit odběr tématu Azure Service Bus a pravidla pomocí šablony Azure Resource Manager | Microsoft Docs"
 description: "Vytvoření oboru názvů Service Bus pomocí tématu, předplatné a pravidla pomocí šablony Azure Resource Manager"
 services: service-bus-messaging
 documentationcenter: .net
@@ -14,31 +14,31 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/07/2017
 ms.author: sethm;shvija
-ms.openlocfilehash: dbc46da8491aee4d0c73bd4db90c696008920df4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 35e67d86b42358c4ce28b41beae1ee8e1896e939
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>Vytvoření oboru názvů Service Bus pomocí tématu, předplatné a pravidla pomocí šablony Azure Resource Manager
 
-Tento článek ukazuje, jak toouse šablonu Azure Resource Manager, vytvoří obor názvů sběrnice se tématu, předplatné a pravidlo (filtr). Zjistíte, jak toodefine prostředky, ke kterým jsou nasazené a jak toodefine parametry, které jsou zadané, když se spustí nasazení hello. Můžete tuto šablonu použít pro vlastní nasazení, nebo si ji přizpůsobit toomeet požadavků
+Tento článek ukazuje, jak používat šablonu Azure Resource Manager, která vytvoří obor názvů sběrnice s téma, předplatné a pravidlo (filtr). Zjistíte, jak definovat prostředky, ke kterým nasazených a jak definovat parametry, které jsou zadané, když se spustí nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky.
 
 Další informace o vytváření šablon najdete v tématu [Tvorba šablon Azure Resource Manageru][Authoring Azure Resource Manager templates].
 
 Další informace o postupů a vzorů na prostředky Azure konvence vytváření názvů najdete v tématu [doporučená zásady vytváření názvů pro prostředky Azure][Recommended naming conventions for Azure resources].
 
-Hello úplnou šablonu, najdete v části hello [oboru názvů Service Bus s tématu, předplatné a pravidlo] [ Service Bus namespace with topic, subscription, and rule] šablony.
+Úplnou šablonu, najdete v článku [oboru názvů Service Bus s tématu, předplatné a pravidlo] [ Service Bus namespace with topic, subscription, and rule] šablony.
 
 > [!NOTE]
-> Hello následující šablony Azure Resource Manager jsou k dispozici ke stažení a nasazení.
+> Následující šablony Azure Resource Manager jsou k dispozici ke stažení a nasazení.
 > 
 > * [Vytvoření oboru názvů Service Bus pomocí fronty a autorizační pravidla](service-bus-resource-manager-namespace-auth-rule.md)
 > * [Vytvoření oboru názvů Service Bus pomocí fronty](service-bus-resource-manager-namespace-queue.md)
 > * [Vytvoření oboru názvů Service Bus](service-bus-resource-manager-namespace.md)
 > * [Vytvoření oboru názvů Service Bus s téma a odběr](service-bus-resource-manager-namespace-topic.md)
 > 
-> toocheck pro hello nejnovější šablony, navštivte hello [šablon Azure rychlý Start] [ Azure Quickstart Templates] galerie a vyhledejte Service Bus.
+> Vyhledat nejnovější šablony, najdete [šablon Azure rychlý Start] [ Azure Quickstart Templates] galerie a vyhledejte Service Bus.
 > 
 > 
 
@@ -46,24 +46,24 @@ Hello úplnou šablonu, najdete v části hello [oboru názvů Service Bus s té
 
 Pomocí této šablony můžete nasadit v oboru názvů Service Bus s tématu, předplatné a pravidlo (filtr).
 
-[Témata a odběry Service Bus](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions) poskytovat ve formuláři na více komunikace, *publikování a přihlášení k odběru* vzor. Při používání témat a odběrů, součásti distribuované aplikace nekomunikují navzájem přímo, místo toho si zprávy vyměňují prostřednictvím tématu, která slouží jako prostředník. Téma tooa předplatného se podobá virtuální frontě, která obdrží kopii zprávy, které byly odeslány toohello tématu. Filtr na předplatné vám umožní toospecify příjem zpráv odeslaných tooa tématu by měl být použit v konkrétním odběru tématu.
+[Témata a odběry Service Bus](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions) poskytovat ve formuláři na více komunikace, *publikování a přihlášení k odběru* vzor. Při používání témat a odběrů, součásti distribuované aplikace nekomunikují navzájem přímo, místo toho si zprávy vyměňují prostřednictvím tématu, která slouží jako prostředník. Předplatné tématu se podobá virtuální frontě, která obdrží kopii zprávy, které byly odeslány do tématu. Filtr na předplatné umožňuje vám určit, které zprávy odeslané do tématu by se zobrazit v konkrétním odběru tématu.
 
 ## <a name="what-are-rules-filters"></a>Co jsou pravidla (filtry)?
 
-V mnoha případech je nutné zpracovat zprávy, které mají určité charakteristické vlastnosti různými způsoby. tooenable, můžete nakonfigurovat odběry toofind zprávy, které mají určité vlastnosti a poté proveďte úpravy toothose vlastnosti. I když Service Bus odběry všech zpráv odeslaných toohello tématu najdete kopírovat můžete pouze podmnožinu těchto fronty zpráv toohello virtuální odběru. To se provádí pomocí filtrů odběrů. toolearn Další informace o pravidlech (filtry), najdete v části [pravidla a akce](service-bus-queues-topics-subscriptions.md#rules-and-actions).
+V mnoha případech je nutné zpracovat zprávy, které mají určité charakteristické vlastnosti různými způsoby. Chcete-li povolit, můžete nakonfigurovat odběry a vyhledat zprávy, které mají určité vlastnosti a poté proveďte úpravy, aby se tyto vlastnosti. I když odběry služby Service Bus zobrazit všechny zprávy odeslané do tématu, kopírovat můžete pouze podmnožinu těchto zpráv do fronty virtuální odběru. To se provádí pomocí filtrů odběrů. Další informace o pravidlech (filtry) najdete v tématu [pravidla a akce](service-bus-queues-topics-subscriptions.md#rules-and-actions).
 
-toorun hello nasazení automaticky, klikněte na následující tlačítko hello:
+Pokud chcete nasazení spustit automaticky, klikněte na následující tlačítko:
 
-[![Nasazení tooAzure](./media/service-bus-resource-manager-namespace-topic/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-topic-subscription-rule%2Fazuredeploy.json)
+[![Nasazení do Azure](./media/service-bus-resource-manager-namespace-topic/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-topic-subscription-rule%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>Parametry
 
-S Azure Resource Manager, byste měli definovat parametry pro hodnoty chcete toospecify při nasazení šablony hello. Šablona Hello zahrnuje části s názvem `Parameters` obsahující všechny hodnoty parametrů hello. Měli byste parametr pro ty hodnoty, které se liší podle hello prostředí, které nasazujete nebo na základě hello projektu, které nasazujete. Parametry nedefinuje pro hello hodnoty, které vždy zůstávají stejné. Každá hodnota parametru se používá v hello šablony toodefine hello prostředky, které jsou nasazeny.
+S Azure Resource Manager, byste měli definovat parametry pro hodnoty, které chcete zadat při nasazení šablony. Šablona obsahuje část `Parameters`, která obsahuje všechny hodnoty parametrů. Parametr byste měli definovat pro hodnoty, které se mění v závislosti na nasazovaném projektu nebo prostředí, do kterého nasazujete. Nedefinujte parametry pro hodnoty, které jsou vždy stejné. Každá hodnota parametru se v šabloně použije k definování nasazovaných prostředků.
 
-Šablona Hello definuje hello následující parametry:
+Šablona definuje následující parametry:
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
-Název Hello toocreate oboru názvů Service Bus hello.
+Název oboru názvů Service Bus k vytvoření.
 
 ```json
 "serviceBusNamespaceName": {
@@ -72,7 +72,7 @@ Název Hello toocreate oboru názvů Service Bus hello.
 ```
 
 ### <a name="servicebustopicname"></a>serviceBusTopicName
-Hello název tématu hello vytvořené v oboru názvů Service Bus hello.
+Název tématu vytvořené v oboru názvů Service Bus.
 
 ```json
 "serviceBusTopicName": {
@@ -81,7 +81,7 @@ Hello název tématu hello vytvořené v oboru názvů Service Bus hello.
 ```
 
 ### <a name="servicebussubscriptionname"></a>serviceBusSubscriptionName
-Hello název odběru hello vytvořené v oboru názvů Service Bus hello.
+Název odběru vytvořené v oboru názvů Service Bus.
 
 ```json
 "serviceBusSubscriptionName": {
@@ -89,7 +89,7 @@ Hello název odběru hello vytvořené v oboru názvů Service Bus hello.
 }
 ```
 ### <a name="servicebusrulename"></a>serviceBusRuleName
-Název Hello hello rule(filter) vytvořené v oboru názvů Service Bus hello.
+Název rule(filter) vytvořené v oboru názvů Service Bus.
 
 ```json
    "serviceBusRuleName": {
@@ -97,14 +97,14 @@ Název Hello hello rule(filter) vytvořené v oboru názvů Service Bus hello.
   }
 ```
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
-verze rozhraní API služby Service Bus Hello hello šablony.
+Verze rozhraní API služby Service Bus šablony.
 
 ```json
 "serviceBusApiVersion": {
 "type": "string"
 }
 ```
-## <a name="resources-toodeploy"></a>Toodeploy prostředky
+## <a name="resources-to-deploy"></a>Prostředky k nasazení
 Vytvoří standardní oboru názvů Service Bus typu **zasílání zpráv**, tématu a odběru a pravidla.
 
 ```json
@@ -156,7 +156,7 @@ Vytvoří standardní oboru názvů Service Bus typu **zasílání zpráv**, té
     }]
 ```
 
-## <a name="commands-toorun-deployment"></a>Příkazy toorun nasazení
+## <a name="commands-to-run-deployment"></a>Příkazy pro spuštění nasazení
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ## <a name="powershell"></a>PowerShell
@@ -172,17 +172,17 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Nyní, po vytvoření a nasazení prostředků pomocí Azure Resource Manager, se naučíte, jak toomanage tyto prostředky pomocí těchto článků:
+Teď, když jste vytvoření a nasazení prostředků pomocí Azure Resource Manager, zjistěte, jak tyto zdroje spravovat pomocí těchto článků:
 
 * [Správa služby Azure Service Bus](service-bus-management-libraries.md)
 * [Správa služby Service Bus pomocí prostředí PowerShell](service-bus-manage-with-ps.md)
-* [Správa prostředků služby Service Bus pomocí hello Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
+* [Správa prostředků služby Service Bus pomocí Průzkumníka služby sběrnice](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
 [Azure Quickstart Templates]: https://azure.microsoft.com/documentation/templates/?term=service+bus
 [Learn more about Service Bus topics and subscriptions]: service-bus-queues-topics-subscriptions.md
 [Using Azure PowerShell with Azure Resource Manager]: ../azure-resource-manager/powershell-azure-resource-manager.md
-[Using hello Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/xplat-cli-azure-resource-manager.md
+[Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/xplat-cli-azure-resource-manager.md
 [Recommended naming conventions for Azure resources]: ../guidance/guidance-naming-conventions.md
 [Service Bus namespace with topic, subscription, and rule]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-topic-subscription-rule/
 [Service Bus queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md

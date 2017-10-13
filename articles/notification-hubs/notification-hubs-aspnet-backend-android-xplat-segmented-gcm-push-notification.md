@@ -1,6 +1,6 @@
 ---
-title: "aaaNotification nejnovější zprávy kurz Hubs - Android"
-description: "Zjistěte, jak toosend Azure Service Bus Notification Hubs toouse nejnovější zprávy oznámení tooAndroid zařízení."
+title: "Centra oznámení nejnovější zprávy přes kurz - Android"
+description: "Naučte se používat Azure Service Bus Notification Hubs k odesílání oznámení o aktuálních zprávách do zařízení se systémem Android."
 services: notification-hubs
 documentationcenter: android
 author: ysxu
@@ -14,27 +14,27 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: e6eb41bec95c67d7dc059f560194966d04400494
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 76ec01c874fceedab7d76b2ef58e4b45b5489f58
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="use-notification-hubs-toosend-breaking-news"></a>Použít nejnovější zprávy přes toosend centra oznámení
+# <a name="use-notification-hubs-to-send-breaking-news"></a>Používání centra oznámení k odesílání novinek
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
 ## <a name="overview"></a>Přehled
-Toto téma ukazuje, jak toouse Azure Notification Hubs toobroadcast nejnovější zprávy oznámení tooan aplikace pro Android. Po dokončení budete mít možnost tooregister pro nejnovější novinky kategorií, které vás zajímají a přijímat pouze nabízená oznámení pro tyto kategorie. Tento scénář je běžný vzor velký počet aplikací, kde mají oznámení odeslaných toobe toogroups uživatelů, kteří mají dříve deklarované zájem o jejich, např. čtečku RSS, aplikace pro Hudba ventilátory, atd.
+Toto téma ukazuje, jak používat Azure Notification Hubs k vysílání oznámení o aktuálních zprávách do aplikace pro Android. Po dokončení bude moci zaregistrovat pro nejnovější novinky kategorií, které vás zajímají a přijímat pouze nabízená oznámení pro tyto kategorie. Tento scénář je běžný vzor velký počet aplikací, kde mají oznámení k odeslání do skupiny uživatelů, které jste předtím nebyl deklarovaný zájem o jejich, např. čtečku RSS, aplikace pro Hudba ventilátory, atd.
 
-Všesměrového vysílání scénáře jsou povolené zahrnutím jeden nebo více *značky* při vytváření registrace v centru oznámení hello. Pokud jsou oznámení odesílána tooa značky, všechna zařízení, která jste zaregistrovali hello značky obdrží oznámení hello. Protože značky jsou jednoduše řetězce, nemají toobe předem zřízený. Další informace o značkách najdete v části příliš[směrování centra oznámení a značky výrazy](notification-hubs-tags-segment-push-message.md).
+Všesměrového vysílání scénáře jsou povolené zahrnutím jeden nebo více *značky* při vytváření registrace v centru oznámení. Pokud oznámení se odesílají do značku, všechna zařízení, která byla zaregistrovaná pro značku obdrží oznámení. Protože značky jsou jednoduše řetězce, nemají být předem zřízená. Další informace o značkách najdete v části [směrování centra oznámení a značky výrazy](notification-hubs-tags-segment-push-message.md).
 
 ## <a name="prerequisites"></a>Požadavky
-Toto téma je založený na hello aplikace, které jste vytvořili v [Začínáme s Notification Hubs][get-started]. Před zahájením tohoto kurzu, musí jste již dokončili [Začínáme s Notification Hubs][get-started].
+Toto téma je založený na aplikaci, kterou jste vytvořili v [Začínáme s Notification Hubs][get-started]. Před zahájením tohoto kurzu, musí jste již dokončili [Začínáme s Notification Hubs][get-started].
 
-## <a name="add-category-selection-toohello-app"></a>Přidat aplikaci toohello výběru kategorie
-prvním krokem Hello je tooadd hello uživatelského rozhraní elementy tooyour existující hlavní aktivitu, povolit hello uživatele tooselect kategorie tooregister. kategorie Hello vybrané uživatelem se ukládají na hello zařízení. Při spuštění aplikace hello, registrace zařízení se vytvoří v centru oznámení s hello vybrané kategorie jako značky.
+## <a name="add-category-selection-to-the-app"></a>Přidat výběru kategorie do aplikace
+Prvním krokem je přidání prvky uživatelského rozhraní pro vaše stávající hlavní aktivitu, který uživateli umožňuje výběr kategorií k registraci. Kategorie, které uživatel jsou uloženy v zařízení. Při spuštění aplikace registrace zařízení se vytvoří v centru oznámení s vybrané kategorie jako značky.
 
-1. Otevřete soubor res/layout/activity_main.xml a nahraďte obsah hello s hello následující:
+1. Otevřete soubor res/layout/activity_main.xml a nahraďte obsah s následujícími službami:
    
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
@@ -83,7 +83,7 @@ prvním krokem Hello je tooadd hello uživatelského rozhraní elementy tooyour 
                     android:onClick="subscribe"
                     android:text="@string/button_subscribe" />
         </LinearLayout>
-2. Otevřete soubor res/values/strings.xml a přidejte následující řádky hello:
+2. Otevřete soubor res/values/strings.xml a přidejte následující řádky:
    
         <string name="button_subscribe">Subscribe</string>
         <string name="label_world">World</string>
@@ -96,7 +96,7 @@ prvním krokem Hello je tooadd hello uživatelského rozhraní elementy tooyour 
     Grafické rozložení main_activity.xml by měl nyní vypadat takto:
    
     ![][A1]
-3. Teď vytvořte třídu **oznámení** v hello stejný balíček vaše **MainActivity** třídy.
+3. Teď vytvořte třídu **oznámení** ve stejném balíčku jako vaše **MainActivity** třídy.
    
         import java.util.HashSet;
         import java.util.Set;
@@ -150,7 +150,7 @@ prvním krokem Hello je tooadd hello uživatelského rozhraní elementy tooyour 
                             hub.registerTemplate(regid,"simpleGCMTemplate", templateBodyGCM, 
                                 categories.toArray(new String[categories.size()]));
                         } catch (Exception e) {
-                            Log.e("MainActivity", "Failed tooregister - " + e.getMessage());
+                            Log.e("MainActivity", "Failed to register - " + e.getMessage());
                             return e;
                         }
                         return null;
@@ -167,13 +167,13 @@ prvním krokem Hello je tooadd hello uživatelského rozhraní elementy tooyour 
    
         }
    
-    Tato třída se používá místní úložiště hello toostore hello kategorie zprávy, že toto zařízení má tooreceive. Obsahuje také metody tooregister pro tyto kategorie.
+    Tato třída používá místní úložiště k ukládání kategorie příspěvků, který toto zařízení má přijmout. Obsahuje také metody pro registraci pro tyto kategorie.
 4. Ve vaší **MainActivity** třída odebrat vaší privátní pole pro **NotificationHub** a **GoogleCloudMessaging**, a přidejte pole pro **oznámení**:
    
         // private GoogleCloudMessaging gcm;
         // private NotificationHub hub;
         private Notifications notifications;
-5. Potom v hello **onCreate** metoda, odeberte hello inicializace hello **rozbočovače** pole a hello **registerWithNotificationHubs** metoda. Pak přidejte následující řádky, které inicializovat instanci hello hello **oznámení** třídy. 
+5. Potom v **onCreate** metoda, odeberte inicializace **rozbočovače** pole a **registerWithNotificationHubs** metoda. Pak přidejte následující řádky, které inicializovat instanci **oznámení** třídy. 
 
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -188,12 +188,12 @@ prvním krokem Hello je tooadd hello uživatelského rozhraní elementy tooyour 
             notifications.subscribeToCategories(notifications.retrieveCategories());
         }
 
-    `HubName`a `HubListenConnectionString` by měl být již nastaven s hello `<hub name>` a `<connection string with listen access>` zástupné symboly oznámení centra název a hello připojovacím řetězcem pro *DefaultListenSharedAccessSignature* získaný dříve.
+    `HubName`a `HubListenConnectionString` by měl být již nastaven s `<hub name>` a `<connection string with listen access>` zástupné symboly pomocí názvu centra oznámení a připojovacího řetězce pro *DefaultListenSharedAccessSignature* kterou jste získali dříve.
 
-    > [AZURE.NOTE] Protože přihlašovací údaje, které jsou distribuované s klientskou aplikaci nejsou obecně bezpečné, musí distribuovat hello klíč pro přístup k naslouchání pouze s vaší klientské aplikace. Poslechněte umožní přístup k vaší aplikaci tooregister oznámení, ale existující registrace nemůže být upravena a nelze odeslat oznámení. Hello úplné přístupový klíč se používá ve službě Zabezpečené back-end pro zasílání oznámení a změna existující registrace.
+    > [AZURE.NOTE] Protože přihlašovací údaje, které jsou distribuované s klientskou aplikaci není obvykle zabezpečení, by měl distribuovat klíč pro naslouchání přístup pouze s vaší klientské aplikace. Poslechněte umožní přístup k aplikaci zaregistrovat pro oznámení, ale existující registrace nemůže být upravena a nelze odeslat oznámení. Úplný přístup klíč se používá ve službě Zabezpečené back-end pro zasílání oznámení a změna existující registrace.
 
 
-1. Pak přidejte následující hello importuje a `subscribe` metoda toohandle hello přihlášení k odběru tlačítko klikněte na událost:
+1. Pak přidejte následující importy a `subscribe` metodu ke zpracování na tlačítko přihlásit k odběru, klikněte na událost:
    
         import android.widget.CheckBox;
         import java.util.HashSet;
@@ -224,24 +224,24 @@ prvním krokem Hello je tooadd hello uživatelského rozhraní elementy tooyour 
             notifications.storeCategoriesAndSubscribe(categories);
         }
    
-    Tato metoda vytvoří seznam kategorií a používá hello **oznámení** třídy toostore hello seznamu v místním úložišti hello a zaregistrujte hello značky odpovídající pomocí centra oznámení. Při změně kategorií, hello registrace se znovu vytvoří se nové kategorie hello.
+    Tato metoda vytvoří seznam kategorií a používá **oznámení** značky třída pro uložení seznamu v místním úložišti a zaregistrujte odpovídající pomocí centra oznámení. Při změně kategorií, registrace se znovu vytvoří se nové kategorie.
 
-Aplikace je nyní možné toostore sadu kategorií v místním úložišti na hello zařízení a zaregistrujte hello centra oznámení pokaždé, když změny uživatelů hello hello výběru kategorie.
+Aplikace je teď možné uložit sadu kategorií místní úložiště v zařízení a zaregistrovat do centra oznámení pokaždé, když uživatel změní výběr kategorie.
 
 ## <a name="register-for-notifications"></a>Registrace pro oznámení
-Tyto kroky zaregistrovat hello centra oznámení na spuštění pomocí hello kategorií, které byly uloženy v místním úložišti.
+Tyto kroky zaregistrovat do centra oznámení na spouštění pomocí kategorií, které byly uloženy v místním úložišti.
 
 > [!NOTE]
-> Protože hello registrationId přiřazené pomocí zasílání zpráv cloudu Google (GCM) můžete změnit kdykoli, byste měli zaregistrovat pro oznámení často tooavoid oznámení selhání. Tento příklad zaregistruje oznámení pokaždé, když spustí aplikaci hello. Pro aplikace, které jsou často spouštíte více než jednou denně, pravděpodobně Pokud můžete přeskočit šířky pásma toopreserve registrace od předchozí registrace hello uplynul méně než jeden den.
+> Protože registrationId přiřazené pomocí zasílání zpráv cloudu Google (GCM) můžete změnit kdykoli, byste měli zaregistrovat pro oznámení často, aby se zabránilo selhání oznámení. V tomto příkladu se zaregistruje pro oznámení při každém spuštění aplikace. Pro aplikace, které jsou často spouštíte více než jednou denně, můžete pravděpodobně přeskočit registraci byla zachována šířka pásma, pokud od předchozí registrace uplynul méně než jeden den.
 > 
 > 
 
-1. Přidejte následující kód na konci hello hello hello **onCreate** metoda v hello **MainActivity** třídy:
+1. Přidejte následující kód na konci **onCreate** metoda v **MainActivity** třídy:
    
         notifications.subscribeToCategories(notifications.retrieveCategories());
    
-    Tím je zajištěno, že při každém spuštění aplikace hello načte kategorie hello z místního úložiště a požadavky registrace pro tyto kategorie. 
-2. Aktualizujte hello `onStart()` metoda hello `MainActivity` třídy následujícím způsobem:
+    Tím je zajištěno, že při každém spuštění aplikace načte kategorie z místního úložiště a požadavky registrace pro tyto kategorie. 
+2. Aktualizujte `onStart()` metodu `MainActivity` třídy následujícím způsobem:
    
     @Overridechráněné void onStart() {
    
@@ -264,41 +264,41 @@ Tyto kroky zaregistrovat hello centra oznámení na spuštění pomocí hello ka
         sports.setChecked(categories.contains("sports"));
     }
    
-    Tím se aktualizuje hello hlavní činnosti na základě stavu hello dříve uloženou kategorií.
+    Tím se aktualizuje v hlavní aktivitě na základě stavu dříve uloženou kategorií.
 
-Hello aplikace je nyní dokončen a může ukládat sadu kategorií hello zařízení používá místní úložiště tooregister hello centra oznámení pokaždé, když změny uživatelů hello hello výběru kategorie. V dalším kroku bude definujeme back-end, který může odesílat kategorie oznámení toothis aplikace.
+Aplikace je nyní dokončen a sadu kategorií můžete uložit do místního úložiště zařízení používá k registraci do centra oznámení pokaždé, když uživatel změní výběr kategorie. V dalším kroku bude definujeme back-end, který kategorie oznámení můžete odesílat do této aplikace.
 
 ## <a name="sending-tagged-notifications"></a>Odesílání oznámení s příznakem
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
-## <a name="run-hello-app-and-generate-notifications"></a>Spuštění aplikace hello a generovat oznámení
-1. V nástroji Android Studio sestavení aplikace hello a spusťte jej na emulátoru nebo zařízení.
+## <a name="run-the-app-and-generate-notifications"></a>Spusťte aplikaci a generovat upozornění
+1. V nástroji Android Studio sestavení aplikace a spusťte jej na emulátoru nebo zařízení.
    
-    Všimněte si, že přepíná hello aplikaci, kterou poskytuje sadu uživatelského rozhraní, která umožňuje vybrat toosubscribe kategorie hello k.
+    Všimněte si, že aplikace uživatelského rozhraní, poskytuje sadu přepínačů, která vám umožní vybrat kategorie pro přihlášení k odběru.
 2. Povolit jednu nebo více kategorií přepínačů a potom klikněte na **přihlásit k odběru**.
    
-    aplikace Hello převede hello vybrané kategorie značky a požaduje novou registraci zařízení pro hello vybrané značky z centra oznámení hello. Hello registrované kategorie jsou vráceny a zobrazeny v oznámení s informační zprávou.
-3. Nové oznámení odesílat spuštěním aplikace konzoly .NET hello.  Alternativně můžete odeslat oznámení s příznakem šablony pomocí karty ladění hello centra oznámení v hello [portálu Azure Classic].
+    Aplikace převede vybraných kategorií značky a požaduje novou registraci zařízení pro vybranou značky z centra oznámení. Registrovaný kategorie jsou vráceny a zobrazeny v oznámení s informační zprávou.
+3. Nové oznámení odesílat spuštěním aplikace konzoly .NET.  Alternativně můžete odeslat oznámení s příznakem šablony pomocí karty ladění centra oznámení v [portálu Azure Classic].
    
-    Oznámení pro hello vybrané kategorie se zobrazí jako informační zprávy.
+    Oznámení pro vybrané kategorie se zobrazí jako informační zprávy.
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jsme se dozvěděli, jak toobroadcast nejnovější zprávy přes podle kategorie. Vezměte v úvahu dokončení jednu z následujících návodů, které zvýrazněte pokročilé scénáře Notification Hubs hello:
+V tomto kurzu jsme zjistili, jak k vysílání novinek podle kategorie. Vezměte v úvahu dokončení jednu z následujících kurzů upozorňující na jiné pokročilé scénáře centra oznámení:
 
-* [Použití centra oznámení toobroadcast lokalizované novinek]
+* [Použití centra oznámení k vysílání lokalizované novinek]
   
-    Zjistěte, jak lokalizované tooexpand hello nejnovější novinky aplikace tooenable odesílání oznámení.
+    Zjistěte, jak rozšířit aplikace nejnovější zprávy k povolení odesílání lokalizované upozornění.
 
 <!-- Images. -->
 [A1]: ./media/notification-hubs-aspnet-backend-android-breaking-news/android-breaking-news1.PNG
 
 <!-- URLs.-->
 [get-started]: notification-hubs-android-push-notification-google-gcm-get-started.md
-[Použití centra oznámení toobroadcast lokalizované novinek]: /manage/services/notification-hubs/breaking-news-localized-dotnet/
+[Použití centra oznámení k vysílání lokalizované novinek]: /manage/services/notification-hubs/breaking-news-localized-dotnet/
 [Notify users with Notification Hubs]: /manage/services/notification-hubs/notify-users
 [Mobile Service]: /develop/mobile/tutorials/get-started/
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-toofor Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx
+[Notification Hubs How-To for Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253

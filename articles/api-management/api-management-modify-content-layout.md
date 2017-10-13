@@ -1,6 +1,6 @@
 ---
-title: "obsah stránky aaaModify v hello portál pro vývojáře ve službě Azure API Management | Microsoft Docs"
-description: "Zjistěte, jak obsah stránky tooedit na portál pro vývojáře hello v Azure API Management."
+title: "Úprava obsahu stránek na portálu pro vývojáře ve službě Azure API Management | Dokumentace Microsoftu"
+description: "Naučte se upravovat obsah stránek na portálu pro vývojáře ve službě Azure API Management."
 services: api-management
 documentationcenter: 
 author: antonba
@@ -14,68 +14,68 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/09/2017
 ms.author: antonba
-ms.openlocfilehash: fd5a854e900d9512518643e593b1b59a0952621f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 708c803c36c182ed90e04731b12d4ade00ae7ffb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="modify-hello-content-and-layout-of-pages-on-hello-developer-portal-in-azure-api-management"></a>Upravit obsah hello a rozložení stránek na portál pro vývojáře hello v Azure API Management
-Existují tři základní způsoby toocustomize hello portál pro vývojáře ve službě Azure API Management:
+# <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>Úprava obsahu a rozložení stránek na portálu pro vývojáře ve službě Azure API Management
+Existují tři základní způsoby, kterými jde přizpůsobit portál pro vývojáře ve službě Azure API Management:
 
-* [Upravit obsah hello statické stránky a stránky rozložení elementů] [ modify-content-layout] (popsáno v této příručce)
-* [Styly hello aktualizace používané pro prvky na stránce přes portál pro vývojáře hello][customize-styles]
-* [Úprava šablony hello používá stránek generovaných hello portál] [ portal-templates] (např. dokumentace rozhraní API, produktů, ověřování uživatelů atd.)
+* [Úprava obsahu statických stránek a elementů rozložení stránek][modify-content-layout] (vysvětlení obsahuje tento průvodce)
+* [Aktualizace stylů použitých pro elementy stránek napříč portálem pro vývojáře][customize-styles]
+* [Úprava šablon použitých pro stránky generované portálem][portal-templates] (dokumentace rozhraní API, produkty, ověřování uživatelů atd.)
 
 ## <a name="page-structure"></a>Struktura stránek portálu pro vývojáře
 
-portál pro vývojáře Hello je založena na systém správy obsahu. Hello rozvržení každé stránky je založena na sadu elementů malé stránky označuje jako pomůcky:
+Portál pro vývojáře je založený na systému CMS (Content Management System). Rozložení jednotlivých stránek je založené na základě sady malých elementů stránek, které se označují jako widgety:
 
 ![Struktura stránek portálu pro vývojáře][api-management-customization-widget-structure]
 
 Všechny widgety se dají upravovat. 
-* Hello základní obsah konkrétní tooeach jednotlivých stránek nacházet v hello "Obsah" widgetů. Úpravy na stránce znamená úpravy hello obsah tohoto widgetu.
-* Všechny prvky rozložení stránky jsou obsaženy s hello zbývající pomůcky. Změny provedené toothese pomůcky uplatní tooall stránky. Budou odkazované tooas "widgetů rozložení".
+* Základní obsah specifický pro každou jednotlivou stránku se nachází ve widgetu Contents. Úprava stránky znamená úpravy obsahu tohoto widgetu.
+* Všechny prvky rozložení stránky jsou obsažené v ostatních widgetech. Změny provedené v těchto widgetech budou platit pro všechny stránky. Budeme je označovat jako widgety rozložení.
 
-Každodenní stránce jeden obvykle úpravy pouze upraví hello obsahu pomůcky, který bude mít jiný obsah jednotlivých stránek.
+Při běžných úpravách stránek se obvykle mění jenom widget Content, který má pro každou jednotlivou stránku jiný obsah.
 
-## <a name="modify-layout-widget"></a>Úprava hello obsah widget rozložení
+## <a name="modify-layout-widget"></a>Změně obsahu widgetu rozložení
 
-Obsah v rámci hello portál pro vývojáře se mění prostřednictvím portálu vydavatele hello, která je přístupná z hello portálu Azure. tooreach, klikněte na tlačítko **portál vydavatele** z panelu nástrojů služby hello instanci služby API Management.
+Obsah portálu pro vývojáře se mění prostřednictvím portálu vydavatele, který je přístupný z webu Azure Portal. Otevřete jej tak, že na panelu nástrojů služby svojí instance služby API Management kliknete na **Portál vydavatele**.
 
 ![Portál vydavatele][api-management-management-console]
 
-Klikněte na tlačítko tooedit hello obsah takového widgetu, **pomůcky** z hello **portál pro vývojáře** nabídky na levé straně hello. Pro tento příklad umožňuje upravte obsah hello hello záhlaví pomůcky. Vyberte hello **záhlaví** pomůcky hello seznamu.
+Pokud chcete obsah takového widgetu upravit, klikněte v nabídce **Portál pro vývojáře** na levé straně na **Widgety**. V tomto příkladu upravíme obsah widgetu Header. V seznamu vyberte widget **Header**.
 
 ![Záhlaví widgetů][api-management-widgets-header]
 
-Hello obsah hlavičky hello je můžete upravovat v hello **textu** pole. Změna textu hello požadovaným způsobem a potom klikněte na **Uložit** v hello dolní části stránky hello.
+Obsah záhlaví můžete upravovat v poli **Text**. Změňte text podle potřeby a potom v dolní části stránky klikněte na **Uložit**.
 
-Nyní byste měli mít toosee hello nové záhlaví na každé stránce portálu pro vývojáře hello.
+Nové záhlaví by se teď mělo zobrazovat na každé stránce portálu pro vývojáře.
 
-> portál pro vývojáře hello tooopen v hello portálu vydavatele, klikněte na tlačítko **portál pro vývojáře** v horním panelu hello.
+> Pokud chcete portál pro vývojáře otevřít, když jste na portálu vydavatele, klikněte na horním panelu na **Portál pro vývojáře**.
 > 
 > 
 
-## <a name="edit-page-contents"></a>Upravit hello obsahu stránky
+## <a name="edit-page-contents"></a>Úprava obsahu stránky
 
-Klikněte na tlačítko toosee hello seznam všech existujících stránek s obsahem, **obsah** z hello **portál pro vývojáře** nabídky v portálu vydavatele hello.
+Pokud chcete zobrazit seznam všech existujících stránek s obsahem, klikněte v nabídce **Portál pro vývojáře** (na portálu vydavatele) na **Obsah**.
 
 ![Správa obsahu][api-management-customization-manage-content]
 
-Klikněte na tlačítko hello **úvodní** stránka tooedit obsah zobrazený na domovské stránce portálu pro vývojáře hello hello. Proveďte změny hello, je v případě potřeby náhled a pak klikněte na tlačítko **publikovat** toomake je viditelná tooeveryone.
+Pokud chcete upravit obsah zobrazený na domovské stránce portálu pro vývojáře, klikněte na stránku **Vítejte**. Proveďte požadované změny, v případě potřeby si zobrazte jejich náhled a potom je zpřístupněte všem uživatelům kliknutím na **Publikovat**.
 
-> Hello Domovská stránka používá zvláštní rozložení, které umožňuje toodisplay banner v horní části hello. Tento banner není můžete upravovat hello **obsahu** části. Klikněte na tlačítko tooedit tuto hlavičku **pomůcky** z hello **portál pro vývojáře** nabídce vyberte možnost **domovskou stránku** z hello **aktuální vrstva** rozevíracího seznamu seznam a pak otevřete hello **Banner** položky v části hello **vybrané části**. jsou Hello obsah tohoto widgetu můžete upravovat stejně jako jakoukoli jinou stránku.
+> Domovská stránka používá zvláštní rozložení, které umožňuje zobrazit banner v její horní části. Tento banner nemůžete v části **Obsah** upravovat. Pokud chcete banner upravit, klikněte v nabídce **Portál pro vývojáře** na **Widgety**, v rozevíracím seznamu **Aktuální vrstva** vyberte **Domovská stránka** a potom v části **Vybraná část** otevřete položku **Banner**. Obsah tohoto widgetu můžete upravovat stejně jako jakoukoli jinou stránku.
 > 
 > 
 
 ## <a name="next-steps"></a>Další kroky
-* [Styly hello aktualizace používané pro prvky na stránce přes portál pro vývojáře hello][customize-styles]
-* [Úprava šablony hello používá stránek generovaných hello portál] [ portal-templates] (např. dokumentace rozhraní API, produktů, ověřování uživatelů atd.)
+* [Aktualizace stylů použitých pro elementy stránek napříč portálem pro vývojáře][customize-styles]
+* [Úprava šablon použitých pro stránky generované portálem][portal-templates] (dokumentace rozhraní API, produkty, ověřování uživatelů atd.)
 
 [Structure of developer portal pages]: #page-structure
-[Modifying hello contents of a layout widget]: #modify-layout-widget
-[Edit hello contents of a page]: #edit-page-contents
+[Modifying the contents of a layout widget]: #modify-layout-widget
+[Edit the contents of a page]: #edit-page-contents
 [Next steps]: #next-steps
 
 [modify-content-layout]: api-management-modify-content-layout.md

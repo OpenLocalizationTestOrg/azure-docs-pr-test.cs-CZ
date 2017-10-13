@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s SumoLogic | Microsoft Docs'
-description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a SumoLogic."
+description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SumoLogic."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,106 +13,106 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 2ef1bd329f5db8899f0b57744e4c0f6eed1c532f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e739106472ccf930b2942eb810dd844f2b1ade7c
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumologic"></a>Kurz: Azure Active Directory integrace s SumoLogic
 
-V tomto kurzu zjistíte, jak toointegrate SumoLogic s Azure Active Directory (Azure AD).
+V tomto kurzu zjistěte, jak integrovat SumoLogic s Azure Active Directory (Azure AD).
 
-Integrace SumoLogic s Azure AD poskytuje hello následující výhody:
+Integrace SumoLogic s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup tooSumoLogic
-- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooSumoLogic (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup k SumoLogic
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k SumoLogic (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Integrace služby Azure AD s SumoLogic tooconfigure, je třeba hello následující položky:
+Konfigurace integrace Azure AD s SumoLogic, potřebujete následující položky:
 
 - Předplatné služby Azure AD
 - SumoLogic jednotné přihlašování povolené předplatné
 
 > [!NOTE]
-> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
+Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání SumoLogic z Galerie hello
+1. Přidání SumoLogic z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-sumologic-from-hello-gallery"></a>Přidání SumoLogic z Galerie hello
-tooconfigure hello integrace SumoLogic do Azure AD, je nutné tooadd SumoLogic hello Galerie tooyour seznamu spravovaných aplikací SaaS.
+## <a name="adding-sumologic-from-the-gallery"></a>Přidání SumoLogic z Galerie
+Při konfiguraci integrace SumoLogic do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS SumoLogic z galerie.
 
-**tooadd SumoLogic z Galerie hello, proveďte následující kroky hello:**
+**Pokud chcete přidat SumoLogic z galerie, proveďte následující kroky:**
 
-1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
+1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
+2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
 
     ![Aplikace][3]
 
-4. Hello vyhledávacího pole zadejte **SumoLogic**.
+4. Do vyhledávacího pole zadejte **SumoLogic**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-sumologic-tutorial/tutorial_sumologic_search.png)
 
-5. Na panelu výsledků hello vyberte **SumoLogic**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.
+5. Na panelu výsledků vyberte **SumoLogic**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-sumologic-tutorial/tutorial_sumologic_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s SumoLogic podle testovacího uživatele názvem "Britta Simon".
 
-Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v SumoLogic je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v SumoLogic musí toobe navázat.
+Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v SumoLogic je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v SumoLogic musí navázat.
 
-V SumoLogic, přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.
+V SumoLogic, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
 
-tooconfigure a testu Azure AD jednotné přihlašování s SumoLogic, potřebujete následující stavební bloky hello toocomplete:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s SumoLogic, je třeba dokončit následující stavební bloky:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele SumoLogic](#creating-a-sumologic-test-user)**  -toohave protějšek Britta Simon v SumoLogic, která je propojená toohello Azure AD reprezentace uživatele.
-4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele SumoLogic](#creating-a-sumologic-test-user)**  – Pokud chcete mít protějšek Britta Simon v SumoLogic propojeném s Azure AD reprezentace daného uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci SumoLogic.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci SumoLogic.
 
-**tooconfigure Azure AD jednotné přihlašování s SumoLogic, proveďte následující kroky hello:**
+**Ke konfiguraci Azure AD jednotné přihlašování s SumoLogic, proveďte následující kroky:**
 
-1. V portálu Azure, na hello hello **SumoLogic** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na portálu Azure na **SumoLogic** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
+2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-sumologic-tutorial/tutorial_sumologic_samlbase.png)
 
-3. Na hello **SumoLogic domény a adresy URL** část, proveďte následující kroky hello:
+3. Na **SumoLogic domény a adresy URL** část, proveďte následující kroky:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-sumologic-tutorial/tutorial_sumologic_url.png)
 
-    a. V hello **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<tenantname>.SumoLogic.com`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<tenantname>.SumoLogic.com`
 
-    b. V hello **identifikátor** textovému poli, zadejte adresu URL pomocí hello následující vzoru:
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
     | |
     |--|
     | `https://<tenantname>.us2.sumologic.com` |
@@ -122,9 +122,9 @@ V této části můžete povolit Azure AD jednotné přihlašování v hello por
     | `https://<tenantname>.au.sumologic.com` |
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Aktualizovat tyto hodnoty s hello skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory SumoLogic klienta](https://www.sumologic.com/contact-us/) tooget tyto hodnoty. 
+    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory SumoLogic klienta](https://www.sumologic.com/contact-us/) k získání těchto hodnot. 
  
-4. Na hello **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu hello ve vašem počítači.
+4. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-sumologic-tutorial/tutorial_sumologic_certificate.png) 
 
@@ -132,13 +132,13 @@ V této části můžete povolit Azure AD jednotné přihlašování v hello por
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-sumologic-tutorial/tutorial_general_400.png)
 
-6. Na hello **SumoLogic konfigurace** klikněte na tlačítko **konfigurace SumoLogic** tooopen **konfigurovat přihlášení** okno. Kopírování hello **SAML Entity ID a SAML jeden přihlašování adresa URL služby** z hello **Stručná referenční příručka části.**
+6. Na **SumoLogic konfigurace** klikněte na tlačítko **konfigurace SumoLogic** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML Entity ID a SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-sumologic-tutorial/tutorial_sumologic_configure.png) 
 
-7. V okně prohlížeče jiný web Přihlaste se jako správce na webu společnosti SumoLogic tooyour.
+7. V okně prohlížeče jiný web Přihlaste se k serveru vaší společnosti SumoLogic jako správce.
 
-8. Přejděte příliš**spravovat \> zabezpečení**.
+8. Přejděte na **spravovat \> zabezpečení**.
    
     ![Spravovat](./media/active-directory-saas-sumologic-tutorial/ic778556.png "spravovat")
 
@@ -146,76 +146,76 @@ V této části můžete povolit Azure AD jednotné přihlašování v hello por
    
     ![Nastavení zabezpečení globální](./media/active-directory-saas-sumologic-tutorial/ic778557.png "nastavení globálního zabezpečení")
 
-10. Z hello **vyberte konfiguraci, nebo vytvořte novou** vyberte **Azure AD**a potom klikněte na **konfigurace**.
+10. Z **vyberte konfiguraci, nebo vytvořte novou** vyberte **Azure AD**a potom klikněte na **konfigurace**.
    
     ![Konfigurace SAML 2.0](./media/active-directory-saas-sumologic-tutorial/ic778558.png "konfigurace SAML 2.0")
 
-11. Na hello **konfigurace SAML 2.0** dialogové okno, proveďte následující kroky hello:
+11. Na **konfigurace SAML 2.0** dialogové okno, proveďte následující kroky:
    
     ![Konfigurace SAML 2.0](./media/active-directory-saas-sumologic-tutorial/ic778559.png "konfigurace SAML 2.0")
    
-    a. V hello **název konfigurace** textovému poli, typ **Azure AD**. 
+    a. V **název konfigurace** textovému poli, typ **Azure AD**. 
 
     b. Vyberte **režim ladění**.
 
-    c. V hello **vystavitele** textovému poli, vložte hodnotu hello **SAML Entity ID**, který jste zkopírovali z portálu Azure. 
+    c. V **vystavitele** textovému poli, vložte hodnotu **SAML Entity ID**, který jste zkopírovali z portálu Azure. 
 
-    d. V hello **ověřovacího požadavku URL** textovému poli, vložte hodnotu hello **SAML jeden přihlašování adresa URL služby**, který jste zkopírovali z portálu Azure.
+    d. V **ověřovacího požadavku URL** textovému poli, vložte hodnotu **SAML jeden přihlašování adresa URL služby**, který jste zkopírovali z portálu Azure.
 
-    e. Otevření kódovaného certifikátu kódování base-64 v poznámkovém bloku hello kopírování obsahu ho do schránky a potom vložte hello celý certifikát do **certifikát X.509** textové pole.
+    e. V poznámkovém bloku otevřete váš kódování base-64 kódovaného certifikátu, zkopírujte obsah ho do schránky a vložte celý certifikát do **certifikát X.509** textové pole.
 
     f. Jako **atribut e-mailu**, vyberte **pomocí SAML subjektu**.  
 
     g. Vyberte **SP iniciované konfigurace přihlášení**.
 
-    h. V hello **přihlašovací cestu** textovému poli, typ **Azure** a klikněte na tlačítko **Uložit**.
+    h. V **přihlašovací cestu** textovému poli, typ **Azure** a klikněte na tlačítko **Uložit**.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
+Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
+**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
 
-1. V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
+1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-sumologic-tutorial/create_aaduser_01.png) 
 
-2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-sumologic-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.
+3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-sumologic-tutorial/create_aaduser_03.png) 
 
-4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
+4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-sumologic-tutorial/create_aaduser_04.png) 
 
-    a. V hello **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textovému poli, typ **BrittaSimon**.
 
-    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-a-sumologic-test-user"></a>Vytvoření zkušebního uživatele SumoLogic
 
-V pořadí tooenable Azure AD Uživatelé toolog v tooSumoLogic musí být zřízená tooSumoLogic.  
+Pokud chcete povolit uživatelům Azure AD přihlášení k SumoLogic, musí být zřízená k SumoLogic.  
 
-* V případě hello SumoLogic zřizování je ruční úloha.
+* V případě SumoLogic zřizování je ruční úloha.
 
-**tooprovision uživatelský účet, proveďte následující kroky hello:**
+**K poskytnutí uživatelského účtu, proveďte následující kroky:**
 
-1. Přihlaste se tooyour **SumoLogic** klienta.
+1. Přihlaste se k vaší **SumoLogic** klienta.
 
-2. Přejděte příliš**spravovat \> uživatelé**.
+2. Přejděte na **spravovat \> uživatelé**.
    
     ![Uživatelé](./media/active-directory-saas-sumologic-tutorial/ic778561.png "uživatelů")
 
@@ -223,11 +223,11 @@ V pořadí tooenable Azure AD Uživatelé toolog v tooSumoLogic musí být zří
    
     ![Uživatelé](./media/active-directory-saas-sumologic-tutorial/ic778562.png "uživatelů")
 
-4. Na hello **nového uživatele** dialogové okno, proveďte následující kroky hello:
+4. Na **nového uživatele** dialogové okno, proveďte následující kroky:
    
     ![Nový uživatel](./media/active-directory-saas-sumologic-tutorial/ic778563.png "nového uživatele") 
  
-    a. Typ hello související informace účtu hello Azure AD má tooprovision do hello **křestní jméno**, **příjmení**, a **e-mailu** textových polí.
+    a. Zadejte související informace, které chcete zřídit do účtu Azure AD **křestní jméno**, **příjmení**, a **e-mailu** textových polí.
   
     b. Vyberte roli.
   
@@ -236,26 +236,26 @@ V pořadí tooenable Azure AD Uživatelé toolog v tooSumoLogic musí být zří
     d. Klikněte na **Uložit**.
 
 >[!NOTE]
->Můžete použít všechny ostatní SumoLogic uživatele účtu nástroje pro tvorbu nebo rozhraní API poskytované SumoLogic tooprovision AAD uživatelské účty. 
+>Můžete použít všechny ostatní SumoLogic uživatele účtu nástroje pro tvorbu nebo rozhraní API poskytované SumoLogic zřídit AAD uživatelské účty. 
 > 
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
+### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte tak, že udělíte přístup tooSumoLogic toouse Britta Simon Azure jednotné přihlašování.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu SumoLogic.
 
 ![Přiřadit uživatele][200] 
 
-**tooassign Britta Simon tooSumoLogic, proveďte následující kroky hello:**
+**Pokud chcete přiřadit Britta Simon SumoLogic, proveďte následující kroky:**
 
-1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikace hello vyberte **SumoLogic**.
+2. V seznamu aplikací vyberte **SumoLogic**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-sumologic-tutorial/tutorial_sumologic_app.png) 
 
-3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
+3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
@@ -263,7 +263,7 @@ V této části povolíte tak, že udělíte přístup tooSumoLogic toouse Britt
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -271,13 +271,13 @@ V této části povolíte tak, že udělíte přístup tooSumoLogic toouse Britt
     
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-Hello cílem této části je tootest pomocí Azure AD konfigurace přihlášení hello přístupového panelu.
+Cílem této části je Azure AD jeden přihlašování konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici SumoLogic hello v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour SumoLogic aplikace.
+Když kliknete na dlaždici SumoLogic na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci SumoLogic.
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

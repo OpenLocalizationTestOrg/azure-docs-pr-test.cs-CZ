@@ -1,6 +1,6 @@
 ---
-title: "aaaHow toostart kontrola přístupu | Microsoft Docs"
-description: "Zjistěte, jak toocreate přístupu zkontrolujte pro privilegované identity pomocí hello aplikací Azure Privileged Identity Management."
+title: "Postup spuštění kontrola přístupu | Microsoft Docs"
+description: "Naučte se vytvářet kontrola přístupu pro privilegované identity s aplikací Azure Privileged Identity Management."
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -15,69 +15,69 @@ ms.workload: identity
 ms.date: 05/04/2017
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 24feac307f77c69b5d68d6ae0623dbcb52416b01
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2b516e2f05aa883c5e37f5864e5ee8a2b37d3a46
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toostart-an-access-review-in-azure-ad-privileged-identity-management"></a>Jak toostart přístupu zkontrolujte v Azure AD Privileged Identity Management
-Přiřazení rolí stát "zastaralé", když uživatelé mají privilegovaný přístup, které už nepotřebují. V pořadí tooreduce hello riziko spojené s přiřazení těchto zastaralých rolí Správci privilegované role by pravidelně zkontrolovat hello rolí, které mají uživatelé. Tento dokument popisuje hello kroky pro spuštění kontrola přístupu v Azure AD Privileged Identity Management (PIM).
+# <a name="how-to-start-an-access-review-in-azure-ad-privileged-identity-management"></a>Spuštění kontrola přístupu v Azure AD Privileged Identity Management
+Přiřazení rolí stát "zastaralé", když uživatelé mají privilegovaný přístup, které už nepotřebují. Chcete-li snížit riziko spojené s přiřazení těchto zastaralých rolí, správci privilegované role by pravidelně zkontrolovat role, které mají uživatelé. Tento dokument popisuje kroky pro spuštění kontrola přístupu v Azure AD Privileged Identity Management (PIM).
 
 ## <a name="start-an-access-review"></a>Spuštění kontrola přístupu
 > [!NOTE]
-> Pokud jste nepřidali řídicí panel tooyour hello PIM aplikací v hello portálu Azure, najdete v části hello kroky v [Začínáme s Azure Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md)
+> Pokud jste nepřidali aplikaci PIM do řídicího panelu portálu Azure, podívejte se na postup v [Začínáme s Azure Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md)
 > 
 > 
 
-Z hello PIM aplikace hlavní stránky existují tři způsoby toostart kontrola přístupu:
+Na hlavní stránce aplikace PIM existují tři způsoby, jak začít kontrola přístupu:
 
 * **Přístup k recenze** > **přidat**
 * **Role** > **zkontrolujte** tlačítko
-* Vyberte hello určité role toobe zkontrolováni z seznam rolí hello > **zkontrolujte** tlačítko
+* Vyberte konkrétní roli, které mají být zkontrolovány ze seznamu rolí > **zkontrolujte** tlačítko
 
-Po kliknutí na hello **zkontrolujte** tlačítko hello **spustit kontrola přístupu** otevře se okno. V tomto okně jste probíhající tooconfigure hello zkontrolujte s názvem a čas omezení, zvolte roli tooreview a rozhodnout, který provede zkontrolujte hello.
+Po kliknutí na **zkontrolujte** tlačítko **spustit kontrola přístupu** otevře se okno. V tomto okně budete konfigurovat kontrola s názvem a časový limit, vyberte roli zkontrolovat a rozhodnout, který provede kontrola.
 
 ![Kontrola přístupu – snímek obrazovky Start][1]
 
-### <a name="configure-hello-review"></a>Konfigurace zkontrolujte hello
-Zkontrolujte toocreate přístup, budete potřebovat tooname ho a nastaví počáteční a koncové datum.
+### <a name="configure-the-review"></a>Kontrola konfigurace
+Pokud chcete vytvořit kontrola přístupu, potřebujete název a nastavit počáteční a koncové datum.
 
 ![Nakonfigurujte kontrolní – snímek obrazovky][2]
 
-Ujistěte se, hello délka hello zkontrolujte dostatečně dlouhou dobu toocomplete uživatele. Pokud dokončíte před hello koncové datum, můžete vždy zastavit hello zkontrolujte již v rané fázi.
+Ujistěte se, délka dostatečně dlouhé, aby se pro uživatele dokončit, protože se kontrola. Pokud dokončíte před datem ukončení, můžete vždy zastavit kontrola již v rané fázi.
 
-### <a name="choose-a-role-tooreview"></a>Vyberte role tooreview
-Každý revize se zaměřuje na jen jednu roli. Pokud jste začali kontrola přístupu hello v okně konkrétní roli, budete potřebovat toochoose roli teď.
+### <a name="choose-a-role-to-review"></a>Vyberte role ke kontrole
+Každý revize se zaměřuje na jen jednu roli. Pokud jste začali kontrola přístupu v okně konkrétní roli, musíte teď zvolte roli.
 
-1. Přejděte příliš**Zkontrolujte členství v roli**
+1. Přejděte na **Zkontrolujte členství v roli**
    
     ![Zkontrolujte členství v rolích – snímek obrazovky][3]
-2. Vyberte jednu roli ze seznamu hello.
+2. Vyberte jednu roli ze seznamu.
 
-### <a name="decide-who-will-perform-hello-review"></a>Rozhodněte, který provede zkontrolujte hello
-Existují tři možnosti pro provádění kontrolu. Můžete přiřadit hello zkontrolujte toosomeone else toocomplete, můžete provést sami, nebo může mít každý uživatel, zkontrolujte své vlastní přístup.
+### <a name="decide-who-will-perform-the-review"></a>Rozhodněte, který provede kontrola
+Existují tři možnosti pro provádění kontrolu. Kontrola můžete přiřadit někomu jinému k dokončení, můžete provést sami nebo můžete mít každý uživatel, zkontrolujte své vlastní přístup.
 
-1. Přejděte příliš**vyberte**
+1. Přejděte do **vyberte**
    
     ![Vyberte – snímek obrazovky][4]
-2. Vyberte jednu z možností hello:
+2. Vyberte jednu z možností:
    
-   * **Vyberte kontrolora**: tuto možnost použijte, pokud si nejste jisti, který potřebuje přístup. Pomocí této možnosti můžete přiřadit vlastníka prostředku tooa zkontrolujte hello nebo toocomplete správce skupiny.
-   * **Poslat mi**: užitečné, pokud chcete, aby toopreview jak pracovní zkontroluje přístup, nebo chcete tooreview jménem osoby, které nelze.
-   * **Členy zkontrolujte sami**: použití této možnosti toohave hello uživatelé kontrole vlastní přiřazení rolí.
+   * **Vyberte kontrolora**: tuto možnost použijte, pokud si nejste jisti, který potřebuje přístup. Pomocí této možnosti můžete přiřadit kontrola prostředků vlastníka nebo správce skupiny pro dokončení.
+   * **Poslat mi**: užitečné, pokud si chcete prohlédnout, jak přístupu zkontroluje pracovní, nebo chcete zkontrolovat jménem osoby, které nelze.
+   * **Členy zkontrolujte sami**: tuto možnost použijte, pokud chcete, aby uživatelé Zkontrolujte své vlastní přiřazení rolí.
 
-### <a name="start-hello-review"></a>Spustit kontrolní hello
-Nakonec máte toorequire hello možnost, že uživatelé zadat příslušný důvod. Pokud schválí jejich přístup. Pokud chcete přidat popis hello zkontrolujte a vyberte **spustit**.
+### <a name="start-the-review"></a>Kontrola spuštění
+Nakonec máte možnost, která vyžaduje, aby uživatelé zadali příslušný důvod. Pokud schválí jejich přístup. Pokud chcete přidat popis kontrola a vyberte **spustit**.
 
-Zajistěte, aby dát uživatelům vědět, že je kontrola přístupu jim a zobrazit je [jak tooperform přístupu zkontrolujte](active-directory-privileged-identity-management-how-to-perform-security-review.md).
+Zajistěte, aby dát uživatelům vědět, že je kontrola přístupu jim a zobrazit je [postup kontrola přístupu](active-directory-privileged-identity-management-how-to-perform-security-review.md).
 
-## <a name="manage-hello-access-review"></a>Spravovat kontrola přístupu hello
-Můžete sledovat průběh hello hello kontroloři dokončení jejich recenze v hello řídicí panel Azure AD PIM, v hello zkontroluje přístup k oddílu. Žádné oprávnění se změní v adresáři hello dokud [dokončení zkontrolujte hello](active-directory-privileged-identity-management-how-to-complete-review.md).
+## <a name="manage-the-access-review"></a>Spravovat kontrola přístupu
+Průběh můžete sledovat, kontroloři dokončení jejich recenze v řídicím panelu Azure AD PIM, v části recenze přístup. Žádné oprávnění se změní v adresáři, dokud [kontrola dokončí](active-directory-privileged-identity-management-how-to-complete-review.md).
 
-Dokud hello zkontrolujte doba je u konce, uživatelé toocomplete můžete připomenout jejich kontrola nebo zastavení hello kontrolní časná z hello přístupu zkontroluje části.
+Dokud zkontrolujte doba je u konce, můžete připomenout uživatelům dokončení jejich kontrola nebo zastavit kontrola již v rané fázi z části recenze přístup.
 
-<!--Every topic should have next steps and links toohello next logical set of content tookeep hello customer engaged-->
+<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="pim-table-of-contents"></a>Tabulka PIM obsahu
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 

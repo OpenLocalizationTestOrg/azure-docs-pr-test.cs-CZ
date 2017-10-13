@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure Architektura zabezpečení IoT | Microsoft Docs"
+title: "Architektura zabezpečení Azure IoT | Microsoft Docs"
 description: "Architektura pokyny pro IoT zabezpečení a důležité informace, včetně hrozby modelování."
 services: iot-hub
 documentationcenter: 
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: yurid
-ms.openlocfilehash: 377226aa88d8700929d553d9862eef780db5356e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4f9a99fa41406d496db14e8a4f71cfb96dd9b70c
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 [!INCLUDE [iot-security-architecture](../../includes/iot-security-architecture.md)]
 
 ## <a name="see-also"></a>Viz také
-Další informace o zabezpečení řešení IoT najdete toolearn [zabezpečit vaše nasazení IoT][lnk-security-deployment]
+Další informace o zabezpečení vaší najdete v řešení IoT [zabezpečit vaše nasazení IoT][lnk-security-deployment]
 
-toofurther prozkoumat hello služby IoT Hub, najdete v tématu:
+Pokud chcete prozkoumat další možnosti IoT Hub, najdete v části:
 
 * [Simulaci zařízení s Azure IoT Edge][lnk-iotedge]
 

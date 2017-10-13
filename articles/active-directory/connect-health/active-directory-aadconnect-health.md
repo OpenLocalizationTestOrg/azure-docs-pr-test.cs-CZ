@@ -1,6 +1,6 @@
 ---
-title: "aaaMonitor vaší místní infrastruktury identity v hello cloudu."
-description: "Toto je stránka hello Azure AD Connect Health, která popisuje, co je a důvody, proč ji používat."
+title: "Monitorujte místní infrastrukturu identity v cloudu."
+description: "Toto je stránka o službě Azure AD Connect Health. Najdete tu popis této služby a důvody, proč ji používat."
 services: active-directory
 documentationcenter: 
 author: karavar
@@ -14,107 +14,107 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 84d0b00ec800ba98094343731aa4e7317dfb0c61
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 881ce13b6e4b10064294e590431434b29da3fb33
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="monitor-your-on-premises-identity-infrastructure-and-synchronization-services-in-hello-cloud"></a>Monitorování vaší místní infrastruktury identit a synchronizace služeb v cloudu hello
-Azure Active Directory (Azure AD) Connect Health pomáhá monitorovat a získáte přehled o vaší identity místní infrastruktury a hello synchronizační služby. Umožní vám toomaintain spolehlivé připojení tooOffice 365 a služeb Microsoft Online Services tím zajišťuje monitorování klíčových komponent identity jako jsou třeba servery služby Active Directory Federation Services (AD FS), (označované taky servery Azure AD Connect jako synchronizační stroj) řadiče domény služby Active Directory, atd. Také udržuje klíčové datové body hello o těchto součástí snadno přístupné, abyste měli využití a jiné důležité statistiky toomake informován rozhodnutí.
+# <a name="monitor-your-on-premises-identity-infrastructure-and-synchronization-services-in-the-cloud"></a>Monitorujte místní infrastrukturu identity a synchronizačních služeb v cloudu.
+Služba Azure Active Directory (Azure AD) Connect Health pomáhá monitorovat místní infrastrukturu identity a synchronizační služby a lépe proniknout do jejich funkce. Umožňuje udržovat spolehlivé propojení s Office 365 a službami Microsoft Online Services tím, že zajišťuje monitorování klíčových komponent identity, jako jsou servery služby Active Directory Federation Services (AD FS), servery služby Azure AD Connect (neboli synchronizační stroj), řadiče domény služby Active Directory atd. Také udržuje klíčové datové body těchto komponent dobře přístupné, takže můžete snadno získat přehled o jejich používání a dalších důležitých statistikách, abyste se mohli kvalifikovaně rozhodnout.
 
-Hello informace jsou poskytovány hello [portálu Azure AD Connect Health](https://aka.ms/aadconnecthealth). Na portálu Azure AD Connect Health hello můžete zobrazit výstrahy, monitorování výkonu, analýzy využití a další informace. Azure AD Connect Health umožňuje hello jeden přehledu o stavu klíčových komponent identity na jednom místě.
+Další informace najdete v článku [Portál služby Azure AD Connect Health](https://aka.ms/aadconnecthealth). Na portálu služby Azure AD Connect Health můžete zobrazovat upozornění, monitorování výkonu, analýzy využívání a další informace. Azure AD Connect Health umožňuje mít na jednom místě a v jediném přehledu informace o stavu klíčových komponent identity.
 
 ![Co je Azure AD Connect Health](./media/active-directory-aadconnect-health/aadconnecthealth2.png)
 
-Funkce hello v Azure AD Connect Health zvýšit, portál hello poskytuje jeden řídicího panelu pomocí hello přehledu identity. Můžete pracovat i více robustní, kvalitnější a propojenější prostředí pro vaše uživatele tooincrease jejich možnost tooget rychleji.
+Se zvyšujícím se počtem funkcí ve službě Azure AD Connect Health poskytuje portál jediný řídicí panel přehledu identity. Získáte ještě rozsáhlejší, kvalitnější a propojenější prostředí, které vaši uživatelé budou moci využít ke zvýšení efektivity své práce.
 
 ## <a name="why-use-azure-ad-connect-health"></a>Proč používat službu Azure AD Connect Health?
-Při integraci místních adresářů se službou Azure AD, jsou vaši uživatelé zvýšit produktivitu, protože je společnou identitu tooaccess jak cloudových a místních prostředků. Tato integrace však vytvoří výzvu hello zajistit, aby toto prostředí bylo v pořádku, tak, aby uživatelé měli spolehlivý přístup k prostředkům místně i v hello cloudu z libovolného zařízení. Azure AD Connect Health pomáhá monitorovat a získáte přehled o vaší místní infrastruktury identity použít tooaccess Office 365 nebo jiné aplikace Azure AD. Stačí jednoduše nainstalovat agenta na každý z vašich místních serverů identity.
+Když integrujete místní adresáře se službou Azure AD, zvýší se produktivita vašich uživatelů skrze společnou identitu pro přístup ke cloudovým i místním prostředkům. Spolu s touto integrací ale přicházejí i další výzvy. Je třeba zajistit, aby toto prostředí bylo v pořádku a uživatelé měli spolehlivý přístup k místním i cloudovým prostředkům z jakéhokoli zařízení. Azure AD Connect Health pomáhá s monitorováním a získáváním přehledu o místní infrastruktuře identity, která se používá pro přístup k Office 365 nebo k jiným aplikacím služby Azure AD. Stačí jednoduše nainstalovat agenta na každý z vašich místních serverů identity.
 
 ## <a name="azure-ad-connect-health-for-ad-fsactive-directory-aadconnect-health-adfsmd"></a>[Azure AD Connect Health pro službu AD FS](active-directory-aadconnect-health-adfs.md)
-Azure AD Connect Health pro službu AD FS podporuje službu AD FS 2.0 v systémech Windows Server 2008 R2, Windows Server 2012 a Windows Server 2012 R2. Podporuje také monitorování proxy hello AD FS nebo proxy servery webových aplikací, které zajišťují ověřování podporu pro přístup z extranetu. Snadný a nízkonákladové instalaci hello agenta stavu poskytuje Azure AD Connect Health pro službu AD FS hello následující sadu klíčových funkcí:
+Azure AD Connect Health pro službu AD FS podporuje službu AD FS 2.0 v systémech Windows Server 2008 R2, Windows Server 2012 a Windows Server 2012 R2. Podporuje také monitorování proxy serveru služby AD FS a proxy serverů webových aplikací, které poskytují ověřování pro přístup z extranetu. Díky snadné a ekonomické instalaci agenta služby Health poskytuje Azure AD Connect Health pro službu AD FS následující sadu klíčových funkcí:
 
-* Monitorování s výstrahy tooknow proxy servery služby AD FS a AD FS nejsou v pořádku
+* Monitorování s upozorněními, která oznamují, pokud služba AD FS nebo proxy servery služby AD FS nejsou v pořádku
 * E-mailová oznámení pro kritické výstrahy
 * Trendy v datech o výkonu, které se hodí pro plánování kapacity služby AD FS
-* Funkce analýzy využití služby AD FS přihlášení s pivotů (aplikace, uživatelé, umístění v síti atd.), které jsou užitečné toounderstand jak služby AD FS využívána
+* Analytické funkce pro analýzy využití, které monitorují různá přihlášení do služby AD FS (aplikace, uživatelé, umístění v síti atd.), umožňující snadno pochopit, jak se služba AD FS využívá
 * Sestavy pro službu AD FS, například 50 uživatelů s největším počtem chybně zadaných kombinací uživatelského jména a hesla z poslední IP adresy
 
-Hello následující video obsahuje přehled služby Azure AD Connect Health pro službu AD FS.
+Následující video poskytuje přehled služby Azure AD Connect Health pro službu AD FS.
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD-Connect-Health--Monitor-you-identity-bridge/player]
 >
 >
 
 ## <a name="azure-ad-connect-health-for-syncactive-directory-aadconnect-health-syncmd"></a>[Azure AD Connect Health pro synchronizaci](active-directory-aadconnect-health-sync.md)
-Azure AD Connect Health pro synchronizaci monitoruje a poskytuje informace o hello synchronizace, které se vyskytnou mezi vaší místní služby Active Directory a Azure AD. Azure AD Connect Health pro synchronizaci poskytuje hello následující sadu klíčových funkcí:
+Služba Azure AD Connect Health pro synchronizaci monitoruje a poskytuje informace o synchronizacích, ke kterým dochází mezi místní službou Active Directory a službou Azure AD. Služba Azure AD Connect Health pro synchronizaci poskytuje následující sadu klíčových funkcí:
 
-* Monitorování s tooknow výstrahy, když server služby Azure AD Connect, také známé jako hello synchronizační modul, není v pořádku
+* Monitorování s upozorněními v případě, že server Azure AD Connect neboli synchronizační stroj není v pořádku
 * E-mailová oznámení pro kritické výstrahy
 * Synchronizace statistik provozu včetně přehledů latencí pro operace synchronizace a trendy v různých operacích, jako jsou přidání, aktualizace nebo odstranění
-* Rychlého přehledu informace o vlastnostech synchronizace a posledním úspěšném exportu tooAzure AD
+* Rychlý přehled informací o vlastnostech synchronizace a posledním úspěšném exportu do služby Azure AD
 * Sestavy chyb synchronizace na úrovni objektu \(nevyžadují službu Azure AD Premium\)
 
-Hello následující video obsahuje přehled služby Azure AD Connect Health pro synchronizaci.
+Následující video poskytuje přehled služby Azure AD Connect Health pro synchronizaci.
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-Active-Directory-Connect-Health-Monitoring-the-sync-engine/player]
 >
 >
 
 ## <a name="azure-ad-connect-health-for-ad-dsactive-directory-aadconnect-health-addsmd"></a>[Azure AD Connect Health pro službu AD DS](active-directory-aadconnect-health-adds.md)
-Azure AD Connect Health pro službu Active Directory Domain Services (AD DS) podporuje monitorování řadičů domény nainstalovaných v systémech Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 a Windows Server 2016. Hello instalace agenta stavu umožňuje toomonitor je místní prostředí služby AD DS z cloudu hello. Azure AD Connect Health pro službu AD DS poskytuje hello následující sadu klíčových funkcí:
+Azure AD Connect Health pro službu Active Directory Domain Services (AD DS) podporuje monitorování řadičů domény nainstalovaných v systémech Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 a Windows Server 2016. Instalace agenta služby Health umožňuje monitorování místního prostředí AD DS z cloudu. Služba Azure AD Connect Health pro AD DS poskytuje následující sadu klíčových funkcí:
 
-* Monitorování výstrah toodetect řadiče domény jsou není v pořádku a e-mailová oznámení pro kritické výstrahy
-* řídicí panel řadiče domény Hello, která poskytuje rychlý přehled o stavu hello a provozní stav řadičů domény
-* řídicí panel Hello stav replikace, který má hello nejnovější informace o replikaci a propojuje tootroubleshooting příručky při zjištění chyb
-* Rychlý přístup do tooperformance data grafy čítačů oblíbených výkonu, které jsou nezbytné pro monitorování účely a řešení potíží
+* Monitorování upozornění, aby se zjistilo, kdy řadiče domény nejsou v pořádku, a e-mailová oznámeními pro kritická upozornění
+* Řídicí panel Řadiče domény, který poskytuje rychlý přehled kondice a provozního stavu řadičů domény
+* Řídicí panel Stav replikace s nejnovějšími informacemi o replikaci a s odkazy na průvodce odstraňováním potíží při zjištění chyb
+* Rychlý přístup odkudkoli ke grafům s daty o výkonu oblíbených čítačů výkonu, které jsou nezbytné pro účely monitorování a řešení potíží
 
-Hello následující video obsahuje přehled služby Azure AD Connect Health pro službu AD DS.
+Následující video poskytuje přehled služby Azure AD Connect Health pro službu AD DS.
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD-Connect-Health-monitors-on-premises-AD-Domain-Services/player]
 >
 >
 
 ## <a name="get-started-with-azure-ad-connect-health"></a>Začínáme se službou Azure AD Connect Health
-tooget začít s Azure AD Connect Health, hello použijte následující kroky:
+Pokud chcete začít se službou Azure AD Connect Health, použijte následující postup:
 
 1. [Získejte předplatné služby Azure AD Premium](../active-directory-get-started-premium.md) nebo [začněte se zkušební verzí](https://azure.microsoft.com/trial/get-started-active-directory/).
 2. [Stáhněte a nainstalujte agenty služby Azure AD Connect Health](#download-and-install-azure-ad-connect-health-agent) na servery identity.
-3. Zobrazení hello Azure AD Connect Health řídicí panel v [https://aka.ms/aadconnecthealth](https://aka.ms/aadconnecthealth).
+3. Prohlédněte si řídicí panel služby Azure AD Connect Health na adrese [https://aka.ms/aadconnecthealth](https://aka.ms/aadconnecthealth).
 
 > [!NOTE]
-> Mějte na paměti, že před zobrazit data ve vašem řídicím panelu Azure AD Connect Health, je třeba tooinstall hello agenty Azure AD Connect Health na cílové servery.
+> Nezapomeňte, že než na řídicím panelu služby Azure AD Connect Health uvidíte nějaká data, je třeba na cílové servery nainstalovat agenty služby Azure AD Connect Health.
 >
 >
 
 ## <a name="download-and-install-azure-ad-connect-health-agent"></a>Stažení a instalace agenta služby Azure AD Connect Health
-* Ujistěte se, že jste [splňují požadavky hello](active-directory-aadconnect-health-agent-install.md#requirements) pro Azure AD Connect Health.
+* Ověřte, že [splňujete požadavky](active-directory-aadconnect-health-agent-install.md#requirements) pro službu Azure AD Connect Health.
 * Začínáme s využitím Azure AD Connect Health pro službu AD FS
     * [Stažení agenta Azure AD Connect Health pro službu AD FS](http://go.microsoft.com/fwlink/?LinkID=518973)
-    * [Najdete pokyny k instalaci hello](active-directory-aadconnect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs).
+    * [Pokyny k instalaci](active-directory-aadconnect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)
 * Začínáme s využitím Azure AD Connect Health pro synchronizaci
-    * [Stáhněte a nainstalujte nejnovější verzi Azure AD Connect hello](http://go.microsoft.com/fwlink/?linkid=615771). Hello agenta Health pro synchronizaci se nainstaluje jako součást instalace hello Azure AD Connect (verze 1.0.9125.0 nebo vyšší).
+    * [Stažení a instalace nejnovější verze služby Azure AD Connect](http://go.microsoft.com/fwlink/?linkid=615771) Agent služby Health pro synchronizaci se nainstaluje jako součást instalace služby Azure AD Connect (verze 1.0.9125.0 nebo vyšší).
 * Začínáme s využitím Azure AD Connect Health pro službu AD DS
     * [Stažení agenta služby Azure AD Connect Health pro službu AD DS](http://go.microsoft.com/fwlink/?LinkID=820540)
-    * [Najdete pokyny k instalaci hello](active-directory-aadconnect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-ds).
+    * [Pokyny k instalaci](active-directory-aadconnect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-ds)
 
 ## <a name="azure-ad-connect-health-portal"></a>Portál služby Azure AD Connect Health
-portál Azure AD Connect Health Hello zobrazuje zobrazení výstrahy, monitorování výkonu a analýzy využití. Hello https://aka.ms/aadconnecthealth adresu URL přejdete toohello hlavního okno služby Azure AD Connect Health. Je to v podstatě hlavní obrazovka této služby. V hlavním okně hello, uvidíte **rychlý Start**, služby v rámci Azure AD Connect Health a další možnosti konfigurace. V tématu hello následující snímek obrazovky a stručné vysvětlení, které následují hello snímek. Poté, co nasadíte agenty hello, služba stavu hello automaticky identifikuje hello služby, které monitoruje Azure AD Connect Health.
+Portál služby Azure AD Connect Health umožňuje zobrazovat upozornění, monitorování výkonu a analýzy využívání. Hlavního okno služby Azure AD Connect Health najdete na následující adrese URL: https://aka.ms/aadconnecthealth. Je to v podstatě hlavní obrazovka této služby. V hlavním okně uvidíte možnost **Rychlý start**, služby v rámci Azure AD Connect Health a další možnosti konfigurace. Prohlédněte si následující snímek obrazovky a stručné vysvětlení uvedené pod ním. Jakmile nasadíte agenty, služba Health automaticky identifikuje služby, které Azure AD Connect Health monitoruje.
 
 > [!NOTE]
-> Informace o licencování najdete v tématu hello [Azure AD Connect – nejčastější dotazy](active-directory-aadconnect-health-faq.md) nebo hello [stránky Azure AD cenová](https://aka.ms/aadpricing).
+> Informace o licencích najdete v tématu s [nejčastějšími dotazy ke službě Azure AD Connect](active-directory-aadconnect-health-faq.md) nebo na [stránce s cenami služby Azure AD](https://aka.ms/aadpricing).
     
 ![Portál služby Azure AD Connect Health](./media/active-directory-aadconnect-health/portal4.png)
 
-* **Rychlý Start**: Když vyberete tuto možnost, hello **rychlý Start** otevře se okno. Hello agenta Azure AD Connect Health můžete stáhnout tak, že vyberete **získat nástroje**. Máte také přístup k dokumentaci a můžete nám poskytnout zpětnou vazbu.
-* **Active Directory Federation Services**: Tato možnost zobrazí všechny služby hello služby AD FS, Azure AD Connect Health je aktuálně monitorování. Když vyberete instanci, hello okno, které se otevře se zobrazují informace o této instance služby. Tyto informace zahrnují přehled, vlastnosti, výstrahy, monitorování a analýzu využití. Další informace o funkcích hello najdete v [používání služby Azure AD Connect Health se službou AD FS](active-directory-aadconnect-health-adfs.md).
-* **Azure Active Directory Connect (synchronizace):** Tato možnost ukazuje vaše servery Azure AD Connect, které služba Azure AD Connect Health aktuálně monitoruje. Když vyberete položku hello, hello okno, které se otevře se zobrazují informace o serverech Azure AD Connect. Další informace o funkcích hello najdete v [používání služby Azure AD Connect Health pro synchronizaci](active-directory-aadconnect-health-sync.md).
-* **Active Directory Domain Services**: Tato možnost zobrazí všechny doménové struktury služby AD DS hello aktuálně monitoruje Azure AD Connect Health. Když vyberete doménové struktuře, hello okno, které se otevře se zobrazují informace o této doménové struktuře. Tyto informace zahrnují přehled základní informace, řadiče domény hello řídicího panelu, řídicí panel hello stav replikace, výstrahy a monitorování. Další informace o funkcích hello najdete v [používání služby Azure AD Connect Health se službou AD DS](active-directory-aadconnect-health-adds.md).
-* **Konfigurace**: Tato část obsahuje následující hello tooturn možnosti zapnout nebo vypnout:
+* **Rychlý start:** Po výběru této možnosti se otevře okno **Rychlý start**. Výběrem možnosti **Získat nástroje** si můžete stáhnout agenta služby Azure AD Connect Health. Máte také přístup k dokumentaci a můžete nám poskytnout zpětnou vazbu.
+* **Active Directory Federation Services:** Tato možnost ukazuje všechny služby AD FS, které služba Azure AD Connect Health aktuálně monitoruje. Po výběru některé instance se otevře okno s informacemi o příslušné instanci služby. Tyto informace zahrnují přehled, vlastnosti, výstrahy, monitorování a analýzu využití. Další informace o těchto možnostech najdete v tématu [Používání služby Azure AD Connect Health se službou AD FS](active-directory-aadconnect-health-adfs.md).
+* **Azure Active Directory Connect (synchronizace):** Tato možnost ukazuje vaše servery Azure AD Connect, které služba Azure AD Connect Health aktuálně monitoruje. Po výběru některé položky se otevře okno s informacemi o vašich serverech Azure AD Connect. Další informace o těchto možnostech najdete v tématu [Používání služby Azure AD Connect Health pro synchronizaci](active-directory-aadconnect-health-sync.md).
+* **Active Directory Domain Services:** Tato možnost ukazuje všechny doménové struktury AD DS, které služba Azure AD Connect Health aktuálně monitoruje. Po výběru některé doménové struktury se otevře okno s informacemi o příslušné doménové struktuře. Tyto informace zahrnují přehled základních informací, řídicí panel Řadiče domény, řídicí panel Stav replikace, upozornění a monitorování. Další informace o těchto možnostech najdete v tématu [Používání služby Azure AD Connect Health se službou AD DS](active-directory-aadconnect-health-adds.md).
+* **Konfigurace:** Tato část umožňuje zapnout nebo vypnout následující možnosti:
 
-  - Automatická aktualizace tooautomatically aktualizace hello Azure AD Connect Health toohello nejnovější verze agenta: Jakmile budou k dispozici bude automaticky aktualizovány toohello nejnovější verze hello agenta Azure AD Connect Health. Tato možnost je ve výchozím nastavení zapnutá.
-  - Povolit Microsoft přístup tooyour Azure AD adresáře data o stavu pro řešení potíží s pouze pro účely: Pokud je tato možnost povolena, můžete zobrazit Microsoft hello stejná data, která se zobrazí. Tyto informace můžou pomoci při řešení potíží a problémů. Tato možnost je ve výchozím nastavení zakázána.
+  - Funkce automatické aktualizace, která automaticky aktualizuje agenta služby Azure AD Connect Health na nejnovější verzi: aktualizace na nejnovější verzi agenta služby Azure AD Connect Health proběhne automaticky pokaždé, když bude taková verze k dispozici. Tato možnost je ve výchozím nastavení zapnutá.
+  - Umožnit Microsoftu přístup k datům o stavu adresáře Azure AD výhradně pro účely řešení problémů: Pokud je tato možnost povolená, Microsoft bude moci zobrazit stejná data, která vidíte vy. Tyto informace můžou pomoci při řešení potíží a problémů. Tato možnost je ve výchozím nastavení zakázána.
 
 ## <a name="related-links"></a>Související odkazy
 * [Instalace agenta služby Azure AD Connect Health](active-directory-aadconnect-health-agent-install.md)

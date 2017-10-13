@@ -1,6 +1,6 @@
 ---
-title: "aaaGet začít s Azure IoT Hub (Python) | Microsoft Docs"
-description: "Zjistěte, jak toosend zařízení cloud zprávy tooAzure IoT Hub pro jazyk Python pomocí sady SDK služby IoT. Vytvoření simulovaného zařízení a služby aplikace tooregister zařízení, odesílání zpráv a čtení zpráv ze služby IoT hub."
+title: "Začínáme se službou Azure IoT Hub (Python) | Dokumentace Microsoftu"
+description: "Zjistěte, jak odesílat zprávy typu zařízení-cloud do služby Azure IoT Hub pomocí sad IoT SDK pro Python. Vytvořte simulované zařízení a aplikace služeb pro registraci vašeho zařízení, odesílání zpráv a čtení zpráv ze služby IoT Hub."
 services: iot-hub
 author: dsk-2015
 manager: timlt
@@ -13,56 +13,56 @@ ms.workload: na
 ms.date: 08/25/2017
 ms.author: dkshir
 ms.custom: na
-ms.openlocfilehash: aa23e792fb144202e121274723bcfaeae0c04723
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7ebbac4464d793717f68a4cb7905c53d1f5c051a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="connect-your-simulated-device-tooyour-iot-hub-using-python"></a>Připojení simulovaného zařízení IoT hub tooyour používá Python
+# <a name="connect-your-simulated-device-to-your-iot-hub-using-python"></a>Připojení simulovaného zařízení ke službě IoT Hub pomocí Pythonu
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
-Na konci hello tohoto kurzu budete mít dvě aplikace Python:
+Na konci tohoto kurzu budete mít dvě aplikace v Pythonu:
 
-* **CreateDeviceIdentity.py**, který vytvoří identitu zařízení a přiřazený bezpečnostní klíč tooconnect aplikace simulovaného zařízení.
-* **SimulatedDevice.py**, který připojí tooyour služby IoT hub s dříve vytvořenou identitou zařízení hello a pravidelně zasílá telemetrickou zprávu pomocí protokolu MQTT hello.
+* **CreateDeviceIdentity.py** vytváří identitu zařízení a přiřazený bezpečnostní klíč k připojení aplikace simulovaného zařízení.
+* **SimulatedDevice.py** propojuje službu IoT Hub s dříve vytvořenou identitou zařízení a pravidelně zasílá telemetrickou zprávu pomocí protokolu MQTT.
 
 > [!NOTE]
-> článek Hello [SDK služby Azure IoT] [ lnk-hub-sdks] poskytuje informace o hello SDK služby Azure IoT, které můžete toobuild toorun obě aplikace na zařízení a back end vašeho řešení.
+> Informace o sadách Azure IoT SDK, s jejichž pomocí můžete vytvářet aplikace pro zařízení i back-end vašeho řešení, najdete v tématu [Sady SDK služby Azure IoT][lnk-hub-sdks].
 > 
 > 
 
-toocomplete tohoto kurzu budete potřebovat hello následující:
+Pro absolvování tohoto kurzu potřebujete:
 
-* [Python 2.x nebo 3.x][lnk-python-download]. Ujistěte se, že toouse hello 32bitové nebo 64bitové instalace podle požadavků vašeho nastavení. Po zobrazení výzvy během instalace hello, ujistěte se, že tooadd – tooyour Python – proměnná prostředí specifické pro platformu. Pokud používáte Python 2.x, může být nutné příliš[nainstalovat nebo upgradovat *pip*, hello Python balíček systém správy][lnk-install-pip].
-* Pokud používáte operační systém Windows, potom [distribuovatelného balíčku Visual C++] [ lnk-visual-c-redist] tooallow hello použití nativních knihoven DLL z Pythonu.
-* [Node.js 4.0 nebo novější][lnk-node-download]. Ujistěte se, že toouse hello 32bitové nebo 64bitové instalace podle požadavků vašeho nastavení. Toto je potřebné tooinstall hello [nástroji Průzkumník centra IoT][lnk-iot-hub-explorer].
+* [Python 2.x nebo 3.x][lnk-python-download]. Ujistěte se, že používáte 32bitovou, nebo 64bitovou instalaci podle požadavků vašeho nastavení. Po zobrazení výzvy v průběhu instalace nezapomeňte přidat Python do proměnné prostředí pro konkrétní platformu. Pokud používáte Python 2.x, možná bude nutné [nainstalovat nebo upgradovat *pip*, systém pro správu balíčků Pythonu][lnk-install-pip].
+* Pokud používáte operační systém Windows, je k povolení používání nativních knihoven DLL z Pythonu potřeba [balíček distribuovatelných součástí Visual C++][lnk-visual-c-redist].
+* [Node.js 4.0 nebo novější][lnk-node-download]. Ujistěte se, že používáte 32bitovou, nebo 64bitovou instalaci podle požadavků vašeho nastavení. To je nutné k instalaci [nástroje IoT Hub Explorer][lnk-iot-hub-explorer].
 * Aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet][lnk-free-trial].
 
 > [!NOTE]
-> Hello *pip* balíčky pro `azure-iothub-service-client` a `azure-iothub-device-client` jsou nyní k dispozici pouze pro operační systém Windows. Linux nebo Mac OS, naleznete toohello Linux a Mac OS konkrétní části hello [Příprava vývojového prostředí pro jazyk Python] [ lnk-python-devbox] post.
+> Balíčky *pip* pro `azure-iothub-service-client` a `azure-iothub-device-client` jsou v současné době dostupné jenom pro operační systém Windows. Informace o operačních systémech Linux a Mac OS najdete v částech věnovaných těmto operačním systémům v příspěvku, v němž se autor věnuje [přípravě vývojových prostředí pro Python][lnk-python-devbox].
 > 
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
-Nyní jste vytvořili svůj IoT Hub. Použijte hello název hostitele služby IoT Hub a hello připojovací řetězec služby IoT Hub v hello zbytek tohoto kurzu.
+Nyní jste vytvořili svůj IoT Hub. Ve zbývající části tohoto kurzu použijte název hostitele a připojovací řetězec služby IoT Hub.
 
 > [!NOTE]
-> Můžete také snadno vytvořit své služby IoT hub na příkazovém řádku pomocí hello Pythonu nebo Node.js na základě rozhraní příkazového řádku Azure. článek Hello [vytvoření služby IoT hub pomocí hello Azure CLI 2.0] [ lnk-azure-cli-hub] ukazuje tak hello toodo rychlé kroky. 
+> Službu IoT Hub můžete také snadno vytvořit v příkazovém řádku, a to pomocí Azure CLI založeném na Pythonu nebo Node.js. Rychlé kroky, podle kterých to můžete udělat, najdete v článku [Vytvoření služby IoT Hub pomocí Azure CLI 2.0][lnk-azure-cli-hub]. 
 > 
 
 ## <a name="create-a-device-identity"></a>Vytvoření identity zařízení
-V této části jsou uvedené kroky toocreate hello konzolovou aplikaci Python, která vytvoří identitu zařízení v registru identit hello služby IoT hub. Zařízení lze připojit pouze tooIoT rozbočovače, pokud má záznam v registru identit hello. Další informace najdete v tématu hello **registru identit** části hello [Příručka vývojáře pro službu IoT Hub][lnk-devguide-identity]. Při spuštění této konzolové aplikace vygeneruje jedinečné ID zařízení a klíč, že vaše zařízení použít tooidentify samotné při odešle zařízení cloud zprávy tooIoT rozbočovače.
+Tato část uvádí kroky k vytvoření konzolové aplikace v Pythonu, která v registru identit ve službě IoT Hub vytvoří identitu zařízení. Zařízení lze připojit ke službě IoT Hub, pouze pokud má záznam v registru zařízení. Další informace najdete v části **Registr identit** v [Příručce pro vývojáře pro službu IoT Hub][lnk-devguide-identity]. Tato konzolová aplikace po spuštění vygeneruje jedinečné ID zařízení a klíč, s jehož pomocí se zařízení může identifikovat při posílání zpráv typu zařízení-cloud do služby IoT Hub. 
 
-1. Otevřete příkazový řádek a nainstalujte hello **SDK služby Azure IoT Hub pro jazyk Python**. Zavřete příkazový řádek hello po instalaci hello SDK.
+1. Otevřete příkazový řádek a nainstalujte **sadu SDK služby Azure IoT Hub pro Python**. Po dokončení instalace sady SDK zavřete příkazový řádek.
 
     ```
     pip install azure-iothub-service-client
     ```
 
-2. Vytvořte soubor Pythonu s názvem **CreateDeviceIdentity.py**. Otevře se v [Python editor/IDE zvoleného][lnk-python-ide-list], například hello výchozí [nečinnosti][lnk-idle].
+2. Vytvořte soubor Pythonu s názvem **CreateDeviceIdentity.py**. Otevřete ho v [editoru Pythonu nebo integrovaném vývojovém prostředí (IDE) podle vašeho výběru][lnk-python-ide-list], například ve výchozím prostředí [IDLE][lnk-idle].
 
-3. Přidejte následující kód tooimport hello požadované moduly ze sady SDK služby hello hello:
+3. Přidejte následující kód, který importuje požadované moduly ze sady SDK služby:
 
     ```python
     import sys
@@ -70,7 +70,7 @@ V této části jsou uvedené kroky toocreate hello konzolovou aplikaci Python, 
     from iothub_service_client import IoTHubRegistryManager, IoTHubRegistryManagerAuthMethod
     from iothub_service_client import IoTHubDeviceStatus, IoTHubError
     ```
-2. Přidejte následující kód, nahraďte zástupný symbol hello pro hello `[IoTHub Connection String]` s hello připojovací řetězec pro hello IoT hub, které jste vytvořili v předchozí části hello. Můžete použít libovolný název jako hello `DEVICE_ID`.
+2. Přidejte následující kód a nahraďte zástupnou hodnotu `[IoTHub Connection String]` připojovacím řetězcem pro službu IoT Hub, kterou jste vytvořili v předchozí části. Jako `DEVICE_ID` můžete použít libovolný název.
    
     ```python
     CONNECTION_STRING = "[IoTHub Connection String]"
@@ -78,7 +78,7 @@ V této části jsou uvedené kroky toocreate hello konzolovou aplikaci Python, 
     ```
    [!INCLUDE [iot-hub-pii-note-naming-device](../../includes/iot-hub-pii-note-naming-device.md)]
 
-3. Přidat hello následující funkce tooprint některé informace o zařízení hello.
+3. Přidejte následující funkci, která vypíše některé informace o zařízení.
 
     ```python
     def print_device_info(title, iothub_device):
@@ -94,7 +94,7 @@ V této části jsou uvedené kroky toocreate hello konzolovou aplikaci Python, 
         print ( "iothubDevice.authMethod                  = {0}".format(iothub_device.authMethod) )
         print ( "" )
     ```
-3. Přidejte následující funkce toocreate hello zařízení identifikace pomocí hello registru Správce hello. 
+3. Přidejte následující funkci, která vytvoří identifikaci zařízení pomocí Správce registru. 
 
     ```python
     def iothub_createdevice():
@@ -110,45 +110,45 @@ V této části jsou uvedené kroky toocreate hello konzolovou aplikaci Python, 
         except KeyboardInterrupt:
             print ( "iothub_createdevice stopped" )
     ```
-4. Nakonec přidejte hlavní funkce hello následujícím způsobem a uložte soubor hello.
+4. Nakonec přidejte následujícím způsobem hlavní funkci a soubor uložte.
 
     ```python
     if __name__ == '__main__':
         print ( "" )
         print ( "Python {0}".format(sys.version) )
-        print ( "Creating device using hello Azure IoT Hub Service SDK for Python" )
+        print ( "Creating device using the Azure IoT Hub Service SDK for Python" )
         print ( "" )
         print ( "    Connection string = {0}".format(CONNECTION_STRING) )
         print ( "    Device ID         = {0}".format(DEVICE_ID) )
 
         iothub_createdevice()
     ```
-5. Na příkazovém řádku hello spusťte hello **CreateDeviceIdentity.py** následujícím způsobem:
+5. Na příkazovém řádku spusťte soubor **CreateDeviceIdentity.py** následujícím způsobem:
 
     ```python
     python CreateDeviceIdentity.py
     ```
-6. Měli byste vidět hello získávání vytvořit simulované zařízení. Zapište hello **deviceId** a hello **primaryKey** tohoto zařízení. Budete potřebovat tyto hodnoty později při vytváření aplikace, která se připojuje tooIoT rozbočovače jako zařízení.
+6. Měli byste vidět vytváření simulovaného zařízení. Poznamenejte si hodnoty **deviceId** (ID zařízení) a **primaryKey** (primární klíč) tohoto zařízení. Tyto hodnoty budete potřebovat později při vytváření aplikace, která se ke službě IoT Hub připojí jako zařízení.
 
     ![Úspěšné vytvoření zařízení][1]
 
 > [!NOTE]
-> Hello registru identit služby IoT Hub ukládá jenom zařízení identity tooenable zabezpečený přístup toohello IoT hub. Ukládá ID a klíče toouse zařízení jako zabezpečovací přihlašovací údaje a příznak povoleno/zakázáno, které můžete toodisable přístup k jednotlivým zařízením. Pokud aplikace potřebuje toostore další metadata specifická pro zařízení, měla by používat úložiště pro konkrétní aplikaci. Další informace najdete v tématu hello [Příručka vývojáře pro službu IoT Hub][lnk-devguide-identity].
+> V registru identit služby IoT Hub se uchovávají pouze identity zařízení za účelem bezpečného přístupu ke službě IoT Hub. Ukládají se tady ID zařízení a jejich klíče, které slouží jako zabezpečené přihlašovací údaje, a příznak povoleno/zakázáno, s jehož pomocí můžete zakázat přístup k jednotlivým zařízením. Pokud aplikace potřebuje pro zařízení ukládat další metadata, měla by používat úložiště pro konkrétní aplikaci. Další informace najdete v [Příručce pro vývojáře pro službu IoT Hub][lnk-devguide-identity].
 > 
 > 
 
 
 ## <a name="create-a-simulated-device-app"></a>Vytvoření aplikace simulovaného zařízení
-V této části jsou uvedené kroky toocreate hello konzolovou aplikaci Python, která simuluje zařízení a odešle zprávy typu zařízení cloud tooyour IoT hub.
+V této části vytvoříte konzolovou aplikaci v Pythonu, která simuluje zařízení a odesílá zprávy typu zařízení-cloud do služby IoT Hub.
 
-1. Otevřete nový příkazový řádek a nainstalujte hello sady SDK zařízení Azure IoT Hub pro jazyk Python následujícím způsobem. Zavřete příkazový řádek hello po instalaci hello.
+1. Otevřete nový příkazový řádek a nainstalujte sadu SDK pro zařízení Azure IoT Hub pro Python následujícím způsobem. Po dokončení instalace zavřete příkazový řádek.
 
     ```
     pip install azure-iothub-device-client
     ```
 2. Vytvořte soubor s názvem **SimulatedDevice.py**. Otevřete tento soubor v editoru Pythonu nebo integrovaném vývojovém prostředí (IDE) podle vašeho výběru (například IDLE).
 
-3. Přidejte následující kód tooimport hello požadované moduly ze zařízení hello SDK hello.
+3. Přidejte následující kód, který importuje požadované moduly ze sady SDK pro zařízení.
 
     ```python
     import random
@@ -158,10 +158,10 @@ V této části jsou uvedené kroky toocreate hello konzolovou aplikaci Python, 
     from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult
     from iothub_client import IoTHubMessage, IoTHubMessageDispositionResult, IoTHubError, DeviceMethodReturnValue
     ```
-4. Přidat hello následující kód a nahraďte zástupný symbol hello pro `[IoTHub Device Connection String]` s hello připojovací řetězec pro vaše zařízení. Hello zařízení připojovací řetězec je obvykle ve formátu hello `HostName=<hostName>;DeviceId=<deviceId>;SharedAccessKey=<primaryKey>`. Použití hello **deviceId** a **primaryKey** hello zařízení, které jste vytvořili v hello předchozí část tooreplace hello `<deviceId>` a `<primaryKey>` v uvedeném pořadí. Nahraďte `<hostName>` názvem hostitele služby IoT Hub, který je obvykle ve formátu `<IoT hub name>.azure-devices.net`.
+4. Přidejte následující kód a nahraďte zástupnou hodnotu `[IoTHub Device Connection String]` připojovacím řetězcem pro vaše zařízení. Připojovací řetězec zařízení je obvykle ve formátu `HostName=<hostName>;DeviceId=<deviceId>;SharedAccessKey=<primaryKey>`. Použijte hodnoty **deviceId** a **primaryKey** zařízení, které jste vytvořili v předchozí části, k nahrazení zástupných hodnot `<deviceId>` a `<primaryKey>`. Nahraďte `<hostName>` názvem hostitele služby IoT Hub, který je obvykle ve formátu `<IoT hub name>.azure-devices.net`.
 
     ```python
-    # String containing Hostname, Device Id & Device Key in hello format
+    # String containing Hostname, Device Id & Device Key in the format
     CONNECTION_STRING = "[IoTHub Device Connection String]"
     # choose HTTP, AMQP or MQTT as transport protocol
     PROTOCOL = IoTHubTransportProvider.MQTT
@@ -170,7 +170,7 @@ V této části jsou uvedené kroky toocreate hello konzolovou aplikaci Python, 
     SEND_CALLBACKS = 0
     MSG_TXT = "{\"deviceId\": \"MyFirstPythonDevice\",\"windSpeed\": %.2f}"    
     ```
-5. Přidejte následující kód toodefine zpětné volání potvrzení odeslání hello. 
+5. Přidejte následující kód, který definuje zpětné volání pro potvrzení odeslání. 
 
     ```python
     def send_confirmation_callback(message, result, user_context):
@@ -184,25 +184,25 @@ V této části jsou uvedené kroky toocreate hello konzolovou aplikaci Python, 
         SEND_CALLBACKS += 1
         print ( "    Total calls confirmed: %d" % SEND_CALLBACKS )
     ```
-6. Přidejte následující kód tooinitialize hello zařízení klienta hello.
+6. Přidejte následující kód, který inicializuje klienta zařízení.
 
     ```python
     def iothub_client_init():
         # prepare iothub client
         client = IoTHubClient(CONNECTION_STRING, PROTOCOL)
-        # set hello time until a message times out
+        # set the time until a message times out
         client.set_option("messageTimeout", MESSAGE_TIMEOUT)
         client.set_option("logtrace", 0)
         return client
     ```
-7. Přidejte následující hello funkce tooformat a odeslání zprávy ze simulovaného zařízení služby IoT hub tooyour.
+7. Přidejte následující funkci, která naformátuje a odešle zprávu ze simulovaného zařízení do služby IoT Hub.
 
     ```python
     def iothub_client_telemetry_sample_run():
 
         try:
             client = iothub_client_init()
-            print ( "IoT Hub device sending periodic messages, press Ctrl-C tooexit" )
+            print ( "IoT Hub device sending periodic messages, press Ctrl-C to exit" )
             message_counter = 0
 
             while True:
@@ -221,7 +221,7 @@ V této části jsou uvedené kroky toocreate hello konzolovou aplikaci Python, 
                 prop_map.add("Property", prop_text)
 
                 client.send_event_async(message, send_confirmation_callback, message_counter)
-                print ( "IoTHubClient.send_event_async accepted message [%d] for transmission tooIoT Hub." % message_counter )
+                print ( "IoTHubClient.send_event_async accepted message [%d] for transmission to IoT Hub." % message_counter )
 
                 status = client.get_send_status()
                 print ( "Send status: %s" % status )
@@ -238,61 +238,61 @@ V této části jsou uvedené kroky toocreate hello konzolovou aplikaci Python, 
         except KeyboardInterrupt:
             print ( "IoTHubClient sample stopped" )
     ```
-8. Nakonec přidejte hlavní funkce hello. 
+8. Nakonec přidejte hlavní funkci. 
 
     ```python
     if __name__ == '__main__':
-        print ( "Simulating a device using hello Azure IoT Hub Device SDK for Python" )
+        print ( "Simulating a device using the Azure IoT Hub Device SDK for Python" )
         print ( "    Protocol %s" % PROTOCOL )
         print ( "    Connection string=%s" % CONNECTION_STRING )
 
         iothub_client_telemetry_sample_run()
     ```
-9. Uložte a zavřete hello **SimulatedDevice.py** souboru. Můžete je nyní připraven toorun tuto aplikaci.
+9. Uložte a zavřete soubor **SimulatedDevice.py**. Nyní jste připraveni aplikaci spustit.
 
 > [!NOTE]
-> věcí tookeep jednoduchý, tento kurz neimplementuje žádné zásady opakování. V produkčním kódu, měli byste implementovat zásady opakování (například exponenciální zdvojnásobení) dle pokynů v článku na webu MSDN hello [přechodných chyb][lnk-transient-faults].
+> Za účelem zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu byte měli implementovat zásady opakování (například exponenciální opakování), jak je navrženo v článku [Řešení přechodných chyb][lnk-transient-faults] na webu MSDN.
 > 
 > 
 
 ## <a name="receive-messages-from-your-simulated-device"></a>Příjem zpráv ze simulovaného zařízení
-tooreceive telemetrických zpráv ze zařízení, je nutné toouse [Event Hubs][lnk-event-hubs-overview]-koncový bod kompatibilní vystavené hello IoT Hub, která čte zprávy typu zařízení cloud hello. Čtení hello [Začínáme se službou Event Hubs] [ lnk-eventhubs-tutorial] kurz informace o tom, jak tooprocess zpráv ze služby Event Hubs pro koncový bod kompatibilní s centrem událostí služby IoT hub. Služby Event Hubs nepodporuje telemetrie v Pythonu ještě, takže si můžete vytvořit buď [Node.js](iot-hub-node-node-getstarted.md#D2C_node) nebo [.NET](iot-hub-csharp-csharp-getstarted.md#D2C_csharp) zpráv typu zařízení cloud hello tooread aplikace Konzola služby Event Hubs ze služby IoT Hub. Tento kurz ukazuje, jak je možné používat hello [nástroji Průzkumník centra IoT] [ lnk-iot-hub-explorer] tooread zprávy těchto zařízení.
+Pokud chcete přijímat telemetrické zprávy z vašeho zařízení, musíte použít koncový bod kompatibilní se službou [Event Hubs][lnk-event-hubs-overview] a vystavený službou IoT Hub, který čte zprávy typu zařízení-cloud. V kurzu [Začínáme se službou Event Hubs][lnk-eventhubs-tutorial] najdete informace o zpracování zpráv ze služby Event Hubs pro koncové body kompatibilní s centrem událostí služby IoT Hub. Služba Event Hubs zatím nepodporuje telemetrii v Pythonu, takže ke čtení zpráv typu zařízení-cloud ze služby IoT Hub můžete vytvořit konzolovou aplikaci založenou na službě Event Hubs buď v [Node.js](iot-hub-node-node-getstarted.md#D2C_node), nebo v prostředí [.NET](iot-hub-csharp-csharp-getstarted.md#D2C_csharp). V tomto kurzu se dozvíte, jak můžete číst tyto zprávy pomocí [nástroje IoT Hub Explorer][lnk-iot-hub-explorer].
 
-1. Otevřete příkazový řádek a nainstalujte hello Explorer centra IoT. 
+1. Otevřete příkazový řádek a nainstalujte nástroj IoT Hub Explorer. 
 
     ```
     npm install -g iothub-explorer
     ```
 
-2. Spusťte následující příkaz na příkazovém řádku hello hello, monitorování toobegin hello zpráv typu zařízení cloud ze zařízení. Použít připojovací řetězec služby IoT hub v zástupný symbol hello po `--login`.
+2. Na příkazovém řádku spusťte následující příkaz, abyste začali monitorovat zprávy typu zařízení-cloud z vašeho zařízení. V zástupném symbolu následujícím po `--login` použijte připojovací řetězec vaší služby IoT Hub.
 
     ```
     iothub-explorer monitor-events MyFirstPythonDevice --login "[IoTHub connection string]"
     ```
 
-3. Otevřete nový příkazový řádek a přejděte toohello adresář obsahující hello **SimulatedDevice.py** souboru.
+3. Otevřete nový příkazový řádek a přejděte do adresáře, který obsahuje soubor **SimulatedDevice.py**.
 
-4. Spustit hello **SimulatedDevice.py** souboru, který pravidelně odesílá telemetrická data tooyour IoT hub. 
+4. Spusťte soubor **SimulatedDevice.py**, který pravidelně odesílá telemetrická data do služby IoT Hub. 
    
     ```
     python SimulatedDevice.py
     ```
-5. Sledujte zprávy hello zařízení na spuštění hello IoT Hub Explorer z předchozí části hello hello příkazového řádku. 
+5. Podívejte se na zprávy zařízení na příkazovém řádku se spuštěným nástrojem IoT Hub Explorer z předchozí části. 
 
     ![Zprávy typu zařízení-cloud v Pythonu][2]
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste nakonfigurovali novou službu IoT hub v hello portál Azure a poté jste vytvořili identitu zařízení v registru identit služby IoT hub hello. Použili jste toto zařízení identity tooenable hello simulované zařízení aplikaci toosend zpráv typu zařízení cloud toohello Centrum IoT. Jste zaznamenali hello zprávy přijaté službou IoT hub hello hello pomocí nástroje Průzkumník centra IoT hello. 
+V tomto kurzu jste nakonfigurovali novou službu IoT Hub na webu Azure Portal a potom jste vytvořili identitu zařízení v registru identit ve službě IoT Hub. Pomocí identity zařízení jste aplikaci simulovaného zařízení povolili odesílání zpráv typu zařízení-cloud do služby IoT Hub. S pomocí nástroje IoT Hub Explorer jste sledovali zprávy přijímané službou IoT Hub. 
 
-tooexplore hello Python SDK pro Azure IoT Hub využití podrobněji, navštivte [tohoto úložiště Git rozbočovače][lnk-python-github]. možnosti zasílání zpráv tooreview hello Dobrý den SDK služby Azure IoT Hub pro jazyk Python, můžete stáhnout a spustit [iothub_messaging_sample.py][lnk-messaging-sample]. Pro simulaci straně zařízení pomocí hello sady SDK zařízení Azure IoT Hub pro jazyk Python, můžete stáhnout a spustit hello [iothub_client_sample.py][lnk-client-sample].
+Pokud chcete podrobněji prozkoumat použití sady SDK pro Python pro službu Azure IoT Hub, přejděte do [tohoto úložiště GitHub][lnk-python-github]. Pokud si chcete projít možnosti zasílání zpráv v sadě SDK služby Azure IoT Hub pro Python, můžete si stáhnout a spustit ukázkový soubor [iothub_messaging_sample.py][lnk-messaging-sample]. Pro simulaci na straně zařízení pomocí sady SDK pro zařízení Azure IoT Hub pro Python si můžete stáhnout a spustit ukázkový soubor [iothub_client_sample.py][lnk-client-sample].
 
-toocontinue Začínáme se službou IoT Hub a tooexplore najdete v dalších scénářů platformy IoT:
+Chcete-li pokračovat v seznamování se službou IoT Hub a prozkoumat další scénáře IoT, podívejte se na tato témata:
 
 * [Připojení zařízení][lnk-connect-device]
 * [Začínáme se správou zařízení][lnk-device-management]
 * [Začínáme se službou Azure IoT Edge][lnk-iot-edge]
 
-toolearn jak tooextend zpráv IoT řešení a proces zařízení cloud ve velkém měřítku, najdete v části hello [zpracování zpráv typu zařízení cloud] [ lnk-process-d2c-tutorial] kurzu.
+Další informace o tom, jak rozšířit vaše řešení internetu věcí a zpracovávat škálované zprávy typu zařízení-cloud, najdete v kurzu [Zpracování zpráv typu zařízení-cloud][lnk-process-d2c-tutorial].
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
 
 <!-- Images. -->

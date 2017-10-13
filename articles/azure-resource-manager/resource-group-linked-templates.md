@@ -1,6 +1,6 @@
 ---
-title: "aaaLink šablony pro nasazení Azure | Microsoft Docs"
-description: "Popisuje, jak toouse propojené šablony v toocreate šablony Azure Resource Manager modulární šablonu řešení. Popisuje, jak toopass hodnot parametrů, zadejte parametr soubor a dynamicky vytvoření adresy URL."
+title: "Odkaz šablony pro nasazení Azure | Microsoft Docs"
+description: "Popisuje způsob použití propojených šablon v šablonu Azure Resource Manageru k vytvoření řešení modulární šablony. Ukazuje, jak chcete předat hodnoty parametrů, zadejte soubor parametrů a dynamicky vytvořené adresy URL."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2017
 ms.author: tomfitz
-ms.openlocfilehash: b935b1810db5ce894d009403cd4bb945cab34ba7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 8b58a83ffd473500dd3f76c09e251f9208527d4f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="using-linked-templates-when-deploying-azure-resources"></a>Použití propojených šablon při nasazování prostředků Azure
-Z v rámci jedné šablony Azure Resource Manager, můžete se propojit tooanother šablony, která vám umožní toodecompose nasazení na sadu cílových, zaměřené na konkrétní účel šablony. Stejně jako u decomposing aplikace do více tříd kódu, poskytuje rozložením výhody z hlediska testování, opakované použití a přehlednosti.  
+Z v rámci jedné šablony Azure Resource Manager, můžete se propojit k jiné šablony, která umožňuje rozložit nasazení do sady s cílem, šablony pro konkrétní účel. Stejně jako u decomposing aplikace do více tříd kódu, poskytuje rozložením výhody z hlediska testování, opakované použití a přehlednosti.  
 
-Můžete předat parametry ze šablony propojené tooa hlavní šablonu, a tyto parametry můžete namapovat přímo tooparameters nebo proměnné vystavené hello volání šablony. Hello propojené šablony můžete předat také šablonu výstup proměnné back toohello zdroje, povolení výměna obousměrný dat mezi šablonami.
+Z hlavní šablony lze předat parametry do propojené šablony, a tyto parametry můžete přímo namapovat parametry nebo proměnné vystavené volání šablony. Propojené šablony můžete předat také proměnnou výstup zpět na zdrojovou šablonu povolení výměna obousměrný dat mezi šablonami.
 
-## <a name="linking-tooa-template"></a>Propojování tooa šablony
-Můžete vytvořit propojení mezi přidáním nasazení prostředků v rámci šablony hello hlavní body propojené šablona toohello dvě šablony. Nastavit hello **templateLink** toohello vlastnost URI hello propojené šablony. Zadáním hodnot parametru šablony hello propojené přímo v šabloně nebo v souboru parametrů. Hello následující příklad používá hello **parametry** vlastnost toospecify přímo hodnotu parametru.
+## <a name="linking-to-a-template"></a>Propojení do šablony
+Můžete vytvořit propojení mezi přidáním nasazení prostředků v rámci hlavní šablony, která odkazuje na šabloně propojené dvě šablony. Můžete nastavit **templateLink** vlastnost na identifikátor URI propojené šablony. Zadáním hodnot parametru pro danou šablonu propojené přímo v šabloně nebo v souboru parametrů. Následující příklad používá **parametry** vlastnost přímo zadat hodnotu parametru.
 
 ```json
 "resources": [ 
@@ -48,13 +48,13 @@ Můžete vytvořit propojení mezi přidáním nasazení prostředků v rámci �
 ] 
 ```
 
-Podobně jako ostatní typy prostředků můžete nastavit závislosti mezi hello propojené šablony a dalším prostředkům. Proto pokud další prostředky vyžadují hodnotu výstup z hello propojené šablony, jste měli jistotu, že propojené šablonu hello je nasadit před sebou. Nebo, když propojené šablony hello závisí na jiné prostředky, můžete zajistit, že jiné prostředky, které jsou nasazeny před hello propojené šablony. Můžete načíst hodnotu z šablonu propojené s hello následující syntaxi:
+Podobně jako ostatní typy prostředků můžete nastavit závislosti mezi propojené šablony a dalším prostředkům. Proto pokud další prostředky vyžadují hodnotu výstup z propojené šablony, jste měli jistotu, že propojené šablony nasazení před sebou. Nebo, pokud propojené šablony závisí na jiné prostředky, můžete zajistit, že jiné prostředky, které jsou nasazeny před propojené šablony. Načtení hodnoty z šablonu propojené s následující syntaxí:
 
 ```json
 "[reference('linkedTemplate').outputs.exampleProperty.value]"
 ```
 
-Hello služby Správce prostředků musí být schopný tooaccess hello propojené šablony. Nelze zadat místní soubor nebo soubor, který je k dispozici ve vaší místní síti hello propojené šablony. Můžete pouze zadat hodnotu identifikátoru URI, která zahrnuje buď **http** nebo **https**. Jednou z možností je tooplace propojené šablony na účet úložiště a použít hello identifikátor URI pro tuto položku, jako ukazuje následující příklad hello:
+Musí být mít přístup k šabloně propojené služby Správce prostředků. Nelze zadat místní soubor nebo soubor, který je k dispozici ve vaší místní síti propojené šablony. Můžete pouze zadat hodnotu identifikátoru URI, která zahrnuje buď **http** nebo **https**. Jednou z možností je umístit propojené šablony v účtu úložiště, a použijte identifikátor URI pro položku, tak jak je znázorněno v následujícím příkladu:
 
 ```json
 "templateLink": {
@@ -63,9 +63,9 @@ Hello služby Správce prostředků musí být schopný tooaccess hello propojen
 }
 ```
 
-I když hello propojené šablony musí být externě k dispozici, není nutné toobe všeobecně dostupná toohello veřejné. Můžete přidat vašeho účtu úložiště privátní tooa šablony, které je vlastník účtu úložiště přístupné tooonly hello. Pak vytvořte pro přístup k sdílený přístupový podpis (SAS) tokenu tooenable během nasazení. Můžete přidat tento SAS token toohello URI hello propojené šablony. Postup nastavení šablony v účtu úložiště a generování tokenu SAS naleznete v tématu [nasazení prostředků pomocí šablony Resource Manageru a prostředí Azure PowerShell](resource-group-template-deploy.md) nebo [nasazení prostředků pomocí šablony Resource Manageru a rozhraní příkazového řádku Azure](resource-group-template-deploy-cli.md). 
+I když propojené šablony musí být externě k dispozici, nemusí být obecně dostupné pro veřejnost. Šablony můžete přidat na účet privátní úložiště, které je přístupné pouze majiteli účtu úložiště. Pak vytvořte token sdílený přístupový podpis (SAS) pro povolení přístupu během nasazení. Přidejte tento token SAS URI propojené šablony. Postup nastavení šablony v účtu úložiště a generování tokenu SAS naleznete v tématu [nasazení prostředků pomocí šablony Resource Manageru a prostředí Azure PowerShell](resource-group-template-deploy.md) nebo [nasazení prostředků pomocí šablony Resource Manageru a rozhraní příkazového řádku Azure](resource-group-template-deploy-cli.md). 
 
-Hello následující příklad ukazuje šablonu nadřazené šablona tooanother odkazy. propojené šablony Hello přistupuje s tokenem SAS, který se předává v jako parametr.
+Následující příklad ukazuje nadřazené šablony, který odkazuje na jinou šablonu. Propojené šablony přistupuje s tokenem SAS, který se předává v jako parametr.
 
 ```json
 "parameters": {
@@ -87,14 +87,14 @@ Hello následující příklad ukazuje šablonu nadřazené šablona tooanother 
 ],
 ```
 
-I když hello token, je předaná jako zabezpečený řetězec, hello URI hello propojené šablony, včetně hello tokenu SAS, je přihlášen hello operace nasazení. ohrožení toolimit nastavit vypršení platnosti pro hello token.
+I když token, je předaná jako zabezpečený řetězec, je identifikátor URI propojené šablony, včetně tokenu SAS, přihlášení operace nasazení. K omezení rizika, nastavte vypršení platnosti pro daný token.
 
-Správce prostředků zpracovává každé propojené šablony jako samostatné nasazení. V historii hello nasazení pro skupinu prostředků hello zobrazí samostatná nasazení pro nadřazené hello a vnořené šablony.
+Správce prostředků zpracovává každé propojené šablony jako samostatné nasazení. V historii nasazení pro skupinu prostředků najdete v části samostatná nasazení pro nadřazené a vnořené šablony.
 
 ![historie nasazení](./media/resource-group-linked-templates/linked-deployment-history.png)
 
-## <a name="linking-tooa-parameter-file"></a>Soubor parametrů tooa propojení
-Další příklad Hello používá hello **parametersLink** vlastnost toolink tooa parametr souboru.
+## <a name="linking-to-a-parameter-file"></a>Propojování do souboru parametrů
+Další příklad používá **parametersLink** vlastnost, která má odkaz na soubor parametru.
 
 ```json
 "resources": [ 
@@ -117,12 +117,12 @@ Další příklad Hello používá hello **parametersLink** vlastnost toolink to
 ] 
 ```
 
-Hello URI hodnota hello propojené parametr souboru nemůže být místní soubor a musí obsahovat buď **http** nebo **https**. soubor parametrů Hello může být také omezené tooaccess prostřednictvím tokenu SAS.
+Hodnota identifikátoru URI pro parametr propojené soubor nemůže být místní soubor a musí obsahovat buď **http** nebo **https**. Soubor parametrů také možné omezit přístup pomocí tokenu SAS.
 
-## <a name="using-variables-toolink-templates"></a>Pomocí šablon toolink proměnné
-Hello předchozí příklady nám ukázaly pevně definovaných hodnot adresu URL pro hello šablony odkazy. Tento přístup může fungovat pro jednoduchou šablonu, ale nebude fungovat správně při práci s velké sady modulární šablony. Místo toho můžete vytvořit statickou proměnné, která ukládá základní adresu URL pro hlavní šablonu hello a dynamicky vytvářet adresy URL pro hello propojené šablony z této základní adresu URL. Hello výhodou tohoto přístupu je, že můžete snadno přesunout nebo rozvětvení hello šablonu protože potřebujete jenom toochange hello statické proměnné v šabloně hlavní hello. hlavní šablonu Hello předá hello správné že identifikátory URI v rámci hello rozložit šablony.
+## <a name="using-variables-to-link-templates"></a>Použití proměnných propojení šablony
+Předchozí příklady nám ukázaly pevně definovaných hodnot adresu URL pro odkazy. šablony. Tento přístup může fungovat pro jednoduchou šablonu, ale nebude fungovat správně při práci s velké sady modulární šablony. Místo toho můžete vytvořit statickou proměnné, která ukládá základní adresu URL pro hlavní šablonu a dynamicky vytvářet adresy URL pro propojené šablony z této základní adresu URL. Výhodou tohoto přístupu je snadno přesunout nebo rozvětvit šablony, protože potřebujete změnit statické proměnné v šabloně hlavní. Hlavní šablonu předá správné identifikátory URI v rámci rozložená šablony.
 
-Hello následující příklad ukazuje, jak toouse základní adresa URL toocreate dvou adres URL pro propojené šablony (**sharedTemplateUrl** a **vmTemplate**). 
+Následující příklad ukazuje, jak použít základní adresu URL k vytvoření dvou adres URL pro propojených šablon (**sharedTemplateUrl** a **vmTemplate**). 
 
 ```json
 "variables": {
@@ -132,7 +132,7 @@ Hello následující příklad ukazuje, jak toouse základní adresa URL toocrea
 }
 ```
 
-Můžete také použít [deployment()](resource-group-template-functions-deployment.md#deployment) tooget hello základní adresu URL pro aktuální šablony hello a použít tuto adresu URL hello tooget pro další šablony v hello stejné umístění. Tento přístup je užitečný, pokud se změní umístění vaší šablony (možná kvůli tooversioning) nebo chcete tooavoid pevné kódování adresy URL v souboru šablony hello. 
+Můžete také použít [deployment()](resource-group-template-functions-deployment.md#deployment) získat základní adresu URL pro aktuální šablony a použít k získání adresy URL pro další šablony ve stejném umístění. Tento přístup je užitečný, pokud se změní vaši polohu šablony (možná z důvodu Správa verzí) nebo chcete vyhnout pevného kódování adresy URL v souboru šablony. 
 
 ```json
 "variables": {
@@ -141,9 +141,9 @@ Můžete také použít [deployment()](resource-group-template-functions-deploym
 ```
 
 ## <a name="complete-example"></a>Úplný příklad
-Následující příklad šablony Hello zobrazit zjednodušené uspořádání propojených šablon tooillustrate několik konceptů hello v tomto článku. Předpokládá se, že šablony hello přidané toohello stejnému kontejneru v účtu úložiště s veřejného přístupu vypnutý. propojené šablony Hello předá hodnotu hlavní šablonu back toohello hello **výstupy** části.
+Následující příklad šablony zobrazit zjednodušené uspořádání propojených šablon pro ilustraci několik konceptů v tomto článku. Předpokládá se, že šablony byly přidány do kontejneru v účtu úložiště s veřejného přístupu vypnutý. Propojené šablony předá hodnotu zpět do hlavní šablony **výstupy** části.
 
-Hello **parent.json** souboru se skládá z:
+**Parent.json** souboru se skládá z:
 
 ```json
 {
@@ -175,7 +175,7 @@ Hello **parent.json** souboru se skládá z:
 }
 ```
 
-Hello **helloworld.json** souboru se skládá z:
+**Helloworld.json** souboru se skládá z:
 
 ```json
 {
@@ -193,7 +193,7 @@ Hello **helloworld.json** souboru se skládá z:
 }
 ```
 
-V prostředí PowerShell můžete získat token pro kontejner hello a nasadit hello šablon s:
+V prostředí PowerShell můžete získat token pro kontejner a nasazení šablon s:
 
 ```powershell
 Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
@@ -202,7 +202,7 @@ $url = (Get-AzureStorageBlob -Container templates -Blob parent.json).ICloudBlob.
 New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateUri ($url + $token) -containerSasToken $token
 ```
 
-V Azure CLI 2.0 můžete získat token pro kontejner hello a nasazení šablon hello hello následující kód:
+V Azure CLI 2.0 můžete získat token pro kontejner a nasazení šablon s následujícím kódem:
 
 ```azurecli
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)
@@ -226,6 +226,6 @@ az group deployment create --resource-group ExampleGroup --template-uri $url?$to
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* toolearn o hello definování hello pořadím nasazení pro vaše prostředky, najdete v části [definování závislostí v šablonách Azure Resource Manager](resource-group-define-dependencies.md)
-* toolearn způsobu toodefine jeden prostředek ale vytvořit velký počet instancí, najdete v [vytvořit více instancí prostředků ve službě Správce prostředků Azure](resource-group-create-multiple.md)
+* Další informace o definování pořadí nasazení pro vaše prostředky najdete v tématu [definování závislostí v šablonách Azure Resource Manager](resource-group-define-dependencies.md)
+* Zjistěte, jak definovat jeden prostředek ale vytvořit mnoho instancí, najdete v tématu [vytvořit více instancí prostředků ve službě Správce prostředků Azure](resource-group-create-multiple.md)
 

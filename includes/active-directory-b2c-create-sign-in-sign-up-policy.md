@@ -1,28 +1,28 @@
-přihlášení tooenable na vaší aplikace, budete potřebovat toocreate sign-in zásady. Tato zásada popisuje hello prostředí, které budou spotřebitelé procházejí během přihlášení a hello obsah tokeny, které hello aplikace se zobrazí na úspěšné přihlášení.
+Pokud chcete ve své aplikaci povolit přihlašování, budete muset vytvořit zásadu přihlašování. Tato zásada popisuje prostředí, kterými uživatelé budou procházet při přihlašování, a obsah tokenů, které bude aplikace přijímat po úspěšných přihlášeních.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 
-V části zásady hello nastavení, vyberte **zásady registrace nebo přihlášení** a klikněte na tlačítko **+ přidat**.
+V nastavení v části Zásady vyberte **Zásady registrace nebo přihlašování** a klikněte na **+ Přidat**.
 
 ![Výběr zásad registrace nebo přihlašování a kliknutí na tlačítko Přidat](media/active-directory-b2c-create-sign-in-sign-up-policy/add-b2c-signup-signin-policy.png)
 
-Zadejte zásadu **název** pro tooreference vaší aplikace. Zadejte například `SiUpIn`.
+Zadejte **Název** zásady, který v aplikaci použijete jako referenci. Zadejte například `SiUpIn`.
 
 Vyberte **Zprostředkovatelé identity** a zaškrtněte políčko **Registrace pomocí e-mailu**. Volitelně můžete vybrat také zprostředkovatele sociální identity, pokud už jsou nakonfigurováni. Klikněte na **OK**.
 
-![Vyberte e-mailu registrace jako zprostředkovatele identity a klikněte na tlačítko OK hello](media/active-directory-b2c-create-sign-in-sign-up-policy/add-b2c-signup-signin-identity-providers.png)
+![Výběr možnosti Přihlášení místním účtem jako zprostředkovatele identity a kliknutí na tlačítko OK](media/active-directory-b2c-create-sign-in-sign-up-policy/add-b2c-signup-signin-identity-providers.png)
 
-Vyberte **Atributy registrace**. Vyberte atributy, chcete-li toocollect z hello příjemce během registrace. Zaškrtněte například políčka **Země/oblast**, **Zobrazované jméno** a **PSČ**. Klikněte na **OK**.
+Vyberte **Atributy registrace**. Zvolte atributy, které od uživatele chcete během registrace shromažďovat. Zaškrtněte například políčka **Země/oblast**, **Zobrazované jméno** a **PSČ**. Klikněte na **OK**.
 
-![Vyberte některých atributů a klikněte na tlačítko OK hello](media/active-directory-b2c-create-sign-in-sign-up-policy/add-b2c-signup-signin-sign-up-attributes.png)
+![Výběr atributů a kliknutí na tlačítko OK](media/active-directory-b2c-create-sign-in-sign-up-policy/add-b2c-signup-signin-sign-up-attributes.png)
 
-Vyberte **Deklarace identit aplikace**. Vyberte, že deklarace identity, které má vrátit v tokenech autorizace hello odeslána zpět tooyour aplikace po úspěšné registraci nebo přihlašovací prostředí. Vyberte například **Zobrazované jméno**, **Zprostředkovatel identity**, **PSČ**, **Uživatel je nový** a **ID objektu uživatele**.
+Vyberte **Deklarace identit aplikace**. Zvolte deklarace identit, které se mají vracet v autorizačních tokenech odesílaných zpět do aplikace po úspěšné registraci nebo přihlášení. Vyberte například **Zobrazované jméno**, **Zprostředkovatel identity**, **PSČ**, **Uživatel je nový** a **ID objektu uživatele**.
 
 ![Výběr deklarací identit aplikace a kliknutí na tlačítko OK](media/active-directory-b2c-create-sign-in-sign-up-policy/add-b2c-signup-signin-application-claims.png)
 
-Klikněte na tlačítko **vytvořit** tooadd hello zásad. zásady Hello je uveden jako **B2C_1_SiUpIn**. Hello **B2C_1_** předpona je název připojení toohello.
+Kliknutím na **Vytvořit** přidejte zásadu. Zásada se zobrazí jako **B2C_1_SiUpIn**. K názvu se připojí předpona **B2C_1_**.
 
-Spustit nástroj Zásady hello výběrem **B2C_1_SiUpIn**. Ověřte nastavení hello zadané v tabulce hello pak klikněte na tlačítko **spustit nyní**.
+Otevřete zásadu výběrem **B2C_1_SiUpIn**. Ověřte nastavení uvedená v tabulce a potom klikněte na **Spustit**.
 
 ![Výběr a spuštění zásady](media/active-directory-b2c-create-sign-in-sign-up-policy/run-b2c-signup-signin-policy.png)
 
@@ -31,8 +31,8 @@ Spustit nástroj Zásady hello výběrem **B2C_1_SiUpIn**. Ověřte nastavení h
 | **Aplikace** | Aplikace Contoso B2C |
 | **Výběr adresy URL odpovědi** | `https://localhost:44316/` |
 
-Otevře novou kartu prohlížeče a můžete ověřit činnost registrace nebo přihlášení příjemce hello podle konfigurace.
+Otevře se nová karta prohlížeče a můžete zkontrolovat nakonfigurované uživatelské prostředí pro registraci a přihlášení.
 
 > [!NOTE]
-> Zabíral tooa minut pro vytvoření zásad a aktualizuje tootake vliv.
+> Trvá až minutu, než se vytvoření zásady a aktualizace projeví.
 >

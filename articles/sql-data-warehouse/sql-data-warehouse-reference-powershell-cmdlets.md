@@ -1,6 +1,6 @@
 ---
-title: aaaPowerShell rutiny pro Azure SQL Data Warehouse
-description: "Najít hello nejvyšší rutiny prostředí PowerShell pro Azure SQL Data Warehouse včetně jak toopause a obnovit databázi."
+title: "Rutiny prostředí PowerShell pro Azure SQL Data Warehouse"
+description: "Najít nejvyšší rutin prostředí PowerShell pro Azure SQL Data Warehouse, včetně toho, jak pozastavení a obnovení databáze."
 services: sql-data-warehouse
 documentationcenter: NA
 author: kevinvngo
@@ -15,23 +15,23 @@ ms.workload: data-services
 ms.custom: reference
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
-ms.openlocfilehash: 84353b56131cf856e0724d338d7ed186fd2ceeaa
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ce3e11587c2e0cb92923868a4f26d7f59c7ef4ca
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>Rutiny prostředí PowerShell a rozhraní REST API pro SQL Data Warehouse
-Mnoho úloh správy serveru SQL datového skladu lze spravovat pomocí rutin prostředí Azure PowerShell nebo rozhraní REST API.  Zde jsou některé příklady jak toouse prostředí PowerShell příkazy tooautomate běžné úlohy v SQL Data Warehouse.  Některé dobrými příklady REST, najdete v článku hello [spravovat škálovatelnost REST][Manage scalability with REST].
+Mnoho úloh správy serveru SQL datového skladu lze spravovat pomocí rutin prostředí Azure PowerShell nebo rozhraní REST API.  Níže jsou uvedeny příklady použití příkazů prostředí PowerShell pro automatizaci běžných úkolů v SQL Data Warehouse.  Některé dobrými příklady REST, najdete v článku [spravovat škálovatelnost REST][Manage scalability with REST].
 
 > [!NOTE]
-> Pořadí toouse prostředí Azure PowerShell s SQL Data Warehouse, je nutné prostředí Azure PowerShell verze 1.0.3 nebo novější.  Vaše verze můžete zkontrolovat spuštěním **Get-Module - ListAvailable-Name Azure**.  je možné nainstalovat nejnovější verzi Hello od [instalačního programu webové platformy Microsoft][Microsoft Web Platform Installer].  Další informace o instalaci nejnovější verze hello najdete v tématu [jak tooinstall a konfigurace prostředí Azure PowerShell][How tooinstall and configure Azure PowerShell].
+> Abyste mohli používat Azure PowerShell s SQL Data Warehouse, je nutné prostředí Azure PowerShell verze 1.0.3 nebo novější.  Vaše verze můžete zkontrolovat spuštěním **Get-Module - ListAvailable-Name Azure**.  Nejnovější verzi můžete nainstalovat z [instalačního programu webové platformy Microsoft][Microsoft Web Platform Installer].  Další informace o instalaci nejnovější verze najdete v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell][How to install and configure Azure PowerShell].
 > 
 > 
 
 ## <a name="get-started-with-azure-powershell-cmdlets"></a>Začínáme s rutinami prostředí Azure PowerShell
 1. Otevřete Windows PowerShell.
-2. Na příkazovém řádku prostředí PowerShell text hello spusťte tyto příkazy toosign v toohello Azure Resource Manager a vybrat své předplatné.
+2. Do příkazového řádku prostředí PowerShell spusťte tyto příkazy a přihlaste se k Azure Resource Manager a vybrat své předplatné.
    
     ```PowerShell
     Login-AzureRmAccount
@@ -40,12 +40,12 @@ Mnoho úloh správy serveru SQL datového skladu lze spravovat pomocí rutin pro
     ```
 
 ## <a name="pause-sql-data-warehouse-example"></a>Pozastavení SQL Data Warehouse příklad
-Pozastavení databáze s názvem "Database02", které jsou hostované na serveru s názvem "Server01."  Hello server je ve skupině prostředků Azure s názvem "ResourceGroup1."
+Pozastavení databáze s názvem "Database02", které jsou hostované na serveru s názvem "Server01."  Server je ve skupině prostředků Azure s názvem "ResourceGroup1."
 
 ```Powershell
 Suspend-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 ```
-Variace, v tomto příkladu prostřednictvím kanálu předá objekt hello načíst příliš[Suspend-AzureRmSqlDatabase][Suspend-AzureRmSqlDatabase].  V důsledku toho se pozastaví hello databáze. poslední příkaz Hello zobrazuje výsledky hello.
+Prostřednictvím kanálu variace, v tomto příkladu předá načtený objekt, který má [Suspend-AzureRmSqlDatabase][Suspend-AzureRmSqlDatabase].  V důsledku toho je databáze pozastavena. Poslední příkaz zobrazí výsledky.
 
 ```Powershell
 $database = Get-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
@@ -54,13 +54,13 @@ $resultDatabase
 ```
 
 ## <a name="start-sql-data-warehouse-example"></a>Spusťte SQL Data Warehouse příklad
-Operace obnovení databáze s názvem "Database02", které jsou hostované na serveru s názvem "Server01." Hello server je obsažen ve skupině prostředků s názvem "ResourceGroup1."
+Operace obnovení databáze s názvem "Database02", které jsou hostované na serveru s názvem "Server01." Server je součástí skupiny prostředků s názvem "ResourceGroup1."
 
 ```Powershell
 Resume-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" -DatabaseName "Database02"
 ```
 
-Variace, načte tento příklad databáze s názvem "Database02" ze serveru s názvem "Server01", který je obsažen ve skupině prostředků s názvem "ResourceGroup1." Ji prostřednictvím kanálu předá objekt hello načíst příliš[Resume-AzureRmSqlDatabase][Resume-AzureRmSqlDatabase].
+Variace, načte tento příklad databáze s názvem "Database02" ze serveru s názvem "Server01", který je obsažen ve skupině prostředků s názvem "ResourceGroup1." Ji prostřednictvím kanálu předá načtený objekt, který má [Resume-AzureRmSqlDatabase][Resume-AzureRmSqlDatabase].
 
 ```Powershell
 $database = Get-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
@@ -68,7 +68,7 @@ $resultDatabase = $database | Resume-AzureRmSqlDatabase
 ```
 
 > [!NOTE]
-> Všimněte si, že pokud je váš server foo.database.windows.net, použijte "foo" jak hello - ServerName hello rutiny prostředí PowerShell.
+> Všimněte si, že pokud je váš server foo.database.windows.net, použijte "foo" jako parametr ServerName - rutin prostředí PowerShell.
 > 
 > 
 
@@ -97,7 +97,7 @@ Další úlohy, které je možné automatizovat pomocí prostředí PowerShell, 
 <!--Image references-->
 
 <!--Article references-->
-[How tooinstall and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
+[How to install and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
 [Create a SQL Data Warehouse using PowerShell]: ./sql-data-warehouse-get-started-provision-powershell.md
 [Database restore]: ./sql-data-warehouse-restore-database-powershell.md
 [Manage scalability with REST]: ./sql-data-warehouse-manage-compute-rest-api.md
@@ -112,7 +112,7 @@ Další úlohy, které je možné automatizovat pomocí prostředí PowerShell, 
 [Remove-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt619368.aspx
 [Restore-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt693390.aspx
 [Resume-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt619347.aspx
-<!-- It appears that Select-AzureRmSubscription isn't documented, so this points tooSelect-AzureSubscription -->
+<!-- It appears that Select-AzureRmSubscription isn't documented, so this points to Select-AzureSubscription -->
 [Select-AzureRmSubscription]: https://msdn.microsoft.com/library/dn722499.aspx
 [Set-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt619433.aspx
 [Suspend-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt619337.aspx

@@ -1,6 +1,6 @@
 ---
-title: "hello aaaUnderstand OpenID Connect kód tok ověřování ve službě Azure AD | Microsoft Docs"
-description: "Tento článek popisuje, jak přistupovat k toouse HTTP zprávy tooauthorize tooweb aplikací a webových rozhraní API ve vašem klientovi pomocí Azure Active Directory a OpenID Connect."
+title: "Lépe pochopit tok OpenID Connect kód ověřování ve službě Azure AD | Microsoft Docs"
+description: "Tento článek popisuje, jak používat zprávy protokolu HTTP k autorizaci přístupu k webové aplikace a webové rozhraní API ve vašem klientovi pomocí Azure Active Directory a OpenID Connect."
 services: active-directory
 documentationcenter: .net
 author: dstrockis
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: fafd8ab906ee576c584fec2ef1e9de83ddb1f6e0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1bb944997caa0c43354e82bf9b1a70e3e104a476
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# Povolit přístup k aplikacím tooweb pomocí OpenID Connect a službou Azure Active Directory
-[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) je vrstva jednoduché identity postavená na protokol hello OAuth 2.0. Definuje OAuth 2.0 tooobtain mechanismy a použít **přístup tokeny** tooaccess chráněné zdroje, ale nejsou definovány informací o identitě tooprovide standardní metody. Jako rozšíření toohello proces autorizace OAuth 2.0, OpenID Connect implementuje ověřování. Poskytuje informace o hello koncového uživatele ve formě hello `id_token` který ověřuje identitu hello hello uživatele a poskytuje základní profil informace o uživateli hello.
+# Autorizace přístupu k webovým aplikacím pomocí OpenID Connect a službou Azure Active Directory
+[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) je vrstva jednoduché identity postavená na protokol OAuth 2.0. OAuth 2.0 definuje mechanismy pro získání a používání **přístup tokeny** pro přístup k chráněným prostředkům, ale nejsou definovány standardní metody, které poskytují informace o identitě. Jako rozšíření pro proces autorizace OAuth 2.0, OpenID Connect implementuje ověřování. Poskytuje informace o koncového uživatele ve formě `id_token` který ověřuje identitu uživatele a poskytuje základní profil informace o uživateli.
 
 Naše doporučení OpenID Connect je, pokud vytváříte webovou aplikaci, která je hostovaná na serveru a k němu přistupovat prostřednictvím prohlížeče.
 
@@ -30,18 +30,18 @@ Naše doporučení OpenID Connect je, pokud vytváříte webovou aplikaci, kter�
 [!INCLUDE [active-directory-protocols-getting-started](../../../includes/active-directory-protocols-getting-started.md)] 
 
 ## Tok ověřování pomocí OpenID Connect
-Hello nejzákladnější tok přihlášení obsahuje následující kroky hello – každý z nich je podrobně popsaná níže.
+Nejzákladnější toku přihlášení obsahuje následující kroky – každý z nich je podrobně popsaná níže.
 
 ![OpenId Connect tok ověřování](media/active-directory-protocols-openid-connect-code/active-directory-oauth-code-flow-web-app.png)
 
 ## Dokument metadat OpenID Connect
 
-Popisuje dokument metadat, která obsahuje většinu hello informace požadované pro aplikaci tooperform přihlášení, OpenID Connect. To zahrnuje informace, jako je toouse hello adresy URL a hello umístění služby hello veřejné podpisové klíče. Dokument metadat OpenID Connect Hello najdete tady:
+Popisuje dokumentu metadat, který obsahuje většinu požadované informace o aplikaci k provedení přihlášení, OpenID Connect. To zahrnuje informace, jako jsou adresy URL používat a umístění služby veřejného podpisového klíče. Dokument metadat OpenID Connect najdete tady:
 
 ```
 https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration
 ```
-Hello metadata je jednoduchý dokument JavaScript Object Notation (JSON). Viz následující fragment kódu pro příklad hello. Hello fragment kódu na obsah je podrobně popsán v hello [OpenID Connect specifikace](https://openid.net).
+Metadata jsou jednoduché dokumentu JavaScript Object Notation (JSON). Viz následující fragment kódu pro příklad. Jsou podrobně popsány v tomto fragmentu kódu obsah [OpenID Connect specifikace](https://openid.net).
 
 ```
 {
@@ -58,12 +58,12 @@ Hello metadata je jednoduchý dokument JavaScript Object Notation (JSON). Viz n�
 }
 ```
 
-## Odeslání požadavku na hello přihlášení
-Pokud vaše webová aplikace, musí uživatel hello tooauthenticate, se musí přímé hello uživatele toohello `/authorize` koncový bod. Tento požadavek je podobné toohello první rameno hello [toku OAuth 2.0 autorizační kód](active-directory-protocols-oauth-code.md), s několika důležité rozdíly:
+## Odeslání žádosti o přihlášení
+Když webové aplikace potřebuje k ověření uživatele, musí přesměrování uživatele `/authorize` koncový bod. Tento požadavek je podobná první rameno [toku OAuth 2.0 autorizační kód](active-directory-protocols-oauth-code.md), s několika důležité rozdíly:
 
-* Hello žádost musí obsahovat rozsah hello `openid` v hello `scope` parametr.
-* Hello `response_type` musí obsahovat parametr `id_token`.
-* Hello žádost musí obsahovat hello `nonce` parametr.
+* Žádost musí obsahovat rozsah `openid` v `scope` parametr.
+* `response_type` Musí obsahovat parametr `id_token`.
+* Musí zahrnovat požadavek `nonce` parametr.
 
 Takže ukázková žádost bude vypadat takto:
 
@@ -82,21 +82,21 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parametr |  | Popis |
 | --- | --- | --- |
-| Klienta |Požadované |Hello `{tenant}` hodnota v cestě hello hello žádosti může být použité toocontrol, který se můžete přihlásit do aplikace hello.  Hello povolené hodnoty jsou identifikátory klienta, například `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` nebo `contoso.onmicrosoft.com` nebo `common` pro tokeny nezávislé na klienta |
-| client_id |Požadované |Hello Id aplikace přiřazené tooyour aplikace při registraci s Azure AD. Tento nástroj naleznete v hello portálu Azure. Klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikace**, zvolte hello aplikace a vyhledejte hello Id aplikace na stránce aplikace hello. |
+| Klienta |Požadované |`{tenant}` Hodnotu v cestě požadavku slouží k řízení, kdo může přihlásit k aplikaci.  Povolené hodnoty jsou identifikátory klienta, například `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` nebo `contoso.onmicrosoft.com` nebo `common` pro tokeny nezávislé na klienta |
+| client_id |Požadované |Id aplikace přiřazené vaší aplikaci při registraci s Azure AD. Tento nástroj naleznete na webu Azure Portal. Klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikace**, zvolte aplikaci a vyhledejte číslo Id aplikace na stránce aplikace. |
 | response_type |Požadované |Musí zahrnovat `id_token` pro OpenID Connect přihlášení.  Může také obsahovat další response_types, jako například `code`. |
-| Obor |Požadované |Seznam obory oddělených mezerami.  Pro OpenID Connect, musí obsahovat hello oboru `openid`, což znamená, že oprávnění "Přihlásit" toohello v hello souhlasu uživatelského rozhraní.  Může také zahrnovat další obory v této žádosti o žádosti o souhlas. |
-| hodnotu Nonce |Požadované |Hodnotu zahrnuté v žádosti o hello vygenerovaný hello aplikací, který je součástí hello výsledná `id_token` jako deklarace identity.  aplikace Hello můžete pak ověřte, že tato hodnota toomitigate opětovného přehrání tokenu útoků.  Hodnota Hello je obvykle náhodnou jedinečného řetězce nebo identifikátor GUID, které můžou být použité tooidentify hello původ hello požadavku. |
-| redirect_uri |Doporučená |Hello redirect_uri vaší aplikace, kde můžete odesílat a přijímat aplikace odpovědi ověřování.  Se musí přesně shodovat s jedním z hello redirect_uris, registrován v hello portál, s výjimkou musí být kódovaná adresou url. |
-| response_mode |Doporučená |Určuje metodu hello, který by měl být použité toosend hello výsledné authorization_code back tooyour aplikace.  Podporované hodnoty jsou `form_post` pro *HTTP post formuláře* nebo `fragment` pro *fragment adresy URL*.  U webových aplikací, doporučujeme použít `response_mode=form_post` tooensure hello nejbezpečnější přenos tokeny tooyour aplikace. |
-| state |Doporučená |Hodnota součástí hello požadavek, který je vrácený v odpovědi tokenu hello.  Může být řetězec o délce veškerý obsah, který chcete.  Náhodně generované jedinečné hodnoty se obvykle používá u [prevence útoků padělání požadavku posílaného mezi weby](http://tools.ietf.org/html/rfc6749#section-10.12).  Stav Hello je také použít tooencode informace o stavu hello uživatele v aplikaci hello před došlo k požadavku hello ověřování, jako je například stránku hello nebo zobrazení, které byly na. |
-| řádku |Volitelné |Označuje typ hello interakce s uživatelem, který je vyžadován.  V současné době hello pouze platné hodnoty jsou "přihlášení", 'none' a 'souhlas'.  `prompt=login`Vynutí hello uživatele tooenter přihlašovacích údajů tohoto požadavku negace jednotného přihlašování.  `prompt=none`hello opačné – zajišťuje, že tento hello uživatel není uveden s žádné interaktivní výzvy jakékoli.  Pokud požadavek hello nemůže být dokončena bez upozornění pomocí jednotného přihlašování, koncový bod hello vrátí chybu.  `prompt=consent`Aktivuje hello OAuth dialogové okno po hello uživatel se přihlásí, dotazem hello uživatele toogrant oprávnění toohello aplikace. |
-| login_hint |Volitelné |Může být použité toopre výplně hello uživatelského jména nebo e-mailovou adresu pole hello přihlašovací stránky pro uživatele hello, pokud znáte svoje uživatelské jméno předem.  Tento parametr použijte často aplikace během opětovné ověření, uživatelské jméno hello s z předchozí přihlášení už extrahovat pomocí hello `preferred_username` deklarací identity. |
+| Obor |Požadované |Seznam obory oddělených mezerami.  Pro OpenID Connect, musí obsahovat rozsah `openid`, což znamená, že je na oprávnění "Přihlásit" v souhlasu uživatelského rozhraní.  Může také zahrnovat další obory v této žádosti o žádosti o souhlas. |
+| hodnotu Nonce |Požadované |Součástí požadavku, vygenerovaný aplikací, který je součástí výsledná hodnota `id_token` jako deklarace identity.  Aplikace pak může ověřit tuto hodnotu zmírnit útoky opětovného přehrání tokenu.  Hodnota je obvykle náhodnou jedinečného řetězce nebo identifikátor GUID, který slouží k určení původu požadavku. |
+| redirect_uri |Doporučená |O položku redirect_uri vaší aplikace, kde můžete odesílat a přijímat aplikace odpovědi ověřování.  Se musí přesně shodovat s jedním redirect_uris, které jste zaregistrovali na portálu, s výjimkou musí být kódovaná adresou url. |
+| response_mode |Doporučená |Určuje metodu, která se má použít k odeslání výsledné authorization_code zpět do vaší aplikace.  Podporované hodnoty jsou `form_post` pro *HTTP post formuláře* nebo `fragment` pro *fragment adresy URL*.  U webových aplikací, doporučujeme použít `response_mode=form_post` zajistit nejbezpečnější přenos tokeny do vaší aplikace. |
+| state |Doporučená |Hodnota součástí požadavek, který je vrácený v odpovědi tokenu.  Může být řetězec o délce veškerý obsah, který chcete.  Náhodně generované jedinečné hodnoty se obvykle používá u [prevence útoků padělání požadavku posílaného mezi weby](http://tools.ietf.org/html/rfc6749#section-10.12).  Stav se také používá ke kódování informace o stavu uživatele v aplikaci, než k žádosti o ověření, například stránky nebo zobrazení, které byly na. |
+| řádku |Volitelné |Označuje typ interakce s uživatelem, který je vyžadován.  V současné době pouze platné hodnoty jsou "přihlášení", 'none' a 'souhlas'.  `prompt=login`Vynutí se tak, aby uživatel zadal své přihlašovací údaje tohoto požadavku negace jednotného přihlašování.  `prompt=none`je opak - zajišťuje, že uživatel není uveden s žádné interaktivní výzvu jakkoli.  Pokud požadavek nemůže být dokončena bez upozornění pomocí jednotného přihlašování, koncový bod vrátí chybu.  `prompt=consent`aktivační události OAuth souhlas dialogové okno po přihlášení uživatele, požádá uživatele a udělit oprávnění k aplikaci. |
+| login_hint |Volitelné |Slouží k předem vyplnit pole uživatelské jméno nebo e-mailové adresy na stránce přihlášení pro uživatele, pokud znáte svoje uživatelské jméno předem.  Tento parametr použijte často aplikace během opětovné ověření, uživatelské jméno s již extrahovat z předchozí přihlášení pomocí `preferred_username` deklarací identity. |
 
-V tomto okamžiku je uživatel hello výzva tooenter své přihlašovací údaje a dokončení hello ověřování.
+V tomto okamžiku je uživatel vyzván k zadání přihlašovacích údajů a dokončení ověření.
 
 ### Ukázková odpověď
-Ukázková odpověď po hello uživatel byl ověřen, může vypadat například takto:
+Ukázková odpověď po byl uživatel ověřen, může vypadat například takto:
 
 ```
 POST /myapp/ HTTP/1.1
@@ -108,11 +108,11 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 
 | Parametr | Popis |
 | --- | --- |
-| požadavku id_token |Hello `id_token` požadovanou aplikaci hello. Můžete použít hello `id_token` tooverify hello identitu uživatele a zahájit relaci s hello uživatele. |
-| state |Hodnota součástí hello požadavek, který je také vrácený v odpovědi tokenu hello. Náhodně generované jedinečné hodnoty se obvykle používá u [prevence útoků padělání požadavku posílaného mezi weby](http://tools.ietf.org/html/rfc6749#section-10.12).  Stav Hello je také použít tooencode informace o stavu hello uživatele v aplikaci hello před došlo k požadavku hello ověřování, jako je například stránku hello nebo zobrazení, které byly na. |
+| požadavku id_token |`id_token` Požadovanou aplikaci. Můžete použít `id_token` ověřit identitu uživatele a spustíte relaci s uživatelem. |
+| state |Hodnota součástí požadavek, který je také vrácený v odpovědi tokenu. Náhodně generované jedinečné hodnoty se obvykle používá u [prevence útoků padělání požadavku posílaného mezi weby](http://tools.ietf.org/html/rfc6749#section-10.12).  Stav se také používá ke kódování informace o stavu uživatele v aplikaci, než k žádosti o ověření, například stránky nebo zobrazení, které byly na. |
 
 ### Chybové odpovědi
-Chybové odpovědi se taky může odeslat toohello `redirect_uri` tak hello aplikace můžete správně zpracovat:
+Chybové odpovědi se taky může odeslat do `redirect_uri` tak aplikace můžete správně zpracovat:
 
 ```
 POST /myapp/ HTTP/1.1
@@ -124,39 +124,39 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 | Parametr | Popis |
 | --- | --- |
-| error |Řetězec kódu chyby, který lze použít tooclassify typů chyb, ke kterým došlo a může být použité tooreact tooerrors. |
-| error_description |Konkrétní chybová zpráva, která může pomoci vývojář identifikovat hello hlavní příčinu chyby ověřování. |
+| error |Řetězec kódu chyby, který můžete použít ke klasifikaci typů chyb, ke kterým došlo a slouží k reagovat na chyby. |
+| error_description |Konkrétní chybová zpráva, která může pomoci vývojář určit hlavní příčinu chyby ověřování. |
 
 #### Kódy chyb pro chyb koncový bod autorizace
-Hello následující tabulka popisuje hello různé kódy chyb, které mohou být vráceny v hello `error` parametr hello chybové odpovědi.
+Následující tabulka popisuje různé kódy chyb, které mohou být vráceny v `error` parametr odpovědi na chybu.
 
 | Kód chyby | Popis | Akce klienta |
 | --- | --- | --- |
-| invalid_request |Chyba protokolu, například chybějící povinný parametr. |Vyřešte a znovu odešlete žádost hello. To je chyba vývoj a je obvykle zachycena během počáteční testování. |
-| unauthorized_client |Hello klientská aplikace není povolená toorequest autorizační kód. |K tomu obvykle dojde, když hello klientská aplikace není registrovaný ve službě Azure AD nebo klienta Azure AD toohello uživatele nebyla přidána. aplikace Hello můžete vyzvat uživatele hello s pokyny pro instalaci aplikace hello a její přidání tooAzure AD. |
-| ACCESS_DENIED |Vlastník prostředku odepřen souhlasu |klientská aplikace Hello uvědomí hello uživatele, který nemůže pokračovat, dokud hello uživatel souhlasí. |
-| unsupported_response_type |Hello autorizace server nepodporuje typ odpovědi hello v žádosti o hello. |Vyřešte a znovu odešlete žádost hello. To je chyba vývoj a je obvykle zachycena během počáteční testování. |
-| server_error |Hello serveru došlo k neočekávané chybě. |Opakujte žádost hello. Tyto chyby může být důsledkem dočasné stavy. klientská aplikace Hello toohello uživatele mohou vysvětlit, že odpovědi je zpožděno z důvodu tooa dočasné chybě. |
-| temporarily_unavailable |Hello server je dočasně zaneprázdněn toohandle hello požadavku. |Opakujte žádost hello. klientská aplikace Hello mohou vysvětlit toohello uživatele, odpovědi je zpožděno z důvodu tooa dočasné podmínce. |
-| invalid_resource |Hello cílového prostředku je neplatný, protože neexistuje, Azure AD ji nemůže najít, nebo není správně nakonfigurována. |To znamená, že prostředek hello, pokud existuje, není nakonfigurované v klientovi hello. aplikace Hello můžete vyzvat uživatele hello s pokyny pro instalaci aplikace hello a její přidání tooAzure AD. |
+| invalid_request |Chyba protokolu, například chybějící povinný parametr. |Opravte a odešlete požadavek znovu. To je chyba vývoj a je obvykle zachycena během počáteční testování. |
+| unauthorized_client |Klientská aplikace nemá oprávnění k vyžádání autorizační kód. |K tomu obvykle dojde, pokud klientská aplikace není registrovaný ve službě Azure AD nebo nebyla přidána do klienta Azure AD pro uživatele. Aplikace můžete vyzvat uživatele s pokyny pro instalaci aplikace a její přidání do Azure AD. |
+| ACCESS_DENIED |Vlastník prostředku odepřen souhlasu |Klientská aplikace může upozornit uživatele, který nemůže pokračovat, pokud uživatel souhlasí. |
+| unsupported_response_type |Autorizace serveru nepodporuje typ odpovědi v požadavku. |Opravte a odešlete požadavek znovu. To je chyba vývoj a je obvykle zachycena během počáteční testování. |
+| server_error |Serveru došlo k neočekávané chybě. |Opakujte žádost. Tyto chyby může být důsledkem dočasné stavy. Klientská aplikace mohou vysvětlit pro uživatele, že odpověď se zpožďuje kvůli dočasné chybě. |
+| temporarily_unavailable |Server je dočasně zaneprázdněn pro zpracování požadavku. |Opakujte žádost. Klientská aplikace mohou vysvětlit pro uživatele, že odpověď se zpožďuje kvůli dočasné podmínce. |
+| invalid_resource |Cílový prostředek je neplatný, protože neexistuje, Azure AD ji nemůže najít, nebo není správně nakonfigurována. |To znamená, že k prostředku, pokud existuje, není nakonfigurované v klientovi. Aplikace můžete vyzvat uživatele s pokyny pro instalaci aplikace a její přidání do Azure AD. |
 
-## Ověření požadavku id_token hello
-Právě přijetí `id_token` není dostatečná tooauthenticate hello uživatel, je nutné ověřit podpis hello a ověřte hello deklarací identity v hello `id_token` podle požadavků vaší aplikace. koncový bod Azure AD Hello používá webové tokeny JSON (Jwt) a tokeny toosign kryptografie využívající veřejného klíče a ověřte, zda je platný.
+## Ověření požadavku id_token
+Právě přijetí `id_token` není dostatečná k ověření uživatele; je nutné ověřit podpis a ověřte deklarací identity ve `id_token` podle požadavků vaší aplikace. Koncový bod Azure AD používá k podepisování tokenů a ověřte, zda jsou platná webové tokeny JSON (Jwt) a kryptografie využívající veřejného klíče.
 
-Můžete zvolit toovalidate hello `id_token` v kódu klienta, ale běžnou praxí je toosend hello `id_token` tooa back-end serveru a provést ověření hello existuje. Jakmile jste ověřit podpis hello hello `id_token`, existuje několik deklarace identity, které jsou požadované tooverify.
+Můžete ověřit `id_token` v klientovi kód, ale běžnou praxí je odeslat `id_token` back-end server a že k ověření. Jakmile jste ověřit podpis `id_token`, existuje několik deklarace identity, které jsou potřebné k ověření.
 
-Také je možné toovalidate další deklarace identity v závislosti na vašem scénáři. Některé běžné ověření patří:
+Můžete také ověřit další deklarace identity v závislosti na vašem scénáři. Některé běžné ověření patří:
 
-* Zajištění hello uživatele či organizace má zaregistrovali do aplikace hello.
-* Zajistit hello uživatel má správná oprávnění autorizace
+* Zajištění uživatele či organizace má registraci pro aplikaci.
+* Zajištění uživatel má správná oprávnění autorizace
 * Zajištění sílu ověřování došlo k, jako je vícefaktorové ověřování.
 
-Jakmile ověříte hello `id_token`, můžete začít relaci s hello uživatele a používat deklarace identity hello v hello `id_token` tooobtain informace o hello uživateli ve vaší aplikaci. Tyto informace můžete použít pro zobrazení, záznamy, oprávnění atd. Další informace o hello typy tokenů a deklarací identity, najdete v tématu [podporované tokenu a typy deklarací identity](active-directory-token-and-claims.md).
+Jakmile ověříte `id_token`, můžete začít relaci s uživatelem a používat deklarace identity v `id_token` získat informace o uživateli ve vaší aplikaci. Tyto informace můžete použít pro zobrazení, záznamy, oprávnění atd. Další informace o typech tokenů a deklarací identity, najdete v tématu [podporované tokenu a typy deklarací identity](active-directory-token-and-claims.md).
 
 ## Poslat žádost o odhlášení
-Pokud chcete uživatele hello toosign mimo aplikaci hello, je dostatečná tooclear soubory cookie vaší aplikace nebo jinak ukončení relace hello hello uživatele.  Také je nutné přesměrovat uživatele toohello hello `end_session_endpoint` pro odhlášení.  Pokud selže toodo tak, hello uživatel nebude moct tooreauthenticate tooyour aplikace bez nutnosti zadávat své přihlašovací údaje znovu, protože budou mít platný jedné přihlášení relace s koncovým bodem hello Azure AD.
+Pokud se chcete přihlásit uživatele mimo aplikaci, není dostatečná k vymazání souborů cookie vaší aplikace nebo jinak end relace s uživatelem.  Také je nutné přesměrovat uživatele `end_session_endpoint` pro odhlášení.  Pokud uděláte to tak, bude uživatel moci novému ověření do vaší aplikace bez nutnosti zadávat své přihlašovací údaje znovu, protože budou mít platný jedné přihlášení relace s koncovým bodem Azure AD.
 
-Jednoduše můžete přesměrovat uživatele toohello hello `end_session_endpoint` uvedené v dokumentu metadat OpenID Connect hello:
+Můžete jednoduše přesměruje uživatele na `end_session_endpoint` uvedené v dokumentu metadat OpenID Connect:
 
 ```
 GET https://login.microsoftonline.com/common/oauth2/logout?
@@ -166,21 +166,21 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 | Parametr |  | Popis |
 | --- | --- | --- |
-| post_logout_redirect_uri |Doporučená |Hello URL, která hello uživatel by měl být přesměrovaného tooafter úspěšném odhlášení.  Pokud nejsou, zobrazí se hello uživatele obecnou zprávou. |
+| post_logout_redirect_uri |Doporučená |Adresa URL, která má být uživatel přesměrován na po úspěšném odhlášení.  Pokud nejsou, zobrazí se uživateli obecná zpráva. |
 
 ## Jednotné odhlašování
-Při přesměrování hello uživatele toohello `end_session_endpoint`, Azure AD vymaže relace hello uživatele z prohlížeče hello. Hello uživatel však stále může být podepsané tooother aplikace, které používají Azure AD pro ověřování. tooenable toosign tyto aplikace hello uživatele se současně, Azure AD odešle požadavek HTTP GET toohello, zaregistrovaný `LogoutUrl` všech aplikací hello tento uživatel hello je aktuálně přihlášený do. Aplikace musí odpovědět toothis požadavek zrušením jakékoli relace, který identifikuje hello uživatele a vrácení `200` odpovědi.  Pokud chcete v aplikaci toosupport jednotné přihlašování odhlašování, je nutné implementovat, `LogoutUrl` v kódu aplikace.  Můžete nastavit hello `LogoutUrl` z hello portálu Azure:
+Když přesměruje uživatele na `end_session_endpoint`, Azure AD vymaže relace uživatele z prohlížeče. Ale může se uživatel přihlášen stále k ostatním aplikacím, které používají Azure AD pro ověřování. Povolit těchto aplikací na současně odhlášení uživatele, Azure AD, odešle požadavek HTTP GET na zaregistrovanou `LogoutUrl` všech aplikací, které uživatel je aktuálně přihlášený k. Aplikace musí reagovat na tento požadavek zrušením jakékoli relace, který identifikuje uživatele a vrácení `200` odpovědi.  Pokud chcete limit podporují jednotné přihlašování v aplikaci, je nutné implementovat, `LogoutUrl` v kódu aplikace.  Můžete nastavit `LogoutUrl` z portálu Azure:
 
-1. Přejděte toohello [portálu Azure](https://portal.azure.com).
-2. Kliknutím na vašem účtu v hello pravém horním rohu stránky hello zvolte vaší služby Active Directory.
-3. Hello levém navigačním panelu, vyberte **Azure Active Directory**, zvolte **registrace aplikace** a vyberte svou aplikaci.
-4. Klikněte na **vlastnosti** a najde hello **adresy URL odhlašovací** textové pole. 
+1. Přejděte na [portál Azure](https://portal.azure.com).
+2. Kliknutím na vašem účtu v pravém horním rohu stránky zvolte vaší služby Active Directory.
+3. V levém navigačním panelu, vyberte příkaz **Azure Active Directory**, zvolte **registrace aplikace** a vyberte svou aplikaci.
+4. Klikněte na **vlastnosti** a najděte **adresy URL odhlašovací** textové pole. 
 
 ## Získání tokenu
-Mnoho webových aplikací potřebovat toonot pouze přihlašovací hello uživatele v, ale také přístup k webové službě jménem tohoto uživatele pomocí metody OAuth. Tento scénář kombinuje OpenID Connect pro ověřování uživatelů při získávání současně `authorization_code` který lze použít tooget `access_tokens` pomocí hello toku kódu autorizace OAuth.
+Mnoho webových aplikací je nutné pouze přihlášení uživatele v, ale také přístup k webové službě jménem tohoto uživatele pomocí metody OAuth. Tento scénář kombinuje OpenID Connect pro ověřování uživatelů při získávání současně `authorization_code` , můžete použít k získání `access_tokens` pomocí toku kódu autorizace OAuth.
 
 ## Získat přístupové tokeny
-tooacquire přístupových tokenů, je třeba toomodify hello požádat o přihlášení z výše:
+Získat přístupové tokeny, musíte upravit žádost přihlášení z výše:
 
 ```
 // Line breaks for legibility only
@@ -196,7 +196,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e        // Your registered Applica
 &nonce=678910                                         // Any value, provided by your app
 ```
 
-V žádosti o hello včetně obory oprávnění a použitím `response_type=code+id_token`, hello `authorize` koncový bod zajistí, že hello uživatel souhlasí toohello oprávnění uvedené v hello `scope` parametr dotazu a vracet autorizační kód aplikace tooexchange pro přístupový token.
+Včetně obory oprávnění v požadavku a použitím `response_type=code+id_token`, `authorize` koncový bod zajistí, že uživatel souhlasí s tím oprávnění uvedené v `scope` parametr dotazu a vracet autorizační kód k systému exchange pro přístupový token aplikace.
 
 ### Úspěšná odpověď
 Úspěšná odpověď pomocí `response_mode=form_post` vypadá jako:
@@ -211,12 +211,12 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 
 | Parametr | Popis |
 | --- | --- |
-| požadavku id_token |Hello `id_token` požadovanou aplikaci hello. Můžete použít hello `id_token` tooverify hello identitu uživatele a zahájit relaci s hello uživatele. |
-| Kód |Hello authorization_code, který hello požadované aplikace. Hello aplikace můžete používat hello autorizační kód toorequest přístupový token hello cílový prostředek. Authorization_codes jsou krátkou životnost a obvykle vyprší po přibližně 10 minut. |
-| state |Pokud parametr stavu je zahrnuta v žádosti o hello, hello stejnou hodnotu by se zobrazit v odpovědi hello. Hello aplikace by měla ověřte, zda jsou identické hodnoty stavu hello v hello žádostí a odpovědí. |
+| požadavku id_token |`id_token` Požadovanou aplikaci. Můžete použít `id_token` ověřit identitu uživatele a spustíte relaci s uživatelem. |
+| Kód |Authorization_code, který požadované aplikace. Aplikace můžete autorizační kód vyžádat token přístupu pro cílový prostředek. Authorization_codes jsou krátkou životnost a obvykle vyprší po přibližně 10 minut. |
+| state |Pokud parametr stavu je obsažena v žádosti o stejnou hodnotu by se měla objevit v odpovědi. Aplikace by měla ověřte, zda jsou identické hodnoty stavu v požadavku a odpovědi. |
 
 ### Chybové odpovědi
-Chybové odpovědi se taky může odeslat toohello `redirect_uri` tak hello aplikace můžete správně zpracovat:
+Chybové odpovědi se taky může odeslat do `redirect_uri` tak aplikace můžete správně zpracovat:
 
 ```
 POST /myapp/ HTTP/1.1
@@ -228,9 +228,9 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 | Parametr | Popis |
 | --- | --- |
-| error |Řetězec kódu chyby, který lze použít tooclassify typů chyb, ke kterým došlo a může být použité tooreact tooerrors. |
-| error_description |Konkrétní chybová zpráva, která může pomoci vývojář identifikovat hello hlavní příčinu chyby ověřování. |
+| error |Řetězec kódu chyby, který můžete použít ke klasifikaci typů chyb, ke kterým došlo a slouží k reagovat na chyby. |
+| error_description |Konkrétní chybová zpráva, která může pomoci vývojář určit hlavní příčinu chyby ověřování. |
 
-Popis hello možných kódů chyb a jejich klienta doporučenou akci najdete v tématu [kódy chyb pro chyb koncový bod autorizace](#error-codes-for-authorization-endpoint-errors).
+Popis možná chyba kódů a jejich klienta doporučenou akci najdete v tématu [kódy chyb pro chyb koncový bod autorizace](#error-codes-for-authorization-endpoint-errors).
 
-Jakmile jste, že jste podmínky povolení `code` a `id_token`, můžete uživatele hello přihlásit a získat přístupové tokeny jejich jménem.  uživatel hello toosign v, musíte ověřit hello `id_token` přesně tak, jak je popsáno výše. tooget přístupových tokenů, můžete provést hello kroky popsané v části "Použití hello autorizační kód toorequest přístupový token" hello z našich [dokumentace k protokolu OAuth](active-directory-protocols-oauth-code.md).
+Jakmile jste, že jste podmínky povolení `code` a `id_token`, můžete uživatele přihlásit a získat přístupové tokeny jejich jménem.  Chcete-li přihlásit uživatele v, je třeba ověřit `id_token` přesně tak, jak je popsáno výše. Chcete-li získat přístupové tokeny, můžete podle kroků popsaných v části "Použití autorizační kód požádat o token přístupu" naše [dokumentace k protokolu OAuth](active-directory-protocols-oauth-code.md).

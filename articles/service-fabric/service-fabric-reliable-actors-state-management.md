@@ -1,5 +1,5 @@
 ---
-title: "aaaReliable aktéři stavu správy | Microsoft Docs"
+title: "Stav správy Reliable Actors | Microsoft Docs"
 description: "Popisuje způsob správy, jako trvalý a pro zajištění vysoké dostupnosti replikují Reliable Actors stavu."
 services: service-fabric
 documentationcenter: .net
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.openlocfilehash: 346d92426b1890617d108a9504afb179e463bded
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: aca8cf2b94e8b746a5cac6af021c7221a29b7345
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="reliable-actors-state-management"></a>Spolehlivé aktéři řízení stavu
-Reliable Actors jsou jedním podprocesem objekty, které může zapouzdřit logiku a stavu. Protože aktéři spustit na spolehlivé služby, se může stavu spolehlivě udržovat pomocí hello stejné trvalosti a replikace mechanismy, které používá spolehlivé služby. Tímto způsobem Neztraťte aktéři jejich stav po selhání při opětovné aktivaci po uvolnění paměti, nebo při jejich přesunu mezi uzly v clusteru s podporou kvůli vyrovnávání tooresource nebo upgradu.
+Reliable Actors jsou jedním podprocesem objekty, které může zapouzdřit logiku a stavu. Protože aktéři spustit na spolehlivé služby, jejich stavu udržovat spolehlivé pomocí stejné trvalosti a mechanismech replikace, které používá spolehlivé služby. Tímto způsobem Neztraťte aktéři jejich stav po selhání při opětovné aktivaci po uvolnění paměti, nebo při jejich přesunu mezi uzly v clusteru s podporou kvůli vyrovnávání prostředků nebo upgradu.
 
 ## <a name="state-persistence-and-replication"></a>Trvalost stavu a replikace
-Jsou považovány za všechny Reliable Actors *stateful* protože každá instance objektu actor mapuje tooa jedinečný identifikátor. To znamená, že opakovaná volání toohello se stejným ID objektu actor směrovány toohello stejnou instanci objektu actor. V systému bezstavové naopak volání klienta se nezaručuje, že toobe směrovány toohello stejný server pokaždé, když. Z tohoto důvodu služby objektu actor jsou vždy stavové služby.
+Jsou považovány za všechny Reliable Actors *stateful* vzhledem k tomu, že každá instance objektu actor se mapuje na jedinečný identifikátor. To znamená, že opakovaná volání stejné ID objektu actor jsou směrované na stejnou instanci objektu actor. V systému bezstavové naopak volání klienta není zaručena bezpečnost pro směrované na stejný server pokaždé, když. Z tohoto důvodu služby objektu actor jsou vždy stavové služby.
 
-I když aktéři jsou považovány za stateful, který neznamená, že musí spolehlivě uložení stavu. Aktéři můžete vybrat úroveň hello trvalost stavu a replikace na základě jejich dat požadavky na úložiště:
+I když aktéři jsou považovány za stateful, který neznamená, že musí spolehlivě uložení stavu. Aktéři můžete vybrat úroveň trvalost stavu a replikace na základě jejich dat požadavky na úložiště:
 
-* **Trvalý stav**: stav je trvalý toodisk a replikované too3 nebo další repliky. Toto je hello nejvíce trvanlivá možnost úložiště stavu, kde můžete zachovat stav prostřednictvím clusterů výpadku.
-* **Volatile stavu**: stav replikované too3 nebo více replik a pouze uchovává se v paměti. To zajišťuje odolnost proti selhání uzlu a selhání objektu actor a během upgradu a vyrovnávání prostředků. Stav však není trvalý toodisk. Proto všechny repliky byly ztraceny najednou, hello stavu dojde ke ztrátě také.
-* **Žádné trvalého stavu**: není replikovat nebo zapisují toodisk stavu. Tato úroveň je actor je jednoduše toomaintain stavu spolehlivě nepotřebujete.
+* **Trvalý stav**: je uložen stav disku a se replikují do 3 nebo více replik. Toto je nejvíce trvanlivá možnost úložiště stavu, kde můžete zachovat stav prostřednictvím clusterů výpadku.
+* **Volatile stavu**: stav se replikují do 3 nebo více replik a pouze uchovává se v paměti. To zajišťuje odolnost proti selhání uzlu a selhání objektu actor a během upgradu a vyrovnávání prostředků. Však není trvalý stav na disk. Proto všechny repliky byly ztraceny najednou, stav dojde ke ztrátě také.
+* **Žádné trvalého stavu**: stav není replikované nebo zapsaný na disk. Tato úroveň je actor je jednoduše nemusíte spolehlivě Udržovat stav.
 
-Každou úroveň trvalost je jednoduše jiné *zprostředkovatele stavu* a *replikace* konfigurace služby. Zda je zapsán stavu toodisk závisí na zprostředkovatele stavu hello – hello součástí spolehlivá služba, která ukládá stav. Replikace závisí na tom, kolik repliky může služba nasazený s. Stejně jako u spolehlivé služby i hello zprostředkovatele stavu a počet replik jde snadno nastavit ručně. Hello objektu actor framework poskytuje atribut, že při použití v objektu actor automaticky vybere výchozí poskytovatel stavu a automaticky vygeneruje nastavení pro tooachieve počet replik, jednu z těchto tří nastavení trvalosti. atribut StatePersistence Hello není zdědí odvozené třídy, každý typ objektu Actor musíte zadat jeho StatePersistence úroveň.
+Každou úroveň trvalost je jednoduše jiné *zprostředkovatele stavu* a *replikace* konfigurace služby. Zda je stav zapsán do disku závisí na poskytovateli stavu--součástí spolehlivá služba, která ukládá stav. Replikace závisí na tom, kolik repliky může služba nasazený s. Stejně jako u spolehlivé služby zprostředkovatele stavu i počet replik jde snadno nastavit ručně. Rozhraní objektu actor poskytuje atribut, který, když použije na objekt actor, automaticky vybere výchozí poskytovatel stavu a automaticky vygeneruje nastavení pro repliky počet dosáhnout jednoho z těchto tří nastavení trvalosti. Atribut StatePersistence není zdědí odvozené třídy, každý typ objektu Actor musíte zadat jeho StatePersistence úroveň.
 
 ### <a name="persisted-state"></a>Trvalého stavu
 ```csharp
@@ -47,7 +47,7 @@ class MyActorImpl  extends FabricActor implements MyActor
 {
 }
 ```  
-Toto nastavení využívá zprostředkovatele stavu, která ukládá data na disku a automaticky nastaví too3 počet replik služby hello.
+Toto nastavení využívá zprostředkovatele stavu, která ukládá data na disku a automaticky nastaví počet replik služby 3.
 
 ### <a name="volatile-state"></a>Volatile stavu
 ```csharp
@@ -62,7 +62,7 @@ class MyActorImpl extends FabricActor implements MyActor
 {
 }
 ```
-Toto nastavení používá poskytovatele v paměti jen stavu a nastaví hello too3 počet replik.
+Toto nastavení používá poskytovatele v paměti jen stavu a nastaví počet replik na 3.
 
 ### <a name="no-persisted-state"></a>Žádné trvalého stavu
 ```csharp
@@ -77,12 +77,12 @@ class MyActorImpl extends FabricActor implements MyActor
 {
 }
 ```
-Toto nastavení používá poskytovatele v paměti jen stavu a nastaví hello too1 počet replik.
+Toto nastavení používá poskytovatele v paměti jen stavu a nastaví počet replik na 1.
 
 ### <a name="defaults-and-generated-settings"></a>Výchozí hodnoty a vygenerované nastavení
-Pokud používáte hello `StatePersistence` atribut zprostředkovatele stavu je automaticky vybrána pro za běhu při spuštění služby objektu actor hello. Hello repliky, ale nastavení počtu v době kompilace pomocí hello objektu actor v sadě Visual Studio nástroje sestavení. Hello nástroje sestavení automaticky generovat *výchozí služba* služby objektu actor hello ApplicationManifest.xml. Vytvoří se pro parametry **sady replik minimální velikost** a **cíl repliky nastavit velikost**.
+Pokud používáte `StatePersistence` atribut zprostředkovatele stavu je automaticky vybrána pro za běhu při spuštění služby objektu actor. Počet replik, ale je nastavena v době kompilace pomocí nástroje sestavení sady Visual Studio objektu actor. Nástroje pro sestavení automaticky generovat *výchozí služba* služby objektu actor v ApplicationManifest.xml. Vytvoří se pro parametry **sady replik minimální velikost** a **cíl repliky nastavit velikost**.
 
-Tyto parametry můžete ručně změnit. Ale každý čas hello `StatePersistence` změně atributu, hello parametry jsou nastaveny toohello výchozí sadu repliky velikost hodnoty pro vybrané hello `StatePersistence` atribut přepsání žádné předchozí hodnoty. Jinými slovy, jsou hello hodnoty, které jste nastavili v ServiceManifest.xml *pouze* přepsat v čase vytvoření buildu, když změníte hello `StatePersistence` hodnota atributu.
+Tyto parametry můžete ručně změnit. Ale pokaždé, když `StatePersistence` změně atributu, parametry jsou nastaveny na výchozí hodnoty velikosti sady replik pro vybranou `StatePersistence` atribut přepsání žádné předchozí hodnoty. Jinými slovy, jsou hodnoty, které se nastavují v ServiceManifest.xml *pouze* přepsat v čase vytvoření buildu, když změníte `StatePersistence` hodnota atributu.
 
 ```xml
 <ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Application12Type" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -105,20 +105,20 @@ Tyto parametry můžete ručně změnit. Ale každý čas hello `StatePersistenc
 ```
 
 ## <a name="state-manager"></a>Správce stavu
-Všechny instance objektu actor má svou vlastní správce stavu: jako slovník datová struktura, která spolehlivě uchová dvojice klíč/hodnota. Správce stavu Hello je obálku kolem zprostředkovatele stavu. Můžete ho toostore dat bez ohledu na to, které trvalost nastavení se používá. Neposkytuje se, že žádné záruky, že spuštěné služby objektu actor lze změnit z nastavení tooa volatile (v paměti jen) stavu trvalé nastavení stavu prostřednictvím postupného upgradu zachovat při data. Je však možné toochange počet replik pro spuštěnou službu.
+Všechny instance objektu actor má svou vlastní správce stavu: jako slovník datová struktura, která spolehlivě uchová dvojice klíč/hodnota. Správce stavu je obálku kolem zprostředkovatele stavu. Můžete ho použít k ukládání dat bez ohledu na to, který se používá nastavení trvalosti. Neposkytuje žádné záruky, spuštěné služby objektu actor můžete změnit z nastavení volatile (v paměti jen) stavu tak, aby nastavení trvalého stavu prostřednictvím postupného upgradu při zachování dat. Je však možné změnit počet replik pro spuštěnou službu.
 
-Správce stavu klíče musí být řetězce. Hodnoty jsou obecné a mohou být jakéhokoli typu, včetně vlastních typů. Hodnotami uloženými v správce stavu hello musí být serializovatelný kontrakt dat, protože může přenést přes uzly tooother hello sítě během replikace a může být zapsána toodisk, v závislosti na nastavení trvalost stavu objektu actor.
+Správce stavu klíče musí být řetězce. Hodnoty jsou obecné a mohou být jakéhokoli typu, včetně vlastních typů. Hodnotami uloženými v správce stavu musí být serializovatelný kontrakt dat, protože může přenést přes síť do dalších uzlů během replikace a může zapsat na disk, v závislosti na nastavení trvalost stavu objektu actor.
 
-Správce stavu Hello zpřístupní běžné metody slovník pro správu stavu, podobně jako toothose najít v spolehlivé slovníku.
+Správce stavu zpřístupní běžné metody slovník pro správu stavu, podobné těm, které jsou obsaženy ve slovníku pro spolehlivé.
 
 ### <a name="accessing-state"></a>Přístup ke stavu
-Stav je přístupná prostřednictvím Správce stavu hello podle klíče. Metody správce stavu jsou všechny asynchronní, protože v/v disku může vyžadují při aktéři držena formou stavu. Při prvním přístupu jsou uložená v mezipaměti objektů stavu. Opakujte přístup operations přístup k objektům přímo z paměti a vrátí synchronně, aniž by docházelo k vstupně-výstupní diskové nebo asynchronní režií přepínání kontextu. Stav objektu se odebere z mezipaměti hello v následujících případech hello:
+Stav je přístupná prostřednictvím Správce stavu podle klíče. Metody správce stavu jsou všechny asynchronní, protože v/v disku může vyžadují při aktéři držena formou stavu. Při prvním přístupu jsou uložená v mezipaměti objektů stavu. Opakujte přístup operations přístup k objektům přímo z paměti a vrátí synchronně, aniž by docházelo k vstupně-výstupní diskové nebo asynchronní režií přepínání kontextu. Stav objektu se odebere z mezipaměti v následujících případech:
 
-* Po ho načte objekt z správce stavu hello, vyvolá metoda objektu actor k neošetřené výjimce.
+* Po ho načte objekt z správce stavu, vyvolá metoda objektu actor k neošetřené výjimce.
 * Objekt actor je znovu aktivovat, po právě deaktivována nebo po selhání.
-* stránky zprostředkovatele stavu Hello stavu toodisk. Toto chování závisí na implementaci zprostředkovatele stavu hello. Zprostředkovatel stavu Hello výchozí pro hello `Persisted` nastavení je toto chování.
+* Zprostředkovatel stavu stránky stavu na disk. Tento postup závisí na implementaci zprostředkovatele stavu. Výchozí zprostředkovatel stavu pro `Persisted` nastavení je toto chování.
 
-Stav můžete načíst pomocí standardního *získat* operace, která vyvolá `KeyNotFoundException`(C#) nebo `NoSuchElementException`(Java), pokud položka neexistuje pro klíč hello:
+Stav můžete načíst pomocí standardního *získat* operace, která vyvolá `KeyNotFoundException`(C#) nebo `NoSuchElementException`(Java), pokud položka neexistuje pro klíč:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -194,9 +194,9 @@ class MyActorImpl extends FabricActor implements  MyActor
 ```
 
 ### <a name="saving-state"></a>Ukládání stavu
-metod načítání správce stavu Hello vrátí referenční tooan objekt v místní paměti. Úprava tento objekt v místní paměti samostatně nezpůsobí ho toobe bezpečně uložit. Pokud objekt je načtena z správce stavu hello a měnit, musí znovu vložit do hello stavu manager toobe bezpečně uložit.
+Metody načtení stavu manager vrátí odkaz na objekt v místní paměti. Úprava tento objekt v místní paměti samostatně nezpůsobí, je bezpečně uložit. Pokud objekt je načtena z správce stavu a upravit, musíte znovu vložit do Správce stavu bezpečně uložit.
 
-Můžete vložit stavu pomocí nepodmíněné *nastavit*, což je hello ekvivalentní hello `dictionary["key"] = value` syntaxe:
+Můžete vložit stavu pomocí nepodmíněné *nastavit*, což je ekvivalentem `dictionary["key"] = value` syntaxe:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -229,7 +229,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-Stav můžete přidat pomocí *přidat* metoda. Tato metoda vyvolá `InvalidOperationException`(C#) nebo `IllegalStateException`(Java), když se ho pokusí tooadd klíč, který již existuje.
+Stav můžete přidat pomocí *přidat* metoda. Tato metoda vyvolá `InvalidOperationException`(C#) nebo `IllegalStateException`(Java) při pokusu o přidání klíče, která již existuje.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -262,7 +262,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-Můžete také přidat stavu pomocí *TryAdd* metoda. Tato metoda nevyvolá výjimku, když se ho pokusí tooadd klíč, který již existuje.
+Můžete také přidat stavu pomocí *TryAdd* metoda. Tato metoda nevyvolá výjimku při pokusu o přidání klíče, který již existuje.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -305,9 +305,9 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-Na konci hello metody objektu actor správce stavu hello automaticky uloží všechny hodnoty, které byly přidány nebo upraveném operace insert nebo update. "Uložení" může obsahovat zachování toodisk a replikace, v závislosti na nastavení hello používá. Hodnoty, které nebyly upraveny nejsou jako trvalý, nebo replikovat. Pokud byly změněny žádné hodnoty, hello operace uložení neprovede žádnou akci. Pokud ukládání selže, hello upravený stav jsou data zahozena a je znovu hello původního stavu.
+Na konci metodu objektu actor správce stavu automaticky uloží všechny hodnoty, které byly přidány nebo upraveném operace insert nebo update. "Uložení" může obsahovat uložením na disk a replikace, v závislosti na nastavení použít. Hodnoty, které nebyly upraveny nejsou jako trvalý, nebo replikovat. Pokud byly změněny žádné hodnoty, uložení operace se nic nestane. Pokud ukládání selže, budou zahozeny upravený stav a je znovu původního stavu.
 
-Můžete také uložit stav ručně pomocí volání hello `SaveStateAsync` metodu objektu actor hello základní:
+Můžete také uložit stav ručně voláním `SaveStateAsync` metodu objektu actor základní:
 
 ```csharp
 async Task IMyActor.SetCountAsync(int count)
@@ -329,7 +329,7 @@ interface MyActor {
 ```
 
 ### <a name="removing-state"></a>Odebrání stavu
-Můžete odebrat stavu trvale ze Správce stavu objektu actor tak volání hello *odebrat* metoda. Tato metoda vyvolá `KeyNotFoundException`(C#) nebo `NoSuchElementException`(Java), když se ho pokusí tooremove klíč, který neexistuje.
+Můžete odebrat stavu trvale ze Správce stavu objektu actor voláním *odebrat* metoda. Tato metoda vyvolá `KeyNotFoundException`(C#) nebo `NoSuchElementException`(Java) při pokusu o odstranění klíče, který neexistuje.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -362,7 +362,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-Rovněž můžete odebrat stavu trvale pomocí hello *TryRemove* metoda. Tato metoda nevyvolá výjimku, když se ho pokusí tooremove klíč, který neexistuje.
+Rovněž můžete odebrat stavu trvale pomocí *TryRemove* metoda. Tato metoda nevyvolá výjimku při pokusu o odebrání klíče, který neexistuje.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -407,6 +407,6 @@ class MyActorImpl extends FabricActor implements  MyActor
 
 ## <a name="next-steps"></a>Další kroky
 
-Stav, který je uložen v Reliable Actors musí být serializován před jeho napsané toodisk a replikovat pro vysokou dostupnost. Další informace o [serializace typu objektu Actor](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
+Musí být serializované stavu, který je uložen v Reliable Actors před jeho zapsaný na disk a replikované pro vysokou dostupnost. Další informace o [serializace typu objektu Actor](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
 
 V dalším kroku Další informace o [objektu Actor Diagnostika a sledování výkonu](service-fabric-reliable-actors-diagnostics.md).

@@ -1,5 +1,5 @@
 ---
-title: "aaaCreate databáze Oracle virtuální počítač Azure | Microsoft Docs"
+title: "Vytvoření databáze Oracle virtuální počítač Azure | Microsoft Docs"
 description: "Rychle získáte databázi Oracle Database 12c nahoru a spouštění v prostředí Azure."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,36 +15,36 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/17/2017
 ms.author: rclaus
-ms.openlocfilehash: 83205154c3275d5f57b46c8acfb0cb4e5c68a412
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 8683b016c4db2c66fb1dd994405b70c3d137a7fc
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Vytvoření databáze Oracle na virtuálním počítači Azure
 
-Tato příručka podrobně popisuje pomocí rozhraní příkazového řádku Azure toodeploy hello virtuální počítač Azure z hello [image Galerie marketplace Oracle](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview) v pořadí toocreate databázi Oracle 12 c. Po hello server nasazen, bude v databázi Oracle hello tooconfigure pořadí připojit pomocí protokolu SSH. 
+Tato příručka podrobně popisuje pomocí rozhraní příkazového řádku Azure k nasazení virtuální počítač z Azure [image Galerie marketplace Oracle](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview) k vytvoření databáze Oracle 12 c. Po nasazení serveru se připojí prostřednictvím SSH. Chcete-li nakonfigurovat databázi Oracle. 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Pokud zvolíte tooinstall a místně pomocí hello rozhraní příkazového řádku, tento rychlý start vyžaduje, že používáte verzi rozhraní příkazového řádku Azure hello verze 2.0.4 nebo novější. Spustit `az --version` toofind hello verze. Pokud potřebujete tooinstall nebo aktualizace, přečtěte si [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít rozhraní příkazového řádku Azure ve verzi 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků s hello [vytvořit skupinu az](/cli/azure/group#create) příkaz. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
 
-Hello následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v hello *eastus* umístění.
+Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 ## <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
 
-toocreate virtuální počítač (VM), použijte hello [vytvořit virtuální počítač az](/cli/azure/vm#create) příkaz. 
+Chcete-li vytvořit virtuální počítač (VM), použijte [vytvořit virtuální počítač az](/cli/azure/vm#create) příkaz. 
 
-Hello následující příklad vytvoří virtuální počítač s názvem `myVM`. Pokud už neexistují v umístění klíče výchozí klíče SSH, vytvoří se také. toouse konkrétní nastavení klíčů, použijte hello `--ssh-key-value` možnost.  
+Následující příklad vytvoří virtuální počítač `myVM`. Pokud už neexistují v umístění klíče výchozí klíče SSH, vytvoří se také. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.  
 
 ```azurecli-interactive 
 az vm create \
@@ -56,7 +56,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-Po vytvoření hello virtuálních počítačů Azure CLI zobrazí informace podobné toohello následující ukázka. Poznamenejte si hodnotu hello pro `publicIpAddress`. Můžete použít tuto adresu tooaccess hello virtuálních počítačů.
+Po vytvoření virtuálního počítače Azure CLI zobrazí informace, podobně jako v následujícím příkladu. Poznamenejte si hodnotu pro `publicIpAddress`. Použijte tuto adresu přístup k virtuálnímu počítači.
 
 ```azurecli
 {
@@ -71,26 +71,26 @@ Po vytvoření hello virtuálních počítačů Azure CLI zobrazí informace pod
 }
 ```
 
-## <a name="connect-toohello-vm"></a>Připojit toohello virtuálních počítačů
+## <a name="connect-to-the-vm"></a>Připojení k virtuálnímu počítači
 
-toocreate na relace SSH s hello virtuálních počítačů, použijte následující příkaz hello. Nahraďte IP adresu hello hello `publicIpAddress` hodnotu pro virtuální počítač.
+Chcete-li vytvořit relace SSH s virtuálním Počítačem, použijte následující příkaz. Nahraďte na IP adresu `publicIpAddress` hodnotu pro virtuální počítač.
 
 ```bash 
 ssh <publicIpAddress>
 ```
 
-## <a name="create-hello-database"></a>Vytvoření databáze hello
+## <a name="create-the-database"></a>Vytvoření databáze
 
-Hello Oracle softwaru je již nainstalován na bitovou kopii hello Marketplace. Vytvoření ukázkové databáze následujícím způsobem. 
+Oracle software je již nainstalována na bitovou kopii Marketplace. Vytvoření ukázkové databáze následujícím způsobem. 
 
-1.  Přepínač toohello *oracle* superuživatele a pak inicializovat naslouchací proces hello protokolování:
+1.  Přepnout *oracle* superuživatele a pak inicializovat naslouchací proces pro protokolování:
 
     ```bash
     $ sudo su - oracle
     $ lsnrctl start
     ```
 
-    výstup Hello je podobné toohello následující:
+    Výstup je podobný tomuto:
 
     ```bash
     Copyright (c) 1991, 2014, Oracle.  All rights reserved.
@@ -98,11 +98,11 @@ Hello Oracle softwaru je již nainstalován na bitovou kopii hello Marketplace. 
     Starting /u01/app/oracle/product/12.1.0/dbhome_1/bin/tnslsnr: please wait...
 
     TNSLSNR for Linux: Version 12.1.0.2.0 - Production
-    Log messages written too/u01/app/oracle/diag/tnslsnr/myVM/listener/alert/log.xml
+    Log messages written to /u01/app/oracle/diag/tnslsnr/myVM/listener/alert/log.xml
     Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=myVM.twltkue3xvsujaz1bvlrhfuiwf.dx.internal.cloudapp.net)(PORT=1521)))
 
-    Connecting too(ADDRESS=(PROTOCOL=tcp)(HOST=)(PORT=1521))
-    STATUS of hello LISTENER
+    Connecting to (ADDRESS=(PROTOCOL=tcp)(HOST=)(PORT=1521))
+    STATUS of the LISTENER
     ------------------------
     Alias                     LISTENER
     Version                   TNSLSNR for Linux: Version 12.1.0.2.0 - Production
@@ -114,11 +114,11 @@ Hello Oracle softwaru je již nainstalován na bitovou kopii hello Marketplace. 
     Listener Log File         /u01/app/oracle/diag/tnslsnr/myVM/listener/alert/log.xml
     Listening Endpoints Summary...
     (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=myVM.twltkue3xvsujaz1bvlrhfuiwf.dx.internal.cloudapp.net)(PORT=1521)))
-    hello listener supports no services
-    hello command completed successfully
+    The listener supports no services
+    The command completed successfully
     ```
 
-2.  Vytvořte databázi hello:
+2.  Vytvoření databáze:
 
     ```bash
     dbca -silent \
@@ -140,17 +140,17 @@ Hello Oracle softwaru je již nainstalován na bitovou kopii hello Marketplace. 
            -ignorePreReqs
     ```
 
-    Jak dlouho trvá několik minut toocreate hello databáze.
+    Jak dlouho trvá několik minut pro vytvoření databáze.
 
 3. Nastavení proměnných Oracle
 
-Než připojíte, je nutné, aby proměnné prostředí tooset dva: *ORACLE_HOME* a *ORACLE_SID*.
+Než připojíte, musíte nastavit dvě proměnné prostředí: *ORACLE_HOME* a *ORACLE_SID*.
 
 ```bash
 ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 ORACLE_SID=cdb1; export ORACLE_SID
 ```
-Také můžete přidat ORACLE_HOME a ORACLE_SID soubor .bashrc toohello proměnné. To by uložit hello proměnných prostředí pro budoucí přihlášení. Potvrďte hello následující příkazy byly přidány toohello `~/.bashrc` soubor pomocí zvoleného editoru.
+Proměnné ORACLE_HOME a ORACLE_SID také můžete přidat do souboru .bashrc. To by uložit proměnných prostředí pro budoucí přihlášení. Potvrďte následující příkazy byly přidány do `~/.bashrc` soubor pomocí zvoleného editoru.
 
 ```bash
 # Add ORACLE_HOME. 
@@ -161,27 +161,27 @@ export ORACLE_SID=cdb1
 
 ## <a name="oracle-em-express-connectivity"></a>Připojení Oracle EM Express
 
-Pro nástroj pro správu grafického uživatelského rozhraní, kterou můžete použít tooexplore hello databázi, nastavte Oracle EM Express. tooconnect tooOracle EM Express, musíte nejprve nastavit až hello port v Oracle. 
+Pro nástroj pro správu grafického uživatelského rozhraní, které můžete použít k prozkoumání databázi nastavení Oracle EM Express. Pokud chcete připojit k Oracle EM Express, musíte nejprve nastavit port v Oracle. 
 
-1. Připojte databáze tooyour pomocí sqlplus:
+1. Připojení k vaší databázi pomocí sqlplus:
 
     ```bash
     sqlplus / as sysdba
     ```
 
-2. Po připojení nastavte hello port 5502 pro expresní EM
+2. Po připojení nastavte port 5502 pro expresní EM
 
     ```bash
     exec DBMS_XDB_CONFIG.SETHTTPSPORT(5502);
     ```
 
-3. Otevřete hello kontejneru PDB1 není-li již otevřeného, ale první zkontrolujte stav hello:
+3. Otevřete kontejneru PDB1 není-li již otevřenou, ale první kontrola stavu:
 
     ```bash
     select con_id, name, open_mode from v$pdbs;
     ```
 
-    výstup Hello je podobné toohello následující:
+    Výstup je podobný tomuto:
 
     ```bash
       CON_ID NAME                           OPEN_MODE 
@@ -190,55 +190,55 @@ Pro nástroj pro správu grafického uživatelského rozhraní, kterou můžete 
       3           PDB1                      MOUNT
     ```
 
-4. Pokud hello OPEN_MODE pro `PDB1` není ČÍST zápisu, spusťte hello tady příkazy tooopen PDB1:
+4. Pokud OPEN_MODE pro `PDB1` není ČÍST zápisu, spusťte příkazy tady otevřete PDB1:
 
    ```bash
     alter session set container=pdb1;
     alter database open;
    ```
 
-Je třeba tootype `quit` tooend hello sqlplus relace a typ `exit` toologout hello oracle uživatele.
+Je třeba zadat `quit` k ukončení relace sqlplus a typ `exit` na Odhlásit uživatele oracle.
 
 ## <a name="automate-database-startup-and-shutdown"></a>Automatizovat databáze spuštění a vypnutí
 
-Oracle database Hello ve výchozím nastavení není spustit automaticky při restartování hello virtuálních počítačů. tooset až toostart databáze Oracle hello automaticky, nejprve Přihlaste se jako kořenový adresář. Pak vytvořte a aktualizovat některé soubory systému.
+Oracle database ve výchozím nastavení není spustit automaticky při restartování virtuálního počítače. K nastavení databáze Oracle na automatické spuštění, nejprve Přihlaste se jako kořenový adresář. Pak vytvořte a aktualizovat některé soubory systému.
 
 1. Přihlaste se jako kořenového příkazu.
     ```bash
     sudo su -
     ```
 
-2.  Pomocí oblíbeného editoru, upravte soubor hello `/etc/oratab` a změnit výchozí nastavení hello `N` příliš`Y`:
+2.  Pomocí oblíbeného editoru, upravte soubor `/etc/oratab` a změnit výchozí `N` k `Y`:
 
     ```bash
     cdb1:/u01/app/oracle/product/12.1.0/dbhome_1:Y
     ```
 
-3.  Vytvořte soubor s názvem `/etc/init.d/dbora` a hello vložte následující obsah:
+3.  Vytvořte soubor s názvem `/etc/init.d/dbora` a vložte následující obsah:
 
     ```
     #!/bin/sh
     # chkconfig: 345 99 10
     # Description: Oracle auto start-stop script.
     #
-    # Set ORA_HOME toobe equivalent too$ORACLE_HOME.
+    # Set ORA_HOME to be equivalent to $ORACLE_HOME.
     ORA_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
     ORA_OWNER=oracle
 
     case "$1" in
     'start')
-        # Start hello Oracle databases:
-        # hello following command assumes that hello Oracle sign-in
-        # will not prompt hello user for any values.
+        # Start the Oracle databases:
+        # The following command assumes that the Oracle sign-in
+        # will not prompt the user for any values.
         # Remove "&" if you don't want startup as a background process.
         su - $ORA_OWNER -c "$ORA_HOME/bin/dbstart $ORA_HOME" &
         touch /var/lock/subsys/dbora
         ;;
 
     'stop')
-        # Stop hello Oracle databases:
-        # hello following command assumes that hello Oracle sign-in
-        # will not prompt hello user for any values.
+        # Stop the Oracle databases:
+        # The following command assumes that the Oracle sign-in
+        # will not prompt the user for any values.
         su - $ORA_OWNER -c "$ORA_HOME/bin/dbshut $ORA_HOME" &
         rm -f /var/lock/subsys/dbora
         ;;
@@ -260,7 +260,7 @@ Oracle database Hello ve výchozím nastavení není spustit automaticky při re
     ln -s /etc/init.d/dbora /etc/rc.d/rc5.d/S99dbora
     ```
 
-6.  tootest změny, restartujte hello virtuálních počítačů:
+6.  K testování změny, restartujte virtuální počítač:
 
     ```bash
     reboot
@@ -268,9 +268,9 @@ Oracle database Hello ve výchozím nastavení není spustit automaticky při re
 
 ## <a name="open-ports-for-connectivity"></a>Otevřené porty pro připojení k síti
 
-Poslední úloha Hello je tooconfigure některé externí koncové body. tooset až hello skupinu zabezpečení sítě Azure, který chrání hello virtuálních počítačů, nejprve ukončete relaci SSH v hello virtuálních počítačů (by měl mít byla spuštěna z SSH při restartování v předchozím kroku). 
+Poslední úloha je konfigurace některé externí koncové body. Nastavit skupinu zabezpečení sítě Azure, který chrání virtuální počítač, ukončete nejprve relace SSH ve virtuálním počítači (by měl mít byla spuštěna z SSH při restartování v předchozím kroku). 
 
-1.  koncový bod hello tooopen pomocí databáze Oracle hello tooaccess vzdáleně, vytvořit skupinu zabezpečení sítě pravidlo s [vytvořit pravidla nsg sítě az](/cli/azure/network/nsg/rule#create) následujícím způsobem: 
+1.  Otevření koncového bodu, který používáte pro přístup k databázi Oracle vzdáleně, vytvořte skupinu zabezpečení sítě pravidlo s [vytvořit pravidla nsg sítě az](/cli/azure/network/nsg/rule#create) následujícím způsobem: 
 
     ```azurecli-interactive
     az network nsg rule create \
@@ -282,7 +282,7 @@ Poslední úloha Hello je tooconfigure některé externí koncové body. tooset 
         --destination-port-range 1521
     ```
 
-2.  koncový bod hello tooopen vzdáleně, použijte tooaccess Oracle EM Express vytvoření pravidla skupiny zabezpečení sítě s [vytvořit pravidla nsg sítě az](/cli/azure/network/nsg/rule#create) následujícím způsobem:
+2.  Otevření koncového bodu, který používáte pro přístup k Oracle EM Express vzdáleně, vytvořit skupinu zabezpečení sítě pravidlo s [vytvořit pravidla nsg sítě az](/cli/azure/network/nsg/rule#create) následujícím způsobem:
 
     ```azurecli-interactive
     az network nsg rule create \
@@ -294,7 +294,7 @@ Poslední úloha Hello je tooconfigure některé externí koncové body. tooset 
         --destination-port-range 5502
     ```
 
-3. V případě potřeby získat hello veřejnou IP adresu vašeho virtuálního počítače znovu s [az sítě veřejné ip zobrazit](/cli/azure/network/public-ip#show) následujícím způsobem:
+3. V případě potřeby získat veřejnou IP adresu vašeho virtuálního počítače znovu s [az sítě veřejné ip zobrazit](/cli/azure/network/public-ip#show) následujícím způsobem:
 
     ```azurecli-interactive
     az network public-ip show \
@@ -310,13 +310,13 @@ Poslední úloha Hello je tooconfigure některé externí koncové body. tooset 
     https://<VM ip address or hostname>:5502/em
     ```
 
-Můžete se přihlásit pomocí hello **SYS** účtu a zkontrolujte, zda text hello **jako sysdba** zaškrtávací políčko. Použití hello heslo **OraPasswd1** nastavený během instalace. 
+Se můžete přihlásit pomocí **SYS** účtu a zkontrolujte, zda **jako sysdba** zaškrtávací políčko. Heslo použít **OraPasswd1** nastavený během instalace. 
 
-![Snímek obrazovky hello Oracle OEM Express přihlašovací stránky](./media/oracle-quick-start/oracle_oem_express_login.png)
+![Snímek obrazovky přihlašovací stránky Oracle OEM Express](./media/oracle-quick-start/oracle_oem_express_login.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Po dokončení zkoumat první databáze Oracle na Azure a hello virtuálního počítače již nepotřebujete, můžete hello [odstranění skupiny az](/cli/azure/group#delete) příkaz skupiny prostředků hello tooremove, virtuálních počítačů a všechny související prostředky.
+Po dokončení zkoumat první databáze Oracle na Azure a virtuální počítač již nepotřebujete, můžete použít [odstranění skupiny az](/cli/azure/group#delete) příkaz, který má odeberte skupinu zdrojů, virtuální počítač, a všechny související prostředky.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup
@@ -326,4 +326,4 @@ az group delete --name myResourceGroup
 
 Další informace o dalších [Oracle řešení v Azure](oracle-considerations.md). 
 
-Zkuste hello [instalace a konfigurace Oracle automatizované úložiště správy](configure-oracle-asm.md) kurzu.
+Zkuste [instalace a konfigurace Oracle automatizované úložiště správy](configure-oracle-asm.md) kurzu.

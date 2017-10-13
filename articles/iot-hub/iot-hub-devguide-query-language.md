@@ -1,6 +1,6 @@
 ---
-title: "aaaUnderstand hello dotazovacího jazyka pro Azure IoT Hub | Microsoft Docs"
-description: "Příručka vývojáře – popis dotazu jazyka SQL jako IoT Hub hello používá tooretrieve informace o úlohách ze služby IoT hub a dvojčata zařízení."
+title: "Pochopení dotazovací jazyk Azure IoT Hub | Microsoft Docs"
+description: "Příručka vývojáře – popis dotazu jazyka SQL jako IoT Hub používá k načtení informací o úlohách a dvojčata zařízení ze služby IoT hub."
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/17
 ms.author: elioda
-ms.openlocfilehash: 01a7c8ffdf44c6c27b834739d02c8fef1dd3d3fd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a7650104eda58923558892f6f0f6666d16dbce28
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="reference---iot-hub-query-language-for-device-twins-jobs-and-message-routing"></a>Referenční dokumentace - IoT Hub dotazovacího jazyka pro dvojčata zařízení, úlohy a směrování zpráv
 
-Služba IoT Hub zajišťuje a výkonné jazyka SQL tooretrieve informace ohledně [dvojčata zařízení] [ lnk-twins] a [úlohy][lnk-jobs]a [směrování zpráv][lnk-devguide-messaging-routes]. Tento článek představuje:
+Služba IoT Hub zajišťuje efektivní jazyka SQL jako k načtení informací o [dvojčata zařízení] [ lnk-twins] a [úlohy][lnk-jobs], a [směrování zpráv][lnk-devguide-messaging-routes]. Tento článek představuje:
 
-* Úvod toohello hlavní funkce hello dotazovacího jazyka pro IoT Hub, a
-* Hello podrobný popis jazyka hello.
+* Úvod do hlavní funkce jazyka dotazů služby IoT Hub, a
+* Podrobný popis jazyka.
 
 ## <a name="get-started-with-device-twin-queries"></a>Začínáme s dotazy twin zařízení
-[Dvojčata zařízení] [ lnk-twins] může obsahovat libovolné objekty JSON vlastnosti a značky. IoT Hub můžete dvojčata zařízení tooquery jako jeden dokument JSON obsahující všechny informace o dvojici zařízení.
-Předpokládejme například, vaše dvojčata zařízení IoT hub měli hello strukturu:
+[Dvojčata zařízení] [ lnk-twins] může obsahovat libovolné objekty JSON vlastnosti a značky. IoT Hub umožňuje dvojčata zařízení dotaz jako jeden dokument JSON obsahující všechny informace o dvojici zařízení.
+Předpokládejme například, že vaše dvojčata zařízení IoT hub mít následující strukturu:
 
 ```json
 {
@@ -70,8 +70,8 @@ Předpokládejme například, vaše dvojčata zařízení IoT hub měli hello st
 }
 ```
 
-IoT Hub zpřístupní dvojčata zařízení hello jako kolekce dokumentů s názvem **zařízení**.
-Proto hello následující dotaz načte hello celou sadu dvojčata zařízení:
+IoT Hub zpřístupní dvojčata zařízení jako kolekce dokumentů s názvem **zařízení**.
+Následující dotaz načte tak celou sadu dvojčata zařízení:
 
 ```sql
 SELECT * FROM devices
@@ -80,14 +80,14 @@ SELECT * FROM devices
 > [!NOTE]
 > [Sady SDK služby Azure IoT] [ lnk-hub-sdks] podporu stránkování výsledků velký.
 
-Centrum IoT vám umožní dvojčata zařízení tooretrieve filtrování pomocí libovolné podmínky. Pro instanci,
+IoT Hub můžete načíst dvojčata zařízení filtrování pomocí libovolné podmínky. Pro instanci,
 
 ```sql
 SELECT * FROM devices
 WHERE tags.location.region = 'US'
 ```
 
-načte hello dvojčata zařízení s hello **location.region** značky nastavit příliš**USA**.
+načte dvojčata zařízení pomocí **location.region** značky nastavit na **USA**.
 Logické operátory a aritmetické porovnání jsou podporovány také, například
 
 ```sql
@@ -96,21 +96,21 @@ WHERE tags.location.region = 'US'
     AND properties.reported.telemetryConfig.sendFrequencyInSecs >= 60
 ```
 
-načte všechny dvojčata zařízení nachází v hello nám nakonfigurované toosend telemetrie méně často než každou minutu. Pro potřeby je také možné toouse konstanty pole s hello **IN** a **NV** operátory (ne v). Pro instanci,
+načte všechny dvojčata zařízení nachází v USA, konfigurované k odesílání telemetrie méně často než každou minutu. Pro potřeby je také možné použít konstanty pole s **IN** a **NV** operátory (ne v). Pro instanci,
 
 ```sql
 SELECT * FROM devices
 WHERE properties.reported.connectivity IN ['wired', 'wifi']
 ```
 
-načte všechny dvojčata zařízení, které ohlásil Wi-Fi nebo drátové připojení. Ho je často nutné tooidentify všechny dvojčata zařízení, které obsahují určité vlastnosti. IoT Hub podporuje funkce hello `is_defined()` pro tento účel. Pro instanci,
+načte všechny dvojčata zařízení, které ohlásil Wi-Fi nebo drátové připojení. Často je potřeba určit všechny dvojčata zařízení, které obsahují určité vlastnosti. IoT Hub podporuje funkce `is_defined()` pro tento účel. Pro instanci,
 
 ```SQL
 SELECT * FROM devices
 WHERE is_defined(properties.reported.connectivity)
 ```
 
-načíst všechny dvojčata zařízení, které definují hello `connectivity` hlášené vlastnost. Odkazovat toohello [klauzule WHERE] [ lnk-query-where] části pro úplný přehled hello hello možností filtrování.
+načíst všechny dvojčata zařízení, které definují `connectivity` hlášené vlastnost. Odkazovat [klauzule WHERE] [ lnk-query-where] části pro úplný přehled funkcí filtrování.
 
 Seskupení a agregace jsou také podporovány. Pro instanci,
 
@@ -121,7 +121,7 @@ FROM devices
 GROUP BY properties.reported.telemetryConfig.status
 ```
 
-Vrátí hello počet zařízení hello každý stav konfigurace telemetrie.
+Vrátí počet zařízení v každé stav konfigurace telemetrie.
 
 ```json
 [
@@ -140,10 +140,10 @@ Vrátí hello počet zařízení hello každý stav konfigurace telemetrie.
 ]
 ```
 
-Hello předchozí příklad znázorňuje situaci, kdy tři zařízení hlášené úspěšná konfigurace, dva jsou stále aplikování hello konfigurace a jeden ohlásil chybu.
+Předchozí příklad znázorňuje situaci, kdy tři zařízení hlášené úspěšná konfigurace, dva jsou stále aplikování konfigurace a jeden ohlásil chybu.
 
 ### <a name="c-example"></a>Příklad jazyka C#
-Hello dotazu funkce je zveřejněna rozhraním hello [C# sady SDK služby] [ lnk-hub-sdks] v hello **RegistryManager** třídy.
+Funkce dotazu je zveřejněna rozhraním [C# sady SDK služby] [ lnk-hub-sdks] v **RegistryManager** třídy.
 Tady je příklad jednoduchého dotazu:
 
 ```csharp
@@ -158,20 +158,20 @@ while (query.HasMoreResults)
 }
 ```
 
-Poznámka: jak hello **dotazu** vytvořit instanci objektu s velikostí stránky (až too1000) a pak může být více stránek načíst volání hello **GetNextAsTwinAsync** metody vícekrát.
-Poznámka: Tento objekt dotazu hello vystavuje více **Další\***, v závislosti na možnost hello deserializaci vyžadované hello dotazu, například objekty zařízení twin nebo úlohy, nebo nešifrovaná toobe JSON pro používání projekce.
+Poznámka: Jak **dotazu** vytvořit instanci objektu s velikostí stránky (až 1 000), a pak může načíst více stránek volání **GetNextAsTwinAsync** metody vícekrát.
+Všimněte si, že objektu dotazu vystavuje více **Další\***, v závislosti na možnost deserializaci vyžadované dotazu, například zařízení úlohy nebo dvojici objektů nebo prostý JSON má být použit při použití projekce.
 
 ### <a name="nodejs-example"></a>Příklad Node.js
-Hello dotazu funkce je zveřejněna rozhraním hello [sady SDK služby Azure IoT pro Node.js] [ lnk-hub-sdks] v hello **registru** objektu.
+Funkce dotazu je zveřejněna rozhraním [sady SDK služby Azure IoT pro Node.js] [ lnk-hub-sdks] v **registru** objektu.
 Tady je příklad jednoduchého dotazu:
 
 ```nodejs
 var query = registry.createQuery('SELECT * FROM devices', 100);
 var onResults = function(err, results) {
     if (err) {
-        console.error('Failed toofetch hello results: ' + err.message);
+        console.error('Failed to fetch the results: ' + err.message);
     } else {
-        // Do something with hello results
+        // Do something with the results
         results.forEach(function(twin) {
             console.log(twin.deviceId);
         });
@@ -184,17 +184,17 @@ var onResults = function(err, results) {
 query.nextAsTwin(onResults);
 ```
 
-Poznámka: jak hello **dotazu** vytvořit instanci objektu s velikostí stránky (až too1000) a pak může být více stránek načíst volání hello **nextAsTwin** metody vícekrát.
-Poznámka: Tento objekt dotazu hello vystavuje více **Další\***, v závislosti na možnost hello deserializaci vyžadované hello dotazu, například objekty zařízení twin nebo úlohy, nebo nešifrovaná toobe JSON pro používání projekce.
+Poznámka: Jak **dotazu** vytvořit instanci objektu s velikostí stránky (až 1 000), a pak může načíst více stránek volání **nextAsTwin** metody vícekrát.
+Všimněte si, že objektu dotazu vystavuje více **Další\***, v závislosti na možnost deserializaci vyžadované dotazu, například zařízení úlohy nebo dvojici objektů nebo prostý JSON má být použit při použití projekce.
 
 ### <a name="limitations"></a>Omezení
 > [!IMPORTANT]
-> Výsledky dotazu může mít několik minut zpoždění s ohledem toohello nejnovější hodnoty v dvojčata zařízení. Pokud dotazuje dvojčata jednotlivých zařízení podle id, vždycky je vhodnější toouse hello načíst twin rozhraní API pro zařízení, která vždy obsahuje nejnovější hodnoty hello a má, vyšší omezení.
+> Výsledky dotazu může mít několik minut zpoždění s ohledem na něj nejnovější hodnoty v dvojčata zařízení. Pokud dotazuje dvojčata jednotlivých zařízení podle id, vždycky je vhodnější použít načtení twin rozhraní API pro zařízení, která vždy obsahuje nejnovější hodnoty a má, vyšší omezení.
 
 V současné době porovnání jsou podporovány pouze mezi primitivní typy (žádné objekty), například `... WHERE properties.desired.config = properties.reported.config` je podporováno pouze v případě, že tyto vlastnosti mají primitivní hodnoty.
 
 ## <a name="get-started-with-jobs-queries"></a>Začínáme s dotazy úlohy
-[Úlohy] [ lnk-jobs] poskytují způsob, jak tooexecute operace na sadu zařízení. Každý dvojče zařízení obsahuje informace o hello hello úloh, které je součástí v kolekci s názvem **úlohy**.
+[Úlohy] [ lnk-jobs] poskytují způsob k provedení operací na sadu zařízení. Každý dvojče zařízení obsahuje informace o úlohách, které je součástí v kolekci s názvem **úlohy**.
 Logicky,
 
 ```json
@@ -226,23 +226,23 @@ Logicky,
 }
 ```
 
-Tato kolekce je v současné době dotazovatelné jako **devices.jobs** v hello dotazovacího jazyka pro IoT Hub.
+Tato kolekce je v současné době dotazovatelné jako **devices.jobs** ve službě IoT Hub dotazu jazyka.
 
 > [!IMPORTANT]
-> V současné době je nikdy vrácena vlastnost úlohy hello při dotazování dvojčata zařízení (to znamená, dotazy, které obsahuje, ze zařízení"). Lze přistupovat pouze přímo s dotazy pomocí `FROM devices.jobs`.
+> V současné době je nikdy vrácena vlastnost úlohy při dotazování dvojčata zařízení (to znamená, dotazy, které obsahuje, ze zařízení"). Lze přistupovat pouze přímo s dotazy pomocí `FROM devices.jobs`.
 >
 >
 
-Například tooget všechny úlohy (posledních a plánované) ovlivňující jedno zařízení, můžete použít hello následující dotaz:
+Například k získání všech úloh (posledních a plánované), které mají vliv jedno zařízení, můžete použít následující dotaz:
 
 ```sql
 SELECT * FROM devices.jobs
 WHERE devices.jobs.deviceId = 'myDeviceId'
 ```
 
-Všimněte si, jak tento dotaz poskytuje hello konkrétní zařízení stav (a případně hello přímá metoda odpověď) každé úlohy vrátila.
-Je také možné toofilter s libovolnými Boolean podmínek na všechny vlastnosti objektu v hello **devices.jobs** kolekce.
-Například hello následující dotaz:
+Všimněte si, jak tento dotaz obsahuje stav konkrétní zařízení (a případně přímá metoda odpověď) každé úlohy vrátil.
+Je také možné filtrovat pomocí libovolné Boolean podmínek na všechny vlastnosti objektu v **devices.jobs** kolekce.
+Například následující dotaz:
 
 ```sql
 SELECT * FROM devices.jobs
@@ -254,7 +254,7 @@ WHERE devices.jobs.deviceId = 'myDeviceId'
 
 načte všechny dokončit zařízení twin aktualizace úlohy pro zařízení **myDeviceId** vytvořených po září 2016.
 
-Je také možné tooretrieve hello podle zařízení výstupy jednu úlohu.
+Je také možné načíst výstupy podle zařízení jednu úlohu.
 
 ```sql
 SELECT * FROM devices.jobs
@@ -265,18 +265,18 @@ WHERE devices.jobs.jobId = 'myJobId'
 V současné době se dotazuje na **devices.jobs** nepodporují:
 
 * Projekce, proto pouze `SELECT *` je možné.
-* Podmínky, které odkazují dvojče zařízení toohello v přidání vlastnosti toojob (viz hello předcházející části).
+* Podmínky, které odkazují na dvojče zařízení kromě vlastnosti úlohy (viz předchozí části).
 * Provádění agregace, jako je počet, avg, Seskupit podle.
 
 ## <a name="get-started-with-device-to-cloud-message-routes-query-expressions"></a>Začínáme s výrazy dotazů trasy zprávu typu zařízení cloud
 
-Pomocí [zařízení cloud trasy][lnk-devguide-messaging-routes], můžete nakonfigurovat IoT Hub toodispatch zařízení cloud zprávy koncové body toodifferent založené na výrazech vyhodnotit na základě jednotlivých zpráv.
+Pomocí [zařízení cloud trasy][lnk-devguide-messaging-routes], můžete nakonfigurovat Centrum IoT k odesílání zpráv typu zařízení cloud k různým koncovým bodům založené na výrazech vyhodnotit na základě jednotlivých zpráv.
 
-Hello trasy [podmínku] [ lnk-query-expressions] hello používá stejné dotazovací jazyk IoT Hub jako podmínky v dotazech twin a úlohy. Podmínky trasy se vyhodnocují na hlavičky zpráv hello a text. Směrování výraz dotazu může zahrnovat pouze hlavičky zpráv, pouze tělo zprávy hello, nebo obě zpráva hlavičky a tělo zprávy. IoT Hub předpokládá konkrétní schéma pro hello hlavičky a tělo zprávy ve zprávách tooroute pořadí a hello následující části popisují, co je požadované pro trasu tooproperly IoT Hub:
+Trasa [podmínku] [ lnk-query-expressions] používá stejný dotaz jazyk IoT Hub jako podmínky v dotazech twin a úlohy. Podmínky trasy se vyhodnocují na hlavičky zpráv a text. Směrování výraz dotazu může zahrnovat pouze hlavičky zpráv, pouze text zprávy, nebo obě zpráva hlavičky a tělo zprávy. IoT Hub předpokládá konkrétní schéma pro záhlaví a text zprávy, aby bylo možné směrovat zprávy a následující části popisují, co je vyžadována pro IoT Hub, která správně trasy:
 
 ### <a name="routing-on-message-headers"></a>Směrování v záhlaví zpráv
 
-IoT Hub předpokládá hello následující reprezentace JSON hlavičky zpráv pro směrování zpráv:
+IoT Hub předpokládá následující reprezentace JSON hlavičky zpráv pro směrování zpráv:
 
 ```json
 {
@@ -298,41 +298,41 @@ IoT Hub předpokládá hello následující reprezentace JSON hlavičky zpráv p
 }
 ```
 
-Vlastnosti zprávu systému mají předponu hello `'$'` symbol.
-Vlastnosti uživatelů jsou vždy přistupovat pomocí jeho názvu. Pokud název vlastnosti uživatele se stane toocoincide s vlastností systému (například `$to`), bude načten hello vlastnost uživatele s hello `$to` výraz.
-Vždy přístup k vlastnosti systému hello pomocí závorek `{}`: například můžete použít výraz hello `{$to}` tooaccess hello vlastnost systému `to`. Názvy vlastností v závorkách vždy načítají hello odpovídající vlastnost systému.
+Vlastnosti zprávu systému mají předponu `'$'` symbol.
+Vlastnosti uživatelů jsou vždy přistupovat pomocí jeho názvu. Pokud se stane název vlastnosti uživatele, se shoduje s vlastností systému (například `$to`), bude načten vlastnost uživatele s `$to` výraz.
+Vždy přístup k vlastnosti systému pomocí závorek `{}`: například můžete použít ve výrazu `{$to}` pro přístup k vlastnosti systému `to`. Názvy vlastností v závorkách vždy načítají odpovídající vlastnost systému.
 
 Mějte na paměti, že jsou názvy vlastností malá a velká písmena.
 
 > [!NOTE]
-> Všechny vlastnosti zprávy jsou řetězce. Vlastnosti systému, jak je popsáno v hello [Příručka vývojáře][lnk-devguide-messaging-format], nejsou aktuálně k dispozici toouse v dotazech.
+> Všechny vlastnosti zprávy jsou řetězce. Vlastnosti systému, jak je popsáno v [Příručka vývojáře][lnk-devguide-messaging-format], nejsou aktuálně k dispozici pro použití v dotazech.
 >
 
-Například, pokud používáte `messageType` vlastnost, můžete chtít tooroute všechny endpoint tooone telemetrie a všechny výstrahy tooanother koncového bodu. Můžete napsat hello následující výraz tooroute hello telemetrie:
+Například, pokud používáte `messageType` vlastnost, můžete chtít směrovat všechny telemetrická jeden koncový bod a všechny výstrahy pro jiný koncový bod. Můžete napsat následující výraz směrovat telemetrie:
 
 ```sql
 messageType = 'telemetry'
 ```
 
-A hello následující výraz tooroute hello výstražných zpráv:
+A následující výraz směrovat výstražných zpráv:
 
 ```sql
 messageType = 'alert'
 ```
 
-Logické výrazy a funkce jsou také podporovány. Tato funkce umožňuje toodistinguish mezi úroveň závažnosti, například:
+Logické výrazy a funkce jsou také podporovány. Tato funkce umožňuje rozlišovat mezi úroveň závažnosti, například:
 
 ```sql
 messageType = 'alerts' AND as_number(severity) <= 2
 ```
 
-Odkazovat toohello [výraz a podmínky] [ lnk-query-expressions] části hello úplný seznam podporovaných operátory a funkce.
+Odkazovat [výraz a podmínky] [ lnk-query-expressions] části úplný seznam podporovaných operátory a funkce.
 
 ### <a name="routing-on-message-bodies"></a>Směrování na obsah zpráv
 
-IoT Hub můžete pouze směrování podle tělo zprávy obsah, pokud je text zprávy hello správně vytvořen JSON kódování UTF-8, UTF-16 nebo UTF-32. Je nutné nastavit typ obsahu hello hello zprávy příliš`application/json` a hello obsahu kódování tooone hello podporované kódování UTF v tooallow záhlaví zprávy hello IoT Hub tooroute uvítací zprávu podle obsah textu hello. Pokud není zadán buď hello hlaviček, nepokusí IoT Hub tooevaluate jakýkoli výraz dotazu zahrnující textu hello proti uvítací zprávu. Pokud vaše zpráva není zprávu JSON, nebo pokud uvítací zprávu neurčuje hello typu obsahu a kódování obsahu, můžete stále používat směrování podle hlavičky zpráv hello tooroute uvítací zprávu zprávy.
+IoT Hub můžete pouze směrování podle tělo zprávy obsah, pokud text zprávy je správně vytvořen JSON kódování UTF-8, UTF-16 nebo UTF-32. Je nutné nastavit typ obsahu zprávy `application/json` a kódování obsahu na jednu z podporovaných kódování UTF v záhlaví zprávy umožňující IoT Hub pro směrování zpráv na základě obsahu textu. Pokud není zadán buď z hlaviček, IoT Hub se nebude pokoušet vyhodnotit jakýkoli výraz dotazu zahrnující těla proti zprávy. Pokud vaše zpráva není zprávu JSON, nebo pokud zpráva neurčuje typu obsahu a kódování obsahu, může stále používáte směrování zpráv směrovat zprávy založené na záhlaví zprávy.
 
-Můžete použít `$body` hello dotazu výraz tooroute hello zprávy. Jednoduchý text odkazu, odkaz na pole text nebo více odkazů text můžete použít ve výrazu dotazu hello. Výraz dotazu můžete také kombinovat textu odkaz s odkazem na záhlaví zprávy. Například následující hello jsou všechny výrazy platný dotaz:
+Můžete použít `$body` ve výrazu dotazu pro odesílání zpráv. Jednoduchý text odkazu, odkaz na pole text nebo více odkazů text můžete použít ve výrazu dotazu. Výraz dotazu můžete také kombinovat textu odkaz s odkazem na záhlaví zprávy. Tady jsou například všechny výrazy platný dotaz:
 
 ```sql
 $body.message.Weather.Location.State = 'WA'
@@ -343,7 +343,7 @@ $body.Weather.Temperature = 50 AND Status = 'Active'
 ```
 
 ## <a name="basics-of-an-iot-hub-query"></a>Základní informace o dotaz služby IoT Hub
-Každé centrum IoT dotaz sestává s výběrem a klauzulí FROM a volitelné WHERE a GROUP BY – klauzule. Každý dotaz je spuštěn na kolekci dokumentů JSON, například dvojčata zařízení. klauzule FROM Hello označuje hello dokumentu kolekce toobe vstupní na (**zařízení** nebo **devices.jobs**). Potom hello filtru v hello v případě použití klauzule. S agregace, hello výsledky tohoto kroku seskupeny jako hello zadaný v klauzuli GROUP BY, a pro každou skupinu, je generována řádek uvedené v klauzuli SELECT hello.
+Každé centrum IoT dotaz sestává s výběrem a klauzulí FROM a volitelné WHERE a GROUP BY – klauzule. Každý dotaz je spuštěn na kolekci dokumentů JSON, například dvojčata zařízení. V klauzuli FROM označuje kolekce dokumentu. Chcete-li být vstupní na (**zařízení** nebo **devices.jobs**). Pak je použit filtr v klauzuli WHERE. S agregace, výsledky tohoto kroku seskupeny jako zadaný v klauzuli GROUP BY a pro každou skupinu, je generována řádek uvedené v klauzuli SELECT.
 
 ```sql
 SELECT <select_list>
@@ -353,18 +353,18 @@ FROM <from_specification>
 ```
 
 ## <a name="from-clause"></a>FROM – klauzule
-Hello **z < from_specification >** klauzule můžete předpokládat pouze dvě hodnoty: **ze zařízení**, tooquery dvojčata zařízení, nebo **z devices.jobs**, tooquery úlohy na zařízení Podrobnosti.
+**z < from_specification >** klauzule můžete předpokládat pouze dvě hodnoty: **ze zařízení**, aby dotaz dvojčata zařízení nebo **z devices.jobs**, k dotazování úlohy podle zařízení podrobnosti.
 
 ## <a name="where-clause"></a>Klauzule WHERE
-Hello **kde < filter_condition >** klauzule je volitelný. Určuje jeden nebo více podmínky, že dokumenty JSON hello v kolekci FROM hello musí splňovat toobe jako součást výsledků hello. Dokumentu JSON se musí vyhodnotit hello zadané podmínky příliš "true" toobe součástí hello výsledku.
+**Kde < filter_condition >** klauzule je volitelný. Určuje, že jeden nebo více podmínky, že dokumenty JSON v kolekci FROM musí splňovat zahrnuty jako součást výsledku. Dokumentu JSON se musí vyhodnotit na hodnotu true, mají být zahrnuty do výsledku k zadaným podmínkám.
 
-Hello povolené podmínky jsou popsány v části [výrazy a podmínky][lnk-query-expressions].
+Povolené podmínky jsou popsány v části [výrazy a podmínky][lnk-query-expressions].
 
 ## <a name="select-clause"></a>Klauzule SELECT
-Klauzule SELECT Hello (**vyberte < select_list >**) je povinná a určuje, jaké hodnoty jsou načteny z dotazu hello. Určuje, že toobe hodnoty JSON hello používá toogenerate nové objekty JSON.
-Pro každý element hello filtrované (a volitelně seskupené) podmnožinu hello FROM kolekce, fáze projekce hello vygeneruje nový objekt JSON, zkonstruovat s hello hodnot zadaných v klauzuli SELECT hello.
+Klauzule SELECT (**vyberte < select_list >**) je povinná a určuje, jaké hodnoty jsou načteny z dotazu. Určuje hodnoty JSON, které mají být použita ke generování nových objektů JSON.
+Pro každý prvek filtrované (a volitelně seskupené) podmnožinu kolekce FROM fázi projekce generuje nový objekt JSON, zkonstruovat s hodnot zadaných v klauzuli SELECT.
 
-Toto je hello gramatika vyberte klauzule hello:
+Toto je gramatiky klauzuli SELECT:
 
 ```
 SELECT [TOP <max number>] <projection list>
@@ -386,12 +386,12 @@ SELECT [TOP <max number>] <projection list>
     | max(<projection_element>)
 ```
 
-kde **attribute_name** odkazuje vlastnost tooany hello dokumentu JSON v kolekci FROM hello. Některé příklady klauzule FROM lze nalézt v hello [Začínáme s dotazy twin zařízení] [ lnk-query-getstarted] části.
+kde **attribute_name** odkazuje na žádnou vlastnost dokumentu JSON v kolekci FROM. Některé příklady klauzule FROM lze nalézt v [Začínáme s dotazy twin zařízení] [ lnk-query-getstarted] části.
 
 V současné době výběr klauzule liší od **vyberte \***  jsou podporovány pouze v agregační dotazy na dvojčata zařízení.
 
 ## <a name="group-by-clause"></a>klauzule GROUP BY
-Hello **GROUP BY < group_specification >** klauzule je volitelný krok, který lze provést po hello filtr zadaný v hello klauzule WHERE a před hello projekce určená v hello vyberte. Seskupuje dokumentů podle hello hodnotu atributu. Tyto skupiny jsou použité toogenerate agregovat hodnoty zadané v klauzuli SELECT hello.
+**GROUP BY < group_specification >** klauzule je volitelný krok, který lze provést po filtr zadaný v klauzuli WHERE a před projekce určená v SELECT. Seskupuje dokumentů na základě hodnoty atributu. Tyto skupiny se používají ke generování agregované hodnoty zadané v klauzuli SELECT.
 
 Příklad dotazu pomocí skupiny je:
 
@@ -402,7 +402,7 @@ FROM devices
 GROUP BY properties.reported.telemetryConfig.status
 ```
 
-Tady je syntax formální Hello Seskupit podle:
+Formální syntaxe GROUP BY je:
 
 ```
 GROUP BY <group_by_element>
@@ -411,19 +411,19 @@ GROUP BY <group_by_element>
     | < group_by_element > '.' attribute_name
 ```
 
-kde **attribute_name** odkazuje vlastnost tooany hello dokumentu JSON v kolekci FROM hello.
+kde **attribute_name** odkazuje na žádnou vlastnost dokumentu JSON v kolekci FROM.
 
-Klauzule GROUP BY hello je v současné době podporována pouze při dotazování dvojčata zařízení.
+V klauzuli GROUP BY je v současné době podporována pouze při dotazování dvojčata zařízení.
 
 ## <a name="expressions-and-conditions"></a>Výrazy a podmínky
 Na vysoké úrovni *výraz*:
 
-* Vyhodnotí tooan instanci typu JSON (například logická hodnota, čísla, řetězce, pole nebo objekt), a
-* Je definován manipulace s daty z dokumentu JSON hello zařízení a konstant pomocí předdefinovaných operátory a funkce.
+* Vyhodnotí na instanci typu JSON (například logická hodnota, čísla, řetězce, pole nebo objekt), a
+* Je definován manipulace s daty z dokumentu JSON zařízení a konstanty pomocí předdefinovaných operátory a funkce.
 
-*Podmínky* jsou výrazy, která se vyhodnotí tooa logická hodnota. Žádné jiné než logická hodnota konstanta **true** se považuje za **false** (včetně **null**, **nedefinované**, objekt nebo pole instance, všechny řetězce a jasně hello logická hodnota **false**).
+*Podmínky* jsou výrazy, které vyhodnocena jako logická hodnota. Žádné jiné než logická hodnota konstanta **true** se považuje za **false** (včetně **null**, **nedefinované**, všechny objekt nebo pole instance, libovolného řetězce a jasně logickou hodnotu **false**).
 
-Hello syntaxe pro výrazy je:
+Syntaxe pro výrazy je:
 
 ```
 <expression> ::=
@@ -455,15 +455,15 @@ Kde:
 
 | Symbol | Definice |
 | --- | --- |
-| attribute_name | Vlastnost hello dokumentu JSON v hello **FROM** kolekce. |
-| binary_operator | Všechny binární operátor uvedené v hello [operátory](#operators) části. |
-| Název_funkce| Všechny funkce uvedené v hello [funkce](#functions) části. |
+| attribute_name | Všechny vlastnosti v dokumentu JSON **FROM** kolekce. |
+| binary_operator | Všechny binární operátor uvedené v [operátory](#operators) části. |
+| Název_funkce| Všechny funkce uvedené v [funkce](#functions) části. |
 | decimal_literal |Float, vyjádřené v desítkovém zápisu. |
-| hexadecimal_literal |Číslo vyjádřená hello řetězec '0 x, za nímž následuje řetězec šestnáctkových číslic. |
+| hexadecimal_literal |Číslo vyjádřená řetězec '0 x, za nímž následuje řetězec šestnáctkových číslic. |
 | string_literal |Textové literály jsou reprezentována posloupnost nula nebo více znaků Unicode nebo řídicí sekvence řetězců v kódu Unicode. Textové literály jsou uzavřená do jednoduchých uvozovek (apostrof: ') nebo dvojité uvozovky (uvozovky: "). Povolené řídicí sekvence: `\'`, `\"`, `\\`, `\uXXXX` pro znaky znakové sady Unicode, které jsou definované 4 hexadecimální číslice. |
 
 ### <a name="operators"></a>Operátory
-jsou podporovány Hello následující operátory:
+Podporovány jsou následující operátory:
 
 | Rodina | Operátory |
 | --- | --- |
@@ -472,55 +472,55 @@ jsou podporovány Hello následující operátory:
 | Porovnání |=, !=, <, >, <=, >=, <> |
 
 ### <a name="functions"></a>Funkce
-Při dotazování úlohy a dvojčata hello podporovány pouze funkce je:
+Při dotazování dvojčata a úlohám, které jediný podporovaný je funkce:
 
 | Funkce | Popis |
 | -------- | ----------- |
-| IS_DEFINED(Property) | Vrátí logickou hodnotu udávající, pokud byla vlastnost hello přiřazenou hodnotu (včetně `null`). |
+| IS_DEFINED(Property) | Vrátí logickou hodnotu udávající, pokud byla vlastnost přiřazenou hodnotu (včetně `null`). |
 
-V podmínkách trasy jsou podporovány následující matematické funkce hello:
-
-| Funkce | Popis |
-| -------- | ----------- |
-| Abs(x) | Vrátí hello absolutní (kladné) hello zadána hodnota číselného výrazu. |
-| Exp(x) | Vrátí hodnotu exponenciálního hello Dobrý den zadán číselný výraz (e ^ x). |
-| Power(x,y) | Vrátí hello hodnotu hello zadaný výraz toohello zadaný power (x ^ y).|
-| Square(x) | Vrátí hello odmocnina z hello zadat číselnou hodnotu. |
-| CEILING(x) | Vrátí hello nejmenší celé číslo větší než nebo rovno, hello zadaný číselný výraz. |
-| Floor(x) | Vrátí hello největší celé číslo menší než nebo rovna toohello zadán číselný výraz. |
-| Sign(x) | Vrátí hello kladnou (+ 1), nula (0), nebo záporné znaménko (-1) hello zadán číselný výraz.|
-| Sqrt(x) | Vrátí hello odmocnina z hello zadat číselnou hodnotu. |
-
-V podmínkách trasy jsou podporovány následující typ kontrolu a přetypování funkce hello:
+V podmínkách trasy jsou podporovány následující matematické funkce:
 
 | Funkce | Popis |
 | -------- | ----------- |
-| AS_NUMBER | Převede hello vstupní řetězec tooa číslo. `noop`Pokud vstup je číslo; `Undefined` Pokud řetězec nepředstavuje číslo.|
-| IS_ARRAY | Vrátí logickou hodnotu udávající, pokud typ hello hello zadaný výraz je pole. |
-| IS_BOOL | Vrátí logickou hodnotu udávající, pokud typ hello hello zadaný výraz je logická hodnota. |
-| IS_DEFINED | Vrátí logickou hodnotu udávající, pokud byla vlastnost hello přiřazena hodnota. |
-| IS_NULL | Vrátí logickou hodnotu udávající, pokud zadaný typ hello hello výraz má hodnotu null. |
-| IS_NUMBER | Vrátí logickou hodnotu udávající, pokud typ hello hello zadaný výraz je číslo. |
-| IS_OBJECT | Vrátí logickou hodnotu udávající, pokud typ hello hello zadaný výraz je objekt JSON. |
-| IS_PRIMITIVE | Vrátí logickou hodnotu udávající, pokud typ hello hello zadaný výraz je primitivní (řetězec, logická hodnota, číselná nebo `null`). |
-| IS_STRING | Vrátí logickou hodnotu udávající, pokud typ hello hello zadaný výraz obsahuje řetězec. |
+| Abs(x) | Vrátí absolutní hodnotu (kladné) zadaný číselný výraz. |
+| Exp(x) | Vrátí hodnotu exponenciálního zadaný číselný výraz (e ^ x). |
+| Power(x,y) | Vrátí hodnotu zadaného výrazu určenou mocninu (x ^ y).|
+| Square(x) | Vrátí druhou mocninu Zadaná číselná hodnota. |
+| CEILING(x) | Vrátí nejmenší hodnotu, celé číslo větší než nebo rovna hodnotě zadané číselný výraz. |
+| Floor(x) | Vrátí největší celé číslo menší než nebo rovna zadané číselný výraz. |
+| Sign(x) | Vrátí kladnou (+ 1), nula (0) nebo záporné znaménko (-1) zadaný číselný výraz.|
+| Sqrt(x) | Vrátí druhou mocninu Zadaná číselná hodnota. |
 
-V podmínkách trasy jsou podporovány následující funkce řetězce hello:
+V podmínkách trasy jsou podporovány následující kontrola typu a přetypování funkce:
 
 | Funkce | Popis |
 | -------- | ----------- |
-| CONCAT(x,...) | Vrátí řetězec, který je výsledkem hello zřetězení dvou nebo více řetězcové hodnoty. |
-| Length(x) | Vrátí hello počet znaků, který hello zadán řetězcovým výrazem.|
-| LOWER(x) | Vrací výraz řetězce po převodu dat toolowercase velké písmeno. |
-| UPPER(x) | Vrací výraz řetězce po převodu dat toouppercase malé písmeno. |
-| Dílčí řetězec (string, spuštění [, délka]) | Vrátí část výrazu řetězce začínající hello zadaný znak pozice s nulovým základem a pokračuje v toohello Zadaná délka nebo toohello konce řetězce hello. |
-| INDEX_OF (řetězec, fragment) | Vrátí počáteční pozici prvního výskytu hello hello druhý řetězcového výrazu v rámci zadaného řetězcového výrazu první hello nebo -1, pokud není nalezen řetězec hello hello.|
-| STARTS_WITH (x, y) | Vrátí logickou hodnotu udávající, zda text hello první řetězcového výrazu začíná hello druhý. |
-| ENDS_WITH (x, y) | Vrátí logickou hodnotu udávající, zda text hello první řetězcového výrazu končí hello druhý. |
-| CONTAINS(x,y) | Vrátí logickou hodnotu udávající, zda text hello první řetězcového výrazu obsahuje hello druhý. |
+| AS_NUMBER | Převede vstupní řetězec na číslo. `noop`Pokud vstup je číslo; `Undefined` Pokud řetězec nepředstavuje číslo.|
+| IS_ARRAY | Vrátí logickou hodnotu udávající, pokud je typ zadaný výraz pole. |
+| IS_BOOL | Vrátí logickou hodnotu udávající, pokud typ zadaný výraz je logická hodnota. |
+| IS_DEFINED | Vrátí logickou hodnotu udávající, pokud byla vlastnost přiřazenou hodnotu. |
+| IS_NULL | Vrátí logickou hodnotu udávající, pokud není typ zadaného výrazu hodnotu null. |
+| IS_NUMBER | Vrátí logickou hodnotu udávající, pokud typ zadaný výraz je číslo. |
+| IS_OBJECT | Vrátí logickou hodnotu udávající, pokud typ zadaný výraz je objekt JSON. |
+| IS_PRIMITIVE | Vrátí logickou hodnotu udávající, pokud není typ zadaného výrazu jednoduchého typu (řetězec, logická hodnota, číselná nebo `null`). |
+| IS_STRING | Vrátí logickou hodnotu udávající, pokud typ zadaný výraz obsahuje řetězec. |
+
+V podmínkách trasy jsou podporovány následující funkce řetězce:
+
+| Funkce | Popis |
+| -------- | ----------- |
+| CONCAT(x,...) | Vrátí řetězec, který je výsledkem zřetězení dvou nebo více řetězcové hodnoty. |
+| Length(x) | Vrátí počet znaků ze zadaného řetězcového výrazu.|
+| LOWER(x) | Vrací výraz řetězce po převodu dat velké písmeno na malá písmena. |
+| UPPER(x) | Vrací výraz řetězce po převodu dat malé písmeno na velká písmena. |
+| Dílčí řetězec (string, spuštění [, délka]) | Vrátí část řetězcového výrazu od pozice s nulovým základem zadaný znak a pokračuje na určenou délku nebo na konci řetězce. |
+| INDEX_OF (řetězec, fragment) | Vrátí počáteční pozici prvního výskytu druhý řetězec výrazu v rámci první zadaného řetězcového výrazu nebo -1, pokud není nalezen řetězec.|
+| STARTS_WITH (x, y) | Vrátí logická hodnota, která určuje zda první řetězec výraz začíná druhý. |
+| ENDS_WITH (x, y) | Vrátí logická hodnota, která určuje zda první řetězec výraz končí druhý. |
+| CONTAINS(x,y) | Vrátí logická hodnota, která určuje zda první řetězec výraz obsahuje druhý. |
 
 ## <a name="next-steps"></a>Další kroky
-Zjistěte, jak tooexecute dotazuje ve svých aplikacích pomocí [SDK služby Azure IoT][lnk-hub-sdks].
+Zjistěte, jak na provedení dotazů ve svých aplikacích pomocí [SDK služby Azure IoT][lnk-hub-sdks].
 
 [lnk-query-where]: iot-hub-devguide-query-language.md#where-clause
 [lnk-query-expressions]: iot-hub-devguide-query-language.md#expressions-and-conditions

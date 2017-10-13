@@ -1,6 +1,6 @@
 ---
-title: "obnovení aaaDiagnostics a chyby pro úlohy Azure Import/Export | Microsoft Docs"
-description: "Zjistěte, jak služba tooenable podrobné protokolování pro Microsoft Azure Import/Export úloh."
+title: "Diagnostiky a zotavení po chybě pro úlohy Azure Import/Export | Microsoft Docs"
+description: "Zjistěte, jak povolit podrobné protokolování pro úlohy služby Microsoft Azure Import/Export."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 48164279e7904c78fed802aa3cff66e589c3f12c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0068aae9d6780aa41a070db0eb191d0d5a165d21
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="diagnostics-and-error-recovery-for-azure-importexport-jobs"></a>Diagnostiky a zotavení po chybě pro úlohy Azure Import/Export
-Pro každou jednotku zpracovat vytvoří hello služba Azure Import/Export protokol chyb v hello přidruženého účtu úložiště. Můžete také povolit podrobné protokolování tak nastavení hello `LogLevel` vlastnost příliš`Verbose` při volání metody hello [Put úlohy](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) nebo [vlastnosti úlohy aktualizace](/rest/api/storageimportexport/jobs#Jobs_Update) operace.
+Pro každou jednotku zpracovat vytvoří služba Azure Import/Export protokol chyb v přidruženého účtu úložiště. Můžete také povolit podrobné protokolování nastavením `LogLevel` vlastnost `Verbose` při volání metody [Put úlohy](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) nebo [vlastnosti úlohy aktualizace](/rest/api/storageimportexport/jobs#Jobs_Update) operace.
 
- Ve výchozím nastavení, protokoly zapisují tooa kontejner s názvem `waimportexport`. Můžete zadat jiný název nastavení hello `DiagnosticsPath` vlastnost při volání metody hello `Put Job` nebo `Update Job Properties` operace. Hello protokoly se ukládají jako objekty BLOB bloku s hello následující zásady vytváření názvů: `waies/jobname_driveid_timestamp_logtype.xml`.
+ Ve výchozím nastavení se protokoly zapisují do kontejner s názvem `waimportexport`. Můžete zadat jiný název nastavení `DiagnosticsPath` vlastnost při volání metody `Put Job` nebo `Update Job Properties` operace. Protokoly se ukládají jako objekty BLOB bloku se podle následující konvence: `waies/jobname_driveid_timestamp_logtype.xml`.
 
- Můžete načíst hello URI hello protokoly pro úlohu pomocí volání hello [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) operaci. Hello identifikátor URI pro hello podrobného protokolování se vrátí v hello `VerboseLogUri` vlastnosti pro každou jednotku, zatímco hello identifikátor URI pro protokol chyb hello je vrácený v hello `ErrorLogUri` vlastnost.
+ Identifikátor URI protokoly pro úlohu můžete načíst pomocí volání [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) operaci. Identifikátor URI pro podrobného protokolování se vrátí v `VerboseLogUri` vlastnosti pro každou jednotku, když je identifikátor URI v protokolu chyb vrácený v `ErrorLogUri` vlastnost.
 
-Můžete použít hello protokolování dat tooidentify hello následující problémy.
+Data protokolování můžete použít k identifikaci následující problémy.
 
 ## <a name="drive-errors"></a>Jednotka chyby
 
-Hello následující položky jsou klasifikovány jako chyby jednotky:
+Následující položky jsou klasifikovány jako chyby jednotky:
 
--   Soubor manifestu chyby v přístupu ke službám nebo čtení hello
+-   Chyby v přístupu ke službám nebo načítání souboru manifestu
 
 -   Nesprávný klíče nástroje BitLocker
 
@@ -41,7 +41,7 @@ Hello následující položky jsou klasifikovány jako chyby jednotky:
 
 ## <a name="blob-errors"></a>Objekt BLOB chyby
 
-Hello následující položky jsou klasifikovány jako chyby objektů blob:
+Následující položky jsou klasifikovány jako chyby objektů blob:
 
 -   Objekt blob nesprávnou či konfliktní nebo názvy
 
@@ -49,16 +49,16 @@ Hello následující položky jsou klasifikovány jako chyby objektů blob:
 
 -   Nebyl nalezen objekt BLOB
 
--   Zkrácený soubory (hello soubory na disku hello jsou menší, než je zadáno v manifestu hello)
+-   Zkrácený soubory (soubory na disku je menší, než je zadáno v manifestu)
 
 -   Poškozený soubor obsahu (pro úlohy importu, zjistila se neshoda MD5 kontrolního součtu)
 
 -   Soubory metadat a vlastnost poškozená blob (zjistila se neshoda MD5 kontrolního součtu)
 
--   Nesprávné schéma pro vlastnosti objektů blob hello a soubory metadat
+-   Nesprávné schéma pro vlastnosti objektů blob a soubory metadat
 
-Můžou nastat případy, kdy některé části úlohu import nebo export není úspěšně dokončil, zatímco hello celkové stále dokončení úlohy. V takovém případě můžete buď odeslání nebo stažení hello chybí částí hello dat přes síť, nebo můžete vytvořit nové data hello tootransfer úlohy. V tématu hello [Azure Import/Export nástroj odkaz](storage-import-export-tool-how-to-v1.md) toolearn jak toorepair hello dat přes síť.
+Můžou nastat případy, kde některé části úlohu import nebo export není úspěšně dokončil, zatímco stále dokončení celkové úlohy. V takovém případě můžete buď odeslání nebo stažení části chybějí dat přes síť, nebo můžete vytvořit novou úlohu k přenosu dat. Najdete v článku [Azure Import/Export nástroj odkaz](storage-import-export-tool-how-to-v1.md) se dozvíte, jak opravit data přes síť.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Pomocí REST API služby importu a exportu hello](storage-import-export-using-the-rest-api.md)
+* [Pomocí REST API služby importu a exportu](storage-import-export-using-the-rest-api.md)

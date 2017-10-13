@@ -1,21 +1,21 @@
-Úloha Hello vytvoří výstupní soubor JSON, který obsahuje metadata o zjištěných a sledovaných strany. Hello metadat obsahuje souřadnice označující hello umístění řezy, a také vzhled ID číslo naznačuje hello sleduje to jednotlivých. Čísla ID vzhled jsou náchylné k chybám tooreset okolností při čelní vzhled hello dojde ke ztrátě nebo překryté hello rámce, výsledkem některé jednotlivce získávání přiřazeno více ID.
+Úloha vytvoří výstupní soubor JSON, který obsahuje metadata o zjištěných a sledovaných strany. Metadat obsahuje souřadnice označující umístění řezy, stejně jako číslo ID vzhled určující sledování to jednotlivých. Čísla ID vzhled jsou náchylné k resetování okolností v případě, že dojde ke ztrátě nebo překryté v rámečku, čelní tučné výsledkem některé jednotlivce získávání přiřazeno více ID.
 
-Hello výstup JSON zahrnuje hello následující atributy:
+Výstup JSON obsahuje následující atributy:
 
 | Element | Popis |
 | --- | --- |
-| Verze |Vztahuje se toohello verzi hello Video rozhraní API. |
-| Index | (Platí pouze tooAzure Redactor média) definuje index rámečku hello hello aktuální událost. |
-| Časová osa |"Rysky" za sekundu hello videa. |
-| Posun |Toto je posunutí hello čas pro časová razítka. Ve verzi 1.0 rozhraní API, Video bude vždy 0. V budoucích scénáře, které podporujeme, tato hodnota může změnit. |
-| kmitočet snímků |Počet snímků za sekundu hello videa. |
-| fragmenty |Hello metadata je blokové až do různých segmentů názvem fragmenty. Každý fragment obsahuje počáteční, doba trvání, číslo intervalu a událostí. |
-| start |Hello počáteční čas hello první událost v 'rysky'. |
-| Doba trvání |Délka Hello hello fragmentu v "rysky". |
-| interval |interval Hello každé události položky v rámci hello fragment v "rysky". |
-| stránka events |Každá událost obsahuje hello řezy zjištěn a sledují v rámci této doby trvání. Jde pole událostí. vnější pole Hello představuje jeden časový interval. vnitřní pole Hello se skládá z 0 nebo více událostí, které bylo provedeno v tomto bodě v čase. Prázdný závorky [] znamená, že nebyly zjištěny žádné řezy. |
-| id |ID Hello hello řez, který je sledován. Toto číslo může nechtěně změnit, pokud se stane nezjištěné řez. Daný individuální by měl mít stejné ID v rámci celkového video hello hello, ale to nemůže zaručit kvůli toolimitations v algoritmus detekce hello (NF pásmová atd.) |
-| x, y |vlevo nahoře Hello X a Y souřadnice ohraničujícího pole v normalizovaný škálování 0.0 too1.0 vzhled hello. <br/>-X a Y souřadnice jsou relativní toolandscape vždycky, takže pokud máte na výšku video (nebo obráceným v případě hello systému iOS), musíte tootranspose hello souřadnice. |
-| šířky, výšky |Hello šířka a výška hello čelí ohraničující pole v normalizovaný škálování 0.0 too1.0. |
-| facesDetected |To se nachází na konci hello hello výsledky JSON a shrnuje hello počet řezy tento algoritmus hello zjistil během hello videa. Protože hello ID můžete nechtěně obnovit, pokud se stane nezjištěné řez (např. řez bude mimo obrazovku, vypadá rychle aplikace), toto číslo nemusí vždy rovná hello true počet tyto řezy v hello video. |
+| Verze |Vztahuje se na verzi rozhraní API Video. |
+| Index | (Platí pouze pro Azure Media Redactor) definuje index rámečku aktuální událost. |
+| Časová osa |"Rysky" za sekundu videa. |
+| Posun |Toto je časové posunutí pro časová razítka. Ve verzi 1.0 rozhraní API, Video bude vždy 0. V budoucích scénáře, které podporujeme, tato hodnota může změnit. |
+| kmitočet snímků |Počet snímků za sekundu videa. |
+| fragmenty |Metadata se blokové až do různých segmentů názvem fragmenty. Každý fragment obsahuje počáteční, doba trvání, číslo intervalu a událostí. |
+| start |Čas zahájení první událost v 'rysky'. |
+| Doba trvání |Délka fragment v "rysky". |
+| Interval |Interval každý záznam události v rámci fragment v "rysky". |
+| stránka events |Každá událost obsahuje řezy zjištěn a sledují v rámci této doby trvání. Jde pole událostí. Vnější pole představuje jeden časový interval. Vnitřní pole se skládá z 0 nebo více událostí, které bylo provedeno v tomto bodě v čase. Prázdný závorky [] znamená, že nebyly zjištěny žádné řezy. |
+| id |ID řez, který je sledován. Toto číslo může nechtěně změnit, pokud se stane nezjištěné řez. Daný individuální by mělo mít stejné ID v rámci celkového video, ale to nemůže zaručit z důvodu omezení v algoritmus detekce (NF pásmová atd.) |
+| x, y |Vlevo nahoře X a Y souřadnice ohraničujícího pole Normalizovaný rozsahu 0,0 až 1,0 písmo. <br/>-X a Y souřadnice jsou relativní na šířku vždycky, takže pokud máte na výšku video (nebo obráceným v případě iOS), budete muset transponuje souřadnice odpovídajícím způsobem. |
+| šířky, výšky |Šířka a výška tučné ohraničujícího pole Normalizovaný rozsahu od 0,0 do 1,0. |
+| facesDetected |To se nachází na konci výsledky JSON a shrnuje počet řezy, které algoritmus zjistil při přehrávání videa. Protože ID můžete nechtěně obnovit, pokud se stane nezjištěné řez (např. řez bude mimo obrazovku, vypadá rychle aplikace), toto číslo nemusí vždy rovná true počet řezy ve videu. |
 

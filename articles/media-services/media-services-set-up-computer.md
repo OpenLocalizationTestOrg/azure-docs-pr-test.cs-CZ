@@ -1,5 +1,5 @@
 ---
-title: "aaaSet vývojového prostředí Azure Media Services | Microsoft Docs"
+title: "Nastavení vývojového prostředí Azure Media Services | Dokumentace Microsoftu"
 description: "Nastavte si prostředí pro vývoj pomocí Azure Media Services."
 services: media-services
 documentationcenter: 
@@ -14,32 +14,32 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/10/2017
 ms.author: juliako
-ms.openlocfilehash: 5637b0c872a76490dcccde5466bfc91c2ba56f31
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 9144407ed530921904458a7249473eaea26c66b3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-your-media-services-development-environment"></a>Nastavení vývojového prostředí Media Services
 
-Hello následující kroky popisují nezbytné součásti potřebné pro vývoj pomocí Azure Media Services.
+Následující kroky popisují nezbytné součásti potřebné pro vývoj pomocí Azure Media Services.
 
 ## <a name="create-a-media-services-account"></a>Vytvoření účtu Media Services
-Použít hello portálu Azure, hello .NET SDK nebo REST API toocreate hello účtu Azure Media Services.
+Pomocí webu Azure Portal, sady .NET SDK nebo REST API vytvořte účet služby Azure Media Services.
 
 <a id="setup_dev_env"></a>
 
-## <a name="set-up-hello-development-environment"></a>Nastavit hello vývojového prostředí
+## <a name="set-up-the-development-environment"></a>Nastavení vývojového prostředí
 
-tooset dev prostředí .NET, najdete v části [to](media-services-dotnet-how-to-use.md) tématu.  
+Pokud chcete nastavit vývojové prostředí .NET, přečtěte si [toto téma](media-services-dotnet-how-to-use.md).  
 
-tooset REST dev prostředí, najdete v části [to](media-services-rest-how-to-use.md) tématu.  
+Pokud chcete nastavit vývojové prostředí REST, přečtěte si [toto téma](media-services-rest-how-to-use.md).  
 
 <a id="connect"></a>
 
 ## <a name="connect-programmatically"></a>Připojení prostřednictvím kódu programu
 
-tooconnect toohello API služby Azure Media Services, najdete v části [hello přístup k rozhraní API služby Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md).  
+Pokud se chcete připojit k rozhraní API služby Azure Media Services, přečtěte si článek popisující [přístup k rozhraní API služby Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md).  
 
 ## <a name="next-steps-azure-media-services-learning-paths"></a>Další kroky: Mapy kurzů k Azure Media Services
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

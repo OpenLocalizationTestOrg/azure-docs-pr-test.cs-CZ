@@ -1,6 +1,6 @@
 ---
-title: "datový proud aaaLive s místními kodéry pomocí hello portálu Azure | Microsoft Docs"
-description: "Tento kurz vás provede kroky hello k vytvoření kanálu, který je nakonfigurován pro průchozí doručování."
+title: "Živé streamování pomocí místních kodérů na webu Azure Portal | Dokumentace Microsoftu"
+description: "Tento kurz vás provede kroky pro vytvoření Kanálu, který je nakonfigurován pro průchozí doručování."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.openlocfilehash: 1fb341e022f66f33903e13e07d3e84c0216cad77
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 6939e3b31c3c1b514df4c559c2d9408fce122a4e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-tooperform-live-streaming-with-on-premises-encoders-using-hello-azure-portal"></a>Jak tooperform živé streamování s místními kodéry pomocí hello portálu Azure
+# <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-the-azure-portal"></a>Provádění živého streamování pomocí místních kodérů na webu Azure Portal
 > [!div class="op_single_selector"]
 > * [Azure Portal](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -28,121 +28,121 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Tento kurz vás provede kroky hello hello Azure portálu toocreate **kanál** který je nakonfigurován pro průchozí doručování. 
+Tento kurz vás provede kroky pro vytvoření **Kanálu**, který je nakonfigurován pro průchozí doručování. 
 
 ## <a name="prerequisites"></a>Požadavky
-Hello následují požadované toocomplete hello kurzu:
+K dokončení kurzu potřebujete následující:
 
 * Účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
-* Účet Media Services. toocreate účet Media Services najdete v části [jak tooCreate účtu Media Services](media-services-portal-create-account.md).
+* Účet Media Services. Pokud chcete vytvořit účet Media Services, přečtěte si článek [Jak vytvořit účet Media Services](media-services-portal-create-account.md).
 * Webová kamera. Například [kodér Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm).
 
-Důrazně doporučujeme tooreview hello následující články:
+Důrazně doporučujeme přečtení následujících článků:
 
 * [Podpora RTMP ve službě Azure Media Services a kodéry služby Live Encoding](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)
 * [Přehled živého streamování pomocí služby Azure Media Services](media-services-manage-channels-overview.md)
 * [Živé streamování pomocí místních kodérů, které vytvářejí datové proudy s více přenosovými rychlostmi](media-services-live-streaming-with-onprem-encoders.md)
 
 ## <a id="scenario"></a>Běžný scénář živého streamování
-Hello následující kroky popisují úlohy týkající se vytváření běžné aplikací pro živé streamování využívající kanály, které jsou nakonfigurované pro průchozí doručování. Tento kurz ukazuje, jak toocreate a spravovat průchozí kanál a živé události.
+Následující kroky popisují úlohy, které jsou běžně součástí procesu vytváření aplikací pro živé streamování, které používají kanály, nakonfigurované pro průchozí doručování. Tento kurz ukazuje, jak vytvořit a spravovat průchozí kanál a živé události.
 
 >[!NOTE]
->Zkontrolujte, zda text hello, ze kterého chcete obsah toostream koncový bod streamování je v hello **systémem** stavu. 
+>Zkontrolujte, že koncový bod streamování, ze kterého chcete streamovat obsah, je ve stavu **Spuštěno**. 
     
-1. Připojení počítače tooa videokameru. Spusťte a nakonfigurujte místní kodér pro kódování v reálném čase, který produkuje RTMP s více přenosovými rychlostmi nebo fragmentovaný proud MP4. Další informace najdete v článku [Podpora RTMP ve službě Azure Media Services a kodéry pro kódování v reálném čase](http://go.microsoft.com/fwlink/?LinkId=532824).
+1. Připojte k počítači videokameru. Spusťte a nakonfigurujte místní kodér pro kódování v reálném čase, který produkuje RTMP s více přenosovými rychlostmi nebo fragmentovaný proud MP4. Další informace najdete v článku [Podpora RTMP ve službě Azure Media Services a kodéry pro kódování v reálném čase](http://go.microsoft.com/fwlink/?LinkId=532824).
    
     Tento krok můžete provést i po vytvoření kanálu.
 2. Vytvořit a spustit průchozí kanál.
-3. Načtení hello kanál ingestovanou adresu URL. 
+3. Načtěte adresu URL ingestování kanálu. 
    
-    Hello URL ingestování používá hello za provozu kodér toosend hello datového proudu toohello kanál.
-4. Načíst URL náhledu kanálu hello. 
+    Adresu URL ingestování používá kodér po kódování v reálném čase k odesílání datového proudu do kanálu.
+4. Načtěte adresu URL náhledu kanálu. 
    
-    Pomocí této adresy URL tooverify, jestli kanál správně přijímá živý datový proud hello.
+    Tuto adresu URL můžete použít, když chcete ověřit, jestli kanál správně přijímá proud živého vysílání.
 5. Vytvořte živou událost nebo program. 
    
-    Při použití hello portálu Azure, vytváření živé události vytvoří také asset. 
+    Na portálu Azure se při vytváření živé události vytvoří také asset. 
 
-6. Jakmile jsou připravené toostart Streamovat a archivovat, spusťte hello událost nebo program.
-7. Volitelně lze za provozu kodér hello signalizovaného toostart oznámení o inzerovaném programu. Hello reklama bude vložena do výstupního datového proudu hello.
-8. Vždy, když chcete toostop streamování a archivaci hello události, zastavte hello událost nebo program.
-9. Odstraňte hello událost nebo program (a volitelně můžete odstranit hello asset).     
+6. Jakmile budete připraveni začít streamovat a archivovat, spusťte událost nebo program.
+7. Volitelně můžete dát kodéru pro kódování v reálném čase signál, aby spustil reklamu. Reklama bude vložena do výstupního proudu.
+8. Kdykoli budete chtít zastavit streamování a archivaci události, zastavte událost nebo program.
+9. Odstraňte událost nebo program (volitelně můžete odstranit i asset).     
 
 > [!IMPORTANT]
-> Zkontrolujte [živé streamování s místními kodéry, které vytvářejí proudy s více přenosovými rychlostmi](media-services-live-streaming-with-onprem-encoders.md) toolearn o konceptech a důležité informace související s toolive streamování s místními kodéry a průchozími kanály.
+> Informace o konceptech a důležité informace, týkající se živého streamování pomocí místních kodérů a průchozích kanálů, najdete v tématu [Živé streamování pomocí místních kodérů, které vytvářejí datové proudy s více přenosovými rychlostmi](media-services-live-streaming-with-onprem-encoders.md).
 > 
 > 
 
-## <a name="tooview-notifications-and-errors"></a>tooview upozornění a chyb
-Pokud chcete, aby tooview oznámení a chyby vytvořené hello portálu Azure, klikněte na ikonu oznámení hello.
+## <a name="to-view-notifications-and-errors"></a>Zobrazení upozornění a chyb
+Pokud chcete zobrazit upozornění a chyby, vytvořené na portálu Azure, klikněte na ikonu oznámení.
 
 ![Oznámení](./media/media-services-portal-passthrough-get-started/media-services-notifications.png)
 
 ## <a name="create-and-start-pass-through-channels-and-events"></a>Vytvoření a spuštění průchozího kanálu.
-Kanál, který je přidružen k událostem a programům, které umožňují toocontrol hello publikování a ukládání segmentů v živém datovém proudu. Kanály spravují události. 
+Kanál je přidružený k událostem a programům, které vám umožňují řídit publikování a ukládání segmentů v živém datovém proudu. Kanály spravují události. 
 
-Můžete zadat hello počet hodin, které chcete obsah hello zaznamenávají tooretain programu hello podle nastavení hello **archivačního okna** délka. Tuto hodnotu můžete nastavit v rozmezí od 5 minut tooa maximálně 25 hodin. Délka archivačního okna také určuje maximální množství času, které klienty můžete hledat zpět v čase od aktuální živé pozice hello hello. Události můžete spustit přes hello určenou dobu a obsah, který hello délky okna nevejde je vždy zahozen. Hodnota této vlastnosti také určuje, jak dlouho hello klienta můžou růst manifesty.
+Nastavením délky **archivačního okna** můžete určit počet hodin, po které chcete uchovávat zaznamenaný obsah programu. Tuto hodnotu můžete nastavit v rozmezí od 5 minut po 25 hodin. Délka archivačního okna také určuje maximální časový úsek, který můžou klienti prohledávat od aktuální živé pozice směrem zpět v čase. Programy můžou běžet po určenou dobu a obsah, který se do délky okna nevejde, bude vždy zahozen. Hodnota této vlastnosti také určuje, jak dlouho můžou růst manifesty klientů.
 
-Každá událost je přidružena k assetu. toopublish hello událostí, je nutné vytvořit lokátor OnDemand pro hello související prostředek. Tento Lokátor umožňuje toobuild adresu URL pro streamování, kterou potom poskytnete tooyour klientů.
+Každá událost je přidružena k assetu. Chcete-li publikovat událost, musíte pro přidružený prostředek vytvořit lokátor OnDemand. Tento lokátor vám umožní sestavit adresu URL pro streamování, kterou následně poskytnete svým klientům.
 
-Kanál podporuje až toothree souběžně s události, takže si můžete vytvořit několik archivů hello stejného příchozího datového proudu. To vám umožní toopublish a archivovat různé části události podle potřeby. Například vaše firemní požadavky je tooarchive 6 hodin programu, ale toobroadcast pouze posledních 10 minut. tooaccomplish, je nutné toocreate dva současně spuštěné programy. Jeden program nastaven tooarchive 6 hodin hello události ale programu hello není publikována. Hello jiný program je sada tooarchive 10 minut a tento program budete publikovat.
+Kanál podporuje až tři současně spuštěné programy, takže si můžete vytvořit několik archivů stejného příchozího datového proudu. To vám umožní podle potřeby publikovat a archivovat různé části události. Požadavek vaší firmy může být například takový, že chcete archivovat 6 hodin programu, ale vysílat jenom posledních 10 minut. K tomu potřebujete vytvořit dva současně spuštěné programy. Jeden program nastavíte, aby archivoval 6 hodin události, ale tento program nebudete publikovat. Druhý program nastavíte, aby archivoval 10 minut a tento program budete publikovat.
 
 Neměli byste znovu používat existující živé události. Místo toho vytvořte a spusťte novou událost pro každou jednotlivou událost.
 
-Spusťte hello událost v případě, že jsou připravené toostart streamování a archivaci. Zastavte programu hello vždy, když chcete toostop streamování a archivaci události hello. 
+Jakmile budete připraveni začít streamovat a archivovat, spusťte událost. Kdykoli budete chtít zastavit streamování a archivaci události, zastavte program. 
 
-obsah toodelete archivovat, zastavte a odstranit hello událost a potom odstraňte přidružený asset hello. Asset nemůžete odstranit, pokud se používá událost; Nejprve je třeba odstranit Hello událostí. 
+Pokud chcete archivovaný obsah odstranit, zastavte a odstraňte událost a potom odstraňte přidružený asset. Asset nemůžete odstranit, pokud ho událost používá. Nejdřív odstraňte událost. 
 
-I po zastavení a odstranění události hello, hello uživatelé by byl schopný toostream archivovaný obsah jako video na vyžádání, tak dlouho, dokud neodstraníte hello asset.
+I po zastavení a odstranění události můžou uživatelé streamovat archivovaný obsah jako video na vyžádání, a to tak dlouho, dokud asset neodstraníte.
 
-Pokud chcete archivovat hello tooretain obsahu, ale není ho mít dostupný pro streamování, odstraňte Lokátor streamování hello.
+Pokud chcete archivovaný obsah zachovat, ale nechcete ho zpřístupňovat pro streamování, odstraňte lokátor streamování.
 
-### <a name="toouse-hello-portal-toocreate-a-channel"></a>toouse hello portálu toocreate kanál
-Tato část uvádí, jak toouse hello **rychle vytvořit** možnost toocreate průchozí kanál.
+### <a name="to-use-the-portal-to-create-a-channel"></a>Použití portálu k vytvoření kanálu
+Tento oddíl ukazuje, jak vytvořit průchozí kanál pomocí možnosti **Rychle vytvořit**.
 
 Další podrobnosti o průchozích kanálech najdete v tématu [Živé streamování pomocí místních kodérů, které vytvářejí datové proudy s více přenosovými rychlostmi](media-services-live-streaming-with-onprem-encoders.md).
 
-1. V hello [portál Azure](https://portal.azure.com/), vyberte svůj účet Azure Media Services.
-2. V hello **nastavení** okně klikněte na tlačítko **živé streamování**. 
+1. Na webu [Azure Portal](https://portal.azure.com/) zvolte účet Azure Media Services.
+2. V okně **Nastavení** klikněte na **Živé streamování**. 
    
     ![Začínáme](./media/media-services-portal-passthrough-get-started/media-services-getting-started.png)
    
-    Hello **živé streamování** se zobrazí v okně.
-3. Klikněte na tlačítko **rychle vytvořit** ingestování toocreate průchozí kanál s hello RTMP.
+    Zobrazí se okno **Živé vysílání datového proudu**.
+3. Klikněte na **Rychle vytvořit** a vytvořte průchozí kanál s protokolem ingestování RTMP.
    
-    Hello **vytvořit nový kanál** se zobrazí v okně.
-4. Zadejte název nového kanálu hello a klikněte na tlačítko **vytvořit**. 
+    Zobrazí se okno **VYTVOŘIT NOVÝ KANÁL**.
+4. Zadejte název nového kanálu a klikněte na **Vytvořit**. 
    
-    Tím vytvoříte průchozí kanál s hello protokolem ingestování RTMP.
+    Tím vytvoříte průchozí kanál s protokolem ingestování RTMP.
 
 ## <a name="create-events"></a>Vytvoření událostí
-1. Vyberte kanál toowhich, chcete-li tooadd událost.
+1. Vyberte kanál, ke kterému chcete přidat událost.
 2. Stiskněte tlačítko **Živá událost**.
 
 ![Událost](./media/media-services-portal-passthrough-get-started/media-services-create-events.png)
 
 ## <a name="get-ingest-urls"></a>Získání ingestovaných adres URL
-Po vytvoření kanálu hello lze získat ingestovaných adres URL, které poskytnete kodéru toohello za provozu. Kodér Hello používá tyto adresy URL tooinput živý datový proud.
+Po vytvoření kanálu můžete získat ingestované adresy URL, které poskytnete kodéru pro kódování v reálném čase. Kodér tyto adresy URL používá ke vkládání živého proudu.
 
 ![Vytvořeno](./media/media-services-portal-passthrough-get-started/media-services-channel-created.png)
 
-## <a name="watch-hello-event"></a>Sledování událostí hello
-toowatch hello událostí, klikněte na tlačítko **sledovat** v hello Azure portal nebo kopírování hello adresu URL streamování a použijte přehrávač dle svého výběru. 
+## <a name="watch-the-event"></a>Sledování události
+Pokud chcete sledovat událost, klikněte na tlačítko **Sledovat** na webu Azure Portal nebo zkopírujte adresu URL streamování a použijte přehrávač dle svého výběru. 
 
 ![Vytvořeno](./media/media-services-portal-passthrough-get-started/media-services-default-event.png)
 
-Živé události se automaticky převedený tooon vyžádání obsah při zastavení.
+Při zastavení se živá událost automaticky převede na obsah na vyžádání.
 
 ## <a name="clean-up"></a>Vyčištění
 Další podrobnosti o průchozích kanálech najdete v tématu [Živé streamování pomocí místních kodérů, které vytvářejí datové proudy s více přenosovými rychlostmi](media-services-live-streaming-with-onprem-encoders.md).
 
-* Kanál se dá zastavit jenom v případě, že byly zastaveny všechny události nebo programy na hello kanálu.  Jakmile hello kanál zastaví nedojde žádné poplatky. Když potřebujete toostart ho znovu, bude mít hello stejnou ingestovanou adresu URL, takže nebude nutné tooreconfigure kodér.
-* Kanál se dá odstranit jenom v případě, že byly odstraněny všechny jeho živé události ve hello kanálu.
+* Kanál se dá zastavit jenom v případě, že byly zastaveny všechny jeho události nebo programy.  Zastavený kanál zastaví narůstání poplatků. Když bude potřeba kanál znovu spustit, bude mít stejnou ingestovanou adresu URL, takže nebude nutné kodér znovu konfigurovat.
+* Kanál se dá odstranit jenom v případě, že byly odstraněny všechny jeho živé události.
 
 ## <a name="view-archived-content"></a>Zobrazení archivovaného obsahu
-I po zastavení a odstranění události hello, hello uživatelé by byl schopný toostream archivovaný obsah jako video na vyžádání, tak dlouho, dokud neodstraníte hello asset. Asset nemůžete odstranit, pokud se používá událost; Nejprve je třeba odstranit Hello událostí. 
+I po zastavení a odstranění události můžou uživatelé streamovat archivovaný obsah jako video na vyžádání, a to tak dlouho, dokud asset neodstraníte. Asset nemůžete odstranit, pokud ho událost používá. Nejdřív odstraňte událost. 
 
-Vyberte prostředky, toomanage **nastavení** a klikněte na tlačítko **prostředky**.
+Chcete-li spravovat prostředky, vyberte **Nastavení** a klikněte na **Prostředky**.
 
 ![Prostředky](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
 

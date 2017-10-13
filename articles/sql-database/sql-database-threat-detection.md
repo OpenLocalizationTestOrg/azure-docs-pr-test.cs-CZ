@@ -1,6 +1,6 @@
 ---
-title: "aaaThreat detekce – Azure SQL Database | Microsoft Docs"
-description: "Detekce hrozeb zjistila nezvyklé databázové aktivity, které indikují potenciální bezpečnostní hrozby toohello databáze."
+title: "Detekce – Azure SQL Database hrozby | Microsoft Docs"
+description: "Detekce hrozeb zjistila nezvyklé databázové aktivity, které indikují potenciální ohrožení databáze."
 services: sql-database
 documentationcenter: 
 author: rmatchoro
@@ -15,34 +15,34 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 06/19/2017
 ms.author: ronmat; ronitr
-ms.openlocfilehash: 0879d20eff515a4e69358b5a98ceccf57fbd0ea2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: bd3de9ed0131edc683763b0fe7f4a2ae74533944
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="sql-database-threat-detection"></a>Detekce hrozeb databáze SQL
 
-SQL detekce hrozeb zjistila neobvyklé aktivity, které indikují pokusy o neobvyklou a potenciálně škodlivé tooaccess nebo zneužití databází.
+SQL detekce hrozeb zjistila neobvyklé aktivity, které indikují neobvyklou a potenciálně škodlivé pokusy o přístup k nebo zneužití databáze.
 
 ## <a name="overview"></a>Přehled
 
-Detekce hrozeb SQL poskytuje novou vrstvu zabezpečení, což umožňuje zákazníkům toodetect a toopotential hrozeb reagovat, když k nim dojde tím, že poskytuje výstrahy zabezpečení na neobvyklé aktivity.  Uživatelé obdrží výstrahu při databáze podezřelé aktivity, potenciální ohrožení zabezpečení a prostřednictvím injektáže SQL, jakož i nezvyklé databázové přístupové vzorce. Detekce hrozeb SQL výstrahy zadejte podrobnosti podezřelých aktivit a doporučujeme akce jak tooinvestigate a zmírnit hrozby hello. Uživatele můžete prozkoumat hello podezřelé události pomocí [auditování databáze SQL](sql-database-auditing.md) toodetermine pokud vyplývají z tooaccess pokusu o porušení nebo zneužití data v databázi hello. Detekce hrozeb je jednoduchý tooaddress potenciální hrozby toohello databáze bez hello nutné toobe expert zabezpečení nebo spravovat pokročilým zabezpečením monitorování systémů.
+Detekce hrozeb SQL poskytuje novou vrstvu zabezpečení, která uživatelům umožňuje zjistit a reagovat na potenciální hrozby, kdy k nim dojde tím, že poskytuje výstrahy zabezpečení na neobvyklé aktivity.  Uživatelé obdrží výstrahu při databáze podezřelé aktivity, potenciální ohrožení zabezpečení a prostřednictvím injektáže SQL, jakož i nezvyklé databázové přístupové vzorce. Detekce hrozeb SQL výstrahy zadejte podrobnosti podezřelých aktivit a doporučujeme akce o tom, jak prozkoumat a zmírnit riziko. Uživatele můžete prozkoumat podezřelé události pomocí [auditování databáze SQL](sql-database-auditing.md) k určení, pokud vyplývají z pokus o přístup, porušení nebo využívat data v databázi. Detekce hrozeb zjednodušuje na potenciální hrozby adres do databáze bez nutnosti odborné zabezpečení nebo spravovat pokročilým zabezpečením monitorování systémů.
 
-Například Injektáž SQL je jedním z hello běžné webové aplikace problémy se zabezpečením na Internetu, použít tooattack datové aplikace hello. Útočníci využít výhod aplikace ohrožení zabezpečení tooinject škodlivý příkazů SQL do pole pro zadání aplikací, před nedodržením nebo upravovat data v databázi hello.
+Například Injektáž SQL je jedním z běžné problémy zabezpečení webových aplikací na Internetu, slouží k útokům na základě dat aplikace. Útočníci využít výhod ohrožení zabezpečení aplikace se zlými úmysly příkazy SQL, do pole pro zadání aplikací, vložit před nedodržením nebo upravovat data v databázi.
 
-Detekce hrozeb SQL integruje výstrahy s [Azure Security Center](https://azure.microsoft.com/en-us/services/security-center/), a každé chráněné databáze SQL server se bude účtovat podle hello stejné cena jako Azure Security Center standardní vrstvy v $15 uzlu/měsíc, kde každé chráněné SQL Databázový server se počítá jako jeden uzel. Doporučujeme vám tootry ho za 60 dnů pro uvolnění. 
+Detekce hrozeb SQL integruje výstrahy s [Azure Security Center](https://azure.microsoft.com/en-us/services/security-center/), a každé chráněné databáze SQL server se bude účtovat podle za stejnou cenu jako Azure Security Center standardní vrstvy v $15 uzlu/měsíc, kde každé chráněné databáze SQL serveru se počítá jako jeden uzel. Zveme vás k bezplatnému vyzkoušení po dobu 60 dnů. 
 
-## <a name="set-up-threat-detection-for-your-database-in-hello-azure-portal"></a>Nastavení detekce hrozeb pro vaše databáze v hello portálu Azure
-1. Spusťte hello Azure portálu na [https://portal.azure.com](https://portal.azure.com).
-2. Přejděte okno Konfigurace toohello hello chcete toomonitor databáze SQL. V okně Nastavení hello, vyberte **auditování a detekce hrozeb**. 
+## <a name="set-up-threat-detection-for-your-database-in-the-azure-portal"></a>Nastavení detekce hrozeb pro vaši databázi na portálu Azure
+1. Spuštění portálu Azure v [https://portal.azure.com](https://portal.azure.com).
+2. Přejděte do okna konfigurace databáze SQL, kterou chcete sledovat. V okně Nastavení vyberte **auditování a detekce hrozeb**. 
     ![Navigační podokno][1]
-3. V hello **auditování a detekce hrozeb** zapnout okno Konfigurace **ON** auditování, které se zobrazí nastavení detekce hrozby hello.
+3. V **auditování a detekce hrozeb** zapnout okno Konfigurace **ON** auditování, které se zobrazí nastavení detekce hrozby.
   
     ![Navigační podokno][2]
 4. Zapnout **ON** detekce hrozby.
-5. Konfigurace seznamu hello e-mailů, které budou dostávat upozornění zabezpečení při zjištění nezvyklé databázové aktivity.
-6. Klikněte na tlačítko **Uložit** v hello **auditování a detekce hrozeb** okno toosave hello nové nebo aktualizované auditování a hrozeb detekce nastavení.
+5. Konfigurace seznamu e-mailů, které budou dostávat upozornění zabezpečení při zjištění nezvyklé databázové aktivity.
+6. Klikněte na tlačítko **Uložit** v **auditování a detekce hrozeb** okno a uložte nové nebo aktualizované auditování a hrozeb nastavením detekce.
        
     ![Navigační podokno][3]
 
@@ -52,20 +52,20 @@ Příklad skriptu najdete v tématu [konfigurace auditování a zjišťování h
 
 ## <a name="explore-anomalous-database-activities-upon-detection-of-a-suspicious-event"></a>Prozkoumejte nezvyklé databázové aktivity, při zjištění podezřelé události
 1. Obdržíte e-mail s oznámením při zjištění nezvyklé databázové aktivity. <br/>
-   e-mailu Hello se poskytují informace o události hello podezřelé zabezpečení včetně hello povaha hello neobvyklé aktivity, název databáze, název serveru, název aplikace a čas události hello. Kromě toho hello e-mailu bude poskytovat informace na možné příčiny a doporučené akce tooinvestigate a zmírnit hello potenciální hrozby toohello databáze.<br/>
+   E-mailu bude poskytují informace o události podezřelé zabezpečení, včetně povahu neobvyklé aktivity, název databáze, název serveru, název aplikace a čas události. Kromě toho e-mailu bude poskytovat informace na možné příčiny a doporučené akce ke zkoumání a zmírnit potenciální hrozbu do databáze.<br/>
      
     ![Navigační podokno][4]
-2. e-mailové výstrahy Hello zahrnuje protokol auditování SQL toohello přímý odkaz. Kliknutím na tento odkaz spustí hello Azure portal a otevře se okno hello SQL záznamy auditu době hello hello podezřelé události. Klikněte na tooview záznamů auditu další podrobnosti o hello databáze podezřelé aktivity, takže je jednodušší toofind hello SQL příkazy, které byly provedeny (který přístup, co se a kdy) a zjistěte, zda text hello událostí legitimní nebo škodlivý (například aplikace bylo by vkládání tooSQL ohrožení zabezpečení, někdo nedodržení citlivá data, atd.).<br/>
+2. E-mailové upozornění obsahuje přímý odkaz na protokol auditování SQL. Kliknutím na tento odkaz spuštění portálu Azure a otevře se záznamy auditu SQL v době podezřelé události. Klikněte na záznam auditu zobrazíte další podrobnosti o činnostech podezřelé databáze, bylo snazší najít příkazy SQL, které byly provedeny (který přístup, co se a kdy) a zjistěte, zda událost legitimní nebo škodlivý (například byl zneužití ohrožení zabezpečení aplikace k Injektáž SQL, někdo nedodržení citlivá data, atd.).<br/>
    ![Navigační podokno][5]
 
 
-## <a name="explore-threat-detection-alerts-for-your-database-in-hello-azure-portal"></a>Seznamte se výstrah o zjištěných hrozbách pro vaši databázi v hello portálu Azure
+## <a name="explore-threat-detection-alerts-for-your-database-in-the-azure-portal"></a>Seznamte se výstrah o zjištěných hrozbách pro vaši databázi na portálu Azure
 
-Detekce hrozeb databáze SQL se integruje se jeho výstrahy s [Azure Security Center](https://azure.microsoft.com/en-us/services/security-center/). Za provozu zabezpečení dlaždice SQL v rámci okna databáze hello v hello portálu Azure sleduje stav hello active hrozeb. 
+Detekce hrozeb databáze SQL se integruje se jeho výstrahy s [Azure Security Center](https://azure.microsoft.com/en-us/services/security-center/). Živé dlaždice zabezpečení SQL v okně databáze na portálu Azure sleduje stav active hrozeb. 
 
    ![Navigační podokno][6]
    
-1. Kliknutím na dlaždici zabezpečení SQL hello spustí okno výstrahy hello Azure Security Center a nabízí přehled active hrozeb SQL na databázi hello zjištěna. 
+1. Kliknutím na SQL dlaždice zabezpečení spustí okno výstrahy Azure Security Center a nabízí přehled active SQL hrozby zjištěné v databázi. 
 
   ![Navigační podokno][7]
 
@@ -76,10 +76,10 @@ Detekce hrozeb databáze SQL se integruje se jeho výstrahy s [Azure Security Ce
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o detekce hrozeb, navštivte hello [Azure blog](https://azure.microsoft.com/en-us/blog/azure-sql-database-threat-detection-general-availability-in-spring-2017/) 
+* Další informace o detekce hrozeb najdete [Azure blog](https://azure.microsoft.com/en-us/blog/azure-sql-database-threat-detection-general-availability-in-spring-2017/) 
 * Další informace o [auditování databáze SQL Azure](sql-database-auditing.md)
 * Další informace o [Azure Security Center](https://docs.microsoft.com/en-us/azure/security-center/security-center-intro)
-* Další podrobnosti o cenách najdete v tématu hello [stránky SQL Database – ceny](https://azure.microsoft.com/en-us/pricing/details/sql-database/)  
+* Další podrobnosti o cenách najdete [stránky SQL Database – ceny](https://azure.microsoft.com/en-us/pricing/details/sql-database/)  
 * Příklad skriptu prostředí PowerShell, najdete v části [konfigurace auditování a zjišťování hrozeb pomocí prostředí PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md)
 
 

@@ -1,6 +1,6 @@
 ---
-title: "aktuální uživatel hello aaaRegister pro nabízená oznámení pomocí webového rozhraní API | Microsoft Docs"
-description: "Zjistěte, jak toorequest registrace nabízených oznámení v aplikaci pro iOS pomocí Azure Notification Hubs při registrace se provádí pomocí rozhraní ASP.NET Web API."
+title: "Registrace aktuálního uživatele pro nabízená oznámení pomocí webového rozhraní API | Microsoft Docs"
+description: "Zjistěte, jak požádat o registraci nabízených oznámení v aplikaci pro iOS pomocí Azure Notification Hubs, když registrace se provádí pomocí rozhraní ASP.NET Web API."
 services: notification-hubs
 documentationcenter: ios
 author: ysxu
@@ -14,25 +14,25 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: f859feb436093e703d7e1db38354dd356fff8efe
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: fd56bb2dd627b31f00363851a4e76484aa382988
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="register-hello-current-user-for-push-notifications-by-using-aspnet"></a>Aktuální uživatel hello zaregistrovat pro nabízená oznámení pomocí technologie ASP.NET
+# <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>Registrace aktuálního uživatele pro nabízená oznámení pomocí technologie ASP.NET
 > [!div class="op_single_selector"]
 > * [iOS](notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md)
 > 
 > 
 
 ## <a name="overview"></a>Přehled
-Toto téma ukazuje, jak toorequest registrace nabízených oznámení pomocí Azure Notification Hubs při registraci se provádí pomocí rozhraní ASP.NET Web API. Toto téma rozšiřuje hello kurzu [upozorněte uživatele s Notification Hubs]. Musí jste již dokončili hello požadované kroky v tomto kurzu toocreate hello ověření mobilní služby. Další informace o hello upozornit uživatele scénář, najdete v části [upozorněte uživatele s Notification Hubs].
+Toto téma ukazuje, jak požádat o registraci nabízených oznámení pomocí Azure Notification Hubs při registraci se provádí pomocí rozhraní ASP.NET Web API. Toto téma rozšiřuje kurzu [upozorněte uživatele s Notification Hubs]. Musí již dokončení požadovaných kroků v tomto kurzu k vytvoření ověřené mobilní služby. Další informace o scénář uživatelé oznámení najdete v tématu [upozorněte uživatele s Notification Hubs].
 
 ## <a name="update-your-app"></a>Aktualizace aplikace
-1. V MainStoryboard_iPhone.storyboard přidejte následující součásti z objektu knihovny hello hello:
+1. V MainStoryboard_iPhone.storyboard přidejte následující součásti z objektu knihovny:
    
-   * **Popisek**: "Push tooUser s centry oznámení"
+   * **Popisek**: "Push pro uživatele s centry oznámení"
    * **Popisek**: "InstallationId"
    * **Popisek**: "User"
    * **Textové pole**: "User"
@@ -40,25 +40,25 @@ Toto téma ukazuje, jak toorequest registrace nabízených oznámení pomocí Az
    * **Textové pole**: "Password"
    * **Tlačítko**: "Přihlášení"
      
-     V tomto okamžiku by váš scénáře vypadá hello následující:
+     V tomto okamžiku by váš scénáře vypadá takto:
      
       ![][0]
-2. V editoru pomocníka hello vytvořit výstupy pro všechny ovládací prvky hello přepnout a volat, připojit hello textové pole s hello View Controller (delegát) a vytvořte **akce** pro hello **přihlášení** tlačítko.
+2. V editoru pomocníka vytvořit výstupy vypnuté ovládacích prvků a volat, připojit textových polí s řadiče zobrazení (delegát) a vytvořte **akce** pro **přihlášení** tlačítko.
    
        ![][1]
    
-       Your BreakingNewsViewController.h file should now contain hello following code:
+       Your BreakingNewsViewController.h file should now contain the following code:
    
         @property (weak, nonatomic) IBOutlet UILabel *installationId;
         @property (weak, nonatomic) IBOutlet UITextField *User;
         @property (weak, nonatomic) IBOutlet UITextField *Password;
    
         - (IBAction)login:(id)sender;
-3. Vytvoření třídy s názvem **DeviceInfo**, a kopírování hello následující kód do části rozhraní hello hello souboru DeviceInfo.h:
+3. Vytvoření třídy s názvem **DeviceInfo**a zkopírujte následující kód do části rozhraní souboru DeviceInfo.h:
    
         @property (readonly, nonatomic) NSString* installationId;
         @property (nonatomic) NSData* deviceToken;
-4. Zkopírujte následující kód v oddílu implementace hello hello DeviceInfo.m souboru hello:
+4. Zkopírujte následující kód v oddílu implementace DeviceInfo.m souboru:
    
             @synthesize installationId = _installationId;
    
@@ -73,7 +73,7 @@ Toto téma ukazuje, jak toorequest registrace nabízených oznámení pomocí Az
                     _installationId = (__bridge_transfer NSString *)CFUUIDCreateString(kCFAllocatorDefault, newUUID);
                     CFRelease(newUUID);
    
-                    //store hello install ID so we don't generate a new one next time
+                    //store the install ID so we don't generate a new one next time
                     [defaults setObject:_installationId forKey:@"PushToUserInstallationId"];
                     [defaults synchronize];
                 }
@@ -89,32 +89,32 @@ Toto téma ukazuje, jak toorequest registrace nabízených oznámení pomocí Az
                                       ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
                 return hexToken;
             }
-5. V PushToUserAppDelegate.h přidejte následující vlastnost singleton hello:
+5. V PushToUserAppDelegate.h přidejte následující singleton vlastnost:
    
         @property (strong, nonatomic) DeviceInfo* deviceInfo;
-6. V hello **didFinishLaunchingWithOptions** metoda v PushToUserAppDelegate.m, přidejte následující kód hello:
+6. V **didFinishLaunchingWithOptions** metoda v PushToUserAppDelegate.m, přidejte následující kód:
    
         self.deviceInfo = [[DeviceInfo alloc] init];
    
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
    
-    první řádek Hello inicializuje hello **DeviceInfo** typu singleton. Hello druhý řádek spustí hello registrace pro nabízená oznámení, které se již nachází je jste už dokončili hello [Začínáme s Notification Hubs] kurzu.
-7. V PushToUserAppDelegate.m, implementujte metodu hello **didRegisterForRemoteNotificationsWithDeviceToken** ve vaší AppDelegate a přidejte následující kód hello:
+    Inicializuje první řádek **DeviceInfo** typu singleton. Druhý řádek spustí registrace pro nabízená oznámení, které se již nachází je jste už dokončili [Začínáme s Notification Hubs] kurzu.
+7. V PushToUserAppDelegate.m, implementovat metodu **didRegisterForRemoteNotificationsWithDeviceToken** ve vaší AppDelegate a přidejte následující kód:
    
         self.deviceInfo.deviceToken = deviceToken;
    
-    Toto nastaví hello token zařízení pro žádost hello.
+    Toto nastaví token zařízení pro daný požadavek.
    
    > [!NOTE]
-   > V tomto okamžiku by neměly existovat jiný kód v této metodě. Pokud již máte volání toohello **registerNativeWithDeviceToken** metoda, která byla přidána po dokončení hello [Začínáme s Notification Hubs](/manage/services/notification-hubs/get-started-notification-hubs-ios/) kurz, musíte okomentujte nebo odebrat volání.
+   > V tomto okamžiku by neměly existovat jiný kód v této metodě. Pokud již máte volání **registerNativeWithDeviceToken** metoda, která byla přidána po dokončení [Začínáme s Notification Hubs](/manage/services/notification-hubs/get-started-notification-hubs-ios/) kurz, je nutné okomentujte nebo odebrat toto volání.
    > 
    > 
-8. Hello PushToUserAppDelegate.m souboru přidejte následující metodu obslužná rutina hello:
+8. V souboru PushToUserAppDelegate.m přidejte následující metodu obslužné rutiny:
    
    * (void) aplikace:(UIApplication *) aplikace didReceiveRemoteNotification:(NSDictionary *) informací o uživateli {NSLog (@"% @", informací o uživateli);   UIAlertView * výstraha = [zpráva initWithTitle:@"Notification" [UIAlertView alokační]: cancelButtonTitle delegáta: nil [informací o uživateli objectForKey:@"inAppMessage"]: @"OK" otherButtonTitles:nil, nil];   [Zobrazit výstrahy]; }
    
-   Tato metoda zobrazí výstrahu v hello uživatelského rozhraní, když aplikace obdrží oznámení, když je spuštěná.
-9. Otevřete soubor PushToUserViewController.m hello a návratové hello klávesnice v hello následující implementace:
+   Tato metoda zobrazí výstrahu v uživatelském rozhraní, když vaše aplikace obdrží oznámení, když je spuštěná.
+9. Otevřete soubor PushToUserViewController.m a vrátí klávesnice v následujících implementace:
    
         - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
             if (theTextField == self.User || theTextField == self.Password) {
@@ -122,15 +122,15 @@ Toto téma ukazuje, jak toorequest registrace nabízených oznámení pomocí Az
             }
             return YES;
         }
-10. V hello **viewDidLoad** metoda v souboru PushToUserViewController.m hello inicializovat hello installationId popisek následujícím způsobem:
+10. V **viewDidLoad** metoda v souboru PushToUserViewController.m inicializovat popisek installationId následujícím způsobem:
     
          DeviceInfo* deviceInfo = [(PushToUserAppDelegate*)[[UIApplication sharedApplication]delegate] deviceInfo];
          Self.installationId.text = deviceInfo.installationId;
-11. Přidejte následující vlastnosti v rozhraní v PushToUserViewController.m hello:
+11. V rozhraní v PushToUserViewController.m přidejte následující vlastnosti:
     
         @property (readonly) NSOperationQueue* downloadQueue;
         - (NSString*)base64forData:(NSData*)theData;
-12. Pak přidejte následující implementace hello:
+12. Pak přidejte následující implementace:
     
             - (NSOperationQueue *)downloadQueue {
                 if (!_downloadQueue) {
@@ -173,7 +173,7 @@ Toto téma ukazuje, jak toorequest registrace nabízených oznámení pomocí Az
     
                 return [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
             }
-13. Kopírování hello následující kód do hello **přihlášení** vytvořené XCode metoda obslužné rutiny:
+13. Zkopírujte následující kód do **přihlášení** vytvořené XCode metoda obslužné rutiny:
     
             DeviceInfo* deviceInfo = [(PushToUserAppDelegate*)[[UIApplication sharedApplication]delegate] deviceInfo];
     
@@ -206,9 +206,9 @@ Toto téma ukazuje, jak toorequest registrace nabízených oznámení pomocí Az
                 }
             }];
     
-    Tato metoda získá ID instalace a kanál pro nabízená oznámení a odešle ji, společně s hello typu zařízení, toohello ověření webového rozhraní API metoda, která vytvoří registraci v Notification Hubs. Toto webové rozhraní API byla definovaná v [upozorněte uživatele s Notification Hubs].
+    Tato metoda získá ID instalace a kanál pro nabízená oznámení a odešle ji, společně s typu zařízení, do ověřené metody webového rozhraní API, která vytvoří registraci v Notification Hubs. Toto webové rozhraní API byla definovaná v [upozorněte uživatele s Notification Hubs].
 
-Teď, když hello klientskou aplikaci se aktualizovala, vrátí toohello [upozorněte uživatele s Notification Hubs] a aktualizovat hello mobilní služby toosend oznámení pomocí centra oznámení.
+Teď, když klientské aplikace se aktualizovalo, vraťte se do [upozorněte uživatele s Notification Hubs] a aktualizovat mobilní službu pro odeslání oznámení pomocí centra oznámení.
 
 <!-- Anchors. -->
 

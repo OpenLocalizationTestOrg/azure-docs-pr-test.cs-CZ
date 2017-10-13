@@ -1,6 +1,6 @@
 ---
-title: "Nabídka služeb virtuálního počítače pro hello Marketplace aaaTest | Microsoft Docs"
-description: "Pochopte, jak tootest virtuálního počítače obrázků pro hello Azure Marketplace."
+title: "Testovací virtuální počítač nabídku pro Marketplace | Microsoft Docs"
+description: "Pochopit, jak chcete otestovat bitové kopie virtuálních počítačů v Azure Marketplace."
 services: marketplace-publishing
 documentationcenter: 
 author: HannibalSII
@@ -14,51 +14,51 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: hascipio
-ms.openlocfilehash: ab166d2c3c536810a3a8f48330f0482b9b4e58d5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 26f856059b381be91b9cdd1f98a11dc90813c0c5
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="test-your-vm-offer-for-hello-azure-marketplace-in-staging"></a>Při přípravě otestovat vaši nabídku virtuálních počítačů pro hello Azure Marketplace
-Pracovní znamená nasazení vaší SKU privátního "izolovaného", kde můžete testovat a ověřit jeho funkce ještě před nasazením toohello Marketplace. Hello SKU se zobrazí v pracovním stejně, jako by tooa zákazníkovi, který je nasazena. Bitové kopie virtuálního počítače musí být toostaging certifikovaných toobe poslat.
+# <a name="test-your-vm-offer-for-the-azure-marketplace-in-staging"></a>Při přípravě otestovat vaši nabídku virtuálních počítačů pro Azure Marketplace
+Pracovní znamená nasazení vaší SKU privátního "izolovaného", kde můžete testovat a před nasazením na Marketplace s cílem ověřit její funkce. Verze SKU se zobrazí v pracovním stejně, jako by zákazníkovi, který je nasazena. Chcete-li být vložena do přípravy musí mít certifikovanou bitové kopie virtuálního počítače.
 
-## <a name="step-1-push-your-offer-toostaging"></a>Krok 1: Push vaší toostaging nabídka
-1. Na hello **publikovat** , klikněte na **Push tooStaging**.
+## <a name="step-1-push-your-offer-to-staging"></a>Krok 1: Push vaši nabídku do přípravy
+1. Na **publikovat** , klikněte na **nabízená pracovní**.
    
     ![Kreslení](media/marketplace-publishing-vm-image-test-in-staging/vm-image-push-to-staging.png)
-2. Pokud hello publikování portál upozorňuje na všechny chyby, opravte je.
-3. V hello **přístup dvoufázové instalace nabídku?** dialogovém okně zadejte hello seznam předplatných Azure, že použijete toopreview vaši nabídku v hello [portál Azure preview](https://portal.azure.com).
+2. Pokud portálu publikování upozorňuje na všechny chyby, opravte je.
+3. V **přístup dvoufázové instalace nabídku?** dialogovém okně zadejte seznam předplatných Azure, které budete používat k zobrazení náhledu vaši nabídku v [portál Azure preview](https://portal.azure.com).
    
    > [!NOTE]
    > V případě virtuálních počítačů a šablony řešení prosím **nepodporují** povolených odběrů typu CSP, DreamSpark nebo Azure v otevřené.
    > 
    > 
 
-    > V případě virtuálních počítačů, když kliknete na tlačítko hello **nabízené tooSTAGING**, hello následující kroky jsou prováděny za scény hello. Bude moct tooview hello průběh jednotlivých kroků v části kartu hello publikovat v hello publikování portálu. Je nutné zkontrolovat tuto stránku v pravidelných intervalech (dokud hello stavu zobrazuje PŘIPRAVENÝ) pro všechny informace o selhání, které musí oprava z vaší elementu end.
+    > V případě virtuálních počítačů, když kliknete na tlačítko **PUSH pracovní**, následující kroky se provádějí za scény. Bude moct zobrazovat průběh každého kroku na kartě Publikovat v publikační portálu. Je nutné zkontrolovat tuto stránku v pravidelných intervalech (než je ve stavu PŘIPRAVENÝ) pro všechny informace o selhání, které musí oprava z vaší elementu end.
 
-    > - Na první pracovní žádost přejde toohello certifikační týmu, který ověření hello virtuálního pevného disku. Ale pokud vaše žádost má potom pouze marketingové změnit, pak hello certifikační krok se přeskočí.
-    > - Po dokončení hello certifikační replikace hello nabídka start napříč všemi hello datových centrech Azure. Obvykle trvá 24 48hours pro toocomplete hello replikace, ale může trvat až tooa týden v závislosti na velikosti hello hello virtuálního pevného disku. Pokud vaše žádost má potom pouze marketingové změnit, pak hello replikace je však rychlejší.
-    > - Po dokončení replikace hello pak hello nabídka bude k dispozici v hello [portál Azure](http:/portal.azure.com). V tento čas hello stav stát dvoufázové instalace v hello publikování portálu. Dvoufázové instalace nabídka je viditelný v hello [portál Azure](http:/portal.azure.com) jenom pomocí ID e-mailu hello přidružené k předplatnému hello s které hello nabídka připravený.
+    > - Na první pracovní žádost přejde na certifikační týmu, který ověření virtuální pevný disk. Ale pokud vaši žádost má potom pouze marketingové změnit, pak certifikační krok se přeskočí.
+    > - Po dokončení certifikační replikace nabídku start přes Azure datových center. Obvykle trvá 24 48hours na dokončení replikace, ale může trvat až do týdne v závislosti na velikosti virtuálního pevného disku. Pokud vaše žádost má potom pouze marketingové změnit, pak replikace je však rychlejší.
+    > - Po dokončení replikace poté nabídku bude k dispozici v [portál Azure](http:/portal.azure.com). V této době stav stát dvoufázové instalace v publikační portálu. Dvoufázové instalace nabídky se zobrazí na [portál Azure](http:/portal.azure.com) jenom pomocí ID e-mailu přidruženou k odběru, ke které je vynášené nabídku.
 
-1. Přihlaste se toohello [portál Azure preview](https://portal.azure.com) pomocí jedné z hello předplatná Azure uvedené v předchozím kroku hello.
+1. Přihlaste se k [portál Azure preview](https://portal.azure.com) pomocí jednoho z předplatných Azure uvedené v předchozím kroku.
 2. Najít vaši nabídku a ověřit bodům bitové kopie virtuálního počítače:
    
-   * Ujistěte se, že marketingové obsah se zobrazí správně v hello Marketplace.
-   * Nasazení začátku do konce hello image virtuálního počítače.
+   * Ujistěte se, že marketingové obsah se zobrazí správně v Marketplace.
+   * Koncové nasazení bitové kopie virtuálního počítače.
      
       ![IMG. Mapa portálu](media/marketplace-publishing-push-to-staging/pubportal-mapping-azure-portal.jpg)
 
 > [!IMPORTANT]
-> Vaši nabídku zůstane v pracovním dokud oznámit Microsoft prostřednictvím hello publikování portálu [**publikovat** kartě > klikněte na tlačítko hello **"Požádat o schválení tooPush tooProduction"**] se připravené toopush tooproduction. Jde ideální čas toohave, všichni členové týmu kontrolu nad vše v rámci přípravy vaši nabídku budete uvedené.
+> Vaši nabídku zůstane v pracovním dokud oznámit Microsoftu prostřednictvím portálu publikování [**publikovat** kartě > klikněte na tlačítko **"Žádosti o schválení pro nabízené do výroby"**] je vše připraveno k produkční. To je ideální třeba mít všechny členy vašeho týmu kontroly nad vše v rámci přípravy vaši nabídku budete uvedené.
 > 
-> Hello pracovní platformy je určená pro testování hello nabídka v režimu náhledu hello vydavatelem. Důrazně bránit pomocí této platofrm pro obchodní účely.
+> Pracovní platformy je určená pro testování nabídku v režimu náhledu vydavatelem. Důrazně bránit pomocí této platofrm pro obchodní účely.
 > 
 > 
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když vaši nabídku je "připravený" a testování její funkce a marketingu obsah, abyste mohli pokračovat toohello konečné publikování fázi **krok 4**: [nasazení vaší toohello nabídku Marketplace](marketplace-publishing-push-to-production.md).
+Teď, když vaši nabídku je "připravený" a testování její funkce a uvádění na trh obsah, můžete přejít k publikování závěrečné **krok 4**: [nasazení vaši nabídku Marketplace](marketplace-publishing-push-to-production.md).
 
 ## <a name="see-also"></a>Viz také
-* [Začínáme: jak toopublish toohello nabídka Azure Marketplace](marketplace-publishing-getting-started.md)
+* [Začínáme: postup publikování nabídky pro Azure Marketplace](marketplace-publishing-getting-started.md)
 

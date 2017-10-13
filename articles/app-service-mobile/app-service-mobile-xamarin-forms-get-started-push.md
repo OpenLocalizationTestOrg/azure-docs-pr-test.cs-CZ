@@ -1,6 +1,6 @@
 ---
-title: "aaaAdd nabízená oznámení tooyour Xamarin.Forms aplikace | Microsoft Docs"
-description: "Zjistěte, jak toouse Azure services toosend více platformami nabízená oznámení tooyour Xamarin.Forms aplikace."
+title: "Přidání nabízených oznámení do vaší aplikace na platformě Xamarin.Forms | Microsoft Docs"
+description: "Naučte se používat k odesílání více platformami nabízená oznámení do aplikace Xamarin.Forms služby Azure."
 services: app-service\mobile
 documentationcenter: xamarin
 author: ysxu
@@ -14,50 +14,50 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: yuaxu
-ms.openlocfilehash: 9133a0b6dd99c01def525607c20ce5a9c19b9502
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 912367636f1b26b3b07fbd5fe3fe8ed053218fd5
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="add-push-notifications-tooyour-xamarinforms-app"></a>Přidat nabízená oznámení tooyour Xamarin.Forms aplikaci
+# <a name="add-push-notifications-to-your-xamarinforms-app"></a>Přidání nabízených oznámení do vaší aplikace na platformě Xamarin.Forms
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 ## <a name="overview"></a>Přehled
-V tomto kurzu přidáte nabízená oznámení tooall hello projekty, které je výsledkem hello [Xamarin.Forms úvodní](app-service-mobile-xamarin-forms-get-started.md). To znamená, že nabízených oznámení se neodesílají klientů napříč platformami tooall pokaždé, když vložení záznamu.
+V tomto kurzu přidání nabízených oznámení na všechny projekty, které je výsledkem [Xamarin.Forms úvodní](app-service-mobile-xamarin-forms-get-started.md). To znamená, že nabízených oznámení se neodesílají do všech klientů napříč platformami pokaždé, když vložení záznamu.
 
-Pokud nepoužijete hello stáhli úvodní serverový projekt, bude nutné hello nabízených oznámení v balíčku rozšíření. Další informace najdete v tématu [pracovat s hello .NET back-end serveru SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+Pokud použijete serverový projekt stažené rychlý start, budete potřebovat balíček rozšíření nabízená oznámení. Další informace najdete v tématu [pracovat s .NET back-end serveru SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
 ## <a name="prerequisites"></a>Požadavky
-Pro iOS, budete potřebovat [programu pro vývojáře Apple členství](https://developer.apple.com/programs/ios/) a fyzickém zařízení iOS. Hello [simulátoru iOS nabízená oznámení nepodporuje](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html).
+Pro iOS, budete potřebovat [programu pro vývojáře Apple členství](https://developer.apple.com/programs/ios/) a fyzickém zařízení iOS. [Simulátoru iOS nabízená oznámení nepodporuje](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html).
 
 ## <a name="configure-hub"></a>Konfigurace centra oznámení
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
-## <a name="update-hello-server-project-toosend-push-notifications"></a>Aktualizovat hello serveru projektu toosend nabízená oznámení
+## <a name="update-the-server-project-to-send-push-notifications"></a>Aktualizace serverový projekt k odesílání nabízených oznámení
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
-## <a name="configure-and-run-hello-android-project-optional"></a>Nakonfigurujte a spusťte hello projekt Android (volitelné)
-Dokončení této části tooenable nabízená oznámení pro hello Xamarin.Forms Droid projektu pro Android.
+## <a name="configure-and-run-the-android-project-optional"></a>Konfiguraci a spuštění projektu pro Android (volitelné)
+Dokončení této části ke zprovoznění nabízených oznámení pro Android Xamarin.Forms projekt pro Android.
 
 ### <a name="enable-firebase-cloud-messaging-fcm"></a>Povolit Firebase Cloud Messaging (FCM)
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
-### <a name="configure-hello-mobile-apps-back-end-toosend-push-requests-by-using-fcm"></a>Konfigurace hello Mobile Apps back-end toosend nabízené požadavky pomocí FCM
+### <a name="configure-the-mobile-apps-back-end-to-send-push-requests-by-using-fcm"></a>Konfigurace mobilní aplikace back-endu odesílat žádosti o nabízenou pomocí FCM
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push.md)]
 
-### <a name="add-push-notifications-toohello-android-project"></a>Přidat nabízená oznámení toohello projekt Android
-S hello back-end FCM nakonfigurované můžete přidat součásti a kódy tooregister klienta toohello s FCM. Také můžete zaregistrovat pro nabízená oznámení pomocí Azure Notification Hubs prostřednictvím hello Mobile Apps zpět ukončení a přijímat oznámení.
+### <a name="add-push-notifications-to-the-android-project"></a>Přidání nabízených oznámení do projektu pro Android
+S back-end FCM nakonfigurované můžete přidat součásti a kódy pro klienta pro registraci se FCM. Můžete také zaregistrovat pro nabízená oznámení pomocí Azure Notification Hubs prostřednictvím back-end mobilní aplikace a přijímat oznámení.
 
-1. V hello **Droid** projektu, klikněte pravým tlačítkem na hello **součásti** složku a klikněte na tlačítko **získat další komponenty...** . Poté vyhledejte hello **klient Google Cloud Messaging** součástí a přidejte ji toohello projektu. Tato součást podporuje nabízená oznámení pro projekt Xamarin Android.
-2. Otevřete soubor projektu MainActivity.cs hello a přidejte následující příkaz hello horní části souboru hello hello:
+1. V **Droid** projektu, klikněte pravým tlačítkem myši **součásti** složku a klikněte na tlačítko **získat další komponenty...** . Poté vyhledejte **klient Google Cloud Messaging** součástí a přidejte ji do projektu. Tato součást podporuje nabízená oznámení pro projekt Xamarin Android.
+2. Otevřete soubor projektu MainActivity.cs a v horní části souboru přidejte následující příkaz:
 
         using Gcm.Client;
-3. Přidejte následující kód toohello hello **OnCreate** volání metody po hello příliš**LoadApplication**:
+3. Přidejte následující kód, který **OnCreate** metoda po zavolání **LoadApplication**:
 
         try
         {
-            // Check tooensure everything's set up right
+            // Check to ensure everything's set up right
             GcmClient.CheckDevice(this);
             GcmClient.CheckManifest(this);
 
@@ -67,7 +67,7 @@ S hello back-end FCM nakonfigurované můžete přidat součásti a kódy tooreg
         }
         catch (Java.Net.MalformedURLException)
         {
-            CreateAndShowDialog("There was an error creating hello client. Verify hello URL.", "Error");
+            CreateAndShowDialog("There was an error creating the client. Verify the URL.", "Error");
         }
         catch (Exception e)
         {
@@ -83,12 +83,12 @@ S hello back-end FCM nakonfigurované můžete přidat součásti a kódy tooreg
             builder.SetTitle (title);
             builder.Create().Show ();
         }
-5. Přidejte následující kód toohello hello **MainActivity** třídy:
+5. Přidejte následující kód, který **MainActivity** třídy:
 
         // Create a new instance field for this activity.
         static MainActivity instance = null;
 
-        // Return hello current activity instance.
+        // Return the current activity instance.
         public static MainActivity CurrentActivity
         {
             get
@@ -97,12 +97,12 @@ S hello back-end FCM nakonfigurované můžete přidat součásti a kódy tooreg
             }
         }
 
-    To zpřístupňuje hello aktuální **MainActivity** instance, proto můžete provést na hello hlavního vlákna uživatelského rozhraní.
-6. Inicializace hello `instance` proměnné na začátku hello hello **OnCreate** metoda následujícím způsobem.
+    To zpřístupňuje aktuální **MainActivity** instance, proto můžete provést na hlavního vlákna uživatelského rozhraní.
+6. Inicializace `instance` proměnné na začátku **OnCreate** metoda následujícím způsobem.
 
-        // Set hello current instance of MainActivity.
+        // Set the current instance of MainActivity.
         instance = this;
-7. Přidat nové toohello souboru třída **Droid** projektu s názvem `GcmService.cs`a ujistěte se, zda text hello následující **pomocí** příkazy nejsou hello horní části souboru hello:
+7. Přidat nový soubor třídy k **Droid** projektu s názvem `GcmService.cs`a zajistěte, aby následující **pomocí** příkazy nejsou v horní části souboru:
 
         using Android.App;
         using Android.Content;
@@ -116,7 +116,7 @@ S hello back-end FCM nakonfigurované můžete přidat součásti a kódy tooreg
         using System.Collections.Generic;
         using System.Diagnostics;
         using System.Text;
-8. Přidejte následující žádosti o oprávnění hello horní části souboru hello po hello hello **pomocí** příkazy a před hello **obor názvů** deklarace.
+8. Přidejte následující žádosti oprávnění v horní části souboru po **pomocí** příkazy a před **obor názvů** deklarace.
 
         [assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
         [assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
@@ -125,7 +125,7 @@ S hello back-end FCM nakonfigurované můžete přidat součásti a kódy tooreg
         [assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
         //GET_ACCOUNTS is only needed for android versions 4.0.3 and below
         [assembly: UsesPermission(Name = "android.permission.GET_ACCOUNTS")]
-9. Přidejte následující obor názvů toohello definice třídy hello.
+9. Přidejte následující definice tříd do oboru názvů.
 
        [BroadcastReceiver(Permission = Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
        [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_MESSAGE }, Categories = new string[] { "@PACKAGE_NAME@" })]
@@ -140,7 +140,7 @@ S hello back-end FCM nakonfigurované můžete přidat součásti a kódy tooreg
    > Nahraďte **< PROJECT_NUMBER >** s vaše číslo projektu, který jste si předtím poznamenali.    
    >
    >
-10. Nahraďte hello prázdný **GcmService** se hello následující kód, který používá novou všesměrového vysílání příjemce hello:
+10. Nahraďte prázdné **GcmService** třída, která využívá nové všesměrového vysílání příjemce následujícím kódem:
 
          [Service]
          public class GcmService : GcmServiceBase
@@ -150,7 +150,7 @@ S hello back-end FCM nakonfigurované můžete přidat součásti a kódy tooreg
              public GcmService()
                  : base(PushHandlerBroadcastReceiver.SENDER_IDS){}
          }
-11. Přidejte následující kód toohello hello **GcmService** třídy. Přepíše hello **OnRegistered** obslužné rutiny události a implementuje **zaregistrovat** metoda.
+11. Přidejte následující kód, který **GcmService** třídy. Přepíše **OnRegistered** obslužné rutiny události a implementuje **zaregistrovat** metoda.
 
         protected override void OnRegistered(Context context, string registrationId)
         {
@@ -184,8 +184,8 @@ S hello back-end FCM nakonfigurované můžete přidat součásti a kódy tooreg
             }
         }
 
-    Všimněte si, že tento kód používá hello `messageParam` parametr v registraci šablony hello.
-12. Přidejte následující kód, který implementuje hello **OnMessage**:
+    Všimněte si, že tento kód používá `messageParam` parametr v registraci šablony.
+12. Přidejte následující kód, který implementuje **OnMessage**:
 
         protected override void OnMessage(Context context, Intent intent)
         {
@@ -199,7 +199,7 @@ S hello back-end FCM nakonfigurované můžete přidat součásti a kódy tooreg
                     msg.AppendLine(key + "=" + intent.Extras.Get(key).ToString());
             }
 
-            //Store hello message
+            //Store the message
             var prefs = GetSharedPreferences(context.PackageName, FileCreationMode.Private);
             var edit = prefs.Edit();
             edit.PutString("last_msg", msg.ToString());
@@ -227,33 +227,33 @@ S hello back-end FCM nakonfigurované můžete přidat součásti a kódy tooreg
             //Create notification
             var notificationManager = GetSystemService(Context.NotificationService) as NotificationManager;
 
-            //Create an intent tooshow ui
+            //Create an intent to show ui
             var uiIntent = new Intent(this, typeof(MainActivity));
 
             //Use Notification Builder
             NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
 
-            //Create hello notification
-            //we use hello pending intent, passing our ui intent over which will get called
-            //when hello notification is tapped.
+            //Create the notification
+            //we use the pending intent, passing our ui intent over which will get called
+            //when the notification is tapped.
             var notification = builder.SetContentIntent(PendingIntent.GetActivity(this, 0, uiIntent, 0))
                     .SetSmallIcon(Android.Resource.Drawable.SymActionEmail)
                     .SetTicker(title)
                     .SetContentTitle(title)
                     .SetContentText(desc)
 
-                    //Set hello notification sound
+                    //Set the notification sound
                     .SetSound(RingtoneManager.GetDefaultUri(RingtoneType.Notification))
 
-                    //Auto cancel will remove hello notification once hello user touches it
+                    //Auto cancel will remove the notification once the user touches it
                     .SetAutoCancel(true).Build();
 
-            //Show hello notification
+            //Show the notification
             notificationManager.Notify(1, notification);
         }
 
-    To zpracovává příchozí oznámení a odešle je toohello oznámení správce toobe zobrazí.
-13. **GcmServiceBase** také vyžaduje, abyste tooimplement hello **OnUnRegistered** a **OnError** metody obslužné rutiny, které můžete provést následujícím způsobem:
+    To zpracovává příchozí oznámení a odesílá je do Správce oznámení, který se má zobrazit.
+13. **GcmServiceBase** také vyžaduje, abyste implementovat **OnUnRegistered** a **OnError** metody obslužné rutiny, které můžete provést následujícím způsobem:
 
         protected override void OnUnRegistered(Context context, string registrationId)
         {
@@ -265,35 +265,35 @@ S hello back-end FCM nakonfigurované můžete přidat součásti a kódy tooreg
             Log.Error("PushHandlerBroadcastReceiver", "GCM Error: " + errorId);
         }
 
-Nyní jsou připravené testovací nabízená oznámení v hello aplikaci spuštěnou na zařízení se systémem Android nebo hello emulátor.
+Teď můžete je připraven nabízená oznámení v aplikaci spuštěnou na zařízení se systémem Android nebo emulátor.
 
 ### <a name="test-push-notifications-in-your-android-app"></a>Nabízená oznámení v aplikacích pro Android
-Hello první dva kroky jsou povinné jenom v případě, že testujete na emulátor.
+První dva kroky jsou povinné, jenom v případě, že testujete na emulátor.
 
-1. Ujistěte se, že nasazujete tooor ladění na virtuální zařízení, které se má nastavit jako cíl hello rozhraní Google API, jak je vidět níže ve Správci zařízení se systémem Android virtuálním hello.
-2. Kliknutím na Přidat zařízení Android toohello účet Google **aplikace** > **nastavení** > **přidejte účet**. Potom postupujte podle pokynů tooadd hello ze stávajících zařízení toohello účet Google nebo toocreate nový.
-3. V sadě Visual Studio nebo Xamarin Studio, klikněte pravým tlačítkem na hello **Droid** projektu a klikněte na tlačítko **nastavit jako spouštěný projekt**.
-4. Klikněte na tlačítko **spustit** toobuild hello projektu a spusťte aplikaci hello na emulátoru nebo zařízení s Androidem.
-5. Aplikace hello typ úlohy a pak klikněte na hello plus (**+**) ikona.
+1. Ujistěte se, že nasazení nebo ladění na virtuální zařízení, které má rozhraní Google API nastavenou jako cíl, jak je znázorněno níže ve Správci virtuálního zařízení se systémem Android.
+2. Kliknutím na Přidat účet Google do zařízení s Androidem **aplikace** > **nastavení** > **přidejte účet**. Potom postupujte podle pokynů, které chcete přidat existující účet Google do zařízení, nebo vytvořte novou.
+3. V sadě Visual Studio nebo Xamarin Studio, klikněte pravým tlačítkem **Droid** projektu a klikněte na tlačítko **nastavit jako spouštěný projekt**.
+4. Klikněte na tlačítko **spustit** pro sestavení projektu a spusťte aplikaci v emulátoru nebo zařízení s Androidem.
+5. V aplikaci zadejte úlohu a potom klikněte na tlačítko plus (**+**) ikona.
 6. Ověřte, že se při přidání položky přijato oznámení.
 
-## <a name="configure-and-run-hello-ios-project-optional"></a>Konfiguraci a spuštění projektu iOS hello (volitelné)
-Tato část se týká spuštění projektu Xamarin iOS pro zařízení s iOS hello. Můžete ji přeskočit, pokud s takovými zařízeními nepracujete.
+## <a name="configure-and-run-the-ios-project-optional"></a>Konfiguraci a spuštění projektu pro iOS (volitelné)
+Tato část se týká spuštění projektu Xamarin iOS pro zařízení s iOS. Můžete ji přeskočit, pokud s takovými zařízeními nepracujete.
 
 [!INCLUDE [Enable Apple Push Notifications](../../includes/enable-apple-push-notifications.md)]
 
-#### <a name="configure-hello-notification-hub-for-apns"></a>Konfigurace centra oznámení hello pro služby APN
+#### <a name="configure-the-notification-hub-for-apns"></a>Konfigurace centra oznámení pro služby APN
 [!INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-apns-configure-push.md)]
 
-Dále nakonfigurujete nastavení projektu iOS hello v nástroji Xamarin Studio nebo Visual Studio.
+Dále nakonfigurujete nastavení projektu iOS v nástroji Xamarin Studio nebo Visual Studio.
 
 [!INCLUDE [app-service-mobile-xamarin-ios-configure-project](../../includes/app-service-mobile-xamarin-ios-configure-project.md)]
 
-#### <a name="add-push-notifications-tooyour-ios-app"></a>Přidání nabízených oznámení tooyour iOS aplikace
-1. V hello **iOS** projektu, otevřete AppDelegate.cs a přidejte následující příkaz toohello horní části souboru kódu hello hello.
+#### <a name="add-push-notifications-to-your-ios-app"></a>Přidání nabízených oznámení do vaší aplikace pro iOS
+1. V **iOS** projektu, otevřete AppDelegate.cs a přidejte následující příkaz na začátek souboru kódu.
 
         using Newtonsoft.Json.Linq;
-2. V hello **AppDelegate** třídy, přidejte přepsání pro hello **RegisteredForRemoteNotifications** tooregister události pro oznámení:
+2. V **AppDelegate** třídy, přidejte přepsání pro **RegisteredForRemoteNotifications** události k registraci pro oznámení:
 
         public override void RegisteredForRemoteNotifications(UIApplication application,
             NSData deviceToken)
@@ -310,7 +310,7 @@ Dále nakonfigurujete nastavení projektu iOS hello v nástroji Xamarin Studio n
             Push push = TodoItemManager.DefaultManager.CurrentClient.GetPush();
             push.RegisterAsync(deviceToken, templates);
         }
-3. V **AppDelegate**, také přidat hello následující přepsání pro hello **DidReceiveRemoteNotification** obslužné rutiny události:
+3. V **AppDelegate**, také přidat následující přepsání pro **DidReceiveRemoteNotification** obslužné rutiny události:
 
         public override void DidReceiveRemoteNotification(UIApplication application,
             NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
@@ -329,8 +329,8 @@ Dále nakonfigurujete nastavení projektu iOS hello v nástroji Xamarin Studio n
             }
         }
 
-    Tato metoda zpracovává příchozí oznámení, když běží aplikace hello.
-4. V hello **AppDelegate** třídy, přidejte následující kód toohello hello **FinishedLaunching** metoda:
+    Tato metoda zpracovává příchozí oznámení, když aplikace běží.
+4. V **AppDelegate** třídy, přidejte následující kód, který **FinishedLaunching** metoda:
 
         // Register for push notifications.
         var settings = UIUserNotificationSettings.GetSettingsForTypes(
@@ -344,30 +344,30 @@ Dále nakonfigurujete nastavení projektu iOS hello v nástroji Xamarin Studio n
 
     To umožňuje podporu pro vzdálené oznámení a registrace nabízených požadavky.
 
-Vaše aplikace je teď aktualizovaný toosupport nabízená oznámení.
+Aplikace je nyní aktualizovat o podporu nabízených oznámení.
 
 #### <a name="test-push-notifications-in-your-ios-app"></a>Nabízená oznámení v aplikaci s iOS
-1. Klikněte pravým tlačítkem na projekt pro iOS hello a klikněte na tlačítko **nastavit jako spouštěný projekt**.
-2. Stiskněte klávesu hello **spustit** tlačítko nebo **F5** v sadě Visual Studio toobuild hello projektu a spusťte aplikaci hello v zařízení se systémem iOS. Pak klikněte na tlačítko **OK** tooaccept nabízená oznámení.
+1. Klikněte pravým tlačítkem na projekt pro iOS a klikněte na tlačítko **nastavit jako spouštěný projekt**.
+2. Stiskněte **spustit** tlačítko nebo **F5** v sadě Visual Studio pro sestavení projektu a spusťte aplikaci v zařízení se systémem iOS. Pak klikněte na tlačítko **OK** přijímat nabízená oznámení.
 
    > [!NOTE]
-   > Je nutné explicitně přijmout nabízená oznámení z vaší aplikace. Tento požadavek dochází pouze v hello prvním hello aplikace běží.
+   > Je nutné explicitně přijmout nabízená oznámení z vaší aplikace. Tento požadavek dochází pouze při prvním spuštění aplikace.
    >
    >
-3. Aplikace hello typ úlohy a pak klikněte na hello plus (**+**) ikona.
-4. Ověřte, zda přijetí oznámení a pak klikněte na tlačítko **OK** toodismiss hello oznámení.
+3. V aplikaci zadejte úlohu a potom klikněte na tlačítko plus (**+**) ikona.
+4. Ověřte, zda přijetí oznámení a pak klikněte na tlačítko **OK** k zavření oznámení.
 
 ## <a name="configure-and-run-windows-projects-optional"></a>Nakonfigurujte a spusťte projekty pro Windows (volitelné)
-Tato část se týká spuštění hello Xamarin.Forms WinApp a WinPhone81 projekty pro zařízení se systémem Windows. Tyto kroky také podporují projekty univerzální platformu Windows (UWP). Můžete ji přeskočit, pokud s takovými zařízeními nepracujete.
+Tato část se týká spuštění Xamarin.Forms WinApp a WinPhone81 projekty pro zařízení se systémem Windows. Tyto kroky také podporují projekty univerzální platformu Windows (UWP). Můžete ji přeskočit, pokud s takovými zařízeními nepracujete.
 
 #### <a name="register-your-windows-app-for-push-notifications-with-windows-notification-service-wns"></a>Registrace aplikace systému Windows pro nabízená oznámení pomocí služby oznámení Windows (WNS)
 [!INCLUDE [app-service-mobile-register-wns](../../includes/app-service-mobile-register-wns.md)]
 
-#### <a name="configure-hello-notification-hub-for-wns"></a>Konfigurace centra oznámení hello u WNS
+#### <a name="configure-the-notification-hub-for-wns"></a>Konfigurace centra oznámení pro WNS
 [!INCLUDE [app-service-mobile-configure-wns](../../includes/app-service-mobile-configure-wns.md)]
 
-#### <a name="add-push-notifications-tooyour-windows-app"></a>Přidat nabízená oznámení tooyour Windows aplikaci
-1. V sadě Visual Studio otevřete **App.xaml.cs** v systému Windows projekt a přidejte následující příkazy hello.
+#### <a name="add-push-notifications-to-your-windows-app"></a>Přidání nabízených oznámení do aplikace pro Windows
+1. V sadě Visual Studio otevřete **App.xaml.cs** v systému Windows projekt a přidejte následující příkazy.
 
         using Newtonsoft.Json.Linq;
         using Microsoft.WindowsAzure.MobileServices;
@@ -375,8 +375,8 @@ Tato část se týká spuštění hello Xamarin.Forms WinApp a WinPhone81 projek
         using Windows.Networking.PushNotifications;
         using <your_TodoItemManager_portable_class_namespace>;
 
-    Nahraďte `<your_TodoItemManager_portable_class_namespace>` s oborem názvů hello přenosné projektu obsahující hello `TodoItemManager` třídy.
-2. V souboru App.xaml.cs přidejte následující hello **InitNotificationsAsync** metoda:
+    Nahraďte `<your_TodoItemManager_portable_class_namespace>` s oborem názvů vašeho přenosného projektu, který obsahuje `TodoItemManager` třídy.
+2. V souboru App.xaml.cs přidejte následující **InitNotificationsAsync** metoda:
 
         private async Task InitNotificationsAsync()
         {
@@ -400,33 +400,33 @@ Tato část se týká spuštění hello Xamarin.Forms WinApp a WinPhone81 projek
                 .RegisterAsync(channel.Uri, templates);
         }
 
-    Tato metoda získá kanál hello nabízená oznámení a zaregistruje šablony tooreceive šablony oznámení z centra oznámení. Šablony oznámení, která podporuje *messageParam* budou doručeny toothis klienta.
-3. V souboru App.xaml.cs aktualizace hello **OnLaunched** definici metody obslužné rutiny událostí přidáním hello `async` modifikátor. Pak přidejte následující řádek kódu na konci hello hello metody hello:
+    Tato metoda získá kanál nabízená oznámení a zaregistruje šablonu do šablony oznámení dostávat, vaše Centrum oznámení. Šablony oznámení, která podporuje *messageParam* budou doručeny do tohoto klienta.
+3. V souboru App.xaml.cs, aktualizovat **OnLaunched** definici metody obslužné rutiny událostí přidáním `async` modifikátor. Pak přidejte následující řádek kódu na konci metody:
 
         await InitNotificationsAsync();
 
-    Zajistíte tak, že se vytvoří nebo aktualizují při každém spuštění aplikace hello hello registrace nabízených oznámení. Je důležité toodo tento tooguarantee, který hello WNS nabízené kanál je vždy aktivní.  
-4. V Průzkumníku řešení pro sadu Visual Studio otevřete hello **Package.appxmanifest** souboru a nastavit **informační podporující** příliš**Ano** pod **oznámení**.
-5. Sestavení aplikace hello a ověřte, že máte žádné chyby. Klientská aplikace by měl nyní registrovat hello šablony oznámení od hello, že end Mobile Apps zpět. Tato část opakujte pro každý projekt Windows ve vašem řešení.
+    Tím se zajistí, že registrace nabízených oznámení je vytvořit nebo aktualizovat pokaždé, když je aplikace spuštěná. Je důležité k tomu zaručit, že kanál nabízené WNS je vždy aktivní.  
+4. V Průzkumníku řešení pro sadu Visual Studio, otevřete **Package.appxmanifest** souboru a nastavit **informační podporující** k **Ano** pod **oznámení**.
+5. Sestavte aplikaci a zkontrolujte, že jste žádné chyby. Klientská aplikace by teď zaregistrovat pro šablony oznámení z back-end mobilní aplikace. Tato část opakujte pro každý projekt Windows ve vašem řešení.
 
 #### <a name="test-push-notifications-in-your-windows-app"></a>Nabízená oznámení v aplikaci Windows
 1. V sadě Visual Studio, klikněte pravým tlačítkem na projekt Windows a klikněte na tlačítko **nastavit jako spouštěný projekt**.
-2. Stiskněte klávesu hello **spustit** tlačítko toobuild hello projektu a spusťte aplikaci hello.
-3. V aplikaci hello, zadejte název nové todoitem a pak klikněte na tlačítko hello plus (**+**) ikona tooadd ho.
-4. Ověřte, že se při přidání položky hello přijato oznámení.
+2. Stiskněte tlačítko **Spustit** a sestavte projekt a spusťte aplikaci.
+3. V aplikaci, zadejte název nové todoitem a pak klikněte na tlačítko plus (**+**) ikona Přidat.
+4. Ověřte, že se při přidání položky přijato oznámení.
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o nabízených oznámení:
 
 * [Diagnostikovat problémy nabízená oznámení](../notification-hubs/notification-hubs-push-notification-fixer.md)  
-  Existují různé důvody, proč oznámení může získat vyřadit ani nekončí na zařízení. Toto téma ukazuje, jak tooanalyze a vyřešení hello kořenové způsobit selhání nabízená oznámení.
+  Existují různé důvody, proč oznámení může získat vyřadit ani nekončí na zařízení. Toto téma ukazuje, jak analyzovat a zjistěte příčinu selhání nabízená oznámení.
 
-Můžete také pokračovat na tooone hello následující kurzy:
+Můžete také pokračovat na jednu z následujících kurzů:
 
-* [Přidat aplikaci tooyour ověřování](app-service-mobile-xamarin-forms-get-started-users.md)  
-  Zjistěte, jak tooauthenticate uživatele vaší aplikace pomocí zprostředkovatele identity.
+* [Přidání ověřování do aplikace](app-service-mobile-xamarin-forms-get-started-users.md)  
+  Zjistěte, jak ověřovat uživatele vaší aplikace pomocí zprostředkovatele identity.
 * [Povolení offline synchronizace u aplikace](app-service-mobile-xamarin-forms-get-started-offline-data.md)  
-  Zjistěte, jak tooadd offline podporu pro vaši aplikaci pomocí Mobile Apps back-end. S offline synchronizací, mohou uživatelé komunikovat s mobilní aplikací&mdash;zobrazení, přidávat a upravovat data&mdash;i v případě, že není žádné síťové připojení.
+  Zjistěte, jak pomocí back-endu Mobile Apps přidat do aplikace podporu offline režimu. S offline synchronizací, mohou uživatelé komunikovat s mobilní aplikací&mdash;zobrazení, přidávat a upravovat data&mdash;i v případě, že není žádné síťové připojení.
 
 <!-- Images. -->
 

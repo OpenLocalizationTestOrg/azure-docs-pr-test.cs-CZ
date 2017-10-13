@@ -1,6 +1,6 @@
 ---
-title: "aaaInstall Trend Micro hluboké Security na virtuálním počítači | Microsoft Docs"
-description: "Tento článek popisuje, jak tooinstall a konfigurace Trend Micro zabezpečení na virtuálním počítači vytvořené pomocí modelu nasazení Classic hello v Azure."
+title: "Nainstalujte Trend malých hloubkové zabezpečení na virtuálním počítači | Microsoft Docs"
+description: "Tento článek popisuje postup instalace a konfigurace Trend Micro zabezpečení na virtuálním počítači vytvořené pomocí modelu nasazení Classic v Azure."
 services: virtual-machines-windows
 documentationcenter: 
 author: iainfoulds
@@ -15,76 +15,76 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: iainfou
-ms.openlocfilehash: dc5492db07a37a2296df5da673183a14c6d5b1f2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 911b8f12472dcbda3e6bfeb8c97bf1d04a63e1dd
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-tooinstall-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Jak tooinstall a nakonfigurujte Trend Micro hluboké Security jako služba na virtuální počítač s Windows
+# <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Jak nainstalovat a nakonfigurovat Trend Micro Deep Security na virtuálním počítači s Windows jako službu
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic hello. Společnost Microsoft doporučuje, aby většina nových nasazení používala model Resource Manager hello.
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
 
-Tento článek ukazuje, jak tooinstall a nakonfigurujte Trend Micro hluboké Security jako služba na nový nebo existující virtuální počítač (VM) s Windows serverem. Hloubkové zabezpečení jako služba zahrnuje ochrana proti malwaru, brána firewall, narušení prevence systém a monitorování integrity.
+Tento článek ukazuje, jak nainstalovat a nakonfigurovat Trend Micro hluboké Security jako služba na nový nebo existující virtuální počítač (VM) s Windows serverem. Hloubkové zabezpečení jako služba zahrnuje ochrana proti malwaru, brána firewall, narušení prevence systém a monitorování integrity.
 
-Hello klienta se instaluje jako rozšíření zabezpečení prostřednictvím hello agenta virtuálního počítače. Na nový virtuální počítač nainstalujte hello hloubkové Agent zabezpečení, jako hello agenta virtuálního počítače je vytvářena automaticky nástrojem hello portálu Azure.
+Klient je nainstalován jako rozšíření zabezpečení prostřednictvím agenta virtuálního počítače. Na nový virtuální počítač nainstalujte hloubkové Agent zabezpečení jako Agent virtuálního počítače je vytvářena automaticky nástrojem portálu Azure.
 
-Existující virtuální počítač vytvořený pomocí portálu classic hello, hello rozhraní příkazového řádku Azure nebo PowerShell nemusí mít agenta virtuálního počítače. Pro stávajícího virtuálního počítače, který nemá hello agenta virtuálního počítače třeba toodownload a nainstalujte ji jako první. Tento článek se týká obou situacích.
+Existující virtuální počítač vytvořený na portálu classic, rozhraní příkazového řádku Azure nebo PowerShell nemusí mít agenta virtuálního počítače. Pro stávajícího virtuálního počítače, který nemá agenta virtuálního počítače potřebujete stáhněte a nainstalujte ji jako první. Tento článek se týká obou situacích.
 
-Pokud máte z Trend Micro aktuální předplatné pro místní řešení, můžete ho toohelp chránit virtuální počítače Azure. Pokud vám ještě nejsou zákazníka, můžete zaregistrovat zkušební předplatné. Další informace o tomto řešení najdete v příspěvku blogu Trend Micro hello [Microsoft Azure virtuálního počítače agenta rozšíření pro přímý zabezpečení](http://go.microsoft.com/fwlink/p/?LinkId=403945).
+Pokud máte z Trend Micro aktuální předplatné pro místní řešení, můžete k ochraně virtuální počítače Azure. Pokud vám ještě nejsou zákazníka, můžete zaregistrovat zkušební předplatné. Další informace o tomto řešení najdete v příspěvku blogu Trend Micro [Microsoft Azure virtuálního počítače agenta rozšíření pro přímý zabezpečení](http://go.microsoft.com/fwlink/p/?LinkId=403945).
 
-## <a name="install-hello-deep-security-agent-on-a-new-vm"></a>Nainstalujte hello hluboké Security Agent na nový virtuální počítač
+## <a name="install-the-deep-security-agent-on-a-new-vm"></a>Nainstalujte agenta hloubkové zabezpečení na nový virtuální počítač
 
-Hello [portál Azure](http://portal.azure.com) umožňuje nainstalovat rozšíření zabezpečení Trend Micro hello při použití bitové kopie z hello **Marketplace** toocreate hello virtuálního počítače. Pokud vytváříte jeden virtuální počítač, pomocí portálu hello je snadný způsob tooadd ochrany z Trend Micro.
+[Portál Azure](http://portal.azure.com) umožňuje nainstalovat rozšíření zabezpečení Trend Micro při použití bitovou kopii **Marketplace** k vytvoření virtuálního počítače. Pokud vytváříte jeden virtuální počítač, pomocí portálu je snadný způsob, jak přidat ochranu z Trend Micro.
 
-Pomocí položky z hello **Marketplace** otevře průvodce, který vám pomůže nastavit hello virtuálního počítače. Použít hello **nastavení** okna, panel třetí hello hello průvodci tooinstall hello Trend Micro rozšíření zabezpečení.  Obecné pokyny najdete v tématu [vytvoření virtuálního počítače se systémem Windows v portálu Azure hello](tutorial.md).
+Pomocí položky z **Marketplace** otevře průvodce, který vám pomůže nastavit virtuální počítač. Můžete použít **nastavení** okna, panel třetí průvodce, chcete-li nainstalovat rozšíření Trend Micro zabezpečení.  Obecné pokyny najdete v tématu [vytvoření virtuálního počítače se systémem Windows na portálu Azure](tutorial.md).
 
-Když získáte toohello **nastavení** okno Průvodce hello hello následující kroky:
+Jakmile přejdete **nastavení** okno průvodce proveďte následující kroky:
 
-1. Klikněte na tlačítko **rozšíření**, pak klikněte na tlačítko **přidat rozšíření** v podokně Další hello.
+1. Klikněte na tlačítko **rozšíření**, pak klikněte na tlačítko **přidat rozšíření** v podokně Další.
 
-   ![Začněte přidávat hello rozšíření][1]
+   ![Začít přidávat rozšíření][1]
 
-2. Vyberte **hloubkové Agent zabezpečení** v hello **nový prostředek** podokně. V podokně hello hloubkové Agent zabezpečení, klikněte na **vytvořit**.
+2. Vyberte **hloubkové Agent zabezpečení** v **nový prostředek** podokně. V podokně hloubkové Agent zabezpečení, klikněte na tlačítko **vytvořit**.
 
    ![Identifikovat Agent hloubkové zabezpečení][2]
 
-3. Zadejte hello **identifikátor klienta** a **heslo aktivace klienta** hello rozšíření. Volitelně můžete zadat **identifikátor zásady zabezpečení**. Potom klikněte na **OK** tooadd hello klienta.
+3. Zadejte **identifikátor klienta** a **heslo aktivace klienta** pro rozšíření. Volitelně můžete zadat **identifikátor zásady zabezpečení**. Potom klikněte na **OK** přidat klienta.
 
    ![Zadejte podrobnosti o rozšíření][3]
 
-## <a name="install-hello-deep-security-agent-on-an-existing-vm"></a>Nainstalujte hello hluboké Security Agent na existující virtuální počítač
-agent hello tooinstall na existující virtuální počítač, je třeba hello následující položky:
+## <a name="install-the-deep-security-agent-on-an-existing-vm"></a>Hloubkové zabezpečení agenta nainstalovat na existující virtuální počítač
+Chcete-li nainstalovat agenta na existující virtuální počítač, je třeba následující položky:
 
-* modul Azure PowerShell text Hello, verze 0.8.2 nebo novější, nainstalovaná v místním počítači. Můžete zkontrolovat hello verzi prostředí Azure PowerShell, který jste nainstalovali pomocí hello **Get-Module azure | verze formátu tabulky** příkaz. Pokyny a odkaz nejnovější verzi toohello najdete v tématu [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview). Přihlaste se pomocí předplatného Azure tooyour `Add-AzureAccount`.
-* Hello Agent virtuálního počítače nainstalovaný na hello cílového virtuálního počítače.
+* Modul Azure PowerShell, verze 0.8.2 nebo novější, nainstalovaná v místním počítači. Můžete zkontrolovat verzi prostředí Azure PowerShell, který jste nainstalovali pomocí **Get-Module azure | verze formátu tabulky** příkaz. Pokyny a odkaz na nejnovější verzi naleznete v tématu [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview). Přihlaste se k předplatnému Azure pomocí `Add-AzureAccount`.
+* Agent virtuálního počítače nainstalovaný na cílový virtuální počítač.
 
-Nejprve ověří, že hello agenta virtuálního počítače je již nainstalována. Zadejte název hello cloudové služby a název virtuálního počítače a pak spusťte následující příkazy příkazového řádku Azure PowerShell úrovni správce hello. Nahraďte vše v rámci hello uvozovky, včetně hello < a > znaků.
+Nejprve ověří, že je již nainstalován Agent virtuálního počítače. Zadejte název cloudové služby a název virtuálního počítače a potom spusťte následující příkazy příkazového řádku Azure PowerShell úrovni správce. Nahraďte všechna data v uvozovkách, včetně < a > znaků.
 
     $CSName = "<cloud service name>"
     $VMName = "<virtual machine name>"
     $vm = Get-AzureVM -ServiceName $CSName -Name $VMName
     write-host $vm.VM.ProvisionGuestAgent
 
-Pokud si nejste jisti hello Cloudová služba a název virtuálního počítače, spusťte **Get-AzureVM** toodisplay že hello informace pro všechny virtuální počítače v aktuálním předplatném.
+Pokud si nejste jisti, Cloudová služba a název virtuálního počítače, spusťte **Get-AzureVM** zobrazit tyto informace pro všechny virtuální počítače v aktuálním předplatném.
 
-Pokud hello **zápisu hostitele** příkaz vrátí **True**, hello je nainstalovaný Agent virtuálního počítače. Vrátí-li **False**, najdete v části hello pokyny a odkaz toohello, stáhněte si v hello Azure příspěvku na blogu [agenta virtuálního počítače a rozšíření – část 2](http://go.microsoft.com/fwlink/p/?LinkId=403947).
+Pokud **zápisu hostitele** příkaz vrátí **True**, je nainstalovaný Agent virtuálního počítače. Vrátí-li **False**, najdete pokyny a odkaz na stažení v Azure příspěvku na blogu [agenta virtuálního počítače a rozšíření – část 2](http://go.microsoft.com/fwlink/p/?LinkId=403947).
 
-Pokud je nainstalovaná hello agenta virtuálního počítače, spusťte tyto příkazy.
+Pokud je nainstalován Agent virtuálního počítače, spusťte tyto příkazy.
 
     $Agent = Get-AzureVMAvailableExtension TrendMicro.DeepSecurity -ExtensionName TrendMicroDSA
 
     Set-AzureVMExtension -Publisher TrendMicro.DeepSecurity –Version $Agent.Version -ExtensionName TrendMicroDSA -VM $vm | Update-AzureVM
 
 ## <a name="next-steps"></a>Další kroky
-Jak dlouho trvá několik minut, než toostart hello agent spuštěn, když je nainstalovaná. Potom musíte tooactivate hloubkové zabezpečení na virtuálním počítači hello tak můžete spravovat pomocí hloubkové zabezpečení správce. Viz následující články pro další pokyny hello:
+Jak dlouho trvá několik minut začít spouštět po instalaci agenta. Potom musíte aktivovat hloubkové zabezpečení na virtuálním počítači, můžete spravovat pomocí hloubkové zabezpečení správce. Najdete v následujících článcích další pokyny:
 
 * Trend na článek o tomto řešení [Instant-On cloudu zabezpečení pro Microsoft Azure](http://go.microsoft.com/fwlink/?LinkId=404101)
-* A [ukázkový skript prostředí Windows PowerShell](http://go.microsoft.com/fwlink/?LinkId=404100) tooconfigure hello virtuálního počítače
-* [Pokyny](http://go.microsoft.com/fwlink/?LinkId=404099) pro ukázku hello
+* A [ukázkový skript prostředí Windows PowerShell](http://go.microsoft.com/fwlink/?LinkId=404100) ke konfiguraci virtuálního počítače
+* [Pokyny](http://go.microsoft.com/fwlink/?LinkId=404099) pro ukázku
 
 ## <a name="additional-resources"></a>Další zdroje
-[Jak toolog na tooa virtuální počítač se systémem Windows Server]
+[Jak se přihlásit do virtuálního počítače se systémem Windows Server]
 
 [Rozšíření virtuálního počítače Azure a funkce]
 
@@ -94,5 +94,5 @@ Jak dlouho trvá několik minut, než toostart hello agent spuštěn, když je n
 [3]: ./media/install-trend/SecurityAgentDetails.png
 
 <!-- Link references -->
-[Jak toolog na tooa virtuální počítač se systémem Windows Server]:connect-logon.md
+[Jak se přihlásit do virtuálního počítače se systémem Windows Server]:connect-logon.md
 [Rozšíření virtuálního počítače Azure a funkce]: http://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409

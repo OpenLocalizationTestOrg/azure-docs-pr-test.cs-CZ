@@ -1,9 +1,9 @@
 ---
-title: "Vyrovnávání zatížení aaaCreate směřujících Internetu – portál Azure classic | Microsoft Docs"
-description: "Zjistěte, jak toocreate k Internetu přístupných pro vyrovnávání zatížení pomocí modelu nasazení classic hello portál Azure classic"
+title: "Vytvoření internetového nástroje pro vyrovnávání zatížení – Azure Classic Portal | Dokumentace Microsoftu"
+description: "Zjistěte, jak vytvořit internetový nástroj pro vyrovnávání zatížení v modelu nasazení Classic pomocí portálu Azure Classic"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 editor: 
 tags: azure-service-management
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-ms.openlocfilehash: 27b0d5af6e7b493fa94a9dfbfa260483ae95a2fb
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: e07b6808f2401ac7b2b21e5f8816bac5a15b50b9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="get-started-creating-an-internet-facing-load-balancer-classic-in-hello-azure-classic-portal"></a>Začínáte s vytvářením internetovým Vyrovnávání zatížení (klasické) v hello portál Azure classic
+# <a name="get-started-creating-an-internet-facing-load-balancer-classic-in-the-azure-classic-portal"></a>Začínáme vytvářet internetový nástroj pro vyrovnávání zatížení (Classic) na portálu Azure Classic
 
 > [!div class="op_single_selector"]
 > * [Portál Azure Classic](../load-balancer/load-balancer-get-started-internet-classic-portal.md)
@@ -32,33 +32,33 @@ ms.lasthandoff: 10/06/2017
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
 > [!IMPORTANT]
-> Než začnete pracovat s prostředky Azure, je důležité toounderstand Azure aktuálně má dva modely nasazení: Azure Resource Manager a Klasický model. Před zahájením práce s jakýmikoli prostředky Azure se ujistěte, že rozumíte [modelům nasazení a příslušným nástrojům](../azure-classic-rm.md). Hello dokumentaci k různým nástrojům můžete zobrazit kliknutím na karty hello hello horní části tohoto článku. Tento článek se týká modelu nasazení classic hello. Můžete také [zjistěte, jak toocreate přístupem Internetu pro vyrovnávání zátěže pomocí Azure Resource Manager](load-balancer-get-started-internet-arm-ps.md).
+> Než začnete pracovat s prostředky Azure, je potřeba si uvědomit, že Azure má v současné době dva modely nasazení: Azure Resource Manager a klasický. Před zahájením práce s jakýmikoli prostředky Azure se ujistěte, že rozumíte [modelům nasazení a příslušným nástrojům](../azure-classic-rm.md). Dokumentaci k různým nástrojům můžete zobrazit kliknutím na karty v horní části tohoto článku. Tento článek se týká modelu nasazení Classic. Případně [zjistěte, jak vytvořit internetový nástroj pro vyrovnávání zatížení pomocí Azure Resource Manageru](load-balancer-get-started-internet-arm-ps.md).
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
 ## <a name="set-up-an-internet-facing-load-balancer-for-virtual-machines"></a>Nastavení internetového nástroje pro vyrovnávání zatížení pro virtuální počítače
 
-V pořadí tooload vyrovnávání síťové přenosy z Internetu hello napříč hello virtuální počítače cloudové služby je nutné vytvořit sadu s vyrovnáváním zatížení. Tento postup předpokládá, že jste již vytvořili hello virtuálních počítačů a že jsou všechny v rámci hello stejné cloudové služby.
+Abyste mohli vyrovnávat zatížení síťového provozu z internetu napříč virtuálními počítači cloudové služby, musíte vytvořit sadu s vyrovnáváním zatížení. Tento postup předpokládá, že již máte vytvořené virtuální počítače, a že všechny jsou v rámci stejné cloudové služby.
 
-**tooconfigure sadu Vyrovnávání zatížení sítě pro virtuální počítače**
+**Konfigurace sady s vyrovnáváním zatížení pro virtuální počítače**
 
-1. V hello portál Azure classic, klikněte na **virtuální počítače**a potom klikněte na název hello virtuálního počítače v sadě hello Vyrovnávání zatížení sítě.
+1. Na portálu Azure Classic klikněte na **Virtuální počítače** a potom klikněte na název virtuálního počítače v sadě s vyrovnáváním zatížení.
 2. Klikněte na **Koncové body** a potom na **Přidat**.
-3. Na hello **přidat se koncový bod tooa virtuální počítač** klikněte na šipku vpravo hello.
-4. Na hello **zadejte podrobnosti hello koncového bodu hello** stránky:
+3. Na stránce **Přidat koncový bod do virtuálního počítače** klikněte na šipku doprava.
+4. Na stránce **Zadat podrobnosti o koncovém bodu**:
 
-   * V **název**, zadejte název pro koncový bod hello nebo vyberte název hello ze seznamu předdefinovaných koncové body pro běžné protokoly hello.
-   * V **protokol**, vyberte protokol hello vyžadované hello typu koncového bodu, TCP nebo UDP, podle potřeby.
-   * V **Port veřejné a privátní Port**, zadejte hello čísla portů, která chcete hello toouse virtuální počítač podle potřeby. Můžete vytvořit privátní port hello a pravidel brány firewall na přenosy dat virtuálních počítačů tooredirect hello způsobem, který je vhodný pro aplikaci. stejné jako veřejný port hello můžete hello Hello privátní port. Například pro koncový bod pro provoz webu (HTTP), může přiřadit port 80 tooboth hello veřejné a privátní port.
+   * V části **Název** zadejte název koncového bodu nebo vyberte název ze seznamu předdefinovaných koncových bodů pro běžné protokoly.
+   * V části **Protokol** vyberte podle potřeby protokol vyžadovaný typem koncového bodu, buď TCP, nebo UDP.
+   * V části **Veřejný port a privátní port** zadejte podle potřeby čísla portů, které chcete, aby virtuální počítač používat. Můžete použít privátní port a pravidla brány firewall na virtuálním počítači k přesměrování provozu ve směru vhodném pro vaši aplikaci. Privátní port může být stejný jako veřejný port. Například koncovému bodu pro webový provoz (HTTP) můžete přiřadit port 80 jako veřejný i privátní port.
 
-5. Vyberte **vytvořit sadu s vyrovnáváním zatížení**a potom klikněte na šipku vpravo hello.
-6. Na hello **konfigurace sady vyrovnáváním zatížení hello** stránky, zadejte název pro sadu hello Vyrovnávání zatížení sítě a pak mu přiřaďte hodnoty hello pro chování testu hello Vyrovnávání zatížení Azure. Hello Vyrovnávání zatížení používá sondy toodetermine, pokud jsou k dispozici tooreceive příchozí provoz hello virtuální počítače ve sady hello vyrovnáváním zatížení.
-7. Klikněte na tlačítko hello zaškrtnutí toocreate hello Vyrovnávání zatížení sítě endpoint. Zobrazí se **Ano** v hello **název skupiny s vyrovnáváním zatížení** sloupec hello **koncové body** stránku hello virtuálního počítače.
-8. Hello portálu, klikněte na tlačítko **virtuální počítače**, klikněte na název hello další virtuálního počítače v sadě hello Vyrovnávání zatížení sítě, klikněte na **koncové body**a potom klikněte na **přidat**.
-9. Na hello **přidat se koncový bod tooa virtuální počítač** klikněte na tlačítko **přidat koncový bod tooan existující Vyrovnávání zatížení sítě sady**, vyberte název hello sady hello Vyrovnávání zatížení sítě a potom klikněte na šipku vpravo hello.
-10. Na hello **zadejte podrobnosti hello koncového bodu hello** stránky, zadejte název pro koncový bod hello a pak klikněte na tlačítko zaškrtnutí hello.
+5. Vyberte možnost **Vytvořit sadu s vyrovnáváním zatížení** a potom klikněte na šipku doprava.
+6. Na stránce **Konfigurovat sadu s vyrovnáváním zatížení** zadejte název sady s vyrovnáváním zatížení a potom přiřaďte hodnoty pro chování testů služby Azure Load Balancer. Služba Load Balancer pomocí testů určuje, jestli jsou virtuální počítače v sadě s vyrovnáváním zatížení dostupné k přijímání příchozího provozu.
+7. Kliknutím na značku zaškrtnutí vytvořte koncový bod s vyrovnáváním zatížení. Na stránce **Koncové body virtuálního počítače** uvidíte ve sloupci **Název sady s vyrovnáváním zatížení** hodnotu **Ano**.
+8. Na portálu klikněte na **Virtuální počítače**, klikněte na název dalšího virtuálního počítače v sadě s vyrovnáváním zatížení, klikněte na **Koncové body** a potom na **Přidat**.
+9. Na stránce **Přidat koncový bod do virtuálního počítače** klikněte na **Přidat koncový bod do existující sady s vyrovnáváním zatížení**, vyberte název sady s vyrovnáváním zatížení a potom klikněte na šipku doprava.
+10. Na stránce **Zadat podrobnosti o koncovém bodu** zadejte název koncového bodu a potom klikněte na značku zaškrtnutí.
 
-Pro hello dalších virtuálních počítačů v sadě hello Vyrovnávání zatížení sítě opakujte kroky 8-10.
+U dalších virtuálních počítačů v sadě s vyrovnáváním zatížení opakujte kroky 8-10.
 
 ## <a name="next-steps"></a>Další kroky
 

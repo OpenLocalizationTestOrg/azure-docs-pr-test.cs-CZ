@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate funkce v Azure aktivovány obecný webhook | Microsoft Docs"
-description: "Pomocí Azure Functions toocreate bez serveru funkci, která je vyvolat webhook v Azure."
+title: "Vytvoří funkci, v Azure aktivovány obecný webhook | Microsoft Docs"
+description: "Použití Azure Functions vytvořit funkci bez serveru, který je vyvolán webhooku v Azure."
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -16,21 +16,21 @@ ms.workload: na
 ms.date: 08/12/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 0a4868da91d216c8d20930ce7ec82eaa059c75ff
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f283f8d79c5ae5fb6a72c84c9e9edb7bb8de4a83
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-a-function-triggered-by-a-generic-webhook"></a>Vytvoření funkce aktivovány obecný webhook
 
-Azure Functions umožňuje spuštění kódu v prostředí bez serveru bez nutnosti toofirst vytvoření virtuálního počítače nebo publikování webové aplikace. Můžete například nakonfigurovat funkce toobe, aktivuje výstrahu aktivováno monitorování Azure. Toto téma ukazuje, jak přidat tooexecute kód C# Pokud skupina prostředků je tooyour předplatné.   
+Služba Azure Functions umožňuje spuštění kódu v prostředí bez serveru, aniž byste nejdřív museli vytvořit virtuální počítač nebo publikovat webovou aplikaci. Můžete například nakonfigurovat funkce, která se aktivovat výstrahu aktivováno monitorování Azure. Toto téma ukazuje, jak provádět kód C#, pokud skupina prostředků se přidá do vašeho předplatného.   
 
-![Obecný webhook aktivuje funkce v hello portálu Azure](./media/functions-create-generic-webhook-triggered-function/function-completed.png)
+![Obecný webhook aktivuje funkce na portálu Azure](./media/functions-create-generic-webhook-triggered-function/function-completed.png)
 
 ## <a name="prerequisites"></a>Požadavky 
 
-toocomplete v tomto kurzu:
+K provedení kroků v tomto kurzu je potřeba:
 
 + Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -40,68 +40,68 @@ toocomplete v tomto kurzu:
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-Dál vytvořte funkci v nové funkce aplikace hello.
+Dál vytvoříte v nové aplikaci Function App funkci.
 
 ## <a name="create-function"></a>Vytvoření obecný webhook aktivované funkce
 
-1. Rozšířit funkce aplikace a klikněte na tlačítko hello  **+**  tlačítko vedle příliš**funkce**. Pokud je tato funkce je hello první z nich v aplikaci funkce, vyberte **vlastní funkce**. Zobrazí se hello kompletní sada šablon funkcí.
+1. Rozbalte aplikaci Function App a klikněte na tlačítko **+** vedle položky **Funkce**. Pokud tuto funkci je první z nich v aplikaci funkce, vyberte **vlastní funkce**. Zobrazí se kompletní sada šablon funkcí.
 
-    ![Funkce Rychlé spuštění stránku hello portálu Azure](./media/functions-create-generic-webhook-triggered-function/add-first-function.png)
+    ![Stručný úvod do služby Functions na webu Azure Portal](./media/functions-create-generic-webhook-triggered-function/add-first-function.png)
 
-2. Vyberte hello **obecný WebHook - C#** šablony. Zadejte název pro funkce C# a pak vyberte **vytvořit**.
+2. Vyberte **obecný WebHook - C#** šablony. Zadejte název pro funkce C# a pak vyberte **vytvořit**.
 
-     ![Vytvoří funkci, obecný webhook aktivuje v hello portálu Azure](./media/functions-create-generic-webhook-triggered-function/functions-create-generic-webhook-trigger.png) 
+     ![Vytvoří funkci, obecný webhook aktivuje na portálu Azure](./media/functions-create-generic-webhook-triggered-function/functions-create-generic-webhook-trigger.png) 
 
-2. V nové funkce, klikněte na **URL funkce <> / Get**, zkopírujte a uložte hello hodnotu. Můžete použít tuto hodnotu tooconfigure hello webhooku. 
+2. V nové funkce, klikněte na **URL funkce <> / Get**, zkopírujte a uložte hodnotu. Tuto hodnotu použijete ke konfiguraci webhooku. 
 
-    ![Zkontrolujte kód funkce hello](./media/functions-create-generic-webhook-triggered-function/functions-copy-function-url.png)
+    ![Kontrola kódu funkce](./media/functions-create-generic-webhook-triggered-function/functions-copy-function-url.png)
          
 Dále vytvoříte koncový bod webhooku ve výstraze protokolu aktivit v Azure monitorování. 
 
 ## <a name="create-an-activity-log-alert"></a>Vytvořit výstrahu protokolu aktivit
 
-1. V hello portálu Azure, přejděte toohello **monitorování** služby, vyberte **výstrahy**a klikněte na tlačítko **přidat aktivitu protokolu upozornění**.   
+1. Na portálu Azure přejděte do **monitorování** služby, vyberte **výstrahy**a klikněte na tlačítko **přidat aktivitu protokolu upozornění**.   
 
     ![Monitorování](./media/functions-create-generic-webhook-triggered-function/functions-monitor-add-alert.png)
 
-2. Použijte hello nastavení uvedeného v tabulce hello:
+2. Použijte nastavení uvedená v tabulce:
 
     ![Vytvořit výstrahu protokolu aktivit](./media/functions-create-generic-webhook-triggered-function/functions-monitor-add-alert-settings.png)
 
     | Nastavení      |  Navrhovaná hodnota   | Popis                              |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Název výstrahy protokolu aktivit** | prostředek skupiny vytvořit – upozornění | Název výstrahy protokolu hello aktivity. |
-    | **Předplatné** | Vaše předplatné | Hello odběr, který používáte pro účely tohoto kurzu. | 
-    |  **Skupina prostředků** | myResourceGroup | skupiny prostředků Hello hello výstrahy prostředky jsou nasazeny do. Pomocí hello stejné skupině prostředků jako funkce aplikace umožňuje snazší tooclean po dokončení kurzu hello. |
-    | **Kategorie události** | Pro správu | Tato kategorie zahrnuje změny tooAzure prostředky.  |
-    | **Typ prostředku** | Skupiny prostředků | Filtrování výstrah tooresource skupiny aktivit. |
+    | **Název výstrahy protokolu aktivit** | prostředek skupiny vytvořit – upozornění | Název protokolu výstraha aktivity. |
+    | **Předplatné** | Vaše předplatné | Odběr, který používáte pro účely tohoto kurzu. | 
+    |  **Skupina prostředků** | myResourceGroup | Výstrahy prostředky jsou nasazeny do skupiny prostředků. Pomocí stejné skupině prostředků jako aplikace funkce usnadňuje odstraňování až po dokončení kurzu. |
+    | **Kategorie události** | Pro správu | Tato kategorie zahrnuje změny prostředků Azure.  |
+    | **Typ prostředku** | Skupiny prostředků | Filtrování výstrah pro aktivity skupiny prostředků. |
     | **Skupina prostředků**<br/>a **prostředků** | Všechny | Monitorujte všechny prostředky. |
-    | **Název operace** | Vytvoření skupiny prostředků | Filtrování výstrah toocreate operace. |
+    | **Název operace** | Vytvoření skupiny prostředků | Filtrování výstrah pro vytvoření operací. |
     | **Úroveň** | Informační | Zahrnout informační úrovně výstrahy. | 
-    | **Stav** | Úspěch | Filtry tooactions výstrahy, které byly úspěšně dokončeny. |
-    | **Akce skupiny** | Nový | Vytvořte novou skupinu akce, který definuje hello akce trvá, když je vydána výstraha. |
-    | **Název skupiny akce** | Funkce webhooku | Skupina akce název tooidentify hello.  | 
-    | **Krátký název** | funcwebhook | Krátký název pro skupinu akce hello. |  
+    | **Stav** | Úspěch | Filtrování výstrah na akce, které byly úspěšně dokončeny. |
+    | **Akce skupiny** | Nový | Vytvořte novou skupinu akce, který definuje akce trvá, když je vydána výstraha. |
+    | **Název skupiny akce** | Funkce webhooku | Název pro identifikaci skupiny akce.  | 
+    | **Krátký název** | funcwebhook | Krátký název pro skupinu akce. |  
 
-3. V **akce**, přidat akci pomocí nastavení hello uvedených v tabulce hello: 
+3. V **akce**, přidat akci pomocí nastavení uvedeného v tabulce: 
 
     ![Přidat skupinu akce](./media/functions-create-generic-webhook-triggered-function/functions-monitor-add-alert-settings-2.png)
 
     | Nastavení      |  Navrhovaná hodnota   | Popis                              |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Název** | CallFunctionWebhook | Název akce hello. |
-    | **Typ akce** | Webhook | Hello odpovědi toohello upozornění je, že adresa URL Webhooku se nazývá. |
-    | **Podrobnosti** | URL – funkce | Vložte adresy URL webhooku hello hello funkce, který jste zkopírovali dříve. |v
+    | **Název** | CallFunctionWebhook | Název akce. |
+    | **Typ akce** | Webhook | Odpověď na výstrahy je, že adresa URL Webhooku se nazývá. |
+    | **Podrobnosti** | URL – funkce | Vložte adresu URL webhooku funkce, který jste zkopírovali dříve. |v
 
-4. Klikněte na tlačítko **OK** toocreate hello výstrahy a akce skupiny.  
+4. Klikněte na tlačítko **OK** vytvořit skupinu výstrahy a akce.  
 
-Hello webhooku se nyní nazývá při vytvoření skupiny prostředků v rámci vašeho předplatného. Potom aktualizujte hello kód ve vaší funkce toohandle hello dat protokolu JSON v textu hello hello požadavku.   
+Webhook se nyní nazývá při vytvoření skupiny prostředků v rámci vašeho předplatného. Potom aktualizujte kód ve vaší funkci pro zpracování dat protokolu JSON v textu požadavku.   
 
-## <a name="update-hello-function-code"></a>Aktualizovat kód funkce hello
+## <a name="update-the-function-code"></a>Aktualizace kódu funkce
 
-1. Přejděte zpět tooyour funkce aplikace hello portálu a rozšířit funkce. 
+1. Přejděte zpět do aplikace pro funkce na portálu a rozšířit funkce. 
 
-2. Nahraďte kód skriptu hello C# ve funkci hello portálu hello hello následující kód:
+2. Nahraďte kód skriptu jazyka C# ve funkci portálu s následujícím kódem:
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -115,12 +115,12 @@ Hello webhooku se nyní nazývá při vytvoření skupiny prostředků v rámci 
     {
         log.Info($"Webhook was triggered!");
     
-        // Get hello activityLog object from hello JSON in hello message body.
+        // Get the activityLog object from the JSON in the message body.
         string jsonContent = await req.Content.ReadAsStringAsync();
         JToken activityLog = JObject.Parse(jsonContent.ToString())
             .SelectToken("data.context.activityLog");
     
-        // Return an error if hello resource in hello activity log isn't a resource group. 
+        // Return an error if the resource in the activity log isn't a resource group. 
         if (activityLog == null || !string.Equals((string)activityLog["resourceType"], 
             "Microsoft.Resources/subscriptions/resourcegroups"))
         {
@@ -131,7 +131,7 @@ Hello webhooku se nyní nazývá při vytvoření skupiny prostředků v rámci 
             });
         }
     
-        // Write information about hello created resource group toohello streaming log.
+        // Write information about the created resource group to the streaming log.
         log.Info(string.Format("Resource group '{0}' was {1} on {2}.",
             (string)activityLog["resourceGroupName"],
             ((string)activityLog["subStatus"]).ToLower(), 
@@ -141,19 +141,19 @@ Hello webhooku se nyní nazývá při vytvoření skupiny prostředků v rámci 
     }
     ```
 
-Nyní můžete otestovat hello funkce tak, že vytvoříte novou skupinu prostředků ve vašem předplatném.
+Nyní můžete otestovat funkci tak, že vytvoříte novou skupinu prostředků ve vašem předplatném.
 
-## <a name="test-hello-function"></a>Testování funkce hello
+## <a name="test-the-function"></a>Testování funkce
 
-1. Klikněte na ikonu skupiny prostředků hello v hello nalevo od hello portál Azure, vyberte **+ přidat**, zadejte **název skupiny prostředků**a vyberte **vytvořit** toocreate prázdné skupině prostředků.
+1. Klikněte na ikonu skupiny prostředků v levé části portálu Azure, vyberte **+ přidat**, zadejte **název skupiny prostředků**a vyberte **vytvořit** k vytvoření skupiny prostředků prázdný.
     
     ![Vytvořte skupinu prostředků.](./media/functions-create-generic-webhook-triggered-function/functions-create-resource-group.png)
 
-2. Přejděte zpět tooyour funkce a rozbalte hello **protokoly** okno. Po vytvoření skupiny prostředků hello hello výstrahy aktivační události protokolu aktivit hello webhooku a provede hello funkce. Zobrazí název nové skupiny prostředků hello zapisují protokoly toohello hello.  
+2. Vraťte se zpátky a funkce a rozbalte **protokoly** okno. Po vytvoření skupiny prostředků webhooku se aktivuje výstraha protokolu aktivity a provádí funkce. Zobrazí název nové skupiny prostředků zapisují do protokolů.  
 
     ![Přidáte nastavení aplikace testu.](./media/functions-create-generic-webhook-triggered-function/function-view-logs.png)
 
-3. (Volitelné) Přejděte zpět a odstraňte skupinu prostředků hello, kterou jste vytvořili. Všimněte si, že tuto aktivitu neaktivuje hello funkce. Důvodem je, že odstranění operations filtrují hello výstraha. 
+3. (Volitelné) Přejděte zpět a odstraňte skupinu prostředků, kterou jste vytvořili. Všimněte si, že tato aktivita nebude aktivovat funkce. Důvodem je, že odstranění operations filtrují výstraha. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -165,5 +165,5 @@ Funkce, která se spouští při přijetí požadavku z obecný webhook jste vyt
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 
-Další informace o aktivačních událostech webhooků najdete v tématu [Vazby protokolu HTTP služby Azure Functions a vazby webhooku](functions-bindings-http-webhook.md). toolearn Další informace o vývoji funkce v jazyce C#, najdete v části [Azure funkcí jazyka C# skript referenční informace pro vývojáře](functions-reference-csharp.md).
+Další informace o aktivačních událostech webhooků najdete v tématu [Vazby protokolu HTTP služby Azure Functions a vazby webhooku](functions-bindings-http-webhook.md). Další informace o vývoji funkce v jazyce C#, najdete v části [Azure funkcí jazyka C# skript referenční informace pro vývojáře](functions-reference-csharp.md).
 

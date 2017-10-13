@@ -1,6 +1,6 @@
 ---
-title: "aaaGet začít s dvojčata zařízení Azure IoT Hub (.NET/.NET) | Microsoft Docs"
-description: "Jak tooadd dvojčata zařízení Azure IoT Hub toouse značky a pak použít dotaz služby IoT Hub. Použití zařízení Azure IoT hello SDK pro aplikace .NET tooimplement hello simulované zařízení a hello sady SDK služby Azure IoT pro rozhraní .NET tooimplement aplikační služby, které přidá značky hello a spustí hello dotazu IoT Hub."
+title: "Začínáme s Azure IoT Hub dvojčata zařízení (.NET/.NET) | Microsoft Docs"
+description: "Jak používat dvojčata zařízení Azure IoT Hub přidat značky a pak použijte dotaz služby IoT Hub. Použití zařízení Azure IoT sady SDK pro .NET pro implementaci aplikaci simulovaného zařízení a sady SDK pro .NET k implementaci aplikační služby, které přidá značky a spustí dotaz IoT Hub služby Azure IoT."
 services: iot-hub
 documentationcenter: node
 author: dsk-2015
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/15/2017
 ms.author: dkshir
-ms.openlocfilehash: 7fa73ac896c44e79c6522d252cd1515bd6e7bb2b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6073d594117e69676b753a1e3af25fffa3583a2b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="get-started-with-device-twins-netnet"></a>Začínáme s dvojčata zařízení (.NET/.NET)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
-Na konci hello tohoto kurzu budete mít tyto aplikace konzoly .NET:
+Na konci tohoto kurzu budete mít tyto aplikace konzoly .NET:
 
-* **CreateDeviceIdentity**, aplikace .NET, která vytvoří identitu zařízení a přiřazený bezpečnostní klíč tooconnect aplikace simulovaného zařízení.
+* **CreateDeviceIdentity**, aplikace .NET, která vytvoří identitu zařízení a přiřazený bezpečnostní klíč k připojení aplikace simulovaného zařízení.
 * **AddTagsAndQuery**, aplikace .NET back-end, které přidá značky a dotazuje dvojčata zařízení.
-* **ReportConnectivity**, aplikace .NET zařízení, která simuluje zařízení, která se připojuje tooyour IoT hub s dříve vytvořenou identitou zařízení hello a sestav stavu připojení.
+* **ReportConnectivity**, aplikace .NET zařízení, která simuluje zařízení, která se připojuje ke službě IoT hub s dříve vytvořenou identitou zařízení a sestav stavu připojení.
 
 > [!NOTE]
-> článek Hello [SDK služby Azure IoT] [ lnk-hub-sdks] poskytuje informace o hello SDK služby Azure IoT, které můžete použít toobuild zařízení i back-end aplikace.
+> Článek [SDK služby Azure IoT] [ lnk-hub-sdks] poskytuje informace o SDK služby Azure IoT, můžete použít k tvorbě aplikací, zařízení a back-end.
 > 
 > 
 
-toocomplete tohoto kurzu potřebujete následující hello:
+K dokončení tohoto kurzu budete potřebovat následující:
 
 * Visual Studio 2015 nebo Visual Studio 2017.
 * Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet][lnk-free-trial].)
@@ -43,26 +43,26 @@ toocomplete tohoto kurzu potřebujete následující hello:
 
 [!INCLUDE [iot-hub-get-started-create-device-identity-portal](../../includes/iot-hub-get-started-create-device-identity-portal.md)]
 
-Pokud chcete identitu zařízení hello toocreate prostřednictvím kódu programu místo, najdete v hello hello odpovídající části [připojení simulovaného zařízení tooyour IoT hub pomocí rozhraní .NET] [ lnk-device-identity-csharp] článku.
+Pokud chcete vytvořit identitu zařízení programově místo, najdete v příslušné části [připojení simulovaného zařízení do služby IoT hub pomocí rozhraní .NET] [ lnk-device-identity-csharp] článku.
 
-## <a name="create-hello-service-app"></a>Vytvoření aplikace hello service
-V této části vytvoříte konzolové aplikace .NET (pomocí jazyka C#), přidá umístění metadat toohello dvojče zařízení spojené s **myDeviceId**. Následně dotazů uložená ve výběru hello zařízení nachází v hello hello IoT hub nám hello dvojčata zařízení a pak hello ta, která hlášené mobilní připojení.
+## <a name="create-the-service-app"></a>Vytvořit aplikaci aplikační služby
+V této části vytvoříte konzolové aplikace .NET (pomocí jazyka C#), přidá do dvojče zařízení přidružená metadata umístění **myDeviceId**. Následně se dotazuje dvojčata zařízení, které jsou uložené ve službě IoT hub, výběrem zařízení nachází v USA a ty, které hlášené mobilní připojení.
 
-1. V sadě Visual Studio, přidejte aktuální řešení Visual C# Windows klasický desktopový projekt toohello pomocí hello **konzolové aplikace** šablona projektu. Název projektu hello **AddTagsAndQuery**.
+1. V sadě Visual Studio přidejte k stávajícímu řešení klasický desktopový projekt Visual C# pro systém Windows pomocí šablony projektu **Konzolová aplikace**. Název projektu **AddTagsAndQuery**.
    
     ![Nový klasický desktopový projekt Visual C# pro systém Windows][img-createapp]
-1. V Průzkumníku řešení klikněte pravým tlačítkem na hello **AddTagsAndQuery** projektu a pak klikněte na tlačítko **spravovat balíčky NuGet...** .
-1. V hello **Správce balíčků NuGet** vyberte **Procházet** a vyhledejte **microsoft.azure.devices**. Vyberte **nainstalovat** tooinstall hello **Microsoft.Azure.Devices** balíček a přijměte podmínky použití hello. Tento postup stáhne, nainstaluje a přidá odkaz toohello [sady SDK služby Azure IoT] [ lnk-nuget-service-sdk] NuGet balíček a jeho závislé součásti.
+1. V Průzkumníku řešení klikněte pravým tlačítkem myši **AddTagsAndQuery** projektu a pak klikněte na tlačítko **spravovat balíčky NuGet... **.
+1. V **Správce balíčků NuGet** vyberte **Procházet** a vyhledejte **microsoft.azure.devices**. Vyberte **nainstalovat** k instalaci **Microsoft.Azure.Devices** balíček a přijměte podmínky použití. Tímto postupem se stáhne a nainstaluje [balíček NuGet sady SDK pro službu Azure IoT][lnk-nuget-service-sdk] a jeho závislosti a přidá se na něj odkaz.
    
     ![Okno Správce balíčků NuGet][img-servicenuget]
-1. Přidejte následující hello `using` příkazy hello horní části hello **Program.cs** souboru:
+1. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
    
         using Microsoft.Azure.Devices;
-1. Přidejte následující pole toohello hello **Program** třídy. Nahraďte hodnotu zástupného symbolu hello hello připojovací řetězec služby IoT Hub pro hello rozbočovače, který jste vytvořili v předchozí části hello.
+1. Do třídy **Program** přidejte následující pole. Nahraďte hodnotu zástupného symbolu připojovacím řetězcem pro službu IoT Hub, kterou jste vytvořili v předchozí části.
    
         static RegistryManager registryManager;
         static string connectionString = "{iot hub connection string}";
-1. Přidejte následující metodu toohello hello **Program** třídy:
+1. Přidejte následující metodu do třídy **Program**:
    
         public static async Task AddTagsAndQuery()
         {
@@ -87,54 +87,54 @@ V této části vytvoříte konzolové aplikace .NET (pomocí jazyka C#), přid�
             Console.WriteLine("Devices in Redmond43 using cellular network: {0}", string.Join(", ", twinsInRedmond43UsingCellular.Select(t => t.DeviceId)));
         }
    
-    Hello **RegistryManager** třída zpřístupní všechny hello metody požadované toointeract s dvojčata zařízení ze služby hello. Předchozí kód Hello nejprve inicializuje hello **registryManager** objektu, pak načte hello dvojče zařízení pro **myDeviceId**a nakonec aktualizuje jeho značky hello požadovaných informací o umístění.
+    **RegistryManager** třída poskytuje všechny metody požadované pro interakci s dvojčata zařízení ze služby. Předchozí kód nejprve inicializuje **registryManager** objekt a potom načte dvojče zařízení pro **myDeviceId**a nakonec jeho značky aktualizuje informace o požadované umístění.
    
-    Po aktualizaci, se provede dva dotazy: hello první vybere pouze dvojčata zařízení hello zařízení umístěných v hello **Redmond43** zařízení a hello druhý refines hello dotazu tooselect pouze hello zařízení, která jsou také připojené prostřednictvím mobilní síti.
+    Po aktualizaci, se provede dva dotazy: první vybere pouze dvojčata zařízení nachází v zařízení **Redmond43** závodu a druhý zpřesnění dotazu a vyberte pouze zařízení, která jsou také připojené přes mobilní síť.
    
-    Všimněte si, že předchozí kód hello při vytváření hello **dotazu** objektu, určuje maximální počet vrácených dokumentů. Hello **dotazu** objekt obsahuje **HasMoreResults** vlastnost typu boolean, které můžete použít tooinvoke hello **GetNextAsTwinAsync** metody tooretrieve více než jednou. všechny výsledky. Volána metoda **GetNextAsJson** je k dispozici pro výsledky, které není dvojčata zařízení, například výsledky dotazů agregace.
-1. Nakonec přidejte následující řádky toohello hello **hlavní** metoda:
+    Všimněte si, že předchozí kód, když vytváří **dotazu** objektu, určuje maximální počet vrácených dokumentů. **Dotazu** objekt obsahuje **HasMoreResults** vlastnost typu boolean, který můžete použít k vyvolání **GetNextAsTwinAsync** metody několikrát načíst všechny výsledky. Volána metoda **GetNextAsJson** je k dispozici pro výsledky, které není dvojčata zařízení, například výsledky dotazů agregace.
+1. Nakonec do metody **Main** přidejte následující řádky:
    
         registryManager = RegistryManager.CreateFromConnectionString(connectionString);
         AddTagsAndQuery().Wait();
-        Console.WriteLine("Press Enter tooexit.");
+        Console.WriteLine("Press Enter to exit.");
         Console.ReadLine();
 
-1. V Průzkumníku řešení hello, otevřete hello **nastavit projekty po spuštění...**  a ujistěte se, zda text hello **akce** pro **AddTagsAndQuery** je projekt **spustit**. Vytvoření řešení hello.
-1. Tuto aplikaci spustit kliknutím pravým tlačítkem na hello **AddTagsAndQuery** projekt a výběrem **ladění**, za nímž následují **spustit novou instanci**. Měli byste vidět jeden zařízení ve výsledcích hello hello dotazu žádostí pro všechna zařízení umístěné v **Redmond43** a jeden pro hello dotaz, který omezuje hello výsledků toodevices, použít mobilní síti.
+1. V Průzkumníku řešení otevřete **nastavit projekty po spuštění... ** a zajistěte, aby **akce** pro **AddTagsAndQuery** je projekt **spustit**. Sestavte řešení.
+1. Kliknutím pravým tlačítkem na spuštění této aplikace **AddTagsAndQuery** projekt a výběrem **ladění**, za nímž následují **spustit novou instanci**. Měli byste vidět jedno zařízení ve výsledcích pro dotaz s dotazem pro všechna zařízení umístěné v **Redmond43** a jeden pro dotaz, který omezuje výsledky na zařízení, která používají mobilní síti.
    
     ![Výsledky dotazu v okně][img-addtagapp]
 
-V další části hello můžete vytvořit aplikaci zařízení, která hlásí informace o připojení k hello a změny hello výsledek dotazu hello v předchozí části hello.
+V další části můžete vytvořit aplikaci zařízení, která hlásí informace o připojení a změní výsledek dotazu v předchozí části.
 
-## <a name="create-hello-device-app"></a>Vytvoření aplikace hello zařízení
-V této části vytvoříte konzolovou aplikaci .NET, která připojí tooyour hub jako **myDeviceId**a pak aktualizuje jeho informace hello hlášené vlastnosti toocontain že je připojený používá mobilní síť.
+## <a name="create-the-device-app"></a>Vytvoření aplikace pro zařízení
+V této části vytvoříte konzolovou aplikaci .NET, která se připojuje k vaší hub jako **myDeviceId**a pak aktualizuje jeho hlášené vlastnosti tak, aby obsahovala informace, že je připojený pomocí mobilní síti.
 
-1. V sadě Visual Studio, přidejte aktuální řešení Visual C# Windows klasický desktopový projekt toohello pomocí hello **konzolové aplikace** šablona projektu. Název projektu hello **ReportConnectivity**.
+1. V sadě Visual Studio přidejte k stávajícímu řešení klasický desktopový projekt Visual C# pro systém Windows pomocí šablony projektu **Konzolová aplikace**. Název projektu **ReportConnectivity**.
    
     ![Novou aplikaci Visual C# klasické zařízení][img-createdeviceapp]
     
-1. V Průzkumníku řešení klikněte pravým tlačítkem na hello **ReportConnectivity** projektu a pak klikněte na tlačítko **spravovat balíčky NuGet...** .
-1. V hello **Správce balíčků NuGet** vyberte **Procházet** a vyhledejte **microsoft.azure.devices.client**. Vyberte **nainstalovat** tooinstall hello **Microsoft.Azure.Devices.Client** balíček a přijměte podmínky použití hello. Tento postup stáhne, nainstaluje a přidá odkaz toohello [zařízení Azure IoT SDK] [ lnk-nuget-client-sdk] NuGet balíček a jeho závislé součásti.
+1. V Průzkumníku řešení klikněte pravým tlačítkem myši **ReportConnectivity** projektu a pak klikněte na tlačítko **spravovat balíčky NuGet... **.
+1. V **Správce balíčků NuGet** vyberte **Procházet** a vyhledejte **microsoft.azure.devices.client**. Vyberte **nainstalovat** k instalaci **Microsoft.Azure.Devices.Client** balíček a přijměte podmínky použití. Tento postup stáhne, nainstaluje a přidá odkaz na [zařízení Azure IoT SDK] [ lnk-nuget-client-sdk] NuGet balíček a jeho závislé součásti.
    
     ![Správce balíčků NuGet okno klientské aplikace][img-clientnuget]
-1. Přidejte následující hello `using` příkazy hello horní části hello **Program.cs** souboru:
+1. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
    
         using Microsoft.Azure.Devices.Client;
         using Microsoft.Azure.Devices.Shared;
         using Newtonsoft.Json;
 
-1. Přidejte následující pole toohello hello **Program** třídy. Nahraďte hodnotu zástupného symbolu hello hello zařízení připojovací řetězec, který jste si poznamenali v předchozím oddílu hello.
+1. Do třídy **Program** přidejte následující pole. Nahraďte hodnotu zástupného symbolu připojovacím řetězcem zařízení, kterou jste si poznamenali v předchozím oddílu.
    
         static string DeviceConnectionString = "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
         static DeviceClient Client = null;
 
-1. Přidejte následující metodu toohello hello **Program** třídy:
+1. Přidejte následující metodu do třídy **Program**:
 
        public static async void InitClient()
         {
             try
             {
-                Console.WriteLine("Connecting toohub");
+                Console.WriteLine("Connecting to hub");
                 Client = DeviceClient.CreateFromConnectionString(DeviceConnectionString, TransportType.Mqtt);
                 Console.WriteLine("Retrieving twin");
                 await Client.GetTwinAsync();
@@ -146,9 +146,9 @@ V této části vytvoříte konzolovou aplikaci .NET, která připojí tooyour h
             }
         }
 
-    Hello **klienta** objekt poskytuje všechny metody hello vyžadují toointeract s dvojčata zařízení z hello zařízení. Hello výše, uvedeném kódu inicializuje hello **klienta** objektu a potom načte hello dvojče zařízení pro **myDeviceId**.
+    **Klienta** objekt poskytuje všechny metody vyžadovat interakci s dvojčata zařízení ze zařízení. Inicializuje výše uvedeném kódu **klienta** objektu a potom načte dvojče zařízení pro **myDeviceId**.
 
-1. Přidejte následující metodu toohello hello **Program** třídy:
+1. Přidejte následující metodu do třídy **Program**:
    
         public static async void ReportConnectivity()
         {
@@ -170,9 +170,9 @@ V této části vytvoříte konzolovou aplikaci .NET, která připojí tooyour h
             }
         }
 
-   Hello kód výše aktualizace **myDeviceId**je hlášené vlastnost s informace o připojení k hello.
+   Kód výše aktualizace **myDeviceId**je hlášené vlastnost s informacemi o připojení.
 
-1. Nakonec přidejte následující řádky toohello hello **hlavní** metoda:
+1. Nakonec do metody **Main** přidejte následující řádky:
    
        try
        {
@@ -184,27 +184,27 @@ V této části vytvoříte konzolovou aplikaci .NET, která připojí tooyour h
             Console.WriteLine();
             Console.WriteLine("Error in sample: {0}", ex.Message);
        }
-       Console.WriteLine("Press Enter tooexit.");
+       Console.WriteLine("Press Enter to exit.");
        Console.ReadLine();
 
-1. V Průzkumníku řešení hello, otevřete hello **nastavit projekty po spuštění...**  a ujistěte se, zda text hello **akce** pro **ReportConnectivity** je projekt **spustit**. Vytvoření řešení hello.
-1. Tuto aplikaci spustit kliknutím pravým tlačítkem na hello **ReportConnectivity** projekt a výběrem **ladění**, za nímž následují **spustit novou instanci**. Měli vidět, získávání hello twin informace a pak odešle připojení jako *hlášené vlastnost*.
+1. V Průzkumníku řešení otevřete **nastavit projekty po spuštění... ** a zajistěte, aby **akce** pro **ReportConnectivity** je projekt **spustit**. Sestavte řešení.
+1. Kliknutím pravým tlačítkem na spuštění této aplikace **ReportConnectivity** projekt a výběrem **ladění**, za nímž následují **spustit novou instanci**. Měli vidět, získávání informací o dvojici a pak odešle připojení jako *hlášené vlastnost*.
    
-    ![Spustit připojení tooreport aplikace zařízení][img-rundeviceapp]
+    ![Spuštění aplikace zařízení pro připojení k sestavě][img-rundeviceapp]
     
     
-1. Teď, když hello zařízení hlásí informace o jeho připojení k, mělo by se zobrazit v obou dotazy. Spuštění rozhraní .NET hello **AddTagsAndQuery** hello toorun aplikace dotazuje znovu. Tentokrát **myDeviceId** by se měla objevit v obou výsledky dotazu.
+1. Teď, když je zařízení hlášené jeho informace o připojení k se má zobrazit v obou dotazy. Spustit .NET **AddTagsAndQuery** aplikaci znovu spustit dotazy. Tentokrát **myDeviceId** by se měla objevit v obou výsledky dotazu.
    
     ![Připojení zařízení úspěšně hlášené][img-tagappsuccess]
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste nakonfigurovali novou službu IoT hub v hello portál Azure a poté jste vytvořili identitu zařízení v registru identit služby IoT hub hello. Přidat zařízení metadat jako značky z back-end aplikace a napsali informace připojení k zařízení simulovaného zařízení aplikaci tooreport v dvojče zařízení hello. Také jste se naučili jak tooquery tyto informace pomocí dotazovacího jazyka pro hello SQL jako IoT Hub.
+V tomto kurzu jste nakonfigurovali novou službu IoT Hub na webu Azure Portal a potom jste vytvořili identitu zařízení v registru identit ve službě IoT Hub. Přidat zařízení metadat jako značky z back-end aplikace a zapsal aplikace simulovaného zařízení do sestavy informace o připojení k zařízení v dvojče zařízení. Také jste zjistili, jak dotazovat tyto informace pomocí dotazu jazyka SQL jako IoT Hub.
 
-Použití hello následující toolearn prostředky jak pro:
+Použijte v následujících zdrojích informací další postup:
 
-* odesílat telemetrická data ze zařízení s hello [Začínáme se službou IoT Hub] [ lnk-iothub-getstarted] kurzu
-* Konfigurace zařízení požadované vlastnosti dvojče zařízení pomocí hello [použití požadovaného vlastnosti tooconfigure zařízení] [ lnk-twin-how-to-configure] kurzu
-* kontroly nad zařízeními interaktivně (například zapnutí ventilátor z aplikace řízené uživatele) s hello [použít přímé metody] [ lnk-methods-tutorial] kurzu.
+* odesílat telemetrická data ze zařízení pomocí [Začínáme se službou IoT Hub] [ lnk-iothub-getstarted] kurzu
+* Konfigurace zařízení pomocí dvojče zařízení požadované vlastnosti s [použití požadovaného vlastnosti pro konfiguraci zařízení] [ lnk-twin-how-to-configure] kurzu
+* s kontroly nad zařízeními interaktivně (například zapnutí ventilátor z aplikace řízené uživatele) [použít přímé metody] [ lnk-methods-tutorial] kurzu.
 
 <!-- images -->
 [img-servicenuget]: media/iot-hub-csharp-csharp-twin-getstarted/servicesdknuget.png

@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate Docker hostuje v Azure pomocí Docker počítače | Microsoft Docs"
-description: "Popisuje využívání hostitelů docker toocreate Docker počítače v Azure."
+title: "Vytvořte hostitelů Docker v Azure s počítačem Docker | Microsoft Docs"
+description: "Popisuje použití Docker počítač pro vytvoření hostitelů docker v Azure."
 services: azure-container-service
 documentationcenter: na
 author: mlearned
@@ -14,50 +14,50 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2016
 ms.author: mlearned
-ms.openlocfilehash: fbf67e8189bbf33f874c4a9b619a931f28ccee12
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 766d327a87ed13e04166d71c3d9ae0a1e7a66d19
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-docker-hosts-in-azure-with-docker-machine"></a>Vytvoření hostitelů s Dockerem v Azure pomocí Docker-Machine
-Spuštění [Docker](https://www.docker.com/) kontejnery vyžaduje hostitele virtuálních počítačů spuštěných hello docker démon.
-Toto téma popisuje, jak toouse hello [počítač docker](https://docs.docker.com/machine/) příkaz toocreate nové virtuální počítače s Linuxem, nakonfigurovaný s hello Docker démona, běží v Azure. 
+Spuštění [Docker](https://www.docker.com/) kontejnery vyžaduje hostitele démona docker virtuálního počítače.
+Toto téma popisuje postup použití [počítač docker](https://docs.docker.com/machine/) příkaz pro vytvoření nové virtuální počítače Linux nakonfigurované démona Docker, běží v Azure. 
 
 **Poznámka:** 
 
 * *Tento článek závisí na verzi počítač docker 0.9.0-rc2 nebo větší*
-* *Kontejnery Windows budou podporovány prostřednictvím docker počítače v blízké budoucnosti hello*
+* *Kontejnery Windows budou podporovány prostřednictvím docker počítače v blízké budoucnosti*
 
 ## <a name="create-vms-with-docker-machine"></a>Vytvořit virtuální počítače s počítačem Docker
-Vytvořte docker hostitele virtuálních počítačů v Azure s hello `docker-machine create` příkaz pomocí hello `azure` ovladačů. 
+Vytvoření docker hostitele virtuálních počítačů v Azure pomocí `docker-machine create` příkaz pomocí `azure` ovladačů. 
 
-Hello ovladač Azure vyžaduje ID vašeho předplatného. Můžete použít hello [rozhraní příkazového řádku Azure](cli-install-nodejs.md) nebo hello [portálu Azure](https://portal.azure.com) tooretrieve předplatného Azure. 
+Ovladač Azure vyžaduje ID vašeho předplatného. Můžete použít [rozhraní příkazového řádku Azure](cli-install-nodejs.md) nebo [portálu Azure](https://portal.azure.com) načíst vaše předplatné Azure. 
 
-**Pomocí hello portálu Azure**
+**Pomocí portálu Azure**
 
-* Vyberte **odběry** z hello levé navigační stránku a zkopírujte hello id předplatného.
+* Vyberte **odběry** z levé navigační stránce a zkopírujte id předplatného.
 
-**Pomocí hello rozhraní příkazového řádku Azure**
+**Pomocí Azure CLI**
 
-* Typ ```azure account list``` a id předplatného hello kopírování.
+* Typ ```azure account list``` a zkopírujte id předplatného.
 
-Typ `docker-machine create --driver azure` toosee hello možnosti a jejich výchozí hodnoty.
-Můžete také zjistit hello [dokumentace Azure ovladač Docker](https://docs.docker.com/machine/drivers/azure/) Další informace. 
+Typ `docker-machine create --driver azure` zobrazíte možnosti a jejich výchozí hodnoty.
+Můžete také zjistit [dokumentace Azure ovladač Docker](https://docs.docker.com/machine/drivers/azure/) Další informace. 
 
-Hello následující příklad závisí na hello [výchozí hodnoty](https://github.com/docker/machine/blob/master/drivers/azure/azure.go#L22), ale můžete nastavit tyto hodnoty: 
+Následující příklad závisí na [výchozí hodnoty](https://github.com/docker/machine/blob/master/drivers/azure/azure.go#L22), ale můžete nastavit tyto hodnoty: 
 
-* Azure dns pro název hello spojený s veřejnou IP adresu hello a certifikáty generované. Toto je název DNS hello virtuálního počítače. Hello virtuálních počítačů můžete pak bezpečně zastavit, vydání hello dynamické IP a poskytnout možnost tooreconnect hello po hello virtuální počítač spustí znovu s novou IP Adresou. Předpona názvu Hello musí být jedinečný pro danou oblast UNIQUE_DNSNAME_PREFIX.westus.cloudapp.azure.com.
-* Otevřete port 80 na hello virtuálních počítačů pro odchozí přístup k Internetu
-* velikost hello úložiště premium rychlejší tooutilize virtuálního počítače
-* použít pro disk hello virtuálních počítačů služby storage úrovně Premium
+* Azure dns pro název spojený s veřejnou IP adresu a certifikáty generované. Toto je název DNS virtuálního počítače. Virtuální počítač může potom bezpečně zastavit, verzi dynamické IP a umožňují znovu připojit po virtuální počítač spustí znovu s novou IP Adresou. Předpona názvu musí být jedinečný pro danou oblast UNIQUE_DNSNAME_PREFIX.westus.cloudapp.azure.com.
+* Otevřete port 80 pro virtuální počítač pro odchozí přístup k Internetu
+* velikost virtuálního počítače, který využívají rychlejší storage úrovně premium
+* použít pro disk virtuálního počítače služby storage úrovně Premium
 
 ```
 docker-machine create -d azure --azure-subscription-id <Your AZURE_SUBSCRIPTION_ID> --azure-dns <Your UNIQUE_DNSNAME_PREFIX> --azure-open-port 80 --azure-size Standard_DS1_v2 --azure-storage-type "Premium_LRS" mydockerhost 
 ```
 
 ## <a name="choose-a-docker-host-with-docker-machine"></a>Zvolit hostitele s docker počítač docker
-Až budete mít záznam v docker počítače pro hostitele, můžete nastavit výchozí hostitel hello při spouštění příkazů docker.
+Jakmile máte položku v docker počítače pro hostitele, můžete nastavit výchozí hostitel při spuštění docker příkazů.
 
 ## <a name="using-powershell"></a>Pomocí prostředí PowerShell
 ```powershell
@@ -69,7 +69,7 @@ docker-machine env MyDockerHost | Invoke-Expression
 eval $(docker-machine env MyDockerHost)
 ```
 
-Teď můžete spustit příkazy docker proti hello zadaného hostitele
+Teď můžete spustit příkazy docker proti zadaného hostitele
 
 ```
 docker ps
@@ -77,17 +77,17 @@ docker info
 ```
 
 ## <a name="run-a-container"></a>Spusťte kontejner
-Pomocí konfigurovaného hostitele teď můžete spustit jednoduchého webového serveru tootest zda váš hostitel byla nakonfigurována správně.
-Zde jsme použít bitovou kopii standardní nginx, zadejte, že musí naslouchat na portu 80, že pokud se restartuje hello hostitele virtuálních počítačů, hello kontejneru se restartování a také (`--restart=always`). 
+Pomocí konfigurovaného hostitele teď můžete spustit jednoduchý webový server k ověření, zda váš hostitel byla nakonfigurována správně.
+Zde jsme použít bitovou kopii standardní nginx, zadejte, že musí naslouchat na portu 80, že pokud se hostitel virtuálních počítačů restartuje, kontejneru se restartování a také (`--restart=always`). 
 
 ```bash
 docker run -d -p 80:80 --restart=always nginx
 ```
 
-výstup Hello by měl vypadat podobně jako následující hello:
+Výstup by měl vypadat přibližně takto:
 
 ```
-Unable toofind image 'nginx:latest' locally
+Unable to find image 'nginx:latest' locally
 latest: Pulling from library/nginx
 efd26ecc9548: Pull complete
 a3ed95caeb02: Pull complete
@@ -98,7 +98,7 @@ Status: Downloaded newer image for nginx:latest
 25942c35d86fe43c688d0c03ad478f14cc9c16913b0e1c2971cb32eb4d0ab721
 ```
 
-## <a name="test-hello-container"></a>Kontejner testů hello
+## <a name="test-the-container"></a>Test kontejneru
 Zkontrolujte spuštěných kontejnerů pomocí `docker ps`:
 
 ```bash
@@ -106,7 +106,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 d5b78f27b335        nginx               "nginx -g 'daemon off"   5 minutes ago       Up 5 minutes        0.0.0.0:80->80/tcp, 443/tcp   goofy_mahavira
 ```
 
-A toosee hello systémem kontejneru, typu `docker-machine ip <VM name>` toofind hello IP adresu tooenter v prohlížeči hello:
+A pokud chcete zobrazit spuštěné kontejneru, zadejte `docker-machine ip <VM name>` najít IP adresu, kterou zadat do prohlížeče:
 
 ```
 PS C:\> docker-machine ip MyDockerHost
@@ -117,7 +117,7 @@ PS C:\> docker-machine ip MyDockerHost
 
 ## <a name="summary"></a>Souhrn
 Pomocí docker počítače můžete snadno zřídit hostitelů docker v Azure pro vaše jednotlivé docker hostitele ověření.
-Produkční hostování kontejnerů, najdete v části hello [Azure Container Service](http://aka.ms/AzureContainerService)
+Pro produkční prostředí hostování kontejnerů, najdete v článku [Azure Container Service](http://aka.ms/AzureContainerService)
 
-toodevelop aplikace .NET Core pomocí sady Visual Studio, najdete v části [Docker Tools pro Visual Studio](http://aka.ms/DockerToolsForVS)
+K vývoji aplikací .NET Core pomocí sady Visual Studio, najdete v části [Docker Tools pro Visual Studio](http://aka.ms/DockerToolsForVS)
 

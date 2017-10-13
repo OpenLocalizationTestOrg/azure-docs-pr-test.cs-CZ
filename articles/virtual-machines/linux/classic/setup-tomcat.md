@@ -1,6 +1,6 @@
 ---
-title: "aaaSet až Apache Tomcat na virtuální počítač s Linuxem | Microsoft Docs"
-description: "Zjistěte, jak tooset až Apache Tomcat7 pomocí virtuální počítače Azure s Linuxem."
+title: "Nastavit Apache Tomcat na virtuální počítač s Linuxem | Microsoft Docs"
+description: "Zjistěte, jak nastavit Apache Tomcat7 pomocí virtuální počítače Azure s Linuxem."
 services: virtual-machines-linux
 documentationcenter: 
 author: NingKuang
@@ -15,27 +15,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
-ms.openlocfilehash: b837a73e91fcb25d5459d993a0e93ceef1a1fc8b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: fa30c78a5a5d458ba8845c3c10b87538427786c9
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>Nastavit Tomcat7 na virtuální počítač s Linuxem v Azure
-Apache Tomcat (nebo jednoduše Tomcat, také dříve se označovaly jako Jakarta Tomcat) je webový server s otevřeným zdrojem a kontejner servlet vyvinuté hello Apache Software Foundation (amp). Tomcat implementuje hello Java Servlet a specifikace hello JavaServer stránky (JSP) z Sun Microsystems. Tomcat poskytuje čistý Java HTTP prostředí webového serveru v které toorun kódu v jazyce Java. V nejjednodušší konfiguraci hello Tomcat běží v procesu jednoho operačního systému. Tento proces se spustí nástroje Java virtual machine (JVM). Každý požadavek HTTP z prohlížeče tooTomcat zpracovávány jako samostatné vláken v procesu Tomcat hello.  
+Apache Tomcat (nebo jednoduše Tomcat, také dříve se označovaly jako Jakarta Tomcat) je webový server s otevřeným zdrojem a kontejner servlet vyvinuté pomocí softwaru Foundation Apache (amp). Tomcat implementuje Java Servlet a specifikace JavaServer stránky (JSP) z Sun Microsystems. Tomcat poskytuje čistý Java HTTP prostředí webového serveru ke spouštění kódu v jazyce Java. V nejjednodušší konfiguraci Tomcat běží v procesu jednoho operačního systému. Tento proces se spustí nástroje Java virtual machine (JVM). Každý požadavek HTTP z prohlížeče do Tomcat zpracovávány jako samostatné vláken v procesu Tomcat.  
 
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Azure Resource Manager a klasický](../../../resource-manager-deployment-model.md). Tento článek popisuje, jak toouse hello modelu nasazení classic. Doporučujeme vám, že většina nových nasazení používala model Resource Manager hello. toouse toodeploy správce prostředků šablony virtuálního počítače s Ubuntu s otevřete JDK a Tomcat, najdete v části [v tomto článku](https://azure.microsoft.com/documentation/templates/openjdk-tomcat-ubuntu-vm/).
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Azure Resource Manager a klasický](../../../resource-manager-deployment-model.md). Tento článek popisuje postup použití modelu nasazení classic. Doporučujeme vám, že většina nových nasazení používala model Resource Manager. Použití šablony Resource Manageru k nasazení virtuálního počítače s Ubuntu s otevřete JDK a Tomcat, najdete v části [v tomto článku](https://azure.microsoft.com/documentation/templates/openjdk-tomcat-ubuntu-vm/).
 
 V tomto článku bude instalace Tomcat7 na bitovou kopii systému Linux a nasadit v Azure.  
 
 Co se dozvíte:  
 
-* Jak toocreate virtuálního počítače v Azure.
-* Jak tooprepare hello virtuálního počítače pro Tomcat7.
-* Jak tooinstall Tomcat7.
+* Postup vytvoření virtuálního počítače v Azure.
+* Postup přípravy Tomcat7 virtuálního počítače.
+* Postup instalace Tomcat7.
 
-Předpokládá se, že už máte předplatné Azure.  Pokud není, můžete si zaregistrovat bezplatnou zkušební verzi na [hello webu Azure](https://azure.microsoft.com/). Pokud máte předplatné MSDN, najdete v části [Microsoft Azure speciální ceny: MSDN, MPN a výhody BizSpark](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/?c=14-39). toolearn Další informace o Azure, najdete v části [co je Azure?](https://azure.microsoft.com/overview/what-is-azure/).
+Předpokládá se, že už máte předplatné Azure.  Pokud není, můžete si zaregistrovat bezplatnou zkušební verzi na [webu Azure](https://azure.microsoft.com/). Pokud máte předplatné MSDN, najdete v části [Microsoft Azure speciální ceny: MSDN, MPN a výhody BizSpark](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/?c=14-39). Další informace o Azure najdete v tématu [co je Azure?](https://azure.microsoft.com/overview/what-is-azure/).
 
 Tento článek předpokládá, že máte základní znalosti práce Tomcat a Linux.  
 
@@ -45,220 +45,220 @@ V této fázi vytvoříte virtuální počítač pomocí bitové kopie systému 
 ### <a name="step-1-generate-an-ssh-authentication-key"></a>Krok 1: Generovat ověřovací klíč SSH
 SSH je důležité nástroj pro správce systému. Však není doporučeno konfigurace zabezpečení přístupu na základě určit lidské hesla. Uživatelé se zlými úmysly může rozdělit na váš systém podle uživatelského jména a vytváření silných hesel.
 
-Dobrá zpráva Hello je způsob tooleave vzdáleného přístupu otevřete a nestarat se o hesla. Tato metoda se skládá z ověřování s asymetrické šifrování. Hello soukromého klíče uživatele je hello ten, který uděluje hello ověřování. Můžete dokonce uzamknout hello uživatelský účet toonot povolit ověřování hesla.
+Dobrá zpráva je, že je způsob, jak nechte vzdálený přístup otevřené a nestarat se o hesla. Tato metoda se skládá z ověřování s asymetrické šifrování. Privátní klíč uživatele je ten, který uděluje ověřování. Můžete dokonce uzamčení uživatelského účtu nepovolíte ověřování hesla.
 
-Další výhodou této metody je nepotřebujete toosign různá hesla v toodifferent servery. Můžete ověřovat pomocí hello osobní privátní klíče ve všech serverech, což zabraňuje s tooremember několik hesel.
+Další výhodou této metody je nepotřebujete různá hesla k přihlášení na jiné servery. Můžete ověřovat pomocí osobní privátní klíče ve všech serverech, což zabraňuje si museli pamatovat více hesel.
 
 
 
-Postupujte podle těchto kroků toogenerate hello SSH ověřovací klíč.
+Postupujte podle těchto kroků generovat ověřovací klíč SSH.
 
-1. Stáhněte a nainstalujte PuTTYgen z hello následující umístění: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+1. Stáhněte a nainstalujte PuTTYgen z následujícího umístění: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
 2. Spusťte Puttygen.exe.
-3. Klikněte na tlačítko **generování** toogenerate hello klíče. V procesu hello můžete zvýšit náhodnost tím přesunutí myši hello přes hello prázdné místo v okně hello.  
-   ![PuTTY snímek obrazovky generátor klíč, který ukazuje hello nového klíče tlačítko Generovat][1]
-4. Po hello generovat proces, Puttygen.exe se zobrazí nový veřejný klíč.  
-   ![PuTTY snímek obrazovky generátor klíč, který ukazuje hello nový veřejný klíč a hello uložení privátního klíče tlačítko][2]
-5. Vyberte a zkopírujte hello veřejný klíč a uložit ho do souboru s názvem publicKey.pem. Nemáte klikněte na tlačítko **uložit veřejný klíč**, protože se liší od hello veřejný klíč chceme hello uloženého formátu souboru veřejného klíče.
+3. Klikněte na tlačítko **generování** ke generování klíče. V procesu můžete zvýšit náhodnost přesunutím myši nad prázdné místo v okně.  
+   ![PuTTY snímek obrazovky generátor klíč, který ukazuje tlačítko vygenerovat nový klíč][1]
+4. Po dokončení procesu generování Puttygen.exe zobrazí nový veřejný klíč.  
+   ![PuTTY snímek obrazovky generátor klíč, který ukazuje nový veřejný klíč a uložení privátního klíče tlačítko][2]
+5. Vyberte a zkopírujte veřejný klíč a uložit ho do souboru s názvem publicKey.pem. Nemáte klikněte na tlačítko **uložit veřejný klíč**, protože formát souboru uložené veřejný klíč se liší od chceme veřejný klíč.
 6. Klikněte na tlačítko **uložit privátní klíč**a uložte ho do souboru s názvem privateKey.ppk.
 
-### <a name="step-2-create-hello-image-in-hello-azure-portal"></a>Krok 2: Vytvoření bitové kopie hello v hello portálu Azure
-1. V hello [portál](https://portal.azure.com/), klikněte na tlačítko **nový** v hello úlohy panelu toocreate bitovou kopii. Potom vyberte image hello Linux, která je založena na vašich potřebách. Hello následující příklad používá image Ubuntu 14.04 hello.
-![Snímek obrazovky hello portál, který se zobrazí tlačítko Nový hello][3]
+### <a name="step-2-create-the-image-in-the-azure-portal"></a>Krok 2: Vytvoření bitové kopie na portálu Azure
+1. V [portál](https://portal.azure.com/), klikněte na tlačítko **nový** na hlavním panelu na vytvoření bitové kopie. Zvolte Linux bitovou kopii, která je založena na vašich potřebách. Následující příklad používá bitovou kopii Ubuntu 14.04.
+![Snímek obrazovky portálu, který ukazuje tlačítka Nová][3]
 
-2. Pro **název hostitele**, zadejte název hello hello adresu URL, které a internetové klienty použijete tooaccess tohoto virtuálního počítače. Definujte hello poslední část hello název DNS, například tomcatdemo. Azure pak vygeneruje adresu URL hello jako tomcatdemo.cloudapp.net.  
+2. Pro **název hostitele**, zadejte název pro adresu URL, kterou jste a internetové klienty se bude používat pro přístup k tomuto virtuálnímu počítači. Zadejte poslední část názvu DNS, například tomcatdemo. Azure pak vygeneruje adresu URL jako tomcatdemo.cloudapp.net.  
 
-3. Pro **SSH ověřovací klíč**, zkopírujte hodnotu klíče hello z hello publicKey.pem souboru, který obsahuje veřejný klíč hello generované PuTTYgen.  
-![Ověřovací klíč SSH pole hello portálu][4]
+3. Pro **SSH ověřovací klíč**, zkopírujte hodnotu klíče ze souboru publicKey.pem, který obsahuje veřejný klíč generované PuTTYgen.  
+![Pole ověřovací klíč SSH na portálu][4]
 
 4. Podle potřeby nakonfigurujte další nastavení a potom klikněte na **vytvořit**.  
 
 ## <a name="phase-2-prepare-your-virtual-machine-for-tomcat7"></a>Fáze 2: Příprava virtuálního počítače pro Tomcat7
-V této fázi konfigurace koncového bodu pro provoz Tomcat a potom se připojte tooyour nového virtuálního počítače.
+V této fázi konfigurace koncového bodu pro provoz Tomcat a potom se připojte k nového virtuálního počítače.
 
-### <a name="step-1-open-hello-http-port-tooallow-web-access"></a>Krok 1: Otevřete hello HTTP port tooallow webový přístup
-Protokol TCP nebo UDP, společně s veřejné a privátní port obsahovat koncové body v Azure. Hello privátní port je port hello, služba hello naslouchá tooon hello virtuálního počítače. Hello veřejný port je port hello hello cloudové služby Azure naslouchá tooexternally pro příchozí, internetový provoz.  
+### <a name="step-1-open-the-http-port-to-allow-web-access"></a>Krok 1: Otevřete port HTTP pro povolení webového přístupu
+Protokol TCP nebo UDP, společně s veřejné a privátní port obsahovat koncové body v Azure. Privátní port je port, který služba naslouchá na virtuálním počítači. Veřejný port je port, který cloudovou službu systému Azure naslouchá externě pro příchozí internetového provozu.  
 
-TCP port 8080 je hello výchozí číslo portu, Tomcat používá toolisten. Tento port se při otevření s koncový bod Azure, můžete a dalších internetoví klienti mohou přistupovat Tomcat stránky.  
+TCP port 8080 je výchozí číslo portu, který Tomcat používá k naslouchání. Tento port se při otevření s koncový bod Azure, můžete a dalších internetoví klienti mohou přistupovat Tomcat stránky.  
 
-1. Hello portálu, klikněte na tlačítko **Procházet** > **virtuální počítače**a potom klikněte na hello virtuální počítač, který jste vytvořili.  
-   ![Snímek obrazovky directory hello virtuální počítače][5]
-2. tooadd koncový bod tooyour virtuální počítač, klikněte na tlačítko hello **koncové body** pole.
-   ![Snímek obrazovky zobrazující hello koncové body pole][6]
+1. Na portálu, klikněte na tlačítko **Procházet** > **virtuální počítače**a potom klikněte na virtuální počítač, který jste vytvořili.  
+   ![Snímek obrazovky adresáři virtuální počítače][5]
+2. Chcete-li přidat koncový bod virtuálního počítače, klikněte na tlačítko **koncové body** pole.
+   ![Snímek obrazovky zobrazující pole koncových bodů][6]
 3. Klikněte na tlačítko **Přidat**.  
 
-   1. Pro koncový bod hello, zadejte název pro koncový bod hello v **koncový bod**a pak zadejte 80 v **veřejný Port**.  
+   1. Pro koncový bod, zadejte název koncového bodu v **koncový bod**a pak zadejte 80 v **veřejný Port**.  
 
-      Pokud je nastavena too80, nepotřebujete číslo portu hello tooinclude hello adresu URL, která je použité tooaccess Tomcat. Například http://tomcatdemo.cloudapp.net.    
+      Pokud je nastavena na 80, nemusíte zahrnovat číslo portu v adrese URL, který se používá pro přístup k Tomcat. Například http://tomcatdemo.cloudapp.net.    
 
-      Pokud je nastavena hodnota tooanother, jako je například 81, je nutné tooadd hello port číslo toohello URL tooaccess Tomcat. Například http://tomcatdemo.cloudapp.net:81 /.
-   2. Zadejte 8080 v **privátní Port**. Ve výchozím nastavení Tomcat naslouchá na portu TCP 8080. Pokud jste změnili hello výchozí naslouchání portu Tomcat, by měl aktualizovat **privátní Port** toobe hello stejná hodnota jako hello port pro naslouchání Tomcat.  
+      Pokud je nastavena na jinou hodnotu, jako je například 81, budete muset přidat číslo portu na adresu URL pro přístup k Tomcat. Například http://tomcatdemo.cloudapp.net:81 /.
+   2. Zadejte 8080 v **privátní Port**. Ve výchozím nastavení Tomcat naslouchá na portu TCP 8080. Pokud jste změnili výchozí naslouchání portu Tomcat, by měl aktualizovat **privátní Port** být stejné jako Tomcat port pro naslouchání.  
       ![Snímek obrazovky z uživatelské rozhraní, které se zobrazuje příkaz přidat, veřejný Port a privátní Port][7]
-4. Klikněte na tlačítko **OK** tooadd hello koncový bod tooyour virtuálního počítače.
+4. Klikněte na tlačítko **OK** přidat koncový bod k virtuálnímu počítači.
 
-### <a name="step-2-connect-toohello-image-you-created"></a>Krok 2: Připojení toohello bitovou kopii, kterou jste vytvořili
-Můžete použít jakéhokoli SSH nástroj tooconnect tooyour virtuálního počítače. V tomto příkladu používáme PuTTY.  
+### <a name="step-2-connect-to-the-image-you-created"></a>Krok 2: Připojení na bitovou kopii, kterou jste vytvořili
+Můžete vybrat jakýkoli SSH nástroj pro připojení k virtuálnímu počítači. V tomto příkladu používáme PuTTY.  
 
-1. Získání názvu DNS hello virtuálního počítače z portálu hello.
+1. Získáte název DNS virtuálního počítače z portálu.
     1. Klikněte na tlačítko **Procházet** > **virtuální počítače**.
-    2. Vyberte hello název virtuálního počítače a pak klikněte na tlačítko **vlastnosti**.
-    3. V hello **vlastnosti** dlaždici, podívejte se v hello **název domény** název DNS hello tooget pole.  
+    2. Vyberte název virtuálního počítače a pak klikněte na tlačítko **vlastnosti**.
+    3. V **vlastnosti** dlaždici, podívejte se **název domény** pole získat název DNS.  
 
-2. Získat hello číslo portu pro připojení SSH z hello **SSH** pole.  
-![Snímek obrazovky, který zobrazuje číslo portu pro připojení SSH hello][8]
+2. Získat číslo portu pro SSH připojení z **SSH** pole.  
+![Snímek obrazovky, který se zobrazuje číslo portu SSH připojení][8]
 
 3. Stáhněte si [PuTTY](http://www.putty.org/).  
 
-4. Po stažení, klikněte na spustitelný soubor hello Putty.exe. V PuTTY konfiguraci konfigurovat základní možnosti hello hello názvem hostitele a portu číslo, které se získávají z hello vlastnosti virtuálního počítače.   
-![Snímek obrazovky, který ukazuje možnosti název a port hostitele PuTTY konfigurace hello][9]
+4. Po stažení, klikněte na spustitelný soubor Putty.exe. V konfiguraci PuTTY nakonfigurujte základní možnosti s názvem hostitele a portu číslo, které se získávají z vlastností virtuálního počítače.   
+![Snímek obrazovky, který ukazuje možnosti název a port hostitele PuTTY konfigurace][9]
 
-5. V levém podokně hello, klikněte na **připojení** > **SSH** > **Auth**a potom klikněte na **Procházet** toospecify Hello umístění souboru privateKey.ppk hello. Hello privateKey.ppk soubor obsahuje hello privátní klíč, který je generovaný PuTTYgen dříve v hello "fáze 1: vytvoření image" tohoto článku.  
-![Snímek obrazovky zobrazující hierarchie adresářů hello připojení a tlačítko Procházet][10]
+5. V levém podokně klikněte na **připojení** > **SSH** > **Auth**a potom klikněte na **Procházet** k určení umístění souboru privateKey.ppk. Soubor privateKey.ppk obsahuje privátní klíč, který je generovaný PuTTYgen dříve v "fáze 1: vytvoření image" tohoto článku.  
+![Snímek obrazovky, který se zobrazuje hierarchie adresářů připojení a tlačítko Procházet][10]
 
-6. Klikněte na tlačítko **otevřete**. Může být upozorněni podle okno se zprávou. Pokud jste nakonfigurovali hello DNS název a číslo portu správně, klikněte na tlačítko **Ano**.
-![Snímek obrazovky, který se zobrazí oznámení o hello][11]
+6. Klikněte na tlačítko **otevřete**. Může být upozorněni podle okno se zprávou. Pokud jste nakonfigurovali název DNS a číslo portu správně, klikněte na tlačítko **Ano**.
+![Snímek obrazovky, který se zobrazí oznámení.][11]
 
-7. Můžete se výzvami tooenter vaše uživatelské jméno.  
-![Snímek obrazovky, který ukazuje, kde tooenter uživatelské jméno][12]
+7. Zobrazí se výzva k zadání vašeho uživatelského jména.  
+![Snímek obrazovky, který ukazuje, kde k zadání uživatelského jména][12]
 
-8. Zadejte uživatelské jméno hello jste použili toocreate hello virtuálního počítače v hello "fáze 1: vytvoření image" dříve v tomto článku. Zobrazí se něco podobného jako hello následující:  
-![Snímek obrazovky zobrazující hello ověřování potvrzení][13]
+8. Zadejte uživatelské jméno, které jste použili k vytvoření virtuálního počítače "fáze 1: vytvoření image" dříve v tomto článku. Zobrazí se přibližně takto:  
+![Snímek obrazovky zobrazující potvrzení ověřování][13]
 
 ## <a name="phase-3-install-software"></a>Fáze 3: Instalace softwaru
-V této fázi nainstalujte prostředí Java runtime hello, Tomcat7 a další součásti Tomcat7.  
+V této fázi nainstalujte prostředí Java runtime, Tomcat7 a další součásti Tomcat7.  
 
 ### <a name="java-runtime-environment"></a>Prostředí Java runtime
-Tomcat je napsán v jazyce Java. Existují dva typy sad Java Development Kit (JDKs), OpenJDK a Oracle JDK. Můžete zvolit hello, kterou potřebujete.  
+Tomcat je napsán v jazyce Java. Existují dva typy sad Java Development Kit (JDKs), OpenJDK a Oracle JDK. Můžete zvolit ten, který chcete.  
 
 > [!NOTE]
-> Jak JDKs mít prakticky hello stejný kód hello třídy v hello Java API, ale hello kód pro virtuální počítač hello se liší. OpenJDK obvykle otevřené knihovny toouse, zatímco Oracle JDK obvykle toouse uzavřený těch, které jsou. Oracle JDK má více tříd a některé vyřešili chyb a Oracle JDK je stabilnější než OpenJDK.
+> Obě JDKs mít téměř stejný kód pro třídy v rozhraní API Java, ale kód pro virtuální počítač se liší. OpenJDK obvykle používat otevřené knihovny, Oracle JDK obvykle pro použití uzavřené portů. Oracle JDK má více tříd a některé vyřešili chyb a Oracle JDK je stabilnější než OpenJDK.
 
 #### <a name="install-openjdk"></a>Nainstalujte OpenJDK  
 
-Použijte následující příkaz toodownload OpenJDK hello.   
+Chcete-li stáhnout OpenJDK použijte následující příkaz.   
 
     sudo apt-get update  
     sudo apt-get install openjdk-7-jre  
 
 
-* toocreate directory toocontain hello JDK soubory:  
+* Chcete-li vytvořit adresář, který bude obsahovat soubory JDK:  
 
         sudo mkdir /usr/lib/jvm  
-* tooextract hello JDK soubory do hello/usr/lib/jvm/directory:  
+* Extrahujte soubory JDK do adresáře/usr/lib/jvm /:  
 
         sudo tar -zxf jdk-8u5-linux-x64.tar.gz  -C /usr/lib/jvm/
 
 #### <a name="install-oracle-jdk"></a>Nainstalujte Oracle JDK
 
 
-Použijte následující příkaz toodownload Oracle JDK z webu Oracle hello hello.  
+Použijte následující příkaz ke stažení z webu Oracle Oracle JDK.  
 
      wget --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u5-b13/jdk-8u5-linux-x64.tar.gz  
-* toocreate directory toocontain hello JDK soubory:  
+* Chcete-li vytvořit adresář, který bude obsahovat soubory JDK:  
 
         sudo mkdir /usr/lib/jvm  
-* tooextract hello JDK soubory do hello/usr/lib/jvm/directory:  
+* Extrahujte soubory JDK do adresáře/usr/lib/jvm /:  
 
         sudo tar -zxf jdk-8u5-linux-x64.tar.gz  -C /usr/lib/jvm/  
-* tooset Oracle JDK jako virtuální počítač Java výchozí hello:  
+* Chcete-li nastavit Oracle JDK jako virtuální počítač Java výchozí:  
 
         sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.8.0_05/bin/java 100  
 
         sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.8.0_05/bin/javac 100  
 
 #### <a name="confirm-that-java-installation-is-successful"></a>Potvrďte, že Java instalace byla úspěšně dokončena
-Můžete použít příkaz jako hello následující tootest, pokud je prostředí Java runtime hello správně nainstalován:  
+Příkaz takto můžete otestovat, pokud je prostředí Java runtime správně nainstalován:  
 
     java -version  
 
-Pokud jste nainstalovali OpenJDK, zobrazí se zpráva podobná následující hello: ![OpenJDK úspěšné instalace zpráv][14]
+Pokud jste nainstalovali OpenJDK, zobrazí se zpráva podobná následující: ![OpenJDK úspěšné instalace zpráv][14]
 
-Pokud jste nainstalovali Oracle JDK, zobrazí zpráva podobná následující hello: ![zpráva instalace úspěšná JDK Oracle][15]
+Pokud jste nainstalovali Oracle JDK, zobrazí se zpráva podobná následující: ![zpráva instalace úspěšná JDK Oracle][15]
 
 ### <a name="install-tomcat7"></a>Instalace Tomcat7
-Použijte následující příkaz tooinstall Tomcat7 hello.  
+Použijte následující příkaz k instalaci Tomcat7.  
 
     sudo apt-get install tomcat7  
 
-Pokud nepoužíváte Tomcat7, použijte odpovídající variantu hello tohoto příkazu.  
+Pokud nepoužíváte Tomcat7, použijte jeho odpovídající variantu tohoto příkazu.  
 
 #### <a name="confirm-that-tomcat7-installation-is-successful"></a>Potvrďte, že je instalace Tomcat7 úspěšné
-toocheck Pokud Tomcat7 je úspěšně nainstalován, vyhledejte název DNS serveru Tomcat tooyour. V tomto článku je příklad adresy URL hello http://tomcatexample.cloudapp.net/. Pokud se zobrazí zpráva podobná následující hello, Tomcat7 je správně nainstalován.
+Kontrola, pokud je úspěšně nainstalována Tomcat7, vyhledejte název DNS Tomcat server. Příklad adresy URL v tomto článku je http://tomcatexample.cloudapp.net/. Pokud se zobrazí zpráva podobná následující, Tomcat7 je správně nainstalován.
 ![Zpráva úspěšné instalace Tomcat7][16]
 
 ### <a name="install-other-tomcat7-components"></a>Instalace součásti Tomcat7
 Existují další volitelné součásti Tomcat, které můžete nainstalovat.  
 
-Použití hello **sudo výstižný mezipaměti vyhledávání tomcat7** příkaz toosee všech součástí hello k dispozici. Použijte následující příkazy tooinstall hello některé užitečné součásti.  
+Použití **sudo výstižný mezipaměti vyhledávání tomcat7** příkazu zobrazte všechny dostupné součásti. Použijte následující příkazy pro instalaci některé užitečné součásti.  
 
     sudo apt-get install tomcat7-admin      #admin web applications
 
-    sudo apt-get install tomcat7-user         #tools toocreate user instances  
+    sudo apt-get install tomcat7-user         #tools to create user instances  
 
 ## <a name="phase-4-configure-tomcat7"></a>Fáze 4: Konfigurace Tomcat7
 V této fázi spravovat Tomcat.
 
 ### <a name="start-and-stop-tomcat7"></a>Spuštění a zastavení Tomcat7
-Hello Tomcat7 server se automaticky spustí, když ho nainstalujete. Můžete také spustit s hello následující příkaz:   
+Tomcat7 server se automaticky spustí, když ho nainstalujete. Můžete také spustit pomocí následujícího příkazu:   
 
     sudo /etc/init.d/tomcat7 start
 
-toostop Tomcat7:
+Chcete-li zastavit Tomcat7:
 
     sudo /etc/init.d/tomcat7 stop
 
-Stav hello tooview Tomcat7:
+Chcete-li zobrazit stav Tomcat7:
 
     sudo /etc/init.d/tomcat7 status
 
-toorestart Tomcat services: 
+K restartu služeb Tomcat: 
 
     sudo /etc/init.d/tomcat7 restart
 
 ### <a name="tomcat7-administration"></a>Správa Tomcat7
-Můžete upravit hello Tomcat uživatele konfigurační soubor tooset až přihlašovacích údajů správce. Hello použijte následující příkaz:  
+Můžete upravit konfigurační soubor uživatele Tomcat k nastavení přihlašovacích údajů správce. Použijte následující příkaz:  
 
     sudo vi  /etc/tomcat7/tomcat-users.xml   
 
 Zde naleznete příklad:  
-![Snímek obrazovky zobrazující výstupu příkazu vi sudo hello][17]  
+![Snímek obrazovky zobrazující výstupu příkazu sudo vi][17]  
 
 > [!NOTE]
-> Vytvořte silné heslo pro uživatelské jméno správce hello.  
+> Vytvořte silné heslo pro uživatelské jméno správce.  
 
-Po úpravě tohoto souboru, musíte restartovat služby Tomcat7 s následující příkaz tooensure hello změny projeví hello:  
+Po úpravě tohoto souboru, musíte restartovat Tomcat7 službám pomocí následujícího příkazu zkontrolujte, že tyto změny začnou platit:  
 
     sudo /etc/init.d/tomcat7 restart  
 
-Otevřete prohlížeč a zadejte **http://<your tomcat server DNS name>/manager/html** jako hello adresy URL. Například hello v tomto článku adresa URL hello je http://tomcatexample.cloudapp.net/manager/html.  
+Otevřete prohlížeč a zadejte **http://<your tomcat server DNS name>/manager/html** jako adresu URL. Například v tomto článku adresa URL je http://tomcatexample.cloudapp.net/manager/html.  
 
-Po připojení, měli byste vidět něco podobné toohello následující:  
-![Snímek obrazovky hello správce Tomcat webových aplikací][18]
+Po připojení, měli byste vidět něco podobného jako následující:  
+![Snímek obrazovky Správce aplikací webové Tomcat][18]
 
 ## <a name="common-issues"></a>Běžné problémy
-### <a name="cant-access-hello-virtual-machine-with-tomcat-and-moodle-from-hello-internet"></a>Nelze získat přístup hello virtuální počítač s Tomcat a Moodle z hello Internetu
+### <a name="cant-access-the-virtual-machine-with-tomcat-and-moodle-from-the-internet"></a>Nelze získat přístup k virtuálnímu počítači s Tomcat a Moodle z Internetu
 #### <a name="symptom"></a>Příznaky  
-  Tomcat běží, ale nemůžete zobrazit hello Tomcat výchozí stránku v prohlížeči.
+  Tomcat běží, ale nemůžete zobrazit Tomcat výchozí stránku v prohlížeči.
 #### <a name="possible-root-cause"></a>Možné příčiny   
 
-  * port pro naslouchání Tomcat Hello není hello stejné jako hello privátní port koncového bodu virtuálního počítače pro provoz Tomcat.  
+  * Port pro naslouchání Tomcat není stejný jako privátní port koncový bod virtuálního počítače pro provoz Tomcat.  
 
-     Port pro naslouchání zkontrolujte veřejný port a privátní port nastavení koncového bodu a zajistěte, aby privátní port hello je hello stejná hodnota jako hello Tomcat. Najdete v části "fáze 1: vytvoření image" tohoto článku Pokyny ke konfiguraci koncových bodů pro virtuální počítač.  
+     Zkontrolujte veřejný port a privátní port koncového bodu nastavení a ujistěte se, že privátní port je že stejný jako Tomcat port pro naslouchání. Najdete v části "fáze 1: vytvoření image" tohoto článku Pokyny ke konfiguraci koncových bodů pro virtuální počítač.  
 
-     toodetermine hello Tomcat port pro naslouchání, otevřete /etc/httpd/conf/httpd.conf (Red Hat vydání) nebo /etc/tomcat7/server.xml (Debian vydání). Ve výchozím nastavení je hello port pro naslouchání Tomcat 8080. Zde naleznete příklad:  
+     Ke zjištění portu naslouchání Tomcat, otevřete /etc/httpd/conf/httpd.conf (Red Hat vydání) nebo /etc/tomcat7/server.xml (Debian vydání). Ve výchozím nastavení je port pro naslouchání Tomcat 8080. Zde naleznete příklad:  
 
         <Connector port="8080" protocol="HTTP/1.1"  connectionTimeout="20000"   URIEncoding="UTF-8"            redirectPort="8443" />  
 
-     Pokud používáte virtuální počítač jako Debian a Ubuntu a chcete, aby toochange hello výchozí port z Tomcat naslouchání (například 8081), měli byste taky otevřít port hello hello operačního systému. První, otevřete hello profil:  
+     Pokud používáte virtuální počítač jako Debian a Ubuntu a chcete změnit, výchozí port z Tomcat naslouchání (například 8081), měli byste taky otevřít port pro operační systém. První otevřete profil:  
 
         sudo vi /etc/default/tomcat7  
 
-     Potom Odkomentujte hello poslední řádek a změňte "žádný" příliš "Ano".  
+     Potom Odkomentujte poslední řádek a změňte "žádný" "Ano".  
 
         AUTHBIND=yes
-  2. brány firewall Hello zakázal hello naslouchání portu z Tomcat.
+  2. Brána firewall zakázal naslouchání portu Tomcat.
 
-     Zobrazí se pouze hello Tomcat výchozí stránky z místního hostitele hello. problém Hello je velmi pravděpodobné, že hello port, který je naslouchali tooby Tomcat, je blokována bránou hello firewall. Můžete vytvořit webovou stránku hello w3m nástroj toobrowse hello. Hello následujících příkazů nainstalujte w3m a procházet toohello Tomcat výchozí stránky:  
+     Zobrazí se pouze výchozí stránka Tomcat z místního hostitele. Problém je velmi pravděpodobné, že je port, který je sleduje Tomcat, blokován branou firewall. Můžete použít nástroj w3m a přejděte na webovou stránku. Následující příkazy instalace w3m a přejděte na stránku výchozího Tomcat:  
 
 
         sudo yum instalace w3m w3m-img
@@ -267,48 +267,48 @@ Po připojení, měli byste vidět něco podobné toohello následující:
         w3m adrese http://localhost: 8080  
 #### <a name="solution"></a>Řešení
 
-  * Pokud hello port pro naslouchání Tomcat není hello stejné jako privátní port hello hello koncového bodu pro provoz toohello virtuální počítač, můžete potřebovat změnit privátní port hello toobe hello stejná hodnota jako hello port pro naslouchání Tomcat.   
-  2. Pokud je hello problém způsoben brány firewall nebo iptables, přidejte následující řádky příliš/etc/sysconfig/iptables hello. druhý řádek Hello je potřeba jenom pro provoz https:  
+  * Pokud naslouchat Tomcat port není stejný jako privátní port koncového bodu pro provoz do virtuálního počítače, je nutné změnit privátní port, který má být že stejné jako Tomcat port pro naslouchání.   
+  2. Pokud tento problém je způsoben brány firewall nebo iptables, přidejte následující řádky do /etc/sysconfig/iptables. Druhý řádek je potřeba jenom pro provoz https:  
 
       -A -p tcp -m tcp – dport 80 -j přijmout vstup
 
       -A -p tcp -m tcp – dport 443 -j přijmout vstup  
 
      > [!IMPORTANT]
-     > Zajistěte, aby hello předchozí řádky jsou umístěny nad všechny řádky, které by globálně omezení přístupu, jako je například následující hello: - A -j ODMÍTNĚTE – odmítněte with icmp hostitele zakázáno vstup
+     > Zajistěte, aby předchozí řádky jsou umístěny nad všechny řádky, které by globálně omezení přístupu, jako jsou následující: - A -j ODMÍTNĚTE – odmítněte with icmp hostitele zakázáno vstup
 
 
 
-tooreload hello iptables, spusťte následující příkaz hello:
+Chcete-li znovu načíst iptables, spusťte následující příkaz:
 
     service iptables restart
 
 To byl otestován v CentOS 6.3.
 
-### <a name="permission-denied-when-you-upload-project-files-toovarlibtomcat7webapps"></a>Oprávnění byla odepřena při nahrávání projektu soubory příliš/var/lib/tomcat7/webapps /
+### <a name="permission-denied-when-you-upload-project-files-to-varlibtomcat7webapps"></a>Oprávnění byla odepřena při nahrávání souborů projektu do /var/lib/tomcat7/webapps /
 #### <a name="symptom"></a>Příznaky
-  Při použití protokolu SFTP klienta (například FileZilla) tooconnect tooyour virtuálního počítače a přejděte příliš/var/lib/tomcat7/webapps/toopublish vašeho webu, dojde k chybě zprávy podobné toohello následující:  
+  Použijete-li pro připojení k virtuálnímu počítači a přejděte do /var/lib/tomcat7/webapps/publikování webu klientem SFTP (například FileZilla), můžete získat chybová zpráva podobná této:  
 
      status:    Listing directory /var/lib/tomcat7/webapps
      Command:    put "C:\Users\liang\Desktop\info.jsp" "info.jsp"
      Error:    /var/lib/tomcat7/webapps/info.jsp: open for write: permission denied
      Error:    File transfer failed
 #### <a name="possible-root-cause"></a>Možné příčiny
-  Nemáte žádná oprávnění tooaccess hello /var/lib/tomcat7/webapps složka.  
+  Nemáte oprávnění k přístupu ke složce /var/lib/tomcat7/webapps.  
 #### <a name="solution"></a>Řešení  
-  Potřebujete oprávnění tooget z hello kořenového účtu. Toohello uživatelské jméno kořenové, které jste použili při zřízení hello počítače, můžete změnit vlastnictví hello této složky. Tady je příklad s názvem účtu azureuser hello:  
+  Musíte získat oprávnění z kořenového účtu. Můžete změnit vlastnictví této složky z kořenového adresáře na uživatelské jméno, které jste použili při zřizování na počítač. Tady je příklad s názvem účtu azureuser:  
 
      sudo chown azureuser -R /var/lib/tomcat7/webapps
 
-  Příliš pomocí hello -R – možnost tooapply hello oprávnění pro všechny soubory v adresáři.  
+  Použijte parametr -R příliš použít oprávnění pro všechny soubory v adresáři.  
 
-  Tento příkaz lze použít také pro adresáře. Hello -R – možnost změny hello oprávnění pro všechny soubory a adresáře v rámci adresáře hello. Zde naleznete příklad:  
+  Tento příkaz lze použít také pro adresáře. -R možnost změny oprávnění pro všechny soubory a adresáře v adresáři. Zde naleznete příklad:  
 
      sudo chown -R username:group directory  
 
-  Tento příkaz změní vlastnictví (uživatele a skupiny) pro všechny soubory a adresáře, které jsou uvnitř hello adresář.  
+  Tento příkaz změní vlastnictví (uživatele a skupiny) pro všechny soubory a adresáře, které jsou v adresáři.  
 
-  Hello následující příkaz změní jenom oprávnění hello hello složky adresáře. Hello soubory a složky v adresáři hello, nebudou změněny.  
+  Tento příkaz změní jenom oprávnění adresáři složky. Soubory a složky v adresáři, nebudou změněny.  
 
      sudo chown username:group directory
 

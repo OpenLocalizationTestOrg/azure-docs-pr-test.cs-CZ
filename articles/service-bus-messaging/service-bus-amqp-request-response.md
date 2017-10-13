@@ -1,5 +1,5 @@
 ---
-title: "aaaAMQP 1.0 v operacích na základě požadavku odpovědi Azure Service Bus | Microsoft Docs"
+title: "AMQP 1.0 v operacích na základě požadavku odpovědi Azure Service Bus | Microsoft Docs"
 description: "Seznam operací založené na požadavku nebo odpovědi Microsoft Azure Service Bus."
 services: service-bus-messaging
 documentationcenter: na
@@ -14,35 +14,35 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2017
 ms.author: sethm
-ms.openlocfilehash: e4f26219c53b0c4172747af683fe511d6366ff2d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 756565b3da6e0a818d1ee3d5e17f942d96be14f0
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>AMQP 1.0 v Microsoft Azure Service Bus: na základě požadavku odpověď operace
 
-Toto téma definuje hello seznam operací založené na požadavku nebo odpovědi Microsoft Azure Service Bus. Tato informace jsou založeny na koncept pracovní hello AMQP správu verze 1.0.  
+Toto téma definuje seznam operací založené na požadavku nebo odpovědi Microsoft Azure Service Bus. Tyto informace jsou založeny na koncept pracovní AMQP správu verze 1.0.  
   
-Podrobné úroveň protokolu AMQP 1.0 protokol průvodce, která vysvětluje, jak Service Bus implementuje a je založený na hello technické specifikace OASIS AMQP, najdete v části hello [protokolu AMQP 1.0 v příručce protokol Azure Service Bus a Event Hubs](service-bus-amqp-protocol-guide.md).  
+Podrobné úroveň protokolu AMQP 1.0 protokol průvodce, která vysvětluje, jak Service Bus implementuje a je založený na technické specifikace OASIS AMQP, najdete v článku [protokolu AMQP 1.0 v příručce protokol Azure Service Bus a Event Hubs](service-bus-amqp-protocol-guide.md).  
   
 ## <a name="concepts"></a>Koncepty  
   
 ### <a name="entity-description"></a>Popis entity  
 
-Odkazuje entity popis tooeither Service Bus [QueueDescription třída](/dotnet/api/microsoft.servicebus.messaging.queuedescription), [TopicDescription třída](/dotnet/api/microsoft.servicebus.messaging.topicdescription), nebo [SubscriptionDescription třída](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) objektu.  
+Popis entity odkazuje buď Service Bus [QueueDescription třída](/dotnet/api/microsoft.servicebus.messaging.queuedescription), [TopicDescription třída](/dotnet/api/microsoft.servicebus.messaging.topicdescription), nebo [SubscriptionDescription třída](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) objektu.  
   
 ### <a name="brokered-message"></a>Zprostředkované zprávy  
 
-Reprezentuje zprávu v Service Bus, které je namapované tooan AMQP zprávy. mapování Hello je definována v hello [Průvodce protokol Service Bus AMQP](service-bus-amqp-protocol-guide.md).  
+Reprezentuje zprávu v Service Bus, která se mapuje na zprávu protokolu AMQP. Mapování je definována v [Průvodce protokol Service Bus AMQP](service-bus-amqp-protocol-guide.md).  
   
-## <a name="attach-tooentity-management-node"></a>Připojte tooentity uzel správy  
+## <a name="attach-to-entity-management-node"></a>Připojit k uzlu správy entity  
 
-Všechny operace hello popsané v tomto dokumentu postupujte podle požadavků a odpovědí vzor, jsou vymezená tooan entity a vyžadují připojení uzlu správy tooan entity.  
+Všechny operace, které jsou popsané v tomto dokumentu postupujte podle požadavků a odpovědí vzor, jsou omezená na entitu a vyžadovat připojení k uzlu správy entity.  
   
 ### <a name="create-link-for-sending-requests"></a>Vytvoření odkazu na odesílání žádostí  
 
-Vytvoří odkaz toohello uzlu pro správu pro odesílání požadavků.  
+Vytvoří připojení k uzlu správy pro odesílání požadavků.  
   
 ```  
 requestLink = session.attach(     
@@ -55,7 +55,7 @@ role: SENDER,
   
 ### <a name="create-link-for-receiving-responses"></a>Vytvoření odkazu pro příjem odpovědí  
 
-Vytvoří odkaz pro příjem odpovědí z uzlu Správa hello.  
+Vytvoří odkaz pro příjem odpovědí z uzlu správy.  
   
 ```  
 responseLink = session.attach(    
@@ -85,13 +85,13 @@ requestLink.sendTransfer(
   
 ### <a name="receive-a-response-message"></a>Zobrazí zprávu odpovědi  
 
-Obdrží zprávu odpovědi hello hello odpovědi odkaz.  
+Obdrží zprávu odpovědi z odkazu odpovědi.  
   
 ```  
 responseMessage = responseLink.receiveTransfer()  
 ```  
   
-zpráva odpovědi Hello je v hello následující formulář:
+Zpráva odpovědi je v následující podobě:
   
 ```  
 Message(  
@@ -120,37 +120,37 @@ Entit služby Service Bus je potřeba řešit následujícím způsobem:
   
 ### <a name="message-renew-lock"></a>Zpráva obnovení zámku  
 
-Rozšíření hello zámek zprávy o hello dobu uvedenou v popis entity hello.  
+Rozšíření zámek zprávy o za dobu určenou v popis entity.  
   
 #### <a name="request"></a>Žádost  
 
-zpráva požadavku Hello musí zahrnovat následující vlastnosti aplikace hello:  
+Zpráva požadavku musí zahrnovat následující vlastnosti aplikace:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |operace|Řetězec|Ano|`com.microsoft:renew-lock`|  
 |`com.microsoft:server-timeout`|uint|Ne|Operace serveru vypršení časového limitu v milisekundách.|  
   
- tělo zprávy Hello žádost musí obsahovat části amqp hodnotu obsahující mapu s hello následující položky:  
+ Tělo zprávy žádost musí obsahovat části amqp hodnotu obsahující mapa s následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|`lock-tokens`|pole identifikátoru uuid|Ano|Zpráva toorenew tokeny zámku.|  
+|`lock-tokens`|pole identifikátoru uuid|Ano|Zpráva tokeny zámek k obnovení.|  
   
 #### <a name="response"></a>Odpověď  
 
-zpráva odpovědi Hello musí zahrnovat následující vlastnosti aplikace hello:  
+Zpráva odpovědi musí zahrnovat následující vlastnosti aplikace:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|celá čísla|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – úspěch, jinak se nezdařilo.|  
-|Popis_stavu|Řetězec|Ne|Popis stavu hello.|  
+|Popis_stavu|Řetězec|Ne|Popis stavu.|  
   
-zpráva odpovědi Hello musí obsahovat části amqp hodnotu obsahující mapu s hello následující položky:  
+Zpráva odpovědi musí obsahovat části amqp hodnotu obsahující mapa s následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|vypršení platnosti|pole časového razítka|Ano|Zpráva uzamčení tokenu nové vypršení platnosti odpovídající toohello žádosti o zámek tokeny.|  
+|vypršení platnosti|pole časového razítka|Ano|Zpráva zámku nové vypršení platnosti tokenu odpovídající na žádosti o tokeny zámku.|  
   
 ### <a name="peek-message"></a>Prohlížení zpráv  
 
@@ -158,36 +158,36 @@ Prohlížením zprávy, aniž by zámek.
   
 #### <a name="request"></a>Žádost  
 
-zpráva požadavku Hello musí zahrnovat následující vlastnosti aplikace hello:  
+Zpráva požadavku musí zahrnovat následující vlastnosti aplikace:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |operace|Řetězec|Ano|`com.microsoft:peek-message`|  
 |`com.microsoft:server-timeout`|uint|Ne|Operace serveru vypršení časového limitu v milisekundách.|  
   
-musí obsahovat text zprávy požadavku Hello **amqp hodnotu** obsahující části **mapy** s hello následující položky:  
+Musí obsahovat text zprávy požadavku **amqp hodnotu** obsahující části **mapy** s následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|`from-sequence-number`|dlouhá|Ano|Pořadové číslo z které toostart funkce Náhled.|  
-|`message-count`|celá čísla|Ano|Maximální počet zpráv toopeek.|  
+|`from-sequence-number`|dlouhá|Ano|Pořadové číslo, od kterého má začít funkce Náhled.|  
+|`message-count`|celá čísla|Ano|Maximální počet zpráv, které mají prohlížet.|  
   
 #### <a name="response"></a>Odpověď  
 
-zpráva odpovědi Hello musí zahrnovat následující vlastnosti aplikace hello:  
+Zpráva odpovědi musí zahrnovat následující vlastnosti aplikace:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|celá čísla|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – má více zpráv<br /><br /> 0xcc: Ne obsahu – žádné další zprávy|  
-|Popis_stavu|Řetězec|Ne|Popis stavu hello.|  
+|Popis_stavu|Řetězec|Ne|Popis stavu.|  
   
-musí obsahovat text zprávy odpovědi Hello **amqp hodnotu** obsahující části **mapy** s hello následující položky:  
+Zpráva odpovědi musí obsahovat **amqp hodnotu** obsahující části **mapy** s následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |cloud-zařízení|seznam mapování|Ano|Seznam zpráv, ve kterých každý mapy představuje zprávu.|  
   
-Mapa Hello představující zprávu musí obsahovat hello následující položky:  
+Mapa představující zprávu musí obsahovat následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
@@ -199,20 +199,20 @@ Naplánuje zprávy.
   
 #### <a name="request"></a>Žádost  
 
-zpráva požadavku Hello musí zahrnovat následující vlastnosti aplikace hello:  
+Zpráva požadavku musí zahrnovat následující vlastnosti aplikace:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |operace|Řetězec|Ano|`com.microsoft:schedule-message`|  
 |`com.microsoft:server-timeout`|uint|Ne|Operace serveru vypršení časového limitu v milisekundách.|  
   
-musí obsahovat text zprávy požadavku Hello **amqp hodnotu** obsahující části **mapy** s hello následující položky:  
+Musí obsahovat text zprávy požadavku **amqp hodnotu** obsahující části **mapy** s následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |cloud-zařízení|seznam mapování|Ano|Seznam zpráv, ve kterých každý mapy představuje zprávu.|  
   
-Mapa Hello představující zprávu musí obsahovat hello následující položky:  
+Mapa představující zprávu musí obsahovat následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
@@ -223,18 +223,18 @@ Mapa Hello představující zprávu musí obsahovat hello následující položk
   
 #### <a name="response"></a>Odpověď  
 
-zpráva odpovědi Hello musí zahrnovat následující vlastnosti aplikace hello:  
+Zpráva odpovědi musí zahrnovat následující vlastnosti aplikace:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|celá čísla|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – úspěch, jinak se nezdařilo.|  
-|Popis_stavu|Řetězec|Ne|Popis stavu hello.|  
+|Popis_stavu|Řetězec|Ne|Popis stavu.|  
   
-musí obsahovat text zprávy odpovědi Hello **amqp hodnotu** části obsahující mapu s hello následující položky:  
+Zpráva odpovědi musí obsahovat **amqp hodnotu** části obsahující mapa s následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|pořadová čísla|pole dlouho|Ano|Pořadové číslo naplánované zpráv. Pořadové číslo je použité toocancel.|  
+|pořadová čísla|pole dlouho|Ano|Pořadové číslo naplánované zpráv. Pořadové číslo se používá k zrušit.|  
   
 ### <a name="cancel-scheduled-message"></a>Zrušit naplánované zpráv  
 
@@ -242,50 +242,50 @@ Zruší naplánované zprávy.
   
 #### <a name="request"></a>Žádost  
 
-zpráva požadavku Hello musí zahrnovat následující vlastnosti aplikace hello:  
+Zpráva požadavku musí zahrnovat následující vlastnosti aplikace:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |operace|Řetězec|Ano|`com.microsoft:cancel-scheduled-message`|  
 |`com.microsoft:server-timeout`|uint|Ne|Operace serveru vypršení časového limitu v milisekundách.|  
   
-musí obsahovat text zprávy požadavku Hello **amqp hodnotu** obsahující části **mapy** s hello následující položky:  
+Musí obsahovat text zprávy požadavku **amqp hodnotu** obsahující části **mapy** s následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|pořadová čísla|pole dlouho|Ano|Pořadová čísla toocancel naplánované zprávy.|  
+|pořadová čísla|pole dlouho|Ano|Pořadová čísla zpráv naplánované zrušit.|  
   
 #### <a name="response"></a>Odpověď  
 
-zpráva odpovědi Hello musí zahrnovat následující vlastnosti aplikace hello:  
+Zpráva odpovědi musí zahrnovat následující vlastnosti aplikace:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|celá čísla|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – úspěch, jinak se nezdařilo.|  
-|Popis_stavu|Řetězec|Ne|Popis stavu hello.|  
+|Popis_stavu|Řetězec|Ne|Popis stavu.|  
   
-musí obsahovat text zprávy odpovědi Hello **amqp hodnotu** části obsahující mapu s hello následující položky:  
+Zpráva odpovědi musí obsahovat **amqp hodnotu** části obsahující mapa s následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|pořadová čísla|pole dlouho|Ano|Pořadové číslo naplánované zpráv. Pořadové číslo je použité toocancel.|  
+|pořadová čísla|pole dlouho|Ano|Pořadové číslo naplánované zpráv. Pořadové číslo se používá k zrušit.|  
   
 ## <a name="session-operations"></a>Operace relace  
   
 ### <a name="session-renew-lock"></a>Obnovení relace zámku  
 
-Rozšíření hello zámek zprávy o hello dobu uvedenou v popis entity hello.  
+Rozšíření zámek zprávy o za dobu určenou v popis entity.  
   
 #### <a name="request"></a>Žádost  
 
-zpráva požadavku Hello musí zahrnovat následující vlastnosti aplikace hello:  
+Zpráva požadavku musí zahrnovat následující vlastnosti aplikace:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |operace|Řetězec|Ano|`com.microsoft:renew-session-lock`|  
 |`com.microsoft:server-timeout`|uint|Ne|Operace serveru vypršení časového limitu v milisekundách.|  
   
-musí obsahovat text zprávy požadavku Hello **amqp hodnotu** obsahující části **mapy** s hello následující položky:  
+Musí obsahovat text zprávy požadavku **amqp hodnotu** obsahující části **mapy** s následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
@@ -293,14 +293,14 @@ musí obsahovat text zprávy požadavku Hello **amqp hodnotu** obsahující čá
   
 #### <a name="response"></a>Odpověď  
 
-zpráva odpovědi Hello musí zahrnovat následující vlastnosti aplikace hello:  
+Zpráva odpovědi musí zahrnovat následující vlastnosti aplikace:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|celá čísla|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – má více zpráv<br /><br /> 0xcc: Ne obsahu – žádné další zprávy|  
-|Popis_stavu|Řetězec|Ne|Popis stavu hello.|  
+|Popis_stavu|Řetězec|Ne|Popis stavu.|  
   
-musí obsahovat text zprávy odpovědi Hello **amqp hodnotu** části obsahující mapu s hello následující položky:  
+Zpráva odpovědi musí obsahovat **amqp hodnotu** části obsahující mapa s následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
@@ -312,37 +312,37 @@ Prohlížením zprávy relace bez blokování.
   
 #### <a name="request"></a>Žádost  
 
-zpráva požadavku Hello musí zahrnovat následující vlastnosti aplikace hello:  
+Zpráva požadavku musí zahrnovat následující vlastnosti aplikace:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |operace|Řetězec|Ano|`com.microsoft:peek-message`|  
 |`com.microsoft:server-timeout`|uint|Ne|Operace serveru vypršení časového limitu v milisekundách.|  
   
-musí obsahovat text zprávy požadavku Hello **amqp hodnotu** obsahující části **mapy** s hello následující položky:  
+Musí obsahovat text zprávy požadavku **amqp hodnotu** obsahující části **mapy** s následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|číslo od pořadí|dlouhá|Ano|Pořadové číslo z které toostart funkce Náhled.|  
-|počet zpráv|celá čísla|Ano|Maximální počet zpráv toopeek.|  
+|číslo od pořadí|dlouhá|Ano|Pořadové číslo, od kterého má začít funkce Náhled.|  
+|počet zpráv|celá čísla|Ano|Maximální počet zpráv, které mají prohlížet.|  
 |id relace|Řetězec|Ano|ID relace.|  
   
 #### <a name="response"></a>Odpověď  
 
-zpráva odpovědi Hello musí zahrnovat následující vlastnosti aplikace hello:  
+Zpráva odpovědi musí zahrnovat následující vlastnosti aplikace:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|celá čísla|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – má více zpráv<br /><br /> 0xcc: Ne obsahu – žádné další zprávy|  
-|Popis_stavu|Řetězec|Ne|Popis stavu hello.|  
+|Popis_stavu|Řetězec|Ne|Popis stavu.|  
   
-musí obsahovat text zprávy odpovědi Hello **amqp hodnotu** části obsahující mapu s hello následující položky:  
+Zpráva odpovědi musí obsahovat **amqp hodnotu** části obsahující mapa s následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |cloud-zařízení|seznam mapování|Ano|Seznam zpráv, ve kterých každý mapy představuje zprávu.|  
   
- Mapa Hello představující zprávu musí obsahovat hello následující položky:  
+ Mapa představující zprávu musí obsahovat následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
@@ -350,18 +350,18 @@ musí obsahovat text zprávy odpovědi Hello **amqp hodnotu** části obsahujíc
   
 ### <a name="set-session-state"></a>Stav relace sady  
 
-Nastaví hello stavu relace.  
+Nastaví stav relace.  
   
 #### <a name="request"></a>Žádost  
 
-zpráva požadavku Hello musí zahrnovat následující vlastnosti aplikace hello:  
+Zpráva požadavku musí zahrnovat následující vlastnosti aplikace:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |operace|Řetězec|Ano|`com.microsoft:peek-message`|  
 |`com.microsoft:server-timeout`|uint|Ne|Operace serveru vypršení časového limitu v milisekundách.|  
   
-musí obsahovat text zprávy požadavku Hello **amqp hodnotu** obsahující části **mapy** s hello následující položky:  
+Musí obsahovat text zprávy požadavku **amqp hodnotu** obsahující části **mapy** s následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
@@ -370,27 +370,27 @@ musí obsahovat text zprávy požadavku Hello **amqp hodnotu** obsahující čá
   
 #### <a name="response"></a>Odpověď  
 
-zpráva odpovědi Hello musí zahrnovat následující vlastnosti aplikace hello:  
+Zpráva odpovědi musí zahrnovat následující vlastnosti aplikace:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|celá čísla|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – úspěch, jinak se nezdařilo|  
-|Popis_stavu|Řetězec|Ne|Popis stavu hello.|  
+|Popis_stavu|Řetězec|Ne|Popis stavu.|  
   
 ### <a name="get-session-state"></a>Stav relace GET  
 
-Získá hello stav relace.  
+Získá stav relace.  
   
 #### <a name="request"></a>Žádost  
 
-zpráva požadavku Hello musí zahrnovat následující vlastnosti aplikace hello:  
+Zpráva požadavku musí zahrnovat následující vlastnosti aplikace:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |operace|Řetězec|Ano|`com.microsoft:get-session-state`|  
 |`com.microsoft:server-timeout`|uint|Ne|Operace serveru vypršení časového limitu v milisekundách.|  
   
-musí obsahovat text zprávy požadavku Hello **amqp hodnotu** obsahující části **mapy** s hello následující položky:  
+Musí obsahovat text zprávy požadavku **amqp hodnotu** obsahující části **mapy** s následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
@@ -398,14 +398,14 @@ musí obsahovat text zprávy požadavku Hello **amqp hodnotu** obsahující čá
   
 #### <a name="response"></a>Odpověď  
 
-zpráva odpovědi Hello musí zahrnovat následující vlastnosti aplikace hello:  
+Zpráva odpovědi musí zahrnovat následující vlastnosti aplikace:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|celá čísla|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – úspěch, jinak se nezdařilo|  
-|Popis_stavu|Řetězec|Ne|Popis stavu hello.|  
+|Popis_stavu|Řetězec|Ne|Popis stavu.|  
   
-musí obsahovat text zprávy odpovědi Hello **amqp hodnotu** obsahující části **mapy** s hello následující položky:  
+Zpráva odpovědi musí obsahovat **amqp hodnotu** obsahující části **mapy** s následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
@@ -417,31 +417,31 @@ Vytvoří výčet relací na entity přenosu zpráv.
   
 #### <a name="request"></a>Žádost  
 
-zpráva požadavku Hello musí zahrnovat následující vlastnosti aplikace hello:  
+Zpráva požadavku musí zahrnovat následující vlastnosti aplikace:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |operace|Řetězec|Ano|`com.microsoft:get-message-sessions`|  
 |`com.microsoft:server-timeout`|uint|Ne|Operace serveru vypršení časového limitu v milisekundách.|  
   
-musí obsahovat text zprávy požadavku Hello **amqp hodnotu** obsahující části **mapy** s hello následující položky:  
+Musí obsahovat text zprávy požadavku **amqp hodnotu** obsahující části **mapy** s následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|poslední aktualizovat čas|časové razítko|Ano|Filtrujte jenom relací tooinclude aktualizován po daném okamžiku.|  
+|poslední aktualizovat čas|časové razítko|Ano|Filtrovat, aby obsahovaly pouze relace aktualizován po daném okamžiku.|  
 |Přeskočit|celá čísla|Ano|Přeskočte určitý počet relací.|  
 |Horní|celá čísla|Ano|Maximální počet relací.|  
   
 #### <a name="response"></a>Odpověď  
 
-zpráva odpovědi Hello musí zahrnovat následující vlastnosti aplikace hello:  
+Zpráva odpovědi musí zahrnovat následující vlastnosti aplikace:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|celá čísla|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – má více zpráv<br /><br /> 0xcc: Ne obsahu – žádné další zprávy|  
-|Popis_stavu|Řetězec|Ne|Popis stavu hello.|  
+|Popis_stavu|Řetězec|Ne|Popis stavu.|  
   
-musí obsahovat text zprávy odpovědi Hello **amqp hodnotu** obsahující části **mapy** s hello následující položky:  
+Zpráva odpovědi musí obsahovat **amqp hodnotu** obsahující části **mapy** s následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
@@ -454,35 +454,35 @@ musí obsahovat text zprávy odpovědi Hello **amqp hodnotu** obsahující čás
   
 #### <a name="request"></a>Žádost  
 
-zpráva požadavku Hello musí zahrnovat následující vlastnosti aplikace hello:  
+Zpráva požadavku musí zahrnovat následující vlastnosti aplikace:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |operace|Řetězec|Ano|`com.microsoft:add-rule`|  
 |`com.microsoft:server-timeout`|uint|Ne|Operace serveru vypršení časového limitu v milisekundách.|  
   
-musí obsahovat text zprávy požadavku Hello **amqp hodnotu** obsahující části **mapy** s hello následující položky:  
+Musí obsahovat text zprávy požadavku **amqp hodnotu** obsahující části **mapy** s následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |Název pravidla|Řetězec|Ano|Název pravidla není včetně předplatného a tématu.|  
 |Popis pravidla|mapy|Ano|Popis pravidla uvedeného v další části.|  
   
-Hello **popis pravidla** mapa musí obsahovat hello následující položky, kde **sql filtru** a **korelace filtru** se vzájemně vylučují:  
+**Popis pravidla** mapy musí zahrnovat následující položky, kde **sql filtru** a **korelace filtru** se vzájemně vylučují:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|Filtr SQL|mapy|Ano|`sql-filter`, jak je uvedeno v další části hello.|  
-|korelace filtru|mapy|Ano|`correlation-filter`, jak je uvedeno v další části hello.|  
-|Akce pravidla SQL|mapy|Ano|`sql-rule-action`, jak je uvedeno v další části hello.|  
+|Filtr SQL|mapy|Ano|`sql-filter`, jak je uvedeno v následující části.|  
+|korelace filtru|mapy|Ano|`correlation-filter`, jak je uvedeno v následující části.|  
+|Akce pravidla SQL|mapy|Ano|`sql-rule-action`, jak je uvedeno v následující části.|  
   
-Mapa sql filtru Hello musí zahrnovat hello následující položky:  
+Mapy filtru sql musí zahrnovat následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |výraz|Řetězec|Ano|Výraz filtru SQL.|  
   
-Hello **korelace filtru** mapa musí obsahovat alespoň jeden z hello následující položky:  
+**Korelace filtru** mapa musí obsahovat alespoň jeden z následujících položek:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
@@ -494,9 +494,9 @@ Hello **korelace filtru** mapa musí obsahovat alespoň jeden z hello následuj�
 |id relace|Řetězec|Ne||  
 |odpověď k relaci id|Řetězec|Ne||  
 |Typ obsahu|Řetězec|Ne||  
-|properties|mapy|Ne|Mapuje tooService sběrnice [BrokeredMessage.Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Properties).|  
+|properties|mapy|Ne|Mapuje sběrnice [BrokeredMessage.Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Properties).|  
   
-Hello **akce pravidla sql** mapa musí obsahovat hello následující položky:  
+**Akce pravidla sql** mapy musí zahrnovat následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
@@ -504,25 +504,25 @@ Hello **akce pravidla sql** mapa musí obsahovat hello následující položky:
   
 #### <a name="response"></a>Odpověď  
 
-zpráva odpovědi Hello musí zahrnovat následující vlastnosti aplikace hello:  
+Zpráva odpovědi musí zahrnovat následující vlastnosti aplikace:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|celá čísla|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – úspěch, jinak se nezdařilo|  
-|Popis_stavu|Řetězec|Ne|Popis stavu hello.|  
+|Popis_stavu|Řetězec|Ne|Popis stavu.|  
   
 ### <a name="remove-rule"></a>Odebrat pravidlo  
   
 #### <a name="request"></a>Žádost  
 
-zpráva požadavku Hello musí zahrnovat následující vlastnosti aplikace hello:  
+Zpráva požadavku musí zahrnovat následující vlastnosti aplikace:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |operace|Řetězec|Ano|`com.microsoft:remove-rule`|  
 |`com.microsoft:server-timeout`|uint|Ne|Operace serveru vypršení časového limitu v milisekundách.|  
   
-musí obsahovat text zprávy požadavku Hello **amqp hodnotu** obsahující části **mapy** s hello následující položky:  
+Musí obsahovat text zprávy požadavku **amqp hodnotu** obsahující části **mapy** s následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
@@ -530,12 +530,12 @@ musí obsahovat text zprávy požadavku Hello **amqp hodnotu** obsahující čá
   
 #### <a name="response"></a>Odpověď  
 
-zpráva odpovědi Hello musí zahrnovat následující vlastnosti aplikace hello:  
+Zpráva odpovědi musí zahrnovat následující vlastnosti aplikace:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|celá čísla|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – úspěch, jinak se nezdařilo|  
-|Popis_stavu|Řetězec|Ne|Popis stavu hello.|  
+|Popis_stavu|Řetězec|Ne|Popis stavu.|  
   
 ## <a name="deferred-message-operations"></a>Operace odložené zpráv  
   
@@ -545,14 +545,14 @@ Přijímá odložené zprávy podle pořadových čísel.
   
 #### <a name="request"></a>Žádost  
 
-zpráva požadavku Hello musí zahrnovat následující vlastnosti aplikace hello:  
+Zpráva požadavku musí zahrnovat následující vlastnosti aplikace:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |operace|Řetězec|Ano|`com.microsoft:receive-by-sequence-number`|  
 |`com.microsoft:server-timeout`|uint|Ne|Operace serveru vypršení časového limitu v milisekundách.|  
   
-musí obsahovat text zprávy požadavku Hello **amqp hodnotu** obsahující části **mapy** s hello následující položky:  
+Musí obsahovat text zprávy požadavku **amqp hodnotu** obsahující části **mapy** s následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
@@ -561,20 +561,20 @@ musí obsahovat text zprávy požadavku Hello **amqp hodnotu** obsahující čá
   
 #### <a name="response"></a>Odpověď  
 
-zpráva odpovědi Hello musí zahrnovat následující vlastnosti aplikace hello:  
+Zpráva odpovědi musí zahrnovat následující vlastnosti aplikace:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|celá čísla|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – úspěch, jinak se nezdařilo|  
-|Popis_stavu|Řetězec|Ne|Popis stavu hello.|  
+|Popis_stavu|Řetězec|Ne|Popis stavu.|  
   
-musí obsahovat text zprávy odpovědi Hello **amqp hodnotu** obsahující části **mapy** s hello následující položky:  
+Zpráva odpovědi musí obsahovat **amqp hodnotu** obsahující části **mapy** s následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |cloud-zařízení|seznam mapování|Ano|Seznam zpráv, kde každý mapy představuje zprávu.|  
   
-Mapa Hello představující zprávu musí obsahovat hello následující položky:  
+Mapa představující zprávu musí obsahovat následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
@@ -583,39 +583,39 @@ Mapa Hello představující zprávu musí obsahovat hello následující položk
   
 ### <a name="update-disposition-status"></a>Aktualizovat stav dispozice  
 
-Aktualizuje stav dispozice hello odložené zpráv.  
+Aktualizuje stav dispozice odložené zpráv.  
   
 #### <a name="request"></a>Žádost  
 
-zpráva požadavku Hello musí zahrnovat následující vlastnosti aplikace hello:  
+Zpráva požadavku musí zahrnovat následující vlastnosti aplikace:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |operace|Řetězec|Ano|`com.microsoft:update-disposition`|  
 |`com.microsoft:server-timeout`|uint|Ne|Operace serveru vypršení časového limitu v milisekundách.|  
   
-musí obsahovat text zprávy požadavku Hello **amqp hodnotu** obsahující části **mapy** s hello následující položky:  
+Musí obsahovat text zprávy požadavku **amqp hodnotu** obsahující části **mapy** s následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |Stav dispozice|Řetězec|Ano|byla dokončena<br /><br /> opuštění<br /><br /> pozastaveno|  
-|Zámek tokeny|pole identifikátoru uuid|Ano|Stav zpráv zámku tokeny tooupdate dispozice.|  
-|Důvod nedoručených zpráv|Řetězec|Ne|Může být nastaven, pokud stav dispozice nastaven příliš**pozastaveno**.|  
-|Popis nedoručených zpráv|Řetězec|Ne|Může být nastaven, pokud stav dispozice nastaven příliš**pozastaveno**.|  
-|vlastnosti upravit|mapy|Ne|Seznam Service Bus zprostředkované toomodify vlastnosti zprávy.|  
+|Zámek tokeny|pole identifikátoru uuid|Ano|Tokeny zámku zpráva se bude aktualizovat stav dispozice.|  
+|Důvod nedoručených zpráv|Řetězec|Ne|Může být nastaven, pokud je nastaven stav dispozice **pozastaveno**.|  
+|Popis nedoručených zpráv|Řetězec|Ne|Může být nastaven, pokud je nastaven stav dispozice **pozastaveno**.|  
+|vlastnosti upravit|mapy|Ne|Seznam Service Bus zprostředkované vlastnosti zprávy, které chcete upravit.|  
   
 #### <a name="response"></a>Odpověď  
 
-zpráva odpovědi Hello musí zahrnovat následující vlastnosti aplikace hello:  
+Zpráva odpovědi musí zahrnovat následující vlastnosti aplikace:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|celá čísla|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – úspěch, jinak se nezdařilo|  
-|Popis_stavu|Řetězec|Ne|Popis stavu hello.|
+|Popis_stavu|Řetězec|Ne|Popis stavu.|
 
 ## <a name="next-steps"></a>Další kroky
 
-toolearn informace o protokolu AMQP a Service Bus, najdete na adrese hello následující odkazy:
+Další informace o AMQP a Service Bus, najdete na následujících odkazech:
 
 * [Přehled protokolu AMQP Service Bus]
 * [Podpora protokolu AMQP 1.0 témata a fronty Service Bus rozdělena na oddíly]

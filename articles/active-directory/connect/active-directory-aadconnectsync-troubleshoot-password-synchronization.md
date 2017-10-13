@@ -1,6 +1,6 @@
 ---
-title: Synchronizace hesel aaaTroubleshoot s Azure AD Connect sync | Microsoft Docs
-description: "Tento článek obsahuje informace o tom, tootroubleshoot heslo synchronizace problémy."
+title: "Řešení potíží s synchronizace hesel s Azure AD Connect sync | Microsoft Docs"
+description: "Tento článek obsahuje informace o tom, jak řešit potíže heslo."
 services: active-directory
 documentationcenter: 
 author: AndKjell
@@ -14,35 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 390eafec792cb39251627c14cb754f8bb30035b5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 33fa6a8867764975a57b8727e7705529d1d7506a
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="troubleshoot-password-synchronization-with-azure-ad-connect-sync"></a>Řešení potíží s synchronizace hesel s synchronizace Azure AD Connect
-Toto téma popisuje kroky pro jak tootroubleshoot problémy se synchronizace hesel. Pokud hesla se nesynchronizují podle očekávání, může být buď pro podmnožinu uživatelů, nebo pro všechny uživatele. Pro Azure Active Directory (Azure AD) připojit nasazení s verzí 1.1.524.0 nebo novější, je nyní k dispozici diagnostické rutina, které můžete použít tootroubleshoot heslo synchronizace problémy:
+Toto téma popisuje kroky pro řešení potíží se synchronizací hesla. Pokud hesla se nesynchronizují podle očekávání, může být buď pro podmnožinu uživatelů, nebo pro všechny uživatele. Pro Azure Active Directory (Azure AD) připojit nasazení s verzí 1.1.524.0 nebo novější, je nyní k dispozici diagnostické rutina, můžete použít k řešení potíží se synchronizací hesla:
 
-* Pokud máte potíže, kde jsou synchronizovány žádná hesla, přečtěte si téma toohello [bez hesla se synchronizují: řešení potíží pomocí diagnostiky rutiny hello](#no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet) části.
+* Pokud máte potíže, kde jsou synchronizovány žádná hesla, podívejte se na [bez hesla se synchronizují: řešení potíží pomocí diagnostiky rutina](#no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet) části.
 
-* Pokud máte potíže s jednotlivé objekty, přečtěte si téma toohello [jeden objekt není synchronizace hesel: řešení potíží pomocí diagnostiky rutiny hello](#one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet) části.
+* Pokud máte potíže s jednotlivé objekty, podívejte se na [jeden objekt není synchronizace hesel: řešení potíží pomocí diagnostiky rutina](#one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet) části.
 
 Pro starší verze aplikace Azure AD Connect nasazení:
 
-* Pokud máte potíže, kde jsou synchronizovány žádná hesla, přečtěte si téma toohello [bez hesla se synchronizují: Ruční postup řešení potíží](#no-passwords-are-synchronized-manual-troubleshooting-steps) části.
+* Pokud máte potíže, kde jsou synchronizovány žádná hesla, přečtěte si [bez hesla se synchronizují: Ruční postup řešení potíží](#no-passwords-are-synchronized-manual-troubleshooting-steps) části.
 
-* Pokud máte potíže s jednotlivé objekty, přečtěte si téma toohello [jeden objekt není synchronizace hesel: Ruční postup řešení potíží](#one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps) části.
+* Pokud máte potíže s jednotlivé objekty, podívejte se na [jeden objekt není synchronizace hesel: Ruční postup řešení potíží](#one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps) části.
 
-## <a name="no-passwords-are-synchronized-troubleshoot-by-using-hello-diagnostic-cmdlet"></a>Žádná hesla se synchronizují: řešení potíží pomocí diagnostiky rutiny hello
-Můžete použít hello `Invoke-ADSyncDiagnostics` toofigure rutiny se proč bez hesla se synchronizují.
+## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet"></a>Žádná hesla se synchronizují: řešení potíží pomocí rutiny diagnostiky
+Můžete použít `Invoke-ADSyncDiagnostics` rutiny zjistěte, proč jsou synchronizovány žádná hesla.
 
 > [!NOTE]
-> Hello `Invoke-ADSyncDiagnostics` rutina je dostupné pouze pro verze služby Azure AD Connect 1.1.524.0 nebo novější.
+> `Invoke-ADSyncDiagnostics` Rutina je dostupné pouze pro verze služby Azure AD Connect 1.1.524.0 nebo novější.
 
-### <a name="run-hello-diagnostics-cmdlet"></a>Spusťte rutinu diagnostiky hello
-tootroubleshoot problémy, kde jsou synchronizovány žádná hesla:
+### <a name="run-the-diagnostics-cmdlet"></a>Spusťte rutinu diagnostiky
+Řešení problémů, kde jsou synchronizovány žádná hesla:
 
-1. Otevřete novou relaci prostředí Windows PowerShell na serveru Azure AD Connect s hello **spustit jako správce** možnost.
+1. Otevřete novou relaci prostředí Windows PowerShell na serveru s Azure AD Connect **spustit jako správce** možnost.
 
 2. Spustit `Set-ExecutionPolicy RemoteSigned` nebo `Set-ExecutionPolicy Unrestricted`.
 
@@ -50,72 +50,72 @@ tootroubleshoot problémy, kde jsou synchronizovány žádná hesla:
 
 4. Spusťte `Invoke-ADSyncDiagnostics -PasswordSync`.
 
-### <a name="understand-hello-results-of-hello-cmdlet"></a>Pochopení hello výsledky rutiny hello
-diagnostické rutiny Hello provádí hello následující kontroly:
+### <a name="understand-the-results-of-the-cmdlet"></a>Pochopení výsledky rutiny
+Diagnostické rutina provede následující kontroly:
 
-* Ověří, že hello funkce Synchronizace hesla je povolený pro vašeho klienta Azure AD.
+* Ověří, že funkce Synchronizace hesla je povolen pro vašeho tenanta Azure AD.
 
-* Ověří, že hello Azure AD Connect server není v pracovním režimu.
+* Ověří, zda není server Azure AD Connect v pracovním režimu.
 
-* Pro každý existující místní konektor služby Active Directory (který odpovídá tooan existující doménové struktury služby Active Directory):
+* Pro každý existující místní konektor služby Active Directory (který odpovídá existující doménové struktury služby Active Directory):
 
-   * Ověří, že hello je povolena funkce Synchronizace hesla.
+   * Ověří, že je povolena funkce Synchronizace hesla.
    
-   * Vyhledá události prezenční signál synchronizace hesel v hello v protokolech událostí aplikace systému Windows.
+   * Vyhledá události prezenční signál synchronizace hesel v protokolech událostí aplikace systému Windows.
 
-   * Pro každou doménu služby Active Directory v části konektor služby Active Directory v místě hello:
+   * Pro každou doménu služby Active Directory v rámci konektoru služby Active Directory v místě:
 
-      * Ověří, že hello doména je dostupný ze serveru hello Azure AD Connect.
+      * Ověří, že doména je dostupný ze serveru, Azure AD Connect.
 
-      * Ověří, zda má účty služby Active Directory Domain Services (AD DS) hello používá konektor služby Active Directory v místě hello hello správné uživatelské jméno, heslo a oprávněních pro synchronizaci hesel.
+      * Ověří, že má správné uživatelské jméno, heslo a oprávněních pro synchronizaci hesel účtů služby Active Directory Domain Services (AD DS) používaných místní konektor služby Active Directory.
 
-Hello následující diagram znázorňuje hello výsledky hello rutiny pro topologie s jednou doménou, místní služby Active Directory:
+Následující diagram znázorňuje výsledky rutiny pro topologie s jednou doménou, místní služby Active Directory:
 
 ![Výstup diagnostiky pro synchronizace hesel](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phsglobalgeneral.png)
 
-Hello zbývající část tohoto oddílu popisuje konkrétní výsledky, které se vrátí pomocí rutiny hello a odpovídající problémy.
+Zbývající část tohoto oddílu popisuje konkrétní výsledky, které se vrátí pomocí rutiny a odpovídající problémy.
 
 #### <a name="password-synchronization-feature-isnt-enabled"></a>Funkce Synchronizace hesla není povoleno.
-Pokud jste nepovolili synchronizace hesel pomocí Průvodce hello Azure AD Connect, je vrácena hello následující chybě:
+Pokud jste nepovolili synchronizace hesel pomocí Průvodce službou Azure AD Connect, je vrácena následující chyba:
 
 ![Synchronizace hesla není povoleno.](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phsglobaldisabled.png)
 
 #### <a name="azure-ad-connect-server-is-in-staging-mode"></a>Server Azure AD Connect je v pracovním režimu
-Pokud server hello Azure AD Connect v pracovním režimu, synchronizace hesel je dočasně zakázána a hello vrácena následující chyba je:
+Pokud je server Azure AD Connect v pracovním režimu, synchronizace hesel je dočasně zakázána a vrácena následující chyba:
 
 ![Server Azure AD Connect je v pracovním režimu](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phsglobalstaging.png)
 
 #### <a name="no-password-synchronization-heartbeat-events"></a>Žádné události prezenční signál synchronizace hesel
-Každý konektor služby Active Directory v místě má svou vlastní heslo synchronizačního kanálu. Při kanál synchronizace hesla hello je vytvořen a nejsou k dispozici žádné toobe změny hesla synchronizován, prezenční signál události (EventId 654) generuje každých 30 minut v protokolu událostí aplikace systému Windows hello. Pro každý konektor služby Active Directory v místě hello rutina vyhledá odpovídající události prezenčního signálu v hello posledních tří hodin. Pokud se nenajde žádný prezenční signál události, hello vrácena následující chyba je:
+Každý konektor služby Active Directory v místě má svou vlastní heslo synchronizačního kanálu. Při kanál synchronizace hesla je vytvořen, a nejsou k dispozici žádné změny hesla k synchronizaci, prezenční signál události (EventId 654) generuje každých 30 minut v protokolu událostí aplikace systému Windows. Pro každý konektor služby Active Directory v místě rutina vyhledá odpovídající události prezenčního signálu v posledních tří hodin. Pokud se nenajde žádný prezenční signál události, je vrácena následující chyba:
 
 ![Žádné vysílat synchronizace hesla porazit událostí](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phsglobalnoheartbeat.png)
 
 #### <a name="ad-ds-account-does-not-have-correct-permissions"></a>AD DS účet nemá správná oprávnění
-Pokud účet hello služby AD DS, který je používán hello místně hodnot hash hesel služby Active Directory connector toosynchronize nemá příslušná oprávnění hello hello vrácena následující chyba je:
+Pokud účet služby AD DS, který se používá místní konektor služby Active Directory k synchronizaci hodnot hash hesel nemá příslušná oprávnění, je vrácena následující chyba:
 
 ![Nesprávná pověření](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phsglobalaccountincorrectpermission.png)
 
 #### <a name="incorrect-ad-ds-account-username-or-password"></a>Nesprávné uživatelské jméno účtu služby AD DS nebo heslo
-Pokud hello účet služby AD DS používá má nesprávné uživatelské jméno nebo heslo zprostředkovatele hello místní služby Active Directory connector toosynchronize hodnot hash hesel, hello vrácena následující chyba je:
+Pokud účet služby AD DS používá místní konektor služby Active Directory k synchronizaci hodnot hash hesel má nesprávné uživatelské jméno nebo heslo, je vrácena následující chyba:
 
 ![Nesprávná pověření](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phsglobalaccountincorrectcredential.png)
 
-## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-hello-diagnostic-cmdlet"></a>Jeden objekt není synchronizace hesel: řešení potíží pomocí diagnostiky rutiny hello
-Můžete použít hello `Invoke-ADSyncDiagnostics` rutiny toodetermine Proč není jeden objekt synchronizace hesel.
+## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet"></a>Jeden objekt není synchronizace hesel: řešení potíží pomocí rutiny diagnostiky
+Můžete použít `Invoke-ADSyncDiagnostics` rutiny zjistit, proč se jeden objekt synchronizace hesel.
 
 > [!NOTE]
-> Hello `Invoke-ADSyncDiagnostics` rutina je dostupné pouze pro verze služby Azure AD Connect 1.1.524.0 nebo novější.
+> `Invoke-ADSyncDiagnostics` Rutina je dostupné pouze pro verze služby Azure AD Connect 1.1.524.0 nebo novější.
 
-### <a name="run-hello-diagnostics-cmdlet"></a>Spusťte rutinu diagnostiky hello
-tootroubleshoot problémy, kde jsou synchronizovány žádná hesla:
+### <a name="run-the-diagnostics-cmdlet"></a>Spusťte rutinu diagnostiky
+Řešení problémů, kde jsou synchronizovány žádná hesla:
 
-1. Otevřete novou relaci prostředí Windows PowerShell na serveru Azure AD Connect s hello **spustit jako správce** možnost.
+1. Otevřete novou relaci prostředí Windows PowerShell na serveru s Azure AD Connect **spustit jako správce** možnost.
 
 2. Spustit `Set-ExecutionPolicy RemoteSigned` nebo `Set-ExecutionPolicy Unrestricted`.
 
 3. Spusťte `Import-Module ADSyncDiagnostics`.
 
-4. Spusťte následující rutinu hello:
+4. Spusťte následující rutinu:
    ```
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName <Name-of-AD-Connector> -DistinguishedName <DistinguishedName-of-AD-object>
    ```
@@ -124,158 +124,158 @@ tootroubleshoot problémy, kde jsou synchronizovány žádná hesla:
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName "contoso.com" -DistinguishedName "CN=TestUserCN=Users,DC=contoso,DC=com"
    ```
 
-### <a name="understand-hello-results-of-hello-cmdlet"></a>Pochopení hello výsledky rutiny hello
-diagnostické rutiny Hello provádí hello následující kontroly:
+### <a name="understand-the-results-of-the-cmdlet"></a>Pochopení výsledky rutiny
+Diagnostické rutina provede následující kontroly:
 
-* Prozkoumá hello stav objektu služby Active Directory hello hello prostoru konektoru služby Active Directory, úložiště Metaverse a Azure AD prostoru konektoru.
+* Prozkoumá stav objektu služby Active Directory v prostoru konektoru služby Active Directory, úložiště Metaverse a Azure AD prostoru konektoru.
 
-* Ověří, že jsou synchronizační pravidla, jejichž synchronizace hesel povolena a použít toohello objektu služby Active Directory.
+* Ověří, že jsou pravidla synchronizace s synchronizace hesel povolena a u objektu služby Active Directory.
 
-* Pokusy o tooretrieve a zobrazení výsledků hello hello poslední pokus o toosynchronize hello hesla pro objekt hello.
+* Pokusí se načíst a zobrazit výsledky poslední pokus o synchronizaci hesla pro objekt.
 
-Hello následující diagram znázorňuje hello výsledky rutiny hello při řešení potíží s synchronizace hesel pro jediný objekt:
+Následující diagram znázorňuje výsledky rutiny při řešení potíží s synchronizace hesel pro jediný objekt:
 
 ![Výstup diagnostiky pro synchronizaci hesel - jednoho objektu.](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phssingleobjectgeneral.png)
 
-Hello zbývající část tohoto oddílu popisuje konkrétní výsledků vrácených rutinou hello a odpovídající problémy.
+Zbývající část tohoto oddílu popisuje konkrétní výsledky vrácené rutiny a odpovídající problémy.
 
-#### <a name="hello-active-directory-object-isnt-exported-tooazure-ad"></a>Hello objektu služby Active Directory není exportovaný tooAzure AD
-Synchronizace hesel pro tento účet místní služby Active Directory se nezdaří, protože neexistuje žádný odpovídající objektů v klientovi Azure AD hello. se vrátí Hello následující chybě:
+#### <a name="the-active-directory-object-isnt-exported-to-azure-ad"></a>Objekt služby Active Directory není exportovány do služby Azure AD
+Synchronizace hesel pro tento účet místní služby Active Directory se nezdaří, protože neexistuje žádný odpovídající objektů v klientovi Azure AD. Je vrácena následující chyba:
 
 ![Chybí objekt Azure AD](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phssingleobjectnotexported.png)
 
 #### <a name="user-has-a-temporary-password"></a>Uživatel má dočasné heslo.
-Azure AD Connect v současné době nepodporuje synchronizaci dočasná hesla s Azure AD. Heslo je považován za toobe dočasné Pokud hello **při dalším přihlášení změnit heslo** je možnost nastavena na uživatele služby Active Directory v místě hello. se vrátí Hello následující chybě:
+Azure AD Connect v současné době nepodporuje synchronizaci dočasná hesla s Azure AD. Heslo se považuje za dočasnou Pokud **při dalším přihlášení změnit heslo** je možnost nastavena na místní uživatele služby Active Directory. Je vrácena následující chyba:
 
 ![Dočasné heslo není exportovali.](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phssingleobjecttemporarypassword.png)
 
-#### <a name="results-of-last-attempt-toosynchronize-password-arent-available"></a>Nejsou k dispozici, výsledky poslední pokus o toosynchronize heslo
-Ve výchozím nastavení ukládá Azure AD Connect hello výsledky pokusů o zadání synchronizace hesla sedm dní. Pokud nejsou k dispozici pro objekt služby Active Directory hello vybrané žádné výsledky, je vrácena hello následující upozornění:
+#### <a name="results-of-last-attempt-to-synchronize-password-arent-available"></a>Výsledky poslední pokus o synchronizaci hesla nejsou k dispozici
+Ve výchozím nastavení Azure AD Connect ukládá výsledky pokusů o zadání synchronizace hesla sedm dní. Pokud žádné výsledky nejsou dostupné pro vybraný objekt služby Active Directory, se vrátí následující upozornění:
 
 ![Výstup diagnostiky pro jediný objekt - žádná historie synchronizace hesla](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phssingleobjectnohistory.png)
 
 
 ## <a name="no-passwords-are-synchronized-manual-troubleshooting-steps"></a>Žádná hesla se synchronizují: Ruční postup řešení potíží
-Postupujte podle těchto kroků toodetermine, proč jsou synchronizovány žádná hesla:
+Postupujte podle těchto kroků, chcete-li zjistit, proč jsou synchronizovány žádná hesla:
 
-1. Je server hello Connect v [pracovním režimu](active-directory-aadconnectsync-operations.md#staging-mode)? Server v pracovní režimu nebyla synchronizována všechna hesla.
+1. Je server Connect v [pracovním režimu](active-directory-aadconnectsync-operations.md#staging-mode)? Server v pracovní režimu nebyla synchronizována všechna hesla.
 
-2. Spusťte skript hello hello [získat stav hello nastavení synchronizace hesla](#get-the-status-of-password-sync-settings) části. Poskytuje přehled o konfiguraci synchronizace hesel hello.  
+2. Spusťte skript [získat stav nastavení synchronizace hesla](#get-the-status-of-password-sync-settings) části. Poskytuje přehled o konfiguraci synchronizace hesel.  
 
     ![Výstup skriptu prostředí PowerShell z nastavení synchronizace hesla](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/psverifyconfig.png)  
 
-3. Pokud není povolená funkce hello ve službě Azure AD, nebo pokud není povolené stav kanál synchronizace hello, spusťte Průvodce instalací Connect hello. Vyberte **přizpůsobit možnosti synchronizace**a zrušte výběr synchronizaci hesel. Tato změna dočasně zakáže funkci hello. Potom spusťte znovu Průvodce hello a znovu povolte synchronizaci hesla. Spusťte skript hello znovu tooverify, který hello konfigurace je správná.
+3. Pokud není povolená funkce ve službě Azure AD, nebo pokud není povolené kanál stav synchronizace, spusťte Průvodce instalací služby Connect. Vyberte **přizpůsobit možnosti synchronizace**a zrušte výběr synchronizaci hesel. Tato změna dočasně zakáže funkci. Potom spusťte znovu Průvodce a znovu povolte synchronizaci hesla. Spuštění skriptu znovu k ověření, že konfigurace je správná.
 
-4. Vyhledejte v protokolu událostí hello chyby. Podívejte se na následující události, které by mohly ukazovat na problém hello:
-    * Zdroje: ID "Synchronizace adresáře": 0, 611, 652, 655 těchto událostí došlo k potížím. připojení. zprávy protokolu událostí Hello obsahuje informace doménové struktury, kde došlo k potížím. Další informace najdete v tématu [problém s připojením k](#connectivity problem).
+4. Vyhledejte v protokolu událostí pro chyby. Podívejte se na následující události, které by mohly ukazovat na problém:
+    * Zdroje: ID "Synchronizace adresáře": 0, 611, 652, 655 těchto událostí došlo k potížím. připojení. Zprávy protokolu událostí obsahuje informace doménové struktuře, kde došlo k potížím. Další informace najdete v tématu [problém s připojením k](#connectivity problem).
 
-5. Pokud se neobjevil žádný prezenční signál nebo nic jiného fungovala, spusťte [spustit úplnou synchronizaci hesel všech](#trigger-a-full-sync-of-all-passwords). Spusťte skript hello pouze jednou.
+5. Pokud se neobjevil žádný prezenční signál nebo nic jiného fungovala, spusťte [spustit úplnou synchronizaci hesel všech](#trigger-a-full-sync-of-all-passwords). Skript spusťte jenom jednou.
 
-6. V tématu hello [řešení potíží s jeden objekt, který není synchronizace hesel](#one-object-is-not-synchronizing-passwords) části.
+6. Najdete v článku [řešení potíží s jeden objekt, který není synchronizace hesel](#one-object-is-not-synchronizing-passwords) části.
 
 ### <a name="connectivity-problems"></a>Potíže s připojením k
 
 Máte připojení k Azure AD?
 
-Účet hello mají požadovaná oprávnění tooread hello hodnot hash hesel ve všech doménách? Pokud jste nainstalovali Connect pomocí expresního nastavení, musí být hello oprávnění již správné. 
+Má účet požadovaná oprávnění ke čtení hodnot hash hesel ve všech doménách? Pokud jste nainstalovali Connect pomocí expresního nastavení, oprávnění by měl být již správné. 
 
-Pokud jste použili vlastní instalaci, nastavte oprávnění hello ručně pomocí tohoto postupu hello následující:
+Pokud jste použili vlastní instalaci, nastavte oprávnění ručně následujícím způsobem:
     
-1. toofind hello účet používaný službou hello konektor služby Active Directory, spuštění **Synchronization Service Manager**. 
+1. Chcete-li najít má účet používaný službou konektoru služby Active Directory, spusťte **Synchronization Service Manager**. 
  
-2. Přejděte příliš**konektory**a poté vyhledejte místní doménové struktuře služby Active Directory hello řešení potíží. 
+2. Přejděte na **konektory**a poté vyhledejte doménové struktury služby Active Directory místní řešení potíží. 
  
-3. Vyberte konektor hello a pak klikněte na **vlastnosti**. 
+3. Vyberte konektor a potom klikněte na **vlastnosti**. 
  
-4. Přejděte příliš**připojit doménové struktury Directory tooActive**.  
+4. Přejděte na **připojit k doménové struktuře služby Active Directory**.  
     
     ![Účet používaný službou konektoru služby Active Directory](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/connectoraccount.png)  
-    Všimněte si hello uživatelské jméno a hello domény, kde je umístěn účet hello.
+    Všimněte si, uživatelské jméno a doménu, kde je umístěn účet.
     
-5. Spustit **Active Directory Users and Computers**a potom ověřte, zda má účet hello jste našli dříve hello postupujte podle oprávněními nastavenými v kořenovém adresáři hello všechny domény v doménové struktuře:
+5. Spustit **Active Directory Users and Computers**a potom ověřte, zda má účet jste našli dříve oprávnění postupujte podle kroků nastavte v kořenovém adresáři všechny domény v doménové struktuře:
     * Replikovat změny adresáře
     * Replikace adresáře všechny změny
 
-6. Jsou hello řadiče domény dostupný přes Azure AD Connect? Pokud hello připojit server se nemůže připojit tooall řadiče domény, nakonfigurujte **používat jenom upřednostňovaného řadiče domény**.  
+6. Jsou dostupné přes Azure AD Connect řadiče domény? Pokud server připojit se nelze připojit na všechny řadiče domény, nakonfigurujte **používat jenom upřednostňovaného řadiče domény**.  
     
     ![Řadič domény používané konektorem služby Active Directory](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/preferreddc.png)  
     
-7. Přejděte zpět příliš**Synchronization Service Manager** a **konfigurace oddílu adresáře**. 
+7. Přejděte zpět na **Synchronization Service Manager** a **konfigurace oddílu adresáře**. 
  
-8. Vyberte doménu v **Vybrat oddíly adresářů**, vyberte hello **používat jenom řadiče domény upřednostňované** zaškrtněte políčko a potom klikněte na **konfigurace**. 
+8. Vyberte doménu v **Vybrat oddíly adresářů**, vyberte **používat jenom řadiče domény upřednostňované** zaškrtněte políčko a potom klikněte na **konfigurace**. 
 
-9. V seznamu hello zadejte hello řadiče domény, které by měly používat Connect pro synchronizaci hesel. Hello stejný seznam se používá pro import a export také. Proveďte tyto kroky pro všechny domény.
+9. V seznamu zadejte řadiče domény, které by měly používat Connect pro synchronizaci hesel. Stejný seznam se používá pro import a export také. Proveďte tyto kroky pro všechny domény.
 
-10. Pokud hello skript je ukázkou, že neexistuje žádný prezenční signál, spusťte skript hello [spustit úplnou synchronizaci hesel všech](#trigger-a-full-sync-of-all-passwords).
+10. Pokud skript ukazuje, že neexistuje žádný prezenční signál, spusťte skript v [spustit úplnou synchronizaci hesel všech](#trigger-a-full-sync-of-all-passwords).
 
 ## <a name="one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps"></a>Jeden objekt není synchronizace hesel: Ruční postup řešení potíží
-Můžete snadno potíže heslo synchronizace kontrolou hello stavem objektu.
+Můžete snadno potíže heslo synchronizace kontrolou stavu objektu.
 
-1. V **Active Directory Users and Computers**, vyhledejte hello uživatele a potom ověřte, že hello **musí uživatel změnit heslo při příštím přihlášení** zaškrtnutí políčka.  
+1. V **Active Directory Users and Computers**, vyhledejte uživatele a ověřte, že **musí uživatel změnit heslo při příštím přihlášení** zaškrtnutí políčka.  
 
     ![Produktivní hesla služby Active Directory](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/adprodpassword.png)  
 
-    Pokud je zaškrtnuto políčko hello, požádejte uživatele toosign hello v a změnit heslo hello. Dočasná hesla nejsou synchronizovány s Azure AD.
+    Pokud je zaškrtnuté políčko, požádejte uživatele přihlásit a změnit heslo. Dočasná hesla nejsou synchronizovány s Azure AD.
 
-2. Pokud správná hello hesla ve službě Active Directory, postupujte podle hello uživatele v synchronizační modul hello. Podle následující hello uživatele z místní služby Active Directory tooAzure AD se zobrazí, zda je u objektu hello popisný chyba.
+2. Pokud ve službě Active Directory správné heslo, postupujte podle uživatele v synchronizační modul. Pomocí následujících uživatele z místní služby Active Directory do Azure AD, se zobrazí, zda je u objektu popisný chyba.
 
-    a. Spustit hello [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md).
+    a. Spuštění [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md).
 
     b. Klikněte na tlačítko **konektory**.
 
-    c. Vyberte hello **konektor služby Active Directory** kde se nachází hello uživatele.
+    c. Vyberte **konektor služby Active Directory** kde se uživatel nachází.
 
     d. Vyberte **hledání prostoru konektoru**.
 
-    e. V hello **oboru** vyberte **rozlišující název nebo ukotvení**a pak zadejte úplný název DN hello hello uživatele řešení potíží.
+    e. V **oboru** vyberte **rozlišující název nebo ukotvení**a pak zadejte úplný název DN uživatele řešení potíží.
 
     ![Vyhledejte uživatele v prostoru konektoru s rozlišujícím názvem](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/searchcs.png)  
 
-    f. Vyhledejte uživatele hello hledáte a potom klikněte na **vlastnosti** toosee všechny hello atributy. Pokud není uživatel hello ve výsledku hledání hello, ověřte vaší [pravidla filtrování](active-directory-aadconnectsync-configure-filtering.md) a ujistěte se, že spustíte [použít a ověřte změny](active-directory-aadconnectsync-configure-filtering.md#apply-and-verify-changes) pro uživatele tooappear hello v připojení.
+    f. Vyhledejte uživatele, které hledáte a potom klikněte na **vlastnosti** zobrazíte všechny atributy. Pokud uživatel není ve výsledcích hledání, ověřte vaší [pravidla filtrování](active-directory-aadconnectsync-configure-filtering.md) a ujistěte se, že spustíte [použít a ověřte změny](active-directory-aadconnectsync-configure-filtering.md#apply-and-verify-changes) pro uživatele, než se objeví v připojení.
 
-    g. Klikněte na tlačítko toosee hello heslo synchronizace Podrobnosti objektu hello pro hello minulého týdne **protokolu**.  
+    g. Chcete-li zobrazit podrobnosti synchronizace hesla objektu za uplynulý týden, klikněte na tlačítko **protokolu**.  
 
     ![Podrobnosti protokolu objektu](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/csobjectlog.png)  
 
-    Pokud objekt protokolu hello je prázdná, Azure AD Connect byla hodnoty hash hesla hello nelze tooread ze služby Active Directory. Pokračovat v odstraňování problémů s [k chybám připojení](#connectivity-errors). Pokud se zobrazí jakoukoli jinou hodnotu než **úspěch**, najdete v tabulce toohello v [protokolu synchronizace hesla](#password-sync-log).
+    Pokud protokol objektu je prázdná, Azure AD Connect nelze číst hodnotu hash hesla ze služby Active Directory. Pokračovat v odstraňování problémů s [k chybám připojení](#connectivity-errors). Pokud se zobrazí jakoukoli jinou hodnotu než **úspěch**, naleznete v tabulce v [protokolu synchronizace hesla](#password-sync-log).
 
-    h. Vyberte hello **rodokmenu** kartě a ujistěte se, že minimálně jeden synchronizační pravidlo v hello **PasswordSync** sloupec je **True**. Ve výchozí konfiguraci hello hello název pravidla synchronizace hello je **v ze služby Active Directory - uživatele AccountEnabled**.  
+    h. Vyberte **rodokmenu** kartě a ujistěte se, že aspoň jeden synchronizační pravidlo v **PasswordSync** sloupec je **True**. Ve výchozím nastavení je název pravidla synchronizace **v ze služby Active Directory - uživatele AccountEnabled**.  
 
     ![Rodokmenu informací o uživateli](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/cspasswordsync.png)  
 
-    i. Klikněte na tlačítko **vlastnosti objektu úložiště Metaverse** toodisplay seznam atributů uživatele.  
+    i. Klikněte na tlačítko **vlastnosti objektu úložiště Metaverse** zobrazíte seznam atributů uživatele.  
 
     ![Informace o úložiště Metaverse](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/mvpasswordsync.png)  
 
-    Ověřte, zda je žádné **cloudFiltered** atribut přítomen. Ujistěte se, že hello domény atributy (domainFQDN a domainNetBios) obsahují hello očekávaných hodnot.
+    Ověřte, zda je žádné **cloudFiltered** atribut přítomen. Ujistěte se, že domény atributy (domainFQDN a domainNetBios) mají očekávaných hodnot.
 
-    j. Klikněte na tlačítko hello **konektory** kartě. Ujistěte se, že vidíte konektory tooboth místní služby Active Directory a Azure AD.
+    j. Klikněte **konektory** kartě. Ujistěte se, najdete v části konektory pro místní služby Active Directory a Azure AD.
 
     ![Informace o úložiště Metaverse](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/mvconnectors.png)  
 
-    kB. Vyberte hello řádek, který představuje Azure AD, klikněte na tlačítko **vlastnosti**a potom klikněte na hello **rodokmenu** objektu prostoru konektoru hello kartu. měl by tam mít odchozí pravidlo hello **PasswordSync** sloupec nastavit příliš**True**. Ve výchozí konfiguraci hello hello název pravidla synchronizace hello je **Out tooAAD - připojení uživatele k**.  
+    kB. Vyberte řádek, který představuje Azure AD, klikněte na tlačítko **vlastnosti**a klikněte **rodokmenu** kartě. Objekt konektoru místa měli odchozí pravidlo **PasswordSync** sloupec nastavený na **True**. Ve výchozím nastavení je název pravidla synchronizace **Out aad - připojení uživatele k**.  
 
     ![Dialogové okno Vlastnosti objektu prostoru konektoru](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/cspasswordsync2.png)  
 
 ### <a name="password-sync-log"></a>Protokol synchronizace hesla
-ve sloupci Stav Hello může mít hello následující hodnoty:
+Ve sloupci stav může mít následující hodnoty:
 
 | Status | Popis |
 | --- | --- |
 | Úspěch |Heslo se úspěšně synchronizoval. |
-| FilteredByTarget |Heslo se nastavuje příliš**musí uživatel změnit heslo při příštím přihlášení**. Heslo nebyl synchronizován. |
-| NoTargetConnection |Žádný objekt v úložišti metaverse hello nebo v prostoru konektoru hello Azure AD. |
-| SourceConnectorNotPresent |Žádný objekt v prostoru konektoru služby Active Directory v místě hello nalezen. |
-| TargetNotExportedToDirectory |nebyl ještě exportoval Hello objekt v hello prostoru konektoru služby Azure AD. |
+| FilteredByTarget |Heslo je nastaveno na **musí uživatel změnit heslo při příštím přihlášení**. Heslo nebyl synchronizován. |
+| NoTargetConnection |Žádný objekt v úložišti metaverse nebo v prostoru konektoru služby Azure AD. |
+| SourceConnectorNotPresent |Žádný objekt v prostoru konektoru místní služby Active Directory nalezen. |
+| TargetNotExportedToDirectory |Objekt v prostoru konektoru služby Azure AD nebyl dosud byla exportována. |
 | MigratedCheckDetailsForMoreInfo |Položka protokolu byl vytvořen ještě před sestavení 1.0.9125.0 a je zobrazen v stav starší verze. |
 | Chyba |Služba vrátila neznámou chybu. |
-| Neznámý |Došlo k chybě při pokusu o tooprocess dávky hodnot hash hesel.  |
+| Neznámý |Došlo k chybě při pokusu o zpracování dávky hodnot hash hesel.  |
 | MissingAttribute |Konkrétní atributy (například hodnota hash protokolu Kerberos) vyžaduje Azure AD Domain Services nejsou k dispozici. |
-| RetryRequestedByTarget |Konkrétní atributy (například hodnota hash protokolu Kerberos) vyžaduje Azure AD Domain Services nebyly k dispozici dříve. Hodnota hash hesla pokusu o tooresynchronize hello uživatele Přišla žádost. |
+| RetryRequestedByTarget |Konkrétní atributy (například hodnota hash protokolu Kerberos) vyžaduje Azure AD Domain Services nebyly k dispozici dříve. Je proveden pokus o opakovanou synchronizaci hodnoty hash hesla uživatele. |
 
-## <a name="scripts-toohelp-troubleshooting"></a>Řešení potíží s toohelp skriptů
+## <a name="scripts-to-help-troubleshooting"></a>Skripty, které pomůžou řešení potíží
 
-### <a name="get-hello-status-of-password-sync-settings"></a>Získat stav hello nastavení synchronizace hesla
+### <a name="get-the-status-of-password-sync-settings"></a>Načíst stav nastavení synchronizace hesla
 ```
 Import-Module ADSync
 $connectors = Get-ADSyncConnector
@@ -314,7 +314,7 @@ if ($aadConnectors -ne $null -and $adConnectors -ne $null)
     }
     else
     {
-        Write-Warning "More than one Azure AD Connectors found. Please update hello script toouse hello appropriate Connector."
+        Write-Warning "More than one Azure AD Connectors found. Please update the script to use the appropriate Connector."
     }
 }
 Write-Host
@@ -331,9 +331,9 @@ Write-Host
 
 #### <a name="trigger-a-full-sync-of-all-passwords"></a>Spustit úplnou synchronizaci všech hesel
 > [!NOTE]
-> Tento skript spusťte jenom jednou. Pokud potřebujete toorun je více než jednou, jiný problém hello je. tootroubleshoot hello problému, kontaktujte podporu společnosti Microsoft.
+> Tento skript spusťte jenom jednou. Pokud potřebujete spustit více než jednou, je něco jiného problému. K vyřešení tohoto problému, kontaktujte podporu společnosti Microsoft.
 
-Úplnou synchronizaci všech hesel můžete aktivovat pomocí hello následující skript:
+Pomocí následujícího skriptu můžete aktivovat úplnou synchronizaci všech hesel:
 
 ```
 $adConnector = "<CASE SENSITIVE AD CONNECTOR NAME>"

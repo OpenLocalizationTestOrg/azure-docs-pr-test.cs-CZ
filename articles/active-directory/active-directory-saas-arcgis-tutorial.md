@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s ArcGIS Online | Microsoft Docs'
-description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a ArcGIS Online."
+description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ArcGIS Online."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,117 +13,117 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: jeedes
-ms.openlocfilehash: f3dd55d798cf3256fb2758e011f33946baa405ce
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: df72270ca6443b456c079b22425f1660aa522389
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>Kurz: Azure Active Directory integrace s ArcGIS Online
 
-V tomto kurzu zjistíte, jak toointegrate ArcGIS Online se službou Azure Active Directory (Azure AD).
+V tomto kurzu zjistěte, jak integrovat ArcGIS Online s Azure Active Directory (Azure AD).
 
-Integrace ArcGIS Online s Azure AD poskytuje hello následující výhody:
+Integrace ArcGIS Online s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup tooArcGIS Online
-- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooArcGIS Online (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup k ArcGIS Online
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k ArcGIS Online (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 <!--## Overview
 
-tooenable single sign-on with ArcGIS Online, it must be configured toouse Azure Active Directory as an identity provider. This guide provides information and tips on how tooperform this configuration in ArcGIS Online.
+To enable single sign-on with ArcGIS Online, it must be configured to use Azure Active Directory as an identity provider. This guide provides information and tips on how to perform this configuration in ArcGIS Online.
 
 >[!Note]: 
->This embedded guide is brand new in hello new Azure portal, and we’d love toohear your thoughts. Use hello Feedback ? button at hello top of hello portal tooprovide feedback. hello older guide for using hello [Azure classic portal](https://manage.windowsazure.com) tooconfigure this application can be found [here](https://github.com/Azure/AzureAD-App-Docs/blob/master/articles/en-us/_/sso_configure.md).-->
+>This embedded guide is brand new in the new Azure portal, and we’d love to hear your thoughts. Use the Feedback ? button at the top of the portal to provide feedback. The older guide for using the [Azure classic portal](https://manage.windowsazure.com) to configure this application can be found [here](https://github.com/Azure/AzureAD-App-Docs/blob/master/articles/en-us/_/sso_configure.md).-->
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-tooconfigure integrace Azure AD s ArcGIS Online, je třeba hello následující položky:
+Konfigurace integrace Azure AD s ArcGIS Online, potřebujete následující položky:
 
 - Předplatné služby Azure AD
 - ArcGIS Online jednotného přihlašování povolené předplatné
 
 > [!NOTE]
-> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
+Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání ArcGIS Online z Galerie hello
+1. Přidání ArcGIS Online z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-arcgis-online-from-hello-gallery"></a>Přidání ArcGIS Online z Galerie hello
-tooconfigure hello integrace ArcGIS Online do služby Azure AD, je nutné tooadd ArcGIS Online hello Galerie tooyour seznamu spravovaných aplikací SaaS.
+## <a name="adding-arcgis-online-from-the-gallery"></a>Přidání ArcGIS Online z Galerie
+Při konfiguraci integrace služby ArcGIS Online do služby Azure AD, musíte přidat ArcGIS Online z Galerie si na seznam spravovaných aplikací SaaS.
 
-**tooadd ArcGIS Online z Galerie hello, proveďte následující kroky hello:**
+**Pokud chcete přidat ArcGIS Online z galerie, proveďte následující kroky:**
 
-1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
+1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
+2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Klikněte na tlačítko **novou aplikaci** tlačítka v horní části hello hello dialogové okno tooadd nové aplikace.
+3. Klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno pro přidání nové aplikace.
 
     ![Aplikace][3]
 
-4. Hello vyhledávacího pole zadejte **ArcGIS Online**.
+4. Do vyhledávacího pole zadejte **ArcGIS Online**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-arcgis-tutorial/tutorial_arcgisonline_search.png)
 
-5. Na panelu výsledků hello vyberte **ArcGIS Online**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.
+5. Na panelu výsledků vyberte **ArcGIS Online**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-arcgis-tutorial/tutorial_arcgisonline_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s ArcGIS Online na základě testovací uživatele, nazývá "Britta Simon."
 
-Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v ArcGIS Online je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v ArcGIS Online musí toobe navázat.
+Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v ArcGIS Online je pro uživatele ve službě Azure AD. Jinými slovy musí navázat vztah propojení mezi uživatele Azure AD a související uživatelské v ArcGIS Online.
 
-Přiřazením hello hodnotu hello je vytvořen vztah tento odkaz **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** v ArcGIS Online.
+Tento vztah propojení se navazuje se hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v ArcGIS Online.
 
-tooconfigure a testu Azure AD jednotné přihlašování s ArcGIS Online, je třeba toocomplete hello stavební bloky následující:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s ArcGIS Online, musíte dokončit následující stavební bloky:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření ArcGIS Online testovacího uživatele](#creating-an-arcgis-online-test-user)**  -toohave protějšek Britta Simon v ArcGIS Online, které je propojené toohello Azure AD reprezentace uživatele.
-4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření ArcGIS Online testovacího uživatele](#creating-an-arcgis-online-test-user)**  – Pokud chcete mít protějšek Britta Simon v ArcGIS Online propojeném s Azure AD reprezentace daného uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci ArcGIS Online.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci ArcGIS Online.
 
-**tooconfigure Azure AD jednotné přihlašování s ArcGIS Online, proveďte následující kroky hello:**
+**Ke konfiguraci Azure AD jednotné přihlašování s ArcGIS Online, proveďte následující kroky:**
 
-1. V portálu Azure, na hello hello **ArcGIS Online** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na portálu Azure na **ArcGIS Online** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
+2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-arcgis-tutorial/tutorial_arcgisonline_samlbase.png)
 
-3. Na hello **ArcGIS Online domény a adresy URL** část, proveďte následující krok hello:
+3. Na **ArcGIS Online domény a adresy URL** část, proveďte následující krok:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-arcgis-tutorial/tutorial_arcgisonline_url.png)
 
-    V hello **přihlašovací adresa URL** textovému poli, typ hello hodnotu pomocí hello následující vzoru:`https://<company>.maps.arcgis.com`
+    V **přihlašovací adresa URL** textovému poli, zadejte hodnotu pomocí následujícího vzorce:`https://<company>.maps.arcgis.com`
 
     > [!NOTE] 
-    > Tato hodnota není skutečné hello. Aktualizujte tuto hodnotu s hello skutečná adresa URL přihlašování. Obraťte se na [tým podpory Online klienta ArcGIS](http://support.esri.com/) tooget tuto hodnotu. 
+    > Tato hodnota není reálné. Aktualizujte tuto hodnotu s skutečná adresa URL přihlašování. Obraťte se na [tým podpory Online klienta ArcGIS](http://support.esri.com/) získat tuto hodnotu. 
 
-4. Na hello **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor XML hello ve vašem počítači.
+4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor XML ve vašem počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-arcgis-tutorial/tutorial_arcgisonline_certificate.png) 
 
@@ -145,61 +145,61 @@ V této části můžete povolit Azure AD jednotné přihlašování v hello por
 
     ![Přihlášení Enterprise](./media/active-directory-saas-arcgis-tutorial/ic784744.png "Enterprise přihlášení")
 
-10. Na hello **nastavit zprostředkovatele Identity** konfigurace proveďte hello následující kroky:
+10. Na **nastavit zprostředkovatele Identity** konfigurace proveďte následující kroky:
    
     ![Nastavení zprostředkovatele Identity](./media/active-directory-saas-arcgis-tutorial/ic784745.png "nastavit zprostředkovatele Identity")
    
-    a. V hello **název** textovému poli, zadejte název vaší organizace.
+    a. V **název** textovému poli, zadejte název vaší organizace.
 
-    b. Pro **Metadata pro hello zprostředkovatele Identity Enterprise budou předávána prostřednictvím**, vyberte **A soubor**.
+    b. Pro **Metadata pro zprostředkovatele Identity Enterprise budou předávána prostřednictvím**, vyberte **A soubor**.
 
-    c. tooupload váš soubor stažený metadata, klikněte na tlačítko **zvolte soubor**.
+    c. Chcete-li nahrát soubor stažený metadata, klikněte na tlačítko **zvolte soubor**.
 
     d. Klikněte na tlačítko **zprostředkovatele IDENTITY sadu**.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
+Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
+**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
 
-1. V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
+1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-arcgis-tutorial/create_aaduser_01.png) 
 
-2. Přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé** toodisplay hello seznam uživatelů.
+2. Přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé** zobrazíte seznam uživatelů.
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-arcgis-tutorial/create_aaduser_02.png) 
 
-3. V horní části hello hello dialogového okna klikněte na tlačítko **přidat** tooopen hello **uživatele** dialogové okno.
+3. V horní části okna klikněte na tlačítko **přidat** otevřete **uživatele** dialogové okno.
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-arcgis-tutorial/create_aaduser_03.png) 
 
-4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
+4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-arcgis-tutorial/create_aaduser_04.png) 
 
-    a. V hello **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textovému poli, typ **BrittaSimon**.
 
-    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z Britta Simon.
+    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z Britta Simon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-an-arcgis-online-test-user"></a>Vytvoření ArcGIS Online testovacího uživatele
 
-V pořadí tooenable Azure AD Uživatelé toolog do ArcGIS Online musí být zřízená do ArcGIS Online.  
-V případě hello ArcGIS online zřizování je ruční úloha.
+Pokud chcete povolit uživatelům Azure AD přihlášení do ArcGIS Online, musí být zřízená do ArcGIS Online.  
+V případě ArcGIS Online zřizování je ruční úloha.
 
-**tooprovision uživatelský účet, proveďte následující kroky hello:**
+**K poskytnutí uživatelského účtu, proveďte následující kroky:**
 
-1. Přihlaste se tooyour **ArcGIS** klienta.
+1. Přihlaste se k vaší **ArcGIS** klienta.
 
 2. Klikněte na tlačítko **POZVAT členy**.
    
@@ -209,37 +209,37 @@ V případě hello ArcGIS online zřizování je ruční úloha.
    
     ![Automaticky přidat členy](./media/active-directory-saas-arcgis-tutorial/ic784748.png "automaticky přidat členy")
 
-4. Na hello **členy** dialogové okno proveďte hello následující kroky:
+4. Na **členy** dialogové okno stránky, proveďte následující kroky:
    
      ![Přidat a zkontrolovat](./media/active-directory-saas-arcgis-tutorial/ic784749.png "přidat a zkontrolujte")
     
-     a. Zadejte hello **e-mailu**, **křestní jméno**, a **příjmení** platného účtu AAD chcete tooprovision.
+     a. Zadejte **e-mailu**, **křestní jméno**, a **příjmení** platného účtu AAD chcete zřídit.
   
      b. Klikněte na tlačítko **přidat a ZKONTROLUJTE**.
-5. Zkontrolujte data hello jste zadali a pak klikněte na tlačítko **přidat členy**.
+5. Zkontrolujte data, která jste zadali a pak klikněte na tlačítko **přidat členy**.
    
     ![Přidat člena](./media/active-directory-saas-arcgis-tutorial/ic784750.png "přidat člena")
         
     > [!NOTE]
-    > Držitel účtu Azure Active Directory Hello bude dostávat e-mailu a postupujte podle tooconfirm odkaz svého účtu před stane aktivní.
+    > Držitel účtu Azure Active Directory bude dostávat e-mailu a postupujte podle odkaz potvrďte svůj účet, pak se změní na aktivní.
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
+### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte tak, že udělíte přístup tooArcGIS Online toouse Britta Simon Azure jednotné přihlašování.
+V této části povolíte Britta Simon tak, že udělíte přístup k ArcGIS Online používat Azure jednotné přihlašování.
 
 ![Přiřadit uživatele][200] 
 
-**tooassign Britta Simon tooArcGIS Online, proveďte následující kroky hello:**
+**Pokud chcete přiřadit Britta Simon ArcGIS Online, proveďte následující kroky:**
 
-1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikace hello vyberte **ArcGIS Online**.
+2. V seznamu aplikací vyberte **ArcGIS Online**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-arcgis-tutorial/tutorial_arcgisonline_app.png) 
 
-3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
+3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
@@ -247,7 +247,7 @@ V této části povolíte tak, že udělíte přístup tooArcGIS Online toouse B
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -255,14 +255,14 @@ V této části povolíte tak, že udělíte přístup tooArcGIS Online toouse B
     
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.
+V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
-Po kliknutí na tlačítko hello ArcGIS Online dlaždice v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour ArcGIS Online aplikace.
-Další informace o hello přístupového panelu najdete v tématu [toohello Úvod přístupový Panel](active-directory-saas-access-panel-introduction.md).
+Když kliknete na dlaždici ArcGIS Online na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci ArcGIS Online.
+Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

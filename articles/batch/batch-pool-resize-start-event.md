@@ -1,5 +1,5 @@
 ---
-title: "AAA \"počáteční událost změny velikosti fondu Azure Batch | Microsoft Docs\""
+title: "Počáteční událost velikosti fondu Azure Batch | Microsoft Docs"
 description: "Referenční dokumentace pro událost počáteční změny velikosti fondu Batch."
 services: batch
 author: tamram
@@ -12,17 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: tamram
-ms.openlocfilehash: 2ca2a4f1195c3f785ae5b051b63340f70eecbc22
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 826cd984d26b923ba38562e05a2e75c399be9121
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="pool-resize-start-event"></a>Událost spuštění změny velikosti fondu
 
- Tato událost je vygenerované při bylo zahájeno změny velikosti fondu. Vzhledem k tomu, že změny velikosti fondu hello je asynchronní událostí, můžete očekávat toobe fondu změny velikosti událost complete vygenerované po hello změnit velikost operace dokončí.
+ Tato událost je vygenerované při bylo zahájeno změny velikosti fondu. Vzhledem k tomu, že změny velikosti fondu je asynchronní událostí, můžete očekávat, že událost complete změny velikosti fondu pro vypuštění po dokončení operace změny velikosti.
 
- změnit velikost Hello následující ukázka, že zobrazuje hello tělo události spuštění změny velikosti fondu pro změnu velikosti fondu z 0 too2 uzlů s ruční.
+ Následující příklad ukazuje text počáteční událost změny velikosti fondu pro fondu změnu velikosti od 0 do 2 uzlů se ruční změny velikosti.
 
 ```
 {
@@ -37,9 +37,9 @@ ms.lasthandoff: 10/06/2017
 
 |Element|Typ|Poznámky|
 |-------------|----------|-----------|
-|poolId|Řetězec|Hello id fondu hello.|
-|nodeDeallocationOption|Řetězec|Určuje, kdy může odebrat uzly hello fondu, pokud zmenšování velikosti fondu hello.<br /><br /> Možné hodnoty:<br /><br /> **requeue** – ukončí se všechny spuštěné úlohy a znovu je. Hello úkoly se znovu spustí, když je povolena úloha hello. Odeberte uzly, jakmile úkoly ukončí.<br /><br /> **Ukončit** – ukončit spuštěné úkoly. Hello úkoly se znovu nespustí. Odeberte uzly, jakmile úkoly ukončí.<br /><br /> **taskcompletion** – povolit aktuálně spuštěné úlohy toocomplete. Plánovat žádné nové úkoly při čekání. Odeberte uzly po dokončení všech úloh.<br /><br /> **Retaineddata** – povolit aktuálně spuštěné úlohy toocomplete a potom počkejte, než všech úkolů tooexpire období uchovávání dat. Plánovat žádné nové úkoly při čekání. Odeberte uzly, pokud vypršela platnost období uchovávání všech úloh.<br /><br /> Hello výchozí hodnota je requeue.<br /><br /> Pokud je zvýšení velikosti fondu hello pak hello hodnota příliš**neplatný**.|
-|currentDedicated|Int32|Hello počet výpočetních uzlů aktuálně přiřazená toohello fondu.|
-|targetDedicated|Int32|Hello počet výpočetních uzlů, které jsou požadovány pro fond hello.|
-|enableAutoScale|BOOL|Určuje, zda velikost fondu hello automaticky přizpůsobí v čase.|
-|isAutoPool|BOOL|Speficies jestli hello fondu se vytvořil prostřednictvím mechanismu AutoPool úlohy.|
+|poolId|Řetězec|Id fondu.|
+|nodeDeallocationOption|Řetězec|Určuje, kdy může odebrat uzly ve fondu, pokud zmenšování velikosti fondu.<br /><br /> Možné hodnoty:<br /><br /> **requeue** – ukončí se všechny spuštěné úlohy a znovu je. Úkoly se znovu spustí, když bude povolena úloha. Odeberte uzly, jakmile úkoly ukončí.<br /><br /> **Ukončit** – ukončit spuštěné úkoly. Úkoly se znovu nespustí. Odeberte uzly, jakmile úkoly ukončí.<br /><br /> **taskcompletion** – povolit aktuálně spuštěných úloh k dokončení. Plánovat žádné nové úkoly při čekání. Odeberte uzly po dokončení všech úloh.<br /><br /> **Retaineddata** -povolit aktuálně spuštěných úkolů dokončily. pak počkejte, než všech úkolů období uchovávání dat vyprší. Plánovat žádné nové úkoly při čekání. Odeberte uzly, pokud vypršela platnost období uchovávání všech úloh.<br /><br /> Výchozí hodnota je requeue.<br /><br /> Pokud je zvýšení velikosti fondu, pak je hodnota nastavená **neplatný**.|
+|currentDedicated|Int32|Počet aktuálně přiřazená k fondu výpočetních uzlů.|
+|targetDedicated|Int32|Počet výpočetních uzlů, které jsou požadovány pro fond.|
+|enableAutoScale|BOOL|Určuje, zda velikost fondu automaticky přizpůsobí v čase.|
+|isAutoPool|BOOL|Speficies jestli fondu se vytvořil prostřednictvím mechanismu AutoPool úlohy.|

@@ -4,31 +4,34 @@
 ## [Záznamy a zóny DNS](dns-zones-records.md)
 ## [Delegování DNS s využitím Azure DNS](dns-domain-delegation.md)
 ## [Nejčastější dotazy k DNS](dns-faq.md)
+## [Použití privátních zón DNS](private-dns-overview.md)
 
 # Začínáme
 
 ## Vytvoření záznamu a zóny DNS
 ### [Azure Portal](dns-getstarted-portal.md)
-### [PowerShell](dns-getstarted-powershell.md)
+### [Azure PowerShell](dns-getstarted-powershell.md)
 ### [Azure CLI 1.0](dns-getstarted-cli-nodejs.md)
-### [Azure CLI 2.0](dns-getstarted-cli.md)
+### [Azure CLI](dns-getstarted-cli.md)
 
-## [Delegovat tooAzure vaší domény DNS](dns-delegate-domain-azure-dns.md)
+## Vytvoření privátní zóny DNS a záznamu
+### [PowerShell](private-dns-getstarted-powershell.md)
+## [Delegování domény do Azure DNS](dns-delegate-domain-azure-dns.md)
 ## [Vytvoření vlastních záznamů DNS pro webovou aplikaci](dns-web-sites-custom-domain.md)
 
 # Postup
 
 ## Správa zón DNS
 ### [Azure Portal](dns-operations-dnszones-portal.md)
-### [PowerShell](dns-operations-dnszones.md)
+### [Azure PowerShell](dns-operations-dnszones.md)
 ### [Azure CLI 1.0](dns-operations-dnszones-cli-nodejs.md)
-### [Azure CLI 2.0](dns-operations-dnszones-cli.md)
+### [Azure CLI](dns-operations-dnszones-cli.md)
 
 ## Správa záznamů DNS
 ### [Azure Portal](dns-operations-recordsets-portal.md)
-### [PowerShell](dns-operations-recordsets.md)
+### [Azure PowerShell](dns-operations-recordsets.md)
 ### [Azure CLI 1.0](dns-operations-recordsets-cli-nodejs.md)
-### [Azure CLI 2.0](dns-operations-recordsets-cli.md)
+### [Azure CLI](dns-operations-recordsets-cli.md)
 
 ## Správa reverzních záznamů DNS
 ### [Přehled](dns-reverse-dns-overview.md)
@@ -38,7 +41,7 @@
 ## [Import a export souboru zóny DNS](dns-import-export.md)
 ## [Integrace s ostatními službami Azure](dns-for-azure-services.md)
 ## [Ochrana záznamů a zón DNS](dns-protect-zones-recordsets.md)
-## [Automatizaci operací DNS s hello .NET SDK](dns-sdk.md)
+## [Automatizace operací DNS se sadou .NET SDK](dns-sdk.md)
 
 ## [Vlastní domény pro prostředky Azure](dns-custom-domain.md)
 ## Řešení potíží
@@ -46,7 +49,7 @@
 
 # Referenční informace
 ## [Ukázky kódu](https://azure.microsoft.com/en-us/resources/samples/?service=dns)
-## [PowerShell](/powershell/module/azurerm.dns)
+## [Azure PowerShell](/powershell/module/azurerm.dns)
 ## [Azure CLI](/cli/azure/network/dns)
 ## [.NET](/dotnet/api/microsoft.azure.management.dns.models)
 ## [Java](/java/api/com.microsoft.azure.management.dns)
@@ -61,7 +64,7 @@
 ## [Virtuální počítač](/azure/virtual-machines/)
 ## [Load Balancer](/azure/load-balancer/)
 ## [Traffic Manager](/azure/traffic-manager/)
-## [Web Apps](/azure/app-service-web/)
+## [Web Apps](/azure/app-service/)
 
 # Zdroje a prostředky
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/?category=networking)

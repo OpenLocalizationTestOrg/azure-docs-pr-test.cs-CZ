@@ -1,4 +1,4 @@
-1. Přihlášení toohello procesový server jako správce.
-2. Stáhněte si nejnovější verzi hello hello [Unified instalace](http://aka.ms/unifiedinstaller).
-3. Dvakrát klikněte na proces aktualizace hello toolaunch instalačního programu hello.
-4. Instalační program Hello zjistí hello různé součásti, které jsou nainstalované a je upgradovat na nejnovější verzi toohello.
+1. Přihlaste se k procesovému server jako správce.
+2. Stáhněte si nejnovější verzi [sjednocené instalace](http://aka.ms/unifiedinstaller).
+3. Poklikejte na instalační program a spusťte proces aktualizace.
+4. Instalační program zjistí jednotlivé instalované součásti a upgraduje je na nejnovější verzi.

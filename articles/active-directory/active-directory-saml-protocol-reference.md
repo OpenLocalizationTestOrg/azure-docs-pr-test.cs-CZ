@@ -1,6 +1,6 @@
 ---
-title: "referenční informace o protokolu AD SAML aaaAzure | Microsoft Docs"
-description: "Tento článek obsahuje přehled hello jednotné přihlašování a jeden Sign-Out SAML profily v Azure Active Directory."
+title: "Referenční informace o protokolu Azure AD SAML | Microsoft Docs"
+description: "Tento článek obsahuje přehled jednotného přihlašování a jeden Sign-Out SAML profily v Azure Active Directory."
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: priyamo
-ms.openlocfilehash: d540b8cd9352e3196a0f4a40f0070d0e61127bee
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7361d05850cf3ae997c0c186bf9a674c139f1f9e
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# Jak Azure Active Directory používá protokol SAML hello
-Azure Active Directory (Azure AD) používá hello uživatelům tootheir prostředí aplikace SAML 2.0 protokolu tooenable tooprovide jednotné přihlašování. Hello [jednotné přihlašování](active-directory-single-sign-on-protocol-reference.md) a [jedním odhlašování](active-directory-single-sign-out-protocol-reference.md) SAML profilů Azure AD vysvětlují, jak SAML kontrolní výrazy, protokoly a vazby používá služba Zprostředkovatel identity hello.
+# Jak Azure Active Directory používá protokol SAML
+Azure Active Directory (Azure AD) používá SAML 2.0 protokol umožnit aplikacím jednotnému přihlašování svým uživatelům. [Jednotné přihlašování](active-directory-single-sign-on-protocol-reference.md) a [jedním odhlašování](active-directory-single-sign-out-protocol-reference.md) SAML profilů Azure AD vysvětlují, jak se používají SAML kontrolní výrazy, protokoly a vazby ve službě zprostředkovatele identity.
 
-Protokol SAML vyžaduje zprostředkovatele identity hello (Azure AD) a hello služby zprostředkovatele (aplikace hello) tooexchange informace o sami.
+Protokol SAML vyžaduje zprostředkovatele identity (Azure AD) a poskytovatelem služeb (aplikace) k výměně informací o sami.
 
-Při registraci aplikace s Azure AD, vývojáři aplikace hello zaregistruje informací souvisejících s federační službou Azure AD. To zahrnuje hello **identifikátor URI pro přesměrování** aplikace hello.
+Při registraci aplikace s Azure AD, vývojáři aplikace zaregistruje informací souvisejících s federační službou Azure AD. To zahrnuje **identifikátor URI pro přesměrování** aplikace.
 
-Azure Active Directory zpřístupní konkrétního klienta a běžných (nezávislé na klienta) jeden přihlášení a jeden odhlašování koncových bodů. Představují tyto adresy URL adresovatelné umístění – nejsou právě identifikátory –, můžete přejít toohello koncový bod tooread hello metadat.
+Azure Active Directory zpřístupní konkrétního klienta a běžných (nezávislé na klienta) jeden přihlášení a jeden odhlašování koncových bodů. Představují tyto adresy URL adresovatelné umístění – nejsou právě identifikátory –, můžete přejít na koncový bod číst metadata.
 
-* koncový bod Hello konkrétního klienta se nachází v `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`.  Hello <TenantDomainName> zástupný symbol představuje registrovaný název domény nebo TenantID GUID klienta Azure AD. Například hello federačních metadat hello contoso.com klienta je v: https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
+* Koncový bod konkrétního klienta se nachází v `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`.  <TenantDomainName> Zástupný symbol představuje registrovaný název domény nebo TenantID GUID klienta Azure AD. Například federačních metadat contoso.com klienta je v: https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
 
-* koncový bod Hello nezávislé na klienta se nachází v `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`. V této adresa koncového bodu **běžné** se zobrazí místo název domény klienta nebo ID.
+* Koncový bod nezávislé na klienta se nachází v `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`. V této adresa koncového bodu **běžné** se zobrazí místo název domény klienta nebo ID.
 
-Informace o dokumentech hello federačních metadat, která publikuje Azure AD najdete v tématu [federačních metadat](active-directory-federation-metadata.md).
+Informace o dokumentech federačních metadat, která publikuje Azure AD najdete v tématu [federačních metadat](active-directory-federation-metadata.md).

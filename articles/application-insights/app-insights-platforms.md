@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: bwren
-ms.openlocfilehash: 14b363c934a018ce72be97d1a0b74a6c2210656e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d49ad2ff584f42c0e4732a5cff60d23cdf631512
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="developer-analytics-languages-platforms-and-integrations"></a>Developer Analytics: jazyky, platformy a integrace
 Tyto položky jsou implementace [Application Insights](app-insights-overview.md), o kterých jsme se dozvěděli. Zahrnují také některé, které dodávají třetí strany.
@@ -26,9 +26,9 @@ Tyto položky jsou implementace [Application Insights](app-insights-overview.md)
 * [C#|VB (.NET)](app-insights-asp-net.md)
 * [Java](app-insights-java-get-started.md)
 * [Webové stránky JavaScript](app-insights-javascript.md)
+* [Node.js](app-insights-nodejs.md)
 
 ## <a name="languages---community-supported"></a>Jazyky – podporované komunitou
-* [Node.js](https://github.com/Microsoft/ApplicationInsights-node.js)
 * [PHP](https://github.com/Microsoft/ApplicationInsights-PHP)
 * [Python](https://pypi.python.org/pypi/applicationinsights/0.1.0)
 * [Ruby](https://rubygems.org/gems/application_insights)
@@ -41,7 +41,7 @@ Tyto položky jsou implementace [Application Insights](app-insights-overview.md)
 * [Jádro ASP.NET](app-insights-asp-net-core.md)
 * [Android](https://github.com/Microsoft/ApplicationInsights-Android) (HockeyApp)
 * [Azure Web Apps](app-insights-azure-web-apps.md)
-* [Azure Cloud Services](app-insights-cloudservices.md)&amp;#151; včetně webových a pracovních rolí
+* [Azure Cloud Services](app-insights-cloudservices.md)&#151; včetně webových a pracovních rolí
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)
 * [Docker](app-insights-docker.md)
 * [Glimpse](https://azure.microsoft.com/blog/glimpse-application-insights/)
@@ -82,4 +82,4 @@ Tyto položky jsou implementace [Application Insights](app-insights-overview.md)
 * [Stream Analytics](app-insights-export-power-bi.md)
 
 ## <a name="projects"></a> Sestavte si vlastní sadu SDK
-Pokud není k dispozici ještě SDK pro váš jazyk nebo platformu, možná byste chtěli toobuild jeden? Prohlédněte si kód existující sady SDK, které jsou uvedené v hello hello hello [Application Insights SDK projektu na Githubu](https://github.com/Microsoft/AppInsights-Home).
+Pokud ještě není SDK k dispozici pro váš jazyk nebo platformu, možná si chcete jednu vytvořit? Prohlédněte si kód existující sady SDK, které jsou uvedeny v [Application Insights SDK projektu na Githubu](https://github.com/Microsoft/AppInsights-Home).

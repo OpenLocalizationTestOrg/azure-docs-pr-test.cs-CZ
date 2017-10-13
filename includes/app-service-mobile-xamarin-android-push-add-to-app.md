@@ -1,10 +1,10 @@
-1. Vytvořte novou třídu v hello projekt s názvem `ToDoBroadcastReceiver`.
-2. Přidat hello následující příkazy using příliš**ToDoBroadcastReceiver** třídy:
+1. Vytvořte novou třídu do projektu názvem `ToDoBroadcastReceiver`.
+2. Přidejte následující příkazy using do **ToDoBroadcastReceiver** třídy:
    
         using Gcm.Client;
         using Microsoft.WindowsAzure.MobileServices;
         using Newtonsoft.Json.Linq;
-3. Přidejte následující žádosti oprávnění mezi hello hello **pomocí** příkazů a hello **obor názvů** deklarace:
+3. Přidejte následující žádosti oprávnění mezi **pomocí** příkazy a **obor názvů** deklarace:
    
         [assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
         [assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
@@ -14,7 +14,7 @@
         [assembly: UsesPermission(Name = "android.permission.GET_ACCOUNTS")]
         [assembly: UsesPermission(Name = "android.permission.INTERNET")]
         [assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
-4. Nahradit stávající hello **ToDoBroadcastReceiver** definici s hello následující třídy:
+4. Nahradit existující **ToDoBroadcastReceiver** definici s následující třídy:
    
         [BroadcastReceiver(Permission = Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
         [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_MESSAGE }, 
@@ -25,14 +25,14 @@
         Categories = new string[] { "@PACKAGE_NAME@" })]
         public class ToDoBroadcastReceiver : GcmBroadcastReceiverBase<PushHandlerService>
         {
-            // Set hello Google app ID.
+            // Set the Google app ID.
             public static string[] senderIDs = new string[] { "<PROJECT_NUMBER>" };
         }
    
-    V hello výše kódu, je třeba nahradit  *`<PROJECT_NUMBER>`*  s číslem projektu hello při zřizování aplikace v portálu pro vývojáře Google hello přiřadil Google. 
-5. V souboru projektu ToDoBroadcastReceiver.cs hello, přidejte následující kód, který definuje hello hello **PushHandlerService** třídy:
+    Ve výše uvedeném kódu, je třeba nahradit  *`<PROJECT_NUMBER>`*  s číslem projektu Google přiřazen při zřizování aplikace v portálu pro vývojáře Google. 
+5. V souboru projektu ToDoBroadcastReceiver.cs, přidejte následující kód, který definuje **PushHandlerService** třídy:
    
-        // hello ServiceAttribute must be applied toohello class.
+        // The ServiceAttribute must be applied to the class.
         [Service] 
         public class PushHandlerService : GcmServiceBase
         {
@@ -41,26 +41,26 @@
             public PushHandlerService() : base(ToDoBroadcastReceiver.senderIDs) { }
         }
    
-    Všimněte si, že tato třída odvozená z **GcmServiceBase** a že hello **služby** atribut musí být použita toothis třídy.
+    Všimněte si, že tato třída odvozená z **GcmServiceBase** a že **služby** atributu se musí použít pro tuto třídu.
    
    > [!NOTE]
-   > Hello **GcmServiceBase** třída implementuje hello **OnRegistered()**, **OnUnRegistered()**, **OnMessage()** a  **OnError()** metody. Je nutné přepsat tyto metody v hello **PushHandlerService** třídy.
+   > **GcmServiceBase** třída implementuje **OnRegistered()**, **OnUnRegistered()**, **OnMessage()** a  **OnError()** metody. Je nutné přepsat tyto metody v **PushHandlerService** třídy.
    > 
    > 
-6. Přidejte následující kód toohello hello **PushHandlerService** třídu, která přepisuje hello **OnRegistered** obslužné rutiny události. 
+6. Přidejte následující kód, který **PushHandlerService** třídu, která přepisuje **OnRegistered** obslužné rutiny události. 
    
         protected override void OnRegistered(Context context, string registrationId)
         {
-            System.Diagnostics.Debug.WriteLine("hello device has been registered with GCM.", "Success!");
+            System.Diagnostics.Debug.WriteLine("The device has been registered with GCM.", "Success!");
    
-            // Get hello MobileServiceClient from hello current activity instance.
+            // Get the MobileServiceClient from the current activity instance.
             MobileServiceClient client = ToDoActivity.CurrentActivity.CurrentClient;
             var push = client.GetPush();
    
             // Define a message body for GCM.
             const string templateBodyGCM = "{\"data\":{\"message\":\"$(messageParam)\"}}";
    
-            // Define hello template registration as JSON.
+            // Define the template registration as JSON.
             JObject templates = new JObject();
             templates["genericMessage"] = new JObject
             {
@@ -69,11 +69,11 @@
    
             try
             {
-                // Make sure we run hello registration on hello same thread as hello activity, 
-                // tooavoid threading errors.
+                // Make sure we run the registration on the same thread as the activity, 
+                // to avoid threading errors.
                 ToDoActivity.CurrentActivity.RunOnUiThread(
    
-                    // Register hello template with Notification Hubs.
+                    // Register the template with Notification Hubs.
                     async () => await push.RegisterAsync(registrationId, templates));
    
                 System.Diagnostics.Debug.WriteLine(
@@ -86,29 +86,29 @@
             }
         }
    
-    Tato metoda používá hello vrátil GCM tooregister registrace ID s Azure pro nabízená oznámení. Značky lze přidat pouze toohello registrace po jejím vytvoření. Další informace najdete v tématu [postupy: Přidání značky tooa zařízení instalace tooenable nabízené na značky](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags).
-7. Přepsání hello **OnMessage** metoda v **PushHandlerService** s hello následující kód:
+    Tato metoda používá ID registrace vrácené GCM zaregistrovat pro nabízená oznámení pomocí Azure. Značky lze přidat pouze s registrací po jejím vytvoření. Další informace najdete v tématu [postupy: Přidání značek k instalaci zařízení povolit nabízené značky](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags).
+7. Přepsání **OnMessage** metoda v **PushHandlerService** následujícím kódem:
    
        protected override void OnMessage(Context context, Intent intent)
        {          
            string message = string.Empty;
    
-           // Extract hello push notification message from hello intent.
+           // Extract the push notification message from the intent.
            if (intent.Extras.ContainsKey("message"))
            {
                message = intent.Extras.Get("message").ToString();
                var title = "New item added:";
    
-               // Create a notification manager toosend hello notification.
+               // Create a notification manager to send the notification.
                var notificationManager = 
                    GetSystemService(Context.NotificationService) as NotificationManager;
    
-               // Create a new intent tooshow hello notification in hello UI. 
+               // Create a new intent to show the notification in the UI. 
                PendingIntent contentIntent = 
                    PendingIntent.GetActivity(context, 0, 
                    new Intent(this, typeof(ToDoActivity)), 0);              
    
-               // Create hello notification using hello builder.
+               // Create the notification using the builder.
                var builder = new Notification.Builder(context);
                builder.SetAutoCancel(true);
                builder.SetContentTitle(title);
@@ -117,12 +117,12 @@
                builder.SetContentIntent(contentIntent);
                var notification = builder.Build();
    
-               // Display hello notification in hello Notifications Area.
+               // Display the notification in the Notifications Area.
                notificationManager.Notify(1, notification);
    
            }
        }
-8. Přepsání hello **OnUnRegistered()** a **OnError()** metody s hello následující kód.
+8. Přepsání **OnUnRegistered()** a **OnError()** metody s následujícím kódem.
    
        protected override void OnUnRegistered(Context context, string registrationId)
        {
@@ -132,6 +132,6 @@
        protected override void OnError(Context context, string errorId)
        {
            System.Diagnostics.Debug.WriteLine(
-               string.Format("Error occurred in hello notification: {0}.", errorId));
+               string.Format("Error occurred in the notification: {0}.", errorId));
        }
 

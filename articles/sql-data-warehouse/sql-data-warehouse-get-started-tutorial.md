@@ -1,6 +1,6 @@
 ---
-title: "Začínáme aaaAzure SQL Data Warehouse – kurz | Microsoft Docs"
-description: "V tomto kurzu se naučíte, jak tooprovision a načtení dat do Azure SQL Data Warehouse. Taky poznáte hello základní informace o škálování, pozastavení a ladění."
+title: "Azure SQL Data Warehouse – kurz Začínáme | Dokumentace Microsoftu"
+description: "V tomto kurzu se naučíte, jak zřídit službu Azure SQL Data Warehouse a nahrát do ní data. Také se seznámíte se základními informacemi o škálování, pozastavení a ladění."
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
@@ -15,32 +15,32 @@ ms.workload: data-services
 ms.custom: quickstart
 ms.date: 01/26/2017
 ms.author: elbutter;barbkess
-ms.openlocfilehash: edd2a21b0fe49ca8e9792c7c512310339a822c55
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 39efa954fa1eb3d7d93dbeceac48b96d865349ab
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-sql-data-warehouse"></a>Začínáme s SQL Data Warehouse
 
-Tento kurz ukazuje, jak tooprovision a načtení dat do Azure SQL Data Warehouse. Taky poznáte hello základní informace o škálování, pozastavení a ladění. Jakmile budete hotovi, budete mít připravené tooquery a prozkoumat datového skladu.
+V tomto kurzu se dozvíte, jak zřídit službu Azure SQL Data Warehouse a nahrát do ní data. Také se seznámíte se základními informacemi o škálování, pozastavení a ladění. Po dokončení kurzu budete připraveni na dotazování a prozkoumávání svého datového skladu.
 
-**Odhadovaný čas toocomplete:** Toto je začátku do konce kurz s ukázkový kód, který trvá asi 30 minut toocomplete po jste splnili požadavky hello. 
+**Odhadovaný čas dokončení:** Toto je ucelený kurz s ukázkovým kódem, který po splnění požadavků zabere přibližně 30 minut. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Hello kurz předpokládá, že se seznámíte se základními koncepty SQL Data Warehouse. Pokud potřebujete úvodní informace, přečtěte si téma [Co je SQL Data Warehouse?](sql-data-warehouse-overview-what-is.md) 
+Kurz předpokládá znalost základních konceptů služby SQL Data Warehouse. Pokud potřebujete úvodní informace, přečtěte si téma [Co je SQL Data Warehouse?](sql-data-warehouse-overview-what-is.md) 
 
 ### <a name="sign-up-for-microsoft-azure"></a>Přihlášení k Microsoft Azure
-Pokud nemáte účet Microsoft Azure, musíte toosign pro jeden toouse této služby. Pokud již máte účet, tento krok přeskočte. 
+Pokud ještě nemáte účet Microsoft Azure, musíte si jeden zaregistrovat, abyste mohli tuto službu používat. Pokud již máte účet, tento krok přeskočte. 
 
-1. Procházení stránek účet toohello [https://azure.microsoft.com/account/](https://azure.microsoft.com/account/)
+1. Přejděte na stránky účtu [https://azure.microsoft.com/account/](https://azure.microsoft.com/account/).
 2. Vytvořte si bezplatný účet Azure, nebo si účet zakupte.
-3. Postupujte podle pokynů hello
+3. Postupujte podle zobrazených pokynů.
 
 ### <a name="install-appropriate-sql-client-drivers-and-tools"></a>Instalace odpovídajících ovladačů a nástrojů klienta SQL
 
-Většina nástroje SQL client tools připojit tooSQL datového skladu pomocí JDBC, ODBC nebo ADO.NET. Z důvodu toohello velký počet funkcí T-SQL, které podporuje SQL Data Warehouse nejsou některé klientské aplikace plně kompatibilní s datovým skladem SQL.
+Většina nástrojů klienta SQL se může připojit ke službě SQL Data Warehouse pomocí JDBC, ODBC nebo ADO.NET. Z důvodu velkého počtu funkcí T-SQL, které SQL Data Warehouse podporuje, nejsou některé klientské aplikace s SQL Data Warehouse plně kompatibilní.
 
 Pokud používáte operační systém Windows, doporučujeme použít buď sadu [Visual Studio], nebo aplikaci [SQL Server Management Studio].
 
@@ -50,7 +50,7 @@ Pokud používáte operační systém Windows, doporučujeme použít buď sadu 
 
 ## <a name="create-a-sql-data-warehouse"></a>Vytvoření SQL Data Warehouse
 
-SQL Data Warehouse je zvláštním typem databáze, která je navržena pro výkonné paralelní zpracování. Hello databáze je rozdělené mezi více uzly a zpracovává dotazy paralelně. SQL Data Warehouse má řídicí uzel, které orchestrují hello aktivity všech uzlů hello. Hello v samotných uzlech použít SQL Database toomanage data.  
+SQL Data Warehouse je zvláštním typem databáze, která je navržena pro výkonné paralelní zpracování. Databáze je distribuovaná mezi více uzlů a dotazy zpracovává paralelně. SQL Data Warehouse má řídicí uzel, který orchestruje aktivitu všech uzlů. V samotných uzlech slouží ke správě dat služba SQL Database.  
 
 > [!NOTE]
 > Vytvoření služby SQL Data Warehouse může znamenat, že se vám začne fakturovat nová služba.  Další informace najdete v tématu [SQL Data Warehouse – ceny](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
@@ -58,14 +58,14 @@ SQL Data Warehouse je zvláštním typem databáze, která je navržena pro výk
 
 ### <a name="create-a-data-warehouse"></a>Vytvoření datového skladu
 
-1. Přihlaste se k hello [portál Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Klikněte na **Nový** > **Databáze** > **SQL Data Warehouse**.
 
     ![NewBlade](../../includes/media/sql-data-warehouse-create-dw/blade-click-new.png)![SelectDW](../../includes/media/sql-data-warehouse-create-dw/blade-select-dw.png)
 
 3. Zadání podrobností o nasazení
 
-    **Název databáze:** Výběr je zcela na vás. Pokud máte více datových skladů, doporučujeme, aby názvy zahrne podrobnosti, jako je například hello oblast, prostředí, například *mydw-westus-1-test*.
+    **Název databáze:** Výběr je zcela na vás. Pokud máte více datových skladů, doporučujeme do názvu zahrnout podrobnosti, jako je oblast a prostředí, například *mydw-westus-1-test*.
 
     **Předplatné:** Vaše předplatné Azure
 
@@ -75,61 +75,61 @@ SQL Data Warehouse je zvláštním typem databáze, která je navržena pro výk
 
     **Zdroj:** Prázdná databáze
 
-    **Server**: Vyberte hello serveru, které jste vytvořili v [požadavky].
+    **Server:** Vyberte server, který jste vytvořili v části [Požadavky].
 
-    **Kolace**: ponechte hello výchozí kolace SQL_Latin1_General_CP1_CI_AS.
+    **Kolace:** Ponechte výchozí kolaci SQL_Latin1_General_CP1_CI_AS.
 
-    **Vyberte výkonu**: doporučujeme začít s standardní 400DWU hello.
+    **Vybrat výkon:** Doporučujeme začít se standardním nastavením 400DWU.
 
-4. Zvolte **Pin toodashboard** ![tooDashboard PIN kód](./media/sql-data-warehouse-get-started-tutorial/pin-to-dashboard.png)
+4. Zvolte **Připnout na řídicí panel**![Připnout na řídicí panel](./media/sql-data-warehouse-get-started-tutorial/pin-to-dashboard.png).
 
-5. Sledujte a počkat na vaše data warehouse toodeploy! Je běžné, tento proces tootake několik minut. portál Hello vás upozorní, když váš datový sklad je připraven toouse. 
+5. Opřete se a počkejte, než se datový sklad nasadí! Je běžné, že tento proces trvá několik minut. Portál vás upozorní, jakmile bude váš datový sklad připraven k použití. 
 
-## <a name="connect-toosql-data-warehouse"></a>Připojit tooSQL datového skladu
+## <a name="connect-to-sql-data-warehouse"></a>Připojení k SQL Data Warehouse
 
-Tento kurz používá SQL Server Management Studio (SSMS) tooconnect toohello datového skladu. TooSQL datového skladu můžete připojit přes tyto podporované konektory: ADO.NET, JDBC, rozhraní ODBC a PHP. Mějte na paměti, že funkce nástrojů, které nejsou podporované Microsoftem, můžou být omezené.
+Tento kurz pro připojení k datovému skladu používá aplikaci SQL Server Management Studio (SSMS). Ke službě SQL Data Warehouse se můžete připojit prostřednictvím těchto podporovaných konektorů: ADO.NET, JDBC, ODBC a PHP. Mějte na paměti, že funkce nástrojů, které nejsou podporované Microsoftem, můžou být omezené.
 
 
 ### <a name="get-connection-information"></a>Získání informací o připojení
 
-tooconnect tooyour datového skladu, je nutné tooconnect prostřednictvím hello logický SQL server vytvoříte v [požadavky].
+Chcete-li se připojit ke svému datovému skladu, je nutné se připojit přes logický SQL Server, který jste vytvořili v části [Požadavky].
 
-1. Vyberte datový sklad z hello řídicího panelu nebo vyhledejte ji ve vašich prostředků.
+1. Vyberte svůj datový sklad z řídicího panelu nebo jej vyhledejte ve vašich prostředcích.
 
     ![Řídicí panel SQL Data Warehouse](./media/sql-data-warehouse-get-started-tutorial/sql-dw-dashboard.png)
 
-2. Najít hello úplný název pro hello logický SQL server.
+2. Vyhledejte úplný název pro logický SQL server.
 
     ![Výběr názvu serveru](./media/sql-data-warehouse-get-started-tutorial/select-server.png)
 
-3. Otevřete aplikaci SSMS a použití objektu explorer tooconnect toothis serveru pomocí pověření správce serveru hello jste vytvořili v [požadavky]
+3. Otevřete SSMS a pomocí průzkumníka objektů se připojte k tomuto serveru prostřednictvím přihlašovacích údajů správce serveru, které jste vytvořili v části [Požadavky].
 
     ![Připojení přes SSMS](./media/sql-data-warehouse-get-started-tutorial/ssms-connect.png)
 
-Pokud všechno proběhne správně, můžete nyní měli být připojené tooyour logický SQL server. Vzhledem k tomu, že jste se přihlásili jako hello správce serveru, se můžete připojit databázi tooany hostovaný hello serverem, včetně hello hlavní databázi. 
+Pokud všechno proběhne správně, měli byste být teď připojeni ke svému logickému SQL Serveru. Vzhledem k tomu, že jste přihlášeni jako správce serveru, můžete se připojit k libovolné databázi hostované na daném serveru, a to včetně hlavní databáze. 
 
-Je účet správce pouze jeden server a většina oprávnění uživatele, který má hello. Dávejte pozor, není tooallow příliš mnoho uživatelů v organizaci tooknow hello správce heslo. 
+Existuje pouze jeden účet správce serveru a ze všech uživatelů má nejvíce oprávnění. Dejte pozor, aby ve vaší organizaci neznalo heslo správce příliš mnoho lidí. 
 
-Můžete mít také účet správce Azure Active Directory. Poskytujeme není zde podrobnosti hello. Pokud chcete, aby toolearn Další informace o používání ověřování Azure Active Directory, přečtěte si téma [ověřování Azure AD](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication).
+Můžete mít také účet správce Azure Active Directory. Podrobnosti zde neposkytujeme. Další informace o použití ověřování pomocí Azure Active Directory najdete v tématu [Ověřování pomocí Azure AD](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication).
 
 Dále se budeme věnovat vytváření dalších přihlašovacích údajů a uživatelů.
 
 
 ## <a name="create-a-database-user"></a>Vytvoření uživatele databáze
 
-V tomto kroku vytvoříte tooaccess účet uživatele datového skladu. Můžeme také ukazují, jak toogive tohoto uživatele hello možnost toorun dotazy s velké množství prostředky paměti a procesoru.
+V tomto kroku vytvoříte uživatelský účet pro přístup k datovému skladu. Také vám ukážeme, jak dát takovému uživateli možnost spouštět dotazy s velkým množstvím paměťových a procesorových prostředků.
 
-### <a name="notes-about-resource-classes-for-allocating-resources-tooqueries"></a>Poznámky k třídy prostředků pro přidělování prostředků tooqueries
+### <a name="notes-about-resource-classes-for-allocating-resources-to-queries"></a>Poznámky k třídám prostředků pro přidělování prostředků dotazům
 
-- tookeep data bezpečné, nepoužívejte hello serveru správce toorun dotazy na provozní databáze. Většina oprávnění uživatele, který má hello a použití tooperform operací na uživatelských datech vloží vaše data v ohrožení. Navíc vzhledem k tomu, že Dobrý den, správce serveru je určen tooperform operace správy, je spuštěna operace s jenom malé přidělení prostředky paměti a procesoru. 
+- Z důvodu zabezpečení vašich dat nepoužívejte účet správce serveru ke spouštění dotazů na produkčních databázích. Ze všech uživatelů má nejvíce oprávnění a jeho použití k provádění operací na uživatelských datech tato data ohrožuje. Navíc vzhledem k tomu, že je správce serveru určen k provádění operací správy, spouští operace pouze s malým množstvím přidělených paměťových a procesorových prostředků. 
 
-- SQL Data Warehouse používá předem definovaných databázových rolí, jako třídy prostředků, tooallocate různých množství paměti, prostředky procesoru a toousers sloty souběžnosti. Každý uživatel může patřit třída tooa malé, střední, velký nebo velmi velká prostředků. Hello Třída prostředků uživatele určuje hello prostředky hello uživatel má toorun dotazů a načte operace.
+- SQL Data Warehouse používá předdefinované databázové role, označované jako třídy prostředků, k přidělování různých množství paměťových a procesorových prostředků a slotů souběžnosti jednotlivým uživatelům. Každý uživatel může patřit do malé, střední, velké nebo velmi velké třídy prostředků. Třída prostředků uživatele určuje, jaké prostředky má uživatel k dispozici pro spouštění dotazů a operací načítání.
 
-- Pro optimální data kompresi pravděpodobně bude třeba hello uživatele tooload s velké nebo přidělení velmi velké zdroje. Další informace o třídách prostředků najdete [zde](./sql-data-warehouse-develop-concurrency.md#resource-classes):
+- Z důvodu optimální komprese dat uživatel může potřebovat načítání s velkým nebo velmi velkým přidělením prostředků. Další informace o třídách prostředků najdete [zde](./sql-data-warehouse-develop-concurrency.md#resource-classes):
 
 ### <a name="create-an-account-that-can-control-a-database"></a>Vytvoření účtu, který může řídit databázi
 
-Vzhledem k tomu, že jste aktuálně přihlášeni v hello správce serveru nemáte oprávnění toocreate přihlášení a uživatele.
+Vzhledem k tomu, že jste aktuálně přihlášeni jako správce serveru, máte oprávnění vytvářet účty a uživatele.
 
 1. Pomocí SSMS nebo jiného klienta dotazů otevřete nový dotaz pro **master**.
 
@@ -137,62 +137,61 @@ Vzhledem k tomu, že jste aktuálně přihlášeni v hello správce serveru nem�
 
     ![Nový dotaz na Master1](./media/sql-data-warehouse-get-started-tutorial/query-on-master.png)
 
-2. V okně dotazu hello spusťte tento příkaz toocreate T-SQL s názvem MedRCLogin přihlášení a uživatele s názvem LoadingUser. Toto přihlášení můžete připojit toohello logický SQL server.
+2. V okně dotazu spusťte tento příkaz T-SQL, který vytvoří účet MedRCLogin a uživatele LoadingUser. Tento účet se může připojit k logickému SQL serveru.
 
     ```sql
     CREATE LOGIN MedRCLogin WITH PASSWORD = 'a123reallySTRONGpassword!';
-    CREATE USER LoadingUser FOR LOGIN MedRCLogin;
     ```
 
-3. Nyní dotazování hello *databázi SQL Data Warehouse*, vytvořte uživatele databáze založené na hello přihlášení, které jste vytvořili tooaccess a provádění operací v databázi hello.
+3. Nyní pomocí dotazu na *databázi SQL Data Warehouse* vytvořte uživatele databáze na základě účtu, který jste vytvořili pro přístup a provádění operací na databázi.
 
     ```sql
     CREATE USER LoadingUser FOR LOGIN MedRCLogin;
     ```
 
-4. Dejte hello uživatele řízení oprávnění toohello databáze názvem NYT. 
+4. Udělte uživateli databáze oprávnění řídit databázi s názvem NYT. 
 
     ```sql
-    GRANT CONTROL ON DATABASE::[NYT] tooLoadingUser;
+    GRANT CONTROL ON DATABASE::[NYT] to LoadingUser;
     ```
     > [!NOTE]
-    > Název databáze je pomlčky v něm, nebude se toowrap ji do hranatých závorek! 
+    > Pokud název databáze obsahuje pomlčky, uzavřete ho do hranatých závorek. 
     >
 
-### <a name="give-hello-user-medium-resource-allocations"></a>Poskytnout přidělení střední zdroje hello uživatele
+### <a name="give-the-user-medium-resource-allocations"></a>Udělení středního přidělení prostředků uživateli
 
-1. Spusťte tento příkaz toomake T-SQL a členem třídy hello střední prostředků, která se nazývá mediumrc it. 
+1. Spuštěním tohoto příkazu T-SQL udělejte z uživatele člena střední třídy prostředků, která má název mediumrc. 
 
     ```sql
     EXEC sp_addrolemember 'mediumrc', 'LoadingUser';
     ```
     > [!NOTE]
-    > Klikněte na tlačítko [sem](sql-data-warehouse-develop-concurrency.md#resource-classes) toolearn více informací o souběžnosti a prostředků třídy! 
+    > Kliknutím [sem](sql-data-warehouse-develop-concurrency.md#resource-classes) zjistíte další informace o souběžnosti a třídách prostředků! 
     >
 
-2. Připojit toohello logického serveru s novými pověřeními hello
+2. Připojení k logickému serveru pomocí nových přihlašovacích údajů
 
     ![Přihlášení pomocí nových přihlašovacích údajů](./media/sql-data-warehouse-get-started-tutorial/new-login.png)
 
 
 ## <a name="load-data-from-azure-blob-storage"></a>Načtení dat z Azure Blob Storage
 
-Nyní je připraven tooload data do datového skladu. Tento krok ukazuje, jak tooload New Yorku taxíkem souboru cab dat z veřejného úložiště Azure blob. 
+Nyní jste připraveni k načtení dat do datového skladu. Tento krok ukazuje, jak načíst data taxislužby města New York z veřejného úložiště objektů blob v Azure. 
 
-- Běžný způsob, jakým tooload dat do SQL Data Warehouse je toofirst přesunout úložiště objektů blob tooAzure hello data a pak můžete načíst do datového skladu. toomake je snazší toounderstand jak tooload, máme New Yorku taxíkem souboru cab dat již hostované ve veřejné úložiště Azure blob. 
+- Běžný způsob, jak načíst data do služby SQL Data Warehouse, je nejprve přesunout data do Azure Blob Storage, a pak je načíst do datového skladu. Pro snadnější pochopení načítání jsou data taxislužby města New York již hostována ve veřejném úložišti objektů blob v Azure. 
 
-- Pro budoucí použití, toolearn jak tooget tooAzure vaše data objektu blob úložiště nebo tooload ji přímo ze zdroje do SQL Data Warehouse, najdete v části hello [přehledem načítání](sql-data-warehouse-overview-load.md).
+- Informace o přesunu dat do Azure Blob Storage nebo jejich načtení přímo ze zdroje do služby SQL Data Warehouse najdete pro budoucí použití v části s [přehledem načítání](sql-data-warehouse-overview-load.md).
 
 
 ### <a name="define-external-data"></a>Definování externích dat
 
-1. Vytvořte hlavní klíč. Potřebujete jenom toocreate hlavní klíč jednou za databáze. 
+1. Vytvořte hlavní klíč. Pro každou databázi je nutné vytvořit hlavní klíč pouze jednou. 
 
     ```sql
     CREATE MASTER KEY;
     ```
 
-2. Zadejte umístění hello hello Azure blob, který obsahuje data souboru cab taxíkem hello.  
+2. Zadejte umístění objektu blob Azure, který obsahuje data taxislužby.  
 
     ```sql
     CREATE EXTERNAL DATA SOURCE NYTPublic
@@ -203,11 +202,11 @@ Nyní je připraven tooload data do datového skladu. Tento krok ukazuje, jak to
     );
     ```
 
-3. Zadejte externí formátů hello
+3. Definujte formáty externích souborů.
 
-    Hello ```CREATE EXTERNAL FILE FORMAT``` příkaz je použité toospecify formát soubory, které obsahují externích dat hello. Obsahují text oddělený jedním nebo několika znaky, kterým se říká oddělovače. Pro demonstrační účely hello taxíkem souboru cab data uložena jako nekomprimovaných dat a jako gzip komprimována data.
+    Příkaz ```CREATE EXTERNAL FILE FORMAT``` slouží k určení formátu souborů obsahujících externí data. Obsahují text oddělený jedním nebo několika znaky, kterým se říká oddělovače. Pro účely ukázky jsou data taxislužby uložena jako nekomprimovaná data a jako komprimovaná data ve formátu GZip.
 
-    Spuštění těchto příkazů T-SQL toodefine ve dvou různých formátech: nekomprimovaným a komprimované.
+    Spuštěním těchto příkazů T-SQL nadefinujte dva různé formáty: nekomprimovaný a komprimovaný.
 
     ```sql
     CREATE EXTERNAL FILE FORMAT uncompressedcsv
@@ -238,7 +237,7 @@ Nyní je připraven tooload data do datového skladu. Tento krok ukazuje, jak to
     ```sql
     CREATE SCHEMA ext;
     ```
-5. Vytvořte hello externí tabulky. Tyto tabulky odkazují na data uložená v Azure Blob Storage. Několik externí tabulky, že všechny bodu toohello objektů blob v Azure definovaného dříve v našem externí zdroj dat spuštění hello následující toocreate příkazů T-SQL.
+5. Vytvořte externí tabulky. Tyto tabulky odkazují na data uložená v Azure Blob Storage. Spuštěním následujících příkazů T-SQL vytvořte několik externích tabulek odkazujících na objekt blob Azure, který jsme dříve definovali v externím zdroji dat.
 
 ```sql
     CREATE EXTERNAL TABLE [ext].[Date] 
@@ -415,11 +414,11 @@ Nyní je připraven tooload data do datového skladu. Tento krok ukazuje, jak to
     ;
 ```
 
-### <a name="import-hello-data-from-azure-blob-storage"></a>Umožňuje importovat hello data z Azure blob storage.
+### <a name="import-the-data-from-azure-blob-storage"></a>Import dat z Azure Blob Storage
 
-SQL Data Warehouse podporuje klíčový příkaz CREATE TABLE AS SELECT (CTAS). Tento příkaz vytvoří novou tabulku na základě výsledků hello příkazu select. Hello nová tabulka obsahuje hello stejnou sloupce a datové typy jako hello výsledky hello vyberte příkaz.  Jedná se způsob tooimport data z Azure blob storage do SQL Data Warehouse.
+SQL Data Warehouse podporuje klíčový příkaz CREATE TABLE AS SELECT (CTAS). Tento příkaz vytvoří novou tabulku na základě výsledků příkazu SELECT. Nová tabulka obsahuje stejné sloupce a datové typy jako výsledky příkazu SELECT.  Jde o elegantní způsob importu dat z Azure Blob Storage do SQL Data Warehouse.
 
-1. Spusťte tento skript tooimport vaše data.
+1. Spuštěním tohoto skriptu naimportujte data.
 
     ```sql
     CREATE TABLE [dbo].[Date]
@@ -496,7 +495,7 @@ SQL Data Warehouse podporuje klíčový příkaz CREATE TABLE AS SELECT (CTAS). 
 
 2. Zobrazte data během načítání.
 
-   Provedete načtení několika GB dat a jejich kompresi do vysoce výkonných clusterovaných indexů columnstore. Spusťte následující dotaz, který používá zobrazení (zobrazení dynamické správy) dynamické správy tooshow hello stav zatížení hello hello. Po spuštění dotazu hello, získat, kávy a piknik při SQL Data Warehouse nepodporuje některé lifting náročné.
+   Provedete načtení několika GB dat a jejich kompresi do vysoce výkonných clusterovaných indexů columnstore. Spuštěním následujícího dotazu, který používá zobrazení dynamické správy, zobrazíte stav načítání. Po spuštění dotazu si udělejte přestávku na kávu, zatímco SQL Data Warehouse bude dělat namáhavou práci.
     
     ```sql
     SELECT
@@ -539,51 +538,51 @@ SQL Data Warehouse podporuje klíčový příkaz CREATE TABLE AS SELECT (CTAS). 
 
 ## <a name="improve-query-performance"></a>Vylepšení výkonu dotazů
 
-Existuje několik způsobů tooimprove dotazu výkonu a hello tooachieve vysokorychlostní se výkonu, který datový sklad SQL je určená tooprovide.  
+Existuje několik způsobů, jak vylepšit výkon dotazů a dosáhnout vysokého výkonu, ke kterému byla služba SQL Data Warehouse navržena.  
 
-### <a name="see-hello-effect-of-scaling-on-query-performance"></a>V tématu účinku hello škálování na výkon dotazů 
+### <a name="see-the-effect-of-scaling-on-query-performance"></a>Vliv škálování na výkon dotazů 
 
-Jedním ze způsobů tooimprove výkon dotazů je tooscale prostředky tak, že změníte úroveň služby hello DWU pro datový sklad. Každá úroveň služeb je nákladnější, kdykoli však můžete škálovat směrem dolů nebo pozastavit prostředky. 
+Jedním ze způsobů, jak vylepšit výkon dotazů, je škálování prostředků změnou úrovně služeb pro DWU vašeho datového skladu. Každá úroveň služeb je nákladnější, kdykoli však můžete škálovat směrem dolů nebo pozastavit prostředky. 
 
 V tomto kroku porovnáte výkon pro dvě různá nastavení DWU.
 
-První, nyní škálování hello velikosti dolů too100 DWU, takže jsme můžete získat představu o tom, jak jednom výpočetním uzlu může provádět svoje vlastní.
+Nejprve vertikálně snížíme kapacitu na 100 DWU, abychom získali představu o tom, jak může pracovat samostatný výpočetní uzel.
 
-1. Přejděte toohello portál a vyberte svoji službu SQL Data Warehouse.
+1. Přejděte na portál a vyberte SQL Data Warehouse.
 
-2. V okně SQL Data Warehouse hello vyberte škálování. 
+2. Vyberte horizontální snížení kapacity v okně SQL Data Warehouse. 
 
     ![Škálování DW z portálu](./media/sql-data-warehouse-get-started-tutorial/scale-dw.png)
 
-3. Snižovat výkon hello panelu too100 DWU a stiskněte tlačítko Uložit.
+3. Vertikálně snižte kapacitu pomocí pruhu výkonu na 100 DWU a stiskněte tlačítko Uložit.
 
     ![Škálování a uložení](./media/sql-data-warehouse-get-started-tutorial/scale-and-save.png)
 
-4. Počkejte, než pro vaše toofinish operace škálování.
+4. Počkejte na dokončení operace škálování.
 
     > [!NOTE]
-    > Dotazy nelze spustit při změně měřítka hello. Škálování **ukončí** aktuálně spuštěné dotazy. Můžete je restartovat po dokončení operace hello.
+    > Během změny škálování nelze spouštět dotazy. Škálování **ukončí** aktuálně spuštěné dotazy. Můžete je restartovat po dokončení operace.
     >
     
-5. Proveďte operaci prohledávání na služební cestě data hello, výběr hello nejvyšší mil. položky pro všechny sloupce hello. Pokud jste přes toomove na rychle, zaregistrované volné tooselect méně řádků. Poznamenejte si dobu hello trvá toorun tuto operaci.
+5. Proveďte operaci prohledávání dat o cestách tak, že vyberete prvních milion položek pro všechny sloupce. Pokud chcete postupovat rychleji, klidně vyberte menší počet řádků. Poznamenejte si dobu potřebnou k provedení této operace.
 
     ```sql
     SELECT TOP(1000000) * FROM dbo.[Trip]
     ```
-6. Škálovat datový sklad zpět too400 DWU. Pamatujte si, že se každý 100 DWU je přidání jiného výpočetní uzel tooyour Azure SQL Data Warehouse.
+6. Změňte kapacitu datového skladu zpět na 400 DWU. Pamatujte si, že každých 100 DWU přidává do Azure SQL Data Warehouse další výpočetní uzel.
 
-7. Spusťte znovu dotaz hello! Měli byste zaznamenat značný rozdíl. 
+7. Spusťte dotaz znovu. Měli byste zaznamenat značný rozdíl. 
 
     > [!NOTE]
-    > Protože hello dotaz vrací velké množství dat, může být dostupnosti šířky pásma hello hello počítače spuštěného SSMS kritických bodů výkonu. Důsledkem může být, že neuvidíte žádná zlepšení výkonu!
+    > Vzhledem k tomu, že dotaz vrací velké množství dat, může být dostupnost šířky pásma počítače se spuštěnou aplikací SSMS kritickým bodem s vlivem na výkon. Důsledkem může být, že neuvidíte žádná zlepšení výkonu!
 
 > [!NOTE]
-> Služba SQL Data Warehouse je postavena na architektuře MPP (Massively Parallel Processing). Dotazy, které kontroly ani provést u miliony řádků analytické funkce prostředí hello true power služby Azure SQL Data Warehouse.
+> Služba SQL Data Warehouse je postavena na architektuře MPP (Massively Parallel Processing). Proto dotazy, které prohledávají nebo provádějí analytické funkce nad miliony řádků, můžou naplno využít výkon služby Azure SQL Data Warehouse.
 >
 
-### <a name="see-hello-effect-of-statistics-on-query-performance"></a>Na výkon dotazů najdete v části hello účinku statistiky
+### <a name="see-the-effect-of-statistics-on-query-performance"></a>Vliv statistik na výkon dotazů
 
-1. Spusťte dotaz, zda spojení hello datum tabulku s tabulkou cestě hello
+1. Spusťte dotaz, který spojuje tabulku Date s tabulkou Trip.
 
     ```sql
     SELECT TOP (1000000) 
@@ -615,10 +614,10 @@ První, nyní škálování hello velikosti dolů too100 DWU, takže jsme může
         ON  tr.DateID = dt.DateID
     ```
 
-    Tento dotaz zpracování chvíli trvá, protože SQL Data Warehouse má tooshuffle dat, než je možné provést hello spojení. Spojení nemáte tooshuffle data, pokud jsou data navrženou toojoin v hello stejným způsobem, jako je distribuován. To je na hlubší diskuzi. 
+    Provedení tohoto dotazu bude chvíli trvat, protože SQL Data Warehouse musí před provedením příkazu JOIN nejprve přesunout data. Příkazy JOIN nemusí data přesouvat, pokud jsou určené ke spojení dat stejným způsobem, jako jsou distribuována. To je na hlubší diskuzi. 
 
 2. Na statistikách záleží. 
-3. Spusťte tento příkaz toocreate statistiky na sloupce spojení hello.
+3. Spuštěním tohoto příkazu vytvořte statistiky pro spojované sloupce.
 
     ```sql
     CREATE STATISTICS [dbo.Date DateID stats] ON dbo.Date (DateID);
@@ -628,16 +627,16 @@ První, nyní škálování hello velikosti dolů too100 DWU, takže jsme může
     > [!NOTE]
     > SQL DW nespravuje statistiky automaticky. Statistiky jsou důležité pro výkon dotazů a důrazně se doporučuje statistiky vytvářet a aktualizovat.
     > 
-    > **Hello získáte tak, že statistiky na sloupce použité ve spojení, sloupce použité v hello, kde najít klauzule a sloupce v GROUP BY využívat výhod.**
+    > **Nejvíce výhod získáte tak, že budete mít statistiky pro sloupce používané ve spojeních, sloupce používané v klauzuli WHERE a sloupce používané v příkazu GROUP BY.**
     >
 
-3. Znovu spustit dotaz hello z požadovaných součástí a sledovat případné rozdíly výkonu. Při hello rozdíly ve výkonnosti dotazu nebude jako závažný jako vertikálním navýšení kapacity, měli byste zaznamenat zrychlit. 
+3. Znovu spusťte dotaz z části Požadavky a sledujte rozdíly ve výkonu. I když rozdíly ve výkonu dotazů nebudou tak drastické jako při vertikálním navýšení kapacity, měli byste zaznamenat zrychlení. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď už připravený tooquery a prozkoumat. Vyzkoušejte si naše osvědčené postupy a tipy.
+Teď jste připravení na dotazování a prozkoumávání. Vyzkoušejte si naše osvědčené postupy a tipy.
 
-Pokud jste hotovi zkoumat hello den, ujistěte se, že toopause instanci! V produkčním prostředí, můžete zaznamenat značné úspory pozastavení a škálování toomeet vašim obchodním potřebám.
+Pokud jste už pro dnešek se zkoumáním hotovi, nezapomeňte svoji instanci pozastavit. V produkčním prostředí můžete pozastavením a škálováním podle svých obchodních potřeb zaznamenat značné úspory.
 
 ![Pozastavení](./media/sql-data-warehouse-get-started-tutorial/pause.png)
 
@@ -651,20 +650,20 @@ Pokud jste hotovi zkoumat hello den, ujistěte se, že toopause instanci! V prod
 
 [10 nejlepších osvědčených postupů pro sestavení rozsáhlého relačního datového skladu][]
 
-[Migrace dat tooAzure SQL Data Warehouse][]
+[Migrace dat do Azure SQL Data Warehouse][]
 
 [Souběžnost a správa úloh]: sql-data-warehouse-develop-concurrency.md#changing-user-resource-class-example
 [Osvědčené postupy pro službu Azure SQL Data Warehouse]: sql-data-warehouse-best-practices.md#hash-distribute-large-tables
 [Monitorování dotazů]: sql-data-warehouse-manage-monitor.md
 [10 nejlepších osvědčených postupů pro sestavení rozsáhlého relačního datového skladu]: https://blogs.msdn.microsoft.com/sqlcat/2013/09/16/top-10-best-practices-for-building-a-large-scale-relational-data-warehouse/
-[Migrace dat tooAzure SQL Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
+[Migrace dat do Azure SQL Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
 
 
 
 [!INCLUDE [Additional Resources](../../includes/sql-data-warehouse-article-footer.md)]
 
 <!-- Internal Links -->
-[požadavky]: sql-data-warehouse-get-started-tutorial.md#prerequisites
+[Požadavky]: sql-data-warehouse-get-started-tutorial.md#prerequisites
 
 <!--Other Web references-->
 [Visual Studio]: https://www.visualstudio.com/

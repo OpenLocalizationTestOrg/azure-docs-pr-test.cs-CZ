@@ -1,6 +1,6 @@
 ---
-title: "aaaImport data do Azure Search na portálu hello | Microsoft Docs"
-description: "Použijte hello Průvodce importem dat Azure Search v portálu Azure toocrawl hello Azure data z NoSQL Azure Cosmos DB, úložiště objektů Blob, úložiště table, SQL Database a SQL Server na virtuálních počítačích Azure."
+title: "Import dat do služby Azure Search na portálu | Dokumentace Microsoftu"
+description: "Použijte Průvodce importem dat do služby Azure Search na webu Azure Portal k procházení dat Azure z databáze NoSQL Azure Cosmos DB, ze služby Blob Storage, Table Storage, SQL Database a SQL Serveru na virtuálních počítačích Azure."
 services: search
 documentationcenter: 
 author: HeidiSteen
@@ -15,30 +15,30 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: heidist
-ms.openlocfilehash: 00b0e59594560c0cdaea748df196518e9fba3834
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: a3e6dd66197a17bfdc80c04130e198b787692a58
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="import-data-tooazure-search-using-hello-portal"></a>Import dat tooAzure vyhledávání pomocí portálu hello
-poskytuje technologie Hello portál Azure **importovat data** Průvodce na řídicí panel Azure Search hello pro načítání dat do indexu. 
+# <a name="import-data-to-azure-search-using-the-portal"></a>Import dat do služby Azure Search pomocí portálu
+Azure Portal poskytuje v řídicím panelu služby Azure Search průvodce **Importem dat** pro načítání dat do indexu. 
 
-  ![Umožňuje importovat Data na panelu příkazů hello][1]
+  ![Import dat na panelu příkazů][1]
 
-Interně hello Průvodce konfiguruje a vyvolá *indexer*, automatizaci několik kroků hello indexování proces: 
+Průvodce interně konfiguruje a vyvolává *indexer*, čímž automatizuje několik kroků procesu indexování: 
 
-* Připojit tooan externí zdroj dat v hello stejného předplatného Azure
-* Generovat schéma upravitelnými index založené na struktura hello zdroje dat
-* Načtení dokumenty JSON do indexu pomocí sady řádků načíst ze zdroje dat hello
+* Připojení k externímu zdroji dat ve stejném předplatném Azure
+* Generování upravitelného schématu indexu na základě struktury zdrojových dat
+* Načtení dokumentů JSON do indexu s použitím sady řádků získané ze zdroje dat
 
-Tento pracovní postup můžete vyzkoušet s použitím ukázkových dat ve službě Azure Cosmos DB. Navštivte [Začínáme s Azure Search v portálu Azure hello](search-get-started-portal.md) pokyny.
+Tento pracovní postup můžete vyzkoušet s použitím ukázkových dat ve službě Azure Cosmos DB. Pokyny najdete v tématu [Začínáme se službou Azure Search na webu Azure Portal](search-get-started-portal.md).
 
 > [!NOTE]
-> Můžete spustit hello **importovat data** z toosimplify řídicí panel Azure Cosmos DB hello indexování pro tento zdroj dat průvodce. V levém navigačním panelu přejděte příliš**kolekce** > **přidat Azure Search** tooget spuštěna.
+> Z řídicího panelu služby Azure Cosmos DB můžete spustit průvodce **Importem dat** a zjednodušit tak indexování zdroje dat. Začněte tak, že v levém navigačním panelu přejdete do **Collections** (Kolekce) > **Add Azure Search** (Přidat službu Azure Search).
 
-## <a name="data-sources-supported-by-hello-import-data-wizard"></a>Zdroje dat podporované rozhraním hello Průvodce importem dat
-Průvodce importem dat Hello podporuje hello následující zdroje dat: 
+## <a name="data-sources-supported-by-the-import-data-wizard"></a>Zdroje dat podporované Průvodcem importem dat
+Průvodce importem dat podporuje následující zdroje dat: 
 
 * Azure SQL Database
 * Relační data systému SQL Server na virtuálním počítači Azure
@@ -46,71 +46,71 @@ Průvodce importem dat Hello podporuje hello následující zdroje dat:
 * Azure Blob Storage
 * Azure Table Storage
 
-Plochá datová sada je požadovaný vstup. Importovat můžete pouze z jedné tabulky, jednoho zobrazení databáze nebo ekvivalentní datové struktury. Měli byste vytvořit datovou strukturu před spuštěním Průvodce hello.
+Plochá datová sada je požadovaný vstup. Importovat můžete pouze z jedné tabulky, jednoho zobrazení databáze nebo ekvivalentní datové struktury. Tuto datovou strukturu byste měli vytvořit před spuštěním průvodce.
 
-## <a name="connect-tooyour-data"></a>Připojení tooyour dat
-1. Přihlaste se toohello [portál Azure](https://portal.azure.com) a řídicí panel služby otevřete hello. Můžete kliknout na **další služby** v hello přechod panelu toosearch pro existující "Vyhledat služby" v aktuálním předplatném hello. 
-2. Klikněte na tlačítko **importovat Data** na hello příkazovém řádku okno importu dat tooslide otevřete hello.  
-3. Klikněte na tlačítko **připojení dat tooyour** toospecify definici zdroje dat používanou indexerem. Pro zdroje dat uvnitř odběru průvodce hello obvykle zjistit a přečtěte si informace o připojení, minimalizovat požadavky na celkové konfiguraci.
+## <a name="connect-to-your-data"></a>Připojení k datům
+1. Přihlaste se na webu [Azure Portal](https://portal.azure.com) a otevřete řídicí panel služby. Kliknutím na **Další služby** na panelu odkazů můžete vyhledávat stávající „vyhledávací služby“ v rámci aktuálního předplatného. 
+2. Kliknutím na **Import dat** na panelu příkazů otevřete vysouvací okno Import dat.  
+3. Klikněte na **Připojit k datům** a zadejte definici zdroje dat používanou indexerem. V případě zdrojů dat v rámci předplatného průvodce obvykle může rozpoznat a přečíst informace o připojení, čímž minimalizuje celkové požadavky na konfiguraci.
 
 |  |  |
 | --- | --- |
 | **Stávající zdroj dat** |Pokud již ve vyhledávací službě máte definované indexery, můžete pro další import vybrat stávající definici zdroje dat. |
-| **Azure SQL Database** |Na stránce hello nebo prostřednictvím připojovací řetězec ADO.NET lze zadat název služby, pověření pro uživatele databáze s oprávněními ke čtení a název databáze. Zvolte hello připojovací řetězec možnost tooview nebo upravit vlastnosti. <br/><br/>na stránce hello je třeba zadat Hello tabulku nebo zobrazení, která poskytuje sada řádků hello. Tato možnost se zobrazí po připojení hello úspěšné, tak, že provedete výběr, která poskytuje rozevíracího seznamu. |
-| **SQL Server na virtuálním počítači Azure** |Zadejte plně kvalifikovaný název služby, ID a heslo uživatele a databázi jako připojovací řetězec. toouse tento zdroj dat musí jste dříve nainstalovali certifikát v úložišti místní hello, který šifruje hello připojení. Pokyny najdete v tématu [tooAzure připojení virtuálního počítače s SQL vyhledávání](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md). <br/><br/>na stránce hello je třeba zadat Hello tabulku nebo zobrazení, která poskytuje sada řádků hello. Tato možnost se zobrazí po připojení hello úspěšné, tak, že provedete výběr, která poskytuje rozevíracího seznamu. |
-| **Azure Cosmos DB** |Požadavky na zahrnují hello účet, databázi a kolekci. V indexu hello budou zahrnuty všechny dokumenty v kolekci hello. Můžete definovat tooflatten dotazu nebo filtru hello řádků nebo toodetect změnit dokumenty pro operace aktualizace následná data. |
-| **Azure Blob Storage** |Požadavky na zahrnují hello účet úložiště a kontejneru. Volitelně Pokud názvy objektů blob podle virtuální zásady vytváření názvů pro účely seskupení, můžete zadat část virtuální adresář hello hello název jako složku v kontejneru. Další informace najdete v tématu [Indexování služby Blob Storage](search-howto-indexing-azure-blob-storage.md). |
-| **Azure Table Storage** |Požadavky na zahrnují hello účet úložiště a název tabulky. Volitelně můžete zadat dotaz tooretrieve podmnožinu hello tabulky. Další informace najdete v tématu [Indexování služby Table Storage](search-howto-indexing-azure-tables.md). |
+| **Azure SQL Database** |Název služby, přihlašovací údaje uživatele s oprávněním ke čtení a název databáze můžete zadat na této stránce nebo přes připojovací řetězec technologie ADO.NET. Chcete-li zobrazit nebo přizpůsobit vlastnosti, zvolte možnost připojovacího řetězce. <br/><br/>Na této stránce je třeba určit tabulku nebo zobrazení poskytující sadu řádků. Tato možnost se zobrazí po úspěšném připojení v podobě rozevíracího seznamu, ze kterého můžete vybírat. |
+| **SQL Server na virtuálním počítači Azure** |Zadejte plně kvalifikovaný název služby, ID a heslo uživatele a databázi jako připojovací řetězec. Abyste mohli použít tento zdroj dat, je třeba mít v místním úložišti dříve nainstalovaný certifikát šifrující připojení. Pokyny najdete v tématu [Připojení virtuálního počítače SQL ke službě Azure Search](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md). <br/><br/>Na této stránce je třeba určit tabulku nebo zobrazení poskytující sadu řádků. Tato možnost se zobrazí po úspěšném připojení v podobě rozevíracího seznamu, ze kterého můžete vybírat. |
+| **Azure Cosmos DB** |Požadavky zahrnují účet, databázi a kolekci. Všechny dokumenty v kolekci budou zahrnuty v indexu. Můžete definovat dotaz, který zploští nebo vyfiltruje sadu řádků nebo který rozpozná změněné dokumenty pro následné operace aktualizace dat. |
+| **Azure Blob Storage** |Požadavky zahrnují účet úložiště a kontejner. Pokud se názvy objektů blob řídí zásadami virtuálního pojmenovávání pro účely seskupování, můžete volitelně zadat část názvu obsahující virtuální adresář jako složku v kontejneru. Další informace najdete v tématu [Indexování služby Blob Storage](search-howto-indexing-azure-blob-storage.md). |
+| **Azure Table Storage** |Požadavky zahrnují účet úložiště a název tabulky. Volitelně můžete zadat dotaz pro načtení podmnožiny tabulek. Další informace najdete v tématu [Indexování služby Table Storage](search-howto-indexing-azure-tables.md). |
 
 ## <a name="customize-target-index"></a>Přizpůsobení cílového indexu
-Předběžné index je obvykle odvodit z hello datové sady. Přidat, upravit nebo odstranit pole toocomplete hello schématu. Kromě toho nastavit atributy na úrovně toodetermine hello pole její chování následných vyhledávání.
+Předběžný index je obvykle odvozen z datové sady. Přidejte, upravte nebo odstraňte pole a dokončete schéma. Případně nastavte atributy na úrovni pole k určení jeho chování při následném vyhledávání.
 
-1. V **upravit cílový index**, zadejte název hello a **klíč** použité toouniquely identifikovat každého dokumentu. Hello klíč musí být řetězec. Pokud pole hodnoty obsahovat mezery nebo spojovníky opravdu tooset rozšířené možnosti v **importovat data** toosuppress hello kontroly ověřování pro tyto znaky.
-2. Zkontrolujte a zkontrolovat, jestli hello zbývající pole. Název a typ pole jsou obvykle předvyplněné. Dokud hello index se vytvoří, můžete změnit datový typ hello. Pozdější změna bude vyžadovat opětovné sestavení.
+1. V části **Přizpůsobit cílový index** zadejte název a **Klíč** sloužící k jedinečné identifikaci každého dokumentu. Hodnota Klíč musí být řetězec. Pokud hodnoty polí obsahují mezery nebo pomlčky, ujistěte se, že v části **Import dat** nastavíte rozšířené možnosti, které pro tyto znaky potlačí kontrolu platnosti.
+2. Zkontrolujte a zrevidujte zbývající pole. Název a typ pole jsou obvykle předvyplněné. Datový typ můžete měnit, dokud se nevytvoří index. Pozdější změna bude vyžadovat opětovné sestavení.
 3. Pro každé pole nastavte atribut indexu:
    
-   * Retrievable vrátí hello pole ve výsledcích hledání.
-   * Filtrování umožňuje toobe hello pole odkazovat ve výrazech filtru.
-   * Sortable umožňuje toobe hello pole při řazení.
-   * Facetable (kategorizovatelné) umožňuje hello pole pro fasetovou navigaci.
+   * Retrievable (Zobrazitelné) – vrátí pole ve výsledcích vyhledávání.
+   * Filterable (Filtrovatelné) – umožňuje na pole odkazovat ve výrazech filtru.
+   * Sortable (Seřaditelné) – umožňuje použití pole při řazení.
+   * Facetable (Kategorizovatelné) – povoluje použití pole pro fasetovou navigaci.
    * Searchable (Prohledávatelné) – umožňuje fulltextové vyhledávání.
-4. Klikněte na tlačítko hello **analyzátor** kartě, pokud chcete, aby toospecify analyzátor jazyka na úrovni pole hello. V této chvíli lze určit pouze analyzátory jazyka. Použití vlastního analyzátoru nebo nejazykového analyzátoru, jako například analyzátoru klíčových slov, vzoru a dalších, bude vyžadovat psaní kódu.
+4. Chcete-li určit analyzátor jazyka na úrovni pole, klikněte na kartu **Analyzátor**. V této chvíli lze určit pouze analyzátory jazyka. Použití vlastního analyzátoru nebo nejazykového analyzátoru, jako například analyzátoru klíčových slov, vzoru a dalších, bude vyžadovat psaní kódu.
    
-   * Klikněte na tlačítko **Searchable** toodesignate fulltextové vyhledávání na hello pole a povolení hello analyzátor rozevíracího seznamu.
-   * Zvolte hello analyzátor, které chcete. Podrobnosti naleznete v oddílu [Vytvoření indexu pro vícejazyčné dokumenty](search-language-support.md).
-5. Klikněte na tlačítko hello **modulu pro návrhy** tooenable našeptávání dotazů návrhy na vybrané pole.
+   * Kliknutím na **Prohledávatelné** určíte fulltextové vyhledávání pole a povolíte rozevírací seznam Analyzátor.
+   * Vyberte analyzátor, který chcete. Podrobnosti naleznete v oddílu [Vytvoření indexu pro vícejazyčné dokumenty](search-language-support.md).
+5. Kliknutím na **Našeptávač** povolíte pro vybraná pole našeptávání dotazů.
 
 ## <a name="import-your-data"></a>Import dat
-1. V **importovat data**, zadejte název indexeru hello. Odvolat produktu hello hello importovat Data Průvodce je indexer. Později Pokud chcete tooview, nebo ho upravit, vyberte ho z portálu hello místo opětovným spuštěním Průvodce hello. 
-2. Zadejte plán hello, která je založena na hello místní časové pásmo ve kterém je služba hello zřízena.
-3. Nastavte prahové hodnoty rozšířené možnosti toospecify na jestli indexování můžete pokračovat když dokumentu se zahodí. Kromě toho můžete zadat zda **klíč** pole jsou povoleny toocontain mezery a lomítka.  
-4. Klikněte na tlačítko **OK** toocreate hello index a importovat hello data.
+1. V části **Import dat** zadejte název indexeru. Připomínáme, že indexer je výsledkem Průvodce importem dat. Pokud jej později budete chtít zobrazit nebo upravit, místo opětovného spuštění průvodce jej vyberete z portálu. 
+2. Zadejte plán založený na časovém pásmu oblasti, ve které je služba zřízená.
+3. Nastavením rozšířených možností můžete zadat prahové hodnoty, podle kterých se určí, zda může indexování pokračovat v případě zrušení dokumentu. Případně můžete určit, zda pole **Klíč** mohou obsahovat mezery a lomítka.  
+4. Kliknutím na **OK** vytvořte index a zahajte import dat.
 
-Můžete monitorovat indexování hello portálu. Jako dokumenty jsou načteny, se zvýší počet dokumentu hello hello indexu, které jste definovali. Někdy trvá několik minut, než hello stránky portálu toopick až hello nejnovější aktualizace.
+Indexování můžete monitorovat na portálu. S načítáním dokumentů se bude zvyšovat počet dokumentů u indexu, který jste nadefinovali. Stránce portálu někdy trvá několik minut, než získá nejnovější aktualizace.
 
-Hello index je připraven tooquery hned, jak jsou načteny všechny dokumenty hello.
+Index je připraven k dotazování, jakmile jsou načteny všechny dokumenty.
 
 ## <a name="query-an-index-using-search-explorer"></a>Dotazování indexu pomocí Průzkumník služby Search
 
-portál Hello obsahuje **Průzkumník služby Search** tak, aby můžete dotazovat index bez nutnosti toowrite žádný kód. [Průzkumníka služby Search](search-explorer.md) můžete použít na jakýkoli index.
+Portál zahrnuje **Průzkumníka služby Search**, kterého můžete použít k zadávání dotazů na index, aniž byste museli programovat. [Průzkumníka služby Search](search-explorer.md) můžete použít na jakýkoli index.
 
-Hello vyhledávání je založeno na výchozích nastavení, jako je například hello [jednoduchý syntaktický](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) a výchozí [parametr dotazu searchMode (https://docs.microsoft.com/rest/api/searchservice/search-documents). 
+Funkce vyhledávání je založena na výchozím nastavení, jako je [jednoduchá syntaxe](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) a výchozí parametr dotazu searchMode(https://docs.microsoft.com/rest/api/searchservice/search-documents). 
 
-Výsledky jsou vráceny ve formátu JSON, v podrobný formát tak, aby si můžete prohlédnout celý dokument hello.
+Podrobné výsledky jsou vráceny ve formátu JSON, abyste si mohli prohlédnout celý dokument.
 
 ## <a name="edit-an-existing-indexer"></a>Úprava existujícího indexeru
-Jak jsme uvedli, vytvoří Průvodce importem dat hello **indexer**, které lze upravit jako samostatné konstrukce hello portálu.
+Jak jsme uvedli, průvodce importem dat vytvoří **indexer**, který můžete na portálu upravit jako samostatnou konstrukci.
 
-Na řídicím panelu služby hello dvakrát klikněte na tooslide dlaždici Indexer hello se seznam všech indexerů vytvořených pro vaše předplatné. Dvakrát klikněte na indexery toorun hello, upravit nebo odstranit. Můžete nahradit jinou existující hello index, zdroj dat hello změny a nastavit možnosti pro prahové hodnoty chybu během indexování.
+Dvojím kliknutím na dlaždici Indexer v řídícím panelu služby vysuňte seznam všech indexerů vytvořených pro vaše předplatné. Dvakrát klikněte na indexery, které chcete spustit, upravit nebo odstranit. Index můžete nahradit jiným existujícím indexem, změnit zdroj dat a nastavit možnosti prahových hodnot chybu během indexování.
 
 ## <a name="edit-an-existing-index"></a>Úprava existujícího indexu
-Průvodce Hello taky vytvořit **index**. Ve službě Azure Search index tooan strukturální aktualizace bude vyžadovat opětovné sestavení tohoto indexu. Nové vytvoření zahrnuje odstraňování hello index, znovu vytvořit index hello pomocí revidované schématu, který má požadované změny hello a načíst data. Strukturální aktualizace zahrnují změnu datového typu a přejmenování nebo odstranění pole.
+Průvodce vytvořil také **index**. Strukturální aktualizace indexu ve službě Azure Search vyžadují opětovné sestavení daného indexu. Opětovné sestavení zahrnuje odstranění indexu, opětovné vytvoření indexu s použitím zrevidovaného schématu s požadovanými změnami a načtení dat. Strukturální aktualizace zahrnují změnu datového typu a přejmenování nebo odstranění pole.
 
 Úpravy, které nevyžadují opětovné sestavení zahrnují přidání nového pole, změnu vyhodnocování profilů, změna navrhovatelů nebo změnu analyzátorů jazyka. Další informace naleznete v [aktualizaci indexu](https://msdn.microsoft.com/library/azure/dn800964.aspx).
 
 
 ## <a name="next-steps"></a>Další kroky
-Projděte si tyto informace o indexery toolearn odkazy:
+Další informace o indexerech najdete na těchto odkazech:
 
 * [Indexování služby Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Indexování služby Azure Cosmos DB](search-howto-index-documentdb.md)

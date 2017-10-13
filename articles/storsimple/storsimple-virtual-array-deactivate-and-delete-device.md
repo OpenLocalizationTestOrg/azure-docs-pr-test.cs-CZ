@@ -1,6 +1,6 @@
 ---
-title: "aaaDeactivate a odstranit virtuální pole Microsoft Azure StorSimple | Microsoft Docs"
-description: "Popisuje, jak zařízení StorSimple tooremove ze služby tak, že nejprve deaktivace služby a poté ji odstranit."
+title: "Deaktivovat a odstranit virtuální pole Microsoft Azure StorSimple | Microsoft Docs"
+description: "Popisuje postup odstranění zařízení StorSimple ze služby tak, že nejprve deaktivace služby a poté ji odstranit."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,80 +14,80 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: b1f3ddb5822d19965739777e238af19b507df984
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 8dea36f92b034f8c6cdb6875634848d37f4c6606
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>Deaktivovat a odstranit pole virtuální zařízení StorSimple
 
 ## <a name="overview"></a>Přehled
 
-Pokud deaktivujete o pole virtuální zařízení StorSimple, můžete zrušit hello připojení mezi hello zařízení a služby StorSimple Manager zařízení odpovídající hello. Tento kurz vysvětluje postup:
+Pokud deaktivujete o pole virtuální zařízení StorSimple, zrušení propojení mezi zařízením a odpovídající služby StorSimple Manager zařízení. Tento kurz vysvětluje postup:
 
 * Deaktivace zařízení 
 * Odstranit deaktivované zařízení
 
-Hello informace v tomto článku se vztahují pouze tooStorSimple virtuální pole. Informace o řady 8000 přejděte toohow příliš[deaktivujte nebo odstraňte zařízení](storsimple-deactivate-and-delete-device.md).
+Informace v tomto článku se vztahují pouze na pole virtuální zařízení StorSimple. Informace o řady 8000, přejděte na postup [deaktivujte nebo odstraňte zařízení](storsimple-deactivate-and-delete-device.md).
 
-## <a name="when-toodeactivate"></a>Když toodeactivate?
+## <a name="when-to-deactivate"></a>Kdy deaktivovat?
 
-Deaktivace je trvalé a nedá se vrátit zpátky. Deaktivované zařízení s hello služby StorSimple Manager zařízení nelze zaregistrovat znovu. Můžete třeba toodeactivate a odstranit o virtuální zařízení StorSimple pole v hello následující scénáře:
+Deaktivace je trvalé a nedá se vrátit zpátky. Deaktivované zařízení pomocí služby StorSimple Manager zařízení nelze zaregistrovat znovu. Může třeba deaktivovat a odstranit o virtuální zařízení StorSimple pole v následujících scénářích:
 
-* **Plánované převzetí služeb při selhání** : zařízení je online a plánování toofail přes zařízení. Pokud plánujete tooupgrade tooa větší zařízení, musíte toofail přes zařízení. Po převodu vlastnictví hello dat a dokončení hello převzetí služeb při selhání, hello zdrojového zařízení se automaticky odstraní.
-* **Neplánované převzetí služeb při selhání** : zařízení je offline a potřebují toofail přes hello zařízení. Tento scénář může dojít při havárii, když je výpadek v datovém centru hello a primární zařízení je mimo provoz. Máte v plánu toofail přes hello zařízení tooa sekundární zařízení. Po převodu vlastnictví hello dat a dokončení hello převzetí služeb při selhání, hello zdrojového zařízení se automaticky odstraní.
-* **Vyřadit z provozu** : Chcete toodecommission hello zařízení. To vyžaduje, abyste toofirst deaktivovat hello zařízení a potom jej odstraňte. Po deaktivaci zařízení jste už mít přístup k všechna data, která je uložený místně. Můžete pouze přístup a obnovit data hello, které jsou uložená v cloudu hello. Pokud máte v plánu tookeep hello zařízení dat po deaktivaci, byste měli před deaktivací zařízení vzít cloudový snímek všechna vaše data. Tento snímek cloudu vám umožní toorecover všechny hello data v pozdější fázi.
+* **Plánované převzetí služeb při selhání** : zařízení je online a chcete převzít zařízení. Pokud máte v úmyslu upgradovat na větší zařízení, musíte při selhání zařízení. Po převodu vlastnictví dat a dokončení převzetí služeb při selhání, zdrojového zařízení se automaticky odstraní.
+* **Neplánované převzetí služeb při selhání** : zařízení je offline a potřebujete převzít zařízení. Tento scénář může dojít při havárii, když je výpadek v datovém centru a primární zařízení je mimo provoz. Chcete převzít zařízení sekundární zařízení. Po převodu vlastnictví dat a dokončení převzetí služeb při selhání, zdrojového zařízení se automaticky odstraní.
+* **Vyřadit z provozu** : chcete vyřadit z provozu zařízení. To vyžaduje, abyste nejdřív deaktivovat zařízení a potom jej odstraňte. Po deaktivaci zařízení jste už mít přístup k všechna data, která je uložený místně. Je možné provádět pouze přístup a obnovit data uložená v cloudu. Pokud budete chtít zachovat data zařízení po deaktivaci, pak byste měli vzít cloudový snímek všechna vaše data před deaktivací zařízení. Tento snímek cloudu umožňuje obnovit všechna data v pozdější fázi.
 
 ## <a name="deactivate-a-device"></a>Deaktivace zařízení
 
-toodeactivate zařízení, proveďte následující kroky hello.
+Chcete-li deaktivovat zařízení, proveďte následující kroky.
 
-#### <a name="toodeactivate-hello-device"></a>toodeactivate hello zařízení
+#### <a name="to-deactivate-the-device"></a>Chcete-li deaktivovat zařízení
 
-1. Ve službě, přejděte příliš**správy > zařízení**. V hello **zařízení** okno, klikněte na tlačítko a vyberte hello zařízení chcete toodeactivate.
+1. Ve službě, přejděte na **správy > zařízení**. V **zařízení** okně klikněte a vyberte zařízení, které chcete deaktivovat.
    
-    ![Vyberte zařízení toodeactivate](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete7.png)
-2. Ve vaší **řídicí panel zařízení** okně klikněte na tlačítko **... Další** a hello seznamu, vyberte **deaktivovat**.
+    ![Vyberte zařízení deaktivace](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete7.png)
+2. Ve vaší **řídicí panel zařízení** okně klikněte na tlačítko **... Další** a ze seznamu vyberte **deaktivovat**.
    
     ![Kliknutím na možnost deaktivovat](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete8.png)
-3. V hello **deaktivovat** okno, název typu hello zařízení a pak klikněte na tlačítko **deaktivovat**. 
+3. V **deaktivovat** okno, zadejte název zařízení a pak klikněte na tlačítko **deaktivovat**. 
    
     ![Potvrďte deaktivovat](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete1.png)
    
-    Hello deaktivovat spuštění procesu a trvá několik minut toocomplete.
+    Proces deaktivovat spustí a trvá několik minut.
    
     ![Deaktivace v průběhu](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete2.png)
-4. Po deaktivaci aktualizuje hello seznam zařízení.
+4. Po deaktivaci aktualizuje seznam zařízení.
    
     ![Deaktivovat dokončení](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete3.png)
    
     Nyní můžete odstranit toto zařízení.
 
-## <a name="delete-hello-device"></a>Odstranit hello zařízení
+## <a name="delete-the-device"></a>Odstranění zařízení
 
-Zařízení má první deaktivované toodelete toobe ho. Odstranění zařízení odebere ze seznamu hello zařízení připojených toohello služby. Služba Hello pak již nebude možné spravovat zařízení hello odstranit. Hello data přidružená k hello zařízení ale zůstává v cloudu hello. Tato data pak nabíhají poplatky.
+Zařízení musí nejprve deaktivovat ho odstranit. Odstranění zařízení odebere ze seznamu zařízení připojená ke službě. Služba poté již nebude možné spravovat zařízení. Data přidružená k zařízení, ale zůstává v cloudu. Tato data pak nabíhají poplatky.
 
-toodelete hello zařízení, proveďte následující kroky hello.
+Pokud chcete odstranit zařízení, proveďte následující kroky.
 
-#### <a name="toodelete-hello-device"></a>toodelete hello zařízení
+#### <a name="to-delete-the-device"></a>Odstranění zařízení
 
-1. Přejděte ve vašem Správci zařízení StorSimple příliš**správy > zařízení**. V hello **zařízení** okně vyberte deaktivované zařízení chcete toodelete.
-2. V hello **řídicí panel zařízení** okně klikněte na tlačítko **... Další** a pak klikněte na **odstranit**.
+1. Přejděte ve vašem Správci zařízení StorSimple na **správy > zařízení**. V **zařízení** okně vyberte deaktivované zařízení, které chcete odstranit.
+2. V **řídicí panel zařízení** okně klikněte na tlačítko **... Další** a pak klikněte na **odstranit**.
    
-   ![Vyberte zařízení toodelete](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete4.png)
-3. V hello **odstranit** okno, název typu hello odstranění hello tooconfirm zařízení a pak klikněte na tlačítko **odstranit**. Odstraňování hello zařízení neodstraní data v cloudu hello přidružené hello zařízení. 
+   ![Vyberte zařízení k odstranění](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete4.png)
+3. V **odstranit** okno, zadejte název zařízení pro potvrzení odstranění a pak klikněte na tlačítko **odstranit**. Odstraněním zařízení nedojde k odstranění dat cloud přidružené k zařízení. 
    
    ![Potvrzení odstranění](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete5.png) 
-4. odstranění Hello spustí a trvá několik minut toocomplete.
+4. Odstranění se spustí a trvá několik minut.
    
    ![Probíhá odstraňování](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete6.png)
    
-    Po odstranění hello zařízení můžete zobrazit hello aktualizovat seznam zařízení.
+    Po odstranění zařízení můžete zobrazit aktualizovaný seznam zařízení.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o tom toofail přes, přejděte příliš[převzetí služeb při selhání a zotavení po havárii vaše pole virtuální zařízení StorSimple](storsimple-virtual-array-failover-dr.md).
+* Informace o tom, jak převzetí služeb při selhání, přejděte na [převzetí služeb při selhání a zotavení po havárii vaše pole virtuální zařízení StorSimple](storsimple-virtual-array-failover-dr.md).
 
-* toolearn Další informace o tom, jak toouse hello služby StorSimple Manager zařízení, přejděte příliš[použití hello tooadminister služby StorSimple Manager zařízení StorSimple virtuální pole](storsimple-virtual-array-manager-service-administration.md). 
+* Další informace o tom, jak používat službu StorSimple Manager zařízení, přejděte na [použít službu StorSimple Manager zařízení ke správě pole virtuální zařízení StorSimple](storsimple-virtual-array-manager-service-administration.md). 
 

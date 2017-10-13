@@ -1,6 +1,6 @@
 ---
-title: "aaaGet spuštění s doručováním VoD pomocí hello portálu Azure | Microsoft Docs"
-description: "Tento kurz vás provede procesem hello kroky implementace základní služby doručování obsahu vyžádání pomocí Azure Media Services (AMS) aplikace pomocí hello portálu Azure."
+title: "Začínáme s doručováním videa na vyžádání pomocí webu Azure Portal | Dokumentace Microsoftu"
+description: "Tento kurz vás provede jednotlivými kroky implementace základní služby pro doručování video obsahu na vyžádání pomocí aplikace Azure Media Services na webu Azure Portal."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,156 +14,145 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/07/2017
 ms.author: juliako
-ms.openlocfilehash: 5c1c1b1f74ec1f1301120fe8e5a5ae183fe0338f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: fb981f3240799c924464c828b2c835ac5d9879ed
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="get-started-with-delivering-content-on-demand-using-hello-azure-portal"></a>Začínáme s doručováním obsahu na vyžádání pomocí portálu Azure hello
+# <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>Začínáme s doručováním obsahu na vyžádání pomocí webu Azure Portal
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
-Tento kurz vás provede procesem hello kroky implementace základní služby doručování obsahu vyžádání pomocí Azure Media Services (AMS) aplikace pomocí hello portálu Azure.
+Tento kurz vás provede jednotlivými kroky implementace základní služby pro doručování video obsahu na vyžádání pomocí aplikace Azure Media Services na webu Azure Portal.
 
 ## <a name="prerequisites"></a>Požadavky
-Hello následují požadované toocomplete hello kurzu:
+K dokončení kurzu potřebujete následující položky:
 
-* Účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
-* Účet Media Services. toocreate účet Media Services najdete v části [jak tooCreate účtu Media Services](media-services-portal-create-account.md).
+* Účet Azure. Podrobnosti najdete na stránce [bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
+* Účet Media Services. Pokud chcete vytvořit účet Media Services, přečtěte si článek [Jak vytvořit účet Media Services](media-services-portal-create-account.md).
 
-Tento kurz zahrnuje hello následující úlohy:
+Tento kurz sestává z následujících úloh:
 
-1. Spusťte koncový bod streamování.
+1. Spuštění koncového bodu streamování
 2. Nahrání videosouboru
-3. Zakódujte hello zdrojového souboru do sady souborů MP4 s adaptivní přenosovou rychlostí.
-4. Publikujte hello asset a get streamování a progresivní stahování adresy URL.  
+3. Zakódování zdrojového souboru do sady souborů MP4 s adaptivní přenosovou rychlostí
+4. Publikování prostředku a získání adres URL streamování a progresivního stahování  
 5. Přehrání obsahu
 
-## <a name="start-streaming-endpoints"></a>Spusťte koncové body streamování. 
+## <a name="start-the-streaming-endpoint"></a>Spuštění koncového bodu streamování
 
-Při práci se službou Azure Media Services je jedním hello nejběžnějších scénářů doručování videa přes streamování s adaptivní přenosovou rychlostí. Služba Media Services poskytuje dynamické balení, což vám umožní toodeliver kódováním MP4 obsah ve formátech streamování podporovaných službou Media Services (MPEG DASH, HLS, technologie Smooth Streaming) v běhu, aniž byste museli toostore předem zabalené vaší s adaptivní přenosovou rychlostí verze pro každý z těchto formátů streamování.
+Jedním z nejběžnějších scénářů při práci se službou Azure Media Services je doručování videa prostřednictvím streamování s adaptivní přenosovou rychlostí. Služba Media Services poskytuje dynamické balení. Pomocí dynamického balení můžete doručovat obsah s adaptivní přenosovou rychlostí s kódováním MP4 ve formátech streamování za běhu podporovaných službou Media Services. Mezi příklady patří Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming a dynamické adaptivní streamování přes HTTP (DASH, označované také jako MPEG-DASH). Díky streamování s adaptivní přenosovou rychlostí služby Media Services můžete doručovat videa bez ukládání předem zabalených verzí pro každý z těchto formátů streamování.
 
->[!NOTE]
->Při vytvoření účtu AMS **výchozí** koncový bod streamování se přidá účet tooyour hello **Zastaveno** stavu. toostart streamování vašeho obsahu a proveďte výhod dynamického balení dynamické šifrování, hello streamování koncový bod, ze kterého mají být má obsah toostream toobe v hello **systémem** stavu. 
+> [!NOTE]
+> Po vytvoření účtu Media Services se do vašeho účtu přidá výchozí koncový bod streamování ve stavu **Zastaveno**. Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování, ze kterého chcete streamovat obsah, být ve stavu **Spuštěno**. 
 
-toostart hello koncový bod streamování, hello následující:
+Spuštění koncového bodu streamování:
 
-1. Přihlaste se na hello [portál Azure](https://portal.azure.com/).
-2. V okně Nastavení hello klikněte Streaming koncové body. 
-3. Klikněte na tlačítko hello výchozího koncového bodu streamování. 
-
-    Zobrazí se okno Hello výchozí podrobnosti koncový bod STREAMOVÁNÍ.
-
-4. Klikněte na ikonu Start hello.
-5. Klikněte na tlačítko toosave tlačítko hello uložit provedené změny.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+2. Vyberte **Nastavení** > **Koncové body streamování**. 
+3. Vyberte výchozí koncový bod streamování. Zobrazí se okno **VÝCHOZÍ KONCOVÝ BOD STREAMOVÁNÍ – PODROBNOSTI**.
+4. Vyberte ikonu **Spustit**.
+5. Vyberte tlačítko **Uložit**.
 
 ## <a name="upload-files"></a>Nahrání souborů
-toostream videa pomocí služby Azure Media Services, budete potřebovat tooupload hello zdrojová videa, zakódovat je do více přenosových rychlostí a publikujte hello výsledek. prvním krokem Hello je popsaná v této části. 
+Pokud chcete streamovat videa pomocí služby Media Services, musíte nahrát zdrojová videa, zakódovat je do více přenosových rychlostí a pak publikovat výsledek. První krok pokrývá tato část. 
 
-1. V hello **nastavení** okně klikněte na tlačítko **prostředky**.
+1. Na webu [Azure Portal](https://portal.azure.com/) zvolte účet Azure Media Services.
+2. Vyberte **Nastavení** > **Assety**. Pak vyberte tlačítko **Nahrát**.
    
     ![Nahrání souborů](./media/media-services-portal-vod-get-started/media-services-upload.png)
-2. Klikněte na tlačítko hello **nahrát** tlačítko.
    
-    Hello **nahrát asset videa** se zobrazí v okně.
+    Zobrazí se okno **Nahrát asset videa**.
    
    > [!NOTE]
-   > Velikost souboru není nijak omezená.
+   > Služba Media Services pro nahrávání videí neomezuje velikost souboru.
    > 
    > 
-3. Procházet toohello požadovaného video ve vašem počítači, vyberte ho a klikněte na OK.  
+3. Na svém počítači přejděte k videu, které chcete nahrát. Vyberte video a pak vyberte **OK**.  
    
-    Spustí nahrávání Hello a zobrazí se průběh hello pod názvem souboru hello.  
+    Spustí se nahrávání. Průběh můžete sledovat pod názvem souboru.  
 
-Po dokončení nahrávání hello by se zobrazit hello nový prostředek zobrazí v hello **prostředky** okno. 
+Po dokončení nahrávání bude nový prostředek uvedený v podokně **Prostředky**. 
 
 ## <a name="encode-assets"></a>Kódování assetů
+Pokud chcete využít výhod dynamického balení, musíte zdrojový soubor zakódovat do sady souborů MP4 s více přenosovými rychlostmi. Postup kódování je ukázán v této části.
 
-Při práci se službou Azure Media Services je jedním nejběžnější scénářů hello doručování tooyour klienti streamování s adaptivní přenosovou rychlostí. Služba Media Services podporuje následující adaptivní přenosové rychlosti streamování technologie hello: HTTP Live Streaming (HLS), technologie Smooth Streaming, MPEG DASH. tooprepare videa pro streamování s adaptivní přenosovou rychlostí, je nutné tooencode svůj zdroj videa do souborů s více přenosovými rychlostmi. Měli byste použít hello **Media Encoder Standard** tooencode kodér videa.  
+### <a name="encode-assets-in-the-portal"></a>Kódování prostředků na portálu
+Kódování obsahu pomocí procesoru Media Encoder Standard na webu Azure Portal:
 
-Služba Media Services také poskytuje dynamické balení, což vám umožní toodeliver vaše soubory MP4 více přenosovými rychlostmi v hello následující streamování formáty: MPEG DASH, HLS, technologie Smooth Streaming, aniž byste museli toorepackage do těchto formátů streamování. Při dynamickém balení stačí pouze toostore a sestavení platím hello souborů v jednom úložném formátu a služba Media Services a slouží hello odpovídající reakci na požadavky klientů.
-
-tootake výhod dynamického balení, je nutné tooencode zdrojového souboru do sady souborů MP4 s více přenosovými rychlostmi (postup hello kódování je ukázán později v této části).
-
-### <a name="toouse-hello-portal-tooencode"></a>portál tooencode toouse hello
-Tato část popisuje kroky hello tooencode může trvat svůj obsah pomocí procesoru Media Encoder Standard.
-
-1. V hello **nastavení** vyberte **prostředky**.  
-2. V hello **prostředky** okno, vyberte hello asset, které chcete tooencode.
-3. Stiskněte klávesu hello **kódovat** tlačítko.
-4. V hello **kódovat asset** oken, vyberte hello procesor "Media Encoder Standard" a jedno z přednastavení. Informace o předvolbách najdete v tématu popisujícím [automatické generování žebříčku přenosových rychlostí](media-services-autogen-bitrate-ladder-with-mes.md) a v tématu [Předvolby úloh pro MES](media-services-mes-presets-overview.md). Pokud máte v plánu toocontrol které předvolby kódování se používá, mějte na paměti: je důležité tooselect hello přednastavení, která je nejvhodnější pro vaše vstupní video. Například pokud znáte vaše vstupní video má rozlišení 1920 × 1080 pixelů, pak můžete použít hello "H264 Multiple Bitrate 1080p" přednastavené. Pokud máte video s nízkým rozlišením (640 × 360), neměli byste používat předvolbu H264 Multiple Bitrate 1080p.
+1. Na webu [Azure Portal](https://portal.azure.com/) zvolte účet Azure Media Services.
+2. Vyberte **Nastavení** > **Assety**. Vyberte prostředek, který chcete kódovat.
+3. Vyberte tlačítko **Kódovat**.
+4. V podokně **Kódovat prostředek** vyberte procesor **Media Encoder Standard** a jednu z předvoleb. Informace o předvolbách najdete v tématech [Automatické generování žebříčku přenosových rychlostí](media-services-autogen-bitrate-ladder-with-mes.md) a [Předvolby úloh pro Media Encoder Standard](media-services-mes-presets-overview.md). Je důležité, abyste zvolili předvolbu, která je pro vaše vstupní video nejvhodnější. Pokud například víte, že vaše vstupní video má rozlišení 1920 &#215; 1080 pixelů, můžete zvolit předvolbu **H264 Multiple Bitrate 1080p**. Pokud máte video s nízkým rozlišením (640 &#215; 360), neměli byste používat předvolbu **H264 Multiple Bitrate 1080p**.
    
-   Pro snadnější správu máte možnost úpravy hello název hello výstupní asset a název hello hello úlohy.
+   Pro usnadnění správy prostředků můžete upravit název výstupního prostředku a název úlohy.
    
    ![Kódování assetů](./media/media-services-portal-vod-get-started/media-services-encode1.png)
-5. Stiskněte **Vytvořit**.
+5. Vyberte **Vytvořit**.
 
 ### <a name="monitor-encoding-job-progress"></a>Monitorování průběhu úlohy kódování
-Klikněte na tlačítko toomonitor hello průběh úlohy kódování hello **nastavení** (v hello horní části stránky hello) a potom vyberte **úlohy**.
+Pokud chcete monitorovat průběh úlohy kódování, vyberte v horní části stránky **Nastavení** a pak vyberte **Úlohy**.
 
 ![Úlohy](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 
 ## <a name="publish-content"></a>Publikování obsahu
-tooprovide uživatelů s adresou URL, která se dá použít toostream nebo stažení vašeho obsahu, je nejprve nutné příliš "publikovat" asset vytvořením lokátoru. Lokátory zajišťují přístup toofiles obsažené v hello asset. Služba Media Services podporuje dva typy lokátorů: 
+Pokud chcete uživatelům poskytnout adresu URL, kterou můžou použít ke streamování nebo stažení vašeho obsahu, musíte prostředek nejprve publikovat vytvořením lokátoru. Lokátory zajišťují přístup k souborům v prostředku. Služba Azure Media Services podporuje dva typy lokátorů: 
 
-* Streamování (OnDemandOrigin) lokátory, používají pro adaptivní streamování (například toostream MPEG DASH, HLS nebo technologie Smooth Streaming). toocreate Lokátor streamování váš asset musí obsahovat soubor .ism. 
-* Progresivní lokátory (SAS), které se používají pro doručení videa přes progresivní stahování.
+* **Lokátory streamování (OnDemandOrigin)**. Lokátory streamování se používají pro adaptivní streamování. Mezi příklady adaptivního streamování patří HLS, Smooth Streaming a MPEG-DASH. Pokud chcete vytvořit lokátor streamování, váš prostředek musí obsahovat soubor .ism. 
+* **Progresivní lokátory (sdílený přístupový podpis)**. Progresivní lokátory se používají k doručování videa přes progresivní stahování.
 
-Adresu URL streamování má následující formát hello a můžete ji použít tooplay assetů technologie Smooth Streaming.
+Pokud chcete vytvořit adresu URL streamování HLS, připojte na konec adresy *(format=m3u8-aapl)*:
 
-    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest
+    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)
 
-připojit toobuild na adresu URL, streamování HLS (format = m3u8-aapl) toohello adresy URL.
+Pokud chcete vytvořit adresu URL streamování pro přehrávání prostředků Smooth Streaming, použijte následující formát adresy URL:
 
-    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
+    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest
 
-připojit toobuild na adresu URL, streamování MPEG DASH (formát = mpd. čas csf) toohello adresy URL.
+Pokud chcete vytvořit adresu URL streamování MPEG-DASH, připojte na konec adresy *(format=mpd-time-csf)*:
 
-    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
+    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest(format=mpd-time-csf)
 
+Adresa URL sdíleného přístupového podpisu má následující formát:
 
-Adresa URL typu SAS má následující formát hello.
-
-    {blob container name}/{asset name}/{file name}/{SAS signature}
+    {blob container name}/{asset name}/{file name}/{shared access signature}
 
 > [!NOTE]
-> Pokud jste použili hello portálu toocreate lokátorů před březnem 2015, byly vytvořeny lokátory s platností dva roky.  
+> Lokátory vytvořené na webu Azure Portal před březnem 2015 mají datum vypršení platnosti dva roky.  
 > 
 > 
 
-tooupdate na datum vypršení platnosti lokátoru, použijte [REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) nebo [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) rozhraní API. Při aktualizaci hello datum vypršení platnosti lokátoru SAS se změní adresa URL hello.
+K aktualizaci data vypršení platnosti lokátoru můžete použít rozhraní [REST API](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) nebo [.NET API](http://go.microsoft.com/fwlink/?LinkID=533259). 
 
-### <a name="toouse-hello-portal-toopublish-an-asset"></a>toouse hello portálu toopublish prostředek
-toouse hello portálu toopublish prostředek, hello následující:
+> [!NOTE]
+> Při aktualizaci data vypršení platnosti lokátoru sdíleného přístupového podpisu se změní adresa URL.
 
-1. Vyberte **Nastavení** > **Assety**.
-2. Vyberte, které chcete toopublish asset hello.
-3. Klikněte na tlačítko hello **publikovat** tlačítko.
-4. Vyberte typ lokátoru hello.
-5. Stiskněte **Přidat**.
+### <a name="to-use-the-portal-to-publish-an-asset"></a>Postup publikování assetu pomocí portálu
+1. Na webu [Azure Portal](https://portal.azure.com/) zvolte účet Azure Media Services.
+2. Vyberte **Nastavení** > **Assety**. Vyberte asset, který chcete publikovat.
+3. Vyberte tlačítko **Publikovat**.
+4. Vyberte typ lokátoru.
+5. Vyberte **Přidat**.
    
-    ![Publikování](./media/media-services-portal-vod-get-started/media-services-publish1.png)
+    ![Publikování videa](./media/media-services-portal-vod-get-started/media-services-publish1.png)
 
-Adresa URL Hello je přidána toohello seznam **publikovaných adres URL**.
+Adresa URL se přidá do seznamu **publikovaných adres URL**.
 
-## <a name="play-content-from-hello-portal"></a>Přehrávání obsahu z portálu hello
-Hello portál Azure nabízí přehrávač obsahu, které můžete použít tootest videa.
+## <a name="play-content-from-the-portal"></a>Přehrávání obsahu z portálu
+Video můžete otestovat v přehrávači obsahu na webu Azure Portal.
 
-Klikněte na tlačítko hello požadovaného video a potom klikněte na hello **přehrání** tlačítko.
+Vyberte video a pak vyberte tlačítko **Přehrát**.
 
-![Publikování](./media/media-services-portal-vod-get-started/media-services-play.png)
+![Přehrání videa na webu Azure Portal](./media/media-services-portal-vod-get-started/media-services-play.png)
 
 Musí být splněny určité předpoklady:
 
-* toobegin streamování, spusťte spuštěné hello **výchozí** koncový bod streamování.
-* Zajistěte, aby byla publikována hello videa.
-* To **přehrávač médií** přehrává z výchozího hello koncového bodu streamování. Pokud chcete, aby tooplay z jiného než výchozího koncového bodu, streamování klikněte toocopy hello adresu URL a použijte jiný přehrávač. Například můžete použít [Azure Media Services Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
-
-## <a name="next-steps"></a>Další kroky
-Prohlédněte si mapy kurzů k Media Services.
-
-[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
+* Pokud chcete začít streamovat, spusťte výchozí koncový bod streamování.
+* Zkontrolujte, že bylo video publikováno.
+* Přehrávač médií na webu Azure Portal přehrává z výchozího koncového bodu streamování. Pokud chcete přehrávat z jiného než výchozího koncového bodu streamování, vyberte a zkopírujte adresu URL a vložte ji do jiného přehrávače. Video můžete otestovat například v [Přehrávači médií Azure](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
+## <a name="next-steps"></a>Další kroky
+[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

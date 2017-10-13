@@ -1,6 +1,6 @@
 ---
-title: "protokol auditování hello aaaHow toouse v Azure AD Privileged Identity managementu | Microsoft Docs"
-description: "Zjistěte, jak protokolu auditů hello toouse v rozšíření Azure Privileged Identity Management hello."
+title: "Jak používat protokol auditu v Azure AD Privileged Identity managementu | Microsoft Docs"
+description: "Naučte se používat protokol auditu v rozšíření Azure Privileged Identity Management."
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -15,48 +15,48 @@ ms.workload: identity
 ms.date: 02/14/2017
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 36987eaab9fe02c5dd7b4f4705e487299430745d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7d9a5255a64d46c1388d328a606b3f297d61262b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="using-hello-audit-log-in-pim"></a>Použití protokolu auditu hello v PIM
-Hello Privileged Identity Management (PIM) auditu protokolu toosee můžete použít všechny přiřazení uživatelských hello a aktivace v daném časovém období. Pokud chcete, aby historie úplné auditu hello toosee aktivity ve vašem klientovi, včetně správce, koncového uživatele a aktivity synchronizace, můžete použít hello [přístupu a použití sestav Azure Active Directory.](active-directory-view-access-usage-reports.md)
+# <a name="using-the-audit-log-in-pim"></a>Použití protokolu auditování v PIM
+Protokol auditu Privileged Identity Management (PIM) můžete zobrazit všechny uživatele přiřazení a aktivace v daném časovém období. Pokud chcete zobrazit historii úplné auditu aktivity ve vašem klientovi, včetně správce, koncového uživatele a aktivity synchronizace můžete použít [přístupu a použití sestav Azure Active Directory.](active-directory-view-access-usage-reports.md)
 
-## <a name="navigate-toohello-audit-log"></a>Přejděte toohello protokolu auditu
-Z hello [portál Azure](https://portal.azure.com) řídicí panel, vyberte hello **Azure AD Privileged Identity Management** aplikace. Odtud, přístup k protokolu auditu hello kliknutím **spravovat privilegované role** > **historie auditu** hello PIM řídicím panelu.
+## <a name="navigate-to-the-audit-log"></a>Přejděte na protokol auditu
+Z [portál Azure](https://portal.azure.com) řídicí panel, vyberte **Azure AD Privileged Identity Management** aplikace. Odtud, přístup k protokolu auditu kliknutím **spravovat privilegované role** > **historie auditu** v řídicím panelu PIM.
 
-## <a name="hello-audit-log-graph"></a>Graf protokolu auditu Hello
-Ve spojnicovém grafu můžete hello auditu protokolu tooview hello celkový počet aktivací, maximální počet aktivací za den a průměrný počet aktivací za den.  Můžete také filtrovat hello dat podle role, pokud je víc než jedné role v historie auditu hello.
+## <a name="the-audit-log-graph"></a>Graf protokolu auditu
+Chcete-li zobrazit celkový počet aktivací, maximální počet aktivací za den a průměrný počet aktivací za den ve spojnicovém grafu, můžete použít protokol auditu.  Data lze filtrovat také role, pokud je víc než jedné role v historie auditu.
 
-Použití hello **čas**, **akce**, a **role** tlačítka toosort hello protokolu.
+Použití **čas**, **akce**, a **role** tlačítka seřadíte v protokolu.
 
-## <a name="hello-audit-log-list"></a>Seznam protokolu auditu Hello
-Hello sloupců v seznamu protokolů auditu hello jsou:
+## <a name="the-audit-log-list"></a>Seznam protokolu auditu
+Sloupce v seznamu protokolů auditu jsou:
 
-* **Žadatel** -hello uživatele, který požadovaný aktivaci role hello nebo změnit.  Pokud je hodnota hello "Azure systém", zkontrolujte protokol auditu Azure hello Další informace.
-* **Uživatel** -hello uživatele, který je aktivace nebo přiřazenou roli tooa.
-* **Role** -hello role přiřazení nebo aktivaci uživatelem hello.
-* **Akce** – hello akcí hello žadatele. To může zahrnovat přiřazení, zrušení, aktivace nebo deaktivace.
-* **Čas** – Pokud hello akce došlo k chybě.
-* **Důvody** – Pokud jakýkoli text byl zadali do pole Důvod hello během aktivace, se zobrazí tady.
+* **Žadatel** -uživatel, který požadovaný aktivaci role nebo změnit.  Pokud je hodnota "Azure systém", zkontrolujte protokol auditu Azure pro další informace.
+* **Uživatel** -uživatel, který je přiřazený k roli nebo aktivace.
+* **Role** – přiřazené roli, nebo uživatel aktivoval.
+* **Akce** – akce prováděné žadatel. To může zahrnovat přiřazení, zrušení, aktivace nebo deaktivace.
+* **Čas** – Pokud akce došlo k chybě.
+* **Důvody** – Pokud jakýkoli text byl zadali do pole Důvod během aktivace, se zobrazí tady.
 * **Vypršení platnosti** – pouze relevantní pro aktivaci role.
 
-## <a name="filter-hello-audit-log"></a>Protokol auditování hello filtru
-Můžete filtrovat hello informace, které se zobrazí v protokolu auditování hello kliknutím hello **filtru** tlačítko.  Hello **aktualizace grafu parametry okno** se zobrazí.
+## <a name="filter-the-audit-log"></a>Filtrovat protokol auditu
+Můžete filtrovat informace, které se zobrazí v protokolu auditování kliknutím **filtru** tlačítko.  **Aktualizace grafu parametry okno** se zobrazí.
 
-Po nastavení hello filtry, klikněte na tlačítko **aktualizace** toofilter hello data v protokolu hello.  Pokud hello data nezobrazí okamžitě, aktualizujte stránku hello.
+Jakmile jste nastavili filtry, klikněte na tlačítko **aktualizace** k filtrování dat v protokolu.  Pokud data nezobrazí okamžitě, aktualizujte stránku.
 
-### <a name="change-hello-date-range"></a>Změnit rozsah hello
-Použití hello **Dnes**, **minulého týdne**, **poslední měsíc**, nebo **vlastní** tlačítka toochange hello časové rozmezí hello protokolu auditu.
+### <a name="change-the-date-range"></a>Změnit rozsah dat
+Použití **Dnes**, **minulého týdne**, **poslední měsíc**, nebo **vlastní** Chcete-li změnit časové rozmezí protokol auditu.
 
-Pokud vyberete hello **vlastní** tlačítko, budete mít **z** pole pro datum a **k** datum pole toospecify rozsah dat pro protokol hello.  Můžete buď zadat hello data ve formátu MM/DD/RRRR nebo klikněte na hello **kalendáře** ikonu a vyberte hello datum z kalendáře.
+Pokud vyberete **vlastní** tlačítko, budete mít **z** pole pro datum a **k** pole pro datum k určení rozsahu dat pro protokol.  Můžete zadat data ve formátu MM/DD/RRRR nebo klikněte na **kalendáře** ikonu a vyberte datum z kalendáře.
 
-### <a name="change-hello-roles-included-in-hello-log"></a>Změna role hello součástí hello protokolu
-Zaškrtněte nebo zrušte zaškrtnutí políčka hello **Role** políčko další tooeach role tooinclude nebo vyloučit z hello protokolu.
+### <a name="change-the-roles-included-in-the-log"></a>Změna role zahrnuté v protokolu
+Zaškrtněte nebo zrušte zaškrtnutí políčka **Role** zaškrtávací políčko vedle každé role zahrnout nebo vyloučit z protokolu.
 
-<!--Every topic should have next steps and links toohello next logical set of content tookeep hello customer engaged-->
+<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Další kroky
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 

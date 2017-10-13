@@ -1,13 +1,13 @@
-1. V okně Nastavení hello pro hello prostředku, skupiny prostředků nebo předplatného, které chcete toolock, vyberte **zamkne**.
+1. V okně Nastavení prostředku, skupiny prostředků nebo předplatného, která chcete zamknout, vyberte **zamkne**.
    
       ![Vyberte zámek](./media/resource-manager-lock-resources/select-lock.png)
-2. Vyberte tooadd zámek, **přidat**. Pokud chcete toocreate zámku na nadřazené úrovni, vyberte nadřazenou hello. Hello aktuálně vybrané prostředků dědí z nadřazené hello hello zámku. Například je může zamknout hello prostředků skupiny tooapply tooall zámku její prostředky.
+2. Chcete-li přidat zámek, vyberte **přidat**. Pokud chcete vytvořit zámek na nadřazené úrovni, vyberte nadřazenou. Aktuálně vybraný zdroj zámek dědí z nadřazeného objektu. Například může zamknout skupinu prostředků, které chcete použít zámek pro všechny její prostředky.
    
       ![Přidání zámku](./media/resource-manager-lock-resources/add-lock.png) 
-3. Dejte hello zámku úrovní název a zámku. Volitelně můžete přidat poznámky, které popisují hello zámku.
+3. Zadejte název a zámek úroveň zámek. Volitelně můžete přidat poznámky, které popisují zámek.
    
       ![Sada zámku](./media/resource-manager-lock-resources/set-lock.png) 
-4. toodelete hello zámku, vyberte hello třemi tečkami a **odstranit** z dostupných možností hello.
+4. Pokud chcete odstranit zámek, vyberte se třemi tečkami a **odstranit** z dostupných možností.
    
       ![Odstranit zámku](./media/resource-manager-lock-resources/delete-lock.png) 
 

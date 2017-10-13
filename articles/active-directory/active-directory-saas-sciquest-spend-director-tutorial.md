@@ -1,6 +1,6 @@
 ---
 title: "Kurz: Azure Active Directory integrace s SciQuest tráví ředitel | Microsoft Docs"
-description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a SciQuest tráví ředitel."
+description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SciQuest tráví ředitel."
 services: active-directory
 documentationcenter: 
 author: jeevansd
@@ -14,223 +14,223 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 47c46f1297054fd96b86c1d8c66e1a55ec151497
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 84b707668dc45e92e6151f422f1c919f638533b1
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sciquest-spend-director"></a>Kurz: Azure Active Directory integrace s SciQuest tráví ředitel
-cílem Hello tohoto kurzu je tooshow můžete jak toointegrate SciQuest tráví nacházející se službou Azure Active Directory (Azure AD).  
-Integrace SciQuest tráví ředitel s Azure AD poskytuje hello následující výhody: 
+Cílem tohoto kurzu je ukazují, jak integrovat SciQuest tráví ředitel Azure Active Directory (Azure AD).  
+Integrace SciQuest tráví ředitel s Azure AD poskytuje následující výhody: 
 
-* Můžete řídit ve službě Azure AD, který má přístup tooSciQuest výdaji ředitel 
-* Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooSciQuest výdaji ředitel (jednotné přihlášení) s jejich účty Azure AD
-* Můžete spravovat vaše účty v jednom centrálním místě - hello portál Azure classic
+* Můžete řídit ve službě Azure AD, který má přístup k SciQuest tráví ředitel 
+* Můžete povolit uživatelům, aby automaticky získat přihlášení k SciQuest tráví ředitel (jednotné přihlášení) s jejich účty Azure AD
+* Můžete spravovat vaše účty v jednom centrálním místě – portál Azure classic
 
-Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
-tooconfigure integrace Azure AD s SciQuest tráví ředitel, je třeba hello následující položky:
+Konfigurace integrace Azure AD s SciQuest tráví ředitel, potřebujete následující položky:
 
 * Předplatné služby Azure AD
 * SciQuest tráví ředitel jednotného přihlašování povolené předplatné
 
 > [!NOTE]
-> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 > 
 > 
 
-tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
+Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 * Provozním prostředí byste neměli používat, pokud je to nutné.
 * Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/). 
 
 ## <a name="scenario-description"></a>Popis scénáře
-cílem Hello tohoto kurzu je tooenable tootest Azure AD jednotné přihlašování v testovacím prostředí.  
-Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+Cílem tohoto kurzu je vám umožní testování Azure AD jednotné přihlašování v testovacím prostředí.  
+Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání SciQuest tráví ředitel z Galerie hello 
+1. Přidání SciQuest tráví ředitel z Galerie 
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-sciquest-spend-director-from-hello-gallery"></a>Přidání SciQuest tráví ředitel z Galerie hello
-tooconfigure hello integrace SciQuest tráví ředitel do Azure AD, je nutné tooadd SciQuest tráví ředitel hello Galerie tooyour seznamu spravovaných aplikací SaaS.
+## <a name="adding-sciquest-spend-director-from-the-gallery"></a>Přidání SciQuest tráví ředitel z Galerie
+Při konfiguraci integrace SciQuest tráví ředitel do služby Azure AD potřebujete přidat SciQuest tráví ředitel z Galerie si na seznam spravovaných aplikací SaaS.
 
-**tooadd SciQuest tráví ředitel z Galerie hello, proveďte následující kroky hello:**
+**Pokud chcete přidat SciQuest tráví ředitel z galerie, postupujte takto:**
 
-1. V hello **portál Azure classic**, na levém navigačním podokně text hello, klikněte na **služby Active Directory**. 
+1. V **portál Azure classic**, v levém navigačním podokně klikněte na tlačítko **služby Active Directory**. 
    
     ![Active Directory][1]
 
-2. Z hello **Directory** seznamu, vyberte hello adresář, pro které chcete tooenable integrace adresáře.
+2. Z **Directory** seznamu, vyberte adresář, pro který chcete povolit integraci adresáře.
 
-3. Klikněte na zobrazení aplikace hello tooopen, v zobrazení adresáře hello **aplikace** v horní nabídce hello.
+3. Chcete-li otevřít zobrazení aplikací, v zobrazení adresáře, klikněte na tlačítko **aplikace** v horní nabídce.
    
     ![Aplikace][2]
 
-4. Klikněte na tlačítko **přidat** na hello dolní části stránky hello.
+4. Klikněte na tlačítko **přidat** v dolní části stránky.
    
     ![Aplikace][3]
 
-5. Na hello **co chcete toodo** dialogové okno, klikněte na tlačítko **přidat aplikaci z Galerie hello**.
+5. Na **co chcete udělat** dialogové okno, klikněte na tlačítko **přidat aplikaci z Galerie**.
    
     ![Aplikace][4]
 
-6. Hello vyhledávacího pole zadejte **sciQuest tráví ředitel**.
+6. Do vyhledávacího pole zadejte **sciQuest tráví ředitel**.
    
     ![Aplikace][5]
 
-7. V podokně výsledků hello, vyberte **SciQuest tráví ředitel**a potom klikněte na **Complete** tooadd hello aplikace.
+7. V podokně výsledků vyberte **SciQuest tráví ředitel**a potom klikněte na **Complete** tuto aplikaci přidat.
    
     ![Aplikace][6]
 
 ## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-Hello cílem této části je tooshow můžete jak tooconfigure a testování Azure AD jednotné přihlašování s SciQuest tráví ředitel podle testovacího uživatele názvem "Britta Simon".
+Cílem této části je ukazují, jak nakonfigurovat a otestovat Azure AD jednotné přihlašování s SciQuest tráví ředitel podle testovacího uživatele názvem "Britta Simon".
 
-Pro toowork jeden přihlašování Azure AD musí tooknow, co uživatel hello protějškem v SciQuest tráví ředitel tooan uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v SciQuest tráví ředitel musí toobe navázat.  
-Přiřazením hello hodnotu hello je vytvořen vztah tento odkaz **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** v SciQuest tráví ředitel.
+Pro jednotné přihlašování pro práci je potřeba vědět, co uživatel protějškem v SciQuest tráví ředitel pro uživatele ve službě Azure AD je Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v SciQuest tráví ředitel musí navázat.  
+Tento vztah propojení se navazuje se hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v SciQuest tráví ředitel.
 
-tooconfigure a testu Azure AD jednotné přihlašování s SciQuest tráví ředitel, potřebujete následující stavební bloky hello toocomplete:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s SciQuest tráví ředitel, je třeba dokončit následující stavební bloky:
 
-1. **[Konfigurace Azure AD jeden jednotné přihlašování](#configuring-azure-ad-single-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele ředitel tráví SciQuest](#creating-a-halogen-software-test-user)**  -toohave protějšek Britta Simon v tráví ředitel SciQuest, která je jí reprezentace toohello propojené služby Azure AD.
-4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
+1. **[Konfigurace Azure AD jeden jednotné přihlašování](#configuring-azure-ad-single-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele ředitel tráví SciQuest](#creating-a-halogen-software-test-user)**  – Pokud chcete mít protějšek Britta Simon v tráví ředitel SciQuest, propojené služby Azure AD reprezentace jí.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
 
 ### <a name="configuring-azure-ad-single-single-sign-on"></a>Konfigurace Azure AD jednoho jednotného přihlašování
-Hello cílem této části je tooenable Azure AD jednotné přihlašování v hello portál Azure classic a tooconfigure jednotné přihlašování v aplikaci SciQuest tráví ředitel.
+Cílem této části je chcete povolit Azure AD jednotného přihlašování na portálu Azure classic a nakonfigurovat jednotné přihlašování v aplikaci SciQuest tráví ředitel.
 
-**tooconfigure Azure AD jednotné přihlašování s SciQuest tráví ředitel, proveďte hello následující kroky:**
+**Ke konfiguraci Azure AD jednotné přihlašování s SciQuest tráví ředitel, proveďte následující kroky:**
 
-1. V portálu Azure classic, na hello hello **SciQuest tráví ředitel** stránky integrace aplikací, klikněte na tlačítko **nakonfigurovat jednotné přihlašování** tooopen hello **nakonfigurovat jednotné přihlašování**dialogové okno.
+1. Na portálu Azure classic na **SciQuest tráví ředitel** stránky integrace aplikací, klikněte na tlačítko **nakonfigurovat jednotné přihlašování** otevřete **nakonfigurovat jednotné přihlašování**  Dialogové okno.
    
     ![Konfigurovat jednotné přihlašování][8]
 
-2. Na hello **jak jste by například uživatelé toosign na tooSciQuest výdaji ředitel** vyberte **Azure AD jednotné přihlašování**a potom klikněte na **Další**.
+2. Na **jak chcete uživatelům se přihlásit ředitel tráví SciQuest** vyberte **Azure AD jednotné přihlašování**a potom klikněte na **Další**.
    
     ![Azure AD jednotné přihlášení][9]
 
-3. Na hello **nakonfigurovat nastavení aplikace** dialogové okno proveďte hello následující kroky: 
+3. Na **nakonfigurovat nastavení aplikace** dialogové okno proveďte následující kroky: 
    
     ![Konfigurovat nastavení aplikace][10]
    
-     a. V hello **přihlašovací adresa URL** textové pole, zadejte adresu URL používá vaši uživatelé toosign na tooyour SciQuest tráví ředitel aplikace pomocí hello následující vzor: *https://.* SciQuest.com/.**
+     a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL používá vaši uživatelé k přihlášení do aplikace tráví ředitel SciQuest pomocí následujícího vzorce: *https://.* SciQuest.com/.**
    
-     b. V hello **adresa URL odpovědi** textové pole, typ hello stejnou hodnotou, kterou jste zadali do hello **přihlašovací adresa URL** textové pole. 
+     b. V **adresa URL odpovědi** textovému poli, zadejte stejnou hodnotu, která jste zadali do **přihlašovací adresa URL** textové pole. 
    
      c. Klikněte na **Další**.
 
-4. Na hello **nakonfigurovat jednotné přihlašování v ředitel tráví SciQuest** klikněte na tlačítko **stáhnout metadata**a potom uložte soubor metadat hello místně na vašem počítači.
+4. Na **nakonfigurovat jednotné přihlašování v ředitel tráví SciQuest** klikněte na tlačítko **stáhnout metadata**a potom uložte soubor metadat místně na vašem počítači.
    
     ![Co je služba Azure AD Connect][11]
 
-5. Obraťte se na podporu tooenable SciQuest tuto metodu ověřování pomocí metadat hello výše stáhli.
+5. Kontaktujte SciQuest podporují tuto metodu ověřování pomocí výše uvedených stažené metadat.
 
-6. Na hello portál Azure classic, vyberte hello konfigurace přihlášení potvrzení a pak klikněte na tlačítko **Complete** tooclose hello **nakonfigurovat jednotné přihlašování** dialogové okno. 
+6. Na portálu Azure classic, vyberte potvrzení konfigurace přihlášení a pak klikněte na tlačítko **Complete** zavřete **nakonfigurovat jednotné přihlašování** dialogové okno. 
    
     ![Co je služba Azure AD Connect][15]
 
-7. Na hello **jednotné přihlašování potvrzení** klikněte na tlačítko **Complete**.  
+7. Na **jednotné přihlašování potvrzení** klikněte na tlačítko **Complete**.  
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Hello cílem této části je toocreate testovacího uživatele v hello názvem Britta Simon portál Azure classic.
+Cílem této části je vytvoření zkušebního uživatele na portálu Azure classic názvem Britta Simon.
 
-**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
+**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
 
-1. V hello **portál Azure classic**, na levém navigačním podokně text hello, klikněte na **služby Active Directory**.
+1. V **portál Azure classic**, v levém navigačním podokně klikněte na tlačítko **služby Active Directory**.
    
     ![Co je služba Azure AD Connect][100] 
 
-2. Z hello **Directory** seznamu, vyberte hello adresář, pro které chcete tooenable integrace adresáře.
+2. Z **Directory** seznamu, vyberte adresář, pro který chcete povolit integraci adresáře.
 
-3. Klikněte na tlačítko toodisplay hello seznam uživatelů, v nabídce hello hello nahoře **uživatelé**.
+3. Chcete-li zobrazit seznam uživatelů, v nabídce v horní části, klikněte na tlačítko **uživatelé**.
    
     ![Co je služba Azure AD Connect][101] 
 
-4. tooopen hello **přidat uživatele** dialogové okno, ve hello nástrojů v dolní části hello, klikněte na tlačítko **přidat uživatele**. 
+4. Chcete-li otevřít **přidat uživatele** dialogovém okně, na panelu nástrojů v dolní části, klikněte na tlačítko **přidat uživatele**. 
    
     ![Co je služba Azure AD Connect][102] 
 
-5. Na hello **Povězte nám o tohoto uživatele** dialogové okno proveďte hello následující kroky:
+5. Na **Povězte nám o tohoto uživatele** dialogové okno proveďte následující kroky:
    
     ![Co je služba Azure AD Connect][103] 
    
     a. Jako **typ uživatele**, vyberte **nového uživatele ve vaší organizaci**.
    
-    b. V hello uživatelské jméno **textbox**, typ **BrittaSimon**.
+    b. V uživatelské jméno **textbox**, typ **BrittaSimon**.
    
     c. Klikněte na **Další**.
 
-6. Na hello **profil uživatele** dialogové okno proveďte hello následující kroky: 
+6. Na **profil uživatele** dialogové okno proveďte následující kroky: 
    
     ![Co je služba Azure AD Connect][104] 
    
-    a. V hello **křestní jméno** textovému poli, typ **Britta**.  
+    a. V **křestní jméno** textovému poli, typ **Britta**.  
    
-    b. V hello **příjmení** txtbox, typ, **Simon**.
+    b. V **příjmení** txtbox, typ, **Simon**.
    
-    c. V hello **zobrazovaný název** textovému poli, typ **Britta Simon**.
+    c. V **zobrazovaný název** textovému poli, typ **Britta Simon**.
    
-    d. V hello **Role** seznamu, vyberte **uživatele**.
+    d. V **Role** seznamu, vyberte **uživatele**.
    
     e. Klikněte na **Další**.
 
-7. Na hello **získat dočasné heslo** dialogové okno stránky, klikněte na tlačítko **vytvořit**.
+7. Na **získat dočasné heslo** dialogové okno stránky, klikněte na tlačítko **vytvořit**.
    
     ![Co je služba Azure AD Connect][105]  
 
-8. Na hello **získat dočasné heslo** dialogové okno proveďte hello následující kroky:
+8. Na **získat dočasné heslo** dialogové okno stránky, proveďte následující kroky:
    
     ![Co je služba Azure AD Connect][106]   
    
-    a. Poznamenejte si hodnotu hello hello **nové heslo**.
+    a. Poznamenejte si hodnotu **nové heslo**.
    
     b. Klikněte na **Dokončit**.   
 
 ### <a name="creating-a-sciquest-spend-director-test-user"></a>Vytvoření zkušebního uživatele SciQuest tráví ředitel
-Hello cílem této části je toocreate volal Britta Simon v SciQuest tráví ředitel uživatele.
+Cílem této části je vytvoření uživatele volal Britta Simon v SciQuest tráví ředitel.
 
-Potřebujete toocontact váš tým podpory SciQuest tráví ředitele a jim poskytnout hello podrobnosti o váš účet tooget test, vytvořen.
+Budete muset kontaktujte tým podpory SciQuest tráví ředitele a poskytněte s podrobnostmi o vašem účtu testovací získat vytvořen.
 
 Alternativně můžete využít i za běhu zřizování, jeden přihlašování funkce, která podporuje SciQuest tráví ředitel.  
-Pokud za běhu zřizování je povolená, uživatelé jsou automaticky vytváří SciQuest tráví ředitel během jednoho pokusu o přihlášení Pokud ještě neexistují. Tato funkce eliminuje nutnost hello toomanually vytváření protějšku přihlašování uživatelů.
+Pokud za běhu zřizování je povolená, uživatelé jsou automaticky vytváří SciQuest tráví ředitel během jednoho pokusu o přihlášení Pokud ještě neexistují. Tato funkce eliminuje nutnost ručně vytvořit protějšku přihlašování uživatelů.
 
-zřizování tooget za běhu povolena, je nutné toocontact jste váš tým podpory SciQuest tráví ředitel.
+Pokud chcete získat za běhu zřizování povolena, je potřeba obraťte se na to, co váš tým podpory SciQuest tráví ředitel.
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
-Hello cílem této části je tooenabling toouse Britta Simon Azure jednotné přihlašování, poskytněte svůj přístup tooSciQuest výdaji ředitel.
+### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+Cílem této části je povolení Britta Simon používat tak, že udělíte přístup k SciQuest tráví ředitel Azure jednotné přihlašování.
 
 ![Co je služba Azure AD Connect][200]
 
-**tooassign Britta Simon tooSciQuest výdaji ředitel, proveďte hello následující kroky:**
+**Pokud chcete přiřadit Britta Simon SciQuest tráví ředitel, proveďte následující kroky:**
 
-1. Na hello Azure klikněte na portálu classic, zobrazení aplikace hello tooopen, v zobrazení adresáře hello **aplikace** v horní nabídce hello.
+1. Na portálu Azure classic, otevřete zobrazení aplikací, v zobrazení adresáře, klikněte na **aplikace** v horní nabídce.
    
     ![Co je služba Azure AD Connect][201]
 
-2. V seznamu aplikace hello vyberte **SciQuest tráví ředitel**.
+2. V seznamu aplikací vyberte **SciQuest tráví ředitel**.
    
     ![Co je služba Azure AD Connect][202]
 
-3. V nabídce hello hello nahoře, klikněte na tlačítko **uživatelé**.
+3. V nabídce v horní části, klikněte na tlačítko **uživatelé**.
    
     ![Co je služba Azure AD Connect][203]
 
-4. V seznamu uživatelé hello vyberte **Britta Simon**.
+4. V seznamu uživatelů vyberte **Britta Simon**.
    
     ![Co je služba Azure AD Connect][204]
 
-5. V panelu nástrojů hello na dolní hello, klikněte na **přiřadit**.
+5. Na panelu nástrojů v dolní části klikněte na tlačítko **přiřadit**.
    
     ![Co je služba Azure AD Connect][205]
 
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
-Hello cílem této části je tootest pomocí Azure AD konfigurace přihlášení hello přístupového panelu.  
-Když kliknete na dlaždici SciQuest tráví ředitel hello v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour SciQuest tráví ředitel aplikace.
+Cílem této části je Azure AD jeden přihlašování konfigurace pomocí přístupového panelu.  
+Když kliknete na dlaždici SciQuest tráví ředitel na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci SciQuest tráví ředitel.
 
 ## <a name="additional-resources"></a>Další zdroje
-* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

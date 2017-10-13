@@ -1,6 +1,6 @@
 ---
-title: aaaPrepare System Center VMM pro tooAzure replikace technologie Hyper-V | Microsoft Docs
-description: "Popisuje, jak server System Center VMM tooprepare pro tooAzure replikace technologie Hyper-V, pomocí Azure Site Recovery"
+title: "Příprava System Center VMM pro replikaci technologie Hyper-V do Azure | Microsoft Docs"
+description: "Popisuje, jak připravit server System Center VMM pro replikaci technologie Hyper-V do Azure pomocí Azure Site Recovery"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,37 +14,37 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/23/2017
 ms.author: raynew
-ms.openlocfilehash: 773b06afaf7d3eea1fe64f050bf3970943cf466a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ec118ed837dbf140083b3ae1e4ecd41c81562018
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/29/2017
 ---
-# <a name="step-6-prepare-vmm-servers-and-hyper-v-hosts-for-hyper-v-replication-tooazure"></a>Krok 6: Připravte servery VMM a hostitelé Hyper-V pro tooAzure replikace technologie Hyper-V
+# <a name="step-6-prepare-vmm-servers-and-hyper-v-hosts-for-hyper-v-replication-to-azure"></a>Krok 6: Připravte servery VMM a hostitelé Hyper-V pro replikaci technologie Hyper-V do Azure.
 
-Po nastavení [Azure součásti](vmm-to-azure-walkthrough-prepare-azure.md) hello nasazení, použijte hello pokyny v tomto článku tooprepare místní VMM servery a toointeract hostitele technologie Hyper-V s Azure Site Recovery.
+Po nastavení [Azure součásti](vmm-to-azure-walkthrough-prepare-azure.md) pro nasazení, postupujte podle pokynů v tomto článku připravit místní servery VMM a hostitelé Hyper-V pro interakci s Azure Site Recovery.
 
-Po přečtení tohoto článku, post jakékoli komentáře v dolní části hello, nebo požádat technické dotazy na hello [fóru Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Po přečtení tohoto článku, post jakékoli komentáře v dolní části, nebo požádat technické dotazy na [fóru Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 
 ## <a name="prepare-vmm-servers"></a>Připravit servery VMM
 
-- Musíte mít alespoň jeden server VMM, který splňuje požadavky na podporu hello pro Site Recovery replikaci (site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers).
-- Ujistěte se, že jste připravili hello server VMM pro [mapování sítě](vmm-to-azure-walkthrough-network.md#network-mapping-for-replication-to-azure).
-- Ujistěte se, že tento server VMM hello přístup tyto adresy URL
+- Musíte mít alespoň jeden server VMM, který splňuje požadavky na podporu pro Site Recovery replikaci (site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers).
+- Zajistěte, aby Připravili jste server VMM pro [mapování sítě](vmm-to-azure-walkthrough-network.md#network-mapping-for-replication-to-azure).
+- Ujistěte se, že můžete přístup k serveru VMM pro tyto adresy URL
 
     [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
     
-- Pokud máte pravidla brány firewall založená na adresu IP, ověřte, že umožňují tooAzure komunikace.
-- Povolit hello [rozsahy IP Datacentra Azure](https://www.microsoft.com/download/confirmation.aspx?id=41653)a hello port HTTPS (443).
-- Povolte rozsahy IP adres pro hello oblast Azure svého předplatného a západní USA (používá se pro správu Identity a řízení přístupu).
+- Pokud máte zavedená pravidla brány firewall založená na IP adrese, zkontrolujte, že tato pravidla umožňují komunikaci s Azure.
+- Povolte [Rozsahy IP adres datového centra Azure](https://www.microsoft.com/download/confirmation.aspx?id=41653) a port HTTPS (443).
+- Povolte rozsahy IP adres pro oblast Azure svého předplatného a pro oblast Západní USA (používá se pro řízení přístupu a správu identit).
 
-Během nasazování Site Recovery stáhněte hello zprostředkovatele služby Site Recovery a nainstalovat na každý server VMM. Hello VMM server je zaregistrován v trezoru služeb zotavení hello.
+Během nasazování Site Recovery stáhněte zprostředkovatele služby Site Recovery a nainstalovat na každý server VMM. VMM server je zaregistrován v trezoru služeb zotavení.
 
 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Přejděte příliš[krok 7: vytvoření trezoru](vmm-to-azure-walkthrough-create-vault.md)
+Přejděte na [krok 7: vytvoření trezoru](vmm-to-azure-walkthrough-create-vault.md)
 

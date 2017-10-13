@@ -1,6 +1,6 @@
 ---
-title: "aaaAdd tooa testovacího prostředí virtuálních počítačů v Azure DevTest Labs | Microsoft Docs"
-description: "Zjistěte, jak tooadd testovacího prostředí tooa virtuálního počítače v Azure DevTest Labs"
+title: "Přidat virtuální počítač do testovacího prostředí v Azure DevTest Labs | Microsoft Docs"
+description: "Zjistěte, jak přidat virtuální počítač do testovacího prostředí v Azure DevTest Labs"
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: tomarcher
@@ -14,104 +14,104 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2017
 ms.author: tarcher
-ms.openlocfilehash: 82838e4349550db56de311264c188140b9556b24
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 449bffb040dafc8edd0b8b0afd80dbea35cd28ac
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="add-a-vm-tooa-lab-in-azure-devtest-labs"></a>Přidání testovacího prostředí tooa virtuálních počítačů v Azure DevTest Labs
-Pokud už máte [vytvoření vaší první virtuální počítač](devtest-lab-create-first-vm.md), pravděpodobně jste to v předem načtený [marketplace image](devtest-lab-configure-marketplace-images.md). Nyní, pokud chcete tooadd dalších virtuálních počítačů tooyour testovacího prostředí, můžete také *základní* to znamená buď [vlastní image](devtest-lab-create-template.md) nebo [vzorec](devtest-lab-manage-formulas.md). Tento kurz vás provede pomocí hello Azure portálu tooadd testovacího virtuálního počítače tooa prostředí v DevTest Labs.
+# <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Přidat virtuální počítač do testovacího prostředí v Azure DevTest Labs
+Pokud už máte [vytvoření vaší první virtuální počítač](devtest-lab-create-first-vm.md), pravděpodobně jste to v předem načtený [marketplace image](devtest-lab-configure-marketplace-images.md). Nyní, pokud chcete přidat další virtuální počítače do testovacího prostředí, můžete také *základní* to znamená buď [vlastní image](devtest-lab-create-template.md) nebo [vzorec](devtest-lab-manage-formulas.md). Tento kurz vás provede procesem přidání virtuálního počítače do testovacího prostředí v DevTest Labs pomocí portálu Azure.
 
-Tento článek také ukazuje, jak toomanage hello artefaktů pro virtuální počítač ve svém testovacím prostředí.
+Tento článek také ukazuje, jak spravovat artefaktů pro virtuální počítač ve svém testovacím prostředí.
 
-## <a name="steps-tooadd-a-vm-tooa-lab-in-azure-devtest-labs"></a>Kroky tooadd tooa testovacího prostředí virtuálních počítačů v Azure DevTest Labs
-1. Přihlaste se toohello [portál Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Vyberte **více služeb**a potom vyberte **DevTest Labs** hello seznamu.
-1. Ze seznamu hello labs vyberte hello testovacího prostředí, ve kterém chcete toocreate hello virtuálních počítačů.  
-1. V testovacím hello **přehled** vyberte **+ přidat**.  
+## <a name="steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Postup pro přidání virtuálního počítače do testovacího prostředí v Azure DevTest Labs
+1. Přihlaste se k webu [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Vyberte **více služeb**a potom vyberte **DevTest Labs** ze seznamu.
+1. Ze seznamu labs vyberte testovací prostředí, ve kterém chcete vytvořit virtuální počítač.  
+1. V tomto prostředí **přehled** vyberte **+ přidat**.  
 
     ![Virtuální počítač tlačítko Přidat](./media/devtest-lab-add-vm/devtestlab-home-blade-add-vm.png)
 
-1. Na hello **zvolte na základní** okně vyberte základ pro hello virtuálních počítačů.
-1. Na hello **virtuálního počítače** okno, zadejte název pro nový virtuální počítač hello v hello **název virtuálního počítače** textové pole.
+1. Na **zvolte na základní** okně vyberte základ pro virtuální počítač.
+1. Na **virtuálního počítače** okno, zadejte název pro nový virtuální počítač **název virtuálního počítače** textového pole.
 
     ![Okno prostředí virtuálních počítačů](./media/devtest-lab-add-vm/devtestlab-lab-vm-blade.png)
 
-1. Zadejte **uživatelské jméno** , jsou udělena oprávnění správce na virtuálním počítači hello.  
-1. Pokud chcete, aby toouse heslo uložené v vaše [tajný úložiště](https://azure.microsoft.com/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store), vyberte **použít uložené tajný klíč**a zadejte hodnotu klíče, která odpovídá tooyour tajný klíč (heslo). Jinak, zadejte heslo do hello textové pole s názvem bez přípony **zadejte hodnotu**.
-1. Hello **typ disku virtuálního počítače** Určuje, jaký typ úložiště disku je povoleno pro hello virtuálních počítačů v testovacím prostředí hello.
-1. Vyberte **velikost virtuálního počítače** a vyberte jednu z hello předdefinované položky, které zadejte hello jader procesoru, velikost paměti RAM a velikost pevného disku hello toocreate hello virtuálních počítačů.
-1. Vyberte **artefakty** a - z hello seznam artefakty - vyberte a nakonfigurujte hello artefakty, že chcete tooadd toohello základní image.
-    **Poznámka:** nové Labs tooDevTest nebo toohello konfigurace artefaktů, najdete v [přidat existující artefaktů tooa virtuálních počítačů](#add-an-existing-artifact-to-a-vm) části a vraťte se sem po dokončení.
-1. Vyberte **upřesňující nastavení** tooconfigure hello síť virtuálních počítačů na možnosti možnosti a vypršení platnosti. 
+1. Zadejte **uživatelské jméno** , jsou udělena oprávnění správce na virtuálním počítači.  
+1. Pokud chcete použít heslo uložené v vaše [tajný úložiště](https://azure.microsoft.com/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store), vyberte **použít uložené tajný klíč**a zadejte hodnotu klíče, která odpovídá váš tajný klíč (heslo). Jinak, zadejte heslo do textového pole s názvem bez přípony **zadejte hodnotu**.
+1. **Typ disku virtuálního počítače** určuje disku typů úložiště, které u virtuálních počítačů v testovacím prostředí.
+1. Vyberte **velikost virtuálního počítače** a vyberte jednu z předdefinovaných položky, které zadejte jader procesoru, velikosti paměti RAM a velikost pevného disku pro vytvoření virtuálního počítače.
+1. Vyberte **artefakty** a - ze seznamu artefaktů - vyberte a nakonfigurujte artefaktů, které chcete přidat do základní bitové kopie.
+    **Poznámka:** Pokud nepracovali DevTest Labs nebo konfigurace artefaktů, vyhledejte [přidat existující artefaktů pro virtuální počítač](#add-an-existing-artifact-to-a-vm) části a vraťte se sem po dokončení.
+1. Vyberte **upřesňující nastavení** nakonfigurovat možnosti sítě a vypršení platnosti možnosti Virtuálního počítače. 
 
-   tooset možnost vypršení platnosti, zvolte ikonu toospecify kalendáře hello, datum, na kterém hello virtuální počítač bude automaticky odstraněna.  Ve výchozím nastavení hello virtuálních počítačů nikdy nevyprší. 
-1. Chcete-li tooview nebo zkopírujte hello šablony Azure Resource Manageru, najdete v toohello [šablony uložit Azure Resource Manageru](#save-azure-resource-manager-template) části a sem vraťte po dokončení.
-1. Vyberte **vytvořit** tooadd hello zadaný testovacím toohello virtuálních počítačů.
-1. Hello testovacím zobrazuje hello stav vytvoření hello VM - nejprve jako **vytváření**, pak jako **systémem** po hello virtuálního počítače byla spuštěna.
+   Chcete-li nastavit možnost vypršení platnosti, zvolte ikonu Kalendář zadat datum, na kterém virtuální počítač se automaticky odstraní.  Ve výchozím nastavení virtuální počítač nikdy nevyprší. 
+1. Pokud chcete zobrazit nebo zkopírování šablony Azure Resource Manager, přečtěte si [šablony uložit Azure Resource Manageru](#save-azure-resource-manager-template) části a sem vraťte po dokončení.
+1. Vyberte **vytvořit** přidat zadaný virtuální počítač do testovacího prostředí.
+1. V okně prostředí zobrazí stav vytváření Virtuálního počítače – nejprve jako **vytváření**, pak jako **systémem** po spuštění virtuálního počítače.
 
 > [!NOTE]
-> [Přidat virtuální počítač vymahatelných](devtest-lab-add-claimable-vm.md) ukazuje, jak toomake hello vymahatelných virtuálních počítačů, aby bylo k dispozici pro použití v testovacím prostředí hello žádný uživatel.
+> [Přidat virtuální počítač vymahatelných](devtest-lab-add-claimable-vm.md) ukazuje, jak zajistit vymahatelných virtuálního počítače, takže je k dispozici pro použití jakéhokoli uživatele v testovacím prostředí.
 >
 >
 
-## <a name="add-an-existing-artifact-tooa-vm"></a>Přidat existující artefaktů tooa virtuálních počítačů
-Při vytváření virtuálního počítače, můžete přidat existující artefakty. Každý laboratoř zahrnuje artefakty z hello veřejného úložiště artefaktů DevTest Labs i artefakty, že jste vytvořili a přidané tooyour vlastní úložiště artefaktů.
+## <a name="add-an-existing-artifact-to-a-vm"></a>Přidat existující artefaktů pro virtuální počítač
+Při vytváření virtuálního počítače, můžete přidat existující artefakty. Každý laboratoř zahrnuje artefakty z veřejného úložiště artefaktů DevTest Labs, jakož i artefaktů, které jste vytvořili a přidat do úložiště artefaktů.
 
-* Azure DevTest Labs *artefakty* umožňují zadat *akce* , provede, když je zřízený hello virtuálních počítačů, jako je například spouštění skriptů prostředí Windows PowerShell, Bash příkazy a instalaci softwaru.
-* Artefaktů *parametry* umožňují přizpůsobit hello artefaktů pro konkrétní scénář
+* Azure DevTest Labs *artefakty* umožňují zadat *akce* , se provádí při zřizování virtuálních počítačů, jako je například spouštění skriptů prostředí Windows PowerShell, Bash příkazy a instalaci softwaru.
+* Artefaktů *parametry* umožňují přizpůsobit artefaktů pro konkrétní scénář
 
-hello toodiscover jak toocreate artefaktů, najdete v článku [zjistěte, jak tooauthor vlastních artefaktů pro použití s DevTest Labs](devtest-lab-artifact-author.md).
+Chcete zjistit, jak vytvořit artefakty, najdete v článku [Naučte se vytvářet vlastní artefaktů pro použití s DevTest Labs](devtest-lab-artifact-author.md).
 
-1. Přihlaste se toohello [portál Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Vyberte **více služeb**a potom vyberte **DevTest Labs** hello seznamu.
-1. Ze seznamu hello labs vyberte hello testovacím obsahující hello virtuálních počítačů, pro který chcete toowork.  
+1. Přihlaste se k webu [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Vyberte **více služeb**a potom vyberte **DevTest Labs** ze seznamu.
+1. Ze seznamu labs vyberte testovací prostředí obsahující počítač, se kterým chcete pracovat.  
 1. Vyberte **Můj virtuální počítače**.
-1. Vyberte hello požadovaných virtuálních počítačů.
+1. Vyberte požadovaný virtuální počítač.
 1. Vyberte **artefakty**. 
 1. Vyberte **použít artefakty**.
-1. Na hello **použít artefakty** okně, vyberte hello artefaktů chcete tooadd toohello virtuálních počítačů.
-1. Na hello **přidat artefaktů** okno, zadejte hodnoty parametrů hello požadované a volitelné parametry, které potřebujete.  
-1. Vyberte **přidat** tooadd hello artefaktů a vraťte se toohello **použít artefakty** okno.
+1. Na **použít artefakty** okně vyberte artefaktů, které chcete přidat do virtuálního počítače.
+1. Na **přidat artefaktů** okno, zadejte hodnoty požadovaných parametrů a všechny volitelné parametry, které potřebujete.  
+1. Vyberte **přidat** přidat artefaktu a vrátíte se do **použít artefakty** okno.
 1. Pokračujte v přidávání artefakty potřebné pro virtuální počítač.
-1. Po přidání artefakty, můžete [změnit hello pořadí, ve které hello artefakty spouštějí](#change-the-order-in-which-artifacts-are-run). Můžete také přejít zpět příliš[zobrazit nebo upravit artefakt](#view-or-modify-an-artifact).
+1. Po přidání artefakty, můžete [změnit pořadí, ve kterém jsou spuštěny artefakty](#change-the-order-in-which-artifacts-are-run). Můžete také přejít zpět na [zobrazit nebo upravit artefakt](#view-or-modify-an-artifact).
 1. Po dokončení přidávání artefakty, vyberte **použít**
 
-## <a name="change-hello-order-in-which-artifacts-are-run"></a>Změňte hello pořadí, ve kterém jsou spuštěné artefakty
-Ve výchozím nastavení spouštění akcí hello hello artefaktů v hello pořadí, ve kterém byly přidány toohello virtuálních počítačů. Hello následující kroky popisují jak toochange hello pořadí, ve které hello jsou spuštěny artefakty.
+## <a name="change-the-order-in-which-artifacts-are-run"></a>Změňte pořadí, ve kterém jsou spuštěné artefaktů
+Ve výchozím nastavení akcí artefakty jsou spouštěny v pořadí, ve kterém budou přidány do virtuálního počítače. Následující kroky ukazují, jak chcete-li změnit pořadí, ve kterém jsou spuštěny artefakty.
 
-1. Hello horní části hello **použít artefakty** okně, vyberte hello odkaz určující hello počet artefaktů, které byly přidány toohello virtuálních počítačů.
+1. V horní části **použít artefakty** okně, vyberte odkaz určující počet artefaktů, které byly přidány do virtuálního počítače.
    
-    ![Počet artefaktů přidat tooVM](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
-1. Na hello **vybrané artefakty** okno, přetáhněte hello artefakty do hello požadovaného pořadí. **Poznámka:** Pokud máte potíže při přetahování hello artefaktů, ujistěte se, že přetáhnete z levé straně hello artefaktů hello. 
+    ![Počet artefaktů přidat k virtuálnímu počítači](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
+1. Na **vybrané artefakty** okně přetažení artefakty do požadované pořadí. **Poznámka:** Pokud máte potíže při přetahování artefaktu, ujistěte se, že přetáhnete z levé strany artefaktu. 
 1. Až to budete mít, vyberte **OK**.  
 
 ## <a name="view-or-modify-an-artifact"></a>Zobrazit nebo upravit artefakt
-Hello následující kroky popisují jak tooview nebo upravte parametry hello artefakt:
+Následující kroky ukazují, jak lze zobrazit nebo upravit parametry artefakt:
 
-1. Hello horní části hello **použít artefakty** okně, vyberte hello odkaz určující hello počet artefaktů, které byly přidány toohello virtuálních počítačů.
+1. V horní části **použít artefakty** okně, vyberte odkaz určující počet artefaktů, které byly přidány do virtuálního počítače.
    
-    ![Počet artefaktů přidat tooVM](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
-1. Na hello **vybrané artefakty** okně, vyberte hello artefaktu má tooview nebo upravit.  
-1. Na hello **přidat artefaktů** okno, ujistěte se, všechny potřebné změny a vyberte **OK** tooclose hello **přidat artefaktů** okno.
-1. Vyberte **OK** tooclose hello **vybrané artefakty** okno.
+    ![Počet artefaktů přidat k virtuálnímu počítači](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
+1. Na **vybrané artefakty** okně vyberte artefaktu, který chcete zobrazit nebo upravit.  
+1. Na **přidat artefaktů** okno, ujistěte se, všechny potřebné změny a vyberte **OK** zavřete **přidat artefaktů** okno.
+1. Vyberte **OK** zavřete **vybrané artefakty** okno.
 
 ## <a name="save-azure-resource-manager-template"></a>Uložení šablony Azure Resource Manageru
-Šablonu Azure Resource Manager nabízí deklarativní způsob toodefine opakovatelných nasazení. Hello následující kroky popisují, jak toosave hello šablony Azure Resource Manageru pro hello při vytváření virtuálního počítače.
-Po uložení šablony Azure Resource Manageru hello můžete příliš[nasadit nové virtuální počítače v prostředí Azure PowerShell](../azure-resource-manager/resource-group-overview.md#template-deployment).
+Šablonu Azure Resource Manager nabízí deklarativní způsob, jak definovat opakovatelných nasazení. Následující kroky popisují, jak uložit šablony Azure Resource Manageru pro vytváření virtuálních počítačů.
+Po uložení, můžete použít šablonu Azure Resource Manager [nasadit nové virtuální počítače v prostředí Azure PowerShell](../azure-resource-manager/resource-group-overview.md#template-deployment).
 
-1. Na hello **virtuálního počítače** vyberte **šablony ARM zobrazení**.
-2. Na hello **šablony zobrazení Azure Resource Manageru** okně, vyberte hello text šablony.
-3. Zkopírujte schránky toohello hello vybraný text.
-4. Vyberte **OK** tooclose hello **šablony Azure Resource Manageru zobrazit okno**.
+1. Na **virtuálního počítače** vyberte **šablony ARM zobrazení**.
+2. Na **šablony zobrazení Azure Resource Manageru** okno, vyberte text, šablonu.
+3. Kopírovat vybraný text do schránky.
+4. Vyberte **OK** zavřete **šablony Azure Resource Manageru zobrazit okno**.
 5. Otevřete textový editor.
-6. Vložte text hello šablony ze schránky hello.
-7. Uložte soubor hello pro pozdější použití.
+6. Vložte text šablony ze schránky.
+7. Uložte soubor pro pozdější použití.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ### <a name="next-steps"></a>Další kroky
-* Jednou hello vytvořil virtuální počítač, můžete připojit toohello virtuálních počítačů tak, že vyberete **Connect** v okně hello Virtuálního počítače.
-* Zjistěte, jak příliš[vytvoření vlastních artefaktů pro virtuální počítač DevTest Labs](devtest-lab-artifact-author.md).
-* Prozkoumejte hello [Galerie šablon DevTest Labs Azure Resource Manager QuickStart](https://github.com/Azure/azure-devtestlab/tree/master/Samples).
+* Po vytvoření virtuálního počítače, můžete připojit k virtuálnímu počítači tak, že vyberete **Connect** v okně Virtuálního počítače.
+* Zjistěte, jak [vytvoření vlastních artefaktů pro virtuální počítač DevTest Labs](devtest-lab-artifact-author.md).
+* Prozkoumejte [Galerie šablon DevTest Labs Azure Resource Manager QuickStart](https://github.com/Azure/azure-devtestlab/tree/master/Samples).

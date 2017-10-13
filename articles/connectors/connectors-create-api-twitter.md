@@ -1,5 +1,5 @@
 ---
-title: aaaLearn jak toouse hello konektor Twitter v aplikace logiky | Microsoft Docs
+title: "Naučte se používat konektor Twitter v aplikace logiky | Microsoft Docs"
 description: "Přehled konektor Twitter s parametry rozhraní REST API"
 services: 
 documentationcenter: 
@@ -15,93 +15,93 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: ead4e4dc95bf894fd72b908c5375b407ba27642d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: be8163043535833ce45b3d50939a537406cf8152
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="get-started-with-hello-twitter-connector"></a>Začínáme s konektor Twitter hello
-Konektor Twitter hello můžete:
+# <a name="get-started-with-the-twitter-connector"></a>Začínáme s konektorem služby Twitter.
+Konektor Twitter můžete:
 
 * Odesílání tweetů a tweetů get
 * Časové osy přístup, přátele a délky
-* Proveďte jednu z hello jiných akcí a aktivační události popsané dole  
+* Proveďte jednu z dalších akcí a aktivační události popsané dole  
 
-toouse [všechny konektory](apis-list.md), musíte nejprve toocreate aplikace logiky. Abyste mohli začít podle [vytvoření aplikace logiky teď](../logic-apps/logic-apps-create-a-logic-app.md).  
+Chcete-li použít [všechny konektory](apis-list.md), musíte nejprve vytvořit aplikaci logiky. Abyste mohli začít podle [vytvoření aplikace logiky teď](../logic-apps/logic-apps-create-a-logic-app.md).  
 
-## <a name="connect-tootwitter"></a>Připojit tooTwitter
-Než se aplikace logiky k jakékoli služby, musíte nejprve toocreate *připojení* toohello služby. A [připojení](connectors-overview.md) poskytuje připojení mezi aplikace logiky a jiné služby.  
+## <a name="connect-to-twitter"></a>Připojení k Twitteru
+Než se aplikace logiky k jakékoli služby, musíte nejprve vytvořit *připojení* ke službě. A [připojení](connectors-overview.md) poskytuje připojení mezi aplikace logiky a jiné služby.  
 
-### <a name="create-a-connection-tootwitter"></a>Vytvoření připojení tooTwitter
-> [!INCLUDE [Steps toocreate a connection tooTwitter](../../includes/connectors-create-api-twitter.md)]
+### <a name="create-a-connection-to-twitter"></a>Umožňuje vytvořit připojení k Twitteru
+> [!INCLUDE [Steps to create a connection to Twitter](../../includes/connectors-create-api-twitter.md)]
 > 
 > 
 
 ## <a name="use-a-twitter-trigger"></a>Použít aktivační událost služby Twitter.
-Aktivační událost je událost, která může být pracovní postup hello použité toostart definované v aplikaci logiky. [Další informace o aktivační události](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
+Aktivační událost je událost, která můžete použít ke spuštění pracovního postupu definované v aplikaci logiky. [Další informace o aktivační události](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
 
-V tomto příkladu I vám ukáže, jak toouse hello **při odeslání nové tweet** aktivovat toosearch pro #Seattle a pokud najde #Seattle, aktualizujte soubor v Dropbox hello text z hello tweet. V příklad enterprise může vyhledat hello název vaší společnosti a aktualizace databáze SQL z hello tweet textu hello.
+V tomto příkladu I vám ukáže, jak používat **při odeslání nové tweet** aktivační událost k hledání #Seattle a pokud najde #Seattle, aktualizujte soubor v Dropbox text z tweet. V příklad enterprise může vyhledat název vaší společnosti a aktualizace databáze SQL z tweet textu.
 
-1. Zadejte *twitter* hello vyhledávacího pole v designeru aplikace logiky hello zvolte hello **Twitter - při odeslání nové tweet** aktivační události   
+1. Zadejte *twitter* do vyhledávacího pole v designeru aplikace logiky zvolte **Twitter - při odeslání nové tweet** aktivační události   
    ![Obrázek aktivační události služby Twitter 1](./media/connectors-create-api-twitter/trigger-1.png)  
-2. Zadejte *#Seattle* v hello **hledaný Text** ovládací prvek  
+2. Zadejte *#Seattle* v **hledaný Text** ovládací prvek  
    ![Obrázek aktivační události služby Twitter 2](./media/connectors-create-api-twitter/trigger-2.png) 
 
-Aplikace logiky v tomto okamžiku je nakonfigurovaná s aktivační událost, která zahájí spuštění hello jiných triggery a akce v pracovním postupu hello. 
+Aplikace logiky v tomto okamžiku je nakonfigurovaná s aktivační událost, která zahájí spuštění ostatních triggery a akce v pracovním postupu. 
 
 > [!NOTE]
-> Pro logiku aplikace toobe funkční musí obsahovat nejméně jedna aktivační událost a jedna akce. Postupujte podle kroků hello v další části tooadd hello akce.  
+> Pro aplikace logiky být funkční musí obsahovat nejméně jedna aktivační událost a jedna akce. Postupujte podle kroků v další části a přidejte akci.  
 > 
 > 
 
 ## <a name="add-a-condition"></a>Přidat podmínku
-Vzhledem k tomu, že jsme zajímá pouze tweetů od uživatelů s více než 50 uživateli, podmínku, která potvrdí hello počet délky je nejprve nutné přidat toohello aplikace logiky.  
+Vzhledem k tomu, že jsme zajímá pouze tweetů od uživatelů s více než 50 uživateli, podmínku, která potvrdí počet délky přidat do aplikace logiky.  
 
-1. Vyberte **+ nový krok** tooadd hello akce chcete tootake při #Seattle se nachází v nové tweet  
+1. Vyberte **+ nový krok** přidat akci chcete provést, když #Seattle se nachází v nové tweet  
    ![Obrázek akce Twitter 1](../../includes/media/connectors-create-api-twitter/action-1.png)  
-2. Vyberte hello **přidat podmínku** odkaz.  
+2. Vyberte **přidat podmínku** odkaz.  
    ![Obrázek stavu Twitter 1](../../includes/media/connectors-create-api-twitter/condition-1.png)   
-   Tím se otevře hello **podmínku** řízení, kde můžete zkontrolovat podmínky, jako *rovná*, *je menší než*, *je větší než*, *obsahuje*atd.  
+   Tím se otevře **podmínku** řízení, kde můžete zkontrolovat podmínky, jako *rovná*, *je menší než*, *je větší než*, *obsahuje*atd.  
    ![Obrázek stavu Twitter 2](../../includes/media/connectors-create-api-twitter/condition-2.png)   
-3. Vyberte hello **zvolte hodnotu** ovládacího prvku.  
-   U tohoto ovládacího prvku můžete vybrat jednu nebo více vlastností hello z libovolné předchozí akce nebo aktivační události jako hello hodnotu, jehož podmínka bude vyhodnotí tootrue, nebo hodnotu NEPRAVDA.
+3. Vyberte **zvolte hodnotu** ovládacího prvku.  
+   U tohoto ovládacího prvku můžete vyberete jeden nebo více vlastností v jakémkoli předchozí akce nebo aktivační události jako hodnota, jejíž podmínka bude vyhodnocena jako true nebo false.
    ![Obrázek stavu Twitter 3](../../includes/media/connectors-create-api-twitter/condition-3.png)   
-4. Vyberte hello **...**  tooexpand hello seznam vlastností, aby se zobrazily všechny hello vlastnosti, které jsou k dispozici.        
+4. Vyberte **...**  rozbalte seznam vlastností, aby se zobrazily všechny vlastnosti, které jsou k dispozici.        
    ![Obrázek stavu Twitter 4](../../includes/media/connectors-create-api-twitter/condition-4.png)   
-5. Vyberte hello **délky počet** vlastnost.    
+5. Vyberte **délky počet** vlastnost.    
    ![Obrázek stavu Twitter 5](../../includes/media/connectors-create-api-twitter/condition-5.png)   
-6. Všimněte si počtu vlastnost je nyní v ovládacím prvku hello hodnota délky hello.    
+6. Všimněte si vlastnost počet délky je nyní v ovládacím prvku hodnotu.    
    ![Obrázek stavu Twitter 6](../../includes/media/connectors-create-api-twitter/condition-6.png)   
-7. Vyberte **je větší než** hello operátory seznamu.    
+7. Vyberte **je větší než** ze seznamu operátory.    
    ![Obrázek stavu Twitter 7](../../includes/media/connectors-create-api-twitter/condition-7.png)   
-8. Zadejte 50, hello operand pro hello *je větší než* operátor.  
-   Podmínka Hello je nyní přidána. Uložte si práci pomocí hello **Uložit** odkaz v nabídce hello výše.    
+8. Zadejte 50 jako operand pro *je větší než* operátor.  
+   Podmínka je nyní přidána. Uložit vaší práci pomocí **Uložit** odkaz v nabídce výše.    
    ![Twitter podmínku obrázek 8](../../includes/media/connectors-create-api-twitter/condition-8.png)   
 
 ## <a name="use-a-twitter-action"></a>Pomocí akce služby Twitter.
-Akce je operace, provádí v pracovním postupu hello definované v aplikaci logiky. [Další informace o akcích](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).  
+Akce je operace prováděné definované v aplikaci logiky pracovního postupu. [Další informace o akcích](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).  
 
-Teď, když jste přidali aktivační událost, postupujte podle těchto kroků tooadd akci, která bude odeslána nové tweet s hello obsah hello tweetů nalezen hello aktivační procedura. Pro účely tohoto návodu hello budou odeslány pouze tweetů od uživatelů s více než 50 délky.  
+Teď, když jste přidali aktivační událost, použijte následující postup přidání akce, která bude odeslána nové tweet s obsahem tweetů nalezena. aktivační událost. Pro účely tohoto návodu budou odeslány pouze tweetů od uživatelů s více než 50 délky.  
 
-V dalším kroku hello přidáte Twitter akci, která bude odeslána tweet pomocí některé z vlastností hello každý tweet, který byl odeslán uživatelem, který má více než 50 délky.  
+V dalším kroku přidáte Twitter akci, která bude odeslána tweet pomocí některé z vlastností jednotlivých tweet, který byl odeslán uživatelem, který má více než 50 délky.  
 
-1. Vyberte **přidat akci**. Otevře se ovládací prvek vyhledávání hello kde můžete vyhledat další akce a aktivační události.  
+1. Vyberte **přidat akci**. Otevře se ovládací prvek vyhledávání, kde můžete vyhledat další akce a aktivační události.  
    ![Obrázek stavu Twitter 9](../../includes/media/connectors-create-api-twitter/condition-9.png)   
-2. Zadejte *twitter* do vyhledávacího pole hello vyberte hello **Twitter – Post tweet** akce. Tím se otevře hello **Post tweet** řídit, kdy bude zadejte všechny podrobnosti hello tweet odeslání.      
+2. Zadejte *twitter* do pole pro vyhledávání vyberte **Twitter – Post tweet** akce. Tím se otevře **Post tweet** řídit, kdy bude zadejte všechny podrobnosti tweet odeslání.      
    ![Twitter akce obrázek 1-5](../../includes/media/connectors-create-api-twitter/action-1-5.png)   
-3. Vyberte hello **Tweet text** ovládacího prvku. Všechny výstupy z předchozí akce a aktivačních událostí v aplikaci logiky hello jsou nyní zobrazeny. Můžete vybrat některý z těchto a použít je jako část textu hello tweet o nové tweet hello.     
+3. Vyberte **Tweet text** ovládacího prvku. Všechny výstupy z předchozí akce a aktivačních událostí v aplikaci logiky jsou nyní zobrazeny. Můžete vybrat některý z těchto a použít je jako součást tweet text nové tweet.     
    ![Obrázek akce Twitter 2](../../includes/media/connectors-create-api-twitter/action-2.png)   
 4. Vyberte **uživatelské jméno**   
-5. Zadejte *říká:* v ovládacím prvku text tweet hello. To lze proveďte pouze po uživatelské jméno.  
+5. Zadejte *říká:* v ovládacím prvku tweet text. To lze proveďte pouze po uživatelské jméno.  
 6. Vyberte *Tweet text*.       
    ![Obrázek akce Twitter 3](../../includes/media/connectors-create-api-twitter/action-3.png)   
-7. Uložte si práci a odeslala tweet s hello #Seattle hashtag tooactivate pracovního postupu.  
+7. Uložte si práci a odeslala tweet s hashtag #Seattle aktivovat pracovní postup.  
 
 
 ## <a name="connector-specific-details"></a>Podrobnosti o konkrétní konektor
 
-Zobrazit všechny aktivační události a akce definované v hello swagger a také zobrazit žádné limity v hello [connector – podrobnosti](/connectors/twitterconnector/). 
+Zobrazit všechny aktivační události a akce definované v swagger a také zobrazit žádné limity v [connector – podrobnosti](/connectors/twitterconnector/). 
 
 ## <a name="next-steps"></a>Další kroky
 [Vytvoření aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md)

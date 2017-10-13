@@ -1,6 +1,6 @@
 ---
-title: "aaaHow toouse hello služby rozhraní API pro správu (Python) – Průvodce funkcemi"
-description: "Zjistěte, jak tooprogrammatically provádět běžné úlohy správy služby z Pythonu."
+title: "Jak používat rozhraní API (Python) – Průvodce funkcemi pro správu služby"
+description: "Zjistěte, jak programově provádět běžné úlohy správy služby z Pythonu."
 services: cloud-services
 documentationcenter: python
 author: lmazuel
@@ -14,48 +14,48 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
-ms.openlocfilehash: b59622203470e1586484cec4033515edb39ca4d1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 13249ba9a4b317a3154776b411ce0bb1f316b3bb
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="how-toouse-service-management-from-python"></a>Jak toouse Správa služby z Pythonu
-Tento průvodce vám ukáže, jak tooprogrammatically provádět běžné úlohy správy služby z Pythonu. Hello **ServiceManagementService** třídy v hello [Azure SDK pro jazyk Python](https://github.com/Azure/azure-sdk-for-python) podporuje programový přístup toomuch hello služby týkajících se správy funkcí, které jsou k dispozici v hello [Portál azure classic] [ management-portal] (například **vytváření, aktualizaci a odstraňování cloudové služby, nasazení, služby pro správu dat a virtuální počítače**). Tato funkce může být užitečné při vytváření aplikace, které potřebují správu tooservice programový přístup.
+# <a name="how-to-use-service-management-from-python"></a>Jak používat správu služby z Pythonu
+Tento průvodce vám ukáže, jak programově provádět běžné úlohy správy služby z Pythonu. **ServiceManagementService** třídy v [Azure SDK pro jazyk Python](https://github.com/Azure/azure-sdk-for-python) podporuje programový přístup k mnohem týkajících se správy funkcí služby, který je k dispozici v [Azure portál Classic] [ management-portal] (například **vytváření, aktualizaci a odstraňování cloudové služby, nasazení, služby pro správu dat a virtuální počítače**). Tato funkce může být užitečné při vytváření aplikace, které potřebují programový přístup ke správě služby.
 
 ## <a name="WhatIs"></a>Co je služba správy
-Hello Service Management API poskytuje programový přístup toomuch hello služby správy funkcí dostupných prostřednictvím hello [portál Azure classic][management-portal]. Hello Azure SDK pro jazyk Python vám umožní toomanage cloudové služby a účty úložiště.
+Service Management API zajišťují programový přístup ke většinu funkcí správy služby k dispozici prostřednictvím [portál Azure classic][management-portal]. Sada Azure SDK pro Python umožňuje spravovat cloudové služby a účty úložiště.
 
-toouse hello Service Management API, musíte příliš[vytvoření účtu Azure](https://azure.microsoft.com/pricing/free-trial/).
+Chcete-li použít rozhraní API pro správu služby, je potřeba [vytvoření účtu Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="Concepts"></a>Koncepty
-Hello Azure SDK pro jazyk Python zabalí hello [Azure Service Management API][svc-mgmt-rest-api], což je rozhraní REST API. Všechny operace rozhraní API se provádí přes SSL a vzájemně se ověřují pomocí certifikátů X.509 v3. Služba správy Hello může přístup v rámci služby spuštěné v Azure, nebo přímo přes hello Internet z jakékoli aplikace, která může požadavek HTTPS odesílat a přijímat odpověď protokolu HTTPS.
+Sada Azure SDK pro Python zabalí [Azure Service Management API][svc-mgmt-rest-api], což je rozhraní REST API. Všechny operace rozhraní API se provádí přes SSL a vzájemně se ověřují pomocí certifikátů X.509 v3. Ke službě pro správu se dá přistupovat ze služby spuštěné v Azure nebo přímo přes internet z jakékoliv aplikace, která umí poslat požadavek HTTPS a přijmout odpověď HTTPS.
 
 ## <a name="Installation"></a>Instalace
-Všechny funkce hello popsané v tomto článku jsou k dispozici v hello `azure-servicemanagement-legacy` balíčku, které můžete nainstalovat pomocí nástroje pip. Další informace o instalaci (například pokud jste nový tooPython), najdete v tomto článku: [instalaci Pythonu a hello Azure SDK](../python-how-to-install.md)
+Všechny funkce, které jsou popsané v tomto článku jsou k dispozici v `azure-servicemanagement-legacy` balíčku, které můžete nainstalovat pomocí nástroje pip. Další informace o instalaci (například pokud jste novým uživatelem Python), najdete v tomto článku: [instalaci Python a sady Azure SDK](../python-how-to-install.md)
 
-## <a name="Connect"></a>Postupy: připojení tooservice správy
-koncový bod Service Management toohello tooconnect, musíte svoje ID předplatného Azure a certifikát pro správu platné. Můžete získat svoje ID předplatného prostřednictvím hello [portál Azure classic][management-portal].
+## <a name="Connect"></a>Postupy: připojení služby správy
+Pro připojení ke koncovému bodu služby správy, musíte svoje ID předplatného Azure a certifikát pro správu platné. Můžete získat svoje ID předplatného prostřednictvím [portál Azure classic][management-portal].
 
 > [!NOTE]
-> Nyní je možné toouse certifikáty vytvořené pomocí OpenSSL, spuštěná v systému Windows.  Vyžaduje Python 2.7.4 nebo novější. Doporučujeme, abyste uživatelům toouse OpenSSL místo .pfx, od podporu pro .pfx, certifikáty budou odebrány pravděpodobně v budoucnu hello.
+> Nyní je možné použít certifikáty vytvořené pomocí OpenSSL spuštěná v systému Windows.  Vyžaduje Python 2.7.4 nebo novější. Doporučujeme, abyste uživatelům používat OpenSSL místo .pfx, protože podpora pro .pfx, certifikáty budou odebrány pravděpodobně v budoucnu.
 >
 >
 
 ### <a name="management-certificates-on-windowsmaclinux-openssl"></a>Certifikáty pro správu v systému Windows nebo Mac/Linux (OpenSSL)
-Můžete použít [OpenSSL](http://www.openssl.org/) toocreate svůj certifikát pro správu.  Skutečně potřebujete dva certifikáty toocreate, jeden pro hello server ( `.cer` souboru) a jeden pro klienta hello ( `.pem` souboru). toocreate hello `.pem` soubor, spustit:
+Můžete použít [OpenSSL](http://www.openssl.org/) vytvořit svůj certifikát pro správu.  Ve skutečnosti je nutné vytvořit dva certifikáty, jeden pro server ( `.cer` souboru) a jeden pro klienta ( `.pem` souboru). Chcete-li vytvořit `.pem` soubor, spustit:
 
     openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem
 
-toocreate hello `.cer` certifikátů, spustit:
+Chcete-li vytvořit `.cer` certifikátů, spustit:
 
     openssl x509 -inform pem -in mycert.pem -outform der -out mycert.cer
 
-Další informace o Azure certifikáty najdete v tématu [Přehled certifikátů pro Azure Cloud Services](cloud-services-certs-create.md). Úplný popis parametrů OpenSSL, naleznete v dokumentaci k hello v [http://www.openssl.org/docs/apps/openssl.html](http://www.openssl.org/docs/apps/openssl.html).
+Další informace o Azure certifikáty najdete v tématu [Přehled certifikátů pro Azure Cloud Services](cloud-services-certs-create.md). Úplný popis parametrů OpenSSL, naleznete v dokumentaci na [http://www.openssl.org/docs/apps/openssl.html](http://www.openssl.org/docs/apps/openssl.html).
 
-Po vytvoření těchto souborů, je nutné tooupload hello `.cer` souboru tooAzure prostřednictvím hello akce "Odeslat" hello "Nastavení" karty hello [portál Azure classic][management-portal], a poznamenejte si toomake potřebujete kam jste uložili hello `.pem` souboru.
+Po vytvoření těchto souborů, budete muset nahrát `.cer` souboru k Azure přes "Nahrávání" akce "Nastavení" karty [portál Azure classic][management-portal], a budete muset poznamenejte kde jste Uložit `.pem` souboru.
 
-Po získání svoje ID předplatného, vytvořen certifikát a odesláno hello `.cer` tooAzure souboru můžete připojit koncový bod Azure správy toohello předáním hello id předplatného a hello cesta toohello `.pem` souboru příliš**ServiceManagementService**:
+Po získání svoje ID předplatného, vytvořit certifikát a nahrán `.cer` souboru do Azure, se můžete připojit ke koncovému bodu správy Azure pomocí id předplatného a cestu k předání `.pem` do souboru  **ServiceManagementService**:
 
     from azure import *
     from azure.servicemanagement import *
@@ -65,18 +65,18 @@ Po získání svoje ID předplatného, vytvořen certifikát a odesláno hello `
 
     sms = ServiceManagementService(subscription_id, certificate_path)
 
-V předchozím příkladu hello `sms` je **ServiceManagementService** objektu. Hello **ServiceManagementService** třída je hello primární třída používaná toomanage služby Azure.
+V předchozím příkladu `sms` je **ServiceManagementService** objektu. **ServiceManagementService** třída je primární třída, která slouží ke správě služby Azure.
 
 ### <a name="management-certificates-on-windows-makecert"></a>Certifikáty pro správu v systému Windows (MakeCert)
-Můžete vytvořit certifikát podepsaný svým držitelem správy na váš počítač pomocí `makecert.exe`.  Otevřete **příkazového řádku Visual Studia** jako **správce** a použijte následující příkaz, nahraďte hello *AzureCertificate* s názvem certifikátu hello chcete toouse.
+Můžete vytvořit certifikát podepsaný svým držitelem správy na váš počítač pomocí `makecert.exe`.  Otevřete **příkazového řádku Visual Studia** jako **správce** a použijte následující příkaz, nahraďte *AzureCertificate* se název certifikátu, který chcete použít.
 
     makecert -sky exchange -r -n "CN=AzureCertificate" -pe -a sha1 -len 2048 -ss My "AzureCertificate.cer"
 
-příkaz Hello vytvoří hello `.cer` souboru a nainstaluje v hello **osobní** úložiště certifikátů. Další informace najdete v tématu [Přehled certifikátů pro Azure Cloud Services](cloud-services-certs-create.md).
+Příkaz vytvoří `.cer` souboru a nainstaluje do **osobní** úložiště certifikátů. Další informace najdete v tématu [Přehled certifikátů pro Azure Cloud Services](cloud-services-certs-create.md).
 
-Po vytvoření hello certifikát, je nutné tooupload hello `.cer` souboru tooAzure prostřednictvím hello akce "Odeslat" hello "Nastavení" karty hello [portál Azure classic][management-portal].
+Po vytvoření certifikátu, budete muset nahrát `.cer` souboru k Azure přes "Nahrávání" akce "Nastavení" karty [portál Azure classic][management-portal].
 
-Po získání svoje ID předplatného, vytvořen certifikát a odesláno hello `.cer` tooAzure souboru můžete připojit koncový bod Azure správy toohello předáním hello id předplatného a hello umístění certifikátu hello ve vaší **Osobní** úložišti certifikátů příliš**ServiceManagementService** (znovu, nahraďte *AzureCertificate* s názvem hello vašeho certifikátu):
+Po získání svoje ID předplatného, vytvořit certifikát a nahrán `.cer` souboru do Azure, se můžete připojit ke koncovému bodu správy Azure pomocí předáním id předplatného a umístění certifikátu v vaší **osobní**  úložišti certifikátů **ServiceManagementService** (znovu, nahraďte *AzureCertificate* s názvem vašeho certifikátu):
 
     from azure import *
     from azure.servicemanagement import *
@@ -86,10 +86,10 @@ Po získání svoje ID předplatného, vytvořen certifikát a odesláno hello `
 
     sms = ServiceManagementService(subscription_id, certificate_path)
 
-V předchozím příkladu hello `sms` je **ServiceManagementService** objektu. Hello **ServiceManagementService** třída je hello primární třída používaná toomanage služby Azure.
+V předchozím příkladu `sms` je **ServiceManagementService** objektu. **ServiceManagementService** třída je primární třída, která slouží ke správě služby Azure.
 
 ## <a name="ListAvailableLocations"></a>Postupy: seznam dostupných umístění
-toolist hello umístění, které jsou k dispozici pro hostování služeb, použijte hello **seznamu\_umístění** metoda:
+K zobrazení seznamu umístění, které jsou k dispozici pro hostování služeb, použijte **seznamu\_umístění** metoda:
 
     from azure import *
     from azure.servicemanagement import *
@@ -100,7 +100,7 @@ toolist hello umístění, které jsou k dispozici pro hostování služeb, pou�
     for location in result:
         print(location.name)
 
-Při vytváření cloudové služby nebo služba úložiště musíte tooprovide platné umístění. Hello **seznamu\_umístění** metoda vždy vrátí hodnotu aktuální seznam aktuálně dostupných umístění hello. Době psaní tohoto textu hello k dispozici umístění jsou:
+Při vytváření cloudové služby nebo služba úložiště, musíte zadat platné umístění. **Seznamu\_umístění** metoda vždy vrátí hodnotu aktuální seznam aktuálně dostupných umístění. Době psaní tohoto textu, jsou k dispozici umístění:
 
 * Západní Evropa
 * Severní Evropa
@@ -118,7 +118,7 @@ Při vytváření cloudové služby nebo služba úložiště musíte tooprovide
 * Austrálie – jihovýchod
 
 ## <a name="CreateCloudService"></a>Postupy: vytvoření cloudové služby
-Když vytvoříte aplikaci a spustíte ho v Azure, hello kódu a konfigurace společně se nazývají Azure [Cloudová služba] [ cloud service] (označované jako *hostovaná služba* v dříve Uvolní Azure). Hello **vytvořit\_hostované\_služby** metoda vám umožní toocreate novou hostovanou službu tím, že název hostované služby (které musí být jedinečné v Azure), poskytuje popisek (automaticky kódovaného toobase64), Popis a umístění.
+Když vytvoříte aplikaci a spustíte ho v Azure, kód a konfigurace společně se nazývají Azure [Cloudová služba] [ cloud service] (označované jako *hostovaná služba* v dřívější Azure uvolní). **Vytvořit\_hostované\_služby** metoda vám umožní vytvořit novou hostovanou službu tím, že poskytuje název hostované služby (které musí být jedinečné v Azure), popisek (automaticky kódovaný formátu Base64), popis, a umístění.
 
     from azure import *
     from azure.servicemanagement import *
@@ -132,7 +132,7 @@ Když vytvoříte aplikaci a spustíte ho v Azure, hello kódu a konfigurace spo
 
     sms.create_hosted_service(name, label, desc, location)
 
-Můžete vytvořit seznam všech hello hostovaných služeb pro vaše předplatné s hello **seznamu\_hostované\_služby** metoda:
+Můžete vytvořit seznam všechny hostované služby pro vaše předplatné s **seznamu\_hostované\_služby** metoda:
 
     result = sms.list_hosted_services()
 
@@ -142,7 +142,7 @@ Můžete vytvořit seznam všech hello hostovaných služeb pro vaše předplatn
         print('Location: ' + hosted_service.hosted_service_properties.location)
         print('')
 
-Pokud chcete tooget informace o konkrétní hostovanou službu, můžete tak učinit pomocí předání hello hostované služby název toohello **získat\_hostované\_služby\_vlastnosti** metoda:
+Pokud chcete získat informace o konkrétní hostovanou službu, můžete tak učinit pomocí název hostované služby k předání **získat\_hostované\_služby\_vlastnosti** metoda:
 
     hosted_service = sms.get_hosted_service_properties('myhostedservice')
 
@@ -150,17 +150,17 @@ Pokud chcete tooget informace o konkrétní hostovanou službu, můžete tak uč
     print('Management URL: ' + hosted_service.url)
     print('Location: ' + hosted_service.hosted_service_properties.location)
 
-Po vytvoření cloudové služby, můžete nasadit služby toohello kód prostřednictvím hello **vytvořit\_nasazení** metoda.
+Po vytvoření cloudové služby, můžete nasadit kódu na služby s **vytvořit\_nasazení** metoda.
 
 ## <a name="DeleteCloudService"></a>Postupy: odstranění cloudové služby
-Cloudové služby můžete odstranit předáním hello služby název toohello **odstranit\_hostované\_služby** metoda:
+Cloudové služby můžete odstranit pomocí názvu služby k předání **odstranit\_hostované\_služby** metoda:
 
     sms.delete_hosted_service('myhostedservice')
 
-Před odstraněním služby, musíte nejprve odstranit všechna nasazení služby hello. (Viz [postupy: odstranění nasazení](#DeleteDeployment) podrobnosti.)
+Před odstraněním služby, musíte nejprve odstranit všechna nasazení pro službu. (Viz [postupy: odstranění nasazení](#DeleteDeployment) podrobnosti.)
 
 ## <a name="DeleteDeployment"></a>Postupy: odstranění nasazení
-toodelete nasazení, použijte hello **odstranit\_nasazení** metoda. Hello následující příklad ukazuje, jak toodelete nasazení s názvem `v1`.
+Pokud chcete odstranit nasazení, použijte **odstranit\_nasazení** metoda. Následující příklad ukazuje, jak odstranit nasazení s názvem `v1`.
 
     from azure import *
     from azure.servicemanagement import *
@@ -170,7 +170,7 @@ toodelete nasazení, použijte hello **odstranit\_nasazení** metoda. Hello nás
     sms.delete_deployment('myhostedservice', 'v1')
 
 ## <a name="CreateStorageService"></a>Postupy: vytvoření služby úložiště
-A [služba úložiště](../storage/common/storage-create-storage-account.md) dává vám přístup tooAzure [objekty BLOB](../storage/blobs/storage-python-how-to-use-blob-storage.md), [tabulky](../cosmos-db/table-storage-how-to-use-python.md), a [fronty](../storage/queues/storage-python-how-to-use-queue-storage.md). toocreate služba úložiště, musíte jako název služby hello (mezi 3 a 24 malých písmen a jedinečný v rámci Azure), popis, popisek (až too100 znaky, automaticky kódovaného toobase64) a umístění. Hello následující příklad ukazuje, jak služba toocreate úložiště tak, že zadáte umístění.
+A [služba úložiště](../storage/common/storage-create-storage-account.md) dává vám přístup k Azure [objekty BLOB](../storage/blobs/storage-python-how-to-use-blob-storage.md), [tabulky](../cosmos-db/table-storage-how-to-use-python.md), a [fronty](../storage/queues/storage-python-how-to-use-queue-storage.md). Vytvoření služby, úložiště, je třeba název služby (mezi 3 a 24 malých písmen a jedinečný v rámci Azure), popis, popisek (až 100 znaků, automaticky kódovaný formátu Base64) a umístění. Následující příklad ukazuje, jak vytvořit službu úložiště tak, že zadáte umístění.
 
     from azure import *
     from azure.servicemanagement import *
@@ -187,9 +187,9 @@ A [služba úložiště](../storage/common/storage-create-storage-account.md) d�
     operation_result = sms.get_operation_status(result.request_id)
     print('Operation status: ' + operation_result.status)
 
-Poznámka: v předchozím příkladu hello hello stav hello **vytvořit\_úložiště\_účet** operaci se dá načíst pomocí předání hello výsledek vrácený **vytvořit\_úložiště \_účet** toohello **získat\_operace\_stav** metoda.  
+Poznámka: v předchozím příkladu, stav **vytvořit\_úložiště\_účet** operaci se dá načíst pomocí předání výsledek vrácený **vytvořit\_úložiště\_účet** k **získat\_operace\_stav** metoda.  
 
-Můžete vytvořit seznam účtů úložiště a jejich vlastnosti s hello **seznamu\_úložiště\_účty** metoda:
+Můžete vytvořit seznam účtů úložiště a jejich vlastnosti s **seznamu\_úložiště\_účty** metoda:
 
     from azure import *
     from azure.servicemanagement import *
@@ -203,7 +203,7 @@ Můžete vytvořit seznam účtů úložiště a jejich vlastnosti s hello **sez
         print('')
 
 ## <a name="DeleteStorageService"></a>Postupy: odstranění služby úložiště
-Služba úložiště můžete odstranit předáním hello úložiště služby název toohello **odstranit\_úložiště\_účet** metoda. Odstraněním úložiště služby se odstraní všechna data uložená ve službě hello (objekty BLOB, tabulek a front).
+Služba úložiště můžete odstranit pomocí předání názvu služby úložiště na **odstranit\_úložiště\_účet** metoda. Odstraněním úložiště služby se odstraní všechna data uložená ve službě (objekty BLOB, tabulek a front).
 
     from azure import *
     from azure.servicemanagement import *
@@ -213,7 +213,7 @@ Služba úložiště můžete odstranit předáním hello úložiště služby n
     sms.delete_storage_account('mystorageaccount')
 
 ## <a name="ListOperatingSystems"></a>Postupy: seznam dostupných operačních systémů
-toolist hello operační systémy, které jsou k dispozici pro hostování služeb, použijte hello **seznamu\_operační\_systémy** metoda:
+K zobrazení seznamu operačních systémů, které jsou k dispozici pro hostování služeb, použijte **seznamu\_operační\_systémy** metoda:
 
     from azure import *
     from azure.servicemanagement import *
@@ -227,7 +227,7 @@ toolist hello operační systémy, které jsou k dispozici pro hostování služ
         print('Family: ' + os.family_label)
         print('Active: ' + str(os.is_active))
 
-Alternativně můžete použít hello **seznamu\_operační\_systému\_rodiny** metodu, která skupiny hello operační systémy řady:
+Alternativně můžete použít **seznamu\_operační\_systému\_rodiny** metodu, která skupiny operační systémy řady:
 
     result = sms.list_operating_system_families()
 
@@ -240,7 +240,7 @@ Alternativně můžete použít hello **seznamu\_operační\_systému\_rodiny** 
         print('')
 
 ## <a name="CreateVMImage"></a>Postupy: vytvoření image operačního systému
-tooadd úložiště bitové kopie toohello bitové kopie operačního systému použít hello **přidat\_os\_image** metoda:
+Chcete-li přidat bitovou kopii operačního systému do úložiště bitové kopie, použijte **přidat\_operačního systému\_bitové kopie** metoda:
 
     from azure import *
     from azure.servicemanagement import *
@@ -257,7 +257,7 @@ tooadd úložiště bitové kopie toohello bitové kopie operačního systému p
     operation_result = sms.get_operation_status(result.request_id)
     print('Operation status: ' + operation_result.status)
 
-Image operačního systému hello toolist, které jsou k dispozici, použijte hello **seznamu\_os\_bitové kopie** metoda. Obsahuje všechny Image platformy a uživatele bitové kopie:
+K zobrazení seznamu bitové kopie operačního systému, které jsou k dispozici, použijte **seznamu\_os\_bitové kopie** metoda. Obsahuje všechny Image platformy a uživatele bitové kopie:
 
     result = sms.list_os_images()
 
@@ -272,7 +272,7 @@ Image operačního systému hello toolist, které jsou k dispozici, použijte he
         print('')
 
 ## <a name="DeleteVMImage"></a>Postupy: odstranění image operačního systému
-toodelete uživatelská image použít hello **odstranit\_os\_image** metoda:
+Chcete-li odstranit uživatelskou image, použijte **odstranit\_operačního systému\_bitové kopie** metoda:
 
     from azure import *
     from azure.servicemanagement import *
@@ -285,7 +285,7 @@ toodelete uživatelská image použít hello **odstranit\_os\_image** metoda:
     print('Operation status: ' + operation_result.status)
 
 ## <a name="CreateVM"></a>Postupy: vytvoření virtuálního počítače
-toocreate virtuálního počítače, musíte nejprve toocreate [Cloudová služba](#CreateCloudService).  Pak vytvořte hello nasazení virtuálního počítače pomocí hello **vytvořit\_virtuální\_počítač\_nasazení** metoda:
+Pokud chcete vytvořit virtuální počítač, musíte nejprve vytvořit [Cloudová služba](#CreateCloudService).  Pak vytvořte pomocí nasazení virtuálního počítače **vytvořit\_virtuální\_počítač\_nasazení** metoda:
 
     from azure import *
     from azure.servicemanagement import *
@@ -295,7 +295,7 @@ toocreate virtuálního počítače, musíte nejprve toocreate [Cloudová služb
     name = 'myvm'
     location = 'West US'
 
-    #Set hello location
+    #Set the location
     sms.create_hosted_service(service_name=name,
         label=name,
         location=location)
@@ -303,7 +303,7 @@ toocreate virtuálního počítače, musíte nejprve toocreate [Cloudová služb
     # Name of an os image as returned by list_os_images
     image_name = 'OpenLogic__OpenLogic-CentOS-62-20120531-en-us-30GB.vhd'
 
-    # Destination storage account container/blob where hello VM disk
+    # Destination storage account container/blob where the VM disk
     # will be created
     media_link = 'url_to_target_storage_blob_for_vm_hd'
 
@@ -323,7 +323,7 @@ toocreate virtuálního počítače, musíte nejprve toocreate [Cloudová služb
         role_size='Small')
 
 ## <a name="DeleteVM"></a>Postupy: odstranění virtuálního počítače
-toodelete virtuálního počítače, je nejprve odstranit hello nasazení pomocí hello **odstranit\_nasazení** metoda:
+Pokud chcete odstranit virtuální počítač, je nejprve odstranit nasazení pomocí **odstranit\_nasazení** metoda:
 
     from azure import *
     from azure.servicemanagement import *
@@ -333,19 +333,19 @@ toodelete virtuálního počítače, je nejprve odstranit hello nasazení pomoc�
     sms.delete_deployment(service_name='myvm',
         deployment_name='myvm')
 
-Hello cloudovou službu můžete odstranit pak pomocí hello **odstranit\_hostované\_služby** metoda:
+Cloudové služby můžete odstranit pak pomocí **odstranit\_hostované\_služby** metoda:
 
     sms.delete_hosted_service(service_name='myvm')
 
 ## <a name="how-to-create-a-virtual-machine-from-a-captured-virtual-machine-image"></a>Postupy: Vytvoření virtuálního počítače z Image zaznamenané virtuálního počítače
-toocapture image virtuálního počítače, první volání hello **zaznamenat\_virtuálních počítačů\_image** metoda:
+K zachycení image virtuálního počítače, první volání **zaznamenat\_virtuálních počítačů\_image** metoda:
 
     from azure import *
     from azure.servicemanagement import *
 
     sms = ServiceManagementService(subscription_id, certificate_path)
 
-    # replace hello below three parameters with actual values
+    # replace the below three parameters with actual values
     hosted_service_name = 'hs1'
     deployment_name = 'dep1'
     vm_name = 'vm1'
@@ -365,11 +365,11 @@ toocapture image virtuálního počítače, první volání hello **zaznamenat\_
             image
         )
 
-Dále toomake jistotu, že jste se úspěšně zachytil hello image, použijte hello **seznamu\_virtuálních počítačů\_bitové kopie** rozhraní api a zajistěte, aby bitové kopie se zobrazí ve výsledcích hello:
+Další, abyste měli jistotu, že úspěšně zaznamenáte bitovou kopii, použijte **seznamu\_virtuálních počítačů\_bitové kopie** rozhraní api a zajistěte, aby bitové kopie se zobrazí ve výsledcích:
 
     images = sms.list_vm_images()
 
-toofinally vytvořit hello virtuální počítač pomocí hello zaznamenané bitové kopie, použijte hello **vytvořit\_virtuální\_počítač\_nasazení** jako předtím, ale tentokrát předat hello vm_image_name místo toho – metoda
+Nakonec vytvoření virtuálního počítače pomocí zaznamenané bitové kopie, použijte **vytvořit\_virtuální\_počítač\_nasazení** jako předtím, ale tentokrát předávat vm_image_name místo toho – metoda
 
     from azure import *
     from azure.servicemanagement import *
@@ -379,7 +379,7 @@ toofinally vytvořit hello virtuální počítač pomocí hello zaznamenané bit
     name = 'myvm'
     location = 'West US'
 
-    #Set hello location
+    #Set the location
     sms.create_hosted_service(service_name=name,
         label=name,
         location=location)
@@ -394,18 +394,18 @@ toofinally vytvořit hello virtuální počítač pomocí hello zaznamenané bit
         role_size='Small',
         vm_image_name = image_name)
 
-Další informace o toolearn, jak zjistit, toocapture virtuální počítač s Linuxem [jak tooCapture virtuální počítač s Linuxem.](../virtual-machines/linux/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+Další informace o tom, jak zachytit virtuální počítač s Linuxem najdete v tématu [jak zachytit virtuální počítač s Linuxem.](../virtual-machines/linux/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
-toolearn Další informace o tom, jak toocapture virtuálního počítače s Windows, najdete v části [jak tooCapture virtuálního počítače s Windows.](../virtual-machines/windows/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+Další informace o tom, jak zachytit virtuální počítač Windows najdete v tématu [jak zachytit virtuální počítač Windows.](../virtual-machines/windows/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-## <a name="What's Next"></a>Další kroky
-Teď, když jste se naučili základy hello služby správy, dostanete hello [referenční dokumentace rozhraní API dokončení pro hello Azure Python SDK](http://azure-sdk-for-python.readthedocs.org/) a provádět komplexní úlohy snadno toomanage aplikace python.
+## <a name="What's Next"> </a>Další kroky
+Teď, když jste se naučili základy používání služby Správa služby, dostanete [referenční dokumentace dokončení rozhraní API pro Azure Python SDK](http://azure-sdk-for-python.readthedocs.org/) a provádět komplexní úlohy snadno ke správě aplikace python.
 
-Další informace najdete v tématu hello [středisku pro vývojáře Python](/develop/python/).
+Další informace naleznete ve [Středisku pro vývojáře Python](/develop/python/).
 
 [What is Service Management]: #WhatIs
 [Concepts]: #Concepts
-[How to: Connect tooservice management]: #Connect
+[How to: Connect to service management]: #Connect
 [How to: List available locations]: #ListAvailableLocations
 [How to: Create a cloud service]: #CreateCloudService
 [How to: Delete a cloud service]: #DeleteCloudService

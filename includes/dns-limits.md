@@ -5,4 +5,4 @@
 | Sady záznamů na zóny |5000 <sup>1</sup> |
 | Záznamů na sady záznamů |20 |
 
-<sup>1</sup> obraťte se na podporu Azure v případě, že potřebujete tooincrease těchto mezních hodnot.
+<sup>1</sup> obraťte se na podporu Azure v případě budete muset tyto limity zvýšit.

@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate univerzální platformu Windows (UWP) používající v Mobile Apps | Microsoft Docs"
-description: "Využijte tento kurz tooget začít s pomocí back-EndY mobilní aplikace Azure pro vývoj aplikací pro univerzální platformu Windows (UWP) v C#, Visual Basic nebo JavaScript."
+title: "Vytvoření Univerzální platformy Windows (UPW) využívající Mobile Apps | Dokumentace Microsoftu"
+description: "V tomto kurzu začnete pracovat s back-endy mobilní aplikace Azure při vývoji aplikací pro Univerzální platformu Windows (UPW) v jazycích C#, Visual Basic a JavaScript."
 services: app-service\mobile
 documentationcenter: windows
 author: ggailey777
@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.openlocfilehash: d0f57bca5a8195b8b0461b8f7a0d8516371d56a8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 5408e032670dda7f149c442e08f52b02abe23f05
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-windows-app"></a>Vytvoření aplikace pro Windows
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
 ## <a name="overview"></a>Přehled
-Tento kurz ukazuje, jak tooadd back-end cloudové služby tooa univerzální platformu Windows (UWP) aplikace. Další informace najdete v tématu [Co jsou Mobile Apps](app-service-mobile-value-prop.md). Následující Hello jsou z aplikace hello dokončit zachycení obrazovky:
+V tomto kurzu se dozvíte, jak do aplikace pro Univerzální platformu Windows (UPW) přidat cloudovou back-end službu. Další informace najdete v tématu [Co jsou Mobile Apps](app-service-mobile-value-prop.md). Zde jsou snímky obrazovek z hotové aplikace:
 
 ![Hotová desktopová aplikace](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-completed-desktop.png)   
 Spuštěná na ploše
@@ -35,47 +35,47 @@ Spuštěná na telefonu
 Ve všech dalších kurzech Mobile App pro aplikace UPW se předpokládá dokončení tohoto kurzu.
 
 ## <a name="prerequisites"></a>Požadavky
-toocomplete tohoto kurzu budete potřebovat hello následující:
+Pro absolvování tohoto kurzu potřebujete:
 
-* Aktivní účet Azure. Pokud nemáte účet, můžete si zaregistrovat zkušební verzi Azure a získat až too10 bezplatné mobilní aplikace, které můžete používat i po skončení zkušebního období. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
+* Aktivní účet Azure. Pokud účet nemáte, můžete si zaregistrovat zkušební verzi Azure a získat až 10 bezplatných mobilních aplikací, které můžete používat i po skončení zkušebního období. Podrobnosti najdete v tématu [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * [Visual Studio Community 2015] nebo novější verzi
 
 ## <a name="create-a-new-azure-mobile-app-backend"></a>Vytvoření nového back-endu mobilní aplikace Azure
-Postupujte podle těchto kroků toocreate nový back-end mobilní aplikace.
+Podle těchto pokynů vytvořte nový back-end mobilní aplikace:
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-Nyní máte zřízen back-end mobilní aplikace Azure, který je možné použít v mobilních klientských aplikacích. Dále si stáhnete serverový projekt pro jednoduchý "seznam úkolů" back-end a publikujete ho v tooAzure.
+Nyní máte zřízen back-end mobilní aplikace Azure, který je možné použít v mobilních klientských aplikacích. Dále si stáhnete serverový projekt pro jednoduchý back-end seznamu úkolů a publikujete ho v Azure.
 
-## <a name="configure-hello-server-project"></a>Konfigurace projektu server hello
+## <a name="configure-the-server-project"></a>Konfigurace serverového projektu
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="download-and-run-hello-client-project"></a>Stažení a spuštění projektu klienta hello
-Jakmile jste nakonfigurovali váš back-end mobilní aplikace, můžete vytvořit novou klientskou aplikaci nebo upravovat existující tooconnect tooAzure aplikace. V této části stáhnete projekt šablony aplikace UPW, který je přizpůsobené tooconnect tooyour mobilní aplikace back-end.
+## <a name="download-and-run-the-client-project"></a>Stažení a spuštění klientského projektu
+Až nakonfigurujete svůj back-end mobilní aplikace, je možné buď vytvořit novou klientskou aplikaci, nebo upravit existující aplikaci tak, aby se připojovala k Azure. V této části si stáhnete projekt šablony aplikace UPW přizpůsobený tak, aby se připojoval k vašemu back-endu mobilní aplikace.
 
-1. Zpět v hello **úvodní** back-endu mobilní aplikace, klikněte na **vytvořit novou aplikaci** > **Stáhnout**, extrahujte hello komprimované soubory projektu tooyour místního počítače.
+1. Po návratu do okna **Rychlý start** back-endu mobilní aplikace klikněte na **Vytvořit novou aplikaci** > **Stáhnout** a extrahujte komprimované soubory projektu do místního počítače.
 
     ![Stáhnutí projektu typu rychlý start pro Windows](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-app-windows-quickstart.png)
-2. (Volitelné) Přidat toohello projekt aplikace UPW hello stejného řešení jako hello serverový projekt. To usnadňuje toodebug a testovací obě hello aplikace a hello back-end v hello stejné řešení sady Visual Studio, pokud si zvolíte toodo tak. tooadd řešení toohello projekt aplikace UPW, používejte Visual Studio 2015 nebo novější verze.
-3. Hello aplikace pro UPW jako spouštěný projekt hello stiskněte klíče toodeploy hello F5 a spusťte hello aplikace.
-4. Hello aplikace zadejte smysluplný text, například *hello dokončení kurzu*, v hello **vložení úkolu** textového pole a pak klikněte na tlačítko **Uložit**.
+2. (Nepovinné) Přidejte projekt aplikace UPW do stejného řešení, v jakém se nachází serverový projekt. V tomtéž řešení nástroje Visual Studio bude snazší ladit a testovat jak aplikaci, tak back-end. Aby bylo možné projekt aplikace UPW do řešení přidat, je nutné používat Visual Studio 2015 nebo jeho novější verzi.
+3. Nastavte aplikaci UPW jako spouštěný projekt, stiskněte klávesu F5, čímž aplikaci nasadíte a spustíte.
+4. V aplikaci zadejte do textového pole pro **vložení úkolu** smysluplný text, například *Dokončit kurz*, a klikněte na **Uložit**.
 
     ![Dokončení desktopového projektu s rychlým startem pro Windows](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-startup.png)
 
-    Tím se odešle POST požadavek toohello nový mobilní aplikace back-end hostovaný v Azure.
-5. (Volitelné) Aplikace hello zastavte a restartujte ji na jiném zařízení nebo emulátoru mobilního.
+    Tím se odešle požadavek POST na nový back-end mobilní aplikace, jehož hostitelem je Azure.
+5. (Volitelné) Ukončete aplikaci a restartujte ji na jiném zařízení nebo emulátoru mobilního zařízení.
 
     ![Dokončení telefonního projektu s rychlým startem pro Windows](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-completed.png)
 
-    Všimněte si, že data uložená hello v předchozím kroku načetla z Azure po spuštění aplikace pro UPW hello.
+    Všimněte si, že po spuštění aplikace UPW se data uložená v předchozím kroku načetla z Azure.
 
 ## <a name="next-steps"></a>Další kroky
-* [Přidat aplikaci tooyour ověřování](app-service-mobile-windows-store-dotnet-get-started-users.md)  
-  Zjistěte, jak tooauthenticate uživatele vaší aplikace pomocí zprostředkovatele identity.
-* [Přidat nabízená oznámení tooyour aplikaci](app-service-mobile-windows-store-dotnet-get-started-push.md)  
-  Zjistěte, jak tooadd nabízená oznámení podporují tooyour aplikace a konfigurace mobilní aplikace back-end toouse Azure Notification Hubs toosend nabízených oznámení.
+* [Přidání ověřování do aplikace](app-service-mobile-windows-store-dotnet-get-started-users.md)  
+  Zjistěte, jak ověřovat uživatele vaší aplikace pomocí zprostředkovatele identity.
+* [Přidání nabízených oznámení do aplikace](app-service-mobile-windows-store-dotnet-get-started-push.md)  
+  Naučte se přidávat do aplikace podporu nabízených oznámení a konfigurovat back-end mobilní aplikace tak, aby k zasílání nabízených oznámení používal Azure Notification Hubs.
 * [Povolení offline synchronizace u aplikace](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)  
-  Zjistěte, jak tooadd offline podporují aplikace pomocí back-end mobilní aplikace. Offline synchronizace umožňuje koncovým uživatelům toointeract s mobilní aplikací&mdash;zobrazení, přidávat a upravovat data&mdash;i v případě, že není žádné síťové připojení.
+  Naučte se, jak pomocí back-endu mobilní aplikace přidat do aplikace podporu offline režimu. Offline synchronizace umožňuje koncovým uživatelům pracovat s mobilní aplikací &mdash; zobrazovat, přidávat a upravovat data &mdash; i v případě, že nemají připojení k síti.
 
 <!-- Anchors. -->
 <!-- Images. -->

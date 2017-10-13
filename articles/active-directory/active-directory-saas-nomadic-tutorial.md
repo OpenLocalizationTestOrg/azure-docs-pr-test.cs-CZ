@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Nomadic | Microsoft Docs'
-description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a Nomadic."
+description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Nomadic."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,184 +14,184 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 8c1d3e350ce03c373cf475b2786ec299a7ce5f80
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1817a1395c2ffa7268abfff268d9d041f7f21a57
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nomadic"></a>Kurz: Azure Active Directory integrace s Nomadic
 
-V tomto kurzu zjistíte, jak toointegrate Nomadic s Azure Active Directory (Azure AD).
+V tomto kurzu zjistěte, jak integrovat Nomadic s Azure Active Directory (Azure AD).
 
-Integrace Nomadic s Azure AD poskytuje hello následující výhody:
+Integrace Nomadic s Azure AD poskytuje následující výhody:
 
-- Můžete ovládat ve službě Azure AD, který má přístup tooNomadic.
-- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooNomadic (jednotné přihlášení) s jejich účty Azure AD.
-- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure.
+- Můžete ovládat ve službě Azure AD, který má přístup k Nomadic.
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k Nomadic (jednotné přihlášení) s jejich účty Azure AD.
+- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Integrace služby Azure AD s Nomadic tooconfigure, je třeba hello následující položky:
+Konfigurace integrace Azure AD s Nomadic, potřebujete následující položky:
 
 - Předplatné služby Azure AD
 - Nomadic jednotné přihlašování povolené předplatné
 
 > [!NOTE]
-> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
+Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc zde](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidat Nomadic z Galerie hello
+1. Přidat Nomadic z Galerie
 2. Konfigurace a otestování Azure AD jednotné přihlašování
 
-## <a name="add-nomadic-from-hello-gallery"></a>Přidat Nomadic z Galerie hello
-tooconfigure hello integrace Nomadic do Azure AD, je nutné tooadd Nomadic hello Galerie tooyour seznamu spravovaných aplikací SaaS.
+## <a name="add-nomadic-from-the-gallery"></a>Přidat Nomadic z Galerie
+Při konfiguraci integrace Nomadic do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS Nomadic z galerie.
 
-**tooadd Nomadic z Galerie hello, proveďte následující kroky hello:**
+**Pokud chcete přidat Nomadic z galerie, proveďte následující kroky:**
 
-1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
+1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
 
-    ![tlačítko Azure Active Directory Hello][1]
+    ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
+2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
 
-    ![okno aplikace Hello Enterprise][2]
+    ![V okně podnikové aplikace][2]
     
-3. tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
 
-    ![tlačítko nové aplikace Hello][3]
+    ![Tlačítko nové aplikace][3]
 
-4. Hello vyhledávacího pole zadejte **Nomadic**, vyberte **Nomadic** z panelu výsledků klikněte **přidat** tlačítko tooadd hello aplikace.
+4. Do vyhledávacího pole zadejte **Nomadic**, vyberte **Nomadic** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.
 
-    ![V seznamu výsledků hello nomadic](./media/active-directory-saas-nomadic-tutorial/tutorial_nomadic_addfromgallery.png)
+    ![Nomadic v seznamu výsledků](./media/active-directory-saas-nomadic-tutorial/tutorial_nomadic_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
 
 V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Nomadic podle testovacího uživatele názvem "Britta Simon".
 
-Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v Nomadic je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v Nomadic musí toobe navázat.
+Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Nomadic je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Nomadic musí navázat.
 
-V Nomadic, přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.
+V Nomadic, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
 
-tooconfigure a testu Azure AD jednotné přihlašování s Nomadic, potřebujete následující stavební bloky hello toocomplete:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Nomadic, je třeba dokončit následující stavební bloky:
 
-1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
-2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření Nomadic zkušebního uživatele](#create-a-nomadic-test-user)**  -toohave protějšek Britta Simon v Nomadic, která je propojená toohello Azure AD reprezentace uživatele.
-4. **[Přiřadit hello Azure AD testovacího uživatele](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
-5. **[Test jednotného přihlašování](#test-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
+1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
+2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření Nomadic zkušebního uživatele](#create-a-nomadic-test-user)**  – Pokud chcete mít protějšek Britta Simon v Nomadic propojeném s Azure AD reprezentace daného uživatele.
+4. **[Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
+5. **[Test jednotného přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci Nomadic.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Nomadic.
 
-**tooconfigure Azure AD jednotné přihlašování s Nomadic, proveďte následující kroky hello:**
+**Ke konfiguraci Azure AD jednotné přihlašování s Nomadic, proveďte následující kroky:**
 
-1. V portálu Azure, na hello hello **Nomadic** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na portálu Azure na **Nomadic** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurace propojení přihlášení][4]
 
-2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
+2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
  
     ![Jediné přihlášení dialogové okno](./media/active-directory-saas-nomadic-tutorial/tutorial_nomadic_samlbase.png)
 
-3. Na hello **Nomadic domény a adresy URL** část, proveďte následující kroky hello:
+3. Na **Nomadic domény a adresy URL** část, proveďte následující kroky:
 
     ![Nomadic domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-nomadic-tutorial/tutorial_nomadic_url.png)
 
-    a. V hello **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<company name>.nomadic.fm/signin`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<company name>.nomadic.fm/signin`
 
-    b. V hello **identifikátor** textovému poli, zadejte adresu URL pomocí hello následující vzor: `https://<company name>.nomadic.fm/auth/saml2/sp`,`https://<company name>.staging.nomadic.fm/auth/saml2/sp`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<company name>.nomadic.fm/auth/saml2/sp`,`https://<company name>.staging.nomadic.fm/auth/saml2/sp`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Aktualizovat tyto hodnoty s hello skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory Nomadic klienta](mailto:help@nomadic.fm) tooget tyto hodnoty. 
+    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory Nomadic klienta](mailto:help@nomadic.fm) k získání těchto hodnot. 
  
 
 
-4. Na hello **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat hello ve vašem počítači.
+4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
 
-    ![odkaz ke stažení certifikátu Hello](./media/active-directory-saas-nomadic-tutorial/tutorial_nomadic_certificate.png) 
+    ![Odkaz ke stažení certifikátu](./media/active-directory-saas-nomadic-tutorial/tutorial_nomadic_certificate.png) 
 
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-nomadic-tutorial/tutorial_general_400.png)
 
-6.  tooget nakonfigurovat jednotné přihlašování pro vaši aplikaci, obraťte se na [tým podpory Nomadic](mailto:help@nomadic.fm) a poskytnout hello Stáhnout **metadata**.
+6.  Pokud chcete získat jednotné přihlašování, které jsou nakonfigurované pro vaše aplikace, obraťte se na [tým podpory Nomadic](mailto:help@nomadic.fm) a jim poskytnout stažený **metadata**.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 
-Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
+Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
 
    ![Vytvořit testovací uživatele Azure AD][100]
 
-**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
+**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
 
-1. V hello portál Azure, v levém podokně hello, klikněte na tlačítko hello **Azure Active Directory** tlačítko.
+1. Na portálu Azure, v levém podokně klikněte **Azure Active Directory** tlačítko.
 
-    ![tlačítko Azure Active Directory Hello](./media/active-directory-saas-nomadic-tutorial/create_aaduser_01.png)
+    ![Tlačítko Azure Active Directory](./media/active-directory-saas-nomadic-tutorial/create_aaduser_01.png)
 
-2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin**a potom klikněte na **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na **všichni uživatelé**.
 
-    ![Hello "Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/active-directory-saas-nomadic-tutorial/create_aaduser_02.png)
+    !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/active-directory-saas-nomadic-tutorial/create_aaduser_02.png)
 
-3. tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello horní části hello **všichni uživatelé** dialogové okno.
+3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
-    ![tlačítko Přidat Hello](./media/active-directory-saas-nomadic-tutorial/create_aaduser_03.png)
+    ![Tlačítko Přidat](./media/active-directory-saas-nomadic-tutorial/create_aaduser_03.png)
 
-4. V hello **uživatele** dialogové okno pole, proveďte následující kroky hello:
+4. V **uživatele** dialogové okno pole, proveďte následující kroky:
 
-    ![Dialogové okno uživatelského Hello](./media/active-directory-saas-nomadic-tutorial/create_aaduser_04.png)
+    ![Dialogové okno uživatele](./media/active-directory-saas-nomadic-tutorial/create_aaduser_04.png)
 
-    a. V hello **název** zadejte **BrittaSimon**.
+    a. V **název** zadejte **BrittaSimon**.
 
-    b. V hello **uživatelské jméno** pole typu hello e-mailovou adresu uživatele Britta Simon.
+    b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
 
-    c. Vyberte hello **zobrazit hesla** zaškrtněte políčko a zapište si ji hello hodnotu, která se zobrazí v hello **heslo** pole.
+    c. Vyberte **zobrazit hesla** zaškrtněte políčko a zapište si ji hodnotu, která se zobrazí v **heslo** pole.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="create-a-nomadic-test-user"></a>Vytvoření Nomadic zkušebního uživatele
 
-V této části vytvoříte volal Britta Simon v Nomadic uživatele. Spojte se s [tým podpory Nomadic](mailto:help@nomadic.fm) tooadd hello uživatelé v platformě Nomadic hello.
+V této části vytvoříte volal Britta Simon v Nomadic uživatele. Spojte se s [tým podpory Nomadic](mailto:help@nomadic.fm) přidat uživatele do Nomadic platformy.
 
-### <a name="assign-hello-azure-ad-test-user"></a>Přiřadit hello Azure AD testovacího uživatele
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
 
-V této části povolíte tak, že udělíte přístup tooNomadic toouse Britta Simon Azure jednotné přihlašování.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Nomadic.
 
-![Přiřadit role uživatele hello][200] 
+![Přiřadit role uživatele][200] 
 
-**tooassign Britta Simon tooNomadic, proveďte následující kroky hello:**
+**Pokud chcete přiřadit Britta Simon Nomadic, proveďte následující kroky:**
 
-1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikace hello vyberte **Nomadic**.
+2. V seznamu aplikací vyberte **Nomadic**.
 
-    ![Hello Nomadic odkaz v seznamu aplikace hello](./media/active-directory-saas-nomadic-tutorial/tutorial_nomadic_app.png)  
+    ![Odkaz Nomadic v seznamu aplikací](./media/active-directory-saas-nomadic-tutorial/tutorial_nomadic_app.png)  
 
-3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
+3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
-    ![odkaz "Uživatelé a skupiny" Hello][202]
+    ![Odkaz "Uživatelé a skupiny"][202]
 
 4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
 
-    ![Podokno Přidat přidružení Hello][203]
+    ![V podokně Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -199,14 +199,14 @@ V této části povolíte tak, že udělíte přístup tooNomadic toouse Britta 
     
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.
+V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
-Po kliknutí na tlačítko hello Nomadic dlaždice v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour Nomadic aplikace.
-Další informace o na přístupovém panelu najdete v tématu [toohello Úvod přístupový Panel](active-directory-saas-access-panel-introduction.md). 
+Když kliknete na dlaždici Nomadic na přístupovém panelu jste měli získat automaticky přihlášení k aplikaci Nomadic.
+Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

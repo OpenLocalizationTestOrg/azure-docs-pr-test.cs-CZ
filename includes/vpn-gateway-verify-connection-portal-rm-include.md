@@ -1,7 +1,7 @@
-V hello portálu Azure můžete zobrazit stav připojení hello bránu VPN Resource Manager tak, že přejdete toohello připojení. Hello následující kroky ukazují jedním ze způsobů toonavigate tooyour připojení a ověřte.
+Na webu Azure Portal můžete zobrazit stav připojení VPN Gateway Resource Manageru otevřením připojení. Následující postup ukazuje jeden ze způsobů přechodu k připojení a jeho ověření.
 
-1. V hello [portál Azure](http://portal.azure.com), klikněte na tlačítko **všechny prostředky** a přejděte tooyour brány virtuální sítě.
-2. V okně hello pro bránu virtuální sítě, klikněte na tlačítko **připojení**. Můžete zobrazit stav hello každé připojení.
-3. Klikněte na název hello hello připojení, které chcete tooverify tooopen **Essentials**. V části Základní údaje můžete zobrazit další informace o připojení. Hello **stav** je 'Úspěch' a 'Připojeno' po provedení úspěšného připojení.
+1. Na webu [Azure Portal](http://portal.azure.com) klikněte na **Všechny prostředky** a přejděte ke své bráně virtuální sítě.
+2. V okně vaší brány virtuální sítě klikněte na **Připojení**. Můžete zobrazit stav každého připojení.
+3. Kliknutím na název připojení, které chcete ověřit, otevřete **Základní údaje**. V části Základní údaje můžete zobrazit další informace o připojení. **Stav** bude „Úspěšně dokončeno“ a „Připojeno“ po provedení úspěšného připojení.
 
   ![Ověření připojení VPN Gateway pomocí webu Azure Portal](./media/vpn-gateway-verify-connection-portal-rm-include/connectionsucceeded.png)

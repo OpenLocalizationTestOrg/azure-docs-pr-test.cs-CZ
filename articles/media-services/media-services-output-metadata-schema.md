@@ -1,6 +1,6 @@
 ---
-title: "schéma metadata výstupu aaaAzure Media Services | Microsoft Docs"
-description: "Hello téma nabízí přehled Azure Media Services výstup metadat schématu."
+title: "Azure Media Services výstup metadat schématu | Microsoft Docs"
+description: "Téma nabízí přehled Azure Media Services výstup metadat schématu."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,32 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: juliako
-ms.openlocfilehash: 7f07d6accbe0b171d0408b15d5e1e6b5afd6c367
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c175d359f93e7cd8cd73aa498ad8b71c4ec497f2
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="output-metadata"></a>Výstup metadat
 ## <a name="overview"></a>Přehled
-Kódování úlohy jsou přiřazeny prostředek vstupní (nebo prostředky) na kterém chcete tooperform některé úlohy kódování. Můžete například kódovat MP4 souboru tooH.264 MP4 s adaptivní přenosovou rychlostí nastaví; Vytvořte na miniaturu; Vytvořte překryvy. Po dokončení úlohy se vytvářejí výstupní asset.  Hello výstupní asset obsahuje video, zvuk, miniatur, atd. hello výstupní asset obsahuje také soubor s metadata o hello výstupní asset. Hello název souboru XML metadat hello má hello následující formát: &lt;source_file_name&gt;_manifest.xml (například BigBuckBunny_manifest.xml).  
+Kódování úlohy jsou přiřazeny prostředek vstupní (nebo prostředky) na který chcete provést některé úlohy kódování. Můžete například kódovat soubor MP4 do sad H.264 MP4 s adaptivní přenosovou rychlostí; Vytvořte na miniaturu; Vytvořte překryvy. Po dokončení úlohy se vytvářejí výstupní asset.  Výstupní asset obsahuje video, zvuk, miniatur, atd. Výstupní asset obsahuje také soubor s metadata o výstupní asset. Název souboru XML metadat má následující formát: &lt;source_file_name&gt;_manifest.xml (například BigBuckBunny_manifest.xml).  
 
-Pokud chcete soubor metadat hello tooexamine, můžete vytvořit **SAS** Lokátor a stahování hello souboru tooyour místního počítače.  
+Pokud chcete zkontrolovat soubor metadat, můžete vytvořit **SAS** Lokátor a stahování souborů do místního počítače.  
 
-Toto téma popisuje elementy hello a typy schématu XML hello na které metada výstup hello (&lt;source_file_name&gt;_manifest.xml) je založena. Informace o hello souboru, který obsahuje metadata o vstupní asset hello najdete v tématu [vstupní Metadata](media-services-input-metadata-schema.md).  
+Toto téma popisuje elementy a typy schématu XML, na kterém metada výstup (&lt;source_file_name&gt;_manifest.xml) je založena. Informace o souboru, který obsahuje metadata o vstupní asset najdete v tématu [vstupní Metadata](media-services-input-metadata-schema.md).  
 
 > [!NOTE]
-> Můžete najít kód hello úplné schéma a ukázkový kód XML v hello konci tohoto tématu.  
+> Můžete najít kód úplné schéma a ukázkový kód XML na konci tohoto tématu.  
 >
 >
 
 ## <a name="AssetFiles "></a>Kořenový element AssetFiles
-Kolekce položek AssetFile pro úlohy kódování hello.  
+Kolekce položek AssetFile pro úlohy kódování.  
 
 ### <a name="child-elements"></a>Podřízené elementy
 | Name (Název) | Popis |
 | --- | --- |
-| **AssetFile**<br/><br/> Hodnota minOccurs = maxOccurs "0" = "1" |[AssetFile element](media-services-output-metadata-schema.md) který je součástí hello AssetFiles kolekce. |
+| **AssetFile**<br/><br/> Hodnota minOccurs = maxOccurs "0" = "1" |[AssetFile element](media-services-output-metadata-schema.md) který je součástí AssetFiles kolekce. |
 
 ## <a name="AssetFile "></a>AssetFile element
 Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metadata-schema.md#xml).  
@@ -47,19 +47,19 @@ Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metad
 ### <a name="attributes"></a>Atributy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **Název**<br/><br/> Požaduje se |**xs:String** |Název souboru asset Hello média. |
-| **Velikost**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs:Long** |Velikost souboru assetu hello v bajtech. |
+| **Název**<br/><br/> Požaduje se |**xs:String** |Název souboru asset média. |
+| **Velikost**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs:Long** |Velikost souboru assetu v bajtech. |
 | **Doba trvání**<br/><br/> Požaduje se |**xs** |Obsahu play back doba trvání. |
 
 ### <a name="child-elements"></a>Podřízené elementy
 | Name (Název) | Popis |
 | --- | --- |
-| **Zdroje** |Kolekce vstup nebo zdrojové soubory médií, který byl zpracován v pořadí tooproduce tento AssetFile. Další informace najdete v tématu [Source element](media-services-output-metadata-schema.md). |
-| **VideoTracks**<br/><br/> Hodnota minOccurs = maxOccurs "0" = "1" |Každý fyzický AssetFile může obsahovat v ní nula nebo více video sleduje prokládaný do formátu odpovídajícího kontejneru. Toto je kolekce hello těchto video sleduje. Další informace najdete v tématu [VideoTracks element](media-services-output-metadata-schema.md). |
-| **AudioTracks**<br/><br/> Hodnota minOccurs = maxOccurs "0" = "1" |Každý fyzický AssetFile může obsahovat v ní nula nebo více zvukových stop prokládaný do formátu odpovídajícího kontejneru. Toto je kolekce hello těchto zvukových stop. Další informace najdete v tématu [AudioTracks element](media-services-output-metadata-schema.md). |
+| **Zdroje** |Kolekce vstup nebo zdrojové soubory médií, který byl zpracován, aby bylo možné vytvořit tento AssetFile. Další informace najdete v tématu [Source element](media-services-output-metadata-schema.md). |
+| **VideoTracks**<br/><br/> Hodnota minOccurs = maxOccurs "0" = "1" |Každý fyzický AssetFile může obsahovat v ní nula nebo více video sleduje prokládaný do formátu odpovídajícího kontejneru. Toto je kolekce těchto video sleduje. Další informace najdete v tématu [VideoTracks element](media-services-output-metadata-schema.md). |
+| **AudioTracks**<br/><br/> Hodnota minOccurs = maxOccurs "0" = "1" |Každý fyzický AssetFile může obsahovat v ní nula nebo více zvukových stop prokládaný do formátu odpovídajícího kontejneru. Toto je kolekce těchto zvukových stop. Další informace najdete v tématu [AudioTracks element](media-services-output-metadata-schema.md). |
 
 ## <a name="Sources "></a>Zdrojový element
-Kolekce vstup nebo zdrojové soubory médií, který byl zpracován v pořadí tooproduce tento AssetFile.  
+Kolekce vstup nebo zdrojové soubory médií, který byl zpracován, aby bylo možné vytvořit tento AssetFile.  
 
 Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metadata-schema.md#xml).  
 
@@ -79,62 +79,62 @@ Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metad
 | **Název**<br/><br/> Požaduje se |**xs:String** |Název souboru vstupního zdroje. |
 
 ## <a name="VideoTracks "></a>VideoTracks element
-Každý fyzický AssetFile může obsahovat v ní nula nebo více video sleduje prokládaný do formátu odpovídajícího kontejneru. Toto je kolekce hello těchto video sleduje.  
+Každý fyzický AssetFile může obsahovat v ní nula nebo více video sleduje prokládaný do formátu odpovídajícího kontejneru. Toto je kolekce těchto video sleduje.  
 
 Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metadata-schema.md#xml).  
 
 ### <a name="child-elements"></a>Podřízené elementy
 | Name (Název) | Popis |
 | --- | --- |
-| **VideoTrack**<br/><br/> Hodnota minOccurs = "1" maxOccurs = "bez vazby" |V nadřazené hello AssetFile sledovat konkrétní video. Další informace najdete v tématu [VideoTrack element](media-services-output-metadata-schema.md#VideoTrack). |
+| **VideoTrack**<br/><br/> Hodnota minOccurs = "1" maxOccurs = "bez vazby" |V nadřazené AssetFile sledovat konkrétní video. Další informace najdete v tématu [VideoTrack element](media-services-output-metadata-schema.md#VideoTrack). |
 
 ## <a name="VideoTrack"></a>VideoTrack element
-V nadřazené hello AssetFile sledovat konkrétní video.  
+V nadřazené AssetFile sledovat konkrétní video.  
 
 Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Atributy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **ID**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs:int** |Index počítaný od nuly toto video sledovat. **Poznámka:** to není nezbytně hello TrackID jako použít v souboru MP4. |
+| **ID**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs:int** |Index počítaný od nuly toto video sledovat. **Poznámka:** to není nezbytně TrackID jako použít v souboru MP4. |
 | **FourCC**<br/><br/> Požaduje se |**xs:String** |Video kodeků FourCC kódu. |
-| **Profil** |**xs:String** |H264 profil (jenom příslušné tooH264 kodek). |
-| **Úroveň** |**xs:String** |Úroveň H264 (pouze použít tooH264 kodek). |
+| **Profil** |**xs:String** |Profil H264 (platí jenom pro H264 kodeků). |
+| **Úroveň** |**xs:String** |Úroveň H264 (platí jenom pro H264 kodeků). |
 | **Šířka**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs:int** |Kódovaný video šířku v pixelech. |
 | **Výška**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs:int** |Kódovaný Výška videa v pixelech. |
 | **DisplayAspectRatioNumerator**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs:Double** |Zobrazení videa čítači poměr stran. |
 | **DisplayAspectRatioDenominator**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs:Double** |Jmenovatel grafického poměr stran. |
 | **Kmitočet snímků**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs:decimal** |Měří video obnovovací frekvence ve formátu .3f. |
 | **TargetFramerate**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs:decimal** |Video obnovovací frekvence přednastavené cíl ve formátu .3f. |
-| **Přenosovou rychlostí**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs:int** |Průměrná přenosová rychlost videa v počítané od hello AssetFile kilobity za sekundu. Počty jenom datové části Základní datový proud hello a nezahrnuje hello balení režii. |
-| **TargetBitrate**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs:int** |Cílové průměrná přenosovou rychlostí pro toto video sledovat, jak požadovaný prostřednictvím kódování přednastavení hello v kB. |
+| **Přenosovou rychlostí**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs:int** |Průměrná přenosová rychlost videa v počítané od AssetFile kilobity za sekundu. Počty jenom datové části Základní datový proud a nezahrnuje balení režii. |
+| **TargetBitrate**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs:int** |Cíle průměrná přenosovou rychlostí pro toto video sledovat, jak si vyžádal prostřednictvím kódování přednastavené v kilobity za sekundu. |
 | **MaxGOPBitrate**<br/><br/> minInclusive = "0" |**xs:int** |Maximální počet GOP průměrná přenosovou rychlostí pro tento stopy videa, v kB. |
 
 ## <a name="AudioTracks "></a>AudioTracks element
-Každý fyzický AssetFile může obsahovat v ní nula nebo více zvukových stop prokládaný do formátu odpovídajícího kontejneru. Toto je kolekce hello těchto zvukových stop.  
+Každý fyzický AssetFile může obsahovat v ní nula nebo více zvukových stop prokládaný do formátu odpovídajícího kontejneru. Toto je kolekce těchto zvukových stop.  
 
 Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metadata-schema.md#xml).  
 
 ### <a name="child-elements"></a>Podřízené elementy
 | Name (Název) | Popis |
 | --- | --- |
-| **AudioTrack**<br/><br/> Hodnota minOccurs = "1" maxOccurs = "bez vazby" |V nadřazené hello AssetFile sledovat konkrétní zvukovém souboru. Další informace najdete v tématu [AudioTrack element](media-services-output-metadata-schema.md). |
+| **AudioTrack**<br/><br/> Hodnota minOccurs = "1" maxOccurs = "bez vazby" |V nadřazené AssetFile sledovat konkrétní zvukovém souboru. Další informace najdete v tématu [AudioTrack element](media-services-output-metadata-schema.md). |
 
 ## <a name="AudioTrack "></a>AudioTrack element
-V nadřazené hello AssetFile sledovat konkrétní zvukovém souboru.  
+V nadřazené AssetFile sledovat konkrétní zvukovém souboru.  
 
 Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Atributy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **ID**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs:int** |Index tento zvuk dráhy nule. **Poznámka:** to není nezbytně hello TrackID jako použít v souboru MP4. |
+| **ID**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs:int** |Index tento zvuk dráhy nule. **Poznámka:** to není nezbytně TrackID jako použít v souboru MP4. |
 | **Kodeků** |**xs:String** |Zvuk sledovat kodeků řetězec. |
 | **EncoderVersion** |**xs:String** |Řetězec verze volitelné kodér požadované pro EAC3. |
 | **Kanály**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs:int** |Počet zvukových kanálů. |
 | **SamplingRate**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs:int** |Zvuk vzorkovací frekvenci v ukázky za sekundu nebo Hz. |
-| **Přenosovou rychlostí**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs:int** |Průměrná přenosová rychlost zvuku v bitech za sekundu, počítané od hello AssetFile. Počty jenom datové části Základní datový proud hello a nezahrnuje hello balení režii. |
-| **BitsPerSample**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs:int** |Zadejte bitů na vzorek pro formát wFormatTag hello. |
+| **Přenosovou rychlostí**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs:int** |Průměrná přenosová rychlost zvuku v bitech za sekundu, počítané od AssetFile. Počty jenom datové části Základní datový proud a nezahrnuje balení režii. |
+| **BitsPerSample**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs:int** |Bitů na vzorek pro formát wFormatTag typu. |
 
 ### <a name="child-elements"></a>Podřízené elementy
 | Name (Název) | Popis |
@@ -154,7 +154,7 @@ Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metad
 | **IntegratedLoudness**<br/><br/> minInclusive = "-70" maxInclusive = "10"<br/><br/> Požaduje se |**xs:float** |Integrované hlasitosti |
 | **IntegratedLoudnessUnit**<br/><br/> Požaduje se |**xs:String** |Integrované hlasitosti jednotky. |
 | **IntegratedLoudnessGatingMethod**<br/><br/> Požaduje se |**xs:String** |Identifikátor prostřednictvím brány |
-| **IntegratedLoudnessSpeechPercentage**<br/><br/> minInclusive = "0" maxInclusive = "100" |**xs:float** |Rozpoznávání řeči obsah prostřednictvím programu hello v procentech. |
+| **IntegratedLoudnessSpeechPercentage**<br/><br/> minInclusive = "0" maxInclusive = "100" |**xs:float** |Rozpoznávání řeči obsah prostřednictvím programu, jako procentuální hodnotu. |
 | **SamplePeak**<br/><br/> Požaduje se |**xs:float** |Ukázka absolutní hodnota ve špičce, od resetování nebo od posledního vymazat, na kanál.  Jednotky jsou dBFS. |
 | **SamplePeakUnit**<br/><br/> pevné = "dBFS"<br/><br/> Požaduje se |**xs:anySimpleType** |Ukázka jednotky ve špičce. |
 | **TruePeak**<br/><br/> Požaduje se |**xs:float** |Maximální hodnota true ve špičce hodnotu, podle BS.1770 ITU-R-2, od resetování nebo od posledního vymazat na kanál. Jednotky jsou dBTP. |
@@ -168,7 +168,7 @@ Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metad
                elementFormDefault="qualified">  
       <xs:element name="AssetFiles">  
         <xs:annotation>  
-          <xs:documentation>Collection of AssetFile entries for hello encoding job</xs:documentation>  
+          <xs:documentation>Collection of AssetFile entries for the encoding job</xs:documentation>  
         </xs:annotation>  
         <xs:complexType>  
           <xs:sequence>  
@@ -180,7 +180,7 @@ Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metad
                 <xs:sequence>  
                   <xs:element name="Sources">  
                     <xs:annotation>  
-                      <xs:documentation>Collection of input/source media files, that was processed in order tooproduce this AssetFile</xs:documentation>  
+                      <xs:documentation>Collection of input/source media files, that was processed in order to produce this AssetFile</xs:documentation>  
                     </xs:annotation>  
                     <xs:complexType>  
                       <xs:sequence>  
@@ -201,18 +201,18 @@ Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metad
                   </xs:element>  
                   <xs:element name="VideoTracks" minOccurs="0">  
                     <xs:annotation>  
-                      <xs:documentation>Each physical AssetFile can contain in it zero or more video tracks interleaved into an appropriate container format. This is hello collection of all those video tracks</xs:documentation>  
+                      <xs:documentation>Each physical AssetFile can contain in it zero or more video tracks interleaved into an appropriate container format. This is the collection of all those video tracks</xs:documentation>  
                     </xs:annotation>  
                     <xs:complexType>  
                       <xs:sequence>  
                         <xs:element name="VideoTrack" maxOccurs="unbounded">  
                           <xs:annotation>  
-                            <xs:documentation>A specific video track in hello parent AssetFile</xs:documentation>  
+                            <xs:documentation>A specific video track in the parent AssetFile</xs:documentation>  
                           </xs:annotation>  
                           <xs:complexType>  
                             <xs:attribute name="Id" use="required">  
                               <xs:annotation>  
-                                <xs:documentation>zero-based index of this video track. Note: this is not necessarily hello TrackID as used in an MP4 file</xs:documentation>  
+                                <xs:documentation>zero-based index of this video track. Note: this is not necessarily the TrackID as used in an MP4 file</xs:documentation>  
                               </xs:annotation>  
                               <xs:simpleType>  
                                 <xs:restriction base="xs:int">  
@@ -299,7 +299,7 @@ Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metad
                             </xs:attribute>  
                             <xs:attribute name="Bitrate" use="required">  
                               <xs:annotation>  
-                                <xs:documentation>average video bit rate in kilobits per second, as calculated from hello AssetFile. Counts only hello elementary stream payload, and does not include hello packaging overhead</xs:documentation>  
+                                <xs:documentation>average video bit rate in kilobits per second, as calculated from the AssetFile. Counts only the elementary stream payload, and does not include the packaging overhead</xs:documentation>  
                               </xs:annotation>  
                               <xs:simpleType>  
                                 <xs:restriction base="xs:int">  
@@ -309,7 +309,7 @@ Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metad
                             </xs:attribute>  
                             <xs:attribute name="TargetBitrate" use="required">  
                               <xs:annotation>  
-                                <xs:documentation>target average bitrate for this video track, as requested via hello encoding preset, in kilobits per second</xs:documentation>  
+                                <xs:documentation>target average bitrate for this video track, as requested via the encoding preset, in kilobits per second</xs:documentation>  
                               </xs:annotation>  
                               <xs:simpleType>  
                                 <xs:restriction base="xs:int">  
@@ -334,13 +334,13 @@ Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metad
                   </xs:element>  
                   <xs:element name="AudioTracks" minOccurs="0">  
                     <xs:annotation>  
-                      <xs:documentation>each physical AssetFile can contain in it zero or more audio tracks interleaved into an appropriate container format. This is hello collection of all those audio tracks</xs:documentation>  
+                      <xs:documentation>each physical AssetFile can contain in it zero or more audio tracks interleaved into an appropriate container format. This is the collection of all those audio tracks</xs:documentation>  
                     </xs:annotation>  
                     <xs:complexType>  
                       <xs:sequence>  
                         <xs:element name="AudioTrack" maxOccurs="unbounded">  
                           <xs:annotation>  
-                            <xs:documentation>a specific audio track in hello parent AssetFile</xs:documentation>  
+                            <xs:documentation>a specific audio track in the parent AssetFile</xs:documentation>  
                           </xs:annotation>  
                           <xs:complexType>  
                             <xs:sequence>  
@@ -385,7 +385,7 @@ Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metad
                                   </xs:attribute>  
                                   <xs:attribute name="IntegratedLoudnessSpeechPercentage">  
                                     <xs:annotation>  
-                                      <xs:documentation>Speech content over hello program, as a percentage.</xs:documentation>  
+                                      <xs:documentation>Speech content over the program, as a percentage.</xs:documentation>  
                                     </xs:annotation>  
                                     <xs:simpleType>  
                                       <xs:restriction base="xs:float">  
@@ -413,7 +413,7 @@ Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metad
                             </xs:sequence>  
                             <xs:attribute name="Id" use="required">  
                               <xs:annotation>  
-                                <xs:documentation>zero-based index of this audio track. Note: this is not necessarily hello TrackID as used in an MP4 file</xs:documentation>  
+                                <xs:documentation>zero-based index of this audio track. Note: this is not necessarily the TrackID as used in an MP4 file</xs:documentation>  
                               </xs:annotation>  
                               <xs:simpleType>  
                                 <xs:restriction base="xs:int">  
@@ -453,7 +453,7 @@ Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metad
                             </xs:attribute>  
                             <xs:attribute name="Bitrate" use="required">  
                               <xs:annotation>  
-                                <xs:documentation>average audio bit rate in bits per second, as calculated from hello AssetFile. Counts only hello elementary stream payload, and does not include hello packaging overhead</xs:documentation>  
+                                <xs:documentation>average audio bit rate in bits per second, as calculated from the AssetFile. Counts only the elementary stream payload, and does not include the packaging overhead</xs:documentation>  
                               </xs:annotation>  
                               <xs:simpleType>  
                                 <xs:restriction base="xs:int">  
@@ -463,7 +463,7 @@ Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metad
                             </xs:attribute>  
                             <xs:attribute name="BitsPerSample" use="required">  
                               <xs:annotation>  
-                                <xs:documentation>Bits per sample for hello wFormatTag format type</xs:documentation>  
+                                <xs:documentation>Bits per sample for the wFormatTag format type</xs:documentation>  
                               </xs:annotation>  
                               <xs:simpleType>  
                                 <xs:restriction base="xs:int">  
@@ -479,7 +479,7 @@ Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metad
                 </xs:sequence>  
                 <xs:attribute name="Name" type="xs:string" use="required">  
                   <xs:annotation>  
-                    <xs:documentation>hello media asset file name</xs:documentation>  
+                    <xs:documentation>the media asset file name</xs:documentation>  
                   </xs:annotation>  
                 </xs:attribute>  
                 <xs:attribute name="Size" use="required">  
@@ -510,7 +510,7 @@ Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metad
 
 
 ## <a name="xml"></a>Ukázkový kód XML
- Hello následuje příklad souboru metadat výstup hello.  
+ Následuje příklad výstupního souboru metadat.  
 
     <AssetFiles xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"   
                 xmlns="http://schemas.microsoft.com/windowsazure/mediaservices/2013/05/mediaencoder/metadata">  

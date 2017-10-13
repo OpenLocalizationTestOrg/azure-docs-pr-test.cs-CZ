@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate a obnovit zálohu ve službě BizTalk Services | Microsoft Docs"
-description: "BizTalk Services zahrnuje zálohování a obnovení. Zjistěte, jak toocreate a obnovení zálohy a zjistit, co se zálohuje. MABS, WABS"
+title: "Vytvoření a obnovení zálohy ve službě BizTalk Services | Microsoft Docs"
+description: "BizTalk Services zahrnuje zálohování a obnovení. Zjistěte, jak vytvořit a obnovení zálohy a zjistěte, co se zálohuje. MABS, WABS"
 services: biztalk-services
 documentationcenter: 
 author: MandiOhlinger
@@ -14,115 +14,115 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 32356ad870678fa5fd5bbbbf13d9377188f770a1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c55d1ab124441c42101b4ad60924a9ea28231408
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="biztalk-services-backup-and-restore"></a>BizTalk Services: Zálohování a obnovení
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
-Služba Azure BizTalk Services obsahuje funkce zálohování a obnovení. Toto téma popisuje, jak hello toobackup a obnovení služby BizTalk Services pomocí portálu Azure classic.
+Služba Azure BizTalk Services obsahuje funkce zálohování a obnovení. Toto téma popisuje postup zálohování a obnovení služby BizTalk Services pomocí portálu Azure classic.
 
-Můžete také zálohovat služby BizTalk Services pomocí hello [BizTalk Services REST API](http://go.microsoft.com/fwlink/p/?LinkID=325584). 
+Také můžete zálohovat pomocí služby BizTalk Services [BizTalk Services REST API](http://go.microsoft.com/fwlink/p/?LinkID=325584). 
 
 > [!NOTE]
-> Hybridní připojení se nebudou zálohovány, bez ohledu na to hello Edition. Hybridní připojení, musíte znovu vytvořit.
+> Hybridní připojení se nebudou zálohovány, bez ohledu na verzi. Hybridní připojení, musíte znovu vytvořit.
 
 
 ## <a name="before-you-begin"></a>Než začnete
 * Zálohování a obnovení nemusí být dostupné pro všechny edice. V tématu [služby BizTalk Services: Tabulka edic](biztalk-editions-feature-chart.md).
-* Pomocí hello portál Azure classic, můžete vytvořit zálohu na vyžádání nebo vytvoření naplánovaného zálohování. 
-* Zálohování obsah může být obnovené toohello stejné služby BizTalk nebo tooa novou službu BizTalk. toorestore hello služby BizTalk pomocí hello stejný název, hello stávající službu BizTalk musí být odstraněny a hello název musí být k dispozici. Po odstranění služby BizTalk, může trvat delší dobu, než chtěli pro hello stejný název toobe k dispozici. Pokud nemůžete počkat hello stejný název toobe k dispozici, pak obnovit tooa novou službu BizTalk.
-* BizTalk Services může být obnovené toohello stejné edice, nebo vyšší verze. Obnovení služby BizTalk Services tooa nižší verzi, z při hello zálohy, není podporováno.
+* Pomocí portálu Azure classic, můžete vytvořit zálohu na vyžádání nebo vytvoření naplánovaného zálohování. 
+* Zálohování obsahu lze obnovit do stejné služby BizTalk nebo novou službu BizTalk. Chcete-li obnovit službu BizTalk pomocí stejného názvu, musíte odstranit stávající službu BizTalk a název musí být k dispozici. Po odstranění služby BizTalk, může trvat delší dobu, než chtěli pro stejný název, který se má k dispozici. Pokud nemůžete počkat na stejný název být k dispozici, pak obnovte novou službu BizTalk.
+* BizTalk Services můžete obnovit do stejné edice, nebo vyšší verze. Obnovení služby BizTalk Services na nižší verzi, z při vytvoření zálohy, není podporováno.
   
-    Například zálohy pomocí hello základní verzi může být obnovena toohello edici Premium. Zálohování pomocí hello edice Premium nemůže být obnovena toohello Standard Edition.
-* čísla EDI řízení Hello jsou zálohovány toomaintain kontinuity hello řízení čísel. Pokud po poslední záloze hello zpracování zpráv, obnovení tohoto obsahu zálohování může způsobit duplicitní řízení čísla.
-* Pokud dávce má aktivní zprávy, zpracování dávky hello **před** spuštěním zálohování. Při vytváření zálohy (jako potřebné nebo plánované), ukládají nikdy zprávy v dávkách. 
+    Například lze obnovit zálohu pomocí Základní edice na edici Premium. Zálohování pomocí edice Premium není možné obnovit do Standard Edition.
+* Ovládací prvek EDI čísla, která jsou zálohovány zachování kontinuity čísel ovládacího prvku. Pokud po poslední záloze zpracování zpráv, obnovení tohoto obsahu zálohování může způsobit duplicitní řízení čísla.
+* Pokud dávce má aktivní zprávy, zpracování dávky **před** spuštěním zálohování. Při vytváření zálohy (jako potřebné nebo plánované), ukládají nikdy zprávy v dávkách. 
   
     **Pokud nedojde k zálohování s active zprávy v dávce, tyto zprávy nejsou zálohovány a proto budou ztraceny.**
-* Volitelné: V hello portál služby BizTalk, zastavte č. všechny operace správy.
+* Volitelné: Na portálu služby BizTalk zastavte č. všechny operace správy.
 
 ## <a name="create-a-backup"></a>Vytvoření zálohy
-Zálohu můžete provést kdykoli a zcela řídí můžete. Tato část uvádí hello kroky toocreate zálohování pomocí hello Azure classic portálu, včetně:
+Zálohu můžete provést kdykoli a zcela řídí můžete. Tato část obsahuje kroky k vytvoření zálohy pomocí portálu Azure classic, včetně:
 
 [Na vyžádání zálohování](#backupnow)
 
 [Plán zálohování](#backupschedule)
 
 #### <a name="backupnow"></a>Na vyžádání zálohování
-1. V hello portál Azure classic, vyberte **BizTalk Services**, a pak vyberte hello chcete toobackup služby BizTalk.
-2. V hello **řídicí panel** vyberte **zálohování** na hello dolní části stránky hello.
+1. Na portálu Azure classic, vyberte **BizTalk Services**a potom vyberte službu BizTalk, které chcete zálohovat.
+2. V **řídicí panel** vyberte **zálohování** v dolní části stránky.
 3. Zadejte název zálohy. Zadejte například *myBizTalkService*BU*datum*.
-4. Zvolte účet úložiště blob a vyberte hello zaškrtnutí toostart hello zálohování.
+4. Vyberte účet úložiště blob a klepněte na značku zaškrtnutí zahájíte zálohování.
 
-Po dokončení zálohování hello, vytvoří se v účtu úložiště hello kontejner s názvem Zálohování hello, které zadáte. Tento kontejner obsahuje konfiguraci zálohování služby BizTalk.
+Po dokončení zálohování se vytvoří kontejner s názvem Zálohování, které zadáte v účtu úložiště. Tento kontejner obsahuje konfiguraci zálohování služby BizTalk.
 
 #### <a name="backupschedule"></a>Plán zálohování
-1. V hello portál Azure classic, vyberte **BizTalk Services**, vyberte hello název služby BizTalk mají tooschedule hello zálohování a potom vyberte hello **konfigurace** kartě.
-2. Sada hello **zálohování stav** příliš**automatické**. 
-3. Vyberte hello **účet úložiště** toostore hello zálohování, zadejte hello **frekvence** toocreate hello a jak dlouho tookeep hello zálohování (**dní uchovávání**):
+1. Na portálu Azure classic, vyberte **BizTalk Services**, vyberte název služby BizTalk, které chcete naplánovat zálohování a pak vyberte **konfigurace** kartě.
+2. Nastavte **zálohování stav** k **automatické**. 
+3. Vyberte **účet úložiště** pro uložení zálohy, zadejte **frekvence** vytvářet zálohy a jak dlouho chcete ponechat zálohování (**dní uchovávání**):
    
     ![][AutomaticBU]
    
     **Poznámky k**     
    
-   * V **dní uchovávání**, doba uchování hello musí být větší než četnost záloh hello.
-   * Vyberte **vždy vždycky mějte aspoň jednu zálohu**i v případě, že je po dobu uchování hello.
+   * V **dní uchovávání**, doba uchování musí být větší než je četnost záloh.
+   * Vyberte **vždy vždycky mějte aspoň jednu zálohu**i v případě, že je po dobu uchování.
 4. Vyberte **Uložit**.
 
-Když spustí naplánované úlohy zálohování, vytvoří kontejner (toostore zálohovaná data) v hello účet úložiště, které jste zadali. Hello název kontejneru hello jmenuje *služby BizTalk název data a času*. 
+Když spustí naplánované úlohy zálohování, vytvoří kontejner (pro uložení zálohy dat) v účtu úložiště, které jste zadali. Název kontejneru je s názvem *služby BizTalk název data a času*. 
 
-Pokud se bude zobrazovat hello řídicího panelu služby BizTalk **se nezdařilo** stavu:
+Pokud se zobrazí řídicí panel služby BizTalk **se nezdařilo** stavu:
 
 ![Stav poslední naplánované zálohy][BackupStatus] 
 
-Hello odkaz otevře hello toohelp řešení potíží s protokolů pro operace správy služeb. V tématu [BizTalk Services: řešení problémů pomocí protokolů operací](http://go.microsoft.com/fwlink/p/?LinkId=391211).
+Odkaz otevře protokoly operaci služby pro správu za účelem odstranění. V tématu [BizTalk Services: řešení problémů pomocí protokolů operací](http://go.microsoft.com/fwlink/p/?LinkId=391211).
 
 ## <a name="restore"></a>Obnovení
-Můžete obnovit zálohy z hello portál Azure classic nebo z hello [obnovit REST API služby BizTalk](http://go.microsoft.com/fwlink/p/?LinkID=325582). Tato část uvádí toorestore kroky hello pomocí portálu classic hello.
+Můžete obnovit zálohy z portálu Azure classic nebo z [obnovit REST API služby BizTalk](http://go.microsoft.com/fwlink/p/?LinkID=325582). Tato část obsahuje kroky k obnovení pomocí portálu classic.
 
 #### <a name="before-restoring-a-backup"></a>Před obnovením zálohy
 * Nové sledování, archivace a monitorování úložiště lze zadat během obnovování služby BizTalk.
-* Dobrý den, je stejné EDI Runtime data obnovit. zálohování EDI Runtime Hello ukládá hello řízení čísla. čísla řízení Hello obnovení jsou v pořadí od času hello hello zálohy. Pokud po poslední záloze hello zpracování zpráv, obnovení tohoto obsahu zálohování může způsobit duplicitní řízení čísla.
+* Je obnoven stejná data EDI Runtime. Zálohování EDI Runtime ukládá čísla ovládacího prvku. Obnovené řízení čísla, která jsou v pořadí od okamžiku zálohy. Pokud po poslední záloze zpracování zpráv, obnovení tohoto obsahu zálohování může způsobit duplicitní řízení čísla.
 
 #### <a name="restore-a-backup"></a>Obnovení zálohy
-1. V hello portál Azure classic, vyberte **nový** > **App Services** > **služby BizTalk** > **obnovení** :
+1. Na portálu Azure classic, vyberte **nový** > **App Services** > **služby BizTalk** > **obnovení**:
    
     ![Obnovení zálohy][Restore]
-2. V **zálohování URL**vyberte ikonu hello složky a rozbalte hello účtu úložiště Azure, ukládá hello zálohu konfigurace služby BizTalk. Rozbalte kontejner hello a v pravém podokně hello, vyberte odpovídající zálohování souboru .txt hello. 
+2. V **zálohování URL**vyberte ikonu složky a rozbalte účtu úložiště Azure, která ukládá zálohu konfigurace s názvem služby BizTalk. Rozbalte kontejner a v pravém podokně, vyberte odpovídající záložní soubor .txt. 
    <br/><br/>
    Vyberte **otevřete**.
-3. Na hello **obnovení služby BizTalk** stránky, zadejte **název služby BizTalk** a ověřte hello **adresa URL domény**, **edice**a **Oblast** pro hello obnovit služby BizTalk. **Vytvoření nové instance databáze SQL** pro hello sledování databáze:
+3. Na **obnovení služby BizTalk** zadejte **název služby BizTalk** a ověřte **adresa URL domény**, **edice**, a **oblast** obnovené služby BizTalk. **Vytvoření nové instance databáze SQL** pro databázi sledování:
    
     ![][RestoreBizTalkService]
    
-    Vyberte šipku další hello.
-4. Ověřte název hello hello SQL databáze, zadejte hello fyzický server, kde bude vytvořen hello SQL database a uživatelské jméno a heslo pro tento server.
+    Vyberte šipku Další.
+4. Ověřte název databáze SQL, zadejte fyzický server, kde bude vytvořena databáze SQL a uživatelské jméno a heslo pro tento server.
 
-    Pokud chcete tooconfigure hello SQL databáze edice, velikosti a další vlastnosti, vyberte **nakonfigurovat rozšířené nastavení databáze**. 
+    Pokud chcete nakonfigurovat edice databáze SQL, velikost a další vlastnosti, vyberte **nakonfigurovat rozšířené nastavení databáze**. 
 
-    Vyberte šipku další hello.
+    Vyberte šipku Další.
 
-1. Vytvořit nový účet úložiště nebo zadejte existující účet úložiště pro hello služby BizTalk.
-2. Vyberte hello zaškrtnutí toostart hello obnovení.
+1. Vytvořit nový účet úložiště nebo zadejte existující účet úložiště pro službu BizTalk.
+2. Vyberte na značku zaškrtnutí zahájíte obnovení.
 
-Po úspěšném dokončení obnovení hello novou službu BizTalk je uvedena v pozastaveném stavu na stránce služby BizTalk Services hello hello portál Azure classic.
+Po úspěšném dokončení obnovení novou službu BizTalk je uvedena v pozastaveném stavu na stránce služby BizTalk Services na portálu Azure classic.
 
 ### <a name="postrestore"></a>Po obnovení ze zálohy
-Hello služba BizTalk je vždy obnovit **pozastaveno** stavu. V tomto stavu můžete provést změny konfigurace před hello nové prostředí je funkční, včetně:
+Služba BizTalk je vždy obnovit **pozastaveno** stavu. V tomto stavu můžete provést změny konfigurace před nové prostředí je funkční, včetně:
 
-* Pokud jste vytvořili pomocí sady SDK Azure BizTalk Services hello aplikace služby BizTalk, musíte tootooupdate hello řízení přístupu (ACS) přihlašovací údaje v těchto aplikací toowork s prostředím hello obnovit.
-* Obnovení služby BizTalk tooreplicate stávajícího prostředí služby BizTalk. V této situaci pokud jsou nakonfigurované služby BizTalk Services portálu původní hello smlouvy, které použijte složku zdroje FTP, může být nutné tooupdate hello smluv v prostředí toouse hello nově obnovit jiné zdrojové složky FTP. Jinak, mohou existovat dvě různé smlouvy při toopull hello stejnou zprávu.
-* Pokud jste obnovili toohave prostředí s více služby BizTalk, zkontrolujte, zda že cílíte hello správné prostředí v sadě Visual Studio aplikace hello, rutiny prostředí PowerShell, rozhraní REST API nebo Trading Partner OM rozhraní API pro správu.
-* Je dobrým zvykem tooconfigure automatizované v prostředí služby BizTalk hello nově obnovit zálohování.
+* Pokud jste vytvořili pomocí sady SDK Azure BizTalk Services aplikace služby BizTalk, budete muset aktualizovat přihlašovací údaje řízení přístupu (ACS) v těchto aplikacích pro práci s prostředím obnovený.
+* Obnovení služby BizTalk k replikaci stávajícího prostředí služby BizTalk. V takovém případě-li nakonfigurovat na portálu služby BizTalk Services původní dohody, které používají zdrojové složky FTP, musíte aktualizovat smlouvy v nově obnovený prostředí použít jiné zdrojové složky FTP. Jinak může být dva různé smlouvy pokusu stejnou zprávu pro vyžádání obsahu.
+* Pokud jste obnovili tak, aby měl prostředí s více služby BizTalk, zkontrolujte, zda že cílíte správné prostředí aplikace Visual Studio, rutiny prostředí PowerShell, rozhraní REST API nebo Trading Partner OM rozhraní API pro správu.
+* Je vhodné nakonfigurovat automatické zálohování na nově obnovený prostředí služby BizTalk.
 
-toostart hello služby BizTalk v hello portál Azure classic, vyberte hello obnovit služby BizTalk a vyberte **obnovit** hello hlavním panelu. 
+Spusťte službu BizTalk v portálu Azure classic, vyberte službu BizTalk obnovené a vyberte **obnovit** na hlavním panelu. 
 
 ## <a name="what-gets-backed-up"></a>Co se zálohuje
-Při vytváření zálohy hello následující položky jsou zálohovány:
+Při vytvoření zálohy, budou zálohovány následující položky:
 
 <table border="1"> 
 <tr bgcolor="FAF9F9">
@@ -144,7 +144,7 @@ Při vytváření zálohy hello následující položky jsou zálohovány:
 <li>Certifikáty</li>
 <li>Transformace nasazení</li>
 <li>Kanály</li>
-<li>Šablony vytvořili a uložili v hello portál služby BizTalk</li>
+<li>Šablony vytvořili a uložili na portálu služby BizTalk</li>
 <li>X12 mapování ST01 a GS01</li>
 <li>Ovládací prvek čísla (EDI)</li>
 <li>Hodnoty AS2 zprávy povinná kontrola úrovně Důvěryhodnosti</li>
@@ -186,15 +186,15 @@ Při vytváření zálohy hello následující položky jsou zálohovány:
 </tr> 
 <tr>
 <td>Sledování databáze</td> 
-<td>Při vytváření služby BizTalk hello jsou zadány hello sledování databáze podrobnosti, včetně hello Server databází SQL Azure a název databáze sledování hello. Hello sledování databáze není automaticky zálohovat.
+<td>Při vytváření služby BizTalk jsou zadat podrobnosti sledování databáze, včetně serveru Azure SQL Database a název databáze sledování. Sledování databázi není automaticky zálohovat.
 <br/><br/>
 <strong>Důležité upozornění</strong><br/>
-Pokud hello sledování databáze bude odstraněna a hello potřeby databáze obnovena, musí existovat předchozí zálohy. Pokud zálohu neexistuje, hello sledování databáze a jeho data nejsou použitelná pro obnovení. V této situaci, vytvořte novou databázi pro sledování s hello název stejné databáze. Doporučuje se geografická replikace.</td>
+Pokud se odstraní databázi sledování a potřeby databáze obnovena, musí existovat předchozí zálohy. Pokud zálohu neexistuje, databázi sledování a jeho data nejsou použitelná pro obnovení. V této situaci se vytvořte novou databázi pro sledování se stejným názvem databáze. Doporučuje se geografická replikace.</td>
 </tr> 
 </table>
 
 ## <a name="next"></a>Další
-toocreate Azure BizTalk Services v hello Azure classic přejděte příliš[BizTalk Services: zřízení Azure pomocí portálu classic](http://go.microsoft.com/fwlink/p/?LinkID=302280). vytváření aplikací, přejděte příliš toostart[služby Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=235197).
+Vytvoření služby Azure BizTalk Services na portálu Azure classic, přejděte na [BizTalk Services: zřízení Azure pomocí portálu classic](http://go.microsoft.com/fwlink/p/?LinkID=302280). Pokud chcete začít vytvářet aplikace, přejděte na článek [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=235197).
 
 ## <a name="see-also"></a>Viz také
 * [Zálohování služby BizTalk](http://go.microsoft.com/fwlink/p/?LinkID=325584)
@@ -205,7 +205,7 @@ toocreate Azure BizTalk Services v hello Azure classic přejděte příliš[BizT
 * [BizTalk Services: Karty Řídicí panel, Sledování a Škálování](http://go.microsoft.com/fwlink/p/?LinkID=302281)
 * [BizTalk Services: Omezování](http://go.microsoft.com/fwlink/p/?LinkID=302282)
 * [BizTalk Services: Název a klíč vystavitele](http://go.microsoft.com/fwlink/p/?LinkID=303941)
-* [Jak začít používat hello Azure BizTalk Services SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)
+* [Jak začít používat sadu SDK Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [BackupStatus]: ./media/biztalk-backup-restore/status-last-backup.png
 [Restore]: ./media/biztalk-backup-restore/restore-ui.png

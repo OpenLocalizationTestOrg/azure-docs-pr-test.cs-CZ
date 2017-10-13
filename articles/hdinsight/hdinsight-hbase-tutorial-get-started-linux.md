@@ -1,6 +1,6 @@
 ---
-title: "aaaGet začít s příklad HBase v HDInsight - Azure | Microsoft Docs"
-description: "Postupujte podle tohoto toostart příklad Apache HBase pomocí hadoop v HDInsight. Vytvářejte tabulky z hello prostředí HBase a dotazujte je pomocí Hive."
+title: "Začínáme s příkladem HBase ve službě HDInsight – Azure | Dokumentace Microsoftu"
+description: "Postupujte podle tohoto příkladu Apache HBase a začněte používat Hadoop ve službě HDInsight. Vytvářejte tabulky z prostředí HBase a dotazujte je pomocí Hive."
 keywords: "příkaz hbase,příklad hbase"
 services: hdinsight
 documentationcenter: 
@@ -16,65 +16,65 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: jgao
-ms.openlocfilehash: 43419780142b320b16180a2b1f25020dee2f7a11
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 2f3cb99c832b6e17ac932112c1d397fa0c8afeca
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>Začínáme s příkladem Apache HBase ve službě HDInsight
 
-Zjistěte, jak toocreate cluster HBase v HDInsight, vytvářet tabulky HBase a dotazovat tabulky pomocí Hive. Obecné informace o HBase najdete v tématu [Přehled HBase ve službě HDInsight][hdinsight-hbase-overview].
+Naučte se vytvářet cluster HBase v HDInsight, vytvářet tabulky HBase a dotazovat tabulky pomocí Hive. Obecné informace o HBase najdete v tématu [Přehled HBase ve službě HDInsight][hdinsight-hbase-overview].
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 ## <a name="prerequisites"></a>Požadavky
-Než začnete při tomto příkladu HBase, musíte mít hello následující položky:
+Než se pustíte do tohoto příkladu HBase, musíte mít následující položky:
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * [Secure Shell (SSH)](hdinsight-hadoop-linux-use-ssh-unix.md). 
 * [curl](http://curl.haxx.se/download.html).
 
 ## <a name="create-hbase-cluster"></a>Vytvoření clusteru HBase
-Hello následující postup používá toocreate šablony Azure Resource Manager verze 3.4 systémem Linux HBase clusteru a hello závislé výchozí účet úložiště Azure. toounderstand hello parametrů použitých v postupu hello a ostatní metody tvorby clusteru najdete v části [vytvořit systémem Linux Hadoop clusterů v HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+Následující postup používá šablonu Azure Resource Manageru pro vytvoření clusteru HBase se systémem Linux verze 3.4 a výchozího účtu služby Azure Storage. Pro lepší pochopení parametrů použitých v postupu a dalších metod vytvoření clusteru si projděte téma [Vytvoření Hadoop clusterů se systémem Linux v HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
-1. Klikněte na tlačítko hello následující šablony hello tooopen bitové kopie v hello portálu Azure. Šablona Hello je umístěna v kontejneru veřejného objektu blob. 
+1. Kliknutím na následující obrázek otevřete šablonu na portálu Azure Portal. Šablona se nachází ve veřejném kontejneru objektů blob. 
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hbase-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy tooAzure"></a>
-2. Z hello **vlastní nasazení** okno, zadejte hello následující hodnoty:
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hbase-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
+2. V okně **Vlastní nasazení** zadejte následující hodnoty:
    
-   * **Předplatné**: Vyberte předplatné Azure, který je použité toocreate hello clusteru.
+   * **Předplatné:** Vyberte předplatné Azure, které se použije k vytvoření clusteru.
    * **Skupina prostředků:** Vytvořte skupinu správy prostředků Azure nebo použijte již existující.
-   * **Umístění**: Zadejte hello umístění skupiny prostředků hello. 
-   * **Název clusteru**: Zadejte název pro hello HBase cluster.
-   * **Přihlašovací jméno a heslo clusteru**: hello výchozí přihlašovací jméno je **správce**.
-   * **SSH uživatelské jméno a heslo**: výchozí uživatelské jméno hello **sshuser**.  Můžete ho změnit.
+   * **Umístění**: Zadejte umístění skupiny prostředků. 
+   * **Název clusteru:** Zadejte název pro cluster HBase.
+   * **Přihlašovací jméno a heslo clusteru**: výchozí přihlašovací jméno je **admin**.
+   * **Uživatelské jméno a heslo SSH**: výchozí uživatelské jméno **sshuser**.  Můžete ho změnit.
      
      Další parametry jsou volitelné.  
      
-     Každý cluster obsahuje závislost účtu Azure Storage. Po odstranění clusteru s podporou hello data zachovají hello účet úložiště. Hello clusteru výchozí název účtu úložiště je název clusteru hello s "úložiště" připojí. Je pevně kódovaný v části proměnných šablony hello.
-3. Vyberte **souhlasím toohello podmínky a ujednání, které jsou uvedené výše**a potom klikněte na **nákupu**. Trvá přibližně 20 minut toocreate cluster.
+     Každý cluster obsahuje závislost účtu Azure Storage. Po odstranění clusteru se data zachovají na účtu úložiště. Výchozí název účtu úložiště clusteru je název clusteru s připojenou příponou „úložiště“. Je pevně kódovaný v části proměnných šablon.
+3. Vyberte **Souhlasím s podmínkami a ujednáními uvedenými nahoře** a klikněte na **Koupit**. Vytvoření clusteru trvá přibližně 20 minut.
 
 > [!NOTE]
-> Po odstranění clusteru služby HBase můžete vytvořit jiný cluster HBase pomocí hello stejného výchozího kontejneru blob. Hello nový cluster převezme tabulky HBase hello, kterou jste vytvořili v původním clusteru hello. tooavoid nekonzistence, doporučujeme zakázat hello tabulek HBase, před odstraněním clusteru hello.
+> Po odstranění clusteru služby HBase můžete vytvořit jiný cluster HBase pomocí stejného výchozího kontejneru blob. Nový cluster převezme tabulky HBase, které jste vytvořili v původním clusteru. Aby se zabránilo nekonzistencím, doporučujeme zakázat tabulky HBase před odstraněním clusteru.
 > 
 > 
 
 ## <a name="create-tables-and-insert-data"></a>Vytváření tabulek a vkládání dat
-Pomocí SSH tooconnect tooHBase clusterů a potom pomocí tabulky HBase toocreate prostředí HBase, vkládání dat a dotaz na data. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+SSH můžete použít při připojení ke clusterům HBase a používání prostředí HBase k vytváření tabulek HBase, vkládání dat a dotazování na data. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-Pro většinu osob se data zobrazí v tabulkovém formátu hello:
+Pro většinu osob se data zobrazí v tabulkovém formátu:
 
 ![Tabulková data HDInsight HBase][img-hbase-sample-data-tabular]
 
-V HBase (implementaci BigTable), hello stejné data vypadá jako:
+V HBase (implementace BigTable) vypadají stejná data následovně:
 
 ![Velké objemy tabulkových dat HDInsight HBase][img-hbase-sample-data-bigtable]
 
 
-**toouse hello prostředí HBase**
+**Použití prostředí HBase**
 
-1. Ze SSH spusťte následující příkaz HBase hello:
+1. Ze SSH spusťte následující příkaz HBase:
    
     ```bash
     hbase shell
@@ -103,20 +103,20 @@ V HBase (implementaci BigTable), hello stejné data vypadá jako:
     get 'Contacts', '1000'
     ```
    
-    Zobrazí se hello stejné výsledky jako pomocí příkazu hello vyhledávání, protože existuje pouze jeden řádek.
+    Měly by se zobrazit stejné výsledky jako pomocí příkazu vyhledávání, protože existuje pouze jeden řádek.
    
-    Další informace o schématu tabulky HBase hello najdete v tématu [Úvod tooHBase návrhu schématu][hbase-schema]. Další příkazy HBase najdete v tématu [Referenční příručka Apache HBase][hbase-quick-start].
-5. Ukončete prostředí hello
+    Další informace o schématu tabulky HBase najdete v tématu [Úvod do navrhování schémat HBase][hbase-schema]. Další příkazy HBase najdete v tématu [Referenční příručka Apache HBase][hbase-quick-start].
+5. Opusťte prostředí
    
     ```hbaseshell
     exit
     ```
 
-**toobulk načítání dat do tabulky kontaktů HBase hello**
+**Hromadné načítání dat do tabulky kontaktů HBase**
 
 HBase obsahuje několik metod načítání dat do tabulek.  Další informace naleznete v tématu [Hromadné načítání](http://hbase.apache.org/book.html#arch.bulk.load).
 
-Ukázkový datový soubor najdete ve veřejném kontejneru objektů blob: *wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt*.  obsah Hello hello datového souboru je:
+Ukázkový datový soubor najdete ve veřejném kontejneru objektů blob: *wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt*.  Obsah datového souboru je:
 
     8396    Calvin Raji      230-555-0191    230-555-0191    5415 San Gabriel Dr.
     16600   Karen Wu         646-555-0113    230-555-0192    9265 La Paz
@@ -129,32 +129,32 @@ Ukázkový datový soubor najdete ve veřejném kontejneru objektů blob: *wasb:
     4761    Caleb Alexander  670-555-0141    230-555-0199    4775 Kentucky Dr.
     16443   Terry Chander    998-555-0171    230-555-0200    771 Northridge Drive
 
-Volitelně můžete vytvořte textový soubor a nahrajte hello soubor tooyour úložiště vlastní účet. Hello pokyny najdete v tématu [nahrávání dat pro úlohy Hadoop do HDInsight][hdinsight-upload-data].
+Volitelně můžete vytvořit textový soubor a nahrát ho do vlastního účtu úložiště. Pokyny najdete v tématu [Nahrávání dat pro úlohy Hadoop do služby HDInsight][hdinsight-upload-data].
 
 > [!NOTE]
-> Tento postup používá tabulku kontaktů HBase hello, které jste vytvořili v posledním postupu hello.
+> Tento postup používá tabulku kontaktů HBase, kterou jste vytvořili v posledním postupu.
 > 
 
-1. Ze SSH spusťte následující příkaz tootransform hello dat souboru tooStoreFiles a uložit do relativní cesty určené položkou Dimporttsv.bulk.output hello.  Pokud jste v prostředí HBase, použijte hello ukončení příkazu tooexit.
+1. Ze SSH spusťte následující příkaz, který transformuje datový soubor na StoreFiles a uloží ho do relativní cesty určené parametrem Dimporttsv.bulk.output.  Pokud jste v prostředí HBase, odejděte pomocí příkazu exit.
 
     ```bash   
     hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.columns="HBASE_ROW_KEY,Personal:Name,Personal:Phone,Office:Phone,Office:Address" -Dimporttsv.bulk.output="/example/data/storeDataFileOutput" Contacts wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt
     ```
 
-2. Spusťte následující příkaz tooupload hello data z tabulky HBase toohello/storedatafileoutput hello:
+2. Spusťte následující příkaz a nahrajte data z adresy /example/data/storeDataFileOutput do tabulky HBase:
    
     ```bash
     hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles /example/data/storeDataFileOutput Contacts
     ```
 
-3. Můžete otevřít hello prostředí HBase a použít hello kontroly příkaz toolist hello obsahu tabulky.
+3. Prostředí HBase můžete otevřít a použít příkaz skenování k zobrazení seznamu obsahu tabulky.
 
-## <a name="use-hive-tooquery-hbase"></a>Použijte Hive tooquery HBase
+## <a name="use-hive-to-query-hbase"></a>Použití Hive k dotazování HBase
 
-Data v tabulkách HBase můžete dotazovat pomocí Hive. V této části vytvoříte tabulku Hive, mapuje toohello tabulky HBase a použije tooquery hello data v tabulce HBase.
+Data v tabulkách HBase můžete dotazovat pomocí Hive. V této části vytvoříte tabulku Hive, která se namapuje na tabulku HBase, a použijete ji k dotazování dat v tabulce HBase.
 
-1. Otevřete **PuTTY**a připojte toohello cluster.  Hello pokyny naleznete v předchozím postupu hello.
-2. Z relace SSH hello použijte následující příkaz toostart Beeline hello:
+1. Otevřete **PuTTY** a připojte se ke clusteru.  Pokyny naleznete v předchozím postupu.
+2. Z relace SSH pomocí následujícího příkazu spusťte Beeline:
 
     ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin
@@ -162,7 +162,7 @@ Data v tabulkách HBase můžete dotazovat pomocí Hive. V této části vytvoř
 
     Další informace o Beeline najdete v tématu [Použití Hivu s Hadoopem ve službě HDInsight s Beeline](hdinsight-hadoop-use-hive-beeline.md).
        
-3. Spusťte následující skript toocreate HiveQL hello tabulku Hive, která mapuje toohello tabulky HBase. Ujistěte se, že jste vytvořili hello ukázkové tabulky odkazované dříve v tomto kurzu pomocí prostředí HBase hello před spuštěním tohoto prohlášení.
+3. Spusťte následující skript HiveQL k vytvoření tabulky Hive, která se mapuje na tabulku HBase. Před spuštěním tohoto prohlášení ověřte, zda jste vytvořili ukázkové tabulky odkazované dříve v tomto kurzu pomocí prostředí HBase.
 
     ```hiveql   
     CREATE EXTERNAL TABLE hbasecontacts(rowkey STRING, name STRING, homephone STRING, officephone STRING, officeaddress STRING)
@@ -171,7 +171,7 @@ Data v tabulkách HBase můžete dotazovat pomocí Hive. V této části vytvoř
     TBLPROPERTIES ('hbase.table.name' = 'Contacts');
     ```
 
-4. Spusťte následující HiveQL skriptu tooquery hello data v tabulce HBase hello hello:
+4. Spusťte následující skript HiveQL pro dotaz na data v tabulce HBase:
 
     ```hiveql   
     SELECT count(rowkey) FROM hbasecontacts;
@@ -179,16 +179,16 @@ Data v tabulkách HBase můžete dotazovat pomocí Hive. V této části vytvoř
 
 ## <a name="use-hbase-rest-apis-using-curl"></a>Použití rozhraní REST API HBase pomocí Curl
 
-Hello rozhraní API REST je zabezpečeno pomocí [základní ověřování](http://en.wikipedia.org/wiki/Basic_access_authentication). Požadavky se vždy provádět pomocí HTTPS (Secure HTTP) toohelp Ujistěte se, že vaše přihlašovací údaje jsou odeslány bezpečně toohello serveru.
+Rozhraní API REST je zabezpečeno pomocí [základního ověřování](http://en.wikipedia.org/wiki/Basic_access_authentication). Požadavky byste vždy měli provádět pomocí protokolu HTTPS (Secure HTTP), čímž pomůžete zajistit, že se přihlašovací údaje budou na server odesílat bezpečně.
 
-2. Použijte následující příkaz toolist hello existujících tabulek HBase hello:
+2. Pomocí následujícího příkazu můžete zobrazit seznam existujících tabulek HBase:
 
     ```bash
     curl -u <UserName>:<Password> \
     -G https://<ClusterName>.azurehdinsight.net/hbaserest/
     ```
 
-3. Použijte následující příkaz toocreate novou tabulku HBase se dvěma sloupci rodiny hello:
+3. Pokud chcete vytvořit novou tabulku HBase se dvěma skupinami sloupců, použijte následující příkaz:
 
     ```bash   
     curl -u <UserName>:<Password> \
@@ -199,8 +199,8 @@ Hello rozhraní API REST je zabezpečeno pomocí [základní ověřování](http
     -v
     ```
 
-    schéma Hello je k dispozici ve formátu JSon hello.
-4. Použijte následující příkaz tooinsert hello některá data:
+    Schéma je k dispozici ve formátu JSon.
+4. Chcete-li vložit nějaká data použijte následující příkaz:
 
     ```bash   
     curl -u <UserName>:<Password> \
@@ -211,14 +211,14 @@ Hello rozhraní API REST je zabezpečeno pomocí [základní ověřování](http
     -v
     ```
    
-    Je nutné base64 kódování hello hodnoty zadané v přepínači -d hello. V příkladu hello:
+    Hodnoty určené v přepínači -d musíte zakódovat base64. V tomto příkladu:
    
    * MTAwMA==: 1000
    * UGVyc29uYWw6TmFtZQ==: Personal:Name
    * Sm9obiBEb2xl: John Dole
      
-     [klíč řádku false](https://hbase.apache.org/apidocs/org/apache/hadoop/hbase/rest/package-summary.html#operation_cell_store_single) vám umožní tooinsert více hodnot (dávkové).
-5. Použijte následující příkaz tooget řádek hello:
+     [false-row-key](https://hbase.apache.org/apidocs/org/apache/hadoop/hbase/rest/package-summary.html#operation_cell_store_single) umožňuje vložit více (dávkových) hodnot.
+5. Pro získání řádku použijte následující příkaz:
    
     ```bash 
     curl -u <UserName>:<Password> \
@@ -232,30 +232,30 @@ Další informace o HBase Rest naleznete v tématu [Referenční příručka Apa
 > [!NOTE]
 > Thrift není podporovaný HBase v HDInsight.
 >
-> Pokud používáte Curl nebo jinou komunikaci REST s WebHCat, je třeba ověřit žádosti hello zadáním hello uživatelské jméno a heslo pro správce clusteru HDInsight hello. Název clusteru hello musíte také použít jako součást hello identifikátor URI (Uniform Resource) použít toosend hello požadavky toohello serveru:
+> Pokud používáte Curl nebo jinou komunikaci REST s WebHCat, je třeba ověřit žádosti zadáním uživatelského jména a hesla pro správce clusteru HDInsight. Název clusteru také musíte použít jako součást identifikátoru URI (Uniform Resource Identifier) sloužícího k odesílání požadavků na server:
 > 
 >   
 >        curl -u <UserName>:<Password> \
 >        -G https://<ClusterName>.azurehdinsight.net/templeton/v1/status
 >   
->    Mělo by se zobrazit odpověď podobná toohello následující odpověď:
+>    Měla by se zobrazit odpověď podobná následující odpovědi:
 >   
 >        {"status":"ok","version":"v1"}
    
 
 
 ## <a name="check-cluster-status"></a>Kontrola stavu clusteru
-HBase v HDInsight se dodává s webovým uživatelským rozhraním pro sledování clusterů. Pomocí hello webového uživatelského rozhraní, můžete požádat statistické údaje nebo informace o oblastech.
+HBase v HDInsight se dodává s webovým uživatelským rozhraním pro sledování clusterů. Pomocí webového uživatelského rozhraní, můžete žádat o statistické údaje nebo informace o oblastech.
 
-**hello tooaccess HBase hlavního uživatelského rozhraní**
+**Přístup k hlavnímu uživatelskému rozhraní HBase**
 
-1. Přihlaste se k hello hello webové uživatelské rozhraní Ambari na https://&lt;Clustername >. azurehdinsight.net.
-2. Klikněte na tlačítko **HBase** hello levé nabídce.
-3. Klikněte na tlačítko **rychlé odkazy** hello horní části stránky hello, bod toohello active Zookeeper uzel propojení a pak klikněte na tlačítko **HBase hlavního uživatelského rozhraní**.  Hello uživatelského rozhraní je otevřen v jiné kartě prohlížeče:
+1. Přihlaste se k webovému uživatelskému rozhraní Ambari na adrese https://&lt;název_clusteru>.azurehdinsight.net.
+2. V nabídce vlevo klikněte na **HBase**.
+3. V horní části stránky klikněte na **Rychlé odkazy**, najeďte myší na odkaz na aktivní uzel Zookeeper a klikněte na **Hlavní uživatelské rozhraní HBase**.  Uživatelské rozhraní se otevře na nové kartě prohlížeče:
 
   ![Hlavní uživatelské rozhraní HDInsight HBase](./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
-  Hello HBase hlavního uživatelského rozhraní obsahuje hello následující části:
+  Hlavní uživatelské rozhraní HBase obsahuje tyto části:
 
   - oblastní servery
   - zálohování hlavních serverů
@@ -263,8 +263,8 @@ HBase v HDInsight se dodává s webovým uživatelským rozhraním pro sledován
   - úlohy
   - atributy softwaru
 
-## <a name="delete-hello-cluster"></a>Odstranění clusteru hello
-tooavoid nekonzistence, doporučujeme zakázat hello tabulek HBase, před odstraněním clusteru hello.
+## <a name="delete-the-cluster"></a>Odstranění clusteru
+Aby se zabránilo nekonzistencím, doporučujeme zakázat tabulky HBase před odstraněním clusteru.
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -273,9 +273,9 @@ tooavoid nekonzistence, doporučujeme zakázat hello tabulek HBase, před odstra
 Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se na [požadavky na řízení přístupu](hdinsight-administer-use-portal-linux.md#create-clusters).
 
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jste se dozvěděli, jak hello toocreate HBase cluster a jak toocreate tabulek a zobrazení hello data v těchto tabulkách z prostředí HBase. Také jste zjistili, jak toouse podregistru dotazování na data v tabulkách HBase a jak toouse hello REST API HBase C# toocreate tabulky HBase a načtení dat z tabulky hello.
+V tomto článku jste se dozvěděli, jak vytvořit cluster HBase a jak vytvářet tabulky a zobrazovat data v těchto tabulkách z prostředí HBase. Také jste se naučili, jak používat dotazy na data Hive v tabulkách HBase a jak používat rozhraní REST API HBase C# k vytvoření tabulky HBase a načtení dat z tabulky.
 
-toolearn více, najdete v části:
+Další informace naleznete v tématu:
 
 * [Přehled HBase ve službě HDInsight][hdinsight-hbase-overview]: HBase je NoSQL open source databáze Apache postavená na systému Hadoop, která poskytuje náhodný přístup a silnou konzistenci pro velké objemy nestrukturovaných a částečně strukturovaných dat.
 
@@ -292,7 +292,6 @@ toolearn více, najdete v části:
 [hdinsight-hbase-overview]: hdinsight-hbase-overview.md
 [hdinsight-hbase-provision-vnet]: hdinsight-hbase-provision-vnet.md
 [hdinsight-versions]: hdinsight-component-versioning.md
-[hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment.md
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/

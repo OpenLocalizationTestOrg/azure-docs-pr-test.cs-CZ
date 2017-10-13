@@ -1,5 +1,5 @@
 ---
-title: "aaaCortana Intelligence řešení šablony scénářem pro vyžádání prognózy energie | Microsoft Docs"
+title: "Cortana Intelligence řešení šablony scénářem pro vyžádání prognózy energie | Microsoft Docs"
 description: "Šablona řešení s Microsoft Cortana Intelligence, který pomáhá prognózy vyžádání pro firmu nástroj energie."
 services: cortana-analytics
 documentationcenter: 
@@ -14,71 +14,71 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2016
 ms.author: ilanr9;yijichen;garye
-ms.openlocfilehash: 32fc6ece7e24ced34282baf107548039694a38b4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 275e387878900154660d044b26ff5ac03a17a65a
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>Cortana Intelligence řešení šablony scénářem pro vyžádání prognózy energie
 ## <a name="executive-summary"></a>Shrnutí
-V hello za několik let, Internet věcí (IoT), mít alternativních zdrojů energie a velké objemy dat sloučené toocreate velká příležitostí v nástroj hello a doméně, energie. V hello stejnou dobu, nástroj hello a hello celý energie sektoru viděli spotřeba vyrovnání se spotřebiteli náročných toocontrol lepší způsoby jejich použití energie. Proto hello nástroj a inteligentní mřížky společností jsou v tooinnovate velmi potřebné a obnovit sami. Kromě toho mnoho power a nástroj mřížky se stávají toomaintain zastaralé a velmi nákladné a spravovat. Během hello poslední rok hello tým pracuje na několika oznámeních podporujících zapojení uživatelů v rámci domény energie hello. Během těchto oznámeních podporujících zapojení uživatelů jsme narazili mnoha případech, ve které hello byla vyhledávání nezávislí dodavatelé softwaru (nezávislí výrobci softwaru) nebo nástroje do prognózy pro budoucí spotřeby energie. Tyto prognózy hraje důležitou roli v jejich aktuálním a budoucím obchodním a staly hello základ pro různé případy použití. Mezi ně patří krátkodobých a dlouhodobých power zatížení prognózy, obchodování, Vyrovnávání zatížení, optimalizace mřížky atd. Velké objemy dat a pokročilé analýzy (AA) metody například Machine Learning (ML) jsou hello klíče předpokladů pro vytvoření prognózy přesné a spolehlivé.  
+V posledních několika letech mít sloučené Internet věcí (IoT), alternativních zdrojů energie a velké objemy dat k vytvoření velká možností v doméně, nástroje a energie. Ve stejnou dobu nástroje a celý energie sektoru viděli spotřeba vyrovnání se spotřebiteli náročných lepší způsoby řízení jejich použití energie. Proto nástroj a inteligentní mřížky společností jsou v velmi potřebné inovacemi. Zajistěte a obnovení sami. Kromě toho mnoho power a nástroj mřížky se stávají zastaralé a velmi nákladný k zajištění údržby a spravovat. Během posledního roku tým pracuje na několika oznámeních podporujících zapojení uživatelů v rámci domény energie. Během těchto oznámeních podporujících zapojení uživatelů jsme narazili mnoha případech, ve kterých byla vyhledávání nezávislí dodavatelé softwaru (nezávislí výrobci softwaru) nebo nástroje do prognózy pro budoucí spotřeby energie. Tyto prognózy hraje důležitou roli v jejich aktuálním a budoucím obchodním a staly základ pro různé případy použití. Mezi ně patří krátkodobých a dlouhodobých power zatížení prognózy, obchodování, Vyrovnávání zatížení, optimalizace mřížky atd. Velké objemy dat a pokročilé analýzy (AA) metody například Machine Learning (ML) jsou klíče předpokladů pro vytvoření přesné a spolehlivé prognózy.  
 
-V této scénářem sestavili jsme hello firmy a analytické pokyny potřebné pro úspěšné vývoj a nasazení spotřeby energie prognózy řešení. Tyto navrhované pokyny vám mohou pomoci nástroje, datových vědců a techniky data v zřízení plně operationalized založené na cloudu, prognózy vyžádání řešení. Pro společnosti, kteří jsou právě spouští jejich velkých objemů dat a cesty pokročilou analýzu můžete toto řešení představují počáteční hello počáteční hodnoty v jejich dlouhodobou strategii inteligentní mřížky.
+V této scénářem sestavili jsme firmy a analytické pokyny potřebné pro úspěšné vývoj a nasazení spotřeby energie prognózy řešení. Tyto navrhované pokyny vám mohou pomoci nástroje, datových vědců a techniky data v zřízení plně operationalized založené na cloudu, prognózy vyžádání řešení. Pro společnosti, kteří jsou právě spouští jejich velkých objemů dat a cesty pokročilou analýzu můžete toto řešení představují počáteční počáteční hodnoty v jejich dlouhodobou strategii inteligentní mřížky.
 
 > [!TIP]
-> toodownload diagram, který poskytuje přehled architektury této šablony najdete v části [Cortana Intelligence řešení šablony architektura pro vytváření prognóz vyžádání energie](cortana-analytics-architecture-demand-forecasting-energy.md).  
+> Si můžete stáhnout diagram, který poskytuje přehled architektury této šablony [Cortana Intelligence řešení šablony architektura pro vytváření prognóz vyžádání energie](cortana-analytics-architecture-demand-forecasting-energy.md).  
 > 
 > 
 
 ## <a name="overview"></a>Přehled
-Tento dokument popisuje hello firmy, data a technické aspekty pomocí Cortana Intelligence a v konkrétní Azure Machine Learning (AML) pro implementaci hello a nasazení řešení prognózy energie. Hello dokument se skládá ze tří hlavních částí:  
+Tento dokument popisuje business, data a technické aspekty pomocí Cortana Intelligence a v konkrétní Azure Machine Learning (AML) pro provádění a nasazení řešení prognózy energie. Dokument se skládá ze tří hlavních částí:  
 
 1. Principy podniku  
 2. Pochopení dat  
 3. Technická implementace
 
-Hello **obchodní principy** část obsahuje přehled hello firmy aspekt jeden potřebám toounderstand a zvažte předchozí toomaking rozhodnutí o investice. Vysvětluje, jak tooqualify hello obchodního problému v dolním tooensure že prediktivní analýzy a machine learningu jsou skutečně efektivní a použít. Další Hello dokumentu se vysvětluje základy hello strojové učení a jak je použité tooaddress prognózy energie problémy. Popisuje ho hello požadavky a kritéria kvalifikace hello případu použití. Některé ukázkové použijte případy a případ obchodní scénáře jsou také uvedeny.
+**Obchodní principy** část popisuje aspekt obchodní jeden je potřeba pochopit a vezměte v úvahu před uskutečněním rozhodnutí o investice. Vysvětluje, jak kvalifikaci obchodního problému po ruce zajistit prediktivní analýzy a strojové učení se skutečně efektivní a použít. Další dokument vysvětluje základy strojové učení a jak se používají k řešení problémů prognózy energie. Ho popisuje požadavky a kritéria kvalifikace případu použití. Některé ukázkové použijte případy a případ obchodní scénáře jsou také uvedeny.
 
-Data jsou hello hlavní složkou pro všechny strojového učení řešení. Hello **pochopení dat** tento dokument popisuje některé důležité aspekty dat hello. Popisuje ho hello druh data, která je potřebná pro prognózy energie, požadavky na kvalitu dat a jaké zdroje dat je obvykle neexistuje. Také popisují, jak hello nezpracovaných dat je funkce použité tooprepare dat, které ve skutečnosti jednotka hello modelování část.
+Data jsou hlavní složkou pro všechny strojového učení řešení. **Pochopení dat** tento dokument popisuje některé důležité aspekty data. Popisuje ho druh data, která je potřebná pro prognózy energie, požadavky na kvalitu dat a jaké zdroje dat je obvykle neexistuje. Také popisují, jak nezpracovaných dat slouží k přípravě funkce dat, které ve skutečnosti jednotky pro modelování část.
 
-Hello třetí součást hello dokumentu popisuje hello **technickou implementaci** aspekt řešení. Funkce inženýrství a modelování jsou jádrem hello proces vědecké účely hello dat a jsou proto se podrobněji některé. Pokrývá hello konceptu webové služby, které jsou důležité vehicle pro nasazení cloudu řešení prediktivní analýzy. Můžeme také popisují typický Architektura řešení operationalized začátku do konce.
+Třetí části dokumentu se vztahuje **technickou implementaci** aspekt řešení. Funkce inženýrství a modelování jsou jádrem procesu vědecké účely dat a jsou proto se podrobněji některé. Pokrývá koncept webové služby, které jsou důležité vehicle pro nasazení cloudu řešení prediktivní analýzy. Můžeme také popisují typický Architektura řešení operationalized začátku do konce.
 
-Kromě toho hello dokument obsahuje referenční materiál, který můžete použít toogain další vysvětlení hello domény a technologie.
+Kromě toho dokument obsahuje referenční materiál, který můžete použít k získání dalších pochopení domény a technologie.
 
-Je důležité toonote jsme nezamýšlíte toocover v tomto dokumentu hello hlubší data vědecké účely procesu, jeho matematické a technické aspekty. Tyto podrobnosti naleznete v [dokumentace Azure ML](http://azure.microsoft.com/services/machine-learning/) a [blogy](http://blogs.microsoft.com/blog/tag/azure-machine-learning/).
+Je důležité si uvědomit, že jsme nemáte v úmyslu tak, aby pokrývalo v tomto dokumentu hlubší procesu vědecké účely dat, jejich matematické a technické aspekty. Tyto podrobnosti naleznete v [dokumentace Azure ML](http://azure.microsoft.com/services/machine-learning/) a [blogy](http://blogs.microsoft.com/blog/tag/azure-machine-learning/).
 
 ### <a name="target-audience"></a>Cílové skupiny
-Hello cílovou skupinu tohoto dokumentu je obchodních a technických pracovníky, kteří chtěli toogain znalosti a pochopení Machine Learning na základě řešení a jak jsou použity konkrétně v rámci domény prognózy energie hello.
+Cílovou skupinu tohoto dokumentu je obchodních a technických pracovníky, kteří by chtěli získají informace a řešení a jak jsou použity konkrétně v rámci domény prognózy energie na základě Principy Machine Learning.
 
-Datových vědců mohou také těžit z čtení tohoto dokumentu toogain lepší pochopení hello vysoké úrovně procesu, že jednotky hello nasazení energie prognózy řešení. V tomto kontextu může být také použít tooestablish směrný plán dobrý výchozí bod pro další podrobné a advanced materiálu.
+Datových vědců mohou také těžit z čtení tohoto dokumentu lépe porozuměli nejvyšší úrovni procesu, který řídí nasazení energie prognózy řešení. V tomto kontextu je lze také funkční stanovíte a výchozí bod pro další podrobné a rozšířené materiálů.
 
 ### <a name="industry-trends"></a>Oborových trendů
-V hello za několik let mít IoT, alternativních zdrojů energie a velké objemy dat sloučené toocreate velká příležitostí v nástroj hello a místo energie. V hello stejnou dobu, nástroj hello a hello celý energie sektory viděli spotřeba vyrovnání se spotřebiteli náročných toocontrol lepší způsoby jejich použití energie.
+V posledních několika letech mít sloučené IoT, alternativních zdrojů energie a velké objemy dat k vytvoření velká možností v prostoru nástroj a energie. Ve stejnou dobu nástroje a sektory celý energie viděli spotřeba vyrovnání se spotřebiteli náročných lepší způsoby řízení jejich použití energie.
 
-Mnoho nástroj a inteligentní energetické společnosti mají byla průkopnické hello [inteligentní mřížky](https://en.wikipedia.org/wiki/Smart_grid) ve nasazení počet použití případů, které používají hello dat vygenerovaných sadami hello mřížky. Mnoho případy použití základem hello vlastností vlastní výroby elektřiny: nemůže být nashromáždila, ani z produkce uložené jako inventáře. Ano co se vytvářejí se musí použít. Nástroje, které mají efektivnější toobecome potřebovat tooforecast spotřebu jednoduše vzhledem k tomu, který bude jim poskytnout lepší možnosti příliš**vyvážit nabídce a poptávce**, proto prevence ztráty energie **snížit skleníkových plynu emisí**a řídit náklady.
+Mnoho nástroj a inteligentní energetické společnosti mají byla průkopnické [inteligentní mřížky](https://en.wikipedia.org/wiki/Smart_grid) nasazení počet použití případů, které pomocí dat vygenerovaných sadami mřížky. Mnoho případy použití základem vlastností vlastní výroby elektřiny: nemůže být nashromáždila, ani z produkce uložené jako inventáře. Ano co se vytvářejí se musí použít. Nástroje, které chcete ke zvýšení účinnosti muset prognózy spotřebu jednoduše vzhledem k tomu, který vám poskytne větší schopnost **vyvážit nabídce a poptávce**, proto prevence ztráty energie **snížit skleníkového plynu emisí**a řídit náklady.
 
-Při posuzování nákladů, je dalším důležitým aspektem, který je cena. Nové power tootrade dalo mezi nástroje začnou ve velmi potřebné příliš**předpovídat budoucí vyžádání a budoucí ceny elektřiny**. To může pomoct určit jejich svazky výrobní společnosti.
+Při posuzování nákladů, je dalším důležitým aspektem, který je cena. Nové schopnosti obchodu power mezi nástroje začnou ve velmi potřebné **předpovídat budoucí vyžádání a budoucí ceny elektřiny**. To může pomoct určit jejich svazky výrobní společnosti.
 
-Když používáme hello slovo 'inteligentní', označujeme ve skutečnosti tooa mřížky, můžete informace a pak proveďte předpovědi. Ho můžete odhadnout sezónní změny energie a také **předvídáte dočasného přetížení situacích a automaticky ji upravit**. Ve vzdáleně regulační spotřeba (pomocí hello Tato inteligentní měřidla), lze provádět lokalizované přetížení situacích. **Nejprve predikci a pak funguje**, hello mřížky umožňuje efektivněji v čase.
+Používáme je slovo 'inteligentní', jsme naleznete ve skutečnosti mřížky, které můžete informace a pak proveďte předpovědi. Ho můžete odhadnout sezónní změny energie a také **předvídáte dočasného přetížení situacích a automaticky ji upravit**. Ve vzdáleně regulační spotřeba (pomocí tato inteligentní měřidla), lze provádět lokalizované přetížení situacích. **Nejprve predikci a pak funguje**, mřížky umožňuje efektivněji v čase.
 
-Pro hello zbytek tohoto dokumentu se zaměříme na konkrétní řadu případy použití, které se týkají prognózy z budoucí krátkodobé i dlouhodobé na energii na vyžádání. Jsme několik měsíců pracovaly v těchto oblastech a dostalo některé znalosti a dovednosti, která nám umožňují tooproduce odvětví úrovni výsledky. Jiné případy použití se budeme také v dokumentu hello v blízké budoucnosti hello.
+Pro zbytek tohoto dokumentu se zaměříme na konkrétní řadu případy použití, které se týkají prognózy z budoucí krátkodobé i dlouhodobé na energii na vyžádání. Jsme několik měsíců pracovaly v těchto oblastech a dostalo některé znalosti a dovednosti, která umožňují nám nepřineslo výsledky úrovni oboru. Jiné případy použití se budeme také v dokumentu v blízké budoucnosti.
 
 ## <a name="business-understanding"></a>Obchodní vysvětlení
 ### <a name="business-goals"></a>Obchodních cílů
-Hello **energie ukázku** cílem je toodemonstrate typické prediktivní analýzy a strojového učení řešení, které můžete nasadit ve velmi krátkého časového rámce. Konkrétně je naše aktuální aktivní, aby jeho obchodní hodnotu mohli rychle uvědomili si a využít při povolení energie vyžádání prognózy řešení. Hello informace v této playbook může pomoct zákaznické hello splníte následující cíle hello:
+**Energie ukázku** cílem je ukázka typické prediktivní analýzy a strojového učení řešení, které můžete nasadit ve velmi krátkého časového rámce. Konkrétně je naše aktuální aktivní, aby jeho obchodní hodnotu mohli rychle uvědomili si a využít při povolení energie vyžádání prognózy řešení. Informace v této playbook může pomoct zákaznické splníte následující cíle:
 
-* Krátkou dobu toovalue machine learning na základě řešení
-* Možnost tooexpand tooother případu použití pilotní použít případech nebo tooa širší rozsah podle jejich obchodních potřeb
+* Krátkého času na hodnotu machine learning na základě řešení
+* Umožňuje rozšířit pilotní nasazení použít případ na jiné případy použití nebo širší obor podle jejich obchodních potřeb
 * Rychle získat Cortana Intelligence Suite znalostní báze produktů
 
-S těmito cíli nezapomeňte toto playbook cílem je doručování hello firmy a technické znalosti, která vám pomůže při dosažení těchto cílů.
+Pomocí těchto cílů na paměti Toto playbook cílem je doručení obchodních a technických znalostí, která vám pomůže při dosažení těchto cílů.
 
 ### <a name="power-load-and-demand-forecasting"></a>Napájení zatížení a vyžádání prognózy
-V rámci odvětví hello energie může být mnoha způsoby, které poptávky prognózy lze kritické obchodní problémy vyřešit. Ve skutečnosti vyžádání prognózy lze považovat za hello základ pro mnoho případy použití jader v odvětví hello. Obecně platí, jsme zvážit dva typy předpovědi energetické poptávky: krátkodobé i dlouhodobé. Každé z nich může sloužit k jinému účelu a využívat jiný přístup. Hello hlavní rozdíl mezi hello dva je hello prognózy horizontu, znamená hello rozsah čas do hello budoucí, pro kterou jsme by prognózy.
+V rámci odvětví energie může být mnoha způsoby, které poptávky prognózy lze kritické obchodní problémy vyřešit. Ve skutečnosti vyžádání prognózy lze považovat za základem pro mnoho případy použití jader v odvětví. Obecně platí, jsme zvážit dva typy předpovědi energetické poptávky: krátkodobé i dlouhodobé. Každé z nich může sloužit k jinému účelu a využívat jiný přístup. Hlavní rozdíl mezi nimi je prognózy horizontu, znamená časové rozmezí do budoucna, pro kterou jsme by prognózy.
 
 #### <a name="short-term-load-forecasting"></a>Krátkodobých termín zatížení prognózy
-V rámci kontextu hello spotřeby energie krátké termín načíst prognózy (STLF) je definován jako hello agregované zatížení, která je naplánované v blízké budoucnosti na různých částí hello (nebo mřížky hello jako celek) hello. V tomto kontextu je krátkodobá definované toobe časový horizont rozsahu hello hodin too24 1 hodina. V některých případech je také horizon 48 hodin možné. Proto STLF je velmi běžné provozní použití případ hello mřížky. Tady jsou některé příklady STLF řízené případů použití:
+V kontextu spotřeby energie krátké termín načíst prognózy (STLF) je definován jako agregované zatížení, která je naplánované v blízké budoucnosti na různých částí mřížky (nebo mřížku jako celek). V tomto kontextu krátkodobou je definován časový horizont v rozsahu 1 hodina na 24 hodin. V některých případech je také horizon 48 hodin možné. Proto STLF je velmi běžné provozní použití případ mřížky. Tady jsou některé příklady STLF řízené případů použití:
 
 * Nabídce a poptávce vyrovnávání
 * Podpora obchodním napájení
@@ -92,126 +92,126 @@ V rámci kontextu hello spotřeby energie krátké termín načíst prognózy (S
 * Selhání a anomálií detekce
 * Curtailment/vyrovnávání ve špičce 
 
-STLF model jsou většinou založené na hello v blízkosti po (posledního dne nebo týdne) datům o spotřebě a používání naplánované teploty jako důležité předpověď. Získávání přesných teploty prognózy hello příští hodiny a v provozu too24 hodin se stává stále menší výzvu nyní dnů. Tyto modely jsou méně citlivou vzory tooseasonal nebo dlouhodobé trendy spotřeby.
+STLF model jsou většinou založené na nejbližší minulosti (posledního dne nebo týdne) datům o spotřebě a používání naplánované teploty jako důležité předpověď. Získávání přesných teploty prognózy pro příští hodiny a až na 24 hodin se stává stále menší výzvu nyní dnů. Tyto modely jsou méně citlivou sezónní vzory nebo dlouhodobé trendy spotřeby.
 
-SLTF řešení jsou také velký objem předpovědi volání (žádosti o službu) pravděpodobně toogenerate vzhledem k tomu, že jsou právě vyvolány hodinu a v některých případech i s vyšší frekvence. Je také velmi běžné toosee implantaci, kde každé jednotlivé transformovny nebo transformer je reprezentována jako samostatné model, a proto je ještě lepší hello objem požadavků předpovědi.
+SLTF řešení jsou také k vygenerování velkému počtu volání předpovědi (žádosti o službu) pravděpodobně vzhledem k tomu, že jsou právě vyvolány hodinu a v některých případech i s vyšší frekvence. Také je velmi běžné zobrazíte implantaci, kde každé jednotlivé transformovny nebo transformer je reprezentována jako samostatné model a proto se ještě větší objem požadavků předpovědi.
 
 #### <a name="long-term-load-forecasting"></a>Dlouhodobé zatížení prognózy
-cílem Hello z dlouho termín zatížení prognózy (LTLF) je tooforecast power vyžádání pomocí časový horizont v rozsahu od 1 týden toomultiple měsíců (a v některých případech pro několik let). Tento rozsah horizon je ve většině případů platí pro plánování a investice případy použití.
+Cílem z dlouho termín zatížení prognózy (LTLF) je prognózy power vyžádání s časový horizont od 1 týden do více měsíců (a v některých případech pro počet roků). Tento rozsah horizon je ve většině případů platí pro plánování a investice případy použití.
 
-Pro dlouhodobou scénáře je důležité toohave vysoké kvality dat, které pokrývá rozpětí několik let (minimální 3 roky). Tyto modely obvykle extrahovat sezónnosti vzory z hello historických dat a nutné používat externí predicators například jako počasí a klimatem vzory.
+Pro dlouhodobou scénáře je důležité mít vysoké kvality dat, které pokrývá rozpětí několik let (minimální 3 roky). Tyto modely obvykle extrahovat sezónnosti vzory z historických dat a nutné používat externí predicators například jako počasí a klimatem vzory.
 
-Je důležité tooclarify, který hello delší hello prognózy horizon, může být hello méně přesná hello prognózy. Proto je důležité tooproduce, které některé intervaly spolehlivosti společně s hello skutečné prognózy, který by umožnil člověka toofactor hello možné variace do proces plánování.
+Je důležité, aby se vyjasnilo, že čím delší je prognózy horizon, tím méně přesná Prognóza může být. Je proto důležité vytvořit některé intervaly spolehlivosti společně s skutečné prognózu, která by umožnilo člověka zohlednit možné variace do proces plánování.
 
-Vzhledem k tomu, že spotřeba scénáře hello LTLF je většinou plánování, můžete Očekáváme, že mnohem nižší předpovědi svazky (jako porovnání tooSTLF). Jsme by obvykle najdete v těchto předpovědi vkládat do vizualizace nástroje, například aplikace Excel nebo PowerBI a ručně vyvolat hello uživatele.
+Vzhledem k tomu, že tento scénář spotřeby pro LTLF je většinou plánování, očekáváme mnohem nižší předpovědi svazky (ve srovnání se STLF). Jsme by obvykle najdete v těchto předpovědi vkládat do vizualizace nástroje, například aplikace Excel nebo PowerBI a volání ručně uživatelem.
 
 ### <a name="short-term-vs-long-term-prediction"></a>Krátký termín vs. Dlouhodobé předpovědi
-Hello následující tabulka porovnává STLF a LTLF v ohledem toohello nejdůležitější atributy:
+Následující tabulka porovnává STLF a LTLF v ohledem na nejdůležitější atributy:
 
 | Atribut | Krátkodobá zatížení prognózy | Dlouhodobé zatížení prognózy |
 | --- | --- | --- |
-| Prognózy Horizon |Hodiny too48, 1 hodina |Z 1 too6 měsíců nebo více |
+| Prognózy Horizon |Z 1 hodinu 48 hodin |Od 1 do 6 měsíců nebo více |
 | Členitost dat |Každou hodinu |Hodinové nebo denní |
 | Typické scénáře použití |<ul><li>/ Poptávky vyrovnávání</li><li>Vyberte hodinu prognózy</li><li>Odpověď na vyžádání</li></ul> |<ul><li>Dlouhodobé plánování</li><li>Plánování prostředky mřížky</li><li>Plánování prostředků</li></ul> |
 | Typické prognostické |<ul><li>Dne nebo týdne</li><li>Hodiny dne</li><li>Hodinové teploty</li></ul> |<ul><li>Měsíc roku</li><li>Den v měsíci</li><li>Dlouhodobé teploty a klimatem</li></ul> |
-| Rozsah historických dat |Data za dva roky toothree |Data za pět let too10 |
+| Rozsah historických dat |Data za dvě až tři roky |Data za pět až 10 let |
 | Typické přesnost |MAPE * 5 % nebo nižší |MAPE * 25 % nebo nižší |
 | Prognózy frekvence |Vytváří každou hodinu nebo každých 24 hodin |Vytváří jednou měsíčně, čtvrtletně nebo ročně |
 
 \*[MAPE](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error) – znamenat průměrnou procentuální chyby
 
-Jak je vidět z této tabulky, je velmi důležité toodistinguish mezi hello krátký a dlouhodobé hello prognózy scénáře, protože se jedná představují různých obchodních potřeb a může mít jiné nasazení a vzorce používání.
+Jak je vidět z této tabulky, je velmi důležité k rozlišení mezi krátkodobém a dlouhodobém prognózy scénáře, protože se jedná představují různých obchodních potřeb a může mít jiné nasazení a vzorce používání.
 
 ### <a name="example-use-case-1-esmart-systems--overload-optimization"></a>Příklad použití případ 1: eSmart systémy – přetížení optimalizace
-Důležité role [inteligentní mřížky](https://en.wikipedia.org/wiki/Smart_grid) je toodynamically a neustále optimalizovat a upravit hello změna vzorce používání. Spotřebu může být ovlivněno krátkodobé změny, které jsou způsobeny hlavně kolísání teploty (*například*, další power se používá pro podmínku letecké nebo vytápění). Na hello stejný čas, power spotřeba také ovlivněné dlouhodobé trendy. Ty mohou obsahovat sezónnosti účinky, státní svátky, dlouhodobé růstu spotřeby a i hospodářského faktorech, například příjemce index, cena těžba ropy a HDP.
+Důležité role [inteligentní mřížky](https://en.wikipedia.org/wiki/Smart_grid) je dynamicky a neustále optimalizovat a upravit změna vzorce používání. Spotřebu může být ovlivněno krátkodobé změny, které jsou způsobeny hlavně kolísání teploty (*například*, další power se používá pro podmínku letecké nebo vytápění). Ve stejnou dobu spotřebu je ovlivněny také dlouhodobých trendů. Ty mohou obsahovat sezónnosti účinky, státní svátky, dlouhodobé růstu spotřeby a i hospodářského faktorech, například příjemce index, cena těžba ropy a HDP.
 
-V takovém případě použijte [eSmart](http://www.esmartsystems.com/) chtěli toodeploy cloudové řešení, které umožňuje predikci hello tendenci situace přetížení na jakékoli dané transformovny hello mřížky. Konkrétně eSmart chtěli trakčních tooidentify, které jsou pravděpodobně toooverload v rámci hello příští hodiny, takže okamžitý zásah, by mohl být přijat tooavoid nebo tato situace vyřešit.
+V takovém případě použijte [eSmart](http://www.esmartsystems.com/) chtěli nasadit cloudové řešení, která umožňuje predikci tendenci situace přetížení na jakékoli dané transformovny mřížky. Konkrétně eSmart chtěli identifikovat trakčních, které jsou pravděpodobně přetížení během následující hodiny, takže okamžitý zásah, může přesměrováni na vyhnout nebo je tato situace vyřešit.
 
 Přesný a rychlé provádění předpovědi vyžaduje implementaci tři prediktivní modely:
 
-* Dlouho termín modelu, že umožňuje prognózy z spotřebu energie na každý transformovny během hello další několika týdny nebo měsíce
-* Krátkodobá model, který umožňuje předpovědi přetížení situace na danou transformovny během hello příští hodiny
+* Dlouho model termín, který umožňuje prognózy spotřeby energie na každý transformovny během další několik týdnů či měsíců
+* Krátkodobá model, který umožňuje předpovědi přetížení situace na danou transformovny během příští hodiny
 * Model teploty, který poskytuje prognózy z teploty budoucí přes více scénářů
 
-cílem Hello dlouhodobé modelu hello je toorank hello trakčních podle jejich tendenci toooverload (přiděleno jejich kapacita napájení přenosu) během hello příští týden nebo měsíc. To umožňuje vytvoření hello krátké seznam trakčních, které by slouží jako vstup pro krátkodobou předpověď hello. Teploty je důležité předpověď pro dlouhodobé model hello, je nutné tooconstantly produktu více scénář teplotě předpovídá a kanálu je jako vstup do toohello dlouhodobé modelu. krátkodobá Hello prognózy je volána poté toopredict které transformovny je pravděpodobně toooverload nad hello příští hodiny.
+Cílem dlouhodobé modelu je pořadí trakčních podle jejich tendenci přetížení (vzhledem ke své přenosu kapacita napájení) během další týden nebo měsíc. To umožňuje vytvoření krátké seznam trakčních, které by slouží jako vstup pro krátkodobou předpověď. Teplotní je důležité předpověď pro dlouhodobé model, je zapotřebí neustále vytvářet prognózy více scénář teploty a kanálu je jako vstup do dlouhodobé modelu. Krátkodobá prognózy je pak volána k předpovědi, které transformovny je pravděpodobně přetížení přes do příští hodiny.
 
-modely krátkodobé a dlouhodobé Hello nasazených jednotlivě na každém transformovny. Proto hello praktické provádění těchto modelů vyžaduje rozsáhlé orchestration. toogain vyšší přesnost předpovědi v krátkodobém horizontu hello podrobnější modelu je vyhrazený pro každou hodinu dne hello. Všechny tyto modely jsou vykonány každou hodinu a dokončí provádění v rámci pár minut tooallow dostatečný čas toorespond a přijmout preventivní opatření, v případě potřeby. Tato kolekce modelů je pořád aktuální pomocí pravidelné retraining pomocí hello nejnovější data.
+Modely krátkodobé a dlouhodobé nasazených jednotlivě na každém transformovny. Proto praktické spuštění těchto modelů vyžaduje rozsáhlé orchestration. K získání vyšší přesnost předpovědi v krátkodobém horizontu, podrobnější modelu jsou vyhrazené pro každou hodinu dne. Všechny tyto modely jsou vykonány každou hodinu a dokončí provádění během několika minut, aby bylo dost času reagovat a přijmout preventivní opatření, v případě potřeby. Tato kolekce modelů je pořád aktuální pomocí pravidelné retraining nejnovější data.
 
 Další informace o tento případ použití naleznete [zde](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18945).
 
 #### <a name="use-case-qualification-criteria--prerequisites"></a>Použít kritéria případu kvalifikace – požadavky
-hlavní sílu Cortana Intelligence Hello je v jeho toodeploy výkonné možnosti a škálování machine learning zaměřená na řešení. Jde o předpovědi, které jsou spouštěny souběžně navrženou toosupport tisíců. Ji může automaticky škálovat toomeet změny struktury spotřeby. Proto je fokus na řešení na přesnost a výpočetní výkon. Například nástroj společnosti je zájem o vytvoření prognózy hello příští hodiny a pro každou hodinu dne hello poptávky přesné energie. Na hello druhé straně, jsme zájem o méně odpovídání hello otázku, proč vyžádání hello je předpokládaných toobe, jako je (hello přímo pro model se postará o,).
+Hlavní sílu Cortana Intelligence je výkonné možnosti zavádět a škálovat machine learning zaměřená na řešení v oblasti. Je navržen pro podporu tisíc předpovědi, které jsou spouštěny souběžně. Může automaticky škálovat podle měnících vzor spotřeby. Proto je fokus na řešení na přesnost a výpočetní výkon. Například nástroj společnosti má zájem generovala přesné energie vyžádání prognózy do příští hodiny a pro každou hodinu dne. Na druhé straně jsme zájem o méně odpovídání na otázku, proč je vyžádání předpovědět, které ho je (přímo pro model se postará o,).
 
-Proto je důležité toorealize, že všechny případy použití a obchodní efektivně vyřešení problémů pomocí machine learning.
+Proto je důležité si uvědomit, že všechny případy použití a obchodní efektivně vyřešení problémů pomocí machine learning.
 
-Cortana Intelligence a machine learningu může být velice efektivní v řešení daného obchodního problému, pokud jsou splněny hello následující kritéria:
+Cortana Intelligence a machine learningu může být velice efektivní v řešení daného obchodního problému, když se splní následující kritéria:
 
-* Hello firmy problém v dolním je **prediktivní** ve své podstatě. V příkladu případu použití prediktivní je nástroj společnost, která chcete toopredict power zatížení na danou transformovny během hello příští hodiny. Na hello druhé straně, analýze a pořadí ovladače historických vyžádání by **popisný** ve své podstatě a proto méně použitelné.
-* Je zřejmé **cestu akce** toobe prováděné jednou hello předpovědi je k dispozici. Například predikci přetížení na transformovny během hello příští hodiny můžete aktivovat proaktivní akce snižuje zatížení, který je přidružený tento transformovny a proto potenciálně brání přetížení.
-* případ použití Hello představuje **typický typ problému** tak, že když vyřešeny ho hello způsob toosolving pave jiné podobné případy použití.
-* můžete nastavit Hello zákazníka **kvantitativní a kvalitativní cíle** toodemonstrate implementace úspěšné řešení. Například dobrý kvantitativní cíl pro energie vyžádání prognózy by hello požadované přesnost prahové hodnoty (*např*, až too5 je povoleno % došlo k chybě) nebo pokud predikci transformovny přetížení pak hello přesnost (počet pozitivních true) a odvolání (rozsah true pozitivních) by měla být s danou prahovou hodnotu. Těchto cílů by měl být odvozen od hello zákazníka obchodních cílů.
-* Je zřejmé **scénáře integrace** s pracovním postupem prostředí společnosti hello firmy. Například hello transformovny zatížení prognózy lze integrovat do prevence aktivity přetížení centra tooallow hello mřížky ovládacího prvku.
-* Hello zákazník má připravené toouse **dat s dostatečnou kvality** případ použití toosupport hello (v další části hello, další informace naleznete v **Data Quality**, z této playbook).
-* Hello zákazníka vyhoví architektuře cloudu zaměřená na data nebo **cloudové machine learning**, včetně Azure ML a další součásti Cortana Intelligence Suite.
-* Hello zákazníka je ochotná tooestablish **tok dat tooend end** , zařízení hello doručování dat do cloudu hello průběžně a je ochotná příliš**zprovoznit** hello řešení.
-* Hello zákazníka je připraven příliš**vyhradit prostředky** kdo bude mít aktivně zapojení během počáteční pilotní implementace hello tak, aby znalosti a vlastnictví hello řešení může být přenést toohello zákazníka po úspěšné dokončení.
-* Hello zákazníka zdroj by měl být **zkušený data professional**, pokud možno vědecký pracovník data.
+* Je obchodního problému v dolním **prediktivní** ve své podstatě. V příkladu případu použití prediktivní je nástroj společnost, která se má odhadnout power zatížení daného transformovny během příští hodiny. Analýza a řazení ovladače historických poptávky na druhé straně by **popisný** ve své podstatě a proto méně použitelné.
+* Je zřejmé **cestu akce** mají být provedeny, jakmile je k dispozici předpovědi. Například predikci přetížení na transformovny během příští hodiny můžete aktivovat proaktivní akce snižuje zatížení, který je přidružený tento transformovny a proto potenciálně brání přetížení.
+* Představuje případ použití **typický typ problému** tak, že když vyřešeny ho můžete připravit přechod případy použití pro jiné podobné řešení.
+* Můžete nastavit zákazník **kvantitativní a kvalitativní cíle** k předvedení implementace úspěšné řešení. Dobrý kvantitativní cíl pro energie vyžádání prognózy by být například prahovou hodnotu požadovanou přesnost (*například*, je povoleno až 5 % došlo k chybě) nebo pokud predikci transformovny přetížení pak přesnost (počet pozitivních true) a pro vyvolání (rozsah true pozitivních) by měla být s danou prahovou hodnotu. Těchto cílů by měl být odvozen od zákazníka obchodních cílů.
+* Je zřejmé **scénáře integrace** s pracovním postupem obchodní společnosti. Například Prognóza zatížení transformovny lze integrovat do Centrum ovládacího prvku mřížky tak, aby přetížení prevence aktivity.
+* Zákazník má připraven k použití **dat s dostatečnou kvality** pro podporu případ použití (v další části, další informace naleznete v **Data Quality**, z této playbook).
+* Architektura vyhoví zaměřená na data v cloudu zákazníka nebo **cloudové machine learning**, včetně Azure ML a další součásti Cortana Intelligence Suite.
+* Zákazník je ochotná navázat **tok dat koncová** tohoto pracoviště doručování dat do cloudu průběžně a je ochotná **zprovoznit** řešení.
+* Zákazník je připraven k **vyhradit prostředky** kdo bude mít aktivně zapojení během počáteční pilotní implementace tak, aby znalosti a vlastnictví řešení lze přesunout do zákazníka po úspěšném dokončení.
+* Zákazník zdroj by měl být **zkušený data professional**, pokud možno vědecký pracovník data.
 
-Kvalifikace případu použití podle hello výše uvedeným kritériím může výrazně zlepšit hello úspěšnost případu použití a vytvořit funkční beachhead pro implementaci hello případů budoucí použití.
+Kvalifikace případu použití podle výše uvedená kritéria může výrazně zlepšit úspěšnost případu použití a vytvořit funkční beachhead pro implementaci případy budoucí použití.
 
 ### <a name="cloud-based-solutions"></a>Řešení založená na cloudu
-Cortana Intelligence Suite v Azure je integrované prostředí, který se nachází v cloudu hello. nasazení Hello pokročilou analýzu řešení v cloudovém prostředí obsahuje významné výhody pro firmy a v hello stejnou dobu může to znamenat velkou změnu pro společnosti, že stále použít místní IT řešeními. V rámci odvětví hello energie je zrušte trend postupné migrace operací do cloudu hello. Tento trend souvisí společně s hello vývoj inteligentní mřížky hello jak je popsáno výše, v **odvětví trendy**. Tato scénářem se zaměřuje na cloudové řešení v doméně hello energie, je důležité tooexplain hello výhody a další důležité informace o nasazení řešení založená na cloudu.
+Cortana Intelligence Suite v Azure je integrované prostředí, který se nachází v cloudu. Nasazení řešení pokročilou analýzu v cloudovém prostředí obsahuje, že významné výhody pro firmy a ve stejnou dobu může to znamenat velkou změnu pro společnosti, že stále použít místní IT řešeními. V rámci odvětví energie není jasný trend postupné migrace operací do cloudu. Tento trend souvisí společně s vývojem inteligentní mřížky jak je popsáno výše, v **odvětví trendy**. Jak tato scénářem se zaměřuje na cloudové řešení v doméně energie, je důležité popisují výhody a další důležité informace o nasazení řešení založená na cloudu.
 
-Možná hello největších výhod cloudové řešení je hello náklady. Jako řešení využívá součástí nasazení cloudu, neexistuje žádný předem náklady a náklady na spotřebu (náklady z zboží prodané) komponenty s ním spojená. To znamená, že neexistuje žádné tooinvest nutné v hardwaru, softwaru a údržby IT, a proto je podstatně snížit riziko obchodní.
+Možná největších výhod cloudové řešení jsou náklady. Jako řešení využívá součástí nasazení cloudu, neexistuje žádný předem náklady a náklady na spotřebu (náklady z zboží prodané) komponenty s ním spojená. To znamená, že není nutné investovat do hardwaru, softwaru a údržby IT, a proto je podstatně snížit riziko firmy.
 
-Další důležité výhodou je struktura průběžnými platbami náklady hello cloudové řešení. Servery založené na cloudu pro computing nebo úložiště můžete nasadit a škálovat na základě právě podle potřeby. To představuje výhody efektivitu nákladů hello cloudové řešení.
+Další důležité výhodou je strukturu průběžnými platbami náklady cloudové řešení. Servery založené na cloudu pro computing nebo úložiště můžete nasadit a škálovat na základě právě podle potřeby. To představuje výhod efektivitu nákladů na cloudové řešení.
 
-Nakonec je pro Investujete do IT údržby nebo vývoj budoucí infrastruktury, jako to vše je součástí hello Cloudová nabídka není nutné. rozsah toothat, Cortana Intelligence Suite zahrnuje hello nejlépe třídy služeb a jeho silniční mapu udržuje vyvíjející se. Nové funkce, součásti a možnosti jsou neustále zavedené a momentální.
+Nakonec je pro Investujete do IT údržby nebo vývoj budoucí infrastruktury, jako to vše je součástí Cloudová nabídka není nutné. Rozsahu Cortana Intelligence Suite zahrnuje nejvhodnější třída služby a jeho silniční mapu udržuje vyvíjející se. Nové funkce, součásti a možnosti jsou neustále zavedené a momentální.
 
-Pro společnosti, který je právě spouští jeho přechodu do cloudu hello důrazně doporučujeme tootake postupného implementací mapě cloudu migrace. Věříme, že pro nástroje a společnosti v doméně energie hello, hello případy použití, které jsou popsané v této playbook reprezentuje příležitost vynikající pro pilotní nasazení řešení prediktivní analýzy v cloudu hello.
+Pro společnosti, který je právě spouští jeho přechodu do cloudu důrazně doporučujeme provést postupný přístup implementací mapě cloudu migrace. Věříme, že pro nástroje a společnosti v doméně energie, případy použití, které jsou popsané v této playbook reprezentuje příležitost vynikající pro pilotní nasazení řešení prediktivní analýzy v cloudu.
 
 #### <a name="business-case-justification-considerations"></a>Aspekty obchodní případu při zarovnání do bloku
-V mnoha případech může být hello zákazníka zájem o provedení obchodního oprávnění pro danou použití případ, ve kterém jsou cloudové řešení a Machine Learning důležité součásti. Na rozdíl od v případě místních řešení, v případě hello cloudové řešení komponenta předem nákladů hello je minimální a většina elementů hello náklady jsou přidruženy skutečném využití. Pokud jde toodeploying energie prognózy řešení na webu Cortana Intelligence Suite, více služeb lze integrovat s struktura single běžné náklady. Například databáze (*například*, SQL Azure) lze použít toostore hello nezpracovaná data a pak pro hello skutečné předpovídá Azure ML je použité toohost hello prognózy služby. V tomto příkladu můžou zahrnovat hello struktury nákladů, úložiště a transakčních komponent.
+V mnoha případech může být zákazník zájem o provedení obchodního oprávnění pro danou použití případ, ve kterém jsou cloudové řešení a Machine Learning důležité součásti. Na rozdíl od v případě místních řešení, v případě cloudové řešení je minimální komponentu předem náklady a většina elementů náklady jsou přidruženy skutečném využití. Pokud jde o nasazení energie prognózy řešení na webu Cortana Intelligence Suite, více služeb lze integrovat s struktura single běžné náklady. Například databáze (*například*, SQL Azure) lze použít k uložení nezpracovaná data a pak pro samotný předpovídá Azure ML se používá k hostování služby prognózy. V tomto příkladu můžou zahrnovat strukturu náklady na úložiště a transakčních komponent.
 
-Na hello druhé straně, jeden měli rozumět hello obchodní hodnotu operačního vyžádání energie prognózy (krátkodobého nebo dlouhodobého hlediska). Ve skutečnosti je důležité toorealize hello obchodní hodnotu každé prognózy operace. Například přesně prognózy power zatížení pro hello dalších 24 hodin můžete zabránit nadbytečné produkce nebo může zabránit přetížení na hello mřížky a to je možné kvantifikovat z hlediska finanční úspor na každý den.
+Na druhé straně jeden měli rozumět obchodní hodnotu operačního vyžádání energie prognózy (krátkodobého nebo dlouhodobého hlediska). Ve skutečnosti je důležité si uvědomit obchodní hodnotu každé prognózy operace. Například přesně prognózy power zatížení dobu následujících 24 hodin můžete zabránit nadbytečné produkce nebo může zabránit přetížení v mřížce a to je možné kvantifikovat z hlediska finanční úspor na každý den.
 
-Základní vzorec pro výpočet hello finanční výhodou vyžádání prognózy řešení by: ![základní vzorec pro výpočet hello finanční výhodou vyžádání prognózy řešení](media/cortana-analytics-playbook-demand-forecasting-energy/financial-benefit-formula.png)
+Základní vzorec pro výpočet finanční výhodou vyžádání prognózy řešení by: ![základní vzorec pro výpočet finanční výhodou vyžádání prognózy řešení](media/cortana-analytics-playbook-demand-forecasting-energy/financial-benefit-formula.png)
 
-Vzhledem k tomu, že Cortana Intelligence Suite poskytuje průběžnými platbami cenový model, není nutné pro by docházelo k vzorec toothis součást pevné náklady. Tento vzorec, lze vypočítat na základě denně, měsíční nebo roční.
+Vzhledem k tomu, že Cortana Intelligence Suite poskytuje průběžnými platbami cenový model, není nutné pro komponentu pevné náklady na tento vzorec by docházelo. Tento vzorec, lze vypočítat na základě denně, měsíční nebo roční.
 
 Aktuální Cortana Intelligence Suite a Azure ML cenových plánů najdete [zde](http://azure.microsoft.com/pricing/details/machine-learning/).
 
 ### <a name="solution-development-process"></a>Proces vývoj řešení
-cyklus vývoj Hello vyžádání energie prognózy, řešení obvykle zahrnuje 4 fází, všechny z nich provedeme pomocí cloudových technologií a služeb v rámci hello Cortana Intelligence Suite.
+Vývoj cyklus vyžádání energie prognózy, řešení obvykle zahrnuje 4 fází, všechny z nich uděláme použít cloudové technologie a služby v rámci Cortana Intelligence Suite.
 
-To je znázorněno v následujícím diagramu hello:
+To je znázorněno v následujícím diagramu:
 
 ![Cyklus inteligentní mřížky](media/cortana-analytics-playbook-demand-forecasting-energy/smart-grid-cycle.png)
 
-Následující odstavce Hello popisuje tento proces krok 4:
+Následující odstavce popisuje tento proces krok 4:
 
-1. **Shromažďování dat** – všechny pokročilé analýzy na základě řešení využívá data (najdete v části **pochopení dat**). Konkrétně pokud jde toopredictive analýzy a vytváření prognóz, spoléháme na probíhající, dynamické tok dat. V případě hello prognózy vyžádání energie tato data můžete použít jako zdroj přímo z inteligentní měřidla nebo již agregovat na místní databázi. Také spoléháme na jiné externí zdroje dat, jako je například počasí a teploty. Tento probíhající tok dat je nutné orchestrovat, naplánovat a uložit. [Azure Data Factory](http://azure.microsoft.com/services/data-factory/) (ADF) je naše hlavní centrem k provedení této úlohy.
-2. **Modelování** – pro přesné a spolehlivé energie prognózy jeden musí vyvíjet (train) a udržovat skvělé model, který umožňuje použít hello historických dat a extrahuje hello smysluplný, a prediktivní vzorců hello data. oblasti Hello Learning počítače (ML) má byl narůstá s více pokročilé algoritmy pravidelně vyvíjených. Azure ML Studio nabízí skvělý uživatelské prostředí, která pomáhá využívat hello nejvíce pokročilé algoritmy ML v rámci dokončení pracovní postup. Tento pracovní postup je znázorněna v intuitivní vývojový diagram a zahrnuje hello data přípravy, funkce extrakce, modelování a vyhodnocení modelu. Hello uživatele můžete stáhnout stovky různých modely, které jsou zahrnuté v tomto prostředí. Konec hello v této fázi vědecký pracovník dat bude mít pracovní model, který je plně vyhodnotí a připravena k nasazení.
+1. **Shromažďování dat** – všechny pokročilé analýzy na základě řešení využívá data (najdete v části **pochopení dat**). Konkrétně pokud jde o prediktivní analýzy a vytváření prognóz, spoléháme na probíhající, dynamické tok dat. V případě energie vyžádání prognózy, tato data můžete použít jako zdroj přímo z inteligentní měřidla nebo již agregovat na místní databázi. Také spoléháme na jiné externí zdroje dat, jako je například počasí a teploty. Tento probíhající tok dat je nutné orchestrovat, naplánovat a uložit. [Azure Data Factory](http://azure.microsoft.com/services/data-factory/) (ADF) je naše hlavní centrem k provedení této úlohy.
+2. **Modelování** – pro přesné a spolehlivé energie prognózy jeden musí vyvíjet (train) a udržovat skvělé model, díky použijete historických dat a extrahuje smysluplný a prediktivní vzorů v datech. Oblasti Learning počítače (ML) má byl narůstá s více pokročilé algoritmy pravidelně vyvíjených. Azure ML Studio nabízí skvělý uživatelské prostředí, která pomáhá využívat nejpokročilejší algoritmy ML v rámci dokončení pracovní postup. Tento pracovní postup je znázorněna v intuitivní vývojový diagram a zahrnuje data přípravy, funkce extrakce, modelování a vyhodnocení modelu. Uživatel může pro vyžádání obsahu v stovky různých modely, které jsou zahrnuté v tomto prostředí. Na konci této fáze vědecký pracovník dat bude mít pracovní model, který je plně vyhodnotí a připravena k nasazení.
    
-   Následující diagram Hello je obrázek typické pracovního postupu:
+   Následující obrázek je obrázek typické pracovního postupu:
    
    ![Modelování pracovního postupu](media/cortana-analytics-playbook-demand-forecasting-energy/modeling-workflow.png)
-3. **Nasazení** – s modelem pracovní ručně, hello dalším krokem je nasazení. Zde je hello model převeden na webová služba, která vystavuje rozhraní RESTful API, která se může vyvolat souběžně přes Internet hello od různých klientů spotřeby. Azure ML poskytuje jednoduchý způsob nasazení model přímo z hello Azure ML Studio jediným kliknutím na tlačítko. pod pokličkou hello se stane Hello celý proces nasazení. Toto řešení může automaticky škálovat toomeet hello požadované spotřeby.
-4. **Spotřeba** – v této fázi se ve skutečnosti uděláme použití hello tooproduce předpovědi modelu prognózy. Spotřeba Hello můžete vycházejí z aplikace uživatele (*například*, řídicí panel) nebo přímo z operačního systému, jako/poptávky vyrovnávání systému nebo řešení optimalizace mřížky. Několik případů použití může vycházejí z jeden model.
+3. **Nasazení** – s modelem pracovní ručně, dalším krokem je nasazení. Zde je model převeden na webová služba, která vystavuje rozhraní RESTful API, která se může souběžně vyvolat z různých spotřeba klientů na Internetu. Azure ML poskytuje jednoduchý způsob nasazení model přímo z nástroje Azure ML Studio jediným kliknutím na tlačítko. Pod pokličkou se stane celý proces nasazení. Toto řešení může automaticky škálovat podle požadované spotřeby.
+4. **Spotřeba** – v této fázi se ve skutečnosti uděláme modelu prognózy lze použít k vytvoření předpovědi. Spotřeby můžete vycházejí z aplikace uživatele (*například*, řídicí panel) nebo přímo z operačního systému, jako/poptávky vyrovnávání systému nebo řešení optimalizace mřížky. Několik případů použití může vycházejí z jeden model.
 
 ## <a name="data-understanding"></a>Pochopení dat
-Po pokrývajících hello firmy aspekty (najdete v části **obchodní principy**) vytváření prognóz řešení poptávky energie, Snažíme se teď připravena toodiscuss hello datovou část. Řešení prediktivní analýzy spoléhá na spolehlivé data. U prognózy vyžádání energie, spoléháme na historické spotřeby data pomocí různých úrovní členitosti. Historických dat se používá jako suroviny hello. Určitým pečlivě analýzy, ve které hello vědecký pracovník data určují prognostické (také odkazované tooas funkcí), které můžou být přepnuté do modelu, který nakonec vygeneruje hello požadované prognózy.
+Po pokrývajících aspekty obchodní (najdete v části **obchodní principy**) vytváření prognóz řešení poptávky energie, jsme jste připraveni popisují část dat. Řešení prediktivní analýzy spoléhá na spolehlivé data. U prognózy vyžádání energie, spoléháme na historické spotřeby data pomocí různých úrovní členitosti. Historických dat se používá jako suroviny. Určitým pečlivě analýzy, ve kterém se data vědecký pracovník identifikovat prognostické (také označované jako funkce), které můžou být přepnuté do modelu, který nakonec vygeneruje požadované prognózy.
 
-V hello zbývající část tohoto oddílu, jsme popíše hello různé postupy a požadavky pro pochopení hello data a jak toobring ho tooa použitelné podoby.
+Ve zbývající části této části jsme se popisují různé postupy a požadavky pro pochopení dat a zajištění do použitelného formátu.
 
-### <a name="hello-model-development-cycle"></a>Hello cyklu vývoje modelu
-Vytváření dobrý prognózy modely vyžaduje některé pečlivě přípravu a plánování. Rozdělení hello proces modelování do více kroků a zaměřené na jednom kroku současně může výrazně zlepšit hello výsledek hello celý proces.
+### <a name="the-model-development-cycle"></a>Cyklu vývoje modelu
+Vytváření dobrý prognózy modely vyžaduje některé pečlivě přípravu a plánování. Rozdělení procesu modelování do více kroků a zaměřené na jednom kroku současně může výrazně zlepšit výsledek celý proces.
 
-Hello následující diagram znázorňuje, jak může hello modelování proces rozdělit do více kroků:
+Následující diagram znázorňuje, jak může proces modelování rozdělit do více kroků:
 
 ![Cyklu vývoje modelu](media/cortana-analytics-playbook-demand-forecasting-energy/model-development-cycle.png)
 
-Jak je patrné, že hello cyklus se skládá z šesti kroků:
+Jak je vidět, že tento cyklus se skládá z šesti kroků:
 
 * Formulování problém
 * Přijímání dat a zkoumání dat
@@ -220,37 +220,37 @@ Jak je patrné, že hello cyklus se skládá z šesti kroků:
 * Vyhodnocení modelu
 * Vývoj
 
-V hello zbytek této části jsme se popisují jednotlivé kroky hello a tooconsider položek v každé fázi.
+Ve zbývající části této části jsme se popisují jednotlivé kroky a položky, které je třeba zvážit při každém kroku.
 
 ### <a name="problem-formulation"></a>Formulování problém
-Formulování hello problém jsme můžete zvážit hello nejdůležitější kroku jedna stačit předchozí tooimplementing tootake řešení prediktivní analýzy. Zde jsme by transformace hello obchodního problému a jeho rozložit toospecific elementy, které lze vyřešit pomocí data a modelování techniky. Je dobrým zvykem tooformulate hello problém jako sada otázek rádi bychom znali tooanswer. Zde jsou některé možné otázky, které nejsou k dispozici v rámci oboru hello prognózy na energii na vyžádání:
+Zvážit jsme problém formulování jako nejdůležitější krok, který jeden nemusí provádět před jejich implementací řešení prediktivní analýzy. Zde jsme by transformace obchodního problému a rozložit na konkrétní prvky, které lze vyřešit pomocí data a modelování techniky. Je dobrým zvykem formulovali problém jako sada otázek, na které má odpovědět. Zde jsou některé možné otázky, které nejsou k dispozici v rámci oboru prognózy na energii na vyžádání:
 
-* Co je očekáván hello zatížení jednotlivých transformovny v hello další hodinu nebo den?
-* V průběhu dne hello všimnete Moje mřížky poptávky ve špičce?
-* Jak pravděpodobně je zátěž ve špičce hello očekává toosustain Moje mřížky?
-* Kolik energie měl hello power stanice generovat během každou hodinu dne hello?
+* Co je očekávané zatížení na jednotlivých transformovny v další hodinu nebo den?
+* V průběhu dne všimnete Moje mřížky poptávky ve špičce?
+* Jak pravděpodobně je můj mřížky pro udržení zatížení ve špičce očekávané?
+* Kolik energie měl stanice power generovat během každou hodinu dne?
 
-Formulování tyto otázky nám umožňuje toofocus na získávání hello správná data a implementace řešení, které je plně v souladu s hello firmy problém. Kromě toho jsme pak můžete nastavit některé klíčové metriky, které nám umožňují tooevaluate hello výkonu hello modelu. Například jak přesný by měl hello prognózy být a jaký je rozsah hello chyby, který bude stále přijatelné podle hello firmy?
+Formulování tyto otázky umožňuje zaměřit se na získávání správná data a implementace řešení, které je plně v souladu s obchodního problému po ruce. Kromě toho jsme pak můžete nastavit některé klíčové metriky, které nám k vyhodnocení výkonu modelu umožňují. Například jak přesná Prognóza měli a jaký je rozsah chybu, která se bude stále přijatelné podle firmy?
 
 ### <a name="data-sources"></a>Zdroje dat
-Moderní inteligentní mřížky Hello shromažďuje data z různých částí a komponent hello mřížky. Tato data představuje různé aspekty hello provozu a využití hello hello power mřížky. V rámci oboru hello poptávky energie hello prognózy jsme jsou omezení hello zabývat zdrojů dat, které odráží spotřeba hello aktuální požadavek. Jeden zdroj důležité spotřeby energie, jsou inteligentní měřidla. Nástroje kolem hello zeměkouli rychle nasazujete inteligentní měřidla pro jejich příjemce. Inteligentní měřidla zaznamenávat hello skutečné spotřeby energie a neustále předávání společnosti nástroj back toohello tato data. Data se shromažďuje a odesílá zpět v pevných intervalech, od každou hodinu too1 5 minut. Pokročilejší inteligentní měřidla lze naprogramovat vzdáleně toocontrol a vyrovnávat hello skutečné spotřebě v rámci domácnost. Inteligentní měření dat je poměrně spolehlivé a obsahuje časové razítko. Tím je důležité složky pro vyžádání prognózy. Měření dat, se dají agregovat (sečtené) na různých úrovních v rámci topologie mřížky hello: transformer, transformovny, oblast, *atd*. Hello požadované agregace úrovně toobuild jsme můžete vyberte model prognózy pak pro něj. Například pokud hello nástroj společnosti by jako tooforecast budoucí zatížení na každý z jeho mřížky trakčních pak všechny měřidla data může být agregován pro každé jednotlivé transformovny a použít jako vstup pro hello modelu prognózy. Toosmart měřidla označujeme jako interní datový zdroj.
+Moderní inteligentní mřížky shromažďuje data z různých částí a komponent mřížky. Tato data představuje různé aspekty operaci a využití power mřížky. V rámci oboru vyžádání energie prognózy jsme jsou omezení diskuzi na zdroje dat, které odráží skutečný vyžádání spotřeby. Jeden zdroj důležité spotřeby energie, jsou inteligentní měřidla. Nástroje po celém světě rychle nasazujete inteligentní měřidla pro jejich příjemce. Inteligentní měřidla zaznamenávat skutečné spotřebu energie a neustále předávání tato data zpět do nástroje společnosti. Data se shromažďuje a odesílá zpět v pevných intervalech, od každých 5 minut až 1 hodina. Pokročilejší inteligentní měřidla lze naprogramovat vzdálené řízení a vyvážit skutečné spotřebě v rámci domácnost. Inteligentní měření dat je poměrně spolehlivé a obsahuje časové razítko. Tím je důležité složky pro vyžádání prognózy. Měření dat, se dají agregovat (sečtené) na různých úrovních v rámci topologie mřížky: transformer, transformovny, oblast, *atd*. Jsme pak můžete vybrat úroveň požadované agregace pro něj vytvořit model prognózy. Například pokud společnost nástroj chtěli předpovídat budoucí zatížení na jednotlivých jeho mřížky trakčních pak všechny měřidla data může být agregován pro každé jednotlivé transformovny a použít jako vstup pro model prognózy. Označujeme jako zdroj interních datových inteligentní měřidla.
 
-Vyžádání prognózy spolehlivé energie bude také závisí na jiných externích zdrojů dat.. Jeden důležitý faktor, který má vliv na spotřebu energie je hello počasí, nebo přesněji teploty hello. Historická data zobrazují silné korelace mezi mimo teploty a spotřebu energie. Během aktivního letní dnů spotřebitelům při jejich klimatizace a při zapnutí jedná o zimní hello systémů vytápění. Spolehlivý zdroj historických teplot v umístění mřížky hello je proto klíč. Kromě toho také spoléháme na přesná prognóza z teploty jako nástroj pro odhad spotřeby energie.
+Vyžádání prognózy spolehlivé energie bude také závisí na jiných externích zdrojů dat.. Jeden důležitý faktor, který má vliv na spotřebu energie je počasí, nebo přesněji teploty. Historická data zobrazují silné korelace mezi mimo teploty a spotřebu energie. Během aktivního letní dnů spotřebitelům při použití jejich klimatizace a během jedná o zimní zapnutí systémů vytápění. Klíč je proto spolehlivý zdroj historických teplot v umístění v mřížce. Kromě toho také spoléháme na přesná prognóza z teploty jako nástroj pro odhad spotřeby energie.
 
 Další externích zdrojů dat. může také pomoci při vytváření modelů prognózy na energii na vyžádání. Ty mohou obsahovat dlouhodobé klimatem změny, ekonomické indexy (*například*, HDP) a další. V tomto dokumentu jsme nebude obsahovat tyto ostatních zdrojů.
 
 ### <a name="data-structure"></a>Datové struktury
-Po identifikaci hello požadované zdroje dat, můžeme by jako tooensure, nezpracovaná data, které se shromáždily zahrnuje hello opravte data funkce. model prognózy toobuild spolehlivé vyžádání, potřebujeme by tooensure, který hello shromažďovaných dat zahrnuje datové prvky, které může pomoci předpovídat budoucí vyžádání hello. Tady jsou některé základní požadavky týkající se struktura dat hello (schéma) hello nezpracovaná data.
+Po identifikaci požadované datových zdrojů, bychom rádi Ujistěte se, že nezpracovaných dat, které se shromáždily zahrnuje funkce správná data. K sestavení modelu prognózy spolehlivé vyžádání, by potřebujeme zajistit, že data shromážděná obsahuje datové prvky, které může pomoci předpovídat budoucí poptávky. Tady jsou některé základní požadavky týkající se dat strukturu (schéma) nezpracovaná data.
 
-nezpracovaná data Hello se skládá z řádků a sloupců. Každé měření je reprezentován jako jednoho řádku dat. Každý řádek dat obsahuje více sloupců (také odkazované tooas funkce nebo polí).
+Nezpracovaná data se skládá z řádků a sloupců. Každé měření je reprezentován jako jednoho řádku dat. Každý řádek dat obsahuje více sloupců (také označované jako funkce nebo polí).
 
-1. **Časové razítko** – pole časového razítka hello představuje hello skutečný čas, kdy byla zaznamenána hello měření. Ho by měly splňovat jeden z běžných formátů data a času hello. Datum a čas částí by měly být zahrnuty. Ve většině případů není třeba pro hello čas toobe zaznamenávají do hello druhou úroveň členitosti. Je důležité toospecify hello časové pásmo, ve kterém se zaznamená hello data.
-2. **Měřicí ID** – v tomto poli identifikuje hello měření nebo hello měření zařízení. Je kategorií proměnné a může být kombinací číslic a znaků.
-3. **Hodnota spotřeby** – jedná se o skutečné spotřebě hello v dané datum a čas. Spotřeba Hello lze měřit v kWh (kilowatt-hour) nebo jakékoliv preferované jednotky. Je důležité, že toonote, který hello Měrná jednotka musí zůstat konzistentní napříč všech měření v datech hello. V některých případech může být spotřeba dodán více než 3 power fáze. V takovém případě by potřebujeme toocollect všechny fáze nezávislé spotřeba hello.
-4. **Teplotní** – teploty hello je obvykle shromážděné z nezávislé zdroje. Ale musí být kompatibilní s datům o spotřebě hello. Měl by obsahovat časovým razítkem jak bylo popsáno výše, který vám umožní toobe synchronizována s daty o skutečné spotřebě hello. hodnota teploty Hello lze zadat v stupňů c nebo Fahrenheita ale musí zůstat konzistentní napříč všech měření.
-5. **Umístění –** pole umístění hello obvykle souvisí s hello místě, kde jsou shromážděná data teploty hello. Může být reprezentován jako poštovní směrovací číslo nebo ve formátu zeměpisnou šířku a délku (lat nebo long).
+1. **Časové razítko** – pole časového razítka představuje skutečný čas, kdy byla zaznamenána měření. Ho by měly splňovat jeden z běžných formátů data a času. Datum a čas částí by měly být zahrnuty. Ve většině případů není třeba dobu, aby se zaznamenávaly do druhé úrovně podrobností. Je důležité určete časové pásmo, ve kterém se zaznamená data.
+2. **Měřicí ID** – v tomto poli identifikuje měřidla nebo měření zařízení. Je kategorií proměnné a může být kombinací číslic a znaků.
+3. **Hodnota spotřeby** – jedná se o skutečné spotřebě v dané datum a čas. Spotřeby můžete měřená v kWh (kilowatt-hour) nebo jakékoliv preferované jednotky. Je důležité si uvědomit, že Měrná jednotka musí zůstat konzistentní napříč všech měření v datech. V některých případech může být spotřeba dodán více než 3 power fáze. V takovém případě by potřebujeme ke shromažďování všech fázích nezávislé spotřeby.
+4. **Teplotní** – teplota je obvykle shromážděné z nezávislé zdroje. Ale musí být kompatibilní s datům o spotřebě. Měl by obsahovat časovým razítkem jak bylo popsáno výše, který vám umožní, aby mohla být synchronizována s daty o skutečné spotřebě. Hodnota teploty lze zadat v stupňů c nebo Fahrenheita ale musí zůstat konzistentní napříč všech měření.
+5. **Umístění –** pole umístění obvykle souvisí s na místě, kde jsou shromážděná data teploty. Může být reprezentován jako poštovní směrovací číslo nebo ve formátu zeměpisnou šířku a délku (lat nebo long).
 
-Hello následující tabulky uvádí příklady dobrý využívání a teploty formát dat:
+V následujících tabulkách jsou uvedeny příklady dobrý využívání a teploty formát dat:
 
 | **Datum** | **Čas** | **ID měření** | **Fáze 1** | **Fáze 2** | **Fáze 3** |
 | --- | --- | --- | --- | --- | --- |
@@ -264,140 +264,140 @@ Hello následující tabulky uvádí příklady dobrý využívání a teploty f
 | 7/1/2015 |10:00:01 |11242 |24.4 |
 | 7/1/2015 |10:00:02 |11242 |24.5 |
 
-Jak je vidět výše, tento příklad obsahuje 3 různé hodnoty pro používání přidružené fáze 3 napájení. Všimněte si také, zda text hello datum a čas pole se oddělují, ale mohou také být sdruženy do jednoho sloupce. V takovém případě je sloupec hello umístění reprezentované ve formátu zip kódu 5 číslic a teploty hello ve formátu stupeň c.
+Jak je vidět výše, tento příklad obsahuje 3 různé hodnoty pro používání přidružené fáze 3 napájení. Všimněte si také, zda jsou odděleny pole data a času, ale mohou také být sdruženy do jednoho sloupce. V takovém případě je sloupec umístění reprezentované ve formátu zip kódu 5 číslic a teploty ve formátu stupeň c.
 
 ### <a name="data-format"></a>Formát dat
-Cortana Intelligence Suite může podporovat hello nejběžnější formáty dat sdíleného svazku clusteru, TSV, formát JSON, *atd*. Je důležité, že formát dat hello zůstane konzistentní pro hello celý životní cyklus hello projektu.
+Cortana Intelligence Suite může podporovat nejběžnější formáty dat sdíleného svazku clusteru, TSV, formát JSON, *atd*. Je důležité, že formát dat zůstává konzistentní pro celý životní cyklus projektu.
 
 ### <a name="data-ingestion"></a>Přijímání dat
-Vzhledem k tomu, že na energii na vyžádání prognózy je neustále a často předpovědět, jsme musíte zajistit, že hello nezpracovaná data proudí prostřednictvím procesu přijímání dat plnou a spolehlivé. proces přijímání Hello musí zaručit, že hello nezpracovaná data je k dispozici pro hello prognózy procesu v době hello vyžaduje. Která znamená, že četnost přijímání dat hello musí být větší než hello prognózy frekvence.
+Vzhledem k tomu, že na energii na vyžádání prognózy je neustále a často předpovědět, jsme musíte zajistit, že je nezpracovaných dat předávaných prostřednictvím procesu přijímání dat plnou a spolehlivé. Proces přijímání musí zaručit, že nezpracovaných dat je k dispozici pro proces prognózy v požadované době. Která znamená, že četnost přijímání dat musí být větší než četnost prognózy.
 
-Například: Pokud naše vyžádání prognózy řešení by vygeneroval novou prognózu v 8:00 AM denně pak potřebujeme tooensure, který hello všechna hello data, která jsou shromážděná během posledních 24 hodin byla plně požity do tohoto bodu a má tooeven, zahrnout hello poslední hodinu dat.
+Například: Pokud naše vyžádání prognózy řešení by vygeneroval novou prognózu v 8:00 AM každý den, pak je potřeba zajistit, že všechny data, která jsou shromážděná během posledních 24 hodin byla plně požity do tohoto bodu a má i obsahují poslední hodiny  data.
 
-V pořadí tooaccomplish, toho Cortana Intelligence Suite nabízí různé způsoby toosupport proces přijímání spolehlivé data. To dál probereme v hello **nasazení** část tohoto dokumentu.
+Aby bylo možné dosáhnout, Cortana Intelligence Suite nabízí různé způsoby, jak podporují procesu přijímání spolehlivé data. To v popsané dál **nasazení** část tohoto dokumentu.
 
 ### <a name="data-quality"></a>Kvality dat.
-Hello nezpracovaná data zdroj, který se vyžaduje k provedení prognózy spolehlivé a přesné vyžádání musí splňovat kritéria kvality některé základní data. I když pokročilé statistické metody může být použité toocompensate pro některé možné data quality problém, potřebujeme ještě tooensure, že jsme se při překročení prahové hodnoty některé základní data quality při příjem nová data. Zde je několik aspekty týkající se kvality nezpracovaná data:
+Nezpracovaná datovém zdroji, které jsou nutné k provádění spolehlivé a přesné vyžádání prognózy musí splňovat kritéria kvality některé základní data. Pokročilé statistické metody lze kompenzovat některé možné data quality problém, ale potřebujeme ještě Ujistěte se, že jsme se při překročení prahové hodnoty některé základní data quality při příjem nová data. Zde je několik aspekty týkající se kvality nezpracovaná data:
 
-* **Chybí hodnota** – vztahuje toohello situace při konkrétní měření nebyla shromážděna. Hello zde základní požadavek je, že tento hello chybí hodnota míry nesmí být větší než 10 % pro jakékoli dané časové období. V případě, že jedna hodnota je chybějící by měl být indikován pomocí předem definované hodnoty (například: '9999') a zda není '0', který může být hodnota je neplatná.
-* **Přesnost měření** – hello skutečnou hodnotu spotřeby nebo teploty by měl být přesně zaznamenán. Nesprávné měření způsobí nepřesné prognózy. Chyba měření hello obvykle by měla být nižší než hodnota true relativní toohello 1 %.
-* **Čas měření** – je potřeba skutečná razítek hello shromažďovaných dat hello nesmí lišit o více než 10 sekund relativní toohello true čas vlastní měření hello.
-* **Synchronizace** – Pokud se používají více zdrojů dat (*například*, využívání a teploty) jsme Ujistěte se, že neexistují žádné synchronizaci času problémy mezi nimi. To znamená, že čas hello rozdíl mezi časové razítko hello shromážděných ze všech dva nezávislé datových zdrojů nesmí překročit více než 10 sekund..
-* **Latence** – jak je popsáno výše, v **přijímání dat**, jsme jsou závislé na spolehlivé datového toku a přijímání procesu. toocontrol, že jsme musí zajistit, že jsme řízení hello data latence. To je zadán jako hello časový rozdíl mezi hello čas, který vlastní měření hello pořízení a hello čas, kdy byla načtena do hello Cortana Intelligence Suite úložiště a je připravený k použití. Pro krátkodobou zatížení prognózy nízkou celkovou latenci hello nesmí být větší než 30 minut. Pro dlouhodobé zatížení prognózy nízkou celkovou latenci hello nesmí být větší než 1 den.
+* **Chybí hodnota** – vztahuje situaci při konkrétní měření nebyla shromážděna. Základní požadavek je, že chybí hodnota rychlost, jakou by neměla být větší než 10 % pro jakékoli dané časové období. V případě, že jedna hodnota je chybějící by měl být indikován pomocí předem definované hodnoty (například: '9999') a zda není '0', který může být hodnota je neplatná.
+* **Přesnost měření** – se skutečnou hodnotou spotřeby nebo teploty by měl být přesně zaznamenán. Nesprávné měření způsobí nepřesné prognózy. Chyba měření obvykle by mělo být menší než 1 % relativní vůči hodnotě true.
+* **Čas měření** – je potřeba, časové razítko skutečné dat shromážděných nesmí lišit o více než 10 sekund vzhledem k true době vlastní měření.
+* **Synchronizace** – Pokud se používají více zdrojů dat (*například*, využívání a teploty) jsme Ujistěte se, že neexistují žádné synchronizaci času problémy mezi nimi. To znamená, že je časový rozdíl mezi shromážděné časové razítko ze všech dva nezávislé datových zdrojů by nemělo přesáhnout více než 10 sekund.
+* **Latence** – jak je popsáno výše, v **přijímání dat**, jsme jsou závislé na spolehlivé datového toku a přijímání procesu. K řízení, které jsme musí zajistit, aby jsme kontrolu nad latence data. To je zadán jako časový rozdíl mezi časem, která byla provedena vlastní měření a čas, kdy byla načtena do úložiště Cortana Intelligence Suite a je připravený k použití. Pro krátkodobou zatížení prognózy nízkou celkovou latenci nesmí být větší než 30 minut. Pro dlouhodobé zatížení prognózy nízkou celkovou latenci nesmí být větší než 1 den.
 
 ### <a name="data-preparation-and-feature-engineering"></a>Příprava dat a funkce inženýrství
-Jakmile hello nezpracovaná data byla požity. (najdete v části **přijímání dat**) a byla bezpečně uložena, je připraven toobe zpracovat. Hello fázi přípravy dat je v podstatě trvá hello nezpracovaná data a převodu (transformace, změna tvaru) do formuláře pro modelování fáze hello. Jednoduché operace, například pomocí sloupce hello nezpracovaná data, jako je s jeho skutečná hodnota měřená, standardizované hodnoty, složitějších operací, jako který může zahrnovat [čas obložení](https://en.wikipedia.org/wiki/Lag_operator)a další. Hello nově vytvořený datových sloupců jsou odkazované tooas datových funkcích a hello proces generování tyto odkazované tooas funkce inženýrství. Hello konci tohoto procesu nám nové sady dat, který byl získán z hello nezpracovaná data a lze použít pro modelování. Kromě toho musí fázi přípravy dat hello tootake péče o chybějící hodnoty (viz **Data Quality**) a kompenzovat je. V některých případech také potřebujeme tooensure toonormalize hello data, která všechny hodnoty jsou zobrazeny ve hello stejné měřítko.
+Po nezpracovaná data byla požity. (viz **přijímání dat**) a byla bezpečně uložené, je připravena k provedení. Fázi přípravy dat je v podstatě trvá nezpracovaná data a převádění (transformace, změna tvaru) do formuláře pro fázi modelování. Jednoduché operace, například pomocí sloupci nezpracovaná data, jako je s jeho skutečná hodnota měřená, standardizované hodnoty, složitějších operací, jako který může zahrnovat [čas obložení](https://en.wikipedia.org/wiki/Lag_operator)a další. Nově vytvořené datové sloupce, které se označují jako funkce data a proces generování to se označuje jako funkce inženýrství. Na konci tohoto procesu nám nové sady dat, který byl získán z nezpracovaná data a lze použít pro modelování. Kromě toho musí fázi přípravy dat postará o chybějící hodnoty (viz **Data Quality**) a kompenzovat je. V některých případech by také musíme normalizaci data a ujistěte se, že všechny hodnoty jsou zobrazeny ve stejné měřítko.
 
-V této části jsme některé hello běžné funkce dat, které jsou součástí hello energie seznamu prognózy vyžádání modelů.
+V této části jsme některé běžné funkce dat, které jsou součástí energii seznamu prognózy vyžádání modelů.
 
-**Čas řízené funkce:** tyto funkce jsou odvozeny od hello datum/časové razítko data. Tyto jsou extrahovat a převést do kategorií funkcí, jako je:
+**Čas řízené funkce:** tyto funkce jsou odvozeny od data datum/časové razítko. Tyto jsou extrahovat a převést do kategorií funkcí, jako je:
 
-* Čas dne – to je hello hodina dne hello, který přebírá hodnoty od 0 too23
-* Den v týdnu – to představuje hello den v týdnu hello a přijímá hodnoty z 1 (neděle) too7 (sobota)
-* Den v měsíci – to představuje skutečný datum hello a může trvat hodnoty z 1 too31
-* Měsíc roku – to představuje hello měsíc a přijímá hodnoty z 1 (leden) too12 (prosinec)
-* Víkendu – Toto je funkce binární hodnotu, která přijímá hello hodnoty 0 pro dny v týdnu nebo 1 pro víkendu
-* Svátek - Toto je funkce binární hodnotu, která přijímá hello hodnoty 0 pro regulární den nebo 1 pro svátek
-* Podmínky Fourierova – hello Fourierova podmínky jsou uvedeny váhu, které jsou odvozeny od hello časové razítko a jsou použité toocapture hello sezónnosti (cykly) v datech hello. Vzhledem k tomu, že jsme může mít několik ročních období v našich dat potřebujeme více Fourierova podmínky. Vyžádání hodnoty může mít například roční, týdenní a denní období nebo cykly které bude mít za následek 3 Fourierova podmínky.
+* Čas dne – to je hodina dne, který přebírá hodnoty od 0 do 23
+* Den v týdnu – to představuje den v týdnu a přijímá hodnoty od 1 (neděle) na 7 (sobota)
+* Den v měsíci – to představuje skutečný datum a může obsahovat hodnoty od 1 do 31
+* Měsíc roku – to představuje měsíc a přijímá hodnoty od 1 (leden) do 12 (prosinec)
+* Víkendu – Toto je funkce binární hodnotu, která přijímá hodnoty 0 pro dny v týdnu nebo 1 pro víkendu
+* Svátek - Toto je funkce binární hodnotu, která přijímá hodnoty 0 pro regulární den nebo 1 pro svátek
+* Podmínky Fourierova – Fourierova podmínky jsou váhu, které jsou odvozeny od časové razítko a slouží k zaznamenání sezónnosti (cykly) v datech. Vzhledem k tomu, že jsme může mít několik ročních období v našich dat potřebujeme více Fourierova podmínky. Vyžádání hodnoty může mít například roční, týdenní a denní období nebo cykly které bude mít za následek 3 Fourierova podmínky.
 
-**Funkce nezávislé měření:** hello nezávislé funkce zahrnují všechny hello datové prvky, rádi bychom znali toouse jako prognostické v našem modelu. Tady jsou vyloučeny hello závislé funkci, která by potřebujeme toopredict.
+**Funkce nezávislé měření:** nezávislé funkce zahrnují všechny datové prvky, které jsme chtěli používat jako prognostické v našem modelu. Tady jsou vyloučeny závislé funkci, která by musíme předpovědi.
 
-* Funkce opoždění – jedná se o čas zapuštěno hodnoty hello aktuální požadavek. Například bude funkce lag 1 umístit hello vyžádání hodnotu aktuální časové razítko aplikace hello předchozí hodiny (za předpokladu, že po hodinách data) relativní toohello. Jsme podobně přidat prodleva 2, 3, funkce lag *atd*. určuje hello skutečné kombinace prodleva funkce, které se používají během hello modelování fáze hodnocení hello modelu výsledků.
-* Dlouhodobé trendů – tato funkce představuje hello lineární rostoucích požadavků mezi let.
+* Funkce opoždění – jedná se o čas zapuštěno hodnoty aktuální. Funkce opoždění 1 například bude obsahovat hodnotu vyžádání do předchozí hodiny (za předpokladu, že po hodinách data) relativně k aktuální časové razítko. Jsme podobně přidat prodleva 2, 3, funkce lag *atd*. Skutečné kombinace prodleva funkce, které se používají určuje během fáze modelování hodnocení výsledků modelu.
+* Dlouhodobé trendů – tato funkce představuje lineární růst v vyžádání mezi let.
 
-**Závislé funkce:** závislé funkce hello je hello sloupce dat, která rádi bychom znali naše toopredict modelu. S [počítač učení se supervizí](https://en.wikipedia.org/wiki/Supervised_learning), musíme nejprve cvičení hello model pomocí závislé součásti hello (což je také odkazované tooas popisky). To umožňuje hello modelu toolearn hello vzory v hello data související s funkcí závislé hello. V energie vyžádání prognózy chceme obvykle toopredict hello aktuální požadavek a proto jsme proč ji používat jako závislé funkce hello.
+**Závislé funkce:** závislé funkce je sloupec dat, který rádi bychom znali našeho modelu předpovědi. S [počítač učení se supervizí](https://en.wikipedia.org/wiki/Supervised_learning), musíme nejprve cvičení modelu s použitím funkce závislé (která je také označována jako popisky). To umožňuje modelu další vzory v data související s funkci závislé. Požadavků na energii prognózy obvykle chcete předpovídat aktuální, a proto jsme proč ji používat jako závislé funkce.
 
-**Zpracování chybějící hodnoty:** během fáze přípravy dat hello by potřebujeme toodetermine hello nejlepší strategii toohandle chybějící hodnoty. To je ve většině případů s použitím hello různé statistické [data imputace metody](https://en.wikipedia.org/wiki/Imputation_\(statistics\)). V případě hello energie poptávky prognózy jsme obvykle dává chybějící hodnoty pomocí klouzavého průměru z předchozí dostupné datových bodů.
+**Zpracování chybějící hodnoty:** fázi přípravy dat, musíme určit nejlepší strategii pro zpracování chybějící hodnoty. To se většinou provádí pomocí různé statistické [data imputace metody](https://en.wikipedia.org/wiki/Imputation_\(statistics\)). V případě energie vyžádání prognózy jsme obvykle dává chybějící hodnoty pomocí klouzavého průměru z předchozí dostupné datových bodů.
 
-**Data normalizaci:** normalizace dat je jiný typ transformace, což je použité toobring všechny číselná data, jako je například vyžádání prognózy do podobné škálování. To obvykle pomáhá zlepšit přesnost hello modelu. Jsme by obvykle k tomu vydělením skutečná hodnota hello hello rozsah dat hello.
-Původní hodnotu hello to bude škálovat do menší oblast, obvykle mezi -1 a 1.
+**Data normalizaci:** normalizace dat je jiný typ transformace, který se používá k zajištění všech číselná data, jako je například vyžádání prognózy podobné škálování. To obvykle pomáhá zlepšit přesnost a přesnosti modelu. Jsme by obvykle k tomu vydělením skutečná hodnota rozsahu data.
+Původní hodnotu to bude škálovat do menší oblast, obvykle mezi -1 a 1.
 
 ## <a name="modeling"></a>Modelování
-Hello modelování fáze je, kde probíhá převod hello hello dat do modelu. V hello základní tohoto procesu existuje pokročilé algoritmy, které kontrola hello historických dat (Cvičná data), rozbalte vzory a sestavení modelu. Tento model můžou být později použít toopredict na nová data, která nebyla použité toobuild hello modelu.
+Fáze modelování je, kde probíhá převod dat do modelu. V základní tohoto procesu existuje pokročilé algoritmy, které kontrola historických dat (Cvičná data), rozbalte vzory a sestavení modelu. Tento model můžete později použít k předvídání na nová data, který nebyl použit k vytvoření modelu.
 
-Jakmile spolehlivé funkční modelu jsme ho pak může použít tooscore nová data, která je strukturovaných tooinclude hello požadované funkce (X). Hello procesu určování skóre budou používat hello trvalou modelu (objekt z fáze školení hello) a předvídání hello Cílová proměnná, který je označený jako Ŷ.
+Jakmile model spolehlivé práci jsme ho pak může použít k skóre pro nová data, která je strukturovaná zahrnout požadované funkce (X). Proces vyhodnocování budou používat trvalé modelu (objekt z fázi školení) a předvídání Cílová proměnná, který je označený jako Ŷ.
 
 ### <a name="demand-forecasting-modeling-techniques"></a>Vyžádání prognózy modelování techniky
-V případě hello poptávky prognózy, provedeme pomocí historických dat, který je seřazené podle času. Obecně označujeme toodata, která zahrnuje hello časové dimenze jako [časové řady](https://en.wikipedia.org/wiki/Time_series). cílem Hello na dobu, kterou řady modelování je čas toofind související trendů, sezónnosti, auto korelace (korelace v čase) a formulovali v modelu.
+V případě vyžádání prognózy, provedeme pomocí historických dat, který je seřazené podle času. Obecně označujeme data, která zahrnuje časové dimenze jako [časové řady](https://en.wikipedia.org/wiki/Time_series). Cílem v časové řady modelování je nalezení čas související trendy, sezónnosti, auto korelace (korelace v čase) a formulovali v modelu.
 
-V posledních letech pokročilé algoritmy byly vyvinuté tooaccommodate časové řady prognózy a tooimprove přesnost prognózy. Stručně probereme několik z nich zde.
+V posledních letech pokročilé algoritmy bylo vyvinuto zohlednit časové řady prognózy a zvyšte tak přesnost předpovědi. Stručně probereme několik z nich zde.
 
 > [!NOTE]
-> Tento oddíl není určený toobe použít jako machine learning a předpovídat přehled, ale spíše jako krátký přehled modelování techniky, které se běžně používají pro vyžádání prognózy. Další informace a vzdělávací materiály o časové řady prognózy, důrazně doporučujeme knihy online hello [vytváření prognóz: Principy a postup](https://www.otexts.org/book/fpp).
+> V této části není určena pro použití jako machine learning a předpovídat přehled, ale spíše jako krátký přehled modelování techniky, které se běžně používají pro vyžádání prognózy. Další informace a vzdělávací materiály o časové řady prognózy, důrazně doporučujeme příručce online [vytváření prognóz: Principy a postup](https://www.otexts.org/book/fpp).
 > 
 > 
 
 #### <a name="ma-moving-averagehttpswwwotextsorgfpp62"></a>[**MA (klouzavého průměru)**](https://www.otexts.org/fpp/6/2)
-Klouzavý průměr je jedním z hello první analytické techniky použitého pro předpověď časové řady a je stále jednoho z postupů hello nejčastěji používaná k dnešnímu dni. Je také hello základ pro pokročilejší prognózy techniky. S klouzavý průměr jsme jsou prognózy hello další datového bodu jako průměr prostřednictvím hello K nejnovější bodů, kde K označuje hello pořadí hello klouzavý průměr.
+Klouzavý průměr je jedním z první analytické techniky, které již byly použity pro předpověď časové řady a je stále jedním z nejčastěji nejčastěji používané techniky k dnešnímu dni. Je také základem pro pokročilejší prognózy techniky. S klouzavý průměr jsme jsou prognózy další datového bodu jako průměr prostřednictvím tisíc nejnovější bodů, kde K označuje pořadí klouzavého průměru.
 
-Přesunutí průměrná technika Hello efekt hello vyhlazení hello prognózy a nemusí proto zpracovat dobře velké volatility v datech hello.
+Přesunutí průměrná technika má za následek vyhlazování prognózy a nemusí proto zpracovat dobře velké volatility v datech.
 
 #### <a name="ets-exponential-smoothinghttpswwwotextsorgfpp75"></a>[**ETS (exponenciální vyrovnání)**](https://www.otexts.org/fpp/7/5)
-Exponenciální vyhlazování (ETS) je rodina různé metody, které používají váženým průměrem poslední datových bodů v pořadí toopredict hello další datového bodu. je vhodné Hello je vyšší váhou tooassign toomore poslední hodnoty a postupně snížit tento váha pro starší měřené hodnoty. Existuje několik různých metod s této rodině, některé z nich patří například zpracování sezónnosti v datech hello [Holt Winters sezónní metoda](https://www.otexts.org/fpp/7/5).
+Exponenciální vyhlazování (ETS) je rodina různé metody, které používají váženým průměrem poslední datové body k předvídání další datového bodu. Cílem je, a přiřadit vyšší váhou novější hodnoty postupně snížit tento váha pro starší měřené hodnoty. Existuje několik různých metod s této rodině, některé z nich zahrnout zpracování sezónnosti v datech, jako [Holt Winters sezónní metoda](https://www.otexts.org/fpp/7/5).
 
-Některé z těchto metod také zvážit hello sezónnosti dat hello.
+Některé z těchto metod také zvážit sezónnosti data.
 
 #### <a name="arima-auto-regression-integrated-moving-averagehttpswwwotextsorgfpp8"></a>[**ARIMA (automatické regrese integrovaný klouzavý průměr)**](https://www.otexts.org/fpp/8)
-Automatické regrese integrované přesunutí průměrná (ARIMA) je jiné rodiny metod, které se běžně používá pro předpověď časové řady. Auto-regression metody prakticky kombinuje s klouzavý průměr. Auto-regression metody použití modelů regrese provedením předchozích časových řad hodnoty v pořadí toocompute hello další datum bodu. Metody ARIMA platí také rozdílové metody, které obsahují výpočet hello rozdíl mezi datovými body a jejich namísto hello původní měřené hodnoty použití. Nakonec ARIMA také využívá hello přesunutí průměrná techniky, které jsou popsané výše. Hello kombinace všechny tyto metody v různé způsoby, kterými je konstrukce hello řadu metody ARIMA.
+Automatické regrese integrované přesunutí průměrná (ARIMA) je jiné rodiny metod, které se běžně používá pro předpověď časové řady. Auto-regression metody prakticky kombinuje s klouzavý průměr. Chcete-li výpočetní další bod datum metody Automatické regrese použijte regrese modely provedením předchozích časových řad hodnoty. Metody ARIMA platí také rozdílové metody, které obsahují výpočet rozdílu mezi datovými body a jejich namísto původní hodnoty měřených použití. Nakonec ARIMA také využívá přesunutí průměrná techniky, které jsou popsané výše. Kombinace všechny tyto metody v různé způsoby, kterými je co vytvoří řadu metody ARIMA.
 
-ETS a ARIMA se často používá dnes pro prognózy vyžádání energie a mnoho dalších prognózy problémů. V mnoha případech tyto jsou sloučeny společně toodeliver velmi přesné výsledky.
+ETS a ARIMA se často používá dnes pro prognózy vyžádání energie a mnoho dalších prognózy problémů. V mnoha případech se zkombinují společně k poskytování velmi přesné výsledky.
 
-**Obecné vícenásobná regrese** modely regrese může být hello nejdůležitější modelování přístup v rámci domény hello strojové učení a statistiky. V kontextu hello časové řady použijeme regresní toopredict hello budoucí hodnoty (*například*, poptávky). V regrese jsme trvat lineární kombinaci hello prognostické a další hello váhu (také odkazované tooas koeficienty) tyto prognostické během procesu školení hello. cílem Hello je tooproduce regrese řádek, který bude prognózy naše předpovězené hodnoty. Regrese metody jsou vhodné, když Cílová proměnná hello je číselné a proto také vyhovuje prognózy časové řady. Je širokou škálu regrese metody včetně velmi jednoduché regrese modely, jako například [lineární regrese](https://en.wikipedia.org/wiki/Linear_regression) a další pokročilé těch, které jsou například rozhodovací stromy, [doménových struktur náhodných](https://en.wikipedia.org/wiki/Random_forest), [Neural Sítě](https://en.wikipedia.org/wiki/Artificial_neural_network)a Boosted Decision Trees.
+**Obecné vícenásobná regrese** modely regrese může být nejdůležitější modelování přístup v rámci domény strojového učení a statistiky. V kontextu časové řady použijeme regresní předpovídat budoucí hodnoty (*například*, poptávky). V regrese jsme trvat lineární kombinaci prognostické a další váhu těchto prognostické (také označované koeficientem) během procesu školení. Cílem je vytvořit regresní přímky, který bude prognózy naše předpovězené hodnoty. Regrese metody jsou vhodné, když Cílová proměnná je číselné a proto také vyhovuje prognózy časové řady. Je širokou škálu regrese metody včetně velmi jednoduché regrese modely, jako například [lineární regrese](https://en.wikipedia.org/wiki/Linear_regression) a další pokročilé těch, které jsou například rozhodovací stromy, [doménových struktur náhodných](https://en.wikipedia.org/wiki/Random_forest), [Neural Sítě](https://en.wikipedia.org/wiki/Artificial_neural_network)a Boosted Decision Trees.
 
-Vytváření energie vyžádání prognózy jako problém regrese nám poskytuje značnou flexibilitu při výběru naší datové funkce, které mohou být kombinovány z data řady čas hello aktuální požadavek a vnějším faktorům, jako je například teploty. Další informace o hello vybrané funkce, které jsou popsané v hello funkce Engineering (najdete v části **Příprava dat a funkce Engineering**) části této scénářem.
+Vytváření energie vyžádání prognózy jako problém regrese nám poskytuje značnou flexibilitu při výběru naší datové funkce, které mohou být kombinovány z aktuální požadavek časových řad dat a vnějším faktorům, jako je například teploty. Další informace o vybrané funkce, které jsou popsané v Engineering funkce (najdete v části **Příprava dat a funkce Engineering**) části této scénářem.
 
-Z našich zkušeností s provádění a nasazení na energii na vyžádání prognózy pilotního zjistili jsme, že hello pokročilé regrese modelů, které jsou dostupné v Azure ML mívají tooproduce hello nejlepších výsledků a budeme používat z nich.
+Z našich zkušeností s provádění a nasazení na energii na vyžádání prognózy pilotního zjistili jsme, že mohou vyvolávat nejlepších výsledků dosáhnete pokročilých regrese modely, které jsou k dispozici v Azure ML a jsme použít z nich.
 
 ## <a name="model-evaluation"></a>Vyhodnocení modelu
-Vyhodnocení modelu má zásadní roli v rámci hello **cyklu vývoje modelu**. V tomto kroku podíváme do ověřování hello modelu a jeho výkon s skutečných dat. Během hello modelování krok použijeme pro trénování modelu hello součástí hello dostupná data. Během fáze hodnocení hello jsme trvat hello zbytek hello data tootest hello modelu. Prakticky znamená, že jsme se napájení modelu hello nové se data, která má se změnili a obsahuje hello stejné funkce jako hello školení datovou sadu. Ale během procesu ověřování hello jsme použít hello modelu toopredict hello Cílová proměnná nemusí poskytovat hello k dispozici Cílová proměnná. Často označujeme toothis proces jako vyhodnocování modelu. Používáme by pak hello true cílové hodnoty a porovnejte je s hello těch, které jsou předpovědět. Hello cílem je toomeasure a minimalizovat chyba předpovědi hello, znamená hello rozdíl mezi hello předpovědi a hodnota true hello. Kvantifikace měření chyb hello je klíč, protože jsme by jako toofine tune hello modelu a ověření, zda je ve skutečnosti snížení hello chyby. Upřesnění hello modelu lze provést úpravou modelu parametry, které řídí hello učení procesu nebo přidáním nebo odebráním data funkce (označuje tooas [parametry oblouku](https://channel9.msdn.com/Blogs/Azure/Data-Science-Series-Building-an-Optimal-Model-With-Parameter-Sweep)). Prakticky, znamená, že jsme může potřebovat tooiterate mezi hello funkce technikům, modelování a modelu zkušební fáze vícekrát, dokud jsme jsou možné tooreduce hello chyba toohello požadované úrovni.
+Vyhodnocení modelu má zásadní roli v rámci **cyklu vývoje modelu**. V tomto kroku podíváme do ověřování modelu a jeho výkon s skutečných dat. Během kroku modelování použijeme pro trénování modelu součástí všechna dostupná data. Během fáze hodnocení jsme trvat zbytek dat pro otestování modelu. Prakticky znamená, že jsme se napájení modelu nová data, která má se změnili a obsahuje stejné funkce jako školení datovou sadu. Však během procesu ověření používáme modelu předpovědi Cílová proměnná, nikoli poskytují dostupné Cílová proměnná. Často označujeme jako model vyhodnocování tohoto procesu. Pak jsme použije true cílové hodnoty a porovnejte je s předpokládaných těm, které jsou. Cílem je měřit a minimalizovat chyba předpovědi, znamená rozdíl mezi jsou předpovědi a hodnota true. Kvantifikace měření chyb je klíč, protože jsme chtěli doladit modelu a ověření, zda je ve skutečnosti snížení chyba. Doladění modelu lze provést úpravou modelu parametry, které řídí proces learning nebo přidáním nebo odebráním data funkce (označuje jako [parametry oblouku](https://channel9.msdn.com/Blogs/Azure/Data-Science-Series-Building-an-Optimal-Model-With-Parameter-Sweep)). Prakticky to znamená, že může potřebujeme k iteraci mezi funkce technikům, modelování a modelu zkušební fáze několikrát, dokud jsme snižte chyba na požadované úrovni.
 
-Je důležité, že tooemphasis, že chyba předpovědi hello nebude nikdy nula, protože to se nikdy model, který lze přesně odhadnout každý výsledek. Je však určitého rozsahu chyby, která je akceptovatelná podle hello firmy. Během procesu ověřování hello rádi bychom znali tooensure, že naše chyba předpovědi modelu je v hello úroveň nebo lépe než hello firmy tolerance úrovně. Proto je důležité tooset hello úroveň hello přípustné chyby na začátku hello hello cyklus během hello **problém formulování** fáze.
+Je důležité zvýraznění, že chyba předpovědi nebude nikdy nulové se nikdy model, který lze přesně odhadnout každý výsledek. Je však určitého rozsahu chyby, která je akceptovatelná podle firmy. Během procesu ověření bychom rádi zajistěte, aby naše chyba předpovědi modelu na úrovni nebo lepší než úroveň tolerance firmy. Proto je důležité nastavit úroveň přípustné chyby na začátku cyklu během **problém formulování** fáze.
 
 ### <a name="typical-evaluation-techniques"></a>Techniky typické vyhodnocení
-Existují různé způsoby, ve které předpovědi chyba měří a kvantifikovány. V této části se zaměříme hello diskuzi na vyhodnocení techniky relevantní tootime řady a v konkrétní pro vyžádání energie prognózy.
+Existují různé způsoby, ve které předpovědi chyba měří a kvantifikovány. V této části se zaměříme diskuzi na vyhodnocení techniky, které jsou relevantní pro časovou řadu a specifické pro vyžádání energie prognózy.
 
 #### <a name="mapehttpsenwikipediaorgwikimeanabsolutepercentageerror"></a>[**MAPE**](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error)
-MAPE znamená znamenat absolutní chyba procento. S MAPE jsme jsou computing hello rozdíl mezi každou prognózy bodu a skutečnou hodnotu hello tohoto bodu. Potom jsme vyčíslení hello chyb na bodu pomocí výpočtu hello podíl hello rozdíl relativní toohello skutečnou hodnotu. V posledním kroku průměrná jsme tyto hodnoty. matematický vzorec Hello používá pro MAPE je hello následující:
+MAPE znamená znamenat absolutní chyba procento. S MAPE jsme jsou computing rozdíl mezi každou naplánované bodu a skutečnou hodnotou tohoto bodu. Potom jsme vyčíslení chyba jednotlivých bodů pomocí výpočtu poměru rozdíl vzhledem k aktuální hodnotu. V posledním kroku průměrná jsme tyto hodnoty. Matematický vzorec použitý pro MAPE je následující:
 
 ![Vzorec MAPE](media/cortana-analytics-playbook-demand-forecasting-energy/mape-formula.png)
-*kde A<sub>t</sub> je skutečnou hodnotu hello F<sub>t</sub> je hello předpovězené hodnoty a n je hello prognózy horizont.*
+*kde A<sub>t</sub> je skutečná hodnota F<sub>t</sub> je předpovězené hodnoty a n je prognózy horizont.*
 
 ## <a name="deployment"></a>Nasazení
-Jakmile jsme nailed dolů hello modelování fáze a ověření výkonu modelu hello jsme připravené toogo do fáze nasazení hello. V tomto kontextu nasazení znamená povolení hello zákazníka tooconsume hello modelu spuštěním skutečné předpovědi na něm ve velkém měřítku. Hello konceptu nasazení je klíč v Azure ML, protože naším hlavním cílem je tooconstantly vyvolání předpovědi jako názvem na rozdíl od toojust získání hello přehledy z hello data. fáze nasazení Hello je hello část, kde povolíme toobe modelu hello využívat ve velkém měřítku.
+Jakmile jsme nailed dolů fázi modelování a ověření výkonu modelu jsme připravení přejít do fáze nasazení. V tomto kontextu znamená nasazení, umožňující klientovi využívat modelu spuštěním skutečné předpovědi na něm ve velkém měřítku. Koncept nasazení je klíč v Azure ML, protože naše hlavním cílem je neustále vyvolání předpovědi oproti právě z dat získat podrobnější informace o. Fáze nasazení je část, kde jsme povolit model, který se má používat při velkém měřítku.
 
-V rámci kontextu hello prognózy poptávky energie naše cílem je tooinvoke nepřetržitý a pravidelné prognózy při zajištění, že je k dispozici pro hello model čerstvá data a že hello naplánované, že data se odesílají zpět toohello náročné klienta.
+V kontextu prognózy vyžádání energie naše cílem je vyvolání nepřetržitý a pravidelné prognózy a zajistit, že je k dispozici pro model čerstvá data a že prognózy data se odesílají zpět do klienta náročná.
 
 ### <a name="web-services-deployment"></a>Nasazení webové služby
-Hello hlavní nasadit stavební Azure ML je hello webové služby. Toto je hello co nejúčinnější způsob, jak tooenable spotřeby prediktivního modelu v cloudu hello. zapouzdří hello modelu Hello webové služby a zabalí s [dosáhl standardu RESTful](http://www.restapitutorial.com/) rozhraní API (Application Programming Interface). Hello rozhraní API slouží jako součást žádný kód klienta, jak je znázorněno v následujícím diagramu hello.
+Hlavní nasadit stavební blok v Azure ML je webová služba. Toto je co nejúčinnější způsob, jak povolit spotřeba prediktivního modelu v cloudu. Webové služby zapouzdří modelu a zabalí s [dosáhl standardu RESTful](http://www.restapitutorial.com/) rozhraní API (Application Programming Interface). Rozhraní API slouží jako součást žádný kód klienta, jak je znázorněno v následujícím diagramu.
 
 ![Jsme nasazení služby a spotřeba](media/cortana-analytics-playbook-demand-forecasting-energy/web-service-deployment-and-consumption.png)
 
-Jak je vidět, hello webové služby je nasazena v hello Cortana Intelligence Suite cloudu a mohou být vyvolány pomocí jeho zveřejněné koncový bod REST API. Jiný typ klientů v různých doménách, můžete současně vyvolat hello služby prostřednictvím hello webového rozhraní API. Hello webové služby můžete škálovat také pro podporu tisíce souběžných volání.
+Jak je vidět, webové služby je nasazen v cloudu Cortana Intelligence Suite a mohou být vyvolány pomocí jeho zveřejněné koncový bod REST API. Jiný typ klientů v různých doménách, můžete současně vyvolat služby pomocí rozhraní Web API. Pro podporu tisíce souběžných volání můžete škálovat také webovou službu.
 
 ### <a name="a-typical-solution-architecture"></a>Architektura typické řešení
-Při nasazování vyžádání energie prognózy řešení, jsme mají zájem o nasazení řešení tooend end, která překročí hello předpovědi webové služby a usnadňuje hello celého datového toku. V době hello jsme vyvolání nové prognózy by potřebujeme toomake se, že tento model hello předány s funkcemi aktuální data. Která znamená, že hello nově shromážděných nezpracovaných dat je neustále požity, zpracování a transformovat na hello požadovaná sada na který hello model byl vytvořený funkcí. Na hello stejný čas, jsme chcete toomake hello naplánované pro hello k dispozici data ukončení náročné klientů. Příklad datového toku cyklus (nebo datovém kanálu) je znázorněno v následujícím diagramu hello:
+Při nasazování vyžádání energie prognózy řešení, jsme zajímá nasazení koncová řešení, které překročí předpovědi webové služby a usnadňuje celého datového toku. V době jsme vyvolání novou prognózu by potřebujeme zajistit, že je model dodáni s funkcemi aktuální data. Která znamená, že nově shromážděných nezpracovaná data je neustále požity, zpracování a transformovat na požadovaná sada ve model byl vytvořený funkcí. Ve stejnou dobu bychom rádi zpřístupnit pro element end, které využívají klienti dat prognózy. Příklad datového toku cyklus (nebo datovém kanálu) je znázorněno v následujícím diagramu:
 
-![Spotřeby energie prognózy End tooEnd toku dat](media/cortana-analytics-playbook-demand-forecasting-energy/energy-demand-forecase-end-data-flow.png)
+![Tok dat koncová prognózy spotřeby energie](media/cortana-analytics-playbook-demand-forecasting-energy/energy-demand-forecase-end-data-flow.png)
 
-Toto jsou hello kroky, které provést jako součást hello energie vyžádání prognózy cyklus:
+Toto jsou kroky, které provést v rámci prognózy cyklu na energii na vyžádání:
 
 1. Miliony měřidla nasazené data jsou neustále generování spotřebě energie v reálném čase.
 2. Tato data se shromažďují a nahrál do úložiště v cloudu (*například*, objektů Blob v Azure).
-3. Před zpracováním, nezpracovaná data hello je agregované tooa transformovny nebo regionální úrovni, jak je definována hello firmy.
-4. Hello funkce zpracování (viz **Příprava dat a zpracování funkce**) pak probíhá a vytváří hello data, která je vyžadována pro model cvičení nebo vyhodnocování – hello funkce sady dat je uložená v databázi (*např*, SQL Azure).
-5. je volána Hello znovu cvičení služby hello toore train model – aktualizovat verzi hello modelu prognózy je trvalé, takže ji můžete použít hello vyhodnocování webové služby.
-6. Hello vyhodnocování webové služby je volána podle plánu, který vyhovuje hello požadované prognózy frekvence.
-7. Hello naplánované, že data jsou uložena v databázi, která je přístupná hello end spotřeby klienta.
-8. Hello spotřeba klient načte hello prognózy, použije ji zpět do hello mřížky a využívá v souladu s případ použití hello vyžaduje.
+3. Před zpracováním, nezpracovaná data se shromažďují na místní úrovni nebo transformovny podle definice firmy.
+4. Funkce zpracování (viz **Příprava dat a zpracování funkce**) pak proběhne a vytváří data, která je vyžadována pro model cvičení nebo vyhodnocování – funkce sady dat je uložená v databázi (*např*, SQL Azure).
+5. Je volána službu znovu školení pro znovu trénování modelu prognózy lze – je trvalé tuto aktualizovanou verzi modelu, takže lze vyhodnocování webovou službou.
+6. Vyhodnocování webová služba je vyvolána podle plánu, který nejlépe odpovídá na požadovanou četnost prognózy.
+7. Prognózy data jsou uložena v databázi, která byla přístupná pomocí klienta spotřeba end.
+8. Spotřeba klient načte prognózy, použije ji zpět do mřížky a využívá v souladu s případ vyžaduje použití.
 
-Je důležité toonote, který tento celý cyklus je zcela automatizovat a spouští podle plánu. Hello orchestraci celý tento cyklus dat lze provést pomocí nástrojů, jako [Azure Data Factory](http://azure.microsoft.com/services/data-factory/).
+Je důležité si uvědomit, že tento celý cyklus je zcela automatizovat a spouští podle plánu. Celý orchestraci tento cyklus dat lze provést pomocí nástrojů, jako [Azure Data Factory](http://azure.microsoft.com/services/data-factory/).
 
-### <a name="end-tooend-deployment-architecture"></a>Ukončení tooEnd architektura nasazení služby
-V pořadí toopractically nasadit do energie vyžádání prognózy řešení na webu Cortana Intelligence, potřebujeme tooensure že hello požadované součásti jsou vytvořeno a správně nakonfigurován.
+### <a name="end-to-end-deployment-architecture"></a>Architektura a provést tak kompletní nasazení
+Abyste mohli nasadit prakticky do energie vyžádání prognózy řešení na webu Cortana Intelligence, potřebujeme zajistit, že požadované součásti jsou vytvořeno a správně nakonfigurován.
 
-Hello následující diagram znázorňuje typické Cortana Intelligence na základě architektury, který implementuje a orchestruje hello cyklus toku dat, který je popsaný výše:
+Následující diagram znázorňuje typické Cortana Intelligence na základě architektury, který implementuje a orchestruje cyklus toku dat, které je popsáno výše:
 
-![Ukončení tooEnd architektura nasazení služby](media/cortana-analytics-playbook-demand-forecasting-energy/architecture.png)
+![Architektura a provést tak kompletní nasazení](media/cortana-analytics-playbook-demand-forecasting-energy/architecture.png)
 
-Další informace o jednotlivých součástí hello a celý architektura hello naleznete toohello šablona řešení energie.
+Další informace o jednotlivých komponent a celý architektura naleznete šablona řešení energie.
 

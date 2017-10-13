@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure kanál Operational prostředků infrastruktury služby | Microsoft Docs"
-description: "Úplný seznam protokolů generovaných v clusterech pro provozní kanál služby Azure Service Fabric hello."
+title: "Provozní kanál služby Azure Fabric | Microsoft Docs"
+description: "Úplný seznam protokolů generovaných v clusterech provozní kanál služby Azure Service Fabric."
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/19/2017
 ms.author: dekapur
-ms.openlocfilehash: 358782420ed62b202d6a89fe0f200b5ef0384c9c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 934719868ab9968db352db2b440014d35dbc0274
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/29/2017
 ---
 # <a name="operational-channel"></a>Provozní kanál 
 
-provozní kanál Hello se skládá z protokolů z vysoké úrovně akci, kterou provádí na uzly a cluster Service Fabric. Pokud je povolená "Diagnostika" pro cluster, hello Azure Diagnostics agenta je nasazen v clusteru a je ve výchozím nastavení nakonfigurovaná tooread protokoly z hello provozní kanál. Další informace o konfiguraci hello [agenta Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md) toomodify hello diagnostiky konfiguraci vašeho clusteru toopick další protokoly nebo čítače výkonu. 
+Provozní kanál se skládá z protokolů z vysoké úrovně akci, kterou provádí na uzly a cluster Service Fabric. Pokud "Diagnostika" je povolena pro cluster, agent Azure Diagnostics je nasazený na clusteru a je ve výchozím nastavení nakonfigurován tak, aby si přečíst protokoly z provozní kanál. Další informace o konfiguraci [agenta Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md) ke změně konfigurace diagnostiky clusteru a vyberte další protokoly nebo čítače výkonu. 
 
 ## <a name="operational-channel-logs"></a>Protokoly pro provozní kanál 
 
-Tady je kompletní seznam protokolů poskytované Service Fabric v hello provozní kanál. 
+Tady je kompletní seznam protokolů poskytované Service Fabric v provozní kanál. 
 
 | ID události | Name (Název) | Zdroj (úloha) | Úroveň |
 | --- | --- | --- | --- |
@@ -56,6 +56,6 @@ Tady je kompletní seznam protokolů poskytované Service Fabric v hello provozn
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o celkové [generování událostí na úrovni platformy hello](service-fabric-diagnostics-event-generation-infra.md) v Service Fabric
-* Úprava vaše [Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md) toocollect konfigurace více protokolů.
-* [Nastavení služby Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) toosee provozní kanál protokolů
+* Další informace o celkové [generování událostí na úrovni platformy](service-fabric-diagnostics-event-generation-infra.md) v Service Fabric
+* Úprava vaše [Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md) konfigurace shromažďovat další protokoly
+* [Nastavení služby Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) zobrazíte vaše provozní kanálu protokoly

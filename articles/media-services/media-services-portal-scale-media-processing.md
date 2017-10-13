@@ -1,6 +1,6 @@
 ---
-title: "hello aaaScale média zpracování pomocí portálu Azure | Microsoft Docs"
-description: "Tento kurz vás provede kroky hello škálování média zpracování pomocí hello portálu Azure."
+title: "Škálování zpracování média pomocí portálu Azure | Microsoft Docs"
+description: "V tomto kurzu vás provede jednotlivými kroky škálování média zpracování pomocí portálu Azure."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/04/2017
 ms.author: juliako
-ms.openlocfilehash: 89240c6f7579b8795e7b47f2b1c398b1d5477e20
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 46ca29d3e66701f2abcb185791089e94761984e8
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="change-hello-reserved-unit-type"></a>Změna hello vyhrazený typ jednotky.
+# <a name="change-the-reserved-unit-type"></a>Změna typu rezervované jednotky
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encoding-units.md)
 > * [Azure Portal](media-services-portal-scale-media-processing.md)
@@ -32,32 +32,32 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="overview"></a>Přehled
 
-Účet Media Services je přidružen vyhrazené jednotky typu, který určuje rychlost hello, ke které se zpracovávají médiu zpracování úlohy. Můžete si vybrat mezi hello následující vyhrazené typy jednotka: **S1**, **S2**, nebo **S3**. Například hello stejné úlohy kódování běží rychleji, pokud použijete hello **S2** jednotku rezervovanou typ porovnání toohello **S1** typu.
+Účet Media Services je přidružený k typu rezervované jednotky, který určuje rychlost zpracování vašich úloh zpracování médií. Můžete si vybrat mezi následujícími typy rezervovaných jednotek: **S1**, **S2** nebo **S3**. Například stejná úloha kódování bude rychlejší, když použijete typ rezervované jednotky **S2**, než kdybyste použili typ **S1**.
 
-Kromě toho toospecifying hello vyhrazený typ jednotky, můžete zadat tooprovision vašeho účtu pomocí **jednotek rezervovaných** (ruština). Hello počet zřízené RUs určuje hello počet úloh média, jež lze současně zpracovávat v daném účtu.
+Kromě určení typu rezervované jednotky můžete určit, že chcete účet zřídit s **rezervovanými jednotkami** (RU). Počet zřízených RU určuje počet úloh médií, které je možné v daném účtu zpracovávat současně.
 
 >[!NOTE]
 >RU fungují pro paralelní provádění veškerého zpracování médií, včetně úloh indexování pomocí Azure Media Indexeru. Ale na rozdíl od kódování se úlohy indexování s rychlejšími rezervovanými jednotkami nezpracovávají rychleji.
 
 > [!IMPORTANT]
-> Ujistěte se, zda text hello tooreview [přehled](media-services-scale-media-processing-overview.md) tématu tooget Další informace o škálování média zpracování tématu.
+> Projděte si [přehled](media-services-scale-media-processing-overview.md) tématu, které chcete získat další informace o škálování média zpracování tématu.
 > 
 > 
 
 ## <a name="scale-media-processing"></a>Škálování zpracování médií
-toochange hello vyhrazené jednotky typu a hello počet jednotek rezervovaných hello následující:
+Chcete-li změnit typ jednotku rezervovanou a počet jednotek rezervovaných, postupujte takto:
 
-1. V hello [portál Azure](https://portal.azure.com/), vyberte svůj účet Azure Media Services.
-2. V hello **nastavení** vyberte **jednotky rezervované pro média**.
+1. Na webu [Azure Portal](https://portal.azure.com/) zvolte účet Azure Media Services.
+2. V **nastavení** vyberte **jednotky rezervované pro média**.
    
-    toochange hello počet jednotek rezervovaných pro hello vybrali jednotku rezervovanou typ, použijte hello **obsluhovat jednotky média** posuvníku.
+    Chcete-li změnit počet jednotek rezervovaných pro vybranou jednotku rezervovanou typ, použijte **obsluhovat jednotky média** posuvníku.
    
-    toochange hello **vyhrazený typ jednotky**, stiskněte klávesu S1, S2 nebo S3.
+    Chcete-li změnit **vyhrazený typ jednotky**, stiskněte klávesu S1, S2 nebo S3.
    
     ![Stránka procesorů](./media/media-services-portal-scale-media-processing/media-services-scale-media-processing.png)
-3. Změny ULOŽTE hello stiskněte tlačítko toosave.
+3. Stisknutím tlačítka ULOŽIT uložte provedené změny.
    
-    Hello nové vyhrazené jednotky jsou přiděleny po stisknutí klávesy uložit.
+    Nové vyhrazené jednotky jsou přiděleny po stisknutí klávesy uložit.
 
 ## <a name="next-steps"></a>Další kroky
 Prohlédněte si mapy kurzů k Media Services.

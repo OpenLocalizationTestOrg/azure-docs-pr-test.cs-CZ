@@ -1,6 +1,6 @@
 ---
-title: "konektor OneDrive hello aaaAdd ve vašich Logic Apps | Microsoft Docs"
-description: "Přehled konektoru OneDrive hello s parametry rozhraní REST API"
+title: "Přidejte konektor OneDrive ve vašich Logic Apps | Microsoft Docs"
+description: "Přehled konektoru OneDrive s parametry rozhraní REST API"
 services: logic-apps
 documentationcenter: 
 author: MandiOhlinger
@@ -15,80 +15,80 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 8303794bb3c2844de288f87f40639abb84c160fa
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 63bd33bf4e09b98aa53dcfec9fcc4a0109204952
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="get-started-with-hello-onedrive-connector"></a>Začínáme s konektorem OneDrive hello
-Připojte tooOneDrive toomanage vaše soubory, včetně nahrávání, get, odstraňte soubory a další. 
+# <a name="get-started-with-the-onedrive-connector"></a>Začínáme s konektorem OneDrive
+Připojte se ke Onedrivu spravovat vaše soubory, včetně nahrávání, získat, odstraňte soubory a další. 
 
 S OneDrive můžete: 
 
 * Vytvoření pracovního postupu uložením souborů na Onedrivu, nebo aktualizovat existující soubory na OneDrive. 
-* Použijte toostart aktivuje pracovní postup, pokud soubor se vytvoří nebo aktualizuje v rámci OneDrive.
-* Pomocí akce toocreate souboru, odstraňte soubor a další. Například pokud byl přijat nový Office 365 e-mail s přílohou (aktivační události) vytvořte nový soubor ve Onedrivu (akce).
+* Spustit pracovní postup v případě, že soubor se vytvoří nebo aktualizuje v rámci OneDrive pomocí aktivační události.
+* Použijte k vytvoření souboru, odstraňte soubor a další akce. Například pokud byl přijat nový Office 365 e-mail s přílohou (aktivační události) vytvořte nový soubor ve Onedrivu (akce).
 
-Toto téma ukazuje, jak toouse hello konektoru aplikace logiky na OneDrive a také seznamy hello triggery a akce.
+Toto téma ukazuje, jak k používání konektoru OneDrive v aplikaci logiky a taky seznam triggery a akce.
 
-toolearn Další informace o Logic Apps, najdete v části [co jsou logic apps](../logic-apps/logic-apps-what-are-logic-apps.md) a [vytvoření aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md).
+Další informace o Logic Apps najdete v tématu [co jsou logic apps](../logic-apps/logic-apps-what-are-logic-apps.md) a [vytvoření aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md).
 
-## <a name="connect-tooonedrive"></a>Připojit tooOneDrive
-Než se aplikace logiky k jakékoli služby, nejprve vytvořit *připojení* toohello služby. Připojení poskytuje připojení mezi aplikace logiky a jiné služby. Například tooconnect tooOneDrive, musíte nejdřív OneDrive *připojení*. toocreate připojení, zadejte přihlašovací údaje hello normálně používat tooaccess hello službu, kterou chcete tooconnect k. Ano OneDrive, zadejte hello pověření tooyour OneDrive účet toocreate hello připojení.
+## <a name="connect-to-onedrive"></a>Připojte se ke Onedrivu
+Než se aplikace logiky k jakékoli služby, nejprve vytvořit *připojení* ke službě. Připojení poskytuje připojení mezi aplikace logiky a jiné služby. Například pokud chcete připojit k Onedrivu, musíte nejdřív OneDrive *připojení*. Chcete-li vytvořit připojení, zadejte přihlašovací údaje, které standardně používáte k přístupu ke službě, který chcete připojit k. Ano s OneDrive, zadejte přihlašovací údaje ke svému účtu Onedrivu k vytvoření připojení.
 
-### <a name="create-hello-connection"></a>Vytvoření připojení hello
-> [!INCLUDE [Steps toocreate a connection tooOneDrive](../../includes/connectors-create-api-onedrive.md)]
+### <a name="create-the-connection"></a>Vytvoření připojení
+> [!INCLUDE [Steps to create a connection to OneDrive](../../includes/connectors-create-api-onedrive.md)]
 > 
 > 
 
 ## <a name="use-a-trigger"></a>Použít aktivační událost
-Aktivační událost je událost, která může být pracovní postup hello použité toostart definované v aplikaci logiky. Aktivační události "dotazování" hello služby intervalu a frekvenci, který chcete. [Další informace o aktivační události](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
+Aktivační událost je událost, která můžete použít ke spuštění pracovního postupu definované v aplikaci logiky. Aktivační události "dotazování" službu v intervalem a frekvenci, který chcete. [Další informace o aktivační události](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
 
-1. V aplikaci logiky hello zadejte "onedrive" tooget seznam hello aktivační události:  
+1. V aplikaci logiky zadejte "onedrive" získat seznam aktivačních událostí:  
    
     ![](./media/connectors-create-api-onedrive/onedrive-1.png)
-2. Vyberte **změny souboru**. Pokud připojení již existuje, pak vyberte hello zobrazit výběr tlačítko tooselect složku.
+2. Vyberte **změny souboru**. Pokud připojení již existuje, pak vyberte tlačítko Zobrazit výběr vyberte složku.
    
     ![](./media/connectors-create-api-onedrive/sample-folder.png)
    
-    Pokud jste výzvami toosign v, zadejte přihlašovací hello podrobnosti toocreate hello připojení. [Vytvoření připojení hello](connectors-create-api-onedrive.md#create-the-connection) v tomto tématu jsou uvedeny kroky hello. 
+    Pokud budete vyzváni k přihlášení, pak zadejte přihlašovací údaje pro vytvoření připojení. [Vytvoření připojení](connectors-create-api-onedrive.md#create-the-connection) v tomto tématu jsou uvedeny kroky. 
    
    > [!NOTE]
-   > V tomto příkladu aplikace logiky hello spustí při otevření souboru ve složce hello, který zvolíte, se aktualizuje. toosee hello výsledky této aktivační události, přidejte další akci, která vám pošle e-mailu. Například přidejte hello Office 365 Outlook *e-mailovou zprávu* akci, která odešle e-mail, když se aktualizuje soubor. 
+   > V tomto příkladu spustí aplikaci logiky při otevření souboru ve složce, kterou zvolíte, se aktualizuje. Pokud chcete zobrazit výsledky této aktivační události, přidejte další akci, která vám pošle e-mailu. Například přidejte Office 365 Outlook *e-mailovou zprávu* akci, která odešle e-mail, když se aktualizuje soubor. 
 
-3. Vyberte hello **upravit** tlačítko a nastavte hello **frekvence** a **Interval** hodnoty. Například pokud chcete hello aktivační událost toopoll každých 15 minut, pak nastavte hello **frekvence** příliš**minutu**a sadu hello **Interval** příliš**15**. 
+3. Vyberte **upravit** tlačítko a nastavte **frekvence** a **Interval** hodnoty. Například pokud chcete, aby aktivační událost pro cyklické dotazování každých 15 minut, nastavte **frekvence** k **minutu**a nastavte **Interval** k **15**. 
    
     ![](./media/connectors-create-api-onedrive/trigger-properties.png)
-4. **Uložit** změny (levém horním rohu hello panelu nástrojů). Aplikace logiky je uloženo a automaticky povolí.
+4. **Uložit** změny (levém horním rohu panelu nástrojů). Aplikace logiky je uloženo a automaticky povolí.
 
 ## <a name="use-an-action"></a>Použít akci.
-Akce je operace, provádí v pracovním postupu hello definované v aplikaci logiky. [Další informace o akcích](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
+Akce je operace prováděné definované v aplikaci logiky pracovního postupu. [Další informace o akcích](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
 
-1. Vyberte znaménko plus hello. Zobrazí několik možností: **přidat akci**, **přidat podmínku**, nebo jeden z hello **Další** možnosti.
+1. Vyberte znaménko plus. Zobrazí několik možností: **přidat akci**, **přidat podmínku**, nebo jeden z **Další** možnosti.
    
     ![](./media/connectors-create-api-onedrive/add-action.png)
 2. Zvolte **přidat akci**.
-3. Hello textového pole zadejte "onedrive" tooget seznam všechny dostupné akce hello.
+3. Do textového pole zadejte "onedrive" získat seznam všechny dostupné akce.
    
     ![](./media/connectors-create-api-onedrive/onedrive-actions.png) 
-4. V našem příkladu zvolte **OneDrive – vytvoření souboru**. Pokud připojení již existuje, pak vyberte hello **cesta ke složce** tooput hello souboru, zadejte hello **název souboru**a zvolte hello **obsah souboru** chcete:  
+4. V našem příkladu zvolte **OneDrive – vytvoření souboru**. Pokud připojení již existuje, pak vyberte **cesta ke složce** uvést soubor, zadejte **název souboru**a vyberte **obsah souboru** chcete:  
    
     ![](./media/connectors-create-api-onedrive/sample-action.png)
    
-    Pokud budete vyzváni k hello informace o připojení, zadejte hello podrobnosti toocreate hello připojení. [Vytvoření připojení hello](connectors-create-api-onedrive.md#create-the-connection) v tomto tématu popisuje tyto vlastnosti. 
+    Pokud se zobrazí výzva pro informace o připojení, zadejte podrobnosti k vytvoření připojení. [Vytvoření připojení](connectors-create-api-onedrive.md#create-the-connection) v tomto tématu popisuje tyto vlastnosti. 
    
    > [!NOTE]
-   > V tomto příkladu vytvoříme nový soubor ve složce OneDrive. Můžete použít výstup z jiného aktivační událost toocreate hello OneDrive souboru. Například přidejte hello Office 365 Outlook *při doručení nových e-mailů* aktivační události. Pak přidejte hello OneDrive *vytvořit soubor* akci, která používá hello příloh a pole Content-Type v rámci příkazu ForEach toocreate hello nový soubor ve Onedrivu. 
+   > V tomto příkladu vytvoříme nový soubor ve složce OneDrive. Výstup z jiného aktivační událost můžete použít k vytvoření souboru OneDrive. Například přidejte Office 365 Outlook *při doručení nových e-mailů* aktivační události. Pak přidejte Onedrivu *vytvořit soubor* akci, která používá příloh a Content-Type pole v rámci příkazu ForEach k vytvoření nového souboru na Onedrivu. 
    > 
    > ![](./media/connectors-create-api-onedrive/foreach-action.png)
 
-5. **Uložit** změny (levém horním rohu hello panelu nástrojů). Aplikace logiky je uloženo a automaticky povolí.
+5. **Uložit** změny (levém horním rohu panelu nástrojů). Aplikace logiky je uloženo a automaticky povolí.
 
 
 ## <a name="connector-specific-details"></a>Podrobnosti o konkrétní konektor
 
-Zobrazit všechny aktivační události a akce definované v hello swagger a také zobrazit žádné limity v hello [connector – podrobnosti](/connectors/onedriveconnector/).
+Zobrazit všechny aktivační události a akce definované v swagger a také zobrazit žádné limity v [connector – podrobnosti](/connectors/onedriveconnector/).
 
 ## <a name="more-connectors"></a>Více konektorů
-Přejděte zpět toohello [rozhraní API seznamu](apis-list.md).
+Přejděte zpět [rozhraní API seznamu](apis-list.md).

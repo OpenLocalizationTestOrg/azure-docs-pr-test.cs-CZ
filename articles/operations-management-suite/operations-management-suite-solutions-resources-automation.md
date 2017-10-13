@@ -1,6 +1,6 @@
 ---
-title: "prostředky služby Automation aaaAzure OMS řešení | Microsoft Docs"
-description: "Řešení v OMS by měl obvykle zahrnovat sady runbook v Azure Automation tooautomate procesy, jako je shromažďování a zpracování dat monitorování.  Tento článek popisuje, jak tooinclude sady runbook a jejich související prostředky v řešení."
+title: "Prostředky služby Azure Automation v OMS řešení | Microsoft Docs"
+description: "Řešení v OMS by měl obvykle zahrnovat sady runbook ve službě Azure Automation k automatizaci procesů, jako je shromažďování a zpracování dat monitorování.  Tento článek popisuje, jak se zahrnuje sady runbook a jejich související prostředky v řešení."
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -15,42 +15,42 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 82a156f89bf77ce25e52e5e4596261ec07a24dae
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c1909183a33ed03d8165671cff25cc8b83b77733
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="adding-azure-automation-resources-tooan-oms-management-solution-preview"></a>Přidání řešení správy OMS tooan prostředky Azure Automation (Preview)
+# <a name="adding-azure-automation-resources-to-an-oms-management-solution-preview"></a>Přidání prostředky Azure Automation OMS řešení pro správu (Preview)
 > [!NOTE]
-> Toto je předběžná dokumentace pro vytváření řešení pro správu v OMS, které jsou aktuálně ve verzi preview. Žádné schéma níže popsané je toochange subjektu.   
+> Toto je předběžná dokumentace pro vytváření řešení pro správu v OMS, které jsou aktuálně ve verzi preview. Žádné schéma popsané níže se mohou změnit.   
 
 
-[Řešení pro správu v OMS](operations-management-suite-solutions.md) by měl obvykle zahrnovat sady runbook v Azure Automation tooautomate procesy, jako je shromažďování a zpracování dat monitorování.  Kromě toorunbooks, účty služby Automation obsahuje prostředky, jako jsou proměnné a plány, které podporují sady runbook hello používá v řešení hello.  Tento článek popisuje, jak tooinclude sady runbook a jejich související prostředky v řešení.
+[Řešení pro správu v OMS](operations-management-suite-solutions.md) by měl obvykle zahrnovat sady runbook ve službě Azure Automation k automatizaci procesů, jako je shromažďování a zpracování dat monitorování.  Účty Automation kromě sady runbook, obsahuje prostředky, jako jsou proměnné a plány, které podporují sady runbook používá v řešení.  Tento článek popisuje, jak se zahrnuje sady runbook a jejich související prostředky v řešení.
 
 > [!NOTE]
-> Použijte parametry a proměnné, které jsou buď požadované, nebo běžné toomanagement řešení a popsané v zprostředkovatele Hello ukázky v tomto článku [vytváření řešení pro správu v Operations Management Suite (OMS)](operations-management-suite-solutions-creating.md) 
+> Ukázky v tomto článku použít parametry a proměnné, které jsou nutné nebo společné pro řešení pro správu a jsou popsány v [vytváření řešení pro správu v Operations Management Suite (OMS)](operations-management-suite-solutions-creating.md) 
 
 
 ## <a name="prerequisites"></a>Požadavky
-Tento článek předpokládá, že jste již obeznámeni s hello následující informace.
+Tento článek předpokládá, že jste již obeznámeni s následujícími informacemi.
 
-- Jak příliš[vytvoření řešení správy](operations-management-suite-solutions-creating.md).
-- Hello struktura [soubor řešení](operations-management-suite-solutions-solution-file.md).
-- Jak příliš[vytváření šablon Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md)
+- Postup [vytvoření řešení správy](operations-management-suite-solutions-creating.md).
+- Struktura [soubor řešení](operations-management-suite-solutions-solution-file.md).
+- Postup [vytváření šablon Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md)
 
 ## <a name="automation-account"></a>Účet Automation
-Všechny prostředky ve službě Azure Automation jsou součástí [účet Automation](../automation/automation-security-overview.md#automation-account-overview).  Jak je popsáno v [OMS pracovní prostor a účet Automation](operations-management-suite-solutions.md#oms-workspace-and-automation-account) není zahrnutý v řešení pro správu hello hello účet Automation, ale musí existovat před instalací hello řešení.  Pokud není k dispozici, se nezdaří instalace řešení hello.
+Všechny prostředky ve službě Azure Automation jsou součástí [účet Automation](../automation/automation-security-overview.md#automation-account-overview).  Jak je popsáno v [OMS pracovní prostor a účet Automation](operations-management-suite-solutions.md#oms-workspace-and-automation-account) účet Automation není zahrnutý v řešení pro správu, ale musí existovat před instalací řešení.  Pokud není k dispozici, se nezdaří instalace řešení.
 
-Hello název každého prostředku automatizace obsahuje název hello jeho účtu Automation.  To se provádí v hello řešení s hello **accountName** parametr jako hello následující ukázka runbook prostředku.
+Název každého prostředku automatizace obsahuje název svůj účet Automation.  To se provádí v řešení s **accountName** parametr jako v následujícím příkladu runbook prostředku.
 
     "name": "[concat(parameters('accountName'), '/MyRunbook'))]"
 
 
 ## <a name="runbooks"></a>Runbooky
-By měly obsahovat všechny sady runbook používá hello řešení v souboru hello řešení tak, aby se vytváří při instalaci hello řešení.  Hello textu hello sady runbook v šabloně hello nemůže obsahovat Přestože, proto byste měli publikovat hello runbook tooa veřejném místě kde je přístupná žádný uživatel instalace řešení.
+By měly obsahovat všechny sady runbook používá řešení v souboru řešení tak, aby se vytváří při instalaci řešení.  Text sady runbook v šabloně nemůže obsahovat Přestože, proto byste měli publikovat sadu runbook na veřejném místě, kde je přístupná žádný uživatel instalaci řešení.
 
-[Azure Automation runbook](../automation/automation-runbook-types.md) prostředky mít typ **Microsoft.Automation/automationAccounts/runbooks** a mít hello strukturu. Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů hello. 
+[Azure Automation runbook](../automation/automation-runbook-types.md) prostředky mít typ **Microsoft.Automation/automationAccounts/runbooks** a mít následující strukturu. Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů. 
 
     {
         "name": "[concat(parameters('accountName'), '/', variables('Runbook').Name)]",
@@ -73,21 +73,21 @@ By měly obsahovat všechny sady runbook používá hello řešení v souboru he
     }
 
 
-Hello vlastnosti pro sady runbook jsou popsány v následující tabulce hello.
+Vlastnosti pro sady runbook jsou popsány v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| runbookType |Určuje typy hello hello sady runbook. <br><br> Skript - skript prostředí PowerShell <br>PowerShell – pracovní postup prostředí PowerShell <br> GraphPowerShell - runbook skriptu grafické prostředí PowerShell <br> GraphPowerShellWorkflow - runbook pracovního postupu grafické prostředí PowerShell |
-| logProgress |Určuje, zda [průběhu záznamy](../automation/automation-runbook-output-and-messages.md) by měl být vygenerován hello sady runbook. |
-| logVerbose |Určuje, zda [podrobných záznamů](../automation/automation-runbook-output-and-messages.md) by měl být vygenerován hello sady runbook. |
-| description |Volitelný popis pro sadu runbook hello. |
-| publishContentLink |Určuje hello obsah sady runbook hello. <br><br>identifikátor URI - toohello obsah identifikátoru Uri hello sady runbook.  Bude jím souboru s příponou .ps1 pro prostředí PowerShell a skript sady runbook a soubor exportovaný grafický runbook pro sadu runbook grafu.  <br> verze - verzi hello runbook pro vlastní sledování. |
+| runbookType |Určuje typy sady runbook. <br><br> Skript - skript prostředí PowerShell <br>PowerShell – pracovní postup prostředí PowerShell <br> GraphPowerShell - runbook skriptu grafické prostředí PowerShell <br> GraphPowerShellWorkflow - runbook pracovního postupu grafické prostředí PowerShell |
+| logProgress |Určuje, zda [průběhu záznamy](../automation/automation-runbook-output-and-messages.md) by měl být vygenerován pro sadu runbook. |
+| logVerbose |Určuje, zda [podrobných záznamů](../automation/automation-runbook-output-and-messages.md) by měl být vygenerován pro sadu runbook. |
+| Popis |Volitelný popis pro sadu runbook. |
+| publishContentLink |Určuje obsah sady runbook. <br><br>identifikátor URI – identifikátor Uri, který obsah sady runbook.  Bude jím souboru s příponou .ps1 pro prostředí PowerShell a skript sady runbook a soubor exportovaný grafický runbook pro sadu runbook grafu.  <br> verze - verze sady runbook pro vlastní sledování. |
 
 
 ## <a name="automation-jobs"></a>Automatizace úloh
-Když spustíte runbook ve službě Azure Automation, vytvoří úlohu automatizace.  Můžete přidat automatizaci úlohy prostředků tooyour řešení tooautomatically spuštění sady runbook při instalaci hello řešení pro správu.  Tato metoda je obvykle používanými toostart sady runbook, které se používají pro počáteční konfiguraci hello řešení.  Vytvoření toostart sady runbook v pravidelných intervalech [plán](#schedules) a [plán úloh](#job-schedules)
+Když spustíte runbook ve službě Azure Automation, vytvoří úlohu automatizace.  Prostředek automatizace úloh můžete přidat do vašeho řešení na automatické spuštění sady runbook, když je nainstalován do řešení pro správu.  Tato metoda se obvykle používá ke spuštění sady runbook, které se používají pro počáteční konfiguraci řešení.  Chcete-li spuštění sady runbook v pravidelných intervalech, vytvořte [plán](#schedules) a [plán úloh](#job-schedules)
 
-Úloha prostředky mít typ **Microsoft.Automation/automationAccounts/jobs** a mít hello strukturu.  Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů hello. 
+Úloha prostředky mít typ **Microsoft.Automation/automationAccounts/jobs** a mít následující strukturu.  Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů. 
 
     {
       "name": "[concat(parameters('accountName'), '/', parameters('Runbook').JobGuid)]",
@@ -109,20 +109,20 @@ Když spustíte runbook ve službě Azure Automation, vytvoří úlohu automatiz
       }
     }
 
-Hello vlastnosti pro automatizaci úloh jsou popsané v následující tabulce hello.
+Vlastnosti pro automatizaci úloh jsou popsané v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| sady runbook |Jeden název entity s názvem hello hello runbook toostart. |
-| parameters |Entita pro každou hodnotu parametru vyžadovanou hello runbook. |
+| sady runbook |Jeden název entity s názvem runbook spustit. |
+| Parametry |Entita pro každou hodnotu parametru vyžaduje sadu runbook. |
 
-Úloha Hello zahrnuje hello název sady runbook a všechny toobe hodnoty parametru odeslané toohello runbook.  úlohy Hello by [závisí na](operations-management-suite-solutions-solution-file.md#resources) hello runbook, která se spouští od hello runbook musí být vytvořeny před hello úlohy.  Pokud máte více sad runbook, který by měl být spuštěn můžete definovat jejich pořadí tak, že úloha závisí na jiné úlohy, které by měl být spuštěn první.
+Úloha obsahuje název sady runbook a všechny hodnoty parametrů pro odeslání do runbooku.  Úloha by měla [závisí na](operations-management-suite-solutions-solution-file.md#resources) před úlohy je třeba vytvořit runbook, která se spouští od runbooku.  Pokud máte více sad runbook, který by měl být spuštěn můžete definovat jejich pořadí tak, že úloha závisí na jiné úlohy, které by měl být spuštěn první.
 
-Hello název prostředku úlohy musí obsahovat identifikátor GUID, který je obvykle přiřadila parametr.  Další informace o parametrech identifikátor GUID v [vytváření řešení v Operations Management Suite (OMS)](operations-management-suite-solutions-solution-file.md#parameters).  
+Název prostředku úlohy musí obsahovat identifikátor GUID, který je obvykle přiřadila parametr.  Další informace o parametrech identifikátor GUID v [vytváření řešení v Operations Management Suite (OMS)](operations-management-suite-solutions-solution-file.md#parameters).  
 
 
 ## <a name="certificates"></a>Certifikáty
-[Azure Automation certifikáty](../automation/automation-certificates.md) mít typ **Microsoft.Automation/automationAccounts/certificates** a mít hello strukturu. Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů hello. 
+[Azure Automation certifikáty](../automation/automation-certificates.md) mít typ **Microsoft.Automation/automationAccounts/certificates** a mít následující strukturu. Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů. 
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Certificate').Name)]",
@@ -140,17 +140,17 @@ Hello název prostředku úlohy musí obsahovat identifikátor GUID, který je o
 
 
 
-Hello vlastnosti prostředků certifikáty jsou popsané v následující tabulka hello.
+Vlastnosti pro certifikáty prostředky jsou popsány v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| base64Value |Hodnota Base 64 hello certifikátu. |
-| Kryptografický otisk |Kryptografický otisk certifikátu hello. |
+| base64Value |Hodnota Base 64 pro certifikát. |
+| Kryptografický otisk |Kryptografický otisk certifikátu. |
 
 
 
 ## <a name="credentials"></a>Přihlašovací údaje
-[Přihlašovací údaje Azure Automation](../automation/automation-credentials.md) mít typ **Microsoft.Automation/automationAccounts/credentials** a mít hello strukturu.  Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů hello. 
+[Přihlašovací údaje Azure Automation](../automation/automation-credentials.md) mít typ **Microsoft.Automation/automationAccounts/credentials** a mít následující strukturu.  Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů. 
 
 
     {
@@ -167,16 +167,16 @@ Hello vlastnosti prostředků certifikáty jsou popsané v následující tabulk
       }
     }
 
-Hello vlastnosti prostředků přihlašovacích údajů jsou popsané v následující tabulka hello.
+Vlastnosti přihlašovacích údajů prostředky jsou popsané v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Uživatelské jméno |Uživatelské jméno pro přihlašovací údaje hello. |
-| heslo |Heslo pro přihlašovací údaje hello. |
+| Uživatelské jméno |Uživatelské jméno pro přihlašovací údaje. |
+| heslo |Heslo pro přihlašovací údaje. |
 
 
 ## <a name="schedules"></a>Plány
-[Azure Automation plány](../automation/automation-schedules.md) mít typ **Microsoft.Automation/automationAccounts/schedules** a mít hello hello strukturu. Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů hello. 
+[Azure Automation plány](../automation/automation-schedules.md) mít typ **Microsoft.Automation/automationAccounts/schedules** a mají následující strukturu. Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů. 
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Schedule').Name)]",
@@ -195,26 +195,26 @@ Hello vlastnosti prostředků přihlašovacích údajů jsou popsané v následu
       }
     }
 
-Hello vlastnosti pro plán prostředky jsou popsané v následující tabulka hello.
+Vlastnosti pro plán prostředky jsou popsány v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| description |Volitelný popis pro plán hello. |
-| startTime |Určuje hello čas spuštění plánu jako objekt data a času. Řetězec lze zadat, pokud lze převedený tooa platný datový typ DateTime. |
-| Hodnotu IsEnabled |Určuje, zda je povoleno hello plán. |
-| interval |Hello typ intervalu pro plán hello.<br><br>Den<br>Hodina |
-| frequency |Četnost hello plán by měl fire počtu dnů nebo hodin. |
+| Popis |Volitelný popis pro plán. |
+| startTime |Určuje počáteční čas plánu jako objekt data a času. Řetězec lze zadat, pokud je možné ji převést na platný datový typ DateTime. |
+| Hodnotu IsEnabled |Určuje, zda je povoleno plán. |
+| Interval |Typ intervalu pro plán.<br><br>Den<br>Hodina |
+| frekvence |Četnost plán by měl fire počtu dnů nebo hodin. |
 
-Plány musí mít počáteční čas s hodnotou větší než hello aktuální čas.  Tuto hodnotu nelze poskytnout proměnné, vzhledem k tomu, že by měla mít žádný způsob, jak zjistit, kdy je toobe má nainstalovaný.
+Plány musí mít počáteční čas s hodnotou větší než aktuální čas.  Tuto hodnotu nelze poskytnout proměnné, vzhledem k tomu, že by měla mít žádný způsob, jak zjistit, kdy se bude nainstalována.
 
-Použijte jeden z následujících dvou strategie při použití plánu prostředky v řešení hello.
+Při použití plánu prostředky v řešení, použijte jednu z následujících dvou strategií.
 
-- Použijte parametr pro hello čas spuštění plánu hello.  Zobrazí se výzva hello uživatele tooprovide hodnotu při instalaci hello řešení.  Pokud máte více plánů, můžete použít jeden parametr hodnotu pro více než jeden z nich.
-- Vytvořte plány hello pomocí sady runbook, který se spustí při řešení hello je nainstalována.  Odebere hello požadavek hello toospecify uživatele na dobu, ale nemůže obsahovat hello plán ve vašem řešení, když dojde k odebrání hello řešení bude odebrán.
+- Použijte parametr pro čas spuštění plánu.  To se zobrazí výzva k zadání hodnoty při instalaci řešení.  Pokud máte více plánů, můžete použít jeden parametr hodnotu pro více než jeden z nich.
+- Vytvořte plány pomocí sady runbook, který se spustí při řešení je nainstalováno.  To eliminuje požadavek uživatele na určují dobu, ale nemůže obsahovat plán ve vašem řešení, když dojde k odebrání řešení bude odebrán.
 
 
 ### <a name="job-schedules"></a>Plány úlohy
-Prostředky plán úlohy propojit sady runbook s plánem.  Mají typ **Microsoft.Automation/automationAccounts/jobSchedules** a mít hello hello strukturu.  Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů hello. 
+Prostředky plán úlohy propojit sady runbook s plánem.  Mají typ **Microsoft.Automation/automationAccounts/jobSchedules** a mají následující strukturu.  Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů. 
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Schedule').LinkGuid)]",
@@ -238,17 +238,17 @@ Prostředky plán úlohy propojit sady runbook s plánem.  Mají typ **Microsoft
     }
 
 
-Hello vlastnosti pro plány úloh jsou popsané v následující tabulce hello.
+Vlastnosti pro plány úloh jsou popsané v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Název plánu |Jeden **název** entity s názvem hello hello plánu. |
-| Název sady Runbook  |Jeden **název** entity s názvem hello hello sady runbook.  |
+| Název plánu |Jeden **název** entity s názvem plánu. |
+| Název sady Runbook  |Jeden **název** entity se název sady runbook.  |
 
 
 
 ## <a name="variables"></a>Proměnné
-[Azure Automation proměnné](../automation/automation-variables.md) mít typ **Microsoft.Automation/automationAccounts/variables** a mít hello strukturu.  Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů hello.
+[Azure Automation proměnné](../automation/automation-variables.md) mít typ **Microsoft.Automation/automationAccounts/variables** a mít následující strukturu.  Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů.
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Variable').Name)]",
@@ -265,31 +265,31 @@ Hello vlastnosti pro plány úloh jsou popsané v následující tabulce hello.
       }
     }
 
-Hello vlastnosti pro proměnné prostředky jsou popsané v následující tabulka hello.
+Vlastnosti pro proměnné prostředky jsou popsány v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| description | Volitelný popis pro proměnnou hello. |
-| isEncrypted | Určuje, jestli by se šifrovat hello proměnné. |
-| type | Tato vlastnost aktuálně nemá žádný vliv.  datový typ Hello hello proměnné určí hello počáteční hodnota. |
-| hodnota | Hodnotu pro proměnnou hello. |
+| Popis | Volitelný popis pro proměnnou. |
+| isEncrypted | Určuje, jestli by se proměnná šifrovat. |
+| type | Tato vlastnost aktuálně nemá žádný vliv.  Datový typ proměnné určí počáteční hodnota. |
+| hodnota | Hodnota proměnné. |
 
 > [!NOTE]
-> Hello **typ** vlastnost aktuálně nemá žádný vliv na proměnnou hello vytváří.  Hello datový typ pro proměnnou hello určí hodnotu hello.  
+> **Typ** vlastnost aktuálně nemá žádný vliv na proměnnou vytváří.  Hodnota závisí na datový typ pro proměnnou.  
 
-Pokud jste nastavili hello počáteční hodnotu pro proměnnou hello, musí být nakonfigurované jako hello správného datového typu.  Hello následující tabulka obsahuje různé datové typy hello povolená a jejich syntaxi.  Všimněte si, jestli jsou hodnoty ve formátu JSON očekávané tooalways být uzavřena v uvozovkách s žádné speciální znaky v rámci hello uvozovky.  Například by být řetězcová hodnota určena hello řetězec v uvozovkách (pomocí hello řídicí znak (\\)) číselnou hodnotu by zadán s jednu sadu uvozovky.
+Pokud jste nastavili počáteční hodnotu pro proměnnou, musí být nakonfigurované jako správného datového typu.  Následující tabulka obsahuje různé datové typy, které jsou povolené a jejich syntaxi.  Všimněte si, že se hodnoty ve formátu JSON očekává vždycky být uzavřena v uvozovkách s žádné speciální znaky v rámci uvozovky.  Například by být řetězcová hodnota určena řetězec v uvozovkách (pomocí řídicí znak (\\)) číselnou hodnotu by zadán s jednu sadu uvozovky.
 
-| Datový typ | Popis | Příklad | Přeloží příliš|
+| Datový typ | Popis | Příklad | Přeloží na |
 |:--|:--|:--|:--|
 | Řetězec   | Vložte hodnotu do dvojitých uvozovek.  | "\"Hello, world\"" | "Hello, world" |
 | číselné  | Číselná hodnota se jednoduchých uvozovkách.| "64" | 64 |
 | Logická hodnota  | **Hodnota TRUE,** nebo **false** v uvozovkách.  Všimněte si, že tato hodnota musí být malými písmeny. | "true" | Hodnota TRUE |
-| Data a času | Hodnota serializovaná data.<br>Tato hodnota hello ConvertTo-Json rutiny v prostředí PowerShell toogenerate můžete použít pro konkrétní datum.<br>Příklad: get datum "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
+| Data a času | Hodnota serializovaná data.<br>Můžete použít rutinu ConvertTo-Json v prostředí PowerShell k vygenerování této hodnoty pro konkrétní datum.<br>Příklad: get datum "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Moduly
-Řešení pro správu nemusí toodefine [globální moduly](../automation/automation-integration-modules.md) použít ve vašich sadách runbook, protože se budou vždy k dispozici ve vašem účtu Automation.  Potřebujete tooinclude prostředek pro ostatní moduly používané vaší sady runbook.
+Řešení pro správu není nutné definovat [globální moduly](../automation/automation-integration-modules.md) použít ve vašich sadách runbook, protože se budou vždy k dispozici ve vašem účtu Automation.  Musíte zahrnout prostředku pro ostatní moduly používané vaší sady runbook.
 
-[Integrační moduly](../automation/automation-integration-modules.md) mít typ **Microsoft.Automation/automationAccounts/modules** a mít hello strukturu.  Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů hello.
+[Integrační moduly](../automation/automation-integration-modules.md) mít typ **Microsoft.Automation/automationAccounts/modules** a mít následující strukturu.  Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů.
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Module').Name)]",
@@ -305,35 +305,35 @@ Pokud jste nastavili hello počáteční hodnotu pro proměnnou hello, musí bý
     }
 
 
-Hello vlastnosti pro modul prostředky jsou popsané v následující tabulka hello.
+Vlastnosti modulu prostředky jsou popsané v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| contentLink |Určuje obsah hello hello modulu. <br><br>identifikátor URI - toohello obsah identifikátoru Uri hello modulu.  Bude jím souboru s příponou .ps1 pro prostředí PowerShell a skript sady runbook a soubor exportovaný grafický runbook pro sadu runbook grafu.  <br> verze - verze hello modulu pro vlastní sledování. |
+| contentLink |Určuje obsah modulu. <br><br>identifikátor URI – identifikátor Uri obsahu modulu.  Bude jím souboru s příponou .ps1 pro prostředí PowerShell a skript sady runbook a soubor exportovaný grafický runbook pro sadu runbook grafu.  <br> verze - verze modulu pro vlastní sledování. |
 
-Hello runbook by měl závisí na hello modulu prostředků tooensure vytvořené před hello runbook.
+Sada runbook by měl závisí na modulu prostředků a ověřte, že je vytvořen před sady runbook.
 
 ### <a name="updating-modules"></a>Aktualizace moduly
-Pokud aktualizujete řešení pro správu, která zahrnuje sadu runbook, která používá plánu a hello novou verzi řešení má nové modulu používá dané sady runbook, může používat hello runbook hello starší verzi modulu hello.  Musí zahrnovat následující sady runbook ve vašem řešení hello a vytvořit toorun úlohy je před jiné runbooky.  Tím bude zajištěno, že jsou všechny moduly aktualizovat, protože požadované před hello, které se načítají sady runbook.
+Pokud aktualizujete řešení pro správu, která zahrnuje sadu runbook, která používá plánu a novou verzi řešení má nové modulu používá dané sady runbook, může používat runbook stará verze modulu.  Musí zahrnovat následující sady runbook ve vašem řešení a vytvořit úlohu, abyste je mohli spustit před jiné runbooky.  To zajistí, že jsou všechny moduly, aktualizovat, protože požadované než sady runbook jsou načtena.
 
-* [Aktualizace ModulesinAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/1.03/DisplayScript) zajistí, že všechny hello moduly používané v sadách runbook ve vašem řešení hello nejnovější verzi.  
-* [ReRegisterAutomationSchedule-MS-Mgmt](https://www.powershellgallery.com/packages/ReRegisterAutomationSchedule-MS-Mgmt/1.0/DisplayScript) bude znovu registrovat všechny hello plán prostředky tooensure že hello runbooky propojené toothem s použití hello nejnovější moduly.
+* [Aktualizace ModulesinAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/1.03/DisplayScript) zajistí, že jsou všechny moduly používané v sadách runbook ve vašem řešení na nejnovější verzi.  
+* [ReRegisterAutomationSchedule-MS-Mgmt](https://www.powershellgallery.com/packages/ReRegisterAutomationSchedule-MS-Mgmt/1.0/DisplayScript) bude znovu registrovat všechny prostředky plán zajistit, že sady runbook s nimi propojené s použitím nejnovější moduly.
 
 
 
 
 ## <a name="sample"></a>Ukázka
-Tady je ukázka řešení, které zahrnují zahrnující hello následující prostředky:
+Tady je ukázka řešení, které zahrnují, který obsahuje následující zdroje:
 
 - Sady Runbook.  Toto je uložen v úložišti GitHub, které veřejné vzorové sady runbook.
-- Úlohu automatizace, který se spustí hello runbook při řešení hello je nainstalována.
-- Plán a úlohy naplánovat v pravidelných intervalech toostart hello runbook.
+- Úlohu automatizace, který se spustí sada runbook při řešení je nainstalováno.
+- Plán a plán úlohy pro spuštění sady runbook v pravidelných intervalech.
 - Certifikát.
 - Přihlašovací údaje.
 - Proměnná.
-- Modul.  Toto je hello [OMSIngestionAPI modulu](https://www.powershellgallery.com/packages/OMSIngestionAPI/1.5) pro zápis dat tooLog Analytics. 
+- Modul.  Toto je [OMSIngestionAPI modulu](https://www.powershellgallery.com/packages/OMSIngestionAPI/1.5) pro zápis dat k analýze protokolů. 
 
-Hello používá ukázka [standardní řešení parametry](operations-management-suite-solutions-solution-file.md#parameters) proměnné, které by běžně používané v řešení, jako byl proti toohardcoding hodnoty v definicích prostředků hello.
+Příklad používá [standardní řešení parametry](operations-management-suite-solutions-solution-file.md#parameters) proměnné, které by běžně používané v řešení oproti hardcoding hodnoty v definicích prostředků.
 
 
     {
@@ -409,14 +409,14 @@ Hello používá ukázka [standardní řešení parametry](operations-management
         "scheduleLinkGuid": {
           "type": "string",
           "metadata": {
-            "description": "GUID for hello schedule link toorunbook.",
+            "description": "GUID for the schedule link to runbook.",
             "control": "guid"
           }
         },
         "runbookJobGuid": {
           "type": "string",
           "metadata": {
-            "description": "GUID for hello runbook job.",
+            "description": "GUID for the runbook job.",
             "control": "guid"
           }
         }
@@ -650,4 +650,4 @@ Hello používá ukázka [standardní řešení parametry](operations-management
 
 
 ## <a name="next-steps"></a>Další kroky
-* [Přidat řešení tooyour zobrazení](operations-management-suite-solutions-resources-views.md) toovisualize shromažďovat data.
+* [Přidat zobrazení do řešení](operations-management-suite-solutions-resources-views.md) k vizualizaci shromážděná data.

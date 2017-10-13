@@ -1,6 +1,6 @@
 ---
-title: aaaDetect pohyby s Azure Media Analytics | Microsoft Docs
-description: "Hello detektor pohybu médií Azure media procesoru (PP) umožňuje tooefficiently můžete identifikovat části týkající se v rámci souboru jinak dlouhé a bezproblémové video."
+title: "Zjištění pohyby s Azure Media Analytics | Microsoft Docs"
+description: "Procesor médií detektor pohybu médií Azure (PP) umožňuje efektivně identifikaci části týkající se v rámci souboru jinak dlouhé a bezproblémové video."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,38 +14,38 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: milanga;juliako;
-ms.openlocfilehash: cb431375c92222053ed2239dd4e45767524dab68
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 115ad9dfd88062f23d5d17eed8897ce5d2ca8484
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Zjištění pohyby s Azure Media Analytics
 ## <a name="overview"></a>Přehled
-Hello **detektor pohybu médií Azure** média procesoru (PP) umožňuje tooefficiently můžete identifikovat části týkající se v rámci souboru jinak dlouhé a bezproblémové video. Detekce pohybu lze použít na statické fotoaparát záznamů tooidentify části hello videa kde dojde k pohybu. Vygeneruje soubor JSON obsahující metadata s časová razítka a hello ohraničujícího oblasti, kde došlo k události hello.
+**Detektor pohybu médií Azure** procesor médií (PP) umožňuje efektivně identifikaci části týkající se v rámci souboru jinak dlouhé a bezproblémové video. Detekce pohybu dají použít na statické kamer k identifikaci části videa, kde dochází k pohybu. Vygeneruje soubor JSON obsahující metadata s časová razítka a ohraničující oblasti, kde došlo k události.
 
-Cílem směrem zabezpečení video informační kanály, tato technologie je možné toocategorize pohybu do příslušné události a falešně pozitivních například stínů a osvětlení změny. To umožňuje toogenerate výstrahy zabezpečení z fotoaparátu kanály bez nevyžádané pošty s nekonečná důležité události, aniž by byly situacích možné tooextract zájmu z extrémně dlouhé sledováním videa.
+Cílem směrem zabezpečení video informační kanály, tato technologie je možné zařadit do kategorií pohybu do příslušné události a falešně pozitivních například stínů a osvětlení změny. To umožňuje generovat výstrahy zabezpečení z fotoaparátu kanály bez nevyžádané pošty s nekonečná důležité události, při schopnost extrahovat z extrémně dlouhé sledováním videa situacích, které vás zajímají.
 
-Hello **detektor pohybu médií Azure** MP je aktuálně ve verzi Preview.
+**Detektor pohybu médií Azure** MP je aktuálně ve verzi Preview.
 
-Toto téma uvádí podrobnosti o **detektor pohybu médií Azure** a ukazuje, jak toouse ho pomocí sady Media Services SDK pro .NET
+Toto téma uvádí podrobnosti o **detektor pohybu médií Azure** a ukazuje, jak pomocí sady Media Services SDK pro .NET
 
 ## <a name="motion-detector-input-files"></a>Vstupní soubory detekce pohybu
-Video soubory. V současné době jsou podporovány následující formáty hello: MP4, MOV a WMV.
+Video soubory. V současné době jsou podporovány následující formáty: MP4, MOV a WMV.
 
 ## <a name="task-configuration-preset"></a>Konfigurace úlohy (přednastavených)
 Při vytváření úlohy s **detektor pohybu médií Azure**, je nutné zadat jedno z přednastavení konfigurace. 
 
 ### <a name="parameters"></a>Parametry
-Můžete použít hello následující parametry:
+Můžete použít následující parametry:
 
 | Name (Název) | Možnosti | Popis | Výchozí |
 | --- | --- | --- | --- |
-| sensitivityLevel |Řetězce: "nízká", 'střední', 'vysoká. |Nastaví úroveň hello velkých a malých písmen na které pohyby se použije v hlášení. Upravte tuto tooadjust množství falešně pozitivních zjištění. |"střední" |
-| frameSamplingValue |Kladné celé číslo |Nastaví frekvenci hello na kterých běží algoritmus. každý snímek se rovná 1, 2 znamená každé 2 rámce a tak dále. |1 |
-| detectLightChange |Logická hodnota: "PRAVDA", "Nepravda" |Nastaví, zda světla změny jsou hlášeny ve výsledcích hello |"Nepravda" |
-| mergeTimeThreshold |Čas xs: Hh: mm:<br/>Příklad: 00:00:03 |Určuje časový interval hello mezi pohybu událostí, kde bude 2 události kombinaci a nahlášena jako 1. |00:00:00 |
-| detectionZones |Pole detekce zóny:<br/>-Detekce zóny je pole 3 nebo více bodů<br/>– Bod je x a y souřadnice z 0 too1. |Popisuje hello seznam detekce polygonálních zón toobe použít.<br/>Výsledky se ohlásí hello zón jako ID, s hello první z nich vrácení 'id': 0 |Jedné oblasti, které zahrnuje celou rámce hello. |
+| sensitivityLevel |Řetězce: "nízká", 'střední', 'vysoká. |Nastaví úroveň citlivosti, které pohyby se použije v hlášení. Upravte tak, aby upravit množství falešně pozitivních zjištění. |"střední" |
+| frameSamplingValue |Kladné celé číslo |Nastaví frekvenci, na kterých běží algoritmus. každý snímek se rovná 1, 2 znamená každé 2 rámce a tak dále. |1 |
+| detectLightChange |Logická hodnota: "PRAVDA", "Nepravda" |Nastaví, zda se ve výsledcích hlásí světla změny |"Nepravda" |
+| mergeTimeThreshold |Čas xs: Hh: mm:<br/>Příklad: 00:00:03 |Určuje časový interval mezi pohybu událostí, kde bude 2 události kombinaci a nahlášena jako 1. |00:00:00 |
+| detectionZones |Pole detekce zóny:<br/>-Detekce zóny je pole 3 nebo více bodů<br/>– Bod je x a y souřadnic od 0 do 1. |Popisuje seznamu detekce polygonálních zón, který se má použít.<br/>Výsledky se ohlásí s zóny jako ID, se první z nich probíhá 'id': 0 |Jedné oblasti, které zahrnuje celou rámečku. |
 
 ### <a name="json-example"></a>Příklad JSON
     {
@@ -78,37 +78,37 @@ Můžete použít hello následující parametry:
 
 
 ## <a name="motion-detector-output-files"></a>Pohybu detektor výstupní soubory
-Úlohu detekce pohybu vrátí soubor JSON v hello výstupní asset, který popisuje hello pohybu výstrahy a jejich kategorie, v rámci hello video. Hello soubor bude obsahovat informace o hello čas a dobu trvání pohybu v hello video zjištěn.
+Úlohu detekce pohybu vrátí soubor JSON v výstupní asset, která popisuje výstrahy pohybu a jejich kategorie, v rámci videa. Soubor bude obsahovat informace o čas a dobu trvání pohybu zjistil ve videu.
 
-Hello pohybu detektor API poskytuje indikátory po nejsou objekty v pohybu v pevné pozadí videa (například sledováním video). Hello detektor pohybu je vyškolení tooreduce falešné výstrahy, jako je například osvětlení a stínové změny. Aktuální omezení algoritmů hello zahrnují noci vize videa, poloprůhledné objekty a malé objekty.
+Rozhraní API detektor pohybu poskytuje indikátory po nejsou objekty v pohybu v pevné pozadí videa (například sledováním video). Detektor pohybu je vycvičena ke snížení falešné výstrahy, jako je například osvětlení a stínové změny. Aktuální omezení algoritmů zahrnují noci vize videa, poloprůhledné objekty a malé objekty.
 
-### <a id="output_elements"></a>Elementy výstupního souboru JSON, hello
+### <a id="output_elements"></a>Elementy výstupního souboru JSON
 > [!NOTE]
-> V nejnovější verzi hello formátu JSON výstup hello se změnil a pro někteří zákazníci mohou představovat narušující změně.
+> Nejnovější verze formátu JSON výstupu se změnil a pro někteří zákazníci mohou představovat narušující změně.
 > 
 > 
 
-Hello následující tabulka popisuje prvky souboru JSON výstup hello.
+Následující tabulka popisuje elementy výstupního souboru JSON.
 
 | Element | Popis |
 | --- | --- |
-| Verze |Vztahuje se toohello verzi hello Video rozhraní API. aktuální verze Hello je 2. |
-| Časová osa |"Rysky" za sekundu hello videa. |
-| Posun |Posun Hello čas pro časová razítka v "rysky". Ve verzi 1.0 rozhraní API, Video bude vždy 0. V budoucích scénáře, které podporujeme, tato hodnota může změnit. |
-| kmitočet snímků |Počet snímků za sekundu hello videa. |
-| Šířka, Výška |Odkazuje toohello šířka a výška hello videa v pixelech. |
-| Start |Hello spustit časové razítko v "rysky". |
-| Doba trvání |Délka Hello hello událost v "rysky". |
-| Interval |interval Hello každou položku v hello událost v "rysky". |
-| Události |Každý fragment událostí obsahuje hello pohybu během této doby trvání. |
-| Typ |V aktuální verzi hello je to vždy (2) pro obecné pohybu. Tento popisek poskytuje rozhraní API Video hello flexibilitu toocategorize pohybu v budoucích verzích. |
-| RegionID |Jak je popsáno výše, bude vždy 0 v této verzi. Tento popisek poskytuje rozhraní API Video hello flexibilitu toofind pohybu v různých oblastech v budoucích verzích. |
-| Oblasti |Odkazuje toohello oblasti videa, kde se zajímáte o pohybu. <br/><br/>-"id" představuje hello oblast oblasti – v této verzi je jen jeden, ID 0. <br/>-"typ" představuje hello tvar hello oblast, která se zajímáte o pro pohybu. V současné době jsou podporovány "Obdélník" a "mnohoúhelníku".<br/> Pokud jste zadali "Obdélník", hello oblast má dimenzí v X, Y, šířka a výška. Hello X a Y souřadnice představují hello levém horním XY souřadnice oblasti hello v normalizovaný měřítkem 0.0 too1.0. Hello šířky a výšky představují hello velikost hello oblast v normalizovaný měřítkem 0.0 too1.0. V aktuální verzi hello X, Y, šířka a výška vždy stanoví na 0, 0 a 1, 1. <br/>Pokud jste zadali "mnohoúhelníku", má oblast hello dimenzí v bodech. <br/> |
-| fragmenty |Hello metadata je blokové až do různých segmentů názvem fragmenty. Každý fragment obsahuje počáteční, doba trvání, číslo intervalu a událostí. Fragment s žádné události znamená, že žádné pohybu byl nalezen během této počáteční čas a dobu trvání. |
-| Hranaté závorky] |Každá závorka představuje jeden interval hello události. Byla zjištěna prázdný závorky pro tento interval znamená, že žádné pohybu. |
-| Umístění |Tento nový záznam v části události uvádí hello umístění, kde došlo k pohybu hello. Toto je konkrétnější než hello detekce zóny. |
+| Verze |Vztahuje se na verzi rozhraní API Video. Aktuální verze je 2. |
+| Časová osa |"Rysky" za sekundu videa. |
+| Posun |Časový posun pro časová razítka v "rysky". Ve verzi 1.0 rozhraní API, Video bude vždy 0. V budoucích scénáře, které podporujeme, tato hodnota může změnit. |
+| kmitočet snímků |Počet snímků za sekundu videa. |
+| Šířka, Výška |Odkazuje na šířku a výšku videa v pixelech. |
+| Start |Razítka start "rysky". |
+| Doba trvání |Délka události v "rysky". |
+| Interval |Interval každou položku v události v "rysky". |
+| Události |Každý fragment událostí obsahuje pohybu během této doby trvání. |
+| Typ |V aktuální verzi je to vždy (2) pro obecné pohybu. Tento popisek poskytuje rozhraní API Video flexibilitu zařadit do kategorií pohybu v budoucích verzích. |
+| RegionID |Jak je popsáno výše, bude vždy 0 v této verzi. Tento popisek poskytuje rozhraní API Video flexibilitu najít pohybu v různých oblastech v budoucích verzích. |
+| Oblasti |Odkazuje na oblasti v videa, kde se zajímáte o pohybu. <br/><br/>-"id" představuje oblasti oblast – v této verzi je jen jeden, ID 0. <br/>-"typ" představuje obrazec oblasti, která se zajímáte o pro pohybu. V současné době jsou podporovány "Obdélník" a "mnohoúhelníku".<br/> Pokud jste zadali "Obdélník", oblast má dimenzí v X, Y, šířka a výška. Souřadnice X a Y představují levém horním XY souřadnice oblasti v normalizovaný škále od 0,0 do 1,0. Šířka a výška představují velikost oblasti v normalizovaný škále od 0,0 do 1,0. V aktuální verzi X, Y, šířka a výška vždy stanoví na 0, 0 a 1, 1. <br/>Pokud jste zadali "mnohoúhelníku", má oblast dimenzí v bodech. <br/> |
+| fragmenty |Metadata se blokové až do různých segmentů názvem fragmenty. Každý fragment obsahuje počáteční, doba trvání, číslo intervalu a událostí. Fragment s žádné události znamená, že žádné pohybu byl nalezen během této počáteční čas a dobu trvání. |
+| Hranaté závorky] |Každá závorka představuje jeden interval v události. Byla zjištěna prázdný závorky pro tento interval znamená, že žádné pohybu. |
+| Umístění |Tento nový záznam v části události uvádí umístění, kde došlo k chybě provozu. Toto je konkrétnější než detekce zóny. |
 
-Následující Hello je příklad výstupu JSON
+Toto je příklad výstupu JSON
 
     {
       "version": 2,
@@ -154,16 +154,16 @@ Následující Hello je příklad výstupu JSON
 
     …
 ## <a name="limitations"></a>Omezení
-* vstupní video formáty Hello podporována jsou MP4, MOV a WMV.
-* Detekce pohybu je optimalizovaná pro stojící pozadí videa. algoritmus Hello se zaměřuje na snížení falešné výstrahy, jako je například změny osvětlení a stínů.
-* Některé pohybu nemusí být detekována z důvodu problémů tootechnical; například noci vize videa, poloprůhledné objekty a malé objekty.
+* Podporované formáty vstupní video zahrnují MP4, MOV a WMV.
+* Detekce pohybu je optimalizovaná pro stojící pozadí videa. Algoritmus se zaměřuje na snížení falešné výstrahy, jako je například změny osvětlení a stínů.
+* Některé pohybu nemusí být detekována z důvodu technické problémy; například noci vize videa, poloprůhledné objekty a malé objekty.
 
 ## <a name="net-sample-code"></a>Ukázkový kód rozhraní .NET
 
-ukazuje programu Hello následující postup:
+Program zobrazí následující postup:
 
-1. Vytvořte asset a nahrajte soubor média do hello asset.
-2. Vytvořte úlohu s úkolem detekce pohybu na videu podle konfigurační soubor, který obsahuje následující json přednastavených hello. 
+1. Vytvořte asset a nahrajte soubor média do assetu.
+2. Vytvořte úlohu s úkolem detekce pohybu na videu podle konfigurační soubor, který obsahuje následující přednastavení json. 
    
         {
           "Version": "1.0",
@@ -192,11 +192,11 @@ ukazuje programu Hello následující postup:
             ]
           }
         }
-3. Stáhněte soubory JSON výstup hello. 
+3. Stáhněte soubory JSON výstupu. 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
-Nastavení vývojového prostředí a naplnění souboru app.config hello s informace o připojení, jak je popsáno v [vývoj pro Media Services s .NET](media-services-dotnet-how-to-use.md). 
+Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
 
 #### <a name="example"></a>Příklad
 
@@ -213,7 +213,7 @@ Nastavení vývojového prostředí a naplnění souboru app.config hello s info
     {
         class Program
         {
-            // Read values from hello App.config file.
+            // Read values from the App.config file.
             private static readonly string _AADTenantDomain =
                 ConfigurationManager.AppSettings["AADTenantDomain"];
             private static readonly string _RESTAPIEndpoint =
@@ -229,17 +229,17 @@ Nastavení vývojového prostředí a naplnění souboru app.config hello s info
 
                 _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
 
-                // Run hello VideoMotionDetection job.
+                // Run the VideoMotionDetection job.
                 var asset = RunVideoMotionDetectionJob(@"C:\supportFiles\VideoMotionDetection\BigBuckBunny.mp4",
                                             @"C:\supportFiles\VideoMotionDetection\config.json");
 
-                // Download hello job output asset.
+                // Download the job output asset.
                 DownloadAsset(asset, @"C:\supportFiles\VideoMotionDetection\Output");
             }
 
             static IAsset RunVideoMotionDetectionJob(string inputMediaFilePath, string configurationFile)
             {
-                // Create an asset and upload hello input media file toostorage.
+                // Create an asset and upload the input media file to storage.
                 IAsset asset = CreateAssetAndUploadSingleFile(inputMediaFilePath,
                     "My Video Motion Detection Input Asset",
                     AssetCreationOptions.None);
@@ -247,38 +247,38 @@ Nastavení vývojového prostředí a naplnění souboru app.config hello s info
                 // Declare a new job.
                 IJob job = _context.Jobs.Create("My Video Motion Detection Job");
 
-                // Get a reference tooAzure Media Motion Detector.
+                // Get a reference to Azure Media Motion Detector.
                 string MediaProcessorName = "Azure Media Motion Detector";
 
                 var processor = GetLatestMediaProcessorByName(MediaProcessorName);
 
-                // Read configuration from hello specified file.
+                // Read configuration from the specified file.
                 string configuration = File.ReadAllText(configurationFile);
 
-                // Create a task with hello encoding details, using a string preset.
+                // Create a task with the encoding details, using a string preset.
                 ITask task = job.Tasks.AddNew("My Video Motion Detection Task",
                     processor,
                     configuration,
                     TaskOptions.None);
 
-                // Specify hello input asset.
+                // Specify the input asset.
                 task.InputAssets.Add(asset);
 
-                // Add an output asset toocontain hello results of hello job.
+                // Add an output asset to contain the results of the job.
                 task.OutputAssets.AddNew("My Video Motion Detectoion Output Asset", AssetCreationOptions.None);
 
-                // Use hello following event handler toocheck job progress.  
+                // Use the following event handler to check job progress.  
                 job.StateChanged += new EventHandler<JobStateChangedEventArgs>(StateChanged);
 
-                // Launch hello job.
+                // Launch the job.
                 job.Submit();
 
-                // Check job execution and wait for job toofinish.
+                // Check job execution and wait for job to finish.
                 Task progressJobTask = job.GetExecutionProgressTask(CancellationToken.None);
 
                 progressJobTask.Wait();
 
-                // If job state is Error, hello event handling
+                // If job state is Error, the event handling
                 // method for job progress should log errors.  Here we check
                 // for error state and exit if needed.
                 if (job.State == JobState.Error)

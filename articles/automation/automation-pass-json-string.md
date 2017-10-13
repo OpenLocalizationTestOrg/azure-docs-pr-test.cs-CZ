@@ -1,6 +1,6 @@
 ---
-title: aaaPass JSON objektu tooan runbook automatizace Azure. | Microsoft Docs
-description: Jak toopass parametry tooa runbook jako objekt JSON
+title: "Objekt JSON předat runbook služby Azure Automation | Microsoft Docs"
+description: "Jak předat parametry sady runbook jako objekt JSON"
 services: automation
 documentationcenter: dev-center-name
 author: eslesar
@@ -13,32 +13,32 @@ ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 06/15/2017
 ms.author: eslesar
-ms.openlocfilehash: 8229a16015d549927ead5496c70e9fb391d35498
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: eac0e95a46731b9d396ea0590e629d61ca6a7d70
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="pass-a-json-object-tooan-azure-automation-runbook"></a>Předat Azure Automation runbook tooan objekt JSON
+# <a name="pass-a-json-object-to-an-azure-automation-runbook"></a>Předat objekt JSON do runbooku automatizace Azure
 
-Může být užitečné toostore dat, které chcete toopass tooa runbook v souboru JSON.
-Například může vytvořit soubor JSON, který obsahuje všechny parametry hello chcete toopass tooa runbook.
-toodo, můžete mít tooconvert hello JSON tooa řetězec a pak převést objekt prostředí PowerShell tooa řetězce hello před předáním runbook toohello jeho obsah.
+Může být užitečné k ukládání dat, který chcete předat do sady runbook v souboru JSON.
+Například může vytvořit soubor JSON, který obsahuje všechny parametry, které chcete předat k sadě runbook.
+K tomuto účelu, budete muset převést na řetězec ve formátu JSON a pak převést řetězec na objektu prostředí PowerShell před předáním její obsah do runbooku.
 
-V tomto příkladu vytvoříme skript prostředí PowerShell, který volá [Start-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603661.aspx) toostart Powershellového runbooku, předávání hello obsah sady hello JSON toohello runbook.
-Hello Powershellový runbook spustí virtuální počítač Azure, získávání parametrů hello hello virtuálních počítačů z formátu JSON, který byl předán v hello.
+V tomto příkladu vytvoříme skript prostředí PowerShell, který volá [Start-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603661.aspx) pro spuštění sady runbook PowerShell předávání obsah JSON do runbooku.
+Powershellový runbook spustí virtuální počítač Azure, získávání parametrů pro virtuální počítač z formátu JSON, který byl předán v.
 
 ## <a name="prerequisites"></a>Požadavky
-toocomplete tohoto kurzu budete potřebovat hello následující:
+Pro absolvování tohoto kurzu potřebujete:
 
 * Předplatné Azure. Pokud nemáte účet, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo <a href="/pricing/free-account/" target="_blank">[si zaregistrovat bezplatný účet](https://azure.microsoft.com/free/).
-* [Účet Automation](automation-sec-configure-azure-runas-account.md) toohold hello sady runbook a ověření tooAzure prostředky.  Tento účet musí mít oprávnění toostart a zastavit hello virtuální počítač.
+* [Účet Automation](automation-sec-configure-azure-runas-account.md), abyste si mohli runbook podržet a mohli ověřovat prostředky Azure.  Tento účet musí mít oprávnění ke spuštění a zastavení virtuálního počítače.
 * Virtuální počítač Azure. Počítač zastavíme a spustíme, proto to nesmí být produkční virtuální počítač.
-* Azure Powershell nainstalovaný v místním počítači. V tématu [nainstalovat a nakonfigurovat Azure Powershell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.1.0) informace o tooget prostředí Azure PowerShell.
+* Azure Powershell nainstalovaný v místním počítači. V tématu [nainstalovat a nakonfigurovat Azure Powershell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.1.0) informace o tom, jak získat prostředí Azure PowerShell.
 
-## <a name="create-hello-json-file"></a>Vytvořte soubor JSON hello
+## <a name="create-the-json-file"></a>Vytvořte soubor JSON
 
-Typ hello následující testování do textového souboru a uložte ho jako `test.json` někde v místním počítači.
+Zadejte následující testu do textového souboru a uložte ho jako `test.json` někde v místním počítači.
 
 ```json
 {
@@ -47,14 +47,14 @@ Typ hello následující testování do textového souboru a uložte ho jako `te
 }
 ```
 
-## <a name="create-hello-runbook"></a>Vytvoření sady runbook hello
+## <a name="create-the-runbook"></a>Vytvoření sady runbook
 
 Vytvořte nový runbook prostředí PowerShell s názvem "Test-Json" ve službě Azure Automation.
-toolearn jak toocreate novou sadu runbook Powershellu, najdete v části [Můj první Powershellový runbook](automation-first-runbook-textual-powershell.md).
+Naučte se vytvořit novou sadu runbook Powershellu, najdete v tématu [Můj první Powershellový runbook](automation-first-runbook-textual-powershell.md).
 
-tooaccept hello JSON data, vyžaduje hello runbook objekt jako vstupní parametr.
+Přijmout JSON data, sada runbook vyžaduje objekt jako vstupní parametr.
 
-Hello runbook pak můžete použít hello vlastnosti definované v hello JSON.
+Sady runbook pak můžete použít vlastnosti definované ve formátu JSON.
 
 ```powershell
 Param(
@@ -62,40 +62,40 @@ Param(
      [object]$json
 )
 
-# Connect tooAzure account   
+# Connect to Azure account   
 $Conn = Get-AutomationConnection -Name AzureRunAsConnection
 Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID `
     -ApplicationID $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
 
-# Convert object tooactual JSON
+# Convert object to actual JSON
 $json = $json | ConvertFrom-Json
 
-# Use hello values from hello JSON object as hello parameters for your command
+# Use the values from the JSON object as the parameters for your command
 Start-AzureRmVM -Name $json.VMName -ResourceGroupName $json.ResourceGroup
  ```
 
  Uložte a publikovat tuto sadu runbook v účtu Automation.
 
-## <a name="call-hello-runbook-from-powershell"></a>Volání sady runbook hello z prostředí PowerShell
+## <a name="call-the-runbook-from-powershell"></a>Volání sady runbook z prostředí PowerShell
 
-Nyní můžete volat hello runbook z místního počítače pomocí prostředí Azure PowerShell.
-Spusťte následující příkazy prostředí PowerShell hello:
+Nyní můžete volat sadu runbook z místního počítače pomocí prostředí Azure PowerShell.
+Spusťte následující příkazy prostředí PowerShell:
 
-1. Přihlaste se tooAzure:
+1. Přihlaste se k Azure:
    ```powershell
    Login-AzureRmAccount
    ```
-    Můžete se výzvami tooenter vaše přihlašovací údaje Azure.
-1. Získat hello obsah souboru JSON hello a převést ho tooa řetězec:
+    Zobrazí se výzva k zadání přihlašovacích údajů Azure.
+1. Získat obsah souboru JSON a převeďte ho na řetězec:
     ```powershell
     $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string
     ```
-    `JsonPath`je hello cesta, kam jste uložili soubor JSON hello.
-1. Převést řetězec obsah hello `$json` tooa objekt prostředí PowerShell:
+    `JsonPath`je cesta, kam jste uložili soubor JSON.
+1. Převést řetězec obsah `$json` na objekt prostředí PowerShell:
    ```powershell
    $JsonParams = @{"json"=$json}
    ```
-1. Vytvořit tabulku hash pro parametry hello `Start-AzureRmAutomstionRunbook`:
+1. Vytvořit tabulku hash pro parametry `Start-AzureRmAutomstionRunbook`:
    ```powershell
    $RBParams = @{
         AutomationAccountName = 'AATest'
@@ -104,17 +104,17 @@ Spusťte následující příkazy prostředí PowerShell hello:
         Parameters = $JsonParams
    }
    ```
-   Všimněte si, že nastavíte hodnotu hello `Parameters` toohello prostředí PowerShell objekt, který obsahuje hodnoty hello ze souboru JSON hello. 
-1. Spuštění sady runbook hello
+   Všimněte si, že nastavíte hodnotu `Parameters` objekt prostředí PowerShell, který obsahuje hodnoty ze souboru JSON. 
+1. Spuštění runbooku
    ```powershell
    $job = Start-AzureRmAutomationRunbook @RBParams
    ```
 
-Hello runbook používá hello hodnoty z hello JSON souboru toostart virtuálního počítače.
+Sada runbook používá hodnoty ze souboru JSON pro spuštění virtuálního počítače.
 
 ## <a name="next-steps"></a>Další kroky
 
-* toolearn Další informace o úpravy sady runbook Powershellu a pracovní postup prostředí PowerShell s textový editor, najdete v části [úpravy textovou sady runbook ve službě Azure Automation](automation-edit-textual-runbook.md) 
-* toolearn Další informace o vytvoření a import sad runbook, najdete v části [vytvoření nebo import runbooku ve službě Azure Automation](automation-creating-importing-runbook.md)
+* Další informace o úpravách prostředí PowerShell a pracovní postup prostředí PowerShell sad runbook s textový editor, najdete v části [úpravy textovou sady runbook ve službě Azure Automation](automation-edit-textual-runbook.md) 
+* Další informace o vytváření a import sad runbook najdete v tématu [vytvoření nebo import runbooku ve službě Azure Automation](automation-creating-importing-runbook.md)
 
 

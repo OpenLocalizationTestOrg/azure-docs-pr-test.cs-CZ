@@ -1,9 +1,9 @@
 ---
-title: "aaaCreate, spuštění nebo odstranění aplikační brány | Microsoft Docs"
-description: "Tato stránka obsahuje pokyny toocreate, konfiguraci, spuštění a odstranění služby Azure application gateway"
+title: "Vytvoření, spuštění nebo odstranění aplikační brány | Dokumentace Microsoftu"
+description: "Tahle stránka poskytuje pokyny pro vytvoření, konfiguraci, spuštění a odstranění služby Azure application gateway"
 documentationcenter: na
 services: application-gateway
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: tysonn
 ms.assetid: 577054ca-8368-4fbf-8d53-a813f29dc3bc
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
-ms.author: gwallace
-ms.openlocfilehash: 3efef5b49880c9efdafad8b88d4bce5b749b82af
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.author: davidmu
+ms.openlocfilehash: 7fb54e96d20d34f453b7b016094b84504348335b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-start-or-delete-an-application-gateway-with-powershell"></a>Vytvoření, spuštění nebo odstranění aplikační brány pomocí PowerShellu 
 
@@ -30,47 +30,47 @@ ms.lasthandoff: 10/06/2017
 > * [Šablona Azure Resource Manageru](application-gateway-create-gateway-arm-template.md)
 > * [Azure CLI](application-gateway-create-gateway-cli.md)
 
-Služba Azure Application Gateway je nástroj pro vyrovnávání zatížení vrstvy 7. Poskytuje převzetí služeb při selhání, směrování výkonu požadavků HTTP mezi různými servery, ať už jsou hello cloudu nebo místně. Application Gateway poskytuje mnoho funkcí Application Delivery Controlleru (ADC), včetně vyrovnávání zatížení protokolu HTTP, spřažení relace na základě souborů cookie, přesměrování zpracování SSL (Secure Sockets Layer), vlastních testů stavu, podpory více webů a mnoha dalších. Navštivte toofind úplný seznam podporovaných funkcích [brány aplikací – přehled](application-gateway-introduction.md)
+Služba Azure Application Gateway je nástroj pro vyrovnávání zatížení vrstvy 7. Poskytuje převzetí služeb při selhání, směrování výkonu požadavků HTTP mezi různými servery, ať už jsou místní nebo v cloudu. Application Gateway poskytuje mnoho funkcí Application Delivery Controlleru (ADC), včetně vyrovnávání zatížení protokolu HTTP, spřažení relace na základě souborů cookie, přesměrování zpracování SSL (Secure Sockets Layer), vlastních testů stavu, podpory více webů a mnoha dalších. Úplný seznam podporovaných funkcí najdete v tématu [Přehled služby Application Gateway](application-gateway-introduction.md).
 
-Tento článek vás provede kroky toocreate hello, konfiguraci, spuštění a odstranění služby application gateway.
+Tenhle článek vás provede kroky k vytvoření, konfiguraci, spuštění a odstranění aplikační brány.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-1. Nainstalujte nejnovější verzi rutin prostředí Azure PowerShell hello hello pomocí hello instalačního programu webové platformy. Můžete stáhnout a nainstalovat nejnovější verzi hello z hello **prostředí Windows PowerShell** části hello [položky ke stažení](https://azure.microsoft.com/downloads/).
-2. Pokud máte existující virtuální síť, vyberte existující prázdný podsítí nebo vytvořit novou podsíť ve stávající virtuální síti výhradně pro účely hello aplikační brány. Nelze nasadit hello aplikace brány tooa v jinou virtuální síť než hello prostředků, který chcete toodeploy za hello Aplikační brána Pokud partnerský vztah virtuální síť se používá. toolearn více navštivte [partnerský vztah virtuální sítě](../virtual-network/virtual-network-peering-overview.md)
-3. Ověřte, že máte funkční virtuální síť s platnou podsítí. Ujistěte se, že hello podsíť nepoužívají žádné virtuální počítače ani Cloudová nasazení. Hello Aplikační brána musí být sám o sobě v podsíti virtuální sítě.
-4. Hello servery nakonfigurovat toouse hello Aplikační brána musí existovat nebo přiřadili své koncové body vytvořené ve virtuální síti hello nebo s veřejnou IP nebo virtuální IP.
+1. Nainstalujte nejnovější verzi rutin prostředí Azure PowerShell pomocí instalační služby webové platformy. Nejnovější verzi můžete stáhnout a nainstalovat v části **Windows PowerShell** na stránce [Položky ke stažení](https://azure.microsoft.com/downloads/).
+2. Pokud už máte virtuální síť, vyberte buď existující prázdnou podsíť, nebo vytvořte novou podsíť výhradně pro účely služby Application Gateway v existující virtuální síti. Službu Application Gateway nelze nasadit do jiné virtuální sítě, než prostředky, které máte v úmyslu nasadit za službou Application Gateway, pokud nepoužijete partnerský vztah virtuálních sítí. Další informace najdete v tématu [Partnerské vztahy virtuálních sítí](../virtual-network/virtual-network-peering-overview.md).
+3. Ověřte, že máte funkční virtuální síť s platnou podsítí. Ujistěte se, že žádné virtuální počítače nebo cloudová nasazení nepoužívají podsíť. Služba Application Gateway musí být sama o sobě v podsíti virtuální sítě.
+4. Servery, které nakonfigurujete pro použití služby Application Gateway, musí existovat nebo mít své koncové body vytvořené buď ve virtuální síti, nebo s přiřazenou veřejnou IP adresou nebo virtuální IP adresou.
 
-## <a name="what-is-required-toocreate-an-application-gateway"></a>Co je požadovaná toocreate služby application gateway?
+## <a name="what-is-required-to-create-an-application-gateway"></a>Co je potřeba k vytvoření služby Application Gateway?
 
-Při použití hello `New-AzureApplicationGateway` příkaz toocreate hello Aplikační brána v tomto bodě se nenastaví žádná konfigurace a jsou nakonfigurovány hello nově vytvořený prostředek buď pomocí XML nebo objektu konfigurace.
+Když k vytvoření služby Application Gateway použijete příkaz `New-AzureApplicationGateway`, v tomto bodě se nenastaví žádná konfigurace a nově vytvořený prostředek se konfiguruje buď pomocí XML, nebo objektu konfigurace.
 
-Hello hodnoty jsou:
+Hodnoty jsou:
 
-* **Fond back-end serverů:** hello seznam IP adres hello back-end serverů. uvedené Hello IP adresy by měly buď patřit toohello podsíť virtuální sítě nebo by měla být veřejné IP Adrese nebo VIP.
-* **Nastavení fondu back-end serverů:** Každý fond má nastavení, jako je port, protokol a spřažení na základě souborů cookie. Tato nastavení jsou vázané tooa fond a jsou použité tooall servery v rámci fondu hello.
-* **Front-end port:** tento port je hello veřejný port, který se otevírá ve hello aplikační brány. Provoz volá Tenhle port a potom získá přesměruje tooone hello back-end serverů.
-* **Naslouchací proces:** hello naslouchací proces má front-end port, protokol (Http nebo Https, tyto hodnoty jsou malá a velká písmena) a název certifikátu SSL hello (Pokud se konfiguruje přesměrování zpracování SSL).
-* **Pravidlo:** hello pravidlo váže naslouchací proces hello a hello fond back-end serverů a definuje, jaký provoz hello fond back-end serverů by měla být směrovanou toowhen volání příslušného naslouchacího procesu.
+* **Fond back-end serverů:** Seznam IP adres back-end serverů. Uvedené IP adresy by měly buď patřit do podsítě virtuální sítě, nebo by měly být veřejnými nebo virtuálními IP adresami.
+* **Nastavení fondu back-end serverů:** Každý fond má nastavení, jako je port, protokol a spřažení na základě souborů cookie. Tato nastavení se vážou na fond a používají se na všechny servery v rámci fondu.
+* **Front-end port:** Toto je veřejný port, který se otevírá ve službě Application Gateway. Když datový přenos dorazí na tento port, přesměruje se na některý back-end server.
+* **Naslouchací proces:** Naslouchací proces má front-end port, protokol (Http nebo Https, u těchto hodnot se rozlišují malá a velká písmena) a název certifikátu SSL (pokud se konfiguruje přesměrování zpracování SSL).
+* **Pravidlo:** Pravidlo váže naslouchací proces a fond back-end serverů a definuje, ke kterému fondu back-end serverů se má provoz směrovat při volání příslušného naslouchacího procesu.
 
 ## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
-toocreate aplikační brány:
+Pro vytvoření nové aplikační brány:
 
 1. Vytvořte prostředek aplikační brány.
 2. Vytvořte konfigurační soubor XML nebo objekt konfigurace.
-3. Potvrďte toohello konfigurace hello nově vytvořeného prostředku aplikační brány.
+3. Potvrďte konfiguraci nově vytvořeného prostředku aplikační brány.
 
 > [!NOTE]
-> Pokud potřebujete tooconfigure vlastní test paměti svojí aplikační brány, přečtěte si [vytvoření služby application gateway s vlastními testy paměti pomocí prostředí PowerShell](application-gateway-create-probe-classic-ps.md). Další informace najdete v části [vlastní testy paměti a sledování stavu](application-gateway-probe-overview.md).
+> Když potřebujete nakonfigurovat vlastní test paměti svojí aplikační brány, přečtěte si část [Vytvořit bránu s vlastními testy paměti pomocí prostředí PowerShell](application-gateway-create-probe-classic-ps.md). Další informace najdete v části [vlastní testy paměti a sledování stavu](application-gateway-probe-overview.md).
 
 ![Příklad scénáře][scenario]
 
 ### <a name="create-an-application-gateway-resource"></a>Vytvořte prostředek aplikační brány
 
-toocreate hello brány, použijte hello `New-AzureApplicationGateway` rutinu a nahraďte hello hodnoty vlastními. Fakturace hello brány se nespustí v tomto okamžiku. Fakturace začíná v pozdější fázi, po úspěšném spuštění brány hello.
+Pokud chcete vytvořit bránu, použijte rutinu `New-AzureApplicationGateway` a zadejte vlastní hodnoty. Fakturace brány se nespustí v tomhle okamžiku. Fakturace začíná v pozdější fázi, po úspěšném spuštění brány.
 
-Hello následující příklad vytvoří aplikační bránu pomocí virtuální sítě s názvem "testvnet1" a podsítě s názvem "subnet-1":
+Následující příklad vytvoří aplikační bránu pomocí virtuální sítě s názvem testvnet1 a podsítě s názvem subnet-1:
 
 ```powershell
 New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
@@ -78,7 +78,7 @@ New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subn
 
 *Popis*, *InstanceCount* a *GatewaySize* jsou volitelné parametry.
 
-byl vytvořen toovalidate, který hello brány, můžete použít hello `Get-AzureApplicationGateway` rutiny.
+Pokud chcete ověřit vytvoření brány, můžete použít rutinu `Get-AzureApplicationGateway`.
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
@@ -97,21 +97,21 @@ DnsName       :
 ```
 
 > [!NOTE]
-> Výchozí hodnota pro Hello *InstanceCount* je 2, přičemž maximální hodnota je 10. Výchozí hodnota pro Hello *GatewaySize* je střední. Můžete vybrat mezi Malá, Střední a Velká.
+> Výchozí hodnota *InstanceCount* je 2, přičemž maximální hodnota je 10. Výchozí hodnota *GatewaySize* je Medium (Střední). Můžete vybrat mezi Malá, Střední a Velká.
 
-*Rezervovaná* a *DnsName* se zobrazují jako prázdné, protože hello brána ještě nespustila. Tyto soubory jsou vytvořeny po hello brána je v běžícím stavu hello.
+Hodnoty *VirtualIPs* a *DnsName* se zobrazují jako prázdné, protože se brána ještě nespustila. Vytvoří se, jakmile bude brána v běžícím stavu.
 
-## <a name="configure-hello-application-gateway"></a>Konfigurace brány aplikace hello
+## <a name="configure-the-application-gateway"></a>Nakonfigurujte aplikační bránu
 
-Hello aplikační bránu můžete nakonfigurovat pomocí XML nebo objektu konfigurace.
+Aplikační bránu můžete nakonfigurovat pomocí XML nebo objektu konfigurace.
 
-### <a name="configure-hello-application-gateway-by-using-xml"></a>Konfigurace hello aplikační bránu pomocí XML
+### <a name="configure-the-application-gateway-by-using-xml"></a>Nakonfigurujte aplikační bránu pomocí XML
 
-V následujícím příkladu hello použijte tooconfigure souboru XML všech nastavení aplikační brány a potvrdíte je toohello prostředku aplikační brány.  
+V následujícím příkladu použijete soubor XML k nakonfigurování všech nastavení aplikační brány a potvrdíte je pro prostředek aplikační brány.  
 
 #### <a name="step-1"></a>Krok 1
 
-Zkopírujte následující text tooNotepad hello.
+Zkopírujte následující text do Poznámkového bloku.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -158,12 +158,12 @@ Zkopírujte následující text tooNotepad hello.
 </ApplicationGatewayConfiguration>
 ```
 
-Upravte hodnoty hello mezi hello závorkách pro položky konfigurace hello. Uložte hello soubor s příponou .xml.
+Upravte hodnoty položek konfigurace v závorkách. Uložte soubor s příponou .xml.
 
 > [!IMPORTANT]
-> Položka Hello protokolu Http nebo Https rozlišuje velká a malá písmena.
+> Položka protokolu Http nebo Https rozlišuje velká a malá písmena.
 
-Hello následující příklad ukazuje, jak toouse konfigurační soubor tooset bránu aplikace hello. Příklad zatížení Hello vyrovnává provozu HTTP na veřejném portu 80 a odešle síťový provoz tooback-end port 80 mezi dvěma IP adresami.
+Následující příklad ukazuje, jak použít konfigurační soubor k nastavení služby Application Gateway. V příkladu se vyrovnává zatížení provozu HTTP na veřejném portu 80 a síťový provoz mezi dvěma IP adresami se odesílá na port back-end 80.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -212,24 +212,24 @@ Hello následující příklad ukazuje, jak toouse konfigurační soubor tooset 
 
 #### <a name="step-2"></a>Krok 2
 
-Dále nastavte aplikační bránu hello. Použití hello `Set-AzureApplicationGatewayConfig` rutiny s konfiguračním souborem XML.
+Dále nastavte aplikační bránu. Použijte rutinu `Set-AzureApplicationGatewayConfig` s konfiguračním souborem XML.
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile "D:\config.xml"
 ```
 
-### <a name="configure-hello-application-gateway-by-using-a-configuration-object"></a>Konfigurace hello aplikační bránu pomocí objektu konfigurace
+### <a name="configure-the-application-gateway-by-using-a-configuration-object"></a>Nakonfigurujte aplikační bránu pomocí objektu konfigurace
 
-Hello následující příklad ukazuje, jak tooconfigure hello aplikační bránu pomocí objektu konfigurace. Všechny položky konfigurace musíte musí nakonfigurovat individuálně a potom přidat objektu konfigurace tooan application gateway. Po vytvoření objektu konfigurace hello, použijete hello `Set-AzureApplicationGateway` příkaz toocommit hello konfigurace toohello vytvořili prostředku aplikační brány.
+Následující příklad ukazuje, jak se provádí konfigurace aplikační brány pomocí objektu konfigurace. Všechny položky konfigurace se musí nakonfigurovat individuálně a potom se musí přidat k objektu konfigurace aplikační brány. Po vytvoření objektu konfigurace použijte příkaz `Set-AzureApplicationGateway` pro potvrzení konfigurace k předem vytvořenému prostředku služby Application Gateway.
 
 > [!NOTE]
-> Před přiřazením objekt hodnoty tooeach konfigurace, je nutné toodeclare jaký druh objektu používá prostředí PowerShell pro úložiště. Hello první řádek toocreate hello jednotlivých položek definuje, co `Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model(object name)` se používají.
+> Před přiřazením hodnoty každému objektu konfigurace musíte deklarovat, který typ objektu používá prostředí PowerShell pro úložiště. První řádek vytvoření jednotlivých položek definuje, jaký model `Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model(object name)` se použije.
 
 #### <a name="step-1"></a>Krok 1
 
 Vytvořte všechny položky individuální konfigurace.
 
-Vytvořte front-end IP adresu hello, jak je znázorněno v následující ukázka hello.
+Vytvořte front-end IP adresu, jak je znázorněno v následujícím příkladu.
 
 ```powershell
 $fip = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendIPConfiguration
@@ -238,7 +238,7 @@ $fip.Type = "Private"
 $fip.StaticIPAddress = "10.0.0.5"
 ```
 
-Vytvořte hello front-end port, jak ukazuje následující příklad hello.
+Vytvořte front-end port, jak je znázorněno v následujícím příkladu.
 
 ```powershell
 $fep = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendPort
@@ -246,9 +246,9 @@ $fep.Name = "fep1"
 $fep.Port = 80
 ```
 
-Vytvořte fond back-end serverů hello.
+Vytvořte fond back-end serveru.
 
-Definujte hello IP adresy, které jsou přidány toohello fondu back-end serverů, jak je znázorněno v následujícím příkladu hello.
+Definujte IP adresy, které se přidají do fondu back-end serverů, jak je znázorněno v následujícím příkladu.
 
 ```powershell
 $servers = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendServerCollection
@@ -256,7 +256,7 @@ $servers.Add("10.0.0.1")
 $servers.Add("10.0.0.2")
 ```
 
-Pomocí hello $server objekt tooadd hello hodnoty toohello fond back-end objektu ($pool).
+Pomocí objektu $server přidejte hodnoty do objektu back-end fondu ($pool).
 
 ```powershell
 $pool = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendAddressPool
@@ -264,7 +264,7 @@ $pool.BackendServers = $servers
 $pool.Name = "pool1"
 ```
 
-Vytvořte nastavení fondu back-end serverů hello.
+Vytvořte nastavení fondu back-end serverů.
 
 ```powershell
 $setting = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendHttpSettings
@@ -274,7 +274,7 @@ $setting.Port = 80
 $setting.Protocol = "http"
 ```
 
-Vytvořte naslouchací proces hello.
+Vytvořte naslouchací proces.
 
 ```powershell
 $listener = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.HttpListener
@@ -285,7 +285,7 @@ $listener.Protocol = "http"
 $listener.SslCert = ""
 ```
 
-Vytvořte pravidlo hello.
+Vytvořte pravidlo.
 
 ```powershell
 $rule = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.HttpLoadBalancingRule
@@ -298,9 +298,9 @@ $rule.BackendAddressPool = "pool1"
 
 #### <a name="step-2"></a>Krok 2
 
-Přiřaďte všechny individuální konfigurace položky tooan objektu konfigurace application gateway ($appgwconfig).
+Přiřaďte všechny položky individuální konfigurace objektu konfigurace aplikační brány ($appgwconfig).
 
-Přidejte toohello konfiguraci front-end IP adresy hello.
+Přidejte front-end IP adresu ke konfiguraci.
 
 ```powershell
 $appgwconfig = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.ApplicationGatewayConfiguration
@@ -308,34 +308,34 @@ $appgwconfig.FrontendIPConfigurations = New-Object "System.Collections.Generic.L
 $appgwconfig.FrontendIPConfigurations.Add($fip)
 ```
 
-Přidáte konfiguraci toohello front-end port hello.
+Přidejte front-end port ke konfiguraci.
 
 ```powershell
 $appgwconfig.FrontendPorts = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendPort]"
 $appgwconfig.FrontendPorts.Add($fep)
 ```
-Přidáte konfiguraci toohello fondu back-end serverů hello.
+Přidejte fond back-end serverů ke konfiguraci.
 
 ```powershell
 $appgwconfig.BackendAddressPools = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendAddressPool]"
 $appgwconfig.BackendAddressPools.Add($pool)
 ```
 
-Přidáte konfiguraci toohello nastavení fondu back-end hello.
+Přidejte nastavení back-end fondu ke konfiguraci.
 
 ```powershell
 $appgwconfig.BackendHttpSettingsList = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendHttpSettings]"
 $appgwconfig.BackendHttpSettingsList.Add($setting)
 ```
 
-Přidáte konfiguraci toohello hello naslouchacího procesu.
+Přidejte naslouchací proces ke konfiguraci.
 
 ```powershell
 $appgwconfig.HttpListeners = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.HttpListener]"
 $appgwconfig.HttpListeners.Add($listener)
 ```
 
-Přidáte konfiguraci toohello pravidlo hello.
+Přidejte pravidlo ke konfiguraci.
 
 ```powershell
 $appgwconfig.HttpLoadBalancingRules = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.HttpLoadBalancingRule]"
@@ -343,28 +343,28 @@ $appgwconfig.HttpLoadBalancingRules.Add($rule)
 ```
 
 ### <a name="step-3"></a>Krok 3
-Potvrdit hello konfigurace objektu toohello prostředku aplikační brány pomocí `Set-AzureApplicationGatewayConfig`.
+Potvrďte objekt konfigurace k prostředku služby Application Gateway pomocí rutiny `Set-AzureApplicationGatewayConfig`.
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name AppGwTest -Config $appgwconfig
 ```
 
-## <a name="start-hello-gateway"></a>Spusťte bránu hello
+## <a name="start-the-gateway"></a>Spusťte bránu
 
-Jakmile se nakonfiguruje brána hello, použijte hello `Start-AzureApplicationGateway` rutiny toostart hello brány. Fakturace aplikační brány se spustí po úspěšném spuštění brány hello.
+Jakmile se brána nakonfiguruje, pomocí rutiny `Start-AzureApplicationGateway` ji spusťte. Fakturace aplikační brány se spustí až po úspěšném spuštění brány.
 
 > [!NOTE]
-> Hello `Start-AzureApplicationGateway` rutiny může trvat až toofinish too15-20 minut.
+> Dokončení rutiny `Start-AzureApplicationGateway` může trvat 15 až 20 minut.
 
 ```powershell
 Start-AzureApplicationGateway AppGwTest
 ```
 
-## <a name="verify-hello-gateway-status"></a>Ověření stavu brány hello
+## <a name="verify-the-gateway-status"></a>Ověřte stav brány.
 
-Použití hello `Get-AzureApplicationGateway` rutiny toocheck hello stav hello brány. Pokud `Start-AzureApplicationGateway` úspěšné v předchozím kroku hello *stavu* by měl být spuštěn, a *Vip* a *DnsName* musí obsahovat platné položky.
+Pomocí rutiny `Get-AzureApplicationGateway` zkontrolujte stav brány. Pokud se v předcházejícím kroku podařilo úspěšně spustit rutinu `Start-AzureApplicationGateway`, položka *State* (Stav) by měla mít hodnotu Running (Spuštěno) a *Vip* a *DnsName* by měly obsahovat platné položky.
 
-Hello následující příklad ukazuje aplikační bránu, která je aktivní, spuštěná, a je připravený tootake provoz určený pro `http://<generated-dns-name>.cloudapp.net`.
+Následující příklad ukazuje aplikační bránu, která je aktivní, spuštěná a připravená přijmout provoz určený pro `http://<generated-dns-name>.cloudapp.net`.
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
@@ -384,15 +384,15 @@ Vip           : 138.91.170.26
 DnsName       : appgw-1b8402e8-3e0d-428d-b661-289c16c82101.cloudapp.net
 ```
 
-## <a name="delete-hello-application-gateway"></a>Odstranění hello application gateway
+## <a name="delete-the-application-gateway"></a>Odstranění služby Application Gateway
 
-toodelete hello aplikační brány:
+Chcete-li odstranit službu Application Gateway:
 
-1. Použití hello `Stop-AzureApplicationGateway` rutiny toostop hello brány.
-2. Použití hello `Remove-AzureApplicationGateway` rutiny tooremove hello brány.
-3. Ověřte, že hello brány byla odebrána pomocí hello `Get-AzureApplicationGateway` rutiny.
+1. Pomocí rutiny `Stop-AzureApplicationGateway` zastavte bránu.
+2. Pomocí rutiny `Remove-AzureApplicationGateway` bránu odeberte.
+3. Zkontrolujte odstranění brány pomocí rutiny `Get-AzureApplicationGateway`.
 
-Hello následující příklad ukazuje hello `Stop-AzureApplicationGateway` na hello prvním řádku, následovanou výstup hello.
+Následující příklad ukazuje rutinu `Stop-AzureApplicationGateway` na prvním řádku, následovanou výstupem.
 
 ```powershell
 Stop-AzureApplicationGateway AppGwTest
@@ -406,7 +406,7 @@ Name       HTTP Status Code     Operation ID                             Error
 Successful OK                   ce6c6c95-77b4-2118-9d65-e29defadffb8
 ```
 
-Jakmile hello Aplikační brána v zastaveném stavu, použijte hello `Remove-AzureApplicationGateway` rutiny tooremove hello služby.
+Jakmile je služba Application Gateway v zastaveném stavu, pomocí rutiny `Remove-AzureApplicationGateway` službu odstraňte.
 
 ```powershell
 Remove-AzureApplicationGateway AppGwTest
@@ -420,7 +420,7 @@ Name       HTTP Status Code     Operation ID                             Error
 Successful OK                   055f3a96-8681-2094-a304-8d9a11ad8301
 ```
 
-Odebrali jsme tooverify, který hello služby, můžete použít hello `Get-AzureApplicationGateway` rutiny. Tenhle krok není povinný.
+Pokud chcete zkontrolovat, že se služba odstranila, můžete použít rutinu `Get-AzureApplicationGateway`. Tenhle krok není povinný.
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
@@ -429,15 +429,15 @@ Get-AzureApplicationGateway AppGwTest
 ```
 VERBOSE: 10:52:46 PM - Begin Operation: Get-AzureApplicationGateway
 
-Get-AzureApplicationGateway : ResourceNotFound: hello gateway does not exist.
+Get-AzureApplicationGateway : ResourceNotFound: The gateway does not exist.
 .....
 ```
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete tooconfigure přesměrování zpracování SSL, najdete v části [konfigurace aplikační brány pro přesměrování zpracování SSL](application-gateway-ssl.md).
+Pokud chcete konfigurovat přesměrování zpracování SSL, přejděte do části [Konfigurace aplikační brány pro přesměrování zpracování SSL](application-gateway-ssl.md).
 
-Pokud chcete tooconfigure toouse brány aplikací s nástrojem pro vyrovnávání zatížení pro vnitřní, najdete v části [vytvoření aplikační brány s nástrojem pro vyrovnávání interní zatížení (ILB)](application-gateway-ilb.md).
+Pokud chcete provést konfiguraci aplikační brány pro použití s interním nástrojem pro vyrovnávání zatížení, přečtěte si část [Vytvoření aplikační brány s interním nástrojem pro vyrovnávání zatížení (ILB)](application-gateway-ilb.md).
 
 Pokud chcete další informace o obecných možnostech vyrovnávání zatížení, přečtěte si část:
 

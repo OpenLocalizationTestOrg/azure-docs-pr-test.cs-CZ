@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate náhradní klíče pomocí IDENTITY | Microsoft Docs"
-description: "Zjistěte, jak toouse IDENTITY toocreate náhradní klíče na tabulky."
+title: "Vytvoření klíčů náhradní pomocí IDENTITY | Microsoft Docs"
+description: "Další informace o použití IDENTITY k vytváření klíčů náhradní na tabulky."
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 06/13/2017
 ms.author: jrj;barbkess
-ms.openlocfilehash: 502cdd2b510b229b2a19c1f78b11862a7386ae3b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3ab5d159e6eaeb830135fe134e108b0e4de4b7d6
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-surrogate-keys-by-using-identity"></a>Vytvoření klíčů náhradní pomocí IDENTITY
 > [!div class="op_single_selector"]
@@ -33,10 +33,10 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Mnoho modelování dat jako toocreate náhradní klíče na jejich tabulky při návrhu modely datového skladu. Můžete vytvořit tooachieve vlastnost IDENTITY hello tento cíl jednoduše a efektivně bez ovlivnění výkonu zatížení. 
+Mnoho modelování dat, například k vytváření klíčů náhradní na jejich tabulky při návrhu modely datového skladu. Vlastnost IDENTITY můžete použít k dosažení tohoto cíle jednoduše a efektivně, aniž by to ovlivnilo zatížení výkonu. 
 
 ## <a name="get-started-with-identity"></a>Začínáme s identitou
-Můžete definovat tabulku tak, že má vlastnost IDENTITY hello při prvním vytvoření tabulky hello pomocí syntaxe, který je podobný toohello následující příkaz:
+Můžete definovat tabulku tak, že má vlastnost IDENTITY při prvním vytvoření tabulky pomocí syntaxe, který je podobný následující příkaz:
 
 ```sql
 CREATE TABLE dbo.T1
@@ -50,15 +50,15 @@ WITH
 ;
 ```
 
-Pak můžete použít `INSERT..SELECT` toopopulate hello tabulky.
+Pak můžete použít `INSERT..SELECT` k vyplnění tabulky.
 
 ## <a name="behavior"></a>Chování
-Hello vlastnost IDENTITY je navrženou tooscale se mezi všechny hello distribuce v datovém skladu hello bez ovlivnění výkonu zatížení. Implementace hello identity je proto orientované na dosažení těchto cílů. V této části jsou zdůrazněné drobné odlišnosti hello z hello implementace toohelp porozumíte je podrobněji.  
+Vlastnost IDENTITY je určena pro škálovat napříč všechny distribuce v datovém skladu, aniž by to ovlivnilo zatížení výkonu. Implementace IDENTITY je proto orientované na dosažení těchto cílů. V této části jsou zdůrazněné drobné odlišnosti ve implementaci vám pomohou pochopit je podrobněji.  
 
 ### <a name="allocation-of-values"></a>Přidělování hodnot
-Hello vlastnost IDENTITY nezaručuje hello pořadí v hello, které jsou přiděleny náhradní hodnoty, které odráží hello chování systému SQL Server a databáze SQL Azure. Ale v Azure SQL Data Warehouse, hello absenci záruku je mnohem výraznější. 
+Vlastnost IDENTITY nezaručuje pořadí, ve kterém jsou přiděleny náhradní hodnoty, které odráží chování systému SQL Server a databáze SQL Azure. Ale v Azure SQL Data Warehouse absenci záruku je mnohem výraznější. 
 
-Následující ukázka Hello je obrázek:
+V následujícím příkladu je obrázek:
 
 ```sql
 CREATE TABLE dbo.T1
@@ -83,29 +83,29 @@ FROM dbo.T1;
 DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
-V předchozím příkladu hello dva řádky dostali distribuční 1. první řádek Hello má hello náhradní hodnotu 1 ve sloupci `C1`, a druhý řádek hello má hodnotu náhradní hello 61. Obě tyto hodnoty byly vygenerovány hello vlastnost IDENTITY. Přidělení hello hodnot hello však není souvislé. Toto chování je záměrné.
+V předchozím příkladu dva řádky dostali distribuční 1. První řádek má náhradní hodnotu 1 ve sloupci `C1`, a druhý řádek obsahuje náhradní hodnota 61. Obě tyto hodnoty byly vygenerovány vlastnost IDENTITY. Přidělení hodnoty však není souvislé. Toto chování je záměrné.
 
 ### <a name="skewed-data"></a>Zkreslilo dat 
-Hello rozsahu hodnot pro datový typ hello jsou rovnoměrně rozloženy hello distribuce. Pokud se vyskytne distribuované tabulku z zkreslilo dat, pak hello rozsah hodnot, které jsou k dispozici toohello datatype může dojít k vyčerpání předčasně. Například pokud všechna data hello skončilo v jednom distribučním, pak efektivně hello tabulka má přístup tooonly jedné šedesátině hodnot hello hello datového typu. Z tohoto důvodu hello vlastnost IDENTITY je omezená příliš`INT` a `BIGINT` datové typy jenom.
+Rozsah hodnot pro datový typ jsou rovnoměrně rozloženy distribuce. Pokud se vyskytne distribuované tabulku z zkreslilo dat, můžete rozsah hodnot, které jsou k dispozici pro datový typ vyčerpán předčasně. Například pokud všechna data skončilo v jednom distribučním, pak efektivně tabulka má přístup k jedné pouze šedesátině hodnot datového typu. Z tohoto důvodu je omezena na vlastnost IDENTITY `INT` a `BIGINT` datové typy jenom.
 
 ### <a name="selectinto"></a>VYBERTE... DO
-Pokud do nové tabulky je vybraná jako existující sloupec IDENTITY, nový sloupec hello dědí vlastnost IDENTITY hello, pokud je splněna jedna z hello následující podmínky:
-- příkaz SELECT Hello obsahuje spojení.
+Pokud do nové tabulky je vybraná jako existující sloupec IDENTITY, nového sloupce, který dědí vlastnost Identita, pokud je splněna jedna z následujících podmínek:
+- Příkaz SELECT obsahuje spojení.
 - Více příkazů SELECT připojeni pomocí UNION.
-- sloupec IDENTITY Hello je uvedena v seznamu SELECT hello více než jednou.
-- sloupec IDENTITY Hello je součástí výrazu.
+- Sloupec IDENTITY je uveden více než jednou v seznamu SELECT.
+- Sloupec IDENTITY je součástí výrazu.
     
-Pokud platí jedna z těchto podmínek, se vytvoří sloupec hello NOT NULL místo dědí vlastnost IDENTITY hello.
+Pokud platí jedna z těchto podmínek, vytvoří se sloupci NOT NULL místo dědí vlastnost Identita.
 
 ### <a name="create-table-as-select"></a>VYTVOŘENÍ TABLE AS SELECT
-Vytvoření tabulky AS vyberte funkce CTAS () způsobem hello stejné chování systému SQL Server, která je popsána vyberte... DO. V definici sloupce hello hello však nelze určit vlastnost IDENTITY `CREATE TABLE` součástí příkaz hello. Také v nemůžete použít funkci IDENTITY hello hello `SELECT` součástí hello funkce CTAS. toopopulate tabulky, je nutné toouse `CREATE TABLE` následuje tabulka hello toodefine `INSERT..SELECT` toopopulate ho.
+Vytvoření tabulky AS vyberte funkce CTAS () odpovídá stejné chování systému SQL Server, která je popsána vyberte... DO. V definici sloupce však nelze určit vlastnost IDENTITY `CREATE TABLE` část příkazu. Funkci IDENTITY v také nelze použít `SELECT` součástí funkce CTAS. Vyplnění tabulky, budete muset použít `CREATE TABLE` definovat v tabulce, za nímž následuje `INSERT..SELECT` k jejímu naplnění.
 
 ## <a name="explicitly-insert-values-into-an-identity-column"></a>Explicitně vložení hodnoty do sloupce IDENTITY 
-SQL Data Warehouse podporuje `SET IDENTITY_INSERT <your table> ON|OFF` syntaxe. Můžete použít tuto syntaxi tooexplicitly vložení hodnoty do sloupce IDENTITY hello.
+SQL Data Warehouse podporuje `SET IDENTITY_INSERT <your table> ON|OFF` syntaxe. Pomocí této syntaxe explicitně vložení hodnoty do sloupce IDENTITY.
 
-Mnoho data modelování jako toouse předdefinované záporné hodnoty pro některé řádky v jejich dimenzí. Příkladem je řádek "neznámého člena" nebo hello -1. 
+Mnoho modelování dat se chtěli použít předdefinované záporné hodnoty pro některé řádky v jejich dimenzí. Příkladem je "neznámého člena" řádek nebo hodnotu -1. 
 
-Hello další skript je ukázkou, jak tooexplicitly přidat tento řádek pomocí nastavení IDENTITY_INSERT:
+Další skriptu ukazuje, jak chcete explicitně přidat pomocí nastavení IDENTITY_INSERT tento řádek:
 
 ```sql
 SET IDENTITY_INSERT dbo.T1 ON;
@@ -126,12 +126,12 @@ FROM    dbo.T1
 
 ## <a name="load-data-into-a-table-with-identity"></a>Načtení dat do tabulky s identitou
 
-Hello přítomnost hello vlastnost IDENTITY má nějaký kód načítání dat tooyour dopad. V této části jsou zdůrazněné některé základní vzory pro načítání dat do tabulky pomocí IDENTITY. 
+Přítomnost vlastnost IDENTITY má některé důsledky načítání dat kódu. V této části jsou zdůrazněné některé základní vzory pro načítání dat do tabulky pomocí IDENTITY. 
 
 ### <a name="load-data-with-polybase"></a>Načítání dat pomocí PolyBase
-tooload data do tabulky a vygenerovat klíč náhradní pomocí IDENTITY, vytvořit tabulku hello a pak použít příkaz INSERT... Vyberte nebo VLOŽTE... HODNOTY tooperform hello zatížení.
+Načtení dat do tabulky a vygenerovat klíč náhradní pomocí IDENTITY, vytvořit v tabulce a pak použít příkaz INSERT... Vyberte nebo VLOŽTE... HODNOTY k provedení zatížení.
 
-Následující příklad označuje hello základní vzor Hello:
+V následujícím příkladu jsou uvedeny základní vzor:
  
 ```sql
 --CREATE TABLE with IDENTITY
@@ -145,7 +145,7 @@ WITH
 )
 ;
 
---Use INSERT..SELECT toopopulate hello table from an external table
+--Use INSERT..SELECT to populate the table from an external table
 INSERT INTO dbo.T1
 (C2)
 SELECT  C2
@@ -160,28 +160,28 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
 > [!NOTE] 
-> Není možné toouse `CREATE TABLE AS SELECT` aktuálně při načítání dat do tabulky se sloupcem IDENTITY.
+> Není možné použít `CREATE TABLE AS SELECT` aktuálně při načítání dat do tabulky se sloupcem IDENTITY.
 > 
 
-Další informace k načítání dat pomocí hello hromadné kopírování (BCP) programu nástroje najdete v tématu hello následující články:
+Další informace o načítání dat pomocí nástroje hromadné kopírování (BCP) programu najdete v následujících článcích:
 
 - [Načíst pomocí funkce PolyBase][]
 - [PolyBase osvědčené postupy][]
 
 ### <a name="load-data-with-bcp"></a>Načítání dat pomocí BCP
-BCP je nástroj příkazového řádku, které můžete tooload dat do SQL Data Warehouse. Jeden z jeho parametry (-E) ovládacích prvků hello chování BCP při načítání dat do tabulky se sloupcem IDENTITY. 
+BCP je nástroj příkazového řádku, který slouží k načtení dat do SQL Data Warehouse. Jeden z jeho parametry (-E) řídí chování BCP při načítání dat do tabulky se sloupcem IDENTITY. 
 
-Pokud je zadána -E, se zachovají hodnoty hello uchovávat v hello vstupní soubor pro hello sloupec s identitou. Pokud je -E *není* určeno, hello hodnoty v tomto sloupci se ignorují. Sloupec identity hello neuvedete, hello data je načíst jako normální. Hello hodnoty jsou generovány podle zásad toohello přírůstek a počáteční hodnoty vlastnosti hello.
+Pokud je zadána -E, se zachovají hodnoty uchovávat ve vstupním souboru pro sloupec s identitou. Pokud je -E *není* určeno, hodnoty v tomto sloupci se ignorují. Pokud sloupec identity neuvedete, je načíst normální data. Hodnoty jsou generovány podle zásad přírůstek a počáteční hodnoty vlastnosti.
 
-Další informace o načítání dat pomocí BCP najdete v části hello následující články:
+Další informace o načítání dat pomocí BCP najdete v následujících článcích:
 
 - [Načíst pomocí BCP][]
 - [BCP v MSDN][]
 
 ## <a name="catalog-views"></a>Zobrazení katalogu
-SQL Data Warehouse podporuje hello `sys.identity_columns` katalogu zobrazení. Toto zobrazení lze použít tooidentify sloupec, který má vlastnost IDENTITY hello.
+Podporuje SQL Data Warehouse `sys.identity_columns` katalogu zobrazení. Toto zobrazení můžete použít k identifikaci sloupec, který má vlastnost IDENTITY.
 
-toohelp lépe pochopit hello schématu databáze, tento příklad ukazuje, jak toointegrate `sys.identity_columns` s dalšími zobrazeními katalogu systému:
+Vám pomůžou lépe pochopit schématu databáze, tento příklad ukazuje, jak integrovat `sys.identity_columns` s dalšími zobrazeními katalogu systému:
 
 ```sql
 SELECT  sm.name
@@ -202,12 +202,12 @@ AND     tb.name = 'T1'
 ```
 
 ## <a name="limitations"></a>Omezení
-Hello vlastnost IDENTITY nelze použít v hello následující scénáře:
-- Kde je datový typ sloupce hello není INT nebo BIGINT
-- Kde hello sloupec je také hello distribučního klíče
-- Kde hello tabulka je externí tabulky 
+Vlastnost IDENTITY nelze použít v následujících scénářích:
+- Kde je datový typ sloupce není INT nebo BIGINT
+- Kde sloupec je také distribučního klíče
+- Kde je v tabulce externí tabulky 
 
-Hello následující související funkce nejsou podporovány v SQL Data Warehouse:
+Následující související funkce nejsou podporovány v SQL Data Warehouse:
 
 - [IDENTITY()][]
 - [@@IDENTITY][]
@@ -219,22 +219,22 @@ Hello následující související funkce nejsou podporovány v SQL Data Warehou
 
 ## <a name="tasks"></a>Úlohy
 
-Tato část obsahuje ukázkový kód tooperform běžných úloh můžete použít při práci s sloupců IDENTITY.
+Tato část obsahuje některé ukázkový kód, který slouží k provádění běžných úloh při práci s sloupců IDENTITY.
 
 > [!NOTE] 
-> Sloupec C1 je hello IDENTITY ve všech hello následující úlohy.
+> Sloupec C1 je identita v následující úlohy.
 > 
  
-### <a name="find-hello-highest-allocated-value-for-a-table"></a>Vyhledá nejvyšší hello přidělené hodnotu pro tabulku
-Použití hello `MAX()` funkce toodetermine hello nejvyšší hodnotou přidělené pro distribuované tabulku:
+### <a name="find-the-highest-allocated-value-for-a-table"></a>Vyhledá nejvyšší hodnotu přidělené pro tabulku
+Použití `MAX()` funkce lze určit nejvyšší hodnotu přidělené pro distribuované tabulku:
 
 ```sql
 SELECT  MAX(C1)
 FROM    dbo.T1
 ``` 
 
-### <a name="find-hello-seed-and-increment-for-hello-identity-property"></a>Najít hello zdrojovou a přírůstkovou pro hello vlastnost IDENTITY
-Hello katalogu zobrazení toodiscover hello identity přírůstek a počáteční hodnoty konfigurace můžete použít pro tabulku s použitím hello následující dotaz: 
+### <a name="find-the-seed-and-increment-for-the-identity-property"></a>Vyhledejte počáteční hodnoty a přírůstku pro vlastnost IDENTITY
+Zobrazení katalogu můžete použít ke zjištění hodnoty identity přírůstek a počáteční konfigurace pro tabulku s použitím následujícího dotazu: 
 
 ```sql
 SELECT  sm.name
@@ -254,7 +254,7 @@ AND     tb.name = 'T1'
 
 ## <a name="next-steps"></a>Další kroky
 
-* toolearn Další informace o vývoji tabulky, najdete v části [tabulky přehled][Overview], [tabulky datové typy][Data Types], [distribuovat tabulku] [ Distribute], [Indexu tabulky][Index], [oddílu tabulky][Partition], a [ Dočasné tabulky][Temporary]. 
+* Další informace o vývoji tabulky najdete v tématu [tabulky přehled][Overview], [tabulky datové typy][Data Types], [distribuovat tabulku] [ Distribute], [Indexu tabulky][Index], [oddílu tabulky][Partition], a [ Dočasné tabulky][Temporary]. 
 * Další informace o osvědčených postupech najdete v tématu [osvědčené postupy pro SQL Data Warehouse][SQL Data Warehouse Best Practices].  
 
 <!--Image references-->

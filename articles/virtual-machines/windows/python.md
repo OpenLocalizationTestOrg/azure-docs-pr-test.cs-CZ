@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate a spravovat virtuální počítač s Windows v Azure pomocí Python | Microsoft Docs"
-description: "Další toouse Python toocreate a spravovat virtuální počítač s Windows v Azure."
+title: "Vytvářet a spravovat virtuální počítač s Windows v Azure pomocí Python | Microsoft Docs"
+description: "Naučte se používat jazyk Python vytvářet a spravovat virtuální počítač s Windows v Azure."
 services: virtual-machines-windows
 documentationcenter: 
 author: davidmu1
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: davidmu
-ms.openlocfilehash: c5553e4e7361e6b9a7183cd935be382f967160cb
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: bb777d41570d7b1dc97402d532519488912948e3
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Vytvářet a spravovat virtuální počítače Windows v Azure pomocí Python
 
@@ -32,35 +32,35 @@ ms.lasthandoff: 10/06/2017
 > * Vytvoření prostředků
 > * Provádění úloh správy
 > * Odstraňte prostředky
-> * Spuštění aplikace hello
+> * Spuštění aplikace
 
-Trvá přibližně 20 minut toodo tyto kroky.
+Proveďte tyto kroky trvá asi 20 minut.
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
 
-1. Pokud jste to ještě neudělali, nainstalujte [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Vyberte **vývoj Python** na hello zatížení stránky a potom klikněte na **nainstalovat**. V hello souhrn, můžete uvidíte, že **Python 3 64-bit (3.6.0)** je automaticky vybrána pro vás. Pokud jste již nainstalovali Visual Studio, můžete přidat hello Python zatížení pomocí hello Spouštěče Visual Studio.
+1. Pokud jste to ještě neudělali, nainstalujte [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Vyberte **vývoj Python** na stránce úlohy a pak klikněte na tlačítko **nainstalovat**. V souhrnu, můžete uvidíte, že **Python 3 64-bit (3.6.0)** je automaticky vybrána pro vás. Pokud jste již nainstalovali Visual Studio, můžete přidat Python zatížení pomocí Spouštěče sady Visual Studio.
 2. Po instalaci a spuštění sady Visual Studio, klikněte na tlačítko **soubor** > **nový** > **projektu**.
-3. Klikněte na tlačítko **šablony** > **Python** > **aplikace Python**, zadejte *myPythonProject* pro název hello hello projektu, vyberte umístění hello hello projektu a pak klikněte na tlačítko **OK**.
+3. Klikněte na tlačítko **šablony** > **Python** > **aplikace Python**, zadejte *myPythonProject* pro název projekt, vyberte umístění projektu a pak klikněte na tlačítko **OK**.
 
 ## <a name="install-packages"></a>Instalovat balíčky
 
 1. V Průzkumníku řešení klikněte v části *myPythonProject*, klikněte pravým tlačítkem na **prostředí Python**a potom vyberte **přidat virtuální prostředí**.
-2. Na úvodní obrazovka Přidání virtuálního prostředí, přijměte výchozí název hello *env*, ujistěte se, že *3.6 Python (64 bitů)* pro základní překladač hello je vybrána a pak klikněte na tlačítko **vytvořit**.
-3. Klikněte pravým tlačítkem na hello *env* prostředí, které jste vytvořili, klikněte na tlačítko **instalovat balíček Python**, zadejte *azure* v hello vyhledávacího pole a stiskněte klávesu Enter.
+2. Na obrazovce Přidat virtuální prostředí, přijměte výchozí název *env*, ujistěte se, že *3.6 Python (64 bitů)* pro základní překladač je vybrána a potom klikněte na **vytvořit** .
+3. Klikněte pravým tlačítkem myši *env* prostředí, které jste vytvořili, klikněte na tlačítko **instalovat balíček Python**, zadejte *azure* do pole hledání a potom stiskněte klávesu Enter.
 
-Měli byste vidět v oknech výstupu hello balíčky hello azure byly úspěšně nainstalovány. 
+Měli byste vidět v oknech výstupu azure balíčky byly úspěšně nainstalovány. 
 
 ## <a name="create-credentials"></a>Vytvořit přihlašovací údaje
 
-Než začnete tento krok, ujistěte se, že máte [objektu služby Active Directory](../../azure-resource-manager/resource-group-create-service-principal-portal.md). Také byste měli zaznamenat ID aplikace hello hello ověřovací klíč a hello ID klienta, který budete potřebovat později.
+Než začnete tento krok, ujistěte se, že máte [objektu služby Active Directory](../../azure-resource-manager/resource-group-create-service-principal-portal.md). Také byste měli zaznamenat ID aplikace, ověřovací klíč a ID klienta, který budete potřebovat později.
 
-1. Otevřete *myPythonProject.py* soubor, který byl vytvořen a poté přidejte tento kód tooenable toorun vaší aplikace:
+1. Otevřete *myPythonProject.py* soubor, který byl vytvořen a poté přidejte tento kód k povolení spuštění vaší aplikace:
 
     ```python
     if __name__ == "__main__":
     ```
 
-2. tooimport hello kód, který je potřeba, přidejte tyto příkazy toohello horní části souboru .py hello:
+2. Pokud chcete importovat kód, který je potřeba, přidejte do horní části souboru .py tyto příkazy:
 
     ```python
     from azure.common.credentials import ServicePrincipalCredentials
@@ -70,7 +70,7 @@ Než začnete tento krok, ujistěte se, že máte [objektu služby Active Direct
     from azure.mgmt.compute.models import DiskCreateOption
     ```
 
-3. Dále v souboru .py hello, přidejte proměnné po příkazy pro import hello toospecify běžné hodnoty použít v hello kódu:
+3. Dále v souboru .py přidejte proměnné po importu příkazy k určení běžné hodnoty, které se používá v kódu:
    
     ```
     SUBSCRIPTION_ID = 'subscription-id'
@@ -81,7 +81,7 @@ Než začnete tento krok, ujistěte se, že máte [objektu služby Active Direct
 
     Nahraďte **id předplatného** s ID vašeho předplatného.
 
-4. pověření služby Active Directory hello toocreate, je nutné, aby toomake požadavků, přidejte tuto funkci po hello proměnné v souboru .py hello:
+4. Pokud chcete vytvořit přihlašovací údaje služby Active Directory, které je třeba, aby žádosti, přidejte tuto funkci po proměnné v souboru .py:
 
     ```python
     def get_credentials():
@@ -94,9 +94,9 @@ Než začnete tento krok, ujistěte se, že máte [objektu služby Active Direct
         return credentials
     ```
 
-    Nahraďte **id aplikace**, **ověřovací klíč**, a **id klienta** hello hodnotami, které jste dříve shromážděna při vytváření služby Azure Active Directory instanční objekt.
+    Nahraďte **id aplikace**, **ověřovací klíč**, a **id klienta** hodnotami, které jste dříve shromážděna při vytváření služby Azure Active Directory objekt zabezpečení.
 
-5. Funkce hello toocall, kterou jste dříve přidali, přidejte tento kód pod hello **Pokud** příkaz na konci hello soubor .py hello:
+5. Chcete-li zavolat funkci, kterou jste dříve přidali, přidejte tento kód v části **Pokud** příkaz na konci souboru .py:
 
     ```python
     credentials = get_credentials()
@@ -106,7 +106,7 @@ Než začnete tento krok, ujistěte se, že máte [objektu služby Active Direct
  
 ### <a name="initialize-management-clients"></a>Inicializace klientů pro správu
 
-Klienti pro správu jsou potřebné toocreate a spravovat prostředky pomocí hello Python SDK v Azure. toocreate hello správu klientů, přidejte tento kód pod hello **Pokud** údajů na adrese pak konec souboru .py hello:
+Klienti pro správu jsou potřebné k vytváření a správě prostředků v Azure pomocí sady SDK pro Python. Chcete-li vytvořit klientů pro správu, přidejte tento kód v části **Pokud** údajů na adrese pak konec souboru .py:
 
 ```python
 resource_group_client = ResourceManagementClient(
@@ -123,11 +123,11 @@ compute_client = ComputeManagementClient(
 )
 ```
 
-### <a name="create-hello-vm-and-supporting-resources"></a>Vytvoření hello virtuálních počítačů a podpůrné prostředky
+### <a name="create-the-vm-and-supporting-resources"></a>Vytvoření virtuálního počítače a podpůrné prostředky
 
 Musí být všechny prostředky obsažené v [skupiny prostředků](../../azure-resource-manager/resource-group-overview.md).
 
-1. toocreate skupinu prostředků, přidejte tuto funkci po hello proměnné v souboru .py hello:
+1. Pokud chcete vytvořit skupinu prostředků, přidejte tuto funkci po proměnné v souboru .py:
 
     ```python
     def create_resource_group(resource_group_client):
@@ -138,16 +138,16 @@ Musí být všechny prostředky obsažené v [skupiny prostředků](../../azure-
         )
     ```
 
-2. Funkce hello toocall, kterou jste dříve přidali, přidejte tento kód pod hello **Pokud** příkaz na konci hello soubor .py hello:
+2. Chcete-li zavolat funkci, kterou jste dříve přidali, přidejte tento kód v části **Pokud** příkaz na konci souboru .py:
 
     ```python
     create_resource_group(resource_group_client)
-    input('Resource group created. Press enter toocontinue...')
+    input('Resource group created. Press enter to continue...')
     ```
 
-[Skupiny dostupnosti](tutorial-availability-sets.md) bylo snazší pro vás toomaintain hello virtuální počítače používané vaší aplikace.
+[Skupiny dostupnosti](tutorial-availability-sets.md) umožňují snadnější zachování virtuálních počítačů, které používá vaše aplikace.
 
-1. toocreate dostupnosti nastaven, přidejte tuto funkci po hello proměnné v souboru .py hello:
+1. Pokud chcete vytvořit skupinu dostupnosti, přidejte tuto funkci po proměnné v souboru .py:
    
     ```python
     def create_availability_set(compute_client):
@@ -163,17 +163,17 @@ Musí být všechny prostředky obsažené v [skupiny prostředků](../../azure-
         )
     ```
 
-2. Funkce hello toocall, kterou jste dříve přidali, přidejte tento kód pod hello **Pokud** příkaz na konci hello soubor .py hello:
+2. Chcete-li zavolat funkci, kterou jste dříve přidali, přidejte tento kód v části **Pokud** příkaz na konci souboru .py:
 
     ```python
     create_availability_set(compute_client)
     print("------------------------------------------------------")
-    input('Availability set created. Press enter toocontinue...')
+    input('Availability set created. Press enter to continue...')
     ```
 
-A [veřejnou IP adresu](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) je potřebné toocommunicate s hello virtuálního počítače.
+A [veřejnou IP adresu](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) je potřeba ke komunikaci s virtuálním počítačem.
 
-1. toocreate veřejnou IP adresu pro virtuální počítač hello, přidejte tuto funkci po hello proměnné v souboru .py hello:
+1. Pokud chcete vytvořit veřejnou IP adresu pro virtuální počítač, přidejte tuto funkci po proměnné v souboru .py:
 
     ```python
     def create_public_ip_address(network_client):
@@ -190,18 +190,18 @@ A [veřejnou IP adresu](../../virtual-network/virtual-network-ip-addresses-overv
         return creation_result.result()
     ```
 
-2. Funkce hello toocall, kterou jste dříve přidali, přidejte tento kód pod hello **Pokud** příkaz na konci hello soubor .py hello:
+2. Chcete-li zavolat funkci, kterou jste dříve přidali, přidejte tento kód v části **Pokud** příkaz na konci souboru .py:
 
     ```python
     creation_result = create_public_ip_address(network_client)
     print("------------------------------------------------------")
     print(creation_result)
-    input('Press enter toocontinue...')
+    input('Press enter to continue...')
     ```
 
 Virtuální počítač musí být v podsíti [virtuální síť](../../virtual-network/virtual-networks-overview.md).
 
-1. toocreate virtuální sítě, přidejte tuto funkci po hello proměnné v souboru .py hello:
+1. Pokud chcete vytvořit virtuální síť, přidejte tuto funkci po proměnné v souboru .py:
 
     ```python
     def create_vnet(network_client):
@@ -219,16 +219,16 @@ Virtuální počítač musí být v podsíti [virtuální síť](../../virtual-n
         return creation_result.result()
     ```
 
-2. Funkce hello toocall, kterou jste dříve přidali, přidejte tento kód pod hello **Pokud** příkaz na konci hello soubor .py hello:
+2. Chcete-li zavolat funkci, kterou jste dříve přidali, přidejte tento kód v části **Pokud** příkaz na konci souboru .py:
    
     ```python
     creation_result = create_vnet(network_client)
     print("------------------------------------------------------")
     print(creation_result)
-    input('Press enter toocontinue...')
+    input('Press enter to continue...')
     ```
 
-3. tooadd toohello podsíť virtuální sítě, přidejte tuto funkci po hello proměnné v souboru .py hello:
+3. Chcete-li přidat podsíť virtuální sítě, přidejte tuto funkci po proměnné v souboru .py:
     
     ```python
     def create_subnet(network_client):
@@ -245,18 +245,18 @@ Virtuální počítač musí být v podsíti [virtuální síť](../../virtual-n
         return creation_result.result()
     ```
         
-4. Funkce hello toocall, kterou jste dříve přidali, přidejte tento kód pod hello **Pokud** příkaz na konci hello soubor .py hello:
+4. Chcete-li zavolat funkci, kterou jste dříve přidali, přidejte tento kód v části **Pokud** příkaz na konci souboru .py:
    
     ```python
     creation_result = create_subnet(network_client)
     print("------------------------------------------------------")
     print(creation_result)
-    input('Press enter toocontinue...')
+    input('Press enter to continue...')
     ```
 
-Virtuální počítač vyžaduje toocommunicate rozhraní sítě ve virtuální síti hello.
+Virtuální počítač vyžaduje síťové rozhraní pro komunikaci ve virtuální síti.
 
-1. toocreate síťového rozhraní, přidejte tuto funkci po hello proměnné v souboru .py hello:
+1. Pokud chcete vytvořit síťové rozhraní, přidejte tuto funkci po proměnné v souboru .py:
 
     ```python
     def create_nic(network_client):
@@ -288,18 +288,18 @@ Virtuální počítač vyžaduje toocommunicate rozhraní sítě ve virtuální 
         return creation_result.result()
     ```
 
-2. Funkce hello toocall, kterou jste dříve přidali, přidejte tento kód pod hello **Pokud** příkaz na konci hello soubor .py hello:
+2. Chcete-li zavolat funkci, kterou jste dříve přidali, přidejte tento kód v části **Pokud** příkaz na konci souboru .py:
 
     ```python
     creation_result = create_nic(network_client)
     print("------------------------------------------------------")
     print(creation_result)
-    input('Press enter toocontinue...')
+    input('Press enter to continue...')
     ```
 
-Teď, když jste vytvořili všechny hello Podpora prostředků, můžete vytvořit virtuální počítač.
+Teď, když jste vytvořili doprovodné materiály, můžete vytvořit virtuální počítač.
 
-1. toocreate hello virtuálního počítače, přidejte tuto funkci po hello proměnné v souboru .py hello:
+1. Pokud chcete vytvořit virtuální počítač, přidejte tuto funkci po proměnné v souboru .py:
    
     ```python
     def create_vm(network_client, compute_client):  
@@ -348,26 +348,26 @@ Teď, když jste vytvořili všechny hello Podpora prostředků, můžete vytvo�
     ```
 
     > [!NOTE]
-    > V tomto kurzu vytvoří virtuální počítač s verzí operačního systému Windows Server hello. toolearn Další informace o výběru ostatní Image, najdete v části [vyhledání a výběr imagí virtuálních počítačů Azure pomocí prostředí Windows PowerShell a rozhraní příkazového řádku Azure hello](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+    > V tomto kurzu vytvoří virtuální počítač s verzí operačního systému Windows Server. Další informace o výběru ostatní Image, najdete v tématu [vyhledání a výběr imagí virtuálních počítačů Azure pomocí prostředí Windows PowerShell a rozhraní příkazového řádku Azure](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
     > 
     > 
 
-2. Funkce hello toocall, kterou jste dříve přidali, přidejte tento kód pod hello **Pokud** příkaz na konci hello soubor .py hello:
+2. Chcete-li zavolat funkci, kterou jste dříve přidali, přidejte tento kód v části **Pokud** příkaz na konci souboru .py:
 
     ```python
     creation_result = create_vm(network_client, compute_client)
     print("------------------------------------------------------")
     print(creation_result)
-    input('Press enter toocontinue...')
+    input('Press enter to continue...')
     ```
 
 ## <a name="perform-management-tasks"></a>Provádění úloh správy
 
-Během životního cyklu hello virtuálního počítače můžete úlohy správy toorun například spuštění, zastavení nebo odstranění virtuálního počítače. Kromě toho můžete toocreate kód tooautomate opakovaných nebo komplexní úlohy.
+Během životního cyklu virtuálního počítače můžete spustit úlohy správy, jako je například spuštění, zastavení nebo odstranění virtuálního počítače. Kromě toho můžete vytvořit kód pro automatizaci úloh opakovaných nebo komplexní.
 
-### <a name="get-information-about-hello-vm"></a>Získání informací o hello virtuálních počítačů
+### <a name="get-information-about-the-vm"></a>Získat informace o virtuálním počítači
 
-1. tooget informace o virtuálním počítači hello, přidejte tuto funkci po hello proměnné v souboru .py hello:
+1. Chcete-li získat informace o virtuálním počítači, přidejte tuto funkci po proměnné v souboru .py:
 
     ```python
     def get_vm(compute_client):
@@ -420,59 +420,59 @@ Během životního cyklu hello virtuálního počítače můžete úlohy správy
             print("  code: ", stat.code)
             print("  displayStatus: ", stat.display_status)
     ```
-2. Funkce hello toocall, kterou jste dříve přidali, přidejte tento kód pod hello **Pokud** příkaz na konci hello soubor .py hello:
+2. Chcete-li zavolat funkci, kterou jste dříve přidali, přidejte tento kód v části **Pokud** příkaz na konci souboru .py:
 
     ```python
     get_vm(compute_client)
     print("------------------------------------------------------")
-    input('Press enter toocontinue...')
+    input('Press enter to continue...')
     ```
 
-### <a name="stop-hello-vm"></a>Zastavit hello virtuálních počítačů
+### <a name="stop-the-vm"></a>Zastavení virtuálního počítače
 
-Můžete zastavit virtuální počítač a ponechat jeho nastavení, ale pokračovat toobe účtovat pro něj nebo můžete zastavit virtuální počítač a jeho navrácení. Při zrušení jeho přidělení virtuálního počítače jsou končí deallocated a fakturace pro ni také všechny prostředky, které jsou s ním spojená.
+Můžete zastavit virtuální počítač a ponechat jeho nastavení, ale nadále účtovat poplatek za ho nebo můžete zastavit virtuální počítač a jeho navrácení. Při zrušení jeho přidělení virtuálního počítače jsou končí deallocated a fakturace pro ni také všechny prostředky, které jsou s ním spojená.
 
-1. toostop hello virtuální počítač bez rušení přidělení, přidejte tuto funkci po hello proměnné v souboru .py hello:
+1. Zastavte virtuální počítač bez rušení přidělení ho, přidejte tuto funkci po proměnné v souboru .py:
 
     ```python
     def stop_vm(compute_client):
         compute_client.virtual_machines.power_off(GROUP_NAME, VM_NAME)
     ```
 
-    Pokud chcete toodeallocate hello virtuální počítač, změňte hello power_off volání toothis kódu:
+    Pokud chcete zrušit přidělení virtuálního počítače, změna volání power_off tento kód:
 
     ```python
     compute_client.virtual_machines.deallocate(GROUP_NAME, VM_NAME)
     ```
 
-2. Funkce hello toocall, kterou jste dříve přidali, přidejte tento kód pod hello **Pokud** příkaz na konci hello soubor .py hello:
+2. Chcete-li zavolat funkci, kterou jste dříve přidali, přidejte tento kód v části **Pokud** příkaz na konci souboru .py:
 
     ```python
     stop_vm(compute_client)
-    input('Press enter toocontinue...')
+    input('Press enter to continue...')
     ```
 
-### <a name="start-hello-vm"></a>Hello spuštění virtuálního počítače
+### <a name="start-the-vm"></a>Spusťte virtuální počítač
 
-1. toostart hello virtuálního počítače, přidejte tuto funkci po hello proměnné v souboru .py hello:
+1. Pokud chcete spustit virtuální počítač, přidejte tuto funkci po proměnné v souboru .py:
 
     ```python
     def start_vm(compute_client):
         compute_client.virtual_machines.start(GROUP_NAME, VM_NAME)
     ```
 
-2. Funkce hello toocall, kterou jste dříve přidali, přidejte tento kód pod hello **Pokud** příkaz na konci hello soubor .py hello:
+2. Chcete-li zavolat funkci, kterou jste dříve přidali, přidejte tento kód v části **Pokud** příkaz na konci souboru .py:
 
     ```python
     start_vm(compute_client)
-    input('Press enter toocontinue...')
+    input('Press enter to continue...')
     ```
 
-### <a name="resize-hello-vm"></a>Změnit velikost hello virtuálních počítačů
+### <a name="resize-the-vm"></a>Změnit velikost virtuálního počítače
 
 Mnoho aspektů nasazení měli zvážit při rozhodování o velikosti pro virtuální počítač. Další informace najdete v tématu [velikosti virtuálních počítačů](sizes.md).
 
-1. velikost hello toochange hello virtuálního počítače, přidejte tuto funkci po hello proměnné v souboru .py hello:
+1. Chcete-li změnit velikost virtuálního počítače, přidejte tuto funkci po proměnné v souboru .py:
 
     ```python
     def update_vm(compute_client):
@@ -487,20 +487,20 @@ Mnoho aspektů nasazení měli zvážit při rozhodování o velikosti pro virtu
     return update_result.result()
     ```
 
-2. Funkce hello toocall, kterou jste dříve přidali, přidejte tento kód pod hello **Pokud** příkaz na konci hello soubor .py hello:
+2. Chcete-li zavolat funkci, kterou jste dříve přidali, přidejte tento kód v části **Pokud** příkaz na konci souboru .py:
 
     ```python
     update_result = update_vm(compute_client)
     print("------------------------------------------------------")
     print(update_result)
-    input('Press enter toocontinue...')
+    input('Press enter to continue...')
     ```
 
-### <a name="add-a-data-disk-toohello-vm"></a>Přidání disku toohello data virtuálního počítače
+### <a name="add-a-data-disk-to-the-vm"></a>Přidat datový disk k virtuálnímu počítači
 
 Virtuální počítače může mít jeden nebo více [datových disků](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) , jsou uloženy jako soubory VHD.
 
-1. tooadd datového disku toohello virtuálního počítače, přidejte tuto funkci po hello proměnné v souboru .py hello: 
+1. Chcete-li přidat datový disk k virtuálnímu počítači, přidejte tuto funkci po proměnné v souboru .py: 
 
     ```python
     def add_datadisk(compute_client):
@@ -533,27 +533,27 @@ Virtuální počítače může mít jeden nebo více [datových disků](about-di
         return add_result.result()
     ```
 
-2. Funkce hello toocall, kterou jste dříve přidali, přidejte tento kód pod hello **Pokud** příkaz na konci hello soubor .py hello:
+2. Chcete-li zavolat funkci, kterou jste dříve přidali, přidejte tento kód v části **Pokud** příkaz na konci souboru .py:
 
     ```python
     add_result = add_datadisk(compute_client)
     print("------------------------------------------------------")
     print(add_result)
-    input('Press enter toocontinue...')
+    input('Press enter to continue...')
     ```
 
 ## <a name="delete-resources"></a>Odstraňte prostředky
 
-Vzhledem k tomu, že se vám účtovat prostředky využívané v Azure, je vždy prostředky toodelete osvědčených postupů, které už nejsou potřeba. Pokud chcete, aby toodelete hello virtuální počítače a všechny hello podpora prostředky, všechny máte toodo je odstranit skupinu prostředků hello.
+Vzhledem k tomu, že se vám účtovat prostředky využívané v Azure, vždycky je dobrým zvykem odstranit prostředky, které už nejsou potřeba. Pokud chcete odstranit virtuální počítače a všechny podpůrné prostředky, je vše, co musíte udělat, odstraňte skupinu prostředků.
 
-1. Skupina prostředků hello toodelete a všechny prostředky, přidejte tuto funkci po hello proměnné v souboru .py hello:
+1. Pokud chcete odstranit skupinu prostředků a všechny prostředky, přidejte tuto funkci po proměnné v souboru .py:
    
     ```python
     def delete_resources(resource_group_client):
         resource_group_client.resource_groups.delete(GROUP_NAME)
     ```
 
-2. Funkce hello toocall, kterou jste dříve přidali, přidejte tento kód pod hello **Pokud** příkaz na konci hello soubor .py hello:
+2. Chcete-li zavolat funkci, kterou jste dříve přidali, přidejte tento kód v části **Pokud** příkaz na konci souboru .py:
    
     ```python
     delete_resources(resource_group_client)
@@ -561,17 +561,17 @@ Vzhledem k tomu, že se vám účtovat prostředky využívané v Azure, je vžd
 
 3. Uložit *myPythonProject.py*.
 
-## <a name="run-hello-application"></a>Spuštění aplikace hello
+## <a name="run-the-application"></a>Spuštění aplikace
 
-1. toorun hello konzolovou aplikaci, klikněte na tlačítko **spustit** v sadě Visual Studio.
+1. Chcete-li spustit aplikaci konzoly, klikněte na tlačítko **spustit** v sadě Visual Studio.
 
-2. Stiskněte klávesu **Enter** po je vrácen hello stav každého prostředku. Informace o stavu hello byste měli vidět **úspěšné** Stav zřizování. Po vytvoření virtuálního počítače hello máte možnost toodelete hello všechny hello prostředky, které vytvoříte. Před stisknutím klávesy **Enter** toostart odstraňování prostředky, vám může trvat několik minut tooverify jejich vytvoření v hello portálu Azure. Pokud máte hello portálu Azure otevřete, může být toorefresh hello okno toosee nové prostředky.  
+2. Stiskněte klávesu **Enter** po je vrácen stav každého prostředku. Informace o stavu, byste měli vidět **úspěšné** Stav zřizování. Po vytvoření virtuálního počítače, máte možnost odstranit všechny prostředky, které vytvoříte. Před stisknutím klávesy **Enter** zahájíte odstranění prostředků, může trvat několik minut na ověření jejich vytvoření na portálu Azure. Pokud máte na portálu Azure otevřete, můžete chtít aktualizovat v okně zobrazíte nové prostředky.  
 
-    Má trvat přibližně pět minut, než tato toorun aplikace konzoly zcela od počáteční toofinish. Může trvat několik minut, po dokončení aplikace hello před všechny prostředky hello a hello skupiny prostředků se odstraní.
+    Dokončit má trvat přibližně pět minut, než tato Konzolová aplikace spustit úplně od začátku. Může trvat několik minut, po dokončení aplikace před všechny prostředky a skupině prostředků se odstraní.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud byly nějaké problémy s hello nasazení, je dalším krokem bude toolook v [řešení potíží s nasazením skupin prostředků pomocí portálu Azure](../../resource-manager-troubleshoot-deployments-portal.md)
-- Další informace o hello [knihovna Python Azure](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)
+- Pokud byly nějaké problémy s nasazením, je dalším krokem projít si téma [Řešení potíží s nasazením skupin prostředků pomocí webu Azure Portal](../../resource-manager-troubleshoot-deployments-portal.md).
+- Další informace o [knihovna Python Azure](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)
 

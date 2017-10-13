@@ -1,6 +1,6 @@
 ---
-title: "funkce zabezpečení aaaAzure používat s virtuálními počítači Azure | Microsoft Docs"
-description: " Přehled funkcí Azure zabezpečení jádra hello, které lze použít s virtuálními počítači Azure. Hello flexibilitu virtualizace bez nutnosti toobuy a udržovat hello fyzický hardware, který spouští hello virtuálních počítačů Azure udělení virtuálních počítačů. "
+title: "Funkce zabezpečení Azure používat s virtuálními počítači Azure | Microsoft Docs"
+description: " Přehled funkcí zabezpečení Azure jádra, které lze použít s virtuálními počítači Azure. Virtuální počítače Azure nabízejí flexibilitu virtualizace bez nutnosti zakoupení a údržby fyzického hardwaru, na kterém běží virtuální počítač. "
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2017
 ms.author: terrylan
-ms.openlocfilehash: 1a1b9f02bd82a2655f4e2e5d9f9ce7a6671f63fb
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f1fb7f876c7dc010c03f01a4f6698ddc18da1100
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Přehled zabezpečení služby Azure virtuální počítače
 Azure Virtual Machines vám umožní pružně nasadit řadu různých výpočetních řešení. Díky podpoře systémů Windows, Linux, SQL Server, Oracle, IBM, SAP a Azure BizTalk Services můžete nasadit jakoukoli úlohu a jakýkoli jazyk skoro v každém operačním systému.
 
-Virtuálnímu počítači Azure poskytuje hello flexibilitu virtualizace bez nutnosti toobuy a udržovat hello fyzický hardware používající hello virtuálního počítače.  Můžete vytvořit a nasadit aplikace s hello záruku, že vaše data jsou chráněné a bezpečného v našich datacentrech vysoce zabezpečených.
+Virtuální počítač Azure vám nabídne flexibilitu virtualizace bez nutnosti zakoupení a údržby fyzického hardwaru, na kterém virtuální počítač běží.  Můžete vytvořit a nasadit aplikace s záruku, že vaše data jsou chráněné a bezpečného v našich datacentrech vysoce zabezpečených.
 
 S Azure můžete vytvořit rozšířené zabezpečení a kompatibilní řešení který:
 
@@ -33,9 +33,9 @@ S Azure můžete vytvořit rozšířené zabezpečení a kompatibilní řešení
 * Identifikace a detekce hrozeb
 * Splnění požadavků na dodržování předpisů
 
-Hello cílem tohoto článku je tooprovide přehled hello základní zabezpečení Azure funkcí, které lze použít s virtuálními počítači. Poskytujeme také tooarticles odkazy, které poskytují podrobnosti o každé funkce tak další informace.  
+Cílem tohoto článku je poskytovat přehled o základní funkce zabezpečení Azure, které můžete používat s virtuálními počítači. Poskytujeme také odkazy na články, které poskytují podrobnosti o každé funkce tak další informace.  
 
-Hello základní virtuální počítač Azure zabezpečení možnosti toobe popsaná v tomto článku:
+Základní funkce zabezpečení virtuálního počítače Azure mají být zahrnuty v tomto článku:
 
 * Antimalware
 * Modul hardwarového zabezpečení
@@ -47,35 +47,35 @@ Hello základní virtuální počítač Azure zabezpečení možnosti toobe pops
 * Dodržování předpisů
 
 ## <a name="antimalware"></a>Antimalware
-S Azure můžete použít antimalwarový software od dodavatelů zabezpečení, jako je Microsoft, Symantec, Trend Micro a Kaspersky tooprotect virtuálních počítačů ze škodlivých souborů, adwaru a dalšími hrozbami. V tématu hello další články v další části níže toofind na partnerských řešení.
+S Azure můžete použít antimalwarový software od dodavatelů zabezpečení, jako je Microsoft, Symantec, Trend Micro a Kaspersky k ochraně vašich virtuálních počítačů ze škodlivých souborů, adwaru a dalšími hrozbami. Projděte si další část níže najít články v partnerských řešení.
 
-Antimalware od Microsoftu pro Azure Cloud Services a virtuální počítače je funkce ochrany v reálném čase, který pomáhá identifikovat a odstraňovat viry, spyware a další škodlivý software.  Antimalware od Microsoftu poskytuje konfigurovat výstrahy, když známé tooinstall pokusy o škodlivého nebo nežádoucího softwaru, sám sebe nebo spustit v Azure systémech.
+Antimalware od Microsoftu pro Azure Cloud Services a virtuální počítače je funkce ochrany v reálném čase, který pomáhá identifikovat a odstraňovat viry, spyware a další škodlivý software.  Antimalware od Microsoftu poskytuje konfigurovat výstrahy, když označuje, že škodlivý nebo nežádoucí software pokusí nainstalovat nebo spustit v Azure systémech.
 
-Antimalware od Microsoftu je řešení jednoho agenta pro klienta v prostředích a aplikace navrženou toorun hello pozadí bez lidského zásahu. Můžete nasadit ochranu na základě potřeb hello vašich zatížení aplikací, s buď základní zabezpečení výchozím nebo advanced vlastní konfigurace, včetně monitorování proti malwaru.
+Antimalware od Microsoftu je řešení jednoho agenta pro aplikace a prostředí klientovi, určený ke spouštění na pozadí bez lidského zásahu. Můžete nasadit ochranu na základě potřeb vašich zatížení aplikací, s buď základní zabezpečení výchozím nebo advanced vlastní konfigurace, včetně monitorování proti malwaru.
 
-Při nasazení a povolit Antimalware od Microsoftu, hello následující hlavní funkce jsou k dispozici:
+Při nasazení a povolit Antimalware od Microsoftu, jsou k dispozici následující klíčových funkcí:
 
-* Ochrana v reálném čase – monitorování aktivity v cloudové služby a na spouštění virtuálních počítačů toodetect a blokování malwaru.
-* Naplánované prohledávání - pravidelně provádí cílové prohledávání malwaru toodetect, včetně aktivně spouštění programů.
+* Ochrana v reálném čase – monitorování aktivity v cloudové služby a na virtuálních počítačích, na zjištění a blokování malwaru provádění.
+* Naplánované prohledávání - pravidelně provádí cílové kontrolu ke zjištění malwaru, včetně aktivně spouštění programů.
 * Malwarové nápravy - automaticky provádět akce se zjištěným malwarem, jako je například odstranit nebo umístění do karantény škodlivé soubory a čištění položky škodlivé registru.
-* Aktualizace podpisu – automaticky nainstaluje hello nejnovější ochrany podpisy (definice virů) tooensure ochrany je aktuální na předem určené frekvenci.
-* Aktualizace antimalwarový stroj – automaticky aktualizace hello modul Antimalware od Microsoftu.
-* Aktualizace platformy antimalwarových – automaticky aktualizace hello platformy Antimalware od Microsoftu.
-* Aktivní ochranu - hlásí tooAzure telemetrie metadata o zjištěných hrozeb a podezřelé prostředky tooensure rychlé odpovědi a umožňuje v reálném čase synchronní podpis doručení prostřednictvím hello Microsoft Active Protection System (MAPS).
-* Ukázky vytváření sestav – poskytuje a sestavy ukázky toohelp služba Microsoft Antimalware toohello vylepšit hello služby a řešení potíží s povolit.
-* Vyloučení – umožňuje aplikace a služby správci tooconfigure určitých souborů a procesy a jednotky tooexclude je z ochrany a prohledávání pro výkon a z jiných důvodů.
-* Shromažďování událostí antimalwarových - zaznamenává stav antimalwarové služby hello podezřelé aktivity a nápravné akce prováděné v protokolu událostí hello operačního systému a shromažďuje je do hello zákazníkův účet úložiště Azure.
+* Aktualizace podpisu - automaticky nainstaluje nejnovější podpisy ochrany (definice virů) pro zajištění ochrany je aktuální na předem určené frekvenci.
+* Antimalwarový stroj aktualizuje – automaticky aktualizuje modul Antimalware od Microsoftu.
+* Platforma antimalwarových – se automaticky aktualizuje, aktualizuje platformou Antimalware od Microsoftu.
+* Aktivní ochranu - sestav Azure telemetrie metadata o zjištěných hrozeb a podezřelé prostředky zajistit rychlou reakci a umožňuje v reálném čase synchronní podpis doručení prostřednictvím sítě Microsoft Active Protection System (MAPS).
+* Ukázky vytváření sestav – poskytuje a sestavy ukázky pro službu Microsoft Antimalware pomohou Upřesnit, služby a povolte řešení potíží.
+* Vyloučení – umožňuje aplikace a správců služeb ke konfiguraci určitých souborů a procesy a jednotky je vyloučit z ochrany a kontrolu pro výkon a z jiných důvodů.
+* Shromažďování událostí antimalwarových - zaznamenává stav antimalwarové služby, podezřelé aktivity a nápravné akce prováděné v protokolu událostí operačního systému a shromažďuje je do účtu úložiště Azure zákazníka.
 
-Další informace: toolearn více informací o antimalwarový software tooprotect virtuálních počítačů, najdete v části:
+Další informace: Další informace o antimalwarový software k ochraně vašich virtuálních počítačů najdete v tématu:
 
 * [Antimalware od Microsoftu pro cloudové služby Azure a virtuální počítače](azure-security-antimalware.md)
 * [Nasazování antimalwarových řešení na virtuálních počítačích Azure](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
-* [Jak tooinstall a nakonfigurujte Trend Micro hluboké Security jako služba na virtuální počítač s Windows](../virtual-machines/windows/classic/install-trend.md)
-* [Jak tooinstall a konfigurace Symantec Endpoint Protection na virtuální počítač s Windows](../virtual-machines/windows/classic/install-symantec.md)
-* [Řešení zabezpečení v Azure Marketplace hello](https://azure.microsoft.com/marketplace/?term=security)
+* [Postup instalace a konfigurace Trend Micro hluboké Security jako služba na virtuální počítač s Windows](../virtual-machines/windows/classic/install-trend.md)
+* [Postup instalace a konfigurace Symantec Endpoint Protection na virtuální počítač s Windows](../virtual-machines/windows/classic/install-symantec.md)
+* [Řešení zabezpečení v Azure Marketplace](https://azure.microsoft.com/marketplace/?term=security)
 
 ## <a name="hardware-security-module"></a>Zabezpečení hardwaru modulu
-Šifrování a ověření ochrany lze zvýšit pomocí zvýšení zabezpečení klíčů. Díky ukládání v Azure Key Vault můžete zjednodušit správu hello a zabezpečení vašich důležitých tajných klíčů a klíče. Key Vault poskytuje možnost toostore hello klíče v hardwaru zabezpečení (HSM) moduly certifikovaných tooFIPS 140-2 Level 2 standardů. Klíčů pro šifrování SQL Server pro zálohování nebo [transparentní šifrování dat](https://msdn.microsoft.com/library/bb934049.aspx) všechny se uloží Key Vault se klíčů nebo tajných údajů z vašich aplikací. Oprávnění a přístupu toothese chráněné položky se spravují prostřednictvím [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).
+Šifrování a ověření ochrany lze zvýšit pomocí zvýšení zabezpečení klíčů. Díky ukládání v Azure Key Vault můžete zjednodušit správu a zabezpečení vašich důležitých tajných klíčů a klíče. Key Vault umožňuje ukládat klíče v modulech zabezpečení hardwaru (HSM) s certifikací podle standardů FIPS 140-2 úrovně 2. Klíčů pro šifrování SQL Server pro zálohování nebo [transparentní šifrování dat](https://msdn.microsoft.com/library/bb934049.aspx) všechny se uloží Key Vault se klíčů nebo tajných údajů z vašich aplikací. Oprávnění a přístup k tyto chráněné položky se spravují prostřednictvím [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).
 
 Další informace:
 
@@ -84,9 +84,9 @@ Další informace:
 * [Blog Azure Key Vault](https://blogs.technet.microsoft.com/kv/)
 
 ## <a name="virtual-machine-disk-encryption"></a>Šifrování disku virtuálního počítače
-Azure Disk Encryption je novou funkci, která umožňuje šifrování disků systému Windows a Linux Azure virtuálního počítače. Azure Disk Encryption používá hello oborový standard [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) funkce systému Windows a hello [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) funkce Linux tooprovide svazku šifrování pro hello operačního systému a datové disky hello.
+Azure Disk Encryption je novou funkci, která umožňuje šifrování disků systému Windows a Linux Azure virtuálního počítače. Azure Disk Encryption používá oborový standard [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) funkce systému Windows a [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) funkce systému Linux zajistit šifrování svazku operačního systému a datové disky.
 
-Hello řešení jsou integrované s Azure Key Vault toohelp řídit a spravovat hello disku šifrovacích klíčů a tajných klíčů v trezoru klíčů předplatného, a zajistit, že jsou všechna data v disky virtuálního počítače hello zašifrovaná přinejmenším ve službě Azure storage.
+Řešení jsou integrované s Azure Key Vault můžete řídit a spravovat disku šifrovacích klíčů a tajných klíčů v trezoru klíčů předplatného, a zajistit, že všechna data v disky virtuálního počítače jsou zašifrovaná přinejmenším ve službě Azure storage.
 
 Další informace:
 
@@ -104,15 +104,15 @@ Další informace:
 * [Služby zálohování Azure – nejčastější dotazy](../backup/backup-azure-backup-faq.md)
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
-Důležitou součástí strategie BCDR vaší organizace je přijít na to, jak dochází k tookeep firemní úlohy a aplikace nahoru a spuštěna při plánovaných a neplánovaných výpadků. Azure Site Recovery pomáhá orchestraci replikace, převzetí služeb při selhání a obnovení úloh a aplikací, aby byly k dispozici ze sekundární lokality Pokud primární lokalita ocitne mimo provoz.
+Důležitou součástí strategie BCDR organizace je přijít na to, jak udržovat firemní úlohy a aplikace v provozu, když dojde k plánovanému i neplánovanému výpadku. Azure Site Recovery pomáhá orchestraci replikace, převzetí služeb při selhání a obnovení úloh a aplikací, aby byly k dispozici ze sekundární lokality Pokud primární lokalita ocitne mimo provoz.
 
 Site Recovery:
 
-* **Zjednodušuje strategie BCDR** – Site Recovery umožňuje snadno toohandle replikace, převzetí služeb při selhání a obnovení několika podnikových úloh a aplikací z jednoho umístění. Site Recovery orchestruje replikaci a převzetí služeb při selhání, ale nezachycuje data aplikací ani o nich nemá žádné informace.
+* **Zjednodušuje strategie BCDR** – Site Recovery usnadňuje zpracování replikace, převzetí služeb při selhání a obnovení několika podnikových úloh a aplikací z jednoho umístění. Site Recovery orchestruje replikaci a převzetí služeb při selhání, ale nezachycuje data aplikací ani o nich nemá žádné informace.
 * **Nabízí flexibilní replikace** – pomocí Site Recovery můžete replikovat úlohy běžící na virtuálních počítačích Hyper-V, virtuálních počítačů VMware a fyzické servery Windows nebo Linuxem.
-* **Podporuje převzetí služeb při selhání a obnovení** – Site Recovery poskytuje testovací převzetí služeb při selhání projde obnovení po havárii toosupport aniž by to ovlivňovalo produkční prostředí. Pro očekávané výpadky je možné spouštět plánovaná převzetí služeb při selhání bez ztráty dat. V případě neočekávaných havárií pak mohou proběhnout neplánovaná převzetí služeb s minimálními ztrátami dat (podle četnosti replikací). Po převzetí služeb při selhání můžete navrácení služeb po obnovení tooyour primární lokality. Site Recovery poskytuje plány obnovení, které mohou obsahovat skripty a sešity automatizace Azure, což vám umožní přizpůsobit si přebírání služeb při selhání a obnovování vícevrstvých aplikací.
-* **Eliminuje sekundárního datacentra** – můžete replikovat tooa sekundární místní lokalitu nebo tooAzure. Pomocí Azure jako cíl pro zotavení po havárii se eliminují hello náklady a složitost udržováním sekundární lokality. Replikovaná data jsou uložena ve službě Azure Storage.
-* **Umožňuje integraci s existujícími technologiemi BCDR** – Site Recovery spolupracuje s funkcemi BCDR jiných aplikací. Můžete například použít Site Recovery tooprotect hello systému SQL Server back-end podnikové úloh. To zahrnuje nativní podpora pro SQL Server AlwaysOn toomanage hello převzetí služeb při selhání skupiny dostupnosti.
+* **Podporuje převzetí služeb při selhání a obnovení** – Site Recovery poskytuje testovací převzetí služeb při selhání na Nácvik zotavení po havárii aniž by to ovlivňovalo produkční prostředí. Pro očekávané výpadky je možné spouštět plánovaná převzetí služeb při selhání bez ztráty dat. V případě neočekávaných havárií pak mohou proběhnout neplánovaná převzetí služeb s minimálními ztrátami dat (podle četnosti replikací). Po obnovení můžete služby, které byly převzaty při selhání, navrátit na primární lokality. Site Recovery poskytuje plány obnovení, které mohou obsahovat skripty a sešity automatizace Azure, což vám umožní přizpůsobit si přebírání služeb při selhání a obnovování vícevrstvých aplikací.
+* **Eliminuje sekundárního datacentra** – můžete replikovat do sekundárního místního lokality nebo do Azure. Pomocí Azure jako cíl pro zotavení po havárii se eliminují náklady a složitost udržováním sekundární lokality. Replikovaná data jsou uložena ve službě Azure Storage.
+* **Umožňuje integraci s existujícími technologiemi BCDR** – Site Recovery spolupracuje s funkcemi BCDR jiných aplikací. Například můžete pomocí Site Recovery k ochraně SQL Server back-end podnikové úloh. To zahrnuje nativní podpora pro SQL Server AlwaysOn pro správu převzetí služeb při selhání skupiny dostupnosti.
 
 Další informace:
 
@@ -121,7 +121,7 @@ Další informace:
 * [Jaké úlohy jsou chráněné službou Azure Site Recovery?](../site-recovery/site-recovery-workload.md)
 
 ## <a name="virtual-networking"></a>Virtuální síť
-Třeba virtuální počítače připojení k síti. toosupport tento požadavek Azure vyžaduje toobe virtuální počítače připojené tooan Azure Virtual Network. Virtuální síť Azure je logická konstrukce nástavbou hello Azure síťových prostředcích infrastruktury. Každé logické síti Azure Virtual Network je izolovaná od všech ostatních Azure virtuálních sítí. Tato izolace pomáhá zajistit, že síťový provoz v nasazeních není přístupný tooother Microsoft Azure zákazníků.
+Třeba virtuální počítače připojení k síti. Pro podporu tohoto požadavku, Azure vyžaduje virtuální počítače k připojení k virtuální síti Azure. Virtuální síť Azure je logická konstrukce postavená na Azure síťových prostředcích infrastruktury. Každé logické síti Azure Virtual Network je izolovaná od všech ostatních Azure virtuálních sítí. Tato izolace pomáhá zajistit, že síťový provoz v nasazeních není dostupný ostatním zákazníkům Microsoft Azure.
 
 Další informace:
 
@@ -130,21 +130,21 @@ Další informace:
 * [Funkce sítě a partnerství pro podnikové scénáře](https://azure.microsoft.com/blog/networking-enterprise/)
 
 ## <a name="security-policy-management-and-reporting"></a>Správa zásad zabezpečení a vytváření sestav
-Azure Security Center pomáhá zabránit, zjistit a reagovat toothreats a poskytuje že vyšší přehled a kontrolu nad, hello zabezpečení vašich prostředků Azure. Poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných Azure, pomáhá zjišťovat hrozby, kterých byste si jinak nevšimli, a spolupracuje s řadou řešení zabezpečení.
+Azure Security Center pomáhá zabránit, zjistit a reagovat na hrozby a poskytuje že vyšší přehled a kontrolu nad, zabezpečení vašich prostředků Azure. Poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných Azure, pomáhá zjišťovat hrozby, kterých byste si jinak nevšimli, a spolupracuje s řadou řešení zabezpečení.
 
 Azure Security Center pomáhá optimalizovat a monitorování zabezpečení virtuálního počítače pomocí:
 
 * Virtuální počítač poskytuje [doporučení zabezpečení](../security-center/security-center-recommendations.md) jako aktualizace systému konfigurace seznamy ACL koncových bodů, povolení antimalwarového řešení, povolit skupin zabezpečení sítě a použít šifrování disku.
-* Monitorování stavu hello virtuálních počítačů
+* Monitorování stavu virtuálních počítačů
 
 Další informace:
 
-* [Úvod tooAzure Security Center](../security-center/security-center-intro.md)
+* [Úvod do Azure Security Center](../security-center/security-center-intro.md)
 * [Nejčastější dotazy k Azure Security Center](../security-center/security-center-faq.md)
 * [Operace a plánování Azure Security Center](../security-center/security-center-planning-and-operations-guide.md)
 
 ## <a name="compliance"></a>Dodržování předpisů
-Virtuální počítače Azure je certifikované pro FISMA, FedRAMP, HIPAA, PCI DSS úrovně 1 a další programy klíče dodržování předpisů. Tato certifikační usnadní pro vlastní požadavky na dodržování předpisů toomeet aplikací Azure a vaší firmy tooaddress širokou škálu příslušné místní i mezinárodní zákonné požadavky.
+Virtuální počítače Azure je certifikované pro FISMA, FedRAMP, HIPAA, PCI DSS úrovně 1 a další programy klíče dodržování předpisů. Tato certifikační usnadní pro vaše vlastní aplikace Azure pro splnění požadavků na dodržování předpisů a pro vaši firmu, chcete-li vyřešit širokou škálu příslušné místní i mezinárodní zákonné požadavky.
 
 Další informace:
 

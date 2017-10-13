@@ -1,6 +1,6 @@
 ---
-title: "aaaHow toocreate a publikování produktu v Azure API Management"
-description: "Zjistěte, jak toocreate a publikovat produkty ve službě Azure API Management."
+title: "Postup vytvoření a publikování produktu v Azure API Management"
+description: "Naučte se vytvářet a publikovat produkty ve službě Azure API Management."
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -14,114 +14,114 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: f0a37f08b4e29ca68be9caec4c7604e3b4b6aaa6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 73bf4451ba1b71807e22440beecc73a7e8045c5e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toocreate-and-publish-a-product-in-azure-api-management"></a>Jak toocreate a publikování produktu v Azure API Management
-Ve službě Azure API Management produkt obsahuje jeden nebo více rozhraní API a také využití kvóty a hello podmínky použití. Po publikování produktu vývojáři můžou přihlášení k odběru produktu toohello a začít toouse hello rozhraní API. Hello téma obsahuje Průvodce toocreating produkt, přidání rozhraní API a publikování pro vývojáře.
+# <a name="how-to-create-and-publish-a-product-in-azure-api-management"></a>Postup vytvoření a publikování produktu v Azure API Management
+Ve službě Azure API Management produkt obsahuje jeden nebo více rozhraní API a také kvóty využití a podmínky použití. Po publikování produktu vývojáři můžou přihlásit k produktu a začít používat rozhraní API produktu. Téma poskytuje pokyny pro vytváření produktu, přidání rozhraní API a publikování pro vývojáře.
 
 ## <a name="create-product"></a>Vytvoření produktu
-Operace se přidají a nakonfigurovat tooan rozhraní API portálu vydavatele hello. Klikněte na portálu vydavatele hello tooaccess **portál vydavatele** v hello portál Azure pro služby API Management.
+Operace jsou přidány a nakonfigurovat tak, aby rozhraní API na portálu vydavatele. Chcete-li získat přístup k portálu vydavatele, klikněte na tlačítko **portál vydavatele** služby API Management na portálu Azure.
 
 ![Portál vydavatele][api-management-management-console]
 
-> Pokud jste instanci služby API Management ještě nevytvořili, přečtěte si téma [vytvoření instance API Management] [ Create an API Management service instance] v hello [Začínáme s Azure API Management] [ Get started with Azure API Management] kurzu.
+> Pokud jste instanci služby API Management ještě nevytvořili, přečtěte si článek [Vytvoření instance API Management][Create an API Management service instance] v kurzu [Začínáme se službou Azure API Management][Get started with Azure API Management].
 > 
 > 
 
-Klikněte na **produkty** v hello nabídky na levém toodisplay hello hello **produkty** a klikněte na tlačítko **přidat produkt**.
+Klikněte na **produkty** v nabídce na levé straně zobrazíte **produkty** a klikněte na tlačítko **přidat produkt**.
 
 ![Produkty][api-management-products]
 
 ![Nového produktu][api-management-add-new-product]
 
-Zadejte popisný název produktu hello hello **název** pole a popis hello produktu v hello **popis** pole.
+Zadejte popisný název produktu v **název** pole a popis produktu v **popis** pole.
 
-Produkty v API Management můžou být **otevřete** nebo **chráněné**. Chráněných produktů musí být odebírané toobefore použitím, otevřené produkty můžete používat bez předplatného. Zkontrolujte **vyžadovat předplatné** toocreate chráněný produkt, který vyžaduje předplatné. Toto je výchozí nastavení hello.
+Produkty v API Management můžou být **otevřete** nebo **chráněné**. V případě chráněných produktů se musíte nejdřív přihlásit k jejich odběru a až potom je můžete používat. Otevřené produkty můžete používat bez předplatného. Zkontrolujte **vyžadovat předplatné** vytvořit chráněný produkt, který vyžaduje předplatné. Toto je výchozí nastavení.
 
-Zkontrolujte **vyžadovat schválení předplatného** Pokud chcete tooreview správce a přijměte nebo odmítněte předplatné pokusí toothis produktu. Pokud není zaškrtnuto políčko hello, pokusy o předplatné bude schvalovat automaticky. Další informace o předplatných najdete v tématu [zobrazení odběratele tooa produktu][View subscribers tooa product].
+Zkontrolujte **vyžadovat schválení předplatného** Pokud chcete, aby správci zkontrolovat a následně přijímal nebo odmítal předplatné pokusy o tohoto produktu. Pokud pole není zaškrtnuto, bude předplatné pokusů o automatické schválení. Další informace o předplatných najdete v tématu [zobrazení předplatitelů produktu][View subscribers to a product].
 
-tooallow vývojáře účty toosubscribe produkt toohello vícekrát, zkontrolujte hello **povolit více předplatných** zaškrtávací políčko. Pokud toto políčko není zaškrtnuté, každý vývojářský účet se mohou přihlásit pouze jednou toohello produktu.
+K přihlášení k vícenásobným odběrům produktu vývojářským účtům povolit, zkontrolujte **povolit více předplatných** zaškrtávací políčko. Pokud toto políčko není zaškrtnuté, každý vývojářský účet se mohou přihlásit jen jednou produktu.
 
 ![Neomezená více předplatných][api-management-unlimited-multiple-subscriptions]
 
-toolimit hello počet více souběžných předplatných, zkontrolujte hello **omezit počet souběžných odběrů** zaškrtněte políčko a zadejte limitu předplatného pro hello. V následujícím příkladu hello souběžných předplatných jsou omezené toofour za vývojářský účet.
+Chcete-li omezit počet více souběžných předplatných, zkontrolujte **omezit počet souběžných odběrů** zaškrtněte políčko a zadejte limitu předplatného. V následujícím příkladu je omezen na čtyři za vývojářský účet souběžných předplatných.
 
 ![Čtyři více předplatných][api-management-four-multiple-subscriptions]
 
-Po nakonfigurování všech možností nového produktu, klikněte na tlačítko **Uložit** toocreate hello nového produktu.
+Po nakonfigurování všech možností nového produktu, klikněte na tlačítko **Uložit** k vytvoření nového produktu.
 
 ![Produkty][api-management-products-page]
 
-> Ve výchozím nastavení jsou nové produkty jsou publikování a jsou viditelné pouze toohello **správci** skupiny.
+> Ve výchozím nastavení jsou nové produkty jsou publikování a jsou viditelné pouze pro **správci** skupiny.
 > 
 > 
 
-tooconfigure produkt, klikněte na název produktu hello v hello **produkty** kartě.
+Chcete-li konfigurovat produkt, klikněte na název produktu v **produkty** kartě.
 
-## <a name="add-apis"></a>Přidat rozhraní API tooa produktu
-Hello **produkty** stránka obsahuje čtyři odkazy pro konfiguraci: **Souhrn**, **nastavení**, **viditelnost**, a  **Odběratelé, kteří**. Hello **Souhrn** karta je, kde můžete přidat rozhraní API a provést nebo zrušit produktu.
+## <a name="add-apis"></a>Přidat rozhraní API pro určitý produkt
+**Produkty** stránka obsahuje čtyři odkazy pro konfiguraci: **Souhrn**, **nastavení**, **viditelnost**, a  **Odběratelé, kteří**. **Souhrn** karta je, kde můžete přidat rozhraní API a provést nebo zrušit produktu.
 
 ![Souhrn][api-management-new-product-summary]
 
-Před publikováním svůj produkt musíte tooadd jeden nebo více rozhraní API. toodo tento, klikněte na tlačítko **přidat rozhraní API tooproduct**.
+Před publikováním produktu je nutné přidat jeden nebo více rozhraní API. Chcete-li to provést, klikněte na tlačítko **přidat rozhraní API do produktu**.
 
 ![Přidání rozhraní API][api-management-add-apis-to-product]
 
-Vyberte hello potřeby rozhraní API a klikněte na tlačítko **Uložit**.
+Vyberte požadované rozhraní API a klikněte na **Uložit**.
 
-## <a name="add-description"></a>Přidání popisné informace tooa produktu
-Hello **nastavení** karta vám umožní tooprovide podrobné informace o produktu hello například svůj účel, hello poskytuje přístup k rozhraní API a další užitečné informace. obsah Hello je cílena na vývojáře hello, které bude volání metody hello rozhraní API a může být napsán v jako prostý text ani značka jazyka HTML.
+## <a name="add-description"></a>Přidat popisné informace pro určitý produkt
+**Nastavení** karta umožňuje poskytují podrobné informace o produktu, například jeho účel, poskytuje přístup k rozhraní API a další užitečné informace. Obsah je cílena na vývojáře, které bude možné volání rozhraní API a může být napsán v jako prostý text ani značka jazyka HTML.
 
 ![Nastavení produktu][api-management-product-settings]
 
-Zkontrolujte **vyžadovat předplatné** toocreate hello chráněný produkt, který vyžaduje předplatné toobe používá, nebo zrušte zaškrtnutí políčka toocreate otevřete produktu, kterou lze volat bez předplatného.
+Zkontrolujte **vyžadovat předplatné** vytvořit chráněný produkt, který vyžaduje předplatné použít, nebo zrušte zaškrtnutí políčka vytvořit otevřete produktu, kterou lze volat bez předplatného.
 
-Vyberte **vyžadovat schválení předplatného** Chcete-li toomanually schválení všech žádostí o odběr produktu. Ve výchozím nastavení jsou automaticky udělí všechny odběry produktu.
+Vyberte **vyžadovat schválení předplatného** Pokud chcete ručně schválit všechny požadavky odběru produktu. Ve výchozím nastavení jsou automaticky udělí všechny odběry produktu.
 
-tooallow vývojáře účty toosubscribe produkt toohello vícekrát, zkontrolujte hello **povolit více předplatných** zaškrtněte políčko a volitelně určete omezení. Pokud toto políčko není zaškrtnuté, každý vývojářský účet se mohou přihlásit pouze jednou toohello produktu.
+K přihlášení k vícenásobným odběrům produktu vývojářským účtům povolit, zkontrolujte **povolit více předplatných** zaškrtněte políčko a volitelně určete omezení. Pokud toto políčko není zaškrtnuté, každý vývojářský účet se mohou přihlásit jen jednou produktu.
 
-Volitelně můžete vyplnit hello **podmínky použití** pole s popisem hello podmínky použití hello produktu, kterou odběratele musí přijmout v pořadí toouse hello produktu.
+Volitelně můžete vyplnit **podmínky použití** pole s popisem podmínky použití pro produkt, které odběratele musí přijmout, abyste mohli používat produkt.
 
 ## <a name="publish-product"></a>Publikování produktu
-Předtím, než je možné volat hello rozhraní API v produktu, musí být publikován hello produktu. Na hello **Souhrn** hello produktu, klikněte na **publikovat**a potom klikněte na **Ano, publikovat** tooconfirm. Klikněte na tlačítko toomake privátního publikované dříve produktu, **zrušit publikování**.
+Předtím, než je možné volat rozhraní API v produktu, musí být publikován produktu. Na **Souhrn** pro produkt, klikněte na **publikovat**a potom klikněte na **Ano, publikovat** k potvrzení. Chcete-li změnit publikované dříve produktu soukromé, klikněte na tlačítko **zrušit publikování**.
 
 ![Publikování produktu][api-management-publish-product]
 
-## <a name="make-visible"></a>Zkontrolujte viditelné toodevelopers produktu
-Hello **viditelnost** karta vám umožní toochoose rolí, které jsou možné toosee hello produktu na portál pro vývojáře hello a přihlášení k odběru produktu toohello.
+## <a name="make-visible"></a>Zviditelnit produktu pro vývojáře
+**Viditelnost** karta umožňuje vybrat, které role se můžou zobrazit produktu na portál pro vývojáře a přihlásit se k produktu.
 
 ![Přehled produktu][api-management-product-visiblity]
 
-tooenable nebo vypnutí viditelnosti produktů pro vývojáře hello ve skupině, nebo zrušte zaškrtnutí políčka hello zaškrtněte políčko vedle skupiny hello a pak klikněte na **Uložit**.
+K povolení nebo zakázání viditelnost produktu pro vývojáře ve skupině, zaškrtněte nebo zrušte zaškrtnutí políček vedle skupiny a pak klikněte na **Uložit**.
 
-> Další informace najdete v tématu [jak toocreate a používání skupin toomanage vývojáře účty v Azure API Management][How toocreate and use groups toomanage developer accounts in Azure API Management].
+> Další informace najdete v tématu [postup vytvoření a používání skupin Správa účtů pro vývojáře ve službě Azure API Management][How to create and use groups to manage developer accounts in Azure API Management].
 > 
 > 
 
-## <a name="view-subscribers"></a>Zobrazení odběratele tooa produktu
-Hello **Odběratelé, kteří** karta Vypíše seznam hello vývojáři, kteří odebírají toohello produktu. Hello podrobnosti a nastavení pro každý vývojář lze zobrazit kliknutím na název pro vývojáře hello. V tomto příkladu jste žádné vývojáři ještě předplatné toohello produktu.
+## <a name="view-subscribers"></a>Zobrazení předplatitelů produktu
+**Odběratelé, kteří** karta Vypíše seznam vývojáři, kteří se přihlásili k odběru produktu. Podrobnosti a nastavení pro každý vývojář lze zobrazit kliknutím na název pro vývojáře. V tomto příkladu žádné vývojáři mají ještě přihlásit k odběru produktu.
 
 ![Vývojáři][api-management-developer-list]
 
-## <a name="next-steps"></a>Další kroky
-Jednou hello požadované přidání rozhraní API, a publikovali hello produktu, vývojáři můžou přihlášení k odběru produktu toohello a začít toocall hello rozhraní API. Kurz, který ukazuje, tyto položky, jakož i konfigurace pokročilé produktu najdete v části [vytvoření a konfigurace pokročilých nastavení produktu v Azure API Management][How create and configure advanced product settings in Azure API Management].
+## <a name="next-steps"> </a>Další kroky
+Po přidání požadované rozhraní API a publikování produktu vývojáři můžou přihlášení k odběru produktu a začít volat rozhraní API. Kurz, který ukazuje, tyto položky, jakož i konfigurace pokročilé produktu najdete v části [vytvoření a konfigurace pokročilých nastavení produktu v Azure API Management][How create and configure advanced product settings in Azure API Management].
 
-Další informace o práci s produkty najdete v následující video hello.
+Další informace o práci s produkty najdete v následujícím videu.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Using-Products/player]
 > 
 > 
 
 [Create a product]: #create-product
-[Add APIs tooa product]: #add-apis
-[Add descriptive information tooa product]: #add-description
+[Add APIs to a product]: #add-apis
+[Add descriptive information to a product]: #add-description
 [Publish a product]: #publish-product
-[Make a product visible toodevelopers]: #make-visible
-[View subscribers tooa product]: #view-subscribers
+[Make a product visible to developers]: #make-visible
+[View subscribers to a product]: #view-subscribers
 [Next steps]: #next-steps
 
 [api-management-management-console]: ./media/api-management-howto-add-products/api-management-management-console.png
@@ -144,10 +144,10 @@ Další informace o práci s produkty najdete v následující video hello.
 [api-management-]: ./media/api-management-howto-add-products/
 
 
-[How tooadd operations tooan API]: api-management-howto-add-operations.md
-[How toocreate and publish a product]: api-management-howto-add-products.md
+[How to add operations to an API]: api-management-howto-add-operations.md
+[How to create and publish a product]: api-management-howto-add-products.md
 [Get started with Azure API Management]: api-management-get-started.md
 [Create an API Management service instance]: api-management-get-started.md#create-service-instance
 [Next steps]: #next-steps
-[How toocreate and use groups toomanage developer accounts in Azure API Management]: api-management-howto-create-groups.md
+[How to create and use groups to manage developer accounts in Azure API Management]: api-management-howto-create-groups.md
 [How create and configure advanced product settings in Azure API Management]: api-management-howto-product-with-rules.md 

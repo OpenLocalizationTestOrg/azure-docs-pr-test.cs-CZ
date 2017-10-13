@@ -1,6 +1,6 @@
 ---
-title: "aaaConnect virtuální počítače s Linuxem v cloudové službě | Microsoft Docs"
-description: "Připojte virtuální počítače s Linuxem, které jsou vytvořené pomocí tooan modelu nasazení classic hello cloudové služby Azure nebo virtuální sítě."
+title: "Připojit virtuální počítače s Linuxem v cloudové službě | Microsoft Docs"
+description: "Připojte virtuální počítače Linux vytvořené pomocí modelu nasazení classic do cloudové služby Azure nebo virtuální sítě."
 services: virtual-machines-linux
 documentationcenter: 
 author: cynthn
@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: cynthn
-ms.openlocfilehash: 323baf04390d53ffb2810e24a24d175c08e60cd7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e222645509640b104410f87e4bcd22834c8d9ec1
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="connect-linux-virtual-machines-created-with-hello-classic-deployment-model-with-a-virtual-network-or-cloud-service"></a>Připojit virtuální počítače Linux vytvořené pomocí modelu nasazení classic hello pomocí virtuální sítě nebo cloudové služby
+# <a name="connect-linux-virtual-machines-created-with-the-classic-deployment-model-with-a-virtual-network-or-cloud-service"></a>Připojit virtuální počítače Linux vytvořené pomocí modelu nasazení classic pomocí virtuální sítě nebo cloudové služby
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic hello. Společnost Microsoft doporučuje, aby většina nových nasazení používala model Resource Manager hello.
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
 
-Virtuální počítače Linux vytvořené pomocí modelu nasazení classic hello jsou vždy umístěny v cloudové službě. Cloudová služba Hello slouží jako kontejner a poskytuje jedinečný veřejný název DNS, veřejnou IP adresu a sada koncových bodů tooaccess hello virtuálního počítače přes hello Internet. Hello cloudové služby může být ve virtuální síti, ale není povinné. Můžete také [připojit virtuální počítače s Windows pomocí virtuální sítě nebo cloudové služby](../../windows/classic/connect-vms.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Virtuální počítače Linux vytvořené pomocí modelu nasazení classic jsou vždy umístěny v cloudové službě. Cloudové služby slouží jako kontejner a poskytuje jedinečný veřejný název DNS, veřejnou IP adresu a sada koncových bodů pro přístup k virtuálnímu počítači přes Internet. Cloudové služby může být ve virtuální síti, ale není povinné. Můžete také [připojit virtuální počítače s Windows pomocí virtuální sítě nebo cloudové služby](../../windows/classic/connect-vms.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-Pokud cloudové služby není ve virtuální síti, se nazývá *samostatné* Cloudová služba. Hello virtuální počítače v cloudové službě samostatné komunikovat s jinými virtuálními počítači pomocí hello veřejné názvy DNS jiné virtuální počítače a provoz hello přenášena přes hello Internetu. Pokud cloudové služby ve virtuální síti, hello virtuální počítače v tomto cloudové služby může komunikovat s všechny ostatní virtuální počítače ve virtuální síti hello bez odeslání veškerou komunikaci přes hello Internet.
+Pokud cloudové služby není ve virtuální síti, se nazývá *samostatné* Cloudová služba. Virtuální počítače v cloudové službě samostatné komunikovat s jinými virtuálními počítači pomocí veřejné názvy DNS jinými virtuálními počítači a provoz se přenáší přes Internet. Pokud cloudové služby ve virtuální síti, virtuální počítače v dané cloudové služby může komunikovat s všechny ostatní virtuální počítače ve virtuální síti bez odeslání veškerou komunikaci přes Internet.
 
-Zadáte-li virtuální počítače v hello stejné samostatnou cloudovou službu, můžete nadále používat, Vyrovnávání zatížení a sady dostupnosti. Podrobnosti najdete v tématu [virtuální počítače Vyrovnávání zatížení](../../virtual-machines-linux-load-balance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a [spravovat hello dostupnosti virtuálních počítačů](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Nelze však uspořádání hello virtuální počítače v podsítích nebo připojit samostatné cloudové služby tooyour místní síť. Tady je příklad:
+Pokud jste v rámci stejné cloudové služby samostatné virtuální počítače, můžete nadále používat vyrovnávání zatížení a skupiny dostupnosti. Podrobnosti najdete v tématu [virtuální počítače Vyrovnávání zatížení](../../virtual-machines-linux-load-balance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a [Správa dostupnosti virtuálních počítačů](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Nelze však uspořádat virtuální počítače v podsítích nebo připojení k síti na pracovišti samostatné cloudové služby. Tady je příklad:
 
 [!INCLUDE [virtual-machines-common-classic-connect-vms](../../../../includes/virtual-machines-common-classic-connect-vms.md)]
 
 ## <a name="next-steps"></a>Další kroky
-Po vytvoření virtuálního počítače, je vhodné příliš[přidat datový disk](attach-disk.md) aby dat toostore umístění služby a úlohy.
+Po vytvoření virtuálního počítače, je vhodné [přidat datový disk](attach-disk.md) aby umístění pro uložení dat služby a úlohy.

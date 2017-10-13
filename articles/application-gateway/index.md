@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure dokumentaci k bráně aplikace - kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
-description: "Zjistěte, jak toodeploy řadič cloudové aplikace doručení. Dokumentace popisuje, jak tooset až směrování na úrovni aplikace a pro front-end webové Vyrovnávání zatížení."
+title: "Dokumentace ke službě Azure Application Gateway – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
+description: "Naučte se nasadit cloudový kontroler doručování aplikací. V dokumentaci je uvedeno, jak nastavit směrování na úrovni aplikace a vyrovnávání zatížení pro webový front-end."
 services: application-gateway
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 9351bbc5cf288fd4650e9edb89be5a601c2a13ce
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 18fdc11227a07e02df1a6b9f9711fd33c23eadb2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="application-gateway-documentation"></a>Dokumentace ke službě Application Gateway
 
-Zjistěte, jak toodeploy aplikační brány, řadič doručení aplikace (ADC) jako služba. Kurzy, odkazy na rozhraní API a další dokumentaci ukazují, jak vytvářet tooset směrování a služby, které umožňují Vyrovnávání zatížení aplikační úrovni front-end webové škálovatelné a vysoce dostupné.
+Naučte se nasadit kontroler doručování aplikací (ADC) Application Gateway jako službu. Kurzy, reference k rozhraním API a další dokumentace obsahují informace o tom, jak nastavit směrování na úrovni aplikace a vyrovnávání zatížení, což vám umožňuje vytvořit škálovatelný a vysoce dostupný webový front-end.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -70,7 +70,7 @@ Zjistěte, jak toodeploy aplikační brány, řadič doručení aplikace (ADC) j
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáme s Application Gateway pomocí hello portálu Azure</h3>
+                        <h3>Začínáme se službou Application Gateway s využitím webu Azure Portal</h3>
                     </div>
                 </div>
             </div>

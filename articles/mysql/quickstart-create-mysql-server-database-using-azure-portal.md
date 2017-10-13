@@ -1,6 +1,6 @@
 ---
 title: "Rychlý start: Vytvoření serveru Azure Database for MySQL – Azure Portal | Dokumentace Microsoftu"
-description: "Tento článek postup vás provede pomocí portálu Azure tooquickly hello vytvořit ukázkové databáze Azure pro server databáze MySQL přibližně pět minut."
+description: "Tento článek vás provede rychlým vytvořením ukázkového serveru Azure Database for MySQL v pěti minutách pomocí portálu Azure Portal."
 services: mysql
 author: v-chenyh
 ms.author: v-chenyh
@@ -10,117 +10,126 @@ ms.service: mysql-database
 ms.custom: mvc
 ms.topic: hero-article
 ms.date: 08/15/2017
-ms.openlocfilehash: d5754fe7a6f0f0f4b3fa19d456c4e15e64ca396c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 46aee37a00a923addc08dd185ce0326a64ccb48c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-an-azure-database-for-mysql-server-using-azure-portal"></a>Vytvoření serveru Azure Database for MySQL pomocí portálu Azure Portal
-Azure databáze pro databázi MySQL je spravovaná služba, která vám umožní toorun, spravovat a škálování vysoce dostupné databáze MySQL v cloudu hello. Tento rychlý start ukazuje, jak toocreate Azure databáze pro server MySQL pomocí portálu Azure hello přibližně pět minut. 
+# <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Vytvoření serveru Azure Database for MySQL pomocí webu Azure Portal
+Azure Database for MySQL je spravovaná služba, která slouží k provozu, správě a škálování vysoce dostupných databází MySQL v cloudu. V tomto rychlém startu se dozvíte, jak přibližně během pěti minut vytvořit server Azure Database for MySQL pomocí webu Azure Portal.  
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="log-in-tooazure"></a>Přihlaste se tooAzure
-Otevřete webový prohlížeč a přejděte toohello [portálu Microsoft Azure](https://portal.azure.com/). Zadejte vaše přihlašovací údaje toosign toohello portálu. Výchozí zobrazení Hello je váš řídicí panel služby.
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+Otevřete webový prohlížeč a přejděte na web [Azure Portal](https://portal.azure.com/). Zadejte přihlašovací údaje pro přihlášení k portálu. Výchozím zobrazením je váš řídicí panel služby.
 
-## <a name="create-azure-database-for-mysql-server"></a>Vytvoření serveru Azure Database for MySQL
-Server Azure Database for MySQL se vytvoří s definovanou sadou [výpočetních prostředků a prostředků úložiště](./concepts-compute-unit-and-storage.md). Hello server je vytvořen v rámci [skupina prostředků Azure](../azure-resource-manager/resource-group-overview.md).
+## <a name="create-an-azure-database-for-mysql-server"></a>Vytvoření serveru Azure Database for MySQL
+Server Azure Database for MySQL vytvoříte s definovanou sadou [výpočetních prostředků a prostředků úložiště](./concepts-compute-unit-and-storage.md). Server vytvoříte v rámci [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md).
 
-Postupujte podle těchto kroků toocreate databázi Azure pro MySQL server:
+Server Azure Database for MySQL vytvoříte pomocí tohoto postupu:
 
-1. Klikněte na tlačítko hello **nový** tlačítko (+) najít na hello levém horním rohu hello portálu Azure.
+1. Vyberte tlačítko **Nový** (+) v levém horním rohu portálu.
 
-2. Vyberte **databáze** z hello **nový** a vyberte **Azure Database pro databázi MySQL** z hello **databáze** stránky. Můžete také zadat **MySQL** v hello nové stránky vyhledávání pole toofind hello služby.
-![Azure Portal – nový – databáze - MySQL](./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png)
+2. Vyberte **Databáze** > **Azure Database for MySQL**. Službu můžete vyhledat také zadáním **MySQL** do vyhledávacího pole.
 
-3. Vyplňte hello nového serveru podrobnosti formuláře s hello následující informace, jak je znázorněno na hello předcházející bitové kopie:
+    ![Možnost Azure Database for MySQL](./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png)
+
+4. Vyplňte formulář podrobností nového serveru pomocí následujících informací, jak je vidět na předchozím obrázku:
 
     **Nastavení** | **Navrhovaná hodnota** | **Popis pole** 
     ---|---|---
-    Název serveru | myserver4demo | Zvolte jedinečný název serveru, který identifikuje váš server Azure Database for MySQL. název domény Hello *mysql.database.azure.com* je název serveru připojením toohello přinášejí tooconnect aplikace k. název serveru Hello může obsahovat jenom malá písmena, číslice a znak hello pomlčku (-) a musí obsahovat od 3 do 63 znaků.
-    Předplatné | Vaše předplatné | Hello předplatné Azure, který má toouse pro váš server. Pokud máte více předplatných, zvolte hello příslušné předplatné, ve kterém se fakturuje hello prostředků pro.
-    Skupina prostředků | myresourcegroup | Můžete vytvořit nový název skupiny prostředků nebo použít některý ze stávajících ve vašem předplatném.
-    Přihlašovací jméno správce serveru | myadmin | Zkontrolujte vlastní toouse účtu přihlášení, při připojování serveru toohello. přihlašovací jméno správce Hello nelze 'azure_superuser', "admin", 'správce, 'root', 'hosta' nebo 'veřejné'.
-    Heslo | *Nějaké si zvolte* | Vytvořte nové heslo pro účet správce serveru hello. Musí obsahovat z 8 too128 znaků. Heslo musí obsahovat znaky ze tří z následujících kategorií hello: velká písmena, malá písmena anglické abecedy, čísla (0-9) a jiné než alfanumerické znaky (!, $, #, %, atd.).
-    Potvrzení hesla | *Nějaké si zvolte*| Potvrďte heslo pro účet správce hello.
-    Umístění | *Hello oblast nejbližší tooyour uživatelů*| Vyberte hello umístění, které je nejblíže uživatele tooyour nebo jiné aplikace na platformě Azure.
-    Verze | *Vyberte nejnovější verzi hello*| Vyberte nejnovější verzi hello, pokud nemáte konkrétní požadavky.
-    Cenová úroveň | **Basic**, **50 výpočetních jednotek**, **50 GB** | Klikněte na tlačítko **cenová úroveň** toospecify hello služby vrstvy a úroveň výkonu pro novou databázi. Zvolte **úroveň Basic** v hello karty v horní části hello. Klikněte na tlačítko hello levého konce hello **výpočetní jednotky** posuvníku tooadjust hello hodnota toohello alespoň částka k dispozici pro tento rychlý start. Klikněte na tlačítko **Ok** toosave hello cenová úroveň výběru. V tématu hello následující snímek obrazovky.
-    Toodashboard PIN kód | Zaškrtnout | Zkontrolujte hello **Pin toodashboard** možnost tooallow snadné sledování serveru na stránce hello front řídicí panel portálu Azure.
+    Název serveru | myserver4demo | Jedinečný název, který identifikuje váš server Azure Database for MySQL. K zadanému názvu serveru se připojí název domény *mysql.database.azure.com*. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí se skládat ze 3 až 63 znaků.
+    Předplatné | Vaše předplatné | Předplatné Azure, které chcete použít pro váš server. Pokud máte více předplatných, zvolte předplatné, ve kterém se vám prostředek účtuje.
+    Skupina prostředků | myresourcegroup | Název nové nebo existující skupiny prostředků.
+    Přihlašovací jméno správce serveru | myadmin | Přihlašovací účet, který budete používat při připojování k serveru. Přihlašovací jméno správce nemůže být **azure_superuser**, **admin**, **administrator**, **root**, **guest** ani **public**.
+    Heslo | *Nějaké si zvolte* | Nové heslo pro účet správce serveru. Musí se skládat z 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice (0–9) a jiné než alfanumerické znaky (!, $, #, % apod.).
+    Potvrzení hesla | *Nějaké si zvolte*| Potvrzené heslo účtu správce.
+    Umístění | *Oblast nejbližší vašim uživatelům*| Umístění co nejblíže vašim uživatelům nebo dalším aplikacím Azure.
+    Verze | *Nejnovější verze*| Nejnovější verze (pokud nemáte specifické požadavky vyžadující jinou verzi).
+    Cenová úroveň | **Basic**, **50 výpočetních jednotek**, **50 GB** | Úroveň služby a výkonu nové databáze. Na kartě v horní části vyberte **Úroveň Basic**. Vyberte levý konec posuvníku **Výpočetní jednotky** a pro účely tohoto rychlého startu upravte hodnotu na nejnižší dostupné množství. Vyberte **OK** a uložte výběr cenové úrovně. Další informace najdete na následujícím snímku obrazovky.
+    Připnutí na řídicí panel | Zaškrtnout | Umožňuje snadné sledování vašeho serveru na úvodní stránce řídicího panelu na webu Azure Portal.
 
     > [!IMPORTANT]
-    > Hello přihlašovací jméno správce serveru a heslo, které zde určíte jsou požadované toolog toohello serveru a její databáze později v tento rychlý start. Tyto informace si zapamatujte nebo poznamenejte pro pozdější použití.
+    > Zde zadané přihlašovací jméno a heslo správce serveru se vyžadují pro přihlášení k serveru a jeho databázím dále v tomto rychlém startu. Tyto informace si zapamatujte nebo poznamenejte pro pozdější použití.
     > 
 
-    ![Portál Azure – vytvoření databáze MySQL tím, že poskytuje hello vyžaduje vstup formuláře](./media/quickstart-create-mysql-server-database-using-azure-portal/3_create-server.png)
+    ![Azure Portal – vytvoření databáze MySQL poskytnutím požadovaného vstupu formuláře](./media/quickstart-create-mysql-server-database-using-azure-portal/3_create-server.png)
 
-4.  Klikněte na tlačítko **vytvořit** tooprovision hello serveru. Zřizování trvá několik minut, až minut too20 maximální.
+4.  Vyberte **Vytvořit**, aby se server zřídil. Zřizování může trvat až 20 minut.
    
-5.  Na panelu nástrojů hello, klikněte na tlačítko **oznámení** procesu nasazení hello toomonitor (ikonu zvonku).
+5.  Pokud chcete monitorovat proces nasazení, vyberte **Oznámení** (ikona zvonku) na panelu nástrojů.
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Konfigurace pravidla brány firewall na úrovni serveru
 
-Hello databáze Azure pro službu MySQL vytvoří brána firewall na úrovni serveru hello. Tato brána firewall brání externí aplikace a nástroje pro připojení serveru toohello a všechny databáze na serveru hello, pokud pravidlo brány firewall není vytvořená tooopen hello brány firewall pro konkrétní IP adresy. 
+Služba Azure Database for MySQL vytváří bránu firewall na úrovni serveru. Ta brání externím aplikacím a nástrojům v připojení k serveru a kterékoli databázi na serveru, pokud není vytvořené pravidlo brány firewall k otevření brány firewall pro konkrétní IP adresy. 
 
-1.  Po dokončení nasazení hello umístit si server. V případě potřeby ho můžete vyhledat. Klikněte například na **všechny prostředky** z nabídky na levé straně hello a zadejte název serveru hello (jako je například hello *myserver4demo*) toosearch pro nově vytvořený server. Klikněte na název serveru uvedené v výsledek hledání hello. Hello **přehled** stránky pro váš server otevře a poskytuje možnosti pro další konfiguraci.
+1.   Po dokončení nasazení najděte váš server. V případě potřeby ho můžete vyhledat. Vyberte například **Všechny prostředky** z nabídky na levé straně. Pak zadejte název serveru, například ukázkový **myserver4demo**. Vyhledáte tak nově vytvořený server. Vyberte název serveru ze seznamu výsledků hledání. Otevře se stránka **Přehled** vašeho serveru a poskytne vám možnosti další konfigurace.
 
-2. Na stránce server hello vyberte **zabezpečení připojení**.
+2. Na stránce serveru vyberte **Zabezpečení připojení**.
 
-3.  V části hello **pravidla brány Firewall** záhlaví, klikněte na tlačítko hello prázdné textového pole v hello **název pravidla** sloupec toobegin vytvoření pravidla brány firewall hello. 
+3.  Pod nadpisem **Pravidla brány firewall** vyberte prázdné textové pole ve sloupci **Název pravidla** a začněte vytvářet pravidlo brány firewall. 
 
-    Pro tento rychlý start můžeme povolit všechny IP adresy do serveru hello vyplněním hello textového pole v každém sloupci s hello následující hodnoty:
+    Pro účely tohoto rychlého startu povolíme provoz do serveru ze všech IP adres tak, že do pole v každém sloupci vyplníme následující hodnoty:
 
     Název pravidla | Počáteční IP adresa | Koncová IP adresa 
     ---|---|---
     AllowAllIps |  0.0.0.0 | 255.255.255.255
 
-4. Na horním panelu nástrojů hello Dobrý den **zabezpečení připojení** klikněte na tlačítko **Uložit**. Počkejte pár chvil a Všimněte si hello oznámení zobrazující, že aktualizace zabezpečení připojení byla dokončena úspěšně než budete pokračovat.
+4. Na horním panelu nástrojů na stránce **Zabezpečení připojení** vyberte **Uložit**. Než budete pokračovat, počkejte na zobrazení oznámení o úspěšném dokončení aktualizace. 
 
     > [!NOTE]
-    > TooAzure připojení databáze pro databázi MySQL komunikovat přes port 3306. Pokud se pokoušíte tooconnect z podnikové sítě, odchozí provoz přes port 3306 nemusí mít povolený bránou firewall vaší sítě. Pokud ano, nebudete moct tooconnect tooyour serveru, pokud vaše IT oddělení otevře port 3306.
+    > Připojení ke službě Azure Database for MySQL komunikují přes port 3306. Pokud se pokoušíte připojit z podnikové sítě, odchozí provoz přes port 3306 nemusí být povolený. V takovém případě se k serveru nemůžete připojit, dokud vaše IT oddělení neotevře port 3306.
     > 
 
-## <a name="get-hello-connection-information"></a>Získat informace o připojení hello
-tooconnect tooyour databázový server, musíte tooremember hello celého serveru název a správce přihlašovací údaje. Může mít uvedené výše v článku rychlý start hello tyto hodnoty. V případě, že jste to udělali není, budete moci snadno najít hello server název a přihlašovací informace ze serveru hello **přehled** stránky nebo hello **vlastnosti** stránku hello portálu Azure.
+## <a name="get-the-connection-information"></a>Získání informací o připojení
+Pokud se chcete připojit ke svému databázovému serveru, potřebujete úplný název serveru a přihlašovací údaje správce. Pravděpodobně jste si tyto hodnoty poznamenali v dřívější části tohoto článku Rychlý start. Pokud ne, název serveru a přihlašovací údaje můžete snadno vyhledat na stránce **Přehled** nebo **Vlastnosti** serveru na webu Azure Portal.
 
-1. Otevřete stránku **Přehled** vašeho serveru. Poznamenejte si hello **název serveru** a **přihlašovací jméno pro Server správce**. 
-    Ukazatele myši každé pole a toohello vpravo od textu hello se zobrazí ikona kopírování hello. Klikněte na ikonu kopírování hello jako potřebné toocopy hello hodnoty.
+Pokud je chcete vyhledat, postupujte následovně: 
 
-    V tomto příkladu je název serveru hello *myserver4demo.mysql.database.azure.com*, a je přihlašovací jméno správce serveru hello * myadmin@myserver4demo *.
+1. Otevřete stránku **Přehled** vašeho serveru. Poznamenejte si **Název serveru** a **Přihlašovací jméno správce serveru**. 
 
-## <a name="connect-toomysql-using-mysql-command-line-tool"></a>Připojit tooMySQL pomocí nástroje příkazového řádku mysql
-Existuje řada aplikací můžete použít tooconnect tooyour Azure databáze pro server databáze MySQL. Použijeme nejprve hello [mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) příkazového řádku nástroje tooillustrate jak tooconnect toohello serveru.  Můžete použít webový prohlížeč a hello prostředí cloudu Azure podle postupu popsaného tady bez hello potřebovat tooinstall žádný další software. Pokud máte nástroj mysql hello nainstalovány místně na vlastní počítače, můžete zde také připojit.
+2. Přejeďte kurzorem přes jednotlivá pole a vpravo od textu se zobrazí ikona kopírování. Podle potřeby hodnoty zkopírujte výběrem ikony kopírování.
 
-1. Spusťte hello prostředí cloudu Azure prostřednictvím terminálu ikonu hello (> _) na hello top napravo od hello Azure portálu webové stránky.
+V tomto příkladu je název serveru **myserver4demo.mysql.database.azure.com** a přihlašovací jméno správce serveru je **myadmin@myserver4demo**.
 
-2. Otevře se v prohlížeči, které příkazy prostředí bash tootype Hello prostředí cloudu Azure.
+## <a name="connect-to-mysql-by-using-the-mysql-command-line-tool"></a>Připojení k MySQL pomocí nástroje pro příkazový řádek mysql
+Existuje řada aplikací, které můžete použít pro připojení k vašemu serveru Azure Database for MySQL. 
+
+Nejprve si ukážeme, jak se k serveru připojit pomocí nástroje pro příkazový řádek [mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html). Můžete také použít webový prohlížeč a Azure Cloud Shell, jak je zde popsáno, bez instalace dalšího softwaru. Pokud máte nástroj mysql nainstalovaný místně, můžete se připojit i z něj.
+
+1. Spusťte Azure Cloud Shell pomocí ikony terminálu (**>_**) v pravém horním rohu webu Azure Portal.
+
+2.  V prohlížeči se otevře Azure Cloud Shell, kde můžete zadávat příkazy prostředí Bash.
 
     ![Příkazový řádek – příklad příkazového řádku mysql](./media/quickstart-create-mysql-server-database-using-azure-portal/7_connect-to-server.png)
 
-3. Na příkazovém řádku prostředí cloudu hello připojte tooyour Azure databáze MySQL serveru zadáním hello mysql příkazového řádku hello zelená řádku.
+3. V příkazovém řádku služby Cloud Shell se zadáním příkazového řádku mysql připojte k serveru Azure Database for MySQL.
 
-    Hello formátu je použité tooconnect tooan Azure databáze pro server databáze MySQL s nástroj mysql hello:
+    Pro připojení k serveru Azure Database for MySQL pomocí nástroje mysql použijte následující formát:
+
     ```bash
     mysql --host <yourserver> --user <server admin login> --password
     ```
 
-    Například následující příkaz hello připojuje server tooour příklad:
+    Například následující příkaz se připojí k našemu ukázkovému serveru:
+
     ```azurecli-interactive
     mysql --host myserver4demo.mysql.database.azure.com --user myadmin@myserver4demo --password
     ```
 
     Parametr mysql |Navrhovaná hodnota|Popis
     ---|---|---
-    --host | *název serveru* | Zadejte hello hodnota názvu serveru, která byla použita při dříve vytvořili hello Azure Database pro databázi MySQL. Náš ukázkový server v příkladu je myserver4demo.mysql.database.azure.com. Použití hello plně kvalifikovaný název domény (\*. mysql.database.azure.com) jako v příkladu hello. Pokud si nepamatujete název serveru, postupujte podle kroků hello v hello předchozí část tooget hello informace o připojení. 
-    --user | *přihlašovací jméno správce serveru* |Zadejte hello serveru správce přihlašovací uživatelské jméno, když máte vytvořený hello Azure Database pro databázi MySQL. Pokud si nepamatujete hello uživatelské jméno, postupujte podle kroků hello v hello předchozí část tooget hello informace o připojení.  Formát Hello je * username@servername *.
-    --password | *počkejte na zobrazení výzvy* | Zobrazí se výzva příliš "Zadejte heslo", po které zadejte příkaz hello. Po zobrazení výzvy zadejte hello stejné heslo, které jste zadali při vytváření hello server.  Poznámka: hello zadali heslo, které znaky nejsou zobrazeny na hello bash výzvy při jejich zadávání. Stiskněte klávesu enter po zadali všechny znaky tooauthenticate hello a připojení.
+    --host | *Název serveru* | Hodnota názvu serveru, kterou jste použili dříve při vytváření serveru Azure Database for MySQL. Server v našem příkladu je **myserver4demo.mysql.database.azure.com**. Použijte plně kvalifikovaný název domény (**\*.mysql.database.azure.com**), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. 
+    --user | *Přihlašovací jméno správce serveru* |Přihlašovací uživatelské jméno správce serveru, které jste zadali dříve při vytváření serveru Azure Database for MySQL. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *username@servername*.
+    --password | *Počkejte na zobrazení výzvy* |Stejné heslo, které jste zadali při vytváření serveru. Poznámka: Při zadávání hesla se na příkazovém řádku Bash nezobrazují zadávané znaky. Po zadání hesla stiskněte **Enter**.
 
-   Po připojení, zobrazí nástroj mysql hello `mysql>` výzva pro vás tootype příkazy. 
+   Jakmile bude nástroj mysql připojený, zobrazí příkazový řádek `mysql>`, na kterém můžete zadávat příkazy. 
 
-    Příklad výstupu nástroje mysql:
+   Následuje příklad výstupu nástroje mysql:
+
     ```bash
-    Welcome toohello MySQL monitor.  Commands end with ; or \g.
+    Welcome to the MySQL monitor.  Commands end with ; or \g.
     Your MySQL connection id is 65505
     Server version: 5.6.26.0 MySQL Community Server (GPL)
     
@@ -130,18 +139,19 @@ Existuje řada aplikací můžete použít tooconnect tooyour Azure databáze pr
     affiliates. Other names may be trademarks of their respective
     owners.
 
-    Type 'help;' or '\h' for help. Type '\c' tooclear hello current input statement.
+    Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
     
     mysql>
     ```
     > [!TIP]
-    > Pokud brána firewall hello není nakonfigurovaný tooallow hello IP adresu hello prostředí cloudu Azure, hello došlo k následující chybě:
+    > Pokud brána firewall není nakonfigurovaná k povolení IP adres služby Azure Cloud Shell, dojde k následující chybě:
     >
-    > Chyba 2003 (28000): Klient s IP adresou 123.456.789.0 tooaccess hello serveru není povoleno.
+    > ERROR 2003 (28000): Client with IP address 123.456.789.0 is not allowed to access the server. (CHYBA 2003 (28000): Klient s IP adresou 123.456.789.0 nemá povolený přístup k tomuto serveru.)
     >
-    > Chyba hello tooresolve, ujistěte se, hello serveru konfigurace odpovídá hello kroky hello *nakonfigurujte pravidlo brány firewall na úrovni serveru* hello článku.
+    > Pokud chcete chybu vyřešit, ujistěte se, že konfigurace serveru odpovídá postupu v části Konfigurace pravidla brány firewall na úrovni serveru tohoto článku.
 
-4. Zobrazení serveru stav tooensure hello připojení je funkční. Typ `status` v hello mysql > výzvu po připojení.
+4. Pokud chcete ověřit funkčnost připojení, zobrazte stav serveru zadáním `status` na příkazovém řádku mysql>.
+
     ```sql
     status
     ```
@@ -149,63 +159,69 @@ Existuje řada aplikací můžete použít tooconnect tooyour Azure databáze pr
    > [!TIP]
    > Další příkazy najdete v [Referenční příručce k MySQL 5.7 – v kapitole 4.5.1](https://dev.mysql.com/doc/refman/5.7/en/mysql.html).
 
-5.  Vytvořit prázdnou databázi v hello mysql > výzva zadáním hello následující příkaz:
+5.  Vytvořte prázdnou databázi zadáním následujícího příkazu na příkazovém řádku **mysql>**:
     ```sql
     CREATE DATABASE quickstartdb;
     ```
-    příkaz Hello může trvat pár chvil toocomplete. 
+    Dokončení příkazu může chvíli trvat. 
 
-    V rámci serveru Azure Database for MySQL můžete vytvořit jednu nebo několik databází. Můžete vyjádřit výslovný toocreate jednu databázi na serveru tooutilize všechny prostředky hello nebo vytvořit více databází tooshare hello prostředky. Neexistuje žádné omezení toohello počet databází, které lze vytvořit, ale více databází sdílet hello stejné prostředky serveru. 
+    V rámci serveru Azure Database for MySQL můžete vytvořit jednu nebo několik databází. Můžete se rozhodnout vytvořit jednu databázi na server pro využití všech prostředků nebo vytvořit několik databází, které budou prostředky sdílet. Neexistuje žádné omezení počtu databází, které můžete vytvořit, ale více databází sdílí stejné prostředky serveru. 
 
-6. Seznam hello databáze na hello mysql > výzva zadáním hello následující příkaz:
+6. Zobrazte výpis databází zadáním následujícího příkazu na příkazovém řádku **mysql>**:
 
     ```sql
     SHOW DATABASES;
     ```
 
-7.  Typ `\q` a potom stiskněte klávesu ENTER tooquit hello mysql nástroj. Po dokončení můžete zavřít hello prostředí cloudu Azure.
+7.  Zadejte `\q` a pak stisknutím klávesy **Enter** ukončete nástroj mysql. Jakmile budete hotovi, můžete zavřít Azure Cloud Shell.
 
-Teď už máte připojení toohello Azure Database pro databázi MySQL a vytvořit prázdnou uživatelské databáze. Pokračovat v další části toorepeat toohello podobné toohello tooconnect cvičení stejný server pomocí jiného běžné nástroje MySQL Workbench.
+Právě jste se připojili k serveru Azure Database for MySQL a vytvořili prázdnou uživatelskou databázi. Pokračujte k další části, kde najdete podobné cvičení. V dalším cvičení se ke stejnému serveru připojíte pomocí dalšího běžného nástroje MySQL Workbench.
 
-## <a name="connect-toohello-server-using-hello-mysql-workbench-gui-tool"></a>Připojení serveru toohello pomocí nástroje hello MySQL Workbench grafického uživatelského rozhraní
-server databáze MySQL tooAzure tooconnect pomocí hello grafického uživatelského rozhraní nástroje MySQL Workbench:
+## <a name="connect-to-the-server-by-using-the-mysql-workbench-gui-tool"></a>Připojení k serveru pomocí nástroje s grafickým uživatelským rozhraním MySQL Workbench
+Pokud se chcete připojit k serveru pomocí nástroje s grafickým uživatelským rozhraním MySQL Workbench, postupujte následovně:
 
-1.  Spusťte hello MySQL Workbench aplikace na klientském počítači. MySQL Workbench můžete stáhnout a nainstalovat [odtud](https://dev.mysql.com/downloads/workbench/).
+1.  Na klientském počítači otevřete aplikaci MySQL Workbench. MySQL Workbench můžete stáhnout a nainstalovat ze [stránky pro stažení nástroje MySQL Workbench](https://dev.mysql.com/downloads/workbench/).
 
-2.  V **nastavit připojení k nové** dialogovém okně zadejte následující informace hello **parametry** karty:
+2.  V dialogovém okně pro **nastavení nového připojení** zadejte na kartě **Parametry** následující informace:
 
-    ![nastavení nového připojení](./media/quickstart-create-mysql-server-database-using-azure-portal/setup-new-connection.png)
+    ![Nastavení nového připojení](./media/quickstart-create-mysql-server-database-using-azure-portal/setup-new-connection.png)
 
-    | **Nastavení** | **Navrhovaná hodnota** | **Popis pole** |
+    |Nastavení |Navrhovaná hodnota|Popis pole|
     |---|---|---|
-    |   Název připojení | Ukázkové připojení | Zadejte popisek pro toto připojení. |
-    | Způsob připojení | Standard (TCP/IP) | Standard (TCP/IP) je dostačující. |
-    | Název hostitele | *název serveru* | Zadejte hello hodnota názvu serveru, která byla použita při dříve vytvořili hello Azure Database pro databázi MySQL. Náš ukázkový server v příkladu je myserver4demo.mysql.database.azure.com. Použití hello plně kvalifikovaný název domény (\*. mysql.database.azure.com) jako v příkladu hello. Pokud si nepamatujete název serveru, postupujte podle kroků hello v hello předchozí část tooget hello informace o připojení.  |
-    | Port | 3306 | Vždy používejte port 3306 při připojování tooAzure databáze pro databázi MySQL. |
-    | Uživatelské jméno |  *přihlašovací jméno správce serveru* | Zadejte hello serveru správce přihlašovací uživatelské jméno, když máte vytvořený hello Azure Database pro databázi MySQL. Uživatelské jméno v našem příkladu je myadmin@myserver4demo. Pokud si nepamatujete hello uživatelské jméno, postupujte podle kroků hello v hello předchozí část tooget hello informace o připojení. Formát Hello je * username@servername *.
-    | Heslo | vaše heslo | Klikněte na tlačítko Uložit v trezoru... tlačítko toosave hello heslo. |
+     Název připojení | Ukázkové připojení | Popisek pro toto připojení. |
+    Způsob připojení | Standard (TCP/IP) | Standard (TCP/IP) je dostačující. |
+    Název hostitele | *Název serveru* | Hodnota názvu serveru, kterou jste použili dříve při vytváření serveru Azure Database for MySQL. Server v našem příkladu je **myserver4demo.mysql.database.azure.com**. Použijte plně kvalifikovaný název domény (**\*.mysql.database.azure.com**), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části.|
+     Port | 3306 | Port, který se má použít při připojování k serveru Azure Database for MySQL. |
+    Uživatelské jméno |  *Přihlašovací jméno správce serveru* | Přihlašovací údaje správce serveru, které jste zadali dříve při vytváření serveru Azure Database for MySQL. Uživatelské jméno v našem příkladu je **myadmin@myserver4demo**. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *username@servername*.
+    Heslo | *Vaše heslo* | Výběrem tlačítka **Uložit v trezoru...** heslo uložte. |
 
-    Klikněte na tlačítko **Test připojení** tootest, pokud jsou správně nakonfigurovány všechny parametry. Klikněte na tlačítko OK toosave hello připojení. 
+3. Pokud chcete otestovat, jestli jsou všechny parametry správně nakonfigurované, vyberte **Test připojení**. Potom vyberte **OK** a uložte připojení. 
 
     > [!NOTE]
-    > SSL je vyžadována ve výchozím nastavení na vašem serveru a vyžaduje další konfigurace v pořadí tooconnect úspěšně. V tématu [připojení konfigurace protokolu SSL ve vaší aplikaci toosecurely connect tooAzure databáze pro databázi MySQL](./howto-configure-ssl.md).  Pokud chcete toodisable SSL pro tento rychlý start, navštivte hello portál Azure a klikněte na tlačítko hello připojení zabezpečení stránky toodisable hello vynutit SSL připojení přepínací tlačítko.
+    > Ve výchozím nastavení se na vašem serveru vynucuje SSL, což vyžaduje další konfiguraci pro úspěšné připojení. Další informace najdete v tématu [Konfigurace připojení SSL v aplikaci pro zabezpečené připojení k Azure Database for MySQL](./howto-configure-ssl.md). Pokud chcete pro tento rychlý start zakázat SSL, přejděte na web Azure Portal. Potom vyberte stránku Zabezpečení připojení a deaktivujte přepínací tlačítko **Vynucení připojení SSL**.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Vyčištění hello prostředky, které jste vytvořili v rychlý start hello buď odstraněním hello [skupina prostředků Azure](../azure-resource-manager/resource-group-overview.md), který zahrnuje všechny hello prostředky ve skupině prostředků hello nebo odstraněním prostředků jeden server hello, pokud chcete, aby tookeep hello Další prostředky beze změn.
+Prostředky, které jste vytvořili v rámci tohoto rychlého startu, můžete vyčistit dvěma způsoby. Můžete odstranit [skupinu prostředků Azure](../azure-resource-manager/resource-group-overview.md), což zahrnuje odstranění všech prostředků v této skupině prostředků. Pokud chcete ostatní prostředky zachovat beze změny, odstraňte pouze příslušný prostředek serveru.
 
 > [!TIP]
-> Další rychlé starty v této kolekci jsou postavené na tomto rychlém startu. Pokud máte v plánu toocontinue na toowork s následné rychlých průvodců, proveďte není vyčistit hello prostředky vytvořené v tento rychlý start. Pokud neplánujete toocontinue, použijte následující kroky toodelete všechny prostředky vytvořeny ve tento rychlý start v hello portál Azure hello.
+> Další rychlé starty v této kolekci jsou postavené na tomto rychlém startu. Pokud chcete pokračovat v práci s dalšími rychlými starty, neodstraňujte prostředky, které jste vytvořili v rámci tohoto rychlého startu. Pokud pokračovat nechcete, pomocí následujících kroků odstraňte všechny prostředky, které jste v tomto rychlém startu vytvořili.
 >
 
-toodelete hello celé skupiny prostředků včetně hello nově vytvořený serveru:
-1.  Vyhledejte vaší skupiny prostředků v hello portálu Azure. V levé nabídce hello v hello portálu Azure klikněte na **skupiny prostředků** a pak klikněte na název vaší skupiny prostředků, jako je například v našem příkladu hello **myresourcegroup**.
-2.  Na stránce vaší skupiny prostředků klikněte na **Odstranit**. Pak typ hello název vaší skupiny prostředků, jako je například v našem příkladu **myresourcegroup**, v hello odstranění tooconfirm textové pole a pak klikněte na tlačítko **odstranit**.
+Pokud chcete odstranit celou skupinu prostředků včetně nově vytvořeného serveru, postupujte následovně:
 
-Nebo místo toho toodelete hello nově vytvořený serveru:
-1.  Najděte váš server v hello portál Azure, pokud jste ho otevřete. Hello levé nabídce na portálu Azure, klikněte na tlačítko **všechny prostředky**a poté vyhledejte hello serveru, které jste vytvořili.
-2.  Na hello **přehled** klikněte na tlačítko hello **odstranit** tlačítko na horním podokně hello.
-![Azure Database for MySQL – odstranění serveru](./media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png)
-3.  Zkontrolujte název serveru hello chcete toodelete a zobrazit hello databází v něm, které se vztahuje. Zadejte název serveru hello textového pole, jako je například v našem příkladu **myserver4demo**a potom klikněte na **odstranit**.
+1.  Vyhledejte skupinu prostředků na webu Azure Portal. V nabídce na levé straně vyberte **Skupiny prostředků** a potom vyberte název vaší skupiny prostředků (jako je **myresourcegroup** v našem příkladu).
+
+2.  Na stránce vaší skupiny prostředků vyberte **Odstranit**. Pak pro potvrzení odstranění zadejte do pole název vaší skupiny prostředků (jako je **myresourcegroup** v našem příkladu) a vyberte **Odstranit**.
+
+Pokud chcete odstranit pouze nově vytvořený server, postupujte následovně:
+
+1.  Vyhledejte server na webu Azure Portal, pokud ho ještě nemáte otevřený. Z nabídky na levé straně webu Azure Portal vyberte **Všechny prostředky**. Pak vyhledejte server, který jste vytvořili.
+
+2.  Na stránce **Přehled** vyberte **Odstranit**. 
+
+    ![Azure Database for MySQL – odstranění serveru](./media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png)
+
+3.  Potvrďte název serveru, který chcete odstranit, a zobrazte jeho databáze, které tím ovlivníte. Do pole zadejte název vašeho serveru (jako je **myserver4demo** v našem příkladu). Vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 

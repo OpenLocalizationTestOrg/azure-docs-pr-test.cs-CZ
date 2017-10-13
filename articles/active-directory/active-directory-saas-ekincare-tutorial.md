@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s eKincare | Microsoft Docs'
-description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a eKincare."
+description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a eKincare."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,117 +13,117 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 16129e3384132bb34744aadf088bb65f07ed7a96
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 014eaff14974bb6cd551b6fe53409ede6a6dfea1
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ekincare"></a>Kurz: Azure Active Directory integrace s eKincare
 
-V tomto kurzu zjistíte, jak toointegrate eKincare s Azure Active Directory (Azure AD).
+V tomto kurzu zjistěte, jak integrovat eKincare s Azure Active Directory (Azure AD).
 
-Integrace eKincare s Azure AD poskytuje hello následující výhody:
+Integrace eKincare s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup tooeKincare
-- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooeKincare (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup k eKincare
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k eKincare (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Integrace služby Azure AD s eKincare tooconfigure, je třeba hello následující položky:
+Konfigurace integrace Azure AD s eKincare, potřebujete následující položky:
 
 - Předplatné služby Azure AD
 - EKincare jednotného přihlašování povolené předplatné
 
 > [!NOTE]
-> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
+Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání eKincare z Galerie hello
+1. Přidání eKincare z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-ekincare-from-hello-gallery"></a>Přidání eKincare z Galerie hello
-tooconfigure hello integrace eKincare do Azure AD, je nutné tooadd eKincare hello Galerie tooyour seznamu spravovaných aplikací SaaS.
+## <a name="adding-ekincare-from-the-gallery"></a>Přidání eKincare z Galerie
+Při konfiguraci integrace eKincare do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS eKincare z galerie.
 
-**tooadd eKincare z Galerie hello, proveďte následující kroky hello:**
+**Pokud chcete přidat eKincare z galerie, proveďte následující kroky:**
 
-1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
+1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
+2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
 
     ![Aplikace][3]
 
-4. Hello vyhledávacího pole zadejte **eKincare**.
+4. Do vyhledávacího pole zadejte **eKincare**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-ekincare-tutorial/tutorial_ekincare_search.png)
 
-5. Na panelu výsledků hello vyberte **eKincare**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.
+5. Na panelu výsledků vyberte **eKincare**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-ekincare-tutorial/tutorial_ekincare_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s eKincare podle testovacího uživatele názvem "Britta Simon."
 
-Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v eKincare je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v eKincare musí toobe navázat.
+Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v eKincare je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v eKincare musí navázat.
 
-V eKincare, přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.
+V eKincare, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
 
-tooconfigure a testu Azure AD jednotné přihlašování s eKincare, potřebujete následující stavební bloky hello toocomplete:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s eKincare, je třeba dokončit následující stavební bloky:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele eKincare](#creating-a-ekincare-test-user)**  -toohave protějšek Britta Simon v eKincare, která je propojená toohello Azure AD reprezentace uživatele.
-4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele eKincare](#creating-a-ekincare-test-user)**  – Pokud chcete mít protějšek Britta Simon v eKincare propojeném s Azure AD reprezentace daného uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci eKincare.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci eKincare.
 
-**tooconfigure Azure AD jednotné přihlašování s eKincare, proveďte následující kroky hello:**
+**Ke konfiguraci Azure AD jednotné přihlašování s eKincare, proveďte následující kroky:**
 
-1. V portálu Azure, na hello hello **eKincare** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na portálu Azure na **eKincare** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
+2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-ekincare-tutorial/tutorial_ekincare_samlbase.png)
 
-3. Na hello **eKincare domény a adresy URL** část, proveďte následující kroky hello:
+3. Na **eKincare domény a adresy URL** část, proveďte následující kroky:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-ekincare-tutorial/tutorial_ekincare_url.png)
 
-    a. V hello **identifikátor** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<instancename>.ekincare.com/`
+    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<instancename>.ekincare.com/`
 
-    b. V hello **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<instancename>.ekincare.com/hul/saml`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<instancename>.ekincare.com/hul/saml`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte pomocí hello skutečné identifikátor dotazů a odpovědí adresy URL. Obraťte se na [tým podpory eKincare](mailto:tech@ekincare.com) tooget tyto hodnoty.
+    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem a adresa URL odpovědi. Obraťte se na [tým podpory eKincare](mailto:tech@ekincare.com) k získání těchto hodnot.
  
-4. aplikace eKincare očekává hello SAML kontrolní výrazy ve specifickém formátu. Nakonfigurujte hello následující deklarace identity pro tuto aplikaci. Můžete spravovat hello hodnoty těchto atributů z hello "**uživatelské atributy**" části na stránce integrace aplikace. Hello následující snímek obrazovky ukazuje příklad pro tuto konfiguraci.
+4. aplikace eKincare očekává SAML kontrolní výrazy ve specifickém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnoty těchto atributů z "**uživatelské atributy**" části na stránce integrace aplikace. Následující snímek obrazovky ukazuje příklad pro tuto konfiguraci.
 
-    Hello názvu deklarací identit budou vždy **"employeeid"** a hello hodnoty, které jsme jste namapovali toouser.extensionattribute1, který obsahuje hello employeeid hello uživatele. Hello jednofaktorovému název další dva deklarace identity. **"kódu organizace"** a **"název organizace"** bude vždy stejnou a jejich hodnoty obsahovat podrobnosti hello hello organizace hello uživatele v uvedeném pořadí.
+    Název deklarací bude vždy **"employeeid"** a hodnoty, které jsme jsou namapovány user.extensionattribute1, který obsahuje employeeid uživatele. Název jednofaktorovému další dva deklarace identity. **"kódu organizace"** a **"název organizace"** bude vždy stejnou a jejich hodnoty obsahují podrobnosti o organizaci uživatele v uvedeném pořadí.
     
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-ekincare-tutorial/attribute.png)
     
-5. V hello **uživatelské atributy** část hello **jednotného přihlašování** dialogové okno, nakonfigurovat atribut tokenu SAML, jak je znázorněno v hello obrázku výše a provést hello následující kroky:
+5. V **uživatelské atributy** části na **jednotného přihlašování** dialogové okno, nakonfigurujte atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
     
     | Název atributu | Hodnota atributu |
     | ---------------| --------------- |    
@@ -131,19 +131,19 @@ V této části můžete povolit Azure AD jednotné přihlašování v hello por
     | kódu organizace | *"uniquevalue"* |
     | název organizace | *User.CompanyName* |
 
-    a. Klikněte na tlačítko **přidat atribut** tooopen hello **přidat atribut** dialogové okno.
+    a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-ekincare-tutorial/04.png)
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-ekincare-tutorial/05.png)
     
-    b. V hello **název** textovému poli, název atributu pro typ hello zobrazený pro tento řádek.
+    b. V **název** textovému poli, zadejte název atributu, který je uvedený na příslušném řádku.
     
-    c. Z hello **hodnotu** seznamu, hodnota atributu hello typ zobrazený pro tento řádek.
+    c. Z **hodnotu** seznamu, zadejte hodnotu atributu, který je uvedený na příslušném řádku.
     
     d. Klikněte na tlačítko **Ok**
 
-6. Na hello **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat hello ve vašem počítači.
+6. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-ekincare-tutorial/tutorial_ekincare_certificate.png) 
 
@@ -151,64 +151,64 @@ V této části můžete povolit Azure AD jednotné přihlašování v hello por
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-ekincare-tutorial/tutorial_general_400.png)
 
-8. tooconfigure jednotného přihlašování na **eKincare** straně, je nutné stáhnout hello toosend **soubor XML s metadaty** příliš[tým podpory eKincare](mailto:tech@ekincare.com). Nastavují hello toohave tato nastavení jednotného přihlašování SAML připojení správně nastavena na obou stranách.
+8. Konfigurace jednotného přihlašování na **eKincare** straně, budete muset odeslat stažené **soubor XML s metadaty** k [tým podpory eKincare](mailto:tech@ekincare.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
+Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
+**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
 
-1. V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
+1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-ekincare-tutorial/create_aaduser_01.png) 
 
-2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-ekincare-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.
+3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-ekincare-tutorial/create_aaduser_03.png) 
 
-4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
+4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-ekincare-tutorial/create_aaduser_04.png) 
 
-    a. V hello **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textovému poli, typ **BrittaSimon**.
 
-    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-a-ekincare-test-user"></a>Vytvoření zkušebního uživatele eKincare
 
-Aplikace podporuje pouze v době zřizování uživatelů a po ověření uživatele v aplikaci hello automaticky vytvoří.
+Aplikace podporuje pouze v době zřizování uživatelů a po ověření uživatelé jsou automaticky vytvořené v aplikaci.
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
+### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte tak, že udělíte přístup tooeKincare toouse Britta Simon Azure jednotné přihlašování.
+V této části povolíte Britta Simon chcete použít Azure jednotného přihlašování k udělení přístupu k eKincare.
 
 ![Přiřadit uživatele][200] 
 
-**tooassign Britta Simon tooeKincare, proveďte následující kroky hello:**
+**Pokud chcete přiřadit Britta Simon eKincare, proveďte následující kroky:**
 
-1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikace hello vyberte **eKincare**.
+2. V seznamu aplikací vyberte **eKincare**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-ekincare-tutorial/tutorial_ekincare_app.png) 
 
-3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
+3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
@@ -216,7 +216,7 @@ V této části povolíte tak, že udělíte přístup tooeKincare toouse Britta
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -224,14 +224,14 @@ V této části povolíte tak, že udělíte přístup tooeKincare toouse Britta
     
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.
+V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
-Když kliknete na dlaždici eKincare hello v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour eKincare aplikace.
-Další informace o na přístupovém panelu najdete v tématu [Úvod toohello přístupového panelu](active-directory-saas-access-panel-introduction.md)
+Když kliknete na dlaždici eKincare na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci eKincare.
+Další informace o na přístupovém panelu najdete v tématu [Úvod do přístupového panelu](active-directory-saas-access-panel-introduction.md)
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

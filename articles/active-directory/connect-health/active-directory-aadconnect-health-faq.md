@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure Active Directory Connect stavu časté otázky – Azure | Microsoft Docs"
-description: "Tyto nejčastější dotazy odpovědi na otázky o Azure AD Connect Health. Tyto nejčastější dotazy obsahuje otázky týkající se používání hello služby, včetně hello fakturační model, schopností, omezení a podpory."
+title: "Azure Active Directory Connect Health – nejčastější dotazy - Azure | Microsoft Docs"
+description: "Tyto nejčastější dotazy odpovědi na otázky o Azure AD Connect Health. Jde o dotazy k používání služby, včetně modelu fakturace, schopností, omezení a podpory."
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 3f15d9e9b557b09ef74ceff85806579dd51f2412
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 902e5bdfbbf04ab70989be8c41e16eb69e475908
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Nejčastější dotazy ke službě Azure AD Connect Health
-Tento článek obsahuje odpovědi toofrequently kladené dotazy (FAQ) o stavu připojení služby Azure Active Directory (Azure AD). Tyto nejčastější dotazy se týkají dotazy o tom, jak toouse hello service, která zahrnuje hello fakturační model, schopností, omezení a podpory.
+Tento článek obsahuje odpovědi na nejčastější dotazy (FAQ) o stavu připojení služby Azure Active Directory (Azure AD). Tyto nejčastější dotazy se týkají dotazy o tom, jak používat službu, která zahrnuje fakturační model, možnosti, omezení a podpory.
 
 ## <a name="general-questions"></a>Obecné otázky
-**Otázka: lze spravovat několik adresářů Azure AD. Jak lze přepnout toohello, ten, který má Azure Active Directory Premium?**
+**Otázka: lze spravovat několik adresářů Azure AD. Jak přepnout na takový, který má Azure Active Directory Premium**
 
-tooswitch mezi různými klienty Azure AD, vyberte hello aktuálně přihlášeného **uživatelské jméno** na hello pravém horním rohu a potom vyberte odpovídající účet hello. Pokud zde není uveden hello účtu, vyberte **Odhlásit se**, a pak použijte přihlašovací údaje globálního správce hello hello adresáře, který má Azure Active Directory Premium povolené toosign v.
+Chcete-li přepnout mezi různými klienty Azure AD, vyberte aktuálně přihlášeného **uživatelské jméno** v pravém horním rohu a pak vyberte příslušný účet. Pokud zde není uveden účet, vyberte **Odhlásit se**a pak použijte přihlašovací údaje globálního správce adresáře, který má Azure Active Directory Premium povolena pro přihlášení.
 
 **Otázka: jaký verzi role identity podporuje Azure AD Connect Health?**
 
-Hello následující tabulka obsahuje seznam rolí hello a podporované verze operačního systému.
+Následující tabulka uvádí role a podporované verze operačního systému.
 
 |Role| Operační systém nebo verzi|
 |--|--|
@@ -38,15 +38,15 @@ Hello následující tabulka obsahuje seznam rolí hello a podporované verze op
 |Azure AD Connect | Verze 1.0.9125 nebo vyšší|
 |Active Directory Domain Services (AD DS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
 
-Všimněte si, že hello funkce poskytované službou hello se můžou lišit podle hello role a hello operačního systému. Jinými slovy všechny funkce hello nemusí být dostupné pro všechny verze operačního systému. Najdete popis funkcí hello podrobnosti.
+Všimněte si, že funkce poskytované službou můžou lišit podle role a operační systém. Jinými slovy všechny funkce nemusí být dostupné pro všechny verze operačního systému. Naleznete v popisu funkce podrobnosti.
 
-**Otázka: jak velký počet licencí provést potřebuji toomonitor Moje infrastruktury?**
+**Otázka: kolik licencí je třeba monitorovat Moje infrastrukturu?**
 
-* Hello první Agent Connect Health vyžaduje alespoň jednu licenci Azure AD Premium.
+* První Agent Connect Health vyžaduje alespoň jednu licenci Azure AD Premium.
 * Každý další registrované agent vyžaduje 25 další licence Azure AD Premium.
-* Počet agentů je ekvivalentní toohello celkový počet agentů, které jsou zaregistrovány v rámci všech monitorovaných rolí (služby AD FS, Azure AD Connect a služby AD DS).
+* Počet agentů je ekvivalentní celkový počet agentů, které jsou zaregistrovány v rámci všech monitorovaných rolí (služby AD FS, Azure AD Connect a služby AD DS).
 
-Informace o licencích také nachází na hello [stránky Azure AD cenová](https://aka.ms/aadpricing).
+Informace o licencích také nachází na [stránky Azure AD cenová](https://aka.ms/aadpricing).
 
 Příklad:
 
@@ -61,105 +61,105 @@ Příklad:
 
 ## <a name="installation-questions"></a>Instalace otázky
 
-**Otázka: co je hello dopad instalace hello agenta Azure AD Connect Health na jednotlivých serverech?**
+**Otázka: co je dopad instalace Agent Azure AD Connect Health na jednotlivých serverech?**
 
-dopad Hello instalace proxy servery webových aplikací hello Microsoft Azure agenta AD Connect Health, služby AD FS, řadiče domény, servery Azure AD Connect (sync) je minimální s ohledem toohello procesoru, využití paměti, šířky pásma sítě a úložiště.
+Dopad instalace agenta služby Microsoft Azure AD Connect Health, služby AD FS, proxy servery webových aplikací, servery Azure AD Connect (sync), řadiče domény je minimální s ohledem na využití procesoru, využití paměti, šířky pásma sítě a úložiště.
 
-následující čísla Hello jsou sblížení:
+Tato čísla jsou sblížení:
 
 * Spotřeba CPU: zvýšení ~ 1-5 %.
-* Využití paměti: % too10 hello celkový systémové paměti.
+* Využití paměti: až 10 % celkové systémové paměti.
 
 > [!NOTE]
-> Pokud hello agent nemůže komunikovat s Azure, hello agent ukládá hello data místně pro definovaný maximální limit. Hello agent přepíše hello "v mezipaměti" data na základě "nedávno nejméně servis".
+> Pokud agenta nemůže komunikovat s Azure, agent ukládá data místně pro definovaný maximální limit. Agent přepíše "v mezipaměti" data na základě "nedávno nejméně servis".
 >
 >
 
 * Vyrovnávací paměť místní úložiště pro agenty Azure AD Connect Health: ~ 20 MB.
-* Pro servery služby AD FS doporučujeme, že zřizovat místa 1 024 MB (1 GB) pro kanál auditu hello služby AD FS pro agenty Azure AD Connect Health tooprocess všechna data auditu hello předtím, než se přepíše.
+* Pro servery služby AD FS doporučujeme zřízení 1 024 MB (1 GB) místa na disku pro kanál auditu služby AD FS pro Azure agenty AD Connect Health zpracovat všechna data auditu předtím, než se přepíše.
 
-**Otázka: může dojít k tooreboot Moje servery během instalace hello agenty hello Azure AD Connect Health?**
+**Otázka: je třeba restartovat Moje servery během instalace agenty Azure AD Connect Health?**
 
-Ne. instalace Hello hello agentů nebude vyžadovat jste tooreboot hello serveru. Instalace některé z požadovaných předchozích kroků však může vyžadovat restartování serveru hello.
+Ne. Instalace agentů nebude vyžadovat restartování serveru. Instalace některé z požadovaných předchozích kroků však může vyžadovat restartování serveru.
 
 Například na Windows Server 2008 R2, vyžaduje instalaci rozhraní .NET Framework 4.5 restartování serveru.
 
 **Otázka: funguje Azure AD Connect Health prostřednictvím průchozí proxy serveru HTTP?**
 
-Ano. Pro probíhající operace můžete nakonfigurovat agenta stavu toouse hello HTTP proxy tooforward odchozí požadavky HTTP.
+Ano. Pro probíhající operace můžete nakonfigurovat agenta stavu používat proxy server HTTP k předávání odchozí požadavky HTTP.
 Další informace o [konfiguraci proxy serveru HTTP pro agenty stavu](active-directory-aadconnect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy).
 
-Pokud potřebujete tooconfigure proxy server při registraci agenta, bude pravděpodobně nutné toomodify vaše nastavení proxy serveru Internet Explorer předem.
+Pokud potřebujete nakonfigurovat proxy server při registraci agenta, může budete muset předem upravit vaše nastavení proxy serveru Internet Explorer.
 
 1. Otevřete Internet Explorer > **nastavení** > **Možnosti Internetu** > **připojení** > **nastavení místní sítě**.
 2. Vyberte **použít Proxy Server pro síť LAN**.
 3. Vyberte **Upřesnit** Pokud máte jiný proxy portů pro protokol HTTP a HTTPS/Secure.
 
-**Otázka: podporuje základní ověřování Azure AD Connect Health podporu při připojování tooHTTP proxy?**
+**Otázka: podporuje základní ověřování Azure AD Connect Health podporu při připojování k HTTP proxy?**
 
-Ne. Mechanismus toospecify libovolné uživatelské jméno a heslo pro základní ověřování není aktuálně podporován.
+Ne. Mechanismus zadejte libovolné uživatelské jméno a heslo pro základní ověřování není aktuálně podporován.
 
-**Otázka: co dělat porty brány firewall pro připojení agenta stavu toowork hello Azure AD potřebuji tooopen?**
+**Otázka: jaký porty brány firewall je nutné otevřít pro Agent Azure AD Connect Health pro práci?**
 
-V tématu hello [v části požadavky na](active-directory-aadconnect-health-agent-install.md#requirements) hello seznam porty brány firewall a další požadavky na připojení.
+Najdete v článku [v části požadavky na](active-directory-aadconnect-health-agent-install.md#requirements) seznam porty brány firewall a další požadavky na připojení.
 
-**Otázka: Proč vidí dva servery s hello stejný název v portálu hello Azure AD Connect Health?**
+**Otázka: Proč vidí dva servery se stejným názvem na portálu Azure AD Connect Health?**
 
-Když odeberete agenta ze serveru, hello server automaticky se neodebere z portálu Azure AD Connect Health hello. Pokud ručně odebrat agenta ze serveru nebo odeberte samotný server hello, je třeba položku serveru hello toomanually odstranit z portálu hello Azure AD Connect Health.
+Když odeberete agenta ze serveru, serveru automaticky se neodebere z portálu Azure AD Connect Health. Pokud ručně odebrat agenta ze serveru nebo odeberte samotný server, budete muset ručně odstranit položku serveru z portálu Azure AD Connect Health.
 
-Můžete obnovit z Image serveru a vytvořit nový server s hello stejné údaje (například název počítače). Pokud už zaregistrovaný server hello není odebrat z portálu hello Azure AD Connect Health a jste nainstalovali agenta hello na nový server hello, může se zobrazit dvě položky s hello stejný název.
+Můžete obnovit z Image serveru a vytvořit nový server se stejným podrobnosti (například název počítače). Pokud již registrovaný server není odebrat z portálu Azure AD Connect Health a jste nainstalovali agenta na novém serveru, může se zobrazit dvě položky se stejným názvem.
 
-V takovém případě odstraňte ručně hello položku, která patří toohello starším serveru. Hello dat pro tento server by měl být aktuální.
+V takovém případě ručně odstraňte položku, která patří do starším serveru. Data pro tento server by měl být aktuální.
 
 ## <a name="health-agent-registration-and-data-freshness"></a>Registrace a data aktuálnosti agenta stavu
 
-**Otázka: co jsou běžné příčiny chyb registrace agenta stavu hello a jak odstranit problémy?**
+**Otázka: co jsou běžné příčiny selhání registrace agenta stavu a jak odstranit problémy?**
 
-Hello agenta stavu může selhat z důvodu následující toohello tooregister možné důvody:
+Agent stavu můžete nezdaří jejich registrace z následujících možných důvodů:
 
-* Hello agent nemůže komunikovat s hello požadované koncové body, protože brána firewall neblokuje přenosy. To je zvlášť běžné na proxy servery webových aplikací. Ujistěte se, že se povolí odchozí komunikaci toohello požadované koncové body a porty. V tématu hello [v části požadavky na](active-directory-aadconnect-health-agent-install.md#requirements) podrobnosti.
-* Odchozí komunikace je provedeno tooan kontrolu SSL vrstvou hello sítě. To způsobí, že certifikát hello hello agent používá toobe nahrazuje hello kontroly serveru nebo entity, a hello kroky toocomplete hello agenta registrace nezdaří.
-* Hello uživatel nemá přístup k tooperform hello registrace agenta hello. Globální Správci mají přístup ve výchozím nastavení. Můžete použít [řízení přístupu na základě Role](active-directory-aadconnect-health-operations.md#manage-access-with-role-based-access-control) toodelegate přístup tooother uživatele.
+* Agent nemůže komunikovat s požadované koncové body, protože brána firewall neblokuje přenosy. To je zvlášť běžné na proxy servery webových aplikací. Ujistěte se, že se povolí odchozí komunikaci požadované koncové body a porty. Najdete v článku [v části požadavky na](active-directory-aadconnect-health-agent-install.md#requirements) podrobnosti.
+* Odchozí komunikaci se vztahuje kontrola SSL vrstvou sítě. To způsobí, že certifikát, který agent používá nahradit za kontroly serveru nebo entity a selhání postup dokončit registraci agenta.
+* Uživatel nemá přístup k provedení registrace agenta. Globální Správci mají přístup ve výchozím nastavení. Můžete použít [řízení přístupu na základě Role](active-directory-aadconnect-health-operations.md#manage-access-with-role-based-access-control) budete chtít udělit přístup ostatním uživatelům.
 
-**Otázka: I mě získávání upozornění, že "data služby stavu není až toodate." Jak odstranit hello problém?**
+**Otázka: I mě získávání upozornění, že "služba Health Service data nejsou aktuální." Jak odstranit potíže?**
 
-Azure AD Connect Health vygeneruje výstrahu hello, pokud neobdrží všechny datové body hello ze serveru hello v hello poslední dvě hodiny. Může být několik důvodů pro tuto výstrahu.
+Azure AD Connect Health vygeneruje výstrahu, pokud neobdrží datových bodů ze serveru za posledních dvou hodin. Může být několik důvodů pro tuto výstrahu.
 
-* Hello agent nemůže komunikovat s hello požadované koncové body, protože brána firewall neblokuje přenosy. To je zvlášť běžné na proxy servery webových aplikací. Ujistěte se, že se povolí odchozí komunikaci toohello požadované koncové body a porty. V tématu hello [v části požadavky na](active-directory-aadconnect-health-agent-install.md#requirements) podrobnosti.
-* Odchozí komunikace je provedeno tooan kontrolu SSL vrstvou hello sítě. To způsobí, že hello certifikátu, hello agent používá toobe nahrazuje hello kontroly serveru nebo entity a hello dojde k selhání tooupload data toohello Azure AD Connect Health service.
-* Můžete použít příkaz připojení hello součástí hello agenta. [Přečtěte si další informace](active-directory-aadconnect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service).
-* agenti Hello také podporují odchozí připojení přes neověřené server Proxy protokolu HTTP. [Přečtěte si další informace](active-directory-aadconnect-health-agent-install.md##configure-azure-ad-connect-health-agents-to-use-http-proxy).
+* Agent nemůže komunikovat s požadované koncové body, protože brána firewall neblokuje přenosy. To je zvlášť běžné na proxy servery webových aplikací. Ujistěte se, že se povolí odchozí komunikaci požadované koncové body a porty. Najdete v článku [v části požadavky na](active-directory-aadconnect-health-agent-install.md#requirements) podrobnosti.
+* Odchozí komunikaci se vztahuje kontrola SSL vrstvou sítě. To způsobí, že certifikát, který agent používá nahradit za kontroly serveru nebo entity a dojde k selhání odesílat data do služby Azure AD Connect Health.
+* Můžete použít příkaz připojení, který je součástí agenta. [Další informace](active-directory-aadconnect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service).
+* Agenti také podporují odchozí připojení přes neověřené server Proxy protokolu HTTP. [Další informace](active-directory-aadconnect-health-agent-install.md##configure-azure-ad-connect-health-agents-to-use-http-proxy).
 
 ## <a name="operations-questions"></a>Operace otázky
-**Otázka: je nutné tooenable auditování na proxy servery webových aplikací hello?**
+**Otázka: Potřebuji povolení auditování na proxy servery webových aplikací?**
 
-Ne, auditování nemusí toobe zapnuta hello proxy servery webových aplikací.
+Ne, auditování nemusí být povolená na proxy servery webových aplikací.
 
 **Otázka: Jak získat Azure AD Connect Health výstrahy vyřešit?**
 
-Azure AD Connect Health výstrahy získat přeložit na podmínka pro úspěch. Agenty Azure AD Connect Health zjistit a pravidelně zprávy hello úspěch podmínky toohello služby. Pro několik výstrah potlačení hello je založené na čase. Jinými slovy Pokud hello stejné chybový stav není v rámci 72 hodin od generování výstrah, hello výstraha je automaticky vyřešena.
+Azure AD Connect Health výstrahy získat přeložit na podmínka pro úspěch. Agenty Azure AD Connect Health zjistit a pravidelně zprávy podmínky úspěch ke službě. Několik výstrah je potlačení založené na čase. Jinými slovy Pokud není v rámci 72 hodin od generování výstrah stejnou chybový stav, výstraha se automaticky vyřeší.
 
-**Otázka: I mě získávání upozornění, že "žádosti o testovací ověření (syntetické transakci) se nezdařilo tooobtain token." Jak odstranit hello problém?**
+**Otázka: I mě získávání upozornění, že "žádosti o testovací ověření (syntetické transakci) se nepodařilo získat token." Jak odstranit potíže?**
 
-Azure AD Connect Health pro službu AD FS generuje tuto výstrahu v případě hello Agent stavu, které jsou nainstalovány na serveru služby AD FS chyby tooobtain token jako součást syntetické transakce iniciovaná hello agenta stavu. agent stavu Hello používá hello kontextu místního systému a pokusů o zadání tooget token pro vlastní předávající strany. Toto je tooensure catch-all test, který služby AD FS je ve stavu vystavování tokenů.
+Azure AD Connect Health pro službu AD FS generuje upozornění, když Health Agent nainstalovaný na server služby AD FS nepodaří získat token jako součást syntetické transakce iniciovaná agenta stavu. Agent stavu používá kontextu místního systému a pokusí se získat token pro svým předávající strany. Toto je test catch-all zajistit, že se služba AD FS ve stavu vystavování tokenů.
 
-Nejčastěji tento test se nezdaří, protože hello stavu agenta je název farmy služby nemůže tooresolve hello služby AD FS. To může dojít, pokud jsou servery hello AD FS za nástroje pro vyrovnávání zatížení sítě a požadavek hello získá inicioval z uzlu, který je za nástroj pro vyrovnávání zatížení hello (jako názvem na rozdíl od tooa regulární klient, který je před hello nástroj pro vyrovnávání zatížení). To může být opraven aktualizací soubor hello "hosts" umístěný v části "C:\Windows\System32\drivers\etc" tooinclude hello IP adresa serveru hello služby AD FS nebo IP adresou zpětné smyčky (127.0.0.1) pro název farmy služby AD FS hello (např. sts.contoso.com). Přidání souboru hostitele hello bude krátká smyčka hello síťové volání, což umožňuje hello agenta stavu tooget hello token.
+Nejčastěji tento test se nezdaří, protože Agent stavu nemůže přeložit název farmy služby AD FS. To může dojít, pokud jsou servery služby AD FS za nástroje pro vyrovnávání zatížení sítě a požadavek získá inicializována z uzlu, který je za nástrojem pro vyrovnávání zatížení (na rozdíl od regulární klienta, který je před nástroje pro vyrovnávání zatížení). To lze opravit aktualizací "hostitele" soubor nachází v části "C:\Windows\System32\drivers\etc" zahrnují IP adresu serveru služby AD FS nebo IP adresu zpětné smyčky (127.0.0.1) pro název farmy služby AD FS (např. sts.contoso.com). Přidání souboru hostitele bude krátká smyčka – volání sítě, což umožňuje agenta stavu se získat token.
 
-**Otázka: chybové e-mailu, což značí, že mých počítačů není nainstalována oprava hello poslední ransomeware útokům. Proč zobrazila tato e-mailu?**
+**Otázka: chybové e-mailu oznamující, že mých počítačů není nainstalována oprava poslední ransomeware útokům. Proč zobrazila tato e-mailu?**
 
-Služba Azure AD Connect Health zkontrolovat všechny hello, které byly nainstalovány počítače sleduje tooensure hello požadované opravy. e-mailu Hello byla odeslána správci klientů toohello, pokud alespoň jeden počítač neměl hello důležité opravy. Hello následující logiku byl použité toomake toto rozhodnutí.
-1. Najít všechny opravy hotfix hello nainstalovat na počítač hello.
-2. Zkontrolujte, zda alespoň jeden z hello opravy hotfix z hello definovaný seznam není k dispozici.
-3. Pokud ano, počítač hello je chráněný. Pokud ne, hello počítač jsou v ohrožení hello útoku.
+Služba Azure AD Connect Health zkontrolovat všechny, které byly nainstalovány na počítače, které sleduje zajistit vyžadovaných oprav. Správci klientů byla odeslána e-mailu, pokud alespoň jeden počítač neměl důležité opravy. Za účelem určení byl použit následující logice.
+1. Najít všechny opravy hotfix v počítači nainstalován.
+2. Zkontrolujte, zda je přítomen alespoň jeden ze seznamu definované opravy hotfix.
+3. Pokud ano, počítač je chráněný. Pokud ne, tento počítač je znamenat nebezpečí útoku.
 
-Můžete použít následující tooperform skript prostředí PowerShell hello tato kontrola ručně. Implementuje hello výše logiku.
+Následující skript prostředí PowerShell můžete použít k provedení této kontroly ručně. Implementuje logice výše.
 
 ```
 Function CheckForMS17-010 ()
 {
     $hotfixes = "KB3205409", "KB3210720", "KB3210721", "KB3212646", "KB3213986", "KB4012212", "KB4012213", "KB4012214", "KB4012215", "KB4012216", "KB4012217", "KB4012218", "KB4012220", "KB4012598", "KB4012606", "KB4013198", "KB4013389", "KB4013429", "KB4015217", "KB4015438", "KB4015546", "KB4015547", "KB4015548", "KB4015549", "KB4015550", "KB4015551", "KB4015552", "KB4015553", "KB4015554", "KB4016635", "KB4019213", "KB4019214", "KB4019215", "KB4019216", "KB4019263", "KB4019264", "KB4019472", "KB4015221", "KB4019474", "KB4015219", "KB4019473"
 
-    #checks hello computer it's run on if any of hello listed hotfixes are present
+    #checks the computer it's run on if any of the listed hotfixes are present
     $hotfix = Get-HotFix -ComputerName $env:computername | Where-Object {$hotfixes -contains $_.HotfixID} | Select-Object -property "HotFixID"
 
     #confirms whether hotfix is found or not

@@ -1,6 +1,6 @@
 ---
-title: "aaaMigrate vaše stávající Azure datového skladu toopremium úložiště | Microsoft Docs"
-description: "Pokyny k migraci existujících dat skladu toopremium úložiště"
+title: "Migrovat existující Azure datového skladu do úložiště úrovně premium | Microsoft Docs"
+description: "Pokyny k migraci existující datový sklad storage úrovně premium"
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
@@ -15,19 +15,19 @@ ms.workload: data-services
 ms.custom: migrate
 ms.date: 11/29/2016
 ms.author: elbutter;barbkess
-ms.openlocfilehash: 145199c2da1f6f1fb8898626cd04886c42d82204
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 860e50b532b4b0a21d3be54f087730070b0e56bb
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="migrate-your-data-warehouse-toopremium-storage"></a>Migrace úložiště toopremium datového skladu
-Azure SQL Data Warehouse nedávno zaveden [storage úrovně premium pro vyšší výkon, předvídatelnost][premium storage for greater performance predictability]. Stávající data, která teď může být sklady aktuálně na standardní úložiště migrovat toopremium úložiště. Můžete využít výhod Automatická migrace, nebo pokud dáváte přednost toocontrol při toomigrate (které zahrnovat výpadky), můžete provést migraci hello sami.
+# <a name="migrate-your-data-warehouse-to-premium-storage"></a>Migrace na storage úrovně premium datového skladu
+Azure SQL Data Warehouse nedávno zaveden [storage úrovně premium pro vyšší výkon, předvídatelnost][premium storage for greater performance predictability]. Existující datových skladů aktuálně na standardní úložiště lze nyní přenést do úložiště úrovně premium. Můžete využít výhod Automatická migrace, nebo pokud chcete řídit, kdy k migraci (které zahrnují výpadky), můžete provést migraci sami.
 
-Pokud máte více než jeden datový sklad, použijte hello [automatickou migraci plánu] [ automatic migration schedule] toodetermine, když bude taky migrovat.
+Pokud máte více než jeden datový sklad, použijte [automatickou migraci plánu] [ automatic migration schedule] k určení, kdy ho bude migrována také.
 
 ## <a name="determine-storage-type"></a>Stanovení typů úložiště
-Pokud jste vytvořili datového skladu před hello následující data, se aktuálně používá standardní úložiště.
+Pokud jste vytvořili datový sklad před následující daty, jsou právě používá standardní úložiště.
 
 | **Oblast** | **Vytvořené před tímto datem datového skladu** |
 |:--- |:--- |
@@ -41,31 +41,31 @@ Pokud jste vytvořili datového skladu před hello následující data, se aktu�
 | Střed USA – sever |10 od listopadu 2016 |
 
 ## <a name="automatic-migration-details"></a>Automatická migrace podrobnosti
-Ve výchozím nastavení, jsme bude databázi migrujte pro vás od 18:00:00 do 6:00:00 ve vaší oblasti místní čas během hello [automatickou migraci plánu][automatic migration schedule]. Během migrace hello nepoužitelný existující datový sklad. Hello migrace bude trvat přibližně za jednu hodinu za terabajt úložiště za datového skladu. Vám nebude nic účtováno během jakékoli její části hello automatickou migraci.
+Ve výchozím nastavení, jsme bude databázi migrujte pro vás od 18:00:00 do 6:00:00 ve vaší oblasti místní čas během [automatickou migraci plánu][automatic migration schedule]. Během migrace budou existující datový sklad nepoužitelné. Migrace bude trvat přibližně za jednu hodinu za terabajt úložiště za datového skladu. Vám nebude nic účtováno během jakékoli její části automatickou migraci.
 
 > [!NOTE]
-> Po dokončení migrace hello datového skladu bude zpět online a dá se použít.
+> Po dokončení migrace datového skladu bude zpět online a dá se použít.
 >
 >
 
-Microsoft trvá hello následující kroky toocomplete hello migrace (ty nevyžadují žádné zapojení z vaší strany). V tomto příkladu Představte si, že vaše existující datový sklad na standardní úložiště je aktuálně s názvem "MyDW."
+Společnost Microsoft provádí následující kroky k dokončení migrace (ty nevyžadují žádné zapojení z vaší strany). V tomto příkladu Představte si, že vaše existující datový sklad na standardní úložiště je aktuálně s názvem "MyDW."
 
-1. Microsoft přejmenuje "MyDW" příliš "MyDW_DO_NOT_USE_ [časové razítko]."
+1. Microsoft přejmenuje "MyDW" na "MyDW_DO_NOT_USE_ [časové razítko]."
 2. Microsoft pozastaví "MyDW_DO_NOT_USE_ [časové razítko]." Během této doby je převzat zálohu. Pokud jsme dojde k potížím během tohoto procesu může se zobrazit více zastaví a obnoví.
-3. Microsoft vytvoří nový datový sklad s názvem "MyDW" na storage úrovně premium ze zálohy hello prováděné v kroku 2. "MyDW" se zobrazí až po dokončení obnovení hello.
-4. Po dokončení obnovení hello "MyDW" vrátí toohello stejný datový sklad jednotky a stavu (pozastaven nebo aktivní), který byl před migrací hello.
-5. Po dokončení migrace hello, odstraní Microsoft "MyDW_DO_NOT_USE_ [časové razítko]".
+3. Microsoft vytvoří nový datový sklad s názvem "MyDW" na storage úrovně premium ze zálohy pořízené v kroku 2. "MyDW" se zobrazí až po dokončení obnovení.
+4. Po obnovení je dokončeno, "MyDW" vrátí do stejné jednotky datového skladu a stav (pozastaven nebo aktivní) aby byla před migrací.
+5. Po dokončení migrace Microsoft odstraní "MyDW_DO_NOT_USE_ [časové razítko]".
 
 > [!NOTE]
-> Hello následující nastavení se nepřenesou jako součást migrace hello:
+> Jako součást migrace se nepřenesou následující nastavení:
 >
-> * Auditování na úrovni databáze hello musí toobe funkce znovu povolena.
-> * Pravidla brány firewall na úrovni databáze hello potřebovat toobe znovu přidat. Pravidla brány firewall na úrovni serveru hello nemá vliv.
+> * Auditování na úrovni databáze musí být znovu zapnout.
+> * Pravidla brány firewall na úrovni databáze musí být znovu přidat. Ovlivněné nejsou pravidla brány firewall na úrovni serveru.
 >
 >
 
 ### <a name="automatic-migration-schedule"></a>Automatická migrace plánu
-Automatické migrace dojde během hello následující výpadku plán od 18:00:00 do 6:00 AM (místní čas na oblast).
+Automatické migrace dojít od 18:00:00 do 6:00:00 (místní čas na oblast) během následujícího plánu výpadku.
 
 | **Oblast** | **Odhadované datum** | **Odhadované datum ukončení** |
 |:--- |:--- |:--- |
@@ -78,49 +78,49 @@ Automatické migrace dojde během hello následující výpadku plán od 18:00:0
 | Japonsko – západ |Není-li určit ještě |Není-li určit ještě |
 | Střed USA – sever |9. ledna 2017 |13. ledna 2017 |
 
-## <a name="self-migration-toopremium-storage"></a>Vlastní migrace toopremium úložiště
-Pokud chcete toocontrol, když dojde k vaší výpadku, můžete použít následující kroky toomigrate existující datový sklad na standardní úložiště toopremium úložiště hello. Pokud zvolíte tuto možnost, musíte dokončit migraci vlastní hello před zahájením hello Automatická migrace v této oblasti. To zajistí, že zabránění nebezpečí hello automatickou migraci způsobuje konflikt (odkazovat toohello [automatickou migraci plánu][automatic migration schedule]).
+## <a name="self-migration-to-premium-storage"></a>Vlastní migrace na storage úrovně premium
+Pokud chcete řídit, když dojde k odstávka, můžete použít následující kroky k migraci existující datový sklad na standardní úložiště do úložiště úrovně premium. Pokud zvolíte tuto možnost, musíte vlastní migrace dokončit před zahájením Automatická migrace v této oblasti. To zajistí, že zabránění nebezpečí automatickou migraci způsobuje konflikt (odkazovat [automatickou migraci plánu][automatic migration schedule]).
 
 ### <a name="self-migration-instructions"></a>Pokyny k migraci vlastní
-toomigrate data skladu sami, použijte hello zálohování a obnovení funkce. část obnovení Hello hello migrace je očekávané tootake přibližně jedné hodiny za terabajt úložiště za datového skladu. Pokud chcete, aby tookeep hello stejný název po dokončení migrace, postupujte podle hello [toorename kroky při migraci][steps toorename during migration].
+Pro migraci datového skladu, použijte zálohování a obnovení funkce. Očekává se, že část obnovení migrace trvat přibližně jednu hodinu za terabajt úložiště za datového skladu. Pokud chcete použít stejný název po dokončení migrace, postupujte [kroky pro přejmenování během migrace][steps to rename during migration].
 
 1. [Pozastavení] [ Pause] datového skladu. Tato akce trvá automatické zálohování.
 2. [Obnovit] [ Restore] z vaší poslední snímek.
-3. Odstraňte existující datový sklad na standardní úložiště. **Pokud selže toodo tento krok vám bude účtována pro obě datových skladů.**
+3. Odstraňte existující datový sklad na standardní úložiště. **Pokud tento krok, vám bude účtována pro obě datových skladů.**
 
 > [!NOTE]
-> Hello následující nastavení se nepřenesou jako součást migrace hello:
+> Jako součást migrace se nepřenesou následující nastavení:
 >
-> * Auditování na úrovni databáze hello musí toobe funkce znovu povolena.
-> * Pravidla brány firewall na úrovni databáze hello potřebovat toobe znovu přidat. Pravidla brány firewall na úrovni serveru hello nemá vliv.
+> * Auditování na úrovni databáze musí být znovu zapnout.
+> * Pravidla brány firewall na úrovni databáze musí být znovu přidat. Ovlivněné nejsou pravidla brány firewall na úrovni serveru.
 >
 >
 
 #### <a name="rename-data-warehouse-during-migration-optional"></a>Přejmenování datového skladu během migrace (volitelné)
-Dvě databáze na hello nemůže mít stejný logický server hello stejný název. SQL Data Warehouse teď podporuje hello možnost toorename datového skladu.
+Dvě databáze na stejného logického serveru nemůžou mít stejný název. SQL Data Warehouse nyní podporuje funkce přejmenování datového skladu.
 
 V tomto příkladu Představte si, že vaše existující datový sklad na standardní úložiště je aktuálně s názvem "MyDW."
 
-1. Přejmenujte "MyDW" pomocí hello následující příkaz ALTER DATABASE. (V tomto příkladu jsme budete přejmenujte ji "MyDW_BeforeMigration.")  Tento příkaz zastaví všechny stávající transakce a je třeba provést v hlavní databázi toosucceed hello.
+1. Přejmenujte "MyDW" pomocí následujícího příkazu ALTER DATABASE. (V tomto příkladu jsme budete přejmenujte ji "MyDW_BeforeMigration.")  Tento příkaz zastaví všechny stávající transakce a je třeba provést v hlavní databázi proběhla úspěšně.
    ```
    ALTER DATABASE CurrentDatabasename MODIFY NAME = NewDatabaseName;
    ```
 2. [Pozastavení] [ Pause] "MyDW_BeforeMigration." Tato akce trvá automatické zálohování.
-3. [Obnovit] [ Restore] z nejnovější snímku novou databázi s názvem hello použije toobe (například "MyDW").
-4. Odstranit "MyDW_BeforeMigration." **Pokud selže toodo tento krok vám bude účtována pro obě datových skladů.**
+3. [Obnovit] [ Restore] z vaší poslední snímek novou databázi s názvem dříve (například "MyDW").
+4. Odstranit "MyDW_BeforeMigration." **Pokud tento krok, vám bude účtována pro obě datových skladů.**
 
 
 ## <a name="next-steps"></a>Další kroky
-Hello změnit toopremium úložiště, máte také zvýšením počtu objektů blob soubory databáze v hello základní Architektura datového skladu. toomaximize hello výkonu výhody této změny znovu sestavit vaše Clusterované indexy columnstore pomocí hello následující skript. skript Hello funguje tak, že některé z existujících dat toohello další objektů BLOB vynucení. Pokud nepodniknete žádnou akci, hello dat bude přirozeně znovu distribuovat časem jako načtení více dat do tabulek.
+Změny do úložiště úrovně premium máte také zvýšením počtu objektů blob soubory databáze v základní Architektura datového skladu. Pokud chcete maximalizovat výkon výhody této změny, znovu sestavte vaše Clusterované indexy columnstore pomocí následujícího skriptu. Skript funguje tak, že některé z vašich existujících dat vynucení na další objekty BLOB. Pokud nepodniknete žádnou akci, data se přirozeně znovu distribuovat časem jako načtení více dat do tabulek.
 
 **Požadavky:**
 
-- Hello datového skladu měly být spuštěny s jednotky 1000 datového skladu nebo vyšší (viz [škálování výpočetního výkonu][scale compute power]).
-- Hello uživatel provádění skriptu hello by měl být v hello [mediumrc role] [ mediumrc role] nebo vyšší. tooadd toothis role uživatele, spusťte následující hello:````EXEC sp_addrolemember 'xlargerc', 'MyUser'````
+- Datový sklad měly být spuštěny s jednotky 1000 datového skladu nebo vyšší (viz [škálování výpočetního výkonu][scale compute power]).
+- Uživatel spouštění skriptu by měl být v [mediumrc role] [ mediumrc role] nebo vyšší. Chcete-li přidat uživatele do této role, spusťte následující:````EXEC sp_addrolemember 'xlargerc', 'MyUser'````
 
 ````sql
 -------------------------------------------------------------------------------
--- Step 1: Create table toocontrol index rebuild
+-- Step 1: Create table to control index rebuild
 -- Run as user in mediumrc or higher
 --------------------------------------------------------------------------------
 create table sql_statements
@@ -138,7 +138,7 @@ where
 go
 
 --------------------------------------------------------------------------------
--- Step 2: Execute index rebuilds. If script fails, hello below can be re-run toorestart where last left off.
+-- Step 2: Execute index rebuilds. If script fails, the below can be re-run to restart where last left off.
 -- Run as user in mediumrc or higher
 --------------------------------------------------------------------------------
 
@@ -160,19 +160,19 @@ drop table sql_statements;
 go
 ````
 
-Pokud narazíte na potíže s datovým skladem, [vytvořit lístek podpory] [ create a support ticket] a odkazovat na "migrace toopremium úložiště" jako možnou příčinou hello.
+Pokud narazíte na potíže s datovým skladem, [vytvořit lístek podpory] [ create a support ticket] a referenční dokumentace "migrace na storage úrovně premium" jako možnou příčinu.
 
 <!--Image references-->
 
 <!--Article references-->
 [automatic migration schedule]: #automatic-migration-schedule
-[self-migration tooPremium Storage]: #self-migration-to-premium-storage
+[self-migration to Premium Storage]: #self-migration-to-premium-storage
 [create a support ticket]: sql-data-warehouse-get-started-create-support-ticket.md
 [Azure paired region]: best-practices-availability-paired-regions.md
 [main documentation site]: services/sql-data-warehouse.md
 [Pause]: sql-data-warehouse-manage-compute-portal.md#pause-compute
 [Restore]: sql-data-warehouse-restore-database-portal.md
-[steps toorename during migration]: #optional-steps-to-rename-during-migration
+[steps to rename during migration]: #optional-steps-to-rename-during-migration
 [scale compute power]: sql-data-warehouse-manage-compute-portal.md#scale-compute-power
 [mediumrc role]: sql-data-warehouse-develop-concurrency.md
 

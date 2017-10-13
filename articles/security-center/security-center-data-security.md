@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure zabezpečení dat Security Center | Microsoft Docs"
+title: "Zabezpečení dat ve službě Azure Security Center | Dokumentace Microsoftu"
 description: "Tento dokument popisuje způsob správy a ochrany dat ve službě Azure Security Center."
 services: security-center
 documentationcenter: na
@@ -14,41 +14,41 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2017
 ms.author: yurid
-ms.openlocfilehash: 30f8b11272dc5df6d485608abdaa62ba57e63f23
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 6f95cf7631664f4630edbbcdadfd1d98105fdb98
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-security-center-data-security"></a>Zabezpečení dat ve službě Azure Security Center
-toohelp zákazníkům zabránit, zjistit a reagovat toothreats, Azure Security Center shromažďuje a zpracovává data týkající se zabezpečení, včetně informací o konfiguraci, metadata, protokoly událostí, soubory se stavem systému a další. Microsoft dodržuje pravidla dodržování předpisů a zabezpečení toostrict – z kódování toooperating služby.
+Služba Azure Security Center pomáhá zákazníkům předcházet hrozbám, detekovat je a reagovat na ně tím, že shromažďuje a zpracovává data související se zabezpečením, včetně informací o konfiguraci, metadat, protokolů událostí, souborů se stavem systému a dalších dat. Společnost Microsoft dodržuje přísné pokyny pro dodržování předpisů a zabezpečení – od psaní kódu po provoz služeb.
 
 Tento článek popisuje způsob správy a ochrany dat ve službě Azure Security Center.
 
 >[!NOTE] 
->Počínaje časná 2017 června, Security Center použije hello agenta Microsoft Monitoring Agent toocollect a ukládat data. V tématu [Azure Security Center platformy migrace](security-center-platform-migration.md) toolearn Další. Hello informace v tomto článku představuje funkce Security Center po přechodu toohello agenta Microsoft Monitoring Agent.
+>Od začátku června 2017 bude Security Center používat ke shromažďování a ukládání dat agenta Microsoft Monitoring Agent. Další informace najdete v článku o [migraci platformy pro Azure Security Center](security-center-platform-migration.md). Informace v tomto článku představují funkce služby Security Center po přechodu na agenta Microsoft Monitoring Agent.
 >
 
 
 ## <a name="data-sources"></a>Zdroje dat
-Azure Security Center analyzuje data z hello následující zdroje tooprovide viditelnost do vaší stavu zabezpečení, zjištění chyb zabezpečení a doporučujeme způsoby zmírnění rizik a detekovat hrozby aktivní:
+Azure Security Center analyzuje data z následujících zdrojů a poskytuje přehled o stavu vašeho zabezpečení, zjišťuje ohrožení zabezpečení a doporučuje způsoby zmírnění rizik a detekuje aktivní hrozby:
 
-- Azure Services: Používá informace o konfiguraci hello služeb Azure, že jste nasadili navázat komunikaci s poskytovatelem prostředků dané služby.
+- Služby Azure: Využívá informace o konfiguraci služeb Azure, které máte nasazené, tím, že komunikuje s poskytovatelem prostředků pro příslušnou službu.
 - Síťový provoz: Využívá vzorkovaná metadata síťového provozu z infrastruktury společnosti Microsoft, jako je třeba zdrojová a cílová IP adresa/port, velikost paketu nebo síťový protokol.
 - Partnerská řešení: Využívá výstrahy zabezpečení ze všech integrovaných partnerských řešení, jako jsou třeba brány firewall a antimalwarová řešení. 
-- Virtuální počítače a servery: Využívá z vašich virtuálních počítačů konfigurační informace a informace o událostech zabezpečení, jako jsou třeba protokoly událostí a auditů systému Windows, protokoly IIS, zprávy syslog a soubory se stavem systému. Kromě toho při vytvoření výstrahy, Azure Security Center může generovat snímků disku virtuálního počítače hello vliv a extrahovat výstrahy související toohello artefakty počítače z disku hello virtuálních počítačů, jako je například soubor registru pro forenzní účely.
+- Virtuální počítače a servery: Využívá z vašich virtuálních počítačů konfigurační informace a informace o událostech zabezpečení, jako jsou třeba protokoly událostí a auditů systému Windows, protokoly IIS, zprávy syslog a soubory se stavem systému. Při vytvoření výstrahy Azure Security Center může navíc vygenerovat snímek příslušného disku virtuálního počítače a z tohoto disku extrahovat artefakty související s příslušnou výstrahou (jako je třeba soubor registru) pro účely forenzní analýzy.
 
 
 ## <a name="data-protection"></a>Ochrana dat
-**Oddělení dat**: Data se ukládají na jednotlivých součástí v rámci služby hello logicky samostatné. Všechna data jsou označená podle organizace. Toto značení přetrvává v průběhu cyklu hello dat a je požadováno v jednotlivých vrstvách služby hello.
+**Oddělení dat**: Data se v rámci služby ukládají logicky oddělená pro jednotlivé komponenty. Všechna data jsou označená podle organizace. Toto značení přetrvává v průběhu celého životního cyklu dat a je vyžadováno na každé úrovni služby.
 
-**Přístup k datům**: pořadí tooprovide doporučení zabezpečení a prozkoumat potenciální ohrožení zabezpečení, Microsoft pracovníky může přístup k informacím, které jsou shromažďovány nebo analyzovat služby Azure, včetně soubory se stavem systému, zpracování událostí vytváření virtuálních počítačů snímky disku a artefaktů, které můžou neúmyslně obsahovat Data zákazníků nebo osobní data z virtuálních počítačů. Jsme splňovat toohello [Microsoft Online Services podmínky a prohlášení o ochraně osobních údajů](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), který stavu, že Microsoft nebude používat Data zákazníků nebo odvození informací z něj pro obchodní účely reklamy nebo podobné. Data zákazníků používáme pouze jako potřebné tooprovide vám Azure služby, včetně účely, které jsou kompatibilní s poskytování těchto služeb. Zachováte všechny práva tooCustomer Data.
+**Přístup k datům**: Aby bylo možné poskytovat doporučení týkající se zabezpečení a prošetřovat potenciální ohrožení zabezpečení, mají pracovníci společnosti Microsoft přístup k informacím shromažďovaným nebo analyzovaným službami Azure, včetně souborů s výpisem stavu systému, událostí vytváření procesů, artefaktům a snímkům disku virtuálního počítače, které mohou neúmyslně obsahovat zákaznická data nebo osobní údaje z vašich virtuálních počítačů. Dodržujeme [Podmínky online služeb společnosti Microsoft a Prohlášení o zásadách ochrany osobních údajů](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), ve kterých je uvedeno, že společnost Microsoft nebude informace o zákaznících používat ani z nich odvozovat další informace pro reklamní nebo podobné obchodní účely. Informace o zákaznících podle potřeby používáme pouze k poskytování služeb Azure a k účelům slučitelným s poskytováním těchto služeb. Všechna práva na informace o zákaznících zůstávají ve vašem vlastnictví.
 
-**Data použití**: Společnost Microsoft používá vzory a analýzou hrozeb vidět napříč více klienty tooenhance naše funkce prevence a detekce; jsme učinit v souladu s závazky týkajícími se ochrany osobních údajů hello popsané v našem [ochrany osobních údajů Příkaz](https://www.microsoft.com/privacystatement/en-us/OnlineServices/Default.aspx).
+**Použití dat**: Společnost Microsoft vylepšuje své schopnosti prevence a detekce pomocí schémat a analýzy hrozeb napříč několika klienty. Činíme tak v souladu se závazky k ochraně osobních údajů popsanými v našem [Prohlášení o zásadách ochrany osobních údajů](https://www.microsoft.com/privacystatement/en-us/OnlineServices/Default.aspx).
 
 ## <a name="data-location"></a>Umístění dat
 
-**Vaše pracovních prostorů**: pracovní prostor je zadán pro hello následující oblastech a data shromážděná z Azure virtuální počítače, včetně výpisy stavu systému a některé typy dat výstrah, jsou uloženy v hello nejbližší pracovního prostoru. 
+**Vaše pracovní prostory:** Pracovní prostor je zadaný pro následující geografie a data shromážděná z vašich virtuálních počítačů Azure, včetně výpisů stavu systému a některých typů dat výstrah, se ukládají v nejbližším pracovním prostoru. 
 
 | Geografie virtuálního počítače                        | Geografie pracovního prostoru |
 |-------------------------------|---------------|
@@ -58,29 +58,29 @@ Azure Security Center analyzuje data z hello následující zdroje tooprovide vi
 | Austrálie                     | Austrálie     |
 
  
-Disk snímky virtuálních počítačů jsou uložené v hello stejný účet úložiště jako disk hello virtuálních počítačů.
+Snímky disků virtuálních počítačů se ukládají ve stejném účtu úložiště jako disk virtuálního počítače.
  
-Pro virtuální počítače a servery spuštěné v jiných prostředích například na místě, můžete zadat hello prostoru a oblasti, kde je uložen shromážděná data. 
+Pro virtuální počítače a servery spuštěné v jiných prostředích, například místně, můžete zadat pracovní prostor a oblast, kde se shromážděná data ukládají. 
 
-**Úložiště Azure Security Center**: informace o výstrah zabezpečení, včetně partnera výstrahy, jsou uloženy regionální podle umístění toohello hello souvisejících prostředků Azure, zatímco informace o stavu zabezpečení a doporučení je uložený centrálně ve Spojených státech amerických hello nebo Evropa podle toocustomer na umístění.
-Azure Security Center shromažďuje dočasné kopie souborů se stavem systému a analyzuje je za účelem detekce stop pokusů o napadení zabezpečení, neúspěšných i úspěšných. Azure Security Center provede tuto analýzu v rámci hello stejném geograficky redundantním jako hello prostoru a odstranění hello dočasné kopie po dokončení analýzy.
+**Azure Security Center Storage:** Informace o výstrahách zabezpečení, včetně partnerských výstrah, se ukládají místně v závislosti na umístění souvisejícího prostředku Azure, zatímco informace o stavu zabezpečení a doporučení se ukládají centrálně v USA nebo v Evropě, v závislosti na umístění zákazníka.
+Azure Security Center shromažďuje dočasné kopie souborů se stavem systému a analyzuje je za účelem detekce stop pokusů o napadení zabezpečení, neúspěšných i úspěšných. Azure Security Center provádí tuto analýzu v rámci stejné geografie jako pracovní prostor a po dokončení analýzy tyto dočasné kopie odstraní.
 
-Artefakty počítače jsou uložené v centrálně hello stejné oblasti jako hello virtuálních počítačů. 
+Artefakty počítačů se ukládají centrálně ve stejné oblasti jako virtuální počítač. 
 
 
 ## <a name="managing-data-collection-from-virtual-machines"></a>Správa shromažďování dat z virtuálních počítačů
 
-Když povolíte službu Security Center v Azure, u každého vašeho předplatného Azure se zapne funkce shromažďování dat. Shromažďování dat můžete také zapnout pro vaše předplatná v hello část zásad zabezpečení služby Azure Security Center. Při shromažďování dat je zapnutá, Azure Security Center zřizuje hello agenta Microsoft Monitoring Agent na všechny stávající podporované virtuální počítače Azure a všechny nové, které jsou vytvořeny. Microsoft Monitoring agent Hello hledá různé zabezpečení související s konfigurací a událostí do [trasování událostí pro Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) trasování (ETW). Kromě toho hello operačního systému bude vyvolávání událostí v protokolu událostí během hello během spouštění počítače hello. Mezi příklady těchto údajů patří: typ a verze operačního systému, protokoly operačního systému (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy, přihlášený uživatel a ID klienta. Hello agenta Microsoft Monitoring Agent přečte položky protokolu událostí a trasování událostí pro Windows trasování a zkopíruje je tooyour pracovních prostorů pro analýzu. Hello agenta Microsoft Monitoring Agent také zkopíruje havárií odkládacích souborů tooyour pracovních prostorů.
+Když povolíte službu Security Center v Azure, u každého vašeho předplatného Azure se zapne funkce shromažďování dat. Shromažďování dat pro předplatná můžete zapnout také v části Zásady zabezpečení služby Azure Security Center. Když je funkce shromažďování dat zapnutá, služba Azure Security Center zřídí ve všech stávajících i nově vytvořených podporovaných virtuálních počítačích agenta Microsoft Monitoring Agent. Microsoft Monitoring Agent prohledává různé konfigurace týkající se zabezpečení a zapisuje události do složek [Trasování událostí pro Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW). Operační systém bude kromě toho během chodu počítače shromažďovat události protokolu událostí. Mezi příklady těchto údajů patří: typ a verze operačního systému, protokoly operačního systému (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy, přihlášený uživatel a ID klienta. Microsoft Monitoring Agent načte položky protokolu událostí a trasování ETW a zkopíruje je do vašich pracovní prostorů za účelem analýzy. Microsoft Monitoring Agent také do vašich pracovní prostorů zkopíruje soubory se stavem systému.
 
-Pokud používáte Azure Security Center volné, můžete také zakázat shromažďování dat z virtuálních počítačů v hello zásady zabezpečení. Shromažďování dat je vyžadován pro odběry ve standardní vrstvě hello. Shromažďování artefaktů a snímků disku virtuálního počítače bude nadále povolené i v případě, že shromažďování dat je zakázané.
+Pokud používáte Azure Security Center úrovně Free, můžete pomocí zásad zabezpečení také zakázat shromažďování dat z virtuálních počítačů. Pro předplatná na úrovni Standard se shromažďování dat požaduje. Shromažďování artefaktů a snímků disku virtuálního počítače bude nadále povolené i v případě, že shromažďování dat je zakázané.
 
 
 ## <a name="see-also"></a>Viz také
-V tomto dokumentu jste se dozvěděli informace o způsobu správy a ochrany ve službě Azure Security Center. toolearn Další informace o službě Azure Security Center, najdete v části:
+V tomto dokumentu jste se dozvěděli informace o způsobu správy a ochrany ve službě Azure Security Center. Pokud se o službě Azure Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-* [Průvodce Azure Security Center plánováním a provozem](security-center-planning-and-operations-guide.md) – Další informace jak tooplan a pochopit hello návrhu aspekty tooadopt Azure Security Center.
-* [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – zjistěte, jak toomonitor hello stav svých prostředků Azure
-* [Správa a zda odpovídá toosecurity výstrahy v Azure Security Center](security-center-managing-and-responding-alerts.md) – Další informace jak toomanage a reakce toosecurity výstrahy
-* [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – zjistěte, jak toomonitor hello stav vašich partnerských řešení.
-* [Nejčastější dotazy k Azure Security Center](security-center-faq.md) – přečtěte si nejčastější dotazy o použití služby hello
+* [Průvodce plánováním a provozem služby Azure Security Center](security-center-planning-and-operations-guide.md) – Zjistěte, jak naplánovat a pochopit aspekty návrhu, abyste mohli přejít na Azure Security Center.
+* [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se sledovat stav svých prostředků Azure
+* [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně
+* [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
+* [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Přečtěte si nejčastější dotazy o použití této služby
 * [Blog o zabezpečení Azure](http://blogs.msdn.com/b/azuresecurity/) – Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů

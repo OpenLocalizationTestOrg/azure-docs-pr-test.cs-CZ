@@ -1,6 +1,6 @@
 ---
-title: "aaaMultiple IP adresy pro virtuální počítače Azure – prostředí PowerShell | Microsoft Docs"
-description: "Zjistěte, jak tooassign více IP adres tooa virtuálního počítače pomocí prostředí PowerShell | Správce prostředků."
+title: "Více IP adres pro virtuální počítače Azure – prostředí PowerShell | Microsoft Docs"
+description: "Zjistěte, jak přiřadit více IP adres k virtuálnímu počítači pomocí prostředí PowerShell | Správce prostředků."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,26 +15,26 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: jdial;annahar
-ms.openlocfilehash: df54c4386ce13521e660a3e7208c8c1ab1459bc2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 29f64aeefc2a7deb1f84d759c2323347536b9c27
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="assign-multiple-ip-addresses-toovirtual-machines-using-powershell"></a>Přiřadit více IP adres toovirtual počítače pomocí prostředí PowerShell
+# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Přiřadit více IP adres virtuálních počítačů pomocí prostředí PowerShell
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 
-Tento článek vysvětluje, jak toocreate virtuální počítač (VM) prostřednictvím nasazení Azure Resource Manager hello modelu pomocí prostředí PowerShell. Tooresources vytvořené pomocí modelu nasazení classic hello nelze přiřadit více IP adres. Další informace o modelech nasazení Azure, přečtěte si hello toolearn [pochopit modely nasazení](../resource-manager-deployment-model.md) článku.
+Tento článek vysvětluje, jak vytvořit virtuální počítač (VM) pomocí modelu nasazení Azure Resource Manager pomocí prostředí PowerShell. Nelze přiřadit více IP adres k prostředkům, které jsou vytvořené pomocí modelu nasazení classic. Další informace o modelech nasazení Azure, najdete [pochopit modely nasazení](../resource-manager-deployment-model.md) článku.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-template-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
 ## <a name = "create"></a>Vytvoření virtuálního počítače s více IP adres
 
-Hello kroky, které následují vysvětlují, jak toocreate příklad virtuálního počítače s více IP adres, jak je popsáno v hello scénáři. Změňte hodnoty proměnných podle potřeby týkající se vaší implementace.
+Kroky, které následují vysvětlují, jak vytvořit příklad virtuálních počítačů s více IP adres, jak je popsáno v tomto scénáři. Změňte hodnoty proměnných podle potřeby týkající se vaší implementace.
 
-1. Otevřete příkazový řádek prostředí PowerShell a dokončení hello zbývající kroky v této části v rámci jedné relace prostředí PowerShell. Pokud ještě nemáte prostředí PowerShell nainstalovaný a nakonfigurovaný, dokončení hello kroky v hello [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) článku.
-2. Účet pro přihlášení tooyour s hello `login-azurermaccount` příkaz.
+1. Otevřete příkazový řádek prostředí PowerShell a dokončit zbývající kroky v této části v rámci jedné relace prostředí PowerShell. Pokud ještě nemáte prostředí PowerShell nainstalovaný a nakonfigurovaný, proveďte kroky v [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) článku.
+2. Přihlášení k účtu s `login-azurermaccount` příkaz.
 3. Nahraďte *myResourceGroup* a *westus* s názvem a umístění dle vlastního výběru. Vytvořte skupinu prostředků. Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
     ```powershell
@@ -46,7 +46,7 @@ Hello kroky, které následují vysvětlují, jak toocreate příklad virtuáln�
     -Location $Location
     ```
 
-4. Vytvořte virtuální síť (VNet) a podsítě v hello stejné umístění jako skupina prostředků hello:
+4. Vytvořte virtuální síť (VNet) a podsíť ve stejném umístění jako pro skupinu prostředků:
 
     ```powershell
     
@@ -63,11 +63,11 @@ Hello kroky, které následují vysvětlují, jak toocreate příklad virtuáln�
     -AddressPrefix 10.0.0.0/16 `
     -Subnet $subnetConfig
 
-    # Get hello subnet object
+    # Get the subnet object
     $Subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $SubnetConfig.Name -VirtualNetwork $VNet
     ```
 
-5. Vytvořte skupinu zabezpečení sítě (NSG) a pravidla. Hello NSG zabezpečuje hello virtuálních počítačů pomocí příchozí a odchozí pravidla. V tomto případě se vytvoří příchozí pravidlo pro port 3389, které umožní příchozí připojení ke vzdálené ploše.
+5. Vytvořte skupinu zabezpečení sítě (NSG) a pravidla. NSG zabezpečuje virtuálního počítače pomocí příchozí a odchozí pravidla. V tomto případě se vytvoří příchozí pravidlo pro port 3389, které umožní příchozí připojení ke vzdálené ploše.
 
     ```powershell
     
@@ -91,9 +91,9 @@ Hello kroky, které následují vysvětlují, jak toocreate příklad virtuáln�
     -SecurityRules $NSGRule
     ```
 
-6. Definování hello primární konfiguraci IP adresy pro hello síťový adaptér. Změna 10.0.0.4 tooa platná adresa v podsíti hello jste vytvořili, pokud jste nepoužili dříve definovanou hodnotu hello. Před přiřazením statické IP adresy, doporučujeme nejdřív ověřit, zda že se již používá. Zadejte příkaz hello `Test-AzureRmPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`. Pokud není k dispozici hello adresa, výstup hello vrátí *True*. Pokud není k dispozici, výstup hello vrátí *False* a seznam adres, které jsou k dispozici. 
+6. Zadejte primární konfiguraci IP adresy pro síťovou kartu. Pokud jste nepoužili hodnota definovaná dříve, změňte na platnou adresou v podsíti, kterou jste vytvořili, 10.0.0.4. Před přiřazením statické IP adresy, doporučujeme nejdřív ověřit, zda že se již používá. Zadejte příkaz `Test-AzureRmPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`. Pokud je k dispozici na adresu, vrátí výstup *True*. Pokud není k dispozici, vrátí výstup *False* a seznam adres, které jsou k dispozici. 
 
-    V následující příkazy, hello **< nahradit s vaše jedinečné name > nahraďte hello toouse název jedinečný DNS.** Název Hello musí být jedinečný mezi všechny veřejné IP adresy v rámci oblasti Azure. Toto je volitelný parametr. Může být odebrán, pokud chcete pouze tooconnect toohello virtuálních počítačů pomocí hello veřejnou IP adresu.
+    V následujících příkazech **< nahradit s vaše jedinečné name > nahraďte jedinečný název DNS k použití.** Název musí být jedinečný mezi všechny veřejné IP adresy v rámci oblasti Azure. Toto je volitelný parametr. Může být odebrán, pokud se chcete připojit k virtuálnímu počítači pomocí veřejné adresy IP.
 
     ```powershell
     
@@ -105,7 +105,7 @@ Hello kroky, které následují vysvětlují, jak toocreate příklad virtuáln�
     -DomainNameLabel <replace-with-your-unique-name> `
     -AllocationMethod Static
         
-    #Create an IP configuration with a static private IP address and assign hello public IP ddress tooit
+    #Create an IP configuration with a static private IP address and assign the public IP ddress to it
     $IpConfigName1 = "IPConfig-1"
     $IpConfig1     = New-AzureRmNetworkInterfaceIpConfig `
     -Name $IpConfigName1 `
@@ -115,12 +115,12 @@ Hello kroky, které následují vysvětlují, jak toocreate příklad virtuáln�
     -Primary
     ```
 
-    Přiřadíte-li více tooa konfigurace IP síťovou kartu, musí být přiřazena jednu konfiguraci jako hello *-primární*.
+    Když přiřadíte víc konfigurací IP adres síťovou kartu, musí být přiřazena jednu konfiguraci jako *-primární*.
 
     > [!NOTE]
-    > Veřejné IP adresy mají nominální poplatek. více informací o IP adresy, ceny, toolearn číst hello [ceny IP adresu](https://azure.microsoft.com/pricing/details/ip-addresses) stránky. Existuje limit toohello, počet veřejné IP adresy, které lze použít v předplatném. Další informace o omezení hello, přečtěte si hello toolearn [Azure omezuje](../azure-subscription-service-limits.md#networking-limits) článku.
+    > Veřejné IP adresy mají nominální poplatek. Další informace o cenách IP adresu, najdete [IP adresu ceny](https://azure.microsoft.com/pricing/details/ip-addresses) stránky. Maximální počet veřejné IP adresy, které lze použít v předplatném je. Další informace o omezeních najdete v článku o [omezeních Azure](../azure-subscription-service-limits.md#networking-limits).
 
-7. Definovat hello sekundární konfigurace IP pro hello síťový adaptér. Můžete přidávat nebo odebírat konfigurace podle potřeby. Každá konfigurace IP musí mít přiřazené privátní IP adresy. Každá konfigurace můžete volitelně může mít jednu veřejnou IP adresu přiřadit.
+7. Definují sekundární konfigurace IP síťovém adaptéru. Můžete přidávat nebo odebírat konfigurace podle potřeby. Každá konfigurace IP musí mít přiřazené privátní IP adresy. Každá konfigurace můžete volitelně může mít jednu veřejnou IP adresu přiřadit.
 
     ```powershell
     
@@ -131,7 +131,7 @@ Hello kroky, které následují vysvětlují, jak toocreate příklad virtuáln�
     -Location $Location `
     -AllocationMethod Static
         
-    #Create an IP configuration with a static private IP address and assign hello public IP ddress tooit
+    #Create an IP configuration with a static private IP address and assign the public IP ddress to it
     $IpConfigName2 = "IPConfig-2"
     $IpConfig2     = New-AzureRmNetworkInterfaceIpConfig `
     -Name $IpConfigName2 `
@@ -146,7 +146,7 @@ Hello kroky, které následují vysvětlují, jak toocreate příklad virtuáln�
     -PrivateIpAddress 10.0.0.6
     ```
 
-8. Vytvořte hello síťový adaptér a přidružte hello tři IP konfigurace tooit:
+8. Vytvořte na síťový adaptér a přidružte tři konfigurace protokolu IP k němu:
 
     ```powershell
     
@@ -159,13 +159,13 @@ Hello kroky, které následují vysvětlují, jak toocreate příklad virtuáln�
     ```
 
     >[!NOTE]
-    >I když všechny konfigurace přiřazené tooone síťový adaptér v tomto článku, můžete přiřadit více IP konfigurace tooevery síťovou kartu připojenou toohello virtuálních počítačů. jak toocreate virtuálního počítače s více síťovými kartami, číst toolearn hello [vytvoření virtuálního počítače s více síťovými kartami](virtual-network-deploy-multinic-arm-ps.md) článku.
+    >Když na jeden síťový adaptér v tomto článku jsou přiřazeny všechny konfigurace, můžete přiřadit víc konfigurací IP adres pro každou síťovou kartu připojenou k virtuálnímu počítači. Naučte se vytvořit virtuální počítač s více síťovými kartami, přečtěte si téma [vytvoření virtuálního počítače s více síťovými kartami](virtual-network-deploy-multinic-arm-ps.md) článku.
 
-9. Vytvořte hello virtuálních počítačů zadáním hello následující příkazy:
+9. Vytvoření virtuálního počítače tak, že zadáte následující příkazy:
 
     ```powershell
     
-    # Define a credential object. When you run these commands, you're prompted tooenter a sername and password for hello VM you're reating.
+    # Define a credential object. When you run these commands, you're prompted to enter a sername and password for the VM you're reating.
     $cred = Get-Credential
     
     # Create a virtual machine configuration
@@ -183,21 +183,21 @@ Hello kroky, které následují vysvětlují, jak toocreate příklad virtuáln�
     Add-AzureRmVMNetworkInterface `
     -Id $NIC.Id
     
-    # Create hello VM
+    # Create the VM
     New-AzureRmVM `
     -ResourceGroupName $RgName `
     -Location $Location `
     -VM $VmConfig
     ```
 
-10. Přidat hello privátní IP adresy toohello virtuálních počítačů operačního systému pomocí kroků hello operačního systému v hello [přidání IP adres pro operační systém virtuálního počítače tooa](#os-config) tohoto článku. Nepřidávejte hello veřejné IP adresy toohello operačního systému.
+10. Přidání privátních IP adres do operačního systému virtuálního počítače pomocí kroků pro operační systém v [přidat IP adresy na operační systém virtuálního počítače](#os-config) tohoto článku. Nepřidávejte veřejné IP adresy v operačním systému.
 
-## <a name="add"></a>Přidat tooa IP adresy virtuálních počítačů
+## <a name="add"></a>Přidání IP adres pro virtuální počítač
 
-Privátní a veřejné IP adresy tooa síťovou kartu můžete přidat pomocí hello kroků, které následují. Hello příklady v následující části hello předpokládají, že už máte virtuální počítač s konfigurací protokolu IP hello tři popsané v hello [scénář](#Scenario) v tomto článku, ale není to nutné, abyste provedli.
+Provedením následujících kroků můžete přidat privátní a veřejné IP adresy pro síťový adaptér. Příklady v následujících částech předpokládají, že už máte virtuální počítač s tři konfigurace protokolu IP, které jsou popsané v [scénář](#Scenario) v tomto článku, ale není to nutné, abyste provedli.
 
-1. Otevřete příkazový řádek prostředí PowerShell a dokončení hello zbývající kroky v této části v rámci jedné relace prostředí PowerShell. Pokud ještě nemáte prostředí PowerShell nainstalovaný a nakonfigurovaný, dokončení hello kroky v hello [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) článku.
-2. Změna hello "hodnoty" hello následující název toohello $Variables hello chcete tooadd IP adresu tooand hello prostředků skupiny a umístění hello síťový adaptér existuje v síťovou kartu:
+1. Otevřete příkazový řádek prostředí PowerShell a dokončit zbývající kroky v této části v rámci jedné relace prostředí PowerShell. Pokud ještě nemáte prostředí PowerShell nainstalovaný a nakonfigurovaný, proveďte kroky v [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) článku.
+2. Změňte název síťového adaptéru, který chcete přidat IP adresu a skupinu prostředků a umístění, které síťový adaptér existuje v "hodnoty" $Variables následující:
 
     ```powershell
     $NicName  = "MyNIC"
@@ -205,38 +205,38 @@ Privátní a veřejné IP adresy tooa síťovou kartu můžete přidat pomocí h
     $Location = "westus"
     ```
 
-    Pokud neznáte název hello hello chcete toochange síťovou kartu, zadejte následující příkazy hello, pak změňte hodnoty hello předchozích proměnných hello:
+    Pokud neznáte název síťového adaptéru, který chcete změnit, zadejte následující příkazy, pak změňte hodnoty proměnných předchozí:
 
     ```powershell
     Get-AzureRmNetworkInterface | Format-Table Name, ResourceGroupName, Location
     ```
-3. Vytvoření proměnné a nastavte ji toohello stávající síťovou kartu zadáním hello následující příkaz:
+3. Vytvoření proměnné a nastavte ji na stávající síťové karty tak, že zadáte následující příkaz:
 
     ```powershell
     $MyNIC = Get-AzureRmNetworkInterface -Name $NicName -ResourceGroupName $RgName
     ```
-4. Hello následující příkazy, změňte *MyVNet* a *MySubnet* toohello názvy virtuálních sítí a podsítí hello hello síťový adaptér je připojen k. Zadejte hello příkazy tooretrieve hello virtuálních sítí a podsítí objekty hello síťový adaptér je připojen k:
+4. V následujících příkazech změnit *MyVNet* a *MySubnet* na názvy virtuálních sítí a podsítí, které jsou na síťový adaptér je připojen k. Zadejte příkazy pro načtení objektů virtuálních sítí a podsítí, které síťový adaptér je připojen k:
 
     ```powershell
     $MyVNet = Get-AzureRMVirtualnetwork -Name MyVNet -ResourceGroupName $RgName
     $Subnet = $MyVnet.Subnets | Where-Object { $_.Name -eq "MySubnet" }
     ```
-    Pokud si nejste jisti hello virtuální síť nebo podsíť název hello síťový adaptér je připojen k, zadejte následující příkaz hello:
+    Pokud neznáte název virtuální síť nebo podsíť, které síťový adaptér je připojen k, zadejte následující příkaz:
     ```powershell
     $MyNIC.IpConfigurations
     ```
-    Ve výstupu hello hledejte text podobné toohello následující příklad výstupu:
+    Ve výstupu vyhledejte text podobné výstupu v následujícím příkladu:
     
     ```
     "Id": "/subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/MyVNet/subnets/MySubnet"
     ```
-    V tento výstup *MyVnet* je hello virtuální sítě a *MySubnet* je hello podsíť hello síťový adaptér je připojen k.
+    V tento výstup *MyVnet* je síť VNet a *MySubnet* je síťový adaptér je připojený k podsíti.
 
-5. Proveďte kroky hello v jednom z hello následující části, podle požadavků:
+5. Proveďte kroky v jednom z těchto částí, podle potřeb:
 
     **Přidejte privátní IP adresy**
 
-    tooadd tooa privátní adresy IP síťový adaptér, je nutné vytvořit konfiguraci IP adres. Hello následující příkaz vytvoří konfiguraci se statickou IP adresu 10.0.0.7. Při zadávání statickou IP adresu, musí být adresu nepoužívané hello podsítě. Doporučuje se nejdřív otestovat tooensure adresu hello je k dispozici zadáním hello `Test-AzureRmPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` příkaz. Pokud není k dispozici hello IP adresa, výstup hello vrátí *True*. Pokud není k dispozici, výstup hello vrátí *False*a seznam adres, které jsou k dispozici.
+    Chcete-li přidat privátní IP adresy pro síťový adaptér, je nutné vytvořit konfiguraci IP adres. Následující příkaz vytvoří konfiguraci se statickou IP adresou 10.0.0.7. Při zadávání statickou IP adresu, musí být nepoužívané adresu podsítě. Doporučuje se nejdřív otestovat adresu, zda je k dispozici zadáním `Test-AzureRmPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` příkaz. Pokud IP adresa je k dispozici, vrátí výstup *True*. Pokud není k dispozici, vrátí výstup *False*a seznam adres, které jsou k dispozici.
 
     ```powershell
     Add-AzureRmNetworkInterfaceIpConfig -Name IPConfig-4 -NetworkInterface `
@@ -244,19 +244,19 @@ Privátní a veřejné IP adresy tooa síťovou kartu můžete přidat pomocí h
     ```
     Vytvořte tolik konfigurace, jak požadujete, pomocí konfigurace jedinečné názvy a privátní IP adresy (pro konfigurace s statické IP adresy).
 
-    Přidat hello privátní IP adresu toohello virtuálních počítačů operačního systému pomocí kroků hello operačního systému v hello [přidání IP adres pro operační systém virtuálního počítače tooa](#os-config) tohoto článku.
+    Přidání privátní IP adresu do operačního systému virtuálního počítače pomocí kroků pro operační systém v [přidat IP adresy na operační systém virtuálního počítače](#os-config) tohoto článku.
 
     **Přidejte veřejnou IP adresu**
 
-    Veřejná IP adresa se přidá spojením veřejnou IP adresu prostředku tooeither na novou konfiguraci protokolu IP nebo existující konfiguraci IP adres. Kroky hello v jedné z hello částí, které následují, potřebujete.
+    Veřejná IP adresa se přidá tím, že přidružíte prostředek veřejné IP adresy na novou konfiguraci protokolu IP nebo existující konfiguraci IP adres. Proveďte kroky v jednom z následujících, potřebujete.
 
     > [!NOTE]
-    > Veřejné IP adresy mají nominální poplatek. více informací o IP adresy, ceny, toolearn číst hello [ceny IP adresu](https://azure.microsoft.com/pricing/details/ip-addresses) stránky. Existuje limit toohello, počet veřejné IP adresy, které lze použít v předplatném. Další informace o omezení hello, přečtěte si hello toolearn [Azure omezuje](../azure-subscription-service-limits.md#networking-limits) článku.
+    > Veřejné IP adresy mají nominální poplatek. Další informace o cenách IP adresu, najdete [IP adresu ceny](https://azure.microsoft.com/pricing/details/ip-addresses) stránky. Maximální počet veřejné IP adresy, které lze použít v předplatném je. Další informace o omezeních najdete v článku o [omezeních Azure](../azure-subscription-service-limits.md#networking-limits).
     >
 
-    - **Přidružení hello veřejné IP adresy prostředků tooa nová konfigurace IP**
+    - **Přidružte prostředek veřejné IP adresy na novou konfiguraci protokolu IP**
     
-        Vždy, když přidáte veřejnou IP adresu v novou konfiguraci protokolu IP, musíte taky přidat privátní IP adresy, protože všechny konfigurace protokolu IP, musí mít privátní IP adresy. Můžete přidat existující prostředek veřejné IP adresy, nebo vytvořte novou. toocreate novou, zadejte následující příkaz hello:
+        Vždy, když přidáte veřejnou IP adresu v novou konfiguraci protokolu IP, musíte taky přidat privátní IP adresy, protože všechny konfigurace protokolu IP, musí mít privátní IP adresy. Můžete přidat existující prostředek veřejné IP adresy, nebo vytvořte novou. Pokud chcete vytvořit nový, zadejte následující příkaz:
     
         ```powershell
         $myPublicIp3 = New-AzureRmPublicIpAddress `
@@ -266,7 +266,7 @@ Privátní a veřejné IP adresy tooa síťovou kartu můžete přidat pomocí h
         -AllocationMethod Static
         ```
 
-        toocreate na novou konfiguraci protokolu IP se statickou privátní IP adresou a hello přidružené *myPublicIp3* veřejných IP adres prostředků, zadejte následující příkaz hello:
+        Chcete-li vytvořit novou konfiguraci protokolu IP se statickou privátní IP adresou a přidruženého *myPublicIp3* veřejných IP adres prostředků, zadejte následující příkaz:
 
         ```powershell
         Add-AzureRmNetworkInterfaceIpConfig `
@@ -277,15 +277,15 @@ Privátní a veřejné IP adresy tooa síťovou kartu můžete přidat pomocí h
         -PublicIpAddress $myPublicIp3
         ```
 
-    - **Přidružení hello veřejné konfiguraci IP adresy prostředků tooan stávající IP**
+    - **Přidružte prostředek veřejné IP adresy na existující konfiguraci IP adres**
 
-        Prostředek veřejné IP adresy lze pouze přidružené tooan konfigurace protokolu IP, který ho přidružené neobsahuje. Můžete určit, zda konfiguraci IP adres má přidružené veřejnou IP adresu zadáním hello následující příkaz:
+        Prostředek veřejné IP adresy lze přidružit pouze pro konfiguraci IP adres, který ho přidružené neobsahuje. Můžete určit, zda má konfiguraci IP adres přidružené veřejnou IP adresu tak, že zadáte následující příkaz:
 
         ```powershell
         $MyNIC.IpConfigurations | Format-Table Name, PrivateIPAddress, PublicIPAddress, Primary
         ```
 
-        Zobrazí výstup podobný toohello následující:
+        Zobrazí výstup podobný následujícímu:
 
         ```     
         Name       PrivateIpAddress PublicIpAddress                                           Primary
@@ -295,7 +295,7 @@ Privátní a veřejné IP adresy tooa síťovou kartu můžete přidat pomocí h
         IpConfig-3 10.0.0.6                                                                     False
         ```
 
-        Od hello **PublicIpAddress** sloupec pro *IpConfig 3* je prázdné, žádný prostředek veřejné IP adresy je aktuálně přidružené tooit. Můžete přidat existující veřejnou IP adresu prostředku tooIpConfig-3, nebo zadejte následující příkaz toocreate jeden hello:
+        Vzhledem k tomu **PublicIpAddress** sloupec pro *IpConfig 3* je prázdné, žádný prostředek veřejné IP adresy je aktuálně k ní přidružena. Můžete přidat existující prostředek veřejné IP adresy na IpConfig 3, nebo zadejte následující příkaz k jeho vytvoření:
 
         ```powershell
         $MyPublicIp3 = New-AzureRmPublicIpAddress `
@@ -304,7 +304,7 @@ Privátní a veřejné IP adresy tooa síťovou kartu můžete přidat pomocí h
         -Location $Location -AllocationMethod Static
         ```
 
-        Zadejte následující příkaz tooassociate hello veřejných IP adres toohello stávající IP konfigurace prostředků s názvem hello *IpConfig 3*:
+        Zadejte následující příkaz pro přidružení prostředek veřejné IP adresy ke stávající konfiguraci IP adresy s názvem *IpConfig 3*:
     
         ```powershell
         Set-AzureRmNetworkInterfaceIpConfig `
@@ -314,17 +314,17 @@ Privátní a veřejné IP adresy tooa síťovou kartu můžete přidat pomocí h
         -PublicIpAddress $myPublicIp3
         ```
 
-6. Nastavte hello síťový adaptér s novou konfigurací IP adresy hello zadáním hello následující příkaz:
+6. Síťový adaptér s novou konfigurací IP adresy nastavte tak, že zadáte následující příkaz:
 
     ```powershell
     Set-AzureRmNetworkInterface -NetworkInterface $MyNIC
     ```
 
-7. Zobrazení hello privátních IP adres a hello veřejnou IP adresu prostředky přiřazené toohello hello síťový adaptér tak, že zadáte následující příkaz:
+7. Zobrazení privátních IP adres a prostředky veřejné adresy IP adresy přiřazené na síťový adaptér tak, že zadáte následující příkaz:
 
     ```powershell   
     $MyNIC.IpConfigurations | Format-Table Name, PrivateIPAddress, PublicIPAddress, Primary
     ```
-8. Přidat hello privátní IP adresu toohello virtuálních počítačů operačního systému pomocí kroků hello operačního systému v hello [přidání IP adres pro operační systém virtuálního počítače tooa](#os-config) tohoto článku. Nepřidávejte hello veřejnou IP adresu toohello operačního systému.
+8. Přidání privátní IP adresu do operačního systému virtuálního počítače pomocí kroků pro operační systém v [přidat IP adresy na operační systém virtuálního počítače](#os-config) tohoto článku. Nepřidávejte veřejnou IP adresu do operačního systému.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]

@@ -1,6 +1,6 @@
 ---
-title: "aaaManage výpočetní výkon v Azure SQL Data Warehouse (přehled) | Microsoft Docs"
-description: "Výkon škálování možnosti v Azure SQL Data Warehouse. Horizontální navýšení kapacity úpravou Dwu nebo pozastavení a obnovení toosave náklady na výpočetní prostředky."
+title: "Spravovat výpočetní výkon v Azure SQL Data Warehouse (přehled) | Microsoft Docs"
+description: "Výkon škálování možnosti v Azure SQL Data Warehouse. Horizontální navýšení kapacity úpravou Dwu nebo pozastavení a obnovení výpočetní prostředky, abyste ušetřili náklady."
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 03/22/2017
 ms.author: elbutter
-ms.openlocfilehash: 1ffbe8d694ac181eaeb6f585a2cee87a570ed7d5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: abe22f542a79714f6e894870872ee6b76ffe7633
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-overview"></a>Spravovat výpočetní výkon v Azure SQL Data Warehouse (přehled)
 > [!div class="op_single_selector"]
@@ -31,16 +31,16 @@ ms.lasthandoff: 10/06/2017
 >
 >
 
-Architektura Hello služby SQL Data Warehouse odděluje úložiště a výpočty, povolení jednotlivých tooscale nezávisle. Výpočetní v důsledku toho může být nezávislá hello množství dat, požadavky na výkon škálovat toomeet. Přirozený důsledek této architektury je, že [fakturace] [ billed] pro výpočetní prostředí a úložiště jsou oddělené. 
+Architektura služby SQL Data Warehouse odděluje úložiště a výpočty, což nezávislé škálování. V důsledku toho je možné rozšířit výpočetní splňovat požadavky na výkon nezávislé na množství dat. Přirozený důsledek této architektury je, že [fakturace] [ billed] pro výpočetní prostředí a úložiště jsou oddělené. 
 
-Tento přehled popisuje jak škálovat funguje s SQL Data Warehouse a jak tooutilize hello pozastavení, opětovné spuštění a možnosti škálování služby SQL Data Warehouse. Poraďte se hello [datového skladu (Dwu) jednotky] [ data warehouse units (DWUs)] jak Dwu a výkonu související s toolearn stránky. 
+Tento přehled popisuje jak škálovat funguje s SQL Data Warehouse a jak využívat pozastavení, obnovení a škálování možnosti služby SQL Data Warehouse. Obrátit [datového skladu (Dwu) jednotky] [ data warehouse units (DWUs)] stránky se dozvíte, jak se vztahují Dwu a výkonu. 
 
 ## <a name="how-compute-management-operations-work-in-sql-data-warehouse"></a>Jak výpočetní operace správy pracovat v SQL Data Warehouse
-Architektura Hello pro SQL Data Warehouse se skládá z řídicí uzel, výpočetní uzly a vrstvy úložiště hello rozloženy 60 distribuce. 
+Architektura pro SQL Data Warehouse se skládá z řídicí uzel, výpočetní uzly a vrstvy úložiště rozloženy 60 distribuce. 
 
-Během normálního aktivní relace v SQL Data Warehouse váš systém hlavního uzlu spravuje hello metadata a obsahuje hello distribuované Optimalizátor dotazů. Pod tímto uzlem head jsou výpočetní uzly a vrstvě úložiště. Pro 400 DWU má váš systém jeden hlavní uzel, čtyři výpočetní uzly a vrstvy úložiště hello, který se skládá z 60 distribuce. 
+Během normálního aktivní relace v SQL Data Warehouse váš systém hlavního uzlu spravuje metadata a obsahuje Optimalizátor distribuovaných dotazů. Pod tímto uzlem head jsou výpočetní uzly a vrstvě úložiště. Pro 400 DWU má váš systém jeden hlavní uzel, čtyři výpočetní uzly a vrstvy úložiště, který se skládá z 60 distribuce. 
 
-Když podstoupit škálování nebo pozastavit operace, systém hello nejprve ukončí všechny příchozí dotazy a vrátí zpět transakce tooensure konzistentním stavu. Pro operace škálování škálování dojde pouze po dokončení této transakční vrácení zpět. U operace škálování hello systému zřizuje hello velmi požadovaný počet výpočetních uzlů a poté zahájí opětovné hello výpočetní uzly toohello úložiště vrstvy. Pro operaci vertikální snížení kapacity hello nepotřebné uzly jsou vydávány a hello zbývající výpočetní uzly připojte, sami toohello odpovídající počet distribuce. Operace pozastavení všechny výpočetní uzly jsou vydávány a váš systém určitým celou řadu metadata operations tooleave konečné systém stabilní.
+Když podstoupit škálování nebo pozastavit operace, systém nejprve ukončí všechny příchozí dotazy a vrátí zpět transakce zajistit konzistentní stav. Pro operace škálování škálování dojde pouze po dokončení této transakční vrácení zpět. U operace škálování zřizuje systému nadbytečné potřeby počet výpočetních uzlů a poté zahájí opětovné výpočetní uzly do vrstvy úložiště. Pro vertikální snížení kapacity operaci jsou vydávány nepotřebné uzly a zbývající výpočetní uzly sami připojte k odpovídající počet distribuce. Operace pozastavení všechny výpočetní uzly jsou vydávány a systém se má provést různých operací s metadaty ponechat vaší poslední systém stabilní.
 
 | DWU  | \#výpočetních uzlů | \#distribucí na uzel |
 | ---- | ------------------ | ---------------------------- |
@@ -57,15 +57,15 @@ Když podstoupit škálování nebo pozastavit operace, systém hello nejprve uk
 | 3000 | 30                 | 2                            |
 | 6000 | 60                 | 1                            |
 
-jsou tři primární funkce pro správu výpočetních Hello:
+Tři primární funkce pro správu výpočetních jsou:
 
 1. Pozastavení
 2. Obnovit
 3. Měřítko
 
-Všechny tyto operace může trvat několik minut toocomplete. Pokud jste škálování nebo pozastavení nebo obnovení automaticky, můžete tooimplement logiku tooensure určitá operace byly dokončeny před pokračováním další akci. 
+Všechny tyto operace může trvat několik minut na dokončení. Pokud si nejste škálování nebo pozastavení nebo obnovení automaticky, můžete implementovat logiku zajistit, že některé operace dokončeny před pokračováním další akci. 
 
-Kontroluje se stav databáze hello prostřednictvím různých koncových bodů vám umožní toocorrectly implementace automatizace těchto operací. portál Hello bude poskytovat oznámení po dokončení operaci a hello databáze aktuální stav, ale neumožňuje programový kontroly stavu. 
+Kontroluje se stav databáze prostřednictvím různých koncových bodů vám umožní správně implementovat automatizace těchto operací. Na portálu oznámení po dokončení operace a databáze bude poskytovat, aktuální stav, ale neumožňuje programový kontroly stavu. 
 
 >  [!NOTE]
 >
@@ -86,12 +86,12 @@ Kontroluje se stav databáze hello prostřednictvím různých koncových bodů 
 
 ## <a name="scale-compute"></a>Škálování výpočetní kapacity
 
-Výkon v SQL Data Warehouse se měří v [datového skladu (Dwu) jednotky] [ data warehouse units (DWUs)] tedy abstraktní měr výpočetní prostředky, jako je například procesoru, paměti a vstupně-výstupní šířky pásma. Uživatel, který si přeje tooscale výkon jejich systému lze provést různé způsoby, například prostřednictvím portálu hello T-SQL a rozhraní REST API. 
+Výkon v SQL Data Warehouse se měří v [datového skladu (Dwu) jednotky] [ data warehouse units (DWUs)] tedy abstraktní měr výpočetní prostředky, jako je například procesoru, paměti a vstupně-výstupní šířky pásma. Uživatel, který chce škálovat výkon jejich systému lze provést různé způsoby, například prostřednictvím portálu, T-SQL a rozhraní REST API. 
 
 ### <a name="how-do-i-scale-compute"></a>Jak škálovat výpočetní?
-Výpočetní výkon spravovaná SQL Data Warehouse změnou nastavení DWU hello. Zvýšení výkonu [lineárně] [ linearly] jako přidáte další DWU pro určité operace.  Nabízíme DWU nabídky, které zajišťují, že výkon změní výrazně když je systém škálovat nahoru nebo dolů. 
+Výpočetní power spravovaná SQL Data Warehouse změnou nastavení DWU. Zvýšení výkonu [lineárně] [ linearly] jako přidáte další DWU pro určité operace.  Nabízíme DWU nabídky, které zajišťují, že výkon změní výrazně když je systém škálovat nahoru nebo dolů. 
 
-tooadjust Dwu, můžete použít některou z těchto jednotlivých metod.
+Chcete-li upravit Dwu, můžete použít některou z těchto jednotlivých metod.
 
 * [Škálování výpočetního výkonu pomocí portálu Azure][Scale compute power with Azure portal]
 * [Škálování výpočetního výkonu pomocí prostředí PowerShell][Scale compute power with PowerShell]
@@ -100,41 +100,41 @@ tooadjust Dwu, můžete použít některou z těchto jednotlivých metod.
 
 ### <a name="how-many-dwus-should-i-use"></a>Kolik Dwu mám použít?
 
-toounderstand jaké ideální hodnota DWU je, zkuste škálování nahoru a dolů a spustit pár dotazů po načtení dat. Škálování je rychlé, můžete zkusit různé úrovně výkonu za hodinu nebo méně. 
+Když chcete spolehlivě zjistit, jaká hodnota DWU je pro vás optimální, zkuste po načtení dat vertikálně navýšit a snížit kapacitu a spustit pár dotazů. Škálování je rychlé, můžete zkusit různé úrovně výkonu za hodinu nebo méně. 
 
 > [!Note] 
-> Datový sklad SQL je navrženou tooprocess velkých objemů dat. toosee možnosti true pro škálování, zejména u větší Dwu, chcete toouse velké datové sady, který se blíží nebo je vyšší než 1 TB.
+> SQL Data Warehouse je navržen pro zpracování velkých objemů dat. Zobrazíte možnosti true pro škálování, zejména u větší Dwu, budete chtít použít velké datové sady, který se blíží nebo je vyšší než 1 TB.
 
-Doporučení pro vyhledání hello nejlepší DWU pro úlohy:
+Doporučení pro hledání nejlepší DWU pro úlohy:
 
 1. Pro datový sklad v vývoj Začněte výběrem menší úroveň výkonu DWU.  Vhodná výchozí hodnota je DW400 nebo DW200.
-2. Monitorovat výkon aplikací, sledování hello počet Dwu vybrané porovnání výkonu toohello zjistíte.
-3. Určují, jak daleko vyšší nebo nižší výkon by mělo být pro jste tooreach hello optimální úroveň výkonu pro vaše požadavky podle za předpokladu, že lineární stupnice.
-4. Zvýšení nebo snížení počtu hello Dwu v poměru toohow mnohem vyšší nebo nižší, na které má vaše tooperform zatížení. 
+2. Monitorujte výkon aplikací, sledování počet Dwu vybrané ve srovnání s, které můžete sledovat výkon.
+3. Určete, jak daleko vyšší nebo nižší výkon by měla být pro vás k dosažení optimálního výkonu úrovně pro vaše požadavky pomocí za předpokladu, že lineární stupnice.
+4. Zvyšte nebo snižte počet Dwu v poměru k jak mnohem rychlejší nebo něco pomalejší chcete úlohu provést. 
 5. Pokračujte v provádění úprav, dokud se nedostanete na úroveň optimálního výkonu pro vaše podnikové požadavky.
 
 > [!NOTE]
 >
-> Výkon dotazů pouze hodnota se zvyšuje s další paralelizace Pokud hello pracovní můžete rozdělit mezi výpočetní uzly. Pokud zjistíte, že škálování není změna výkon, podrobnosti naleznete v našem ladění toocheck články, zda je vaše data nerovnoměrně distribuované nebo pokud jsou představení velké množství přesun dat výkonu. 
+> Výkon dotazů pouze hodnota se zvyšuje s další paralelizace Pokud práci můžete rozdělit mezi výpočetní uzly. Pokud zjistíte, že škálování není změna výkon, podrobnosti naleznete v našem ladění články zkontrolujte, zda je vaše data nerovnoměrně distribuované nebo pokud jsou představení velké množství přesun dat výkonu. 
 
 ### <a name="when-should-i-scale-dwus"></a>Pokud by měl škálování Dwu?
-Škálování Dwu mění hello následující důležité scénáře:
+Škálování Dwu mění důležité následující scénáře:
 
-1. Změna lineárně výkon systému hello kontrol, agregace a funkce CTAS příkazy
-2. Při načítání pomocí funkce PolyBase zvýšit počet hello čtení a zápis
+1. Změna lineárně výkon systému pro prohledávání, agregace a funkce CTAS příkazy
+2. Při načítání pomocí funkce PolyBase zvýšit počet čtení a zápis
 3. Maximální počet souběžných dotazů a sloty souběžnosti
 
-Doporučení pro případ tooscale Dwu:
+Doporučení pro kdy škálovat Dwu:
 
 1. Před provedením operace načítání nebo transformace dat těžká, škálovat Dwu tak, aby vaše data jsou k dispozici rychleji.
-2. Během pracovní dobu ve špičce škálovat tooaccommodate velký počet souběžných dotazů. 
+2. Během pracovní dobu ve špičce škálovat, aby dokázala pojmout větší počty souběžných dotazů. 
 
 <a name="pause-compute-bk"></a>
 
 ## <a name="pause-compute"></a>Pozastavit výpočetní
 [!INCLUDE [SQL Data Warehouse pause description](../../includes/sql-data-warehouse-pause-description.md)]
 
-toopause databázi, použijte některou z těchto jednotlivých metod.
+Pokud chcete pozastavit databázi, použijte některou z těchto jednotlivých metod.
 
 * [Pozastavit výpočetní pomocí portálu Azure][Pause compute with Azure portal]
 * [Pozastavit výpočetní pomocí prostředí PowerShell][Pause compute with PowerShell]
@@ -145,7 +145,7 @@ toopause databázi, použijte některou z těchto jednotlivých metod.
 ## <a name="resume-compute"></a>Obnovit výpočetní
 [!INCLUDE [SQL Data Warehouse resume description](../../includes/sql-data-warehouse-resume-description.md)]
 
-tooresume databázi, použijte některou z těchto jednotlivých metod.
+Chcete-li obnovit databázi, použijte některou z těchto jednotlivých metod.
 
 * [Výpočetní obnovit pomocí portálu Azure][Resume compute with Azure portal]
 * [Výpočetní obnovení pomocí prostředí PowerShell][Resume compute with PowerShell]
@@ -155,7 +155,7 @@ tooresume databázi, použijte některou z těchto jednotlivých metod.
 
 ## <a name="check-database-state"></a>Zkontrolujte stav databáze 
 
-tooresume databázi, použijte některou z těchto jednotlivých metod.
+Chcete-li obnovit databázi, použijte některou z těchto jednotlivých metod.
 
 - [Zkontrolujte stav databáze s T-SQL][Check database state with T-SQL]
 - [Zkontrolujte stav databáze pomocí prostředí PowerShell][Check database state with PowerShell]
@@ -163,12 +163,12 @@ tooresume databázi, použijte některou z těchto jednotlivých metod.
 
 ## <a name="permissions"></a>Oprávnění
 
-Škálování hello databáze vyžaduje hello oprávnění popsaná v [ALTER DATABASE][ALTER DATABASE].  Pozastavení a obnovení vyžadují hello [Přispěvatel databází SQL] [ SQL DB Contributor] oprávnění, konkrétně Microsoft.Sql/servers/databases/action.
+Škálování databáze vyžaduje oprávnění popsaná v [ALTER DATABASE][ALTER DATABASE].  Pozastavení a obnovení vyžadují [Přispěvatel databází SQL] [ SQL DB Contributor] oprávnění, konkrétně Microsoft.Sql/servers/databases/action.
 
 <a name="next-steps-bk"></a>
 
 ## <a name="next-steps"></a>Další kroky
-Odkažte toohello následující články toohelp základními pojmy některé další klíče výkonu:
+Najdete v následujících článcích, které vám pomohou pochopit některé pojmy další klíče výkonu:
 
 * [Správa úloh a souběžnost][Workload and concurrency management]
 * [Přehled návrhu tabulky][Table design overview]

@@ -1,6 +1,6 @@
 ---
-title: "aaaManage streamování koncové body pomocí sady .NET SDK. | Dokumentace Microsoftu"
-description: "Toto téma ukazuje, jak hello koncových bodů streamování toomanage pomocí portálu Azure."
+title: "Správa koncových bodů streamování pomocí .NET SDK. | Dokumentace Microsoftu"
+description: "Toto téma ukazuje, jak spravovat koncových bodů streamování pomocí portálu Azure."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -15,45 +15,45 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
-ms.openlocfilehash: 30c092a8ebf4e2b2902392f4cf98f46d812ccdbc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2f4f464f8604b6f453d6b50b736c6a3a889a3408
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="manage-streaming-endpoints-with-net-sdk"></a>Správa koncových bodů streamování pomocí .NET SDK
 
 >[!NOTE]
->Ujistěte se, zda text hello tooreview [přehled](media-services-streaming-endpoints-overview.md) tématu. Projděte si také téma [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
+>Projděte si [přehled](media-services-streaming-endpoints-overview.md) tématu. Projděte si také téma [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
 
-Hello kód v tomto tématu ukazuje, jak hello toodo hello následující úlohy pomocí Azure Media Services .NET SDK:
+Kód v tomto tématu ukazuje, jak provést tyto úlohy pomocí Azure Media Services .NET SDK:
 
-- Zkontrolujte hello výchozího koncového bodu streamování.
+- Zkontrolujte výchozí koncový bod streamování.
 - Vytvořit nebo přidáte nový koncový bod streamování.
 
-    Můžete chtít toohave více koncových bodů streamování Pokud máte v plánu toohave různých sítím CDN nebo CDN a přímý přístup.
+    Můžete chtít mít několik koncových bodů streamování, pokud chcete mít jiný sítím CDN nebo CDN a přímý přístup.
 
     > [!NOTE]
     > Fakturuje se jenom, když je v běžícím stavu je koncový bod streamování.
     
-- Aktualizujte hello koncový bod streamování.
+- Aktualizujte koncový bod streamování.
     
-    Ujistěte se, zda text hello toocall Update() funkce.
+    Ujistěte se, že volání funkce Update().
 
-- Odstraňte koncový bod streamování hello.
+- Odstraňte koncový bod streamování.
 
     >[!NOTE]
-    >nelze odstranit, Hello výchozího koncového bodu streamování.
+    >Nelze odstranit výchozí koncový bod streamování.
 
-Informace o tom, jak tooscale hello koncový bod streamování najdete v tématu [to](media-services-portal-scale-streaming-endpoints.md) tématu.
+Informace o tom, jak škálování koncový bod streamování najdete v tématu [to](media-services-portal-scale-streaming-endpoints.md) tématu.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
-Nastavení vývojového prostředí a naplnění souboru app.config hello s informace o připojení, jak je popsáno v [vývoj pro Media Services s .NET](media-services-dotnet-how-to-use.md). 
+Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
 
 ## <a name="add-code-that-manages-streaming-endpoints"></a>Přidejte kód, který spravuje koncových bodů streamování
     
-Nahraďte kód hello v hello Program.cs hello následující kód:
+Nahraďte kód souboru Program.cs následujícím kódem:
 
     using System;
     using System.Configuration;
@@ -65,7 +65,7 @@ Nahraďte kód hello v hello Program.cs hello následující kód:
     {
         class Program
         {
-        // Read values from hello App.config file.
+        // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
         ConfigurationManager.AppSettings["AADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =

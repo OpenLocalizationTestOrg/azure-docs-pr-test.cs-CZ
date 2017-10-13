@@ -1,6 +1,6 @@
 ---
-title: "aaaPublish aplikací pomocí proxy aplikace služby Azure AD | Microsoft Docs"
-description: "Na portálu classic hello publikujte místní aplikace toohello cloudu s Azure AD Application Proxy."
+title: "Publikování aplikací pomocí proxy aplikace služby Azure AD | Dokumentace Microsoftu"
+description: "Publikujte místní aplikace v cloudu pomocí proxy aplikací služby Azure AD v klasickém portálu."
 services: active-directory
 documentationcenter: 
 author: kgremban
@@ -15,11 +15,11 @@ ms.date: 07/14/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro; oldportal
-ms.openlocfilehash: 7926998314c65521ae48aebcceb33cb0c67e0b87
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 96490c0d060fe5486a7235a5aa76380c8d9b5d4f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>Publikování aplikací pomocí proxy aplikace služby Azure AD
 
@@ -27,72 +27,72 @@ ms.lasthandoff: 10/06/2017
 > * [Azure Portal](application-proxy-publish-azure-portal.md)
 > * [Portál Azure Classic](active-directory-application-proxy-publish.md)
 
-Proxy aplikace služby Azure AD umožňuje podporu zaměstnanci na vzdálených pracovištích tím, že publikujete místní aplikace toobe přístupné přes hello Internetu. Pomocí tohoto bodu, byste již měli mít [povolit Proxy aplikace v portálu Azure classic hello](active-directory-application-proxy-enable.md). Tento článek vás provede hello kroky toopublish aplikace, které jsou spuštěny v místní síti a poskytnout zabezpečený vzdálený přístup z mimo vaši síť. Po dokončení tohoto článku, budete aplikace hello připravené tooconfigure s přizpůsobené informace nebo požadavky na zabezpečení.
+Proxy aplikace služby Azure AD umožňuje podporu vzdálených pracovních procesů publikováním místních aplikací, aby byly přístupné přes internet. V tomto bodě byste už měli mít [povolenou proxy aplikaci v portálu Azure Classic](active-directory-application-proxy-enable.md). Tento článek vám ukáže postup, jak publikovat aplikace, které běží v místní síti, a jak poskytnout zabezpečený vzdálený přístup mimo síť. Po dokončení tohoto článku budete připravení ke konfiguraci aplikace pomocí individuálních informací nebo požadavků na zabezpečení.
 
 > [!NOTE]
-> Proxy aplikace je funkce, která je k dispozici pouze v případě, že jste upgradovali toohello Premium nebo Basic edice služby Azure Active Directory. Další informace najdete v článku [Edice služby Azure Active Directory](active-directory-editions.md). Pokud chcete, aby toouse Proxy aplikace, můžete [publikování aplikací v hello portál Azure](application-proxy-publish-azure-portal.md).
+> Proxy aplikace je funkce, která je dostupná jenom v případě, pokud jste upgradovali na edici Premium nebo Basic služby Azure Active Directory. Další informace najdete v článku [Edice služby Azure Active Directory](active-directory-editions.md). Pokud chcete použít proxy aplikace, můžete [Publikovat aplikace na webu Azure Portal](application-proxy-publish-azure-portal.md).
 
-## <a name="publish-an-app-using-hello-wizard"></a>Publikování aplikace pomocí Průvodce hello
-1. Přihlaste se jako správce v hello [portál Azure classic](https://manage.windowsazure.com/).
-2. Přejděte tooActive adresář a vyberte hello adresář, kde jste povolili Proxy aplikace.
+## <a name="publish-an-app-using-the-wizard"></a>Publikování aplikace pomocí průvodce
+1. Přihlaste se jako správce do [portálu Azure Classic](https://manage.windowsazure.com/).
+2. Přejděte do služby Active Directory a vyberte adresář, u kterého jste povolili proxy aplikace.
    
     ![Active Directory – ikona](./media/active-directory-application-proxy-publish/ad_icon.png)
-3. Klikněte na tlačítko hello **aplikace** a pak klikněte hello **přidat** tlačítko dole hello úvodní obrazovka
+3. Klikněte na kartu **Aplikace** a potom klikněte na tlačítko **Přidat** v dolní části obrazovky
    
     ![Přidání aplikace](./media/active-directory-application-proxy-publish/aad_appproxy_selectdirectory.png)
 4. Vyberte **Publikování aplikace, která bude přístupná mimo vaši síť**.
    
     ![Publikování aplikace, která bude přístupná mimo vaši síť](./media/active-directory-application-proxy-publish/aad_appproxy_addapp.png)
-5. Zadejte následující informace o vaší aplikaci hello:
+5. Zadejte následující informace o vaší aplikaci:
    
-   * **Název**: hello uživatelsky přívětivý název vaší aplikace. Musí být v rámci adresáře jedinečný.
-   * **Interní adresa URL**: hello adresu, která hello konektor Proxy aplikace používá tooaccess aplikaci hello uvnitř vaší privátní sítě. Při publikování hello zbytek hello serveru, můžete zadat konkrétní cestu na hello back-end serveru toopublish. Tímto způsobem můžete publikovat různé stránky na stejný server hello a poskytněte každé z nich vlastní název a pravidla přístupu.
+   * **Název**: Jednoduchý název vaší aplikace. Musí být v rámci adresáře jedinečný.
+   * **Interní adresa URL**: Adresa, kterou konektor proxy aplikace používá pro přístup k aplikaci uvnitř vaší privátní sítě. Můžete zadat konkrétní cestu na beck-endovém serveru, kterou chcete publikovat, zatímco zbytek serveru publikovaný nebude. Tímto způsobem můžete publikovat různé stránky ze stejného serveru a použít pro každou z nich vlastní název a pravidla přístupu.
      
      > [!TIP]
-     > Pokud publikujete cestu, ujistěte se, že obsahuje všechny potřebné obrázků hello, skriptů a stylů pro vaši aplikaci. Například pokud vaše aplikace je v https://yourapp/app a používá nacházející se v https://yourapp/media bitové kopie, pak byste měli publikovat https://yourapp/ jako cestu hello.
+     > Pokud publikujete cestu, ujistěte se, že zahrnuje všechny nezbytné obrázky, skripty a šablony stylů pro vaši aplikaci. Pokud například vaše aplikace je v cestě https://yourapp/app a používá obrázky nacházející se v cestě https://yourapp/media, pak byste měli publikujete https://yourapp/ jako cestu.
      > 
      > 
-   * **Metoda předběžného ověření**: jak Proxy aplikace ověřuje uživatele před poskytnete jim přístup tooyour aplikace. Vyberte jednu z možností hello z rozevírací nabídky hello.
+   * **Metoda předběžného ověření**: Způsob, jakým proxy aplikace ověřuje uživatele předtím, než jim poskytne přístup k vaší aplikaci. Zvolte jednu z možností z rozevírací nabídky.
      
-     * Azure Active Directory: Proxy aplikace přesměruje uživatele toosign pomocí Azure AD, která ověří jejich oprávnění k hello adresáři a aplikaci.
-     * Průchod: Uživatelé nemají tooauthenticate tooaccess hello aplikace.
+     * Azure Active Directory: Proxy aplikace přesměruje uživatele na stránku pro přihlášení ke službě Azure AD, která ověří jejich oprávnění k adresáři a aplikaci.
+     * Průchod: Uživatelé pro přístup k aplikaci nepotřebují ověření.
      
      ![Vlastnosti aplikace](./media/active-directory-application-proxy-publish/aad_appproxy_appproperties.png)  
-6. toofinish hello průvodce, klikněte na tlačítko zaškrtnutí hello v hello dolní části obrazovky hello. Hello aplikace je nyní definována ve službě Azure AD.
+6. Dokončete průvodce kliknutím na ikonu zaškrtnutí v dolní části obrazovky. Aplikace je nyní definována ve službě Azure AD.
 
-## <a name="assign-users-and-groups-toohello-application"></a>Přiřazení uživatelů a skupin toohello aplikace
-V pořadí pro vaši uživatelé tooaccess k publikované aplikaci, musíte tooassign je samostatně nebo ve skupinách. (Nezapomeňte tooassign sami příliš přístup.) Každý uživatel, kterého přiřadíte, musí mít licenci Azure úrovně Basic nebo vyšší. Můžete přiřadit licence jednotlivě nebo toogroups. Další informace najdete v tématu [přiřazování uživatelů aplikace tooan](active-directory-applications-guiding-developers-assigning-users.md). 
+## <a name="assign-users-and-groups-to-the-application"></a>Přiřazení uživatelů a skupin k aplikaci
+Pokud chcete, aby uživatelé měli přístup k publikované aplikaci, musíte jim ho přiřadit – jednotlivě nebo po skupinách. (Nezapomeňte přiřadit přístup také sobě.) Každý uživatel, kterého přiřadíte, musí mít licenci Azure úrovně Basic nebo vyšší. Licence můžete přiřadit individuálně, nebo skupinám. Další informace najdete v tématu [Přiřazování uživatelů k aplikaci](active-directory-applications-guiding-developers-assigning-users.md). 
 
-Pro aplikace, které vyžadují předběžné ověření přiřazení uživatele uděluje oprávnění toouse hello aplikace. Pro aplikace, které nevyžadují předběžné ověření, přiřazení uživatele znamená, že tento uživatel hello hello k aplikaci přístup prostřednictvím hello přístupového panelu.
+U aplikací, které vyžadují předběžné ověření, uživateli přiřazením udělíte oprávnění k používání aplikace. U aplikací, které nevyžadují předběžné ověření, přiřazení uživatele znamená, že daný uživatel bude k aplikaci moci přistupovat přes přístupový panel.
 
-1. Po dokončení Průvodce přidáním aplikace hello najdete v části hello úvodní stránky pro vaši aplikaci. Vyberte toomanage, kdo má přístup k aplikaci toohello, **uživatelů a skupin**.
+1. Po dokončení průvodce přidáním aplikace se vám zobrazí stránka „Rychlý start“ vaší aplikace. Pokud chcete nastavit, kdo má mít přístup k aplikaci, vyberte možnost **Uživatelé a skupiny**.
    
     ![Přiřazování uživatelů ze stránky „Rychlý start“ proxy aplikace – snímek obrazovky](./media/active-directory-application-proxy-publish/aad_appproxy_usersgroups.png)
-2. Vyhledejte konkrétní skupinu v adresáři nebo si zobrazte všechny uživatele. výsledky hledání hello toodisplay, klikněte na tlačítko zaškrtnutí hello.
+2. Vyhledejte konkrétní skupinu v adresáři nebo si zobrazte všechny uživatele. Kliknutím na značku zaškrtnutí zobrazíte výsledky hledání.
    
       ![Hledání skupin nebo uživatelů – snímek obrazovky](./media/active-directory-application-proxy-publish/aad_appproxy_search.png)
-3. Vyberte jednotlivé uživatele nebo skupinu tooassign toothis aplikace a klikněte na tlačítko **přiřadit**. Jste vyzváni tooconfirm tuto akci.
+3. Vyberte jednotlivé uživatele nebo skupiny, které chcete přiřadit k aplikaci a klikněte na **Přiřadit**. Zobrazí se výzva k potvrzení akce.
 
 > [!NOTE]
-> K aplikacím, které využívají integrované ověřování systému Windows, můžete přiřadit pouze uživatele a skupiny synchronizované s místní službou Active Directory. Hosty a uživatele, kteří se přihlašují pomocí účtu Microsoft, nelze k aplikacím publikovaným pomocí proxy aplikace služby Azure Active Directory přiřadit. Ujistěte se, vaši uživatelé přihlašovali pomocí přihlašovacích údajů, které jsou součástí hello stejné doméně jako publikovaná aplikace hello.
+> K aplikacím, které využívají integrované ověřování systému Windows, můžete přiřadit pouze uživatele a skupiny synchronizované s místní službou Active Directory. Hosty a uživatele, kteří se přihlašují pomocí účtu Microsoft, nelze k aplikacím publikovaným pomocí proxy aplikace služby Azure Active Directory přiřadit. Zajistěte, aby se vaši uživatelé přihlašovali pomocí přihlašovacích údajů, které jsou součástí stejné domény jako aplikace, kterou publikujete.
 > 
 > 
 
 ## <a name="test-your-published-application"></a>Test publikované aplikace
-Po publikování aplikace můžete otestovat ho tak, že přejdete toohello adresu URL, kterou jste publikovali. Ujistěte se, že k ní máte přístup, že se správně vykresluje a že všechno funguje podle očekávání. Pokud máte potíže nebo se zobrazí chybové hlášení, zkuste hello [Průvodce odstraňováním potíží s](active-directory-application-proxy-troubleshoot.md).
+Po publikování můžete aplikaci otestovat tak, že přejdete na adresu URL, kterou jste publikovali. Ujistěte se, že k ní máte přístup, že se správně vykresluje a že všechno funguje podle očekávání. Pokud máte potíže nebo se zobrazí chybová zpráva, zkuste [průvodce odstraňováním potíží](active-directory-application-proxy-troubleshoot.md).
 
 ## <a name="configure-your-application"></a>Konfigurace aplikace
-Můžete publikované aplikace upravovat nebo nastavovat pokročilé možnosti na stránce konfigurace hello. Na této stránce můžete svou aplikaci přizpůsobit změnou hello názvu nebo nahráním loga. Můžete také spravovat pravidla přístupu k jako hello metodu předběžného ověření nebo vícefaktorové ověřování.
+Na stránce Konfigurace můžete publikované aplikace upravovat nebo u nich nastavovat pokročilé možnosti. Na této stránce si můžete svou aplikaci přizpůsobit změnou názvu nebo nahráním loga. Můžete také spravovat pravidla přístupu, například metodu předběžného ověření nebo vícefaktorové ověřování (Multi-Factor Authentication).
 
 ![Pokročilá konfigurace](./media/active-directory-application-proxy-publish/aad_appproxy_configure.png)
 
-Po publikování aplikací pomocí Proxy Azure Active Directory aplikace, se objeví v seznamu aplikace hello ve službě Azure AD a je můžete spravovat.
+Jakmile aplikace publikujete pomocí proxy aplikace služby Azure Active Directory, zobrazí se v seznamu aplikací ve službě Azure AD, odkud je můžete spravovat.
 
-Pokud zakážete služby Proxy aplikace po publikování aplikace, aplikace hello již nejsou dostupné z oblasti mimo vaší privátní sítě. Uživatelé můžou stále přístup hello aplikace místní jako obvykle.
+Pokud po publikování aplikací služby proxy aplikace zakážete, aplikace už nebudou přístupné mimo vaši privátní síť. Vaši uživatelé stále budou mít místní přístup k aplikacím jako obvykle.
 
-tooview aplikaci a zkontrolujte jestli to přístupný, dvakrát klikněte na název hello aplikace hello. Pokud je zakázána hello Proxy aplikace služby a aplikace hello není k dispozici, zobrazí se zpráva upozornění hello horní části úvodní obrazovka.
+Pokud chcete zobrazit aplikaci a ujistit se, že je přístupná, klikněte dvakrát na její název. Pokud je služba proxy aplikace zakázaná a aplikace není k dispozici, zobrazí se v horní části obrazovky varovná zpráva.
 
-Vyberte aplikaci v seznamu hello toodelete aplikaci a potom klikněte na **odstranit**.
+Pokud chcete aplikaci odstranit, vyberte ji ze seznamu a klikněte na **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 * [Publikování aplikací s použitím vlastního názvu domény](active-directory-application-proxy-custom-domains.md)
@@ -100,5 +100,5 @@ Vyberte aplikaci v seznamu hello toodelete aplikaci a potom klikněte na **odstr
 * [Povolení podmíněného přístupu](active-directory-application-proxy-conditional-access.md)
 * [Práce s aplikacemi využívajícími deklarace](active-directory-application-proxy-claims-aware-apps.md)
 
-Hello nejnovější novinky a aktualizace, najdete na naší hello [blogu Proxy aplikace](http://blogs.technet.com/b/applicationproxyblog/)
+Nejnovější novinky a aktualizace naleznete na [blogu proxy aplikace](http://blogs.technet.com/b/applicationproxyblog/)
 

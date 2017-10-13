@@ -1,6 +1,6 @@
 ---
-title: aaaIntroduction tooAzure katalogu Data Catalog | Microsoft Docs
-description: "Tento článek obsahuje přehled služby Microsoft Azure Data Catalog, včetně funkcí a hello problémech, na které se řeší. Data Catalog umožňuje tooregister všechny uživatele, zjišťovat, pochopit a využívat zdroje dat.."
+title: "Úvod do služby Azure Data Catalog | Dokumentace Microsoftu"
+description: "Tento článek obsahuje přehled služby Microsoft Azure Data Catalog, a to včetně jejích funkcí a potíží, na které se zaměřuje. Data Catalog umožňuje všem uživatelům registrovat, objevovat, pochopit a využívat zdroje dat."
 services: data-catalog
 documentationcenter: 
 author: steelanddata
@@ -15,63 +15,63 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
-ms.openlocfilehash: 82144c440b5692d3608af08208f36ee8e6dfdc93
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: a28a7679831201fcf3a9d1c15497ff706c2752a1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-azure-data-catalog"></a>Co je Azure Data Catalog?
-Azure Data Catalog je plně spravovaná Cloudová služba, jejichž uživatelé mohli zjistit zdroje dat hello potřebují a pochopit hello zdroje dat, které naleznou. V hello stejný čas, Data Catalog pomáhá organizacím get více hodnotu z jejich stávajících investic. 
+Azure Data Catalog je plně spravovaná cloudová služba, jejíž uživatelé mohou objevovat zdroje dat, které potřebují, a nalezené zdroje dat pochopit. Zároveň Data Catalog pomáhá organizacím vytěžit více z jejich stávajících investic. 
 
-Pomocí katalogu Data Catalog může každý uživatel (analytik, odborník přes data nebo vývojář) zdroje dat objevovat, pochopit a využívat. Data Catalog obsahuje crowdsourcingový model metadat a poznámek. Je jeden, centrální místo pro všechny organizace uživatelé toocontribute své znalosti a vybudování komunity a kultury dat..
+Pomocí katalogu Data Catalog může každý uživatel (analytik, odborník přes data nebo vývojář) zdroje dat objevovat, pochopit a využívat. Data Catalog obsahuje crowdsourcingový model metadat a poznámek. Je jediným ústředním místem, kam všichni uživatelé v rámci organizace mohou přispět svými znalostmi a vybudovat datovou komunitu a kulturu.
 
 ## <a name="discovery-challenges-for-data-consumers"></a>Problémy zjišťování pro spotřebitele dat
-Tradičně je zjišťování zdrojů podnikových dat organický proces založený na kmenových znalostech. Tento přístup pro společnosti, které mají tooget hello maximální hodnotu ze svých prostředků informací, představuje mnoho výzev:
+Tradičně je zjišťování zdrojů podnikových dat organický proces založený na kmenových znalostech. Pro společnosti, které chtějí získat maximální hodnotu ze svých informačních prostředků, to představuje mnoho výzev:
 
 * Uživatelé si nemusí uvědomovat, že zdroje dat existují, pokud s nimi nepřicházejí do styku při jiném procesu. Žádné centrální umístění, kde jsou zdroje dat registrovány, neexistuje.
-* Pokud uživatelé věděli, hello umístění zdroje dat, se nemůže připojit toohello dat pomocí klientské aplikace. Možnosti spotřeby dat vyžadují uživatelé tooknow hello připojovací řetězec nebo cestu.
-* Pokud uživatelé věděli, hello umístění dokumentace zdroje dat, jejich není srozumitelná hello určený používá dat hello. Zdroje dat a dokumentace se mohou nacházet na různých místech a používat se v různých prostředích.
-* Pokud uživatelé používají dotazy týkající se informačního prostředku, musí vyhledat hello odborníka nebo tým, který je zodpovědný za hello dat a jejich zapojení do offline režimu. Žádné explicitní spojení mezi daty a zaměstnanci s odborným pohledem na jejich použití neexistuje.
-* Pokud uživatelé vědí hello proces pro požadavek, zdroj dat toohello přístup, zjišťování hello zdroj dat a jeho dokumentace stále nepomůže je přístup k datům hello.
+* Pokud uživatel nezná umístění zdroje dat, nemůže se k těmto datům pomocí klientské aplikace připojit. Možnosti využití dat vyžadují, aby uživatelé znali připojovací řetězec nebo cestu.
+* Pokud uživatel nezná umístění dokumentace zdroje dat, nemůže zamýšlenému použití dat rozumět. Zdroje dat a dokumentace se mohou nacházet na různých místech a používat se v různých prostředích.
+* Pokud mají uživatelé dotazy týkající se informačního prostředku, musí vyhledat odborníka nebo tým odpovědný za příslušná data a zapojit tyto odborníky offline. Žádné explicitní spojení mezi daty a zaměstnanci s odborným pohledem na jejich použití neexistuje.
+* Pokud uživatelé nerozumí procesu pro vyžádání přístupu ke zdroji dat, zjištění zdroje dat a jeho dokumentace jim stejně nepomůže k těmto datům získat přístup.
 
 ## <a name="discovery-challenges-for-data-producers"></a>Problémy zjišťování pro producenty dat
-I když hello vzhled spotřebitelé dat už jsme zmínili výzvy, uživatelé, kteří jsou odpovědní za vytváření a správu informačních prostředků čelí s vlastními výzvami:
+Přestože se spotřebitelé dat potýkají s těmito dříve popsanými výzvami, uživatelé odpovědní za vytváření a správu informačních prostředků se potýkají s vlastními výzvami:
 
-* Zadávání poznámek ke zdrojům dat s popisnými metadaty je často ztráta času. Klientské aplikace obvykle ignorují popisy, které jsou uložené ve zdroji dat hello.
+* Zadávání poznámek ke zdrojům dat s popisnými metadaty je často ztráta času. Klientské aplikace obvykle popisy uložené ve zdroji dat ignorují.
 * Vytváření dokumentace pro zdroje dat je také často ztráta času. Synchronizování dokumentace se zdrojem dat je neustávající odpovědnost a uživatelé nemusí dokumentaci důvěřovat, protože je často považována za zastaralou.
-* Vytváření a správa dokumentace pro zdroje dat je složitá a časově náročná. Provedení této tooeveryone snadno dostupné dokumentaci, který používá zdroj dat hello může být to.
-* Omezení přístupu toodata zdroje a zajistit, aby spotřebitelé dat věděli, jak toorequest přístup, je neustávající výzva.
+* Vytváření a správa dokumentace pro zdroje dat je složitá a časově náročná. O to větší je výzva tuto dokumentaci učinit snadno dostupnou pro každého uživatele, který příslušný zdroj dat používá.
+* Omezení přístupu ke zdrojům dat a zajištění, aby spotřebitelé dat věděli, jak požádat o přístup, je neustávající výzva.
 
-Když se tyto výzvy zkombinují, představují představují významnou překážkou pro společnosti, kteří mají tooencourage a povyšte hello používání a pochopení podnikových dat..
+Když se tyto výzvy zkombinují, představují významnou překážkou pro společnosti, které chtějí podněcovat a podporovat používání a pochopení podnikových dat.
 
 ## <a name="azure-data-catalog-can-help"></a>Azure Data Catalog může pomoci
-Data Catalog je navrženou tooaddress tyto problémy a toohelp podniky get hello nejvíce hodnotu ze stávajících prostředků. Data Catalog umožňuje zdroje dat snadno zjistitelné a srozumitelnější hello uživatelé, kteří spravují hello data.
+Data Catalog je určen k řešení těchto problémů a pomáhá podnikům získat větší hodnotu ze stávajících prostředků. Data Catalog činí zdroje dat snadno objevitelné a srozumitelné pro uživatele, kteří tato data spravují.
 
-Data Catalog poskytuje službu na principu cloudu, do níž lze zaregistrovat zdroj dat. Přidání tooData katalogu, společně s referenčním umístěním zdroje dat toohello Hello data zůstanou ve stávajícím umístění, ale kopie jeho metadata. Hello metadat je také indexované toomake každý zdroj dat snadno zjistitelný prostřednictvím vyhledávání a nerozumí toohello uživatelů, kteří je zjistili.
+Data Catalog poskytuje službu na principu cloudu, do níž lze zaregistrovat zdroj dat. Data zůstávají uložena ve stávajícím umístění, ale do katalogu Data Catalog se přidá kopie metadat spolu s odkazem na umístění zdroje dat. Tato metadata jsou také indexována, aby byl každý zdroj dat snadno objevitelný prostřednictvím vyhledávání a aby byl srozumitelný uživatelům, kteří ho objevili.
 
-Po registraci zdroje dat, jeho metadata můžete pak být rozšířena hello uživatel, který je zaregistrován nebo jinými uživateli v podniku hello. Každý uživatel může opatřit poznámkami zdroj dat tím, že přidá popisy, značky nebo další metadata, například dokumentaci a procesy pro žádosti o přístup ke zdroji dat. Tato popisná metadata doplňují hello strukturální metadata (například názvy a datové typy sloupce) registrovanou ze zdroje dat hello.
+Po zaregistrování zdroje dat mohou být jeho metadata rozšířena uživatelem, který ho zaregistroval, nebo jinými uživateli v podniku. Každý uživatel může opatřit poznámkami zdroj dat tím, že přidá popisy, značky nebo další metadata, například dokumentaci a procesy pro žádosti o přístup ke zdroji dat. Tato popisná metadata doplňují strukturální metadata (například názvy sloupců a typy dat) zaregistrovaná ze zdroje dat.
 
-Zjišťování a porozumění zdroje dat a jejich použití je hello primárním účelem registrace zdrojů hello. Podnikoví uživatelé mohou potřebují data pro business intelligence, vývoj aplikací, vědecké zpracování dat nebo jiné úlohy, kde jsou vyžadována správná data hello. Uživatelé můžou používat katalogu Data Catalog zjišťování hello prostředí tooquickly najít data, která odpovídají jejich potřebám, pochopit hello data tooevaluate jejich vhodnosti pro hello účel a využívat hello data otevřením hello zdroj dat v upřednostňovaném nástroji. 
+Primárním účelem registrace zdrojů dat je zjišťování a porozumění zdrojům, a jejich používání. Podnikoví uživatelé mohou potřebovat data pro business intelligence, vývoj aplikací, datové vědy nebo jiný úkol, ve kterém jsou vyžadována správná data. Mohou využít zkušenosti s objevováním v katalogu Data Catalog, aby rychle našli data, která odpovídají jejich potřebám, pochopili je, vyhodnotili jejich vhodnost pro daný účel a využili je otevřením zdroje dat v upřednostňovaném nástroji. 
 
-Na hello stejný čas, uživatelé mohou přispívat toohello katalogu označování, dokumentace a zadávání poznámek ke zdrojům dat, které již bylo zaregistrováno. Také se můžete zaregistrovat nové zdroje dat, které lze poté zjistit, porozuměl jsem jim a využívat hello komunitou uživatelů katalogu.
+Současně mohou uživatelé přispívat do katalogu označováním, dokumentováním a zadáváním poznámek ke zdrojům dat, které jsou již zaregistrovány. Mohou také registrovat nové zdroje dat, které lze poté objevit, pochopit a využít komunitou uživatelů katalogu.
 
 ![Možnosti katalogu Data Catalog](./media/data-catalog-what-is-data-catalog/data-catalog-capabilities.png)
 
 ## <a name="learn-more-about-data-catalog"></a>Další informace o katalogu Data Catalog
-toolearn Další informace o možnostech hello katalogu Data Catalog, najdete v části:
+Další informace o možnostech katalogu Data Catalog naleznete v tématu:
 
-* [Jak tooregister zdroje dat](data-catalog-how-to-register.md)
-* [Jak toodiscover zdroje dat](data-catalog-how-to-discover.md)
-* [Jak tooannotate zdroje dat](data-catalog-how-to-annotate.md)
-* [Jak toodocument zdroje dat](data-catalog-how-to-documentation.md)
-* [Jak tooconnect toodata zdroje](data-catalog-how-to-connect.md)
-* [Jak toowork s velkým objemem dat](data-catalog-how-to-big-data.md)
-* [Jak toomanage datových prostředků](data-catalog-how-to-manage.md)
-* [Jak tooset až hello obchodní Glosář](data-catalog-how-to-business-glossary.md)
+* [Postup registrace zdrojů dat](data-catalog-how-to-register.md)
+* [Zjišťování zdrojů dat](data-catalog-how-to-discover.md)
+* [Postup přidání poznámek ke zdrojům dat](data-catalog-how-to-annotate.md)
+* [Postup dokumentování zdrojů dat](data-catalog-how-to-documentation.md)
+* [Jak se připojit ke zdrojům dat](data-catalog-how-to-connect.md)
+* [Jak pracovat s velkým objemem dat](data-catalog-how-to-big-data.md)
+* [Jak spravovat datové prostředky](data-catalog-how-to-manage.md)
+* [Jak nastavit obchodní glosář](data-catalog-how-to-business-glossary.md)
 * [Nejčastější dotazy](data-catalog-frequently-asked-questions.md)
 
 ## <a name="next-steps"></a>Další kroky
-tooget spuštění s katalogem Data Catalog, přejděte na:
+Pokud chcete začít s katalogem Data Catalog, přejděte na:
 * [Microsoft Azure Data Catalog](https://www.azuredatacatalog.com)
 * [Začínáme s Azure Data Catalogem](data-catalog-get-started.md)

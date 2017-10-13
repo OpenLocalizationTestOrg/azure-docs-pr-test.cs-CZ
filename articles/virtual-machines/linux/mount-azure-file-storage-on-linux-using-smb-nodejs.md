@@ -1,6 +1,6 @@
 ---
-title: "aaaMount Azure File storage ve virtuální počítače s Linuxem pomocí protokolu SMB 1.0 rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Jak toomount Azure File storage ve virtuální počítače s Linuxem pomocí protokolu SMB"
+title: "Připojení Azure File storage na virtuální počítače s Linuxem pomocí protokolu SMB 1.0 rozhraní příkazového řádku Azure | Microsoft Docs"
+description: "Tom, jak připojit Azure File storage na virtuální počítače s Linuxem pomocí protokolu SMB"
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
 author: vlivech
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/07/2016
 ms.author: v-livech
-ms.openlocfilehash: 14a4224228cadb0ae2f05e8e5c8022ee84f138a4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4951860630f0aad107d0846d52ebe4423ee0b91c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-by-using-smb-with-azure-cli-10"></a>Připojení Azure File storage na virtuální počítače s Linuxem pomocí protokolu SMB 1.0 rozhraní příkazového řádku Azure
 
-Tento článek ukazuje, jak toomount Azure File storage na virtuální počítač s Linuxem pomocí hello zpráva bloku protokol Server (SMB). File storage nabízí sdílené složky v cloudu hello prostřednictvím hello standardní protokol SMB. Hello požadavky jsou:
+Tento článek ukazuje, jak připojit Azure File storage na virtuální počítač s Linuxem pomocí protokolu Server Message Block (SMB). File storage nabízí sdílené složky v cloudu přes standardní protokol SMB. Požadavky:
 
 * [Účet Azure](https://azure.microsoft.com/pricing/free-trial/)
 * [Secure Shell (SSH) soubory veřejného a privátního klíče](mac-create-ssh-keys.md)
 
-## <a name="cli-versions-toouse"></a>Toouse verze rozhraní příkazového řádku
-Hello úloh můžete dokončit pomocí jedné z hello následující verze rozhraní příkazového řádku (CLI):
+## <a name="cli-versions-to-use"></a>Verze rozhraní příkazového řádku používat
+Úlohu můžete dokončit pomocí jedné z následujících verzí rozhraní příkazového řádku (CLI):
 
-- [Azure CLI 1.0](#quick-commands) – naše rozhraní příkazového řádku pro hello classic a resource správy nasazení modelů (v tomto článku)
-- [Azure CLI 2.0](mount-azure-file-storage-on-linux-using-smb-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)-naší nové generace rozhraní příkazového řádku pro model nasazení správy prostředků hello
+- [Azure CLI 1.0](#quick-commands) – naše rozhraní příkazového řádku pro classic a resource správu modelech nasazení (v tomto článku)
+- [Azure CLI 2.0](mount-azure-file-storage-on-linux-using-smb-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)-naší nové generace rozhraní příkazového řádku pro model nasazení správy prostředků
 
 
 ## <a name="quick-commands"></a>Rychlé příkazy
-Úloha hello tooaccomplish rychle, postupujte podle kroků hello v této části. Podrobné informace a kontext, začít ve hello ["Podrobný návod"](mount-azure-file-storage-on-linux-using-smb.md#detailed-walkthrough) části.
+K provedení úlohy rychle, postupujte podle kroků v této části. Podrobné informace a kontext, začít ve ["Podrobný návod"](mount-azure-file-storage-on-linux-using-smb.md#detailed-walkthrough) části.
 
 ### <a name="prerequisites"></a>Požadavky
 * Skupinu prostředků.
@@ -49,20 +49,20 @@ Hello úloh můžete dokončit pomocí jedné z hello následující verze rozhr
 
 Nahradí všechny příklady s vlastním nastavením.
 
-### <a name="create-a-directory-for-hello-local-mount"></a>Vytvořte adresář pro hello místního připojení
+### <a name="create-a-directory-for-the-local-mount"></a>Vytvořte adresář pro místního připojení
 
 ```bash
 mkdir -p /mnt/mymountpoint
 ```
 
-### <a name="mount-hello-file-storage-smb-share-toohello-mount-point"></a>Připojit hello soubor úložiště SMB sdílenou složku toohello přípojný bod
+### <a name="mount-the-file-storage-smb-share-to-the-mount-point"></a>Připojte soubor úložiště do přípojného bodu sdílená složka SMB
 
 ```bash
 sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename /mymountpoint -o vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
 ```
 
-### <a name="persist-hello-mount-after-a-reboot"></a>Zachovat připojení hello po restartu systému
-Přidejte následující řádek příliš hello`/etc/fstab`:
+### <a name="persist-the-mount-after-a-reboot"></a>Zachovat připojení po restartu systému
+Přidejte následující řádek na `/etc/fstab`:
 
 ```bash
 //myaccountname.file.core.windows.net/mysharename /mymountpoint cifs vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
@@ -70,13 +70,13 @@ Přidejte následující řádek příliš hello`/etc/fstab`:
 
 ## <a name="detailed-walkthrough"></a>Podrobný postup
 
-File storage nabízí sdílené složky v cloudu hello, které používají standardní protokol SMB hello. Hello nejnovější verze služby úložiště File můžete také připojit sdílenou složku z jakékoli operační systém, který podporuje protokol SMB 3.0. Pokud používáte připojení protokolu SMB v systému Linux, získáte snadno zálohy tooa robustní, trvalé archivováním umístění úložiště podporovaný SLA.
+File storage nabízí sdílené složky v cloudu, které používají standardní protokol SMB. Nejnovější verze služby úložiště File můžete také připojit sdílenou složku z jakékoli operační systém, který podporuje protokol SMB 3.0. Pokud používáte připojení protokolu SMB v systému Linux, získáte snadno zálohy robustní, trvalé archivováním umístění úložiště podporovaný SLA.
 
-Přesunutí souborů z připojení SMB tooan virtuálního počítače, který je hostován na soubor úložiště je že skvělým způsobem toodebug protokoly. Je to způsobeno hello sdílet stejný protokol SMB může být připojen místně tooyour Mac, Linux nebo Windows pracovní stanice. SMB není hello nejlepší řešení pro streamování Linux nebo aplikace protokolů v reálném čase, protože není hello protokolu SMB vytvořené toohandle těchto funkcí velkou protokolování. Nástroje protokolování vyhrazené, jednotná vrstvy, jako je Fluentd bude vhodnější než SMB pro shromažďování Linux a aplikace protokolování výstupu.
+Přesunutí souborů z virtuálního počítače připojení protokolu SMB, který je hostován úložiště souborů je skvělým způsobem, jak ladit protokoly. Je to způsobeno téže sdílené složky protokolu SMB může být připojen místně do pracovní stanice se systémem Mac, Linux nebo Windows. SMB není nejlepší řešení pro streamování Linux nebo aplikace protokolů v reálném čase, protože není protokol SMB vytvořené pro zpracování těchto funkcí velkou protokolování. Nástroje protokolování vyhrazené, jednotná vrstvy, jako je Fluentd bude vhodnější než SMB pro shromažďování Linux a aplikace protokolování výstupu.
 
-Pro tento podrobný návod vytvoříme hello požadavky potřeby toofirst vytvořit hello sdílenou složku úložiště a následné připojení prostřednictvím protokolu SMB na virtuální počítač s Linuxem.
+Pro tento podrobný návod jsme vytvořte součásti potřebné nejprve vytvořit sdílenou složku úložiště a pak připojte prostřednictvím protokolu SMB na virtuální počítač s Linuxem.
 
-1. Vytvořte účet úložiště Azure pomocí hello následující kód:
+1. Vytvořte účet úložiště Azure pomocí následujícího kódu:
 
     ```azurecli
     azure storage account create myStorageAccount \
@@ -86,17 +86,17 @@ Pro tento podrobný návod vytvoříme hello požadavky potřeby toofirst vytvo�
     -g myResourceGroup
     ```
 
-2. Zobrazit hello klíče účtu úložiště.
+2. Zobrazit klíče účtu úložiště.
 
-    Když vytvoříte účet úložiště, klíče účtu hello jsou vytvořeny v párech, aby mohou otáčet bez výpadku služby. Když přepnete toohello druhý klíč v páru hello, můžete vytvořit nový pár klíčů. Nových klíčů účtu úložiště se vytváří vždy v párech, a zajistit, abyste měli vždy alespoň jeden nepoužívané úložiště klíčů tooswitch připravené k. klíče účtu úložiště tooshow hello, použijte hello následující kód:
+    Když vytvoříte účet úložiště, klíče účtu jsou vytvořeny v párech, aby se mohou otáčet bez výpadku služby. Když přepnete na druhý klíč v páru, můžete vytvořit nový pár klíčů. Nových klíčů účtu úložiště se vytváří vždy v párech, a že jste vždy k dispozici alespoň jeden klíč nepoužívané úložiště připravené přepnout do. Chcete-li zobrazit klíče účtu úložiště, použijte následující kód:
 
     ```azurecli
     azure storage account keys list myStorageAccount \
     --resource-group myResourceGroup
     ```
-3. Vytvořte sdílenou složku File storage hello.
+3. Vytvořte sdílenou složku úložiště.
 
-    Hello sdílenou složku úložiště obsahuje hello sdílenou složku SMB. kvóta Hello je vždy vyjádřené v gigabajtech (GB). toocreate hello sdílenou složku úložiště, použijte hello následující kód:
+    Sdílenou složku úložiště obsahuje sdílenou složku SMB. Kvóta je vždy vyjádřené v gigabajtech (GB). Pokud chcete vytvořit sdílenou složku úložiště, použijte následující kód:
 
     ```azurecli
     azure storage share create mystorageshare \
@@ -105,23 +105,23 @@ Pro tento podrobný návod vytvoříme hello požadavky potřeby toofirst vytvo�
     --account-key nPOgPR<--snip-->4Q==
     ```
 
-4. Vytvořte adresář hello přípojného bodu.
+4. Vytvořte adresář přípojného bodu.
 
-    Je nutné vytvořit místní adresář v hello Linux souboru systému toomount hello k sdílená složka SMB. Nic zapsané nebo čtení z adresáře místní připojení hello se předají toohello sdílená složka SMB, který je hostován na úložiště File. toocreate hello adresář, použijte hello následující kód:
+    Je nutné vytvořit místní adresář v souborovém systému Linux připojit sdílenou složku SMB. Nic zapsané nebo čtení z adresáře místní připojení se předají do složky SMB, který je hostován na úložiště File. Chcete-li vytvořit adresář, použijte následující kód:
 
     ```bash
     sudo mkdir -p /mnt/mymountdirectory
     ```
 
-5. Připojte hello sdílená složka SMB pomocí hello následující kód:
+5. Připojte sdílenou složku SMB pomocí následujícího kódu:
 
     ```azurecli
     sudo mount -t cifs //myStorageAccount.file.core.windows.net/mystorageshare /mnt/mymountdirectory -o vers=3.0,username=myStorageAccount,password=myStorageAccountkey,dir_mode=0777,file_mode=0777
     ```
 
-6. Zachovat hello SMB připojit prostřednictvím restartování počítače.
+6. Zachovat připojení SMB prostřednictvím restartování počítače.
 
-    Když restartujete hello virtuálního počítače s Linuxem, hello připojené sdílené složky SMB nepřipojené během vypnutí. tooremount hello složce SMB na spouštěcí, je nutné přidat řádku toohello Linux /etc/fstab. Linux používá hello fstab souboru toolist hello systémy souborů je nutné toomount během procesu spuštění hello. Přidání sdílené složky SMB hello zajišťuje, že aby hello sdílená úložiště je trvale připojeného souboru systém pro virtuální počítač s Linuxem hello. Přidání hello soubor úložiště SMB sdílenou složku tooa nového virtuálního počítače je možné, pokud používáte cloudové init.
+    Po restartování virtuálního počítače s Linuxem, je při vypnutí nepřipojené připojené sdílenou složku SMB. Pro opětovné připojení do sdílené složky protokolu SMB na spouštění, musí přidá řádek do Linux /etc/fstab. Linux používá soubor fstab zobrazte seznam systémů souborů, které je potřeba připojit během spouštění. Přidání sdílené složky SMB zajistí, že sdílené složky úložiště bude trvale připojeného souboru systém pro virtuální počítač s Linuxem. Přidání úložiště File sdílená složka SMB na nový virtuální počítač je možné, pokud používáte cloudové init.
 
     ```bash
     //myaccountname.file.core.windows.net/mysharename /mymountpoint cifs vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
@@ -129,6 +129,6 @@ Pro tento podrobný návod vytvoříme hello požadavky potřeby toofirst vytvo�
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Během vytváření pomocí toocustomize init cloudu virtuálního počítače s Linuxem](using-cloud-init.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Přidat tooa disku virtuálního počítače s Linuxem](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Šifrování disky na virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure hello](encrypt-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Přizpůsobení virtuálního počítače s Linuxem během vytváření pomocí init cloudu](using-cloud-init.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Přidání disku do virtuálního počítače s Linuxem](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Šifrování disky na virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure](encrypt-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

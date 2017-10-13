@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate skupin zabezpečení - sítě, šablony Azure Resource Manageru | Microsoft Docs"
-description: "Zjistěte, jak toocreate a nasazení skupin zabezpečení sítě pomocí šablony Azure Resource Manager."
+title: "Vytvoření skupin zabezpečení sítě - šablony Azure Resource Manageru | Microsoft Docs"
+description: "Zjistěte, jak vytvořit a nasadit skupin zabezpečení sítě pomocí šablony Azure Resource Manager."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3750168284fea7b41c8c0f908b0d31a9da5e38ce
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 88f7e5b2144daee7bf1c8e7312ba98e6fa967899
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-network-security-groups-using-an-azure-resource-manager-template"></a>Vytvořit síť pomocí šablony Azure Resource Manager skupin zabezpečení
 
@@ -30,14 +30,14 @@ ms.lasthandoff: 10/06/2017
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Tento článek se týká modelu nasazení Resource Manager hello. Můžete také [vytvářet skupiny Nsg v modelu nasazení classic hello](virtual-networks-create-nsg-classic-ps.md).
+Tento článek se týká modelu nasazení Resource Manager. Můžete také [vytvářet skupiny Nsg v modelu nasazení classic](virtual-networks-create-nsg-classic-ps.md).
 
 [!INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
 ## <a name="nsg-resources-in-a-template-file"></a>Skupina NSG prostředky v souboru šablony
-Můžete zobrazit a stáhnout hello [Ukázka šablony](https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/NSGs.json).
+Můžete zobrazit a stáhnout [Ukázka šablony](https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/NSGs.json).
 
-Hello následující část popisuje hello Definice hello front-end NSG, založené na scénář hello.
+V následující části zobrazuje definici front-end NSG, závislosti na scénáři.
 
 ```json
 "apiVersion": "2015-06-15",
@@ -80,7 +80,7 @@ Hello následující část popisuje hello Definice hello front-end NSG, založe
   ]
 }
 ```
-tooassociate hello NSG toohello podsítě front-endu, máte toochange hello Definice podsítě v hello šablony a id odkazu hello použijte pro hello NSG.
+Přidružení skupiny NSG k podsíti front-endu, budete muset změnit definici podsítě v šabloně a použít odkaz na id skupiny nsg.
 
 ```json
 "subnets": [
@@ -95,16 +95,16 @@ tooassociate hello NSG toohello podsítě front-endu, máte toochange hello Defi
   }, 
 ```
 
-Všimněte si, hello stejné prováděná hello back-end NSG a hello back-end podsítě v šabloně hello.
+Všimněte si stejné prováděná pro NSG back-end a back-end podsíť v šabloně.
 
-## <a name="deploy-hello-arm-template-by-using-click-toodeploy"></a>Nasazení šablony ARM hello pomocí klikněte na tlačítko toodeploy
-Hello Ukázka šablony k dispozici v úložišti na veřejné hello používá parametr souboru, který obsahuje hello výchozí hodnoty používané toogenerate hello scénář popsaný výše. toodeploy pomocí této šablony, klikněte na toodeploy, postupujte podle [tento odkaz](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd-NSG), klikněte na tlačítko **nasazení tooAzure**, nahraďte hello výchozí hodnoty parametrů v případě potřeby a postupujte podle pokynů hello hello portálu.
+## <a name="deploy-the-arm-template-by-using-click-to-deploy"></a>Nasazení šablony ARM pomocí metody Click to Deploy
+Ukázková šablona, která je k dispozici ve veřejném úložišti, používá soubor parametrů obsahující výchozí hodnoty, které se použijí k vygenerování výše popsaného scénáře. Pokud chcete nasadit tuto šablonu pomocí metody Click to Deploy, pokračujte na [tento odkaz](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd-NSG), klikněte na **Nasadit do Azure**, v případě potřeby nahraďte výchozí hodnoty parametrů, a pokračujte podle pokynů na portálu.
 
-## <a name="deploy-hello-arm-template-by-using-powershell"></a>Nasazení šablony ARM hello pomocí prostředí PowerShell
-šablony ARM hello toodeploy, které jste stáhli pomocí prostředí PowerShell, postupujte podle následujících kroků hello.
+## <a name="deploy-the-arm-template-by-using-powershell"></a>Nasazení šablony ARM pomocí prostředí PowerShell
+Pokud chcete nasadit šablonu ARM, kterou jste stáhli, pomocí prostředí PowerShell, použijte následující postup.
 
-1. Pokud jste prostředí Azure PowerShell nikdy nepoužívali, postupujte podle pokynů hello v hello [jak tooInstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) tooinstall a nakonfigurujte ji.
-2. Spustit hello  **`New-AzureRmResourceGroup`**  hello rutiny toocreate skupinu prostředků pomocí šablony.
+1. Pokud jste prostředí Azure PowerShell nikdy nepoužívali, postupujte podle pokynů [způsob instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) nainstalovat a nakonfigurovat ho.
+2. Spustit  **`New-AzureRmResourceGroup`**  vytvořte skupinu prostředků pomocí šablony.
 
     ```powershell
     New-AzureRmResourceGroup -Name TestRG -Location uswest `
@@ -148,21 +148,21 @@ Hello Ukázka šablony k dispozici v úložišti na veřejné hello používá p
    
         ResourceId        : /subscriptions/[Subscription Id]/resourceGroups/TestRG
 
-## <a name="deploy-hello-arm-template-by-using-hello-azure-cli"></a>Nasazení šablony ARM hello pomocí hello rozhraní příkazového řádku Azure
-toodeploy hello šablony ARM pomocí rozhraní příkazového řádku Azure, hello postupujte podle následujících kroků hello.
+## <a name="deploy-the-arm-template-by-using-the-azure-cli"></a>Nasazení šablony ARM pomocí rozhraní příkazového řádku Azure
+Nasazení šablony ARM pomocí rozhraní příkazového řádku Azure, postupujte podle následujících kroků.
 
-1. Pokud jste rozhraní příkazového řádku Azure nikdy nepoužívali, projděte si téma [instalace a konfigurace rozhraní příkazového řádku Azure hello](../cli-install-nodejs.md) a postupujte podle pokynů hello až toohello bodu, kde můžete vybrat svůj účet Azure a předplatné.
-2. Spustit hello  **`azure config mode`**  příkaz tooswitch tooResource Manager režimu, jak je uvedeno níže.
+1. Pokud jste rozhraní příkazového řádku Azure nikdy nepoužívali, přejděte na téma [Instalace a konfigurace rozhraní příkazového řádku Azure](../cli-install-nodejs.md) a postupujte podle pokynů až do chvíle, kdy můžete vybrat svůj účet a předplatné Azure.
+2. Spuštěním příkazu **`azure config mode`** přepněte do režimu Resource Manager, jak vidíte níže.
 
     ```azurecli
     azure config mode arm
     ```
 
-    Hello následuje hello očekávaný výstup hello příkazu:
+    Toto je očekávaný výstup příkazu:
 
         info:    New mode is arm
 
-3. Spustit hello  **`azure group deployment create`**  rutiny toodeploy hello nové sítě VNet pomocí šablony hello a parametr soubory jste stáhli a upravili v předchozích krocích. Hello seznam uvedený za výstup hello vysvětluje použité parametry hello.
+3. Spuštěním rutiny **`azure group deployment create`** nasadíte novou síť VNet pomocí šablony a souborů parametrů, které jste stáhli a upravili v předchozích krocích. Seznam uvedený za výstupem vysvětluje použité parametry.
 
     ```azurecli
     azure group create -n TestRG -l westus -f 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/azuredeploy.json' -e 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/azuredeploy.parameters.json'
@@ -185,8 +185,8 @@ toodeploy hello šablony ARM pomocí rozhraní příkazového řádku Azure, hel
         data:    
         info:    group create command OK
    
-   * **-n (nebo --name)**. Název toobe skupiny prostředků hello vytvořili.
-   * **-l (nebo --location)**. Oblast Azure, kde bude vytvořena skupina prostředků hello.
-   * **-f (nebo --template-file)**. Cesta k souboru šablony ARM tooyour.
-   * **-e (nebo --parameters-file)**. Cesta k souboru parametrů ARM tooyour.
+   * **-n (nebo --name)**. Název skupiny prostředků, který se má vytvořit.
+   * **-l (nebo --location)**. Oblast Azure, kde se skupina prostředků vytvoří.
+   * **-f (nebo --template-file)**. Cesta k souboru šablony ARM.
+   * **-e (nebo --parameters-file)**. Cesta k souboru parametrů ARM.
 

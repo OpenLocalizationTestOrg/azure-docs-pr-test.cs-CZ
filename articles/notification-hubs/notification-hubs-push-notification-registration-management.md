@@ -1,6 +1,6 @@
 ---
-title: "aaaRegistration správy"
-description: "Toto téma vysvětluje, jak zařízení tooregister pomocí centra oznámení v pořadí tooreceive nabízená oznámení."
+title: "Registrace správy"
+description: "Toto téma vysvětluje, jak k registraci zařízení s centry oznámení, aby bylo možné přijímat nabízená oznámení."
 services: notification-hubs
 documentationcenter: .net
 author: ysxu
@@ -14,34 +14,34 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: 76471a45c7a0da1614ceed82b73cdb3319979ff7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a1a349150ef4c7837932706f0c4fcc8d022ec7ab
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="registration-management"></a>Správa registrací
 ## <a name="overview"></a>Přehled
-Toto téma vysvětluje, jak zařízení tooregister pomocí centra oznámení v pořadí tooreceive nabízená oznámení. Hello téma popisuje registrace na vysoké úrovni a potom zavádí hello dva hlavní vzory pro registraci zařízení: registrace z hello zařízení přímo toohello centra oznámení a registraci prostřednictvím back-end aplikace. 
+Toto téma vysvětluje, jak k registraci zařízení s centry oznámení, aby bylo možné přijímat nabízená oznámení. Téma popisuje registrace na vysoké úrovni a potom zavádí dvě hlavní vzory pro registraci zařízení: registraci ze zařízení přímo k centru oznámení a registraci prostřednictvím back-end aplikace. 
 
 ## <a name="what-is-device-registration"></a>Co je registrace zařízení
 Registrace zařízení s centrem oznámení se provádí pomocí **registrace** nebo **instalace**.
 
 #### <a name="registrations"></a>Registrace
-Registrace přidruží hello zpracovat oznámení služby platformy (PNS) pro zařízení s značky a případně šablonu. popisovače systému PNS Hello může být ChannelURI, token zařízení nebo id registrace GCM. Značky jsou použité tooroute oznámení toohello správná sada popisovačů zařízení. Další informace najdete v tématu [směrování a značky výrazy](notification-hubs-tags-segment-push-message.md). Šablony jsou použité tooimplement za registraci transformace. Další informace najdete v tématu [šablony](notification-hubs-templates-cross-platform-push-messages.md).
+Registrace přidruží popisovač služby oznámení platformy (PNS) pro zařízení značky a případně šablonu. Popisovače systému PNS může být ChannelURI, token zařízení nebo id registrace GCM. Značky se používají k oznámení směrovat na správná sada popisovačů zařízení. Další informace najdete v tématu [směrování a značky výrazy](notification-hubs-tags-segment-push-message.md). Šablony slouží k implementaci za registraci transformace. Další informace najdete v tématu [šablony](notification-hubs-templates-cross-platform-push-messages.md).
 
 #### <a name="installations"></a>Instalace
-Instalace je vylepšený registrace, který zahrnuje kontejner nabízené souvisejících vlastností. Je hello tooregistering nejnovější a nejlepší přístup zařízení. Však není podporován na straně klienta .NET SDK ([SDK centra oznámení pro back-end operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) ještě.  To znamená, že pokud se registrujete ze samotného klientského zařízení hello, byste měli toouse hello [rozhraní API REST centra oznámení](https://msdn.microsoft.com/library/mt621153.aspx) přístupu toosupport instalace. Pokud používáte back-end službu, byste měli mít toouse [SDK centra oznámení pro back-end operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+Instalace je vylepšený registrace, který zahrnuje kontejner nabízené souvisejících vlastností. Je nejnovější a nejlepší způsob registrace zařízení. Však není podporován na straně klienta .NET SDK ([SDK centra oznámení pro back-end operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) ještě.  To znamená, že pokud registrujete ze samotného klientského zařízení, je třeba použít [rozhraní API REST centra oznámení](https://msdn.microsoft.com/library/mt621153.aspx) přístup k podpoře instalaci. Pokud používáte back-end službu, byste měli použít [SDK centra oznámení pro back-end operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
-Hello Následují některé instalace toousing klíčových výhod:
+Tady jsou některé klíčové výhody pomocí instalace:
 
 * Vytvoření nebo aktualizace instalace je plně idempotent. Proto ji můžete zopakovat bez jakékoli pochybnostmi duplicitní registrace.
-* Instalační model Hello umožňuje snadno toodo jednotlivých nabízených oznámení - cílení na konkrétní zařízení. Značku systému **"$InstallationId: [installationId]"** se automaticky přidá s každou instalace na základě registrace. Proto můžete volat odeslání toothis značky tootarget určité zařízení bez nutnosti toodo další kódování.
-* Použití instalace umožňuje také můžete toodo registrace částečné aktualizace. Hello částečné aktualizace instalace se požaduje pomocí metody PATCH pomocí hello [JSON-Patch standard](https://tools.ietf.org/html/rfc6902). To je zvlášť užitečné, když chcete, aby tooupdate značky na hello registrace. Nemáte toopull dolů hello celý registrace a pak znovu odeslat všechny předchozí značky hello.
+* Instalační model usnadňuje provést jednotlivé nabízených oznámení - cílení na konkrétní zařízení. Značku systému **"$InstallationId: [installationId]"** se automaticky přidá s každou instalace na základě registrace. Proto můžete volat odeslání na tuto značku zaměřit na konkrétní zařízení bez nutnosti psaní Další.
+* Pomocí instalace také umožňuje provést registraci částečné aktualizace. Částečné aktualizace instalace se požaduje pomocí metody PATCH [JSON-Patch standard](https://tools.ietf.org/html/rfc6902). To je zvlášť užitečné, pokud chcete aktualizovat značky na registraci. Nemáte stahují celý registrace a pak znovu odeslat všechny předchozí značky.
 
-Instalace může obsahovat hello hello následující vlastnosti. Úplný seznam najdete vlastnosti hello instalace [vytvoření nebo instalaci přepsat REST API](https://msdn.microsoft.com/library/azure/mt621153.aspx) nebo [vlastnosti instalace](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx) pro hello.
+Instalace může obsahovat následující vlastnosti. Úplný seznam najdete v tématu instalace vlastnosti [vytvoření nebo instalaci přepsat REST API](https://msdn.microsoft.com/library/azure/mt621153.aspx) nebo [vlastnosti instalace](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx) pro.
 
-    // Example installation format tooshow some supported properties
+    // Example installation format to show some supported properties
     {
         installationId: "",
         expirationTime: "",
@@ -77,37 +77,37 @@ Instalace může obsahovat hello hello následující vlastnosti. Úplný seznam
 
 
 
-Je důležité toonote, který už platnost registrace a instalace ve výchozím nastavení.
+Je důležité si uvědomit, že registrace a instalace ve výchozím nastavení už platnost.
 
-Registrace a instalace musí obsahovat platný popisovače systému PNS pro každé zařízení nebo kanál. Protože popisovačů systému PNS se dá získat jenom v aplikaci klienta na hello zařízení, je jeden vzor tooregister přímo na daném zařízení s hello klientskou aplikaci. Na hello jiné straně, důležité informace o zabezpečení a obchodní logiku související s tootags může vyžadovat toomanage registrace zařízení v back-end aplikace hello. 
+Registrace a instalace musí obsahovat platný popisovače systému PNS pro každé zařízení nebo kanál. Vzhledem k tomu, že popisovačů systému PNS se dá získat jenom v klientskou aplikaci na zařízení, je jeden vzor zaregistrovat přímo na daném zařízení s klientské aplikace. Na druhé straně aspekty zabezpečení a obchodní logiku související s značky může vyžadovat umožňuje spravovat registraci zařízení v back-end aplikace. 
 
 #### <a name="templates"></a>Šablony
-Pokud chcete, aby toouse [šablony](notification-hubs-templates-cross-platform-push-messages.md), instalace zařízení hello také obsahovat všechny šablony, které jsou spojené s tímto zařízením v JSON formátu (viz ukázka výše). Hello názvy šablon pomůže cíle různé šablony pro hello stejné zařízení.
+Pokud chcete použít [šablony](notification-hubs-templates-cross-platform-push-messages.md), instalace zařízení také obsahovat všechny šablony, které jsou spojené s tímto zařízením v JSON formátu (viz ukázka výše). Názvy šablon pomoci cíl různé šablony pro stejné zařízení.
 
-Všimněte si, že každý název šablony mapuje tooa šablony textu a volitelná sada značky. Kromě toho každou platformu můžete mít další šablony vlastnosti. Pro Windows Store (pomocí WNS) a Windows Phone 8 (pomocí MPNS) může být další sadu hlaviček součástí hello šablony. V případě hello služby APN můžete nastavit vlastnost tooeither vypršení platnosti konstanta nebo tooa výraz šablony. Úplný seznam najdete vlastnosti hello instalace [vytvoření nebo instalaci přepsat REST](https://msdn.microsoft.com/library/azure/mt621153.aspx) tématu.
+Všimněte si, že každý název šablony se mapuje na text šablony a volitelná sada značky. Kromě toho každou platformu můžete mít další šablony vlastnosti. Pro Windows Store (pomocí WNS) a Windows Phone 8 (pomocí MPNS) může být další sadu hlaviček součástí šablony. V případě služby APN můžete nastavit vlastnost vypršení platnosti buď konstanta, nebo výraz šablony. Úplný seznam najdete v tématu instalace vlastnosti [vytvoření nebo instalaci přepsat REST](https://msdn.microsoft.com/library/azure/mt621153.aspx) tématu.
 
 #### <a name="secondary-tiles-for-windows-store-apps"></a>Sekundární dlaždice pro aplikace pro Windows Store
-Pro klientské aplikace Windows Store hello odesílání oznámení dlaždice toosecondary je stejný jako odesláním toohello primární. To je podporováno také v instalaci. Všimněte si, že sekundární dlaždice mají různé ChannelUri, které hello SDK na vaší klientské aplikace zpracovává transparentně.
+Pro klientské aplikace Windows Store odesílání oznámení do sekundární dlaždice je stejný jako je pošlete na primární. To je podporováno také v instalaci. Všimněte si, že sekundární dlaždice mají různé ChannelUri, která zpracovává sadu SDK na vaší klientské aplikace transparentně.
 
-používá slovník SecondaryTiles Hello hello stejné TileId, který je použité toocreate hello SecondaryTiles objekt v aplikaci Windows Store.
-Jako s hello primární ChannelUri, ChannelUris sekundární dlaždice můžete změnit v každém okamžiku. V pořadí tookeep hello instalace v centru oznámení hello aktualizovat hello zařízení musíte aktualizovat je s hello aktuální ChannelUris hello sekundární dlaždice.
+Slovník SecondaryTiles používá stejné TileId, který se používá k vytvoření objektu SecondaryTiles v aplikaci Windows Store.
+Stejně jako u primární ChannelUri ChannelUris sekundární dlaždice můžete změnit v každém okamžiku. Chcete-li zachovat instalace portálu v centru oznámení, aktualizovat, musíte aktualizovat zařízení s aktuální ChannelUris sekundární dlaždic je.
 
-## <a name="registration-management-from-hello-device"></a>Správa registraci ze zařízení hello
-Při správě registraci zařízení z klientské aplikace, je odpovědná za zasílání oznámení pouze hello back-end. Klientské aplikace udržovat popisovačů systému PNS až toodate a zaregistrujte značky. Hello následující obrázek znázorňuje tento vzor.
+## <a name="registration-management-from-the-device"></a>Správa registraci ze zařízení
+Při správě registraci zařízení z klientské aplikace, je odpovědná za zasílání oznámení pouze back-end. Klientské aplikace průběžně aktualizovat popisovačů systému PNS a zaregistrujte značky. Následující obrázek znázorňuje tento vzor.
 
 ![](./media/notification-hubs-registration-management/notification-hubs-registering-on-device.png)
 
-Hello zařízení nejprve načte hello systém PNS zpracování z hello Správou, a poté zaregistruje pomocí centra oznámení hello přímo. Po úspěšné registraci hello back-end aplikace hello můžete poslat oznámení cílení k registraci. Další informace o tom, najdete v části toosend oznámení [směrování a značky výrazy](notification-hubs-tags-segment-push-message.md).
-Všimněte si, že v takovém případě budete používat jenom naslouchat práva tooaccess vašeho centra oznámení z hello zařízení. Další informace najdete v tématu [zabezpečení](notification-hubs-push-notification-security.md).
+Zařízení se nejdřív načte popisovače systému PNS z systém PNS a potom zaregistruje s centrem oznámení přímo. Po úspěšné registraci back-end aplikace může odesílat oznámení cílení k registraci. Další informace o tom, jak odesílat oznámení najdete v tématu [směrování a značky výrazy](notification-hubs-tags-segment-push-message.md).
+Všimněte si, že v takovém případě budete používat jenom naslouchat práva pro přístup k vaší centra oznámení ze zařízení. Další informace najdete v tématu [zabezpečení](notification-hubs-push-notification-security.md).
 
-Registrace zařízení hello je hello Nejjednodušším způsobem, ale má některé nevýhody.
-Hello první nevýhodou je, že klientská aplikace lze aktualizovat pouze jeho značky když aplikace hello je aktivní. Například pokud má uživatel dvě zařízení, které registrují týmy související toosport značky, pokud první zařízení hello zaregistruje pro další značky (například Seahawks), hello druhé zařízení obdrží hello upozornění o hello Seahawks až po aplikace hello na hello druhé zařízení je provést ještě jednou. Obecně platí když značky jsou ovlivněné více zařízení, správa značky z back-end hello je žádoucí možnost.
-druhý nevýhodou Hello registrace správy z klienta aplikace hello je, že vzhledem k tomu, že aplikace může hacker, zabezpečení hello registrace toospecific značky vyžaduje zvláštní pozornost, jak je popsáno v části hello "zabezpečení na úrovni značky."
+Nejjednodušším způsobem je registraci ze zařízení, ale má některé nevýhody.
+První nevýhodou je, že klientská aplikace lze aktualizovat pouze jeho značky když je aplikace aktivní. Například pokud má uživatel dvě zařízení, které registrují značky související s sport týmy během první zařízení zaregistruje pro další značky (například Seahawks), druhé zařízení nebude dostávat oznámení o Seahawks aplikace na druhé zařízení je proveden ještě jednou. Obecně platí když značky jsou ovlivněné více zařízení, správa značky z back-end je žádoucí možnost.
+Druhý nevýhodou registrace správy z klientské aplikace je, že vzhledem k tomu, že aplikace může hacker, zabezpečení, aby se registrace konkrétními značkami vyžaduje zvláštní pozornost, jak je popsáno v části "zabezpečení na úrovni značky."
 
-#### <a name="example-code-tooregister-with-a-notification-hub-from-a-device-using-an-installation"></a>Příklad kódu tooregister centra oznámení ze zařízení pomocí instalace
-V tuto chvíli je podporováno pouze pomocí hello [rozhraní API REST centra oznámení](https://msdn.microsoft.com/library/mt621153.aspx).
+#### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-an-installation"></a>Ukázkový kód pro registraci se Centrum oznámení ze zařízení pomocí instalace
+V tuto chvíli je podporováno pouze pomocí [rozhraní API REST centra oznámení](https://msdn.microsoft.com/library/mt621153.aspx).
 
-Můžete také použít metodu PATCH hello pomocí hello [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) aktualizace hello instalace.
+Můžete taky pomocí metody PATCH [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) pro aktualizaci instalaci.
 
     class DeviceInstallation
     {
@@ -128,7 +128,7 @@ Můžete také použít metodu PATCH hello pomocí hello [JSON-Patch standard](h
         string hubResource = "installations/" + deviceInstallation.installationId + "?";
         string apiVersion = "api-version=2015-04";
 
-        // Determine hello targetUri that we will sign
+        // Determine the targetUri that we will sign
         string uri = connectionSaSUtil.Endpoint + hubName + "/" + hubResource + apiVersion;
 
         //=== Generate SaS Security Token for Authorization header ===
@@ -186,17 +186,17 @@ Můžete také použít metodu PATCH hello pomocí hello [JSON-Patch standard](h
 
 
 
-#### <a name="example-code-tooregister-with-a-notification-hub-from-a-device-using-a-registration"></a>Příklad kódu tooregister centra oznámení z pomocí registrace zařízení
-Tyto metody vytvořit nebo aktualizovat registraci pro hello zařízení, na které se nazývají. To znamená, musí přepsat v pořadí tooupdate hello popisovač nebo hello značek, hello celý registrace. Mějte na paměti, že jsou registrace přechodný, a proto byste měli mít vždy spolehlivé úložiště s hello aktuální značky, které potřebuje určité zařízení.
+#### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration"></a>Ukázkový kód pro registraci se Centrum oznámení ze zařízení pomocí registrace
+Tyto metody vytvořit nebo aktualizovat registrace pro zařízení, na které se nazývají. To znamená, musí přepsat za účelem aktualizace popisovač nebo značky, celý registrace. Mějte na paměti, že jsou registrace přechodný, a proto byste měli mít vždy spolehlivé úložiště s aktuální značky, které potřebuje určité zařízení.
 
-    // Initialize hello Notification Hub
+    // Initialize the Notification Hub
     NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(listenConnString, hubName);
 
-    // hello Device id from hello PNS
+    // The Device id from the PNS
     var pushChannel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
 
-    // If you are registering from hello client itself, then store this registration id in device
-    // storage. Then when hello app starts, you can check if a registration id already exists or not before
+    // If you are registering from the client itself, then store this registration id in device
+    // storage. Then when the app starts, you can check if a registration id already exists or not before
     // creating.
     var settings = ApplicationData.Current.LocalSettings.Values;
 
@@ -240,21 +240,21 @@ Tyto metody vytvořit nebo aktualizovat registraci pro hello zařízení, na kte
 
 
 ## <a name="registration-management-from-a-backend"></a>Registrace správy z back-end
-Správa registrace z back-end hello vyžaduje zápis další kód. aplikace Hello z hello zařízení musíte zadat při každém spuštění aplikace hello (společně se značkami a šablon) hello aktualizovaný systém PNS popisovač toohello back-end a back-end hello musíte aktualizovat tento popisovač v centru oznámení hello. Hello následující obrázek znázorňuje tento návrh.
+Správa registrace z back-end vyžaduje zápis další kód. Aplikace ze zařízení musíte zadat zpracovat aktualizovaný systém PNS a back-end při každém spuštění aplikace (společně se značkami a šablony) a back-end musíte aktualizovat tento popisovač v centru oznámení. Následující obrázek znázorňuje tento návrh.
 
 ![](./media/notification-hubs-registration-management/notification-hubs-registering-on-backend.png)
 
-Hello výhody správy registrace z back-end hello zahrnují hello možnost toomodify značky tooregistrations i v případě, že hello odpovídající aplikace na zařízení hello je neaktivní a tooauthenticate hello klientské aplikace před přidáním registrace tooits značky.
+Výhody správy registrace z back-end, zahrnují možnost Upravit značky na registrací i v případě, že odpovídající aplikace na zařízení je neaktivní a k ověření klientské aplikace před přidáním značky k jeho registraci.
 
-#### <a name="example-code-tooregister-with-a-notification-hub-from-a-backend-using-an-installation"></a>Příklad kódu tooregister centra oznámení z back-end pomocí instalace
-Hello klientské zařízení stále získá jeho popisovače systému PNS a vlastností instalace relevantní jako dříve a volání vlastní rozhraní API na back-end hello, které můžete provést registraci hello a autorizaci značky atd hello back-end můžete využít hello [SDK centra oznámení pro operace back-end](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+#### <a name="example-code-to-register-with-a-notification-hub-from-a-backend-using-an-installation"></a>Ukázkový kód pro registraci se centra oznámení z back-end pomocí instalace
+Klientské zařízení stále získá jeho popisovače systému PNS a vlastnosti relevantní instalace jako před a volání vlastní rozhraní API na back-end, které můžete provést registraci a autorizaci značky atd. Můžete využít back-end [SDK centra oznámení pro back-end operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
-Můžete také použít metodu PATCH hello pomocí hello [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) aktualizace hello instalace.
+Můžete taky pomocí metody PATCH [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) pro aktualizaci instalaci.
 
-    // Initialize hello Notification Hub
+    // Initialize the Notification Hub
     NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(listenConnString, hubName);
 
-    // Custom API on hello backend
+    // Custom API on the backend
     public async Task<HttpResponseMessage> Put(DeviceInstallation deviceUpdate)
     {
 
@@ -282,7 +282,7 @@ Můžete také použít metodu PATCH hello pomocí hello [JSON-Patch standard](h
         }
 
 
-        // In hello backend we can control if a user is allowed tooadd tags
+        // In the backend we can control if a user is allowed to add tags
         //installation.Tags = new List<string>(deviceUpdate.Tags);
         //installation.Tags.Add("username:" + username);
 
@@ -292,12 +292,12 @@ Můžete také použít metodu PATCH hello pomocí hello [JSON-Patch standard](h
     }
 
 
-#### <a name="example-code-tooregister-with-a-notification-hub-from-a-device-using-a-registration-id"></a>Příklad kódu tooregister centra oznámení z pomocí id registrace zařízení
+#### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration-id"></a>Ukázkový kód pro registraci se Centrum oznámení ze zařízení pomocí id registrace
 Z vašeho back-end aplikace můžete provádět základní operace CRUDS při registraci. Například:
 
     var hub = NotificationHubClient.CreateClientFromConnectionString("{connectionString}", "hubName");
 
-    // create a registration description object of hello correct type, e.g.
+    // create a registration description object of the correct type, e.g.
     var reg = new WindowsRegistrationDescription(channelUri, tags);
 
     // Create
@@ -316,5 +316,5 @@ Z vašeho back-end aplikace můžete provádět základní operace CRUDS při re
     await hub.DeleteRegistrationAsync(r);
 
 
-back-end Hello musí zpracovávat souběžnosti mezi aktualizace registrace. Service Bus nabízí optimistické řízení souběžného pro správu registrace. Na úrovni hello HTTP tato možnost je implementovaná pomocí hello použití značky ETag na operace správy registrace. Tato funkce slouží transparentně SDKs Microsoft, která je vyvolána výjimka, pokud aktualizace byl odmítnut z důvodů souběžnosti. back-end aplikace Hello je zodpovědná za zpracování těchto výjimek a v případě potřeby opakováním hello aktualizace.
+Back-end musí zpracovávat souběžnosti mezi aktualizace registrace. Service Bus nabízí optimistické řízení souběžného pro správu registrace. Na úrovni protokolu HTTP tato možnost je implementovaná pomocí použití značky ETag na operace správy registrace. Tato funkce slouží transparentně SDKs Microsoft, která je vyvolána výjimka, pokud aktualizace byl odmítnut z důvodů souběžnosti. Back-end aplikace je zodpovědná za zpracování těchto výjimek a v případě potřeby opakováním aktualizace.
 

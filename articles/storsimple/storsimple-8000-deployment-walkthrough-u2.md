@@ -1,6 +1,6 @@
 ---
-title: "aaaDeploy zařízení řady StorSimple 8000 na portálu Azure | Microsoft Docs"
-description: "Popisuje hello kroky a osvědčené postupy nasazení zařízení řady StorSimple 8000 hello s aktualizací 3 nebo novější a služby StorSimple Manager zařízení."
+title: "Nasazení zařízení StorSimple řady 8000 na webu Azure Portal | Dokumentace Microsoftu"
+description: "Popis kroků a osvědčených postupů pro nasazení zařízení StorSimple řady 8000 s aktualizací Update 3 nebo novější a služby Správce zařízení StorSimple."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -12,130 +12,130 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/03/2017
+ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 28d32d6c0d37169902d9db91701deee4fd99dc4e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: bcf42ebb081517d247690ee57c2be274784ef29d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>Nasazení místního zařízení StorSimple (Update 3 a novější)
 
 ## <a name="overview"></a>Přehled
-Vítejte tooMicrosoft nasazení zařízení StorSimple v Azure. Tyto kurzy nasazení se vztahují tooStorSimple řady 8000 Update 3 nebo novější. Tato série kurzů zahrnuje kontrolní seznam konfigurace, požadavky konfigurace a podrobné kroky konfigurace zařízení StorSimple.
+Vítejte v průvodci nasazením zařízení Microsoft Azure StorSimple. Tyto kurzy nasazení se týkají StorSimple řady 8000 s aktualizací Update 3 nebo novější. Tato série kurzů zahrnuje kontrolní seznam konfigurace, požadavky konfigurace a podrobné kroky konfigurace zařízení StorSimple.
 
-Hello informace v těchto kurzech předpokládá, že kontrole hello bezpečnostní opatření a vybaleno, namontovali do racku a zapojena jeho zařízení StorSimple. Pokud stále potřebujete tooperform ty úlohy, začněte prostudováním hello [bezpečnostní opatření](storsimple-8000-safety.md). Postupujte podle pokynů pro konkrétní zařízení hello toounpack, namontujte do racku a zapojení kabeláže zařízení.
+Informace v těchto kurzech předpokládají, že jste si přečetli informace o bezpečnostních opatřeních a že jste zařízení StorSimple vybalili, namontovali do racku a zapojili jeho kabeláž. Pokud jste tyto kroky ještě neprovedli, začněte prostudováním [bezpečnostních opatření](storsimple-8000-safety.md). Podle pokynů ke konkrétnímu zařízení zařízení vybalte, namontujte do racku a zapojte jeho kabeláž.
 
 * [Zařízení 8100 – Vybalení, namontování do racku a zapojení kabeláže](storsimple-8100-hardware-installation.md)
 * [Zařízení 8600 – Vybalení, namontování do racku a zapojení kabeláže](storsimple-8600-hardware-installation.md)
 
-Je třeba správce oprávnění toocomplete hello procesu instalace a konfigurace. Doporučujeme, abyste si prošli kontrolní seznam konfigurace hello před zahájením. proces nasazení a konfigurace Hello může trvat některé toocomplete čas.
+K dokončení této instalace a procesu konfigurace potřebujete oprávnění správce. Doporučujeme, abyste si před zahájením práce prošli kontrolní seznam konfigurace. Proces nasazení a konfigurace může trvat nějakou dobu.
 
 > [!NOTE]
-> informace o nasazení Hello StorSimple publikované na webu Microsoft Azure hello platí tooStorSimple 8000 řady jenom zařízení. Úplné informace o řadě zařízení hello 7000, přejděte na: [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com). Informace o nasazení řady 7000 najdete v části hello [StorSimple úvodní příručce k systému](http://onlinehelp.storsimple.com/111_Appliance/). 
+> Informace o nasazení zařízení StorSimple publikované na webu Microsoft Azure platí pouze pro řadu zařízení StorSimple 8000. Úplné informace o řadě zařízení 7000 najdete na následující adrese: [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com). Informace o nasazení řady 7000 najdete v [Úvodní příručce k systému StorSimple](http://onlinehelp.storsimple.com/111_Appliance/). 
 
 
 ## <a name="deployment-steps"></a>Kroky nasazení
-Proveďte tyto kroky požadované tooconfigure zařízení StorSimple a připojte ho služba tooyour Manager zařízení StorSimple. Kromě toho toohello potřebné kroky, jsou volitelné kroky a postupy, které může být vhodné při nasazení hello. Hello podrobný postup nasazení pokyny o tom, kdy byste měli dělat každý z těchto kroků volitelné.
+Pomocí níže uvedených požadovaných kroků zařízení StorSimple nakonfigurujte a připojte ke službě Správce zařízení StorSimple. Kromě požadovaných kroků existují ještě některé volitelné kroky a postupy, které může být vhodné při nasazení provést. Informace o tom, kdy je vhodné provést jednotlivé volitelné kroky, jsou vždy uvedeny v příslušných požadovaných krocích nasazení.
 
 | Krok | Popis |
 | --- | --- |
-| **POŽADAVKY** |Tyto musí splnit v rámci přípravy nasazení hello. |
-| [Kontrolní seznam konfigurace nasazení](#deployment-configuration-checklist) |Použijte tento kontrolní seznam toogather a zaznamenávat informace před a během nasazování hello. |
-| [Požadavky nasazení](#deployment-prerequisites) |Toto ověření hello prostředí je připravený pro nasazení. |
+| **POŽADAVKY** |Tyto požadavky je nutné splnit v rámci přípravy na nasazení. |
+| [Kontrolní seznam konfigurace nasazení](#deployment-configuration-checklist) |Kontrolní seznam použijte ke shromáždění a zaznamenání informací před nasazením a během nasazení. |
+| [Požadavky nasazení](#deployment-prerequisites) |Splnění požadavků nasazení kvalifikuje prostředí jako připravené na nasazení. |
 |  | |
-| **PODROBNÝ POSTUP NASAZENÍ** |Tyto kroky jsou požadované toodeploy zařízení StorSimple v produkčním prostředí. |
+| **PODROBNÝ POSTUP NASAZENÍ** |Tyto kroky jsou požadované k produkčnímu nasazení zařízení StorSimple. |
 | [Krok 1: Vytvoření nové služby](#step-1-create-a-new-service) |Nastavte správu cloudu a úložiště pro zařízení StorSimple. *Pokud máte existující službu pro jiná zařízení StorSimple, tento krok přeskočte*. |
-| [Krok 2: Získání registračního klíče služby hello](#step-2-get-the-service-registration-key) |Pomocí tohoto klíče tooregister & připojení zařízení StorSimple se službou správy hello. |
-| [Krok 3: Konfigurace a registrace zařízení hello pomocí Windows Powershellu pro StorSimple](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |toocomplete hello instalaci pomocí služby správy hello, připojit síť tooyour hello zařízení a zaregistrovat ji pomocí Azure. |
-| [Krok 4: Dokončení minimální instalace zařízení](#step-4-complete-minimum-device-setup)</br>[Volitelné: Aktualizace zařízení StorSimple](#scan-for-and-apply-updates) |Použijte hello management service toocomplete hello nastavení zařízení a povolit tooprovide úložiště. |
-| [Krok 5: Vytvoření kontejneru svazků](#step-5-create-a-volume-container) |Vytvoření kontejneru svazků tooprovision. Kontejner svazků obsahuje účet úložiště, šířku pásma a nastavení šifrování pro všechny svazky hello v ní obsažené. |
-| [Krok 6: Vytvoření svazku](#step-6-create-a-volume) |Zřiďte svazky úložiště v zařízení StorSimple hello vašich serverů. |
-| [Krok 7: Připojení, inicializace a formátování svazků](#step-7-mount-initialize-and-format-a-volume)</br>[Volitelné: Konfigurace funkce MPIO](storsimple-8000-configure-mpio-windows-server.md) |Připojte vaše servery úložiště iSCSI toohello poskytované hello zařízení. Volitelně konfigurujte funkci MPIO tooensure, že servery budou tolerovat připojení, sítě a rozhraní selhání. |
-| [Krok 8: Provedení zálohy](#step-8-take-a-backup) |Nastavit tooprotect vaše zásady zálohování dat |
+| [Krok 2: Získání registračního klíče služby](#step-2-get-the-service-registration-key) |Pomocí tohoto klíče zaregistrujte zařízení StorSimple ve službě správy a připojte je k ní. |
+| [Krok 3: Konfigurace a registrace zařízení pomocí Windows PowerShellu pro StorSimple](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |Pokud chcete instalaci dokončit pomocí služby pro správu, připojte zařízení k síti a zaregistrujte ho v Azure. |
+| [Krok 4: Dokončení minimální instalace zařízení](#step-4-complete-minimum-device-setup)</br>[Volitelné: Aktualizace zařízení StorSimple](#scan-for-and-apply-updates) |Pomocí služby pro správu dokončete instalaci zařízení a aktivujte je k poskytování úložiště. |
+| [Krok 5: Vytvoření kontejneru svazků](#step-5-create-a-volume-container) |Vytvořte kontejner ke zřízení svazků. Kontejner svazků obsahuje účet úložiště, šířku pásma a nastavení šifrování pro všechny svazky, které jsou v něm obsažené. |
+| [Krok 6: Vytvoření svazku](#step-6-create-a-volume) |V zařízení StorSimple zřiďte svazky úložiště pro vaše servery. |
+| [Krok 7: Připojení, inicializace a formátování svazků](#step-7-mount-initialize-and-format-a-volume)</br>[Volitelné: Konfigurace funkce MPIO](storsimple-8000-configure-mpio-windows-server.md) |Připojte své servery k úložišti iSCSI poskytovanému zařízením. Volitelně konfigurujte funkci MPIO, abyste zajistili, že servery budou tolerovat chyby připojení, sítě a rozhraní. |
+| [Krok 8: Provedení zálohy](#step-8-take-a-backup) |Nastavte zásady zálohování pro ochranu dat. |
 |  | |
-| **DALŠÍ POSTUPY** |Při nasazení řešení může být nutné toorefer toothese postupy. |
-| [Konfigurace nového účtu úložiště pro službu hello](#configure-a-new-storage-account-for-the-service) | |
-| [Použít PuTTY tooconnect toohello konzole sériového portu zařízení](#use-putty-to-connect-to-the-device-serial-console) | |
-| [Získání názvu IQN hostitele Windows Server hello](#get-the-iqn-of-a-windows-server-host) | |
+| **DALŠÍ POSTUPY** |Tyto postupy můžete někdy potřebovat při nasazování svého řešení. |
+| [Konfigurace nového účtu úložiště pro službu](#configure-a-new-storage-account-for-the-service) | |
+| [Použití klienta PuTTY k připojení ke konzole sériového portu zařízení](#use-putty-to-connect-to-the-device-serial-console) | |
+| [Získání názvu IQN hostitele se systémem Windows Server](#get-the-iqn-of-a-windows-server-host) | |
 | [Vytvoření ruční zálohy](#create-a-manual-backup) | |
 
 
 ## <a name="deployment-configuration-checklist"></a>Kontrolní seznam konfigurace nasazení
-Před nasazením zařízení, musíte toocollect informace tooconfigure hello softwaru na zařízení StorSimple. Příprava některých z těchto informací před čas pomáhá zjednodušit hello proces nasazení zařízení StorSimple hello ve vašem prostředí. Stáhnout a použít tento kontrolní seznam toonote dolů hello podrobností konfigurace během nasazování zařízení.
+Před nasazením zařízení je potřeba shromáždit informace ke konfiguraci softwaru zařízení StorSimple. Předběžná příprava některých z těchto informací vám pomůže urychlit a zjednodušit proces nasazení zařízení StorSimple ve vašem prostředí. Stáhněte si tento kontrolní seznam a používejte ho k zaznamenávání podrobností konfigurace během nasazování zařízení.
 
 * [Stáhnout kontrolní seznam konfigurace nasazení zařízení StorSimple](http://www.microsoft.com/download/details.aspx?id=49159)
 
 ## <a name="deployment-prerequisites"></a>Požadavky nasazení
-Hello následující části popisují požadavky konfigurace hello služby StorSimple Manager zařízení a zařízení StorSimple.
+Následující části popisují požadavky konfigurace pro službu Správce zařízení StorSimple a zařízení StorSimple.
 
-### <a name="for-hello-storsimple-device-manager-service"></a>Pro hello služby StorSimple Manager zařízení
+### <a name="for-the-storsimple-device-manager-service"></a>Služba Správce zařízení StorSimple
 Než začnete, ujistěte se, že:
 
 * Máte účet Microsoft a přihlašovací údaje účtu.
 * Máte účet služby Microsoft Azure Storage a přihlašovací údaje účtu.
-* Vaše předplatné Microsoft Azure je povoleno pro hello služby StorSimple Manager zařízení. Vaše předplatné by mělo být zakoupeno prostřednictvím hello [smlouva Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/).
-* Máte přístup k softwaru pro emulaci tooterminal jako je například PuTTY.
+* Vaše předplatné Microsoft Azure je povoleno pro službu Správce zařízení StorSimple. Předplatné by mělo být zakoupeno prostřednictvím [smlouvy Enterprise](https://azure.microsoft.com/pricing/enterprise-agreement/).
+* Máte přístup k softwaru pro emulaci terminálu, jako je například PuTTY.
 
-### <a name="for-hello-device-in-hello-datacenter"></a>Pro zařízení hello v datovém centru hello
-Před konfigurací zařízení hello, ujistěte se, že je zařízení zcela vybaleno, namontováno v racku a kompletně zapojena jeho kabeláž napájení, sítě a sériového přístupu, jak je popsáno v:
+### <a name="for-the-device-in-the-datacenter"></a>Zařízení v datovém centru
+Před zahájením konfigurace zařízení se ujistěte, že je zařízení zcela vybaleno, namontováno v racku a je kompletně zapojena jeho kabeláž napájení, sítě a sériového přístupu, jak je popsáno v následujících článcích:
 
 * [Zařízení 8100 – Vybalení, namontování do racku a zapojení kabeláže](storsimple-8100-hardware-installation.md)
 * [Zařízení 8600 – Vybalení, namontování do racku a zapojení kabeláže](storsimple-8600-hardware-installation.md)
 
-### <a name="for-hello-network-in-hello-datacenter"></a>Pro síť hello v datovém centru hello
+### <a name="for-the-network-in-the-datacenter"></a>Síť v datovém centru
 Než začnete, ujistěte se, že:
 
-* Hello porty v bráně firewall datového centra jsou otevřené tooallow pro přenosy iSCSI a cloudu jak je popsáno v [požadavcích sítě pro zařízení StorSimple](storsimple-8000-system-requirements.md#networking-requirements-for-your-storsimple-device).
+* Porty brány firewall vašeho datového centra jsou otevřeny, aby umožňovaly přenos dat standardu iSCSI a cloudu, jak je popsáno v [Požadavcích sítě pro zařízení StorSimple](storsimple-8000-system-requirements.md#networking-requirements-for-your-storsimple-device).
 
 ## <a name="step-by-step-deployment"></a>Podrobný postup nasazení
-Použijte následující podrobné pokyny toodeploy hello zařízení StorSimple v datovém centru hello.
+Pomocí následujících kroků nasaďte zařízení StorSimple v datovém centru.
 
 ## <a name="step-1-create-a-new-service"></a>Krok 1: Vytvoření nové služby
-Služba Správce zařízení StorSimple může spravovat více zařízení StorSimple. Proveďte následující kroky toocreate instanci služby StorSimple Manager zařízení hello hello.
+Služba Správce zařízení StorSimple může spravovat více zařízení StorSimple. Pomocí následujících kroků vytvořte instanci služby Správce zařízení StorSimple.
 
 [!INCLUDE [storsimple-create-new-service](../../includes/storsimple-8000-create-new-service.md)]
 
 > [!IMPORTANT]
-> Pokud jste nepovolili automatické vytvoření účtu úložiště hello s službou, budete potřebovat toocreate alespoň jeden účet úložiště po úspěšném vytvoření služby. Tento účet úložiště se používá při vytváření kontejneru svazku.
+> Pokud jste nepovolili automatické vytvoření účtu úložiště při vytvoření služby, po úspěšném vytvoření služby bude nutné vytvořit alespoň jeden účet úložiště. Tento účet úložiště se používá při vytváření kontejneru svazku.
 >
-> * Pokud nebyl vytvořen účet úložiště automaticky, přejděte příliš[konfigurace nového účtu úložiště pro službu hello](#configure-a-new-storage-account-for-the-service) podrobné pokyny.
-> * Pokud jste povolili hello automatické vytvoření účtu úložiště, pokračujte příliš[krok 2: registrační klíč služby hello Get](#step-2-get-the-service-registration-key).
+> * Pokud jste nevytvořili účet úložiště automaticky, najdete podrobné pokyny k vytvoření účtu v tématu [Konfigurace nového účtu úložiště pro službu](#configure-a-new-storage-account-for-the-service).
+> * Pokud jste automatické vytvoření účtu úložiště povolili, pokračujte na [krok 2: Získání registračního klíče služby](#step-2-get-the-service-registration-key).
 
 
-## <a name="step-2-get-hello-service-registration-key"></a>Krok 2: Získání registračního klíče služby hello
-Po hello služby StorSimple Manager zařízení je spuštěný a funkční, budete potřebovat registrační klíč služby hello tooget. Tento klíč je použité tooregister a připojení zařízení StorSimple službou hello.
+## <a name="step-2-get-the-service-registration-key"></a>Krok 2: Získání registračního klíče služby
+Po vytvoření a spuštění služby Správce zařízení StorSimple je nutné získat registrační klíč služby. Tento klíč se používá k registraci a připojení zařízení StorSimple ke službě.
 
-Proveďte hello proveďte kroky v hello portálu Azure.
+Na webu Azure Portal proveďte následující kroky.
 
 [!INCLUDE [storsimple-8000-get-service-registration-key](../../includes/storsimple-8000-get-service-registration-key.md)]
 
-## <a name="step-3-configure-and-register-hello-device-through-windows-powershell-for-storsimple"></a>Krok 3: Konfigurace a registrace zařízení hello pomocí Windows Powershellu pro StorSimple
-Pomocí prostředí Windows PowerShell pro StorSimple toocomplete hello počátečním nastavení zařízení StorSimple, jak je popsáno v hello následující postup. Tento krok musíte toocomplete software pro emulaci terminálu toouse. Další informace najdete v tématu [konzoly sériového portu toohello zařízení tooconnect pro použití klienta PuTTY](#use-putty-to-connect-to-the-device-serial-console).
+## <a name="step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple"></a>Krok 3: Konfigurace a registrace zařízení pomocí Windows PowerShellu pro StorSimple
+Pomocí Windows PowerShellu pro StorSimple dokončete počáteční nastavení zařízení StorSimple, jak je popsáno v následujícím postupu. K dokončení tohoto kroku je potřeba použít software pro emulaci terminálu. Další informace naleznete v tématu [Použití klienta PuTTY k připojení ke konzole sériového portu zařízení](#use-putty-to-connect-to-the-device-serial-console).
 
 [!INCLUDE [storsimple-8000-configure-and-register-device-u2](../../includes/storsimple-8000-configure-and-register-device-u2.md)]
 
 ## <a name="step-4-complete-minimum-device-setup"></a>Krok 4: Dokončení minimální instalace zařízení
-Pro hello minimální konfigurace zařízení zařízení StorSimple je potřeba: 
+K provedení minimální konfigurace zařízení StorSimple je nutné provést následující kroky: 
 
 * Zadejte popisný název zařízení.
-* Nastavit časové pásmo hello zařízení.
-* Přiřadíte pevné IP adresy řadiče tooboth hello.
+* Nastavte časové pásmo zařízení.
+* Oběma řadičům přiřadit pevné IP adresy.
 
-Proveďte následující kroky v hello Azure portálu toocomplete hello minimální instalace zařízení hello.
+K dokončení minimální instalace zařízení proveďte na webu Azure Portal následující kroky.
 
 [!INCLUDE [storsimple-8000-complete-minimum-device-setup-u2](../../includes/storsimple-8000-complete-minimum-device-setup-u2.md)]
 
 ## <a name="step-5-create-a-volume-container"></a>Krok 5: Vytvoření kontejneru svazků
-Kontejner svazků obsahuje účet úložiště, šířku pásma a nastavení šifrování pro všechny svazky hello v ní obsažené. Před zahájením zřizování svazků v zařízení StorSimple budete potřebovat toocreate kontejner svazků.
+Kontejner svazků obsahuje účet úložiště, šířku pásma a nastavení šifrování pro všechny svazky, které jsou v něm obsažené. Kontejner svazků je nutné vytvořit před zahájením zřizování svazků v zařízení StorSimple.
 
-Proveďte následující kroky v hello Azure portálu toocreate kontejner svazků hello.
+Provedením následujících kroků na webu Azure Portal vytvořte kontejner svazků.
 
 [!INCLUDE [storsimple-8000-create-volume-container](../../includes/storsimple-8000-create-volume-container.md)]
 
 ## <a name="step-6-create-a-volume"></a>Krok 6: Vytvoření svazku
-Po vytvoření kontejneru svazků můžete zřídit svazek úložiště na zařízení StorSimple hello pro své servery. Proveďte hello proveďte kroky v hello Azure portálu toocreate svazku.
+Po vytvoření kontejneru svazků můžete v zařízení StorSimple zřídit svazek úložiště pro své servery. Provedením následujících kroků na webu Azure Portal vytvořte svazek.
 
 > [!IMPORTANT]
 > Služba Správce zařízení StorSimple umožňuje vytvářet dynamicky i zcela zřizované svazky. Nelze však vytvářet částečně zřizované svazky.
@@ -144,57 +144,57 @@ Po vytvoření kontejneru svazků můžete zřídit svazek úložiště na zař�
 [!INCLUDE [storsimple-8000-create-volume](../../includes/storsimple-8000-create-volume-u2.md)]
 
 ## <a name="step-7-mount-initialize-and-format-a-volume"></a>Krok 7: Připojení, inicializace a formátování svazků
-Hello následující kroky se provádějí v hostiteli systému Windows Server.
+Následující kroky se provádějí v hostiteli se systémem Windows Server.
 
 > [!IMPORTANT]
-> * Hello vysoké dostupnosti vašeho řešení StorSimple doporučujeme konfigurace funkce MPIO na vaše iSCSI předchozí tooconfiguring servery (volitelné) hostitele. Konfigurace funkce MPIO na hostitelských serverech zajistí, že hello servery budou tolerovat odkaz, sítě nebo selhání rozhraní.
-> * Funkce MPIO a standardu iSCSI instalace a konfigurace pokyny na hostitelském Windows serveru najdete příliš[konfigurace funkce MPIO pro zařízení StorSimple](storsimple-8000-configure-mpio-windows-server.md). Patří hello kroky toomount, inicializace a formátování svazků zařízení StorSimple.
-> * Funkce MPIO a standardu iSCSI instalace a konfigurace pokyny na hostitele platformy Linux najdete příliš[konfigurace funkce MPIO pro hostitele se systémem StorSimple Linux](storsimple-configure-mpio-on-linux.md)
+> * K zajištění vysoké dostupnosti vašeho řešení StorSimple doporučujeme před konfigurací standardu iSCSI nakonfigurovat na hostitelských serverech funkci MPIO (volitelné). Konfigurace funkce MPIO na hostitelských serverech zajistí, že servery budou tolerovat chyby připojení, sítě a rozhraní.
+> * Pokyny k instalaci a konfiguraci funkce MPIO a standardu iSCSI v hostiteli se systémem Windows Server najdete v tématu [Konfigurace funkce MPIO pro zařízení StorSimple](storsimple-8000-configure-mpio-windows-server.md). Tyto kroky zahrnují také kroky připojení, inicializace a formátování svazků StorSimple.
+> * Pokyny k instalaci a konfiguraci funkce MPIO a standardu iSCSI v hostiteli se systémem Linux najdete v tématu [Konfigurace funkce MPIO pro hostitele zařízení StorSimple se systémem Linux](storsimple-configure-mpio-on-linux.md)
 
-Pokud se rozhodnete tooconfigure funkce MPIO, provést následující kroky toomount hello, inicializace a formátujte svazky zařízení StorSimple na hostitelském Windows serveru.
+Pokud se rozhodnete, že funkci MPIO konfigurovat nebudete, připojte, inicializujte a formátujte svazky zařízení StorSimple v hostiteli se systémem Windows Server pomocí následujících kroků.
 
 [!INCLUDE [storsimple-8000-mount-initialize-format-volume](../../includes/storsimple-8000-mount-initialize-format-volume.md)]
 
 ## <a name="step-8-take-a-backup"></a>Krok 8: Provedení zálohy
 Zálohy vytvořené v určitých časových bodech poskytují ochranu a zvyšují možnost jejich obnovení při současném zkrácení doby potřebné k obnovení. Zařízení StorSimple lze zálohovat dvěma různými způsoby: pomocí místních snímků nebo pomocí cloudových snímků. Každý z těchto typů zálohování může být **naplánovaný** nebo **ruční**.
 
-Proveďte hello proveďte kroky v hello Azure portálu toocreate plánované zálohování.
+Provedením následujících kroků na webu Azure Portal vytvořte naplánované zálohování.
 
 [!INCLUDE [storsimple-8000-take-backup](../../includes/storsimple-8000-take-backup.md)]
 
-Ruční zálohování lze provést kdykoliv. Postupy, přejděte příliš[vytvoření ruční zálohy](#create-a-manual-backup).
+Ruční zálohování lze provést kdykoliv. Popis potřebného postupu najdete v tématu [Vytvoření ruční zálohy](#create-a-manual-backup).
 
-Dokončili jste konfiguraci zařízení hello.
+Dokončili jste konfiguraci zařízení.
 
-## <a name="configure-a-new-storage-account-for-hello-service"></a>Konfigurace nového účtu úložiště pro službu hello
-Toto je volitelný krok, je nutné tooperform, pouze pokud jste nepovolili automatické vytvoření účtu úložiště hello s službou. Účet úložiště Microsoft Azure je požadovaná toocreate kontejneru svazků zařízení StorSimple.
+## <a name="configure-a-new-storage-account-for-the-service"></a>Konfigurace nového účtu úložiště pro službu
+Toto je volitelný krok, který je potřeba provést pouze v případě, že jste ve své službě nepovolili automatické vytvoření účtu úložiště. K vytvoření kontejneru svazků zařízení StorSimple je potřeba účet služby Microsoft Azure Storage.
 
-Pokud potřebujete toocreate účet úložiště Azure v jiné oblasti, přečtěte si [o účtech úložiště Azure](../storage/common/storage-create-storage-account.md) podrobné pokyny.
+Pokud potřebujete vytvořit účet služby Azure Storage v jiné oblasti, postupujte podle pokynů v tématu [Účty Azure Storage](../storage/common/storage-create-storage-account.md).
 
-Proveďte následující kroky v hello portál Azure, na hello hello **služby StorSimple Manager zařízení** stránky.
+Na webu Azure Portal na stránce **služby Správce zařízení StorSimple** proveďte následující kroky.
 
 [!INCLUDE [storsimple-8000-configure-new-storage-account-u2](../../includes/storsimple-8000-configure-new-storage-account-u2.md)]
 
-## <a name="use-putty-tooconnect-toohello-device-serial-console"></a>Použít PuTTY tooconnect toohello konzole sériového portu zařízení
-tooconnect tooWindows Powershellu pro StorSimple, budete potřebovat software pro emulaci terminálu toouse jako je například PuTTY. PuTTY můžete použít při přístupu hello zařízení přímo pomocí konzoly sériového portu hello nebo otevřením relace Telnetu ze vzdáleného počítače.
+## <a name="use-putty-to-connect-to-the-device-serial-console"></a>Použití klienta PuTTY k připojení ke konzole sériového portu zařízení
+K připojení Windows PowerShellu pro StorSimple je nutné použít software pro emulaci terminálu, jako je například PuTTY. PuTTY můžete použít při přístupu k zařízení přímo pomocí konzoly sériového portu nebo otevřením relace Telnetu ze vzdáleného počítače.
 
-[!INCLUDE [Use PuTTY tooconnect toohello device serial console](../../includes/storsimple-use-putty.md)]
+[!INCLUDE [Use PuTTY to connect to the device serial console](../../includes/storsimple-use-putty.md)]
 
 ## <a name="scan-for-and-apply-updates"></a>Vyhledání a instalace aktualizací
-Aktualizace zařízení může trvat několik hodin. Podrobné kroky na tom, jak tooinstall hello nejnovější aktualizace naleznete příliš[nainstalovat aktualizaci 4](storsimple-8000-install-update-4.md).
+Aktualizace zařízení může trvat několik hodin. Podrobné pokyny k instalaci nejnovější aktualizace najdete v tématu s popisem [instalace aktualizace Update 4](storsimple-8000-install-update-4.md).
 
 
-## <a name="get-hello-iqn-of-a-windows-server-host"></a>Získání názvu IQN hostitele Windows Server hello
-Proveďte následující kroky tooget hello iSCSI hello kvalifikovaný název (IQN) hostitele Windows se systémem Windows Server® 2012.
+## <a name="get-the-iqn-of-a-windows-server-host"></a>Získání názvu IQN hostitele se systémem Windows Server
+Pomocí následujících kroků získejte název IQN (iSCSI Qualified Name) hostitele Windows se systémem Windows Server® 2012.
 
 [!INCLUDE [Create a manual backup](../../includes/storsimple-get-iqn.md)]
 
 ## <a name="create-a-manual-backup"></a>Vytvoření ruční zálohy
-Proveďte následující kroky v hello Azure portálu toocreate na vyžádání ruční zálohu jednoho svazku zařízení StorSimple hello.
+Provedením následujících kroků na webu Azure Portal vytvořte ruční zálohu jednoho svazku zařízení StorSimple.
 
 [!INCLUDE [Create a manual backup](../../includes/storsimple-8000-create-manual-backup.md)]
 
 ## <a name="next-steps"></a>Další kroky
 * [Konfigurace řešení StorSimple Cloud Appliance](storsimple-8000-cloud-appliance-u2.md)
-* [Použití zařízení StorSimple hello toomanage služby StorSimple Manager zařízení](storsimple-8000-manager-service-administration.md).
+* [Použití služby Správce zařízení StorSimple ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md)
 

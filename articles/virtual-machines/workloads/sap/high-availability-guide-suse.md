@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure vysoké dostupnosti virtuálních počítačů pro SAP NetWeaver na SUSE Linux Enterprise Server pro aplikace SAP | Microsoft Docs"
+title: "Azure virtuální počítače vysoká dostupnost pro SAP NetWeaver na SUSE Linux Enterprise Server pro aplikace SAP | Microsoft Docs"
 description: "Vysoká dostupnost příručce pro SAP NetWeaver na SUSE Linux Enterprise Server pro aplikace SAP"
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: sedusch
-ms.openlocfilehash: e944103df92d5ffec9196189f138e25972bea79f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 16e09797926f29bc18cb05671c986c74f9c2d4f8
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server pro aplikace SAP
 
@@ -50,13 +50,13 @@ ms.lasthandoff: 10/06/2017
 
 [sap-hana-ha]:sap-hana-high-availability.md
 
-Tento článek popisuje, jak toodeploy hello virtuálních počítačů, konfiguraci hello virtuálních počítačů, nainstalujte rozhraní framework hello clusteru a nainstalujte vysokou dostupností systému SAP NetWeaver 7.50.
-V příkladu konfigurace hello příkazy instalace atd. Počet instancí ASC 00, čísla instance YBRAT 02 a NWS ID systému SAP se používá. Hello názvy prostředků hello (třeba virtuální počítače, virtuální sítě) v příkladu hello předpokládá, že jste použili hello [konvergované šablony] [ template-converged] s SAP systému ID NWS toocreate hello prostředky.
+Tento článek popisuje postup nasazení virtuálních počítačů, konfiguraci virtuálních počítačů, nainstalujte rozhraní framework clusteru a nainstalujte systému SAP NetWeaver 7.50 vysoce dostupný.
+V konfiguraci příklad příkazy instalace atd. Počet instancí ASC 00, čísla instance YBRAT 02 a NWS ID systému SAP se používá. Názvy prostředků (například virtuální počítače, virtuální sítě) v příkladu předpokládá, že jste použili [konvergované šablony] [ template-converged] systémem SAP NWS ID pro vytvoření prostředků.
 
-Přečtěte si následující poznámky k SAP a dokumenty Paper nejprve hello
+Přečtěte si tyto poznámky k SAP a dokumenty Paper nejprve
 
 * Poznámka SAP [1928533], na kterém je:
-  * Seznam velikostí virtuálních počítačů Azure, které jsou podporovány pro hello nasazení SAP softwaru
+  * Seznam velikostí virtuálních počítačů Azure, které jsou podporovány pro nasazení softwaru SAP
   * Kapacita důležité informace o velikosti virtuálního počítače Azure
   * Podporované SAP software a operační systém (OS) a kombinace databáze
   * Požadovaná verze SAP jádra pro Windows a Linux v Microsoft Azure
@@ -65,32 +65,32 @@ Přečtěte si následující poznámky k SAP a dokumenty Paper nejprve hello
 * Poznámka SAP [2205917] se doporučuje nastavení operačního systému SUSE Linux Enterprise Server pro aplikace SAP
 * Poznámka SAP [1944799] má SAP HANA pokyny pro SUSE Linux Enterprise Server pro aplikace SAP
 * Poznámka SAP [2178632] obsahuje podrobné informace o veškeré monitorování metriky pro SAP v Azure.
-* Poznámka SAP [2191498] hello vyžaduje verze SAP hostitele agenta pro Linux v Azure.
+* Poznámka SAP [2191498] má požadovaná verze SAP hostitele agenta pro Linux v Azure.
 * Poznámka SAP [2243692] obsahuje informace o licencích SAP v systému Linux v Azure.
 * Poznámka SAP [1984787] má obecné informace o SUSE Linux Enterprise Server 12.
-* Poznámka SAP [1999351] obsahuje další informace o řešení potíží pro hello Azure rozšířené monitorování rozšíření pro SAP.
+* Poznámka SAP [1999351] Další informace o řešení problémů s Azure rozšířené monitorování rozšíření pro SAP.
 * [SAP komunity WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) má všechny požadované SAP poznámky pro Linux.
 * [Azure virtuálních počítačů, plánování a implementace pro SAP v systému Linux][planning-guide]
 * [Nasazení virtuálních počítačů Azure pro SAP v systému Linux (v tomto článku)][deployment-guide]
 * [Nasazení virtuálních počítačů databázového systému Azure pro SAP v systému Linux][dbms-guide]
 * [SAP HANA SR výkonu optimalizované scénář][suse-hana-ha-guide]  
-  Průvodce Hello obsahuje všechny požadované informace tooset replikaci systému SAP HANA místně. Tohoto průvodce použijte jako Směrný plán.
-* [Vysoce dostupné systému souborů NFS úložiště s DRBD a kardiostimulátor] [ suse-drbd-guide] hello Průvodce obsahuje všechny požadované informace tooset vytvořit vysoce dostupný server systému souborů NFS. Tohoto průvodce použijte jako Směrný plán.
+  V Průvodci obsahuje všechny požadované informace pro nastavení replikace systému SAP HANA na místě. Tohoto průvodce použijte jako Směrný plán.
+* [Vysoce dostupné systému souborů NFS úložiště s DRBD a kardiostimulátor] [ suse-drbd-guide] obsahuje všechny požadované informace k nastavení systému souborů NFS server s vysokou dostupností. Tohoto průvodce použijte jako Směrný plán.
 
 
 ## <a name="overview"></a>Přehled
 
-tooachieve vysokou dostupnost, SAP NetWeaver vyžaduje, aby server systému souborů NFS. Hello systému souborů NFS server je nakonfigurován v samostatném clusteru a mohou být využívána na více systémů SAP.
+K dosažení vysoké dostupnosti, vyžaduje SAP NetWeaver serverem NFS. Server systému souborů NFS je nakonfigurován v samostatném clusteru a mohou být využívána na více systémů SAP.
 
 ![Přehled SAP NetWeaver vysokou dostupnost](./media/high-availability-guide-suse/img_001.png)
 
-Hello serveru NFS, SAP NetWeaver ASC, SAP NetWeaver SCS, SAP NetWeaver YBRAT a hello databázi SAP HANA použijte virtuální název hostitele a virtuální IP adresy. V Azure je nástroj pro vyrovnávání zatížení vyžaduje toouse virtuální IP adresu. Hello následující seznam obsahuje hello konfigurace služby Vyrovnávání zatížení hello.
+Na serveru NFS, SAP NetWeaver ASC, SAP NetWeaver SCS, SAP NetWeaver YBRAT a databázi SAP HANA používat virtuální název hostitele a virtuální IP adresy. K použití virtuální IP adresy se v Azure, vyžaduje nástroj pro vyrovnávání zatížení. Následující seznam obsahuje konfiguraci služby Vyrovnávání zatížení.
 
 ### <a name="nfs-server"></a>Server systému souborů NFS
 * Front-endovou konfiguraci
   * IP adresa 10.0.0.4
 * Konfigurace back-end
-  * Připojení rozhraní sítě tooprimary všech virtuálních počítačů, které by měly být součástí clusteru systému souborů NFS hello
+  * Připojené k primární síťová rozhraní všech virtuálních počítačů, které by měly být součástí clusteru systému souborů NFS
 * Port testu
   * Port 61000
 * Pravidla Vyrovnávání zatížení
@@ -101,7 +101,7 @@ Hello serveru NFS, SAP NetWeaver ASC, SAP NetWeaver SCS, SAP NetWeaver YBRAT a h
 * Front-endovou konfiguraci
   * IP adresa 10.0.0.10
 * Konfigurace back-end
-  * Síťová rozhraní připojená tooprimary všech virtuálních počítačů, které by měly být součástí clusteru SCS/YBRAT hello (A)
+  * Připojené k primární síťová rozhraní všech virtuálních počítačů, které by měly být součástí (A) SCS/YBRAT clusteru
 * Port testu
   * Port 620**&lt;nr&gt;**
 * Pravidla Vyrovnávání zatížení
@@ -117,7 +117,7 @@ Hello serveru NFS, SAP NetWeaver ASC, SAP NetWeaver SCS, SAP NetWeaver YBRAT a h
 * Front-endovou konfiguraci
   * IP adresa 10.0.0.11
 * Konfigurace back-end
-  * Síťová rozhraní připojená tooprimary všech virtuálních počítačů, které by měly být součástí clusteru SCS/YBRAT hello (A)
+  * Připojené k primární síťová rozhraní všech virtuálních počítačů, které by měly být součástí (A) SCS/YBRAT clusteru
 * Port testu
   * Port 621**&lt;nr&gt;**
 * Pravidla Vyrovnávání zatížení
@@ -130,7 +130,7 @@ Hello serveru NFS, SAP NetWeaver ASC, SAP NetWeaver SCS, SAP NetWeaver YBRAT a h
 * Front-endovou konfiguraci
   * IP adresa 10.0.0.12
 * Konfigurace back-end
-  * Připojení rozhraní sítě tooprimary všech virtuálních počítačů, které by měly být součástí clusteru HANA hello
+  * Připojené k primární síťová rozhraní všech virtuálních počítačů, které by měly být součástí clusteru HANA
 * Port testu
   * Port 625**&lt;nr&gt;**
 * Pravidla Vyrovnávání zatížení
@@ -141,23 +141,23 @@ Hello serveru NFS, SAP NetWeaver ASC, SAP NetWeaver SCS, SAP NetWeaver YBRAT a h
 
 ### <a name="deploying-linux"></a>Nasazení Linux
 
-Hello Azure Marketplace obsahuje bitovou kopii pro SUSE Linux Enterprise Server pro SAP 12 aplikace, které můžete použít toodeploy nových virtuálních počítačů.
-Můžete vytvořit jednu z šablon úvodní hello na githubu toodeploy všechny požadované prostředky. Šablona Hello nasadí hello virtuální počítače, nástroj pro vyrovnávání zatížení hello, dostupnosti atd. Postupujte podle těchto kroků toodeploy hello šablony:
+Azure Marketplace obsahuje bitovou kopii pro SUSE Linux Enterprise Server pro 12 aplikace SAP, který můžete použít k nasazení nových virtuálních počítačů.
+Jeden z šablony rychlý start způsobem můžete na githubu nasadit všechny požadované prostředky. Šablona nasadí virtuální počítače, nástroj pro vyrovnávání zatížení, dostupnosti apod. Postupujte podle těchto kroků nasadíte šablony:
 
-1. Otevřete hello [šablony serveru SAP souboru] [ template-file-server] v hello portálu Azure   
-1. Zadejte následující parametry hello
+1. Otevřete [šablony serveru SAP souboru] [ template-file-server] na portálu Azure   
+1. Zadejte následující parametry
    1. Předpona prostředků  
-      Zadejte předponu hello chcete toouse. Hodnota Hello slouží jako předpona pro hello prostředky, které jsou nasazeny.
+      Zadejte předponu, kterou chcete použít. Hodnota se používá jako předpona pro prostředky, které jsou nasazeny.
    2. Typ operačního systému  
-      Vyberte jednu z Linuxových distribucích hello. V tomto příkladu vyberte SLES 12
+      Vyberte jednu z distribucích systému Linux. V tomto příkladu vyberte SLES 12
    3. Uživatelské jméno správce a heslo správce  
-      Po vytvoření nového uživatele, který lze použít toolog na toohello počítači.
+      Po vytvoření nového uživatele, který lze použít pro přihlášení k počítači.
    4. Id podsítě  
-      ID Hello hello podsíť toowhich hello virtuálních počítačů musí být připojené k. Chcete-li toocreate nové virtuální sítě nebo vyberte podsíť hello VPN nebo Express Route virtuální sítě tooconnect hello virtuálního počítače tooyour místní sítě, nechte pole prázdná. Hello ID obvykle vypadá /subscriptions/**&lt;id předplatného&gt;**/resourceGroups/**&lt;název skupiny prostředků&gt;**/providers/ Microsoft.Network/virtualNetworks/**&lt;název virtuální sítě&gt;**/subnets/**&lt;název podsítě.&gt;**
+      ID podsítě, ke které by měl být připojený virtuální počítače. Ponechte prázdné, pokud chcete vytvořit novou virtuální síť, nebo vyberte podsíť virtuální sítě VPN nebo Expressroute připojit virtuální počítač k síti na pracovišti. ID obvykle vypadá /subscriptions/**&lt;id předplatného&gt;**/resourceGroups/**&lt;název skupiny prostředků&gt;**/providers/Microsoft.Network/virtualNetworks/**&lt;název virtuální sítě&gt;**/subnets/**&lt;název podsítě.&gt;**
 
 ### <a name="installation"></a>Instalace
 
-Hello následující položky jsou s předponou buď **[A]** -použít tooall uzlů, **[1]** -pouze použít toonode 1 nebo **[2]** -pouze použít toonode 2.
+Následující položky jsou předponou buď **[A]** – platí pro všechny uzly, **[1]** – platí jenom pro uzel 1 nebo **[2]** – platí jenom pro uzel 2.
 
 1. **[A]**  Aktualizovat SLES
 
@@ -170,11 +170,11 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
    <pre><code>
    sudo ssh-keygen -tdsa
    
-   # Enter file in which toosave hello key (/root/.ssh/id_dsa): -> ENTER
+   # Enter file in which to save the key (/root/.ssh/id_dsa): -> ENTER
    # Enter passphrase (empty for no passphrase): -> ENTER
    # Enter same passphrase again: -> ENTER
    
-   # copy hello public key
+   # copy the public key
    sudo cat /root/.ssh/id_dsa.pub
    </code></pre>
 
@@ -183,21 +183,21 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
    <pre><code>
    sudo ssh-keygen -tdsa
 
-   # insert hello public key you copied in hello last step into hello authorized keys file on hello second server
+   # insert the public key you copied in the last step into the authorized keys file on the second server
    sudo vi /root/.ssh/authorized_keys
    
-   # Enter file in which toosave hello key (/root/.ssh/id_dsa): -> ENTER
+   # Enter file in which to save the key (/root/.ssh/id_dsa): -> ENTER
    # Enter passphrase (empty for no passphrase): -> ENTER
    # Enter same passphrase again: -> ENTER
    
-   # copy hello public key   
+   # copy the public key   
    sudo cat /root/.ssh/id_dsa.pub
    </code></pre>
 
 1. **[1]**  Přístupu ssh
 
    <pre><code>
-   # insert hello public key you copied in hello last step into hello authorized keys file on hello first server
+   # insert the public key you copied in the last step into the authorized keys file on the first server
    sudo vi /root/.ssh/authorized_keys
    </code></pre>
 
@@ -209,17 +209,17 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
 
 1. **[A]**  Nastavit rozlišení názvu hostitele   
 
-   Můžete buď použít DNS server nebo úpravám hello/etc/hosts na všech uzlech. Tento příklad ukazuje, jak toouse hello soubor/etc/hosts.
-   Nahraďte hello IP adresu a název hostitele hello v hello následující příkazy
+   Můžete buď použít DNS server, nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak chcete použít soubor/etc/hosts.
+   Nahraďte adresu IP a název hostitele v následujících příkazech
 
    <pre><code>
    sudo vi /etc/hosts
    </code></pre>
    
-   Následující hello vložení řádků příliš/etc/hosts. Změnit hello IP adresu a název hostitele toomatch prostředí   
+   Vložte následující řádky, které se/etc/hosts. Změnit IP adresu a název hostitele tak, aby odpovídaly prostředí   
    
    <pre><code>
-   # IP address of hello load balancer frontend configuration for NFS
+   # IP address of the load balancer frontend configuration for NFS
    <b>10.0.0.4 nws-nfs</b>
    </code></pre>
 
@@ -228,39 +228,39 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
    <pre><code>
    sudo ha-cluster-init
    
-   # Do you want toocontinue anyway? [y/N] -> y
-   # Network address toobind too(for example: 192.168.1.0) [10.79.227.0] -> ENTER
+   # Do you want to continue anyway? [y/N] -> y
+   # Network address to bind to (for example: 192.168.1.0) [10.79.227.0] -> ENTER
    # Multicast address (for example: 239.x.x.x) [239.174.218.125] -> ENTER
    # Multicast port [5405] -> ENTER
-   # Do you wish toouse SBD? [y/N] -> N
-   # Do you wish tooconfigure an administration IP? [y/N] -> N
+   # Do you wish to use SBD? [y/N] -> N
+   # Do you wish to configure an administration IP? [y/N] -> N
    </code></pre>
 
-1. **[2]**  Přidat uzel toocluster
+1. **[2]**  Přidat uzel do clusteru
    
    <pre><code> 
    sudo ha-cluster-join
 
-   # WARNING: NTP is not configured toostart at system boot.
-   # WARNING: No watchdog device found. If SBD is used, hello cluster will be unable toostart without a watchdog.
-   # Do you want toocontinue anyway? [y/N] -> y
+   # WARNING: NTP is not configured to start at system boot.
+   # WARNING: No watchdog device found. If SBD is used, the cluster will be unable to start without a watchdog.
+   # Do you want to continue anyway? [y/N] -> y
    # IP address or hostname of existing node (for example: 192.168.1.1) [] -> IP address of node 1 for example 10.0.0.10
    # /root/.ssh/id_dsa already exists - overwrite? [y/N] N
    </code></pre>
 
-1. **[A]**  Změnu hacluster heslo toohello stejné heslo
+1. **[A]**  Změnit heslo hacluster na stejné heslo
 
    <pre><code> 
    sudo passwd hacluster
    </code></pre>
 
-1. **[A]**  Konfigurace corosync toouse jiných přenosu a přidání seznamu. V opačném případě nebude fungovat clusteru.
+1. **[A]**  Konfigurace corosync používají jiné přenos a přidání seznamu. V opačném případě nebude fungovat clusteru.
    
    <pre><code> 
    sudo vi /etc/corosync/corosync.conf   
    </code></pre>
 
-   Přidejte následující soubor tučné obsahu toohello hello.
+   Do souboru přidejte následující obsah tučně.
    
    <pre><code> 
    [...]
@@ -283,7 +283,7 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
      [...]
    </code></pre>
 
-   Potom restartujte službu corosync hello
+   Potom restartujte službu corosync
 
    <pre><code>
    sudo service corosync restart
@@ -295,7 +295,7 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
    sudo zypper install drbd drbd-kmp-default drbd-utils
    </code></pre>
 
-1. **[A]**  Vytvořit oddíl pro hello drbd zařízení
+1. **[A]**  Vytvořit oddíl drbd zařízení
 
    <pre><code>
    sudo sh -c 'echo -e "n\n\n\n\n\nw\n" | fdisk /dev/sdc'
@@ -309,13 +309,13 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
    sudo lvcreate -l 100%FREE -n <b>NWS</b> vg_NFS
    </code></pre>
 
-1. **[A]**  Vytvořit hello systému souborů NFS drbd zařízení
+1. **[A]**  Vytvořte zařízení drbd systému souborů NFS
 
    <pre><code>
    sudo vi /etc/drbd.d/<b>NWS</b>_nfs.res
    </code></pre>
 
-   Vložit hello konfigurace pro nové zařízení drbd hello a ukončení
+   Vložit konfigurace pro nové zařízení drbd a ukončení
 
    <pre><code>
    resource <b>NWS</b>_nfs {
@@ -338,7 +338,7 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
    }
    </code></pre>
 
-   Vytvoření hello drbd zařízení a spusťte ji
+   Vytvořte drbd zařízení a spusťte ji
 
    <pre><code>
    sudo drbdadm create-md <b>NWS</b>_nfs
@@ -351,13 +351,13 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
    sudo drbdadm new-current-uuid --clear-bitmap <b>NWS</b>_nfs
    </code></pre>
 
-1. **[1]**  Sadu hello primárního uzlu
+1. **[1]**  Nastavte primární uzel
 
    <pre><code>
    sudo drbdadm primary --force <b>NWS</b>_nfs
    </code></pre>
 
-1. **[1]**  Počkejte, dokud se synchronizují hello nová drbd zařízení
+1. **[1]**  Počkejte, dokud se synchronizují nová zařízení drbd
 
    <pre><code>
    sudo cat /proc/drbd
@@ -368,7 +368,7 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
    #    ns:0 nr:0 dw:0 dr:912 al:8 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:0
    </code></pre>
 
-1. **[1]**  Vytvořit systémy souborů na hello drbd zařízení
+1. **[1]**  Vytvořit systémy souborů na zařízeních drbd
 
    <pre><code>
    sudo mkfs.xfs /dev/drbd0
@@ -377,7 +377,7 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
 
 ### <a name="configure-cluster-framework"></a>Konfigurace architektury clusteru
 
-1. **[1]**  Změnit výchozí nastavení hello
+1. **[1]**  Změnit výchozí nastavení
 
    <pre><code>
    sudo crm configure
@@ -388,7 +388,7 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
    crm(live)configure# exit
    </code></pre>
 
-1. **[1]**  Přidat hello systému souborů NFS drbd zařízení toohello konfigurace clusteru
+1. **[1]**  Přidat zařízení drbd systému souborů NFS konfigurace clusteru
 
    <pre><code>
    sudo crm configure
@@ -407,7 +407,7 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
    crm(live)configure# exit
    </code></pre>
 
-1. **[1]**  Vytvořit server systému souborů NFS hello
+1. **[1]**  Vytvořit server systému souborů NFS
 
    <pre><code>
    sudo crm configure
@@ -422,7 +422,7 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
    crm(live)configure# exit
    </code></pre>
 
-1. **[1]**  Vytvořit prostředky systému souborů NFS hello
+1. **[1]**  Vytvořit prostředky systému souborů NFS
 
    <pre><code>
    sudo crm configure
@@ -446,7 +446,7 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
    crm(live)configure# exit
    </code></pre>
 
-1. **[1]**  Vytvořit exportuje hello systému souborů NFS
+1. **[1]**  Vytvořit exportuje systému souborů NFS
 
    <pre><code>
    sudo mkdir /srv/nfs/<b>NWS</b>/sidsys
@@ -469,7 +469,7 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
    crm(live)configure# exit
    </code></pre>
 
-1. **[1]**  Vytvoření virtuální IP prostředků a test stavu nástroje pro vyrovnávání zatížení interní hello
+1. **[1]**  Vytvoření virtuální IP prostředků a test stavu nástroje pro vyrovnávání zatížení interní
 
    <pre><code>
    sudo crm configure
@@ -491,39 +491,39 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
 
 ### <a name="create-stonith-device"></a>Vytvoření STONITH zařízení
 
-zařízení STONITH Hello používá tooauthorize objekt služby pro Microsoft Azure. Postupujte podle těchto kroků toocreate hlavní název služby.
+STONITH zařízení používá objekt služby k autorizaci s Microsoft Azure. Postupujte podle těchto kroků můžete vytvořit objekt služby.
 
-1. Přejděte příliš<https://portal.azure.com>
-1. Okno Azure Active Directory otevřete hello  
-   Přejděte tooProperties a zapište hello ID adresáře. Toto je hello **id klienta**.
+1. Přejděte na <https://portal.azure.com>
+1. Otevřete okno Azure Active Directory  
+   Přejděte k vlastnostem a poznamenejte si ID adresáře. Toto je **id klienta**.
 1. Klikněte na možnost registrace aplikace
 1. Klikněte na tlačítko Přidat.
 1. Zadejte název, vyberte typ aplikace "Aplikace webového rozhraní API", zadejte přihlašovací adresu URL (například http://localhost) a klikněte na možnost vytvořit
-1. Hello přihlašovací adresa URL se nepoužívá a může být libovolná platná adresa URL
-1. Vyberte hello nové aplikace a klikněte na tlačítko klíče na kartě nastavení hello
+1. Adresa URL přihlašování se nepoužívá a může být libovolná platná adresa URL
+1. Vyberte nové aplikace a na kartě nastavení klikněte na klíče
 1. Zadejte popis pro nový klíč, vyberte "Je platné stále" a klikněte na Uložit
-1. Poznamenejte si hodnotu hello. Použije se jako hello **heslo** pro hello instančního objektu
-1. Zapište hello ID aplikace. Použije se jako hello uživatelské jméno (**přihlašovacího id** v následujících kroků hello) z hello instančního objektu
+1. Poznamenejte si hodnotu. Použije se jako **heslo** pro objekt služby
+1. Poznamenejte si ID aplikace. Se používá jako uživatelské jméno (**přihlašovacího id** v následujících krocích) instančního objektu
 
-Hello instanční objekt nemá oprávnění tooaccess vašich prostředků Azure ve výchozím nastavení. Je třeba toogive hello instanční objekt oprávnění toostart a zastavení (zrušit přidělení) všechny virtuální počítače clusteru hello.
+Objekt služby nemá oprávnění pro přístup k prostředkům Azure ve výchozím nastavení. Musíte poskytnout oprávnění objektu služby spuštění a zastavení (zrušit přidělení) všechny virtuální počítače v clusteru.
 
-1. Přejděte toohttps://portal.azure.com
-1. Otevřete hello okno všechny prostředky
-1. Vyberte virtuální počítač hello
+1. Přejděte na https://portal.azure.com
+1. Otevře se okno všechny prostředky
+1. Vyberte virtuální počítač
 1. Klikněte na řízení přístupu (IAM)
 1. Klikněte na tlačítko Přidat.
-1. Vyberte roli hello vlastníka
-1. Zadejte název hello hello aplikace, kterou jste vytvořili výše
+1. Vyberte roli vlastníka
+1. Zadejte název aplikace, kterou jste vytvořili výše
 1. Klikněte na tlačítko OK
 
-#### <a name="1-create-hello-stonith-devices"></a>**[1]**  Vytvořit hello STONITH zařízení
+#### <a name="1-create-the-stonith-devices"></a>**[1]**  Vytvořit STONITH zařízení
 
-Poté, co jste upravili hello oprávnění pro hello virtuální počítače, můžete nakonfigurovat zařízení STONITH hello v clusteru hello.
+Poté, co jste upravili oprávnění pro virtuální počítače, můžete nakonfigurovat zařízení STONITH v clusteru.
 
 <pre><code>
 sudo crm configure
 
-# replace hello bold string with your subscription id, resource group, tenant id, service principal id and password
+# replace the bold string with your subscription id, resource group, tenant id, service principal id and password
 
 crm(live)configure# primitive rsc_st_azure_1 stonith:fence_azure_arm \
    params subscriptionId="<b>subscription id</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant id</b>" login="<b>login id</b>" passwd="<b>password</b>"
@@ -537,7 +537,7 @@ crm(live)configure# commit
 crm(live)configure# exit
 </code></pre>
 
-#### <a name="1-enable-hello-use-of-a-stonith-device"></a>**[1]**  Povolit použití hello STONITH zařízení
+#### <a name="1-enable-the-use-of-a-stonith-device"></a>**[1]**  Povolit používání STONITH zařízení
 
 <pre><code>
 sudo crm configure property stonith-enabled=true 
@@ -547,34 +547,34 @@ sudo crm configure property stonith-enabled=true
 
 ### <a name="deploying-linux"></a>Nasazení Linux
 
-Hello Azure Marketplace obsahuje bitovou kopii pro SUSE Linux Enterprise Server pro SAP 12 aplikace, které můžete použít toodeploy nových virtuálních počítačů. bitová kopie Hello marketplace obsahuje hello prostředků agenta pro SAP NetWeaver.
+Azure Marketplace obsahuje bitovou kopii pro SUSE Linux Enterprise Server pro 12 aplikace SAP, který můžete použít k nasazení nových virtuálních počítačů. Bitová kopie marketplace obsahuje agenta prostředků pro SAP NetWeaver.
 
-Můžete vytvořit jednu z šablon úvodní hello na githubu toodeploy všechny požadované prostředky. Šablona Hello nasadí hello virtuální počítače, nástroj pro vyrovnávání zatížení hello, dostupnosti atd. Postupujte podle těchto kroků toodeploy hello šablony:
+Jeden z šablony rychlý start způsobem můžete na githubu nasadit všechny požadované prostředky. Šablona nasadí virtuální počítače, nástroj pro vyrovnávání zatížení, dostupnosti apod. Postupujte podle těchto kroků nasadíte šablony:
 
-1. Otevřete hello [ASC nebo SCS více SID šablony] [ template-multisid-xscs] nebo hello [konvergované šablony] [ template-converged] na hello Azure portálu hello ASC nebo SCS šablony pouze Vytvoří hello pravidla Vyrovnávání zatížení pro hello SAP NetWeaver ASC nebo SCS a instance YBRAT (pouze Linux), zatímco sblížené šablony hello také vytvoří hello pravidla Vyrovnávání zatížení pro databázi (například Microsoft SQL Server nebo SAP HANA). Pokud máte v plánu tooinstall SAP NetWeaver na základě systému a chcete tooinstall hello databáze na hello stejné počítače, použijte hello [konvergované šablony][template-converged].
-1. Zadejte následující parametry hello
+1. Otevřete [ASC nebo SCS více SID šablony] [ template-multisid-xscs] nebo [konvergované šablony] [ template-converged] na Azure portálu ASC nebo SCS pouze vytvoří šablona pravidla Vyrovnávání zatížení pro SAP NetWeaver ASC nebo SCS a instance YBRAT (pouze Linux) zatímco sblížené Šablona také vytváří pravidla Vyrovnávání zatížení pro databázi (například Microsoft SQL Server nebo SAP HANA). Pokud máte v plánu pro instalaci systému SAP NetWeaver na základě a také chcete databázi nainstalovat na stejný počítače, použijte [konvergované šablony][template-converged].
+1. Zadejte následující parametry
    1. Předpona prostředků (pouze šablony SID více ASC nebo SCS)  
-      Zadejte předponu hello chcete toouse. Hodnota Hello slouží jako předpona pro hello prostředky, které jsou nasazeny.
+      Zadejte předponu, kterou chcete použít. Hodnota se používá jako předpona pro prostředky, které jsou nasazeny.
    3. Id systému SAP (pouze sblížené šablony)  
-      Zadejte systému SAP hello Id hello chcete tooinstall systému SAP. Hello Id slouží jako předpona pro hello prostředky, které jsou nasazeny.
+      Zadejte Id systému SAP systému SAP, který chcete nainstalovat. Identifikátor se používá jako předpona pro prostředky, které jsou nasazeny.
    4. Typ zásobníku  
-      Vyberte typ zásobníku SAP NetWeaver hello
+      Vyberte typ SAP NetWeaver zásobníku
    5. Typ operačního systému  
-      Vyberte jednu z Linuxových distribucích hello. V tomto příkladu vyberte SLES 12 BYOS
+      Vyberte jednu z distribucích systému Linux. V tomto příkladu vyberte SLES 12 BYOS
    6. Typ databázového  
       Vyberte HANA
    7. Velikost systému SAP  
-      poskytuje Hello množství protokoly SAP hello nový systém. Pokud si nejste jisti, kolik protokoly SAP hello systém vyžaduje, požádejte SAP technologie partnera nebo systémový integrátor
+      Množství protokoly SAP poskytuje nový systém. Pokud si nejste jisti kolik protokoly SAP vyžaduje systém, požádejte SAP technologie partnera nebo systémový integrátor
    8. Dostupnost systému  
       Vyberte HA
    9. Uživatelské jméno správce a heslo správce  
-      Po vytvoření nového uživatele, který lze použít toolog na toohello počítači.
+      Po vytvoření nového uživatele, který lze použít pro přihlášení k počítači.
    10. Id podsítě  
-   ID Hello hello podsíť toowhich hello virtuálních počítačů musí být připojené k.  Pokud chcete toocreate nové virtuální sítě nebo vyberte hello stejné podsíti, která používá nebo vytvořené jako součást nasazení serveru NFS hello, nechte pole prázdná. Hello ID obvykle vypadá /subscriptions/**&lt;id předplatného&gt;**/resourceGroups/**&lt;název skupiny prostředků&gt;**/providers/ Microsoft.Network/virtualNetworks/**&lt;název virtuální sítě&gt;**/subnets/**&lt;název podsítě.&gt;**
+   ID podsítě, ke které by měl být připojený virtuální počítače.  Ponechte prázdné, pokud chcete vytvořit novou virtuální síť, nebo vyberte stejné podsíti, který můžete použít nebo vytvořit jako součást nasazení serveru NFS. ID obvykle vypadá /subscriptions/**&lt;id předplatného&gt;**/resourceGroups/**&lt;název skupiny prostředků&gt;**/providers/Microsoft.Network/virtualNetworks/**&lt;název virtuální sítě&gt;**/subnets/**&lt;název podsítě.&gt;**
 
 ### <a name="installation"></a>Instalace
 
-Hello následující položky jsou s předponou buď **[A]** -použít tooall uzlů, **[1]** -pouze použít toonode 1 nebo **[2]** -pouze použít toonode 2.
+Následující položky jsou předponou buď **[A]** – platí pro všechny uzly, **[1]** – platí jenom pro uzel 1 nebo **[2]** – platí jenom pro uzel 2.
 
 1. **[A]**  Aktualizovat SLES
 
@@ -587,11 +587,11 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
    <pre><code>
    sudo ssh-keygen -tdsa
    
-   # Enter file in which toosave hello key (/root/.ssh/id_dsa): -> ENTER
+   # Enter file in which to save the key (/root/.ssh/id_dsa): -> ENTER
    # Enter passphrase (empty for no passphrase): -> ENTER
    # Enter same passphrase again: -> ENTER
    
-   # copy hello public key
+   # copy the public key
    sudo cat /root/.ssh/id_dsa.pub
    </code></pre>
 
@@ -600,21 +600,21 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
    <pre><code>
    sudo ssh-keygen -tdsa
 
-   # insert hello public key you copied in hello last step into hello authorized keys file on hello second server
+   # insert the public key you copied in the last step into the authorized keys file on the second server
    sudo vi /root/.ssh/authorized_keys
    
-   # Enter file in which toosave hello key (/root/.ssh/id_dsa): -> ENTER
+   # Enter file in which to save the key (/root/.ssh/id_dsa): -> ENTER
    # Enter passphrase (empty for no passphrase): -> ENTER
    # Enter same passphrase again: -> ENTER
    
-   # copy hello public key   
+   # copy the public key   
    sudo cat /root/.ssh/id_dsa.pub
    </code></pre>
 
 1. **[1]**  Přístupu ssh
 
    <pre><code>
-   # insert hello public key you copied in hello last step into hello authorized keys file on hello first server
+   # insert the public key you copied in the last step into the authorized keys file on the first server
    sudo vi /root/.ssh/authorized_keys
    </code></pre>
 
@@ -626,19 +626,19 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
 
 1. **[A]**  Aktualizace SAP prostředků agentů  
    
-   Oprava pro balíček prostředků agenty hello je požadovaná toouse hello novou konfiguraci, který je popsaný v tomto článku. Můžete zkontrolovat, je-li oprava hello je již nainstalován ve hello následující příkaz
+   Oprava pro balíček prostředků agentů je potřeba použít novou konfiguraci, který je popsaný v tomto článku. Můžete zkontrolovat, pokud je oprava již nainstalována pomocí následujícího příkazu
 
    <pre><code>
    sudo grep 'parameter name="IS_ERS"' /usr/lib/ocf/resource.d/heartbeat/SAPInstance
    </code></pre>
 
-   výstup Hello by měl vypadat přibližně
+   Výstup by měl vypadat přibližně
 
    <pre><code>
    &lt;parameter name="IS_ERS" unique="0" required="0"&gt;
    </code></pre>
 
-   Pokud příkaz grep hello nenajde hello IS_ERS parametru, je třeba tooinstall hello opravy uvedené na [stránce pro stažení hello SUSE](https://download.suse.com/patch/finder/#bu=suse&familyId=&productId=&dateRange=&startDate=&endDate=&priority=&architecture=&keywords=resource-agents)
+   Pokud příkaz grep nenajde parametr IS_ERS, budete muset nainstalovat opravu uvedené na [stránce pro stažení SUSE](https://download.suse.com/patch/finder/#bu=suse&familyId=&productId=&dateRange=&startDate=&endDate=&priority=&architecture=&keywords=resource-agents)
 
    <pre><code>
    # example for patch for SLES 12 SP1
@@ -649,23 +649,23 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
 
 1. **[A]**  Nastavit rozlišení názvu hostitele   
 
-   Můžete buď použít DNS server nebo úpravám hello/etc/hosts na všech uzlech. Tento příklad ukazuje, jak toouse hello soubor/etc/hosts.
-   Nahraďte hello IP adresu a název hostitele hello v hello následující příkazy
+   Můžete buď použít DNS server, nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak chcete použít soubor/etc/hosts.
+   Nahraďte adresu IP a název hostitele v následujících příkazech
 
    <pre><code>
    sudo vi /etc/hosts
    </code></pre>
    
-   Následující hello vložení řádků příliš/etc/hosts. Změnit hello IP adresu a název hostitele toomatch prostředí   
+   Vložte následující řádky, které se/etc/hosts. Změnit IP adresu a název hostitele tak, aby odpovídaly prostředí   
    
    <pre><code>
-   # IP address of hello load balancer frontend configuration for NFS
+   # IP address of the load balancer frontend configuration for NFS
    <b>10.0.0.4 nws-nfs</b>
-   # IP address of hello load balancer frontend configuration for SAP NetWeaver ASCS/SCS
+   # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS/SCS
    <b>10.0.0.10 nws-ascs</b>
-   # IP address of hello load balancer frontend configuration for SAP NetWeaver ERS
+   # IP address of the load balancer frontend configuration for SAP NetWeaver ERS
    <b>10.0.0.11 nws-ers</b>
-   # IP address of hello load balancer frontend configuration for database
+   # IP address of the load balancer frontend configuration for database
    <b>10.0.0.12 nws-db</b>
    </code></pre>
 
@@ -674,39 +674,39 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
    <pre><code>
    sudo ha-cluster-init
    
-   # Do you want toocontinue anyway? [y/N] -> y
-   # Network address toobind too(for example: 192.168.1.0) [10.79.227.0] -> ENTER
+   # Do you want to continue anyway? [y/N] -> y
+   # Network address to bind to (for example: 192.168.1.0) [10.79.227.0] -> ENTER
    # Multicast address (for example: 239.x.x.x) [239.174.218.125] -> ENTER
    # Multicast port [5405] -> ENTER
-   # Do you wish toouse SBD? [y/N] -> N
-   # Do you wish tooconfigure an administration IP? [y/N] -> N
+   # Do you wish to use SBD? [y/N] -> N
+   # Do you wish to configure an administration IP? [y/N] -> N
    </code></pre>
 
-1. **[2]**  Přidat uzel toocluster
+1. **[2]**  Přidat uzel do clusteru
    
    <pre><code> 
    sudo ha-cluster-join
 
-   # WARNING: NTP is not configured toostart at system boot.
-   # WARNING: No watchdog device found. If SBD is used, hello cluster will be unable toostart without a watchdog.
-   # Do you want toocontinue anyway? [y/N] -> y
+   # WARNING: NTP is not configured to start at system boot.
+   # WARNING: No watchdog device found. If SBD is used, the cluster will be unable to start without a watchdog.
+   # Do you want to continue anyway? [y/N] -> y
    # IP address or hostname of existing node (for example: 192.168.1.1) [] -> IP address of node 1 for example 10.0.0.10
    # /root/.ssh/id_dsa already exists - overwrite? [y/N] N
    </code></pre>
 
-1. **[A]**  Změnu hacluster heslo toohello stejné heslo
+1. **[A]**  Změnit heslo hacluster na stejné heslo
 
    <pre><code> 
    sudo passwd hacluster
    </code></pre>
 
-1. **[A]**  Konfigurace corosync toouse jiných přenosu a přidání seznamu. V opačném případě nebude fungovat clusteru.
+1. **[A]**  Konfigurace corosync používají jiné přenos a přidání seznamu. V opačném případě nebude fungovat clusteru.
    
    <pre><code> 
    sudo vi /etc/corosync/corosync.conf   
    </code></pre>
 
-   Přidejte následující soubor tučné obsahu toohello hello.
+   Do souboru přidejte následující obsah tučně.
    
    <pre><code> 
    [...]
@@ -729,7 +729,7 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
      [...]
    </code></pre>
 
-   Potom restartujte službu corosync hello
+   Potom restartujte službu corosync
 
    <pre><code>
    sudo service corosync restart
@@ -741,7 +741,7 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
    sudo zypper install drbd drbd-kmp-default drbd-utils
    </code></pre>
 
-1. **[A]**  Vytvořit oddíl pro hello drbd zařízení
+1. **[A]**  Vytvořit oddíl drbd zařízení
 
    <pre><code>
    sudo sh -c 'echo -e "n\n\n\n\n\nw\n" | fdisk /dev/sdc'
@@ -756,13 +756,13 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
    sudo lvcreate -l 50%FREE -n <b>NWS</b>_ERS vg_<b>NWS</b>
    </code></pre>
 
-1. **[A]**  Vytvořit hello SCS drbd zařízení
+1. **[A]**  Vytvořte SCS drbd zařízení
 
    <pre><code>
    sudo vi /etc/drbd.d/<b>NWS</b>_ascs.res
    </code></pre>
 
-   Vložit hello konfigurace pro nové zařízení drbd hello a ukončení
+   Vložit konfigurace pro nové zařízení drbd a ukončení
 
    <pre><code>
    resource <b>NWS</b>_ascs {
@@ -785,20 +785,20 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
    }
    </code></pre>
 
-   Vytvoření hello drbd zařízení a spusťte ji
+   Vytvořte drbd zařízení a spusťte ji
 
    <pre><code>
    sudo drbdadm create-md <b>NWS</b>_ascs
    sudo drbdadm up <b>NWS</b>_ascs
    </code></pre>
 
-1. **[A]**  Vytvořit hello YBRAT drbd zařízení
+1. **[A]**  Vytvořte YBRAT drbd zařízení
 
    <pre><code>
    sudo vi /etc/drbd.d/<b>NWS</b>_ers.res
    </code></pre>
 
-   Vložit hello konfigurace pro nové zařízení drbd hello a ukončení
+   Vložit konfigurace pro nové zařízení drbd a ukončení
 
    <pre><code>
    resource <b>NWS</b>_ers {
@@ -821,7 +821,7 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
    }
    </code></pre>
 
-   Vytvoření hello drbd zařízení a spusťte ji
+   Vytvořte drbd zařízení a spusťte ji
 
    <pre><code>
    sudo drbdadm create-md <b>NWS</b>_ers
@@ -835,14 +835,14 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
    sudo drbdadm new-current-uuid --clear-bitmap <b>NWS</b>_ers
    </code></pre>
 
-1. **[1]**  Sadu hello primárního uzlu
+1. **[1]**  Nastavte primární uzel
 
    <pre><code>
    sudo drbdadm primary --force <b>NWS</b>_ascs
    sudo drbdadm primary --force <b>NWS</b>_ers
    </code></pre>
 
-1. **[1]**  Počkejte, dokud se synchronizují hello nová drbd zařízení
+1. **[1]**  Počkejte, dokud se synchronizují nová zařízení drbd
 
    <pre><code>
    sudo cat /proc/drbd
@@ -857,7 +857,7 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
    #     ns:5142732 nr:0 dw:5142732 dr:5133924 al:30 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:0
    </code></pre>
 
-1. **[1]**  Vytvořit systémy souborů na hello drbd zařízení
+1. **[1]**  Vytvořit systémy souborů na zařízeních drbd
 
    <pre><code>
    sudo mkfs.xfs /dev/drbd0
@@ -867,7 +867,7 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
 
 ### <a name="configure-cluster-framework"></a>Konfigurace architektury clusteru
 
-**[1]**  Změnit výchozí nastavení hello
+**[1]**  Změnit výchozí nastavení
 
    <pre><code>
    sudo crm configure
@@ -880,7 +880,7 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
 
 ## <a name="prepare-for-sap-netweaver-installation"></a>Příprava pro SAP NetWeaver instalace
 
-1. **[A]**  Vytvořit hello sdíleného adresáře
+1. **[A]**  Vytvoření sdíleného adresáře
 
    <pre><code>
    sudo mkdir -p /sapmnt/<b>NWS</b>
@@ -897,7 +897,7 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
    <pre><code>
    sudo vi /etc/auto.master
 
-   # Add hello following line toohello file, save and exit
+   # Add the following line to the file, save and exit
    +auto.master
    /- /etc/auto.direct
    </code></pre>
@@ -907,13 +907,13 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
    <pre><code>
    sudo vi /etc/auto.direct
 
-   # Add hello following lines toohello file, save and exit
+   # Add the following lines to the file, save and exit
    /sapmnt/<b>NWS</b> -nfsvers=4,nosymlink,sync <b>nws-nfs</b>:/sapmntsid
    /usr/sap/trans -nfsvers=4,nosymlink,sync <b>nws-nfs</b>:/trans
    /usr/sap/<b>NWS</b>/SYS -nfsvers=4,nosymlink,sync <b>nws-nfs</b>:/sidsys
    </code></pre>
 
-   Restartujte nové sdílené složky autofs toomount hello
+   Restartujte autofs připojit nové sdílené složky
 
    <pre><code>
    sudo systemctl enable autofs
@@ -925,17 +925,17 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
    <pre><code>
    sudo vi /etc/waagent.conf
 
-   # Set hello property ResourceDisk.EnableSwap tooy
+   # Set the property ResourceDisk.EnableSwap to y
    # Create and use swapfile on resource disk.
    ResourceDisk.EnableSwap=<b>y</b>
 
-   # Set hello size of hello SWAP file with property ResourceDisk.SwapSizeMB
-   # hello free space of resource disk varies by virtual machine size. Make sure that you do not set a value that is too big. You can check hello SWAP space with command swapon
-   # Size of hello swapfile.
+   # Set the size of the SWAP file with property ResourceDisk.SwapSizeMB
+   # The free space of resource disk varies by virtual machine size. Make sure that you do not set a value that is too big. You can check the SWAP space with command swapon
+   # Size of the swapfile.
    ResourceDisk.SwapSizeMB=<b>2000</b>
    </code></pre>
 
-   Restartujte hello agenta tooactivate hello změn
+   Restartujte agenta aktivovat změn
 
    <pre><code>
    sudo service waagent restart
@@ -943,7 +943,7 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
 
 ### <a name="installing-sap-netweaver-ascsers"></a>Instalace SAP NetWeaver ASC nebo YBRAT
 
-1. **[1]**  Vytvoření virtuální IP prostředků a test stavu nástroje pro vyrovnávání zatížení interní hello
+1. **[1]**  Vytvoření virtuální IP prostředků a test stavu nástroje pro vyrovnávání zatížení interní
 
    <pre><code>
    sudo crm node standby <b>nws-cl-1</b>
@@ -987,7 +987,7 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
    crm(live)configure# exit
    </code></pre>
 
-   Ujistěte se, zda je stav clusteru hello ok a zda jsou spuštěny všechny prostředky. Není důležité na prostředky, ke kterým uzlu hello běží.
+   Ujistěte se, zda je stav clusteru ok a zda jsou spuštěny všechny prostředky. Není důležité, na který uzel prostředky jsou spuštěné.
 
    <pre><code>
    sudo crm_mon -r
@@ -1008,15 +1008,15 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
 
 1. **[1]**  Nainstalovat SAP NetWeaver ASC  
 
-   Nainstalujte SAP NetWeaver ASC jako kořenová na prvním uzlu hello pomocí virtuální název hostitele, který mapuje toohello IP adresu konfigurace front-endové služby Vyrovnávání zatížení hello pro hello ASC například <b>nws Asc</b>, <b>10.0.0.10</b>a číslo instance hello, který jste použili například u testu paměti hello nástroje pro vyrovnávání zatížení hello <b>00</b>.
+   Instalace SAP NetWeaver ASC jako kořenového na prvním uzlu pomocí virtuální název hostitele, který se mapuje na adresu IP front-endové konfigurace služby Vyrovnávání zatížení pro ASC například <b>nws Asc</b>, <b>10.0.0.10</b> a číslo instance, který jste použili pro kontrolu služby Vyrovnávání zatížení například <b>00</b>.
 
-   Můžete použít hello sapinst parametr SAPINST_REMOTE_ACCESS_USER tooallow toosapinst tooconnect bez kořenového uživatele.
+   Parametr sapinst SAPINST_REMOTE_ACCESS_USER můžete povolit uživateli nekořenovými pro připojení k sapinst.
 
    <pre><code>
    sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
 
-1. **[1]**  Vytvoření virtuální IP prostředků a test stavu nástroje pro vyrovnávání zatížení interní hello
+1. **[1]**  Vytvoření virtuální IP prostředků a test stavu nástroje pro vyrovnávání zatížení interní
 
    <pre><code>
    sudo crm node standby <b>nws-cl-0</b>
@@ -1058,13 +1058,13 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
    
    crm(live)configure# commit
    # WARNING: Resources nc_NWS_ASCS,nc_NWS_ERS,nc_NWS_nfs violate uniqueness for parameter "binfile": "/usr/bin/nc"
-   # Do you still want toocommit (y/n)? y
+   # Do you still want to commit (y/n)? y
 
    crm(live)configure# exit
    
    </code></pre>
  
-   Ujistěte se, zda je stav clusteru hello ok a zda jsou spuštěny všechny prostředky. Není důležité na prostředky, ke kterým uzlu hello běží.
+   Ujistěte se, zda je stav clusteru ok a zda jsou spuštěny všechny prostředky. Není důležité, na který uzel prostředky jsou spuštěné.
 
    <pre><code>
    sudo crm_mon -r
@@ -1092,34 +1092,34 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
 
 1. **[2]**  Nainstalovat SAP NetWeaver YBRAT  
 
-   Nainstalujte SAP NetWeaver YBRAT jako kořenová na hello druhého uzlu pomocí virtuální název hostitele, který mapuje toohello IP adresu konfigurace front-endové služby Vyrovnávání zatížení hello pro hello YBRAT například <b>nws ybrat</b>, <b>10.0.0.11</b> a číslo instance hello, který jste použili například u testu paměti hello nástroje pro vyrovnávání zatížení hello <b>02</b>.
+   Instalace SAP NetWeaver YBRAT jako kořenového na druhém uzlu pomocí virtuální název hostitele, který se mapuje na adresu IP front-endové konfigurace služby Vyrovnávání zatížení pro YBRAT například <b>nws ybrat</b>, <b>10.0.0.11</b> a číslo instance, který jste použili pro kontrolu služby Vyrovnávání zatížení například <b>02</b>.
 
-   Můžete použít hello sapinst parametr SAPINST_REMOTE_ACCESS_USER tooallow toosapinst tooconnect bez kořenového uživatele.
+   Parametr sapinst SAPINST_REMOTE_ACCESS_USER můžete povolit uživateli nekořenovými pro připojení k sapinst.
 
    <pre><code>
    sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
 
    > [!NOTE]
-   > Použijte prosím SWPM SP 20 PL 05 nebo vyšší. Nižší verze nenastavujte hello oprávnění správně a hello instalace se nezdaří.
+   > Použijte prosím SWPM SP 20 PL 05 nebo vyšší. Nižší verze nenastavujte oprávnění správně a instalace se nezdaří.
    > 
 
-1. **[1]**  Přizpůsobit hello ASC nebo SCS a YBRAT instance profily
+1. **[1]**  Adapt ASC nebo SCS a YBRAT instance profily
  
    * ASC nebo SCS profilu
 
    <pre><code> 
    sudo vi /sapmnt/<b>NWS</b>/profile/<b>NWS</b>_<b>ASCS00</b>_<b>nws-ascs</b>
 
-   # Change hello restart command tooa start command
+   # Change the restart command to a start command
    #Restart_Program_01 = local $(_EN) pf=$(_PF)
    Start_Program_01 = local $(_EN) pf=$(_PF)
 
-   # Add hello following lines
+   # Add the following lines
    service/halib = $(DIR_CT_RUN)/saphascriptco.so
    service/halib_cluster_connector = /usr/bin/sap_suse_cluster_connector
 
-   # Add hello keep alive parameter
+   # Add the keep alive parameter
    enque/encni/set_so_keepalive = true
    </code></pre>
 
@@ -1128,7 +1128,7 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
    <pre><code> 
    sudo vi /sapmnt/<b>NWS</b>/profile/<b>NWS</b>_ERS<b>02</b>_<b>nws-ers</b>
 
-   # Add hello following lines
+   # Add the following lines
    service/halib = $(DIR_CT_RUN)/saphascriptco.so
    service/halib_cluster_connector = /usr/bin/sap_suse_cluster_connector
    </code></pre>
@@ -1136,32 +1136,32 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
 
 1. **[A]**  Konfigurace zachování
 
-   Hello komunikace mezi serverem aplikace SAP NetWeaver hello a hello ASC nebo SCS směrován přes softwarovému Vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení Hello odpojí neaktivní připojení po vypršení časového limitu se dají konfigurovat. tooprevent to potřebujete tooset parametr v hello SAP NetWeaver ASC nebo SCS profil a změnit nastavení systému Linux hello. Přečtěte si prosím [1410736 Poznámka SAP] [ 1410736] Další informace.
+   Komunikace mezi serverem aplikace SAP NetWeaver a ASC nebo SCS směrován přes softwarovému Vyrovnávání zatížení. Nástroje pro vyrovnávání zatížení odpojí neaktivní připojení po vypršení časového limitu se dají konfigurovat. K tomu potřebujete nastavení parametru v profilu SAP NetWeaver ASC nebo SCS a změnit nastavení systému Linux. Přečtěte si prosím [1410736 Poznámka SAP] [ 1410736] Další informace.
    
-   Hello ASC nebo SCS profil parametr enque/encni/set_so_keepalive již byl přidán v posledním kroku hello.
+   Již byl přidán ASC nebo SCS profil parametr enque/encni/set_so_keepalive v posledním kroku.
 
    <pre><code> 
-   # Change hello Linux system configuration
+   # Change the Linux system configuration
    sudo sysctl net.ipv4.tcp_keepalive_time=120
    </code></pre>
 
-1. **[A]**  Konfigurovat hello SAP uživatele po instalaci hello
+1. **[A]**  Nakonfigurujte uživatele, SAP po instalaci
  
    <pre><code>
-   # Add sidadm toohello haclient group
+   # Add sidadm to the haclient group
    sudo usermod -aG haclient <b>nws</b>adm   
    </code></pre>
 
-1. **[1]**  Přidat hello ASC a SAP YBRAT služby toohello sapservice souboru
+1. **[1]**  Přidejte do souboru sapservice služby ASC a YBRAT SAP
 
-   Přidejte hello ASC služby položka toohello druhý uzel a kopírování hello YBRAT služby položka toohello prvního uzlu.
+   Přidáte ASC služby položku na druhém uzlu a zkopírujte položku služby YBRAT do prvního uzlu.
 
    <pre><code>
    cat /usr/sap/sapservices | grep ASCS<b>00</b> | sudo ssh <b>nws-cl-1</b> "cat >>/usr/sap/sapservices"
    sudo ssh <b>nws-cl-1</b> "cat /usr/sap/sapservices" | grep ERS<b>02</b> | sudo tee -a /usr/sap/sapservices
    </code></pre>
 
-1. **[1]**  Vytvořit prostředky clusteru SAP hello
+1. **[1]**  Vytvořit prostředky clusteru SAP
 
    <pre><code>
    sudo crm configure property maintenance-mode="true"
@@ -1195,7 +1195,7 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
    sudo crm node online <b>nws-cl-0</b>
    </code></pre>
 
-   Ujistěte se, zda je stav clusteru hello ok a zda jsou spuštěny všechny prostředky. Není důležité na prostředky, ke kterým uzlu hello běží.
+   Ujistěte se, zda je stav clusteru ok a zda jsou spuštěny všechny prostředky. Není důležité, na který uzel prostředky jsou spuštěné.
 
    <pre><code>
    sudo crm_mon -r
@@ -1224,39 +1224,39 @@ Hello následující položky jsou s předponou buď **[A]** -použít tooall uz
 
 ### <a name="create-stonith-device"></a>Vytvoření STONITH zařízení
 
-zařízení STONITH Hello používá tooauthorize objekt služby pro Microsoft Azure. Postupujte podle těchto kroků toocreate hlavní název služby.
+STONITH zařízení používá objekt služby k autorizaci s Microsoft Azure. Postupujte podle těchto kroků můžete vytvořit objekt služby.
 
-1. Přejděte příliš<https://portal.azure.com>
-1. Okno Azure Active Directory otevřete hello  
-   Přejděte tooProperties a zapište hello ID adresáře. Toto je hello **id klienta**.
+1. Přejděte na <https://portal.azure.com>
+1. Otevřete okno Azure Active Directory  
+   Přejděte k vlastnostem a poznamenejte si ID adresáře. Toto je **id klienta**.
 1. Klikněte na možnost registrace aplikace
 1. Klikněte na tlačítko Přidat.
 1. Zadejte název, vyberte typ aplikace "Aplikace webového rozhraní API", zadejte přihlašovací adresu URL (například http://localhost) a klikněte na možnost vytvořit
-1. Hello přihlašovací adresa URL se nepoužívá a může být libovolná platná adresa URL
-1. Vyberte hello nové aplikace a klikněte na tlačítko klíče na kartě nastavení hello
+1. Adresa URL přihlašování se nepoužívá a může být libovolná platná adresa URL
+1. Vyberte nové aplikace a na kartě nastavení klikněte na klíče
 1. Zadejte popis pro nový klíč, vyberte "Je platné stále" a klikněte na Uložit
-1. Poznamenejte si hodnotu hello. Použije se jako hello **heslo** pro hello instančního objektu
-1. Zapište hello ID aplikace. Použije se jako hello uživatelské jméno (**přihlašovacího id** v následujících kroků hello) z hello instančního objektu
+1. Poznamenejte si hodnotu. Použije se jako **heslo** pro objekt služby
+1. Poznamenejte si ID aplikace. Se používá jako uživatelské jméno (**přihlašovacího id** v následujících krocích) instančního objektu
 
-Hello instanční objekt nemá oprávnění tooaccess vašich prostředků Azure ve výchozím nastavení. Je třeba toogive hello instanční objekt oprávnění toostart a zastavení (zrušit přidělení) všechny virtuální počítače clusteru hello.
+Objekt služby nemá oprávnění pro přístup k prostředkům Azure ve výchozím nastavení. Musíte poskytnout oprávnění objektu služby spuštění a zastavení (zrušit přidělení) všechny virtuální počítače v clusteru.
 
-1. Přejděte toohttps://portal.azure.com
-1. Otevřete hello okno všechny prostředky
-1. Vyberte virtuální počítač hello
+1. Přejděte na https://portal.azure.com
+1. Otevře se okno všechny prostředky
+1. Vyberte virtuální počítač
 1. Klikněte na řízení přístupu (IAM)
 1. Klikněte na tlačítko Přidat.
-1. Vyberte roli hello vlastníka
-1. Zadejte název hello hello aplikace, kterou jste vytvořili výše
+1. Vyberte roli vlastníka
+1. Zadejte název aplikace, kterou jste vytvořili výše
 1. Klikněte na tlačítko OK
 
-#### <a name="1-create-hello-stonith-devices"></a>**[1]**  Vytvořit hello STONITH zařízení
+#### <a name="1-create-the-stonith-devices"></a>**[1]**  Vytvořit STONITH zařízení
 
-Poté, co jste upravili hello oprávnění pro hello virtuální počítače, můžete nakonfigurovat zařízení STONITH hello v clusteru hello.
+Poté, co jste upravili oprávnění pro virtuální počítače, můžete nakonfigurovat zařízení STONITH v clusteru.
 
 <pre><code>
 sudo crm configure
 
-# replace hello bold string with your subscription id, resource group, tenant id, service principal id and password
+# replace the bold string with your subscription id, resource group, tenant id, service principal id and password
 
 crm(live)configure# primitive rsc_st_azure_1 stonith:fence_azure_arm \
    params subscriptionId="<b>subscription id</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant id</b>" login="<b>login id</b>" passwd="<b>password</b>"
@@ -1270,9 +1270,9 @@ crm(live)configure# commit
 crm(live)configure# exit
 </code></pre>
 
-#### <a name="1-enable-hello-use-of-a-stonith-device"></a>**[1]**  Povolit použití hello STONITH zařízení
+#### <a name="1-enable-the-use-of-a-stonith-device"></a>**[1]**  Povolit používání STONITH zařízení
 
-Povolit použití hello STONITH zařízení
+Povolit použití funkce STONITH zařízení
 
 <pre><code>
 sudo crm configure property stonith-enabled=true 
@@ -1280,16 +1280,16 @@ sudo crm configure property stonith-enabled=true
 
 ## <a name="install-database"></a>Instalace databáze
 
-V tomto příkladu je replikaci systému SAP HANA nainstalovaný a nakonfigurovaný. SAP HANA se spustí v hello stejné jako hello SAP NetWeaver ASC nebo SCS a YBRAT clusteru. Můžete taky nainstalovat SAP HANA na vyhrazeném clusteru. V tématu [vysokou dostupnost z SAP HANA ve virtuálních počítačích Azure (VM)] [ sap-hana-ha] Další informace.
+V tomto příkladu je replikaci systému SAP HANA nainstalovaný a nakonfigurovaný. Ve stejném clusteru jako SAP NetWeaver ASC nebo SCS a YBRAT se spustí SAP HANA. Můžete taky nainstalovat SAP HANA na vyhrazeném clusteru. V tématu [vysokou dostupnost z SAP HANA ve virtuálních počítačích Azure (VM)] [ sap-hana-ha] Další informace.
 
 ### <a name="prepare-for-sap-hana-installation"></a>Příprava pro instalaci SAP HANA
 
-Obecně doporučujeme používat LVM pro svazky, které ukládají data a soubory protokolu. Pro účely testování můžete také soubor protokolu a data hello toostore přímo na prostý disku.
+Obecně doporučujeme používat LVM pro svazky, které ukládají data a soubory protokolu. Pro účely testování můžete také zvolit k uložení dat a souboru přímo na prostý disku protokolu.
 
 1. **[A]**  LVM  
-   Následující příklad Hello předpokládá, že máte hello virtuální počítače čtyři datových disků připojených, které by měly být použité toocreate dva svazky.
+   Následující příklad předpokládá, že máte virtuální počítače čtyři datových disků připojených, které se mají použít k vytvoření dva svazky.
    
-   Vytvořte pro všechny disky, které chcete toouse fyzických svazků.
+   Vytvořte fyzických svazků pro všechny disky, které chcete použít.
    
    <pre><code>
    sudo pvcreate /dev/sdd
@@ -1298,7 +1298,7 @@ Obecně doporučujeme používat LVM pro svazky, které ukládají data a soubor
    sudo pvcreate /dev/sdg
    </code></pre>
    
-   Vytvořit skupinu svazku pro hello datové soubory, jedna skupina svazku pro soubory protokolu hello a jeden pro sdílený adresář hello SAP HANA
+   Vytvoření skupiny svazku pro datové soubory, jedna skupina svazku pro soubory protokolů a jeden pro do sdíleného adresáře SAP HANA
    
    <pre><code>
    sudo vgcreate vg_hana_data /dev/sdd /dev/sde
@@ -1306,7 +1306,7 @@ Obecně doporučujeme používat LVM pro svazky, které ukládají data a soubor
    sudo vgcreate vg_hana_shared /dev/sdg
    </code></pre>
    
-   Vytvoření logické svazky hello
+   Vytvoření logické svazky
    
    <pre><code>
    sudo lvcreate -l 100%FREE -n hana_data vg_hana_data
@@ -1317,7 +1317,7 @@ Obecně doporučujeme používat LVM pro svazky, které ukládají data a soubor
    sudo mkfs.xfs /dev/vg_hana_shared/hana_shared
    </code></pre>
    
-   Vytvořte hello připojení adresáře a zkopírujte hello UUID všechny logické svazky
+   Vytvořte připojení adresáře a zkopírujte identifikátor UUID všechny logické svazky
    
    <pre><code>
    sudo mkdir -p /hana/data
@@ -1326,17 +1326,17 @@ Obecně doporučujeme používat LVM pro svazky, které ukládají data a soubor
    sudo chattr +i /hana/data
    sudo chattr +i /hana/log
    sudo chattr +i /hana/shared
-   # write down hello id of /dev/vg_hana_data/hana_data, /dev/vg_hana_log/hana_log and /dev/vg_hana_shared/hana_shared
+   # write down the id of /dev/vg_hana_data/hana_data, /dev/vg_hana_log/hana_log and /dev/vg_hana_shared/hana_shared
    sudo blkid
    </code></pre>
    
-   Vytvořit záznamy autofs pro hello tři logické svazky
+   Vytvořit záznamy autofs pro tři logické svazky
    
    <pre><code>
    sudo vi /etc/auto.direct
    </code></pre>
    
-   Vložit tento řádek toosudo vi /etc/auto.direct
+   Vložení tohoto řádku sudo vi /etc/auto.direct
    
    <pre><code>
    /hana/data -fstype=xfs :UUID=<b>&lt;UUID of /dev/vg_hana_data/hana_data&gt;</b>
@@ -1344,7 +1344,7 @@ Obecně doporučujeme používat LVM pro svazky, které ukládají data a soubor
    /hana/shared -fstype=xfs :UUID=<b>&lt;UUID of /dev/vg_hana_shared/hana_shared&gt;</b>
    </code></pre>
    
-   Připojit nové svazky hello
+   Připojit nové svazky
    
    <pre><code>
    sudo service autofs restart 
@@ -1352,22 +1352,22 @@ Obecně doporučujeme používat LVM pro svazky, které ukládají data a soubor
 
 1. **[A]**  Prostý disky  
 
-   Pro malé nebo ukázku systémů, můžete umístit HANA soubory protokolu a data na jeden disk. Hello následující příkazy na /dev/sdc vytvořit oddíl a naformátovat ho s xfs.
+   Pro malé nebo ukázku systémů, můžete umístit HANA soubory protokolu a data na jeden disk. Následující příkazy na /dev/sdc vytvořit oddíl a naformátovat s xfs.
    ```bash
    sudo sh -c 'echo -e "n\n\n\n\n\nw\n" | fdisk /dev/sdd'
    sudo mkfs.xfs /dev/sdd1
    
-   # write down hello id of /dev/sdd1
+   # write down the id of /dev/sdd1
    sudo /sbin/blkid
    sudo vi /etc/auto.direct
    ```
    
-   Vložit tento řádek too/etc/auto.direct
+   Vložení tohoto řádku /etc/auto.direct
    <pre><code>
    /hana -fstype=xfs :UUID=<b>&lt;UUID&gt;</b>
    </code></pre>
    
-   Vytvořte hello cílový adresář a připojte hello disk.
+   Vytvořte cílový adresář a připojení disku.
    
    <pre><code>
    sudo mkdir /hana
@@ -1377,9 +1377,9 @@ Obecně doporučujeme používat LVM pro svazky, které ukládají data a soubor
 
 ### <a name="installing-sap-hana"></a>Instalace SAP HANA
 
-Hello následující kroky jsou založeny na kapitoly 4 hello [SAP HANA SR výkonu optimalizované scénář průvodce] [ suse-hana-ha-guide] tooinstall replikaci systému SAP HANA. Přečtěte si ji před pokračováním instalace hello.
+Následující kroky jsou založeny na kapitoly 4 z [SAP HANA SR výkonu optimalizované scénář průvodce] [ suse-hana-ha-guide] nainstalovat replikaci systému SAP HANA. Přečtěte si ji před pokračováním instalace.
 
-1. **[A]**  Spustit hdblcm z hello HANA DVD
+1. **[A]**  Hdblcm spustit z disku DVD HANA
    
    <pre><code>
    sudo hdblcm --sid=<b>HDB</b> --number=<b>03</b> --action=install --batch --password=<b>&lt;password&gt;</b> --system_user_password=<b>&lt;password for system user&gt;</b>
@@ -1389,18 +1389,18 @@ Hello následující kroky jsou založeny na kapitoly 4 hello [SAP HANA SR výko
 
 1. **[A]**  Upgradu agenta hostitele SAP
 
-   Stáhnout nejnovější archivu Agent hostitele SAP hello z hello [SAP Softwarecenter] [ sap-swcenter] a spusťte hello následující příkaz tooupgrade hello agenta. Nahraďte hello cesta toohello toopoint toohello soubor archivu, které jste stáhli.
+   Stáhněte si nejnovější archivu SAP Agent hostitele z [SAP Softwarecenter] [ sap-swcenter] a spusťte následující příkaz k aktualizaci agenta. Nahraďte cestu do archivu tak, aby odkazoval na soubor, který jste stáhli.
    <pre><code>
-   sudo /usr/sap/hostctrl/exe/saphostexec -upgrade -archive <b>&lt;path tooSAP Host Agent SAR&gt;</b> 
+   sudo /usr/sap/hostctrl/exe/saphostexec -upgrade -archive <b>&lt;path to SAP Host Agent SAR&gt;</b> 
    </code></pre>
 
 1. **[1]**  Vytvořit HANA replikace (jako uživatel root)  
 
-   Spusťte následující příkaz hello. Ujistěte se, že tooreplace tučné řetězce (HANA systému ID HDB a číslo instance 03) s hodnotami hello instalace SAP HANA.
+   Spusťte následující příkaz. Nezapomeňte nahradit tučné řetězce (HANA systému ID HDB a číslo instance 03) s hodnotami instalace SAP HANA.
    <pre><code>
    PATH="$PATH:/usr/sap/<b>HDB</b>/HDB<b>03</b>/exe"
    hdbsql -u system -i <b>03</b> 'CREATE USER <b>hdb</b>hasync PASSWORD "<b>passwd</b>"' 
-   hdbsql -u system -i <b>03</b> 'GRANT DATA ADMIN too<b>hdb</b>hasync' 
+   hdbsql -u system -i <b>03</b> 'GRANT DATA ADMIN TO <b>hdb</b>hasync' 
    hdbsql -u system -i <b>03</b> 'ALTER USER <b>hdb</b>hasync DISABLE PASSWORD LIFETIME' 
    </code></pre>
 
@@ -1418,14 +1418,14 @@ Hello následující kroky jsou založeny na kapitoly 4 hello [SAP HANA SR výko
    hdbsql -u system -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackup</b>')" 
    </code></pre>
 
-1. **[1]**  Přepnout uživatele sapsid HANA toohello a vytvořit hello primární lokality.
+1. **[1]**  Přepnout uživatele sapsid HANA a vytvořit primární lokality.
 
    <pre><code>
    su - <b>hdb</b>adm
    hdbnsutil -sr_enable –-name=<b>SITE1</b>
    </code></pre>
 
-1. **[2]**  Přepnout uživatele sapsid HANA toohello a vytvořit hello sekundární lokality.
+1. **[2]**  Přepnout uživatele sapsid HANA a vytvořit sekundární lokalitu.
 
    <pre><code>
    su - <b>hdb</b>adm
@@ -1435,12 +1435,12 @@ Hello následující kroky jsou založeny na kapitoly 4 hello [SAP HANA SR výko
 
 1. **[1]**  Prostředky clusteru vytvořit SAP HANA
 
-   Nejprve vytvořte hello topologie.
+   Nejprve vytvořte topologii.
    
    <pre><code>
    sudo crm configure
 
-   # replace hello bold string with your instance number and HANA system id
+   # replace the bold string with your instance number and HANA system id
    
    crm(live)configure# primitive rsc_SAPHanaTopology_<b>HDB</b>_HDB<b>03</b>   ocf:suse:SAPHanaTopology \
      operations $id="rsc_sap2_<b>HDB</b>_HDB<b>03</b>-operations" \
@@ -1456,12 +1456,12 @@ Hello následující kroky jsou založeny na kapitoly 4 hello [SAP HANA SR výko
    crm(live)configure# exit
    </code></pre>
    
-   Dále vytvořte hello HANA prostředky
+   Dále vytvořte HANA prostředky
    
    <pre><code>
    sudo crm configure
 
-   # replace hello bold string with your instance number, HANA system id and hello frontend IP address of hello Azure load balancer. 
+   # replace the bold string with your instance number, HANA system id and the frontend IP address of the Azure load balancer. 
     
    crm(live)configure# primitive rsc_SAPHana_<b>HDB</b>_HDB<b>03</b> ocf:suse:SAPHana \
      operations $id="rsc_sap_<b>HDB</b>_HDB<b>03</b>-operations" \
@@ -1499,7 +1499,7 @@ Hello následující kroky jsou založeny na kapitoly 4 hello [SAP HANA SR výko
    crm(live)configure# exit
    </code></pre>
 
-   Ujistěte se, zda je stav clusteru hello ok a zda jsou spuštěny všechny prostředky. Není důležité na prostředky, ke kterým uzlu hello běží.
+   Ujistěte se, zda je stav clusteru ok a zda jsou spuštěny všechny prostředky. Není důležité, na který uzel prostředky jsou spuštěné.
 
    <pre><code>
    sudo crm_mon -r
@@ -1536,11 +1536,11 @@ Hello následující kroky jsou založeny na kapitoly 4 hello [SAP HANA SR výko
    # rsc_st_azure_2  (stonith:fence_azure_arm):      <b>Started nws-cl-1</b>
    </code></pre>
 
-1. **[1]**  Instance databáze SAP NetWeaver hello instalace
+1. **[1]**  Nainstalovat instanci databáze SAP NetWeaver
 
-   Instalace hello SAP NetWeaver instanci databáze jako kořenová pomocí virtuální název hostitele, který mapuje toohello IP adresu konfigurace front-endové služby Vyrovnávání zatížení hello hello databáze například <b>nws-db</b> a <b>10.0.0.12</b>.
+   Instalovat instanci databáze SAP NetWeaver jako kořenové pomocí virtuální název hostitele, který se mapuje na adresu IP front-endové konfigurace služby Vyrovnávání zatížení pro databázi, například <b>nws-db</b> a <b>10.0.0.12</b>.
 
-   Můžete použít hello sapinst parametr SAPINST_REMOTE_ACCESS_USER tooallow toosapinst tooconnect bez kořenového uživatele.
+   Parametr sapinst SAPINST_REMOTE_ACCESS_USER můžete povolit uživateli nekořenovými pro připojení k sapinst.
 
    <pre><code>
    sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
@@ -1548,30 +1548,30 @@ Hello následující kroky jsou založeny na kapitoly 4 hello [SAP HANA SR výko
 
 ## <a name="sap-netweaver-application-server-installation"></a>Instalace serveru aplikace SAP NetWeaver
 
-Postupujte podle těchto kroků tooinstall SAP aplikační server. mocí následujících kroků Hello předpokládá instalace hello aplikační server na serveru, která se liší od hello ASC nebo SCS a HANA servery. V opačném případě některé z kroků hello dole (např. konfigurace rozlišení názvu hostitele) nejsou potřeba.
+Postupujte podle těchto kroků nainstalujte SAP aplikační server. Mocí následujících kroky předpokládají, nainstalovat aplikační server na server, která se liší od serverů ASC nebo SCS a HANA. V opačném případě některé z následujících kroků (např. konfigurace rozlišení názvu hostitele) nejsou potřeba.
 
 1. Instalační program rozlišení názvu hostitele    
-   Můžete buď použít DNS server nebo úpravám hello/etc/hosts na všech uzlech. Tento příklad ukazuje, jak toouse hello soubor/etc/hosts.
-   Nahraďte hello IP adresu a název hostitele hello v hello následující příkazy
+   Můžete buď použít DNS server, nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak chcete použít soubor/etc/hosts.
+   Nahraďte adresu IP a název hostitele v následujících příkazech
    ```bash
    sudo vi /etc/hosts
    ```
-   Následující hello vložení řádků příliš/etc/hosts. Změnit hello IP adresu a název hostitele toomatch prostředí    
+   Vložte následující řádky, které se/etc/hosts. Změnit IP adresu a název hostitele tak, aby odpovídaly prostředí    
     
    <pre><code>
-   # IP address of hello load balancer frontend configuration for NFS
+   # IP address of the load balancer frontend configuration for NFS
    <b>10.0.0.4 nws-nfs</b>
-   # IP address of hello load balancer frontend configuration for SAP NetWeaver ASCS/SCS
+   # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS/SCS
    <b>10.0.0.10 nws-ascs</b>
-   # IP address of hello load balancer frontend configuration for SAP NetWeaver ERS
+   # IP address of the load balancer frontend configuration for SAP NetWeaver ERS
    <b>10.0.0.11 nws-ers</b>
-   # IP address of hello load balancer frontend configuration for database
+   # IP address of the load balancer frontend configuration for database
    <b>10.0.0.12 nws-db</b>
-   # IP address of hello application server
+   # IP address of the application server
    <b>10.0.0.8 nws-di-0</b>
    </code></pre>
 
-1. Vytvořte adresář sapmnt hello
+1. Vytvoření adresáře sapmnt
 
    <pre><code>
    sudo mkdir -p /sapmnt/<b>NWS</b>
@@ -1586,7 +1586,7 @@ Postupujte podle těchto kroků tooinstall SAP aplikační server. mocí násled
    <pre><code>
    sudo vi /etc/auto.master
 
-   # Add hello following line toohello file, save and exit
+   # Add the following line to the file, save and exit
    +auto.master
    /- /etc/auto.direct
    </code></pre>
@@ -1596,12 +1596,12 @@ Postupujte podle těchto kroků tooinstall SAP aplikační server. mocí násled
    <pre><code>
    sudo vi /etc/auto.direct
 
-   # Add hello following lines toohello file, save and exit
+   # Add the following lines to the file, save and exit
    /sapmnt/<b>NWS</b> -nfsvers=4,nosymlink,sync <b>nws-nfs</b>:/sapmntsid
    /usr/sap/trans -nfsvers=4,nosymlink,sync <b>nws-nfs</b>:/trans
    </code></pre>
 
-   Restartujte nové sdílené složky autofs toomount hello
+   Restartujte autofs připojit nové sdílené složky
 
    <pre><code>
    sudo systemctl enable autofs
@@ -1613,17 +1613,17 @@ Postupujte podle těchto kroků tooinstall SAP aplikační server. mocí násled
    <pre><code>
    sudo vi /etc/waagent.conf
 
-   # Set hello property ResourceDisk.EnableSwap tooy
+   # Set the property ResourceDisk.EnableSwap to y
    # Create and use swapfile on resource disk.
    ResourceDisk.EnableSwap=<b>y</b>
 
-   # Set hello size of hello SWAP file with property ResourceDisk.SwapSizeMB
-   # hello free space of resource disk varies by virtual machine size. Make sure that you do not set a value that is too big. You can check hello SWAP space with command swapon
-   # Size of hello swapfile.
+   # Set the size of the SWAP file with property ResourceDisk.SwapSizeMB
+   # The free space of resource disk varies by virtual machine size. Make sure that you do not set a value that is too big. You can check the SWAP space with command swapon
+   # Size of the swapfile.
    ResourceDisk.SwapSizeMB=<b>2000</b>
    </code></pre>
 
-   Restartujte hello agenta tooactivate hello změn
+   Restartujte agenta aktivovat změn
 
    <pre><code>
    sudo service waagent restart
@@ -1633,7 +1633,7 @@ Postupujte podle těchto kroků tooinstall SAP aplikační server. mocí násled
 
    Instalace serveru primární nebo další aplikace SAP NetWeaver.
 
-   Můžete použít hello sapinst parametr SAPINST_REMOTE_ACCESS_USER tooallow toosapinst tooconnect bez kořenového uživatele.
+   Parametr sapinst SAPINST_REMOTE_ACCESS_USER můžete povolit uživateli nekořenovými pro připojení k sapinst.
 
    <pre><code>
    sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
@@ -1641,7 +1641,7 @@ Postupujte podle těchto kroků tooinstall SAP aplikační server. mocí násled
 
 1. Zabezpečené úložiště pověření aktualizace SAP HANA
 
-   Aktualizace hello SAP HANA zabezpečeného úložiště toopoint toohello virtuální název instalačního programu hello replikaci systému SAP HANA.
+   Aktualizujte zabezpečené úložiště SAP HANA tak, aby odkazoval na virtuální název tohoto nastavení replikace systému SAP HANA.
    <pre><code>
    su - <b>nws</b>adm
    hdbuserstore SET DEFAULT <b>nws-db</b>:3<b>03</b>15 <b>SAPABAP1</b> <b>&lt;password of ABAP schema&gt;</b>
@@ -1651,5 +1651,5 @@ Postupujte podle těchto kroků tooinstall SAP aplikační server. mocí násled
 * [Azure virtuálních počítačů, plánování a implementace pro SAP][planning-guide]
 * [Nasazení virtuálních počítačů Azure pro SAP][deployment-guide]
 * [Nasazení virtuálních počítačů databázového systému Azure pro SAP][dbms-guide]
-* jak tooestablish vysokou dostupnost a plán pro zotavení po havárii SAP HANA v Azure (velké instance), najdete v části toolearn [SAP HANA (velké instance) vysoké dostupnosti a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md).
-* jak tooestablish vysokou dostupnost a plán pro zotavení po havárii SAP HANA na virtuálních počítačích Azure, najdete v části toolearn [vysokou dostupnost z SAP HANA ve virtuálních počítačích Azure (VM)][sap-hana-ha]
+* Další informace o vytvoření vysoké dostupnosti a plán pro zotavení po havárii SAP HANA v Azure (velké instance) naleznete v tématu [SAP HANA (velké instance) vysoké dostupnosti a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md).
+* Další informace o vytvoření vysoké dostupnosti a plán pro zotavení po havárii SAP HANA na virtuálních počítačích Azure naleznete v tématu [vysokou dostupnost z SAP HANA ve virtuálních počítačích Azure (VM)][sap-hana-ha]

@@ -1,6 +1,6 @@
 ---
-title: "aaaConfiguring a pomocí hello emulátor úložiště pomocí sady Visual Studio | Microsoft Docs"
-description: "Konfigurace a použití hello emulátor úložiště pomocí sady Visual Studio"
+title: "Konfigurace a pomocí emulátoru úložiště pomocí sady Visual Studio | Microsoft Docs"
+description: "Konfigurace a pomocí emulátoru úložiště pomocí sady Visual Studio"
 services: visual-studio-online
 documentationcenter: na
 author: kraigb
@@ -14,45 +14,45 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/17/2017
 ms.author: kraigb
-ms.openlocfilehash: d590f21146c86bcb7bfa6b6164b92c6df5938d5b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f4cd8ccc3b186cf2b4178b7d8a98d8928c705cbc
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="configuring-and-using-hello-storage-emulator-with-visual-studio"></a>Konfigurace a použití hello emulátor úložiště pomocí sady Visual Studio
+# <a name="configuring-and-using-the-storage-emulator-with-visual-studio"></a>Konfigurace a pomocí emulátoru úložiště pomocí sady Visual Studio
 [!INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]
 
 ## <a name="overview"></a>Přehled
-Hello Azure SDK vývojové prostředí nabízí hello emulátor úložiště, nástroj, který simuluje hello Blob, fronty a tabulky úložiště služby v Azure k dispozici na místním vývojovém počítači. Pokud jste vytváření cloudové služby, který využívá hello služby Azure storage nebo zápis žádné externí aplikací, že volání hello služby úložiště, můžete otestovat kód místně emulátoru hello úložiště. Hello nástroje Azure pro sadu Microsoft Visual Studio integrovat správu emulátor úložiště hello do sady Visual Studio. Nástroje Azure Hello inicializace databáze emulátor úložiště hello na první použití, spustí hello služba emulátor úložiště, když spustíte nebo ladění kódu ze sady Visual Studio a poskytuje přístup jen pro čtení toohello úložiště emulátoru data prostřednictvím hello Azure Storage Explorer.
+Vývojové prostředí sady Azure SDK zahrnuje emulátor úložiště, nástroj, který simuluje Blob, fronty a tabulky úložiště služby v Azure k dispozici na místním vývojovém počítači. Pokud jste vytváření cloudové služby, které používá služby Azure storage nebo zápis žádné externí aplikace, která volá služby úložiště, můžete otestovat kód místně emulátoru úložiště. Nástroje Azure pro sadu Microsoft Visual Studio integrovat správu emulátoru úložiště do sady Visual Studio. Nástroje Azure inicializace databáze emulátor úložiště na první použití, spustí službu emulátor úložiště při spouštění nebo ladění kódu ze sady Visual Studio a poskytuje přístup jen pro čtení k datům emulátor úložiště pomocí Průzkumníka úložiště Azure.
 
-Podrobné informace o hello emulátor úložiště, včetně požadavky na systém a vlastní konfigurace pokyny najdete v tématu [hello pomocí emulátoru úložiště Azure pro vývoj a testování](storage/common/storage-use-emulator.md).
-
-> [!NOTE]
-> Existují určité rozdíly ve funkcích mezi simulace emulátor úložiště hello a hello služby Azure storage. V tématu [rozdíly mezi hello emulátor úložiště a služby úložiště Azure](storage/common/storage-use-emulator.md) v hello dokumentace sady Azure SDK pro informace o konkrétních rozdílech hello.
-> 
-> 
-
-## <a name="configuring-a-connection-string-for-hello-storage-emulator"></a>Konfigurace připojovací řetězec pro emulátor úložiště hello
-emulátor úložiště tooaccess hello z kódu v rámci role, budete chtít tooconfigure připojení řetězec této emulátor úložiště toohello body a který lze později změněné toopoint tooan účtu úložiště Azure. Připojovací řetězec je nastavení konfigurace, který může číst vaše role v účtu úložiště tooa tooconnect modulu runtime. Další informace o tom, najdete v části toocreate připojovací řetězce, [hello konfigurace aplikace Azure](https://msdn.microsoft.com/library/azure/2da5d6ce-f74d-45a9-bf6b-b3a60c5ef74e#BK_SettingsPage).
+Podrobné informace o emulátor úložiště, včetně požadavky na systém a vlastní konfigurace pokyny najdete v tématu [použití emulátoru úložiště Azure pro vývoj a testování](storage/common/storage-use-emulator.md).
 
 > [!NOTE]
-> Odkaz na účet emulátor úložiště toohello může vrátit z kódu pomocí hello **DevelopmentStorageAccount** vlastnost. Tento postup funguje správně, pokud chcete tooaccess hello emulátor úložiště z vašeho kódu, ale pokud máte v plánu toopublish tooAzure vaší aplikace, bude nutné toocreate tooaccess řetězec připojení účtu úložiště Azure a upravit váš kód toouse, Před publikováním připojovací řetězec. Pokud přepínáte mezi hello účet emulátor úložiště a účet úložiště Azure často, bude tento proces zjednodušit připojovací řetězec.
+> Existují určité rozdíly ve funkcích mezi simulace emulátor úložiště a služby úložiště Azure. V tématu [rozdíly mezi emulátoru úložiště a služby úložiště Azure](storage/common/storage-use-emulator.md) v dokumentaci k Azure SDK pro informace o konkrétních rozdílech.
 > 
 > 
 
-## <a name="initializing-and-running-hello-storage-emulator"></a>Inicializace a spouštění emulátor úložiště hello
-Můžete určit, že při spuštění nebo ladění služby v sadě Visual Studio, Visual Studio automaticky spustí emulátor úložiště hello. V Průzkumníku řešení otevřete hello místní nabídku pro vaše **Azure** projektu a zvolte **vlastnosti**. Na hello **vývoj** na kartě hello **spusťte emulátor úložiště Azure** vyberte **True** (Pokud již není nastavena hodnota toothat).
-
-Hello poprvé spustit nebo ladění služby ze sady Visual Studio, emulátor úložiště hello spouští inicializace procesu. Tento proces rezervuje místní porty pro emulátor úložiště hello a vytvoří databázi emulátor úložiště hello. Po dokončení tohoto procesu není nutné toorun znovu Pokud databáze, emulátor úložiště hello se odstraní.
+## <a name="configuring-a-connection-string-for-the-storage-emulator"></a>Konfigurace připojovací řetězec pro emulátor úložiště
+Pro přístup k emulátoru úložiště z kódu v rámci role, můžete nakonfigurovat připojovací řetězec, který odkazuje na emulátor úložiště a který lze později změnit tak, aby odkazoval na účet úložiště Azure. Připojovací řetězec je nastavení konfigurace, který může číst vaše role při běhu pro připojení k účtu úložiště. Další informace o tom, jak vytvořit připojovací řetězce najdete v tématu [konfigurace aplikace Azure](https://msdn.microsoft.com/library/azure/2da5d6ce-f74d-45a9-bf6b-b3a60c5ef74e#BK_SettingsPage).
 
 > [!NOTE]
-> Od verze červen 2012 hello hello nástroje Azure, hello emulátor úložiště, ve výchozím nastavení spustí, v SQL Express LocalDB. V dřívějších verzích hello nástroje Azure emulátor úložiště hello spuštěno u výchozí instance systému SQL Express 2005 nebo 2008, který je nutno nainstalovat předtím, než můžete nainstalovat hello Azure SDK. Můžete také spustit emulátor úložiště hello proti pojmenované instance SQL Express nebo pojmenovaná nebo výchozí instanci serveru Microsoft SQL Server. Pokud potřebujete tooconfigure hello úložiště emulátoru toorun proti instanci než hello výchozí instance, přečtěte si [hello pomocí emulátoru úložiště Azure pro vývoj a testování](storage/common/storage-use-emulator.md).
+> Vrátíte odkaz na účet emulátor úložiště z vašeho kódu pomocí **DevelopmentStorageAccount** vlastnost. Tento postup funguje správně, pokud chcete získat přístup z vašeho kódu emulátor úložiště, ale pokud máte v plánu pro publikování aplikace do Azure, budete muset vytvořit připojovací řetězec pro přístup k účtu úložiště Azure a upravit kód a použít tento připojovací řetězec před publikováním. Pokud přepínáte mezi účtem emulátor úložiště a účet úložiště Azure často, bude tento proces zjednodušit připojovací řetězec.
 > 
 > 
 
-emulátor úložiště Hello poskytuje uživatelské rozhraní tooview hello stav služby hello místní úložiště a toostart, zastavte a je resetujete. Jakmile byla spuštěna služba emulátor úložiště hello, můžete zobrazit uživatelské rozhraní hello nebo spuštění nebo zastavení služby hello kliknutím pravým tlačítkem na ikonu v oznamovací oblasti hello pro hello emulátoru Microsoft Azure na hlavním panelu Windows hello.
+## <a name="initializing-and-running-the-storage-emulator"></a>Inicializace a spouštění emulátor úložiště
+Můžete určit, že při spuštění nebo ladění služby v sadě Visual Studio, Visual Studio automaticky spustí emulátor úložiště. V Průzkumníku řešení otevřete místní nabídku pro vaše **Azure** projektu a zvolte **vlastnosti**. Na **vývoj** ve **spusťte emulátor úložiště Azure** vyberte **True** (Pokud již není nastaven na tuto hodnotu).
+
+Při prvním spuštění nebo ladění služby ze sady Visual Studio, spustí se emulátor úložiště inicializace procesu. Tento proces rezervuje místní porty pro emulátor úložiště a vytvoří databázi emulátoru úložiště. Po dokončení tohoto procesu není nutné znovu spustit, pokud databáze, emulátor úložiště se odstraní.
+
+> [!NOTE]
+> Od června 2012 verze nástroje Azure, emulátor úložiště, ve výchozím nastavení spustí, v SQL Express LocalDB. V dřívějších verzích nástroje Azure emulátor úložiště spuštěno u výchozí instance systému SQL Express 2005 nebo 2008, který je nutno nainstalovat předtím, než můžete nainstalovat sadu Azure SDK. Můžete také spustit emulátor úložiště proti pojmenované instance SQL Express nebo pojmenovaná nebo výchozí instanci serveru Microsoft SQL Server. Pokud potřebujete nakonfigurovat emulátor úložiště spouštění instance než výchozí instance, najdete v článku [použití emulátoru úložiště Azure pro vývoj a testování](storage/common/storage-use-emulator.md).
+> 
+> 
+
+Emulátor úložiště poskytuje uživatelské rozhraní pro zobrazení stavu služby místní úložiště a spuštění, zastavení a nastavit je. Jakmile byla spuštěna služba emulátor úložiště, můžete zobrazit uživatelské rozhraní nebo spustit nebo zastavit službu kliknutím pravým tlačítkem myši na ikonu v oznamovací oblasti pro emulátor sady Microsoft Azure na hlavním panelu Windows.
 
 ## <a name="viewing-storage-emulator-data-in-server-explorer"></a>Zobrazení dat emulátoru úložiště v Průzkumníku serveru
-Hello uzlu Azure Storage v Průzkumníku serveru vám umožní tooview dat a změna nastavení pro objekt blob a dat v tabulce v účtech úložiště, včetně hello emulátoru úložiště. V tématu [prostředků spravovat Azure Blob Storage pomocí Storage Exploreru (Preview)](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs) Další informace.
+V uzlu úložiště Azure v Průzkumníku serveru umožňuje zobrazovat data a změnit nastavení pro data objektu blob a tabulky ve účty úložiště, včetně emulátor úložiště. V tématu [prostředků spravovat Azure Blob Storage pomocí Storage Exploreru (Preview)](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs) Další informace.
 

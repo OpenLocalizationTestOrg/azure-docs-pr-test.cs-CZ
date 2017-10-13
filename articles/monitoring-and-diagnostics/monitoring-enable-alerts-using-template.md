@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate metriky výstraha pomocí šablony Resource Manageru | Microsoft Docs"
-description: "Zjistěte, jak toouse toocreate šablony správce prostředků metriky výstrahy tooreceive oznámení prostřednictvím e-mailu nebo webhooku."
+title: "Vytvořit výstrahu pro metriky pomocí šablony Resource Manageru | Microsoft Docs"
+description: "Zjistěte, jak vytvořit upozornění na metriky pro příjem oznámení e-mailem nebo webhooku pomocí šablony Resource Manageru."
 author: johnkemnetz
 manager: orenr
 editor: 
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/21/2017
 ms.author: johnkem
-ms.openlocfilehash: dcf92b189f56a8389fff007c82197527239b96b8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ac12605636d21fd0b5c89512c454ef2d899ef6dc
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na metriku pomocí šablony Resource Manageru
-Tento článek ukazuje, jak můžete použít [šablony Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) tooconfigure Azure metriky výstrahy. To vám umožní tooautomatically nastavit výstrahy na vaše prostředky při jejich vytváření tooensure, že všechny prostředky jsou monitorovány správně.
+Tento článek ukazuje, jak můžete použít [šablony Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) ke konfiguraci Azure metriky výstrahy. To umožňuje automaticky nastavit výstrahy na vaše prostředky při jejich vytváření zajistit, že všechny prostředky jsou monitorovány správně.
 
-Hello základní kroky jsou následující:
+Základní kroky jsou následující:
 
-1. Vytvořte šablonu jako soubor JSON, který popisuje, jak toocreate hello výstrahy.
-2. [Nasazení šablony hello pomocí libovolné metody nasazení](../azure-resource-manager/resource-group-template-deploy.md).
+1. Vytvořte šablonu jako soubor JSON, který popisuje, jak vytvořit výstrahu.
+2. [Šablonu nasadit pomocí libovolné metody nasazení](../azure-resource-manager/resource-group-template-deploy.md).
 
-Níže budeme popisují, jak toocreate šablony Resource Manageru nejprve pro výstrahu samostatně, pak pro výstrahu během vytváření hello jiný prostředek.
+Níže jsme popisují, jak vytvořit šablonu Resource Manager nejprve pro výstrahu samostatně, pak pro výstrahu při vytváření jiný prostředek.
 
 ## <a name="resource-manager-template-for-a-metric-alert"></a>Šablony Resource Manageru pro upozornění na metriky
-toocreate výstrahu pomocí šablony Resource Manageru, vytvořit prostředek typu `Microsoft.Insights/alertRules` a vyplňte všechny související vlastnosti. Níže je šablonu, která vytvoří pravidlo výstrahy.
+Pokud chcete vytvořit výstrahu pomocí šablony Resource Manageru, vytvořit prostředek typu `Microsoft.Insights/alertRules` a vyplňte všechny související vlastnosti. Níže je šablonu, která vytvoří pravidlo výstrahy.
 
 ```json
 {
@@ -62,14 +62,14 @@ toocreate výstrahu pomocí šablony Resource Manageru, vytvořit prostředek ty
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "Resource ID of hello resource emitting hello metric that will be used for hello comparison."
+                "description": "Resource ID of the resource emitting the metric that will be used for the comparison."
             }
         },
         "metricName": {
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "Name of hello metric used in hello comparison tooactivate hello alert."
+                "description": "Name of the metric used in the comparison to activate the alert."
             }
         },
         "operator": {
@@ -82,14 +82,14 @@ toocreate výstrahu pomocí šablony Resource Manageru, vytvořit prostředek ty
                 "LessThanOrEqual"
             ],
             "metadata": {
-                "description": "Operator comparing hello current value with hello threshold value."
+                "description": "Operator comparing the current value with the threshold value."
             }
         },
         "threshold": {
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "hello threshold value at which hello alert is activated."
+                "description": "The threshold value at which the alert is activated."
             }
         },
         "aggregation": {
@@ -103,35 +103,35 @@ toocreate výstrahu pomocí šablony Resource Manageru, vytvořit prostředek ty
                 "Total"
             ],
             "metadata": {
-                "description": "How hello data that is collected should be combined over time."
+                "description": "How the data that is collected should be combined over time."
             }
         },
         "windowSize": {
             "type": "string",
             "defaultValue": "PT5M",
             "metadata": {
-                "description": "Period of time used toomonitor alert activity based on hello threshold. Must be between five minutes and one day. ISO 8601 duration format."
+                "description": "Period of time used to monitor alert activity based on the threshold. Must be between five minutes and one day. ISO 8601 duration format."
             }
         },
         "sendToServiceOwners": {
             "type": "bool",
             "defaultValue": true,
             "metadata": {
-                "description": "Specifies whether alerts are sent tooservice owners"
+                "description": "Specifies whether alerts are sent to service owners"
             }
         },
         "customEmailAddresses": {
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "Comma-delimited email addresses where hello alerts are also sent"
+                "description": "Comma-delimited email addresses where the alerts are also sent"
             }
         },
         "webhookUrl": {
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "URL of a webhook that will receive an HTTP POST when hello alert activates."
+                "description": "URL of a webhook that will receive an HTTP POST when the alert activates."
             }
         }
     },
@@ -178,10 +178,10 @@ toocreate výstrahu pomocí šablony Resource Manageru, vytvořit prostředek ty
 }
 ```
 
-Vysvětlení hello schéma a vlastnosti pro pravidlo výstrahy [Zde jsou k dispozici](https://msdn.microsoft.com/library/azure/dn933805.aspx).
+Vysvětlení schéma a vlastnosti pro pravidlo výstrahy [Zde jsou k dispozici](https://msdn.microsoft.com/library/azure/dn933805.aspx).
 
 ## <a name="resource-manager-template-for-a-resource-with-an-alert"></a>Šablony Resource Manageru pro prostředek s výstrahu
-Při vytváření výstrahu při vytváření prostředku je nejčastěji užitečné výstrahu na šablony Resource Manageru. Například může chtít tooensure, "využití procesoru % > 80" nastavení pravidla pokaždé, když nasazujete virtuální počítač. toodo, přidejte pravidlo výstrahy hello jako prostředek v poli hello prostředků pro šablony virtuálních počítačů a přidat závislost pomocí hello `dependsOn` toohello vlastnosti virtuálního počítače ID prostředku. Zde je úplný příklad, který vytvoří virtuální počítač s Windows a přidá výstrahu, která upozorní, že správci předplatného hello využití procesoru překročí 80 %.
+Při vytváření výstrahu při vytváření prostředku je nejčastěji užitečné výstrahu na šablony Resource Manageru. Například můžete zajistit, aby "využití procesoru % > 80" nastavení pravidla pokaždé, když nasazujete virtuální počítač. K tomu můžete přidat pravidlo výstrahy jako prostředek v poli prostředků pro šablony virtuálních počítačů a přidat závislosti pomocí `dependsOn` vlastnost ID prostředku virtuálního počítače. Zde je úplný příklad, který vytvoří virtuální počítač s Windows a přidá výstrahu, která upozorní správci předplatného, když využití procesoru překročí 80 %.
 
 ```json
 {
@@ -191,25 +191,25 @@ Při vytváření výstrahu při vytváření prostředku je nejčastěji užite
         "newStorageAccountName": {
             "type": "string",
             "metadata": {
-                "Description": "hello name of hello storage account where hello VM disk is stored."
+                "Description": "The name of the storage account where the VM disk is stored."
             }
         },
         "adminUsername": {
             "type": "string",
             "metadata": {
-                "Description": "hello name of hello administrator account on hello VM."
+                "Description": "The name of the administrator account on the VM."
             }
         },
         "adminPassword": {
             "type": "securestring",
             "metadata": {
-                "Description": "hello administrator account password on hello VM."
+                "Description": "The administrator account password on the VM."
             }
         },
         "dnsNameForPublicIP": {
             "type": "string",
             "metadata": {
-                "Description": "hello name of hello public IP address used tooaccess hello VM."
+                "Description": "The name of the public IP address used to access the VM."
             }
         }
     },
@@ -402,5 +402,5 @@ Při vytváření výstrahu při vytváření prostředku je nejčastěji užite
 
 ## <a name="next-steps"></a>Další kroky
 * [Další informace o výstrahách](insights-receive-alert-notifications.md)
-* [Přidejte nastavení pro diagnostiku](monitoring-enable-diagnostic-logs-using-template.md) tooyour šablony Resource Manageru
+* [Přidejte nastavení pro diagnostiku](monitoring-enable-diagnostic-logs-using-template.md) do šablony Resource Manageru
 

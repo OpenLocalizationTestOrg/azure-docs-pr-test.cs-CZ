@@ -1,6 +1,6 @@
 ---
-title: "aaaFind se kdy konkrétního uživatele budou mít tooaccess aplikace | Microsoft Docs"
-description: "Jak toofind se při zásadní význam uživatel být schopný tooaccess aplikaci jste nakonfigurovali pro zřizování uživatelů s Azure AD"
+title: "Podívejte se, kdy budou mít přístup k aplikaci konkrétního uživatele | Microsoft Docs"
+description: "Jak zjistit, kdy je zásadní význam uživatel bude moci získat přístup k aplikaci, kterou jste nakonfigurovali pro zřizování uživatelů s Azure AD"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,37 +13,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: bb9520499dcc8bbbe6fae05c5238c8852815ea0a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: fcefb31904cfb77022db0358e9feee6a0479db81
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="find-out-when-a-specific-user-will-be-able-tooaccess-an-application"></a>Zjistit, kdy konkrétní uživatel nebude moct tooaccess aplikace
+# <a name="find-out-when-a-specific-user-will-be-able-to-access-an-application"></a>Zjistit, kdy konkrétní uživatel bude mít přístup k aplikaci
 Při použití zřizování automatické uživatelů s aplikací, Azure AD automaticky zřizovat a aktualizace uživatelské účty v aplikaci na základě třeba [přiřazení uživatelů a skupin](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) v pravidelném plánovaném časovém intervalu, obvykle každých 10 minut.
 
 ## <a name="how-long-does-it-take"></a>Jak dlouho to trvá?
 
-Hello doba potřebná pro daného uživatele toobe, zřízený závisí hlavně na tom, jestli počáteční synchronizaci "úplná" již došlo k.
+Čas potřebný pro daného uživatele zřídit závisí hlavně na tom, jestli počáteční synchronizaci "úplná" již došlo k.
 
-Hello první synchronizace mezi službou Azure AD a aplikace, může trvat od 20 minut tooseveral hodin, v závislosti na velikosti hello directory hello Azure AD a hello počet uživatelů v oboru pro zřizování. 
+První synchronizace mezi službou Azure AD a aplikace může trvat od 20 minut několik hodin v závislosti na velikosti adresáře služby Azure AD a počet uživatelů v oboru pro zřizování. 
 
-Následné synchronizace po počáteční synchronizaci hello být rychlejší (např. do 10 minut), jako hello zřizování služby ukládá vodoznaky, které představují hello stav obou systémů po počáteční synchronizaci hello, zvýšení výkonu následné synchronizace.
+Následné synchronizace po počáteční synchronizace být rychlejší (např. do 10 minut), jako službu zřizování ukládá vodoznaky, které představují stav obou systémů po počáteční synchronizaci, zvýšení výkonu následné synchronizace.
 
-## <a name="how-toocheck-hello-status-of-a-user"></a>Jak toocheck hello stav uživatele
+## <a name="how-to-check-the-status-of-a-user"></a>Jak zkontrolovat stav uživatele
 
-Stav zřizování toosee hello pro vybraného uživatele, poraďte se se hello protokoly auditu ve službě Azure AD.
+A zjistit stav zřizování pro vybraného uživatele, najdete v protokolech auditu ve službě Azure AD.
 
-Hello zřizování protokoly auditu je přístupná v hello portál Azure, v hello **Azure Active Directory &gt; podnikové aplikace &gt; \[název aplikace\] &gt; protokolech auditování**kartě. Filtr hello přihlásí hello **zřizování účtu** kategorie tooonly najdete v části hello zřizování události pro tuto aplikaci. Můžete vyhledat uživatele podle hello "odpovídající ID" nakonfigurovaný pro ně v mapování atributů hello. 
+Zřizování protokolů auditu na portálu Azure v přístupné **Azure Active Directory &gt; podnikové aplikace &gt; \[název aplikace\] &gt; protokolech auditování** kartě. Filtrovat protokoly **zřizování účtu** kategorii zobrazíte jen zřizování události pro tuto aplikaci. Můžete vyhledat uživatele podle "Odpovídající ID" nakonfigurovaný pro ně v mapování atributů. 
 
-Například, pokud jste nakonfigurovali hello "hlavní název uživatele" nebo "e-mailovou adresu" jako hello odpovídající atribut na straně hello Azure AD, a tím zřizování uživatelů hello má hodnotu "audrey@contoso.com", pak protokoly auditu hello vyhledávání pro"audrey@contoso.com" a pak zkontrolujte Vrátí položky.
+Například, pokud jste nakonfigurovali "hlavní název uživatele" nebo "e-mailovou adresu" jako odpovídající atribut na straně Azure AD a uživatel není zřizování má hodnotu "audrey@contoso.com", pak vyhledejte v protokolech auditu "audrey@contoso.com" a kontrola a vrácena žádná položka.
 
-Hello zřizování auditu protokoly záznam všech hello operace provedené hello zřizování služby, včetně:
+Zřizování protokoly auditu zaznamenejte všechny operace, které provádí službu zřizování, včetně:
 
 * Dotazování Azure AD pro přiřazené uživatele, které jsou v oboru pro zřizování
-* Dotazování hello cílové aplikace hello existence tyto uživatele
-* Porovnávání objektů uživatele hello mezi hello systému
-* Přidání, aktualizace nebo deaktivace hello uživatelský účet v cílovém systému hello na základě porovnání hello
+* Dotaz na cílové aplikace existenci těchto uživatelů
+* Porovnávání uživatelských objektů mezi systémem
+* Přidání, aktualizace nebo deaktivace uživatelský účet v cílovém systému podle porovnání
 
 ## <a name="next-steps"></a>Další kroky
-[Automatizace zřizování uživatelů a jeho rušení tooSaaS aplikací s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning):
+[Automatizovat uživatele zajišťování a rušení zajištění pro aplikace SaaS ve službě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning):

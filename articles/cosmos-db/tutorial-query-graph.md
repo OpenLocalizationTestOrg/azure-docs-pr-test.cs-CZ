@@ -1,6 +1,6 @@
 ---
-title: data grafu aaaHow tooquery v Azure Cosmos DB? | Dokumentace Microsoftu
-description: "Další data grafu tooquery v Azure Cosmos DB"
+title: "Postup dotazování dat grafu v Azure Cosmos DB? | Dokumentace Microsoftu"
+description: "Další informace k dotazování na data grafu v Azure Cosmos DB"
 services: cosmos-db
 documentationcenter: 
 author: dennyglee
@@ -15,28 +15,28 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/10/2017
 ms.author: denlee
-ms.openlocfilehash: fdde881edd6c488e2fea51e5c9665e1d736009fa
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 81713c72da037f127e81239d214d7a877247dca1
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="azure-cosmos-db-how-tooquery-with-hello-graph-api-preview"></a>Azure Cosmos DB: Jak tooquery s hello rozhraní Graph API (preview)?
+# <a name="azure-cosmos-db-how-to-query-with-the-graph-api-preview"></a>Azure Cosmos DB: Jak dotazovat pomocí rozhraní Graph API (preview)?
 
-Hello Azure Cosmos DB [rozhraní Graph API](graph-introduction.md) (preview) podporuje [Gremlin](https://docs.mongodb.com/manual/tutorial/query-documents/) dotazy. Tento článek obsahuje ukázkové dokumenty a dotazuje tooget, kterou jste zahájili. Podrobné referenční Gremlin je součástí hello [Gremlin podporu](gremlin-support.md) článku.
+Azure Cosmos DB [rozhraní Graph API](graph-introduction.md) (preview) podporuje [Gremlin](https://docs.mongodb.com/manual/tutorial/query-documents/) dotazy. Tento článek obsahuje ukázkové dokumentech a dotazech, které vám pomůžou začít. A podrobné Gremlin je součástí odkaz [Gremlin podporu](gremlin-support.md) článku.
 
-Tento článek se zabývá hello následující úlohy: 
+Tento článek obsahuje následující úlohy: 
 
 > [!div class="checklist"]
 > * Dotazování na data s Gremlin
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro tyto dotazy toowork musíte mít účet Azure Cosmos DB a mít dat grafu v kontejneru hello. Nemáte žádné těchto? Dokončení hello [rychlý start 5 minut](create-graph-dotnet.md) nebo hello [vývojáře kurzu](tutorial-query-graph.md) toocreate účet a naplnit databázi. Můžete spustit následující dotazy pomocí hello hello [knihovny Azure Cosmos DB .NET grafu](graph-sdk-dotnet.md), [Gremlin konzoly](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console), nebo vaše oblíbené Gremlin ovladač.
+Pro tyto dotazy pro práci musí mít účet Azure Cosmos DB a mít dat grafu v kontejneru. Nemáte žádné těchto? Dokončení [rychlý start 5 minut](create-graph-dotnet.md) nebo [vývojáře kurzu](tutorial-query-graph.md) k vytvoření účtu a naplnit databázi. Můžete spustit následující dotazy pomocí [knihovny Azure Cosmos DB .NET grafu](graph-sdk-dotnet.md), [Gremlin konzoly](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console), nebo vaše oblíbené Gremlin ovladač.
 
-## <a name="count-vertices-in-hello-graph"></a>Počet vrcholy v grafu hello
+## <a name="count-vertices-in-the-graph"></a>Počet vrcholy v grafu
 
-Hello následující fragment kódu ukazuje, jak toocount hello počet vrcholy v grafu hello:
+Následující fragment kódu ukazuje, jak můžete zjistit, kolik vrcholy v grafu:
 
 ```
 g.V().count()
@@ -44,7 +44,7 @@ g.V().count()
 
 ## <a name="filters"></a>Filtry
 
-Můžete nastavit filtry, pomocí na Gremlin `has` a `hasLabel` kroky a zkombinovat pomocí `and`, `or`, a `not` toobuild složitější filtry. Azure Cosmos DB poskytuje, bez ohledu na schéma indexu všech vlastností v rámci vrcholy a stupňů pro rychlé dotazy:
+Můžete nastavit filtry, pomocí na Gremlin `has` a `hasLabel` kroky a zkombinovat pomocí `and`, `or`, a `not` k vytvoření složitějších filtrů. Azure Cosmos DB poskytuje, bez ohledu na schéma indexu všech vlastností v rámci vrcholy a stupňů pro rychlé dotazy:
 
 ```
 g.V().hasLabel('person').has('age', gt(40))
@@ -52,7 +52,7 @@ g.V().hasLabel('person').has('age', gt(40))
 
 ## <a name="projection"></a>Projekce
 
-Můžete promítnout některé vlastnosti ve výsledcích dotazů hello pomocí hello `values` kroku:
+Můžete promítnout některé vlastnosti ve výsledcích dotazu pomocí `values` kroku:
 
 ```
 g.V().hasLabel('person').values('firstName')
@@ -60,28 +60,28 @@ g.V().hasLabel('person').values('firstName')
 
 ## <a name="find-related-edges-and-vertices"></a>Vyhledání souvisejících okraje a vrcholy
 
-Zatím jste pouze viděli operátory dotazu, které fungují v některé z databází. Grafy jsou rychlé a efektivní pro operace průchodu, pokud potřebujete toonavigate toorelated okraje a vrcholy. Umožňuje najít všechny přátelích Thomas. Provedeme to pomocí na Gremlin `outE` krok toofind všechny hello odesílací okrajů z Thomas a pak z těchto hran pomocí Gremlin na procházení toohello v vrcholy `inV` krok:
+Zatím jste pouze viděli operátory dotazu, které fungují v některé z databází. Grafy jsou rychlé a efektivní pro operace traversal, když potřebujete přejít na související okraje a vrcholy. Umožňuje najít všechny přátelích Thomas. Provedeme to pomocí na Gremlin `outE` krok najdete všechny odesílací okrajů z Thomas pak procházení k v vrcholy z těchto hran pomocí Gremlin na `inV` krok:
 
 ```cs
 g.V('thomas').outE('knows').inV().hasLabel('person')
 ```
 
-Další dotaz Hello provádí dvěma segmenty směrování toofind všechny Thomas. "přátelích přátel,", voláním `outE` a `inV` dvakrát. 
+Další dotaz provádí dvěma segmenty směrování k vyhledání všech Thomas. "přátelích přátel,", voláním `outE` a `inV` dvakrát. 
 
 ```cs
 g.V('thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabel('person')
 ```
 
-Můžete vytvořit složitější dotazy a implementovat logiku traversal výkonné grafu pomocí Gremlin, včetně směšovací filtru výrazů, provádění opakování ve smyčce pomocí hello `loop` kroku a implementuje podmíněného navigační pomocí hello `choose` krok. Další informace o co můžete dělat s [Gremlin podporu](gremlin-support.md)!
+Můžete vytvořit složitější dotazy a implementovat logiku traversal výkonné grafu pomocí Gremlin, včetně kombinování filtru výrazů, provádění opakování pomocí `loop` kroku a implementuje pomocí podmíněného navigace `choose` krok. Další informace o co můžete dělat s [Gremlin podporu](gremlin-support.md)!
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu provedete krok hello následující:
+V tomto kurzu jste provést následující:
 
 > [!div class="checklist"]
-> * Jak se naučili tooquery pomocí grafu 
+> * Zjistili, jak k dotazování pomocí grafu 
 
-Nyní můžete přejít toohello další kurz toolearn jak toodistribute data globálně.
+Nyní můžete přejít k dalším kurzu se dozvíte, jak se bude distribuovat globální data.
 
 > [!div class="nextstepaction"]
 > [Globálně distribuci dat](tutorial-global-distribution-documentdb.md)

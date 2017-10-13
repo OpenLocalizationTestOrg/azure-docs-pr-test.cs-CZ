@@ -1,6 +1,6 @@
 ---
-title: "aaaGet začít s předkonfigurovanými řešeními | Microsoft Docs"
-description: "Postupujte podle tohoto kurzu toolearn jak toodeploy Azure IoT Suite předkonfigurované řešení."
+title: "Začínáme s předkonfigurovanými řešeními | Dokumentace Microsoftu"
+description: "V tomto kurzu se dozvíte, jak nasadit předkonfigurované řešení Azure IoT Suite."
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -15,21 +15,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
-ms.openlocfilehash: a7f46023d26b08de2e8ed48c34c5066a43e3fa38
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 466825ab78a5ac9773d8beff69cca90ff9db6c01
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="get-started-with-hello-preconfigured-solutions"></a>Začínáme s hello předkonfigurované řešení
+# <a name="get-started-with-the-preconfigured-solutions"></a>Začínáme s předkonfigurovanými řešeními
 
-Azure IoT Suite [předkonfigurovaných řešení] [ lnk-preconfigured-solutions] kombinovat více Azure IoT služby toodeliver začátku do konce řešení, implementující běžné obchodní scénáře IoT. Hello *vzdálené monitorování* předkonfigurované řešení připojí tooand monitorování zařízení. Můžete vytvořit hello řešení tooanalyze hello datový proud ze zařízení a výstupy obchodní tooimprove tím, že procesy reagovat automaticky toothat datový proud.
+[Předkonfigurovaná řešení][lnk-preconfigured-solutions] pro sadu Azure IoT Suite kombinují více služeb Azure IoT, aby mohla poskytovat komplexní řešení implementující běžné obchodní scénáře IoT. Předkonfigurované řešení *vzdálené monitorování* se připojuje k zařízením a monitoruje je. Řešení můžete použít k analýze streamu dat ze všech zařízení a ke zlepšení obchodních výsledků díky tomu, že procesy mohou automaticky reagovat na tento stream dat.
 
-Tento kurz ukazuje, jak tooprovision hello předkonfigurované řešení vzdáleného monitorování. Je také vás provede procesem hello základní funkce hello předkonfigurované řešení. Mnoho z těchto funkcí můžete přistupovat z řešení hello *řídicí panel* které nasazuje v rámci hello předkonfigurované řešení:
+V tomto kurzu se dozvíte, jak zřídit předkonfigurované řešení vzdáleného monitorování. Také se seznámíte se základními funkcemi předkonfigurovaného řešení. Mnohé z těchto funkcí jsou přístupné z *řídicího panelu* řešení, který se nasazuje jako součást předkonfigurovaného řešení:
 
 ![Řídicí panel předkonfigurovaného řešení vzdáleného monitorování][img-dashboard]
 
-toocomplete tohoto kurzu potřebujete aktivní předplatné Azure.
+K dokončení tohoto kurzu potřebujete mít aktivní předplatné služby Azure.
 
 > [!NOTE]
 > Pokud nemáte účet, můžete si během několika minut vytvořit bezplatný účet zkušební. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure][lnk_free_trial].
@@ -38,144 +38,144 @@ toocomplete tohoto kurzu potřebujete aktivní předplatné Azure.
 
 ## <a name="scenario-overview"></a>Přehled scénáře
 
-Když nasadíte předkonfigurované řešení vzdáleného sledování hello, je naplněna prostředky, které umožňují toostep prostřednictvím běžný scénář vzdáleného monitorování. V tomto scénáři jsou několik zařízení připojených toohello řešení reporting neočekávané teploty hodnoty. Hello následující části ukazují, jak na:
+Když nasadíte předkonfigurované řešení vzdáleného monitorování, bude předem naplněné prostředky, které vám umožní projít běžným scénářem vzdáleného monitorování. V tomto scénáři několik zařízení připojených k řešení hlásí neočekávané teplotní hodnoty. V následujících částech se dozvíte, jak:
 
-* Identifikujte zařízení hello odesílání neočekávané teploty hodnoty.
-* Konfigurace těchto zařízení toosend podrobnější telemetrie.
-* Hello problém vyřešte aktualizací firmwaru hello v těchto zařízeních.
-* Ověřte, že vaše akce rozpoznal hello problém.
+* identifikovat zařízení, která odesílají neočekávané teplotní hodnoty,
+* nakonfigurovat tato zařízení, aby odesílala podrobnější telemetrii,
+* opravit problém pomocí aktualizace firmwaru na těchto zařízeních,
+* ověřit, že jste touto akcí problém vyřešili.
 
-Klíčové funkce tento scénář je, že můžete provádět tyto akce vzdáleně z řídicí panel řešení hello. Není nutné zařízení toohello fyzický přístup.
+Klíčovou vlastností tohoto scénáře je, že všechny tyto akce můžete provádět vzdáleně z řídicího panelu řešení. Nemusíte mít fyzický přístup k zařízením.
 
-## <a name="view-hello-solution-dashboard"></a>Zobrazení řídicí panel řešení hello
+## <a name="view-the-solution-dashboard"></a>Zobrazení řídicího panelu řešení
 
-řídicí panel řešení Hello umožňuje toomanage hello nasazené řešení. Můžete například zobrazit telemetrická data, přidat zařízení nebo konfigurovat pravidla.
+Přes řídicí panel řešení můžete spravovat nasazené řešení. Můžete například zobrazit telemetrická data, přidat zařízení nebo konfigurovat pravidla.
 
-1. Když je hello zřizování dokončeno a dlaždice hello pro předkonfigurované řešení označuje **připravené**, zvolte **spusťte** tooopen vzdálené monitorování řešení portálu na nové kartě.
+1. Až bude zřizování dokončeno a dlaždice předkonfigurovaného řešení bude hlásit **Připraveno**, zvolte **Spustit**. Na nové kartě se otevře portál předkonfigurovaného řešení vzdáleného monitorování.
 
-    ![Spusťte hello předkonfigurované řešení][img-launch-solution]
+    ![Spuštění předkonfigurovaného řešení][img-launch-solution]
 
-1. Ve výchozím nastavení, hello portálu řešení zobrazuje hello *řídicí panel*. Můžete procházet tooother oblasti hello portál řešení pomocí hello nabídky na levé straně stránky hello hello.
+1. Ve výchozím nastavení se na portálu řešení zobrazuje *řídicí panel*. Do jiných oblastní portálu řešení můžete přecházet pomocí nabídky na levé straně stránky.
 
     ![Řídicí panel předkonfigurovaného řešení vzdáleného monitorování][img-menu]
 
-řídicí panel Hello zobrazuje hello následující informace:
+Řídicí panel obsahuje tyto informace:
 
-* Mapu, která zobrazuje umístění každého zařízení hello připojen toohello řešení. Při prvním spuštění hello řešení, nejsou 25 simulované zařízení. Hello Simulovaná zařízení jsou implementována jako Azure WebJobs a řešení hello používá hello rozhraní API map Bing tooplot informace na mapě hello. V tématu hello [– nejčastější dotazy] [ lnk-faq] toolearn jak toomake hello dynamické mapy.
+* Mapu, která zobrazuje umístění každého zařízení, které je připojené k řešení. Když řešení poprvé spustíte, zahrnuje 25 simulovaných zařízení. Simulovaná zařízení jsou implementována jako Azure WebJobs a řešení k vykreslování informací na mapě používá Bing Maps API. Pokud chcete mít mapu dynamickou, přečtěte si [Nejčastější dotazy][lnk-faq].
 * Panel **Historie telemetrie**, na kterém se skoro v reálném čase zobrazuje telemetrie vlhkosti a teploty z vybraného zařízení a agregovaná data (například minimální, maximální a průměrná vlhkost).
-* Panel **Historie alarmů**, který zobrazuje události, kdy v poslední době hodnota telemetrie překročila stanovenou mez. V příkladech toohello přidání vytvořené hello předkonfigurované řešení můžete definovat vlastní alarmy.
+* Panel **Historie alarmů**, který zobrazuje události, kdy v poslední době hodnota telemetrie překročila stanovenou mez. Kromě příkladů vytvořených předkonfigurovaným řešením můžete definovat i vlastní alarmy.
 * Panel **Úlohy**, na kterém se zobrazují informace o plánovaných úlohách. Vlastní úlohy můžete plánovat na stránce **Úlohy správy**.
 
 ## <a name="view-alarms"></a>Zobrazení alarmů
 
-panel Historie alarmů Hello ukazuje, že pěti zařízení podávají zprávy vyšší než očekávaný telemetrie hodnoty.
+Panel Historie alarmů ukazuje, že pět zařízení hlásí vyšší než očekávané hodnoty telemetrie.
 
-![Historie alarmů úkolů na řídicí panel řešení hello][img-alarms]
+![Historie alarmů na řídicím panelu řešení][img-alarms]
 
 > [!NOTE]
-> Tyto výstrahy jsou generovány pravidlem, které je součástí hello předkonfigurované řešení. Toto pravidlo vygeneruje výstrahu, pokud hodnota teploty hello odeslaný zařízením překročí 60. Můžete definovat vlastní pravidla a akce výběrem [pravidla](#add-a-rule) a [akce](#add-an-action) v levé nabídce hello.
+> Tyto alarmy generuje pravidlo, které je součástí předkonfigurovaného řešení. Toto pravidlo generuje upozornění, když teplotní hodnota, kterou zařízení odešle, překročí 60. Pokud v nabídce vlevo zvolíte [Pravidla](#add-a-rule) nebo [Akce](#add-an-action), můžete definovat vlastní pravidla a akce.
 
 ## <a name="view-devices"></a>Zobrazení zařízení
 
-Hello *zařízení* seznamu jsou uvedeny všechny hello zaregistrovat zařízení v řešení hello. Ze seznamu zařízení hello můžete zobrazit a upravit metadata zařízení přidejte nebo odeberte zařízení a volat metody na zařízení. Můžete filtrovat a řadit hello seznam zařízení v seznamu zařízení hello. Můžete také upravit hello sloupce zobrazené v seznamu zařízení hello.
+V seznamu *zařízení* jsou uvedena všechna zařízení, která jsou zaregistrována v řešení. V seznamu zařízení můžete zobrazit a upravovat metadata zařízení, přidávat a odebírat zařízení a vyvolávat v zařízeních metody. Seznam zařízení můžete filtrovat a řadit. Můžete si také přizpůsobit, jaké sloupce se v seznamu zařízení zobrazí.
 
-1. Zvolte **zařízení** tooshow hello seznam zařízení pro toto řešení.
+1. Zvolte **Zařízení** a zobrazte seznam zařízení pro toto řešení.
 
-   ![Zobrazení seznamu zařízení hello portálu řešení hello][img-devicelist]
+   ![Zobrazení seznamu zařízení na portálu řešení][img-devicelist]
 
-1. seznam zařízení Hello původně ukazuje 25 Simulovaná zařízení, které jsou vytvořené hello procesu zřizování. Můžete přidat další Simulovaná a fyzické zařízení toohello řešení.
+1. V seznamu zařízení je zpočátku uvedeno 25 simulovaných zařízení, která byla vytvořena během procesu zřizování. Do řešení můžete přidat další simulovaná a fyzická zařízení.
 
-1. v seznamu zařízení hello tooview hello podrobnosti o zařízení, vyberte zařízení.
+1. Pokud chcete zobrazit podrobnosti o některém zařízení, vyberte ho v seznamu zařízení.
 
-   ![Zobrazení podrobností o zařízeních hello portálu řešení hello][img-devicedetails]
+   ![Zobrazení podrobností o zařízení na portálu řešení][img-devicedetails]
 
-Hello **podrobnosti o zařízení** panel obsahuje šest části:
+Panel **Podrobnosti o zařízení** se skládá ze šesti částí:
 
-* Kolekce odkazů, které jste toocustomize hello ikonu zařízení povolit, zakázat hello zařízení, přidat pravidlo, volání metody nebo odeslat příkaz. Porovnání příkazů (zpráv typu zařízení-cloud) a metod (přímých metod) najdete v [doprovodných materiálech ke komunikaci typu cloud-zařízení][lnk-c2d-guidance].
-* Hello **dvojče zařízení - značky** oddílu můžete hodnoty značky tooedit hello zařízení. Můžete zobrazit v seznamu zařízení hello hodnoty značky a použít seznam zařízení hello toofilter hodnoty značky.
-* Hello **dvojče zařízení - potřeby vlastnosti** oddílu můžete tooset vlastnost hodnoty toobe odeslané toohello zařízení.
-* Hello **dvojče zařízení - hlášené vlastnosti** část zobrazuje hodnoty vlastností, odeslané zařízením hello.
-* Hello **vlastnosti zařízení** části se zobrazují informace z registru identit hello například hello zařízení id a ověřovací klíč.
-* Hello **posledních úloh** části zobrazují informace o všechny úlohy, které jste nedávno zaměřili toto zařízení.
+* Kolekce odkazů, pomocí kterých si můžete přizpůsobit ikonu zařízení, zakázat zařízení, přidat pravidlo, vyvolat metodu nebo odeslat příkaz. Porovnání příkazů (zpráv typu zařízení-cloud) a metod (přímých metod) najdete v [doprovodných materiálech ke komunikaci typu cloud-zařízení][lnk-c2d-guidance].
+* V části **Dvojče zařízení – Značky** můžete upravovat hodnoty značek pro zařízení. Hodnoty značek můžete zobrazit v seznamu zařízení a s jejich pomocí seznam zařízení filtrovat.
+* V části **Dvojče zařízení – Požadované vlastnosti** můžete nastavit hodnoty vlastností, které se odešlou do zařízení.
+* V části **Dvojče zařízení – Ohlášené vlastnosti** se zobrazují hodnoty vlastností odeslané ze zařízení.
+* V části **Vlastnosti zařízení** se zobrazují informace z registru identit, jako například ID zařízení a ověřovací klíče.
+* V části **Poslední úlohy** se zobrazují informace o všech úlohách, které nedávno cílily na příslušné zařízení.
 
-## <a name="filter-hello-device-list"></a>Filtrovat seznam zařízení hello
+## <a name="filter-the-device-list"></a>Filtrování seznamu zařízení
 
-Toodisplay filtru můžete použít pouze taková zařízení, která odesílají neočekávané teploty hodnoty. Hello předkonfigurovanému řešení vzdáleného monitorování zahrnuje hello **není v pořádku zařízení** filtrovat tooshow zařízení s hodnotou střední teploty větší než 60. Můžete si také [vytvořit vlastní filtry](#add-a-filter).
+Pomocí filtru můžete zobrazit jenom zařízení, která odesílají neočekávané teplotní hodnoty. Předkonfigurované řešení vzdáleného monitorování obsahuje filtr **Poškozená zařízení**, který zobrazí zařízení, u nichž je střední hodnota teploty vyšší než 60. Můžete si také [vytvořit vlastní filtry](#add-a-filter).
 
-1. Zvolte **otevřít uložené filtru** toodisplay seznam k dispozici tyto filtry. Zvolte **není v pořádku zařízení** tooapply hello filtru:
+1. Zvolte **Otevřít uložený filtr** a zobrazí se seznam dostupných filtrů. Potom zvolením aplikujte filtr **Poškozená zařízení**:
 
-    ![Zobrazení hello seznam filtrů][img-unhealthy-filter]
+    ![Zobrazení seznamu filtrů][img-unhealthy-filter]
 
-1. seznam zařízení Hello nyní zobrazuje pouze zařízení s střední teploty hodnotu větší než 60.
+1. V seznamu zařízení teď budou uvedena pouze zařízení, u nichž je střední hodnota teploty vyšší než 60.
 
-    ![Seznam Filtrované zařízení hello zobrazení zobrazující zařízení není v pořádku][img-filtered-unhealthy-list]
+    ![Zobrazení filtrovaného seznamu zařízení, který ukazuje poškozená zařízení][img-filtered-unhealthy-list]
 
 ## <a name="update-desired-properties"></a>Aktualizace požadovaných vlastností
 
-Nyní jste identifikovali sadu zařízení, která možná vyžadují opravu. Však můžete rozhodnout, že data frekvenci hello 15 sekund není dostatečná pro zrušte diagnostiku problému hello. Změna hello telemetrie frekvence toofive sekund tooprovide vám další datové body toobetter diagnostikovat problém hello. Vzdálená zařízení tuto konfiguraci změnu tooyour můžete nabízet z portálu řešení hello. Můžete provést změnu hello jednou, vyhodnotit vliv hello a potom na výsledky hello.
+Nyní jste identifikovali sadu zařízení, která možná vyžadují opravu. Rozhodnete se ale, že frekvence odesílání dat každých 15 sekund není pro jasnou diagnostiku problému dostatečná. Změníte frekvenci odesílání telemetrie na 5 sekund, což vám poskytne více datových bodů pro lepší diagnostiku problému. Tuto změnu konfigurace můžete z portálu řešení bez vyžádání doručit do vzdálených zařízení. Můžete jednou provést změnu, vyhodnotit její dopad a na základě výsledků se potom rozhodnout.
 
-Postupujte podle těchto kroků toorun úlohu, která změní hello **TelemetryInterval** potřeby vlastnost hello vliv na zařízení. Když hello zařízení obdrží hello nové **TelemetryInterval** hodnotu vlastnosti, se změní, jejich konfigurace toosend telemetrie každých pět sekund místo každých 15 sekund:
+Postupujte podle těchto kroků a spusťte úlohu, která změní požadovanou vlastnost **TelemetryInterval** pro příslušná zařízení. Zařízení po přijetí nové hodnoty vlastnosti **TelemetryInterval** změní vlastní konfiguraci a budou odesílat telemetrii každých pět sekund namísto každých 15 sekund:
 
-1. Při hello seznam zařízení, není v pořádku zobrazené v seznamu zařízení hello, zvolte **plánovače úloh**, pak **upravit dvojče zařízení**.
+1. Když je v seznamu zařízení zobrazený seznam poškozených zařízení, zvolte **Plánovač úloh** a potom **Upravit dvojče zařízení**.
 
-1. Volání hello úlohy **interval telemetrie změny**.
+1. Zavolejte úlohu **Změnit interval telemetrie**.
 
-1. Změnit hodnotu hello hello **požadovanou vlastnost** název **požadované. Config.TelemetryInterval** toofive sekund.
+1. Změňte hodnotu **požadované vlastnosti** s názvem **desired.Config.TelemetryInterval** na pět sekund.
 
 1. Zvolte **Naplánovat**.
 
-    ![Změnit hello TelemetryInterval vlastnost toofive sekund][img-change-interval]
+    ![Změna vlastnosti TelemetryInterval na pět sekund][img-change-interval]
 
-1. Můžete sledovat průběh hello hello úlohy na hello **úlohy správy** stránku hello portálu.
+1. Průběh úlohy můžete sledovat na stránce **Úlohy správy** na portálu.
 
 > [!NOTE]
-> Pokud chcete toochange hodnotu požadované vlastnosti pro jednotlivá zařízení, použijte hello **požadované vlastnosti** část v hello **podrobnosti o zařízení** panely namísto spuštění úlohy.
+> Pokud chcete změnit hodnotu požadované vlastnosti pro jednotlivá zařízení, místo spouštění úlohy použijte část **Požadované vlastnosti** na panelu **Podrobnosti o zařízení**.
 
-Tato úloha nastaví hodnotu hello hello **TelemetryInterval** potřeby vlastnost hello dvojče zařízení pro všechny hello filtrem hello vybraná zařízení. zařízení Hello načetlo tuto hodnotu z dvojče zařízení hello a aktualizaci jejich chování. Když zařízení načte a zpracuje požadovanou vlastnost z dvojče zařízení, nastaví hello odpovídající hlášené hodnotu vlastnosti.
+Tato úloha nastaví hodnotu požadované vlastnosti **TelemetryInterval** ve dvojčeti zařízení pro všechna zařízení vybraná pomocí filtru. Zařízení si tuto hodnotu načtou z dvojčete zařízení a aktualizují vlastní chování. Když zařízení načte a zpracuje požadovanou vlastnost z dvojčete zařízení, nastaví odpovídající hodnotu ohlášené vlastnosti.
 
 ## <a name="invoke-methods"></a>Vyvolání metod
 
-Při spuštění úlohy hello zjistíte v seznamu hello zařízení není v pořádku, že tato zařízení mají starý (méně než verze 1.6) firmwaru verze.
+Zatímco je úloha spuštěná, v seznamu poškozených zařízení si všimnete, že všechna tato zařízení mají staré (nižší než 1.6) verze firmwaru.
 
-![Zobrazení hello hlášené verzi firmwaru pro zařízení není v pořádku hello][img-old-firmware]
+![Zobrazení ohlášených verzí firmwaru pro poškozená zařízení][img-old-firmware]
 
-Tato verze firmwaru může být hello hlavní příčinu hello neočekávané teploty hodnoty, protože víte, že další pořádku zařízení byly nedávno aktualizovaného tooversion 2.0. Můžete použít předdefinované hello **staré firmwaru zařízení** filtrovat tooidentify žádná zařízení s staré verze firmwaru. Z portálu hello může vzdáleně aktualizovat všechna zařízení hello stále spuštěna staré verze firmwaru:
+Verze firmwaru může být hlavní příčinou neočekávaných teplotních hodnot, protože víte, že ostatní zařízení, která jsou v pořádku, byla nedávno aktualizována na verzi 2.0. Pomocí integrovaného filtru **Zařízení se starou verzí firmwaru** můžete identifikovat všechna zařízení se starými verzemi firmwaru. Z portálu potom můžete vzdáleně aktualizovat všechna zařízení, která ještě používají staré verze firmwaru:
 
-1. Zvolte **otevřít uložené filtru** toodisplay seznam k dispozici tyto filtry. Zvolte **staré firmwaru zařízení** tooapply hello filtru:
+1. Zvolte **Otevřít uložený filtr** a zobrazí se seznam dostupných filtrů. Potom zvolením aplikujte filtr **Zařízení se starou verzí firmwaru**:
 
-    ![Zobrazení hello seznam filtrů][img-old-filter]
+    ![Zobrazení seznamu filtrů][img-old-filter]
 
-1. seznam zařízení Hello nyní zobrazuje pouze zařízení s staré verze firmwaru. Tento seznam obsahuje pět zařízení hello identifikovaný hello **není v pořádku zařízení** filtr a tři další zařízení:
+1. V seznamu zařízení nyní budou uvedena pouze zařízení se starými verzemi firmwaru. Tento seznam obsahuje pět zařízení, která identifikoval filtr **Poškozená zařízení**, a tři další zařízení:
 
-    ![Seznam Filtrované zařízení hello zobrazení zobrazující staré zařízení][img-filtered-old-list]
+    ![Zobrazení filtrovaného seznamu zařízení, který ukazuje stará zařízení][img-filtered-old-list]
 
 1. Zvolte **Plánovač úloh** a potom **Vyvolat metodu**.
 
-1. Nastavit **název úlohy** příliš**tooversion aktualizace firmwaru 2.0**.
+1. Nastavte **Název úlohy** na **Aktualizace firmwaru na verzi 2.0**.
 
-1. Zvolte **InitiateFirmwareUpdate** jako hello **metoda**.
+1. V poli **Metoda** zvolte **InitiateFirmwareUpdate**.
 
-1. Sada hello **FwPackageUri** parametr příliš**https://iotrmassets.blob.core.windows.net/firmwares/FW20.bin**.
+1. Nastavte parametr **FwPackageUri** na **https://iotrmassets.blob.core.windows.net/firmwares/FW20.bin**.
 
-1. Zvolte **Naplánovat**. Výchozí Hello je nyní pro úlohy toorun hello.
+1. Zvolte **Naplánovat**. Ve výchozím nastavení se úloha spustí nyní.
 
-    ![Vytvoření úlohy tooupdate hello firmwaru hello vybrané zařízení][img-method-update]
-
-> [!NOTE]
-> Pokud chcete, aby tooinvoke metoda na jednotlivá zařízení, zvolte **metody** v hello **podrobnosti o zařízení** panely namísto spuštění úlohy.
-
-Tato úloha vyvolá hello **InitiateFirmwareUpdate** přímá metoda na všech zařízeních hello vybraný filtr hello. Zařízení reagovat okamžitě tooIoT rozbočovače a poté asynchronně zahájit proces aktualizace firmwaru hello. zařízení Hello poskytují informace o stavu procesu aktualizace firmwaru hello prostřednictvím hodnoty hlášené vlastností, jak je znázorněno v následujícím snímky obrazovky hello. Zvolte hello **aktualizovat** ikonu tooupdate hello informace v seznamech zařízení a úlohy hello:
-
-![Seznam úloh zobrazující hello firmware aktualizace seznamu spuštěná][img-update-1]
-![seznam zařízení zobrazuje stav aktualizace firmwaru][img-update-2]
-![úlohy seznamu zobrazení hello firmware aktualizace seznamu dokončení][img-update-3]
+    ![Vytvoření úlohy pro aktualizaci firmwaru na vybraných zařízeních][img-method-update]
 
 > [!NOTE]
-> V produkčním prostředí můžete naplánovat úlohy toorun během časového období údržby určené.
+> Pokud chcete vyvolat metodu na jednotlivých zařízeních, místo spouštění úlohy na panelu **Podrobnosti o zařízení** zvolte **Metody**.
+
+Tato úloha vyvolá přímou metodu **InitiateFirmwareUpdate** na všech zařízeních vybraných pomocí filtru. Zařízení okamžitě odešlou reakci do služby IoT Hub a následně asynchronně zahájí proces aktualizace firmwaru. Zařízení poskytují informace o stavu procesu aktualizace firmwaru prostřednictvím hodnot ohlášených vlastností, jak je znázorněno na následujících snímcích obrazovky. Zvolte ikonu **Aktualizovat** a aktualizujte informace v seznamech zařízení a úloh:
+
+![Seznam úloh ukazující spuštěnou úlohu aktualizace firmwaru][img-update-1]
+![Seznam zařízení ukazující stav aktualizace firmwaru][img-update-2]
+![Seznam úloh ukazující dokončenou úlohu aktualizace firmwaru][img-update-3]
+
+> [!NOTE]
+> V produkčním prostředí můžete úlohy plánovat tak, aby se spouštěly během určeného časového období údržby.
 
 ## <a name="scenario-review"></a>Revize scénáře
 
-V tomto scénáři identifikovat potenciální problém s některými vzdáleného zařízení pomocí hello historie alarmů na řídicím panelu hello a filtr. Můžete potom použít hello filtru a tooremotely úlohy konfigurace hello zařízení tooprovide Další informace o toohelp diagnostikovat problém hello. Nakonec použít filtr a úlohy údržby tooschedule na zařízeních hello vliv. Pokud vrátíte toohello řídicího panelu, můžete zkontrolovat, že již neexistují žádné výstrahy přicházející ze zařízení ve vašem řešení. Můžete použít filtr tooverify, který hello firmware aktuální na všech zařízeních hello ve vašem řešení a jestli je k dispozici nejsou žádné další není v pořádku zařízení:
+V tomto scénáři jste identifikovali potenciální problém s některými vzdálenými zařízeními pomocí historie alarmů na řídicím panelu a filtru. Pak jste pomocí filtru a úlohy vzdáleně nakonfigurovali zařízení, aby poskytovala více údajů a tak vám pomohla s diagnostikou problému. Nakonec jste pomocí filtru a úlohy naplánovali údržbu příslušných zařízení. Pokud se vrátíte na řídicí panel, můžete zkontrolovat, že ze zařízení ve vašem řešení již nepřichází žádné alarmy. Pomocí filtru můžete ověřit, že na všech zařízeních ve vašem řešení je aktuální firmware, a že v řešení již nejsou žádná poškozená zařízení:
 
 ![Filtr ukazující, že všechna zařízení mají aktuální firmware][img-updated]
 
@@ -183,48 +183,48 @@ V tomto scénáři identifikovat potenciální problém s některými vzdálené
 
 ## <a name="other-features"></a>Další funkce
 
-Hello následující části popisují některé další funkce hello předkonfigurovanému řešení vzdáleného monitorování, které nejsou popsané v rámci předchozí scénáře hello.
+Následující části popisují některé další funkce předkonfigurovaného řešení vzdáleného monitorování, které nebyly popsány v předchozím scénáři.
 
 ### <a name="customize-columns"></a>Přizpůsobení sloupců
 
-Můžete přizpůsobit hello informace zobrazené v seznamu zařízení hello výběrem **editor sloupců**. Můžete přidat a odebrat sloupce, které zobrazují hodnoty ohlašovaných vlastností a značek. Můžete také změnit pořadí sloupců a přejmenovat je:
+Informace, které se zobrazují v seznamu zařízení, si můžete přizpůsobit tak, že zvolíte **Editor sloupců**. Můžete přidat a odebrat sloupce, které zobrazují hodnoty ohlašovaných vlastností a značek. Můžete také změnit pořadí sloupců a přejmenovat je:
 
-   ![Seznam zařízení sloupec editor uchování hello][img-columneditor]
+   ![Ikona editoru sloupců v seznamu zařízení][img-columneditor]
 
-### <a name="customize-hello-device-icon"></a>Přizpůsobení ikonu zařízení hello
+### <a name="customize-the-device-icon"></a>Přizpůsobení ikony zařízení
 
-Můžete přizpůsobit ikonu hello zařízení zobrazí v seznamu zařízení hello z hello **podrobnosti o zařízení** panelu následujícím způsobem:
+Ikonu zařízení, která se zobrazuje v seznamu zařízení, si můžete přizpůsobit na panelu **Podrobnosti o zařízení** podle následujícího postupu:
 
-1. Zvolte hello tooopen ikonu tužky hello **úpravy image** panel pro zařízení:
+1. Zvolením ikony tužky otevřete panel **Upravit obrázek** pro zařízení:
 
    ![Otevřený editor obrázku zařízení][img-startimageedit]
 
-1. Nahrát novou bitovou kopii, použijte jednu z existujících imagí hello a potom zvolte **Uložit**:
+1. Nahrajte nový obrázek nebo použijte některý z existujících obrázků a potom zvolte **Uložit**:
 
    ![Editor Upravit obrázek zařízení][img-imageedit]
 
-1. Hello bitové kopie, které jste vybrali teď zobrazí v hello **ikonu** sloupec pro hello zařízení.
+1. Obrázek, který jste vybrali, se teď zobrazí ve sloupci **Ikona** pro zařízení.
 
 > [!NOTE]
-> Hello bitová kopie uložena v úložišti objektů blob. Značku dvojče zařízení hello obsahuje bitovou kopii odkaz toohello v úložišti objektů blob.
+> Obrázek se ukládá v úložišti objektů blob. Značka ve dvojčeti zařízení obsahuje odkaz na tento obrázek v úložišti objektů blob.
 
 ### <a name="add-a-device"></a>Přidání zařízení
 
-Když nasadíte hello předkonfigurované řešení, automaticky zřizovat 25 ukázka zařízení, které se zobrazí v seznamu zařízení hello. Tato zařízení jsou *simulovaná zařízení*, která běží ve webové úloze Azure. Simulovaná zařízení usnadnění pro vás tooexperiment hello předkonfigurované řešení bez hello nutné toodeploy skutečné, fyzické zařízení. Pokud chcete tooconnect řešení toohello skutečné zařízení, najdete v části hello [připojit vaše zařízení toohello předkonfigurovanému řešení vzdáleného monitorování] [ lnk-connect-rm] kurzu.
+Při nasazení předkonfigurovaného řešení je automaticky zřízeno 25 ukázkových zařízení, která se zobrazí v seznamu zařízení. Tato zařízení jsou *simulovaná zařízení*, která běží ve webové úloze Azure. Simulované zařízení umožňují snadno experimentovat s předkonfigurovaným řešením, aniž by bylo nutné nasazovat skutečná fyzická zařízení. Pokud chcete k řešení připojit skutečné zařízení, přečtěte si kurz [Připojení zařízení k předkonfigurovanému řešení vzdáleného monitorování][lnk-connect-rm].
 
-Hello následující kroky ukazují, jak tooadd řešení toohello simulované zařízení:
+Následující kroky ukazují, jak do řešení přidat simulované zařízení:
 
-1. Přejděte zpět toohello seznam zařízení.
+1. Vraťte se zpět k seznamu zařízení.
 
-1. tooadd zařízení, zvolte **+ přidat zařízení** v levém dolním rohu hello.
+1. Pokud chcete přidat zařízení, zvolte **+ Přidat zařízení** vlevo dole.
 
-   ![Přidat zařízení toohello předkonfigurované řešení][img-adddevice]
+   ![Přidání zařízení do předkonfigurovaného řešení][img-adddevice]
 
-1. Zvolte **přidat nové** na hello **simulované zařízení** dlaždici.
+1. Na dlaždici **Simulované zařízení** zvolte **Přidat nové**.
 
    ![Nastavení podrobností o zařízení na řídicím panelu][img-addnew]
 
-   V toocreating přidání nového simulovaného zařízení, můžete také přidat fyzického zařízení. Pokud se rozhodnete toocreate **vlastní zařízení**. toolearn Další informace o propojení řešení toohello fyzických zařízení, najdete v části [připojit vaše zařízení toohello předkonfigurované řešení vzdáleného sledování IoT Suite][lnk-connect-rm].
+   Pokud se rozhodnete vytvořit**vlastní zařízení**, můžete kromě nového simulovaného zařízení vytvořit i zařízení fyzické. Další informace o připojení fyzických zařízení k řešení najdete v tématu [Připojení zařízení k předkonfigurovanému řešení vzdáleného monitorování sady IoT Suite][lnk-connect-rm].
 
 1. Vyberte možnost **Ručně definovat vlastní ID zařízení** a zadejte jedinečný název zařízení, například **mydevice_01**.
 
@@ -232,13 +232,13 @@ Hello následující kroky ukazují, jak tooadd řešení toohello simulované z
 
    ![Uložení nového zařízení][img-definedevice]
 
-1. V kroku 3 **přidání simulovaného zařízení**, zvolte **provádí** tooreturn toohello zařízení seznamu.
+1. V kroku 3 **Přidání simulovaného zařízení** zvolte **Hotovo**. Vrátíte se do seznamu zařízení.
 
-1. Můžete zobrazit zařízení **systémem** v seznamu zařízení hello.
+1. Zařízení nyní v seznamu uvidíte jako **Spuštěné**.
 
     ![Zobrazení nového zařízení v seznamu zařízení][img-runningnew]
 
-1. Můžete také zobrazit telemetrii z nového zařízení na řídicím panelu hello simulated hello:
+1. Na řídicím panelu můžete také vidět simulovanou telemetrii z nového zařízení.
 
     ![Zobrazení telemetrie z nového zařízení][img-runningnew-2]
 
@@ -250,114 +250,114 @@ Zařízení můžete zakázat, zakázané zařízení lze následně odebrat:
 
 ### <a name="add-a-rule"></a>Přidání pravidla
 
-Neexistují žádná pravidla pro nové zařízení hello, že jste právě přidali. V této části přidáte pravidlo, které spustí alarm při hello teplota hlášená tímto hello nové, že zařízení přesáhne hodnotu 47 stupňů. Než začnete, Všimněte si, že historie telemetrie hello hello nové zařízení na řídicím panelu hello zobrazuje hello zařízení teploty nikdy nepřesáhne 45 stupňů.
+Pro zařízení, které jste právě přidali, ještě nejsou stanovena žádná pravidla. V této sekci přidáte pravidlo, které spustí alarm, jakmile teplota hlášená novým zařízením přesáhne 47 stupňů. Ještě než začnete, všimněte si, že historie telemetrie nového zařízení na řídicím panelu ukazuje, že teplota měřená tímto zařízením nikdy nepřesáhne 45 stupňů.
 
-1. Přejděte zpět toohello seznam zařízení.
+1. Vraťte se zpět k seznamu zařízení.
 
-1. tooadd pravidlo pro hello zařízení, vyberte nové zařízení v hello **seznam zařízení**a potom zvolte **přidat pravidlo**.
+1. Pokud chcete přidat pravidlo pro zařízení, vyberte nové zařízení na panelu **Seznam zařízení** a potom zvolte **Přidat pravidlo**.
 
-1. Vytvořte pravidlo, které používá **teploty** jako hello datové pole a používá **AlarmTemp** jako hello výstup, když teplota hello přesáhne hodnotu 47 stupňů:
+1. Vytvořte pravidlo, které jako datové pole používá **teplotu**, a pokud tato veličina přesáhne 47 stupňů, použije jako výstup **AlarmTemp** (teplotní alarm):
 
     ![Přidání pravidla pro zařízení][img-adddevicerule]
 
-1. Zvolte změny, toosave **uložit a zobrazit pravidla**.
+1. Pokud chcete uložit změny, zvolte **Uložit a zobrazit pravidla**.
 
-1. Zvolte **příkazy** v podokně podrobností hello zařízení pro nové zařízení hello.
+1. V podokně podrobností o novém zařízení zvolte **Příkazy**.
 
     ![Přidání pravidla pro zařízení][img-adddevicerule2]
 
-1. Vyberte **ChangeSetPointTemp** ze seznamu příkaz hello a sadu **SetPointTemp** too45. Potom zvolte **Odeslat příkaz**:
+1. V seznamu příkazů vyberte **ChangeSetPointTemp** (Změnit mezní teplotu) a příkaz **SetPointTemp** (Nastavit mezní teplotu) nastavte na 45. Potom zvolte **Odeslat příkaz**:
 
     ![Přidání pravidla pro zařízení][img-adddevicerule3]
 
-1. Přejděte zpět toohello řídicího panelu. Po krátkou dobu zobrazí jako nová položka v hello **historie alarmů** když hello teplota hlášená tímto novým zařízením překročí prahovou hodnotu 47 stupňů hello:
+1. Vraťte se zpět na řídicí panel. Po chvilce se v podokně **Historie alarmů** ukáže nový záznam, když teplota hlášená tímto novým zařízením přesáhne hranici 47 stupňů:
 
     ![Přidání pravidla pro zařízení][img-adddevicerule4]
 
-1. Můžete zkontrolovat a upravit všechna pravidla v hello **pravidla** hello řídicím panelu:
+1. Všechna pravidla můžete kontrolovat a upravovat na stránce **Pravidla** na řídicím panelu:
 
     ![Zobrazení pravidel zařízení][img-rules]
 
-1. Můžete zkontrolovat a upravit všechny hello akce, které můžete provést v pravidle tooa odpovědi na hello **akce** hello řídicím panelu:
+1. Všechny akce, které se dají provést v reakci na některé pravidlo, můžete zkontrolovat a upravit na stránce **Akce** na řídicím panelu:
 
     ![Zobrazení akcí zařízení][img-actions]
 
 > [!NOTE]
-> Je možné toodefine akce, které může odesílat e-mailovou zprávu nebo SMS v odpovědi tooa pravidla nebo integrovat-obchodní systému prostřednictvím [aplikace logiky][lnk-logic-apps]. Další informace najdete v tématu hello [tooyour připojit aplikace logiky Azure IoT Suite vzdálené monitorování předkonfigurované řešení][lnk-logicapptutorial].
+> Můžete definovat akce, které budou pomocí funkce [Logic Apps][lnk-logic-apps] odesílat zprávy e-mailem nebo jako SMS v reakci na pravidlo nebo v rámci integrace s obchodním systémem. Další informace najdete v tématu [Propojení funkce Logic Apps s předkonfigurovaným řešením vzdáleného monitorování sady Azure IoT Suite][lnk-logicapptutorial].
 
 ### <a name="manage-filters"></a>Správa filtrů
 
-V seznamu hello zařízení můžete vytvořit, uložit a znovu načíst filtry toodisplay přizpůsobeného seznamu zařízení připojených tooyour rozbočovače. toocreate filtru:
+V seznamu zařízení můžete vytvořit, uložit a znovu načíst filtry, pomocí kterých zobrazíte přizpůsobený seznam zařízení připojených k vaší službě IoT Hub. Vytvoření filtru:
 
-1. Vyberte ikonu pro úpravu filtru hello hello v seznamu zařízení:
+1. Zvolte ikonu filtru nad seznamem zařízení:
 
-    ![Otevřete hello filtru editoru][img-editfiltericon]
+    ![Otevření editoru filtru][img-editfiltericon]
 
-1. V hello **filtru editor**, přidat hello pole, operátory a seznam hodnot toofilter hello zařízení. Více klauzulí toorefine můžete přidat filtr. Zvolte **filtru** tooapply hello filtru:
+1. V **Editoru filtru** přidejte pole, operátory a hodnoty, podle kterých chcete filtrovat seznam zařízení. Filtr můžete upřesnit přidáním více klauzulí. Zvolením **Filtrovat** použijte filtr:
 
     ![Vytvoření filtru][img-filtereditor]
 
-1. V tomto příkladu je seznam hello filtrovaný podle výrobce a model číslo:
+1. V tomto příkladu je seznam filtrovaný podle výrobce a čísla modelu:
 
     ![Filtrovaný seznam][img-filterelist]
 
-1. toosave filtr vlastní název, vyberte hello **uložit jako** ikona:
+1. Pokud chcete filtr uložit s vlastním názvem, zvolte ikonu **Uložit jako**:
 
     ![Uložení filtru][img-savefilter]
 
-1. tooreapply filtr jste uložili dřív, zvolte hello **otevřít uložené filtru** ikona:
+1. Pokud chcete znovu použít dříve uložený filtr, zvolte ikonu **Otevřít uložený filtr**:
 
     ![Otevření filtru][img-openfilter]
 
-Můžete vytvořit filtry na základě ID zařízení, stavu zařízení, požadovaných vlastností, ohlášených vlastností a značek. Přidejte si vlastní zařízení tooa vlastní značky v hello **značky** části hello **podrobnosti o zařízení** panelu nebo spustit úlohu tooupdate značky na několika zařízeních.
+Můžete vytvořit filtry na základě ID zařízení, stavu zařízení, požadovaných vlastností, ohlášených vlastností a značek. Vlastní značky můžete k zařízení přidat v části **Značky** panelu **Podrobnosti o zařízení** nebo spuštěním úlohy, která aktualizuje značky na více zařízeních.
 
 > [!NOTE]
-> V hello **filtru editor**, můžete použít hello **rozšířené zobrazení** tooedit hello text dotazu přímo.
+> V **Editoru filtru** můžete pomocí **Rozšířeného zobrazení** upravit přímo text dotazu.
 
 ### <a name="commands"></a>Příkazy
 
-Z hello **podrobnosti o zařízení** panelu, můžete odeslat příkazy toohello zařízení. Při prvním spuštění zařízení, odešle se, že informace o hello příkazy, že podporuje toohello řešení. Informace o hello rozdíly mezi příkazy a metody, najdete v části [možnosti cloud zařízení Azure IoT Hub][lnk-c2d-guidance].
+Na panelu **Podrobnosti o zařízení** můžete odesílat příkazy do zařízení. Jakmile zařízení poprvé spustíte, odešle do řešení informace o příkazech, které podporuje. Diskuzi o rozdílech mezi příkazy a metodami najdete v tématu [Možnosti komunikace typu zařízení-cloud ve službě IoT Hub][lnk-c2d-guidance].
 
-1. Zvolte **příkazy** v hello **podrobnosti o zařízení** panel pro vybrané zařízení hello:
+1. Na panelu **Podrobnosti o zařízení** pro vybrané zařízení zvolte **Příkazy**:
 
    ![Příkazy zařízení na řídicím panelu][img-devicecommands]
 
-1. Vyberte **PingDevice** hello příkaz seznamu.
+1. Ze seznamu příkazů vyberte **PingDevice** (Otestovat zařízení příkazem ping).
 
 1. Zvolte **Odeslat příkaz**.
 
-1. Zobrazí se stav hello hello příkazu v historii příkazů hello.
+1. Stav příkazu uvidíte v historii příkazů.
 
    ![Stav příkazu na řídicím panelu][img-pingcommand]
 
-Hello řešení sleduje stav každého příkazu, který odešle hello. Zpočátku je výsledek hello **čekající**. Když hello zařízení ohlásí, že se provedla hello příkaz, hello výsledek je nastaven příliš**úspěch**.
+Řešení sleduje stav každého příkazu, který odešle. Zpočátku je výsledek uveden jako **Čekající**. Když zařízení ohlásí, že příkaz provedlo, výsledek je nastaven na **Úspěch**.
 
-## <a name="behind-hello-scenes"></a>Pozadí hello
+## <a name="behind-the-scenes"></a>Informace pro pokročilé uživatele
 
-Když nasadíte předkonfigurované řešení, proces nasazení hello vytvoří několik prostředků v hello předplatné Azure, které jste vybrali. Tyto prostředky můžete zobrazit v hello Azure [portál][lnk-portal]. proces nasazení Hello vytvoří **skupiny prostředků** s názvem na základě názvu hello jste vybrali pro předkonfigurované řešení:
+Když nasadíte předkonfigurované řešení, proces nasazení vytvoří ve vybraném předplatném Azure několik prostředků. Tyto prostředky můžete zobrazit na webu [Azure Portal][lnk-portal]. Proces nasazení vytváří **skupinu prostředků**. Její název bude vycházet z názvu, který jste vybrali pro předkonfigurované řešení:
 
-![Předkonfigurované řešení v hello portálu Azure][img-portal]
+![Předkonfigurované řešení na portálu Azure Portal][img-portal]
 
-Hello nastavení každého prostředku můžete zobrazit výběrem v seznamu prostředků ve skupině prostředků hello hello.
+Nastavení každého prostředku se zobrazí, když jej vyberete v seznamu ve skupině prostředků.
 
-Můžete také zobrazit zdrojový kód hello hello předkonfigurované řešení. Hello vzdálené monitorování zdrojový kód předkonfigurovaného řešení je v hello [azure-iot-remote-monitoring] [ lnk-rmgithub] úložiště GitHub:
+Můžete taky zobrazit zdrojový kód pro předkonfigurované řešení. Zdrojový kód předkonfigurovaného řešení vzdáleného monitorování najdete v úložišti GitHub [azure-iot-remote-monitoring][lnk-rmgithub]:
 
-* Hello **DeviceAdministration** složka obsahuje hello zdrojový kód pro řídicí panel hello.
-* Hello **simulátoru** složka obsahuje hello zdrojový kód pro simulované zařízení hello.
-* Hello **EventProcessor** složka obsahuje zdrojový kód hello hello back endový proces, který zpracovává příchozí telemetrii hello.
+* Složka **DeviceAdministration** (Správa zařízení) obsahuje zdrojový kód pro řídicí panel.
+* Složka **Simulator** (Simulátor) obsahuje zdrojový kód pro simulované zařízení.
+* Složka **EventProcessor** (Procesor událostí) obsahuje zdrojový kód pro proces back-end, který zpracovává příchozí telemetrii.
 
-Až skončíte, můžete odstranit hello předkonfigurované řešení ze svého předplatného Azure na hello [azureiotsuite.com] [ lnk-azureiotsuite] lokality. Tento web můžete tooeasily odstranit všechny prostředky, které byly zřízeny při vytváření hello předkonfigurované řešení hello.
+Jakmile budete hotovi, můžete předkonfigurované řešení z vašeho předplatného Azure odstranit na webu [azureiotsuite.com][lnk-azureiotsuite]. Tento web umožňuje snadno odstranit všechny prostředky, které byly zřízeny při vytvoření předkonfigurovaného řešení.
 
 > [!NOTE]
-> tooensure odstraňte všechny položky související s toohello předkonfigurované řešení, odstraňte jej na hello [azureiotsuite.com] [ lnk-azureiotsuite] lokality a neodstraňujte skupinu prostředků hello hello portálu.
+> Abyste zajistili, že jste odstranili opravdu všechno spojené s předkonfigurovaným řešením, odstraňte řešení na webu [azureiotsuite.com][lnk-azureiotsuite] – neodstraňujte jenom skupinu prostředků na portálu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když máte ukázku nasazenou pracovní předkonfigurované řešení, budete pokračovat, Začínáme se službou IoT Suite načtením hello následující články:
+Když jste teď nasadili fungující předkonfigurované řešení, můžete pokračovat v seznamování se sadou IoT Suite přečtením následujících článků:
 
 * [Návod pro předkonfigurované řešení vzdáleného monitorování][lnk-rm-walkthrough]
-* [Připojit vaše zařízení toohello předkonfigurovanému řešení vzdáleného monitorování][lnk-connect-rm]
-* [Oprávnění na webu azureiotsuite.com hello][lnk-permissions]
+* [Připojení zařízení k předkonfigurovanému řešení vzdáleného monitorování][lnk-connect-rm]
+* [Oprávnění na webu azureiotsuite.com][lnk-permissions]
 
 [img-launch-solution]: media/iot-suite-getstarted-preconfigured-solutions/launch.png
 [img-dashboard]: media/iot-suite-getstarted-preconfigured-solutions/dashboard.png

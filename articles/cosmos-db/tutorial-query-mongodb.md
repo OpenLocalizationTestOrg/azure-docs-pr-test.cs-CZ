@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB: Jak tooquery pomocí hello rozhraní API DocumentDB? | Dokumentace Microsoftu"
-description: "Přečtěte si informace tooquery s hello DocumentDB rozhraní API pro Azure Cosmos DB"
+title: "Azure Cosmos DB: Jak dotazovat pomocí rozhraní API DocumentDB? | Dokumentace Microsoftu"
+description: "Postup dotazování pomocí DocumentDB rozhraní API pro Azure Cosmos DB"
 services: cosmos-db
 documentationcenter: 
 author: mimig1
@@ -15,24 +15,24 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/10/2017
 ms.author: mimig
-ms.openlocfilehash: e3e5a49f7510942bcfb15330e5f86c5dd8b1e5d9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: feffc553a9aa931d96cec71c101674fce08a466b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="azure-cosmos-db-how-tooquery-with-api-for-mongodb"></a>Azure Cosmos DB: Jak tooquery s rozhraním API pro MongoDB?
+# <a name="azure-cosmos-db-how-to-query-with-api-for-mongodb"></a>Azure Cosmos DB: Jak dotazovat pomocí rozhraní API pro MongoDB?
 
-Hello Azure Cosmos DB [rozhraní API pro MongoDB](mongodb-introduction.md) podporuje [MongoDB prostředí dotazy](https://docs.mongodb.com/manual/tutorial/query-documents/). 
+Azure Cosmos DB [rozhraní API pro MongoDB](mongodb-introduction.md) podporuje [MongoDB prostředí dotazy](https://docs.mongodb.com/manual/tutorial/query-documents/). 
 
-Tento článek se zabývá hello následující úlohy: 
+Tento článek obsahuje následující úlohy: 
 
 > [!div class="checklist"]
 > * Dotazování na data s MongoDB
 
 ## <a name="sample-document"></a>Ukázka dokumentu
 
-Hello dotazy v tomto článku použít hello následující ukázka dokumentu.
+Dotazy v tomto článku použít následující ukázka dokumentu.
 
 ```json
 {
@@ -64,7 +64,7 @@ Hello dotazy v tomto článku použít hello následující ukázka dokumentu.
 ```
 ## <a id="examplequery1"></a>Příklad dotazu 1 
 
-Zadána hello ukázka rodiny dokumentu výše hello následující dotaz vrátí hello dokumenty, kde pole id hello odpovídá `WakefieldFamily`.
+Zadaný vzorek rodiny dokumentu výše, následující dotaz vrátí dokumenty kde pole id odpovídá `WakefieldFamily`.
 
 **Dotaz**
     
@@ -114,7 +114,7 @@ Zadána hello ukázka rodiny dokumentu výše hello následující dotaz vrátí
 
 ## <a id="examplequery2"></a>Příklad dotazu 2 
 
-Hello další dotaz vrátí všechny podřízené objekty hello řady hello. 
+Další dotaz vrátí všechny podřízené objekty řady. 
 
 **Dotaz**
     
@@ -147,7 +147,7 @@ Hello další dotaz vrátí všechny podřízené objekty hello řady hello.
 
 ## <a id="examplequery3"></a>Příklad dotazu 3 
 
-Hello další dotaz vrátí všechny hello rodiny, které jsou registrované. 
+Další dotaz vrátí všechny rodiny, které jsou registrované. 
 
 **Dotaz**
     
@@ -156,7 +156,7 @@ Hello další dotaz vrátí všechny hello rodiny, které jsou registrované.
 
 ## <a id="examplequery4"></a>Příklad dotazu 4
 
-Hello další dotaz vrátí všechny hello rodiny, které nejsou registrované. 
+Další dotaz vrátí všechny rodiny, které nejsou registrované. 
 
 **Dotaz**
     
@@ -200,7 +200,7 @@ Hello další dotaz vrátí všechny hello rodiny, které nejsou registrované.
 
 ## <a id="examplequery5"></a>Příklad dotazu 5
 
-Hello další dotaz vrátí všechny hello řady, která nejsou registrovaná a stavu je NY. 
+Další dotaz vrátí všechny řady, která nejsou registrovaná a stavu je NY. 
 
 **Dotaz**
     
@@ -246,7 +246,7 @@ Hello další dotaz vrátí všechny hello řady, která nejsou registrovaná a 
 
 ## <a id="examplequery6"></a>Příklad dotazu 6
 
-Hello další dotaz vrátí všechny hello rodiny, kde jsou podřízené objekty tříd 8.
+Další dotaz vrátí všechny rodiny, kde jsou podřízené objekty tříd 8.
 
 **Dotaz**
   
@@ -291,7 +291,7 @@ Hello další dotaz vrátí všechny hello rodiny, kde jsou podřízené objekty
 
 ## <a id="examplequery7"></a>Příklad dotazu 7
 
-Hello další dotaz vrátí všechny hello rodiny, kde je velikost, děti pole 3.
+Další dotaz vrátí všechny rodiny, kde je velikost, děti pole 3.
 
 **Dotaz**
   
@@ -299,16 +299,16 @@ Hello další dotaz vrátí všechny hello rodiny, kde je velikost, děti pole 3
 
 **Výsledky**
 
-Žádné výsledky, bude vrácen jako nemáme k dispozici více než 2 podřízené objekty. Jenom v případě, že je parametr 2 Tento dotaz bude úspěšné a vrátí hello celého dokumentu.
+Žádné výsledky, bude vrácen jako nemáme k dispozici více než 2 podřízené objekty. Jenom v případě, že je parametr 2 Tento dotaz bude úspěšné a vrátit celého dokumentu.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu provedete krok hello následující:
+V tomto kurzu jste provést následující:
 
 > [!div class="checklist"]
-> * Jak se naučili tooquery pomocí MongoDB 
+> * Zjistili, jak k dotazování pomocí MongoDB 
 
-Nyní můžete přejít toohello další kurz toolearn jak toodistribute data globálně.
+Nyní můžete přejít k dalším kurzu se dozvíte, jak se bude distribuovat globální data.
 
 > [!div class="nextstepaction"]
 > [Globálně distribuci dat](tutorial-global-distribution-documentdb.md)

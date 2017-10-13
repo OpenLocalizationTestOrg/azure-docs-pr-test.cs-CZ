@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure Power BI Embedded dokumentace - kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
-description: "Zjistěte, jak tooembed Power BI vizualizacemi dat a interaktivní sestavy do aplikace. Kurzy, reference k rozhraní API a další dokumentace"
+title: "Dokumentace ke službě Azure Power BI Embedded – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
+description: "Zjistěte, jak můžete vložit vizualizace dat Power BI a interaktivní sestavy do aplikací. Kurzy, reference k rozhraní API a další dokumentace"
 services: power-bi-embedded
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -10,27 +10,27 @@ ms.service: power-bi-embedded
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 01/23/2017
+ms.date: 09/28/2017
 ms.author: carolz
-ms.openlocfilehash: e01a812ccc3b8daeb0569df90bad87f12c649db5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d8e1fafe9b3fecc9822ef6f25d8c527eebe586cb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="power-bi-embedded-documentation"></a>Dokumentace ke službě Power BI Embedded
 
-Zjistěte, jak tooadd vizualizacemi dat a interaktivní sestavy tooapplications s Power BI Embedded. Kurzy, odkazy na rozhraní API a další dokumentaci ukazují, jak tooseamlessly vložení do aplikace Power BI sestavy a řídicí panely.
+Zjistěte, jak můžete přidat vizualizace dat a interaktivní sestavy do aplikací pomocí Power BI Embedded. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak můžete bezproblémově vložit řídicí panely a sestavy Power BI do aplikací.
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/power-bi-embedded/power-bi-embedded-what-is-power-bi-embedded">
+        <a href="/azure/power-bi-embedded/what-is-power-bi-embedded">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/power-bi-embedded.svg" alt="" />
+                            <img src="media/index/power-bi-logo.svg" alt="Power BI logo" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -60,7 +60,7 @@ Zjistěte, jak tooadd vizualizacemi dat a interaktivní sestavy tooapplications 
         </a>
     </li>
     <li>
-        <a href="/azure/power-bi-embedded/power-bi-embedded-get-started">
+        <a href="/azure/power-bi-embedded/get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -78,7 +78,7 @@ Zjistěte, jak tooadd vizualizacemi dat a interaktivní sestavy tooapplications 
         </a>
     </li>
     <li>
-        <a href="/azure/power-bi-embedded/power-bi-embedded-get-started-sample">
+        <a href="https://powerbi.microsoft.com/documentation/powerbi-developer-embed-sample-app-owns-data/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -88,7 +88,7 @@ Zjistěte, jak tooadd vizualizacemi dat a interaktivní sestavy tooapplications 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáte s vytvářením sestav Power BI s hello ukázka Galerie</h3>
+                        <h3>Začínáme s vkládáním sestav s využitím ukázkové aplikace</h3>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@ Zjistěte, jak tooadd vizualizacemi dat a interaktivní sestavy tooapplications 
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Příkazový řádek</h3>
+                        <h3>PowerShell</h3>
                         <p><a href="/powershell/resourcemanager/azurerm.powerbiembedded/v2.3.0/azurerm.powerbiembedded">PowerShell</a></p>
                     </div>
                 </div>
@@ -120,8 +120,9 @@ Zjistěte, jak tooadd vizualizacemi dat a interaktivní sestavy tooapplications 
                     <div class="cardText">
                         <h3>Jazyky</h3>
                         <p><a href="/dotnet/api/microsoft.azure.management.powerbiembedded">.NET</a></p>
-                        <p><a href="https://www.nuget.org/profiles/powerbi">Stažení sady .NET SDK</a></p>
-                        <p><a href="https://github.com/Microsoft/PowerBI-JavaScript">JavaScript</a></p>
+                        <p><a href="https://www.nuget.org/packages/Microsoft.PowerBI.Api/">Stažení sady .NET SDK</a></p>
+                        <p><a href="https://microsoft.github.io/PowerBI-JavaScript/">JavaScript</a></p>
+                        <p><a href="https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/">Stažení sady JavaScript SDK</a></p>
                    </div>
                 </div>
             </div>
@@ -133,11 +134,10 @@ Zjistěte, jak tooadd vizualizacemi dat a interaktivní sestavy tooapplications 
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p><a href="/rest/api/powerbiembedded/">Reference k rozhraní REST API</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/mt147898.aspx">Reference k rozhraní REST API</a></p>
                     </div>
                 </div>
             </div>
         </div>
     </li>
 </ul>
-

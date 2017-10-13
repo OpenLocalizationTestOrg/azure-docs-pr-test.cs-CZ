@@ -1,6 +1,6 @@
 ---
-title: aaaAssign icenses pro Azure MFA | Microsoft Docs
-description: "Zjistěte, jak tooassign uživatelské licence pro Microsoft Azure Multi-Factor Authentication."
+title: "Přiřazení licencí pro Azure MFA | Dokumentace Microsoftu"
+description: "Naučte se přiřazovat uživatelské licence pro Microsoft Azure Multi-Factor Authentication."
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -16,26 +16,26 @@ ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
 ROBOTS: NOINDEX
-ms.openlocfilehash: ca324eb4d6622fdad8bd3d74b7e1595919e36535
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 45522bf526c4aeab1d6ccc8891a55a0436ff9320
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="assigning-an-azure-mfa-azure-ad-premium-or-enterprise-mobility-license-toousers"></a>Přiřazení toousers licence Azure MFA, Azure AD Premium nebo Enterprise Mobility
-Pokud jste zakoupili Azure MFA, Azure AD Premium nebo Enterprise Mobility Suite licence, není nutné toocreate poskytovatele vícefaktorového ověřování. Po přiřazení licence hello tooyour uživatelů, můžete začít povolovat pro MFA.
+# <a name="assigning-an-azure-mfa-azure-ad-premium-or-enterprise-mobility-license-to-users"></a>Přiřazení licence Azure MFA, Azure AD Premium nebo Enterprise Mobility uživatelům
+Pokud jste zakoupili licence ověřování Azure Multi-Factor Authentication, Azure AD Premium nebo sady Enterprise Mobility, nemusíte vytvářet poskytovatele vícefaktorového ověřování. Poté, co uživatelům přiřadíte licence, můžete je začít povolovat pro MFA.
 
-## <a name="tooassign-a-license"></a>tooassign licenci
-1. Přihlaste se toohello [portál Azure classic](https://manage.windowsazure.com) jako správce.
-2. Na levé straně hello vyberte **služby Active Directory**.
-3. Na stránce služby Active Directory hello dvakrát klikněte na hello adresář, který má hello uživatele chcete tooenable.
-4. Hello horní části stránky adresáře hello, vyberte **licence**.
+## <a name="to-assign-a-license"></a>Přiřazení licence
+1. Přihlaste se jako správce do [portálu Azure Classic](https://manage.windowsazure.com).
+2. Vlevo vyberte možnost **Active Directory**.
+3. Na stránce služby Active Directory poklikejte na adresář s uživateli, které chcete povolit.
+4. V horní části stránky adresáře vyberte možnost **Licence**.
    ![Přiřazení licencí](./media/multi-factor-authentication-get-started-assign-licenses/assign1.png)
-5. Na stránce licence hello vyberte **Azure Multi-Factor Authentication**, **Active Directory Premium**, nebo **Enterprise Mobility Suite**.  Pokud máte pouze jednu možnost, pak by se měla vybrat automaticky.
-6. V dolní části hello hello stránky, klikněte na tlačítko **přiřadit**.
+5. Na stránce Licence vyberte možnost **Azure Multi-Factor Authentication**, **Active Directory Premium** nebo **Enterprise Mobility Suite**.  Pokud máte pouze jednu možnost, pak by se měla vybrat automaticky.
+6. Na konci stránky klikněte na **Přiřadit**.
    ![Přiřazení licencí](./media/multi-factor-authentication-get-started-assign-licenses/assign3.png)
-7. Hello pole, které se zobrazí klikněte na tlačítko Další toohello uživatele nebo skupiny, které chcete tooassign licence.  Měli byste vidět zelenou značku zaškrtnutí.
-8. Klikněte na tlačítko hello zaškrtnutí ikonu toosave hello změny.
+7. V zobrazeném poli klikněte vedle uživatelů nebo skupin, kterým chcete přiřadit licence.  Měli byste vidět zelenou značku zaškrtnutí.
+8. Klikněte na ikonu značky zaškrtnutí a uložte změny.
    ![Přiřazení licencí](./media/multi-factor-authentication-get-started-assign-licenses/assign4.png)
 9. Zobrazí se zpráva uvádějící, kolik licencí bylo přiřazeno a kolik mohlo selhat.  Klikněte na tlačítko **OK**.
    ![Přiřazení licencí](./media/multi-factor-authentication-get-started-assign-licenses/assign5.png)

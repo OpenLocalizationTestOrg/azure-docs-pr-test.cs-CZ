@@ -1,6 +1,6 @@
 ---
-title: "aaaTroubleshoot HBase pomocí Azure HDInsight | Microsoft Docs"
-description: "Získejte odpovědi toocommon dotazy týkající se práce s HBase a Azure HDInsight."
+title: "Řešení potíží s HBase pomocí Azure HDInsight | Microsoft Docs"
+description: "Získejte odpovědi na časté otázky týkající se práce s HBase a Azure HDInsight."
 services: hdinsight
 documentationcenter: 
 author: nitinver
@@ -13,70 +13,70 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 7/7/2017
 ms.author: nitinver
-ms.openlocfilehash: 5210184f8ea95628952a95df8c98f5b98e37c53e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 15412c3853a2b8436c5e96034c9a92a2a1094662
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="troubleshoot-hbase-by-using-azure-hdinsight"></a>Řešení potíží s HBase pomocí Azure HDInsight
 
-Další informace o hello nejčastější problémy a jejich řešení při práci s Apache HBase datové části v Apache Ambari.
+Další informace o hlavních problémů a jejich řešení při práci s Apache HBase datové části v Apache Ambari.
 
 ## <a name="how-do-i-run-hbck-command-reports-with-multiple-unassigned-regions"></a>Jak spouštět sestavy příkaz hbck s několika nepřiřazené oblastí
 
-Běžné chybová zpráva, že může dojít, když spustíte hello `hbase hbck` příkaz je "více oblastí se nepřiřazené nebo díry v řetězu hello oblastí."
+Běžné chybová zpráva, že může dojít při spuštění `hbase hbck` příkaz je "více oblastí se nepřiřazené nebo díry v řetězu oblastí."
 
-V hello HBase hlavního uživatelského rozhraní se zobrazí hello počet oblastí, které jsou nevyvážené napříč všemi servery oblast. Potom můžete spustit `hbase hbck` příkaz toosee díry v řetězu oblast hello.
+V uživatelském rozhraní HBase hlavní uvidíte počet oblastí, které jsou nevyvážené napříč všemi servery oblast. Potom můžete spustit `hbase hbck` příkazu zobrazte díry v řetězu oblast.
 
-Díry může být způsobeno hello offline oblastech, tak přiřazení hello oprava nejdřív. 
+Díry může být způsobeno offline oblasti, takže opravte nejprve přiřazení. 
 
-toobring hello nepřiřazené oblasti back tooa normálním stavu, dokončete hello následující kroky:
+Aby nepřiřazené oblasti zpět k normálním stavu, proveďte následující kroky:
 
-1. Přihlaste se toohello clusteru HDInsight HBase pomocí protokolu SSH.
-2. tooconnect s hello ZooKeeper prostředí, spusťte hello `hbase zkcli` příkaz.
-3. Spustit hello `rmr /hbase/regions-in-transition` příkaz nebo hello `rmr /hbase-unsecure/regions-in-transition` příkaz.
-4. tooexit z hello `hbase zkcli` prostředí shell, použijte hello `exit` příkaz.
-5. Otevřete hello Apache Ambari uživatelského rozhraní a potom restartujte službu Active HBase hlavní hello.
-6. Spustit hello `hbase hbck` příkaz znovu (bez jakékoli možnosti). Zkontrolujte výstup hello tooensure tento příkaz, které jsou přiřazeny všechny oblasti.
+1. Přihlaste se ke clusteru HDInsight HBase pomocí protokolu SSH.
+2. Chcete-li připojit pomocí prostředí ZooKeeper, spusťte `hbase zkcli` příkaz.
+3. Spustit `rmr /hbase/regions-in-transition` příkaz nebo `rmr /hbase-unsecure/regions-in-transition` příkaz.
+4. Chcete-li ukončit z `hbase zkcli` prostředí shell, použijte `exit` příkaz.
+5. Otevřete uživatelské rozhraní Apache Ambari a potom restartujte službu hlavní HBase aktivní.
+6. Spustit `hbase hbck` příkaz znovu (bez jakékoli možnosti). Zkontrolujte výstup tohoto příkazu do zajistit přiřazení všech oblastech.
 
 
 ## <a name="how-do-i-fix-timeout-issues-with-hbck-commands-for-region-assignments"></a>Jak se při použití příkazů hbck oblasti přiřazení opravte problémy vypršení časového limitu
 
 ### <a name="issue"></a>Problém
 
-Možnou příčinou problémů vypršení časového limitu při použití hello `hbck` příkaz může být, že několik oblasti jsou ve hello "v přechodném stavu" stavu po dlouhou dobu. Najdete v těchto oblastech jako offline v hello HBase hlavního uživatelského rozhraní. Vzhledem k tomu, že vysoký počet oblastí se pokoušíte tootransition, hlavní HBase může časový limit a být nelze toobring těmito oblastmi zpět do režimu online.
+Možnou příčinou problémů vypršení časového limitu při použití `hbck` příkaz může být, že několik oblasti jsou ve stavu "v přechodném stavu" po dlouhou dobu. Jako offline v uživatelském rozhraní HBase hlavní najdete v těchto oblastech. Vzhledem k tomu, že vysoký počet oblastí se pokouší přechodu, hlavní HBase může časový limit a být schopen převést těmito oblastmi zpět do režimu online.
 
 ### <a name="resolution-steps"></a>Kroky řešení
 
-1. Přihlaste se toohello clusteru HDInsight HBase pomocí protokolu SSH.
-2. tooconnect s hello ZooKeeper prostředí, spusťte hello `hbase zkcli` příkaz.
-3. Spustit hello `rmr /hbase/regions-in-transition` nebo hello `rmr /hbase-unsecure/regions-in-transition` příkaz.
-4. tooexit hello `hbase zkcli` prostředí shell, použijte hello `exit` příkaz.
-5. V hello uživatelského rozhraní Ambari restartujte službu Active HBase hlavní hello.
-6. Spustit hello `hbase hbck -fixAssignments` příkaz znovu.
+1. Přihlaste se ke clusteru HDInsight HBase pomocí protokolu SSH.
+2. Chcete-li připojit pomocí prostředí ZooKeeper, spusťte `hbase zkcli` příkaz.
+3. Spustit `rmr /hbase/regions-in-transition` nebo `rmr /hbase-unsecure/regions-in-transition` příkaz.
+4. Chcete-li ukončit `hbase zkcli` prostředí shell, použijte `exit` příkaz.
+5. V uživatelském rozhraní Ambari restartujte službu hlavní HBase aktivní.
+6. Spustit `hbase hbck -fixAssignments` příkaz znovu.
 
 ## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>Jak I vynucení zakázání HDFS nouzovém režimu v clusteru
 
 ### <a name="issue"></a>Problém
 
-Hello místní Hadoop Distributed File System (HDFS) se zasekla v nouzovém režimu v clusteru HDInsight hello.
+Místní Hadoop Distributed File System (HDFS) se zasekla v nouzovém režimu v clusteru HDInsight.
 
 ### <a name="detailed-description"></a>Podrobný popis
 
-Tato chyba může být způsobena chybou, když spustíte následující příkaz HDFS hello:
+Tato chyba může být způsobena chybou, když spustíte následující příkaz HDFS:
 
 ```apache
 hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
 ```
 
-Hello chyba, kterou můžete setkat při pokusu o toorun hello příkaz vypadá takto:
+Chyba, kterou můžete setkat při pokusu spustit příkaz vypadá takto:
 
 ```apache
 hdiuser@hn0-spark2:~$ hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
 17/04/05 16:20:52 WARN retry.RetryInvocationHandler: Exception while invoking ClientNamenodeProtocolTranslatorPB.mkdirs over hn0-spark2.2oyzcdm4sfjuzjmj5dnmvscjpg.dx.internal.cloudapp.net/10.0.0.22:8020. Not retrying because try once and fail.
 org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.hdfs.server.namenode.SafeModeException): Cannot create directory /temp. Name node is in safe mode.
-It was turned on manually. Use "hdfs dfsadmin -safemode leave" tooturn safe mode off.
+It was turned on manually. Use "hdfs dfsadmin -safemode leave" to turn safe mode off.
         at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1359)
         at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:4010)
         at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1102)
@@ -126,11 +126,11 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
 
 ### <a name="probable-cause"></a>Pravděpodobná příčina
 
-Hello clusteru HDInsight byl škálovat dolů tooa jen několik uzlů. Hello počet uzlů je menší než nebo zavřete toohello HDFS replikace faktor.
+Změny velikosti clusteru HDInsight se dolů k velmi několika uzlů. Počet uzlů je menší než nebo blízko Multi-Factor replikace HDFS.
 
 ### <a name="resolution-steps"></a>Kroky řešení 
 
-1. Získáte stav hello hello HDFS na hello HDInsight clusteru spuštěním hello následující příkazy:
+1. Získáte stav HDFS v clusteru HDInsight spuštěním následujících příkazů:
 
    ```apache
    hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
@@ -171,14 +171,14 @@ Hello clusteru HDInsight byl škálovat dolů tooa jen několik uzlů. Hello po�
    ...
 
    ```
-2. Také můžete zkontrolovat integritu hello hello HDFS na hello HDInsight clusteru pomocí hello následující příkazy:
+2. Také můžete zkontrolovat integritu HDFS v clusteru HDInsight pomocí následujících příkazů:
 
    ```apache
    hdiuser@hn0-spark2:~$ hdfs fsck -D "fs.default.name=hdfs://mycluster/" /
    ```
 
    ```apache
-   Connecting toonamenode via http://hn0-spark2.2oyzcdm4sfjuzjmj5dnmvscjpg.dx.internal.cloudapp.net:30070/fsck?ugi=hdiuser&path=%2F
+   Connecting to namenode via http://hn0-spark2.2oyzcdm4sfjuzjmj5dnmvscjpg.dx.internal.cloudapp.net:30070/fsck?ugi=hdiuser&path=%2F
    FSCK started by hdiuser (auth:SIMPLE) from /10.0.0.22 for path / at Wed Apr 05 16:40:28 UTC 2017
    ....................................................................................................
 
@@ -201,10 +201,10 @@ Hello clusteru HDInsight byl škálovat dolů tooa jen několik uzlů. Hello po�
    Number of racks:               1
    FSCK ended at Wed Apr 05 16:40:28 UTC 2017 in 187 milliseconds
 
-   hello filesystem under path '/' is HEALTHY
+   The filesystem under path '/' is HEALTHY
    ```
 
-3. Pokud zjistíte, že neexistují žádné chybějí, jsou poškozené nebo under-replikované bloky, nebo že tyto bloky můžete ignorovat, spusťte následující příkaz tootake hello název uzlu mimo nouzový režim hello:
+3. Pokud zjistíte, že neexistují žádné chybí, poškozený, nebo under-replikované bloky, nebo že tyto bloky můžete ignorovat, spusťte následující příkaz provést název uzlu mimo nouzový režim:
 
    ```apache
    hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -safemode leave
@@ -215,30 +215,30 @@ Hello clusteru HDInsight byl škálovat dolů tooa jen několik uzlů. Hello po�
 
 ### <a name="resolution-steps"></a>Kroky řešení
 
-tooconnect s Phoenix, je nutné zadat IP adresu hello aktivní uzel ZooKeeper. Ujistěte se, že hello ZooKeeper sqlline.py toowhich služba se pokouší tooconnect je spuštěná.
-1. Přihlaste se toohello clusteru HDInsight pomocí protokolu SSH.
-2. Zadejte hello následující příkaz:
+Pro připojení k Phoenix, je nutné zadat IP adresu aktivní uzel ZooKeeper. Ujistěte se, že služba ZooKeeper sqlline.py, které se pokouší o připojení, není spuštěná.
+1. Přihlaste se ke clusteru HDInsight pomocí protokolu SSH.
+2. Zadejte následující příkaz:
                 
    ```apache
            "/usr/hdp/current/phoenix-client/bin/sqlline.py <IP of machine where Active Zookeeper is running"
    ```
 
    > [!Note] 
-   > Můžete získat IP adresu hello aktivní uzel ZooKeeper hello hello uživatelského rozhraní Ambari. Přejděte příliš**HBase** > **rychlé odkazy** > **ZK\* (aktivní)** > **Zookeeper informace**. 
+   > IP adresa aktivního uzlu ZooKeeper můžete získat z uživatelského rozhraní Ambari. Přejděte na **HBase** > **rychlé odkazy** > **ZK\* (aktivní)** > **Zookeeper informace**. 
 
-3. Pokud hello sqlline.py připojí tooPhoenix a nemá vypršení časového limitu, hello spusťte následující příkaz toovalidate hello dostupnosti a stavu Phoenix:
+3. Pokud sqlline.py připojí k Phoenix a nemá vypršení časového limitu, spusťte následující příkaz k ověření dostupnosti a stav Phoenix:
 
    ```apache
            !tables
            !quit
    ```      
-4. Pokud tento příkaz lze použít, neexistuje žádný problém. Hello IP adresa zadaná uživatelem hello můžou být nesprávné. Nicméně pokud hello příkaz pozastaví po delší dobu a potom zobrazí následující chyba hello, pokračujte toostep 5.
+4. Pokud tento příkaz lze použít, neexistuje žádný problém. IP adresa zadaná uživatelem je pravděpodobně nesprávná. Ale pokud příkaz pozastaví po delší dobu a potom zobrazí chybová zpráva, přejděte ke kroku 5.
 
    ```apache
-           Error while connecting toosqlline.py (Hbase - phoenix) Setting property: [isolation, TRANSACTION_READ_COMMITTED] issuing: !connect jdbc:phoenix:10.2.0.7 none none org.apache.phoenix.jdbc.PhoenixDriver Connecting toojdbc:phoenix:10.2.0.7 SLF4J: Class path contains multiple SLF4J bindings. 
+           Error while connecting to sqlline.py (Hbase - phoenix) Setting property: [isolation, TRANSACTION_READ_COMMITTED] issuing: !connect jdbc:phoenix:10.2.0.7 none none org.apache.phoenix.jdbc.PhoenixDriver Connecting to jdbc:phoenix:10.2.0.7 SLF4J: Class path contains multiple SLF4J bindings. 
    ```
 
-5. Spuštěním následujících příkazů z hlavního uzlu (hn0) hello toodiagnose hello podmínku hello Phoenix systému hello. Tabulka katalogu:
+5. Spusťte následující příkazy z hlavního uzlu (hn0), který se při diagnostice stav Phoenix systému. Tabulka katalogu:
 
    ```apache
             hbase shell
@@ -246,23 +246,23 @@ tooconnect s Phoenix, je nutné zadat IP adresu hello aktivní uzel ZooKeeper. U
            count 'SYSTEM.CATALOG'
    ```
 
-   příkaz Hello by měla vrátit následující chybě podobné toohello: 
+   Příkaz by měla vrátit chybu podobný následujícímu: 
 
    ```apache
            ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,,1485464083256.c0568c94033870c517ed36c45da98129. is not online on 10.2.0.5,16020,1489466172189) 
    ```
-6. V hello uživatelského rozhraní Ambari proveďte následující kroky toorestart hello HMaster služby na všechny uzly ZooKeeper hello:
+6. V uživatelském rozhraní Ambari proveďte následující kroky a restartujte službu HMaster na všechny uzly ZooKeeper:
 
-    1. V hello **Souhrn** části hbase, přejděte příliš**HBase** > **Active HBase hlavní**. 
-    2. V hello **součásti** část, restartujte službu HBase hlavní hello.
+    1. V **Souhrn** části HBase, přejděte na **HBase** > **Active HBase hlavní**. 
+    2. V **součásti** část, restartujte službu hlavní HBase.
     3. Tento postup opakujte pro všechny zbývající **pohotovostní HBase hlavní** služby. 
 
-Může trvat až minut toofive hello HBase hlavní služby toostabilize a dokončit proces obnovení hello. Po několika minutách opakujte hello sqlline.py příkazy tooconfirm této hello systému. Tabulka katalogu je zapnutý, a to může být dotazován. 
+To může trvat až pět minut, než služba HBase Master stabilizovat a dokončit proces obnovení. Po několika minutách opakujte příkazy sqlline.py, ujistěte se, že v systému. Tabulka katalogu je zapnutý, a to může být dotazován. 
 
-Když hello systému. Tabulka katalogu je back toonormal, hello připojení problém tooPhoenix by měla být vyřešen automaticky.
+Pokud v systému. Tabulka katalogu je zpět do normální, problém s připojením k Phoenix by měla být vyřešen automaticky.
 
 
-## <a name="what-causes-a-master-server-toofail-toostart"></a>Co způsobí, že hlavní server toofail toostart
+## <a name="what-causes-a-master-server-to-fail-to-start"></a>Co způsobí, že hlavní server nezdaří spustit
 
 ### <a name="error"></a>Chyba 
 
@@ -270,19 +270,19 @@ Dojde k selhání atomic přejmenování.
 
 ### <a name="detailed-description"></a>Podrobný popis
 
-Během procesu spuštění hello dokončení HMaster mnoho kroků inicializace. Patří mezi ně přesouvání dat od začátku hello (TMP) složka toohello data. HMaster hello předběžné protokoly (WALs) složky toosee také zabývá, pokud jsou všechny servery reagovat oblasti a tak dále. 
+Během procesu spuštění dokončení HMaster mnoho kroků inicializace. Jedná se o přesouvání dat ve složce začátku (TMP) ke složce data. HMaster také zjistí složce předběžné protokolů (WALs), pokud jsou k dispozici žádné servery reagovat oblasti a tak dále. 
 
 Během spouštění HMaster nemá základní `list` příkazu u těchto složek. Pokud kdykoli, uvidí HMaster neočekávaný soubor v žádném z těchto složek, vyvolá výjimku a nespustí.  
 
 ### <a name="probable-cause"></a>Pravděpodobná příčina
 
-V protokolech serveru hello oblasti opakujte časová osa hello tooidentify hello vytvoření souboru a zjistit, zda se, že proces havárií kolem hello čas hello soubor byl vytvořen. (Obraťte se na podporu tooassist HBase je to.) Tento pomůže nám poskytují robustnější mechanismy, takže se můžete vyhnout stiskne to chyb a ujistěte se proces řádné vypnutí systému.
+V protokolech serveru oblast pokuste se identifikovat časovou osu vytvoření souboru a zjistěte, pokud byl proces havárií v době, kdy byl vytvořen soubor. (Obraťte se na podporu HBase vám pomůže to). Tento pomůže nám poskytují robustnější mechanismy, takže se můžete vyhnout stiskne to chyb a ujistěte se proces řádné vypnutí systému.
 
 ### <a name="resolution-steps"></a>Kroky řešení
 
-Zkontrolujte hello zásobník volání a zkuste to toodetermine složku, ke které může být příčinou problému hello (například se může být hello WALs nebo hello TMP složky). V Průzkumníku cloudu, nebo pomocí příkazů HDFS, opakujte toolocate hello problém souboru. Obvykle se jedná \*-renamePending.json souboru. (hello \*-renamePending.json soubor je soubor deníku, který byl použit tooimplement hello atomické přejmenování operace v ovladači WASB hello. Náležitý toobugs v této implementaci těchto souborů může být zbyly poté, co mimoprocesových atd.) Vynutit odstranění tohoto souboru v Průzkumníku cloudu nebo pomocí příkazů HDFS. 
+Zkontrolujte zásobník volání a určete složku, ke které může být příčinou problému (například se může být složce WALs nebo ve složce tmp). V Průzkumníku cloudu, nebo pomocí příkazů HDFS, poté zkuste najít soubor problém. Obvykle se jedná \*-renamePending.json souboru. ( \*-RenamePending.json soubor je soubor deníku, který se používá k implementaci operaci atomic přejmenování v ovladači WASB. Z důvodu chyby v této implementaci těchto souborů může být zbyly poté, co mimoprocesových atd.) Vynutit odstranění tohoto souboru v Průzkumníku cloudu nebo pomocí příkazů HDFS. 
 
-V některých případech mohou existovat i dočasný soubor s názvem něco podobného jako *$$$. $$$* v tomto umístění. Máte toouse HDFS `ls` příkaz toosee tento soubor, nelze zjistit hello soubor v Průzkumníku cloudu. toodelete tento soubor, použijte hello HDFS příkaz `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$`.  
+V některých případech mohou existovat i dočasný soubor s názvem něco podobného jako *$$$. $$$* v tomto umístění. Budete muset použít HDFS `ls` příkaz, který má tento soubor; nelze naleznete v souboru v Průzkumníku cloudu. K odstranění tohoto souboru, použijte příkaz HDFS `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$`.  
 
 Po spuštění těchto příkazů, HMaster by měl spustit okamžitě. 
 
@@ -292,11 +292,11 @@ Po spuštění těchto příkazů, HMaster by měl spustit okamžitě.
 
 ### <a name="detailed-description"></a>Podrobný popis
 
-Může se zobrazit zpráva na váš cluster Linux, která určuje, že hello *hbase: meta* tabulka není online. Spuštění `hbck` může zobrazit zprávu, že "hbase: meta tabulky replicaId 0 nebyl nalezen v libovolné oblasti." Hello problém může být, že HMaster nebylo možné inicializovat po restartování HBase. V protokolech HMaster hello, zpráva se může zobrazit hello: "žádná adresa serveru uvedené v hbase: meta pro oblast hbase: zálohování \<název oblasti\>".  
+Může se zobrazit zpráva na váš cluster Linux, která označuje, že *hbase: meta* tabulka není online. Spuštění `hbck` může zobrazit zprávu, že "hbase: meta tabulky replicaId 0 nebyl nalezen v libovolné oblasti." Tento problém může být, že HMaster nebylo možné inicializovat po restartování HBase. V protokolech HMaster může zobrazit zpráva: "žádná adresa serveru uvedené v hbase: meta pro oblast hbase: zálohování \<název oblasti\>".  
 
 ### <a name="resolution-steps"></a>Kroky řešení
 
-1. V hello prostředí HBase zadejte následující příkazy (skutečné hodnoty pro změnu podle vhodnosti) hello:  
+1. V prostředí HBase zadejte následující příkazy (skutečné hodnoty pro změnu podle vhodnosti):  
 
    ```apache
    > scan 'hbase:meta'  
@@ -306,11 +306,11 @@ Může se zobrazit zpráva na váš cluster Linux, která určuje, že hello *hb
    > delete 'hbase:meta','hbase:backup <region name>','<column name>'  
    ```
 
-2. Odstranit hello *hbase: obor názvů* položku. Tato položka může být hello stejné chybě, která je hlášena, když hello *hbase: obor názvů* tabulka je skenován.
+2. Odstranit *hbase: obor názvů* položku. Tato položka může být ke stejné chybě, která se při hlášené *hbase: obor názvů* tabulka je skenován.
 
-3. toobring až HBase v běžícím stavu, v hello uživatelského rozhraní Ambari, restartujte službu Active HMaster hello.  
+3. Restartujte službu Active HMaster zprovoznit HBase v běžícím stavu, v uživatelském rozhraní Ambari.  
 
-4. V hello prostředí HBase, toobring až všechny tabulky v režimu offline, spusťte následující příkaz hello:
+4. V prostředí HBase se zprovoznit všechny tabulky v režimu offline, spusťte následující příkaz:
 
    ```apache 
    hbase hbck -ignorePreCheckPermission -fixAssignments 
@@ -318,46 +318,46 @@ Může se zobrazit zpráva na váš cluster Linux, která určuje, že hello *hb
 
 ### <a name="additional-reading"></a>Další čtení
 
-[Tabulky HBase nelze tooprocess hello](http://stackoverflow.com/questions/4794092/unable-to-access-hbase-table)
+[Nelze zpracovat tabulku HBase](http://stackoverflow.com/questions/4794092/unable-to-access-hbase-table)
 
 
 ### <a name="error"></a>Chyba
 
-HMaster časového limitu s podobnou too"java.io.IOException závažné výjimce: Čekání na obor názvů tabulky toobe přiřazené 300000ms Timedout."
+HMaster časového limitu se podobně jako závažné výjimce "java.io.IOException: Timedout 300000ms čekání tabulky obor názvů pro přiřazení."
 
 ### <a name="detailed-description"></a>Podrobný popis
 
-Tomuto problému může dojít, pokud máte mnoho tabulek a oblasti, které nebyly byly vyprázdněny, při restartování vaší HMaster služeb. Restartování může selhat a uvidíte hello předcházející chybová zpráva.  
+Tomuto problému může dojít, pokud máte mnoho tabulek a oblasti, které nebyly byly vyprázdněny, při restartování vaší HMaster služeb. Restartování může selhat a uvidíte uvedená chybová zpráva.  
 
 ### <a name="probable-cause"></a>Pravděpodobná příčina
 
-Jde o známý problém s hello HMaster služby. Spuštění úlohy obecné clusteru může trvat dlouhou dobu. HMaster, protože tabulka obor názvů hello ještě není přiřazená vypne. K tomu dochází jenom v situacích, ve kterém velké množství dat, unflushed existuje a není dostatečná vypršení časového limitu pěti minut.
+Jde o známý problém se službou HMaster. Spuštění úlohy obecné clusteru může trvat dlouhou dobu. HMaster vypne vzhledem k tomu, že v tabulce oboru názvů není dosud přiřazen. K tomu dochází jenom v situacích, ve kterém velké množství dat, unflushed existuje a není dostatečná vypršení časového limitu pěti minut.
   
 ### <a name="resolution-steps"></a>Kroky řešení
 
-1. Hello uživatelského rozhraní Ambari, přejděte v příliš**HBase** > **konfigurací**. V souboru hello vlastní hbase-site.xml přidejte hello následující nastavení: 
+1. V uživatelském rozhraní Ambari, přejděte do **HBase** > **konfigurací**. V souboru vlastní hbase-site.xml přidejte následující nastavení: 
 
    ```apache
    Key: hbase.master.namespace.init.timeout Value: 2400000  
    ```
 
-2. Restartujte služby hello požadované (HMaster a případně dalších HBase služby).  
+2. Restartujte službu (HMaster a případně dalších služeb HBase).  
 
 
 ## <a name="what-causes-a-restart-failure-on-a-region-server"></a>Co způsobí restartování selhání na serveru oblast
 
 ### <a name="issue"></a>Problém
 
-Selhání restartování v oblasti serveru může být zabránit následující osvědčené postupy. Doporučujeme, abyste pozastavit aktivity vytížen, při plánování toorestart HBase oblast servery. Pokud aplikace stále tooconnect se servery pro oblast, když probíhá vypnutí, bude operace restartování serveru oblast hello pomalejší o několik minut. Je také vhodné toofirst, který je vyprázdnění že všech hello tabulky. Pro odkaz na postupy tooflush tabulky, viz [HDInsight HBase: jak tooimprove hello HBase cluster restartovat čas vyprázdnění tabulky](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
+Selhání restartování v oblasti serveru může být zabránit následující osvědčené postupy. Doporučujeme, abyste pozastavit aktivity vytížen, pokud máte v úmyslu restartování serverů oblast HBase. Pokud k připojení se servery pro oblast, když probíhá vypnutí i aplikace, bude operace restartování serveru oblast pomalejší o několik minut. Je také vhodné nejprve vyprázdnit všechny tabulky. Odkaz na tom, jak vyprázdnění tabulky, najdete v části [HDInsight HBase: jak ke zlepšení čas restartování clusteru HBase pomocí Vyčištění tabulky](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
 
-Pokud spustíte hello operace restartování serverů oblast HBase z hello uživatelského rozhraní Ambari, zobrazí okamžitě hello oblast servery byl vypnut, že nemáte hned restartovat. 
+Pokud spustíte operace restartování serverů oblast HBase z rozhraní Ambari, zobrazí okamžitě servery oblast byl vypnut, že nemáte hned restartovat. 
 
-Tady je se přitom děje pozadí hello: 
+Zde je, co se děje na pozadí: 
 
-1. Hello Ambari agent odesílá serveru oblast toohello žádost o zastavení.
-2. Hello Ambari počká 30 sekund pro hello oblast serveru tooshut dolů řádně. 
-3. Pokud vaše aplikace pokračuje tooconnect s hello oblast serverem, hello server nebude vypnout okamžitě. předtím, než dojde k vypnutí platnost vyprší časový limit 30 sekund Hello. 
-4. Po 30 sekund, hello Ambari agent odesílá force-kill (`kill -9`) příkaz toohello oblast serveru. Můžete to vidět v protokolu agenta ambari hello (v hello /var nebo protokolu nebo adresář hello příslušných pracovního uzlu):
+1. Ambari agent odešle žádost o zastavení serveru oblast.
+2. Ambari agent čeká 30 sekund pro oblast server korektně vypnout. 
+3. Pokud vaše aplikace nadále připojit k serveru oblast, server nebude vypnout okamžitě. Předtím, než dojde k vypnutí vyprší časový limit 30 sekund. 
+4. Po 30 sekund, Ambari agent odešle force-kill (`kill -9`) příkaz k serveru oblast. Můžete to vidět v protokolu agenta ambari (v /var nebo protokolu nebo adresář příslušných pracovního uzlu):
 
    ```apache
            2017-03-21 13:22:09,171 - Execute['/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh --config /usr/hdp/current/hbase-regionserver/conf stop regionserver'] {'only_if': 'ambari-sudo.sh  -H -E t
@@ -371,7 +371,7 @@ Tady je se přitom děje pozadí hello:
            2017-03-21 13:22:40,285 - File['/var/run/hbase/hbase-hbase-regionserver.pid'] {'action': ['delete']}
            2017-03-21 13:22:40,285 - Deleting File['/var/run/hbase/hbase-hbase-regionserver.pid']
    ```
-Z důvodu vypnutí náhlému hello nemusí být vydání hello portu přidružené k procesu hello, i když je zastavena proces serveru oblast hello. Tato situace může vést tooan AddressBindException během spouštění serveru hello oblast, jak je znázorněno v následujícím protokoly hello. Můžete to ověřit v oblasti server.log hello v adresáři /var/log/hbase hello na hello pracovní uzly, kde server hello oblast selže toostart. 
+Z důvodu náhlému vypnutí nemusí být vydání port spojených s procesem, přestože proces serveru oblast je zastavena. Tato situace může vést k AddressBindException během spouštění serveru oblast, jak je znázorněno v následujících protokolech. Můžete to ověřit v oblasti server.log v adresáři /var/log/hbase na pracovních uzlech, které oblasti serveru nepodaří spustit. 
 
    ```apache
 
@@ -392,7 +392,7 @@ Z důvodu vypnutí náhlému hello nemusí být vydání hello portu přidružen
    at org.apache.hadoop.hbase.regionserver.HRegionServer.constructRegionServer(HRegionServer.java:2634)
    ... 5 more
         
-   Caused by: java.net.BindException: Problem binding too/10.2.0.4:16020 : Address already in use
+   Caused by: java.net.BindException: Problem binding to /10.2.0.4:16020 : Address already in use
    at org.apache.hadoop.hbase.ipc.RpcServer.bind(RpcServer.java:2497)
    at org.apache.hadoop.hbase.ipc.RpcServer$Listener.<init>(RpcServer.java:580)
    at org.apache.hadoop.hbase.ipc.RpcServer.<init>(RpcServer.java:1982)
@@ -413,8 +413,8 @@ Z důvodu vypnutí náhlému hello nemusí být vydání hello portu přidružen
 
 ### <a name="resolution-steps"></a>Kroky řešení
 
-1. Před spuštěním restartování, zkuste tooreduce hello zatížení hello HBase oblast serverů. 
-2. Můžete taky (Pokud kroku 1 vám nepomohly), zkuste toomanually restartování oblasti, které servery na hello uzlů pracovního procesu pomocí hello následující příkazy:
+1. Pokuste se snížit zatížení serverů oblast HBase před spuštěním restartování. 
+2. Můžete taky (Pokud kroku 1 vám nepomohly), pokuste se restartovat servery oblast na pracovních uzlech ručně pomocí následujících příkazů:
 
    ```apache
    sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh stop regionserver"

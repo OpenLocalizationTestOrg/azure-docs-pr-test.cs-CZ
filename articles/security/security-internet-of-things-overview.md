@@ -1,6 +1,6 @@
 ---
-title: "aaaSecure vaše Internet věcí (IoT) v Azure | Microsoft Docs"
-description: " Azure pro internet věcí (IoT) services nabízí celou řadu funkcí. Tento článek vám pomůže pochopit jak toosecure řešení IoT v Azure. "
+title: "Zabezpečit vaše Internet věcí (IoT) v Azure | Microsoft Docs"
+description: " Azure pro internet věcí (IoT) services nabízí celou řadu funkcí. Tento článek vám pomůže pochopit postup zabezpečení vašich vlastních IoT řešení v Azure. "
 services: security
 documentationcenter: na
 author: TomShinder
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2017
 ms.author: terrylan
-ms.openlocfilehash: b6cb2ea1c1facada854fb52c55066f34a8289e47
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3793f5453b74b6c06d9e58b426d89099298e1288
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="internet-of-things-security-overview"></a>Přehled zabezpečení Internetu věcí
 Azure pro internet věcí (IoT) services nabízí celou řadu funkcí. Tyto služby na úrovni řešení pro velké firmy umožňují:
@@ -29,39 +29,39 @@ Azure pro internet věcí (IoT) services nabízí celou řadu funkcí. Tyto slu�
 * vizualizaci historických dat i dat v reálném čase
 * integraci se systémy administrativní podpory (back-office)
 
-Tyto funkce Azure IoT Suite balíčky současně toodeliver více Azure služby s vlastními rozšířeními jako předkonfigurovaná řešení. Tato předkonfigurovaná řešení jsou základní implementací běžných vzorů řešení IoT, které pomáhají tooreduce hello čas trvat toodeliver řešení IoT. Hello IoT software development Kit můžete přizpůsobit a rozšířit těchto řešení toomeet vlastní požadavky. Tato řešení můžete využít i jako příklady či šablony při vývoji nových řešení IoT.
+K poskytování těchto možnosti, Azure IoT Suite balíčky současně více služeb Azure s vlastními rozšířeními jako předkonfigurovaná řešení. Tato předkonfigurovaná řešení jsou základní implementací běžných vzorů řešení v oblasti IoT, které by vám měly pomoci snížit časovou náročnost implementace vašich vlastních IoT řešení. Pomocí software development Kit IoT, můžete přizpůsobit a rozšířit těmito řešeními, aby vyhovovala vaším požadavkům. Tato řešení můžete využít i jako příklady či šablony při vývoji nových řešení IoT.
 
-Hello Azure IoT suite je výkonné řešení pro vaše potřeby IoT. Je však upmost význam, vašich vlastních IoT řešení jsou navržená tak, s důrazem na bezpečnost od začátku hello. Kvůli hello velkému počtu zařízení IoT incidentů, zabezpečení rychle stát událost související s rozšířeným se významné důsledky.
+Azure IoT suite je výkonné řešení pro vaše potřeby IoT. Je však upmost význam, vašich vlastních IoT řešení jsou navržená tak, s důrazem na bezpečnost od začátku. Kvůli velkému počtu zařízení IoT incidentů, zabezpečení rychle stát událost související s rozšířeným se významné důsledky.
 
-toohelp porozumíte jak toosecure řešení IoT máme hello následující informace.
+Chcete-li vám pomohou pochopit, jak zabezpečit řešení IoT, máme následující informace.
 
 ## <a name="security-architecture"></a>Architektura zabezpečení
-Při návrhu systému, je důležité toounderstand hello potenciální hrozby toothat systém a přidejte příslušné obrany podle toho, jak systém hello je navržená tak a navržen. Je důležité, protože pochopení, jak útočník může být schopný toocompromise systému pomáhá, ujistěte se, že jsou splněné od začátku hello odpovídající jejich zmírnění toodesign hello produktu od začátku hello s důrazem na bezpečnost.
+Při návrhu systému, je důležité pochopit potenciální hrozby na daný systém a přidejte příslušné obrany podle toho, jak systém je navržená tak a navržen. Je důležité při návrhu produktu od začátku s důrazem na bezpečnost, protože pochopení, jak může být útočník mohl ohrozit systém pomáhá, ujistěte se, zda odpovídající jejich zmírnění jsou zavedené od začátku.
 
 Můžete další informace o architektuře IoT zabezpečení načtením [Internet věcí zabezpečení architektura](../iot-suite/iot-security-architecture.md).
 
-Tento článek popisuje hello následující témata:
+Tento článek popisuje v následujících tématech:
 
 * [Zabezpečení začíná Model hrozeb](../iot-suite/iot-security-architecture.md#security-starts-with-a-threat-model)
 * [Zabezpečení v IoT](../iot-suite/iot-security-architecture.md#security-in-iot)
-* [Hello modelování hrozeb referenční architektura IoT Azure](../iot-suite/iot-security-architecture.md#threat-modeling-the-azure-iot-reference-architecture)
+* [Azure IoT referenční architektura modelování hrozeb](../iot-suite/iot-security-architecture.md#threat-modeling-the-azure-iot-reference-architecture)
 
-## <a name="security-from-hello-ground-up"></a>Zabezpečení z hello pozadí
-Hello IoT představuje jedinečné zabezpečení, ochrany osobních údajů a dodržování předpisů výzvy toobusinesses po celém světě. Na rozdíl od tradičních internetový technologie, kde tyto problémy základem softwaru a o tom, jak je implementována IoT se vztahuje na co se stane, když internetový hello a fyzické světů hello sloučit. Ochrana řešení IoT vyžaduje zajištění zabezpečené zřizování zařízení, zabezpečené připojení mezi těchto zařízení a hello cloudu a ochranu zabezpečení dat v cloudu hello při zpracování a úložiště. Pracovat se tyto funkce, ale jsou zařízení s omezenými zdroji, geografické rozptýlení nasazení a mnoho zařízení v rámci řešení.
+## <a name="security-from-the-ground-up"></a>Zabezpečení od počátku
+IoT představuje jedinečné výzvy zabezpečení, ochrany osobních údajů a dodržování předpisů pro firmy po celém světě. Na rozdíl od tradičních internetový technologie, kde tyto problémy základem softwaru a o tom, jak je implementována IoT se vztahuje na co se stane, když internetový a fyzické světů sloučit. Ochrana řešení IoT vyžaduje zajištění zabezpečené zřizování zařízení, zabezpečené připojení mezi tato zařízení a cloudu a ochranu zabezpečení dat v cloudu při zpracování a úložiště. Pracovat se tyto funkce, ale jsou zařízení s omezenými zdroji, geografické rozptýlení nasazení a mnoho zařízení v rámci řešení.
 
-Dozvíte, jak toohandle zabezpečení v těchto oblastech načtením [zabezpečení Internetu věcí z hello pozadí](../iot-suite/securing-iot-ground-up.md).
+Můžete naučit pro zpracování zabezpečení v těchto oblastech čtení [zabezpečení Internetu věcí od základů](../iot-suite/securing-iot-ground-up.md).
 
-Hello článek popisuje hello následující témata:
+Článek obsahuje následující témata:
 
-* [Zabezpečení infrastruktury z hello pozadí](../iot-suite/securing-iot-ground-up.md#secure-infrastructure-from-the-ground-up)
+* [Zabezpečení infrastruktury od základů](../iot-suite/securing-iot-ground-up.md#secure-infrastructure-from-the-ground-up)
 * [Microsoft Azure – zabezpečené IoT infrastrukturu pro vaši organizaci](../iot-suite/securing-iot-ground-up.md#microsoft-azure---secure-iot-infrastructure-for-your-business)
 
 ## <a name="best-practices"></a>Osvědčené postupy
-Zabezpečení infrastruktury IoT vyžaduje přísných strategii zabezpečení do hloubky. Z zabezpečení dat v cloudu hello chrání integritu dat při přenosu přes hello veřejný internet, toosecurely zřizování zařízení, jednotlivé úrovně sestavení větší zajištění zabezpečení hello celé infrastruktury.
+Zabezpečení infrastruktury IoT vyžaduje přísných strategii zabezpečení do hloubky. Z zabezpečení dat v cloudu, chrání integritu dat v průběhu přenosu prostřednictvím veřejného Internetu bezpečně zřízení zařízení, vytvoří každé vrstvě větší zajištění zabezpečení v celé infrastruktury.
 
 Dozvíte se o zabezpečení Internetu věcí osvědčené postupy načtením [osvědčené postupy pro zabezpečení Internetu věcí](../iot-suite/iot-security-best-practices.md).
 
-Hello článek popisuje hello následující témata:
+Článek obsahuje následující témata:
 
 * [Výrobce hardwaru IoT/integrátor](../iot-suite/iot-security-best-practices.md#iot-hardware-manufacturerintegrator)
 * [Vývojář řešení IoT](../iot-suite/iot-security-best-practices.md#iot-solution-developer)

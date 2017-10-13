@@ -1,4 +1,4 @@
-emulátor úložiště Hello podporuje jeden pevný účet a dobře známé ověřovací klíč pro ověření sdíleným klíčem. Tento účet a klíč jsou hello pouze povolené pro použití s emulátor úložiště hello pověření sdílený klíč. Jsou:
+Emulátor úložiště podporuje jeden pevný účet a dobře známé ověřovací klíč pro ověření sdíleným klíčem. Tento účet a klíč jsou pouze povolené pro použití s emulátor úložiště pověření sdílený klíč. Jsou:
 
 ```
 Account name: devstoreaccount1
@@ -6,13 +6,13 @@ Account key: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZ
 ```
 
 > [!NOTE]
-> ověřovací klíč Hello nepodporuje emulátor úložiště hello je určena pouze pro testování hello funkce kód pro ověřování klienta. Neslouží jakýkoli účel zabezpečení. Produkční účtu úložiště a klíč nelze použít s emulátor úložiště hello. Neměli byste používat účet vývoj hello s provozními daty.
+> Ověřovací klíč nepodporuje emulátor úložiště je určena pouze pro testování funkce kód pro ověřování klienta. Neslouží jakýkoli účel zabezpečení. Produkční účtu úložiště a klíč nelze použít s emulátor úložiště. Vývoj pro účet byste neměli používat s provozními daty.
 > 
-> emulátor úložiště Hello podporuje pouze připojení prostřednictvím protokolu HTTP. Protokol HTTPS se ale hello doporučuje protokol pro přístup k prostředkům v produkční účtu úložiště Azure.
+> Emulátor úložiště podporuje pouze připojení prostřednictvím protokolu HTTP. Ale HTTPS je protokol doporučené pro přístup k prostředkům v produkční účtu úložiště Azure.
 > 
 
-#### <a name="connect-toohello-emulator-account-using-a-shortcut"></a>Toohello emulátoru účtu pomocí zástupce Connect
-Hello nejjednodušší způsob, jak tooconnect toohello emulátor úložiště z vaší aplikace je tooconfigure připojovací řetězec v konfiguračním souboru aplikace, který odkazuje na zástupce hello `UseDevelopmentStorage=true`. Tady je příklad připojovací řetězec toohello emulátor úložiště v *app.config* souboru: 
+#### <a name="connect-to-the-emulator-account-using-a-shortcut"></a>Připojení k účtu emulátoru pomocí zástupce
+Nejjednodušší způsob, jak připojit k emulátor úložiště z vaší aplikace je nakonfigurovat připojovací řetězec v konfiguračním souboru aplikace, který odkazuje na zástupce `UseDevelopmentStorage=true`. Tady je příklad připojovacího řetězce pro emulátor úložiště v *app.config* souboru: 
 
 ```xml
 <appSettings>
@@ -20,8 +20,8 @@ Hello nejjednodušší způsob, jak tooconnect toohello emulátor úložiště z
 </appSettings>
 ```
 
-#### <a name="connect-toohello-emulator-account-using-hello-well-known-account-name-and-key"></a>Připojit toohello emulátoru účtu pomocí hello známý název účtu a klíč
-toocreate připojovací řetězec, odkazy hello emulátoru název účtu a klíče, budete muset zadat hello koncové body pro každý z hello služby můžete chcete toouse z emulátoru hello hello připojovacího řetězce. To je nezbytné, aby hello připojovací řetězec bude odkazovat koncových bodů emulátoru hello, které se liší od zásad pro účet úložiště produkční. Například hodnota hello připojovací řetězec bude vypadat takto:
+#### <a name="connect-to-the-emulator-account-using-the-well-known-account-name-and-key"></a>Připojení k účtu emulátor používá známý účet název a klíč
+Chcete-li vytvořit připojovací řetězec, který odkazuje na emulátoru název účtu a klíč, musíte zadat koncové body pro jednotlivé služby, které chcete použít z emulátoru serveru v připojovacím řetězci. To je nezbytné, aby připojovací řetězec bude odkazovat emulátoru koncových bodů, které se liší od zásad pro účet úložiště produkční. Například hodnota připojovací řetězec bude vypadat takto:
 
 ```
 DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;
@@ -31,10 +31,10 @@ TableEndpoint=http://127.0.0.1:10002/devstoreaccount1;
 QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;
 ```
 
-Tato hodnota je stejná toohello zástupce uvedené výše, `UseDevelopmentStorage=true`.
+Tato hodnota je stejná jako zástupce uvedené výše, `UseDevelopmentStorage=true`.
 
 #### <a name="specify-an-http-proxy"></a>Zadejte proxy serveru HTTP
-Můžete také zadat toouse proxy protokolu HTTP při testování služby emulátoru úložiště hello. To může být užitečné pro sledování požadavků a odpovědí HTTP při ladění operace u hello služby úložiště. toospecify proxy serveru, přidejte hello `DevelopmentStorageProxyUri` možnost toohello připojovací řetězec a nastavit jeho hodnota toohello identifikátor URI proxy serveru. Zde je například připojovací řetězec, který ukazuje emulátor úložiště toohello a nakonfiguruje server proxy protokolu HTTP:
+Můžete také zadat proxy server HTTP použít při testování služby emulátoru úložiště. To může být užitečné pro sledování požadavků a odpovědí HTTP při ladění operace u služby storage. Chcete-li zadat proxy server, přidejte `DevelopmentStorageProxyUri` možnost připojovací řetězec a jeho hodnotu nastavte identifikátor URI proxy serveru. Zde je například připojovací řetězec, který odkazuje na emulátor úložiště a nakonfiguruje server proxy protokolu HTTP:
 
 ```
 UseDevelopmentStorage=true;DevelopmentStorageProxyUri=http://myProxyUri

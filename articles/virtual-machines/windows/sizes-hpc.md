@@ -1,6 +1,6 @@
 ---
-title: "velikost virtuálního počítače s Windows aaaAzure - HPC | Microsoft Docs"
-description: "Obsahuje seznam různých velikostech hello k dispozici pro Windows s vysokým výkonem virtuálních počítačů v Azure."
+title: "Azure velikosti virtuálních počítačů Windows - HPC | Microsoft Docs"
+description: "Obsahuje seznam různých velikostí, které jsou k dispozici pro Windows s vysokým výkonem virtuálních počítačů v Azure."
 services: virtual-machines-windows
 documentationcenter: 
 author: jonbeck7
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/28/2017
 ms.author: jonbeck
-ms.openlocfilehash: 092bc32cfe048f439ad833911bef4ed17eda7977
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a0596d134e9c26877848f93d72f35bfd2c957570
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="high-performance-compute-vm-sizes"></a>Velikosti virtuálních počítačů pro výpočetní vysoký výkon
 
@@ -30,11 +30,11 @@ ms.lasthandoff: 10/06/2017
 [!INCLUDE [virtual-machines-common-a8-a9-a10-a11-specs](../../../includes/virtual-machines-common-a8-a9-a10-a11-specs.md)]
 
 ## <a name="rdma-capable-instances"></a>RDMA podporovat instancí
-Podmnožinu hello náročné instancí (H16r, H16mr, A8 a A9) funkce síťové rozhraní pro připojení do paměti vzdáleného přímý přístup do (počítače RDMA). Toto rozhraní je kromě velikosti virtuálních počítačů pro dostupné tooother toohello standardního Azure síťového rozhraní. 
+Podmnožinu náročné instance (H16r, H16mr, A8 a A9) funkce síťové rozhraní pro připojení do paměti vzdáleného přímý přístup do (počítače RDMA). Toto rozhraní je kromě standardní Azure síťové rozhraní, které jsou dostupné další velikosti virtuálních počítačů. 
   
-Toto rozhraní umožňuje hello podporující RDMA instance toocommunicate přes síť InfiniBand, provoz se FDR sazby za H16r a H16mr virtuální počítače a QDR sazby A8 a A9 virtuálních počítačů. Tyto funkce RDMA může zvýšit hello škálovatelnost a výkon aplikací rozhraní MPI (Message Passing).
+Toto rozhraní umožňuje podporu rdma instance komunikovat přes síť InfiniBand, provoz se FDR sazby za H16r a H16mr virtuální počítače a QDR sazby A8 a A9 virtuálních počítačů. Tyto funkce RDMA může zvýšit škálovatelnost a výkon aplikací rozhraní MPI (Message Passing).
 
-Toto jsou požadavky pro tooaccess podporující RDMA virtuálních počítačů Windows hello Azure RDMA sítě: 
+Toto jsou požadavky pro podporu rdma virtuálních počítačů Windows pro přístup k síti Azure RDMA: 
 
 * **Operační systém**
   
@@ -44,29 +44,29 @@ Toto jsou požadavky pro tooaccess podporující RDMA virtuálních počítačů
   > Windows Server 2016 v současné době nepodporuje připojení RDMA v Azure.
   >
 
-* **Skupinu dostupnosti nebo Cloudová služba** – nasadit hello podporující RDMA virtuálních počítačů v hello stejné dostupnosti (při použití modelu nasazení Azure Resource Manager hello) nebo hello stejné cloudové služby (při použití modelu nasazení classic hello). Pokud používáte Azure Batch, hello podporující RDMA virtuální počítače musí být v hello stejného fondu.
+* **Skupinu dostupnosti nebo Cloudová služba** – nasazení podporující RDMA virtuální počítače ve stejné skupině dostupnosti (při použití modelu nasazení Azure Resource Manager) nebo stejné cloudové služby (při použití modelu nasazení classic). Pokud používáte Azure Batch, podporující RDMA virtuální počítače musí být ve stejném fondu.
 
 * **MPI** -Microsoft MPI (MS-MPI) 2012 R2 nebo novější, Intel MPI knihovny 5.x
 
-  Podporované implementace MPI použijte hello Microsoft Network Direct toocommunicate rozhraní mezi instancemi. 
+  Podporované MPI implementace rozhraní Microsoft Network Direct používají ke komunikaci mezi instancemi. 
 
-* **Adresní prostor sítě RDMA** -hello RDMA sítě v Azure si vyhrazuje 172.16.0.0/16 prostoru adres hello. aplikací MPI toorun v instancích nasazený ve virtuální síť Azure, ujistěte se, že adresního prostoru virtuální sítě hello nepřekrývá hello RDMA sítě.
+* **Adresní prostor sítě RDMA** -The RDMA sítě v Azure si vyhrazuje 172.16.0.0/16 prostor adres. Pro spouštění aplikací MPI v instance nasazené v Azure virtuální síť, ujistěte se, že adresního prostoru virtuální sítě se nepřekrývá sítě RDMA.
 
-* **Rozšíření virtuálního počítače HpcVmDrivers** -na podporu rdma virtuálních počítačích, musíte přidat hello HpcVmDrivers rozšíření tooinstall síťové ovladače zařízení systému Windows pro připojení RDMA. (V určitých nasazeních A8 a A9 instancí hello HpcVmDrivers rozšíření se přidá automaticky.) tooadd hello virtuálního počítače rozšíření tooa virtuálních počítačů, můžete použít [prostředí Azure PowerShell](/powershell/azure/overview) rutiny. 
+* **Rozšíření virtuálního počítače HpcVmDrivers** -na podporu rdma virtuálních počítačů, je nutné přidat rozšíření HpcVmDrivers instalovat ovladače zařízení systému Windows sítě pro připojení RDMA. (V určitých nasazeních A8 a A9 instancí HpcVmDrivers rozšíření se přidá automaticky.) Chcete-li přidat rozšíření virtuálního počítače pro virtuální počítač, můžete použít [prostředí Azure PowerShell](/powershell/azure/overview) rutiny. 
 
   
-  Dobrý den, následující příkaz nainstaluje hello nejnovější verze 1.1 HpcVMDrivers rozšíření na existující podporující RDMA virtuální počítač s názvem *Můjvp* nasazené v hello skupinu prostředků s názvem *myResourceGroup* v hello  *Západní USA* oblasti:
+  Tento příkaz nainstaluje nejnovější rozšíření HpcVMDrivers verze 1.1 na existující podporující RDMA virtuální počítač s názvem *Můjvp* nasazené ve skupině prostředků s názvem *myResourceGroup* v  *Západní USA* oblasti:
 
   ```PowerShell
   Set-AzureRmVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "HpcVmDrivers" -Publisher "Microsoft.HpcCompute" -Type "HpcVmDrivers" -TypeHandlerVersion "1.1"
   ```
   
-  Další informace najdete v tématu [rozšíření virtuálního počítače a funkce](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Můžete také pracovat se rozšíření pro virtuální počítače nasazené v hello [modelu nasazení classic](classic/manage-extensions.md).
+  Další informace najdete v tématu [rozšíření virtuálního počítače a funkce](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Můžete také pracovat se rozšíření pro virtuální počítače nasazené v [modelu nasazení classic](classic/manage-extensions.md).
 
 
 ## <a name="using-hpc-pack"></a>Pomocí sady HPC Pack
 
-[Microsoft HPC Pack](https://technet.microsoft.com/library/jj899572.aspx), volné HPC clusteru a úlohy řešení správy společnosti Microsoft, je jednou z možností pro toocreate výpočetní cluster aplikací MPI systému Windows Azure toorun a další úlohy HPC. HPC Pack 2012 R2 a novější verze zahrnují běhového prostředí pro MS-MPI využívající síť Azure RDMA hello při nasazení na virtuálních počítačích RDMA podporovat.
+[Microsoft HPC Pack](https://technet.microsoft.com/library/jj899572.aspx), volné HPC clusteru a úlohy řešení správy společnosti Microsoft, je jednou z možností vytvořit výpočetní cluster v Azure ke spouštění aplikací MPI systému Windows a další úlohy v prostředí HPC. HPC Pack 2012 R2 a novější verze zahrnují běhového prostředí pro MS-MPI, která využívá Azure RDMA síť při nasazení na virtuálních počítačích RDMA podporovat.
 
 
 
@@ -80,9 +80,9 @@ Toto jsou požadavky pro tooaccess podporující RDMA virtuálních počítačů
 
 ## <a name="next-steps"></a>Další kroky
 
-- Kontrolní seznamy toouse hello náročné instancí pomocí sady HPC Pack v systému Windows Server, najdete v části [nastavení clusteru s podporou Windows RDMA s aplikací MPI toorun HPC Pack](classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+- Kontrolní seznamy pro použití instance náročné s HPC Pack v systému Windows Server, najdete v části [nastavení clusteru s podporou Windows RDMA pomocí sady HPC Pack ke spouštění aplikací MPI](classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-- toouse náročné instancí při spuštění aplikací MPI pomocí služby Azure Batch, najdete v části [použití s více instancemi úloh toorun aplikací rozhraní MPI (Message Passing) v Azure Batch](../../batch/batch-mpi.md).
+- Použití náročné instancí při spuštění aplikací MPI pomocí služby Azure Batch naleznete v části [pomocí úkolů s více instancemi ke spouštění aplikací rozhraní MPI (Message Passing) ve službě Azure Batch](../../batch/batch-mpi.md).
 
 - Další informace o [Azure výpočetní jednotky (ACU)](acu.md) můžete porovnat výpočetní výkon v Azure SKU.
 

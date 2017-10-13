@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Fuze | Microsoft Docs'
-description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a Fuze."
+description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Fuze."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,71 +13,71 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: jeedes
-ms.openlocfilehash: d0ea8c6456824e348301ed8bf1f5e00f4bfa8121
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c7f7b095aac6202a7ec5248ee2bbb109615287a7
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fuze"></a>Kurz: Azure Active Directory integrace s Fuze
 
-V tomto kurzu zjistíte, jak toointegrate Fuze s Azure Active Directory (Azure AD).
+V tomto kurzu zjistěte, jak integrovat Fuze s Azure Active Directory (Azure AD).
 
-Integrace Fuze s Azure AD poskytuje hello následující výhody:
+Integrace Fuze s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup tooFuze
-- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooFuze (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu pro správu Azure hello
+- Můžete řídit ve službě Azure AD, který má přístup k Fuze
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k Fuze (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - portálu pro správu Azure
 
-Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Integrace služby Azure AD s Fuze tooconfigure, je třeba hello následující položky:
+Konfigurace integrace Azure AD s Fuze, potřebujete následující položky:
 
 - Předplatné služby Azure AD
 - Fuze jednotného přihlašování povolené předplatné
 
 
 > [!NOTE]
-> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
 
-tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
+Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Provozním prostředí byste neměli používat, pokud je to nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Fuze z Galerie hello
+1. Přidání Fuze z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
 
-## <a name="adding-fuze-from-hello-gallery"></a>Přidání Fuze z Galerie hello
-tooconfigure hello integrace Fuze do Azure AD, je nutné tooadd Fuze hello Galerie tooyour seznamu spravovaných aplikací SaaS.
+## <a name="adding-fuze-from-the-gallery"></a>Přidání Fuze z Galerie
+Při konfiguraci integrace Fuze do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS Fuze z galerie.
 
-**tooadd Fuze z Galerie hello, proveďte následující kroky hello:**
+**Pokud chcete přidat Fuze z galerie, proveďte následující kroky:**
 
-1. V hello  **[portálu pro správu Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
+1. V  **[portálu pro správu Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
+2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Klikněte na tlačítko **přidat** hello nahoře hello dialogového okna na tlačítko.
+3. Klikněte na tlačítko **přidat** tlačítko horní dialogové okno.
 
     ![Aplikace][3]
 
-4. Hello vyhledávacího pole zadejte **Fuze**.
+4. Do vyhledávacího pole zadejte **Fuze**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_000.png)
 
-5. Na panelu výsledků hello vyberte **Fuze**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.
+5. Na panelu výsledků vyberte **Fuze**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_0001.png)
 
@@ -85,77 +85,77 @@ tooconfigure hello integrace Fuze do Azure AD, je nutné tooadd Fuze hello Galer
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Fuze podle testovacího uživatele názvem "Britta Simon".
 
-Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v Fuze je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v Fuze musí toobe navázat.
+Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Fuze je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Fuze musí navázat.
 
-Přiřazením hello hodnotu hello je vytvořen vztah tento odkaz **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** v Fuze.
+Tento vztah propojení se navazuje se hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v Fuze.
 
-tooconfigure a testu Azure AD jednotné přihlašování s Fuze, potřebujete následující stavební bloky hello toocomplete:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Fuze, je třeba dokončit následující stavební bloky:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Fuze](#creating-a-fuze-test-user)**  -toohave protějšek Britta Simon v Fuze, která je jí reprezentace toohello propojené služby Azure AD.
-4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele Fuze](#creating-a-fuze-test-user)**  – Pokud chcete mít protějšek Britta Simon v Fuze propojeném s Azure AD reprezentace jí.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu pro správu Azure hello a nakonfigurovat jednotné přihlašování v aplikaci Fuze.
+V této části můžete povolit Azure AD jednotné přihlašování v portálu pro správu Azure a nakonfigurovat jednotné přihlašování v aplikaci Fuze.
 
-**tooconfigure Azure AD jednotné přihlašování s Fuze, proveďte následující kroky hello:**
+**Ke konfiguraci Azure AD jednotné přihlašování s Fuze, proveďte následující kroky:**
 
-1. V hello Azure Management portal na hello **Fuze** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na portálu Azure Management portal na **Fuze** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na hello **jednotného přihlašování** dialogové okno, jako **režimu** vyberte **na základě SAML přihlašování** jednotného přihlašování k tooenable.
+2. Na **jednotného přihlašování** dialogové okno, jako **režimu** vyberte **na základě SAML přihlašování** umožňující jednotného přihlašování na.
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_01.png)
 
-3. Na hello **Fuze domény a adresy URL** část, proveďte následující kroky hello:
+3. Na **Fuze domény a adresy URL** část, proveďte následující kroky:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_020.png)
     
-    V hello **přihlásit na adrese URL** textovému poli, zadejte adresu URL hello přihlášení jako:`https://www.thinkingphones.com/jetspeed/portal/`
+    V **přihlásit na adrese URL** textovému poli, typ přihlašování v adrese URL jako:`https://www.thinkingphones.com/jetspeed/portal/`
 
 4.  Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-fuze-tutorial/tutorial_general_400.png)
 
-5. Na hello **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor xml hello ve vašem počítači.
+5. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor xml ve vašem počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_05.png) 
 
-6. tooconfigure jednotného přihlašování na **Fuze** straně, je nutné stáhnout hello toosend **soubor XML s metadaty** příliš[tým podpory Fuze](https://www.fuze.com/support). To bude nastavené v pořadí toohave hello jednotné přihlašování SAML připojení správně nastavena na obou stranách.
+6. Konfigurace jednotného přihlašování na **Fuze** straně, budete muset odeslat stažené **soubor XML s metadaty** k [tým podpory Fuze](https://www.fuze.com/support). Toto se bude nastavení aby bylo možné používat jednotné přihlašování SAML připojení správně nastavena na obou stranách.
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Hello cílem této části je toocreate testovacího uživatele na portálu pro správu Azure hello názvem Britta Simon.
+Cílem této části je vytvoření zkušebního uživatele na portálu správy Azure, názvem Britta Simon.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
+**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
 
-1. V hello **portálu pro správu Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
+1. V **portálu pro správu Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-fuze-tutorial/create_aaduser_01.png) 
 
-2. Přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé** toodisplay hello seznam uživatelů.
+2. Přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé** zobrazíte seznam uživatelů.
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-fuze-tutorial/create_aaduser_02.png) 
 
-3. V horní části hello hello dialogového okna klikněte na tlačítko **přidat** tooopen hello **uživatele** dialogové okno.
+3. V horní části okna klikněte na tlačítko **přidat** otevřete **uživatele** dialogové okno.
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-fuze-tutorial/create_aaduser_03.png) 
 
-4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
+4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-fuze-tutorial/create_aaduser_04.png) 
 
-    a. V hello **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textovému poli, typ **BrittaSimon**.
 
-    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**. 
 
@@ -164,23 +164,23 @@ Hello cílem této části je toocreate testovacího uživatele na portálu pro 
 
 Fuze aplikace podporuje úplné těsně v čas uživatele zřizovat, takže uživatelé budou automaticky vytvořeny při jejich přihlášení. Další informace, kontaktujte prosím Fuze [podporu](https://www.fuze.com/support).
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
+### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon toouse Azure jednotné přihlašování, poskytněte tooFuze svůj přístup.
+V této části povolíte Britta Simon používat tak, že udělíte přístup k Fuze Azure jednotné přihlašování.
 
 ![Přiřadit uživatele][200] 
 
-**tooassign Britta Simon tooFuze, proveďte následující kroky hello:**
+**Pokud chcete přiřadit Britta Simon Fuze, proveďte následující kroky:**
 
-1. Na portálu pro správu Azure hello, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
+1. V portálu pro správu Azure, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikace hello vyberte **Fuze**.
+2. V seznamu aplikací vyberte **Fuze**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_50.png) 
 
-3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
+3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
@@ -188,7 +188,7 @@ V této části povolíte Britta Simon toouse Azure jednotné přihlašování, 
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -197,14 +197,14 @@ V této části povolíte Britta Simon toouse Azure jednotné přihlašování, 
 
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.
+V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
-Když kliknete na dlaždici Fuze hello v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour Fuze aplikace.
+Když kliknete na dlaždici Fuze na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Fuze.
 
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

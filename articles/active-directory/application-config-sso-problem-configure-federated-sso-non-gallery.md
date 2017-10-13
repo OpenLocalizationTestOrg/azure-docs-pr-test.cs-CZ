@@ -1,6 +1,6 @@
 ---
-title: "Konfigurace federované jednotné přihlašování pro aplikace bez Galerie aaaProblem | Microsoft Docs"
-description: "Adresa některé hello běžné problémy, se můžete setkat při konfiguraci federované jeden přihlašování tooyour vlastní SAML aplikaci, která není uvedena v hello Azure AD Application Gallery"
+title: "Problém konfigurace federované jednotné přihlašování pro aplikace bez Galerie | Microsoft Docs"
+description: "Adresa některé běžné problémy, ke kterým může dojít při konfiguraci federované jednotné přihlašování k vaší vlastní aplikaci SAML, která není uvedena v galerii aplikací Azure AD"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,59 +13,59 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 8c80f0001de01cbc9930ef0441cd804082ee8578
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4eb2c04c940dd6ad15a491a331aed76c237f0387
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-a-non-gallery-application"></a>Problém konfigurace federované jednotné přihlašování pro aplikace bez Galerie
 
-Pokud dojde k potížím při konfiguraci aplikace. Ověřte všechny kroky hello v článku hello [konfigurace jedné přihlašování tooapplications které nejsou v galerii aplikací Azure Active Directory hello.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps)
+Pokud dojde k potížím při konfiguraci aplikace. Ověřte jste postupovali podle pokynů v článku [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps)
 
-## <a name="cant-add-another-instance-of-hello-application"></a>Nelze přidat jiná instance aplikace hello
+## <a name="cant-add-another-instance-of-the-application"></a>Nelze přidat jiná instance aplikace
 
-tooadd druhou instanci aplikace, je třeba toobe moci:
+Přidat druhou instanci aplikace, musíte být schopni:
 
--   Jedinečný identifikátor pro druhou instanci hello nakonfigurujte. Nebudete moct tooconfigure hello, používá stejný identifikátor pro první instanci hello.
+-   Jedinečný identifikátor pro druhou instanci nakonfigurujte. Nebudete moci konfigurovat stejný identifikátor použitý pro první instanci.
 
--   Nakonfigurujte jiný certifikát než hello, jedna pro hello první instance.
+-   Nakonfigurujte jiný certifikát než ten, který používá pro první instanci.
 
-Pokud hello aplikace nepodporuje žádné z výše uvedených hello. Potom nebudete moct tooconfigure druhou instanci.
+Pokud aplikace nepodporuje žádné z výše. Potom nebudete moci konfigurovat druhou instanci.
 
-## <a name="where-do-i-set-hello-entityid-user-identifier-format"></a>Kde lze nastavit formát hello EntityID (identifikátor uživatele)
+## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>Kde lze nastavit formát EntityID (identifikátor uživatele)
 
-Nebudete moct tooselect hello EntityID (identifikátor uživatele) formát, Azure AD odešle toohello aplikace v odpovědi hello po ověření uživatele.
+Nebudete moci vybrat formát EntityID (identifikátor uživatele), který odešle aplikaci v odpovědi po ověření uživatele Azure AD.
 
-Azure AD vyberte hello formátu pro atribut NameID hello (identifikátor uživatele) na základě hodnoty hello vybrané nebo hello formátu požadoval hello aplikace hello SAML AuthRequest. Další informace najdete článku hello [protokolu SAML přihlašování](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) části hello NameIDPolicy,
+Azure AD vyberte formát pro atribut NameID (identifikátor uživatele) na základě hodnoty vybraných nebo formát požadovanou aplikaci v SAML AuthRequest. Další informace najdete v článku [protokolu SAML přihlašování](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) části NameIDPolicy,
 
-## <a name="where-do-i-get-hello-application-metadata-or-certificate-from-azure-ad"></a>Kde získat metadata aplikace hello nebo certifikát z Azure AD
+## <a name="where-do-i-get-the-application-metadata-or-certificate-from-azure-ad"></a>Kde získat metadata aplikace nebo certifikát z Azure AD
 
-metadata aplikace hello toodownload nebo certifikát z Azure AD, postupujte podle následujících kroků hello:
+Chcete-li stáhnout metadata aplikace nebo certifikát z Azure AD, postupujte podle následujících kroků:
 
-1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
+1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
 
-2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
 
-3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace, které** z hello Azure Active Directory levém navigační nabídky.
+4.  Klikněte na tlačítko **podnikové aplikace, které** v navigační nabídce vlevo Azure Active Directory.
 
-5.  Klikněte na tlačítko **všechny aplikace** tooview seznam všech aplikací.
+5.  Klikněte na tlačítko **všechny aplikace** Chcete-li zobrazit seznam všech aplikací.
 
-   * Pokud chcete zobrazit vytvořit tady aplikace hello nevidíte, pomocí hello **filtru** řízení hello horní části hello **seznam všech aplikací** a sadu hello **zobrazit** možnost příliš **Všechny aplikace.**
+   * Pokud aplikaci chcete, aby se zobrazí tady nevidíte, pomocí **filtru** ovládací prvek v horní části **seznam všech aplikací** a nastavte **zobrazit** možnost k **všechny aplikace.**
 
-6.  Vyberte aplikaci hello jste nakonfigurovali jednotné přihlašování.
+6.  Vyberte aplikaci, které jste nakonfigurovali jednotné přihlašování.
 
-7.  Jakmile aplikace hello načte, klikněte na možnost hello **jednotného přihlašování** z aplikace hello levém navigační nabídky.
+7.  Po načtení aplikace, klikněte na **jednotného přihlašování** navigační nabídce vlevo aplikace.
 
-8.  Přejděte příliš**SAML podpisový certifikát** části a pak klikněte na **Stáhnout** hodnota sloupce. V závislosti na tom, jaké aplikace hello vyžaduje konfiguraci jednotné přihlašování najdete v části buď možnost toodownload hello hello soubor XML s metadaty nebo hello certifikátu.
+8.  Přejděte na **SAML podpisový certifikát** části a pak klikněte na **Stáhnout** hodnota sloupce. V závislosti na tom, jaké aplikace vyžaduje konfiguraci jednotné přihlašování uvidíte buď možnost Stáhnout soubor XML s metadaty nebo certifikát.
 
-Azure AD neposkytuje adresu URL tooget hello metadat. Hello metadata mohou být načteny pouze jako soubor XML.
+Azure AD neposkytuje adresu URL se získat metadata. Metadata mohou být načteny pouze jako soubor XML.
 
-## <a name="dont-know-how-toocustomize-saml-claims-sent-tooan-application"></a>Nevíte, jak deklarace SAML toocustomize odeslané tooan aplikace
+## <a name="dont-know-how-to-customize-saml-claims-sent-to-an-application"></a>Nemusíte vědět, jak přizpůsobit SAML deklarace identity odeslat do aplikace
 
-toolearn způsobu deklarací identity atributu toocustomize hello SAML odeslané tooyour aplikace, najdete v [deklarací mapování v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) Další informace.
+Naučte se přizpůsobovat deklarací identity atributu SAML odeslaných do vaší aplikace, najdete v tématu [deklarací mapování v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) Další informace.
 
 ## <a name="next-steps"></a>Další kroky
 [Správa aplikací pomocí služby Azure Active Directory](active-directory-enable-sso-scenario.md)

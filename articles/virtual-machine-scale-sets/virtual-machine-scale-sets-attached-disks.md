@@ -1,6 +1,6 @@
 ---
-title: "Virtuální počítač škálování sady dat disky připojené aaaAzure | Microsoft Docs"
-description: "Zjistěte, jak připojit toouse datových disků s sady škálování virtuálního počítače"
+title: "Škálovací sady virtuálních počítačů Azure – připojené datové disky | Dokumentace Microsoftu"
+description: "Naučte se používat připojené datové disky se škálovacími sadami virtuálních počítačů."
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: gbowerman
@@ -15,29 +15,29 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/25/2017
 ms.author: guybo
-ms.openlocfilehash: 77b66f80934c0aaf7bb1ad0de00a738052a878ce
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 22c7e589efa9a9f401549ec9b95c58c4eaf07b94
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-vm-scale-sets-and-attached-data-disks"></a>Škálovací sady virtuálních počítačů Azure a připojené datové disky
-[Škálovací sady virtuálních počítačů](/azure/virtual-machine-scale-sets/) Azure teď podporují virtuální počítače s připojenými datovými disky. V profilu úložiště hello sady škálování, které byly vytvořeny s disky spravované Azure může být definováno datových disků. Dříve hello pouze možnosti přímo připojené úložiště k dispozici s virtuálními počítači v sadách škálování byly jednotky hello operačního systému a dočasného jednotek.
+[Škálovací sady virtuálních počítačů](/azure/virtual-machine-scale-sets/) Azure teď podporují virtuální počítače s připojenými datovými disky. Datové disky můžete definovat v profilu úložiště pro škálovací sady vytvořené pomocí služby Azure Managed Disks. Dříve byly u virtuálních počítačů ve škálovacích sadách jedinou dostupnou možností přímo připojeného úložiště jednotka operačního systému a dočasné jednotky.
 
 > [!NOTE]
->  Při vytváření škálování s připojené datových disků, které jsou definované, budete potřebovat toomount a formát hello disky z v rámci virtuálního počítače toouse je (pro samostatnou virtuální počítače Azure jenom jako). Toodo pohodlný způsob je toouse rozšíření vlastních skriptů, které volá toopartition standardní skripty a naformátovat všechny hello datové disky na virtuálním počítači.
+>  Když vytvoříte škálovací sadu s definovanými připojenými datovými disky, před jejich použitím stále musíte disky připojit a naformátovat na virtuálním počítači (stejně jako u samostatných virtuálních počítačů Azure). Pohodlným způsobem, jak to provést, je použít rozšíření vlastních skriptů, které volá standardní skript a ten pak naformátuje a rozdělí do oddílů všechny datové disky na virtuálním počítači.
 
 ## <a name="create-a-scale-set-with-attached-data-disks"></a>Vytvoření škálovací sady s připojenými datovými disky
-Nastavit škálování s připojené disky jednoduchý způsob toocreate je toouse hello [rozhraní příkazového řádku Azure](https://github.com/Azure/azure-cli) _vmss vytvořit_ příkaz. Hello následující ukázka vytvoří skupinu prostředků Azure a sadu škálování virtuálního počítače 10 virtuálních Ubuntu počítačů, každý s 2 připojených datových disků, 50 GB a 100 GB.
+Jednoduchým způsobem, jak vytvořit škálovací sadu s připojenými disky, je použít příkaz [Azure CLI](https://github.com/Azure/azure-cli) _vmss create_. Následující příklad vytvoří skupinu prostředků Azure a škálovací sadu virtuálních počítačů s 10 virtuálními počítači s Ubuntu, z nichž každý bude mít 2 připojené datové disky o velikosti 50 a 100 GB.
 ```bash
 az group create -l southcentralus -n dsktest
 az vmss create -g dsktest -n dskvmss --image ubuntults --instance-count 10 --data-disk-sizes-gb 50 100
 ```
-Všimněte si, že hello _vmss vytvořit_ příkaz výchozí určité hodnoty konfigurace, pokud nezadáte je. toosee hello dostupné možnosti, můžete přepsat zkuste:
+Poznámka: příkaz _vmss create_ použije určité výchozí hodnoty konfigurace, pokud je nezadáte. Pokud chcete zobrazit dostupné možnosti, které můžete přepsat, vyzkoušejte:
 ```bash
 az vmss create --help
 ```
-Zahrnout další způsob toocreate škálování s připojené datových disků je toodefine nastavení škálování v šablonu Azure Resource Manager _dataDisks_ část v hello _storageProfile_a nasadit hello Šablona. Hello 50 GB a 100 GB disk výše uvedeném příkladu by být definován jako to v šabloně hello:
+Dalším způsobem, jak vytvořit škálovací sadu s připojenými datovými disky, je definovat škálovací sadu v šabloně Azure Resource Manageru, vložit část _dataDisks_ do profilu _storageProfile_ a nasadit šablonu. Výše uvedený příklad disků o velikosti 50 a 100 GB by se v šabloně definoval takto:
 ```json
 "dataDisks": [
     {
@@ -54,18 +54,18 @@ Zahrnout další způsob toocreate škálování s připojené datových disků 
     }
 ]
 ```
-Můžete zobrazit příklad dokončena, připraveno toodeploy šablony sady škálování s připojený disk zde definované: [https://github.com/chagarw/MDPP/tree/master/101-vmss-os-data](https://github.com/chagarw/MDPP/tree/master/101-vmss-os-data).
+Kompletní příklad šablony škálovací sady s nadefinovaným připojeným diskem připravený k nasazení najdete tady: [https://github.com/chagarw/MDPP/tree/master/101-vmss-os-data](https://github.com/chagarw/MDPP/tree/master/101-vmss-os-data).
 
-## <a name="adding-a-data-disk-tooan-existing-scale-set"></a>Přidání existující škálování dat disku tooan nastavit
+## <a name="adding-a-data-disk-to-an-existing-scale-set"></a>Přidání datového disku do existující škálovací sady
 > [!NOTE]
->  Je možné ještě připojit datové disky tooa škálování sady, který byl vytvořen s [Azure spravované disky](./virtual-machine-scale-sets-managed-disks.md).
+>  Datové disky můžete připojit pouze ke škálovací sadě vytvořené pomocí služby [Azure Managed Disks](./virtual-machine-scale-sets-managed-disks.md).
 
-Můžete přidat datový disk tooa virtuálních počítačů měřítkem nastavit pomocí rozhraní příkazového řádku Azure _připojit az vmss disk_ příkaz. Ujistěte se, že zadáváte logickou jednotku (LUN), která se ještě nepoužívá. Následující ukázka rozhraní příkazového řádku Hello přidá 50 GB jednotky toolun 3:
+Datový disk můžete do škálovací sady virtuálních počítačů přidat pomocí příkazu Azure CLI _az vmss disk attach_. Ujistěte se, že zadáváte logickou jednotku (LUN), která se ještě nepoužívá. Následující příklad rozhraní příkazového řádku přidá 50GB disk k logické jednotce 3:
 ```bash
 az vmss disk attach -g dsktest -n dskvmss --size-gb 50 --lun 3
 ```
 
-Následující příklad PowerShell Hello přidá 50 GB jednotky toolun 3:
+Následující příklad PowerShellu přidá 50GB disk k logické jednotce 3:
 ```powershell
 $vmss = Get-AzureRmVmss -ResourceGroupName myvmssrg -VMScaleSetName myvmss
 $vmss = Add-AzureRmVmssDataDisk -VirtualMachineScaleSet $vmss -Lun 3 -Caching 'ReadWrite' -CreateOption Empty -DiskSizeGB 50 -StorageAccountType StandardLRS
@@ -73,9 +73,9 @@ Update-AzureRmVmss -ResourceGroupName myvmssrg -Name myvmss -VirtualMachineScale
 ```
 
 > [!NOTE]
-> Různé velikosti virtuálních počítačů mají různé limity z hello počty připojené disky, které podporují. Zkontrolujte hello [charakteristiky velikost virtuálního počítače](../virtual-machines/windows/sizes.md) před přidáním nového disku.
+> Různé velikosti virtuálních počítačů mají různá omezení počtu podporovaných připojených disků. Před přidáním nového disku zkontrolujte [charakteristiky velikostí virtuálních počítačů](../virtual-machines/windows/sizes.md).
 
-Můžete také přidat disk přidáním nové položky toohello _dataDisks_ vlastnost hello _storageProfile_ rozsahu nastavit definice a použití změn hello. tootest se najít existující definici sady škálování v hello [Průzkumníka prostředků Azure](https://resources.azure.com/). Vyberte _upravit_ a přidejte nový disk toohello seznam datových disků. Například pomocí výše uvedeném příkladu hello:
+Disk můžete přidat také přidáním nového záznamu do vlastnosti _dataDisks_ v profilu _storageProfile_ definice škálovací sady a aplikováním změn. Pokud to chcete otestovat, vyhledejte existující definici škálovací sady v [Průzkumníku prostředků Azure](https://resources.azure.com/). Vyberte _Upravit_ a přidejte nový disk do seznamu datových disků. Například když použijeme výše uvedený příklad:
 ```json
 "dataDisks": [
     {
@@ -99,33 +99,33 @@ Můžete také přidat disk přidáním nové položky toohello _dataDisks_ vlas
 ]
 ```
 
-Potom vyberte _PUT_ tooapply hello změny tooyour škálovací sadu. Tento příklad bude fungovat, pokud použijete velikost virtuálních počítačů, která podporuje více než dva připojené datové disky.
+Potom vyberte _PUT_ a aplikujte změny na škálovací sadu. Tento příklad bude fungovat, pokud použijete velikost virtuálních počítačů, která podporuje více než dva připojené datové disky.
 
 > [!NOTE]
-> Při provádění změn tooa škálování nastavit definice například přidáním nebo odebráním datový disk, platí tooall nově vytvořený virtuální počítače, ale virtuální počítače tooexisting platí pouze v případě hello _upgradePolicy_ vlastnost je nastavena příliš "automatické". Pokud je nastaven příliš "Ruční", je třeba toomanually použít nový model tooexisting hello virtuálních počítačů. To provedete hello portálu pomocí hello _aktualizace AzureRmVmssInstance_ prostředí PowerShell příkaz nebo pomocí hello _az vmss aktualizace instance_ rozhraní příkazového řádku příkaz.
+> Když provedete změnu definice škálovací sady, například přidáním nebo odebráním datového disku, změna se aplikuje na všechny nově vytvořené virtuální počítače. Na existující virtuální počítače se ale aplikuje pouze pokud je vlastnost _upgradePolicy_ nastavena na Automatic. Pokud je nastavena na Manual, je třeba nový model na existující virtuální počítače aplikovat ručně. To můžete udělat na portálu, pomocí příkazu PowerShellu _Update-AzureRmVmssInstance_ nebo pomocí příkazu rozhraní příkazového řádku _az vmss update-instances_.
 
-## <a name="adding-pre-populated-data-disks-tooan-existent-scale-set"></a>Přidání předem vyplněná datové disky tooan stávající škálovací sadu 
-> Při přidávání disků tooan existující sady škálování model návrhu, hello disk bude vždy vytvořit prázdný. Tento scénář také zahrnuje nové instance vytvořené sadě škálování hello. Toto chování je, protože definice scaleset hello má prázdný datový disk. V pořadí toocreate předem vyplněná datové jednotky pro model sadu svědčící škálování můžete zvolit jednu z následujících dvou možností:
+## <a name="adding-pre-populated-data-disks-to-an-existent-scale-set"></a>Přidání disků předem naplněných daty do existující škálovací sady 
+> Když přidáváte disky do existující škálovací sady, disk se z principu vždy vytvoří prázdný. Tento scénář také zahrnuje nové instance vytvořené škálovací sadou. Příčinou tohoto chování je, že definice škálovací sady má prázdný datový disk. Chcete-li vytvořit pro model existující škálovací sady diskové jednotky předem naplněné daty, můžete zvolit jednu z následujících dvou možností:
 
-* Zkopírování dat z hello instanci 0 virtuálních počítačů toohello datové disky v hello ostatních virtuálních počítačů pomocí vlastního skriptu.
-* Vytvoření bitové kopie spravované se disk hello operačního systému a datový disk (s daty hello vyžaduje) a vytvořte nové scaleset s bitovou kopií hello. Tímto způsobem každých vytvořit nový virtuální počítač bude mít data na disku, která je součástí definice hello hello scaleset. Vzhledem k tomu, že tuto definici se budou vztahovat tooan bitovou kopii s datový disk, který má přizpůsobený dat, každý virtuální počítač na hello scaleset bude automaticky spuštěna s tyto změny.
+* Zkopírujte data z virtuálního počítače instance 0 na datové disky v jiných virtuálních počítačích spuštěním vlastního skriptu.
+* Vytvořte spravovanou image s diskem operačního systému a datovým diskem (s požadovanými daty) a vytvořte novou škálovací sadu s touto image. Tímto způsobem bude mít každý nově vytvořený virtuální počítač datový disk, který je součástí definice škálovací sady. Vzhledem k tomu, že tato definice bude odkazovat na image s datovým diskem, který má přizpůsobená data, každý virtuální počítač ve škálovací sadě se automaticky vytvoří s těmito změnami.
 
-> Hello způsob toocreate vlastní image naleznete zde: [vytvoříte spravované bitovou kopii zobecněný virtuální počítač v Azure](/azure/virtual-machines/windows/capture-image-resource/) 
+> Postup vytvoření vlastní image najdete v tématu s popisem [vytvoření spravované image zobecněného virtuálního počítače v Azure](/azure/virtual-machines/windows/capture-image-resource/). 
 
-> Hello uživatel potřebuje toocapture hello instance 0 virtuálního počítače, který má hello požadovaná data a pak použijte tento virtuální pevný disk pro definici hello bitové kopie.
+> Uživatel musí zachytit instanci 0 virtuálního počítače, která má požadovaná data, a pak použít tento virtuální pevný disk k definici image.
 
 ## <a name="removing-a-data-disk-from-a-scale-set"></a>Odebrání datového disku ze škálovací sady
-Datový disk můžete ze škálovací sady virtuálních počítačů odebrat pomocí příkazu Azure CLI _az vmss disk detach_. Například hello následující příkaz odebere hello disk definované na logickou jednotku lun 2:
+Datový disk můžete ze škálovací sady virtuálních počítačů odebrat pomocí příkazu Azure CLI _az vmss disk detach_. Například následující příkaz odebere disk definovaný na logické jednotce 2:
 ```bash
 az vmss disk detach -g dsktest -n dskvmss --lun 2
 ```  
-Podobně můžete také odebrání disku z škálování nastavit odebráním položku z hello _dataDisks_ vlastnost hello _storageProfile_ a použití změn hello. 
+Podobně můžete odebrat disk ze škálovací sady také odebráním záznamu z vlastnosti _dataDisks_ v profilu _storageProfile_ a aplikováním změny. 
 
 ## <a name="additional-notes"></a>Další poznámky
-Podpora pro Azure spravované disky a škálování, nastavte připojené datových disků je k dispozici ve verzi rozhraní API [ _2016-04-30-preview_ ](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-compute/2016-04-30-preview/swagger/compute.json) nebo novější z hello Microsoft.Compute rozhraní API.
+Podpora služby Azure Managed Disks a připojených datových disků škálovacích sad je dostupná v rozhraní Microsoft.Compute API verze [_2016-04-30-preview_](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-compute/2016-04-30-preview/swagger/compute.json) nebo novější.
 
-V implementaci počáteční hello připojený disk podpory pro sady škálování nelze připojit nebo odebrat datové disky z jednotlivé virtuální počítače ve škálovací sadě.
+Během počáteční implementace podpory připojených disků pro škálovací sady nelze datové disky připojit k jednotlivým virtuálním počítačům ve škálovací sadě, ani je od nich odpojit.
 
-Podpora připojených datových disků ve škálovacích sadách je na webu Azure Portal zpočátku omezená. V závislosti na požadavcích, že které můžete použít šablony Azure CLI, prostředí PowerShell, sady SDK a REST API toomanage připojenými disky.
+Podpora připojených datových disků ve škálovacích sadách je na webu Azure Portal zpočátku omezená. V závislosti na požadavcích můžete ke správě připojených disků použít šablony Azure, rozhraní příkazového řádku, PowerShell, sady SDK nebo rozhraní REST API.
 
 

@@ -1,6 +1,6 @@
 ---
-title: "aaaHow dělat uživatelé spolupráce B2B Azure Active Directory správci přidat? | Dokumentace Microsoftu"
-description: "Správce můžete přidat z partnerské organizace pomocí spolupráce Azure Active Directory s B2B tooyour hosta uživatele Azure AD."
+title: "Jak můžou správci služby Azure Active Directory přidat uživatele spolupráce B2B? | Dokumentace Microsoftu"
+description: "Správce můžete přidat uživatele typu Host do služby Azure AD z partnerské organizace pomocí spolupráce Azure Active Directory s B2B."
 services: active-directory
 documentationcenter: 
 author: sasubram
@@ -15,40 +15,40 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 03/15/2017
 ms.author: sasubram
-ms.openlocfilehash: 7bf9906bcb0e1aad67187a67ae61127b8ce4cdec
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7f33165141f31c1b495313f2da0d6e4681bdf8f2
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-do-azure-active-directory-admins-add-b2b-collaboration-users"></a>Jak můžou správci služby Azure Active Directory přidat uživatele spolupráce B2B?
 
-Globální správci a omezené správci můžou používat hello [portál Azure](https://portal.azure.com) tooinvite B2B directory toohello spolupráce uživatele, skupinu tooany nebo tooany aplikace.
+Můžete použít globální správci a správci omezené [portál Azure](https://portal.azure.com) pozvaným uživatelům spolupráce B2B k adresáři, do žádné skupiny nebo do žádné aplikace.
 
-## <a name="admins-adding-guest-users-toohello-directory"></a>Správci přidání hosta uživatelé toohello adresáře
-Přidejte adresář toohello uživatelů spolupráce B2B jako správce Azure AD, jak je znázorněno v následující hello video:
+## <a name="admins-adding-guest-users-to-the-directory"></a>Správci přidání uživatele typu Host do adresáře
+Přidání uživatelů spolupráce B2B k adresáři jako správce Azure AD, jak je znázorněno v následujícím videu:
 
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/Admin-adding-guests-for-B2B-collaboration-to-Azure-AD-tenant/Player]
 
 
-## <a name="admins-adding-guest-users-tooa-group"></a>Správci přidání hosta uživatelé tooa skupiny
-Přidáte skupinu tooa uživatelé spolupráce B2B jako správce Azure AD, jak je znázorněno v následující hello video:
+## <a name="admins-adding-guest-users-to-a-group"></a>Přidání uživatele typu Host do skupiny Admins
+Přidání uživatelů spolupráce B2B pro skupinu jako správce Azure AD, jak je znázorněno v následujícím videu:
 
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/admin-adding-guests-to-a-group/Player]
 
 
-## <a name="admins-adding-guest-users-tooan-application"></a>Správci, přidání aplikace tooan uživatele guest
+## <a name="admins-adding-guest-users-to-an-application"></a>Správci přidávání uživatele typu Host do aplikace
 
-Přidáte aplikaci tooan uživatelé spolupráce B2B jako správce Azure AD, jak je znázorněno v následující hello video:
+Přidání uživatelů spolupráce B2B do aplikace jako správce Azure AD, jak je znázorněno v následujícím videu:
 
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/admin-assign-b2b-to-apps/Player]
 
-## <a name="admins-resending-invitations-tooguest-users"></a>Správci odešlete pozvánek tooguest uživatelů
-Můžete se vrátit tooa B2B spolupráce stránce profilu uživatele a znovu odeslat pozvánky tooany není ještě uplatněn hosta uživatelů:
+## <a name="admins-resending-invitations-to-guest-users"></a>Správci nové odeslání pozvánky pro uživatele typu Host
+Můžete přejít na stránku profilu uživatele spolupráce B2B a znovu odeslat pozvánky pro všechny uživatele není ještě uplatněn hosta:
 
 ![znovu odeslat pozvánky](./media/active-directory-b2b-admin-add-users/resend-invitation.png)
 
-> ! [POZNÁMKA] Pokud jste znovu odeslat pozvánky, hello pozvánku odešle uživatelům tooindividual hello přihlášeného uživatele i v případě, že původní pozvánku hello byla odeslána tooa konkrétní aplikaci nebo skupinu.
+> ! [POZNÁMKA] Pokud jste znovu odeslat pozvánky, je odeslat pozvání od přihlášeného uživatele pro jednotlivé uživatele i v případě, že původní pozvánky byl odeslán na konkrétní aplikaci nebo skupinu.
 
 
 ## <a name="related-articles"></a>Související články
@@ -57,7 +57,7 @@ Projděte si naše další články ohledně spolupráce B2B ve službě Azure A
 
 * [Co je spolupráce B2B ve službě Azure AD?](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Jak informační pracovníci přidat uživatele spolupráce B2B?](active-directory-b2b-iw-add-users.md)
-* [elementy Hello hello e-mailová pozvánka pro spolupráci B2B](active-directory-b2b-invitation-email.md)
+* [Elementy e-mail pozvánku spolupráce B2B](active-directory-b2b-invitation-email.md)
 * [Uplatnění pozvánku spolupráce B2B](active-directory-b2b-redemption-experience.md)
 * [Licencování Azure AD s B2B spolupráce](active-directory-b2b-licensing.md)
 * [Řešení potíží s spolupráce Azure Active Directory s B2B](active-directory-b2b-troubleshooting.md)

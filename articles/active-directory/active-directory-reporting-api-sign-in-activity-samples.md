@@ -1,6 +1,6 @@
 ---
-title: "ukázky sestavy API aktivity aaaAzure přihlášení služby Active Directory | Microsoft Docs"
-description: Jak tooget pracovat s Azure Active Directory Reporting API hello
+title: "Ukázek Azure sestavy API přihlašovací aktivita služby Active Directory | Microsoft Docs"
+description: "Jak začít pracovat s Azure Active Directory Reporting API"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,28 +15,28 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d4fbbea95fe0b52828673b997681ae37481e21bc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7fc2b59fe37ed2ffe85925c457300ef8fd83c3c7
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-active-directory-sign-in-activity-report-api-samples"></a>Ukázek Azure sestavy API přihlašovací aktivita služby Active Directory
-Toto téma je součástí kolekce témat o hello Azure Active Directory reporting rozhraní API.  
-Generování sestav služby Azure AD poskytuje rozhraní API, které vám umožní tooaccess přihlašovací aktivita dat pomocí kódu nebo související nástroje.  
-Hello obor tohoto tématu je k ukázkový kód hello tooprovide **aktivity API přihlášení**.
+Toto téma je součástí kolekce témat o službě Azure Active Directory, vytváření sestav rozhraní API.  
+Generování sestav služby Azure AD poskytuje rozhraní API, která umožňuje přístup k datům přihlašovací aktivita pomocí kódu nebo související nástroje.  
+Obor tohoto tématu je poskytnout ukázkový kód pro **aktivity API přihlášení**.
 
 Přejděte na téma:
 
 * [Protokoly auditu](active-directory-reporting-azure-portal.md#activity-reports) další koncepční informace
-* [Začínáme s Azure Active Directory Reporting API hello](active-directory-reporting-api-getting-started.md) Další informace o hello reporting rozhraní API.
+* [Začínáme s Azure Active Directory Reporting API](active-directory-reporting-api-getting-started.md) Další informace o rozhraní API pro generování sestav.
 
 
 ## <a name="prerequisites"></a>Požadavky
-Než použijete hello ukázky v tomto tématu, musíte toocomplete hello [požadavky tooaccess hello Azure AD reporting API](active-directory-reporting-api-prerequisites.md).  
+Před použitím ukázky v tomto tématu, které potřebujete k dokončení [požadavky pro přístup k Azure AD reporting rozhraní API](active-directory-reporting-api-prerequisites.md).  
 
 ## <a name="powershell-script"></a>Skript PowerShellu
-    # This script will require hello Web Application and permissions setup in Azure Active Directory
+    # This script will require the Web Application and permissions setup in Azure Active Directory
     $ClientID       = "<clientId>"             # Should be a ~35 character string insert your info here
     $ClientSecret   = "<clientSecret>"         # Should be a ~44 character string insert your info here
     $loginURL       = "https://login.microsoftonline.com/"
@@ -63,7 +63,7 @@ Než použijete hello ukázky v tomto tématu, musíte toocomplete hello [požad
     Do{
         Write-Output "Fetching data using Uri: $url"
         $myReport = (Invoke-WebRequest -UseBasicParsing -Headers $headerParams -Uri $url)
-        Write-Output "Save hello output tooa file SigninActivities$i.json"
+        Write-Output "Save the output to a file SigninActivities$i.json"
         Write-Output "---------------------------------------------"
         $myReport.Content | Out-File -FilePath SigninActivities$i.json -Force
         $url = ($myReport.Content | ConvertFrom-Json).'@odata.nextLink'
@@ -78,13 +78,13 @@ Než použijete hello ukázky v tomto tématu, musíte toocomplete hello [požad
 
 
 
-## <a name="executing-hello-script"></a>Provádění skriptu hello
-Jednou dokončíte úpravy hello skriptu, spouštět a ověřte, zda že tento hello očekává, že se vrátí data z hello sestavy protokolů auditu.
+## <a name="executing-the-script"></a>Provádění skriptu
+Se vrátí po ukončení úprav skript, spouštět a ověřte, že očekávaná data z auditu protokoluje sestavy.
 
-Hello skript vrátí výstupní hello přihlášení sestavy ve formátu JSON. Vytvoří také `SigninActivities.json` soubor s hello stejný výstup. Můžete experimentovat změnou hello skriptu tooreturn data z jiných sestavy a komentář hello výstupní formáty, které nepotřebujete.
+Skript vrátí výstupní ze sestavy přihlášení ve formátu JSON. Vytvoří také `SigninActivities.json` soubor s stejný výstup. Můžete experimentovat změnou skript, který chcete vrátit data z jiných sestavy a komentář výstupní formáty, které nepotřebujete.
 
 ## <a name="next-steps"></a>Další kroky
-* Chcete, aby toocustomize hello ukázky v tomto tématu? Podívejte se na hello [referenční dokumentace rozhraní API služby Azure Active Directory přihlašovací aktivita](active-directory-reporting-api-sign-in-activity-reference.md). 
-* Pokud chcete, aby toosee úplný přehled pomocí hello Azure Active Directory, vytváření sestav rozhraní API najdete v tématu [Začínáme s Azure Active Directory, vytváření sestav API hello](active-directory-reporting-api-getting-started.md).
-* Pokud chcete toofind Další informace o vytváření sestav Azure Active Directory, přečtěte si téma hello [Azure Active Directory průvodce vytvářením sestav](active-directory-reporting-guide.md).  
+* Chcete přizpůsobit ukázky v tomto tématu? Podívejte se [referenční dokumentace rozhraní API služby Azure Active Directory přihlašovací aktivita](active-directory-reporting-api-sign-in-activity-reference.md). 
+* Pokud chcete zobrazit úplný přehled pomocí Azure Active Directory, vytváření sestav rozhraní API, najdete v části [Začínáme s Azure Active Directory, vytváření sestav rozhraní API](active-directory-reporting-api-getting-started.md).
+* Pokud chcete získat další informace o vytváření sestav Azure Active Directory, přečtěte si téma [Azure Active Directory průvodce vytvářením sestav](active-directory-reporting-guide.md).  
 

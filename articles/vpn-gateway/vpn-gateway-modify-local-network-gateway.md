@@ -1,5 +1,5 @@
 ---
-title: "Úprava předpon adres IP brány místní sítě hello a adresa IP brány VPN hello | Azure | Prostředí PowerShell | Microsoft Docs"
+title: "Úprava předpon adres IP brány místní sítě a adresa brány VPN | Azure | Prostředí PowerShell | Microsoft Docs"
 description: "Tento článek vás provede procesem Změna předpony IP adresy pro bránu místní sítě pomocí prostředí PowerShell"
 services: vpn-gateway
 documentationcenter: na
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: cherylmc
-ms.openlocfilehash: 1353598b39a97fae9bdb424505a5ae2560482654
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2a095b96a8c352abeca72640d37c0d629b447763
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="modify-local-network-gateway-settings-using-powershell"></a>Úprava nastavení místní síťové brány pomocí PowerShellu
 
-Někdy hello nastavení pro bránu místní sítě AddressPrefix nebo GatewayIPAddress změnit. Tento článek ukazuje, jak toomodify nastavení brány místní sítě. Můžete také upravit tato nastavení pomocí různých metod výběrem jinou možnost z hello následující seznamu:
+Někdy se změnit nastavení pro bránu místní sítě AddressPrefix nebo GatewayIPAddress. Tento článek ukazuje, jak upravit nastavení brány místní sítě. Můžete také upravit tato nastavení pomocí různých metod výběrem jinou možnost z následujícího seznamu:
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-modify-local-network-gateway-portal.md)
@@ -34,13 +34,13 @@ Někdy hello nastavení pro bránu místní sítě AddressPrefix nebo GatewayIPA
 
 ## <a name="before"></a>Než začnete
 
-Nainstalujte nejnovější verzi rutin Powershellu pro Azure Resource Manager hello hello. V tématu [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs) Další informace o instalaci rutin prostředí PowerShell hello.
+Nainstalujte nejnovější verzi rutin PowerShellu pro Azure Resource Manager. Další informace o instalaci rutin prostředí PowerShell najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azureps-cmdlets-docs).
 
 ## <a name="ipaddprefix"></a>Úprava předpon adres IP
 
 [!INCLUDE [vpn-gateway-modify-ip-prefix-rm](../../includes/vpn-gateway-modify-ip-prefix-rm-include.md)]
 
-## <a name="gwip"></a>Upravit IP adresu brány hello
+## <a name="gwip"></a>Upravit IP adresu brány
 
 [!INCLUDE [vpn-gateway-modify-lng-gateway-ip-rm](../../includes/vpn-gateway-modify-lng-gateway-ip-rm-include.md)]
 

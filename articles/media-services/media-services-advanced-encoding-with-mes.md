@@ -1,6 +1,6 @@
 ---
-title: "aaaPerform advanced kódování přizpůsobením MES přednastavení | Microsoft Docs"
-description: "Toto téma ukazuje, jak tooperform advanced kódování přizpůsobením Media Encoder Standard přednastavení úloh."
+title: "Pokročilé kódování přizpůsobením MES přednastavení | Microsoft Docs"
+description: "Toto téma ukazuje, jak provádět pokročilé kódování přizpůsobením Media Encoder Standard přednastavení úloh."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: juliako
-ms.openlocfilehash: 9caa68fafacaf51f91f0554c5bafe491928d8c77
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 8de3bdd45261c84a0e1bb90f1c58863ad740dd5a
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Pokročilé kódování přizpůsobením MES přednastavení 
 
 ## <a name="overview"></a>Přehled
 
-Toto téma ukazuje, jak přednastavení toocustomize Media Encoder Standard. Hello [kódování s Media Encoder Standard pomocí vlastních předvoleb](media-services-custom-mes-presets-with-dotnet.md) téma ukazuje, jak toocreate .NET toouse kódování úlohy a úlohy, která spustí tuto úlohu. Jakmile upravíte přednastavení, zadejte hello vlastní přednastavení toohello kódování úloh. 
+Toto téma ukazuje, jak přizpůsobit Media Encoder Standard přednastavení. [Kódování s Media Encoder Standard pomocí vlastních předvoleb](media-services-custom-mes-presets-with-dotnet.md) téma ukazuje, jak vytvořit kódování úlohy a úlohy, která spustí tuto úlohu pomocí rozhraní .NET. Jakmile upravíte přednastavení, zadejte vlastní přednastavení kódování úlohy. 
 
 >[!NOTE]
->Pokud používáte přednastavení XML, ujistěte se, že pořadí hello toopreserve prvků, jak je znázorněno v následující ukázky XML (například KeyFrameInterval by měl předcházet SceneChangeDetection).
+>Pokud používáte přednastavení XML, ujistěte se, chcete-li zachovat pořadí prvků, jak je znázorněno v následující ukázky XML (například KeyFrameInterval by měl předcházet SceneChangeDetection).
 >
 
-V tomto tématu je ukázán hello vlastních předvoleb, které provádět následující úlohy kódování hello.
+V tomto tématu je ukázán vlastních předvoleb, které provádět následující úlohy kódování.
 
 ## <a name="support-for-relative-sizes"></a>Podpora pro relativní velikosti
 
-Při vytváření miniatur, není nutné tooalways zadejte výstupní šířky a výšky v pixelech. Je můžete zadat v procentech v rozsahu hello [1 %,..., 100 %].
+Při vytváření miniatur, není potřeba vždycky zadat výstupní šířky a výšky v pixelech. Je můžete zadat v procentech v rozsahu [1 %,..., 100 %].
 
 ### <a name="json-preset"></a>Přednastavení JSON
     "Width": "100%",
@@ -46,16 +46,16 @@ Při vytváření miniatur, není nutné tooalways zadejte výstupní šířky a
 
 ## <a id="thumbnails"></a>Vytváření miniatur
 
-Tato část uvádí, jak toocustomize přednastavení, která generuje miniatur. Hello přednastavení definovaná níže obsahuje informace o tom, jak chcete tooencode souboru stejně jako miniatury toogenerate potřebné informace. Můžete využít některé z přednastavení MES hello zdokumentovaný [to](media-services-mes-presets-overview.md) a přidejte kód, který generuje miniatur.  
+V této části ukazuje, jak přizpůsobit přednastavení, která generuje miniatur. Přednastavení definovaná níže obsahuje informace o tom, jak chcete zakódovat váš soubor, jakož i informace potřebné k vytváření miniatur. Můžete využít některé z přednastavení MES zdokumentovaný [to](media-services-mes-presets-overview.md) a přidejte kód, který generuje miniatur.  
 
 > [!NOTE]
-> Hello **SceneChangeDetection** nastavení hello následující přednastavené lze nastavit pouze tootrue Pokud jsou kódování video tooa jednou přenosovou rychlostí. Pokud jsou kódování více přenosovými rychlostmi tooa video a nastavte **SceneChangeDetection** tootrue, hello kodér vrátí chybu.  
+> **SceneChangeDetection** nastavení v následujících přednastavení lze nastavit pouze na hodnotu true, pokud jsou kódování s jednou přenosovou rychlostí videa. Pokud jsou kódování na video s více přenosovými rychlostmi a sadu **SceneChangeDetection** na hodnotu true, vrátí kodér k chybě.  
 >
 >
 
 Informace o schématu najdete v tématu [to](media-services-mes-schema.md) tématu.
 
-Ujistěte se, zda text hello tooreview [aspekty](#considerations) části.
+Projděte si [aspekty](#considerations) části.
 
 ### <a id="json"></a>Přednastavení JSON
     {
@@ -232,25 +232,25 @@ Ujistěte se, zda text hello tooreview [aspekty](#considerations) části.
 
 ### <a name="considerations"></a>Požadavky
 
-použít Hello následující aspekty:
+Platí následující aspekty:
 
-* použití Hello explicitní časová razítka pro spuštění nebo krok nebo rozsah předpokládá, že tento vstupní zdroj hello je dlouhé alespoň 1 minuta.
+* Použití explicitní časová razítka pro spuštění nebo krok nebo rozsah předpokládá, že se vstupní zdroj alespoň 1 minuta.
 * JPG nebo Png nebo BmpImage prvky má spustit, krok a rozsah řetězec atributy – to jde interpretovat jako:
 
   * Rámce číslo, pokud jsou nezáporná celá čísla, například "Start": "120",
-  * Doba trvání relativní toosource Pokud vyjádřený jako konci %, například "Start": "15 %", nebo
+  * Vzhledem ke zdrojové doba trvání, pokud vyjádřený jako % konci, například "Start": "15 %", nebo
   * Časové razítko, pokud vyjádřený jako hh: mm:... formátování, například "Start": "00: 01:00"
 
     Můžete kombinovat a párovat zápisy, jako je prosím.
 
-    Kromě toho spustit také podporuje speciální makra: {osvědčené}, který pokusí toodetermine hello první "zajímavé" snímek obsahu hello Poznámka: (krok a rozsah ignorují při spuštění je nastaven příliš {nejlepší})
+    Kromě toho spustit také podporuje speciální makra: {osvědčené}, která se pokusí určit první "zajímavé" snímek obsahu Poznámka: (krok a rozsah ignorují při spuštění je nastaven na {nejvhodnější})
   * Výchozí nastavení: Spuštění: {nejlepší}
-* Výstupní formát potřebuje toobe explicitně zadaná pro každý formát obrázku: Jpg nebo Png nebo BmpFormat. Pokud jsou k dispozici, odpovídá MES JpgVideo tooJpgFormat a tak dále. OutputFormat zavádí nové makro konkrétní kodek obrázků: {Index}, který potřebuje toobe přítomen (jednou a jen jednou) pro výstupní formáty bitové kopie.
+* Výstupní formát je třeba explicitně zadat pro každý formát obrázku: Jpg nebo Png nebo BmpFormat. Pokud jsou k dispozici, odpovídá MES JpgVideo k JpgFormat a tak dále. OutputFormat zavádí nové makro konkrétní kodek obrázků: {Index}, které musí být k dispozici (jednou a jen jednou) pro výstupní formáty bitové kopie.
 
 ## <a id="trim_video"></a>Trim video (výstřižek.)
-Tato část rozhovory úprava hello kodér přednastavení tooclip nebo trim hello vstupní video, kde je hello vstup takzvané soubor mezzanine soubor nebo soubor na vyžádání. Hello kodér lze také použít tooclip nebo trim prostředek, která je zachytit nebo archivovat z živý datový proud – podrobnosti hello jsou k dispozici v [tomto blogu](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/).
+Tato část pojednává o Úprava přednastavení kodér oříznutí nebo trim vstupní video, kde je vstupní soubor mezzanine takzvané soubor nebo soubor na vyžádání. Kodér lze také v případě potřeby upraví nebo trim prostředek, která je zachytit nebo archivovat z živý datový proud – podrobnosti o to jsou k dispozici v [tomto blogu](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/).
 
-tootrim videa, můžete využít některé z přednastavení MES hello zdokumentovaný [to](media-services-mes-presets-overview.md) část a upravte hello **zdroje** – element (jak je znázorněno níže). Hodnota Hello StartTime musí vstupní videa hello toomatch časová razítka absolutní hello. Například pokud hello první snímek hello vstupní video má časovým razítkem 12:00:10.000, pak čas spuštění by mělo obsahovat aspoň 12:00:10.000 a větší. V hello následujícím příkladu předpokládáme, že hello vstupní video má výchozí časové razítko nula. **Zdroje** musí být umístěny na začátku hello přednastavených hello.
+Oříznout videa, mohou mít libovolný přednastavení MES zdokumentovaný [to](media-services-mes-presets-overview.md) část a upravte **zdroje** – element (jak je znázorněno níže). Hodnota čas spuštění musí odpovídat absolutní časová razítka vstupní videa. Například pokud první snímek vstupní video má časovým razítkem 12:00:10.000, pak čas spuštění by měl alespoň 12:00:10.000 a větší. V následujícím příkladu předpokládáme, že vstupní video má výchozí časové razítko nula. **Zdroje** musí být umístěny na začátku přednastavení.
 
 ### <a id="json"></a>Přednastavení JSON
     {
@@ -372,7 +372,7 @@ tootrim videa, můžete využít některé z přednastavení MES hello zdokument
     }
 
 ### <a name="xml-preset"></a>Přednastavení XML
-tootrim videa, můžete využít některé z přednastavení MES hello zdokumentovaný [sem](media-services-mes-presets-overview.md) a upravit hello **zdroje** – element (jak je znázorněno níže).
+Oříznout videa, mohou mít libovolný přednastavení MES zdokumentovaný [sem](media-services-mes-presets-overview.md) a upravovat **zdroje** – element (jak je znázorněno níže).
 
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
@@ -491,11 +491,11 @@ tootrim videa, můžete využít některé z přednastavení MES hello zdokument
 
 ## <a id="overlay"></a>Vytvoření překrytí
 
-Hello Media Encoder Standard umožňuje toooverlay bitovou kopii do existujícího videa. V současné době jsou podporovány následující formáty hello: png, jpg, gif, bmp a. Hello předvolba definovaná níže je základní příklad překryvné video.
+Media Encoder Standard umožňuje překrytí bitovou kopii do existujícího videa. V současné době jsou podporovány následující formáty: png, jpg, gif, bmp a. Předvolba definovaná níže je základní příklad překryvné video.
 
-Kromě toho toodefining soubor přednastavení, máte také toolet Media Services vědět, který soubor v hello asset je hello překrytí image a který soubor je hello zdroj video, na kterém chcete, aby bitová kopie toooverlay hello. video soubor Hello má toobe hello **primární** souboru.
+Kromě definování soubor přednastavení, máte také umožní Media Services vědět, který soubor v prostředku je bitovou kopii překrytí a soubor, který je zdrojem videa na kterém chcete překrýt bitovou kopii. Video souboru musí být **primární** souboru.
 
-Pokud používáte rozhraní .NET, přidejte následující dvě funkce toohello .NET příklad definované v hello [to](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet) tématu. Hello **UploadMediaFilesFromFolder** funkce odešle soubory ze složky (například BigBuckBunny.mp4 a Image001.png) a nastaví hello mp4 souboru toobe hello primární soubor v hello asset. Hello **EncodeWithOverlay** funkce používá hello vlastní přednastavené soubor, který byl předán tooit (například hello přednastavení této způsobem) toocreate hello kódování úloh.
+Pokud používáte rozhraní .NET, přidejte následující dvě funkce v rozhraní .NET příkladu definované v [to](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet) tématu. **UploadMediaFilesFromFolder** funkce odešle soubory ze složky (například BigBuckBunny.mp4 a Image001.png) a nastaví soubor mp4 jako primární soubor v prostředku. **EncodeWithOverlay** funkce používá vlastní přednastavené soubor, který byl předán do ní (například přednastavení, která odpovídá) k vytvoření úlohy kódování.
 
 
     static public IAsset UploadMediaFilesFromFolder(string folderPath)
@@ -504,7 +504,7 @@ Pokud používáte rozhraní .NET, přidejte následující dvě funkce toohello
     
         foreach (var af in asset.AssetFiles)
         {
-            // hello following code assumes 
+            // The following code assumes 
             // you have an input folder with one MP4 and one overlay image file.
             if (af.Name.Contains(".mp4"))
                 af.IsPrimary = true;
@@ -521,11 +521,11 @@ Pokud používáte rozhraní .NET, přidejte následující dvě funkce toohello
     {
         // Declare a new job.
         IJob job = _context.Jobs.Create("Media Encoder Standard Job");
-        // Get a media processor reference, and pass tooit hello name of hello 
-        // processor toouse for hello specific task.
+        // Get a media processor reference, and pass to it the name of the 
+        // processor to use for the specific task.
         IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 
-        // Load hello XML (or JSON) from hello local file.
+        // Load the XML (or JSON) from the local file.
         string configuration = File.ReadAllText(customPresetFileName);
 
         // Create a task
@@ -534,11 +534,11 @@ Pokud používáte rozhraní .NET, přidejte následující dvě funkce toohello
             configuration,
             TaskOptions.None);
 
-        // Specify hello input assets toobe encoded.
+        // Specify the input assets to be encoded.
         // This asset contains a source file and an overlay file.
         task.InputAssets.Add(assetSource);
 
-        // Add an output asset toocontain hello results of hello job. 
+        // Add an output asset to contain the results of the job. 
         task.OutputAssets.AddNew("Output asset",
             AssetCreationOptions.None);
 
@@ -553,9 +553,9 @@ Pokud používáte rozhraní .NET, přidejte následující dvě funkce toohello
 > [!NOTE]
 > Aktuální omezení:
 >
-> Hello překrytí krytí nastavení není podporováno.
+> Nastavení krytí překrytí není podporováno.
 >
-> Video zdrojový soubor a soubor bitové kopie překrytí hello mít toobe v hello stejné asset a hello videosoubor potřebám toobe sady jako primární soubor hello v tento prostředek.
+> Video váš zdrojový soubor a soubor bitové kopie překrytí musí být ve stejné asset a video soubor musí být nastavena jako primární soubor v tento prostředek.
 >
 >
 
@@ -700,11 +700,11 @@ Pokud používáte rozhraní .NET, přidejte následující dvě funkce toohello
 
 
 ## <a id="silent_audio"></a>Vložit tichou zvuk sledovat, pokud vstup neobsahuje žádný zvuk
-Ve výchozím nastavení Pokud odesíláte vstupní toohello kodér, který obsahuje pouze video a žádné zvuk, pak hello výstupní asset obsahuje soubory, které obsahují pouze video data. Některé přehrávače nemusí být možné toohandle takové výstupní datové proudy. V tomto scénáři můžete použít tato nastavení tooforce hello kodér tooadd výstup toohello tichou zvuk sledovat.
+Ve výchozím nastavení Pokud odesíláte vstup kodéru, který obsahuje pouze video a žádné zvuk, pak výstupní asset obsahuje soubory, které obsahují pouze video data. Některé přehrávače nemusí být schopná zpracovat takové výstupní datové proudy. Toto nastavení slouží k vynucení kodér přidat tichou zvuk sledovat ve výstupu v tomto scénáři.
 
-tooforce hello kodér tooproduce asset, který obsahuje tichou zvuk sledovat, kdy se vstup neobsahuje žádný zvuk, zadejte hodnotu "InsertSilenceIfNoAudio" hello.
+Chcete-li vynutit kodér k vytvoření asset, který obsahuje tichou zvuk sledovat, kdy se vstup neobsahuje žádný zvuk, zadejte hodnotu "InsertSilenceIfNoAudio".
 
-Mohou mít libovolný hello MES přednastavení zdokumentována [to](media-services-mes-presets-overview.md) části a proveďte následující změny hello:
+Můžete využít některé z přednastavení MES zdokumentována [to](media-services-mes-presets-overview.md) části a proveďte následující změny:
 
 ### <a name="json-preset"></a>Přednastavení JSON
     {
@@ -723,9 +723,9 @@ Mohou mít libovolný hello MES přednastavení zdokumentována [to](media-servi
     </AACAudio>
 
 ## <a id="deinterlacing"></a>Zakázat automatické zrušte prokládání.
-Zákazníci nepotřebují toodo nic Pokud se jako hello prokládání toobe obsah automaticky prokládaných zrušte. Když zrušíte-li automaticky hello prokládání v hello (výchozí), které hello MES automaticky detekce prokládaných snímků a pouze zrušte interlaces rámce označena jako prokládaných.
+Zákazníci, nemusíte nic dělat, když se jako obsah prokládání být automaticky zrušte prokládaných. Prokládání zrušte automaticky je na (výchozí) MES nepodporuje automatické zjišťování prokládaných snímků a pouze zrušte interlaces označena jako prokládaných rámce.
 
-Můžete vypnout hello automaticky algoritmy pro odstranění prokládání. Tato možnost se nedoporučuje.
+Můžete vypnout prokládání zrušte automaticky. Tato možnost se nedoporučuje.
 
 ### <a name="json-preset"></a>Přednastavení JSON
     "Sources": [
@@ -799,24 +799,24 @@ V této části ukážeme dvou pouze MES přednastavení: AAC zvuk a AAC dobrý 
 
 ## <a id="concatenate"></a>Řetězení dvou nebo více souborů video
 
-Hello následující příklad ukazuje, jak můžete vygenerovat přednastavené tooconcatenate dva nebo více video soubory. nejběžnější scénáře Hello je, když chcete tooadd, hlavičku nebo video hlavní toohello přípojného. Hello určené použití je v případě videosouborů hello upravovaný společně sdílet vlastnosti (rozlišení videa, obnovovací frekvence, zvuk sledovat počet atd.). Měli postará není toomix videa různý kmitočet, nebo mají jiný počet zvukových stop.
+Následující příklad ilustruje, jak můžete vygenerovat přednastavení ke zřetězení dvou nebo více souborů videa. Nejběžnější scénáře je, pokud chcete přidat hlavičku nebo vozidel hlavní video. Slouží při video soubory upravovaný společně sdílet vlastnosti (rozlišení videa, obnovovací frekvence, zvuk sledovat počet atd.). By měl třeba dbát na to kombinovat videa různý kmitočet, nebo mají jiný počet zvukových stop.
 
 >[!NOTE]
->Hello aktuálního návrhu hello zřetězení funkce očekává, že hello vstupní videosoubory jsou konzistentní z hlediska řešení, obnovovací frekvence atd. 
+>Současný návrh zřetězení funkce očekává, že jsou vstupní videosoubory konzistentní z hlediska řešení, obnovovací frekvence atd. 
 
 ### <a name="requirements-and-considerations"></a>Požadavky a důležité informace
 
 * Vstupní videa by měla mít pouze jeden zvuk sledovat.
-* Vstup videa, by měly mít hello stejné obnovovací frekvence.
-* Musíte nahrát videa do samostatné prostředky a nastavit jako primární soubor hello v každé asset videa hello.
-* Je nutné tooknow hello trvání videa.
-* Hello přednastavené níže uvedených příkladech se předpokládá, že všechny vstupní videa hello spustit s časovým razítkem nula. Je nutné hodnoty StartTime hello toomodify Pokud hello videa mít různé výchozí časové razítko, jako je obvykle hello případě s archivy za provozu.
-* Hello přednastavených JSON umožňuje explicitní odkazy hodnoty ID toohello hello vstupní prostředků.
-* Hello ukázkový kód předpokládá, že tento hello přednastavení JSON se uložila tooa místního souboru, jako je například "C:\supportFiles\preset.json". Předpokládá také, zda byly vytvořeny dva prostředky tím, že nahrajete dva video soubory a že znáte hello výsledné hodnoty ID.
-* Hello fragmentu kódu a JSON přednastavených ukazuje příklad zřetězení dva video soubory. Můžete ji rozšířit toomore než dva videa pomocí:
+* Vstup videa, by měly mít stejnou snímků za sekundu.
+* Musíte nahrát videa do samostatné prostředky a videím nastavit jako primární soubor v každé asset.
+* Je třeba vědět trvání videa.
+* Přednastavené následující příklady předpokládá, že všechny vstupní videa spustit s časovým razítkem nula. Budete muset upravit hodnoty StartTime, pokud videím mít různé výchozí časové razítko, což je obvykle případ s archivy za provozu.
+* Přednastavení JSON umožňuje explicitní odkazy na hodnoty ID vstupní prostředků.
+* Ukázkový kód předpokládá, že přednastavených JSON byla uložena do místního souboru, jako je například "C:\supportFiles\preset.json". Předpokládá také, zda byly vytvořeny dva prostředky tím, že nahrajete dva video soubory a že znáte výsledné hodnoty ID.
+* Fragment kódu a JSON přednastavených ukazuje příklad zřetězení dva video soubory. Můžete ji rozšířit do více než dva videa pomocí:
 
-  1. Úloha volání. InputAssets.Add() opakovaně tooadd další videa, v pořadí.
-  2. Provedení odpovídající upravuje element toohello "zdroje" v hello formát JSON, můžete přidat další položky v hello stejném pořadí.
+  1. Úloha volání. InputAssets.Add() opakovaně Chcete-li přidat další videa, v pořadí.
+  2. Provedení odpovídající upraví "Zdroje" elementu v kódu JSON, můžete přidat další položky ve stejném pořadí.
 
 ### <a name="net-code"></a>Kód .NET
 
@@ -825,11 +825,11 @@ Hello následující příklad ukazuje, jak můžete vygenerovat přednastavené
 
     // Declare a new job.
     IJob job = _context.Jobs.Create("Media Encoder Standard Job for Concatenating Videos");
-    // Get a media processor reference, and pass tooit hello name of the
-    // processor toouse for hello specific task.
+    // Get a media processor reference, and pass to it the name of the
+    // processor to use for the specific task.
     IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 
-    // Load hello XML (or JSON) from hello local file.
+    // Load the XML (or JSON) from the local file.
     string configuration = File.ReadAllText(@"c:\supportFiles\preset.json");
 
     // Create a task
@@ -838,12 +838,12 @@ Hello následující příklad ukazuje, jak můžete vygenerovat přednastavené
         configuration,
         TaskOptions.None);
 
-    // Specify hello input videos toobe concatenated (in order).
+    // Specify the input videos to be concatenated (in order).
     task.InputAssets.Add(asset1);
     task.InputAssets.Add(asset2);
-    // Add an output asset toocontain hello results of hello job.
+    // Add an output asset to contain the results of the job.
     // This output is specified as AssetCreationOptions.None, which
-    // means hello output asset is not encrypted.
+    // means the output asset is not encrypted.
     task.OutputAssets.AddNew("Output asset",
         AssetCreationOptions.None);
 
@@ -853,7 +853,7 @@ Hello následující příklad ukazuje, jak můžete vygenerovat přednastavené
 
 ### <a name="json-preset"></a>Přednastavení JSON
 
-Aktualizujte vaše vlastní předvolby s ID hello prostředků, které chcete tooconcatenate a hello příslušnou dobu segmentu pro každý video.
+Aktualizujte vaše vlastní předvolby s ID prostředků, které chcete zřetězit a s příslušnou dobu segmentu pro každý video.
 
     {
       "Version": 1.0,
@@ -908,21 +908,21 @@ Aktualizujte vaše vlastní předvolby s ID hello prostředků, které chcete to
     }
 
 ## <a id="crop"></a>Oříznutí videa pomocí procesoru Media Encoder Standard
-V tématu hello [oříznout videa pomocí procesoru Media Encoder Standard](media-services-crop-video.md) tématu.
+Najdete v článku [oříznout videa pomocí procesoru Media Encoder Standard](media-services-crop-video.md) tématu.
 
 ## <a id="no_video"></a>Vložit video sledovat při vstupu je žádné video
 
-Ve výchozím nastavení Pokud odesíláte vstupní toohello kodér, který obsahuje pouze zvuk a obraz, pak hello výstupní asset obsahuje soubory, které obsahují pouze zvuková data. Některé přehrávače, včetně přehrávač médií Azure (viz [to](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/8082468-audio-only-scenarios)) nemusí být možné toohandle takové datové proudy. Tato nastavení tooforce hello kodér tooadd můžete použít v tomto scénáři výstup toohello černobílý sledovat videa.
+Ve výchozím nastavení Pokud odesíláte vstup kodéru, který obsahuje pouze zvuk a obraz, pak výstupní asset obsahuje soubory, které obsahují pouze zvuková data. Některé přehrávače, včetně Azure Media Player (viz [to](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/8082468-audio-only-scenarios)) nemusí být schopná zpracovat takové datové proudy. Toto nastavení slouží k vynucení kodér přidat černobílý video sledovat ve výstupu v tomto scénáři.
 
 > [!NOTE]
-> Vynucení tooinsert kodér hello výstupu videa sledovat zvyšuje hello velikost hello výstupní Asset a tím hello náklady na hello kódování úloh. Byste měli spustit testy tooverify, který toto výsledné zvýšení má pouze mírné vliv na vaše měsíční poplatky.
+> Vynucení kodér vložit výstupu videa sledovat zvětšuje velikost výstupní Asset, a tím vám účtovány náklady pro úlohy kódování. Byste měli spustit testy ověření, že toto výsledné zvýšení má pouze mírné vliv na vaše měsíční poplatky.
 >
 
-### <a name="inserting-video-at-only-hello-lowest-bitrate"></a>Vložení videa na pouze nejnižší přenosovou rychlostí hello
+### <a name="inserting-video-at-only-the-lowest-bitrate"></a>Vložení videa na pouze nejnižší přenosovou rychlostí
 
-Předpokládejme, že jsou pomocí více kódování přenosovou rychlostí, jako přednastavení ["H264 Multiple Bitrate 720p"](media-services-mes-preset-h264-multiple-bitrate-720p.md) tooencode celého vstupní katalogu pro streamování, který obsahuje kombinaci pouze soubory a videosoubory. V tomto scénáři při vstupu hello je žádné video, můžete chtít tooforce hello kodér tooinsert sledovat videa černobílý tisk na právě hello nejnižší přenosovou rychlostí, jako názvem na rozdíl od tooinserting videa na každou výstupní přenosovou rychlostí. tooachieve, budete potřebovat toouse hello **InsertBlackIfNoVideoBottomLayerOnly** příznak.
+Předpokládejme, že jsou pomocí více kódování přenosovou rychlostí, jako přednastavení ["H264 Multiple Bitrate 720p"](media-services-mes-preset-h264-multiple-bitrate-720p.md) ke kódování celý vstupní katalogu pro streamování, obsahující směs video soubory a soubory jen zvukovém souboru. V tomto scénáři při ve vstupu je žádné video, můžete vynutit kodér vložte černobílý video sledovat na nejnižší přenosovou oproti vložení videa na každou výstupní přenosovou rychlostí. Jak toho docílit, budete muset použít **InsertBlackIfNoVideoBottomLayerOnly** příznak.
 
-Mohou mít libovolný hello MES přednastavení zdokumentována [to](media-services-mes-presets-overview.md) části a proveďte následující změny hello:
+Můžete využít některé z přednastavení MES zdokumentována [to](media-services-mes-presets-overview.md) části a proveďte následující změny:
 
 #### <a name="json-preset"></a>Přednastavení JSON
     {
@@ -936,7 +936,7 @@ Mohou mít libovolný hello MES přednastavení zdokumentována [to](media-servi
 
 #### <a name="xml-preset"></a>Přednastavení XML
 
-Pokud používáte XML, použít podmínku = "InsertBlackIfNoVideoBottomLayerOnly" jako atributu toohello **H264Video** elementu a podmínky = "InsertSilenceIfNoAudio" jako atribut příliš**AACAudio**.
+Při použití XML, použít podmínku = "InsertBlackIfNoVideoBottomLayerOnly" jako atribut k **H264Video** elementu a podmínky = "InsertSilenceIfNoAudio" jako atribut k **AACAudio**.
 
 ```
 . . .
@@ -963,9 +963,9 @@ Pokud používáte XML, použít podmínku = "InsertBlackIfNoVideoBottomLayerOnl
 ```
 
 ### <a name="inserting-video-at-all-output-bitrates"></a>Vkládání video vůbec výstup přenosových rychlostí
-Předpokládejme, že jsou pomocí více kódování přenosovou rychlostí, jako přednastavení ["H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) tooencode celého vstupní katalogu pro streamování, který obsahuje kombinaci pouze soubory a videosoubory. V tomto scénáři při vstupu hello je žádné video, můžete chtít tooforce hello kodér tooinsert černobílý video sledovat na všechny přenosových rychlostí výstup hello. To zajistí, že výstupu prostředky jsou všechny informace, které bylo zajištěno homogenní, s ohledem toonumber sleduje videa a audia sleduje. tooachieve, je nutné toospecify hello příznak "InsertBlackIfNoVideo".
+Předpokládejme, že jsou pomocí více kódování přenosovou rychlostí, jako přednastavení ["H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) ke kódování celý vstupní katalogu pro streamování, obsahující směs video soubory a soubory jen zvukovém souboru. V tomto scénáři při ve vstupu je žádné video, můžete vynutit kodér vložit černobílý video sledovat vůbec přenosových rychlostí výstup. To zajistí, že výstupu prostředky jsou všechny informace, které bylo zajištěno homogenní, s ohledem na počet sleduje videa a audia sleduje. Jak toho docílit, je třeba zadat příznak "InsertBlackIfNoVideo".
 
-Mohou mít libovolný hello MES přednastavení zdokumentována [to](media-services-mes-presets-overview.md) části a proveďte následující změny hello:
+Můžete využít některé z přednastavení MES zdokumentována [to](media-services-mes-presets-overview.md) části a proveďte následující změny:
 
 #### <a name="json-preset"></a>Přednastavení JSON
     {
@@ -979,7 +979,7 @@ Mohou mít libovolný hello MES přednastavení zdokumentována [to](media-servi
 
 #### <a name="xml-preset"></a>Přednastavení XML
 
-Pokud používáte XML, použít podmínku = "InsertBlackIfNoVideo" jako atributu toohello **H264Video** elementu a podmínky = "InsertSilenceIfNoAudio" jako atribut příliš**AACAudio**.
+Při použití XML, použít podmínku = "InsertBlackIfNoVideo" jako atribut k **H264Video** elementu a podmínky = "InsertSilenceIfNoAudio" jako atribut k **AACAudio**.
 
 ```
 . . .
@@ -1006,7 +1006,7 @@ Pokud používáte XML, použít podmínku = "InsertBlackIfNoVideo" jako atribut
 ```
 
 ## <a id="rotate_video"></a>Otočit video
-Hello [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) podporuje oběh podle úhly 0/90 nebo 180 nebo 270. Hello výchozí chování je "Auto", kde pokusí toodetect hello otočení metadata v hello příchozí videosoubor a kompenzovat ho. Zahrnout hello následující **zdroje** element tooone hello přednastavení definované v [to](media-services-mes-presets-overview.md) části:
+[Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) podporuje oběh podle úhly 0/90 nebo 180 nebo 270. Výchozí chování je "Auto", kde se pokusí zjistit metadata otočení příchozí videosoubor a kompenzovat ho. Patří **zdroje** element pro jedno z přednastavení definované v [to](media-services-mes-presets-overview.md) části:
 
 ### <a name="json-preset"></a>Přednastavení JSON
     "Sources": [
@@ -1030,9 +1030,9 @@ Hello [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-s
         </Source>
     </Sources>
 
-Další informace naleznete v [to](media-services-mes-schema.md#PreserveResolutionAfterRotation) téma pro další informace o interpretace kodér hello: nastavení šířky a výšky hello v hello přednastavení, když se aktivuje otočení kompenzace.
+Další informace naleznete v [to](media-services-mes-schema.md#PreserveResolutionAfterRotation) téma pro další informace o interpretace kodéru: nastavení šířky a výšky v přednastavení, při aktivaci otočení honoráře.
 
-Hello hodnotu "0" tooindicate toohello kodér tooignore otočení metadata, můžete použít, pokud existuje ve vstupní video hello.
+Hodnota "0" můžete použít k označení kodéru ignorovat otočení metadata, pokud je k dispozici v vstup videa.
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

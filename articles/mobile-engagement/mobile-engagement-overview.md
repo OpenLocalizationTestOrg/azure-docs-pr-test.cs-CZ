@@ -1,5 +1,5 @@
 ---
-title: "aaaMobile přehled Engagementu | Microsoft Docs"
+title: "Přehled Mobile Engagementu | Dokumentace Microsoftu"
 description: "Přehled Azure Mobile Engagementu"
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/04/2016
 ms.author: piyushjo;matt-gibbs
-ms.openlocfilehash: 8892d5c57a2311a0b11da7313e2e5eaca1b6ae8e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 42b50685b854cabe8906f42aac81ab82c63f8a94
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-mobile-engagement-overview"></a>Přehled Azure Mobile Engagementu
 Azure Mobile Engagement je platforma softwaru jako služby (SaaS) pro zapojení uživatelů, která na základě dat poskytuje přehledy o využití aplikace, segmentaci uživatelů v reálném čase a umožňuje zasílat kontextová nabízená oznámení a zprávy v aplikaci.
@@ -28,24 +28,24 @@ Azure Mobile Engagement je platforma softwaru jako služby (SaaS) pro zapojení 
 > 
 > 
 
-S Azure Mobile Engagement vydavatelé aplikací a marketingoví odborníci můžete lépe pochopit a komunikovat s uživateli aplikace hello.
+Díky Azure Mobile Engagementu mohou vydavatelé aplikací a marketingoví odborníci lépe porozumět uživatelům aplikací a komunikovat s nimi.
 
-## <a name="real-time-actionable-analytics-toomaximize-return-on-investment"></a>Analýza s možností reakce v reálném čase toomaximize návratnost investic
-Spouštějte scénáře zapojení podle toouser chování a demografie tím, že zkombinujete `big data` kolekce s zpracování zpráv v reálném čase. Mobile Engagement dokáže odpovědět na téměř všechny otázky relevantní tooyour konkrétní obchodní potřeby. Například můžete vytvořit vlastní řídicí panely toomeasure klíčových ukazatelů výkonu (KPI), rychle najít a opravit kritická místa využití v cestě uživatelů, sledovat uchování a věrnosti uživatelů a podle toho určit, jaké kampaně přinášejí nejvyšší hello návratový na investice. 360° zobrazení cesty uživatele v Mobile Engagement vám umožní tooeasily a průběžně vylepšení a optimalizovat hello uživatelské prostředí – což přináší vyšší míru uchování a zlepšuje využití aplikace.
+## <a name="real-time-actionable-analytics-to-maximize-return-on-investment"></a>Analýza s možností reakce v reálném čase maximalizuje návratnost investic
+Spouštějte scénáře zapojení podle chování a demografie uživatelů tím, že zkombinujete kolekci `big data` se zpracováním zpráv v reálném čase. Mobile Engagement dokáže odpovědět na téměř všechny otázky, které jsou relevantní pro vaše konkrétní obchodní potřeby. Můžete například vytvořit vlastní řídicí panely a měřit s jejich pomocí klíčové ukazatele výkonu, rychle najít a opravit kritická místa využití v cestě uživatelů, sledovat míru uchování a věrnosti uživatelů a podle toho určit, jaké kampaně přinášejí nejvyšší návratnost investic. 360° zobrazení cesty uživatele v Mobile Engagementu umožňuje snadno a průběžně vylepšovat a optimalizovat uživatelské prostředí – což přináší vyšší míru uchování a zlepšuje využití aplikace. 
 
 ## <a name="value-added-push-and-communications-platform"></a>Platforma pro oznámení a komunikaci s přidanou hodnotou
-Mobile Engagement poskytuje funkci zasílání zpráv v aplikaci a bezproblémově pracuje s nativními bránami nabízených oznámení, jako například Google GCM, APNS společnosti Apple a MPNS společnosti Microsoft. Navíc toogive hello power toocreate analýza uživatele chování tooidentify jedinečné zákaznické segmenty cílem kampaně.
+Mobile Engagement poskytuje funkci zasílání zpráv v aplikaci a bezproblémově pracuje s nativními bránami nabízených oznámení, jako například Google GCM, APNS společnosti Apple a MPNS společnosti Microsoft. Navíc vám umožňuje vytvářet cílené kampaně tím, že analyzuje chování uživatelů s cílem určit jedinečné zákaznické segmenty.
 
 Vývojáři aplikací tak mohou své zákazníky oslovit vysoce účinným, ale nevtíravým způsobem.
 
 ## <a name="open-apis-and-ease-of-integration"></a>Otevřená rozhraní API a jednoduchá integrace
-Díky otevřeným rozhraním API a sadám SDK, které usnadňují integraci, můžete využívat data z existujících CRM, CMS nebo jiných back-endových systémů. To vám umožní toofurther zlepšit cílení na publikum a chránit investice.
+Díky otevřeným rozhraním API a sadám SDK, které usnadňují integraci, můžete využívat data z existujících CRM, CMS nebo jiných back-endových systémů. To umožňuje dále zlepšit cílení na publikum a chránit investice.
 
-## <a name="data-protection--privacy-across-hello-globe"></a>Ochrana dat a ochrany osobních údajů v celém světě hello
-Společnost Microsoft nemá tooprivacy dlouhodobě zavázala, který je nedílnou součástí životního cyklu našich produktů a služeb. Jsme pracovní toobe transparentní v našem zásady ochrany osobních údajů nabídka zákazníkům smysluplné volby a zodpovědně spravujeme data hello, která uchováváme. Stejně jako u všech služeb Azure ani Mobile Engagement nesdílí ani neprodává informace získané od zákazníků. Mobile Engagement je k dispozici globálně, aby vám umožnil toobe zákony o ochraně osobních údajů místní nebo země konkrétní data předpisů.
+## <a name="data-protection--privacy-across-the-globe"></a>Ochrana dat a ochrana osobních údajů po celém světě
+Společnost Microsoft se dlouhodobě zavázala k ochraně vašeho soukromí, která je nedílnou součástí životního cyklu našich produktů a služeb. Pracujeme na tom, aby naše postupy týkající se ochrany soukromí byly transparentní, a nabízíme v tomto ohledu zákazníkům smysluplné volby a zodpovědně spravujeme data, která uchováváme. Stejně jako u všech služeb Azure ani Mobile Engagement nesdílí ani neprodává informace získané od zákazníků. Mobile Engagement je k dispozici globálně a umožňuje dodržování zákonů o ochraně osobních údajů v konkrétních regionech či zemích.
 
 ### <a name="next-steps"></a>Další kroky:
-[Osvědčené postupy a zpracování toocreate Mobile Engagement](mobile-engagement-getting-started-best-practices.md)
+[Doporučené postupy a proces vytvoření Mobile Engagementu](mobile-engagement-getting-started-best-practices.md)
 
 [Začínáme](/index.md)
 

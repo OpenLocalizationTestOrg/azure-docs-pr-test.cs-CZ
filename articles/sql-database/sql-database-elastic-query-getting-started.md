@@ -1,6 +1,6 @@
 ---
-title: "aaaReport napříč instancemi cloudu databází (vodorovné rozdělení do oddílů) | Microsoft Docs"
-description: "jak toouse mezi databáze databázové dotazy"
+title: "Sestava napříč instancemi cloudu databází (vodorovné rozdělení do oddílů) | Microsoft Docs"
+description: "jak používat křížové databáze databázové dotazy"
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -14,53 +14,53 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2016
 ms.author: mlandzic
-ms.openlocfilehash: e34f398f8d408cffd91a70fc2cfbda73daec3550
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 8eb56d44c3a261f6325d4fc91f169d09bf108160
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Sestavy napříč instancemi cloudu databází (preview)
-Můžete vytvořit sestavy z několika databází Azure SQL z bodu pomocí jednoho připojení [elastické dotazu](sql-database-elastic-query-overview.md). Hello databáze musí mít oddíly vodorovně (také označované jako "horizontálně dělené").
+Můžete vytvořit sestavy z několika databází Azure SQL z bodu pomocí jednoho připojení [elastické dotazu](sql-database-elastic-query-overview.md). Databáze musí mít oddíly vodorovně (také označované jako "horizontálně dělené").
 
-Pokud máte existující databázi, přečtěte si téma [migraci stávající databáze, databáze na více systémů tooscaled](sql-database-elastic-convert-to-use-elastic-tools.md).
+Pokud máte existující databázi, přečtěte si téma [migrace existujících databází do databází upraveným](sql-database-elastic-convert-to-use-elastic-tools.md).
 
-objekty SQL hello toounderstand potřeby tooquery najdete v tématu [dotazu mezi databázemi vodorovně oddílů](sql-database-elastic-query-horizontal-partitioning.md).
+Pochopit objektů SQL potřebné k dotazování, najdete v části [dotazu mezi databázemi vodorovně oddílů](sql-database-elastic-query-horizontal-partitioning.md).
 
 ## <a name="prerequisites"></a>Požadavky
-Stažení a spuštění hello [Začínáme s ukázkou nástroje elastické databáze](sql-database-elastic-scale-get-started.md).
+Stažení a spuštění [Začínáme s ukázkou nástroje elastické databáze](sql-database-elastic-scale-get-started.md).
 
-## <a name="create-a-shard-map-manager-using-hello-sample-app"></a>Vytvoření mapy horizontálního oddílu manager pomocí hello ukázkové aplikace
-Zde vytvoříte mapu horizontálního oddílu manager spolu s několika horizontálních oddílů, za nímž následuje vložení dat do hello horizontálních oddílů. Pokud jste tooalready nastavili horizontálních oddílů s horizontálně dělená data v nich, můžete přeskočit následující kroky hello a přesunout toohello další části.
+## <a name="create-a-shard-map-manager-using-the-sample-app"></a>Vytvoření horizontálního oddílu mapy manager pomocí ukázkové aplikace
+Zde vytvoříte mapu horizontálního oddílu manager spolu s několika horizontálních oddílů, za nímž následuje vložení dat do horizontálních oddílů. Pokud jste již má instalační program horizontálních oddílů s horizontálně dělená data v nich, můžete přeskočit následující kroky a přesunout k další části.
 
-1. Sestavení a spuštění hello **Začínáme s nástroje elastické databáze** ukázkové aplikace. Postupujte podle kroků hello až do kroku 7 v části hello [stažení a spuštění ukázkové aplikace hello](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app). Na konci hello tohoto kroku 7 zobrazí se hello následující příkazový řádek:
+1. Sestavení a spuštění **Začínáme s nástroje elastické databáze** ukázkové aplikace. Postupujte podle pokynů až do kroku 7 v části [stažení a spuštění ukázkové aplikace](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app). Na konci tohoto kroku 7 zobrazí se následující příkazový řádek:
 
     ![příkazový řádek][1]
-2. V příkazovém okně hello, zadejte "1" a stiskněte klávesu **Enter**. To vytvoří hello horizontálního oddílu mapa správce a přidá serverové toohello horizontálních oddílů. Potom zadejte "3" a stiskněte klávesu **Enter**; zopakuje akci hello čtyřikrát. Vloží řádky ukázková data ve vašem horizontálních oddílů.
-3. Hello [portál Azure](https://portal.azure.com) by měl zobrazit tři nové databáze na serveru:
+2. V okně příkazového řádku zadejte "1" a stiskněte klávesu **Enter**. To vytvoří horizontálního oddílu správce mapy a přidá dva horizontálních oddílů server. Potom zadejte "3" a stiskněte klávesu **Enter**; čtyřikrát akci opakujte. Vloží řádky ukázková data ve vašem horizontálních oddílů.
+3. [Portál Azure](https://portal.azure.com) by měl zobrazit tři nové databáze na serveru:
 
    ![Visual Studio potvrzení][2]
 
-   Mezidatabázové dotazy v tomto okamžiku jsou podporovány prostřednictvím knihovny klienta hello elastické databáze. Například v příkazovém okně hello použijte možnost 4. Hello výsledků dotazu víc horizontálních jsou vždy **UNION ALL** výsledků hello ze všech horizontálních oddílů.
+   Mezidatabázové dotazy v tomto okamžiku jsou podporovány prostřednictvím knihovny klienta elastické databáze. Například v příkazovém okně použijte možnost 4. Výsledky z dotazu víc horizontálních jsou vždy **UNION ALL** výsledků ze všech horizontálních oddílů.
 
-   V další části hello jsme vytvořit koncový bod ukázkové databáze podporující bohatší dotazování hello dat napříč horizontálních oddílů.
+   V další části jsme vytvořit koncový bod ukázkové databáze podporující bohatší dotazování dat napříč horizontálních oddílů.
 
 ## <a name="create-an-elastic-query-database"></a>Vytvoření dotazu elastické databáze
-1. Otevřete hello [portál Azure](https://portal.azure.com) a přihlaste se.
-2. Vytvořit novou databázi Azure SQL v hello stejný server jako vašeho nastavení horizontálního oddílu. Název databáze hello "ElasticDBQuery."
+1. Otevřete [portál Azure](https://portal.azure.com) a přihlaste se.
+2. Vytvořte novou databázi Azure SQL na stejném serveru jako vašeho nastavení horizontálního oddílu. Název databáze "ElasticDBQuery."
 
     ![Portál Azure a cenovou úroveň][3]
 
     > [!NOTE]
-    > můžete použít existující databázi. Pokud můžete tak učinit, nesmí být jedna z hello horizontálních oddílů, které chcete tooexecute své dotazy na. Tato databáze se použije pro vytvoření hello objekty metadata pro dotaz elastické databáze.
+    > můžete použít existující databázi. Pokud můžete tak učinit, nesmí být jeden z horizontálních oddílů, které byste chtěli provést své dotazy. Tato databáze se použije pro vytváření objektů metadat pro dotaz elastické databáze.
     >
 
 ## <a name="create-database-objects"></a>Vytvoření databázových objektů
 ### <a name="database-scoped-master-key-and-credentials"></a>Hlavní klíč databáze obor a přihlašovací údaje
-Toto jsou použité tooconnect toohello horizontálního oddílu mapa správce a hello horizontálních oddílů:
+Ty se používají k připojení k správce mapy horizontálního oddílu a horizontálních oddílů:
 
 1. Spusťte aplikaci SQL Server Management Studio nebo SQL Server Data Tools v sadě Visual Studio.
-2. Připojit databáze tooElasticDBQuery a spusťte následující příkazy T-SQL hello:
+2. Připojení k databázi ElasticDBQuery a spuštěním následujících příkazů T-SQL:
 
         CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>';
 
@@ -68,10 +68,10 @@ Toto jsou použité tooconnect toohello horizontálního oddílu mapa správce a
         WITH IDENTITY = '<username>',
         SECRET = '<password>';
 
-    "username" a "password" by měl být hello stejné jako informace o přihlášení se používají v kroku 6 v [stažení a spuštění ukázkové aplikace hello](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app) v [Začínáme s nástroje elastické databáze](sql-database-elastic-scale-get-started.md).
+    "username" a "password" by měla být stejná jako informace o přihlášení se používají v kroku 6 v [stažení a spuštění ukázkové aplikace](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app) v [Začínáme s nástroje elastické databáze](sql-database-elastic-scale-get-started.md).
 
 ### <a name="external-data-sources"></a>Externích zdrojů dat.
-toocreate externího zdroje dat, spusťte následující příkaz v databázi ElasticDBQuery hello hello:
+Pokud chcete vytvořit externího zdroje dat, spusťte následující příkaz v databázi ElasticDBQuery:
 
     CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH
       (TYPE = SHARD_MAP_MANAGER,
@@ -81,10 +81,10 @@ toocreate externího zdroje dat, spusťte následující příkaz v databázi El
        SHARD_MAP_NAME = 'CustomerIDShardMap'
     ) ;
 
- "CustomerIDShardMap" je název hello hello horizontálního oddílu mapy, pokud jste vytvořili hello horizontálního oddílu mapy a mapovat horizontálního oddílu manager pomocí Ukázka nástroje elastické databáze hello. Ale pokud jste použili vlastní instalace pro tuto ukázku, pak jej by měl být hello horizontálního oddílu mapy název, které jste zvolili v aplikaci.
+ "CustomerIDShardMap" je název horizontálního oddílu mapy, pokud jste vytvořili horizontálního oddílu mapy a správce mapy horizontálního oddílu pomocí Ukázka nástroje elastické databáze. Ale pokud jste použili vlastní instalace pro tuto ukázku, pak je nutné název mapy horizontálního oddílu, které jste zvolili v aplikaci.
 
 ### <a name="external-tables"></a>Externí tabulky
-Vytvořte externí tabulku, která odpovídá tabulku zákazníků hello na horizontálních oddílů hello tak, že spustíte následující příkaz v databázi ElasticDBQuery hello:
+Vytvořte externí tabulku, která odpovídá tabulku zákazníků na horizontálních oddílů spuštěním následujícího příkazu na databázi ElasticDBQuery:
 
     CREATE EXTERNAL TABLE [dbo].[Customers]
     ( [CustomerId] [int] NOT NULL,
@@ -98,33 +98,33 @@ Vytvořte externí tabulku, která odpovídá tabulku zákazníků hello na hori
 ## <a name="execute-a-sample-elastic-database-t-sql-query"></a>Spuštění ukázkového dotazu T-SQL elastické databáze
 Jakmile definujete zdroj externích dat a externí tabulky teď můžete použít úplnou T-SQL na externí tabulky.
 
-Spusťte tento dotaz na databázi ElasticDBQuery hello:
+Spusťte tento dotaz na databázi ElasticDBQuery:
 
     select count(CustomerId) from [dbo].[Customers]
 
-Si všimnete, že dotaz hello agreguje výsledky ze všech hello horizontálních oddílů a poskytuje následující výstup hello:
+Si všimnete, že dotaz agreguje výsledky ze všech horizontálních oddílů a poskytuje následující výstup:
 
 ![Podrobnosti o výstupu][4]
 
-## <a name="import-elastic-database-query-results-tooexcel"></a>Import tooExcel výsledky dotazu elastické databáze
- Můžete importovat hello výsledky ze souboru aplikace Excel tooan dotazu.
+## <a name="import-elastic-database-query-results-to-excel"></a>Import výsledků dotazu elastické databáze do aplikace Excel
+ Můžete importovat výsledky z dotazu do souboru aplikace Excel.
 
 1. Spusťte aplikaci Excel 2013.
-2. Přejděte toohello **Data** pásu karet.
+2. Přejděte na **Data** pásu karet.
 3. Klikněte na tlačítko **z jiných zdrojů** a klikněte na tlačítko **z SQL serveru**.
 
    ![Importu pro aplikaci Excel z jiných zdrojů][5]
-4. V hello **Průvodce datovým připojením** zadejte název a přihlašovací údaje serveru hello. Pak klikněte na tlačítko **Další**.
-5. V dialogovém okně hello **hello vyberte databázi, která obsahuje hello data, která chcete**, vyberte hello **ElasticDBQuery** databáze.
-6. Vyberte hello **zákazníci** tabulky v zobrazení seznamu hello a klikněte na tlačítko **Další**. Pak klikněte na tlačítko **Dokončit**.
-7. V hello **importovat Data** formuláři v části **vyberte požadovaný způsob tooview tato data v sešitu**, vyberte **tabulky** a klikněte na tlačítko **OK**.
+4. V **Průvodce datovým připojením** zadejte název a přihlašovací údaje serveru. Pak klikněte na tlačítko **Další**.
+5. V dialogovém okně **vyberte databáze, která obsahuje data, která chcete**, vyberte **ElasticDBQuery** databáze.
+6. Vyberte **zákazníci** tabulky v zobrazení seznamu a klikněte na tlačítko **Další**. Pak klikněte na tlačítko **Dokončit**.
+7. V **importovat Data** formuláři v části **vyberte, jak chcete zobrazit tato data v sešitu**, vyberte **tabulky** a klikněte na tlačítko **OK**.
 
-Všechny řádky z hello **zákazníci** tabulky, uložené v různých horizontálních oddílů naplnit hello Excelovém listu.
+Všechny řádky z **zákazníci** tabulky, uložené v různých horizontálních oddílů naplnit listu aplikace Excel.
 
-Teď můžete použít funkce vizualizace výkonné dat v aplikaci Excel. Můžete použít hello připojovací řetězec s názvem serveru, název databáze a pověření tooconnect vaše data a BI integrace nástrojů toohello elastické dotaz do databáze. Ujistěte se, že systém SQL Server je podporovaný jako zdroj dat pro vaše nástroje. Může odkazovat toohello elastické dotaz do databáze a externí tabulky stejně jako všechny ostatní databáze systému SQL Server a zda byste připojili toowith vaše nástroje tabulek systému SQL Server.
+Teď můžete použít funkce vizualizace výkonné dat v aplikaci Excel. Připojovací řetězec s názvem serveru, názvu databáze a pověření slouží k připojení k databázi elastické dotazu vaše integrace nástrojů BI a data. Ujistěte se, že systém SQL Server je podporovaný jako zdroj dat pro vaše nástroje. Může být elastické dotaz do databáze a externí tabulky stejně jako všechny ostatní databáze systému SQL Server a tabulek systému SQL Server, které by se připojit k vaší nástrojem.
 
 ### <a name="cost"></a>Náklady
-Není k dispozici pro použití funkce hello elastické databáze dotazu bez dalších poplatků.
+Není k dispozici pro použití funkce elastické databáze dotazu bez dalších poplatků.
 
 Informace o cenách najdete v části [podrobnosti o cenách na SQL databázi](https://azure.microsoft.com/pricing/details/sql-database/).
 

@@ -1,6 +1,6 @@
 ---
-title: "aaaMonitor úlohy pomocí zobrazení dynamické správy | Microsoft Docs"
-description: "Zjistěte, jak toomonitor úlohy pomocí zobrazení dynamické správy."
+title: "Monitorování úlohy pomocí zobrazení dynamické správy | Microsoft Docs"
+description: "Naučte se monitorovat pomocí zobrazení dynamické správy úlohy."
 services: sql-data-warehouse
 documentationcenter: NA
 author: sqlmojo
@@ -15,24 +15,24 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 10/31/2016
 ms.author: joeyong;barbkess
-ms.openlocfilehash: acccf952d165ccec3de3b4b1c633b18bbbf78077
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7ce6c2cdf1e28852da536414533ccdcdaeb437e5
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitorování vaší úlohy pomocí DMV
-Tento článek popisuje, jak toouse zobrazení dynamické správy (zobrazení dynamické správy) toomonitor vaše úlohy a prozkoumejte provádění dotazů v Azure SQL Data Warehouse.
+Tento článek popisuje, jak sledovat vaše úlohy a prozkoumat provádění dotazů v Azure SQL Data Warehouse pomocí zobrazení dynamické správy (zobrazení dynamické správy).
 
 ## <a name="permissions"></a>Oprávnění
-tooquery hello zobrazení dynamické správy v tomto článku, potřebujete oprávnění stav zobrazení databáze nebo ovládací PRVEK. Stav databáze poskytující zobrazení obvykle je hello preferované oprávnění, protože to je mnohem víc omezující.
+Dotaz zobrazení dynamické správy v tomto článku, musíte stav zobrazení databáze nebo řízení oprávnění. Stav databáze poskytující zobrazení obvykle je upřednostňovaný oprávnění, protože to je mnohem víc omezující.
 
 ```sql
-GRANT VIEW DATABASE STATE toomyuser;
+GRANT VIEW DATABASE STATE TO myuser;
 ```
 
 ## <a name="monitor-connections"></a>Monitorování připojení
-Všechny přihlášení tooSQL datového skladu se protokolují příliš[sys.dm_pdw_exec_sessions][sys.dm_pdw_exec_sessions].  Tato DMV obsahuje hello posledních 10 000 přihlášení.  Hello session_id je hello primární klíč a je přiřazen postupně pro každou novou přihlášení.
+Všechny přihlášení k SQL Data Warehouse jsou zaznamenány do [sys.dm_pdw_exec_sessions][sys.dm_pdw_exec_sessions].  Tato DMV obsahuje posledních 10 000 přihlášení.  Session_id je primární klíč a je přiřazen postupně pro každou novou přihlášení.
 
 ```sql
 -- Other Active Connections
@@ -40,16 +40,16 @@ SELECT * FROM sys.dm_pdw_exec_sessions where status <> 'Closed' and session_id <
 ```
 
 ## <a name="monitor-query-execution"></a>Při provádění dotazu monitorování
-Všechny dotazy spouštěné v SQL Data Warehouse se protokolují příliš[sys.dm_pdw_exec_requests][sys.dm_pdw_exec_requests].  Tato DMV obsahuje hello posledních 10 000 dotazy spouštěné.  Hello request_id jednoznačně identifikuje každý dotaz a je hello primární klíč pro tento DMV.  Hello request_id postupně přiřazen při každém novém dotazu a je s předponou QID, který zastupuje ID dotazu.  Dotaz na tento DMV pro danou session_id uvedeny všechny dotazy pro danou přihlášení.
+Všechny dotazy spouštěné v SQL Data Warehouse jsou zaznamenány do [sys.dm_pdw_exec_requests][sys.dm_pdw_exec_requests].  Tato DMV obsahuje posledních 10 000 dotazy spouštěné.  Request_id jednoznačně identifikuje každý dotaz a je primární klíč pro tento DMV.  Request_id postupně přiřazen při každém novém dotazu a je s předponou QID, který zastupuje ID dotazu.  Dotaz na tento DMV pro danou session_id uvedeny všechny dotazy pro danou přihlášení.
 
 > [!NOTE]
 > Uložené procedury použít víc ID požadavku.  ID požadavku přiřazené postupně. 
 > 
 > 
 
-Tady jsou kroky toofollow tooinvestigate dotazu provádění plány a časy pro konkrétní dotaz.
+Tady jsou kroků k prozkoumání plány provádění dotazů a časy pro konkrétní dotaz.
 
-### <a name="step-1-identify-hello-query-you-wish-tooinvestigate"></a>Krok 1: Identifikace hello dotaz, zda že chcete tooinvestigate
+### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>Krok 1: Identifikace dotaz, který chcete prozkoumat
 ```sql
 -- Monitor active queries
 SELECT * 
@@ -63,18 +63,18 @@ SELECT TOP 10 *
 FROM sys.dm_pdw_exec_requests 
 ORDER BY total_elapsed_time DESC;
 
--- Find a query with hello Label 'My Query'
--- Use brackets when querying hello label column, as it it a key word
+-- Find a query with the Label 'My Query'
+-- Use brackets when querying the label column, as it it a key word
 SELECT  *
 FROM    sys.dm_pdw_exec_requests
 WHERE   [label] = 'My Query';
 ```
 
-Z předchozích výsledky dotazu hello **Poznámka hello ID požadavku** hello dotazu, které chcete tooinvestigate.
+Z předchozí výsledky dotazu **si poznamenejte ID žádosti o** dotazu, který chcete prozkoumat.
 
-Dotazy v hello **pozastaveno** stavu jsou zařazena do fronty z důvodu omezení tooconcurrency. Tyto dotazy se zobrazí také v hello sys.dm_pdw_waits počká dotazu s typem UserConcurrencyResourceType. V tématu [souběžnosti a úlohy správy] [ Concurrency and workload management] další podrobnosti o souběžnosti omezení. Dotazy můžete taky počkat z jiných důvodů, jako pro zámek objektu.  Pokud váš dotaz je čeká na prostředek, přečtěte si téma [příčin dotazy čekání na prostředky] [ Investigating queries waiting for resources] další dolů v tomto článku.
+Dotazy v **pozastaveno** stavu jsou zařazena do fronty z důvodu omezení souběžnosti. Tyto dotazy se zobrazí také v dotazu počká sys.dm_pdw_waits s typem UserConcurrencyResourceType. V tématu [souběžnosti a úlohy správy] [ Concurrency and workload management] další podrobnosti o souběžnosti omezení. Dotazy můžete taky počkat z jiných důvodů, jako pro zámek objektu.  Pokud váš dotaz je čeká na prostředek, přečtěte si téma [příčin dotazy čekání na prostředky] [ Investigating queries waiting for resources] další dolů v tomto článku.
 
-vyhledávání hello toosimplify dotazu v tabulce sys.dm_pdw_exec_requests hello, použijte [popisek] [ LABEL] tooassign dotaz tooyour komentář, který lze vyhledávat v zobrazení sys.dm_pdw_exec_requests hello.
+Pro zjednodušení vyhledávací dotaz v tabulce sys.dm_pdw_exec_requests, použijte [popisek] [ LABEL] přiřadit váš dotaz, který lze vyhledávat v zobrazení sys.dm_pdw_exec_requests komentář.
 
 ```sql
 -- Query with Label
@@ -84,11 +84,11 @@ OPTION (LABEL = 'My Query')
 ;
 ```
 
-### <a name="step-2-investigate-hello-query-plan"></a>Krok 2: Prozkoumat plán dotazu hello
-Použít plán hello ID požadavku tooretrieve hello dotazů na distribuovaných SQL (DSQL) z [sys.dm_pdw_request_steps][sys.dm_pdw_request_steps].
+### <a name="step-2-investigate-the-query-plan"></a>Krok 2: Prozkoumat plán dotazu
+Umožňuje načíst distribuované plán SQL (DSQL) dotazu z ID požadavku [sys.dm_pdw_request_steps][sys.dm_pdw_request_steps].
 
 ```sql
--- Find hello distributed query plan steps for a specific query.
+-- Find the distributed query plan steps for a specific query.
 -- Replace request_id with value from Step 1.
 
 SELECT * FROM sys.dm_pdw_request_steps
@@ -96,51 +96,51 @@ WHERE request_id = 'QID####'
 ORDER BY step_index;
 ```
 
-Pokud plán DSQL trvá déle, než se očekávalo, může být příčina hello komplexní plán s mnoho kroků DSQL nebo jenom jeden krok trvá příliš dlouho.  Pokud je plán hello mnoho kroků s několika operace přesunutí, zvažte optimalizaci přesun dat tooreduce k rozdělení tabulky. Hello [distribuce tabulky] [ Table distribution] článek vysvětluje, proč data musí být přesunutý toosolve dotazu a vysvětluje některé přesun dat toominimize distribuční strategie.
+Pokud plán DSQL trvá déle, než se očekávalo, příčinou může být komplexní plán s mnoho kroků DSQL nebo jenom jeden krok trvá příliš dlouho.  Je-li plán mnoho kroků s několika operace přesunutí, zvažte optimalizaci vaše tabulky distribuce omezit přesun dat. [Distribuce tabulky] [ Table distribution] článek vysvětluje, proč k vyřešení dotazu je třeba přesunout data a vysvětluje některé distribuční strategie, chcete-li minimalizovat přesun dat.
 
-tooinvestigate další podrobnosti o jeden krok, hello *operation_type* sloupec hello dlouho běžící dotaz krok a Poznámka hello **krok Index**:
+K prozkoumání další podrobnosti o jeden krok, *operation_type* sloupec dlouho běžící krok dotazu a Poznámka **krok Index**:
 
 * Pokračujte krok 3a pro **operace SQL**: OnOperation, RemoteOperation, ReturnOperation.
 * Pokračujte krok 3b pro **operace přesunu dat**: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
 
-### <a name="step-3a-investigate-sql-on-hello-distributed-databases"></a>KROK 3a: prozkoumat na hello distribuované databáze SQL
-Použít hello ID žádosti a hello krok Index tooretrieve z podrobností o [sys.dm_pdw_sql_requests][sys.dm_pdw_sql_requests], který obsahuje informace o provádění hello dotazu kroku na všech hello distribuované databáze.
+### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>KROK 3a: prozkoumat na distribuované databáze SQL
+Umožňuje načíst z podrobností o ID žádosti a Index krok [sys.dm_pdw_sql_requests][sys.dm_pdw_sql_requests], který obsahuje informace o provádění kroku dotazu na všechny distribuované databáze.
 
 ```sql
--- Find hello distribution run times for a SQL step.
+-- Find the distribution run times for a SQL step.
 -- Replace request_id and step_index with values from Step 1 and 3.
 
 SELECT * FROM sys.dm_pdw_sql_requests
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-Po spuštění dotazu krok hello [DBCC PDW_SHOWEXECUTIONPLAN] [ DBCC PDW_SHOWEXECUTIONPLAN] může být odhadované plánu systému SQL Server používané tooretrieve hello z hello mezipaměti plánu systému SQL Server pro spuštění na konkrétní krok hello distribuce.
+Po spuštění dotazu krok [DBCC PDW_SHOWEXECUTIONPLAN] [ DBCC PDW_SHOWEXECUTIONPLAN] slouží k načtení odhadované plánu systému SQL Server z mezipaměti plánu systému SQL Server pro krok, spuštění na konkrétní distribuční.
 
 ```sql
--- Find hello SQL Server execution plan for a query running on a specific SQL Data Warehouse Compute or Control node.
+-- Find the SQL Server execution plan for a query running on a specific SQL Data Warehouse Compute or Control node.
 -- Replace distribution_id and spid with values from previous query.
 
 DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
-### <a name="step-3b-investigate-data-movement-on-hello-distributed-databases"></a>Krok 3b: prozkoumat přesun dat v databázích hello distribuované
-Použít hello ID žádosti a hello krok Index tooretrieve informace o krok přesun dat spuštěná v každém distribučním z [sys.dm_pdw_dms_workers][sys.dm_pdw_dms_workers].
+### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>Krok 3b: prozkoumat přesun dat v distribuované databáze
+Použít ID žádosti a Index krok k načtení informací o krok přesun dat spuštěná v každém distribučním z [sys.dm_pdw_dms_workers][sys.dm_pdw_dms_workers].
 
 ```sql
--- Find hello information about all hello workers completing a Data Movement Step.
+-- Find the information about all the workers completing a Data Movement Step.
 -- Replace request_id and step_index with values from Step 1 and 3.
 
 SELECT * FROM sys.dm_pdw_dms_workers
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-* Zkontrolujte hello *total_elapsed_time* toosee sloupce, pokud konkrétní distribuční trvá výrazně delší než jiné pro přesun dat.
-* Pro distribuci dlouho běžící hello, zkontrolujte hello *rows_processed* toosee sloupce, pokud hello počet řádků přesouvaných z příslušné distribuci je podstatně větší než jiné. Pokud ano, může to znamenat zkosení podkladová data.
+* Zkontrolujte *total_elapsed_time* zobrazíte, když konkrétní distribuční trvá výrazně delší než jiné pro přesun dat.
+* Pro dlouhodobé distribuci, zkontrolujte *rows_processed* zobrazíte, pokud počet řádků přesouvaných z příslušné distribuci je podstatně větší než jiné. Pokud ano, může to znamenat zkosení podkladová data.
 
-Pokud dotaz hello běží, [DBCC PDW_SHOWEXECUTIONPLAN] [ DBCC PDW_SHOWEXECUTIONPLAN] může být odhadované plánu systému SQL Server používané tooretrieve hello z hello mezipaměti plánu systému SQL Server pro hello aktuálně spuštěna v rámci konkrétní krok SQL distribuce.
+Pokud dotaz běží, [DBCC PDW_SHOWEXECUTIONPLAN] [ DBCC PDW_SHOWEXECUTIONPLAN] slouží k načtení odhadované plánu systému SQL Server z mezipaměti plánu SQL serveru pro SQL kroku aktuálně spuštěného v rámci konkrétní distribuce.
 
 ```sql
--- Find hello SQL Server estimated plan for a query running on a specific SQL Data Warehouse Compute or Control node.
+-- Find the SQL Server estimated plan for a query running on a specific SQL Data Warehouse Compute or Control node.
 -- Replace distribution_id and spid with values from previous query.
 
 DBCC PDW_SHOWEXECUTIONPLAN(55, 238);
@@ -149,7 +149,7 @@ DBCC PDW_SHOWEXECUTIONPLAN(55, 238);
 <a name="waiting"></a>
 
 ## <a name="monitor-waiting-queries"></a>Monitorování čekání na dotazy
-Pokud zjistíte, že dotazu nepostupuje vpřed, protože se čeká na prostředek, tady je dotaz, který obsahuje všechny prostředky hello že čeká dotazu.
+Pokud zjistíte, že dotazu nepostupuje vpřed, protože se čeká na prostředek, tady je dotaz, který zobrazuje všechny prostředky, které že se čeká na dotazu.
 
 ```sql
 -- Find queries 
@@ -171,15 +171,15 @@ WHERE waits.request_id = 'QID####'
 ORDER BY waits.object_name, waits.object_type, waits.state;
 ```
 
-Pokud dotaz hello aktivně čeká na prostředky z jiného dotazu, pak bude mít stav hello **AcquireResources**.  Pokud dotaz hello má všechny hello požadované prostředky, pak bude mít stav hello **udělit**.
+Pokud dotaz aktivně čeká na prostředky z jiného dotazu, pak bude stav **AcquireResources**.  Pokud dotaz obsahuje všechny požadované prostředky, pak bude stav **udělit**.
 
 ## <a name="monitor-tempdb"></a>Databáze tempdb monitorování
-Databáze tempdb vysoké využití může být hello příčiny nízký výkon a mimo problémy s pamětí. Zkontrolujte nejprve Pokud máte rowgroups kvality zkosení nebo nízký dat a proveďte příslušné akce hello. Vezměte v úvahu škálování datového skladu, pokud zjistíte, tempdb dosažení jeho omezení během provádění dotazu. Hello následující text popisuje, jak tooidentify využití databáze tempdb na jeden dotaz na každém uzlu. 
+Databáze tempdb vysoké využití může být hlavní příčinou nízký výkon a mimo problémy s pamětí. Zkontrolujte nejprve Pokud máte rowgroups kvality zkosení nebo nízký dat a proveďte příslušné akce. Vezměte v úvahu škálování datového skladu, pokud zjistíte, tempdb dosažení jeho omezení během provádění dotazu. Následující část popisuje postup identifikovat využití databáze tempdb na jeden dotaz na každém uzlu. 
 
-Vytvořte následující zobrazení tooassociate hello příslušný uzel id pro sys.dm_pdw_sql_requests hello. To povolí tooleverage můžete další průchozí zobrazení dynamické správy a připojte tyto tabulky s sys.dm_pdw_sql_requests.
+Vytvořte následující zobrazení přidružit id odpovídající uzlu pro sys.dm_pdw_sql_requests. To vám umožní využít další průchozí zobrazení dynamické správy a zapojit tyto tabulky s sys.dm_pdw_sql_requests.
 
 ```sql
--- sys.dm_pdw_sql_requests with hello correct node id
+-- sys.dm_pdw_sql_requests with the correct node id
 CREATE VIEW sql_requests AS
 (SELECT
        sr.request_id,
@@ -200,7 +200,7 @@ CREATE VIEW sql_requests AS
 FROM sys.pdw_distributions AS d
 RIGHT JOIN sys.dm_pdw_sql_requests AS sr ON d.distribution_id = sr.distribution_id)
 ```
-Spusťte následující dotaz toomonitor tempdb hello:
+Spusťte následující dotaz pro databázi tempdb monitorování:
 
 ```sql
 -- Monitor tempdb
@@ -233,9 +233,9 @@ ORDER BY sr.request_id;
 ```
 ## <a name="monitor-memory"></a>Sledování paměti
 
-Paměť může být hello příčiny nízký výkon a mimo problémy s pamětí. Zkontrolujte nejprve Pokud máte rowgroups kvality zkosení nebo nízký dat a proveďte příslušné akce hello. Zvažte, pokud zjistíte, využití paměti systému SQL Server během provádění dotazu dosažení jeho omezení škálování datového skladu.
+Paměť může být hlavní příčinou nízký výkon a mimo problémy s pamětí. Zkontrolujte nejprve Pokud máte rowgroups kvality zkosení nebo nízký dat a proveďte příslušné akce. Zvažte, pokud zjistíte, využití paměti systému SQL Server během provádění dotazu dosažení jeho omezení škálování datového skladu.
 
-Hello následující dotaz vrátí přetížení využití a paměti paměti systému SQL Server na každém uzlu: 
+Následující dotaz vrátí přetížení využití a paměti paměti systému SQL Server na každém uzlu:   
 ```sql
 -- Memory consumption
 SELECT
@@ -258,7 +258,7 @@ pc1.counter_name = 'Total Server Memory (KB)'
 AND pc2.counter_name = 'Target Server Memory (KB)'
 ```
 ## <a name="monitor-transaction-log-size"></a>Velikost protokolu transakcí monitorování
-Hello následující dotaz vrátí velikost protokolu transakcí hello v každém distribučním. Zkontrolujte, pokud máte rowgroups kvality zkosení nebo nízký dat a proveďte příslušné akce hello. Pokud některý ze souborů protokolu hello dosahuje 160GB, měli byste zvážit vertikálním navýšení kapacity instanci nebo omezíte velikost vašeho transakce. 
+Následující dotaz vrátí velikost protokolu transakcí v každém distribučním. Zkontrolujte, pokud máte rowgroups kvality zkosení nebo nízký dat a proveďte příslušné akce. Pokud jeden ze souborů protokolu dosahuje 160GB, měli byste zvážit vertikálním navýšení kapacity instanci nebo omezíte velikost vašeho transakce. 
 ```sql
 -- Transaction log size
 SELECT
@@ -272,7 +272,7 @@ AND counter_name = 'Log File(s) Used Size (KB)'
 AND counter_name = 'Target Server Memory (KB)'
 ```
 ## <a name="monitor-transaction-log-rollback"></a>Monitorování odvolání transakce protokolu
-Pokud se nedaří své dotazy nebo trvá dlouho tooproceed, můžete zkontrolovat a monitorování, pokud máte jakékoli transakce vrácení zpět.
+Pokud vaše dotazy se nedaří nebo trvá příliš dlouho chcete-li pokračovat, můžete zkontrolovat a monitorování, pokud máte jakékoli transakce vrácení zpět.
 ```sql
 -- Monitor rollback
 SELECT 

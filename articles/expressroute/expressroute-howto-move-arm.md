@@ -1,6 +1,6 @@
 ---
-title: "Přesun okruhů ExpressRoute z classic tooResource správce: prostředí PowerShell: Azure | Microsoft Docs"
-description: "Tato stránka popisuje, jak model toomove toohello classic okruh nasazení Resource Manager pomocí prostředí PowerShell."
+title: "Přesun okruhů ExpressRoute z classic do Resource Manager: prostředí PowerShell: Azure | Microsoft Docs"
+description: "Tato stránka popisuje, jak přesunout classic okruhu do modelu nasazení Resource Manager pomocí prostředí PowerShell."
 documentationcenter: na
 services: expressroute
 author: ganesr
@@ -15,50 +15,50 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/03/2017
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: 8dcadafca5e4f40773902cec5786eba1dbe133eb
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c407e01e6d881cb8adcfe55faa246468669be883
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="move-expressroute-circuits-from-hello-classic-toohello-resource-manager-deployment-model-using-powershell"></a>Přesun okruhů ExpressRoute z hello toohello klasického modelu nasazení Resource Manager pomocí prostředí PowerShell
+# <a name="move-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model-using-powershell"></a>Přesun okruhů ExpressRoute z classic do modelu nasazení Resource Manager pomocí prostředí PowerShell
 
-toouse okruhu ExpressRoute pro hello classic a modelech nasazení Resource Manager, musíte přesunout modelu nasazení Resource Manager toohello okruhu hello. Hello následující části vám pomohou přesunutí okruhu pomocí prostředí PowerShell.
+Pokud chcete použít okruhu ExpressRoute pro classic i modelech nasazení Resource Manager, je třeba přesunout okruh do modelu nasazení Resource Manager. V následujících částech můžete přesunout váš okruh pomocí prostředí PowerShell.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-* Ověřte, že máte nejnovější verzi modulů prostředí Azure PowerShell hello hello (minimálně verze 1.0). Další informace najdete v tématu [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
-* Ujistěte se, že jste si přečetli hello [požadavky](expressroute-prerequisites.md), [požadavky na směrování](expressroute-routing.md), a [pracovních](expressroute-workflows.md) před zahájením konfigurace.
-* Zkontrolujte hello informace jsou poskytovány na základě [přesun okruhu ExpressRoute z classic tooResource Manager](expressroute-move.md). Ujistěte se, že rozumíte plně hello limity a omezení.
-* Ověřte, že hello okruh v modelu nasazení classic hello plně funkční.
-* Ujistěte se, že máte skupinu prostředků, který byl vytvořen v modelu nasazení Resource Manager hello.
+* Ověřte, že máte nejnovější verzi modulů prostředí Azure PowerShell (minimálně verze 1.0). Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).
+* Ujistěte se, že jste si přečetli [požadavky](expressroute-prerequisites.md), [požadavky na směrování](expressroute-routing.md), a [pracovních](expressroute-workflows.md) před zahájením konfigurace.
+* Zkontrolujte informace, které jsou poskytovány na základě [přesun okruhu ExpressRoute z classic do Resource Manager](expressroute-move.md). Ujistěte se, že rozumíte plně limity a omezení.
+* Ověřte, že je okruh v modelu nasazení classic plně funkční.
+* Ujistěte se, že máte skupinu prostředků, který byl vytvořen v modelu nasazení Resource Manager.
 
 ## <a name="move-an-expressroute-circuit"></a>Přesun okruhu ExpressRoute
 
-### <a name="step-1-gather-circuit-details-from-hello-classic-deployment-model"></a>Krok 1: Shromáždění podrobností okruh z modelu nasazení classic hello
+### <a name="step-1-gather-circuit-details-from-the-classic-deployment-model"></a>Krok 1: Shromáždění podrobností okruh z modelu nasazení classic
 
-Přihlaste se toohello prostředí Azure classic a shromažďovat klíče služby hello.
+Přihlaste se k prostředí Azure classic a shromáždit klíč služby.
 
-1. Přihlaste se tooyour účet Azure.
+1. Přihlaste se k účtu Azure.
 
   ```powershell
   Add-AzureAccount
   ```
 
-2. Vyberte příslušné předplatné Azure hello.
+2. Vyberte příslušné předplatné Azure.
 
   ```powershell
   Select-AzureSubscription "<Enter Subscription Name here>"
   ```
 
-3. Importujte hello moduly Powershellu pro Azure a ExpressRoute.
+3. Importujte další moduly Powershellu pro Azure a ExpressRoute.
 
   ```powershell
   Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Azure.psd1'
   Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\ExpressRoute\ExpressRoute.psd1'
   ```
 
-4. Pomocí rutiny hello níže tooget hello služby klíče pro všechny vaše okruhy ExpressRoute. Po načtení hello klíče, zkopírujte hello **klíč služby** hello okruhu, které chcete modelu nasazení Resource Manager toohello toomove.
+4. Použijte následující rutinu k získání klíče služby pro všechny vaše okruhy ExpressRoute. Po načtení klíče, zkopírujte **klíč služby** okruhu, který chcete přesunout do modelu nasazení Resource Manager.
 
   ```powershell
   Get-AzureDedicatedCircuit
@@ -66,92 +66,92 @@ Přihlaste se toohello prostředí Azure classic a shromažďovat klíče služb
 
 ### <a name="step-2-sign-in-and-create-a-resource-group"></a>Krok 2: Přihlaste se a vytvořte skupinu prostředků
 
-Přihlaste se toohello Resource Manager prostředí a vytvořit novou skupinu prostředků.
+Přihlaste se k prostředí Resource Manager a vytvořte novou skupinu prostředků.
 
-1. Přihlaste se tooyour prostředí Azure Resource Manager.
+1. Přihlaste se do prostředí Azure Resource Manager.
 
   ```powershell
   Login-AzureRmAccount
   ```
 
-2. Vyberte příslušné předplatné Azure hello.
+2. Vyberte příslušné předplatné Azure.
 
   ```powershell
   Get-AzureRmSubscription -SubscriptionName "<Enter Subscription Name here>" | Select-AzureRmSubscription
   ```
 
-3. Upravte hello fragment kódu níže toocreate novou skupinu prostředků, pokud ještě nemáte skupinu prostředků.
+3. Chcete-li vytvořit novou skupinu prostředků, pokud ještě nemáte skupinu prostředků fragment upravte.
 
   ```powershell
   New-AzureRmResourceGroup -Name "DemoRG" -Location "West US"
   ```
 
-### <a name="step-3-move-hello-expressroute-circuit-toohello-resource-manager-deployment-model"></a>Krok 3: Přesunutí okruhu ExpressRoute hello, toohello modelu nasazení Resource Manager
+### <a name="step-3-move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>Krok 3: Přesunout okruh ExpressRoute do modelu nasazení Resource Manager
 
-Můžete je nyní připraven toomove váš okruh ExpressRoute z modelu nasazení classic hello, toohello modelu nasazení Resource Manager. Než budete pokračovat, zkontrolujte hello informací uvedených v [přesun okruhu ExpressRoute z modelu nasazení Resource Manager classic toohello hello](expressroute-move.md).
+Nyní jste připraveni pro přesun okruhu ExpressRoute z modelu nasazení classic do modelu nasazení Resource Manager. Než budete pokračovat, přečtěte si informace uvedené v [přesun okruhu ExpressRoute z klasického modelu nasazení Resource Manager](expressroute-move.md).
 
-toomove váš okruh, upravit a spusťte hello následující fragment kódu:
+Chcete-li přesunout váš okruh, upravit a spusťte následující fragment kódu:
 
 ```powershell
 Move-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Location "West US" -ServiceKey "<Service-key>"
 ```
 
 > [!NOTE]
-> Po dokončení přesunu hello hello nový název, který je uvedený v předchozí rutiny hello bude použité tooaddress hello prostředků. Hello okruhu bude v podstatě přejmenovat.
+> Po dokončení přesunu nový název, který je uvedený v předchozí rutiny bude používat k adresování prostředku. Okruhu bude v podstatě přejmenovat.
 > 
 
 ## <a name="modify-circuit-access"></a>Úprava okruhu přístup
 
-### <a name="tooenable-expressroute-circuit-access-for-both-deployment-models"></a>tooenable přístup okruhu ExpressRoute pro oba modely nasazení
+### <a name="to-enable-expressroute-circuit-access-for-both-deployment-models"></a>Chcete-li povolit přístup k okruhu ExpressRoute pro oba modely nasazení
 
-Po přesunutí classic Resource Manager nasazení modelu toohello okruh ExpressRoute, můžete povolit modely nasazení tooboth přístup. Spusťte následující rutiny tooenable přístup tooboth nasazení modely hello:
+Po přesunutí classic okruhu ExpressRoute do modelu nasazení Resource Manager, můžete povolit přístup k oběma modelům nasazení. Spusťte následující rutiny a povolte tak přístup k oběma modelům nasazení:
 
-1. Získáte podrobnosti o okruhu hello.
+1. Získání podrobností o okruhu.
 
   ```powershell
   $ckt = Get-AzureRmExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
   ```
 
-2. Nastavit tooTRUE "Povolit klasické operace".
+2. Nastavení "Povolit klasické operace" na hodnotu TRUE.
 
   ```powershell
   $ckt.AllowClassicOperations = $true
   ```
 
-3. Aktualizujte hello okruh. Po úspěšném dokončení této operace bude možné tooview hello okruh v modelu nasazení classic hello.
+3. Aktualizujte okruh. Po úspěšném dokončení této operace bude moci zobrazit okruh v modelu nasazení classic.
 
   ```powershell
   Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
   ```
 
-4. Spusťte následující rutinu tooget hello podrobnosti o hello okruh ExpressRoute hello. Musí být schopný toosee hello služby klíč uvedené.
+4. Spusťte následující rutiny můžete získat podrobnosti o okruhu ExpressRoute. Musí umět klíč služby uvedené v tématu.
 
   ```powershell
   get-azurededicatedcircuit
   ```
 
-5. Teď můžete spravovat okruh ExpressRoute toohello odkazů pomocí příkazů modelu nasazení classic hello virtuální sítě classic a Resource Manager příkazy hello pro virtuální sítě Resource Manager. Hello následující články vám pomůžou spravovat odkazy toohello okruh ExpressRoute:
+5. Teď můžete spravovat odkazy na okruh ExpressRoute pomocí příkazů modelu nasazení classic pro virtuální sítě classic a Resource Manager příkazy pro virtuální sítě Resource Manager. Tyto články vám pomůžou spravovat odkazy na okruh ExpressRoute:
 
-    * [Propojení vaší virtuální sítě tooyour okruh ExpressRoute v modelu nasazení Resource Manager hello](expressroute-howto-linkvnet-arm.md)
-    * [Propojení vaší virtuální sítě tooyour okruh ExpressRoute v modelu nasazení classic hello](expressroute-howto-linkvnet-classic.md)
+    * [Propojení virtuální sítě k okruhu ExpressRoute v modelu nasazení Resource Manager](expressroute-howto-linkvnet-arm.md)
+    * [Propojení virtuální sítě k okruhu ExpressRoute v modelu nasazení classic](expressroute-howto-linkvnet-classic.md)
 
-### <a name="toodisable-expressroute-circuit-access-toohello-classic-deployment-model"></a>okruh ExpressRoute toodisable, přístup k modelu nasazení classic toohello
+### <a name="to-disable-expressroute-circuit-access-to-the-classic-deployment-model"></a>Chcete-li zakázat přístup k okruhu ExpressRoute do modelu nasazení classic
 
-Spusťte následující rutiny toodisable přístup k modelu nasazení classic pro toohello hello.
+Spusťte následující rutiny můžete zakázat přístup k modelu nasazení classic.
 
-1. Získáte podrobnosti o hello okruh ExpressRoute.
+1. Získáte podrobnosti o okruhu ExpressRoute.
 
   ```powershell
   $ckt = Get-AzureRmExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
   ```
 
-2. Nastavit tooFALSE "Povolit klasické operace".
+2. Nastavení "Povolit klasické operace" na hodnotu FALSE.
 
   ```powershell
   $ckt.AllowClassicOperations = $false
   ```
 
-3. Aktualizujte hello okruh. Po úspěšném dokončení této operace nebudou moct tooview hello okruh v modelu nasazení classic hello.
+3. Aktualizujte okruh. Po této operaci byl úspěšně dokončen, nebudete moci zobrazit okruh v modelu nasazení classic.
 
   ```powershell
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
@@ -160,4 +160,4 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření a úprava směrování pro okruhu ExpressRoute](expressroute-howto-routing-arm.md)
-* [Propojení vaší virtuální sítě tooyour okruh ExpressRoute](expressroute-howto-linkvnet-arm.md)
+* [Propojení virtuální sítě k okruhu ExpressRoute](expressroute-howto-linkvnet-arm.md)

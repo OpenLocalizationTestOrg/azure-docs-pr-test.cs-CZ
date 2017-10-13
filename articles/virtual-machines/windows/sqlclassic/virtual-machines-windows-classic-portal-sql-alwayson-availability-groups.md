@@ -1,6 +1,6 @@
 ---
-title: "aaaConfigure skupiny dostupnosti Always On v Azure Virtual Machines (klasické) | Microsoft Docs"
-description: "Vytvoření skupiny dostupnosti Always On s virtuálními počítači Azure. V tomto kurzu primárně nepoužíváte hello uživatelské rozhraní a nástroje pro skriptování."
+title: "Konfigurace skupiny dostupnosti Always On v Azure Virtual Machines (klasické) | Microsoft Docs"
+description: "Vytvoření skupiny dostupnosti Always On s virtuálními počítači Azure. Tento kurz používá primárně uživatelské rozhraní a nástroje místo skriptování."
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: f428ad994a55378c281c959f4696fdcaf50632b1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b360fe9f28eeb9b10c82fce729165b1b572ac3c6
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="configure-always-on-availability-group-in-azure-virtual-machines-classic"></a>Konfigurace skupiny dostupnosti Always On v Azure Virtual Machines (klasické)
 > [!div class="op_single_selector"]
@@ -30,30 +30,30 @@ ms.lasthandoff: 10/06/2017
 Než začnete, vezměte v úvahu, že je nyní možné dokončit tuto úlohu v modelu Azure Resource Manager. Doporučujeme, abyste modelu Azure Resource Manager pro nová nasazení. V tématu [SQL serveru Always On skupiny dostupnosti na virtuálních počítačích Azure](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md).
 
 > [!IMPORTANT] 
-> Společnost Microsoft doporučuje, aby většina nových nasazení používala model Resource Manager hello. Azure má dva různé nasazení modely toocreate a pracovat s prostředky: [Resource Manager a klasický](../../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek vysvětluje, jak toouse hello modelu nasazení classic. 
+> Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Azure má dva různé modely nasazení k vytváření a práci s prostředky: [Resource Manager a klasický](../../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek vysvětluje, jak pomocí modelu nasazení classic. 
 
-toocomplete tuto úlohu s hello modelu Azure Resource Manager, najdete v části [SQL serveru Always On skupiny dostupnosti na virtuálních počítačích Azure](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md).
+Pro dokončení této úlohy s modelem Azure Resource Manager, najdete v části [SQL serveru Always On skupiny dostupnosti na virtuálních počítačích Azure](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md).
 
-Tento kurz začátku do konce ukazuje, jak ke skupinám dostupnosti tooimplement pomocí SQL serveru Always On spuštěná ve virtuálních počítačích Azure.
+V tomto kurzu začátku do konce ukazuje, jak implementovat skupiny dostupnosti pomocí SQL serveru Always On spuštěná ve virtuálních počítačích Azure.
 
-Na konci hello hello kurzu vaše řešení SQL serveru Always On v Azure budou tvořeny hello následující prvky:
+Na konci tohoto kurzu vaše řešení SQL serveru Always On v Azure budou tvořeny následující prvky:
 
 * Virtuální síť, která obsahuje několik podsítí a zahrnuje front-end a back-end podsítě
 * Řadič domény s doménou služby Active Directory (Azure AD)
-* Dva virtuální počítače, na kterých běží SQL Server a jsou nasazené toohello back-end podsíť a připojený k toohello Azure AD domain
-* Clusteru s podporou převzetí služeb při selhání tři uzly s model kvora Většina uzlů hello
+* Dva virtuální počítače, které se systémem SQL Server a jsou nasazené do podsítě back-end a připojený k doméně služby Azure AD
+* Clusteru s podporou převzetí služeb při selhání tři uzly s modelem kvora Většina uzlů
 * Skupiny dostupnosti, která má dva replik se synchronním potvrzováním databáze dostupnosti
 
-Následující obrázek Hello je grafické reprezentace hello řešení.
+Na následujícím obrázku je grafické reprezentace řešení.
 
 ![Architektura testovací laboratoř pro skupiny dostupnosti v Azure](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC791912.png)
 
-Všimněte si, že toto je možné jednu konfiguraci. Například můžete minimalizovat hello počet virtuálních počítačů pro skupinu dostupnosti dvě repliky. Tato konfigurace se uloží na výpočetní hodiny v Azure pomocí řadiče domény hello jako určující sdílená složka souboru hello kvora v clusteru se dvěma uzly. Tato metoda snižuje počet hello virtuálních počítačů pomocí jedné z hello ilustrovaný konfigurace.
+Všimněte si, že toto je možné jednu konfiguraci. Například můžete minimalizovat počet virtuálních počítačů pro skupinu dostupnosti dvě repliky. Tato konfigurace se uloží na výpočetní hodiny v Azure pomocí řadiče domény jako sdílenou složku kvora v clusteru se dvěma uzly. Tato metoda snižuje počet virtuálních počítačů pomocí jedné z ilustrované konfigurace.
 
-Tento kurz předpokládá hello následující:
+Tento kurz předpokládá následující:
 
 * Už máte účet Azure.
-* Už víte, jak toouse hello grafickým uživatelským rozhraním v hello virtuálního počítače Galerie tooprovision klasické virtuální počítač, který spouští server SQL Server.
+* Už víte, jak zřídit klasické virtuální počítač, který spouští server SQL Server pomocí grafického uživatelského rozhraní v galerii virtuálních počítačů.
 * Už máte plnou Principy skupin dostupnosti Always On. Další informace najdete v tématu [skupin dostupnosti Always On (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx).
 
 > [!NOTE]
@@ -61,84 +61,84 @@ Tento kurz předpokládá hello následující:
 > 
 > 
 
-## <a name="create-hello-virtual-network-and-domain-controller-server"></a>Vytvoření virtuální sítě hello a server řadiče domény
-Začínat nové zkušební účet Azure. Po nastavení účtu musí být na domovské obrazovce hello hello portál Azure classic.
+## <a name="create-the-virtual-network-and-domain-controller-server"></a>Vytvořit virtuální síť a doména serveru controller
+Začínat nové zkušební účet Azure. Po nastavení účtu musí být na domovské obrazovce portálu Azure classic.
 
-1. Klikněte na tlačítko hello **nový** tlačítko v hello levém horním rohu hello dolní části stránky hello, jak ukazuje následující snímek obrazovky hello.
+1. Klikněte **nový** tlačítko v levém horním rohu dolní části stránky, jak je znázorněno na následujícím snímku obrazovky.
    
-    ![Kliknutím na tlačítko Nová hello portálu](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665511.gif)
-2. Klikněte na tlačítko **síťové služby** > **virtuální sítě** > **vytvořit vlastní**, jak ukazuje následující snímek obrazovky hello.
+    ![Kliknutím na tlačítko Nová na portálu](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665511.gif)
+2. Klikněte na tlačítko **síťové služby** > **virtuální sítě** > **vytvořit vlastní**, jak je znázorněno na následujícím snímku obrazovky.
    
     ![Vytvoření virtuální sítě](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665512.gif)
-3. V hello **vytvořit virtuální síť A** dialogové okno pole, vytvořte nové virtuální sítě tak, že procházení hello stránky a pomocí nastavení hello ve hello následující tabulka. 
+3. V **vytvořit virtuální síť A** dialogové okno pole, vytvořte nové virtuální sítě tak, že procházení stránek a pomocí nastavení v následující tabulce. 
    
    | Stránka | Nastavení |
    | --- | --- |
    | Podrobnosti virtuální sítě |**Název = ContosoNET**<br/>**OBLAST = západní USA** |
    | Servery DNS a připojení VPN |Žádný |
-   | Adresní prostory virtuální sítě |Hello následující snímek obrazovky ukazuje nastavení: ![Vytvoření virtuální sítě](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC784620.png) |
-4. Vytvořte hello virtuální počítač, který budete používat jako hello řadič domény (DC). Klikněte na tlačítko **nový** > **výpočetní** > **virtuálního počítače** > **z Galerie**, jak je znázorněno v Následující snímek obrazovky Hello.
+   | Adresní prostory virtuální sítě |Následující snímek obrazovky ukazuje nastavení: ![Vytvoření virtuální sítě](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC784620.png) |
+4. Vytvořte virtuální počítač, který budete používat jako řadič domény (DC). Klikněte na tlačítko **nový** > **výpočetní** > **virtuálního počítače** > **z Galerie**, jak je znázorněno na následujícím snímku obrazovky.
    
     ![Vytvoření virtuálního počítače](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC784621.png)
-5. V hello **vytvořit virtuální počítač A** dialogové okno Nový virtuální počítač nakonfigurujte tak, že procházení hello stránky a pomocí nastavení hello ve hello následující tabulka. 
+5. V **vytvořit virtuální počítač A** dialogové okno Nový virtuální počítač nakonfigurujte tak, že procházení stránek a pomocí nastavení v následující tabulce. 
    
    | Stránka | Nastavení |
    | --- | --- |
-   | Vyberte operační systém virtuálního počítače hello |Windows Server 2012 R2 Datacenter |
+   | Vyberte operační systém virtuálního počítače |Windows Server 2012 R2 Datacenter |
    | Konfigurace virtuálního počítače |**Datum vydání verze** = (nejnovější)<br/>**Název VIRTUÁLNÍHO počítače** = ContosoDC<br/>**ÚROVEŇ** = STANDARD<br/>**VELIKOST** = A2 (2 jádra)<br/>**NOVÉ uživatelské jméno** = AzureAdmin<br/>**NOVÉ heslo** = Contoso! 000<br/>**POTVRĎTE** = Contoso! 000 |
    | Konfigurace virtuálního počítače |**CLOUDOVÉ služby** = vytvořit novou cloudovou službu<br/>**Název CLOUDOVÉ služby DNS** = název jedinečný cloudové služby<br/>**NÁZEV DNS** = jedinečný název (např: ContosoDC123)<br/>**OBLASTI nebo skupiny vztahů nebo VIRTUÁLNÍCH SÍŤOVÝCH** = ContosoNET<br/>**PODSÍTĚ virtuální sítě** = Back(10.10.2.0/24)<br/>**ÚČET úložiště** = použít účet úložiště automaticky generované<br/>**Skupina dostupnosti** = (None) |
    | Možnosti virtuálního počítače |Použít výchozí nastavení |
 
-Po dokončení konfigurace hello nový virtuální počítač, počkejte provsioned toobe hello virtuálního počítače. Tento proces trvat některé toofinish čas. Pokud kliknete na tlačítko hello **virtuálního počítače** ve hello Azure classic portálu, můžete zobrazit stavy recyklace ContosoDC z **počáteční (zřizování)** příliš**Zastaveno**, **Od**, **spuštění (zřizování)**a v neposlední řadě **systémem**.
+Po dokončení konfigurace nového virtuálního počítače, počkejte, než pro virtuální počítač jako provsioned. Tento proces trvá delší dobu pro dokončení. Pokud kliknete **virtuálního počítače** karta v portálu Azure classic, uvidíte ContosoDC recyklace stavů ze **počáteční (zřizování)** k **Zastaveno**, **počáteční**, **spuštění (zřizování)**a nakonec **systémem**.
 
-Nyní je úspěšně zřízen Hello serveru řadiče domény. Dále nakonfigurujete hello domény služby Active Directory na tomto serveru řadiče domény.
+Nyní je úspěšně zřízen serveru řadiče domény. Dále nakonfigurujete domény služby Active Directory na tomto serveru řadiče domény.
 
-## <a name="configure-hello-domain-controller"></a>Konfigurace řadiče domény hello
-V hello následující kroky můžete nakonfigurovat hello počítači ContosoDC jako řadič domény pro spolecnost.contoso.com.
+## <a name="configure-the-domain-controller"></a>Konfigurace řadiče domény
+V následujících krocích nakonfigurujete na počítači ContosoDC jako řadič domény pro spolecnost.contoso.com.
 
-1. Hello portálu, vyberte hello **ContosoDC** počítače. Na hello **řídicí panel** , klikněte na **připojit** tooopen souboru vzdálené plochy (RDP) pro přístup ke vzdálené ploše.
+1. Na portálu, vyberte **ContosoDC** počítače. Na **řídicí panel** , klikněte na **Connect** otevřete soubor vzdálené plochy (RDP) pro přístup ke vzdálené ploše.
    
-    ![Připojit tooVritual počítače](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC784622.png)
+    ![Připojte se k počítači Vritual](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC784622.png)
 2. Přihlaste se pomocí účtu správce nakonfigurované (**\AzureAdmin**) a heslo (**Contoso! 000**).
-3. Ve výchozím nastavení, hello **správce serveru** měla by se zobrazit řídicí panel.
-4. Klikněte na tlačítko hello **přidat role a funkce** odkaz na řídicí panel hello.
+3. Ve výchozím nastavení **správce serveru** měla by se zobrazit řídicí panel.
+4. Klikněte **přidat role a funkce** odkaz na řídicím panelu.
    
     ![V Průzkumníku serveru přidat role](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC784623.png)
-5. Klikněte na tlačítko **Další** dokud nezískáte toohello **role serveru** části.
-6. Vyberte hello **Active Directory Domain Services** a **DNS Server** role. Po zobrazení výzvy, přidejte další funkce, které vyžadují tyto role.
+5. Klikněte na tlačítko **Další** až na **role serveru** části.
+6. Vyberte **Active Directory Domain Services** a **DNS Server** role. Po zobrazení výzvy, přidejte další funkce, které vyžadují tyto role.
    
    > [!NOTE]
-   > Zobrazí se upozornění, že neexistuje žádná statická IP adresa ověřování. Pokud testujete hello konfigurace, klikněte na tlačítko **pokračovat**. Pro produkčních scénářích [použijte PowerShell tooset hello statickou IP adresu počítače řadiče domény hello](../../../virtual-network/virtual-networks-reserved-private-ip.md).
+   > Zobrazí se upozornění, že neexistuje žádná statická IP adresa ověřování. Pokud testujete konfiguraci, klikněte na tlačítko **pokračovat**. Pro produkčních scénářích [nastavit statickou IP adresu počítače řadiče domény pomocí prostředí PowerShell](../../../virtual-network/virtual-networks-reserved-private-ip.md).
    > 
    > 
    
     ![Role dialogové okno Přidání](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC784624.png)
-7. Klikněte na tlačítko **Další** dokud se nedostanete hello **potvrzení** části. Vyberte hello **restartování hello cílový server automaticky podle potřeby** zaškrtávací políčko.
+7. Klikněte na tlačítko **Další** dokud nepřejdete **potvrzení** části. Vyberte **cílový server automaticky restartovat, pokud je to nutné** zaškrtávací políčko.
 8. Klikněte na **Nainstalovat**.
-9. Po instalaci funkce hello vraťte toohello **správce serveru** řídicího panelu.
-10. Vyberte hello nové **služby AD DS** možnost v levém podokně hello.
-11. Klikněte na tlačítko hello **Další** odkaz na panelu hello žlutý upozornění.
+9. Po tyto funkce jsou instalovány, vraťte k **správce serveru** řídicího panelu.
+10. Vyberte novou **služby AD DS** možnost v levém podokně.
+11. Klikněte **Další** odkaz na žlutý pruh upozornění.
     
      ![AD DS dialogové ve virtuálním počítači serveru DNS](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC784625.png)
-12. V hello **akce** sloupec hello **všechny podrobnosti úlohy serveru** dialogové okno, klikněte na tlačítko **zvýšit úroveň tohoto řadiče domény tooa server**.
-13. V hello **Průvodce konfigurací služby domény služby Active Directory**, použijte hello následující hodnoty:
+12. V **akce** sloupec **všechny podrobnosti úlohy serveru** dialogové okno, klikněte na tlačítko **zvýšit úroveň tohoto serveru na řadič domény**.
+13. V **Průvodce konfigurací služby domény služby Active Directory**, použijte následující hodnoty:
     
     | Stránka | Nastavení |
     | --- | --- |
     | Konfigurace nasazení |**Přidat novou doménovou strukturu** = vybrané<br/>**Název kořenové domény** = corp.contoso.com |
     | Možnosti řadiče domény |**Heslo** = Contoso! 000<br/>**Potvrzení hesla** = Contoso! 000 |
-14. Klikněte na tlačítko **Další** toogo prostřednictvím hello dalších stránek v Průvodci hello. Na hello **Kontrola předpokladů** ověřte, najdete v části hello následující zprávou: **všech požadovaných součástí byly úspěšně zkontrolovány**. Všimněte si, že byste měli zkontrolovat všechny příslušné zprávy upozornění, ale je možné toocontinue s instalací hello.
-15. Klikněte na **Nainstalovat**. Hello **ContosoDC** virtuální počítač se automaticky restartuje.
+14. Klikněte na tlačítko **Další** projít dalších stránek v průvodci. Na **Kontrola předpokladů** ověřte, že, zobrazí se následující zpráva: **všech požadovaných součástí byly úspěšně zkontrolovány**. Všimněte si, že byste měli zkontrolovat všechny příslušné zprávy upozornění, ale je možné pokračovat v instalaci.
+15. Klikněte na **Nainstalovat**. **ContosoDC** virtuální počítač se automaticky restartuje.
 
 ## <a name="configure-domain-accounts"></a>Konfigurace účtů domény
-Další kroky Hello nakonfigurovat hello účtů služby Active Directory pro pozdější použití.
+Další kroky konfigurace účtů služby Active Directory pro pozdější použití.
 
-1. Přihlaste se znovu toohello **ContosoDC** počítače.
+1. Přihlaste se znovu na **ContosoDC** počítače.
 2. V **správce serveru**, klikněte na tlačítko **nástroje** > **Centrum správy služby Active Directory**.
    
     ![Centrum správy služby Active Directory](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC784626.png)
-3. V hello **Centrum správy služby Active Directory**, vyberte **corp (místní)** v levém podokně hello.
-4. Na pravém hello **úlohy** podokně klikněte na tlačítko **nový** > **uživatele**. Použijte hello následující nastavení:
+3. V **Centrum správy služby Active Directory**, vyberte **corp (místní)** v levém podokně.
+4. Na pravé straně **úlohy** podokně klikněte na tlačítko **nový** > **uživatele**. Použijte následující nastavení:
    
    | Nastavení | Hodnota |
    | --- | --- |
@@ -148,270 +148,270 @@ Další kroky Hello nakonfigurovat hello účtů služby Active Directory pro po
    | **Potvrdit heslo** |Contoso! 000 |
    | **Další možnosti hesla** |Vybráno |
    | **Heslo je platné stále** |Zaškrtnuté |
-5. Klikněte na tlačítko **OK** toocreate hello **nainstalovat** uživatele. Tento účet bude použité tooconfigure hello převzetí služeb při selhání clusteru a hello skupiny dostupnosti.
-6. Vytvořte dva další uživatele, **CORP\SQLSvc1** a **CORP\SQLSvc2**, s hello stejný postup. Tyto účty se použije pro instance systému SQL Server hello. Dále musíte toogive **CORP\Install** hello clustering převzetí služeb při selhání Windows tooconfigure potřebná oprávnění.
-7. V hello **Centrum správy služby Active Directory**, klikněte na tlačítko **corp (místní)** v levém podokně hello. V hello **úlohy** podokně klikněte na tlačítko **vlastnosti**.
+5. Klikněte na tlačítko **OK** vytvořit **nainstalovat** uživatele. Tento účet se použije ke konfiguraci clusteru převzetí služeb při selhání a skupiny dostupnosti.
+6. Vytvořte dva další uživatele, **CORP\SQLSvc1** a **CORP\SQLSvc2**, pomocí stejných kroků. Tyto účty se použije pro instance systému SQL Server. Dále musíte poskytnout **CORP\Install** potřebná oprávnění ke konfiguraci služby Windows failover clustering.
+7. V **Centrum správy služby Active Directory**, klikněte na tlačítko **corp (místní)** v levém podokně. V **úlohy** podokně klikněte na tlačítko **vlastnosti**.
    
     ![Vlastnosti uživatele CORP](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC784627.png)
-8. Vyberte **rozšíření**a potom klikněte na hello **Upřesnit** na hello tlačítko **zabezpečení** kartě.
-9. V hello **Upřesnit nastavení zabezpečení pro corp** dialogové okno, klikněte na tlačítko **přidat**.
+8. Vyberte **rozšíření**a klikněte **Upřesnit** na tlačítko **zabezpečení** kartě.
+9. V **Upřesnit nastavení zabezpečení pro corp** dialogové okno, klikněte na tlačítko **přidat**.
 10. Klikněte na tlačítko **vybrat objekt zabezpečení**, vyhledejte **CORP\Install**a potom klikněte na **OK**.
-11. Vyberte hello **číst vlastnosti všech** a **vytvářet objekty počítačů** oprávnění.
+11. Vyberte **číst vlastnosti všech** a **vytvářet objekty počítačů** oprávnění.
     
      ![Oprávnění uživatele Corp](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC784628.png)
-12. Klikněte na tlačítko **OK**a potom klikněte na **OK** znovu. Okno vlastností corp zavřít hello.
+12. Klikněte na tlačítko **OK**a potom klikněte na **OK** znovu. Zavřete okno vlastností corp.
 
-Teď, když jste nakonfigurovali služby Active Directory a hello uživatelských objektů, vytvoříte tři virtuální počítače systému SQL Server a připojovat je toothis domény.
+Teď, když jste nakonfigurovali služby Active Directory a uživatelských objektů, vytvoříte tři virtuální počítače systému SQL Server a připojovat je k této doméně.
 
-## <a name="create-hello-sql-server-virtual-machines"></a>Vytvořit virtuální počítače systému SQL Server hello
-Vytvořte tři virtuální počítače. Jeden je pro uzel clusteru a dva jsou pro systém SQL Server. toocreate hello virtuálních počítačů, přejděte zpět toohello portál Azure classic, klikněte na tlačítko **nový** > **výpočetní** > **virtuálního počítače**  >  **Z Galerie**. Pak pomocí šablony hello v následující tabulce toohelp vytvoříte virtuální počítače hello hello.
+## <a name="create-the-sql-server-virtual-machines"></a>Vytvoření virtuálního počítače systému SQL Server
+Vytvořte tři virtuální počítače. Jeden je pro uzel clusteru a dva jsou pro systém SQL Server. Chcete-li vytvořit všechny virtuální počítače, přejděte zpět na portálu Azure classic, klikněte na **nový** > **výpočetní** > **virtuálního počítače** > **z Galerie**. Pak pomocí šablony v následující tabulce vám pomohou vytvořit virtuální počítače.
 
 | Stránka | VM1 | VIRTUÁLNÍHO POČÍTAČE 2 | VM3 |
 | --- | --- | --- | --- |
-| Vyberte operační systém virtuálního počítače hello |**Windows Server 2012 R2 Datacenter** |**SQL Server 2014 RTM Enterprise** |**SQL Server 2014 RTM Enterprise** |
+| Vyberte operační systém virtuálního počítače |**Windows Server 2012 R2 Datacenter** |**SQL Server 2014 RTM Enterprise** |**SQL Server 2014 RTM Enterprise** |
 | Konfigurace virtuálního počítače |**Datum vydání verze** = (nejnovější)<br/>**Název VIRTUÁLNÍHO počítače** = ContosoWSFCNode<br/>**ÚROVEŇ** = STANDARD<br/>**VELIKOST** = A2 (2 jádra)<br/>**NOVÉ uživatelské jméno** = AzureAdmin<br/>**NOVÉ heslo** = Contoso! 000<br/>**POTVRĎTE** = Contoso! 000 |**Datum vydání verze** = (nejnovější)<br/>**Název VIRTUÁLNÍHO počítače** = ContosoSQL1<br/>**ÚROVEŇ** = STANDARD<br/>**VELIKOST** = A3 (4 jádra)<br/>**NOVÉ uživatelské jméno** = AzureAdmin<br/>**NOVÉ heslo** = Contoso! 000<br/>**POTVRĎTE** = Contoso! 000 |**Datum vydání verze** = (nejnovější)<br/>**Název VIRTUÁLNÍHO počítače** = ContosoSQL2<br/>**ÚROVEŇ** = STANDARD<br/>**VELIKOST** = A3 (4 jádra)<br/>**NOVÉ uživatelské jméno** = AzureAdmin<br/>**NOVÉ heslo** = Contoso! 000<br/>**POTVRĎTE** = Contoso! 000 |
-| Konfigurace virtuálního počítače |**CLOUDOVÉ služby** = název DNS dříve vytvořenou jedinečný cloudové služby (např: ContosoDC123)<br/>**OBLASTI nebo skupiny vztahů nebo VIRTUÁLNÍCH SÍŤOVÝCH** = ContosoNET<br/>**PODSÍTĚ virtuální sítě** = Back(10.10.2.0/24)<br/>**ÚČET úložiště** = použít účet úložiště automaticky generované<br/>**SKUPINY dostupnosti** = vytvořit dostupnosti nastavit<br/>**NÁZEV SADY DOSTUPNOSTI** = SQLHADR |**CLOUDOVÉ služby** = název DNS dříve vytvořenou jedinečný cloudové služby (např: ContosoDC123)<br/>**OBLASTI nebo skupiny vztahů nebo VIRTUÁLNÍCH SÍŤOVÝCH** = ContosoNET<br/>**PODSÍTĚ virtuální sítě** = Back(10.10.2.0/24)<br/>**ÚČET úložiště** = použít účet úložiště automaticky generované<br/>**SKUPINY dostupnosti** = SQLHADR (můžete také nakonfigurovat hello dostupnosti nastavit po vytvoření hello počítače. Všechny tři počítače by se měla přiřadit skupinu dostupnosti SQLHADR toohello.) |**CLOUDOVÉ služby** = název DNS dříve vytvořenou jedinečný cloudové služby (např: ContosoDC123)<br/>**OBLASTI nebo skupiny vztahů nebo VIRTUÁLNÍCH SÍŤOVÝCH** = ContosoNET<br/>**PODSÍTĚ virtuální sítě** = Back(10.10.2.0/24)<br/>**ÚČET úložiště** = použít účet úložiště automaticky generované<br/>**SKUPINY dostupnosti** = SQLHADR (můžete také nakonfigurovat hello dostupnosti nastavit po vytvoření hello počítače. Všechny tři počítače by se měla přiřadit skupinu dostupnosti SQLHADR toohello.) |
+| Konfigurace virtuálního počítače |**CLOUDOVÉ služby** = název DNS dříve vytvořenou jedinečný cloudové služby (např: ContosoDC123)<br/>**OBLASTI nebo skupiny vztahů nebo VIRTUÁLNÍCH SÍŤOVÝCH** = ContosoNET<br/>**PODSÍTĚ virtuální sítě** = Back(10.10.2.0/24)<br/>**ÚČET úložiště** = použít účet úložiště automaticky generované<br/>**SKUPINY dostupnosti** = vytvořit dostupnosti nastavit<br/>**NÁZEV SADY DOSTUPNOSTI** = SQLHADR |**CLOUDOVÉ služby** = název DNS dříve vytvořenou jedinečný cloudové služby (např: ContosoDC123)<br/>**OBLASTI nebo skupiny vztahů nebo VIRTUÁLNÍCH SÍŤOVÝCH** = ContosoNET<br/>**PODSÍTĚ virtuální sítě** = Back(10.10.2.0/24)<br/>**ÚČET úložiště** = použít účet úložiště automaticky generované<br/>**SKUPINY dostupnosti** = SQLHADR (můžete také nakonfigurovat skupinu dostupnosti po vytvoření na počítač. Všechny tři počítače musí být přiřazen do skupiny dostupnosti SQLHADR.) |**CLOUDOVÉ služby** = název DNS dříve vytvořenou jedinečný cloudové služby (např: ContosoDC123)<br/>**OBLASTI nebo skupiny vztahů nebo VIRTUÁLNÍCH SÍŤOVÝCH** = ContosoNET<br/>**PODSÍTĚ virtuální sítě** = Back(10.10.2.0/24)<br/>**ÚČET úložiště** = použít účet úložiště automaticky generované<br/>**SKUPINY dostupnosti** = SQLHADR (můžete také nakonfigurovat skupinu dostupnosti po vytvoření na počítač. Všechny tři počítače musí být přiřazen do skupiny dostupnosti SQLHADR.) |
 | Možnosti virtuálního počítače |Použít výchozí nastavení |Použít výchozí nastavení |Použít výchozí nastavení |
 
 <br/>
 
 > [!NOTE]
-> předchozí konfiguraci Hello doporučuje úroveň STANDARD virtuálních počítačů, protože základní vrstvě počítače nepodporují koncové body s vyrovnáváním zatížení. Je třeba koncové body s vyrovnáváním zatížení novější toocreate naslouchací proces skupiny dostupnosti. Navíc hello velikosti počítačů, které jsou zde navrhovaná jsou určené pro testování v Azure Virtual Machines skupiny dostupnosti. Hello nejlepší výkon v produkčním prostředí, najdete v části hello doporučení pro velikosti počítačů systému SQL Server a konfigurace v [osvědčené postupy z hlediska výkonu pro SQL Server v Azure Virtual Machines](../sql/virtual-machines-windows-sql-performance.md).
+> Předchozí konfiguraci doporučuje úroveň STANDARD virtuálních počítačů, protože základní vrstvě počítače nepodporují koncové body s vyrovnáváním zatížení. Musíte Vyrovnávání zatížení sítě koncové body později k vytvořit naslouchací proces skupiny dostupnosti. Navíc velikosti počítačů, které jsou zde navrhovaná jsou určené pro testování v Azure Virtual Machines skupiny dostupnosti. Nejlepšího výkonu dosáhnete v produkčním prostředí, najdete v části doporučení pro velikosti počítačů systému SQL Server a konfigurace v [osvědčené postupy z hlediska výkonu pro SQL Server v Azure Virtual Machines](../sql/virtual-machines-windows-sql-performance.md).
 > 
 > 
 
-Po hello tři virtuální počítače jsou plně zřízený, je nutné toojoin je toohello **corp.contoso.com** domény a přidělit počítače toohello CORP\Install práva správce. toodo hello tento, použijte následující kroky pro každý hello tři virtuální počítače.
+Po tři virtuální počítače jsou plně zřízený, je nutné připojit, aby **corp.contoso.com** domény a přidělit CORP\Install práva správce na počítače. K tomu použijte následující kroky pro všechny tři virtuální počítače.
 
-1. Nejprve změňte adresu serveru DNS hello upřednostňovaný. Stáhnout adresář místního souboru tooyour protokolu RDP pro každý virtuální počítač výběrem hello virtuálního počítače v seznamu hello a kliknutím na hello **Connect** tlačítko. tooselect virtuálního počítače, klikněte na libovolné místo ale hello první buňky v řádku hello, jak ukazuje následující snímek obrazovky hello.
+1. Nejprve změňte upřednostňovanou adresu serveru DNS. Stáhnout soubor RDP každého virtuálního počítače do svého místního adresáře vyberte virtuální počítač v seznamu a klikněte na **Connect** tlačítko. Vyberte virtuální počítač, klikněte kamkoli ale první buňky v řádku, jak je znázorněno na následujícím snímku obrazovky.
    
-    ![Stáhnout soubor RDP hello](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC664953.jpg)
-2. Otevřete hello protokolu RDP souboru, který jste stáhli a přihlaste se pomocí účtu správce nakonfigurované toohello virtuálního počítače (**BUILTIN\AzureAdmin**) a heslo (**Contoso! 000**).
-3. Po přihlášení, měli byste vidět hello **správce serveru** řídicího panelu. Klikněte na tlačítko **místní Server** v levém podokně hello.
-4. Klikněte na tlačítko hello **IPv4 adresy přiřazené serverem DHCP, pro protokol IPv6** odkaz.
-5. V hello **připojení k síti** dialogovém okně klikněte na ikonu sítě hello.
+    ![Stáhnout soubor RDP](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC664953.jpg)
+2. Otevřete soubor RDP, který jste stáhli a přihlaste se k virtuálnímu počítači pomocí účtu správce nakonfigurované (**BUILTIN\AzureAdmin**) a heslo (**Contoso! 000**).
+3. Po přihlášení, měli byste vidět **správce serveru** řídicího panelu. Klikněte na tlačítko **místní Server** v levém podokně.
+4. Klikněte **IPv4 adresy přiřazené serverem DHCP, pro protokol IPv6** odkaz.
+5. V **připojení k síti** dialogovém okně klikněte na ikonu sítě.
    
-    ![Server DNS virtuálního počítače preferované hello změn](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC784629.png)
-6. Na panelu příkazů hello, klikněte na tlačítko **změnit hello nastavení pro toto připojení**. (V závislosti na hello velikost okna aplikace, můžete mít tooclick hello dvojitá šipka vpravo toosee tento příkaz).
+    ![Změňte virtuální počítač upřednostňovaný server DNS](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC784629.png)
+6. Na panelu příkazů klikněte na tlačítko **změnit nastavení pro toto připojení**. (V závislosti na velikost okna aplikace, budete možná muset klikněte na dvojitou šipku vpravo zobrazíte tento příkaz).
 7. Vyberte **Internet Protocol verze 4 (TCP/IPv4)**a potom klikněte na **vlastnosti**.
-8. Vyberte **hello použijte následující adresy serverů DNS** a pak zadejte **10.10.2.4** v **upřednostňovaný server DNS**.
-9. Hello **10.10.2.4** adresa je hello adresu, která je přiřazená tooa virtuálního počítače v podsíti 10.10.2.0/24 hello v virtuální sítě Azure. Tento virtuální počítač je **ContosoDC**. tooverify **ContosoDC**na IP adresu, použijte **nslookup contosodc** v okně příkazového řádku hello, jak ukazuje následující snímek obrazovky hello.
+8. Vyberte **použít následující adresy serverů DNS** a pak zadejte **10.10.2.4** v **upřednostňovaný server DNS**.
+9. **10.10.2.4** adresa je adresa, která je přiřazena k virtuálnímu počítači v podsíti 10.10.2.0/24 v virtuální sítě Azure. Tento virtuální počítač je **ContosoDC**. Chcete-li ověřit **ContosoDC**na IP adresu, použijte **nslookup contosodc** v okně příkazového řádku, jak je znázorněno na následujícím snímku obrazovky.
    
-    ![Použití nástroje NSLOOKUP toofind IP adresy pro řadič domény](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC664954.jpg)
-10. Klikněte na tlačítko **OK** > **Zavřít** toocommit hello změny. Nyní můžete připojit virtuální počítač hello příliš**corp.contoso.com**.
-11. Zpět v hello **místní Server** okně klikněte na tlačítko hello **pracovní skupiny** odkaz.
-12. V hello **název počítače** klikněte na tlačítko **změnu**.
-13. Vyberte hello **domény** zaškrtávací políčko, typ **corp.contoso.com** v hello textového pole a pak klikněte na **OK**.
-14. V hello **zabezpečení systému Windows** dialogovém okně zadejte hello pověření pro účet správce domény výchozí hello (**CORP\AzureAdmin**) a heslo hello (**Contoso! 000**).
-15. Když se zobrazí zpráva "Vítá toohello doméně corp.contoso.com" hello, klikněte na tlačítko **OK**.
-16. Klikněte na tlačítko **Zavřít** > **restartovat nyní** v dialogovém okně hello.
+    ![Použití nástroje NSLOOKUP najít IP adresu pro řadič domény](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC664954.jpg)
+10. Klikněte na tlačítko **OK** > **Zavřít** k provedení změn. Nyní můžete připojit virtuální počítač **corp.contoso.com**.
+11. Zpět v **místní Server** okně klikněte na tlačítko **pracovní skupiny** odkaz.
+12. V **název počítače** klikněte na tlačítko **změnu**.
+13. Vyberte **domény** zaškrtávací políčko, typ **corp.contoso.com** textového pole a pak klikněte na **OK**.
+14. V **zabezpečení systému Windows** dialogovém okně zadejte přihlašovací údaje pro výchozí účet správce domény (**CORP\AzureAdmin**) a heslo (**Contoso! 000**).
+15. Když se zobrazí zpráva "Vítejte v doméně corp.contoso.com", klikněte na tlačítko **OK**.
+16. Klikněte na tlačítko **Zavřít** > **restartovat nyní** v dialogovém okně.
 
-### <a name="add-hello-corpinstall-user-as-an-administrator-on-each-virtual-machine"></a>Přidat hello Corp\Install uživatele jako správce na každém virtuálním počítači
-1. Počkejte na restartování hello virtuálního počítače a pak otevřete hello RDP soubor znovu toosign toohello virtuální počítač pomocí hello **BUILTIN\AzureAdmin** účtu.
+### <a name="add-the-corpinstall-user-as-an-administrator-on-each-virtual-machine"></a>Přidejte uživatele Corp\Install jako správce na každém virtuálním počítači
+1. Počkejte, dokud se virtuální počítač restartuje a pak otevřete protokol RDP soubor znovu se přihlásit k virtuálnímu počítači pomocí **BUILTIN\AzureAdmin** účtu.
 2. V **správce serveru** klikněte na tlačítko **nástroje** > **Správa počítače**.
    
     ![Správa počítače](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC784630.png)
-3. V hello **Správa počítače** dialogové okno, rozbalte seznam **místní uživatelé a skupiny**a potom klikněte na **skupiny**.
-4. Klikněte dvakrát na hello **správci** skupiny.
-5. V hello **správci vlastnosti** dialogovém okně klikněte na hello **přidat** tlačítko.
-6. Zadejte uživatele hello **CORP\Install**a potom klikněte na **OK**. Po zobrazení výzvy k zadání pověření, použijte hello **AzureAdmin** účet s hello **Contoso! 000** heslo.
-7. Klikněte na tlačítko **OK** tooclose hello **vlastností správce** dialogové okno.
+3. V **Správa počítače** dialogové okno, rozbalte seznam **místní uživatelé a skupiny**a potom klikněte na **skupiny**.
+4. Dvakrát klikněte **správci** skupiny.
+5. V **správci vlastnosti** dialogové okno, klikněte **přidat** tlačítko.
+6. Zadejte uživatele **CORP\Install**a potom klikněte na **OK**. Pokud budete vyzváni k zadání pověření, použijte **AzureAdmin** účet, který **Contoso! 000** heslo.
+7. Klikněte na tlačítko **OK** zavřete **vlastností správce** dialogové okno.
 
-### <a name="add-hello-failover-clustering-feature-tooeach-virtual-machine"></a>Přidat hello Clustering převzetí služeb při selhání funkce tooeach virtuální počítač
-1. V hello **správce serveru** řídicí panel, klikněte na tlačítko **přidat role a funkce**.
-2. V hello **Průvodce přidáním rolí a funkcí**, klikněte na tlačítko **Další** dokud nezískáte toohello **funkce** stránky.
+### <a name="add-the-failover-clustering-feature-to-each-virtual-machine"></a>Přidejte funkci Clustering převzetí služeb při selhání na každém virtuálním počítači
+1. V **správce serveru** řídicí panel, klikněte na tlačítko **přidat role a funkce**.
+2. V **Průvodce přidáním rolí a funkcí**, klikněte na tlačítko **Další** až na **funkce** stránky.
 3. Vyberte **Clustering převzetí služeb při selhání**. Po zobrazení výzvy, přidejte další závislé součásti.
    
-    ![Přidejte funkci Clustering převzetí služeb při selhání toovirtual počítač](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC784631.png)
-4. Klikněte na tlačítko **Další**a potom klikněte na **nainstalovat** na hello **potvrzení** stránky.
-5. Když hello **Clustering převzetí služeb při selhání** po dokončení instalace funkce, klikněte na tlačítko **Zavřít**.
-6. Odhlásit z hello virtuálního počítače.
-7. Hello kroků v této části pro všechny tři servery: **ContosoWSFCNode**, **ContosoSQL1**, a **ContosoSQL2**.
+    ![Přidejte funkci Clustering převzetí služeb při selhání virtuálního počítače](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC784631.png)
+4. Klikněte na tlačítko **Další**a potom klikněte na **nainstalovat** na **potvrzení** stránky.
+5. Když **Clustering převzetí služeb při selhání** po dokončení instalace funkce, klikněte na tlačítko **Zavřít**.
+6. Odhlásit se z virtuálního počítače.
+7. Opakujte kroky v této části pro všechny tři servery: **ContosoWSFCNode**, **ContosoSQL1**, a **ContosoSQL2**.
 
-Hello teď zřizování virtuálních počítačů systému SQL Server a spuštěna, ale každá z nich má hello výchozí možnosti pro SQL Server.
+SQL Server, které teď zřizování virtuálních počítačů a spuštěná, ale každý má výchozí možnosti pro SQL Server.
 
-## <a name="create-hello-failover-cluster"></a>Vytvoření clusteru převzetí služeb při selhání hello
-V této části vytvoříte clusteru hello převzetí služeb při selhání, který bude hostovat hello skupiny dostupnosti, který chcete vytvořit později. Nyní by měli mít provádí hello následující tooeach hello tři virtuální počítače, které budete používat v clusteru převzetí služeb při selhání hello:
+## <a name="create-the-failover-cluster"></a>Vytvoření clusteru převzetí služeb při selhání
+V této části vytvoříte clusteru převzetí služeb při selhání, který bude hostovat skupině dostupnosti, který chcete vytvořit později. Nyní by měli mít provést následující všechny tři virtuální počítače, které budete používat v clusteru převzetí služeb při selhání:
 
-* Zcela zřizované hello virtuálního počítače v Azure
-* Připojené k doméně toohello hello virtuálního počítače
-* Přidat **CORP\Install** toohello místní skupiny Administrators
-* Funkci clustering převzetí služeb při selhání přidané hello
+* Kompletní zřízení virtuálního počítače v Azure
+* Virtuální počítač připojený k doméně
+* Přidat **CORP\Install** do místní skupiny Administrators
+* Přidat převzetí služeb při selhání funkce clustering
 
-Všechny tyto jsou požadavky na každém virtuálním počítači, než bude možné se připojit toohello převzetí služeb při selhání clusteru.
+Jsou všechny tyto požadavky na každém virtuálním počítači, než bude možné připojit ke clusteru převzetí služeb při selhání.
 
-Také Upozorňujeme, že hello virtuální síť Azure není chovat v hello stejný způsob jako místní sítě. Je třeba toocreate hello clusteru v hello následující pořadí:
+Všimněte si také, že se virtuální síť Azure není chovají stejným způsobem jako místní sítě. Budete muset vytvořit cluster v uvedeném pořadí:
 
 1. Vytvoření clusteru s jedním uzlem na jednom uzlu (**ContosoSQL1**).
-2. Upravit hello clusteru IP adresu tooan nepoužívané IP adresu (**10.10.2.101**).
-3. Uveďte název clusteru hello online.
-4. Přidání dalších uzlů hello (**ContosoSQL2** a **ContosoWSFCNode**).
+2. Upravit IP adresu clusteru nepoužívané IP adresu (**10.10.2.101**).
+3. Uveďte název clusteru online.
+4. Přidání dalších uzlů (**ContosoSQL2** a **ContosoWSFCNode**).
 
-Pomocí následujících kroků toocomplete hello úlohy, které plně konfigurace clusteru hello hello.
+Použijte následující postup k dokončení úlohy, které plně konfigurace clusteru.
 
-1. Otevřete hello soubor RDP pro **ContosoSQL1**a přihlaste se pomocí účtu domény hello **CORP\Install**.
-2. V hello **správce serveru** řídicí panel, klikněte na tlačítko **nástroje** > **Správce clusteru převzetí služeb při selhání**.
-3. V levém podokně hello, klikněte pravým tlačítkem na **Správce clusteru převzetí služeb při selhání**a potom klikněte na **vytvoření clusteru s podporou**, jak ukazuje následující snímek obrazovky hello.
+1. Otevřete soubor RDP pro **ContosoSQL1**a přihlaste se pomocí účtu domény **CORP\Install**.
+2. V **správce serveru** řídicí panel, klikněte na tlačítko **nástroje** > **Správce clusteru převzetí služeb při selhání**.
+3. V levém podokně klikněte pravým tlačítkem na **Správce clusteru převzetí služeb při selhání**a potom klikněte na **vytvoření clusteru s podporou**, jak je znázorněno na následujícím snímku obrazovky.
    
     ![Vytvoření clusteru](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC784632.png)
-4. V hello Průvodce vytvořením clusteru, vytvoření clusteru s jedním uzlem procházení hello stránky a použitím hello nastavení v následující tabulce hello:
+4. V Průvodci vytvořením clusteru vytvořte jednouzlového clusteru procházení stránek a pomocí nastavení v následující tabulce:
    
    | Stránka | Nastavení |
    | --- | --- |
    | Než začnete |Použít výchozí nastavení |
    | Vyberte servery |Typ **ContosoSQL1** v **zadejte název serveru** a klikněte na tlačítko **přidat** |
-   | Upozornění ověření |Vyberte **ne. I nevyžadují podporu společnosti Microsoft pro tento cluster a proto nechcete, aby toorun hello ověřovací testy. Po klepnutí na tlačítko Další, pokračovat ve vytváření clusteru hello**. |
-   | Přístupový bod pro hello Správa clusteru |Typ **Cluster1** v **název clusteru** |
-   | Potvrzení |Použít výchozí hodnoty, pokud nepoužíváte prostory úložiště. Zobrazí upozornění hello za touto tabulkou. |
+   | Upozornění ověření |Vyberte **ne. I nevyžadují podporu společnosti Microsoft pro tento cluster a proto nechcete, aby ke spuštění ověřovacích testů. Po klepnutí na tlačítko Další, pokračovat ve vytváření clusteru**. |
+   | Přístupový bod pro správu clusteru |Typ **Cluster1** v **název clusteru** |
+   | Potvrzení |Použít výchozí hodnoty, pokud nepoužíváte prostory úložiště. Přečtěte si upozornění za touto tabulkou. |
    
    > [!WARNING]
-   > Pokud používáte [prostory úložiště](https://technet.microsoft.com/library/hh831739), které skupiny více disků do fondů úložiště, musíte vymazat hello **přidejte všechna vhodná úložiště toohello cluster** políčko hello **potvrzení** stránky. Pokud není zaškrtnutí tohoto políčka, bude během procesu clusteringu hello odpojit virtuální disky hello. V důsledku toho se také neobjeví v Správce disků nebo v Průzkumníku dokud hello prostory úložiště se odeberou z hello clusteru a znovu připojit pomocí prostředí PowerShell.
+   > Pokud používáte [prostory úložiště](https://technet.microsoft.com/library/hh831739), které skupiny více disků do fondů úložiště, musíte vymazat **přidat do clusteru veškeré oprávněné úložiště** v zaškrtávací políčko **potvrzení** stránky. Pokud není zaškrtnutí tohoto políčka, odpojit virtuální disky, během procesu clusteringu. V důsledku toho se také neobjeví v Správce disků nebo v Průzkumníku dokud prostory úložiště se odebral z clusteru a znovu připojit pomocí prostředí PowerShell.
    > 
    > 
-5. V levém podokně hello rozbalte **Správce clusteru převzetí služeb při selhání**a potom klikněte na **Cluster1.corp.contoso.com**.
-6. V prostředním podokně hello, posuňte se dolů toohello **základní prostředky clusteru** části a rozbalte hello **název: Clutser1** podrobnosti. Měli byste vidět obou hello **název** a hello **IP adresu** prostředky v hello **se nezdařilo** stavu. Hello prostředek IP adresy nelze do online režimu protože hello clusteru je přiřazen hello stejnou IP adresu jako počítač hello, sebe, což je duplicitní adresu.
-7. Klikněte pravým tlačítkem na hello se nezdařilo **IP adresu** prostředek a pak klikněte na tlačítko **vlastnosti**.
+5. V levém podokně rozbalte **Správce clusteru převzetí služeb při selhání**a potom klikněte na **Cluster1.corp.contoso.com**.
+6. V prostředním podokně přejděte dolů k položce **základní prostředky clusteru** části a rozbalte **název: Clutser1** podrobnosti. Měli byste vidět, jak **název** a **IP adresu** prostředky v **se nezdařilo** stavu. Prostředek IP adresy nelze uvést do režimu online, protože clusteru je přiřazen stejnou IP adresu jako počítač, na sebe, což je duplicitní adresu.
+7. Klikněte pravým tlačítkem na chybných **IP adresu** prostředek a pak klikněte na tlačítko **vlastnosti**.
    
     ![Vlastnosti clusteru](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC784633.png)
-8. Vyberte **statickou IP adresu**, zadejte **10.10.2.101** v hello **adresu** textového pole a pak klikněte na tlačítko **OK**.
-9. V hello **základní prostředky clusteru** části, klikněte pravým tlačítkem na **název: Cluster1**a potom klikněte na **přepnout do režimu Online**. Počkejte, dokud jsou obě prostředky online. Při přechodu hello prostředek názvu clusteru do režimu online, hello serveru řadiče domény se aktualizuje pomocí nového účtu počítače služby Active Directory. Tento účet služby Active Directory se použije Clusterová služba skupiny dostupnosti hello toorun později.
-10. Přidáte zbývající uzly clusteru toohello hello. Ve stromu hello prohlížeče, klikněte pravým tlačítkem na **Cluster1.corp.contoso.com**a potom klikněte na **přidat uzel**, jak ukazuje následující snímek obrazovky hello.
+8. Vyberte **statickou IP adresu**, zadejte **10.10.2.101** v **adresu** textového pole a pak klikněte na tlačítko **OK**.
+9. V **základní prostředky clusteru** části, klikněte pravým tlačítkem na **název: Cluster1**a potom klikněte na **přepnout do režimu Online**. Počkejte, dokud jsou obě prostředky online. Při přechodu prostředek názvu clusteru do režimu online, serveru řadiče domény se aktualizuje pomocí nového účtu počítače služby Active Directory. Tento účet služby Active Directory se použije ke spuštění služby clusteru skupiny dostupnosti později.
+10. Přidáte zbývající uzly do clusteru. Ve stromu prohlížeče klikněte pravým tlačítkem na **Cluster1.corp.contoso.com**a potom klikněte na **přidat uzel**, jak je znázorněno na následujícím snímku obrazovky.
     
-     ![Přidání uzlu clusteru toohello](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC784634.png)
-11. V hello **Průvodce přidáním uzlu**, klikněte na tlačítko **Další** na hello **zvolit servery** přidejte **ContosoSQL2** a **ContosoWSFCNode**  toohello seznamu tak, že zadáte název serveru hello v **zadejte název serveru** a pak levým na **přidat**. Až budete hotovi, klikněte na tlačítko **Další**.
-12. Na hello **upozornění ověření** klikněte na tlačítko **ne**, i když v produkční scénář, měli byste provést testy pro ověření hello. Pak klikněte na **Další**.
-13. Na hello **potvrzení** klikněte na tlačítko **Další** tooadd hello uzly.
+     ![Přidání uzlu do clusteru](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC784634.png)
+11. V **Průvodce přidáním uzlu**, klikněte na tlačítko **Další** na **zvolit servery** přidejte **ContosoSQL2** a **ContosoWSFCNode** do seznamu tak, že zadáte název serveru v **zadejte název serveru** a pak levým na **přidat**. Až budete hotovi, klikněte na tlačítko **Další**.
+12. Na **upozornění ověření** klikněte na tlačítko **ne**, i když v produkční scénář, měli byste provést testy pro ověření. Pak klikněte na **Další**.
+13. Na **potvrzení** klikněte na tlačítko **Další** přidat uzly.
     
     > [!WARNING]
-    > Pokud používáte [prostory úložiště](https://technet.microsoft.com/library/hh831739), které skupiny více disků do fondů úložiště, musíte vymazat hello **přidejte všechna vhodná úložiště toohello cluster** zaškrtávací políčko. Pokud není zaškrtnutí tohoto políčka, bude během procesu clusteringu hello odpojit virtuální disky hello. V důsledku toho také nezobrazí v Správce disků nebo v Průzkumníku dokud hello prostory úložiště jsou odebrány z clusteru a znovu připojit pomocí prostředí PowerShell.
+    > Pokud používáte [prostory úložiště](https://technet.microsoft.com/library/hh831739), které skupiny více disků do fondů úložiště, musíte vymazat **přidat do clusteru veškeré oprávněné úložiště** zaškrtávací políčko. Pokud není zaškrtnutí tohoto políčka, odpojit virtuální disky, během procesu clusteringu. V důsledku toho také nezobrazí v Správce disků nebo v Průzkumníku dokud prostory úložiště jsou odebrány z clusteru a znovu připojit pomocí prostředí PowerShell.
     > 
     > 
-14. Po přidání clusteru toohello hello uzly, klikněte na tlačítko **Dokončit**. Správce clusteru převzetí služeb při selhání by měl nyní zobrazit, že má tři uzly clusteru a jejich seznam v hello **uzly** kontejneru.
-15. Odhlásit z relace vzdálené plochy hello.
+14. Po přidání uzlu do clusteru, klikněte na tlačítko **Dokončit**. Správce clusteru převzetí služeb při selhání by měl nyní zobrazit, že váš cluster má tři uzly a je v seznamu **uzly** kontejneru.
+15. Odhlásit z této relaci vzdálené plochy.
 
-## <a name="prepare-hello-sql-server-instances-for-availability-groups"></a>Příprava hello instance systému SQL Server pro skupiny dostupnosti
-V této části provedete text hello, postupujte na obou **ContosoSQL1** a **contosoSQL2**:
+## <a name="prepare-the-sql-server-instances-for-availability-groups"></a>Příprava instance systému SQL Server pro skupiny dostupnosti
+V této části provedete následující na obou **ContosoSQL1** a **contosoSQL2**:
 
-* Přidat přihlašovací údaje pro **NT AUTHORITY\System** potřebná oprávnění, nastavte toohello výchozí instanci SQL serveru.
-* Přidat **CORP\Install** jako instanci systému SQL Server výchozí toohello role sysadmin.
-* Otevřete hello brány firewall pro vzdálený přístup systému SQL Server.
-* Povolte funkci hello vždy na dostupnosti skupiny.
-* Změna účtu služby SQL Server hello příliš**CORP\SQLSvc1** a **CORP\SQLSvc2**, v uvedeném pořadí.
+* Přidat přihlašovací údaje pro **NT AUTHORITY\System** potřebná oprávnění, nastavena na výchozí instanci SQL serveru.
+* Přidat **CORP\Install** jako role sysadmin na výchozí instanci SQL serveru.
+* Otevření brány firewall pro vzdálený přístup systému SQL Server.
+* Povolte funkci dostupnosti skupin Always On.
+* Změna účtu služby SQL Server na **CORP\SQLSvc1** a **CORP\SQLSvc2**, v uvedeném pořadí.
 
-Tyto akce lze provést v libovolném pořadí. Nicméně hello následující kroky provede je v pořadí. Postupujte podle kroků hello pro obě **ContosoSQL1** a **ContosoSQL2**:
+Tyto akce lze provést v libovolném pořadí. Nicméně následující kroky provede je v pořadí. Postupujte podle kroků pro oba **ContosoSQL1** a **ContosoSQL2**:
 
-1. Pokud nebyly odhlásili z relace vzdálené plochy hello hello virtuálního počítače, udělejte to teď.
-2. Otevřete hello RDP soubory pro **ContosoSQL1** a **ContosoSQL2**a přihlaste se jako **BUILTIN\AzureAdmin**.
-3. Přidat **NT AUTHORITY\System** toohello přihlášení serveru SQL Server potřebná oprávnění. Otevřete **SQL Server Management Studio**.
-4. Klikněte na tlačítko **připojit** tooconnect toohello výchozí instanci SQL serveru.
+1. Pokud nebyly odhlásili z relace vzdálené plochy pro virtuální počítač, udělejte to teď.
+2. Otevřít soubory protokolu RDP pro **ContosoSQL1** a **ContosoSQL2**a přihlaste se jako **BUILTIN\AzureAdmin**.
+3. Přidat **NT AUTHORITY\System** do přihlášení serveru SQL s potřebnými oprávněními. Otevřete **SQL Server Management Studio**.
+4. Klikněte na tlačítko **Connect** pro připojení k výchozí instanci SQL serveru.
 5. V **Průzkumník objektů**, rozbalte položku **zabezpečení**a potom rozbalte **přihlášení**.
-6. Klikněte pravým tlačítkem na hello **NT AUTHORITY\System** přihlašovací údaje a pak klikněte na tlačítko **vlastnosti**.
-7. Na hello **zabezpečitelné prostředky** stránku hello místního serveru, vyberte **Grant** pro hello následující oprávnění a potom klikněte na **OK**.
+6. Klikněte pravým tlačítkem myši **NT AUTHORITY\System** přihlašovací údaje a pak klikněte na tlačítko **vlastnosti**.
+7. Na **zabezpečitelné prostředky** stránky pro místní server, vyberte **Grant** pro následující oprávnění a pak klikněte na tlačítko **OK**.
    
    * Příkaz ALTER žádnou skupinu dostupnosti
    * Připojení SQL
    * Zobrazení stavu serveru
-8. Přidat **CORP\Install** jako **sysadmin** role toohello výchozí instanci SQL serveru. V **Průzkumník objektů**, klikněte pravým tlačítkem na **přihlášení**a potom klikněte na **nového přihlašovacího jména**.
+8. Přidat **CORP\Install** jako **sysadmin** role na výchozí instanci SQL serveru. V **Průzkumník objektů**, klikněte pravým tlačítkem na **přihlášení**a potom klikněte na **nového přihlašovacího jména**.
 9. Typ **CORP\Install** v **přihlašovací jméno**.
-10. Na hello **role serveru** vyberte **sysadmin**a potom klikněte na **OK**. Po vytvoření hello přihlášení, zobrazí se rozšířením **přihlášení** v **Průzkumník objektů**.
-11. toocreate pravidlo brány firewall pro SQL Server hello **spustit** obrazovce otevřete **brány Windows Firewall s pokročilým zabezpečením**.
-12. V levém podokně hello vyberte **příchozí pravidla**. V pravém podokně hello, klikněte na **nové pravidlo**.
-13. Na hello **typ pravidla** klikněte na tlačítko **programu** > **Další**.
-14. Na hello **programu** vyberte **tato cesta k programu**, typ **%ProgramFiles%\Microsoft SQL Server\MSSQL12. MSSQLSERVER\MSSQL\Binn\sqlservr.exe** v hello textového pole a pak klikněte na **Další**. Pokud jsou následující těchto pokynů, ale pomocí SQL Server 2012, adresář systému SQL Server hello je **MSSQL11. MSSQLSERVER**.
-15. Na hello **akce** ponechte **povolit připojení hello** vybrané a potom klikněte na **Další**.
-16. Na hello **profil** přijměte hello výchozí nastavení a pak klikněte na tlačítko **Další**.
-17. Na hello **název** stránky, zadejte název pravidla, například **systému SQL Server (pravidlo programu)**, v hello **název** textové pole a pak klikněte na **Dokončit**.
-18. tooenable hello **skupin dostupnosti Always On** funkce na hello **spustit** obrazovce otevřete **SQL Server Configuration Manager**.
-19. Ve stromu hello prohlížeče, klikněte na tlačítko **služby SQL Server**, klikněte pravým tlačítkem na hello **serveru SQL (MSSQLSERVER)** služby a potom klikněte na **vlastnosti**.
-20. Klikněte na tlačítko hello **vždy na vysokou dostupnost** vyberte **povolte skupiny dostupnosti Always On**, jak je znázorněno v hello následující snímek obrazovky a pak klikněte na **použít**. Klikněte na tlačítko **OK** v hello dialogové okno a nezavírejte hello **vlastnosti** zatím dialogové. Služba SQL Server hello se restartuje po provedení změny účtu služby hello.
+10. Na **role serveru** vyberte **sysadmin**a potom klikněte na **OK**. Po vytvoření přihlášení, zobrazí se rozšířením **přihlášení** v **Průzkumník objektů**.
+11. K vytvoření pravidla brány firewall pro SQL Server, na **spustit** obrazovce otevřete **brány Windows Firewall s pokročilým zabezpečením**.
+12. V levém podokně vyberte **příchozí pravidla**. V pravém podokně klikněte na **nové pravidlo**.
+13. Na **typ pravidla** klikněte na tlačítko **programu** > **Další**.
+14. Na **programu** vyberte **tato cesta k programu**, typ **%ProgramFiles%\Microsoft SQL Server\MSSQL12. MSSQLSERVER\MSSQL\Binn\sqlservr.exe** textového pole a pak klikněte na **Další**. Pokud jsou následující těchto pokynů, ale pomocí SQL Server 2012, adresář systému SQL Server je **MSSQL11. MSSQLSERVER**.
+15. Na **akce** ponechte **povolit připojení** vybrané a potom klikněte na **Další**.
+16. Na **profil** stránky, přijměte výchozí nastavení a pak klikněte na tlačítko **Další**.
+17. Na **název** stránky, zadejte název pravidla, například **systému SQL Server (pravidlo programu)**v **název** textové pole a pak klikněte na **Dokončit**.
+18. Chcete-li povolit **skupin dostupnosti Always On** funkce na **spustit** obrazovce otevřete **SQL Server Configuration Manager**.
+19. Ve stromu prohlížeče klikněte na tlačítko **služby SQL Server**, klikněte pravým tlačítkem myši **serveru SQL (MSSQLSERVER)** služby a potom klikněte na **vlastnosti**.
+20. Klikněte **vždy na vysokou dostupnost** vyberte **povolte skupiny dostupnosti Always On**, jak ukazuje následující snímek obrazovky a pak klikněte na **použít**. Klikněte na tlačítko **OK** v dialogovém okně a proveďte nezavírejte **vlastnosti** zatím dialogové. Služba SQL Server se restartuje po provedení změny účtu služby.
     
      ![Vždy zapnout na skupiny dostupnosti](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665520.gif)
-21. toochange hello účet služby SQL Server, klikněte na tlačítko hello **přihlášení** , zadejte **CORP\SQLSvc1** (pro **ContosoSQL1**) nebo **CORP\SQLSvc2** () pro **ContosoSQL2**) v **název účtu**, vyplňte a potvrďte heslo hello a pak klikněte na tlačítko **OK**.
-22. V poli hello dialogové okno, které se otevře, klikněte na tlačítko **Ano** toorestart hello služby SQL Server. Po restartování služby SQL Server hello změny provedené v hello **vlastnosti** dialogové okno, které jsou platné.
-23. Odhlásit z hello virtuálních počítačů.
+21. Chcete-li změnit účet služby SQL Server, klikněte na tlačítko **přihlášení** , zadejte **CORP\SQLSvc1** (pro **ContosoSQL1**) nebo **CORP\SQLSvc2** (pro **ContosoSQL2**) v **název účtu**, zadejte a potvrďte heslo a pak klikněte na tlačítko **OK**.
+22. V dialogovém okně, které se otevře, klikněte na tlačítko **Ano** restartovat službu systému SQL Server. Po restartování služby SQL Server, změny, které provedených **vlastnosti** dialogové okno, které jsou platné.
+23. Odhlásit z virtuálních počítačů.
 
-## <a name="create-hello-availability-group"></a>Vytvoření skupiny dostupnosti hello
-Nyní je připraven tooconfigure skupiny dostupnosti. Dole je přehled co provedete:
+## <a name="create-the-availability-group"></a>Vytvoření skupiny dostupnosti
+Nyní jste připraveni ke konfiguraci skupiny dostupnosti. Dole je přehled co provedete:
 
 * Vytvořit novou databázi (**MyDB1**) na **ContosoSQL1**.
-* Proveďte úplné zálohování a zálohování protokolu transakcí databáze hello.
-* Hello úplné obnovení a zálohování protokolů příliš**ContosoSQL2** s hello **NORECOVERY** možnost.
-* Vytvoření skupiny dostupnosti hello (**AG1**) se synchronním potvrzováním, automatické převzetí služeb při selhání a čitelných místních replikách.
+* Proveďte úplné zálohování a zálohování protokolu transakcí databáze.
+* Obnovit celý a záloh protokolu **ContosoSQL2** s **NORECOVERY** možnost.
+* Vytvoření skupiny dostupnosti (**AG1**) se synchronním potvrzováním, automatické převzetí služeb při selhání a čitelných místních replikách.
 
-### <a name="create-hello-mydb1-database-on-contososql1"></a>Vytvořit databázi MyDB1 hello na ContosoSQL1
-1. Pokud jste již nezaregistrovali mimo relací vzdálené plochy hello pro **ContosoSQL1** a **ContosoSQL2**, udělejte to teď.
-2. Otevřete hello soubor RDP pro **ContosoSQL1**a přihlaste se jako **CORP\Install**.
-3. V **Průzkumníka souborů**v části **C:\\**, vytvořte adresář s názvem **zálohování**. Budete používat tento adresář tooback a obnovení databáze.
-4. Klikněte pravým tlačítkem na nový adresář hello, přejděte příliš**sdílet s**a potom klikněte na **Určití lidé**, jak ukazuje následující snímek obrazovky hello.
+### <a name="create-the-mydb1-database-on-contososql1"></a>Vytvořit databázi MyDB1 na ContosoSQL1
+1. Pokud jste již nezaregistrovali mimo relací vzdálené plochy pro **ContosoSQL1** a **ContosoSQL2**, udělejte to teď.
+2. Otevřete soubor RDP pro **ContosoSQL1**a přihlaste se jako **CORP\Install**.
+3. V **Průzkumníka souborů**v části **C:\\**, vytvořte adresář s názvem **zálohování**. Tento adresář bude používat k zálohování a obnovení databáze.
+4. Klikněte pravým tlačítkem na nový adresář, přejděte na **sdílet s**a potom klikněte na **Určití lidé**, jak je znázorněno na následujícím snímku obrazovky.
    
     ![Vytvořte složku s zálohování](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665521.gif)
-5. Přidat **CORP\SQLSvc1**a dejte mu hello **pro čtení a zápis** oprávnění. Přidat **CORP\SQLSvc2**a dejte mu hello **čtení** oprávnění, jak je znázorněno v hello následující snímek obrazovky a pak klikněte na **sdílené složky**. Po dokončení procesu hello sdílení souborů, klikněte na tlačítko **provádí**.
+5. Přidat **CORP\SQLSvc1**a pak poskytněte **pro čtení a zápis** oprávnění. Přidat **CORP\SQLSvc2**a pak poskytněte **čtení** oprávnění, jak je uvedené v následující snímek obrazovky a pak klikněte na tlačítko **sdílené složky**. Po dokončení procesu sdílení souborů, klikněte na tlačítko **provádí**.
    
     ![Udělení oprávnění pro složku zálohování](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665522.gif)
-6. toocreate hello databáze, z hello **spustit** nabídce otevřete **SQL Server Management Studio**a potom klikněte na **připojit** tooconnect toohello výchozí instanci SQL serveru.
+6. K vytvoření databáze, z **spustit** nabídce otevřete **SQL Server Management Studio**a potom klikněte na **Connect** pro připojení k výchozí instanci SQL serveru.
 7. V **Průzkumník objektů**, klikněte pravým tlačítkem na **databáze**a potom klikněte na **novou databázi**.
 8. V **název databáze**, typ **MyDB1**a potom klikněte na **OK**.
 
 ### <a name="make-a-full-backup-of-mydb1-and-restore-it-on-contososql2"></a>Proveďte úplné zálohování MyDB1 a obnovte ji na ContosoSQL2
-1. toomake hello úplnou zálohu databáze v **Průzkumník objektů**, rozbalte položku **databáze**, klikněte pravým tlačítkem na **MyDB1**, bod příliš**úlohy**, a pak klikněte na tlačítko **zálohování**.
-2. V hello **zdroj** část, zachovat **typ zálohování** nastavit příliš**úplné**. V hello **cílové** klikněte na tlačítko **odebrat** tooremove hello výchozí cestu k souboru pro záložní soubor hello.
-3. V hello **cílové** klikněte na tlačítko **přidat**.
-4. V hello **název souboru** textového pole, typ  **\\ContosoSQL1\backup\MyDB1.bak**, klikněte na tlačítko **OK**a potom klikněte na **OK** znovu tooback zálohu databáze hello. Po dokončení operace zálohování hello, klikněte na tlačítko **OK** znovu tooclose hello dialogové okno.
-5. toomake transakce zálohu databáze hello přihlásit **Průzkumník objektů**, rozbalte položku **databáze**, klikněte pravým tlačítkem na **MyDB1**, bod příliš**úlohy**a potom klikněte na **zálohování**.
-6. V **typ zálohování**, vyberte **transakčního protokolu**. Zachovat hello **cílové** souboru toohello cesta sady, jeden jste dřív zadali a potom klikněte na **OK**. Po dokončení operace zálohování hello, klikněte na tlačítko **OK** znovu.
-7. toorestore hello úplné a transakce protokolu zálohování **ContosoSQL2**, otevřete soubor hello protokolu RDP pro **ContosoSQL2**a přihlaste se jako **CORP\Install**. Nechte relace vzdálené plochy hello pro **ContosoSQL1** otevřete.
-8. Z hello **spustit** nabídce otevřete **SQL Server Management Studio**a potom klikněte na **připojit** tooconnect toohello výchozí instanci SQL serveru.
+1. Aby úplnou zálohu databáze, v **Průzkumník objektů**, rozbalte položku **databáze**, klikněte pravým tlačítkem na **MyDB1**, přejděte na příkaz **úlohy**a potom klikněte na **zálohování**.
+2. V **zdroj** část, zachovat **typ zálohování** nastavena na **úplné**. V **cílové** klikněte na tlačítko **odebrat** odebrat výchozí cestu k souboru pro soubor zálohy.
+3. V **cílové** klikněte na tlačítko **přidat**.
+4. V **název souboru** textového pole, typ  **\\ContosoSQL1\backup\MyDB1.bak**, klikněte na tlačítko **OK**a potom klikněte na **OK** znovu k zálohování databáze. Po dokončení operace zálohování, klikněte na tlačítko **OK** zavřete dialogové okno.
+5. Chcete-li zálohu transakčního protokolu databáze, v **Průzkumník objektů**, rozbalte položku **databáze**, klikněte pravým tlačítkem na **MyDB1**, přejděte na **úlohy**a potom klikněte na **zálohování**.
+6. V **typ zálohování**, vyberte **transakčního protokolu**. Zachovat **cílové** souboru cesta nastaven na jednu jste dřív zadali a potom klikněte na **OK**. Po dokončení operace zálohování, klikněte na tlačítko **OK** znovu.
+7. K obnovení úplné a transakce protokolu zálohování **ContosoSQL2**, otevřete soubor RDP pro **ContosoSQL2**a přihlaste se jako **CORP\Install**. Nechte relace vzdálené plochy pro **ContosoSQL1** otevřete.
+8. Z **spustit** nabídce otevřete **SQL Server Management Studio**a potom klikněte na **Connect** pro připojení k výchozí instanci SQL serveru.
 9. V **Průzkumník objektů**, klikněte pravým tlačítkem na **databáze**a potom klikněte na **obnovit databázi**.
-10. V hello **zdroj** vyberte **zařízení**a klikněte na tlačítko se třemi tečkami hello **...** .
+10. V **zdroj** vyberte **zařízení**a klikněte na tlačítko se třemi tečkami **...** .
 11. V **vyberte zálohovací zařízení**, klikněte na tlačítko **přidat**.
-12. V **umístění souboru zálohy**, typ  **\\ContosoSQL1\backup**, klikněte na tlačítko **aktualizovat**, vyberte **MyDB1.bak**, klikněte na tlačítko **OK**a potom klikněte na **OK** znovu. Teď byste měli vidět hello úplné zálohy a zálohy protokolu hello v hello **zálohovací sklady toorestore** podokně.
-13. Přejděte toohello **možnosti** vyberte **RESTORE WITH NORECOVERY** v **stav obnovení**a potom klikněte na **OK** toorestore hello databáze. Po hello obnovit dokončení operace, klikněte na tlačítko **OK**.
+12. V **umístění souboru zálohy**, typ  **\\ContosoSQL1\backup**, klikněte na tlačítko **aktualizovat**, vyberte **MyDB1.bak**, klikněte na tlačítko **OK**a potom klikněte na **OK** znovu. Teď byste měli vidět úplné zálohování a zálohování protokolu **zálohovací sklady k obnovení** podokně.
+13. Přejděte na **možnosti** vyberte **RESTORE WITH NORECOVERY** v **stav obnovení**a potom klikněte na **OK** obnovit databázi. Po dokončení operace obnovení, klikněte na tlačítko **OK**.
 
-### <a name="create-hello-availability-group"></a>Vytvoření skupiny dostupnosti hello
-1. Přejděte zpět relace vzdálené plochy toohello pro **ContosoSQL1**. V **Průzkumník objektů** v systému SQL Server Management Studio klikněte pravým tlačítkem na **vždy na vysokou dostupnost**a potom klikněte na **Průvodce novou skupinou dostupnosti**, jak je znázorněno v hello Následující snímek obrazovky.
+### <a name="create-the-availability-group"></a>Vytvoření skupiny dostupnosti
+1. Přejděte zpět na relaci vzdálené plochy pro **ContosoSQL1**. V **Průzkumník objektů** v systému SQL Server Management Studio klikněte pravým tlačítkem na **vždy na vysokou dostupnost**a potom klikněte na **Průvodce novou skupinou dostupnosti**, jak je znázorněno na následujícím snímku obrazovky.
    
     ![Spuštění Průvodce vytvořením skupiny dostupnosti](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665523.gif)
-2. Na hello **ÚVOD** klikněte na tlačítko **Další**. Na hello **zadejte název skupiny dostupnosti** zadejte **AG1** v **název skupiny dostupnosti**, pak klikněte na tlačítko **Další** znovu.
+2. Na **ÚVOD** klikněte na tlačítko **Další**. Na **zadejte název skupiny dostupnosti** zadejte **AG1** v **název skupiny dostupnosti**, klikněte **Další** znovu.
    
     ![Průvodce pro nové skupiny dostupnosti, zadejte název skupiny dostupnosti](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665524.gif)
-3. Na hello **vyberte databáze** vyberte **MyDB1**a potom klikněte na **Další**. databáze Hello splňuje požadavky hello pro skupinu dostupnosti, protože jste provedli aspoň jednu úplnou zálohu na hello určený primární repliky.
+3. Na **vyberte databáze** vyberte **MyDB1**a potom klikněte na **Další**. Databáze splňuje předpoklady pro skupinu dostupnosti, protože jste provedli aspoň jednu úplnou zálohu na určený primární replice.
    
     ![Průvodce pro nové skupiny Availabilty, vyberte možnost databáze](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665525.gif)
-4. na hello **zadejte repliky** klikněte na tlačítko **přidat repliky**.
+4. na **zadejte repliky** klikněte na tlačítko **přidat repliky**.
    
     ![Průvodce pro nové skupiny Availabilty, zadejte repliky](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665526.gif)
-5. V hello **připojit tooServer** dialogové okno, typ **ContosoSQL2** v **název serveru**a potom klikněte na **Connect**.
+5. V **připojit k serveru** dialogové okno, typ **ContosoSQL2** v **název serveru**a potom klikněte na **Connect**.
    
-    ![Průvodce pro nové skupiny Availabilty, tooserver připojení](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665527.gif)
-6. Zpět na hello **zadejte repliky** stránky, měli byste vidět **ContosoSQL2** uvedené v **dostupné repliky**. Konfigurace replik hello, jak ukazuje následující snímek obrazovky hello. Až budete hotovi, klikněte na tlačítko **Další**.
+    ![Průvodce pro nové skupiny Availabilty, připojit k serveru](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665527.gif)
+6. Zpět na **zadejte repliky** stránky, měli byste vidět **ContosoSQL2** uvedené v **dostupné repliky**. Konfigurace repliky, jak je znázorněno na následujícím snímku obrazovky. Až budete hotovi, klikněte na tlačítko **Další**.
    
     ![Průvodce pro nové skupiny Availabilty, zadejte repliky (Dokončit)](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665528.gif)
-7. Na hello **vybrat počáteční synchronizaci dat** vyberte **připojení pouze**a potom klikněte na **Další**. Jste již provedli synchronizace dat ručně při probíhají zálohování úplné a transakce hello **ContosoSQL1** a obnoví je na **ContosoSQL2**. Můžete zvolit není tooperform hello operace zálohování a obnovení databáze a místo toho vybrat **úplné** toolet hello Průvodce novou skupinou dostupnosti proveďte synchronizaci dat pro vás. Nedoporučujeme ale tuto možnost pro velké databáze, které se nacházejí v některé podniky.
+7. Na **vybrat počáteční synchronizaci dat** vyberte **připojení pouze**a potom klikněte na **Další**. Jste již provedli synchronizace dat ručně při probíhají zálohování úplné a transakce **ContosoSQL1** a obnoví je na **ContosoSQL2**. Můžete není k provedení zálohování a obnovení operací v databázi a místo toho vyberte **úplné** umožníte Průvodce novou skupinou dostupnosti proveďte synchronizaci dat pro vás. Nedoporučujeme ale tuto možnost pro velké databáze, které se nacházejí v některé podniky.
    
     ![Průvodce novou skupinou Availabilty, vyberte data počáteční synchronizace](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665529.gif)
-8. Na hello **ověření** klikněte na tlačítko **Další**. Tato stránka by měla vypadat podobně jako toohello následující snímek obrazovky. Protože jste nenakonfigurovali naslouchací proces skupiny dostupnosti je upozornění pro konfiguraci naslouchacího procesu hello. Toto upozornění můžete ignorovat, protože v tomto kurzu nekonfiguruje naslouchací proces. naslouchací proces hello tooconfigure po dokončení tohoto kurzu, najdete v tématu [nakonfigurovat modul pro naslouchání ILB pro skupiny dostupnosti Always On v Azure](../classic/ps-sql-int-listener.md).
+8. Na **ověření** klikněte na tlačítko **Další**. Tato stránka by měla vypadat podobně jako na následujícím snímku obrazovky. Protože jste nenakonfigurovali naslouchací proces skupiny dostupnosti je upozornění pro konfiguraci naslouchacího procesu. Toto upozornění můžete ignorovat, protože v tomto kurzu nekonfiguruje naslouchací proces. Naslouchací proces konfigurace, po dokončení tohoto kurzu, najdete v části [nakonfigurovat modul pro naslouchání ILB pro skupiny dostupnosti Always On v Azure](../classic/ps-sql-int-listener.md).
    
     ![Průvodce vytvořením skupiny Availabilty, ověření](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665530.gif)
-9. Na hello **Souhrn** klikněte na tlačítko **Dokončit**a potom chvíli počkejte, než Průvodce hello nakonfiguruje hello nové skupiny dostupnosti. Na hello **průběh** stránky, můžete kliknout na **podrobnosti** tooview hello podrobný průběh. Po dokončení Průvodce hello zkontrolovat hello **výsledky** tooverify stránku této skupiny dostupnosti hello je úspěšně vytvořen, jak je znázorněno v hello následující snímek obrazovky a pak klikněte na **Zavřít** tooexit hello Průvodce.
+9. Na **Souhrn** klikněte na tlačítko **Dokončit**a potom chvíli počkejte, než Průvodce nakonfiguruje do nové skupiny dostupnosti. Na **průběh** stránky, můžete kliknout na **další podrobnosti** zobrazíte podrobné průběh. Po ukončení průvodce, zkontrolujte **výsledky** ověření úspěšně vytváření skupiny dostupnosti, jak je znázorněno na následujícím snímku obrazovky a pak klikněte na tlačítko **Zavřít** ukončíte průvodce.
    
     ![Průvodce vytvořením skupiny Availabilty, výsledky](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665531.gif)
-10. V **Průzkumník objektů**, rozbalte položku **vždy na vysokou dostupnost**a potom rozbalte **skupiny dostupnosti**. Teď byste měli vidět hello nové skupiny dostupnosti v tomto kontejneru. Klikněte pravým tlačítkem na **AG1 (primární)**a potom klikněte na **zobrazit řídicí panel**.
+10. V **Průzkumník objektů**, rozbalte položku **vždy na vysokou dostupnost**a potom rozbalte **skupiny dostupnosti**. Teď byste měli vidět nové skupiny dostupnosti v tomto kontejneru. Klikněte pravým tlačítkem na **AG1 (primární)**a potom klikněte na **zobrazit řídicí panel**.
     
      ![Řídicí panel zobrazit skupiny dostupnosti](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665532.gif)
-11. Vaše **vždy na řídicí panel** by měl vypadá podobně jako toohello jednu v hello následující snímek obrazovky. Můžete zobrazit hello repliky, režim převzetí služeb při selhání hello každé repliky a stav synchronizace hello.
+11. Vaše **vždy na řídicí panel** by měl vypadat podobně jako v následujícím snímku obrazovky. Můžete zobrazit repliky, režim převzetí služeb při selhání každou repliku a stav synchronizace.
     
      ![Řídicí panel skupiny dostupnosti](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665533.gif)
-12. Vrátí příliš**správce serveru**, klikněte na tlačítko **nástroje**a pak otevřete **Správce clusteru převzetí služeb při selhání**.
-13. Rozbalte položku **Cluster1.corp.contoso.com**a potom rozbalte **služeb a aplikací**. Vyberte **role** a Všimněte si, že hello **AG1** byla vytvořená role skupiny dostupnosti. Všimněte si, že AG1 nemá IP adresu podle databázi, kterou klienti mohou připojit toohello skupiny dostupnosti, protože jste nenakonfigurovali naslouchací proces. Můžete připojit přímo toohello primární uzel pro operace čtení a zápis a hello sekundární uzel pro dotazy jen pro čtení.
+12. Vraťte se do **správce serveru**, klikněte na tlačítko **nástroje**a pak otevřete **Správce clusteru převzetí služeb při selhání**.
+13. Rozbalte položku **Cluster1.corp.contoso.com**a potom rozbalte **služeb a aplikací**. Vyberte **role** a Všimněte si, že **AG1** byla vytvořená role skupiny dostupnosti. Všimněte si, že AG1 nemá IP adresu podle databázi, kterou klienti mohou připojit ke skupině dostupnosti, protože jste nenakonfigurovali naslouchací proces. Můžete připojit přímo na primárním uzlu, který pro operace čtení a zápis a sekundární uzel pro dotazy jen pro čtení.
     
      ![AG ve Správci clusteru převzetí služeb při selhání](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665534.gif)
 
 > [!WARNING]
-> Nepokoušejte toofail přes hello skupiny dostupnosti z hello Správce clusteru převzetí služeb při selhání. Všechny operace převzetí služeb při selhání by měla provést uvnitř **vždy na řídicí panel** v systému SQL Server Management Studio. Další informace najdete v tématu [hello omezení pomocí Správce clusteru převzetí služeb při selhání se skupinami dostupnosti](https://msdn.microsoft.com/library/ff929171.aspx).
+> Nepokoušejte se převzít služby skupiny dostupnosti ze Správce clusteru převzetí služeb při selhání. Všechny operace převzetí služeb při selhání by měla provést uvnitř **vždy na řídicí panel** v systému SQL Server Management Studio. Další informace najdete v tématu [omezení na používání nástroje převzetí služeb při selhání clusteru Manager se skupinami dostupnosti](https://msdn.microsoft.com/library/ff929171.aspx).
 > 
 > 
 
 ## <a name="next-steps"></a>Další kroky
-Jste teď úspěšně implementovali SQL serveru Always On tak, že vytvoříte skupinu dostupnosti v Azure. tooconfigure naslouchací proces pro tuto skupinu dostupnosti, najdete v části [nakonfigurovat modul pro naslouchání ILB pro skupiny dostupnosti Always On v Azure](../classic/ps-sql-int-listener.md).
+Jste teď úspěšně implementovali SQL serveru Always On tak, že vytvoříte skupinu dostupnosti v Azure. Ke konfiguraci naslouchacího procesu pro tuto skupinu dostupnosti, najdete v části [nakonfigurovat modul pro naslouchání ILB pro skupiny dostupnosti Always On v Azure](../classic/ps-sql-int-listener.md).
 
 Další informace o používání systému SQL Server v Azure najdete v tématu [systému SQL Server na virtuálních počítačích Azure](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
 

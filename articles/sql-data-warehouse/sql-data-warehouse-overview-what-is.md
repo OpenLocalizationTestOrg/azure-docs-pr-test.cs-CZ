@@ -1,6 +1,6 @@
 ---
-title: aaaWhat je Azure SQL Data Warehouse? | Dokumentace Microsoftu
-description: "Distribuovaná databáze podnikové třídy schopná zpracovávat petabajtové objemy relačních a nerelačních dat. Je hello odvětví první cloudový datový sklad zvětšit, zmenšit a pozastavení v sekundách."
+title: Co je Azure SQL Data Warehouse? | Dokumentace Microsoftu
+description: "Distribuovaná databáze podnikové třídy schopná zpracovávat petabajtové objemy relačních a nerelačních dat. Je to první cloudový datový sklad v odvětví, který se umí během pár sekund zvětšit, zmenšit nebo pozastavit."
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
@@ -15,28 +15,28 @@ ms.workload: data-services
 ms.custom: overview
 ms.date: 2/28/2017
 ms.author: jrj;barbkess
-ms.openlocfilehash: 5fefe40879230f123c2e4a90b9c20a35779cf711
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 575c49f83c8845edcea984459f3907490c62d269
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-azure-sql-data-warehouse"></a>Co je Azure SQL Data Warehouse?
 Azure SQL Data Warehouse je cloudová, škálovatelná, relační databáze, která dokáže zpracovávat ohromné objemy dat, postavená na architektuře MPP (Massively Parallel Processing). 
 
 SQL Data Warehouse:
 
-* Kombinuje relační databáze systému SQL Server hello s možností škálování cloudu Azure. 
+* Kombinuje relační databázi SQL Server s možnostmi cloudového škálování Azure. 
 * Odděluje úložiště od výpočetních prostředků.
 * Umožňuje navýšení, snížení, pozastavení nebo obnovení výpočetních prostředků. 
-* Integruje napříč hello platformy Azure.
+* Integruje se v rámci celé platformy Azure.
 * Využívá jazyk Transact-SQL (T-SQL) a nástroje SQL Serveru.
 * Je v souladu s různými zákonnými a podnikovými požadavky na zabezpečení, jako je například SOC a ISO.
 
-Tento článek popisuje hello klíčových funkcích služby SQL Data Warehouse.
+Tento článek popisuje klíčové funkce SQL Data Warehouse.
 
 ## <a name="massively-parallel-processing-architecture"></a>Architektura MPP (Massively parallel processing)
-Řešení SQL Data Warehouse je distribuovaný databázový systém, postavený na architektuře MPP (Massively Parallel Processing). Pozadí se děje hello SQL Data Warehouse rozprostírá data mezi mnoha shared nothing úložných a procesorových jednotek. Hello data se ukládají ve vrstvě Premium místně redundantní úložiště, na který dynamicky propojené výpočetní uzly spouštět dotazy. Načte "rozdělení a dobytí" toorunning přístup má SQL Data Warehouse a složitých dotazů. Požadavky jsou přijímány řídicí uzel optimalizované pro distribuci a potom předána tooCompute uzly toodo práci paralelně.
+Řešení SQL Data Warehouse je distribuovaný databázový systém, postavený na architektuře MPP (Massively Parallel Processing). SQL Data Warehouse rovnoměrně rozprostírá vaše data napříč mnoha úložnými a procesorovými jednotkami typu SN (shared-nothing). Data se ukládají ve vrstvě místně redundantního úložiště úrovně Premium, nad kterou provádí dotazy dynamicky propojené výpočetní uzly. SQL Data Warehouse používá ke spuštěnému načítání a složitým dotazům přístup „rozděl a panuj“. Požadavky jsou přijímány řídicím uzlem, optimalizovány pro distribuci a potom předány do výpočetních uzlů, aby mohly pracovat paralelně.
 
 Díky oddělenému úložišti a výpočetním prostředkům může SQL Data Warehouse:
 
@@ -45,57 +45,57 @@ Díky oddělenému úložišti a výpočetním prostředkům může SQL Data War
 * Pozastavit výpočetní kapacitu a zachovat neporušená data, zatímco platíte pouze za úložiště
 * Obnovit výpočetní kapacitu za provozu
 
-Hello následující diagram znázorňuje architekturu hello podrobněji.
+Následující diagram ukazuje architekturu podrobněji.
 
 ![Architektura služby SQL Data Warehouse][1]
 
-**Řídicí uzel:** hello řídicí uzel spravuje a optimalizuje dotazy. Je hello front-end, který komunikuje se všemi aplikacemi a připojeními. V SQL Data Warehouse hello řídicí uzel používá technologii SQL Database a připojení tooit vypadá a pracuje hello stejné. V části hello prostor hello řídicí uzel koordinuje všechny přesuny dat hello a výpočty potřebné toorun paralelní dotazy na distribuovaných datech. Při odesílání tooSQL dotazu T-SQL Data Warehouse hello řídicí uzel ho transformuje na samostatné dotazy, které běží na každém výpočetním uzlu paralelně.
+**Řídicí uzel:** Řídicí uzel spravuje a optimalizuje dotazy. Jde o prvek front-end, který komunikuje se všemi aplikacemi a připojeními. Ve službě SQL Data Warehouse řídicí uzel používá technologii SQL Database a připojení k němu vypadá a funguje stejně. Pod povrchem řídicí uzel koordinuje všechny přesuny dat a výpočty potřebné ke spouštění paralelních dotazů na distribuovaných datech. Když odešlete dotaz T-SQL do služby SQL Data Warehouse, řídicí uzel ho transformuje na samostatné dotazy, které se spouští paralelně na jednotlivých výpočetních uzlech.
 
-**Výpočetní uzly:** hello výpočetní uzly zajišťují výkon hello služby SQL Data Warehouse. Jsou to databáze SQL, které ukládají vaše data a zpracovávají vaše dotazy. Při přidání dat SQL Data Warehouse distribuuje hello řádky tooyour výpočetních uzlů. Hello výpočetní uzly jsou hello dělníky, kteří spouští paralelní dotazy hello na vaše data. Po zpracování předají hello výsledky zpět toohello řídicí uzel. dotaz hello toofinish, hello řídicí uzel agreguje hello výsledky a vrátí hello konečný výsledek.
+**Výpočetní uzly:** Výpočetní uzly zajišťují výkon služby SQL Data Warehouse. Jsou to databáze SQL, které ukládají vaše data a zpracovávají vaše dotazy. Když přidáte data, služba SQL Data Warehouse distribuuje řádky k vašim výpočetním uzlům. Výpočetní uzly jsou dělníky, kteří spouští paralelní dotazy na datech. Po zpracování předají výsledky zpět řídicímu uzlu. Řídicí uzel dokončí dotaz tím, že agreguje výsledky a vrátí konečný výsledek.
 
-**Úložiště:** Data se ukládají do Úložiště objektů blob v Azure. Výpočetní uzly práci s daty, zápisu a čtení tooand přímo z úložiště objektů blob. Vzhledem k tomu, že úložiště Azure se může transparentně a významně, můžete provést SQL Data Warehouse stejné hello. Výpočty a úložiště jsou nezávislé, takže služba SQL Data Warehouse může automaticky škálovat úložiště nezávisle na škálování výpočtů, a naopak. Azure Blob storage je taky plně odolná proti chybám a zjednodušuje hello zálohování a obnovení.
+**Úložiště:** Data se ukládají do Úložiště objektů blob v Azure. Při práci s daty výpočetní uzly zapisují a čtou přímo z úložiště objektů blob. Vzhledem k tomu, že úložiště Azure se může transparentně a neomezeně rozšiřovat, služba SQL Data Warehouse dokáže totéž. Výpočty a úložiště jsou nezávislé, takže služba SQL Data Warehouse může automaticky škálovat úložiště nezávisle na škálování výpočtů, a naopak. Služba Úložiště objektů blob v Azure je taky plně odolná proti chybám a zjednodušuje proces zálohování a obnovení.
 
-**Služba pro přesun dat:** služby přesun dat (DMS) přesouvá data mezi uzly hello. Služba DMS dává hello výpočetní uzly přístup toodata, které potřebují pro spojování a agregaci. DMS není jednou ze služeb Azure. Je služba systému Windows, které běží souběžně s SQL Database na všech uzlech hello. DMS je proces na pozadí, se kterým nelze přímo interagovat. Nicméně, můžete se podívat na dotaz plány toosee při výskytu operace DMS, protože přesun dat je nutné toorun každý dotaz paralelně.
+**Služba pro přesun dat:** Služba pro přesun dat (DMS) zajišťuje přesun dat mezi uzly. Služba DMS dává výpočetním uzlům přístup k datům, který potřebují pro spojování a agregaci. DMS není jednou ze služeb Azure. Jde o službu systému Windows, která běží na všech uzlech souběžně se službou SQL Database. DMS je proces na pozadí, se kterým nelze přímo interagovat. Můžete se však podívat na plány dotazů, abyste zjistili, kdy probíhají operace DMS, protože při paralelním spuštění jednotlivých dotazů je vždycky nutný přesun dat.
 
 ## <a name="optimized-for-data-warehouse-workloads"></a>Optimalizováno pro úlohy datového skladu
-je Hello přístup MPP opírá několik datových skladů optimalizací výkonu specifických, včetně:
+Přístup MPP se opírá o několik optimalizací výkonu specifických pro datové sklady, včetně těchto:
 
-* Optimalizátor distribuovaných dotazů a soubor komplexních statistik napříč všemi daty. Pomocí informací na velikosti a distribuci dat, služba hello je možné toooptimize dotazy tím, že posoudí náklady hello na konkrétní operace distribuovaných dotazů.
-* Pokročilé algoritmy a postupy integrované do dat hello přesun proces tooefficiently přesunout data mezi výpočetními prostředky jako nezbytné tooperform hello dotaz. Tyto operace přesunu dat jsou integrované v a všechny optimalizace toohello služba pro přesun dat dojít automaticky.
-* Clusterované indexy **columnstore** ve výchozím nastavení. SQL Data Warehouse pomocí úložiště založeného na sloupcích získá v průměru 5 x větší zvýšení komprese přes tradiční úložiště orientovaným na řádky a až too10x nebo další větší zvýšení výkonu dotazů. Analytické dotazy, které je třeba tooscan velký počet řádků lépe spolupracovat s indexy columnstore.
+* Optimalizátor distribuovaných dotazů a soubor komplexních statistik napříč všemi daty. Pomocí informací o velikosti a distribuci dat dokáže služba optimalizovat dotazy tím, že posoudí náklady na konkrétní operace distribuovaných dotazů.
+* Pokročilé algoritmy a postupy integrované do procesu přesunu dat, které efektivně přesouvají data mezi výpočetními prostředky tak, jak to vyžaduje provedení dotazu. Tyto operace přesunu dat jsou integrované a všechny optimalizace služby pro přesun dat probíhají automaticky.
+* Clusterované indexy **columnstore** ve výchozím nastavení. Díky použití úložiště založeného na sloupcích dosahuje služba SQL Data Warehouse průměrně 5x větší zvýšení komprese oproti tradičním úložištím orientovaným na řádky a 10x nebo i vícekrát vyšší výkon dotazů. Analytické dotazy, které potřebují prohledat velký počet řádků, fungují lépe s indexy columnstore.
 
 
 ## <a name="predictable-and-scalable-performance-with-data-warehouse-units"></a>Předvídatelný a škálovatelný výkon s jednotkami datového skladu
-Služba SQL Data Warehouse je postavena na podobných technologiích jako SQL Database – to znamená, že uživatelé můžou očekávat konzistentní a předvídatelný výkon pro analytické dotazy. Uživatelé by měl očekávat toosee výkonu škálování lineárně jako jejich přidání nebo odečtena výpočetních uzlů. Přidělení prostředků tooyour SQL Data Warehouse se měří v jednotky datového skladu (Dwu). Jednotky Dwu jsou měřítkem základního prostředkům, například CPU, paměť, IOPS, které jsou přiděleny tooyour SQL Data Warehouse. Zvýšením počtu hello jednotek Dwu se zvyšuje prostředků a výkonu. Jednotky DWU přináší především tyto výhody:
+Služba SQL Data Warehouse je postavena na podobných technologiích jako SQL Database – to znamená, že uživatelé můžou očekávat konzistentní a předvídatelný výkon pro analytické dotazy. Uživatelé by měli očekávat lineární škálování výkonu v závislosti na přidávání nebo odebírání výpočetních uzlů. Přidělování prostředků pro SQL Data Warehouse se měří v jednotkách datového skladu (Dwu). Dwu jsou jednotky základních prostředků jako jsou například procesor, paměť nebo IOPS, které jsou přidělené k vaší službě SQL Data Warehouse. Zvýšení výkonu jednotek DWU navyšuje prostředky a výkon. Jednotky DWU přináší především tyto výhody:
 
-* Budete mít tooscale vašeho datového skladu bez obav o hello základní hardware nebo software.
-* Můžete předvídání zlepšení výkonu pro úroveň DWU před změnou hello výpočetní datového skladu.
-* Hello základní hardware a software instanci služby můžete změnit nebo přesunout bez ovlivnění výkonu úloh.
-* Microsoft může zvýšit hello základní architektury služby hello bez ovlivnění hello výkon vašich úloh.
-* Microsoft může rychle zlepšit výkon v SQL Data Warehouse způsobem, který je škálovatelná a rovnoměrně důsledky hello systému.
+* Můžete škálovat datový sklad, aniž byste museli řešit použitý hardware a software.
+* Můžete předpovídat vylepšení výkonu pro úroveň DWU ještě před tím, než změníte výpočetní výkon datového skladu.
+* Hardware a software použitý pro vaši instanci se může změnit, aniž by se to dotklo výkonu úloh.
+* Microsoft může vylepšovat základní architekturu služby, aniž by došlo k ovlivnění výkonu vašich úloh.
+* Společnost Microsoft může rychle zvýšit výkon služby SQL Data Warehouse způsobem, který je škálovatelný a má rovnoměrný dopad na systém.
 
-Jednotky datového skladu poskytují měřítko tří metrik, které vysoce korelují s výkonem úloh datového skladu. Hello následující klíčové metriky škálování zatížení lineárně s hello Dwu.
+Jednotky datového skladu poskytují měřítko tří metrik, které vysoce korelují s výkonem úloh datového skladu. Následující klíčové metriky výkonu se škálují lineárně s počtem DWU.
 
 **Prohledávání/agregace:** Standardní dotaz datového skladu, který prohledá velký počet řádků a potom provede komplexní agregaci. Tato operace je náročná na oblast vstup/výstup a prostředky procesoru.
 
-**Zatížení:** hello možnost tooingest data do služby hello. Načtení se nejlépe provádí pomocí funkce PolyBase z Azure Storage Blob do služby Azure Data Lake. Tato metrika je navrženou toostress sítě a procesoru aspektů služby hello.
+**Načtení:** Schopnost ingestovat data do služby. Načtení se nejlépe provádí pomocí funkce PolyBase z Azure Storage Blob do služby Azure Data Lake. Tato metrika je navržená tak, aby vystavila zátěži síťové a procesorové aspekty služby.
 
-**Vytvořit tabulku jako vyberte (funkce CTAS):** funkce CTAS měří schopnost toocopy hello tabulku. To zahrnuje čtení dat z úložiště, distribuci mezi uzly hello hello zařízení a zápis toostorage znovu. Tato operace je náročná na prostředky procesoru, vstup/výstup a síťové prostředky.
+**Funkce CTAS (Create Table As Select):** Funkce CTAS měří schopnost kopírování tabulky. To zahrnuje čtení dat z úložiště, jejich distribuci napříč uzly zařízení a zpětný zápis do úložiště. Tato operace je náročná na prostředky procesoru, vstup/výstup a síťové prostředky.
 
 ## <a name="built-on-sql-server"></a>Vytvořené na serveru SQL Server
-SQL Data Warehouse je založená na relační databázový stroj SQL Server hello a zahrnuje celou řadu hello funkce, které očekáváte od podnikového datového skladu. Pokud už znáte T-SQL, je snadné tootransfer vaše znalostní báze tooSQL datového skladu. Jestli máte pokročilé, nebo jenom začátek, příklady hello napříč hello dokumentaci vám pomůžou začít. Obecně se dá chápat hello způsobem, že způsob konstrukce prvků jazyka hello služby SQL Data Warehouse následujícím způsobem:
+Služba SQL Data Warehouse je založená na relačním databázovém stroji SQL Serveru a zahrnuje celou řadu funkcí, které od podnikového datového skladu očekáváte. Pokud znáte T-SQL, přechod na SQL Data Warehouse je jednoduchou záležitostí. Ať už máte pokročilé, nebo jen základní znalosti, příklady v dokumentaci vám pomůžou začít. Celkově platí, že způsob konstrukce prvků jazyka služby SQL Data Warehouse se dá chápat takto:
 
 * SQL Data Warehouse používá syntaxi T-SQL pro mnoho operací. Také podporuje širokou škálu tradičních SQL konstruktorů, jako jsou uložené procedury, uživatelem definované funkce, vytváření oddílů tabulky, indexy a kolace.
 * SQL Data Warehouse také obsahuje různé novější funkce SQL Serveru, k nimž patří clusterované indexy **columnstore**, integrace PolyBase a auditování dat (včetně hodnocení hrozeb).
-* Některé prvky jazyka T-SQL, které jsou méně častých pro datových skladů úlohy, nebo jsou novější tooSQL serveru, nemusí být aktuálně k dispozici. Další informace najdete v tématu hello [dokumentace k migraci][Migration documentation].
+* Některé elementy jazyka T-SQL, které jsou méně běžné pro úlohy datových skladů, nebo jsou pro SQL Server novější, nemusí být aktuálně k dispozici. Další informace najdete v tématu [Dokumentace k migraci][Migration documentation].
 
-S hello Transact-SQL a společného funkce SQL Server, SQL datového skladu, databáze SQL a Analytics Platform System můžete vyvinout řešení, které vyhovuje vašim datovým potřebám. Můžete rozhodnout, kde tookeep data, na základě výkonu, zabezpečení a požadavky rozsahu a potom přenos dat v případě potřeby mezi různými systémy.
+Díky shodnému jazyku Transact-SQL a shodným funkcím systému SQL Server, služby SQL Data Warehouse, služby SQL Database a řešení Analytics Platform System můžete vyvinout řešení, které vyhovuje vašim datovým potřebám. Na základě požadavků na výkon, zabezpečení a škálování se můžete rozhodnout, kam svoje data uložíte, a potom data podle potřeby přenášet mezi různými systémy.
 
 ## <a name="data-protection"></a>Ochrana dat
-SQL Data Warehouse ukládá všechna data v úložišti Azure úrovně Premium pomocí místně redundantního úložiště. Několik synchronních kopií dat hello jsou zachována ve hello místní data center tooguarantee transparentní ochrana dat před lokálních selhání. Kromě toho SQL Data Warehouse v pravidelných intervalech automaticky zálohuje aktivní (nepozastavené) databáze pomocí snímků služby Azure Storage. toolearn informace o zálohování a obnovení funguje, najdete v části hello [Přehled zálohování a obnovení][Backup and restore overview].
+SQL Data Warehouse ukládá všechna data v úložišti Azure úrovně Premium pomocí místně redundantního úložiště. V místním datovém centru se udržuje několik synchronních kopií dat, aby se zajistila transparentní ochrana dat před místním selháním. Kromě toho SQL Data Warehouse v pravidelných intervalech automaticky zálohuje aktivní (nepozastavené) databáze pomocí snímků služby Azure Storage. Další informace o zálohování a obnovení najdete v článku [Přehled zálohování a obnovení][Backup and restore overview].
 
 ## <a name="integrated-with-microsoft-tools"></a>Integrováno s nástroji společnosti Microsoft
-SQL Data Warehouse taky integruje řadu nástrojů hello uživatele může být obeznámeni s systém SQL Server. Mezi tyto nástroje patří:
+SDL Data Warehouse také integruje mnoho nástrojů, které znají uživatelé z používání systému SQL Server. Mezi tyto nástroje patří:
 
 **Tradiční nástroje systému SQL Server:** Služba SQL Data Warehouse je plně integrovaná se Službou Analysis Services serveru SQL, SSIS a Reporting Services.
 
@@ -104,17 +104,17 @@ SQL Data Warehouse taky integruje řadu nástrojů hello uživatele může být 
 **Nástroje třetích stran:** Mnoho poskytovatelů nástrojů třetích stran disponuje certifikovanou integrací svých nástrojů se službou SQL Data Warehouse. Úplný seznam najdete v tématu [Partneři řešení SQL Data Warehouse][SQL Data Warehouse solution partners].
 
 ## <a name="hybrid-data-sources-scenarios"></a>Scénáře hybridních zdrojů dat
-Polybase umožňuje tooleverage data z různých zdrojů pomocí známých příkazů T-SQL. Polybase umožňuje tooquery nerelační data ukládaná v úložišti objektů Blob v Azure, jako by šlo o běžnou tabulku. Použijte Polybase tooquery nerelační data, nebo tooimport nerelační data do SQL Data Warehouse.
+PolyBase vám umožňuje využít data z různých zdrojů pomocí stejných příkazů T-SQL, které dobře znáte. PolyBase umožňuje dotazovat nerelační data uložená v Úložišti objektů blob v Azure, jako by šlo o běžnou tabulku. Použijte PolyBase k dotazům na nerelační data a importu nerelačních dat do služby SQL Data Warehouse.
 
-* PolyBase používá externí tabulky tooaccess nerelační data. Hello definice tabulek jsou uložené v SQL Data Warehouse a můžete je přístup pomocí SQL a nástroje, jako je by k normálním relačním datům.
-* PolyBase nedělá při integraci žádné rozdíly. Ji vystavuje hello stejné funkce a funkce tooall hello zdrojům, které podporuje. Hello data načtená polybase může být v různých formátech, včetně souborů s oddělovači a souborů ORC.
-* PolyBase se dá použít tooaccess úložiště objektů blob, který se také používá jako úložiště pro cluster služby HDInsight. Toto dává vám přístup toohello stejným datům pomocí relačních a nerelačních nástrojů.
+* PolyBase používá k přístupu k nerelačním datům externí tabulky. Definice tabulek jsou uložené ve službě SQL Data Warehouse a můžete k nim přistupovat pomocí SQL a nástrojů stejně, jako byste přistupovali k normálním relačním datům.
+* PolyBase nedělá při integraci žádné rozdíly. Zpřístupňuje stejné prvky a funkce všem zdrojům, které podporuje. PolyBase čte data v mnoha různých formátech, včetně souborů s oddělovači a souborů ORC.
+* PolyBase lze použít pro přístup k úložišti objektů blob, které se také používá jako úložiště clusteru HDInsight. To umožňuje přístup ke stejným datům pomocí relačních a nerelačních nástrojů.
 
 ## <a name="sla"></a>SLA
-SQL Data Warehouse nabízí smlouvu o úrovni služeb (SLA) na úrovni produktu jako součást smlouvy SLA pro Microsoft Online Services. Další informace najdete na stránkách [SLA pro SQL Data Warehouse][SLA for SQL Data Warehouse]. SLA informace o všech ostatních produktů můžete navštívit hello [smlouvy o úrovni služeb] Azure stránky nebo je stáhnout na hello [Volume Licensing] [ Volume Licensing] stránky. 
+SQL Data Warehouse nabízí smlouvu o úrovni služeb (SLA) na úrovni produktu jako součást smlouvy SLA pro Microsoft Online Services. Další informace najdete na stránkách [SLA pro SQL Data Warehouse][SLA for SQL Data Warehouse]. Informace o smlouvách SLA ke všem dalším produktům najdete na stránce Azure věnované [smlouvám o úrovni služeb], případně si je můžete stáhnout na stránce o [multilicencích][Volume Licensing]. 
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když víte o něco o SQL Data Warehouse, zjistěte, jak tooquickly [vytvořit SQL Data Warehouse] [ create a SQL Data Warehouse] a [načíst ukázková data][load sample data]. Pokud jste nový tooAzure, můžete zjistit hello [Azure Glosář] [ Azure glossary] užitečné, protože dojde k nové terminologie. Můžete se také podívat na některé z těchto dalších zdrojů ke službě SQL Data Warehouse.  
+Teď, když jste se s SQL Data Warehouse seznámili, můžete zjistit, jak rychle [vytvořit datový sklad SQL Data Warehouse][create a SQL Data Warehouse] a [načíst ukázková data][load sample data]. Pokud s Azure začínáte, může vám být užitečný [Glosář Azure][Azure glossary], kde najdete potřebnou terminologii. Můžete se také podívat na některé z těchto dalších zdrojů ke službě SQL Data Warehouse.  
 
 * [Úspěšné zákaznické implementace]
 * [Blogy]
@@ -152,4 +152,4 @@ Teď, když víte o něco o SQL Data Warehouse, zjistěte, jak tooquickly [vytvo
 [Videa]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 [SLA for SQL Data Warehouse]: https://azure.microsoft.com/en-us/support/legal/sla/sql-data-warehouse/v1_0/
 [Volume Licensing]: http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
-[smlouvy o úrovni služeb]: https://azure.microsoft.com/en-us/support/legal/sla/
+[smlouvám o úrovni služeb]: https://azure.microsoft.com/en-us/support/legal/sla/

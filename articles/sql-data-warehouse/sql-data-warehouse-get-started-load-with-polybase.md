@@ -1,6 +1,6 @@
 ---
-title: aaaPolyBase v SQL Data Warehouse kurzu | Microsoft Docs
-description: "Zjistěte, co je PolyBase a jak toouse pro scénáře datových skladů."
+title: "Kurz k používání funkce PolyBase v SQL Data Warehouse | Dokumentace Microsoftu"
+description: "Zjistěte, co je PolyBase a jak tuto funkci používat pro scénáře datových skladů."
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 03/01/2017
 ms.author: cakarst;barbkess
-ms.openlocfilehash: 3e680ec407c1d920dd59ea922b82c9208b5e9a84
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 1a26fe127448f794bbad11043aa3c8770bc2ac8c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="load-data-with-polybase-in-sql-data-warehouse"></a>Načtení dat pomocí funkce PolyBase v SQL Data Warehouse
 > [!div class="op_single_selector"]
@@ -30,32 +30,32 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Tento kurz ukazuje, jak tooload dat do SQL Data Warehouse pomocí AzCopy a PolyBase. Po dokončení tohoto kurzu budete vědět, jak:
+Tento kurz ukazuje, jak načíst data do SQL Data Warehouse s použitím AzCopy a PolyBase. Po dokončení tohoto kurzu budete vědět, jak:
 
-* Používání úložiště blob tooAzure data toocopy AzCopy
-* Vytvoření databázových objektů toodefine hello dat
-* Hello dat tooload dotazu T-SQL
+* Pomocí AzCopy kopírovat data do Azure Blob Storage
+* Vytvářením databázových objektů definovat data
+* Spuštěním dotazu T-SQL načítat data
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Loading-data-with-PolyBase-in-Azure-SQL-Data-Warehouse/player]
 > 
 > 
 
 ## <a name="prerequisites"></a>Požadavky
-toostep prostřednictvím tohoto kurzu budete potřebovat.
+Pro jednotlivé kroky v tomto kurzu budete potřebovat
 
 * Databázi SQL Data Warehouse
 * Účet úložiště Azure typu Standard Locally Redundant Storage (Standard-LRS), Standard Geo-Redundant Storage (Standard-GRS) nebo Standard Read-Access Geo-Redundant Storage (Standard-RAGRS)
-* Nástroj příkazového řádku AzCopy. Stáhněte a nainstalujte hello [nejnovější verzi AzCopy] [ latest version of AzCopy] nainstalované s hello Microsoft Azure Storage Tools.
+* Nástroj příkazového řádku AzCopy. Stáhněte a nainstalujte si [nejnovější verzi AzCopy][latest version of AzCopy], která se instaluje s nástroji Microsoft Azure Storage Tools.
   
     ![Nástroje Azure Storage Tools](./media/sql-data-warehouse-get-started-load-with-polybase/install-azcopy.png)
 
-## <a name="step-1-add-sample-data-tooazure-blob-storage"></a>Krok 1: Přidání ukázkových dat tooAzure objektu blob úložiště
-V datech tooload pořadí potřebujeme tooput ukázková data do Azure blob storage. V tomto kroku naplníme objekt blob úložiště Azure ukázkovými daty. Později použijeme PolyBase tooload Tato ukázková data do databáze SQL Data Warehouse.
+## <a name="step-1-add-sample-data-to-azure-blob-storage"></a>Krok 1: Přidání ukázkových dat do Azure Blob Storage
+Aby bylo možné data načíst, musíme vložit nějaká ukázková data do Azure Blob Storage. V tomto kroku naplníme objekt blob úložiště Azure ukázkovými daty. Později pomocí funkce PolyBase načteme tato ukázková data do vaší databáze SQL Data Warehouse.
 
 ### <a name="a-prepare-a-sample-text-file"></a>A. Příprava ukázkového textového souboru
-tooprepare ukázkový textový soubor:
+Ukázkový textový soubor připravíte takto:
 
-1. Otevřete Poznámkový blok a zkopírujte hello následující řádky dat do nového souboru. Uložte tento tooyour místního dočasného adresáře jako % temp%\DimDate2.txt.
+1. Otevřete Poznámkový blok a zkopírujte následující řádky dat do nového souboru. Uložte zkopírované řádky do místního dočasného (temp) adresáře do souboru % temp%\DimDate2.txt.
 
 ```
 20150301,1,3
@@ -73,11 +73,11 @@ tooprepare ukázkový textový soubor:
 ```
 
 ### <a name="b-find-your-blob-service-endpoint"></a>B. Vyhledání vašeho koncového bodu Služby objektů blob
-toofind vašeho koncového bodu služby objektů blob:
+Vyhledání vašeho koncového bodu Služby objektů blob:
 
-1. Hello portálu Azure vyberte **Procházet** > **účty úložiště**.
-2. Klikněte na tlačítko hello úložiště účet, že který má toouse.
-3. V okně účtu úložiště hello klikněte na objekty BLOB
+1. Na portálu Azure vyberte **Procházet** > **Účty úložiště**.
+2. Klikněte na účet úložiště, který chcete použít.
+3. V okně Účet úložiště klikněte na Objekty blob.
    
     ![Klikněte na Objekty blob.](./media/sql-data-warehouse-get-started-load-with-polybase/click-blobs.png)
 4. Uložte si adresu URL koncového bodu Služby objektů blob pro pozdější použití.
@@ -85,67 +85,67 @@ toofind vašeho koncového bodu služby objektů blob:
     ![Koncový bod Služby objektů blob](./media/sql-data-warehouse-get-started-load-with-polybase/blob-service.png)
 
 ### <a name="c-find-your-azure-storage-key"></a>C. Vyhledání klíče účtu úložiště Azure
-toofind klíče účtu úložiště Azure:
+Vyhledání klíče účtu úložiště Azure:
 
-1. Hello portálu Azure, vyberte **Procházet** > **účty úložiště**.
-2. Klikněte na účet úložiště hello, že chcete toouse.
+1. Na portálu Azure vyberte **Procházet** > **Účty úložiště**.
+2. Klikněte na účet úložiště, který chcete použít.
 3. Vyberte **Všechna nastavení** > **Přístupové klíče**.
-4. Klikněte na tlačítko hello kopírování pole toocopy mezi schránky toohello klíče přístup.
+4. Kliknutím na políčko pro kopírování si zkopírujte jeden ze svých přístupových klíčů do schránky.
    
     ![Zkopírování klíče úložiště Azure](./media/sql-data-warehouse-get-started-load-with-polybase/access-key.png)
 
-### <a name="d-copy-hello-sample-file-tooazure-blob-storage"></a>D. Zkopírujte hello ukázkový soubor tooAzure objektu blob úložiště
-toocopy úložiště objektů blob tooAzure dat:
+### <a name="d-copy-the-sample-file-to-azure-blob-storage"></a>D. Zkopírování ukázkového souboru do Azure Blob Storage
+Zkopírování vašich dat do Azure Blob Storage:
 
-1. Otevřete příkazový řádek a změnit instalační adresář AzCopy toohello adresáře. Tento příkaz změní toohello výchozí instalační adresář v klientovi Windows 64-bit.
+1. Otevřete příkazový řádek a změňte adresář na instalační adresář AzCopy. Tento příkaz změní adresář na výchozí instalační adresář na 64bitovém klientovi Windows.
    
     ```
     cd /d "%ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy"
     ```
-2. Spusťte následující příkaz tooupload hello soubor hello. Zadejte svoji adresu URL koncového bodu Služby objektů blob pro <blob service endpoint URL> a klíč účtu úložiště Azure pro <klíč_účtu_úložiště_azure>.
+2. Spuštěním následujícího příkazu nahrajte soubor: Zadejte svoji adresu URL koncového bodu Služby objektů blob pro <blob service endpoint URL> a klíč účtu úložiště Azure pro <klíč_účtu_úložiště_azure>.
    
     ```
     .\AzCopy.exe /Source:C:\Temp\ /Dest:<blob service endpoint URL> /datacontainer/datedimension/ /DestKey:<azure_storage_account_key> /Pattern:DimDate2.txt
     ```
 
-Viz také [Začínáme s hello příkazového řádku Azcopy][Getting Started with hello AzCopy Command-Line Utility].
+Viz také [Začínáme s nástrojem příkazového řádku AzCopy][Getting Started with the AzCopy Command-Line Utility].
 
 ### <a name="e-explore-your-blob-storage-container"></a>E. Prozkoumání vašeho kontejneru úložiště objektů blob
-toosee hello soubor, který jste nahráli tooblob úložiště:
+Zobrazení souboru, který jste nahráli do úložiště objektů blob:
 
-1. Vraťte se zpátky tooyour objektu Blob služby okno.
+1. Přejděte zpět do okna vaší Služby objektů blob.
 2. V části Kontejnery poklikejte na **datacontainer**.
-3. tooexplore hello cesta tooyour data, klikněte na složku hello **datedimension** a zobrazí se nahraný soubor **DimDate2.txt**.
-4. Klikněte na tlačítko Vlastnosti tooview **DimDate2.txt**.
-5. Všimněte si, že v okně Vlastnosti hello objektů Blob můžete stáhnout nebo odstranit soubor hello.
+3. Pokud chcete prozkoumat cestu ke svým datům, klikněte na složku **datedimension**. Zobrazí se nahraný soubor **DimDate2.txt**.
+4. Pokud chcete zobrazit vlastnosti, klikněte na **DimDate2.txt**.
+5. Poznámka: V okně vlastností objektu blob můžete stáhnout nebo odstranit soubor.
    
     ![Zobrazení objektu blob úložiště Azure](./media/sql-data-warehouse-get-started-load-with-polybase/view-blob.png)
 
-## <a name="step-2-create-an-external-table-for-hello-sample-data"></a>Krok 2: Vytvoření externí tabulky pro hello ukázková data
-V této části vytvoříme externí tabulku, která definuje ukázková data hello.
+## <a name="step-2-create-an-external-table-for-the-sample-data"></a>Krok 2: Vytvoření externí tabulky pro ukázková data
+V této části vytvoříme externí tabulku, která definuje ukázková data.
 
-PolyBase používá externí tabulky tooaccess data v úložišti objektů blob Azure. Vzhledem k tomu, že hello data nejsou uložená v SQL Data Warehouse, zpracovává PolyBase ověřování toohello externí data pomocí přihlašovacích údajů platných pro databázi.
+Funkce PolyBase používá pro přístup k datům v Azure Blob Storage externí tabulky. Vzhledem k tomu, že data nejsou uložená v SQL Data Warehouse, zpracovává PolyBase ověřování pro externí data pomocí přihlašovacích údajů platných pro databázi.
 
-Příklad Hello v tomto kroku používá tyto toocreate příkazy jazyka Transact-SQL externí tabulky.
+V příkladě v tomto kroku se k vytvoření externí tabulky používají následující příkazy jazyka Transact-SQL.
 
-* [Vytvoření hlavního klíče (Transact-SQL)] [ Create Master Key (Transact-SQL)] tooencrypt hello tajný klíč vaší databáze vašich přihlašovacích údajů.
-* [Create Database Scoped Credential (Transact-SQL)] [ Create Database Scoped Credential (Transact-SQL)] toospecify ověřovacích informací pro váš účet úložiště Azure.
-* [Create External Data Source (Transact-SQL)] [ Create External Data Source (Transact-SQL)] toospecify hello umístění úložiště objektů blob v Azure.
-* [Create External File Format (Transact-SQL)] [ Create External File Format (Transact-SQL)] toospecify hello formát data.
-* [Create External Table (Transact-SQL)] [ Create External Table (Transact-SQL)] definice tabulky hello toospecify a umístění hello data.
+* [Create Master Key (Transact-SQL)][Create Master Key (Transact-SQL)] k šifrování tajného klíče vašich přihlašovacích údajů pro vaši databázi
+* [Create Database Scoped Credential (Transact-SQL)][Create Database Scoped Credential (Transact-SQL)] k zadání ověřovacích informací pro váš účet úložiště Azure
+* [Create External Data Source (Transact-SQL)][Create External Data Source (Transact-SQL)] k určení umístění vaší služby Azure Blob Storage
+* [Create External File Format (Transact-SQL)][Create External File Format (Transact-SQL)] k určení formátu vašich dat
+* [Create External Table (Transact-SQL)][Create External Table (Transact-SQL)] k určení definice tabulky a umístění dat
 
-Spusťte tento dotaz na databázi SQL Data Warehouse. Vytvoří externí tabulku s názvem DimDate2External ve schématu dbo hello, který odkazuje ukázková data DimDate2.txt toohello v hello Azure blob storage.
+Spusťte tento dotaz na databázi SQL Data Warehouse. Ten ve schématu dbo vytvoří externí tabulku s názvem DimDate2External, která odkazuje na ukázková data DimDate2.txt v Azure Blob Storage.
 
 ```sql
 -- A: Create a master key.
 -- Only necessary if one does not already exist.
--- Required tooencrypt hello credential secret in hello next step.
+-- Required to encrypt the credential secret in the next step.
 
 CREATE MASTER KEY;
 
 
 -- B: Create a database scoped credential
--- IDENTITY: Provide any string, it is not used for authentication tooAzure storage.
+-- IDENTITY: Provide any string, it is not used for authentication to Azure storage.
 -- SECRET: Provide your Azure storage account key.
 
 
@@ -157,9 +157,9 @@ WITH
 
 
 -- C: Create an external data source
--- TYPE: HADOOP - PolyBase uses Hadoop APIs tooaccess data in Azure blob storage.
+-- TYPE: HADOOP - PolyBase uses Hadoop APIs to access data in Azure blob storage.
 -- LOCATION: Provide Azure storage account name and blob container name.
--- CREDENTIAL: Provide hello credential created in hello previous step.
+-- CREDENTIAL: Provide the credential created in the previous step.
 
 CREATE EXTERNAL DATA SOURCE AzureStorage
 WITH (
@@ -181,10 +181,10 @@ WITH (
 );
 
 
--- E: Create hello external table
--- Specify column names and data types. This needs toomatch hello data in hello sample file.
--- LOCATION: Specify path toofile or directory that contains hello data (relative toohello blob container).
--- toopoint tooall files under hello blob container, use LOCATION='.'
+-- E: Create the external table
+-- Specify column names and data types. This needs to match the data in the sample file.
+-- LOCATION: Specify path to file or directory that contains the data (relative to the blob container).
+-- To point to all files under the blob container, use LOCATION='.'
 
 CREATE EXTERNAL TABLE dbo.DimDate2External (
     DateId INT NOT NULL,
@@ -198,25 +198,25 @@ WITH (
 );
 
 
--- Run a query on hello external table
+-- Run a query on the external table
 
 SELECT count(*) FROM dbo.DimDate2External;
 
 ```
 
 
-V Průzkumníku objektů SQL Server v sadě Visual Studio uvidíte formát externích souborů hello, externí zdroj dat a tabulku DimDate2External hello.
+V Průzkumníku objektů systému SQL Server v sadě Visual Studio uvidíte formát externích souborů, externí zdroj dat a tabulku DimDate2External.
 
 ![Zobrazení externí tabulky](./media/sql-data-warehouse-get-started-load-with-polybase/external-table.png)
 
 ## <a name="step-3-load-data-into-sql-data-warehouse"></a>Krok 3: Načtení dat do SQL Data Warehouse
-Po vytvoření externí tabulky hello můžete načíst hello data do nové tabulky nebo vložit do existující tabulky.
+Po vytvoření externí tabulky můžete buď načíst data do nové tabulky, nebo je vložit do existující tabulky.
 
-* tooload hello data do nové tabulky, spusťte hello [CREATE TABLE AS SELECT (Transact-SQL)] [ CREATE TABLE AS SELECT (Transact-SQL)] příkaz. Hello nová tabulka bude mít hello sloupce pojmenované v dotazu hello. Hello datové typy sloupců hello bude odpovídat hello datových typů v definici externí tabulky hello.
-* tooload hello data do existující tabulky, použijte hello [INSERT... SELECT (Transact-SQL)] [ INSERT...SELECT (Transact-SQL)] příkaz.
+* Pokud chcete načíst data do nové tabulky, spusťte příkaz [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)]. Nová tabulka bude mít sloupce pojmenované v dotazu. Datové typy sloupců budou odpovídat datovým typům v definici externí tabulky.
+* Pokud chcete načíst data do existující tabulky, použijte příkaz [INSERT...SELECT (Transact-SQL)][INSERT...SELECT (Transact-SQL)].
 
 ```sql
--- Load hello data from Azure blob storage tooSQL Data Warehouse
+-- Load the data from Azure blob storage to SQL Data Warehouse
 
 CREATE TABLE dbo.DimDate2
 WITH
@@ -229,9 +229,9 @@ SELECT * FROM [dbo].[DimDate2External];
 ```
 
 ## <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>Krok 4: Vytvoření statistiky pro nově načtená data
-SQL Data Warehouse nevytváří ani neaktualizuje statistiku automaticky. Proto tooachieve vysokého výkonu dotazu, je důležité nejdřív načíst toocreate statistiku pro každý sloupec každé tabulky po hello. Je také důležité tooupdate statistiku po důležitých změnách v datech hello.
+SQL Data Warehouse nevytváří ani neaktualizuje statistiku automaticky. Pro dosažení vysokého výkonu dotazu je proto důležité vytvořit statistiku pro každý sloupec každé tabulky po prvním načtení. Důležité je také aktualizovat statistiku po důležitých změnách v datech.
 
-Tento příklad vytvoří jednosloupcovou statistiku na novou tabulku DimDate2 hello.
+Tento příklad vytvoří jednosloupcovou statistiku pro novou tabulku DimDate2.
 
 ```sql
 CREATE STATISTICS [DateId] on [DimDate2] ([DateId]);
@@ -239,10 +239,10 @@ CREATE STATISTICS [CalendarQuarter] on [DimDate2] ([CalendarQuarter]);
 CREATE STATISTICS [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
 ```
 
-Další, najdete v části toolearn [statistiky][Statistics].  
+Další informace viz [Statistika][Statistics].  
 
 ## <a name="next-steps"></a>Další kroky
-V tématu hello [Průvodce funkcí PolyBase] [ PolyBase guide] Další informace, které byste měli vědět, když budete vyvíjet řešení využívající funkci PolyBase.
+Projděte si [průvodce funkcí PolyBase][PolyBase guide], kde najdete další informace, které byste měli mít, když budete vyvíjet řešení využívající funkci PolyBase.
 
 <!--Image references-->
 
@@ -252,7 +252,7 @@ V tématu hello [Průvodce funkcí PolyBase] [ PolyBase guide] Další informace
 [Load data with bcp]: ./sql-data-warehouse-load-with-bcp.md
 [Statistics]: ./sql-data-warehouse-tables-statistics.md
 [PolyBase guide]: ./sql-data-warehouse-load-polybase-guide.md
-[Getting Started with hello AzCopy Command-Line Utility]:../storage/common/storage-use-azcopy.md
+[Getting Started with the AzCopy Command-Line Utility]:../storage/common/storage-use-azcopy.md
 [latest version of AzCopy]:../storage/common/storage-use-azcopy.md
 
 <!--External references-->

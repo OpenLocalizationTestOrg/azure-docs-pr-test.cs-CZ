@@ -1,6 +1,6 @@
 ---
-title: "problémy běžné vydavatele podpory aaaHow tootroubleshoot | Microsoft Docs"
-description: "Pochopit, jak problémy tootroubleshoot běžné technickou podporu vydavatele a jak tooget podporují"
+title: "Postup řešení běžných problémů s podporu vydavatele | Microsoft Docs"
+description: "Pochopit, jak řešení běžných problémů podporu vydavatele a jak získat podporu"
 services: marketplace-publishing
 documentationcenter: na
 author: v-jeana
@@ -14,64 +14,64 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: v-jeana; hascipio; v-dabosl
-ms.openlocfilehash: e2ee765f23f1d5db68006fd42aedf7d6e691360e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: dcd87ae977d5b4b4a2353e446ab89ac81b239195
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-tootroubleshoot-common-azure-marketplace-publisher-issues"></a>Jak běžné vydavatele Azure Marketplace tootroubleshoot problémy
-Tento článek vysvětluje, jak tooresolve nebo get podporují pro některé běžné scénáře Marketplace.
+# <a name="how-to-troubleshoot-common-azure-marketplace-publisher-issues"></a>Postup řešení běžných problémů s vydavatele Azure Marketplace
+Tento článek vysvětluje, jak vyřešit nebo získat podporu pro některé běžné scénáře Marketplace.
 
 ## <a name="credits-and-refunds"></a>Kredity a vrácení peněz
-V některých případech může být nutné toorequest kreditní nebo refundace jménem zákazníka.  Microsoft Support může pomoci zajistit, že jsou považovány za platební a získat náhradu požadavkům vašich zákazníků a že se odpověď poskytuje tooyou včas.
+V některých případech musíte požádat o kreditní nebo refundace jménem zákazníka.  Microsoft Support může pomoci zajistit, že jsou považovány za platební a získat náhradu požadavkům vašich zákazníků a že odpověď zajišťuje vám včas.
 
-Hello následující se dozvíte, jak toorequest platební nebo refundace jménem zákazníka.
+Následující ukazuje, jak požádat o platební nebo refundace jménem zákazníka.
 
 > [!NOTE]
-> Pokud zákazník nebo Azure prodejce kontaktuje Microsoft toorequest získat náhradu nebo platební, použijeme hello stejné zásady, které používáme pro naše poskytování služeb Azure. Pokud naše zásady znamenat, že náhrada nebo platební kvůli, jsme proaktivně vydá (a nám autorizujete tooissue vaším jménem) náhrada nebo platební toohello zákazníka nebo Azure prodejci. Pokud naše zásady neoznačují náhrada nebo platební je kvůli, jsme může vyzvat hello zákazníka nebo Azure prodejce toocontact můžete přímo.
+> Pokud zákazník nebo Azure prodejce kontaktovat Microsoft požádat o náhrada nebo platební, budou použity stejné zásady, které používáme pro naše poskytování služeb Azure. Pokud naše zásady znamenat, že náhrada nebo platební kvůli, jsme proaktivně vydá (a autorizujete nám k vydávání vaším jménem) náhrada nebo kreditu, pomocí kterého zákazníka nebo Azure prodejci. Pokud naše zásady neoznačují náhrada nebo platební je kvůli, doporučujeme může zákazník nebo Azure prodejce vás kontaktovali přímo.
 >
 >
 
   ![1_RequestRefund][1]
 
-1. Přejděte sem stránky podpory toohello: [https://support.microsoft.com/en-us/getsupport?tenant=ClassicCommercial&locale=en-us&supportregion=en-us&pesid=15635&sd=&oaspworkflow=start_1.0.0.0&wf=0 & ccsid = 635562546535117884](https://support.microsoft.com/en-us/getsupport?tenant=ClassicCommercial&locale=en-us&supportregion=en-us&pesid=15635&sd=&oaspworkflow=start_1.0.0.0&wf=0&ccsid=635562546535117884).
-2. V hello **typ problému** vyberte **Správa zákazníků**.
-3. V hello **kategorie** vyberte **schválit nebo žádostí o náhrady zákazníka**.
+1. Navigate to the support pages here: [https://support.microsoft.com/en-us/getsupport?tenant=ClassicCommercial&locale=en-us&supportregion=en-us&pesid=15635&sd=&oaspworkflow=start_1.0.0.0&wf=0&ccsid=635562546535117884](https://support.microsoft.com/en-us/getsupport?tenant=ClassicCommercial&locale=en-us&supportregion=en-us&pesid=15635&sd=&oaspworkflow=start_1.0.0.0&wf=0&ccsid=635562546535117884).
+2. V **typ problému** vyberte **Správa zákazníků**.
+3. V **kategorie** vyberte **schválit nebo žádostí o náhrady zákazníka**.
 4. Klikněte na tlačítko **žádost o spuštění**.
 
    ![2_RequestRefund][2]
 
 1. Zadejte kontaktní údaje.
-2. V hello **co je problém hello?** zadejte hello následující informace:
+2. V **co je problém?** pole, zadejte následující informace:
 
-   * ID odběru Hello hello dopad na zákazníka
-   * jméno zákazníka Hello
-   * Kolik hello platební by měla být pro
-   * období Hello hello kreditu
-   * Datum faktury Hello tohoto období
-   * Důvod Hello platební hello
+   * ID předplatného ovlivněné zákazníka
+   * Jméno zákazníka
+   * Kolik se kredit by měla být pro
+   * Období, po který se kredit
+   * Datum faktury tohoto období
+   * Důvody, proč se kredit
 
-Následně vám zašleme e-mailem potvrzení do 24 hodin, že jsme obdrželi vaše informace. Po rozhodnutí byl proveden v požadavku tooyour vztah, budete informováni o hello výsledek.
+Následně vám zašleme e-mailem potvrzení do 24 hodin, že jsme obdrželi vaše informace. Po ve vztahu k vaší žádosti rozhodnutí, zobrazí se upozornění, o výsledku.
 
 ## <a name="customer-subscription-validation"></a>Ověření předplatného zákazníka
-V některých případech může být nutné podrobnosti o předplatném hello toovalidate pro jeden z vašich zákazníků. Obraťte se na Microsoft Support toohelp se to. Microsoft Support pomůže tooconfirm, že ID předplatného a fakturační adresu patří tooa známé zákazníka.
+V některých případech budete muset ověřit podrobnosti o předplatném pro jeden z vašich zákazníků. Obraťte se na Microsoft Support usnadní to. Potvrďte, že ID předplatného a fakturační adresu patří známé zákazníkovi pomůže Microsoft Support.
 
   ![subscriptionvalidation][3]
 
 * Zákazník může kontaktovat žádosti o podporu.
-* Nemusíte vědět, jak toovalidate, že si zákazník koupí originální zákazník pro nabídku.
-* Přihlaste se na předplatné ověření podpory žádosti toorequest zákazníka.
-* Budete potřebovat tooprovide ID předplatného zákazníka a fakturační adresu.
-* Microsoft vás bude kontaktovat tooprovide potvrzení, že hello fakturační adresu a ID předplatného se ví, že toous.
+* Nemusí vědět, jak ověřit, že si zákazník koupí originální zákazník pro nabídku.
+* Přihlaste se na žádost o podporu pro žádosti o ověření předplatného zákazníka.
+* Musíte zadat ID předplatného zákazníka a fakturační adresu.
+* Microsoft kontaktovat potvrzení, že jsou pro nás známé fakturační adresu a ID předplatného.
 
 ## <a name="how-do-i-update-my-publisher-profile"></a>Jak aktualizovat Můj profil vydavatele?
-Pokud chcete tooupdate váš profil vydavatele, můžete to provést prostřednictvím hello Microsoft Dev Center:
+Pokud chcete aktualizovat váš profil vydavatele, můžete to provést prostřednictvím webu Microsoft Dev Center:
 
-**1. Přihlaste se toohello Windows Dev Center**.
+**1. Přihlaste se k centru vývojářů pro Windows**.
 
-* Otevřete nový Chrome Incognito a Internet Explorer InPrivate podepsané procházení tooensure relace, který si nejste v tooa osobní účet.
-* Přejděte příliš[http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure)
+* Otevřete na nové Chrome Incognito nebo Internet Explorer InPrivate procházení relace a ujistěte se, že nejste přihlášení do osobního účtu.
+* Přejděte na [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure)
 
 ![se službou InPrivate][4]
 
@@ -79,39 +79,39 @@ Pokud chcete tooupdate váš profil vydavatele, můžete to provést prostředni
 
 ![přihlášení][5]
 
-**3. Dokončení ověření "Pomozte nám chránit váš účet" hello**.
+**3. Dokončete ověření "Pomozte nám chránit váš účet"**.
 
 > [!NOTE]
-> Můžete použít vaše telefonní číslo nebo e-mailová adresa tooverify.
+> Telefonní číslo nebo e-mailovou adresu můžete použít k ověření.
 >
 >
 
 ![protectacct][6]
 
-**4. Přejděte tooAccount podrobnosti a kontaktní údaje**.
+**4. Přejděte na podrobnosti o účtu a obraťte se na informace o**.
 
 ![acctdetails][7]
 
 ## <a name="how-do-i-add-or-delete-an-administrator-from-my-publishing-account"></a>Jak přidat nebo odstranit správce z mého účtu publikování?
 ![manageadmins][8]
 
-1. Přejděte toohello publikování portálu.
+1. Přejděte na publikování portálu.
 2. Vyberte **vydavatelů**.
 3. Vyberte **správci**.
-4. Přidejte hello e-mailovou adresu hello spolusprávce má tooadd nebo odebrat.
+4. Přidání e-mailovou adresu, co správce, který chcete přidat nebo odebrat.
 5. Vyberte **Uložit**.
 
 ## <a name="next-steps--other-support-queries"></a>Další kroky: jiné dotazy podpory
-Pro hello následující problémy prosím protokolu problém v [https://portal.azure.com](https://portal.azure.com):
+Následující problémy protokolu problém v [https://portal.azure.com](https://portal.azure.com):
 
 * Jak mohu ohlásit fakturace chyba?
 * V příkazech Moje fakturace nebo využití I jste si všimli nesrovnalostí.
 * Potřebuji vysvětlení Moje fakturačních údajů.
 
-Pro hello následující problémy, vytvořte žádost o podporu na [http://go.microsoft.com/fwlink/?LinkId=272975](http://go.microsoft.com/fwlink/?LinkId=272975):
+Následující problémy, vytvořit žádost o podporu na [http://go.microsoft.com/fwlink/?LinkId=272975](http://go.microsoft.com/fwlink/?LinkId=272975):
 
 * Mám problémy správy webových služeb.
-* Změna účtu Microsoft hello přidružené Můj účet prodejce
+* Změna účtu Microsoft přidružené Můj účet prodejce
 
 [1]: ./media/marketplace-publishing-support-common-issues/requestrefund1.png
 [2]: ./media/marketplace-publishing-support-common-issues/requestrefund2.png

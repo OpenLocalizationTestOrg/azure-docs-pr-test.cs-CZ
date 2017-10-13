@@ -1,6 +1,6 @@
 ---
-title: "Azure Multi-Factor Authentication Server spuštěna aaaGetting | Microsoft Docs"
-description: "Toto je stránka Azure Multi-Factor authentication hello, který popisuje, jak tooget pracovat s Azure MFA serveru."
+title: "Začínáme s Azure Multi-Factor Authentication Serverem | Dokumentace Microsoftu"
+description: "Toto je stránka vícefaktorového ověřování Azure, která popisuje, jak začít s Azure MFA Serverem."
 services: multi-factor-authentication
 keywords: "authentication server,stránka pro aktivaci aplikace azure multi factor authentication,stažení authentication serveru"
 documentationcenter: 
@@ -12,27 +12,27 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/23/2017
+ms.date: 08/30/2017
 ms.author: joflore
 ms.reviewer: alexwe
 ms.custom: it-pro
-ms.openlocfilehash: 92a6a586eb96375e92a9455ad64e67221001db81
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: df847c370817c0702163b5e22c35c7e4f1d3cfee
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="getting-started-with-hello-azure-multi-factor-authentication-server"></a>Začínáme s Azure Multi-Factor Authentication Server hello
+# <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Začínáme s Azure Multi-Factor Authentication Serverem
 
 <center>![Místní MFA](./media/multi-factor-authentication-get-started-server/server2.png)</center>
 
-Teď, když jsme určili toouse místní aplikace Multi-Factor Authentication Server, můžeme začít. Tato stránka popisuje novou instalaci hello serveru a nastavení se místní službou Active Directory. Pokud jste již nainstalován server MFA hello a hledáte tooupgrade, přečtěte si téma [Upgrade toohello nejnovější Azure Multi-Factor Authentication Server](multi-factor-authentication-server-upgrade.md). Pokud hledáte informace o instalaci právě hello webové služby, přečtěte si téma [hello nasazení Azure Multi-Factor Authentication Server webové služby mobilní aplikace](multi-factor-authentication-get-started-server-webservice.md).
+Teď, když jsme zjistili, jestli se má použít místní Multi-Factor Authentication Server, se můžeme dát do toho. Tato stránka popisuje novou instalaci serveru a jeho nastavení pro spolupráci s místní službou Active Directory. Pokud už máte nainstalovaný server MFA a chcete provést upgrade, přečtěte si téma [Upgrade na nejnovější verzi Azure Multi-Factor Authentication Serveru](multi-factor-authentication-server-upgrade.md). Pokud hledáte informace pouze o instalaci webové služby, přečtěte si téma [Nasazení webové služby mobilní aplikace Azure Multi-Factor Authentication Serveru](multi-factor-authentication-get-started-server-webservice.md).
 
 ## <a name="plan-your-deployment"></a>Plánování nasazení
 
-Před stažením hello Azure Multi-Factor Authentication Server, rozmyslete si, jaké jsou vaše požadavky na vysokou dostupnost a zatížení. Použít tento toodecide informace, jak a kde toodeploy.
+Před stažením Azure Multi-Factor Authentication Serveru se zamyslete nad tím, jaké jsou vaše požadavky na zatížení a vysokou dostupnost. Tyto informace použijte k rozhodnutí, jak a kde provést nasazení.
 
-Vhodné pro hello množství paměti, je nutné je hello počet uživatelů, můžete očekávat tooauthenticate v pravidelných intervalech.
+Dobrým vodítkem pro velikost potřebné paměti je počet uživatelů, u kterých očekáváte pravidelné ověřování.
 
 | Uživatelé | Paměť RAM |
 | ----- | --- |
@@ -42,38 +42,38 @@ Vhodné pro hello množství paměti, je nutné je hello počet uživatelů, mů
 | 100,000-200,001 | 16 GB |
 | 200,001+ | 32 GB |
 
-Třeba tooset až více serverů pro vysokou dostupnost nebo Vyrovnávání zatížení? Existuje několik způsobů tooset tuto konfiguraci s Azure MFA serverem. Když instalujete první Azure MFA serveru, stane se hlavní server hello. Všechny další servery stane podřízená a automatickou synchronizaci uživatelů a konfigurace se hlavní server hello. Potom můžete nakonfigurovat jeden primární server a mít hello rest fungovat jako zálohování, nebo můžete nastavit vyrovnávání zatížení mezi všechny servery hello.
+Potřebujete nastavit několik serverů pro zajištění vysoké dostupnosti nebo vyrovnávání zatížení? Existuje řada způsobů, jak tuto konfiguraci s Azure MFA Serverem nastavit. Z prvního nainstalovaného Azure MFA Serveru se stane hlavní server. Všechny další servery jsou podřízené a automaticky synchronizují uživatele a konfiguraci s hlavním serverem. Potom můžete nakonfigurovat jeden primární server a využívat ostatní jako zálohu, nebo můžete nastavit vyrovnávání zatížení mezi všemi servery.
 
-Pokud hlavní Azure MFA serveru přejde do režimu offline, hello podřízené servery můžete stále zpracovat dvoustupňové ověření žádosti. Však nelze přidat nový uživatelům a stávajícím uživatelům nelze aktualizovat jejich nastavení, dokud hlavní server hello je zpět do online režimu nebo získá povýší podřízenou položkou.
+Když hlavní Azure MFA Server přejde do offline režimu, podřízené servery mohou nadále zpracovávat žádosti o dvoustupňové ověření. Nemůžete ale přidávat nové uživatele a stávající uživatelé nemohou aktualizovat svoje nastavení, dokud se hlavní server nevrátí do online režimu nebo dokud nedojde ke zvýšení úrovně podřízeného severu.
 
 ### <a name="prepare-your-environment"></a>Příprava prostředí
 
-Zkontrolujte, zda server hello, který používáte pro Azure Multi-Factor Authentication splňuje hello následující požadavky:
+Ujistěte se, že server, který používáte pro Azure Multi-Factor Authentication, splňuje následující požadavky:
 
 | Požadavky pro Azure Multi-Factor Authentication Server | Popis |
 |:--- |:--- |
 | Hardware |<li>200 MB volného místa na pevném disku</li><li>Procesor kompatibilní s x32 nebo x64</li><li>1 GB RAM nebo víc</li> |
-| Software |<li>Windows Server 2008 nebo vyšší, pokud je hostitel hello OS serveru</li><li>Windows 7 nebo novější, pokud je hostitel hello klientského operačního systému</li><li>Microsoft .NET 4.0 Framework</li><li>Službu IIS 7.0 nebo novější, pokud instalujete hello uživatele portálu nebo webové služby sady SDK</li> |
+| Software |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008, aktualizace SP1, SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003, aktualizace SP1, SP2</li><li>Windows 10</li><li>Windows 8.1, všechny edice</li><li>Windows 8, všechny edice</li><li>Windows 7, všechny edice</li><li>Windows Vista, všechny edice, aktualizace SP1, SP2</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 nebo novější, pokud instalujete uživatelský portál nebo sadu SDK webové služby</li> |
 
 ### <a name="azure-mfa-server-components"></a>Komponenty Azure MFA Serveru
 
 Azure MFA Server se skládá ze tří webových komponent:
 
-* Webová služba SDK – umožňuje komunikaci s hello ostatní součásti a je nainstalován na serveru aplikace hello Azure MFA
-* Uživatelský portál - webovou stránku IIS, která umožňuje uživatelům tooenroll v Azure Multi-Factor Authentication (MFA) a spravovat své účty.
-* Mobilní aplikace webové služby - umožňuje pomocí mobilní aplikace, jako je aplikace Microsoft Authenticator hello pro dvoustupňové ověření.
+* Sada SDK webové služby – Umožňuje komunikaci s dalšími komponentami a je nainstalovaná na aplikačním serveru Azure MFA.
+* User Portal – Web služby IIS, který uživatelům umožňuje se zaregistrovat do služby Azure Multi-Factor Authentication (MFA) a spravovat své účty.
+* Webová služba mobilní aplikace – Umožňuje používání mobilní aplikace, jako je aplikace Microsoft Authenticator, pro dvoustupňové ověřování.
 
-Všechny tři součásti bude možné nainstalovat na hello stejný server, pokud je internetový hello server. Pokud rozdělení hello součásti, hello sady SDK webové služby je nainstalovaná na serveru aplikace hello Azure MFA a hello portálu User Portal a webová služba mobilní aplikace jsou nainstalovány na internetovém serveru.
+Všechny tři komponenty můžou být nainstalované na stejném serveru, pokud má přístup k internetu. V případě rozdělení komponent je sada SDK webové služby nainstalovaná na aplikačním serveru Azure MFA a portál User Portal a webová služba mobilní aplikace jsou nainstalované na serveru s přístupem k internetu.
 
 ### <a name="azure-multi-factor-authentication-server-firewall-requirements"></a>Požadavky na firewall pro Azure Multi-Factor Authentication Server
 
-Každý server MFA musí být schopný toocommunicate na portu 443 odchozí toohello následující adresy:
+Každý server MFA musí být schopný komunikovat na odchozím portu 443 s těmito adresami:
 
 * https://pfd.phonefactor.net
 * https://pfd2.phonefactor.net
 * https://css.phonefactor.net
 
-Pokud firewall omezuje odchozí na portu 443, otevřete hello následující rozsahy IP adres:
+Pokud brána firewall omezuje odchozí port 443, je nutné otevřít tyto rozsahy IP adres:
 
 | Podsíť IP | Síťová maska | Rozsah IP adres |
 |:---: |:---: |:---: |
@@ -81,7 +81,7 @@ Pokud firewall omezuje odchozí na portu 443, otevřete hello následující roz
 | 134.170.165.0/25 |255.255.255.128 |134.170.165.1 – 134.170.165.126 |
 | 70.37.154.128/25 |255.255.255.128 |70.37.154.129 – 70.37.154.254 |
 
-Pokud nepoužíváte funkce potvrzení události hello a vaši uživatelé nejsou v podnikové síti hello používá tooverify mobilní aplikace ze zařízení, stačí hello následující rozsahy:
+Pokud nepoužíváte funkci Potvrzení události a vaši uživatelé nepoužívají k ověřování ze zařízení v podnikové síti mobilní aplikace, potřebujete pouze následující rozsahy:
 
 | Podsíť IP | Síťová maska | Rozsah IP adres |
 |:---: |:---: |:---: |
@@ -89,10 +89,10 @@ Pokud nepoužíváte funkce potvrzení události hello a vaši uživatelé nejso
 | 134.170.165.72/29 |255.255.255.248 |134.170.165.72 – 134.170.165.79 |
 | 70.37.154.200/29 |255.255.255.248 |70.37.154.201 – 70.37.154.206 |
 
-## <a name="download-hello-azure-multi-factor-authentication-server"></a>Stažení Azure Multi-Factor Authentication Server hello
+## <a name="download-the-azure-multi-factor-authentication-server"></a>Stažení Azure Multi-Factor Authentication Serveru
 
-1. Přihlaste se toohello [portál Azure](https://portal.azure.com) jako správce.
-2. Na levé straně hello vyberte **služby Active Directory**
+1. Přihlaste se na webu [Azure Portal](https://portal.azure.com) jako správce.
+2. Na levé straně vyberte **Active Directory**.
 3. Klikněte na **Uživatelé a skupiny**.
 4. Klikněte na **Všichni uživatelé**.
 5. Klikněte na **Multi-Factor Authentication**.
@@ -100,69 +100,69 @@ Pokud nepoužíváte funkce potvrzení události hello a vaši uživatelé nejso
 
    ![Stránka Nastavení služby](./media/multi-factor-authentication-get-started-server/servicesettings.png)
 
-6. Na stránce nastavení služby hello klikněte v hello dolní části obrazovky hello **přejděte toohello portál**. Otevře se nová stránka.
+6. Dole na stránce s nastavením služby klikněte na **Přejít na portál**. Otevře se nová stránka.
 7. Klikněte na **Soubory ke stažení**.
-8. Klikněte na tlačítko hello **Stáhnout** propojení a uložte instalační program hello.
+8. Klikněte na odkaz **Stáhnout** a uložte instalační program.
 
    ![Stažení MFA Serveru](./media/multi-factor-authentication-get-started-server/download4.png)
 
-9. Tato stránka nechte otevřený, jako jsme bude odkazovat tooit po spuštěné hello Instalační služby.
+9. Ponechte tuto stránku otevřenou, protože se k ní vrátíme po spuštění instalačního programu.
 
-## <a name="install-and-configure-hello-azure-multi-factor-authentication-server"></a>Instalace a konfigurace serveru Azure Multi-Factor Authentication Server hello
+## <a name="install-and-configure-the-azure-multi-factor-authentication-server"></a>Instalace a konfigurace Azure Multi-Factor Authentication Serveru
 
-Teď, když jste si stáhli hello serveru můžete nainstalovat a nakonfigurovat ho. Ujistěte se, že tento server hello, kterou instalujete na splňuje požadavky uvedené v části Plánování hello.
+Teď, když jste server stáhli, ho můžete nainstalovat a nastavit. Ujistěte se, že server, na kterém ho chcete nainstalovat, splňuje požadavky uvedené v části věnované plánování.
 
-1. Poklikejte na spustitelný soubor hello.
-2. Na obrazovce výběr instalační složky hello, zkontrolujte, zda tato složka hello je správný a klikněte na tlačítko **Další**.
-3. Po dokončení instalace hello klikněte na tlačítko **Dokončit**.  Spustí se Průvodce konfigurací Hello.
-4. Na úvodní konfigurace Průvodce úvodní obrazovka, zkontrolujte **hello přeskočit použití Průvodce konfigurací ověřování** a klikněte na tlačítko **Další**.  Hello průvodce se zavře a spustí hello server.
+1. Dvakrát klikněte na spustitelný soubor.
+2. Na obrazovce Výběr instalační složky zkontrolujte, že je složka zadaná správně, a klikněte na **Další**.
+3. Až instalace skončí, klikněte na **Dokončit**.  Spustí se průvodce konfigurací.
+4. Na úvodní obrazovce průvodce konfigurací zaškrtněte políčko **Vynechat použití průvodce konfigurací ověřování** a klikněte na **Další**.  Průvodce se zavře a spustí se server.
 
    ![Cloud](./media/multi-factor-authentication-get-started-server/skip2.png)
 
-5. Zpět na stránce hello, které jsme server hello z stáhli, klikněte na tlačítko hello **generovat přihlašovacích údajů pro aktivaci** tlačítko. Tyto údaje zkopírujte do hello Azure MFA serveru v oknech hello zadaný a klikněte na tlačítko **aktivovat**.
+5. Zpátky na stránce, odkud jste server stáhli, klikněte na tlačítko **Vytvoření přihlašovacích údajů pro aktivaci**. Tyto údaje zkopírujte do příslušných polí v Azure MFA Serveru a klikněte na **Aktivovat**.
 
 ## <a name="send-users-an-email"></a>Zaslání e-mailu uživatelům
 
-zavedení tooease, povolit toocommunicate MFA serveru s uživateli. MFA Server může odeslat tooinform e-mailu je, že jsou zapsaní pro dvoustupňové ověření.
+Pro usnadnění uvedení povolte MFA Serveru komunikaci s vašimi uživateli. MFA Server jim může odeslat e-mail s informací, že byli zaregistrování k dvoustupňovému ověřování.
 
-jak nakonfigurovat uživatele pro dvoustupňové ověření je třeba stanovit Hello e-mailu, která posíláte. Například pokud jste možnost tooimport telefonní čísla z adresáře společnosti hello, e-mailu hello by měla obsahovat hello výchozí telefonní čísla tak, aby uživatelé věděli, jaké tooexpect. Pokud neproběhne import telefonní čísla nebo vaši uživatelé budou toouse hello mobilních aplikací, jejich odeslání e-mailu, který směruje toocomplete zápisu jejich účtu. Zahrňte e-mailu hello hyperlink toohello Azure Multi-Factor Authentication User Portal.
+Jaký e-mail odešlete byste měli určit podle toho, jak jste pro uživatele nakonfigurovali dvoustupňové ověřování. Například pokud máte možnost naimportovat telefonní čísla z adresáře společnosti, e-mail by měl obsahovat výchozí telefonní čísla, aby uživatelé věděli, co mají očekávat. Pokud telefonní čísla nenaimportujete nebo pokud budou uživatelé používat mobilní aplikaci, odešlete jim e-mail, který je nasměruje k dokončení registrace účtu. Do e-mailu přidejte hypertextový odkaz na portál Azure Multi-Factor Authentication User Portal.
 
-Hello obsah e-mailů hello se liší v závislosti na hello metodu ověřování, která byla nastavena pro uživatele hello (telefonní hovor, SMS nebo mobilní aplikace).  Například pokud uživatel hello požadované toouse kódu PIN při ověření, e-mailu hello sdělením, co byla nastavena počáteční kód PIN na.  Uživatelé jsou požadované toochange PIN kód během jejich prvního ověřování.
+Obsah e-mailu se liší také podle metody ověřování nastavené pro konkrétního uživatele (telefonní hovor, zpráva SMS nebo mobilní aplikace).  Pokud například uživatel musí při ověřování zadat PIN, v e-mailu se dozví, jaký počáteční PIN je pro něj nastavený.  Uživatelé musí při prvním ověření svůj PIN změnit.
 
 ### <a name="configure-email-and-email-templates"></a>Konfigurace e-mailu a šablon e-mailu
 
-Klikněte na ikonu e-mailu hello na levém tooset hello nastavení hello pro odesílání těchto e-mailů. Tato stránka je, kde můžete zadat informace hello SMTP vašeho e-mailu serveru a odesílání e-mailu kontrolou hello **odesílat e-maily toousers** zaškrtávací políčko.
+Kliknutím vlevo na ikonu e-mailu můžete změnit nastavení odesílání těchto e-mailů. Na této stránce můžete zadat informace o vašem poštovním serveru SMTP a odesílat e-maily zaškrtnutím políčka **Odesílat uživatelům e-maily**.
 
 ![Konfigurace e-mailu MFA Serveru](./media/multi-factor-authentication-get-started-server/email1.png)
 
-Na kartě obsah e-mailu hello uvidíte hello e-mailových šablon, které jsou k dispozici toochoose z. V závislosti na tom, jak jste nakonfigurovali vaši uživatelé tooperform dvoustupňové ověření zvolte šablonu hello, který vám nejlépe vyhovuje.
+Na kartě Obsah e-mailu uvidíte šablony e-mailů, ze kterých si můžete vybrat. V závislosti na tom, jak jste uživatelům nakonfigurovali dvoustupňové ověřování, vyberte nejvhodnější šablonu.
 
 ![Šablony e-mailů MFA Serveru](./media/multi-factor-authentication-get-started-server/email2.png)
 
 ## <a name="import-users-from-active-directory"></a>Import uživatelů ze služby Active Directory
 
-Nyní je nainstalován tento server hello můžete tooadd uživatele. Můžete zvolit toocreate je ručně, import uživatelů ze služby Active Directory nebo nakonfigurovat automatické synchronizace služby Active Directory.
+Teď, když je server nainstalovaný, budete chtít přidat uživatele. Můžete je vytvořit ručně, naimportovat uživatele ze služby Active Directory nebo nakonfigurovat automatizovanou synchronizaci se službou Active Directory.
 
 ### <a name="manual-import-from-active-directory"></a>Ruční import ze služby Active Directory
 
-1. V hello Azure MFA serveru, na levé straně hello vyberte **uživatelé**.
-2. V dolní části hello, vyberte **Import ze služby Active Directory**.
-3. Nyní můžete buď hledání pro jednotlivé uživatele nebo vyhledávání hello adresář AD pro organizační jednotky s uživateli v nich.  V takovém případě určíme hello uživatele organizační jednotky.
-4. Zvýrazněte všechny uživatele hello hello správné a klikněte na tlačítko **Import**.  Mělo by se zobrazit vyskakovací okno s informací, že akce proběhla úspěšně.  Hello zavřít okno importu.
+1. V Azure MFA Serveru klikněte vlevo na **Uživatelé**.
+2. Dole vyberte **Importovat ze služby Active Directory**.
+3. Teď můžete hledat jednotlivé uživatele nebo v adresáři AD vyhledat organizační jednotky, ve kterých jsou uživatelé.  V tomto případě vyhledáme OJ uživatele.
+4. Vpravo označte všechny uživatele a klikněte na **Importovat**.  Mělo by se zobrazit vyskakovací okno s informací, že akce proběhla úspěšně.  Zavřete okno importu.
 
    ![Import uživatelů do MFA Serveru](./media/multi-factor-authentication-get-started-server/import2.png)
 
 ### <a name="automated-synchronization-with-active-directory"></a>Automatizovaná synchronizace se službou Active Directory
 
-1. V hello Azure MFA serveru, na levé straně hello vyberte **integrace adresáře**.
-2. Přejděte toohello **synchronizace** kartě.
-3. V dolní části hello, zvolte **přidat**
-4. V hello **přidat položku synchronizace** zobrazeném dialogovém okně vyberte hello doménu, organizační jednotky **nebo** skupiny zabezpečení, nastavení, výchozí hodnoty metody a výchozí jazyk pro tato synchronizace úloh a klikněte na tlačítko **Přidat**.
-5. Zaškrtávací políčko hello s názvem **povolit synchronizaci se službou Active Directory** a vyberte **interval synchronizace** minutu až 24 hodin.
+1. V Azure MFA Serveru klikněte na levé straně na **Integrace adresáře**.
+2. Přejděte na kartu **Synchronizace**.
+3. V dolní části zvolte **Přidat**.
+4. V zobrazeném okně **Přidat položku synchronizace** zvolte pro tuto úlohu synchronizace doménu, organizační jednotku **nebo** skupinu zabezpečení, nastavení, výchozí hodnoty metod a výchozí hodnoty jazyka a klikněte na **Přidat**.
+5. Zaškrtněte políčko s popiskem **Povolit synchronizaci se službou Active Directory** a zvolte **Interval synchronizace** mezi jednou minutou a 24 hodinami.
 
-## <a name="how-hello-azure-multi-factor-authentication-server-handles-user-data"></a>Jak hello Azure Multi-Factor Authentication Server nakládá s uživatelskými daty
+## <a name="how-the-azure-multi-factor-authentication-server-handles-user-data"></a>Jak Azure Multi-Factor Authentication Server nakládá s uživatelskými daty
 
-Použijete-li hello serveru Multi-Factor Authentication (MFA) místně, data uživatele uložena v hello na místní servery. Žádná trvalá data se ukládají v cloudu hello. Když uživatel hello provede dvoustupňové ověření, hello MFA Server odešle data toohello vícefaktorového ověřování Azure cloud service tooperform hello ověření. Pokud tyto požadavky na ověření pošlou toohello Cloudová služba, hello následující pole jsou zasílány v požadavku hello a protokoly, aby byly k dispozici v sestavách používání/ověřování zákazníka hello. Některá pole hello jsou volitelné, takže můžete třeba povolit nebo zakázat v rámci hello aplikace Multi-Factor Authentication Server. Hello komunikace z cloudové služby MFA toohello MFA Server hello používá protokol SSL/TLS přes port 443 odchozí. Tato pole jsou:
+Když Multi-Factor Authentication (MFA) Server používáte lokálně, uživatelská data se ukládají na lokálních serverech. V cloudu se neukládají žádná trvalá data. Když uživatel provádí dvoustupňové ověření, MFA Server odešle data do cloudové služby Azure MFA, a tam se provede ověření. Když se tyto požadavky na ověření pošlou do cloudové služby, odešlou se v žádosti a následující pole a protokoly, aby byly dostupné pro sestavy o používání/ověřování zákazníka. Některá tato pole jsou volitelná a můžou se v Multi-Factor Authentication Serveru zapnout nebo vypnout. Komunikace z MFA Serveru do cloudové služby MFA probíhá přes SSL/TLS na odchozím portu 443. Tato pole jsou:
 
 * Jedinečné ID - uživatelské jméno nebo interní ID serveru MFA
 * Jméno a příjmení (volitelné)
@@ -175,28 +175,28 @@ Použijete-li hello serveru Multi-Factor Authentication (MFA) místně, data už
 * IP adresa serveru MFA
 * IP adresa klienta – pokud je dostupná
 
-Kromě toho toohello pole výše, hello výsledek ověření (úspěch/zamítnuto) a důvod zamítnutí je také uloženou s daty hello ověřování a k dispozici prostřednictvím hello ověřování/používání sestav.
+Vedle těchto polí se s ověřovacími údaji uloží taky výsledek ověření (úspěch/zamítnuto) a případně důvod zamítnutí, které jsou dostupné v sestavách o ověřování/používání.
 
 ## <a name="back-up-and-restore-azure-mfa-server"></a>Zálohování a obnovení Azure MFA Serveru
 
-A ujistěte se, zda máte správné zálohy je důležitým krokem tootake s jakéhokoli systému.
+Zajištění dobrého zálohování je důležitý krok, který byste měli provést u každého systému.
 
-tooback server Azure MFA, ujistěte se, že máte kopii hello **C:\Program Files\Multi-Factor Authentication Server\Data** složky včetně hello **PhoneFactor.pfdata** souboru. 
+Pokud chcete zálohovat Azure MFA Server, ujistěte se, že máte kopii složky **C:\Program Files\Multi-Factor Authentication Server\Data** včetně souboru **PhoneFactor.pfdata**. 
 
-V případě a obnovení je potřebné dokončení hello následující kroky:
+Pokud potřebujete provést obnovení, proveďte následující kroky:
 
 1. Přeinstalujte Azure MFA Server na nový server.
-2. Aktivovat hello nový Server Azure MFA.
-3. Zastavení hello **MultiFactorAuth** služby.
-4. Přepsat hello **PhoneFactor.pfdata** s hello zálohy kopie.
-5. Spustit hello **MultiFactorAuth** služby.
+2. Aktivujte nový Azure MFA Server.
+3. Zastavte službu **MultiFactorAuth**.
+4. Přepište soubor **PhoneFactor.pfdata** zálohovanou kopií.
+5. Spusťte službu **MultiFactorAuth**.
 
-nový server Hello je teď spuštěná s hello původní zálohovaná konfigurace a uživatelská data.
+Nový server je teď zprovozněný s původní zálohovanou konfigurací a uživatelskými daty.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Nastavení a konfigurace hello [portálu User Portal](multi-factor-authentication-get-started-portal.md) pro uživatele samoobslužné služby.
-- Nastavení a konfigurace hello Azure MFA serveru s [Active Directory Federation Service](multi-factor-authentication-get-started-adfs.md), [ověřování pomocí protokolu RADIUS](multi-factor-authentication-get-started-server-radius.md), nebo [ověřování pomocí protokolu LDAP](multi-factor-authentication-get-started-server-ldap.md).
+- Nastavení a konfigurace portálu [User Portal](multi-factor-authentication-get-started-portal.md) pro uživatelskou samoobsluhu.
+- Nastavení a konfigurace Azure MFA Serveru pomocí [služby Active Directory Federation Service](multi-factor-authentication-get-started-adfs.md), [ověřování pomocí protokolu RADIUS](multi-factor-authentication-get-started-server-radius.md) nebo [ověřování pomocí protokolu LDAP](multi-factor-authentication-get-started-server-ldap.md).
 - Nastavení a konfigurace [Brány vzdálené plochy a Azure Multi-Factor Authentication Serveru používajícího protokol RADIUS](multi-factor-authentication-get-started-server-rdg.md).
-- [Nasazení hello Azure Multi-Factor Authentication Server webové služby mobilní aplikace](multi-factor-authentication-get-started-server-webservice.md).
+- [Nasazení webové služby mobilní aplikace Azure Multi-Factor Authentication Serveru](multi-factor-authentication-get-started-server-webservice.md).
 - [Pokročilé scénáře se službou Azure Multi-Factor Authentication a sítěmi VPN třetích stran](multi-factor-authentication-advanced-vpn-configurations.md).

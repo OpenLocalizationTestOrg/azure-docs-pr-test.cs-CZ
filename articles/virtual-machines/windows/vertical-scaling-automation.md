@@ -1,6 +1,6 @@
 ---
-title: "Azure Automation toovertically aaaUse škálování virtuálního počítače s Windows | Microsoft Docs"
-description: "Svisle škálování virtuálního počítače s Windows v odpovědi toomonitoring výstrahy s Azure Automation."
+title: "Svisle škálování virtuální počítače s Windows pomocí Azure Automation | Microsoft Docs"
+description: "Svisle škálování virtuálního počítače s Windows v reakci na monitorování výstrahy s Azure Automation."
 services: virtual-machines-windows
 documentationcenter: 
 author: singhkays
@@ -16,28 +16,28 @@ ms.topic: article
 ms.date: 03/29/2016
 ms.author: kasing
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 24d07f3e2e217668f18676e6d6873be4f9770349
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ea5169c1a95f00e78ae3f5f177812466eb7a0deb
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="vertically-scale-windows-vms-with-azure-automation"></a>Svisle škálování virtuálních počítačů Windows s Azure Automation.
 
-Svislé škálování je proces hello zvýšením nebo snížením hello prostředky počítače v odpovědi toohello zatížení. V Azure to můžete udělat tak, že změníte velikost hello hello virtuálního počítače. To může pomoct v hello následující scénáře
+Svislé škálování je proces zvýšením nebo snížením prostředky počítače v reakci na zatížení. V Azure to můžete provést změnou velikosti virtuálního počítače. To může pomoct v těchto scénářích
 
-* Pokud hello virtuálního počítače není často používají, můžete změnit velikost ho dolů tooa menší velikost tooreduce náklady na měsíční
-* Pokud hello virtuálního počítače je očekávaný zátěž ve špičce, můžete se změněnou velikostí tooa větší velikost tooincrease své kapacity
+* Pokud virtuální počítač není často používají, můžete jeho velikost a menší velikosti, abyste snížili náklady na měsíční
+* Pokud virtuální počítač se zobrazuje zátěž ve špičce, můžete změnit na větší velikost ke zvýšení jeho kapacity
 
-Hello outline pro tooaccomplish kroky hello jedná jako níže
+Osnova pokyny k tomu je jako níže
 
-1. Instalační program Azure Automation tooaccess virtuální počítače
-2. Importování sad runbook hello Azure Automation vertikální Škálováním do předplatného
-3. Přidat runbook tooyour webhooku
-4. Přidat výstrahy tooyour virtuálního počítače
+1. Instalační program přístup k virtuálním počítačům Azure Automation.
+2. Import sady runbook Azure Automation vertikální Škálováním do předplatného
+3. Přidat webhook, jehož do runbooku
+4. Přidání oznámení k virtuálnímu počítači
 
 > [!NOTE]
-> Z důvodu hello velikost hello první virtuální počítač, velikosti hello je možné rozšířit, bude možná omezen z důvodu toohello dostupnost hello ostatní formáty v clusteru hello aktuální virtuální počítač je nasazena v. V hello publikovaných runbooků služeb automatizace používané v tomto článku jsme postará o tento případ a škálovat jenom v rámci hello níže páry velikost virtuálního počítače. To znamená, že virtuální počítač Standard_D1v2 není najednou škálovat tooStandard_G5 nebo škálovat dolů tooBasic_A0.
+> Vzhledem k velikosti první virtuální počítač, velikosti, které je možné rozšířit, může být omezen z důvodu dostupnosti v clusteru velikosti aktuální virtuální počítač je nasazena v. V sadách runbook publikované automatizace používané v tomto článku jsme postará o tento případ a škálovat jenom v rámci níže páry velikost virtuálního počítače. To znamená, že Standard_D1v2 virtuální počítač není najednou rozšířit tak, aby na úrovni Standard_G5 nebo škálovat na Basic_A0.
 > 
 > | Škálování pár velikosti virtuálních počítačů |  |
 > | --- | --- |
@@ -57,38 +57,38 @@ Hello outline pro tooaccomplish kroky hello jedná jako níže
 > 
 > 
 
-## <a name="setup-azure-automation-tooaccess-your-virtual-machines"></a>Instalační program Azure Automation tooaccess virtuální počítače
-První věc Hello potřebujete toodo je, vytvořit účet Azure Automation, který bude hostitelem tooscale hello sady runbook používá virtuální počítač. Služba Automation hello nedávno zavedl "Účet Spustit jako" funkci hello, která usnadňuje nastavení hello instanční objekt automaticky spouští sady runbook hello jménem hello uživatele velmi snadné. Další informace najdete v článku hello níže:
+## <a name="setup-azure-automation-to-access-your-virtual-machines"></a>Instalační program přístup k virtuálním počítačům Azure Automation.
+První věc, které musíte udělat, je vytvořit účet Azure Automation, který bude hostitelem sady runbook používá škálování virtuálního počítače. Služba Automation se nedávno zavedl funkci "Spustit jako účet", která zajišťuje nastavení se objekt služby pro automatické spouštění sady runbook jménem uživatele velmi snadné. Další informace najdete v článku níže:
 
 * [Ověření runbooků pomocí účtu Spustit v Azure jako](../../automation/automation-sec-configure-azure-runas-account.md)
 
-## <a name="import-hello-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Importování sad runbook hello Azure Automation vertikální Škálováním do předplatného
-Hello sady runbook, které jsou potřebné pro svisle škálování virtuálního počítače jsou již publikován v hello Galerie Runbooků automatizace Azure. Budete potřebovat tooimport je do vašeho předplatného. Dozvíte, jak hello tooimport sady runbook ve čtení tohoto článku.
+## <a name="import-the-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Import sady runbook Azure Automation vertikální Škálováním do předplatného
+Sady runbook, které jsou potřebné pro svisle škálování virtuálního počítače jsou již publikován v galerii Azure Automation Runbook. Musíte je importovat do vašeho předplatného. Můžete postup importování sad runbook načtením v následujícím článku.
 
 * [Galerie Runbooků a modulů pro Azure Automation.](../../automation/automation-runbook-gallery.md)
 
-v hello obrázek níže jsou uvedeny Hello sady runbook, které je třeba importovat toobe
+Na obrázku níže jsou uvedeny sady runbook, které potřebují k importu
 
 ![Importování sad runbook](./media/vertical-scaling-automation/scale-runbooks.png)
 
-## <a name="add-a-webhook-tooyour-runbook"></a>Přidat runbook tooyour webhooku
-Jakmile importujete sady runbook hello budete potřebovat tooadd webhooku toohello runbook, mohou být aktivovány výstrahu z virtuálního počítače. Hello podrobnosti o vytváření webhooku pro vaše sada Runbook můžete přečíst zde
+## <a name="add-a-webhook-to-your-runbook"></a>Přidat webhook, jehož do runbooku
+Jakmile importujete sady runbook, které budete muset přidat webhook, jehož do sady runbook, mohou být aktivovány výstrahu z virtuálního počítače. Podrobnosti o vytváření webhooku pro vaše sada Runbook můžete přečíst zde
 
 * [Webhooky Azure Automation.](../../automation/automation-webhooks.md)
 
-Ujistěte se, že zkopírujete hello webhooku před jeho zavřením hello webhooku dialogu, jak je budete potřebovat v další části hello.
+Ujistěte se, že zkopírujete webhooku před jeho zavřením dialogu webhooku, jak je budete potřebovat v další části.
 
-## <a name="add-an-alert-tooyour-virtual-machine"></a>Přidat výstrahy tooyour virtuálního počítače
+## <a name="add-an-alert-to-your-virtual-machine"></a>Přidání oznámení k virtuálnímu počítači
 1. Vyberte nastavení virtuálního počítače
 2. Vyberte "Pravidla výstrah"
 3. Vyberte možnost "Přidat upozornění"
-4. Vyberte výstrahu hello metriky toofire na
-5. Vyberte podmínku, která v případě splnění bude způsobit výstrahy toofire hello
-6. Prahová hodnota pro podmínku hello vyberte v kroku 5. toobe splněny
-7. Vyberte období, přes které hello službu monitorování zkontrolujte hello podmínku a prahovou hodnotu v kroky 5 a 6
-8. Vložte hello webhooku, které jste zkopírovali z předchozí části hello.
+4. Vyberte metriku chcete aktivovat upozornění na
+5. Vyberte podmínku, která v případě splnění bude způsobit výstrahu, kterou chcete aktivovat
+6. Prahová hodnota pro podmínku vyberte v kroku 5. musí být splněny
+7. Vyberte dobu, za které bude služba monitorování zkontrolujte pro podmínky a prahovou hodnotu v kroky 5 a 6
+8. Vložte webhook, které jste zkopírovali z předchozí části.
 
-![Přidat výstrahy tooVirtual 1 počítač](./media/vertical-scaling-automation/add-alert-webhook-1.png)
+![Přidání upozornění k virtuálnímu počítači 1](./media/vertical-scaling-automation/add-alert-webhook-1.png)
 
-![Přidat výstrahy tooVirtual Machine 2](./media/vertical-scaling-automation/add-alert-webhook-2.png)
+![Přidání upozornění k virtuálnímu počítači 2](./media/vertical-scaling-automation/add-alert-webhook-2.png)
 

@@ -1,6 +1,6 @@
 ---
-title: "aaaHow tooinstall převzetí služeb při selhání z Azure tooon místní hlavní cílový server Linux | Microsoft Docs"
-description: "Před opětovnou ochranu virtuální počítač s Linuxem, potřebujete hlavní cílový server Linux. Zjistěte, jak tooinstall jeden."
+title: "Jak nainstalovat Linux hlavní cílový server pro převzetí služeb při selhání z Azure do místní | Microsoft Docs"
+description: "Před opětovnou ochranu virtuální počítač s Linuxem, potřebujete hlavní cílový server Linux. Zjistěte, jak k jeho instalaci."
 services: site-recovery
 documentationcenter: 
 author: ruturaj
@@ -14,61 +14,61 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 08/11/2017
 ms.author: ruturajd
-ms.openlocfilehash: d7c55d115712b9862414979f89efb1f177c5f0dd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5341e3e56e0c366079958dd9a885f6ee3e8436cb
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="install-a-linux-master-target-server"></a>Instalovat hlavní cílový server Linux
-Po selhání virtuálních počítačů, může selhat back hello virtuální počítače toohello místního webu. toofail zpět, je nutné tooreprotect hello virtuální počítač z Azure toohello místního webu. Pro tento proces budete potřebovat místní hlavní cílový server tooreceive hello provoz. 
+Po selhání virtuálních počítačů, můžete můžete navrácení služeb po obnovení virtuálních počítačů k místní lokalitě. Chcete-li navrácení služeb po obnovení, je potřeba znovu nastavte ochranu virtuálního počítače z Azure do místní lokality. Pro tento proces budete potřebovat místní hlavní cílový server příjem provozu. 
 
-Pokud chráněný virtuální počítač je virtuálního počítače s Windows, musíte Windows hlavní cíl. Pro virtuální počítač s Linuxem budete potřebovat hlavního cíle Linuxu. Čtení hello následující kroky toolearn jak toocreate a nainstalujte systémem Linux hlavní cíl.
+Pokud chráněný virtuální počítač je virtuálního počítače s Windows, musíte Windows hlavní cíl. Pro virtuální počítač s Linuxem budete potřebovat hlavního cíle Linuxu. Přečtěte si následující kroky a zjistěte, jak vytvořit a nainstalovat hlavního cíle Linuxu.
 
 > [!IMPORTANT]
-> Od verze hello 9.10.0 hlavní cílový server, můžete pouze nainstalovány hello nejnovější hlavní cílový server na serveru Ubuntu 16.04. Nové instalace nejsou povoleny u CentOS6.6 servery. Však můžete dál tooupgrade vaše starého hlavního cílové servery pomocí hello 9.10.0 verze.
+> Od verze 9.10.0 hlavní cílový server, nejnovější hlavní cílový server můžete nainstalovat jenom na Ubuntu 16.04 server. Nové instalace nejsou povoleny u CentOS6.6 servery. Však můžete nadále upgradu vaší starého hlavního cílové servery pomocí 9.10.0 verze.
 
 ## <a name="overview"></a>Přehled
-Tento článek obsahuje pokyny, jak tooinstall systémem Linux hlavní cíl.
+Tento článek obsahuje pokyny k instalaci hlavního cíle Linuxu.
 
-POST dotazy nebo připomínky můžete na konci hello tohoto článku nebo na hello [fóru Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+POST dotazy nebo připomínky můžete na konci tohoto článku nebo na [fóru Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* určení toochoose hello hostitele na hello hlavní cíl které toodeploy, pokud hello navrácení služeb po obnovení budete toobe tooan existující místní virtuální počítač nebo tooa nového virtuálního počítače. 
-    * Pro existující virtuální počítač hostitele hello hello hlavní cíl musí mít přístup k úložišti dat toohello hello virtuálního počítače.
-    * Pokud hello na místním virtuálním počítači neexistuje, je na stejné hostitele jako hlavní cíl hello hello vytvořit hello navrácení služeb po obnovení virtuálního počítače. Můžete vybrat libovolného hostitele ESXi tooinstall hello hlavní cíl.
-* Hello hlavní cíl musí být v síti, který může komunikovat s hello procesový server a hello konfigurační server.
-* Hello verzi hello hlavní cíl musí být rovna tooor starší než verze hello hello procesový server a hello konfigurační server. Například pokud hello verzi hello konfigurační server je 9.4, hello verzi hello hlavního cíle může být 9.4 nebo 9.3, ale není 9.5.
-* hlavní cíl Hello lze pouze virtuální počítač VMware, nikoli na fyzický server.
+* Zvolte hostitele, do které chcete nasadit na hlavním cíli, určete, pokud navrácení služeb po obnovení bude do existující virtuální počítač místně nebo do nového virtuálního počítače. 
+    * Pro existující virtuální počítač hostitele hlavního cíle mají mít přístup k úložišti dat virtuálního počítače.
+    * Pokud na místním virtuálním počítači neexistuje, je navrácení služeb po obnovení virtuálního počítače vytvořit na stejném hostiteli jako hlavní cíl. Můžete vybrat libovolného hostitele ESXi k instalaci na hlavním cíli.
+* Hlavní cíl musí být v síti, který může komunikovat s procesovým serverem a konfigurační server.
+* Verze hlavního cíle musí být rovna nebo starší než verze procesového serveru a konfigurační server. Například pokud je verze konfigurace serveru 9.4, verze hlavního cíle může být 9.4 nebo 9.3, ale není 9.5.
+* Na hlavním cíli lze pouze virtuální počítač VMware, nikoli na fyzický server.
 
-## <a name="create-hello-master-target-according-toohello-sizing-guidelines"></a>Vytvořit hlavní cíl hello toohello podle pokynů pro změnu velikosti
+## <a name="create-the-master-target-according-to-the-sizing-guidelines"></a>Vytvoření hlavního cíle podle pokynů pro změnu velikosti
 
-Vytvořte hlavní cíl hello v souladu s hello následující pokyny k nastavení velikosti:
+Vytvoření hlavního cíle podle následujících pokynů pro změnu velikosti:
 - **Paměť RAM**: 6 GB nebo více
-- **Velikost disku operačního systému**: 100 GB nebo více (tooinstall CentOS6.6)
+- **Velikost disku operačního systému**: 100 GB nebo více (pro instalaci CentOS6.6)
 - **Velikost disku Další jednotka pro uchování**: 1 TB
 - **Jader procesoru**: 4 jádra nebo více
 
-Následující Hello podporována Ubuntu jádra jsou podporovány.
+Jsou podporovány následující podporované Ubuntu jádra.
 
 
-|Řada jádra  |Podporovat až příliš |
+|Řada jádra  |Podporovat až  |
 |---------|---------|
 |4.4      |4.4.0-81-Generic         |
 |4.8      |4.8.0-56-Generic         |
 |4.10     |4.10.0-24-Generic        |
 
 
-## <a name="deploy-hello-master-target-server"></a>Nasazení hello hlavní cílový server
+## <a name="deploy-the-master-target-server"></a>Nasazení hlavního cílového serveru
 
 ### <a name="install-ubuntu-16042-minimal"></a>Nainstalujte Ubuntu 16.04.2 minimální
 
-Trvat hello následující hello kroky tooinstall hello Ubuntu 16.04.2 64bitový operační systém.
+Proveďte následující kroky pro instalaci Ubuntu 16.04.2 64bitový operační systém.
 
-**Krok 1:** přejděte toohello [stáhnout odkaz](https://www.ubuntu.com/download/server/thank-you?version=16.04.2&architecture=amd64) a zvolte nejbližší zrcadlení hello z které stáhnout soubor ISO Ubuntu 16.04.2 minimální 64-bit.
+**Krok 1:** přejít na [stáhnout odkaz](https://www.ubuntu.com/download/server/thank-you?version=16.04.2&architecture=amd64) a zvolte nejbližší zrcadlení z které stáhnout soubor ISO Ubuntu 16.04.2 minimální 64-bit.
 
-Zachovat Ubuntu 16.04.2 minimální 64-bit ISO v jednotce hello DVD a spusťte hello systému.
+Ponechte soubor ISO Ubuntu 16.04.2 minimální 64-bit do jednotky DVD a spuštění systému.
 
 **Krok 2:** vyberte **Angličtina** jako upřednostňovaný jazyk a potom vyberte **Enter**.
 
@@ -82,237 +82,237 @@ Zachovat Ubuntu 16.04.2 minimální 64-bit ISO v jednotce hello DVD a spusťte h
 
 ![Vyberte angličtina jako upřednostňovaný jazyk](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image3.png)
 
-**Krok 5:** hello vyberte příslušnou možnost z hello **časové pásmo** seznam možností a potom vyberte **Enter**.
+**Krok 5:** vyberte příslušnou možnost **časové pásmo** seznam možností a potom vyberte **Enter**.
 
-![Vyberte hello správné časové pásmo](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image4.png)
+![Vyberte správné časové pásmo](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image4.png)
 
-**Krok 6:** vyberte **ne** (hello výchozí možnost) a potom vyberte **Enter**.
+**Krok 6:** vyberte **ne** (výchozí možnost) a potom vyberte **Enter**.
 
 
-![Konfigurace hello klávesnice](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image5.png)
+![Konfigurace klávesnice](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image5.png)
 
-**Krok 7:** vyberte **angličtinu (US)** jako hello země původu hello klávesnice a pak vyberte **Enter**.
+**Krok 7:** vyberte **angličtinu (US)** jako země původu klávesnice, a potom vyberte **Enter**.
 
-![Vyberte USA jako hello země původu](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image6.png)
+![Vyberte USA jako země původu](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image6.png)
 
-**Krok 8:** vyberte **angličtinu (US)** jako hello rozložení klávesnice a potom vyberte **Enter**.
+**Krok 8:** vyberte **angličtinu (US)** rozložení klávesnice a pak vyberte **Enter**.
 
-![Vyberte angličtinu jako hello rozložení klávesnice](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image7.png)
+![Vyberte angličtinu jako rozložení klávesnice](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image7.png)
 
-**Krok 9:** zadejte hello název hostitele pro server v hello **Hostname** a pak vyberte **pokračovat**.
+**Krok 9:** zadejte název hostitele pro server v **Hostname** a pak vyberte **pokračovat**.
 
-![Zadejte název hostitele hello pro váš server](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image8.png)
+![Zadejte název hostitele pro server](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image8.png)
 
-**Krok 10:** toocreate uživatelský účet, zadejte hello uživatelské jméno a potom vyberte **pokračovat**.
+**Krok 10:** vytvoření uživatelského účtu, zadejte uživatelské jméno a potom vyberte **pokračovat**.
 
 ![Vytvoření uživatelského účtu](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image9.png)
 
-**Krok 11:** zadejte heslo hello hello nový uživatelský účet a potom vyberte **pokračovat**.
+**Krok 11:** zadejte heslo pro nový uživatelský účet a potom vyberte **pokračovat**.
 
-![Zadejte heslo hello](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image10.png)
+![Zadejte heslo](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image10.png)
 
-**Krok 12:** potvrďte hello heslo pro nového uživatele hello a pak vyberte **pokračovat**.
+**Krok 12:** potvrďte heslo pro nového uživatele a pak vyberte **pokračovat**.
 
-![Potvrzení hesla hello](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image11.png)
+![Potvrzení hesla](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image11.png)
 
-**Krok 13:** vyberte **ne** (hello výchozí možnost) a potom vyberte **Enter**.
+**Krok 13:** vyberte **ne** (výchozí možnost) a potom vyberte **Enter**.
 
 ![Nastavit uživatele a hesla](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image12.png)
 
-**Krok 14:** Pokud hello časové pásmo, které se zobrazí správný, vyberte **Ano** (hello výchozí možnost) a potom vyberte **Enter**.
+**Krok 14:** Pokud časové pásmo, které se zobrazí správný, vyberte **Ano** (výchozí možnost) a potom vyberte **Enter**.
 
-tooreconfigure svým časovým pásmem, vyberte **ne**.
+Chcete-li překonfigurovat časové pásmo, vyberte **ne**.
 
-![Nakonfigurujte hodiny hello](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image13.png)
+![Nakonfigurujte hodiny](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image13.png)
 
-**Krok 15:** hello dělení možnosti metody, vyberte **na základě - použít celý disk**a potom vyberte **Enter**.
+**Krok 15:** dělicí metody možnosti, vyberte **na základě - použít celý disk**a potom vyberte **Enter**.
 
-![Vyberte hello dělení možnost – Metoda](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image14.png)
+![Vyberte možnost použít pro dělicí metody](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image14.png)
 
-**Krok 16:** vyberte hello příslušný disk z hello **vyberte disk toopartition** možnosti a pak vyberte **Enter**.
+**Krok 16:** vyberte příslušný disk z **vyberte disk do oddílu** možnosti a pak vyberte **Enter**.
 
 
-![Vyberte hello disk](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image15.png)
+![Vyberte disk](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image15.png)
 
-**Krok 17:** vyberte **Ano** toowrite hello toodisk změny a pak vyberte **Enter**.
+**Krok 17:** vyberte **Ano** k zápisu změn na disk a potom vyberte **Enter**.
 
-![Zápis změn toodisk hello](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image16.png)
+![Zápis změn na disk](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image16.png)
 
-**Krok 18:** vyberte hello výchozí možnost, vyberte **pokračovat**a potom vyberte **Enter**.
+**Krok 18:** vyberte možnost výchozí, vyberte **pokračovat**a potom vyberte **Enter**.
 
-![Vyberte možnost Výchozí hello](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image17.png)
+![Vyberte možnost výchozí](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image17.png)
 
-**Krok 19:** vyberte příslušnou možnost hello pro správu upgrady systému a pak vyberte **Enter**.
+**Krok 19:** vyberte příslušnou možnost pro správu upgrady systému a pak vyberte **Enter**.
 
-![Vyberte, jak toomanage upgradu](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image18.png)
+![Vyberte, jak spravovat upgrady](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image18.png)
 
 > [!WARNING]
-> Protože hello Azure Site Recovery hlavní cílový server vyžaduje velmi konkrétní verzi hello Ubuntu, je třeba tooensure této hello jádra, které jsou zakázány upgrady pro virtuální počítač hello. Pokud se povolí, nějaké regulární upgrady způsobit hello hlavní cílový server toomalfunction. Zkontrolujte, zda jste vybrali hello **žádné automatické aktualizace** možnost.
+> Protože Azure Site Recovery hlavní cílový server vyžaduje velmi konkrétní verzi Ubuntu, musíte zajistit, aby jádra zakázali upgrady pro virtuální počítač. Pokud se povolí, nějaké regulární upgrady způsobit hlavní cílový server fungovat správně. Zkontrolujte, zda jste vybrali **žádné automatické aktualizace** možnost.
 
 
-**Krok 20:** vyberte výchozí možnosti. Pokud chcete openSSH pro připojení SSH, vyberte hello **OpenSSH server** a pak vyberte možnost **pokračovat**.
+**Krok 20:** vyberte výchozí možnosti. Pokud chcete openSSH pro připojení SSH, vyberte **OpenSSH server** a pak vyberte možnost **pokračovat**.
 
 ![Vyberte software](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image19.png)
 
 **Krok 21:** vyberte **Ano**a potom vyberte **Enter**.
 
-![Isntall hello GRUB spouštěcí zavaděč](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image20.png)
+![Isntall spouštěcí zavaděč GRUB](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image20.png)
 
-**Krok 22:** hello vyberte příslušné zařízení pro hello spouštěcí zavaděč instalace (pokud možno **/dev/sda**) a potom vyberte **Enter**.
+**Krok 22:** vyberte odpovídající zařízení, pro instalaci spouštěcí zavaděč (pokud možno **/dev/sda**) a potom vyberte **Enter**.
 
 ![Vyberte zařízení, které spouštěcí zavaděč instalace](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image21.png)
 
-**Krok 23:** vyberte **pokračovat**a potom vyberte **Enter** toofinish hello instalace.
+**Krok 23:** vyberte **pokračovat**a potom vyberte **Enter** k dokončení instalace.
 
-![Dokončení instalace hello](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image22.png)
+![Dokončení instalace](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image22.png)
 
-Po dokončení instalace hello přihlaste toohello virtuálních počítačů s novými pověřeními uživatele hello. (Odkazovat příliš**krok 10** Další informace.)
+Po dokončení instalace, přihlaste se k virtuálnímu počítači s novými pověřeními uživatele. (Odkazovat na **krok 10** Další informace.)
 
-Trvat hello kroky, které jsou popsané v následující snímek obrazovky tooset hello KOŘENOVÉ hello heslo uživatele. Přihlaste se jako KOŘENOVÉ uživatele.
+Proveďte kroky, které jsou popsány v následující snímek obrazovky nastavení hesla uživatele ROOT. Přihlaste se jako KOŘENOVÉ uživatele.
 
-![Heslo uživatele ROOT hello sady](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image23.png)
+![Nastavení KOŘENOVÉ heslo uživatele](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image23.png)
 
 
-### <a name="prepare-hello-machine-for-configuration-as-a-master-target-server"></a>Příprava hello počítače pro konfiguraci jako hlavní cílový server
-V dalším kroku Příprava hello počítače pro konfiguraci jako hlavní cílový server.
+### <a name="prepare-the-machine-for-configuration-as-a-master-target-server"></a>Příprava pro konfiguraci počítače jako hlavní cílový server
+V dalším kroku Příprava počítače pro konfiguraci jako hlavní cílový server.
 
-tooget hello ID pro každý pevného disku SCSI na virtuálním počítači Linux povolit hello **disku. EnableUUID = TRUE** parametr.
+Chcete-li získat ID pro každý SCSI pevný disk ve virtuálním počítači Linux, povolte **disku. EnableUUID = TRUE** parametr.
 
-tooenable, které tento parametr hello proveďte následující kroky:
+Chcete-li tento parametr, proveďte následující kroky:
 
 1. Vypněte virtuální počítač.
 
-2. Klikněte pravým tlačítkem na položku hello pro hello virtuální počítač v levém podokně hello a potom vyberte **upravit nastavení**.
+2. Pravým tlačítkem na položku pro virtuální počítač v levém podokně a pak vyberte **upravit nastavení**.
 
-3. Vyberte hello **možnosti** kartě.
+3. Vyberte **možnosti** kartě.
 
-4. V levém podokně hello vyberte **Upřesnit** > **Obecné**a potom vyberte hello **parametry konfigurace** tlačítko na hello pravé dolní části obrazovky hello.
+4. V levém podokně vyberte **Upřesnit** > **Obecné**a pak vyberte **parametry konfigurace** tlačítko v pravé dolní části obrazovky.
 
     ![Karta Možnosti](./media/site-recovery-how-to-install-linux-master-target/media/image20.png)
 
-    Hello **parametry konfigurace** možnost není k dispozici, když hello počítač běží. toomake na této kartě aktivní, vypněte virtuální počítač hello.
+    **Parametry konfigurace** možnost není k dispozici, když je počítač spuštěn. Chcete-li na této kartě aktivní, vypněte virtuální počítač.
 
 5. Zda řádek s **disku. EnableUUID** již existuje.
 
-    - Pokud hodnota hello existuje a je nastaven příliš**False**, změňte hodnotu hello příliš**True**. (hodnoty hello nejsou malá a velká písmena.)
+    - Pokud hodnota existuje a je nastavená na **False**, změňte hodnotu na **True**. (Hodnoty nejsou malá a velká písmena.)
 
-    - Pokud hodnota hello existuje a je nastaven příliš**True**, vyberte **zrušit**.
+    - Pokud hodnota existuje a je nastavená na **True**, vyberte **zrušit**.
 
-    - Pokud hodnota hello neexistuje, vyberte **přidat řádek**.
+    - Pokud hodnota neexistuje, vyberte **přidat řádek**.
 
-    - Ve sloupci Název hello přidat **disku. EnableUUID**a pak nastavte hodnotu hello příliš**TRUE**.
+    - Ve sloupci Název přidat **disku. EnableUUID**a pak nastavte hodnotu na **TRUE**.
 
     ![Kontroluje, zda disk. EnableUUID již existuje.](./media/site-recovery-how-to-install-linux-master-target/media/image21.png)
 
 #### <a name="disable-kernel-upgrades"></a>Zakázat upgrady jádra
 
-Azure Site Recovery hlavní cílový server vyžaduje velmi konkrétní verzi hello Ubuntu, zkontrolujte, zda jsou pro virtuální počítač hello vypnutá upgrady hello jádra.
+Azure Site Recovery hlavní cílový server vyžaduje velmi konkrétní verzi Ubuntu, zkontrolujte, zda jsou pro virtuální počítač vypnutá upgrady jádra.
 
-Pokud upgrady jádra jsou povolené, jakékoli regulární upgrady způsobit hello hlavní cílový server toomalfunction.
+Pokud upgrady jádra jsou povolené, jakékoli regulární upgrady způsobit hlavní cílový server fungovat správně.
 
 #### <a name="download-and-install-additional-packages"></a>Stáhněte a nainstalujte další balíčky
 
 > [!NOTE]
-> Ujistěte se, že máte toodownload připojení k Internetu a nainstalovat další balíčky. Pokud nemáte připojení k Internetu, je třeba toomanually tyto balíčky RPM najít a nainstalovat je.
+> Ujistěte se, že máte připojení k Internetu stáhněte a nainstalujte další balíčky. Pokud nemáte připojení k Internetu, budete muset ručně najít tyto balíčky ot. / min a nainstalovat je.
 
 ```
 apt-get install -y multipath-tools lsscsi python-pyasn1 lvm2 kpartx
 ```
 
-### <a name="get-hello-installer-for-setup"></a>Získat hello instalační program pro instalaci
+### <a name="get-the-installer-for-setup"></a>Získání Instalační program pro instalaci
 
-Pokud hlavní cíl se připojení k Internetu, můžete použít následující kroky toodownload hello instalačního programu hello. Můžete, jinak zkopírujte instalační službu hello z hello procesový server a potom ji nainstalovat.
+Pokud hlavní cíl má připojení k Internetu, můžete použít následující kroky stáhnout instalační program. Jinak můžete zkopírujte instalační službu z procesového serveru a nainstalujte ji.
 
-#### <a name="download-hello-master-target-installation-packages"></a>Stáhněte si instalační balíčky hello hlavní cíl
+#### <a name="download-the-master-target-installation-packages"></a>Stáhněte si instalační balíčky hlavní cíl
 
-[Stáhnout hello nejnovější Linux hlavní cíl instalace bits](https://aka.ms/latestlinuxmobsvc).
+[Stáhněte si nejnovější bits instalace hlavní cíl Linux](https://aka.ms/latestlinuxmobsvc).
 
-toodownload ho pomocí Linux, zadejte:
+Chcete-li stáhnout ji pomocí Linux, zadejte:
 
 ```
 wget https://aka.ms/latestlinuxmobsvc -O latestlinuxmobsvc.tar.gz
 ```
 
-Ujistěte se, stáhněte a rozbalte instalační program hello v domovském adresáři. Pokud jste příliš rozbalte**/usr/místní**, hello instalace se nezdaří.
+Ujistěte se, stáhněte a rozbalte instalační program v domovském adresáři. Pokud rozbalte k **/usr/místní**, instalace selže.
 
 
-#### <a name="access-hello-installer-from-hello-process-server"></a>Instalační program hello přístup ze serveru proces hello
+#### <a name="access-the-installer-from-the-process-server"></a>Přístup k Instalační program z procesového serveru
 
-1. Na serveru proces hello přejděte příliš**C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository**.
+1. Na procesní server, přejděte na **C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository**.
 
-2. Hello instalační program vyžaduje soubor zkopírovat z hello procesový server a uložte ho jako **latestlinuxmobsvc.tar.gz** v domovském adresáři.
+2. Instalační program vyžaduje soubor zkopírovat z procesového serveru a uložte ho jako **latestlinuxmobsvc.tar.gz** v domovském adresáři.
 
 
 ### <a name="apply-custom-configuration-changes"></a>Změny vlastní konfigurace
 
-změny tooapply vlastní konfigurace, použijte hello následující kroky:
+Chcete-li použít změny v vlastní konfigurace, použijte následující kroky:
 
 
-1. Spusťte následující příkaz toountar hello binární hello.
+1. Spusťte následující příkaz, který untar binárního souboru.
     ```
     tar -zxvf latestlinuxmobsvc.tar.gz
     ```
-    ![Snímek obrazovky toorun příkaz hello](./media/site-recovery-how-to-install-linux-master-target/image16.png)
+    ![Snímek obrazovky příkaz ke spuštění](./media/site-recovery-how-to-install-linux-master-target/image16.png)
 
-2. Spusťte následující příkaz toogive oprávnění hello.
+2. Spusťte následující příkaz, který udělit oprávnění.
     ```
     chmod 755 ./ApplyCustomChanges.sh
     ```
 
-3. Spusťte následující příkaz toorun hello skriptu hello.
+3. Spusťte následující příkaz pro spuštění skriptu.
     ```
     ./ApplyCustomChanges.sh
     ```
 > [!NOTE]
-> Spusťte skript hello jenom jednou na serveru hello. Vypněte hello server. Potom restartujte hello server po přidat disk, jak je popsáno v další části hello.
+> Spusťte skript jenom jednou na serveru. Vypněte server. Restartujte server po přidat disk, jak je popsáno v následující části.
 
-### <a name="add-a-retention-disk-toohello-linux-master-target-virtual-machine"></a>Přidat uchování disku toohello hlavní cílový virtuální počítač s Linuxem
+### <a name="add-a-retention-disk-to-the-linux-master-target-virtual-machine"></a>Přidejte uchování disk k virtuálnímu počítači hlavního cíle Linuxu
 
-Použijte následující postup toocreate disku pro uchování hello:
+Pomocí následujících kroků můžete vytvořit disku pro uchování:
 
-1. Připojte nový hlavní cílový virtuální počítač Linux toohello disk 1 TB a potom hello počítač spustit.
+1. Připojit nový disk 1 TB k virtuálnímu počítači hlavního cíle Linuxu a potom počítač spustit.
 
-2. Použití hello **vícenásobný -udou** příkaz toolearn hello vícenásobný ID disku pro uchování hello.
+2. Použití **vícenásobný -udou** příkaz Další funkce multipath ID disku pro uchování.
 
     ```
     multipath -ll
     ```
-    ![Hello vícenásobný ID disku pro uchování hello](./media/site-recovery-how-to-install-linux-master-target/media/image22.png)
+    ![Vícenásobný ID disku pro uchování](./media/site-recovery-how-to-install-linux-master-target/media/image22.png)
 
-3. Formátování hello disku a pak vytvořit systém souborů na nový disk hello.
+3. Formátování disku a pak vytvořit systém souborů na nový disk.
 
     ```
     mkfs.ext4 /dev/mapper/<Retention disk's multipath id>
     ```
-    ![Vytvoření systému souborů na jednotce hello](./media/site-recovery-how-to-install-linux-master-target/media/image23.png)
+    ![Vytvoření systému souborů na disku](./media/site-recovery-how-to-install-linux-master-target/media/image23.png)
 
-4. Po vytvoření hello systému souborů, připojte disk uchování hello.
+4. Po vytvoření systému souborů, připojte disk uchovávání informací.
     ```
     mkdir /mnt/retention
     mount /dev/mapper/<Retention disk's multipath id> /mnt/retention
     ```
-    ![Disku pro uchování hello připojení](./media/site-recovery-how-to-install-linux-master-target/media/image24.png)
+    ![Připojení disku pro uchování](./media/site-recovery-how-to-install-linux-master-target/media/image24.png)
 
-5. Vytvoření hello **fstab** položka toomount hello jednotka pro uchování pokaždé, když hello systém při spuštění.
+5. Vytvořte **fstab** položka připojit jednotka pro uchování pokaždé, když bude systém při spuštění.
     ```
     vi /etc/fstab
     ```
-    Vyberte **vložit** toobegin úprav souboru hello. Vytvořte nový řádek a potom vložte následující text hello. Upravte ID vícenásobný hello disku podle hello zvýrazněná vícenásobný ID z předchozí příkaz hello.
+    Vyberte **vložit** zahájíte úpravy souboru. Vytvořte nový řádek a potom vložte následující text. Upravte vícenásobný ID disku na základě Identifikátoru zvýrazněná více cest z předchozí příkaz.
 
      **/dev/mapper/ <Retention disks multipath id> /mnt/uchování ext4 rw 0 0**
 
-    Vyberte **Esc**a pak zadejte **: QW** (zápisu a ukončení) okno editor tooclose hello.
+    Vyberte **Esc**a pak zadejte **: QW** (zápisu a ukončení) zavřete okno editor.
 
-### <a name="install-hello-master-target"></a>Instalovat hlavní cíl hello
+### <a name="install-the-master-target"></a>Nainstalujte na hlavním cíli
 
 > [!IMPORTANT]
-> Hello verzi hello hlavní cílový server musí být rovna tooor starší než verze hello hello procesový server a hello konfigurační server. Pokud není tato podmínka splněná, opětovné ochrany úspěšná, ale replikace selže.
+> Verze hlavního cílového serveru musí být rovna nebo starší než verze procesového serveru a konfigurační server. Pokud není tato podmínka splněná, opětovné ochrany úspěšná, ale replikace selže.
 
 
 > [!NOTE]
-> Než nainstalujete hello hlavní cílový server, zkontrolujte, že hello **/etc/hosts** soubor hello virtuálního počítače obsahuje položky, které mapují hello názvem místního hostitele toohello IP adresy, které jsou přidruženy všechny síťové adaptéry.
+> Než nainstalujete hlavní cílový server, zkontrolujte, zda **/etc/hosts** souboru na virtuální počítač obsahuje položky, které mapují názvem místního hostitele na IP adresy, které jsou přidruženy všechny síťové adaptéry.
 
-1. Kopírovat heslo hello z **C:\ProgramData\Microsoft Azure lokality Recovery\private\connection.passphrase** na hello konfiguračním serveru. Potom uložte ho jako **passphrase.txt** v hello hello stejného adresáře tak, že spustíte následující příkaz:
+1. Kopírovat heslo z **C:\ProgramData\Microsoft Azure lokality Recovery\private\connection.passphrase** na konfiguračním serveru. Potom uložte ho jako **passphrase.txt** ve stejném adresáři místní spuštěním následujícího příkazu:
 
     ```
     echo <passphrase> >passphrase.txt
@@ -323,9 +323,9 @@ Použijte následující postup toocreate disku pro uchování hello:
     echo itUx70I47uxDuUVY >passphrase.txt
     ```
 
-2. Všimněte si, IP adresa serveru konfigurace hello. Budete ho potřebovat v dalším kroku hello.
+2. Všimněte si, IP adresa konfiguračního serveru. Budete ho potřebovat v dalším kroku.
 
-3. Spusťte následující příkaz tooinstall hello hlavní cílový server hello a hello server zaregistrovat hello konfigurační server.
+3. Spusťte následující příkaz k instalaci hlavní cílový server a registrace serveru u konfigurační server.
 
     ```
     ./install -q -d /usr/local/ASR -r MT -v VmWare
@@ -338,26 +338,26 @@ Použijte následující postup toocreate disku pro uchování hello:
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
     ```
 
-    Počkejte na dokončení skriptu hello. Pokud hlavní cíl hello zaregistruje úspěšně, hlavní cíl hello je uvedený na hello **infrastruktura Site Recovery** hello portálu.
+    Počkejte na dokončení skriptu. Pokud se hlavní cíl zaregistruje úspěšně, se hlavní cíl je uvedený na **infrastruktura Site Recovery** stránce portálu.
 
 
-#### <a name="install-hello-master-target-by-using-interactive-installation"></a>Instalovat hlavní cíl hello pomocí interaktivní instalace
+#### <a name="install-the-master-target-by-using-interactive-installation"></a>Instalaci se hlavní cíl pomocí interaktivní instalace
 
-1. Spusťte následující příkaz tooinstall hello hlavní cíl hello. Pro roli hello agenta, vyberte **hlavního cíle**.
+1. Spusťte následující příkaz k instalaci na hlavním cíli. Pro roli agenta, vyberte **hlavního cíle**.
 
     ```
     ./install
     ```
 
-2. Zvolte hello výchozí umístění pro instalaci a potom vyberte **Enter** toocontinue.
+2. Vyberte výchozí umístění pro instalaci a potom vyberte **Enter** pokračujte.
 
     ![Volba výchozí umístění pro instalaci hlavní cíl](./media/site-recovery-how-to-install-linux-master-target/image17.png)
 
-Po dokončení instalace hello zaregistrujte konfigurační server hello pomocí příkazového řádku hello.
+Po dokončení instalace zaregistrujte konfigurační server pomocí příkazového řádku.
 
-1. Všimněte si hello IP adresu hello konfigurační server. Budete ho potřebovat v dalším kroku hello.
+1. Všimněte si IP adresu konfiguračního serveru. Budete ho potřebovat v dalším kroku.
 
-2. Spusťte následující příkaz tooinstall hello hlavní cílový server hello a hello server zaregistrovat hello konfigurační server.
+2. Spusťte následující příkaz k instalaci hlavní cílový server a registrace serveru u konfigurační server.
 
     ```
     ./install -q -d /usr/local/ASR -r MT -v VmWare
@@ -369,34 +369,34 @@ Po dokončení instalace hello zaregistrujte konfigurační server hello pomocí
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
     ```
 
-   Počkejte na dokončení skriptu hello. Pokud hlavní cíl hello je úspěšně registrovaná, hlavní cíl hello je uvedený na hello **infrastruktura Site Recovery** hello portálu.
+   Počkejte na dokončení skriptu. Pokud se hlavní cíl je úspěšně registrovaná, se hlavní cíl je uvedený na **infrastruktura Site Recovery** na portálu.
 
 
-### <a name="upgrade-hello-master-target"></a>Hlavní cíl upgradu hello
+### <a name="upgrade-the-master-target"></a>Upgrade na hlavním cíli
 
-Spusťte instalační program hello. Automaticky rozpozná, že je tento hello agent nainstalovaný na hlavním cíli hello. tooupgrade, vyberte **Y**.  Po dokončení instalace hello, zkontrolujte verzi hello hello hlavního cíle nainstalován pomocí hello následující příkaz.
+Spusťte instalační program. Automaticky zjišťuje, zda je agent nainstalovaný na hlavním cíli. Pokud chcete upgradovat, vyberte **Y**.  Po dokončení instalace, zkontrolujte verzi hlavního cíle nainstalován pomocí následujícího příkazu.
 
     ```
     cat /usr/local/.vx_version
     ```
 
-Uvidíte, že hello **verze** pole obsahuje číslo verze hello hello hlavní cíl.
+Uvidíte, že **verze** pole obsahuje číslo verze se hlavní cíl.
 
-### <a name="install-vmware-tools-on-hello-master-target-server"></a>Nainstalujte nástroje VMware na hlavní cílový server hello
+### <a name="install-vmware-tools-on-the-master-target-server"></a>Nainstalujte nástroje VMware na hlavním cílovém serveru
 
-Nástroje VMware tooinstall na hlavním cíli hello je nutné, aby ho můžete zjistit úložiště dat hello. Pokud nejsou nainstalovány nástroje hello, úvodní obrazovka opětovné ochrany se neuvádějí v úložišti dat hello. Po instalaci nástroje VMware hello je třeba toorestart.
+Musíte nainstalovat nástroje VMware na hlavním cíli, aby ho můžete zjistit datová úložiště. Pokud nejsou nainstalovány nástroje, není v úložištích dat, uvedené na obrazovce opětovné ochrany. Po instalaci nástroje VMware je potřeba restartovat.
 
 ## <a name="next-steps"></a>Další kroky
-Po hello instalace a registrace hlavního cíle hello má finsihed, uvidíte hello hlavní cíl se zobrazují v hello **hlavního cíle** kapitoly **infrastruktura Site Recovery**, v části hello Přehled konfigurace serveru.
+Po instalaci a registraci hlavního cíle má finsihed, zobrazí se zobrazí na hlavním cíli **hlavního cíle** kapitoly **infrastruktura Site Recovery**, v části Přehled konfigurace serveru.
 
 Teď můžete pokračovat s [vytvoření](site-recovery-how-to-reprotect.md), za nímž následují navrácení služeb po obnovení.
 
 ## <a name="common-issues"></a>Běžné problémy
 
-* Ujistěte se, že jste nezapínejte řešení Storage vMotion na žádné součásti správy, jako je hlavní cíl. Pokud se hlavní cíl hello přesune po úspěšné opětovné ochrany, nelze odpojit hello disky virtuálního počítače (VMDKs). V takovém případě navrácení služeb po obnovení selže.
+* Ujistěte se, že jste nezapínejte řešení Storage vMotion na žádné součásti správy, jako je hlavní cíl. Pokud se hlavní cíl přesune po úspěšné opětovné ochrany, disků virtuálního počítače (VMDKs) nelze odpojit. V takovém případě navrácení služeb po obnovení selže.
 
-* hlavní cíl Hello by neměl mít všechny snímky hello virtuálního počítače. Pokud existují snímky, navrácení služeb po obnovení se nezdaří.
+* Hlavní cíl by neměl mít všechny snímky na virtuálním počítači. Pokud existují snímky, navrácení služeb po obnovení se nezdaří.
 
-* Z důvodu toosome vlastní konfigurace síťový adaptér v někteří zákazníci hello síťové rozhraní je zakázané během spouštění a hello hlavní cíl agenta nelze inicializovat. Ujistěte se, že hello následující vlastnosti jsou správně nastaveny. Zkontrolujte tyto vlastnosti v hello Ethernet karty souboru /etc/sysconfig/network-scripts/ifcfg-eth *.
+* Z důvodu některých vlastních konfigurací síťový adaptér v někteří zákazníci síťové rozhraní je zakázané během spouštění a nemůže inicializovat agenta hlavní cíl. Ujistěte se, že následující vlastnosti jsou správně nastaveny. Zkontrolujte tyto vlastnosti v Ethernet karty souboru /etc/sysconfig/network-scripts/ifcfg-eth *.
     * BOOTPROTO = dhcp
     * ONBOOT = Ano

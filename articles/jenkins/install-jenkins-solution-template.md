@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate volaných serveru v Azure"
-description: "Nainstalujte volaných na virtuálním počítači Azure Linux z hello volaných řešení šablony a vytvoření ukázkové aplikace Java."
+title: "Vytvoření serveru Jenkins v Azure"
+description: "Instalace Jenkinse na virtuálním počítači Azure s Linuxem ze šablony řešení Jenkins a sestavení ukázkové aplikace v Javě."
 author: mlearned
 manager: douge
 ms.service: multiple
@@ -10,102 +10,102 @@ ms.topic: hero-article
 ms.date: 08/21/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: 82ab2ac52594acba131414b449b608978591d4b8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7bb74f297d52fb25171817175cce64187b397c38
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-hello-azure-portal"></a>Vytvoření serveru volaných ve virtuálním počítači Azure Linux z hello portálu Azure
+# <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Vytvoření serveru Jenkins na virtuálním počítači Azure s Linuxem pomocí webu Azure Portal
 
-Tento rychlý start ukazuje, jak tooinstall [volaných](https://jenkins.io) na Linux virtuálního počítače s Ubuntu s hello nástrojů a modulů plug-in nakonfigurovat toowork s Azure. Až budete hotovi, budete mít v Azure spuštěný server Jenkins sestavující ukázkovou aplikaci v Javě z [GitHubu](https://github.com).
+V tomto rychlém startu se dozvíte, jak na virtuálním počítači s Ubuntu Linuxem nainstalovat [Jenkinse](https://jenkins.io) s nakonfigurovanými nástroji a moduly plug-in pro práci s Azure. Až budete hotovi, budete mít v Azure spuštěný server Jenkins sestavující ukázkovou aplikaci v Javě z [GitHubu](https://github.com).
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure
-* TooSSH přístup na příkazovém řádku počítače (například hello Bash prostředí nebo [PuTTY](http://www.putty.org/))
+* Přístup k SSH na příkazovém řádku vašeho počítače (například prostředí Bash nebo nástroj [PuTTY](http://www.putty.org/))
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-hello-jenkins-vm-from-hello-solution-template"></a>Vytvoření hello volaných virtuálního počítače ze šablony řešení hello
+## <a name="create-the-jenkins-vm-from-the-solution-template"></a>Vytvoření virtuálního počítače s Jenkinsem ze šablony řešení
 
-Otevřete hello [marketplace bitovou kopii pro volaných](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview) ve webovém prohlížeči a vyberte **získat IT teď** z levé straně stránky hello hello. Zkontrolujte hello ceny podrobnosti a vyberte **pokračovat**, pak vyberte **vytvořit** tooconfigure hello volaných server hello portálu Azure. 
+Ve webovém prohlížeči otevřete [image Jenkinse na webu Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview) a na levé straně stránky vyberte **ZÍSKAT**. Zkontrolujte podrobnosti o cenách a vyberte **Pokračovat**, pak vyberte **Vytvořit** a nakonfigurujte server Jenkins na webu Azure Portal. 
    
 ![Dialogové okno na webu Azure Portal](./media/install-jenkins-solution-template/ap-create.png)
 
-V hello **nakonfigurovali základní nastavení** kartě, vyplňte následující pole hello:
+Na kartě **Konfigurace základního nastavení** vyplňte následující pole:
 
 ![Konfigurace základního nastavení](./media/install-jenkins-solution-template/ap-basic.png)
 
 * Jako **Název** použijte **Jenkins**.
-* Zadejte **Uživatelské jméno**. Hello uživatelské jméno musí splňovat [specifické požadavky](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm).
-* Vyberte **heslo** jako hello **typ ověřování** a zadejte heslo. Hello heslo musí mít velké písmeno, číslo a jeden speciální znak.
-* Použití **myJenkinsResourceGroup** pro hello **skupiny prostředků**.
-* Zvolte hello **východní USA** [oblast Azure](https://azure.microsoft.com/regions/) z hello **umístění** rozevíracího seznamu.
+* Zadejte **Uživatelské jméno**. Uživatelské jméno musí splňovat [určité požadavky](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm).
+* Jako **Typ ověřování** vyberte **Heslo** a zadejte heslo. Heslo musí obsahovat velké písmeno, číslici a jeden speciální znak.
+* Jako **Skupina prostředků** použijte **myJenkinsResourceGroup**.
+* Z rozevíracího seznamu **Umístění** zvolte [Oblast Azure](https://azure.microsoft.com/regions/) **USA – východ**.
 
-Vyberte **OK** tooproceed toohello **konfigurace dalších možností** kartě. Zadejte jedinečný doménový název tooidentify hello volaných server a vyberte **OK**.
+Vyberte **OK** a pokračujte na kartu **Konfigurace dalších možností**. Zadejte jedinečný název domény pro identifikaci serveru Jenkins a vyberte **OK**.
 
 ![Nastavení dalších možností](./media/install-jenkins-solution-template/ap-addtional.png)  
 
- Po ověření neselže, vybrat **OK** znovu z hello **Souhrn** kartě. Nakonec vyberte **nákupu** toocreate hello volaných virtuálních počítačů. Když se váš server je připraven, zobrazí oznámení v hello portálu Azure:   
+ Jakmile úspěšně proběhne ověření, znovu vyberte **OK** na kartě **Souhrn**. Nakonec vyberte **Koupit** a vytvoří se virtuální počítač s Jenkinsem. Jakmile bude váš server připravený, na webu Azure Portal se vám zobrazí oznámení:   
 
 ![Oznámení o připravenosti Jenkinse](./media/install-jenkins-solution-template/jenkins-deploy-notification-ready.png)
 
-## <a name="connect-toojenkins"></a>Připojit tooJenkins
+## <a name="connect-to-jenkins"></a>Připojení k Jenkinsu
 
-Tooyour virtuálního počítače (například http://jenkins2517454.eastus.cloudapp.azure.com/) přejděte v prohlížeči. Hello volaných konzoly je nedostupné přes nezabezpečený HTTP, takže pokyny jsou k dispozici na konzole volaných hello stránky tooaccess hello bezpečně z počítače pomocí tunelového propojení SSH.
+Ve webovém prohlížeči přejděte ke svému virtuálnímu počítači (například http://jenkins2517454.eastus.cloudapp.azure.com/). Konzola Jenkinse není přístupná přes nezabezpečený protokol HTTP, proto se na stránce zobrazí pokyny pro zabezpečený přístup ke konzole Jenkinse z vašeho počítače pomocí tunelu SSH.
 
 ![Odemknutí Jenkinse](./media/install-jenkins-solution-template/jenkins-ssh-instructions.png)
 
-Nastavit hello tunelové propojení prostřednictvím hello `ssh` příkaz na stránce hello z příkazového řádku hello, nahraďte `username` s názvem hello předtím vybrali při nastavování hello virtuálního počítače ze šablony řešení hello uživatel s oprávněními správce hello virtuálního počítače.
+Nastavte tunel z příkazového řádku s použitím příkazu `ssh` uvedeného na stránce, ve kterém nahradíte `username` názvem uživatele s právy pro správu virtuálního počítače, který jste zvolili dříve při nastavování virtuálního počítače ze šablony řešení.
 
 ```bash
 ssh -L 127.0.0.1:8080:localhost:8080 jenkinsadmin@jenkins2517454.eastus.cloudapp.azure.com
 ```
 
-Po spuštění hello tunel přejděte toohttp://localhost:8080 / na místním počítači. 
+Po spuštění tunelu přejděte na místním počítači na adresu http://localhost:8080/. 
 
-Získáte hello počátečního hesla tak, že spustíte následující příkaz na příkazovém řádku hello během připojení prostřednictvím SSH toohello volaných VM hello.
+Získejte počáteční heslo spuštěním následujícího příkazu v příkazovém řádku, zatímco jste připojeni k virtuálnímu počítači s Jenkinsem prostřednictvím SSH.
 
 ```bash
 `sudo cat /var/lib/jenkins/secrets/initialAdminPassword`.
 ```
 
-Odemkněte hello volaných řídicím panelu hello první přihlášení pomocí toto počáteční heslo.
+Pomocí tohoto počátečního hesla poprvé odemkněte řídicí panel Jenkinse.
 
 ![Odemknutí Jenkinse](./media/install-jenkins-solution-template/jenkins-unlock.png)
 
-Vyberte **nainstalovat navrhované modulů plug-in** na hello další stránky a pak vytvořit řídicí panel volaných správce uživatele použít tooaccess hello volaných.
+Na další stránce vyberte **Install suggested plugins** (Nainstalovat doporučené moduly plug-in) a pak vytvořte uživatele s právy pro správu Jenkinse, který bude sloužit pro přístup k řídicímu panelu Jenkinse.
 
 ![Jenkins je připraven!](./media/install-jenkins-solution-template/jenkins-welcome.png)
 
-Hello volaných server je nyní připraven toobuild kódu.
+Server Jenkins je teď připravený sestavovat kód.
 
 ## <a name="create-your-first-job"></a>Vytvoření první úlohy
 
-Vyberte **vytvoření nové úlohy** hello volaných konzoly, pojmenujte ji **mySampleApp** a vyberte **volný styl projektu**, pak vyberte **OK**.
+V konzole Jenkinse vyberte **Create new jobs** (Vytvořit nové úlohy), zadejte název **mySampleApp**, vyberte **Freestyle project** (Volný projekt) a pak vyberte **OK**.
 
 ![Vytvoření nové úlohy](./media/install-jenkins-solution-template/jenkins-new-job.png) 
 
-Vyberte hello **správu zdrojového kódu** kartě, povolte **Git**a zadejte následující adresu URL v hello **adresu URL úložiště** pole:`https://github.com/spring-guides/gs-spring-boot.git`
+Vyberte kartu **Source Code Management** (Správa zdrojového kódu), povolte **Git** a do pole **Repository URL** (Adresa URL úložiště) zadejte následující adresu URL: `https://github.com/spring-guides/gs-spring-boot.git`.
 
-![Definování hello úložiště Git](./media/install-jenkins-solution-template/jenkins-job-git-configuration.png) 
+![Definování úložiště Git](./media/install-jenkins-solution-template/jenkins-job-git-configuration.png) 
 
-Vyberte hello **sestavení** a potom vyberte **přidat krok sestavení**, **Gradle vyvolání skriptu**. Vyberte **Use Gradle Wrapper** (Použít obálku Gradle) a pak zadejte `complete` do pole **Wrapper location** (Umístění obálky) a `build` do pole **Tasks** (Úlohy).
+Vyberte kartu **Build** (Sestavení) a pak vyberte **Add build step** (Přidat krok sestavení) a **Invoke Gradle script** (Vyvolání skriptu Gradle). Vyberte **Use Gradle Wrapper** (Použít obálku Gradle) a pak zadejte `complete` do pole **Wrapper location** (Umístění obálky) a `build` do pole **Tasks** (Úlohy).
 
-![Použít toobuild obálku Gradle hello](./media/install-jenkins-solution-template/jenkins-job-gradle-config.png) 
+![Použití obálky Gradle k sestavení](./media/install-jenkins-solution-template/jenkins-job-gradle-config.png) 
 
-Vyberte **Advanced...** (Upřesnit...) a pak zadejte `complete` v hello **kořenové sestavit skript** pole. Vyberte **Uložit**.
+Vyberte **Advanced...** (Upřesnit...) a pak zadejte `complete` do pole **Root Build script** (Kořenový skript sestavení). Vyberte **Uložit**.
 
-![Pokročilé nastavení v kroku sestavení obálku Gradle hello](./media/install-jenkins-solution-template/jenkins-job-gradle-advances.png) 
+![Nastavení upřesňujících nastavení v kroku sestavení obálky Gradle](./media/install-jenkins-solution-template/jenkins-job-gradle-advances.png) 
 
-## <a name="build-hello-code"></a>Sestavení hello kódu
+## <a name="build-the-code"></a>Sestavení kódu
 
-Vyberte **sestavení teď** toocompile hello kód a balíček hello ukázkovou aplikaci. Pokud vaše sestavení se dokončí, vyberte hello **prostoru** propojení projektu hello.
+Vyberte **Build Now** (Sestavit). Kód se zkompiluje a ukázková aplikace se zabalí do balíčku. Po dokončení sestavení vyberte odkaz **Workspace** (Pracovní prostor) pro projekt.
 
-![Vyhledejte soubor JAR toohello prostoru tooget hello ze sestavení hello](./media/install-jenkins-solution-template/jenkins-access-workspace.png) 
+![Přechod do pracovního prostoru a získání souboru JAR ze sestavení](./media/install-jenkins-solution-template/jenkins-access-workspace.png) 
 
-Přejděte příliš`complete/build/libs` a ujistěte se, hello `gs-spring-boot-0.1.0.jar` je k dispozici tooverify úspěšného buildu. Vaše volaných, které server je nyní připraveni toobuild vašich vlastních projektů v Azure.
+Přejděte do umístění `complete/build/libs` a ujistěte se, že je tam soubor `gs-spring-boot-0.1.0.jar`, abyste ověřili, že sestavení proběhlo úspěšně. Váš server Jenkins je teď připravený k sestavování vašich vlastních projektů v Azure.
 
 ## <a name="next-steps"></a>Další kroky
 

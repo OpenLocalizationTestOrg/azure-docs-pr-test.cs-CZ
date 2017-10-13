@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure Push bohaté centra oznámení"
-description: "Zjistěte, jak toosend bohaté nabízená oznámení aplikace iOS tooan z Azure. Ukázky kódu jsou vytvořeny v Objective-C a C#."
+title: "Azure Notification Hubs bohaté Push"
+description: "Naučte se odesílání bohaté nabízených oznámení do aplikace pro iOS z Azure. Ukázky kódu jsou vytvořeny v Objective-C a C#."
 documentationcenter: ios
 services: notification-hubs
 author: ysxu
@@ -14,15 +14,15 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: 5432d8bf47777371bea3521a0c0176ade75fbd9a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 394efdc2dfaff0666bc23d8a448b0a00d414da99
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs bohaté Push
 ## <a name="overview"></a>Přehled
-V pořadí tooengage uživatelům s rychlých bohaté obsah může být vhodné aplikace toopush nad rámec prostý text. Tato oznámení zvýšit úroveň, akce uživatelů a existuje obsah, jako jsou adresy URL, zvuky, Image nebo kupóny a další. V tomto kurzu vychází hello [upozornění uživatelů](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) tématu a ukazuje, jak toosend nabízená oznámení, které jsou částí (například obrázek).
+Chcete-li zapojení uživatelů rychlých bohaté obsah, aplikace chtít nabízet nad rámec prostý text. Tato oznámení zvýšit úroveň, akce uživatelů a existuje obsah, jako jsou adresy URL, zvuky, Image nebo kupóny a další. V tomto kurzu vychází [upozornění uživatelů](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) tématu a ukazuje, jak odesílat nabízená oznámení, které jsou částí (například obrázek).
 
 V tomto kurzu je kompatibilní s iOS 7 a 8.
 
@@ -30,28 +30,28 @@ V tomto kurzu je kompatibilní s iOS 7 a 8.
 
 Na vysoké úrovni:
 
-1. back-end aplikace Hello:
-   * Úložiště hello bohaté datová část (v tomto případě obrázek) v úložišti databáze nebo místní hello back-end
-   * Odešle ID tohoto zařízení toohello bohaté oznámení
-2. Aplikace na zařízení hello:
-   * Kontakty hello požaduje hello bohaté datovou část s ID hello obdrží back-end
-   * Při načítání dat je dokončena a ukazuje datovou část hello okamžitě, když uživatel klepnutím na další toolearn odešle oznámení uživatelům na zařízení hello
+1. Back-end aplikace:
+   * Ukládá bohaté datová část (v tomto případě obrázek) v úložišti databáze nebo místní back-end
+   * Odešle ID tohoto bohaté oznámení do zařízení.
+2. Aplikace na zařízení:
+   * Kontaktuje back-end vyžaduje bohaté datovou část s ID obdrží
+   * Odešle oznámení uživatelům na zařízení po načtení dat dokončení a zobrazuje datové části okamžitě, když uživatel klepnutím na další informace
 
 ## <a name="webapi-project"></a>WebAPI projektu
-1. V sadě Visual Studio otevřete hello **AppBackend** projekt, který jste vytvořili v hello [upozornění uživatelů](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) kurzu.
-2. Získat bitovou kopii chcete vytvořit toonotify uživatelů s a vložte ho **img** složky v adresáři projektu.
-3. Klikněte na tlačítko **zobrazit všechny soubory** v hello Průzkumníku řešení a klikněte pravým tlačítkem na složku hello příliš**zahrnout do projektu**.
-4. Vybraná Image hello, změnit jeho akce sestavení v okně Vlastnosti příliš**vložený prostředek**.
+1. V sadě Visual Studio, otevřete **AppBackend** projekt, který jste vytvořili v [upozornění uživatelů](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) kurzu.
+2. Získat image, kterou chcete upozornit uživatele a umístí jej **img** složky v adresáři projektu.
+3. Klikněte na tlačítko **zobrazit všechny soubory** v Průzkumníku řešení klikněte pravým tlačítkem složku pro **zahrnout do projektu**.
+4. Vybraná Image, změnit jeho akce sestavení v okně Vlastnosti a **vložený prostředek**.
    
     ![][IOS2]
-5. V **Notifications.cs**, přidejte hello následující příkaz using:
+5. V **Notifications.cs**, přidejte následující příkaz using:
    
         using System.Reflection;
-6. Aktualizace hello celou **oznámení** se hello následující kód. Být jisti tooreplace zástupné symboly hello s oznámení centra pověření a název souboru obrázku.
+6. Aktualizovat celek **oznámení** třídy následujícím kódem. Ujistěte se, že nahraďte zástupné symboly vaše přihlašovací údaje centra oznámení a název souboru obrázku.
    
         public class Notification {
             public int Id { get; set; }
-            // Initial notification message toodisplay toousers
+            // Initial notification message to display to users
             public string Message { get; set; }
             // Type of rich payload (developer-defined)
             public string RichType { get; set; }
@@ -67,7 +67,7 @@ Na vysoké úrovni:
             public NotificationHubClient Hub { get; set; }
    
             private Notifications() {
-                // Placeholders: replace with hello connection string (with full access) for your notification hub and hello hub name from hello Azure Classics Portal
+                // Placeholders: replace with the connection string (with full access) for your notification hub and the hub name from the Azure Classics Portal
                 Hub = NotificationHubClient.CreateClientFromConnectionString("{conn string with full access}",  "{hub name}");
             }
    
@@ -93,10 +93,10 @@ Na vysoké úrovni:
         }
    
    > [!NOTE]
-   > (volitelné) Odkazovat příliš[jak tooembed a přístup k prostředkům pomocí Visual C#](http://support.microsoft.com/kb/319292) Další informace o tom, tooadd a získat prostředky projektu.
+   > (volitelné) Odkazovat na [postup vložení a přístup k prostředkům pomocí Visual C#](http://support.microsoft.com/kb/319292) Další informace o tom, jak přidat a získat prostředky projektu.
    > 
    > 
-7. V **NotificationsController.cs**, znovu definovat **NotificationsController** s hello následující fragmenty kódu. To odešle toodevice id počáteční tichou bohaté oznámení a umožňuje klienta načtení obrázku:
+7. V **NotificationsController.cs**, znovu definovat **NotificationsController** s následující fragmenty kódu. To odešle počáteční tichou bohaté oznámení id zařízení a umožňuje načítání klientské bitové kopie:
    
         // Return http response with image binary
         public HttpResponseMessage Get(int id) {
@@ -110,9 +110,9 @@ Na vysoké úrovni:
             return result;
         }
    
-        // Create rich notification and send initial silent notification (containing id) tooclient
+        // Create rich notification and send initial silent notification (containing id) to client
         public async Task<HttpResponseMessage> Post() {
-            // Replace hello placeholder with image file name
+            // Replace the placeholder with image file name
             var richNotificationInTheBackend = Notifications.Instance.CreateNotification("Check this image out!", "img",  "{logo.png}");
    
             var usernameTag = "username:" + HttpContext.Current.User.Identity.Name;
@@ -120,41 +120,41 @@ Na vysoké úrovni:
             // Silent notification with content available
             var aboutUser = "{\"aps\": {\"content-available\": 1, \"sound\":\"\"}, \"richId\": \"" + richNotificationInTheBackend.Id.ToString() + "\",  \"richMessage\": \"" + richNotificationInTheBackend.Message + "\", \"richType\": \"" + richNotificationInTheBackend.RichType + "\"}";
    
-            // Send notification tooapns
+            // Send notification to apns
             await Notifications.Instance.Hub.SendAppleNativeNotificationAsync(aboutUser, usernameTag);
    
             return Request.CreateResponse(HttpStatusCode.OK);
         }
-8. Nyní nasadíme znovu tuto aplikaci tooan webu Azure v pořadí toomake je přístupná ze všech zařízení. Klikněte pravým tlačítkem na hello **AppBackend** projektu a vyberte **publikovat**.
-9. Vyberte web Azure jako váš cíl publikování. Přihlaste se pomocí účtu Azure a vyberte stávajícího nebo nového webu a poznamenejte si hello **cílová adresa URL** vlastnost hello **připojení** kartě. Označujeme toothis adresu URL jako vaše *koncový bod back-end* dál v tomto kurzu. Klikněte na **Publikovat**.
+8. Nyní jsme bude znovu nasaďte tuto aplikaci na web Azure aby přístupná ze všech zařízení. Klikněte pravým tlačítkem na projekt **AppBackend** a vyberte **Publikovat**.
+9. Vyberte web Azure jako váš cíl publikování. Přihlaste se pomocí účtu Azure a vyberte stávajícího nebo nového webu a poznamenejte si **cílová adresa URL** vlastnost **připojení** kartě. Na tuto adresu URL budeme odkazovat jako na *koncový bod back-endu* později v tomto kurzu. Klikněte na **Publikovat**.
 
-## <a name="modify-hello-ios-project"></a>Upravit projektu iOS hello
-Teď, když jste změnili jenom hello vaší aplikace back-end toosend *id* oznámení, změníte toto id vaší toohandle aplikace iOS a načíst hello bohaté zprávy z vaší back-end.
+## <a name="modify-the-ios-project"></a>Upravit projekt pro iOS
+Teď, když jste změnili váš back-end aplikace k odesílání jen na *id* oznámení, se změní aplikace pro iOS k zpracování toto id a načtení bohaté zprávy z vaší back-end.
 
-1. Otevřete projekt iOS a povolte vzdálené oznámení tak, že budete cíl tooyour hlavní aplikace v hello **cíle** části.
-2. Klikněte na **možnosti**, zapnout **režimy pozadí**a zkontrolujte hello **vzdáleného oznámení** zaškrtávací políčko.
+1. Otevřete projekt iOS a povolit vzdálenou oznámení tak, že přejdete do cílových hlavní aplikace v **cíle** části.
+2. Klikněte na **možnosti**, zapnout **režimy pozadí**a zkontrolujte **vzdáleného oznámení** zaškrtávací políčko.
    
     ![][IOS3]
-3. Přejděte příliš**Main.storyboard**a zajistěte, aby byla řadič zobrazení (tooas zmíněných Domů řadiče zobrazení v tomto kurzu) z [upozornit uživatele](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) kurzu.
-4. Přidat **navigační řadič** tooyour scénáře a Ctrl táhnout toomake View Controller tooHome ho hello **kořenový zobrazení** navigace. Ujistěte se, zda text hello **je počáteční View Controller** v atributech inspector je vybraná jenom hello navigační řadiče.
-5. Přidat **View Controller** toostoryboard a přidejte **Image zobrazení**. Toto je stránka hello, se zobrazí uživatelům, jakmile toolearn vybírá informace kliknutím na hello notifiication. Vaše scénáře by měla vypadat takto:
+3. Přejděte na **Main.storyboard**a zajistěte, aby byla řadič zobrazení (uvedená jako Domů řadiče zobrazení v tomto kurzu) z [upozornit uživatele](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) kurzu.
+4. Přidat **navigační řadič** scénáře a přetáhněte ovládací prvek na Domů zobrazení kontroler, aby bylo **kořenový zobrazení** navigace. Zajistěte, aby **je počáteční View Controller** v atributech inspector je vybraná řadičem navigace.
+5. Přidat **View Controller** scénáře a přidat **Image zobrazení**. Toto je stránka, kterou uživatelé uvidí, když se rozhodnete další informace kliknutím na notifiication. Vaše scénáře by měla vypadat takto:
    
     ![][IOS4]
-6. Klikněte na hello **Domů View Controller** scénáře a ujistěte se, že má **homeViewController** jako jeho **vlastní třída** a **Storyboard ID**pod hello Identity inspector.
-7. Hello stejné pro bitovou kopii řadiče zobrazení jako **imageViewController**.
-8. Pak vytvořte novou třídu řadiče zobrazení s názvem **imageViewController** toohandle hello uživatelského rozhraní, kterou jste právě vytvořili.
-9. V **imageViewController.h**, přidejte následující deklarace rozhraní toohello řadiče hello. Ujistěte se, že toocontrol přetažení z hello storyboard image zobrazení toothese vlastnosti toolink hello dva:
+6. Klikněte na **Domů View Controller** scénáře a ujistěte se, že má **homeViewController** jako jeho **vlastní třída** a **Storyboard ID**pod Identity inspector.
+7. Totéž proveďte pro bitovou kopii řadiče zobrazení jako **imageViewController**.
+8. Pak vytvořte novou třídu řadiče zobrazení s názvem **imageViewController** pro zpracování uživatelského rozhraní, kterou jste právě vytvořili.
+9. V **imageViewController.h**, přidejte následující deklarace rozhraní kontroleru. Nezapomeňte řízení přetažení z bitové kopie zobrazení scénáře pro tyto vlastnosti k propojení dvou:
    
         @property (weak, nonatomic) IBOutlet UIImageView *myImage;
         @property (strong) UIImage* imagePayload;
-10. V **imageViewController.m**, přidejte následující hello na konci hello **viewDidload**:
+10. V **imageViewController.m**, přidejte následující na konci **viewDidload**:
     
-        // Display hello UI Image in UI Image View
+        // Display the UI Image in UI Image View
         [self.myImage setImage:self.imagePayload];
-11. V **AppDelegate.m**, import hello image řadiče jste vytvořili:
+11. V **AppDelegate.m**, import řadičem bitové kopie, který jste vytvořili:
     
         #import "imageViewController.h"
-12. Přidáte oddíl, který rozhraní s hello následující prohlášení:
+12. Přidáte oddíl rozhraní s následující prohlášení:
     
         @interface AppDelegate ()
     
@@ -165,7 +165,7 @@ Teď, když jste změnili jenom hello vaší aplikace back-end toosend *id* ozn�
         // Obtain content from backend with notification id
         - (void)retrieveRichImageWithId:(int)richId completion: (void(^)(NSError*)) completion;
     
-        // Redirect tooImage View Controller after notification interaction
+        // Redirect to Image View Controller after notification interaction
         - (void)redirectToImageViewWithImage: (UIImage *)img;
     
         @end
@@ -211,14 +211,14 @@ Teď, když jste změnili jenom hello vaší aplikace back-end toosend *id* ozn�
 
         return YES;
 
-1. Nahraďte v hello následující implementace pro **aplikace: didRegisterForRemoteNotificationsWithDeviceToken** tootake hello storyboard uživatelského rozhraní se změní v úvahu:
+1. Nahraďte následující implementace pro **aplikace: didRegisterForRemoteNotificationsWithDeviceToken** provést storyboard uživatelského rozhraní se změní v úvahu:
    
-       // Access navigation controller which is at hello root of window
+       // Access navigation controller which is at the root of window
        UINavigationController *nc = (UINavigationController *)self.window.rootViewController;
        // Get home view controller from stack on navigation controller
        homeViewController *hvc = (homeViewController *)[nc.viewControllers objectAtIndex:0];
        hvc.deviceToken = deviceToken;
-2. Pak přidejte následující metody příliš hello**AppDelegate.m** tooretrieve hello bitovou kopii z váš koncový bod a odesílání místní oznámení po dokončení načítání. Ujistěte se, že zástupný symbol hello toosubstitute `{backend endpoint}` s back-end koncový bod:
+2. Pak přidejte následující metody, které **AppDelegate.m** načíst obrázek z váš koncový bod a odesílat místního oznámení po dokončení načítání. Ujistěte se, zda jste nahraďte zástupný symbol `{backend endpoint}` s back-end koncový bod:
    
        NSString *const GetNotificationEndpoint = @"{backend endpoint}/api/notifications";
    
@@ -245,7 +245,7 @@ Teď, když jste změnili jenom hello vaší aplikace back-end toosend *id* ozn�
    
                NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*) response;
                if (!error && httpResponse.statusCode == 200) {
-                   // From NSData tooUIImage
+                   // From NSData to UIImage
                    self.imagePayload = [UIImage imageWithData:data];
    
                    completion(nil);
@@ -275,7 +275,7 @@ Teď, když jste změnili jenom hello vaší aplikace back-end toosend *id* ozn�
                        // Send local notification
                        UILocalNotification* localNotification = [[UILocalNotification alloc] init];
    
-                       // "5" is arbitrary here toogive you enough time tooquit out of hello app and receive push notifications
+                       // "5" is arbitrary here to give you enough time to quit out of the app and receive push notifications
                        localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:5];
                        localNotification.userInfo = self.userInfo;
                        localNotification.alertBody = [self.userInfo objectForKey:@"richMessage"];
@@ -295,17 +295,17 @@ Teď, když jste změnili jenom hello vaší aplikace back-end toosend *id* ozn�
                    }
                }];
            }
-           // Add "else if" here toohandle more types of rich content such as url, sound files, etc.
+           // Add "else if" here to handle more types of rich content such as url, sound files, etc.
        }
-3. Zpracování hello místního oznámení nad otevřením řadiče zobrazení hello bitové kopie v **AppDelegate.m** s hello následující metody:
+3. Zpracování místního oznámení nad otevřením řadiče zobrazení bitové kopie v **AppDelegate.m** pomocí následujících metod:
    
-       // Helper: redirect users tooimage view controller
+       // Helper: redirect users to image view controller
        - (void)redirectToImageViewWithImage: (UIImage *)img {
            UINavigationController *navigationController = (UINavigationController*) self.window.rootViewController;
            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
                                                                     bundle: nil];
            imageViewController *imgViewController = [mainStoryboard instantiateViewControllerWithIdentifier: @"imageViewController"];
-           // Pass data/image tooimage view controller
+           // Pass data/image to image view controller
            imgViewController.imagePayload = img;
    
            // Redirect
@@ -333,7 +333,7 @@ Teď, když jste změnili jenom hello vaší aplikace back-end toosend *id* ozn�
            {
                [self redirectToImageViewWithImage:self.imagePayload];
            }
-           // Add "else if" here toohandle more buttons
+           // Add "else if" here to handle more buttons
        }
    
        // Handle notification setting actions in iOS8
@@ -345,11 +345,11 @@ Teď, když jste změnili jenom hello vaší aplikace back-end toosend *id* ozn�
            completionHandler();
        }
 
-## <a name="run-hello-application"></a>Spustit hello aplikace
-1. V XCode spusťte aplikaci hello na fyzickém zařízení iOS (nabízených oznámení nebude fungovat v simulátoru hello).
-2. V aplikaci pro iOS hello uživatelského rozhraní, zadejte uživatelské jméno a heslo hello stejné hodnoty pro ověřování a klikněte na tlačítko **protokolu v**.
-3. Klikněte na tlačítko **odeslat nabízené** a měli byste vidět výstrahu v aplikaci. Pokud kliknete na **Další**, bude možné přepnout do toohello image, které jste zvolili tooinclude v back-end aplikace.
-4. Můžete také kliknout na **odeslat nabízené** a okamžitě stiskněte tlačítko Domů hello vašeho zařízení. Ve chvíli obdržíte nabízená oznámení. Klepněte na něm nebo klikněte na tlačítko Další, bude začlenění obsahu tooyour aplikace a hello bohaté bitové kopie.
+## <a name="run-the-application"></a>Spuštění aplikace
+1. V XCode spusťte aplikaci na fyzickém zařízení iOS (nabízených oznámení nebude fungovat v simulátoru).
+2. V aplikaci pro iOS uživatelského rozhraní, zadejte uživatelské jméno a heslo na stejnou hodnotu pro ověřování a klikněte na tlačítko **protokolu v**.
+3. Klikněte na tlačítko **odeslat nabízené** a měli byste vidět výstrahu v aplikaci. Pokud kliknete na **Další**, je přesměrován zpět na bitovou kopii jste zvolili pro zahrnutí do back-end aplikace.
+4. Můžete také kliknout na **odeslat nabízené** a okamžitě stiskněte tlačítko Domů vašeho zařízení. Ve chvíli obdržíte nabízená oznámení. Pokud klepněte na něm nebo klikněte na tlačítko Další, můžete uvede do vaší aplikace a obsah bohaté image.
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-1.png
 [IOS2]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-2.png

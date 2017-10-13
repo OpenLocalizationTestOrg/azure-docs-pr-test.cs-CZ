@@ -1,6 +1,6 @@
 ---
-title: "aaaUse mongoimport a mongorestore s hello rozhraní API služby Azure Cosmos DB pro MongoDB | Microsoft Docs"
-description: "Zjistěte, jak toouse mongoimport a mongorestore tooimport data tooan rozhraní API pro MongoDB účet"
+title: "Použít mongoimport a mongorestore s rozhraním API pro Azure Cosmos DB pro MongoDB | Microsoft Docs"
+description: "Další informace o použití mongoimport a mongorestore pro import dat do rozhraní API pro MongoDB účet"
 keywords: mongoimport mongorestore
 services: cosmos-db
 author: AndrewHoh
@@ -16,22 +16,22 @@ ms.topic: article
 ms.date: 06/12/2017
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: 921354bc7b09a076a73e0cbf5e4aabcc9e83d5a8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1555f13c3ea88b61be0ea240b51218b83f6f9724
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-cosmos-db-import-mongodb-data"></a>Azure Cosmos DB: Data pro Import MongoDB 
 
-toomigrate data z MongoDB tooan účet Azure Cosmos DB pro použití s hello rozhraní API pro MongoDB, musíte:
+Chcete-li migrovat data z MongoDB k účtu Azure Cosmos DB pro použití s rozhraním API pro MongoDB, postupujte takto:
 
-* Stáhněte si buď *mongoimport.exe* nebo *mongorestore.exe* z hello [MongoDB Download Center](https://www.mongodb.com/download-center).
+* Stáhněte si buď *mongoimport.exe* nebo *mongorestore.exe* z [MongoDB stažení softwaru](https://www.mongodb.com/download-center).
 * Získat vaše [rozhraní API pro MongoDB připojovací řetězec](connect-mongodb-account.md).
 
-Pokud importujete data z MongoDB a plán toouse její hello Azure Cosmos DB, měli byste použít hello [nástroj pro migraci dat](import-data.md) tooimport data.
+Pokud importujete data z MongoDB a plánujete používat s Azure Cosmos DB, měli byste použít [nástroj pro migraci dat](import-data.md) k importu dat.
 
-Tento kurz se zabývá hello následující úlohy:
+Tento kurz obsahuje následující úlohy:
 
 > [!div class="checklist"]
 > * Získávání připojovacího řetězce
@@ -40,22 +40,22 @@ Tento kurz se zabývá hello následující úlohy:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Zvýšit propustnost: délka hello migraci dat závisí na množství hello propustnost nastavení pro kolekce. Být, že tooincrease hello propustnost pro větší dat migrace. Po dokončení migrace hello, snížit náklady toosave propustnost hello. Další informace o zvýšení propustnosti v hello [portál Azure](https://portal.azure.com), najdete v části [úrovně výkonu a cenové úrovně v Azure Cosmos DB](performance-levels.md).
+* Zvýšit propustnost: trvání migrace dat závisí na množství propustnost nastavení pro kolekce. Ujistěte se, že zvýšit propustnost pro větší dat migrace. Po dokončení migrace, snížit propustnosti, abyste ušetřili náklady. Další informace o zvýšení propustnosti v [portál Azure](https://portal.azure.com), najdete v části [úrovně výkonu a cenové úrovně v Azure Cosmos DB](performance-levels.md).
 
-* Povolte protokol SSL: Azure Cosmos DB má vysokými nároky na zabezpečení a standardy. Pokud při práci s vaším účtem, být zda tooenable SSL. Zahrnout Hello postupy v hello zbývající části článku hello jak tooenable SSL pro mongoimport a mongorestore.
+* Povolte protokol SSL: Azure Cosmos DB má vysokými nároky na zabezpečení a standardy. Je nutné povolit protokol SSL, pokud při práci s vaším účtem. Postupy ve zbývající části článku zahrnují jak povolit SSL pro mongoimport a mongorestore.
 
 ## <a name="find-your-connection-string-information-host-port-username-and-password"></a>Najít vaše informace o připojovacím řetězci (hostitelů, port, uživatelské jméno a heslo)
 
-1. V hello [portál Azure](https://portal.azure.com), v levém podokně text hello, klikněte na hello **Azure Cosmos DB** položku.
-2. V hello **odběry** podokně, vyberte název účtu.
-3. V hello **připojovací řetězec** okně klikněte na tlačítko **připojovací řetězec**.  
-pravé podokno obsahuje všechny informace hello, je nutné, aby toosuccessfully Hello připojit tooyour účet.
+1. V [portál Azure](https://portal.azure.com), v levém podokně klikněte na tlačítko **Azure Cosmos DB** položku.
+2. V **odběry** podokně, vyberte název účtu.
+3. V **připojovací řetězec** okně klikněte na tlačítko **připojovací řetězec**.  
+V pravém podokně obsahuje všechny informace, které potřebujete k úspěšnému připojení k vašemu účtu.
 
     ![Okno řetězec připojení](./media/mongodb-migrate/ConnectionStringBlade.png)
 
-## <a name="import-data-toohello-api-for-mongodb-by-using-mongoimport"></a>Importovat data toohello rozhraní API pro MongoDB pomocí mongoimport
+## <a name="import-data-to-the-api-for-mongodb-by-using-mongoimport"></a>Import dat do rozhraní API pro MongoDB pomocí mongoimport
 
-tooimport data tooyour Azure Cosmos DB účet, použijte hello následující šablony. Vyplňte *hostitele*, *uživatelské jméno*, a *heslo* hello hodnotami, které jsou specifické tooyour účet.  
+K importu dat do účtu Azure Cosmos DB, použijte následující šablonu. Vyplňte *hostitele*, *uživatelské jméno*, a *heslo* s hodnotami, které jsou specifické pro váš účet.  
 
 Šablona:
 
@@ -65,9 +65,9 @@ Příklad:
 
     mongoimport.exe --host anhoh-host.documents.azure.com:10255 -u anhoh-host -p tkvaVkp4Nnaoirnouenrgisuner2435qwefBH0z256Na24frio34LNQasfaefarfernoimczciqisAXw== --ssl --sslAllowInvalidCertificates --db sampleDB --collection sampleColl --type json --file C:\Users\anhoh\Desktop\*.json
 
-## <a name="import-data-toohello-api-for-mongodb-by-using-mongorestore"></a>Importovat data toohello rozhraní API pro MongoDB pomocí mongorestore
+## <a name="import-data-to-the-api-for-mongodb-by-using-mongorestore"></a>Import dat do rozhraní API pro MongoDB pomocí mongorestore
 
-toorestore data tooyour rozhraní API pro MongoDB účet, použijte následující importu hello tooexecute šablony hello. Vyplňte *hostitele*, *uživatelské jméno*, a *heslo* hello hodnotami, které jsou specifické tooyour účet.
+K obnovení dat do vašeho rozhraní API pro účet MongoDB, použijte následující šablonu provést import. Vyplňte *hostitele*, *uživatelské jméno*, a *heslo* s hodnotami, které jsou specifické pro váš účet.
 
 Šablona:
 
@@ -81,15 +81,15 @@ Příklad:
 
 1. Předem vytvořit a škálovat vaše kolekce:
         
-    * Ve výchozím nastavení zřídí Azure Cosmos DB nové kolekce MongoDB s 1 000 jednotek žádosti (ruština). Před zahájením migrace hello pomocí mongoimport, mongorestore nebo mongomirror, předem vytvořit všechny kolekce z hello [portál Azure](https://portal.azure.com) nebo z MongoDB ovladače a nástroje. Pokud vaše kolekce je větší než 10 GB, ujistěte se, že toocreate [horizontálně dělené/oddíly kolekce](partition-data.md) s klíčem odpovídající horizontálního oddílu.
+    * Ve výchozím nastavení zřídí Azure Cosmos DB nové kolekce MongoDB s 1 000 jednotek žádosti (ruština). Před zahájením migrace pomocí mongoimport, mongorestore nebo mongomirror, předem vytvořit všechny kolekce z [portál Azure](https://portal.azure.com) nebo z MongoDB ovladače a nástroje. Pokud vaše kolekce je větší než 10 GB, nezapomeňte vytvořit [horizontálně dělené/oddíly kolekce](partition-data.md) s klíčem odpovídající horizontálního oddílu.
 
-    * Z hello [portál Azure](https://portal.azure.com), zvýšit propustnost vaší kolekce z 1 000 RUs pro kolekce tvořené jedním oddílem a odpovídající 2500 RUs pro horizontálně dělenou kolekci jenom pro migraci hello. S vyšší propustnost hello můžete vyhnout, omezení a migraci za kratší dobu. S každou hodinu fakturace v Azure Cosmos DB, můžete snížit propustnost hello ihned po hello migrace toosave náklady.
+    * Z [portál Azure](https://portal.azure.com), zvýšit propustnost vaší kolekce z 1 000 RUs pro kolekce tvořené jedním oddílem a odpovídající 2500 RUs pro horizontálně dělenou kolekci jenom pro migraci. S vyšší propustnost můžete vyhnout, omezení a migraci za kratší dobu. S každou hodinu fakturace v Azure Cosmos DB, můžete snížit propustnost ihned po migraci tak, aby ušetřili náklady.
 
-2. Vypočítejte hello přibližnou RU zdarma pro jednotlivý dokument zápisu:
+2. Přibližná RU náklady pro jednotlivý dokument zápis vypočítejte:
 
-    a. Připojte databázi Azure Cosmos DB MongoDB tooyour z hello prostředí MongoDB. Můžete najít pokyny v [připojit MongoDB aplikace tooAzure Cosmos DB](connect-mongodb-account.md).
+    a. Připojení k vaší databázi Azure Cosmos DB MongoDB z prostředí MongoDB. Můžete najít pokyny v [připojit MongoDB aplikace pro Azure Cosmos DB](connect-mongodb-account.md).
     
-    b. Spuštění příkazu insert ukázka pomocí jedné z ukázkových dokumentů z hello MongoDB prostředí:
+    b. Spuštění příkazu insert ukázka pomocí jedné z ukázkových dokumentů z prostředí MongoDB:
     
         ```db.coll.insert({ "playerId": "a067ff", "hashedid": "bb0091", "countryCode": "hk" })```
         
@@ -106,27 +106,27 @@ Příklad:
         }
         ```
         
-    d. Poznamenejte si hello požadavek poplatků.
+    d. Poznamenejte si zdarma požadavku.
     
-3. Určení hello latence z vašeho počítače toohello Azure Cosmos DB cloudové služby:
+3. Určení latence z vašeho počítače ke cloudové službě Azure Cosmos DB:
     
-    a. Zapnutí podrobného protokolování z hello MongoDB prostředí pomocí tohoto příkazu:```setVerboseShell(true)```
+    a. Zapnutí podrobného protokolování z prostředí MongoDB pomocí tohoto příkazu:```setVerboseShell(true)```
     
-    b. Spusťte jednoduchý dotaz na databázi hello: ```db.coll.find().limit(1)```. Zobrazí odpověď podobné následujícímu:
+    b. Spusťte jednoduchý dotaz pro databázi: ```db.coll.find().limit(1)```. Zobrazí odpověď podobné následujícímu:
 
         ```
         Fetched 1 record(s) in 100(ms)
         ```
         
-4. Odeberte hello vložit dokument před tooensure hello migrace, nejsou žádné duplicitní dokumenty. Dokumenty můžete odebrat pomocí tohoto příkazu:```db.coll.remove({})```
+4. Odeberte vloženého dokumentu před migrací zajistit, že neexistují žádné duplicitní dokumenty. Dokumenty můžete odebrat pomocí tohoto příkazu:```db.coll.remove({})```
 
-5. Vypočítat hello přibližnou *batchSize* a *numInsertionWorkers* hodnoty:
+5. Vypočítat přibližnou *batchSize* a *numInsertionWorkers* hodnoty:
 
-    * Pro *batchSize*, celkem hello dělení zřízený RUs podle hello RUs používán z vaší jednotlivý dokument zápisu v kroku 3.
+    * Pro *batchSize*, dělení celkový počet zřízení RUs podle RUs používán z vaší jednotlivý dokument zápisu v kroku 3.
     
-    * Pokud hello vypočítat *batchSize* < = 24, použijte toto číslo jako vaše *batchSize* hodnotu.
+    * Pokud počítaný *batchSize* < = 24, použijte toto číslo jako vaše *batchSize* hodnotu.
     
-    * Pokud hello vypočítat *batchSize* > 24, sada hello *batchSize* too24 hodnotu.
+    * Pokud počítaný *batchSize* > 24, nastavte *batchSize* hodnotu 24.
     
     * Pro *numInsertionWorkers*, použijte tento rovnice: *numInsertionWorkers = (zřízené propustnosti * čekací doby v sekundách) / (velikost dávky * využité RUs pro jeden zápis)*.
         
@@ -140,7 +140,7 @@ Příklad:
     
     *numInsertionWorkers = (10000 RUs x 0,1 s) / (24 × 10 RUs) = 4.1666*
 
-6. Spusťte příkaz hello dokončení migrace:
+6. Spusťte příkaz dokončení migrace:
 
    ```
    mongoimport.exe --host anhoh-mongodb.documents.azure.com:10255 -u anhoh-mongodb -p wzRJCyjtLPNuhm53yTwaefawuiefhbauwebhfuabweifbiauweb2YVdl2ZFNZNv8IU89LqFVm5U0bw== --ssl --sslAllowInvalidCertificates --jsonArray --db dabasename --collection collectionName --file "C:\sample.json" --numInsertionWorkers 4 --batchSize 24
@@ -148,7 +148,7 @@ Příklad:
 
 ## <a name="next-steps"></a>Další kroky
 
-Můžete pokračovat dalším kurzu toohello a zjistěte, jak tooquery MongoDB dat pomocí Azure Cosmos DB. 
+Můžete pokračovat v dalším kurzu a zjistěte, jak dotazovat MongoDB dat pomocí Azure Cosmos DB. 
 
 > [!div class="nextstepaction"]
->[Jak tooquery MongoDB dat?](../cosmos-db/tutorial-query-mongodb.md)
+>[Postup dotazování MongoDB dat?](../cosmos-db/tutorial-query-mongodb.md)

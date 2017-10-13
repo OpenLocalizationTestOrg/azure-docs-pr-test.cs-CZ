@@ -1,6 +1,6 @@
 ---
-title: aaaUse bcp tooload dat do SQL Data Warehouse | Microsoft Docs
-description: "Zjistěte, co je bcp a jak toouse pro scénáře datových skladů."
+title: "Načtení dat do SQL Data Warehouse pomocí nástroje příkazového řádku bcp | Dokumentace Microsoftu"
+description: "Zjistěte, co je bcp a jak tento nástroj používat pro scénáře datových skladů."
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
-ms.openlocfilehash: 09a2980585097644924c71899f9e74fb32fbc26d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7596eac10fdf53380d85128265430ce07b551fe3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="load-data-with-bcp"></a>Načtení dat pomocí bcp
 > [!div class="op_single_selector"]
@@ -30,41 +30,41 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-**[BCP] [ bcp]**  je nástroj příkazového řádku pro hromadné zatížení, který vám umožní toocopy data mezi SQL serverem, datové soubory a SQL Data Warehouse. Pomocí bcp tooimport velkého počtu řádků do tabulek SQL Data Warehouse nebo tooexport data z tabulek SQL serveru do datových souborů. S výjimkou při použití s možností queryout hello BCP žádné znalosti jazyka Transact-SQL.
+**[bcp][bcp]** je nástroj příkazového řádku pro hromadné načítání, který umožňuje kopírovat data mezi SQL Serverem, datovými soubory a SQL Data Warehouse. Pomocí bcp můžete importovat velké počty řádků do tabulek SQL Data Warehouse nebo exportovat data z tabulek SQL Serveru do datových souborů. S výjimkou případu, kdy se nástroj bcp používá s parametrem queryout, nepotřebujete k použití nástroje bcp žádné znalosti jazyka Transact-SQL.
 
-je BCP rychlý a snadný způsob toomove menší sady dat do a z databáze SQL Data Warehouse. Hello přesné množství dat, který se doporučuje tooload/extrahovat přes bcp, bude záviset na vašem síťovém připojení toohello datového centra Azure.  Obecně platí, že pomocí bcp můžete snadno načítat a extrahovat tabulky dimenzí, nedoporučuje se ale používat pro načítání nebo extrahování velkých objemů dat.  Polybase je hello doporučuje nástroj pro načítání a extrahování velkých objemů dat, jako tomu je také vhodnější pro využívání architektuře massively parallel processing hello služby SQL Data Warehouse.
+Nástroj bcp představuje rychlý a snadný způsob, jak přesunout menší datové sady z databáze SQL Data Warehouse nebo do ní. Přesné množství dat, který se doporučuje načítat/extrahovat přes bcp, bude záviset na vašem síťovém připojení k datovému centru Azure.  Obecně platí, že pomocí bcp můžete snadno načítat a extrahovat tabulky dimenzí, nedoporučuje se ale používat pro načítání nebo extrahování velkých objemů dat.  Doporučeným nástrojem pro načítání a extrahování velkých objemů dat je nástroj Polybase, který je také vhodnější pro využívání architektury MPP (Massively Parallel Processing) SQL Data Warehouse.
 
 Pomocí nástroje bcp můžete:
 
-* Pomocí jednoduchého nástroje příkazového řádku tooload dat do SQL Data Warehouse.
-* Pomocí jednoduchého nástroje příkazového řádku tooextract dat z SQL Data Warehouse.
+* Načítat data do SQL Data Warehouse pomocí jednoduchého nástroje příkazového řádku
+* Extrahovat data z SQL Data Warehouse pomocí jednoduchého nástroje příkazového řádku
 
 V tomto kurzu se dozvíte, jak:
 
-* Import dat do tabulky pomocí příkazu hello bcp
-* Exportovat data z tabulky pomocí hello příkazu bcp out
+* Importovat data do tabulky pomocí příkazu bcp in
+* Exportovat data z tabulky pomocí příkazu bcp out
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Loading-data-into-Azure-SQL-Data-Warehouse-with-BCP/player]
 > 
 > 
 
 ## <a name="prerequisites"></a>Požadavky
-toostep prostřednictvím tohoto kurzu potřebujete:
+Pro jednotlivé kroky v tomto kurzu budete potřebovat:
 
 * Databázi SQL Data Warehouse
-* nainstalovaný nástroj příkazového řádku bcp Hello
-* Hello nainstalovaný nástroj příkazového řádku SQLCMD
+* Nainstalovaný nástroj příkazového řádku bcp
+* Nainstalovaný nástroj příkazového řádku SQLCMD
 
 > [!NOTE]
-> Hello nástroje bcp a sqlcmd si můžete stáhnout z hello [Microsoft Download Center][Microsoft Download Center].
+> Nástroje bcp a sqlcmd si můžete stáhnout z webu [Stažení softwaru společnosti Microsoft][Microsoft Download Center].
 > 
 > 
 
 ## <a name="import-data-into-sql-data-warehouse"></a>Import dat do SQL Data Warehouse
-V tomto kurzu vytvoříte tabulku v Azure SQL Data Warehouse a importovat data do tabulky hello.
+V tomto kurzu vytvoříte tabulku v Azure SQL Data Warehouse a naimportujete do ní data.
 
 ### <a name="step-1-create-a-table-in-azure-sql-data-warehouse"></a>Krok 1: Vytvoření tabulky v Azure SQL Data Warehouse
-Z příkazového řádku použijte hello toorun sqlcmd následující dotaz toocreate tabulku ve vaší instanci:
+Pomocí příkazu sqlcmd na příkazovém řádku spusťte následující dotaz, který vytvoří tabulku ve vaší instanci:
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "
@@ -83,12 +83,12 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 > [!NOTE]
-> V tématu [tabulky přehled] [ Table Overview] nebo [syntaxe CREATE TABLE] [ CREATE TABLE syntax] Další informace o vytváření tabulek v SQL Data Warehouse a hello  Možnosti dostupné v klauzuli WITH hello.
+> Další informace o vytváření tabulek v SQL Data Warehouse a možnostech dostupných v klauzuli WITH viz [Přehled tabulek][Table Overview] nebo [Syntaxe CREATE TABLE][CREATE TABLE syntax].
 > 
 > 
 
 ### <a name="step-2-create-a-source-data-file"></a>Krok 2: Vytvoření zdrojového datového souboru
-Otevřete Poznámkový blok a zkopírujte hello následující řádky dat do nového textového souboru a potom uložte tento soubor tooyour místního dočasného adresáře C:\Temp\DimDate2.txt.
+Otevřete Poznámkový blok a zkopírujte následující řádky dat do nového textového souboru. Pak tento soubor uložte do místního dočasného adresáře C:\Temp\DimDate2.txt.
 
 ```
 20150301,1,3
@@ -106,24 +106,24 @@ Otevřete Poznámkový blok a zkopírujte hello následující řádky dat do no
 ```
 
 > [!NOTE]
-> Je důležité tooremember této bcp.exe nepodporuje kódování souborů UTF-8 hello. Při použití nástroje bcp.exe prosím použijte soubory ASCII nebo UTF-16.
+> Je důležité pamatovat na to, že nástroj bcp.exe nepodporuje kódování souborů UTF-8. Při použití nástroje bcp.exe prosím použijte soubory ASCII nebo UTF-16.
 > 
 > 
 
-### <a name="step-3-connect-and-import-hello-data"></a>Krok 3: Připojení a import dat hello
-Při použití nástroje bcp můžete připojit a import dat hello pomocí následující příkazu nahraďte hello hodnoty podle potřeby hello:
+### <a name="step-3-connect-and-import-the-data"></a>Krok 3: Připojení a import dat
+Při použití nástroje bcp můžete připojit a importovat data pomocí následujícího příkazu (hodnoty podle potřeby nahraďte svými):
 
 ```sql
 bcp DimDate2 in C:\Temp\DimDate2.txt -S <Server Name> -d <Database Name> -U <Username> -P <password> -q -c -t  ','
 ```
 
-Můžete ověřit hello byla data načtena spuštěním následujícího dotazu pomocí sqlcmd hello:
+To, jestli byla data načtena, můžete ověřit spuštěním následujícího dotazu pomocí sqlcmd:
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "SELECT * FROM DimDate2 ORDER BY 1;"
 ```
 
-To by měla vrátit hello následující výsledky:
+Tento dotaz by měl vrátit následující výsledky:
 
 | DateId | CalendarQuarter | FiscalQuarter |
 | --- | --- | --- |
@@ -141,9 +141,9 @@ To by měla vrátit hello následující výsledky:
 | 20151201 |4 |2 |
 
 ### <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>Krok 4: Vytvoření statistiky pro vaše nově načtená data
-Azure SQL Data Warehouse zatím nepodporuje automatické vytváření ani automatickou aktualizaci statistik. V pořadí tooget hello nejlepší výkon ze své dotazy je důležité, aby se statistiky vytvořily pro všechny sloupce všech tabulek po prvním načtením hello nebo dojít k významné změny v datech hello. Podrobné vysvětlení statistiky najdete v tématu hello [statistiky] [ Statistics] tématu ve skupině témat věnovaných vývoji hello. Níže je zběžný příklad jak načíst toocreate statistiku hello sestavily v tomto příkladu
+Azure SQL Data Warehouse zatím nepodporuje automatické vytváření ani automatickou aktualizaci statistik. Aby vám dotazy vracely co nejlepší výsledky, je důležité, aby se statistiky vytvořily pro všechny sloupce všech tabulek po prvním načtením nebo kdykoli, kdy v datech dojde k podstatným změnám. Podrobné vysvětlení statistiky najdete v tématu [Statistika][Statistics] ve skupině témat věnovaných vývoji. Níže je zběžný příklad vytvoření statistik pro tabulku načtenou v tomto příkladě.
 
-Spusťte následující příkazy CREATE STATISTICS z na příkazovém řádku sqlcmd hello:
+Proveďte následující příkazy CREATE STATISTICS na příkazovém řádku sqlcmd:
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "
@@ -154,15 +154,15 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 ## <a name="export-data-from-sql-data-warehouse"></a>Export dat z SQL Data Warehouse
-V tomto kurzu vytvoříte z tabulky v SQL Data Warehouse datový soubor. Bude exportu hello data, která jsme vytvořili výše tooa nového datového souboru s názvem DimDate2_export.txt.
+V tomto kurzu vytvoříte z tabulky v SQL Data Warehouse datový soubor. Data, která jsme vytvořili výše, vyexportujeme do nového datového souboru s názvem DimDate2_export.txt.
 
-### <a name="step-1-export-hello-data"></a>Krok 1: Export dat hello
-Hello nástroj bcp můžete připojit a vyexportovat data pomocí následující příkazu nahraďte hello hodnoty podle potřeby hello:
+### <a name="step-1-export-the-data"></a>Krok 1: Export dat
+Při použití nástroje bcp můžete připojit a vyexportovat data pomocí následujícího příkazu (hodnoty podle potřeby nahraďte svými):
 
 ```sql
 bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name> -U <Username> -P <password> -q -c -t ','
 ```
-Můžete ověřit hello data vyexportovala správně otevřením hello nový soubor. Hello data v souboru hello shodovat následujícím textem hello:
+To, že se data vyexportovala správně, můžete ověřit tak, že nový soubor otevřete. Data v souboru by se měla shodovat následujícím textem:
 
 ```
 20150301,1,3
@@ -180,7 +180,7 @@ Můžete ověřit hello data vyexportovala správně otevřením hello nový sou
 ```
 
 > [!NOTE]
-> Z důvodu toohello povaze distribuovaných systémů nemusí být pořadí dat hello hello stejné napříč databázemi SQL Data Warehouse. Další možností je toouse hello **queryout** funkce bcp toowrite dotazu extrahovat místo vyexportování celé tabulky hello.
+> Vzhledem k povaze distribuovaných systémů nemusí být pořadí dat napříč všemi databázemi SQL Data Warehouse stejné. Další možností je použít funkci **queryout** nástroje bcp, která místo vyexportování celé tabulky umožňuje zapsat extrakci dotazu.
 > 
 > 
 

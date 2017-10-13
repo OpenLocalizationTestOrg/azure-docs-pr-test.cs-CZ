@@ -1,6 +1,6 @@
 ---
-title: aaaWindows obsah Phone Silverlight SDK
-description: "Další informace o obsahu hello hello Windows Phone Silverlight SDK pro Azure Mobile Engagement"
+title: Obsah sady Windows Phone Silverlight SDK
+description: "Další informace o obsahu sady Windows Phone Silverlight SDK pro Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: c39247383d65200493d028a80d444a6e96a697cd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ce323880100706accf0c08c9929d20908c6198cb
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="windows-phone-silverlight-sdk-content"></a>Obsah sady Windows Phone Silverlight SDK
-Tento dokument uvádí a popisuje obsah hello nasadit pomocí hello SDK v aplikaci.
+Tento dokument uvádí a popisuje obsah nasadit pomocí sady SDK v aplikaci.
 
-## <a name="hello-resources-folder"></a>Hello `/Resources` složky
-Tato složka obsahuje všechny hello prostředky, které potřebuje Mobile Engagement. Můžete také upravit je toofit vaší aplikace.
+## <a name="the-resources-folder"></a>`/Resources` Složky
+Tato složka obsahuje všechny prostředky, které potřebuje Mobile Engagement. Můžete také upravit, aby vyhovovaly vaší aplikace.
 
-* `EngagementIconNotification.png`: left ikonu značky hello v hello zobrazí oznámení, nahraďte tento vaší brand ikonou.
-* `EngagementIconOk.png`: hello "Ok" ikonu hello dosáhnout stránky ApplicationBar.
-* `EngagementIconCancel.png`: hello tlačítko Storno"ikona služby hello dosáhnout stránky ApplicationBar.
-* `EngagementIconCloseLight.png`: hello "Zavřít" ikonu hello Mobile Engagement reach oznámení pro motiv světlý hello Windows Phone.
-* `EngagementIconCloseDark.png`: hello "Zavřít" ikonu hello Mobile Engagement reach oznámení pro motiv tmavý hello Windows Phone.
-* `EngagementConfiguration.xml`: hello Mobile Engagement konfigurační soubor, to je, kde můžete upravit nastavení zapojení (Engagement připojovací řetězec, sestava selhání atd).
+* `EngagementIconNotification.png`Ikona: brand zobrazí vlevo od oznámení, nahraďte tento vaší brand ikonou.
+* `EngagementIconOk.png`: "Ok" ikonu rozsah stránky ApplicationBar.
+* `EngagementIconCancel.png`: Rozsah ikonu "Zrušit" stránky ApplicationBar.
+* `EngagementIconCloseLight.png`Mobile Engagement reach oznámení pro Windows Phone: "Zavřít" ikonu světlý motiv.
+* `EngagementIconCloseDark.png`: "Zavřít" ikonu Mobile Engagement reach oznámení pro motiv tmavý Windows Phone.
+* `EngagementConfiguration.xml`Konfigurační soubor: Mobile Engagement, to je, kde můžete upravit nastavení zapojení (Engagement připojovací řetězec, sestava selhání atd).
 

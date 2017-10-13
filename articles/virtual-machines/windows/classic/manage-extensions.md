@@ -1,6 +1,6 @@
 ---
-title: "rozšíření virtuálního počítače založeným na Windows aaaManage | Microsoft Docs"
-description: "Popisuje, jak tooadd, najít, aktualizovat a odstranit rozšíření pro virtuální počítače Azure, v modelu nasazení classic hello."
+title: "Správa rozšíření virtuálního počítače se systémem Windows | Microsoft Docs"
+description: "Popisuje, jak přidat, najít, aktualizovat a odebírat rozšíření pro virtuální počítače Azure, v modelu nasazení classic."
 services: virtual-machines-windows
 documentationcenter: 
 author: squillace
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/29/2016
 ms.author: rasquill
-ms.openlocfilehash: c8619abebb79d48f93e0bc188d69ac132fd65b61
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2bd51d0838dd0bd88beb66a40b4256a85e8dbea1
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="manage-virtual-machine-extensions"></a>Správa rozšíření virtuálního počítače
-Popisuje, jak toofind, přidávat, upravovat nebo odebírat rozšíření virtuálního počítače se systémem Windows, nebo virtuální počítače s Linuxem v Azure.
+Popisuje, jak najít, přidávat, upravovat nebo odebírat rozšíření virtuálního počítače se systémem Windows, nebo virtuální počítače s Linuxem v Azure.
 
 > [!IMPORTANT] 
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic hello. Společnost Microsoft doporučuje, aby většina nových nasazení používala model Resource Manager hello. Informace o rozšíření virtuálního počítače pomocí modelu Resource Manager hello najdete v tématu [zde](../extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Informace o rozšíření virtuálního počítače pomocí modelu Resource Manager najdete v tématu [zde](../extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-classic-manage-extensions](../../../../includes/virtual-machines-common-classic-manage-extensions.md)]
 

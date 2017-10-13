@@ -1,5 +1,5 @@
 ---
-title: "aaaExploring HockeyApp dat ve službě Azure Application Insights | Microsoft Docs"
+title: "Zkoumat HockeyApp data ve službě Azure Application Insights | Microsoft Docs"
 description: "Analýza využití a výkonu vaší aplikace Azure pomocí Application Insights."
 services: application-insights
 documentationcenter: windows
@@ -13,56 +13,56 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: bwren
-ms.openlocfilehash: ed7cf99b48f5ec78d6b401bb954cfcd014b9d1f4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 450ca10613d137393090578619f3766734d1d493
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>Zkoumat HockeyApp data ve službě Application Insights
-[HockeyApp](https://azure.microsoft.com/services/hockeyapp/) doporučuje hello platforma pro monitorování provozu desktop a mobilní aplikace. Z HockeyApp můžete odeslat vlastní a sledování využití telemetrie toomonitor a pomoct s diagnostikou (v přidání data o chybách toogetting). Tento datový proud telemetrie lze dotazovat pomocí hello výkonné [Analytics](app-insights-analytics.md) funkce [Azure Application Insights](app-insights-overview.md). Kromě toho můžete [exportovat vlastní hello a trasování telemetrie](app-insights-export-telemetry.md). tooenable tyto funkce, musíte nastavit mostu, který předává HockeyApp vlastních dat tooApplication statistiky.
+[HockeyApp](https://azure.microsoft.com/services/hockeyapp/) je doporučené platforma pro monitorování provozu desktop a mobilní aplikace. Z HockeyApp můžete odeslat vlastní a trasování telemetrii ke sledování využití a pomoct s diagnostikou (kromě získávání data o chybách). Tento datový proud telemetrie lze dotazovat pomocí výkonného [Analytics](app-insights-analytics.md) funkce [Azure Application Insights](app-insights-overview.md). Kromě toho můžete [exportovat vlastní a trasování telemetrie](app-insights-export-telemetry.md). Chcete-li tyto funkce povolit, nastavte mostu, který předává HockeyApp vlastních dat do služby Application Insights.
 
-## <a name="hello-hockeyapp-bridge-app"></a>aplikace Hello most HockeyApp
-Hello HockeyApp most aplikace je hello základní funkce, která umožňuje tooaccess HockeyApp vlastní a trasování telemetrii ve službě Application Insights prostřednictvím hello analýzy a průběžné Export funkcí. Vlastní a trasování událostí shromážděných za HockeyApp po vytvoření hello hello HockeyApp most aplikace budou přístupné z těchto funkcí. Podívejme se, jak tooset si některé z těchto aplikací most.
+## <a name="the-hockeyapp-bridge-app"></a>HockeyApp most aplikace
+Tato aplikace most HockeyApp je základní funkce, která umožňuje přístup k vašim HockeyApp vlastní a trasování telemetrii ve službě Application Insights prostřednictvím analýzy a průběžné Export funkcí. Vlastní a trasování událostí shromážděných za HockeyApp po vytvoření aplikace most HockeyApp budou přístupné z těchto funkcí. Podíváme se, jak nastavit některé z těchto aplikací most.
 
-V HockeyApp, otevřete nastavení účtu [rozhraní API tokenů](https://rink.hockeyapp.net/manage/auth_tokens). Vytvořit nový token nebo znovu použít existující šablonu. minimální oprávnění Hello vyžaduje, jsou "jen pro čtení". Trvat kopii hello API tokenu.
+V HockeyApp, otevřete nastavení účtu [rozhraní API tokenů](https://rink.hockeyapp.net/manage/auth_tokens). Vytvořit nový token nebo znovu použít existující šablonu. Minimální práva potřebná jsou "jen pro čtení". Trvat kopii rozhraní API tokenu.
 
 ![Získání tokenu rozhraní API HockeyApp](./media/app-insights-hockeyapp-bridge-app/01.png)
 
-Otevřete hello portálu Microsoft Azure a [vytvořte prostředek Application Insights](app-insights-create-new-resource.md). Nastavte typ aplikace příliš "HockeyApp most aplikace":
+Otevřete portál Microsoft Azure a [vytvořte prostředek Application Insights](app-insights-create-new-resource.md). Typ aplikace nastavte na "HockeyApp most aplikace":
 
 ![Nový prostředek Application Insights](./media/app-insights-hockeyapp-bridge-app/02.png)
 
-Nepotřebujete tooset název – automaticky nastaví ho z názvu HockeyApp hello.
+Nemusíte nastavení názvu – to bude možné z názvu HockeyApp automaticky nastavit.
 
-Hello HockeyApp most pole se zobrazí. 
+Zobrazí se pole most HockeyApp. 
 
 ![Zadejte pole most](./media/app-insights-hockeyapp-bridge-app/03.png)
 
-Zadejte hello HockeyApp token, který jste si předtím poznamenali. Tato akce vyplní hello "HockeyApp aplikace" rozevírací nabídku s vašimi aplikacemi HockeyApp. Vyberte hello jeden chcete toouse a dokončení hello zbytek hello pole. 
+Zadejte HockeyApp token, který jste si předtím poznamenali. Tato akce vyplní "HockeyApp aplikace" rozevírací nabídky s vašimi aplikacemi HockeyApp. Vyberte ten, který chcete použít a dokončete polí. 
 
-Otevřete nový prostředek hello. 
+Otevřete nový prostředek. 
 
-Všimněte si, že jeho zpracování chvíli trvá hello dat předávaných toostart.
+Všimněte si, že data trvá dobu spuštění toku.
 
 ![Prostředek Application Insights čekání dat](./media/app-insights-hockeyapp-bridge-app/04.png)
 
-A to je vše! Vlastní a trasování data shromážděná ve vaší aplikaci instrumentovány HockeyApp od tohoto okamžiku je nyní také k dispozici tooyou v hello analýzy a průběžné exportovat funkce Application Insights.
+A to je vše! Vlastní a trasování data shromážděná ve vaší aplikaci instrumentovány HockeyApp od tohoto okamžiku je nyní také k dispozici v analýzy a průběžné Export funkce Application Insights.
 
-Stručně pojďme si shrnout každý z těchto funkcí tooyou nyní k dispozici.
+Stručně pojďme si shrnout každý z těchto funkcí, které jsou nyní k dispozici.
 
 ## <a name="analytics"></a>Analýza
-Analýza je výkonný nástroj pro ad-hoc dotazování dat, což vám toodiagnose a analyzovat telemetrie a rychle zjistit hlavní příčiny a vzory.
+Analytics je výkonný nástroj pro zadávání dotazů ad-hoc vašich dat, který vám umožní diagnostikovat a analyzovat telemetrie a rychle zjistit hlavní příčiny a vzory.
 
 ![Analýza](./media/app-insights-hockeyapp-bridge-app/05.png)
 
 * [Další informace o analýzy](app-insights-analytics-tour.md)
 
 ## <a name="continuous-export"></a>Průběžný export
-Průběžné Export vám umožní tooexport dat do kontejner úložiště objektů Blob Azure. To je užitečné, pokud potřebujete mít tookeep data po dobu delší než doba uchování hello aktuálně nabízená Application Insights. Můžete ponechat hello data v úložišti objektů blob, zpracování do databáze SQL nebo vaše upřednostňované řešení datového skladu.
+Průběžné Export umožňuje exportovat data do kontejner úložiště objektů Blob Azure. To je užitečné, pokud je potřeba uchovávat data po dobu delší než doba uchování aktuálně nabízená Application Insights. Můžete ponechat data v úložišti objektů blob, zpracování do databáze SQL nebo vaše upřednostňované řešení datového skladu.
 
 [Další informace o průběžné Export](app-insights-export-telemetry.md)
 
 ## <a name="next-steps"></a>Další kroky
-* [Použít Analytics tooyour data](app-insights-analytics-tour.md)
+* [Pro data aplikace Analytics](app-insights-analytics-tour.md)
 

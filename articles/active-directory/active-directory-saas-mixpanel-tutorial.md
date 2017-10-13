@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Mixpanel | Microsoft Docs'
-description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a Mixpanel."
+description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Mixpanel."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,109 +13,109 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 8da8aaefee3558c37babe3e10aeba4224ceffa16
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3dd11b3477de1329c1c8e45a6dbf212b1635fd95
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mixpanel"></a>Kurz: Azure Active Directory integrace s Mixpanel
 
-V tomto kurzu zjistíte, jak toointegrate Mixpanel s Azure Active Directory (Azure AD).
+V tomto kurzu zjistěte, jak integrovat Mixpanel s Azure Active Directory (Azure AD).
 
-Integrace Mixpanel s Azure AD poskytuje hello následující výhody:
+Integrace Mixpanel s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup tooMixpanel
-- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooMixpanel (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup k Mixpanel
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k Mixpanel (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Integrace služby Azure AD s Mixpanel tooconfigure, je třeba hello následující položky:
+Konfigurace integrace Azure AD s Mixpanel, potřebujete následující položky:
 
 - Předplatné služby Azure AD
 - Mixpanel jednotné přihlašování povolené předplatné
 
 > [!NOTE]
-> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
+Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Mixpanel z Galerie hello
+1. Přidání Mixpanel z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-mixpanel-from-hello-gallery"></a>Přidání Mixpanel z Galerie hello
-tooconfigure hello integrace Mixpanel do Azure AD, je nutné tooadd Mixpanel hello Galerie tooyour seznamu spravovaných aplikací SaaS.
+## <a name="adding-mixpanel-from-the-gallery"></a>Přidání Mixpanel z Galerie
+Při konfiguraci integrace Mixpanel do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS Mixpanel z galerie.
 
-**tooadd Mixpanel z Galerie hello, proveďte následující kroky hello:**
+**Pokud chcete přidat Mixpanel z galerie, proveďte následující kroky:**
 
-1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
+1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
+2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
 
     ![Aplikace][3]
 
-4. Hello vyhledávacího pole zadejte **Mixpanel**.
+4. Do vyhledávacího pole zadejte **Mixpanel**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_search.png)
 
-5. Na panelu výsledků hello vyberte **Mixpanel**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.
+5. Na panelu výsledků vyberte **Mixpanel**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Mixpanel podle testovacího uživatele názvem "Britta Simon".
 
-Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v Mixpanel je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v Mixpanel musí toobe navázat.
+Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Mixpanel je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Mixpanel musí navázat.
 
-V Mixpanel, přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.
+V Mixpanel, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
 
-tooconfigure a testu Azure AD jednotné přihlašování s Mixpanel, potřebujete následující stavební bloky hello toocomplete:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Mixpanel, je třeba dokončit následující stavební bloky:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Mixpanel](#creating-a-mixpanel-test-user)**  -toohave protějšek Britta Simon v Mixpanel, která je propojená toohello Azure AD reprezentace uživatele.
-4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele Mixpanel](#creating-a-mixpanel-test-user)**  – Pokud chcete mít protějšek Britta Simon v Mixpanel propojeném s Azure AD reprezentace daného uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci Mixpanel.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Mixpanel.
 
-**tooconfigure Azure AD jednotné přihlašování s Mixpanel, proveďte následující kroky hello:**
+**Ke konfiguraci Azure AD jednotné přihlašování s Mixpanel, proveďte následující kroky:**
 
-1. V portálu Azure, na hello hello **Mixpanel** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na portálu Azure na **Mixpanel** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
+2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_samlbase.png)
 
-3. Na hello **Mixpanel domény a adresy URL** část, proveďte následující kroky hello:
+3. Na **Mixpanel domény a adresy URL** část, proveďte následující kroky:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_url.png)
 
-     V hello **přihlašovací adresa URL** textovému poli, zadejte adresu URL jako:`https://mixpanel.com/login/`
+     V **přihlašovací adresa URL** textovému poli, zadejte adresu URL jako:`https://mixpanel.com/login/`
 
     > [!NOTE] 
-    > Zaregistrujte se prosím na [https://mixpanel.com/register/](https://mixpanel.com/register/) tooset přihlašovací údaje a kontaktní hello [tým podpory Mixpanel](mailto:support@mixpanel.com) tooenable nastavení jednotného přihlašování pro vašeho klienta. Hodnota přihlašovací adresa URL můžete také získat v případě potřeby váš tým podpory Mixpanel. 
+    > Zaregistrujte se prosím na [https://mixpanel.com/register/](https://mixpanel.com/register/) nastavit přihlašovací údaje a obraťte se [tým podpory Mixpanel](mailto:support@mixpanel.com) umožňující jednotného přihlašování k nastavení pro vašeho klienta. Hodnota přihlašovací adresa URL můžete také získat v případě potřeby váš tým podpory Mixpanel. 
  
-4. Na hello **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu hello ve vašem počítači.
+4. Na **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu v počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_certificate.png) 
 
@@ -123,100 +123,100 @@ V této části můžete povolit Azure AD jednotné přihlašování v hello por
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-mixpanel-tutorial/tutorial_general_400.png)
 
-6. Na hello **Mixpanel konfigurace** klikněte na tlačítko **konfigurace Mixpanel** tooopen **konfigurovat přihlášení** okno. Kopírování hello **SAML jeden přihlašování adresa URL služby** z hello **Stručná referenční příručka části.**
+6. Na **Mixpanel konfigurace** klikněte na tlačítko **konfigurace Mixpanel** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_configure.png) 
 
-7. V okně jiný prohlížeč, přihlášení tooyour Mixpanel aplikace jako správce.
+7. V okně jiný prohlížeč přihlášení do aplikace Mixpanel jako správce.
 
-8. V dolní části stránky hello, klikněte na tlačítko hello trochu **zařízení** ikonu v levém horním hello. 
+8. V dolní části stránky klikněte na tlačítko málo **zařízení** ikona levém horním rohu. 
    
     ![Mixpanel jednotné přihlášení](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_06.png) 
 
-9. Klikněte na tlačítko hello **zabezpečení přístupu k** a pak klikněte **změnit nastavení**.
+9. Klikněte **zabezpečení přístupu k** a pak klikněte **změnit nastavení**.
    
     ![Nastavení Mixpanel](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_08.png) 
 
-10. Na hello **změnit svůj certifikát** dialogové okno stránky, klikněte na tlačítko **zvolte soubor** tooupload stažený certifikát a pak klikněte na tlačítko **Další**.
+10. Na **změnit svůj certifikát** dialogové okno stránky, klikněte na tlačítko **zvolte soubor** stažený certifikát, a pak klikněte na **Další**.
    
     ![Nastavení Mixpanel](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_09.png) 
 
-11.  V textovém poli Adresa URL ověřování hello na hello **změnit adresu URL ověřování** dialogové okno stránky, vložte hodnotu hello **SAML jeden přihlašování adresa URL služby** který jste zkopírovali z portálu Azure a potom klikněte na **Další**.
+11.  Ověřování adresy URL do textového pole na **změnit adresu URL ověřování** dialogové okno stránky, vložte hodnotu **SAML jeden přihlašování adresa URL služby** který jste zkopírovali z portálu Azure a potom klikněte na **Další**.
    
    ![Nastavení Mixpanel](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_10.png) 
 
 12. Klikněte na **Done** (Hotovo).
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
+Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
+**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
 
-1. V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
+1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-mixpanel-tutorial/create_aaduser_01.png) 
 
-2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-mixpanel-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.
+3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-mixpanel-tutorial/create_aaduser_03.png) 
 
-4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
+4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-mixpanel-tutorial/create_aaduser_04.png) 
 
-    a. V hello **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textovému poli, typ **BrittaSimon**.
 
-    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-a-mixpanel-test-user"></a>Vytvoření zkušebního uživatele Mixpanel
 
-Hello cílem této části je toocreate volal Britta Simon v Mixpanel uživatele. 
+Cílem této části je vytvoření uživatele v Mixpanel nazývá Britta Simon. 
 
-1. Přihlaste se na tooyour Mixpanel společnosti lokality jako správce.
+1. Přihlásit se k serveru vaší společnosti Mixpanel jako správce.
 
-2. Na hello dolní části stránky hello, klikněte na tlačítko málo ozubené kolečko hello rohu tooopen hello hello **nastavení** okno.
+2. V dolní části stránky, klikněte na tlačítko málo ozubené kolečko na levém rohu otevřete **nastavení** okno.
 
-3. Klikněte na tlačítko hello **Team** kartě.
+3. Klikněte **Team** kartě.
 
-4. V hello **člen týmu** textovému poli, zadejte e-mailovou adresu na Britta hello Azure.
+4. V **člen týmu** textovému poli, zadejte na Britta e-mailovou adresu ve službě Azure.
    
     ![Nastavení Mixpanel](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_11.png) 
 
 5. Klikněte na tlačítko **pozvat**. 
 
 > [!Note]
-> Hello uživatel dostane e-mailu tooset hello profil.
+> Uživatel dostane e-mail na vytvoření profilu.
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
+### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte tak, že udělíte přístup tooMixpanel toouse Britta Simon Azure jednotné přihlašování.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Mixpanel.
 
 ![Přiřadit uživatele][200] 
 
-**tooassign Britta Simon tooMixpanel, proveďte následující kroky hello:**
+**Pokud chcete přiřadit Britta Simon Mixpanel, proveďte následující kroky:**
 
-1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikace hello vyberte **Mixpanel**.
+2. V seznamu aplikací vyberte **Mixpanel**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_app.png) 
 
-3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
+3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
@@ -224,7 +224,7 @@ V této části povolíte tak, že udělíte přístup tooMixpanel toouse Britta
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -232,14 +232,14 @@ V této části povolíte tak, že udělíte přístup tooMixpanel toouse Britta
     
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.
+V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
-Když kliknete na dlaždici Mixpanel hello v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour Mixpanel aplikace.
-Další informace o hello přístupového panelu najdete v tématu [toohello Úvod přístupový Panel](active-directory-saas-access-panel-introduction.md).
+Když kliknete na dlaždici Mixpanel na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Mixpanel.
+Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

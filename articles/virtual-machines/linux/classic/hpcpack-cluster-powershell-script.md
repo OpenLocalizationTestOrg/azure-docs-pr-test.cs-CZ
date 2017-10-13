@@ -1,6 +1,6 @@
 ---
-title: skript toodeploy aaaPowerShell clusteru HPC pro Linux | Microsoft Docs
-description: "Spustit cluster Linux HPC Pack 2012 R2 toodeploy skript prostředí PowerShell ve virtuálních počítačích Azure"
+title: "Skript prostředí PowerShell pro nasazení clusteru HPC pro Linux | Microsoft Docs"
+description: "Spusťte skript prostředí PowerShell pro nasazení clusteru Linux HPC Pack 2012 R2 ve virtuálních počítačích Azure"
 services: virtual-machines-linux
 documentationcenter: 
 author: dlepow
@@ -15,25 +15,25 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-ms.openlocfilehash: 885b03fa2fd604827dc388803fc21debab730979
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c15dc66718a855e22f8109448cb8c8a23787b9bf
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="create-a-linux-high-performance-computing-hpc-cluster-with-hello-hpc-pack-iaas-deployment-script"></a>Vytvořte cluster s vysoce výkonné výpočty (HPC) Linux se skript nasazení HPC Pack IaaS hello
-Spusťte hello HPC Pack IaaS nasazení prostředí PowerShell skriptu toodeploy dokončení clusteru HPC Pack 2012 R2 pro Linux zatížení ve virtuálních počítačích Azure. Hello clusteru se skládá z služby Active Directory připojené k hlavnímu uzlu systémem Windows Server a Microsoft HPC Pack a výpočetní uzly, které spusťte jeden z hello distribucí Linux podporované sadou HPC Pack. Pokud chcete, aby toodeploy clusteru služby HPC Pack v úlohy Azure pro Windows, přečtěte si téma [vytvořit cluster Windows HPC s hello skript nasazení HPC Pack IaaS](../../windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Můžete použít také toodeploy šablony Azure Resource Manager clusteru služby HPC Pack. Příklad, naleznete v části [vytvoření clusteru prostředí HPC s Linux výpočetní uzly](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-linux-cn/).
+# <a name="create-a-linux-high-performance-computing-hpc-cluster-with-the-hpc-pack-iaas-deployment-script"></a>Vytvoření systémem Linux vysoce výkonné výpočty (HPC) clusteru pomocí skriptu pro nasazení HPC Pack IaaS
+Spusťte nasazení HPC Pack IaaS skript Powershellu pro nasazení dokončení clusteru HPC Pack 2012 R2 pro Linux zatížení ve virtuálních počítačích Azure. Cluster se skládá z služby Active Directory připojené k hlavnímu uzlu systémem Windows Server a Microsoft HPC Pack a výpočetní uzly, které spusťte jeden z Linuxových distribucích podporována sadou HPC Pack. Pokud chcete nasazení clusteru HPC Pack v úlohách Azure pro Windows, přečtěte si téma [vytvořit cluster Windows HPC pomocí skriptu pro nasazení HPC Pack IaaS](../../windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Šablonu Azure Resource Manager můžete také použít k nasazení clusteru HPC Pack. Příklad, naleznete v části [vytvoření clusteru prostředí HPC s Linux výpočetní uzly](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-linux-cn/).
 
 > [!IMPORTANT] 
-> Hello skript prostředí PowerShell popsaný v tomto článku vytváří cluster s podporou Microsoft HPC Pack 2012 R2 v Azure pomocí modelu nasazení classic hello. Společnost Microsoft doporučuje, aby většina nových nasazení používala model Resource Manager hello.
-> Kromě toho hello skriptu popsaného v tomto článku nepodporuje HPC Pack 2016.
+> Skript prostředí PowerShell popsaný v tomto článku vytváří cluster s podporou Microsoft HPC Pack 2012 R2 v Azure pomocí modelu nasazení classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
+> Kromě toho skriptu popsaného v tomto článku nepodporuje HPC Pack 2016.
 
 [!INCLUDE [virtual-machines-common-classic-hpcpack-cluster-powershell-script](../../../../includes/virtual-machines-common-classic-hpcpack-cluster-powershell-script.md)]
 
 ## <a name="example-configuration-file"></a>Příklad konfiguračního souboru
-Hello následující konfigurační soubor vytvoří řadič domény a doménové struktury domény a nasadí cluster služby HPC Pack, který má jeden hlavního uzlu s místní databází a 10 Linuxových výpočetních uzlů. Všechny hello cloudové služby jsou vytvořené přímo v umístění východní Asie hello. Hello Linux výpočetní uzly jsou vytvořeny ve dvou cloudové služby a dva účty úložiště (tedy *MyLnxCN 0001* k *MyLnxCN 0005* v *MyLnxCNService01* a *mylnxstorage01*, a *MyLnxCN-0006* k *MyLnxCN 0010* v *MyLnxCNService02* a *mylnxstorage02* ). Hello výpočetní uzly jsou vytvořeny z image OpenLogic CentOS Linux verze 7.0. 
+Následující konfigurační soubor vytvoří řadič domény a doménové struktury domény a nasadí cluster služby HPC Pack, který má jeden hlavního uzlu s místní databází a 10 Linuxových výpočetních uzlů. Cloudové služby jsou vytvořené přímo v umístění ve východní Asii. Výpočetní uzly Linux jsou vytvořené v dvě cloudové služby a dva účty úložiště (tedy *MyLnxCN 0001* k *MyLnxCN 0005* v *MyLnxCNService01* a *mylnxstorage01*, a *MyLnxCN-0006* k *MyLnxCN 0010* v *MyLnxCNService02* a *mylnxstorage02* ). Výpočetní uzly jsou vytvořeny z image OpenLogic CentOS Linux verze 7.0. 
 
-Nahraďte vlastními hodnotami pro název odběru a názvy hello účtu a služby.
+Nahraďte vlastními hodnotami pro vaše předplatné jméno a název účtu a služby.
 
 ```Xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -76,15 +76,15 @@ Nahraďte vlastními hodnotami pro název odběru a názvy hello účtu a služb
 </IaaSClusterConfig>
 ```
 ## <a name="troubleshooting"></a>Řešení potíží
-* **Chyba "Virtuální síť neexistuje"**. Pokud spustíte hello HPC Pack IaaS nasazení skriptu toodeploy víc clusterů v Azure souběžně v rámci jednoho předplatného, jeden nebo více nasazení může selhat s chybou hello "virtuální sítě *VNet\_název* neexistuje".
-  Pokud k této chybě dojde, znovu spusťte hello skriptu pro nasazení hello se nezdařilo.
-* **Přístup k problému hello Internetu z hello virtuální síť Azure**. Pokud vytváření clusteru HPC Pack s nový řadič domény pomocí skriptu nasazení hello nebo manuálně povýšit hlavního uzlu řadiče toodomain virtuálních počítačů, může zaznamenat problémy s připojením hello virtuální počítače ve virtuální síti Azure toohello hello Internetu. Tato situace může nastat, pokud na řadiči domény hello je automaticky nakonfigurovaný server DNS pro předávání a tento server DNS pro předávání nepřekládá správně.
+* **Chyba "Virtuální síť neexistuje"**. Pokud spustíte skript nasazení HPC Pack IaaS, který chcete nasadit více clusterů v Azure souběžně v rámci jednoho předplatného, jeden nebo více nasazení může selhat s chybou "virtuální sítě *VNet\_název* neexistuje".
+  Pokud k této chybě dojde, znovu spusťte skript pro neúspěšné nasazení.
+* **Problémy s přístupem k Internetu z virtuální síť Azure**. Pokud vytvoříte clusteru služby HPC Pack s nový řadič domény pomocí skriptu nasazení, nebo manuálně povýšit hlavního uzlu virtuálního počítače pro řadič domény, může zaznamenat problémy s připojením k Internetu virtuální počítače ve virtuální síť Azure. Tato situace může nastat, pokud je automaticky nakonfigurovaný server DNS pro předávání na řadiči domény, a tento server DNS pro předávání nepřekládá správně.
   
-    toowork vyřešit tento problém, přihlaste se na řadič domény toohello a nastavení konfigurace služby pro předávání hello buď odeberte nebo konfigurace serveru DNS platný server pro předávání. toodo, ve Správci serveru klikněte na **nástroje** > **DNS** tooopen Správce DNS a potom dvakrát klikněte na **předávání**.
+    K tomuto problému, přihlaste se k řadiči domény a buď odebrat nastavení konfigurace služby pro předávání nebo konfigurace serveru DNS platný server pro předávání. K tomu, ve Správci serveru klikněte na **nástroje** > **DNS** otevřít Správce DNS, a potom dvakrát klikněte na **předávání**.
 
 ## <a name="next-steps"></a>Další kroky
-* V tématu [začít pracovat s Linux výpočetní uzly v clusteru služby HPC Pack v Azure](hpcpack-cluster.md) informace o podporovaných Linuxových distribucích přesouvání dat a odesílání úloh tooan HPC Pack clusteru s Linuxem výpočetních uzlů.
-* Kurzy, které používají hello skriptu toocreate cluster a spustit úlohy HPC pro Linux najdete v tématu:
+* V tématu [začít pracovat s Linux výpočetní uzly v clusteru služby HPC Pack v Azure](hpcpack-cluster.md) informace o podporovaných Linuxových distribucích přesouvání dat a odesílání úloh do clusteru HPC Pack operačního systému Linux výpočetních uzlů.
+* Kurzy, které pomocí skriptu vytvořte cluster a spustit úlohy Linux HPC najdete v části:
   * [Spuštění NAMD pomocí sady Microsoft HPC Pack v systému Linux výpočetních uzlech v Azure](hpcpack-cluster-namd.md)
   * [Spuštění OpenFOAM pomocí sady Microsoft HPC Pack v systému Linux výpočetních uzlech v Azure](hpcpack-cluster-openfoam.md)
   * [Spustit HVĚZDIČKY – CCM + pomocí sady Microsoft HPC Pack v systému Linux výpočetních uzlech v Azure](hpcpack-cluster-starccm.md)

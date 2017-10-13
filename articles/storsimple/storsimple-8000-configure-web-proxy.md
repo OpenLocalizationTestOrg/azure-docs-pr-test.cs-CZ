@@ -1,6 +1,6 @@
 ---
-title: "aaaSet až webového proxy serveru pro zařízení řady StorSimple 8000 | Microsoft Docs"
-description: "Zjistěte, jak toouse Windows Powershellu pro StorSimple tooconfigure webové nastavení proxy serveru pro zařízení StorSimple."
+title: "Nastavení webového proxy serveru pro zařízení řady StorSimple 8000 | Microsoft Docs"
+description: "Další informace o použití prostředí Windows PowerShell pro StorSimple ke konfiguraci nastavení webového proxy serveru pro zařízení StorSimple."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,145 +14,145 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
-ms.openlocfilehash: ed34ff400df66a5f1950c21d5298b41acc538cca
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1109e44ed9c6aa8a0f7305b8a50410316711589c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>Konfigurace webového proxy serveru pro zařízení StorSimple
 
 ## <a name="overview"></a>Přehled
 
-Tento kurz popisuje, jak toouse Windows Powershellu pro StorSimple tooconfigure a zobrazení webové nastavení proxy serveru pro zařízení StorSimple. nastavení webového proxy serveru Hello používají zařízení StorSimple hello při komunikaci s hello cloudu. Webový proxy server je použité tooadd další vrstvu zabezpečení, filtrování obsahu, mezipaměti tooease nároky na šířku pásma nebo dokonce pomůže s analytics.
+Tento kurz popisuje, jak pomocí prostředí Windows PowerShell pro StorSimple ke konfiguraci a zobrazení nastavení webového proxy serveru pro zařízení StorSimple. Nastavení webového proxy serveru jsou používány zařízení StorSimple při komunikaci s cloudem. Webový proxy server se používá k přidání další úroveň zabezpečení, filtrování obsahu mezipaměti snadné nároky na šířku pásma nebo i pomoc s analytics.
 
-Hello pokyny v tomto kurzu platí pouze tooStorSimple 8000 řady fyzického zařízení. Konfigurace webového proxy serveru není podporována na hello cloudu zařízení StorSimple (8010 a 8020).
+Pokyny v tomto kurzu platí pouze pro řadu fyzického zařízení StorSimple 8000. Konfigurace webového proxy serveru není podporována v cloudu zařízení StorSimple (8010 a 8020).
 
-Webový proxy server je _volitelné_ konfigurace pro zařízení StorSimple. Můžete nakonfigurovat webový proxy server jenom prostřednictvím Windows Powershellu pro StorSimple. Konfigurace Hello je dvoustupňový proces takto:
+Webový proxy server je _volitelné_ konfigurace pro zařízení StorSimple. Můžete nakonfigurovat webový proxy server jenom prostřednictvím Windows Powershellu pro StorSimple. Konfigurace je dvoustupňový proces takto:
 
-1. Je nejprve nakonfigurovat nastavení webového proxy serveru pomocí Průvodce instalací hello nebo prostředí Windows PowerShell pro StorSimple rutiny.
-2. Potom povolíte hello nakonfigurované nastavení webového proxy serveru pomocí prostředí Windows PowerShell pro StorSimple rutiny.
+1. Je nejprve nakonfigurovat nastavení webového proxy serveru pomocí Průvodce instalací nebo prostředí Windows PowerShell pro StorSimple rutiny.
+2. Je pak povolit nastavení nakonfigurované webového proxy serveru pomocí prostředí Windows PowerShell pro StorSimple rutiny.
 
-Po dokončení konfigurace webového proxy serveru hello můžete zobrazit hello nakonfigurované nastavení proxy serveru webové služby Microsoft Azure StorSimple zařízení Manager hello i hello Windows Powershellu pro StorSimple.
+Po dokončení konfigurace webového proxy serveru můžete zobrazit nastavení nakonfigurované webového proxy serveru služby Microsoft Azure StorSimple zařízení Manager a prostředí Windows PowerShell pro StorSimple.
 
 Po přečtení tohoto kurzu, budete moci:
 
 * Nakonfigurujte webový proxy server pomocí Průvodce instalací a rutin.
 * Povolte webový proxy server pomocí rutin.
-* Zobrazit nastavení webového proxy serveru v hello portálu Azure.
+* Zobrazit nastavení webového proxy serveru na portálu Azure.
 * Řešení chyb během konfigurace webového proxy serveru.
 
 
 ## <a name="configure-web-proxy-via-windows-powershell-for-storsimple"></a>Nakonfigurovat webový proxy server pomocí prostředí Windows PowerShell pro StorSimple
 
-Můžete použít některý z následujících nastavení webového proxy serveru tooconfigure hello:
+Pomocí následujících konfigurovat nastavení webového proxy serveru:
 
-* Instalační program tooguide Průvodce vás provede kroky konfigurace hello.
+* Průvodce instalací vás provedou kroky konfigurace.
 * Rutiny Windows Powershellu pro StorSimple.
 
-Každá z těchto metod je popsané v následující části hello.
+Každá z těchto metod je popsané v následujících částech.
 
-## <a name="configure-web-proxy-via-hello-setup-wizard"></a>Nakonfigurovat webový proxy server pomocí Průvodce instalací hello
+## <a name="configure-web-proxy-via-the-setup-wizard"></a>Nakonfigurovat webový proxy server pomocí Průvodce instalací
 
-Použití hello instalace Průvodce tooguide, který vás provede hello kroků pro konfigurace webového proxy serveru. Proveďte následující kroky tooconfigure webový proxy server na vašem zařízení hello.
+Pomocí Průvodce instalací vás provedou kroky konfigurace webového proxy serveru. Proveďte následující kroky nakonfigurovat webový proxy server na vašem zařízení.
 
-#### <a name="tooconfigure-web-proxy-via-hello-setup-wizard"></a>tooconfigure webový proxy server pomocí Průvodce instalací hello
+#### <a name="to-configure-web-proxy-via-the-setup-wizard"></a>Chcete-li nakonfigurovat webový proxy server pomocí Průvodce instalací
 
-1. V nabídce konzoly sériového portu hello, zvolte možnost 1, **přihlásit úplný přístup** a zadejte hello **hesla správce zařízení**. Typ hello následující příkaz toostart relaci Průvodce instalací:
+1. V nabídce konzoly sériového portu, zvolte možnost 1, **přihlásit úplný přístup** a poskytují **hesla správce zařízení**. Zadejte následující příkaz pro spuštění relace Průvodce instalací:
    
     `Invoke-HcsSetupWizard`
-2. Pokud je to hello poprvé, co jste použili hello Průvodce instalací pro registraci zařízení, je nutné tooconfigure všechna nastavení sítě hello požadované dokud se nedostanete hello konfigurace webového proxy serveru. Pokud vaše zařízení je již zaregistrován, přijměte všechny hello nakonfigurovaná nastavení sítě, dokud se nedostanete hello konfigurace webového proxy serveru. V Průvodci instalací hello při výzvami tooconfigure webové nastavení proxy serveru, zadejte **Ano**.
-3. Pro hello **adresa URL proxy serveru webové**, zadejte hello IP adresu nebo plně kvalifikovaný název domény (FQDN) vaší webový proxy server a hello číslo portu TCP, které chcete toouse vaše zařízení, při komunikaci s cloudem hello hello. Hello použijte následující formát:
+2. Pokud je to poprvé, co jste použili Průvodce instalací pro registraci zařízení, budete muset nakonfigurovat všechna nastavení požadovaným síťovým, dokud se nedostanete konfigurace webového proxy serveru. Pokud vaše zařízení je již zaregistrován, přijměte všechny nakonfigurovaná síťová nastavení, dokud se nedostanete konfigurace webového proxy serveru. V Průvodci instalací po zobrazení výzvy ke konfiguraci nastavení webového proxy serveru, zadejte **Ano**.
+3. Pro **adresa URL proxy serveru webové**, zadejte IP adresu nebo název plně kvalifikované domény (FQDN) webového proxy serveru a číslo portu TCP, který chcete zařízení pro použití při komunikaci s cloudem. Použijte následující formát:
    
-    `http://<IP address or FQDN of hello web proxy server>:<TCP port number>`
+    `http://<IP address or FQDN of the web proxy server>:<TCP port number>`
    
     Ve výchozím nastavení je zadané číslo portu TCP 8080.
-4. Vyberte typ ověřování hello jako **NTLM**, **základní**, nebo **žádné**. Základní je hello alespoň zabezpečeného ověřování pro hello konfiguraci proxy serveru. NT LAN Manager (NTLM) je vysoce zabezpečené a komplexní ověřovací protokol, který používá třícestné systému zasílání zpráv (někdy čtyři Pokud je potřeba další integrity) tooauthenticate uživatele. Hello výchozí ověřování je NTLM. Další informace najdete v tématu [základní](http://hc.apache.org/httpclient-3.x/authentication.html) a [ověřování protokolem NTLM](http://hc.apache.org/httpclient-3.x/authentication.html). 
+4. Vyberte typ ověřování jako **NTLM**, **základní**, nebo **žádné**. Základní je nejmíň bezpečná ověřování pro konfiguraci proxy serveru. NT LAN Manager (NTLM) je vysoce zabezpečené a komplexní ověřovací protokol, který používá třícestné systému zasílání zpráv (někdy čtyři Pokud je potřeba další integrity) k ověření uživatele. Výchozí ověřování je NTLM. Další informace najdete v tématu [základní](http://hc.apache.org/httpclient-3.x/authentication.html) a [ověřování protokolem NTLM](http://hc.apache.org/httpclient-3.x/authentication.html). 
    
    > [!IMPORTANT]
-   > **V hello služby StorSimple Manager zařízení grafy monitorování zařízení hello nefungují, pokud základní nebo v konfiguraci proxy serveru pro zařízení hello hello je povolené ověřování NTLM. Hello monitorování toowork grafy, musíte tooensure, ověření je nastaven tooNONE.**
+   > **Ve službě StorSimple Manager zařízení grafy monitorování zařízení nefungují, pokud základní nebo je v konfiguraci proxy serveru pro zařízení povolené ověřování protokolem NTLM. Pro monitorování grafy pro práci je potřeba zajistit, že, ověření je nastaven na hodnotu NONE.**
   
-5. Pokud jste povolili hello ověřování, zadejte **uživatelské jméno Proxy webové** a **heslo pro proxy server webové**. Budete také potřebovat tooconfirm hello heslo.
+5. Pokud jste povolili ověřování, zadejte **uživatelské jméno Proxy webové** a **heslo pro proxy server webové**. Musíte také potvrdit heslo.
    
     ![Nakonfigurovat webový proxy server na StorSimple Device1](./media/storsimple-configure-web-proxy/IC751830.png)
 
-Pokud registrujete zařízení pro hello poprvé, pokračujte s registrací hello. Pokud vaše zařízení už je registrovaná, Průvodce hello se ukončí. Hello nakonfigurované nastavení se ukládají.
+Pokud registrujete zařízení poprvé, pokračujte s registrací. Pokud vaše zařízení už je registrovaná, průvodce se ukončí. Nakonfigurované nastavení se ukládají.
 
-Webový proxy server je teď povolené. Můžete přeskočit hello [Povolit proxy server webové](#enable-web-proxy) krok a přejít přímo příliš[zobrazit nastavení webového proxy serveru v hello portál Azure](#view-web-proxy-settings-in-the-azure-portal).
+Webový proxy server je teď povolené. Můžete přeskočit [Povolit proxy server webové](#enable-web-proxy) krok a přejít přímo na [zobrazit nastavení webového proxy serveru na webu Azure portal](#view-web-proxy-settings-in-the-azure-portal).
 
 ## <a name="configure-web-proxy-via-windows-powershell-for-storsimple-cmdlets"></a>Konfigurace webového proxy serveru pomocí Windows Powershellu pro StorSimple rutiny
 
-Nastavení webového proxy serveru tooconfigure jiný způsob, jak je prostřednictvím hello Windows Powershellu pro StorSimple rutiny. Proveďte následující kroky tooconfigure webový proxy server hello.
+Alternativní způsob konfigurace nastavení webového proxy serveru je prostřednictvím Windows Powershellu pro StorSimple rutiny. Proveďte následující postup pro konfiguraci webového proxy serveru.
 
-#### <a name="tooconfigure-web-proxy-via-cmdlets"></a>tooconfigure webový proxy server pomocí rutiny
-1. V nabídce konzoly sériového portu hello, zvolte možnost 1, **přihlásit úplný přístup**. Po zobrazení výzvy zadejte hello **hesla správce zařízení**. výchozí heslo Hello je `Password1`.
-2. Hello příkazového řádku zadejte:
+#### <a name="to-configure-web-proxy-via-cmdlets"></a>Chcete-li nakonfigurovat webový proxy server pomocí rutiny
+1. V nabídce konzoly sériového portu, zvolte možnost 1, **přihlásit úplný přístup**. Pokud budete vyzváni, zadejte **hesla správce zařízení**. Výchozí heslo je `Password1`.
+2. Na příkazovém řádku zadejte:
    
     `Set-HcsWebProxy -Authentication NTLM -ConnectionURI "<http://<IP address or FQDN of web proxy server>:<TCP port number>" -Username "<Username for web proxy server>"`
    
-    Zadejte a potvrďte heslo hello po zobrazení výzvy.
+    Zadejte a potvrďte heslo po zobrazení výzvy.
    
     ![Nakonfigurovat webový proxy server na StorSimple Device3](./media/storsimple-configure-web-proxy/IC751831.png)
 
-Hello webový proxy server je nyní nakonfigurována a je třeba toobe povolena.
+Webový proxy server je nyní nakonfigurována a musí být povolena.
 
 ## <a name="enable-web-proxy"></a>Povolit webový proxy server
 
-Webový proxy server je ve výchozím nastavení zakázán. Po dokončení konfigurace nastavení proxy serveru webové hello zařízení StorSimple, použijte hello prostředí Windows PowerShell pro nastavení StorSimple tooenable hello webového proxy serveru.
+Webový proxy server je ve výchozím nastavení zakázán. Po nakonfigurování nastavení webového proxy serveru na zařízení StorSimple, můžete povolit nastavení webového proxy serveru pomocí Windows Powershellu pro StorSimple.
 
 > [!NOTE]
-> **Tento krok se nevyžaduje, pokud jste použili hello instalace Průvodce tooconfigure webový proxy server. Webový proxy server je automaticky povolené ve výchozím nastavení po relaci Průvodce instalací.**
+> **Tento krok se nevyžaduje, pokud jste použili Průvodce instalací nakonfigurovat webový proxy server. Webový proxy server je automaticky povolené ve výchozím nastavení po relaci Průvodce instalací.**
 
 
-Proveďte následující kroky v prostředí Windows PowerShell pro StorSimple tooenable webový proxy server na vašem zařízení hello:
+Ve Windows Powershellu pro StorSimple povolit webový proxy server na vašem zařízení postupujte takto:
 
-#### <a name="tooenable-web-proxy"></a>tooenable webový proxy server
-1. V nabídce konzoly sériového portu hello, zvolte možnost 1, **přihlásit úplný přístup**. Po zobrazení výzvy zadejte hello **hesla správce zařízení**. výchozí heslo Hello je `Password1`.
-2. Hello příkazového řádku zadejte:
+#### <a name="to-enable-web-proxy"></a>Chcete-li povolit webový proxy server
+1. V nabídce konzoly sériového portu, zvolte možnost 1, **přihlásit úplný přístup**. Pokud budete vyzváni, zadejte **hesla správce zařízení**. Výchozí heslo je `Password1`.
+2. Na příkazovém řádku zadejte:
    
     `Enable-HcsWebProxy`
    
-    Nyní jste povolili hello konfigurace webového proxy serveru v zařízení StorSimple.
+    Nyní jste povolili konfigurace webového proxy serveru v zařízení StorSimple.
    
     ![Nakonfigurovat webový proxy server na StorSimple Device4](./media/storsimple-configure-web-proxy/IC751832.png)
 
-## <a name="view-web-proxy-settings-in-hello-azure-portal"></a>Zobrazit nastavení webového proxy serveru v hello portálu Azure
+## <a name="view-web-proxy-settings-in-the-azure-portal"></a>Nastavení proxy serveru webové zobrazení na portálu Azure
 
-nastavení webového proxy serveru Hello jsou nakonfigurovány pomocí rozhraní Windows PowerShell hello a nemůže být změněn z portálu hello. Ale zobrazí se tyto nakonfigurovaná nastavení portálu hello. Proveďte následující kroky tooview webový proxy server hello.
+Nastavení webového proxy serveru jsou nakonfigurovány pomocí rozhraní Windows PowerShell a nemůže být změněn z portálu. Tyto nakonfigurované nastavení můžete, ale zobrazit na portálu. Proveďte následující kroky, chcete-li zobrazit webový proxy server.
 
-#### <a name="tooview-web-proxy-settings"></a>nastavení webového proxy serveru tooview
-1. Přejděte příliš**služby StorSimple Manager zařízení > zařízení**. Vyberte a klikněte na zařízení a potom přejděte příliš**nastavení zařízení > sítě**.
+#### <a name="to-view-web-proxy-settings"></a>Chcete-li zobrazit nastavení webového proxy serveru
+1. Přejděte na **služby StorSimple Manager zařízení > zařízení**. Vyberte a klikněte na zařízení a potom přejděte na **nastavení zařízení > sítě**.
 
     ![Klikněte na síť](./media/storsimple-8000-configure-web-proxy/view-web-proxy-1.png)
 
-2. V hello **nastavení síťového** okně klikněte na tlačítko hello **webový proxy server** dlaždici.
+2. V **nastavení síťového** okně klikněte na tlačítko **webový proxy server** dlaždici.
 
     ![Klikněte na webový proxy server](./media/storsimple-8000-configure-web-proxy/view-web-proxy-2.png)
 
-3. V hello **webový proxy server** okno, zkontrolujte nastavení webového proxy serveru hello nakonfigurované v zařízení StorSimple.
+3. V **webový proxy server** okně zkontrolovat nastavení nakonfigurované webového proxy serveru v zařízení StorSimple.
    
     ![Nastavení proxy serveru webové zobrazení](./media/storsimple-8000-configure-web-proxy/view-web-proxy-3.png)
 
 
 ## <a name="errors-during-web-proxy-configuration"></a>Chyby během konfigurace webového proxy serveru
 
-Pokud nastavení hello webového proxy serveru jsou správně nakonfigurovaná, chybové zprávy jsou zobrazené toohello uživatele v prostředí Windows PowerShell pro StorSimple. Hello následující tabulka popisuje některé z těchto chybových zpráv, jejich možných příčin a doporučené akce.
+Pokud nastavení webového proxy serveru jsou správně nakonfigurovaná, se zobrazí chybové zprávy pro uživatele v prostředí Windows PowerShell pro StorSimple. Následující tabulka popisuje některé z těchto chybových zpráv, jejich možných příčin a doporučené akce.
 
 | Sériové č. | Chyba HRESULT kódu | Možné příčiny | Doporučená akce |
 |:--- |:--- |:--- |:--- |
-| 1. |0x80070001 |Příkaz spuštěn z hello pasivní řadiče a není možné toocommunicate s řadič active hello. |Spusťte příkaz hello řadič active hello. příkaz hello toorun z hello pasivní řadiče, je nutné opravit hello připojení z pasivní tooactive řadiče. Microsoft Support musí použít, pokud toto připojení je přerušené. |
-| 2. |0x800710dd - identifikátor hello operaci není platný |Nastavení proxy serveru nejsou podporovány v cloudu zařízení StorSimple. |Nastavení proxy serveru nejsou podporovány v cloudu zařízení StorSimple. To se dá nakonfigurovat jenom na fyzického zařízení StorSimple. |
-| 3. |0x80070057 – neplatný parametr |Jeden z parametrů hello zadaných pro hello nastavení proxy serveru není platný. |Hello identifikátor URI není k dispozici ve správném formátu. Hello použijte následující formát:`http://<IP address or FQDN of hello web proxy server>:<TCP port number>` |
-| 4. |0x800706ba - server RPC není k dispozici |Hello hlavní příčinou je jedna z následujících hello:</br></br>Cluster není nahoru. </br></br>DataPath služba není spuštěna.</br></br>příkaz Hello spustí z pasivní řadiče a není možné toocommunicate s řadič active hello. |Provozovat tooensure Microsoft Support, který hello clusteru je zapnutý a je spuštěna služba datapath.</br></br>Spusťte příkaz hello z aktivního řadiče hello. Pokud chcete, aby příkaz hello toorun z pasivní řadiče hello, můžete zajistit, aby byl že pasivní kontroleru hello může komunikovat se službou active řadiče hello. Microsoft Support musí použít, pokud toto připojení je přerušené. |
-| 5. |0X800706be - RPC volání se nezdařilo. |Clusteru je mimo provoz. |Zaujmout Microsoft Support tooensure, který hello clusteru je zapnutý. |
-| 6. |0x8007138f – prostředek clusteru nebyl nalezen |Prostředek clusteru služby platformy nebyla nalezena. To může nastat při instalaci hello nebyla správná. |Může být nutné tooperform obnovit v zařízení výrobní nastavení. Může být nutné toocreate prostředek platformy. Kontaktujte Microsoft Support pro další kroky. |
-| 7. |0x8007138c – prostředek clusteru není online |Prostředky clusteru platformy nebo datapath nejsou online. |Kontaktujte Microsoft Support toohelp zajistěte, aby prostředek hello datapath a platforma služby online. |
+| 1. |0x80070001 |Příkaz spuštěn z pasivní řadiče a není schopen komunikovat s řadičem aktivní. |Spusťte příkaz v aktivním řadiči. Ke spuštění příkazu z pasivní řadiče, je nutné opravit připojení ze pasivní do aktivního řadiče. Microsoft Support musí použít, pokud toto připojení je přerušené. |
+| 2. |0x800710dd - identifikátor operace není platná |Nastavení proxy serveru nejsou podporovány v cloudu zařízení StorSimple. |Nastavení proxy serveru nejsou podporovány v cloudu zařízení StorSimple. To se dá nakonfigurovat jenom na fyzického zařízení StorSimple. |
+| 3. |0x80070057 – neplatný parametr |Jeden z parametrů zadaných pro nastavení proxy serveru je neplatný. |Identifikátor URI není k dispozici ve správném formátu. Použijte následující formát:`http://<IP address or FQDN of the web proxy server>:<TCP port number>` |
+| 4. |0x800706ba - server RPC není k dispozici |Hlavní příčinou je jedním z těchto:</br></br>Cluster není nahoru. </br></br>DataPath služba není spuštěna.</br></br>Spuštění příkazu z pasivní řadiče a není schopen komunikovat s řadičem aktivní. |Zaujmout Microsoft Support zajistit, že je cluster v provozu a je spuštěna služba datapath.</br></br>Spusťte příkaz z aktivní řadiče. Pokud chcete spustit příkaz z pasivní řadiče, je třeba zajistit, že pasivní řadič může komunikovat s řadičem active. Microsoft Support musí použít, pokud toto připojení je přerušené. |
+| 5. |0X800706be - RPC volání se nezdařilo. |Clusteru je mimo provoz. |Zaujmout Microsoft Support zajistit, že je cluster v provozu. |
+| 6. |0x8007138f – prostředek clusteru nebyl nalezen |Prostředek clusteru služby platformy nebyla nalezena. To může nastat při instalaci nebyla správná. |Potřebujete obnovit v zařízení výrobní nastavení. Musíte vytvořit prostředek platformy. Kontaktujte Microsoft Support pro další kroky. |
+| 7. |0x8007138c – prostředek clusteru není online |Prostředky clusteru platformy nebo datapath nejsou online. |Kontaktujte Microsoft Support k zajištění, že prostředek služby datapath a platforma jsou online. |
 
 > [!NOTE]
-> * Hello výše seznam chybových zpráv není vyčerpávající.
-> * Nastavení proxy serveru související tooweb chyby se nezobrazí v hello portál Azure ve službě StorSimple Manager zařízení. Pokud nastane problém s webový proxy server po dokončení konfigurace hello, změní stav zařízení hello se příliš**Offline** portálu classic hello. |
+> * Výše uvedený seznam chybových zpráv není vyčerpávající.
+> * Chyby související s nastavení webového proxy serveru se nezobrazí na portálu Azure ve službě StorSimple Manager zařízení. Pokud nastane problém s webový proxy server po dokončení konfigurace, zařízení stav se změní na **Offline** na klasickém portálu. |
 
 ## <a name="next-steps"></a>Další kroky
-* Pokud máte problémy při nasazení zařízení nebo konfigurace nastavení webového proxy serveru, podívejte se příliš[řešení potíží s nasazením zařízení StorSimple](storsimple-troubleshoot-deployment.md).
-* jak toouse hello služby StorSimple Manager zařízení, přejděte příliš toolearn[použití hello tooadminister service Manager zařízení StorSimple zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Pokud máte problémy při nasazení zařízení nebo konfigurace nastavení webového proxy serveru, podívejte se na [řešení potíží s nasazením zařízení StorSimple](storsimple-troubleshoot-deployment.md).
+* Další informace o použití služby StorSimple Manager zařízení, přejděte na [použít službu StorSimple Manager zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

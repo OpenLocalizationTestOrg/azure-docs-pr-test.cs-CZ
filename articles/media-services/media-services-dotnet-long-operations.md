@@ -1,6 +1,6 @@
 ---
-title: "aaaPolling dlouhotrvající operace | Microsoft Docs"
-description: "Toto téma ukazuje, jak dlouho běžící operace toopoll."
+title: "Dotazování dlouhotrvající operace | Microsoft Docs"
+description: "Toto téma ukazuje, jak dlouho běžící operace dotazování."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,36 +14,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
-ms.openlocfilehash: f8315a5ddbe484d794c3e2164e47dd9e70521671
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7123a2d44d3b7c332afe30fb0fcea88ca29e313a
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="delivering-live-streaming-with-azure-media-services"></a>Doručování živé streamování pomocí služby Azure Media Services
 
 ## <a name="overview"></a>Přehled
 
-Microsoft Azure Media Services nabízí rozhraní API, která posílají požadavky na tooMedia služby toostart operace (například: vytvoření, spuštění, zastavení nebo odstranit kanál). Tyto operace jsou časově náročné.
+Microsoft Azure Media Services nabízí rozhraní API, která odesílat žádosti do Media Services spuštění operace (například: vytvoření, spuštění, zastavení nebo odstranit kanál). Tyto operace jsou časově náročné.
 
-Hello sady Media Services .NET SDK poskytuje rozhraní API, která odeslání požadavku hello a počkejte hello operaci toocomplete (interně hello, které rozhraní API se dotazuje na průběh operace v některé intervalech). Například při volání kanálu. Start(), vrátí metoda hello po spuštění hello kanálu. Můžete také použít asynchronní verze hello: await kanál. StartAsync() (informace o asynchronní vzor založený na úlohách najdete v tématu [klepněte na](https://msdn.microsoft.com/library/hh873175\(v=vs.110\).aspx)). Rozhraní API, které odeslat žádost o operaci a poté dotazování na stav hello až do dokončení operace hello se nazývají "dotazování metody". Tyto metody (zejména hello asynchronní verze) se doporučují pro aplikacemi rich client nebo stavové služby.
+.NET SDK služby Media Services poskytuje rozhraní API, která odeslat požadavek a počkejte na dokončení operace (interně rozhraní API se dotazuje na průběh operace v některé intervalech). Například při volání kanálu. Start(), metoda vrátí po spuštění kanálu. Můžete také použít asynchronní verze: await kanál. StartAsync() (informace o asynchronní vzor založený na úlohách najdete v tématu [klepněte na](https://msdn.microsoft.com/library/hh873175\(v=vs.110\).aspx)). Rozhraní API, které odeslat žádost o operaci a poté dotazování na stav, dokud se nedokončí operaci se nazývají "dotazování metody". Tyto metody (obzvláště verzi asynchronní) – se doporučují pro aplikacemi rich client nebo stavové služby.
 
-Existují scénáře, kde aplikace nemůže čekat na dlouho spuštěný požadavek http a chce toopoll pro průběh operace hello ručně. Typickým příkladem by prohlížeč interakci s bezstavové webové služby: Pokud prohlížeč hello požaduje toocreate kanál, hello webová služba spustí dlouhotrvající operace a vrátí hello prohlížeče toohello ID operace. Prohlížeč Hello může pak požádejte hello webové služby tooget hello stav operace na základě ID hello. Hello sady Media Services .NET SDK poskytuje rozhraní API, které jsou užitečné pro tento scénář. Tato rozhraní API se nazývají "-cyklického dotazování metody".
-"Hello-cyklického dotazování metody" mají následující vzoru pro pojmenovávání hello: Odeslat*OperationName*operace (například SendCreateOperation). Odeslat*OperationName*operaci metody vrací hello **IOperation** objektu; hello vráceného objektu obsahuje informace, které lze použít tootrack hello operaci. Hello odesílání*OperationName*OperationAsync metody vrací **úloh<IOperation>**.
+Existují scénáře, kde aplikace nemůže čekat na dlouho spuštěný požadavek http a chce pro dotazování na průběh operace ručně. Typickým příkladem by prohlížeč interakci s bezstavové webové služby: Pokud v prohlížeči požádá o vytvoření kanálu, webovou službu inicializuje dlouhotrvající operace a vrátí ID operace v prohlížeči. Prohlížeč může pak požádejte webové služby a získat stav operace podle ID. .NET SDK služby Media Services poskytuje rozhraní API, které jsou užitečné pro tento scénář. Tato rozhraní API se nazývají "-cyklického dotazování metody".
+"-Cyklického dotazování metody" mají následující vzoru pro pojmenovávání: Odeslat*OperationName*operace (například SendCreateOperation). Odeslat*OperationName*vrátit operaci metody **IOperation** objekt; vrácený objekt obsahuje informace, které můžete použít ke sledování operaci. Odesílání*OperationName*OperationAsync metody vrací **úloh<IOperation>**.
 
-V současné době hello následující třídy podporu-cyklického dotazování metody: **kanál**, **StreamingEndpoint**, a **programu**.
+Následující třídy v současné době podporují metody cyklického dotazování: **kanál**, **StreamingEndpoint**, a **programu**.
 
-toopoll pro hello stav operace, použijte hello **GetOperation** metodu hello **OperationBaseCollection** třídy. Použijte následující stav operace hello toocheck intervaly hello: pro **kanál** a **StreamingEndpoint** operace, použijte 30 sekund; pro **Program** operace, použijte 10 sekund.
+Dotazování na stav operace, použijte **GetOperation** metodu **OperationBaseCollection** třídy. Zkontrolujte stav operace pomocí následující intervaly: pro **kanál** a **StreamingEndpoint** operace, použijte 30 sekund; pro **Program** operace, použijte 10 sekund.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
-Nastavení vývojového prostředí a naplnění souboru app.config hello s informace o připojení, jak je popsáno v [vývoj pro Media Services s .NET](media-services-dotnet-how-to-use.md).
+Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md).
 
 ## <a name="example"></a>Příklad
 
-Hello následující příklad definuje třídu s názvem **ChannelOperations**. Definice této třídy může být výchozím bodem pro – třída definice webové služby. Pro jednoduchost, hello následující příklady používají hello bez asynchronních verzích metody.
+Následující příklad definuje třídu s názvem **ChannelOperations**. Definice této třídy může být výchozím bodem pro – třída definice webové služby. Pro jednoduchost použijte následující příklady verze bez asynchronní metody.
 
-Hello příklad také ukazuje, jak může klient hello použít tuto třídu.
+Tento příklad také ukazuje, jak může klient použít tuto třídu.
 
 ### <a name="channeloperations-class-definition"></a>Definice třídy ChannelOperations
 
@@ -54,12 +54,12 @@ Hello příklad také ukazuje, jak může klient hello použít tuto třídu.
     using System.Net;
 
     /// <summary> 
-    /// hello ChannelOperations class only implements 
-    /// hello Channel’s creation operation. 
+    /// The ChannelOperations class only implements 
+    /// the Channel’s creation operation. 
     /// </summary> 
     public class ChannelOperations
     {
-        // Read values from hello App.config file.
+        // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
             ConfigurationManager.AppSettings["AADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
@@ -77,12 +77,12 @@ Hello příklad také ukazuje, jak může klient hello použít tuto třídu.
         }
 
         /// <summary>  
-        /// Initiates hello creation of a new channel.  
+        /// Initiates the creation of a new channel.  
         /// </summary>  
-        /// <param name="channelName">Name toobe given toohello new channel</param>  
+        /// <param name="channelName">Name to be given to the new channel</param>  
         /// <returns>  
-        /// Operation Id for hello long running operation being executed by Media Services. 
-        /// Use this operation Id toopoll for hello channel creation status. 
+        /// Operation Id for the long running operation being executed by Media Services. 
+        /// Use this operation Id to poll for the channel creation status. 
         /// </returns> 
         public string StartChannelCreation(string channelName)
         {
@@ -99,14 +99,14 @@ Hello příklad také ukazuje, jak může klient hello použít tuto třídu.
         }
 
         /// <summary> 
-        /// Checks if hello operation has been completed. 
-        /// If hello operation succeeded, hello created channel Id is returned in hello out parameter.
+        /// Checks if the operation has been completed. 
+        /// If the operation succeeded, the created channel Id is returned in the out parameter.
         /// </summary> 
-        /// <param name="operationId">hello operation Id.</param> 
+        /// <param name="operationId">The operation Id.</param> 
         /// <param name="channel">
-        /// If hello operation succeeded, 
-        /// hello created channel Id is returned in hello out parameter.</param>
-        /// <returns>Returns false if hello operation is still in progress; otherwise, true.</returns> 
+        /// If the operation succeeded, 
+        /// the created channel Id is returned in the out parameter.</param>
+        /// <returns>Returns false if the operation is still in progress; otherwise, true.</returns> 
         public bool IsCompleted(string operationId, out string channelId)
         {
             IOperation operation = _context.Operations.GetOperation(operationId);
@@ -117,9 +117,9 @@ Hello příklad také ukazuje, jak může klient hello použít tuto třídu.
             switch (operation.State)
             {
                 case OperationState.Failed:
-                    // Handle hello failure. 
+                    // Handle the failure. 
                     // For example, throw an exception. 
-                    // Use hello following information in hello exception: operationId, operation.ErrorMessage.
+                    // Use the following information in the exception: operationId, operation.ErrorMessage.
                     break;
                 case OperationState.Succeeded:
                     completed = true;
@@ -180,7 +180,7 @@ Hello příklad také ukazuje, jak může klient hello použít tuto třídu.
         }
     }
 
-### <a name="hello-client-code"></a>Kód klienta Hello
+### <a name="the-client-code"></a>Kód klienta
     ChannelOperations channelOperations = new ChannelOperations();
     string opId = channelOperations.StartChannelCreation("MyChannel001");
 
@@ -193,7 +193,7 @@ Hello příklad také ukazuje, jak může klient hello použít tuto třídu.
         isCompleted = channelOperations.IsCompleted(opId, out channelId);
     }
 
-    // If we got here, we should have hello newly created channel id.
+    // If we got here, we should have the newly created channel id.
     Console.WriteLine(channelId);
 
 

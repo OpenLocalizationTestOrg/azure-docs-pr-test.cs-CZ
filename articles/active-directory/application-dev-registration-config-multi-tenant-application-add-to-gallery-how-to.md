@@ -1,6 +1,6 @@
 ---
-title: "aaaHow tooadd Galerie aplikace víceklientské aplikace toohello Azure AD | Microsoft Docs"
-description: "Vysvětluje, jak můžete vytvořit seznam vlastní vyvinuté víceklientské aplikace v galerii aplikací Azure AD hello"
+title: "Postup přidání víceklientské aplikace pro galerii aplikací Azure AD | Microsoft Docs"
+description: "Vysvětluje, jak můžete vytvořit seznam vlastní vyvinuté víceklientské aplikace v galerii aplikací Azure AD"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,28 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 2dc6e0d783835d2639a7e6dda172110ee860a977
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 208f0d40bd7a8e8f35f16e1fcb09c305d833dbb2
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="how-tooadd-a-multi-tenant-application-toohello-azure-ad-application-gallery"></a>Jak tooadd Galerie aplikace víceklientské aplikace toohello Azure AD
+# <a name="how-to-add-a-multi-tenant-application-to-the-azure-ad-application-gallery"></a>Postup přidání víceklientské aplikace pro galerii aplikací Azure AD
 
-## <a name="what-is-hello-azure-ad-application-gallery"></a>Co je hello galerii aplikací Azure AD?
+## <a name="what-is-the-azure-ad-application-gallery"></a>Co je Azure AD Application Gallery?
 
-Hello Azure AD Application Gallery je skvělým způsobem tooget aplikace před všechny hello miliony účinku hello toobroaden zákazníci služby Azure Active Directory a dosáhnout aplikace hello Marketplace. Hello následující kroky popisují, jak můžete uvedení aplikace v galerii aplikací Azure AD hello.
+Azure AD Application Gallery je skvělým způsobem, jak dostat aplikaci před miliony Azure Active Directory zákazníky oslovit vaší aplikace na webu Marketplace a rozšíří dopad. Níže uvedených pokynů vysvětlují, jak můžete vytvořit seznam aplikace v galerii aplikací Azure AD.
 
 ## <a name="if-your-application-supports-saml-or-openidconnect"></a>Pokud vaše aplikace podporuje SAML nebo OpenIDConnect
-Pokud máte víceklientské aplikaci chcete toolist v hello galerii aplikací Azure AD, ujistěte nejprve, že vaše aplikace podporuje jednu z následujících technologií přihlašování hello:
+Pokud máte více klientů aplikace, kterou chcete zobrazit seznam v galerii aplikací Azure AD, musíte nejprve provedete jistotu, že vaše aplikace podporuje jednu z následujících jeden přihlašování technologií:
 
-1. **OpenID Connect** – přímá integrace s Azure AD pro ověřování pomocí OpenID Connect a hello Azure AD souhlasu rozhraní API pro konfiguraci. Pokud právě začínáte integrační a aplikace nepodporuje SAML, jde hello doporučujeme režimu.
-2. **SAML** – aplikace již má hello možnost tooconfigure poskytovatelů identit třetích stran pomocí protokolu SAML hello.
+1. **OpenID Connect** -přímá integrace s Azure AD pomocí OpenID Connect pro ověřování a Azure AD souhlas rozhraní API pro konfiguraci. Pokud právě začínáte integrační a aplikace nepodporuje SAML, jedná se o doporučujeme režim.
+2. **SAML** – aplikace již má možnost konfigurace poskytovatelů identit třetích stran pomocí protokolu SAML.
 
-Pokud vaše aplikace podporuje jeden z těchto režimů jednoho přihlášení a chcete toolist víceklientské aplikace v galerii aplikací Azure AD hello, můžete provést kroky hello v dokumentu hello níže. tooget rychle začít odesílat e-mailu příliš**waadpartners@microsoft.com**.
+Pokud vaše aplikace podporuje jeden z těchto režimů jednoho přihlášení a chcete uvedení víceklientské aplikace v galerii aplikací Azure AD, můžete podle kroků v dokumentu níže. Abyste mohli rychle začít e-mailovou zprávu na  **waadpartners@microsoft.com** .
 
 ## <a name="if-your-application-does-not-support-saml-or-openidconnect"></a>Pokud vaše aplikace nepodporuje SAML nebo OpenIDConnect
-I v případě, že vaše aplikace nepodporuje jeden z těchto režimů, jsme můžete stále integrovat do naší Galerie pomocí technologie naše heslo jednotné přihlašování. Pokud chcete tooexplore tuto možnost, zašlete e-mailu příliš**waadpartners@microsoft.com**.
+I v případě, že vaše aplikace nepodporuje jeden z těchto režimů, jsme můžete stále integrovat do naší Galerie pomocí technologie naše heslo jednotné přihlašování. Pokud chcete prozkoumat tuto možnost, můžete odeslat e-mail na  **waadpartners@microsoft.com** .
 
 ## <a name="next-steps"></a>Další kroky
-[Jak toolist aplikace v galerii aplikací Azure Active Directory hello](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)
+[Postup uvedení aplikace v galerii aplikací Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)

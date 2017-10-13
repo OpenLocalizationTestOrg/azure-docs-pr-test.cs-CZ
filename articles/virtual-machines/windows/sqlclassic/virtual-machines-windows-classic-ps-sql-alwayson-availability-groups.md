@@ -1,6 +1,6 @@
 ---
-title: "aaaConfigure hello skupiny dostupnosti Always On na virtuální počítač Azure pomocí prostředí PowerShell | Microsoft Docs"
-description: "Tento kurz používá prostředky, které byly vytvořené pomocí modelu nasazení classic hello. Použijte PowerShell toocreate skupiny dostupnosti Always On v Azure."
+title: "Konfigurace skupiny dostupnosti Always On na virtuální počítač Azure pomocí prostředí PowerShell | Microsoft Docs"
+description: "Tento kurz používá prostředky, které byly vytvořeny s modelem nasazení classic. Použít PowerShell k vytvoření skupiny dostupnosti Always On v Azure."
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: d4a27e203b2ff299adebec2b010c03422459b3c3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b99cf767fb931d3f7fe14fcbe7990126244613ed
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="configure-hello-always-on-availability-group-on-an-azure-vm-with-powershell"></a>Konfigurace skupiny dostupnosti Always On hello na virtuální počítač Azure pomocí prostředí PowerShell
+# <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>Konfigurace skupiny dostupnosti Always On na virtuální počítač Azure pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
 > * [Klasické: uživatelského rozhraní](../classic/portal-sql-alwayson-availability-groups.md)
 > * [Klasické: prostředí PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
@@ -30,37 +30,37 @@ ms.lasthandoff: 10/06/2017
 Než začnete, vezměte v úvahu, že je nyní možné dokončit tuto úlohu v modelu Azure resource manager. Doporučujeme, abyste model nástroje Správce prostředků Azure pro nová nasazení. V tématu [SQL serveru Always On skupiny dostupnosti na virtuálních počítačích Azure](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md).
 
 > [!IMPORTANT]
-> Doporučujeme vám, že většina nových nasazení používala model Resource Manager hello. Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení classic hello.
+> Doporučujeme vám, že většina nových nasazení používala model Resource Manager. Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje použití klasického modelu nasazení.
 
-Virtuální počítače Azure (VM) může pomoct náklady na správci toolower hello databáze systému SQL Server vysokou dostupnost. Tento kurz ukazuje, jak tooimplement dostupnosti skupiny pomocí SQL serveru Always On klient server v prostředí Azure. Na konci hello hello kurzu vaše řešení SQL serveru Always On v Azure budou tvořeny hello následující prvky:
+Virtuální počítače Azure (VM) může pomoct správci databází za účelem snížení nákladů systému SQL Server vysokou dostupností. V tomto kurzu se dozvíte, jak implementovat skupinu dostupnosti pomocí SQL serveru Always On klient server v prostředí Azure. Na konci tohoto kurzu vaše řešení SQL serveru Always On v Azure budou tvořeny následující prvky:
 
 * Virtuální síť, která obsahuje více podsítí, včetně front-end a back-end podsítě.
 * Řadič domény s doménou služby Active Directory.
-* Dva SQL serveru virtuálních počítačů, které jsou nasazené toohello back-end podsíť a toohello připojené k doméně služby Active Directory.
-* Tři uzly clusteru převzetí služeb při selhání systému Windows s modelem kvora Většina uzlů hello.
+* Dva SQL serveru virtuálních počítačů, které jsou nasazeny do podsítě back-end a připojený k doméně služby Active Directory.
+* Tři uzly clusteru převzetí služeb při selhání systému Windows s modelem kvora Většina uzlů.
 * Skupina dostupnosti databáze dostupnosti s dvěma replik se synchronním potvrzováním.
 
-Tento scénář je vhodný pro jeho jednoduchost v Azure, ne pro jeho nákladová efektivnost nebo dalších faktorů. Například můžete minimalizovat hello počet virtuálních počítačů pro toosave dvě repliky dostupnosti skupiny na výpočetní hodiny v Azure pomocí řadiče domény hello jako určující sdílená složka souboru hello kvora v clusteru s podporou převzetí služeb při selhání dvěma uzly. Tato metoda snižuje počet hello virtuálních počítačů pomocí jedné z hello výše konfigurace.
+Tento scénář je vhodný pro jeho jednoduchost v Azure, ne pro jeho nákladová efektivnost nebo dalších faktorů. Například můžete minimalizovat počet virtuálních počítačů pro skupinu dostupnosti dvě repliky uložit na výpočetní hodiny v Azure pomocí řadiče domény jako sdílenou složku kvora v clusteru s podporou převzetí služeb při selhání dvěma uzly. Tato metoda snižuje počet virtuálních počítačů pomocí jedné z výše uvedených konfigurace.
 
-Tento kurz je určen, že tooshow hello kroky, které jsou požadované tooset až hello popsané výše, řešení bez vypracování na hello podrobnosti o jednotlivých kroků. Proto místo Pokud kroků konfigurace hello grafickým uživatelským rozhraním, používá prostředí PowerShell skriptování tootake můžete rychle přes každý krok. Tento kurz předpokládá hello následující:
+Tento kurz je určený tak, aby zobrazovalo kroky, které je potřeba nastavit řešení popsané výše, bez vypracování na podrobnosti o jednotlivých kroků. Proto místo kroky konfigurace grafickým uživatelským rozhraním, používá prostředí PowerShell na vás provede rychle každý krok. Tento kurz předpokládá následující:
 
-* Už máte účet Azure s předplatným hello virtuálního počítače.
-* Jste nainstalovali hello [rutin prostředí Azure PowerShell](/powershell/azure/overview).
+* Už máte účet Azure s předplatným virtuálního počítače.
+* Jste nainstalovali [rutin prostředí Azure PowerShell](/powershell/azure/overview).
 * Už máte plnou Principy Always On skupin dostupnosti pro místní řešení. Další informace najdete v tématu [Always On skupiny dostupnosti (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx).
 
-## <a name="connect-tooyour-azure-subscription-and-create-hello-virtual-network"></a>Připojení tooyour předplatného Azure a vytvořit virtuální síť hello
-1. V okně prostředí PowerShell v místním počítači importovat hello Azure modulu, stáhněte hello počítač tooyour soubor nastavení publikování a připojit vaše tooyour relace prostředí PowerShell předplatného Azure importováním hello stáhnout nastavení publikování.
+## <a name="connect-to-your-azure-subscription-and-create-the-virtual-network"></a>Připojení k předplatnému Azure a vytvoření virtuální sítě
+1. V okně prostředí PowerShell v místním počítači naimportujte modul Azure, stáhnout nastavení publikování do vašeho počítače a připojení relace prostředí PowerShell k předplatnému Azure importováním stažené nastavení publikování.
 
         Import-Module "C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\Azure\Azure.psd1"
         Get-AzurePublishSettingsFile
         Import-AzurePublishSettingsFile <publishsettingsfilepath>
 
-    Hello **Get-AzurePublishSettingsFile** příkaz automaticky vygeneruje certifikát pro správu s Azure a stáhne je tooyour počítače. Prohlížeč se automaticky otevře a vy budete výzvami tooenter přihlašovacích údajů účtu Microsoft hello vašeho předplatného Azure. Hello Stáhnout **.publishsettings** soubor obsahuje všechny informace hello, je nutné toomanage vašeho předplatného Azure. Po uložení tento soubor tooa místní adresář, ho importovat pomocí hello **Import AzurePublishSettingsFile** příkaz.
+    **Get-AzurePublishSettingsFile** příkaz automaticky vygeneruje certifikát pro správu s Azure a stáhne do počítače. V prohlížeči se otevře automaticky a se zobrazí výzva k zadání přihlašovacích údajů účtu Microsoft pro vaše předplatné Azure. Stažené **.publishsettings** soubor obsahuje všechny informace, které potřebujete ke správě vašeho předplatného Azure. Po uložení tohoto souboru do místního adresáře, ho importovat pomocí **Import AzurePublishSettingsFile** příkaz.
 
    > [!NOTE]
-   > soubor .publishsettings Hello obsahuje vaše pověření (nekódovaných), které jsou používané tooadminister vaše předplatná Azure a služby. Hello osvědčený postup zabezpečení pro tento soubor je toostore ho dočasně mimo adresáře zdroje (například ve složce Libraries\Documents hello) a poté jej odstraňte po dokončení importu hello. Uživatel se zlými úmysly, který získá přístup k souboru .publishsettings toohello můžete upravit, vytvoření a odstranění služeb Azure.
+   > Soubor .publishsettings obsahuje vaše pověření (nekódovaných), které se používají ke správě vašich předplatných Azure a služby. Nejlepším způsobem zabezpečení pro tento soubor je dočasně uložit mimo adresáře zdroje (například ve složce Libraries\Documents) a poté jej odstraňte po dokončení importu. Uživatel se zlými úmysly, který získá přístup k souboru .publishsettings můžete upravit, vytvoření a odstranění služeb Azure.
 
-2. Definujte řady proměnných, které použijete toocreate vaší cloudové infrastruktury IT.
+2. Definujte řady proměnných, které budete používat k vytvoření vaší cloudové infrastruktury IT.
 
         $location = "West US"
         $affinityGroupName = "ContosoAG"
@@ -80,12 +80,12 @@ Tento kurz je určen, že tooshow hello kroky, které jsou požadované tooset a
         $vmAdminPassword = "Contoso!000"
         $workingDir = "c:\scripts\"
 
-    Věnovat pozornost toohello následující tooensure, který bude později úspěšné příkazech:
+    Věnujte pozornost následujícím zajistit, že vaše příkazy bude úspěšné později:
 
-   * Proměnné **$storageAccountName** a **$dcServiceName** musí být jedinečný, protože jsou použít tooidentify účet cloudového úložiště a cloudovými servery však v uvedeném pořadí, v hello Internetu.
-   * Hello názvy, které zadáte pro proměnné **$affinityGroupName** a **$virtualNetworkName** konfigurované v dokumentu konfigurace virtuální sítě hello, které budete používat později.
-   * **$sqlImageName** určuje hello aktualizovat název hello image virtuálního počítače, který obsahuje SQL Server 2012 Service Pack 1 Enterprise Edition.
-   * Pro jednoduchost **Contoso! 000** je hello stejné heslo, které se používá napříč celou kurzu hello.
+   * Proměnné **$storageAccountName** a **$dcServiceName** musí být jedinečný, protože se používá k identifikaci cloudu účet a cloudu server úložiště, v uvedeném pořadí, v síti Internet.
+   * Názvy, které zadáte pro proměnné **$affinityGroupName** a **$virtualNetworkName** jsou nakonfigurované v dokumentu konfigurace virtuální sítě, které budete používat později.
+   * **$sqlImageName** určuje aktualizované název image virtuálního počítače, který obsahuje SQL Server 2012 Service Pack 1 Enterprise Edition.
+   * Pro jednoduchost **Contoso! 000** je stejné heslo, které se používá napříč celou kurzu.
 
 3. Vytvořte skupinu vztahů.
 
@@ -100,7 +100,7 @@ Tento kurz je určen, že tooshow hello kroky, které jsou požadované tooset a
         Set-AzureVNetConfig `
             -ConfigurationPath $networkConfigPath
 
-    Hello konfigurační soubor obsahuje hello následující dokument XML. Stručně řečeno, určuje virtuální sítě s názvem **ContosoNET** ve skupině vztahů hello názvem **ContosoAG**. Má hello adresní prostor **10.10.0.0/16** a má dvě podsítě, **10.10.1.0/24** a **10.10.2.0/24**, které jsou v uvedeném pořadí hello podsítě front a zpět podsíť. Hello front podsíť je, kde můžete umístit klientské aplikace, třeba Microsoft SharePoint. je back podsíť Hello budete umístění virtuálních počítačů hello SQL serveru. Pokud změníte hello **$affinityGroupName** a **$virtualNetworkName** proměnné starší, musíte změnit taky hello odpovídající názvy níže.
+    Konfigurační soubor obsahuje následující dokument XML. Stručně řečeno, určuje virtuální sítě s názvem **ContosoNET** ve skupině vztahů názvem **ContosoAG**. Má adresní prostor **10.10.0.0/16** a má dvě podsítě, **10.10.1.0/24** a **10.10.2.0/24**, které jsou v uvedeném pořadí front podsíť a zpět podsítě. Front podsíť je, kde můžete umístit klientské aplikace, třeba Microsoft SharePoint. Back podsíť je, kde budete umístit virtuální počítače serveru SQL. Pokud změníte **$affinityGroupName** a **$virtualNetworkName** proměnné starší, musíte změnit taky odpovídající názvy níže.
 
         <NetworkConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
           <VirtualNetworkConfiguration>
@@ -123,7 +123,7 @@ Tento kurz je určen, že tooshow hello kroky, které jsou požadované tooset a
           </VirtualNetworkConfiguration>
         </NetworkConfiguration>
 
-5. Vytvořte účet úložiště, který je spojen s hello skupinu vztahů, že jste vytvořili a nastavte ji jako hello aktuální účet úložiště v rámci vašeho předplatného.
+5. Vytvořte účet úložiště, který je spojen s skupinu vztahů, že jste vytvořili a nastavte ji jako aktuální účet úložiště v rámci vašeho předplatného.
 
         New-AzureStorageAccount `
             -StorageAccountName $storageAccountName `
@@ -133,7 +133,7 @@ Tento kurz je určen, že tooshow hello kroky, které jsou požadované tooset a
             -SubscriptionName (Get-AzureSubscription).SubscriptionName `
             -CurrentStorageAccount $storageAccountName
 
-6. Vytvořte server řadiče domény hello sady hello nové cloudové služby a dostupnost.
+6. Vytvořte server řadiče domény v nové cloudové služby a dostupnost sady.
 
         New-AzureVMConfig `
             -Name $dcServerName `
@@ -151,14 +151,14 @@ Tento kurz je určen, že tooshow hello kroky, které jsou požadované tooset a
                     –AffinityGroup $affinityGroupName `
                     -VNetName $virtualNetworkName
 
-    Tyto příkazy vytvoření kanálu hello následující věci:
+    Tyto příkazy vytvoření kanálu provádět následující akce:
 
    * **Nové AzureVMConfig** vytvoří konfigurace virtuálního počítače.
-   * **Přidat AzureProvisioningConfig** poskytuje hello konfigurační parametry samostatný server systému Windows.
-   * **Přidat AzureDataDisk** přidá hello datový disk, které budete používat pro ukládání dat služby Active Directory s hello tooNone sadu možnost ukládání do mezipaměti.
-   * **Nový-AzureVM** vytvoří novou cloudovou službu a vytvoří hello nového virtuálního počítače Azure v hello novou cloudovou službu.
+   * **Přidat AzureProvisioningConfig** obsahuje parametry konfigurace samostatný server systému Windows.
+   * **Přidat AzureDataDisk** přidá datový disk, který použijete pro ukládání dat služby Active Directory, s možností ukládání do mezipaměti, nastavena na hodnotu None.
+   * **Nový-AzureVM** vytvoří novou cloudovou službu a vytvoří nový virtuální počítač Azure v rámci nové cloudové služby.
 
-7. Počkejte hello nový virtuální počítač toobe plně zřízený a stáhnout hello souboru vzdálené plochy tooyour pracovní adresář. Vzhledem k tomu hello nový virtuální počítač Azure používá tooprovision dlouhou dobu, hello `while` smyčky pokračuje toopoll hello nový virtuální počítač, dokud je připravený k použití.
+7. Počkejte kompletní zřízení nového virtuálního počítače a stáhněte si soubor vzdálené plochy do pracovní adresář. Vzhledem k tomu, že nový virtuální počítač Azure trvá příliš dlouho a zajišťují, `while` smyčky nadále dotazování nový virtuální počítač, dokud je připravený k použití.
 
         $VMStatus = Get-AzureVM -ServiceName $dcServiceName -Name $dcServerName
 
@@ -174,12 +174,12 @@ Tento kurz je určen, že tooshow hello kroky, které jsou požadované tooset a
             -Name $dcServerName `
             -LocalPath "$workingDir$dcServerName.rdp"
 
-Nyní je úspěšně zřízen Hello server řadiče domény. Dále nakonfigurujete hello domény služby Active Directory na tomto serveru řadiče domény. Nechte okno prostředí PowerShell hello otevřené v místním počítači. Použijete jej znovu novější toocreate hello dva virtuální počítače SQL serveru.
+Nyní je úspěšně zřízený server řadiče domény. Dále nakonfigurujete domény služby Active Directory na tomto serveru řadiče domény. Ponechte okno prostředí PowerShell otevřené v místním počítači. Budete ho později používali k vytváření dva virtuální počítače SQL serveru.
 
-## <a name="configure-hello-domain-controller"></a>Konfigurace řadiče domény hello
-1. Připojte server řadiče domény toohello spuštěním souboru vzdálené plochy hello. Uživatelské jméno AzureAdmin a heslo správce počítače hello **Contoso! 000**, který jste zadali při vytvoření hello nového virtuálního počítače.
+## <a name="configure-the-domain-controller"></a>Konfigurace řadiče domény
+1. Připojení k serveru řadiče domény spuštěním souboru vzdálené plochy. Uživatelské jméno AzureAdmin a heslo správce počítače **Contoso! 000**, který jste zadali při vytvoření nového virtuálního počítače.
 2. Otevřete okno prostředí PowerShell v režimu správce.
-3. Spusťte následující hello **DCPROMO. EXE** tooset příkaz až hello **corp.contoso.com** domény s hello datové adresáře na disku M.
+3. Spusťte následující **DCPROMO. EXE** příkaz nastavit **corp.contoso.com** domény s datové adresáře na disku M.
 
         dcpromo.exe `
             /unattend `
@@ -197,14 +197,14 @@ Nyní je úspěšně zřízen Hello server řadiče domény. Dále nakonfiguruje
             /SYSVOLPath:"C:\Windows\SYSVOL" `
             /SafeModeAdminPassword:"Contoso!000"
 
-    Po dokončení příkazu hello hello virtuální počítač se automaticky restartuje.
+    Po dokončení příkazu virtuální počítač se automaticky restartuje.
 
-4. Znovu připojte server řadiče domény toohello spuštěním souboru vzdálené plochy hello. Tentokrát, přihlaste se jako **CORP\Administrator**.
-5. Otevřete okno prostředí PowerShell v režimu správce a importujte modul Active Directory PowerShell hello pomocí hello následující příkaz:
+4. Znova se připojte k serveru řadiče domény spuštěním souboru vzdálené plochy. Tentokrát, přihlaste se jako **CORP\Administrator**.
+5. Otevřete okno prostředí PowerShell v režimu správce a importujte modul Active Directory PowerShell pomocí následujícího příkazu:
 
         Import-Module ActiveDirectory
 
-6. Spusťte následující příkazy tooadd tři uživatelé toohello domény hello.
+6. Spusťte následující příkazy pro přidání tři uživatelů k doméně.
 
         $pwd = ConvertTo-SecureString "Contoso!000" -AsPlainText -Force
         New-ADUser `
@@ -226,8 +226,8 @@ Nyní je úspěšně zřízen Hello server řadiče domény. Dále nakonfiguruje
             -ChangePasswordAtLogon $false `
             -Enabled $true
 
-    **CORP\Install** je použité tooconfigure všechno související toohello instance služby SQL Server, hello převzetí služeb při selhání clusteru a skupinu dostupnosti hello. **CORP\SQLSvc1** a **CORP\SQLSvc2** jsou použity jako účty služby SQL Server hello pro hello dva virtuální počítače serveru SQL.
-7. Hello další, spusťte následující příkazy toogive **CORP\Install** hello oprávnění toocreate počítačových objektů v doméně hello.
+    **CORP\Install** slouží ke konfiguraci všechno související s instancí služby SQL Server, převzetí služeb při selhání clusteru a skupinu dostupnosti. **CORP\SQLSvc1** a **CORP\SQLSvc2** jsou použity jako účty služby SQL Server pro dva virtuální počítače SQL serveru.
+7. Potom spusťte následující příkazy umožnit **CORP\Install** oprávnění k vytváření počítačových objektů v doméně.
 
         Cd ad:
         $sid = new-object System.Security.Principal.SecurityIdentifier (Get-ADUser "Install").SID
@@ -238,12 +238,12 @@ Nyní je úspěšně zřízen Hello server řadiče domény. Dále nakonfiguruje
         $acl.AddAccessRule($ace1)
         Set-Acl -Path "DC=corp,DC=contoso,DC=com" -AclObject $acl
 
-    Hello výše zadaný identifikátor GUID je hello identifikátor GUID pro typ objektu počítače hello. Hello **CORP\Install** účet potřebuje hello **čtení všech vlastností** a **vytvářet objekty počítačů** oprávnění toocreate hello Active přímé objekty hello převzetí služeb při selhání cluster. Hello **čtení všech vlastností** oprávnění je již přidělena tooCORP\Install ve výchozím nastavení, takže není nutné toogrant jej explicitně. Další informace o oprávnění, které jsou potřeba toocreate hello převzetí služeb při selhání clusteru, najdete v části [převzetí služeb při selhání clusteru podrobný průvodce: Konfigurace účty ve službě Active Directory](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx).
+    Identifikátor GUID uveden výše je identifikátor GUID pro objekt typu počítače. **CORP\Install** musí účet **čtení všech vlastností** a **vytvářet objekty počítačů** oprávnění k vytvoření Active přímé objekty pro převzetí služeb při selhání clusteru. **Čtení všech vlastností** oprávnění je již CORP\Install ve výchozím nastavení přiděleno, takže není nutné ji explicitně udělit. Další informace o oprávnění, které jsou potřebné k vytvoření clusteru převzetí služeb při selhání najdete v tématu [převzetí služeb při selhání clusteru podrobný průvodce: Konfigurace účty ve službě Active Directory](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx).
 
-    Teď, když jste dokončili konfigurace služby Active Directory a hello uživatelské objekty, vytvoříte dva virtuální počítače serveru SQL a připojovat je toothis domény.
+    Teď, když jste dokončili konfigurace služby Active Directory a uživatelských objektů, vytvoříte dva virtuální počítače serveru SQL a připojovat je k této doméně.
 
-## <a name="create-hello-sql-server-vms"></a>Vytvoření virtuálních počítačů hello SQL serveru
-1. Pokračujte v okně prostředí PowerShell hello toouse, které je otevřený v místním počítači. Definujte hello následující další proměnné:
+## <a name="create-the-sql-server-vms"></a>Vytvoření virtuálních počítačů serveru SQL
+1. Nadále používat okno prostředí PowerShell, který je otevřený v místním počítači. Definujte následující další proměnné:
 
         $domainName= "corp"
         $FQDN = "corp.contoso.com"
@@ -256,8 +256,8 @@ Nyní je úspěšně zřízen Hello server řadiče domény. Dále nakonfiguruje
         $dataDiskSize = 100
         $dnsSettings = New-AzureDns -Name "ContosoBackDNS" -IPAddress "10.10.0.4"
 
-    Hello IP adresu **10.10.0.4** je obvykle přiřazena toohello první virtuální počítač, který vytvoříte v hello **10.10.0.0/16** podsíť virtuální sítě Azure. By měl ověřit, zda je hello adresu serveru řadiče domény tak, že spustíte **IPCONFIG**.
-2. S názvem virtuální počítač v clusteru převzetí služeb při selhání hello spuštění hello po vytvoření kanálu příkazy toocreate hello nejprve **ContosoQuorum**:
+    IP adresa **10.10.0.4** je obvykle přiřazena první virtuální počítač, který vytvoříte v **10.10.0.0/16** podsíť virtuální sítě Azure. Ověřte, že jde o adresu serveru řadiče domény tak, že spustíte **IPCONFIG**.
+2. Spusťte následující přesměruje příkazů pro vytvoření první virtuální počítač v clusteru převzetí služeb při selhání, s názvem **ContosoQuorum**:
 
         New-AzureVMConfig `
             -Name $quorumServerName `
@@ -283,13 +283,13 @@ Nyní je úspěšně zřízen Hello server řadiče domény. Dále nakonfiguruje
                         -VNetName $virtualNetworkName `
                         -DnsSettings $dnsSettings
 
-    Vezměte na vědomí následující hello týkající se nahoře na příkaz hello:
+    Vezměte na vědomí následující týkající se výše uvedeného příkazu:
 
-   * **Nové AzureVMConfig** vytvoří konfigurace virtuálního počítače se název sady dostupnosti požadované hello. Hello dalších virtuálních počítačů bude vytvořena s hello stejný název sady dostupnosti tak, aby se v připojené k toohello stejné skupině dostupnosti.
-   * **Přidat AzureProvisioningConfig** spojení hello domény služby Active Directory toohello virtuálního počítače, který jste vytvořili.
-   * **Set-AzureSubnet** místech hello virtuálního počítače v podsíti back hello.
-   * **Nový-AzureVM** vytvoří novou cloudovou službu a vytvoří hello nového virtuálního počítače Azure v hello novou cloudovou službu. Hello **DnsSettings** parametr určuje tento server DNS hello pro hello servery v hello nové cloudové služby má hello IP adresu **10.10.0.4**. Toto je IP adresa hello hello server řadiče domény. Tento parametr je potřeba tooenable hello nové virtuální počítače v doméně služby Active Directory hello cloudové služby toojoin toohello úspěšně. Bez tohoto parametru je nutné ručně nastavit hello nastavením IPv4 na serveru řadiče domény hello toouse virtuálních počítačů jako primární server DNS hello po hello virtuálního počítače je zřízený a pak připojit k doméně služby Active Directory toohello hello virtuálních počítačů.
-3. Po vytvoření kanálu spuštění hello příkazy hello toocreate virtuálním počítačům systému SQL Server, s názvem **ContosoSQL1** a **ContosoSQL2**.
+   * **Nové AzureVMConfig** vytvoří konfigurace virtuálního počítače s názvem sadu požadovanou dostupnosti. Se stejným názvem sady dostupnosti bude vytvořen dalších virtuálních počítačů, tak, aby se připojit do stejné skupiny dostupnosti.
+   * **Přidat AzureProvisioningConfig** připojí virtuální počítač k doméně služby Active Directory, kterou jste vytvořili.
+   * **Set-AzureSubnet** umístí virtuální počítač v back podsíti.
+   * **Nový-AzureVM** vytvoří novou cloudovou službu a vytvoří nový virtuální počítač Azure v rámci nové cloudové služby. **DnsSettings** parametr určuje, zda má server DNS pro servery v cloudové službě novou IP adresu **10.10.0.4**. Toto je IP adresa serveru řadiče domény. Tento parametr je potřebná k povolení nové virtuální počítače v rámci cloudové služby pro připojení k doméně služby Active Directory úspěšně. Tento parametr musíte ručně nastavit nastavením IPv4 v virtuálního počítače používat server řadiče domény jako primární server DNS po zřízení virtuálního počítače a potom připojí virtuální počítač k doméně služby Active Directory.
+3. Spusťte následující přesměruje příkazů pro vytvoření virtuálních počítačů serveru SQL s názvem **ContosoSQL1** a **ContosoSQL2**.
 
         # Create ContosoSQL1...
         New-AzureVMConfig `
@@ -347,20 +347,20 @@ Nyní je úspěšně zřízen Hello server řadiče domény. Dále nakonfiguruje
                         New-AzureVM `
                             -ServiceName $sqlServiceName
 
-    Vezměte na vědomí následující hello týkající se příkazy hello výše:
+    Vezměte na vědomí následující týkající se výše uvedené příkazy:
 
-   * **Nové AzureVMConfig** hello používá stejný název sady dostupnosti jako server řadiče domény hello a hello používá SQL Server 2012 Service Pack 1 Enterprise Edition obrázek v galerii virtuálních počítačů hello. Nastaví taky hello operačního systému disku tooread ukládání do mezipaměti pouze (bez ukládání do mezipaměti). Doporučujeme vám, že migrujete hello databáze soubory tooa samostatné datový disk připojit toohello virtuální počítač a konfigurovat žádné čtení nebo ukládání do mezipaměti. Hello skoro stejné je však, že tooremove ukládání do mezipaměti na disku operačního systému hello vzhledem k tomu, že nemůžete odebrat mezipaměti pro čtení na disku operačního systému hello.
-   * **Přidat AzureProvisioningConfig** spojení hello domény služby Active Directory toohello virtuálního počítače, který jste vytvořili.
-   * **Set-AzureSubnet** místech hello virtuálního počítače v podsíti back hello.
-   * **Přidat AzureEndpoint** přidá přístup koncových bodů, aby tyto instance služby SQL Server na hello Internet přístup klientské aplikace. Jiné porty jsou uvedeny tooContosoSQL1 a ContosoSQL2.
-   * **Nový-AzureVM** vytvoří hello nový virtuální počítač SQL Server v hello stejné cloudové služby jako ContosoQuorum. Virtuální počítače hello musí být ve stejné cloudové služby pokud je chcete toobe v hello hello stejné skupině dostupnosti.
-4. Počkejte, než pro každý virtuální počítač toobe plně zřízený a pro každý virtuální počítač toodownload jeho souboru vzdálené plochy tooyour pracovní adresář. Hello `for` smyček procházení hello tři nové virtuální počítače a spouští příkazy hello uvnitř hello nejvyšší úrovně složené závorky pro každý z nich.
+   * **Nové AzureVMConfig** používá stejný název sady dostupnosti jako server řadiče domény a bitovou kopii systému SQL Server 2012 Service Pack 1 Enterprise Edition v galerii virtuálních počítačů. Také nastaví disku operačního systému na čtení ukládání do mezipaměti pouze (bez ukládání do mezipaměti). Doporučujeme migraci soubory databáze do samostatné datový disk, který připojíte k virtuálnímu počítači a konfigurace bez pro čtení a ukládání do mezipaměti. Skoro je však k odebrání ukládání do mezipaměti na disku operačního systému, protože nelze odebrat, přečtěte si ukládání do mezipaměti na disku operačního systému.
+   * **Přidat AzureProvisioningConfig** připojí virtuální počítač k doméně služby Active Directory, kterou jste vytvořili.
+   * **Set-AzureSubnet** umístí virtuální počítač v back podsíti.
+   * **Přidat AzureEndpoint** přidá přístup koncových bodů, aby klientské aplikace přístup tyto instance služby SQL Server na Internetu. K ContosoSQL1 a ContosoSQL2 mají jiné porty.
+   * **Nový-AzureVM** vytvoří nový virtuální počítač SQL Server v rámci stejné cloudové služby jako ContosoQuorum. Virtuální počítače musí být ve stejné cloudové služby, pokud chcete, aby se ve stejné sadě dostupnosti.
+4. Počkejte, než pro každý virtuální počítač plně zřídit a pro každý virtuální počítač ke stažení souboru jeho vzdálené plochy do pracovního adresáře. `for` Smyčky procházení tři nové virtuální počítače a spouští příkazy uvnitř nejvyšší úrovně složené závorky pro každý z nich.
 
         Foreach ($VM in $VMs = Get-AzureVM -ServiceName $sqlServiceName)
         {
             write-host "Waiting for " $VM.Name "..."
 
-            # Loop until hello VM status is "ReadyRole"
+            # Loop until the VM status is "ReadyRole"
             While ($VM.InstanceStatus -ne "ReadyRole")
             {
                 write-host "  Current Status = " $VM.InstanceStatus
@@ -374,28 +374,28 @@ Nyní je úspěšně zřízen Hello server řadiče domény. Dále nakonfiguruje
             Get-AzureRemoteDesktopFile -ServiceName $VM.ServiceName -Name $VM.InstanceName -LocalPath "$workingDir$($VM.InstanceName).rdp"
         }
 
-    Hello virtuálních počítačů serveru SQL je nyní opatřen a spuštěná, ale instalované se systémem SQL Server s výchozími možnostmi.
+    Virtuální počítače serveru SQL je nyní opatřen a spuštěná, ale instalované se systémem SQL Server s výchozími možnostmi.
 
-## <a name="initialize-hello-failover-cluster-vms"></a>Inicializace hello převzetí služeb při selhání clusteru virtuálních počítačů
-V této části je nutné hello toomodify tři se servery, které budete používat v clusteru převzetí služeb při selhání hello a instalace systému SQL Server hello. Zejména:
+## <a name="initialize-the-failover-cluster-vms"></a>Inicializovat převzetí služeb při selhání clusteru virtuálních počítačů
+V této části musíte upravit tři servery, které budete používat v clusteru převzetí služeb při selhání a instalace systému SQL Server. Zejména:
 
-* Všechny servery: budete potřebovat tooinstall hello **Clustering převzetí služeb při selhání** funkce.
-* Všechny servery: budete potřebovat tooadd **CORP\Install** jako počítač hello **správce**.
-* ContosoSQL1 a ContosoSQL2 pouze: budete potřebovat tooadd **CORP\Install** jako **sysadmin** role v hello výchozí databáze.
-* ContosoSQL1 a ContosoSQL2 pouze: budete potřebovat tooadd **NT AUTHORITY\System** jako Přihlaste se pomocí hello následující oprávnění:
+* Všechny servery: je potřeba nainstalovat **Clustering převzetí služeb při selhání** funkce.
+* Všechny servery: je nutné přidat **CORP\Install** jako počítač **správce**.
+* ContosoSQL1 a ContosoSQL2 pouze: je nutné přidat **CORP\Install** jako **sysadmin** role v výchozí databáze.
+* ContosoSQL1 a ContosoSQL2 pouze: je nutné přidat **NT AUTHORITY\System** jako u přihlášení s následujícími oprávněními:
 
   * Příkaz ALTER žádnou skupinu dostupnosti
   * Připojení SQL
   * Zobrazení stavu serveru
-* ContosoSQL1 a ContosoSQL2 pouze: hello **TCP** na hello virtuální počítač SQL Server je již povolen protokol. Stále však tooopen hello brány firewall pro vzdálený přístup systému SQL Server.
+* ContosoSQL1 a ContosoSQL2 pouze: **TCP** na virtuální počítač SQL Server je již povolen protokol. Však stále musíte otevřít bránu firewall pro vzdálený přístup systému SQL Server.
 
-Nyní jste toostart připraven. Počínaje **ContosoQuorum**, postupujte podle následujících kroků hello:
+Teď jste připravení začít. Počínaje **ContosoQuorum**, postupujte podle následujících kroků:
 
-1. Připojit příliš**ContosoQuorum** spuštěním hello soubory vzdálené plochy. Použijte uživatelské jméno správce počítače hello **AzureAdmin** a heslo **Contoso! 000**, který jste zadali při vytváření virtuálních počítačů hello.
-2. Ověřte, zda text hello počítače mít byla úspěšně připojeni příliš**corp.contoso.com**.
-3. Počkejte toofinish instalace systému SQL Server hello systémem hello automatizované úlohy inicializace než budete pokračovat.
+1. Připojení k **ContosoQuorum** spuštěním soubory vzdálené plochy. Použijte uživatelské jméno správce počítače **AzureAdmin** a heslo **Contoso! 000**, který jste zadali při vytváření virtuálních počítačů.
+2. Ověřte, že počítače byl úspěšně připojen k **corp.contoso.com**.
+3. Počkejte na dokončení spuštěných úloh automatizované inicializace před pokračováním instalace systému SQL Server.
 4. Otevřete okno prostředí PowerShell v režimu správce.
-5. Nainstalujte funkci Clustering převzetí služeb při selhání Windows hello.
+5. Instalace funkce Clustering převzetí služeb při selhání systému Windows.
 
         Import-Module ServerManager
         Add-WindowsFeature Failover-Clustering
@@ -406,46 +406,46 @@ Nyní jste toostart připraven. Počínaje **ContosoQuorum**, postupujte podle n
 
         logoff.exe
 
-V dalším kroku inicializovat **ContosoSQL1** a **ContosoSQL2**. Postupujte podle hello kroky, které jsou stejné pro oba virtuální počítače serveru SQL.
+V dalším kroku inicializovat **ContosoSQL1** a **ContosoSQL2**. Postupujte podle následujících kroků, které jsou stejné pro oba virtuální počítače serveru SQL.
 
-1. Připojte virtuální počítače serveru SQL toohello dva spuštěním hello soubory vzdálené plochy. Použijte uživatelské jméno správce počítače hello **AzureAdmin** a heslo **Contoso! 000**, který jste zadali při vytváření virtuálních počítačů hello.
-2. Ověřte, zda text hello počítače mít byla úspěšně připojeni příliš**corp.contoso.com**.
-3. Počkejte toofinish instalace systému SQL Server hello systémem hello automatizované úlohy inicializace než budete pokračovat.
+1. Připojte k dva virtuální počítače SQL serveru spuštěním soubory vzdálené plochy. Použijte uživatelské jméno správce počítače **AzureAdmin** a heslo **Contoso! 000**, který jste zadali při vytváření virtuálních počítačů.
+2. Ověřte, že počítače byl úspěšně připojen k **corp.contoso.com**.
+3. Počkejte na dokončení spuštěných úloh automatizované inicializace před pokračováním instalace systému SQL Server.
 4. Otevřete okno prostředí PowerShell v režimu správce.
-5. Nainstalujte funkci Clustering převzetí služeb při selhání Windows hello.
+5. Instalace funkce Clustering převzetí služeb při selhání systému Windows.
 
         Import-Module ServerManager
         Add-WindowsFeature Failover-Clustering
 6. Přidat **CORP\Install** jako místní správce.
 
         net localgroup administrators "CORP\Install" /Add
-7. Importujte hello poskytovatele prostředí PowerShell pro Server SQL.
+7. Importujte poskytovatele prostředí PowerShell serveru SQL.
 
         Set-ExecutionPolicy -Execution RemoteSigned -Force
         Import-Module -Name "sqlps" -DisableNameChecking
-8. Přidat **CORP\Install** jako role sysadmin hello hello výchozí instanci SQL serveru.
+8. Přidat **CORP\Install** jako roli správce systému pro výchozí instanci SQL serveru.
 
         net localgroup administrators "CORP\Install" /Add
         Invoke-SqlCmd -Query "EXEC sp_addsrvrolemember 'CORP\Install', 'sysadmin'" -ServerInstance "."
-9. Přidat **NT AUTHORITY\System** jako u přihlášení s oprávněními hello tři popsané výše.
+9. Přidat **NT AUTHORITY\System** jako Přihlaste se pomocí tří oprávnění popsané výše.
 
         Invoke-SqlCmd -Query "CREATE LOGIN [NT AUTHORITY\SYSTEM] FROM WINDOWS" -ServerInstance "."
-        Invoke-SqlCmd -Query "GRANT ALTER ANY AVAILABILITY GROUP too[NT AUTHORITY\SYSTEM] AS SA" -ServerInstance "."
-        Invoke-SqlCmd -Query "GRANT CONNECT SQL too[NT AUTHORITY\SYSTEM] AS SA" -ServerInstance "."
-        Invoke-SqlCmd -Query "GRANT VIEW SERVER STATE too[NT AUTHORITY\SYSTEM] AS SA" -ServerInstance "."
-10. Otevřete hello brány firewall pro vzdálený přístup systému SQL Server.
+        Invoke-SqlCmd -Query "GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM] AS SA" -ServerInstance "."
+        Invoke-SqlCmd -Query "GRANT CONNECT SQL TO [NT AUTHORITY\SYSTEM] AS SA" -ServerInstance "."
+        Invoke-SqlCmd -Query "GRANT VIEW SERVER STATE TO [NT AUTHORITY\SYSTEM] AS SA" -ServerInstance "."
+10. Otevření brány firewall pro vzdálený přístup systému SQL Server.
 
          netsh advfirewall firewall add rule name='SQL Server (TCP-In)' program='C:\Program Files\Microsoft SQL Server\MSSQL11.MSSQLSERVER\MSSQL\Binn\sqlservr.exe' dir=in action=allow protocol=TCP
 11. Odhlásit z oba virtuální počítače.
 
          logoff.exe
 
-Nakonec jste skupiny dostupnosti připravené tooconfigure hello. Budete používat hello poskytovatele prostředí PowerShell pro Server SQL tooperform všechny hello pracovat na **ContosoSQL1**.
+Nakonec budete připraveni ke konfiguraci skupiny dostupnosti. Zprostředkovatel SQL Server prostředí PowerShell budete používat k provádění všech činností, které na **ContosoSQL1**.
 
-## <a name="configure-hello-availability-group"></a>Konfigurace skupiny dostupnosti hello
-1. Připojit příliš**ContosoSQL1** znovu spuštěním hello soubory vzdálené plochy. Místo přihlášení pomocí účtu počítače hello, přihlaste se pomocí **CORP\Install**.
+## <a name="configure-the-availability-group"></a>Nakonfigurujte skupinu dostupnosti
+1. Připojení k **ContosoSQL1** znovu spuštěním soubory vzdálené plochy. Místo přihlášení pomocí účtu počítače, přihlaste se pomocí **CORP\Install**.
 2. Otevřete okno prostředí PowerShell v režimu správce.
-3. Definujte hello následující proměnné:
+3. Definujte následující proměnné:
 
         $server1 = "ContosoSQL1"
         $server2 = "ContosoSQL2"
@@ -459,11 +459,11 @@ Nakonec jste skupiny dostupnosti připravené tooconfigure hello. Budete použí
         $backupShare = "\\$server1\backup"
         $quorumShare = "\\$server1\quorum"
         $ag = "AG1"
-4. Importujte hello poskytovatele prostředí PowerShell pro Server SQL.
+4. Importujte poskytovatele prostředí PowerShell serveru SQL.
 
         Set-ExecutionPolicy RemoteSigned -Force
         Import-Module "sqlps" -DisableNameChecking
-5. Změňte účet služby SQL Server hello ContosoSQL1 tooCORP\SQLSvc1.
+5. Změňte účet služby SQL Server pro ContosoSQL1 na CORP\SQLSvc1.
 
         $wmi1 = new-object ("Microsoft.SqlServer.Management.Smo.Wmi.ManagedComputer") $server1
         $wmi1.services | where {$_.Type -eq 'SqlServer'} | foreach{$_.SetServiceAccount($acct1,$password)}
@@ -472,7 +472,7 @@ Nakonec jste skupiny dostupnosti připravené tooconfigure hello. Budete použí
         $svc1.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc1.Start();
         $svc1.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-6. Změňte účet služby SQL Server hello ContosoSQL2 tooCORP\SQLSvc2.
+6. Změňte účet služby SQL Server pro ContosoSQL2 na CORP\SQLSvc2.
 
         $wmi2 = new-object ("Microsoft.SqlServer.Management.Smo.Wmi.ManagedComputer") $server2
         $wmi2.services | where {$_.Type -eq 'SqlServer'} | foreach{$_.SetServiceAccount($acct2,$password)}
@@ -481,12 +481,12 @@ Nakonec jste skupiny dostupnosti připravené tooconfigure hello. Budete použí
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc2.Start();
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-7. Stáhněte si **CreateAzureFailoverCluster.ps1** z [vytvořit Cluster převzetí služeb při selhání pro skupiny dostupnosti Always On ve virtuálním počítači Azure](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) toohello místní pracovní adresář. Tento skript toohelp vytvoření clusteru s podporou převzetí služeb při selhání funkční budete používat. Důležité informace o clusteringu Windows převzetí služeb při selhání jak komunikuje s hello Azure sítě najdete v tématu [vysoké dostupnosti a zotavení po havárii pro SQL Server v Azure Virtual Machines](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
-8. Změňte tooyour pracovní adresář a vytvoření clusteru převzetí služeb při selhání hello pomocí skriptu hello stáhli.
+7. Stáhněte si **CreateAzureFailoverCluster.ps1** z [vytvořit Cluster převzetí služeb při selhání pro skupiny dostupnosti Always On ve virtuálním počítači Azure](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) do místní pracovní adresář. Tento skript budete používat k vytváření clusteru s podporou převzetí služeb při selhání funkční. Důležité informace o clusteringu Windows převzetí služeb při selhání jak komunikuje s síť Azure, najdete v části [vysoké dostupnosti a zotavení po havárii pro SQL Server v Azure Virtual Machines](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
+8. Změňte pracovní adresář a vytvoření clusteru převzetí služeb při selhání pomocí staženého skriptu.
 
         Set-ExecutionPolicy Unrestricted -Force
         .\CreateAzureFailoverCluster.ps1 -ClusterName "$clusterName" -ClusterNode "$server1","$server2","$serverQuorum"
-9. Povolte Always On skupiny dostupnosti pro instance systému SQL Server hello výchozí na **ContosoSQL1** a **ContosoSQL2**.
+9. Povolte Always On skupiny dostupnosti pro výchozí instance systému SQL Server na **ContosoSQL1** a **ContosoSQL2**.
 
         Enable-SqlAlwaysOn `
             -Path SQLSERVER:\SQL\$server1\Default `
@@ -498,20 +498,20 @@ Nakonec jste skupiny dostupnosti připravené tooconfigure hello. Budete použí
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc2.Start();
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-10. Vytvořte adresář zálohy a udělit oprávnění účtům služby SQL Server hello. Tuto databázi dostupnosti hello tooprepare directory budete používat v sekundární replice hello.
+10. Vytvořte adresář zálohy a udělit oprávnění účtům služby SQL Server. Příprava databáze dostupnosti na sekundární repliku použijete tento adresář.
 
          $backup = "C:\backup"
          New-Item $backup -ItemType directory
          net share backup=$backup "/grant:$acct1,FULL" "/grant:$acct2,FULL"
          icacls.exe "$backup" /grant:r ("$acct1" + ":(OI)(CI)F") ("$acct2" + ":(OI)(CI)F")
-11. Vytvořit databázi na **ContosoSQL1** názvem **MyDB1**, provést úplnou zálohu a zálohu protokolu a obnoví je na **ContosoSQL2** s hello **WITH NORECOVERY** možnost.
+11. Vytvořit databázi na **ContosoSQL1** názvem **MyDB1**, provést úplnou zálohu a zálohu protokolu a obnoví je na **ContosoSQL2** s **WITH NORECOVERY**  možnost.
 
          Invoke-SqlCmd -Query "CREATE database $db"
          Backup-SqlDatabase -Database $db -BackupFile "$backupShare\db.bak" -ServerInstance $server1
          Backup-SqlDatabase -Database $db -BackupFile "$backupShare\db.log" -ServerInstance $server1 -BackupAction Log
          Restore-SqlDatabase -Database $db -BackupFile "$backupShare\db.bak" -ServerInstance $server2 -NoRecovery
          Restore-SqlDatabase -Database $db -BackupFile "$backupShare\db.log" -ServerInstance $server2 -RestoreAction Log -NoRecovery
-12. Vytvoření hello dostupnosti skupiny koncových bodů na hello virtuálním počítačům systému SQL Server a nastavte u koncových bodů hello hello příslušná oprávnění.
+12. Vytvořte dostupnost skupiny koncových bodů na virtuálních počítačích SQL Server a nastavit oprávnění u koncových bodů.
 
          $endpoint =
              New-SqlHadrEndpoint MyMirroringEndpoint `
@@ -529,10 +529,10 @@ Nakonec jste skupiny dostupnosti připravené tooconfigure hello. Budete použí
              -State "Started"
 
          Invoke-SqlCmd -Query "CREATE LOGIN [$acct2] FROM WINDOWS" -ServerInstance $server1
-         Invoke-SqlCmd -Query "GRANT CONNECT ON ENDPOINT::[MyMirroringEndpoint] too[$acct2]" -ServerInstance $server1
+         Invoke-SqlCmd -Query "GRANT CONNECT ON ENDPOINT::[MyMirroringEndpoint] TO [$acct2]" -ServerInstance $server1
          Invoke-SqlCmd -Query "CREATE LOGIN [$acct1] FROM WINDOWS" -ServerInstance $server2
-         Invoke-SqlCmd -Query "GRANT CONNECT ON ENDPOINT::[MyMirroringEndpoint] too[$acct1]" -ServerInstance $server2
-13. Vytvořte hello replik dostupnosti.
+         Invoke-SqlCmd -Query "GRANT CONNECT ON ENDPOINT::[MyMirroringEndpoint] TO [$acct1]" -ServerInstance $server2
+13. Vytvoření repliky dostupnosti.
 
          $primaryReplica =
              New-SqlAvailabilityReplica `
@@ -550,7 +550,7 @@ Nakonec jste skupiny dostupnosti připravené tooconfigure hello. Budete použí
              -FailoverMode "Automatic" `
              -Version 11 `
              -AsTemplate
-14. Nakonec vytvořte hello skupiny dostupnosti a skupinu dostupnosti toohello sekundární repliky hello spojení.
+14. Nakonec vytvořte skupinu dostupnosti a připojení sekundární repliky ke skupině dostupnosti.
 
          New-SqlAvailabilityGroup `
              -Name $ag `
@@ -565,6 +565,6 @@ Nakonec jste skupiny dostupnosti připravené tooconfigure hello. Budete použí
              -Database $db
 
 ## <a name="next-steps"></a>Další kroky
-Jste teď úspěšně implementovali SQL serveru Always On tak, že vytvoříte skupinu dostupnosti v Azure. tooconfigure naslouchací proces pro tuto skupinu dostupnosti, najdete v části [nakonfigurovat modul pro naslouchání ILB pro skupiny dostupnosti Always On v Azure](../classic/ps-sql-int-listener.md).
+Jste teď úspěšně implementovali SQL serveru Always On tak, že vytvoříte skupinu dostupnosti v Azure. Ke konfiguraci naslouchacího procesu pro tuto skupinu dostupnosti, najdete v části [nakonfigurovat modul pro naslouchání ILB pro skupiny dostupnosti Always On v Azure](../classic/ps-sql-int-listener.md).
 
 Další informace o používání systému SQL Server v Azure najdete v tématu [systému SQL Server na virtuálních počítačích Azure](../sql/virtual-machines-windows-sql-server-iaas-overview.md).

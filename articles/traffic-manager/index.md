@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure dokumentace k Traffic Manager – kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
-description: "Zjistěte, jak toomanage příchozí provoz aplikace optimální výkon. Dokumentace ukazuje, jak toodistribute provozu tooAzure nebo koncové body externí služby."
+title: "Dokumentace ke službě Azure Traffic Manager – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
+description: "Naučte se spravovat příchozí provoz s cílem dosažení optimálního výkonu aplikací. Dokumentace ukazuje, jak můžete distribuovat provoz do Azure nebo externích koncových bodů služby."
 services: traffic-manager
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: bb547f220186c8db9020bcd61a7e4c4d47838107
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 10e7e7c95dc0dd614c7c01581cb746f1e854a9e1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="traffic-manager-documentation"></a>Dokumentace ke službě Traffic Manager
 
-Zjistěte, jak toouse Traffic Manager tooroute příchozí provoz pro aplikace pro optimální výkon a spolehlivost. Kurzy, odkazy na rozhraní API a další dokumenty ukazují, jak toomanage provozu tooAzure nebo koncové body externí služby.
+Naučte se používat Traffic Manager ke směrování příchozího provozu s cílem dosažení optimálního výkonu a spolehlivosti aplikací. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak můžete spravovat provoz do Azure nebo externích koncových bodů služby.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -88,7 +88,7 @@ Zjistěte, jak toouse Traffic Manager tooroute příchozí provoz pro aplikace p
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začít spravovat koncové body Traffic Manager pomocí hello portálu Azure</h3>
+                        <h3>Začínáme se správou koncových bodů Traffic Manageru pomocí webu Azure Portal</h3>
                     </div>
                 </div>
             </div>

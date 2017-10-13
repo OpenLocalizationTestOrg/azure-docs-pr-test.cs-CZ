@@ -1,5 +1,5 @@
 ---
-title: "použití aaaAdvanced spolehlivé služby | Microsoft Docs"
+title: "Rozšířené použití spolehlivé služby | Microsoft Docs"
 description: "Další informace o pokročilé využití spolehlivé služby Service Fabric přidané flexibilitu v službě."
 services: Service-Fabric
 documentationcenter: .net
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.openlocfilehash: e6d6310a4deae9edcfcd76551e1337f0e39e9e5d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a87924faaf5c6c43716b06b6d70ab5100c61f097
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="advanced-usage-of-hello-reliable-services-programming-model"></a>Rozšířené použití hello spolehlivé služby programovací model
-Azure Service Fabric zjednodušuje zápis a správu spolehlivé bezstavové a stavové služby. Tato příručka pojednává o Pokročilé použití spolehlivé služby toogain další kontrolu a flexibilitu přes vaše služby. Předchozí tooreading to průvodce, seznamte se s [hello spolehlivé služby programovací model](service-fabric-reliable-services-introduction.md).
+# <a name="advanced-usage-of-the-reliable-services-programming-model"></a>Rozšířené použití spolehlivé služby programovací model
+Azure Service Fabric zjednodušuje zápis a správu spolehlivé bezstavové a stavové služby. Tato příručka pojednává o Pokročilé použití spolehlivé služby k získání další kontrolu a flexibilitu přes vaše služby. Před přečtení tohoto průvodce, seznamte se s [programovací model spolehlivé služby](service-fabric-reliable-services-introduction.md).
 
 Stavová a Bezstavová služby mají dvě primární vstupní body pro uživatelský kód:
 
@@ -33,11 +33,11 @@ Pro většinu služby jsou tyto dva vstupní body dostatečná. Ve výjimečnýc
 ## <a name="stateless-service-instance-lifecycle"></a>Instance bezstavové služby životního cyklu
 Životní cyklus bezstavové služby je velmi jednoduchý. Bezstavové služby můžete pouze otevřít, ukončeno nebo byl zrušen. `RunAsync`v bezstavové služby se spustí, až instance služby je otevřít a zrušit, pokud instance služby je uzavřen nebo přerušena.
 
-I když `RunAsync` by mělo být dostatečné v téměř všech případech hello otevřená, zavřete a přerušení události v bezstavové služby jsou k dispozici také:
+I když `RunAsync` by mělo být dostatečné v téměř všech případech otevřené, zavřete a přerušení události v bezstavové služby jsou k dispozici také:
 
-* `Task OnOpenAsync(IStatelessServicePartition, CancellationToken) - C# / CompletableFuture<String> onOpenAsync(CancellationToken) - Java`OnOpenAsync je volána, pokud je instance bezstavové služby hello o toobe použít. V tuto chvíli můžete spustit úlohy inicializace služby rozšířených.
-* `Task OnCloseAsync(CancellationToken) - C# / CompletableFuture onCloseAsync(CancellationToken) - Java`OnCloseAsync je volána, když bude instance bezstavové služby hello toobe korektně vypnout dolů. Tato situace může nastat, pokud probíhá upgrade kódu hello služby, instance služby hello přesouvá z důvodu tooload vyrovnávání nebo se detekuje přechodná chyba. OnCloseAsync můžete použít toosafely zavřete všechny prostředky, zastavit zpracování na pozadí, dokončení ukládání externí stavu nebo ukončením dolů existující připojení.
-* `void OnAbort() - C# / void onAbort() - Java`OnAbort je volána, když instance bezstavové služby hello je vynuceně vypnut. Obecně se používá v uzlu hello se zjistí trvalou chybou, nebo když Service Fabric se nedají spravovat spolehlivě životního cyklu instance služby hello z důvodu selhání toointernal.
+* `Task OnOpenAsync(IStatelessServicePartition, CancellationToken) - C# / CompletableFuture<String> onOpenAsync(CancellationToken) - Java`OnOpenAsync je volána, když instance bezstavové služby se má použít. V tuto chvíli můžete spustit úlohy inicializace služby rozšířených.
+* `Task OnCloseAsync(CancellationToken) - C# / CompletableFuture onCloseAsync(CancellationToken) - Java`OnCloseAsync je volána, když bude instance bezstavové služby korektně vypnout. To může dojít, když probíhá upgrade služby kódu, instance služby přesouvá kvůli Vyrovnávání zatížení nebo se detekuje přechodná chyba. OnCloseAsync lze bezpečně zavřete všechny prostředky, zastavte všechny zpracování na pozadí, dokončení ukládání externí stavu nebo dolů existující připojení.
+* `void OnAbort() - C# / void onAbort() - Java`OnAbort je volána, když instance bezstavové služby je vynuceně vypnut. Obecně se používá při zjištění trvalé selhání na uzlu, nebo když Service Fabric se nedají spravovat spolehlivě životního cyklu instance služby z důvodu vnitřní chyby.
 
 ## <a name="stateful-service-replica-lifecycle"></a>Životní cyklus repliky stavové služby
 
@@ -46,15 +46,15 @@ I když `RunAsync` by mělo být dostatečné v téměř všech případech hell
 >
 >
 
-Životní cyklus repliku stavové služby je mnohem složitější než instance bezstavové služby. Kromě toho tooopen, zavřete a zrušení události, repliku stavové služby obsahuje změny role během celé jeho životnosti. Při změně role repliky stavové služby hello `OnChangeRoleAsync` je aktivována událost:
+Životní cyklus repliku stavové služby je mnohem složitější než instance bezstavové služby. Kromě toho pokud chcete otevřít, zavřete a zrušení události, obsahuje repliku stavové služby role změny během celé jeho životnosti. Když se změní repliku stavové služby role, `OnChangeRoleAsync` je aktivována událost:
 
-* `Task OnChangeRoleAsync(ReplicaRole, CancellationToken)`OnChangeRoleAsync je volána, když se mění role, například tooprimary nebo sekundární repliky stavové služby hello. Primární repliky mají stav zápisu (toocreate jsou povoleny a zápis tooReliable kolekce). Sekundární repliky jsou uvedeny čtení stav (můžete číst jenom z existující spolehlivé kolekce). Většinu práce v stavové služby se provádí na primární replice hello. Sekundární repliky lze provést ověření jen pro čtení, generování sestav, dolování dat nebo jiné úlohy jen pro čtení.
+* `Task OnChangeRoleAsync(ReplicaRole, CancellationToken)`OnChangeRoleAsync je volána, když replika stavové služby je například změna role na primární nebo sekundární. Primární repliky mají stav zápisu (je povoleno vytvoření a zápis do spolehlivé kolekcí). Sekundární repliky jsou uvedeny čtení stav (můžete číst jenom z existující spolehlivé kolekce). Většinu práce v stavové služby se provádí na primární replice. Sekundární repliky lze provést ověření jen pro čtení, generování sestav, dolování dat nebo jiné úlohy jen pro čtení.
 
-Pouze primární replika hello v stavové služby, má přístup pro zápis toostate a proto je obecně při hello služby provádí samotnou práci. Hello `RunAsync` metoda v stavové služby se spustí jenom v případě, že je primární replika stavové služby hello. Hello `RunAsync` metoda se zruší, když primární repliky role změny z primární i během hello zavřete a zrušení události.
+V stavové služby pouze primární replika má oprávnění k zápisu do stavu a proto je obecně při službu provádí samotnou práci. `RunAsync` Metoda v stavové služby se spustí jenom v případě, že je primární replika stavové služby. `RunAsync` Metoda se zruší, když se změní role primární repliky z primární i během události zavřít a přerušení.
 
-Pomocí hello `OnChangeRoleAsync` událostí vám umožní pracovní tooperform v závislosti na role repliky také jako odpověď toorole změnu.
+Pomocí `OnChangeRoleAsync` událostí můžete pro práci v závislosti na role repliky také reakci na změnu role.
 
-Stavové služby rovněž poskytne události životního cyklu hello stejné čtyři jako bezstavové služby hello stejnou sémantiku a případy použití:
+Stavové služby také poskytuje stejné události životního cyklu čtyři jako bezstavové služby, se stejnou sémantiku a případy použití:
 
 ```csharp
 * Task OnOpenAsync(IStatefulServicePartition, CancellationToken)
@@ -63,9 +63,9 @@ Stavové služby rovněž poskytne události životního cyklu hello stejné čt
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Pro pokročilejší témata související tooService prostředků infrastruktury najdete v části hello následující články:
+Pro pokročilejší témata týkající se Service Fabric naleznete v následujících článcích:
 
 * [Konfigurace stavové spolehlivé služby](service-fabric-reliable-services-configuration.md)
 * [Úvod stavu Service Fabric](service-fabric-health-introduction.md)
 * [Pomocí sestav o stavu systému pro řešení potíží](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
-* [Konfigurace služby pomocí hello správce prostředků clusteru Service Fabric](service-fabric-cluster-resource-manager-configure-services.md)
+* [Konfigurace služeb pomocí Service Fabric clusteru správce prostředků](service-fabric-cluster-resource-manager-configure-services.md)

@@ -1,6 +1,6 @@
 ---
 title: "Azure nástrojů pro IntelliJ: vytvoření aplikací Spark pro cluster služby HDInsight | Microsoft Docs"
-description: "Použijte hello Azure Toolkit pro IntelliJ toodevelop Spark aplikace napsané v jazyce Scala a odesílat je tooan clusteru HDInsight Spark."
+description: "Použití sady nástrojů Azure pro IntelliJ k vývoji aplikací Spark napsané v jazyce Scala a odesílat je na clusteru HDInsight Spark."
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -16,113 +16,113 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2017
 ms.author: nitinme
-ms.openlocfilehash: 22cce014bb848a54e198e77a50bf13448012310e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 19cb8f436fa4d86f323013a5d4b3b50bf6c80a1a
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="use-azure-toolkit-for-intellij-toocreate-spark-applications-for-an-hdinsight-cluster"></a>Použití nástrojů Azure pro IntelliJ toocreate aplikací Spark pro cluster služby HDInsight
+# <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Vytvoření aplikací Spark pro cluster služby HDInsight pomocí nástrojů Azure pro IntelliJ
 
-Použijte hello Azure Toolkit pro IntelliJ modulu plug-in toodevelop Spark aplikace napsané v jazyce Scala a odesílat je tooan clusteru HDInsight Spark přímo z hello IntelliJ integrované vývojové prostředí (IDE). Můžete použít hello modulu plug-in několika způsoby:
+Použití nástrojů Azure pro IntelliJ modulu plug-in k vývoji aplikací Spark napsané v jazyce Scala a odesílat je na clusteru HDInsight Spark přímo z IntelliJ integrované vývojové prostředí (IDE). Modul plug-in můžete použít několika způsoby:
 
 * Vývoj a odesílání aplikací Scala Spark na clusteru HDInsight Spark.
 * Přístup k prostředkům clusteru Azure HDInsight Spark.
 * Vytvořte a spusťte aplikací Scala Spark místně.
 
-toocreate projektu, zobrazení hello [vytvoření aplikací Spark s hello nástrojů Azure pro IntelliJ](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ) videa.
+Chcete-li vytvořit projekt, podívejte se [vytvoření aplikací Spark pomocí sady nástrojů Azure pro IntelliJ](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ) videa.
 
 > [!IMPORTANT]
-> Můžete použít tento modul plug-in toocreate a odeslání aplikací pouze pro cluster služby HDInsight Spark na systému Linux.
+> Tento modul plug-in můžete použít k vytvoření a odeslání aplikací pouze pro cluster služby HDInsight Spark na systému Linux.
 > 
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Cluster Apache Spark v HDInsight Linux. Pokyny najdete v tématu [clusterů vytvořit Apache Spark v Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
-- Oracle Java Development Kit. Můžete ji nainstalovat ze hello [Oracle webu](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
-- IntelliJ IDEA. Tento článek používá verzi 2017.1. Můžete ji nainstalovat ze hello [JetBrains webu](https://www.jetbrains.com/idea/download/).
+- Oracle Java Development Kit. Můžete nainstalovat z [Oracle webu](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
+- IntelliJ IDEA. Tento článek používá verzi 2017.1. Můžete nainstalovat z [JetBrains webu](https://www.jetbrains.com/idea/download/).
 
 ## <a name="install-azure-toolkit-for-intellij"></a>Instalace Azure Toolkit pro IntelliJ
 Pokyny k instalaci naleznete v tématu [instalaci nástrojů Azure pro IntelliJ](../azure-toolkit-for-intellij-installation.md).
 
-## <a name="sign-in-tooyour-azure-subscription"></a>Přihlaste se tooyour předplatného Azure
+## <a name="sign-in-to-your-azure-subscription"></a>Přihlaste se ke svému předplatnému Azure.
 
-1. Spusťte hello IntelliJ IDE a otevřete Průzkumník Azure. Na hello **zobrazení** nabídce vyberte možnost **nástroj Windows**a potom vyberte **Azure Explorer**.
+1. Spuštění rozhraní IDE IntelliJ a otevřete Průzkumník Azure. Na **zobrazení** nabídce vyberte možnost **nástroj Windows**a potom vyberte **Azure Explorer**.
        
-   ![Průzkumník Azure odkaz Hello](./media/hdinsight-apache-spark-intellij-tool-plugin/show-azure-explorer.png)
+   ![Průzkumník Azure odkaz](./media/hdinsight-apache-spark-intellij-tool-plugin/show-azure-explorer.png)
 
-2. Klikněte pravým tlačítkem na hello **Azure** uzel a potom vyberte **přihlásit**.
+2. Klikněte pravým tlačítkem myši **Azure** uzel a potom vyberte **přihlásit**.
 
-3. V hello **přihlásit k Azure** dialogové okno, vyberte **přihlášení**a pak zadejte přihlašovací údaje Azure.
+3. V **přihlásit k Azure** dialogové okno, vyberte **přihlášení**a pak zadejte přihlašovací údaje Azure.
 
-    ![Hello přihlásit k Azure dialogové okno](./media/hdinsight-apache-spark-intellij-tool-plugin/view-explorer-2.png)
+    ![Dialogové okno přihlášení k Azure](./media/hdinsight-apache-spark-intellij-tool-plugin/view-explorer-2.png)
 
-4. Poté, co jste přihlášení, hello **vyberte odběry** zobrazí dialogové okno pole všechny hello předplatná Azure, které jsou přidružené hello přihlašovací údaje. Vyberte hello **vyberte** tlačítko.
+4. Poté, co jste přihlášení, **vyberte odběry** dialogové okno zobrazí všechna předplatná Azure, které jsou spojeny s přihlašovacími údaji. Vyberte **vyberte** tlačítko.
 
-    ![Dialogové okno Vybrat odběry Hello](./media/hdinsight-apache-spark-intellij-tool-plugin/Select-Subscriptions.png)
+    ![Dialogové okno Vybrat odběrů](./media/hdinsight-apache-spark-intellij-tool-plugin/Select-Subscriptions.png)
 
-5. Na hello **Azure Explorer** rozbalte **HDInsight** tooview hello clustery HDInsight Spark, které jsou v rámci vašeho předplatného.
+5. Na **Průzkumník Azure** rozbalte **HDInsight** zobrazíte clustery HDInsight Spark, které jsou v rámci vašeho předplatného.
    
     ![Clustery HDInsight Spark v Azure Explorer](./media/hdinsight-apache-spark-intellij-tool-plugin/view-explorer-3.png)
 
-6. tooview hello prostředky (například účty úložiště) přidružených hello clusteru, můžete dále rozšířit uzlem název clusteru.
+6. Chcete-li zobrazit prostředky (například účty úložiště), které jsou přidružené ke clusteru, můžete dále rozšířit uzlem název clusteru.
    
     ![Rozbalené uzly název clusteru](./media/hdinsight-apache-spark-intellij-tool-plugin/view-explorer-4.png)
 
 ## <a name="run-a-spark-scala-application-on-an-hdinsight-spark-cluster"></a>Spuštění aplikace na Spark Scala clusteru HDInsight Spark
 
-1. Spusťte IntelliJ IDEA a pak vytvořte projekt. V hello **nový projekt** dialogové okno pole, hello následující: 
+1. Spusťte IntelliJ IDEA a pak vytvořte projekt. V **nový projekt** dialogové okno pole, postupujte takto: 
 
    a. Vyberte **HDInsight** > **Spark v HDInsight (Scala)**.
 
-   b. V hello **nástroj pro sestavení** vyberte jednu z následujících, podle potřeby tooyour hello:
+   b. V **nástroj pro sestavení** vyberte některý z následujících akcí podle potřeby vašeho:
 
       * **Maven**, podpora Průvodce vytvoření projektu Scala
-      * **SBT**, pro správu hello závislosti a sestavování pro projekt hello Scala
+      * **SBT**, ke správě závislosti a vytváření projektu Scala
 
-    ![Dialogové okno Nový projekt Hello](./media/hdinsight-apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
+    ![Dialogové okno Nový projekt](./media/hdinsight-apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
 
 2. Vyberte **Další**.
 
-3. Průvodce vytvoření projektu Scala Hello automaticky zjišťuje, zda jste nainstalovali hello Scala modulu plug-in. Vyberte **nainstalovat**.
+3. Průvodce vytvoření projektu Scala automaticky zjišťuje, zda jste nainstalovali Scala modulu plug-in. Vyberte **nainstalovat**.
 
    ![Kontrola modul plug-in Scala](./media/hdinsight-apache-spark-intellij-tool-plugin/Scala-Plugin-check-Reminder.PNG) 
 
-4. hello toodownload Scala modul plug-in, vyberte **OK**. Postupujte podle pokynů toorestart hello IntelliJ. 
+4. Chcete-li stáhnout modul plug-in Scala, vyberte **OK**. Postupujte podle pokynů k restartování IntelliJ. 
 
-   ![Dialogové okno modul plug-in Instalace Hello Scala](./media/hdinsight-apache-spark-intellij-tool-plugin/Choose-Scala-Plugin.PNG)
+   ![Dialogové okno instalace modulu plug-in Scala](./media/hdinsight-apache-spark-intellij-tool-plugin/Choose-Scala-Plugin.PNG)
 
-5. V hello **nový projekt** okně hello následující:  
+5. V **nový projekt** okno, postupujte takto:  
 
-    ![Výběr hello Spark SDK](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-new-project.png)
+    ![Výběr Spark SDK](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-new-project.png)
 
    a. Zadejte název projektu a umístění.
 
-   b. V hello **SDK projektu** rozevíracího seznamu vyberte **Java 1.8** hello Spark 2.x clusteru, nebo vyberte **Java 1.7** hello Spark 1.x clusteru.
+   b. V **SDK projektu** rozevíracího seznamu vyberte **Java 1.8** pro Spark 2.x cluster nebo vyberte **Java 1.7** 1.x clusteru Spark.
 
-   c. V hello **Spark verze** rozevíracího seznamu, Průvodce vytvořením projektu Scala integruje hello správnou verzi sady SDK Spark a Scala SDK. Pokud verze clusteru Spark hello je starší než 2.0, vyberte **Spark 1.x**. Jinak vyberte možnost **Spark2.x**. Tento příklad používá **Spark bodu 2.0.2 (Scala 2.11.8)**.
+   c. V **Spark verze** rozevíracího seznamu, Průvodce vytvořením projektu Scala integruje správnou verzi sady SDK Spark a Scala SDK. Pokud verze clusteru Spark je starší než 2.0, vyberte **Spark 1.x**. Jinak vyberte možnost **Spark2.x**. Tento příklad používá **Spark bodu 2.0.2 (Scala 2.11.8)**.
 
 6. Vyberte **Finish** (Dokončit).
 
-7. projekt Hello Spark pro vás automaticky vytvoří artefakt. tooview hello artefaktů, hello následující:
+7. Projekt Spark pro vás automaticky vytvoří artefakt. Chcete-li zobrazit artefaktu, postupujte takto:
 
-   a. Na hello **soubor** nabídce vyberte možnost **strukturu projektu**.
+   a. Na **soubor** nabídce vyberte možnost **strukturu projektu**.
 
-   b. V hello **strukturu projektu** dialogové okno, vyberte **artefakty** tooview hello výchozí artefaktů, který je vytvořen. Můžete také vytvořit vlastní artefaktů výběrem hello – znaménko plus (**+**).
+   b. V **strukturu projektu** dialogové okno, vyberte **artefakty** zobrazíte výchozí artefaktu, který je vytvořen. Můžete také vytvořit vlastní artefaktů výběrem na symbol plus (**+**).
 
-      ![Informace o artefaktů v dialogovém okně hello](./media/hdinsight-apache-spark-intellij-tool-plugin/default-artifact.png)
+      ![Informace o artefaktů v dialogovém okně](./media/hdinsight-apache-spark-intellij-tool-plugin/default-artifact.png)
       
-8. Přidejte zdrojový kód aplikace pomocí tohoto postupu hello následující:
+8. Přidejte zdrojový kód aplikace následujícím způsobem:
 
-   a. V prohlížeči projektu klikněte pravým tlačítkem na **src**, bod příliš**nový**a potom vyberte **Scala třída**.
+   a. V prohlížeči projektu klikněte pravým tlačítkem na **src**, přejděte na příkaz **nový**a potom vyberte **Scala třída**.
       
       ![Příkazy pro vytvoření třídy Scala z Project Exploreru](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-scala-code.png)
 
-   b. V hello **vytvořte novou třídu Scala** dialogové okno, zadejte název, vyberte **objekt** v hello **druhu** a pak vyberte **OK**.
+   b. V **vytvořte novou třídu Scala** dialogové okno, zadejte název, vyberte **objekt** v **druhu** a pak vyberte **OK**.
       
       ![Nová třída Scala dialogové okno vytvořit](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-scala-code-object.png)
 
-   c. V hello **MyClusterApp.scala** souboru, vložte následující kód hello. Hello kód čte hello data z HVAC.csv (k dispozici na všech clusterech HDInsight Spark), načte hello řádky, které mají jenom jednu číslici hello sedmého sloupce v souboru CSV hello a zapíše výstup hello příliš**/HVACOut** pod výchozí hello Kontejner úložiště pro hello cluster.
+   c. V **MyClusterApp.scala** souboru, vložte následující kód. Kód čte data z HVAC.csv (k dispozici na všech clusterech HDInsight Spark), načte řádky, které mají jenom jednu číslici ve sloupci sedmého v souboru CSV a zapíše výstup do **/HVACOut** v kontejneru výchozí úložiště pro cluster.
 
         import org.apache.spark.SparkConf
         import org.apache.spark.SparkContext
@@ -134,7 +134,7 @@ Pokyny k instalaci naleznete v tématu [instalaci nástrojů Azure pro IntelliJ]
     
             val rdd = sc.textFile("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
     
-            //find hello rows that have only one digit in hello seventh column in hello CSV file
+            //find the rows that have only one digit in the seventh column in the CSV file
             val rdd1 =  rdd.filter(s => s.split(",")(6).length() == 1)
     
             rdd1.saveAsTextFile("wasb:///HVACOut")
@@ -142,139 +142,139 @@ Pokyny k instalaci naleznete v tématu [instalaci nástrojů Azure pro IntelliJ]
     
         }
 
-9. Spuštění aplikace hello na clusteru HDInsight Spark pomocí tohoto postupu hello následující:
+9. Spuštění aplikace na clusteru HDInsight Spark následujícím způsobem:
 
-   a. V prohlížeči projektu klikněte pravým tlačítkem na název projektu hello a pak vyberte **odesílání aplikací Spark tooHDInsight**.
+   a. V prohlížeči projektu klikněte pravým tlačítkem na název projektu a pak vyberte **odesílání aplikací Spark na HDInsight**.
       
-      ![Hello příkaz tooHDInsight odesílání aplikací Spark](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-submit-spark-app-1.png)
+      ![Odeslání aplikací Spark na HDInsight příkaz](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-submit-spark-app-1.png)
 
-   b. Můžete se výzvami tooenter přihlašovací údaje předplatného Azure. V hello **Spark odeslání** dialogové okno, zadejte následující hodnoty hello a pak vyberte **odeslání**.
+   b. Zobrazí se výzva k zadání přihlašovacích údajů předplatného Azure. V **Spark odeslání** dialogové okno, zadejte následující hodnoty a potom vyberte **odeslání**.
       
-      * Pro **Spark clustery (pouze Linux)**, vyberte hello clusteru HDInsight Spark, na kterém chcete toorun vaší aplikace.
+      * Pro **Spark clustery (pouze Linux)**, vyberte cluster HDInsight Spark, na kterém chcete aplikaci spustit.
 
-      * Artefakt z hello IntelliJ projektu, nebo vyberte jednu z pevného disku hello.
+      * Vyberte artefakt z projektu IntelliJ nebo vyberte jednu z pevného disku.
 
-      * V hello **hlavní název třídy** pole, vyberte hello třemi tečkami (**...** ), vyberte hello hlavní třídy ve zdrojovém kódu aplikace a pak vyberte **OK**.
+      * V **hlavní název třídy** vyberte se třemi tečkami (**...** ), vyberte hlavní třídy ve zdrojovém kódu aplikace a pak vyberte **OK**.
 
-        ![Dialogové okno Vybrat hlavní třída Hello](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-submit-spark-app-3.png)
+        ![Dialogové okno Vybrat hlavní – třída](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-submit-spark-app-3.png)
 
-      * Protože kód aplikace hello v tomto příkladu nevyžaduje argumenty příkazového řádku ani odkazovat JAR nebo soubory, můžete ponechat hello zbývající polí prázdné. Po zadání všech informací hello dialogové okno hello by měla vypadat přibližně hello následující obrázek.
+      * Protože kódu aplikace v tomto příkladu nevyžaduje argumenty příkazového řádku ani odkazovat JAR nebo soubory, můžete zbývající pole ponechat prázdné. Po zadání všech informací, dialogové okno by měla vypadat přibližně na následujícím obrázku.
         
-        ![Dialogové okno Spark odeslání Hello](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-submit-spark-app-2.png)
+        ![Dialogové okno Spark odeslání](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-submit-spark-app-2.png)
 
-   c. Hello **Spark odeslání** kartě v hello dolní části okna hello by se měl spustit zobrazování průběhu hello. Můžete také zastavit aplikace hello výběrem hello červené tlačítko v hello **Spark odeslání** okno.
+   c. **Spark odeslání** karta v dolní části okna by se měl spustit zobrazení průběhu. Můžete také zastavit aplikaci tak, že vyberete červené tlačítko v **Spark odeslání** okno.
       
-      ![okno Spark odeslání Hello](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-app-result.png)
+      ![Okno Spark odeslání](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-app-result.png)
       
-      toolearn o tooaccess hello výstup úlohy v tématu hello "přístup a spravovat clustery HDInsight Spark pomocí nástrojů Azure pro IntelliJ" později v tomto článku.
+      Další informace o přístupu k výstup úlohy najdete v tématu "přístup a spravovat clustery HDInsight Spark pomocí nástrojů Azure pro IntelliJ" později v tomto článku.
 
 ## <a name="run-or-debug-a-spark-scala-application-on-an-hdinsight-spark-cluster"></a>Spustit nebo ladění aplikací Spark Scala na clusteru HDInsight Spark
-Doporučujeme také jiný způsob odesílání hello Spark aplikace toohello clusteru. Můžete tak učinit nastavením hello parametry v hello **konfigurace spustit/Debug** IDE. Další informace najdete v tématu [vzdálené ladění aplikací Spark v clusteru HDInsight pomocí sady Azure Toolkit pro IntelliJ prostřednictvím SSH](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh).
+Doporučujeme také jiný způsob odesílání aplikací Spark pro cluster. Můžete tak učinit pomocí nastavení v parametrech **konfigurace spustit/Debug** IDE. Další informace najdete v tématu [vzdálené ladění aplikací Spark v clusteru HDInsight pomocí sady Azure Toolkit pro IntelliJ prostřednictvím SSH](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh).
 
 ## <a name="access-and-manage-hdinsight-spark-clusters-by-using-azure-toolkit-for-intellij"></a>Přístup a spravovat clustery HDInsight Spark pomocí nástrojů Azure pro IntelliJ
 Pomocí nástrojů Azure pro IntelliJ můžete provádět různé operace.
 
-### <a name="access-hello-job-view"></a>Zobrazení úloh hello přístup
-1. V Průzkumníku Azure rozbalte **HDInsight**, rozbalte název clusteru Spark hello a pak vyberte **úlohy**.  
+### <a name="access-the-job-view"></a>Přístup k zobrazení úloh
+1. V Průzkumníku Azure rozbalte **HDInsight**, rozbalte název clusteru Spark a pak vyberte **úlohy**.  
 
     ![Úlohy zobrazení uzlu](./media/hdinsight-apache-spark-intellij-tool-plugin/job-view-node.png)
 
-2. V pravém podokně hello hello **zobrazení úloh Spark** karta zobrazuje všechny hello aplikace, které byly spuštěny v clusteru hello. Vyberte název hello hello aplikace, pro které chcete toosee další podrobnosti.
+2. V pravém podokně klikněte **zobrazení úloh Spark** karta zobrazuje všechny aplikace, které byly spuštěny v clusteru. Vyberte název aplikace, pro který chcete zobrazit další podrobnosti.
 
     ![Podrobnosti o aplikaci](./media/hdinsight-apache-spark-intellij-tool-plugin/view-job-logs.png)
 
-3. toodisplay základní spuštěné úlohy informace, hover přes graf úlohy hello. tooview hello fázích grafu a informace, které generuje každých úlohy, vyberte uzel na graf úlohy hello.
+3. Chcete-li zobrazit základní informace o spuštěné úlohy, pozastavte ukazatel myši nad graf úlohy. Chcete-li zobrazit graf fázích a informace, které generuje každých úlohy, vyberte uzel na graf úlohy.
 
     ![Fáze podrobnosti úlohy](./media/hdinsight-apache-spark-intellij-tool-plugin/Job-graph-stage-info.png)
 
-4. tooview často používané protokoly, jako například *ovladač Stderr*, *ovladač Stdout*, a *informací o adresáři*, vyberte hello **protokolu** karta.
+4. Zobrazení často používat protokoly, jako např *ovladač Stderr*, *ovladač Stdout*, a *informací o adresáři*, vyberte **protokolu** karta.
 
     ![Podrobnosti protokolu](./media/hdinsight-apache-spark-intellij-tool-plugin/Job-log-info.png)
 
-5. Můžete také zobrazit hello Spark historie uživatelského rozhraní a hello YARN uživatelského rozhraní (na úrovni aplikace hello) tak, že vyberete odkaz hello horní části okna hello.
+5. Výběrem odkaz v horní části okna můžete také zobrazit historii Spark uživatelského rozhraní a uživatelské rozhraní YARN (na úrovni aplikace).
 
-### <a name="access-hello-spark-history-server"></a>Přístup k serveru historie Spark hello
+### <a name="access-the-spark-history-server"></a>Přístup k serveru Spark historie
 1. V Průzkumníku Azure rozbalte **HDInsight**, klikněte pravým tlačítkem na název clusteru Spark a pak vyberte **otevřete uživatelské rozhraní historie Spark**. 
 
-2. Když se zobrazí výzva, zadejte přihlašovací údaje správce hello clusteru, které jste zadali při nastavení hello clusteru.
+2. Když se zobrazí výzva, zadejte přihlašovací údaje Správce clusteru, které jste zadali při nastavování clusteru.
 
-3. Na hello Spark historie řídicího panelu serveru můžete použít toolook název aplikace hello hello aplikace právě dokončila spuštění. V předchozích kód hello, nastavte název aplikace hello pomocí `val conf = new SparkConf().setAppName("MyClusterApp")`. Proto je název aplikace Spark **MyClusterApp**.
+3. Na řídicím panelu serveru historie Spark můžete použít název aplikace a Hledat aplikace právě dokončila spuštění. V předchozím kódu nastavit název aplikace pomocí `val conf = new SparkConf().setAppName("MyClusterApp")`. Proto je název aplikace Spark **MyClusterApp**.
 
-### <a name="start-hello-ambari-portal"></a>Spustit portál Ambari hello
+### <a name="start-the-ambari-portal"></a>Spuštění portálu Ambari
 1. V Průzkumníku Azure rozbalte **HDInsight**, klikněte pravým tlačítkem na název clusteru Spark a pak vyberte **otevřete portál pro správu clusteru (Ambari)**. 
 
-2. Když se zobrazí výzva, zadejte přihlašovací údaje správce hello hello clusteru. Tyto přihlašovací údaje jste zadali během procesu instalace clusteru hello.
+2. Když se zobrazí výzva, zadejte přihlašovací údaje Správce clusteru. Tyto přihlašovací údaje jste zadali během procesu instalace clusteru.
 
 ### <a name="manage-azure-subscriptions"></a>Spravovat předplatná Azure
-Ve výchozím nastavení seznam nástrojů Azure pro IntelliJ clustery Spark hello ze všech předplatných Azure. V případě potřeby můžete zadat hello odběry, které chcete tooaccess. 
+Ve výchozím nastavení seznam nástrojů Azure pro IntelliJ clustery Spark ze všech předplatných Azure. V případě potřeby můžete zadat odběry, které chcete získat přístup. 
 
-1. V Průzkumníku Azure, klikněte pravým tlačítkem na hello **Azure** kořenový uzel a potom vyberte **Spravovat odběry**. 
+1. V Průzkumníku Azure, klikněte pravým tlačítkem myši **Azure** kořenový uzel a potom vyberte **Spravovat odběry**. 
 
-2. V dialogovém okně hello zrušte hello zaškrtávací políčka další toohello odběry, nemáte má tooaccess a potom vyberte **Zavřít**. Můžete také vybrat **Odhlásit** Pokud chcete toosign mimo vašeho předplatného Azure.
+2. V dialogovém okně, zrušte zaškrtnutí políček vedle odběry, které nechcete použít pro přístup a potom vyberte **Zavřít**. Můžete také vybrat **Odhlásit** Pokud se chcete odhlásit z vašeho předplatného Azure.
 
 ## <a name="run-a-spark-scala-application-locally"></a>Místní spuštění aplikace Spark Scala
-Sada nástrojů Azure aplikací Spark Scala toorun IntelliJ můžete použít místně na pracovní stanici. Hello aplikace obvykle nebudete potřebovat přístup k toocluster prostředky, například kontejnery úložiště, a můžete spustit a otestovat je místně.
+Sada nástrojů Azure pro IntelliJ můžete použít ke spouštění aplikací Spark Scala místně na pracovní stanici. Aplikace obvykle nepotřebují přístup k prostředkům clusteru, jako je například úložiště kontejnery, a můžete spustit a otestovat je místně.
 
 ### <a name="prerequisite"></a>Požadavek
-Když spouštíte na počítači se systémem Windows hello místních aplikací Spark Scala, může získat výjimku, jak je popsáno v [SPARK 2356](https://issues.apache.org/jira/browse/SPARK-2356). protože WinUtils.exe chybí v systému Windows došlo k výjimce Hello. 
+Když používáte místní aplikací Spark Scala na počítači se systémem Windows, může získat výjimku, jak je popsáno v [SPARK 2356](https://issues.apache.org/jira/browse/SPARK-2356). Výjimka nastává, protože WinUtils.exe chybí v systému Windows. 
 
-tooresolve této chybě [stáhnout hello spustitelné](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) tooa umístění, jako **C:\WinUtils\bin**. Pak přidejte proměnnou prostředí hello **HADOOP_HOME**a nastavte hodnotu hello hello proměnné příliš**C\WinUtils**.
+Chcete tuto chybu vyřešit [stáhnout spustitelný soubor](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) do umístění, jako **C:\WinUtils\bin**. Pak přidejte proměnnou prostředí **HADOOP_HOME**a nastavte hodnotu proměnné na **C\WinUtils**.
 
 ### <a name="run-a-local-spark-scala-application"></a>Spustit místních aplikací Spark Scala
 1. Spusťte IntelliJ IDEA a vytvořte projekt. 
 
-2. V hello **nový projekt** dialogové okno pole, hello následující:
+2. V **nový projekt** dialogové okno pole, postupujte takto:
    
     a. Vyberte **HDInsight** > **Spark v HDInsight místní spuštění ukázkové (Scala)**.
 
-    b. V hello **nástroj pro sestavení** vyberte jednu z následujících, podle potřeby tooyour hello:
+    b. V **nástroj pro sestavení** vyberte některý z následujících akcí podle potřeby vašeho:
 
       * **Maven**, podpora Průvodce vytvoření projektu Scala
-      * **SBT**, pro správu hello závislosti a sestavování pro projekt hello Scala
+      * **SBT**, ke správě závislosti a vytváření projektu Scala
 
-    ![Dialogové okno Nový projekt Hello](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-app-local-run.png)
+    ![Dialogové okno Nový projekt](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-app-local-run.png)
 
 3. Vyberte **Další**.
  
-4. V dalším okně hello hello následující:
+4. V dalším intervalu postupujte takto:
    
     a. Zadejte název projektu a umístění.
 
-    b. V hello **SDK projektu** rozevíracího seznamu vyberte verzi jazyka Java, která je novější než verze 1.7.
+    b. V **SDK projektu** rozevíracího seznamu vyberte verzi jazyka Java, která je novější než verze 1.7.
 
-    c. V hello **Spark verze** rozevíracího seznamu, vyberte hello verze Scala, které chcete toouse: Scala 2.11.x Spark 2.0 nebo Scala 2.10.x pro Spark 1.6.
+    c. V **Spark verze** rozevíracího seznamu vyberte verzi Scala, který chcete použít: Scala 2.11.x Spark 2.0 nebo Scala 2.10.x pro Spark 1.6.
 
-    ![Dialogové okno Nový projekt Hello](./media/hdinsight-apache-spark-intellij-tool-plugin/Create-local-project.PNG)
+    ![Dialogové okno Nový projekt](./media/hdinsight-apache-spark-intellij-tool-plugin/Create-local-project.PNG)
 
 5. Vyberte **Finish** (Dokončit).
 
-6. Ukázkový kód přidá šablona Hello (**LogQuery**) v části hello **src** složky, kterou můžete spustit místně v počítači.
+6. Ukázkový kód přidá šablona (**LogQuery**) v části **src** složky, kterou můžete spustit místně v počítači.
    
     ![Umístění LogQuery](./media/hdinsight-apache-spark-intellij-tool-plugin/local-app.png)
 
-7. Klikněte pravým tlačítkem na hello **LogQuery** aplikace a pak vyberte **spustit 'LogQuery'**. Na hello **spustit** karta v dolní části hello, uvidíte výstup jako hello následující:
+7. Klikněte pravým tlačítkem myši **LogQuery** aplikace a pak vyberte **spustit 'LogQuery'**. Na **spustit** karta v dolní části, uvidíte výstup takto:
    
    ![Místní aplikace Spark, výsledek spuštění](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-app-local-run-result.png)
 
-## <a name="convert-existing-intellij-idea-applications-toouse-azure-toolkit-for-intellij"></a>Převést stávající IntelliJ IDEA toouse aplikace Azure Toolkit pro IntelliJ
-Hello existující Spark Scala aplikace, které jste vytvořili v IntelliJ IDEA toobe kompatibilní s Azure Toolkit pro IntelliJ můžete převést. Potom můžete hello modulu plug-in toosubmit hello aplikace tooan clusteru HDInsight Spark.
+## <a name="convert-existing-intellij-idea-applications-to-use-azure-toolkit-for-intellij"></a>Převést stávající aplikace IntelliJ IDEA používat sadu nástrojů Azure pro IntelliJ
+Můžete převést stávající Spark Scala aplikace, který jste vytvořili v IntelliJ IDEA, aby byl kompatibilní s Azure nástrojů pro IntelliJ. Potom můžete modul plug-in odeslání aplikací do clusteru HDInsight Spark.
 
-1. Pro existující Spark Scala aplikaci, která byla vytvořena prostřednictvím IntelliJ IDEA otevřete soubor přidružené .iml hello.
+1. Pro existující Spark Scala aplikaci, která byla vytvořena prostřednictvím IntelliJ IDEA otevřete soubor přidružené .iml.
 
-2. Na hello nejnižší úroveň je **modulu** element jako hello následující:
+2. V kořenovém adresáři úroveň je **modulu** element takto:
    
         <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
 
-   Upravit hello element tooadd `UniqueKey="HDInsightTool"` , který hello **modulu** element vypadá hello následující:
+   Upravit elementu, který chcete přidat `UniqueKey="HDInsightTool"` tak, aby **modulu** element vypadá takto:
    
         <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4" UniqueKey="HDInsightTool">
 
-3. Uložte změny hello. Aplikace by teď měly být kompatibilní s Azure nástrojů pro IntelliJ. Můžete otestovat ji kliknutím pravým tlačítkem na název projektu hello v prohlížeči projektu. místní nabídky Hello má teď možnost hello **odesílání aplikací Spark tooHDInsight**.
+3. Uložte změny. Aplikace by teď měly být kompatibilní s Azure nástrojů pro IntelliJ. Můžete otestovat ji kliknutím pravým tlačítkem na název projektu v prohlížeči projektu. V rozbalovacím má teď možnost **odesílání aplikací Spark na HDInsight**.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="error-in-local-run-please-use-a-larger-heap-size"></a>Chyba při místním spuštění: *použijte prosím větší velikost haldy*
-V 1.6 Spark Pokud používáte Java SDK 32-bit při místním spuštění, může dojít hello následujícím chybám:
+V 1.6 Spark Pokud používáte Java SDK 32-bit při místním spuštění, může dojít k následujícím chybám:
 
     Exception in thread "main" java.lang.IllegalArgumentException: System memory 259522560 must be at least 4.718592E8. Please use a larger heap size.
         at org.apache.spark.memory.UnifiedMemoryManager$.getMaxMemory(UnifiedMemoryManager.scala:193)
@@ -291,18 +291,18 @@ V 1.6 Spark Pokud používáte Java SDK 32-bit při místním spuštění, můž
         at java.lang.reflect.Method.invoke(Method.java:606)
         at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144)
 
-Tyto chyby dojít, protože velikost haldy hello není dostatečně velký pro Spark toorun. Spark vyžaduje alespoň 471 MB. (Další informace najdete v tématu [SPARK 12081](https://issues.apache.org/jira/browse/SPARK-12081).) Jeden jednoduchým řešením je toouse Java SDK 64-bit. Můžete také změnit nastavení JVM hello v IntelliJ přidáním hello následující možnosti:
+Tyto chyby dojít, protože velikost haldy není dostatečně velký pro Spark ke spuštění. Spark vyžaduje alespoň 471 MB. (Další informace najdete v tématu [SPARK 12081](https://issues.apache.org/jira/browse/SPARK-12081).) Jeden jednoduchým řešením je použití sady Java SDK 64-bit. Můžete také změnit nastavení JVM v IntelliJ přidáním následujících možností:
 
     -Xms128m -Xmx512m -XX:MaxPermSize=300m -ea
 
-![Přidání možnosti toohello v IntelliJ pole "Možnosti virtuálního počítače"](./media/hdinsight-apache-spark-intellij-tool-plugin/change-heap-size.png)
+![Přidání možnosti do pole "Možnosti virtuálního počítače" v IntelliJ](./media/hdinsight-apache-spark-intellij-tool-plugin/change-heap-size.png)
 
 ## <a name="faq"></a>Nejčastější dotazy
-Zvolte toosubmit aplikaci tooAzure Data Lake Store, **interaktivní** režimu během procesu hello Azure přihlášení. Pokud vyberete **automatizovaná** režimu, můžete dojde k chybě.
+Chcete-li odeslat aplikace do Azure Data Lake Store, zvolte **interaktivní** režimu během procesu Azure přihlášení. Pokud vyberete **automatizovaná** režimu, můžete dojde k chybě.
 
 ![interaktivní přihlášení](./media/hdinsight-apache-spark-intellij-tool-plugin/interative-signin.png)
 
-Nyní jsme ho vyřešil. Můžete použít Azure Data Lake clusteru toosubmit vaší aplikace pomocí libovolné metody přihlášení.
+Nyní jsme ho vyřešil. Můžete použít Cluster služby Azure Data Lake odeslat vaší aplikace s libovolnou metodu přihlášení.
 
 ## <a name="feedback-and-known-issues"></a>Názory a známé problémy
 V současné době Spark výstupů zobrazení přímo není podporováno.
@@ -314,13 +314,13 @@ Pokud máte jakékoli návrhy či názory, nebo pokud se vyskytnou potíže při
 
 ### <a name="demo"></a>Ukázka
 * Vytvoření projektu Scala (video): [vytvoření aplikací Spark Scala](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
-* Vzdálené ladění (video): [pomocí nástrojů Azure pro IntelliJ toodebug aplikací Spark vzdáleně na clusteru HDInsight](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
+* Vzdálené ladění (video): [pomocí nástrojů Azure pro IntelliJ k ladění aplikací Spark vzdáleně na clusteru HDInsight](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
 
 ### <a name="scenarios"></a>Scénáře
 * [Spark s BI: provádějte interaktivní analýzy dat pomocí Spark v HDInsight pomocí nástrojů BI](hdinsight-apache-spark-use-bi-tools.md)
-* [Spark s Machine Learning: používejte Spark v HDInsight tooanalyze vytváření teploty pomocí dat HVAC](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
-* [Spark s Machine Learning: používejte Spark v výsledků kontroly potravin toopredict HDInsight](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
-* [Datové proudy Spark: Používejte Spark v HDInsight toobuild v reálném čase streamování aplikací](hdinsight-apache-spark-eventhub-streaming.md)
+* [Spark s Machine Learning: používejte Spark v HDInsight pro analýzu stavební teploty pomocí dat HVAC](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
+* [Spark s Machine Learning: Používejte Spark v HDInsight k předpovědím výsledků kontrol potravin](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
+* [Datové proudy Spark: Používejte Spark v HDInsight k sestavení aplikací datových proudů v reálném čase](hdinsight-apache-spark-eventhub-streaming.md)
 * [Analýza protokolu webu pomocí Sparku v HDInsight](hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="creating-and-running-applications"></a>Vytváření a spouštění aplikací
@@ -328,16 +328,16 @@ Pokud máte jakékoli návrhy či názory, nebo pokud se vyskytnou potíže při
 * [Vzdálené spouštění úloh na clusteru Sparku pomocí Livy](hdinsight-apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Nástroje a rozšíření
-* [Použití nástrojů Azure pro IntelliJ toodebug aplikací Spark vzdáleně prostřednictvím sítě VPN](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Použití nástrojů Azure pro IntelliJ toodebug aplikací Spark vzdáleně přes SSH](hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh.md)
+* [Použití nástrojů Azure pro IntelliJ k ladění aplikací Spark vzdáleně prostřednictvím sítě VPN](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Použití nástrojů Azure pro IntelliJ k ladění aplikací Spark vzdáleně přes SSH](hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh.md)
 * [Použití nástroje HDInsight pro IntelliJ s Hortonworks karanténě](hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
-* [Použití nástrojů HDInsight v Azure nástrojů Eclipse toocreate Spark aplikací](hdinsight-apache-spark-eclipse-tool-plugin.md)
+* [Používat nástroje HDInsight pro vytvoření aplikací Spark v Azure nástrojů pro Eclipse](hdinsight-apache-spark-eclipse-tool-plugin.md)
 * [Použití poznámkových bloků Zeppelin s clusterem Sparku v HDInsight](hdinsight-apache-spark-zeppelin-notebook.md)
 * [Jádra dostupná pro poznámkový blok Jupyter v clusteru Sparku pro HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 * [Použití externích balíčků s poznámkovými bloky Jupyter](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
-* [Do počítače nainstalovat Jupyter a připojte tooan clusteru HDInsight Spark](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
+* [Instalace Jupyteru do počítače a připojení ke clusteru HDInsight Spark](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="managing-resources"></a>Správa prostředků
-* [Správa prostředků hello cluster Apache Spark v Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
+* [Správa prostředků v clusteru Apache Spark v Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
 * [Sledování a ladění úloh spuštěných v clusteru Apache Spark v HDInsight](hdinsight-apache-spark-job-debugging.md)
 

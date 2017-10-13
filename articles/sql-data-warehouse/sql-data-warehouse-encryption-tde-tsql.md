@@ -1,5 +1,5 @@
 ---
-title: "aaaTransparent šifrování dat v datovém skladu SQL (T-SQL) | Microsoft Docs"
+title: "Transparentní šifrování dat v datovém skladu SQL (T-SQL) | Microsoft Docs"
 description: "Transparentní šifrování dat (šifrování TDE) v datovém skladu SQL (T-SQL)"
 services: sql-data-warehouse
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: security
 ms.date: 10/31/2016
 ms.author: rortloff;barbkess
-ms.openlocfilehash: 3894431c76f14b217f3a6b9a42dbf2f4d216bad6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 74c9032aababdce91ed617cd7a4c628915b42504
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="get-started-with-transparent-data-encryption-tde"></a>Začínáme s transparentní šifrování dat (TDE)
 > [!div class="op_single_selector"]
@@ -31,38 +31,38 @@ ms.lasthandoff: 10/06/2017
 > 
 
 ## <a name="required-permssions"></a>Požadovaná oprávnění
-tooenable transparentní dat šifrování (šifrování TDE), musíte být správce nebo člen hello dbmanager role.
+Pokud chcete povolit šifrování transparentní dat (TDE), musíte být správce nebo člen dbmanager role.
 
 ## <a name="enabling-encryption"></a>Povolení šifrování
-Postupujte podle těchto kroků tooenable TDE pro SQL Data Warehouse:
+Postupujte podle těchto kroků, které chcete povolit šifrování TDE pro SQL Data Warehouse:
 
-1. Připojit toohello *hlavní* databáze na serveru hello, který je hostitelem databáze hello pomocí přihlášení, která je správce nebo členem hello **dbmanager** role v hlavní databázi hello
-2. Spusťte následující příkaz tooencrypt hello databáze hello.
+1. Připojení k *hlavní* databáze na serveru, který hostuje databázi pomocí přihlášení, které je správce nebo člen **dbmanager** role v hlavní databázi
+2. Spusťte následující příkaz k šifrování databáze.
 
 ```sql
 ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 ```
 
 ## <a name="disabling-encryption"></a>Zakázáním šifrování
-Postupujte podle těchto kroků toodisable TDE pro SQL Data Warehouse:
+Postupujte podle těchto kroků zakázat šifrování TDE pro SQL Data Warehouse:
 
-1. Připojit toohello *hlavní* databáze pomocí přihlášení, která je správce nebo členem hello **dbmanager** role v hlavní databázi hello
-2. Spusťte následující příkaz tooencrypt hello databáze hello.
+1. Připojení k *hlavní* databáze pomocí přihlášení, který je správcem nebo člen **dbmanager** role v hlavní databázi
+2. Spusťte následující příkaz k šifrování databáze.
 
 ```sql
 ALTER DATABASE [AdventureWorks] SET ENCRYPTION OFF;
 ```
 
 > [!NOTE]
-> Pozastavený SQL Data Warehouse musí obnovit před provedením změn nastavení šifrování TDE toohello.
+> Pozastavený SQL Data Warehouse musí být obnoven, před prováděním změn nastavení šifrování TDE.
 > 
 > 
 
 ## <a name="verifying-encryption"></a>Ověření šifrování
-stav šifrování tooverify pro SQL Data Warehouse, postupujte podle kroků hello níže:
+Pokud chcete ověřit stav šifrování pro SQL Data Warehouse, postupujte podle následujících kroků:
 
-1. Připojit toohello *hlavní* nebo instanci databáze pomocí přihlášení, která je správce nebo členem hello **dbmanager** role v hlavní databázi hello
-2. Spusťte následující příkaz tooencrypt hello databáze hello.
+1. Připojení k *hlavní* nebo instanci databáze pomocí přihlášení, který je správcem nebo člen **dbmanager** role v hlavní databázi
+2. Spusťte následující příkaz k šifrování databáze.
 
 ```sql
 SELECT

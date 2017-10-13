@@ -1,5 +1,5 @@
 ---
-title: "aaaOverview živé streamování využívající Azure Media Services | Microsoft Docs"
+title: "Přehled živé streamování využívající Azure Media Services | Microsoft Docs"
 description: "Toto téma poskytuje přehled živé streamování využívající Azure Media Services."
 services: media-services
 documentationcenter: 
@@ -14,122 +14,122 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.openlocfilehash: edc49069db6b491902bdcbb808b1974858cc92f1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6f500f25129470a679c75cae6cd1abc9d71b72a7
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="overview-of-live-streaming-using-azure-media-services"></a>Přehled živé streamování využívající Azure Media Services
 ## <a name="overview"></a>Přehled
-Při doručování živé vysílání datového proudu událostí pomocí služby Azure Media Services hello následující součásti jsou běžně podílejí:
+Při doručování živě streamovaných událostí pomocí služby Azure Media Services se běžně podílejí následující komponenty:
 
-* Fotoaparát, který je použité toobroadcast událost.
-* Za provozu kodér videa, který převádí signály z toostreams hello fotoaparát, která se posílají tooa živé streamování služby.
+* Kamera používaná k vysílání události.
+* Kodér videa pro kódování v reálném čase, který převádí signály z kamery do datových proudů, které se odesílají do služby živého streamování.
 
-    Volitelně několik živých, časově synchronizovaných kodérů. V případě důležitých živých událostí, vyžadují velmi vysokou dostupnost a kvalitní uživatelský dojem, doporučujeme tooemploy aktivní aktivní redundantní kodéry s čas synchronizace tooachieve bezproblémové převzetí služeb při selhání bez ztráty dat..
-* Služba živého streamování umožňující toodo hello následující:
+    Volitelně několik živých, časově synchronizovaných kodérů. V případě důležitých živých událostí, které vyžadují velmi vysokou dostupnost a kvalitní uživatelský dojem, doporučujeme využívat redundantní kodéry v režimu aktivní/aktivní s časovou synchronizací, abyste dosáhli bezproblémového převzetí služeb při selhání bez ztráty dat.
+* Služba živého streamování, která umožňuje následující:
 
   * ingestovat živý obsah pomocí různých protokolů pro živé streamování (například RTMP nebo technologie Smooth Streaming),
   * (volitelně) kódovat datový proud na datový proud s adaptivní přenosovou rychlostí
   * zobrazit náhled živého datového proudu,
-  * záznam a úložiště hello požity obsah v pořadí toobe Streamovat později (video na vyžádání)
-  * doručování obsahu hello prostřednictvím běžných streamovacích protokolů (například MPEG DASH, Smooth, HLS) přímo tooyour zákazníky nebo tooa sítě pro doručování obsahu (CDN) pro další distribuci.
+  * zaznamenávat a ukládat ingestovaný obsah, abyste ho mohli streamovat později (video na vyžádání)
+  * doručovat obsah prostřednictvím běžných streamovacích protokolů (například MPEG DASH, Smooth, HLS) přímo k vašim zákazníkům nebo do sítě pro doručování obsahu (CDN) pro další distribuci.
 
-**Microsoft Azure Media Services** (AMS) nabízí hello možnost tooingest, kódovat, zobrazte náhled, ukládat a doručovat obsah vašeho živého streamování.
+**Microsoft Azure Media Services** (AMS) nabízí možnost ingestovat, kódovat, zobrazovat náhled, ukládat a doručovat obsah vašeho živého streamování.
 
-Při doručování vašeho obsahu toocustomers vaším cílem je toodeliver vysoce kvalitního videa toovarious zařízení v různých síťových podmínkách. tooachieve, použijte live kodéry tooencode datového proudu tooa více přenosovými rychlostmi (adaptivní přenosová rychlost) video datového proudu.  tootake péče o streamování na různá zařízení pomocí služby Media Services [dynamické balení](media-services-dynamic-packaging-overview.md) toodynamically znovu zabalit vaše protokoly toodifferent datového proudu. Služba Media Services podporuje doručování následujících adaptivní přenosové rychlosti streamování technologie hello: HTTP Live Streaming (HLS), technologie Smooth Streaming, MPEG DASH.
+Při doručování obsahu zákazníkům je vaším cílem poskytování vysoce kvalitního videa pro různá zařízení v různých síťových podmínkách. Jak toho docílit, použijte kodéry pro kódovat datový proud na datový proud videa s více přenosovými rychlostmi (adaptivní přenosová rychlost).  Pokud chcete zajistit o streamování na různá zařízení, použijte [dynamické balení](media-services-dynamic-packaging-overview.md) ve službě Media Services a dynamicky znovu zabalte datový proud do různých protokolů. Služba Media Services podporuje doručování následujících technologií streamování s adaptivní přenosovou rychlostí: HTTP Live Streaming (HLS), technologie Smooth Streaming, MPEG DASH.
 
-Ve službě Azure Media Services **kanály**, **programy**, a **koncové body streamování** popisovač všechny hello živé streamování včetně ingestování, formátování, DVR, funkce zabezpečení, škálovatelnosti a redundance.
+Ve službě Azure Media Services se o zpracování všech funkcí živého streamování včetně ingestování, formátování, DVR, zabezpečení, škálovatelnosti a redundance starají **kanály**, **programy** a **koncové body streamování**.
 
-**Kanál** představuje cestu pro zpracování obsahu živého streamování. Kanál může přijímat živé vstupní datové proudy v hello následující způsoby:
+**Kanál** představuje cestu pro zpracování obsahu živého streamování. Kanál může přijímat živé vstupní datové proudy následujícími způsoby:
 
-* Místní kodér za provozu odešle více přenosovými rychlostmi **RTMP** nebo **technologie Smooth Streaming** (fragmentovaný soubor MP4) toohello kanálu, který je nakonfigurován pro **průchozí** doručení. Hello **průchozí** doručování nastává, když hello požity datové proudy prochází **kanál**s bez dalšího zpracování. Můžete použít následující kodéry, které výstupu technologie Smooth Streaming více přenosovými rychlostmi hello: MediaExcel, Ateme, představte si komunikace, Envivio, Cisco a Elemental. Hello následující kodéry výstupu RTMP: Adobe Flash média Live Encoder (FMLE), Telestream Wirecast, Haivision, Teradek a čase transkodéry.  Za provozu encoder můžete také odeslat kanál tooa jednou přenosovou rychlostí datový proud, který nemá povolené kódování v reálném čase, ale tato konfigurace se nedoporučuje. Po vyžádání Media Services doručí datový proud toocustomers hello.
+* Místní kodéru pro kódování v reálném čase odešle **RTMP** nebo **technologie Smooth Streaming** (fragmentovaný soubor MP4) s více přenosovými rychlostmi do kanálu, který je nakonfigurovaný na **průchozí** doručování. **Průchozí** doručování nastává, když ingestované datové proudy prochází **kanálem** bez dalšího zpracování. Můžete použít následující kodéry, které výstupu technologie Smooth Streaming více přenosovými rychlostmi: MediaExcel, Ateme, představte si komunikace, Envivio, Cisco a Elemental. Následující kodéry výstupu RTMP: Adobe Flash média Live Encoder (FMLE), Telestream Wirecast, Haivision, Teradek a čase transkodéry.  Kodér pro kódování v reálném čase může také odesílat datový proud s jednou přenosovou rychlostí do kanálu, který nemá povolené kódování v reálném čase, ale tato konfigurace se nedoporučuje. Služba Media Services doručí datový proud zákazníkům na vyžádání.
 
   > [!NOTE]
-  > Použití průchozí metody je nejekonomičtější způsob hello toodo živě Streamovat při pořádání několika událostí po dlouhou dobu a jste už investovali do místních kodérů. Viz podrobnosti o [cenách](https://azure.microsoft.com/pricing/details/media-services/).
+  > Použití průchozí metody je nejekonomičtější způsob, jak živě streamovat při pořádání několika událostí po delší dobu, když jste už investovali do místních kodérů. Viz podrobnosti o [cenách](https://azure.microsoft.com/pricing/details/media-services/).
   > 
   > 
-* Místní kodér za provozu odešle datový proud s jednou přenosovou rychlostí toohello kanálu, který je povolený tooperform live kódování pomocí služby Media Services v jednom z následujících formátů hello: RTMP nebo technologie Smooth Streaming (fragmentovaný MP4). RTP (MPEG-TS) je také podporována, pokud máte vyhrazené připojení toohello Azure datového centra. výstup Hello následující kodéry s RTMP se ví, že toowork s kanály, tohoto typu: Telestream Wirecast, FMLE. Hello kanál potom provede kódování v reálném čase z hello příchozí jednou přenosovou rychlostí datového proudu tooa více přenosovými rychlostmi (adaptivní) datový proud videa. Po vyžádání Media Services doručí datový proud toocustomers hello.
+* Místní kodér za provozu odešle datový proud s jednou přenosovou rychlostí do kanálu, který je povoleno provádět kódování v reálném čase pomocí služby Media Services v jednom z následujících formátů: RTMP nebo technologie Smooth Streaming (fragmentovaný MP4). RTP (MPEG-TS) je také podporována, pokud máte vyhrazené připojení k datovému centru Azure. Pro práci s kanály tohoto typu jsou známé následující kodéry s výstupu RTMP: Telestream Wirecast, FMLE. Kanál potom provede kódování v reálném čase pro příchozí datový proud s jednou přenosovou rychlostí v reálném čase na datový proud videa s více přenosovými rychlostmi (adaptivní). Služba Media Services doručí datový proud zákazníkům na vyžádání.
 
-Od verze hello Media Services 2.10, když vytvoříte kanál, můžete určit, jakým způsobem chcete použít pro kanál tooreceive hello vstupního datového proudu a zda chcete použít pro kanál tooperform hello za provozu kódování datového proudu. Máte dvě možnosti:
+Od verze Media Services 2.10, když vytvoříte kanál, můžete zadat způsobem, který chcete použít pro kanál pro příjem vstupního datového proudu a zda chcete pro kanál provést kódování v reálném čase z datového proudu. Máte dvě možnosti:
 
-* **Žádný** (průchozí) – zadejte tuto hodnotu, pokud máte v plánu toouse za provozu kodér místní, který bude výstupního datového proudu více přenosovými rychlostmi (průchozí datový proud). V takovém případě příchozího datového proudu hello předána toohello výstup bez jakékoli kódování. Toto je chování hello kanál too2.10 předchozí verze.  
-* **Standardní** – vyberte tuto hodnotu, pokud máte v plánu toouse Media Services tooencode datového proudu toomulti přenosovými živý datový proud jednou přenosovou rychlostí. Tato metoda je vyplatí pro Rychlé škálování pro nepravidelným události. Mějte na paměti, že je fakturace dopad pro kódování v reálném čase a měli pamatovat ponechat živého kanálu kódování ve stavu "Spuštění" hello je zpoplatněná fakturace poplatků.  Doporučuje se okamžitě zastavit spuštěný kanálů po živé streamování události je kompletní tooavoid velmi hodinové poplatky.
+* **Žádný** (průchozí) – zadejte tuto hodnotu, pokud budete chtít použít kodér místní za provozu, který bude výstupního datového proudu více přenosovými rychlostmi (průchozí datový proud). V takovém případě příchozího datového proudu předána do výstupu bez jakékoli kódování. Toto je chování kanál před vydáním verze 2.10.  
+* **Standardní** – vyberte tuto hodnotu, pokud máte v úmyslu použít Media Services ke kódování živého datového proudu jednou přenosovou rychlostí do datového proudu více přenosovými rychlostmi. Tato metoda je vyplatí pro Rychlé škálování pro nepravidelným události. Mějte na paměti, že je fakturace dopad pro kódování v reálném čase a by měl pamatovat, že ponechat živého kanálu kódování ve stavu "Spuštění" bude platit poplatky fakturace.  Doporučuje se po dokončení náklady na velmi hodinové živé streamování události okamžitě zastavit spuštěný kanálů.
 
 ## <a name="comparison-of-channel-types"></a>Porovnání typů kanálu
-Následující tabulka poskytuje návod toocomparing hello dvě kanál typy podporované ve službě Media Services
+Následující tabulka poskytuje vodítko k porovnání dvou kanál typy podporované ve službě Media Services
 
 | Funkce | Průchozí kanál | Běžný kanál |
 | --- | --- | --- |
-| Jednou přenosovou rychlostí vstup je zakódován do více přenosových rychlostí v cloudu hello |Ne |Ano |
+| Jednou přenosovou rychlostí vstup je zakódován do více přenosových rychlostí v cloudu |Ne |Ano |
 | Maximální rozlišení, počet vrstev |1080p, 8 vrstvy 60 + snímků za sekundu |720p, 6 vrstev, 30 snímků za sekundu |
 | Vstupní protokoly |RTMP funkce Smooth Streaming |RTMP, technologie Smooth Streaming a protokol RTP |
-| Cena |V tématu hello [stránce s cenami](https://azure.microsoft.com/pricing/details/media-services/) a klikněte na kartu "Live Video" |V tématu hello [stránce s cenami](https://azure.microsoft.com/pricing/details/media-services/) |
+| Cena |Najdete v článku [stránce s cenami](https://azure.microsoft.com/pricing/details/media-services/) a klikněte na kartu "Live Video" |Najdete v článku [stránce s cenami](https://azure.microsoft.com/pricing/details/media-services/) |
 | Maximální doba běhu |24 x 7 |8 hodin |
 | Podpora pro vkládání slaty |Ne |Ano |
 | Podpora pro signalizace ad |Ne |Ano |
 | Průchozí CEA 608/708 titulky |Ano |Ano |
-| Možnost toorecover z stručný míst v příspěvku informačního kanálu |Ano |Ne (kanál zahájíte slating po 6 + sekundách bez vstupní data) |
+| Možnost obnovení z stručný míst v příspěvku informačního kanálu |Ano |Ne (kanál zahájíte slating po 6 + sekundách bez vstupní data) |
 | Podpora pro vstupní GOPs neuniformní |Ano |Ne – vstup musí být vyřešeny 2 sekundu GOPs |
-| Podpora pro vstup míra proměnné rámce |Ano |Ne – vstup je potřeba opravit obnovovací frekvence.<br/>Malé změny jsou například tolerovat během scény vysoké pohybu. Ale kodér nelze vyřadit too10 snímků za sekundu. |
+| Podpora pro vstup míra proměnné rámce |Ano |Ne – vstup je potřeba opravit obnovovací frekvence.<br/>Malé změny jsou například tolerovat během scény vysoké pohybu. Ale kodér nelze vyřadit do 10 snímků za sekundu. |
 | Auto přístupnými kanálů při vstupu kanálu dojde ke ztrátě |Ne |Po 12 hodinách, pokud neexistuje žádné Program spuštěn |
 
 ## <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>Práce s kanály, které přijímají živé datové proudy s více přenosovými rychlostmi z místních kodérů (průchozí)
-Hello následující diagram znázorňuje hello hlavní části platformy hello AMS, které se podílejí na hello **průchozí** pracovního postupu.
+Následující diagram znázorňuje hlavní části platformy AMS, které se podílejí na **průchozím** pracovním postupu.
 
 ![Živý pracovní postup](./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png)
 
 Další informace najdete v článku o [práci s kanály, které přijímají živé streamování s více přenosovými rychlostmi z místních kodérů](media-services-live-streaming-with-onprem-encoders.md).
 
-## <a name="working-with-channels-that-are-enabled-tooperform-live-encoding-with-azure-media-services"></a>Práce s kanály, které jsou povolené tooperform za provozu, kódování službou Azure Media Services
-Hello následující diagram znázorňuje hello hlavní části platformy AMS hello souvisejících s pracovním postupu živého streamování kde kanál je s povoleným tooperform za provozu, kódování pomocí služby Media Services.
+## <a name="working-with-channels-that-are-enabled-to-perform-live-encoding-with-azure-media-services"></a>Práce s kanály, které mají povolené kódování v reálném čase pomocí služby Azure Media Services
+Následující diagram znázorňuje hlavní část platformy AMS, které se podílejí na pracovním postupu živého streamování, ve kterém má kanál povolené kódování v reálném čase pomocí služby Media Services.
 
 ![Živý pracovní postup](./media/media-services-live-streaming-workflow/media-services-live-streaming-new.png)
 
-Další informace najdete v tématu [práce s kanály, že jsou povolené tooPerform živé kódování službou Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
+Další informace najdete v článku o [práci s kanály, které mají povolené kódování v reálném čase pomocí služby Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
 
 ## <a name="description-of-a-channel-and-its-related-components"></a>Popis kanálu a jeho souvisejících součástí
 ### <a name="channel"></a>Kanál
-Ve službě Media Services [kanál](https://docs.microsoft.com/rest/api/media/operations/channel)s jsou zodpovědná za zpracování obsahu živého streamování. Kanál, který obsahuje vstupní koncový bod (ingestovanou adresu URL), pak zadejte převaděč tooa za provozu. kanál Hello přijímá živé vstupní datové proudy ze za provozu převaděč hello a zpřístupní se k vysílání datového proudu prostřednictvím jeden nebo více koncové body streamování. Kanály také poskytují preview koncový bod (URL náhledu) použít toopreview a ověřit před další zpracování a doručení datového proudu.
+Ve službě Media Services [kanál](https://docs.microsoft.com/rest/api/media/operations/channel)s jsou zodpovědná za zpracování obsahu živého streamování. Kanál, který obsahuje vstupní koncový bod (ingestovanou adresu URL), pak poskytnete za provozu převaděč. Kanál přijímá živé vstupní datové proudy ze za provozu převaděč a zpřístupní se k vysílání datového proudu prostřednictvím jeden nebo více koncové body streamování. Kanály taky zadat koncový bod preview (URL náhledu), který používáte pro zobrazení náhledu a ověřit před další zpracování a doručení datového proudu.
 
-Hello můžete získat ingestované adresy URL a adresy URL preview hello při vytváření kanálu hello. tooget tyto adresy URL hello kanál nemá toobe ve stavu spuštění hello. Pokud jste připravené toostart nabízet data z provozu převaděč do kanálu hello, musí být spuštěná hello kanálu. Jakmile se převaděč hello za provozu spustí příjem dat, můžete zobrazit náhled datového proudu.
+Když vytvoříte kanál, mohou získat adresu URL ingestování a URL náhledu. Pokud chcete získat tyto adresy URL, kanál nemá být ve stavu spuštěna. Pokud jste připravení začít s nabízet data z provozu převaděč do kanálu, je nutné spustit kanál. Jakmile se převaděč za provozu spustí příjem dat, můžete zobrazit náhled datového proudu.
 
-Každý účet Media Services může obsahovat více typů komunikačních kanálů, více programů a více koncové body streamování. V závislosti na potřebách hello šířky pásma a zabezpečení může být StreamingEndpoint služby vyhrazené tooone nebo další kanály. Všechny StreamingEndpoint můžete načítat z jakékoli kanálu.
+Každý účet Media Services může obsahovat více typů komunikačních kanálů, více programů a více koncové body streamování. Podle potřeb šířky pásma a zabezpečení může být vyhrazený StreamingEndpoint služby pro jeden nebo více kanálů. Všechny StreamingEndpoint můžete načítat z jakékoli kanálu.
 
 ### <a name="program"></a>Program
-A [Program](https://docs.microsoft.com/rest/api/media/operations/program) vám umožní toocontrol hello publikování a ukládání segmentů v živém datovém proudu. Kanály spravují programy. Hello vztah kanálů a programů se velmi podobné tootraditional médií, kde kanál obsahuje nepřetržitý datový proud obsahu a program je vymezená toosome vypršel časový limit událostí v tomto kanálu.
-Můžete zadat hello počet hodin, které chcete obsah hello zaznamenávají tooretain programu hello podle nastavení hello **ArchiveWindowLength** vlastnost. Tuto hodnotu můžete nastavit v rozmezí od 5 minut tooa maximálně 25 hodin.
+A [Program](https://docs.microsoft.com/rest/api/media/operations/program) vám umožňuje řídit publikování a ukládání segmentů v živém datovém proudu. Kanály spravují programy. Vztah kanálů a programů se velmi podobná tradičním médiím, kde kanál obsahuje nepřetržitý datový proud obsahu a program je vymezen na určité načasované události v tomto kanálu.
+Můžete určit počet hodin, které chcete uchovávat zaznamenaný obsah programu nastavením **ArchiveWindowLength** vlastnost. Tuto hodnotu můžete nastavit v rozmezí od 5 minut po 25 hodin.
 
-ArchiveWindowLength také určuje maximální množství času, které klienty můžete hledat zpět v čase od aktuální živé pozice hello hello. Programy můžou běžet po hello určenou dobu a obsah, který hello délky okna nevejde je vždy zahozen. Hodnota této vlastnosti také určuje, jak dlouho hello klienta můžou růst manifesty.
+ArchiveWindowLength také určuje že maximální množství času klientů můžete prohledávat směrem zpět v čase od aktuální živé pozice. Programy můžou běžet po určenou dobu a obsah, který se do délky okna nevejde, bude vždy zahozen. Hodnota této vlastnosti také určuje, jak dlouho můžou růst manifesty klientů.
 
-Každý program je přidružený k assetu. program hello toopublish musí vytvořit lokátor pro hello související prostředek. Tento Lokátor vám umožní toobuild adresu URL pro streamování, kterou potom poskytnete tooyour klientů.
+Každý program je přidružený k assetu. Chcete-li publikovat program musíte vytvořit lokátor pro přidružený asset. Tento lokátor vám umožní sestavit adresu URL pro streamování, kterou potom poskytnete svým klientům.
 
-Kanál podporuje až toothree souběžně spuštěnými programy, takže si můžete vytvořit několik archivů hello stejného příchozího datového proudu. To vám umožní toopublish a archivovat různé části události podle potřeby. Například vaše firemní požadavky je tooarchive 6 hodin programu, ale toobroadcast pouze posledních 10 minut. tooaccomplish, je nutné toocreate dva současně spuštěné programy. Jeden program nastaven tooarchive 6 hodin hello události ale programu hello není publikována. Hello jiný program je sada tooarchive 10 minut a tento program budete publikovat.
+Kanál podporuje až tři současně spuštěné programy, takže si můžete vytvořit několik archivů stejného příchozího datového proudu. To vám umožní podle potřeby publikovat a archivovat různé části události. Požadavek vaší firmy může být například takový, že chcete archivovat 6 hodin programu, ale vysílat jenom posledních 10 minut. K tomu potřebujete vytvořit dva současně spuštěné programy. Jeden program nastavíte, aby archivoval 6 hodin události, ale tento program nebudete publikovat. Druhý program nastavíte, aby archivoval 10 minut a tento program budete publikovat.
 
 ## <a name="billing-implications"></a>Dopady na fakturaci
-Kanál, který začíná fakturace při jeho stav přejde příliš "spuštění" prostřednictvím hello rozhraní API.  
+Kanál, který začíná fakturace, jakmile je přechodů mezi stavy "Spuštění" prostřednictvím rozhraní API.  
 
-Hello následující tabulka ukazuje, jak kanál stavy mapovány toobilling stavů v hello rozhraní API a portálu Azure. Upozorňujeme, že jsou mírně liší hello rozhraní API a portál UX hello stavy Jakmile kanál hello "Spuštěná" stav prostřednictvím hello rozhraní API, nebo v hello "Připravené" nebo "Streaming" stav v hello portálu Azure, bude fakturace aktivní.
+Následující tabulka ukazuje, jak kanál stavy mapovány fakturace stavů v portálu rozhraní API a Azure. Upozorňujeme, že jsou mírně liší rozhraní API a portál UX stavy Jakmile kanál, který je ve stavu "Spuštěná" prostřednictvím rozhraní API nebo ve stavu "Připraveno" nebo "Streaming" na webu Azure portal fakturace bude aktivní.
 
-Kanál hello toostop z jste další fakturace, máte tooStop hello kanál prostřednictvím hello rozhraní API nebo v hello portálu Azure.
-Jste zodpovědní za zastavení kanálů až skončíte s hello kanál. Trvalá fakturace způsobí selhání toostop hello kanálu.
+Chcete-li ukončit kanál z jste další fakturace, budete muset zastavte kanál prostřednictvím rozhraní API nebo na portálu Azure.
+Jste zodpovědní za zastavení kanálů, když jste hotovi s kanálem. Nepodařilo se zastavit kanál způsobí trvalá fakturace.
 
 > [!NOTE]
-> Při práci s kanály, Standard, AMS automaticky přístupnými žádné kanálu, který je stále ve stavu "Spuštění" 12 hodin po vstupní kanál hello dojde ke ztrátě a neexistují žádné programy spuštěné. Ale bude stále se fakturuje hello čas hello kanál byla ve stavu "Spuštění".
+> Při práci s kanály, Standard, AMS automaticky přístupnými žádné kanálu, který je stále ve stavu "Spuštění" 12 hodin po vstupní kanál dojde ke ztrátě a neexistují žádné programy spuštěné. Ale bude stále se fakturuje době kanál byla ve stavu "Spuštění".
 >
 >
 
-### <a id="states"></a>Stavy kanál a jak jsou mapovány toohello fakturace režimu
-aktuální stav Hello kanálu. Možné hodnoty:
+### <a id="states"></a>Stavy kanál a jak jsou mapovány na fakturační režim
+Aktuální stav kanálu. Možné hodnoty:
 
-* **Zastavit**. Toto je počáteční stav hello hello kanál po jeho vytvoření (Pokud je automatické spuštění byla vybrána hello portálu.) V tomto stavu dojde k žádné fakturace. V tomto stavu můžete aktualizovat vlastnosti hello kanál, ale datový proud není povolen.
-* **Spouštění**. Probíhá spouštění Hello kanálu. V tomto stavu dojde k žádné fakturace. V tomto stavu nejsou povolené žádné aktualizace ani streamování. Pokud dojde k chybě, vrátí hello kanál toohello zastaveném stavu.
-* **Spuštění**. Hello kanál je schopen zpracování datových proudů za provozu. Nyní ji je fakturace využití. Je potřeba zastavit tooprevent kanál hello další fakturace.
-* **Zastavení**. Kanál Hello se zastaví. V tomto dočasném stavu dojde k žádné fakturace. V tomto stavu nejsou povolené žádné aktualizace ani streamování.
-* **Odstranění**. Probíhá odstranění Hello kanálu. V tomto dočasném stavu dojde k žádné fakturace. V tomto stavu nejsou povolené žádné aktualizace ani streamování.
+* **Zastavit**. Toto je počáteční stav kanálu po jeho vytvoření (Pokud je automatické spuštění byla vybrána v portálu.) V tomto stavu dojde k žádné fakturace. V tomto stavu je možné aktualizovat vlastnosti kanálu, ale streamování není povoleno.
+* **Spouštění**. Kanál se spouští. V tomto stavu dojde k žádné fakturace. V tomto stavu nejsou povolené žádné aktualizace ani streamování. Pokud dojde k chybě, kanál se vrátí do stavu Zastaveno.
+* **Spuštění**. Kanál dokáže zpracovávat živé streamy. Nyní ji je fakturace využití. Je třeba ukončit kanál, aby se zabránilo další fakturace.
+* **Zastavení**. Kanál se zastavuje. V tomto dočasném stavu dojde k žádné fakturace. V tomto stavu nejsou povolené žádné aktualizace ani streamování.
+* **Odstranění**. Kanál se odstraňuje. V tomto dočasném stavu dojde k žádné fakturace. V tomto stavu nejsou povolené žádné aktualizace ani streamování.
 
-Hello následující tabulka ukazuje, jak kanál stavy režimu fakturace toohello mapy.
+Následující tabulka uvádí přiřazení stavů kanálu k režimu fakturace.
 
 | Stav kanálu | Indikátory v uživatelském rozhraní portálu | Je fakturace? |
 | --- | --- | --- |
@@ -147,7 +147,7 @@ Hello následující tabulka ukazuje, jak kanál stavy režimu fakturace toohell
 ## <a name="related-topics"></a>Související témata
 [Azure Media Services fragmentovaných MP4 Live Ingestování specifikace](media-services-fmp4-live-ingest-overview.md)
 
-[Práce s kanály, že jsou povolené tooPerform živé kódování službou Azure Media Services](media-services-manage-live-encoder-enabled-channels.md)
+[Práce s kanály, které mají povolené kódování v reálném službou Azure Media Services](media-services-manage-live-encoder-enabled-channels.md)
 
 [Práce s kanály, které přijímají živé datové proudy s více přenosovými rychlostmi z místních kodérů](media-services-live-streaming-with-onprem-encoders.md)
 

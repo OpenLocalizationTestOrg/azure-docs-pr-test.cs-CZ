@@ -1,7 +1,7 @@
 ## <a name="obtain-an-azure-resource-manager-token"></a>Získání tokenu Azure Resource Manager
-Azure Active Directory musí ověřovat všechny hello úlohy, které můžete provádět na prostředků pomocí Azure Resource Manager hello. Hello zde ukazuje příklad používá ověřování hesla jiné postupy najdete v tématu [požadavků ověřování Azure Resource Manager][lnk-authenticate-arm].
+Azure Active Directory musí ověřovat všechny úlohy, které můžete provádět na prostředků pomocí Azure Resource Manager. Z příkladu používá ověřování hesla, naleznete v dalších přístupy [požadavků ověřování Azure Resource Manager][lnk-authenticate-arm].
 
-1. Přidejte následující kód toohello hello **hlavní** metoda v souboru Program.cs tooretrieve tokenu z Azure AD pomocí id aplikace hello a hesla.
+1. Přidejte následující kód, který **hlavní** metoda do souboru Program.cs k načtení tokenu z Azure AD pomocí id aplikace a hesla.
    
     ```
     var authContext = new AuthenticationContext(string.Format  
@@ -12,18 +12,18 @@ Azure Active Directory musí ověřovat všechny hello úlohy, které můžete p
    
     if (token == null)
     {
-      Console.WriteLine("Failed tooobtain hello token");
+      Console.WriteLine("Failed to obtain the token");
       return;
     }
     ```
-2. Vytvoření **ResourceManagementClient** objektu, že používá hello token přidáním následujících toohello kód na konci hello hello **hlavní** metoda:
+2. Vytvoření **ResourceManagementClient** objekt, který používá token přidáním následující kód do konce **hlavní** metoda:
    
     ```
     var creds = new TokenCredentials(token.AccessToken);
     var client = new ResourceManagementClient(creds);
     client.SubscriptionId = subscriptionId;
     ```
-3. Vytvořit nebo získat odkaz na hello skupinu prostředků, který používáte:
+3. Vytvořit nebo získat odkaz na skupinu prostředků, kterou používáte:
    
     ```
     var rgResponse = client.ResourceGroups.CreateOrUpdate(rgName,

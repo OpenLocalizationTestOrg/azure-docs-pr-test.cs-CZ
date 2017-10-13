@@ -1,6 +1,6 @@
 ---
-title: aaaAndroid integraci sady SDK pro Azure Mobile Engagement
-description: Popisuje, jak toointegrate Azure Mobile Engagement SDK do aplikace pro Android
+title: Integraci sady Android SDK pro Azure Mobile Engagement
+description: Popisuje, jak integrovat Azure Mobile Engagement SDK do aplikace pro Android
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,11 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: piyushjo;ricksal
-ms.openlocfilehash: 0c63bfaf673abbda7ea498390f8282c43e2fb8df
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 35935e911f1f17989beb71978396c6d1b7d601d6
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="android-sdk-integration-for-azure-mobile-engagement"></a>Integraci sady Android SDK pro Azure Mobile Engagement
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Tento dokument popisuje hello integrace a konfigurace k dispozici všechny možnosti pro Azure Mobile Engagement Android SDK.
+Tento dokument popisuje všech integrace a konfigurace dostupných možnostech pro Azure Mobile Engagement Android SDK.
 
 ## <a name="prerequisites"></a>Požadavky
 [!INCLUDE [Prereqs](../../includes/mobile-engagement-android-prereqs.md)]
@@ -43,27 +43,27 @@ Můžete přidat tyto funkce:
 3. [Rozšířené možnosti konfigurace](mobile-engagement-android-advanced-configuration.md)
 
 ### <a name="notifications"></a>Oznámení:
-[Jak toointegrate Reach (oznámení) v aplikacích pro Android](mobile-engagement-android-integrate-engagement-reach.md)
+[Postup při integraci Reach (oznámení) v aplikacích pro Android](mobile-engagement-android-integrate-engagement-reach.md)
 
-1. Google Cloud Messaging (GCM): [jak tooIntegrate GCM s Mobile Engagement](mobile-engagement-android-gcm-integrate.md)
-2. Zasílání zpráv zařízení Amazon (ADM): [jak tooIntegrate ADM s Mobile Engagement](mobile-engagement-android-adm-integrate.md)
+1. Zasílání zpráv cloudu Google (GCM): [postup GCM integrovat Mobile Engagement](mobile-engagement-android-gcm-integrate.md)
+2. Službu Amazon Device Messaging (ADM): [postup ADM integrovat Mobile Engagement](mobile-engagement-android-adm-integrate.md)
 
 ### <a name="tag-plan-implementation"></a>Implementace plánu značky:
-[Jak toouse hello advanced Mobile Engagement označování rozhraní API v aplikacích pro Android](mobile-engagement-android-use-engagement-api.md)
+[Jak používat rozšířené Mobile Engagement označování rozhraní API v aplikacích pro Android](mobile-engagement-android-use-engagement-api.md)
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="431-07172017"></a>4.3.1 (07/17/2017)
-* Opravte havárii, která se může občas nastat při volání metody `EngagementAgentUtils.isInDedicatedEngagementProcess`, které používá také hello `EngagementApplication` třídy.
+* Opravte havárii, která se může občas nastat při volání metody `EngagementAgentUtils.isInDedicatedEngagementProcess`, které používá také `EngagementApplication` třídy.
 
 ### <a name="430-06272017"></a>4.3.0 (06/27/2017)
-* 8 podpora pro Android (předchozí verze hello SDK nebude fungovat v systému Android 8).
+* 8 podpora pro Android (předchozí verze sady SDK nebudou fungovat na Android 8).
 * Žádné další závislosti na podporu knihovny.
 * Odebrat `EngagementFragmentActivity` třídy.
-* Kvůli příliš[omezení provádění pozadí](https://developer.android.com/preview/features/background.html) na Android 8 může zpoždění protokoly v pozadí, dokud hello uživatel pracuje s hello zařízení, to bude mít dopad na kampaň nabízených **doručené** a **Systémové oznámení zobrazené** statistiky je zpožděno. Pokud byl hello zařízení v režimu spánku (hello oznámení bude i nadále zobrazovat, bude prstence a zavibrovat v reálném čase bez problémů).
-* Kvůli příliš[omezení umístění pozadí](https://developer.android.com/preview/features/background-location-limits.html), hello reálném čase umístění pozadí se nebude často aktualizovat na Android 8.
+* Z důvodu [omezení provádění pozadí](https://developer.android.com/preview/features/background.html) na Android 8 může zpoždění protokoly v pozadí, dokud uživatel pracuje se zařízení, to bude mít dopad na kampaň nabízených **doručené** a  **Systémové oznámení zobrazené** statistiky je zpožděno. Pokud je zařízení v režimu spánku (oznámení bude i nadále zobrazovat, bude prstence a zavibrovat v reálném čase bez problémů).
+* Z důvodu [omezení umístění pozadí](https://developer.android.com/preview/features/background-location-limits.html), reálném čase na Android 8 nebude často aktualizovat umístění pozadí.
 
-Všechny verze najdete v tématu hello [dokončení poznámky k verzi](mobile-engagement-android-release-notes.md).
+Všechny verze najdete v tématu [dokončení poznámky k verzi](mobile-engagement-android-release-notes.md).
 
 ## <a name="upgrade-procedures"></a>Postupy upgradu
 Pokud již máte integrovanou starší verze naše sady SDK do své aplikace, projděte si [postupy upgradu](mobile-engagement-android-upgrade-procedure.md).

@@ -1,6 +1,6 @@
 ---
 title: "Hybridní identita: Porovnání nástrojů pro integraci adresáře | Dokumentace Microsoftu"
-description: "Toto je stránka nabízí komplexní tabulku porovnávající hello různé nástroje integrace adresáře, které můžete použít pro integraci adresáře."
+description: "Tato stránka nabízí komplexní tabulku porovnávající různé nástroje integrace adresáře, které lze použít pro integraci adresáře."
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -14,45 +14,45 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 18ac0a0f58726eceb85510df516e8db71429b313
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f87b5837c7a786c8b309a6a52e69b53c0ad4c9d8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>Hybridní identita: Porovnání nástrojů pro integraci adresáře
-V průběhu let hello nástroje integrace adresáře hello zvětšil a vyvinuly.  Tento dokument je toohelp poskytují ucelený přehled těchto nástrojů a porovnání hello funkcí, které jsou v nich dostupné.
+V průběhu let se nástroje pro integraci adresáře rozšířily a vyvinuly.  Tento dokument vám poskytne ucelený přehled těchto nástrojů a porovnání funkcí, které jsou v nich dostupné.
 
-<!-- hello hardcoded link is a workaround for campaign ids not working in acom links-->
+<!-- The hardcoded link is a workaround for campaign ids not working in acom links-->
 
 > [!NOTE]
-> Azure AD Connect zahrnuje hello komponenty a funkce dřív vydané jako Dirsync a AAD Sync. Tyto nástroje jsou už vydán jednotlivě a všechna budoucí vylepšení budou zahrnuty do aktualizace tooAzure AD Connect, abyste vždycky věděli, kde tooget hello nejnovější funkce.
+> Azure AD Connect zahrnuje komponenty a funkce dříve vydávané jako Dirsync a AAD Sync. Tyto nástroje se již nebudou vydávat jednotlivě a všechna budoucí vylepšení budou zahrnuta do aktualizací služby Azure AD Connect, abyste vždycky věděli, kde sehnat ty nejnovější funkce.
 > 
 > DirSync a Azure AD Sync jsou nyní zastaralé. Další informace najdete [tady](active-directory-aadconnect-dirsync-deprecated.md).
 > 
 > 
 
-Použijte následující klíč pro každou z tabulek hello hello.
+U jednotlivých tabulek použijte následující klíč.
 
 ● = Nyní dostupné  
 FR = budoucí verze  
 PP = Public Preview  
 
-## <a name="on-premises-toocloud-synchronization"></a>Místní tooCloud synchronizace
+## <a name="on-premises-to-cloud-synchronization"></a>Synchronizace z místního prostředí do cloudu
 | Funkce | Azure Active Directory Connect | Služby synchronizace Azure Active Directory (AAD Sync) | Synchronizační nástroj služby Azure Active Directory (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
-| Připojit toosingle místní doménové struktuře Active Directory |● |● |● |● |● |
-| Připojit toomultiple místní doménových struktur AD |● |● | |● |● |
-| Připojit toomultiple místní Exchange Orgs |● | | | | |
-| Připojení adresáře LDAP místní toosingle |FR | | |● |● |
-| Připojení adresáře LDAP místní toomultiple |FR | | |● |● |
-| Připojit tooon místní AD a místní adresáře LDAP |FR | | |● |● |
-| Připojit toocustom systémy (tj. SQL, Oracle, MySQL atd.) |FR | | |● |● |
+| Připojení k jedné místní doménové struktuře AD |● |● |● |● |● |
+| Připojení k několika místním doménovým strukturám AD |● |● | |● |● |
+| Připojení k několika místním Exchange Orgs |● | | | | |
+| Připojení k jednomu místnímu adresáři LDAP |FR | | |● |● |
+| Připojení k několika místním adresářům LDAP |FR | | |● |● |
+| Připojení k místním adresářům AD a LDAP |FR | | |● |● |
+| Připojení k vlastním systémům (tj. SQL, Oracle, MySQL atd.) |FR | | |● |● |
 | Synchronizace atributů definovaných zákazníkem (rozšíření adresáře) |● | | | | |
-| Připojit tooon místním HR (tj, SAP, Oracle eBusiness, PeopleSoft) |FR | | |● |● |
-| Podporuje pravidla synchronizace FIM a konektory pro zřizování tooon místní systémy. | | | |● |● |
+| Připojení k místním HR (tj, SAP, Oracle eBusiness, PeopleSoft) |FR | | |● |● |
+| Podporuje pravidla synchronizace FIM a konektory pro zřizování do místních systémů. | | | |● |● |
 
-## <a name="cloud-tooon-premises-synchronization"></a>Synchronizace místních tooOn cloudu
+## <a name="cloud-to-on-premises-synchronization"></a>Synchronizace z cloudu do místního prostředí
 | Funkce | Azure Active Directory Connect | Služby synchronizace Azure Active Directory | Synchronizační nástroj služby Azure Active Directory (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | Zpětný zápis zařízení |● | |● | | |
@@ -74,8 +74,8 @@ PP = Public Preview
 | Podporuje instalaci na řadič domény |● |● |● | |
 | Podporuje instalaci pomocí SQL Express |● |● |● | |
 | Snadný upgrade z nástroje DirSync |● | | | |
-| Lokalizace správce UX tooWindows jazyků serveru |● |● |● | |
-| Lokalizace koncového uživatele UX tooWindows jazyků serveru | | | |● |
+| Lokalizace správce UX pro jazyky Windows Serveru |● |● |● | |
+| Lokalizace koncového uživatele UX pro jazyky Windows Serveru | | | |● |
 | Podpora pro Windows Server 2008 a Windows Server 2008 R2 |● pro synchronizaci, ne pro federaci |● |● |● |
 | Podpora pro Windows Server 2012 a Windows Server 2012 R2 |● |● |● |● |
 
@@ -84,9 +84,9 @@ PP = Public Preview
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | Filtrování v rámci domén a organizačních jednotek |● |● |● |● |● |
 | Filtrování v rámci hodnot atributů objektů |● |● |● |● |● |
-| Povolit minimální sadu atributů toobe synchronizovány (MinSync) |● |● | | | |
-| Povolit toobe šablony jiný služeb pro toky atributů |● |● | | | |
-| Povolení odebrání atributů z toku ze AD tooAzure AD |● |● | | | |
+| Povolení minimální sady atributů, které mají být synchronizovány (MinSync) |● |● | | | |
+| Povolení použití jiných šablon služeb pro toky atributů |● |● | | | |
+| Povolení odebrání atributů z toku ze služby AD do služby Azure AD |● |● | | | |
 | Povolení upřesňujících úprav pro toky atributů |● |● | |● |● |
 
 ## <a name="next-steps"></a>Další kroky

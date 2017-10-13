@@ -1,5 +1,5 @@
 ---
-title: "dotazy efektivní seznamu aaaDesign – Azure Batch | Microsoft Docs"
+title: "Návrh efektivní seznamu dotazy – Azure Batch | Microsoft Docs"
 description: "Zvyšuje výkon filtrování vašich dotazů při žádosti o Batch prostředkům, jako jsou fondy, úlohy, úlohy a výpočetní uzly."
 services: batch
 documentationcenter: .net
@@ -15,88 +15,88 @@ ms.workload: big-compute
 ms.date: 08/02/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b7e554119ec9d0e9e8007ccfb1ca80fe142a5e27
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a80b207f591bd888d4749287527013c5e554fb6e
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="create-queries-toolist-batch-resources-efficiently"></a>Vytváření dotazů toolist prostředky Batch efektivně
+# <a name="create-queries-to-list-batch-resources-efficiently"></a>Efektivně vytvářet dotazy ke prostředky Batch seznamu
 
-Zde dozvíte, jak tooincrease výkon aplikace Azure Batch snížením hello množství dat, která je vrácena službou hello po dotazu úlohy, úkoly a výpočetní uzly s hello [Batch .NET] [ api_net] knihovny.
+Zde se dozvíte, jak zvýšit výkon aplikace Azure Batch snižuje množství dat, která je vrácena službou při dotazování úlohy a úlohy a výpočetní uzly se [Batch .NET] [ api_net] knihovny.
 
-Téměř všechny aplikace Batch nutné tooperform nějaký typ monitorování nebo jiné operace, který se dotazuje služby Batch hello, často v pravidelných intervalech. Toodetermine například, zda jsou všechny ve frontě úloh zbývající v rámci úlohy, musíte získat data na každý úkol v úloze hello. Stav hello toodetermine uzly ve fondu, musíte získat data na každý uzel ve fondu hello. Tento článek vysvětluje, jak tooexecute například dotazy v hello nejefektivnějším způsobem.
+Téměř všechny aplikace Batch je potřeba provést nějaký typ monitorování nebo jiné operace, který se dotazuje služby Batch, často v pravidelných intervalech. Pokud chcete zjistit, zda jsou všechny ve frontě úloh zbývající v rámci úlohy, například musí získat data na každý úkol v úloze. Pokud chcete zjistit stav uzly ve fondu, musíte získat data na každý uzel ve fondu. Tento článek vysvětluje, jak provést takové dotazy nejefektivnějším způsobem.
 
 > [!NOTE]
-> Hello služba Batch poskytuje speciální podporu rozhraní API pro běžné scénáře hello počítání úkoly v úloze. Místo použití seznamu dotazu pro tyto, můžete volat hello [získat počty úloh] [ rest_get_task_counts] operaci. Počet úloh Get Určuje, kolik úlohy čekají na vyřízení, spuštění nebo dokončení, a mít kolik úlohy byla úspěšná nebo neúspěšná. Spočítá počet úloh GET je efektivnější než seznamu dotazu. Další informace najdete v tématu [počet úloh pro úlohu podle stavu (Preview)](batch-get-task-counts.md). 
+> Služba Batch poskytuje speciální podporu rozhraní API pro běžný scénář inventur úkoly v úloze. Místo použití seznamu dotazu pro tyto, můžete zavolat [získat počty úloh] [ rest_get_task_counts] operaci. Počet úloh Get Určuje, kolik úlohy čekají na vyřízení, spuštění nebo dokončení, a mít kolik úlohy byla úspěšná nebo neúspěšná. Spočítá počet úloh GET je efektivnější než seznamu dotazu. Další informace najdete v tématu [počet úloh pro úlohu podle stavu (Preview)](batch-get-task-counts.md). 
 >
-> Hello získat počty úloh operaci starší než 2017-06-01.5.1 není k dispozici ve verzích služby Batch. Pokud používáte starší verzi hello služby, potom použijte úlohy toocount dotaz seznam v úlohu.
+> Operace získání úkolů počty starší než 2017-06-01.5.1 není k dispozici ve verzích služby Batch. Pokud používáte starší verzi služby, potom pomocí seznamu dotazu místo počet úkoly v úloze.
 >
 > 
 
-## <a name="meet-hello-detaillevel"></a>Splňovat hello DetailLevel
-V produkční aplikaci služby Batch můžete v hello tisíc čísel entity jako úlohy, úlohy a výpočetní uzly. Pokud budete požadovat informace o těchto prostředků, potenciálně velkého množství dat musí "křížová přenosová hello" z aplikace tooyour služby Batch hello na každý dotaz. Omezením hello počet položek a typu informací, které je vrácených dotazem můžete zvýšit rychlost hello své dotazy a proto hello výkon aplikace.
+## <a name="meet-the-detaillevel"></a>Splňovat DetailLevel
+V produkční aplikaci služby Batch můžete v tisíců čísel entity jako úlohy, úlohy a výpočetní uzly. Pokud budete požadovat informace o těchto prostředků, potenciálně velkého množství dat musí "křížová sítě" ze služby Batch do vaší aplikace na každý dotaz. Tím, že omezí počet položek a typu informací, které je vrácených dotazem, můžete zvýšit rychlost své dotazy a proto výkon vaší aplikace.
 
-To [Batch .NET] [ api_net] seznamy fragmentu kódu rozhraní API *každých* úlohu, která je spojená s úlohou, spolu s *všechny* hello vlastností jednotlivých úloha:
+To [Batch .NET] [ api_net] seznamy fragmentu kódu rozhraní API *každých* úlohu, která je spojená s úlohou, spolu s *všechny* vlastností jednotlivých úloh:
 
 ```csharp
-// Get a collection of all of hello tasks and all of their properties for job-001
+// Get a collection of all of the tasks and all of their properties for job-001
 IPagedEnumerable<CloudTask> allTasks =
     batchClient.JobOperations.ListTasks("job-001");
 ```
 
-Mnohem efektivnější seznamu dotazu, můžete však provést použitím tooyour dotazu "úroveň podrobností". To provedete zadáním [ODATADetailLevel] [ odata] objektu toohello [JobOperations.ListTasks] [ net_list_tasks] metoda. Tento fragment kódu vrátí pouze hello ID, příkazový řádek a výpočetní uzel informace vlastnosti dokončených úloh:
+Mnohem efektivnější dotaz, můžete však provést použitím "úroveň podrobností" do dotazu. To provedete zadáním [ODATADetailLevel] [ odata] do objektu [JobOperations.ListTasks] [ net_list_tasks] metoda. Tento fragment kódu vrátí pouze ID, příkazový řádek a výpočetní uzel informace vlastnosti dokončených úloh:
 
 ```csharp
 // Configure an ODATADetailLevel specifying a subset of tasks and
-// their properties tooreturn
+// their properties to return
 ODATADetailLevel detailLevel = new ODATADetailLevel();
 detailLevel.FilterClause = "state eq 'completed'";
 detailLevel.SelectClause = "id,commandLine,nodeInfo";
 
-// Supply hello ODATADetailLevel toohello ListTasks method
+// Supply the ODATADetailLevel to the ListTasks method
 IPagedEnumerable<CloudTask> completedTasks =
     batchClient.JobOperations.ListTasks("job-001", detailLevel);
 ```
 
-V tomto ukázkovém scénáři, pokud existují tisíce úkolů v úloze hello hello výsledky z dotazu druhý hello obvykle bude vrácena jako mnohem rychlejší než hello první. Další informace o používání ODATADetailLevel při seznamu položek s hello Batch .NET API je součástí [pod](#efficient-querying-in-batch-net).
+V tomto ukázkovém scénáři, pokud existují tisíce úkolů do úlohy výsledky z druhého dotazu bude obvykle vrácen mnohem rychlejší než první. Další informace o používání ODATADetailLevel při seznamu položek s Batch .NET API je součástí [pod](#efficient-querying-in-batch-net).
 
 > [!IMPORTANT]
-> Důrazně doporučujeme, aby vám *vždy* dodávky seznam ODATADetailLevel tooyour objektů .NET API volá tooensure maximální efektivity a výkonu vaší aplikace. Zadáním úroveň podrobností můžete pomoct toolower dávky služby odezvy, zvýšit využití sítě a minimalizovat využití paměti v klientských aplikacích.
+> Důrazně doporučujeme, aby vám *vždy* zadat objekt ODATADetailLevel tak, aby voláními rozhraní API .NET seznamu zajistit maximální efektivity a výkonu vaší aplikace. Zadáním úroveň podrobností můžete pomoct snížit dobu odezvy služby Batch, zvýšit využití sítě a minimalizovat využití paměti v klientských aplikacích.
 > 
 > 
 
 ## <a name="filter-select-and-expand"></a>Filtrovat, vyberte a rozbalte
-Hello [Batch .NET] [ api_net] a [Batch REST] [ api_rest] rozhraní API nabízejí možnost tooreduce hello obou hello počet položek, které jsou vráceny v seznamu, a také hello objem informací, které se vrátí pro každou. To uděláte tak, že zadáte **filtru**, **vyberte**, a **rozbalte řetězce** při provádění dotazů seznamu.
+[Batch .NET] [ api_net] a [Batch REST] [ api_rest] rozhraní API nabízejí možnost snížit i počet položek, které jsou vráceny v seznamu, a také množství informací, které se vrátí pro každou. To uděláte tak, že zadáte **filtru**, **vyberte**, a **rozbalte řetězce** při provádění dotazů seznamu.
 
 ### <a name="filter"></a>Filtr
-řetězec filtru Hello je výraz, který snižuje hello počet položek, které jsou vráceny. Například seznam pouze hello spuštěných úloh pro úlohu nebo seznamu pouze výpočetní uzly, které jsou připravené toorun úlohy.
+Řetězec filtru je výraz, který snižuje počet položek, které jsou vráceny. Například seznam pouze spuštěné úlohy pro úlohu, nebo seznam pouze výpočetní uzly, které jsou připravené ke spuštění úlohy.
 
-* řetězec filtru Hello se skládá z jednoho nebo více výrazů s výrazem, který obsahuje název vlastnosti, operátor a hodnotu. Hello vlastnosti, které lze zadat jsou konkrétní tooeach typu entity, který dotazování, jako jsou hello operátory, které jsou podporovány pro každou vlastnost.
-* Více výrazů lze spojovat pomocí logických operátorů hello `and` a `or`.
-* Tento příklad filtrování seznamů řetězec jen hello spuštění úlohy "vykreslení": `(state eq 'running') and startswith(id, 'renderTask')`.
+* Řetězec filtru se skládá z jednoho nebo více výrazů s výrazem, který obsahuje název vlastnosti, operátor a hodnotu. Vlastnosti, které lze zadat jsou specifické pro každý typ entity, které můžete zadat dotaz, jako jsou operátory, které jsou podporovány pro každou vlastnost.
+* Více výrazů lze spojovat pomocí logických operátorů `and` a `or`.
+* Tento příklad filtrování seznamů řetězec jen spuštění úlohy "vykreslení": `(state eq 'running') and startswith(id, 'renderTask')`.
 
 ### <a name="select"></a>Vyberte
-Vyberte řetězec Hello omezuje hello hodnoty vlastností, které se vrátí pro každou položku. Zadejte seznam názvů vlastností a pouze hodnoty těchto vlastností jsou vráceny hello položek ve výsledcích dotazů hello.
+Vyberte řetězec omezení hodnoty vlastností, které se vrátí pro každou položku. Zadejte seznam názvů vlastností a pouze hodnoty těchto vlastností jsou vráceny pro položky v výsledky dotazu.
 
-* Vyberte řetězec Hello se skládá z seznam názvů vlastností oddělených čárkami. Můžete zadat jakýkoli hello vlastnosti pro typ entity hello, který se dotazuje.
+* Vyberte řetězec tvořený seznam názvů vlastností oddělených čárkami. Můžete určit všechny vlastnosti pro typ entity, který se dotazuje.
 * Tento příklad vyberte řetězec Určuje, že má být vrácen pouze tři hodnoty vlastností pro každou úlohu: `id, state, stateTransitionTime`.
 
 ### <a name="expand"></a>Rozbalit
-Hello rozbalte položku řetězec snižuje hello počet volání rozhraní API, které jsou požadované tooobtain určité informace. Použijete-li řetězec rozbalte, nelze získat další informace o jednotlivých položkách na základě jednoho volání rozhraní API. Místo první získání hello seznamu entity, pak se žádajícího informace pro každou položku v seznamu hello využít řetězec rozbalte tooobtain hello stejné informace v jediném volání rozhraní API. Menší volání rozhraní API znamená vyšší výkon.
+Rozbalte řetězec snižuje počet volání rozhraní API, které jsou nutné k získání určité informace. Použijete-li řetězec rozbalte, nelze získat další informace o jednotlivých položkách na základě jednoho volání rozhraní API. Místo první získání seznamu entity, pak vyžadování informací o pro každou položku v seznamu, použijte řetězec rozbalte získat stejné informace v jediném volání rozhraní API. Menší volání rozhraní API znamená vyšší výkon.
 
-* Podobné toohello vyberte řetězec, hello rozbalte řetězec ovládací prvky, jestli některá data je zahrnuta v seznamu výsledků dotazu.
-* Hello rozbalte položku řetězec je podporována pouze v případě, že se používá v seznam úloh, plány úloh, úlohy a fondy. V současné době podporuje pouze statistické informace.
-* Když je zadán žádný vyberte řetězec vyžadují se všechny vlastnosti, rozbalte hello řetězec *musí* být použité tooget statistické informace. Pokud vyberte řetězec je použité tooobtain podmnožinu vlastností `stats` lze zadat v řetězci hello vyberte a rozbalte hello řetězec nemusí toobe zadán.
-* Tento příklad rozbalte položku řetězec Určuje, zda má být vrácen statistické informace pro každou položku v seznamu hello: `stats`.
+* Podobně jako u vyberte řetězec, řetězec rozbalte Určuje, jestli některá data je zahrnuta v seznamu výsledků dotazu.
+* Rozbalte řetězec je podporována pouze v případě se používá v seznam úloh, plány úloh, úlohy a fondy. V současné době podporuje pouze statistické informace.
+* Pokud se všechny vlastnosti požadované a není zadán žádný vyberte řetězec, řetězec rozbalte *musí* použít k získání statistické informace. Pokud vyberte řetězec se používá k získání podmnožiny vlastností, pak `stats` lze zadat v řetězci vyberte a rozbalte řetězec není potřeba zadat.
+* Tento příklad rozbalte položku řetězec Určuje, zda má být vrácen statistické informace pro každou položku v seznamu: `stats`.
 
 > [!NOTE]
-> Při vytváření žádné hello tři typy řetězce dotazů (filtrování, vyberte a rozbalte možnost), musí zajistěte, aby názvy vlastností hello a případ odpovídaly s jejich protějšky element REST API. Například při práci s hello .NET [CloudTask](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask) třídy, je nutné zadat **stavu** místo **stavu**, i když hello vlastnost .NET [ CloudTask.State](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.state). Najdete v části tabulky hello pod pro vlastnost mapování mezi hello .NET a REST API.
+> Při vytváření jakýkoli z typů řetězec dotazu tři (filtrování, vyberte a rozbalte možnost), ujistěte se, že názvy vlastností a případ shodovat s jejich protějšky element REST API. Například při práci s .NET [CloudTask](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask) třídy, je nutné zadat **stavu** místo **stavu**, i když je vlastnost .NET [CloudTask.State](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.state). Podívejte se na tabulky pod pro mapování vlastností mezi .NET a REST API.
 > 
 > 
 
 ### <a name="rules-for-filter-select-and-expand-strings"></a>Pravidla pro filtr, vyberte a rozbalte řetězce
-* Názvy vlastností ve filtru, vyberte a rozbalte řetězce by se měla zobrazit jako ve hello [Batch REST] [ api_rest] rozhraní API – i v případě, že používáte [Batch .NET] [ api_net] nebo jeden z hello jiných SDK služby Batch.
+* Názvy vlastností ve filtru, vyberte a rozbalte řetězce by se měla zobrazit jako ve [Batch REST] [ api_rest] rozhraní API – i v případě, že používáte [Batch .NET] [ api_net] nebo jeden z ostatních Batch sad SDK.
 * Všechny názvy vlastností malá a velká písmena, ale hodnoty vlastností se malá a velká písmena.
 * Datum a čas řetězců může mít jednu ze dvou formátů a musí předcházet `DateTime`.
   
@@ -106,68 +106,68 @@ Hello rozbalte položku řetězec snižuje hello počet volání rozhraní API, 
 * Pokud je zadána neplatná vlastnost nebo operátor, `400 (Bad Request)` bude výsledkem chyba.
 
 ## <a name="efficient-querying-in-batch-net"></a>Efektivní dotazování v Batch .NET
-V rámci hello [Batch .NET] [ api_net] rozhraní API, hello [ODATADetailLevel] [ odata] třída se používá pro zadávání filtru, vyberte a rozbalte řetězce toolist operace. Hello ODataDetailLevel třída má tři vlastnosti veřejné řetězce, které lze zadat v konstruktoru hello nebo nastavit přímo na objekt hello. Pak předáte hello ODataDetailLevel objekt jako parametr toohello různých seznam operací, jako [ListPools][net_list_pools], [ListJobs][net_list_jobs], a [ListTasks][net_list_tasks].
+V rámci [Batch .NET] [ api_net] rozhraní API, [ODATADetailLevel] [ odata] třída se používá pro zadávání filtru, vyberte a rozbalte seznam způsobů řetězce. Třída ODataDetailLevel má tři řetězec veřejné vlastnosti, které lze zadaným v konstruktoru, nebo nastavit přímo na objekt. Můžete poté předat objekt ODataDetailLevel jako parametr různé operace výpisu, jako [ListPools][net_list_pools], [ListJobs][net_list_jobs], a [ListTasks][net_list_tasks].
 
-* [ODATADetailLevel][odata].[ FilterClause][odata_filter]: omezit hello počet položek, které jsou vráceny.
+* [ODATADetailLevel][odata].[ FilterClause][odata_filter]: omezit počet položek, které jsou vráceny.
 * [ODATADetailLevel][odata].[ SelectClause][odata_select]: Zadejte každou položku jsou vráceny hodnot vlastností.
 * [ODATADetailLevel][odata].[ ExpandClause][odata_expand]: načtení dat pro všechny položky v jediného rozhraní API volat místo samostatné volání pro každou položku.
 
-Hello následující fragment kódu používá hello Batch .NET API tooefficiently dotazu hello Batch službu pro hello statistiky konkrétní sadu fondů. V tomto scénáři má uživatel Batch hello testovací a produkční fondů. Hello testovací fondu ID mají předponu "test" a hello produkční fondu ID mají předponu "produkčnímu". Ve fragmentu hello *myBatchClient* je správně inicializována instanci hello [BatchClient](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient) třídy.
+Následující fragment kódu používá rozhraní Batch .NET API k efektivní dotazování na službu Batch pro statistiku konkrétní sadu fondů. V tomto scénáři má uživatel Batch testovací a produkční fondů. Test fondu ID mají předponu "test" a fondu produkční ID mají předponu "produkčnímu". V tomto fragmentu kódu *myBatchClient* je správně inicializována instanci [BatchClient](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient) třídy.
 
 ```csharp
-// First we need an ODATADetailLevel instance on which tooset hello filter, select,
+// First we need an ODATADetailLevel instance on which to set the filter, select,
 // and expand clause strings
 ODATADetailLevel detailLevel = new ODATADetailLevel();
 
-// We want toopull only hello "test" pools, so we limit hello number of items returned
-// by using a FilterClause and specifying that hello pool IDs must start with "test"
+// We want to pull only the "test" pools, so we limit the number of items returned
+// by using a FilterClause and specifying that the pool IDs must start with "test"
 detailLevel.FilterClause = "startswith(id, 'test')";
 
-// toofurther limit hello data that crosses hello wire, configure hello SelectClause to
-// limit hello properties that are returned on each CloudPool object tooonly
+// To further limit the data that crosses the wire, configure the SelectClause to
+// limit the properties that are returned on each CloudPool object to only
 // CloudPool.Id and CloudPool.Statistics
 detailLevel.SelectClause = "id, stats";
 
-// Specify hello ExpandClause so that hello .NET API pulls hello statistics for the
-// CloudPools in a single underlying REST API call. Note that we use hello pool's
-// REST API element name "stats" here as opposed too"Statistics" as it appears in
-// hello .NET API (CloudPool.Statistics)
+// Specify the ExpandClause so that the .NET API pulls the statistics for the
+// CloudPools in a single underlying REST API call. Note that we use the pool's
+// REST API element name "stats" here as opposed to "Statistics" as it appears in
+// the .NET API (CloudPool.Statistics)
 detailLevel.ExpandClause = "stats";
 
-// Now get our collection of pools, minimizing hello amount of data that is returned
-// by specifying hello detail level that we configured above
+// Now get our collection of pools, minimizing the amount of data that is returned
+// by specifying the detail level that we configured above
 List<CloudPool> testPools =
     await myBatchClient.PoolOperations.ListPools(detailLevel).ToListAsync();
 ```
 
 > [!TIP]
-> Instance [ODATADetailLevel] [ odata] nakonfigurovaný s vyberte a rozbalte klauzule lze také předat tooappropriate metody Get, jako například [PoolOperations.GetPool](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.getpool.aspx) , toolimit hello množství dat, která je vrácena.
+> Instance [ODATADetailLevel] [ odata] nakonfigurovaný s vyberte a rozbalte klauzule lze také předat příslušné metody Get, jako například [PoolOperations.GetPool](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.getpool.aspx), chcete-li omezit množství dat, která je vrácena.
 > 
 > 
 
-## <a name="batch-rest-toonet-api-mappings"></a>Batch REST too.NET API mapování
-Názvy vlastností ve filtru, vyberte a rozbalte řetězce *musí* odráží jejich protějšky REST API, v názvu i případu. Následující tabulky Hello zadejte mapování mezi hello .NET a REST API protějšky.
+## <a name="batch-rest-to-net-api-mappings"></a>Batch REST pro mapování rozhraní API .NET
+Názvy vlastností ve filtru, vyberte a rozbalte řetězce *musí* odráží jejich protějšky REST API, v názvu i případu. Následující tabulky poskytují mapování mezi svými protějšky .NET a REST API.
 
 ### <a name="mappings-for-filter-strings"></a>Mapování pro filtr řetězce
-* **Seznam metod rozhraní .NET**: každá z metod .NET API hello v tomto sloupci přijímá [ODATADetailLevel] [ odata] objekt jako parametr.
-* **REST seznamu požadavků**: každý REST API stránky propojené tooin tento sloupec obsahuje tabulku, která určuje vlastnosti hello a operace, které jsou povoleny v *filtru* řetězce. Když vytvoříte budou používat tyto operace a názvy vlastností [ODATADetailLevel.FilterClause] [ odata_filter] řetězec.
+* **Seznam metod rozhraní .NET**: každá z metod rozhraní API .NET v tomto sloupci přijímá [ODATADetailLevel] [ odata] objekt jako parametr.
+* **REST seznamu požadavků**: stránka každý REST API propojené v tomto sloupci obsahuje tabulku, která určuje vlastnosti a operace, které jsou povoleny v *filtru* řetězce. Když vytvoříte budou používat tyto operace a názvy vlastností [ODATADetailLevel.FilterClause] [ odata_filter] řetězec.
 
 | Seznam metod rozhraní .NET | REST seznamu požadavků |
 | --- | --- |
-| [CertificateOperations.ListCertificates][net_list_certs] |[Seznam certifikátů hello na účtu][rest_list_certs] |
-| [CloudTask.ListNodeFiles][net_list_task_files] |[Seznam hello soubory spojené s úlohami][rest_list_task_files] |
-| [JobOperations.ListJobPreparationAndReleaseTaskStatus][net_list_jobprep_status] |[Stav seznamu hello hello úlohy přípravy a uvolnění úloh pro úlohu][rest_list_jobprep_status] |
-| [JobOperations.ListJobs][net_list_jobs] |[Seznam úloh hello v účtu][rest_list_jobs] |
-| [JobOperations.ListNodeFiles][net_list_nodefiles] |[Seznam souborů hello na uzlu][rest_list_nodefiles] |
-| [JobOperations.ListTasks][net_list_tasks] |[Seznam hello úkoly spojené s úlohou][rest_list_tasks] |
-| [JobScheduleOperations.ListJobSchedules][net_list_job_schedules] |[Plány úloh hello seznamu v účtu][rest_list_job_schedules] |
-| [JobScheduleOperations.ListJobs][net_list_schedule_jobs] |[Seznam hello úlohy přidružené k plánu úlohy][rest_list_schedule_jobs] |
-| [PoolOperations.ListComputeNodes][net_list_compute_nodes] |[Seznam hello výpočetních uzlů ve fondu][rest_list_compute_nodes] |
-| [PoolOperations.ListPools][net_list_pools] |[Seznam hello fondy v účtu][rest_list_pools] |
+| [CertificateOperations.ListCertificates][net_list_certs] |[Seznam certifikátů na účtu][rest_list_certs] |
+| [CloudTask.ListNodeFiles][net_list_task_files] |[Seznam soubory spojené s úlohami][rest_list_task_files] |
+| [JobOperations.ListJobPreparationAndReleaseTaskStatus][net_list_jobprep_status] |[Seznam stav úlohy přípravy a uvolnění úloh pro úlohu][rest_list_jobprep_status] |
+| [JobOperations.ListJobs][net_list_jobs] |[Seznam úloh na účtu][rest_list_jobs] |
+| [JobOperations.ListNodeFiles][net_list_nodefiles] |[Seznam souborů v uzlu][rest_list_nodefiles] |
+| [JobOperations.ListTasks][net_list_tasks] |[Seznam úkoly spojené s úlohou][rest_list_tasks] |
+| [JobScheduleOperations.ListJobSchedules][net_list_job_schedules] |[Seznam plánů úloh na účtu][rest_list_job_schedules] |
+| [JobScheduleOperations.ListJobs][net_list_schedule_jobs] |[Seznam úloh, které jsou přidružené k plánu úlohy][rest_list_schedule_jobs] |
+| [PoolOperations.ListComputeNodes][net_list_compute_nodes] |[Seznam výpočetní uzly ve fondu][rest_list_compute_nodes] |
+| [PoolOperations.ListPools][net_list_pools] |[Zobrazí seznam fondů na účtu][rest_list_pools] |
 
 ### <a name="mappings-for-select-strings"></a>Mapování pro vyberte řetězce
 * **Batch .NET typy**: typy Batch .NET API.
-* **Rozhraní REST API entity**: obsahuje jednu nebo více tabulek, které seznam názvů vlastností hello REST API pro typ hello každé stránce v tomto sloupci. Tyto názvy vlastností se používají při vytváření *vyberte* řetězce. Tyto stejné názvy vlastností použijete při vytváření [ODATADetailLevel.SelectClause] [ odata_select] řetězec.
+* **Rozhraní REST API entity**: obsahuje jednu nebo více tabulek, které seznam názvů vlastností rozhraní REST API pro typ každé stránce v tomto sloupci. Tyto názvy vlastností se používají při vytváření *vyberte* řetězce. Tyto stejné názvy vlastností použijete při vytváření [ODATADetailLevel.SelectClause] [ odata_select] řetězec.
 
 | Typy batch .NET | Rozhraní REST API entity |
 | --- | --- |
@@ -179,35 +179,35 @@ Názvy vlastností ve filtru, vyberte a rozbalte řetězce *musí* odráží jej
 | [CloudTask][net_task] |[Získat informace o úkolu][rest_get_task] |
 
 ## <a name="example-construct-a-filter-string"></a>Příklad: vytvoření řetězec filtru
-Když vytvoříte řetězec filtru pro [ODATADetailLevel.FilterClause][odata_filter], naleznete v tabulce hello výše v části "Mapování pro filtr řetězce" toofind hello REST API dokumentace stránky, která odpovídá operace seznamu toohello chcete tooperform. V první více řádků tabulky hello na této stránce najdete hello filtrování vlastností a jejich podporované operátory. Pokud chcete tooretrieve všechny úlohy, jejichž ukončovací kód procesu je nenulové hodnoty, například tento řádek na [seznamu hello úkoly spojené s úlohou] [ rest_list_tasks] určuje povolené operátory a řetězec příslušné vlastnosti hello:
+Když vytvoříte řetězec filtru pro [ODATADetailLevel.FilterClause][odata_filter], najdete v tabulce výše v části "Mapování pro filtr řetězce" na stránce dokumentace najít rozhraní REST API, která odpovídá seznamu operaci, kterou chcete provést. V první tabulce více řádků na této stránce najdete filtrování vlastností a jejich podporované operátory. Pokud chcete načíst všechny úlohy, jejichž ukončovací kód procesu je nenulové hodnoty, například tento řádek na [seznamu úkoly spojené s úlohou] [ rest_list_tasks] určuje povolené operátory a použít vlastnost řetězec:
 
 | Vlastnost | Povolené operace | Typ |
 |:--- |:--- |:--- |
 | `executionInfo/exitCode` |`eq, ge, gt, le , lt` |`Int` |
 
-Proto by být hello řetězec filtru pro výpis všech úloh s nenulový ukončovací kód:
+Proto by byl řetězec filtru pro výpis všech úloh s nenulový ukončovací kód:
 
 `(executionInfo/exitCode lt 0) or (executionInfo/exitCode gt 0)`
 
 ## <a name="example-construct-a-select-string"></a>Příklad: sestavit vyberte řetězec
-tooconstruct [ODATADetailLevel.SelectClause][odata_select], projděte si hello tabulce výše v části "Mapování pro vyberte řetězce" a přejděte na stránku toohello REST API, která odpovídá toohello typ entity, které vytváření seznamu. V první více řádků tabulky hello na této stránce najdete hello volitelný vlastností a jejich podporované operátory. Pokud chcete pouze ID hello tooretrieve a příkazový řádek pro každý úkol v seznamu, například zjistíte, tyto řádky v tabulce použít hello na [získat informace o úkolu][rest_get_task]:
+K vytvoření [ODATADetailLevel.SelectClause][odata_select], projděte si v tabulce výše v části "Mapování pro vyberte řetězce" a přejděte na stránku REST API, která odpovídá typ entity, která jsou výpis. V první tabulce více řádků na této stránce najdete volitelný vlastnostmi a jejich podporované operátory. Pokud chcete načíst pouze ID a příkazový řádek pro každý úkol v seznamu, například zjistíte, tyto řádky v tabulce použít na [získat informace o úkolu][rest_get_task]:
 
 | Vlastnost | Typ | Poznámky |
 |:--- |:--- |:--- |
-| `id` |`String` |`hello ID of hello task.` |
-| `commandLine` |`String` |`hello command line of hello task.` |
+| `id` |`String` |`The ID of the task.` |
+| `commandLine` |`String` |`The command line of the task.` |
 
-poté budou vyberte řetězec Hello, včetně pouze hello ID a příkazového řádku u jednotlivých uvedených úkolů:
+Poté budou vyberte řetězec pro včetně pouze ID a příkazového řádku u jednotlivých uvedených úkolů:
 
 `id, commandLine`
 
 ## <a name="code-samples"></a>Ukázky kódů
 ### <a name="efficient-list-queries-code-sample"></a>Ukázka kódu dotazy efektivní seznamu
-Podívejte se na hello [EfficientListQueries] [ efficient_query_sample] ukázkového projektu na Githubu toosee jak efektivní dotazování na seznamu může ovlivnit výkon v aplikaci. Tato Konzolová aplikace C# vytvoří a přidá velký počet úloh tooa úlohy. Pak umožňuje více volání toohello [JobOperations.ListTasks] [ net_list_tasks] metoda a předává [ODATADetailLevel] [ odata] objekty, které jsou nakonfigurován s jinou vlastnost hodnoty toovary hello množství dat toobe vrátila. Vyvolá podobné toohello následující výstup:
+Podívejte se [EfficientListQueries] [ efficient_query_sample] ukázkového projektu na Githubu, které chcete zobrazit, jak efektivní dotazování seznamu může ovlivnit výkon v aplikaci. Tato Konzolová aplikace C# vytvoří a přidá velkého počtu úkolů do úlohy. Pak umožňuje více volání [JobOperations.ListTasks] [ net_list_tasks] metoda a předává [ODATADetailLevel] [ odata] objekty, které jsou nakonfigurovány s jinou vlastnost hodnoty pro množství dat, který se má vrátit se liší. Vyvolá výstup podobný následujícímu:
 
 ```
-Adding 5000 tasks toojob jobEffQuery...
-5000 tasks added in 00:00:47.3467587, hit ENTER tooquery tasks...
+Adding 5000 tasks to job jobEffQuery...
+5000 tasks added in 00:00:47.3467587, hit ENTER to query tasks...
 
 4943 tasks retrieved in 00:00:04.3408081 (ExpandClause:  | FilterClause: state eq 'active' | SelectClause: id,state)
 0 tasks retrieved in 00:00:00.2662920 (ExpandClause:  | FilterClause: state eq 'running' | SelectClause: id,state)
@@ -216,22 +216,22 @@ Adding 5000 tasks toojob jobEffQuery...
 5000 tasks retrieved in 00:00:15.1016127 (ExpandClause:  | FilterClause:  | SelectClause: id,state,environmentSettings)
 5000 tasks retrieved in 00:00:17.0548145 (ExpandClause: stats | FilterClause:  | SelectClause: )
 
-Sample complete, hit ENTER toocontinue...
+Sample complete, hit ENTER to continue...
 ```
 
-Jak je znázorněno v hello procentuálně dobu, můžete výrazně snížit dobu odezvy na dotazy omezením hello vlastnosti a hello počet položek, které jsou vráceny. Tato a Další ukázkové projekty můžete najít v hello [azure-batch-samples] [ github_samples] úložišti na Githubu.
+Jak je znázorněno v procentuálně dobu, můžete výrazně snížit dobu odezvy na dotazy omezením vlastnosti a počet položek, které jsou vráceny. Tato a Další ukázkové projekty v lze najít [azure-batch-samples] [ github_samples] úložišti na Githubu.
 
 ### <a name="batchmetrics-library-and-code-sample"></a>Ukázka BatchMetrics knihovny a kódu
-Kromě toho ukázka kódu toohello v EfficientListQueries výše, můžete najít hello [BatchMetrics] [ batch_metrics] projekt v hello [azure-batch-samples] [ github_samples] Úložiště GitHub. Ukázkový projekt Hello BatchMetrics ukazuje, jak tooefficiently monitorovat průběh úlohy Azure Batch pomocí rozhraní Batch API hello.
+Kromě EfficientListQueries kód ukázce výše můžete najít [BatchMetrics] [ batch_metrics] v projektu [azure-batch-samples] [ github_samples] úložiště GitHub. Ukázkový projekt BatchMetrics ukazuje, jak efektivně sledovat průběh úlohy Azure Batch pomocí rozhraní API služby Batch.
 
-Hello [BatchMetrics] [ batch_metrics] ukázka zahrnuje projektu knihovny tříd rozhraní .NET, která můžete začlenit do vašich vlastních projektů a jednoduchou příkazového řádku programu tooexercise a ukazují použití hello hello Knihovna.
+[BatchMetrics] [ batch_metrics] ukázka zahrnuje projektu knihovny tříd rozhraní .NET, která můžete začlenit do vašich vlastních projektů a jednoduchý příkazového řádku programu prověření a Ukázka použití knihovny.
 
-Hello ukázkovou aplikaci v rámci projektu hello ukazuje hello následující operace:
+Ukázkovou aplikaci v rámci projektu ukazuje následující operace:
 
-1. Když vyberete konkrétní atributy v pořadí toodownload jenom hello vlastnosti, které budete potřebovat
-2. Filtrování na časy přechod stavu v pořadí toodownload pouze změny od poslední dotaz s hello
+1. Chcete-li stáhnout pouze vlastnosti, které potřebujete výběr konkrétní atributy
+2. Chcete-li stáhnout pouze změny od poslední dotaz s filtrování doby přechodu stavu
 
-Například následující metoda hello se zobrazí v hello knihovně BatchMetrics. Vrátí ODATADetailLevel, která určuje, že pouze hello `id` a `state` vlastnosti by měla být získána hello entit, které jsou předmětem dotazování. Také určuje, že pouze entity, jejichž stav se změnil od hello zadaný `DateTime` parametr má být vrácen.
+V knihovně BatchMetrics se například zobrazí následující metodu. Vrátí ODATADetailLevel, která určuje, že pouze `id` a `state` by měl získat vlastnosti pro entity, které jsou předmětem dotazování. Také určuje, že jenom entity, jejichž stav se změnil od zadaného `DateTime` parametr má být vrácen.
 
 ```csharp
 internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
@@ -245,10 +245,10 @@ internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
 
 ## <a name="next-steps"></a>Další kroky
 ### <a name="parallel-node-tasks"></a>Uzel paralelní úlohy
-[Maximalizovat využití prostředků Azure Batch výpočetní uzel souběžných úloh](batch-parallel-node-tasks.md) je jiný článek související tooBatch výkon aplikace. Některé typy úloh využívat výhod spouštění paralelní úlohy na větší – ale méně – výpočetní uzly. Podívejte se na hello [ukázkový scénář](batch-parallel-node-tasks.md#example-scenario) v článku hello podrobnosti o tento případ.
+[Maximalizovat využití prostředků Azure Batch výpočetní uzel souběžných úloh](batch-parallel-node-tasks.md) je jiný článek související s výkonem aplikací Batch. Některé typy úloh využívat výhod spouštění paralelní úlohy na větší – ale méně – výpočetní uzly. Podívejte se [ukázkový scénář](batch-parallel-node-tasks.md#example-scenario) v článku podrobnosti o tento případ.
 
 ### <a name="batch-forum"></a>Fórum batch
-Hello [fóru služby Azure Batch] [ forum] na webu MSDN je skvělá umístit toodiscuss Batch a klást otázky týkající se služby hello. HEAD na přes pro užitečné "rychlé" příspěvky a při jejich vzniku při sestavování řešení Batch zveřejněte svoje otázky.
+[Fóru služby Azure Batch] [ forum] na webu MSDN je skvělým místem popisují Batch a klást otázky týkající se služby. HEAD na přes pro užitečné "rychlé" příspěvky a při jejich vzniku při sestavování řešení Batch zveřejněte svoje otázky.
 
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_listjobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx

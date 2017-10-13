@@ -1,6 +1,6 @@
 ---
-title: "směrování aaaAsymmetric | Microsoft Docs"
-description: "Tento článek vás provede hello problémy, se kterými může zákazník čelí s asymetrické směrování v síti, která má více cílové tooa odkazy."
+title: "Asymetrické směrování | Dokumentace Microsoftu"
+description: "Tento článek vás provede problémy, se kterými se může setkat zákazník s asymetrickým směrováním v síti s více propojeními k cíli."
 documentationcenter: na
 services: expressroute
 author: osamazia
@@ -14,61 +14,61 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: osamam
-ms.openlocfilehash: 01a16242437a3674dcfe27b074911a829a6c1abd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8568c13d2834a0643e15ab1814a35c92123837d1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>Asymetrické směrování s několika síťovými cestami
 Tento článek vysvětluje, jak může dopředný a zpětný síťový provoz využívat různé trasy, pokud je mezi zdrojem a cílem v síti k dispozici více cest.
 
-Jeho důležité toounderstand dvěma konceptů toounderstand asymetrické směrování. Jeden je hello účinku více síťových cest. Hello jiných je, jak zařízení, jako je brána firewall, udržování stavu. Pro tyto typy zařízení se používá označení stavová zařízení. Kombinace tyto dva faktory vytvoří scénáře, ve které síti stavová zařízení vyřadit provoz protože hello stavová zařízení nebylo zjistit, jestli provoz pochází s samotné zařízení hello.
+Pro lepší pochopení asymetrického směrování je důležité porozumět dvěma základním konceptům. Prvním je důsledek existence několika síťových cest. Druhým je způsob, jakým si zařízení, například brána firewall, zachovávají stav. Pro tyto typy zařízení se používá označení stavová zařízení. Na základě kombinací těchto dvou faktorů vznikají scénáře, v nichž stavové zařízení zruší síťový provoz, protože toto stavové zařízení nezjistilo, že provoz pochází ze samotného zařízení.
 
 ## <a name="multiple-network-paths"></a>Několik síťových cest
-Když je podniková síť má jenom jeden toohello odkaz, který se přenáší Internet prostřednictvím jejich poskytovatele internetových služeb, tooand všechny přenosy z Internetu hello hello stejnou cestu. Často společností zakoupit více okruhů jako redundantní cesty, tooimprove provozu sítě. Pokud k tomu dojde, jeho možné, že provozu, který prochází mimo síť hello, toohello Internetu, prochází jedním odkazem a hello návratový provoz prochází různé odkaz. To se běžně označuje jako asymetrické směrování. Zpětné síťový provoz v asymetrické směrování, trvá jinou cestu z původní toku hello.
+Pokud má podniková síť jenom jedno propojení k internetu prostřednictvím poskytovatele internetových služeb, veškerý provoz směrem do internetu a z něj prochází po stejné cestě. Často si ale společnosti kupují víc okruhů, které tvoří redundantní cesty a zlepšují dostupnost sítě. V takových situacích je možné, že provoz směřující ze sítě do internetu využívá jedno propojení a zpětný provoz prochází jiným propojením. To se běžně označuje jako asymetrické směrování. Zpětný síťový provoz při asymetrickém směrování prochází po jiné cestě než původní tok.
 
 ![Síť s více cestami](./media/expressroute-asymmetric-routing/AsymmetricRouting3.png)
 
-I když dojde k především na hello Internet, taky asymetrické směrování platí tooother kombinace více cest. Se vztahuje, například tooan internetové trasy a privátní cestu, která přejděte toohello stejný cíl a toomultiple privátní cesty, které přejděte toohello stejný cíl.
+I když k asymetrickému směrování dochází především v síti Internet, vyskytuje se i u jiných kombinací více cest. Uplatňuje se například v případě, že do stejného cíle vede cesta přes internet i soukromá cesta nebo že do stejného cíle vede několik soukromých cest.
 
-Každému směrovači na způsob hello ze zdroje toodestination vypočítá hello nejlepší cesta tooreach cíl. Hello směrovače určení nejlepší možný cesta je založeno na dvě hlavní faktory:
+Každý směrovač na cestě ze zdrojového do cílového umístění vypočítá nejlepší cestu pro dosažení cíle. Stanovení nejlepší možné cesty ve směrovači je založené na dvou hlavních faktorech:
 
-* Směrování mezi externími sítěmi je založené na směrovacím protokolu BGP (Border Gateway Protocol). Protokol BGP trvá oznámení o inzerovaném programu z okolí a spustí je pomocí několika kroků toodetermine hello nejlepší cesta toohello určený cíl. Nejlepší cestu hello je uložený v jeho směrovací tabulky.
-* Délka Hello masku podsítě spojenou s trasu vliv směrování cesty. Pokud směrovač přijme více oznámení o inzerovaném programu pro hello stejnou IP adresu, ale s masek jiné podsíti, směrovač hello upřednostní hello oznámení o inzerovaném programu s maskou podsítě déle, protože považuje za konkrétnější trasy.
+* Směrování mezi externími sítěmi je založené na směrovacím protokolu BGP (Border Gateway Protocol). Protokol BGP přijímá inzerování z okolí a provádí s nimi řadu kroků, podle kterých určí nejlepší cestu do požadovaného cíle. Nejlepší cestu uloží do své směrovací tabulky.
+* Na cesty směrování má vliv délka masky podsítě přidružené k trase. Pokud směrovači obdrží víc inzerování pro stejnou adresu, ale s různými maskami podsítě, preferuje inzerování s delší maskou podsítě, protože se považuje za konkrétnější trasu.
 
 ## <a name="stateful-devices"></a>Stavová zařízení
-Směrovače podívejte se na záhlaví IP hello paketu pro účely směrování. Podívejte se i hlubší v paketu hello některá zařízení. Tato zařízení zpravidla zkoumají hlavičky vrstvy 4 (protokol TCP nebo UDP), nebo dokonce vrstvy 7 (aplikační vrstva). Tyto typy zařízení patří buď mezi zařízení zabezpečení, nebo mezi zařízení optimalizace šířky pásma. 
+Směrovače si pro účely směrování čtou hlavičku protokolu IP paketu. Některá zařízení zkoumají paket i hlouběji. Tato zařízení zpravidla zkoumají hlavičky vrstvy 4 (protokol TCP nebo UDP), nebo dokonce vrstvy 7 (aplikační vrstva). Tyto typy zařízení patří buď mezi zařízení zabezpečení, nebo mezi zařízení optimalizace šířky pásma. 
 
-Brána firewall je obvyklým příkladem stavového zařízení. Brána firewall povoluje nebo zakazuje toopass paketů přes jeho rozhraní na základě různých polí, jako je například protokol, port TCP/UDP a hlavičky adresy URL. Tato úroveň kontroly paketů zařadí se při velkém zatížení hello zařízení zpracování. výkon tooimprove brány firewall hello zkontroluje hello prvního paketu toku. Pokud umožňuje hello paketu tooproceed, zachová hello toku informací v tabulce jeho stav. Všechny následující pakety související toothis toku jsou povoleny, založené na první určení hello. Paketu, který je součástí existující toku může přicházejí na hello brány firewall. Pokud brána firewall hello žádné předchozí stav informace o tom, brány firewall hello zahodí hello paketů.
+Brána firewall je obvyklým příkladem stavového zařízení. Brána firewall povoluje nebo zakazuje průchod paketu svými rozhraními na základě různých polí, jako je protokol, port TCP/UDP či hlavička adresy URL. Tato úroveň kontroly paketu znamená značné zatížení zařízení. Aby se zvýšil výkon, brána firewall kontroluje první paket toku. Pokud paketu povolí pokračovat v cestě, uchová si informace o toku ve své stavové tabulce. Všechny následné pakety týkající se tohoto toku jsou na základě počátečního vyhodnocení povoleny. Brána firewall může obdržet paket, který je součástí existujícího toku. Pokud o paketu brána firewall nemá žádné předchozí informace o jeho stavu, zahodí ho.
 
 ## <a name="asymmetric-routing-with-expressroute"></a>Asymetrické směrování s ExpressRoute
-Jakmile se připojíte přes Azure ExpressRoute tooMicrosoft, síťové změny podobné výjimky:
+Když se připojíte k Microsoftu prostřednictvím Azure ExpressRoute, vaše síť se změní takto:
 
-* Máte několik tooMicrosoft odkazy. Jeden odkaz je stávajícího připojení k Internetu a hello jiných přes ExpressRoute. Některé tooMicrosoft provoz může projít hello Internet ale vraťte přes ExpressRoute, nebo naopak.
-* Prostřednictvím ExpressRoute dostáváte mnohem konkrétnější IP adresy. Pro provoz z vaší sítě tooMicrosoft pro službám nabízeným přes ExpressRoute, je tedy směrovače vždy přednost ExpressRoute.
+* Máte k Microsoftu víc propojení. Jedno propojení je vaše stávající připojení k internetu a druhé je prostřednictvím ExpressRoute. Část provozu do Microsoftu může procházet přes internet, ale vracet se prostřednictvím ExpressRoute, nebo naopak.
+* Prostřednictvím ExpressRoute dostáváte mnohem konkrétnější IP adresy. To znamená, že v případě provozu z vaší sítě do Microsoftu pro služby nabízené prostřednictvím ExpressRoute směrovače vždy preferují ExpressRoute.
 
-toounderstand hello vliv tyto dvě změny mít v síti, zvažte některé scénáře. Například máte pouze jeden okruh toohello Internetu a využívat všechny služby společnosti Microsoft prostřednictvím Internetu hello. Hello provoz z vaší sítě tooMicrosoft a zpět traverses hello stejné internetového odkazu a předává přes bránu firewall hello. zaznamenává brány firewall Hello hello toku tak, jak se zobrazí hello prvního paketu a vrátit pakety jsou povoleny, protože hello toku existuje v tabulce stavu hello.
+Pro lepší pochopení účinku těchto dvou změn v síti se podívejme na několik scénářů. Předpokládejme například, že máte jenom jeden okruh do internetu a že využíváte všechny služby Microsoftu prostřednictvím internetu. Provoz z vaší sítě do Microsoftu a zpátky prochází stejným propojením k internetu a přes bránu firewall. Brána firewall zaznamená tok, jakmile obdrží první paket, a jsou povoleny i zpětné pakety, protože je tok uveden ve stavové tabulce.
 
 ![Asymetrické směrování s ExpressRoute](./media/expressroute-asymmetric-routing/AsymmetricRouting1.png)
 
-Pak zapnete ExpressRoute a začnete využívat služby nabízené Microsoftem prostřednictvím ExpressRoute. Všechny služby společnosti Microsoft jsou spotřebováno přes hello Internetu. Nasadíte samostatné brána firewall vaší hraniční síti, který je připojený tooExpressRoute. Microsoft inzeruje konkrétnější předpony tooyour sítě prostřednictvím ExpressRoute pro určité služby. Směrovací infrastruktury zvolí ExpressRoute jako hello upřednostňované cestě pro tyto předpony. Pokud vaše veřejné IP adresy tooMicrosoft nejsou inzerování přes ExpressRoute, Microsoft komunikuje se veřejné IP adresy prostřednictvím hello Internetu. Předat dál provoz z vaší sítě tooMicrosoft používá ExpressRoute a zpětného provoz z Microsoft hello Internetu. Pokud brána firewall hello na hranici hello uvidí paket odezvy pro toku, který nebyl nalezen v tabulce stavu hello, zahodí hello návratový provoz.
+Pak zapnete ExpressRoute a začnete využívat služby nabízené Microsoftem prostřednictvím ExpressRoute. Všechny ostatní služby z Microsoftu se využívají přes internet. Na hranici připojení k ExpressRoute nasadíte samostatnou bránu firewall. Microsoft ve vaší síti přes ExpressRoute inzeruje pro určité služby konkrétnější předpony. Vaše infrastruktura směrování zvolí jako upřednostňovanou cestu pro tyto předpony ExpressRoute. Pokud neinzerujete své veřejné IP adresy Microsoftu přes ExpressRoute, Microsoft komunikuje s vašimi veřejnými IP adresami přes internet. Provoz z vaší sítě do Microsoftu používá ExpressRoute a zpětný provoz z Microsoftu používá internet. Když brána firewall na hranici obdrží paket odezvy pro tok, který nenajde ve stavové tabulce, zpětný provoz zruší.
 
-Pokud si zvolíte toouse hello fond stejné překlad síťových adres (NAT) pro ExpressRoute a hello Internetu, se zobrazí podobné problémy s hello klienty v síti na soukromé IP adresy. Žádosti o služby, jako je Windows Update přejděte prostřednictvím hello Internet, protože IP adres pro tyto služby nejsou inzerované prostřednictvím ExpressRoute. Nicméně návratový provoz hello zpátky přes ExpressRoute. Pokud Microsoft přijme IP adresu s hello stejnou masku podsítě z hello Internet a ExpressRoute, dává přednost ExpressRoute přes hello Internetu. Pokud je brána firewall nebo jiné stavové zařízení, které je ve vaší hraniční sítě a čelí ExpressRoute nemá žádné předchozí informace o toku hello, zahodí pakety hello, které patří toothat toku.
+Pokud zvolíte použití stejného fondu překládání adres (NAT) pro ExpressRoute a pro internet, bude docházet k obdobným problémům ve vaší síti i s klienty na privátních IP adresách. Žádosti o služby, jako je například Windows Update, procházejí přes internet, protože IP adresy pro tyto služby se neinzerují prostřednictvím ExpressRoute. Zpětný přenos se ale vrací přes ExpressRoute. Pokud Microsoft obdrží IP adresu se stejnou maskou podsítě z internetu i ExpressRoute, upřednostňuje ExpressRoute před internetem. Pokud brána firewall nebo jiné stavové zařízení na hranici vaší sítě, které je připojené k ExpressRoute, nemá žádné předchozí informace o toku, zahodí pakety, které do tohoto toku patří.
 
 ## <a name="asymmetric-routing-solutions"></a>Řešení asymetrického směrování
-Máte dvě základní možnosti toosolve hello problém asymetrické směrování. Jedna je prostřednictvím směrování a hello jiné, je použít na základě zdrojové NAT (SNAT).
+Máte dvě hlavní možnosti, jak vyřešit problém asymetrického směrování. Jedna je prostřednictvím směrování a druhá prostřednictvím překladu adres na základě zdroje (SNAT).
 
 ### <a name="routing"></a>Směrování
-Zajistěte, aby veřejné IP adresy inzerovaný tooappropriate širokopásmové sítě (WAN) odkazy. Například pokud chcete toouse hello Internetu pro ověřování provozu a ExpressRoute pro e-mailu provozu, by neměl inzerovat veřejné IP adresy služby Active Directory Federation Services (AD FS) přes ExpressRoute. Podobně, ujistěte se, není tooexpose na místní adresy tooIP serveru služby AD FS, které hello směrovač přijme přes ExpressRoute. Trasy přijatých prostřednictvím ExpressRoute jsou konkrétnější, takže provádění ExpressRoute hello upřednostňovaná cesta pro ověřování provozu tooMicrosoft. Tím je způsobeno asymetrické směrování.
+Zajistěte, aby vaše veřejné IP adresy byly inzerované v odpovídajících propojeních sítě WAN. Pokud chcete například používat internet pro ověřovací provoz a ExpressRoute pro e-mailový provoz, neměli byste inzerovat veřejné IP adresy služby AD FS (Active Directory Federation Services) přes ExpressRoute. Podobně nezpřístupňujte místní server služby AD FS pro IP adresy, které směrovač obdrží přes ExpressRoute. Trasy přijímané přes ExpressRoute jsou konkrétnější, takže se ExpressRoute stane upřednostňovanou cestou pro ověřovací provoz do Microsoftu. Tím je způsobeno asymetrické směrování.
 
-Pokud chcete pro ověřování toouse ExpressRoute, ujistěte se, že jsou inzerování veřejné IP adresy služby AD FS přes ExpressRoute bez adres (NAT) Tímto způsobem, provoz, který pochází od společnosti Microsoft a přejde tooan místního serveru služby AD FS prochází přes ExpressRoute. Návratový provoz z tooMicrosoft zákazníka používá ExpressRoute, protože je upřednostňovaný trasy hello nad hello Internetu.
+Pokud chcete použít ExpressRoute pro ověřování, ujistěte se, že inzerujete veřejné IP adresy služby AD FS prostřednictvím ExpressRoute bez překladu adres (NAT). Provoz, který pochází z Microsoftu a míří na místní server služby AD FS, pak prochází přes ExpressRoute. Zpětný provoz od zákazníka do Microsoftu používá ExpressRoute, protože se jedná o trasu upřednostňovanou před internetem.
 
 ### <a name="source-based-nat"></a>Překlad adres na základě zdroje
-Jiný způsob řešení problémů asymetrického směrování je prostřednictvím překladu adres na základě zdroje (SNAT). Například nebyly inzerovaný hello veřejnou IP adresu serveru Simple Mail Transfer Protocol (SMTP) místní přes ExpressRoute, protože hodláte toouse hello Internet pro tento typ komunikace. Požadavek, který pochází se společností Microsoft a pak přejde tooyour místního serveru SMTP prochází hello Internetu. Můžete překládat pomocí SNAT hello příchozí požadavek tooan interní IP adresu. Zpětné provoz ze serveru SMTP hello přejde toohello hraniční bráně firewall (který používáte pro NAT) místo prostřednictvím ExpressRoute. Návratový provoz Hello přejde zpět prostřednictvím hello Internetu.
+Jiný způsob řešení problémů asymetrického směrování je prostřednictvím překladu adres na základě zdroje (SNAT). Předpokládejme, že jste neinzerovali veřejnou IP adresu místního serveru SMTP (Simple Mail Transfer Protocol) přes ExpressRoute, protože máte v úmyslu používat pro tento typ komunikace internet. Požadavek pocházející z Microsoftu a pokračující na váš místní server SMTP prochází internetem. U příchozího požadavku provedete překlad adresy zdroje na vnitřní IP adresu. Zpětný provoz ze serveru SMTP je směrován na hraniční bránu firewall (který používáte pro překlad adres), a ne přes ExpressRoute. Zpětný provoz se vrací přes internet.
 
 ![Konfigurace sítě s překladem adres na základě zdroje](./media/expressroute-asymmetric-routing/AsymmetricRouting2.png)
 
 ## <a name="asymmetric-routing-detection"></a>Detekce asymetrického směrování
-Příkaz Traceroute je hello nejlepší způsob, jak toomake jistotu, že síťový provoz prochází přes hello očekávána cesta. Pokud očekáváte, provoz z vaší místní SMTP server tooMicrosoft tootake hello Internet cesty, hello očekává, že je příkaz traceroute z hello SMTP server tooOffice 365. výsledek Hello ověří, že provozu po skončení skutečně síti směrem k hello Internetu a nikoli k ExpressRoute.
+Nejlepším způsobem, jak zajistit, že provoz z vaší sítě prochází očekávanou cestou, je traceroute. Pokud budete chtít, aby provoz z vašeho místního serveru SMTP do Microsoftu procházel internetem, očekávané použití příkazu traceroute je ze serveru SMTP na Office 365. Výsledek ověří, že provoz skutečně opouští vaši síť směrem do internetu, a ne směrem do ExpressRoute.
 

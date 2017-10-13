@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate úloh tooprepare úlohy a dokončení úlohy na výpočetních uzlech - Azure Batch | Microsoft Docs"
-description: "Použijte úrovní úlohy přípravy úlohy toominimize data přeneste tooAzure Batch výpočetních uzlů a uvolnění úlohy pro vyčištění uzlu na dokončení úlohy."
+title: "Vytvořte úkoly přípravy úlohy a dokončení úlohy na výpočetních uzlech - Azure Batch | Microsoft Docs"
+description: "Minimalizovat přenos dat do výpočetních uzlech Azure Batch pomocí úkolů úrovní úlohy přípravy a uvolnění úlohy pro vyčištění uzlu na dokončení úlohy."
 services: batch
 documentationcenter: .net
 author: tamram
@@ -15,99 +15,99 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fd5fb47ae6700281e63048c49a1241f4e935baba
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6a2525c02ce7bd3969469d2e28a5fccc948f89b1
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Spuštění úlohy přípravy a uvolnění úloh na Batch výpočetních uzlů
 
- Úlohu služby Azure Batch často vyžaduje určitý způsob instalace předtím, než její úkoly spustí a po úlohy údržby, po dokončení jeho úkolů. Může potřebovat toodownload běžných úkolů vstupní data tooyour výpočetní uzly, nebo odeslání úloh výstupní data tooAzure úložiště po dokončení úlohy hello. Můžete použít **úlohy přípravy** a **úlohy verze** úloh tooperform těchto operací.
+ Úlohu služby Azure Batch často vyžaduje určitý způsob instalace předtím, než její úkoly spustí a po úlohy údržby, po dokončení jeho úkolů. Možná budete muset stáhnout běžných úkolů vstupní data na výpočetní uzly, nebo odeslání úloh výstupní data do úložiště Azure. Po dokončení úlohy. Můžete použít **úlohy přípravy** a **úlohy verze** úlohy musíte provést tyto operace.
 
 ## <a name="what-are-job-preparation-and-release-tasks"></a>Co jsou úlohy přípravy a uvolnění úlohy?
-Před spuštěním úlohy, hello úkol přípravy úlohy běží na všech výpočetních uzlů naplánované toorun alespoň jeden úkol. Po dokončení úlohy hello hello úkol uvolnění úlohy se spustí na každém uzlu ve fondu hello, která spouští alespoň jeden úkol. Stejně jako u normálních úkoly služby Batch, můžete zadat příkazovém řádku toobe volána, když úkol příprava nebo uvolnění úlohy běží.
+Před spuštěním úlohy, spustí úkol přípravy úlohy na všech výpočetních uzlech naplánované spuštění alespoň jeden úkol. Po dokončení úlohy se spustí úkol uvolnění úlohy na každém uzlu ve fondu, která spouští alespoň jeden úkol. Stejně jako u normálních úkoly služby Batch, můžete zadat příkazový řádek, který má být vyvolána při spuštění úlohy přípravné nebo verze úlohy.
 
 Přípravy a uvolnění úlohy nabízejí známé dávkové úlohy funkce jako stažení souboru ([soubory prostředků][net_job_prep_resourcefiles]), provedení, vlastní proměnné prostředí, maximální dobu provádění, počet opakování a dobu uchovávání souboru se zvýšenými oprávněními.
 
-V následujících částech hello, získáte informace jak toouse hello [JobPreparationTask] [ net_job_prep] a [JobReleaseTask] [ net_job_release] v hello nalezeny třídy [Batch .NET] [ api_net] knihovny.
+V následujících částech se naučíte používat [JobPreparationTask] [ net_job_prep] a [JobReleaseTask] [ net_job_release] v nalezeny třídy [Batch .NET] [ api_net] knihovny.
 
 > [!TIP]
 > Úkoly přípravy a uvolnění úlohy jsou užitečné zejména v prostředích "sdílené fondu", ve které fond výpočetních uzlů potrvají mezi spuštění úloh a používá řadu úloh.
 > 
 > 
 
-## <a name="when-toouse-job-preparation-and-release-tasks"></a>Když toouse úlohy přípravy a uvolnění úlohy
-Úloha přípravy a uvolnění úloh jsou vhodné pro hello následující situace:
+## <a name="when-to-use-job-preparation-and-release-tasks"></a>Kdy použít úlohy přípravy a uvolnění úlohy
+Úloha přípravy a uvolnění úloh jsou vhodné pro následující případy:
 
 **Stahování dat běžných úloh**
 
-Úlohy batch často vyžadují společnou sadu dat jako vstup pro hello úlohy. Například v denní výpočtů analýza rizik a trhu data jsou specifické pro úlohy, ale běžné tooall úkoly v úloze hello. Tento trhu data, často několika gigabajtů velikost, by měla být stažené tooeach výpočetním uzlu pouze jednou, aby ho můžete používat všechny úlohy, které běží na uzlu hello. Použití **úkol přípravy úlohy** toodownload tento uzel tooeach data před hello provádění úlohy hello je další úlohy.
+Úlohy batch často vyžadují společnou sadu dat jako vstup pro úkoly úlohy. Například v denní výpočtů analýza rizik a trhu data jsou specifické pro úlohy, ještě společné pro všechny úlohy pro úlohu. Tato data trhu, často několika gigabajtů velikost, by měl být stažen na každém výpočetním uzlu pouze jednou, aby ho můžete používat všechny úlohy, které běží na uzlu. Použití **úkol přípravy úlohy** ke stažení těchto dat do každého uzlu před provedení úlohy je další úlohy.
 
 **Odstranit výstup úlohy a úlohy**
 
-V prostředí "sdílené fondu", kde nejsou vyřazení mezi úlohami fondu výpočetních uzlů, může být nutné toodelete data úlohy mezi spustí. Může být nutné tooconserve místa na disku na uzly hello nebo splňují zásady zabezpečení vaší organizace. Použití **úkol uvolnění úlohy** toodelete data, která se stáhne úkol přípravy úlohy nebo vygenerovaných během provedení úlohy.
+V prostředí "sdílené fondu", pokud nejsou fondu výpočetních uzlů vyřazení mezi úlohami, můžete odstranit data úlohy mezi spustí. Možná budete muset šetří místo na disku na uzly, nebo splňovat zásady zabezpečení vaší organizace. Použití **úkol uvolnění úlohy** k odstranění dat, který byl stáhne úkol přípravy úlohy nebo vygenerován při provádění úlohy.
 
 **Uchování protokolu**
 
-Můžete chtít tookeep kopii soubory protokolů, které vaše úlohy generují nebo možná soubory se stavem systému generovaných aplikací se nezdařilo. Použití **úkol uvolnění úlohy** v takových případech toocompress a nahrajte tato data tooan [Azure Storage] [ azure_storage] účtu.
+Můžete chtít zachovat kopii soubory protokolů, které vaše úlohy generují nebo možná havárií souborů výpisu paměti, které může být generována aplikací se nezdařilo. Použití **úkol uvolnění úlohy** v takových případech zkomprimovat a odeslat tato data [Azure Storage] [ azure_storage] účtu.
 
 > [!TIP]
-> Jiný způsob toopersist protokoly a další úlohy a úkolů výstupní data jsou toouse hello [Azure Batch souboru konvence](batch-task-output.md) knihovny.
+> Dalším způsobem zachování protokoly a další úlohy a úkolů výstupní data, je použít [Azure Batch souboru konvence](batch-task-output.md) knihovny.
 > 
 > 
 
 ## <a name="job-preparation-task"></a>Úkol přípravy úlohy
-Před spuštěním úlohy služba Batch provádí hello úkol přípravy úlohy na každém výpočetním uzlu, který je toorun naplánovanou úlohu. Ve výchozím nastavení služba Batch hello čeká hello úlohy přípravy úlohy toobe dokončit před spuštěním naplánované tooexecute hello úlohy na uzlu hello. Můžete ale nakonfigurovat hello služby není toowait. Pokud restartování uzlu hello hello úkol přípravy úlohy znovu spustí, ale můžete také zakázat toto chování.
+Před spuštěním úlohy služba Batch provádí úkol přípravy úlohy na každém výpočetním uzlu, který je naplánováno spuštění úlohy. Ve výchozím nastavení čeká služba Batch úkol přípravy úlohy provést před spuštěním úlohy naplánován ke spuštění na uzlu. Můžete ale nakonfigurovat službu nechcete čekat. Pokud se uzel restartuje, spustí úkol přípravy úlohy znovu, ale můžete také zakázat toto chování.
 
-Hello úkol přípravy úlohy je provést pouze u uzlů, které jsou naplánované toorun úlohu. Tím se zabrání hello nepotřebné provádění přípravy úlohy v případě, že uzel není přiřazen úlohu. Tato situace může nastat, pokud je číslo hello úloh pro úlohu menší než hello počet uzlů ve fondu. Také platí, když [provedení souběžné úlohy](batch-parallel-node-tasks.md) je povoleno, což ponechá některé uzly nečinnosti Pokud počet úkolů hello je nižší než hello celkový počet možných souběžných úkolů. Spuštěním není hello úkol přípravy úlohy na nečinných uzlů, strávíte nižší cenu na poplatky za přenos dat.
+Úkol přípravy úlohy je provést pouze u uzlů, které jsou naplánovány pro spuštění úlohy. To zabraňuje zbytečným provádění přípravy úlohy v případě, že uzel není přiřazen úlohu. Tato situace může nastat, pokud je počet úloh pro úlohu menší než počet uzlů ve fondu. Také platí, když [provedení souběžné úlohy](batch-parallel-node-tasks.md) je povoleno, což ponechá nečinnosti Pokud některé uzly počet úloh je nižší než celkový počet možných souběžných úkolů. Spuštěním není úkol přípravy úlohy na nečinných uzlů, strávíte nižší cenu na poplatky za přenos dat.
 
 > [!NOTE]
-> [JobPreparationTask] [ net_job_prep_cloudjob] se liší od [CloudPool.StartTask] [ pool_starttask] v tom, že JobPreparationTask provede při spuštění hello každé úlohy, zatímco StartTask spustí, pouze když výpočetního uzlu nejprve spojí fond nebo restartování.
+> [JobPreparationTask] [ net_job_prep_cloudjob] se liší od [CloudPool.StartTask] [ pool_starttask] v tom, že JobPreparationTask provede na začátku každé úlohy, zatímco StartTask se spustí pouze v případě, že výpočetního uzlu nejprve připojí fondu nebo restartování.
 > 
 > 
 
 ## <a name="job-release-task"></a>Úkol uvolnění úlohy
-Jakmile úloha je označena jako dokončená, hello úkol uvolnění úlohy se spustí na každém uzlu ve fondu hello, která spouští alespoň jeden úkol. Úlohu můžete označit jako vydáním žádost o ukončení. potom nastaví hello stav úlohy příliš Hello služba Batch*ukončení*, ukončí všechny aktivní nebo spuštěné úkoly spojené s úlohou hello a spouští hello úkol uvolnění úlohy. Úloha Hello pak se posouvá toohello *Dokončit* stavu.
+Jakmile úloha je označena jako dokončená, úkol uvolnění úlohy se spustí na každém uzlu ve fondu, která spouští alespoň jeden úkol. Úlohu můžete označit jako vydáním žádost o ukončení. Služba Batch potom nastaví stav úlohy na *ukončení*, ukončí všechny aktivní nebo spuštěné úkoly spojené s úlohou a úkol uvolnění úlohy se spustí. Úloha je následně přesunuto do *Dokončit* stavu.
 
 > [!NOTE]
-> Odstranění úlohy také provede hello úkol uvolnění úlohy. Ale pokud úloha už byla ukončena, hello uvolnění úlohy není spuštěn podruhé Pokud hello úlohy je později odstranit.
+> Odstranění úlohy také spustí úkol uvolnění úlohy. Ale pokud úloha už byla ukončena, uvolnění úlohy není spuštěn podruhé Pokud úloha je později odstranit.
 > 
 > 
 
 ## <a name="job-prep-and-release-tasks-with-batch-net"></a>Příprava úlohy a uvolnění úlohy pomocí rozhraní Batch .NET
-přiřadit toouse úkol přípravy úlohy [JobPreparationTask] [ net_job_prep] úlohy tooyour objekt [CloudJob.JobPreparationTask] [ net_job_prep_cloudjob] vlastnost . Podobně, inicializovat [JobReleaseTask] [ net_job_release] a přiřaďte ho tooyour úlohy [CloudJob.JobReleaseTask] [ net_job_prep_cloudjob] vlastnost tooset hello pro úkol uvolnění úlohy.
+Pokud chcete použít úkol přípravy úlohy, přiřazení [JobPreparationTask] [ net_job_prep] objekt, který má vaše úloha [CloudJob.JobPreparationTask] [ net_job_prep_cloudjob] vlastnost. Podobně, inicializovat [JobReleaseTask] [ net_job_release] a přiřaďte ho do vaší úlohy [CloudJob.JobReleaseTask] [ net_job_prep_cloudjob] vlastnost nastavit úkol uvolnění úlohy.
 
-V tento fragment kódu `myBatchClient` je instance [BatchClient][net_batch_client], a `myPool` je existující fond v rámci hello účtu Batch.
+V tento fragment kódu `myBatchClient` je instance [BatchClient][net_batch_client], a `myPool` je existující fond v rámci účtu Batch.
 
 ```csharp
-// Create hello CloudJob for CloudPool "myPool"
+// Create the CloudJob for CloudPool "myPool"
 CloudJob myJob =
     myBatchClient.JobOperations.CreateJob(
         "JobPrepReleaseSampleJob",
         new PoolInformation() { PoolId = "myPool" });
 
-// Specify hello command lines for hello job preparation and release tasks
+// Specify the command lines for the job preparation and release tasks
 string jobPrepCmdLine =
     "cmd /c echo %AZ_BATCH_NODE_ID% > %AZ_BATCH_NODE_SHARED_DIR%\\shared_file.txt";
 string jobReleaseCmdLine =
     "cmd /c del %AZ_BATCH_NODE_SHARED_DIR%\\shared_file.txt";
 
-// Assign hello job preparation task toohello job
+// Assign the job preparation task to the job
 myJob.JobPreparationTask =
     new JobPreparationTask { CommandLine = jobPrepCmdLine };
 
-// Assign hello job release task toohello job
+// Assign the job release task to the job
 myJob.JobReleaseTask =
     new JobPreparationTask { CommandLine = jobReleaseCmdLine };
 
 await myJob.CommitAsync();
 ```
 
-Jak už bylo zmíněno dříve, hello uvolnění úlohy se spustí, až se úloha je ukončeno, nebo odstranit. Ukončit úlohu s [JobOperations.TerminateJobAsync][net_job_terminate]. Odstranit úlohu s [JobOperations.DeleteJobAsync][net_job_delete]. Obvykle ukončit nebo odstranit úlohu po dokončení jeho úkolů, nebo když bylo dosaženo časového limitu, který jste definovali.
+Jak už bylo zmíněno dříve, uvolnění úlohy se spustí, až se úloha je ukončeno, nebo odstranit. Ukončit úlohu s [JobOperations.TerminateJobAsync][net_job_terminate]. Odstranit úlohu s [JobOperations.DeleteJobAsync][net_job_delete]. Obvykle ukončit nebo odstranit úlohu po dokončení jeho úkolů, nebo když bylo dosaženo časového limitu, který jste definovali.
 
 ```csharp
-// Terminate hello job toomark it as Completed; this will initiate the
+// Terminate the job to mark it as Completed; this will initiate the
 // Job Release Task on any node that executed job tasks. Note that the
 // Job Release Task is also executed when a job is deleted, thus you
 // need not call Terminate if you typically delete jobs after task completion.
@@ -115,21 +115,21 @@ await myBatchClient.JobOperations.TerminateJobAsy("JobPrepReleaseSampleJob");
 ```
 
 ## <a name="code-sample-on-github"></a>Ukázka kódu na Githubu
-úkoly přípravy a uvolnění úlohy toosee v akci, podívejte se na hello [JobPrepRelease] [ job_prep_release_sample] ukázkového projektu na Githubu. Tato Konzolová aplikace hello následující:
+Najdete v části úlohy přípravy a uvolnění úlohy v akci, podívejte se [JobPrepRelease] [ job_prep_release_sample] ukázkového projektu na Githubu. Tato Konzolová aplikace provede následující akce:
 
 1. Vytvoří fond s dvěma uzly "malá".
 2. Vytvoří úlohu s přípravy úlohy, verzi a standardní úlohy.
-3. Spustí hello úkol přípravy úlohy, které nejprve zapíše hello uzlu ID tooa textový soubor v adresáři "sdílené" uzlu.
-4. Spustí úlohu na každém uzlu, který zapíše jeho toohello ID úloh stejné textového souboru.
-5. Jakmile jsou všechny úkoly dokončené (nebo je dosaženo časového limitu hello), vytiskne obsah hello každý uzel textového souboru toohello konzoly.
-6. Po dokončení úlohy hello spustí hello úlohy verze úloh toodelete hello soubor z uzlu hello.
-7. Hello výtisků ukončovací kódy hello přípravy úlohy a uvolnění úlohy pro každý uzel, na kterém provést.
-8. Pozastaví spuštění tooallow potvrzení odstranění úlohy a fondu.
+3. Spustí úkol přípravy úlohy, které nejprve zapíše ID uzlu do textového souboru v adresáři "sdílené" uzlu.
+4. Spustí úlohu na každém uzlu, který zapíše jeho ID úkolu do stejné textového souboru.
+5. Jakmile jsou všechny úkoly dokončené (nebo je dosaženo časového limitu), vytiskne obsah na konzole pro každý uzel textového souboru.
+6. Po dokončení úlohy, spustí úkol uvolnění úlohy odstranění souboru z uzlu.
+7. Vytiskne ukončovacích kódů úkolů přípravy a uvolnění úlohy pro každý uzel, na kterém provést.
+8. Pozastaví spuštění umožňující potvrzení odstranění úlohy a fondu.
 
-Výstup z ukázkové aplikace hello je podobné toohello následující:
+Výstup z ukázkové aplikace je podobný následujícímu:
 
 ```
-Attempting toocreate pool: JobPrepReleaseSamplePool
+Attempting to create pool: JobPrepReleaseSamplePool
 Created pool JobPrepReleaseSamplePool with 2 small nodes
 Checking for existing job JobPrepReleaseSampleJob...
 Job JobPrepReleaseSampleJob not found, creating...
@@ -152,7 +152,7 @@ tvm-2434664350_2-20160623t173951z tasks:
   task003
   task007
 
-Waiting for job JobPrepReleaseSampleJob tooreach state Completed
+Waiting for job JobPrepReleaseSampleJob to reach state Completed
 ...
 
 tvm-2434664350_1-20160623t173951z:
@@ -168,31 +168,31 @@ yes
 Delete pool? [yes] no
 yes
 
-Sample complete, hit ENTER tooexit...
+Sample complete, hit ENTER to exit...
 ```
 
 > [!NOTE]
-> Z důvodu toohello proměnné vytvoření počáteční čas a uzlů v rámci nového fondu (některé uzly jsou připravené pro úlohy než ostatní) může se zobrazit odlišný výstup. Konkrétně protože hello úkoly dokončí rychle, jeden z uzlů hello fondu může spustit všechny hello úlohy. Pokud k tomu dojde, si všimnete, že hello Příprava úlohy a uvolnění úlohy nejsou k dispozici pro hello uzel, který spuštěné žádné úlohy.
+> Z důvodu proměnné vytváření a počáteční čas uzly v rámci nového fondu (některé uzly jsou připravené pro úlohy než ostatní) může se zobrazit odlišný výstup. Konkrétně protože úlohy dokončit rychle, mezi uzly fondu může provést všechny úkoly úlohy. Pokud k tomu dojde, si všimnete, že příprava úlohy a uvolnění úlohy nejsou k dispozici pro uzel, který spuštěné žádné úlohy.
 > 
 > 
 
-### <a name="inspect-job-preparation-and-release-tasks-in-hello-azure-portal"></a>Zkontrolujte úlohu přípravy a uvolnění úlohy v hello portálu Azure
-Když spustíte hello ukázkovou aplikaci, můžete použít hello [portál Azure] [ portal] tooview hello vlastnosti hello úlohy a její úkoly nebo stahujte hello sdílené textový soubor, který je upraveném hello úlohy.
+### <a name="inspect-job-preparation-and-release-tasks-in-the-azure-portal"></a>Zkontrolujte přípravy úlohy a úlohy verzi portálu Azure
+Když spustíte ukázkovou aplikaci, můžete použít [portál Azure] [ portal] pro zobrazení vlastností úlohy a její úkoly nebo i stažení sdílené textový soubor, který je upraveném úkoly úlohy.
 
-Následující snímek obrazovky Hello ukazuje hello **přípravy úlohy okno** v hello portál Azure po spuštění hello ukázkovou aplikaci. Přejděte toohello *JobPrepReleaseSampleJob* vlastnosti po dokončení úkolů (ale před odstraněním úlohy a fondu) a klikněte na tlačítko **přípravných kroků** nebo **uvolnění úlohy** tooview jejich vlastnosti.
+Na snímku obrazovky níže ukazuje **přípravy úlohy okno** na portálu Azure po spuštění ukázkové aplikace. Přejděte na *JobPrepReleaseSampleJob* vlastnosti po dokončení úkolů (ale před odstraněním úlohy a fondu) a klikněte na tlačítko **přípravných kroků** nebo **uvolnění úlohy** zobrazit jejich vlastnosti.
 
 ![Vlastnosti přípravy úlohy na portálu Azure][1]
 
 ## <a name="next-steps"></a>Další kroky
 ### <a name="application-packages"></a>Balíčky aplikací
-V přidání toohello úkol přípravy úlohy, můžete použít také hello [balíčky aplikací](batch-application-packages.md) funkce Batch tooprepare výpočetní uzly pro provedení úlohy. Tato funkce je užitečná zejména při nasazení aplikací, které nevyžadují systémem instalační program, aplikace, které obsahují mnoho (100 +) souborů nebo aplikace, které vyžadují striktní verzí.
+Kromě úkol přípravy úlohy, můžete také použít [balíčky aplikací](batch-application-packages.md) služby Batch pro přípravu výpočetních uzlů pro provedení úlohy. Tato funkce je užitečná zejména při nasazení aplikací, které nevyžadují systémem instalační program, aplikace, které obsahují mnoho (100 +) souborů nebo aplikace, které vyžadují striktní verzí.
 
 ### <a name="installing-applications-and-staging-data"></a>Instalace aplikací a pracovní data
 Tento příspěvek na fóru MSDN obsahuje přehled několik metod pro spuštěné úkoly přípravy uzlů:
 
 [Instalace aplikací a pracovní data na Batch výpočetních uzlů][forum_post]
 
-Podle některého z členů týmu Azure Batch hello zapisují, popisuje několik technik, které můžete použít toodeploy aplikacím a datům toocompute uzlů.
+Zapsána pomocí některého z členů týmu Azure Batch, popisuje několik technik, které můžete použít k nasazení aplikace a data na výpočetní uzly.
 
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_listjobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx

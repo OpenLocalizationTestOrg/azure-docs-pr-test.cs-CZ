@@ -1,26 +1,26 @@
-S Azure Resource Manager, můžete definovat parametry pro hodnoty chcete toospecify při nasazení šablony hello. Šablona Hello obsahuje oddíl s názvem parametry obsahující všechny hodnoty parametru hello.
-Měli byste parametr pro ty hodnoty, které se liší podle hello prostředí, které nasazujete nebo na základě hello projektu, které nasazujete. Parametry nedefinuje pro hodnoty, které vždy zůstanou hello stejné. Každá hodnota parametru se používá v hello šablony toodefine hello prostředky, které jsou nasazeny. 
+Pomocí Azure Resource Manageru definujete parametry pro hodnoty, které chcete zadat při nasazení šablony. Šablona obsahuje oddíl s názvem parametry obsahující všechny hodnoty parametru.
+Měli byste parametr pro ty hodnoty, které se liší podle prostředí, ve kterém provádíte nasazení nebo na základě projektu, které nasazujete. Nedefinují parametry pro hodnoty, které zůstanou vždy stejná. Každá hodnota parametru se v šabloně použije k definování nasazovaných prostředků. 
 
-Při definování parametrů, použijte hello **allowedValues** toospecify pole, které hodnoty uživatele můžete během nasazení zadat. Použití hello **defaultValue** pole tooassign toohello parametru hodnoty, pokud je během nasazení zadána žádná hodnota.
+Při definování parametrů, použijte **allowedValues** můžete během nasazení zadat pole, které chcete určit, které hodnoty uživatele. Použití **defaultValue** pole o přiřazení hodnoty na parametr, pokud je během nasazení zadána žádná hodnota.
 
-Nemůžeme se popisují jednotlivé parametry v šabloně hello.
+Nemůžeme se popisují jednotlivé parametry v šabloně.
 
 ### <a name="sitename"></a>Název webu
-Název webové aplikace hello chcete toocreate Hello.
+Název webové aplikace, kterou chcete vytvořit.
 
     "siteName":{
       "type":"string"
     }
 
 ### <a name="hostingplanname"></a>hostingPlanName
-Název Hello hello služby App Service naplánujte toouse pro hostování hello webové aplikace.
+Název plánu služby App Service pro hostování webové aplikace.
 
     "hostingPlanName":{
       "type":"string"
     }
 
 ### <a name="sku"></a>SKU
-Hello cenovou úroveň pro hostování plán hello.
+Cenovou úroveň pro hostování plánu.
 
     "sku": {
       "type": "string",
@@ -40,14 +40,14 @@ Hello cenovou úroveň pro hostování plán hello.
       ],
       "defaultValue": "S1",
       "metadata": {
-        "description": "hello pricing tier for hello hosting plan."
+        "description": "The pricing tier for the hosting plan."
       }
     }
 
-Šablona Hello definuje hello hodnoty, které jsou povoleny pro tento parametr a přiřadí výchozí hodnotu (S1), pokud není zadaná žádná hodnota.
+Definuje hodnoty, které jsou povoleny pro tento parametr šablony a přiřadí výchozí hodnotu (S1), pokud není zadaná žádná hodnota.
 
 ### <a name="workersize"></a>workerSize
-velikost instance Hello hello hostování plán (malé, střední a velké).
+Velikost instance plánu hostingu (malé, střední a velké).
 
     "workerSize":{
       "type":"string",
@@ -59,5 +59,5 @@ velikost instance Hello hello hostování plán (malé, střední a velké).
       "defaultValue":"0"
     }
 
-Šablona Hello definuje hello hodnoty, které jsou povoleny pro tento parametr (0, 1 nebo 2) a přiřadí výchozí hodnota (0), pokud není zadaná žádná hodnota. Hello hodnoty odpovídají toosmall, střední a velké.
+Šablona definuje hodnoty, které jsou povoleny pro tento parametr (0, 1 nebo 2) a přiřadí výchozí hodnota (0), pokud není zadaná žádná hodnota. Hodnoty odpovídají malé, střední a velké.
 

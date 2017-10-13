@@ -1,5 +1,5 @@
 ---
-title: "aaaGet začít s Azure předávání hybridní připojení v rozhraní .NET | Microsoft Docs"
+title: "Začínáme s hybridními připojeními Azure Relay v .NET | Dokumentace Microsoftu"
 description: "Napište konzolovou aplikaci v jazyce C# pro Azure Relay Hybrid Connections."
 services: service-bus-relay
 documentationcenter: .net
@@ -14,58 +14,58 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 07/07/2017
 ms.author: sethm
-ms.openlocfilehash: 1e4af28e7cd4393c8ca965a149a0b83ebcc44f22
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 1af23bfd46dd7d3781505473f7c1d86e65ea9bc7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-relay-hybrid-connections"></a>Začínáme s hybridními připojeními pro přenos
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
-Tento kurz obsahuje úvod příliš[Azure předávání hybridní připojení](relay-what-is-it.md#hybrid-connections)a ukazuje, jak toouse .NET toocreate klientskou aplikaci, která odesílá zprávy tooa odpovídající naslouchací proces aplikace. 
+Tento kurz obsahuje úvod do služby [Azure Relay Hybrid Connections](relay-what-is-it.md#hybrid-connections) a ukazuje, jak pomocí .NET vytvořit klientskou aplikaci, která odesílá zprávy do příslušné aplikace naslouchacího procesu. 
 
 ## <a name="what-will-be-accomplished"></a>Co všechno zvládneme
-Protože hybridní připojení vyžaduje klienta a součásti serveru, hello kurzu vytvoří dvě aplikace konzoly. Zde jsou kroky hello:
+Protože hybridní připojení vyžadují komponentu klienta i serveru, tento kurz vytvoří dvě konzolové aplikace. Postup je následující:
 
-1. Vytvořte obor názvů předávání pomocí hello portálu Azure.
-2. V tomto oboru názvů pomocí hello portálu Azure vytvořte hybridní připojení.
-3. Zápis konzoly serveru (naslouchání) aplikace tooreceive zpráv.
-4. Zápis konzoly klienta (odesílatel) aplikace toosend zpráv.
+1. Pomocí webu Azure Portal vytvoříme obor názvů přenosu.
+2. Pomocí webu Azure Portal vytvoříme v tomto oboru názvů hybridní připojení.
+3. Napíšeme konzolovou aplikaci serveru (naslouchacího procesu) pro příjem zpráv.
+4. Napíšeme konzolovou aplikaci klienta (odesílatele) pro odesílání zpráv.
 
 ## <a name="prerequisites"></a>Požadavky
 
-toocomplete tohoto kurzu budete potřebovat hello následující požadavky:
+Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
-1. [Visual Studio 2015 nebo vyšší](http://www.visualstudio.com). Hello příklady v tomto kurzu použít Visual Studio 2017.
+1. [Visual Studio 2015 nebo vyšší](http://www.visualstudio.com). V příkladech v tomto kurzu se používá sada Visual Studio 2017.
 2. Předplatné Azure.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="1-create-a-namespace-using-hello-azure-portal"></a>1. Vytvoření oboru názvů pomocí hello portálu Azure
-Pokud jste již vytvořili předávání názvů, přeskočit toohello [vytvořit hybridní připojení pomocí portálu Azure hello](#2-create-a-hybrid-connection-using-the-azure-portal) části.
+## <a name="1-create-a-namespace-using-the-azure-portal"></a>1. Vytvoření oboru názvů služby Service Bus pomocí webu Azure Portal
+Pokud už máte vytvořený obor názvů služby Relay, přejděte do části [Vytvoření hybridního připojení pomocí webu Azure Portal](#2-create-a-hybrid-connection-using-the-azure-portal).
 
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 
-## <a name="2-create-a-hybrid-connection-using-hello-azure-portal"></a>2. Vytvořit hybridní připojení pomocí hello portálu Azure
-Pokud jste již vytvořili hybridní připojení, přeskočit toohello [vytvořit aplikaci typu server](#3-create-a-server-application-listener) části.
+## <a name="2-create-a-hybrid-connection-using-the-azure-portal"></a>2. Vytvoření hybridního připojení pomocí webu Azure Portal
+Pokud už máte vytvořené hybridní připojení, přejděte do části [Vytvoření serverové aplikace](#3-create-a-server-application-listener).
 
 [!INCLUDE [relay-create-hybrid-connection-portal](../../includes/relay-create-hybrid-connection-portal.md)]
 
 ## <a name="3-create-a-server-application-listener"></a>3. Vytvoření serverové aplikace (naslouchací proces)
-toolisten a přijímat zprávy z hello předávání, jsme zapíše konzolovou aplikaci C# pomocí sady Visual Studio.
+Aby bylo možné prostřednictvím přenosu poslouchat a přijímat zprávy, napíšeme v sadě Visual Studio konzolovou aplikaci v jazyce C#.
 
 [!INCLUDE [relay-hybrid-connections-dotnet-get-started-server](../../includes/relay-hybrid-connections-dotnet-get-started-server.md)]
 
 ## <a name="4-create-a-client-application-sender"></a>4. Vytvoření klientské aplikace (odesílatel)
-Předávání, toosend zprávy toohello jsme zapíše konzolovou aplikaci C# pomocí sady Visual Studio.
+Abychom mohli do fronty odesílat zprávy, napíšeme v sadě Visual Studio konzolovou aplikaci v jazyce C#.
 
 [!INCLUDE [relay-hybrid-connections-dotnet-get-started-client](../../includes/relay-hybrid-connections-dotnet-get-started-client.md)]
 
-## <a name="5-run-hello-applications"></a>5. Spouštění aplikací hello
-1. Spusťte aplikaci server hello.
-2. Spuštění klienta aplikace hello a zadejte nějaký text.
-3. Zkontrolujte, že server hello aplikace konzoly výstupy hello text, který byl zadán v aplikaci klienta hello.
+## <a name="5-run-the-applications"></a>5. Spuštění aplikací
+1. Spusťte serverovou aplikaci.
+2. Spusťte klientskou aplikaci a napište nějaký text.
+3. Ujistěte se, že výstupem konzoly serverové aplikace je text, který jste zadali v klientské aplikaci.
 
 ![running-applications](./media/relay-hybrid-connections-dotnet-get-started/running-applications.png)
 

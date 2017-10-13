@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure Mobile Engagement uživatelské rozhraní – řídicí panel"
-description: "Zjistěte, jak tooview a Správa grafů data o vaší aplikaci pomocí Azure Mobile Engagement"
+title: "Azure Mobile Engagement uživatelské rozhraní – řídicí panel"
+description: "Zjistěte, jak zobrazit a spravovat grafy data o vaší aplikaci pomocí Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: d834c01cb748a962d50006398b75b381fa6d8cef
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: eaf5a2f9fdfcec33e8b4e2ddf77505980cd37c5e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-tooview-and-manage-charts-of-data-about-your-application"></a>Jak tooview a Správa grafů dat o aplikaci
-Hello část řídicího panelu hello uživatelského rozhraní umožňuje zákazníkům toocreate přizpůsobit grafy toomaximize doba pro jejich tím, že poskytuje hello přesné informace chtějí namísto hledání v části analytics hello. Řídicí panel zobrazuje trendy hello aplikace a počty aktivní uživatele hello hello různé verze vaší aplikace na danou dobu (hodinu/den/týden nebo měsíc/vlastní). trendy Hello zobrazí jsou založené na hello posledních 7 dnů.
+# <a name="how-to-view-and-manage-charts-of-data-about-your-application"></a>Postup zobrazení a Správa grafů dat o aplikaci
+Části řídicí panel rozhraní umožňuje zákazníkům vytvářet vlastní grafy maximalizovat doba pro jejich tím, že poskytuje přesné informace, které chtějí namísto hledání v části analytics. Řídicí panel zobrazuje trendy aplikace, a aktivní uživatele počty pro různé verze vaší aplikace na danou dobu (hodinu/den/týden nebo měsíc/vlastní). Trendy zobrazí jsou založené na za posledních 7 dnů.
 
 ### <a name="see-also"></a>Viz také
 * [Průvodce odstraňováním potíží s - Analytics][Link 21]
 
 ## <a name="dashboard"></a>Řídicí panel
-* Grafy tooan prázdný řídicí panel můžete přidat výběrem akce hello "odesílání toodashboard" hello ozubené kolečko nabídce jakéhokoli grafu v části Analytics hello hello uživatelského rozhraní, které chcete toosee na řídicím panelu.
+* Grafy přidáte na prázdný řídicí panel tak, že zvolíte odeslat na řídicí panel. v nabídce jakéhokoli grafu v části Analytics uživatelského rozhraní, které chcete zobrazit na řídicí panel ozubené kolečko.
 
 ## <a name="-add-a-dashboard"></a>+ (Přidat řídicí panel)
-* Vám může použít hello "+" pásu karet toocreate položky nabídky nový řídicí panel, který se zobrazí na pásu karet hello.
+* Položky nabídky pásu karet "+" slouží k vytvoření nové řídicí panel, který se zobrazí na pásu karet.
 
 ## <a name="gear-menu"></a>Ozubené kolečko nabídky
-* Můžete použít nabídku ozubené kolečko hello tooDelete řídicí panel, přejmenování, sdílené složky nebo plán (příjem e-mailu) řídicího panelu. Vlastní řídicí panel můžete použít hello plán možnost toodefine hello plán, kdy chcete tooreceive e-mailem. Můžete naplánovat tooreceive ho denně, týdně nebo měsíčně. Můžete nastavit čas hello hello den a den hello Dobrý den, týden nebo den v měsíci hello, pokud byste chtěli tooreceive hello e-mailu. E-mailovou adresu a časové pásmo jsou založené na hello nastavení, které jste nakonfigurovali v části Můj účet hello uživatelského rozhraní hello.
+* Nabídky ozubené kolečko řídicí panel můžete použít k odstranění, přejmenování, sdílené složky, nebo plán (příjem e-mailu) řídicího panelu. Chcete-li definovat plán, kdy chcete dostávat e-mailem vlastní řídicí panel můžete použít možnost plánu. Můžete naplánovat denní, týdenní nebo měsíční ji přijmout. Můžete nastavit čas, den a den v týdnu nebo den v měsíci, kdy chcete dostávat e-mailu. Vaše e-mailovou adresu a časové pásmo jsou založené na nastavení, které jste nakonfigurovali v části Můj účet uživatelského rozhraní.
   
   ![dashboard1][34]
 

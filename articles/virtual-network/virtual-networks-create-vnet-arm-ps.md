@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate virtuální síť – Azure PowerShell | Microsoft Docs"
-description: "Zjistěte, jak toocreate a virtuální sítě pomocí prostředí PowerShell."
+title: "Vytvoření virtuální sítě - prostředí Azure PowerShell | Microsoft Docs"
+description: "Naučte se vytvořit virtuální síť pomocí prostředí PowerShell."
 services: virtual-network
 documentationcenter: 
 author: jimdial
@@ -16,19 +16,19 @@ ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8d6e395a77f71de9f94b6304b05450e46b47544f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e7072ddf51570d46578111e2e392e3cbea53f2aa
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-a-virtual-network-using-powershell"></a>Vytvoření virtuální sítě pomocí prostředí PowerShell
 
 [!INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
 
-Azure nabízí dva modely nasazení: Azure Resource Manager a Classic. Společnost Microsoft doporučuje vytváření prostředků prostřednictvím modelu nasazení Resource Manager hello. Další informace o toolearn hello rozdíly mezi hello dva modely, přečtěte si hello [modelech nasazení Azure pochopit](../azure-resource-manager/resource-manager-deployment-model.md) článku.
+Azure nabízí dva modely nasazení: Azure Resource Manager a Classic. Microsoft doporučuje vytváření prostředků prostřednictvím modelu nasazení Resource Manager. Další informace o rozdílech mezi těmito dvěma modely najdete v článku [Vysvětlení modelů nasazení Azure](../azure-resource-manager/resource-manager-deployment-model.md).
  
-Tento článek vysvětluje, jak toocreate virtuální síť prostřednictvím nasazení Resource Manager hello modelu pomocí prostředí PowerShell. Můžete také vytvořit virtuální síť pomocí Resource Manager pomocí jiných nástrojů nebo vytvoření virtuální sítě pomocí modelu nasazení classic hello výběrem jinou možnost z hello následující seznamu:
+Tento článek vysvětluje, jak vytvořit virtuální síť pomocí modelu nasazení Resource Manager pomocí prostředí PowerShell. Virtuální síť můžete vytvořit také prostřednictvím modelu nasazení Resource Manager pomocí jiných nástrojů nebo prostřednictvím modelu nasazení Classic. Pokud to chcete provést, vyberte odpovídající možnost z následujícího seznamu:
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](virtual-networks-create-vnet-arm-pportal.md)
@@ -43,9 +43,9 @@ Tento článek vysvětluje, jak toocreate virtuální síť prostřednictvím na
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-toocreate, které virtuální sítě pomocí prostředí PowerShell, dokončení hello následující kroky:
+Pokud chcete vytvořit virtuální síť pomocí prostředí PowerShell, proveďte následující kroky:
 
-1. Instalace a konfigurace prostředí Azure PowerShell, pomocí následujících kroků hello v hello [jak tooInstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) článku.
+1. Instalace a konfigurace prostředí Azure PowerShell, pomocí následujících kroků v [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) článku.
 
 2. V případě potřeby vytvořte novou skupinu prostředků, jak vidíte níže. Pro tento scénář, vytvořte skupinu prostředků s názvem *TestRG*. Další informace o skupinách prostředků najdete v článku [Přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md).
 
@@ -84,7 +84,7 @@ toocreate, které virtuální sítě pomocí prostředí PowerShell, dokončení
         DhcpOptions                : {}
         Subnets                    : []
         VirtualNetworkPeerings     : []
-4. Uložte objekt virtuální sítě hello v proměnné:
+4. Uložte objekt virtuální sítě v proměnné:
 
     ```powershell
     $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
@@ -94,7 +94,7 @@ toocreate, které virtuální sítě pomocí prostředí PowerShell, dokončení
    > Kroky 3 a 4 můžete kombinovat spuštěním `$vnet = New-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet -AddressPrefix 192.168.0.0/16 -Location centralus`.
    > 
 
-5. Přidáte nové sítě VNet proměnné toohello podsítě:
+5. Přidejte do nové proměnné sítě VNet podsíť:
 
     ```powershell
     Add-AzureRmVirtualNetworkSubnetConfig -Name FrontEnd `
@@ -124,14 +124,14 @@ toocreate, které virtuální sítě pomocí prostředí PowerShell, dokončení
                                 ]
         VirtualNetworkPeerings     : []
 
-6. Opakujte krok 5 výše pro každou podsíť chcete toocreate. Hello následující příkaz vytvoří hello *back-end* podsíť pro scénář hello:
+6. Výše popsaný krok 5 opakujte pro každou podsíť, kterou chcete vytvořit. Následující příkaz vytvoří *back-end* podsíť pro tento scénář:
 
     ```powershell
     Add-AzureRmVirtualNetworkSubnetConfig -Name BackEnd `
     -VirtualNetwork $vnet -AddressPrefix 192.168.2.0/24
     ```
 
-7. I když vytvoříte podsítě, zatím existují jenom v místní proměnné používané tooretrieve hello hello virtuální sítě, které vytvoříte v kroku 4 výše. toosave hello změny tooAzure, spusťte následující příkaz hello:
+7. I když vytvoříte podsítě, zatím existují jenom v místní proměnné sloužící k načtení sítě VNet, kterou vytvoříte ve výše popsaném kroku 4. Pokud chcete uložit změny do Azure, spusťte následující příkaz:
 
     ```powershell
     Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
@@ -176,8 +176,8 @@ toocreate, které virtuální sítě pomocí prostředí PowerShell, dokončení
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak tooconnect:
+Zjistěte, jak připojit:
 
-- Virtuální síť virtuálních počítačů (VM) tooa načtením hello [vytvoření virtuálního počítače s Windows](../virtual-machines/virtual-machines-windows-ps-create.md) článku. Místo vytváření virtuálních sítí a podsítí v krocích hello hello článků, můžete vybrat z existující virtuální síť a podsíť tooconnect virtuální počítač, abyste.
-- Hello virtuální sítě tooother virtuální sítě načtením hello [připojení virtuální sítě](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md) článku.
-- Hello virtuální sítě tooan do místní sítě pomocí virtuální privátní sítě site-to-site (VPN) nebo okruh ExpressRoute. Zjistěte, jak načtením hello [připojit místní sítě tooan virtuální sítě pomocí sítě site-to-site VPN](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) a [propojení virtuální sítě tooan okruh ExpressRoute](../expressroute/expressroute-howto-linkvnet-arm.md) články.
+- Virtuální počítač (VM) k virtuální síti načtením [vytvoření virtuálního počítače s Windows](../virtual-machines/virtual-machines-windows-ps-create.md) článku. Místo vytváření virtuální sítě a podsítě v rámci kroků v těchto článcích můžete vybrat existující virtuální síť a podsíť, ke které se má virtuální počítač připojit.
+- Virtuální síť k jiným virtuálním sítím pomocí informací v článku [Propojení virtuálních sítí](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md).
+- Virtuální síť k místní síti pomocí virtuální privátní sítě (VPN) typu Site-to-Site nebo okruhu ExpressRoute. Informace najdete v článcích [Připojení virtuální sítě k místní síti pomocí sítě VPN typu Site-to-Site](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) a [Propojení virtuální sítě s okruhem ExpressRoute](../expressroute/expressroute-howto-linkvnet-arm.md).

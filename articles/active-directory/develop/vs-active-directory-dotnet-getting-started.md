@@ -1,6 +1,6 @@
 ---
-title: "Začínáme s Azure AD v projektech Visual Studio MVC aaaGet | Microsoft Docs"
-description: "Způsob tooget spuštění pomocí služby Azure Active Directory v projekty MVC po připojení tooor vytváření Azure AD pomocí sady Visual Studio připojené služby"
+title: "Začínáme s Azure AD v projektech Visual Studio MVC | Microsoft Docs"
+description: "Jak začít používat Azure Active Directory v projekty MVC po připojení k nebo vytváření Azure AD pomocí sady Visual Studio připojené služby"
 services: active-directory
 documentationcenter: 
 author: kraigb
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/01/2017
 ms.author: kraigb
 ms.custom: aaddev
-ms.openlocfilehash: 807824dd6e4e57e443f8a7322cf2e5326384316d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c4d49cfc9887e422b3eaed2b96348c99eca48881
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="getting-started-with-azure-active-directory-and-visual-studio-connected-services-mvc-projects"></a>Začínáme s Azure Active Directory a Visual Studio připojené služby (Projekty MVC)
 > [!div class="op_single_selector"]
@@ -28,11 +28,11 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-## <a name="requiring-authentication-tooaccess-controllers"></a>Vyžadování ověřování tooaccess řadiče
-Všechny řadiče ve vašem projektu byly ozdobené s hello **Autorizovat** atribut. Tento atribut vyžaduje, aby toobe hello uživatel ověřený před přístupem k tyto řadiče. tooallow hello řadiče toobe přistupovat anonymně, odeberte tento atribut z hello řadiče. Pokud chcete tooset hello oprávnění na podrobnější úrovni, použijte hello atribut tooeach metodu, která vyžaduje autorizace místo jeho použití toohello třídy kontroleru.
+## <a name="requiring-authentication-to-access-controllers"></a>Vyžádání ověření řadičům přístup
+Všechny řadiče ve vašem projektu byly ozdobené s **Autorizovat** atribut. Tento atribut vyžaduje, aby uživatel k ověření před přístupem k tyto řadiče. Chcete-li umožňují řadiči získat anonymní přístup, odeberte tento atribut z řadiče. Pokud chcete nastavit oprávnění na podrobnější úrovni, použijte atribut pro každou metodu, která vyžaduje ověření, namísto aplikace do třídy kontroleru.
 
 ## <a name="adding-signin--signout-controls"></a>Přidání přihlášení / odhlášení ovládací prvky
-tooadd hello přihlášení/odhlášení ovládací prvky zobrazení tooyour, můžete použít hello **_LoginPartial.cshtml** částečné zobrazení tooadd hello funkce tooone vašich zobrazení. Tady je příklad hello funkce přidané toohello standard **_Layout.cshtml** zobrazení. (Všimněte si hello posledním prvkem v hello div s navigační panel sbalí třída):
+K přidávání ovládacích prvků přihlášení/odhlášení do zobrazení, můžete použít **_LoginPartial.cshtml** částečné zobrazení k přidání funkce do jednoho zobrazení. Tady je příklad funkci přidat do standardní **_Layout.cshtml** zobrazení. (Všimněte si posledním prvkem v div s navigační panel sbalí třída):
 
 <pre>
     &lt;!DOCTYPE html&gt; 

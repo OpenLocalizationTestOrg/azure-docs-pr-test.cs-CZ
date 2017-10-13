@@ -1,6 +1,6 @@
 ---
-title: "aaaView vrátil SAML hello služby Řízení přístupu (Java)"
-description: "Zjistěte, jak tooview SAML vrácený hello služby Řízení přístupu v aplikacích Java hostované v Azure."
+title: "Zobrazení SAML vrácený službě Řízení přístupu (Java)"
+description: "Zjistěte, jak chcete-li zobrazit SAML vrácený službě Řízení přístupu v aplikace Java hostované v Azure."
 services: active-directory
 documentationcenter: java
 author: rmcmurray
@@ -15,40 +15,40 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
 ms.custom: aaddev
-ms.openlocfilehash: b6733bc98b505cfa89a4ce456f368ee15da11427
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1552e624a4703138ab82f7133ceaec3dbd04e1db
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-tooview-saml-returned-by-hello-azure-access-control-service"></a>Jak tooview SAML vrácený hello služby Řízení přístupu Azure
-Tento průvodce vám ukáže, jak tooview hello základní Security (Assertion Markup Language SAML) vrátila tooyour aplikace hello služby Řízení přístupu Azure (ACS). Průvodce Hello vychází hello [jak tooAuthenticate webovým uživatelům s Azure přístup k řízení služby pomocí Eclipse](active-directory-java-authenticate-users-access-control-eclipse.md) tématu, tím, že poskytuje kód, který zobrazí informace SAML hello. aplikace Hello Dokončit bude vypadat podobně jako následující toohello.
+# <a name="how-to-view-saml-returned-by-the-azure-access-control-service"></a>Postup zobrazení SAML vrácený službě Řízení přístupu Azure
+Tento průvodce vám ukáže, jak chcete zobrazit základní zabezpečení kontrolního výrazu SAML (Markup Language) vrátíte zpět do aplikace služby Řízení přístupu (ACS) Azure. V příručce vychází [postup ověření webového uživatele s Azure přístup k řízení služby pomocí Eclipse](active-directory-java-authenticate-users-access-control-eclipse.md) tématu, tím, že poskytuje kód, který zobrazí informace o tomto SAML. Hotová aplikace bude vypadat podobně jako následující.
 
 ![Příklad výstupu SAML][saml_output]
 
-Další informace o ACS najdete v tématu hello [další kroky](#next_steps) části.
+Další informace o služby ACS, najdete v článku [další kroky](#next_steps) části.
 
 > [!NOTE]
-> Hello filtru řízení služeb Azure přístup je náhled technologie komunity. Jako předběžné verze softwaru není oficiálně společností Microsoft.
+> Ovládací prvek filtru Azure přístup služeb je náhled technologie komunity. Jako předběžné verze softwaru není oficiálně společností Microsoft.
 > 
 > 
 
 ## <a name="prerequisites"></a>Požadavky
-toocomplete hello úlohy v této příručce, dokončení hello ukázku najdete na adrese [jak tooAuthenticate webovým uživatelům s Azure přístup k řízení služby pomocí Eclipse](active-directory-java-authenticate-users-access-control-eclipse.md) a používejte ho jako výchozí bod pro účely tohoto kurzu hello.
+K dokončení úkolů v tomto průvodci, dokončete ukázku najdete na adrese [postup ověření webového uživatele s Azure přístup k řízení služby pomocí Eclipse](active-directory-java-authenticate-users-access-control-eclipse.md) a použít jej jako výchozí bod pro tento kurz.
 
-## <a name="add-hello-jspwriter-library-tooyour-build-path-and-deployment-assembly"></a>Přidat hello JspWriter tooyour sestavení a nasazení cesta sestavení knihovny
-Přidání hello knihovny, který obsahuje hello **javax.servlet.jsp.JspWriter** tooyour třída sestavení a nasazení cesta sestavení. Pokud používáte Tomcat, je hello knihovně **jsp api.jar**, který se nachází v hello Apache **lib** složky.
+## <a name="add-the-jspwriter-library-to-your-build-path-and-deployment-assembly"></a>Přidání knihovny JspWriter na vaše sestavení a nasazení cesta sestavení
+Přidání knihovny, který obsahuje **javax.servlet.jsp.JspWriter** třída pro vaše nasazení a cesta k sestavení sestavení. Pokud používáte Tomcat, je knihovna **jsp api.jar**, který se nachází v Apache **lib** složky.
 
-1. V prostředí Eclipse v prohlížeči projektu klikněte pravým tlačítkem na **MyACSHelloWorld**, klikněte na tlačítko **cesta sestavení**, klikněte na tlačítko **konfigurovat cestu sestavení**, klikněte na tlačítko hello **knihovny** a pak klikněte **přidat externí JARs**.
-2. V hello **JAR výběr** dialogové okno, přejděte toohello nezbytné JAR, vyberte ho a pak klikněte na tlačítko **otevřete**.
-3. S hello **vlastnosti pro MyACSHelloWorld** stále otevřená, klikněte na dialogové okno **nasazení sestavení**.
-4. V hello **webové nasazení sestavení** dialogové okno, klikněte na tlačítko **přidat**.
-5. V hello **nové – Direktiva Assembly** dialogové okno, klikněte na tlačítko **položky cesta sestavení Java** a pak klikněte na **Další**.
-6. Vyberte hello příslušnou knihovnu a klikněte na **Dokončit**.
-7. Klikněte na tlačítko **OK** tooclose hello **vlastnosti pro MyACSHelloWorld** dialogové okno.
+1. V prostředí Eclipse v prohlížeči projektu klikněte pravým tlačítkem na **MyACSHelloWorld**, klikněte na tlačítko **cesta sestavení**, klikněte na tlačítko **konfigurovat cestu sestavení**, klikněte na tlačítko **knihovny** a pak klikněte **přidat externí JARs**.
+2. V **JAR výběr** dialogové okno, přejděte na nezbytné JAR, vyberte ho a pak klikněte na tlačítko **otevřete**.
+3. S **vlastnosti pro MyACSHelloWorld** stále otevřená, klikněte na dialogové okno **nasazení sestavení**.
+4. V **webové nasazení sestavení** dialogové okno, klikněte na tlačítko **přidat**.
+5. V **nové – Direktiva Assembly** dialogové okno, klikněte na tlačítko **položky cesta sestavení Java** a pak klikněte na **Další**.
+6. Vyberte příslušnou knihovnu a klikněte na **Dokončit**.
+7. Klikněte na tlačítko **OK** zavřete **vlastnosti pro MyACSHelloWorld** dialogové okno.
 
-## <a name="modify-hello-jsp-file-toodisplay-saml"></a>Upravit toodisplay soubor JSP hello SAML
-Upravit **index.jsp** toouse hello následující kód.
+## <a name="modify-the-jsp-file-to-display-saml"></a>Upravte soubor JSP zobrazíte SAML
+Upravit **index.jsp** použít následující kód.
 
     <%@ page language="java" contentType="text/html; charset=UTF-8"
         pageEncoding="UTF-8"%>
@@ -100,14 +100,14 @@ Upravit **index.jsp** toouse hello následující kód.
                           if (nChild > 0)
                           {                    
 
-                                 // If it is a text node, just print hello text.
+                                 // If it is a text node, just print the text.
                                  if (list.item(0).getNodeName() == "#text")
                                  {
                                      out.println("Text value: <b>" + list.item(0).getTextContent() + "</b><br>");
                                  }
                                  else
                                  {
-                                     // Print out hello child node names.
+                                     // Print out the child node names.
                                      out.print("Contains " + nChild + " child node(s): ");   
                                         for (i=0; i < nChild; i++)
                                      {
@@ -116,19 +116,19 @@ Upravit **index.jsp** toouse hello následující kód.
                                         out.print("<b>" + temp.getNodeName() + "</b>");
                                         if (i < nChild - 1)
                                         {
-                                            // Separate hello names.
+                                            // Separate the names.
                                             out.print(", ");
                                         }
                                         else
                                         {
-                                            // Finish hello sentence.
+                                            // Finish the sentence.
                                             out.print(".");
                                         }
 
                                      }
                                      out.println("<br>");
 
-                                     // Process hello child nodes.
+                                     // Process the child nodes.
                                      for (i=0; i < nChild; i++)
                                      {
                                         Node temp = list.item(i);
@@ -162,7 +162,7 @@ Upravit **index.jsp** toouse hello následující kód.
             doc = docBuilder.parse(in);
             doc.getDocumentElement().normalize();
 
-            // Iterate hello child nodes of hello doc.
+            // Iterate the child nodes of the doc.
             NodeList list = doc.getChildNodes();
 
             for (int i=0; i < list.getLength(); i++)
@@ -180,18 +180,18 @@ Upravit **index.jsp** toouse hello následující kód.
     </body>
     </html>
 
-## <a name="run-hello-application"></a>Spuštění aplikace hello
-1. Spusťte aplikaci v emulátoru hello počítače nebo nasadit tooAzure pomocí hello kroků popsaných v [jak tooAuthenticate webovým uživatelům s Azure přístup k řízení služby pomocí Eclipse](active-directory-java-authenticate-users-access-control-eclipse.md).
-2. Spusťte prohlížeč a otevřete webovou aplikaci. Po přihlášení tooyour aplikace se zobrazí informace o SAML, včetně assertion hello zabezpečení poskytované poskytovatelem identity hello.
+## <a name="run-the-application"></a>Spuštění aplikace
+1. Spusťte aplikaci v emulátoru počítače nebo nasadit do Azure, pomocí kroků popsaných v [postup ověření webového uživatele s Azure přístup k řízení služby pomocí Eclipse](active-directory-java-authenticate-users-access-control-eclipse.md).
+2. Spusťte prohlížeč a otevřete webovou aplikaci. Po přihlášení do aplikace se zobrazí informace o SAML, včetně assertion zabezpečení poskytované poskytovatelem identity.
 
 ## <a name="next-steps"></a>Další kroky
-toofurther prozkoumat funkce služby ACS a tooexperiment se složitější scénáři najdete v tématu [2.0 služby Řízení přístupu][Access Control Service 2.0].
+K dalšímu prozkoumat funkce služby ACS a experimentovat s sofistikovanější scénáři, najdete v tématu [2.0 služby Řízení přístupu][Access Control Service 2.0].
 
 [Prerequisites]: #pre
-[Modify hello JSP file toodisplay SAML]: #modify_jsp
-[Add hello JspWriter library tooyour build path and deployment assembly]: #add_library
-[Run hello application]: #run_application
+[Modify the JSP file to display SAML]: #modify_jsp
+[Add the JspWriter library to your build path and deployment assembly]: #add_library
+[Run the application]: #run_application
 [Next steps]: #next_steps
 [Access Control Service 2.0]: http://go.microsoft.com/fwlink/?LinkID=212360
-[How tooAuthenticate Web Users with Azure Access Control Service Using Eclipse]: active-directory-java-authenticate-users-access-control-eclipse
+[How to Authenticate Web Users with Azure Access Control Service Using Eclipse]: active-directory-java-authenticate-users-access-control-eclipse
 [saml_output]: ./media/active-directory-java-view-saml-returned-by-access-control/SAML_Output.png

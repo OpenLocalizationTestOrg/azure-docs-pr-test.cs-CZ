@@ -1,6 +1,6 @@
 ---
-title: aplikace aaaReplicate (Azure tooAzure) | Microsoft Docs
-description: "Tento článek popisuje, jak tooset replikaci virtuálního počítače, spuštěná v jedné oblasti Azure příliš jiné oblasti v Azure."
+title: Replikovat aplikace (Azure do Azure) | Microsoft Docs
+description: "Tento článek popisuje, jak nastavit replikaci virtuálních počítačů spuštěných v jedné oblasti Azure do jiné oblasti v Azure."
 services: site-recovery
 documentationcenter: 
 author: asgang
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 5/22/2017
 ms.author: asgang
-ms.openlocfilehash: fb190dac14419f892a1c6b45a3d991d8005e4bd0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f9f97cf840b722c8cfee169dd1640e0682f287ff
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="replicate-azure-virtual-machines-tooanother-azure-region"></a>Replikovat virtuální počítače Azure tooanother oblast Azure
+# <a name="replicate-azure-virtual-machines-to-another-azure-region"></a>Jiné oblasti Azure replikovat virtuální počítače Azure
 
 
 
@@ -28,91 +28,91 @@ ms.lasthandoff: 10/06/2017
 >
 > Replikace obnovení lokality pro virtuální počítače Azure je aktuálně ve verzi preview.
 
-Tento článek popisuje, jak tooset replikaci virtuálního počítače, spuštěná v jedné oblasti Azure tooanother oblast Azure.
+Tento článek popisuje, jak nastavit replikaci virtuálních počítačů spuštěných v jedné oblasti Azure jiné oblasti Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Hello článek předpokládá, že již víte o Site Recovery a trezoru služeb zotavení. Je nutné toohave po předem trezoru služeb zotavení vytvořili.
+* Článek předpokládá, že již víte o Site Recovery a trezoru služeb zotavení. Je potřeba mít po předem trezoru služeb zotavení vytvořili.
 
     >[!NOTE]
     >
-    > Doporučuje se vytvořit hello trezoru služeb zotavení v hello umístění, kam má tooreplicate vaše virtuální počítače. Například pokud cílové umístění, střed USA", vytvořte trezor v, střed USA".
+    > Doporučuje se vytvořit trezor služeb zotavení v umístění, kde chcete replikovat virtuální počítače. Například pokud cílové umístění, střed USA", vytvořte trezor v, střed USA".
 
-* Pokud používáte pravidel skupiny zabezpečení sítě (NSG) nebo brány firewall proxy toocontrol přístup toooutbound připojení k Internetu na hello virtuálních počítačích Azure, zajistěte, že je seznam povolených adres hello požadované adresy URL nebo IP adresy. Odkazovat příliš[sítě pokyny dokumentu](./site-recovery-azure-to-azure-networking-guidance.md) další podrobnosti.
+* Pokud používáte k řízení přístupu k odchozí připojení k Internetu na virtuálních počítačích Azure, pravidla skupiny zabezpečení sítě (NSG) nebo proxy server brány firewall, ujistěte se, že je seznam povolených adres požadované adresy URL nebo IP adresy. Odkazovat na [sítě pokyny dokumentu](./site-recovery-azure-to-azure-networking-guidance.md) další podrobnosti.
 
-* Pokud máte ExpressRoute nebo VPN připojení mezi místními a hello zdrojové umístění v Azure, postupujte podle [aspekty obnovení lokality pro místní tooon Azure ExpressRoute nebo konfiguraci sítě VPN](site-recovery-azure-to-azure-networking-guidance.md#guidelines-for-existing-azure-to-on-premises-expressroutevpn-configuration) dokumentu.
+* Pokud máte ExpressRoute nebo VPN připojení mezi místními a umístění zdroje v Azure, postupujte podle [obnovení lokality požadavky pro Azure ExpressRoute místní nebo konfiguraci sítě VPN](site-recovery-azure-to-azure-networking-guidance.md#guidelines-for-existing-azure-to-on-premises-expressroutevpn-configuration) dokumentu.
 
-* Azure uživatelský účet potřebuje toohave určité [oprávnění](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) tooenable replikaci virtuálního počítače Azure.
+* Azure uživatelský účet musí mít určité [oprávnění](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) k povolení replikace virtuálního počítače Azure.
 
-* Vaše předplatné Azure musí být povoleno toocreate virtuální počítače v cílovém umístění hello chcete toouse jako oblast zotavení po Havárii. Obraťte se na podporu tooenable hello požadované kvóty.
+* Lze povolit vašeho předplatného Azure k vytvoření virtuálních počítačů v cílovém umístění, které chcete použít jako oblast zotavení po Havárii. Obraťte se na podporu, aby umožnil požadované kvótu.
 
 ## <a name="enable-replication-from-azure-site-recovery-vault"></a>Povolit replikaci z trezoru Azure Site Recovery
-Pro tento obrázek jsme bude replikovat virtuální počítače spuštěné v toohello umístění Azure, východní Asie, hello, jihovýchodní Asie, umístění. Hello kroky jsou následující:
+Pro tento obrázek jsme bude replikovat virtuální počítače spuštěné ve východní Asie Azure umístění, do umístění, jihovýchodní Asie '. Kroky jsou následující:
 
- Klikněte na tlačítko **+ replikovat** v hello trezoru tooenable replikace pro virtuální počítače hello.
+ Klikněte na tlačítko **+ replikovat** v trezoru povolíte replikaci pro virtuální počítače.
 
-1. **Zdroj:** odkazuje toohello bod počátku hello počítače, který v tomto případě je **Azure**.
+1. **Zdroj:** odkazuje na bod původu počítačů, které v tomto případě je **Azure**.
 
-2. **Umístění zdroje:** je hello oblast Azure, ze kterého má tooprotect virtuálních počítačů. Pro tento obrázek umístění zdroje hello budou, východní Asie.
+2. **Umístění zdroje:** je oblast Azure, ze které chcete chránit virtuální počítače. Pro tento obrázek bude umístění zdroje, východní Asie.
 
-3. **Model nasazení:** odkazuje model nasazení Azure toohello hello zdrojového počítače. Můžete vybrat buď classic nebo resource manager a patřící toohello konkrétní model počítače budou uvedené pro ochranu v dalším kroku hello.
+3. **Model nasazení:** odkazuje na modelu nasazení Azure zdrojový počítač. Můžete vybrat buď classic nebo resource manager a počítače patřící do určité modelu budou uvedené pro ochranu v dalším kroku.
 
       >[!NOTE]
       >
       > Můžete replikovat klasické virtuální počítač a obnovit jako virtuální počítač s classic. Nelze obnovit jako virtuální počítač Resource Manager.
 
-4. **Skupina prostředků:** ho je toowhich skupiny prostředků hello patří zdroj virtuálních počítačů. Pro ochranu v dalším kroku hello se objeví hello všechny virtuální počítače v části hello vybranou skupinu prostředků.
+4. **Skupina prostředků:** je skupina prostředků, do které patří zdroj virtuálních počítačů. Objeví se všechny virtuální počítače v části s vybranou skupinou prostředků pro ochranu v dalším kroku.
 
     ![Povolení replikace](./media/site-recovery-replicate-azure-to-azure/enabledrwizard1.png)
 
-V **virtuální počítače > vyberte virtuální počítače**, klikněte na tlačítko a vyberte každý počítač má tooreplicate. Můžete vybrat pouze počítače, pro které je možné povolit replikaci. Pak klikněte na OK.
+V **virtuální počítače > vyberte virtuální počítače**, klikněte na tlačítko a vyberte každý počítač, který chcete replikovat. Můžete vybrat pouze počítače, pro které je možné povolit replikaci. Pak klikněte na OK.
     ![Povolení replikace](./media/site-recovery-replicate-azure-to-azure/virtualmachine_selection.png)
 
 
 V části nastavení můžete nakonfigurovat vlastnosti cílové lokality
 
-1. **Cílové umístění:** jde hello umístění, kde bude replikován zdrojová data virtuálního počítače. V závislosti na vaší umístění vybrané počítače se Site Recovery zajistí, že hello seznam vhodnou cílovou oblastí.
+1. **Cílové umístění:** Toto je umístění, kde bude replikován zdrojová data virtuálního počítače. V závislosti na vaší umístění vybrané počítače se Site Recovery poskytuje seznam vhodný cílové oblasti.
 
     > [!TIP]
-    > Je doporučeno tookeep cílové umístění stejné od vaší obnovení služeb trezoru.
+    > Doporučuje se zachovat cílové umístění stejné od vaší obnovení služeb trezoru.
 
-2. **Cílová skupina prostředků:** je toowhich skupiny prostředků hello bude patřit všechny replikované virtuální počítače. Ve výchozím nastavení automatické obnovení systému vytvoří novou skupinu prostředků v hello cílová oblast s názvem, který má příponu "Automatické obnovení systému". V případě, že skupiny prostředků vytvořené automatické obnovení systému již existuje, bude znovu. Můžete také toocustomize ho jak je znázorněno v následující části hello.    
-3. **Cílová virtuální síť:** ve výchozím nastavení, automatické obnovení systému vytvoří nové virtuální sítě v hello cílová oblast s názvem, který má příponu "Automatické obnovení systému". To bude namapované tooyour zdrojové síti a bude se používat pro všechny budoucí ochranu.
+2. **Cílová skupina prostředků:** je skupina prostředků, na kterém jsou všechny bude patřit replikovaných virtuálních počítačů. Ve výchozím nastavení automatické obnovení systému vytvoří novou skupinu prostředků v cílová oblast s názvem, který má příponu "Automatické obnovení systému". V případě, že skupiny prostředků vytvořené automatické obnovení systému již existuje, bude znovu. Můžete také přizpůsobit, jak je znázorněno v následující části.    
+3. **Cílová virtuální síť:** ve výchozím nastavení, automatické obnovení systému vytvoří novou virtuální síť v oblasti cíl s názvem, který má příponu "Automatické obnovení systému". To budou mapována na zdrojové síti a bude se používat pro všechny budoucí ochranu.
 
     > [!NOTE]
-    > [Sítě v podrobnostech](site-recovery-network-mapping-azure-to-azure.md) tooknow více informací o mapování sítě.
+    > [Sítě v podrobnostech](site-recovery-network-mapping-azure-to-azure.md) Další informace o mapování sítě.
 
-4. **Cílové úložiště účtů:** ve výchozím nastavení, automatické obnovení systému vytvoří hello nový cílový účet úložiště mimicking konfiguraci zdrojového virtuálního počítače úložiště. V případě, že účet úložiště, které jsou vytvořené automatické obnovení systému již existuje, bude znovu.
+4. **Cílové úložiště účtů:** ve výchozím nastavení, automatické obnovení systému se vytvoří nový účet cílového úložiště mimicking konfiguraci zdrojového virtuálního počítače úložiště. V případě, že účet úložiště, které jsou vytvořené automatické obnovení systému již existuje, bude znovu.
 
-5. **Účty úložiště do mezipaměti:** automatické obnovení systému potřebuje účet úložiště s názvem úložiště mezipaměti v oblasti zdroj hello. Všechny hello změny děje na hello zdrojové virtuální počítače jsou sledovány a odesílat účet úložiště toocache před replikace těchto toohello cílové umístění.
+5. **Účty úložiště do mezipaměti:** automatické obnovení systému potřebuje účet úložiště s názvem úložiště mezipaměti v oblasti zdroje. Všechny změny děje na zdrojové virtuální počítače jsou sledovány a odesílat k účtu úložiště mezipaměti před replikaci do cílového umístění.
 
-6. **Skupina dostupnosti:** ve výchozím nastavení, vytvoří nástroj Automatické obnovení systému novou skupinou dostupnosti ve hello cílová oblast s názvem, který má příponu "Automatické obnovení systému". V případě, že skupina dostupnosti vytvořené automatické obnovení systému již existuje, bude znovu.
+6. **Skupina dostupnosti:** ve výchozím nastavení, vytvoří nástroj Automatické obnovení systému novou skupinou dostupnosti ve cílová oblast s názvem, který má příponu "Automatické obnovení systému". V případě, že skupina dostupnosti vytvořené automatické obnovení systému již existuje, bude znovu.
 
-7.  **Zásady replikace:** definuje hello nastavení pro obnovení bodu uchování historie a aplikace snímky konzistentní s četnost. Ve výchozím nastavení bude automatické obnovení systému vytvořte novou zásadu replikace s výchozím nastavením: 24 hodin se pro uchování bodu obnovení a ' 60 minut frekvence snímky konzistentní s aplikací.
+7.  **Zásady replikace:** definuje nastavení pro obnovení bodu uchování historie a aplikace snímky konzistentní s četnost. Ve výchozím nastavení bude automatické obnovení systému vytvořte novou zásadu replikace s výchozím nastavením: 24 hodin se pro uchování bodu obnovení a ' 60 minut frekvence snímky konzistentní s aplikací.
 
     ![Povolení replikace](./media/site-recovery-replicate-azure-to-azure/enabledrwizard3.PNG)
 
 ## <a name="customize-target-resources"></a>Přizpůsobení cílové prostředky
 
-V případě, že chcete toochange hello výchozí hodnoty používané automatické obnovení systému, můžete změnit nastavení hello na základě potřeb.
+V případě, že chcete změnit výchozí nastavení používané automatické obnovení systému, můžete změnit nastavení na základě potřeb.
 
-1. **Přizpůsobení:** klikněte na něj toochange hello výchozí hodnoty používané automatické obnovení systému.
+1. **Přizpůsobení:** klikněte na něj chcete-li změnit výchozí hodnoty používané automatické obnovení systému.
 
-2. **Cílová skupina prostředků:** můžete vybrat skupinu prostředků hello z hello seznam všech skupin prostředků hello existující v cílovém umístění hello v rámci předplatného hello.
+2. **Cílová skupina prostředků:** skupiny prostředků můžete vybrat ze seznamu všech skupin prostředků existující v cílovém umístění v rámci předplatného.
 
-3. **Cílová virtuální síť:** hello seznam všech hello virtuální sítě můžete najít v cílovém umístění hello.
+3. **Cílová virtuální síť:** seznamu všechny virtuální sítě můžete najít v cílovém umístění.
 
-4. **Skupina dostupnosti:** lze přidat pouze dostupnost sady nastavení toohello virtuální počítače, které jsou součástí dostupnosti v oblasti zdroje.
+4. **Skupina dostupnosti:** nastavení sad dostupnosti můžete přidat pouze pro virtuální počítače, které jsou součástí dostupnosti v oblasti zdroje.
 
 5. **Cílem účtů úložiště:**
 
 ![Povolit replikaci](./media/site-recovery-replicate-azure-to-azure/customize.PNG) klikněte na **vytvořit cílový prostředek** a zapnout replikaci
 
 
-Jakmile jsou virtuální počítače chráněné můžete zkontrolovat stav hello stavu virtuální počítače v části **replikované položky**
+Jakmile jsou chráněné virtuální počítače můžete zkontrolovat stav stavu virtuálních počítačů v rámci **replikované položky**
 
 >[!NOTE]
->Během hello může době počáteční replikace existuje možnost, že stav trvá toorefresh čas a nevidíte průběh nějakou dobu. Můžete klikněte na tlačítko Aktualizovat hello hello nahoře hello okno tooget hello nejnovější stavu.
+>V době počáteční replikace existuje může možnost, že stav trvá určitou dobu k aktualizaci a nevidíte průběh nějakou dobu. Kliknutím na tlačítko Aktualizovat nahoře v okně a získat nejnovější stav.
 >
 
 ![Povolení replikace](./media/site-recovery-replicate-azure-to-azure/replicateditems.PNG)
@@ -120,6 +120,6 @@ Jakmile jsou virtuální počítače chráněné můžete zkontrolovat stav hell
 
 ## <a name="next-steps"></a>Další kroky
 - [Další informace](site-recovery-test-failover-to-azure.md) o spuštění převzetí služeb při selhání.
-- [Další informace](site-recovery-failover.md) o různých typech převzetí služeb při selhání a jak toorun je.
-- Další informace o [pomocí plánů obnovení](site-recovery-create-recovery-plans.md) tooreduce RTO.
+- [Další informace](site-recovery-failover.md) o různých typech převzetí služeb při selhání a jak je spouštět.
+- Další informace o [pomocí plánů obnovení](site-recovery-create-recovery-plans.md) ke snížení RTO.
 - Další informace o [opětovnou ochranu virtuálních počítačů Azure](site-recovery-how-to-reprotect.md) po převzetí služeb při selhání.

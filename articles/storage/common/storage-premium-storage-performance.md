@@ -14,62 +14,62 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: aungoo
-ms.openlocfilehash: dde3e60ae4c8387150b65f0715166b5d549891e3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5b5c8b4a0d490aee4b3d33f9222011d7864e4490
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Úložiště Azure Premium: Návrh vysoce výkonné
 ## <a name="overview"></a>Přehled
-Tento článek obsahuje pokyny pro vytváření vysoce výkonné aplikace pomocí Azure Premium Storage. Můžete použít hello pokyny uvedené v tomto dokumentu v kombinaci s výkonu osvědčených postupů použít tootechnologies používá vaše aplikace. tooillustrate hello pokyny, jsme použili SQL Server běžící na Storage úrovně Premium jako příklad v tomto dokumentu.
+Tento článek obsahuje pokyny pro vytváření vysoce výkonné aplikace pomocí Azure Premium Storage. Můžete použít pokyny v tomto dokumentu v kombinaci s osvědčené postupy z hlediska výkonu pro technologie, které používá vaše aplikace. Pro ilustraci podle pokynů, jsme použili SQL Server běžící na Storage úrovně Premium jako příklad v tomto dokumentu.
 
-Když jsme adres scénáře výkonu pro vrstvy úložiště hello v tomto článku, budete potřebovat toooptimize hello aplikační vrstvu. Například pokud hostujete farmy služby SharePoint na Azure Premium Storage, můžete příklady systému SQL Server hello z tohoto článku toooptimize hello databáze serveru. Kromě toho optimalizace farmy služby SharePoint hello webového serveru a aplikace serveru tooget hello většina výkonu.
+Když jsme adres scénáře výkonu pro vrstvy úložiště v tomto článku, musíte se k optimalizaci aplikační vrstvu. Například pokud hostujete farmy služby SharePoint na Azure Premium Storage, můžete použít příklady systému SQL Server z tohoto článku za účelem optimalizace databázového serveru. Kromě toho Optimalizujte webového serveru a získat většina výkonu se aplikační server farmy služby SharePoint.
 
 Tento článek vám pomůže odpovědí následující běžné otázky o optimalizaci výkonu aplikace na Azure Premium Storage
 
-* Jak toomeasure výkon aplikace?  
+* Postupy: měření výkonu vaší aplikace?  
 * Proč se zobrazuje očekávané vysoký výkon?  
 * Faktory, které mají vliv na výkon vaší aplikace na Storage úrovně Premium?  
 * Jak se tyto faktory ovlivňují výkon aplikace na Storage úrovně Premium  
 * Jak můžete můžete optimalizovat pro IOPS, šířky pásma a latencí?  
 
-Uvádíme těchto pokynů speciálně pro Storage úrovně Premium, protože úlohy běžící na Storage úrovně Premium jsou vysoce citlivých výkonu. Kde je to vhodné uvádíme příklady. Můžete taky použít některé z těchto pokynů tooapplications s disky standardní úložiště pro virtuální počítače IaaS.
+Uvádíme těchto pokynů speciálně pro Storage úrovně Premium, protože úlohy běžící na Storage úrovně Premium jsou vysoce citlivých výkonu. Kde je to vhodné uvádíme příklady. Některé z těchto pokynů můžete použít k aplikacím spuštěným na virtuální počítače IaaS s disky úložiště Standard Storage.
 
-Než začnete, pokud jste tooPremium nové úložiště, nejdřív přečíst hello [úložiště Premium: vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../storage-premium-storage.md) a [Azure úložiště škálovatelnost a cíle výkonnosti](storage-scalability-targets.md)články.
+Než začnete, pokud začínáte používat úložiště úrovně Premium, nejdřív přečíst [úložiště Premium: vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../storage-premium-storage.md) a [a cíle výkonnosti služby Azure Storage Scalability](storage-scalability-targets.md) články.
 
 ## <a name="application-performance-indicators"></a>Ukazatele výkonu aplikace
-Jsme vyhodnocení, zda aplikace pracuje správně nebo není pomocí, jako jsou ukazatele výkonu, jak rychle aplikace je zpracování požadavku uživatele, kolik dat aplikace zpracovává každý požadavek, kolik požadavků aplikace zpracovává v konkrétní dobu, jak dlouho má uživatel toowait tooget odpověď po odeslání žádosti. Hello technické podmínky pro tyto ukazatele výkonu jsou IOP, propustnosti nebo šířky pásma a latence.
+Jsme vyhodnocení, zda aplikace pracuje správně nebo není pomocí, jako jsou ukazatele výkonu, jak rychle aplikace je zpracování požadavku uživatele, kolik dat aplikace zpracovává každý požadavek, kolik požadavků je aplikaci zpracování v určitou dobu dobu, jak dlouho má uživatel k čekat na odpověď po odeslání žádosti. Technické podmínky pro tyto ukazatele výkonu jsou IOP, propustnosti nebo šířky pásma a latence.
 
-V této části se budeme zabývat hello běžné ukazatele výkonu v kontextu hello úložiště Premium Storage. V hello následující části, shromažďování požadavky na aplikace, se dozvíte, jak toomeasure tyto ukazatele výkonu pro vaši aplikaci. Později v optimalizace výkonu aplikací se dozvíte o hello faktorů, které ovlivňují tyto indikátory a doporučení toooptimize výkonu je.
+V této části se budeme zabývat běžné ukazatele výkonu v rámci služby Storage úrovně Premium. V následující části, shromažďování požadavky na aplikace, se dozvíte, jak k měření tyto ukazatele výkonu pro vaši aplikaci. Později v optimalizace výkonu aplikací se dozvíte o faktorů, které ovlivňují tyto ukazatele výkonu a doporučení k optimalizaci je.
 
 ## <a name="iops"></a>IOPS
-IOPS je počet požadavků, že vaše aplikace odesílá toohello disky úložiště za jednu sekundu. Vstupně výstupní operace by mohl číst nebo zapisovat sekvenční nebo náhodné. OLTP aplikace jako webem online prodejní nutné tooprocess mnoho souběžných uživatel požádá o okamžitě. žádosti uživatelů Hello jsou vložení a aktualizace náročné databázové transakce, které aplikace hello musí rychle zpracovat. Proto OLTP aplikace vyžadují velmi vysoký IOPS. Takové aplikace zpracovává miliony požadavků malé a náhodných vstupně-výstupní operace. Pokud máte takové aplikace, je třeba navrhnout toooptimize infrastruktury aplikace hello iops. V hello později části *optimalizace výkonu aplikace*, probereme podrobně všechny hello faktory, které je nutné zvážit tooget vysokou IOPS.
+IOPS je počet požadavků, které vaše aplikace odesílá do disky úložiště za jednu sekundu. Vstupně výstupní operace by mohl číst nebo zapisovat sekvenční nebo náhodné. OLTP aplikace jako webem online prodejní nutné okamžitě zpracovávat požadavky na velký počet souběžných uživatelů. Žádosti uživatelů jsou vložení a aktualizace náročné databázové transakce, které aplikace musí rychle zpracovávají. Proto OLTP aplikace vyžadují velmi vysoký IOPS. Takové aplikace zpracovává miliony požadavků malé a náhodných vstupně-výstupní operace. Pokud máte takové aplikace, je třeba navrhnout infrastruktury aplikace za účelem optimalizace iops. V části novější *optimalizace výkonu aplikace*, probereme podrobně všech faktorů, které musíte zvážit, chcete-li získat vysokou IOPS.
 
-Když připojíte premium úložiště disku tooyour vysoké škálování virtuálních počítačů, Azure poskytuje pro vás zaručenou počet IOPS podle specifikace disku hello. Například P50 disk zřídí 7500 IOPS. Každý měřítko velikost virtuálního počítače má také konkrétní limit IOPS, která dokáže odolat. Například standardní virtuální počítač GS5 má 80 000 IOPS omezit.
+Když připojíte disk úložiště premium vaší vysoké škálování virtuálních počítačů, Azure poskytuje pro vás zaručenou počet IOPS podle specifikace disku. Například P50 disk zřídí 7500 IOPS. Každý měřítko velikost virtuálního počítače má také konkrétní limit IOPS, která dokáže odolat. Například standardní virtuální počítač GS5 má 80 000 IOPS omezit.
 
 ## <a name="throughput"></a>Propustnost
-Propustnost nebo šířky pásma je hello množství dat, že vaše aplikace odesílá toohello disky úložiště v určeném intervalu. Pokud vaše aplikace provádí vstupně-výstupních operací s velikostí jednotky velké vstupně-výstupní operace, vyžaduje Vysoká propustnost. Datový sklad aplikace mívají tooissue kontroly náročné přístup velká část dat najednou a operací běžně provádět hromadné operace. Jinými slovy tyto aplikace vyžadují vyšší propustnost. Pokud máte takové aplikace, je třeba navrhnout jeho toooptimize infrastruktury pro propustnost. V další části hello probereme v podrobností hello faktory musí tooachieve optimalizovat to.
+Propustnost nebo šířky pásma je množství dat, který aplikace odesílá na discích úložiště v určeném intervalu. Pokud vaše aplikace provádí vstupně-výstupních operací s velikostí jednotky velké vstupně-výstupní operace, vyžaduje Vysoká propustnost. Datového skladu aplikace mívají k vydávání kontroly náročné operace, které přístup velká část dat najednou a běžně provádět hromadné operace. Jinými slovy tyto aplikace vyžadují vyšší propustnost. Pokud máte takové aplikace, je nutné vytvořit svoji infrastrukturu optimalizovat pro propustnost. V další části probereme podrobně faktory musí ladit dosáhnout.
 
-Když připojíte premium úložiště disku tooa vysoké škálování virtuálních počítačů, Azure zřizuje propustnost podle specifikace tohoto disku. Například P50 disk zřídí 250 MB na druhý disk propustnost. Každý měřítko velikost virtuálního počítače má také jako konkrétní omezení propustnosti, které dokáže odolat. Například standardní GS5 virtuální počítač má maximální propustnost 2 000 MB za sekundu. 
+Když připojíte disk úložiště premium vysoké škálování virtuálních počítačů, Azure zřizuje propustnost podle specifikace tohoto disku. Například P50 disk zřídí 250 MB na druhý disk propustnost. Každý měřítko velikost virtuálního počítače má také jako konkrétní omezení propustnosti, které dokáže odolat. Například standardní GS5 virtuální počítač má maximální propustnost 2 000 MB za sekundu. 
 
-Je vztah mezi propustnost a IOPS, jak je znázorněno v hello vzorec níže.
+Je vztah mezi propustnost a IOPS, jak je znázorněno v následující vzorec.
 
 ![](media/storage-premium-storage-performance/image1.png)
 
-Proto je důležité toodetermine hello optimální propustnosti a IOPS hodnoty, které vaše aplikace vyžaduje. Jako zkusíte toooptimize jeden, získá vliv také hello jiné. V další části *optimalizace výkonu aplikace*, se budeme zabývat v podrobnější informace o optimalizaci IOPS a propustnosti.
+Proto je důležité určit optimální propustnosti a IOPS hodnoty, které vaše aplikace vyžaduje. Jak se pokusíte optimalizovat jeden, druhý také získá vliv. V další části *optimalizace výkonu aplikace*, se budeme zabývat v podrobnější informace o optimalizaci IOPS a propustnosti.
 
 ## <a name="latency"></a>Latence
-Latence je hello doby potřebné aplikaci tooreceive jedné žádosti, odešle disky úložiště toohello a odeslat hello odpovědi toohello klienta. Toto je důležité míra výkonu aplikace v přidání tooIOPS a propustnosti. Hello latence disk úložiště premium je čas hello přebírá tooretrieve hello informace pro žádost a komunikaci zpátky tooyour aplikace. Storage úrovně Premium poskytuje trvale nízké latence. Pokud povolíte ukládání do mezipaměti na discích úložiště premium hostitele jen pro čtení, můžete získat mnohem nižší latenci pro čtení. Se budeme zabývat ukládání do mezipaměti disku podrobněji v pozdější části na *optimalizace výkonu aplikace*.
+Latence je doba potřebná aplikace pro příjem jedné žádosti, odešle disky úložiště a odesílání odpověď klientovi. Toto je důležité míra výkonu aplikace kromě IOPS a propustnosti. Latence disk úložiště premium je čas potřebný k získat informace o požadavku a komunikaci zpět do vaší aplikace. Storage úrovně Premium poskytuje trvale nízké latence. Pokud povolíte ukládání do mezipaměti na discích úložiště premium hostitele jen pro čtení, můžete získat mnohem nižší latenci pro čtení. Se budeme zabývat ukládání do mezipaměti disku podrobněji v pozdější části na *optimalizace výkonu aplikace*.
 
-Když jsou optimalizace vaší aplikace tooget vyšší IOPS a propustnost, bude mít vliv hello latence vaší aplikace. Po vyladění výkonu aplikace hello, vždy vyhodnoceny hello latence tooavoid aplikace hello chování neočekávané vysokou latencí.
+Optimalizovat aplikace k získání vyšší propustnost a IOPS, bude mít vliv latence vaší aplikace. Po vyladění výkonu aplikací, vždy vyhodnoceny latence aplikace, aby se zabránilo chování neočekávané vysokou latencí.
 
 ## <a name="gather-application-performance-requirements"></a>Shromáždění požadavků na výkon aplikace
-Hello prvním krokem při navrhování vysoký výkon aplikací běžících na Azure Premium Storage je toounderstand hello požadavcích na výkon vaší aplikace. Po shromáždění požadavků na výkon, můžete optimalizovat výkon aplikace tooachieve hello optimální.
+Prvním krokem při navrhování vysoký výkon aplikací běžících na Azure Premium Storage je pochopit požadavky na výkon vaší aplikace. Po shromáždění požadavků na výkon, můžete optimalizovat aplikace zajistit optimální výkon.
 
-V předchozí části hello jsme vysvětlené hello běžné ukazatele výkonu, IOP, propustnosti a latence. Musíte určit, které tyto ukazatele výkonu jsou kritické tooyour aplikace toodeliver hello potřeby činnost koncového uživatele. Například vysoké IOPS důležitý většinu aplikací tooOLTP zpracování miliony transakcí za sekundu. Vzhledem k tomu, Vysoká propustnost je velmi důležitá pro datový sklad aplikací zpracování velkých objemů dat za sekundu. Velmi nízkou latenci je zásadní pro aplikace v reálném čase jako živé video streamování weby.
+V předchozí části jsme vysvětlení najdete běžné ukazatele výkonu, IOP, propustnosti a latence. Musíte určit, které tyto ukazatele výkonu jsou důležité k vaší aplikaci k poskytování požadované uživatelské prostředí. Například vysoké IOPS důležitý většina aplikací OLTP zpracování miliony transakcí za sekundu. Vzhledem k tomu, Vysoká propustnost je velmi důležitá pro datový sklad aplikací zpracování velkých objemů dat za sekundu. Velmi nízkou latenci je zásadní pro aplikace v reálném čase jako živé video streamování weby.
 
-V dalším kroku měření hello požadavky na maximální výkon vaší aplikace v průběhu své životnosti. Kontrolní seznam ukázka hello níže použijte jako spuštění. Požadavky na maximální výkon záznamů hello během normální, tečky zatížení ve špičce a počítačem nepracujete. Tím, že určíte požadavky pro všechny úrovně zatížení, budete moct toodetermine hello požadavek na celkový výkon vaší aplikace. Hello běžné pracovní zatížení webem elektronického obchodování například bude hello transakcí, které slouží během většina dnů v roce. zatížení ve špičce Hello hello webu bude hello transakcí, které slouží během sváteční sezóny nebo speciální prodej události. zatížení ve špičce Hello je obvykle zkušeného po omezenou dobu, ale může vyžadovat vaše aplikace tooscale dva nebo více krát jeho normální provoz. Zjistíte hello 50. percentil, 90 percentilu a 99 percentilu požadavky. To pomáhá vyfiltrovat odlehlé všechny hodnoty v požadavcích na výkon hello a vaše úsilí můžete soustředit na optimalizace pro správné hodnoty hello.
+V dalším kroku měření požadavky na maximální výkon vaší aplikace v průběhu své životnosti. Kontrolní seznam ukázka níže použijte jako spuštění. Zaznamenejte požadavkům na maximální výkon při normální, tečky zatížení ve špičce a počítačem nepracujete. Tím, že určíte požadavky pro všechny úrovně zatížení, bude možné určit, požadavek na celkový výkon vaší aplikace. Běžné pracovní náplně webem elektronického obchodování například bude transakcí, které slouží během většina dnů v roce. Zatížení ve špičce webu bude transakcí, které slouží během sváteční sezóny nebo speciální prodej události. Zatížení ve špičce je obvykle zkušeného po omezenou dobu, ale může vyžadovat aplikace škálovat dvěma či více krát jeho normální provoz. Zjistíte 50. percentil, 90 percentilu a 99 percentilu požadavky. To pomáhá vyfiltrovat odlehlé všechny hodnoty v požadavcích na výkon a vaše úsilí můžete soustředit na optimalizace pro správné hodnoty.
 
 **Kontrolní seznam požadavků výkonu aplikace**
 
@@ -92,73 +92,73 @@ V dalším kroku měření hello požadavky na maximální výkon vaší aplikac
 | Hloubka fronty | | | |
 
 > [!NOTE]
-> Měli byste zvážit škálování tato čísla podle očekávané budoucímu růstu vaší aplikace. Je vhodné tooplan pro růst předem, protože by mohlo být těžší infrastrukturu hello toochange pro zlepšení výkonu později.
+> Měli byste zvážit škálování tato čísla podle očekávané budoucímu růstu vaší aplikace. Je vhodné naplánovat růstu předem, protože by mohlo být těžší infrastrukturu pro zlepšení výkonu později změnit.
 >
 >
 
-Pokud máte existující aplikaci a chcete toomove tooPremium úložiště, nejprve vytvoříte kontrolní seznam hello výše pro existující aplikace hello. Potom vytvořit prototyp vaší aplikace na Storage úrovně Premium a návrhu aplikace hello podle pokynů popsaných v *optimalizace výkonu aplikace* v další části tohoto dokumentu. Hello další část popisuje hello nástroje můžete použít měření výkonu toogather hello.
+Pokud máte existující aplikaci a chcete přejít na Storage úrovně Premium, nejprve vytvoříte kontrolní seznam výše pro existující aplikace. Potom sestavení prototyp vaší aplikace na Storage úrovně Premium a navrhněte aplikaci podle pokynů popsaných v *optimalizace výkonu aplikace* v další části tohoto dokumentu. Další část popisuje nástroje, které můžete použít ke shromažďování měření výkonu.
 
-Vytvořte kontrolní seznam podobné tooyour stávající aplikaci pro hello prototypu. Pomocí nástrojů Benchmarking můžete simulovat hello úlohy a měření výkonu na prototypu aplikace hello. Části hello na [Benchmarking](#benchmarking) toolearn Další. Pomocí tohoto postupu, abyste mohli ověřit, zda úložiště Premium můžete odpovídat nebo překročí maximální vašim požadavkům na výkon aplikace. Pak můžete implementovat hello stejné pokyny pro produkční aplikace.
+Vytvořte kontrolní seznam podobná stávající aplikaci pro prototypu. Pomocí nástrojů Benchmarking můžete simulovat úlohy a měření výkonu na prototypu aplikaci. Projděte část o [Benchmarking](#benchmarking) Další informace. Pomocí tohoto postupu, abyste mohli ověřit, zda úložiště Premium můžete odpovídat nebo překročí maximální vašim požadavkům na výkon aplikace. Poté můžete implementovat stejné pokyny pro produkční aplikace.
 
-### <a name="counters-toomeasure-application-performance-requirements"></a>Čítače výkonu požadavky na toomeasure aplikace
-Dobrý den nejlepší způsob, jak toomeasure požadavcích na výkon vaší aplikace, je toouse sledování výkonu nástroje poskytované operačním systémem hello hello serveru. Můžete použít nástroj PerfMon pro systém Windows a iostat pro Linux. Tyto nástroje zachytit čítače odpovídající tooeach měr podrobně hello nad sekcí. Hello hodnoty z těchto čítačů nutné zaznamenat, když aplikace běží jeho normální, zatížení ve špičce a počítačem nepracujete.
+### <a name="counters-to-measure-application-performance-requirements"></a>Čítače k měření výkonu požadavky na aplikace
+Nejlepší způsob, jak měřit požadavky na výkon vaší aplikace, je použití nástroje Sledování výkonu poskytované operačního systému serveru. Můžete použít nástroj PerfMon pro systém Windows a iostat pro Linux. Tyto nástroje zachytit čítače odpovídající každá míra popsané v části výše. Hodnoty těchto čítačů nutné zaznamenat, když aplikace běží jeho normální, zatížení ve špičce a počítačem nepracujete.
 
-Hello PerfMon čítače jsou k dispozici pro procesor, paměť a každý logický disk a fyzický disk serveru. Pokud používáte prémiové disky úložiště v případě virtuálních počítačů, čítače hello fyzického disku se pro každý disk úložiště premium a čítače logický disk se pro každý svazek na discích úložiště premium hello vytvořit. Nutné zaznamenat hello hodnoty pro hello disky, které hostují vaše úlohy aplikace. Pokud existuje jedno mapování tooone mezi logické a fyzické disky, najdete čítače disku toophysical; v opačném případě najdete toohello logického disku čítače. V systému Linux příkaz iostat hello generuje sestavy využití procesoru a disku. Sestava využití disku Hello poskytuje statistické údaje za fyzického zařízení nebo oddíl. Pokud máte databázový server s protokolu a data na různých discích, shromážděte tato data pro oba disky. Následující tabulka popisuje čítače pro disky, procesoru a paměti:
+Tyto čítače PerfMon jsou k dispozici pro procesor, paměť a každý logický disk a fyzický disk serveru. Pokud používáte prémiové disky úložiště v případě virtuálních počítačů, čítače fyzického disku se pro každý disk úložiště premium a čítače logický disk se pro každý svazek na discích úložiště premium vytvoří. Nutné zaznamenat určité hodnoty pro disky, které hostují vaše úlohy aplikace. Pokud dojde k jedné mapování mezi logické a fyzické disky, mohou odkazovat na fyzický disk čítače; v opačném případě naleznete čítače logického disku. V systému Linux příkaz iostat generuje sestavy využití procesoru a disku. Sestava využití disku poskytuje statistické údaje za fyzického zařízení nebo oddíl. Pokud máte databázový server s protokolu a data na různých discích, shromážděte tato data pro oba disky. Následující tabulka popisuje čítače pro disky, procesoru a paměti:
 
 | Čítač | Popis | PerfMon | Iostat |
 | --- | --- | --- | --- |
-| **IOPS nebo transakcí za sekundu** |Počet vstupně-výstupní požadavky vydané toohello úložiště disku za sekundu. |Čtení disku/s <br> Zápis disku/s |TPS <br> r/s <br> w/s |
-| **Disk čtení a zápisu** |% čtení a zápisu operace provedené na disku hello. |Čas čtení disku v % <br> Čas zápisu disku v % |r/s <br> w/s |
-| **Propustnost** |Množství dat číst nebo zapisovat toohello disku za sekundu. |Čtení z disku bajtů/s <br> Bajty zapisování na disk/s |kB_read/s <br> kB_wrtn/s |
-| **Latence** |Celkový čas toocomplete žádost o vstupně-výstupní operace disku. |Průměrná doba disku/čtení <br> Doba průměrná disku/zápis |await <br> svctm |
-| **Velikost vstupně-výstupní operace** |Hello velikost vstupně-výstupní požadavky vydává toohello disky úložiště. |Průměrná disku bajtů/čtení <br> Průměrná disku bajtů/zápis |avgrq sz |
-| **Hloubka fronty** |Počet nezpracovaných vstupně-výstupních požadavků čekání toobe formuláře číst nebo zapisovat toohello úložiště disku. |Aktuální délka fronty disku |avgqu sz |
-| **Max. Paměť** |Velikost paměti požadované toorun aplikace bez problémů |% Využití potvrzených bajtů |Použití vmstat |
-| **Max. VYUŽITÍ PROCESORU** |Velikost procesoru požadované toorun aplikace bez problémů |% Času procesoru |% util |
+| **IOPS nebo transakcí za sekundu** |Počet vstupně-výstupní požadavky vydané úložiště disku za sekundu. |Čtení disku/s <br> Zápis disku/s |TPS <br> r/s <br> w/s |
+| **Disk čtení a zápisu** |% čtení a zápisu operace provedené na disku. |Čas čtení disku v % <br> Čas zápisu disku v % |r/s <br> w/s |
+| **Propustnost** |Množství dat číst nebo zapisovat na disk za sekundu. |Čtení z disku bajtů/s <br> Bajty zapisování na disk/s |kB_read/s <br> kB_wrtn/s |
+| **Latence** |Celková doba nutná k dokončení žádosti o vstupně-výstupní operace disku. |Průměrná doba disku/čtení <br> Doba průměrná disku/zápis |await <br> svctm |
+| **Velikost vstupně-výstupní operace** |Velikost vstupně-výstupních požadavků problémy na discích úložiště. |Průměrná disku bajtů/čtení <br> Průměrná disku bajtů/zápis |avgrq sz |
+| **Hloubka fronty** |Počet nezpracovaných vstupně-výstupních požadavků čekání na čtení formuláře nebo zapsaných na disk úložiště. |Aktuální délka fronty disku |avgqu sz |
+| **Max. Paměť** |Množství paměti nutné ke spuštění aplikace bez problémů |% Využití potvrzených bajtů |Použití vmstat |
+| **Max. VYUŽITÍ PROCESORU** |Velikost procesoru potřebné ke spuštění aplikace bez problémů |% Času procesoru |% util |
 
 Další informace o [iostat](http://linuxcommand.org/man_pages/iostat1.html) a [PerfMon](https://msdn.microsoft.com/library/aa645516.aspx).
 
 ## <a name="optimizing-application-performance"></a>Optimalizace výkonu aplikace
-Hello hlavní faktory, které mají vliv na výkon aplikace běžící na Storage úrovně Premium jsou povaze z vstupně-výstupní požadavky, velikost virtuálního počítače, velikost disku, počet disků, ukládání do mezipaměti na disku, Multithreading a hloubku fronty. Můžete ovládat některé tyto faktory s knoflíky poskytované systémem hello. Většina aplikací nemusí dát možnost tooalter hello velikost vstupně-výstupní operace a hloubku fronty přímo. Například pokud používáte systém SQL Server, nemůžete hello hloubka velikost a fronty vstupně-výstupní operace. SQL Server zvolí hello optimální vstupně-výstupní operace velikost a fronty hloubka hodnoty tooget hello většina výkonu. Je důležité toounderstand hello účinky oba typy faktory na výkon aplikace tak, aby můžete zřídit požadavkům na výkon toomeet odpovídající prostředky.
+Hlavní faktory, které mají vliv na výkon aplikace běžící na Storage úrovně Premium jsou povaze z vstupně-výstupní požadavky, velikost virtuálního počítače, velikost disku, počet disků, ukládání do mezipaměti na disku, Multithreading a hloubku fronty. Můžete ovládat některé tyto faktory s knoflíky poskytované systémem. Většina aplikací nemusí poskytnout možnost ke změně velikosti vstupně-výstupní operace a hloubku fronty přímo. Například pokud používáte systém SQL Server, nemůžete hloubka velikost a fronty vstupně-výstupní operace. SQL Server vybere optimální vstupně-výstupní operace velikost fronty hloubka hodnoty a získat většina výkonu. Je důležité pochopit účinky oba typy faktory na výkon aplikace tak, aby můžete zřídit příslušné prostředky ke splnění požadavkům na výkon.
 
-V této části najdete toohello aplikace požadavky kontrolní seznam, který jste vytvořili, tooidentify kolik budete potřebovat toooptimize výkon aplikace. Na základě, že bude mít toodetermine který faktory z této části můžete potřebovat tootune. toowitness hello důsledky každý faktor na vaše aplikace výkon, spusťte srovnávací testy nástroje na nastavení aplikace. Odkazovat toohello [Benchmarking](#Benchmarking) části na konci hello tohoto článku kroky toorun běžné srovnávací testy nástroje na systém Windows a virtuální počítače s Linuxem.
+V této části naleznete kontrolní seznam požadavků na aplikaci, kterou jste vytvořili, k identifikaci, kolik potřebujete optimalizovat výkon aplikace. Podle toho, který, bude možné určit faktory, které z této části budete muset vyladit. Chcete-li určující účinky každý faktor na výkon aplikace, spusťte testu typovou úlohou nástroje na instalace aplikace. Odkazovat [Benchmarking](#Benchmarking) na konci tohoto článku kroky, jak spustit běžné nástroje pro testu typovou úlohou ve Windows a virtuální počítače s Linuxem.
 
 ### <a name="optimizing-iops-throughput-and-latency-at-a-glance"></a>Optimalizace IOP, propustnosti a latence na první pohled
-Následující tabulka Hello shrnuje všechny faktory hello výkonu a hello kroky toooptimize IOPS, propustnosti a latence. Hello následující Toto shrnutí částech se popisují každou. faktor je mnohem víc hloubka.
+Následující tabulka shrnuje všechny faktory výkonu a kroky k optimalizaci IOP, propustnosti a latence. V oddílech Toto shrnutí bude popisují každou. faktor je mnohem víc hloubka.
 
 | &nbsp; | **IOPS** | **Propustnost** | **Latence** |
 | --- | --- | --- | --- |
-| **Příklad scénáře** |Enterprise OLTP aplikace, které vyžadují velmi vysoký transakce za druhá míra. |Enterprise datového skladu aplikace zpracování velkých objemů dat. |Téměř v reálném čase aplikace vyžadující rychlých odpovědí toouser požadavků, jako je online herní. |
+| **Příklad scénáře** |Enterprise OLTP aplikace, které vyžadují velmi vysoký transakce za druhá míra. |Enterprise datového skladu aplikace zpracování velkých objemů dat. |Téměř v reálném čase aplikace vyžadující rychlých odpovědí na požadavky na uživatele jako hraní online her. |
 | Faktory výkonu | &nbsp; | &nbsp; | &nbsp; |
-| **Velikost vstupně-výstupní operace** |Menší velikost vstupně-výstupní operace dosáhnout vyšší IOPS. |Větší velikost tooyields vstupně-výstupní operace vyšší propustnost. | &nbsp;|
+| **Velikost vstupně-výstupní operace** |Menší velikost vstupně-výstupní operace dosáhnout vyšší IOPS. |Větší velikost vstupně-výstupní operace dosáhnout vyšší propustnost. | &nbsp;|
 | **Velikost virtuálního počítače** |Použijte velikost virtuálního počítače, který nabízí IOPS větší než požadavků vaší aplikace. Zobrazit velikosti virtuálních počítačů a jejich IOPS omezení. |Velikost virtuálního počítače pomocí omezení propustnosti větší než požadavků vaší aplikace. Zobrazit velikosti virtuálních počítačů a jejich propustnost omezení. |Použijte velikost virtuálního počítače, že nabízí škálování omezení větší než požadavků vaší aplikace. Zobrazit velikosti virtuálních počítačů a jejich omezení sem. |
 | **Velikost disku** |Použijte velikost disku, který nabízí IOPS větší než požadavků vaší aplikace. Zobrazit velikosti disků a jejich IOPS omezení. |Velikost disku pomocí omezení propustnosti větší než požadavků vaší aplikace. Zobrazit velikosti disků a jejich propustnost omezení. |Použijte velikost disku, že nabízí škálování omezení větší než požadavků vaší aplikace. Zobrazit velikosti disků a jejich omezení sem. |
-| **Virtuální počítač a limity škálování disku** |Vybrat velikost virtuálního počítače hello limit IOPS musí být větší než celkový počet IOPS doprovází prémiové disky úložiště připojené tooit. |Propustnost limit vybrat velikost virtuálního počítače hello musí být větší než celková propustnost doprovází prémiové disky úložiště připojené tooit. |Limity škálování služby vybrat velikost virtuálního počítače hello musí být větší limity škálování celkový disky úložiště připojené premium. |
-| **Ukládání do mezipaměti na disku** |Povolit mezipaměť jen pro čtení na discích úložiště premium s tooget velkou operace čtení vyšší IOPS pro čtení. | &nbsp; |Povolte mezipaměť jen pro čtení na discích úložiště premium se připravené velkou operations tooget velmi nízkou latenci pro čtení. |
-| **Prokládání disků** |Použít několik disků a jejich rozkládají společně tooget kombinované vyšší IOPS a omezení propustnosti. Všimněte si, že hello kombinovaný limit na jednu virtuální počítač musí být vyšší než hello kombinované omezení připojené prémiové disky. | &nbsp; | &nbsp; |
+| **Virtuální počítač a limity škálování disku** |Limit IOPS vybraná velikost virtuálního počítače musí být větší než celkový počet IOPS doprovází připojené disky úložiště premium. |Propustnost limit vybraná velikost virtuálního počítače musí být větší než celková propustnost doprovází připojené disky úložiště premium. |Limity škálování vybraná velikost virtuálního počítače musí být větší limity škálování celkový disky úložiště připojené premium. |
+| **Ukládání do mezipaměti na disku** |Povolte mezipaměť jen pro čtení na discích úložiště premium s velkou operace čtení získat vyšší IOPS pro čtení. | &nbsp; |Povolte mezipaměť jen pro čtení na discích úložiště premium s připravené velkou operacemi získat čtení velmi nízkou latenci. |
+| **Prokládání disků** |Použití více disků a rozkládají je společně se získat kombinovaný vyšší limit IOPS a propustnosti. Všimněte si, že kombinovaný limit na jednu virtuální počítač musí být vyšší než kombinované omezení připojené prémiové disky. | &nbsp; | &nbsp; |
 | **Velikost stripe** |Menší velikost stripe pro náhodné malé vstupně-výstupní operace vzor vidět v aplikacích OLTP. Například pro aplikaci SQL Server OLTP použijte stripe velikost 64KB. |Větší velikost stripe pro sekvenční velké vstupně-výstupní operace vzor vidět v aplikacích datového skladu. Například použijte velikost 256KB prokládání pro aplikaci SQL Server datového skladu. | &nbsp; |
-| **Více vláken** |Použijte více vláken toopush vyšší počet požadavků tooPremium úložiště, které povede toohigher IOPS a propustnosti. Například na serveru SQL Server nastavit vysokou hodnotu tooallocate MAXDOP více procesorů tooSQL serveru. | &nbsp; | &nbsp; |
+| **Více vláken** |Použití více vláken tak, aby nabízel vyšší počet požadavků, které do úložiště úrovně Premium, který povede k vyšší IOPS a propustnosti. Například na serveru SQL Server nastavit na vysokou hodnotu MAXDOP přidělit více procesorů k systému SQL Server. | &nbsp; | &nbsp; |
 | **Hloubka fronty** |Větší hloubky fronty dosáhnout vyšší IOPS. |Větší hloubky fronty dosáhnout vyšší propustnost. |Menší hloubka fronty vypočítá nižší latenci. |
 
 ## <a name="nature-of-io-requests"></a>Povaha vstupně-výstupní požadavky
-Žádost o vstupně-výstupní operace je jednotka vstupně výstupní operace, které vaše aplikace bude provádět. Identifikace hello povaha vstupně-výstupní požadavky, náhodných nebo sekvenčních, čtení a zápisu, malý nebo velký, vám pomůže určit hello požadavky na výkon vaší aplikace. Je velmi důležité toounderstand hello povaha vstupně-výstupní požadavky, toomake hello správné rozhodnutí při navrhování infrastruktury aplikací.
+Žádost o vstupně-výstupní operace je jednotka vstupně výstupní operace, které vaše aplikace bude provádět. Identifikace povaha vstupně-výstupní požadavky, náhodných nebo sekvenčních, číst nebo zapisovat, malý nebo velký, bude vám pomohou určit požadavky na výkon vaší aplikace. Je velmi důležité k pochopení povahy požadavků vstupně-výstupní operace, udělat správné rozhodnutí při navrhování infrastruktury aplikace.
 
-Velikost vstupně-výstupní operace je jedním z hello více důležité faktory. Hello velikost vstupně-výstupní operace je velikost hello hello vstupně výstupní operace žádosti vygenerované vaší aplikace. Hello velikost vstupně-výstupní operace má značný vliv na výkon, hlavně na hello IOPS a šířky pásma, která hello aplikace je možné tooachieve. Hello následující vzorec znázorňuje hello vztah mezi IOPS, velikost vstupně-výstupní operace a šířky pásma nebo propustnosti.  
+Velikost vstupně-výstupní operace je jedním z důležitých faktorů. Velikost vstupně-výstupní operace je velikost vstupně výstupní operace žádosti vygenerované vaší aplikace. Velikost vstupně-výstupní operace má značný vliv na výkon, hlavně na IOPS a šířky pásma, aby bylo možné dosáhnout aplikace. Následující vzorec znázorňuje vztah mezi IOPS, velikost vstupně-výstupní operace a šířky pásma nebo propustnosti.  
     ![](media/storage-premium-storage-performance/image1.png)
 
-Některé aplikace umožňují tooalter velikost jejich vstupně-výstupní operace, zatímco některé aplikace nepodporují. Určuje hello optimální velikost vstupů/výstupů samotné například SQL Server a všechny knoflíky toochange neposkytuje uživatelé ho. Na hello druhé straně, Oracle poskytuje parametr s názvem [DB\_BLOKOVAT\_velikost](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) pomocí které můžete nakonfigurovat hello velikost požadavku vstupně-výstupních operací hello databáze.
+Některé aplikace umožňují změnit jejich velikost vstupně-výstupní operace při některé aplikace nepodporují. Například SQL Server určuje optimální velikost vstupně-výstupní operace sám a neposkytuje uživatelé všechny knoflíky ho můžete změnit. Na druhé straně Oracle poskytuje parametr s názvem [DB\_BLOKOVAT\_velikost](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) pomocí které můžete nakonfigurovat velikost žádosti vstupně-výstupní operace databáze.
 
-Pokud používáte aplikaci, která jste toochange hello velikost vstupně-výstupní operace není povolena, použijte tento článek toooptimize hello výkonu klíčového ukazatele výkonu, který je nejdůležitější aplikace tooyour hello pokyny. Například:
+Pokud používáte aplikaci, která neumožňuje měnit velikost vstupně-výstupní operace, optimalizovat výkon klíčového ukazatele výkonu, který je nejdůležitější do vaší aplikace pomocí pokynů v tomto článku. Například:
 
-* OLTP aplikace vygeneruje miliony požadavků malé a náhodných vstupně-výstupní operace. požádá o toohandle tyto typ vstupně-výstupní operace, je třeba navrhnout vaše aplikace infrastruktury tooget vyšší IOPS.  
-* Datového skladu aplikace generuje velké a sekvenčních vstupně-výstupní požadavky. toohandle tyto typ vstupně-výstupní požadavky, je třeba navrhnout vaše aplikace tooget infrastruktury větší šířku pásma a propustnosti.
+* OLTP aplikace vygeneruje miliony požadavků malé a náhodných vstupně-výstupní operace. Ke zpracování těchto typu vstupně-výstupní požadavky, je třeba navrhnout infrastrukturu aplikace tak, aby získat vyšší IOPS.  
+* Datového skladu aplikace generuje velké a sekvenčních vstupně-výstupní požadavky. Ke zpracování těchto typu vstupně-výstupní požadavky, je třeba navrhnout infrastrukturu aplikace tak, aby získat vyšší šířku pásma nebo propustnost.
 
-Pokud používáte aplikaci, která vám umožní toochange hello vstupně-výstupní operace velikost, použijte toto pravidlo pro hello vstupně-výstupní operace velikost kromě pokynů pro tooother výkonu
+Pokud používáte aplikaci, která vám umožní změnit velikost vstupně-výstupní operace, použijte toto pravidlo pro velikost vstupně-výstupní operace kromě jiné pokyny výkonu
 
-* Menší velikost tooget vstupně-výstupní operace vyšší IOPS. Například 8 KB pro aplikaci OLTP.  
-* Větší velikost tooget vstupně-výstupní operace vyšší šířku pásma nebo propustnost. Například 1 024 KB datového skladu aplikace.
+* Chcete-li získat vyšší IOPS menší velikost vstupně-výstupní operace. Například 8 KB pro aplikaci OLTP.  
+* Chcete-li získat vyšší šířku pásma nebo propustnost větší velikost vstupně-výstupní operace. Například 1 024 KB datového skladu aplikace.
 
-Tady je příklad na tom, jak můžete vypočítat hello IOPS a propustnost nebo šířky pásma pro vaši aplikaci. Vezměte v úvahu aplikace pomocí P30 disku. Hello maximální IOPS a propustnost nebo šířky pásma můžete dosáhnout P30 disku je 5000 IOPS a 200 MB za sekundu v uvedeném pořadí. Nyní Pokud vaše aplikace vyžaduje hello maximální IOPS z hello P30 disk a použít menší velikost vstupně-výstupní operace, jako je 8 KB hello výsledná šířky pásma, nebudete moct tooget je 40 MB za sekundu. Ale pokud vaše aplikace vyžaduje hello maximální propustnosti nebo šířky pásma z disku P30 a použijete větší velikost vstupně-výstupní operace, jako je 1024 KB, hello výsledné IOPS bude menší, 200 IOPS. Tedy vylaďte velikost vstupně-výstupní operace hello tak, že splňuje požadavek IOPS a propustnost nebo šířky obě aplikace. Následující tabulka shrnuje různé velikosti vstupně-výstupní operace hello a jejich odpovídající IOPS a propustnost pro P30 disk.
+Tady je příklad na tom, jak můžete vypočítat IOPS a propustnost nebo šířky pásma pro vaši aplikaci. Vezměte v úvahu aplikace pomocí P30 disku. Maximální počet, který můžete dosáhnout IOPS a propustnost disku P30 šířky pásma je 5000 IOPS a 200 MB za sekundu v uvedeném pořadí. Nyní Pokud vaše aplikace vyžaduje maximální IOPS z disku P30 a použít menší velikost vstupně-výstupní operace, jako je 8 KB, výsledná šířka pásma, nebudete moct získat je 40 MB za sekundu. Ale pokud vaše aplikace vyžaduje maximální propustnosti nebo šířky pásma z disku P30 a použijete větší velikost vstupně-výstupní operace, jako je 1024 KB, výsledná IOPS bude menší, 200 IOPS. Tedy vylaďte velikost vstupně-výstupní operace tak, že splňuje požadavek IOPS a propustnost nebo šířky obě aplikace. Následující tabulka shrnuje různé velikosti vstupně-výstupní operace a jejich odpovídající IOPS a propustnost pro P30 disk.
 
 | Požadavků aplikace | Velikost vstupně-výstupních operací | IOPS | Propustnost nebo šířky pásma |
 | --- | --- | --- | --- |
@@ -167,40 +167,40 @@ Tady je příklad na tom, jak můžete vypočítat hello IOPS a propustnost nebo
 | Maximální propustnost + vysoké IOPS |64 kB |3,200 |200 MB za sekundu |
 | Maximální IOPS + Vysoká propustnost |32 KB. |5,000 |160 MB za sekundu |
 
-tooget IOPS a šířky pásma, vyšší než maximální hodnota hello úložiště disku jednoho premium, použijte více prémiové disky rozdělená společně. Například rozkládají dva disky tooget P30 součet IOPS v 10 000 IOPS nebo kombinované propustnost 400 MB za sekundu. Jak je vysvětleno v další části hello, je nutné použít velikost virtuálního počítače, který podporuje hello kombinaci disku IOPS a propustnosti.
+IOPS a šířky pásma, vyšší než maximální hodnota disku úložiště jednoho premium, použijte více prémiové disky rozdělená společně. Například stripe dva P30 disky a k získání součet IOPS v 10 000 IOPS nebo kombinované propustnost 400 MB za sekundu. Jak je vysvětleno v další části, je nutné použít velikost virtuálního počítače, který podporuje kombinovaná IOPS a propustnost disku.
 
 > [!NOTE]
-> Jak zvýšit buď IOPS nebo také zvyšuje propustnost hello jiné, zkontrolujte, zda že není stisknutí tlačítka propustnost nebo IOPS omezení hello disk nebo virtuální počítač při zvýšení buď jedné.
+> Jako zvýšíte IOPS nebo dalších také zvyšuje propustnost, ujistěte se, že že není stisknutí tlačítka propustnost nebo IOPS omezení disk nebo virtuální počítač při zvýšení buď jedné.
 >
 >
 
-toowitness hello účinky velikost vstupů/výstupů na výkon aplikace, můžete spustit testu typovou úlohou nástroje na virtuální počítač a disky. Vytvořit více testovacích bězích a použít jinou velikost vstupně-výstupní operace pro každé spuštění toosee hello dopad. Odkazovat toohello [Benchmarking](#Benchmarking) oddíl hello konci tohoto článku Další podrobnosti.
+Účastnit účinky velikost vstupů/výstupů na výkon aplikace, můžete spustit testu typovou úlohou nástroje na virtuální počítač a disky. Vytvořit více testovacích bězích a použít jinou velikost vstupně-výstupní operace při každém spuštění zobrazíte dopad. Odkazovat [Benchmarking](#Benchmarking) na konci tohoto článku Další podrobnosti.
 
 ## <a name="high-scale-vm-sizes"></a>Měřítko velikosti virtuálních počítačů
-Když spustíte navrhování aplikace, jedním z první věcí toodo hello je, vyberte toohost virtuálních počítačů vaší aplikace. Storage úrovně Premium se dodává s velikosti vysoké škálování virtuálního počítače, které můžete spustit aplikace vyžadující vyšší výpočetní výkon a vysokou místního disku vstupně-výstupní výkon. Tyto virtuální počítače zadejte rychlejších procesorů vyšší poměr paměti jádra a Solid-State Drive (SSD) pro místní disk hello. Příklady vysoké virtuálních počítačů škálování. podpora Storage úrovně Premium jsou hello DS, DSv2 a GS řady virtuálních počítačů.
+Když spustíte navrhování aplikace, jeden z nejdůležitějších věcí, které chcete je, vyberte virtuální počítač pro hostování vaší aplikace. Storage úrovně Premium se dodává s velikosti vysoké škálování virtuálního počítače, které můžete spustit aplikace vyžadující vyšší výpočetní výkon a vysokou místního disku vstupně-výstupní výkon. Tyto virtuální počítače zadejte rychlejších procesorů vyšší poměr paměti jádra a Solid-State jednotky SSD (Solid-State Drive) pro místní disk. Příklady vysoké virtuálních počítačů škálování. podpora Storage úrovně Premium jsou řady DS, DSv2 a GS virtuálních počítačů.
 
-Vysoká škálování virtuálních počítačů jsou k dispozici v různých velikostech s různým počtem jader procesoru, paměti, operačního systému a velikost dočasné disku. Každý velikost virtuálního počítače má také maximální počet datových disků, můžete připojit toohello virtuálních počítačů. Proto hello vybraná velikost virtuálního počítače bude mít vliv na jakou kapacitu se zpracování, paměť a úložiště je k dispozici pro vaši aplikaci. Ovlivní také hello výpočetní a náklady na úložiště. Níže jsou například hello specifikace hello největší velikost virtuálního počítače v řady DS, DSv2 series a GS řady:
+Vysoká škálování virtuálních počítačů jsou k dispozici v různých velikostech s různým počtem jader procesoru, paměti, operačního systému a velikost dočasné disku. Každý velikost virtuálního počítače má také maximální počet datových disků, které lze připojit k virtuálnímu počítači. Proto zvolené velikost virtuálního počítače bude mít vliv na tom, kolik zpracování, paměti, a kapacitu úložiště je k dispozici pro vaši aplikaci. Taky ovlivňuje výpočetní a náklady na úložiště. V následující tabulce jsou specifikace největší velikost virtuálního počítače v řady DS, DSv2 series a GS řady:
 
 | Velikost virtuálního počítače | Procesorová jádra | Memory (Paměť) | Velikosti disků virtuálních počítačů | Max. Datové disky | Velikost mezipaměti | IOPS | Omezení šířky pásma vstupně-výstupní mezipaměti |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS14 |16 |112 GB |OPERAČNÍHO SYSTÉMU = 1023 GB <br> Místní SSD = 224 GB |32 |576 GB |50 000 IOPS <br> 512 MB za sekundu |4000 IOPS a 33 MB za sekundu |
 | Standard_GS5 |32 |448 GB |OPERAČNÍHO SYSTÉMU = 1023 GB <br> Místní SSD = 896 GB |64 |4224 GB |80 000 IOPS <br> 2 000 MB za sekundu |5 000 IOPS a 50 MB za sekundu |
 
-tooview úplný seznam všech dostupných velikostí virtuálních počítačů Azure odkazovat příliš[velikosti virtuálních počítačů Windows](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) nebo [velikosti virtuálního počítače s Linuxem](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Zvolte velikost virtuálního počítače, které naplňují a škálování tooyour potřeby požadavky na výkon aplikace. Kromě toho toothis, vezměte v úvahu následující důležité zvážit při výběru velikosti virtuálních počítačů.
+Pokud chcete zobrazit úplný seznam všech dostupných velikostí virtuálního počítače Azure, najdete [velikosti virtuálních počítačů Windows](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) nebo [velikosti virtuálního počítače s Linuxem](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Zvolte velikost virtuálního počítače, která může splňovat a škálovat vašim požadavkům na výkon požadované aplikace. Kromě toho vzít v úvahu následující důležité zvážit při výběru velikosti virtuálních počítačů.
 
 *Limity škálování*  
-Hello maximální IOPS omezení na virtuální počítač a na disk je jiné a nezávisle na sobě navzájem. Ujistěte se, že aplikace hello je v souladu s limity hello hello virtuálních počítačů a také hello premium disky připojené tooit řídí IOPS. Výkon aplikace, jinak bude mít omezení.
+Maximální limit IOPS na virtuální počítač a na disk je jiné a nezávisle na sobě navzájem. Ujistěte se, že aplikace je v rámci virtuálního počítače a také na prémiových discích připojených k němu řídí IOPS. Výkon aplikace, jinak bude mít omezení.
 
-Jako příklad předpokládejme, že požadavek na aplikaci je delší než 4 000 IOPS. tooachieve se můžete zřídit P30 disku na virtuálním počítači DS1. Hello P30 disku může poskytovat too5 000 IOPS. Hello DS1 virtuální počítač je však omezená too3, 200 IOPS. V důsledku toho hello výkonu aplikací bude ovlivněna hello limitu virtuálních počítačů v 3,200 IOPS a bude snížení výkonu. tooprevent této situaci, vyberte virtuální počítač a velikost, která budou obě plnění aplikace požadavky na disku.
+Jako příklad předpokládejme, že požadavek na aplikaci je delší než 4 000 IOPS. Jak toho docílit, zřídíte P30 disku na virtuálním počítači DS1. P30 disk doručovat až 5000 IOPS. DS1 virtuální počítač je však omezená na 3,200 IOPS. V důsledku toho výkonu aplikací bude ovlivněna limitu virtuálních počítačů v 3,200 IOPS a bude snížení výkonu. K této situaci zabránit, zvolte velikost virtuálního počítače a disku, která budou obě splňovat požadavky na aplikace.
 
 *Náklady na operace*  
 V mnoha případech je možné, že vaše celkové náklady na použití služby Premium Storage operace nižší než při použití standardní úložiště.
 
-Představte si třeba aplikace, které vyžadují 16 000 IOPS. tooachieve tento výkon, budete potřebovat standardní\_virtuálního počítače Azure IaaS D14, které je možné maximální IOPS 16,000 pomocí 32 disků standardní úložiště 1 TB. Každý disk 1TB úložiště standard storage můžete dosáhnout maximálně 500 IOPS. Hello odhadované náklady tohoto virtuálního počítače za měsíc bude 1,570 $. Hello měsíční náklady na 32 disků standardní úložiště bude 1,638 $. Hello předpokládaná doba celkové měsíční náklady budou 3,208 $.
+Představte si třeba aplikace, které vyžadují 16 000 IOPS. K dosažení tohoto výkonu, budete potřebovat standardní\_virtuálního počítače Azure IaaS D14, které je možné maximální IOPS 16,000 pomocí 32 disků standardní úložiště 1 TB. Každý disk 1TB úložiště standard storage můžete dosáhnout maximálně 500 IOPS. Odhadované náklady tohoto virtuálního počítače za měsíc bude 1,570 $. Měsíční náklady na 32 disků standardní úložiště bude 1,638 $. Odhadované celkové měsíční náklady na bude 3,208 $.
 
-Ale pokud budete hostovaný hello, stejná aplikace na Storage úrovně Premium, budete potřebovat menší velikost virtuálního počítače a méně disky úložiště premium, proto snižuje celkové náklady hello. Standardní\_DS13 virtuálních počítačů můžete splňovat hello 16,000 IOPS požadavek pomocí čtyř P30 disků. Hello DS13 virtuální počítač má maximální IOPS 25,600 a každý disk P30 maximální IOPS 5 000. Celkově platí, tuto konfiguraci můžete dosáhnout 5 000 × 4 = 20 000 IOPS. Hello odhadované náklady tohoto virtuálního počítače za měsíc bude 1,003 $. Hello měsíční náklady na čtyři disků úložiště premium P30 bude 544.34 $. Hello předpokládaná doba celkové měsíční náklady budou 1,544 $.
+Ale pokud budete hostovaný stejnou aplikaci na Storage úrovně Premium, budete potřebovat menší velikost virtuálního počítače a méně disky úložiště premium, proto snižuje celkové náklady. Standardní\_DS13 virtuálních počítačů můžete splňovat požadavek na 16 000 IOPS pomocí čtyř P30 disků. Virtuální počítač DS13 má maximální IOPS 25,600 a každý disk P30 maximální IOPS 5 000. Celkově platí, tuto konfiguraci můžete dosáhnout 5 000 × 4 = 20 000 IOPS. Odhadované náklady tohoto virtuálního počítače za měsíc bude 1,003 $. Měsíční náklady na čtyři disky úložiště premium P30 bude 544.34 $. Odhadované celkové měsíční náklady na bude 1,544 $.
 
-Následující tabulka shrnuje rozpis nákladů hello tohoto scénáře pro Standard a Premium Storage.
+Následující tabulka shrnuje rozpis nákladů tohoto scénáře pro Standard a Premium Storage.
 
 | &nbsp; | **Standard** | **Premium** |
 | --- | --- | --- |
@@ -210,12 +210,12 @@ Následující tabulka shrnuje rozpis nákladů hello tohoto scénáře pro Stan
 
 *Distribucích systému Linux*  
 
-S Azure Premium Storage, získáte hello stejnou úroveň výkonu pro virtuální počítače se systémem Windows a Linux. Podporujeme mnoho typů distribucích systému Linux, a zobrazí úplný seznam hello [zde](../../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Je důležité, že je lepší použít jiný distribucích toonote vhodné pro různé typy úloh. Zobrazí se různé úrovně výkonu v závislosti na hello distro, které vaše úlohy běží na. Testování hello distribucích systému Linux s vaší aplikací a zvolte hello jeden, který je nejvhodnější.
+S Azure Premium Storage získáte stejnou úroveň výkonu pro virtuální počítače s Windows a Linux. Podporujeme mnoho typů distribucích systému Linux, a můžete zobrazit seznam [zde](../../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Je důležité si uvědomit, že jiný distribucích jsou vhodnější pro různé typy úloh. Zobrazí se různé úrovně výkonu v závislosti na distro, které vaše úlohy běží na. Testování distribucích systému Linux s vaší aplikací a zvolit tu nejvhodnější.
 
-Pokud Premium Storage s Linuxem, zkontrolujte nejnovější aktualizace hello o požadované ovladače tooensure vysoký výkon.
+Pokud Premium Storage s Linuxem, zkontrolujte nejnovější aktualizace o požadované ovladače zajistit vysoký výkon.
 
 ## <a name="premium-storage-disk-sizes"></a>Velikosti disků úložiště Premium
-Azure Premium Storage nabízí aktuálně sedm velikosti disku. Velikost každého disku může mít jiné měřítko pro IOPS, šířky pásma a úložiště. Vyberte správnou velikost disku úložiště Premium hello v závislosti na požadavcích aplikace hello a vysokým Škálováním hello velikost virtuálního počítače. Následující tabulka Hello ukazuje hello sedm disků velikosti a jejich funkce. P4 a P6 velikosti jsou aktuálně podporovány pouze pro spravované disky.
+Azure Premium Storage nabízí aktuálně sedm velikosti disku. Velikost každého disku může mít jiné měřítko pro IOPS, šířky pásma a úložiště. Zvolte právo velikost disku úložiště Premium v závislosti na požadavky na aplikace a vysokým Škálováním velikost virtuálního počítače. Následující tabulka uvádí velikosti sedm disků a jejich funkce. P4 a P6 velikosti jsou aktuálně podporovány pouze pro spravované disky.
 
 | Disky typu Premium  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
@@ -224,82 +224,82 @@ Azure Premium Storage nabízí aktuálně sedm velikosti disku. Velikost každé
 | Propustnost / disk | 25 MB za sekundu  | 50 MB za sekundu  | 100 MB za sekundu | 150 MB za sekundu | 200 MB za sekundu | 250 MB za sekundu | 250 MB za sekundu | 
 
 
-Kolik disků, které zvolíte, závisí na disku hello velikost zvolená. Můžete použít jeden disk P50 nebo více disků toomeet P10 požadavků vaší aplikace. Brát v níže uvedených při výběru hello důležité informace o účtu.
+Kolik disků, které zvolíte, závisí na disku velikost zvolená. Můžete použít jeden disk P50 nebo více disků P10 ke splnění požadavků vaší aplikace. Zohlednit při rozhodování níže uvedené důležité informace o účtu.
 
 *Limity škálování (IOPS a propustnost)*  
-Hello IOPS a propustnost limity velikosti disku každého Premium je jiné a nezávislé z hello limity škálování virtuálních počítačů. Zkontrolujte, zda text hello celkový počet IOPS a propustnost z hello disků jsou v souladu s limity škálování hello vybraná velikost virtuálního počítače.
+IOPS a propustnost limity velikosti disku každého Premium je jiné a nezávislé z limity škálování virtuálních počítačů. Ujistěte se, že celkový počet IOPS a propustnost z disků jsou v souladu s limity škálování zvolené velikost virtuálního počítače.
 
-Například, pokud požadavek na aplikaci je maximálně 250 MB za sekundu, propustnosti a používáte DS4 virtuální počítač s jediný disk P30. Hello DS4 virtuálních počítačů můžete uvolňovat propustnost too256 MB/s. Jediný disk P30 má však propustnost limit 200 MB/s. V důsledku toho budou se aplikace hello omezené na 200 MB/s z důvodu omezení toohello disku. tooovercome tento limit, přidělení více než jeden data toohello disky virtuálních počítačů nebo změně velikosti disků tooP40 nebo P50.
+Například, pokud požadavek na aplikaci je maximálně 250 MB za sekundu, propustnosti a používáte DS4 virtuální počítač s jediný disk P30. Virtuální počítač DS4 mohou poskytnout propustnost až 256 MB/s. Jediný disk P30 má však propustnost limit 200 MB/s. Aplikace v důsledku toho budou být omezené na 200 MB/s z důvodu omezení disku. K překonání tento limit, přidělení více než jeden datové disky na virtuální počítač nebo změnit jeho velikost vaše disky P40 nebo P50.
 
 > [!NOTE]
-> Čtení obsloužených hello mezipaměti nejsou součástí hello disku IOPS a propustnost, proto není subjektu toodisk omezení. Mezipaměť obsahuje samostatné IOPS a propustnost limitu na virtuální počítač.
+> Čtení obsloužených mezipaměti nejsou zahrnuty v disku IOPS a propustnost, proto není předmět mezních hodnot disku. Mezipaměť obsahuje samostatné IOPS a propustnost limitu na virtuální počítač.
 >
-> Například původně čtení a zápisu jsou 60MB/s a 40MB za sekundu v uvedeném pořadí. V průběhu času hello mezipaměti warms a slouží více a více hello čtení z mezipaměti hello. Potom můžete získat zápisu vyšší propustnost disku hello.
+> Například původně čtení a zápisu jsou 60MB/s a 40MB za sekundu v uvedeném pořadí. V průběhu času mezipaměti warms a slouží více a více čtení z mezipaměti. Potom můžete získat zápisu vyšší propustnost z disku.
 >
 >
 
 *Počet disků*  
-Určete počet hello disky, které budete potřebovat tím, že posoudí požadavky aplikací. Limit velikost každého virtuálního počítače je také na hello počet disků, můžete připojit toohello virtuálních počítačů. Obvykle je to dvakrát hello počet jader. Ujistěte se, že hello velikost virtuálního počítače, který zvolíte, může podporovat hello počet disků, které jsou potřeba.
+Určete počet disky, které budete potřebovat tím, že posoudí požadavky aplikací. Limit velikost každého virtuálního počítače je také na počet disků, které lze připojit k virtuálnímu počítači. Obvykle je to dvojnásobný počet jader. Ujistěte se, že velikost virtuálního počítače, který zvolíte můžete podporují počet disků, které jsou potřeba.
 
-Pamatujte si, že se hello Storage úrovně Premium disky mají vyšší výkon možnosti porovnání tooStandard úložiště disky. Proto pokud migrujete aplikace z virtuálního počítače Azure IaaS pomocí standardního úložiště tooPremium úložiště, bude pravděpodobně nutné méně prémiové disky tooachieve hello stejný nebo i vyšší výkon pro vaši aplikaci.
+Pamatujte si, že se úložiště Premium disky mají vyšší výkonnosti ve srovnání s disky standardní úložiště. Proto pokud migrujete aplikace z virtuálního počítače Azure IaaS pomocí standardního úložiště do úložiště úrovně Premium, budete pravděpodobně potřebovat méně prémiové disky k dosažení stejný nebo i vyšší výkon pro vaši aplikaci.
 
 ## <a name="disk-caching"></a>Ukládání do mezipaměti na disku
-Vysoká škálování virtuálních počítačů, které využívají Storage úrovně Premium mají vícevrstvé ukládání do mezipaměti technologie názvem BlobCache. BlobCache používá kombinaci hello RAM virtuálního počítače a místní SSD pro ukládání do mezipaměti. Tato mezipaměť je k dispozici pro trvalé a místní disky virtuálních počítačů hello hello Storage úrovně Premium. Ve výchozím nastavení je toto nastavení mezipaměti nastavené tooRead a zápis pro disky operačního systému a jen pro čtení pro datové disky hostované na Storage úrovně Premium. S disků na discích úložiště Premium hello povoleno ukládání do mezipaměti, hello měřítko virtuální počítače můžete dosáhnout velmi vysoké úrovně výkonu, které překračují hello základní výkon disku.
+Vysoká škálování virtuálních počítačů, které využívají Storage úrovně Premium mají vícevrstvé ukládání do mezipaměti technologie názvem BlobCache. BlobCache používá kombinaci paměti RAM virtuálního počítače a místní SSD pro ukládání do mezipaměti. Tato mezipaměť je k dispozici pro trvalé disky úložiště Premium a místní disky virtuálních počítačů. Ve výchozím nastavení toto nastavení mezipaměti nastavena pro čtení a zápis pro disky operačního systému a jen pro čtení pro datové disky hostované na Storage úrovně Premium. S disků na discích úložiště Premium povoleno ukládání do mezipaměti, můžete dosáhnout vysoké škálování virtuálních počítačů velmi vysokou úroveň výkonu, které překračují základní výkon disku.
 
 > [!WARNING]
-> Změna nastavení mezipaměti hello Azure disku odpojí a znovu připojí hello cílový disk. Pokud je disk operačního systému hello, hello virtuální počítač se restartuje. Zastavte všechny aplikace a služby, které by mohly mít dopad tento přerušení před změnou nastavení mezipaměti hello disku.
+> Změna nastavení mezipaměti Azure disku odpojí a znovu připojí cílový disk. Pokud je disk operačního systému, virtuální počítač se restartuje. Zastavte všechny aplikace a služby, které by mohly mít dopad tento přerušení před změnou nastavení mezipaměti na disku.
 >
 >
 
-Další informace o tom, jak funguje BlobCache, toolearn odkazovat toohello uvnitř [Azure Premium Storage](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/) příspěvku na blogu.
+Další informace o tom, jak BlobCache funguje, najdete v tématu uvnitř [Azure Premium Storage](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/) příspěvku na blogu.
 
-Je důležité tooenable mezipaměti na hello správnou sadu disků. Tom, jestli by měl povolit ukládání do mezipaměti na disku na premium disk nebo nebude závisí na vzor zatížení hello tohoto disku bude zpracovávat. Následující tabulka zobrazuje hello výchozí nastavení mezipaměti pro disky operačního systému a Data.
+Je potřeba povolit mezipaměť na správnou sadu disků. Tom, jestli by měl povolit ukládání do mezipaměti na disku na premium disk nebo nebude závisí na vzor zatížení tohoto disku bude zpracovávat. Následující tabulka uvádí výchozí nastavení mezipaměti pro disky operačního systému a Data.
 
 | **Typ disku** | **Výchozí nastavení mezipaměti** |
 | --- | --- |
 | Disk OS |ReadWrite |
 | Datový disk |Žádný |
 
-Následující jsou hello nastavení mezipaměti doporučené disku pro datové disky
+Následují nastavení mezipaměti doporučené disku pro datové disky
 
-| **Nastavení ukládání do mezipaměti na disku** | **Doporučení když toouse toto nastavení** |
+| **Nastavení ukládání do mezipaměti na disku** | **Doporučení ohledně použití tohoto nastavení** |
 | --- | --- |
 | Žádný |Konfigurace mezipaměti hostitele jako None jen pro zápis a zápis náročné disků. |
 | Jen pro čtení |Konfigurace mezipaměti hostitele jako jen pro čtení pro disky jen pro čtení a zápisu pro čtení. |
-| ReadWrite |Konfigurace mezipaměti hostitele ReadWrite pouze v případě, že vaše aplikace zpracovává správně zápisu do mezipaměti datových toopersistent disků v případě potřeby. |
+| ReadWrite |Konfigurace mezipaměti hostitele jako ReadWrite pouze v případě, že vaše aplikace zpracovává správně zápis data uložená v mezipaměti do trvalé disků v případě potřeby. |
 
 *Jen pro čtení*  
 Konfigurace ukládání do mezipaměti na Storage úrovně Premium data disky určené jen pro čtení, můžete dosáhnout nízkou latenci pro čtení a získat velmi vysoké IOPS pro čtení a propustnost pro vaši aplikaci. Toto je z důvodu ze dvou důvodů
 
-1. Čtení provést z mezipaměti, která je na paměť virtuálního počítače hello a místní SSD, je mnohem rychlejší než čtení z hello datový disk, který je na hello úložiště objektů blob Azure.  
-2. Storage úrovně Premium nepočítá hello čtení obsluhovat z mezipaměti směrem hello disku IOPS a propustnosti. Aplikace je tedy možné tooachieve vyšší celkový počet IOPS a propustnosti.
+1. Čtení provést z mezipaměti, která je na paměť virtuálního počítače a místní SSD, je mnohem rychlejší než čtení z disku data, která funguje ve službě Azure blob storage.  
+2. Storage úrovně Premium nepočítá čtení z mezipaměti směrem disku IOPS a propustnosti. Aplikace je proto můžete dosáhnout vyšší celkový počet IOPS a propustnosti.
 
 *ReadWrite*  
-Hello OS disky mají ve výchozím nastavení ReadWrite povoleno ukládání do mezipaměti. Nedávno jsme doplnili podporu pro ukládání do mezipaměti na data i disky v režimu ReadWrite. Používáte-li ukládání do mezipaměti v režimu ReadWrite, musíte mít správný způsob toowrite hello dat z mezipaměti toopersistent disků. Například popisovačů systému SQL Server zápisu do mezipaměti datových disků trvalé úložiště toohello svoje vlastní. Pomocí aplikace, která zpracovává zachování hello ReadWrite mezipaměti požadované dat může vést ke ztrátě toodata, pokud dojde k chybě hello virtuálních počítačů.
+Ve výchozím nastavení mají disky operačního systému, ReadWrite povoleno ukládání do mezipaměti. Nedávno jsme doplnili podporu pro ukládání do mezipaměti na data i disky v režimu ReadWrite. Pokud používáte ReadWrite ukládání do mezipaměti, musí mít správný způsob, jak zapsat data z mezipaměti na trvalé disky. Například systému SQL Server zpracovává zápis data uložená v mezipaměti do trvalého úložiště disky svoje vlastní. ReadWrite mezipaměti pomocí aplikace, která zpracovává uložením požadovaná data může způsobit ztrátu dat, pokud dojde k chybě virtuálního počítače.
 
-Například můžete použít tyto pokyny tooSQL serveru systémem Storage úrovně Premium provedením následujících hello
+Například můžete použít tyto pokyny pro SQL Server běžící na Storage úrovně Premium provedením následujících akcí,
 
 1. Konfigurace mezipaměti "Jen pro čtení" na discích úložiště premium hostování datových souborů.  
-   a.  Hello rychlé čte z doba dotazu systému SQL Server nižší hello mezipaměti vzhledem k tomu, že data stránky jsou mnohem rychleji načteny z mezipaměti porovnání toodirectly hello z hello datových disků.  
+   a.  Vzhledem k tomu, že jsou data stránky mnohem rychleji načteny z mezipaměti dobu dotazu systému SQL Server ve srovnání s přímo z dat disky bude rychlý přečte z mezipaměti nižší.  
    b.  Obsluhuje čtení z mezipaměti, znamená, že není k dispozici z premium datových disků ke zvýšení propustnosti. SQL Server můžete použít tento ke zvýšení propustnosti směrem načítání více datových stránek a další operace, jako je zálohování a obnovení, dávky zatížení, a znovu sestaví index.  
-2. Konfigurace "Žádný" mezipaměti na storage úrovně premium disky hostování hello soubory protokolu.  
-   a.  Soubory protokolů mají především zápisu náročná operace. Proto že nejsou nijak přínosné hello mezipaměti jen pro čtení.
+2. Konfigurace "Žádný" v mezipaměti na discích úložiště premium hostování souborů protokolu.  
+   a.  Soubory protokolů mají především zápisu náročná operace. Proto že nejsou nijak přínosné mezipaměti jen pro čtení.
 
 ## <a name="disk-striping"></a>Prokládání disků
-Když může být vysoká měřítka, které je připojený virtuální počítač s několika premium trvalé disky úložiště, disky hello rozdělená společně tooaggregate jejich IOPs, šířky pásma a kapacity úložiště.
+Při vysoké měřítka, které je připojený virtuální počítač s několik disků trvalé úložiště premium, můžete disky rozdělená společně k agregaci jejich IOPs, šířky pásma a kapacity úložiště.
 
-V systému Windows můžete použít prostory úložiště toostripe disky společně. Je nutné nakonfigurovat jeden sloupec pro každý disk ve fondu. V opačném hello celkový výkon prokládaný svazek může být nižší, než se očekávalo, z důvodu toouneven distribuce přenosů mezi disky hello.
+V systému Windows můžete prostory úložiště na disky stripe společně. Je nutné nakonfigurovat jeden sloupec pro každý disk ve fondu. Celkový výkon prokládaný svazek, jinak hodnota může být nižší, než se očekávalo, z důvodu nevyrovnaná distribuce přenosů mezi disky.
 
-Důležité: Pomocí uživatelského rozhraní správce serveru, můžete nastavit hello celkový počet sloupců se too8 prokládané svazku. Při připojení více než 8 disky, pomocí prostředí PowerShell toocreate hello svazku. Pomocí prostředí PowerShell, můžete nastavit hello počet sloupců rovna toohello počet disků. Například, pokud existují 16 disků v sadě jeden stripe; Zadejte 16 sloupců v hello *NumberOfColumns* parametr hello *New-VirtualDisk* rutiny prostředí PowerShell.
+Důležité: Pomocí uživatelského rozhraní správce serveru, můžete nastavit celkový počet sloupců až 8 pro prokládaný svazek. Při připojení více než 8 disky, použijte PowerShell k vytvoření svazku. Pomocí prostředí PowerShell, můžete nastavit počet sloupců rovná počet disků. Například, pokud existují 16 disků v sadě jeden stripe; Zadejte 16 sloupců v *NumberOfColumns* parametr *New-VirtualDisk* rutiny prostředí PowerShell.
 
-V systému Linux použijte společně hello MDADM nástroj toostripe disky. Podrobné pokyny k proložení disků v systému Linux naleznete příliš[konfigurace RAID softwaru v systému Linux](../../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+V systému Linux použijte nástroj MDADM na disky stripe společně. Podrobné pokyny k proložení disků v systému Linux naleznete v [konfigurace RAID softwaru v systému Linux](../../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 *Velikost stripe*  
-Důležité konfigurační v prokládání disků je velikost stripe hello. velikost stripe Hello nebo velikost bloku je hello nejmenší bloků dat, které aplikace můžete vyřešit na prokládané svazku. velikost Hello prokládání, které jste nakonfigurovali závisí na typu hello aplikace a jeho žádost vzor. Pokud si zvolíte hello nesprávný stripe velikost, mohla způsobit chybné zarovnání tooIO, což vede toodegraded výkon aplikace.
+Důležité konfigurační v prokládání disků je velikost stripe. Velikost pruhu nebo velikost bloku je nejmenší bloků dat, které aplikace můžete vyřešit na prokládané svazku. Velikost prokládání, které můžete konfigurovat závisí na typu aplikace a jeho žádost vzor. Pokud si zvolíte velikost nesprávný stripe, může vést k chybné zarovnání vstupně-výstupní operace, což vede k snížení výkonu aplikace.
 
-Například pokud požadavek vstupně-výstupní operace generované aplikace je větší než velikost stripe hello disku, systém úložiště hello zapíše ho napříč stripe jednotku hranice na více než jeden disk. Když je čas tooaccess dat, bude mít tooseek napříč více než jeden požadavek hello toocomplete stripe jednotky. Hello kumulativní účinku takové chování může způsobit snížení výkonu toosubstantial. Na hello na druhé straně, pokud je menší než velikost stripe hello velikost požadavku vstupně-výstupní operace, a pokud je náhodné, hello vstupně-výstupní požadavky může přidat na hello stejné disku problémové místo a nakonec docházelo k omezení výkonu hello vstupně-výstupní operace.
+Například pokud požadavek vstupně-výstupní operace generované aplikace je větší, než je velikost disku stripe, systém úložiště zapíše ho napříč hranicemi jednotky stripe na více než jeden disk. Když je na čase přístup k datům, bude mít k vyhledání napříč více než jedné jednotky stripe dokončit žádost. Kumulativní účinek tohoto chování může způsobit snížení výkonu. Na druhé straně Pokud je menší než velikost stripe velikost žádosti vstupně-výstupní operace, a pokud je náhodný ve své podstatě, vstupně-výstupní operace žádosti může dohromady na stejném disku, problémové místo a nakonec docházelo k omezení výkonu vstupně-výstupní operace.
 
-V závislosti na typu hello úlohy vaše aplikace běží, vyberte velikosti odpovídající stripe. Pro náhodné malé vstupně-výstupní požadavky použijte menší velikost stripe. Zatímco požadavky pro velkých sekvenčních vstupně-výstupní operace používat větší velikost stripe. Zjistěte hello stripe velikost doporučení pro hello aplikaci, že budete používat na Storage úrovně Premium. Pro systém SQL Server nakonfigurujte stripe velikosti 64KB pro úlohy OLTP a 256KB pro úlohy datového skladu. V tématu [osvědčené postupy z hlediska výkonu pro SQL Server na virtuálních počítačích Azure](../../virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md#disks-guidance) toolearn Další.
+V závislosti na typu úloh, které vaše aplikace běží zvolte velikost příslušné stripe. Pro náhodné malé vstupně-výstupní požadavky použijte menší velikost stripe. Zatímco požadavky pro velkých sekvenčních vstupně-výstupní operace používat větší velikost stripe. Získat doporučení velikost stripe pro aplikaci, že budete používat na Storage úrovně Premium. Pro systém SQL Server nakonfigurujte stripe velikosti 64KB pro úlohy OLTP a 256KB pro úlohy datového skladu. V tématu [osvědčené postupy z hlediska výkonu pro SQL Server na virtuálních počítačích Azure](../../virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md#disks-guidance) Další informace.
 
 > [!NOTE]
 > Můžete společně rozkládají maximálně 32 prémiové disky úložiště na řady DS virtuálních počítačů a 64 prémiové disky úložiště na řadu GS virtuálních počítačů.
@@ -307,76 +307,76 @@ V závislosti na typu hello úlohy vaše aplikace běží, vyberte velikosti odp
 >
 
 ## <a name="multi-threading"></a>Více vláken
-Azure Premium Storage platformy toobe massively parallel určený. Vícevláknové aplikace proto dosahuje mnohem vyšší výkon než na jednovláknový aplikaci. Vícevláknové aplikace rozdělí si její úkoly napříč více vláken a zvyšuje efektivitu jeho spuštění s využitím hello virtuálních počítačů a maximální toohello prostředky disku.
+Azure Premium Storage platformy jako massively parallel určený. Vícevláknové aplikace proto dosahuje mnohem vyšší výkon než na jednovláknový aplikaci. Vícevláknové aplikace rozdělí si její úkoly napříč více vláken a zvyšuje efektivitu jeho spuštění s využitím virtuálních počítačů a diskové prostředky na maximum.
 
-Například pokud aplikace běží na jednom jádru virtuálního počítače pomocí dvěma vlákny, hello procesoru přepínat mezi hello dvěma vlákny tooachieve efektivitu. Při jedno vlákno čeká na vstupně-výstupní operace toocomplete na disku, hello procesoru přepnout toohello jiné vlákno. Tímto způsobem můžete provádět dvěma vlákny více než jedno vlákno by. Pokud hello virtuálních počítačů má víc než jednoho jádra, další sníží běhu vzhledem k tomu, že každý základní paralelně můžete provádět úlohy.
+Například pokud aplikace běží na jednom jádru virtuálního počítače pomocí dvěma vlákny, procesoru přepínat mezi dvěma vlákny k dosažení efektivitu. Při jedno vlákno čeká na disku vstupně-výstupní operace dokončit, procesoru přepnout na jiné vlákno. Tímto způsobem můžete provádět dvěma vlákny více než jedno vlákno by. Pokud virtuální počítač má víc než jednoho jádra, další sníží běhu vzhledem k tomu, že každý základní paralelně můžete provádět úlohy.
 
-Nemusí být možné toochange hello způsob dodávaných aplikace implementuje jeden vláken nebo více vláken. SQL Server je třeba, umožňuje zpracovávat více procesorů a s více jádry. SQL Server však rozhodne, za jakých podmínek využije jeden nebo více vláken tooprocess dotazu. Může spouštět dotazy a vytvářet indexy používající více vláken. Pro daný dotaz, který zahrnuje připojení velké tabulky a řazení dat před vrácením toohello uživatele SQL Server pravděpodobně používat více vláken. Uživatel však nemůže řídit, jestli SQL Server provede dotaz pomocí jedním vláknem nebo více vláken.
+Nelze změnit způsob dodávaných aplikace implementuje jeden vláken nebo více vláken. SQL Server je třeba, umožňuje zpracovávat více procesorů a s více jádry. SQL Server však rozhodne, za jakých podmínek využije jeden nebo více podprocesů ke zpracování dotazu. Může spouštět dotazy a vytvářet indexy používající více vláken. Pro daný dotaz, který zahrnuje připojení velké tabulky a řazení dat před vrácením uživateli SQL Server pravděpodobně používat více vláken. Uživatel však nemůže řídit, jestli SQL Server provede dotaz pomocí jedním vláknem nebo více vláken.
 
-Existují nastavení konfigurace, můžete změnit tooinfluence více vláken nebo toto paralelní zpracování aplikace. Například v případě systému SQL Server je hello maximální úroveň paralelismus konfigurace. Toto nastavení nazývá MAXDOP, vám umožní tooconfigure hello maximální počet procesorů, které systém SQL Server můžete použít při paralelní zpracování. MAXDOP můžete nakonfigurovat pro jednotlivé dotazy nebo operace indexu. To je užitečné, pokud chcete toobalance prostředky systému pro kritické aplikace výkonu.
+Existují nastavení konfigurace, které můžete změnit k ovlivnění to více vláken nebo paralelní zpracování aplikace. V případě systému SQL Server je třeba maximální úroveň paralelismus konfigurace. Toto nastavení nazývá MAXDOP, umožňuje nakonfigurovat maximální počet procesorů, které systém SQL Server můžete použít při paralelní zpracování. MAXDOP můžete nakonfigurovat pro jednotlivé dotazy nebo operace indexu. To je užitečné, když chcete vyrovnávat prostředky systému pro kritické aplikace výkonu.
 
-Předpokládejme například, že vaše aplikace pomocí systému SQL Server spouští velké dotazu a operaci indexu na hello stejnou dobu. Předpokládejme, dejte nám chtěli toobe operaci indexu hello další původce porovnání toohello velké dotazu. V takovém případě můžete nastavit MAXDOP hodnotu vyšší než hello MAXDOP hodnota pro dotaz hello toobe operaci indexu hello. Tímto způsobem, SQL Server má větší počet procesorů, které můžete využít pro hello index operace porovnání toohello počet procesorů můžete vyhradit toohello velké dotazu. Pamatujte si, že se nebudete řídit hello počet vláken, který bude používat systém SQL Server pro každou operaci. Můžete řídit hello maximální počet procesorů je určené pro více vláken.
+Řekněme například, že vaše aplikace pomocí systému SQL Server spouští velké dotazu a operace indexu ve stejnou dobu. Předpokládejme, že chtěli byste operace indexu jako další původce ve srovnání s velké dotazu. V takovém případě můžete nastavit hodnotu MAXDOP operace indexu vyšší než hodnota MAXDOP pro dotaz. Tímto způsobem, SQL Server má větší počet procesorů, které můžete využít pro operaci indexu ve srovnání s počet procesorů, které můžete vyhradit pro velké dotaz. Pamatujte si, že se nebudete řídit počet vláken, který bude používat systém SQL Server pro každou operaci. Můžete řídit maximální počet procesorů, které je určené pro více vláken.
 
-Další informace o [stupňů paralelismus](https://technet.microsoft.com/library/ms188611.aspx) v systému SQL Server. Zjistěte taková nastavení, které ovlivňují více vláken ve vaší aplikace a jejich konfigurace toooptimize výkonu.
+Další informace o [stupňů paralelismus](https://technet.microsoft.com/library/ms188611.aspx) v systému SQL Server. Zjistěte taková nastavení, které ovlivňují více vláken ve vaší aplikace a jejich konfigurace za účelem optimalizace výkonu.
 
 ## <a name="queue-depth"></a>Hloubka fronty
-Hello hloubku fronty nebo délka fronty nebo velikost fronty je v systému hello hello počet čekajících požadavků vstupně-výstupní operace. Hodnota Hello hloubku fronty určuje, kolik vstupně-výstupní operace operace můžete zarovnat vaší aplikace, které disky úložiště hello bude zpracovávat. Ovlivňuje všechny hello tři aplikace výkonu indikátory, které jsme popsané v této článku to IOP, propustnosti a latence.
+Hloubka fronty nebo délka fronty nebo velikost fronty je počet čekajících požadavků vstupně-výstupní operace v systému. Hodnota hloubku fronty určuje, kolik vstupně-výstupní operace aplikace můžete zarovnat, který bude zpracovávat disky úložiště. Ovlivňuje všechny ukazatele výkonu tři aplikace, které jsme popsané v této článku to IOP, propustnosti a latence.
 
-Fronty hloubkou a více vláken jsou úzce souvisejí. Hello hloubku fronty hodnota určuje, kolik více vláken může dosáhnout pomocí aplikace hello. Pokud hello hloubku fronty velká, aplikace můžete provádět další operace souběžně, jinými slovy, více vláken. Pokud hello hloubku fronty je malý, i když je aplikace Vícevláknová, nebude mít dostatek požadavky srovnáte pro souběžné provádění.
+Fronty hloubkou a více vláken jsou úzce souvisejí. Hloubka fronty hodnota udává, kolik více vláken může dosáhnout aplikací. Pokud je hloubkou fronty velký, aplikace může provést další operace souběžně, jinými slovy, více vláken. Pokud je hloubkou fronty malé, i když je aplikace Vícevláknová, nebude mít dostatek požadavky srovnáte pro souběžné provádění.
 
-Obvykle vypnout hello police aplikací vám nepovolují hloubku fronty hello toochange, protože pokud nastavte nesprávně provede další škodu než funkční. Aplikace nastaví hodnota pravé hello fronty hloubka tooget hello optimálního výkonu. Nicméně je tento koncept je důležité toounderstand, takže můžete řešit problémy s výkonem s vaší aplikací. Hello důsledky hloubku fronty můžete také sledovat spuštěním testu typovou úlohou nástrojů v systému.
+Obvykle se běžně dostupného aplikace neumožňují budete muset změnit hloubku fronty, protože pokud nastavte nesprávně provede další škodu než funkční. Aplikace bude nastavit správné hodnotu hloubky fronty, abyste získali optimální výkon. Je ale důležité si uvědomit tento koncept, takže můžete řešit problémy s výkonem s vaší aplikací. Můžete také sledovat důsledky hloubku fronty spuštěním testu typovou úlohou nástrojů v systému.
 
-Některé aplikace zadejte nastavení tooinfluence hello hloubku fronty. Například nastavení hello MAXDOP (maximální stupně paralelního zpracování) v systému SQL Server popsané v předchozí části. MAXDOP je způsob, jak tooinfluence hloubka fronty a více vláken, i když přímo nemění hodnotu hloubky fronty hello systému SQL Server.
+Některé aplikace zadejte nastavení k ovlivnění hloubku fronty. Například nastavení MAXDOP (maximální stupně paralelního zpracování) v systému SQL Server popsané v předchozí části. MAXDOP je způsob, jak ovlivnit hloubka fronty a více vláken, i když přímo nemění hodnotu hloubky fronty systému SQL Server.
 
 *Hloubka fronty vysoké*  
-Hloubka fronty vysoké zarovnán další operace na disku hello. Hello disk zná hello další požadavek v příslušné fronty předem. V důsledku toho hello disku můžete naplánovat operace dopředu a jejich zpracování v optimální pořadí. Vzhledem k tomu, že aplikace hello odesílá další požadavky toohello disk, hello disk může zpracovat více paralelních IOs. Nakonec, hello aplikace bude mít tooachieve vyšší IOPS. Vzhledem k tomu, že aplikace je zpracování více požadavků, hello celková propustnost aplikace hello se taky zvýší.
+Hloubka fronty vysoké řádků do více operací na disku. Na disku, bude znát další požadavek v příslušné fronty předem. V důsledku toho je disk můžete naplánovat operace předem a jejich zpracování v optimální pořadí. Vzhledem k tomu, že aplikace odesílá další požadavky na disk, disk může zpracovat více paralelních IOs. Nakonec aplikace se nebude moci dosáhnout vyšší IOPS. Vzhledem k tomu, že aplikace je zpracování více požadavků, také zvyšuje celkovou propustnost aplikace.
 
-Obvykle se aplikace můžete dosáhnout maximální propustnost s 8-16 + nezpracovaných vstupně-výstupních na připojený disk. Pokud hloubce fronty, aplikace není vkládání dostatek toohello systému IOs a zpracuje menší množství v daném časovém období. Jinými slovy méně propustnost.
+Obvykle se aplikace můžete dosáhnout maximální propustnost s 8-16 + nezpracovaných vstupně-výstupních na připojený disk. Pokud hloubce fronty, aplikace není dostatek IOs vkládání do systému a zpracuje menší množství v daném časovém období. Jinými slovy méně propustnost.
 
-Například v systému SQL Server hello nastavení MAXDOP hodnotu pro dotaz příliš "4" informuje SQL Server, který můžete použít až toofour jader tooexecute hello dotazu. SQL Server lze určit, co je nejlepší fronty hloubka hodnota a hello počet jader pro spuštění dotazu hello.
+Například v systému SQL Server, nastavení hodnoty MAXDOP dotaz, který "4" informuje systému SQL Server, až čtyři jader může použít k provedení dotazu. SQL Server lze určit, co je nejlepší hodnotu hloubky fronty a počet jader pro spuštění dotazu.
 
 *Optimální hloubky fronty*  
-Fronty velmi vysokou hodnotu hloubky má také jeho nevýhody. Pokud hodnotu hloubky fronty je příliš vysoká, aplikace hello pokusí toodrive velmi vysokou IOPS. Pokud aplikace obsahuje trvalé disků se dostatečná zřízené IOPS, může to mít negativní vliv latencí aplikací. Následující vzorec znázorňuje hello vztah mezi IOPS, latence a hloubku fronty.  
+Fronty velmi vysokou hodnotu hloubky má také jeho nevýhody. Pokud hodnotu hloubky fronty je příliš vysoká, aplikace se pokusí jednotka velmi vysokou IOPS. Pokud aplikace obsahuje trvalé disků se dostatečná zřízené IOPS, může to mít negativní vliv latencí aplikací. Následující vzorec znázorňuje vztah mezi IOPS, latence a hloubku fronty.  
     ![](media/storage-premium-storage-performance/image6.png)
 
-Byste neměli konfigurovat hloubku fronty tooany vysoké hodnoty, ale tooan optimální hodnotu, která může poskytnout dostatek IOPS pro hello aplikací bez ovlivnění latenci. Například pokud latence aplikace hello potřebuje toobe 1 milisekundu, hello hloubku fronty potřeba je 5 000 IOPS, tooachieve hloubka fronty = 5000 x 0,001 = 5.
+Hloubka fronty byste neměli konfigurovat žádné vysokou hodnotu, ale na optimální hodnotu, která může poskytnout dostatek IOPS pro aplikaci, aniž by to ovlivnilo latenci. Například pokud latence aplikace musí být 1 milisekundu, hloubku fronty, které jsou potřebné k dosažení 5 000 IOPS se hloubka fronty = 5000 x 0,001 = 5.
 
 *Hloubka fronty pro prokládané svazek*  
-Pro svazek prokládané udržovat tak, aby každý disk má ve špičce hloubce fronty jednotlivě hloubce fronty dostatečně vysoký. Představte si třeba aplikace, který by vložil hloubce fronty 2 a v hello stripe je 4 disky. dva požadavky vstupně-výstupní operace Hello přejde tootwo disky a zbývající dva disky bude nečinnosti. Proto konfigurovat hloubku fronty hello tak, aby všechny disky hello může být zaneprázdněn. Vzorec níže ukazuje, jak toodetermine hello hloubku fronty prokládané svazky.  
+Pro svazek prokládané udržovat tak, aby každý disk má ve špičce hloubce fronty jednotlivě hloubce fronty dostatečně vysoký. Představte si třeba aplikace, který by vložil hloubce fronty 2 a v stripe je 4 disky. Dva požadavky vstupně-výstupní operace přejde na dva disky a zbývající dva disky bude nečinnosti. Proto konfigurovat hloubku fronty tak, aby všechny disky může být zaneprázdněn. Vzorec níže ukazuje, jak určit hloubku fronty prokládané svazky.  
     ![](media/storage-premium-storage-performance/image7.png)
 
 ## <a name="throttling"></a>Omezování
-Azure Premium Storage zřizuje zadaný počet IOPS a propustnost v závislosti na velikosti virtuálních počítačů hello a velikosti disků, které zvolíte. Kdykoliv se aplikace pokusí toodrive IOPS nebo propustnosti nad těchto omezení může zpracovat jaké hello virtuálního počítače nebo disku, bude omezení Storage úrovně Premium ho. To manifesty hello tvar snížení výkonu ve vaší aplikaci. To může znamenat vyšší latence, snížit propustnost nebo snižte IOPS. Pokud Storage úrovně Premium není omezení, vaše aplikace může úplně nezdaří podle překročení, jaké jsou schopné dosáhnout její prostředky. Ano, problémů s výkonem tooavoid kvůli toothrottling, vždy zřídit dostatečné prostředky pro vaši aplikaci. Vzít v úvahu, co jsme probírali v hello velikosti virtuálních počítačů a výše uvedených oddílech velikosti disku. Srovnávací testy je nejlepší způsob, jak toofigure hello na tom, jaké prostředky musíte toohost vaší aplikace.
+Azure Premium Storage zřizuje zadaný počet IOPS a propustnost v závislosti na velikosti virtuálních počítačů a velikosti disků, které zvolíte. Kdykoliv se aplikace pokusí o jednotka IOPS nebo propustnosti nad těchto omezení co virtuálního počítače nebo disk může zpracovat, budou omezení úložiště Premium ho. To manifesty ve formě snížení výkonu ve vaší aplikaci. To může znamenat vyšší latence, snížit propustnost nebo snižte IOPS. Pokud Storage úrovně Premium není omezení, vaše aplikace může úplně nezdaří podle překročení, jaké jsou schopné dosáhnout její prostředky. Tak aby se zabránilo problémům s výkonem kvůli omezování, vždy zřídit dostatečné prostředky pro vaši aplikaci. Vzít v úvahu, co jsme probírali v částech velikosti disku výše a velikosti virtuálních počítačů. Srovnávací testy je nejlepší způsob, jak zjistit, jaké prostředky, je nutné kvůli hostování vaší aplikace.
 
 ## <a name="benchmarking"></a>Srovnávací testy
-Srovnávací testy je proces hello simulaci různé úlohy ve vaší aplikaci a měření výkonu hello aplikace pro jednotlivá zatížení. Pomocí hello kroků popsaných v předchozí části, jste shromáždili požadavky na výkon aplikace hello. Spuštěním nástroje na virtuálních počítačích hello hostování aplikace hello srovnávací testy můžete určit hello úrovně výkonu, které aplikace můžete dosáhnout Storage úrovně Premium. V této části Poskytujeme vám příklady srovnávací testy standardní virtuální počítač DS14 zřizovat s disky Azure Premium Storage.
+Srovnávací testy je proces simulaci různé úlohy ve vaší aplikaci a měření výkonu aplikace pro jednotlivá zatížení. Pomocí kroků popsaných v předchozí části, jste shromáždili na požadavcích na výkon aplikace. Při spuštění testu typovou úlohou nástroje na virtuální počítače, který je hostitelem aplikace, můžete určit úrovně výkonu, které aplikace můžete dosáhnout Storage úrovně Premium. V této části Poskytujeme vám příklady srovnávací testy standardní virtuální počítač DS14 zřizovat s disky Azure Premium Storage.
 
-Použili jsme běžných testu typovou úlohou nástrojů Iometer a FIO, pro systém Windows a Linux v uvedeném pořadí. Tyto nástroje vytvořit více vláken simulaci provozní jako zatížení a výkon systému hello měr. Pomocí nástrojů hello můžete také nakonfigurovat parametry jako velikost a fronty bloku hloubku, který obvykle se nelze změnit pro aplikaci. To vám dává další flexibilitu toodrive hello maximální výkon na vysokou škálování virtuálních počítačů, které jsou zřizovány s prémiové disky pro různé typy úloh aplikací. toolearn najdete další informace o jednotlivých vzorová analytická pomůcka [Iometer](http://www.iometer.org/) a [FIO](http://freecode.com/projects/fio).
+Použili jsme běžných testu typovou úlohou nástrojů Iometer a FIO, pro systém Windows a Linux v uvedeném pořadí. Tyto nástroje vytvořit více vláken simulaci provozní jako zatížení a měřit výkon systému. Pomocí nástrojů můžete také nakonfigurovat parametry jako velikost a fronty bloku hloubku, který obvykle se nelze změnit pro aplikaci. To vám dává větší flexibilitu při jednotka maximální výkon v měřítko zřizovat s prémiové disky pro různé typy úloh aplikací virtuálního počítače. Další informace o jednotlivých vzorová analytická pomůcka navštivte [Iometer](http://www.iometer.org/) a [FIO](http://freecode.com/projects/fio).
 
-Následující příklady hello toofollow vytvořit standardní DS14 virtuální počítač a připojte 11 Storage úrovně Premium toohello disky virtuálních počítačů. Hello 11 disků nakonfigurujte 10 disky s hostitelem ukládání do mezipaměti jako "Žádný" a rozkládají je do svazku názvem NoCacheWrites. Konfigurace hostitele na disku zbývající hello ukládání do mezipaměti jako "Jen pro čtení" a vytvoření svazku volána čtení z mezipaměti s tento disk. Pomocí tohoto nastavení, bude možné toosee hello maximální ke čtení a zápisu výkonu z standardní DS14 virtuálního počítače. Podrobné informace o postupu vytvoření virtuálního počítače DS14 s prémiové disky, přejděte příliš[vytvoření a použití účtu Premium Storage pro datový disk virtuálního počítače](../storage-premium-storage.md).
+Podle níže uvedených příkladech, vytvořte standardní DS14 virtuální počítač a připojte 11 Storage úrovně Premium disky na virtuální počítač. 11 disků nakonfigurujte 10 disky s hostitelem ukládání do mezipaměti jako "Žádný" a rozkládají je do svazku názvem NoCacheWrites. Konfigurace hostitele ukládání do mezipaměti jako "Jen pro čtení" na zbývající disk a vytvořte svazek volána čtení z mezipaměti s tento disk. Pomocí tohoto nastavení, bude moci zobrazit maximální výkon čtení a zápis z standardní DS14 virtuálního počítače. Podrobné informace o postupu vytvoření virtuálního počítače DS14 s prémiové disky, přejděte na [vytvoření a použití účtu Premium Storage pro datový disk virtuálního počítače](../storage-premium-storage.md).
 
-*Zahájení práce s hello mezipaměti*  
-Hello disk s použití mezipaměti u hostitele jen pro čtení bude mít toogive IOPS vyšší než maximální disku hello. tooget tímto maximem načten výkonu z mezipaměti hostitele hello, nejprve musí tedy vytvoří mezipaměť hello tohoto disku. Tím se zajistí, že tento hello IOs pro čtení, které vzorová analytická pomůcka vyvolají na čtení z mezipaměti svazku ve skutečnosti přístupů do mezipaměti hello a nikoli hello disk přímo. výsledek přístupů k mezipaměti Hello v další IOPS z jedné mezipaměti hello povoleno disku.
+*Zahájení práce s mezipaměti*  
+Disk s použití mezipaměti u hostitele jen pro čtení budou moci poskytnout IOPS vyšší než maximální disku. Chcete-li získat tuto maximální rychlost čtení z mezipaměti hostitele, nejprve je musí tedy mezipaměti tento disk. Tím se zajistí, že čtení IOs, které vzorová analytická pomůcka vyvolají na čtení z mezipaměti svazku ve skutečnosti přístupů do mezipaměti a nikoli disk přímo. Výsledek přístupů do mezipaměti v další IOPS z jedné mezipaměti povolena disku.
 
 > **Důležité:**  
-> Hello mezipaměti můžete musí tedy před spuštěním srovnávací testy, pokaždé, když je virtuální počítač restartovat.
+> Mezipaměti můžete musí tedy před spuštěním srovnávací testy, pokaždé, když je virtuální počítač restartovat.
 >
 >
 
 #### <a name="iometer"></a>Iometer
-[Stáhněte si nástroj Iometer hello](http://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) na hello virtuálních počítačů.
+[Stáhněte si nástroj Iometer](http://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) ve virtuálním počítači.
 
 *Testovací soubor*  
-Iometer používá testovací soubor, který je uložený na svazku hello, na kterém budete spouštět hello srovnávací testy testu. Ho jednotky čtení a zápisy na tomto testování disku se souborem toomeasure hello IOPS a propustnosti. Iometer vytvoří tento testovací soubor, pokud jste nezadali. Vytvořte 200GB testovací soubor s názvem iobw.tst na čtení z mezipaměti a NoCacheWrites svazky hello.
+Iometer používá testovací soubor, který je uložený na svazku, na kterém budete spouštět testu typovou úlohou test. Ho jednotky čte a zapisuje na tento testovací soubor k měření disku IOPS a propustnosti. Iometer vytvoří tento testovací soubor, pokud jste nezadali. Vytvořte 200GB testovací soubor s názvem iobw.tst na čtení z mezipaměti a NoCacheWrites svazky.
 
 *Specifikace přístup*  
-Hello specifikace, požádat o vstupně-výstupní operace velikost % pro čtení a zápis, % náhodných nebo sekvenčních jsou nakonfigurovány pomocí karty hello "Specifikace Access" v Iometer. Vytvořte specifikaci přístup pro jednotlivé scénáře hello popsané dole. Vytvoření specifikace hello přístup a "Uložit" s odpovídajícím názvem jako – RandomWrites\_8 kB, RandomReads\_8 kB. Vyberte odpovídající specifikaci hello při spuštění scénáře testu hello.
+Specifikace, požádat o vstupně-výstupní operace velikost % pro čtení a zápis, % náhodných nebo sekvenčních jsou nakonfigurovány pomocí karty "Specifikace Access" v Iometer. Vytvořte specifikaci přístup pro jednotlivé scénáře popsané dole. Vytvoření specifikace přístup a "Uložit" s odpovídajícím názvem jako – RandomWrites\_8 kB, RandomReads\_8 kB. Vyberte odpovídající specifikaci při spuštění scénáře testu.
 
 Níže je uveden příklad specifikací přístup pro scénář maximální IOPS zápisu  
     ![](media/storage-premium-storage-performance/image8.png)
 
 *Specifikace maximální IOPS testu*  
-toodemonstrate maximální IOPs, použít menší velikost žádosti. Použijte 8 kb velikost požadavku a vytvoření specifikace náhodných zápisů a čtení.
+K předvedení maximální IOPs, použijte menší velikost žádosti. Použijte 8 kb velikost požadavku a vytvoření specifikace náhodných zápisů a čtení.
 
 | Specifikace přístup | Velikost požadavku | Náhodné % | % Pro čtení |
 | --- | --- | --- | --- |
@@ -384,15 +384,15 @@ toodemonstrate maximální IOPs, použít menší velikost žádosti. Použijte 
 | RandomReads\_8 kb |8 KB |100 |100 |
 
 *Specifikace maximální propustnost testu*  
-toodemonstrate maximální propustnost, použijte větší velikost žádosti. Použijte 64 tisíc velikost požadavku a vytvoření specifikace náhodných zápisů a čtení.
+K předvedení maximální propustnost, použijte větší velikost žádosti. Použijte 64 tisíc velikost požadavku a vytvoření specifikace náhodných zápisů a čtení.
 
 | Specifikace přístup | Velikost požadavku | Náhodné % | % Pro čtení |
 | --- | --- | --- | --- |
 | RandomWrites\_64 kb / s |64 KB |100 |0 |
 | RandomReads\_64 kb / s |64 KB |100 |100 |
 
-*Spuštění hello Iometer testu*  
-Proveďte kroky hello níže toowarm do mezipaměti
+*Spouštění Iometer testu*  
+Proveďte následující postup tedy mezipaměti
 
 1. Vytvořte dva specifikace přístup s hodnoty zobrazené níže,
 
@@ -400,18 +400,18 @@ Proveďte kroky hello níže toowarm do mezipaměti
    | --- | --- | --- | --- |
    | RandomWrites\_1 MB |1MB |100 |0 |
    | RandomReads\_1 MB |1MB |100 |100 |
-2. Spusťte test hello Iometer pro inicializaci mezipaměti disku s následujícími parametry. Pomocí tří pracovních vláken pro hello cílový svazek a hloubce fronty 128. Nastavit hello hello too2hrs testu na kartě "Testování instalace" hello "Běh" dobu trvání.
+2. Spusťte test Iometer pro inicializaci mezipaměti disku s následujícími parametry. Pomocí tří pracovních vláken pro cílový svazek a hloubce fronty 128. Nastavte "Běh" doba trvání testu na 2hrs na kartě "Testování instalace".
 
    | Scénář | Cílový svazek | Name (Název) | Doba trvání |
    | --- | --- | --- | --- |
    | Inicializovat Disk mezipaměti |Čtení z mezipaměti |RandomWrites\_1 MB |2hrs |
-3. Spusťte test hello Iometer pro zahájení práce s disku mezipaměti s následujícími parametry. Pomocí tří pracovních vláken pro hello cílový svazek a hloubce fronty 128. Nastavit hello hello too2hrs testu na kartě "Testování instalace" hello "Běh" dobu trvání.
+3. Spusťte test Iometer pro zahájení práce s disku mezipaměti s následujícími parametry. Pomocí tří pracovních vláken pro cílový svazek a hloubce fronty 128. Nastavte "Běh" doba trvání testu na 2hrs na kartě "Testování instalace".
 
    | Scénář | Cílový svazek | Name (Název) | Doba trvání |
    | --- | --- | --- | --- |
    | Horké až diskové mezipaměti |Čtení z mezipaměti |RandomReads\_1 MB |2hrs |
 
-Po diskové mezipaměti je provozní teplotu, pokračujte v níže uvedených scénářů testů hello. hello toorun Iometer test, použijte aspoň tři pracovních vláken pro **každý** cíle svazku. Pro každý pracovní vlákno vyberte hello cílový svazek, nastavit hloubku fronty a vyberte jednu z hello uložit test specifikace, jsou uvedené v tabulce hello níže toorun hello odpovídající testovací scénář. Při spuštění tyto testy Hello tabulka také ukazuje očekávané výsledky pro IOPS a propustnosti. Ve všech scénářích se používá malé velikost vstupně-výstupní operace 8 kB a hloubce fronty vysoké 128.
+Po diskové mezipaměti je provozní teplotu, pokračujte testovací scénáře uvedené níže. Pokud chcete spustit Iometer test, použijte aspoň tři pracovních vláken pro **každý** cíle svazku. Pro každý pracovní vlákno vyberte cílový svazek, nastavte hloubku fronty a vyberte jednu z uložené testovací specifikace, jak je znázorněno v následující tabulce, ke spuštění odpovídající scénáře testu. V tabulce také jsou očekávané výsledky pro IOPS a propustnost při spuštění tyto testy. Ve všech scénářích se používá malé velikost vstupně-výstupní operace 8 kB a hloubce fronty vysoké 128.
 
 | Testovací scénář | Cílový svazek | Name (Název) | výsledek |
 | --- | --- | --- | --- |
@@ -424,7 +424,7 @@ Po diskové mezipaměti je provozní teplotu, pokračujte v níže uvedených sc
 | Kombinovaná MB/s |Čtení z mezipaměti |RandomWrites\_64 kb / s |1 000 MB/s |
 | NoCacheWrites |RandomReads\_64 kb / s | &nbsp; | &nbsp; |
 
-Níže jsou snímky obrazovky hello Iometer výsledků testů pro kombinované scénáře IOPS a propustnosti.
+Tady jsou snímky obrazovky Iometer výsledky testu pro kombinované scénáře IOPS a propustnosti.
 
 *Kombinovaná čtení a zápisy maximální IOPS.*  
 ![](media/storage-premium-storage-performance/image9.png)
@@ -433,20 +433,20 @@ Níže jsou snímky obrazovky hello Iometer výsledků testů pro kombinované s
 ![](media/storage-premium-storage-performance/image10.png)
 
 ### <a name="fio"></a>FIO
-FIO je úložiště toobenchmark oblíbených nástroj na hello virtuální počítače s Linuxem. Má hello flexibilitu tooselect různé vstupně-výstupní operace velikosti, sekvenční nebo náhodné čtení a zápisy. Procesy tooperform hello Zadaná vstupně-výstupních operací, nebo ji vytvoří pracovních vláken. Můžete zadat typ hello vstupně-výstupních operací každý pracovní vlákno musíte provést pomocí úlohy souborů. Jsme vytvořili jeden soubor úlohy pro scénář ukazuje následující příklady hello. Specifikace hello v tyto úlohy soubory toobenchmark různé úlohy běžící na Storage úrovně Premium, můžete změnit. V příkladech hello se používá standardní DS 14 virtuální počítač spuštěný **Ubuntu**. Hello používá stejné nastavení popsané v hello začátku hello [srovnávací testy části](#Benchmarking) a záložním vytvoří mezipaměť hello před spuštěním hello srovnávací testy testy.
+FIO je nástroj oblíbených do testu výkonnosti úložiště na virtuálních počítačích systému Linux. Má flexibilitu a vyberte jiný vstupně-výstupní operace velikostí, sekvenční nebo náhodné čtení a zápisu. Se vytvoří pracovní vlákna a procesy provést zadaný vstupně-výstupních operací. Zadaný typ vstupně-výstupních operací každý pracovní vlákno musíte provést pomocí úlohy souborů. Jsme vytvořili jeden soubor úlohy pro scénář předvedené v příkladech níže. Specifikace v těchto souborech úlohy otestovat různé úlohy běžící na Storage úrovně Premium, můžete změnit. V příkladech se používá standardní DS 14 virtuální počítač spuštěný **Ubuntu**. Použít stejné nastavení, které jsou popsané na začátku [srovnávací testy části](#Benchmarking) a záložním vytvoří mezipaměť před spuštěním testů typovou úlohou.
 
 Než začnete, [stáhnout FIO](https://github.com/axboe/fio) a nainstalujte ji na virtuálním počítači.
 
-Spusťte následující příkaz pro Ubuntu, hello
+Spusťte následující příkaz pro Ubuntu,
 
 ```
 apt-get install fio
 ```
 
-Pro řízení operací čtení na discích hello použijeme čtyři pracovních vláken pro řízení operace zápisu a čtyři pracovních vláken. Hello zápisu pracovníci bude se řídí provoz na svazku hello "nocache", který obsahuje 10 disky s mezipamětí nastavit také "Žádný". Hello pracovních procesů pro čtení se se řídí provoz na hello "readcache" svazek, který má 1 disk sadou mezipaměti příliš "Jen pro čtení".
+Pro řízení operace čtení na discích použijeme čtyři pracovních vláken pro řízení operace zápisu a čtyři pracovních vláken. Pracovníci zápisu se řízení provozu na svazku "nocache", který obsahuje 10 disky s mezipamětí nastaven na "Žádný". Pracovní procesy pro čtení se řízení provozu na svazku "readcache", který má 1 disk s mezipaměti nastaven na "Jen pro čtení".
 
 *Maximální zápis IOPS*  
-Vytvořit soubor úlohy hello se následující specifikace tooget maximální IOPS zápisu. Název "fiowrite.ini".
+Vytvořte soubor úlohy s následující specifikace získat maximální IOPS zápisu. Název "fiowrite.ini".
 
 ```
 [global]
@@ -470,23 +470,23 @@ rw=randwrite
 directory=/mnt/nocache
 ```
 
-Poznámka: hello podle klíče věcí, které odpovídají pokynů pro návrh hello popsané v předchozích částech. Tyto specifikace jsou nezbytné toodrive maximální IOPS,  
+Všimněte si, postupujte podle klíče věcí, které jsou v souladu s pokyny pro návrh popsané v předchozích částech. Tyto specifikace jsou nezbytné k řízení maximální IOPS,  
 
 * Hloubka fronty vysoké 256.  
 * Velikost malé bloku 8KB.  
 * Více vláken provádění náhodných zápisů.
 
-Spusťte následující příkaz tookick vypnout hello FIO otestovat 30 sekund, hello  
+Spusťte následující příkaz, který ji FIO test pro 30 sekund,  
 
 ```
 sudo fio --runtime 30 fiowrite.ini
 ```
 
-V průběhu testovacího hello bude možné toosee hello počet zápisu, které poskytujete disky virtuálních počítačů a Premium hello IOPS. Jak znázorňuje následující ukázka hello, hello virtuálních počítačů DS14 doručování jeho zápisu maximální limit IOPS 50 000 IOPS.  
+Při spuštění testu, nebudete moci zobrazit počet zápisu IOPS virtuálního počítače a poskytujete prémiové disky. Jak znázorňuje následující ukázka, virtuální počítač DS14 doručování jeho zápisu maximální limit IOPS 50 000 IOPS.  
     ![](media/storage-premium-storage-performance/image11.png)
 
 *Čtení maximální IOPS*  
-Vytvořit soubor úlohy hello se následující specifikace tooget maximální IOPS pro čtení. Název "fioread.ini".
+Vytvořte soubor úlohy s následující specifikace získat maximální IOPS pro čtení. Název "fioread.ini".
 
 ```
 [global]
@@ -510,23 +510,23 @@ rw=randread
 directory=/mnt/readcache
 ```
 
-Poznámka: hello podle klíče věcí, které odpovídají pokynů pro návrh hello popsané v předchozích částech. Tyto specifikace jsou nezbytné toodrive maximální IOPS,
+Všimněte si, postupujte podle klíče věcí, které jsou v souladu s pokyny pro návrh popsané v předchozích částech. Tyto specifikace jsou nezbytné k řízení maximální IOPS,
 
 * Hloubka fronty vysoké 256.  
 * Velikost malé bloku 8KB.  
 * Více vláken provádění náhodných zápisů.
 
-Spusťte následující příkaz tookick vypnout hello FIO otestovat 30 sekund, hello
+Spusťte následující příkaz, který ji FIO test pro 30 sekund,
 
 ```
 sudo fio --runtime 30 fioread.ini
 ```
 
-Během hello testovací běhy, nebudete moct toosee hello počet čtení hello IOPS virtuálního počítače a poskytujete prémiové disky. Jak znázorňuje následující ukázka hello, doručování hello DS14 virtuální počítač více než 64 000 IOPS pro čtení. Toto je kombinací hello disku a výkon mezipaměti hello.  
+Při spuštění testu, nebudete moci zobrazit počet čtení IOPS virtuálního počítače a poskytujete prémiové disky. Jak znázorňuje následující ukázka, virtuální počítač DS14 doručování více než 64 000 IOPS pro čtení. Toto je kombinací disku a výkon mezipaměti.  
     ![](media/storage-premium-storage-performance/image12.png)
 
 *Maximální počet čtení a zápisu IOPS*  
-Vytvořit soubor úlohy hello s následující specifikace tooget maximální kombinaci oprávnění ke čtení a zápis IOPS. Název "fioreadwrite.ini".
+Vytvoření souboru úlohy pomocí následující specifikace získat maximální kombinaci oprávnění ke čtení a zápis IOPS. Název "fioreadwrite.ini".
 
 ```
 [global]
@@ -567,23 +567,23 @@ directory=/mnt/nocache
 rate_iops=12500
 ```
 
-Poznámka: hello podle klíče věcí, které odpovídají pokynů pro návrh hello popsané v předchozích částech. Tyto specifikace jsou nezbytné toodrive maximální IOPS,
+Všimněte si, postupujte podle klíče věcí, které jsou v souladu s pokyny pro návrh popsané v předchozích částech. Tyto specifikace jsou nezbytné k řízení maximální IOPS,
 
 * Hloubka fronty vysoké 128.  
 * Velikost bloku malé 4KB.  
 * Více vláken provádění náhodných čte a zapisuje.
 
-Spusťte následující příkaz tookick vypnout hello FIO otestovat 30 sekund, hello
+Spusťte následující příkaz, který ji FIO test pro 30 sekund,
 
 ```
 sudo fio --runtime 30 fioreadwrite.ini
 ```
 
-V průběhu testovacího hello se být schopný toosee hello počet kombinované pro čtení a zápisu IOPS hello virtuálních počítačů a poskytujete prémiové disky. Jak znázorňuje následující ukázka hello, hello virtuálních počítačů DS14 doručování více než 100 000 kombinované oprávnění ke čtení a zápis IOPS. Toto je kombinací hello disku a výkon mezipaměti hello.  
+Při spuštění testu, nebudete moci zobrazit počet kombinované pro čtení a zápisu IOPS virtuálního počítače a poskytujete prémiové disky. Jak znázorňuje následující ukázka, virtuální počítač DS14 doručování více než 100 000 kombinované oprávnění ke čtení a zápis IOPS. Toto je kombinací disku a výkon mezipaměti.  
     ![](media/storage-premium-storage-performance/image13.png)
 
 *Nejvyšší možná propustnost*  
-tooget hello maximální kombinovat pro čtení a zápisu propustnosti, použít větší velikost bloku a hloubku fronty velké s více vlákny provádění čtení a zápisy. Můžete použít velikost bloku 64KB a hloubku fronty 128.
+Získat maximální kombinovat pro čtení a zápisu propustnosti, použít větší velikost bloku a hloubku fronty velké s více vlákny provádění čtení a zápisy. Můžete použít velikost bloku 64KB a hloubku fronty 128.
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o službě Azure Premium Storage:

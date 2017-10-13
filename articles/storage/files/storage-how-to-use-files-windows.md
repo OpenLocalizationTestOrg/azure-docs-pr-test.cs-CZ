@@ -1,6 +1,6 @@
 ---
-title: "aaaMount sdílenou složku Azure a přístup hello sdílené složky v systému Windows | Microsoft Docs"
-description: "Připojte Azure sdílené složky a sdílené složky hello přístup v systému Windows."
+title: "Připojení sdílené složky Azure a přístup k ní v systému Windows | Dokumentace Microsoftu"
+description: "Připojení sdílené složky Azure a přístup k ní v systému Windows."
 services: storage
 documentationcenter: na
 author: RenaShahMSFT
@@ -12,70 +12,73 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/27/2017
+ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: eb6d58ad391adb6c06703ad694150534ccf44ada
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 111b925de9ca2155e2d3631979272170ed614816
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="mount-an-azure-file-share-and-access-hello-share-in-windows"></a>Připojit Azure sdílené složky a sdílené složky hello přístup v systému Windows
-[Úložiště Azure File](../storage-dotnet-how-to-use-files.md) je systém souborů cloudu snadno toouse společnosti Microsoft. Sdílené složky Azure je možné připojit v systémech Windows a Windows Server. Tento článek ukazuje tři různé způsoby toomount Azure sdílené složky v systému Windows: s hello uživatelské rozhraní Průzkumníka souborů pomocí prostředí PowerShell a prostřednictvím hello příkazového řádku. 
+# <a name="mount-an-azure-file-share-and-access-the-share-in-windows"></a>Připojení sdílené složky Azure a přístup k ní v systému Windows
+Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v systémech Windows a Windows Server. Tento článek ukazuje tři různé způsoby připojení sdílené složky Azure v systému Windows: pomocí uživatelského rozhraní Průzkumníka souborů, přes PowerShell a přes příkazový řádek. 
 
-V pořadí toomount Azure File sdílet mimo hello oblast Azure, které je umístěn v, jako jsou místní nebo v jiné oblasti Azure hello operačního systému musí podporovat SMB 3.0. 
+Aby bylo možné připojit sdílenou složku Azure mimo oblast, ve které je hostovaná, například v místním prostředí nebo jiné oblasti Azure, operační systém musí podporovat protokol SMB 3.0. 
 
-V závislosti na verzi operačního systému je možné sdílenou složku Azure připojit na počítači se systémem Windows v místním prostředí nebo na virtuálním počítači Azure. Níže uvedená tabulka ukazuje hello 
+Sdílené složky Azure můžete připojit v instalaci Windows na virtuálním počítači Azure nebo v místním prostředí. Následující tabulka uvádí, které verze operačního systému a v jakém prostředí podporují připojení sdílených složek:
 
-| Verze systému Windows        | Verze protokolu SMB |Možnost připojit na virtuálním počítači Azure|Možnost připojit v místním prostředí|
-|------------------------|-------------|---------------------|---------------------|
-| Windows 7              | SMB 2.1     | Ano                 | Ne                  |
-| Windows Server 2008 R2 | SMB 2.1     | Ano                 | Ne                  |
-| Windows 8              | SMB 3.0     | Ano                 | Ano                 |
-| Windows Server 2012    | SMB 3.0     | Ano                 | Ano                 |
-| Windows Server 2012 R2 | SMB 3.0     | Ano                 | Ano                 |
-| Windows 10             | SMB 3.0     | Ano                 | Ano                 |
+| Verze systému Windows        | Verze protokolu SMB | Možnost připojit na virtuálním počítači Azure | Možnost připojit v místním prostředí |
+|------------------------|-------------|-----------------------|----------------------|
+| Windows 10<sup>1</sup>  | SMB 3.0 | Ano | Ano |
+| Windows Server 2016    | SMB 3.0     | Ano                   | Ano                  |
+| Windows 8.1            | SMB 3.0     | Ano                   | Ano                  |
+| Windows Server 2012 R2 | SMB 3.0     | Ano                   | Ano                  |
+| Windows Server 2012    | SMB 3.0     | Ano                   | Ano                  |
+| Windows 7              | SMB 2.1     | Ano                   | Ne                   |
+| Windows Server 2008 R2 | SMB 2.1     | Ano                   | Ne                   |
+
+<sup>1</sup>Windows 10 verze 1507, 1511, 1607, 1703 a 1709.
 
 > [!Note]  
-> Doporučujeme, aby pořízení hello nejnovější KB pro vaši verzi systému Windows.
+> Vždy doporučujeme získat nejnovější aktualizaci KB pro vaši verzi systému Windows.
 
 ## <a name="aprerequisites-for-mounting-azure-file-share-with-windows"></a></a>Požadavky pro připojení sdílené složky Azure v systému Windows 
-* **Název účtu úložiště**: sdílenou složku Azure File toomount, bude nutné hello název účtu úložiště hello.
+* **Název účtu úložiště:** Pro připojení sdílené složky Azure budete potřebovat název účtu úložiště.
 
-* **Klíč účtu úložiště**: sdílenou složku Azure File toomount, bude nutné hello klíč primární (nebo sekundární) úložiště. Klíče SAS aktuálně nejsou pro připojení podporovány.
+* **Klíč účtu úložiště:** Pro připojení sdílené složky Azure budete potřebovat primární (nebo sekundární) klíč úložiště. Klíče SAS aktuálně nejsou pro připojení podporovány.
 
-* **Ujistěte se, že je otevřený port 445:** Azure File Storage používá protokol SMB. Toosee SMB komunikuje přes port TCP 445 - zkontrolujte, zda brána firewall neblokuje porty TCP 445 z klientského počítače.
+* **Ujistěte se, že je otevřený port 445:** Služba Soubory Azure používá protokol SMB. Protokol SMB komunikuje přes protokol TCP 445 – zkontrolujte, že brána firewall neblokuje port TCP 445 z klientského počítače.
 
-## <a name="mount-hello-azure-file-share-with-file-explorer"></a>Připojit sdílenou složku Azure File hello pomocí Průzkumníka souborů
+## <a name="mount-the-azure-file-share-with-file-explorer"></a>Připojení sdílené složky Azure pomocí Průzkumníka souborů
 > [!Note]  
-> Všimněte si, že hello následující pokyny se zobrazí na Windows 10 a mohou poněkud lišit na starší verze. 
+> Mějte na paměti, že následující pokyny jsou ukázané na systému Windows 10 a ve starších vydaných verzích se můžou mírně lišit. 
 
-1. **Otevřete Průzkumníka souborů**: To lze provést otevírání z hello nabídce Start, nebo stiskněte Win + E zástupce.
+1. **Otevřete Průzkumníka souborů:** Můžete to provést otevřením z nabídky Start nebo stisknutím klávesové zkratky Win+E.
 
-2. **Přejděte toohello položku "Tento počítač" na levé straně hello okna hello. Tím se změní hello nabídky pásu karet hello k dispozici. V nabídce hello počítač, vyberte možnost "Připojit síťovou jednotku"**.
+2. **Na levé straně okna přejděte na položku Tento počítač. Tím se změní dostupné nabídky na pásu karet. Z nabídky Počítač vyberte Připojit síťovou jednotku**.
     
-    ![Snímek obrazovky hello "Připojit síťovou jednotku" rozevírací nabídky](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
+    ![Snímek obrazovky s rozevírací nabídkou Připojit síťovou jednotku](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
-3. **Cesta UNC hello kopírování z podokna "Připojit" hello v hello portál Azure**: podrobný popis jak toofind tyto informace můžete najít [zde](storage-how-to-use-files-portal.md#connect-to-file-share).
+3. **Zkopírujte cestu UNC z podokna Připojit na webu Azure Portal:** Podrobný popis toho, jak tuto informaci najít, najdete [tady](storage-how-to-use-files-portal.md#connect-to-file-share).
 
-    ![cesta UNC Hello hello Azure File storage připojit podokně](./media/storage-how-to-use-files-windows/portal_netuse_connect.png)
+    ![Cesta UNC z podokna Připojit služby Soubory Azure](./media/storage-how-to-use-files-windows/portal_netuse_connect.png)
 
-4. **Vyberte písmeno jednotky hello a zadejte cestu UNC hello.** 
+4. **Vyberte písmeno jednotky a zadejte cestu UNC.** 
     
-    ![Snímek obrazovky dialogového okna "Připojit síťovou jednotku" hello](./media/storage-how-to-use-files-windows/2_MountOnWindows10.png)
+    ![Snímek obrazovky s dialogovým oknem Připojit síťovou jednotku](./media/storage-how-to-use-files-windows/2_MountOnWindows10.png)
 
-5. **Použití hello název účtu úložiště se přidá jako předpona `Azure\` jako uživatelské jméno hello a klíč účtu úložiště jako hello heslo.**
+5. **Použijte název účtu úložiště s předponou `Azure\` jako uživatelské jméno a klíč účtu úložiště jako heslo.**
     
-    ![Snímek obrazovky dialogu pro přihlašovací údaje hello sítě](./media/storage-how-to-use-files-windows/3_MountOnWindows10.png)
+    ![Snímek obrazovky s dialogovým oknem Přihlašovací údaje k síti](./media/storage-how-to-use-files-windows/3_MountOnWindows10.png)
 
 6. **Používejte sdílenou složku Azure, jak potřebujete**.
     
     ![Sdílená složka Azure je teď připojená](./media/storage-how-to-use-files-windows/4_MountOnWindows10.png)
 
-7. **Když jsou připravené toodismount (nebo odpojit) hello Azure sdílené složky, můžete tak učinit kliknete pravým tlačítkem na položku hello hello sdílené složky v části hello "umístění v síti" v Průzkumníku souborů a výběrem "Odpojení"**.
+7. **Až budete připraveni sdílenou složku Azure odpojit, můžete to provést tak, že v Průzkumníku souborů kliknete pravým tlačítkem na položku sdílené složky v části Umístění v síti a vyberete Odpojit**.
 
-## <a name="mount-hello-azure-file-share-with-powershell"></a>Připojit sdílenou složku Azure File hello pomocí prostředí PowerShell
-1. **Použití hello následující příkaz sdílenou složku Azure File hello toomount**: Mějte na paměti, tooreplace `<storage-account-name>`, `<share-name>`, `<storage-account-key>`, `<desired-drive-letter>` hello správné informace.
+## <a name="mount-the-azure-file-share-with-powershell"></a>Připojení sdílené složky Azure pomocí PowerShellu
+1. **Pomocí následujícího příkazu připojte sdílenou složku Azure:** Nezapomeňte nahradit `<storage-account-name>`, `<share-name>`, `<storage-account-key>`, `<desired-drive-letter>` správnými informacemi.
 
     ```PowerShell
     $acctKey = ConvertTo-SecureString -String "<storage-account-key>" -AsPlainText -Force
@@ -83,59 +86,59 @@ V závislosti na verzi operačního systému je možné sdílenou složku Azure 
     New-PSDrive -Name <desired-drive-letter> -PSProvider FileSystem -Root "\\<storage-account-name>.file.core.windows.net\<share-name>" -Credential $credential
     ```
 
-2. **Použijte sdílenou složku Azure File hello podle potřeby**.
+2. **Používejte sdílenou složku Azure, jak potřebujete**.
 
-3. **Jakmile budete hotovi, odpojte hello Azure sdílenou složku pomocí hello následující příkaz**.
+3. **Až budete hotovi, odpojte sdílenou složku Azure pomocí následujícího příkazu**.
 
     ```PowerShell
     Remove-PSDrive -Name <desired-drive-letter>
     ```
 
 > [!Note]  
-> Můžete použít hello `-Persist` parametr na `New-PSDrive` toomake hello zbytku viditelné toohello sdílenou složku Azure File hello operačního systému při připojené.
+> U příkazu `New-PSDrive` můžete použít parametr `-Persist`, který zajistí, že sdílená složka Azure bude během připojení viditelná v celém operačním systému.
 
-## <a name="mount-hello-azure-file-share-with-command-prompt"></a>Připojit sdílenou složku Azure File hello pomocí příkazového řádku
-1. **Použití hello následující příkaz sdílenou složku Azure File hello toomount**: Mějte na paměti, tooreplace `<storage-account-name>`, `<share-name>`, `<storage-account-key>`, `<desired-drive-letter>` hello správné informace.
+## <a name="mount-the-azure-file-share-with-command-prompt"></a>Připojení sdílené složky Azure pomocí příkazového řádku
+1. **Pomocí následujícího příkazu připojte sdílenou složku Azure:** Nezapomeňte nahradit `<storage-account-name>`, `<share-name>`, `<storage-account-key>`, `<desired-drive-letter>` správnými informacemi.
 
     ```
     net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
     ```
 
-2. **Použijte sdílenou složku Azure File hello podle potřeby**.
+2. **Používejte sdílenou složku Azure, jak potřebujete**.
 
-3. **Jakmile budete hotovi, odpojte hello Azure sdílenou složku pomocí hello následující příkaz**.
+3. **Až budete hotovi, odpojte sdílenou složku Azure pomocí následujícího příkazu**.
 
     ```
     net use <desired-drive-letter>: /delete
     ```
 
 > [!Note]  
-> Můžete nakonfigurovat hello Azure File znovu připojit ke sdílené složce tooautomatically restartování zachování hello přihlašovacích údajů v systému Windows. Následující příkaz Hello zachová hello přihlašovací údaje:
+> Sdílenou složku Azure můžete nakonfigurovat tak, aby se po restartování automaticky znovu připojila díky uchování přihlašovacích údajů v systému Windows. Následující příkaz zajistí uchování přihlašovacích údajů:
 >   ```
 >   cmdkey /add:<storage-account-name>.file.core.windows.net /user:AZURE\<storage-account-name> /pass:<storage-account-key>
 >   ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o úložišti Azure File jsou dostupné na těchto odkazech.
+Další informace o službě Soubory Azure najdete na těchto odkazech.
 
 * [Nejčastější dotazy](../storage-files-faq.md)
 * [Řešení potíží ve Windows](storage-troubleshoot-windows-file-connection-problems.md)      
 
 ### <a name="conceptual-articles-and-videos"></a>Koncepční články a videa
-* [Azure File Storage: hladký cloudový souborový systém SMB pro Windows a Linux](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
-* [Jak toouse Azure File storage s Linuxem](../storage-how-to-use-files-linux.md)
+* [Soubory Azure: hladký cloudový souborový systém SMB pro Windows a Linux](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
+* [Jak používat Soubory Azure s Linuxem](../storage-how-to-use-files-linux.md)
 
-### <a name="tooling-support-for-azure-file-storage"></a>Podpora nástrojů pro službu Azure File Storage
-* [Jak toouse AzCopy s Microsoft Azure Storage](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
-* [Použití hello rozhraní příkazového řádku Azure s Azure Storage](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
-* [Řešení potíží se službou Azure File Storage – Windows](storage-troubleshoot-windows-file-connection-problems.md)
-* [Řešení potíží se službou Azure File Storage – Linux](storage-troubleshoot-linux-file-connection-problems.md)
+### <a name="tooling-support-for-azure-files"></a>Podpora nástrojů pro Soubory Azure
+* [Použití nástroje AzCopy s Microsoft Azure Storage](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
+* [Použití Azure CLI s Azure Storage](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
+* [Řešení potíží se Soubory Azure – Windows](storage-troubleshoot-windows-file-connection-problems.md)
+* [Řešení potíží se Soubory Azure – Linux](storage-troubleshoot-linux-file-connection-problems.md)
 
 ### <a name="blog-posts"></a>Příspěvky na blozích
-* [Úložiště Azure File je nyní dostupné pro veřejnost](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
-* [Uvnitř Azure File Storage](https://azure.microsoft.com/blog/inside-azure-file-storage/)
+* [Služba Soubory Azure je teď obecně dostupná](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
+* [Uvnitř služby Soubory Azure](https://azure.microsoft.com/blog/inside-azure-file-storage/)
 * [Představujeme službu Microsoft Azure File](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
-* [Migrace dat tooAzure souboru](https://azure.microsoft.com/blog/migrating-data-to-microsoft-azure-files/)
+* [Migrace dat do služby Soubory Azure](https://azure.microsoft.com/blog/migrating-data-to-microsoft-azure-files/)
 
 ### <a name="reference"></a>Referenční informace
 * [Klientská knihovna Storage pro .NET – referenční informace](https://msdn.microsoft.com/library/azure/dn261237.aspx)

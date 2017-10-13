@@ -1,6 +1,6 @@
 ---
-title: "nastaví aplikace aaaCustomizing Media Encoder Standard | Microsoft Docs"
-description: "Toto téma ukazuje, jak tooperform advanced kódování přizpůsobením Media Encoder Standard přednastavení úloh. Hello téma ukazuje, jak toocreate sady Media Services .NET SDK toouse kódování úlohy a úlohy. Také ukazuje, jak toosupply vlastní přednastavení toohello úlohy kódování."
+title: "Přizpůsobení Media Encoder Standard přednastavení | Microsoft Docs"
+description: "Toto téma ukazuje, jak provádět pokročilé kódování přizpůsobením Media Encoder Standard přednastavení úloh. Téma ukazuje, jak používat sadu Media Services .NET SDK k vytvoření úlohy a úlohy kódování. Také ukazuje, jak k poskytování vlastních předvoleb pro úlohy kódování."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
-ms.openlocfilehash: fa8c3bef63b0c1ecc88a6b8874ecbff3a8028a57
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b4d25f07349043da8cb745930fde3371c98f9960
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Přizpůsobení Media Encoder Standard nastaví aplikace
 
 ## <a name="overview"></a>Přehled
 
-Toto téma ukazuje, jak tooperform advanced kódování s Media Encoder Standard (MES) pomocí vlastní předvolby. téma Hello používá .NET toocreate kódování úlohy a úlohy, která spustí tuto úlohu.  
+Toto téma ukazuje, jak provádět pokročilé kódování s Media Encoder Standard (MES) pomocí vlastní přednastavení. Téma používá rozhraní .NET k vytvoření kódování úlohy a úlohy, která spustí tuto úlohu.  
 
-V tomto tématu se zobrazí, jak toocustomize přednastavení provedením hello [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) hello přednastavené a snížení počtu vrstev. Hello [přizpůsobení kodéru Media Encoder Standard přednastavení](media-services-advanced-encoding-with-mes.md) téma ukazuje vlastních předvoleb, které se dají použít tooperform pokročilé úlohy kódování.
+V tomto tématu se zobrazí postup přizpůsobení přednastavení provedením [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) přednastavení a snížit počet vrstev. [Přizpůsobení kodéru Media Encoder Standard přednastavení](media-services-advanced-encoding-with-mes.md) téma ukazuje vlastních předvoleb, které umožňuje provádět pokročilé úlohy kódování.
 
 ## <a id="customizing_presets"></a>Přizpůsobení přednastavení MES
 
 ### <a name="original-preset"></a>Původní předvolbu
 
-Uložit hello JSON definované v hello [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) téma v některé soubor s příponou .json. Například **CustomPreset_JSON.json**.
+Uložit definované ve formátu JSON [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) téma v některé soubor s příponou .json. Například **CustomPreset_JSON.json**.
 
 ### <a name="customized-preset"></a>Přizpůsobené přednastavených
 
-Otevřete hello **CustomPreset_JSON.json** souboru a odeberte první tři vrstvy ze **H264Layers** tak váš soubor bude vypadat takto.
+Otevřete **CustomPreset_JSON.json** souboru a odeberte první tři vrstvy ze **H264Layers** tak váš soubor bude vypadat takto.
 
     
     {  
@@ -111,24 +111,24 @@ Otevřete hello **CustomPreset_JSON.json** souboru a odeberte první tři vrstvy
 
 ## <a id="encoding_with_dotnet"></a>Kódování pomocí služby Media Services .NET SDK
 
-Následující ukázka kódu Hello používá sadu Media Services .NET SDK tooperform hello následující úlohy:
+Následující příklad kódu používá sadu Media Services .NET SDK k provádění následujících úloh:
 
 - Vytvořte úlohu kódování.
-- Získání kodéru Media Encoder Standard toohello odkaz.
-- Načíst hello JSON vlastní předvolby, který jste vytvořili v předchozí části hello. 
+- Získáte odkaz na kodéru Media Encoder Standard.
+- Načtěte vlastní přednastavení JSON, který jste vytvořili v předchozí části. 
   
-        // Load hello JSON from hello local file.
+        // Load the JSON from the local file.
         string configuration = File.ReadAllText(fileName);  
 
-- Přidáte úlohu kódování toohello úloh. 
-- Zadejte vstup hello asset toobe kódování.
-- Vytvoření výstupní asset, který bude obsahovat kódovaný hello asset.
-- Přidejte průběh úlohy toocheck hello událost obslužné rutiny.
-- Odešlete úlohu hello.
+- Přidejte kódování úkolů do úlohy. 
+- Zadejte vstupní asset, který je zakódován.
+- Vytvoření výstupní asset, který bude obsahovat k zakódovanému assetu.
+- Přidání obslužné rutiny události zkontrolovat průběh úlohy.
+- Odeslání úlohy.
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
-Nastavení vývojového prostředí a naplnění souboru app.config hello s informace o připojení, jak je popsáno v [vývoj pro Media Services s .NET](media-services-dotnet-how-to-use.md). 
+Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
 
 #### <a name="example"></a>Příklad   
 
@@ -143,7 +143,7 @@ Nastavení vývojového prostředí a naplnění souboru app.config hello s info
     {
         class Program
         {
-        // Read values from hello App.config file.
+        // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
         ConfigurationManager.AppSettings["AADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
@@ -168,7 +168,7 @@ Nastavení vývojového prostředí a naplnění souboru app.config hello s info
             // Get an uploaded asset.
             var asset = _context.Assets.FirstOrDefault();
 
-            // Encode and generate hello output using custom presets.
+            // Encode and generate the output using custom presets.
             EncodeToAdaptiveBitrateMP4Set(asset);
 
             Console.ReadLine();
@@ -178,11 +178,11 @@ Nastavení vývojového prostředí a naplnění souboru app.config hello s info
         {
             // Declare a new job.
             IJob job = _context.Jobs.Create("Media Encoder Standard Job");
-            // Get a media processor reference, and pass tooit hello name of hello 
-            // processor toouse for hello specific task.
+            // Get a media processor reference, and pass to it the name of the 
+            // processor to use for the specific task.
             IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 
-            // Load hello XML (or JSON) from hello local file.
+            // Load the XML (or JSON) from the local file.
             string configuration = File.ReadAllText("CustomPreset_JSON.json");
 
             // Create a task
@@ -191,11 +191,11 @@ Nastavení vývojového prostředí a naplnění souboru app.config hello s info
             configuration,
             TaskOptions.None);
 
-            // Specify hello input asset toobe encoded.
+            // Specify the input asset to be encoded.
             task.InputAssets.Add(asset);
-            // Add an output asset toocontain hello results of hello job. 
+            // Add an output asset to contain the results of the job. 
             // This output is specified as AssetCreationOptions.None, which 
-            // means hello output asset is not encrypted. 
+            // means the output asset is not encrypted. 
             task.OutputAssets.AddNew("Output asset",
             AssetCreationOptions.None);
 

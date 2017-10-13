@@ -4,13 +4,13 @@
 
 # Začínáme
 ## [Identifikace databází a tabulek](/sql/sql-server/stretch-database/stretch-database-databases-and-tables-stretch-database-advisor)
-## [Spusťte Průvodce hello](/sql/sql-server/stretch-database/get-started-by-running-the-enable-database-for-stretch-wizard)
+## [Spuštění průvodce](/sql/sql-server/stretch-database/get-started-by-running-the-enable-database-for-stretch-wizard)
 
 # Postup
 ## Povolení
 ### [Povolení databáze](/sql/sql-server/stretch-database/enable-stretch-database-for-a-database)
 ### [Povolení tabulky](/sql/sql-server/stretch-database/enable-stretch-database-for-a-table)
-### [Vyberte řádky toomigrate](/sql/sql-server/stretch-database/select-rows-to-migrate-by-using-a-filter-function-stretch-database)
+### [Výběr řádků pro migraci](/sql/sql-server/stretch-database/select-rows-to-migrate-by-using-a-filter-function-stretch-database)
 ## Spravovat
 ### [Monitorování migrace dat](/sql/sql-server/stretch-database/monitor-and-troubleshoot-data-migration-stretch-database)
 ### [Pozastavení a obnovení migrace](/sql/sql-server/stretch-database/pause-and-resume-data-migration-stretch-database)

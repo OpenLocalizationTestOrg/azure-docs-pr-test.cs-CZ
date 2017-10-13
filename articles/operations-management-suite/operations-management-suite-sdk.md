@@ -1,6 +1,6 @@
 ---
-title: aaaOperations Management Suite (OMS) SDK | Microsoft Docs
-description: "Tento článek obsahuje seznam hello dokumentaci a další prostředky, které jsou k dispozici pro přístup k Azure portály a OMS služeb mimo hello OMS.  To zahrnuje rozhraní REST API pro přístup z různých programovacích rozhraní a skriptovacích strojů, jako je například prostředí PowerShell"
+title: "Služby Operations Management Suite (OMS) SDK | Microsoft Docs"
+description: "V tomto článku jsou uvedeny v dokumentaci a další prostředky, které jsou k dispozici pro přístup ke službám OMS mimo portálů OMS a Azure.  To zahrnuje rozhraní REST API pro přístup z různých programovacích rozhraní a skriptovacích strojů, jako je například prostředí PowerShell"
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/01/2017
 ms.author: bwren
-ms.openlocfilehash: 7144f10bba70a8f08cc97cec45b4b0a148892c90
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 03e0f5b6fa26806083cd7852e123495c898bcf0c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="operations-management-suite-oms-sdk"></a>Služby Operations Management Suite (OMS) sady SDK
-[Operations Management Suite (OMS)](operations-management-suite-overview.md) je společnosti Microsoft založená na cloudu IT řešení správy, které pomáhá spravovat a chránit místní a cloudové infrastruktury.  Tento článek obsahuje seznam hello dokumentaci a další prostředky, které jsou k dispozici pro přístup k Azure portály a OMS služeb mimo hello OMS.  To zahrnuje rozhraní REST API pro přístup z různých skriptovacích strojů, jako je například prostředí PowerShell a programovací rozhraní. 
+[Operations Management Suite (OMS)](operations-management-suite-overview.md) je společnosti Microsoft založená na cloudu IT řešení správy, které pomáhá spravovat a chránit místní a cloudové infrastruktury.  V tomto článku jsou uvedeny v dokumentaci a další prostředky, které jsou k dispozici pro přístup ke službám OMS mimo portálů OMS a Azure.  To zahrnuje rozhraní REST API pro přístup z různých skriptovacích strojů, jako je například prostředí PowerShell a programovací rozhraní. 
 
 ## <a name="automation"></a>Automation
 * [Dokumentace k Azure Automation.](http://azure.microsoft.com/documentation/services/automation)
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/06/2017
 * [Dokumentace k Azure Backup](http://azure.microsoft.com/documentation/services/backup)
 * [Zálohování rutiny prostředí PowerShell](https://msdn.microsoft.com/library/mt619253.aspx)
 * [Zálohování REST API](https://msdn.microsoft.com/library/azure/mt772375.aspx)
-* [Nasazení a správě zálohování tooAzure pro klienta systému Windows Server a Windows pomocí prostředí PowerShell](../backup/backup-client-automation.md)
+* [Nasazení a správě zálohování Azure pro Windows Server nebo klienta Windows pomocí prostředí PowerShell](../backup/backup-client-automation.md)
 
 ## <a name="log-analytics"></a>Log Analytics
 * [Dokumentace k log Analytics](http://azure.microsoft.com/documentation/services/log-analytics)
@@ -51,10 +51,10 @@ ms.lasthandoff: 10/06/2017
 ## <a name="site-recovery"></a>Site Recovery
 * [Rutiny prostředí PowerShell obnovení lokality](https://msdn.microsoft.com/library/mt637930.aspx)
 * [Site Recovery rozhraní REST API](https://msdn.microsoft.com/library/azure/mt750497.aspx)
-* [Přidat plány toorecovery sady runbook automatizace Azure.](../site-recovery/site-recovery-runbook-automation.md)
+* [Přidání sad Azure Automation runbook do plánů obnovení](../site-recovery/site-recovery-runbook-automation.md)
 * [Replikaci mezi místními technologie Hyper-V virtuální počítače a Azure pomocí prostředí PowerShell a Azure Resource Manager](../site-recovery/site-recovery-deploy-with-powershell-resource-manager.md)
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si o hello různé možnosti pro [integrace s OMS službami](operations-management-suite-integration.md).
+* Přečtěte si informace o různých možností pro [integrace s OMS službami](operations-management-suite-integration.md).
 * Vytvoření [vlastní řešení v OMS](operations-management-suite-solutions-creating.md).
 

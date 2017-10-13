@@ -1,6 +1,6 @@
 ---
-title: "aaaManage prostředí s více v Service Fabric | Microsoft Docs"
-description: "Service Fabric aplikace můžete spustit na clustery, které rozsahu velikost z jednoho počítače toothousands počítačů. V některých případech můžete tooconfigure aplikace pro tato rozmanitých prostředí. Tento článek popisuje jak toodefine jinou aplikaci parametry podle prostředí."
+title: "Správa prostředí s více v Service Fabric | Microsoft Docs"
+description: "Service Fabric aplikace můžete spustit na clustery, které rozsahu velikost z jednoho počítače tisíce počítačů. V některých případech můžete ke konfiguraci vaší aplikace pro tato rozmanitých prostředí. Tento článek vysvětluje postup definujte parametry jinou aplikaci na prostředí."
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: mikkelhegn
-ms.openlocfilehash: 2b3327e0e1a3bbd35a50835e720619f308b1b501
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 9317b3f0b7984e795c4205360ed58e2c4f3fbcb1
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="manage-application-parameters-for-multiple-environments"></a>Spravovat aplikace parametry pro prostředí s více
-Můžete vytvořit clustery Azure Service Fabric pomocí kdekoli z jednoho toomany tisíc počítačů. Při binární soubory aplikace můžete spustit bez úprav přes tento široké spektrum prostředí, často chcete tooconfigure hello aplikace odlišně, v závislosti na hello počtu počítačů, které nasazujete na.
+Můžete vytvořit clustery Azure Service Fabric pomocí kdekoli 1 až několika tisíc počítačů. Binární soubory aplikace můžete spustit bez úprav přes tento široké spektrum prostředí, ale často chcete nakonfigurovat aplikaci, jinak, v závislosti na počtu počítačů, které nasazujete na.
 
-Jako jednoduchý příklad, zvažte `InstanceCount` bezstavové služby. Když aplikace běží v Azure, obvykle chcete tooset tento parametr toohello speciální hodnotu-1. Tato konfigurace zajistí, že vaše služba běží na všech uzlech v clusteru hello (nebo každý uzel v uzlu typu hello Pokud jste nastavili omezení umístění). Tato konfigurace však není vhodný pro cluster jednoho počítače, protože nemůže mít více procesy naslouchání na hello stejný koncový bod na jednom počítači. Místo toho je obvykle nastavit `InstanceCount` příliš "1".
+Jako jednoduchý příklad, zvažte `InstanceCount` bezstavové služby. Když aplikace běží v Azure, obvykle chcete nastavte tento parametr zvláštní hodnotu-1. Tato konfigurace zajistí, že vaše služba běží na všech uzlech v clusteru (nebo každý uzel v uzlu typu, pokud jste nastavili omezení umístění). Tato konfigurace však není vhodný pro cluster s podporou jeden počítač, protože nemůže mít více procesy naslouchání na stejný koncový bod na jednom počítači. Místo toho je obvykle nastavit `InstanceCount` "1".
 
 ## <a name="specifying-environment-specific-parameters"></a>Zadání parametrů specifické pro prostředí
-problém s konfigurací toothis řešení Hello je sada parametrizované výchozích služeb a soubory parametrů aplikace, které zadejte tyto hodnoty parametrů pro dané prostředí. Výchozí služby a aplikace parametry jsou nakonfigurovaní v hello aplikace a služby manifesty. Hello definice schématu hello ServiceManifest.xml a ApplicationManifest.xml souborů se instaluje s hello Service Fabric SDK a nástrojů pro příliš*C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*.
+Řešení, aby tento problém je sada parametrizované výchozích služeb a soubory parametrů aplikace, které zadejte tyto hodnoty parametrů pro dané prostředí. Výchozí služby a aplikace parametry jsou nastaveny v manifestů aplikace a služby. Definice schématu pro ServiceManifest.xml a ApplicationManifest.xml soubory se instaluje s Service Fabric SDK a nástroje k *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*.
 
 ### <a name="default-services"></a>Výchozí služby
-Aplikace Service Fabric se skládají z kolekce instancí služby. Když je možné, toocreate prázdnou aplikaci a pak vytvořte všechny instance služby dynamicky, většina aplikací mít sadu základní služby, které mají být vytvořeny vždy při vytváření instance aplikace hello. Jedná se o odkazované tooas "výchozí služby". Jsou uvedené v manifestu aplikace hello se zástupnými symboly pro konfiguraci za prostředí, které jsou součástí hranaté závorky:
+Aplikace Service Fabric se skládají z kolekce instancí služby. I když je možné vytvořit prázdnou aplikaci a pak vytvořit všechny instance služby dynamicky, většina aplikací mít sadu základní služby, které mají být vytvořeny vždy při vytváření instance aplikace. Tyto jsou označovány jako "výchozí služby". Jsou uvedené v manifestu aplikace, se zástupnými symboly pro konfiguraci za prostředí, které jsou součástí hranaté závorky:
 
 ```xml
   <DefaultServices>
@@ -49,7 +49,7 @@ Aplikace Service Fabric se skládají z kolekce instancí služby. Když je mož
   </DefaultServices>
 ```
 
-Každý hello pojmenované parametry musí být definován v rámci elementu parametry hello manifest aplikace hello:
+Všechny pojmenované parametry musí být definován v rámci elementu parametry manifestu aplikace:
 
 ```xml
     <Parameters>
@@ -59,24 +59,24 @@ Každý hello pojmenované parametry musí být definován v rámci elementu par
     </Parameters>
 ```
 
-DefaultValue – atribut Hello určuje toobe hodnota hello používá hello neexistence parametr informace specifické pro dané prostředí.
+Atribut DefaultValue Určuje hodnotu, který se má použít při absenci dalších konkrétní parametr pro dané prostředí.
 
 > [!NOTE]
-> Všechny parametry instance služby jsou vhodné pro konfiguraci podle prostředí. V předchozím příkladu hello hello LowKey a HighKey hodnoty pro schéma rozdělení oddílů hello služby jsou explicitně definovány pro všechny instance služby hello vzhledem k tomu, že rozsah oddílu hello je funkce hello data domény, ne hello prostředí.
+> Všechny parametry instance služby jsou vhodné pro konfiguraci podle prostředí. V předchozím příkladu jsou hodnoty LowKey a HighKey pro schéma rozdělení oddílů služby explicitně definovány pro všechny instance služby od rozsahu oddílu je funkce domény data, není v prostředí.
 > 
 > 
 
 ### <a name="per-environment-service-configuration-settings"></a>Nastavení konfigurace služby za prostředí
-Hello [model aplikace Service Fabric](service-fabric-application-model.md) umožňuje služby tooinclude konfigurace balíčky, které obsahují vlastní páry klíč hodnota, které jsou v době běhu čitelné. Hello hodnoty těchto nastavení můžete také rozlišené pomocí prostředí tak, že zadáte `ConfigOverride` v manifestu aplikace hello.
+[Model aplikace Service Fabric](service-fabric-application-model.md) umožňuje služby zahrnuté balíčky konfigurace, které obsahují vlastní páry klíč hodnota, které jsou v době běhu čitelné. Hodnoty těchto nastavení můžete také rozlišené pomocí prostředí tak, že zadáte `ConfigOverride` v manifestu aplikace.
 
-Předpokládejme, že máte následující nastavení v souboru Config\Settings.xml hello hello hello `Stateful1` služby:
+Předpokládejme, že máte následující nastavení v souboru Config\Settings.xml `Stateful1` služby:
 
 ```xml
   <Section Name="MyConfigSection">
      <Parameter Name="MaxQueueSize" Value="25" />
   </Section>
 ```
-vytvoření této hodnoty pro dvojici konkrétní aplikaci nebo prostředí toooverride `ConfigOverride` při importu hello service manifest v manifestu aplikace hello.
+Chcete-li přepsat tuto hodnotu pro konkrétní prostředí aplikace pair, vytvořte `ConfigOverride` při importu service manifest v manifestu aplikace.
 
 ```xml
   <ConfigOverrides>
@@ -89,16 +89,16 @@ vytvoření této hodnoty pro dvojici konkrétní aplikaci nebo prostředí tooo
      </ConfigOverride>
   </ConfigOverrides>
 ```
-Tento parametr můžete pak nakonfigurovat prostředí, jak je uvedeno výše. To provedete tak, že deklarace v části Parametry hello hello manifest aplikace a zadání hodnoty v závislosti na prostředí v soubory parametrů aplikace hello.
+Tento parametr můžete pak nakonfigurovat prostředí, jak je uvedeno výše. To provedete tak, že deklarace v sekci parametrů manifestu aplikace a zadání hodnoty v závislosti na prostředí v soubory parametrů aplikace.
 
 > [!NOTE]
-> V případě hello nastavení konfigurace služby jsou tři místa, kde můžete nastavit hello hodnoty klíče: hello balíček konfigurace služby, manifest aplikace hello a soubor parametrů aplikace hello. Service Fabric se vždycky zvolte ze souboru parametrů aplikace hello nejprve (Pokud je zadána), pak hello manifest aplikace a nakonec hello konfigurační balíček.
+> V případě nastavení konfigurace služby, jsou tři místa, kde můžete nastavit hodnoty klíče: konfigurační balíček service manifest aplikace a parametr souboru aplikace. Service Fabric ze souboru aplikace parametr vždycky vybere první (Pokud je zadána), pak manifest aplikace a nakonec konfigurační balíček.
 > 
 > 
 
 ### <a name="setting-and-using-environment-variables"></a>Nastavení a použití proměnných prostředí 
-Můžete zadat a nastavení proměnných prostředí v souboru ServiceManifest.xml hello a pak přepsat hello ApplicationManifest.xml do souboru na základě za instance.
-Hello níže uvedený příklad dvou proměnných prostředí, jeden s hodnotou nastavte a hello jiných přepsána. Parametry aplikačního proměnné prostředí tooset hodnoty v hello stejný způsobem, že tyto se používaly k přepsání konfigurace můžete použít.
+Můžete zadat a nastavení proměnných prostředí v souboru ServiceManifest.xml a pak přepsání ApplicationManifest.xml souboru na základě za instance.
+Následující příklad ukazuje dvou proměnných prostředí, jeden s nastavenou hodnotu a dalších přepsána. Parametry aplikačního slouží k nastavení hodnot proměnných prostředí stejným způsobem, že tyto se používaly k přepsání konfigurace.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -127,7 +127,7 @@ Hello níže uvedený příklad dvou proměnných prostředí, jeden s hodnotou 
   <DataPackage Name="MyData" Version="DataVersion1" />
 </ServiceManifest>
 ```
-proměnné prostředí hello toooverride v hello ApplicationManifest.xml, odkaz na balíček kódu hello v hello ServiceManifest s hello `EnvironmentOverrides` elementu.
+Pokud chcete přepsat proměnné prostředí v ApplicationManifest.xml, odkazují na balíček kódu v ServiceManifest s `EnvironmentOverrides` elementu.
 
 ```xml
   <ServiceManifestImport>
@@ -137,14 +137,14 @@ proměnné prostředí hello toooverride v hello ApplicationManifest.xml, odkaz 
     </EnvironmentOverrides>
   </ServiceManifestImport>
  ``` 
- Po vytvoření hello s názvem instance služby je přístup k proměnné prostředí hello z kódu. například v C# můžete provést následující hello
+ Po vytvoření instance služby s názvem dostanete z kódu proměnné prostředí. například v jazyce C# můžete provést následující
 
 ```csharp
     string EnvVariable = Environment.GetEnvironmentVariable("MyEnvVariable");
 ```
 
 ### <a name="service-fabric-environment-variables"></a>Proměnné prostředí Service Fabric
-Service Fabric má vestavěné proměnné prostředí, nastavte pro každou instanci služby. Hello úplný seznam proměnných prostředí je níže, kde hello těch, které jsou v tučné jsou hello šablony, které budete používat ve službě, hello jiné se používá modulu runtime Service Fabric. 
+Service Fabric má vestavěné proměnné prostředí, nastavte pro každou instanci služby. Úplný seznam proměnných prostředí je níže, kde těm, které jsou v bold jsou ty, které budete používat ve službě, druhé používá modulu runtime Service Fabric. 
 
 * Fabric_ApplicationHostId
 * Fabric_ApplicationHostType
@@ -166,7 +166,7 @@ Service Fabric má vestavěné proměnné prostředí, nastavte pro každou inst
 * Fabric_ServicePackageVersionInstance
 * FabricPackageFileName
 
-belows Hello kód ukazuje, jak toolist hello proměnné prostředí Service Fabric
+Belows kód ukazuje, jak do seznamu proměnných prostředí Service Fabric
  ```csharp
     foreach (DictionaryEntry de in Environment.GetEnvironmentVariables())
     {
@@ -176,7 +176,7 @@ belows Hello kód ukazuje, jak toolist hello proměnné prostředí Service Fabr
         }
     }
 ```
-Hello Následují příklady proměnných prostředí pro typ aplikace volá `GuestExe.Application` volat s typem služby `FrontEndService` při spuštění v místním vývojářském počítači.
+Tady jsou příklady proměnných prostředí pro typ aplikace volá `GuestExe.Application` volat s typem služby `FrontEndService` při spuštění v místním vývojářském počítači.
 
 * **Fabric_ApplicationName = fabric:/GuestExe.Application**
 * **Fabric_CodePackageName = kód**
@@ -185,7 +185,7 @@ Hello Následují příklady proměnných prostředí pro typ aplikace volá `Gu
 * **Fabric_NodeName = to uzel _Node_2**
 
 ### <a name="application-parameter-files"></a>Soubory parametrů aplikace
-projekt aplikace Hello Service Fabric může obsahovat jeden nebo více soubory parametrů aplikace. Každý z nich definuje hello konkrétní hodnoty pro parametry hello, které jsou definovány v manifestu aplikace hello:
+Projekt aplikace Service Fabric může obsahovat jeden nebo více soubory parametrů aplikace. Každý z nich definuje konkrétní hodnoty pro parametry, které jsou definovány v manifestu aplikace:
 
 ```xml
     <!-- ApplicationParameters\Local.xml -->
@@ -202,25 +202,25 @@ Ve výchozím nastavení zahrnuje tři soubory parametrů aplikace s názvem Loc
 
 ![Soubory parametrů aplikace v Průzkumníku řešení][app-parameters-solution-explorer]
 
-toocreate soubor parametru jednoduše zkopírujte a vložte stávající a dejte mu nový název.
+Pokud chcete vytvořit soubor s parametry, jednoduše zkopírujte a vložte stávající a dejte mu nový název.
 
 ## <a name="identifying-environment-specific-parameters-during-deployment"></a>Identifikace konkrétní prostředí parametrů během nasazování
-Při nasazení je nutné toochoose hello odpovídající parametr souboru tooapply s vaší aplikací. Můžete to provést prostřednictvím dialogu hello publikovat v sadě Visual Studio nebo pomocí prostředí PowerShell.
+Při nasazení budete muset zvolit soubor odpovídající parametru pro použití s vaší aplikací. Můžete to provést prostřednictvím dialogové okno publikování v sadě Visual Studio nebo pomocí prostředí PowerShell.
 
 ### <a name="deploy-from-visual-studio"></a>Nasazení z Visual Studia
-Můžete zvolit z hello seznam souborů k dispozici parametr při publikování aplikace v sadě Visual Studio.
+Seznam dostupných parametrů souborů, které lze vybírat při publikování aplikace v sadě Visual Studio.
 
-![Vyberte soubor s parametry v dialogovém okně Publikovat hello][publishdialog]
+![Vyberte soubor s parametry v dialogovém okně publikování][publishdialog]
 
 ### <a name="deploy-from-powershell"></a>Nasazení z prostředí PowerShell
-Hello `Deploy-FabricApplication.ps1` skript prostředí PowerShell, které jsou součástí šablony projektu aplikace hello přijme profil publikování jako parametr a hello PublishProfile obsahuje soubor odkaz na aplikaci toohello parametry.
+`Deploy-FabricApplication.ps1` Skript prostředí PowerShell, které jsou součástí šablony projektu aplikace přijímá profil publikování jako parametr a PublishProfile obsahuje odkaz na soubor parametrů aplikace.
 
   ```PowerShell
     ./Deploy-FabricApplication -ApplicationPackagePath <app_package_path> -PublishProfileFile <publishprofile_path>
   ```
 
 ## <a name="next-steps"></a>Další kroky
-toolearn Další informace o některých hello základní koncepty, které jsou popsané v tomto tématu najdete v části hello [Service Fabric technický přehled](service-fabric-technical-overview.md). Informace o dalším funkcím správy aplikace, které jsou k dispozici v sadě Visual Studio najdete v tématu [spravovat aplikace Service Fabric v sadě Visual Studio](service-fabric-manage-application-in-visual-studio.md).
+Další informace o některých základní koncepty, které jsou popsané v tomto tématu najdete v tématu [Service Fabric technický přehled](service-fabric-technical-overview.md). Informace o dalším funkcím správy aplikace, které jsou k dispozici v sadě Visual Studio najdete v tématu [spravovat aplikace Service Fabric v sadě Visual Studio](service-fabric-manage-application-in-visual-studio.md).
 
 <!-- Image references -->
 

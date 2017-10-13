@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Kiteworks | Microsoft Docs'
-description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a Kiteworks."
+description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Kiteworks."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,111 +13,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 406417dd7f58cc3f1fa0d9e86b5cad0c1d7be750
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2fd9b346cb6d838069ef94ee9c2a8d113f22779c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kiteworks"></a>Kurz: Azure Active Directory integrace s Kiteworks
 
-V tomto kurzu zjistíte, jak toointegrate Kiteworks s Azure Active Directory (Azure AD).
+V tomto kurzu zjistěte, jak integrovat Kiteworks s Azure Active Directory (Azure AD).
 
-Integrace Kiteworks s Azure AD poskytuje hello následující výhody:
+Integrace Kiteworks s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup tooKiteworks
-- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooKiteworks (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup k Kiteworks
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k Kiteworks (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Integrace služby Azure AD s Kiteworks tooconfigure, je třeba hello následující položky:
+Konfigurace integrace Azure AD s Kiteworks, potřebujete následující položky:
 
 - Předplatné služby Azure AD
 - Kiteworks jednotné přihlašování povolené předplatné
 
 > [!NOTE]
-> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
+Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Kiteworks z Galerie hello
+1. Přidání Kiteworks z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-kiteworks-from-hello-gallery"></a>Přidání Kiteworks z Galerie hello
-tooconfigure hello integrace Kiteworks do Azure AD, je nutné tooadd Kiteworks hello Galerie tooyour seznamu spravovaných aplikací SaaS.
+## <a name="adding-kiteworks-from-the-gallery"></a>Přidání Kiteworks z Galerie
+Při konfiguraci integrace Kiteworks do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS Kiteworks z galerie.
 
-**tooadd Kiteworks z Galerie hello, proveďte následující kroky hello:**
+**Pokud chcete přidat Kiteworks z galerie, proveďte následující kroky:**
 
-1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
+1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
+2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
 
     ![Aplikace][3]
 
-4. Hello vyhledávacího pole zadejte **Kiteworks**.
+4. Do vyhledávacího pole zadejte **Kiteworks**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_search.png)
 
-5. Na panelu výsledků hello vyberte **Kiteworks**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.
+5. Na panelu výsledků vyberte **Kiteworks**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Kiteworks podle testovacího uživatele názvem "Britta Simon".
 
-Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v Kiteworks je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v Kiteworks musí toobe navázat.
+Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Kiteworks je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Kiteworks musí navázat.
 
-V Kiteworks, přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.
+V Kiteworks, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
 
-tooconfigure a testu Azure AD jednotné přihlašování s Kiteworks, potřebujete následující stavební bloky hello toocomplete:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Kiteworks, je třeba dokončit následující stavební bloky:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Kiteworks](#creating-a-kiteworks-test-user)**  -toohave protějšek Britta Simon v Kiteworks, která je propojená toohello Azure AD reprezentace uživatele.
-4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele Kiteworks](#creating-a-kiteworks-test-user)**  – Pokud chcete mít protějšek Britta Simon v Kiteworks propojeném s Azure AD reprezentace daného uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci Kiteworks.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Kiteworks.
 
-**tooconfigure Azure AD jednotné přihlašování s Kiteworks, proveďte následující kroky hello:**
+**Ke konfiguraci Azure AD jednotné přihlašování s Kiteworks, proveďte následující kroky:**
 
-1. V portálu Azure, na hello hello **Kiteworks** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na portálu Azure na **Kiteworks** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
+2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_samlbase.png)
 
-3. Na hello **Kiteworks domény a adresy URL** část, proveďte následující kroky hello:
+3. Na **Kiteworks domény a adresy URL** část, proveďte následující kroky:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_url.png)
 
-    a. V hello **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<subdomain>.kiteworks.com`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.kiteworks.com`
 
-    b. V hello **identifikátor** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<subdomain>.kiteworks.com/sp/module.php/saml/sp/saml2-acs.php/sp-sso`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.kiteworks.com/sp/module.php/saml/sp/saml2-acs.php/sp-sso`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Aktualizovat tyto hodnoty s hello skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory Kiteworks klienta](http://accellion.com/support) tooget tyto hodnoty. 
+    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory Kiteworks klienta](http://accellion.com/support) k získání těchto hodnot. 
  
-4. Na hello **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu hello ve vašem počítači.
+4. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_certificate.png) 
 
@@ -125,21 +125,21 @@ V této části můžete povolit Azure AD jednotné přihlašování v hello por
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kiteworks-tutorial/tutorial_general_400.png)
 
-6. Na hello **Kiteworks konfigurace** klikněte na tlačítko **konfigurace Kiteworks** tooopen **konfigurovat přihlášení** okno. Kopírování hello **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z hello **Stručná referenční příručka části.**
+6. Na **Kiteworks konfigurace** klikněte na tlačítko **konfigurace Kiteworks** otevřete **konfigurovat přihlášení** okno. Kopírování **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_configure.png) 
 
-7. Přihlašování tooyour Kiteworks společnosti lokality jako správce.
+7. Přihlásit se k serveru vaší společnosti Kiteworks jako správce.
 
-8. V panelu nástrojů hello hello nahoře, klikněte na **nastavení**.
+8. Na panelu nástrojů v horní části klikněte na tlačítko **nastavení**.
    
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_06.png) 
 
-9. V hello **ověřování a autorizace** klikněte na tlačítko **jednotného přihlašování k instalaci**. 
+9. V **ověřování a autorizace** klikněte na tlačítko **jednotného přihlašování k instalaci**. 
    
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_07.png)
  
-10. Na stránce instalace jednotné přihlašování hello proveďte následující kroky hello:
+10. Na stránce nastavení jednotného přihlašování proveďte následující kroky:
    
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_09.png)   
 
@@ -147,78 +147,78 @@ V této části můžete povolit Azure AD jednotné přihlašování v hello por
 
     b. Vyberte **zahájit AuthnRequest**.
 
-    c. V hello **IDP Entity ID** textovému poli, vložte hodnotu hello **SAML Entity ID**, který jste zkopírovali z portálu Azure. 
+    c. V **IDP Entity ID** textovému poli, vložte hodnotu **SAML Entity ID**, který jste zkopírovali z portálu Azure. 
 
-    d. V hello **jeden přihlašování adresa URL služby** textovému poli, vložte hodnotu hello **SAML jeden přihlašování adresa URL služby**, který jste zkopírovali z portálu Azure.
+    d. V **jeden přihlašování adresa URL služby** textovému poli, vložte hodnotu **SAML jeden přihlašování adresa URL služby**, který jste zkopírovali z portálu Azure.
 
-    e. V hello **jedné adresy URL odhlašovací služby** textovému poli, vložte hodnotu hello **Sign-Out URL**, který jste zkopírovali z portálu Azure.
+    e. V **jedné adresy URL odhlašovací služby** textovému poli, vložte hodnotu **Sign-Out URL**, který jste zkopírovali z portálu Azure.
 
-    f. Otevřete stažený certifikát v poznámkovém bloku hello kopírování obsahu a pak ji vložit do hello **certifikátu veřejného klíče RSA** textové pole.
+    f. V poznámkovém bloku otevřete stažený certifikát, kopírovat obsah a vložte ji do **certifikátu veřejného klíče RSA** textové pole.
  
     g. Klikněte na **Uložit**.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
+Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
+**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
 
-1. V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
+1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-kiteworks-tutorial/create_aaduser_01.png) 
 
-2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-kiteworks-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.
+3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-kiteworks-tutorial/create_aaduser_03.png) 
 
-4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
+4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-kiteworks-tutorial/create_aaduser_04.png) 
 
-    a. V hello **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textovému poli, typ **BrittaSimon**.
 
-    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-a-kiteworks-test-user"></a>Vytvoření zkušebního uživatele Kiteworks
 
-Hello cílem této části je toocreate volal Britta Simon v Kiteworks uživatele.
+Cílem této části je vytvoření uživatele v Kiteworks nazývá Britta Simon.
 
-Kiteworks podporuje za běhu zřizování, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud ještě neexistuje, vytvoří se nový uživatel během pokusu o tooaccess Kitewors.
+Kiteworks podporuje za běhu zřizování, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k Kitewors, pokud ještě neexistuje.
 
 >[!NOTE]
->Pokud potřebujete toocreate uživatel ručně, je nutné toocontact hello [tým podpory Kiteworks](http://accellion.com/support).
+>Pokud potřebujete ručně vytvořit uživatele, budete muset kontaktovat [tým podpory Kiteworks](http://accellion.com/support).
  
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
+### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte tak, že udělíte přístup tooKiteworks toouse Britta Simon Azure jednotné přihlašování.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Kiteworks.
 
 ![Přiřadit uživatele][200] 
 
-**tooassign Britta Simon tooKiteworks, proveďte následující kroky hello:**
+**Pokud chcete přiřadit Britta Simon Kiteworks, proveďte následující kroky:**
 
-1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikace hello vyberte **Kiteworks**.
+2. V seznamu aplikací vyberte **Kiteworks**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_app.png) 
 
-3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
+3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
@@ -226,7 +226,7 @@ V této části povolíte tak, že udělíte přístup tooKiteworks toouse Britt
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -234,13 +234,13 @@ V této části povolíte tak, že udělíte přístup tooKiteworks toouse Britt
     
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-Hello cílem této části je tootest pomocí konfigurace Azure AD jednotného přihlašování k přístupovému panelu hello.  
+Cílem této části je testování konfigurace Azure AD jednotného přihlašování k použití na přístupovém panelu.  
 
-Po kliknutí na tlačítko hello Kiteworks dlaždici v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour Kiteworks aplikace.
+Když kliknete na dlaždici Kiteworks na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Kiteworks.
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

@@ -1,6 +1,6 @@
 ---
-title: "virtuální počítač s Linuxem aaaAzure velikosti - úložiště | Microsoft Docs"
-description: "Seznamy hello jiného úložiště optimalizované velikosti, které jsou k dispozici pro virtuální počítače s Linuxem v Azure."
+title: "Virtuální počítač Azure s Linuxem velikostí - úložiště | Microsoft Docs"
+description: "Uvádí jiného úložiště optimalizované velikosti k dispozici pro virtuální počítače s Linuxem v Azure."
 services: virtual-machines-linux
 documentationcenter: 
 author: jonbeck7
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/28/2017
 ms.author: jonbeck
-ms.openlocfilehash: 6e73b8cdf995b43c01881e792d67899233ec06b1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1403c6deb3a9892ff5e310038c0f4b289c0aa84b
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="storage-optimized-linux-vm-sizes"></a>Úložiště optimalizované velikosti virtuálního počítače s Linuxem
 

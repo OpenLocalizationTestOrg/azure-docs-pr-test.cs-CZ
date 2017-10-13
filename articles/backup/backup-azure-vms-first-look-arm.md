@@ -1,6 +1,6 @@
 ---
 title: "První pohled: chraňte virtuální počítače Azure pomocí trezoru Recovery Services | Dokumentace Microsoftu"
-description: "Virtuální počítače Azure s trezorem Recovery Services. Pomocí záloh virtuálních počítačů nasazených Resource Manager, virtuálních počítačů nasazených Classic a úložiště virtuálních počítačů úrovně Premium, šifrované virtuálních počítačů, virtuální počítače na spravované disky tooprotect vaše data. Vytvoření a registrace trezoru Recovery Services. Registrace virtuálních počítačů, vytváření zásad a ochrana virtuálních počítačů v Azure."
+description: "Virtuální počítače Azure s trezorem Recovery Services. Ochrana dat pomocí záloh virtuálních počítačů nasazených Resource Managerem, virtuálních počítačů nasazených službou Classic, virtuálních počítačů služby Storage úrovně Premium, šifrovaných virtuálních počítačů a virtuálních počítačů na spravovaných discích. Vytvoření a registrace trezoru Recovery Services. Registrace virtuálních počítačů, vytváření zásad a ochrana virtuálních počítačů v Azure."
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -13,334 +13,334 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 08/15/2017
+ms.date: 09/04/2017
 ms.author: markgal;jimpark
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 70e4700abb76e16e32e1ead06ce1dbe277e1f0e5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 639f008eea61b973b9d32dc734d42d5c4e93e924
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="back-up-azure-virtual-machines-toorecovery-services-vaults"></a>Zálohování trezory služeb tooRecovery virtuální počítače Azure
+# <a name="back-up-azure-virtual-machines-to-recovery-services-vaults"></a>Zálohování virtuálních počítačů Azure do trezorů služby Recovery Services
 > [!div class="op_single_selector"]
 > * [Ochrana virtuálních počítačů v trezoru služby Recovery Services](backup-azure-vms-first-look-arm.md)
 > * [Ochrana virtuálních počítačů v úložišti Backup Vault](backup-azure-vms-first-look.md)
 >
 >
 
-Tento kurz vás provede hello kroky pro vytvoření trezoru služeb zotavení a zálohování Azure virtuálních počítačů (VM). Trezory Recovery Services chrání:
+Tento kurz vás provede kroky pro vytvoření trezoru Recovery Services a zálohování virtuálních počítačů (VM) Azure. Trezory Recovery Services chrání:
 
 * Virtuální počítače nasazené Azure Resource Managerem
 * Klasické virtuální počítače
 * Virtuální počítače služby Storage úrovně Standard
 * Virtuální počítače služby Storage úrovně Premium
 * Virtuální počítače spuštěné na spravovaných discích
-* Virtuální počítače jsou šifrované službou Azure Disk Encryption klíči BEK a KEK
+* Virtuální počítače šifrované službou Azure Disk Encryption
 * Zálohování konzistentní vzhledem k aplikacím virtuálních počítačů s Windows pomocí služby Stínová kopie svazku (VSS) a virtuálních počítačů s Linuxem pomocí vlastních předsnímkových a posnímkových skriptů
 
-Další informace o ochraně virtuálních počítačů služby storage úrovně Premium, najdete v článku hello, [zálohování a obnovení virtuálních počítačů služby Storage úrovně Premium](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup). Další informace o podpoře pro virtuální počítače se spravovanými disky najdete v tématu věnovaném [zálohování a obnovení virtuálních počítačů na spravovaných discích](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup). Další informace o rozhraní s předsnímkovými a posnímkovými skripty pro zálohování virtuálních počítačů s Linuxem najdete v tématu Zálohování virtuálních počítačů s Linuxem konzistentní s aplikacemi pomocí předsnímkových a posnímkových skriptů (https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent).
+Další informace o ochraně virtuálních počítačů služby Storage úrovně Premium najdete v článku [Zálohování a obnovení virtuálních počítačů služby Storage úrovně Premium](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup). Další informace o podpoře pro virtuální počítače se spravovanými disky najdete v tématu věnovaném [zálohování a obnovení virtuálních počítačů na spravovaných discích](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup). Další informace o rozhraní s předsnímkovými a posnímkovými skripty pro zálohování virtuálních počítačů s Linuxem najdete v tématu Zálohování virtuálních počítačů s Linuxem konzistentní s aplikacemi pomocí předsnímkových a posnímkových skriptů (https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent).
 
-toofind si více o tom, co můžete je zálohování a co nemůžete odkazovat [sem](backup-azure-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm)
+Další informace o tom, co je a co není možné zálohovat, najdete [tady](backup-azure-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm).
 
 > [!NOTE]
-> Tento kurz předpokládá již máte virtuální počítač ve vašem předplatném Azure a že jste zavedli opatření tooallow hello služby zálohování tooaccess hello virtuálních počítačů.
+> Tento kurz předpokládá, že už máte virtuální počítač ve svém předplatném Azure a že jste zavedli opatření, která umožní službě zálohování přístup k virtuálnímu počítači.
 >
 >
 
 [!INCLUDE [learn-about-Azure-Backup-deployment-models](../../includes/backup-deployment-models.md)]
 
-V závislosti na hello počet virtuálních počítačů, který má tooprotect, můžete začít z různých počáteční body. Pokud chcete tooback až více virtuálních počítačů v rámci jedné operace, přejděte trezor služeb zotavení toohello a [úlohu zálohování inicializace hello z panelu trezoru hello](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-recovery-services-vault). Pokud chcete tooback jeden virtuální počítač, můžete spustit úlohu zálohování hello z okna Správa virtuálních počítačů.
+V závislosti na počtu virtuálních počítačů, které chcete ochránit, můžete začít z několika různých počátečních bodů. Pokud chcete v rámci jedné operace zálohovat více virtuálních počítačů, přejděte do trezoru služby Recovery Services a [spusťte úlohu zálohování z řídicího panelu trezoru](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-recovery-services-vault). Pokud chcete zálohovat jeden virtuální počítač, můžete úlohu zálohování spustit z okna správy virtuálního počítače.
 
-## <a name="configure-hello-backup-job-from-hello-vm-management-blade"></a>Nakonfigurujte úlohu zálohování hello z okna Správa virtuálních počítačů hello
+## <a name="configure-the-backup-job-from-the-vm-management-blade"></a>Konfigurace úlohy zálohování z okna správy virtuálního počítače
 
-Pomocí následujících kroků tooconfigure hello úlohu zálohování z okna Správa hello virtuálního počítače v hello portál Azure hello. Tyto kroky se nevztahují toohello virtuální počítače na portálu classic hello.
+Následující kroky použijte ke konfiguraci úlohy zálohování z okna správy virtuálního počítače na webu Azure Portal. Na virtuální počítače na portálu Classic se tyto kroky nevztahují.
 
-1. Přihlaste se toohello [portál Azure](https://portal.azure.com/).
-2. V nabídce centra hello, klikněte na tlačítko **více služeb** a v dialogovém okně filtru hello, zadejte **virtuální počítače**. Při psaní hello seznam filtrů prostředky. Až uvidíte položku Virtuální počítače, vyberte ji.
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
+2. V nabídce centra klikněte na **Další služby** a v dialogovém okně Filtr zadejte **Virtuální počítače**. Při psaní se seznam prostředků bude filtrovat. Až uvidíte položku Virtuální počítače, vyberte ji.
 
-  ![V nabídce centra klikněte na dialogové okno text tooopen více služeb a zadejte virtuální počítače](./media/backup-azure-vms-first-look-arm/open-vm-from-hub.png)
+  ![V nabídce centra kliknutím na Další služby otevřete dialogové okno textu a zadejte Virtuální počítače](./media/backup-azure-vms-first-look-arm/open-vm-from-hub.png)
 
-  Zobrazí se seznam Hello virtuálních počítačů (VM) v rámci předplatného hello.
+  Zobrazí se seznam virtuálních počítačů v rámci předplatného.
 
-  ![Zobrazí se seznam Hello virtuálních počítačů v rámci předplatného hello.](./media/backup-azure-vms-first-look-arm/list-of-vms.png)
+  ![Zobrazí se seznam virtuálních počítačů v rámci předplatného.](./media/backup-azure-vms-first-look-arm/list-of-vms.png)
 
-3. Hello seznamu vyberte virtuální počítač tooback nahoru.
+3. V seznamu vyberte virtuální počítač, který chcete zálohovat.
 
-  ![Zobrazí se seznam Hello virtuálních počítačů v rámci předplatného hello.](./media/backup-azure-vms-first-look-arm/list-of-vms-selected.png)
+  ![Zobrazí se seznam virtuálních počítačů v rámci předplatného.](./media/backup-azure-vms-first-look-arm/list-of-vms-selected.png)
 
-  Když vyberete hello virtuálních počítačů, hello seznam virtuálních počítačů posune toohello doleva a hello okna Správa virtuálního počítače a řídicí panel hello virtuální počítač, otevřete. </br>
+  Po výběru virtuálního počítače se seznam virtuálních počítačů posune doleva a otevře se okno správy virtuálního počítače a řídicí panel virtuálního počítače. </br>
  ![Okno správy virtuálního počítače](./media/backup-azure-vms-first-look-arm/vm-management-blade.png)
 
-4. Na hello okna Správa virtuálních počítačů, v hello **nastavení** klikněte na tlačítko **zálohování**. </br>
+4. V okně správy virtuálního počítače v části **Nastavení** klikněte na **Zálohování**. </br>
 
   ![Možnost Zálohování v okně správy virtuálního počítače](./media/backup-azure-vms-first-look-arm/backup-option-vm-management-blade.png)
 
-  Otevře se okno zálohování povolit Hello.
+  Otevře se okno Povolit zálohování.
 
   ![Možnost Zálohování v okně správy virtuálního počítače](./media/backup-azure-vms-first-look-arm/vm-blade-enable-backup.png)
 
-5. Hello trezor služeb zotavení, klikněte na tlačítko **vyberte existující** a vyberte z rozevíracího seznamu hello hello trezoru.
+5. Pokud chcete použít trezor služby Recovery Services, klikněte na **Vybrat existující** a v rozevíracím seznamu zvolte trezor.
 
   ![Průvodce povolením zálohování](./media/backup-azure-vms-first-look-arm/vm-blade-enable-backup.png)
 
-  Pokud neexistují žádné trezory služeb zotavení, nebo chcete toouse nové úložiště, klikněte na tlačítko **vytvořit nový** a zadejte název hello hello nový trezor. Nový trezor se vytvoří v hello stejnou skupinu prostředků a stejné umístění jako virtuální počítač hello. Pokud chcete toocreate trezoru služeb zotavení s různými hodnotami, o naleznete v části hello příliš[vytvoření trezoru služeb zotavení](backup-azure-vms-first-look-arm.md#create-a-recovery-services-vault-for-a-vm).
+  Pokud neexistuje žádný trezor služby Recovery Services, nebo pokud chcete použít nový trezor, klikněte na **Vytvořit nový** a zadejte název nového trezoru. Nový trezor se vytvoří ve stejné skupině prostředků a stejném umístění jako virtuální počítač. Pokud chcete vytvořit trezor služby Recovery Services s použitím jiných hodnot, přečtěte si část popisující [vytvoření trezoru služby Recovery Services](backup-azure-vms-first-look-arm.md#create-a-recovery-services-vault-for-a-vm).
 
-6. Klikněte na tlačítko Podrobnosti hello tooview hello zásady zálohování, **zálohování zásad**.
+6. Pokud chcete zobrazit podrobnosti o zásadě zálohování, klikněte na **Zásady zálohování**.
 
-  Hello **zálohování zásad** okno otevře a naleznete zde podrobnosti hello hello vybrané zásady. Pokud existují další zásady, použijte rozevírací nabídky toochoose hello různé zásady zálohování. Pokud chcete toocreate zásadu, vyberte **vytvořit nový** z rozevírací nabídky hello. Pokyny k definování zásad zálohování naleznete v tématu [Definování zásad zálohování](backup-azure-vms-first-look-arm.md#defining-a-backup-policy). zásady zálohování změny toohello hello pro toosave a okno zálohování návratový toohello povolit, klikněte na tlačítko **OK**.
+  Otevře se okno **Zásady zálohování** s podrobnostmi o vybrané zásadě. Pokud existují další zásady, použijte k výběru jiné zásady zálohování rozevírací nabídku. Pokud chcete vytvořit zásadu, vyberte v rozevírací nabídce **Vytvořit novou**. Pokyny k definování zásad zálohování naleznete v tématu [Definování zásad zálohování](backup-azure-vms-first-look-arm.md#defining-a-backup-policy). Pokud chcete uložit změny zásady zálohování a vrátit se do okna Povolit zálohování, klikněte na **OK**.
 
   ![Výběr zásady zálohování](./media/backup-azure-vms-first-look-arm/setting-rs-backup-policy-new-2.png)
 
-7. V okně Zálohování hello povolit, klikněte na tlačítko **povolit zálohování** toodeploy hello zásad. Nasazení zásady hello přidruží k němu hello trezoru a hello virtuálních počítačů.
+7. V okně Povolit zálohování kliknutím na **Povolit zálohování** nasaďte zásadu. Nasazení zásadu přidruží k trezoru a virtuálním počítačům.
 
   ![Tlačítko Povolit zálohování](./media/backup-azure-vms-first-look-arm/vm-management-blade-enable-backup-button.png)
 
-8. Můžete sledovat průběh konfigurace hello prostřednictvím hello oznámení, které se zobrazují v portálu hello. Hello následující příklad ukazuje, že nasazení spuštěné.
+8. Průběh konfigurace můžete sledovat prostřednictvím oznámení, která se zobrazují na portálu. Následující příklad ukazuje spuštění nasazení.
 
   ![Oznámení Povolení zálohování](./media/backup-azure-vms-first-look-arm/vm-management-blade-enable-backup-notification.png)
 
-9. Po dokončení konfigurace průběh hello na hello okna Správa virtuálních počítačů, klikněte na tlačítko **zálohování** tooopen hello zálohované položky okno a zobrazení hello podrobnosti.
+9. Jakmile se proces konfigurace dokončí, klikněte v okně správy virtuálního počítače na **Zálohování**. Otevře se okno Zálohovaná položka s podrobnostmi.
 
   ![Zobrazení Zálohovaná položka virtuálního počítače](./media/backup-azure-vms-first-look-arm/backup-item-view.png)
 
-  Až po dokončení prvotní zálohování hello, **poslední zálohy stavu** zobrazuje jako **upozornění (prvotní zálohování čekající na vyřízení)**. dojde k toosee při hello příští plánovaná úloha zálohování, v části **zálohování zásad** klikněte na název hello hello zásady. okno zásady zálohování Hello otevře a zobrazuje čas hello hello naplánované zálohování.
+  Než se dokončí prvotní zálohování, bude **Stav poslední zálohy** ukazovat **Upozornění (nedokončené prvotní zálohování)**. Pokud chcete zobrazit, kdy proběhne další plánovaná úloha zálohování, klikněte v části **Zásady zálohování** na název zásady. Otevře se okno Zásady zálohování, kde najdete čas plánovaného zálohování.
 
-10. toorun zálohu úlohy a vytvořit hello počátečního bodu obnovení, na hello zálohy trezoru klikněte na okno **zálohovat nyní**.
+10. Pokud chcete spustit úlohu zálohování a vytvořit prvotní bod obnovení, v okně trezoru Zálohování klikněte na **Zálohovat nyní**.
 
-  ![Klikněte na tlačítko zálohování nyní toorun hello prvotní zálohování](./media/backup-azure-vms-first-look-arm/backup-now.png)
+  ![klikněte na Zálohovat nyní a spusťte prvotní zálohování](./media/backup-azure-vms-first-look-arm/backup-now.png)
 
-  Otevře se okno zálohovat nyní Hello.
+  Otevře se okno Zálohovat nyní.
 
-  ![Zobrazí okno zálohovat nyní hello](./media/backup-azure-vms-first-look-arm/backup-now-blade-short.png)
+  ![ukazuje okno Zálohovat nyní](./media/backup-azure-vms-first-look-arm/backup-now-blade-short.png)
 
-11. Na hello zálohovat nyní okně klikněte na ikonu hello kalendáře, použijte hello kalendáře řízení tooselect hello poslední den tohoto bodu obnovení se zachovává a klikněte na tlačítko **zálohování**.
+11. V okně Zálohovat nyní klikněte na ikonu kalendáře, pomocí ovládacího prvku kalendáře vyberte poslední den uchování tohoto bodu obnovení a klikněte na **Zálohovat**.
 
-  ![Sada hello poslední den hello zálohovat nyní bod obnovení je zachován.](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
+  ![nastavte poslední den uchování bodu obnovení vytvořeného pomocí možnosti Zálohovat nyní](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
 
-  Nasazení oznámení umožňují vědět byla spuštěna úloha zálohování hello, a že můžete monitorovat průběh hello hello úlohy na stránce úloh zálohování hello.
+  Oznámení nasazení vás budou informovat o aktivaci úlohy zálohování a možnosti sledovat průběh úlohy na stránce Úlohy zálohování.
 
-## <a name="configure-hello-backup-job-from-hello-recovery-services-vault"></a>Nakonfigurujte úlohu zálohování hello z hello trezor služeb zotavení
-Úloha zálohování hello tooconfigure, dokončení hello následující kroky.  
+## <a name="configure-the-backup-job-from-the-recovery-services-vault"></a>Konfigurace úlohy zálohování z trezoru služby Recovery Services
+Pokud chcete konfigurovat úlohu zálohování, dokončete následující kroky.  
 
 1. Vytvoření trezoru služby Recovery Services pro virtuální počítač.
-2. Hello použití portálu Azure tooselect scénáři nastavit zásady zálohování a vyhledejte položky tooprotect.
-3. Spusťte prvotní zálohování hello.
+2. Použití webu Azure Portal k výběru scénáře, nastavení zásady zálohování a určení položek, které mají být chráněné.
+3. Spuštění prvotního zálohování.
 
 ## <a name="create-a-recovery-services-vault-for-a-vm"></a>Vytvoření trezoru Recovery Services pro virtuální počítač
-Trezor služeb zotavení je entita, která ukládá všechny hello zálohy a body obnovení, které byly vytvořeny v čase. Hello trezor služeb zotavení obsahuje také zásady zálohování hello použít toohello chráněné virtuální počítače.
+Trezor záloh Služeb zotavení je entita, která ukládá všechny vytvořené zálohy a body obnovení. Trezor Služeb zotavení obsahuje také zásadu zálohování, která se používá pro chráněné virtuální počítače.
 
 > [!NOTE]
-> Zálohování virtuálního počítače je místní proces. Nelze zálohovat virtuální počítače z jednoho umístění tooa trezor služeb zotavení v jiném umístění. Ano pro každou oblast Azure, s toobe virtuální počítače zálohovat, musí existovat alespoň jeden trezor služeb zotavení v tomto umístění.
+> Zálohování virtuálního počítače je místní proces. Virtuální počítače z jedné oblasti nelze zálohovat do trezoru Služeb zotavení v jiné oblasti. Pro každou oblast Azure s virtuálními počítači, které se mají zálohovat, tedy musí existovat alespoň jeden trezor Služeb zotavení.
 >
 >
 
-toocreate trezoru služeb zotavení:
+Chcete-li vytvořit trezor Služeb zotavení:
 
-1. Pokud jste tak již neučinili, přihlaste se toohello [portál Azure](https://portal.azure.com/) pomocí svého předplatného Azure.
-2. V nabídce centra hello, klikněte na tlačítko **další služby** a v hello typ filtru dialogové okno **služeb zotavení**. Při psaní hello seznam filtrů prostředky. Až uvidíte trezory služeb zotavení v hello seznamu, klikněte na něj.
+1. Pokud jste to ještě neudělali, přihlaste se na webu [Azure Portal](https://portal.azure.com/) pomocí svého předplatného Azure.
+2. V nabídce centra klikněte na **Další služby** a v dialogovém okně Filtr zadejte **Recovery Services**. Při psaní se seznam prostředků bude filtrovat. Až v seznamu uvidíte položku Trezory služby Recovery Services, klikněte na ni.
 
     ![Vytvoření trezoru Recovery Services – krok 1](./media/backup-try-azure-backup-in-10-mins/open-rs-vault-list.png) <br/>
 
-    Pokud jsou v rámci předplatného hello trezory služeb zotavení, jsou uvedeny hello trezorů.
+    Pokud předplatné obsahuje trezory služby Recovery Services, jsou tyto trezory uvedené v seznamu.
 
     ![Vytvoření trezoru Recovery Services – krok 2](./media/backup-azure-vms-first-look-arm/list-of-rs-vault.png)
-3. Na hello **trezory služeb zotavení** nabídky, klikněte na tlačítko **přidat**.
+3. V nabídce **Trezory Recovery Services** klikněte na **Přidat**.
 
     ![Vytvoření trezoru Recovery Services – krok 2](./media/backup-try-azure-backup-in-10-mins/rs-vault-menu.png)
 
-    Služby zotavení Hello otevře se okno trezoru výzvou tooprovide **název**, **předplatné**, **skupiny prostředků**, a **umístění**.
+    Otevře se okno trezoru Recovery Services s výzvou k vyplnění polí **Název**, **Předplatné**, **Skupina prostředků** a **Oblast**.
 
     ![Vytvoření trezoru Recovery Services – krok 3](./media/backup-try-azure-backup-in-10-mins/rs-vault-step-3.png)
 
-4. Pro **název**, zadejte popisný název tooidentify hello trezoru. Název Hello musí toobe jedinečný pro hello předplatného Azure. Zadejte název v rozsahu 2 až 50 znaků. Musí začínat písmenem a může obsahovat pouze písmena, číslice a pomlčky.
+4. Jako **Název** zadejte popisný název pro identifikaci trezoru. Název musí být jedinečný v rámci předplatného Azure. Zadejte název v rozsahu 2 až 50 znaků. Musí začínat písmenem a může obsahovat pouze písmena, číslice a pomlčky.
 
-5. V hello **předplatné** pomocí hello rozevírací nabídky toochoose hello předplatného Azure. Pokud chcete použít jenom jedno předplatné, zobrazí se toto předplatné a toohello další krok můžete vynechat. Pokud si nejste jisti, jaké předplatné toouse, použít výchozí hello (nebo navrhované) předplatné. Více možností je dostupných, jen pokud je váš účet organizace přidružený k více předplatným Azure.
+5. V části **Předplatné** z rozevírací nabídky vyberte předplatné Azure. Pokud používáte jenom jedno předplatné, zobrazí se toto předplatné a můžete přejít k dalšímu kroku. Pokud si nejste jisti, jaké předplatné použít, použijte výchozí (nebo navrhované) předplatné. Více možností je dostupných, jen pokud je váš účet organizace přidružený k více předplatným Azure.
 
-6. V hello **skupiny prostředků** části:
+6. V části **Skupina prostředků**:
 
-    * Vyberte **vytvořit nový** Pokud chcete, aby toocreate skupinu prostředků.
+    * vyberte **Vytvořit novou**, pokud chcete vytvořit skupinu prostředků.
     Nebo
-    * Vyberte **použít existující** a klikněte na tlačítko hello rozevírací nabídky toosee hello seznam dostupných skupin prostředků.
+    * vyberte **Použít existující** a kliknutím na rozevírací nabídku zobrazte seznam dostupných skupin prostředků.
 
-  Úplné informace o skupinách prostředků najdete v tématu hello [přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md).
+  Kompletní informace o skupinách prostředků najdete v článku [Přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md).
 
-7. Klikněte na tlačítko **umístění** tooselect hello zeměpisnou oblast trezoru hello. Tato volba určuje hello zeměpisnou oblast, kde vaše zálohovaná data se odesílají.
+7. Klikněte na **Oblast** a vyberte zeměpisnou oblast trezoru. Tato volba určuje geografickou oblast, kam jsou zasílaná vaše zálohovaná data.
 
   > [!IMPORTANT]
-  > Pokud si nejste jistí hello umístění, ve kterém je váš virtuální počítač, přejděte toohello seznam virtuálních počítačů hello portálu a zavřete dialogové okno Vytvoření trezoru hello. Pokud máte virtuální počítače v několika oblastech, vytvořte trezor služby Recovery Services v každé z nich. Vytvořte trezor hello v první oblasti hello před přechodem toohello další umístění. Není definován že žádný účet úložiště hello toospecify nutnost použít toostore hello zálohovaných dat – trezor služeb zotavení hello a hello služba Azure Backup automaticky zpracovat hello úložiště.
+  > Pokud si nejste jisti oblastí, ve které jsou vaše virtuální počítače, zavřete dialogové okno vytvoření trezoru a na portálu přejděte na seznam virtuálních počítačů. Pokud máte virtuální počítače v několika oblastech, vytvořte trezor služby Recovery Services v každé z nich. Vytvořte trezor nejprve v první oblasti, poté přejděte k další oblasti. Není potřeba specifikovat účty úložiště používané k ukládání zálohovaných dat – trezor služby Recovery Services a služba Azure Backup se o úložiště postarají automaticky.
   >
 
-8. Hello dolní části hello okno trezoru služeb zotavení, klikněte na **vytvořit**.
+8. V dolní části okna trezoru služby Recovery Services klikněte na **Vytvořit**.
 
-    Můžete to trvat několik minut, než hello toobe vytvořit trezor služeb zotavení. Sledujte oznámení stavu hello v horním pravém oblasti hello hello portálu. Po vytvoření svůj trezor se zobrazí v seznamu hello trezorů služeb zotavení. Pokud se trezor nezobrazí ani po několika minutách, klikněte na **Obnovit**.
+    Vytvoření trezoru služby Recovery Services může trvat několik minut. Sledujte oznámení o stavu v pravé horní části portálu. Když je trezor vytvořený, zobrazí se v seznamu trezorů Služeb zotavení. Pokud se trezor nezobrazí ani po několika minutách, klikněte na **Obnovit**.
 
     ![Kliknutí na tlačítko Obnovit](./media/backup-try-azure-backup-in-10-mins/refresh-button.png)</br>
 
-    Jakmile se zobrazí váš trezor hello seznamu trezorů služeb zotavení, jste redundance úložiště připravené tooset hello.
+    Jakmile se trezor zobrazí v seznamu trezorů služby Recovery Services, jste připraveni nastavit redundanci úložiště.
 
-Teď, když jste vytvořili trezor, zjistěte, jak tooset hello replikace úložiště.
+Teď, když jste vytvořili trezor, se naučte, jak nastavit replikaci úložiště.
 
 ### <a name="set-storage-replication"></a>Nastavení replikace úložiště
-možnost replikace úložiště Hello umožňuje toochoose mezi geograficky redundantním úložištěm a místně redundantního úložiště. Ve výchozím nastavení má váš trezor nastavené geograficky redundantní úložiště. Pokud hello trezor služeb zotavení je vaši primární zálohu, nechte hello úložiště replikace možnost set toogeo redundantní úložiště. Pokud chcete levnější možnost, která není tak trvanlivá, vyberte místně redundantní úložiště. Další informace o [geograficky redundantní](../storage/common/storage-redundancy.md#geo-redundant-storage) a [místně redundantní](../storage/common/storage-redundancy.md#locally-redundant-storage) možnosti úložiště v hello [Přehled replikace Azure Storage](../storage/common/storage-redundancy.md).
+Možnost replikace úložiště umožňuje výběr mezi geograficky redundantním úložištěm a místně redundantním úložištěm. Ve výchozím nastavení má váš trezor nastavené geograficky redundantní úložiště. Pokud je trezor služby Recovery Services vaší primární zálohou, ponechte možnost replikace úložiště nastavenou na geograficky redundantní úložiště. Pokud chcete levnější možnost, která není tak trvanlivá, vyberte místně redundantní úložiště. Další informace o možnostech [geograficky redundantního](../storage/common/storage-redundancy.md#geo-redundant-storage) a [místně redundantního](../storage/common/storage-redundancy.md#locally-redundant-storage) úložiště naleznete v tématu [Přehled replikace Azure Storage](../storage/common/storage-redundancy.md).
 
-nastavení replikace úložiště tooedit hello:
+Chcete-li upravit nastavení replikace úložiště:
 
-1. Z hello **trezory služeb zotavení** okně, vyberte hello nový trezor.
+1. V okně **Trezory služby Recovery Services** vyberte nový trezor.
 
-  ![Vyberte nový trezor hello ze seznamu hello trezor služeb zotavení](./media/backup-try-azure-backup-in-10-mins/rs-vault-list.png)
+  ![Výběr nového trezoru ze seznamu trezorů služby Recovery Services](./media/backup-try-azure-backup-in-10-mins/rs-vault-list.png)
 
-  Když vyberete hello trezoru, hello okno nastavení (*který má název trezoru hello v horní části hello*) a otevřete okno Podrobnosti trezoru hello.
+  Po výběru trezoru se otevře okno Nastavení (*s názvem trezoru v horní části*) a okno s podrobnostmi o trezoru.
 
-  ![Zobrazení hello konfiguraci úložiště pro nový trezor](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration-2.png)
+  ![Zobrazení konfigurace úložiště pro nový trezor](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration-2.png)
 
-2. V okně Nastavení hello nový trezor, použijte hello svislé snímku tooscroll dolů toohello části Správa a klikněte na tlačítko **infrastruktura zálohování**.
-    Otevře se okno infrastruktura zálohování Hello.
-3. V okně infrastruktura zálohování hello, klikněte na tlačítko **konfigurace zálohování** tooopen hello **konfigurace zálohování** okno.
+2. V okně Nastavení nového trezoru pomocí vertikálního posuvníku přejděte dolů do části Správa a klikněte na **Infrastruktura zálohování**.
+    Otevře se okno Infrastruktura zálohování.
+3. V okně Infrastruktura zálohování klikněte na **Konfigurace zálohování**. Otevře se okno **Konfigurace zálohování**.
 
-    ![Nastavit hello konfiguraci úložiště pro nový trezor](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration.png)
-4. Zvolte hello vhodnou možnost replikace pro svůj trezor.
+    ![Nastavení konfigurace úložiště pro nový trezor](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration.png)
+4. Zvolte vhodnou možnost replikace pro svůj trezor.
 
     ![volby konfigurace úložiště](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
-    Ve výchozím nastavení má váš trezor nastavené geograficky redundantní úložiště. Pokud používáte Azure jako koncový bod primární úložiště záloh, pokračujte toouse **geograficky redundantní**. Pokud nepoužíváte Azure jako koncový bod primární úložiště záloh, zvolte **místně redundantní**, což snižuje náklady na úložiště Azure hello. Další informace o možnostech [geograficky redundantního](../storage/common/storage-redundancy.md#geo-redundant-storage) a [místně redundantního](../storage/common/storage-redundancy.md#locally-redundant-storage) úložiště najdete v tomto [přehledu redundance úložiště](../storage/common/storage-redundancy.md).
+    Ve výchozím nastavení má váš trezor nastavené geograficky redundantní úložiště. Pokud používáte Azure jako primární koncový bod úložiště záloh, pokračujte v používání **geograficky redundantního** úložiště. Pokud Azure nepoužíváte jako primární koncový bod úložiště záloh, vyberte **Místně redundantní** – snížíte tím náklady na úložiště Azure. Další informace o možnostech [geograficky redundantního](../storage/common/storage-redundancy.md#geo-redundant-storage) a [místně redundantního](../storage/common/storage-redundancy.md#locally-redundant-storage) úložiště najdete v tomto [přehledu redundance úložiště](../storage/common/storage-redundancy.md).
 
 
-## <a name="select-a-backup-goal-set-policy-and-define-items-tooprotect"></a>Výběr cíle zálohování, nastavení zásad a definovat tooprotect položky
-Před registrací virtuálních počítačů k trezoru, spusťte tooensure proces zjišťování hello, jsou identifikované všechny nové virtuální počítače, které byly přidány toohello předplatné. Hello proces se dotáže Azure hello seznam virtuálních počítačů v rámci předplatného hello, společně s dalšími informacemi, jako třeba název hello cloudové služby a oblast hello. V hello portálu Azure výraz scénář vyjadřuje toowhat budete tooput do trezoru služeb zotavení hello. Zásada je plán hello jak často a kdy jsou pořizovány body obnovení. Zásada také obsahuje hello rozsah uchování pro body obnovení hello.
+## <a name="select-a-backup-goal-set-policy-and-define-items-to-protect"></a>Výběr cíle zálohování, nastavení zásad a určení položek k ochraně
+Před registrací virtuálních počítačů k trezoru spusťte proces vyhledávání, abyste se ujistili, že byly identifikované všechny nové virtuální počítače přidané k předplatnému. Proces se dotáže Azure na seznam virtuálních počítačů v rámci předplatného společně s dalšími informacemi, jako například název cloudové služby a oblast. Na webu Azure Portal výraz scénář vyjadřuje, co chcete vložit do trezoru Recovery Services. Zásada je plán, jak často a kdy jsou pořizovány body obnovení. Zásada také obsahuje rozsah uchování bodů obnovení.
 
-1. Pokud již máte otevřete trezoru služeb zotavení, pokračujte toostep 2. Jinak, v nabídce centra hello, klikněte na tlačítko **další služby** a v hello seznamu prostředků zadejte **služeb zotavení** a klikněte na tlačítko **trezory služeb zotavení**.
+1. Pokud již máte otevřený trezor Recovery Services, pokračujte ke kroku 2. Jinak v nabídce centra klikněte na **Další služby**, v seznamu prostředků zadejte **Recovery Services** a klikněte na **Trezory služby Recovery Services**.
 
     ![Vytvoření trezoru Recovery Services – krok 1](./media/backup-try-azure-backup-in-10-mins/open-rs-vault-list.png) <br/>
 
-    Zobrazí se seznam Hello trezory služeb zotavení.
+    Objeví se seznam trezorů Recovery Services.
 
-    ![Zobrazení hello služeb zotavení trezory seznamu](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
+    ![Zobrazení seznamu trezorů služby Recovery Services](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
 
-    Hello seznamu trezorů služeb zotavení vyberte trezor tooopen jeho řídicího panelu.
+    V seznamu trezorů služby Recovery Services výběrem trezoru otevřete jeho řídicí panel.
 
      ![Otevřené okno trezoru](./media/backup-azure-arm-vms-prepare/new-vault-settings-blade.png)
 
-2. V nabídce řídícího panelu trezoru hello, klikněte na tlačítko **zálohování** okno zálohování tooopen hello.
+2. Kliknutím na **Zálohování** v nabídce řídicího panelu trezoru otevřete okno Zálohování.
 
     ![Otevřené okno Zálohování](./media/backup-azure-arm-vms-prepare/backup-button.png)
 
-    otevření okna zálohování a cíl zálohování Hello.
+    Otevřou se okna Zálohování a Cíl zálohování.
 
     ![Otevřené okno Scénář](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
-3. V okně cíl zálohování hello, z hello **kde běží vaše úlohy** rozevírací nabídky vyberte Azure. Z hello **co chcete toobackup** rozevíracího seznamu, vyberte virtuální počítač a pak klikněte na tlačítko **OK**.
+3. V okně Cíl zálohování v rozevírací nabídce **Kde běží vaše úlohy?** zvolte Azure. V rozevírací nabídce **Co chcete zálohovat?** zvolte Virtuální počítač a potom klikněte na **OK**.
 
-    Tyto akce zaregistrovat hello rozšíření virtuálního počítače k trezoru hello. Hello zavře se okno cíl zálohování a hello **zálohování zásad** otevře se okno.
+    Tyto akce v trezoru zaregistrují rozšíření virtuálního počítače. Zavře se okno Cíl zálohování a otevře se okno **Zásady zálohování**.
 
     ![Otevřené okno Scénář](./media/backup-azure-arm-vms-prepare/select-backup-goal-2.png)
 
-4. V okně zásady zálohování hello vyberte zásady zálohování hello chcete tooapply toohello trezoru.
+4. V okně Zásady zálohování vyberte zásadu zálohování, kterou chcete pro trezor použít.
 
     ![Výběr zásady zálohování](./media/backup-azure-arm-vms-prepare/setting-rs-backup-policy-new.png)
 
-    v rozevírací nabídce hello jsou uvedeny podrobnosti Hello hello výchozích zásad. Pokud chcete toocreate zásadu, vyberte **vytvořit nový** z rozevírací nabídky hello. Pokyny k definování zásad zálohování naleznete v tématu [Definování zásad zálohování](backup-azure-vms-first-look-arm.md#defining-a-backup-policy).
-    Klikněte na tlačítko **OK** tooassociate zásady zálohování hello hello trezoru.
+    Podrobnosti výchozí zásady jsou uvedené pod rozevírací nabídkou. Pokud chcete vytvořit zásadu, vyberte v rozevírací nabídce **Vytvořit novou**. Pokyny k definování zásad zálohování naleznete v tématu [Definování zásad zálohování](backup-azure-vms-first-look-arm.md#defining-a-backup-policy).
+    Kliknutím na **OK** přidružte zásadu zálohování k trezoru.
 
-    Dobrý den, zavře okno zásady zálohování a hello **vybrat virtuální počítače** otevře se okno.
-5. V hello **vybrat virtuální počítače** okně zvolte hello tooassociate virtuální počítače s hello zadané zásady a klikněte na tlačítko **OK**.
+    Zavře se okno Zásady zálohování a otevře se okno **Výběr virtuálních počítačů**.
+5. V okně **Výběr virtuálních počítačů** vyberte virtuální počítače, které se mají přidružit k určené zásadě a klikněte na **OK**.
 
     ![Výběr úlohy](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
-    Hello vybraný virtuální počítač byl ověřen. Pokud nevidíte hello virtuální počítače, které jste očekávali toosee, zkontrolujte, zda existují v hello stejného umístění Azure jako trezor služeb zotavení hello. umístění Hello hello trezor služeb zotavení se zobrazí na panelu trezoru hello.
+    Vybraný virtuální počítač se ověří. Pokud se nezobrazí virtuální počítače, které jste očekávali, zkontrolujte, že existují ve stejném umístění Azure jako trezor služby Recovery Services. Umístění trezoru služby Recovery Services je uvedené na řídicím panelu trezoru.
 
-6. Teď, když jste definovali všechna nastavení pro hello trezor, v okně Zálohování hello, klikněte na tlačítko **povolit zálohování** toodeploy hello zásad toohello trezoru a hello virtuálních počítačů. Nasazení zásady zálohování hello nevytváří hello počátečního bodu obnovení pro virtuální počítač hello.
+6. Teď, když jste definovali všechna nastavení trezoru, klikněte v okně Zálohování na **Povolit zálohování** a nasaďte zásadu do trezoru a virtuálních počítačů. Nasazením zásady zálohování se nevytvoří prvotní bod obnovení pro virtuální počítač.
 
     ![Povolení zálohování](./media/backup-azure-arm-vms-prepare/vm-validated-click-enable.png)
 
-Po povolení úspěšně hello zálohování, zásady zálohování spustí podle plánu. Pokračujte, ale tooinitiate hello první úlohu zálohování.
+Po úspěšném povolení zálohování se vaše zásada zálohování spustí podle plánu. Přesto pokračujte a spusťte první úlohu zálohování.
 
 ## <a name="initial-backup"></a>Prvotní zálohování
-Jakmile zásady zálohování nasazený na virtuálním počítači hello, která nemá význam hello dat byly zálohovány. Ve výchozím nastavení hello prvním plánovaným zálohováním (definovaným v zásadě zálohování hello) je hello prvotní zálohování. Dokud prvotního zálohování hello hello stav poslední zálohy na hello **úlohy zálohování** ukazovat **upozornění (nedokončené prvotní zálohování)**.
+Nasazení zásady zálohování na virtuální počítač neznamená, že jsou data zálohovaná. Ve výchozím nastavení je prvním plánovaným zálohováním (definovaným v zásadě zálohování) prvotní zálohování. Než proběhne prvotní zálohování, bude Stav poslední zálohy v okně **Úlohy zálohování** ukazovat **Upozornění (nedokončené prvotní zálohování)**.
 
 ![Zálohování čeká na zpracování](./media/backup-azure-vms-first-look-arm/initial-backup-not-run.png)
 
-Pokud prvotní zálohování toobegin brzy, doporučujeme spustit **zálohovat nyní**.
+Pokud nemá prvotní zálohování brzy začít, doporučujeme spustit **Zálohovat nyní**.
 
-toorun hello úlohu prvotního zálohování:
+Spuštění úlohy prvotního zálohování:
 
-1. Na řídicím panelu trezoru hello, klikněte na číslo hello pod **zálohování položek**, nebo klikněte na tlačítko hello **zálohování položek** dlaždici. <br/>
+1. Na řídicím panelu trezoru klikněte na číslo pod záznamem **Zálohování položek** nebo klikněte na dlaždici **Zálohování položek**. <br/>
   ![Ikona nastavení](./media/backup-azure-vms-first-look-arm/rs-vault-config-vm-back-up-now-1.png)
 
-  Hello **zálohování položek** otevře se okno.
+  Otevře se okno **Zálohování položek**
 
   ![Zálohování položek](./media/backup-azure-vms-first-look-arm/back-up-items-list.png)
 
-2. Na hello **zálohování položek** okně, vyberte hello položky.
+2. V okně **Zálohování položek** vyberte položku.
 
   ![Ikona nastavení](./media/backup-azure-vms-first-look-arm/back-up-items-list-selected.png)
 
-  Hello **zálohování položek** seznamu otevře. <br/>
+  Otevře se seznam **Zálohování položek**. <br/>
 
   ![Aktivovaná úloha zálohování.](./media/backup-azure-vms-first-look-arm/backup-items-not-run.png)
 
-3. Na hello **zálohování položek** klikněte na symbol tří teček hello **...**  tooopen hello kontextové nabídky.
+3. V seznamu **Zálohování položek** klikněte na **...** (tři tečky) a otevřete místní nabídku.
 
   ![Místní nabídka](./media/backup-azure-vms-first-look-arm/context-menu.png)
 
-  Zobrazí se Hello kontextové nabídky.
+  Zobrazí se místní nabídka.
 
   ![Místní nabídka](./media/backup-azure-vms-first-look-arm/context-menu-small.png)
 
-4. V místní nabídce hello, klikněte na tlačítko **zálohovat nyní**.
+4. V místní nabídce klikněte na **Zálohovat nyní**.
 
   ![Místní nabídka](./media/backup-azure-vms-first-look-arm/context-menu-small-backup-now.png)
 
-  Otevře se okno zálohovat nyní Hello.
+  Otevře se okno Zálohovat nyní.
 
-  ![Zobrazí okno zálohovat nyní hello](./media/backup-azure-vms-first-look-arm/backup-now-blade-short.png)
+  ![ukazuje okno Zálohovat nyní](./media/backup-azure-vms-first-look-arm/backup-now-blade-short.png)
 
-5. Na hello zálohovat nyní okně klikněte na ikonu hello kalendáře, použijte hello kalendáře řízení tooselect hello poslední den tohoto bodu obnovení se zachovává a klikněte na tlačítko **zálohování**.
+5. V okně Zálohovat nyní klikněte na ikonu kalendáře, pomocí ovládacího prvku kalendáře vyberte poslední den uchování tohoto bodu obnovení a klikněte na **Zálohovat**.
 
-  ![Sada hello poslední den hello zálohovat nyní bod obnovení je zachován.](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
+  ![nastavte poslední den uchování bodu obnovení vytvořeného pomocí možnosti Zálohovat nyní](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
 
-  Nasazení oznámení umožňují vědět byla spuštěna úloha zálohování hello, a že můžete monitorovat průběh hello hello úlohy na stránce úloh zálohování hello. V závislosti na velikosti hello vašeho virtuálního počítače vytváření hello prvotní zálohování může chvíli trvat.
+  Oznámení nasazení vás budou informovat o aktivaci úlohy zálohování a možnosti sledovat průběh úlohy na stránce Úlohy zálohování. V závislosti na velikosti virtuálního počítače může vytváření prvotní zálohy chvíli trvat.
 
-6. tooview nebo sledovat stav hello hello prvotní zálohování, na panelu trezoru hello na hello **úlohy zálohování** klikněte na dlaždici **v průběhu**.
+6. Pokud chcete zobrazit nebo sledovat stav prvotní zálohy, na řídicím panelu trezoru na dlaždici **Úlohy zálohování** klikněte na **Probíhající**.
 
   ![Dlaždice Úlohy zálohování](./media/backup-azure-vms-first-look-arm/open-backup-jobs-1.png)
 
-  Otevře se okno úlohy zálohování Hello.
+  Otevře se okno Úlohy zálohování
 
   ![Dlaždice Úlohy zálohování](./media/backup-azure-vms-first-look-arm/backup-jobs-in-jobs-view-1.png)
 
-  V hello **zálohování úloh** okně uvidíte hello stav všech úloh. Zkontrolujte, zda hello úloha zálohování pro virtuální počítač stále probíhá, nebo pokud se nedokončí. Po dokončení úlohy zálohování se stav hello je *dokončeno*.
+  V okně **Úlohy zálohování** vidíte stav všech úloh. Zkontrolujte, jestli úloha zálohování vašeho virtuálního počítače stále probíhá, nebo se dokončila. Po dokončení úlohy zálohování se stav změní na *Dokončeno*.
 
   > [!NOTE]
-  > Jako součást operace zálohování hello vydá hello služba Azure Backup příkaz toohello rozšířením zálohování v jednotlivých virtuálních počítačů tooflush všech zápisů a pořízení konzistentního snímku.
+  > Jako součást operace zálohování vydá služba Azure Backup rozšířením zálohování v každém virtuálním počítači příkaz k vyprázdnění všech zápisů a pořízení konzistentního snímku.
   >
   >
 
 
 [!INCLUDE [backup-create-backup-policy-for-vm](../../includes/backup-create-backup-policy-for-vm.md)]
 
-## <a name="install-hello-vm-agent-on-hello-virtual-machine"></a>Nainstalujte agenta virtuálního počítače hello hello virtuálního počítače
-Tyto informace jsou poskytnuté pro případ potřeby. Hello agenta virtuálního počítače Azure musí být nainstalován na hello virtuálního počítače, které jsou pro toowork rozšíření hello zálohování Azure. Ale pokud virtuální počítač byl vytvořen z Galerie Azure hello, pak hello agenta virtuálního počítače již existuje v hello virtuálního počítače. Virtuální počítače, které se přenáší z místních datových center nebude nainstalována hello agenta virtuálního počítače. V takovém případě musí hello agenta virtuálního počítače toobe nainstalována. Pokud máte problémy se zálohováním hello virtuálního počítače Azure, zkontrolujte, zda text hello agenta virtuálního počítače Azure je správně nainstalovaná hello virtuálního počítače (viz následující tabulka hello). Pokud vytvoříte vlastní virtuální počítač, [zkontrolujte hello **hello instalace agenta virtuálního počítače** je zaškrtnuté políčko](../virtual-machines/windows/classic/agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) před zřízení hello virtuálního počítače.
+## <a name="install-the-vm-agent-on-the-virtual-machine"></a>Instalace agenta virtuálního počítače na virtuální počítač
+Tyto informace jsou poskytnuté pro případ potřeby. Pro fungování rozšíření Backup musí být na virtuálním počítači Azure nainstalovaný agent virtuálního počítače Azure. Pokud byl váš virtuální počítač vytvořen z galerie Azure, je na něm agent virtuálního počítače již nainstalován. Virtuální počítače migrované z místních datových center nebudou mít agenta virtuálního počítače nainstalovaného. V takovém případě je potřeba agenta virtuálního počítače nainstalovat. Pokud máte problémy se zálohováním virtuálního počítače Azure, zkontrolujte, zda je agent virtuálního počítače na virtuálním počítači správně nainstalovaný (viz následující tabulka). Pokud vytváříte vlastní virtuální počítač, před jeho zřízením [se ujistěte, že je zaškrtávací políčko **Nainstalovat agenta virtuálního počítače** zaškrtnuté](../virtual-machines/windows/classic/agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-Další informace o hello [agenta virtuálního počítače](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409) a [jak tooinstall ho](../virtual-machines/windows/classic/manage-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Další informace o [Agentu virtuálního počítače](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409) a [jak ho nainstalovat](../virtual-machines/windows/classic/manage-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-Hello následující tabulka obsahuje další informace o hello virtuální počítač agenta pro Windows a virtuální počítače s Linuxem.
+Následující tabulka poskytuje další informace o agentu virtuálního počítače pro virtuální počítače s Windows nebo Linuxem.
 
 | **Operace** | **Windows** | **Linux** |
 | --- | --- | --- |
-| Instalace hello agenta virtuálního počítače |<li>Stáhněte a nainstalujte hello [MSI agenta](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Potřebujete instalaci hello toocomplete oprávnění správce. <li>[Aktualizovat vlastnosti virtuálního počítače hello](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) tooindicate, který hello agenta je nainstalovaná. |<li> Nainstalujte nejnovější hello [agenta systému Linux](https://github.com/Azure/WALinuxAgent) z Githubu. Potřebujete instalaci hello toocomplete oprávnění správce. <li> [Aktualizovat vlastnosti virtuálního počítače hello](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) tooindicate, který hello agenta je nainstalovaná. |
-| Aktualizace hello agenta virtuálního počítače |Hello aktualizace agenta virtuálního počítače je stejně jednoduché jako přeinstalování hello [binárních souborů agenta virtuálního počítače](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Ujistěte se, že během aktualizace agenta virtuálního počítače hello neběží žádná operace zálohování. |Postupujte podle pokynů hello na [aktualizace agenta virtuálního počítače Linux hello](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). <br>Ujistěte se, že při hello Probíhá aktualizace agenta virtuálního počítače neběží žádná operace zálohování. |
-| Ověření instalace agenta virtuálního počítače hello |<li>Přejděte toohello *C:\WindowsAzure\Packages* složky v hello virtuálního počítače Azure. <li>Byste měli najít přítomný soubor WaAppAgent.exe hello.<li> Klikněte pravým tlačítkem na soubor hello, přejděte příliš**vlastnosti**a potom vyberte hello **podrobnosti** kartě hello verze produktu pole by mělo být 2.6.1198.718 nebo vyšší. |Není k dispozici |
+| Instalace agenta virtuálního počítače |<li>Stáhněte si a nainstalujte [MSI agenta](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). K dokončení instalace je potřeba oprávnění správce. <li>[Aktualizujte vlastnost virtuálního počítače](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx), aby indikovala, že je agent nainstalovaný. |<li> Nainstalujte nejnovějšího [agenta systému Linux](https://github.com/Azure/WALinuxAgent) z Githubu. K dokončení instalace je potřeba oprávnění správce. <li> [Aktualizujte vlastnost virtuálního počítače](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx), aby indikovala, že je agent nainstalovaný. |
+| Aktualizace agenta virtuálního počítače |Aktualizace agenta virtuálního počítače je stejně jednoduchá, jako přeinstalace [binárních souborů agenta virtuálního počítače](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Ujistěte se, že během aktualizace agenta virtuálního počítače neběží žádná operace zálohování. |Postupujte podle pokynů v tématu [Aktualizace agenta virtuálního počítače s Linuxem](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). <br>Ujistěte se, že během aktualizace agenta virtuálního počítače neběží žádná operace zálohování. |
+| Ověření instalace agenta virtuálního počítače |<li>Ve virtuálním počítači Azure přejděte do složky *C:\WindowsAzure\Packages*. <li>Měl by být přítomný soubor WaAppAgent.exe.<li> Pravým tlačítkem myši klikněte na soubor, přejděte na **Vlastnosti** a poté vyberte kartu **Podrobnosti**. Pole Verze produktu by mělo být 2.6.1198.718 nebo vyšší. |Není dostupné. |
 
 ### <a name="backup-extension"></a>Rozšíření zálohování
-Jednou hello agenta virtuálního počítače je nainstalována na virtuálním počítači hello, hello služba Azure Backup nainstaluje hello rozšíření zálohování toohello agenta virtuálního počítače. Hello služba Azure Backup bezproblémově upgraduje a opravy hello rozšíření zálohování bez dalšího zásahu uživatele.
+Když je agent virtuálního počítače nainstalovaný na virtuálním počítači, služba Azure Backup nainstaluje do agenta virtuálního počítače rozšíření zálohování. Služba Azure Backup bezproblémově upgraduje a opravuje rozšíření zálohování bez dalšího zásahu uživatele.
 
-Služba zálohování Hello nainstaluje rozšíření zálohování hello i v případě, že hello virtuální počítač neběží. Spuštění virtuálního počítače poskytuje hello největší šanci získání bod obnovení konzistentních s aplikací. Hello služby Azure Backup však pokračuje tooback až hello virtuálních počítačů, i když je vypnutý a rozšíření hello nebylo možné nainstalovat. Tento typ zálohy je známý jako Offline virtuální počítač a bod obnovení hello je *zhroutí konzistentní*.
+Služba Backup nainstaluje rozšíření zálohování i v případě, že virtuální počítač není spuštěný. Spuštěný virtuální počítač poskytuje největší šanci získání bodu obnovení, který je konzistentní v rámci aplikace. Služba Azure Backup nicméně bude pokračovat v zálohování virtuálního počítače, i když je vypnutý a rozšíření nebylo možné nainstalovat. Tento typ zálohování se označuje jako Virtuální počítač v režimu offline a bod obnovení je *konzistentní pro případ chyby*.
 
 ## <a name="troubleshooting-information"></a>Informace o řešení potíží
-Pokud máte problémy s plněním některých úkolů hello v tomto článku, projděte si [pokyny při řešení potíží](backup-azure-vms-troubleshoot.md).
+Pokud máte problémy s plněním některých úkolů v tomto článku, obraťte se na [Pokyny při řešení potíží](backup-azure-vms-troubleshoot.md).
 
 ## <a name="pricing"></a>Ceny
-zálohování virtuálních počítačů Azure náklady Hello je založena na hello počet chráněné instance. Definici chráněné instance najdete v tématu [Co je chráněná instance](backup-introduction-to-azure-backup.md#what-is-a-protected-instance). Příklad výpočet nákladů hello zálohování virtuálních počítačů, naleznete v části [výpočet chráněné instance](backup-azure-vms-introduction.md#calculating-the-cost-of-protected-instances). V tématu hello cenách zálohování Azure stránka informace o [cenách zálohování](https://azure.microsoft.com/pricing/details/backup/).
+Náklady na zálohování virtuálních počítačů Azure závisí na počtu chráněných instancí. Definici chráněné instance najdete v tématu [Co je chráněná instance](backup-introduction-to-azure-backup.md#what-is-a-protected-instance). Příklad výpočtu nákladů na zálohování virtuálního počítače najdete v tématu [Jak se počítají chráněné instance](backup-azure-vms-introduction.md#calculating-the-cost-of-protected-instances). Informace o [cenách služby Backup](https://azure.microsoft.com/pricing/details/backup/) najdete na stránce Ceny služby Azure Backup.
 
 ## <a name="questions"></a>Máte dotazy?
-Pokud máte otázky, nebo pokud se některé funkce, které byste chtěli toosee zahrnuty, [pošlete nám svůj názor](http://aka.ms/azurebackup_feedback).
+Máte-li nějaké dotazy nebo pokud víte o funkci, kterou byste uvítali, [odešlete nám svůj názor](http://aka.ms/azurebackup_feedback).

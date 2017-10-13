@@ -1,5 +1,5 @@
 ---
-title: aaaOverview tabulek v SQL Data Warehouse | Microsoft Docs
+title: "Přehled tabulek v SQL Data Warehouse | Microsoft Docs"
 description: "Začínáme s Azure SQL Data Warehouse tabulky."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: tables
 ms.date: 06/29/2016
 ms.author: shigu;jrj
-ms.openlocfilehash: 4edabcb4b0754bf6c99c2b6b3f0c077749051d9e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c16fef2f302dbc56f257eaf2f0d2b68b6a3c1852
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="overview-of-tables-in-sql-data-warehouse"></a>Přehled tabulek v SQL Data Warehouse
 > [!div class="op_single_selector"]
@@ -33,37 +33,37 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Začínáme s vytváření tabulek v SQL Data Warehouse je jednoduché.  Hello základní [CREATE TABLE] [ CREATE TABLE] syntaxe následuje hello běžné syntaxe se pravděpodobně už znáte z práce jiné databáze.  toocreate tabulku, potřebujete tooname tabulka, název sloupce a definování typů dat pro každý sloupec.  Pokud jste vytváření tabulek v jiných databázích, to by měla vypadat dobře obeznámeni tooyou.
+Začínáme s vytváření tabulek v SQL Data Warehouse je jednoduché.  Základní [CREATE TABLE] [ CREATE TABLE] syntaxe následuje běžné syntaxe se pravděpodobně už znáte z práce jiné databáze.  Pokud chcete vytvořit tabulku, musíte jednoduše název nové tabulky, název sloupce a definování typů dat pro každý sloupec.  Pokud vytvoříte tabulky v ostatních databázích to velmi povědomé pro vás.
 
 ```sql  
 CREATE TABLE Customers (FirstName VARCHAR(25), LastName VARCHAR(25))
  ``` 
 
-Hello výše příklad vytvoří tabulku s názvem zákazníků se dva sloupce, jméno a příjmení.  Každý sloupec je definován s datovým typem VARCHAR(25), což omezí hello data too25 znaků.  Tyto atributy základní tabulku, jakož i ostatní uživatelé jsou většinou hello stejné jako jiné databáze.  Datové typy jsou definovány pro každý sloupec a zajišťují integritu hello vaše data.  Indexy lze přidat tooimprove výkon snížením vstupně-výstupní operace.  Vytváření oddílů lze přidat tooimprove výkon při potřebujete toomodify data.
+Tento příklad vytvoří tabulku s názvem zákazníků se dva sloupce, jméno a příjmení.  Každý sloupec je definován s datovým typem VARCHAR(25), což omezí data 25 znaků.  Tyto atributy základní tabulku, jakož i ostatní, jsou z velké části stejný jako jiné databáze.  Datové typy jsou definovány pro každý sloupec a zajištění integrity dat.  Indexy mohou být přidány do zlepšit výkon snížením vstupně-výstupní operace.  Vytváření oddílů lze přidat ke zlepšení výkonu při budete muset upravit data.
 
 [Přejmenování] [ RENAME] SQL Data Warehouse tabulku vypadá takto:
 
 ```sql  
-RENAME OBJECT Customer tooCustomerOrig; 
+RENAME OBJECT Customer TO CustomerOrig; 
  ```
 
 ## <a name="distributed-tables"></a>Distribuované tabulky
-Nový základní atribut zaváděné distribuovaných systémů, jako je datový sklad SQL je hello **distribuční sloupce**.  Hello distribuční sloupce je velmi mnohem co vypadá jako.  Je hello sloupec, který určuje, jak toodistribute, nebo dělení, vaše data pozadí hello.  Při vytváření tabulky bez zadání hello distribuční sloupce je tabulka hello automaticky distribuovaných přes **kruhové dotazování**.  Kruhové dotazování tabulky mohou být dostatečná v některých scénářích, definování distribuční sloupce může výrazně omezit přesun dat během dotazy, proto optimalizace výkonu.  V situacích, kde existuje malé množství dat v tabulce, výběr toocreate hello tabulku s hello **replikovat** distribuční typ zkopíruje data tooeach výpočetním uzlu a uloží přesun dat v době provedení dotazu. V tématu [distribuci tabulku] [ Distribute] toolearn Další informace o tom tooselect distribuční sloupce.
+Nový základní atribut zaváděné distribuovaných systémů, jako je SQL Data Warehouse **distribuční sloupce**.  Sloupec distribuce je velmi mnohem co vypadá jako.  Je sloupec, který určuje, jak distribuovat nebo rozdělte data na pozadí.  Při vytvoření tabulky bez zadání distribuční sloupce v tabulce je automaticky distribuován pomocí **kruhové dotazování**.  Kruhové dotazování tabulky mohou být dostatečná v některých scénářích, definování distribuční sloupce může výrazně omezit přesun dat během dotazy, proto optimalizace výkonu.  V situacích, kde malé množství dat v tabulce se rozhodnete vytvořit tabulku s **replikovat** distribuční typ zkopíruje data na každém výpočetním uzlu a uloží přesun dat v době provedení dotazu. V tématu [distribuci tabulku] [ Distribute] Další informace o tom, jak vybrat distribuční sloupce.
 
 ## <a name="indexing-and-partitioning-tables"></a>Indexování a rozdělení do oddílů tabulky
-Jako stát pokročilejší pomocí SQL Data Warehouse a chcete toooptimize výkonu, budete muset toolearn více informací o návrh tabulky.  články hello toolearn více, najdete na [tabulky datové typy][Data Types], [distribuci tabulku][Distribute], [indexování tabulku] [ Index] a [vytváření oddílů tabulky][Partition].
+Jako stát pokročilejší pomocí SQL Data Warehouse a chcete za účelem optimalizace výkonu, budete chtít získat další informace o návrh tabulky.  Další informace najdete v článcích na [tabulky datové typy][Data Types], [distribuci tabulku][Distribute], [indexování tabulku] [ Index] a [vytváření oddílů tabulky][Partition].
 
 ## <a name="table-statistics"></a>Statistiky tabulky
-Statistiky jsou velmi důležité toogetting hello nejlepší výkon z SQL Data Warehouse.  Vzhledem k tomu, že SQL Data Warehouse automaticky ještě není vytvářet a aktualizovat statistiku pro vás, jako je pocházet tooexpect ve službě Azure SQL Database, čtení na náš článek [statistiky] [ Statistics] může být jedním z hello Nejdůležitější články číst tooensure získáte nejlepší výkon hello od své dotazy.
+Statistiky jsou velmi důležité pro získávání nejlepší výkon z SQL Data Warehouse.  Vzhledem k tomu, že SQL Data Warehouse automaticky ještě není vytvářet a aktualizovat statistiku pro vás, jako jsou může pocházet očekávat ve službě Azure SQL Database, čtení na náš článek [statistiky] [ Statistics] může být jedním z nejvíc důležité články přečíst zajistit získáte nejlepší výkon ze své dotazy.
 
 ## <a name="temporary-tables"></a>Dočasné tabulky
-Dočasné tabulky jsou tabulky, které pouze existovat hello dobu vaše přihlašovací jméno a ostatní uživatelé je nemohou vidět.  Dočasné tabulky můžete být vhodné tooprevent ostatní vidět dočasné výsledky z a také snížit hello potřebu čištění.  Vzhledem k tomu, že dočasných tabulek také používat místní úložiště, můžete nabízí vyšší výkon pro některé operace.  V tématu hello [dočasné tabulky] [ Temporary] články pro další podrobnosti o dočasné tabulky.
+Dočasné tabulky jsou tabulky, které pouze existovat po dobu trvání vaše přihlašovací jméno a ostatní uživatelé je nemohou vidět.  Dočasné tabulky může být dobrým způsobem, jak zakázat ostatním zobrazit dočasné výsledky a také snížit nutnost čištění.  Vzhledem k tomu, že dočasných tabulek také používat místní úložiště, můžete nabízí vyšší výkon pro některé operace.  Najdete v článku [dočasné tabulky] [ Temporary] články pro další podrobnosti o dočasné tabulky.
 
 ## <a name="external-tables"></a>Externí tabulky
-Externí tabulky, také známé jako Polybase tabulky, jsou tabulky, které může být dotazován z SQL Data Warehouse, ale toodata bodu externí z SQL Data Warehouse.  Například můžete vytvoříte externí tabulku které toofiles body na Azure Blob Storage.  Další informace o tom, jak toocreate a dotaz externí tabulku, najdete v části [načtení dat pomocí funkce Polybase][Load data with Polybase].  
+Externí tabulky, také známé jako Polybase tabulky, jsou tabulky, které můžete zadat dotaz na externí data z SQL Data Warehouse z SQL Data Warehouse, ale bodu.  Můžete například vytvořit externí tabulku které body k souborům na Azure Blob Storage.  Další podrobnosti o tom, jak vytvořit a dotaz na externí tabulky najdete v tématu [načtení dat pomocí funkce Polybase][Load data with Polybase].  
 
 ## <a name="unsupported-table-features"></a>Funkce nepodporované tabulky
-I když SQL Data Warehouse obsahuje řadu hello nabízí stejné funkce tabulky jiných databází, nejsou některé funkce, které ještě nejsou podporovány.  Níže je seznam některých hello tabulka funkce, které ještě nejsou podporovány.
+Zatímco SQL Data Warehouse obsahuje mnoho stejných funkcí tabulky nabízené jiných databází, nejsou některé funkce, které ještě nejsou podporovány.  Níže je seznam některých funkcí tabulky, které ještě nejsou podporovány.
 
 | Nepodporované funkce |
 | --- |
@@ -78,13 +78,13 @@ I když SQL Data Warehouse obsahuje řadu hello nabízí stejné funkce tabulky 
 | [Synonyma.][Synonyms] |
 
 ## <a name="table-size-queries"></a>Dotazy na velikost tabulky
-Jedna jednoduchý způsob tooidentify místa a řádky, které spotřebovávají tabulku v každé z hello 60 distribuce je toouse [DBCC PDW_SHOWSPACEUSED][DBCC PDW_SHOWSPACEUSED].
+Jeden způsob, jak identifikovat místa a řádky, které spotřebovávají tabulku v každé z 60 distribuce, je použití [DBCC PDW_SHOWSPACEUSED][DBCC PDW_SHOWSPACEUSED].
 
 ```sql
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 ```
 
-Však příkazy DBCC může být poměrně omezení.  Zobrazení dynamické správy (zobrazení dynamické správy) vám umožní toosee mnohem víc podrobností a také získáte mnohem větší kontrolu nad hello výsledky dotazu.  Začněte vytvořením toto zobrazení, která bude odkazované tooby mnoha příkladech v tomto a dalších článků.
+Však příkazy DBCC může být poměrně omezení.  Zobrazení dynamické správy (zobrazení dynamické správy) vám umožní zobrazit mnohem podrobněji a také získáte mnohem větší kontrolu nad výsledky dotazu.  Začněte vytvořením toto zobrazení, která bude na ně odkazovat mnoha příkladech v tomto a dalších článků.
 
 ```sql
 CREATE VIEW dbo.vTableSizes
@@ -199,7 +199,7 @@ FROM size
 ```
 
 ### <a name="table-space-summary"></a>Souhrnné tabulky místa
-Tento dotaz vrací řádky hello a místa v tabulce.  Je skvělým dotazu toosee, které tabulky jsou vaše největší tabulky a zda jsou kruhové dotazování, replikovat nebo distribuovat algoritmu hash.  Pro distribuované zatřiďovacích tabulkách také ukazuje hello distribuční sloupce.  Ve většině případů musí být vaše největší tabulky hash distribuované s clusterovaný index columnstore.
+Tento dotaz vrací řádky a místa v tabulce.  Je skvělým dotazu zobrazíte které tabulky jsou vaše největší tabulky a zda jsou kruhové dotazování, replikovat nebo distribuovat algoritmu hash.  Pro distribuované zatřiďovacích tabulkách také ukazuje distribuční sloupce.  Ve většině případů musí být vaše největší tabulky hash distribuované s clusterovaný index columnstore.
 
 ```sql
 SELECT 
@@ -273,7 +273,7 @@ ORDER BY    distribution_id
 ```
 
 ## <a name="next-steps"></a>Další kroky
-články hello toolearn více, najdete na [tabulky datové typy][Data Types], [distribuci tabulku][Distribute], [indexování tabulku] [ Index], [Vytváření oddílů tabulky][Partition], [zachování statistiky tabulky] [ Statistics] a [ Dočasné tabulky][Temporary].  Další informace o osvědčených postupech najdete v tématu [SQL Data Warehouse osvědčené postupy][SQL Data Warehouse Best Practices].
+Další informace najdete v článcích na [tabulky datové typy][Data Types], [distribuci tabulku][Distribute], [indexování tabulku] [ Index], [Vytváření oddílů tabulky][Partition], [zachování statistiky tabulky] [ Statistics] a [Dočasných tabulek][Temporary].  Další informace o osvědčených postupech najdete v tématu [SQL Data Warehouse osvědčené postupy][SQL Data Warehouse Best Practices].
 
 <!--Image references-->
 

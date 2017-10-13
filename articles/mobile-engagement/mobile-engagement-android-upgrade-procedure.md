@@ -1,5 +1,5 @@
 ---
-title: aaaAzure integraci sady Android SDK Mobile Engagement
+title: Integraci sady Azure Mobile Engagement Android SDK
 description: "Nejnovější aktualizace a postupy pro Android SDK pro Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,23 +14,23 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: df5c82812fe0a242eaa5df8c906030237215b7eb
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1f047f93fa8bc852b28c86e91d0c007a94fb4299
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="upgrade-procedures"></a>Postupy upgradu
-Pokud již máte integrovanou starší verze naše sady SDK do své aplikace, musíte tooconsider hello následující body při upgradu hello SDK.
+Pokud již máte integrovanou starší verze naše sady SDK do své aplikace, je nutné zvážit následující body při upgradu sady SDK.
 
-Toofollow může mít několik postupů, pokud provedena několik verzí hello SDK. Například pokud migrujete z 1.4.0 too1.6.0 máte toofirst postupujte podle hello "z 1.4.0 too1.5.0" postup pak hello "z 1.5.0 too1.6.0" postup.
+Možná budete muset několik postupy použijte, pokud provedena několik verzí sady SDK. Například pokud migrujete z 1.4.0 1.6.0 budete muset nejdřív postupujte podle pokynů "od 1.4.0 k 1.5.0" pak postupu "od 1.5.0 k 1.6.0".
 
-Ať hello verze upgradujete, budete mít tooreplace hello `mobile-engagement-VERSION.jar` s hello nový.
+Bez ohledu na verzi upgradujete, budete muset nahradit `mobile-engagement-VERSION.jar` tímto novým připojením.
 
-## <a name="from-420-too421"></a>Z 4.2.0 too4.2.1
-Tento krok lze provést ve skutečnosti na libovolnou verzi systému hello SDK, je zvýšení zabezpečení při integraci Reach aktivity.
+## <a name="from-420-to-421"></a>Z 4.2.0 k 4.2.1
+Tento krok lze provést ve skutečnosti na všechny verze sady SDK, je zvýšení zabezpečení při integraci Reach aktivity.
 
-Nyní byste měli přidat `exported="false"` tooall Reach aktivity.
+Nyní byste měli přidat `exported="false"` pro všechny aktivity Reach.
 
 Reach aktivity by teď měl vypadat takto vaše `AndroidManifest.xml`:
 
@@ -61,13 +61,13 @@ Reach aktivity by teď měl vypadat takto vaše `AndroidManifest.xml`:
               </intent-filter>
             </activity>
 
-## <a name="from-400-too410"></a>Z 4.0.0 too4.1.0
-Hello SDK nyní popisovač nové oprávnění modelu ze systému Android M.
+## <a name="from-400-to-410"></a>Z 4.0.0 k 4.1.0
+SDK nyní popisovač nové oprávnění modelu ze systému Android M.
 
 Pokud používáte umístění funkcí nebo oznámení velký obrázek přečtěte [v této části](mobile-engagement-android-integrate-engagement.md#android-m-permissions).
 
-Kromě toho toohello nový model oprávnění, teď podporujeme konfiguraci funkcí umístění za běhu.
-Snažíme se stále kompatibilní s hello manifestu parametry pro umístění, ale je nyní zastaralý. Konfigurace modulu runtime toouse, odeberte hello následující části z vaší ``AndroidManifest.xml``:
+Kromě nový model oprávnění teď podporujeme konfiguraci funkce umístění za běhu.
+Snažíme se stále kompatibilní s manifestu parametry pro umístění, ale je nyní zastaralý. Chcete-li použít konfigurace modulu runtime, odeberte v následujících částech z vaší ``AndroidManifest.xml``:
 
     <meta-data
       android:name="engagement:locationReport:lazyArea"
@@ -82,11 +82,11 @@ Snažíme se stále kompatibilní s hello manifestu parametry pro umístění, a
       android:name="engagement:locationReport:realTime:fine"
       android:value="true"/>
 
-a číst [Tato aktualizuje postup](mobile-engagement-android-integrate-engagement.md#location-reporting) konfigurace modulu runtime toouse místo.
+a číst [Tato aktualizuje postup](mobile-engagement-android-integrate-engagement.md#location-reporting) místo toho použít konfigurace modulu runtime.
 
-## <a name="from-300-too400"></a>Z 3.0.0 too4.0.0
+## <a name="from-300-to-400"></a>Z 3.0.0 k 4.0.0
 ### <a name="native-push"></a>Nativního nabízení
-Nativního nabízení (GCM/ADM) se teď také používá pro oznámení v aplikaci, musíte nakonfigurovat přihlašovací údaje nativního nabízení hello pro jakýkoli typ nabízené kampaně.
+Nativního nabízení (GCM/ADM) se teď také používá pro oznámení v aplikaci, musíte nakonfigurovat přihlašovací údaje nativního nabízení pro jakýkoli typ nabízené kampaně.
 
 Není-li již postupujte [tento postup](mobile-engagement-android-integrate-engagement-reach.md#native-push).
 
@@ -130,7 +130,7 @@ Od společnosti
     </receiver>
 
 Je to pravděpodobně načítání obrazovky teď kliknutím na oznámení (s text nebo webového obsahu) nebo hlasování.
-Máte tooadd to pro tyto toowork kampaně v 4.0.0:
+Je nutné přidat tato funkce má u těchto kampaně pro práci v 4.0.0:
 
     <activity
       android:name="com.microsoft.azure.engagement.reach.activity.EngagementLoadingActivity"
@@ -142,13 +142,13 @@ Máte tooadd to pro tyto toowork kampaně v 4.0.0:
     </activity>
 
 ### <a name="resources"></a>Zdroje
-Vložení nové hello `res/layout/engagement_loading.xml` souboru do projektu.
+Vložení nové `res/layout/engagement_loading.xml` souboru do projektu.
 
-## <a name="from-240-too300"></a>Z 2.4.0 too3.0.0
-Hello následující text popisuje, jak toomigrate integraci sady SDK z hello Capptain služby nabízených Capptain SAS do aplikace používá technologii Azure Mobile Engagement. Pokud provádíte migraci ze starší verze, informujte hello Capptain webu toomigrate too2.4.0 nejprve a potom použijte hello následující postup.
+## <a name="from-240-to-300"></a>Z 2.4.0 k 3.0.0
+Následující část popisuje postup migrace integraci sady SDK z Capptain služby, které do aplikace používá technologii Azure Mobile Engagement nabízí Capptain SAS. Pokud provádíte migraci ze starší verze, najdete na webu Capptain nejdřív přenést 2.4.0 a potom použijte následující postup.
 
 > [!IMPORTANT]
-> Capptain Mobile Engagement není hello stejné služby a hello postup vypsáni níže pouze označuje, jak toomigrate hello klientskou aplikaci. Migrace hello SDK v aplikaci hello se NEPROVÁDÍ migraci dat ze sady Mobile Engagement pro toohello hello Capptain servery.
+> Capptain a Mobile Engagement nejsou stejné služby a postup níže uvedené jenom dozvíte, jak migrovat klientské aplikace. Migrace sady SDK v aplikaci není migrovat data ze serverů Capptain na servery Mobile Engagement.
 > 
 > 
 
@@ -156,42 +156,42 @@ Hello následující text popisuje, jak toomigrate integraci sady SDK z hello Ca
 Nahraďte `capptain.jar` podle `mobile-engagement-VERSION.jar` ve vaší `libs` složky.
 
 ### <a name="resource-files"></a>Soubory prostředků
-Každý soubor prostředků, který jsme zadali (s předponou podle `capptain_`) toobe nahradili hello nové (s předponou `engagement_`).
+Každý soubor prostředků, který jsme zadali (s předponou podle `capptain_`) má nahradit za nové (s předponou `engagement_`).
 
-Pokud jste si přizpůsobili těchto souborů, máte toore-použít vlastní na hello nové soubory, **všechny identifikátory hello v souborech prostředků hello také přejmenovaná**.
+Pokud jste si přizpůsobili tyto soubory, budete muset znovu použít vlastní u nových souborů **všechny identifikátory v souborech prostředků také přejmenovaná**.
 
 ### <a name="application-id"></a>ID aplikace
-Teď používá Engagement SDK identifikátorů připojovacího řetězce tooconfigure hello například identifikátor aplikace hello.
+Zapojení teď používá připojovací řetězec konfigurace identifikátory SDK například identifikátor aplikace.
 
-Máte toouse `EngagementAgent.init` metoda aktivitou Spouštěče takto:
+Budete muset použít `EngagementAgent.init` metoda aktivitou Spouštěče takto:
 
             EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
             engagementConfiguration.setConnectionString("Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}");
             EngagementAgent.getInstance(this).init(engagementConfiguration);
 
-Hello připojovací řetězec pro vaši aplikaci se zobrazí na portálu Azure.
+Připojovací řetězec pro vaši aplikaci se zobrazí na portálu Azure.
 
-Odeberte všechny volání příliš`CapptainAgent.configure` jako `EngagementAgent.init` nahrazuje dané metody.
+Odeberte všechny volání `CapptainAgent.configure` jako `EngagementAgent.init` nahrazuje dané metody.
 
-Hello `appId` již jde konfigurovat pomocí `AndroidManifest.xml`.
+`appId` Již jde konfigurovat pomocí `AndroidManifest.xml`.
 
 Odeberte z této části vaší `AndroidManifest.xml` pokud:
 
             <meta-data android:name="capptain:appId" android:value="<YOUR_APPID>"/>
 
 ### <a name="java-api"></a>Java API
-Každé volání tooany třída jazyka Java naše SDK má toobe přejmenovat; například `CapptainAgent.getInstance(this)` musí být přejmenován `EngagementAgent.getInstance(this)`, `extends CapptainActivity` musí být přejmenován `extends EngagementActivity` atd...
+Každé volání jakákoli Třída Java naše SDK musí být přejmenována; například `CapptainAgent.getInstance(this)` musí být přejmenován `EngagementAgent.getInstance(this)`, `extends CapptainActivity` musí být přejmenován `extends EngagementActivity` atd...
 
-Pokud byly integrovány s výchozí agenta předvoleb soubory, hello výchozí název souboru je nyní `engagement.agent` a hello je klíč `engagement:agent`.
+Pokud byly integrovány s výchozí agenta předvoleb soubory, výchozí název souboru je nyní `engagement.agent` a zda je klíč `engagement:agent`.
 
-Při vytváření webové oznámení, hello vazač Javascript je nyní `engagementReachContent`.
+Při vytváření webové oznámení, vazač Javascript je nyní `engagementReachContent`.
 
 ### <a name="androidmanifestxml"></a>AndroidManifest.xml
-Mnoho změn došlo k dispozici, není sdíleny hello služby a spoustu příjemci už nejsou exportovatelný.
+Mnoho změn došlo k dispozici, služba není sdíleny a spoustu příjemci už nejsou exportovatelný.
 
-deklarace Hello služby je teď jednodušší; Odeberte hello záměrné filtru a všechny metadat je uvnitř a přidejte `exportable=false`.
+Deklarace služby je teď jednodušší; Odeberte záměrné filtru a všechny metadat je uvnitř a přidejte `exportable=false`.
 
-Plus všechno, co je přejmenován toouse zapojení.
+Plus všechno, co je přejmenován na používat engagement.
 
 Teď vypadá takto:
 
@@ -201,7 +201,7 @@ Teď vypadá takto:
               android:label="<Your application name>Service"
               android:process=":Engagement"/>
 
-Když chcete tooenable protokolů testování, hello metadata byla nyní přesunout toohello aplikace značky a bylo přejmenováno:
+Pokud chcete povolit protokolů testování, meta-data nyní byl přesunut do aplikace značky a bylo přejmenováno:
 
             <application>
 
@@ -211,7 +211,7 @@ Když chcete tooenable protokolů testování, hello metadata byla nyní přesun
 
             </application>
 
-Všechny ostatní metadata právě přejmenovaná, zde je úplný seznam hello (samozřejmě přejmenovat pouze hello ty, které jsou použijete):
+Všechny ostatní metadata právě přejmenovaná, zde je úplný seznam (přejmenování kurzu jen ty, které používáte):
 
             <meta-data
               android:name="engagement:reportCrash"
@@ -259,7 +259,7 @@ Všechny ostatní metadata právě přejmenovaná, zde je úplný seznam hello (
                 android:value="false"/>
             </activity>
 
-Sledování Google Play a SmartAd byla odebrána ze sady SDK právě máte tooremove to bez nahrazení:
+Google Play a SmartAd sledování byl odebrán z SDK, musíte se odebrat toto bez nahrazení:
 
             <meta-data 
                 android:name="capptain:track:installReferrerForwardList"
@@ -268,7 +268,7 @@ Sledování Google Play a SmartAd byla odebrána ze sady SDK právě máte toore
                 android:name="capptain:track:adservers"
                 android:value="smartad" />
 
-Hello Reach aktivity jsou nyní deklarované takto:
+Reach aktivity jsou nyní deklarované takto:
 
             <activity
               android:name="com.microsoft.azure.engagement.reach.activity.EngagementTextAnnouncementActivity"
@@ -297,9 +297,9 @@ Hello Reach aktivity jsou nyní deklarované takto:
               </intent-filter>
             </activity>
 
-Pokud máte vlastní aktivity Reach, potřebujete jenom toochange hello záměrné akce toomatch buď `com.microsoft.azure.engagement.reach.intent.action.ANNOUNCEMENT` nebo `com.microsoft.azure.engagement.reach.intent.action.POLL`.
+Pokud máte vlastní aktivity Reach, potřebujete jenom změnit záměrné akce, které odpovídají buď `com.microsoft.azure.engagement.reach.intent.action.ANNOUNCEMENT` nebo `com.microsoft.azure.engagement.reach.intent.action.POLL`.
 
-Hello všesměrového vysílání příjemci přejmenovaná plus nyní přidáme `exported=false`. Tady je hello úplný seznam příjemců hello nové specifikace hello (samozřejmě přejmenovat pouze hello ty, které jsou použijete):
+Přejmenovaná všesměrového vysílání příjemci plus nyní přidáme `exported=false`. Tady je úplný seznam příjemců s novou specifikaci, (přejmenování kurzu jen ty, které používáte):
 
             <receiver android:name="com.microsoft.azure.engagement.reach.EngagementReachReceiver"
               android:exported="false">
@@ -378,7 +378,7 @@ Hello všesměrového vysílání příjemci přejmenovaná plus nyní přidáme
               </intent-filter>
             </receiver>
 
-Sledování příjemce byl odebrán, takže budete mít tooremove v této části:
+Sledování příjemce byl odebrán, takže budete muset odebrat v této části:
 
           <receiver android:name="com.ubikod.capptain.android.sdk.track.CapptainTrackReceiver">
             <intent-filter>
@@ -387,7 +387,7 @@ Sledování příjemce byl odebrán, takže budete mít tooremove v této část
             </intent-filter>
           </receiver>
 
-Všimněte si, že hello prohlášení o implementaci hello vysílání příjemce **EngagementMessageReceiver** došlo ke změně v hello `AndroidManifest.xml`. To je proto toosend hello rozhraní API a odebrat libovolný protokolu XMPP zprávy z libovolné protokolu XMPP entit a hello toosend rozhraní API a příjem zpráv mezi zařízeními byly odebrány. Proto máte také toodelete hello následující zpětná volání z vaší **EngagementMessageReceiver** implementace:
+Všimněte si, že prohlášení o implementaci všesměrového vysílání příjemce **EngagementMessageReceiver** došlo ke změně v `AndroidManifest.xml`. Je to proto, že byly odstraněny rozhraní API k odeslání a odebrat libovolný protokolu XMPP zprávy z libovolné protokolu XMPP entit a rozhraní API pro odesílání a přijímání zpráv mezi zařízeními. Proto je třeba také odstranit následující zpětná volání z vaší **EngagementMessageReceiver** implementace:
 
             protected void onDeviceMessageReceived(android.content.Context context, java.lang.String deviceId, java.lang.String payload)
 
@@ -404,7 +404,7 @@ a
             sendXMPPMessage(android.os.Bundle msg)
 
 ### <a name="proguard"></a>Proguard
-Proguard konfigurace může být ovlivněno rebranding hello pravidla jsou nyní vyhledávání jako:
+Proguard konfigurace může být ovlivněno rebranding, pravidla jsou nyní vyhledávání jako:
 
             -dontwarn android.**
             -keep class android.support.v4.** { *; }

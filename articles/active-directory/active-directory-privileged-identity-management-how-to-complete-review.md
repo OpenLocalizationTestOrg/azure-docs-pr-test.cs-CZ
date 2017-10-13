@@ -1,6 +1,6 @@
 ---
-title: "aaaHow toocomplete kontrola přístupu | Microsoft Docs"
-description: "Po spuštění kontrola přístupu v Azure AD Privileged Identity Management zjistěte, jak toocomplete ho a zobrazení výsledků hello"
+title: "Jak provést kontrola přístupu | Microsoft Docs"
+description: "Po spuštění kontrola přístupu v Azure AD Privileged Identity Management zjistěte, jak dokončit ho a zobrazení výsledků"
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -15,43 +15,43 @@ ms.workload: identity
 ms.date: 06/06/2017
 ms.author: kgremban
 ms.custom: pim
-ms.openlocfilehash: f99ddf3ebcf80b51110326064d584f33d8e1679a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ca2a1c7c287e4cf6b1b50cfb0068861b6f525596
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toocomplete-an-access-review-in-azure-ad-privileged-identity-management"></a>Jak toocomplete přístupu zkontrolujte v Azure AD Privileged Identity Management
-Správce privilegovaných rolí můžete zkontrolovat jednou privilegovaného přístupu [revize zabezpečení byla spuštěna](active-directory-privileged-identity-management-how-to-start-security-review.md). Azure AD Privileged Identity Management (PIM), bude automaticky posílat výzvy uživatelé tooreview jejich přístup k e-mailu. Pokud uživatel neobdrželi e-mailu, můžete odeslat je hello pokyny [jak tooperform zabezpečení zkontrolujte](active-directory-privileged-identity-management-how-to-perform-security-review.md).
+# <a name="how-to-complete-an-access-review-in-azure-ad-privileged-identity-management"></a>Jak provést kontrola přístupu v Azure AD Privileged Identity Management
+Správce privilegovaných rolí můžete zkontrolovat jednou privilegovaného přístupu [revize zabezpečení byla spuštěna](active-directory-privileged-identity-management-how-to-start-security-review.md). Azure AD Privileged Identity Management (PIM), bude automaticky posílat vyzývá uživatele, aby kontrolovat jejich přístup k e-mailu. Pokud uživatel neobdrželi e-mailu, můžete odeslat je podle pokynů [jak provádět kontrolu zabezpečení](active-directory-privileged-identity-management-how-to-perform-security-review.md).
 
-Po dobu kontrola zabezpečení hello je nad nebo všichni uživatelé hello dokončení jejich samoobslužné zkontrolujte, postupujte podle kroků hello v této kontrole hello toomanage článek a zobrazit výsledky hello.
+Po dobu kontrola zabezpečení je nad nebo dokončení jejich samoobslužné zkontrolujte všechny uživatele, postupujte podle kroků v tomto článku ke správě kontrola a zobrazit výsledky.
 
 ## <a name="manage-security-reviews"></a>Správa zabezpečení recenze
-1. Přejděte toohello [portál Azure](https://portal.azure.com/) a vyberte hello **Azure AD Privileged Identity Management** aplikace na řídicím panelu.
-2. Vyberte hello **přístup recenze** část řídicího panelu hello.
-3. Vyberte, které chcete toomanage kontrola přístupu hello.
+1. Přejděte na [portál Azure](https://portal.azure.com/) a vyberte **Azure AD Privileged Identity Management** aplikace na řídicím panelu.
+2. Vyberte **přístup recenze** část řídicího panelu.
+3. Vyberte kontrola přístupu, který chcete spravovat.
 
-V okně podrobností kontrola přístupu hello jsou číslo možností pro správu této revize.
+V okně podrobností kontrola přístupu jsou číslo možností pro správu této revize.
 
 ![PIM přístupu zkontrolujte tlačítka – snímek obrazovky][1]
 
 ### <a name="remind"></a>Připomenout
-Pokud kontrola přístupu je nastaven tak, aby uživatelé hello zkontrolujte sami, hello **připomenutí** tlačítko odesílá oznámení. 
+Pokud je kontrola přístupu nastavený tak, aby uživatelé sami, zkontrolujte **připomenutí** tlačítko odesílá oznámení. 
 
 ### <a name="stop"></a>Zastavit
-Všechny recenze přístup mít koncové datum, ale můžete použít hello **Zastavit** tlačítko toofinish je již v rané fázi. Pokud žádné uživatele nebyly revidován té doby, nebudou moct tooafter zastavíte zkontrolujte hello. Kontrolu nelze restartovat po byla zastavena.
+Všechny recenze přístup mít koncové datum, ale můžete použít **Zastavit** tlačítko ukončíte již v rané fázi. Pokud žádné uživatele nebyly revidován té doby, nebudou moci po ukončení kontrola. Kontrolu nelze restartovat po byla zastavena.
 
 ### <a name="apply"></a>Použít
-Po dokončení kontrola přístupu buď protože bylo dosaženo maximálního hello koncové datum nebo byla ručně zastavena hello **použít** tlačítko implementuje hello výsledek zkontrolujte hello. Pokud v hello zkontrolujte byl odepřen přístup uživatele, je to hello krok, který odstraní přiřazení role.  
+Po dokončení kontrola přístupu buď protože bylo dosaženo maximálního koncové datum nebo byla ručně zastavena **použít** tlačítko implementuje výsledek kontrola. Pokud v kontrola byl odepřen přístup uživatele, je to krok, který odstraní přiřazení role.  
 
 ### <a name="export"></a>Export
-Pokud chcete výsledky hello tooapply revize zabezpečení hello ručně, můžete exportovat zkontrolujte hello. Hello **exportovat** tlačítko se spustí stahování souboru CSV. Můžete spravovat hello výsledky v aplikaci Excel nebo programy, které soubory sdíleného svazku clusteru.
+Pokud chcete použít výsledků revize zabezpečení ručně, můžete exportovat kontrola. **Exportovat** tlačítko se spustí stahování souboru CSV. Můžete spravovat výsledky v aplikaci Excel nebo programy, které soubory sdíleného svazku clusteru.
 
 ### <a name="delete"></a>Odstranění
-Pokud si nejste zájem o hello žádné další zkontrolovat, odstraňte jej. Hello **odstranit** tlačítko odebere kontrolní hello hello PIM aplikace.
+Pokud si nejste zájem o žádné další kontrolní, odstraňte jej. **Odstranit** tlačítko odstraní kontrola z aplikace PIM.
 
 > [!IMPORTANT]
-> Nebude zobrazí upozornění, než dojde k odstranění, proto se ujistěte, že chcete toodelete, zkontrolovat. 
+> Nebude zobrazí upozornění, než dojde k odstranění, proto se ujistěte, že chcete odstranit tento kontrolní. 
 
 ## <a name="next-steps"></a>Další kroky
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]

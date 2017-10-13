@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s SAP HANA | Microsoft Docs'
-description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a SAP HANA."
+description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SAP HANA."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,252 +14,252 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 5ff6bfde0b1d7ab14025a4bc45199f9f826affd1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a7e73f6ee763d1005ad85935cf2d8f6b24ecf116
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/29/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>Kurz: Azure Active Directory integrace s SAP HANA
 
-V tomto kurzu zjistíte, jak toointegrate SAP HANA službou Azure Active Directory (Azure AD).
+V tomto kurzu zjistěte, jak integrovat SAP HANA s Azure Active Directory (Azure AD).
 
-Integrace SAP HANA s Azure AD poskytuje hello následující výhody:
+Integrace SAP HANA s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup tooSAP HANA
-- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooSAP HANA (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup k SAP HANA
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k SAP HANA (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Integrace služby Azure AD s SAP HANA tooconfigure, je třeba hello následující položky:
+Konfigurace integrace Azure AD s SAP HANA, potřebujete následující položky:
 
 - Předplatné služby Azure AD
 - SAP HANA jednotné přihlašování povolené předplatné
 - Spuštěné HANA Instance buď na všechny veřejné IaaS, místní, virtuální počítače Azure nebo velké instance SAP v Azure
-- Hello XSA správy webové rozhraní, jakož i HANA Studio nainstalována na hello HANA instance.
+- Na rozhraní webové správy XSA a také HANA Studio instalovaného na instanci HANA.
 
 > [!NOTE]
-> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí SAP HANA. Integrace hello se nejdřív otestujte v vývoj nebo pracovní prostředí hello aplikace a pak použijte hello produkčního prostředí.
+> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí SAP HANA. Nejdřív otestovat integrace v vývoj nebo pracovní prostředí aplikace a pak pomocí produkčního prostředí.
 
-tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
+Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání SAP HANA z Galerie hello
+1. Přidání SAP HANA z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-sap-hana-from-hello-gallery"></a>Přidání SAP HANA z Galerie hello
-tooconfigure hello integrace SAP HANA do Azure AD, je nutné tooadd SAP HANA hello Galerie tooyour seznamu spravovaných aplikací SaaS.
+## <a name="adding-sap-hana-from-the-gallery"></a>Přidání SAP HANA z Galerie
+Při konfiguraci integrace SAP HANA do služby Azure AD potřebujete přidat SAP HANA z Galerie si na seznam spravovaných aplikací SaaS.
 
-**tooadd SAP HANA z Galerie hello, proveďte následující kroky hello:**
+**Pokud chcete přidat SAP HANA z galerie, proveďte následující kroky:**
 
-1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
+1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
 
-    ![tlačítko Azure Active Directory Hello][1]
+    ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
+2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
 
-    ![okno aplikace Hello Enterprise][2]
+    ![V okně podnikové aplikace][2]
     
-3. tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
 
-    ![tlačítko nové aplikace Hello][3]
+    ![Tlačítko nové aplikace][3]
 
-4. Hello vyhledávacího pole zadejte **SAP HANA**, vyberte **SAP HANA** z panelu výsledků klikněte **přidat** tlačítko tooadd hello aplikace. 
+4. Do vyhledávacího pole zadejte **SAP HANA**, vyberte **SAP HANA** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci. 
 
-    ![Hello nové aplikace](./media/active-directory-saas-saphana-tutorial/tutorial_saphana_addfromgallery.png)
+    ![Nová aplikace](./media/active-directory-saas-saphana-tutorial/tutorial_saphana_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s SAP HANA podle testovacího uživatele názvem "Britta Simon."
 
-Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v SAP HANA je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v SAP HANA musí toobe navázat.
+Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v SAP HANA je pro uživatele ve službě Azure AD. Jinými slovy musí navázat vztah propojení mezi uživatele Azure AD a související uživatelské v SAP HANA.
 
-V SAP HANA přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.
+V SAP HANA přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
 
-tooconfigure a testu Azure AD jednotné přihlašování s SAP HANA, potřebujete následující stavební bloky hello toocomplete:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s SAP HANA, je třeba dokončit následující stavební bloky:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele SAP HANA](#creating-a-sap-hana-test-user)**  -toohave protějšek Britta Simon v SAP HANA, která je propojená toohello Azure AD reprezentace uživatele.
-4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele SAP HANA](#creating-a-sap-hana-test-user)**  – Pokud chcete mít protějšek Britta Simon v SAP HANA propojeném s Azure AD reprezentace daného uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci SAP HANA.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci SAP HANA.
 
-**tooconfigure Azure AD jednotné přihlašování s SAP HANA, proveďte následující kroky hello:**
+**Ke konfiguraci Azure AD jednotné přihlašování s SAP HANA, proveďte následující kroky:**
 
-1. V portálu Azure, na hello hello **SAP HANA** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na portálu Azure na **SAP HANA** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
+2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
  
     ![Jediné přihlášení dialogové okno](./media/active-directory-saas-saphana-tutorial/tutorial_saphana_samlbase.png)
 
-3. Na hello **SAP HANA domény a adresy URL** část, proveďte následující kroky hello:
+3. Na **SAP HANA domény a adresy URL** část, proveďte následující kroky:
 
     ![Domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-saphana-tutorial/tutorial_saphana_url.png)
 
-    a. V hello **identifikátor** textovému poli, typ jako:`HA100` 
+    a. V **identifikátor** textovému poli, typ jako:`HA100` 
 
-    b. V hello **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<Customer-SAP-instance-url>/sap/hana/xs/saml/login.xscfunc`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<Customer-SAP-instance-url>/sap/hana/xs/saml/login.xscfunc`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte pomocí hello skutečné identifikátor dotazů a odpovědí adresy URL. Obraťte se na [tým podpory SAP HANA klienta](https://cloudplatform.sap.com/contact.html) tooget tyto hodnoty. 
+    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem a adresa URL odpovědi. Obraťte se na [tým podpory SAP HANA klienta](https://cloudplatform.sap.com/contact.html) k získání těchto hodnot. 
 
-4. Na hello **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat hello ve vašem počítači.
+4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
 
-    ![odkaz ke stažení certifikátu Hello](./media/active-directory-saas-saphana-tutorial/tutorial_saphana_certificate.png) 
+    ![Odkaz ke stažení certifikátu](./media/active-directory-saas-saphana-tutorial/tutorial_saphana_certificate.png) 
 
     >[!Note]
-    >Pokud certifikát není aktivní pak nastavte ji jako aktivní kliknutím hello "Zkontrolujte nový certifikát active" políčko v hello Azure AD. 
+    >Pokud certifikát není aktivní pak nastavte ji jako aktivní kliknutím na zaškrtávací políčko "Aktivujte nový certifikát" ve službě Azure AD. 
 
-5. Aplikace SAP HANA očekává hello SAML kontrolní výrazy ve specifickém formátu. Hello následující snímek obrazovky ukazuje příklad pro tento. Zde jsme jste namapovali hello **uživatelský identifikátor** s **ExtractMailPrefix()** funkce **user.mail**. Díky tomu hodnotu předpony hello e-mailů hello uživatele, který je hello jedinečné ID uživatele. Ta se odešle toohello SAP HANA aplikace v každé úspěšné odpovědi.
+5. Aplikace SAP HANA očekává SAML kontrolní výrazy ve specifickém formátu. Následující snímek obrazovky ukazuje příklad pro tento. Zde jsme jsou namapovány **uživatelský identifikátor** s **ExtractMailPrefix()** funkce **user.mail**. Díky tomu hodnotu předpony e-mailů uživatele, který je jedinečné ID uživatele. Ta se odešle do aplikace SAP HANA v každé úspěšné odpovědi.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-saphana-tutorial/attribute.png)
 
-6. V hello **uživatelské atributy** část hello **jednotného přihlašování** dialogové okno:
+6. V **uživatelské atributy** části na **jednotného přihlašování** dialogové okno:
 
-    a. V hello **uživatelský identifikátor** rozevíracího seznamu vyberte **ExtractMailPrefix**.
+    a. V **uživatelský identifikátor** rozevíracího seznamu vyberte **ExtractMailPrefix**.
     
-    b. V hello **e-mailu** rozevíracího seznamu vyberte **user.mail**.
+    b. V **e-mailu** rozevíracího seznamu vyberte **user.mail**.
 
 7. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-saphana-tutorial/tutorial_general_400.png)
     
-8. tooconfigure jednotného přihlašování na **SAP HANA** straně, přihlášení tooyour **HANA XSA webové konzole** procházením toohello příslušných koncový bod HTTPS.
+8. Konfigurace jednotného přihlašování na **SAP HANA** straně, přihlášení k vaší **HANA XSA webové konzole** procházením příslušných koncový bod HTTPS.
 
     > [!Note]
-    > V konfiguraci hello výchozí adresa URL hello přesměruje hello požadavek tooa přihlašovací obrazovka, která vyžaduje hello přihlašovací údaje ověření SAP HANA databáze toocomplete hello procesem přihlášení uživatele. úlohy správy hello oprávnění požadované tooperform SAML musí mít Hello přihlášeného uživatele.
+    > Ve výchozí konfiguraci adresa URL žádost přesměruje na přihlašovací obrazovka, která vyžaduje přihlašovací údaje ověřeného uživatele databáze SAP HANA dokončete proces přihlášení. Přihlášení uživatele musí mít oprávnění nezbytná k provádění úloh správy SAML.
 
-9. Hello XSA webové rozhraní, přejděte v příliš**poskytovatele Identity SAML** a z ní, klikněte na tlačítko hello **"+"** – tlačítko hello dolní části hello obrazovky toodisplay hello přidat informace o poskytovateli Identity podokna a provádění Hello následující kroky:
+9. V XSA webové rozhraní, přejděte na **poskytovatele Identity SAML** a z ní, klikněte na tlačítko **"+"** – tlačítko v dolní části obrazovky zobrazit v podokně Přidat informace o poskytovateli Identity a proveďte následující kroky pomocí následujících kroků:
 
     ![Přidejte zprostředkovatele Identity](./media/active-directory-saas-saphana-tutorial/sap1.png)
 
-    a. V hello **přidat informace o poskytovateli Identity** podokně, vložte obsah hello hello Metadata XML, který jste si stáhli z portálu Azure do hello **Metadata** textové pole.
+    a. V **přidat informace o poskytovateli Identity** podokně Vložit obsah XML metadat, který jste si stáhli z portálu Azure do **Metadata** textové pole.
 
     ![Přidejte nastavení zprostředkovatele Identity](./media/active-directory-saas-saphana-tutorial/sap2.png)
 
-    b. Pokud hello obsah dokumentu XML hello platné, hello Analýza procesu extrahuje tooinsert hello požadované informace do hello **předmět, Entity ID a vystavitele** polí v hello obecné datové oblasti obrazovky a hello pole adresy URL v hello Cílová oblast obrazovky, například  **základní adresu URL a adresy URL SingleSignOn (*)**.
+    b. Pokud obsah dokumentu XML platný, proces analýzy extrahuje informace požadované pro vložení do **předmět, Entity ID a vystavitele** pole v oblasti obrazovky obecné dat a pole adresy URL na obrazovce cílové oblasti, například  **základní adresu URL a adresy URL SingleSignOn (*)**.
 
     ![Přidejte nastavení zprostředkovatele Identity](./media/active-directory-saas-saphana-tutorial/sap3.png)
 
-    c. V poli Název hello hello obecné Data obrazovky oblasti, zadejte název hello nového poskytovatele identity SAML jednotné přihlašování.
+    c. Do pole název oblasti dat obecné obrazovce zadejte název nového poskytovatele identity SAML jednotné přihlašování.
 
     > [!Note]
-    > Název Hello hello SAML IDP je povinná a musí být jedinečné; Zobrazí se v seznamu hello k dispozici IDPs SAML, který se zobrazí, pokud vyberete SAML jako metodu ověřování hello SAP HANA XS toouse aplikace, například v oblasti obrazovky ověřování hello nástroje správy Křížky artefaktů hello.
+    > Název rozšíření IDP SAML je povinná a musí být jedinečné; Zobrazí se v seznamu dostupných IDPs SAML, který se zobrazí, pokud vyberete jako metodu ověřování pro aplikace SAP HANA XS chcete použít, například v oblasti ověřování obrazovky nástroje správy Křížky artefaktů SAML.
 
-10. Uložte hello podrobnosti o hello nového poskytovatele identity SAML. Zvolte **Uložit** toosave hello podrobnosti poskytovatele identity SAML hello a přidejte hello nový SAML IDP toohello seznam známých IDPs SAML.
+10. Uložte podrobné informace o nové poskytovatele identity SAML. Zvolte **Uložit** uložit podrobnosti o poskytovatele identity SAML a přidat nové rozšíření IDP SAML do seznamu známých IDPs SAML.
 
     ![Tlačítko Uložit](./media/active-directory-saas-saphana-tutorial/sap4.png)
 
-11. V sadě HANA Studio v rámci vlastnosti systému hello hello **konfigurace** kartě, právě filtrovat nastavení **saml** a upravte hello **assertion_timeout** z **10 sekund** příliš**120 sekundu**.
+11. V sadě HANA Studio ve vlastnostech systému **konfigurace** kartě, právě filtrovat nastavení **saml** a upravit **assertion_timeout** z **10 sekund**  k **120 sekundu**.
 
     ![nastavení assertion_timeout](./media/active-directory-saas-saphana-tutorial/sap7.png)
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
+Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
+**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
 
-1. V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
+1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![tlačítko Azure Active Directory Hello](./media/active-directory-saas-saphana-tutorial/create_aaduser_01.png) 
+    ![Tlačítko Azure Active Directory](./media/active-directory-saas-saphana-tutorial/create_aaduser_01.png) 
 
-2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
-    ![Hello "Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/active-directory-saas-saphana-tutorial/create_aaduser_02.png) 
+    !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/active-directory-saas-saphana-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.
+3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
  
-    ![tlačítko Přidat Hello](./media/active-directory-saas-saphana-tutorial/create_aaduser_03.png) 
+    ![Tlačítko Přidat](./media/active-directory-saas-saphana-tutorial/create_aaduser_03.png) 
 
-4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
+4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
  
-    ![Dialogové okno uživatelského Hello](./media/active-directory-saas-saphana-tutorial/create_aaduser_04.png) 
+    ![Dialogové okno uživatele](./media/active-directory-saas-saphana-tutorial/create_aaduser_04.png) 
 
-    a. V hello **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textovému poli, typ **BrittaSimon**.
 
-    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-a-sap-hana-test-user"></a>Vytvoření zkušebního uživatele SAP HANA
 
-Uživatelé toolog tooenable Azure AD v tooSAP HANA, se musí být zřízená do SAP HANA.
+Pokud chcete povolit uživatelům Azure AD přihlášení k SAP HANA, musí být zřízená do SAP HANA.
 SAP HANA podporuje za běhu zřizování, který je ve výchozím nastavení povolené.
 
-Pokud potřebujete toocreate uživatel ručně, proveďte následující kroky hello:
+Pokud potřebujete ručně vytvořit uživatele, proveďte následující kroky:
 
 >[!Note]
->Externí ověřování hello hello uživatel používá, můžete změnit.
+>Externí ověřování použité uživatele, můžete změnit.
 Externí uživatelé se ověřují pomocí externího systému, například systém protokolu Kerberos. Podrobné informace o externí identity, kontaktujte vašeho [správce domény](https://cloudplatform.sap.com/contact.html).
 
-1. Otevřete hello [SAP HANA Studio](https://help.sap.com/viewer/a2a49126a5c546a9864aae22c05c3d0e/2.0.01/en-us) jako správce a povolení hello uživatele databáze pro jednotné přihlašování SAML.
+1. Otevřete [SAP HANA Studio](https://help.sap.com/viewer/a2a49126a5c546a9864aae22c05c3d0e/2.0.01/en-us) jako správce a povolení uživatele databáze pro jednotné přihlašování SAML.
 
     ![Vytvoření uživatele](./media/active-directory-saas-saphana-tutorial/sap5.png)
 
-2. Levé značek hello neviditelná políčko toohello **SAML** a postupujte podle pokynů hello konfigurovat odkaz.
+2. Osové neviditelná zaškrtávací políčko nalevo od **SAML** a pomocí odkazu konfigurace.
 
-3. Klikněte na tlačítko **přidat** tooadd hello SAML IDP a klikněte na tlačítko **OK** výběr hello odpovídající IDP SAML.
+3. Klikněte na tlačítko **přidat** přidat rozšíření IDP SAML a klikněte na tlačítko **OK** výběrem příslušné rozšíření IDP SAML.
 
-4. Přidat hello **externí Identity** (např. Zde BrittaSimon), nebo zvolte **"Žádné"** a klikněte na tlačítko **OK**.
+4. Přidat **externí Identity** (např. Zde BrittaSimon), nebo zvolte **"Žádné"** a klikněte na tlačítko **OK**.
 
     >[!Note]
-    >Pokud není zaškrtnuto políčko "Žádné" zaškrtávací políčko, pak hello uživatelské jméno v HANA musí tooexactly shodu hello jméno uživatele hello v hello UPN před příponu domény hello (tj. BrittaSimon@contoso.com by se stala BrittaSimon v HANA).
+    >Pokud není zaškrtnuto políčko "Žádné" zaškrtávací políčko, pak uživatelské jméno v HANA musí přesně shodovat s názvem uživatele v hlavní název uživatele před příponu domény (tj. BrittaSimon@contoso.com by se stala BrittaSimon v HANA).
 
-5. Pro účely testování, přiřaďte všechny **"XS"** toohello uživatelské role.
+5. Pro účely testování, přiřaďte všechny **"XS"** role pro uživatele.
 
     ![přiřazení rolí](./media/active-directory-saas-saphana-tutorial/sap6.png)
 
     > [!TIP]
     > Tato oprávnění, které jsou vhodné pro vaše případy použití, jenom musíte získat.
 
-6. Uložte hello uživatele.
+6. Uložte uživatele.
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
+### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte tak, že udělíte přístup tooSAP HANA toouse Britta Simon Azure jednotné přihlašování.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování tak, že udělíte přístup k SAP HANA.
 
-![Přiřadit role uživatele hello][200] 
+![Přiřadit role uživatele][200] 
 
-**tooassign Britta Simon tooSAP HANA, proveďte následující kroky hello:**
+**Pokud chcete přiřadit Britta Simon SAP HANA, proveďte následující kroky:**
 
-1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikace hello vyberte **SAP HANA**.
+2. V seznamu aplikací vyberte **SAP HANA**.
 
     ![Přiřadit uživatele](./media/active-directory-saas-saphana-tutorial/tutorial_saphana_app.png) 
 
-3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
+3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
-    ![odkaz "Uživatelé a skupiny" Hello][202] 
+    ![Odkaz "Uživatelé a skupiny"][202] 
 
 4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
 
-    ![Podokno Přidat přidružení Hello][203]
+    ![V podokně Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -267,14 +267,14 @@ V této části povolíte tak, že udělíte přístup tooSAP HANA toouse Britta
     
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.
+V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
-Když kliknete na dlaždici SAP HANA hello v hello přístupového panelu, měli byste obdržet aplikace automaticky přihlášeného tooyour SAP HANA.
-Další informace o na přístupovém panelu najdete v tématu [toohello Úvod přístupový Panel](active-directory-saas-access-panel-introduction.md).
+Když kliknete na dlaždici SAP HANA na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci SAP HANA.
+Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

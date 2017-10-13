@@ -1,5 +1,5 @@
 ---
-title: aaaHow toouse Azure Redis Cache s Node.js | Microsoft Docs
+title: "Použití Azure Redis Cache s Node.js | Dokumentace Microsoftu"
 description: "Začínáme s Azure Redis Cache pomocí Node.js a node_redis."
 services: redis-cache
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 02/10/2017
 ms.author: sdanie
-ms.openlocfilehash: dc8732041d2c4e5793e684e0c80b87a1c9d17f34
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f2c448af24e180db58f3ef3d39e90036dda3f7eb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-toouse-azure-redis-cache-with-nodejs"></a>Jak toouse Azure Redis mezipaměti s Node.js
+# <a name="how-to-use-azure-redis-cache-with-nodejs"></a>Použití Azure Redis Cache s Node.js
 > [!div class="op_single_selector"]
 > * [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
 > * [ASP.NET](cache-web-app-howto.md)
@@ -30,25 +30,25 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Azure Redis Cache vám přístup tooa zabezpečené, vyhrazené mezipaměti Redis spravované microsoftem. Vaše mezipaměť je přístupná ze všech aplikací v rámci Microsoft Azure.
+Azure Redis Cache vám umožňuje přístup do zabezpečené, vyhrazené mezipaměti Redis spravované Microsoftem. Vaše mezipaměť je přístupná ze všech aplikací v rámci Microsoft Azure.
 
-Toto téma ukazuje, jak tooget pracovat s Azure Redis Cache pomocí Node.js. Další příklad použití Azure Redis Cache s Node.js najdete v tématu [Sestavení aplikace Chat v Node.js se Socket.IO na webu Azure](../app-service-web/web-sites-nodejs-chat-app-socketio.md).
+Toto téma ukazuje, jak začít s Azure Redis Cache pomocí Node.js. 
 
 ## <a name="prerequisites"></a>Požadavky
 Nainstalujte [node_redis](https://github.com/mranney/node_redis):
 
     npm install redis
 
-Tento kurz používá [node_redis](https://github.com/mranney/node_redis). Příklady použití jiných klientů Node.js, najdete v části hello jednotlivých dokumentace pro klienty Node.js hello uvedený na [klientů Node.js Redis](http://redis.io/clients#nodejs).
+Tento kurz používá [node_redis](https://github.com/mranney/node_redis). Příklady použití dalších klientů Node.js najdete v individuální dokumentaci pro klienty Node.js uvedené v [klientech Node.js Redis](http://redis.io/clients#nodejs).
 
 ## <a name="create-a-redis-cache-on-azure"></a>Vytvoření mezipaměti Redis v Azure
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
-## <a name="retrieve-hello-host-name-and-access-keys"></a>Načtení hello hostitele název a přístupových klíčů
+## <a name="retrieve-the-host-name-and-access-keys"></a>Načtení názvu hostitele a přístupových klíčů
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
-## <a name="connect-toohello-cache-securely-using-ssl"></a>Připojit toohello mezipaměti zabezpečené pomocí protokolu SSL
-Hello nejnovější sestavení [node_redis](https://github.com/mranney/node_redis) poskytovat podporu pro připojení tooAzure Redis Cache pomocí protokolu SSL. Hello následující příklad ukazuje, jak tooconnect tooAzure Redis Cache pomocí hello 6380 koncový bod protokolu SSL. Nahraďte `<name>` s hello názvem vaší mezipaměti a `<key>` s buď primární nebo sekundární klíč jak je popsáno v hello předchozí [načíst název a přístupových klíčů hostitele hello](#retrieve-the-host-name-and-access-keys) části.
+## <a name="connect-to-the-cache-securely-using-ssl"></a>Bezpečné připojení k mezipaměti pomocí protokolu SSL
+Nejnovější sestavení [node_redis](https://github.com/mranney/node_redis) poskytuje podporu pro připojení k mezipaměti Azure Redis pomocí protokolu SSL. Následující příklad ukazuje, jak se připojit k mezipaměti Redis Azure pomocí protokolu SSL koncového bodu 6380. Nahraďte `<name>` názvem mezipaměti a `<key>` primárním nebo sekundárním klíčem popsaným v předchozí části [Načtení názvu hostitele a přístupových klíčů](#retrieve-the-host-name-and-access-keys).
 
      var redis = require("redis");
 
@@ -56,12 +56,12 @@ Hello nejnovější sestavení [node_redis](https://github.com/mranney/node_redi
     var client = redis.createClient(6380,'<name>.redis.cache.windows.net', {auth_pass: '<key>', tls: {servername: '<name>.redis.cache.windows.net'}});
 
 > [!NOTE]
-> Hello port bez SSL pro nové instance služby Azure Redis Cache zakázán. Pokud používáte jiný klient, který nepodporuje protokol SSL, najdete v části [jak tooenable hello port bez SSL](cache-configure.md#access-ports).
+> Port bez SSL je pro nové instance Azure Redis Cache zakázaný. Pokud používáte jiného klienta, který nepodporuje SSL, přečtěte si téma věnované tomu, jak [povolit port bez SSL](cache-configure.md#access-ports).
 > 
 > 
 
-## <a name="add-something-toohello-cache-and-retrieve-it"></a>Přidání dat toohello mezipaměti a jejich načtení
-Následující příklad ukazuje můžete jak tooconnect tooan Azure Redis instance, do mezipaměti a ukládání a načítání položky z mezipaměti hello Hello. Další příklady použití Redis s hello [node_redis](https://github.com/mranney/node_redis) klienta, najdete v části [http://redis.js.org/](http://redis.js.org/).
+## <a name="add-something-to-the-cache-and-retrieve-it"></a>Přidání dat do mezipaměti a jejich načtení
+Následující příklad ukazuje, jak se připojit k instanci mezipaměti Redis Azure a uložit a načíst položku z mezipaměti. Pro další příklady použití Redis pomocí klienta [node_redis](https://github.com/mranney/node_redis) si zobrazte [http://redis.js.org/](http://redis.js.org/).
 
      var redis = require("redis");
 
@@ -83,6 +83,6 @@ Výstup:
 
 
 ## <a name="next-steps"></a>Další kroky
-* [Povolte diagnostiku mezipaměti](cache-how-to-monitor.md#enable-cache-diagnostics) , abyste mohli [monitorování](cache-how-to-monitor.md) hello stav svojí mezipaměti.
-* Čtení hello oficiální [dokumentaci k Redis](http://redis.io/documentation).
+* [Povolte diagnostiku mezipaměti](cache-how-to-monitor.md#enable-cache-diagnostics), abyste mohli [monitorovat](cache-how-to-monitor.md) stav svojí mezipaměti.
+* Přečtěte si oficiální [dokumentaci k Redis](http://redis.io/documentation).
 

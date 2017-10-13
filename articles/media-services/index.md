@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure dokumentace k Media Services – kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
-description: "Zjistěte, jak toosecurely datového proudu na vyžádání nebo živé vysílání kvalitu videa pomocí služby Media Services rozšiřitelná Cloudová platforma. Kurzy, reference k rozhraní API a další zdroje informací"
+title: "Dokumentace ke službě Azure Media Services – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
+description: "Zjistěte, jak pomocí služby Media Services, rozšiřitelné cloudové platformy, bezpečně streamovat živé video nebo video na vyžádání ve vysílací kvalitě. Kurzy, reference k rozhraní API a další zdroje informací"
 services: media-services
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: c36b7dbf14434e7aadc38f2c74ca7d3830a1bd3f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 809595570f1c82ff6ff99bc15bf813560510e7f2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="media-services-documentation"></a>Dokumentace ke službě Media Services
 
-Zjistěte, jak toostream všesměrové vysílání kvalitu videa pomocí služby Media Services rozšiřitelná Cloudová platforma. Kurzy, odkazy na rozhraní API a další dokumentaci ukazují, jak zajistit toosecurely na vyžádání a živého video nebo zvuk datové proudy, které škálování toomillions uživatelů.
+Zjistěte, jak pomocí služby Media Services, rozšiřitelné cloudové platformy, streamovat video ve vysílací kvalitě. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak bezpečně doručovat živé video a video na vyžádání nebo zvukový stream, který se škáluje milionům uživatelů.
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -70,7 +70,7 @@ Zjistěte, jak toostream všesměrové vysílání kvalitu videa pomocí služby
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáme s Azure Media Services pomocí hello portálu Azure</h3>
+                        <h3>Začínáme s Azure Media Services pomocí webu Azure Portal</h3>
                     </div>
                 </div>
             </div>
@@ -88,7 +88,7 @@ Zjistěte, jak toostream všesměrové vysílání kvalitu videa pomocí služby
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Vytvoření účtu Azure Media Services pomocí hello portálu Azure</h3>
+                        <h3>Vytvoření účtu Azure Media Services pomocí webu Azure Portal</h3>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@ Zjistěte, jak toostream všesměrové vysílání kvalitu videa pomocí služby
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Získat Začínáme podávající obsahu pomocí hello portálu Azure</h3>
+                        <h3>Začínáme s doručováním obsahu pomocí webu Azure Portal</h3>
                     </div>
                 </div>
             </div>

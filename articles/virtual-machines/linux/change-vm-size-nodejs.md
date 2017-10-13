@@ -1,6 +1,6 @@
 ---
-title: "aaaHow tooresize virtuálního počítače s Linuxem pomocí hello 1.0 rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Jak tooscale nahoru nebo vertikálně virtuální počítač s Linuxem, změnou hello velikost virtuálního počítače."
+title: "Jak změnit velikost virtuálního počítače s Linuxem pomocí Azure CLI 1.0 | Microsoft Docs"
+description: "Jak škálovat nahoru i dolů virtuální počítač s Linuxem změnou velikosti virtuálního počítače."
 services: virtual-machines-linux
 documentationcenter: na
 author: mikewasson
@@ -16,38 +16,38 @@ ms.workload: infrastructure-services
 ms.date: 05/16/2016
 ms.author: mwasson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 43dd955dc2f2dd9d1b2da07ecbfbf2459bcaa4d2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 72f5a3cd6463befd5108040ed166984281bfc5f0
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="resize-a-linux-vm-with-azure-cli-10"></a>Změnit velikost virtuálního počítače s Linuxem pomocí rozhraní příkazového řádku Azure 1.0
 
 ## <a name="overview"></a>Přehled
 
-Po zřízení virtuálního počítače (VM) hello virtuálních počítačů můžete škálovat nahoru nebo dolů, změnou hello [velikost virtuálního počítače][vm-sizes]. V některých případech se musí nejprve navrácení hello virtuálních počítačů. To může nastat, když hello novou velikost není k dispozici v clusteru hello hardwaru, který je hostitelem hello virtuálních počítačů.
+Po zřízení virtuálního počítače (VM) virtuálního počítače můžete škálovat nahoru nebo dolů, můžete změnit [velikost virtuálního počítače][vm-sizes]. V některých případech se musí nejprve navrácení virtuálního počítače. To může dojít, pokud nová velikost není k dispozici na hardwaru clusteru, který je hostitelem virtuálního počítače.
 
-Tento článek ukazuje, jak tooresize a virtuální počítač s Linuxem pomocí hello [rozhraní příkazového řádku Azure][azure-cli].
+Tento článek ukazuje, jak změnit velikost virtuálního počítače s Linuxem pomocí [rozhraní příkazového řádku Azure][azure-cli].
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="cli-versions-toocomplete-hello-task"></a>Úloha hello toocomplete verze rozhraní příkazového řádku
-Můžete dokončit hello úloh pomocí jedné z hello následující verze rozhraní příkazového řádku:
+## <a name="cli-versions-to-complete-the-task"></a>Verze rozhraní příkazového řádku pro dokončení úlohy
+K dokončení úlohy můžete využít jednu z následujících verzí rozhraní příkazového řádku:
 
-- [Azure CLI 1.0](#resize-a-linux-vm) – naše rozhraní příkazového řádku pro hello classic a resource správy nasazení modelů (v tomto článku)
-- [Azure CLI 2.0](change-vm-size.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) -naší nové generace rozhraní příkazového řádku pro model nasazení správy prostředků hello
+- [Azure CLI 1.0](#resize-a-linux-vm) – naše rozhraní příkazového řádku pro classic a resource správu modelech nasazení (v tomto článku)
+- [Azure CLI 2.0](change-vm-size.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) – naše rozhraní příkazového řádku nové generace pro model nasazení správy prostředků
 
 
 ## <a name="resize-a-linux-vm"></a>Změnit velikost virtuálního počítače s Linuxem
-tooresize virtuální počítač, proveďte následující kroky hello.
+Ke změně velikosti virtuálního počítače, proveďte následující kroky.
 
-1. Spusťte následující příkaz rozhraní příkazového řádku hello. Tento příkaz vypíše hello velikosti virtuálních počítačů, které jsou k dispozici v clusteru hardwaru hello hello virtuální počítač je hostitelem.
+1. Spusťte následující příkaz rozhraní příkazového řádku. Tento příkaz vypíše velikosti virtuálních počítačů, které jsou k dispozici na hardwaru clusteru je hostitelem virtuálního počítače.
    
     ```azurecli
     azure vm sizes -g myResourceGroup --vm-name myVM
     ```
-2. V případě, že je uvedena velikost potřeby hello spusťte následující příkaz tooresize hello virtuálních počítačů hello.
+2. Pokud požadovaná velikost je uveden, spusťte následující příkaz ke změně velikosti virtuálního počítače.
    
     ```azurecli
     azure vm set -g myResourceGroup --vm-size <new-vm-size> -n myVM  \
@@ -55,10 +55,10 @@ tooresize virtuální počítač, proveďte následující kroky hello.
         --boot-diagnostics-storage-uri https://mystorageaccount.blob.core.windows.net/ 
     ```
    
-    během tohoto procesu se restartuje Hello virtuálních počítačů. Po restartování hello bude přemapování stávajícího operačního systému a datové disky. Nic na hello dočasné disku budou ztraceny.
+    Virtuální počítač se restartuje během tohoto procesu. Po restartování bude přemapování stávajícího operačního systému a datové disky. Nic na dočasné disku budou ztraceny.
    
-    Použití hello `--enable-boot-diagnostics` možnost umožňuje [spouštění diagnostiky][boot-diagnostics], toolog související toostartup žádné chyby.
-3. Jinak v případě potřeby hello není uvedena velikost spusťte hello následující příkazy toodeallocate hello virtuálního počítače, jeho velikost a pak restartujte hello virtuálních počítačů.
+    Použití `--enable-boot-diagnostics` možnost umožňuje [spouštění diagnostiky][boot-diagnostics], do protokolu chyby související se spuštění.
+3. Jinak Pokud není uvedené požadované velikosti, spusťte následující příkazy se zrušit přidělení virtuálního počítače, jeho velikost a pak restartujte virtuální počítač.
    
     ```azurecli
     azure vm deallocate -g myResourceGroup myVM
@@ -69,7 +69,7 @@ tooresize virtuální počítač, proveďte následující kroky hello.
     ```
    
    > [!WARNING]
-   > Rušení přidělení hello virtuální počítač také uvolní všechny dynamické IP adresy přiřazené toohello virtuálních počítačů. ovlivněné nejsou Hello operačního systému a datové disky.
+   > Rušení přidělení virtuálního počítače uvolní také všechny dynamické IP adresy přiřazené k virtuálnímu počítači. Ovlivněné nejsou disky operačního systému a data.
    > 
    > 
 

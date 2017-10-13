@@ -1,6 +1,6 @@
 ---
-title: "aaaHow toouse Blitline pro zpracování obrázků - Azure funkce Průvodce"
-description: "Zjistěte, jak toouse hello Blitline služby tooprocess bitové kopie v rámci aplikace Azure."
+title: "Jak používat Blitline pro bitovou kopii zpracování - Azure funkce Průvodce"
+description: "Zjistěte, jak používat službu Blitline zpracování obrázků v rámci aplikace Azure."
 services: 
 documentationcenter: .net
 author: blitline-dev
@@ -14,37 +14,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2014
 ms.author: support@blitline.com
-ms.openlocfilehash: 328fd177e25f45f29f8ad8e142d02b46017a858e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1d90599e028b3407a513b04b878e3aefc39928a2
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toouse-blitline-with-azure-and-azure-storage"></a>Jak toouse Blitline s Azure a Azure Storage
-Tato příručka vysvětluje, jak tooaccess Blitline služby a jak toosubmit úlohy tooBlitline.
+# <a name="how-to-use-blitline-with-azure-and-azure-storage"></a>Použití Blitline s Azure a Azure Storage
+Tato příručka vysvětluje, jak získat přístup ke službám Blitline a jak k odesílání úloh do Blitline.
 
 ## <a name="what-is-blitline"></a>Co je Blitline?
-Blitline je bitové kopie založené na cloudu zpracování služba, která poskytuje podnikové úrovni image zpracování za zlomek ceny hello, že ho náklady toobuild ho sami.
+Blitline je bitové kopie založené na cloudu zpracování služba, která poskytuje podnikové úrovni image zpracování za zlomek ceny, které by náklady vytvořit sami.
 
-fakt Hello je, že zpracování obrázků bylo provedeno opakovaně, obvykle znovu sestavit z hello základů pro každý web. Uvědomujeme si to vzhledem k tomu, že jsme sestavili je mil. časy příliš. Jeden den, které jsme se rozhodli, možná je čas jsme právě provést pro všechny uživatele. Víme, jak toodo ho toodo je rychlé a efektivní a uložte všechny fungovat v hello té doby.
+Skutečnost je, že zpracování obrázků bylo provedeno opakovaně, obvykle znovu sestavit od základů pro každý web. Uvědomujeme si to vzhledem k tomu, že jsme sestavili je mil. časy příliš. Jeden den, které jsme se rozhodli, možná je čas jsme právě provést pro všechny uživatele. Víme, jak to udělat, provést rychlé a efektivní a uložte všechny pracovní do té doby.
 
 Další informace najdete v tématu [http://www.blitline.com](http://www.blitline.com).
 
 ## <a name="what-blitline-is-not"></a>Co Blitline není...
-tooclarify co Blitline je užitečné pro je často jednodušší tooidentify co Blitline neprovádí než budete pokračovat dál.
+O vysvětlení, co je užitečné pro Blitline, je často usnadňují identifikaci co Blitline neprovádí než budete pokračovat dál.
 
-* Blitline nemá HTML pomůcky tooupload bitové kopie. Bitové kopie, které musí mít veřejně nebo s omezenými oprávněními, které jsou k dispozici pro Blitline tooreach.
+* Blitline nemá pomůcky HTML pro odesílání obrázků. Bitové kopie, které musí mít veřejně nebo s omezenými oprávněními pro Blitline spojit.
 * Blitline neprovádí zpracování, jako je Aviary.com za provozu obrázku
-* Blitline nepřijímá odesílání obrázků, nemůžete nabízet vaší bitové kopie tooBlitline přímo. Musíte vložit je tooAzure úložiště nebo z jiných míst, který podporuje Blitline a pak dali pokyn Blitline, kde je toogo získat.
+* Blitline nepřijímá odesílání obrázků, obrázků na Blitline nemůžete nabízet přímo. Musíte vložit je Azure Storage nebo z jiných míst podporuje Blitline a potom zadejte Blitline, kde je získat.
 * Blitline je massively parallel a neprovádí žádné synchronní zpracování. Což znamená, že musí poskytnout nám postback_url a jsme vám řeknou jsme se po dokončení zpracování.
 
 ## <a name="create-a-blitline-account"></a>Vytvoření účtu Blitline
 [!INCLUDE [blitline-signup](../includes/blitline-signup.md)]
 
-## <a name="how-toocreate-a-blitline-job"></a>Jak toocreate Blitline úlohy
-Blitline používá JSON toodefine hello akce, které má tootake na bitovou kopii. Tento formát JSON se skládá z několika jednoduchých polí.
+## <a name="how-to-create-a-blitline-job"></a>Jak vytvořit úlohu Blitline
+Blitline používá JSON definovat akce, které budete chtít využít na bitovou kopii. Tento formát JSON se skládá z několika jednoduchých polí.
 
-Příklad nejjednodušší Hello vypadá takto:
+V nejjednodušší příkladu vypadá takto:
 
         json : '{
        "application_id": "MY_APP_ID",
@@ -56,17 +56,17 @@ Příklad nejjednodušší Hello vypadá takto:
        } ]
     }'
 
-Tady bychom měli formátu JSON, který bude trvat bitovou kopii "src" "... boys.jpeg" a potom změňte velikost too240x140 této bitové kopie.
+Tady bychom měli formátu JSON, který bude trvat bitovou kopii "src" "... boys.jpeg" a potom změňte velikost této bitové kopie do 240 x 140.
 
-ID aplikace Hello se něco můžete najít v vaše **informace o připojení** nebo **SPRAVOVAT** karty v Azure. Je váš tajný identifikátor, který vám umožní toorun úlohy na Blitline.
+ID aplikace se můžete najít v vaše **informace o připojení** nebo **SPRAVOVAT** karty v Azure. Je váš tajný identifikátor, který umožňuje spouštění úloh na Blitline.
 
-Hello "uložit" parametr identifikuje informace o místo, kam chcete tooput hello image po jsme ho mít zpracování. V tomto případě trivial jsme nebyly definovány jedna. Pokud je definována žádná umístění Blitline uloží ho místně (a dočasně) v umístění jedinečný cloudu. Bude moct tooget, která umístění, ze hello JSON vrácený Blitline při provádění hello Blitline. identifikátor "image" Hello je potřeba a tooyou je vrácena, pokud tooidentify uložit tento konkrétní obrázek.
+Parametr "uložit" identifikuje informace o kam chcete umístit bitovou kopii po jsme ho mít zpracování. V tomto případě trivial jsme nebyly definovány jedna. Pokud je definována žádná umístění Blitline uloží ho místně (a dočasně) v umístění jedinečný cloudu. Bude moct získat z JSON vrácený Blitline při provádění Blitline tohoto umístění. Identifikátor "image" je vyžadován a je vrácen v případě k identifikaci této konkrétní uloženy bitové kopie.
 
-Můžete najít další informace o hello *funkce* podporujeme zde: <http://www.blitline.com/docs/functions>
+Můžete najít další informace o *funkce* podporujeme zde: <http://www.blitline.com/docs/functions>
 
-Můžete také vyhledat dokumentaci o hello možnosti úlohy zde: <http://www.blitline.com/docs/api>
+Můžete také vyhledat dokumentaci o možnosti úlohy: <http://www.blitline.com/docs/api>
 
-Až budete mít vaše struktury JSON stačí toodo je **POST** je příliš`http://api.blitline.com/job`
+Až budete mít vaše struktury JSON všechny musíte udělat je **POST** jej do`http://api.blitline.com/job`
 
 Zobrazí se zpět JSON, která vypadá přibližně takto:
 
@@ -82,10 +82,10 @@ Zobrazí se zpět JSON, která vypadá přibližně takto:
     }
 
 
-Znamená to, Blitline přijal žádost, se pozastavil ve frontě zpracování a po jeho dokončení hello image budou k dispozici na: **https://s3.amazonaws.com/dev.blitline/2011110722/YOUR\_aplikace\_ID /CK3f0xBF_2bV6wf7gEZE8w.jpg**
+Znamená to, Blitline přijal žádost, se pozastavil ve frontě zpracování a po jeho dokončení bitovou kopii, budou k dispozici na: **https://s3.amazonaws.com/dev.blitline/2011110722/YOUR\_aplikace\_ID/CK3f0xBF_2bV6wf7gEZE8w.jpg**
 
-## <a name="how-toosave-an-image-tooyour-azure-storage-account"></a>Jak toosave tooyour image účtu úložiště Azure
-Pokud máte účet úložiště Azure, můžete snadno mít Blitline nabízené hello zpracovat bitové kopie do Azure container. Přidáním "azure_destination" definujete hello umístění a oprávnění pro Blitline toopush k.
+## <a name="how-to-save-an-image-to-your-azure-storage-account"></a>Jak uložit bitovou kopii do účtu úložiště Azure
+Pokud máte účet úložiště Azure, budete moci snadno Blitline push zpracovaná bitové kopie do Azure container. Přidáním "azure_destination" Zadejte umístění a oprávnění pro Blitline k.
 
 Zde naleznete příklad:
 
@@ -105,20 +105,20 @@ Zde naleznete příklad:
        }'
 
 
-Vyplněním hello CAPITALIZED hodnoty vlastními, můžete odeslat tento toohttp://api.blitline.com/job JSON a hello "src" image budou zpracovány pomocí filtru rozostření a pak poslat tooyou Azure cílový.
+Vyplněním CAPITALIZED hodnoty vlastními odešlete tento formát JSON na http://api.blitline.com/job a bitovou kopii "src" budou zpracování pomocí filtru rozostření a pak instaluje do Azure cílové můžete.
 
 ### <a name="please-note"></a>Poznámka:
-Hello SAS musí obsahovat hello celý SAS adresu url, včetně hello filename hello cílový soubor.
+SAS musí obsahovat celou SAS adresa url, včetně názvu cílového souboru.
 
 Příklad:
 
     http://blitline.blob.core.windows.net/sample/image.jpg?sr=b&sv=2012-02-12&st=2013-04-12T03%3A18%3A30Z&se=2013-04-12T04%3A18%3A30Z&sp=w&sig=Bte2hkkbwTT2sqlkkKLop2asByrE0sIfeesOwj7jNA5o%3D
 
 
-Můžete si také přečíst nejnovější verzi dokumentace Azure Storage na Blitline, hello [zde](http://www.blitline.com/docs/azure_storage).
+Můžete si také přečíst nejnovější verzi dokumentace Azure Storage na Blitline [zde](http://www.blitline.com/docs/azure_storage).
 
 ## <a name="next-steps"></a>Další kroky
-Navštivte blitline.com tooread o všechny naše další funkce:
+Blitline.com najdete další informace o všech našich dalších funkcí:
 
 * Dokumentace pro koncový bod rozhraní API Blitline <http://www.blitline.com/docs/api>
 * Funkce Blitline rozhraní API <http://www.blitline.com/docs/functions>

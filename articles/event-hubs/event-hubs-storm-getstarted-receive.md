@@ -1,5 +1,5 @@
 ---
-title: "aaaReceive události z Azure Event Hubs pomocí Apache Storm | Microsoft Docs"
+title: "Přijímat události z Azure Event Hubs pomocí Apache Storm | Microsoft Docs"
 description: "Začínáme přijetí ze služby Event Hubs pomocí Apache Storm"
 services: event-hubs
 documentationcenter: 
@@ -14,25 +14,25 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: sethm
-ms.openlocfilehash: a0ab860ee8d504a28aac380c504c928f0d6dbc1e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3e15370c7602276ef323708632b324fe05497f41
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="receive-events-from-event-hubs-using-apache-storm"></a>Přijímat události ze služby Event Hubs pomocí Apache Storm
 
-[Apache Storm](https://storm.incubator.apache.org) je distribuované v reálném čase výpočetní systém, který zjednodušuje spolehlivé zpracování bez vazby datových proudů. Tato část uvádí, jak toouse Azure Event Hubs Storm spout tooreceive události ze služby Event Hubs. Pomocí Apache Storm, můžete události rozdělit mezi více procesů, které jsou hostované v různých uzlech. Hello Event Hubs integrace s Storm zjednodušuje příjmu událostí tím, že transparentně vytváření kontrolních bodů průběhu pomocí instalace Zookeeper na Storm, spravuje trvalé kontrolní body a paralelní příjemce událostí ze služby Event Hubs.
+[Apache Storm](https://storm.incubator.apache.org) je distribuované v reálném čase výpočetní systém, který zjednodušuje spolehlivé zpracování bez vazby datových proudů. Tato část ukazuje způsob použití služby Azure Event Hubs Storm spout přijímat události z centra událostí. Pomocí Apache Storm, můžete události rozdělit mezi více procesů, které jsou hostované v různých uzlech. Integrace služby Event Hubs s Storm zjednodušuje příjmu událostí tím, že transparentně vytváření kontrolních bodů jejím průběhu pomocí instalace Zookeeper na Storm, spravuje trvalé kontrolní body a paralelní příjemce událostí ze služby Event Hubs.
 
-Další informace o službě Event Hubs přijímat vzory najdete v tématu hello [Přehled služby Event Hubs][Event Hubs overview].
+Další informace o službě Event Hubs přijímat vzory najdete [Přehled služby Event Hubs][Event Hubs overview].
 
 ## <a name="create-project-and-add-code"></a>Vytvořte projekt a přidejte kód
 
-Tento kurz používá [HDInsight Storm] [ HDInsight Storm] instalace, která se dodává s hello Event Hubs spout již k dispozici.
+Tento kurz používá [HDInsight Storm] [ HDInsight Storm] instalace, která se dodává s funkcí spout Event Hubs, která je již k dispozici.
 
-1. Postupujte podle hello [HDInsight Storm - Začínáme](../hdinsight/hdinsight-storm-overview.md) postup toocreate nové HDInsight clusteru a připojte tooit přes vzdálenou plochu.
-2. Kopírování hello `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` souboru tooyour místní vývojové prostředí. Tato položka obsahuje hello události storm-funkcí spout.
-3. Použijte následující příkaz tooinstall hello balíček do místního úložiště Maven hello hello. To vám umožní tooadd je jako vodítko při hello Storm v pozdější fázi projektu.
+1. Postupujte podle [HDInsight Storm - Začínáme](../hdinsight/hdinsight-storm-overview.md) postup pro vytvoření nového clusteru HDInsight a k nim připojit přes vzdálenou plochu.
+2. Kopírování `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` soubor do místní vývojové prostředí. Tato položka obsahuje spout storm události.
+3. Použijte následující příkaz k instalaci balíčku do místního úložiště Maven. Umožňuje přidat jako odkaz v projektu Storm v pozdější fázi.
 
     ```shell
     mvn install:install-file -Dfile=target\eventhubs-storm-spout-0.9-jar-with-dependencies.jar -DgroupId=com.microsoft.eventhubs -DartifactId=eventhubs-storm-spout -Dversion=0.9 -Dpackaging=jar
@@ -41,9 +41,9 @@ Tento kurz používá [HDInsight Storm] [ HDInsight Storm] instalace, která se 
    
     ![][12]
 5. Vyberte **používat výchozí umístění prostoru**, pak klikněte na tlačítko **další**
-6. Vyberte hello **rychlý start maven archetype** archetype, pak klikněte na tlačítko **další**
+6. Vyberte **rychlý start maven archetype** archetype, pak klikněte na tlačítko **další**
 7. Vložení **GroupId** a **ArtifactId**, pak klikněte na tlačítko **dokončit**
-8. V **pom.xml**, přidejte následující závislé položky ve hello hello `<dependency>` uzlu.
+8. V **pom.xml**, přidejte následující závislosti v `<dependency>` uzlu.
 
     ```xml  
     <dependency>
@@ -75,7 +75,7 @@ Tento kurz používá [HDInsight Storm] [ HDInsight Storm] instalace, která se 
     </dependency>
     ```
 
-9. V hello **src** složky, vytvořte soubor s názvem **Config.properties** a kopírování hello následující obsah, nahraďte hello `receive rule key` a `event hub name` hodnoty:
+9. V **src** složky, vytvořte soubor s názvem **Config.properties** a zkopírujte následující obsah, nahraďte `receive rule key` a `event hub name` hodnoty:
 
     ```java
     eventhubspout.username = ReceiveRule
@@ -90,8 +90,8 @@ Tento kurz používá [HDInsight Storm] [ HDInsight Storm] instalace, která se 
     eventhubspout.checkpoint.interval = 10
     eventhub.receiver.credits = 10
     ```
-    Hello hodnotu **eventhub.receiver.credits** Určuje, kolik události jsou zpracovat v dávce před uvolněním je toohello Storm kanálu. Tento příklad pro hello zájmu jednoduchost, nastaví too10 tuto hodnotu. V produkčním prostředí je potřeba obvykle ho nastavit hodnoty toohigher; například 1024.
-10. Vytvořte novou třídu s názvem **LoggerBolt** s hello následující kód:
+    Hodnota **eventhub.receiver.credits** Určuje, kolik události jsou zpracovat v dávce před uvolněním je do kanálu Storm. Tento příklad z důvodu zjednodušení, nastaví tato hodnota 10. V produkčním prostředí je potřeba obvykle ho nastavit na vyšší hodnoty; například 1024.
+10. Vytvořte novou třídu s názvem **LoggerBolt** následujícím kódem:
     
     ```java
     import java.util.Map;
@@ -130,8 +130,8 @@ Tento kurz používá [HDInsight Storm] [ HDInsight Storm] instalace, která se 
     }
     ```
     
-    Touto funkcí bolt Storm zaznamená obsah hello hello přijatých událostí. To lze snadno rozšířit toostore řazených kolekcí členů v úložišti služby. Hello [HDInsight senzor analysis kurzu] používá tato stejné toostore data přístup do HBase.
-11. Vytvoření třídy s názvem **LogTopology** s hello následující kód:
+    Touto funkcí bolt Storm zaznamená obsah přijatých událostí. To lze snadno rozšířit k uložení řazených kolekcí členů v úložišti služby. [HDInsight senzor analysis kurzu] používá tento stejný přístup k ukládání dat do HBase.
+11. Vytvoření třídy s názvem **LogTopology** následujícím kódem:
     
     ```java
     import java.io.FileReader;
@@ -182,9 +182,9 @@ Tento kurz používá [HDInsight Storm] [ HDInsight Storm] instalace, která se 
                     namespaceName, entityPath, partitionCount, zkEndpointAddress,
                     checkpointIntervalInSeconds, receiverCredits);
         
-            // set hello number of workers toobe hello same as partition number.
-            // hello idea is toohave a spout and a logger bolt co-exist in one
-            // worker tooavoid shuffling messages across workers in storm cluster.
+            // set the number of workers to be the same as partition number.
+            // the idea is to have a spout and a logger bolt co-exist in one
+            // worker to avoid shuffling messages across workers in storm cluster.
             numWorkers = spoutConfig.getPartitionCount();
         
             if (args.length > 0) {
@@ -235,10 +235,10 @@ Tento kurz používá [HDInsight Storm] [ HDInsight Storm] instalace, která se 
     }
     ```
 
-    Tato třída se vytvoří novou funkcí spout centra událostí pomocí vlastností hello v hello konfigurační soubor tooinstantiate ho. Je důležité, že toonote, který tento příklad vytvoří jako mnoho spouts úlohy jako hello počet oddílů v Centru událostí hello v pořadí toouse hello maximální paralelismus povolenou tohoto centra událostí.
+    Tato třída se vytvoří novou funkcí spout Event Hubs pomocí vlastnosti v konfiguračním souboru vytvořit jeho instanci. Je důležité si uvědomit, že tento příklad vytvoří tolik funkcích spouts úlohy jako počet oddílů v Centru událostí, aby bylo možné používat maximální paralelismus povolenou tohoto centra událostí.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o službě Event Hubs návštěvou hello následující odkazy:
+Další informace o službě Event Hubs najdete na následujících odkazech:
 
 * [Přehled služby Event Hubs][Event Hubs overview]
 * [Vytvoření centra událostí](event-hubs-create.md)

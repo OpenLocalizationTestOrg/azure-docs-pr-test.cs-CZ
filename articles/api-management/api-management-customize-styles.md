@@ -1,9 +1,9 @@
 ---
-title: "styly aaaCustomize v hello portál pro vývojáře ve službě Azure API Management | Microsoft Docs"
-description: "Zjistěte, jak styly toomodify hello používá pro všechny stránky v hello portál pro vývojáře ve službě Azure API Management."
+title: "Přizpůsobení stylů na portálu pro vývojáře ve službě Azure API Management | Dokumentace Microsoftu"
+description: "Zjistěte, jak změnit styly použité pro libovolnou stránky na portálu pro vývojáře ve službě Azure API Management."
 services: api-management
 documentationcenter: 
-author: antonba
+author: vladvino
 manager: vlvinogr
 editor: 
 ms.assetid: 186128fe-41c0-4efb-9efe-2478ad4d103f
@@ -14,62 +14,62 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/09/2017
 ms.author: antonba
-ms.openlocfilehash: aaaa86527992ba43e64eab5fd35c7f57b573c812
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 89baf60d0204a1701e93309f09b90bc94c4ca57b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="customize-hello-styling-of-hello-developer-portal-in-azure-api-management"></a>Přizpůsobení stylu hello hello portál pro vývojáře ve službě Azure API Management
-Existují tři základní způsoby toocustomize hello portál pro vývojáře ve službě Azure API Management:
+# <a name="customize-the-styling-of-the-developer-portal-in-azure-api-management"></a>Přizpůsobení stylů na portálu pro vývojáře ve službě Azure API Management
+Existují tři základní způsoby, kterými jde přizpůsobit portál pro vývojáře ve službě Azure API Management:
 
-* [Upravit obsah hello statické stránky a stránky rozložení elementů][modify-content-layout]
-* [Aktualizovat hello styly používané pro prvky na stránce přes portál pro vývojáře hello] [ customize-styles] (popsáno v této příručce)
-* [Úprava šablony hello používá stránek generovaných hello portál] [ portal-templates] (např. dokumentace rozhraní API, produktů, ověřování uživatelů atd.)
+* [Úprava obsahu statických stránek a elementů rozložení stránek][modify-content-layout]
+* [Aktualizace stylů použitých pro elementy stránek napříč portálem pro vývojáře][customize-styles] (vysvětlení obsahuje tento průvodce)
+* [Úprava šablon použitých pro stránky generované portálem][portal-templates] (dokumentace rozhraní API, produkty, ověřování uživatelů atd.)
 
-## <a name="change-headers-styling"></a>Změnit hello stylu prvky na stránce
+## <a name="change-headers-styling"></a>Změna stylu prvků na stránce
 
-Hello barvy, písma, velikosti, mezery a další související prvky stylu libovolné stránky na hello portálu se definují pomocí pravidel stylu. 
+Barvy, písma, velikosti, mezery a další související prvky stylu libovolné stránky na portálu se definují pomocí pravidel stylu. 
 
-Úprava pravidla stylu hello se provádí z hello **portál pro vývojáře** při právě přihlášeni jako správce. existuje tooget nejdřív otevřete hello portálu Azure a klikněte na tlačítko **portál vydavatele** z panelu nástrojů služby hello instanci služby API Management.
+K úpravě stylů se používá **portál pro vývojáře**, když jste přihlášení jako správce. Otevřete ho tak, že nejdřív otevřete Azure Portal a potom na panelu nástrojů instance služby API Management kliknete na **Portál pro vydavatele**.
 
 ![Portál vydavatele][api-management-management-console]
 
-Potom klikněte na **portál pro vývojáře** v pravém horním hello. 
+Potom vpravo nahoře klikněte na **Portál pro vývojáře**. 
 
-![Vývojáře portálu odkaz na portál vydavatele hello][api-management-pp-dp-link]
+![Odkaz na portál pro vývojáře na portálu pro vydavatele][api-management-pp-dp-link]
 
-tooopen hello přizpůsobení panelu nástrojů přesunutím ukazatele myši nad ikonu přizpůsobení hello (nebo ho vyberte) a pak klikněte na tlačítko "styly" hello panelu nástrojů.
+Pokud chcete otevřít panel nástrojů pro přizpůsobení, najeďte myší na ikonu přizpůsobení (nebo ji vyberte) a potom na panelu nástrojů klikněte na Styly.
 
 ![Tlačítko panelu nástrojů pro přizpůsobení][api-management-customization-toolbar-button]
 
-Existují dvě hlavní způsob úprav pravidel stylů – můžete projděte hello seznam všech pravidel stylů hello použitých na libovolném, který se zobrazí ve výchozím nastavení a podle potřeby změnit styl, nebo můžete zvolit **vybrat prvek na stránce hello** a potom Klikněte kamkoli na stránku hello toosee pouze hello styly tohoto prvku.
+Existují dva hlavní způsoby úpravy pravidel stylů: Můžete projít seznam všech použitých pravidel stylů, který se standardně zobrazí, a podle potřeby styl upravit, nebo můžete zvolit **Vybrat prvek na stránce** a pak kliknout na libovolné místo stránky a zobrazit jenom styly tohoto prvku.
 
 ![Přizpůsobení panelu nástrojů][api-management-customization-toolbar]
 
-Klikněte na tlačítko hello **vybrat prvek na stránce hello** možnost v tomto příkladu.  Prvky se zvýrazní najedete s hello myši toosignify jaké styly prvku byste začali upravovat, pokud jste klikli na. Hello přesunutí ukazatele myši hello text záhlaví hello (obvykle jste název společnosti hello zde) a pak klikněte na jeho. Sada pravidel stylů pojmenovaných a podle kategorií se zobrazí v editoru stylů hello. Každé pravidlo představuje vlastnost stylu vybraného prvku hello. Například pro výše vybraného textu záhlaví hello, hello velikost textu hello je v @font-size-h1 během hello název hello písma s alternativami @headings-font-family.
+V tomto příkladu klikněte na možnost **Vybrat prvek na stránce**.  Když najedete myší na jednotlivé prvky, tyto prvky se zvýrazní, aby označily, jaké styly prvku byste začali upravovat, pokud byste myší klikli. Najeďte myší na text v záhlaví (obvykle je tam název společnosti) a klikněte na něj. V editoru stylů se zobrazí sada pojmenovaných a podle kategorií seřazených pravidel stylů. Každé pravidlo představuje vlastnost stylu vybraného prvku. V případě výše vybraného textu záhlaví je například velikost textu určená v parametru @font-size-h1 a název písma s alternativami je uvedený v parametru @headings-font-family.
 
-> Pokud jste obeznámeni s [bootstrap][bootstrap], tato pravidla jsou ve skutečnosti [proměnné LESS] [ LESS variables] v rámci hello motivu spuštění, který používá hello portál pro vývojáře.
+> Pokud jste obeznámeni s architekturou [bootstrap][bootstrap], tato pravidla jsou ve skutečnosti [proměnné LESS][LESS variables] v motivu spuštění, který používá portál pro vývojáře.
 > 
 > 
 
-Umožňuje změnit barvu hello hello text nadpisu. Vyberte položku hello v hello  **@headings-color**  pole a zadejte **#000000**. To je šestnáctkový kód černé barvy hello hello. Když to uděláte, uvidíte, že, zobrazí se na konci hello hello textového pole Čtvercový ukazatel barvy. Pokud je ukazatel kliknete, umožňuje výběr barvy a toochoose barvy.
+Zkuste změnit barvu textu v nadpisu. Vyberte položku v poli **@headings-color** a zadejte **#000000**. To je šestnáctkový kód černé barvy. Když to uděláte, zobrazí se na konci textového pole čtvercový ukazatel barvy. Pokud na ukazatel kliknete, otevře se výběr barvy a umožní vám vybrat barvu.
 
 ![Výběr barvy][api-management-customization-toolbar-color-picker]
 
-Jak zvýšit, ale jsou viditelné pouze tooadministrators se seznámili se změny v reálném čase. toomake tyto změny vidět tooeveryone, klikněte na tlačítko hello **publikovat** tlačítko v editoru stylů hello a potvrďte změny hello.
+Změny se zobrazují v reálném čase, jak je provádíte, ale jsou viditelné pouze správcům. Pokud chcete tyto změny zviditelnit pro všechny uživatele, klikněte v editoru stylů na tlačítko **Publikovat** a potvrďte změny.
 
-![Publikování nabídky][api-management-customization-toolbar-publish-form]
+![Nabídka Publikovat][api-management-customization-toolbar-publish-form]
 
-> toochange hello pravidel stylů použitých tooany jiného elementu na stránce hello, postupujte podle hello stejný postup jako jste to udělali pro záhlaví hello. Klikněte na tlačítko **vybrat prvek na stránce hello** z editoru stylů hello, vyberte hello element vás zajímá a úprava hello hodnoty pravidel stylu hello zobrazené na úvodní obrazovka start.
+> Pokud chcete pravidla stylu použít na jakýkoli další prvek na stránce, postupujte stejným způsobem jako v případě záhlaví. V editoru stylů klikněte na **Vybrat prvek na stránce**, vyberte požadovaný prvek a začněte upravovat hodnoty pravidel stylu, které vidíte na obrazovce.
 > 
 > 
 
 
 ## <a name="next-steps"></a>Další kroky
-* Zjistěte, jak toocustomize hello obsah portálu pro vývojáře stránky pomocí [šablony na portálu vývojáře](api-management-developer-portal-templates.md).
+* Zjistěte, jak můžete přizpůsobit obsah stránek portálu pro vývojáře pomocí [šablon portálu pro vývojáře](api-management-developer-portal-templates.md).
 
-[Change hello styling of hello headers]: #change-headers-styling
+[Change the styling of the headers]: #change-headers-styling
 [Next steps]: #next-steps
 
 [Azure Classic Portal]: https://manage.windowsazure.com/

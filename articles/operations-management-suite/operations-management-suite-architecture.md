@@ -1,6 +1,6 @@
 ---
-title: aaaOperations architektura Management Suite (OMS) | Microsoft Docs
-description: "Microsoft Operations Management Suite (OMS) je cloudové řešení společnosti Microsoft pro správu IT, které pomáhá se správou a ochranou místních a cloudových infrastruktur.  Tento článek identifikuje hello různé služby, zahrnuté v OMS a poskytuje odkazy tootheir podrobné obsah."
+title: Architektura Operations Management Suite (OMS) | Dokumentace Microsoftu
+description: "Microsoft Operations Management Suite (OMS) je cloudové řešení společnosti Microsoft pro správu IT, které pomáhá se správou a ochranou místních a cloudových infrastruktur.  Tento článek identifikuje různé služby zahrnuté v OMS a poskytuje odkazy na podrobné informace."
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -14,67 +14,67 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/11/2017
 ms.author: bwren
-ms.openlocfilehash: fa3227aa9c19219009ebe363b7fd2d6565cec59c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 76f69946724b5297b1f9a1f715819c69c4a4a51d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="oms-architecture"></a>Architektura OMS
-[Operations Management Suite (OMS)](https://azure.microsoft.com/documentation/services/operations-management-suite/) je kolekce cloudových služeb pro správu vašich místních a cloudových prostředí.  Tento článek popisuje hello jinou místní a cloudové komponent OMS a jejich výpočetní Architektura vysoké úrovni cloudu.  Pro každou službu Další podrobnosti vám může naleznete v dokumentaci toohello.
+[Operations Management Suite (OMS)](https://azure.microsoft.com/documentation/services/operations-management-suite/) je kolekce cloudových služeb pro správu vašich místních a cloudových prostředí.  Tento článek popisuje různé místní a cloudové komponenty OMS a jejich základní cloudovou výpočetní architekturu.  Další podrobnosti najdete v dokumentaci k jednotlivým službám.
 
 ## <a name="log-analytics"></a>Log Analytics
-Všechna data shromážděná pomocí [analýzy protokolů](https://azure.microsoft.com/documentation/services/log-analytics/) je uložený v úložišti hello OMS, který je hostován v Azure.  Připojené zdroje vygenerovat data shromážděná do úložiště OMS hello.  V současné době jsou podporované tři typy připojených zdrojů.
+Všechna data shromážděná službou [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) se ukládají v úložišti OMS hostovaném v Azure.  Připojené zdroje generují data, která se shromažďují v úložišti OMS.  V současné době jsou podporované tři typy připojených zdrojů.
 
-* Agent nainstalovaný na [Windows](../log-analytics/log-analytics-windows-agents.md) nebo [Linux](../log-analytics/log-analytics-linux-agents.md) počítače přímo připojené tooOMS.
-* Skupina pro správu System Center Operations Manager (SCOM) [připojené tooLog Analytics](../log-analytics/log-analytics-om-agents.md) .  Agenti SCOM pokračovat toocommunicate se servery pro správu, které předávání událostí a tooLog data výkonu Analytics.
+* Agent nainstalovaný na počítači s [Windows](../log-analytics/log-analytics-windows-agents.md) nebo [Linuxem](../log-analytics/log-analytics-linux-agents.md), který je připojený přímo k OMS.
+* Skupina pro správu nástroje System Center Operations Manager (SCOM), která je [připojená k Log Analytics](../log-analytics/log-analytics-om-agents.md).  Agenti nástroje SCOM nadále komunikují se servery pro správu, které přeposílají události a data o výkonu do Log Analytics.
 * [Účet služby Azure Storage](../log-analytics/log-analytics-azure-storage.md), který shromažďuje data [Diagnostiky Azure](../cloud-services/cloud-services-dotnet-diagnostics.md) z role pracovního procesu, webové role nebo virtuálního počítače v Azure.
 
-Zdroje dat definovat hello data, která shromažďuje analýzy protokolů z připojených zdrojů, včetně protokolů událostí a čítače výkonu.  Řešení přidat funkce tooOMS a lze snadno přidat tooyour prostoru z hello [OMS řešení Galerie](../log-analytics/log-analytics-add-solutions.md).  Některá řešení můžou vyžadovat přímé připojení tooLog Analytics od agentů SCOM, zatímco jiné může vyžadují toobe další agent nainstalován.
+Zdroje dat definují data, která Log Analytics shromažďuje z připojených zdrojů, včetně protokolů událostí a čítačů výkonu.  Řešení přidávají funkce do OMS a snadno je můžete do svého pracovního prostoru přidat z [Galerie řešení OMS](../log-analytics/log-analytics-add-solutions.md).  Některá řešení mohou vyžadovat přímé připojení agentů nástroje SCOM k Log Analytics, zatímco jiné mohou vyžadovat instalaci dalšího agenta.
 
-Analýzy protokolů má webový portál, můžete použít toomanage OMS prostředků, přidat a nakonfigurovat OMS řešení a zobrazit a analyzovat data v úložišti OMS hello.
+Log Analytics obsahuje webový portál, pomocí kterého můžete spravovat prostředky OMS, přidávat a konfigurovat řešení OMS a zobrazit a analyzovat data v úložišti OMS.
 
 ![Základní architektura služby Log Analytics](media/operations-management-suite-architecture/log-analytics.png)
 
 ## <a name="azure-automation"></a>Azure Automation
-[Runbooky služby automatizace Azure](http://azure.microsoft.com/documentation/services/automation) jsou spouštěny v hello cloudu Azure a mají přístup k prostředkům, které jsou v Azure, v jiných cloudových služeb nebo přístupné z veřejného Internetu hello.  Můžete také pomocí procesu [Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md) určit místní počítače ve svém místním datovém centru a umožnit tak runbookům přístup k místním prostředkům.
+[Runbooky služby Azure Automation](http://azure.microsoft.com/documentation/services/automation) se provádějí v cloudu Azure a mohou přistupovat k prostředkům v Azure, v dalších cloudových službách nebo k prostředkům, které jsou přístupné z veřejného internetu.  Můžete také pomocí procesu [Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md) určit místní počítače ve svém místním datovém centru a umožnit tak runbookům přístup k místním prostředkům.
 
-[Konfigurace DSC](../automation/automation-dsc-overview.md) uložené ve službě Azure Automation může být přímo použité tooAzure virtuálních počítačů.  Další fyzické a virtuální počítače může požádat o konfigurace z načítacího serveru Azure Automation DSC hello.
+[Konfigurace DSC](../automation/automation-dsc-overview.md) uložené ve službě Azure Automation lze použít přímo na virtuálních počítačích Azure.  Ostatní fyzické a virtuální počítače mohou žádat o konfigurace ze serveru vyžádané replikace Azure Automation DSC.
 
-Automatizace Azure má OMS řešení, které zobrazuje statistiky a propojuje toolaunch hello portál Azure pro žádné operace.
+Azure Automation obsahuje řešení OMS, které pro všechny operace zobrazuje statistiku a odkaz na otevření webu Azure Portal.
 
 ![Základní architektura služby Azure Automation](media/operations-management-suite-architecture/automation.png)
 
 ## <a name="azure-backup"></a>Azure Backup
-Chráněná data ve službě [Azure Backup](http://azure.microsoft.com/documentation/services/backup) se ukládají do trezoru záloh umístěného v konkrétní geografické oblasti.  Hello data se replikují uvnitř hello stejné oblasti a v závislosti na typu hello trezoru, může být také replikované tooanother oblast pro další redundanci.
+Chráněná data ve službě [Azure Backup](http://azure.microsoft.com/documentation/services/backup) se ukládají do trezoru záloh umístěného v konkrétní geografické oblasti.  Data jsou replikována v rámci stejné oblasti a v závislosti na typu trezoru mohou být replikována také do jiné oblasti pro zajištění další redundance.
 
 Azure Backup obsahuje tři základní scénáře.
 
-* Počítač s Windows a agentem služby Azure Backup.  To vám umožní toobackup soubory a složky v jakémkoli systému Windows server nebo klienta přímo tooyour trezor služby Azure backup.  
-* Server System Center Data Protection Manageru (DPM) nebo server Microsoft Azure Backup. Díky tomu můžete tooleverage DPM nebo Microsoft Azure Backup Server toobackup soubory a složky kromě tooapplication úlohy, jako například toolocal úložiště SQL a službu SharePoint a poté replikují tooyour trezor služby Azure backup.
-* Rozšíření virtuálního počítače Azure.  To vám umožní toobackup virtuální počítače Azure tooyour trezor služby Azure backup.
+* Počítač s Windows a agentem služby Azure Backup.  To vám umožňuje zálohovat soubory a složky z jakéhokoli klienta nebo serveru s Windows přímo do svého trezoru záloh Azure.  
+* Server System Center Data Protection Manageru (DPM) nebo server Microsoft Azure Backup. To vám umožňuje využít server DPM nebo Microsoft Azure Backup kromě zálohování úloh aplikací, jako jsou SQL a SharePoint, i k zálohování souborů a složek do místního úložiště a jejich následné replikaci do vašeho trezoru záloh Azure.
+* Rozšíření virtuálního počítače Azure.  To vám umožňuje zálohovat virtuální počítače Azure do svého trezoru záloh Azure.
 
-Zálohování Azure má OMS řešení, které zobrazuje statistiky a propojuje toolaunch hello portál Azure pro žádné operace.
+Azure Backup obsahuje řešení OMS, které pro všechny operace zobrazuje statistiku a odkaz na otevření webu Azure Portal.
 
 ![Základní architektura služby Azure Backup](media/operations-management-suite-architecture/backup.png)
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
-[Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery) orchestruje replikaci, převzetí služeb při selhání a navrácení služeb po obnovení u virtuálních počítačů a fyzických serverů. Replikační data se vyměňují mezi hostitele Hyper-V, hypervisory VMware a fyzické servery v datových centrech primární a sekundární nebo mezi datovým centrem hello a úložiště Azure.  Site Recovery ukládá metadata do trezorů umístěných v konkrétní oblasti Azure. Žádná replikovaná data jsou uložena ve hello služba Site Recovery.
+[Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery) orchestruje replikaci, převzetí služeb při selhání a navrácení služeb po obnovení u virtuálních počítačů a fyzických serverů. Replikovaná data se přemisťují mezi hostiteli Hyper-V, hypervisory VMware a fyzickými servery v primárním a sekundárním datovém centru, nebo mezi datovým centrem a úložištěm Azure.  Site Recovery ukládá metadata do trezorů umístěných v konkrétní oblasti Azure. V samotné službě Site Recovery se replikovaná data neukládají.
 
 Azure Site Recovery obsahuje tři základní scénáře replikace.
 
 **Replikace virtuálních počítačů Hyper-V**
 
-* Pokud jsou virtuální počítače Hyper-V spravované v cloudech VMM, můžete replikovat tooa sekundárního datového centra nebo tooAzure úložiště.  TooAzure replikace je přes zabezpečené připojení k Internetu.  Replikace tooa sekundárního datového centra je nad hello LAN.
-* Pokud virtuální počítače Hyper-V nejsou spravované přes VMM, můžete replikovat jenom tooAzure úložiště.  TooAzure replikace je přes zabezpečené připojení k Internetu.
+* Pokud jsou virtuální počítače Hyper-V spravovány v cloudech VMM, je možná replikace do sekundárního datového centra nebo do úložiště Azure.  Replikace do Azure probíhá přes zabezpečené internetové připojení.  Replikace do sekundárního datového centra probíhá přes síť LAN.
+* Pokud virtuální počítače Hyper-V nejsou spravovány ve VMM, je možná pouze replikace do úložiště Azure.  Replikace do Azure probíhá přes zabezpečené internetové připojení.
 
 **Replikace virtuálních počítačů VMware**
 
-* Můžete provádět replikaci VMware virtuální počítače tooa sekundárního datacentra systémem VMware nebo tooAzure úložiště.  Replikace tooAzure situace může nastat, přes síť site-to-site VPN nebo Azure ExpressRoute nebo přes zabezpečené internetové připojení. Sekundární datacentrum tooa replikace probíhá přes hello InMage Scout datový kanál.
+* Virtuální počítače VMware můžete replikovat do sekundárního datového centra, na kterém běží VMware, nebo do úložiště Azure.  Replikace do Azure může probíhat přes síť VPN typu Site-to-Site nebo Azure ExpressRoute nebo přes zabezpečené internetové připojení. Replikace do sekundárního datového centra probíhá přes kanál nástroje InMage Scout.
 
 **Replikace fyzických serverů s Windows nebo Linuxem** 
 
-* Můžete replikovat fyzické servery tooa sekundárního datového centra nebo tooAzure úložiště. Replikace tooAzure situace může nastat, přes síť site-to-site VPN nebo Azure ExpressRoute nebo přes zabezpečené internetové připojení. Sekundární datacentrum tooa replikace probíhá přes hello InMage Scout datový kanál.  Azure Site Recovery má OMS řešení, která zobrazuje statistikami, ale hello portálu Azure, musíte použít pro žádné operace.
+* Fyzické servery můžete replikovat do sekundárního datového centra nebo do úložiště Azure. Replikace do Azure může probíhat přes síť VPN typu Site-to-Site nebo Azure ExpressRoute nebo přes zabezpečené internetové připojení. Replikace do sekundárního datového centra probíhá přes kanál nástroje InMage Scout.  Azure Site Recovery obsahuje řešení OMS, které zobrazuje omezenou statistiku, ale pro všechny operace je nutné použít Azure Portal.
 
 ![Základní architektura služby Azure Site Recovery](media/operations-management-suite-architecture/site-recovery.png)
 

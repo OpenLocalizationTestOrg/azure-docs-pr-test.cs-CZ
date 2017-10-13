@@ -17,17 +17,17 @@
 ### [Doprovodné materiály k architektuře nabízení v podnicích](notification-hubs-enterprise-push-notification-architecture.md)
 
 ## Vývoj
-### [Odeslat tooAndroid nabízená oznámení pomocí služby GCM](notification-hubs-android-push-notification-google-gcm-get-started.md)
+### [Zasílání nabízených oznámení na Android pomocí GCM](notification-hubs-android-push-notification-google-gcm-get-started.md)
 ### [Nabízená oznámení monitorování geografických zón s prostorovými daty Bingu](notification-hubs-push-bing-spartial-data-geofencing-notification.md)
-### Push toospecific uživatelů
+### Nabízení určitým uživatelům
 #### [Android](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md)
 #### [iOS](notification-hubs-aspnet-backend-ios-apple-apns-notification.md)
 #### [Windows](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md)
 
-#### [Registrace hello aktuální uživatel použití technologie ASP.NET](notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md)
+#### [Registrace aktuálního uživatele pomocí ASP.NET](notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md)
 ### [Odesílání oznámení mezi platformami](notification-hubs-aspnet-cross-platform-notification.md)
 ### Práce se sadami SDK serveru
-#### [.NET](https://msdn.microsoft.com/library/mt414893.aspx)
+#### [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/notification-hubs?view=azure-dotnet)
 #### [Node.js](notification-hubs-nodejs-push-notification-tutorial.md)
 #### [Java](notification-hubs-java-push-notification-tutorial.md)
 #### [PHP](notification-hubs-php-push-notification-tutorial.md)
@@ -53,7 +53,7 @@
 #### [Windows](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
 
 ## Automatizace
-### [Nasazení a správa Notification Hubs pomocí PowerShellu](notification-hubs-deploy-and-manage-powershell.md)
+### [Nasazení a správa Notification Hubs s využitím Azure PowerShellu](notification-hubs-deploy-and-manage-powershell.md)
 ### [Odesílání plánovaných oznámení](notification-hubs-send-push-notifications-scheduled.md)
 
 ## Řešení potíží
@@ -61,7 +61,7 @@
 
 # Referenční informace
 ## [Ukázky kódu](https://azure.microsoft.com/en-us/resources/samples/?service=notification-hubs)
-## [PowerShell](/powershell/module/azurerm.notificationhubs)
+## [Azure PowerShell](/powershell/module/azurerm.notificationhubs)
 ## [.NET](/dotnet/api/microsoft.azure.notificationhubs)
 ## [REST](/rest/api/notificationhubs)
 

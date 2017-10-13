@@ -1,6 +1,6 @@
 ---
-title: "aaaUpload souborů do účtu Media Services pomocí rozhraní .NET | Microsoft Docs"
-description: "Zjistěte, jak tooget média obsahu ve službě Media Services pomocí vytvoření a odeslání prostředky."
+title: "Nahrání souborů do účtu Media Services pomocí rozhraní .NET | Microsoft Docs"
+description: "Další informace o získání mediálního obsahu ve službě Media Services pomocí vytvoření a odeslání prostředky."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2017
 ms.author: juliako
-ms.openlocfilehash: 11c8a359b09efe04b54490fd48ac0cd7c366f8b3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ec8c1da633374ba684f6a0a895c542ee76ef73b8
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>Nahrání souborů do účtu Media Services pomocí rozhraní .NET
 > [!div class="op_single_selector"]
@@ -28,39 +28,39 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Ve službě Media Services můžete digitální soubory nahrát (nebo ingestovat) do prostředku. Hello **Asset** entita může obsahovat video, zvuk, obrázky, kolekci miniatur, text sleduje a titulků soubory (a hello metadata o těchto souborech.)  Jakmile hello soubory jsou odeslány, váš obsah bezpečně uložen v hello cloudu pro další zpracování a streamování.
+Ve službě Media Services můžete digitální soubory nahrát (nebo ingestovat) do prostředku. **Asset** entita může obsahovat video, zvuk, obrázky, kolekci miniatur, text sleduje a titulků soubory (a metadata o těchto souborech.)  Jakmile soubory odešlete, bude váš obsah bezpečně uložen v cloudu pro další zpracování a streamování.
 
-soubory Hello v hello prostředku se nazývají **soubory prostředku**. Hello **AssetFile** instance a hello samotný mediální soubor jsou dva odlišné objekty. Hello AssetFile instance obsahuje metadata o hello soubor média, zatímco soubor média hello obsahuje hello samotný mediální obsah.
+Soubory v prostředku se nazývají **soubory prostředku**. **AssetFile** instance a samotný mediální soubor jsou dva odlišné objekty. AssetFile instance obsahuje metadata o souboru média, zatímco souboru média obsahuje samotný mediální obsah.
 
 > [!NOTE]
-> použít Hello následující aspekty:
+> Platí následující aspekty:
 > 
-> * Služba Media Services použije hello hodnotu hello IAssetFile.Name vlastnost při sestavování adresy URL pro hello streamování obsahu (například http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) Z tohoto důvodu není povoleno kódování v procentech. Hello hodnotu hello **název** vlastnost nemůže mít žádné z následujících hello [procent kódování vyhrazené znaky](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Navíc může existovat pouze jedna '.' pro příponu názvu souboru hello.
-> * Délka Hello hello názvu by neměla být větší než 260 znaků.
-> * Existuje limit toohello maximální velikost souboru pro zpracování ve službě Media Services podporována. Najdete v tématu [to](media-services-quotas-and-limitations.md) téma podrobné informace o omezení velikosti souborů hello.
-> * Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Měli byste použít hello stejné ID zásad, pokud vždy používáte hello stejné dny / přístupová oprávnění, například zásady pro lokátory, které jsou určený tooremain zavedené po dlouhou dobu (bez odeslání zásady). Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) tématu.
+> * Služba Media Services použije hodnotu vlastnosti IAssetFile.Name při sestavování adresy URL pro streamování obsah (například http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) Z tohoto důvodu není povoleno kódování v procentech. Hodnota **název** vlastnost nemůže mít žádné z následujících [procent kódování vyhrazené znaky](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Navíc může existovat pouze jedna '.' pro příponu názvu souboru.
+> * Délka názvu nesmí být větší než 260 znaků.
+> * Maximální velikost souboru podporovaná při zpracování ve službě Media Services je omezená. Podrobnosti o omezení velikosti souboru najdete [tady](media-services-quotas-and-limitations.md).
+> * Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Pokud vždy používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odeslání), měli byste použít stejné ID zásad. Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) tématu.
 > 
 
-Při vytváření prostředků, můžete zadat následující možnosti šifrování hello. 
+Při vytváření prostředků, můžete zadat následující možnosti šifrování. 
 
-* **Žádné** – nepoužívá se žádné šifrování. Toto je výchozí hodnota hello. Všimněte si, že při použití této možnosti není váš obsah chráněný během přenosu ani umístěná v úložišti.
-  Tuto možnost použijte, pokud máte v plánu toodeliver MP4 pomocí progresivního stahování. 
+* **Žádné** – nepoužívá se žádné šifrování. Toto je výchozí hodnota. Všimněte si, že při použití této možnosti není váš obsah chráněný během přenosu ani umístěná v úložišti.
+  Pokud chcete pomocí progresivního stahování dodávat obsah ve formátu MP4, použijte tuto možnost. 
 * **CommonEncryption** – tuto možnost použijte, pokud nahráváte obsah, který byl zašifrován a chráněný běžným šifrováním nebo DRM s technologií PlayReady (například Smooth Streaming chráněná pomocí DRM s technologií PlayReady).
-* **EnvelopeEncrypted** – tuto možnost použijte, pokud odesíláte HLS se šifrováním pomocí standardu AES. Všimněte si, že hello soubory musí být kódovaný a zašifrované pomocí Správce transformací.
-* **StorageEncrypted** – šifruje vaše nešifrovaného obsahu pomocí 256bitového šifrování AES 256 a odešle ho tooAzure úložiště, kde je uložený v zašifrované podobě. Prostředky chráněné pomocí šifrování úložiště jsou automaticky bez šifrování a umístit do předchozí tooencoding systému souborů EFS a volitelně znovu zašifrovat předchozí toouploading zpět v podobě nového výstupního prostředku. Hello případem primárního použití šifrování úložiště je, pokud chcete toosecure rest souborů vysoké kvality vstupními médii pomocí silného šifrování na disku.
+* **EnvelopeEncrypted** – tuto možnost použijte, pokud odesíláte HLS se šifrováním pomocí standardu AES. Pamatujte, že soubory musí být zakódované a zašifrované pomocí správce transformací.
+* **StorageEncrypted** – šifruje vaše nešifrovaného obsahu pomocí 256bitového šifrování AES 256 a odešle ji do Azure Storage kde bude uložený v zašifrované podobě. Prostředky chráněné pomocí šifrování úložiště jsou před kódováním automaticky bez šifrování umístěny do systému souborů EFS a volitelně se znovu zašifrují před jejich odesláním zpět v podobě nového výstupního prostředku. Případem primárního použití šifrování úložiště je, když chcete zabezpečit vysoké kvality souborů vstupními médii pomocí silného šifrování v klidovém stavu na disku.
   
     Služba Media Services poskytuje šifrování úložiště na disku pro vaše prostředky, ne přes přenosu jako správce digitální práv (DRM).
   
     Pokud váš asset používá šifrování úložiště, musíte nakonfigurovat zásady doručení assetu. Další informace najdete v části [konfigurace zásad doručení assetu](media-services-dotnet-configure-asset-delivery-policy.md).
 
-Pokud zadáte pro váš asset toobe šifrován **CommonEncrypted** možnost, nebo **EnvelopeEncypted** možnost, budete potřebovat tooassociate asset s **ContentKey**. Další informace najdete v tématu [jak toocreate ContentKey](media-services-dotnet-create-contentkey.md). 
+Pokud zadáte pro váš asset mají být šifrována pomocí **CommonEncrypted** možnost, nebo **EnvelopeEncypted** možnost, budete muset přiřadit asset s **ContentKey**. Další informace najdete v tématu [postup vytvoření ContentKey](media-services-dotnet-create-contentkey.md). 
 
-Pokud zadáte pro váš asset toobe šifrován **StorageEncrypted** možnost, hello sady Media Services SDK pro .NET vytvoří **StorateEncrypted** **ContentKey** pro vaše Asset.
+Pokud zadáte pro váš asset mají být šifrována pomocí **StorageEncrypted** možnost, sady Media Services SDK pro .NET vytvoří **StorateEncrypted** **ContentKey** pro vaše Asset.
 
-Toto téma ukazuje, jak toouse Media Services .NET SDK, jakož i sady Media Services .NET SDK rozšíření tooupload soubory do asset Media Services.
+Toto téma ukazuje, jak používat sadu Media Services .NET SDK, jakož i rozšíření sady Media Services .NET SDK k nahrání souborů do asset Media Services.
 
 ## <a name="upload-a-single-file-with-media-services-net-sdk"></a>Nahrát jeden soubor pomocí sady Media Services .NET SDK
-Hello následující ukázkový kód používá .NET SDK tooupload jeden soubor. Hello AccessPolicy a Lokátor vytvořen a zničen funkcí nahrávání hello. 
+Následující ukázkový kód používá .NET SDK k nahrát jeden soubor. AccessPolicy a Lokátor vytvořen a zničen odesílání funkce. 
 
 
         static public IAsset CreateAssetAndUploadSingleFile(AssetCreationOptions assetCreationOptions, string singleFilePath)
@@ -86,19 +86,19 @@ Hello následující ukázkový kód používá .NET SDK tooupload jeden soubor.
 
 
 ## <a name="upload-multiple-files-with-media-services-net-sdk"></a>Uložení více souborů pomocí sady Media Services .NET SDK
-Následující kód ukazuje, jak Hello toocreate prostředek a uložení více souborů.
+Následující kód ukazuje, jak vytvořit prostředek a odeslat více souborů.
 
-Kód Hello hello následující:
+Kód provede následující akce:
 
-* Vytvoří prázdný majetku pomocí metody CreateEmptyAsset hello definované v předchozím kroku hello.
-* Vytvoří **AccessPolicy** instanci, která definuje hello oprávnění a dobu trvání asset toohello přístup.
-* Vytvoří **Lokátor** instanci, která poskytuje přístup toohello asset.
-* Vytvoří **BlobTransferClient** instance. Tento typ reprezentuje klienta, který funguje na hello objektů BLOB Azure. V tomto příkladu používáme průběhu odesílání hello klienta toomonitor hello. 
-* Vytvoří výčet prostřednictvím určeného adresáře hello soubory a vytvoří **AssetFile** instance pro každý soubor.
-* Nahrávání hello soubory ve službě Media Services pomocí hello **UploadAsync** metoda. 
+* Vytvoří prázdný majetku pomocí metody CreateEmptyAsset definované v předchozím kroku.
+* Vytvoří **AccessPolicy** instanci, která definuje oprávnění a doba trvání přístupu pro daný prostředek.
+* Vytvoří **Lokátor** instance, který poskytuje přístup k prostředku.
+* Vytvoří **BlobTransferClient** instance. Tento typ reprezentuje klienta, který funguje na Azure BLOB. V tomto příkladu používáme klienta pro monitorování průběhu nahrávání. 
+* Vytvoří výčet prostřednictvím souborů v adresáři zadaný a vytvoří **AssetFile** instance pro každý soubor.
+* Nahrávání souborů do aplikace pomocí služby Media Services **UploadAsync** metoda. 
 
 > [!NOTE]
-> Použijte tooensure hello UploadAsync metoda, která hello volání neblokují a hello soubory jsou odeslány paralelně.
+> Pomocí této metody UploadAsync zajistěte, aby volání neblokují a soubory odešlete paralelně.
 > 
 > 
 
@@ -134,13 +134,13 @@ Kód Hello hello následující:
                 var assetFile = asset.AssetFiles.Create(Path.GetFileName(filePath));
                 Console.WriteLine("Created assetFile {0}", assetFile.Name);
 
-                // It is recommended toovalidate AccestFiles before upload. 
+                // It is recommended to validate AccestFiles before upload. 
                 Console.WriteLine("Start uploading of {0}", assetFile.Name);
                 uploadTasks.Add(assetFile.UploadAsync(filePath, blobTransferClient, locator, CancellationToken.None));
             }
 
             Task.WaitAll(uploadTasks.ToArray());
-            Console.WriteLine("Done uploading hello files");
+            Console.WriteLine("Done uploading the files");
 
             blobTransferClient.TransferProgressChanged -= blobTransferClient_TransferProgressChanged;
 
@@ -152,7 +152,7 @@ Kód Hello hello následující:
 
     static void  blobTransferClient_TransferProgressChanged(object sender, BlobTransferProgressChangedEventArgs e)
     {
-        if (e.ProgressPercentage > 4) // Avoid startup jitter, as hello upload tasks are added.
+        if (e.ProgressPercentage > 4) // Avoid startup jitter, as the upload tasks are added.
         {
             Console.WriteLine("{0}% upload competed for {1}.", e.ProgressPercentage, e.LocalFile);
         }
@@ -160,28 +160,28 @@ Kód Hello hello následující:
 
 
 
-Při nahrávání velký počet prostředků, zvažte následující hello.
+Při nahrávání velký počet prostředků, zvažte následující.
 
-* Vytvořte novou **CloudMediaContext** objektu na vlákno. Hello **CloudMediaContext** třída není bezpečná pro přístup z více vláken.
-* Zvýšit NumberOfConcurrentTransfers z hello výchozí hodnotu 2 vyšší hodnota tooa, jako je 5. Nastavení této vlastnosti ovlivní všechny instance **CloudMediaContext**. 
-* Zachovat ParallelTransferThreadCount v hello výchozí hodnota je 10.
+* Vytvořte novou **CloudMediaContext** objektu na vlákno. **CloudMediaContext** třída není bezpečná pro přístup z více vláken.
+* Zvýšit NumberOfConcurrentTransfers z výchozí hodnotu 2 na vyšší hodnotu, jako je 5. Nastavení této vlastnosti ovlivní všechny instance **CloudMediaContext**. 
+* Zachovat ParallelTransferThreadCount na výchozí hodnotu 10.
 
 ## <a id="ingest_in_bulk"></a>Příjem prostředky hromadně pomocí sady Media Services .NET SDK
-Nahrávání souborů velké prostředek může být kritický bod během vytváření asset. Příjem prostředky v hromadné nebo "Hromadné příjem", zahrnuje oddělení asset vytvoření z procesu nahrávání hello. toouse hromadné ingesting přístup, vytvořte manifestu (IngestManifest), který popisuje hello asset a jeho přidružené soubory. Pak použijte hello nahrávání metodu výběru tooupload hello přidružené soubory toohello manifest pro kontejner objektů blob. Microsoft Azure Media Services sleduje kontejneru objektů blob hello přidruženého k manifestu hello. Kontejner objektů blob nahrané toohello po soubor Microsoft Azure Media Services dokončí vytváření asset hello na základě konfigurace hello hello majetku v manifestu hello (IngestManifestAsset).
+Nahrávání souborů velké prostředek může být kritický bod během vytváření asset. Příjem prostředky v hromadné nebo "Hromadné příjem", zahrnuje vytvoření prostředku z procesu nahrávání oddělení. Pokud chcete používat hromadné příjem přístup, vytvořte manifestu (IngestManifest), který popisuje asset a jeho přidružené soubory. Potom použijte metodu nahrávání podle svého výběru k nahrání přidružené soubory do kontejneru objektů blob v manifestu. Microsoft Azure Media Services sleduje kontejneru objektů blob přidružený manifest. Po odeslání souboru do kontejneru objektů blob Microsoft Azure Media Services dokončení vytvoření prostředku, na základě konfigurace prostředku manifestu (IngestManifestAsset).
 
-toocreate nové IngestManifest volat metodu Create hello vystavené hello IngestManifests kolekce na hello CloudMediaContext. Tato metoda vytvoří nový IngestManifest hello manifestu názvem, který zadáte.
+Chcete-li vytvořit nové volání IngestManifest vystavené kolekci IngestManifests na CloudMediaContext metodu Create. Tato metoda vytvoří nový IngestManifest manifestu názvem, který zadáte.
 
     IIngestManifest manifest = context.IngestManifests.Create(name);
 
-Vytvořte hello prostředky, které budou přidruženy k hromadné hello IngestManifest. Konfigurujte možnosti šifrování hello potřeby na hello asset pro příjem hromadně.
+Vytvořte prostředky, které budou přidruženy k hromadné IngestManifest. Konfigurujte možnosti požadované šifrování na asset pro příjem hromadně.
 
-    // Create hello assets that will be associated with this bulk ingest manifest
+    // Create the assets that will be associated with this bulk ingest manifest
     IAsset destAsset1 = _context.Assets.Create(name + "_asset_1", AssetCreationOptions.None);
     IAsset destAsset2 = _context.Assets.Create(name + "_asset_2", AssetCreationOptions.None);
 
-IngestManifestAsset přidruží hromadné IngestManifest pro příjem hromadné prostředek. Také přidruží hello AssetFiles, které budou použity k vytvoření každého prostředku. toocreate IngestManifestAsset, použijte metodu Create hello v kontextu server hello.
+IngestManifestAsset přidruží hromadné IngestManifest pro příjem hromadné prostředek. Také přidruží AssetFiles, které budou použity k vytvoření každého prostředku. Pokud chcete vytvořit IngestManifestAsset, použijte metodu Create na kontext serveru.
 
-Hello následující příklad ukazuje přidání dva nové IngestManifestAssets, které spojují hello dva prostředky vytvořili hromadné toohello ingestování manifestu. Každý IngestManifestAsset také přidruží sadu souborů, které budou odeslány, pro každý prostředek během hromadné příjem.  
+Následující příklad ukazuje, přidávání dvě nové IngestManifestAssets, které spojují dva prostředky předtím vytvořili pro hromadným ingestování manifestu. Každý IngestManifestAsset také přidruží sadu souborů, které budou odeslány, pro každý prostředek během hromadné příjem.  
 
     string filename1 = _singleInputMp4Path;
     string filename2 = _primaryFilePath;
@@ -190,7 +190,7 @@ Hello následující příklad ukazuje přidání dva nové IngestManifestAssets
     IIngestManifestAsset bulkAsset1 =  manifest.IngestManifestAssets.Create(destAsset1, new[] { filename1 });
     IIngestManifestAsset bulkAsset2 =  manifest.IngestManifestAssets.Create(destAsset2, new[] { filename2, filename3 });
 
-Můžete použít libovolná aplikace klienta vysokorychlostní schopná odesílání hello asset soubory toohello kontejner úložiště objektů blob URI poskytované hello **IIngestManifest.BlobStorageUriForUpload** vlastnost hello IngestManifest. Je jedna služba nahrávání významné vysokorychlostní [Aspera na vyžádání pro aplikaci Azure](https://datamarket.azure.com/application/2cdbc511-cb12-4715-9871-c7e7fbbb82a6). Je také možné zapsat kód tooupload hello prostředky soubory jak ukazuje následující příklad kódu hello.
+Můžete použít libovolná aplikace klienta vysokorychlostní schopná nahrávání souborů asset ke kontejneru úložiště objektů blob URI poskytované **IIngestManifest.BlobStorageUriForUpload** vlastnost IngestManifest. Je jedna služba nahrávání významné vysokorychlostní [Aspera na vyžádání pro aplikaci Azure](https://datamarket.azure.com/application/2cdbc511-cb12-4715-9871-c7e7fbbb82a6). Můžete taky napsat kód k nahrání souborů prostředků, jak je znázorněno v následujícím příkladu kódu.
 
     static void UploadBlobFile(string destBlobURI, string filename)
     {
@@ -215,16 +215,16 @@ Můžete použít libovolná aplikace klienta vysokorychlostní schopná odesíl
         copytask.Start();
     }
 
-Hello kód pro nahrávání souborů hello asset pro ukázku hello použitým v tomto tématu je uveden v hello následující ukázka kódu.
+V následujícím příkladu kódu se zobrazí kód pro nahrávání souborů asset pro ukázku použitým v tomto tématu.
 
     UploadBlobFile(manifest.BlobStorageUriForUpload, filename1);
     UploadBlobFile(manifest.BlobStorageUriForUpload, filename2);
     UploadBlobFile(manifest.BlobStorageUriForUpload, filename3);
 
 
-Můžete určit hello průběh hello hromadné příjem pro všechny prostředky přidružené **IngestManifest** pomocí cyklického dotazování hello statistiky vlastnost hello **IngestManifest**. V pořadí informace o průběhu tooupdate, je třeba použít novou **CloudMediaContext** pokaždé, když dotazovat vlastnost statistiky hello.
+Můžete určit průběh hromadné příjem pro všechny prostředky přidružené **IngestManifest** pomocí cyklického dotazování vlastnost statistiky **IngestManifest**. Chcete-li aktualizovat informace o průběhu, je nutné použít novou **CloudMediaContext** pokaždé, když dotazovat vlastnost statistiky.
 
-Hello následující příklad ukazuje, dotazování IngestManifest podle jeho **Id**.
+Následující příklad ukazuje, dotazování IngestManifest podle jeho **Id**.
 
     static void MonitorBulkManifest(string manifestID)
     {
@@ -261,7 +261,7 @@ Hello následující příklad ukazuje, dotazování IngestManifest podle jeho *
 
 
 ## <a name="upload-files-using-net-sdk-extensions"></a>Nahrát soubory pomocí rozšíření sady SDK pro .NET
-Následující příklad Hello ukazuje, jak tooupload jednu souboru pomocí rozšíření sady SDK pro .NET. V takovém případě hello **CreateFromFile** metoda se používá, ale je k dispozici také asynchronní verzi hello (**CreateFromFileAsync**). Hello **CreateFromFile** metoda slouží k určení názvu souboru text hello, možnost šifrování a zpětného volání v pořadí tooreport hello nahrát průběh hello souboru.
+Následující příklad ukazuje, jak nahrát jeden soubor pomocí rozšíření sady SDK pro .NET. V takovém případě **CreateFromFile** metoda se používá, ale o asynchronní verzi je také k dispozici (**CreateFromFileAsync**). **CreateFromFile** metoda můžete zadat název souboru, možnost šifrování a zpětného volání za účelem hlášení průběhu odesílání souboru.
 
     static public IAsset UploadFile(string fileName, AssetCreationOptions options)
     {
@@ -278,7 +278,7 @@ Následující příklad Hello ukazuje, jak tooupload jednu souboru pomocí roz�
         return inputAsset;
     }
 
-Hello následující příklad volá funkci UploadFile a určuje šifrování úložiště jako možnost vytvoření asset hello.  
+V následujícím příkladu volání funkce UploadFile a určuje šifrování úložiště jako možnost vytvoření prostředku.  
 
     var asset = UploadFile(@"C:\VideoFiles\BigBuckBunny.mp4", AssetCreationOptions.StorageEncrypted);
 
@@ -286,7 +286,7 @@ Hello následující příklad volá funkci UploadFile a určuje šifrování ú
 
 Nyní můžete kódovat nahrané assety. Další informace najdete v tématu [Kódování assetů](media-services-portal-encode.md).
 
-Můžete také použít Azure Functions tootrigger úlohu kódování na základě souboru přicházejících do kontejneru hello nakonfigurované. Další informace najdete v [této ukázce](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ ).
+Můžete také použít službu Azure Functions k aktivaci úlohy kódování při příchodu souboru do nakonfigurovaného kontejneru. Další informace najdete v [této ukázce](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ ).
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
@@ -295,7 +295,7 @@ Můžete také použít Azure Functions tootrigger úlohu kódování na základ
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-step"></a>Další krok
-Teď, když jste nahráli prostředek tooMedia služby, přejděte toohello [jak tooGet procesor médií] [ How tooGet a Media Processor] tématu.
+Teď, když jste nahráli prostředek ke službě Media Services, přejděte na [jak získat procesor médií] [ How to Get a Media Processor] tématu.
 
-[How tooGet a Media Processor]: media-services-get-media-processor.md
+[How to Get a Media Processor]: media-services-get-media-processor.md
 

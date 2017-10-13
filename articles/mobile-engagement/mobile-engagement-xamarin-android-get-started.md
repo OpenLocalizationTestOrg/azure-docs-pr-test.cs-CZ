@@ -1,6 +1,6 @@
 ---
-title: "aaaGet Začínáme s Azure Mobile Engagementem pro Xamarin.Android"
-description: "Zjistěte, jak toouse Azure Mobile Engagement s analytickými funkcemi a nabízenými oznámeními pro aplikace pro Xamarin.Android."
+title: "Začínáme s Azure Mobile Engagementem pro Xamarin.Android"
+description: "Naučte se používat Azure Mobile Engagement s analytickými funkcemi a nabízenými oznámeními pro aplikace pro Xamarin.Android."
 services: mobile-engagement
 documentationcenter: xamarin
 author: piyushjo
@@ -14,75 +14,75 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 06/16/2016
 ms.author: piyushjo
-ms.openlocfilehash: 9d584fea8e8153d511258cf9b6f87f31dac6aeca
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7b3d01b32c2d5a40448fc22861cd45f612238f2f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-xamarinandroid-apps"></a>Začínáme s Azure Mobile Engagementem pro aplikace pro Xamarin.Android
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
-Toto téma ukazuje, jak Azure Mobile Engagement toounderstand toouse používání aplikace a jak toosend nabízená oznámení uživatelům toosegmented aplikace pro Xamarin.Android.
-Tento kurz představuje scénář hello jednoduchého vysílání přes Mobile Engagement. V něm můžete vytvořit prázdnou aplikaci pro Xamarin.Android, která sbírá základní data a dostává nabízená oznámení pomocí služby GCM (Google Cloud Messaging).
+V tomto tématu si ukážeme, jak používat Azure Mobile Engagement, jak porozumět používání aplikací a odesílat nabízená oznámení segmentovaným uživatelům aplikace pro Xamarin.Android.
+Tento kurz představuje scénář jednoduchého vysílání přes Mobile Engagement. V něm můžete vytvořit prázdnou aplikaci pro Xamarin.Android, která sbírá základní data a dostává nabízená oznámení pomocí služby GCM (Google Cloud Messaging).
 
 > [!NOTE]
-> Služba Azure Mobile Engagement Hello vyřadí března 2018 a je aktuálně pouze k dispozici tooexisting zákazníků. Další informace najdete v tématu [Mobile Engagement](https://azure.microsoft.com/en-us/services/mobile-engagement/).
+> Službu Azure Mobile Engagement vyřadíme z provozu v březnu 2018. V současnosti je dostupná jenom pro stávající zákazníky. Další informace najdete v tématu [Mobile Engagement](https://azure.microsoft.com/en-us/services/mobile-engagement/).
 
-Tento kurz vyžaduje hello následující:
+V tomto kurzu budete potřebovat následující:
 
 * [Xamarin Studio](http://xamarin.com/studio). Můžete také použít Visual Studio s Xamarinem, ale v tomto kurzu používáme Xamarin Studio. Instalační pokyny najdete v tématu o [nastavení a instalaci pro Visual Studio a Xamarin](https://msdn.microsoft.com/library/mt613162.aspx).
 * [Mobile Engagement Xamarin SDK](https://www.nuget.org/packages/Microsoft.Azure.Engagement.Xamarin/)
 
 > [!NOTE]
-> toocomplete tento kurz, musíte mít aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-xamarin-android-get-started).
+> K dokončení tohoto kurzu potřebujete mít aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-xamarin-android-get-started).
 > 
 > 
 
 ## <a id="setup-azme"></a>Nastavení Mobile Engagementu pro vaši aplikaci pro Android
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a id="connecting-app"></a>Připojit vaše aplikace toohello Mobile Engagement back-end
-Tento kurzu si představíme "základní integraci", což je minimální hello nastavte požadované toocollect dat a odesílání nabízených oznámení. 
+## <a id="connecting-app"></a>Připojení aplikace k back-endu Mobile Engagementu
+V tomto kurzu si představíme „základní integraci“, čili minimální sadu požadovanou pro shromažďování dat a odesílání nabízených oznámení. 
 
-Pomocí Xamarin Studio toodemonstrate hello integrace vytvoříme základní aplikaci.
+Pomocí Xamarin Studia si vytvoříme základní aplikaci, na které si tuto integraci předvedeme.
 
 ### <a name="create-a-new-xamarinandroid-project"></a>Vytvoření nového projektu Xamarin.Android
-1. Spusťte **Xamarin Studio** přejděte příliš**soubor** -> **nový** -> **řešení** 
+1. Spusťte **Xamarin Studio** a klikněte na položky **File** (Soubor)  -> **New** (Nové)  -> **Solution** (Řešení). 
    
     ![][1]
-2. Vyberte **aplikace pro Android** zkontrolujte hello vybraný jazyk je **C#** a klikněte na tlačítko **Další**.
+2. Vyberte **Android App** (Aplikace pro Android), zkontrolujte, zda je vybraný jazyk **C#** a klikněte na tlačítko **Next** (Další).
    
     ![][2]
-3. Vyplňte hello **název aplikace** a hello **identifikátor organizace**. Ujistěte se, že toocheckmark **služby Google Play** a pak klikněte na **Další**. 
+3. Vyplňte pole **App Name** (Název aplikace) a **Organization Identifier** (Identifikátor organizace). Zaškrtněte **Google Play Services** (Služby Google Play) a klikněte na tlačítko **Next** (Další). 
    
     ![][3]
-4. Aktualizace hello **název projektu**, **název řešení** a **umístění** dle potřeby **vytvořit**.
+4. Podle potřeby aktualizujte pole **Project Name** (Název projektu), **Solution Name** (Název řešení) a **Location** (Umístění) a klikněte na **Create** (Vytvořit).
    
     ![][4]
 
-Xamarin Studio vytvoří aplikaci hello, do které budeme integrovat Mobile Engagement. 
+Xamarin Studio vytvoří aplikaci, do které budeme integrovat Mobile Engagement. 
 
-### <a name="connect-your-app-toomobile-engagement-backend"></a>Připojit vaše tooMobile Engagement back-end aplikace
-1. Klikněte pravým tlačítkem na hello **balíčky** složku v systému windows hello řešení a vyberte **přidat balíčky...**
+### <a name="connect-your-app-to-mobile-engagement-backend"></a>Připojení aplikace k back-endu Mobile Engagementu
+1. Pravým tlačítkem myši klikněte v oknech řešení na složku **Packages** (Balíčky) a vyberte **Add Packages...** (Přidat balíčky...).
    
     ![][5]
-2. Vyhledejte hello **Microsoft Azure Mobile Engagement Xamarin SDK** a přidejte ji tooyour řešení.  
+2. Vyhledejte **Microsoft Azure Mobile Engagement Xamarin SDK** a přidejte jej do řešení.  
    
     ![][6]
-3. Otevřete **MainActivity.cs** a přidejte hello následující příkazy:
+3. Otevřete soubor **MainActivity.cs** a pomocí příkazů přidejte následující:
    
         using Microsoft.Azure.Engagement;
         using Microsoft.Azure.Engagement.Activity;
-4. V hello `OnCreate` metoda, přidejte následující tooinitialize hello připojení s back-end Mobile Engagementu hello. Ujistěte se, že tooadd vaše **ConnectionString**. 
+4. V metodě `OnCreate` přidejte následující a inicializujte připojení s back-endem Mobile Engagementu. Nezapomeňte přidat řetězec **ConnectionString**. 
    
         EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
         engagementConfiguration.ConnectionString = "YourConnectionStringFromAzurePortal";
         EngagementAgent.Init(engagementConfiguration);
 
 ### <a name="add-permissions-and-a-service-declaration"></a>Přidání oprávnění a deklarace služby
-1. Otevřete hello **Manifest.xml** soubor ve složce vlastnosti hello. Vyberte kartu zdroje, aby bylo přímo aktualizovat zdroj dat XML hello.
-2. Přidat tyto toohello oprávnění souboru Manifest.xml (který najdete v části hello **vlastnosti** složky) vašeho projektu těsně před nebo po hello `<application>` značky:
+1. Ve složce Properties (Vlastnosti) otevřete soubor **Manifest.xml**. Vyberte kartu Source (Zdroj), na které můžete přímo aktualizovat zdroj dat XML.
+2. Přidejte oprávnění do souboru Manifest.xml (který najdete ve složce **Properties** (Vlastnosti)) vašeho projektu těsně před značku `<application>` nebo za ni.
    
         <uses-permission android:name="android.permission.INTERNET"/>
         <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -90,17 +90,17 @@ Xamarin Studio vytvoří aplikaci hello, do které budeme integrovat Mobile Enga
         <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
         <uses-permission android:name="android.permission.VIBRATE" />
         <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"/>
-3. Přidejte následující hello mezi hello `<application>` a `</application>` značky toodeclare hello agenta služby:
+3. Pokud chcete deklarovat službu agenta, přidejte mezi značky `<application>` a `</application>` následující:
    
         <service
              android:name="com.microsoft.azure.engagement.service.EngagementService"
              android:exported="false"
              android:label="<Your application name>"
              android:process=":Engagement"/>
-4. V kódu hello jste vložili, nahraďte `"<Your application name>"` v popisku hello. Zobrazí se v hello **nastavení** nabídky, kde uživatelé vidí služby spuštěné na zařízení hello. Do tohoto popisku můžete přidat hello slovo "Service" třeba.
+4. U kódu, který jste vložili, nahraďte `"<Your application name>"` v atributu label. Tento text se bude zobrazovat v nabídce **Settings** (Nastavení), kde uživatelé vidí, jaké služby mají na zařízení zrovna spuštěné. Do tohoto popisku můžete například přidat slovo „Service“.
 
-### <a name="send-a-screen-toomobile-engagement"></a>Odeslání obrazovky tooMobile zapojení
-V pořadí toostart odesílat data a zajistit, že hello uživatelé jsou aktivní musíte odeslat alespoň jednu obrazovku toohello Mobile Engagement back-end. To chcete provést – Ujistěte se, že hello `MainActivity` dědí z `EngagementActivity` místo `Activity`.
+### <a name="send-a-screen-to-mobile-engagement"></a>Odeslání obrazovky do Mobile Engagementu
+Pokud chcete začít odesílat data a zajistit, že uživatelé jsou aktivní, musíte odeslat alespoň jednu obrazovku na back-end Mobile Engagementu. Pokud to chcete provést, zajistěte, aby se metoda `MainActivity` převzala z `EngagementActivity` namísto `Activity`.
 
     public class MainActivity : EngagementActivity
 
@@ -122,8 +122,8 @@ Pokud `EngagementActivity` neumožňuje převzetí, musíte do `OnResume` a `OnP
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
 ## <a id="integrate-push"></a>Povolení nabízených oznámení a zasílání zpráv v aplikaci
-Mobile Engagement vám umožní toointeract s OSLOVIT uživatele a komunikovat s nabízená oznámení a zasílání zpráv v kontextu hello kampaní v aplikaci. Tento modul je hello portálu Mobile Engagement nazývá REACH.
-Následující části Hello nastaví tooreceive vaše aplikace je.
+Mobile Engagement vám umožňuje v rámci kampaní oslovit uživatele a komunikovat s nimi prostřednictvím nabízených oznámení a zpráv v aplikacích. Tento modul se na portálu Mobile Engagement nazývá REACH.
+V následujících sekcích nastavíte aplikaci, aby tato nabízená oznámení a zprávy přijímala.
 
 [!INCLUDE [Enable Google Cloud Messaging](../../includes/mobile-engagement-enable-google-cloud-messaging.md)]
 

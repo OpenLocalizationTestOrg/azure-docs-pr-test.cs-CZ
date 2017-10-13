@@ -12,31 +12,31 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/04/2017
 ms.author: joroja
-ms.openlocfilehash: f01f0d1d12464e38f892f1fdd5c7408a3b4cd1aa
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 52180b760046d273c5a75720df0a73532d0343ad
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="accessing-usage-reports-in-azure-ad-b2c-via-hello-reporting-api"></a>Přístup k použití sestav v Azure AD B2C prostřednictvím hello reporting rozhraní API
+# <a name="accessing-usage-reports-in-azure-ad-b2c-via-the-reporting-api"></a>Přístup k použití sestav v Azure AD B2C prostřednictvím rozhraní API pro generování sestav
 
-Azure Active Directory B2C (Azure AD B2C) zajišťuje ověřování na základě přihlášení uživatele a ověřování Azure Multi-Factor Authentication. Ověřování se poskytuje koncovým uživatelům vaší aplikace rodiny napříč poskytovatelů identit. Když víte, hello počet uživatelů, které jsou zaregistrované v klientovi hello, zprostředkovatelé hello používají tooregister a hello počet ověřování podle typu, je zodpovědět otázky jako:
-* Kolik uživatelů z každého typu zprostředkovatele identity (například účet Microsoft nebo LinkedIn) registrovali v hello posledních 10 dnů?
-* Kolik ověřování pomocí služby Multi-Factor Authentication byly úspěšně dokončeny v hello minulý měsíc?
+Azure Active Directory B2C (Azure AD B2C) zajišťuje ověřování na základě přihlášení uživatele a ověřování Azure Multi-Factor Authentication. Ověřování se poskytuje koncovým uživatelům vaší aplikace rodiny napříč poskytovatelů identit. Když víte, počet uživatelů, registrované v klientovi, zprostředkovatele, který se používá k registraci a počet ověřování podle typu, je zodpovědět otázky jako:
+* Kolik uživatelů z každého typu zprostředkovatele identity (například účet Microsoft nebo LinkedIn) registrovali v posledních 10 dnů?
+* Kolik ověřování pomocí služby Multi-Factor Authentication byly úspěšně dokončeny za minulý měsíc?
 * Kolik ověřování přihlášení v základě byly dokončeny tohoto měsíce? Za den? Na aplikaci?
-* Jak můžete odhadnout, že hello očekává měsíční náklady na Moje aktivity klienta Azure AD B2C?
+* Jak můžete odhadnout očekávané měsíční náklady na Moje aktivity klienta Azure AD B2C?
 
-Tento článek se zaměřuje na sestavy svázané toobilling aktivity, která je založena na hello počet uživatelů, fakturovatelný sign v based ověřování a ověřování službou Multi-Factor Authentication.
+Tento článek se zaměřuje na sestavy, které jsou svázané s fakturační aktivity, která je založena na počtu uživatelů, fakturovatelný sign v based ověřování a ověřování službou Multi-Factor Authentication.
 
 
 ## <a name="prerequisites"></a>Požadavky
-Než začnete, musíte toocomplete hello kroky v [tooaccess požadavky hello vytvářením sestav Azure AD rozhraní API](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/). Vytvořit aplikaci, získat tajný klíč a udělte ho přístup rights tooyour Azure AD B2C klienta sestav. *Bash skriptu* a *skript v jazyce Python* příklady jsou také uvedeny zde. 
+Než začnete, musíte dokončit kroky v [požadavky pro přístup k rozhraní API pro vytváření sestav Azure AD](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/). Vytvořit aplikaci, získat tajný klíč a jí udělit přístup práva k sestavy klienta Azure AD B2C. *Bash skriptu* a *skript v jazyce Python* příklady jsou také uvedeny zde. 
 
 ## <a name="powershell-script"></a>Skript PowerShellu
-Tento skript ukazuje vytvoření hello čtyři sestavy využití pomocí hello `TimeStamp` parametr a hello `ApplicationId` filtru.
+Tento skript ukazuje vytvoření čtyři sestavy využití pomocí `TimeStamp` parametr a `ApplicationId` filtru.
 
 ```powershell
-# This script will require hello Web Application and permissions setup in Azure Active Directory
+# This script will require the Web Application and permissions setup in Azure Active Directory
 
 # Constants
 $ClientID      = "your-client-application-id-here"  
@@ -49,44 +49,44 @@ $oauth         = Invoke-RestMethod -Method Post -Uri $loginURL/$tenantdomain/oau
 if ($oauth.access_token -ne $null) {
     $headerParams  = @{'Authorization'="$($oauth.token_type) $($oauth.access_token)"}
 
-    Write-host Data from hello tenantUserCount report
+    Write-host Data from the tenantUserCount report
     Write-host ====================================================
-     # Returns a JSON document for hello report
+     # Returns a JSON document for the report
     $myReport = (Invoke-WebRequest -Headers $headerParams -Uri "https://graph.windows.net/$tenantdomain/reports/tenantUserCount?api-version=beta")
     Write-host $myReport.Content
 
-    Write-host Data from hello tenantUserCount report with datetime filter
+    Write-host Data from the tenantUserCount report with datetime filter
     Write-host ====================================================
     $myReport = (Invoke-WebRequest -Headers $headerParams -Uri "https://graph.windows.net/$tenantdomain/reports/tenantUserCount?%24filter=TimeStamp+gt+2016-10-15&api-version=beta")
     Write-host $myReport.Content
 
-    Write-host Data from hello b2cAuthenticationCountSummary report
+    Write-host Data from the b2cAuthenticationCountSummary report
     Write-host ====================================================
     $myReport = (Invoke-WebRequest -Headers $headerParams -Uri "https://graph.windows.net/$tenantdomain/reports/b2cAuthenticationCountSummary?api-version=beta")
     Write-host $myReport.Content
 
-    Write-host Data from hello b2cAuthenticationCount report with datetime filter
+    Write-host Data from the b2cAuthenticationCount report with datetime filter
     Write-host ====================================================
     $myReport = (Invoke-WebRequest -Headers $headerParams -Uri "https://graph.windows.net/$tenantdomain/reports/b2cAuthenticationCount?%24filter=TimeStamp+gt+2016-09-20+and+TimeStamp+lt+2016-10-03&api-version=beta")
     Write-host $myReport.Content
 
-    Write-host Data from hello b2cAuthenticationCount report with ApplicationId filter
+    Write-host Data from the b2cAuthenticationCount report with ApplicationId filter
     Write-host ====================================================
-    # Returns a JSON document for hello " " report
+    # Returns a JSON document for the " " report
         $myReport = (Invoke-WebRequest -Headers $headerParams -Uri "https://graph.windows.net/$tenantdomain/reports/b2cAuthenticationCount?%24filter=ApplicationId+eq+ada78934-a6da-4e69-b816-10de0d79db1d&api-version=beta")
     Write-host $myReport.Content
 
-    Write-host Data from hello b2cMfaRequestCountSummary
+    Write-host Data from the b2cMfaRequestCountSummary
     Write-host ====================================================
     $myReport = (Invoke-WebRequest -Headers $headerParams -Uri "https://graph.windows.net/$tenantdomain/reports/b2cMfaRequestCountSummary?api-version=beta")
     Write-host $myReport.Content
 
-    Write-host Data from hello b2cMfaRequestCount report with datetime filter
+    Write-host Data from the b2cMfaRequestCount report with datetime filter
     Write-host ====================================================
     $myReport = (Invoke-WebRequest -Headers $headerParams -Uri "https://graph.windows.net/$tenantdomain/reports/b2cMfaRequestCount?%24filter=TimeStamp+gt+2016-09-10+and+TimeStamp+lt+2016-10-04&api-version=beta")
     Write-host $myReport.Content
 
-    Write-host Data from hello b2cMfaRequestCount report with ApplicationId filter
+    Write-host Data from the b2cMfaRequestCount report with ApplicationId filter
     Write-host ====================================================
     $myReport = (Invoke-WebRequest -Headers $headerParams -Uri "https://graph.windows.net/$tenantdomain/reports/b2cMfaRequestCountSummary?%24filter=ApplicationId+eq+ada78934-a6da-4e69-b816-10de0d79db1d&api-version=beta")
      Write-host $myReport.Content
@@ -98,39 +98,39 @@ if ($oauth.access_token -ne $null) {
 
 
 ## <a name="usage-report-definitions"></a>Definice sestavy využití
-* **tenantUserCount**: hello počet uživatelů v klientovi hello podle typu zprostředkovatele identity, za den v hello posledních 30 dnů. (Volitelně `TimeStamp` filtr poskytuje počty uživatelů ze zadané datum toohello aktuální datum). Sestava Hello obsahuje:
-  * **TotalUserCount**: hello počet všechny uživatelské objekty.
-  * **OtherUserCount**: hello počet uživatelů Azure Active Directory (nikoli uživatelům Azure AD B2C).
-  * **LocalUserCount**: hello počet uživatelské účty Azure AD B2C vytvořené pomocí přihlašovacích údajů místního toohello Azure AD B2C klienta.
+* **tenantUserCount**: počet uživatelů v klientovi typem zprostředkovatele identity, za den za posledních 30 dní. (Volitelně `TimeStamp` filtr poskytuje počty uživatelů ze zadaného data na aktuální datum). Sestava obsahuje:
+  * **TotalUserCount**: počet všechny uživatelské objekty.
+  * **OtherUserCount**: počet uživatelů Azure Active Directory (nikoli uživatelům Azure AD B2C).
+  * **LocalUserCount**: počet uživatelských účtů Azure AD B2C vytvořit s přihlašovacími údaji místního klienta Azure AD B2C.
 
-* **AlternateIdUserCount**: hello počet uživatelů Azure AD B2C registrovaných zprostředkovatelům externí identity (například Facebook, účet Microsoft nebo jiného klienta Azure Active Directory, nazývaná také jen tooas `OrgId`).
+* **AlternateIdUserCount**: počet uživatelů, Azure AD B2C zaregistrována zprostředkovatelů externí identity (například Facebook, účet Microsoft nebo jiného klienta Azure Active Directory, také označuje jako `OrgId`).
 
-* **b2cAuthenticationCountSummary**: Souhrn hello denní počet fakturovatelný ověření přes hello posledních 30 dní, podle dne a typu toku ověřování.
+* **b2cAuthenticationCountSummary**: Souhrn denní počet fakturovatelný ověření za posledních 30 dní, podle dne a typu toku ověřování.
 
-* **b2cAuthenticationCount**: hello počet ověření v časovém období. Výchozí hodnota Hello je hello posledních 30 dnů.  (Volitelné: hello počáteční a koncové `TimeStamp` definovat parametry na určité časové období.) zahrnuje výstup hello `StartTimeStamp` (nejdřívější datum aktivity pro tohoto klienta) a `EndTimeStamp` (nejnovější aktualizace).
+* **b2cAuthenticationCount**: počet ověření v časovém období. Výchozí hodnota je za posledních 30 dní.  (Volitelné: na začátek a konec `TimeStamp` parametry definovat za určité časové období.) Výstup obsahuje `StartTimeStamp` (nejdřívější datum aktivity pro tohoto klienta) a `EndTimeStamp` (nejnovější aktualizace).
 
-* **b2cMfaRequestCountSummary**: Souhrn hello denní počet ověřování službou Multi-Factor Authentication podle dne a typu (SMS nebo hlasové).
+* **b2cMfaRequestCountSummary**: Souhrn denní počet ověřování službou Multi-Factor Authentication podle dne a typu (SMS nebo hlasové).
 
 
 ## <a name="limitations"></a>Omezení
-Uživatel počet data se aktualizují každých 24 hodin too48. Ověření se aktualizují několikrát za den. Při použití hello `ApplicationId` filtr, může být odpověď prázdné sestavy kvůli tooone z následujících podmínek:
-  * ID aplikace Hello neexistuje v klientovi hello. Zkontrolujte, zda že je správný.
-  * ID aplikace Hello existuje, ale v hello období vytváření sestav nebyla nalezena žádná data. Zkontrolujte parametry data a času.
+Uživatel počet data se aktualizují každých 24 až 48 hodin. Ověření se aktualizují několikrát za den. Při použití `ApplicationId` odpověď prázdná sestavy filtr, může být kvůli jednomu z následujících podmínek:
+  * ID aplikace v klientovi neexistuje. Zkontrolujte, zda že je správný.
+  * ID aplikace existuje, ale v období vytváření sestav nebyla nalezena žádná data. Zkontrolujte parametry data a času.
 
 
 ## <a name="next-steps"></a>Další kroky
 ### <a name="monthly-bill-estimates-for-azure-ad"></a>Odhadne měsíčních nákladů pro Azure AD
-V kombinaci s [hello nejaktuálnější Azure AD B2C ceny k dispozici](https://azure.microsoft.com/pricing/details/active-directory-b2c/), můžete odhadnout denní, týdenní a měsíční využití platformy Azure.  Odhad je obzvláště užitečná při plánování změny v chování klienta, který může mít vliv na celkové náklady. Můžete zkontrolovat skutečné náklady v vaše [přidružené předplatné Azure](active-directory-b2c-how-to-enable-billing.md).
+V kombinaci s [nejaktuálnější Azure AD B2C cenách dostupné](https://azure.microsoft.com/pricing/details/active-directory-b2c/), můžete odhadnout denní, týdenní a měsíční využití platformy Azure.  Odhad je obzvláště užitečná při plánování změny v chování klienta, který může mít vliv na celkové náklady. Můžete zkontrolovat skutečné náklady v vaše [přidružené předplatné Azure](active-directory-b2c-how-to-enable-billing.md).
 
 ### <a name="options-for-other-output-formats"></a>Možnosti pro ostatní formáty výstupu
-Hello následující kód ukazuje příklady odesílání výstupu tooJSON, seznam hodnot název a XML:
+Následující kód ukazuje příklady odeslání výstupu do formátu JSON, seznam hodnot název a XML:
 ```powershell
-# toooutput tooJSON use following line in hello PowerShell sample
+# to output to JSON use following line in the PowerShell sample
 $myReport.Content | Out-File -FilePath b2cUserJourneySummaryEvents.json -Force
 
-# toooutput hello content tooa name value list
+# to output the content to a name value list
 ($myReport.Content | ConvertFrom-Json).value | Out-File -FilePath name-your-file.txt -Force
 
-# toooutput hello content in XML use hello following line
+# to output the content in XML use the following line
 (($myReport.Content | ConvertFrom-Json).value | ConvertTo-Xml).InnerXml | Out-File -FilePath name-your-file.xml -Force
 ```

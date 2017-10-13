@@ -1,5 +1,5 @@
 ---
-title: "aaaManage virtuálních počítačů v sadě škálování virtuálního počítače | Microsoft Docs"
+title: "Spravovat virtuální počítače ve Škálovací sadě virtuálních počítačů | Microsoft Docs"
 description: "Správa virtuálních počítačů v škálování virtuálních počítačů, nastavit pomocí prostředí Azure PowerShell."
 services: virtual-machine-scale-sets
 documentationcenter: 
@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: adegeo
-ms.openlocfilehash: 7d848729c0fc708bd596b61feb528cf4bf4bafd4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d09a020b903e5f43afe03b86c675bcc1eb536cbc
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="manage-virtual-machines-in-a-virtual-machine-scale-set"></a>Spravovat virtuální počítače ve škálovací sadě virtuálních počítačů
-Použití hello úloh v tomto článku toomanage virtuální počítače sady škálování virtuálního počítače.
+Úkoly v tomto článku použijte ke správě virtuálních počítačů sady škálování virtuálního počítače.
 
-Většina hello úlohy, které zahrnují spravuje virtuální počítač ve škálovací sadě vyžadovat, že znáte ID instance hello hello počítače, které chcete toomanage. Můžete použít [Průzkumníka prostředků Azure](https://resources.azure.com) toofind hello ID instance virtuálního počítače ve škálovací sadě. Je také použít Průzkumníka prostředků tooverify hello stav hello úlohy, které dokončíte.
+Většinu úloh, které zahrnují spravuje virtuální počítač ve škálovací sadě vyžadovat, že znáte ID instance na počítač, který chcete spravovat. Můžete použít [Průzkumníka prostředků Azure](https://resources.azure.com) k vyhledání ID instance virtuálního počítače ve škálovací sadě. Pomocí Průzkumníka prostředků také ověřte stav úlohy, které dokončíte.
 
-V tématu [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) informace o instalaci hello nejnovější verzi prostředí Azure PowerShell, výběr předplatného a přihlášení tooyour účtu.
+Projděte si článek [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview), kde najdete informace o instalaci nejnovější verze prostředí Azure PowerShell, výběru předplatného a přihlášení k účtu.
 
 ## <a name="display-information-about-a-scale-set"></a>Zobrazit informace o sadě škálování
-Obecné informace o sadě škálování, který je taky zobrazení instance hello odkazované tooas můžete získat. Nebo můžete získat podrobnější informace, například informace o prostředcích hello v sadě škálování hello.
+Můžete získat obecné informace o sadě škálování, která je také označována jako zobrazení instance. Nebo můžete získat podrobnější informace, například informace o prostředcích v sadě škálování.
 
-Nahraďte hodnoty s názvem hello nebo vaší skupině prostředků a škálování nastavení a potom spusťte příkaz hello v uvozovkách hello:
+Nahraďte hodnoty v uvozovkách název nebo vaší skupině prostředků a škálování nastavení a potom spusťte příkaz:
 
     Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name"
 
@@ -91,7 +91,7 @@ Vrátí přibližně takto:
         Settings                                : {"xmlCfg":"...","storageAccount":"astore"}
     ProvisioningState                           : Succeeded
 
-Nahraďte hello hodnoty s hello název skupiny a škálování sady prostředků v uvozovkách. Nahraďte  *#*  s identifikátorem instance hello hello virtuálního počítače o chcete tooget informace a potom ho spusťte:
+Nahraďte název vaší skupiny a škálování sady prostředků hodnoty v uvozovkách. Nahraďte  *#*  s identifikátorem instance virtuálního počítače, který chcete získat informace a potom ho spusťte:
 
     Get-AzureRmVmssVM -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
 
@@ -145,11 +145,11 @@ Vrátí něco podobného jako v tomto příkladu:
       ProvisioningState           : Succeeded
 
 ## <a name="start-a-virtual-machine-in-a-scale-set"></a>Spuštění virtuálního počítače ve škálovací sadě
-Nahraďte hello hodnoty s hello název skupiny a škálování sady prostředků v uvozovkách. Nahraďte  *#*  s identifikátorem hello hello virtuálního počítače má toostart a potom ho spusťte:
+Nahraďte název vaší skupiny a škálování sady prostředků hodnoty v uvozovkách. Nahraďte  *#*  s identifikátorem virtuálního počítače, který chcete spustit a potom ho spusťte:
 
     Start-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
 
-V Průzkumníku prostředků, vidíme, že stav hello hello instance je **systémem**:
+V Průzkumníku prostředků, vidíme, že stav instance je **systémem**:
 
     "statuses": [
       {
@@ -165,14 +165,14 @@ V Průzkumníku prostředků, vidíme, že stav hello hello instance je **systé
       }
     ]
 
-Všechny virtuální počítače hello můžete spustit v sad není pomocí parametru - InstanceId hello hello škálování.
+Všechny virtuální počítače můžete spustit v sad není pomocí parametru - InstanceId škálování.
 
 ## <a name="stop-a-virtual-machine-in-a-scale-set"></a>Zastavit virtuální počítač ve škálovací sadě
-Nahraďte hello hodnoty s hello název skupiny a škálování sady prostředků v uvozovkách. Nahraďte  *#*  s identifikátorem hello hello virtuálního počítače má toostop a potom ho spusťte:
+Nahraďte název vaší skupiny a škálování sady prostředků hodnoty v uvozovkách. Nahraďte  *#*  s identifikátorem virtuálního počítače, který chcete zastavit a pak ho spusťte:
 
     Stop-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
 
-V Průzkumníku prostředků, vidíme, že stav hello hello instance je **navrácena**:
+V Průzkumníku prostředků, vidíme, že stav instance je **navrácena**:
 
     "statuses": [
       {
@@ -188,28 +188,28 @@ V Průzkumníku prostředků, vidíme, že stav hello hello instance je **navrá
       }
     ]
 
-toostop virtuálního počítače není navrácení ji, použijte parametr - StayProvisioned hello. Můžete zastavit všechny virtuální počítače hello v hello nastavit není pomocí parametru - InstanceId hello.
+Pokud chcete zastavit virtuální počítač a není zrušit přidělení, použijte parametr - StayProvisioned. Není pomocí parametru - InstanceId můžete zastavit všechny virtuální počítače v sadě.
 
 ## <a name="restart-a-virtual-machine-in-a-scale-set"></a>Restartování virtuálního počítače ve škálovací sadě
-Nahraďte hello hodnoty s hello název vaší sady prostředků skupiny a hello škálování v uvozovkách. Nahraďte  *#*  s identifikátorem hello hello virtuálního počítače má toorestart a potom ho spusťte:
+Nahraďte název vaší skupiny prostředků a byly sadou škálování hodnoty v uvozovkách. Nahraďte  *#*  identifikátorem virtuální počítač, který chcete restartovat a potom ho spusťte:
 
     Restart-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
 
-Všechny virtuální počítače hello můžete restartovat v hello nastavit není pomocí parametru - InstanceId hello.
+Není pomocí parametru - InstanceId se dá restartovat všechny virtuální počítače v sadě.
 
 ## <a name="remove-a-virtual-machine-from-a-scale-set"></a>Odebrání ze sady škálování virtuálního počítače
-Nahraďte hello hodnoty s hello název vaší sady prostředků skupiny a hello škálování v uvozovkách. Nahraďte  *#*  s identifikátorem hello hello virtuálního počítače má tooremove a potom ho spusťte:  
+Nahraďte název vaší skupiny prostředků a byly sadou škálování hodnoty v uvozovkách. Nahraďte  *#*  identifikátorem virtuální počítač, který chcete odebrat a potom ho spusťte:  
 
     Remove-AzureRmVmss -ResourceGroupName "resource group name" –VMScaleSetName "scale set name" -InstanceId #
 
-Hello škálovací sadu virtuálních počítačů najednou můžete odebrat není pomocí parametru - InstanceId hello.
+Škálovací sadu virtuálních počítačů najednou můžete odebrat není pomocí parametru - ID instance.
 
-## <a name="change-hello-capacity-of-a-scale-set"></a>Změna hello kapacity škálovací sadě
-Můžete přidat nebo odebrat virtuální počítače tak, že změníte hello kapacita sady hello. Získáte škálovací sadu hello, který chcete toochange, sada hello kapacity toowhat chcete ho toobe a potom aktualizovat sadu škálování hello s hello nové kapacity. V těchto příkazech nahraďte hello hodnoty s hello název vaší sady prostředků skupiny a hello škálování v uvozovkách.
+## <a name="change-the-capacity-of-a-scale-set"></a>Změna kapacity škálovací sadě
+Můžete přidat nebo odebrat virtuální počítače tak, že změníte kapacita sady. Získáte škálovací sadu, který chcete změnit, nastavte kapacitu na co se má být a aktualizujte měřítka nastavit nové kapacity. V těchto příkazech nahraďte hodnoty v uvozovkách název vaší skupiny prostředků a byly sadou škálování.
 
     $vmss = Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name"
     $vmss.sku.capacity = 5
     Update-AzureRmVmss -ResourceGroupName "resource group name" -Name "scale set name" -VirtualMachineScaleSet $vmss 
 
-Pokud odebíráte z hello škálovací sadu virtuálních počítačů, se nejprve odebrat hello virtuální počítače s nejvyšší ID hello.
+Pokud odebíráte ze sady škálování virtuálních počítačů, virtuálních počítačů s nejvyšší ID nejdřív odstranit.
 

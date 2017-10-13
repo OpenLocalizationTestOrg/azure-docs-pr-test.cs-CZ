@@ -1,6 +1,6 @@
 ---
-title: "aaaPrepare počítače tooset až zotavení po havárii mezi oblastmi Azure po migraci tooAzure pomocí Site Recovery | Microsoft Docs"
-description: "Tento článek popisuje, jak tooprepare počítačů tooset až zotavení po havárii mezi oblastmi Azure po migraci tooAzure pomocí Azure Site Recovery."
+title: "Příprava počítačů k nastavení zotavení po havárii mezi oblastmi Azure po migraci na Azure pomocí Site Recovery | Microsoft Docs"
+description: "Tento článek popisuje postup přípravy počítače, které chcete nastavit zotavení po havárii mezi oblastmi Azure po migraci na Azure pomocí Azure Site Recovery."
 services: site-recovery
 documentationcenter: 
 author: ponatara
@@ -14,92 +14,92 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: ponatara
-ms.openlocfilehash: b6274e3df210c1d8a7b8289cc85868ee6414e523
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2aee0fb8d1ba1ff1584bee91b4d1cc34b654d97f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="replicate-azure-vms-tooanother-region-after-migration-tooazure-by-using-azure-site-recovery"></a>Replikovat virtuální počítače Azure tooanother oblast po migraci tooAzure pomocí Azure Site Recovery
+# <a name="replicate-azure-vms-to-another-region-after-migration-to-azure-by-using-azure-site-recovery"></a>Replikace virtuálních počítačů Azure do jiné oblasti po migraci na Azure pomocí Azure Site Recovery
 
 >[!NOTE]
 > Azure Site Recovery replikaci pro virtuální počítače Azure (VM) je aktuálně ve verzi preview.
 
 ## <a name="overview"></a>Přehled
 
-Tento článek vám pomůže připravit virtuální počítače Azure pro replikaci mezi dvěma oblastmi Azure po migraci těchto počítačů z prostředí tooAzure místní pomocí Azure Site Recovery.
+Tento článek vám pomůže připravit virtuální počítače Azure pro replikaci mezi dvěma oblastmi Azure po tyto počítače migraci z místního prostředí do Azure pomocí Azure Site Recovery.
 
 ## <a name="disaster-recovery-and-compliance"></a>Zotavení po havárii a dodržování předpisů
-V současné době jsou více podniky přesunutí jejich tooAzure úlohy. S podniky přesunutí důležité místní produkční tooAzure úlohy, nastavení služby zotavení po havárii pro tyto úlohy je povinné pro dodržování předpisů a toosafeguard proti tak možnost narušení v oblasti Azure.
+V současné době jsou více podniky přesunutí zatížení do Azure. S podniky přesunutí důležité místní úlohy v produkčním prostředí do Azure, nastavení zotavení po havárii pro tyto úlohy je povinné pro dodržování předpisů a zajistí ochranu proti tak možnost narušení v oblasti Azure.
 
 ## <a name="steps-for-preparing-migrated-machines-for-replication"></a>Kroky pro přípravu migrované počítače pro replikaci
-tooprepare migrovali počítače pro nastavení replikace tooanother oblast Azure:
+Příprava migrovat počítačů pro nastavení replikace jiné oblasti Azure:
 
 1. Dokončení migrace.
-2. Nainstalujte hello agent Azure v případě potřeby.
-3. Odeberte služby Mobility hello.  
-4. Restartujte hello virtuálních počítačů.
+2. V případě potřeby nainstalujte agenta Azure.
+3. Odeberte službu Mobility.  
+4. Restartujte virtuální počítač.
 
-Tyto kroky jsou popsané v podrobněji hello následující části.
+Tyto kroky jsou podrobně popsány v další v následujících částech.
 
-### <a name="step-1-migrate-workloads-running-on-hyper-v-vms-vmware-vms-and-physical-servers-toorun-on-azure-vms"></a>Krok 1: Migrace úloh běžících na virtuálních počítačů Hyper-V, virtuálních počítačů VMware a fyzické servery toorun na virtuálních počítačích Azure
+### <a name="step-1-migrate-workloads-running-on-hyper-v-vms-vmware-vms-and-physical-servers-to-run-on-azure-vms"></a>Krok 1: Migrace úloh běžících na virtuálních počítačů Hyper-V, virtuálních počítačů VMware a fyzické servery spouštět na virtuálních počítačích Azure
 
-tooset až replikace a migrace vaší místní technologie Hyper-V, VMware a fyzické úlohy tooAzure, postupujte podle hello kroky v hello [virtuální počítače Azure IaaS migraci mezi oblastmi Azure s Azure Site Recovery](site-recovery-migrate-to-azure.md) článku. 
+Nastavení replikace a migrovat místní technologie Hyper-V, VMware a fyzické úloh do Azure, postupujte podle kroků v [virtuální počítače Azure IaaS migraci mezi oblastmi Azure s Azure Site Recovery](site-recovery-migrate-to-azure.md) článku. 
 
-Po migraci není nutné toocommit nebo odstranit převzetí služeb při selhání. Místo toho vyberte hello **dokončení migrace** možnost pro každý počítač má toomigrate:
-1. V **replikované položky**, klikněte pravým tlačítkem na hello virtuálních počítačů a klikněte na **dokončení migrace**. Klikněte na tlačítko **OK** toocomplete hello krok. Můžete sledovat průběh ve vlastnostech virtuálního počítače hello sledováním hello úlohy dokončení migrace v **úlohy Site Recovery**.
-2. Hello **dokončení migrace** akci dokončení procesu migrace hello, odebere replikaci pro počítač hello a zastaví Site Recovery fakturace pro počítač hello.
+Po migraci nemusíte potvrďte, nebo odstraňte převzetí služeb při selhání. Místo toho vyberte **dokončení migrace** možnost pro každý počítač, který chcete migrovat:
+1. V části **Replikované položky** klikněte pravým tlačítkem na virtuální počítač a klikněte na **Dokončit migraci**. Klikněte na tlačítko **OK** k dokončení kroku. Můžete sledovat průběh ve vlastnostech virtuálního počítače pomocí monitorování úlohy dokončení migrace v **úlohy Site Recovery**.
+2. **Dokončení migrace** akci dokončí proces migrace, odebere replikaci pro počítač a zastaví fakturace Site Recovery pro tento počítač.
 
    ![completemigration](./media/site-recovery-hyper-v-site-to-azure/migrate.png)
 
-### <a name="step-2-install-hello-azure-vm-agent-on-hello-virtual-machine"></a>Krok 2: Nainstalujte agenta virtuálního počítače Azure hello hello virtuálního počítače
-Hello Azure [agenta virtuálního počítače](../virtual-machines/windows/classic/agents-and-extensions.md#azure-vm-agents-for-windows-and-linux) musí být nainstalován na hello virtuálního počítače pro toowork rozšíření hello Site Recovery a toohelp chránit hello virtuálních počítačů.
+### <a name="step-2-install-the-azure-vm-agent-on-the-virtual-machine"></a>Krok 2: Instalace agenta virtuálního počítače Azure na virtuálním počítači
+Azure [agenta virtuálního počítače](../virtual-machines/windows/classic/agents-and-extensions.md#azure-vm-agents-for-windows-and-linux) musí být nainstalován na virtuálním počítači pro obnovení lokality rozšíření pro práci a k ochraně virtuálního počítače.
 
 >[!IMPORTANT]
->Počínaje verzí 9.7.0.0, na virtuální počítače s Windows, instalační program služby Mobility hello nainstaluje hello nejnovější dostupné agenta virtuálního počítače Azure. Na migraci hello virtuální počítač splňuje instalace agenta požadované pro používání všech rozšíření virtuálního počítače, včetně přípony hello Site Recovery. Hello virtuálního počítače Azure agenta potřebám toobe ručně nainstalovat jenom v případě, že hello služby Mobility na hello migrovaný počítač je verze 9,6 nebo starším.
+>Počínaje verzí 9.7.0.0, na virtuální počítače s Windows, instalační program služby Mobility nainstaluje nejnovější dostupný agent virtuálního počítače Azure. Virtuální počítač na migraci, splňuje instalace agenta požadované pro používání všech rozšíření virtuálního počítače, včetně přípony Site Recovery. Agent virtuálního počítače Azure je nutné ručně nainstalovat jenom v případě, že je služba Mobility na migrované počítači nainstalovaná verze 9,6 nebo dřívější.
 
-Hello následující tabulka obsahuje další informace o instalaci agenta hello virtuálního počítače a ověřuje, zda byl nainstalován:
+Následující tabulka obsahuje další informace o instalaci agenta virtuálního počítače a ověřuje, zda byl nainstalován:
 
 | **Operace** | **Windows** | **Linux** |
 | --- | --- | --- |
-| Instalace agenta virtuálního počítače hello |Stáhněte a nainstalujte hello [MSI agenta](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Potřebujete instalaci hello toocomplete oprávnění správce. |Nainstalujte nejnovější hello [agenta systému Linux](../virtual-machines/linux/agent-user-guide.md). Potřebujete instalaci hello toocomplete oprávnění správce. Doporučujeme nainstalovat agenta hello z distribuční úložiště. Jsme *nedoporučujeme* instalaci hello agenta virtuálního počítače s Linuxem přímo z Githubu.  |
-| Ověření instalace agenta virtuálního počítače hello |1. Vyhledejte složku C:\WindowsAzure\Packages toohello hello virtuálního počítače Azure. Měli byste vidět hello přítomný soubor WaAppAgent.exe. <br>2. Klikněte pravým tlačítkem na soubor hello, přejděte příliš**vlastnosti**a potom vyberte hello **podrobnosti** kartě hello **verze produktu** pole by mělo být 2.6.1198.718 nebo vyšší. |Není k dispozici |
+| Instalace agenta virtuálního počítače |Stáhněte si a nainstalujte [MSI agenta](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Budete potřebovat oprávnění správce k dokončení instalace. |Nainstalujte si nejnovější verzi [agenta systému Linux](../virtual-machines/linux/agent-user-guide.md). Budete potřebovat oprávnění správce k dokončení instalace. Doporučujeme nainstalovat agenta z distribuční úložiště. Jsme *nedoporučujeme* instalace agenta virtuálního počítače s Linuxem přímo z Githubu.  |
+| Ověření instalace agenta virtuálního počítače |1. Přejděte do složky C:\WindowsAzure\Packages ve virtuálním počítači Azure. Měli byste vidět přítomný soubor WaAppAgent.exe. <br>2. Pravým tlačítkem myši klikněte na soubor, přejděte na **Vlastnosti** a poté vyberte kartu **Podrobnosti**. **Verze produktu** pole by mělo být 2.6.1198.718 nebo vyšší. |Není k dispozici |
 
 
-### <a name="step-3-remove-hello-mobility-service-from-hello-migrated-virtual-machine"></a>Krok 3: Odeberte hello služby Mobility ze hello migrovaný virtuální počítač
+### <a name="step-3-remove-the-mobility-service-from-the-migrated-virtual-machine"></a>Krok 3: Odebrání služba Mobility migrovaného virtuálního počítače
 
-Pokud jste migrovali místní počítače VMware nebo fyzických serverů v systému Windows nebo Linux, je třeba toomanually odebrat nebo odinstalace hello služby Mobility ze hello migrovaný virtuální počítač.
+Pokud jste migrovali místní počítače VMware nebo fyzických serverů v systému Windows nebo Linux, musíte ručně odebrat nebo odinstalujte službu Mobility z migrovaného virtuálního počítače.
 
 >[!IMPORTANT]
->Tento krok není potřeba tooAzure migrovaných virtuálních počítačů Hyper-V.
+>Tento krok se nevyžaduje pro migraci virtuálních počítačů Hyper-V do Azure.
 
-#### <a name="uninstall-hello-mobility-service-on-a-windows-server-vm"></a>Odinstalujte službu Mobility hello na virtuální počítač Windows serveru
-Použijte jeden z následujících metod toouninstall hello Mobility service na počítači s Windows serverem hello.
+#### <a name="uninstall-the-mobility-service-on-a-windows-server-vm"></a>Odinstalujte službu Mobility na virtuální počítač Windows serveru
+Odinstalujte službu Mobility na počítači s Windows serverem, použijte jednu z následujících metod.
 
-##### <a name="uninstall-by-using-hello-windows-ui"></a>Odinstalovat aplikaci pomocí uživatelského rozhraní Windows hello
-1. V hello ovládacích panelů, vyberte **programy**.
+##### <a name="uninstall-by-using-the-windows-ui"></a>Odinstalovat aplikaci pomocí uživatelského rozhraní systému Windows
+1. V Ovládacích panelech vyberte **programy**.
 2. Vyberte **Microsoft Azure Site Recovery Mobility služby nebo hlavní cílový server**a potom vyberte **odinstalovat**.
 
 ##### <a name="uninstall-at-a-command-prompt"></a>Odinstalujte na příkazovém řádku
 1. Otevřete okno příkazového řádku jako správce.
-2. toouninstall hello služby Mobility, spusťte následující příkaz hello:
+2. Odinstalujte službu Mobility, spusťte následující příkaz:
 
    ```
    MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
    ```
 
-#### <a name="uninstall-hello-mobility-service-on-a-linux-computer"></a>Odinstalujte službu Mobility hello na počítač se systémem Linux
+#### <a name="uninstall-the-mobility-service-on-a-linux-computer"></a>Odinstalujte službu Mobility na počítač se systémem Linux
 1. Na serveru systému Linux, přihlaste se jako **kořenové** uživatele.
-2. V terminálu přejděte příliš/uživatel/místní nebo automatické obnovení systému.
-3. toouninstall hello služby Mobility, spusťte následující příkaz hello:
+2. V terminálu přejděte na /user/local/ASR.
+3. Odinstalujte službu Mobility, spusťte následující příkaz:
 
    ```
    uninstall.sh -Y
    ```
 
-### <a name="step-4-restart-hello-vm"></a>Krok 4: Restartování hello virtuálních počítačů
+### <a name="step-4-restart-the-vm"></a>Krok 4: Restartování virtuálního počítače
 
-Po odinstalování služby Mobility hello nastavit hello restartování virtuálního počítače předtím, než replikace tooanother oblast Azure.
+Po dokončení odinstalace služby Mobility, restartujte virtuální počítač předtím, než nastavení replikace na jiné oblasti Azure.
 
 
 ## <a name="next-steps"></a>Další kroky

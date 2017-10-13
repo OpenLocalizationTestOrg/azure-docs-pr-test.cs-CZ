@@ -1,5 +1,5 @@
 ---
-title: aaaWindows Phone Silverlight SDK Upgrade procedury
+title: Windows Phone Silverlight SDK postupy upgradu
 description: Windows Phone Silverlight SDK postupy upgradu pro Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,51 +14,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: d72e7b8a59ef2c0a95b22efbf1e5257271399ddc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f87f65788075c7f4067e77946e1bcbc8f3709317
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="windows-phone-silverlight-sdk-upgrade-procedures"></a>Windows Phone Silverlight SDK postupy upgradu
-Pokud již máte integrovanou starší verze naše sady SDK do své aplikace, musíte tooconsider hello následující body při upgradu hello SDK.
+Pokud již máte integrovanou starší verze naše sady SDK do své aplikace, je nutné zvážit následující body při upgradu sady SDK.
 
-Toofollow může mít několik postupů, pokud provedena několik verzí hello SDK. Například pokud migrujete z 0.10.1 too0.11.0 máte toofirst postupujte podle hello "z 0.9.0 too0.10.1" postup pak hello "z 0.10.1 too0.11.0" postup.
+Možná budete muset několik postupy použijte, pokud provedena několik verzí sady SDK. Například pokud migrujete z 0.10.1 0.11.0 budete muset nejdřív postupujte podle pokynů "od 0.9.0 k 0.10.1" pak postupu "od 0.10.1 k 0.11.0".
 
-## <a name="from-200-too330"></a>Z 2.0.0 too3.3.0
+## <a name="from-200-to-330"></a>Z 2.0.0 k 3.3.0
 ### <a name="test-logs"></a>Protokolů testování
-Protokoly konzoly vyprodukované hello SDK teď může být povolena nebo zakázána nebo filtrovat. toocustomize se aktualizovat hello vlastnost `EngagementAgent.Instance.TestLogEnabled` tooone hello hodnota dostupná z hello `EngagementTestLogLevel` výčtu, například:
+Protokoly konzoly vyprodukované sady SDK teď může být povolena nebo zakázána nebo filtrovat. Chcete-li přizpůsobit tím, aktualizujte vlastnost `EngagementAgent.Instance.TestLogEnabled` na jednu z hodnota dostupná z `EngagementTestLogLevel` výčtu pro instanci:
 
             EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
             EngagementAgent.Instance.Init();
 
-## <a name="from-111-too200"></a>Z 1.1.1 too2.0.0
-Hello následující text popisuje, jak toomigrate integraci sady SDK z hello Capptain služby nabízených Capptain SAS do aplikace používá technologii Azure Mobile Engagement. 
+## <a name="from-111-to-200"></a>Z 1.1.1 k 2.0.0
+Následující část popisuje postup migrace integraci sady SDK z Capptain služby, které do aplikace používá technologii Azure Mobile Engagement nabízí Capptain SAS. 
 
 > [!IMPORTANT]
-> Capptain a Mobile Engagement nejsou hello stejné služby a postup hello níže uvedené jenom označuje, jak toomigrate hello klientskou aplikaci. Migrace hello SDK v aplikaci hello není migrace dat ze sady Mobile Engagement pro toohello hello Capptain servery
+> Capptain a Mobile Engagement nejsou stejné služby a postup níže uvedené jenom dozvíte, jak migrovat klientské aplikace. Migrace sady SDK v aplikaci není migrovat data ze serverů Capptain na servery Mobile Engagement
 > 
 > 
 
-Pokud provádíte migraci ze starší verze, prosím nejdřív najdete hello Capptain webu toomigrate too1.1.1 pak použít následující postup hello
+Pokud provádíte migraci ze starší verze, najdete na webu společnosti Capptain nejdřív přenést 1.1.1 pak použije následující postup
 
 ### <a name="nuget-package"></a>Balíček Nuget
 Nahraďte **Capptain.WindowsPhone** podle **MicrosoftAzure.MobileEngagement** balíček Nuget.
 
 ### <a name="applying-mobile-engagement"></a>Použití Mobile Engagement
-Hello SDK používá termín hello `Engagement`. Je třeba tooupdate vašeho projektu toomatch tuto změnu.
+Sada SDK používá termín `Engagement`. Je potřeba aktualizovat projekt tak, aby odpovídaly tuto změnu.
 
-Je nutné toouninstall váš aktuální Capptain balíček nuget. Zvažte, se odeberou všechny změny ve složce Capptain prostředky. Pokud chcete, aby tookeep tyto soubory pak proveďte jejich kopii.
+Je potřeba odinstalovat váš aktuální Capptain balíček nuget. Zvažte, se odeberou všechny změny ve složce Capptain prostředky. Pokud chcete, aby tyto soubory pak proveďte jejich kopii.
 
-Potom nainstalujte balíček nuget Microsoft Azure Engagement nové hello na projektu. Můžete najít přímo na [Nuget](http://www.nuget.org/packages/MicrosoftAzure.MobileEngagement). Tato akce nahradí všechny soubory prostředky používané Engagement a přidá nové tooyour Engagement DLL hello projektu odkazy.
+Potom nainstalujte nový balíček nuget Microsoft Azure Engagement na projektu. Můžete najít přímo na [Nuget](http://www.nuget.org/packages/MicrosoftAzure.MobileEngagement). Tato akce nahradí všechny soubory prostředky používané Engagement a přidá nová knihovna DLL Engagement odkazy projektu.
 
-Tooclean máte odstraněním Capptain DLL odkazy odkazy projektu. Pokud to neuděláte, budou v konfliktu hello verzi Capptain a dojde k chybám.
+Je nutné vyčistit odkazy projektu odstraněním Capptain DLL odkazy. Pokud to neuděláte, budou v konfliktu verze Capptain a dojde k chybám.
 
-Pokud jste upravili Capptain prostředky, zkopírujte původní soubory obsahu a vložit do nové soubory Engagement hello. Upozorňujeme, že soubory xaml a cs obsahují toobe aktualizovat.
+Pokud jste upravili Capptain prostředky, zkopírujte původní soubory obsahu a vložit do nové soubory zapojení. Upozorňujeme, že soubory xaml a cs muset aktualizovat.
 
-Po dokončení těchto kroků stačí tooreplace staré odkazy Capptain podle hello nové Engagement odkazy.
+Po dokončení těchto kroků stačí nahraďte staré odkazy Capptain pomocí nové odkazy zapojení.
 
-1. Všechny obory názvů Capptain mít toobe aktualizovat.
+1. Všechny obory názvů Capptain muset aktualizovat.
    
     Před migrací:
    
@@ -108,18 +108,18 @@ Po dokončení těchto kroků stačí tooreplace staré odkazy Capptain podle he
         xmlns:engagement="clr-namespace:Microsoft.Azure.Engagement;assembly=Microsoft.Azure.Engagement.EngagementAgent.WP"
         ...
         </engagement:EngagementPage>
-4. Pro hello jiné prostředky, jako je Capptain obrázky, Všimněte si, že také byly přejmenovat toouse "Engagement".
+4. Pro jiné prostředky jako Capptain obrázky Upozorňujeme, že se také přejmenovaná používat "Engagement".
 
 ### <a name="application-id--sdk-key"></a>ID aplikace nebo klíč SDK
-Zapojení používá připojovací řetězec. Nemáte toospecify ID aplikací a klíčem SDK s Mobile Engagement, stačí toospecify připojovací řetězec. Můžete ho nastavit tak v souboru EngagementConfiguration.
+Zapojení používá připojovací řetězec. Nemáte a zadejte ID aplikace a klíč SDK s Mobile Engagement, stačí zadat připojovací řetězec. Můžete ho nastavit tak v souboru EngagementConfiguration.
 
-Hello Engagement konfigurace může být nastavena v vaší `Resources\EngagementConfiguration.xml` souboru projektu.
+Konfigurace Engagement může být nastavena v vaší `Resources\EngagementConfiguration.xml` souboru projektu.
 
-Upravte tento soubor toospecify:
+Upravte tento soubor k určení:
 
 * Připojovací řetězec aplikací mezi značky `<connectionString>` a `<\connectionString>`.
 
-Pokud chcete, aby ho za běhu místo toho můžete volat hello následující toospecify metoda před inicializací agenta hello Engagement:
+Pokud chcete zadat za běhu, můžete volat metodu před Engagement inicializaci agenta:
 
         /* Engagement configuration. */
         EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
@@ -128,10 +128,10 @@ Pokud chcete, aby ho za běhu místo toho můžete volat hello následující to
         /* Initialize Engagement angent with above configuration. */
         EngagementAgent.Instance.Init(engagementConfiguration);
 
-Hello připojovací řetězec pro vaši aplikaci se zobrazí v hello portálu Azure Classic.
+Připojovací řetězec pro vaši aplikaci se zobrazí na portálu Azure Classic.
 
 ### <a name="items-name-change"></a>Změna názvu položky
-Všechny položky s názvem *capptain* byly pojmenovány *engagement*. Podobně jako pro *Capptain* příliš*Engagement*.
+Všechny položky s názvem *capptain* byly pojmenovány *engagement*. Podobně jako pro *Capptain* k *Engagement*.
 
 Příklady běžně používané Capptain položek:
 

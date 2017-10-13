@@ -1,5 +1,5 @@
 ---
-title: "aaaError & výjimek - Azure Logic Apps | Microsoft Docs"
+title: "Chyba & výjimek - Azure Logic Apps | Microsoft Docs"
 description: "Vzory pro chybové události a zpracování výjimek v Azure Logic Apps"
 services: logic-apps
 documentationcenter: .net,nodejs,java
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 326a252310c8dfb154e583f91c9421675e448d1f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 9af2f71b3d288cc6f4e271d0915545d43a1249bc
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Zpracování chyb a výjimek v Azure Logic Apps
 
-Azure Logic Apps nabízí bohaté nástroje, a vzory toohelp ujistěte, že jsou vaše integrace robustní a odolný proti selhání. Všechny Architektura integrace představuje výzvu hello převedení zda tooappropriately popisovač výpadku nebo problémů na závislé systémy. Zpracování chyb Logic Apps usnadňují hello prvotřídní prostředí, která poskytuje nástroje, které potřebujete tooact na výjimky a chyby ve svých pracovních postupech.
+Azure Logic Apps nabízí bohaté nástroje a vzory pro vám pomůže zajistit, že vaše integrace robustní a je odolný proti selhání. Všechny Architektura integrace představuje výzvu služby a zkontrolujte, zda správně zpracovat problémy ze závislých systémů nebo výpadek. Díky Logic Apps je zpracování chyb v první třídy rozhraní, která poskytuje nástroje, které potřebujete tak, aby fungoval na výjimek a chyb v vaše pracovní postupy.
 
 ## <a name="retry-policies"></a>Opakujte zásady
 
-Zásady opakování je hello nejzákladnější typ výjimky a zpracování chyb. Pokud počáteční požadavek vypršel časový limit nebo se nezdařilo (každá žádost, jejímž výsledkem 429 nebo 5xx odpověď), tato zásada určuje, zda hello akci opakujte. Ve výchozím nastavení opakujte všechny akce 4 další časy intervalech 20 sekund. Ano, pokud obdrží hello první požadavek `500 Internal Server Error` odpovědi, modul pracovních postupů hello pozastavuje 20 sekund a pokusy o hello požadavek znovu. Pokud po všech opakovaných pokusů, hello odpovědi je stále výjimku nebo selhání, pokračuje hello pracovního postupu a značky hello stav akce jako `Failed`.
+Zásady opakování je nejzákladnější typ výjimky a zpracování chyb. Pokud počáteční požadavek vypršel časový limit nebo se nezdařilo (každá žádost, jejímž výsledkem 429 nebo 5xx odpověď), tato zásada určuje, zda akci opakujte. Ve výchozím nastavení opakujte všechny akce 4 další časy intervalech 20 sekund. Ano, pokud přijme první požadavek `500 Internal Server Error` odpovědi, modul pracovních postupů pozastaví 20 sekund a znovu se pokusí žádosti. Pokud po všech opakovaných pokusů, odpověď stále výjimku nebo selhání, pracovní postup bude pokračovat a označí stav akce jako `Failed`.
 
-Můžete nakonfigurovat zásady opakování v hello **vstupy** pro určitou akci. Například můžete nastavit tootry zásady opakování až 4 časy intervalech 1 hodinu. Úplné podrobnosti o vlastnosti vstupu najdete v tématu [akce pracovního postupu a aktivační události][retryPolicyMSDN].
+Můžete nakonfigurovat zásady opakování v **vstupy** pro určitou akci. Můžete například nakonfigurovat zásady opakování pokusit až 4 x 1 hodinu intervalech. Úplné podrobnosti o vlastnosti vstupu najdete v tématu [akce pracovního postupu a aktivační události][retryPolicyMSDN].
 
 ```json
 "retryPolicy" : {
@@ -38,7 +38,7 @@ Můžete nakonfigurovat zásady opakování v hello **vstupy** pro určitou akci
     }
 ```
 
-Pokud jste chtěli vaší tooretry akce HTTP 4 časy a vyčkejte 10 minut mezi jednotlivými pokusy o, měli byste použít hello následující definice:
+Pokud byste chtěli akci HTTP a opakujte 4 časy vyčkejte 10 minut mezi jednotlivými pokusy o, měli byste použít následující definice:
 
 ```json
 "HTTP": 
@@ -57,11 +57,11 @@ Pokud jste chtěli vaší tooretry akce HTTP 4 časy a vyčkejte 10 minut mezi j
 }
 ```
 
-Další informace o podporovaných syntaxi najdete v tématu hello [části zásady opakování akce pracovního postupu a aktivační události][retryPolicyMSDN].
+Další informace o podporovaných syntaxi najdete v tématu [části zásady opakování akce pracovního postupu a aktivační události][retryPolicyMSDN].
 
-## <a name="catch-failures-with-hello-runafter-property"></a>Catch – selhání s hello RunAfter vlastnost
+## <a name="catch-failures-with-the-runafter-property"></a>Catch – selhání s vlastností RunAfter
 
-Každá akce logic app deklaruje akce, které musíte dokončit před spuštěním hello akce, jako je řazení hello kroky v pracovním postupu. V definici akce hello toto řazení se označuje jako hello `runAfter` vlastnost. Tato vlastnost je objekt, který popisuje, které akce a akce stavy provést akci hello. Standardně jsou všechny akce, které jsou přidány prostřednictvím hello návrhář aplikace na základě logiky nastavena příliš`runAfter` předchozí krok text hello, pokud hello předchozího kroku `Succeeded`. Však můžete přizpůsobit akce toofire tuto hodnotu, pokud předchozí akce `Failed`, `Skipped`, nebo sadu možné z těchto hodnot. Pokud byste chtěli tooadd tooa položky určené tématu Service Bus po určité akci `Insert_Row` selže, můžete použít následující hello `runAfter` konfigurace:
+Každá akce logic app deklaruje akce, které musíte dokončit před spuštěním akce, jako je řazení podle kroků v pracovním postupu. V definici akce toto řazení se označuje jako `runAfter` vlastnost. Tato vlastnost je objekt, který popisuje, které akce a akce stavy provést akci. Ve výchozím nastavení, jsou všechny akce, které jsou přidány prostřednictvím návrháře aplikace logiky hodnotu `runAfter` v předchozím kroku Pokud v předchozím kroku `Succeeded`. Ale můžete přizpůsobit, tato hodnota má provést akce, pokud mají předchozí akce `Failed`, `Skipped`, nebo sadu možné z těchto hodnot. Pokud chcete přidat položku do tématu Service Bus určené po určité akci `Insert_Row` selže, můžete použít následující `runAfter` konfigurace:
 
 ```json
 "Send_message": {
@@ -89,7 +89,7 @@ Každá akce logic app deklaruje akce, které musíte dokončit před spuštěn�
 }
 ```
 
-Všimněte si hello `runAfter` vlastnost nastavena toofire, pokud hello `Insert_Row` akce je `Failed`. Akce toorun hello, pokud je stav akce hello `Succeeded`, `Failed`, nebo `Skipped`, použijte následující syntaxi:
+Upozornění `runAfter` má provést, pokud je hodnota nastavena `Insert_Row` akce je `Failed`. Akci spustit, pokud je stav akce `Succeeded`, `Failed`, nebo `Skipped`, použijte následující syntaxi:
 
 ```json
 "runAfter": {
@@ -100,21 +100,21 @@ Všimněte si hello `runAfter` vlastnost nastavena toofire, pokud hello `Insert_
 ```
 
 > [!TIP]
-> Akce, které jsou spuštěny a dokončeny úspěšně po předchozí akce se nezdařila, jsou označeny jako `Succeeded`. Toto chování znamená, že pokud jste úspěšně catch všechny chyby v pracovním postupu, hello spustit je označena jako `Succeeded`.
+> Akce, které jsou spuštěny a dokončeny úspěšně po předchozí akce se nezdařila, jsou označeny jako `Succeeded`. Toto chování znamená, že pokud jste úspěšně catch všechny chyby v pracovním postupu spustit samotné je označen jako `Succeeded`.
 
-## <a name="scopes-and-results-tooevaluate-actions"></a>Akce tooevaluate obory a výsledky
+## <a name="scopes-and-results-to-evaluate-actions"></a>Obory a výsledky, které slouží k vyhodnocení, akce
 
-Podobné toohow můžete spustit po jednotlivé akce, můžete taky seskupit akce uvnitř [oboru](../logic-apps/logic-apps-loops-and-scopes.md), které fungují jako logické seskupení akce. Obory jsou užitečné pro uspořádání vaše akce aplikace logiky i pro provádění agregační hodnocení na dobrý stav oboru. Hello oboru samotné obdrží stav po dokončení všech akcí v oboru. stav oboru Hello je určen s hello stejná kritéria jako spustit. Pokud hello konečné akcí v větev provádění `Failed` nebo `Aborted`, je stav hello `Failed`.
+Podobná jak můžete spustit po jednotlivé akce, můžete taky seskupit akce uvnitř [oboru](../logic-apps/logic-apps-loops-and-scopes.md), které fungují jako logické seskupení akce. Obory jsou užitečné pro uspořádání vaše akce aplikace logiky i pro provádění agregační hodnocení na stav oboru. Obor samotné obdrží stav po dokončení všech akcí v oboru. Stav oboru je určen s stejná kritéria jako spustit. Pokud je poslední akce v větev provádění `Failed` nebo `Aborted`, je stav `Failed`.
 
-toofire konkrétní akce pro všechny chyby, které bylo provedeno v rámci oboru hello, můžete použít `runAfter` s oborem, který je označen `Failed`. Pokud *žádné* akce v oboru hello nezdaří, spuštění po obor selže umožňuje vytvořit jednu akci toocatch selhání.
+Chcete-li provést určité akce pro všechny chyby, které bylo provedeno v rámci oboru, můžete použít `runAfter` s oborem, který je označen `Failed`. Pokud *žádné* selhání akce v oboru, spuštění po obor selže umožňuje vytvořit jednu akci k zachycení selhání.
 
-### <a name="getting-hello-context-of-failures-with-results"></a>Získávání kontextu hello chyb s výsledky.
+### <a name="getting-the-context-of-failures-with-results"></a>Získávání kontextu selhání s výsledky.
 
-I když zachytávání chyb z oboru je užitečné, můžete také kontextu toohelp pochopit přesně akce, které se nezdařila, a všechny chyby nebo stavové kódy, které byly vráceny. Hello `@result()` funkce workflowu poskytuje kontext o hello výsledek všechny akce v oboru.
+I když zachytávání chyb z oboru je užitečné, můžete také kontextu, které vám pomohou pochopit přesně akce, které se nezdařila a všechny chyby nebo stavové kódy, které byly vráceny. `@result()` Funkce workflowu poskytuje kontext o výsledek všechny akce v oboru.
 
-`@result()`přijímá jeden parametr, název oboru a vrátí pole všechny výsledky hello akce z v rámci tohoto oboru. Tyto objekty akce zahrnují hello stejné atributy jako hello `@actions()` výstupy objektu, včetně čas spuštění akce, akce koncový čas, stav akce, akce vstupy, akce korelace ID a akce. toosend kontextu všechny akce, které se nepodařilo v rámci oboru, můžete snadno spárujete `@result()` fungovat s `runAfter`.
+`@result()`přijímá jeden parametr, název oboru a vrátí pole všech akce výsledků v rámci tohoto oboru. Tyto objekty akce zahrnují stejné atributy, jako `@actions()` výstupy objektu, včetně čas spuštění akce, akce koncový čas, stav akce, akce vstupy, akce korelace ID a akce. Kontext všechny akce, které se nezdařilo odeslat v rámci oboru, můžete snadno spárujte `@result()` fungovat s `runAfter`.
 
-tooexecute akce *pro každou* akce v oboru, `Failed`pole filtru hello tooactions výsledky, které selhaly, může párovat `@result()` s  **[pole filtru](../connectors/connectors-native-query.md)**  akce a  **[ForEach](../logic-apps/logic-apps-loops-and-scopes.md)**  smyčky. Můžete provést hello filtrované výsledek pole a provedení akce pro každé selhání pomocí hello **ForEach** smyčky. Tady je příklad, za nímž následuje podrobné vysvětlení, který odesílá požadavek HTTP POST s text odpovědi hello všechny akce, které se nepodařilo v rámci oboru hello `My_Scope`.
+K provedení akce *pro každou* akce v oboru, `Failed`, filtrovat pole výsledky na akce, které se nezdařilo, může párovat `@result()` s  **[pole filtru](../connectors/connectors-native-query.md)**  akce a  **[ForEach](../logic-apps/logic-apps-loops-and-scopes.md)**  smyčky. Můžete provést pole filtrované výsledek a provedení akce pro každé selhání pomocí **ForEach** smyčky. Tady je příklad, za nímž následuje podrobné vysvětlení, který odesílá požadavek HTTP POST s text odpovědi o všechny akce, které se nepodařilo v rámci oboru `My_Scope`.
 
 ```json
 "Filter_array": {
@@ -155,22 +155,22 @@ tooexecute akce *pro každou* akce v oboru, `Failed`pole filtru hello tooactions
 }
 ```
 
-Zde je podrobný návod toodescribe, co se stane:
+Zde je podrobný postup popisující, co se stane:
 
-1. výsledek hello tooget všechny akce v rámci `My_Scope`, hello **pole filtru** filtrů Akce `@result('My_Scope')`.
+1. Chcete-li získat výsledek všechny akce v rámci `My_Scope`, **pole filtru** filtrů Akce `@result('My_Scope')`.
 
-2. Hello podmínku pro **pole filtru** libovolnou `@result()` položku, která obsahuje stav rovna příliš`Failed`. Tato podmínka filtry hello pole s všechny výsledky akce z `My_Scope` tooan pole s jediným se nezdařilo výsledky akce.
+2. Podmínky pro **pole filtru** libovolnou `@result()` položku, která je rovna stavu `Failed`. Tato podmínka filtry pole s všechny výsledky akce z `My_Scope` do pole s pouze se nezdařilo výsledky akce.
 
-3. Provedení **pro každou** akce hello **filtrovat pole** výstupy. Tento krok provede akci *pro každou* výsledek akce, který byl dříve nefiltruje se nezdařilo.
+3. Provedení **pro každou** akce **filtrovat pole** výstupy. Tento krok provede akci *pro každou* výsledek akce, který byl dříve nefiltruje se nezdařilo.
 
-    Pokud se jedna akce v oboru hello nezdařila, hello akce v hello `foreach` spustit jenom jednou. 
+    Pokud v oboru jednu akci se nezdařilo, akce v `foreach` spustit jenom jednou. 
     Mnoho selhání akce způsobí, že jednu akci za selhání.
 
-4. Odeslání požadavku HTTP POST na hello `foreach` položky text odpovědi, nebo `@item()['outputs']['body']`. Hello `@result()` tvar položka je hello stejné jako hello `@actions()` utvářejí a lze analyzovat hello stejný způsobem.
+4. Odeslání požadavku HTTP POST na `foreach` položky text odpovědi, nebo `@item()['outputs']['body']`. `@result()` Tvar položka je stejný jako `@actions()` utvářejí a lze analyzovat stejným způsobem.
 
-5. Patří dva vlastní hlavičky s názvem selhání akce hello `@item()['name']` a hello se nezdařilo spuštění klienta, ID sledování `@item()['clientTrackingId']`.
+5. Patří dva vlastní hlavičky s názvem selhání akce `@item()['name']` a neúspěšný spusťte klienta, ID sledování `@item()['clientTrackingId']`.
 
-Pro referenci tady je příklad jednoho `@result()` položku zobrazující hello `name`, `body`, a `clientTrackingId` vlastnosti, které jsou analyzovány v předchozím příkladu hello. Mimo `foreach`, `@result()` vrátí pole z těchto objektů.
+Pro referenci tady je příklad jednoho `@result()` položky, zobrazuje `name`, `body`, a `clientTrackingId` vlastnosti, které jsou analyzovány v předchozím příkladu. Mimo `foreach`, `@result()` vrátí pole z těchto objektů.
 
 ```json
 {
@@ -202,18 +202,18 @@ Pro referenci tady je příklad jednoho `@result()` položku zobrazující hello
 }
 ```
 
-vzory tooperform různých výjimek, můžete použít výrazy hello uvedený výše. Můžete zvolit jednu výjimka zpracování akce hello oboru, který přijímá hello celý filtrované pole selhání tooexecute a odebrat hello `foreach`. Můžete použít také další užitečné vlastnosti z hello `@result()` odpovědi uvedený výše.
+K provedení různých zpracování vzory výjimek, můžete použít výrazy uvedený výše. Můžete zvolit provedení jednoho výjimka zpracování akce mimo rozsah, který přijímá pole celý filtrované chyb a odebrat `foreach`. Můžete použít také další užitečné vlastnosti z `@result()` odpovědi uvedený výše.
 
 ## <a name="azure-diagnostics-and-telemetry"></a>Azure diagnostiky a telemetrii
 
-jsou skvělý způsob toohandle chyby a výjimky v rámci spustit zprostředkovatele Hello předchozích, ale také můžete identifikovat a řešit tooerrors nezávislé hello spustit. 
-[Azure Diagnostics](../logic-apps/logic-apps-monitor-your-logic-apps.md) poskytuje jednoduchý způsob toosend všechny pracovní postup události (včetně všech stavů spustit a akce) tooan účet služby Azure Storage nebo centra událostí Azure. tooevaluate spusťte stavy, můžete monitorovat hello protokoly a metriky nebo publikovat je do libovolného monitorování nástroje, kterému dáváte přednost. Jednou z možných možností je toostream všechny události hello prostřednictvím centra událostí Azure do [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). V Stream Analytics můžete napsat dotazy za provozu mimo jakékoli anomálie, průměry nebo selhání z hello diagnostické protokoly. Stream Analytics můžete snadno výstupní tooother zdroje dat jako fronty, témata, SQL, databáze Cosmos Azure a Power BI.
+Předchozích jsou skvělý způsob, jak zpracování chyb a výjimek v rámci spuštění, ale můžete také určit a reagují na chyby, které jsou nezávislé na spuštění sám sebe. 
+[Azure Diagnostics](../logic-apps/logic-apps-monitor-your-logic-apps.md) poskytuje jednoduchý způsob, jak odeslat všechny události pracovního postupu (včetně všech stavů spustit a akce) účtu služby Azure Storage nebo centra událostí Azure. Abyste mohli vyhodnotit spuštění stavy, můžete sledování metrik a protokolování nebo publikovat je do libovolného monitorování nástroje, kterému dáváte přednost. Jednou z možných možností je k vysílání datového proudu všechny události prostřednictvím centra událostí Azure do [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). Do služby Stream Analytics lze zapsat za provozu dotazy vypnout všechny anomálií, průměry nebo selhání z diagnostické protokoly. Stream Analytics můžete snadno výstup do jiných zdrojů dat, jako jsou fronty, témata, SQL, databáze Cosmos Azure a Power BI.
 
 ## <a name="next-steps"></a>Další kroky
 
 * [V tématu Jak zákazník sestavení službou Azure Logic Apps zpracování chyb](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
 * [Najít další aplikace logiky příkladů a scénářů](../logic-apps/logic-apps-examples-and-scenarios.md)
-* [Zjistěte, jak toocreate automatizované nasazení pro logic apps](../logic-apps/logic-apps-create-deploy-template.md)
+* [Naučte se vytvořit automatické nasazení pro logic apps](../logic-apps/logic-apps-create-deploy-template.md)
 * [Vytvoření a nasazení aplikací logiky s využitím sady Visual Studio](logic-apps-deploy-from-vs.md)
 
 <!-- References -->

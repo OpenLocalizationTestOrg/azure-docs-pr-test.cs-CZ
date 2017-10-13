@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure příklad DMZ – vytvoření jednoduché DMZ pomocí skupin Nsg | Microsoft Docs"
+title: "Příklad Azure DMZ – vytvoření jednoduché DMZ pomocí skupin Nsg | Microsoft Docs"
 description: "Sestavení DMZ se skupinami zabezpečení sítě (NSG)"
 services: virtual-network
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: 11c5c6026da30fbc9c5e585f5c16e2d411d6fd80
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ec29e6b250f927a3a4a94ffdf83d6c7c0e325722
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>Příklad 1 – Vytvoření jednoduché DMZ pomocí skupin Nsg pomocí šablony Azure Resource Manager
-[Vrátí toohello stránku osvědčené postupy zabezpečení hranic][HOME]
+[Návrat na stránku osvědčené postupy zabezpečení hranic][HOME]
 
 > [!div class="op_single_selector"]
 > * [Šablona Resource Manageru](virtual-networks-dmz-nsg.md)
@@ -29,61 +29,61 @@ ms.lasthandoff: 10/06/2017
 > 
 >
 
-Tento příklad vytvoří primitivní hraniční sítě se čtyřmi servery Windows a skupiny zabezpečení sítě. Tento příklad popisuje každý hello odpovídající šablonu části tooprovide podrobnější vysvětlení jednotlivých kroků. Je zde také na provoz scénář části tooprovide podrobný podrobný rozbor toho, jak se provoz pokračuje prostřednictvím hello vrstev obrany ve hello DMZ. Nakonec v části odkazy hello je hello úplnou šablonu kódu a pokyny toobuild tento tootest prostředí a experimentů pomocí různé scénáře. 
+Tento příklad vytvoří primitivní hraniční sítě se čtyřmi servery Windows a skupiny zabezpečení sítě. Tento příklad popisuje jednotlivých částech odpovídající šablonu zajistit podrobnější vysvětlení jednotlivých kroků. Je také části provoz scénář poskytnout podrobný podrobný rozbor toho, jak se provoz pokračuje prostřednictvím vrstev obrany v hraniční síti. Nakonec v odkazy na části je kód dokončení šablony a pokyny k vytvoření tohoto prostředí pro testování a experimentovat s různými scénáři. 
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] 
 
 ![Příchozí DMZ s NSG][1]
 
 ## <a name="environment-description"></a>Popis prostředí
-V tomto příkladu obsahuje předplatné hello následující prostředky:
+V tomto příkladu obsahuje odběru v následujících zdrojích informací:
 
 * Jedna skupina prostředků
 * Virtuální síť se dvěma podsítěmi; "FrontEnd" a "Back-end"
-* Skupinu zabezpečení sítě, která je použitá tooboth podsítě
+* Skupinu zabezpečení sítě, který se použije pro obě podsítě
 * Windows Server, který představuje server webových aplikací ("IIS01")
 * Dva windows serverů, které představují servery back-end aplikace ("AppVM01", "AppVM02")
 * Windows server, který představuje server DNS ("DNS01")
-* Veřejné IP adresy přidružené k serveru webové aplikace hello
+* Veřejné IP adresy přidružené k serveru webové aplikace
 
-V části odkazy hello je šablony Azure Resource Manageru tooan odkaz, který sestaví hello prostředí popsané v tomto příkladu. Vytváření hello virtuálních počítačů a virtuálních sítí, i když provádí hello příklad šablony, nejsou popsané podrobně v tomto dokumentu. 
+V části odkazy je odkaz na šablonu Azure Resource Manager, který sestaví prostředí popsané v tomto příkladu. Vytváření virtuálních počítačů a virtuálních sítí, i když provádí šabloně příklad nejsou podrobně popsány v tomto dokumentu. 
 
-**toobuild toto prostředí** (podrobné pokyny naleznete v části odkazy hello tohoto dokumentu);
+**K vytvoření tohoto prostředí** (podrobné pokyny naleznete v části odkazy tohoto dokumentu);
 
-1. Nasazení šablony Azure Resource Manageru v hello: [šablon Azure rychlý start][Template]
-2. Nainstalujte hello ukázkovou aplikaci v: [ukázkový skript aplikace][SampleApp]
+1. Nasazení šablony Azure Resource Manager v: [šablony Azure rychlý start][Template]
+2. Nainstalovat ukázkovou aplikaci v: [ukázkový skript aplikace][SampleApp]
 
 >[!NOTE]
->tooRDP tooany back-end serverů v této instanci serveru IIS hello slouží jako "jump pole." První server služby IIS toohello RDP a potom z hello RDP serveru IIS toohello back-end serveru. Případně může být veřejnou IP adresu ke každému serveru síťový adaptér pro snazší RDP přidružena.
+>Pro připojení RDP k žádnému back-end serverů v této instanci serveru IIS slouží jako "jump pole." První RDP na server služby IIS a pak z RDP Server služby IIS na back-end serverů. Případně může být veřejnou IP adresu ke každému serveru síťový adaptér pro snazší RDP přidružena.
 > 
 >
 
-Hello následující části obsahují podrobný popis hello skupinu zabezpečení sítě a jak funguje v tomto příkladu pomocí s návodem klíče řádků hello šablony Azure Resource Manageru.
+Následující části obsahují podrobný popis skupinu zabezpečení sítě a jak funguje v tomto příkladu pomocí s návodem klíče řádky šablony Azure Resource Manager.
 
 ## <a name="network-security-groups-nsg"></a>Skupiny zabezpečení sítě (NSG)
 V tomto příkladu je skupinu NSG vytvořené a pak načtená šesti pravidla. 
 
 >[!TIP]
->Obecně platí musí nejprve vytvořit konkrétní pravidel "Povolit" a pak poslední hello více obecná pravidla "Deny". Hello prioritou stanoví, která pravidla se vyhodnocují jako první. Jakmile provoz nenajde tooapply tooa konkrétní pravidlo, jsou vyhodnotit žádná další pravidla. Pravidla NSG můžete použít buď v hello příchozí nebo odchozí směr (z hlediska hello hello podsítě).
+>Obecně řečeno měli byste vytvořit konkrétní pravidel "Povolit" nejprve a pak více obecná pravidla "Deny" poslední. Přiřazené priority určují, které jsou pravidla vyhodnocena první. Jakmile provoz nenajde Pokud chcete použít pro konkrétní pravidlo, jsou vyhodnotit žádná další pravidla. Pravidla NSG můžete použít buď v příchozí nebo odchozí směr (z hlediska podsítě).
 >
 >
 
-Deklarativně jsou pro příchozí provoz sestavuje hello následující pravidla:
+Následující pravidla deklarativně, se budou vytvářeny pro příchozí provoz:
 
 1. Interní DNS provoz (port 53) je povolený
-2. Provoz protokolu RDP (portu 3389) z Internetu tooany hello virtuálních počítačů je povoleno.
-3. Je povolen přenos HTTP (port 80) ze serveru tooweb Internet hello (IIS01)
-4. Jakýkoli přenos (všechny porty) z IIS01 tooAppVM1 je povolen.
-5. Jakýkoli přenos (všechny porty) z Internetu toohello hello celý virtuální síť (obě podsítě) byl odepřen.
-6. Jakýkoli přenos (všechny porty) z hello front-endu podsíť toohello back-end podsítě byl odepřen.
+2. Provoz protokolu RDP (portu 3389) z Internetu do všech virtuálních počítačů je povoleno.
+3. Je povolen přenos HTTP (port 80) z Internetu webový server (IIS01)
+4. Všechny přenosy (všechny porty) z IIS01 na AppVM1 je povolen.
+5. Přenosy dat (všechny porty) z Internetu pro celou virtuální síť (obě podsítě) byl odepřen.
+6. Přenosy dat (všechny porty) z podsítě front-endu do podsítě back-end byl odepřen.
 
-Pomocí těchto pravidel vázané tooeach podsíti, pokud požadavek HTTP byl příchozí z hello Internet toohello webový server, obě pravidla 3 (Povolit) a 5 (Odepřít) by použít, ale vzhledem k tomu, že pravidlo 3 má vyšší prioritu jenom by použít a pravidlo 5 nebude možné uplatnit. Proto hello požadavku HTTP bude mít možnost toohello webový server. Pokud tento stejný provoz pokoušel tooreach hello DNS01 server, pravidlo 5 (Odepřít) bude, že hello první tooapply hello přenosů dat a nebude možné toopass toohello serveru. Pravidlo 6 (Odepřít) blokuje podsíť Frontend hello z rozhovoru toohello back-end podsítě (s výjimkou povolené přenosy v pravidlech 1 a 4), této sady pravidel chrání síť back-end hello v případě, že by útočník ohrožení hello webovou aplikaci na hello front-endu, útočník hello mít omezený přístup toohello back-end "chráněné" sítě (jenom tooresources zveřejněné na serveru AppVM01 hello).
+Pomocí těchto pravidel vázána na každou podsíť, pokud požadavek HTTP byl příchozí z Internetu webový server, jak pravidla 3 (Povolit) a 5 (Odepřít) by použít, ale vzhledem k tomu, že pravidlo 3 má vyšší prioritu jenom by použít a pravidlo 5 nebude možné uplatnit. Proto bude mít možnost požadavku HTTP k webovému serveru. Pokud tento stejný provoz se pokusil připojit k serveru DNS01, pravidlo 5 (Odepřít) bude první použití a přenos nebude možné předat serveru. Pravidlo 6 (Odepřít) blokuje podsíť Frontend z rozhovoru s back-end podsítě (s výjimkou povolené přenosy v pravidlech 1 a 4), této sady pravidel chrání síť back-end v případě ohrožení útočník webové aplikace na Frontendový, útočník by mít omezený přístup k back-end "chráněná" Síťová (pouze pro prostředky zveřejněné na serveru AppVM01).
 
-Je výchozí odchozí pravidlo, které umožňuje provozu toohello Internetu. V tomto příkladu jsme se umožňuje odchozí provoz a úprava není žádná odchozí pravidla. tooapply tootraffic zásad zabezpečení v obou směrech, uživatel definovaná směrování je povinný a je prozkoumali "Příklad 3" na hello [stránku osvědčené postupy zabezpečení hranic][HOME].
+Je výchozí odchozí pravidlo, které umožňuje přenos se k Internetu. V tomto příkladu jsme se umožňuje odchozí provoz a úprava není žádná odchozí pravidla. Použít zásady zabezpečení na provoz v obou směrech, směrování definovaného uživatele je povinná a je prozkoumali "Příklad 3" na [stránku osvědčené postupy zabezpečení hranic][HOME].
 
 Každé pravidlo je podrobněji popsána následujícím způsobem:
 
-1. Prostředek skupinu zabezpečení sítě musí být instancí toohold hello pravidla:
+1. Prostředek skupinu zabezpečení sítě musí být vytvořena instance pro uložení pravidla:
 
     ```JSON
     "resources": [
@@ -97,10 +97,10 @@ Každé pravidlo je podrobněji popsána následujícím způsobem:
     ]
     ``` 
 
-2. první pravidlo Hello v tomto příkladu umožňuje přenosů mezi všechny server DNS toohello interní sítě v podsíti hello back-end. pravidlo Hello má některé důležité parametry:
-  * "destinationAddressPrefix" - pravidla můžete použít zvláštní typ předpona adresy názvem "Výchozí značka", tyto značky jsou identifikátory poskytované systémem, které umožňují snadný způsob tooaddress vyšší kategorie předpon adres. Toto pravidlo používá hello výchozí značka "Internet" toosignify žádné adresy mimo hello virtuální sítě. Ostatní předponu značky jsou virtuální síť a AzureLoadBalancer.
-  * "Směr" označuje, že ve směru toku provozu účinné toto pravidlo. Směr Hello je z hlediska hello hello podsíť nebo virtuálního počítače (v závislosti na tom, kde je tato skupina NSG vázán). Proto pokud je směr "Příchozí" a provoz vstupující hello podsíť, hello pravidlo vztahuje a odchozího provozu z podsítě hello ovlivněn tímto pravidlem.
-  * "Priority" Nastaví hello pořadí, ve kterém je přenosový tok vyhodnocena. Hello nižší hello číslo hello vyšší hello prioritou. Když se pravidlo vztahuje tooa konkrétní přenosový tok, žádná další pravidla se zpracovávají. Proto pokud pravidlo s prioritou 1 umožňuje provoz a pravidlo s prioritou 2 odmítne provozu a obě pravidla použít tootraffic pak provoz hello bude mít možnost tooflow (vzhledem k tomu, že pravidlo 1 měl vyšší prioritu trvalo účinek a žádná další pravidla byly použity).
+2. První pravidlo v tomto příkladu umožňuje přenosů mezi všechny interní sítě na server DNS v podsíti back-end. Toto pravidlo má některé důležité parametry:
+  * "destinationAddressPrefix" - pravidla můžete použít zvláštní typ předpona adresy názvem "Výchozí značka", tyto značky jsou identifikátory poskytované systémem, které umožňují snadný způsob, jak vyřešit vyšší kategorie předpon adres. Toto pravidlo používá výchozí značky "Internet" k označují každou adresu, mimo síť VNet. Ostatní předponu značky jsou virtuální síť a AzureLoadBalancer.
+  * "Směr" označuje, že ve směru toku provozu účinné toto pravidlo. Směr je z hlediska podsíť nebo virtuálního počítače (v závislosti na tom, kde je tato skupina NSG vázán). Proto pokud je směr "Příchozí" a provoz vstupující podsíť, pravidlo vztahuje a odchozího provozu z podsítě ovlivněn tímto pravidlem.
+  * "Priority" Nastaví pořadí, ve kterém je vyhodnocena tok přenosů. Nižší počet tím vyšší je priorita. Když se pravidlo vztahuje na konkrétní přenosový tok, žádná další pravidla se zpracovávají. Proto pokud pravidlo s prioritou 1 umožňuje provoz a pravidlo s prioritou 2 odmítne provozu a použít obě pravidla pro provoz pak provoz se bude moct toku (vzhledem k tomu, že pravidlo 1 měl vyšší prioritu trvalo účinek a žádná další pravidla byly použity).
   * "Přístup" označuje, že toto pravidlo je-li blokované ("Deny") nebo povolených ("Povolit").
 
     ```JSON
@@ -122,7 +122,7 @@ Každé pravidlo je podrobněji popsána následujícím způsobem:
       },
     ```
 
-3. Toto pravidlo umožňuje tooflow provoz protokolu RDP z hello internet toohello portu RDP na libovolném serveru v hello vázaný podsítě. 
+3. Toto pravidlo umožňuje provoz protokolu RDP, které jsou předávány z Internetu k portu RDP na libovolném serveru v vázané podsíti. 
 
     ```JSON
     {
@@ -141,13 +141,13 @@ Každé pravidlo je podrobněji popsána následujícím způsobem:
     },
     ```
 
-4. Toto pravidlo umožňuje příchozí internetové přenosy toohit hello webový server. Toto pravidlo nedojde ke změně chování směrování hello. Hello pravidlo umožňuje pouze provoz určený pro IIS01 toopass. Takže pokud provoz z Internetu hello měl hello webový server jako svůj cíl toto pravidlo by se povolit a zastavit zpracování další pravidla. (V hello pravidla s důležitostí 140 všechny ostatní příchozí internetový provoz blokováno). Pokud máte pouze zpracování přenos HTTP, může být toto pravidlo další s omezeným přístupem tooonly povolit cílový Port 80.
+4. Toto pravidlo umožňuje příchozí internetové přenosy narazila na webovém serveru. Toto pravidlo nedojde ke změně chování směrování. Toto pravidlo umožňuje pouze provoz určený pro IIS01 předat. Takže pokud provoz z Internetu měl webový server jako svůj cíl toto pravidlo by se povolit a zastavit zpracování další pravidla. (V pravidla s důležitostí 140 všechny ostatní příchozí internetový provoz blokováno). Pokud máte pouze zpracování přenos HTTP, může být toto pravidlo další omezena a Povolit jenom cílový Port 80.
 
     ```JSON
     {
       "name": "enable_web_rule",
       "properties": {
-        "description": "Enable Internet too[variables('VM01Name')]",
+        "description": "Enable Internet to [variables('VM01Name')]",
         "protocol": "Tcp",
         "sourcePortRange": "*",
         "destinationPortRange": "80",
@@ -160,13 +160,13 @@ Každé pravidlo je podrobněji popsána následujícím způsobem:
       },
     ```
 
-5. Toto pravidlo umožňuje toopass provoz ze serveru IIS01 hello toohello AppVM01 serveru, novější pravidlo blokuje všechny ostatní přenosy tooBackend front-endu. tooimprove, který toto pravidlo, pokud hello port se ví, že má být přidána. Například pokud server služby IIS hello je stiskne pouze SQL Server na AppVM01, rozsah cílových portů hello by mělo být změněno z "*" (Any) too1433 (hello port služby SQL) umožňuje menší prostor pro příchozí útok na AppVM01, by měla webová aplikace hello někdy dojít k ohrožení.
+5. Toto pravidlo umožňuje přenos dat ze serveru IIS01 k serveru AppVM01 novější bloky pravidel všechny front-end pro provoz back-end. Aby se zlepšil toto pravidlo, pokud je znám port, který má být přidána. Například pokud server služby IIS je stiskne pouze SQL Server na AppVM01, rozsah cílových portů by mělo být změněno z "*" (Any) 1433 (SQL port), což umožňuje menší prostor pro příchozí útok na AppVM01 by měl webové aplikace někdy dojít k ohrožení.
 
     ```JSON
     {
       "name": "enable_app_rule",
       "properties": {
-        "description": "Enable [variables('VM01Name')] too[variables('VM02Name')]",
+        "description": "Enable [variables('VM01Name')] to [variables('VM02Name')]",
         "protocol": "*",
         "sourcePortRange": "*",
         "destinationPortRange": "*",
@@ -179,13 +179,13 @@ Každé pravidlo je podrobněji popsána následujícím způsobem:
     },
      ```
 
-6. Toto pravidlo odmítne provoz z hello internetové tooany servery v síti hello. S hello pravidla s důležitostí 110 a 120 hello efekt je tooallow pouze příchozí internetové přenosy toohello brány firewall a porty protokolu RDP na serverech a blokuje nic jiného. Toto pravidlo je "jistotu" pravidlo tooblock všechny neočekávané toky.
+6. Toto pravidlo na všechny servery v síti odmítne přenosy z Internetu. Pravidla s důležitostí 110 a 120 účinek je umožnit pouze příchozí internetové přenosy pro brány firewall a porty protokolu RDP na serverech a bloky nic jiného. Toto pravidlo je "pohotovostního" pravidlo pro zablokování všechny neočekávané toky.
 
     ```JSON
     {
       "name": "deny_internet_rule",
       "properties": {
-        "description": "Isolate hello [variables('VNetName')] VNet from hello Internet",
+        "description": "Isolate the [variables('VNetName')] VNet from the Internet",
         "protocol": "*",
         "sourcePortRange": "*",
         "destinationPortRange": "*",
@@ -198,13 +198,13 @@ Každé pravidlo je podrobněji popsána následujícím způsobem:
     },
      ```
 
-7. poslední pravidlo Hello odmítne provoz z hello front-endu podsíť toohello back-end podsítě. Vzhledem k tomu, že toto pravidlo je pouze příchozí pravidlo, zpětné provoz je povolený (z back-end toohello hello front-endu).
+7. Poslední pravidlo odmítne provozu z podsítě front-endu do podsítě back-end. Vzhledem k tomu, že toto pravidlo je pouze příchozí pravidlo, zpětné provoz je povolený (z back-end na front-endu).
 
     ```JSON
     {
       "name": "deny_frontend_rule",
       "properties": {
-        "description": "Isolate hello [variables('Subnet1Name')] subnet from hello [variables('Subnet2Name')] subnet",
+        "description": "Isolate the [variables('Subnet1Name')] subnet from the [variables('Subnet2Name')] subnet",
         "protocol": "*",
         "sourcePortRange": "*",
         "destinationPortRange": "*",
@@ -218,143 +218,143 @@ Každé pravidlo je podrobněji popsána následujícím způsobem:
     ```
 
 ## <a name="traffic-scenarios"></a>Provoz scénáře
-#### <a name="allowed-internet-tooweb-server"></a>(*Povolené*) internetového tooweb serveru
-1. Internetu uživatel požádá o stránku HTTP z hello veřejnou IP adresu hello seskupování přidruženého hello IIS01 seskupování
-2. Hello veřejnou IP adresu předá toohello provoz virtuální sítě směrem IIS01 (hello webový server)
+#### <a name="allowed-internet-to-web-server"></a>(*Povolené*) Internet na webový server
+1. Internetu uživatel požádá o stránku HTTP z veřejné IP adresy přidružené k seskupování IIS01 síťového adaptéru
+2. Veřejná IP adresa předá provoz do virtuální sítě směrem IIS01 (webový server)
 3. Podsíť frontend zahájí zpracování příchozí pravidlo:
-  1. Netýká NSG pravidlo 1 (DNS), přesunete toonext pravidlo
-  2. Pravidla NSG 2 (RDP) netýká, přesuňte toonext pravidlo
-  3. Použít NSG pravidla 3 (tooIIS01 Internetu), Probíhá zpracování povolených, zastavení pravidla
-4. Provoz dotkne interní IP adresu hello webového serveru IIS01 (10.0.1.5)
-5. IIS01 naslouchá pro webový provoz, získá tento požadavek a spustí zpracování požadavku hello
-6. IIS01 hello systému SQL Server na AppVM01 vyzve k zadání informací
+  1. Není použít, přejděte k další pravidla NSG pravidlo 1 (DNS)
+  2. Není použít, přejděte k další pravidla NSG pravidlo 2 (RDP)
+  3. Použít NSG pravidla 3 (Internet k IIS01), Probíhá zpracování povolených, zastavení pravidla
+4. Provoz dotkne interní IP adresu serveru webového IIS01 (10.0.1.5)
+5. IIS01 naslouchá pro webový provoz, získá tento požadavek a spustí zpracování požadavku
+6. IIS01 systému SQL Server na AppVM01 vyzve k zadání informací
 7. Žádná odchozí pravidla na podsíť Frontend provoz je povolený.
-8. podsíť back-end Hello zahájí zpracování příchozí pravidlo:
-  1. Netýká NSG pravidlo 1 (DNS), přesunete toonext pravidlo
-  2. Pravidla NSG 2 (RDP) netýká, přesuňte toonext pravidlo
-  3. Skupina NSG pravidla 3 (Internet tooFirewall) netýká, přesuňte toonext pravidlo
-  4. Použít NSG pravidla 4 (IIS01 tooAppVM01), Probíhá zpracování povolených, zastavení pravidla
-9. AppVM01 přijímá hello dotazu SQL a odpoví
-10. Vzhledem k tomu, že neexistují žádná odchozí pravidla v podsíti hello back-end, je povoleno hello odpovědi
+8. Podsíť back-end zahájí zpracování příchozí pravidlo:
+  1. Není použít, přejděte k další pravidla NSG pravidlo 1 (DNS)
+  2. Není použít, přejděte k další pravidla NSG pravidlo 2 (RDP)
+  3. Není použít, přejděte k další pravidla NSG pravidla 3 (Internet do brány Firewall)
+  4. Skupina NSG pravidla 4 použít (IIS01 k AppVM01), provoz je povolený, zastavte zpracování pravidla
+9. AppVM01 přijme příkaz jazyka SQL a odpovídá
+10. Vzhledem k tomu, že neexistují žádná odchozí pravidla v podsíti back-end, je povoleno odpovědi
 11. Podsíť frontend zahájí zpracování příchozí pravidlo:
-  1. Neexistuje žádné pravidlo NSG, která se použije tooInbound provozu z podsítě hello back-end podsíť toohello front-endu, tak pravidla NSG hello nepoužijí
-  2. Hello výchozí systému pravidlo umožňuje provoz mezi podsítěmi umožňuje tento provoz, provoz hello je povolený.
-12. server služby IIS Hello obdrží odpověď hello SQL a dokončí hello odpovědi HTTP a odešle toohello žadatel
-13. Vzhledem k tomu, že neexistují žádná odchozí pravidla na podsíť Frontend hello, hello odpovědi je povolen a hello Internet uživatel obdrží webovou stránku hello požadovaný.
+  1. Neexistuje žádná skupina NSG pravidlo, které platí pro příchozí provoz z back-end podsítě pro podsíť Frontend, aby žádný z NSG pravidla použít
+  2. Výchozí pravidlo systému umožňuje provoz mezi podsítěmi by povolit tento provoz, provoz je povolen.
+12. Server služby IIS obdrží odpověď SQL a dokončení odpovědi HTTP a odešle do žadatel
+13. Vzhledem k tomu, že neexistují žádná odchozí pravidla v podsíti front-endu, odpověď je povoleno a Internetu uživatel obdrží požadované webové stránky.
 
-#### <a name="allowed-rdp-tooiis-server"></a>(*Povolené*) serveru tooIIS RDP
-1. Správce serveru na Internetu požadavky tooIIS01 relace protokolu RDP na hello veřejnou IP adresu hello seskupování přidruženého hello IIS01 seskupování (Tato veřejná IP adresa naleznete prostřednictvím hello portálu nebo prostředí PowerShell)
-2. Hello veřejnou IP adresu předá toohello provoz virtuální sítě směrem IIS01 (hello webový server)
+#### <a name="allowed-rdp-to-iis-server"></a>(*Povolené*) protokolu RDP na server služby IIS
+1. Správce serveru na Internetu požadavky relaci protokolu RDP pro IIS01 na veřejnou IP adresu na síťový adaptér přidružený IIS01 síťový adaptér (Tato veřejná IP adresa naleznete prostřednictvím portálu nebo prostředí PowerShell)
+2. Veřejná IP adresa předá provoz do virtuální sítě směrem IIS01 (webový server)
 3. Podsíť frontend zahájí zpracování příchozí pravidlo:
-  1. Netýká NSG pravidlo 1 (DNS), přesunete toonext pravidlo
+  1. Není použít, přejděte k další pravidla NSG pravidlo 1 (DNS)
   2. Použít NSG pravidlo 2 (RDP), Probíhá zpracování povolených, zastavení pravidla
 4. Žádná odchozí pravidla použít výchozí pravidla a návratový provoz je povolený
 5. Je povoleno relaci protokolu RDP.
-6. IIS01 vyzve k zadání hello uživatelské jméno a heslo
+6. IIS01 vyzve k zadání uživatelského jména a hesla
 
 >[!NOTE]
->tooRDP tooany back-end serverů v této instanci serveru IIS hello slouží jako "jump pole." První server služby IIS toohello RDP a potom z hello RDP serveru IIS toohello back-end serveru.
+>Pro připojení RDP k žádnému back-end serverů v této instanci serveru IIS slouží jako "jump pole." První RDP na server služby IIS a pak z RDP Server služby IIS na back-end serverů.
 >
 >
 
 #### <a name="allowed-web-server-dns-look-up-on-dns-server"></a>(*Povolené*) hledání DNS webového serveru na serveru DNS
-1. Webový Server, IIS01, požadavky datového kanálu v www.data.gov, ale potřebuje tooresolve hello adresu.
-2. Hello konfiguraci sítě pro virtuální síť seznamy hello DNS01 (10.0.2.4 v podsíti hello back-end) jako primární server DNS hello IIS01 odešle tooDNS01 požadavek DNS hello
+1. Webový Server, IIS01, požadavky datového kanálu v www.data.gov, ale musí pro překlad adres.
+2. Konfigurace sítě pro virtuální síť seznamy DNS01 (10.0.2.4 v podsíti back-end) jako primární server DNS, IIS01 odešle žádost DNS do DNS01
 3. Žádná odchozí pravidla na podsíť Frontend provoz je povolený.
 4. Back-end podsíť zahájí zpracování příchozí pravidlo:
   * Použít NSG pravidlo 1 (DNS), Probíhá zpracování povolených, zastavení pravidla
-5. DNS server obdrží požadavek hello
-6. DNS server nemá hello adresu do mezipaměti a požádá kořenový server DNS na hello Internetu
+5. DNS server obdrží požadavek
+6. DNS server nemá adresu do mezipaměti a požádá kořenový server DNS na Internetu
 7. Žádná odchozí pravidla na back-end podsítě provoz je povolený.
-8. Server DNS pro Internet odpoví, vzhledem k tomu, že tuto relaci bylo zahájeno interně, je povoleno hello odpovědi
-9. DNS server ukládá do mezipaměti odpovědi hello a odpoví back tooIIS01 toohello úvodního požadavku
+8. Server DNS pro Internet odpoví, vzhledem k tomu, že tuto relaci bylo zahájeno interně, je povoleno odpovědi
+9. DNS server odpověď do mezipaměti a reaguje na počáteční požadavek zpět na IIS01
 10. Žádná odchozí pravidla na back-end podsítě provoz je povolený.
 11. Podsíť frontend zahájí zpracování příchozí pravidlo:
-  1. Neexistuje žádné pravidlo NSG, která se použije tooInbound provozu z podsítě hello back-end podsíť toohello front-endu, tak pravidla NSG hello nepoužijí
-  2. Hello výchozí systému pravidlo umožňuje provoz mezi podsítěmi umožňuje tento provoz, provoz hello je povolený
-12. IIS01 obdrží odpověď hello z DNS01
+  1. Neexistuje žádná skupina NSG pravidlo, které platí pro příchozí provoz z back-end podsítě pro podsíť Frontend, aby žádný z NSG pravidla použít
+  2. Výchozí pravidlo systému umožňuje provoz mezi podsítěmi by povolit tento provoz, provoz je povoleno
+12. IIS01 obdrží odpověď od DNS01
 
 #### <a name="allowed-web-server-access-file-on-appvm01"></a>(*Povolené*) přístup k souboru webového serveru na AppVM01
 1. IIS01 požádá o soubor na AppVM01
 2. Žádná odchozí pravidla na podsíť Frontend provoz je povolený.
-3. podsíť back-end Hello zahájí zpracování příchozí pravidlo:
-  1. Netýká NSG pravidlo 1 (DNS), přesunete toonext pravidlo
-  2. Pravidla NSG 2 (RDP) netýká, přesuňte toonext pravidlo
-  3. Skupina NSG pravidla 3 (Internet tooIIS01) netýká, přesuňte toonext pravidlo
-  4. Použít NSG pravidla 4 (IIS01 tooAppVM01), Probíhá zpracování povolených, zastavení pravidla
-4. AppVM01 obdrží požadavek na hello a odpoví souboru (za předpokladu, že je autorizovaný přístup)
-5. Vzhledem k tomu, že neexistují žádná odchozí pravidla v podsíti hello back-end, je povoleno hello odpovědi
+3. Podsíť back-end zahájí zpracování příchozí pravidlo:
+  1. Není použít, přejděte k další pravidla NSG pravidlo 1 (DNS)
+  2. Není použít, přejděte k další pravidla NSG pravidlo 2 (RDP)
+  3. Není použít, přejděte k další pravidla NSG pravidla 3 (Internet k IIS01)
+  4. Skupina NSG pravidla 4 použít (IIS01 k AppVM01), provoz je povolený, zastavte zpracování pravidla
+4. AppVM01 obdrží požadavek a odpoví souboru (za předpokladu, že je autorizovaný přístup)
+5. Vzhledem k tomu, že neexistují žádná odchozí pravidla v podsíti back-end, je povoleno odpovědi
 6. Podsíť frontend zahájí zpracování příchozí pravidlo:
-  1. Neexistuje žádné pravidlo NSG, která se použije tooInbound provozu z podsítě hello back-end podsíť toohello front-endu, tak pravidla NSG hello nepoužijí
-  2. Hello výchozí systému pravidlo umožňuje provoz mezi podsítěmi umožňuje tento provoz, provoz hello je povolený.
-7. server služby IIS Hello obdrží soubor hello
+  1. Neexistuje žádná skupina NSG pravidlo, které platí pro příchozí provoz z back-end podsítě pro podsíť Frontend, aby žádný z NSG pravidla použít
+  2. Výchozí pravidlo systému umožňuje provoz mezi podsítěmi by povolit tento provoz, provoz je povolen.
+7. Server služby IIS obdrží soubor
 
-#### <a name="denied-rdp-toobackend"></a>(*Byl odepřen*) toobackend protokolu RDP
-1. Uživatel s Internetu pokusí tooRDP tooserver AppVM01
-2. Vzhledem k tomu, že nejsou žádné veřejné IP adresy přidružené k této servery síťový adaptér, tato komunikace by nikdy zadejte hello virtuální sítě a nebude kontaktovat hello server
+#### <a name="denied-rdp-to-backend"></a>(*Byl odepřen*) protokolu RDP na back-end
+1. Uživatelé Internetu pokusí protokolu RDP na server AppVM01
+2. Vzhledem k tomu, že nejsou žádné veřejné IP adresy přidružené k této servery síťový adaptér, tato komunikace by nikdy zadejte síť VNet a nebude moci připojit k serveru
 3. Pokud z nějakého důvodu byla povolená veřejnou IP adresu, ale by pravidla NSG 2 (RDP) povolit tento provoz
 
 >[!NOTE]
->tooRDP tooany back-end serverů v této instanci serveru IIS hello slouží jako "jump pole." První server služby IIS toohello RDP a potom z hello RDP serveru IIS toohello back-end serveru.
+>Pro připojení RDP k žádnému back-end serverů v této instanci serveru IIS slouží jako "jump pole." První RDP na server služby IIS a pak z RDP Server služby IIS na back-end serverů.
 >
 >
 
-#### <a name="denied-web-toobackend-server"></a>(*Byl odepřen*) toobackend webu
-1. Uživatel s Internetu pokusí tooaccess souboru na AppVM01
-2. Vzhledem k tomu, že nejsou žádné veřejné IP adresy přidružené k této servery síťový adaptér, tato komunikace by nikdy zadejte hello virtuální sítě a nebude kontaktovat hello server
-3. Pokud z nějakého důvodu bylo povolené veřejnou IP adresu, by tento provoz blokovat pravidla NSG 5 (Internet tooVNet)
+#### <a name="denied-web-to-backend-server"></a>(*Byl odepřen*) webové back-end server
+1. Uživatel s Internetu pokusí o přístup k souboru na AppVM01
+2. Vzhledem k tomu, že nejsou žádné veřejné IP adresy přidružené k této servery síťový adaptér, tato komunikace by nikdy zadejte síť VNet a nebude moci připojit k serveru
+3. Pokud z nějakého důvodu bylo povolené veřejnou IP adresu, by tento provoz blokovat pravidla NSG 5 (Internet do virtuální sítě)
 
 #### <a name="denied-web-dns-look-up-on-dns-server"></a>(*Byl odepřen*) hledání DNS pro Web na serveru DNS
-1. Uživatel s Internetu pokusí toolook až interní záznam DNS na DNS01
-2. Vzhledem k tomu, že nejsou žádné veřejné IP adresy přidružené k této servery síťový adaptér, tato komunikace by nikdy zadejte hello virtuální sítě a nebude kontaktovat hello server
-3. Pokud z nějakého důvodu bylo povolené veřejnou IP adresu, pravidla NSG 5 (tooVNet Internetu) by blokovat tento provoz (Poznámka: aby pravidlo 1 (DNS) nebude použít, protože hello požadavky zdrojové adresy je hello internet a pravidla 1 uplatňuje se pouze toohello virtuální místní síť jako zdroj hello)
+1. Uživatelé Internetu pokusí vyhledat interní záznam DNS na DNS01
+2. Vzhledem k tomu, že nejsou žádné veřejné IP adresy přidružené k této servery síťový adaptér, tato komunikace by nikdy zadejte síť VNet a nebude moci připojit k serveru
+3. Pokud z nějakého důvodu bylo povolené veřejnou IP adresu, pravidla NSG 5 (Internet do virtuální sítě) by blokovat tento provoz (Poznámka: aby pravidlo 1 (DNS) nebude použít, protože žádosti zdrojová adresa je Internetu a pravidla 1 se vztahuje pouze na místní virtuální síť jako zdroj)
 
-#### <a name="denied-sql-access-on-hello-web-server"></a>(*Byl odepřen*) SQL přístup na webový server hello
+#### <a name="denied-sql-access-on-the-web-server"></a>(*Byl odepřen*) přístup SQL na webovém serveru
 1. Uživatel s Internetu vyžaduje SQL data z IIS01
-2. Vzhledem k tomu, že nejsou žádné veřejné IP adresy přidružené k této servery síťový adaptér, tato komunikace by nikdy zadejte hello virtuální sítě a nebude kontaktovat hello server
-3. Pokud z nějakého důvodu bylo povolené veřejnou IP adresu, podsíť Frontend hello zahájí zpracování příchozí pravidlo:
-  1. Netýká NSG pravidlo 1 (DNS), přesunete toonext pravidlo
-  2. Pravidla NSG 2 (RDP) netýká, přesuňte toonext pravidlo
-  3. Použít NSG pravidla 3 (tooIIS01 Internetu), Probíhá zpracování povolených, zastavení pravidla
-4. Provoz dotkne interní IP adresu hello IIS01 (10.0.1.5)
-5. IIS01 nenaslouchá na portu 1433, takže žádný požadavek na toohello odpovědi
+2. Vzhledem k tomu, že nejsou žádné veřejné IP adresy přidružené k této servery síťový adaptér, tato komunikace by nikdy zadejte síť VNet a nebude moci připojit k serveru
+3. Pokud z nějakého důvodu bylo povolené veřejnou IP adresu, podsíť Frontend zahájí zpracování příchozí pravidlo:
+  1. Není použít, přejděte k další pravidla NSG pravidlo 1 (DNS)
+  2. Není použít, přejděte k další pravidla NSG pravidlo 2 (RDP)
+  3. Použít NSG pravidla 3 (Internet k IIS01), Probíhá zpracování povolených, zastavení pravidla
+4. Provoz dotkne interní IP adresu IIS01 (10.0.1.5)
+5. IIS01 nenaslouchá na portu 1433, takže žádná odpověď na žádost
 
 ## <a name="conclusion"></a>Závěr
-V tomto příkladu je relativně jednoduché a splněny následující způsob izolace hello back-end podsíť z příchozí přenosy.
+V tomto příkladu je relativně jednoduché a splněny následující způsob izolace back-end podsíť z příchozí přenosy.
 
 Další příklady a přehled hranice zabezpečení sítě najdete [sem][HOME].
 
 ## <a name="references"></a>Odkazy
 ### <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
-Tento příklad používá šablonu Azure Resource Manager předdefinované v úložišti GitHub spravován společností Microsoft a otevřete toohello komunity. Tuto šablonu můžete nasazovat přímo z Githubu, nebo stáhli a upravili toofit vašim potřebám. 
+Tento příklad používá šablonu Azure Resource Manager předdefinované v úložišti GitHub spravován společností Microsoft a otevřené celé komunitě. Tuto šablonu je možné nasazovat přímo z Githubu, nebo stáhnout a upravit tak, aby vyhovovaly vašim potřebám. 
 
-Hlavní šablona Hello je v souboru hello s názvem "azuredeploy.json." Tato šablona jde odeslat prostřednictvím prostředí PowerShell nebo rozhraní příkazového řádku (s soubor přidružené "azuredeploy.parameters.json" hello) toodeploy této šablony. Najít hello nejjednodušší způsob je toouse hello tlačítko "Nasadit tooAzure" na stránce README.md hello v Githubu.
+Hlavní šablona je v souboru s názvem "azuredeploy.json." Tato šablona jde odeslat prostřednictvím prostředí PowerShell nebo rozhraní příkazového řádku (souborem přidružené "azuredeploy.parameters.json") k nasazení této šablony. Najít Nejjednodušším způsobem je použít tlačítko "Nasadit do Azure" na stránce README.md v Githubu.
 
-toodeploy hello šablonu, která vytvoří tento příklad z Githubu a hello portál Azure, postupujte takto:
+Pokud chcete nasadit šablonu, která vytvoří tento příklad z Githubu a portálu Azure, postupujte takto:
 
-1. V prohlížeči přejděte toohello [šablony][Template]
-2. Klikněte na tlačítko "Nasadit tooAzure" hello (nebo hello "Vizualizovat" tlačítko toosee grafické reprezentace této šablony)
-3. Zadejte v okně parametry hello hello účet úložiště, uživatelské jméno a heslo a potom klikněte na tlačítko **OK**
+1. V prohlížeči přejděte na [šablony][Template]
+2. Klikněte na tlačítko "Nasadit do Azure" (nebo na tlačítko "Vizualizovat" v tématu grafické reprezentace této šablony)
+3. Zadejte účet úložiště, uživatelské jméno a heslo v okně parametry a potom klikněte na tlačítko **OK**
 5. Vytvořte skupinu prostředků pro toto nasazení (můžete použít existující šablonu, ale I doporučujeme novou nejlepších výsledků dosáhnete)
-6. V případě potřeby změňte hello předplatném a umístění nastavení pro virtuální síť.
-7. Klikněte na tlačítko **přečíst si právní podmínky**, přečtěte si podmínky hello a klikněte na tlačítko **nákupu** tooagree.
-8. Klikněte na tlačítko **vytvořit** toobegin hello nasazení této šablony.
-9. Po nasazení hello skončí úspěšně, přejděte toohello, který vytvořili skupinu prostředků pro toto nasazení prostředky hello toosee nakonfigurované uvnitř.
+6. V případě potřeby změňte nastavení předplatném a umístění pro virtuální síť.
+7. Klikněte na tlačítko **přečíst si právní podmínky**, přečtěte si podmínky a klikněte na tlačítko **nákupu** souhlasit.
+8. Klikněte na tlačítko **vytvořit** zahájíte nasazení této šablony.
+9. Po nasazení skončí úspěšně, přejděte do skupiny prostředků vytvořené pro toto nasazení, najdete v materiálech nakonfigurované uvnitř.
 
 >[!NOTE]
->Tato šablona umožňuje RDP toohello IIS01 pouze server (hello Najít veřejnou IP adresu pro IIS01 na hello portálu). tooRDP tooany back-end serverů v této instanci serveru IIS hello slouží jako "jump pole." První server služby IIS toohello RDP a potom z hello RDP serveru IIS toohello back-end serveru.
+>Tato šablona umožňuje RDP k serveru IIS01 (Najít veřejné IP adresy pro IIS01 na portálu.). Pro připojení RDP k žádnému back-end serverů v této instanci serveru IIS slouží jako "jump pole." První RDP na server služby IIS a pak z RDP Server služby IIS na back-end serverů.
 >
 >
 
-tooremove tato nasazení, hello odstranit skupinu prostředků a všechny podřízené prostředky budou také odstraněny.
+Pokud chcete odebrat toto nasazení, odstraňte skupinu prostředků a všechny podřízené prostředky budou také odstraněny.
 
 #### <a name="sample-application-scripts"></a>Ukázkové skripty aplikace
-Po úspěšném spuštění hello šablony můžete nastavit hello webového serveru a aplikačního serveru s tooallow jednoduché webové aplikace testování s touto konfigurací hraniční sítě. tooinstall ukázkové aplikace pro toto a další příklady hraniční sítě, jednu bylo zadáno v hello následující odkaz: [ukázkový skript aplikace][SampleApp]
+Po úspěšném spuštění šablony můžete nastavit webový server a server aplikace s jednoduchou webovou aplikaci umožňující testování s touto konfigurací hraniční sítě. Instalace ukázkové aplikace pro toto a další příklady hraniční sítě, jednu bylo zadáno na následující odkaz: [ukázkový skript aplikace][SampleApp]
 
 ## <a name="next-steps"></a>Další kroky
 
 * Tento příklad nasazení
-* Vytvoření ukázkové aplikace hello
+* Vytvoření ukázkové aplikace
 * Testování různé přenosové toky prostřednictvím této hraniční sítě
 
 <!--Image References-->

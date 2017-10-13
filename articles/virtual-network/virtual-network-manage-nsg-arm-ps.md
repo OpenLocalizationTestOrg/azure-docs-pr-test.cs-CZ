@@ -1,6 +1,6 @@
 ---
-title: "aaaManage skupin zabezpečení - sítě, prostředí Azure PowerShell | Microsoft Docs"
-description: "Zjistěte, jak toomanage sítě pomocí prostředí PowerShell skupiny zabezpečení."
+title: "Správa skupin zabezpečení sítě - prostředí Azure PowerShell | Microsoft Docs"
+description: "Naučte se spravovat skupiny zabezpečení sítě pomocí prostředí PowerShell."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 930fe5e0827896ad67b24d84e41a5d3f898ba838
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ca7f4926ca4edf9d20612aca74f6ae5f0ed847b3
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="manage-network-security-groups-using-powershell"></a>Správa skupin zabezpečení sítě pomocí prostředí PowerShell
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/06/2017
 [!INCLUDE [virtual-network-manage-nsg-intro-include.md](../../includes/virtual-network-manage-nsg-intro-include.md)]
 
 > [!NOTE]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Resource Manager hello, které společnost Microsoft doporučuje pro většinu nasazení nové místo hello modelu nasazení classic.
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Resource Manager, které společnost Microsoft doporučuje pro většinu nových nasazení místo modelu nasazení classic.
 >
 
 [!INCLUDE [virtual-network-manage-nsg-arm-scenario-include.md](../../includes/virtual-network-manage-nsg-arm-scenario-include.md)]
@@ -40,7 +40,7 @@ ms.lasthandoff: 10/06/2017
 Můžete zobrazit stávající skupiny Nsg, načíst pravidla pro existující skupiny NSG a zjistit, jaké prostředky skupinu NSG je přidružena k.
 
 ### <a name="view-existing-nsgs"></a>Zobrazit existující skupiny Nsg
-tooview všechny existující skupiny Nsg v předplatném, spusťte hello `Get-AzureRmNetworkSecurityGroup` rutiny.
+Chcete-li zobrazit všechny existující skupiny Nsg v odběru, spusťte `Get-AzureRmNetworkSecurityGroup` rutiny.
 
 Očekávaný výsledek:
 
@@ -87,7 +87,7 @@ Očekávaný výsledek:
     Subnets              : [...]
 
 
-tooview hello seznam skupin Nsg v určité skupiny zdrojů, spusťte hello `Get-AzureRmNetworkSecurityGroup` rutiny.
+Chcete-li zobrazit seznam skupin Nsg v určité skupiny zdrojů, spusťte `Get-AzureRmNetworkSecurityGroup` rutiny.
 
 Očekávaný výstup:
 
@@ -120,7 +120,7 @@ Očekávaný výstup:
     Subnets              : [...]
 
 ### <a name="list-all-rules-for-an-nsg"></a>Seznam všech pravidel pro skupiny NSG
-pravidla hello tooview skupinu NSG s názvem **NSG front-endu**, zadejte následující příkaz hello:
+Chcete-li zobrazit pravidla s názvem skupiny NSG **NSG front-endu**, zadejte následující příkaz:
 
 ```powershell
 Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd | Select SecurityRules -ExpandProperty SecurityRules
@@ -157,17 +157,17 @@ Očekávaný výstup:
     Direction                : Inbound
 
 > [!NOTE]
-> Můžete také použít `Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name "NSG-FrontEnd" | Select DefaultSecurityRules -ExpandProperty DefaultSecurityRules` toolist hello výchozí pravidla z hello **NSG front-endu** NSG.
+> Můžete také použít `Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name "NSG-FrontEnd" | Select DefaultSecurityRules -ExpandProperty DefaultSecurityRules` seznam výchozích pravidel z **NSG front-endu** NSG.
 > 
 
 ### <a name="view-nsgs-associations"></a>Zobrazte přidružení skupiny Nsg
-tooview jaké prostředky hello **NSG front-endu** NSG je spojený s, spusťte hello následující příkaz:
+Chcete-li zobrazit prostředky **NSG front-endu** NSG je spojený s, spusťte následující příkaz:
 
 ```powershell
 Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
 ```
 
-Vyhledejte hello **NetworkInterfaces** a **podsítě** vlastnosti, jak je uvedeno níže:
+Vyhledejte **NetworkInterfaces** a **podsítě** vlastnosti, jak je uvedeno níže:
 
     NetworkInterfaces    : []
     Subnets              : [
@@ -177,21 +177,21 @@ Vyhledejte hello **NetworkInterfaces** a **podsítě** vlastnosti, jak je uveden
                              }
                            ]
 
-V předchozím příkladu hello hello NSG není přidružené tooany síťových rozhraní (NIC); je přidružená tooa podsíť s názvem **front-endu**.
+V předchozím příkladu NSG není přidružen k žádné síťových rozhraní (NIC); je přidružen k podsíti s názvem **front-endu**.
 
 ## <a name="manage-rules"></a>Spravovat pravidla
-Můžete přidat pravidla tooan existující skupina NSG, upravit stávající pravidla a odstranit pravidla.
+Můžete přidat pravidla do existující skupiny NSG, upravit stávající pravidla a odstranit pravidla.
 
 ### <a name="add-a-rule"></a>Přidání pravidla
-pravidlo, které povoluje tooadd **příchozí** provoz tooport **443** z toohello všechny počítače **NSG front-endu** NSG, dokončení hello následující kroky:
+Chcete-li přidat pravidlo, které povoluje **příchozí** přenosy na portu **443** z libovolného počítače k **NSG front-endu** NSG, proveďte následující kroky:
 
-1. Spusťte následující příkaz tooretrieve hello existující skupina NSG hello a uložit jako proměnnou:
+1. Spusťte následující příkaz pro načtení existující skupina NSG a uložte ho do proměnné:
 
     ```powershell   
     $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
     ```
 
-2. Spusťte následující příkaz tooadd hello toohello pravidla NSG:
+2. Spusťte následující příkaz pro přidání pravidla k této skupině:
 
     ```powershell
     Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg `
@@ -207,12 +207,12 @@ pravidlo, které povoluje tooadd **příchozí** provoz tooport **443** z toohel
     -DestinationPortRange 443
     ```
 
-3. toosave hello změn toohello NSG, spusťte následující příkaz hello:
+3. Pokud chcete uložit změny provedené v této skupině, spusťte následující příkaz:
 
     ```powershell
     Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
     ```
-    Očekávaný výstup zobrazuje pouze hello pravidla zabezpečení:
+    Očekávaný výstup zobrazuje pouze pravidla zabezpečení:
    
         Name                 : NSG-FrontEnd
         ...
@@ -243,15 +243,15 @@ pravidlo, které povoluje tooadd **příchozí** provoz tooport **443** z toohel
                                ]
 
 ### <a name="change-a-rule"></a>Změna pravidla
-pravidlo hello toochange vytvořili výše tooallow příchozí provoz z hello **Internet** pouze, postupujte podle následujících kroků hello.
+Chcete-li změnit pravidlo vytvořili výše, které pokud chcete povolit příchozí přenosy z **Internet** pouze, použijte následující postup.
 
-1. Spusťte následující příkaz tooretrieve hello existující skupina NSG hello a uložit jako proměnnou:
+1. Spusťte následující příkaz pro načtení existující skupina NSG a uložte ho do proměnné:
 
     ```powershell 
     $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
     ```
 
-2. Spusťte následující příkaz s hello nové pravidel nastavení hello:
+2. Spusťte následující příkaz s novým nastavením pravidlo:
 
     ```powershell
     Set-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg `
@@ -267,13 +267,13 @@ pravidlo hello toochange vytvořili výše tooallow příchozí provoz z hello *
     -DestinationPortRange 443
     ```
 
-3. toosave hello změn toohello NSG, spusťte následující příkaz hello:
+3. Pokud chcete uložit změny provedené v této skupině, spusťte následující příkaz:
 
     ```powershell
     Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
     ```
 
-    Očekávaný výstup zobrazuje pouze hello pravidla zabezpečení:
+    Očekávaný výstup zobrazuje pouze pravidla zabezpečení:
    
         Name                 : NSG-FrontEnd
         ...
@@ -304,25 +304,25 @@ pravidlo hello toochange vytvořili výše tooallow příchozí provoz z hello *
                                ]
 
 ### <a name="delete-a-rule"></a>Odstranění pravidla
-1. Spusťte následující příkaz tooretrieve hello existující skupina NSG hello a uložit jako proměnnou:
+1. Spusťte následující příkaz pro načtení existující skupina NSG a uložte ho do proměnné:
 
     ```powershell
     $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
     ```
 
-2. Spusťte následující příkaz tooremove hello pravidlo z hello NSG hello:
+2. Spusťte následující příkaz pro odebrání pravidla z této skupině:
 
     ```powershell
     Remove-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name https-rule
     ```
 
-3. Uložte změny provedené toohello hello NSG, spuštěním hello následující příkaz:
+3. Uložte změny provedené NSG, tak, že spustíte následující příkaz:
 
     ```powershell
     Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
     ```
 
-    Očekávaný výstup zobrazuje pouze hello pravidla zabezpečení, Všimněte si hello **https pravidlo** již není uveden:
+    Očekávaný výstup zobrazuje pouze pravidla zabezpečení, upozornění **https pravidlo** již není uveden:
    
         Name                 : NSG-FrontEnd
         ...
@@ -338,36 +338,36 @@ pravidlo hello toochange vytvořili výše tooallow příchozí provoz z hello *
                                ]
 
 ## <a name="manage-associations"></a>Správa přidružení
-Můžete přidružit toosubnets NSG a síťových karet. Můžete také zrušit přidružení skupiny NSG ze všech prostředků, které je přidružené k.
+Můžete přidružit skupiny NSG k podsítí a síťových karet. Můžete také zrušit přidružení skupiny NSG ze všech prostředků, které je přidružené k.
 
-### <a name="associate-an-nsg-tooa-nic"></a>Přidružit NSG tooa síťový adaptér
-tooassociate hello **NSG front-endu** NSG toohello **TestNICWeb1** síťového adaptéru, dokončení hello následující kroky:
+### <a name="associate-an-nsg-to-a-nic"></a>Přidružení skupiny NSG k síťové karty
+Pro přidružení **NSG front-endu** NSG k **TestNICWeb1** síťovou kartu, proveďte následující kroky:
 
-1. Spusťte následující příkaz tooretrieve hello existující skupina NSG hello a uložit jako proměnnou:
+1. Spusťte následující příkaz pro načtení existující skupina NSG a uložte ho do proměnné:
 
     ```powershell
     $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
     ```
 
-2. Spusťte následující příkaz tooretrieve hello stávající síťovou kartu hello a uložte ho do proměnné:
+2. Spusťte následující příkaz pro načtení stávající síťové karty a uložte ho do proměnné:
 
     ```powershell
     $nic = Get-AzureRmNetworkInterface -ResourceGroupName RG-NSG -Name TestNICWeb1
     ```
 
-3. Sada hello **skupinu zabezpečení sítě** vlastnost hello **seskupování** hodnotu proměnné toohello hello **NSG** proměnné tak, že zadáte následující příkaz hello:
+3. Nastavte **skupinu zabezpečení sítě** vlastnost **seskupování** proměnné na hodnotu **NSG** proměnné tak, že zadáte následující příkaz:
 
     ```powershell
     $nic.NetworkSecurityGroup = $nsg
     ```
 
-4. toosave hello změn toohello síťového adaptéru, spusťte následující příkaz hello:
+4. Pokud chcete uložit změny provedené na síťový adaptér, spusťte následující příkaz:
 
     ```powershell
     Set-AzureRmNetworkInterface -NetworkInterface $nic
     ```
    
-    Očekávaný výstup zobrazuje pouze hello **skupinu zabezpečení sítě** vlastnost:
+    Očekávaný výstup zobrazuje jenom **skupinu zabezpečení sítě** vlastnost:
    
         NetworkSecurityGroup : {
                                  "SecurityRules": [],
@@ -378,58 +378,58 @@ tooassociate hello **NSG front-endu** NSG toohello **TestNICWeb1** síťového a
                                }
 
 ### <a name="dissociate-an-nsg-from-a-nic"></a>Zrušit přidružení skupiny NSG z síťový adaptér
-toodissociate hello **NSG front-endu** NSG z hello **TestNICWeb1** síťového adaptéru, dokončení hello následující kroky:
+Zrušení přidružení **NSG front-endu** NSG z **TestNICWeb1** síťovou kartu, proveďte následující kroky:
 
-1. Spusťte následující příkaz tooretrieve hello stávající síťovou kartu hello a uložte ho do proměnné:
+1. Spusťte následující příkaz pro načtení stávající síťové karty a uložte ho do proměnné:
 
     ```powershell
     $nic = Get-AzureRmNetworkInterface -ResourceGroupName RG-NSG -Name TestNICWeb1
     ```
 
-2. Sada hello **skupinu zabezpečení sítě** vlastnost hello **seskupování** proměnné příliš**$null** spuštěním hello následující příkaz:
+2. Nastavte **skupinu zabezpečení sítě** vlastnost **seskupování** proměnnou **$null** spuštěním následujícího příkazu:
 
     ```powershell
     $nic.NetworkSecurityGroup = $null
     ```
 
-3. toosave hello změn toohello síťového adaptéru, spusťte následující příkaz hello:
+3. Pokud chcete uložit změny provedené na síťový adaptér, spusťte následující příkaz:
 
     ```powershell
     Set-AzureRmNetworkInterface -NetworkInterface $nic
     ```
    
-    Očekávaný výstup zobrazuje pouze hello **skupinu zabezpečení sítě** vlastnost:
+    Očekávaný výstup zobrazuje jenom **skupinu zabezpečení sítě** vlastnost:
    
         NetworkSecurityGroup : null
 
 ### <a name="dissociate-an-nsg-from-a-subnet"></a>Zrušit přidružení skupiny NSG z podsítě
-toodissociate hello **NSG front-endu** NSG z hello **front-endu** podsíť, dokončení hello následující kroky:
+Zrušení přidružení **NSG front-endu** NSG z **front-endu** podsíť, proveďte následující kroky:
 
-1. Spusťte následující příkaz tooretrieve hello existující virtuální síť hello a uložit jako proměnnou:
+1. Spusťte následující příkaz pro načtení existující virtuální síť a uložte ho do proměnné:
 
     ```powershell
     $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName RG-NSG -Name TestVNet
     ```
 
-2. Spuštění hello následující příkaz tooretrieve hello **front-endu** podsítě a uložte ho do proměnné:
+2. Spusťte následující příkaz pro načtení **front-endu** podsítě a uložte ho do proměnné:
 
     ```powershell
     $subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name FrontEnd
     ```
  
-3. Sada hello **skupinu zabezpečení sítě** vlastnost hello **podsíť** proměnné příliš**$null** zadáním hello následující příkaz:
+3. Nastavte **skupinu zabezpečení sítě** vlastnost **podsíť** proměnnou **$null** tak, že zadáte následující příkaz:
 
     ```powershell
     $subnet.NetworkSecurityGroup = $null
     ```
 
-4. toosave hello změn toohello podsíť, spusťte následující příkaz hello:
+4. Pokud chcete uložit změny provedené v podsíti, spusťte následující příkaz:
 
     ```powershell
     Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
     ```
 
-    Očekávaný výstup zobrazuje pouze hello vlastnosti hello **front-endu** podsítě. Všimněte si, není k dispozici vlastnost pro **skupinu zabezpečení sítě**:
+    Očekávaný výstup zobrazuje pouze vlastnosti typu **front-endu** podsítě. Všimněte si, není k dispozici vlastnost pro **skupinu zabezpečení sítě**:
    
             ...
             Subnets           : [
@@ -451,40 +451,40 @@ toodissociate hello **NSG front-endu** NSG z hello **front-endu** podsíť, doko
                                     ...
                                 ]
 
-### <a name="associate-an-nsg-tooa-subnet"></a>Přidružení podsíť tooa NSG
-tooassociate hello **NSG front-endu** NSG toohello **FronEnd** znovu podsíť, dokončení hello následující kroky:
+### <a name="associate-an-nsg-to-a-subnet"></a>Přidružení skupiny NSG k podsíti
+Pro přidružení **NSG front-endu** NSG k **FronEnd** podsíť znovu, proveďte následující kroky:
 
-1. Spusťte následující příkaz tooretrieve hello existující virtuální síť hello a uložit jako proměnnou:
+1. Spusťte následující příkaz pro načtení existující virtuální síť a uložte ho do proměnné:
 
     ```powershell
     $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName RG-NSG -Name TestVNet
     ```
 
-2. Spuštění hello následující příkaz tooretrieve hello **front-endu** podsítě a uložte ho do proměnné:
+2. Spusťte následující příkaz pro načtení **front-endu** podsítě a uložte ho do proměnné:
 
     ```powershell
     $subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name FrontEnd
     ```
  
-3. Spusťte následující příkaz tooretrieve hello existující skupina NSG hello a uložit jako proměnnou:
+3. Spusťte následující příkaz pro načtení existující skupina NSG a uložte ho do proměnné:
 
     ```powershell
     $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
     ```
 
-4. Sada hello **skupinu zabezpečení sítě** vlastnost hello **podsíť** proměnné příliš**$null** spuštěním hello následující příkaz:
+4. Nastavte **skupinu zabezpečení sítě** vlastnost **podsíť** proměnnou **$null** spuštěním následujícího příkazu:
 
     ```powershell
     $subnet.NetworkSecurityGroup = $nsg
     ```
 
-5. toosave hello změn toohello podsíť, spusťte následující příkaz hello:
+5. Pokud chcete uložit změny provedené v podsíti, spusťte následující příkaz:
 
     ```powershell
     Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
     ```
 
-    Očekávaný výstup zobrazuje pouze hello **skupinu zabezpečení sítě** vlastnost hello **front-endu** podsítě:
+    Očekávaný výstup zobrazuje jenom **skupinu zabezpečení sítě** vlastnost **front-endu** podsítě:
    
         ...
         "NetworkSecurityGroup": {
@@ -497,19 +497,19 @@ tooassociate hello **NSG front-endu** NSG toohello **FronEnd** znovu podsíť, d
         ...
 
 ## <a name="delete-an-nsg"></a>Odstranit skupinu NSG
-Skupinu NSG můžete odstranit, pouze pokud je tooany prostředku není přiřazen. toodelete skupina NSG, postupujte podle následujících kroků hello.
+Skupinu NSG můžete odstranit, pouze pokud má není přidružen k žádnému prostředku. Pokud chcete odstranit skupinu NSG, postupujte podle následujících kroků.
 
-1. toocheck hello prostředky přidružené tooan NSG, spusťte hello `azure network nsg show` jak je znázorněno v [přidružení skupiny Nsg zobrazení](#View-NSGs-associations).
-2. Pokud hello NSG přidružená tooany síťové adaptéry, spusťte hello `azure network nic set` jak je znázorněno v [zrušit přidružení skupiny NSG z síťový adaptér](#Dissociate-an-NSG-from-a-NIC) pro každý síťový adaptér. 
-3. Pokud hello NSG přidružená tooany podsíť, spusťte hello `azure network vnet subnet set` jak je znázorněno v [zrušit přidružení skupiny NSG z podsítě](#Dissociate-an-NSG-from-a-subnet) pro každou podsíť.
-4. hello toodelete NSG, spusťte následující příkaz hello:
+1. Chcete-li zkontrolovat prostředky přidružené k skupinu NSG, spusťte `azure network nsg show` jak je znázorněno v [přidružení skupiny Nsg zobrazení](#View-NSGs-associations).
+2. Pokud skupina NSG je přidružen k žádné síťové adaptéry, spusťte `azure network nic set` jak je znázorněno v [zrušit přidružení skupiny NSG z síťový adaptér](#Dissociate-an-NSG-from-a-NIC) pro každý síťový adaptér. 
+3. Pokud je přidružen k žádné podsíti NSG, spusťte `azure network vnet subnet set` jak je znázorněno v [zrušit přidružení skupiny NSG z podsítě](#Dissociate-an-NSG-from-a-subnet) pro každou podsíť.
+4. Pokud chcete odstranit NSG, spusťte následující příkaz:
 
     ```powershell
     Remove-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd -Force
     ```
    
    > [!NOTE]
-   > Hello `-Force` parametr zajišťuje nepotřebujete tooconfirm hello odstranění.
+   > `-Force` Parametr zajišťuje nemusíte potvrďte odstranění.
    > 
 
 ## <a name="next-steps"></a>Další kroky

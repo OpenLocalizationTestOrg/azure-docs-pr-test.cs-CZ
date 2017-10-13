@@ -1,6 +1,6 @@
 ---
-title: "aaaHow toogrant oprávnění tooa zákaznických aplikace | Microsoft Docs"
-description: "Jak toogrant oprávnění tooyour zákaznických aplikace pomocí hello parametr adresy URL nebo portálu Azure AD"
+title: "Postup udělení oprávnění k aplikaci zákaznických | Microsoft Docs"
+description: "Postup udělení oprávnění pro aplikace vyvinuté vlastní pomocí portálu Azure AD nebo parametr adresy URL"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,33 +13,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: e43a105fff60fbf912bdf4f60260f86ee289328d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 336b945929f80e1a566f7cf71b40fd799a98c12d
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="how-toogrant-permissions-tooa-custom-developed-application"></a>Jak toogrant oprávnění tooa zákaznických aplikace
+# <a name="how-to-grant-permissions-to-a-custom-developed-application"></a>Postup udělení oprávnění k aplikaci zákaznických
 
-Pokud chcete souhlas toogrant ho preventivně ve vaší aplikaci nebo jsou spuštěné došlo k chybě aplikace tooan nebyly dá souhlas, zkuste níže uvedeného postupu.
+Chcete-li k udělení souhlasu ho preventivně ve vaší aplikaci nebo jsou spuštěné aplikace došlo k chybě, které nebyly souhlas, zkuste níže uvedeného postupu.
 
-## <a name="how-tooperform-admin-consent-for-your-application"></a>Jak tooperform souhlas správce pro vaši aplikaci
+## <a name="how-to-perform-admin-consent-for-your-application"></a>Jak provádět souhlas správce pro vaši aplikaci
 
-Tato akce nemá vliv hello udělení souhlasu toohello aplikací pro všechny uživatele ve vaší organizaci.
+To má za následek udělení souhlasu do aplikace pro všechny uživatele ve vaší organizaci.
 
-1. Přejděte toohello **registrace aplikace** jako **globálního správce**, pak vyberte aplikace hello.
+1. Přejděte na **registrace aplikace** jako **globálního správce**, vyberte aplikaci.
 
-2. Vyberte **požadovaných oprávnění**a nakonec klikněte na tlačítko hello **udělit oprávnění** tlačítko hello horní části okna hello.
+2. Vyberte **požadovaných oprávnění**a nakonec klikněte **udělit oprávnění** tlačítka v horní části okna.
 
-Alternativně můžete vytvořit žádost o příliš*login.microsoftonline.com* s konfigurací vaší aplikace a připojte na *& výzva = správce\_souhlas*. Po přihlášení pomocí přihlašovacích údajů správce, aplikace hello byl udělen souhlas pro všechny uživatele.
+Alternativně můžete vytvořit žádost o *login.microsoftonline.com* s konfigurací vaší aplikace a připojte na *& výzva = správce\_souhlas*. Po přihlášení pomocí přihlašovacích údajů správce, aplikace byl udělen souhlas pro všechny uživatele.
 
-## <a name="how-tooforce-user-consent-for-your-application"></a>Jak tooforce souhlas uživatele pro vaši aplikaci
+## <a name="how-to-force-user-consent-for-your-application"></a>Jak vynutit souhlas uživatele pro vaši aplikaci
 
-* Připojit do žádosti o ověření *& výzva = souhlasu* vyžadující koncoví uživatelé tooconsent pokaždé, když ověření.
+* Připojit do žádosti o ověření *& výzva = souhlasu* vyžadující koncovým uživatelům souhlas pokaždé, když ověření.
 
 ## <a name="next-steps"></a>Další kroky
 
-[TooAzureAD souhlasu a integrace aplikací](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications)
+[Souhlasu a integrace aplikací AzureAD](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications)
 
 [Souhlasu a systému oprávnění rolích pro AzureAD v2.0 konvergované aplikace](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-scopes)<br>
 

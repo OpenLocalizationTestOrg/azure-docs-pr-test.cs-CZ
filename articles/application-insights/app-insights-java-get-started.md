@@ -1,5 +1,5 @@
 ---
-title: "aaaJava analýzy webových aplikací pomocí služby Azure Application Insights | Microsoft Docs"
+title: "Analýzy webové aplikace Java pomocí Azure Application Insights | Dokumentace Microsoftu"
 description: "Sledování výkonu webových aplikací Java pomocí Application Insights "
 services: application-insights
 documentationcenter: java
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: bwren
-ms.openlocfilehash: 6555ee53a44f937350e4fa296080f7dce4f45226
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f017b8ca42ff3560e17d8aac303a4f834d298540
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Začínáme s Application Insights ve webovém projektu Java
 
 
-[Application Insights](https://azure.microsoft.com/services/application-insights/) je rozšiřitelnou analytickou službu vývojářům webů, které vám pomůže pochopit hello výkonu a využití vaší živé aplikace. Použít příliš[najít a diagnostikovat problémy s výkonem a výjimkami](app-insights-detect-triage-diagnose.md), a [napsat kód] [ api] tootrack co uživatelé dělají s vaší aplikací.
+[Application Insights](https://azure.microsoft.com/services/application-insights/) představují rozšiřitelnou analytickou službu, která webovým vývojářům pomůže pochopit výkon a využití živých aplikací. Použijte ji k [zjištění a diagnostice výjimek a problémů s výkonem](app-insights-detect-triage-diagnose.md) a [napište kód][api] pro sledování, co uživatelé s vaší aplikací dělají.
 
 ![ukázková data](./media/app-insights-java-get-started/5-results.png)
 
@@ -31,29 +31,29 @@ Application Insights podporuje aplikace v Javě spuštěné v systému Linux, Un
 Budete potřebovat:
 
 * Oracle JRE 1.6 nebo novější nebo Zulu JRE 1.6 nebo novější
-* Předplatné příliš[Microsoft Azure](https://azure.microsoft.com/).
+* Předplatné [Microsoft Azure](https://azure.microsoft.com/).
 
-*Pokud máte webovou aplikaci, která je již živá, můžete sledovat alternativní postup hello příliš[přidat hello SDK v době běhu hello webový server](app-insights-java-live.md). Tento alternativa zabraňuje opětovnému sestavení kódu hello, ale neobdržíte hello možnost toowrite kód tootrack aktivity uživatelů.*
+*Pokud máte webovou aplikaci, která je už v provozu, můžete použít alternativní postup [přidání sady SDK za běhu na webovém serveru](app-insights-java-live.md). S touto alternativou se vyhnete opětovnému sestavování kódu, ale nebudete mít možnost napsat kód ke sledování činnosti uživatelů.*
 
 ## <a name="1-get-an-application-insights-instrumentation-key"></a>1. Získejte klíč instrumentace Application Insights
-1. Přihlaste se toohello [portálu Microsoft Azure](https://portal.azure.com).
-2. Vytvořte prostředek Application Insights. Nastavit hello aplikace typu tooJava webové aplikace.
+1. Přihlaste se na web [Microsoft Azure Portal](https://portal.azure.com).
+2. Vytvořte prostředek Application Insights. Nastavte typ aplikace na webovou aplikaci Java.
 
     ![Zadejte název, vyberte webovou aplikaci Java a klikněte na možnost Vytvořit](./media/app-insights-java-get-started/02-create.png)
-3. Najít hello klíč instrumentace nového prostředku hello. Budete potřebovat toopaste tento klíč do projektu kódu za chvíli.
+3. Najděte klíč instrumentace nového prostředku. Tento klíč budete muset za chvíli vložit do projektu kódu.
 
-    ![V hello přehledu nového prostředku klikněte na tlačítko Vlastnosti a zkopírujte hello klíč instrumentace](./media/app-insights-java-get-started/03-key.png)
+    ![V přehledu nového prostředku klikněte na tlačítko Vlastnosti a zkopírujte klíč instrumentace](./media/app-insights-java-get-started/03-key.png)
 
-## <a name="2-add-hello-application-insights-sdk-for-java-tooyour-project"></a>2. Přidat hello Application Insights SDK pro jazyk Java tooyour projekt
-*Zvolte hello vhodný způsob pro váš projekt.*
+## <a name="2-add-the-application-insights-sdk-for-java-to-your-project"></a>2. Do projektu přidejte Application Insights SDK pro jazyk Java
+*Zvolte vhodný způsob pro váš projekt.*
 
-#### <a name="if-youre-using-eclipse-toocreate-a-maven-or-dynamic-web-project-"></a>Pokud používáte Eclipse toocreate Maven nebo dynamického webového projektu...
-Použití hello [Application Insights SDK pro modul Java plug-in][eclipse].
+#### <a name="if-youre-using-eclipse-to-create-a-maven-or-dynamic-web-project-"></a>Pokud používáte Eclipse k vytvoření Maven nebo dynamického webového projektu...
+Použijte [Modul Application Insights SDK pro jazyk Java][eclipse].
 
 #### <a name="if-youre-using-maven"></a>Pokud používáte Maven...
-Pokud váš projekt již nastaven toouse Maven pro sestavení, slučte následující kód soubor pom.xml tooyour hello.
+Pokud je váš projekt již nastaven na sestavení s použitím nástroje Maven, slučte následující kód do souboru pom.xml.
 
-Potom závislosti projektu aktualizace hello tooget hello binární soubory stáhnout.
+Pak obnovte závislosti projektu k získání stažených binárních souborů.
 
 ```XML
 
@@ -75,13 +75,13 @@ Potom závislosti projektu aktualizace hello tooget hello binární soubory stá
     </dependencies>
 ```
 
-* *Chyby ověření sestavení nebo kontrolního součtu?* Zkuste použít konkrétní verzi, například: `<version>1.0.n</version>`. Nejnovější verzi hello najdete v hello [poznámky k verzi sady SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) nebo v našich [artefaktech Maven](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights).
-* *Třeba tooupdate tooa novou sadu SDK?* Obnovte závislosti svého projektu.
+* *Chyby ověření sestavení nebo kontrolního součtu?* Zkuste použít konkrétní verzi, například: `<version>1.0.n</version>`. Nejnovější verzi naleznete v [poznámkách k verzi sady SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) nebo v našich [artefaktech Maven](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights).
+* *Je nutné přejít na novou sadu SDK?* Obnovte závislosti svého projektu.
 
 #### <a name="if-youre-using-gradle"></a>Pokud používáte Gradle...
-Pokud váš projekt již nastaven toouse Gradle pro sestavení, slučte následující kód tooyour build.gradle soubor hello.
+Pokud je váš projekt již nastaven na sestavení s použitím nástroje Gradle, slučte následující kód do souboru build.gradle.
 
-Potom závislosti projektu aktualizace hello tooget hello binární soubory stáhnout.
+Pak obnovte závislosti projektu k získání stažených binárních souborů.
 
 ```JSON
 
@@ -95,30 +95,30 @@ Potom závislosti projektu aktualizace hello tooget hello binární soubory stá
     }
 ```
 
-* *Chyby ověření sestavení nebo kontrolního součtu? Zkuste použít konkrétní verzi, například:* `version:'1.0.n'`. *Nejnovější verzi hello najdete v hello [poznámky k verzi sady SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes).*
-* *tooupdate tooa novou sadu SDK*
+* *Chyby ověření sestavení nebo kontrolního součtu? Zkuste použít konkrétní verzi, například:* `version:'1.0.n'`. *Nejnovější verzi naleznete v [poznámkách k verzi sady SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes).*
+* *Postup aktualizace na novou sadu SDK*
   * Obnovte závislosti svého projektu.
 
 #### <a name="otherwise-"></a>V opačném případě...
-Ručně přidejte hello SDK:
+Ručně přidejte sadu SDK:
 
-1. Stáhnout hello [Application Insights SDK pro jazyk Java](https://aka.ms/aijavasdk).
-2. Rozbalte binární soubory hello ze souboru zip hello a přidejte tooyour projektu.
+1. Stáhněte si [Application Insights SDK pro jazyk Java](https://aka.ms/aijavasdk).
+2. Rozbalte binární soubory ze souboru zip a přidejte je do projektu.
 
 ### <a name="questions"></a>Otázky...
-* *Co je hello vztah mezi hello `-core` a `-web` součásti v hello zip?*
+* *Jaký je vztah mezi komponentami `-core` a `-web` v souboru zip?*
 
-  * `applicationinsights-core`poskytuje hello úplné rozhraní API. Tuto komponentu budete vždy potřebovat.
-  * `applicationinsights-web` poskytuje metriky, které sledují počty žádostí HTTP a časy odezvy. Tuto komponentu můžete vynechat, pokud nechcete automaticky shromažďovat tuto telemetrii. Pokud například chcete toowrite vlastní.
-* *hello tooupdate SDK, když publikujeme změny*
+  * `applicationinsights-core` poskytuje úplné informace o API. Tuto komponentu budete vždy potřebovat.
+  * `applicationinsights-web` poskytuje metriky, které sledují počty žádostí HTTP a časy odezvy. Tuto komponentu můžete vynechat, pokud nechcete automaticky shromažďovat tuto telemetrii. Hodí se to například v případě, že chcete napsat vlastní.
+* *Chcete-li aktualizovat sadu SDK, když publikujeme změny*
 
-  * Stáhněte si nejnovější hello [Application Insights SDK pro jazyk Java](https://aka.ms/qqkaq6) a nahradit text hello staré.
-  * Změny jsou popsány v hello [poznámky k verzi sady SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes).
+  * Stáhněte si poslední [Application Insights SDK pro jazyk Java](https://aka.ms/qqkaq6) a nahraďte staré.
+  * Změny jsou popsány v [poznámkách k verzi sady SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes).
 
 ## <a name="3-add-an-application-insights-xml-file"></a>3. Vytvořte soubor Application Insights .xml
-Přidejte soubor ApplicationInsights.xml toohello prostředky složku ve vašem projektu a ujistěte se, že je přidaná cesty nasazení tříd projektu tooyour. Zkopírujte následující XML do ní hello.
+Přidejte soubor ApplicationInsights.xml do složky zdrojů v projektu nebo zajistěte, aby byl přidán do cesty nasazení tříd projektu. Zkopírujte do něj následující kód XML.
 
-Nahraďte klíč instrumentace hello, který jste získali z portálu Azure hello.
+Nahraďte klíč instrumentace, který jste dostali z portálu Azure.
 
 ```XML
 
@@ -126,7 +126,7 @@ Nahraďte klíč instrumentace hello, který jste získali z portálu Azure hell
     <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
 
 
-      <!-- hello key from hello portal: -->
+      <!-- The key from the portal: -->
 
       <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
 
@@ -140,10 +140,10 @@ Nahraďte klíč instrumentace hello, který jste získali z portálu Azure hell
       </TelemetryModules>
 
       <!-- Events correlation (not required for bare API) -->
-      <!-- These initializers add context data tooeach event -->
+      <!-- These initializers add context data to each event -->
 
       <TelemetryInitializers>
-        <Add   type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationIdTelemetryInitializer"/>
+        <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationIdTelemetryInitializer"/>
         <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationNameTelemetryInitializer"/>
         <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebSessionTelemetryInitializer"/>
         <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserTelemetryInitializer"/>
@@ -154,13 +154,13 @@ Nahraďte klíč instrumentace hello, který jste získali z portálu Azure hell
 ```
 
 
-* klíč instrumentace Hello se odesílají společně s každou položkou telemetrie a říká toodisplay Application Insights je ve vašem prostředku.
-* Hello požadavek komponenty HTTP je volitelný. Automaticky odesílá telemetrii týkající se požadavků a odpovědí časy toohello portálu.
-* Korelace událostí je komponenty požadavku HTTP toohello přidání. Přiřadí požadavek tooeach identifikátor přijatých hello serveru a přidá tento identifikátor jako položka tooevery vlastnost telemetrie jako hello vlastnost 'Operation.Id'. Umožňuje toocorrelate hello telemetrii související s každou žádostí nastavením filtru v [diagnostické vyhledávání][diagnostic].
-* klíč Application Insights Hello možné předat dynamicky z hello portálu Azure jako vlastnost systému (-DAPPLICATION_INSIGHTS_IKEY = your_ikey). Pokud není definovaná žádná vlastnost, hledá se proměnná prostředí (APPLICATION_INSIGHTS_IKEY) v nastavení aplikace Azure. Pokud jsou obě vlastnosti hello nedefinované, použije se výchozí hello InstrumentationKey z ApplicationInsights.xml. Toto pořadí vám pomůže toomanage různých InstrumentationKeys pro různá prostředí dynamicky.
+* Klíč instrumentace se zasílá společně s každou položkou telemetrie a říká službě Application Insights, aby ho zobrazila v prostředku.
+* Požadavek komponenty HTTP je volitelný. Automaticky odesílá telemetrii týkající se žádostí a časů odezvy na portál.
+* Korelace událostí je doplněk komponenty požadavku HTTP. Přiřadí identifikátor každé žádosti přijaté serverem a přidá ho jako vlastnost každé položce telemetrie jako vlastnost Operation.Id. Umožňuje korelovat telemetrii související s každou žádostí nastavením filtru v [diagnostickém vyhledávání][diagnostic].
+* Klíč Application Insights se může předat dynamicky z webu Azure Portal jako vlastnost systému (-DAPPLICATION_INSIGHTS_IKEY=váš_ikey). Pokud není definovaná žádná vlastnost, hledá se proměnná prostředí (APPLICATION_INSIGHTS_IKEY) v nastavení aplikace Azure. Pokud ani jedna vlastnost není definovaná, použije se výchozí InstrumentationKey ze souboru ApplicationInsights.xml. Tato posloupnost pomáhá spravovat různé klíče InstrumentationKey pro různá prostředí dynamicky.
 
-### <a name="alternative-ways-tooset-hello-instrumentation-key"></a>Klíč instrumentace hello tooset alternativní způsoby
-Application Insights SDK hledá hello klíč v tomto pořadí:
+### <a name="alternative-ways-to-set-the-instrumentation-key"></a>Alternativní způsoby nastavení klíče instrumentace
+Application Insights SDK hledá klíče v tomto pořadí:
 
 1. Systémová vlastnost: -DAPPLICATION_INSIGHTS_IKEY=váš_ikey
 2. Proměnná prostředí: APPLICATION_INSIGHTS_IKEY
@@ -174,11 +174,11 @@ Můžete ho taky [nastavit v kódu](app-insights-api-custom-events-metrics.md#ik
 ```
 
 ## <a name="4-add-an-http-filter"></a>4. Přidat filtr HTTP
-Hello poslední krok konfigurace umožňuje toolog komponenty požadavku HTTP hello každý webový požadavek. (Není povinné, pokud chcete úplné rozhraní API hello.)
+Poslední krok konfigurace umožňuje komponentě požadavku HTTP zaprotokolovat každý webový požadavek. (Není požadováno, pokud chcete úplné rozhraní API.)
 
-Vyhledejte a otevřete soubor web.xml hello v projektu a merge hello následující kód pod uzlem hello webové aplikace, které jsou nakonfigurované filtry aplikace.
+Vyhledejte a otevřete soubor web.xml ve vašem projektu a slučte následující kód pod uzlem webové aplikace, které jsou nakonfigurované filtry aplikace.
 
-tooget hello nejpřesnější výsledky, hello filtr by měly být namapované před všemi ostatními filtry.
+Chcete-li získat nejpřesnější výsledky, musí být filtr namapován před všemi ostatními filtry.
 
 ```XML
 
@@ -195,7 +195,7 @@ tooget hello nejpřesnější výsledky, hello filtr by měly být namapované p
 ```
 
 #### <a name="if-youre-using-spring-web-mvc-31-or-later"></a>Pokud používáte Spring Web MVC 3.1 nebo novější
-Upravte tyto prvky v *-servlet.xml tooinclude hello Application Insights balíčku:
+Upravte tyto prvky v souboru *-servlet.xml, aby zahrnovaly balíček Application Insights:
 
 ```XML
 
@@ -210,7 +210,7 @@ Upravte tyto prvky v *-servlet.xml tooinclude hello Application Insights balíč
 ```
 
 #### <a name="if-youre-using-struts-2"></a>Pokud používáte Struts 2
-Přidejte tuto položku toohello Struts konfigurační soubor (obvykle s názvem struts.xml nebo struts default.xml):
+Tuto položku přidáte do konfiguračního souboru Struts (obvykle s názvem struts.xml nebo struts default.xml):
 
 ```XML
 
@@ -220,46 +220,46 @@ Přidejte tuto položku toohello Struts konfigurační soubor (obvykle s názvem
      <default-interceptor-ref name="ApplicationInsightsRequestNameInterceptor" />
 ```
 
-(Pokud máte sběrače definované ve výchozím zásobníku, hello interceptoru jednoduše přidáním toothat zásobníku.)
+(Pokud máte sběrače definované ve výchozím zásobníku, lze sběrač jednoduše přidat do tohoto balíku.)
 
 ## <a name="5-run-your-application"></a>5. Spusťte aplikaci
-Buď spustit v režimu ladění na vývojovém počítači, nebo publikovat tooyour serveru.
+Buď ji spusťte v režimu ladění na vývojovém počítači, nebo publikujte na serveru.
 
 ## <a name="6-view-your-telemetry-in-application-insights"></a>6. Zobrazte telemetrii ve službě Application Insights
-Vrátí prostředek Application Insights tooyour [portálu Microsoft Azure](https://portal.azure.com).
+Vraťte se do prostředku Application Insights na web [Microsoft Azure Portal](https://portal.azure.com).
 
-Data požadavků HTTP se zobrazí v okně Přehled hello. (Pokud zde nejsou, počkejte několik sekund a pak klikněte na tlačítko Aktualizovat.)
+Data požadavků HTTP se zobrazí v okně přehledu. (Pokud zde nejsou, počkejte několik sekund a pak klikněte na tlačítko Aktualizovat.)
 
 ![ukázková data](./media/app-insights-java-get-started/5-results.png)
 
 [Další informace o metrikách.][metrics]
 
-Klikněte na tlačítko prostřednictvím jakékoli grafu toosee podrobnější agregován metriky.
+Proklikejte se prostřednictvím jakékoli grafu pro zobrazení podrobnějších agregovaných metrik.
 
 ![](./media/app-insights-java-get-started/6-barchart.png)
 
-> Application Insights předpokládá hello formát požadavků HTTP pro aplikace MVC je: `VERB controller/action`. Například `GET Home/Product/f9anuh81`, `GET Home/Product/2dffwrf5` a `GET Home/Product/sdf96vws` se seskupí do `GET Home/Product`. Toto seskupení umožňuje smysluplné agregace požadavků, jako je počet požadavků a průměrná doba provádění pro požadavky.
+> Application Insights předpokládá, že formát požadavků HTTP pro aplikace MVC je: `VERB controller/action`. Například `GET Home/Product/f9anuh81`, `GET Home/Product/2dffwrf5` a `GET Home/Product/sdf96vws` se seskupí do `GET Home/Product`. Toto seskupení umožňuje smysluplné agregace požadavků, jako je počet požadavků a průměrná doba provádění pro požadavky.
 >
 >
 
 ### <a name="instance-data"></a>Data instance
-Klikněte na tlačítko prostřednictvím konkrétního požadavku zadejte toosee jednotlivých instancí.
+Proklikejte se jednotlivými typy konkrétního požadavku pro zobrazení jednotlivých instancí.
 
 Ve službě Application Insights se zobrazí dva druhy dat: agregovaná data, uložená a zobrazená jako průměry, počty a součty; a data instancí – jednotlivé sestavy požadavků protokolu HTTP, výjimky, zobrazení stránek nebo uživatelské události.
 
-Při prohlížení vlastností hello požadavku, uvidíte hello telemetrické události související s například požadavky a výjimkami.
+Při zobrazení vlastností požadavku uvidíte telemetrické události související s například požadavky a výjimkami.
 
 ![](./media/app-insights-java-get-started/7-instance.png)
 
 ### <a name="analytics-powerful-query-language"></a>Analýzy: účinný dotazovací jazyk
-Jak shromažďujete další data, můžete spouštět dotazy obou tooaggregate dat a toofind jednotlivých instancí.  [Analýzy](app-insights-analytics.md) představují výkonný nástroj jak pro vysvětlení výkonu, tak i využití a k diagnostickým účelům.
+Jak shromažďujete další data, můžete spouštět dotazy obou ke shromáždění dat a k nalezení jednotlivých instancí.  [Analýzy](app-insights-analytics.md) představují výkonný nástroj jak pro vysvětlení výkonu, tak i využití a k diagnostickým účelům.
 
 ![Příklad analýz](./media/app-insights-java-get-started/025.png)
 
-## <a name="7-install-your-app-on-hello-server"></a>7. Nainstalujte aplikaci na hello server
-Teď publikujte aplikačního serveru toohello, uživatelé mohou ho použít a sledujte telemetrii hello objeví na portálu hello.
+## <a name="7-install-your-app-on-the-server"></a>7. Nainstalujte aplikaci na server
+Teď publikujte aplikaci na server, dovolte osobám ji používat a sledujte telemetrii zobrazenou na portálu.
 
-* Ujistěte se, že brána firewall umožňuje vaší aplikace toosend telemetrie toothese porty:
+* Ujistěte se, že brána firewall umožňuje vaší aplikace odesílat telemetrii na tyto porty:
 
   * dc.services.visualstudio.com:443
   * f5.services.visualstudio.com:443
@@ -278,21 +278,21 @@ Nezpracované výjimky jsou shromažďovány automaticky:
 
 ![Otevřete Nastavení, Selhání.](./media/app-insights-java-get-started/21-exceptions.png)
 
-toocollect data o dalších výjimkách, máte dvě možnosti:
+Chcete-li shromažďovat data o dalších výjimkách, máte dvě možnosti:
 
-* [Vložení volání tootrackException() ve vašem kódu][apiexceptions].
-* [Nainstalujte na server agenta Java hello](app-insights-java-agent.md). Zadáte hello metody, které chcete toowatch.
+* [Vložit do kódu volání metody trackException()][apiexceptions].
+* [Nainstalovat na server agenta Java](app-insights-java-agent.md). Určete metody, které chcete sledovat.
 
 ## <a name="monitor-method-calls-and-external-dependencies"></a>Volání metody monitorování a externí závislosti
-[Nainstalujte agenta Java hello](app-insights-java-agent.md) toolog zadané vnitřních metod a volání provedená prostřednictvím JDBC s daty časování.
+[Nainstalujte agenta Java](app-insights-java-agent.md) k protokolování určených vnitřních metod a volání provedená prostřednictvím JDBC s daty časování.
 
 ## <a name="performance-counters"></a>Čítače výkonu
-Otevřete **nastavení**, **servery**, toosee rozsah čítačů výkonu.
+Klikněte na **Nastavení**, **Servery** a uvidíte rozsah čítačů výkonu.
 
 ![](./media/app-insights-java-get-started/11-perf-counters.png)
 
 ### <a name="customize-performance-counter-collection"></a>Vlastní nastavení kolekce čítačů výkonu
-kolekce toodisable hello standardní sady čítačů výkonu, přidejte následující kód pod hello kořenového uzlu souboru ApplicationInsights.xml hello hello:
+Pro zakázání shromažďování standardní sady čítačů výkonu přidejte následující kód do kořenového uzlu souboru ApplicationInsights.xml:
 
 ```XML
     <PerformanceCounters>
@@ -301,9 +301,9 @@ kolekce toodisable hello standardní sady čítačů výkonu, přidejte následu
 ```
 
 ### <a name="collect-additional-performance-counters"></a>Shromažďování dalších čítačů výkonu
-Můžete zadat další výkonu čítače toobe shromážděných.
+Můžete zadat další čítače výkonu, které se mají shromažďovat.
 
-#### <a name="jmx-counters-exposed-by-hello-java-virtual-machine"></a>Čítače JMX (vystavené ve virtuálním počítači Java hello)
+#### <a name="jmx-counters-exposed-by-the-java-virtual-machine"></a>Čítače JMX (vystavené ve virtuálním počítači Java)
 
 ```XML
     <PerformanceCounters>
@@ -314,16 +314,16 @@ Můžete zadat další výkonu čítače toobe shromážděných.
     </PerformanceCounters>
 ```
 
-* `displayName`– hello název zobrazený na portálu služby Application Insights hello.
-* `objectName`– Název objektu JMX hello.
-* `attribute`– atribut hello toofetch název objektu JMX hello
-* `type`(volitelné) – hello typ atributu JMX objektu:
+* `displayName` – název zobrazený na portálu služby Application Insights
+* `objectName` – název objektu JMX
+* `attribute` – atribut názvu objektu JMX k načtení
+* `type`(volitelné) – typ atributu JMX objektu:
   * Výchozí hodnota: jednoduchý typ, například int nebo long.
-  * `composite`: data čítače výkonu hello je ve formátu "Attribute.Data" hello
-  * `tabular`: data čítače výkonu hello je ve formátu hello řádku tabulky
+  * `composite`: data čítače výkonu jsou ve formátu „Attribute.Data“
+  * `tabular`: data čítače výkonu jsou ve formátu řádku tabulky
 
 #### <a name="windows-performance-counters"></a>Čítače výkonu Windows
-Každý [čítačů výkonu systému Windows](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx) je členem určité kategorie (v hello stejným způsobem, že je pole členem třídy). Kategorie mohou být buď globální, nebo mohou mít číslované nebo pojmenované instance.
+Každý [čítač výkonu systému Windows](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx) je členem určité kategorie (stejným způsobem, jakým je pole členem třídy). Kategorie mohou být buď globální, nebo mohou mít číslované nebo pojmenované instance.
 
 ```XML
     <PerformanceCounters>
@@ -334,35 +334,35 @@ Každý [čítačů výkonu systému Windows](https://msdn.microsoft.com/library
     </PerformanceCounters>
 ```
 
-* displayName – název hello zobrazený na portálu služby Application Insights hello.
-* categoryName – hello kategorie čítače výkonu (objekt výkonu) ke kterému je přiřazeno tento čítač výkonu.
-* counterName – název čítače výkonu hello hello.
-* instanceName – název hello hello instance kategorie čítače výkonu nebo prázdný řetězec (""), pokud hello kategorie obsahuje jednu instanci. Pokud je hello categoryName proces a hello chcete toocollect je hodnota čítače výkonu z aktuálního procesu JVM hello na, které běží vaše aplikace, zadejte `"__SELF__"`.
+* displayName – Název zobrazený na portálu služby Application Insights.
+* categoryName – kategorie čítače výkonu (objekt výkonu) ke kterému je přiřazen tento čítač výkonu.
+* counterName – název čítače výkonu.
+* instanceName – název instance kategorie čítače výkonu nebo prázdný řetězec (""), pokud kategorie obsahuje jednu instanci. Pokud je categoryName proces a čítač výkonu, který chcete shromáždit, pochází z aktuálního procesu JVM, na kterém běží vaše aplikace, zadejte `"__SELF__"`.
 
 Čítače výkonu jsou zobrazené jako vlastní metriky v [Průzkumníku metrik][metrics].
 
 ![](./media/app-insights-java-get-started/12-custom-perfs.png)
 
 ### <a name="unix-performance-counters"></a>Čítače výkonu Unix
-* [Nainstalujte collectd s plug-in Application Insights hello](app-insights-java-collectd.md) tooget celou řadu dat systému a sítě.
+* [Nainstalujte collectd s modulem plug-in Application Insights](app-insights-java-collectd.md) a získejte celou řadu dat systému a sítě.
 
 ## <a name="get-user-and-session-data"></a>Získejte data uživatele a relace
-Takže odesíláte telemetrii z webového serveru. Nyní tooget hello úplné 360 stupňové zobrazení vaší aplikace, můžete přidat další monitorování:
+Takže odesíláte telemetrii z webového serveru. Teď pokud chcete získat úplné 360stupňové zobrazení vaší aplikace, můžete přidat další monitorování:
 
-* [Přidat telemetrii tooyour webové stránky] [ usage] toomonitor stránky zobrazení a metrik uživatele.
-* [Nastavit testy webu] [ availability] toomake, že vaše aplikace zůstává aktivní a reagující.
+* [Přidání telemetrie na webové stránky][usage] pro monitorování zobrazení stránek a metrik uživatelů.
+* [Nastavení webových testů][availability] pro zajištění, že aplikace zůstane funkční a bude reagovat.
 
 ## <a name="capture-log-traces"></a>Zaznamenat trasování protokolu
-Můžete použít tooslice Application Insights a rozčlenění protokolů z Log4J, Logback nebo jiných rozhraní protokolování. Hello protokoly mohou korelovat s požadavky HTTP a další telemetrií. [Zjistěte jak][javalogs].
+Službu Application Insights můžete použít k nařezání a rozčlenění protokolů z Log4J, Logback nebo jiných rozhraní protokolování. Protokoly mohou korelovat s požadavky HTTP a další telemetrií. [Zjistěte jak][javalogs].
 
 ## <a name="send-your-own-telemetry"></a>Odeslat vlastní telemetrii
-Teď, když jste nainstalovali hello SDK, můžete použít rozhraní API toosend hello vlastní telemetrii.
+Teď, když jste nainstalovali sadu SDK, můžete použít rozhraní API k odeslání vlastní telemetrie.
 
-* [Sledujte vlastní události a metriky] [ api] toolearn co uživatelé dělají s vaší aplikací.
-* [Hledání událostí a protokolů] [ diagnostic] toohelp diagnostikovat problémy.
+* [Sledujte vlastní události a metriky][api] a dozvíte se, jak uživatelé pracují s vaší aplikací.
+* [Prohledávejte události a protokoly][diagnostic] pro pomoc s diagnostikou problémů.
 
 ## <a name="availability-web-tests"></a>Testy dostupnosti webu
-Application Insights může otestovat váš web v pravidelných intervalech toocheck, zda je funkční a dobře reaguje. [tooset až][availability], klikněte na tlačítko testy webu.
+Application Insights může otestovat váš web v pravidelných intervalech a zkontrolovat, zda je funkční a dobře reaguje. [Nastavíte je][availability] kliknutím na Webové testy.
 
 ![Klikněte na Webové testy a pak přidejte webový test.](./media/app-insights-java-get-started/31-config-web-test.png)
 
@@ -382,9 +382,9 @@ Získáte tabulky s dobami odezvy a navíc e-mailová oznámení, pokud váš we
 ## <a name="next-steps"></a>Další kroky
 * [Monitorování volání závislostí](app-insights-java-agent.md)
 * [Monitorování čítačů výkonu Unix](app-insights-java-collectd.md)
-* Přidat [monitorování tooyour webové stránky](app-insights-javascript.md) načtení stránky toomonitor krát, volání AJAX výjimky prohlížeče.
-* Zápis [vlastní telemetrii](app-insights-api-custom-events-metrics.md) tootrack využití v prohlížeči hello nebo na hello server.
-* Vytvoření [řídicí panely](app-insights-dashboards.md) toobring společně hello klíče grafy pro sledování systému.
+* Přidejte [na svoje webové stránky monitorování](app-insights-javascript.md) a sledujte dobu načítání stránek, volání AJAX nebo výjimky prohlížeče.
+* Můžete napsat i [vlastní telemetrii](app-insights-api-custom-events-metrics.md) ke sledování využití v prohlížeči nebo na serveru.
+* Vytvářejte si [řídicí panely](app-insights-dashboards.md), kde budete mít pohromadě klíčové grafy pro monitorování systému.
 * [Analytické funkce](app-insights-analytics.md) vám pomůžou přímo z vaší aplikace zadávat efektivní dotazy na telemetrie.
 * Další informace najdete na webu [Azure pro vývojáře v Javě](/java/azure).
 

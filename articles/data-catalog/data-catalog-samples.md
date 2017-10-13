@@ -1,6 +1,6 @@
 ---
-title: "Ukázky vývojáře katalogu aaaData | Microsoft Docs"
-description: "Tento článek obsahuje přehled ukázek pro vývojáře k dispozici hello pro hello REST API katalogu Data Catalog."
+title: "Data katalogu vývojáře ukázky | Microsoft Docs"
+description: "Tento článek obsahuje přehled ukázek pro vývojáře k dispozici pro Data Catalog REST API."
 services: data-catalog
 documentationcenter: 
 author: spelluru
@@ -15,28 +15,28 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/05/2017
 ms.author: spelluru
-ms.openlocfilehash: 11d87d15ee500c1b08e9d507db25626e40c1b98d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6ba88885805f1a206f01015f7eec5236da517403
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="data-catalog-developer-samples"></a>Data katalogu vývojáře ukázky
-Začněte s vývojem aplikací katalogu Data Catalog pomocí hello REST API katalogu Data Catalog. Hello REST API katalogu Data Catalog je založené na REST API, který zajišťuje programový přístup tooData katalog prostředků tooregister, opatřit poznámkami a vyhledávání datových prostředků prostřednictvím kódu programu.
+Začněte s vývojem aplikací katalogu Data Catalog pomocí Data Catalog REST API. Data Catalog REST API je založené na REST API, které zajišťují programový přístup k prostředkům katalogu Data Catalog zaregistrujete, opatřit poznámkami a vyhledávání datových prostředků prostřednictvím kódu programu.
 
-Zde jsou hello vzorků, které máme na Githubu:
+Zde jsou vzorků, které máme na Githubu:
 
 * [Začínáme s Azure Data Catalogem](https://azure.microsoft.com/resources/samples/data-catalog-dotnet-get-started/)
   
-  Ukázka který ukazuje, jak tooauthenticate s tooRegister Azure AD a odeberte datový prostředek pomocí hello REST API katalogu Data Catalog.
+  Ukázka který ukazuje, jak k ověření s Azure AD při registraci a odeberte datový prostředek pomocí Data Catalog REST API.
 * [Hromadné zaregistrujte a opatřete poznámkami](https://azure.microsoft.com/resources/samples/data-catalog-dotnet-excel-register-data-assets/)
   
-  Ukázka, který ukazuje, jak zaregistrovat toobulk datové prostředky ze sešitu aplikace Excel pomocí REST API katalogu Data Catalog a Open XML.
+  Vzorku, který ukazuje, jak hromadně registrovat datové prostředky ze sešitu aplikace Excel pomocí REST API katalogu Data Catalog a Open XML.
 * [Nástroj pro import/Export](https://azure.microsoft.com/resources/samples/data-catalog-dotnet-import-export/)
   
-  Ukázka, která popisuje, jak toouse hello REST API katalogu Data Catalog toofetch prostředky z hello Azure Data Catalog a serializovat je do souboru. Také ukazuje, jak tootake sadu prostředků serializovanou jako JSON a vložit je do katalogu hello. Podporuje export podmnožinu hello katalogu pomocí vyhledávacího dotazu.
+  Ukázka, která ukazuje, jak použít rozhraní API REST katalogu dat pro načtení prostředky z Azure Data Catalog a serializovat je do souboru. Také ukazuje, jak provést sadu prostředků serializovanou jako JSON a vložit je do katalogu. Podporuje export podmnožinu katalogu pomocí vyhledávacího dotazu.
 
 * [Hromadný import slovníku pojmů](https://azure.microsoft.com/resources/samples/data-catalog-bulk-import-glossary/)
 
-    Tento příklad ukazuje, jak tooimport Glosář podmínky z Glosář tooADC souborů CSV.
+    Tento příklad ukazuje, jak naimportovat do ADC Glosář slovníku pojmů ze souborů CSV.
 

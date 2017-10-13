@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure přehled CDN | Microsoft Docs"
-description: "Zjistěte, jaké hello je Azure sítě pro doručování obsahu (CDN) a jak toouse ho toodeliver širokopásmového obsahu pomocí ukládání do mezipaměti objektů BLOB a statického obsahu."
+title: "CDN Azure – Přehled | Dokumentace Microsoftu"
+description: "Zjistěte, co je Síť pro doručování obsahu (CDN) Azure, a jak ji používat k doručování širokopásmového obsahu díky ukládání objektů blob a statického obsahu do mezipaměti."
 services: cdn
 documentationcenter: 
 author: smcevoy
@@ -14,38 +14,38 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 02/08/2017
 ms.author: v-semcev
-ms.openlocfilehash: e0230a6e107969b845985f2f4d357bf93cd40d42
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 909c4dc3feaeaedf56ecacc78f4b7e0e15d98875
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="overview-of-hello-azure-content-delivery-network-cdn"></a>Přehled hello Azure Content Delivery Network (CDN)
+# <a name="overview-of-the-azure-content-delivery-network-cdn"></a>Přehled služby Content Delivery Network (CDN) Azure
 > [!NOTE]
-> Tento dokument popisuje, jaké hello je služba Content Delivery Network (CDN) Azure, jak to funguje a hello funkce všech produktů Azure CDN.  Pokud chcete tyto informace tooskip a přejděte rovnou tooa kurz o tom, najdete v části toocreate koncový bod CDN [používání CDN Azure](cdn-create-new-endpoint.md).  Pokud chcete toosee seznam aktuálních umístění uzlů CDN, najdete v části [umístění POP CDN Azure](cdn-pop-locations.md).
+> Tento dokument popisuje, co je služba Content Delivery Network (CDN) Azure, jak funguje, a funkce všech produktů CDN Azure.  Chcete-li tyto informace přeskočit a rovnou přejít ke kurzu jak vytvořit koncový bod CDN, přejděte na [Používání CDN Azure](cdn-create-new-endpoint.md).  Chcete-li zobrazit aktuální seznam umístění uzlů CDN, přejděte na [Umístění POP v síti CDN](cdn-pop-locations.md).
 > 
 > 
 
-Hello Azure sítě pro doručování obsahu (CDN) ukládá do mezipaměti na strategicky umístěných místech tooprovide maximální propustnost pro doručování obsahu toousers statický webový obsah.  Hello CDN nabízí vývojářům globální řešení pro doručování širokopásmového obsahu pomocí ukládání do mezipaměti obsah hello na fyzických uzlech napříč hello, world. 
+Služba Content Delivery Network (CDN) Azure ukládá statický webový obsah do mezipaměti na strategicky umístěných místech, a tak poskytuje maximální propustnost pro doručování obsahu uživatelům.  CDN nabízí vývojářům globální řešení pro doručování širokopásmového obsahu díky ukládání obsahu do mezipaměti na fyzických uzlech po celém světě. 
 
-Příklady výhod Hello pomocí hello CDN toocache webových prostředků:
+Mezi výhody používání CDN k ukládání webových prostředků do mezipaměti patří:
 
-* Lepší výkon a uživatelské prostředí pro koncové uživatele, zejména v případě, že pomocí aplikací, kde jsou vícenásobný potřeby tooload obsah.
-* Velké škálování toobetter zvládání náhlého vysokého zatížení, jako při spuštění hello produktu spusťte událost.
-* Distribuci uživatelských požadavků a poskytování obsahu ze serverů edge, méně přenosy se odesílají toohello původu.
+* Lepší výkon a uživatelské prostředí pro koncové uživatele, zvláště při používání aplikací, které k načtení obsahu vyžadují vícenásobný přenos.
+* Velké škálování pro lepší zvládání náhlého vysokého zatížení, například v případě uvedení produktu na trh.
+* Díky distribuci uživatelských požadavků a poskytování obsahu ze serverů Edge dochází k nižšímu přenosu ke zdroji.
 
 ## <a name="how-it-works"></a>Jak to funguje
 ![Přehled CDN](./media/cdn-overview/cdn-overview.png)
 
-1. Uživatel (Alice) požaduje soubor (také označovaný jako prostředek) pomocí adresy URL se speciálním názvem domény, například `<endpointname>.azureedge.net`.  DNS přesměruje požadavek hello toohello nejlépe provádění Point of Presence (POP) umístění.  To je obvykle POP, který je geograficky nejblíže uživatele toohello hello.
-2. Pokud servery edge hello v hello POP nemají hello soubor v mezipaměti, hello edge server požádá o soubor hello z počátku hello.  původ Hello může být webová aplikace Azure, Cloudová služba Azure, účet úložiště Azure nebo jakékoli veřejně přístupný webový server.
-3. Zdroj Hello vrátí hello souboru toohello serveru edge včetně volitelných hlaviček protokolu HTTP, které popisují hello souboru Time-to-Live (TTL).
-4. Hello edge server ukládá do mezipaměti hello souboru a vrátí hello souboru toohello původnímu žadateli (Alici).  soubor Hello zůstává v mezipaměti na serveru edge hello do vypršení platnosti hello TTL.  Pokud hello zdroj nezadal hodnotu TTL, hello výchozí hodnota TTL je sedm dní.
-5. Další uživatelé, kteří mohou žádost hello stejný soubor pomocí stejné adresy URL a také může být směrovanou toothat stejný POP.
-6. Pokud hello TTL hello souboru nevypršela, vrátí hello edge server hello souboru z mezipaměti hello.  To má za následek rychlejší a rychleji reagující uživatelské prostředí.
+1. Uživatel (Alice) požaduje soubor (také označovaný jako prostředek) pomocí adresy URL se speciálním názvem domény, například `<endpointname>.azureedge.net`.  DNS přesměruje požadavek na nejvýkonnější umístění POP (Point of Presence).  To je obvykle POP, který je geograficky nejblíže uživatele.
+2. Pokud servery Edge v POP nemají soubor v mezipaměti, server Edge si ho vyžádá ze zdroje.  Zdrojem může být webová aplikace Azure, cloudová služba Azure, účet Azure Storage nebo jakýkoli veřejně přístupný webový server.
+3. Zdroj vrátí soubor serveru Edge včetně volitelných hlaviček protokolu HTTP, které popisují hodnotu TTL (Time to Live) souboru.
+4. Server Edge soubor uloží do mezipaměti a vrátí ho původnímu žadateli (Alici).  Soubor zůstane v mezipaměti na serveru Edge, dokud nevyprší platnost hodnoty TTL.  Pokud zdroj nezadal hodnotu TTL, je výchozí hodnota TTL sedm dní.
+5. Další uživatelé mohou následně požadovat stejný soubor pomocí stejné adresy URL a budou přesměrováni na stejný POP.
+6. Pokud hodnota TTL souboru nevypršela, vrátí server Edge soubor z mezipaměti.  To má za následek rychlejší a rychleji reagující uživatelské prostředí.
 
 ## <a name="azure-cdn-features"></a>Funkce Azure CDN
-Existují tři produkty Azure CDN: **Azure CDN Standard od společnosti Akamai**, **Azure CDN Standard od společnosti Verizon** a **Azure CDN Premium od společnosti Verizon**.  Hello následující tabulka uvádí funkce hello k dispozici u každého produktu.
+Existují tři produkty Azure CDN: **Azure CDN Standard od společnosti Akamai**, **Azure CDN Standard od společnosti Verizon** a **Azure CDN Premium od společnosti Verizon**.  V následující tabulce jsou uvedené funkce, které jsou k dispozici u každého produktu.
 
 |  | Akamai Standard | Verizon Standard | Verizon Premium |
 | --- | --- | --- | --- |
@@ -74,7 +74,7 @@ Existují tři produkty Azure CDN: **Azure CDN Standard od společnosti Akamai**
 | [Statistiky v reálném čase](cdn-real-time-stats.md) | | |**&amp;#x2713;** |
 | [Výstrahy v reálném čase](cdn-real-time-alerts.md) | | |**&amp;#x2713;** |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  __Snadné použití__ |
-| Snadná integrace se službami Azure, jako jsou [Storage](cdn-create-a-storage-account-with-cdn.md), [Cloud Services](cdn-cloud-service-with-cdn.md), [Web Apps](../app-service-web/app-service-web-tutorial-content-delivery-network.md) a [Media Services](../media-services/media-services-portal-manage-streaming-endpoints.md) |**&amp;#x2713;** |**&amp;#x2713;** |**&amp;#x2713;** |
+| Snadná integrace se službami Azure, jako jsou [Storage](cdn-create-a-storage-account-with-cdn.md), [Cloud Services](cdn-cloud-service-with-cdn.md), [Web Apps](../app-service/app-service-web-tutorial-content-delivery-network.md) a [Media Services](../media-services/media-services-portal-manage-streaming-endpoints.md) |**&amp;#x2713;** |**&amp;#x2713;** |**&amp;#x2713;** |
 | Správa prostřednictvím [REST API](https://msdn.microsoft.com/library/mt634456.aspx), [.NET](cdn-app-dev-net.md), [Node.js](cdn-app-dev-node.md) nebo [prostředí PowerShellu](cdn-manage-powershell.md) |**&amp;#x2713;** |**&amp;#x2713;** |**&amp;#x2713;** |
 | [Přizpůsobitelný modul doručování obsahu založený na pravidlech](cdn-rules-engine.md) | | |**&amp;#x2713;** |
 | Nastavení mezipaměti nebo hlaviček (pomocí [stroje pravidel](cdn-rules-engine.md)) | | |**&amp;#x2713;** |
@@ -85,18 +85,18 @@ Existují tři produkty Azure CDN: **Azure CDN Standard od společnosti Akamai**
 
 
 > [!TIP]
-> Je k dispozici funkci chcete toosee v Azure CDN?  [Sdělte nám svůj názor](https://feedback.azure.com/forums/169397-cdn)! 
+> Víte o funkci, kterou byste uvítali v CDN Azure?  [Sdělte nám svůj názor](https://feedback.azure.com/forums/169397-cdn)! 
 > 
 > 
 
 ## <a name="next-steps"></a>Další kroky
-tooget začít s CDN, najdete v části [používání CDN Azure](cdn-create-new-endpoint.md).
+Chcete-li začít s CDN, podívejte se na [Používání Azure CDN](cdn-create-new-endpoint.md).
 
-Pokud jste stávající zákazník CDN, můžete nyní spravovat koncové body CDN prostřednictvím hello [portálu Microsoft Azure](https://portal.azure.com) nebo s [prostředí PowerShell](cdn-manage-powershell.md).
+Pokud jste stávající zákazník CDN, můžete nyní spravovat koncové body CDN prostřednictvím portálu [Microsoft Azure Portal](https://portal.azure.com) nebo [PowerShellu](cdn-manage-powershell.md).
 
-toosee hello CDN v akci, podívejte se na hello [video z naší konference Build 2016](https://azure.microsoft.com/documentation/videos/build-2016-leveraging-the-new-azure-cdn-apis-to-build-wicked-fast-applications/).
+Chcete-li vidět CDN v akci, podívejte se na [video z naší konference Build 2016](https://azure.microsoft.com/documentation/videos/build-2016-leveraging-the-new-azure-cdn-apis-to-build-wicked-fast-applications/).
 
-Zjistěte, jak tooautomate Azure CDN s [.NET](cdn-app-dev-net.md) nebo [Node.js](cdn-app-dev-node.md).
+Přečtěte si informace o automatizaci Azure CDN s [.NET](cdn-app-dev-net.md) nebo [Node.js](cdn-app-dev-node.md).
 
 Informace o cenách naleznete v tématu [Ceny CDN](https://azure.microsoft.com/pricing/details/cdn/).
 

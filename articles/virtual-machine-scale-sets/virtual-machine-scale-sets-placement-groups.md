@@ -1,6 +1,6 @@
 ---
-title: "aaaWorking s velké sady škálování virtuálního počítače Azure | Microsoft Docs"
-description: "Co je třeba sad škálování tooknow toouse velký virtuální počítač Azure"
+title: "Práce s velkými škálovacími sadami virtuálních počítačů Azure | Dokumentace Microsoftu"
+description: "Co potřebujete vědět k používání velkých škálovacích sad virtuálních počítačů Azure"
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: gbowerman
@@ -13,54 +13,54 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/7/2017
+ms.date: 9/1/2017
 ms.author: guybo
-ms.openlocfilehash: a39aab25925d7fc50763f0a20148b1f2213b492f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 12303e4283de3d179590e599d4d2fe8f14167eda
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Práce s velkými škálovacími sadami virtuálních počítačů
-Nyní můžete vytvořit Azure [sady škálování virtuálního počítače](/azure/virtual-machine-scale-sets/) s kapacitou až too1 000 virtuálních počítačů. V tomto dokumentu _škálovací sadu virtuálních počítačů velké_ je definován jako škálování nastavit podporující škálování toogreater než 100 virtuálních počítačů. Tato funkce se nastavuje pomocí vlastnosti škálovací sady (_singlePlacementGroup=False_). 
+Nyní můžete vytvořit [škálovací sady virtuálních počítačů](/azure/virtual-machine-scale-sets/) Azure s kapacitou až 1 000 virtuálních počítačů. V tomto dokumentu je _velká škálovací sada virtuálních počítačů_ definována jako škálovací sada umožňující škálování na více než 100 virtuálních počítačů. Tato funkce se nastavuje pomocí vlastnosti škálovací sady (_singlePlacementGroup=False_). 
 
-Nastaví konkrétních aspektů velkém měřítku, například zatížení vyrovnávání a selhání domény chovat jinak tooa standardní škálovací sadu. Tento dokument popisuje vlastnosti hello sad velkém měřítku a popisuje, co je třeba tooknow toosuccessfully používat ve svých aplikacích. 
+Některé aspekty velkých škálovacích sad, například vyrovnávání zatížení a domény selhání, se chovají jinak než u standardních škálovacích sad. Tento dokument vysvětluje charakteristiky velkých škálovacích sad a popisuje vše, co potřebujete vědět pro jejich úspěšné použití ve vašich aplikacích. 
 
-Běžný postup nasazení infrastruktury cloudu ve velkém měřítku je toocreate sadu _jednotek škálování_, třeba tak, že vytvoříte víc virtuálních počítačů škálování sad napříč více virtuálních sítí a účty úložiště. Tento přístup poskytuje snazší správa ve srovnání toosingle virtuální počítače a víc jednotek škálování jsou užitečné pro mnoho aplikací, zejména ty, které vyžadují další stohovatelných komponenty, jako jsou více virtuálních sítí a koncových bodů. Pokud vaše aplikace vyžaduje ale jeden cluster velké, může být více přehledné toodeploy jeden škálování, z nastavení too1 000 virtuálních počítačů. Ukázkové scénáře zahrnují centralizovaná nasazení pro velké objemy dat nebo výpočetní sítě, které vyžadují jednoduchou správu velkého fondu pracovních uzlů. V kombinaci s sadu škálování virtuálního počítače [připojené datových disků](virtual-machine-scale-sets-attached-disks.md), nastaví velkém měřítku umožňují toodeploy škálovatelné infrastruktury sestávající z tisíce jader a petabajty úložiště, jako jednu operaci.
+Běžným přístupem k nasazení rozsáhlé cloudové infrastruktury je vytvoření sady _jednotek škálování_, například vytvořením několika škálovacích sad virtuálních počítačů ve více virtuálních sítích a účtech úložiště. Tento přístup umožňuje v porovnání s jednotlivými virtuálními počítači snadnější správu, a více jednotek škálování je užitečných pro mnoho aplikací, zejména pro ty, které vyžadují další stohovatelné komponenty, jako jsou virtuální sítě a koncové body. Pokud ale vaše aplikace vyžaduje jeden velký cluster, může být jednodušší nasadit jedinou škálovací s až 1 000 virtuálních počítačů. Ukázkové scénáře zahrnují centralizovaná nasazení pro velké objemy dat nebo výpočetní sítě, které vyžadují jednoduchou správu velkého fondu pracovních uzlů. V kombinaci s [připojenými datovými disky](virtual-machine-scale-sets-attached-disks.md) škálovacích sad virtuálních počítačů umožňují velké škálovací sady nasazení škálovatelné infrastruktury, která se skládá z tisíců jader a petabajtů úložiště, a to v jedné operaci.
 
 ## <a name="placement-groups"></a>Skupiny umístění 
-Díky _velké_ škálování nastavit zvláštní není hello počet virtuálních počítačů, ale počet hello _umístění skupiny_ obsahuje. Umístění skupiny je konstrukce podobné tooan Azure dostupnosti sada, s vlastní domén selhání a domén upgradu. Ve výchozím nastavení škálovací sada obsahuje jedinou skupinu umístění s maximální velikostí 100 virtuálních počítačů. Pokud škálování nastavena vlastnost s názvem _singlePlacementGroup_ nastavena too_false_, hello škálovací sadu můžete skládá z více skupin pro umístění a má rozsah 0-1 000 virtuálních počítačů. Pokud nastavíte výchozí hodnotu toohello _true_, sada škálování se skládá z jednoho umístění skupiny a má rozsah 0-100 virtuálních počítačů.
+_Velké_ škálovací sady nejsou speciální kvůli počtu virtuálních počítačů, ale kvůli počtu _skupin umístění_, které obsahují. Skupina umístění je konstrukce podobná skupině dostupnosti Azure s vlastními doménami selhání a upgradovacími doménami. Ve výchozím nastavení škálovací sada obsahuje jedinou skupinu umístění s maximální velikostí 100 virtuálních počítačů. Pokud je vlastnost škálovací sady _singlePlacementGroup_ nastavena na hodnotu _false_, škálovací sada se může skládat z více skupin umístění a z 0–1 000 virtuálních počítačů. Když je nastavena výchozí hodnota _true_, škálovací sada se skládá z jediné skupiny umístění a z 0–100 virtuálních počítačů.
 
 ## <a name="checklist-for-using-large-scale-sets"></a>Kontrolní seznam pro používání velkých škálovací sad
-jestli vaše aplikace provádět efektivní použití sad velkém měřítku, zvažte toodecide hello následující požadavky:
+Následující požadavky vám pomůžou rozhodnout, jestli vaše aplikace můžou efektivně využívat velké škálovací sady:
 
-- Velké škálovací sady vyžadují službu Azure Managed Disks. Škálovací sady vytvořené bez disků služby Managed Disks vyžadují více účtů úložiště (jeden na každých 20 virtuálních počítačů). Nastavuje velkém měřítku jsou navrženou toowork výhradně pomocí tooreduce spravované disky omezuje riziko úložiště režii správy a tooavoid hello spuštěných do předplatného pro účty úložiště. Pokud nepoužijete spravované disků, je škálovací sadu virtuálních počítačů omezené too100.
-- Sady škálování, které jsou vytvořené z imagů z Azure Marketplace můžete postupně škálovat too1 000 virtuálních počítačů.
-- Škálovací sady vytvořené z vlastních bitových kopií (Image virtuálních počítačů můžete vytvořit a odeslat sami) můžete škálovat aktuálně too100 virtuálních počítačů.
-- Sady škálování skládá z několika skupin umístění ještě nepodporuje vrstvy 4 Vyrovnávání zatížení s hello Vyrovnávání zatížení Azure. Pokud potřebujete toouse hello nástroj pro vyrovnávání zatížení Azure Ujistěte se, že sad škálování hello je nakonfigurované toouse umístění jednu skupinu, která se hello výchozí nastavení.
-- S hello Azure Application Gateway Vyrovnávání zatížení vrstvy 7 je podporován pro všechny škálovací sady.
-- Sada škálování je definován s jedinou podsítí – Ujistěte se, že podsíť pro všechny virtuální počítače hello potřebujete nemá dostatečně velký adresní prostor. Ve výchozím nastavení škálování hodnotu overprovisions (vytvoří navíc za virtuální počítače v době nasazení nebo škálování, které vám není účtován) tooimprove nasazení spolehlivost a výkon. Povolit pro větší než hello počet virtuálních počítačů, které máte v plánu tooscale na adresu % 20 místa.
-- Pokud plánujete toodeploy hodně virtuálních počítačů, může být nutné toobe vyšší kvótami vaše výpočetní jádra.
-- Domény selhání a upgradovací domény jsou konzistentní pouze v rámci skupiny umístění. Tato architektura nezmění hello celkové dostupnosti škálování nastavení, jako virtuální počítače jsou rovnoměrně rozdělené mezi odlišné fyzický hardware, se ale znamená, že pokud budete potřebovat tooguarantee jsou dva virtuální počítače na jiný hardware, ujistěte se, jsou v jiné chyby hello domény ve stejné skupině umístění. ID skupiny chyb doménu a umístění se zobrazují v hello _instanci zobrazení_ rozsahu nastavení virtuálního počítače. Hello zobrazení instance škálovací sady virtuálních počítačů si můžete prohlédnout v hello [Průzkumníka prostředků Azure](https://resources.azure.com/).
+- Velké škálovací sady vyžadují službu Azure Managed Disks. Škálovací sady vytvořené bez disků služby Managed Disks vyžadují více účtů úložiště (jeden na každých 20 virtuálních počítačů). Velké škálovací sady jsou navržené pro práci výhradně se službou Managed Disks z důvodu snížení režijních nákladů na správu úložiště. Také se díky tomu vyhnete riziku, že narazíte na omezení předplatného pro účty úložiště. Pokud nepoužíváte službu Managed Disks, vaše škálovací sada je omezena na 100 virtuálních počítačů.
+- Škálovací sady vytvořené z imagí Azure Marketplace je možné škálovat až na 1 000 virtuálních počítačů.
+- Škálovací sady vytvořené z vlastních imagí (image virtuálních počítačů, které si vytvoříte a nahrajete sami) je aktuálně možné škálovat až na 300 virtuálních počítačů.
+- Vyrovnávání zatížení úrovně 4 pomocí nástroje Azure Load Balancer zatím není podporováno pro škálovací sady, které se skládají z více skupin umístění. Pokud potřebujete použít nástroj Azure Load Balancer, ujistěte se, že je škálovací sada nakonfigurována k používání jediné skupiny umístění, což je výchozí nastavení.
+- Vyrovnávání zatížení úrovně 7 pomocí služby Azure Application Gateway je podporováno pro všechny škálovací sady.
+- Škálovací sada je definována s jednou podsítí – ujistěte se, že má vaše podsíť dostatečně velký adresní prostor pro všechny požadované virtuální počítače. Škálovací sada ve výchozím nastavení provádí nadměrné zřizování (během nasazování nebo při horizontálním navyšováním kapacity vytváří virtuální počítače navíc, které se vám neúčtují) pro zvýšení spolehlivosti nasazení a výkonu. Počítejte s adresním prostorem o 20 % větším, než je počet virtuálních počítačů, na který plánujete škálovat.
+- Pokud plánujete nasazení mnoha virtuálních počítačů, možná bude nutné navýšit vaše omezení základní kvóty pro službu Compute.
+- Domény selhání a upgradovací domény jsou konzistentní pouze v rámci skupiny umístění. Tato architektura nemění celkovou dostupnost škálovací sady, protože virtuální počítače jsou rovnoměrně distribuované mezi rozdílný fyzický hardware. Znamená to ale, že pokud potřebujete zajistit, aby byly dva virtuální počítače na různém hardwaru, nesmíte je zapomenout umístit do různých domén selhání ve stejné skupině umístění. Doména selhání a ID skupiny umístění jsou zobrazené v _zobrazení instance_ virtuálního počítače škálovací sady. Zobrazení instance virtuálního počítače škálovací sady můžete zobrazit v [Průzkumníku prostředků Azure](https://resources.azure.com/).
 
 
 ## <a name="creating-a-large-scale-set"></a>Vytvoření velké škálovací sady
-Když vytvoříte škálování nastavit v hello portálu Azure, můžete povolit jeho tooscale toomultiple umístění skupiny podle nastavení hello _Limit tooa jeden umístění skupiny_ too_False_ možnost v hello _Základy_ okno. Pomocí sady too_False_ tuto možnost, můžete určit _Instance počet_ hodnotu až too1, 000.
+Při vytváření škálovací sady na webu Azure Portal můžete povolit její škálování do více skupin umístění nastavením možnosti _Limit to a single placement group_ (Omezit na jedinou skupinu umístění) na hodnotu _False_ v okně _Basics_ (Základní údaje). Když je tato možnost nastavena na _False_, můžete zadat hodnotu _Instance count_ (Počet instancí) až 1 000.
 
 ![](./media/virtual-machine-scale-sets-placement-groups/portal-large-scale.png)
 
-Můžete vytvořit s velkou škálou virtuálních počítačů, nastavit pomocí hello [rozhraní příkazového řádku Azure](https://github.com/Azure/azure-cli) _vytvořit az vmss_ příkaz. Tento příkaz nastaví inteligentního výchozí nastavení, jako je například velikost podsítě podle hello _počet instancí_ argument:
+Velkou škálovací sadu virtuálních počítačů můžete vytvořit pomocí příkazu [Azure CLI](https://github.com/Azure/azure-cli) _az vmss create_. Tento příkaz v závislosti na argumentu _instance-count_ nastaví inteligentní výchozí hodnoty, jako například velikost podsítě:
 
 ```bash
 az group create -l southcentralus -n biginfra
 az vmss create -g biginfra -n bigvmss --image ubuntults --instance-count 1000
 ```
-Všimněte si, že hello _vmss vytvořit_ příkaz výchozí určité hodnoty konfigurace, pokud nezadáte je. hello toosee dostupné se možnosti, které můžete přepsat, zkuste:
+Poznámka: příkaz _vmss create_ použije určité výchozí hodnoty konfigurace, pokud je nezadáte. Pokud chcete zobrazit dostupné možnosti, které můžete přepsat, vyzkoušejte:
 ```bash
 az vmss create --help
 ```
 
-Pokud vytváříte velkém měřítku, která nastavuje skládání šablonu Azure Resource Manager, zkontrolujte, zda šablona hello vytvoří sadu škálování založenou na discích spravovaných Azure. Můžete nastavit hello _singlePlacementGroup_ vlastnost too_false_ v hello _vlastnosti_ části hello _Microsoft.Compute/virtualMAchineScaleSets_ prostředků. Hello následující JSON fragment ukazuje hello začátku šablonu sady škálování, včetně kapacity hello 1 000 virtuálních počítačů a hello _"singlePlacementGroup": false_ nastavení:
+Pokud vytváříte velkou škálovací sadu s využitím šablony Azure Resource Manageru, ujistěte se, že šablona vytváří škálovací sadu založenou na službě Azure Managed Disks. Vlastnost _singlePlacementGroup_ můžete nastavit na hodnotu _false_ v části _vlastnosti_ prostředku _Microsoft.Compute/virtualMAchineScaleSets_. Následující fragment ve formátu JSON ukazuje začátek šablony škálovací sady, která zahrnuje nastavení kapacity na 1 000 virtuálních počítačů a nastavení vlastnosti _"singlePlacementGroup" : false_:
 ```json
 {
   "type": "Microsoft.Compute/virtualMachineScaleSets",
@@ -77,12 +77,12 @@ Pokud vytváříte velkém měřítku, která nastavuje skládání šablonu Azu
       "mode": "Automatic"
     }
 ```
-Úplný příklad velkém měřítku nastavení šablony, získáte příliš[https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json).
+Kompletní příklad šablony velké škálovací sady najdete na adrese [https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json).
 
-## <a name="converting-an-existing-scale-set-toospan-multiple-placement-groups"></a>Převod existující škálovací sady toospan více skupin umístění
-toomake existující sady škálování virtuálního počítače podporující škálování toomore než 100 virtuálních počítačů, je nutné toochange hello _singplePlacementGroup_ too_false_ vlastnost hello rozsahu nastavit modelu. Změna této vlastnosti se hello můžete otestovat [Průzkumníka prostředků Azure](https://resources.azure.com/). Najít existující sady škálování, vyberte _upravit_ a změňte hello _singlePlacementGroup_ vlastnost. Pokud nevidíte tuto vlastnost, může být zobrazení sad s starší verzi rozhraní API Microsoft.Compute hello škálování hello.
+## <a name="converting-an-existing-scale-set-to-span-multiple-placement-groups"></a>Převod existující škálovací sady do více skupin umístění
+Pokud chcete umožnit škálování existující škálovací sady virtuálních počítačů na více než 100 virtuálních počítačů, je třeba v modelu škálovací sady změnit vlastnost _singlePlacementGroup_ na hodnotu _false_. Změnu této vlastnosti můžete otestovat pomocí [Průzkumníka prostředků Azure](https://resources.azure.com/). Vyhledejte existující škálovací sadu, vyberte _Upravit_ a změňte vlastnost _singlePlacementGroup_. Pokud tuto vlastnost nevidíte, možná používáte k zobrazení škálovací sady starší verzi rozhraní Microsoft.Compute API.
 
 >[!NOTE] 
-Můžete změnit škálování nastavit od podpora jednom umístění skupiny pouze (hello výchozí chování) tooa podpora více skupin umístění, ale nelze převést hello opačným způsobem. Proto ujistěte se, že rozumíte hello vlastnosti sad velkém měřítku před převodem. Konkrétně zkontrolujte, zda že není nutné vrstvy 4 Vyrovnávání zatížení s hello Vyrovnávání zatížení Azure.
+U škálovací sady můžete změnit podporu pouze jedné skupiny umístění (výchozí chování) na podporu více skupin umístění, ale převod opačným směrem možný není. Proto se před převodem ujistěte, že rozumíte vlastnostem velkých škálovacích sad. Zejména se ujistěte, že nepotřebujete vyrovnávání zatížení úrovně 4 pomocí nástroje Azure Load Balancer.
 
 

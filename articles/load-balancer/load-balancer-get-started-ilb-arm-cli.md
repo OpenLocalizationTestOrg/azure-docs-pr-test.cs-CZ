@@ -1,9 +1,9 @@
 ---
-title: "aaaCreate interní nástroj pro vyrovnávání - zatížení, rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Zjistěte, jak hello toocreate interní zátěže pomocí rozhraní příkazového řádku Azure ve službě Správce prostředků"
+title: "Vytvoření interního nástroje pro vyrovnávání zatížení – rozhraní příkazového řádku Azure | Dokumentace Microsoftu"
+description: "Zjistěte, jak vytvořit interní nástroj pro vyrovnávání zatížení pomocí rozhraní příkazového řádku Azure v Resource Manageru"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: c7a24e92-b4da-43c0-90f2-841c1b7ce489
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 3aea6fdb07600f0d661ec6b8ffc784b03380a127
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 83cf027d95018de61ea906268d8f24700203e0c0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-an-internal-load-balancer-by-using-hello-azure-cli"></a>Vytvořit interní nástroj pomocí hello rozhraní příkazového řádku Azure
+# <a name="create-an-internal-load-balancer-by-using-the-azure-cli"></a>Vytvoření interního nástroje pro vyrovnávání zatížení pomocí rozhraní příkazového řádku Azure
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
@@ -28,31 +28,33 @@ ms.lasthandoff: 10/06/2017
 > * [Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > * [Šablona](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
 
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 > [!NOTE]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../azure-resource-manager/resource-manager-deployment-model.md).  Tento článek popisuje použití modelu nasazení Resource Manager hello, které společnost Microsoft doporučuje pro většinu nasazení nové místo hello [modelu nasazení classic](load-balancer-get-started-ilb-classic-cli.md).
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../azure-resource-manager/resource-manager-deployment-model.md).  Tento článek se věnuje modelu nasazení Resource Manager, který Microsoft doporučuje pro většinu nových nasazení namísto [klasického modelu nasazení](load-balancer-get-started-ilb-classic-cli.md).
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
-## <a name="deploy-hello-solution-by-using-hello-azure-cli"></a>Nasazení řešení hello pomocí hello rozhraní příkazového řádku Azure
+## <a name="deploy-the-solution-by-using-the-azure-cli"></a>Nasazení řešení pomocí rozhraní příkazového řádku Azure
 
-Hello následující kroky ukazují, jak toocreate internetové nástroj pro vyrovnávání zatížení pomocí rozhraní příkazového řádku Azure Resource Manager. S Azure Resource Manager, každého prostředku se vytvoří a konfigurovat individuálně a potom se spojí dohromady toocreate prostředku.
+Následující postup ukazuje, jak vytvořit internetový nástroj pro vyrovnávání zatížení pomocí Azure Resource Manageru s rozhraním příkazového řádku. S Azure Resource Managerem se jednotlivé prostředky vytvoří a nakonfigurují zvlášť, následně se spojí dohromady a vytvoří prostředek.
 
-Je třeba toocreate a nakonfigurovat hello následující objekty toodeploy nástroj pro vyrovnávání zatížení:
+Pokud chcete nasadit nástroj pro vyrovnávání zatížení, je nutné vytvořit a nakonfigurovat následující objekty:
 
 * **Konfigurace front-endových IP adres**: obsahuje veřejné IP adresy pro příchozí síťový provoz.
-* **Fond back-end adres**: obsahuje síťová rozhraní (NIC), které umožňují hello virtuální počítače tooreceive síťový provoz z nástroje pro vyrovnávání zatížení hello
-* **Pravidla Vyrovnávání zatížení**: obsahuje pravidla, které mapují veřejný port tooport nástroje pro vyrovnávání zatížení hello ve fondu adres back-end hello
-* **Příchozí pravidla NAT**: obsahuje pravidla, které mapují veřejný port na hello zatížení vyrovnávání tooa portu pro konkrétní virtuální počítač ve fondu adres back-end hello
-* **Sondy**: obsahuje sondy stavu, které jsou používané toocheck hello dostupnosti instancí virtuálních počítačů ve fondu adres back-end hello
+* **Back-endový fond adres**: obsahuje síťová rozhraní, která umožňují virtuálním počítačům přijímat síťový provoz z nástroje pro vyrovnávání zatížení.
+* **Pravidla vyrovnávání zatížení**: obsahuje pravidla, která mapují veřejný port v nástroji pro vyrovnávání zatížení na port v back-endovém fondu adres.
+* **Pravidla příchozího překladu adres (NAT)**: obsahuje pravidla, která mapují veřejný port v nástroji pro vyrovnávání zatížení na port konkrétního virtuálního počítače v back-endovém fondu adres.
+* **Testy**: obsahuje testy stavu sloužící ke kontrole dostupnosti instancí virtuálních počítačů v back-endovém fondu adres.
 
 Další informace najdete v tématu [Podpora služby Load Balancer v Azure Resource Manageru](load-balancer-arm.md).
 
-## <a name="set-up-cli-toouse-resource-manager"></a>Nastavení rozhraní příkazového řádku toouse Resource Manager
+## <a name="set-up-cli-to-use-resource-manager"></a>Nastavení rozhraní příkazového řádku pro použití Resource Manageru
 
-1. Pokud jste rozhraní příkazového řádku Azure nikdy nepoužívali, projděte si téma [instalace a konfigurace rozhraní příkazového řádku Azure hello](../cli-install-nodejs.md). Postupujte podle pokynů hello až toohello bodu, kde můžete vybrat svůj účet Azure a předplatné.
-2. Spustit hello **azure konfigurace režim** příkaz režimu Manager tooResource tooswitch, následujícím způsobem:
+1. Pokud jste rozhraní příkazového řádku Azure nikdy nepoužívali, přejděte na téma [Instalace a konfigurace rozhraní příkazového řádku Azure](../cli-install-nodejs.md). Postupujte podle pokynů až do chvíle, kdy máte vybrat svůj účet a předplatné Azure.
+2. Spuštěním příkazu **azure config mode** přejděte do režimu Resource Manager, jak vidíte níže:
 
     ```azurecli
     azure config mode arm
@@ -64,7 +66,7 @@ Další informace najdete v tématu [Podpora služby Load Balancer v Azure Resou
 
 ## <a name="create-an-internal-load-balancer-step-by-step"></a>Vytvoření interního nástroje pro vyrovnávání zatížení krok za krokem
 
-1. Přihlaste se tooAzure.
+1. Přihlaste se k Azure.
 
     ```azurecli
     azure login
@@ -72,7 +74,7 @@ Další informace najdete v tématu [Podpora služby Load Balancer v Azure Resou
 
     Po zobrazení výzvy zadejte své přihlašovací údaje Azure.
 
-2. Změna režimu Resource Manager tooAzure nástroje příkaz hello.
+2. Přepněte nástroje příkazového řádku do režimu Azure Resource Manager.
 
     ```azurecli
     azure config mode arm
@@ -90,24 +92,24 @@ azure group create <resource group name> <location>
 
 1. Vytvořte interní nástroj pro vyrovnávání zatížení.
 
-    V následujícím scénáři hello se vytvoří skupinu prostředků s názvem nrprg v oblasti Východ USA.
+    V následujícím scénáři se vytvoří skupina prostředků nrprg v oblasti Východní USA.
 
     ```azurecli
     azure network lb create --name nrprg --location eastus
     ```
 
    > [!NOTE]
-   > Všechny prostředky pro interní služby load balancer, jako je například virtuální sítě a podsítě virtuální sítě, musí být v hello stejnou skupinu prostředků a v hello stejné oblasti.
+   > Všechny prostředky interního nástroje pro vyrovnávání zatížení, jako jsou virtuální sítě a podsítě virtuálních sítí, musí být ve stejné skupině prostředků a ve stejné oblasti.
 
-2. Vytvořte front-end IP adresu pro vyrovnávání zatížení interní hello.
+2. Vytvořte front-endovou IP adresu pro tento interní nástroj pro vyrovnávání zatížení.
 
-    Hello IP adresu, která používáte musí být v rozsahu hello podsítě virtuální sítě.
+    IP adresa, kterou použijete, se musí nacházet v rozsahu podsítě vaší virtuální sítě.
 
     ```azurecli
     azure network lb frontend-ip create --resource-group nrprg --lb-name ilbset --name feilb --private-ip-address 10.0.0.7 --subnet-name nrpvnetsubnet --subnet-vnet-name nrpvnet
     ```
 
-3. Vytvořte fond back-end adres hello.
+3. Vytvořte back-endový fond adres.
 
     ```azurecli
     azure network lb address-pool create --resource-group nrprg --lb-name ilbset --name beilb
@@ -115,9 +117,9 @@ azure group create <resource group name> <location>
 
     Po definování front-endové IP adresy a back-endového fondu adres můžete vytvořit pravidla nástroje pro vyrovnávání zatížení, pravidla příchozího překladu adres (NAT) a vlastní testy stavu.
 
-4. Vytvořte pravidlo Vyrovnávání zatížení nástroje pro vyrovnávání zatížení interní hello.
+4. Vytvořte pravidlo nástroje pro vyrovnávání zatížení pro tento interní nástroj pro vyrovnávání zatížení.
 
-    Pokud budete postupovat podle předchozích kroků hello, hello příkaz vytvoří pravidlo Vyrovnávání zatížení pro naslouchání tooport 1433 ve front-endu fondu hello a odesílání Vyrovnávání zatížení provozu toohello back-end fondu síťových adres, také používá port 1433.
+    Po provedení předchozích kroků vytvoří tento příkaz pravidlo nástroje pro vyrovnávání zatížení pro naslouchání na portu 1433 ve front-endovém fondu a posílání síťového provozu s vyrovnáváním zatížení do back-endového fondu adres rovněž na portu 1433.
 
     ```azurecli
     azure network lb rule create --resource-group nrprg --lb-name ilbset --name ilbrule --protocol tcp --frontend-port 1433 --backend-port 1433 --frontend-ip-name feilb --backend-address-pool-name beilb
@@ -125,7 +127,7 @@ azure group create <resource group name> <location>
 
 5. Vytvořte pravidla příchozího překladu adres (NAT).
 
-    Příchozí pravidla NAT jsou koncové body používané toocreate, nástroji pro vyrovnávání zatížení, které přejděte instance tooa konkrétní virtuální počítač. předchozí kroky Hello vytvořit dvě pravidla NAT pro vzdálenou plochu.
+    Pravidla příchozího překladu adres (NAT) slouží k vytvoření koncových bodů v nástroji pro vyrovnávání zatížení, které vedou ke konkrétním instancím virtuálních počítačů. Předchozí kroky vytvořily dvě pravidla překladu adres (NAT) pro vzdálenou plochu.
 
     ```azurecli
     azure network lb inbound-nat-rule create --resource-group nrprg --lb-name ilbset --name NATrule1 --protocol TCP --frontend-port 5432 --backend-port 3389
@@ -133,23 +135,23 @@ azure group create <resource group name> <location>
     azure network lb inbound-nat-rule create --resource-group nrprg --lb-name ilbset --name NATrule2 --protocol TCP --frontend-port 5433 --backend-port 3389
     ```
 
-6. Vytvořte sondy stavu služby pro vyrovnávání zatížení hello.
+6. Vytvořte testy stavu pro tento nástroj pro vyrovnávání zatížení.
 
-    Test stavu kontroluje všechny instance virtuálního počítače toomake se, že se mohou odesílat provoz sítě. Hello instanci virtuálního počítače s kontroly selhání testu se odebere z nástroje pro vyrovnávání zatížení hello dokud přejde do režimu online a kontrolu testu Určuje, že je v pořádku.
+    Test stavu kontroluje všechny instance virtuálních počítačů a ověřuje, že mohou posílat síťový provoz. Instance virtuálního počítače, u níž se kontroly testu nezdaří, se odebere z nástroje pro vyrovnávání zatížení do té doby, než znovu přejde do režimu online a kontrola testu určí, že je v pořádku.
 
     ```azurecli
     azure network lb probe create --resource-group nrprg --lb-name ilbset --name ilbprobe --protocol tcp --interval 300 --count 4
     ```
 
     > [!NOTE]
-    > Platforma Microsoft Azure Hello používá statické veřejně směrovatelné IPv4 adresu pro různé scénáře pro správu. Hello IP adresa je 168.63.129.16. Tuto IP adresu by neměla blokovat žádná brána firewall, protože by to mohlo způsobit neočekávané chování.
-    > S ohledem tooAzure interní Vyrovnávání zatížení se sledováním sondy z hello zatížení vyrovnávání toodetermine hello stav pro virtuální počítače v sadě Vyrovnávání zatížení sítě používá tuto IP adresu. Pokud skupina zabezpečení sítě je použité toorestrict provoz tooAzure virtuálních počítačů v sadu interně Vyrovnávání zatížení sítě nebo je použité tooa podsíť virtuální sítě, ujistěte se, zda pravidla zabezpečení sítě je přidána tooallow provoz z 168.63.129.16.
+    > Platforma Microsoft Azure používá pro řadu scénářů správy statickou, veřejně směrovatelnou IPv4 adresu. Jedná se o IP adresu 168.63.129.16. Tuto IP adresu by neměla blokovat žádná brána firewall, protože by to mohlo způsobit neočekávané chování.
+    > Vzhledem k internímu vyrovnávání zatížení Azure slouží tato IP adresa monitorovacím testům z nástroje pro vyrovnávání zatížení k určování stavu virtuálních počítačů v sadě s vyrovnáváním zatížení. Pokud se k omezení provozu na virtuální počítače Azure v sadě s interním vyrovnáváním zatížení používá skupina zabezpečení sítě nebo pokud je použita na podsíti virtuální sítě, ujistěte se, že je přidáno pravidlo zabezpečení sítě umožňující provoz z adresy 168.63.129.16.
 
 ## <a name="create-nics"></a>Vytvoření síťových rozhraní
 
-Třeba toocreate síťových adaptérů (nebo upravit existující) a přidružovat je sondy, tooNAT pravidla a pravidla nástroje pro vyrovnávání zatížení.
+Je nutné vytvořit síťová rozhraní (nebo upravit stávající) a potom je přidružit k pravidlům překladu adres (NAT), pravidlům nástroje pro vyrovnávání zatížení a testům.
 
-1. Vytvořte síťový adaptér s názvem *lb nic1 být*a přidružte ji k hello *rdp1* NAT pravidlo a hello *beilb* fond adres back-end.
+1. Vytvořte síťové rozhraní s názvem *lb-nic1-be* a přidružte jej k pravidlu překladu adres (NAT) *rdp1* a back-endovému fondu adres *beilb*.
 
     ```azurecli
     azure network nic create --resource-group nrprg --name lb-nic1-be --subnet-name nrpvnetsubnet --subnet-vnet-name nrpvnet --lb-address-pool-ids "/subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/backendAddressPools/beilb" --lb-inbound-nat-rule-ids "/subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/inboundNatRules/rdp1" --location eastus
@@ -158,10 +160,10 @@ Třeba toocreate síťových adaptérů (nebo upravit existující) a přidružo
     Očekávaný výstup:
 
         info:    Executing command network nic create
-        + Looking up hello network interface "lb-nic1-be"
-        + Looking up hello subnet "nrpvnetsubnet"
+        + Looking up the network interface "lb-nic1-be"
+        + Looking up the subnet "nrpvnetsubnet"
         + Creating network interface "lb-nic1-be"
-        + Looking up hello network interface "lb-nic1-be"
+        + Looking up the network interface "lb-nic1-be"
         data:    Id                              : /subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/networkInterfaces/lb-nic1-be
         data:    Name                            : lb-nic1-be
         data:    Type                            : Microsoft.Network/networkInterfaces
@@ -181,21 +183,21 @@ Třeba toocreate síťových adaptérů (nebo upravit existující) a přidružo
         data:
         info:    network nic create command OK
 
-2. Vytvořte síťový adaptér s názvem *lb nic2 být*a přidružte ji k hello *rdp2* NAT pravidlo a hello *beilb* fond adres back-end.
+2. Vytvořte síťové rozhraní s názvem *lb-nic2-be* a přidružte jej k pravidlu překladu adres (NAT) *rdp2* a back-endovému fondu adres *beilb*.
 
     ```azurecli
     azure network nic create --resource-group nrprg --name lb-nic2-be --subnet-name nrpvnetsubnet --subnet-vnet-name nrpvnet --lb-address-pool-ids "/subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/backendAddressPools/beilb" --lb-inbound-nat-rule-ids "/subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/inboundNatRules/rdp2" --location eastus
     ```
 
-3. Vytvoření virtuálního počítače s názvem *DB1*a přidružte ji k hello síťový adaptér s názvem *lb nic1 být*. Účet úložiště s názvem *web1nrp* je vytvořen před hello následující příkaz spustí:
+3. Vytvořte virtuální počítač s názvem *DB1* a přidružte jej k síťovému rozhraní s názvem *lb-nic1-be*. Účet úložiště s názvem *web1nrp* je vytvořen ještě před spuštěním následujícího příkazu:
 
     ```azurecli
     azure vm create --resource--resource-grouproup nrprg --name DB1 --location eastus --vnet-name nrpvnet --vnet-subnet-name nrpvnetsubnet --nic-name lb-nic1-be --availset-name nrp-avset --storage-account-name web1nrp --os-type Windows --image-urn MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:4.0.20150825
     ```
     > [!IMPORTANT]
-    > Virtuální počítače v zatížení vyrovnávání nutné toobe v hello stejné skupině dostupnosti. Použití `azure availset create` toocreate sadu dostupnosti.
+    > Virtuální počítače v nástroji pro vyrovnávání zatížení musí být ve stejné skupině dostupnosti. Skupinu dostupnosti vytvoříte pomocí příkazu `azure availset create`.
 
-4. Vytvoření virtuálního počítače (VM) s názvem *DB2*a přidružte ji k hello síťový adaptér s názvem *lb nic2 být*. Účet úložiště s názvem *web1nrp* byl vytvořen před spuštěním hello následující příkaz.
+4. Vytvořte virtuální počítač s názvem *DB2* a přidružte jej k síťovému rozhraní s názvem *lb-nic2-be*. Účet úložiště s názvem *web1nrp* byl vytvořen ještě před spuštěním následujícího příkazu.
 
     ```azurecli
     azure vm create --resource--resource-grouproup nrprg --name DB2 --location eastus --vnet-name nrpvnet --vnet-subnet-name nrpvnetsubnet --nic-name lb-nic2-be --availset-name nrp-avset --storage-account-name web2nrp --os-type Windows --image-urn MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:4.0.20150825
@@ -203,7 +205,7 @@ Třeba toocreate síťových adaptérů (nebo upravit existující) a přidružo
 
 ## <a name="delete-a-load-balancer"></a>Odstranění nástroje pro vyrovnávání zatížení
 
-tooremove nástroj pro vyrovnávání zatížení hello použijte následující příkaz:
+K odebrání nástroje pro vyrovnávání zatížení použijte následující příkaz:
 
 ```azurecli
 azure network lb delete --resource-group nrprg --name ilbset

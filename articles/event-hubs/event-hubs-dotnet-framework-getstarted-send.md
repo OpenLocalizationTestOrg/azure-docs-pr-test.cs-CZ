@@ -1,6 +1,6 @@
 ---
-title: "aaaSend události tooAzure Event Hubs pomocí rozhraní .NET Framework hello | Microsoft Docs"
-description: "Začínáme odesílání událostí tooEvent Hubs pomocí hello rozhraní .NET Framework"
+title: "Odeslání událostí do Azure Event Hubs pomocí rozhraní .NET Framework | Dokumentace Microsoftu"
+description: "Začínáme s odesíláním událostí do služby Event Hubs pomocí rozhraní .NET Framework"
 services: event-hubs
 documentationcenter: 
 author: sethmanheim
@@ -12,57 +12,57 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/12/2017
+ms.date: 10/10/2017
 ms.author: sethm
-ms.openlocfilehash: 05514546a6094096e4a3c800db058190076de80a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 16da4e1732445b2480daf18130ea74935c6e6c49
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="send-events-tooazure-event-hubs-using-hello-net-framework"></a>Odesílání událostí tooAzure Event Hubs pomocí hello rozhraní .NET Framework
+# <a name="send-events-to-azure-event-hubs-using-the-net-framework"></a>Odeslání událostí do Azure Event Hubs pomocí rozhraní .NET Framework
 
 ## <a name="introduction"></a>Úvod
 
-Event Hubs je služba, která zpracovává velké objemy dat událostí (telemetrie) z připojených zařízení a aplikací. Po shromažďovat data do centra událostí, můžete ukládat data hello pomocí úložného clusteru nebo transformovat pomocí zprostředkovatele analýzu v reálném čase. Tato schopnost shromažďovat a zpracovávat rozsáhlé událostí je klíčovou komponentou moderních aplikačních architektur, například hello Internet věcí (IoT).
+Event Hubs je služba, která zpracovává velké objemy dat událostí (telemetrie) z připojených zařízení a aplikací. Data, která shromáždíte pomocí služby Event Hubs, můžete uložit pomocí úložného clusteru nebo transformovat pomocí zprostředkovatele datové analýzy v reálném čase. Schopnost shromažďovat a zpracovávat velké množství událostí je klíčovou komponentou moderních aplikačních architektur, například internetu věcí (Internet of Things – IoT).
 
-Tento kurz ukazuje, jak toouse hello [portál Azure](https://portal.azure.com) toocreate centra událostí. Také ukazuje, jak hello toosend události tooan centra událostí pomocí konzolové aplikace napsané v C# pomocí rozhraní .NET Framework. tooreceive událostí pomocí hello rozhraní .NET Framework, najdete v části hello [přijímat události pomocí hello rozhraní .NET Framework](event-hubs-dotnet-framework-getstarted-receive-eph.md) článek, nebo klikněte na příslušný přijímající jazyk hello v levé tabulce hello obsahu.
+Díky tomuto kurzu se dozvíte, jak pomocí webu [Azure Portal](https://portal.azure.com) vytvořit centrum událostí. Také ukazuje, jak odesílat události do centra událostí pomocí konzolové aplikace napsané v jazyce C# s použitím rozhraní .NET Framework. Pokud chcete přijímat události pomocí rozhraní .NET Framework, přečtěte si článek [Příjem událostí pomocí rozhraní .NET Framework](event-hubs-dotnet-framework-getstarted-receive-eph.md) nebo klikněte na příslušný přijímající jazyk v obsahu vlevo.
 
-toocomplete tohoto kurzu budete potřebovat hello následující požadavky:
+Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
-* [Microsoft Visual Studio 2015 nebo vyšší](http://visualstudio.com). snímky obrazovky Hello v tomto kurzu použít Visual Studio 2017.
+* [Microsoft Visual Studio 2015 nebo vyšší](http://visualstudio.com). Pro snímky obrazovky v tomto kurzu se používá Visual Studio 2017.
 * Aktivní účet Azure. Pokud účet nemáte, můžete si ho bezplatně vytvořit během několika minut. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/free/).
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Vytvoření oboru názvů Event Hubs a centra událostí
 
-prvním krokem Hello je toouse hello [portál Azure](https://portal.azure.com) toocreate a obor názvů zadejte Event Hubs a získání přihlašovacích údajů pro správu aplikace musí toocommunicate s centrem událostí hello hello. toocreate obor názvů a centra událostí, postupujte podle postupu hello v [v tomto článku](event-hubs-create.md), pak pokračujte hello následující kroky v tomto kurzu.
+Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v [tomto článku](event-hubs-create.md) a pak pokračujte podle následujících pokynů v tomto kurzu.
 
 ## <a name="create-a-sender-console-application"></a>Vytvoření konzolové aplikace Odesílatel
 
-V této části napíšete konzolovou aplikaci systému Windows, který odesílá centra událostí tooyour události.
+V této části napíšete konzolovou aplikaci pro Windows, která zasílá události do vašeho centra událostí.
 
-1. V sadě Visual Studio vytvořte nový projekt aplikace Visual C# plocha pomocí hello **konzolové aplikace** šablona projektu. Název projektu hello **odesílatele**.
+1. Pomocí šablony projektu **Konzolová aplikace** vytvořte v sadě Visual Studio nový projekt desktopové aplikace Visual C#. Projekt pojmenujte **Odesílatel**.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp1.png)
-2. V Průzkumníku řešení klikněte pravým tlačítkem na hello **odesílatele** projektu a pak klikněte na **spravovat balíčky NuGet pro řešení**. 
-3. Klikněte na tlačítko hello **Procházet** a potom vyhledejte `Microsoft Azure Service Bus`. Klikněte na tlačítko **nainstalovat**a přijměte podmínky použití hello. 
+2. V Průzkumníku řešení klikněte pravým tlačítkem na projekt **Sender** a potom klikněte na **Spravovat balíčky NuGet pro řešení**. 
+3. Klikněte na kartu **Procházet** a potom najděte `WindowsAzure.ServiceBus`. Klikněte na **Instalovat** a přijměte podmínky použití. 
    
     ![](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp2.png)
    
-    Visual Studio stáhne, nainstaluje a přidá odkaz toohello [balíček NuGet knihovny Azure Service Bus](https://www.nuget.org/packages/WindowsAzure.ServiceBus).
-4. Přidejte následující hello `using` příkazy hello horní části hello **Program.cs** souboru:
+    Visual Studio stáhne a nainstaluje [balíček NuGet knihovny Azure Service Bus](https://www.nuget.org/packages/WindowsAzure.ServiceBus) a přidá se na něj odkaz.
+4. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
    
   ```csharp
   using System.Threading;
   using Microsoft.ServiceBus.Messaging;
   ```
-5. Přidejte následující pole toohello hello **Program** třída, nahraďte zástupný symbol hodnoty hello s hello název centra událostí hello jste vytvořili v předchozí části hello a hello úrovni oboru názvů připojovacího řetězce jste si předtím uložili.
+5. K třídě **Program** přidejte následující pole a zástupné hodnoty nahraďte názvem centra událostí, které jste vytvořili v předchozí části, a připojovacím řetězcem na úrovni oboru názvů, který jste si předtím uložili.
    
   ```csharp
   static string eventHubName = "{Event Hub name}";
   static string connectionString = "{send connection string}";
   ```
-6. Přidejte následující metodu toohello hello **Program** třídy:
+6. Přidejte následující metodu do třídy **Program**:
    
   ```csharp
   static void SendingRandomMessages()
@@ -88,23 +88,23 @@ V této části napíšete konzolovou aplikaci systému Windows, který odesíl�
   }
   ```
    
-  Tato metoda neustále odesílá události tooyour centra událostí se zpožděním 200 ms.
-7. Nakonec přidejte následující řádky toohello hello **hlavní** metoda:
+  Tato metoda neustále odesílá události do vašeho centra událostí se zpožděním 200 ms.
+7. Nakonec do metody **Main** přidejte následující řádky:
    
   ```csharp
-  Console.WriteLine("Press Ctrl-C toostop hello sender process");
-  Console.WriteLine("Press Enter toostart now");
+  Console.WriteLine("Press Ctrl-C to stop the sender process");
+  Console.WriteLine("Press Enter to start now");
   Console.ReadLine();
   SendingRandomMessages();
   ```
-8. Spuštění programu hello a ujistěte se, že nejsou žádné chyby.
+8. Spusťte program a zkontrolujte, že nejsou žádné chyby.
   
-Blahopřejeme! Nyní jste odeslali centra událostí tooan zprávy.
+Blahopřejeme! Nyní jste odeslali zprávy do centra událostí.
 
 ## <a name="next-steps"></a>Další kroky
-Teď, sestavili jste funkční aplikaci, která vytvoří Centrum událostí a odesílá data, můžete přesunout na toohello následující scénáře:
+Gratulujeme, sestavili jste funkční aplikaci, která vytvoří centrum událostí a odesílá data. Nyní se můžete podívat na některý z následujících scénářů:
 
-* [Přijímat události pomocí hello Event Processor Host](event-hubs-dotnet-framework-getstarted-receive-eph.md)
+* [Příjem událostí pomocí třídy EventProcessorHost](event-hubs-dotnet-framework-getstarted-receive-eph.md)
 * [Referenční informace ke třídě EventProcessorHost](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost)
 * [Přehled služby Event Hubs](event-hubs-what-is-event-hubs.md)
 

@@ -1,6 +1,6 @@
 ---
-title: "aaaGet začít s Azure Key Vault | Microsoft Docs"
-description: "Použijte tento kurz toohelp získáte začít s Azure Key Vault toocreate zesílený kontejner v Azure, toostore a spravovat kryptografické klíče a tajné klíče v Azure."
+title: "Začínáme s Azure Key Vault | Dokumentace Microsoftu"
+description: "Tento kurz vám pomůže začít s Azure Key Vault a ukáže vám, jak v Azure vytvořit zesílený kontejner, a jak ukládat a spravovat kryptografické klíče a tajné klíče v Azure."
 services: key-vault
 documentationcenter: 
 author: cabailey
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 07/19/2017
 ms.author: cabailey
-ms.openlocfilehash: 865853b778dec5fca5c7db0d060627554c0a9cb3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 0299d931c5bf21775b68069afaa106279270226a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-key-vault"></a>Začínáme s Azure Key Vault
-Azure Key Vault je dostupný ve většině oblastí. Další informace najdete v tématu hello [stránce s cenami Key Vault](https://azure.microsoft.com/pricing/details/key-vault/).
+Azure Key Vault je dostupný ve většině oblastí. Další informace najdete na [stránce s cenami Key Vault](https://azure.microsoft.com/pricing/details/key-vault/).
 
 ## <a name="introduction"></a>Úvod
-Použijte tento kurz toohelp získáte začít s Azure Key Vault toocreate zesílený kontejner (trezor) v Azure, toostore a spravovat kryptografické klíče a tajné klíče v Azure. Provede vás procesem hello použití prostředí Azure PowerShell toocreate trezoru, který obsahuje klíč nebo heslo, které pak můžete použít s aplikací Azure. Poté vám ukáže, jak aplikace může tento klíč nebo heslo použít.
+Tento kurz vám pomůže začít s Azure Key Vault a ukáže vám, jak v Azure vytvořit zesílený kontejner (trezor), a jak ukládat a spravovat kryptografické klíče a tajné klíče v Azure. Provede vás procesem použití Azure PowerShell k vytvoření trezoru, který obsahuje klíč nebo heslo, které pak můžete použít s aplikací Azure. Poté vám ukáže, jak aplikace může tento klíč nebo heslo použít.
 
-**Odhadovaný čas toocomplete:** 20 minut
+**Odhadovaný čas dokončení:** 20 minut
 
 > [!NOTE]
-> Tento kurz neobsahuje pokyny, jak toowrite hello aplikaci Azure, která obsahuje jeden z kroků hello, a to jak tooauthorize aplikaci toouse klíč nebo tajný klíč v hello klíč trezoru.
+> Tento kurz neobsahuje pokyny, jak napsat aplikaci Azure obsaženou v jednom z kroků, konkrétně Autorizace aplikace pro použití klíče nebo tajného klíče v trezoru klíčů.
 >
 > Tento kurz používá prostředí Azure PowerShell. Pokyny pro rozhraní příkazového řádku pro různé platformy najdete v [tomto ekvivalentním kurzu](key-vault-manage-with-cli2.md).
 >
@@ -38,45 +38,45 @@ Použijte tento kurz toohelp získáte začít s Azure Key Vault toocreate zesí
 Souhrnné informace o Azure Key Vault naleznete v tématu [Co je Azure Key Vault?](key-vault-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
-toocomplete tento kurz, musíte mít hello následující:
+K dokončení tohoto kurzu potřebujete:
 
-* TooMicrosoft předplatné Azure. Pokud žádné nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/)
-* Azure PowerShell v **minimální verzi 1.1.0**. tooinstall prostředí Azure PowerShell a přidružit ho ke svému předplatnému Azure, najdete v části [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview). Pokud jste již Azure PowerShell nainstalovali a neznáte hello verzi, z konzoly Azure PowerShell text hello, zadejte `(Get-Module azure -ListAvailable).Version`. Máte-li nainstalovaný Azure PowerShell ve verzi 0.9.1 až 0.9.8, stále můžete tento kurz použít, pouze s menšími změnami. Například musíte použít hello `Switch-AzureMode AzureResourceManager` příkaz a některé příkazy Azure Key Vault hello změnily. Seznam rutin Key Vault pro verze 0.9.1 až 0.9.8 hello najdete v tématu [rutiny Azure Key Vault](/powershell/module/azurerm.keyvault/#key_vault).
-* Aplikace, které budou nakonfigurované toouse hello klíč nebo heslo, které vytvoříte v tomto kurzu. Vzorová aplikace je k dispozici z hello [Microsoft Download Center](http://www.microsoft.com/en-us/download/details.aspx?id=45343). Pokyny najdete v tématu hello doplňujícími souboru Readme.
+* Předplatné Microsoft Azure. Pokud žádné nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/)
+* Azure PowerShell v **minimální verzi 1.1.0**. Chcete-li nainstalovat Azure PowerShell a přidružit ho ke svému předplatnému Azure, prohlédněte si téma [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview). Pokud jste již Azure PowerShell nainstalovali, ale neznáte jeho verzi, z konzoly Azure PowerShell zadejte `(Get-Module azure -ListAvailable).Version`. Máte-li nainstalovaný Azure PowerShell ve verzi 0.9.1 až 0.9.8, stále můžete tento kurz použít, pouze s menšími změnami. Například musíte použít příkaz `Switch-AzureMode AzureResourceManager` a zároveň se změnily některé příkazy Azure Key Vault. Seznam rutin Key Vault pro verze 0.9.1 až 0.9.8 naleznete v tématu [Rutiny Azure Key Vault](/powershell/module/azurerm.keyvault/#key_vault).
+* Aplikaci, kterou nakonfigurujete pro použití klíče nebo hesla, které v tomto kurzu vytvoříte. Vzorová aplikace je k dispozici ve službě [Microsoft Download Center](http://www.microsoft.com/en-us/download/details.aspx?id=45343). Pokyny naleznete v souvisejícím souboru Readme.
 
-Tento kurz je určen pro začátečníky v Azure Powershellu, ale předpokládá, že chápete základní koncepty hello, jako jsou moduly, rutiny a relace. Další informace naleznete v tématu [Začínáme s Microsoft PowerShellem](https://technet.microsoft.com/library/hh857337.aspx).
+Tento kurz je určen pro začátečníky v Azure PowerShellu, ale předpokládá, že chápete základní koncepty, jako jsou moduly, rutiny a relace. Další informace naleznete v tématu [Začínáme s Microsoft PowerShellem](https://technet.microsoft.com/library/hh857337.aspx).
 
-tooget podrobnou nápovědu k jakékoli rutině v tomto kurzu použijte hello **Get-Help** rutiny.
+Podrobnou nápovědu k jakékoli rutině v tomto kurzu získáte pomocí rutiny **Get-Help**.
 
     Get-Help <cmdlet-name> -Detailed
 
-Například tooget nápovědu pro hello **Login-AzureRmAccount** rutiny, zadejte:
+Například pro získání nápovědy pro rutinu **Login-AzureRmAccount** zadejte:
 
     Get-Help Login-AzureRmAccount -Detailed
 
-Také si můžete přečíst následující kurzy tooget obeznámeni s Azure Resource Manager v prostředí Azure PowerShell hello:
+Pro seznámení se s Azure Resource Managerem v Azure PowerShellu si také můžete přečíst následující kurzy:
 
-* [Jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview)
+* [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview)
 * [Použití Azure PowerShellu s Resource Managerem](../powershell-azure-resource-manager.md)
 
-## <a id="connect"></a>Připojit tooyour odběrů
-Spusťte relaci prostředí Azure PowerShell a přihlaste tooyour účet Azure s hello následující příkaz:  
+## <a id="connect"></a>Připojení k předplatným
+Spusťte relaci Azure PowerShellu a přihlaste se k účtu Azure pomocí následujícího příkazu:  
 
     Login-AzureRmAccount
 
-Všimněte si, že pokud používáte konkrétní instanci Azure, například Azure Government, použijte hello - parametr prostředí pomocí tohoto příkazu. Příklad: `Login-AzureRmAccount –Environment (Get-AzureRmEnvironment –Name AzureUSGovernment)`
+Pamatujte, že pokud používáte konkrétní instanci Azure, například Azure Government, musíte v tomto příkazu použít parametr -Environment. Příklad: `Login-AzureRmAccount –Environment (Get-AzureRmEnvironment –Name AzureUSGovernment)`
 
-V okně hello automaticky otevírané okno prohlížeče zadejte účet Azure uživatelské jméno a heslo. Prostředí Azure PowerShell získá všechna předplatná hello, které jsou spojeny s tímto účtem a ve výchozím nastavení, používá hello první z nich.
+V automaticky otevřeném okně prohlížeče zadejte svoje uživatelské jméno a heslo k účtu Azure. Azure PowerShell získá všechna předplatná přidružená k tomuto účtu a ve výchozím nastavení použije první předplatné.
 
-Pokud máte více předplatných a chcete toospecify konkrétní jeden toouse pro Azure Key Vault, zadejte hello následující toosee hello předplatných pro váš účet:
+Máte-li více předplatných a chcete určit jedno konkrétní, které se má použít pro Azure Key Vault, zadejte následující příkaz k zobrazení předplatných pro váš účet:
 
     Get-AzureRmSubscription
 
-Potom toospecify hello předplatné toouse, zadejte:
+Poté pro určení předplatného, které se má použít, zadejte:
 
     Set-AzureRmContext -SubscriptionId <subscription ID>
 
-Další informace o konfiguraci Azure Powershellu najdete v tématu [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
+Další informace o konfiguraci prostředí Azure PowerShell najdete v tématu [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
 
 ## <a id="resource"></a>Vytvoření nové skupiny prostředků
 Používáte-li Azure Resource Manager, pak se všechny související prostředky vytváří v uvnitř skupiny prostředků. Pro účely tohoto kurzu vytvoříme novou skupinu prostředků s názvem **ContosoResourceGroup**:
@@ -85,133 +85,133 @@ Používáte-li Azure Resource Manager, pak se všechny související prostředk
 
 
 ## <a id="vault"></a>Vytvoření trezoru klíčů
-Použití hello [New-AzureRmKeyVault](/powershell/module/azurerm.keyvault/new-azurermkeyvault) rutiny toocreate trezoru klíčů. Tato rutina má tři povinné parametry: **název skupiny prostředků**, **název trezoru klíčů**a hello **zeměpisné umístění**.
+Pro vytvoření trezoru klíčů použijte rutinu [New-AzureRmKeyVault](/powershell/module/azurerm.keyvault/new-azurermkeyvault). Tato rutina má tři povinné parametry: **název skupiny prostředků**, **název trezoru klíčů** a **zeměpisné umístění**.
 
-Například pokud použijete název trezoru hello **ContosoKeyVault**, název skupiny prostředků hello **ContosoResourceGroup**a umístění hello **východní Asie**, zadejte:
+Používáte-li například název trezoru **ContosoKeyVault**, název skupiny prostředků **ContosoResourceGroup** a umístění **Východní Asie**, zadejte:
 
     New-AzureRmKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia'
 
-Hello výstup této rutiny zobrazuje vlastnosti trezoru klíčů hello, který jste právě vytvořili. nejdůležitější vlastnosti Hello dva jsou:
+Výstup této rutiny zobrazuje vlastnosti trezoru klíčů, který jste právě vytvořili. Dvě nejdůležitější vlastnosti jsou:
 
-* **Název trezoru**: V příkladu hello je to **ContosoKeyVault**. Tento název budete používat pro další rutiny Key Vault.
-* **Identifikátor URI trezoru**: V příkladu hello je to https://contosokeyvault.vault.azure.net/. Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
+* **Název trezoru**: V tomto příkladu je to **ContosoKeyVault**. Tento název budete používat pro další rutiny Key Vault.
+* **Identifikátor URI trezoru**: V tomto příkladu je to https://contosokeyvault.vault.azure.net/. Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
 
-Váš účet Azure je autorizovaný tooperform žádné operace pro tento klíč trezoru. Zatím k tomu není oprávněn nikdo jiný.
+Váš účet Azure je nyní oprávněn provádět nad tímto trezorem klíčů všechny operace. Zatím k tomu není oprávněn nikdo jiný.
 
 > [!NOTE]
-> Pokud se zobrazí chyba hello **hello předplatné není registrované toouse oboru názvů "Microsoft.KeyVault"** když se pokusíte toocreate nového trezoru klíčů, spusťte `Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.KeyVault"` a poté znovu spusťte váš příkaz New-AzureRmKeyVault. Další informace najdete v tématu [Register-AzureRmResourceProvider](/powershell/module/azurerm.resources/register-azurermresourceprovider).
+> Pokud se při pokusu o vytvoření nového trezoru klíčů zobrazí chyba **Předplatné není zaregistrované pro používání oboru názvů „Microsoft.KeyVault“**, spusťte `Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.KeyVault"` a poté znovu spusťte váš příkaz New-AzureRmKeyVault. Další informace najdete v tématu [Register-AzureRmResourceProvider](/powershell/module/azurerm.resources/register-azurermresourceprovider).
 >
 >
 
-## <a id="add"></a>Přidat klíč nebo tajný toohello trezoru klíčů
-Pokud chcete Azure Key Vault toocreate klíč chráněný softwarem pro vás, použijte hello [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurekeyvaultkey) rutiny a zadejte následující hello:
+## <a id="add"></a>Přidání klíče nebo tajného klíče do trezoru
+Chcete-li, aby pro vás služba Azure Key Vault vytvořila softwarově chráněný klíč, použijte rutinu [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurekeyvaultkey) a zadejte následující:
 
     $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey' -Destination 'Software'
 
-Ale pokud máte existující softwarově chráněný klíč. Jednotka tooyour uložit soubor PFX C:\ v souboru s názvem softkey.pfx, které chcete tooupload tooAzure Key Vault, typ hello následující proměnné hello tooset **securepfxpwd** na heslo **123** pro hello. Soubor PFX:
+Nicméně pokud už máte existující softwarově chráněný klíč v souboru .PFX uloženém na jednotce C:\ v souboru s názvem softkey.pfx a chcete ho nahrát do Azure Key Vault, zadejte následující kód, abyste nastavili proměnnou **securepfxpwd** na heslo **123** pro soubor .PFX:
 
     $securepfxpwd = ConvertTo-SecureString –String '123' –AsPlainText –Force
 
-Zadejte hello následujících tooimport hello klíč z hello. Soubor PFX, který chrání klíč hello softwarem hello služby Key Vault:
+Poté zadejte následující kód, abyste importovali klíč ze souboru .PFX, který chrání klíč softwarem, do služby Key Vault:
 
     $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey' -KeyFilePath 'c:\softkey.pfx' -KeyFilePassword $securepfxpwd
 
 
-Tento klíč vytvořené nebo odeslaný pomocí jeho identifikátoru URI tooAzure Key Vault, můžete odkazovat. Použít **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** tooalways získat aktuální verzi hello a používat **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/ cgacf4f763ar42ffb0a1gca546aygd87** tooget konkrétní verzi.  
+Na vytvořený nebo do Azure Key Vault nahraný klíč můžete odkazovat pomocí jeho identifikátoru URI. Pomocí **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** vždy získáte aktuální verzi. Chcete-li získat konkrétní verzi, použijte **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87**.  
 
-toodisplay hello identifikátor URI pro tento klíč, zadejte:
+Identifikátor URI tohoto klíče zobrazíte zadáním:
 
     $Key.key.kid
 
-tooadd tajný toohello trezoru, která je hesla s názvem SQLPassword a hodnotou Pa$ $w0rd tooAzure Key Vault hello, nejprve převeďte hello hodnotu Pa$ $w0rd tooa zabezpečený řetězec zadáním hello následující:
+Chcete-li do trezoru služby Azure Key Vault přidat tajný klíč v podobě hesla s názvem SQLPassword a hodnotou Pa$$w0rd, nejprve převeďte hodnotu Pa$$w0rd na zabezpečený řetězec zadáním následujícího:
 
     $secretvalue = ConvertTo-SecureString 'Pa$$w0rd' -AsPlainText -Force
 
-Poté zadejte hello následující:
+Poté zadejte následující:
 
     $secret = Set-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'SQLPassword' -SecretValue $secretvalue
 
-Nyní si můžete odkazy Toto heslo přidali tooAzure Key Vault, a to pomocí jeho identifikátoru URI. Použít **https://ContosoVault.vault.azure.net/secrets/SQLPassword** tooalways získat aktuální verzi hello a používat **https://ContosoVault.vault.azure.net/secrets/SQLPassword/ 90018dbb96a84117a0d2847ef8e7189d** tooget konkrétní verzi.
+Nyní na toto heslo, které jste přidali do Azure Key Vault, můžete odkazovat pomocí jeho identifikátoru URI. Pomocí **https://ContosoVault.vault.azure.net/secrets/SQLPassword** vždy získáte aktuální verzi. Chcete-li získat konkrétní verzi, použijte **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d**.
 
-toodisplay hello identifikátor URI tajného klíče, zadejte:
+Chcete-li zobrazit identifikátor URI tajného klíče, zadejte:
 
     $secret.Id
 
-Podívejme se, zda text hello klíč nebo tajný klíč, který jste právě vytvořili:
+Podívejme se na klíč nebo tajný klíč, který jste právě vytvořili:
 
-* tooview vaše, zadejte:`Get-AzureKeyVaultKey –VaultName 'ContosoKeyVault'`
-* tooview váš tajný, typ:`Get-AzureKeyVaultSecret –VaultName 'ContosoKeyVault'`
+* Pokud chcete zobrazit klíč, zadejte `Get-AzureKeyVaultKey –VaultName 'ContosoKeyVault'`
+* Pokud chcete zobrazit tajný klíč, zadejte `Get-AzureKeyVaultSecret –VaultName 'ContosoKeyVault'`
 
-Nyní je připraven pro aplikace toouse trezoru klíčů a klíče nebo tajného klíče. Je nutné autorizovat toouse aplikace je.  
+Nyní jsou váš trezor klíčů a klíč nebo tajný klíč připravené pro použití aplikacemi. Aby aplikace mohly klíče používat, musíte je nejdříve autorizovat.  
 
 ## <a id="register"></a>Registrace aplikace s Azure Active Directory
-Tento krok obvykle provádí vývojář na samostatném počítači. Není konkrétní tooAzure Key Vault, ale jsou zde uvedeny pro úplnost.
+Tento krok obvykle provádí vývojář na samostatném počítači. Není nijak specifický pro Azure Key Vault, ale pro úplnost je zde uveden.
 
 > [!IMPORTANT]
-> toocomplete hello kurzu, váš účet, hello trezoru a hello aplikace, která zaregistrujete v tomto kroku musí být ve hello stejném adresáři Azure.
+> Pro dokončení kurzu musí být váš účet, trezor i aplikace, kterou budete v tomto kroku registrovat, ve stejném adresáři Azure.
 >
 >
 
-Aplikace, které používají trezor klíčů, se musí ověřit pomocí tokenu z Azure Active Directory. toodo se hello vlastníka aplikace hello musí hello aplikaci nejprve zaregistrovat v Azure Active Directory. Na hello konci registrace obdrží majitel aplikace hello hello následující hodnoty:
+Aplikace, které používají trezor klíčů, se musí ověřit pomocí tokenu z Azure Active Directory. K tomu je potřeba, aby majitel aplikace nejprve zaregistroval aplikaci ve vlastním Azure Active Directory. Na konci registrace obdrží majitel aplikace následující hodnoty:
 
-* **ID aplikace** (také označované jako ID klienta) a **ověřovací klíč** (také označované jako hello sdílený tajný klíč). Hello aplikace musí být obě tyto hodnoty tooAzure služby Active Directory, tooget token. Jak aplikace hello je nakonfigurován toodo to závisí na aplikaci hello. Pro hello ukázkovou aplikaci Key Vault nastavuje majitel aplikace hello tyto hodnoty v souboru app.config hello.
+* **ID aplikace** (také označované jako ID klienta) a **ověřovací klíč** (také označovaný jako sdílený tajný klíč). Pro získání tokenu musí aplikace obě tyto hodnoty poskytnout do Azure Active Directory. Záleží na aplikaci, jak je k tomu nakonfigurovaná. Pro ukázkovou aplikaci Key Vault nastavuje majitel tyto hodnoty v souboru app.config.
 
-tooregister hello aplikace v Azure Active Directory:
+Chcete-li zaregistrovat aplikaci v Azure Active Directory:
 
-1. Přihlaste se toohello portál Azure classic.
-2. Na levé straně hello, klikněte na tlačítko **služby Active Directory**a potom vyberte hello adresář, ve kterém zaregistrujete vaší aplikace. <br> <br> **Poznámka:** hello musíte vybrat stejný adresář, který obsahuje hello předplatné Azure, který jste použili pro vytvoření trezoru klíčů. Pokud si nejste jisti který adresář to je, klikněte na tlačítko **nastavení**, určete hello předplatné, které jste použili pro vytvoření trezoru klíčů, a Poznámka hello název adresáře hello zobrazí v posledním sloupci hello.
-3. Klikněte na **Aplikace**. Pokud nebyly přidané žádné aplikace tooyour directory, tato stránka zobrazuje pouze hello **přidat aplikaci** odkaz. Kliknutím na odkaz hello nebo Alternativně můžete kliknout na **přidat** na panelu příkazů hello.
-4. V hello **přidat aplikaci** na hello **co chcete toodo?** klikněte na tlačítko **přidat aplikaci, kterou vyvíjí Moje organizace**.
-5. Na hello **Řekněte nám o své aplikaci** , zadejte název pro vaši aplikaci a pak vyberte **webové aplikace nebo webové rozhraní API** (hello výchozí). Klikněte na tlačítko hello **Další** ikonu.
-6. Na hello **vlastností aplikace** zadejte hello **adresa URL přihlašování** a **identifikátor ID URI aplikace** pro webovou aplikaci. Pokud vaše aplikace tyto hodnoty neobsahuje, v tomto kroku si je můžete vymyslet (například můžete do obou polí zadat http://test1.contoso.com). Nezáleží na tom, zda tyto weby existují. Co je důležité je, že tuto aplikaci hello identifikátor ID URI pro každou aplikaci se liší pro každou aplikaci ve vašem adresáři. Hello directory používá tento řetězec tooidentify vaší aplikace.
-7. Klikněte na tlačítko hello **Complete** ikonu toosave změny v Průvodci hello.
-8. Na hello **rychlý Start** klikněte na tlačítko **konfigurace**.
-9. Posuňte se toohello **klíče** vyberte dobu trvání hello a pak klikněte na tlačítko **Uložit**. stránku Hello se obnoví a zobrazí hodnotu klíče. Vaši aplikaci je nutné nakonfigurovat s touto hodnotou klíče a hello **ID klienta** hodnotu. (Pokyny k této konfiguraci se liší podle aplikace.)
-10. Zkopírujte hodnotu ID klienta hello z této stránky, které budete používat v hello další krok tooset oprávnění pro váš trezoru.
+1. Přihlaste se k portálu Azure Classic.
+2. Na levé straně klikněte na **Active Directory** a poté vyberte adresář, ve kterém zaregistrujete svoji aplikaci. <br> <br> **Poznámka:** Musíte vybrat stejný adresář, který obsahuje předplatné Azure, které jste použili pro vytvoření trezoru klíčů. Pokud si nejste jisti, který adresář to je, klikněte na **Nastavení**, určete předplatné, které jste použili při vytvoření trezoru klíčů, a poznamenejte si název adresáře v posledním sloupci.
+3. Klikněte na **Aplikace**. Pokud do vašeho adresáře nebyly přidané žádné aplikace, na stránce se zobrazí pouze odkaz **Přidat aplikaci**. Klikněte na odkaz, případně klikněte na **Přidat** na panelu příkazů.
+4. V průvodci **Přidat aplikaci** klikněte na stránce **Co si přejete udělat?** na **Přidat aplikaci, kterou vyvíjí moje organizace**.
+5. Na stránce **Řekněte nám o své aplikaci** zadejte název vaší aplikace a poté vyberte **Webová aplikace nebo webové rozhraní API** (výchozí možnost). Klikněte na ikonu **Další**.
+6. Na stránce **Vlastnosti aplikace** zadejte **URL pro přihlašování** a **Identifikátor ID URI Aplikace** pro svoji webovou aplikaci. Pokud vaše aplikace tyto hodnoty neobsahuje, v tomto kroku si je můžete vymyslet (například můžete do obou polí zadat http://test1.contoso.com). Nezáleží na tom, zda tyto weby existují. Důležité je, aby identifikátor URI ID aplikace byl pro každou aplikaci ve vašem adresáři jiný. Adresář tento řetězec používá k identifikaci vaší aplikace.
+7. Změny provedené v průvodci uložíte kliknutím na ikonu **Dokončit**.
+8. Na stránce **Rychlý start** klikněte na **Konfigurovat**.
+9. Posuňte se k části **klíče**, vyberte dobu trvání a poté klikněte na **Uložit**. Stránka se obnoví a zobrazí hodnotu klíče. Vaši aplikaci je nutné nakonfigurovat s touto hodnotou klíče a s hodnotou **ID klienta**. (Pokyny k této konfiguraci se liší podle aplikace.)
+10. Poznamenejte si hodnotu ID klienta z této stránky, v dalším kroku ji použijete pro nastavení oprávnění pro váš trezoru.
 
-## <a id="authorize"></a>Autorizovat hello aplikace toouse hello klíče nebo tajného klíče
-tooaccess aplikace hello tooauthorize hello klíče nebo tajného klíče v trezoru hello, použijte [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy) rutiny.
+## <a id="authorize"></a>Autorizace aplikace pro použití klíče nebo tajného klíče
+Chcete-li autorizovat aplikaci pro přístup ke klíči nebo k tajnému klíči, použijte rutinu [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy).
 
-Například, pokud je název vaší trezoru **ContosoKeyVault** a aplikace hello chcete tooauthorize má hodnotu 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed ID klienta a chcete toodecrypt aplikace hello tooauthorize a přihlaste s klíči v vašem trezoru spuštěním hello následující:
+Máte-li například trezor s názvem **ContosoKeyVault** a ID klienta aplikace, kterou chcete ověřit, má hodnotu 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed, můžete aplikaci autorizovat pro dešifrování a podepisování pomocí klíčů ve vašem trezoru spuštěním následujícího příkazu:
 
     Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToKeys decrypt,sign
 
-Pokud chcete, tooauthorize Tento stejný tooread tajné klíče aplikace ve vašem trezoru, spusťte hello následující:
+Chcete-li tu samou aplikaci autorizovat pro čtení tajných klíčů v trezoru, spusťte následující:
 
     Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToSecrets Get
 
-## <a id="HSM"></a>Pokud chcete, aby toouse modul hardwarového zabezpečení (HSM)
-Pro lepší kontrolu můžete importovat nebo generovat klíče v modulech hardwarového zabezpečení (HSM), které nikdy neopustí hranice HSM hello. Hello moduly hardwarového zabezpečení jsou FIPS 140-2 Level 2 ověřit. Pokud tento požadavek netýká tooyou, tuto část přeskočte a přejděte příliš[odstranit hello trezoru klíčů, přidružených klíčů a tajných klíčů](#delete).
+## <a id="HSM"></a>Pokud chcete použít modul hardwarového zabezpečení (HSM)
+Pro lepší kontrolu můžete importovat nebo generovat klíče v modulech hardwarového zabezpečení (HSM), které nikdy neopustí hranice HSM. Moduly hardwarového zabezpečení jsou ověřené podle standardu FIPS 140-2 Level 2. Pokud se vás tento požadavek netýká, přeskočte tuto část a přejděte k části [Odstranění trezoru klíčů, přidružených klíčů a tajných klíčů](#delete).
 
-toocreate těchto klíčů chráněných pomocí HSM musíte použít hello [klíčů chráněných pomocí HSM toosupport vrstvy služby Azure Key Vault Premium](https://azure.microsoft.com/pricing/free-trial/). Kromě toho tato funkce není dostupná pro Azure China.
+Pokud chcete vytvořit tyto klíče s ochranou HSM, musíte použít [vrstvu služby Azure Key Vault Premium pro podporu klíčů s ochranou HSM](https://azure.microsoft.com/pricing/free-trial/). Kromě toho tato funkce není dostupná pro Azure China.
 
-Při vytváření trezoru klíčů hello přidat hello **- SKU** parametr:
+Při vytváření trezoru klíčů přidejte parametr **-SKU**:
 
     New-AzureRmKeyVault -VaultName 'ContosoKeyVaultHSM' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia' -SKU 'Premium'
 
 
 
-Můžete přidat klíče chráněné softwarem (jak jsme ukázali výše) a trezoru klíčů toothis klíčů chráněných pomocí HSM. toocreate klíč chráněný HSM, sada hello **-cílové** too'HSM parametr ':
+Do tohoto trezoru klíčů můžete přidat klíče chráněné softwarem (jak jsme ukázali výše) a klíče chráněné pomocí HSM. Chcete-li vytvořit klíč chráněný pomocí HSM, nastavte parametr **-Destination** na „HSM“:
 
     $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMKey' -Destination 'HSM'
 
-Můžete použít následující příkaz tooimport hello klíč z. Soubor PFX ve vašem počítači. Tento příkaz importuje hello klíč do HSM ve hello služby Key Vault:
+Pro import klíče ze souboru .PFX můžete ve vašem počítači použít následující příkaz. Tento příkaz importuje klíč do HSM ve službě Key Vault:
 
     $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMKey' -KeyFilePath 'c:\softkey.pfx' -KeyFilePassword $securepfxpwd -Destination 'HSM'
 
 
-Hello další příkaz importuje "přineste si vlastní klíč" (BYOK) balíčku. Tento scénář umožňuje vygenerovat klíč v místním HSM a jeho přenesení tooHSMs v hello služby Key Vault, bez hello klíč opustil hranice HSM hello:
+Další příkaz importuje balíček „přineste si vlastní klíč“ (BYOK). Tento scénář umožňuje vygenerovat klíč v místním modulu HSM a přenést ho do modulů HSM ve službě Key Vault, aniž by klíč opustil hranice modulu HSM:
 
     $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMKey' -KeyFilePath 'c:\ITByok.byok' -Destination 'HSM'
 
-Podrobnější pokyny, jak toogenerate tento balíček BYOK najdete v části [jak toogenerate a přenos klíčů chráněných pomocí HSM pro Azure Key Vault](key-vault-hsm-protected-keys.md).
+Podrobnější pokyny o tom, jak generovat tento balíček BYOK naleznete v tématu [Generování a přenos klíčů chráněných pomocí HSM pro Azure Key Vault](key-vault-hsm-protected-keys.md).
 
-## <a id="delete"></a>Odstranit hello trezoru klíčů, přidružených klíčů a tajných klíčů
-Pokud již nepotřebujete trezor klíčů hello a hello klíč nebo tajný klíč, který obsahuje, můžete hello trezor klíčů odstranit pomocí hello [Remove-AzureRmKeyVault](/powershell/module/azurerm.keyvault/remove-azurermkeyvault) rutiny:
+## <a id="delete"></a>Odstranění trezoru klíčů, přidružených klíčů a tajných klíčů
+Pokud již nepotřebujete trezor klíčů, ani klíče a tajné klíče, které obsahuje, můžete trezor klíčů odstranit pomocí rutiny [Remove-AzureRmKeyVault](/powershell/module/azurerm.keyvault/remove-azurermkeyvault):
 
     Remove-AzureRmKeyVault -VaultName 'ContosoKeyVault'
 
-Nebo můžete odstranit skupinu prostředků celý Azure, která zahrnuje trezor klíčů hello a další prostředky, které jste zahrnuli do této skupiny:
+Nebo můžete odstranit celou skupinu prostředků Azure, která zahrnuje trezor klíčů a všechny další prostředky, které jste do skupiny zahrnuli.
 
     Remove-AzureRmResourceGroup -ResourceGroupName 'ContosoResourceGroup'
 
@@ -220,16 +220,16 @@ Nebo můžete odstranit skupinu prostředků celý Azure, která zahrnuje trezor
 Další užitečné příkazy pro správu Azure Key Vault:
 
 * `$Keys = Get-AzureKeyVaultKey -VaultName 'ContosoKeyVault'`: Tento příkaz načte tabelární zobrazení všech klíčů a vybraných vlastnosti.
-* `$Keys[0]`: Tento příkaz zobrazí úplný seznam vlastností pro zadaný klíč hello
+* `$Keys[0]`: Tento příkaz zobrazí úplný seznam vlastností zadaného klíče.
 * `Get-AzureKeyVaultSecret`: Tento příkaz vypíše tabelární zobrazení všech názvů tajných klíčů a vybraných vlastností.
-* `Remove-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey'`: Příklad jak tooremove konkrétního klíče.
-* `Remove-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'SQLPassword'`: Příklad jak tooremove určitého tajného klíče.
+* `Remove-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey'`: Příklad odebrání určitého klíče.
+* `Remove-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'SQLPassword'`: Příklad odebrání určitého tajného klíče.
 
 ## <a id="next"></a>Další kroky
 Chcete-li používat Azure Key Vault ve webové aplikaci, podívejte se na navazující kurz [Použití Azure Key Vault z webové aplikace](key-vault-use-from-web-application.md).
 
-toosee způsobu trezoru klíčů se používá, najdete v [protokolování Azure Key Vault](key-vault-logging.md).
+Chcete-li mít přehled o využívání trezoru klíčů, podívejte se na kurz [Protokolování v Azure Key Vault](key-vault-logging.md).
 
-Seznam hello nejnovějších rutin Azure Powershellu pro Azure Key Vault najdete v tématu [rutiny Azure Key Vault](/powershell/module/azurerm.keyvault/#key_vault).
+Seznam nejnovějších rutin Azure PowerShellu pro Azure Key Vault naleznete v tématu [Rutiny Azure Key Vault](/powershell/module/azurerm.keyvault/#key_vault).
 
-Programátorské reference najdete v části [hello Příručka pro vývojáře Azure Key Vault](key-vault-developers-guide.md).
+Programátorské reference najdete v [příručce pro vývojáře Azure Key Vault](key-vault-developers-guide.md).

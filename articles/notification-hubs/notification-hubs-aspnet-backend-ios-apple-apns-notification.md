@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure upozornění uživatelů centra oznámení pro iOS pomocí backendu .NET"
-description: "Zjistěte, jak toosend nabízená oznámení toousers v Azure. Ukázky kódu jsou vytvořeny v Objective-C a hello .NET API pro back-end hello."
+title: "Upozornění uživatelů centra oznámení Azure pro iOS pomocí backendu .NET"
+description: "Zjistěte, jak odesílat nabízená oznámení pro uživatele v Azure. Ukázky kódu jsou vytvořeny v Objective-C a rozhraní API .NET pro back-end."
 documentationcenter: ios
 author: ysxu
 manager: erikre
@@ -14,68 +14,68 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: yuaxu
-ms.openlocfilehash: 56aed5b04d2d985b3f0e50c58991607f07b61248
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0fa7a886e1ecb0a90b6aebc1dbf9ef0c6ce1acf1
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-notification-hubs-notify-users-for-ios-with-net-backend"></a>Upozornění uživatelů centra oznámení Azure pro iOS pomocí backendu .NET
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
 ## <a name="overview"></a>Přehled
-Podpora nabízená oznámení v Azure můžete tooaccess snadné použití, multiplatform a nabízené škálovanou infrastrukturu, která výrazně zjednodušuje hello implementace nabízených oznámení spotřebních a podnikových aplikací pro mobilní platformy. Tento kurz ukazuje, jak Azure Notification Hubs toosend toouse nabízená oznámení tooa konkrétní aplikace uživatele na konkrétní zařízení. Backendu ASP.NET WebAPI je použité tooauthenticate klientů a toogenerate oznámení, jak je znázorněno v tématu pokyny hello [registrace z back-end aplikace](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend).
+Podpora nabízená oznámení v Azure umožňuje přístup snadné použití, multiplatform a nabízené škálovanou infrastrukturu, která výrazně zjednodušuje implementaci nabízená oznámení spotřebních a podnikových aplikací pro mobilní platformy. V tomto kurzu se dozvíte, jak se dají pomocí Azure Notification Hubs posílat nabízená oznámení specifickým uživatelům aplikace na specifickém zařízení. Backendu ASP.NET WebAPI slouží k ověřování klientů a ke generování oznámení, jak je znázorněno v tématu pokyny [registrace z back-end aplikace](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend).
 
 > [!NOTE]
-> V tomto kurzu se předpokládá, že jste vytvořili a nakonfigurovali vaše Centrum oznámení, jak je popsáno v [Začínáme s Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md). V tomto kurzu je také požadovaných toohello hello [zabezpečení Push (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) kurzu.
-> Pokud chcete toouse Mobile Apps jako back-end službu, najdete v části hello [mobilní aplikace začít pracovat s nabízené](../app-service-mobile/app-service-mobile-ios-get-started-push.md).
+> V tomto kurzu se předpokládá, že jste vytvořili a nakonfigurovali vaše Centrum oznámení, jak je popsáno v [Začínáme s Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md). V tomto kurzu je také předpokladem pro [zabezpečení Push (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) kurzu.
+> Pokud chcete použít jako back-end služby Mobile Apps, najdete v článku [mobilní aplikace začít pracovat s nabízené](../app-service-mobile/app-service-mobile-ios-get-started-push.md).
 > 
 > 
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
 ## <a name="modify-your-ios-app"></a>Upravit aplikaci s iOS
-1. Otevřete hello jednostránkové zobrazit aplikaci jste vytvořili v hello [Začínáme s Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) kurzu.
+1. Otevřete aplikaci zobrazení jednu stránku, kterou jste vytvořili v [Začínáme s Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) kurzu.
    
    > [!NOTE]
-   > V této části předpokládáme, že váš projekt je nakonfigurovaný s názvem prázdné organizace. Pokud ne, je nutné tooprepend názvy tříd tooall název vaší organizace.
+   > V této části předpokládáme, že váš projekt je nakonfigurovaný s názvem prázdné organizace. Pokud ne, budete muset předřazení název vaší organizace na všechny názvy tříd.
    > 
    > 
-2. Ve vaší Main.storyboard přidáte součásti hello ukazuje snímek obrazovky hello níže z objektu knihovny hello.
+2. Ve vaší Main.storyboard přidáte součásti znázorněno na snímku obrazovky níže z objektu knihovny.
    
     ![][1]
    
-   * **Uživatelské jméno**: UITextField A s zástupný text *zadejte uživatelské jméno*, okamžitě pod hello výsledky štítek a omezené toohello left a pravým okraje a odesílají pod hello popisek výsledky.
-   * **Heslo**: UITextField A s zástupný text *zadejte heslo*, okamžitě ybrat hello textové pole uživatelské jméno a omezené toohello doleva a doprava okraje a pod hello uživatelské jméno textové pole. Zkontrolujte hello **zabezpečení zadávání textu** možnost hello atribut Inspector, v části *vrátit klíč*.
-   * **Přihlaste se**: A UIButton pod hello heslo textové pole s popiskem okamžitě a zrušte zaškrtnutí políčka hello **povoleno** možnost hello Inspector atributy, v části *obsahu ovládacího prvku*
-   * **WNS**: štítek a odesílání tooenable přepínač hello oznámení služby oznámení Windows, pokud byla instalace v centru hello. V tématu hello [Windows Začínáme](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) kurzu.
-   * **GCM**: popisek a odesílání tooenable přepínač hello oznámení tooGoogle Cloud Messaging, pokud byla instalace v centru hello. V tématu [Začínáme Android](notification-hubs-android-push-notification-google-gcm-get-started.md) kurzu.
-   * **APNS**: štítek a odesílání tooenable přepínač hello toohello oznámení Apple platformy Notification Service.
-   * **Uživatelské jméno Recipent**: UITextField A s zástupný text *značky uživatelské jméno příjemce*bezprostředně pod hello GCM označte a marže omezené toohello vlevo a vpravo a pod hello GCM označovat.
+   * **Uživatelské jméno**: UITextField A s zástupný text *zadejte uživatelské jméno*bezprostředně pod odesílání výsledky popisku a omezená na levý a pravý okraj a pod návěští odesílání výsledky.
+   * **Heslo**: UITextField A s zástupný text *zadejte heslo*, bezprostředně pod uživatelské jméno textové pole a omezené levý a pravý okraj a pod textové pole uživatelské jméno. Zkontrolujte **zabezpečení zadávání textu** možnost v atributu Inspector, v části *vrátit klíč*.
+   * **Přihlaste se**: A UIButton s názvem bez přípony bezprostředně pod textové pole heslo a zrušte zaškrtnutí políčka **povoleno** možnost Inspector atributy, v části *obsahu ovládacího prvku*
+   * **WNS**: štítek a přepínače, které umožňují odesílání oznámení služby oznámení Windows, pokud byla instalace v centru. Najdete v článku [Windows Začínáme](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) kurzu.
+   * **GCM**: štítek a přepínače povolíte odesílání oznámení pro Google Cloud Messaging, pokud byla instalace v rozbočovači. V tématu [Začínáme Android](notification-hubs-android-push-notification-google-gcm-get-started.md) kurzu.
+   * **APNS**: štítek a přepínače povolíte odesílání oznámení do služby Apple platformy oznámení.
+   * **Uživatelské jméno Recipent**: UITextField A s zástupný text *značky uživatelské jméno příjemce*, bezprostředně pod GCM popisku a omezené levý a pravý okraj a pod popisek GCM.
 
-    Některé součásti byly přidány v hello [Začínáme s Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) kurzu.
+    Některé součásti byly přidány v [Začínáme s Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) kurzu.
 
-1. **CTRL** přetažením z hello součásti v zobrazení tooViewController.h hello a přidejte tyto nové výstupy.
+1. **CTRL** přetáhněte z komponenty v zobrazení ViewController.h a přidejte tyto nové výstupy.
    
         @property (weak, nonatomic) IBOutlet UITextField *UsernameField;
         @property (weak, nonatomic) IBOutlet UITextField *PasswordField;
         @property (weak, nonatomic) IBOutlet UITextField *RecipientField;
         @property (weak, nonatomic) IBOutlet UITextField *NotificationField;
    
-        // Used tooenable hello buttons on hello UI
+        // Used to enable the buttons on the UI
         @property (weak, nonatomic) IBOutlet UIButton *LogInButton;
         @property (weak, nonatomic) IBOutlet UIButton *SendNotificationButton;
    
-        // Used tooenabled sending notifications across platforms
+        // Used to enabled sending notifications across platforms
         @property (weak, nonatomic) IBOutlet UISwitch *WNSSwitch;
         @property (weak, nonatomic) IBOutlet UISwitch *GCMSwitch;
         @property (weak, nonatomic) IBOutlet UISwitch *APNSSwitch;
    
         - (IBAction)LogInAction:(id)sender;
-2. V ViewController.h, přidejte následující hello `#define` pod příkazy pro import. SUBSTITUTE hello *< Zadejte koncový bod vašeho back-end\>*  zástupný symbol hello cílová adresa URL, které jste toodeploy použili back-end aplikace v předchozí části hello. Například *http://you_backend.azurewebsites.net*.
+2. V ViewController.h, přidejte následující `#define` pod příkazy pro import. Nahraďte *< Zadejte koncový bod vašeho back-end\>*  zástupný symbol cílová adresa URL můžete použít k nasazení vašeho back-end aplikace v předchozí části. Například *http://you_backend.azurewebsites.net*.
    
         #define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"
-3. V projektu, vytvořte novou **Touch kakao třída** s názvem **RegisterClient** toointerface s hello ASP.NET back-end jste vytvořili. Vytvoření, která dědí z třídy hello `NSObject`. Přidejte následující kód v hello RegisterClient.h hello.
+3. V projektu, vytvořte novou **Touch kakao třída** s názvem **RegisterClient** rozhraní s ASP.NET back-end jste vytvořili. Vytvořte třídu, která dědí z `NSObject`. V RegisterClient.h přidejte následující kód.
    
         @interface RegisterClient : NSObject
    
@@ -87,7 +87,7 @@ Podpora nabízená oznámení v Azure můžete tooaccess snadné použití, mult
         -(instancetype) initWithEndpoint:(NSString*)Endpoint;
    
         @end
-4. V hello RegisterClient.m aktualizace hello `@interface` části:
+4. V aktualizaci RegisterClient.m `@interface` části:
    
         @interface RegisterClient ()
    
@@ -102,7 +102,7 @@ Podpora nabízená oznámení v Azure můžete tooaccess snadné použití, mult
                     tags:(NSSet*)tags andCompletion:(void(^)(NSURLResponse*, NSError*))completion;
    
         @end
-5. Nahraďte hello `@implementation` část v hello RegisterClient.m s hello následující kód.
+5. Nahraďte `@implementation` část v RegisterClient.m následujícím kódem.
 
         @implementation RegisterClient
 
@@ -261,32 +261,32 @@ Podpora nabízená oznámení v Azure můžete tooaccess snadné použití, mult
 
         @end
 
-    výše uvedený kód Hello implementuje logiku hello popsané v článku pokyny hello [registrace z back-end aplikace](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) pomocí NSURLSession tooperform REST volá, back-end aplikace tooyour a NSUserDefaults toolocally úložiště hello registrationId vrácený hello centra oznámení.
+    Výše uvedený kód implementuje logiku popsané v článku pokyny [registrace z back-end aplikace](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) pomocí NSURLSession k provedení REST zavolá na váš back-end aplikace a NSUserDefaults ukládat místně registrationId vrácený centra oznámení.
 
-    Všimněte si, že tato třída vyžaduje, aby jeho vlastnost **authorizationHeader** toobe nastavte v pořadí toowork správně. Tato vlastnost je nastavena podle hello **ViewController** třídy po přihlášení hello.
+    Všimněte si, že tato třída vyžaduje, aby jeho vlastnost **authorizationHeader** nastavit správné fungování. Tato vlastnost je nastavena **ViewController** třída po přihlášení.
 
-1. V ViewController.h, přidejte `#import` příkaz pro RegisterClient.h. Pak přidejte deklaraci pro token zařízení hello a odkazovat na tooa `RegisterClient` instance v hello `@interface` části:
+1. V ViewController.h, přidejte `#import` příkaz pro RegisterClient.h. Pak přidejte deklaraci pro token zařízení a odkaz na `RegisterClient` instance v `@interface` části:
    
         #import "RegisterClient.h"
    
         @property (strong, nonatomic) NSData* deviceToken;
         @property (strong, nonatomic) RegisterClient* registerClient;
-2. V ViewController.m, přidejte deklaraci soukromá metoda v hello `@interface` části:
+2. V ViewController.m, přidejte deklaraci soukromá metoda v `@interface` části:
    
         @interface ViewController () <UITextFieldDelegate, NSURLConnectionDataDelegate, NSXMLParserDelegate>
    
-        // create hello Authorization header tooperform Basic authentication with your app back-end
+        // create the Authorization header to perform Basic authentication with your app back-end
         -(void) createAndSetAuthenticationHeaderWithUsername:(NSString*)username
                         AndPassword:(NSString*)password;
    
         @end
 
 > [!NOTE]
-> Hello následující fragment kódu není schéma zabezpečeného ověřování, doporučujeme nahradit hello implementace hello **createAndSetAuthenticationHeaderWithUsername:AndPassword:** s konkrétní ověřovací mechanismus k ověření tokenu toobe spotřebovávají hello registrace klienta třídu, například OAuth, služby Active Directory, která generuje.
+> Následující fragment kódu není schéma zabezpečeného ověřování, doporučujeme nahradit implementace **createAndSetAuthenticationHeaderWithUsername:AndPassword:** s vaší konkrétní ověřovací mechanismus, který generuje ověřovací token pro registraci klienta třídu, například OAuth, služby Active Directory.
 > 
 > 
 
-1. Potom v hello `@implementation` části ViewController.m přidejte následující kód, který přidá hello implementace nastavení hello zařízení tokenu a ověření hlavičky hello.
+1. Potom v `@implementation` části ViewController.m přidejte následující kód, který přidá implementaci nastavení hlavičku tokenu a ověření zařízení.
    
         -(void) setDeviceToken: (NSData*) deviceToken
         {
@@ -311,8 +311,8 @@ Podpora nabízená oznámení v Azure můžete tooaccess snadné použití, mult
             return YES;
         }
    
-    Všimněte si, jak token zařízení hello nastavení umožňuje hello tlačítko přihlásit. Je to proto, že jako součást hello přihlášení akce, řadiče zobrazení hello zaregistruje pro nabízená oznámení s back-end aplikace hello. Proto jsme nechcete, aby přihlášení toobe akce dostupný dokud hello token zařízení správně nastavit. Hello přihlášení z registrace nabízených hello můžete oddělit tak dlouho, dokud se stane hello dřívějším před pozdější hello.
-2. V ViewController.m, použijte následující fragmenty tooimplement hello metoda akce pro hello vaše **protokolu v** tlačítko a metoda toosend hello oznámení zprávu pomocí hello ASP.NET back-end.
+    Všimněte si, jak nastavení token zařízení povolí tlačítko přihlásit. Je to proto, že v rámci akce přihlášení se zaregistruje řadiče zobrazení pro nabízená oznámení s back-end aplikace. Proto jsme nechcete, aby akce přihlášení být přístupné, dokud token zařízení správně nastavit. Přihlášení z registraci nabízených můžete oddělit tak dlouho, dokud první se stane před jeho.
+2. V ViewController.m, použijte následující fragmenty implementovat metodu akce pro vaše **protokolu v** tlačítko a metody k odeslání zprávy oznámení pomocí ASP.NET back-end.
    
        - (IBAction) LogInAction: odesílatele (id) {/ / vytvoření záhlaví ověření a nastavte ji zaregistrovat klienta NSString * uživatelské jméno = sám sebou. UsernameField.text;   Heslo NSString * = sám sebou. PasswordField.text;
    
@@ -322,15 +322,15 @@ Podpora nabízená oznámení v Azure můžete tooaccess snadné použití, mult
 
         -SendNotificationASPNETBackend (void): (NSString*) pns UsernameTag: (NSString*) usernameTag zpráva: (NSString*) zpráva {NSURLSession* relace = [NSURLSession sessionWithConfiguration: delegateQueue:nil delegáta: nil [NSURLSessionConfiguration defaultSessionConfiguration]];
 
-            Předat značky hello systém pns a uživatelské jméno jako parametry s hello REST URL toohello ASP.NET back-end nsurl, který * requestURL = [nsurl, který URLWithString: [NSString stringWithFormat:@"%@/api/notifications? systém pns = % @& to_tag = % @", BACKEND_ENDPOINT, systém pns, usernameTag]];
+            Předat značce systém pns a uživatelské jméno jako parametry s adresou URL REST ASP.NET back-end nsurl, který * requestURL = [nsurl, který URLWithString: [NSString stringWithFormat:@"%@/api/notifications? pns = % @& to_tag = % @", BACKEND_ENDPOINT, systém pns, usernameTag]];
 
             Žádost o NSMutableURLRequest * = [NSMutableURLRequest requestWithURL:requestURL];    [požadavků setHTTPMethod:@"POST"];
 
-            Získat imitované authenticationheader hello od klienta registrace hello NSString * authorizationHeaderValue = [NSString stringWithFormat:@"Basic % @", self.registerClient.authenticationHeader];    [požadavků setValue:authorizationHeaderValue forHTTPHeaderField:@"Authorization"];
+            Získat imitované authenticationheader od klienta registrace NSString * authorizationHeaderValue = [NSString stringWithFormat:@"Basic % @", self.registerClient.authenticationHeader];    [požadavků setValue:authorizationHeaderValue forHTTPHeaderField:@"Authorization"];
 
-            Přidat text zprávy oznámení hello [požadavku setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];    [požadavku setHTTPBody: [zpráva dataUsingEncoding:NSUTF8StringEncoding]];
+            Přidat obsah zprávy oznámení [požadavku setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];    [požadavku setHTTPBody: [zpráva dataUsingEncoding:NSUTF8StringEncoding]];
 
-            Spustit hello odesílání oznámení REST API na hello ASP.NET back-end NSURLSessionDataTask * dataTask = [relace dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError  *Chyba) {NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*) odpovědi;        Pokud (Chyba || httpResponse.statusCode! = 200) {NSString* stav = [NSString stringWithFormat:@"Error stav pro % @: % d\nError: %@\n", systém pns, httpResponse.statusCode, chyba];            dispatch_async(dispatch_get_main_queue(), ^ {/ / Append textové protože všechna volání 3 systém PNS mohou mít i tooview informace [self.sendResults setText:[self.sendResults.text stringByAppendingString:status]];            });            NSLog(status);        }
+            Spustit odesílání oznámení REST API na dataTask ASP.NET back-end NSURLSessionDataTask * = [completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) dataTaskWithRequest:request relace {NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*) odpovědi;        Pokud (Chyba || httpResponse.statusCode! = 200) {NSString* stav = [NSString stringWithFormat:@"Error stav pro % @: % d\nError: %@\n", systém pns, httpResponse.statusCode, chyba];            dispatch_async(dispatch_get_main_queue(), ^ {/ / Append textové protože všechna volání 3 systém PNS mohou mít i informace o zobrazení [self.sendResults setText:[self.sendResults.text stringByAppendingString:status]];            });            NSLog(status);        }
 
                 if (data != NULL)
                 {
@@ -341,7 +341,7 @@ Podpora nabízená oznámení v Azure můžete tooaccess snadné použití, mult
             }];    [obnovit dataTask]; }
 
 
-1. Aktualizovat hello akci pro hello **odeslat oznámení** tlačítko toouse hello ASP.NET back-end a odeslat tooany systém PNS povoleno přepínač.
+1. Akce pro aktualizace **odeslat oznámení** tlačítko pomocí ASP.NET back-end a poslat jakékoli PNS povoleno přepínač.
 
         - (IBAction)SendNotificationMessage:(id)sender
         {
@@ -368,15 +368,15 @@ Podpora nabízená oznámení v Azure můžete tooaccess snadné použití, mult
 
 
 
-1. Ve funkci **ViewDidLoad**, přidejte následující tooinstantiate hello RegisterClient instance hello a nastavte hello delegáta u textových polí.
+1. Ve funkci **ViewDidLoad**, přidejte následující instance RegisterClient instance a nastavit delegáta u textových polí.
    
        self.UsernameField.delegate = self;
        self.PasswordField.delegate = self;
        self.RecipientField.delegate = self;
        self.registerClient = [[RegisterClient alloc] initWithEndpoint:BACKEND_ENDPOINT];
-2. Nyní ve **AppDelegate.m**, odeberte všechny obsah hello hello metody **aplikace: didRegisterForPushNotificationWithDeviceToken:** a nahraďte ji následujícím toomake opravdu hello, který hello zobrazení řadič obsahuje nejnovější token zařízení hello načíst ze služby APN:
+2. Nyní ve **AppDelegate.m**, odeberte všechny obsah metody **aplikace: didRegisterForPushNotificationWithDeviceToken:** a nahraďte ji následujícím a ujistěte se, že řadiče zobrazení obsahuje nejnovější token zařízení načíst ze služby APN:
    
-       // Add import toohello top of hello file
+       // Add import to the top of the file
        #import "ViewController.h"
    
        - (void)application:(UIApplication *)application
@@ -385,23 +385,23 @@ Podpora nabízená oznámení v Azure můžete tooaccess snadné použití, mult
            ViewController* rvc = (ViewController*) self.window.rootViewController;
            rvc.deviceToken = deviceToken;
        }
-3. Nakonec v **AppDelegate.m**, zajistěte, aby byla hello následující metodu:
+3. Nakonec v **AppDelegate.m**, zajistěte, aby byla následující metodu:
    
        - (void)application:(UIApplication *)application didReceiveRemoteNotification: (NSDictionary *)userInfo {
            NSLog(@"%@", userInfo);
            [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]];
        }
 
-## <a name="test-hello-application"></a>Test hello aplikace
-1. V XCode spusťte aplikaci hello na fyzickém zařízení iOS (nabízených oznámení nebude fungovat v simulátoru hello).
-2. V aplikaci pro iOS hello uživatelského rozhraní zadejte uživatelské jméno a heslo. Mohou to být libovolný řetězec, ale musí být obě hello stejná hodnota typu řetězec. Pak klikněte na tlačítko **protokolu v**.
+## <a name="test-the-application"></a>Testování aplikace
+1. V XCode spusťte aplikaci na fyzickém zařízení iOS (nabízených oznámení nebude fungovat v simulátoru).
+2. V aplikaci pro iOS uživatelského rozhraní zadejte uživatelské jméno a heslo. Mohou to být libovolný řetězec, ale musí být obě stejnou hodnotu řetězce. Pak klikněte na tlačítko **protokolu v**.
    
     ![][2]
 3. Měli byste vidět vyskakovací okno s informacemi o registraci úspěch. Klikněte na **OK**.
    
     ![][3]
-4. V hello **značky uživatelské jméno příjemce* textové pole, zadejte značky jméno uživatele hello používá s registrací hello z jiného zařízení.
-5. Zadejte zprávu oznámení a klikněte na tlačítko **odeslat oznámení**.  Hello oznámení zpráva se zobrazí pouze hello zařízení, která mají registrace s hello příjemce uživatele název značky.  Pouze odesláním toothose uživatele.
+4. V **značky uživatelské jméno příjemce* textové pole, zadejte název značky uživatele použít s registrací z jiného zařízení.
+5. Zadejte zprávu oznámení a klikněte na tlačítko **odeslat oznámení**.  Jenom zařízení, která mají registrace pomocí značky jméno příjemce uživatele přijímat oznámení.  Pouze odesláním pro tyto uživatele.
    
     ![][4]
 

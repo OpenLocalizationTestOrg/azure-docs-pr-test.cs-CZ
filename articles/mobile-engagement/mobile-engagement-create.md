@@ -1,6 +1,6 @@
 ---
-title: aaaCreate aplikace Azure Mobile Engagement | Microsoft Docs
-description: "Popisuje, jak hello toocreate novou kolekci aplikace Mobile Engagement ve službě Azure a spuštění aplikace spravovat přes portál Mobile Engagement."
+title: "Vytvoření aplikace Azure Mobile Engagement | Dokumentace Microsoftu"
+description: "Popisuje, jak v Azure vytvořit novou kolekci aplikací Mobile Engagement a jak začít tyto aplikace spravovat přes portál Mobile Engagement."
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,37 +14,37 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/10/2016
 ms.author: piyushjo
-ms.openlocfilehash: 4da27e626dacfb6fcfbcb87458c37ea75689a33b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 47c1e122f6f38654cd63bb59e50e68803f76c83d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-azure-mobile-engagement-app"></a>Vytvoření aplikace Azure Mobile Engagement
-Tento článek ukazuje, jak toouse hello **rychle vytvořit** toocreate metoda novou **Azure Mobile Engagement** aplikace. Hello článku ukazuje také jak toonavigate tooyour **Mobile Engagement** portálu v pořadí toostart monitorování a správu aplikací. 
+Tento článek ukazuje, jak metodou **Rychlé vytvoření** vytvořit novou aplikaci **Azure Mobile Engagement**. Také se zde dozvíte, jak se orientovat na portálu **Mobile Engagement**, když chcete spustit sledování a správu aplikací. 
 
-Všimněte si, že je nutné přidat minimální sadu "základní integraci" v pořadí toobe možné toocollect data pro vaši aplikaci a odesílání nabízených oznámení. Hello kompletní dokumentaci k integraci najdete v hello [integraci Mobile Engagementu](mobile-engagement-windows-store-integrate-engagement.md).
+Nezapomeňte, že pokud chcete pro svou aplikaci shromažďovat data a odesílat nabízená oznámení, je nutné přidat minimální sadu „základní integrace“. Kompletní dokumentaci k integraci najdete v článku [Integrace Mobile Engagement](mobile-engagement-windows-store-integrate-engagement.md).
 
 > [!IMPORTANT]
-> toocomplete žádné Azure Mobile Engagement kurz, musíte mít aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Bezplatná zkušební verze Azure</a>.
+> K dokončení jakéhokoli kurzu pro Azure Mobile Engagement potřebujete mít aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Bezplatná zkušební verze Azure</a>.
 > 
 > 
 
 ## <a name="setup-mobile-engagement-for-your-mobile-app-in-azure"></a>Nastavení Mobile Engagementu pro mobilní aplikaci v Azure
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a name="navigate-tooyour-mobile-engagement-portal"></a>Přejděte na portál Mobile Engagement tooyour
-toostart sledování a správu aplikace, přejděte tooyour portál Mobile Engagement kliknutím hello **portálu Engagement** tlačítka na horním panelu hello.
+## <a name="navigate-to-your-mobile-engagement-portal"></a>Přechod na portál Mobile Engagement
+Chcete-li začít monitorovat a spravovat svou aplikaci, přejděte na portál Mobile Engagement kliknutím na tlačítko **Portál Engagement** v horním panelu.
 
-Jakmile jste na portál Mobile Engagement hello, můžete analyzovat, vytvářet a spravovat segmenty, oslovení uživatelů toohello atd.:    
+Jakmile budete na portálu Mobile Engagement, můžete analyzovat, vytvářet a spravovat segmenty, oslovovat uživatele atd.:    
 
 * [Sledování dat o aplikaci v reálném čase](mobile-engagement-user-interface-monitor.md)
 * [Analýza historických dat o aplikaci](mobile-engagement-user-interface-analytics.md)
-* [Vytváření a správa segmentů uživatelů tooidentify vzorce](mobile-engagement-user-interface-segments.md)
-* [Oslovení toohello uživatelů vaší aplikace pomocí nabízených oznámení](mobile-engagement-user-interface-reach.md)
+* [Vytváření a správa segmentů uživatelů pro identifikaci vzorů využití](mobile-engagement-user-interface-segments.md)
+* [Oslovení uživatelů vaší aplikace pomocí nabízených oznámení](mobile-engagement-user-interface-reach.md)
 
 ## <a name="see-also"></a>Viz také
 [Definování strategie Mobile Engagementu](mobile-engagement-define-your-mobile-engagement-strategy.md)
 
-[Začínáme s Azure Mobile Engagement](mobile-engagement-windows-store-dotnet-get-started.md) (můžete vybrat jiné mobilní platformy hello horní části stránky hello).
+[Začínáme s Azure Mobile Engagementem](mobile-engagement-windows-store-dotnet-get-started.md) (v horní části stránky můžete vybrat jiné mobilní platformy)
 

@@ -1,6 +1,6 @@
 ---
-title: "aaaConnect tooKafka pomocí virtuální sítě - Azure HDInsight | Microsoft Docs"
-description: "Zjistěte, jak toodirectly připojení tooKafka v HDInsight přes virtuální síť Azure. Zjistěte, jak tooconnect tooKafka od klientů vývoj pomocí brány sítě VPN nebo z klientů ve vaší místní sítě pomocí zařízení brány VPN."
+title: "Připojení k Kafka pomocí virtuální sítě - Azure HDInsight | Microsoft Docs"
+description: "Zjistěte, jak k přímému připojení k Kafka v HDInsight prostřednictvím virtuální síti Azure. Zjistěte, jak se připojit k Kafka od klientů vývoj pomocí brány sítě VPN nebo z klientů ve vaší místní síti pomocí zařízení brány VPN."
 services: hdinsight
 documentationCenter: 
 author: Blackmist
@@ -15,100 +15,100 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/01/2017
 ms.author: larryfr
-ms.openlocfilehash: 03542fe14b9a1d010dffa22a8f8d96b098a1576e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 245bee7c1dbb0236afdc2506e7ab84b5573cbc85
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="connect-tookafka-on-hdinsight-preview-through-an-azure-virtual-network"></a>Připojení přes virtuální síť Azure tooKafka v HDInsight (preview)
+# <a name="connect-to-kafka-on-hdinsight-preview-through-an-azure-virtual-network"></a>Připojení k Kafka v HDInsight (preview) přes virtuální síť Azure
 
-Zjistěte, jak připojit toodirectly tooKafka v HDInsight pomocí virtuálních sítí Azure. Tento dokument obsahuje informace o připojení tooKafka pomocí hello následující konfigurace:
+Zjistěte, jak k přímému připojení k Kafka v HDInsight pomocí virtuálních sítí Azure. Tento dokument obsahuje informace o připojení k Kafka pomocí následující konfigurace:
 
 * Z prostředků v místní síti. Tato připojení pomocí zařízení VPN (softwaru nebo hardwaru) ve vaší místní síti.
 * Z prostředí pro vývoj pomocí softwaru klienta VPN.
 
 ## <a name="architecture-and-planning"></a>Plánování a architektura
 
-HDInsight neumožňuje tooKafka přímé připojení přes hello veřejného Internetu. Místo toho Kafka klientů (producenti a spotřebitelé) musí používat jednu z hello následující metody připojení:
+HDInsight neumožňuje přímé připojení k Kafka prostřednictvím veřejného Internetu. Místo toho Kafka klientů (producenti a spotřebitelé) musí používat jednu z následujících metod připojení:
 
-* Spusťte klienta hello v hello stejné virtuální síti jako Kafka v HDInsight. Tato konfigurace se používá v hello [začínat Apache Kafka (preview) na HDInsight](hdinsight-apache-kafka-get-started.md) dokumentu. Hello klienta spustí přímo na hello HDInsight uzly clusteru nebo na jiný virtuální počítač v hello stejné síti.
+* Spustíte klienta ve stejné virtuální síti jako Kafka v HDInsight. Tato konfigurace se používá v [začínat Apache Kafka (preview) na HDInsight](hdinsight-apache-kafka-get-started.md) dokumentu. Klient spouští přímo na uzlech clusteru HDInsight nebo na jiný virtuální počítač ve stejné síti.
 
-* Připojte privátní síti, například v místní síti toohello virtuální sítě. Tato konfigurace umožňuje klientům ve vaší místní síti toodirectly práce se Kafka. tooenable tuto konfiguraci provést hello následující úlohy:
+* Privátní síti, například v místní síti připojte k virtuální síti. Tato konfigurace umožňuje klientům ve vaší místní síti pracovat přímo s Kafka. Chcete-li tuto konfiguraci, proveďte následující úlohy:
 
     1. Vytvoření virtuální sítě.
-    2. Vytvořte bránu VPN, který používá konfiguraci site-to-site. Konfigurace Hello použitá v tomto dokumentu se připojí tooa zařízení brány sítě VPN v síti na pracovišti.
-    3. Vytvoření serveru DNS ve virtuální síti hello.
-    4. Konfigurace předávání mezi hello server DNS v každé sítě.
-    5. Nainstalujte Kafka v HDInsight do virtuální sítě hello.
+    2. Vytvořte bránu VPN, který používá konfiguraci site-to-site. Konfigurace použitá v tomto dokumentu se připojí k zařízení brány sítě VPN v síti na pracovišti.
+    3. Vytvoření serveru DNS ve virtuální síti.
+    4. Konfigurace předávání mezi serverem DNS v každé sítě.
+    5. Nainstalujte Kafka v HDInsight do virtuální sítě.
 
-    Další informace najdete v tématu hello [připojit tooKafka z místní sítě](#on-premises) části. 
+    Další informace najdete v tématu [připojení k Kafka z místní sítě](#on-premises) části. 
 
-* Připojte virtuální sítě pro jednotlivé počítače toohello pomocí klienta VPN a brány VPN. tooenable tuto konfiguraci provést hello následující úlohy:
+* Jednotlivé počítače připojte k virtuální síti pomocí klienta VPN a brány VPN. Chcete-li tuto konfiguraci, proveďte následující úlohy:
 
     1. Vytvoření virtuální sítě.
     2. Vytvořte bránu VPN, který používá konfiguraci point-to-site. Tato konfigurace poskytuje klienta VPN, který se dá nainstalovat na klienty se systémem Windows.
-    3. Nainstalujte Kafka v HDInsight do virtuální sítě hello.
-    4. Nakonfigurujte Kafka pro inzerování IP. Tato konfigurace umožňuje tooconnect hello klienta pomocí IP adres namísto názvů domény.
-    5. Stáhnout a použít klienta VPN hello vývoj systému hello.
+    3. Nainstalujte Kafka v HDInsight do virtuální sítě.
+    4. Nakonfigurujte Kafka pro inzerování IP. Tato konfigurace umožňuje klientům připojení pomocí IP adresy namísto názvů domény.
+    5. Stáhnout a použít klienta VPN na vývojovém systému.
 
-    Další informace najdete v tématu hello [připojit tooKafka u klientů VPN](#vpnclient) části.
+    Další informace najdete v tématu [připojit k Kafka u klientů VPN](#vpnclient) části.
 
     > [!WARNING]
-    > Tato konfigurace se doporučuje jenom pro účely vývoje kvůli hello následující omezení:
+    > Tato konfigurace se doporučuje jenom pro účely vývoje z důvodu následující omezení:
     >
     > * Každý klient musí připojit pomocí softwaru klienta VPN. Azure poskytuje jenom klienta se systémem Windows.
-    > * Hello klienta nepředává název řešení požadavky toohello virtuální sítě, takže je nutné použít IP adresách toocommunicate s Kafka. Komunikaci IP vyžaduje další konfiguraci na hello Kafka clusteru.
+    > * Klient nesplňuje požadavky na rozlišení názvů k virtuální síti, je nutné použít ke komunikaci s Kafka adresování IP adres. Komunikaci IP vyžaduje další konfiguraci v clusteru Kafka.
 
 Další informace o používání HDInsight ve virtuální síti, najdete v části [rozšířit HDInsight pomocí virtuálních sítí Azure](./hdinsight-extend-hadoop-virtual-network.md).
 
-## <a id="on-premises"></a>Připojit tooKafka z místní sítě
+## <a id="on-premises"></a>Připojit k Kafka z místní sítě
 
-toocreate Kafka clusteru, který komunikuje s vaší místní síti, postupujte podle kroků hello v hello [připojit HDInsight tooyour do místní sítě](./connect-on-premises-network.md) dokumentu.
+Pokud chcete vytvořit cluster Kafka, který komunikuje s vaší místní síti, postupujte podle kroků v [HDInsight připojit k místní síti](./connect-on-premises-network.md) dokumentu.
 
 > [!IMPORTANT]
-> Při vytváření clusteru HDInsight hello, vyberte hello __Kafka__ clusteru typu.
+> Při vytváření clusteru HDInsight, vyberte __Kafka__ clusteru typu.
 
-Pomocí těchto kroků vytvoříte hello následující konfigurace:
+Pomocí těchto kroků vytvoříte následující konfiguraci:
 
 * Azure Virtual Network
 * Brána Site-to-site VPN
 * Účet služby Azure Storage (používá se v prostředí HDInsight)
 * Kafka v HDInsight
 
-zda Kafka klienta můžete připojit toohello clusteru z místní, použijte kroky hello v hello tooverify [příklad: klienta Python](#python-client) části.
+Pokud chcete ověřit, že klient Kafka se může připojit ke clusteru z místního, použijte kroky v [příklad: klienta Python](#python-client) části.
 
-## <a id="vpnclient"></a>Připojit tooKafka u klientů VPN
+## <a id="vpnclient"></a>Připojení k Kafka pomocí klienta VPN
 
-Použijte hello kroky v této části toocreate hello následující konfigurace:
+Postupujte podle kroků v této části vytvořit následující konfiguraci:
 
 * Azure Virtual Network
 * Brána sítě VPN Point-to-site
 * Účet služby Azure Storage (používá se v prostředí HDInsight)
 * Kafka v HDInsight
 
-1. Postupujte podle kroků hello v hello [práce s certifikáty podepsané svým držitelem pro připojení Point-to-site](../vpn-gateway/vpn-gateway-certificates-point-to-site.md) dokumentu. Tento dokument vytvoří hello certifikáty potřebné pro bránu hello.
+1. Postupujte podle kroků v [práce s certifikáty podepsané svým držitelem pro připojení Point-to-site](../vpn-gateway/vpn-gateway-certificates-point-to-site.md) dokumentu. Tento dokument vytvoří certifikáty potřebné pro bránu.
 
-2. Otevřete příkazovém řádku prostředí PowerShell a použít následující kód toolog v tooyour předplatného Azure hello:
+2. Otevřete příkazovém řádku prostředí PowerShell a použít následující kód k přihlášení k předplatnému Azure:
 
     ```powershell
     Add-AzureRmAccount
-    # If you have multiple subscriptions, uncomment tooset hello subscription
+    # If you have multiple subscriptions, uncomment to set the subscription
     #Select-AzureRmSubscription -SubscriptionName "name of your subscription"
     ```
 
-3. Použijte následující proměnné toocreate kódu, které obsahují informace o konfiguraci hello:
+3. Použijte následující kód k vytvoření proměnné, které obsahují informace o konfiguraci:
 
     ```powershell
     # Prompt for generic information
-    $resourceGroupName = Read-Host "What is hello resource group name?"
-    $baseName = Read-Host "What is hello base name? It is used toocreate names for resources, such as 'net-basename' and 'kafka-basename':"
-    $location = Read-Host "What Azure Region do you want toocreate hello resources in?"
-    $rootCert = Read-Host "What is hello file path toohello root certificate? It is used toosecure hello VPN gateway."
+    $resourceGroupName = Read-Host "What is the resource group name?"
+    $baseName = Read-Host "What is the base name? It is used to create names for resources, such as 'net-basename' and 'kafka-basename':"
+    $location = Read-Host "What Azure Region do you want to create the resources in?"
+    $rootCert = Read-Host "What is the file path to the root certificate? It is used to secure the VPN gateway."
 
     # Prompt for HDInsight credentials
-    $adminCreds = Get-Credential -Message "Enter hello HTTPS user name and password for hello HDInsight cluster" -UserName "admin"
-    $sshCreds = Get-Credential -Message "Enter hello SSH user name and password for hello HDInsight cluster" -UserName "sshuser"
+    $adminCreds = Get-Credential -Message "Enter the HTTPS user name and password for the HDInsight cluster" -UserName "admin"
+    $sshCreds = Get-Credential -Message "Enter the SSH user name and password for the HDInsight cluster" -UserName "sshuser"
 
     # Names for Azure resources
     $networkName = "net-$baseName"
@@ -134,26 +134,26 @@ Použijte hello kroky v této části toocreate hello následující konfigurace
     $hdiType = "Kafka"
     ```
 
-4. Použití hello následující kód Skupina prostředků Azure hello toocreate a virtuální sítě:
+4. Použijte následující kód k vytvoření skupiny prostředků Azure a virtuální sítě:
 
     ```powershell
-    # Create hello resource group that contains everything
+    # Create the resource group that contains everything
     New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
-    # Create hello subnet configuration
+    # Create the subnet configuration
     $defaultSubnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name $defaultSubnetName `
         -AddressPrefix $defaultSubnetPrefix
     $gatewaySubnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name $gatewaySubnetName `
         -AddressPrefix $gatewaySubnetPrefix
 
-    # Create hello subnet
+    # Create the subnet
     New-AzureRmVirtualNetwork -Name $networkName `
         -ResourceGroupName $resourceGroupName `
         -Location $location `
         -AddressPrefix $networkAddressPrefix `
         -Subnet $defaultSubnetConfig, $gatewaySubnetConfig
 
-    # Get hello network & subnet that were created
+    # Get the network & subnet that were created
     $network = Get-AzureRmVirtualNetwork -Name $networkName `
         -ResourceGroupName $resourceGroupName
     $gatewaySubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $gatewaySubnetName `
@@ -161,7 +161,7 @@ Použijte hello kroky v této části toocreate hello následující konfigurace
     $defaultSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $defaultSubnetName `
         -VirtualNetwork $network
 
-    # Set a dynamic public IP address for hello gateway subnet
+    # Set a dynamic public IP address for the gateway subnet
     $gatewayPublicIp = New-AzureRmPublicIpAddress -Name $gatewayPublicIpName `
         -ResourceGroupName $resourceGroupName `
         -Location $location `
@@ -170,15 +170,15 @@ Použijte hello kroky v této části toocreate hello následující konfigurace
         -Subnet $gatewaySubnet `
         -PublicIpAddress $gatewayPublicIp
 
-    # Get hello certificate info
-    # Get hello full path in case a relative path was passed
+    # Get the certificate info
+    # Get the full path in case a relative path was passed
     $rootCertFile = Get-ChildItem $rootCert
     $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($rootCertFile)
     $certBase64 = [System.Convert]::ToBase64String($cert.RawData)
     $p2sRootCert = New-AzureRmVpnClientRootCertificate -Name $vpnRootCertName `
         -PublicCertData $certBase64
 
-    # Create hello VPN gateway
+    # Create the VPN gateway
     New-AzureRmVirtualNetworkGateway -Name $vpnName `
         -ResourceGroupName $resourceGroupName `
         -Location $location `
@@ -192,33 +192,33 @@ Použijte hello kroky v této části toocreate hello následující konfigurace
     ```
 
     > [!WARNING]
-    > Ho může trvat několik minut, než toocomplete tento proces.
+    > To může trvat několik minut na dokončení tohoto procesu.
 
-5. Použijte následující kód toocreate hello účet úložiště Azure a objektů blob kontejneru hello:
+5. Použijte následující kód k vytvoření účtu úložiště Azure a objektů blob kontejneru:
 
     ```powershell
-    # Create hello storage account
+    # Create the storage account
     New-AzureRmStorageAccount `
         -ResourceGroupName $resourceGroupName `
         -Name $storageName `
         -Type Standard_GRS `
         -Location $location
 
-    # Get hello storage account keys and create a context
+    # Get the storage account keys and create a context
     $defaultStorageKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName `
         -Name $storageName)[0].Value
     $storageContext = New-AzureStorageContext -StorageAccountName $storageName `
         -StorageAccountKey $defaultStorageKey
 
-    # Create hello default storage container
+    # Create the default storage container
     New-AzureStorageContainer -Name $defaultContainerName `
         -Context $storageContext
     ```
 
-6. Použijte následující clusteru HDInsight hello toocreate kód hello:
+6. Použijte následující kód k vytvoření clusteru HDInsight:
 
     ```powershell
-    # Create hello HDInsight cluster
+    # Create the HDInsight cluster
     New-AzureRmHDInsightCluster `
         -ResourceGroupName $resourceGroupName `
         -ClusterName $clusterName `
@@ -237,9 +237,9 @@ Použijte hello kroky v této části toocreate hello následující konfigurace
     ```
 
   > [!WARNING]
-  > Tento proces trvá přibližně 20 minut toocomplete.
+  > Tento proces trvá přibližně 20 minut.
 
-8. Použijte následující rutinu tooretrieve hello adresu URL pro klienta VPN ve Windows hello pro virtuální síť hello hello:
+8. K načtení adresu URL pro klienta VPN ve Windows pro virtuální síť, použijte následující rutinu:
 
     ```powershell
     Get-AzureRmVpnClientPackage -ResourceGroupName $resourceGroupName `
@@ -247,68 +247,68 @@ Použijte hello kroky v této části toocreate hello následující konfigurace
         -ProcessorArchitecture Amd64
     ```
 
-    klienta VPN ve Windows hello toodownload, použijte hello vrátil URI ve webovém prohlížeči.
+    Pokud chcete stáhnout klienta VPN ve Windows, použijte identifikátor URI vrácené ve webovém prohlížeči.
 
 ### <a name="configure-kafka-for-ip-advertising"></a>Konfigurace Kafka pro inzerování IP
 
-Ve výchozím nastavení Zookeeper vrátí název domény hello hello Kafka zprostředkovatelé tooclients. Tato konfigurace nefunguje s hello softwaru klienta VPN, překlad nemůže použít pro entity ve virtuální síti hello. Pro tuto konfiguraci, použijte následující hello kroky tooconfigure Kafka tooadvertise IP adres místo názvy domén:
+Ve výchozím nastavení Zookeeper vrátí název domény zprostředkovatelé Kafka klientům. Tato konfigurace nefunguje s softwaru klienta VPN, překlad nemůže použít pro entity ve virtuální síti. Pro tuto konfiguraci použijte ke konfiguraci Kafka inzerovat IP adresy namísto názvů domény následující kroky:
 
-1. Pomocí webového prohlížeče, přejděte toohttps://CLUSTERNAME.azurehdinsight.net. Nahraďte __CLUSTERNAME__ s názvem hello hello Kafka na clusteru HDInsight.
+1. Pomocí webového prohlížeče, přejděte na https://CLUSTERNAME.azurehdinsight.net. Nahraďte __CLUSTERNAME__ s názvem Kafka na clusteru HDInsight.
 
-    Pokud budete vyzváni, použijte hello HTTPS uživatelské jméno a heslo pro hello cluster. Zobrazí se Hello webové uživatelské rozhraní Ambari pro hello cluster.
+    Pokud budete vyzváni, použijte HTTPS uživatelské jméno a heslo pro cluster. Webové uživatelské rozhraní Ambari pro cluster se zobrazí.
 
-2. Vyberte tooview informace o Kafka, __Kafka__ hello seznamu na levé straně hello.
+2. Chcete-li zobrazit informace o Kafka, vyberte __Kafka__ ze seznamu na levé straně.
 
     ![Seznam služeb s Kafka zvýrazněná](./media/hdinsight-apache-kafka-connect-vpn-gateway/select-kafka-service.png)
 
-3. Vyberte tooview konfigurace Kafka, __konfigurací__ z horní střední hello.
+3. Chcete-li zobrazit informace o konfiguraci Kafka, vyberte __konfigurací__ nejvyšší uprostřed.
 
     ![Konfigurací odkazy pro Kafka](./media/hdinsight-apache-kafka-connect-vpn-gateway/select-kafka-config.png)
 
-4. toofind hello __kafka env__ konfigurace, zadejte `kafka-env` v hello __filtru__ pole v horní pravé hello.
+4. Najít __kafka env__ konfigurace, zadejte `kafka-env` v __filtru__ pole v pravém horním rohu.
 
     ![Konfigurace Kafka, pro kafka env](./media/hdinsight-apache-kafka-connect-vpn-gateway/search-for-kafka-env.png)
 
-5. tooconfigure Kafka tooadvertise IP adres, přidejte následující text toohello dolní části hello hello __kafka. env šablony__ pole:
+5. Ke konfiguraci Kafka inzerovat IP adres, přidejte následující text k dolní části __kafka. env šablony__ pole:
 
     ```
-    # Configure Kafka tooadvertise IP addresses instead of FQDN
+    # Configure Kafka to advertise IP addresses instead of FQDN
     IP_ADDRESS=$(hostname -i)
     echo advertised.listeners=$IP_ADDRESS
     sed -i.bak -e '/advertised/{/advertised@/!d;}' /usr/hdp/current/kafka-broker/conf/server.properties
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-6. tooconfigure hello rozhraní, které Kafka naslouchá na, zadejte `listeners` v hello __filtru__ pole v horní pravé hello.
+6. Pokud chcete konfigurovat rozhraní, které Kafka naslouchá na, zadejte `listeners` v __filtru__ pole v pravém horním rohu.
 
-7. tooconfigure Kafka toolisten na všech síťových rozhraní, hodnota hello změnit v hello __naslouchací procesy__ pole příliš`PLAINTEXT://0.0.0.0:9092`.
+7. Ke konfiguraci Kafka naslouchat na všech síťových rozhraní, změňte hodnotu v __naslouchací procesy__ do `PLAINTEXT://0.0.0.0:9092`.
 
-8. změny konfigurace hello toosave, použijte hello __Uložit__ tlačítko. Zadejte textovou zprávu s popisem hello změny. Vyberte __OK__ po uložení změn hello.
+8. Chcete-li uložit změny konfigurace, použijte __Uložit__ tlačítko. Zadejte textovou zprávu s popisem změny. Vyberte __OK__ po změny byly uloženy.
 
     ![Konfigurace tlačítko Uložit](./media/hdinsight-apache-kafka-connect-vpn-gateway/save-button.png)
 
-9. tooprevent chyby při restartování Kafka, použijte hello __služby akce__ tlačítko a vyberte __zapnout v režimu údržby__. Vyberte OK toocomplete tuto operaci.
+9. Chcete-li zabránit chybám při restartování Kafka, použijte __služby akce__ tlačítko a vyberte __zapnout v režimu údržby__. Klepněte na tlačítko OK pro dokončení této operace.
 
     ![Akce služby s zapněte zvýrazněná údržby](./media/hdinsight-apache-kafka-connect-vpn-gateway/turn-on-maintenance-mode.png)
 
-10. toorestart Kafka, použijte hello __restartujte__ tlačítko a vyberte __restartujte všechny vliv__. Potvrďte hello restartování a pak použít hello __OK__ tlačítko po dokončení operace hello.
+10. Chcete-li restartovat Kafka, použijte __restartujte__ tlačítko a vyberte __restartujte všechny vliv__. Potvrďte restartování a potom pomocí __OK__ tlačítko po dokončení operace.
 
     ![Restartujte tlačítkem s restartem vliv](./media/hdinsight-apache-kafka-connect-vpn-gateway/restart-button.png)
 
-11. toodisable režimu údržby, použijte hello __služby akce__ tlačítko a vyberte __zapnout vypnout režimu údržby__. Vyberte **OK** toocomplete tuto operaci.
+11. Zakázat režim údržby, použijte __služby akce__ tlačítko a vyberte __zapnout vypnout režimu údržby__. Vyberte **OK** pro dokončení této operace.
 
-### <a name="connect-toohello-vpn-gateway"></a>Připojení brány VPN toohello
+### <a name="connect-to-the-vpn-gateway"></a>Připojení ke službě VPN gateway
 
-Brána sítě VPN toohello tooconnect z __klienta Windows__, použijte hello __připojit tooAzure__ části hello [konfigurace připojení typu Point-to-Site](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#clientcertificate) dokumentu.
+Pro připojení k bráně VPN z __klienta Windows__, použijte __připojit k Azure__ části [konfigurace připojení typu Point-to-Site](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#clientcertificate) dokumentu.
 
 ## <a id="python-client"></a>Příklad: Python klienta
 
-toovalidate tooKafka připojení, použijte následující postup toocreate hello a spusťte producent Python a příjemce:
+K ověření připojení k Kafka, použijte následující postup k vytvoření a spuštění producent Python a příjemce:
 
-1. Použití jednoho hello následující metody tooretrieve hello plně kvalifikovaný název domény (FQDN) a IP adresy hello uzlů v clusteru Kafka hello:
+1. K načtení plně kvalifikovaný název domény (FQDN) a IP adresy z uzlů v clusteru Kafka, použijte jednu z následujících metod:
 
     ```powershell
-    $resourceGroupName = "hello resource group that contains hello virtual network used with HDInsight"
+    $resourceGroupName = "The resource group that contains the virtual network used with HDInsight"
 
     $clusterNICs = Get-AzureRmNetworkInterface -ResourceGroupName $resourceGroupName | where-object {$_.Name -like "*node*"}
 
@@ -327,65 +327,65 @@ toovalidate tooKafka připojení, použijte následující postup toocreate hell
     az network nic list --resource-group <resourcegroupname> --output table --query "[?contains(name,'node')].{NICname:name,InternalIP:ipConfigurations[0].privateIpAddress,InternalFQDN:dnsSettings.internalFqdn}"
     ```
 
-    Tento skript předpokládá, že `$resourceGroupName` je hello název skupiny prostředků Azure hello, která obsahuje virtuální síť hello.
+    Tento skript předpokládá, že `$resourceGroupName` je název skupiny prostředků Azure, která obsahuje virtuální síť.
 
-    Uložte hello vrátí informace o pro použití v hello další kroky.
+    Uložte vrácené informace pro použití v dalších krocích.
 
-2. Použití hello následující tooinstall hello [kafka python](http://kafka-python.readthedocs.io/) klienta:
+2. Následující informace vám pomůžou nainstalovat [kafka python](http://kafka-python.readthedocs.io/) klienta:
 
         pip install kafka-python
 
-3. toosend data tooKafka hello použijte následující kód Python:
+3. K odesílání dat do Kafka, použijte následující kód Python:
 
   ```python
   from kafka import KafkaProducer
-  # Replace hello `ip_address` entries with hello IP address of your worker nodes
-  # NOTE: you don't need hello full list of worker nodes, just one or two.
+  # Replace the `ip_address` entries with the IP address of your worker nodes
+  # NOTE: you don't need the full list of worker nodes, just one or two.
   producer = KafkaProducer(bootstrap_servers=['kafka_broker_1','kafka_broker_2'])
   for _ in range(50):
       producer.send('testtopic', b'test message')
   ```
 
-    Nahraďte hello `'kafka_broker'` položky s adresami hello vrácená z kroku 1 v této části:
+    Nahraďte `'kafka_broker'` položky s adresami vrácená z kroku 1 v této části:
 
-    * Pokud používáte __klienta VPN softwaru__, nahraďte hello `kafka_broker` položky s IP adresou hello uzly pracovního procesu.
+    * Pokud používáte __klienta VPN softwaru__, nahraďte `kafka_broker` položky s IP adresou uzly pracovního procesu.
 
-    * Pokud máte __povolen překlad názvů pomocí vlastního serveru DNS__, nahraďte hello `kafka_broker` položky s hello plně kvalifikovaný název domény hello uzlů pracovního procesu.
+    * Pokud máte __povolen překlad názvů pomocí vlastního serveru DNS__, nahraďte `kafka_broker` položek s uzly pracovního procesu plně kvalifikovaný název domény.
 
     > [!NOTE]
-    > Tento kód odešle řetězec hello `test message` toohello tématu `testtopic`. Výchozí konfigurace Hello Kafka v HDInsight je toocreate hello tématu, pokud neexistuje.
+    > Tento kód odešle řetězec `test message` do tématu `testtopic`. Výchozí konfigurace Kafka v HDInsight se má vytvořit téma, pokud neexistuje.
 
-4. tooretrieve hello zprávy z Kafka, použijte následující kód Python hello:
+4. Pro načtení zprávy z Kafka, použijte následující kód Python:
 
    ```python
    from kafka import KafkaConsumer
-   # Replace hello `ip_address` entries with hello IP address of your worker nodes
-   # Again, you only need one or two, not hello full list.
-   # Note: auto_offset_reset='earliest' resets hello starting offset toohello beginning
-   #       of hello topic
+   # Replace the `ip_address` entries with the IP address of your worker nodes
+   # Again, you only need one or two, not the full list.
+   # Note: auto_offset_reset='earliest' resets the starting offset to the beginning
+   #       of the topic
    consumer = KafkaConsumer(bootstrap_servers=['kafka_broker_1','kafka_broker_2'],auto_offset_reset='earliest')
    consumer.subscribe(['testtopic'])
    for msg in consumer:
      print (msg)
    ```
 
-    Nahraďte hello `'kafka_broker'` položky s adresami hello vrácená z kroku 1 v této části:
+    Nahraďte `'kafka_broker'` položky s adresami vrácená z kroku 1 v této části:
 
-    * Pokud používáte __klienta VPN softwaru__, nahraďte hello `kafka_broker` položky s IP adresou hello uzly pracovního procesu.
+    * Pokud používáte __klienta VPN softwaru__, nahraďte `kafka_broker` položky s IP adresou uzly pracovního procesu.
 
-    * Pokud máte __povolen překlad názvů pomocí vlastního serveru DNS__, nahraďte hello `kafka_broker` položky s hello plně kvalifikovaný název domény hello uzlů pracovního procesu.
+    * Pokud máte __povolen překlad názvů pomocí vlastního serveru DNS__, nahraďte `kafka_broker` položek s uzly pracovního procesu plně kvalifikovaný název domény.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o používání HDInsight s virtuální sítí, najdete v části hello [rozšíření Azure HDInsight pomocí Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md) dokumentu.
+Další informace o používání HDInsight s virtuální sítě najdete v tématu [rozšíření Azure HDInsight pomocí Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md) dokumentu.
 
-Další informace o vytváření virtuální síť Azure s bránou sítě VPN Point-to-Site najdete v tématu hello následující dokumenty:
+Další informace o vytváření virtuální síť Azure s bránou sítě VPN Point-to-Site najdete v následujících dokumentech:
 
-* [Konfigurace připojení typu Point-to-Site pomocí hello portálu Azure](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)
+* [Konfigurace připojení typu Point-to-Site pomocí portálu Azure](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 
 * [Konfigurace připojení typu Point-to-Site pomocí Azure PowerShell](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
-Další informace o práci s Kafka v HDInsight naleznete v tématu hello následující dokumenty:
+Další informace o práci se systémem Kafka v prostředí HDInsight najdete v následujících dokumentech:
 
 * [Začínáme s Kafka ve službě HDInsight](hdinsight-apache-kafka-get-started.md)
 * [Použít zrcadlení s Kafka v HDInsight](hdinsight-apache-kafka-mirroring.md)

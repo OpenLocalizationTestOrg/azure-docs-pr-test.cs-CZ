@@ -1,6 +1,6 @@
 ---
-title: "předkonfigurované řešení aaaPredictive údržby | Microsoft Docs"
-description: "Popis prediktivní údržby Azure IoT Suite hello předkonfigurovaného řešení."
+title: "Předkonfigurované řešení prediktivní údržby | Dokumentace Microsoftu"
+description: "Popis předkonfigurovaného řešení prediktivní údržby sady Azure IoT Suite."
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -15,125 +15,125 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.openlocfilehash: 2d09801467d33db6b7d6333fa071aea2bf573f20
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8bad198488c4940a83eb32ec02122a91d47ca86c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="predictive-maintenance-preconfigured-solution-overview"></a>Přehled řešení předkonfigurované prediktivní údržby
 
-Hello *prediktivní údržby* [předkonfigurované řešení] [ lnk_preconfigured_solutions] je jedním z hello [Microsoft Azure IoT Suite] [ lnk_iot_suite] předkonfigurovaných řešení. Toto řešení integruje sběr telemetrických dat ze zařízení v reálném čase s prediktivním modelem vytvořeným pomocí služby [Azure Machine Learning][lnk-machine-learning].
+[Předkonfigurované řešení][lnk_preconfigured_solutions]*prediktivní údržby* je jedním z předkonfigurovaných řešení sady [Microsoft Azure IoT Suite][lnk_iot_suite]. Toto řešení integruje sběr telemetrických dat ze zařízení v reálném čase s prediktivním modelem vytvořeným pomocí služby [Azure Machine Learning][lnk-machine-learning].
 
-S Azure IoT Suite můžete rychle a snadno připojit tooand monitorování prostředky a analyzovat telemetrická data v reálném čase v řídicích panelů a vizualizací. V řešení prediktivní údržby hello hello řídicích panelů a vizualizací poskytují nové informace, které můžete zvýšit efektivitu a výnosy.
+Pomocí sady Azure IoT Suite se můžete rychle a snadno připojit k prostředkům, monitorovat je a v reálném čase analyzovat telemetrii na řídicích panelech a ve vizualizacích. Řídicí panely a vizualizace v řešení prediktivní údržby poskytují nové informace, které vám můžou pomoci zvýšit efektivitu a výnosy.
 
-## <a name="hello-scenario"></a>Hello scénář
+## <a name="the-scenario"></a>Scénář
 
-Fabrikam je regionální letecká společnost, která se zaměřuje na pohodlí zákazníků za konkurenční ceny. Jednou z příčin zpoždění letů jsou problémy s údržbou, protože údržba leteckých motorů je velmi náročná. Společnost Fabrikam musí vyhnout poruchám motorů během letu za každou cenu tak, aby ho své stroje pravidelně kontroluje a plány údržby podle plánu tooa. Letadla, moduly neopotřebovávají hello však stejné. Některou údržbu motorů není vždy nutné provádět. Naproti tomu se můžou vyskytnout problémy, kvůli kterým musí letadlo zůstat na zemi, dokud není opravené. Pokud je letadlo v místě kde hello vhodní technici nebo náhradní díly nejsou k dispozici, k těmto problémům může být obzvláště drahé.
+Fabrikam je regionální letecká společnost, která se zaměřuje na pohodlí zákazníků za konkurenční ceny. Jednou z příčin zpoždění letů jsou problémy s údržbou, protože údržba leteckých motorů je velmi náročná. Společnost Fabrikam musí za každou cenu zabránit poruchám motorů během letu, a proto své motory pravidelně kontroluje a plánuje údržbu v souladu s plánem. Letecké motory se ale neopotřebovávají všechny stejně. Některou údržbu motorů není vždy nutné provádět. Naproti tomu se můžou vyskytnout problémy, kvůli kterým musí letadlo zůstat na zemi, dokud není opravené. Pokud je letadlo v místě, kde nejsou k dispozici vhodní technici nebo náhradní díly, pak tyto problémy můžou být zvláště nákladné.
 
-Hello motory letadel společnosti Fabrikam jsou vybaveny snímači, které monitorují stav motoru během letu. Společnost Fabrikam používá hello prediktivní údržby řešení toocollect hello data shromážděná během letu hello. Po mnoho let provozu a selháních motorů společnosti Fabrikam datových vědců model, způsob toopredict hello zbývající dobu životnosti (RUL) leteckého motoru. Hello model používá korelace mezi údaji ze čtyř hello modul senzory a motoru a opotřebením motoru který vede tooeventual selhání. Když společnost Fabrikam stále tooperform pravidelné kontroly tooensure zabezpečení, ho teď můžete použít hello modely toocompute hello RUL jednotlivých motorů po každém letu. Hello model používá hello shromažďování telemetrických údajů z hello motorů během letu hello. Společnost Fabrikam teď může předpovídat budoucí selhání a s předstihem plánovat údržbu a opravy.
+Motory letadel společnosti Fabrikam jsou vybaveny snímači, které monitorují stav motoru během letu. Společnost Fabrikam pomocí řešení prediktivní údržby sbírá data ze snímačů shromážděná během letu. Z údajů o provozu a selháních motorů nashromážděných za mnoho let analytici společnosti Fabrikam vytvořili model, který předpovídá zbývající dobu životnosti (RUL) leteckého motoru. Tento model využívá korelaci mezi daty ze čtyř snímačů v motoru a opotřebením motoru, které vede k jeho případnému selhání. I když společnost Fabrikam stále provádí pravidelné kontroly k zajištění bezpečnosti, může pomocí modelu vypočítat zbývající životnost jednotlivých motorů po každém letu. Model využívá telemetrická data shromážděná z motorů během letu. Společnost Fabrikam teď může předpovídat budoucí selhání a s předstihem plánovat údržbu a opravy.
 
 > [!NOTE]
-> Hello model řešení využívá data o opotřebení ze skutečných motorů.
+> Model řešení využívá data o opotřebení ze skutečných motorů.
 
-Podle predikci hello bodu čas potřebné údržby, může společnost Fabrikam optimalizovat náklady tooreduce její operace.
+Díky tomu, že společnost Fabrikam dokáže předpovědět čas potřebné údržby, může optimalizovat svůj provoz a snižovat náklady.
 
 Koordinátoři údržby spolupracují s plánovači při:
 
-- Plán údržby toocoincide s letadel v konkrétních místech zastavení.
-- Zkontrolujte, zda dostatek času k dispozici pro hello letadla toobe mimo provoz aniž by to způsobilo harmonogramu.
-- tooensure technici tooschedule že servis letadla bude probíhat efektivně bez prodlev.
+- Plánování údržby tak, aby se časově shodovala se zastávkami letadel v konkrétních místech.
+- Zajištění, aby servis letadel nezpůsoboval komplikace v časovém harmonogramu.
+- Rozvržení služeb techniků pro zajištění, že servis letadel bude probíhat efektivně a bez prodlev.
 
 Plán údržby dostávají také správci řízení zásob, kteří díky tomu mohou optimalizovat proces objednávání a skladové zásoby náhradních dílů.
 
-Tyto aktivity povolte prostoje letadel společnosti Fabrikam toominimize a snížení provozních nákladů a zajistit bezpečnost cestujících i posádek hello.
+Tyto aktivity umožňují společnosti Fabrikam minimalizovat prostoje letadel a snižovat provozní náklady a současně zajistit bezpečnost cestujících i posádek.
 
-toounderstand jak [Azure IoT Suite] [ lnk_iot_suite] poskytuje zákazníkům hello potřebovat toorealize hello potenciál prediktivní údržby, zkontrolujte tato [infografice] [lnk_infographic].
+Vysvětlení, jak sada [Azure IoT Suite][lnk_iot_suite] zákazníkům umožňuje využít potenciál prediktivní údržby, najdete v této [infografice][lnk_infographic].
 
-## <a name="how-hello-predictive-maintenance-solution-is-built"></a>Jak je sestaveno řešení prediktivní údržby hello
+## <a name="how-the-predictive-maintenance-solution-is-built"></a>Jak je sestaveno řešení prediktivní údržby
 
-řešení Hello používá existující model Azure Machine Learning k dispozici jako šablona tooshow možnosti práce s telemetrickými údaji ze zařízení shromažďovaných prostřednictvím služeb IoT Suite. Společnost Microsoft vytvořila [regresní model] [ lnk_regression_model] leteckého motoru na základě dat o veřejně dostupné<sup>\[1\]</sup>a krok za krokem informace o tom, jak toouse hello modelu.
+Řešení využívá existující model Azure Machine Learning, který je k dispozici jako šablona a ukazuje možnosti práce s telemetrickými daty ze zařízení shromážděnými prostřednictvím služeb IoT Suite. Společnost Microsoft vytvořila [regresní model][lnk_regression_model] leteckého motoru na základě veřejně dostupných dat<sup>\[1\]</sup> a podrobné pokyny k použití modelu.
 
-Hello řešení prediktivní údržby Azure IoT používá regresní model hello vytvořené z této šablony. Hello modelu je nasadit do vašeho předplatného Azure a vystavené prostřednictvím automaticky generovaného rozhraní API. Hello řešení obsahuje podmnožinu hello testování dat, která představují 4 (z celkem 100) moduly a hello 4 (z celkem 21) senzor datových proudů. Tato data jsou dostatečná tooprovide přesné výsledky z hello trained model.
+Řešení prediktivní údržby Azure IoT používá regresní model vytvořený z této šablony. Model je nasazený do vašeho předplatného Azure a vystavený prostřednictvím automaticky generovaného rozhraní API. Řešení obsahuje podmnožinu testovacích dat, která představují 4 motory (z celkem 100) a 4 datové proudy ze snímačů (z celkem 21). Tato data jsou dostatečná pro poskytování přesných výsledků z trénovaného modelu.
 
 *\[1\] A. Saxena and K. Goebel (2008). „Turbofan Engine Degradation Simulation Data Set“, datové úložiště NASA Ames Prognostics Data Repository (http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/), NASA Ames Research Center, Moffett Field, CA*
 
 ## <a name="get-started-with-predictive-maintenance"></a>Začínáme s prediktivní údržbou
 
-Tento kurz ukazuje, jak tooprovision hello řešení prediktivní údržby. Je také vás provede procesem hello základní funkce řešení prediktivní údržby hello. Mnoho z těchto funkcí můžete přistupovat prostřednictvím hello řídicí panel řešení, která nasazuje společně s hello předkonfigurované řešení.
+V tomto kurzu se dozvíte, jak zřídit řešení prediktivní údržby. Také se seznámíte se základními funkcemi řešení prediktivní údržby. Mnohé z těchto funkcí jsou přístupné prostřednictvím řídicího panelu řešení, který se nasazuje spolu s předkonfigurovaným řešením.
 
-toocomplete tohoto kurzu potřebujete aktivní předplatné Azure.
+K dokončení tohoto kurzu potřebujete mít aktivní předplatné služby Azure.
 
 > [!NOTE]
 > Pokud nemáte účet, můžete si během několika minut vytvořit bezplatný účet zkušební. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure][lnk_free_trial].
 
-1. Přihlaste se příliš[azureiotsuite.com] [ lnk-azureiotsuite] pomocí vaší Azure přihlašovací údaje účtu a klikněte na tlačítko  **+**  toocreate řešení.
-1. Klikněte na tlačítko **vyberte** hello **prediktivní údržby** dlaždici.
+1. Pomocí svých přihlašovacích údajů k účtu Azure se přihlaste na webu [azureiotsuite.com][lnk-azureiotsuite] a kliknutím na tlačítko **+** vytvořte řešení.
+1. Klikněte na **Vybrat** na dlaždici **Prediktivní údržba**.
 1. Zadejte **Název řešení** pro předkonfigurované řešení prediktivní údržby.
-1. Vyberte hello **oblast** a **předplatné** chcete toouse tooprovision hello řešení.
-1. Klikněte na tlačítko **vytvořit řešení** toobegin hello procesu zřizování. Tento proces obvykle trvá několik minut toorun.
+1. Vyberte **Oblast** a **Předplatné**, které chcete při zřizování řešení použít.
+1. Kliknutím na tlačítko **Vytvořit řešení** zahájíte proces zřizování. Tento proces obvykle trvá několik minut.
 
-### <a name="wait-for-hello-provisioning-process-toocomplete"></a>Počkejte hello zřizování toocomplete procesu
+### <a name="wait-for-the-provisioning-process-to-complete"></a>Počkejte, dokud proces zřizování neskončí.
 
-1. Klikněte na dlaždici s řešením hello **zřizování** stavu.
-1. Všimněte si hello **stavy zřizování** při nasazování služby Azure ve vašem předplatném Azure.
-1. Jakmile bude zřizování dokončeno, hello změny stavu příliš**připraven**.
-1. Klikněte na tlačítko hello dlaždice toosee hello informace o řešení v pravém podokně hello. V tomto podokně můžete spustit hello řešení řídicí panel a přístup hello pracovní prostor Machine Learning.
+1. Klikněte na dlaždici s řešením, u kterého je uveden stav **Zřizování**.
+1. **Stavy zřizování** umožňují sledovat, jak se služby Azure nasazují na váš účet Azure.
+1. Jakmile bude zřizování dokončeno, stav se změní na **Připraveno**.
+1. Kliknutím na dlaždici zobrazíte v pravém podokně informace o řešení. Z tohoto podokna můžete spustit řídicí panel řešení a využívat přístup k pracovnímu prostoru Machine Learning.
 
 > [!NOTE]
-> Pokud narazíte na problémy nasazení hello předkonfigurované řešení, přečtěte si [oprávnění na webu azureiotsuite.com hello] [ lnk-permissions] a hello [– nejčastější dotazy] [ lnk-faq]. Pokud hello problémy přetrvávají, vytvořte lístek služby na hello [portál][lnk-portal].
+> Pokud při nasazování předkonfigurovaného řešení narazíte na problémy, zkontrolujte [Oprávnění na webu azureiotsuite.com][lnk-permissions] a přečtěte si [Nejčastější dotazy][lnk-faq]. Pokud problémy přetrvávají, vytvořte na [portálu][lnk-portal] lístek služby.
 
-Existují by uživatel očekával toosee podrobnosti, které nejsou uvedené pro vaše řešení? Sdělte nám návrhy na funkce na webu [User Voice](https://feedback.azure.com/forums/321918-azure-iot).
+Hledali jste informace, které se týkají vašeho řešení a nejsou zde uvedeny? Sdělte nám návrhy na funkce na webu [User Voice](https://feedback.azure.com/forums/321918-azure-iot).
 
-## <a name="view-hello-solution"></a>Zobrazení hello řešení
+## <a name="view-the-solution"></a>Zobrazení řešení
 
-Tato část vás provede hello řešení uživatelského rozhraní.
+Tato část vás provede uživatelským rozhraním řešení.
 
 ### <a name="predictive-maintenance-dashboard"></a>Řídicí panel prediktivní údržby
 
-Tato stránka ve hello webové aplikaci používá ovládací prvky PowerBI v jazyce JavaScript (viz hello [úložiště vizuálních prvků PowerBI][lnk-powerbi]) toovisualize:
+Tato stránka ve webové aplikaci používá ovládací prvky PowerBI v jazyce JavaScript (viz [Úložiště vizuálních prvků PowerBI][lnk-powerbi]) k vizualizaci:
 
-* Hello výstupní data z hello úlohy Stream Analytics v úložišti objektů blob.
-* Hello počet každý motor letadla RUL a cyklů.
+* výstupních dat úlohy služby Stream Analytics v úložišti objektů blob
+* zbývající doby životnosti (RUL) a počtu cyklů pro každý motor letadla
 
-### <a name="observing-hello-behavior-of-hello-cloud-solution"></a>Sledování chování hello hello cloudového řešení
+### <a name="observing-the-behavior-of-the-cloud-solution"></a>Sledování chování cloudového řešení
 
-V hello portálu Azure, přejděte toohello skupinu prostředků s názvem řešení hello jste zvolili tooview zřízené prostředky.
+Na webu Azure Portal přejděte do skupiny prostředků s názvem řešení, které jste si vybrali k zobrazení zřízených prostředků.
 
 ![][img-resource-group]
 
-Při zřizování hello předkonfigurovaného řešení obdržíte e-mail s pracovní prostor Machine Learning toohello odkaz. Můžete také přejít pracovní prostor Machine Learning toohello z hello [azureiotsuite.com] [ lnk-azureiotsuite] stránky zřízeného řešení. Dlaždice je k dispozici na této stránce, když hello řešení v hello **připraven** stavu.
+Při zřizování předkonfigurovaného řešení obdržíte e-mail s odkazem na pracovní prostor Machine Learning. Do pracovního prostoru Machine Learning se můžete dostat také ze stránky zřízeného řešení na webu [azureiotsuite.com][lnk-azureiotsuite]. Na této stránce je k dispozici dlaždice v případě, že je řešení ve stavu **Připraveno**.
 
 ![][img-machine-learning]
 
-Hello portálu řešení uvidíte, že tento ukázkový hello je opatřen čtyři Simulovaná zařízení toorepresent dvě letadla se dvěma motory pro každé letadlo, každý se čtyřmi snímači. Při první návštěvě portálu řešení toohello, dojde k zastavení simulace hello.
+Na portálu řešení uvidíte, že ve vzorovém řešení jsou čtyři simulovaná zařízení, která představují dvě letadla se dvěma motory na každé letadlo, z nichž každý má čtyři snímače. Při první návštěvě portálu řešení dojde k zastavení simulace.
 
 ![][img-simulation-stopped]
 
-Klikněte na tlačítko **spustit simulaci** toobegin hello simulace. Hello senzor historie, RUL, cykly a RUL historie naplnit hello řídicího panelu.
+Kliknutím na **Spustit simulaci** zahajte simulaci. Na řídicím panelu se zobrazí historie hodnot snímačů, zbývající doba životnosti (RUL), počet cyklů a historie hodnot RUL.
 
 ![][img-simulation-running]
 
-Když RUL je menší než 160 (libovolná hodnota, zvolená pro demonstrační účely), zobrazí se portál řešení hello toohello další symbol upozornění RUL zobrazení. portál řešení Hello také označuje hello leteckého motoru žlutě. Všimněte si, jak hodnoty RUL hello mají obecné klesající trend, ale mívají toobounce nahoru a dolů. Toto chování je výsledkem hello různých délek cyklu a přesnosti modelu hello.
+Když je zbývající doba životnosti (RUL) nižší než 160 (libovolná prahová hodnota zvolená pro demonstrační účely), portál řešení zobrazí vedle hodnoty RUL symbol upozornění. Portál řešení také zvýrazní daný motor letadla žlutou barvou. Můžete si všimnout, že hodnoty zbývající doby životnosti (RUL) mají obecné klesající trend, ale kolísají nahoru a dolů. Toto chování vyplývá z různých délek cyklu a přesnosti modelu.
 
 ![][img-simulation-warning]
 
-Hello úplné simulaci trvá asi 35 minut toocomplete 148 cyklů. Hello 160 RUL dosáhla prahová hodnota pro hello poprvé v přibližně po 5 minutách a oba motory dosáhl hello prahovou hodnotu v přibližně po 8 minutách.
+Při úplné simulaci trvá dokončení 148 cyklů asi 35 minut. Prahová hodnota 160 pro zbývající dobu životnosti (RUL) je poprvé dosažena přibližně po 5 minutách simulace a oba motory se na tuto hodnotu dostanou přibližně po 8 minutách.
 
-Hello simulace zpracuje úplnou datovou sadu hello údaji o 148 cyklech a vyrovná na konečné hodnoty RUL a cyklů.
+Simulace zpracuje úplnou datovou sadu s údaji o 148 cyklech a vytvoří konečnou hodnotu RUL a cyklů.
 
-Můžete zastavit hello simulace u libovolné bodu, ale kliknutím na tlačítko **Start simulace** opětovná přehrání hello simulace od začátku hello hello datovou sadu.
+Simulaci lze zastavit v libovolný okamžik, ale kliknutím na tlačítko **Start simulace** spustíte simulaci znovu od začátku datové sady.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak Azure IoT umožňuje scénáře prediktivní údržby, přečtěte si toolearn [získání hodnoty z hello Internet věcí][lnk_capture_value].
+Další informace o tom, jak Azure IoT podporuje scénáře prediktivní údržby, najdete v tématu [Získání hodnoty z Internetu věcí][lnk_capture_value].
 
-Trvat [návod] [ lnk-predictive-walkthrough] řešení prediktivní údržby hello.
+[Podrobný návod][lnk-predictive-walkthrough] pro řešení prediktivní údržby.
 
-Můžete také prozkoumat některé hello další funkce a možnosti hello předkonfigurovaná řešení IoT Suite:
+Můžete si taky prostudovat některé další funkce a možnosti předkonfigurovaných řešení sady IoT Suite:
 
 * [Nejčastější dotazy k sadě IoT Suite][lnk-faq]
-* [Zabezpečení IoT z hello pozadí][lnk-security-groundup]
+* [Zabezpečení IoT od počátku][lnk-security-groundup]
 
 [img-resource-group]: media/iot-suite-predictive-overview/resource-group.png
 [img-simulation-stopped]: media/iot-suite-predictive-overview/simulation-stopped.png

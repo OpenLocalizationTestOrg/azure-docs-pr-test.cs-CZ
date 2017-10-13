@@ -1,6 +1,6 @@
 ---
-title: "aaaHosting více lokalit na Azure Application Gateway | Microsoft Docs"
-description: "Tato stránka obsahuje přehled hello podporu více lokalit Application Gateway."
+title: "Hostování více webů ve službě Azure Application Gateway | Dokumentace Microsoftu"
+description: "Tato stránka poskytuje přehled podpory služby Application Gateway pro více webů."
 documentationcenter: na
 services: application-gateway
 author: amsriva
@@ -14,38 +14,38 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: amsriva
-ms.openlocfilehash: 4ab6faa97f1891d7525affdaa36463681bf99e9f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 645f68d836babf11f32fc391e6dacc9430f0070c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Hostování více webů ve službě Application Gateway
 
-Hostování více lokality umožňuje tooconfigure více než jednu webovou aplikaci na hello stejnou instanci brány aplikace. Tato funkce umožňuje tooconfigure efektivnější topologie nasazení přidáním až too20 weby tooone aplikační brány. Každý web může přesměrovat tooits vlastní fond back-end. V následujícím příkladu hello Aplikační brána obsluhuje přenosy dat pro contoso.com a fabrikam.com ze dvou fondů back-end serverů názvem ContosoServerPool a FabrikamServerPool.
+Hostování více webů umožňuje konfigurovat více než jednu webovou aplikaci ve stejné instanci služby Application Gateway. Tato funkce umožňuje nakonfigurovat efektivnější topologii vašich nasazení tím, že přidáte až 20 webů do jedné služby Application Gateway. Každou stránku lze přesměrovat na vlastní back-endový fond. V následujícím příkladu služba Application Gateway obsluhuje provoz pro contoso.com a fabrikam.com ze dvou fondů back-endového serveru s názvy FondServeruContoso a FondServeruFabrikam.
 
 ![imageURLroute](./media/application-gateway-multi-site-overview/multisite.png)
 
 > [!IMPORTANT]
-> Pravidla se zpracovávají v pořadí hello, jsou uvedeny v portálu hello. Je první předchozí tooconfiguring velmi doporučené tooconfigure naslouchací procesy více lokalit základní naslouchací proces.  Tím bude zajištěno ukončení tento provoz získá směrované toohello přímo zpět. Pokud je základní naslouchací proces uveden jako první a odpovídá příchozímu požadavku, požadavek se zpracuje tímto naslouchacím procesem.
+> Pravidla se zpracovávají v pořadí, v jakém jsou uvedena na portálu. Důrazně doporučujeme nakonfigurovat naslouchací procesy pro více webů před konfigurací základního naslouchacího procesu.  Tím se zajistí směrování provozu do správného back-endu. Pokud je základní naslouchací proces uveden jako první a odpovídá příchozímu požadavku, požadavek se zpracuje tímto naslouchacím procesem.
 
-Požadavky pro http://contoso.com jsou směrované tooContosoServerPool a http://fabrikam.com směrované tooFabrikamServerPool.
+Požadavky na http://contoso.com jsou směrovány na FondServeruContoso a požadavky na http://fabrikam.com jsou směrovány na FondServeruFabrikam.
 
-Podobně jako dvě subdomény hello stejné nadřazené domény může být hostitelem hello stejné brány nasazení aplikace. Příklady použití poddomén mohou zahrnovat http://blog.contoso.com a http://app.contoso.com hostované v jednom nasazení služby Application Gateway.
+Podobně lze ve stejném nasazení služby Application Gateway hostovat dvě poddomény stejné nadřazené domény. Příklady použití poddomén mohou zahrnovat http://blog.contoso.com a http://app.contoso.com hostované v jednom nasazení služby Application Gateway.
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>Hlavičky hostitele a Identifikace názvu serveru (SNI)
 
-Existují tři běžné mechanismy pro povolení více lokality hostování na hello stejné infrastruktury.
+Existují tři běžné mechanismy pro povolení hostování více webů ve stejné infrastruktuře.
 
 1. Hostování více webových aplikací, z nichž každá je na jedinečné IP adrese.
-2. Název hostitele použít toohost několika webových aplikací na hello stejnou IP adresu.
-3. Použití jiné porty toohost několika webových aplikací na hello stejnou IP adresu.
+2. Použití názvu hostitele k hostování více webových aplikací na stejné IP adrese.
+3. Použití různých portů k hostování více webových aplikací na stejné IP adrese.
 
-V současné době získá služba Application Gateway jednu veřejnou IP adresu, na které naslouchá provozu. Proto v současné době podpora více aplikací, z nichž každá má vlastní IP adresu, není podporována. Aplikační brána podporuje hostování více aplikací každý naslouchá na jiné porty, ale v tomto scénáři by vyžadovaly hello aplikace tooaccept provoz na nestandardní porty a není často požadovaná konfigurace. Aplikační brána spoléhá na HTTP 1.1 toohost hlavičky hostitele více než jeden web na hello stejnou veřejnou IP adresu a port. Hello webů hostovaných na aplikační bránu můžete taky podporu snižování zátěže protokolu SSL s příponou TLS indikace názvu serveru (SNI). Tento scénář znamená, že tento hello klienta prohlížeče a back-endové webové farmy musí podporovat protokol HTTP/1.1 a TLS rozšíření, jak jsou definovány v dokumentu RFC 6066.
+V současné době získá služba Application Gateway jednu veřejnou IP adresu, na které naslouchá provozu. Proto v současné době podpora více aplikací, z nichž každá má vlastní IP adresu, není podporována. Služba Application Gateway podporuje hostování více aplikací, z nichž každá naslouchá na jiném portu, ale tento scénář by vyžadoval, aby aplikace přijímaly provoz na nestandardních portech, a tato konfigurace často není požadována. Služba Application Gateway se při hostování více než jednoho webu na stejné veřejné IP adrese a portu spoléhá na hlavičky hostitele HTTP 1.1. Weby hostované ve službě Application Gateway mohou také podporovat přesměrování zpracování SSL pomocí rozšíření protokolu TLS Identifikace názvu serveru (SNI). Tento scénář znamená, že klientský prohlížeč a back-endová webová farma musí podporovat HTTP/1.1 a rozšíření protokolu TLS, jak je definováno v dokumentu RFC 6066.
 
 ## <a name="listener-configuration-element"></a>Konfigurační prvek naslouchacího procesu
 
-Existující HTTPListener konfigurační prvek je lepší toosupport hostitelský název serveru název indikace elementy a, který je využíván jiným aplikace brány tooroute provoz tooappropriate back-end fondu. Hello následující ukázka kódu je fragment kódu hello elementu HttpListeners ze souboru šablony.
+Existující konfigurační prvek HTTPListener je vylepšený pro podporu názvu hostitele a prvků Identifikace názvu serveru. Ty slouží k tomu, aby služba Application Gateway mohla směrovat provoz na příslušný back-endový fond. Následující ukázka kódu je fragment prvku HttpListeners ze souboru šablony.
 
 ```json
 "httpListeners": [
@@ -83,11 +83,11 @@ Existující HTTPListener konfigurační prvek je lepší toosupport hostitelsk�
 ],
 ```
 
-Můžete navštívit [šablony Resource Manageru pomocí více hostování lokality](https://github.com/Azure/azure-quickstart-templates/blob/master/201-application-gateway-multihosting) nasazení založené na šablonách tooend end.
+Na stránce [Šablona Resource Manageru používající hostování více webů](https://github.com/Azure/azure-quickstart-templates/blob/master/201-application-gateway-multihosting) najdete kompletní nasazení založené na šabloně.
 
 ## <a name="routing-rule"></a>Pravidlo směrování
 
-Neexistuje žádná změna v pravidlo směrování hello. Hello pravidlo směrování, že "Základní" by měly pokračovat toobe vybrali tootie hello příslušnou lokalitu naslouchací proces toohello odpovídající back-end fondu adres.
+V pravidle směrování není požadována žádná změna. Stále byste měli volit pravidlo směrování „Základní“ k provázání příslušných naslouchacích procesů webů s odpovídajícími back-endovými fondy adres.
 
 ```json
 "requestRoutingRules": [
@@ -128,5 +128,5 @@ Neexistuje žádná změna v pravidlo směrování hello. Hello pravidlo směrov
 
 ## <a name="next-steps"></a>Další kroky
 
-Po seznamovat více lokality hostování, přejít příliš[vytvoření služby application gateway pomocí více hostování lokality](application-gateway-create-multisite-azureresourcemanager-powershell.md) toocreate aplikační brány s možnost toosupport více než jednu webovou aplikaci.
+Po získání informací o hostování více webů přejděte k tématu [Vytvoření služby Application Gateway používající hostování více webů](application-gateway-create-multisite-azureresourcemanager-powershell.md) a vytvořte službu Application Gateway se schopností podporovat více než jednu webovou aplikaci.
 

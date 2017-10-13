@@ -1,6 +1,6 @@
 ---
-title: "úložiště objektů blob toouse (úložiště objektů) aaaHow z jazyka C++ | Microsoft Docs"
-description: "Ukládání nestrukturovaných dat v cloudu hello s Azure Blob storage (úložiště objektů)."
+title: "Jak používat úložiště objektů blob (úložiště objektů) z jazyka C++ | Microsoft Docs"
+description: "Ukládejte nestrukturovaná data v cloudu pomocí Azure Blob Storage (úložiště objektů)."
 services: storage
 documentationcenter: .net
 author: michaelhauss
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: michaelhauss
-ms.openlocfilehash: e63df4683e5c10c9f8fbe4106c655df61be0e1a6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: daf480b7be78dc001712010eac6386d4744c3c1d
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="how-toouse-blob-storage-from-c"></a>Jak toouse úložiště objektů Blob z jazyka C++
+# <a name="how-to-use-blob-storage-from-c"></a>Používání úložiště Blob z jazyka C++
 [!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>Přehled
-Azure Blob storage je služba, která ukládá Nestrukturovaná data v cloudu hello jako objekty nebo objekty BLOB. Do Blob storage se dá ukládat jakýkoli druh textu nebo binárních dat, jako je dokument, soubor médií nebo instalátor aplikace. Úložiště objektů blob je také odkazované tooas objektu úložiště.
+Úložiště objektů blob v Azure je služba, která ukládá nestrukturovaná data v cloudu jako objekty nebo objekty blob. Do Blob storage se dá ukládat jakýkoli druh textu nebo binárních dat, jako je dokument, soubor médií nebo instalátor aplikace. Blob storage se také nazývá úložiště objektů.
 
-Tato příručka popisuje, jak hello tooperform běžné scénáře s využitím služby Azure Blob storage. Hello ukázky jsou napsané v jazyce C++ a používají hello [Klientská knihovna pro úložiště Azure pro jazyk C++](http://github.com/Azure/azure-storage-cpp/blob/master/README.md). Hello pokryté scénáře zahrnují **odesílání**, **výpis**, **stahování**, a **odstraňování** objekty BLOB.  
+Tato příručka popisuje, jak provádět běžné scénáře s využitím služby Azure Blob storage. Ukázky jsou napsané v C++ a použít [Klientská knihovna pro úložiště Azure pro jazyk C++](http://github.com/Azure/azure-storage-cpp/blob/master/README.md). Pokryté scénáře zahrnují **odesílání**, **výpis**, **stahování**, a **odstraňování** objekty BLOB.  
 
 > [!NOTE]
-> Tato příručka cílí hello Klientská knihovna pro úložiště Azure pro jazyk C++ verze 1.0.0 a vyšší. Hello doporučená verze je klientská knihovna pro úložiště 2.2.0, která je k dispozici prostřednictvím [NuGet](http://www.nuget.org/packages/wastorage) nebo [Githubu](https://github.com/Azure/azure-storage-cpp).
+> Tato příručka se zaměřuje Klientská knihovna pro úložiště Azure pro jazyk C++ verze 1.0.0 a vyšší. Doporučená verze je klientská knihovna pro úložiště 2.2.0, která je k dispozici prostřednictvím [NuGet](http://www.nuget.org/packages/wastorage) nebo [Githubu](https://github.com/Azure/azure-storage-cpp).
 > 
 > 
 
@@ -42,17 +42,17 @@ Tato příručka popisuje, jak hello tooperform běžné scénáře s využitím
 ## <a name="create-a-c-application"></a>Vytvoření aplikace C++
 V této příručce bude používat funkce úložiště, které lze spustit v rámci aplikace C++.  
 
-toodo tedy budete potřebovat tooinstall hello Klientská knihovna pro úložiště Azure pro jazyk C++ a vytvoření účtu úložiště Azure ve vašem předplatném Azure.   
+V takovém případě budete muset nainstalovat Klientská knihovna pro úložiště Azure pro jazyk C++ a vytvoření účtu úložiště Azure ve vašem předplatném Azure.   
 
-tooinstall hello Klientská knihovna pro úložiště Azure pro jazyk C++, můžete použít následující metody hello:
+Pokud chcete nainstalovat Klientská knihovna pro úložiště Azure pro jazyk C++, můžete použít následující metody:
 
-* **Linux:** postupujte podle pokynů hello uvedenému v hello [Klientská knihovna pro úložiště Azure pro C++ – soubor README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) stránky.  
-* **Windows:** v sadě Visual Studio, klikněte na tlačítko **nástroje > Správce balíčků NuGet > Konzola správce balíčků**. Typ hello následující příkaz do hello [Konzola správce balíčků NuGet](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) a stiskněte klávesu **ENTER**.  
+* **Linux:** postupujte podle pokynů uvedených v [Klientská knihovna pro úložiště Azure pro C++ – soubor README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) stránky.  
+* **Windows:** v sadě Visual Studio, klikněte na tlačítko **nástroje > Správce balíčků NuGet > Konzola správce balíčků**. Pomocí následujícího příkazu do [Konzola správce balíčků NuGet](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) a stiskněte klávesu **ENTER**.  
   
      Install-Package wastorage
 
-## <a name="configure-your-application-tooaccess-blob-storage"></a>Konfigurace vaší aplikace tooaccess úložiště objektů Blob
-Přidáte následující hello obsahovat toohello příkazy na začátek souboru C++ hello místo toouse objektů BLOB tooaccess rozhraní API hello Azure storage:  
+## <a name="configure-your-application-to-access-blob-storage"></a>Konfigurace aplikace pro přístup k úložišti objektů Blob
+Přidejte následující příkazy na začátek souboru C++, ve které chcete používat pro přístup k objektům BLOB úložiště Azure rozhraní API obsahovat:  
 
 ```cpp
 #include <was/storage_account.h>
@@ -60,43 +60,43 @@ Přidáte následující hello obsahovat toohello příkazy na začátek souboru
 ```
 
 ## <a name="setup-an-azure-storage-connection-string"></a>Instalační program připojovací řetězec úložiště Azure
-Klienta Azure storage používá úložiště připojovací řetězec toostore koncových bodů a přihlašovací údaje pro přístup ke službám dat správy. Když spustíte v aplikaci klienta, je nutné zadat připojovací řetězec úložiště hello v hello formátu, pomocí hello název účtu a hello úložiště přístupový klíč k úložišti pro účet úložiště hello uvedené v hello [portálu Azure](https://portal.azure.com)pro hello *AccountName* a *AccountKey* hodnoty. Informace o účtech úložiště a přístupové klávesy, najdete v části [o účtech úložiště Azure](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Tento příklad ukazuje, jak můžou deklarovat statické pole toohold hello připojovací řetězec:  
+Klienta Azure storage používá připojovací řetězec úložiště k ukládání koncových bodů a pověření pro přístup ke službám dat správy. Když spustíte v aplikaci klienta, je nutné zadat připojovací řetězec úložiště v následujícím formátu, pomocí názvu účtu úložiště a přístupový klíč úložiště pro účet úložiště uvedené v [portálu Azure](https://portal.azure.com) pro *AccountName* a *AccountKey* hodnoty. Informace o účtech úložiště a přístupové klávesy, najdete v části [o účtech úložiště Azure](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Tento příklad ukazuje, jak můžou deklarovat statické pole pro uložení připojovací řetězec:  
 
 ```cpp
-// Define hello connection-string with your values.
+// Define the connection-string with your values.
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key"));
 ```
 
-tootest aplikace v místním počítači s Windows, můžete použít hello Microsoft Azure [emulátor úložiště](../storage-use-emulator.md) který se instaluje s hello [Azure SDK](https://azure.microsoft.com/downloads/). emulátor úložiště Hello je nástroj, který simuluje hello objektů Blob, Queue a Table služby v Azure k dispozici na místním vývojovém počítači. Hello následující příklad ukazuje, jak lze deklarovat statické pole toohold hello připojovací řetězec tooyour emulátor místního úložiště:
+K testování aplikace v místním počítači s Windows, můžete použít Microsoft Azure [emulátor úložiště](../storage-use-emulator.md) který se instaluje s [Azure SDK](https://azure.microsoft.com/downloads/). Emulátor úložiště je nástroj, který simuluje služby objektů Blob, fronty a tabulky, které jsou v Azure k dispozici na místním vývojovém počítači. Následující příklad ukazuje, jak můžou deklarovat statické pole pro uložení připojovací řetězec k vaší emulátor místního úložiště:
 
 ```cpp
-// Define hello connection-string with Azure Storage Emulator.
+// Define the connection-string with Azure Storage Emulator.
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-emulátor úložiště Azure toostart hello, vyberte hello **spustit** tlačítko nebo klikněte na tlačítko hello **Windows** klíč. Začněte psát **emulátoru úložiště Azure**a vyberte **emulátor úložiště Microsoft Azure** hello seznamu aplikací.  
+Spusťte emulátor úložiště Azure, vyberte **spustit** tlačítko nebo klikněte na tlačítko **Windows** klíč. Začněte psát **emulátoru úložiště Azure**a vyberte **emulátor úložiště Microsoft Azure** ze seznamu aplikací.  
 
-Hello následující ukázky předpokládejme použít jednu z těchto dvou metod tooget hello úložiště připojovací řetězec.  
+Následující ukázky předpokládejme, že používáte jednu z těchto dvou metod k získání připojovacího řetězce úložiště.  
 
 ## <a name="retrieve-your-connection-string"></a>Načtení připojovacího řetězce
-Můžete použít hello **cloud_storage_account** třídy toorepresent informací o vašem účtu úložiště. tooretrieve účet úložiště informací z připojovacího řetězce úložiště hello, můžete použít hello **analyzovat** metoda.  
+Můžete použít **cloud_storage_account** třída představující informací o vašem účtu úložiště. Chcete-li načíst informace o účtu úložiště z připojovacího řetězce úložiště, můžete použít **analyzovat** metoda.  
 
 ```cpp
 // Retrieve storage account from connection string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 ```
 
-V dalším kroku získat odkaz na tooa **cloud_blob_client** třídy jako umožňuje tooretrieve objekty, které představují kontejnery a objekty BLOB uložené v rámci hello služby úložiště objektů Blob. Hello následující kód vytvoří **cloud_blob_client** objekt, který používá objekt účtu úložiště hello nemůžeme načíst výše:  
+V dalším kroku získat odkaz na **cloud_blob_client** třídy jako umožňuje načtení objektů, které představují kontejnery a objekty BLOB uložené v rámci služby úložiště objektů Blob. Následující kód vytvoří **cloud_blob_client** pomocí objekt účtu úložiště jsme načíst výše:  
 
 ```cpp
-// Create hello blob client.
+// Create the blob client.
 azure::storage::cloud_blob_client blob_client = storage_account.create_cloud_blob_client();  
 ```
 
 ## <a name="how-to-create-a-container"></a>Postupy: vytvoření kontejneru
 [!INCLUDE [storage-container-naming-rules-include](../../../includes/storage-container-naming-rules-include.md)]
 
-Tento příklad ukazuje, jak toocreate kontejner, pokud ještě neexistuje:  
+Tento příklad ukazuje, jak vytvořit kontejner, pokud ještě neexistuje:  
 
 ```cpp
 try
@@ -104,13 +104,13 @@ try
     // Retrieve storage account from connection string.
     azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-    // Create hello blob client.
+    // Create the blob client.
     azure::storage::cloud_blob_client blob_client = storage_account.create_cloud_blob_client();
 
-    // Retrieve a reference tooa container.
+    // Retrieve a reference to a container.
     azure::storage::cloud_blob_container container = blob_client.get_container_reference(U("my-sample-container"));
 
-    // Create hello container if it doesn't already exist.
+    // Create the container if it doesn't already exist.
     container.create_if_not_exists();
 }
 catch (const std::exception& e)
@@ -119,63 +119,63 @@ catch (const std::exception& e)
 }  
 ```
 
-Ve výchozím nastavení je hello nový kontejner privátní a je nutné zadat úložiště objektů BLOB přístup klíče toodownload z tohoto kontejneru. Pokud chcete v rámci hello kontejneru dostupné tooeveryone toomake hello soubory (objektů BLOB), můžete nastavit kontejner toobe hello veřejné pomocí hello následující kód:  
+Ve výchozím nastavení je nový kontejner privátní a je nutné zadat přístupový klíč k úložišti ke stažení z tohoto kontejneru objektů BLOB. Pokud chcete, aby soubory (objektů BLOB) v kontejneru dostupné pro všechny uživatele, můžete nastavit kontejner, aby se veřejné, pomocí následujícího kódu:  
 
 ```cpp
-// Make hello blob container publicly accessible.
+// Make the blob container publicly accessible.
 azure::storage::blob_container_permissions permissions;
 permissions.set_public_access(azure::storage::blob_container_public_access_type::blob);
 container.upload_permissions(permissions);  
 ```
 
-Kdokoli na hello Internetu může vidět objekty BLOB ve veřejném kontejneru, ale můžete upravit nebo odstranit pouze v případě, že máte příslušný přístupový klíč hello.  
+Kdokoli na Internetu může vidět objekty BLOB ve veřejném kontejneru, ale můžete upravit nebo odstranit pouze v případě, že máte příslušný přístupový klíč.  
 
 ## <a name="how-to-upload-a-blob-into-a-container"></a>Postupy: nahrát objekt blob do kontejneru
-Úložiště objektů blob v Azure podporuje objekty blob bloku a objekty blob stránky. Ve většině případů hello je objekt blob bloku hello doporučená toouse typu.  
+Úložiště objektů blob v Azure podporuje objekty blob bloku a objekty blob stránky. Ve většině případů se jako vhodný typ k použití doporučuje objekt blob bloku.  
 
-tooupload objekt blob bloku souboru tooa získejte odkaz na kontejner a použít ho tooget odkaz na objekt blob bloku. Až budete mít odkaz na objekt blob, můžete nahrát jakýkoli proud dat tooit pomocí volání hello **upload_from_stream** metoda. Tato operace vytvoří objekt blob hello, pokud nebyla dříve neexistuje, nebo ho přepíše, pokud existuje. Následující příklad ukazuje, jak Hello tooupload objekt blob do kontejneru a předpokládá, že hello kontejner byl již vytvořen.  
+Když chcete nahrát soubor do objektu blob bloku, získejte odkaz na kontejner a použijte ho k získání odkazu objektu blob bloku. Až budete mít odkaz na objekt blob, můžete nahrát jakýkoli proud dat k němu voláním **upload_from_stream** metoda. Tahle operace vytvoří objekt blob, pokud už dříve neexistoval, nebo ho přepíše, pokud už existoval. Následující příklad ukazuje, jak nahrát objekt blob do kontejneru, zároveň předpokládá, že kontejner byl již vytvořen.  
 
 ```cpp
 // Retrieve storage account from connection string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-// Create hello blob client.
+// Create the blob client.
 azure::storage::cloud_blob_client blob_client = storage_account.create_cloud_blob_client();
 
-// Retrieve a reference tooa previously created container.
+// Retrieve a reference to a previously created container.
 azure::storage::cloud_blob_container container = blob_client.get_container_reference(U("my-sample-container"));
 
-// Retrieve reference tooa blob named "my-blob-1".
+// Retrieve reference to a blob named "my-blob-1".
 azure::storage::cloud_block_blob blockBlob = container.get_block_blob_reference(U("my-blob-1"));
 
-// Create or overwrite hello "my-blob-1" blob with contents from a local file.
+// Create or overwrite the "my-blob-1" blob with contents from a local file.
 concurrency::streams::istream input_stream = concurrency::streams::file_stream<uint8_t>::open_istream(U("DataFile.txt")).get();
 blockBlob.upload_from_stream(input_stream);
 input_stream.close().wait();
 
-// Create or overwrite hello "my-blob-2" and "my-blob-3" blobs with contents from text.
-// Retrieve a reference tooa blob named "my-blob-2".
+// Create or overwrite the "my-blob-2" and "my-blob-3" blobs with contents from text.
+// Retrieve a reference to a blob named "my-blob-2".
 azure::storage::cloud_block_blob blob2 = container.get_block_blob_reference(U("my-blob-2"));
 blob2.upload_text(U("more text"));
 
-// Retrieve a reference tooa blob named "my-blob-3".
+// Retrieve a reference to a blob named "my-blob-3".
 azure::storage::cloud_block_blob blob3 = container.get_block_blob_reference(U("my-directory/my-sub-directory/my-blob-3"));
 blob3.upload_text(U("other text"));  
 ```
 
-Alternativně můžete použít hello **upload_from_file** metoda tooupload tooa soubor – objekt blob bloku.
+Alternativně můžete použít **upload_from_file** metoda chcete nahrát soubor do objektu blob bloku.
 
-## <a name="how-to-list-hello-blobs-in-a-container"></a>Postupy: seznam hello objektů BLOB v kontejneru
-toolist hello objekty BLOB v kontejneru, nejdřív získejte odkaz na kontejner. Pak můžete použít hello kontejneru **list_blobs** metoda tooretrieve hello objekty BLOB a/nebo obsažené adresáře. tooaccess hello bohatou sadu vlastností a metod vrácené **list_blob_item**, musí volat hello **list_blob_item.as_blob** metoda tooget **cloud_blob** objektu nebo hello **list_blob.as_directory** metoda tooget cloud_blob_directory objektu. Hello následující kód ukazuje, jak tooretrieve a výstup hello URI pro každou položku v hello **Moje ukázkový kontejner** kontejneru:
+## <a name="how-to-list-the-blobs-in-a-container"></a>Postupy: seznam objektů BLOB v kontejneru
+Pokud chcete mít seznam objektů blob v kontejneru, nejdřív získejte odkaz na kontejner. Pak můžete použít kontejneru **list_blobs** metoda pro načtení objektů BLOB a/nebo obsažené adresáře. Pro přístup k bohaté sadě vlastností a metod vrácené **list_blob_item**, musí volat **list_blob_item.as_blob** metodu za účelem získání **cloud_blob** objekt, nebo **list_blob.as_directory** metoda, jak získat objekt cloud_blob_directory. Následující kód ukazuje, jak načíst a získat výstup URI pro každou položku v **Moje ukázkový kontejner** kontejneru:
 
 ```cpp
 // Retrieve storage account from connection string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-// Create hello blob client.
+// Create the blob client.
 azure::storage::cloud_blob_client blob_client = storage_account.create_cloud_blob_client();
 
-// Retrieve a reference tooa previously created container.
+// Retrieve a reference to a previously created container.
 azure::storage::cloud_blob_container container = blob_client.get_container_reference(U("my-sample-container"));
 
 // Output URI of each item.
@@ -196,22 +196,22 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 Další podrobnosti týkající se výpisu operací najdete v tématu [seznamu prostředků úložiště Azure v jazyce C++](../storage-c-plus-plus-enumeration.md).
 
 ## <a name="how-to-download-blobs"></a>Postupy: stáhnout objekty BLOB
-toodownload objekty BLOB, nejdřív načtěte odkaz na objekt blob a pak zavolají hello **download_to_stream** metoda. Hello následující příklad používá hello **download_to_stream** metoda tootransfer hello blob obsah tooa objektu stream, potom můžete zachovat tooa místního souboru.  
+Pokud chcete stáhnout objekty BLOB, nejdřív načtěte odkaz na objekt blob a potom zavolejte **download_to_stream** metoda. Následující příklad používá **download_to_stream** způsob přenosu obsahu objektu blob na objekt proudu, který potom můžete zachovat do místního souboru.  
 
 ```cpp
 // Retrieve storage account from connection string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-// Create hello blob client.
+// Create the blob client.
 azure::storage::cloud_blob_client blob_client = storage_account.create_cloud_blob_client();
 
-// Retrieve a reference tooa previously created container.
+// Retrieve a reference to a previously created container.
 azure::storage::cloud_blob_container container = blob_client.get_container_reference(U("my-sample-container"));
 
-// Retrieve reference tooa blob named "my-blob-1".
+// Retrieve reference to a blob named "my-blob-1".
 azure::storage::cloud_block_blob blockBlob = container.get_block_blob_reference(U("my-blob-1"));
 
-// Save blob contents tooa file.
+// Save blob contents to a file.
 concurrency::streams::container_buffer<std::vector<uint8_t>> buffer;
 concurrency::streams::ostream output_stream(buffer);
 blockBlob.download_to_stream(output_stream);
@@ -223,53 +223,53 @@ outfile.write((char *)&data[0], buffer.size());
 outfile.close();  
 ```
 
-Alternativně můžete použít hello **download_to_file** metoda toodownload hello obsah souboru tooa objektů blob.
-Kromě toho můžete také použít hello **download_text** metoda toodownload hello obsah objektu blob jako textový řetězec.  
+Alternativně můžete použít **download_to_file** metoda pro stažení obsahu objektu blob do souboru.
+Kromě toho můžete také použít **download_text** metoda pro stažení obsahu objektu blob jako textový řetězec.  
 
 ```cpp
 // Retrieve storage account from connection string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-// Create hello blob client.
+// Create the blob client.
 azure::storage::cloud_blob_client blob_client = storage_account.create_cloud_blob_client();
 
-// Retrieve a reference tooa previously created container.
+// Retrieve a reference to a previously created container.
 azure::storage::cloud_blob_container container = blob_client.get_container_reference(U("my-sample-container"));
 
-// Retrieve reference tooa blob named "my-blob-2".
+// Retrieve reference to a blob named "my-blob-2".
 azure::storage::cloud_block_blob text_blob = container.get_block_blob_reference(U("my-blob-2"));
 
-// Download hello contents of a blog as a text string.
+// Download the contents of a blog as a text string.
 utility::string_t text = text_blob.download_text();
 ```
 
 ## <a name="how-to-delete-blobs"></a>Postupy: odstranění objektů BLOB
-toodelete objekt blob, nejdřív získejte odkaz na objekt blob a pak zavolají hello **delete_blob** metoda na něm.  
+Chcete-li odstranit objekt blob, nejdřív získejte odkaz na objekt blob a potom volejte **delete_blob** metoda na něm.  
 
 ```cpp
 // Retrieve storage account from connection string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-// Create hello blob client.
+// Create the blob client.
 azure::storage::cloud_blob_client blob_client = storage_account.create_cloud_blob_client();
 
-// Retrieve a reference tooa previously created container.
+// Retrieve a reference to a previously created container.
 azure::storage::cloud_blob_container container = blob_client.get_container_reference(U("my-sample-container"));
 
-// Retrieve reference tooa blob named "my-blob-1".
+// Retrieve reference to a blob named "my-blob-1".
 azure::storage::cloud_block_blob blockBlob = container.get_block_blob_reference(U("my-blob-1"));
 
-// Delete hello blob.
+// Delete the blob.
 blockBlob.delete_blob();
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste se naučili základy používání blob storage hello, postupujte podle těchto odkazů toolearn Další informace o Azure Storage.  
+Teď, když jste se naučili základy používání blob storage, postupujte podle následujících odkazech na další informace o službě Azure Storage.  
 
-* [Jak toouse Queue Storage z jazyka C++](../storage-c-plus-plus-how-to-use-queues.md)
-* [Jak toouse úložiště Table z jazyka C++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
+* [Postup používání úložiště Queue z jazyka C++](../storage-c-plus-plus-how-to-use-queues.md)
+* [Postup používání úložiště Table z jazyka C++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 * [Seznam prostředků úložiště Azure v jazyce C++](../storage-c-plus-plus-enumeration.md)
 * [Klientská knihovna pro úložiště pro C++ – referenční informace](http://azure.github.io/azure-storage-cpp)
 * [Dokumentace k Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
-* [Přenos dat pomocí hello příkazového řádku azcopy](../storage-use-azcopy.md)
+* [Přenos dat pomocí nástroje příkazového řádku AzCopy](../storage-use-azcopy.md)
 

@@ -1,4 +1,4 @@
 > [!IMPORTANT]
-> Klíč účtu úložiště je podobný toohello kořenové heslo pro účet úložiště. Pečlivě tooprotect být vždy klíč účtu. Nedávejte ho tooother uživatelům, nezakódovávejte ho nebo ho kdekoli uložit ve formátu prostého textu, který je přístupný tooothers. Vygenerujte klíč účtu pomocí hello portálu Azure, pokud se domníváte, že by může ohrožení. toolearn jak tooregenerate klíče najdete v tématu váš účet [jak toocreate, spravovat nebo odstranit účet úložiště na portálu Azure hello](../articles/storage/common/storage-create-storage-account.md#manage-your-storage-account).
+> Klíč účtu úložiště je podobný kořenovému heslu vašeho účtu úložiště. Klíč účtu úložiště vždycky pečlivě chraňte. Nedávejte ho jiným uživatelům, nezakódovávejte ho ani ho neukládejte někam do souboru ve formátu prostého textu, který je přístupný ostatním uživatelům. Pokud se domníváte, že je klíč účtu ohrožený, vygenerujte ho znovu pomocí webu Azure Portal. Informace o tom, jak znovu vygenerovat klíč účtu, najdete v tématu [Vytvoření, správa nebo odstranění účtu úložiště na webu Azure Portal](../articles/storage/common/storage-create-storage-account.md#manage-your-storage-account).
 > 
 > 

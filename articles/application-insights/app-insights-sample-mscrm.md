@@ -1,5 +1,5 @@
 ---
-title: aaaMicrosoft Dynamics CRM, Azure Application Insights | Microsoft Docs
+title: Aplikace Microsoft Dynamics CRM a Azure Application Insights | Microsoft Docs
 description: "Získáte telemetrická data z Microsoft Dynamics CRM Online pomocí Application Insights. Postup instalace, získávání dat, vizualizace a export."
 services: application-insights
 documentationcenter: 
@@ -13,80 +13,80 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2017
 ms.author: bwren
-ms.openlocfilehash: a39398060d6553fb18a26c101f085b7d87443636
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a9593d5f198e05db80451a599428a296ed02e781
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Návod: Povolení Telemetrie pro aplikaci Microsoft Dynamics CRM Online pomocí Application Insights
-Tento článek ukazuje, jak tooget telemetrická data z [Microsoft Dynamics CRM Online](https://www.dynamics.com/) pomocí [Azure Application Insights](https://azure.microsoft.com/services/application-insights/). Projdeme hello dokončení procesu přidání Application Insights skriptu tooyour aplikace, zaznamenávání dat a vizualizace dat sady.
+Tento článek ukazuje, jak získat telemetrická data z [Microsoft Dynamics CRM Online](https://www.dynamics.com/) pomocí [Azure Application Insights](https://azure.microsoft.com/services/application-insights/). Budeme zabývat dokončení proces přidávání skript Application Insights do vaší aplikace, zaznamenávání dat a vizualizace dat sady.
 
 > [!NOTE]
-> [Procházet hello ukázkové řešení](https://dynamicsandappinsights.codeplex.com/).
+> [Procházet ukázkové řešení](https://dynamicsandappinsights.codeplex.com/).
 > 
 > 
 
-## <a name="add-application-insights-toonew-or-existing-crm-online-instance"></a>Přidejte Application Insights toonew nebo existující instanci CRM Online
-toomonitor vaší aplikace, přidání aplikace tooyour Application Insights SDK. Hello SDK odesílá telemetrii toohello [portál Application Insights](https://portal.azure.com), kde můžete používat naše efektivní analýzu a diagnostické nástroje, nebo exportovat hello data toostorage.
+## <a name="add-application-insights-to-new-or-existing-crm-online-instance"></a>Přidejte Application Insights do nové nebo stávající instance CRM Online
+Do monitorování vaší aplikace, přidejte Application Insights SDK do aplikace. Sada SDK odesílá telemetrii do [portál Application Insights](https://portal.azure.com), kde můžete používat naše efektivní analýzu a diagnostické nástroje, nebo exportovat data do úložiště.
 
 ### <a name="create-an-application-insights-resource-in-azure"></a>Vytvořte prostředek Application Insights v Azure
 1. Získat [účet ve službě Microsoft Azure](http://azure.com/pricing). 
-2. Přihlaste se k hello [portál Azure](https://portal.azure.com) a přidat nový prostředek Application Insights. Toto je, kde bude zpracována a zobrazí data.
+2. Přihlaste se k [portál Azure](https://portal.azure.com) a přidat nový prostředek Application Insights. Toto je, kde bude zpracována a zobrazí data.
    
     ![Klikněte na tlačítko +, služby pro vývojáře, Application Insights.](./media/app-insights-sample-mscrm/01.png)
    
-    Vyberte jako typ aplikace hello ASP.NET.
-3. Otevřete stránku Začínáme hello a otevřete "monitorování a diagnostikovat na straně klienta".
+    Vyberte jako typ aplikace ASP.NET.
+3. Otevřete stránku Začínáme a otevřete "monitorování a diagnostikovat na straně klienta".
    
     ![Fragment kódu pro vložení do webové stránky](./media/app-insights-sample-mscrm/03.png)
 
-**Nechat otevřený hello znaková stránka** při hello další krok v jiném okně prohlížeče. Budete potřebovat kód hello brzy k dispozici. 
+**Znaková stránka nechat otevřený** zatímco pracujete na další krok v jiném okně prohlížeče. Kód budete potřebovat brzy k dispozici. 
 
 ### <a name="create-a-javascript-web-resource-in-microsoft-dynamics-crm"></a>Vytvořte prostředek JavaScript webové aplikace Microsoft Dynamics CRM
 1. Otevřete CRM Online instance a přihlaste se s oprávněními správce.
-2. Otevřete Microsoft Dynamics CRM nastavení, přizpůsobení, přizpůsobit hello systému
+2. Otevřete Microsoft Dynamics CRM nastavení, vlastní nastavení, přizpůsobení systému
    
     ![Nastavení aplikace Microsoft Dynamics CRM](./media/app-insights-sample-mscrm/04.png)
    
     ![Nastavení > Přizpůsobení](./media/app-insights-sample-mscrm/05.png)
 
-    ![Přizpůsobení možnost hello systému](./media/app-insights-sample-mscrm/06.png)
+    ![Přizpůsobení možnost systému](./media/app-insights-sample-mscrm/06.png)
 
 1. Vytvořte prostředek JavaScript.
    
     ![Dialogové okno Nový webový prostředek](./media/app-insights-sample-mscrm/07.png)
    
-    Zadejte jeho název, vyberte **skriptu (JScript)** a textovém editoru otevřete hello.
+    Zadejte jeho název, vyberte **skriptu (JScript)** a otevřete textový editor.
    
-    ![Otevřete hello textového editoru](./media/app-insights-sample-mscrm/08.png)
-2. Zkopírujte kód hello z Application Insights. Při kopírování Ujistěte se, že tooignore značek skriptu. Naleznete níže – snímek obrazovky:
+    ![Otevřete textový editor](./media/app-insights-sample-mscrm/08.png)
+2. Zkopírujte kód z Application Insights. Při kopírování nezapomeňte ignorovat značek skriptu. Naleznete níže – snímek obrazovky:
    
     ![Nastavte klíč instrumentace](./media/app-insights-sample-mscrm/09.png)
    
-    Hello kód obsahuje klíč instrumentace hello, který identifikuje prostředek vaší aplikace statistiky.
+    Tento kód obsahuje klíč instrumentace, který identifikuje prostředek vaší aplikace statistiky.
 3. Uložte a publikovat.
    
     ![Uložte a publikování](./media/app-insights-sample-mscrm/10.png)
 
 ### <a name="instrument-forms"></a>Nástrojích formulářů
-1. V aplikaci Microsoft CRM Online otevřete formulář účet hello
+1. V aplikaci Microsoft CRM Online otevřete formulář účtu
    
     ![Účet formuláře](./media/app-insights-sample-mscrm/11.png)
-2. Otevřít formulář hello vlastnosti
+2. Otevřete vlastnosti formuláře
    
     ![Vlastnosti formuláře](./media/app-insights-sample-mscrm/12.png)
-3. Přidat hello JavaScript webové prostředky, který jste vytvořili
+3. Přidání webové prostředky JavaScript, který jste vytvořili
    
     ![Nabídka Přidat](./media/app-insights-sample-mscrm/13.png)
    
-    ![Přidat prostředek webové hello](./media/app-insights-sample-mscrm/14.png)
+    ![Přidání webové prostředky](./media/app-insights-sample-mscrm/14.png)
 4. Uložte a publikujte vlastní nastavení formuláře.
 
 ## <a name="metrics-captured"></a>Metriky zachycení
-Nyní jste nastavili zachycování telemetrie pro formulář hello. Vždy, když se používají data odešlou tooyour prostředek Application Insights.
+Nyní jste nastavili zachycování telemetrie pro daný formulář. Vždy, když se používají data se odešlou do zdroje Application Insights.
 
-Tady jsou ukázky hello data, která se zobrazí.
+Tady jsou vzorků dat, která se zobrazí.
 
 #### <a name="application-health"></a>Stav aplikace
 ![Příklad čas načítání stránky](./media/app-insights-sample-mscrm/15.png)
@@ -97,7 +97,7 @@ Výjimky prohlížečů:
 
 ![Grafu výjimek prohlížeče](./media/app-insights-sample-mscrm/17.png)
 
-Klikněte na graf tooget hello podrobněji:
+Klikněte na graf zobrazíte další podrobnosti:
 
 ![Seznamu výjimek](./media/app-insights-sample-mscrm/18.png)
 
@@ -130,13 +130,13 @@ Klikněte na graf tooget hello podrobněji:
 ![Stránky na relaci](./media/app-insights-sample-mscrm/30.png)
 
 ## <a name="sample-code"></a>Ukázka kódu
-[Procházet hello ukázkový kód](https://dynamicsandappinsights.codeplex.com/).
+[Procházet ukázkový kód](https://dynamicsandappinsights.codeplex.com/).
 
 ## <a name="power-bi"></a>Power BI
-Můžete provést i hlubší analysis, pokud jste [exportovat hello data tooMicrosoft Power BI](app-insights-export-power-bi.md).
+Můžete provést i hlubší analysis, pokud jste [export dat k Microsoft Power BI](app-insights-export-power-bi.md).
 
 ## <a name="sample-microsoft-dynamics-crm-solution"></a>Ukázkové aplikace Microsoft Dynamics CRM řešení
-[Tady je implementována v aplikaci Microsoft Dynamics CRM hello ukázkové řešení](https://dynamicsandappinsights.codeplex.com/).
+[Zde je ukázka řešení implementována v aplikaci Microsoft Dynamics CRM](https://dynamicsandappinsights.codeplex.com/).
 
 ## <a name="learn-more"></a>Další informace
 * [Co je Application Insights?](app-insights-overview.md)

@@ -1,6 +1,6 @@
 ---
-title: "aaaCustom události pro události mřížky Azure | Microsoft Docs"
-description: "Pomocí Azure událostí mřížky toopublish téma a přihlášení k odběru událostí toothat."
+title: "Vlastní události pro Azure Event Grid | Dokumentace Microsoftu"
+description: "Pomocí služby Azure Event Grid můžete publikovat téma a přihlásit se k odběru příslušné události."
 services: event-grid
 keywords: 
 author: djrosanova
@@ -8,20 +8,20 @@ ms.author: darosa
 ms.date: 08/15/2017
 ms.topic: hero-article
 ms.service: event-grid
-ms.openlocfilehash: 5055df1c970b043cadf06978a076f7f5c83501cd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: cd285471196f75f6a8c8ead0e2895fd71414f223
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-route-custom-events-with-azure-event-grid"></a>Vytvoření a směrování vlastních událostí pomocí služby Azure Event Grid
 
-Azure mřížky událostí je služba eventing pro hello cloud. V tomto článku použijte rozhraní příkazového řádku Azure toocreate hello vlastní téma, přihlášení k odběru tématu toohello a aktivuje hello událostí tooview hello výsledek. Obvykle odesílají koncový bod tooan události, který odpovídá toohello události, jako je webhooku nebo funkce Azure. Však toosimplify to článku, odeslání hello události tooa URL, která shromažďuje jenom hello zprávy. Tuto adresu URL vytvoříte pomocí open source nástroje třetí strany [RequestBin](https://requestb.in/).
+Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku pomocí Azure CLI vytvoříte vlastní téma, přihlásíte se k jeho odběru a aktivujete událost, abyste viděli výsledek. Obvykle odesíláte události do koncového bodu, který na událost reaguje například webhookem nebo funkcí Azure Functions. Pro zjednodušení tohoto článku však budete události odesílat na adresu URL, která jenom shromažďuje zprávy. Tuto adresu URL vytvoříte pomocí open source nástroje třetí strany [RequestBin](https://requestb.in/).
 
 >[!NOTE]
->**RequestBin** je open source nástroj, který není určený pro použití vyžadující vysokou propustnost. použití Hello hello nástroje tady je čistě demonstrative. Pokud je více než jednu událost push najednou, nemusíte to vidět všechny události v nástroji hello.
+>**RequestBin** je open source nástroj, který není určený pro použití vyžadující vysokou propustnost. Zde uvedené použití tohoto nástroje je čistě demonstrativní. Pokud najednou nabídnete více než jednu událost, možná se v nástroji nezobrazí všechny.
 
-Po dokončení uvidíte, že data události hello byl odeslán tooan koncový bod.
+Až budete hotovi, uvidíte, že se data událostí odeslala do koncového bodu.
 
 ![Data událostí](./media/custom-event-quickstart/request-result.png)
 
@@ -29,15 +29,15 @@ Po dokončení uvidíte, že data události hello byl odeslán tooan koncový bo
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud zvolíte tooinstall a místně pomocí hello rozhraní příkazového řádku, v tomto článku vyžaduje, že používáte nejnovější verzi rozhraní příkazového řádku Azure hello (2.0.14 nebo novější). verze hello toofind, spusťte `az --version`. Pokud potřebujete tooinstall nebo aktualizace, přečtěte si [nainstalovat Azure CLI 2.0](/cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, pro účely tohoto článku musíte používat nejnovější verzi Azure CLI (2.0.14 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Témata služby Event Grid jsou prostředky Azure a musí být umístěné ve skupině prostředků Azure. Skupina prostředků Hello je logické kolekce, do které jsou nasazené a spravovat prostředky.
+Témata služby Event Grid jsou prostředky Azure a musí být umístěné ve skupině prostředků Azure. Skupina prostředků je logická kolekce, ve které se nasazují a spravují prostředky Azure.
 
-Vytvořte skupinu prostředků s hello [vytvořit skupinu az](/cli/azure/group#create) příkaz. 
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#create). 
 
-Hello následující příklad vytvoří skupinu prostředků s názvem *gridResourceGroup* v hello *westus2* umístění.
+Následující příklad vytvoří skupinu prostředků *gridResourceGroup* v umístění *westus2*.
 
 ```azurecli-interactive
 az group create --name gridResourceGroup --location westus2
@@ -45,7 +45,7 @@ az group create --name gridResourceGroup --location westus2
 
 ## <a name="create-a-custom-topic"></a>Vytvoření vlastního tématu
 
-Téma poskytuje uživatelsky definovaný koncový bod, do kterého odesíláte události. Hello následující příklad vytvoří téma hello ve vaší skupině prostředků. Nahraďte `<topic_name>` jedinečným názvem vašeho tématu. název tématu Hello musí být jedinečný, protože je reprezentována položky DNS. Pro verzi preview hello událostí mřížky podporuje **westus2** a **westcentralus** umístění.
+Téma poskytuje uživatelsky definovaný koncový bod, do kterého odesíláte události. Následující příklad vytvoří téma ve vaší skupině prostředků. Nahraďte `<topic_name>` jedinečným názvem vašeho tématu. Název tématu musí být jedinečný, protože je reprezentován položkou DNS. Ve verzi Preview podporuje služba Event Grid umístění **westus2** a **westcentralus**.
 
 ```azurecli-interactive
 az eventgrid topic create --name <topic_name> -l westus2 -g gridResourceGroup
@@ -53,11 +53,11 @@ az eventgrid topic create --name <topic_name> -l westus2 -g gridResourceGroup
 
 ## <a name="create-a-message-endpoint"></a>Vytvoření koncového bodu zpráv
 
-Před odběr tématu toohello, vytvoříme hello koncový bod pro zprávy události hello. Místo zápisu kódu toorespond toohello událostí, vytvoříme koncový bod, který shromažďuje hello zprávy, aby se dala zobrazit. RequestBin je typu open source, nástroj třetí strany, která vám umožní toocreate koncový bod a zobrazit žádosti, které se odesílají tooit. Přejděte příliš[RequestBin](https://requestb.in/)a klikněte na tlačítko **vytvořit RequestBin**.  Kopírování hello bin adresu URL, protože je třeba při přihlášení k odběru toohello tématu.
+Před přihlášením k odběru tématu vytvoříme koncový bod pro zprávy události. Místo psaní kódu, který by na událost reagoval, vytvoříme koncový bod, který bude shromažďovat zprávy, abyste je mohli zobrazit. RequestBin je open source nástroj třetí strany, který umožňuje vytvořit koncový bod a zobrazit požadavky, které se do něj odesílají. Přejděte na web [RequestBin](https://requestb.in/) a klikněte na **Create a RequestBin** (Vytvořit přihrádku žádostí).  Zkopírujte adresu URL přihrádky, protože ji budete potřebovat při přihlašování k odběru tématu.
 
-## <a name="subscribe-tooa-topic"></a>Přihlášení k odběru tématu tooa
+## <a name="subscribe-to-a-topic"></a>Přihlášení k odběru tématu
 
-Přihlášení k odběru tématu tootell tooa událostí mřížky události, které chcete tootrack. Hello následující příklad odběratel toohello tématu jste vytvořili a předává hello URL z RequestBin jako hello koncový bod pro oznámení o události. Nahraďte `<event_subscription_name>` s jedinečným názvem pro vaše předplatné a `<URL_from_RequestBin>` s hodnotou hello z hello předcházející části. Zadáním koncový bod při přihlášení k odběru, zpracovává událost mřížky hello směrování události toothat koncového bodu. Pro `<topic_name>`, použijte hodnotu hello jste vytvořili dříve. 
+K odběru tématu se přihlašujete, aby služba Event Grid věděla, které události chcete sledovat. Následující příklad se přihlásí k odběru tématu, které jste vytvořili, a předá adresu URL z nástroje RequestBin jako koncový bod pro oznámení události. Nahraďte `<event_subscription_name>` jedinečným názvem vašeho odběru a `<URL_from_RequestBin>` hodnotou adresy URL z nástroje RequestBin z předchozí části. Díky zadání koncového bodu při přihlašování k odběru bude služba Event Grid zpracovávat směrování událostí do tohoto koncového bodu. Místo `<topic_name>` použijte hodnotu názvu tématu, který jste vytvořili dříve. 
 
 ```azurecli-interactive
 az eventgrid topic event-subscription create --name <event_subscription_name> \
@@ -66,30 +66,30 @@ az eventgrid topic event-subscription create --name <event_subscription_name> \
   --topic-name <topic_name>
 ```
 
-## <a name="send-an-event-tooyour-topic"></a>Odeslat tooyour téma události
+## <a name="send-an-event-to-your-topic"></a>Odeslání události do tématu
 
-Teď umožňuje aktivovat události toosee jak událostí mřížky distribuuje koncový bod tooyour zprávy hello. Nejprve umožňuje získat adresu URL hello a klíče pro téma hello. Znovu místo `<topic_name>` použijte název vašeho tématu.
+Nyní aktivujeme událost, abychom viděli, jak služba Event Grid distribuuje zprávu do vašeho koncového bodu. Nejprve získáme adresu URL a klíč tématu. Znovu místo `<topic_name>` použijte název vašeho tématu.
 
 ```azurecli-interactive
 endpoint=$(az eventgrid topic show --name <topic_name> -g gridResourceGroup --query "endpoint" --output tsv)
 key=$(az eventgrid topic key list --name <topic_name> -g gridResourceGroup --query "key1" --output tsv)
 ```
 
-toosimplify v tomto článku jsme vytvořili ukázkové události dat toosend toohello téma. Aplikace nebo služba Azure by obvykle odesílají data události hello. Následující ukázka Hello získá data události hello:
+Pro zjednodušení tohoto článku jsme pro odeslání do tématu nastavili ukázková data události. Obvykle by aplikace nebo služba Azure odesílala data události. Následující příklad získá data události:
 
 ```azurecli-interactive
 body=$(eval echo "'$(curl https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/customevent.json)'")
 ```
 
-Pokud jste `echo "$body"` uvidíte hello úplné událostí. Hello `data` element hello JSON je hello datové části události. V tomto poli může být libovolný JSON ve správném formátu. Pole Předmět hello můžete použít také pro pokročilé směrování a filtrování.
+Pokud použijete příkaz `echo "$body"`, zobrazí se celá událost. Element JSON `data` je datová část vaší události. V tomto poli může být libovolný JSON ve správném formátu. Můžete také použít pole subject (předmět) pro pokročilé směrování a filtrování.
 
-CURL je nástroj, který provádí požadavky HTTP. V tomto článku používáme CURL toosend hello událostí tooour tématu. 
+CURL je nástroj, který provádí požadavky HTTP. V tomto článku používáme nástroj CURL k odeslání události do tématu. 
 
 ```azurecli-interactive
 curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
 ```
 
-Mít aktivuje hello události a události mřížky odeslána hello toohello koncový bod zprávy, které jste nakonfigurovali během přihlášení k odběru. Procházejte toohello RequestBin adresu URL, kterou jste vytvořili dříve. Nebo v prohlížeči klikněte na tlačítko pro obnovení otevřeného okna s webem RequestBin. Zobrazí hello událostí, které jste poslali. 
+Právě jste aktivovali událost a služba Event Grid odeslala zprávu do koncového bodu, který jste nakonfigurovali při přihlášení k odběru. Přejděte na adresu URL nástroje RequestBin, kterou jste vytvořili dříve. Nebo v prohlížeči klikněte na tlačítko pro obnovení otevřeného okna s webem RequestBin. Zobrazí se událost, kterou jste právě odeslali. 
 
 ```json
 [{
@@ -106,7 +106,7 @@ Mít aktivuje hello události a události mřížky odeslána hello toohello kon
 ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud máte v plánu toocontinue práce se tato událost, to není vyčištění hello prostředky vytvořené v tomto článku. Pokud neplánujete toocontinue, použijte následující příkaz toodelete hello prostředků, kterou jste vytvořili v tomto článku hello.
+Pokud chcete pokračovat v práci s touto událostí, nevyčišťujte prostředky vytvořené v rámci tohoto článku. Pokud pokračovat nechcete, pomocí následujícího příkazu odstraňte prostředky, které jste v rámci tohoto článku vytvořili.
 
 ```azurecli-interactive
 az group delete --name gridResourceGroup
@@ -114,7 +114,9 @@ az group delete --name gridResourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když víte, jak toocreate témat a odběrů událostí, další informace o jaké události mřížky vám můžou pomoct:
+Když teď víte, jak vytvářet témata a odběry událostí, zjistěte, s čím vám služba Event Grid ještě může pomoct:
 
 - [Informace o službě Event Grid](overview.md)
+- [Směrování událostí služby Blob Storage do vlastního webového koncového bodu (Preview)](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 - [Monitorování změn virtuálního počítače pomocí služeb Azure Event Grid a Logic Apps](monitor-virtual-machine-changes-event-grid-logic-app.md)
+- [Streamování velkých objemů dat do datového skladu](event-grid-event-hubs-integration.md)

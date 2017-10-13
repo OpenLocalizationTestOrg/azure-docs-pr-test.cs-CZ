@@ -1,5 +1,5 @@
 ---
-title: "aaaConfigure Hive zásad v doméně HDInsight - Azure | Microsoft Docs"
+title: "Nakonfigurovat zásady Hive v HDInsight připojený k doméně - Azure | Microsoft Docs"
 description: "Zjistěte..."
 services: hdinsight
 documentationcenter: 
@@ -16,45 +16,45 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/25/2016
 ms.author: saurinsh
-ms.openlocfilehash: 56f2bf9d872abc5f772b886fcf91c2e2422092f4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: de537d5e39dd0d3f75ff802948c7372e4d65d127
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="configure-hive-policies-in-domain-joined-hdinsight-preview"></a>Konfigurace zásad Hivu ve službě HDInsight připojené k doméně (Preview)
-Zjistěte, jak zásady Apache škálu tooconfigure pro Hive. V tomto článku vytvoříte dva škálu zásady toorestrict přístup toohello hivesampletable. Hello hivesampletable se dodává s clustery HDInsight. Po nakonfigurování zásady hello použijete aplikace Excel a rozhraní ODBC ovladač tooconnect tooHive tabulky v HDInsight.
+Zjistěte, jak nakonfigurovat zásady Apache Rangeru pro Hive. V tomto článku vytvoříte dvě zásady Ranger pro omezení přístupu k hivesampletable. Hivesampletable je součástí clusterů HDInsight. Po nakonfigurování zásad použijete Excel nebo ovladač ODBC a připojíte se k tabulkám Hivu ve službě HDInsight.
 
 ## <a name="prerequisites"></a>Požadavky
 * Cluster HDInsight připojený k doméně. Viz [Konfigurace clusterů HDInsight připojených k doméně](hdinsight-domain-joined-configure.md).
 * Pracovní stanice s Office 2016, Office 2013 Professional Plus, Office 365 Pro Plus, Excel 2013 Standalone nebo Office 2010 Professional Plus.
 
-## <a name="connect-tooapache-ranger-admin-ui"></a>Připojit tooApache škálu správce uživatelského rozhraní
-**tooconnect tooRanger uživatelského rozhraní správce**
+## <a name="connect-to-apache-ranger-admin-ui"></a>Připojení k uživatelskému rozhraní správce Apache Ranger
+**Připojení k uživatelskému rozhraní správce Ranger**
 
-1. V prohlížeči připojte tooRanger uživatelského rozhraní správce. Adresa URL Hello je https://&lt;ClusterName >.azurehdinsight.net/Ranger/.
+1. V prohlížeči se připojte k uživatelskému rozhraní správce Ranger. Adresa URL je: https://&lt;název_clusteru>.azurehdinsight.net/Ranger/.
 
    > [!NOTE]
-   > Ranger používá jiné přihlašovací údaje než cluster Hadoop. tooprevent prohlížeče pomocí pověření uložených v mezipaměti Hadoop, použijte nové prohlížeče inprivate okno tooconnect toohello škálu správce uživatelského rozhraní.
+   > Ranger používá jiné přihlašovací údaje než cluster Hadoop. Abyste zabránili prohlížeči v použití přihlašovacích údajů systému Hadoop uložených v mezipaměti, použijte pro připojení k uživatelskému rozhraní správce Ranger nové okno prohlížeče v režimu InPrivate.
    >
    >
-2. Přihlaste se pomocí hello clusteru správce domény uživatelské jméno a heslo:
+2. Přihlaste se pomocí doménového uživatelského jména a hesla správce clusteru:
 
     ![Domovská stránka Ranger služby HDInsight připojené k doméně](./media/hdinsight-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png)
 
     V současné době Ranger funguje pouze s Yarn a Hivem.
 
 ## <a name="create-domain-users"></a>Vytvoření uživatelů domén
-V tématu [Konfigurace clusterů HDInsight připojených k doméně](hdinsight-domain-joined-configure.md#create-and-configure-azure-ad-ds-for-your-azure-ad) jste vytvořili uživatele hiveuser1 a hiveuser2. V tomto kurzu použijete hello dvě uživatelský účet.
+V tématu [Konfigurace clusterů HDInsight připojených k doméně](hdinsight-domain-joined-configure.md#create-and-configure-azure-ad-ds-for-your-azure-ad) jste vytvořili uživatele hiveuser1 a hiveuser2. V tomto kurzu použijete tyto dva uživatelské účty.
 
 ## <a name="create-ranger-policies"></a>Vytvoření zásad Ranger
-V této části vytvoříte dvě zásady Ranger pro přistupování k hivesampletable. Udělíte oprávnění Vybrat na různé sady sloupců. Oba uživatelé byli vytvořeni v tématu [Konfigurace clusterů HDInsight připojených k doméně](hdinsight-domain-joined-configure.md#create-and-configure-azure-ad-ds-for-your-azure-ad).  V další části hello budete testovat hello dvě zásady v aplikaci Excel.
+V této části vytvoříte dvě zásady Ranger pro přistupování k hivesampletable. Udělíte oprávnění Vybrat na různé sady sloupců. Oba uživatelé byli vytvořeni v tématu [Konfigurace clusterů HDInsight připojených k doméně](hdinsight-domain-joined-configure.md#create-and-configure-azure-ad-ds-for-your-azure-ad).  V další části tyto dvě zásady otestujete v Excelu.
 
-**toocreate škálu zásady**
+**Vytvoření zásad Ranger**
 
-1. Otevřete uživatelské rozhraní správce Ranger. V tématu [připojit tooApache uživatelského rozhraní správce škálu](#connect-to-apache-ranager-admin-ui).
+1. Otevřete uživatelské rozhraní správce Ranger. Viz [Připojení k uživatelskému rozhraní správce Apache Ranger](#connect-to-apache-ranager-admin-ui).
 2. V části **Hive** klikněte na **&lt;název_clusteru>_hive**. Měly by se zobrazit dvě předem nakonfigurované zásady.
-3. Klikněte na tlačítko **přidat nové zásady**a pak zadejte hello následující hodnoty:
+3. Klikněte na **Add New Policy (Přidat novou zásadu)** a pak zadejte následující hodnoty:
 
    * Policy name (Název zásady): read-hivesampletable-all
    * Hive Database (Databáze Hivu): default (výchozí)
@@ -66,11 +66,11 @@ V této části vytvoříte dvě zásady Ranger pro přistupování k hivesample
      ![Konfigurace zásady Hivu v Ranger služby HDInsight připojené k doméně](./media/hdinsight-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
 
      > [!NOTE]
-     > Pokud uživatel domény není vyplněný v vyberte uživatele, počkejte několik minut pro škálu toosync v AAD.
+     > Pokud uživatel domény v části Select User (Vybrat uživatele) není k dispozici, chvíli počkejte, než se Ranger synchronizuje s AAD.
      >
      >
-4. Klikněte na tlačítko **přidat** toosave hello zásad.
-5. Zopakujte poslední dva kroky toocreate hello jiné zásady s hello následující vlastnosti:
+4. Kliknutím na **Přidat** uložte zásadu.
+5. Zopakujte poslední dva kroky a vytvořte další zásadu s následujícími vlastnostmi:
 
    * Policy name (Název zásady): read-hivesampletable-devicemake
    * Hive Database (Databáze Hivu): default (výchozí)
@@ -80,54 +80,54 @@ V této části vytvoříte dvě zásady Ranger pro přistupování k hivesample
    * Permissions (Oprávnění): select (vybrat)
 
 ## <a name="create-hive-odbc-data-source"></a>Vytvoření zdroje dat Hive ODBC
-Hello pokyny naleznete v [zdroje dat ODBC Hive vytvořit](hdinsight-connect-excel-hive-odbc-driver.md).  
+Pokyny najdete v tématu [Vytvoření zdroje dat Hive ODBC](hdinsight-connect-excel-hive-odbc-driver.md).  
 
     Vlastnost|Popis
     ---|---
-    Název zdroje dat|Zadejte název zdroje dat tooyour
+    Název zdroje dat|Zadejte název zdroje dat.
     Hostitel|Zadejte &lt;název_clusteru_HDInsight>.azurehdinsight.net. Například mujHDICluster.azurehdinsight.net.
-    Port|Použijte <strong>443</strong>. (Tento port se změnil z 563 too443.)
+    Port|Použijte <strong>443</strong>. (Tento port se změnil z 563 na 443.)
     Databáze|Použijte <strong>Výchozí</strong>.
     Typ serveru Hive|Vyberte <strong>Hive Server 2</strong>.
     Mechanismus|Vyberte <strong>Služba Azure HDInsight</strong>
     Cesta HTTP|Ponechte prázdné.
-    Uživatelské jméno|Zadejte hiveuser1@contoso158.onmicrosoft.com. Aktualizujte název domény hello, pokud se liší.
-    Heslo|Zadejte heslo hello hiveuser1.
+    Uživatelské jméno|Zadejte hiveuser1@contoso158.onmicrosoft.com. Aktualizujte název domény, pokud se liší.
+    Heslo|Zadejte heslo uživatele hiveuser1.
     </table>
 
-Ujistěte se, že tooclick **Test** před uložením zdroj dat hello.
+Nezapomeňte před uložením zdroje dat kliknout na **Otestovat**.
 
 ## <a name="import-data-into-excel-from-hdinsight"></a>Import dat do Excelu ze služby HDInsight
-V poslední části hello jste nakonfigurovali dvě zásady.  hiveuser1 má hello vyberte oprávnění pro všechny sloupce hello a hiveuser2 má hello vyberte oprávnění na dva sloupce. V této části zosobnit hello dva uživatelé tooimport dat do aplikace Excel.
+V předchozí části jste nakonfigurovali dvě zásady.  Uživatel hiveuser1 má oprávnění Vybrat na všech sloupcích a hiveuser2 má oprávnění Vybrat na dvou sloupcích. V této části se budete vydávat za tyto dva uživatele za účelem importu dat do Excelu.
 
 1. V Excelu otevřete nový nebo existující sešit.
-2. Z hello **Data** , klikněte na **z jiných zdrojů dat**a potom klikněte na **z Průvodce datovým připojením** toolaunch hello **Průvodce datovým připojením**.
+2. Na kartě **Data** klikněte na **Z jiných zdrojů dat** a pak kliknutím na **Z Průvodce datovým připojením** spusťte **Průvodce datovým připojením**.
 
     ![Otevřete Průvodce připojením dat][img-hdi-simbahiveodbc.excel.dataconnection]
-3. Vyberte **název DSN rozhraní ODBC** jako zdroj dat hello a pak klikněte na tlačítko **Další**.
-4. Ze zdroje dat ODBC, název, který jste vytvořili v předchozím kroku hello zdroje dat vyberte hello a pak klikněte na **Další**.
-5. Znovu zadejte heslo hello hello clusteru v Průvodci hello a pak klikněte na tlačítko **OK**. Počkejte hello **vybrat databázi a tabulku** tooopen dialogové okno. Může to trvat několik sekund.
+3. Jako zdroj dat vyberte **ODBC DSN** a pak klikněte na **Další**.
+4. Ze zdrojů dat ODBC vyberte název zdroje dat, který jste vytvořili v předchozím kroku, a klikněte na **Další**.
+5. V průvodci znovu zadejte heslo pro cluster a pak klikněte na **OK**. Počkejte, než se otevře dialogové okno **Vybrat databázi a tabulku**. Může to trvat několik sekund.
 6. Vyberte **hivesampletable** a pak klikněte na **Další**.
-7. Klikněte na **Dokončit**.
-8. V hello **importovat Data** dialogové okno, můžete změnit nebo zadejte dotaz hello. Ano, klikněte na tlačítko toodo **vlastnosti**. Může to trvat několik sekund.
-9. Klikněte na tlačítko hello **definice** text příkazu kartě hello je:
+7. Klikněte na **Finish** (Dokončit).
+8. V dialogovém okně **Import dat** můžete změnit, nebo zadat dotaz. To provedete kliknutím na **Vlastnosti**. Může to trvat několik sekund.
+9. Klikněte na kartu **Definice**. Text příkazu je:
 
        SELECT * FROM "HIVE"."default"."hivesampletable"
 
-   Hiveuser1 zásadami hello škálu definovaných, má oprávnění select pro všechny sloupce hello.  Takže tento dotaz funguje s přihlašovacími údaji uživatele hiveuser1, ale nefunguje s přihlašovacími údaji uživatele hiveuser2.
+   Podle zásad Ranger, které jste nadefinovali, má uživatel hiveuser1 oprávnění Vybrat na všech sloupcích.  Takže tento dotaz funguje s přihlašovacími údaji uživatele hiveuser1, ale nefunguje s přihlašovacími údaji uživatele hiveuser2.
 
    ![Vlastnosti připojení][img-hdi-simbahiveodbc-excel-connectionproperties]
-10. Klikněte na tlačítko **OK** dialogové okno Vlastnosti připojení tooclose hello.
-11. Klikněte na tlačítko **OK** tooclose hello **importovat Data** dialogové okno.  
-12. Zadejte znovu heslo hello hiveuser1 a potom klikněte na **OK**. Jak dlouho trvá několik sekund, než získá importované tooExcel data. Po dokončení importu byste měli vidět 11 sloupců dat.
+10. Kliknutím na **OK** zavřete dialogové okno Vlastnosti připojení.
+11. Kliknutím na **OK** zavřete dialogové okno **Import Dat**.  
+12. Znovu zadejte heslo uživatele hiveuser1 a pak klikněte na **OK**. Import dat do Excelu trvá několik sekund. Po dokončení importu byste měli vidět 11 sloupců dat.
 
-Druhá zásada tootest hello (čtení devicemake hivesampletable), který jste vytvořili v poslední části hello
+Testování druhé zásady (read-hivesampletable-devicemake) vytvořené v předchozí části
 
 1. Přidejte v Excelu nový list.
-2. Postupujte podle hello poslední postup tooimport hello data.  Hello pouze změny, které provedete je toouse hiveuser2 pověření místo hiveuser1 společnosti. To se nezdaří, protože hiveuser2 má pouze oprávnění toosee dva sloupce. Získáte hello následující chybě:
+2. K importu dat použijte předchozí postup.  Jediná změna, kterou provedete, bude použití přihlašovacích údajů uživatele hiveuser2 namísto uživatele hiveuser1. To se nezdaří, protože uživatel hiveuser2 má pouze oprávnění k zobrazení dvou sloupců. Měla by se zobrazit následující chyba:
 
         [Microsoft][HiveODBC] (35) Error from Hive: error code: '40000' error message: 'Error while compiling statement: FAILED: HiveAccessControlException Permission denied: user [hiveuser2] does not have [SELECT] privilege on [default/hivesampletable/clientid,country ...]'.
-3. Postupujte podle hello stejný postup tooimport data. Tentokrát použijte přihlašovací údaje pro hiveuser2 a také upravit příkaz select hello z:
+3. K importu dat použijte stejný postup. Tentokrát použijte přihlašovací údaje uživatele hiveuser2 a také změňte příkaz SELECT z:
 
         SELECT * FROM "HIVE"."default"."hivesampletable"
 
@@ -141,6 +141,6 @@ Druhá zásada tootest hello (čtení devicemake hivesampletable), který jste v
 * Pokud chcete konfigurovat cluster HDInsight připojený k doméně, přečtěte si téma [Konfigurace clusterů HDInsight připojených k doméně](hdinsight-domain-joined-configure.md).
 * Pokud chcete spravovat clustery HDInsight připojené k doméně, přečtěte si téma [Správa clusterů HDInsight připojených k doméně](hdinsight-domain-joined-manage.md).
 * Spuštění dotazů Hive pomocí protokolu SSH v clusterech HDInsight připojený k doméně, najdete v části [použití SSH s HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
-* Připojení Hive pomocí Hive JDBC, najdete v části [připojit tooHive v Azure HDInsight pomocí ovladače Hive JDBC hello](hdinsight-connect-hive-jdbc-driver.md)
-* Připojování tooHadoop aplikace Excel pomocí Hive ODBC, najdete v části [tooHadoop připojení aplikace Excel s hello jednotky Microsoft Hive ODBC](hdinsight-connect-excel-hive-odbc-driver.md)
-* Připojování tooHadoop aplikace Excel pomocí doplňku Power Query, najdete v části [tooHadoop připojení aplikace Excel pomocí doplňku Power Query](hdinsight-connect-excel-power-query.md)
+* Pokud se chcete připojit k Hivu pomocí Hive JDBC, přečtěte si téma [Připojení k Hivu ve službě Azure HDInsight pomocí ovladače Hive JDBC](hdinsight-connect-hive-jdbc-driver.md).
+* Pokud chcete připojit Excel k systému Hadoop pomocí rozhraní Hive ODBC, přečtěte si téma [Připojení Excelu k systému Hadoop pomocí ovladače Microsoft Hive ODBC](hdinsight-connect-excel-hive-odbc-driver.md).
+* Pokud chcete připojit Excel k systému Hadoop pomocí doplňku Power Query, přečtěte si téma [Připojení Excelu k systému Hadoop pomocí doplňku Power Query](hdinsight-connect-excel-power-query.md).

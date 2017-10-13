@@ -1,5 +1,5 @@
 ---
-title: "konektor Informix hello aaaAdd ve vašich Logic Apps | Microsoft Docs"
+title: "Přidejte konektor Informix ve vašich Logic Apps | Microsoft Docs"
 description: "Přehled konektoru Informix s parametry rozhraní REST API"
 services: 
 documentationcenter: 
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/26/2016
 ms.author: plarsen; ladocs
-ms.openlocfilehash: 7a163e2ebf00fa3109b93e34845d922c2174a48d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b2e755b5b1b4939eac90ac55ba8398c5687124c8
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="get-started-with-hello-informix-connector"></a>Začínáme s konektorem Informix hello
-Konektor Microsoft pro Informix připojí uložené v databázi IBM Informix tooresources Logic Apps. konektor Informix Hello zahrnuje server počítačů Microsoft klienta toocommunicate tooremote Informix přes síť TCP/IP. To zahrnuje cloudu databáze, například IBM Informix pro systém Windows spuštěn v Azure virtualizace a místní databáze pomocí hello místní data gateway. V tématu hello [podporované seznamu](connectors-create-api-informix.md#supported-informix-platforms-and-versions) IBM Informix platforem a verzí (v tomto tématu).
+# <a name="get-started-with-the-informix-connector"></a>Začínáme s konektorem Informix
+Konektor Microsoft pro Informix připojí k prostředkům uloženým v databázi IBM Informix Logic Apps. Konektor Informix zahrnuje klienta Microsoft ke komunikaci se vzdáleným počítačům serveru Informix přes síť TCP/IP. To zahrnuje cloudu databáze, například IBM Informix pro systém Windows spuštěn v Azure virtualizace a místní databáze, které používají bránu dat na místě. Najdete v článku [podporované seznamu](connectors-create-api-informix.md#supported-informix-platforms-and-versions) IBM Informix platforem a verzí (v tomto tématu).
 
-Hello konektor podporuje hello následujících databázové operace:
+Konektor podporuje následující databáze operace:
 
 * Seznam tabulek databáze
 * Pomocí vyberte jeden řádek pro čtení
@@ -33,12 +33,12 @@ Hello konektor podporuje hello následujících databázové operace:
 * Příkaz ALTER jeden řádek použití aktualizace
 * Odeberte jeden řádek používání příkazu DELETE
 
-Toto téma ukazuje, jak toouse hello konektoru logiku aplikace tooprocess databáze operace.
+Toto téma ukazuje, jak k používání konektoru v aplikaci logiky a databázové operace procesu.
 
-toolearn Další informace o Logic Apps, najdete v části [vytvoření aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md).
+Další informace o Logic Apps najdete v tématu [vytvoření aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md).
 
 ## <a name="available-actions"></a>Dostupné akce
-Tento konektor podporuje následující akce aplikace logiky hello:
+Tento konektor podporuje aplikace logiky takto:
 
 * Getables
 * GetRow
@@ -48,25 +48,25 @@ Tento konektor podporuje následující akce aplikace logiky hello:
 * DeleteRow
 
 ## <a name="list-tables"></a>Seznam tabulek
-Vytvoření aplikace logiky pro všechny operace se skládá z mnoho kroků, které se provádí prostřednictvím portálu Microsoft Azure hello.
+Vytvoření aplikace logiky pro všechny operace se skládá z mnoho kroků, které se provádí prostřednictvím portálu Microsoft Azure.
 
-V rámci aplikace logiky hello můžete přidat akci toolist tabulky v databázi Informix. Tato akce dá pokyn hello konektor tooprocess výpis Informix schématu, jako například `CALL SYSIBM.SQLTABLES`.
+V rámci aplikace logiky můžete přidat akci do seznamu tabulek v databázi Informix. Tato akce nastaví konektor zpracování příkazu Informix schématu, jako je například `CALL SYSIBM.SQLTABLES`.
 
 ### <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
-1. V hello **Tabule start Azure**, vyberte  **+**  (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
-2. Zadejte hello **název**, jako například `InformixgetTables`, **předplatné**, **skupiny prostředků**, **umístění**, a **aplikace Služba plán**. Vyberte **Pin toodashboard**a potom vyberte **vytvořit**.
+1. V **Tabule start Azure**, vyberte  **+**  (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
+2. Zadejte **název**, jako například `InformixgetTables`, **předplatné**, **skupiny prostředků**, **umístění**, a **plán služby App Service**. Vyberte **připnout na řídicí panel**a potom vyberte **vytvořit**.
 
 ### <a name="add-a-trigger-and-action"></a>Přidání aktivační události a akce
-1. V hello **logiku aplikace Návrhář**, vyberte **prázdné LogicApp** v hello **šablony** seznamu.
-2. V hello **aktivační události** seznamu, vyberte **opakování**. 
-3. V hello **opakování** aktivační událost, vyberte **upravit**, vyberte **frekvence** rozevíracího seznamu tooselect **den**a potom vyberte  **Interval** tootype **7**.  
-4. Vyberte hello **+ nový krok** a pak vyberte **přidat akci**.
-5. V hello **akce** zadejte **informix** v hello **vyhledejte další akce** textového pole a pak vyberte **Informix - Get tabulky (Preview)**.
+1. V **logiku aplikace Návrhář**, vyberte **prázdné LogicApp** v **šablony** seznamu.
+2. V **aktivační události** seznamu, vyberte **opakování**. 
+3. V **opakování** aktivační událost, vyberte **upravit**, vyberte **frekvence** rozevíracího seznamu vyberte **den**a potom vyberte **Interval** na typ **7**.  
+4. Vyberte **+ nový krok** a pak vyberte **přidat akci**.
+5. V **akce** zadejte **informix** v **vyhledejte další akce** textového pole a pak vyberte **Informix - Get tabulky (Preview)**.
    
    ![](./media/connectors-create-api-informix/InformixconnectorActions.png)  
-6. V hello **Informix - Get tabulky** konfigurace podokně, vyberte **políčko** tooenable **připojit prostřednictvím místní brána dat**. Všimněte si, že nastavení hello změní z tooon místní cloudu.
+6. V **Informix - Get tabulky** konfigurace podokně, vyberte **políčko** povolit **připojit prostřednictvím místní brána dat**. Všimněte si, že nastavení změnit z cloudu na místní.
    
-   * Zadejte hodnotu pro **Server**, hello tvar adresu nebo alias číslo portu dvojtečkou. Můžete například zadat `ibmserver01:9089`.
+   * Zadejte hodnotu pro **Server**, ve formě adresu nebo alias číslo portu dvojtečkou. Můžete například zadat `ibmserver01:9089`.
    * Zadejte hodnotu pro **databáze**. Můžete například zadat `nwind`.
    * Vyberte hodnotu pro **ověřování**. Vyberte například **základní**.
    * Zadejte hodnotu pro **uživatelské jméno**. Můžete například zadat `informix`.
@@ -75,206 +75,206 @@ V rámci aplikace logiky hello můžete přidat akci toolist tabulky v databázi
 7. Vyberte **vytvořit**a potom vyberte **Uložit**. 
    
     ![](./media/connectors-create-api-informix/InformixconnectorOnPremisesDataGatewayConnection.png)
-8. V hello **InformixgetTables** okno, v rámci hello **všechny spustí** v rámci **Souhrn**, vyberte hello uvedené první položka (nejnovější spustit).
-9. V hello **spusťte aplikaci logiky** vyberte **podrobnosti o spuštění**. V rámci hello **akce** seznamu, vyberte **Get_tables**. Dokumentaci hello hodnoty **stav**, což by mělo být **úspěšné**. Vyberte hello **vstupy odkaz** tooview hello vstupy. Vyberte hello **výstupy odkaz**a výstupy hello zobrazení, která by měla obsahovat seznam tabulek.
+8. V **InformixgetTables** okno, v **všechny spustí** v rámci **Souhrn**, vyberte položku první uvedené (nejnovější spustit).
+9. V **spusťte aplikaci logiky** vyberte **podrobnosti o spuštění**. V rámci **akce** seznamu, vyberte **Get_tables**. Zobrazit tak hodnotu pro **stav**, což by mělo být **úspěšné**. Vyberte **vstupy odkaz** zobrazíte vstupy. Vyberte **výstupy odkaz**a zobrazit výstupy, která by měla obsahovat seznam tabulek.
    
    ![](./media/connectors-create-api-informix/InformixconnectorGetTablesLogicAppRunOutputs.png)
 
-## <a name="create-hello-connections"></a>Vytvoření připojení hello
-Tento konektor podporuje připojení toodatabase místně a v cloudu hello pomocí hello následující vlastnosti připojení. 
+## <a name="create-the-connections"></a>Vytvoření připojení
+Tento konektor podporuje připojení k databázi místně a v cloudu pomocí následující vlastnosti připojení. 
 
 | Vlastnost | Popis |
 | --- | --- |
-| server |Povinná hodnota. Přijme řetězcovou hodnotu představující adresu TCP/IP nebo alias, ve formátu protokolu IPv4 nebo IPv6, a potom (dvojtečkou oddělený tabulátory) podle čísla portu TCP/IP. |
-| Databáze |Povinná hodnota. Přijme řetězcovou hodnotu představující DRDA název pro relační databáze (RDBNAM). Informix přijímá řetězec 128 bajtů (databáze se označuje jako IBM Informix název databáze (dbname)). |
+| server |Vyžaduje se. Přijme řetězcovou hodnotu představující adresu TCP/IP nebo alias, ve formátu protokolu IPv4 nebo IPv6, a potom (dvojtečkou oddělený tabulátory) podle čísla portu TCP/IP. |
+| Databáze |Vyžaduje se. Přijme řetězcovou hodnotu představující DRDA název pro relační databáze (RDBNAM). Informix přijímá řetězec 128 bajtů (databáze se označuje jako IBM Informix název databáze (dbname)). |
 | Ověřování |Volitelné. Přijme hodnotu položky seznamu, Basic nebo Windows (kerberos). |
-| uživatelské jméno |Povinná hodnota. Přijme hodnotu řetězce. |
-| heslo |Povinná hodnota. Přijme hodnotu řetězce. |
-| Brány |Povinná hodnota. Přijme hodnotu položky seznamu, představující hello místní data gateway definované tooLogic aplikací v rámci skupiny úložišť hello. |
+| uživatelské jméno |Vyžaduje se. Přijme hodnotu řetězce. |
+| heslo |Vyžaduje se. Přijme hodnotu řetězce. |
+| Brány |Vyžaduje se. Přijme hodnotu položky seznamu reprezentující místní brána dat definované pro Logic Apps v rámci skupiny úložišť. |
 
-## <a name="create-hello-on-premises-gateway-connection"></a>Vytvoření připojení k bráně hello na místě
-Tento konektor mohou přistupovat k databázi Informix místně pomocí hello místní data gateway. Další informace naleznete v tématech brány. 
+## <a name="create-the-on-premises-gateway-connection"></a>Vytvořit místní připojení brány
+Tento konektor mohou přistupovat k databázi Informix místně pomocí brány data místně. Další informace naleznete v tématech brány. 
 
-1. V hello **brány** konfigurace podokně, vyberte **políčko** tooenable **připojit prostřednictvím brány**. V tématu hello, změnit nastavení z cloudu tooon místní.
-2. Zadejte hodnotu pro **Server**, hello tvar adresu nebo alias číslo portu dvojtečkou. Můžete například zadat `ibmserver01:9089`.
+1. V **brány** konfigurace podokně, vyberte **políčko** povolit **připojit prostřednictvím brány**. Podívejte se na nastavení změnit z cloudu na místní.
+2. Zadejte hodnotu pro **Server**, ve formě adresu nebo alias číslo portu dvojtečkou. Můžete například zadat `ibmserver01:9089`.
 3. Zadejte hodnotu pro **databáze**. Můžete například zadat `nwind`.
 4. Vyberte hodnotu pro **ověřování**. Vyberte například **základní**.
 5. Zadejte hodnotu pro **uživatelské jméno**. Můžete například zadat `informix`.
 6. Zadejte hodnotu pro **heslo**. Můžete například zadat `Password1`.
 7. Vyberte hodnotu pro **brány**. Vyberte například **datagateway01**.
-8. Vyberte **vytvořit** toocontinue. 
+8. Vyberte **vytvořit** pokračujte. 
    
     ![](./media/connectors-create-api-informix/InformixconnectorOnPremisesDataGatewayConnection.png)
 
-## <a name="create-hello-cloud-connection"></a>Vytvoření připojení cloudu hello
+## <a name="create-the-cloud-connection"></a>Vytvoření připojení cloudu
 Tento konektor mají přístup k databázi Informix cloudu. 
 
-1. V hello **brány** konfigurace podokně, ponechejte hello **políčko** zakázáno (nepoužité) **připojit prostřednictvím brány**. 
+1. V **brány** konfigurace podokně, ponechejte **políčko** zakázáno (nepoužité) **připojit prostřednictvím brány**. 
 2. Zadejte hodnotu pro **název připojení**. Můžete například zadat `hisdemo2`.
-3. Zadejte hodnotu pro **název serveru Informix**, hello tvar adresu nebo alias číslo portu dvojtečkou. Můžete například zadat `hisdemo2.cloudapp.net:9089`.
+3. Zadejte hodnotu pro **název serveru Informix**, ve formě adresu nebo alias číslo portu dvojtečkou. Můžete například zadat `hisdemo2.cloudapp.net:9089`.
 4. Zadejte hodnotu pro **název databáze Informix**. Můžete například zadat `nwind`.
 5. Zadejte hodnotu pro **uživatelské jméno**. Můžete například zadat `informix`.
 6. Zadejte hodnotu pro **heslo**. Můžete například zadat `Password1`.
-7. Vyberte **vytvořit** toocontinue. 
+7. Vyberte **vytvořit** pokračujte. 
    
     ![](./media/connectors-create-api-informix/InformixconnectorCloudConnection.png)
 
 ## <a name="fetch-all-rows-using-select"></a>Načíst pomocí vyberte všechny řádky
-Toofetch akce aplikace logiky můžete vytvořit všechny řádky v tabulce Informix hello. Tato akce nastaví hello konektor tooprocess příkazem Informix SELECT, jako `SELECT * FROM AREA`.
+Můžete vytvořit logiku aplikace akce načíst všechny řádky v tabulce Informix. Tato akce nastaví konektor zpracování příkazu Informix SELECT, jako je například `SELECT * FROM AREA`.
 
 ### <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
-1. V hello **Tabule start Azure**, vyberte  **+**  (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
-2. Zadejte hello **název** (např.) "**InformixgetRows**"), **předplatné**, **skupiny prostředků**, **umístění**, a **plán služby App Service**. Vyberte **Pin toodashboard**a potom vyberte **vytvořit**.
+1. V **Tabule start Azure**, vyberte  **+**  (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
+2. Zadejte **název** (např.) "**InformixgetRows**"), **předplatné**, **skupiny prostředků**, **umístění**, a **plán služby App Service**. Vyberte **připnout na řídicí panel**a potom vyberte **vytvořit**.
 
 ### <a name="add-a-trigger-and-action"></a>Přidání aktivační události a akce
-1. V hello **logiku aplikace Návrhář**, vyberte **prázdné LogicApp** v hello **šablony** seznamu.
-2. V hello **aktivační události** seznamu, vyberte **opakování**. 
-3. V hello **opakování** aktivační událost, vyberte **upravit**, vyberte **frekvence** rozevíracího seznamu tooselect **den**a potom vyberte  **Interval** tootype **7**. 
-4. Vyberte hello **+ nový krok** a pak vyberte **přidat akci**.
-5. V hello **akce** zadejte **informix** v hello **vyhledejte další akce** textového pole a pak vyberte **Informix - Get řádků (Preview)** .
-6. V hello **získat řádky (Preview)** akce, vyberte **změnit připojení**.
-7. V hello **připojení** konfigurace podokně, vyberte **vytvořit nový**. 
+1. V **logiku aplikace Návrhář**, vyberte **prázdné LogicApp** v **šablony** seznamu.
+2. V **aktivační události** seznamu, vyberte **opakování**. 
+3. V **opakování** aktivační událost, vyberte **upravit**, vyberte **frekvence** rozevíracího seznamu vyberte **den**a potom vyberte **Interval** na typ **7**. 
+4. Vyberte **+ nový krok** a pak vyberte **přidat akci**.
+5. V **akce** zadejte **informix** v **vyhledejte další akce** textového pole a pak vyberte **Informix - Get řádků (Preview)**.
+6. V **získat řádky (Preview)** akce, vyberte **změnit připojení**.
+7. V **připojení** konfigurace podokně, vyberte **vytvořit nový**. 
    
     ![](./media/connectors-create-api-informix/InformixconnectorNewConnection.png)
-8. V hello **brány** konfigurace podokně, ponechejte hello **políčko** zakázáno (nepoužité) **připojit prostřednictvím brány**.
+8. V **brány** konfigurace podokně, ponechejte **políčko** zakázáno (nepoužité) **připojit prostřednictvím brány**.
    
    * Zadejte hodnotu pro **název připojení**. Můžete například zadat `HISDEMO2`.
-   * Zadejte hodnotu pro **název serveru Informix**, hello tvar adresu nebo alias číslo portu dvojtečkou. Můžete například zadat `HISDEMO2.cloudapp.net:9089`.
+   * Zadejte hodnotu pro **název serveru Informix**, ve formě adresu nebo alias číslo portu dvojtečkou. Můžete například zadat `HISDEMO2.cloudapp.net:9089`.
    * Zadejte hodnotu pro **název databáze Informix**. Můžete například zadat `NWIND`.
    * Zadejte hodnotu pro **uživatelské jméno**. Můžete například zadat `informix`.
    * Zadejte hodnotu pro **heslo**. Můžete například zadat `Password1`.
-9. Vyberte **vytvořit** toocontinue.
+9. Vyberte **vytvořit** pokračujte.
    
     ![](./media/connectors-create-api-informix/InformixconnectorCloudConnection.png)
-10. V hello **název tabulky** seznamu, vyberte hello **šipka dolů**a potom vyberte **oblasti**.
-11. Volitelně vyberte **zobrazit rozšířené možnosti** toospecify možnosti dotazu.
+10. V **název tabulky** seznamu, vyberte **šipka dolů**a potom vyberte **oblasti**.
+11. Volitelně vyberte **zobrazit rozšířené možnosti** k určení možnosti dotazu.
 12. Vyberte **Uložit**. 
     
     ![](./media/connectors-create-api-informix/InformixconnectorGetRowsTableName.png)
-13. V hello **InformixgetRows** okno, v rámci hello **všechny spustí** v rámci **Souhrn**, vyberte hello uvedené první položka (nejnovější spustit).
-14. V hello **spusťte aplikaci logiky** vyberte **podrobnosti o spuštění**. V rámci hello **akce** seznamu, vyberte **Get_rows**. Dokumentaci hello hodnoty **stav**, což by mělo být **úspěšné**. Vyberte hello **vstupy odkaz** tooview hello vstupy. Vyberte hello **výstupy odkaz**a výstupy hello zobrazení, která by měla obsahovat seznam řádků.
+13. V **InformixgetRows** okno, v **všechny spustí** v rámci **Souhrn**, vyberte položku první uvedené (nejnovější spustit).
+14. V **spusťte aplikaci logiky** vyberte **podrobnosti o spuštění**. V rámci **akce** seznamu, vyberte **Get_rows**. Zobrazit tak hodnotu pro **stav**, což by mělo být **úspěšné**. Vyberte **vstupy odkaz** zobrazíte vstupy. Vyberte **výstupy odkaz**a zobrazit výstupy, která by měla obsahovat seznam řádků.
     
     ![](./media/connectors-create-api-informix/InformixconnectorGetRowsOutputs.png)
 
 ## <a name="add-one-row-using-insert"></a>Přidejte jeden řádek pomocí vložení
-Můžete vytvořit logiku aplikace akce tooadd jeden řádek v tabulce Informix. Tato akce dá pokyn hello konektor tooprocess výpis Informix vložit, jako například `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`.
+Můžete vytvořit logiku aplikace akci chcete přidat jeden řádek v tabulce Informix. Tato akce nastaví konektor zpracování příkazu Informix INSERT, jako je například `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`.
 
 ### <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
-1. V hello **Tabule start Azure**, vyberte  **+**  (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
-2. Zadejte hello **název**, jako například `InformixinsertRow`, **předplatné**, **skupiny prostředků**, **umístění**, a **aplikace Služba plán**. Vyberte **Pin toodashboard**a potom vyberte **vytvořit**.
+1. V **Tabule start Azure**, vyberte  **+**  (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
+2. Zadejte **název**, jako například `InformixinsertRow`, **předplatné**, **skupiny prostředků**, **umístění**, a **plán služby App Service**. Vyberte **připnout na řídicí panel**a potom vyberte **vytvořit**.
 
 ### <a name="add-a-trigger-and-action"></a>Přidání aktivační události a akce
-1. V hello **logiku aplikace Návrhář**, vyberte **prázdné LogicApp** v hello **šablony** seznamu.
-2. V hello **aktivační události** seznamu, vyberte **opakování**. 
-3. V hello **opakování** aktivační událost, vyberte **upravit**, vyberte **frekvence** rozevíracího seznamu tooselect **den**a potom vyberte  **Interval** tootype **7**. 
-4. Vyberte hello **+ nový krok** a pak vyberte **přidat akci**.
-5. V hello **akce** zadejte **informix** v hello **vyhledejte další akce** textového pole a pak vyberte **Informix - vložit řádek (Preview)**.
-6. V hello **získat řádky (Preview)** akce, vyberte **změnit připojení**. 
-7. V hello **připojení** konfigurace podokně, vyberte tooselect na připojení. Vyberte například **hisdemo2**.
+1. V **logiku aplikace Návrhář**, vyberte **prázdné LogicApp** v **šablony** seznamu.
+2. V **aktivační události** seznamu, vyberte **opakování**. 
+3. V **opakování** aktivační událost, vyberte **upravit**, vyberte **frekvence** rozevíracího seznamu vyberte **den**a potom vyberte **Interval** na typ **7**. 
+4. Vyberte **+ nový krok** a pak vyberte **přidat akci**.
+5. V **akce** zadejte **informix** v **vyhledejte další akce** textového pole a pak vyberte **Informix - vložit řádek (Preview)**.
+6. V **získat řádky (Preview)** akce, vyberte **změnit připojení**. 
+7. V **připojení** konfigurace podokně, vyberte vybrat připojení. Vyberte například **hisdemo2**.
    
     ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. V hello **název tabulky** seznamu, vyberte hello **šipka dolů**a potom vyberte **oblasti**.
+8. V **název tabulky** seznamu, vyberte **šipka dolů**a potom vyberte **oblasti**.
 9. Zadejte hodnoty pro všechny požadované sloupce (viz červenou hvězdičkou). Můžete například zadat `99999` pro **AREAID**, typ `Area 99999`a typ `102` pro **REGIONID**. 
 10. Vyberte **Uložit**.
     
     ![](./media/connectors-create-api-informix/InformixconnectorInsertRowValues.png)
-11. V hello **InformixinsertRow** okno, v rámci hello **všechny spustí** v rámci **Souhrn**, vyberte hello uvedené první položka (nejnovější spustit).
-12. V hello **spusťte aplikaci logiky** vyberte **podrobnosti o spuštění**. V rámci hello **akce** seznamu, vyberte **Get_rows**. Dokumentaci hello hodnoty **stav**, což by mělo být **úspěšné**. Vyberte hello **vstupy odkaz** tooview hello vstupy. Vyberte hello **výstupy odkaz**a výstupy hello zobrazení, která by měla obsahovat hello nový řádek.
+11. V **InformixinsertRow** okno, v **všechny spustí** v rámci **Souhrn**, vyberte položku první uvedené (nejnovější spustit).
+12. V **spusťte aplikaci logiky** vyberte **podrobnosti o spuštění**. V rámci **akce** seznamu, vyberte **Get_rows**. Zobrazit tak hodnotu pro **stav**, což by mělo být **úspěšné**. Vyberte **vstupy odkaz** zobrazíte vstupy. Vyberte **výstupy odkaz**a zobrazit výstupy, která by měla obsahovat nový řádek.
     
     ![](./media/connectors-create-api-informix/InformixconnectorInsertRowOutputs.png)
 
 ## <a name="fetch-one-row-using-select"></a>Načíst pomocí vyberte jeden řádek
-Můžete vytvořit logiku aplikace akce toofetch jeden řádek v tabulce Informix. Tato akce dá pokyn hello konektor tooprocess výpis Informix vyberte kde, jako například `SELECT FROM AREA WHERE AREAID = '99999'`.
+Můžete vytvořit logiku aplikace akce načíst jeden řádek v tabulce Informix. Tato akce nastaví konektor zpracování příkazu Informix vyberte kde, jako je například `SELECT FROM AREA WHERE AREAID = '99999'`.
 
 ### <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
-1. V hello **Tabule start Azure**, vyberte  **+**  (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
-2. Zadejte hello **název**, jako například `InformixgetRow`, **předplatné**, **skupiny prostředků**, **umístění**, a **aplikace Služba plán**. Vyberte **Pin toodashboard**a potom vyberte **vytvořit**.
+1. V **Tabule start Azure**, vyberte  **+**  (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
+2. Zadejte **název**, jako například `InformixgetRow`, **předplatné**, **skupiny prostředků**, **umístění**, a **plán služby App Service**. Vyberte **připnout na řídicí panel**a potom vyberte **vytvořit**.
 
 ### <a name="add-a-trigger-and-action"></a>Přidání aktivační události a akce
-1. V hello **logiku aplikace Návrhář**, vyberte **prázdné LogicApp** v hello **šablony** seznamu.
-2. V hello **aktivační události** seznamu, vyberte **opakování**. 
-3. V hello **opakování** aktivační událost, vyberte **upravit**, vyberte **frekvence** rozevíracího seznamu tooselect **den**a potom vyberte  **Interval** tootype **7**. 
-4. Vyberte hello **+ nový krok** a pak vyberte **přidat akci**.
-5. V hello **akce** zadejte **informix** v hello **vyhledejte další akce** textového pole a pak vyberte **Informix - Get řádků (Preview)** .
-6. V hello **získat řádky (Preview)** akce, vyberte **změnit připojení**. 
-7. V hello **připojení** konfigurace podokně, vyberte tooselect stávající připojení. Vyberte například **hisdemo2**.
+1. V **logiku aplikace Návrhář**, vyberte **prázdné LogicApp** v **šablony** seznamu.
+2. V **aktivační události** seznamu, vyberte **opakování**. 
+3. V **opakování** aktivační událost, vyberte **upravit**, vyberte **frekvence** rozevíracího seznamu vyberte **den**a potom vyberte **Interval** na typ **7**. 
+4. Vyberte **+ nový krok** a pak vyberte **přidat akci**.
+5. V **akce** zadejte **informix** v **vyhledejte další akce** textového pole a pak vyberte **Informix - Get řádků (Preview)**.
+6. V **získat řádky (Preview)** akce, vyberte **změnit připojení**. 
+7. V **připojení** konfigurace podokně, vyberte vybrat stávající připojení. Vyberte například **hisdemo2**.
    
     ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. V hello **název tabulky** seznamu, vyberte hello **šipka dolů**a potom vyberte **oblasti**.
+8. V **název tabulky** seznamu, vyberte **šipka dolů**a potom vyberte **oblasti**.
 9. Zadejte hodnoty pro všechny požadované sloupce (viz červenou hvězdičkou). Můžete například zadat `99999` pro **AREAID**. 
-10. Volitelně vyberte **zobrazit rozšířené možnosti** toospecify možnosti dotazu.
+10. Volitelně vyberte **zobrazit rozšířené možnosti** k určení možnosti dotazu.
 11. Vyberte **Uložit**. 
     
     ![](./media/connectors-create-api-informix/InformixconnectorGetRowValues.png)
-12. V hello **InformixgetRow** okno, v rámci hello **všechny spustí** v rámci **Souhrn**, vyberte hello uvedené první položka (nejnovější spustit).
-13. V hello **spusťte aplikaci logiky** vyberte **podrobnosti o spuštění**. V rámci hello **akce** seznamu, vyberte **Get_rows**. Dokumentaci hello hodnoty **stav**, což by mělo být **úspěšné**. Vyberte hello **vstupy odkaz** tooview hello vstupy. Vyberte hello **výstupy odkaz**a výstupy hello zobrazení, která by měla obsahovat řádek.
+12. V **InformixgetRow** okno, v **všechny spustí** v rámci **Souhrn**, vyberte položku první uvedené (nejnovější spustit).
+13. V **spusťte aplikaci logiky** vyberte **podrobnosti o spuštění**. V rámci **akce** seznamu, vyberte **Get_rows**. Zobrazit tak hodnotu pro **stav**, což by mělo být **úspěšné**. Vyberte **vstupy odkaz** zobrazíte vstupy. Vyberte **výstupy odkaz**a zobrazit výstupy, která by měla obsahovat řádek.
     
     ![](./media/connectors-create-api-informix/InformixconnectorGetRowOutputs.png)
 
 ## <a name="change-one-row-using-update"></a>Změnit jeden řádek použití aktualizace
-Můžete vytvořit logiku aplikace akce toochange jeden řádek v tabulce Informix. Tato akce dá pokyn hello konektor tooprocess výpis Informix aktualizace, jako například `UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`.
+Můžete vytvořit logiku aplikace akce chcete-li změnit jeden řádek v tabulce Informix. Tato akce nastaví konektor zpracování výpis Informix aktualizace, jako je například `UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`.
 
 ### <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
-1. V hello **Tabule start Azure**, vyberte  **+**  (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
-2. Zadejte hello **název**, jako například `InformixupdateRow`, **předplatné**, **skupiny prostředků**, **umístění**, a **aplikace Služba plán**. Vyberte **Pin toodashboard**a potom vyberte **vytvořit**.
+1. V **Tabule start Azure**, vyberte  **+**  (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
+2. Zadejte **název**, jako například `InformixupdateRow`, **předplatné**, **skupiny prostředků**, **umístění**, a **plán služby App Service**. Vyberte **připnout na řídicí panel**a potom vyberte **vytvořit**.
 
 ### <a name="add-a-trigger-and-action"></a>Přidání aktivační události a akce
-1. V hello **logiku aplikace Návrhář**, vyberte **prázdné LogicApp** v hello **šablony** seznamu.
-2. V hello **aktivační události** seznamu, vyberte **opakování**. 
-3. V hello **opakování** aktivační událost, vyberte **upravit**, vyberte **frekvence** rozevíracího seznamu tooselect **den**a potom vyberte  **Interval** tootype **7**. 
-4. Vyberte hello **+ nový krok** a pak vyberte **přidat akci**.
-5. V hello **akce** zadejte **informix** v hello **vyhledejte další akce** textového pole a pak vyberte **Informix - aktualizace řádek (Preview)**.
-6. V hello **získat řádky (Preview)** akce, vyberte **změnit připojení**. 
-7. V hello **připojení** konfigurace podokně, vyberte tooselect stávající připojení. Vyberte například **hisdemo2**.
+1. V **logiku aplikace Návrhář**, vyberte **prázdné LogicApp** v **šablony** seznamu.
+2. V **aktivační události** seznamu, vyberte **opakování**. 
+3. V **opakování** aktivační událost, vyberte **upravit**, vyberte **frekvence** rozevíracího seznamu vyberte **den**a potom vyberte **Interval** na typ **7**. 
+4. Vyberte **+ nový krok** a pak vyberte **přidat akci**.
+5. V **akce** zadejte **informix** v **vyhledejte další akce** textového pole a pak vyberte **Informix - aktualizace řádek (Preview)**.
+6. V **získat řádky (Preview)** akce, vyberte **změnit připojení**. 
+7. V **připojení** konfigurace podokně, vyberte vybrat stávající připojení. Vyberte například **hisdemo2**.
    
     ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. V hello **název tabulky** seznamu, vyberte hello **šipka dolů**a potom vyberte **oblasti**.
+8. V **název tabulky** seznamu, vyberte **šipka dolů**a potom vyberte **oblasti**.
 9. Zadejte hodnoty pro všechny požadované sloupce (viz červenou hvězdičkou). Můžete například zadat `99999` pro **AREAID**, typ `Updated 99999`a typ `102` pro **REGIONID**. 
 10. Vyberte **Uložit**. 
     
     ![](./media/connectors-create-api-informix/InformixconnectorUpdateRowValues.png)
-11. V hello **InformixupdateRow** okno, v rámci hello **všechny spustí** v rámci **Souhrn**, vyberte hello uvedené první položka (nejnovější spustit).
-12. V hello **spusťte aplikaci logiky** vyberte **podrobnosti o spuštění**. V rámci hello **akce** seznamu, vyberte **Get_rows**. Dokumentaci hello hodnoty **stav**, což by mělo být **úspěšné**. Vyberte hello **vstupy odkaz** tooview hello vstupy. Vyberte hello **výstupy odkaz**a výstupy hello zobrazení, která by měla obsahovat hello nový řádek.
+11. V **InformixupdateRow** okno, v **všechny spustí** v rámci **Souhrn**, vyberte položku první uvedené (nejnovější spustit).
+12. V **spusťte aplikaci logiky** vyberte **podrobnosti o spuštění**. V rámci **akce** seznamu, vyberte **Get_rows**. Zobrazit tak hodnotu pro **stav**, což by mělo být **úspěšné**. Vyberte **vstupy odkaz** zobrazíte vstupy. Vyberte **výstupy odkaz**a zobrazit výstupy, která by měla obsahovat nový řádek.
     
     ![](./media/connectors-create-api-informix/InformixconnectorUpdateRowOutputs.png)
 
 ## <a name="remove-one-row-using-delete"></a>Odeberte jeden řádek používání příkazu DELETE
-Můžete vytvořit logiku aplikace akce tooremove jeden řádek v tabulce Informix. Tato akce dá pokyn hello konektor tooprocess výpis Informix odstranit, jako například `DELETE FROM AREA WHERE AREAID = '99999'`.
+Můžete vytvořit logiku aplikace akce odebrat jeden řádek v tabulce Informix. Tato akce nastaví konektor zpracování příkazu odstranit Informix, jako je například `DELETE FROM AREA WHERE AREAID = '99999'`.
 
 ### <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
-1. V hello **Tabule start Azure**, vyberte  **+**  (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
-2. Zadejte hello **název**, jako například `InformixdeleteRow`, **předplatné**, **skupiny prostředků**, **umístění**, a **aplikace Služba plán**. Vyberte **Pin toodashboard**a potom vyberte **vytvořit**.
+1. V **Tabule start Azure**, vyberte  **+**  (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
+2. Zadejte **název**, jako například `InformixdeleteRow`, **předplatné**, **skupiny prostředků**, **umístění**, a **plán služby App Service**. Vyberte **připnout na řídicí panel**a potom vyberte **vytvořit**.
 
 ### <a name="add-a-trigger-and-action"></a>Přidání aktivační události a akce
-1. V hello **logiku aplikace Návrhář**, vyberte **prázdné LogicApp** v hello **šablony** seznamu.
-2. V hello **aktivační události** seznamu, vyberte **opakování**. 
-3. V hello **opakování** aktivační událost, vyberte **upravit**, vyberte **frekvence** rozevíracího seznamu tooselect **den**a potom vyberte  **Interval** tootype **7**. 
-4. Vyberte hello **+ nový krok** a pak vyberte **přidat akci**.
-5. V hello **akce** zadejte **informix** v hello **vyhledejte další akce** textového pole a pak vyberte **Informix - odstranit řádek (Preview)**.
-6. V hello **získat řádky (Preview)** akce, vyberte **změnit připojení**. 
-7. V hello **připojení** konfigurace podokně, vyberte existující připojení. Vyberte například **hisdemo2**.
+1. V **logiku aplikace Návrhář**, vyberte **prázdné LogicApp** v **šablony** seznamu.
+2. V **aktivační události** seznamu, vyberte **opakování**. 
+3. V **opakování** aktivační událost, vyberte **upravit**, vyberte **frekvence** rozevíracího seznamu vyberte **den**a potom vyberte **Interval** na typ **7**. 
+4. Vyberte **+ nový krok** a pak vyberte **přidat akci**.
+5. V **akce** zadejte **informix** v **vyhledejte další akce** textového pole a pak vyberte **Informix - odstranit řádek (Preview)**.
+6. V **získat řádky (Preview)** akce, vyberte **změnit připojení**. 
+7. V **připojení** konfigurace podokně, vyberte existující připojení. Vyberte například **hisdemo2**.
    
     ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. V hello **název tabulky** seznamu, vyberte hello **šipka dolů**a potom vyberte **oblasti**.
+8. V **název tabulky** seznamu, vyberte **šipka dolů**a potom vyberte **oblasti**.
 9. Zadejte hodnoty pro všechny požadované sloupce (viz červenou hvězdičkou). Můžete například zadat `99999` pro **AREAID**. 
 10. Vyberte **Uložit**. 
     
     ![](./media/connectors-create-api-informix/InformixconnectorDeleteRowValues.png)
-11. V hello **InformixdeleteRow** okno, v rámci hello **všechny spustí** v rámci **Souhrn**, vyberte hello uvedené první položka (nejnovější spustit).
-12. V hello **spusťte aplikaci logiky** vyberte **podrobnosti o spuštění**. V rámci hello **akce** seznamu, vyberte **Get_rows**. Dokumentaci hello hodnoty **stav**, což by mělo být **úspěšné**. Vyberte hello **vstupy odkaz** tooview hello vstupy. Vyberte hello **výstupy odkaz**a výstupy hello zobrazení, která by měla obsahovat hello odstranit řádek.
+11. V **InformixdeleteRow** okno, v **všechny spustí** v rámci **Souhrn**, vyberte položku první uvedené (nejnovější spustit).
+12. V **spusťte aplikaci logiky** vyberte **podrobnosti o spuštění**. V rámci **akce** seznamu, vyberte **Get_rows**. Zobrazit tak hodnotu pro **stav**, což by mělo být **úspěšné**. Vyberte **vstupy odkaz** zobrazíte vstupy. Vyberte **výstupy odkaz**a zobrazit výstupy, která by měla obsahovat odstraněných řádků.
     
     ![](./media/connectors-create-api-informix/InformixconnectorDeleteRowOutputs.png)
 
 ## <a name="supported-informix-platforms-and-versions"></a>Podporované platformy Informix a verze
-Tento konektor podporuje následující verze IBM Informix při konfiguraci hello připojení klienta toosupport distribuované relační databáze architektura (DRDA).
+Tento konektor podporuje následující verze IBM Informix, když nakonfigurovaný pro podporu připojení klientů distribuované relační databáze architektura (DRDA).
 
 * IBM Informix 12.1
 * IBM Informix 11.7
 
 ## <a name="connector-specific-details"></a>Podrobnosti o konkrétní konektor
 
-Zobrazit všechny aktivační události a akce definované v hello swagger a také zobrazit žádné limity v hello [connector – podrobnosti](/connectors/informix/). 
+Zobrazit všechny aktivační události a akce definované v swagger a také zobrazit žádné limity v [connector – podrobnosti](/connectors/informix/). 
 
 ## <a name="next-steps"></a>Další kroky
-[Vytvoření aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md). Prozkoumejte hello dalších dostupných konektorů v Logic Apps v našem [rozhraní API seznamu](apis-list.md).
+[Vytvoření aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md). Prozkoumejte dalších dostupných konektorů v Logic Apps v našem [rozhraní API seznamu](apis-list.md).
 

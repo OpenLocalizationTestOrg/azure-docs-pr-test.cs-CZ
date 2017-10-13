@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/27/2017
 ms.author: cherylmc
-ms.openlocfilehash: 3d4587ba31d163384212eca88a7e2c0ba8f3b21f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0ebc3ef4a64432e993dd6ed69766bb64544fe433
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="planning-and-design-for-vpn-gateway"></a>Plánování a návrh pro VPN Gateway
 
@@ -29,19 +29,19 @@ Plánování a návrhu mezi různými místy a VNet-to-VNet konfigurace může b
 
 ### <a name="compare"></a>Možnosti připojení mezi různými místy
 
-Pokud chcete tooconnect místní lokality bezpečně tooa virtuální sítě, takže máte tři různé způsoby toodo: Site-to-Site, Point-to-Site a ExpressRoute. Porovnejte hello různých mezi různými místy připojení, které jsou k dispozici. možnost Hello může záviset na různé aspekty, jako třeba:
+Pokud se chcete připojit místními servery bezpečně k virtuální síti, máte tři různé způsoby, jak udělat: Site-to-Site, Point-to-Site a ExpressRoute. Porovnejte připojení různých mezi různými místy, které jsou k dispozici. Možnosti, kterou zvolíte může záviset na různé aspekty, jako například:
 
 * Jaký druh propustnosti vyžaduje vaše řešení?
-* Chcete toocommunicate přes hello veřejný Internet prostřednictvím bezpečné VPN nebo přes privátní připojení?
-* Máte veřejných IP adres k dispozici toouse?
-* Pokud plánujete toouse zařízení VPN? Pokud ano, je kompatibilní?
+* Chcete komunikovat přes veřejný internet prostřednictvím bezpečné VPN, nebo přes privátní připojení?
+* Máte k dispozici veřejnou IP adresu?
+* Plánujete použít zařízení VPN? Pokud ano, je kompatibilní?
 * Připojujete pouze několik počítačů, nebo chcete trvalé připojení pro svůj server?
-* Jaký typ brány VPN je požadované pro řešení hello chcete toocreate?
+* Jaký typ brány VPN vyžaduje řešení, které chcete vytvořit?
 * Které skladová položka brány mám použít?
 
 ### <a name="planningtable"></a>Plánovací tabulka
 
-Hello následující tabulka vám může pomoct rozhodnout hello nejlepší možnosti připojení pro vaše řešení.
+V následující tabulce vám pomohou rozhodnout se nejlepší možnosti připojení pro vaše řešení.
 
 [!INCLUDE [vpn-gateway-cross-premises](../../includes/vpn-gateway-cross-premises-include.md)]
 
@@ -51,51 +51,51 @@ Hello následující tabulka vám může pomoct rozhodnout hello nejlepší mož
 
 ### <a name="wf"></a>Pracovní postup
 
-Hello následující seznam obsahuje přehled hello běžné pracovní postup pro připojení k cloudu:
+Následující seznam popisuje běžné pracovní postup pro připojení k síti cloudu:
 
-1. Návrh a plánování, že vaše připojení topologie a seznamu Adresa hello prostory pro všechny sítě chcete tooconnect.
+1. Návrhu a plánování topologie připojení a vytvořte seznam adresních prostorů pro všechny sítě, které se chcete připojit.
 2. Vytvoření virtuální sítě Azure. 
-3. Vytvořte bránu sítě VPN pro virtuální síť hello.
-4. Vytvořit a nakonfigurovat připojení tooon místní sítě nebo jiné virtuální sítě (podle potřeby).
+3. Vytvořte bránu VPN virtuální sítě.
+4. Vytvořit a nakonfigurovat připojení k místní sítě nebo jiných virtuálních sítí (podle potřeby).
 5. Vytvořit a nakonfigurovat připojení Point-to-Site pro bránu Azure VPN (podle potřeby).
 
 ## <a name="design"></a>Návrh
 ### <a name="topologies"></a>Topologie připojení ke službě
 
-Začněte tím, že prohlížení hello diagramů v hello [o službě VPN Gateway](vpn-gateway-about-vpngateways.md) článku. Hello článek obsahuje základní diagramy, hello modely nasazení pro každou topologie a nástroje pro nasazení k dispozici hello toodeploy můžete použít konfiguraci.
+Začít hledáním v diagramech [o službě VPN Gateway](vpn-gateway-about-vpngateways.md) článku. Článek obsahuje základní diagramy, modely nasazení pro každý topologie a nástroje pro nasazení k dispozici, které můžete použít k nasazení vaší konfigurace.
 
 ### <a name="designbasics"></a>Základní informace o návrhu
 
-Hello následující oddíly popisují základy brány VPN hello. 
+Následující části popisují základy brány VPN. 
 
 #### <a name="servicelimits"></a>Omezení služby sítě
 
-Procházení hello tabulky tooview [sítě služby omezení](../azure-subscription-service-limits.md#networking-limits). omezení Hello uvedené může mít vliv na návrh vašeho.
+Procházení tabulky, které chcete zobrazit [sítě služby omezení](../azure-subscription-service-limits.md#networking-limits). Omezení uvedené může mít vliv na návrh vašeho.
 
 #### <a name="subnets"></a>O podsítě
 
-Při vytváření připojení, musíte zvážit vaší rozsahy podsítě. Nemůže mít překrývající se rozsahy adres podsítě. Překrývající se podsítí je, když jeden virtuální síti nebo na místní umístění obsahuje hello, který obsahuje stejný adresní prostor, který hello jiného umístění. To znamená, třeba technici vaší sítě pro vaše místní sítě toocarve se rozsah adres pro toouse můžete pro Azure na IP adresování místa nebo podsítě. Je nutné adresní prostor, který se nepoužívá v místní síti hello.
+Při vytváření připojení, musíte zvážit vaší rozsahy podsítě. Nemůže mít překrývající se rozsahy adres podsítě. Překrývající se podsítí je stejné adresní prostor, který obsahuje jiné umístění obsahuje jednu virtuální síť nebo místní umístění. To znamená, je nutné, aby technici sítě pro vaše místní sítě do vyčlenit oblasti, budete moci použít pro Azure na IP adresování místa nebo podsítě. Je nutné adresní prostor, který se nepoužívá v místní síti.
 
-Zamezení překrývající se podsítí je také důležité, když pracujete s připojení VNet-to-VNet. Pokud podsítě překrývajících se a IP adresu v odesílání hello i cílové virtuální sítě existuje, připojení VNet-to-VNet se nezdaří. Azure nelze směrovat hello data toohello jiné virtuální sítě, protože hello cílová adresa je součástí hello odesílání virtuální sítě.
+Zamezení překrývající se podsítí je také důležité, když pracujete s připojení VNet-to-VNet. Pokud podsítě překrývajících se a IP adresu v odesílání i cílové virtuální sítě existuje, připojení VNet-to-VNet se nezdaří. Azure nelze směrovat data do jiné virtuální sítě, protože cílová adresa je součástí odesílání virtuální sítě.
 
-Brány sítě VPN vyžaduje konkrétní podsíť s názvem podsíť brány. Všechny podsítě brány musí mít název GatewaySubnet toowork správně. Ujistěte se, není tooname podsítě brány na jiný název a nenasazujte virtuální počítače ani cokoli jiného toohello podsíť brány. V tématu [podsítě brány](vpn-gateway-about-vpn-gateway-settings.md#gwsub).
+Brány sítě VPN vyžaduje konkrétní podsíť s názvem podsíť brány. Pro správné fungování všech podsítí brány je nutné, aby měly název GatewaySubnet. Ujistěte se, aby název podsítě brány jiný název a podsíti brány nenasazujte virtuální počítače nebo cokoliv jiného. V tématu [podsítě brány](vpn-gateway-about-vpn-gateway-settings.md#gwsub).
 
 #### <a name="local"></a>O brány místní sítě
 
-Hello brány místní sítě obvykle odkazuje tooyour místní umístění. V modelu nasazení classic hello je brána místní sítě hello odkazované tooas místní síťové lokality. Pokud budete konfigurovat bránu místní sítě, zadejte jeho název, zadejte hello veřejná IP adresa zařízení VPN místní hello a zadejte hello předpony, které se nacházejí v umístění místní hello. Azure zjistí hello předpony cílových adres pro síťový provoz, zajímají hello konfigurace, který jste zadali pro bránu místní sítě hello a směruje pakety odpovídajícím způsobem. Předpony adres hello můžete upravit podle potřeby. Další informace najdete v tématu [brány místní sítě](vpn-gateway-about-vpn-gateway-settings.md#lng).
+Brána místní sítě obvykle odkazuje na vaše místní umístění. V modelu nasazení classic bránu místní sítě se označuje jako místní síťové lokality. Při konfiguraci brány místní sítě, zadejte jeho název, zadejte veřejnou IP adresu místního zařízení VPN a zadáte předpony adres, které se nacházejí v místní umístění. Azure zjistí předpony cílových adres pro síťový provoz, zajímají konfiguraci, která jste zadali pro bránu místní sítě a směruje pakety odpovídajícím způsobem. Předpony adres můžete upravit podle potřeby. Další informace najdete v tématu [brány místní sítě](vpn-gateway-about-vpn-gateway-settings.md#lng).
 
 #### <a name="gwtype"></a>O typech brány
 
-Výběr typu hello správné brány pro vaše topologie je velmi důležité. Pokud vyberete hello chybný typ, brána nebude fungovat správně. Typ brány Hello Určuje, jak samotné bráně hello připojí a je požadované nastavení pro model nasazení Resource Manager hello.
+Výběr typu správné brány pro vaše topologie je velmi důležité. Pokud vyberete chybný typ, brána nebude fungovat správně. Typ brány určuje, jak se brána samotná připojuje, a jedná se o požadované nastavení pro model nasazení Resource Manager.
 
-Hello brány typy jsou:
+Typy brány jsou:
 
 * Vpn
 * ExpressRoute
 
 #### <a name="connectiontype"></a>O typech připojení
 
-Každá konfigurace vyžaduje určitý typ připojení. Hello typy připojení jsou:
+Každá konfigurace vyžaduje určitý typ připojení. Typy připojení jsou:
 
 * Protokol IPsec
 * Vnet2Vnet
@@ -104,30 +104,30 @@ Každá konfigurace vyžaduje určitý typ připojení. Hello typy připojení j
 
 #### <a name="vpntype"></a>O typy sítě VPN
 
-Každá konfigurace vyžaduje určitý typ sítě VPN. Pokud kombinujete dvě konfigurace, jako je například vytváření připojení Site-to-Site a toohello připojení Point-to-Site stejné virtuální síti, musíte použít typ sítě VPN, který splňuje požadavky obou připojení.
+Každá konfigurace vyžaduje určitý typ sítě VPN. Pokud kombinujete dvě konfigurace, například vytváříte-li připojení typu Site-to-Site a Point-to-Site ke stejné virtuální síti, musíte použít typ sítě VPN, který splňuje požadavky obou připojení.
 
 [!INCLUDE [vpn-gateway-vpntype](../../includes/vpn-gateway-vpntype-include.md)]
 
-Hello následující tabulky popisují typ sítě VPN hello jako mapuje tooeach konfigurace připojení. Ujistěte se, zda text hello typ sítě VPN pro konfiguraci brány odpovídá hello, které chcete toocreate. 
+Následující tabulky popisují typ sítě VPN, jak se mapuje na každé konfiguraci připojení. Ujistěte se, že typ sítě VPN pro bránu odpovídá konfiguraci, kterou chcete vytvořit. 
 
 [!INCLUDE [vpn-gateway-table-vpntype](../../includes/vpn-gateway-table-vpntype-include.md)]
 
 ### <a name="devices"></a>Zařízení VPN pro připojení Site-to-Site
 
-připojení tooconfigure Site-to-Site, bez ohledu na modelu nasazení, je třeba hello následující položky:
+Konfigurace připojení Site-to-Site, bez ohledu na modelu nasazení, potřebujete následující položky:
 
 * Zařízení VPN, který je kompatibilní s Azure VPN Gateway
 * Veřejnou adresu IPv4 IP, který není za zařízení NAT
 
-Budete potřebovat prostředí toohave konfiguraci zařízení VPN, nebo požádat uživatele, který může nakonfigurovat zařízení hello za vás.
+Budete muset prostředí konfiguraci zařízení VPN nebo někdo, která můžete nakonfigurovat zařízení pro vás k dispozici.
 
 [!INCLUDE [vpn-gateway-configure-vpn-device-rm](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
 
 ### <a name="forcedtunnel"></a>Vezměte v úvahu vynucené tunelového propojení směrování
 
-Pro většinu konfiguraci můžete konfigurovat vynucené tunelování. Vynutit tunelové propojení umožňuje přesměrování nebo "Vynutit" všechny internetový provoz back tooyour místní umístění prostřednictvím tunelu Site-to-Site VPN pro kontrolu a auditování. Požadavek kritické zabezpečení pro většinu organizace IT zásad. 
+Pro většinu konfiguraci můžete konfigurovat vynucené tunelování. Vynucené tunelování vám umožní přesměrování nebo "Vynutit" veškerý provoz vázaný na Internet zpět na místní umístění prostřednictvím tunelu Site-to-Site VPN pro kontrolu a auditování. Požadavek kritické zabezpečení pro většinu organizace IT zásad. 
 
-Bez vynucené tunelování, internetový provoz z virtuálních počítačů v Azure bude vždy procházení od Azure síťové infrastruktury přímo na Internetu, toohello bez tooallow možnost hello je provoz hello tooinspect nebo kontrola. Neoprávněný přístup k Internetu může potenciálně vést tooinformation zpřístupnění nebo jiné typy narušení zabezpečení.
+Bez vynucené tunelování, se internetový provoz z virtuálních počítačů v Azure procházení od Azure síťové infrastruktury přímo se k Internetu, bez možnosti a umožní vám na svoji provoz vždy. Neoprávněný přístup k Internetu může potenciálně vést k informacím nebo jiné typy narušení zabezpečení.
 
 V obou modelech nasazení a pomocí jiných nástrojů se dá konfigurovat vynucené tunelové připojení. Další informace najdete v tématu [konfigurace vynuceného tunelování](vpn-gateway-forced-tunneling-rm.md).
 
@@ -137,6 +137,6 @@ V obou modelech nasazení a pomocí jiných nástrojů se dá konfigurovat vynuc
 
 ## <a name="next-steps"></a>Další kroky
 
-V tématu hello [VPN Gateway – nejčastější dotazy](vpn-gateway-vpn-faq.md) a [o službě VPN Gateway](vpn-gateway-about-vpngateways.md) články pro další informace o toohelp jste s návrhu.
+Najdete v článku [VPN Gateway – nejčastější dotazy](vpn-gateway-vpn-faq.md) a [o službě VPN Gateway](vpn-gateway-about-vpngateways.md) články pro další informace vám pomohou při návrhu.
 
 Další informace o nastavení konkrétní brány najdete v tématu [o nastavení brány sítě VPN](vpn-gateway-about-vpn-gateway-settings.md).

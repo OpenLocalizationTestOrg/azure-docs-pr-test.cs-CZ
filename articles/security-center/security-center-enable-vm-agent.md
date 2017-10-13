@@ -1,6 +1,6 @@
 ---
-title: "aaaEnable agenta virtuálního počítače v Azure Security Center | Microsoft Docs"
-description: "Tento dokument ukazuje, jak tooimplement hello Azure Security Center doporučení ** povolit virtuálního počítače agenta **."
+title: "Povolit agenta virtuálního počítače v Azure Security Center | Microsoft Docs"
+description: "Tento dokument se dozvíte, jak provést doporučení Azure Security Center ** povolit virtuálního počítače agenta **."
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -14,38 +14,38 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 9bd71e638b020780537da25fd4cf7baf34d3e11a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 337a7adfd93c76882a749685702bea6d1524c96a
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="enable-vm-agent-in-azure-security-center"></a>Povolit agenta virtuálního počítače v Azure Security Center
-Hello agenta virtuálního počítače musí být nainstalován na virtuálních počítačích (VM) v pořadí příliš[povolení shromažďování dat](security-center-enable-data-collection.md).  Azure Security Center umožňuje vám toosee které virtuální počítače vyžadují hello agenta virtuálního počítače a doporučí, abyste povolili hello agenta virtuálního počítače na těchto virtuálních počítačích.
+Musí být nainstalovaný Agent virtuálního počítače na virtuální počítače (VM) za účelem [povolení shromažďování dat](security-center-enable-data-collection.md).  Azure Security Center vám umožní zobrazit které virtuální počítače vyžadují agenta virtuálního počítače a doporučí, abyste povolili agenta virtuálního počítače na těchto virtuálních počítačích.
 
-Hello agenta virtuálního počítače je nainstalována ve výchozím nastavení pro virtuální počítače, které byly nasazeny pomocí hello Azure Marketplace. článek Hello [agenta virtuálního počítače a rozšíření – část 2](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/) poskytuje informace o tom, jak tooinstall hello agenta virtuálního počítače.
+Agent virtuálního počítače je ve výchozím nastavení nainstalován na virtuálních počítačích nasazených z Azure Marketplace. V článku [Agenti a rozšíření virtuálních počítačů – Část 2](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/) najdete informace o tom, jak agenta virtuálního počítače nainstalovat.
 
 > [!NOTE]
-> Toto téma představuje hello služby pomocí příklad nasazení. Není to podrobný průvodce.
+> Tento dokument vám tuto službu představí formou ukázkového nasazení. Není to podrobný průvodce.
 >
 >
 
-## <a name="implement-hello-recommendation"></a>Implementace doporučení hello
-1. V hello **doporučení okno**, vyberte **povolit agenta virtuálního počítače**.
+## <a name="implement-the-recommendation"></a>Implementace doporučení
+1. V **doporučení okno**, vyberte **povolit agenta virtuálního počítače**.
    ![Povolení agenta virtuálního počítače][1]
-2. Otevře se okno hello **virtuálního počítače agenta je chybí nebo neodpovídá**. Toto okno obsahuje seznam hello virtuálních počítačů, které vyžadují hello agenta virtuálního počítače. Postupujte podle pokynů hello na agenta virtuálního počítače hello okno tooinstall hello.
+2. Otevře se okno pro **virtuálního počítače agenta je chybí nebo neodpovídá**. Toto okno obsahuje seznam virtuálních počítačů, které vyžadují agenta virtuálního počítače. Postupujte podle pokynů v okně instalace agenta virtuálního počítače.
    ![Chybí Agent virtuálního počítače][2]
 
 ## <a name="see-also"></a>Viz také
-toolearn Další informace o Security Center, najdete v části hello následující:
+Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-* [Nastavení zásad zabezpečení v Azure Security Center](security-center-policies.md)– zjistěte, jak tooconfigure zásady zabezpečení pro skupiny prostředků a předplatná Azure.
+* [Nastavení zásad zabezpečení v Azure Security Center](security-center-policies.md) – Zjistěte, jak se konfigurují zásady zabezpečení pro vaše předplatné Azure a skupiny prostředků.
 * [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – Zjistěte, jak vám doporučení pomáhají chránit prostředky v Azure.
-* [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md)– zjistěte, jak toomonitor hello stav svých prostředků Azure.
-* [Správa a zda odpovídá toosecurity výstrahy v Azure Security Center](security-center-managing-and-responding-alerts.md)– zjistěte, jak toomanage a reakce toosecurity výstrahy.
-* [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – zjistěte, jak toomonitor hello stav vašich partnerských řešení.
-* [Nejčastější dotazy k Azure Security Center](security-center-faq.md)– přečtěte si nejčastější dotazy o použití služby hello.
-* [Blog o bezpečnosti Azure](http://blogs.msdn.com/b/azuresecurity/)– získejte nejnovější informace zabezpečení Azure hello a informace.
+* [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se monitorovat stav svých prostředků Azure.
+* [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
+* [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
+* [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Přečtěte si nejčastější dotazy o použití této služby.
+* [Blog Azure Security](http://blogs.msdn.com/b/azuresecurity/) – Získejte nejnovější informace o zabezpečení Azure.
 
 <!--Image references-->
 [1]: ./media/security-center-enable-vm-agent/enable-vm-agent.png

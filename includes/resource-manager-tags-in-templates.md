@@ -1,7 +1,7 @@
-tootag prostředků během nasazení, přidejte hello `tags` element toohello prostředků, kterou nasazujete. Zadejte název značky hello a hodnotu.
+Pokud chcete přidat značku k prostředku během nasazení, přidejte k nasazovanému prostředku element `tags`. Zadejte název a hodnotu značky.
 
-### <a name="apply-a-literal-value-toohello-tag-name"></a>Použít název značky toohello hodnota literálu
-Hello následující příklad ukazuje, účet úložiště se dvěma značkami (`Dept` a `Environment`) nastavených tooliteral hodnoty:
+### <a name="apply-a-literal-value-to-the-tag-name"></a>Použití literálové hodnoty na název značky
+Následující příklad ukazuje účet úložiště se dvěma značkami (`Dept` a `Environment`) nastavenými na literálové hodnoty:
 
 ```json
 {
@@ -27,8 +27,8 @@ Hello následující příklad ukazuje, účet úložiště se dvěma značkami 
 }
 ```
 
-### <a name="apply-an-object-toohello-tag-element"></a>Použít element objekt toohello značky
-Můžete definovat parametr objekt, který ukládá několik značek a použít tento element toohello značky object. Každou vlastnost v objektu hello se změní na samostatné značky pro prostředek hello. Hello následující příklad obsahuje parametr s názvem `tagValues` tedy použité toohello značky elementu.
+### <a name="apply-an-object-to-the-tag-element"></a>Použití objektu na element značky
+Můžete definovat parametr objektu, ve kterém je uloženo několik značek, a použít tento objekt na element značky. Každá vlastnost v objektu se stane samostatnou značkou pro prostředek. V následujícím příkladu je na element značky použitý parametr `tagValues`.
 
 ```json
 {
@@ -60,9 +60,9 @@ Můžete definovat parametr objekt, který ukládá několik značek a použít 
 }
 ```
 
-### <a name="apply-a-json-string-toohello-tag-name"></a>Použít název značky toohello řetězec formátu JSON
+### <a name="apply-a-json-string-to-the-tag-name"></a>Použití řetězce JSON na název značky
 
-toostore mnoho hodnot v jedné značky, použít řetězec formátu JSON, který reprezentuje hello hodnoty. řetězce formátu JSON celý Hello je uložený jako jeden značky, který nesmí překročit 256 znaků. Hello následující příklad obsahuje jedinou značku s názvem `CostCenter` obsahující několik hodnot z řetězce formátu JSON:  
+Pokud chcete uložit mnoho hodnot v jedné značce, použijte řetězec JSON, který představuje hodnoty. Celý řetězec JSON je uložený jako jedna značka, která nesmí překročit 256 znaků. V následujícím příkladu je jedna značka `CostCenter`, která obsahuje několik hodnot z řetězce JSON:  
 
 ```json
 {

@@ -1,5 +1,5 @@
 ---
-title: aaaApplication Insights pro Azure Cloud Services | Microsoft Docs
+title: Application Insights pro Azure Cloud Services | Dokumentace Microsoftu
 description: "Efektivní sledování webových rolí a rolí pracovních procesů s využitím Application Insights"
 services: application-insights
 documentationcenter: 
@@ -15,14 +15,14 @@ ms.topic: get-started-article
 ms.workload: tbd
 ms.date: 05/05/2017
 ms.author: bwren
-ms.openlocfilehash: 6956ce423eea1e2cf387bd98250bae32d9501ed0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: c12b225aa351d0c272243469550791a6840091e0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights pro Azure Cloud Services
-U [aplikací cloudových služeb Microsoft Azure](https://azure.microsoft.com/services/cloud-services/) lze pomocí služby [Application Insights][start] sledovat dostupnost, výkon, chyby a využití díky kombinování dat ze sad SDK služby Application Insights a dat [diagnostiky Azure](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/azure-diagnostics) z vašich cloudových služeb. S hello zpětnou vazbu, které máte o hello výkon a efektivitu aplikace v rámci hello divoký můžete provést informované volby o hello směr hello návrhu v každé životního cyklu.
+U [aplikací cloudových služeb Microsoft Azure](https://azure.microsoft.com/services/cloud-services/) lze pomocí služby [Application Insights][start] sledovat dostupnost, výkon, chyby a využití díky kombinování dat ze sad SDK služby Application Insights a dat [diagnostiky Azure](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/azure-diagnostics) z vašich cloudových služeb. Na základě zpětné vazby ohledně výkonu a efektivity vaší aplikace při běžném používání můžete informovaně rozhodovat o směrování návrhu v každé fázi vývoje.
 
 ![Příklad](./media/app-insights-cloudservices/sample.png)
 
@@ -34,153 +34,153 @@ Budete potřebovat:
 * Developer Analytics Tools 7.10 nebo novější
 
 ## <a name="quick-start"></a>Rychlý start
-Hello toomonitor nejrychlejší a nejjednodušší způsob, cloudové služby s nástrojem Application Insights je toochoose, která možnost při publikování tooAzure vaší služby.
+Nejrychlejším a nejjednodušším způsobem, jak monitorovat cloudovou službu s použitím Application Insights, je zvolit tuto možnost při publikování služby v Azure.
 
 ![Příklad](./media/app-insights-cloudservices/azure-cloud-application-insights.png)
 
-Tato možnost instruments aplikace za běhu, která poskytuje všechny telemetrická hello budete potřebovat toomonitor požadavky, výjimky a závislosti ve vaší webové role a také výkonu čítače z vaší rolí pracovního procesu. Všechny diagnostické trasování, vygeneruje aplikace jsou odesílány také tooApplication statistiky.
+Tato možnost používá vaši aplikaci za běhu a poskytuje vám veškerá telemetrická data, která potřebujete k monitorování požadavků, výjimek a závislostí v rámci webové role a také čítačů výkonu z rolí pracovních procesů. Veškerá diagnostická trasování vygenerovaná aplikací se také odesílají do Application Insights.
 
-Pokud to je všechno, co potřebujete, jste hotovi! Dalšími kroky jsou [zobrazení metrik z aplikace](app-insights-metrics-explorer.md), [zadávání dotazů na data pomocí Analytics](app-insights-analytics.md) a případně i nastavení [řídicího panelu](app-insights-dashboards.md). Můžete chtít tooset až [testy dostupnosti](app-insights-monitor-web-app-availability.md) a [přidat kód tooyour webové stránky](app-insights-javascript.md) toomonitor výkonu v prohlížeči hello.
+Pokud to je všechno, co potřebujete, jste hotovi! Dalšími kroky jsou [zobrazení metrik z aplikace](app-insights-metrics-explorer.md), [zadávání dotazů na data pomocí Analytics](app-insights-analytics.md) a případně i nastavení [řídicího panelu](app-insights-dashboards.md). Může být vhodné vytvořit [testy dostupnosti](app-insights-monitor-web-app-availability.md) a [přidat do webových stránek kód](app-insights-javascript.md) pro monitorování výkonu v prohlížeči.
 
 Můžete ovšem využívat i další možnosti:
 
-* Odesílání dat z různých součástí a konfigurace sestavení tooseparate prostředky.
+* Odesílání dat z různých komponent a sestavování konfigurací pro různé prostředky.
 * Přidání vlastní telemetrie ze své aplikace.
 
-Pokud tyto možnosti jsou tooyou zájmu, přečtěte si.
+Pokud vás tyto možnosti zajímají, čtěte dál.
 
 ## <a name="sample-application-instrumented-with-application-insights"></a>Ukázková aplikace používaná s Application Insights
-Podívejte se na to [ukázkové aplikace](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) Application Insights ve kterém se přidá tooa cloudové služby s dvě role pracovního procesu, které jsou hostované v Azure. 
+Podívejte se na tuto [ukázkovou aplikaci](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService), ve které je Application Insights přidáno do cloudové služby se dvěma rolemi pracovních procesů hostovanými v Azure. 
 
-Co následuje se dozvíte, jak tooadapt cloudové služby projektu v hello stejným způsobem.
+Dále je popsáno, jak stejným způsobem upravit vlastní projekt cloudové služby.
 
 ## <a name="plan-resources-and-resource-groups"></a>Plánování prostředků a skupin prostředků
-Hello telemetrie z vaší aplikace uložené, analyzovat a zobrazit v Azure prostředek typu Application Insights. 
+Telemetrie z vaší aplikace se ukládá, analyzuje a zobrazuje v prostředku Azure typu Application Insights. 
 
-Každý prostředek patří tooa skupinu prostředků. Skupiny prostředků se používají pro správu nákladů pro udělení přístupu členů tooteam a toodeploy aktualizace v jediné koordinované transakce. Například může [zápisu skriptu toodeploy](../azure-resource-manager/resource-group-template-deploy.md) cloudové služby Azure a jeho sledování prostředků všechny v rámci jedné operace Application Insights.
+Každý prostředek patří do skupiny prostředků. Skupiny prostředků se používají ke správě nákladů, k udělování přístupu členům týmu a k nasazování aktualizací v rámci jedné koordinované transakce. Můžete například [napsat skript pro nasazení](../azure-resource-manager/resource-group-template-deploy.md) cloudové služby Azure a příslušných prostředků monitorování Application Insights v rámci jedné operace.
 
 ### <a name="resources-for-components"></a>Prostředky pro komponenty
-Hello doporučoval schéma je toocreate samostatné prostředků pro jednotlivé součásti aplikace – tj, každou webovou roli a roli pracovního procesu. Můžete analyzovat jednotlivé komponenty samostatně, ale můžete vytvořit [řídicí panel](app-insights-dashboards.md) který spojuje klíče grafy hello z všechny součásti hello tak, aby můžete porovnat a monitorovat je společně. 
+Doporučeným schématem je vytvoření samostatného prostředku pro každou komponentu aplikace – tj. každou webovou roli a roli pracovního procesu. Jednotlivé komponenty můžete analyzovat samostatně, ale můžete také vytvořit [řídicí panel](app-insights-dashboards.md), na kterém se zobrazí klíčové grafy ze všech komponent tak, abyste je mohli porovnávat a monitorovat společně. 
 
-Alternativní schéma je toosend hello telemetrie z více než jednu roli toohello stejný prostředek, ale [přidat položku dimenze vlastnost tooeach telemetrie](app-insights-api-filtering-sampling.md#add-properties-itelemetryinitializer) identifikující jeho zdrojovou roli. V tomto schématu metriky grafů, jako je například výjimky normálně zobrazit agregaci hello počty z hello různé role, ale můžete rozdělit hello grafu pomocí hello identifikátor role v případě potřeby. Hledání můžete také filtrovat podle hello stejné dimenze. Díky této alternativní je trochu snazší tooview vše na hello stejný čas, ale může také vést toosome nejasnosti mezi rolemi hello.
+Alternativním schématem je odesílání telemetrických dat z více než jedné role do stejného prostředku, ovšem s [přidáním vlastnosti dimenze pro každou položku telemetrie](app-insights-api-filtering-sampling.md#add-properties-itelemetryinitializer), aby byla určena její zdrojová role. V tomto schématu se v metrikách grafů, jako jsou například výjimky, normálně zobrazuje agregace počtů z různých rolí, ale v případě potřeby můžete graf rozdělit do segmentů podle identifikátoru role. Podle stejné dimenze je také možné filtrovat hledání. Tato alternativa trochu zjednodušuje zobrazení všech dat současně, může ale vést i k nejasnostem mezi rolemi.
 
-Telemetrie prohlížeče je obvykle součástí hello stejného zdroje jako jeho webové serverové role.
+Telemetrická data prohlížeče jsou obvykle součástí stejného prostředku jako u příslušné serverové webové role.
 
-Uveďte hello prostředky Application Insights pro různé součásti hello v jedné skupině prostředků. Díky tomu snadno toomanage je společně. 
+Prostředky Application Insights pro různé součásti převeďte do jedné skupiny prostředků. Pak je budete moct snadno spravovat společně. 
 
 ### <a name="separating-development-test-and-production"></a>Oddělení vývoje, testování a provozu
-Pokud vyvíjíte vlastních událostí pro vaše další funkce, když hello předchozí verze za provozu, budete chtít toosend hello vývoj telemetrie tooa samostatné prostředek Application Insights. V opačném případě bude pevný toofind telemetrie testovací mezi všechny hello provoz z hello živý web.
+Pokud pro další funkci vyvíjíte vlastní událostí a předchozí verze běží v živém provozu, je vhodné odesílat telemetrická data pro vývoj do samostatného prostředku Application Insights. V opačném případě bude obtížné najít ve veškerém provozu z živě provozovaného webu testovací telemetrická data.
 
-tooavoid této situaci se vytvořit samostatné prostředky pro každou konfiguraci sestavení nebo 'razítko' (vývoj, testovací, výroby,...) vašeho systému. Uveďte hello prostředky pro každou konfiguraci sestavení do skupiny samostatné prostředků. 
+Chcete-li této situaci předejít, vytvořte samostatné prostředky pro každou konfiguraci sestavení nebo pro svůj systém použijte označení (vývoj, test, provoz, ...). Prostředky pro každou konfiguraci sestavení umístěte do samostatné skupiny prostředků. 
 
-toosend hello telemetrie toohello odpovídající prostředky, které můžete nastavit hello Application Insights SDK tak, aby ho převezme jiný instrumentace klíč v závislosti na konfiguraci sestavení hello. 
+Pokud chcete odesílat telemetrická data do příslušných prostředků, můžete nastavit sadu SDK Application Insights tak, aby v závislosti na konfiguraci sestavení použila jiný instrumentační klíč. 
 
 ## <a name="create-an-application-insights-resource-for-each-role"></a>Vytvoření prostředku Application Insights pro každou roli
-Pokud jste se rozhodli toocreate samostatné prostředků pro každou roli - a případně samostatné nastavit pro každé sestavení konfigurace – pak je nejjednodušší toocreate je vše na portál Application Insights hello. (Pokud vytvoříte mnoho prostředků, můžete [automatizovat proces hello](app-insights-powershell.md).
+Pokud jste se rozhodli vytvořit samostatný prostředek pro každou roli (a možná samostatnou sadu pro každé sestavení konfigurace), je nejjednodušší vytvořit je všechny na portálu Application Insights. (Pokud vytváříte mnoho prostředků, můžete [proces automatizovat](app-insights-powershell.md).)
 
-1. V hello [portál Azure][portal], vytvořte nový prostředek Application Insights. Jako typ aplikace vyberte aplikaci ASP.NET. 
+1. Na webu [Azure Portal][portal] vytvořte nový prostředek Application Insights. Jako typ aplikace vyberte aplikaci ASP.NET. 
 
     ![Klikněte na tlačítko Nový, Application Insights](./media/app-insights-cloudservices/01-new.png)
-2. Všimněte si, že každý prostředek je identifikován instrumentačním klíčem. Pokud chcete, aby toomanually to může být nutné později nastavte nebo zkontrolujte konfiguraci hello hello SDK.
+2. Všimněte si, že každý prostředek je identifikován instrumentačním klíčem. Je možné, že ho budete potřebovat později, pokud budete chtít ručně konfigurovat sadu SDK nebo její konfiguraci ověřit.
 
-    ![Klikněte na tlačítko Vlastnosti, vyberte klíč hello a stiskněte ctrl + C](./media/app-insights-cloudservices/02-props.png) 
+    ![Klikněte na tlačítko Vlastnosti, vyberte klíč a stiskněte klávesy ctrl + C](./media/app-insights-cloudservices/02-props.png) 
 
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Nastavení diagnostiky Azure pro každou roli
-Nastavte tuto možnost toomonitor vaší aplikace pomocí Application Insights. V případě webových rolí tento postup umožňuje monitorování, výstrahy a diagnostiku výkonu a také analýzu využití. Pro jiné role můžete vyhledat a monitorovat Azure diagnostics například restartování, čítače výkonu a tooSystem.Diagnostics.Trace volání. 
+Tuto možnost nastavte, pokud chcete aplikaci monitorovat pomocí Application Insights. V případě webových rolí tento postup umožňuje monitorování, výstrahy a diagnostiku výkonu a také analýzu využití. V případě jiných rolí můžete vyhledávat a monitorovat diagnostiku Azure, jako jsou restarty, čítače výkonu a volání System.Diagnostics.Trace. 
 
-1. V Průzkumníku řešení Visual Studio klikněte v části &lt;YourCloudService&gt;, role, otevřete vlastnosti hello jednotlivých rolí.
-2. V **konfigurace**, nastavte **odeslání diagnostiky dat tooApplication Insights** a vyberte hello odpovídající prostředek Application Insights, kterou jste vytvořili dříve.
+1. V Průzkumníku řešení sady Visual Studio v části &lt;vaše_cloudová_služba&gt;, Role otevřete vlastnosti jednotlivých rolí.
+2. V části **Konfigurace**, nastavte možnost **Posílat diagnostická data do Application Insights** a vyberte odpovídající prostředek Application Insights, který jste vytvořili dříve.
 
-Pokud jste se rozhodli toouse samostatné prostředek Application Insights pro každou konfiguraci sestavení, vyberte nejdřív hello konfigurace.
+Pokud jste se rozhodli použít samostatný prostředek Application Insights pro každou konfiguraci sestavení, vyberte nejprve konfiguraci.
 
-![V dialogovém okně Vlastnosti hello jednotlivých rolí Azure nakonfigurujte Application Insights](./media/app-insights-cloudservices/configure-azure-diagnostics.png)
+![Ve vlastnostech každé role Azure konfigurujte Application Insights.](./media/app-insights-cloudservices/configure-azure-diagnostics.png)
 
-Tato akce nemá vliv hello vložení klíče instrumentace Application Insights do hello souborů s názvem `ServiceConfiguration.*.cscfg`. ([Vzorový kód](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).)
+Tento postup má za následek vložení instrumentačních klíčů Application Insights do souborů s názvy `ServiceConfiguration.*.cscfg`. ([Vzorový kód](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).)
 
-Pokud chcete úroveň hello toovary diagnostické informace odesílané tooApplication statistiky, můžete tak učinit [úpravou hello `.cscfg` soubory přímo](app-insights-azure-diagnostics.md).
+Pokud chcete měnit úroveň diagnostických informací odesílaných do Application Insights, můžete tak učinit [přímou úpravou souborů `.cscfg`](app-insights-azure-diagnostics.md).
 
-## <a name="sdk"></a>Nainstalujte hello SDK v každém projektu
-Tato možnost přidá hello možnost tooadd vlastní obchodní telemetrie tooany roli, k analýze blíže se používá a provede aplikace.
+## <a name="sdk"></a>Instalace sady SDK v každém projektu
+Tato možnost umožňuje přidat vlastní obchodní telemetrická data do kterékoli role kvůli podrobnější analýze způsobu použití aplikace a její výkonnosti.
 
-V sadě Visual Studio nakonfigurujte hello Application Insights SDK pro každý projekt cloudové aplikace.
+V sadě Visual Studio nakonfigurujte sadu SDK Application Insights pro každý projekt cloudové aplikace.
 
-1. **Webové role**: klikněte pravým tlačítkem na projekt hello a zvolte **konfigurovat Application Insights** nebo **Přidat > telemetrie Application Insights**.
+1. **Webové role:** Klikněte na projekt pravým tlačítkem myši a zvolte možnost **Nakonfigurovat Application Insights** nebo **Přidat &gt; Telemetrie Application Insights**.
 
 2. **Role pracovních procesů**: 
- * Klikněte pravým tlačítkem na projekt hello a vyberte **spravovat balíčky Nuget**.
+ * Klikněte na projekt pravým tlačítkem myši a vyberte možnost **Spravovat balíčky Nuget**.
  * Přidejte balíček [Application Insights pro servery Windows](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/).
 
-    ![Vyhledání Application Insights](./media/app-insights-cloudservices/04-ai-nuget.png)
+    ![Vyhledejte „Application Insights“](./media/app-insights-cloudservices/04-ai-nuget.png)
 
-3. Nakonfigurujte hello SDK toosend data toohello prostředek Application Insights.
+3. Konfigurujte sadu SDK tak, aby odesílala data do prostředku Application Insights.
 
-    Ve funkci spuštění vhodný nastavte klíč instrumentace hello z nastavení konfigurace hello v souboru .cscfg hello:
+    Ve vhodné spouštěcí funkci nastavte instrumentační klíč podle nastavení konfigurace v souboru .cscfg:
  
     ```C#
    
      TelemetryConfiguration.Active.InstrumentationKey = RoleEnvironment.GetConfigurationSettingValue("APPINSIGHTS_INSTRUMENTATIONKEY");
     ```
    
-    Proveďte tento postup pro každou roli v aplikaci. Příklady hello:
+    Proveďte tento postup pro každou roli v aplikaci. Podívejte se na příklady:
    
    * [Webová role](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Global.asax.cs#L27)
    * [Role pracovního procesu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
    * [Pro webové stránky](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
-4. Sada hello souboru ApplicationInsights.config souboru toobe zkopírovat vždy toohello výstupního adresáře. 
+4. Nastavte soubor ApplicationInsights.config tak, aby se vždy kopíroval do výstupního adresáře. 
    
-    (V souboru .config hello, zobrazí se zprávy s dotazem, můžete tooplace hello klíč instrumentace existuje. Pro cloudové aplikace, je však lepší tooset ze souboru .cscfg hello. Tím se zajistí, že je tato role hello identifikovány správně hello portálu.)
+    (V souboru .config se zobrazí zprávy s výzvou, abyste tam umístili instrumentační klíč. Pro cloudové aplikace je však lepší provést nastavení ze souboru .cscfg. Zajistí se tím správná identifikace role v portálu.)
 
-#### <a name="run-and-publish-hello-app"></a>Spuštění a publikování aplikace hello
-Spusťte aplikaci a přihlaste se k Azure. Prostředky Application Insights otevřete hello jste vytvořili, a zobrazí se v jednotlivých datových bodů [vyhledávání](app-insights-diagnostic-search.md), a agregovat data v [Explorer metrika](app-insights-metrics-explorer.md). 
+#### <a name="run-and-publish-the-app"></a>Spuštění a publikování aplikace
+Spusťte aplikaci a přihlaste se k Azure. Otevřete prostředky Application Insights, které jste vytvořili. V části [Vyhledávání](app-insights-diagnostic-search.md) se zobrazí jednotlivé datové body a v části [Průzkumník metrik](app-insights-metrics-explorer.md) se zobrazí agregovaná data. 
 
-Přidejte další telemetrie – najdete v následující části obsahují - hello a potom publikovat vaše tooget za provozu diagnostiky a použití zpětné vazby aplikace. 
+Přidejte další telemetrická data (viz části níže) a pak aplikaci publikujte, abyste mohli přijímat zpětnou vazbu ohledně diagnostiky a využití v živém provozu. 
 
 #### <a name="no-data"></a>Žádná data?
-* Otevřete hello [vyhledávání] [ diagnostic] dlaždici toosee jednotlivé události.
-* Pomocí aplikace hello, otevřete různé stránky tak, aby ji k vygenerování nějaké telemetrie.
+* Otevřete dlaždici [Vyhledávání][diagnostic] a zobrazte jednotlivé události.
+* Použijte aplikaci a otevřete různé stránky tak, aby došlo k vygenerování nějaké telemetrie.
 * Počkejte několik sekund a klikněte na možnost Aktualizovat.
 * Další informace najdete v tématu [Poradce při potížích][qna].
 
 ## <a name="view-azure-diagnostic-events"></a>Zobrazení událostí diagnostiky Azure
-Kde toofind hello [Azure Diagnostics](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/azure-diagnostics) informace ve službě Application Insights:
+Kde najít informace [diagnostiky Azure](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/azure-diagnostics) ve službě Application Insights:
 
 * Čítače výkonu se zobrazují jako vlastní metriky. 
 * Protokoly událostí systému Windows se zobrazují jako trasování a vlastní události.
 * Protokoly aplikací, protokoly trasování událostí pro Windows a veškeré protokoly infrastruktury diagnostiky se zobrazují jako trasování.
 
-čítače výkonu toosee a počet událostí, otevřete [Průzkumníku metrik](app-insights-metrics-explorer.md) a přidejte nový graf:
+Chcete-li zobrazit čítače výkonu a počty událostí, otevřete [Průzkumníka metrik](app-insights-metrics-explorer.md) a přidejte nový graf:
 
 ![Diagnostická data Azure](./media/app-insights-cloudservices/23-wad.png)
 
-Použití [vyhledávání](app-insights-diagnostic-search.md) nebo [Analytics dotazu](app-insights-analytics-tour.md) toosearch napříč různými protokoly poslal Azure Diagnostics sledování hello. Předpokládejme například, že máte k neošetřené výjimce, který chybu způsobil Role toocrash a recyklaci. Tyto informace se zobrazí v hello aplikace kanál z protokolu událostí systému Windows. Můžete použít vyhledávání toolook v hello Chyba protokolu událostí systému Windows a získat trasování hello úplné zásobníku pro výjimku hello. Který vám pomůže najít hello hlavní příčinu problému hello.
+V části [Vyhledávání](app-insights-diagnostic-search.md) nebo [Dotaz Analytics](app-insights-analytics-tour.md) můžete hledat v různých protokolech trasování odeslaných diagnostikou Azure. Předpokládejme například, že se vyskytla neošetřená výjimka, která způsobila zhroucení a recyklaci role. Tyto informace se zobrazují v kanálu Aplikace protokolu událostí systému Windows. Prostřednictvím hledání můžete najít chybu v protokolu událostí systému Windows a získat úplné trasování zásobníku pro příslušnou výjimku. Tímto způsobem můžete najít hlavní příčinu problému.
 
 ![Hledání v diagnostice Azure](./media/app-insights-cloudservices/25-wad.png)
 
 ## <a name="more-telemetry"></a>Další telemetrická data
-Hello oddílech Zobrazit jak tooget další telemetrie z různých aspektů aplikace.
+Následující části popisují, jak získávat další telemetrická data z různých aspektů aplikace.
 
 ## <a name="track-requests-from-worker-roles"></a>Sledování požadavků z rolí pracovních procesů
-Ve webové role hello požadavky modulu automaticky shromažďuje data o požadavcích HTTP. V tématu hello [ukázkové MVCWebRole](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole) příklady, jak můžete přepsat hello výchozí kolekci chování. 
+Ve webových rolí modul požadavků automaticky shromažďuje data týkající se požadavků HTTP. V [ukázce MVCWebRole](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole) najdete příklady možností potlačení výchozího chování při shromažďování. 
 
-Můžete zaznamenat hello výkonu volání tooworker rolí pomocí funkce sledování je v hello stejným způsobem jako požadavky HTTP. Ve službě Application Insights měří hello požadavek telemetrie typu s názvem pracovní straně serveru, který můžete vypršel časový limit a můžete nezávisle úspěch nebo neúspěch jednotka. Zatímco požadavky HTTP jsou automaticky zachycenou hello SDK, můžete vložit vlastní kód tootrack požadavky tooworker role.
+Můžete zaznamenávat výkon volání rolí pracovních procesů, pokud je budete sledovat stejným způsobem jako požadavky HTTP. V Application Insights typ telemetrických dat Požadavek měří uvedenou jednotku práce serveru, kterou lze časovat a která může nezávisle být úspěšná nebo neúspěšná. Zatímco požadavky HTTP automaticky zachycuje sada SDK, můžete vložit vlastní kód pro sledování požadavků na role pracovních procesů.
 
-V tématu požadavků instrumentovaného tooreport hello dva ukázkové pracovního procesu worker role: [WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA) a [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
+Prohlédněte si dvě ukázkové role pracovních procesů, které mají zaznamenávat požadavky: [WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA) a [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
 
 ## <a name="exceptions"></a>Výjimky
 V tématu [Monitorování výjimek v Application Insights](app-insights-asp-net-exceptions.md) najdete informace o tom, jak shromažďovat neošetřené výjimky z různých typů webových aplikací.
 
-Hello ukázkové webové role má MVC5 a webovém rozhraní API 2 řadičů. Hello neošetřené výjimky z hello dva jsou zachytit pomocí hello následující obslužné rutiny:
+Ukázková webová role obsahuje kontrolery rozhraní MVC5 a Web API 2. Nezpracované výjimky z nich jsou zachyceny pomocí následujících obslužných rutin:
 
 * [AiHandleErrorAttribute](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiHandleErrorAttribute.cs) nastavená [zde](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/FilterConfig.cs#L12) pro kontrolery rozhraní MVC5
 * [AiWebApiExceptionLogger](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiWebApiExceptionLogger.cs) nastavená [sem](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/WebApiConfig.cs#L25) pro kontrolery rozhraní Web API 2
 
-Pro role pracovního procesu existují dva způsoby tootrack výjimky:
+V případě rolí pracovních procesů existují dva způsoby, jak sledovat výjimky:
 
 * TrackException(ex)
-* Pokud jste přidali balíček NuGet hello Application Insights trasování naslouchací proces, můžete použít **System.Diagnostics.Trace** toolog výjimky. [Příklad kódu.](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L107)
+* Pokud jste přidali balíček NuGet pro naslouchací proces trasování Application Insights, můžete k protokolování výjimek použít volání **System.Diagnostics.Trace**. [Příklad kódu.](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L107)
 
 ## <a name="performance-counters"></a>Čítače výkonu
-ve výchozím nastavení se shromažďují Hello následující čítače:
+Ve výchozím nastavení se shromažďují následující čítače:
 
     * \Process(??APP_WIN32_PROC??)\% Processor Time
     * \Memory\Available Bytes
@@ -200,33 +200,33 @@ Další vlastní čítače výkonu nebo jiné čítače výkonu Windows můžete
   ![Čítače výkonu](./media/app-insights-cloudservices/OLfMo2f.png)
 
 ## <a name="correlated-telemetry-for-worker-roles"></a>Korelační telemetrická data pro role pracovních procesů
-Bohaté diagnostiky prostředí, je při uvidíte, jaké vedených tooa se nezdařilo nebo vysokou latencí požadavku. S webové role hello SDK automaticky nastaví korelace mezi související telemetrii. Pro role pracovního procesu můžete vlastní telemetrii inicializátoru tooset společný atribut kontextu Operation.Id pro všechny tooachieve telemetrie hello to. To vám umožní toosee zda hello latenci nebo selhání problém byl způsobený z důvodu závislosti mezi tooa nebo kódu, na první pohled! 
+Díky informačně bohaté diagnostice můžete zjistit, co vedlo k neúspěšnému požadavku nebo k požadavku s vysokou latencí. V případě webových rolí sada SDK automaticky zjišťuje korelaci mezi souvisejícími telemetrickými daty. V případě rolí pracovních procesů můžete použít inicializátor vlastní telemetrie a nastavit společný atribut kontextu Operation.Id pro veškerá telemetrická data, abyste tohoto cíle dosáhli. Díky tomu můžete na první pohled zjistit, jestli byl problém týkající se latence nebo selhání způsoben závislostí na vašem kódu! 
 
 Zde je uveden postup:
 
-* Nastavte hello korelace Id do CallContext, jak je znázorněno [zde](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36). V tomto případě používáme hello ID požadavku jako id korelace hello
-* Přidáte vlastní implementaci TelemetryInitializer tooset hello Operation.Id toohello correlationId nastavit výše. Příklad je zde: [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13)
-* Přidáte vlastní telemetrii inicializátoru hello. Můžete to udělat v soubor ApplicationInsights.config hello nebo v kódu znázorněné [sem](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233)
+* Nastavte ID korelace v CallContext tak, jak je uvedeno [zde](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36). V tomto případě používáme jako ID korelace ID požadavku.
+* Přidejte vlastní implementaci TelemetryInitializer a nastavte Operation.Id na ID korelace uvedené výše. Příklad je zde: [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13)
+* Přidejte inicializátor vlastní telemetrie. Můžete to udělat v souboru ApplicationInsights.config nebo v kódu uvedeném [zde](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233)
 
-A to je vše! Práce s portálem Hello je již drátové sítě si toohelp že zobrazí všechny přidružené telemetrii na první pohled:
+A to je vše! Prostředí portálu je již připraveno, abyste všechna přidružená telemetrická data viděli na první pohled:
 
 ![Korelační telemetrická data](./media/app-insights-cloudservices/bHxuUhd.png)
 
 ## <a name="client-telemetry"></a>Telemetrická data klienta
-[Přidat hello webové stránky JavaScript SDK tooyour] [ client] tooget založené na prohlížeči telemetrie například počtu zobrazení stránky, časů načtení stránky, výjimek skriptu a toolet psát vlastní telemetrii ve skriptech stránky.
+Po [přidání sady SDK JavaScript do webových stránek][client] můžete získávat telemetrická data související s prohlížečem, jako jsou počty zobrazení stránek, časy načítání stránek nebo výjimky skriptů, a zapisovat ve svých skriptech stránek vlastní telemetrická data.
 
 ## <a name="availability-tests"></a>Testy dostupnosti
-[Nastavit testy webu] [ availability] toomake, že vaše aplikace zůstává aktivní a reagující.
+[Nastavení webových testů][availability] pro zajištění, že aplikace zůstane funkční a bude reagovat.
 
 ## <a name="display-everything-together"></a>Zobrazení všeho najednou
-tooget celkový přehled systému, můžete zahrnout hello klíč tabulek sledování společně na jednom [řídicí panel](app-insights-dashboards.md). Například může připnout hello požadavku a počet selhání jednotlivých rolí. 
+Chcete-li získat celkový přehled o systému, můžete klíčové grafy monitorování převést na jeden [řídicí panel](app-insights-dashboards.md). Můžete například připnout počty požadavků a selhání pro jednotlivé role. 
 
 Pokud váš systém využívá jiné služby Azure, například Stream Analytics, jsou zahrnuty i jejich grafy monitorování. 
 
-Pokud máte mobilní aplikace klienta, vložte některé kód toosend vlastní události na operace klíče uživatele a vytvořit [HockeyApp most](app-insights-hockeyapp-bridge-app.md). Vytváření dotazů v nástroji [Analytics](app-insights-analytics.md) toodisplay hello počty událostí a připnete ji toohello řídicího panelu.
+Pokud používáte mobilní aplikace klienta, vložte kód pro odesílání vlastních událostí při klíčových operacích uživatele a vytvořte [most HockeyApp](app-insights-hockeyapp-bridge-app.md). V [Analytics](app-insights-analytics.md) můžete vytvářet dotazy pro zobrazení počtu událostí a můžete je připnout na řídicí panel.
 
 ## <a name="example"></a>Příklad
-[Příklad Hello](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) monitoruje službu, která obsahuje webovou roli a dvě role pracovního procesu.
+V [příkladu](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) se monitoruje služba s webovou rolí a dvěma rolemi pracovních procesů.
 
 ## <a name="exception-method-not-found-on-running-in-azure-cloud-services"></a>Výjimka „metoda nebyla nalezena“ při spuštění v Azure Cloud Services
 Vytvořili jste sestavení pro .NET 4.6? Verze 4.6 není v rolích Azure Cloud Services podporována automaticky. Před spuštěním aplikace [nainstalujte pro každou roli verzi 4.6](../cloud-services/cloud-services-dotnet-install-dotnet.md).
@@ -236,7 +236,7 @@ Vytvořili jste sestavení pro .NET 4.6? Verze 4.6 není v rolích Azure Cloud S
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>Další kroky
-* [Konfigurace odesílání Azure Diagnostics tooApplication statistiky](app-insights-azure-diagnostics.md)
+* [Konfigurace odesílání diagnostiky Azure do Application Insights](app-insights-azure-diagnostics.md)
 * [Automatizace vytváření prostředků Application Insights](app-insights-powershell.md)
 * [Automatizace diagnostiky Azure](app-insights-powershell-azure-diagnostics.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)

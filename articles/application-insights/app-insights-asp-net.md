@@ -1,5 +1,5 @@
 ---
-title: "aaaSet až analýzy webové aplikace pro technologii ASP.NET pomocí služby Azure Application Insights | Microsoft Docs"
+title: "Nastavení analýzy webových aplikací pro ASP.NET pomocí Azure Application Insights | Dokumentace Microsoftu"
 description: "Nakonfigurujte výkon, dostupnost a analýzy využití pro váš web ASP.NET hostovaný místně nebo v Azure."
 services: application-insights
 documentationcenter: .net
@@ -13,125 +13,125 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/15/2017
 ms.author: bwren
-ms.openlocfilehash: 61a3cdce68da48bfb9450b1d296acc1535f50a38
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: cb247ee68da88265f7c51258644064463d44f8b5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Nastavení Application Insights pro web ASP.NET
 
-Tento postup nakonfiguruje vaše ASP.NET webové aplikace toosend telemetrie toohello [Azure Application Insights](app-insights-overview.md) služby. Funguje pro aplikace ASP.NET, které jsou hostované v serveru služby IIS nebo v cloudu hello. Získejte grafy a účinný dotazovací jazyk, který vám pomůže pochopit hello výkonu vaší aplikace a jak uživatelé používají, plus Automatické upozornění na selhání nebo problémy s výkonem. Celá řada vývojářů najít tyto funkce skvělé jak jsou, ale můžete také rozšířit a přizpůsobit telemetrie hello, pokud je potřeba.
+Tímto postupem je možné konfigurovat webovou aplikaci ASP.NET tak, aby odesílala telemetrická data do služby [Azure Application Insights](app-insights-overview.md). Funguje pro aplikace ASP.NET, které jsou hostované buď na vašem vlastním serveru služby IIS, nebo v cloudu. Můžete získat grafy a výkonný dotazovací jazyk, který vám pomůže porozumět výkonu vaší aplikace a způsobu, jakým ji uživatelé používají, a také automatické výstrahy v případě selhání nebo problémů s výkonem. Celá řada vývojářů považuje tyto funkce za skvělé (a ony jsou), v případě potřeby ale můžete telemetrická data také rozšířit a přizpůsobit.
 
-Nastavení je otázkou několika kliknutí v sadě Visual Studio. Máte hello možnost tooavoid poplatky omezením hello svazku telemetrie. To vám umožní tooexperiment a ladění nebo toomonitor lokality s není mnoha uživateli. Pokud se rozhodnete chcete toogo dopředu a sledovat vaše pracoviště, je snadné tooraise omezení hello později.
+Nastavení je otázkou několika kliknutí v sadě Visual Studio. Máte možnost vyhnout se placení poplatků, pokud objem telemetrických dat omezíte. Díky tomu můžete experimentovat a ladit nebo monitorovat server s menším množstvím uživatelů. Pokud se později rozhodnete, že chcete pokračovat a monitorovat svůj provozní server, můžete limit snadno zvýšit.
 
 ## <a name="before-you-start"></a>Než začnete
 Budete potřebovat:
 
 * Visual Studio 2013 s aktualizací Update 3 nebo vyšší. Později je lepší.
-* Předplatné příliš[Microsoft Azure](http://azure.com). Pokud váš tým nebo společnost má předplatné Azure, vlastník hello vás může přidat tooit, pomocí vaší [účtu Microsoft](http://live.com).
+* Předplatné [Microsoft Azure](http://azure.com). Pokud má váš tým nebo organizace předplatné Azure, vlastník vás do něj může přidat pomocí vašeho [účtu Microsoft](http://live.com).
 
-Pokud vás zajímá, existují toolook alternativní témata na:
+K dispozici jsou i alternativní témata, na která se v případě zájmu můžete podívat:
 
 * [Instrumentace webové aplikace za běhu](app-insights-monitor-performance-live-website-now.md)
 * [Azure Cloud Services](app-insights-cloudservices.md)
 
-## <a name="ide"></a>Krok 1: Přidání hello Application Insights SDK
+## <a name="ide"></a>Krok 1: Přidání sady Application Insights SDK
 
 Klikněte pravým tlačítkem myši na projekt webové aplikace v Průzkumníku řešení a vyberte postupně **Přidat** > **Telemetrie Application Insights...** nebo **Konfigurovat Application Insights**.
 
 ![Snímek obrazovky Průzkumníka řešení se zvýrazněnou možností Přidat telemetrii Application Insights](./media/app-insights-asp-net/appinsights-03-addExisting.png)
 
-(V sadě Visual Studio 2015 se také možnost tooadd Application Insights v dialogovém okně Nový projekt hello.)
+(V sadě Visual Studio 2015 je také možné přidat Application Insights v dialogovém okně Nový projekt.)
 
-Pokračujte – stránka konfigurace toohello Application Insights:
+Přejděte na konfigurační stránku Application Insights:
 
 ![Snímek obrazovky stránky registrace vaší aplikace v Application Insights](./media/app-insights-asp-net/visual-studio-register-dialog.png)
 
-**a.** Vyberte hello účet a předplatné, že používáte tooaccess Azure.
+**a.** Vyberte účet a předplatné, které používáte pro přístup k Azure.
 
-**b.** Vyberte prostředek hello v Azure, kam chcete toosee hello data z vaší aplikace. Obvyklý postup:
+**b.** V Azure vyberte prostředek, ve kterém chcete zobrazit data z vaší aplikace. Obvyklý postup:
 
 * Použijte [jeden prostředek pro různé komponenty](app-insights-monitor-multi-role-apps.md) jedné aplikace. 
 * Vytvořte samostatné prostředky pro nesouvisející aplikace.
  
-Pokud chcete tooset hello prostředků skupiny nebo hello umístění, kde jsou uložené vaše data, klikněte na tlačítko **nakonfigurovat nastavení**. Skupiny prostředků jsou použité toocontrol toodata přístup. Například pokud máte několik aplikací, které tvoří část hello, stejný systém, můžete ukládat svoje data Application Insights do hello stejnou skupinu prostředků.
+Pokud chcete nastavit skupinu prostředků nebo umístění, kde jsou vaše data uložená, klikněte na **Konfigurovat nastavení**. Skupiny prostředků slouží k řízení přístupu k datům. Pokud například máte několik aplikací, které tvoří součást stejného systému, můžete jejich data Application Insights ukládat do stejné skupiny prostředků.
 
-**c.** Nastavte cap při hello volné dat svazku limitu tooavoid poplatky. Application Insights je uvolněte tooa určité svazku telemetrie. Po vytvoření hello prostředků, můžete změnit výběr portálu hello otevřením **funkce + ceny** > **Správa svazku dat** > **denní svazek cap**.
+**c.** Můžete nastavit prahovou hodnotu pro limit bezplatného objemu dat, abyste se vyhnuli placení poplatků. Služba Application Insights je do určitého objemu telemetrie bezplatná. Po vytvoření prostředku můžete výběr na portálu změnit tak, že otevřete **Funkce a ceny** > **Správa dat** > **Denní limit objemu**.
 
-**d.** Klikněte na tlačítko **zaregistrovat** toogo dopředu a konfigurace Application Insights pro webové aplikace. Telemetrie zašle toohello [portál Azure](https://portal.azure.com), během ladění a po publikování aplikace.
+**d.** Pokračujte kliknutím na **Registrovat** a nakonfigurujte Application Insights pro vaši webovou aplikaci. Telemetrie se bude posílat na web [Azure Portal](https://portal.azure.com), jak během ladění aplikace, tak po jejím publikování.
 
-**e.** Pokud nechcete, aby toosend telemetrie toohello portál při ladění, stačí přidat aplikaci tooyour hello Application Insights SDK ale není nakonfigurovat prostředek hello portálu. Při ladění, bude se mít toosee telemetrie v sadě Visual Studio. Později, můžete se vrátit toothis stránku konfigurace, nebo může počkejte po nasazení aplikace a [přepínač na telemetrie v době běhu](app-insights-monitor-performance-live-website-now.md).
+**e.** Pokud během ladění nechcete na portál odesílat telemetrická data, stačí přidat do aplikace sadu SDK Application Insights, ale nekonfigurovat prostředek na portálu. Během ladění se budou telemetrická data zobrazovat v sadě Visual Studio. Později se můžete na tuto stránku konfigurace vrátit, nebo počkat až po nasazení aplikace a [přepnout na telemetrie za běhu](app-insights-monitor-performance-live-website-now.md).
 
 
 ## <a name="run"></a>Krok 2: Spuštění aplikace
-Spusťte aplikaci pomocí F5. Otevřete různé stránky toogenerate nějaké telemetrie.
+Spusťte aplikaci pomocí F5. Otevřete různé stránky k vygenerování nějaké telemetrie.
 
-V sadě Visual Studio zobrazí počet hello události, které byly zaprotokolovány.
+V sadě Visual Studio se zobrazí počet událostí, které byly zaprotokolovány.
 
-![Snímek obrazovky sady Visual Studio. Zobrazí tlačítko Application Insights Hello během ladění.](./media/app-insights-asp-net/54.png)
+![Snímek obrazovky sady Visual Studio. Během ladění se zobrazí tlačítko Application Insights.](./media/app-insights-asp-net/54.png)
 
 ## <a name="step-3-see-your-telemetry"></a>Krok 3: Zobrazení vašich telemetrických dat
-Můžete zobrazit telemetrii v sadě Visual Studio nebo na webovém portálu Application Insights hello. Hledání telemetrie v sadě Visual Studio toohelp ladění aplikace. Sledování výkonu a využití v hello webový portál, pokud je váš systém za provozu. 
+Telemetrii můžete zobrazit v sadě Visual Studio nebo na webovém portálu Application Insights. Hledáním v rámci telemetrických dat v sadě Visual Studio si můžete usnadnit ladění aplikace. Když bude váš systém v provozu, můžete monitorovat výkon a využití na webovém portálu. 
 
 ### <a name="see-your-telemetry-in-visual-studio"></a>Zobrazení telemetrických dat v sadě Visual Studio
 
-V sadě Visual Studio otevřete okno Application Insights hello. Buď klikněte na tlačítko hello **Application Insights** tlačítko, nebo klikněte pravým tlačítkem na projekt v Průzkumníku řešení, vyberte **Application Insights**a pak klikněte na tlačítko **vyhledávání Live Telemetrie**.
+V sadě Visual Studio otevřete okno Application Insights. Klikněte na tlačítko **Application Insights** nebo klikněte pravým tlačítkem na projekt v Průzkumníku řešení, vyberte **Application Insights** a potom klikněte na **Aktivní telemetrie služby Search**.
 
-V okně hledání Visual Studio Application Insights hello najdete v části hello **Data z relaci ladění** zobrazení pro telemetrii vygenerovanou hello vaší aplikace na straně serveru. Experimentujte s filtry hello a klikněte na všechny události toosee podrobněji.
+V okně Visual Studio Application Insights Search se v zobrazení **Data z relace ladění** zobrazí telemetrie vygenerovaná na straně serveru vaší aplikace. Experimentujte s filtry a klikněte na události, které chcete zobrazit podrobněji.
 
-![Snímek obrazovky hello Data z relaci ladění zobrazit v okně hello Application Insights.](./media/app-insights-asp-net/55.png)
+![Snímek obrazovky zobrazení Data z relace ladění v okně Application Insights.](./media/app-insights-asp-net/55.png)
 
 > [!NOTE]
-> Pokud se nezobrazí žádná data, zajistěte, aby hello časový rozsah je správný a klikněte na ikonu hledání hello.
+> Pokud se žádná data nezobrazí, ujistěte se, že je časový rozsah správný, a klikněte na ikonu Search.
 
 [Další informace týkající se nástrojů Application Insights v sadě Visual Studio](app-insights-visual-studio.md).
 
 <a name="monitor"></a>
 ### <a name="see-telemetry-in-web-portal"></a>Zobrazení telemetrických dat na webovém portálu
 
-Můžete také zjistit telemetrii na webovém portálu Application Insights hello (Pokud jste vybrali pouze hello tooinstall SDK). Hello portál obsahuje více grafů, analytických nástrojů a zobrazení mezi komponenty než Visual Studio. portál Hello také nabízí výstrahy.
+Telemetrická data můžete zobrazit také na webovém portálu Application Insights (pokud jste se nerozhodli nainstalovat pouze sadu SDK). Portál obsahuje více grafů, analytických nástrojů a zobrazení nad několika součástmi než sada Visual Studio. Portál poskytuje také výstrahy.
 
-Otevřete prostředek Application Insights. Buď přihlásit toohello [portál Azure](https://portal.azure.com/) najít ho existuje, nebo klikněte pravým tlačítkem na projekt hello v sadě Visual Studio a nechat ji provést uživatele.
+Otevřete prostředek Application Insights. Buď se přihlaste k webu [Azure Portal](https://portal.azure.com/) a vyhledejte jej, nebo klikněte pravým tlačítkem myši na projekt v sadě Visual Studio a ten vás navede.
 
-![Snímek obrazovky aplikace Visual Studio, znázorňující, jak tooopen hello portál Application Insights](./media/app-insights-asp-net/appinsights-04-openPortal.png)
+![Snímek obrazovky sady Visual Studio ukazující, jak otevřít portál Application Insights](./media/app-insights-asp-net/appinsights-04-openPortal.png)
 
 > [!NOTE]
-> Pokud dojde k chybě přístup: máte více než jednu sadu přihlašovacích údajů Microsoft a jsou jste přihlášeni s použitím hello nesprávnou sadu? Hello portálu Odhlásit se a znovu přihlásit.
+> Pokud se zobrazí chyba přístupu: Máte pro Microsoft více než jednu sadu přihlašovacích údajů a jste přihlášení pomocí nesprávné sady? Odhlaste se z portálu a znovu se přihlaste.
 
-Hello portál ho otevře v zobrazení hello telemetrie z vaší aplikace.
+Portál otevře zobrazení telemetrie z vaší aplikace.
 
 ![Snímek obrazovky stránky s přehledem Application Insights](./media/app-insights-asp-net/66.png)
 
-Hello portálu klikněte na všechny dlaždice nebo graf toosee podrobněji.
+Po kliknutí na kteroukoli dlaždici nebo graf se zobrazí podrobnější údaje.
 
-[Další informace o používání Application Insights na portálu Azure hello](app-insights-dashboards.md).
+[Další informace o používání Application Insights na portálu Azure Portal](app-insights-dashboards.md).
 
 ## <a name="step-4-publish-your-app"></a>Krok 4: Publikování aplikace
-Publikování aplikací serveru IIS tooyour nebo tooAzure. Kukátko [živý datový proud metriky](app-insights-metrics-explorer.md#live-metrics-stream) toomake se všechno běží bez problémů.
+Publikování aplikace na serveru služby IIS nebo do Azure. Sledujte [Živé vysílání metrik](app-insights-metrics-explorer.md#live-metrics-stream) a ověřte, zda vše běží hladce.
 
-Telemetrie vytvoří hello portálu Application Insights, kde můžete monitorovat metriky, hledání telemetrie a nastavit [řídicí panely](app-insights-dashboards.md). Můžete také použít hello výkonné [analýzy protokolů dotazu jazyka](https://docs.loganalytics.io/) tooanalyze využití a výkonu nebo toofind konkrétní události.
+Telemetrie vzniká na portálu Application Insights, kde můžete monitorovat metriky, vyhledávat telemetrii a nastavovat [řídicí panely](app-insights-dashboards.md). Můžete také použít výkonný [dotazovací jazyk Log Analytics](https://docs.loganalytics.io/) k analýze využití a výkonu nebo k hledání konkrétních událostí.
 
-Můžete také pokračovat tooanalyze telemetrie v [Visual Studio](app-insights-visual-studio.md), pomocí nástrojů, jako je vyhledávání diagnostiky a [trendy](app-insights-visual-studio-trends.md).
+Můžete také dále analyzovat telemetrii v sadě [Visual Studio](app-insights-visual-studio.md) pomocí nástrojů jako vyhledávání diagnostiky a [Trendy](app-insights-visual-studio-trends.md).
 
 > [!NOTE]
-> Pokud vaše aplikace odesílá dost telemetrických dat tooapproach hello [omezení](app-insights-pricing.md#limits-summary), automatické [vzorkování](app-insights-sampling.md) přepne. Vzorkování snižuje množství hello telemetrická data odesílaná z vaší aplikace, při zachování korelační data k diagnostickým účelům.
+> Pokud vaše aplikace odesílá dostatek telemetrie k dosažení [limitů omezení](app-insights-pricing.md#limits-summary), zapne se automatické [vzorkování](app-insights-sampling.md). Vzorkování snižuje množství telemetrie odesílané z vaší aplikace při zachování korelovaných dat k diagnostickým účelům.
 >
 >
 
 ## <a name="land"></a> Nyní je vše připraveno.
 
-Blahopřejeme! Nainstalovaný balíček Application Insights hello ve vaší aplikaci a nakonfigurovat službu Application Insights toohello telemetrie toosend v Azure.
+Blahopřejeme! Nainstalovali jste do aplikace balíček Application Insights a nakonfigurovali jste pro ni odesílání telemetrických dat do služby Application Insights v Azure.
 
 ![Diagram přesunu telemetrie](./media/app-insights-asp-net/01-scheme.png)
 
-je identifikována Hello prostředků Azure, která přijímá telemetrii aplikace *klíč instrumentace*. Tento klíč najdete v souboru souboru ApplicationInsights.config hello.
+Prostředek Azure, který přijímá telemetrická data aplikace, je určen *instrumentačním klíčem*. Tento klíč najdete v souboru ApplicationInsights.config.
 
 
-## <a name="upgrade-toofuture-sdk-versions"></a>Upgrade verze sady SDK toofuture
-tooupgrade tooa [novou verzi sady hello SDK](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases), otevřete hello **Správce balíčků NuGet** znovu a filtr na nainstalované balíčky. Vyberte **Microsoft.ApplicationInsights.Web** a zvolte **Upgradovat**.
+## <a name="upgrade-to-future-sdk-versions"></a>Upgrade na budoucí verze sady SDK
+Pokud chcete upgradovat na [novou verzi sady SDK](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases), otevřete znovu **Správce balíčků NuGet** a filtrujte nainstalované balíčky. Vyberte **Microsoft.ApplicationInsights.Web** a zvolte **Upgradovat**.
 
-Pokud jste provedli jakékoli úpravy tooApplicationInsights.config, uložte jeho kopii před upgradem. Pak sloučit změny do nové verze hello.
+Pokud jste provedli jakékoli úpravy souboru ApplicationInsights.config, před upgradem si uložte jeho kopii. Potom slučte změny do nové verze.
 
 ## <a name="video"></a>Video
 
@@ -143,20 +143,20 @@ Pokud jste provedli jakékoli úpravy tooApplicationInsights.config, uložte jeh
 
 * **[Údaje o prohlížečích a o načítání stránek](app-insights-javascript.md)** – Vložte do svých webových stránek fragment kódu.
 * **[Dosažení podrobnějšího monitorování závislostí a výjimek](app-insights-monitor-performance-live-website-now.md)** – Nainstalujte si na server Monitorování stavu.
-* **[Kód vlastní události](app-insights-api-custom-events-metrics.md)**  toocount, čas nebo měření akce uživatele.
+* **[Naprogramujte vlastní události](app-insights-api-custom-events-metrics.md)**, které počítají a měří čas nebo akce uživatelů.
 * **[Získání dat protokolu](app-insights-asp-net-trace-logs.md)** – Zjišťujte korelaci dat protokolu s telemetrickými daty.
 
 ### <a name="analysis"></a>Analýza
 
-* **[Práce s Application Insights v sadě Visual Studio](app-insights-visual-studio.md)**<br/>Obsahuje informace o ladění pomocí telemetrie, diagnostické vyhledávání a procházení prostřednictvím toocode.
-* **[Práce s Application Insights portál hello](app-insights-dashboards.md)**<br/> Zahrnuje informace o řídicích panelech, výkonných nástrojích pro diagnostiku a analýzy, výstrahách, aktivních mapách závislostí vaší aplikace a exportu telemetrie.
-* **[Analýza](app-insights-analytics-tour.md)**  -hello účinný dotazovací jazyk.
+* **[Práce s Application Insights v sadě Visual Studio](app-insights-visual-studio.md)**<br/>Zahrnuje informace o ladění pomocí telemetrie, diagnostických hledáních a podrobném procházení kódem.
+* **[Práce s portálem Application Insights](app-insights-dashboards.md)**<br/> Zahrnuje informace o řídicích panelech, výkonných nástrojích pro diagnostiku a analýzy, výstrahách, aktivních mapách závislostí vaší aplikace a exportu telemetrie.
+* **[Analytics](app-insights-analytics-tour.md)** – Výkonný dotazovací jazyk.
 
 ### <a name="alerts"></a>Výstrahy
 
-* [Testy dostupnosti](app-insights-monitor-web-app-availability.md): vytváření testů toomake, že je váš web viditelná na webu hello.
-* [Inteligentní diagnostiky](app-insights-proactive-diagnostics.md): tyto testy se spouštějí automaticky, takže není nutné toodo cokoli tooset je nahoru. Upozorní vás, pokud má aplikace nezvykle velký podíl neúspěšných požadavků.
-* [Metriky výstrahy](app-insights-alerts.md): nastavte tyto toowarn vám, zda metriky protne prahovou hodnotu. Upozornění můžete nastavit u vlastních metrik, které v aplikaci naprogramujete.
+* [Testy dostupnosti:](app-insights-monitor-web-app-availability.md) Vytvářejte testy, abyste ověřili viditelnost svého webu na internetu.
+* [Inteligentní diagnostika:](app-insights-proactive-diagnostics.md) Tyto testy se spouštějí automaticky, takže je nemusíte nijak nastavovat. Upozorní vás, pokud má aplikace nezvykle velký podíl neúspěšných požadavků.
+* [Upozornění na metriku:](app-insights-alerts.md) Nastavte si je a nechte se upozornit, pokud metrika překročí mezní hodnotu. Upozornění můžete nastavit u vlastních metrik, které v aplikaci naprogramujete.
 
 ### <a name="automation"></a>Automation
 

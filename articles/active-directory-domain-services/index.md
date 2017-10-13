@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure dokumentace služby domény Active Directory - kurzy | Microsoft Docs"
-description: "Další informace, jak toouse Active Directory Domain Services toojoin Azure virtuální počítače tooa domény bez použití řadičů domény a spravovat je pomocí zásad skupiny."
+title: "Dokumentace ke službě Azure Active Directory Domain Services – kurzy | Dokumentace Microsoftu"
+description: "Naučte se, jak můžete používat Active Directory Domain Services k připojení virtuálních počítačů Azure k doméně bez použití řadiče domény a jak je spravovat pomocí zásad skupiny."
 services: active-directory-ds
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 5f1dcc57d92e1e950662c1f0cc1d00252e2fab50
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: a3eaf61fcfdc9dbb70561e9a81dc2b31d68d7c9d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="active-directory-domain-services-documentation"></a>Dokumentace ke službě Active Directory Domain Services
 
-Zjistěte, jak toouse Active Directory Domain Services toojoin Azure virtuální počítače tooa domény bez použití řadiče domény. Kurzy a další dokumenty popisují, jak toomanage virtuálních počítačů pomocí skupiny zásad.
+Naučte se, jak můžete používat Active Directory Domain Services k připojení virtuálních počítačů Azure k doméně bez použití řadiče domény. Kurzy a další dokumentace ukazují, jak můžete spravovat virtuální počítače pomocí zásad skupiny.
 
 <ul class="panelContent cardsFTitle">
     <li>

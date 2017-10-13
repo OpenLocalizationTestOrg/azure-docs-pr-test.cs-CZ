@@ -1,6 +1,6 @@
 ---
-title: "aaaSet až toocreate prostředí PowerShell virtuálního počítače pro hello Marketplace | Microsoft Docs"
-description: "Pokyny pro nastavení prostředí Azure PowerShell a jeho použití jako volitelný proces toku toodeploy bitové kopie toocreate virtuálních počítačů a prodeje na, hello Azure Marketplace"
+title: "Nastavení prostředí PowerShell pro vytvoření virtuálního počítače pro Marketplace | Microsoft Docs"
+description: "Pokyny pro nastavení prostředí Azure PowerShell a jeho použití jako volitelný proces toku k vytvoření Image virtuálních počítačů k nasazení a prodeje na Azure Marketplace"
 services: marketplace-publishing
 documentationcenter: 
 author: HannibalSII
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/04/2016
 ms.author: hascipio
-ms.openlocfilehash: cd2ebad7472248b8f921706e1a8c82d41f33b9cc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: bbcce5093d2bbd5326523063db7d0e565fe4de6d
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="set-up-azure-powershell-toocreate-an-offer-for-hello-azure-marketplace"></a>Nastavení prostředí Azure PowerShell toocreate nabídku hello Azure Marketplace
-Podrobné informace o tom, tooset až prostředí PowerShell v Azure, najdete v části [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview). Jednoduchý přístup je toouse hello certifikát metodu, která se stáhne a importuje certifikát potřebný pro ověřování. tooobtain hello potřeby certifikát, použijte hello **Get-AzurePublishSettingsFile** rutiny. Když se zobrazí výzva, uložte soubor hello. certifikát hello tooimport do relace prostředí PowerShell, použijte hello **Import AzurePublishSettingsFile** rutiny.
+# <a name="set-up-azure-powershell-to-create-an-offer-for-the-azure-marketplace"></a>Nastavení prostředí Azure PowerShell k vytvoření nabídky pro Azure Marketplace
+Podrobné informace o tom, jak nastavit prostředí PowerShell v Azure najdete v tématu [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview). Jednoduché možných přístupů je použít metody certifikátu, která se stáhne a importuje certifikát potřebný pro ověřování. Chcete-li získat potřebný certifikát, použijte **Get-AzurePublishSettingsFile** rutiny. Když se zobrazí výzva, uložte soubor. Chcete-li import certifikátu do relace prostředí PowerShell, použijte **Import AzurePublishSettingsFile** rutiny.
 
-tooconfigure a úložiště hello běžné Microsoft Azure předplatné nastavení pro relaci prostředí PowerShell hello používat hello **Set-AzureSubscription** a **Select-AzureSubscription** rutiny:
+Chcete-li konfigurace a uložení běžných nastavení odběru Microsoft Azure pro relace prostředí PowerShell, použijte **Set-AzureSubscription** a **Select-AzureSubscription** rutiny:
 
         Set-AzureSubscription -SubscriptionName “mySubName” -CurrentStorageAccountName “mystorageaccount”
         Select-AzureSubscription -SubscriptionName "mySubName" –Current
 
-První příkaz Hello přidruží výchozí účet úložiště s předplatným hello (vyžadována pro některé operace zřizování virtuálních počítačů).  Hello druhý díky hello předplatné hello stávající (rozpoznán jinými rutinami).
+První příkaz přidruží výchozí účet úložiště s předplatným (vyžadována pro některé operace zřizování virtuálních počítačů).  Druhá je předplatné stávající (rozpoznán jinými rutinami).
 
 ## <a name="see-also"></a>Viz také
-* [Začínáme: jak toopublish toohello nabídka Azure Marketplace](marketplace-publishing-getting-started.md)
-* [Vytváření bitové kopie virtuálního počítače pro hello Marketplace.](marketplace-publishing-vm-image-creation.md)
+* [Začínáme: postup publikování nabídky pro Azure Marketplace](marketplace-publishing-getting-started.md)
+* [Vytváření bitové kopie virtuálního počítače pro Marketplace.](marketplace-publishing-vm-image-creation.md)
 

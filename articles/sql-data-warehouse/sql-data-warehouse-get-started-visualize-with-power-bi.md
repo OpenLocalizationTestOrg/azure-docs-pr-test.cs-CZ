@@ -1,5 +1,5 @@
 ---
-title: "aaaVisualize dat SQL Data Warehouse pomocí Power BI – Microsoft Azure"
+title: "Vizualizace dat SQL Data Warehouse pomocí Power BI – Microsoft Azure"
 description: "Vizualizace dat SQL Data Warehouse pomocí Power BI"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: martinle;barbkess
-ms.openlocfilehash: 0425cf5abe7bc001b2a41df4d09bf5f2e42527e0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a41393730143b14e91318a61858d989fff3786c1
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="visualize-data-with-power-bi"></a>Vizualizace dat pomocí Power BI
 > [!div class="op_single_selector"]
@@ -31,66 +31,66 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Tento kurz ukazuje, jak toouse Power BI tooconnect tooSQL datového skladu a vytvořit pár základních vizualizací.
+V tomto kurzu si ukážeme, jak se pomocí Power BI připojit k SQL Data Warehouse a vytvořit pár základních vizualizací.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Data-Warehouse-Sample-Data-and-PowerBI/player]
 > 
 > 
 
 ## <a name="prerequisites"></a>Požadavky
-toostep prostřednictvím tohoto kurzu potřebujete:
+Pro jednotlivé kroky v tomto kurzu budete potřebovat:
 
-* SQL Data Warehouse předem načtená hello databáze AdventureWorksDW. tooprovision, najdete v tématu [vytvořit SQL Data Warehouse] [ Create a SQL Data Warehouse] a zvolte tooload hello ukázková data. Pokud už Data Warehouse máte, ale nemáte ukázková data, můžete [ukázková data načíst ručně][load sample data manually].
+* SQL Data Warehouse s předem načtenou databází AdventureWorksDW. Ke zřízení této konfigurace použijte článek [Vytvoření SQL Data Warehouse][Create a SQL Data Warehouse] a zvolte načtení ukázkových dat. Pokud už Data Warehouse máte, ale nemáte ukázková data, můžete [ukázková data načíst ručně][load sample data manually].
 
-## <a name="1-connect-tooyour-database"></a>1. Připojit databáze tooyour
-tooopen Power BI a připojte databázi AdventureWorksDW tooyour:
+## <a name="1-connect-to-your-database"></a>1. Připojení k databázi
+Pokud chcete otevřít Power BI a připojit se ke své databázi AdventureWorksDW, postupujte takto:
 
-1. Přihlaste se k hello [portál Azure][Azure portal].
+1. Přihlaste se k webu [Azure Portal][Azure portal].
 2. Klikněte na **Databáze SQL** a zvolte databázi AdventureWorks služby SQL Data Warehouse.
    
     ![Vyhledání databáze][1]
-3. Klikněte na tlačítko Otevřít v Power BI hello.
+3. Klikněte na tlačítko Otevřít v Power BI.
    
     ![Tlačítko Power BI][2]
-4. Teď byste měli vidět hello SQL Data Warehouse připojení stránky zobrazení webovou adresu vaší databáze. Klikněte na tlačítko Další.
+4. Teď by se vám měla zobrazit stránka pro připojení k SQL Data Warehouse s webovou adresou vaší databáze. Klikněte na tlačítko Další.
    
     ![Připojení Power BI][3]
-5. Zadejte uživatelské jméno pro server Azure SQL a heslo a budete plně připojené tooyour databázi SQL Data Warehouse.
+5. Zadejte své uživatelské jméno a heslo pro SQL Server Azure a budete plně připojení k vaší databázi SQL Data Warehouse.
    
     ![Přihlášení k Power BI][4]
-6. Až se zaregistrujete v Power BI, klikněte na datovou sadu AdventureWorksDW hello v levém okně hello. Tím se otevře databáze hello.
+6. Až se zaregistrujete v Power BI, klikněte v levém okně na datovou sadu AdventureWorksDW. Tím se otevře databáze.
    
     ![Otevření databáze AdventureWorksDW v Power BI][5]
 
 ## <a name="2-create-a-report"></a>2. Vytvoření sestavy
-Můžete je nyní připraven toouse Power BI tooanalyze ukázkových dat AdventureWorksDW. tooperform hello analýzy má databáze AdventureWorksDW zobrazení s názvem AggregateSales. Toto zobrazení obsahuje několik hello klíčových metrik pro analýzu prodeje společnosti hello hello.
+Teď můžete pomocí Power BI analyzovat ukázková data databáze AdventureWorksDW. K provedení analýzy má databáze AdventureWorksDW zobrazení s názvem AggregateSales. Toto zobrazení obsahuje několik klíčových metrik pro analýzu prodeje společnosti.
 
-1. toocreate mapu částek prodeje podle kódu toopostal, v podokně polí hello, klikněte na tlačítko hello tooexpand zobrazení AggregateSales ho. Klikněte na tlačítko tooselect sloupce PostalCode a SalesAmount hello je.
+1. Pokud budete chtít vytvořit mapu částek prodeje podle PSČ, klikněte v podokně polí napravo na zobrazení AggregateSales a tím ho rozbalte. Kliknutím vyberte sloupce PostalCode a SalesAmount.
    
     ![Výběr sloupce AggregateSales v Power BI][6]
    
     Power BI automaticky rozpozná, že se jedná o zeměpisné údaje, a umístí vám je na mapu.
    
     ![Mapa Power BI][7]
-2. Tento krok vytvoří pruhový graf, který zobrazí částku prodeje na příjem zákazníka. toocreate tento přejděte toohello rozšířené zobrazení AggregateSales. Klikněte na pole SalesAmount hello. Přetáhněte hello příjem zákazníka pole toohello doleva a umístěte jej do osy.
+2. Tento krok vytvoří pruhový graf, který zobrazí částku prodeje na příjem zákazníka. Toto můžete vytvořit v rozbaleném zobrazení AggregateSales. Klikněte na pole SalesAmount. Přetáhněte pole Customer Income (Příjem zákazníka) nalevo do části Axis (Osa).
    
     ![Výběr osy v Power BI][8]
    
-    Jsme hello pruhový graf nepřesouvají hello doleva.
+    Pruhový graf jsme přesunuli vlevo.
    
     ![Pruhový graf v Power BI][9]
-3. Tento krok vytvoří spojnicový graf zobrazující prodejní částku k datu objednávky. toocreate tento přejděte toohello rozšířené zobrazení AggregateSales. Klikněte na SalesAmount a OrderDate. Ve sloupci vizualizace hello klikněte na ikonu spojnicového grafu hello; Toto je první ikona hello hello druhém řádku pod vizualizacemi.
+3. Tento krok vytvoří spojnicový graf zobrazující prodejní částku k datu objednávky. Toto můžete vytvořit v rozbaleném zobrazení AggregateSales. Klikněte na SalesAmount a OrderDate. Ve sloupci Visualizations (Vizualizace) klikněte na ikonu spojnicového grafu (je to první ikona na druhém řádku pod vizualizacemi).
    
     ![Výběr spojnicového grafu v Power BI][10]
    
-    Teď máte sestavu zobrazující tři různé vizualizace dat hello.
+    Teď máte sestavu zobrazující tři různé vizualizace dat.
    
     ![Spojnicový graf v Power BI][11]
 
 Kdykoli můžete rozdělanou práci uložit tak, že kliknete na **Soubor** a vyberete **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když vyzkoušeli jste některé čas toowarm hello ukázková data, najdete v části Jak příliš[vyvíjet][develop], [načíst][load], nebo [ migrace][migrate]. Nebo se podívejte na hello [web Power BI][Power BI website].
+Vyzkoušeli jste si tedy práci s ukázkovými daty a teď se podívejte, jak na [vývoj][develop], [načítání][load] nebo [migraci][migrate]. Nebo se podívejte na [web Power BI][Power BI website].
 
 <!--Image references-->
 [1]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-find-database.png
@@ -111,7 +111,7 @@ Teď, když vyzkoušeli jste některé čas toowarm hello ukázková data, najde
 [develop]: sql-data-warehouse-overview-develop.md
 [load]: sql-data-warehouse-overview-load.md
 [load sample data manually]: sql-data-warehouse-load-sample-databases.md
-[connecting tooSQL Data Warehouse]: sql-data-warehouse-integrate-power-bi.md
+[connecting to SQL Data Warehouse]: sql-data-warehouse-integrate-power-bi.md
 [Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
 
 <!--Other-->

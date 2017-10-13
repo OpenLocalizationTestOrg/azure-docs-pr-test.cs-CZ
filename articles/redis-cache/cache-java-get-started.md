@@ -1,5 +1,5 @@
 ---
-title: aaaHow toouse Azure Redis Cache s Javou | Microsoft Docs
+title: "Použití Azure Redis Cache s Javou | Dokumentace Microsoftu"
 description: "Začínáme s Azure Redis Cache pomocí Javy"
 services: redis-cache
 documentationcenter: 
@@ -12,15 +12,15 @@ ms.devlang: java
 ms.topic: hero-article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 04/13/2017
+ms.date: 08/31/2017
 ms.author: sdanie
-ms.openlocfilehash: 7768e879d71f61585b59cf4bd6634ba3f12e001d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: b433eecb0424db85b616c40c5f0cdfc88692cef1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-toouse-azure-redis-cache-with-java"></a>Jak toouse Azure Redis mezipaměti s Javou
+# <a name="how-to-use-azure-redis-cache-with-java"></a>Použití Azure Redis Cache s Javou
 > [!div class="op_single_selector"]
 > * [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
 > * [ASP.NET](cache-web-app-howto.md)
@@ -30,9 +30,9 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Azure Redis Cache vám přístup tooa vyhrazené mezipaměti Redis spravované microsoftem. Vaše mezipaměť je přístupná ze všech aplikací v rámci Microsoft Azure.
+Azure Redis Cache vám umožňuje přístup do vyhrazené mezipaměti Redis spravované Microsoftem. Vaše mezipaměť je přístupná ze všech aplikací v rámci Microsoft Azure.
 
-Toto téma ukazuje, jak tooget pracovat s Azure Redis Cache pomocí Javy.
+Toto téma ukazuje, jak začít s Azure Redis Cache pomocí Javy.
 
 ## <a name="prerequisites"></a>Požadavky
 [Jedis](https://github.com/xetorthio/jedis) – Java klient pro Redis
@@ -42,11 +42,11 @@ V tomto kurzu používáme Jedis, ale můžete použít jakéhokoli Java klienta
 ## <a name="create-a-redis-cache-on-azure"></a>Vytvoření mezipaměti Redis v Azure
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
-## <a name="retrieve-hello-host-name-and-access-keys"></a>Načtení hello hostitele název a přístupových klíčů
+## <a name="retrieve-the-host-name-and-access-keys"></a>Načtení názvu hostitele a přístupových klíčů
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
-## <a name="connect-toohello-cache-securely-using-ssl"></a>Připojit toohello mezipaměti zabezpečené pomocí protokolu SSL
-Hello nejnovější sestavení [jedis](https://github.com/xetorthio/jedis) poskytovat podporu pro připojení tooAzure Redis Cache pomocí protokolu SSL. Hello následující příklad ukazuje, jak tooconnect tooAzure Redis Cache pomocí hello 6380 koncový bod protokolu SSL. Nahraďte `<name>` s hello názvem vaší mezipaměti a `<key>` s buď primární nebo sekundární klíč jak je popsáno v hello předchozí [načíst název a přístupových klíčů hostitele hello](#retrieve-the-host-name-and-access-keys) části.
+## <a name="connect-to-the-cache-securely-using-ssl"></a>Bezpečné připojení k mezipaměti pomocí protokolu SSL
+Nejnovější sestavení [jedis](https://github.com/xetorthio/jedis) poskytuje podporu pro připojení k Azure Redis Cache pomocí protokolu SSL. Následující příklad ukazuje, jak se připojit k mezipaměti Redis Azure pomocí protokolu SSL koncového bodu 6380. Nahraďte `<name>` názvem mezipaměti a `<key>` primárním nebo sekundárním klíčem popsaným v předchozí části [Načtení názvu hostitele a přístupových klíčů](#retrieve-the-host-name-and-access-keys).
 
     boolean useSsl = true;
     /* In this line, replace <name> with your cache name: */
@@ -54,11 +54,11 @@ Hello nejnovější sestavení [jedis](https://github.com/xetorthio/jedis) posky
     shardInfo.setPassword("<key>"); /* Use your access key. */
 
 > [!NOTE]
-> Hello port bez SSL pro nové instance služby Azure Redis Cache zakázán. Pokud používáte jiný klient, který nepodporuje protokol SSL, najdete v části [jak tooenable hello port bez SSL](cache-configure.md#access-ports).
+> Port bez SSL je pro nové instance Azure Redis Cache zakázaný. Pokud používáte jiného klienta, který nepodporuje SSL, přečtěte si téma věnované tomu, jak [povolit port bez SSL](cache-configure.md#access-ports).
 > 
 > 
 
-## <a name="add-something-toohello-cache-and-retrieve-it"></a>Přidání dat toohello mezipaměti a jejich načtení
+## <a name="add-something-to-the-cache-and-retrieve-it"></a>Přidání dat do mezipaměti a jejich načtení
     package com.mycompany.app;
     import redis.clients.jedis.Jedis;
     import redis.clients.jedis.JedisShardInfo;
@@ -79,5 +79,6 @@ Hello nejnovější sestavení [jedis](https://github.com/xetorthio/jedis) posky
 
 
 ## <a name="next-steps"></a>Další kroky
-* [Povolte diagnostiku mezipaměti](https://msdn.microsoft.com/library/azure/dn763945.aspx#EnableDiagnostics) , abyste mohli [monitorování](https://msdn.microsoft.com/library/azure/dn763945.aspx) hello stav svojí mezipaměti.
-* Čtení hello oficiální [dokumentaci k Redis](http://redis.io/documentation).
+* [Povolte diagnostiku mezipaměti](https://msdn.microsoft.com/library/azure/dn763945.aspx#EnableDiagnostics), abyste mohli [monitorovat](https://msdn.microsoft.com/library/azure/dn763945.aspx) stav svojí mezipaměti.
+* Přečtěte si oficiální [dokumentaci k Redis](http://redis.io/documentation).
+* Zjistěte, [jak nakonfigurovat aplikaci Spring Initializr pro používání služby Redis Cache](cache-java-spring-boot-initializer-with-redis-cache.md).

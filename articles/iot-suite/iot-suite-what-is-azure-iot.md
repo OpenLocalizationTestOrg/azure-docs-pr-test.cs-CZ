@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure řešení pro Internet věcí (IoT Suite) | Microsoft Docs"
-description: "Přehled technologie IoT na platformě Azure, včetně ukázkové architektury řešení a jeho vztah tooAzure IoT Suite a hello předkonfigurovaných řešení."
+title: "Řešení Azure pro Internet věcí (IoT Suite) | Dokumentace Microsoftu"
+description: "Přehled technologie IoT na platformě Azure, včetně ukázkové architektury řešení a informací o tom, jak souvisí se sadou Azure IoT Suite a předkonfigurovanými řešeními"
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -15,32 +15,32 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
-ms.openlocfilehash: e527ca3f7541c84fbd6abc99ee38792468f88644
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 320190488bb4c7b8192421f9dd50a5264f558584
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 [!INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
 ## <a name="azure-iot-suite"></a>Azure IoT Suite
-Hello Microsoft Azure IoT Suite je podnikové úrovni řešení, které umožňuje tooget rychle začít prostřednictvím sady rozšiřitelných předkonfigurovaných řešení. Tato řešení se vztahují k běžným scénářům IoT, jako je [vzdálené monitorování][lnk-preconfigured-solutions], [prediktivní údržba][lnk-predictive-maintenance] a [propojená továrna][lnk-connected-factory]. Tato řešení představují implementace systému hello architektuře řešení IoT uvedených v tomto článku.
+Microsoft Azure IoT Suite je podnikové řešení umožňující rychlý start prostřednictvím sady rozšiřitelných předkonfigurovaných řešení. Tato řešení se vztahují k běžným scénářům IoT, jako je [vzdálené monitorování][lnk-preconfigured-solutions], [prediktivní údržba][lnk-predictive-maintenance] a [propojená továrna][lnk-connected-factory]. Tato řešení jsou implementacemi architektury řešení IoT, která je vysvětlená v tomto článku.
 
-Hello předkonfigurovaná řešení jsou kompletní, práce, začátku do konce řešení, které zahrnují:
+Předkonfigurovaná řešení jsou kompletní, funkční, ucelená řešení, která zahrnují:
 
-- Simulované zařízení tooget, kterou jste zahájili.
+- Simulovaná zařízení, která vám pomohou začít.
 - Předkonfigurované služby Azure, jako například [Azure IoT Hub][Azure IoT Hub], [Azure Event Hubs][Azure Event Hubs], [Azure Stream Analytics][Azure Stream Analytics], [Azure Machine Learning][Azure Machine Learning] a [Azure Storage][Azure storage].
 - Konzoly pro správu konkrétních řešení.
 
-Hello předkonfigurovaná řešení obsahují osvědčené, produkční prostředí kód, můžete přizpůsobit a rozšířit tooimplement konkrétní scénáře IoT.
+Předkonfigurovaná řešení obsahují ověřený a ke zprovoznění připravený kód, který si můžete přizpůsobit a rozšířit tak, abyste mohli implementovat vlastní scénáře IoT.
 
-Také může být zájem o hello [Azure IoT Hub] [ Azure IoT Hub] služba, která řadu hello předkonfigurované řešení použít. [Azure IoT Hub] [ Azure IoT Hub] poskytuje hello zabezpečený a spolehlivý obousměrnou komunikaci mezi zařízeními a cloudu hello používá v architektuře hello předkonfigurované řešení.
+Mohla by vás také zajímat služba [Azure IoT Hub][Azure IoT Hub], kterou využívá celá řada předkonfigurovaných řešení. [Azure IoT Hub][Azure IoT Hub] nabízí bezpečnou a spolehlivou obousměrnou komunikaci mezi zařízeními a cloudy, které jsou použity v architekturách předkonfigurovaných řešení.
 
 ## <a name="next-steps"></a>Další kroky
-Prozkoumat tyto prostředky toocontinue získávání informací o IoT Suite a hello předkonfigurovaných řešení:
+Prostudováním těchto materiálů zjistíte další informace o sadě IoT Suite a předkonfigurovaných řešeních:
 
 * [Co je Azure IoT Suite?][lnk-whatissuite]
-* [Jaké jsou hello Azure předkonfigurovaná řešení IoT Suite?][lnk-whatarepreconfigured]
+* [Co jsou předkonfigurovaná řešení Azure IoT Suite?][lnk-whatarepreconfigured]
 
 [lnk-whatissuite]: iot-suite-overview.md
 [lnk-whatarepreconfigured]: iot-suite-what-are-preconfigured-solutions.md

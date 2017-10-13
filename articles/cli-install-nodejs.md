@@ -1,6 +1,6 @@
 ---
-title: "aaaInstall hello 1.0 rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Nainstalujte hello Azure CLI 1.0 pro Mac, Linux a Windows toostart pomocí služeb Azure"
+title: Nainstalovat Azure CLI 1.0 | Microsoft Docs
+description: "Instalace 1.0 rozhraní příkazového řádku Azure pro Mac, Linux a Windows, pokud chcete začít používat služby Azure"
 editor: 
 manager: timlt
 documentationcenter: 
@@ -15,96 +15,96 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: rasquill
-ms.openlocfilehash: a8cd4e38fde6e4b17a768a7caecd280cd91a70f2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 63b35ed25b809a16b61b685fd35aa67474b0a369
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="install-hello-azure-cli-10"></a>Nainstalujte hello Azure CLI 1.0
+# <a name="install-the-azure-cli-10"></a>Nainstalovat Azure CLI 1.0
 > [!div class="op_single_selector"]
 > * [PowerShell](/powershell/azure/overview)
 > * [Azure CLI 1.0](cli-install-nodejs.md)
 > * [Azure CLI 2.0](/cli/azure/install-azure-cli)
 
 > [!IMPORTANT]
-> Toto téma popisuje, jakým způsobem volá tooinstall hello 1.0 rozhraní příkazového řádku Azure, který je založený na nodeJs a podporuje všechny rozhraní API nasazení classic a také velký počet aktivity nasazení Resource Manager. Měli byste použít hello [Azure CLI 2.0](/cli/azure/overview) pro správu a nasazení nových nebo budoucnost rozhraní příkazového řádku.
+> Toto téma popisuje postup instalace Azure CLI verze 1.0, který je založený na nodeJs a podporuje všechny volání rozhraní API nasazení classic a také velký počet aktivity nasazení Resource Manager. Měli byste použít [Azure CLI 2.0](/cli/azure/overview) pro správu a nasazení nových nebo budoucnost rozhraní příkazového řádku.
 
-Rychle nainstalujte rozhraní příkazového řádku Azure (Azure CLI 1.0) toouse hello sadu příkazů open source založený na prostředí pro vytváření a správu prostředků v Microsoft Azure. Několik možností tooinstall máte ve vašem počítači těchto nástrojů pro různé platformy:
+Rychle nainstalujte rozhraní příkazového řádku Azure (Azure CLI 1.0) používat sadu příkazů open source založený na prostředí pro vytváření a správu prostředků v Microsoft Azure. Máte několik možností instalace těchto nástrojů pro různé platformy ve vašem počítači:
 
-* **balíčku npm** – spuštění npm (hello Správce balíčků pro JavaScript) tooinstall hello nejnovější Azure CLI 1.0 balíček na distribuční Linux nebo OS. Vyžaduje node.js a npm ve vašem počítači.
+* **balíčku npm** -spustit npm (Správce balíčků pro JavaScript) nainstalovat nejnovější balíček Azure CLI 1.0 na operačního systému nebo distribuce systému Linux. Vyžaduje node.js a npm ve vašem počítači.
 * **Instalační program** -stáhnout instalační program pro instalaci snadno na Mac nebo Windows.
-* **Kontejner docker** – začít používat hello nejnovější rozhraní příkazového řádku v kontejner Docker připravené k použití. Vyžaduje hostitelů Docker v počítači.
+* **Kontejner docker** – spuštění pomocí nejnovější rozhraní příkazového řádku v kontejner Docker připravené k použití. Vyžaduje hostitelů Docker v počítači.
 
-Další možnosti a pozadí, najdete v části hello projektu úložiště na [Githubu](https://github.com/azure/azure-xplat-cli).
+Další možnosti a pozadí, najdete v úložišti projektu na [Githubu](https://github.com/azure/azure-xplat-cli).
 
-Po instalaci hello Azure CLI 1.0 [připojit ke svému předplatnému Azure](xplat-cli-connect.md) a spuštění hello **azure** příkazy z vaší rozhraní příkazového řádku (Bash, terminálu, příkazový řádek a tak dále) toowork s vašich prostředků Azure.
+Po instalaci Azure CLI 1.0 [připojit ke svému předplatnému Azure](xplat-cli-connect.md) a spusťte **azure** příkazy z vaší rozhraní příkazového řádku (Bash, terminálu, příkazový řádek a tak dále) pro práci s vaší Prostředky Azure.
 
 ## <a name="option-1-install-an-npm-package"></a>Možnost 1: Instalace balíčku npm
-tooinstall hello rozhraní příkazového řádku z balíčku npm, zajistěte, aby byly staženy a nainstalovány hello [nejnovější Node.js a npm](https://nodejs.org/en/download/package-manager/). Potom spusťte **npm nainstalujte** tooinstall hello rozhraní příkazového řádku azure balíčku:
+Pokud chcete nainstalovat rozhraní příkazového řádku z balíčku npm, zajistěte, aby byly staženy a nainstalovány [nejnovější Node.js a npm](https://nodejs.org/en/download/package-manager/). Potom spusťte **npm nainstalujte** k instalaci balíčku rozhraní příkazového řádku azure:
 
 ```bash
 npm install -g azure-cli
 ```
 
-Na Linuxových distribucích, může být nutné toouse **sudo** toosuccessfully spustit hello **npm** příkaz takto:
+Na Linuxových distribucích, možná budete muset použít **sudo** k úspěšnému spuštění **npm** příkaz takto:
 
 ```bash
 sudo npm install -g azure-cli
 ```
 
 > [!NOTE]
-> Pokud potřebujete tooinstall nebo aktualizovat Node.js a npm na operačního systému nebo distribuce systému Linux, doporučujeme nainstalovat poslední Node.js LTS verze hello (4.x). Pokud používáte starší verzi, může docházet k chybám instalace.
+> Pokud potřebujete instalaci nebo aktualizaci Node.js a npm na operačního systému nebo distribuce systému Linux, doporučujeme nainstalovat nejnovější verzi Node.js LTS (4.x). Pokud používáte starší verzi, může docházet k chybám instalace.
 
-Pokud dáváte přednost, stáhněte si nejnovější Linux hello [vkládání souborů] [ linux-installer] hello npm balíček místně. Potom nainstalovat balíček stažené npm hello následujícím způsobem (na Linuxových distribucích může být nutné toouse **sudo**):
+Pokud dáváte přednost, stáhněte si nejnovější Linux [vkládání souborů] [ linux-installer] balíčku npm místně. Potom nainstalovat balíček stažené npm následujícím způsobem (na Linuxových distribucích možná budete muset použít **sudo**):
 
 ```bash
-npm install -g <path toodownloaded tar file>
+npm install -g <path to downloaded tar file>
 ```
 
 ## <a name="option-2-use-an-installer"></a>Možnost 2: Použít instalační program
-Pokud používáte počítač Mac nebo Windows, jsou k dispozici ke stažení hello následující instalační programy rozhraní příkazového řádku:
+Pokud používáte počítači se systémem Mac nebo Windows, jsou k dispozici ke stažení následujících instalačních programů rozhraní příkazového řádku:
 
 * [Instalátor systému Mac OS X][mac-installer]
 * [Windows MSI][windows-installer]
 
 > [!TIP]
-> V systému Windows, můžete také stáhnout hello [instalačního programu webové platformy](https://go.microsoft.com/?linkid=9828653) tooinstall hello rozhraní příkazového řádku. Tento instalační program poskytuje hello možnost tooinstall další Azure SDK a nástroje příkazového řádku po instalaci hello rozhraní příkazového řádku.
+> V systému Windows, můžete také stáhnout [instalačního programu webové platformy](https://go.microsoft.com/?linkid=9828653) nainstalovat rozhraní příkazového řádku. Tento instalační program vám dává možnost nainstalovat další Azure SDK a nástroje příkazového řádku po instalaci rozhraní příkazového řádku.
 
 ## <a name="option-3-use-a-docker-container"></a>Možnost 3: Použití kontejner Docker
-Pokud jste nastavili počítač jako [Docker](https://docs.docker.com/engine/understanding-docker/) hostitele, můžete spustit hello nejnovější Azure CLI 1.0 v kontejner Docker. Spuštění hello následující příkaz (na Linuxových distribucích může být nutné toouse **sudo**):
+Pokud jste nastavili počítač jako [Docker](https://docs.docker.com/engine/understanding-docker/) hostiteli, nejnovější 1.0 rozhraní příkazového řádku Azure můžete spouštět v kontejner Docker. Spusťte následující příkaz (na Linuxových distribucích možná budete muset použít **sudo**):
 
 ```bash
 docker run -it microsoft/azure-cli
 ```
 
 ## <a name="run-azure-cli-10-commands"></a>Příkazy spouštějte Azure CLI 1.0
-Po instalaci hello Azure CLI 1.0, spusťte hello **azure** příkazu z příkazového řádku uživatelského rozhraní (Bash, terminálu, příkazový řádek a tak dále). Například toorun hello nápovědy příkazu, zadejte následující hello:
+Po instalaci Azure CLI 1.0 spustit **azure** příkazu z příkazového řádku uživatelského rozhraní (Bash, terminálu, příkazový řádek a tak dále). Například spusťte příkaz nápovědu, zadejte následující příkaz:
 
 ```azurecli
 azure help
 ```
 
 > [!NOTE]
-> V některých distribucích systému Linux můžete obdržet chybu podobné příliš`/usr/bin/env: ‘node’: No such file or directory`. Tato chyba pochází z poslední instalace instaluje na /usr/bin/nodejs Node.js. toofix, vytvořit symbolický odkaz příliš/usr/bin/uzlu tak, že spustíte tento příkaz:
+> V některých distribucích systému Linux, může se zobrazit chyba podobná `/usr/bin/env: ‘node’: No such file or directory`. Tato chyba pochází z poslední instalace instaluje na /usr/bin/nodejs Node.js. Chcete-li problém odstranit, vytvořte symbolický odkaz na /usr/bin/node spuštěním tohoto příkazu:
 
 ```bash
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 ```
 
-verze hello toosee hello Azure CLI 1.0 jste nainstalovali, typ hello následující:
+Pokud chcete zobrazit verzi 1.0 rozhraní příkazového řádku Azure, jste nainstalovali, zadejte následující příkaz:
 
 ```azurecli
 azure --version
 ```
 
-Nyní jste připraveni! všechny tooaccess hello toowork příkazy rozhraní příkazového řádku s vlastní prostředky [připojit tooyour předplatného Azure z rozhraní příkazového řádku Azure hello](xplat-cli-connect.md).
+Nyní jste připraveni! Pro přístup k všechny příkazy rozhraní příkazového řádku pro práci s vlastními prostředky [připojení k předplatnému Azure z rozhraní příkazového řádku Azure](xplat-cli-connect.md).
 
 > [!NOTE]
-> Při prvním použití Azure CLI, zobrazí se zpráva s dotazem, pokud chcete, aby tooallow informace o využití toocollect Microsoft. Účast je dobrovolná. Pokud si zvolíte tooparticipate, můžete kdykoli zastavit spuštěním `azure telemetry --disable`. účast tooenable kdykoli spustit `azure telemetry --enable`.
+> Při prvním použití Azure CLI, zobrazí se zpráva s dotazem, pokud chcete povolit Microsoftu shromažďovat informace o využití. Účast je dobrovolná. Pokud se rozhodnete pro účast můžete kdykoli zastavit spuštěním `azure telemetry --disable`. Chcete-li povolit účast kdykoli, spusťte `azure telemetry --enable`.
 
-## <a name="update-hello-cli"></a>Aktualizace hello rozhraní příkazového řádku
-Společnost Microsoft vydá často aktualizované verze hello rozhraní příkazového řádku Azure. Přeinstalujte hello rozhraní příkazového řádku pomocí instalačního programu hello operačního systému, nebo spusťte kontejner Docker nejnovější hello. Nebo, pokud mají hello nejnovější Node.js a npm nainstalovaná, aktualizovat tak, že zadáte následující hello (na Linuxových distribucích může být nutné toouse **sudo**).
+## <a name="update-the-cli"></a>Aktualizace rozhraní příkazového řádku
+Společnost Microsoft vydá často aktualizované verze rozhraní příkazového řádku Azure. Přeinstalujte rozhraní příkazového řádku pomocí Instalační služby operačního systému nebo spustit nejnovější kontejner Docker. Nebo, pokud máte nejnovější Node.js a npm nainstalován, aktualizace pomocí následujícího příkazu (na Linuxových distribucích možná budete muset použít **sudo**).
 
 ```bash
 npm update -g azure-cli
@@ -113,13 +113,13 @@ npm update -g azure-cli
 ## <a name="enable-tab-completion"></a>Povolit dokončování pomocí tabulátorů
 Dokončování pomocí tabulátorů z rozhraní příkazového řádku je podporována pro Mac a Linux.
 
-tooenable v zsh, spusťte:
+Chcete-li povolit v zsh, spusťte:
 
 ```bash
 echo '. <(azure --completion)' >> .zshrc
 ```
 
-tooenable v bash, spusťte:
+Chcete-li povolit v bash, spusťte:
 
 ```bash
 azure --completion >> ~/azure.completion.sh
@@ -128,9 +128,9 @@ echo 'source ~/azure.completion.sh' >> ~/.bash_profile
 
 
 ## <a name="next-steps"></a>Další kroky
-* [Připojení z rozhraní příkazového řádku tooyour hello předplatného Azure](xplat-cli-connect.md) toocreate a správu prostředků Azure.
-* toolearn Další informace o hello rozhraní příkazového řádku Azure, zdrojový kód, odesílat zprávy o problémech, nebo přispívat toohello projekt stáhnete na adrese hello [úložiště GitHub pro hello rozhraní příkazového řádku Azure](https://github.com/azure/azure-xplat-cli).
-* Pokud máte dotazy týkající se používání hello rozhraní příkazového řádku Azure nebo Azure, navštivte hello [fóra Azure](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurescripting).
+* [Připojení k předplatnému Azure z rozhraní příkazového řádku](xplat-cli-connect.md) k vytváření a správě prostředků Azure.
+* Další informace o Azure CLI, stažení zdrojový kód, problémy sestavy, nebo můžete přispět k projektu, najdete [úložiště GitHub pro rozhraní příkazového řádku Azure](https://github.com/azure/azure-xplat-cli).
+* Pokud máte dotazy týkající se používání rozhraní příkazového řádku Azure nebo Azure, přejděte [fóra Azure](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurescripting).
 
 
 [mac-installer]: http://aka.ms/mac-azure-cli

@@ -1,6 +1,6 @@
 ---
-title: "aaaHow toouse dávkování tooimprove výkonu aplikací Azure SQL Database"
-description: "Hello tématu poskytuje důkaz, že dávkování databáze operations výrazně imroves hello rychlost a škálovatelnost aplikací Azure SQL Database. I když tyto dávkování techniky fungovat pro libovolnou databázi systému SQL Server, hello cílem tohoto článku hello je v Azure."
+title: "Jak používat dávkování pro zvýšení výkonu aplikací Azure SQL Database"
+description: "V tématu poskytuje důkazy této dávkování databázových operací výrazně imroves rychlosti a škálovatelnost aplikací Azure SQL Database. I když tyto dávkování techniky fungovat pro libovolnou databázi systému SQL Server, je zaměřená článek v Azure."
 services: sql-database
 documentationcenter: na
 author: stevestein
@@ -15,39 +15,39 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 07/12/2016
 ms.author: sstein
-ms.openlocfilehash: 124b203ee69c595f0813852ff09ef9ec6841233a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 22cff47444306e599325ba3035d83a0266d69c72
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toouse-batching-tooimprove-sql-database-application-performance"></a>Jak toouse dávkování výkon aplikace tooimprove databáze SQL
-Dávkování operací tooAzure SQL Database výrazně zlepšuje hello výkon a škálovatelnost aplikací. V pořadí toounderstand hello výhody hello první část tohoto článku popisuje některé vzorové výsledky testů, které porovnávají požadavky sekvenční a dávkové tooa databáze SQL. Hello zbývající části článku hello se zobrazuje hello techniky, scénáře a aspekty toohelp toouse dávkování úspěšně v aplikacích Azure.
+# <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Jak používat dávkování pro zvýšení výkonu aplikací databáze SQL
+Dávkování operací do Azure SQL Database výrazně zvyšuje výkon a škálovatelnost aplikací. Chcete-li pochopit výhody, první část tohoto článku popisuje některé ukázkové výsledky testů, porovnávající postupného a dávkové požadavky na databázi SQL. Zbývající část článek ukazuje techniky, scénáře a požadavky umožňují použít dávkování úspěšně v aplikacích Azure.
 
 ## <a name="why-is-batching-important-for-sql-database"></a>Proč je dávkování důležité pro databázi SQL?
-Dávkování volání tooa vzdálené služby je dobře známé strategie pro zvýšení výkonu a škálovatelnosti. Existuje se vyřešilo zpracování náklady tooany interakce s vzdálené služby, jako je například serializace, přenos v síti a deserializace. Balení mnoho samostatné transakcí do jedné dávkové minimalizuje tyto náklady.
+Dávkování volání vzdálené služby je dobře známé strategie pro zvýšení výkonu a škálovatelnosti. Jsou pevně dané zpracování náklady na všechny interakce s vzdálené služby, jako je například serializace, přenos v síti a deserializace. Balení mnoho samostatné transakcí do jedné dávkové minimalizuje tyto náklady.
 
-V tomto dokumentu chceme tooexamine různé dávkování strategie SQL Database a scénáře. I když tyto strategie jsou také důležité pro místní aplikace, které používají systém SQL Server, tady je několik důvodů pro zvýraznění hello použití dávkování pro databázi SQL:
+V tomto dokumentu jsme chcete prověřit různé SQL Database dávkování strategie a scénáře. I když tyto strategie jsou také důležité pro místní aplikace, které používají systém SQL Server, tady je několik důvodů pro zvýraznění dávkování pro databázi SQL. použití:
 
-* Je potenciálně vyšší latence sítě přístup k databázi SQL, zejména pokud v přístupu k databázi SQL z mimo hello stejného datového centra Microsoft Azure.
-* Hello víceklientské vlastnosti SQL Database znamená, že hello efektivitu hello dat přístup k vrstvě korelaci toohello celkovou škálovatelnost hello databáze. Databáze SQL zabránit přivlastňuje databáze prostředků toohello úkor ostatních klientů žádné jednoho klienta nebo uživatele. Databáze SQL v odpovědi toousage překračující předdefinované kvóty, můžete snížit propustnost nebo odpovědět s omezení výjimky. Efektivitu své činnosti, jako je například dávkování, povolte je toodo další práci v databázi SQL dříve, než dorazila těchto mezních hodnot. 
-* Dávkování je také efektivní pro architektury, které používají více databází (horizontálního dělení). Hello efektivitu interakce se jednotlivých jednotek databáze je stále klíčovým faktorem vaší celkovou škálovatelnost. 
+* Je potenciálně vyšší latence sítě přístup k databázi SQL, zejména pokud v přístupu k databázi SQL z mimo stejného datového centra Microsoft Azure.
+* Víceklientské vlastnosti SQL Database znamená, že efektivitu na data přístup vrstvy odpovídá celkové škálovatelnost databáze. Databáze SQL zabránit přivlastňuje databázových prostředků na úkor ostatních klientů žádné jednoho klienta nebo uživatele. Databáze SQL v reakci na využití překračující předdefinované kvóty, můžete snížit propustnost nebo odpovědět s omezení výjimky. Efektivitu své činnosti, jako je například dávkování, umožňují provést u databáze SQL dříve, než dorazila těchto mezních hodnot. 
+* Dávkování je také efektivní pro architektury, které používají více databází (horizontálního dělení). Efektivitu interakce se jednotlivých jednotek databáze je stále klíčovým faktorem vaší celkovou škálovatelnost. 
 
-Jednou z výhod hello používání databáze SQL je, že nemáte servery hello toomanage databázi hello hostitele. Však této spravované infrastruktury také znamená, že můžete mít toothink jinak o optimalizace databáze. Už můžete zobrazit tooimprove hello databáze hardware nebo síť infrastruktury. Microsoft Azure řídí těchto prostředích. Hello hlavní oblasti, která můžete řídit je, jak vaše aplikace komunikuje s databází SQL. Dávkování je jedním z těchto optimalizace. 
+Jednou z výhod používání databáze SQL je, že nemáte ke správě serverů, které jsou hostiteli databáze. Však této spravované infrastruktury také znamená, že můžete mít jinak myslet optimalizace databáze. Už můžete zobrazit ke zlepšení databáze hardware nebo síť infrastruktury. Microsoft Azure řídí těchto prostředích. Hlavní oblasti, která můžete řídit je, jak vaše aplikace komunikuje s databází SQL. Dávkování je jedním z těchto optimalizace. 
 
-první část Hello hello dokumentu prověří různé dávkování techniky pro aplikace .NET, které používají SQL Database. Hello poslední dvě části se věnují dávkování pokyny a scénáře.
+První část papíru prověří různé dávkování techniky pro aplikace .NET, které používají SQL Database. Poslední dvě části se věnují dávkování pokyny a scénáře.
 
 ## <a name="batching-strategies"></a>Dávkování strategie
 ### <a name="note-about-timing-results-in-this-topic"></a>Všimněte si o výsledcích časování v tomto tématu
 > [!NOTE]
-> Výsledky nejsou srovnávacích testů, ale jsou určené tooshow **relativní výkon**. Časování jsou založené na v průměru minimálně 10 test spustí. Operace se vloží do prázdná tabulka. Tyto testy byly měřená pre-V12 a neodpovídají nutně toothroughput, ke kterému může dojít v databázi V12 pomocí hello nové [úrovních služeb](sql-database-service-tiers.md). Hello relativní výhodou hello dávkování technika by mělo být podobné.
+> Výsledky nejsou srovnávacích testů, ale jsou určené k zobrazení **relativní výkon**. Časování jsou založené na v průměru minimálně 10 test spustí. Operace se vloží do prázdná tabulka. Tyto testy byly měřená pre-V12 a jejich nemusí odpovídat nutně propustnosti, kterou může docházet v databázi V12 pomocí nové [úrovních služeb](sql-database-service-tiers.md). Relativní výhodou dávkování technika by mělo být podobné.
 > 
 > 
 
 ### <a name="transactions"></a>Transakce
-Podle všeho neobvyklé toobegin o dávkování podle hovoříte o transakce. Ale hello použití transakce na straně klienta má vliv dávkování jemně straně serveru, který zlepšuje výkon. A transakcí lze přidat pouze zadání několika řádků kódu, takže poskytují rychlý způsob tooimprove výkonu sekvenčních operací.
+Podle všeho neobvyklé zahájíte o dávkování podle hovoříte o transakce. Ale použití transakce na straně klienta má vliv dávkování jemně straně serveru, který zlepšuje výkon. A transakce lze přidat pouze zadání několika řádků kódu, takže poskytují rychlý způsob, jak zvýšit výkon při sekvenčních operací.
 
-Zvažte hello následující kód C#, který obsahuje posloupnost vložení a aktualizace operací na jednoduché tabulky.
+Vezměte v úvahu následující C# kód, který obsahuje posloupnost vložení a aktualizace operací na jednoduché tabulky.
 
     List<string> dbOperations = new List<string>();
     dbOperations.Add("update MyTable set mytext = 'updated text' where id = 1");
@@ -57,7 +57,7 @@ Zvažte hello následující kód C#, který obsahuje posloupnost vložení a ak
     dbOperations.Add("insert MyTable values ('new value',2)");
     dbOperations.Add("insert MyTable values ('new value',3)");
 
-Hello následující kód ADO.NET postupně provádí tyto operace.
+Následující kód ADO.NET postupně provádí tyto operace.
 
     using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
     {
@@ -70,7 +70,7 @@ Hello následující kód ADO.NET postupně provádí tyto operace.
         }
     }
 
-Hello toooptimize nejlepší způsob, jak tento kód je tooimplement určitou formu klienta dávkování těchto volání. Ale výkonu hello tooincrease jednoduchý způsob tohoto kódu při jednoduše zabalení hello pořadí volání v transakci. Tady je hello stejný kód, který používá transakce.
+Nejlepší způsob, jak optimalizovat tento kód je implementace určitou formu klienta dávkování těchto volání. Ale je jednoduchý způsob, jak zvýšit výkon tento kód jednoduše zabalení pořadí volání v transakci. Zde je stejný kód, který používá transakce.
 
     using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
     {
@@ -86,11 +86,11 @@ Hello toooptimize nejlepší způsob, jak tento kód je tooimplement určitou fo
         transaction.Commit();
     }
 
-Transakce se používá ve skutečnosti v obou těchto příkladech. V prvním příkladu Dobrý den každý jednotlivých volání je implicitní transakci. V druhém příkladu hello explicitní transakce zabalí všechny hello volání. Za dokumentaci hello hello [předběžné transakčního protokolu](https://msdn.microsoft.com/library/ms186259.aspx), jsou záznamy protokolu vyprázdněn toohello disku při hello transakce potvrzena. Proto zahrnutím další volání v transakci hello zápisu toohello transakčního protokolu můžete počkat, až je hello transakce potvrzena. V důsledku toho jsou povolení dávkování pro hello zápisy toohello serveru transakčního protokolu.
+Transakce se používá ve skutečnosti v obou těchto příkladech. V prvním příkladu každý jednotlivých volání je implicitní transakci. V druhém příkladu explicitní transakce zabalí všechny volání. Za v dokumentaci [předběžné transakčního protokolu](https://msdn.microsoft.com/library/ms186259.aspx), záznamy protokolu jsou vyprazdňuje na disk, když transakce potvrzena. Další volání uvedete v transakci, můžete tak zápis transakčního protokolu počkat, až je transakce potvrzena. V důsledku toho jsou povolení dávkování při zápisu do protokolu transakcí serveru.
 
-Hello následující tabulka uvádí některé výsledky testování ad hoc. Hello testy prováděné hello stejné sekvenční vloží s i bez transakce. Pro další perspektivy spustili hello první sada testů vzdáleně z databáze toohello přenosných počítačů v Microsoft Azure. Hello druhá sada testů spustili z cloudové služby a databáze, že oba nacházejí v rámci hello stejné datacenter Microsoft Azure (západní USA). Hello následující tabulka uvádí hello doba v milisekundách sekvenční operace INSERT a bez transakce.
+V následující tabulce jsou uvedeny některé výsledky testování ad hoc. Testy provést stejné sekvenční vložení a bez transakce. Pro další perspektivy první sada testů spustili vzdáleně z přenosného počítače do databáze v Microsoft Azure. Druhá sada testů spustili z cloudové služby a databáze oba nacházejí ve stejném datovém centru Microsoft Azure (západní USA). Následující tabulka uvádí dobu v milisekundách sekvenční operace INSERT a bez transakce.
 
-**Místní tooAzure**:
+**Místním nasazením a Azure**:
 
 | Operace | Žádná transakce (ms) | Transakce (ms) |
 | --- | --- | --- |
@@ -99,7 +99,7 @@ Hello následující tabulka uvádí některé výsledky testování ad hoc. Hel
 | 100 |12662 |10395 |
 | 1000 |128852 |102917 |
 
-**Azure tooAzure (stejného datového centra)**:
+**Azure do Azure (stejného datového centra)**:
 
 | Operace | Žádná transakce (ms) | Transakce (ms) |
 | --- | --- | --- |
@@ -109,34 +109,34 @@ Hello následující tabulka uvádí některé výsledky testování ad hoc. Hel
 | 1000 |21479 |2756 |
 
 > [!NOTE]
-> Výsledky nejsou srovnávacích testů. V tématu hello [Poznámka o výsledcích časování v tomto tématu](#note-about-timing-results-in-this-topic).
+> Výsledky nejsou srovnávacích testů. Najdete v článku [Poznámka o výsledcích časování v tomto tématu](#note-about-timing-results-in-this-topic).
 > 
 > 
 
-Na základě výsledků testu předchozí hello zabalení jedné operace v transakci ve skutečnosti sníží výkon. Ale můžete zvýšit hello počet operací v rámci jedné transakce, zlepšování výkonu hello stane více označen. rozdíly ve výkonnosti Hello je také významnější, když dojde k všechny operace v rámci datového centra hello Microsoft Azure. Hello zvýší latence používání databáze SQL z datového centra Microsoft Azure mimo hello ruší hello výkonnější použití transakcí.
+Na základě předchozího výsledků testu zabalení jedné operace v transakci ve skutečnosti sníží výkon. Ale můžete zvýšit počet operací v rámci jedné transakce, zlepšování výkonu stane více označen. Rozdíl výkonu je také více patrné, dojde-li všechny operace v rámci datového centra Microsoft Azure. Zvýší latence používání databáze SQL z oblasti mimo datové centrum Microsoft Azure ruší výkonnější použití transakcí.
 
-I když hello použití transakcí může zvýšit výkon, pokračovat příliš[sledovat osvědčené postupy pro připojení a transakce](https://msdn.microsoft.com/library/ms187484.aspx). Zachovat hello transakce co nejkratší připojení k databázi možná a zavřít hello po dokončení práce hello. pomocí příkazu v předchozím příkladu hello Hello zaručuje, že hello připojení je ukončeno po dokončení hello následné kód bloku.
+Přestože použití transakcí může zvýšit výkon, i nadále [sledovat osvědčené postupy pro připojení a transakce](https://msdn.microsoft.com/library/ms187484.aspx). Zachovat transakce co nejkratší a zavřete připojení k databázi po dokončení práce. Pomocí příkazu v předchozím příkladu zaručuje, že připojení je ukončeno po dokončení následných kód bloku.
 
-Hello předchozí příklad ukazuje, že přidáte kód ADO.NET tooany místní transakce se dvěma řádky. Transakce nabízejí rychlý způsob tooimprove hello výkon kód, který umožňuje sekvenční vložit, aktualizovat a odstranit operace. Ale hello nejrychlejší výkonu, zvažte změnu hello kód další tootake výhod dávkování na straně klienta, jako jsou parametry s hodnotou tabulky.
+Předchozí příklad ukazuje, můžete přidat místní transakce pro jakýkoli kód ADO.NET se dvěma řádky. Transakce nabízejí rychlý způsob, jak zlepšit výkon kód, který umožňuje sekvenční vložit, aktualizovat a odstraňovat operace. Ale nejrychlejší výkonu, zvažte změnu kód dále využít výhody dávkování na straně klienta, jako jsou parametry s hodnotou tabulky.
 
 Další informace o transakcích v ADO.NET naleznete v tématu [místní transakce v ADO.NET](https://docs.microsoft.com/dotnet/framework/data/adonet/local-transactions).
 
 ### <a name="table-valued-parameters"></a>Parametry s hodnotou tabulky
-Parametry s hodnotou tabulky podporují uživatelem definovaná tabulka typy jako parametry příkazy jazyka Transact-SQL, uložené procedury a funkce. Tato technika dávkování na straně klienta vám umožní toosend více řádků dat v rámci parametr s hodnotou tabulky hello. parametry s hodnotou tabulky toouse nejdříve definovat typ tabulky. Následující příkaz jazyka Transact-SQL Hello vytvoří typ tabulky s názvem **MyTableType**.
+Parametry s hodnotou tabulky podporují uživatelem definovaná tabulka typy jako parametry příkazy jazyka Transact-SQL, uložené procedury a funkce. Tato technika dávkování na straně klienta, umožní vám odesílat více řádků dat v rámci parametr s hodnotou tabulky. Pokud chcete používat parametry s hodnotou tabulky, nejdříve definujte typ tabulky. Následující příkaz Transact-SQL vytvoří typ tabulky s názvem **MyTableType**.
 
     CREATE TYPE MyTableType AS TABLE 
     ( mytext TEXT,
       num INT );
 
 
-V kódu, můžete vytvořit **DataTable** s hello přesnou stejné názvy a typy hello typ tabulky. To předat **DataTable** parametr v textu dotazu nebo uložené proceduře volání. Hello následující příklad ukazuje, tento postup:
+V kódu, můžete vytvořit **DataTable** s přesnou stejné názvy a typy typu tabulky. To předat **DataTable** parametr v textu dotazu nebo uložené proceduře volání. Následující příklad ukazuje, tento postup:
 
     using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
     {
         connection.Open();
 
         DataTable table = new DataTable();
-        // Add columns and rows. hello following is a simple example.
+        // Add columns and rows. The following is a simple example.
         table.Columns.Add("mytext", typeof(string));
         table.Columns.Add("num", typeof(int));    
         for (var i = 0; i < 10; i++)
@@ -160,9 +160,9 @@ V kódu, můžete vytvořit **DataTable** s hello přesnou stejné názvy a typy
         cmd.ExecuteNonQuery();
     }
 
-V předchozím příkladu hello hello **SqlCommand** objekt vloží řádky z parametr s hodnotou tabulky  **@TestTvp** . Hello vytvořili **DataTable** objektu je přiřazen toothis parametr s hello **SqlCommand.Parameters.Add** metoda. Dávkování hello vložení v jednom volání výrazně zvyšuje výkon hello přes sekvenční vložení.
+V předchozím příkladu **SqlCommand** objekt vloží řádky z parametr s hodnotou tabulky  **@TestTvp** . Dříve vytvořenou **DataTable** objektu je přiřazen tento parametr se **SqlCommand.Parameters.Add** metoda. Dávkování vloží jedno volání výrazně zvyšuje výkon přes sekvenční vložení.
 
-tooimprove hello předchozí příklad další, použijte uloženou proceduru místo příkaz založený na textu. Následující příkaz Transact-SQL Hello vytvoří uložené procedury, která přebírá hello **SimpleTestTableType** parametr s hodnotou tabulky.
+Chcete-li zlepšit další předchozí příklad, použijte uložené procedury místo příkaz založený na textu. Následující příkaz Transact-SQL vytvoří uložené procedury, která přebírá **SimpleTestTableType** parametr s hodnotou tabulky.
 
     CREATE PROCEDURE [dbo].[sp_InsertRows] 
     @TestTvp as MyTableType READONLY
@@ -173,16 +173,16 @@ tooimprove hello předchozí příklad další, použijte uloženou proceduru m�
     END
     GO
 
-Změňte hello **SqlCommand** objektu deklarace v hello předchozí kód příklad toohello následující.
+Změňte **SqlCommand** deklarace v předchozím příkladu kódu pro následující objekt.
 
     SqlCommand cmd = new SqlCommand("sp_InsertRows", connection);
     cmd.CommandType = CommandType.StoredProcedure;
 
-Ve většině případů parametry s hodnotou tabulky mít ekvivalentní, nebo lepší výkon než jinými technikami, dávkování. Parametry s hodnotou tabulky jsou často vhodnější, protože jsou flexibilnější než jiné možnosti. Jiné postupy, jako je například hromadného kopírování SQL, například povolit pouze hello vkládání nových řádků. Ale s parametry s hodnotou tabulky, můžete použít logiku v hello uložené procedury toodetermine řádky jsou aktualizace a který se vloží. typ tabulky Hello může být také upravené toocontain sloupec "Operace", která udává, zda text hello zadat řádek by měla být vložit, aktualizovat nebo odstranit.
+Ve většině případů parametry s hodnotou tabulky mít ekvivalentní, nebo lepší výkon než jinými technikami, dávkování. Parametry s hodnotou tabulky jsou často vhodnější, protože jsou flexibilnější než jiné možnosti. Jinými technikami, jako je například hromadného kopírování SQL, například povolit jenom vkládání nových řádků. Ale s parametry s hodnotou tabulky, můžete použít logiku v uložené proceduře k určení, které řádky jsou aktualizace a který se vloží. Typ tabulky můžete také upravit tak, aby obsahovala sloupec "Operace", která určuje, zda zadaný řádek by měl být vložit, aktualizovat nebo odstranit.
 
-Hello následující tabulka ukazuje výsledky testů ad-hoc pro použití hello parametry s hodnotou tabulky v milisekundách.
+V následující tabulce jsou uvedeny ad-hoc výsledků testů pro použití s hodnotou tabulky parametrů v milisekundách.
 
-| Operace | Místní tooAzure (ms) | Azure stejného datového centra (ms) |
+| Operace | Místním nasazením a Azure (ms) | Azure stejného datového centra (ms) |
 | --- | --- | --- |
 | 1 |124 |32 |
 | 10 |131 |25 |
@@ -191,16 +191,16 @@ Hello následující tabulka ukazuje výsledky testů ad-hoc pro použití hello
 | 10000 |23830 |3586 |
 
 > [!NOTE]
-> Výsledky nejsou srovnávacích testů. V tématu hello [Poznámka o výsledcích časování v tomto tématu](#note-about-timing-results-in-this-topic).
+> Výsledky nejsou srovnávacích testů. Najdete v článku [Poznámka o výsledcích časování v tomto tématu](#note-about-timing-results-in-this-topic).
 > 
 > 
 
-Hello výkonnější z dávkování je okamžitě zřejmá. V předchozím testu sekvenčních hello 1000 operace trvalo 129 sekund mimo hello datacenter a 21 sekund z v rámci datového centra hello. Ale s parametry s hodnotou tabulky 1000 operace trvat jenom 2.6 sekund mimo datové centrum hello a 0,4 sekundy v rámci datového centra hello.
+Zvýšení výkonu z dávkování je okamžitě zřejmá. V předchozím testu sekvenčních 1000 operace trvalo 129 sekund mimo datové centrum a 21 sekund z v rámci datového centra. Ale s parametry s hodnotou tabulky 1000 operace trvat jenom 2.6 sekund mimo datové centrum a 0,4 sekundy v rámci datového centra.
 
 Další informace o parametry s hodnotou tabulky najdete v tématu [zavolat parametry](https://msdn.microsoft.com/library/bb510489.aspx).
 
 ### <a name="sql-bulk-copy"></a>Hromadné kopírování SQL
-Hromadné kopírování SQL je jiný způsob tooinsert velké objemy dat do cílové databáze. Aplikace .NET mohou použít hello **SqlBulkCopy** třída tooperform hromadné operace vložení. **SqlBulkCopy** je podobný v funkce toohello nástroj příkazového řádku, **Bcp.exe**, nebo hello příkazu Transact-SQL, **BULK INSERT**. Hello následující příklad kódu ukazuje, jak toobulk kopie hello řádků ve zdroji hello **DataTable**, tabulce, toohello cílové tabulky v systému SQL Server, MyTable.
+Hromadné kopírování SQL je další způsob vložení velkých objemů dat do cílové databáze. Aplikace .NET mohou použít **SqlBulkCopy** třída provést hromadné operace vložení. **SqlBulkCopy** je podobně jako u nástroj příkazového řádku **Bcp.exe**, nebo pomocí příkazu Transact-SQL **BULK INSERT**. Následující příklad kódu ukazuje, jak hromadně kopírovat řádky ve zdroji **DataTable**, tabulky do cílové tabulky v systému SQL Server MyTable.
 
     using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
     {
@@ -215,11 +215,11 @@ Hromadné kopírování SQL je jiný způsob tooinsert velké objemy dat do cíl
         }
     }
 
-Existují případy, kdy je hromadné kopírování upřednostňované nad parametry s hodnotou tabulky. V tématu hello srovnávací tabulka s hodnotou tabulky parametrů versus BULK INSERT operace v tématu hello [zavolat parametry](https://msdn.microsoft.com/library/bb510489.aspx).
+Existují případy, kdy je hromadné kopírování upřednostňované nad parametry s hodnotou tabulky. Podívejte se na tabulku porovnání s hodnotou tabulky parametrů versus BULK INSERT operace v tématu [zavolat parametry](https://msdn.microsoft.com/library/bb510489.aspx).
 
-Hello následující výsledky testů ad-hoc zobrazit výkon hello dávkování s **SqlBulkCopy** v milisekundách.
+Zobrazit následující výsledky testů ad-hoc výkon dávkování s **SqlBulkCopy** v milisekundách.
 
-| Operace | Místní tooAzure (ms) | Azure stejného datového centra (ms) |
+| Operace | Místním nasazením a Azure (ms) | Azure stejného datového centra (ms) |
 | --- | --- | --- |
 | 1 |433 |57 |
 | 10 |441 |32 |
@@ -228,16 +228,16 @@ Hello následující výsledky testů ad-hoc zobrazit výkon hello dávkování 
 | 10000 |21605 |2737 |
 
 > [!NOTE]
-> Výsledky nejsou srovnávacích testů. V tématu hello [Poznámka o výsledcích časování v tomto tématu](#note-about-timing-results-in-this-topic).
+> Výsledky nejsou srovnávacích testů. Najdete v článku [Poznámka o výsledcích časování v tomto tématu](#note-about-timing-results-in-this-topic).
 > 
 > 
 
-V menší velikosti dávky parametry s hodnotou tabulky hello použití outperformed hello **SqlBulkCopy** třídy. Ale **SqlBulkCopy** provést 12-31 % rychlejší než parametry s hodnotou tabulky pro testy hello 1 000 a 10 000 řádků. Jako parametry s hodnotou tabulky **SqlBulkCopy** je vhodný pro dávkové vložení, zejména v případě, že porovnání výkonu toohello operací jiný-zpracovat v dávce.
+V menší velikosti dávky, použijte parametry s hodnotou tabulky outperformed **SqlBulkCopy** třídy. Ale **SqlBulkCopy** provést 12-31 % rychlejší než parametry s hodnotou tabulky pro testy 1 000 a 10 000 řádků. Jako parametry s hodnotou tabulky **SqlBulkCopy** je vhodný pro dávkové vložení, zejména v případě, že ve srovnání s výkon operací jiný-zpracovat v dávce.
 
 Další informace o hromadné kopírování v ADO.NET naleznete v tématu [operace hromadného kopírování v systému SQL Server](https://msdn.microsoft.com/library/7ek5da1a.aspx).
 
 ### <a name="multiple-row-parameterized-insert-statements"></a>Příkazy s parametry vložit více řádků
-Jeden alternativní pro malé dávky je tooconstruct velké parametry příkazu INSERT, která vloží více řádků. Hello následující příklad kódu ukazuje tento postup.
+Jeden alternativou k malé dávky je vytvořit velké parametrizované příkaz INSERT, který se vloží více řádků. Následující příklad kódu ukazuje tento postup.
 
     using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
     {
@@ -258,9 +258,9 @@ Jeden alternativní pro malé dávky je tooconstruct velké parametry příkazu 
     }
 
 
-V tomto příkladu je určená tooshow hello základní koncept. Realističtější scénář by projít řetězec dotazu hello požadované entity tooconstruct hello a parametry příkazu hello současně. Jste omezeni tooa celkem parametry dotazu 2100, toto nastavení omezuje hello celkový počet řádků, které lze zpracovat tímto způsobem.
+Tento příklad slouží k zobrazení základní koncept. Realističtější scénář by projít požadované entity současně vytvořit řetězec dotazu a parametry příkazu. Jste omezený na celkem parametry dotazu 2100, toto nastavení omezuje celkový počet řádků, které lze zpracovat tímto způsobem.
 
-Hello následující výsledky testování ad-hoc zobrazit hello výkonu tento typ příkazu insert v milisekundách.
+Následující výsledky testů ad-hoc zobrazit výkon tento typ příkazu insert v milisekundách.
 
 | Operace | Parametry s hodnotou tabulky (ms) | Vložení jedním příkazem (ms) |
 | --- | --- | --- |
@@ -269,39 +269,39 @@ Hello následující výsledky testování ad-hoc zobrazit hello výkonu tento t
 | 100 |33 |51 |
 
 > [!NOTE]
-> Výsledky nejsou srovnávacích testů. V tématu hello [Poznámka o výsledcích časování v tomto tématu](#note-about-timing-results-in-this-topic).
+> Výsledky nejsou srovnávacích testů. Najdete v článku [Poznámka o výsledcích časování v tomto tématu](#note-about-timing-results-in-this-topic).
 > 
 > 
 
-Tento přístup může být mírně rychlejší pro balíků, které jsou menší než 100 řádků. I když zlepšování hello je malá, tento postup je jinou možnost, která může fungovat i ve vašem scénáři konkrétní aplikaci.
+Tento přístup může být mírně rychlejší pro balíků, které jsou menší než 100 řádků. I když zlepšení je malý, tento postup je další možností, které může fungovat i ve vašem scénáři konkrétní aplikaci.
 
 ### <a name="dataadapter"></a>DataAdapter
-Hello **DataAdapter** třída vám umožní toomodify **datovou sadu** objekt a potom odeslat změny hello jako operace INSERT, UPDATE a DELETE. Pokud používáte hello **DataAdapter** tímto způsobem je důležité toonote, který samostatné volání jsou vytvářeny pro každou operaci distinct. tooimprove výkonu, použijte hello **UpdateBatchSize** vlastnost toohello počet operací, které by měl zpracovat v dávce najednou. Další informace najdete v tématu [provádění dávkové operace pomocí DataAdapters](https://msdn.microsoft.com/library/aadf8fk2.aspx).
+**DataAdapter** třída umožňuje upravovat **datovou sadu** objektu a pak odeslat provedené změny jako operace INSERT, UPDATE a DELETE. Pokud používáte **DataAdapter** tímto způsobem je důležité si uvědomit, že samostatné volání jsou vytvářeny pro každou operaci distinct. Chcete-li zvýšit výkon, použijte **UpdateBatchSize** vlastnost počet operací, které by měl zpracovat v dávce najednou. Další informace najdete v tématu [provádění dávkové operace pomocí DataAdapters](https://msdn.microsoft.com/library/aadf8fk2.aspx).
 
 ### <a name="entity-framework"></a>Rozhraní Entity framework
-Rozhraní Entity Framework aktuálně nepodporuje dávkování. Různé vývojáři v komunitě hello pokusili toodemonstrate řešení, například přepsání hello **SaveChanges** metoda. Ale hello řešení jsou obvykle toohello komplexní a vlastní aplikace a datového modelu. Hello Entity Framework webu codeplex projekt má aktuálně stránky diskuzi na žádost o této funkce. tooview toto pojednání, najdete v části [poznámky ze schůzky návrhu - 2 srpen 2012](http://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012).
+Rozhraní Entity Framework aktuálně nepodporuje dávkování. Různé vývojáři v komunitě Pokusili jste se ukazují alternativní řešení, například přepsání **SaveChanges** metoda. Ale řešení jsou obvykle komplexní a přizpůsobit v aplikaci a datového modelu. Rozhraní Entity Framework projektu webu codeplex má v současnosti diskusní stránky na žádost o této funkce. Tato diskuse najdete v tématu [poznámky ze schůzky návrhu - 2 srpen 2012](http://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012).
 
 ### <a name="xml"></a>XML
-Pro úplnost se domníváme, že je důležité tootalk o XML jako strategie dávkování. Použití hello XML má však žádné výhody přes jiné metody a několik nevýhody. Hello přístup je podobné tootable s hodnotou parametry, ale souboru XML nebo řetězec, je předaná tooa uložené procedury místo uživatelem definovaná tabulka. Hello uložené procedury analyzuje hello příkazy v hello uložené procedury.
+Pro úplnost se domníváme, že je potřeba mluvit o XML jako strategie dávkování. Použití XML má však žádné výhody přes jiné metody a několik nevýhody. Přístup je podobná parametry s hodnotou tabulky, ale souboru XML nebo řetězec předaný uložené proceduře místo uživatelem definovaná tabulka. Uložená procedura analyzuje příkazy v uložené proceduře.
 
-Existuje několik nevýhody toothis přístup:
+Existuje několik nevýhod tohoto přístupu:
 
 * Práce s XML může být náročná a chyba náchylné k chybám.
-* Analýza hello XML na hello databáze může být náročná na prostředky procesoru.
+* Analýza kódu XML v databázi, může být náročná na prostředky procesoru.
 * Ve většině případů je tato metoda pomalejší než parametry s hodnotou tabulky.
 
-Z těchto důvodů se nedoporučuje hello použití XML pro dotazy batch.
+Z těchto důvodů se nedoporučuje použití XML pro dotazy batch.
 
 ## <a name="batching-considerations"></a>Dávkování aspekty
-Hello následující části obsahují další pokyny pro použití hello dávkování v aplikacích databáze SQL.
+Následující části obsahují další pokyny pro použití dávkování v aplikacích databáze SQL.
 
 ### <a name="tradeoffs"></a>Kompromisy
-V závislosti na vaší architektury dávkování může zahrnovat kompromis mezi výkon a odolnost. Zvažte například scénář hello, kde vaše role neočekávaně ocitne mimo provoz. Pokud ztratíte jeden řádek dat, dopad hello je menší než hello dopad ztráty velké dávku neodeslané řádků. Existuje větší riziko, pokud vyrovnávací paměť řádky před jejich odesláním toohello databáze v zadaném časovém období.
+V závislosti na vaší architektury dávkování může zahrnovat kompromis mezi výkon a odolnost. Zvažte například scénář, kde vaše role neočekávaně ocitne mimo provoz. Pokud ztratíte jeden řádek dat, dopad je menší než dopad ztráty velké dávku neodeslané řádků. Existuje větší riziko, pokud vyrovnávací paměť řádky před jejich odesláním do databáze v zadaném časovém období.
 
-Z důvodu této kompromis vyhodnoťte hello typ operací, že batch můžete. Batch důkladnějšímu (větší dávky a delší dobu windows) s daty, která je méně kritický.
+Z důvodu této kompromis Vyhodnoťte typ operací, že batch můžete. Batch důkladnějšímu (větší dávky a delší dobu windows) s daty, která je méně kritický.
 
 ### <a name="batch-size"></a>Velikost dávky
-V našich testech se obvykle žádné výhody toobreaking velké dávky na menší bloky. Ve skutečnosti tento pododdíl často za následek nižší výkon než jeden velký dávky. Zvažte například scénář, kde chcete tooinsert 1 000 řádků. Hello následující tabulka ukazuje, jak dlouho trvalo parametry s hodnotou tabulky toouse, tooinsert 1 000 řádků při rozdělit do menších dávek.
+V našich testech se obvykle žádnou výhodu nejnovější velké dávky na menší bloky. Ve skutečnosti tento pododdíl často za následek nižší výkon než jeden velký dávky. Zvažte například scénář, kam chcete vložit 1 000 řádků. Následující tabulka ukazuje, jak dlouho Pokud chcete používat parametry s hodnotou tabulky vložit 1 000 řádků při rozdělit do menších dávek.
 
 | Velikost dávky | Iterace | Parametry s hodnotou tabulky (ms) |
 | --- | --- | --- |
@@ -311,18 +311,18 @@ V našich testech se obvykle žádné výhody toobreaking velké dávky na menš
 | 50 |20 |630 |
 
 > [!NOTE]
-> Výsledky nejsou srovnávacích testů. V tématu hello [Poznámka o výsledcích časování v tomto tématu](#note-about-timing-results-in-this-topic).
+> Výsledky nejsou srovnávacích testů. Najdete v článku [Poznámka o výsledcích časování v tomto tématu](#note-about-timing-results-in-this-topic).
 > 
 > 
 
-Uvidíte, že nejlepší výkon hello 1 000 řádků je toosubmit všechny najednou. V jiné testy (není tady zobrazené) došlo malé výkonu nárůst toobreak dávce 10000 řádek do dvou dávek 5000. Ale hello schématu tabulky pro tyto testy se poměrně snadno, měli byste provést testy na konkrétních dat a tooverify velikosti dávky tato zjištění.
+Uvidíte, že je všechny najednou odeslat je nejlepší výkon pro 1 000 řádků. Jiné testy (není tady zobrazené) bylo malé výkonnější dávce 10000 řádek rozdělit na dvě dávky 5000. Ale schématu tabulky pro tyto testy je poměrně jednoduché, měli byste provést testy na konkrétních dat a velikosti dávky k ověření těchto zjištění.
 
-Jiné tooconsider faktor je, že pokud celkový počet batch hello příliš velká, SQL Database může omezení a odmítnout toocommit hello batch. Nejlepších výsledků dosáhnete hello testovací toodetermine vaše konkrétní scénář, pokud dojde velikost dávky ideální. Zkontrolujte velikost dávky hello konfigurovat v modulu runtime tooenable rychlé úpravy na základě výkonu nebo chyby.
+Dalším faktorem vzít v úvahu je, že pokud celkový počet batch příliš velká, SQL Database může omezení a odmítnout potvrzení dávky. Nejlepších výsledků dosáhnete otestujte konkrétní scénář k určení, jestli je velikost dávky ideální. Velikost dávky konfigurovatelné za běhu, aby povolit rychlé úpravy na základě výkonu nebo chyby.
 
-Nakonec vyrovnávat hello velikost dávky hello s hello rizika spojená s dávkování. Pokud nejsou přechodné chyby nebo hello role selže, vezměte v úvahu důsledky hello opakování operace hello nebo ztráty dat hello v dávce hello.
+Nakonec vyrovnávat velikost dávky s riziky spojenými s dávkování. Pokud nejsou přechodné chyby nebo roli selže, vezměte v úvahu důsledky opakováním operace nebo ke ztrátě dat v dávce.
 
 ### <a name="parallel-processing"></a>Paralelní zpracování
-Co když trvalo hello přístup snižuje velikost dávky hello ale používá více vláken tooexecute hello pracovní? Naše testy znovu, ukázalo, že několik menších vícevláknové dávek zpravidla dělá horší, než jeden větší batch. Hello následující testovací pokusí tooinsert 1 000 řádků v jedné nebo více paralelních dávek. Tento test ukazuje, jak více souběžných dávky ve skutečnosti snížení výkonu.
+Co když trvalo přístup snižuje velikost dávky, ale používá více vláken k provedení práce? Naše testy znovu, ukázalo, že několik menších vícevláknové dávek zpravidla dělá horší, než jeden větší batch. Následující test se pokusí vložit řádky 1000 do jedné nebo více paralelních dávek. Tento test ukazuje, jak více souběžných dávky ve skutečnosti snížení výkonu.
 
 | Velikost dávky [iterací] | Dva vláken (ms) | Čtyři vláken (ms) | Šest vláken (ms) |
 | --- | --- | --- | --- |
@@ -332,39 +332,39 @@ Co když trvalo hello přístup snižuje velikost dávky hello ale používá v�
 | 100 [10] |488 |439 |391 |
 
 > [!NOTE]
-> Výsledky nejsou srovnávacích testů. V tématu hello [Poznámka o výsledcích časování v tomto tématu](#note-about-timing-results-in-this-topic).
+> Výsledky nejsou srovnávacích testů. Najdete v článku [Poznámka o výsledcích časování v tomto tématu](#note-about-timing-results-in-this-topic).
 > 
 > 
 
-Existuje několik možných důvodů pro hello snížení výkonu kvůli tooparallelism:
+Existuje několik možných důvodů pro snížení výkonu z důvodu paralelismus:
 
 * Existuje více souběžných sítě volání místo jeden.
 * Více operací pro jedinou tabulku může způsobit konflikty a blokování.
 * Existují režijní náklady spojené s více vláken.
-* Hello výdajů otevření více připojení převáží hello výhodou paralelní zpracování.
+* Náklady otevření více připojení převáží výhodou paralelní zpracování.
 
-Pokud cílíte různých tabulek nebo databází, je možné toosee poklesu výkonu získáte pomocí této strategie. Scénář pro tento postup by horizontálního dělení databáze nebo federace. Horizontálního dělení používá více databází a databázi tooeach různých datových trasy. Pokud každé malé dávky tooa jiné databázi, může být pak paralelní provádění operací hello efektivnější. Ale hello výkonnější není dostatečně významné toouse jako hello základ pro horizontálního dělení rozhodnutí toouse databáze ve vašem řešení.
+Pokud cílíte různých tabulek nebo databází, je možné zobrazit některé výkonu získáte pomocí této strategie. Scénář pro tento postup by horizontálního dělení databáze nebo federace. Horizontálního dělení používá více databází a směruje různých datových na každou databázi. Pokud každé malé dávky k jiné databázi, může být efektivnější pak paralelní provádění operací. Zvýšení výkonu však není dostatečně významné chcete použít jako základ pro rozhodnutí a použít horizontálního dělení databáze ve vašem řešení.
 
-V některé návrhy můžete paralelní provádění menší dávek způsobit lepší propustnost požadavky v rámci systému zatížení. V takovém případě i když je rychlejší tooprocess jeden větší batch, více listů paralelní zpracování může být efektivnější.
+V některé návrhy můžete paralelní provádění menší dávek způsobit lepší propustnost požadavky v rámci systému zatížení. V takovém případě i když je rychlejší zpracovat jeden větší batch, více listů paralelní zpracování může být efektivnější.
 
-Pokud používáte paralelní provádění, vezměte v úvahu řízení hello maximální počet pracovních vláken. Zmenšete počet může být výsledkem nižší výskyt kolizí a rychlejší dobu provádění. Zvažte také hello další zátěže, které to umístí na hello cílová databáze v připojení a transakce.
+Pokud používáte paralelní provádění, vezměte v úvahu řízení maximální počet pracovních vláken. Zmenšete počet může být výsledkem nižší výskyt kolizí a rychlejší dobu provádění. Zvažte také další zátěže, které to umístí na cílovou databázi v připojení a transakce.
 
 ### <a name="related-performance-factors"></a>Faktory související výkonu
 Dávkování ovlivní také typické pokyny na výkon databáze. Můžete například vložit pro tabulky, které mají velký primární klíč, nebo mnoho neclusterované indexy je snížit výkon.
 
-Pokud parametry s hodnotou tabulky pomocí uložené procedury, můžete použít příkaz hello **SET NOCOUNT ON** od začátku hello hello procedury. Tento příkaz potlačí hello návrat hello počet hello ovlivněných řádků v postupu hello. Ale v testech hello použití **SET NOCOUNT ON** nemělo žádný vliv nebo snížení výkonu. Hello testovací uložené procedury bylo jednoduché s jedním **vložit** příkazu z parametru s hodnotou tabulky hello. Je možné, že by složitější uložené procedury těžit z tohoto prohlášení. Ale Nepředpokládejte, že přidání **SET NOCOUNT ON** tooyour uložené procedury automaticky zvyšuje výkon. toounderstand hello vliv, testovací vaše uložené procedury s i bez hello **SET NOCOUNT ON** příkaz.
+Pokud parametry s hodnotou tabulky pomocí uložené procedury, můžete použít příkaz **SET NOCOUNT ON** na začátku procesu. Tento příkaz potlačí návrat počet ovlivněných řádků v postupu. Ale v našich testech se použití **SET NOCOUNT ON** nemělo žádný vliv nebo snížení výkonu. Test uložené procedury bylo jednoduché s jedním **vložit** příkazu z parametru s hodnotou tabulky. Je možné, že by složitější uložené procedury těžit z tohoto prohlášení. Ale Nepředpokládejte, že přidání **SET NOCOUNT ON** uložené procedury automaticky zvyšuje výkon. Chcete-li pochopení dopadu, otestovat vaše uložené procedury s i bez **SET NOCOUNT ON** příkaz.
 
 ## <a name="batching-scenarios"></a>Dávkování scénáře
-Hello následující části popisují, jak toouse parametry s hodnotou tabulky třemi způsoby aplikace. Hello první scénář popisuje, jak ukládání do vyrovnávací paměti a dávkování vzájemně spolupracují. Druhý scénář Hello zlepšuje výkon provádění operací s podrobnostmi v jedné uložené procedury volání. Hello konečné scénář ukazuje jak toouse parametry s hodnotou tabulky v operaci "UPSERT".
+Následující části popisují, jak používat parametry s hodnotou tabulky v tři scénáře aplikací. První scénář popisuje, jak ukládání do vyrovnávací paměti a dávkování vzájemně spolupracují. Druhý scénář zlepšuje výkon provádění operací s podrobnostmi v jedné uložené procedury volání. Poslední scénář popisuje, jak používat parametry s hodnotou tabulky v operace "UPSERT".
 
 ### <a name="buffering"></a>Ukládání do vyrovnávací paměti
-I když je několik scénářů, které jsou zřejmé kandidáta pro dávkování, existuje mnoho scénářů, které může využívat výhod dávkování zpožděné zpracování. Zpožděné zpracování také však představuje větší riziko, že je v případě hello neočekávané selhání ztrátám dat hello. Je důležité toounderstand toto riziko a zvážit důsledky hello.
+I když je několik scénářů, které jsou zřejmé kandidáta pro dávkování, existuje mnoho scénářů, které může využívat výhod dávkování zpožděné zpracování. Zpožděné zpracování však představuje větší riziko, že data jsou v případě neočekávaného selhání ztraceny. Je důležité pochopit toto riziko a zvážit důsledky.
 
-Představte si třeba webové aplikace, která sleduje hello navigační historii jednotlivých uživatelů. S každým požadavkem stránky může aplikace hello nastavit uživatele databáze volání toorecord hello stránky zobrazení. Ale vyšší výkon a škálovatelnost lze dosáhnout ukládání do vyrovnávací paměti hello uživatelé navigační aktivity a pak odešle tato data toohello databáze v dávkách. Můžete aktivovat aktualizaci databáze hello uplynulý čas nebo velikost vyrovnávací paměti. Pravidlo může například určit, že tento hello batch, měla by být zpracována po 20 sekund nebo když vyrovnávací paměti hello dosáhne 1000 položek.
+Představte si třeba webové aplikace, která sleduje navigační historii jednotlivých uživatelů. S každým požadavkem stránky může aplikace Změna databáze volání k zaznamenání zobrazení stránky uživatele. Ale vyšší výkon a škálovatelnost lze dosáhnout ukládání do vyrovnávací paměti navigační aktivity uživatelů a pak odešle tato data do databáze v dávkách. Můžete aktivovat aktualizaci databáze uplynulý čas nebo velikost vyrovnávací paměti. Pravidlo může například určit, že by měl po 20 sekund nebo pokud vyrovnávací paměť dosáhne 1000 položek zpracování dávky.
 
-Hello následující příklad kódu používá [reaktivní rozšíření - Rx](https://msdn.microsoft.com/data/gg577609) tooprocess do vyrovnávací paměti události vyvolané službou třída monitorování. Když hello výplněmi vyrovnávací paměti nebo je dosaženo časového limitu, hello dávku uživatelská data se odesílají toohello databáze s parametr s hodnotou tabulky.
+Následující příklad kódu používá [reaktivní rozšíření - Rx](https://msdn.microsoft.com/data/gg577609) ke zpracování ve vyrovnávací paměti události vyvolané službou třída monitorování. Když vyrovnávací vyplní celé nebo dosaženo časového limitu, je odeslána dávky dat uživatele do databáze s parametr s hodnotou tabulky.
 
-Hello následující NavHistoryData třída modely hello navigační podrobné informace o uživateli. Obsahuje základní informace, jako je například hello uživatelský identifikátor, adresa URL hello přístup a hello doba přístupu k.
+Následující třídy NavHistoryData modelů navigační podrobností o uživateli. Obsahuje základní informace, jako je identifikátor uživatele, adresu URL přístup a doba přístupu k.
 
     public class NavHistoryData
     {
@@ -375,7 +375,7 @@ Hello následující NavHistoryData třída modely hello navigační podrobné i
         public DateTime AccessTime { get; set; }
     }
 
-Hello NavHistoryDataMonitor třída je zodpovědná za ukládání do vyrovnávací paměti hello uživatele navigační data toohello databáze. Obsahuje metody, RecordUserNavigationEntry, který odpovídá zobrazením **OnAdded** událostí. Hello následující kód ukazuje hello logiku konstruktoru, který používá Rx toocreate kolekci pozorovatelné založené na události hello. Pak přihlásí toothis pozorovatelné kolekce s metodou hello vyrovnávací paměti. přetížení Hello Určuje, že vyrovnávací paměť hello by měly být odeslány každých 20 sekund nebo 1 000 položek.
+Třída NavHistoryDataMonitor je zodpovědná za ukládání do vyrovnávací paměti navigační data uživatele do databáze. Obsahuje metody, RecordUserNavigationEntry, který odpovídá zobrazením **OnAdded** událostí. Následující kód ukazuje konstruktor logiky, která používá Rx můžete vytvořit kolekci pozorovatelné založené na události. Pak přihlásí se k této kolekci pozorovatelné s metodou vyrovnávací paměti. Přetížení Určuje, že vyrovnávací paměti by měly být odeslány každých 20 sekund nebo 1 000 položek.
 
     public NavHistoryDataMonitor()
     {
@@ -385,7 +385,7 @@ Hello NavHistoryDataMonitor třída je zodpovědná za ukládání do vyrovnáva
         observableData.Buffer(TimeSpan.FromSeconds(20), 1000).Subscribe(Handler);           
     }
 
-Obslužná rutina Hello převede všechny položky hello uložená do vyrovnávací paměti typu s hodnotou tabulky a pak předá tento typ tooa uložený postup této batch hello procesy. Hello následující kód ukazuje dokončení definice hello hello NavHistoryDataEventArgs i hello NavHistoryDataMonitor třídy.
+Obslužná rutina převede všechny položky ve vyrovnávací paměti typu s hodnotou tabulky a pak předá tento typ uložené procedury, která zpracovává dávky. Následující kód ukazuje dokončení definice pro NavHistoryDataEventArgs i NavHistoryDataMonitor třídy.
 
     public class NavHistoryDataEventArgs : System.EventArgs
     {
@@ -444,10 +444,10 @@ Obslužná rutina Hello převede všechny položky hello uložená do vyrovnáva
         }
     }
 
-toouse této vyrovnávací paměti třídy hello aplikace vytvoří objekt NavHistoryDataMonitor statické. Pokaždé, když uživatel přistupuje k na stránce aplikace hello volá metodu NavHistoryDataMonitor.RecordUserNavigationEntry hello. ukládání do vyrovnávací paměti logiku Hello pokračuje tootake péče o odesílání tyto položky toohello databáze v dávkách.
+Pokud chcete používat tuto třídu vyrovnávací paměti, aplikace vytvoří objekt statické NavHistoryDataMonitor. Pokaždé, když uživatel přistupuje k na stránce aplikace volá metodu NavHistoryDataMonitor.RecordUserNavigationEntry. Abyste dbali odesláním těchto položek do databáze v dávkách pokračuje logice vyrovnávací paměti.
 
 ### <a name="master-detail"></a>Hlavní podrobností
-Parametry s hodnotou tabulky jsou užitečné pro jednoduché scénáře INSERT. Však může být náročnější toobatch vložení, které zahrnují více než jedna tabulka. scénář "hlavního a podrobného" Hello je dobrým příkladem. hlavní tabulka Hello identifikuje hello primární entity. Minimálně jedna tabulka podrobností uložit víc dat o hello entity. V tomto scénáři vynutit relace cizích klíčů relace hello podrobnosti tooa jedinečný hlavní entity. Vezměte v úvahu zjednodušenou verzi PurchaseOrder tabulka a její přidružené OrderDetail tabulkou. Hello následující Transact-SQL vytvoří tabulku PurchaseOrder hello s čtyři sloupce: OrderID, OrderDate, CustomerID a stav.
+Parametry s hodnotou tabulky jsou užitečné pro jednoduché scénáře INSERT. Však může být více náročné dávkového vložení, které zahrnují více než jedna tabulka. Scénář "hlavního a podrobného" je dobrým příkladem. Hlavní tabulka obsahuje primární entity. Minimálně jedna tabulka podrobností uložit víc dat o entitě. V tomto scénáři vynutit relace cizích klíčů relace podrobnosti jedinečný hlavní entity. Vezměte v úvahu zjednodušenou verzi PurchaseOrder tabulka a její přidružené OrderDetail tabulkou. Následující příkaz Transact-SQL vytvoří tabulku PurchaseOrder s čtyři sloupce: OrderID, OrderDate, CustomerID a stav.
 
     CREATE TABLE [dbo].[PurchaseOrder](
     [OrderID] [int] IDENTITY(1,1) NOT NULL,
@@ -457,7 +457,7 @@ Parametry s hodnotou tabulky jsou užitečné pro jednoduché scénáře INSERT.
      CONSTRAINT [PrimaryKey_PurchaseOrder] 
     PRIMARY KEY CLUSTERED ( [OrderID] ASC ))
 
-Každý pořadí obsahuje jeden nebo více nákupy produktu. Tyto informace se zaznamená v tabulce PurchaseOrderDetail hello. Hello následující Transact-SQL vytvoří hello PurchaseOrderDetail tabulku se sloupci pět: OrderID, OrderDetailID, ProductID, UnitPrice a OrderQty.
+Každý pořadí obsahuje jeden nebo více nákupy produktu. Tyto informace se zaznamená v tabulce PurchaseOrderDetail. Následující příkaz Transact-SQL vytvoří tabulku PurchaseOrderDetail s pěti sloupce: OrderID, OrderDetailID, ProductID, UnitPrice a OrderQty.
 
     CREATE TABLE [dbo].[PurchaseOrderDetail](
     [OrderID] [int] NOT NULL,
@@ -468,13 +468,13 @@ Každý pořadí obsahuje jeden nebo více nákupy produktu. Tyto informace se z
      CONSTRAINT [PrimaryKey_PurchaseOrderDetail] PRIMARY KEY CLUSTERED 
     ( [OrderID] ASC, [OrderDetailID] ASC ))
 
-Hello OrderID sloupec v tabulce PurchaseOrderDetail hello musíte odkázat pořadí z tabulky PurchaseOrder hello. Následující definice cizího klíče Hello vynucuje toto omezení.
+Sloupce OrderID v tabulce PurchaseOrderDetail musíte odkázat pořadí z tabulky PurchaseOrder. Následující definice cizího klíče vynucuje toto omezení.
 
     ALTER TABLE [dbo].[PurchaseOrderDetail]  WITH CHECK ADD 
     CONSTRAINT [FK_OrderID_PurchaseOrder] FOREIGN KEY([OrderID])
     REFERENCES [dbo].[PurchaseOrder] ([OrderID])
 
-V pořadí toouse vracející tabulku parametrů musí mít jeden typ uživatelem definovaná tabulka pro každou cílovou tabulku.
+Aby bylo možné používat parametry s hodnotou tabulky, musí mít jeden typ uživatelem definovaná tabulka pro každou cílovou tabulku.
 
     CREATE TYPE PurchaseOrderTableType AS TABLE 
     ( OrderID INT,
@@ -490,7 +490,7 @@ V pořadí toouse vracející tabulku parametrů musí mít jeden typ uživatele
       OrderQty SMALLINT );
     GO
 
-Poté definujte uložené procedury, která přijímá tabulky z těchto typů. Tento postup umožňuje batch toolocally aplikace sadu objednávek a podrobnosti o pořadí v jediném volání. Hello následující Transact-SQL poskytuje hello deklarace dokončení uložené procedury v tomto příkladu pořadí nákupu.
+Poté definujte uložené procedury, která přijímá tabulky z těchto typů. Tento postup umožňuje aplikaci místně dávky sadu objednávek a podrobnosti o pořadí v jediném volání. Následující příkaz Transact-SQL poskytuje deklaraci dokončení uložené procedury v tomto příkladu pořadí nákupu.
 
     CREATE PROCEDURE sp_InsertOrdersBatch (
     @orders as PurchaseOrderTableType READONLY,
@@ -498,22 +498,22 @@ Poté definujte uložené procedury, která přijímá tabulky z těchto typů. 
     AS
     SET NOCOUNT ON;
 
-    -- Table that connects hello order identifiers in hello @orders
-    -- table with hello actual order identifiers in hello PurchaseOrder table
+    -- Table that connects the order identifiers in the @orders
+    -- table with the actual order identifiers in the PurchaseOrder table
     DECLARE @IdentityLink AS TABLE ( 
     SubmittedKey int, 
     ActualKey int, 
     RowNumber int identity(1,1)
     );
 
-          -- Add new orders toohello PurchaseOrder table, storing hello actual
-    -- order identifiers in hello @IdentityLink table   
+          -- Add new orders to the PurchaseOrder table, storing the actual
+    -- order identifiers in the @IdentityLink table   
     INSERT INTO PurchaseOrder ([OrderDate], [CustomerID], [Status])
     OUTPUT inserted.OrderID INTO @IdentityLink (ActualKey)
     SELECT [OrderDate], [CustomerID], [Status] FROM @orders ORDER BY OrderID;
 
-    -- Match hello passed-in order identifiers with hello actual identifiers
-    -- and complete hello @IdentityLink table for use with inserting hello details
+    -- Match the passed-in order identifiers with the actual identifiers
+    -- and complete the @IdentityLink table for use with inserting the details
     WITH OrderedRows As (
     SELECT OrderID, ROW_NUMBER () OVER (ORDER BY OrderID) As RowNumber 
     FROM @orders
@@ -521,8 +521,8 @@ Poté definujte uložené procedury, která přijímá tabulky z těchto typů. 
     UPDATE @IdentityLink SET SubmittedKey = M.OrderID
     FROM @IdentityLink L JOIN OrderedRows M ON L.RowNumber = M.RowNumber;
 
-    -- Insert hello order details into hello PurchaseOrderDetail table, 
-          -- using hello actual order identifiers of hello master table, PurchaseOrder
+    -- Insert the order details into the PurchaseOrderDetail table, 
+          -- using the actual order identifiers of the master table, PurchaseOrder
     INSERT INTO PurchaseOrderDetail (
     [OrderID],
     [ProductID],
@@ -533,9 +533,9 @@ Poté definujte uložené procedury, která přijímá tabulky z těchto typů. 
     JOIN @IdentityLink L ON L.SubmittedKey = D.OrderID;
     GO
 
-V tomto příkladu hello místně definované @IdentityLink ukládá hello skutečnými hodnotami OrderID z hello nově vložené řádky tabulky. Tyto identifikátory pořadí se liší od hello dočasné OrderID hodnoty v hello @orders a @details parametry s hodnotou tabulky. Z tohoto důvodu hello @IdentityLink tabulky pak připojí hello OrderID hodnoty z hello @orders toohello skutečné OrderID hodnoty parametrů pro hello nové řádky v tabulce PurchaseOrder hello. Po provedení tohoto kroku hello @IdentityLink tabulky můžete usnadnit vkládání podrobnosti pořadí hello s hello skutečné OrderID, který splňuje hello omezení cizího klíče.
+V tomto příkladu místně definované @IdentityLink ukládá skutečnými hodnotami OrderID z nově vložené řádky tabulky. Tyto identifikátory pořadí se liší od dočasné hodnoty OrderID @orders a @details parametry s hodnotou tabulky. Z tohoto důvodu @IdentityLink pak připojí OrderID hodnoty z tabulky @orders parametr skutečné hodnoty OrderID pro nové řádky v tabulce PurchaseOrder. Po provedení tohoto kroku @IdentityLink tabulky můžete usnadnit vkládání podrobnosti pořadí s skutečné OrderID, který splňuje omezení cizího klíče.
 
-Tuto uloženou proceduru lze z kódu nebo jiná volání jazyka Transact-SQL. Najdete v části parametry s hodnotou tabulky hello tento dokument příklad kódu. Hello následující Transact-SQL ukazuje, jak toocall hello sp_InsertOrdersBatch.
+Tuto uloženou proceduru lze z kódu nebo jiná volání jazyka Transact-SQL. Parametry s hodnotou tabulky části tohoto dokumentu příklad kódu. Následující příkaz Transact-SQL ukazuje způsob volání sp_InsertOrdersBatch.
 
     declare @orders as PurchaseOrderTableType
     declare @details as PurchaseOrderDetailTableType
@@ -555,14 +555,14 @@ Tuto uloženou proceduru lze z kódu nebo jiná volání jazyka Transact-SQL. Na
 
     exec sp_InsertOrdersBatch @orders, @details
 
-Toto řešení umožňuje každé dávky toouse sadu OrderID hodnot, které začínají znakem 1. Tyto hodnoty dočasné OrderID popisují hello vztahy v dávce hello, ale skutečné hodnoty OrderID hello jsou určeny v době hello operace insert hello. Můžete spustit hello stejné příkazy v předchozím příkladu hello opakovaně a generovat jedinečný objednávky v databázi hello. Z tohoto důvodu je vhodné přidat další kód nebo databáze logiku, která brání duplicitní objednávky při použití tohoto dávkování techniku.
+Toto řešení umožňuje každé dávky používat sadu OrderID hodnoty, které začínají znakem 1. Tyto hodnoty dočasné OrderID popisu relací v dávce, ale skutečný OrderID hodnoty jsou určeny v době operace insert. Můžete spustit stejné příkazy v předchozím příkladu opakovaně a generovat jedinečný objednávky v databázi. Z tohoto důvodu je vhodné přidat další kód nebo databáze logiku, která brání duplicitní objednávky při použití tohoto dávkování techniku.
 
 Tento příklad ukazuje, že i složitější databázových operací, jako je například seznam podrobnosti operace, může zpracovat v dávce pomocí parametry s hodnotou tabulky.
 
 ### <a name="upsert"></a>UPSERT
-Jiné dávkování scénář zahrnuje současně aktualizaci existujících řádků a vkládání nových řádků. Tato operace je někdy označují tooas operace "UPSERT" (aktualizace + insert). Místo provedení samostatné volání tooINSERT a aktualizace, je příkazu MERGE hello nejlépe hodí toothis úloha. Hello příkazu MERGE můžete provést i insert a operace v jednom volání aktualizace.
+Jiné dávkování scénář zahrnuje současně aktualizaci existujících řádků a vkládání nových řádků. Tato operace se někdy označuje jako "UPSERT" (aktualizace + insert) operaci. Místo samostatné volání k vložení a aktualizace, je nejvhodnější pro tuto úlohu příkazu MERGE. Příkaz MERGE můžete provést i insert a operace v jednom volání aktualizace.
 
-Parametry s hodnotou tabulky můžete použít s hello SLOUČENÍ příkaz tooperform aktualizace a vkládání. Představte si třeba zjednodušené zaměstnanec tabulku, která obsahuje následující sloupce hello: EmployeeID, FirstName, LastName, SocialSecurityNumber:
+Parametry s hodnotou tabulky můžete použít s příkazem MERGE k provádění aktualizací a vložení. Představte si třeba zjednodušené tabulky zaměstnanců, která obsahuje následující sloupce: EmployeeID, FirstName, LastName, SocialSecurityNumber:
 
     CREATE TABLE [dbo].[Employee](
     [EmployeeID] [int] IDENTITY(1,1) NOT NULL,
@@ -572,7 +572,7 @@ Parametry s hodnotou tabulky můžete použít s hello SLOUČENÍ příkaz toope
      CONSTRAINT [PrimaryKey_Employee] PRIMARY KEY CLUSTERED 
     ([EmployeeID] ASC ))
 
-V tomto příkladu můžete hello fakt, že tento hello SocialSecurityNumber je jedinečný tooperform SLOUČENÍM několika zaměstnanci. Nejprve vytvořte hello uživatele definovaný typ tabulky:
+V tomto příkladu můžete skutečnost, že je SocialSecurityNumber jedinečný ke sloučení více zaměstnanců. Nejprve vytvořte typ uživatelem definovaná tabulka:
 
     CREATE TYPE EmployeeTableType AS TABLE 
     ( Employee_ID INT,
@@ -581,7 +581,7 @@ V tomto příkladu můžete hello fakt, že tento hello SocialSecurityNumber je 
       SocialSecurityNumber NVARCHAR(50) );
     GO
 
-Dále vytvořte uložené procedury nebo napsat kód, že používá hello SLOUČENÍ příkaz tooperform hello aktualizace a vkládání. Hello následující příklad používá příkazu MERGE hello na parametr s hodnotou tabulky @employees, typu EmployeeTableType. Hello obsah hello @employees tabulky nejsou zobrazeny zde.
+Dále vytvořte uloženou proceduru nebo napsat kód, který používá příkaz MERGE k provádění aktualizace a vložit. Následující příklad používá příkazu MERGE na parametr s hodnotou tabulky @employees, typu EmployeeTableType. Obsah @employees tabulky nejsou zobrazeny zde.
 
     MERGE Employee AS target
     USING (SELECT [FirstName], [LastName], [SocialSecurityNumber] FROM @employees) 
@@ -595,28 +595,28 @@ Dále vytvořte uložené procedury nebo napsat kód, že používá hello SLOU�
        INSERT ([FirstName], [LastName], [SocialSecurityNumber])
        VALUES (source.[FirstName], source.[LastName], source.[SocialSecurityNumber]);
 
-Další informace najdete v dokumentaci hello a příklady příkazu MERGE hello. I když hello pracovní je možné provádět v několika krocích volání uložené procedury s samostatné operace INSERT a UPDATE, je efektivnější hello příkazu MERGE. Kód databáze můžete také vytvořit volání jazyka Transact-SQL, která pomocí příkazu MERGE hello přímo bez nutnosti dvě volání databáze pro příkaz INSERT a UPDATE.
+Další informace najdete v dokumentaci a příklady příkazu MERGE. I když můžete provést stejný pracovní v kroku více uložené volání procedury s oddělené INSERT a operace aktualizace, příkazu MERGE je efektivnější. Kód databáze můžete také vytvořit volání jazyka Transact-SQL, která pomocí příkazu MERGE přímo bez nutnosti dvě volání databáze pro příkaz INSERT a UPDATE.
 
 ## <a name="recommendation-summary"></a>Souhrnná doporučení
-Hello následující seznam obsahuje souhrn hello dávkování doporučení, které jsou popsané v tomto tématu:
+Následující seznam obsahuje souhrn dávkování doporučení popsané v tomto tématu:
 
-* Pomocí ukládání do vyrovnávací paměti a dávkování tooincrease hello výkon a škálovatelnost aplikace SQL Database.
-* Pochopení hello kompromisy mezi dávkování nebo ukládání do vyrovnávací paměti a odolnost. Při selhání role vyváží hello riziko ztráty nezpracované dávku důležitých podnikových dat výhodou výkonu hello dávkování.
-* Byl proveden pokus tookeep všechny databáze toohello volání v rámci jednoho datového centra tooreduce latence.
-* Pokud si zvolíte jednu dávkování techniku, nabízejí parametry s hodnotou tabulky hello optimálního výkonu a flexibility.
-* Pro hello nejrychlejší vložit výkonu, postupujte podle následujících obecných pokynů ale otestovat váš scénář:
+* Pokud chcete zvýšit výkon a škálovatelnost databáze SQL aplikace pomocí ukládání do vyrovnávací paměti a dávkování.
+* Pochopení kompromisy mezi dávkování nebo ukládání do vyrovnávací paměti a odolnost. Při selhání role riziko ztráty nezpracované dávku důležitých podnikových dat vyváží výkon výhodou dávkování.
+* Pokus zachovat všechna volání do databáze v rámci jednoho datového centra ke snížení latence.
+* Pokud si zvolíte jednu dávkování techniku, parametry s hodnotou tabulky nabízí nejlepší výkon a flexibilitu.
+* Nejrychlejší vložení výkonu postupujte podle následujících obecných pokynů ale otestovat váš scénář:
   * < 100 řádků pomocí jedné parametrizovaného příkaz INSERT.
   * < 1 000 řádků použijte parametry s hodnotou tabulky.
   * Pro > = 1 000 řádků, použijte SqlBulkCopy.
-* Pro aktualizaci a operace odstranění, použijte parametry s hodnotou tabulky s logiky uložené procedury, která určuje hello správné operace na každý řádek v tabulce parametru hello.
+* Pro aktualizaci a operace odstranění, použijte parametry s hodnotou tabulky s logiky uložené procedury, která určuje správné operaci na každý řádek v tabulce parametru.
 * Pokyny pro velikost dávky:
-  * Použití hello největší batch velikosti, které dávají smysl pro vaše aplikace a podnikových požadavků.
-  * Vyrovnávat hello výkonu získáte velké dávek s hello rizika dočasné nebo závažné selhání. Co je důsledkem hello opakování nebo ke ztrátě dat. hello v dávce hello? 
-  * Otestujte hello největší batch velikost tooverify, databáze SQL není odmítnout ho.
-  * Vytvořte nastavení konfigurace tohoto ovládacího prvku dávkování, jako je například velikost dávky hello nebo hello vyrovnávací paměti časový interval. Tato nastavení poskytují flexibilitu. Hello dávkování chování v produkčním prostředí bez opětovného nasazení hello cloudovou službu, můžete změnit.
-* Vyhněte se paralelní zpracování dávek, které působí na jednotlivé tabulky v jedné databáze. Pokud si zvolíte toodivide jedné dávkové napříč několika pracovních vláken, spusťte testy toodetermine hello ideální počet vláken. Po neurčené prahová hodnota další podprocesy bude snížit výkon, a nikoli zvýšit ji.
+  * Použijte největší velikosti dávky, které dávají smysl pro vaše aplikace a podnikových požadavků.
+  * Vyrovnávat zvýšení výkonu velkých dávek s rizika dočasné nebo závažné selhání. Co je důsledkem opakování nebo ztrátě dat v dávce? 
+  * Otestujte největší velikost dávky k ověření, že databáze SQL není odmítnout ho.
+  * Vytvořte nastavení konfigurace tohoto ovládacího prvku dávkování, jako je například velikost dávky nebo vyrovnávací paměti časový interval. Tato nastavení poskytují flexibilitu. Dávkování chování v produkčním prostředí můžete změnit bez opětovného nasazení cloudové služby.
+* Vyhněte se paralelní zpracování dávek, které působí na jednotlivé tabulky v jedné databáze. Pokud si zvolíte jedné dávkové rozdělit mezi několik pracovních vláken, spusťte testy můžete určit ideální počet vláken. Po neurčené prahová hodnota další podprocesy bude snížit výkon, a nikoli zvýšit ji.
 * Vezměte v úvahu ukládání do vyrovnávací paměti na velikost a čas jako způsob implementace dávkování pro více scénářů.
 
 ## <a name="next-steps"></a>Další kroky
-Tento článek zaměřuje na tom, jak návrhu databáze a kódování techniky související toobatching může zlepšit výkon aplikace a škálovatelnost. Ale toto je pouze jediný faktor v vaše celková strategie. Další způsoby tooimprove výkon a škálovatelnost, najdete v části [Azure SQL Database – Průvodce výkonem pro izolované databáze](sql-database-performance-guidance.md) a [cenové a výkonové požadavky fondu elastické databáze](sql-database-elastic-pool-guidance.md).
+Tento článek zaměřuje na jak návrhu databáze a kódování techniky související s dávkování může zlepšit výkon aplikace a škálovatelnost. Ale toto je pouze jediný faktor v vaše celková strategie. Další způsoby, jak zvýšit výkon a škálovatelnost, najdete v části [Azure SQL Database – Průvodce výkonem pro izolované databáze](sql-database-performance-guidance.md) a [cenové a výkonové požadavky fondu elastické databáze](sql-database-elastic-pool-guidance.md).
 

@@ -1,6 +1,6 @@
 ---
-title: "aaaSending zabezpečení nabízená oznámení pomocí Azure Notification Hubs"
-description: "Zjistěte, jak toosend zabezpečené nabízená oznámení tooan aplikace pro Android z Azure. Ukázky kódu jsou vytvořeny v jazyce Java a C#."
+title: "Odesílání zabezpečené nabízených oznámení pomocí Azure Notification Hubs"
+description: "Naučte se odesílání zabezpečené nabízených oznámení do aplikace pro Android z Azure. Ukázky kódu jsou vytvořeny v jazyce Java a C#."
 documentationcenter: android
 keywords: "nabízená oznámení, nabízená oznámení, nabízené zprávy, android nabízená oznámení"
 author: ysxu
@@ -15,11 +15,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: d07943c4691ed07acb987086228ef565e6281d57
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 29f8c516e611c13fb73c7edc15e7c52708c75bb0
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>Odesílání zabezpečené nabízených oznámení pomocí Azure Notification Hubs
 > [!div class="op_single_selector"]
@@ -31,26 +31,26 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="overview"></a>Přehled
 > [!IMPORTANT]
-> toocomplete tento kurz, musíte mít aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started).
+> K dokončení tohoto kurzu potřebujete mít aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started).
 > 
 > 
 
-Podpora nabízená oznámení v Microsoft Azure umožňuje tooaccess infrastruktury zpráva snadno použitelnou, multiplatformní a upraveným nabízená, což výrazně zjednodušuje hello implementace nabízených oznámení spotřebních a podnikových aplikací pro mobilní platformy.
+Podpora nabízená oznámení v Microsoft Azure umožňuje získat přístup snadno použitelnou, multiplatformní a upraveným nabízená zpráva infrastruktury, což výrazně zjednodušuje implementaci nabízená oznámení spotřebních a podnikových aplikací pro mobilní platformy.
 
-Z důvodu omezení tooregulatory nebo zabezpečení někdy aplikace může být vhodné tooinclude něco v hello oznámení, kterou nelze přenést prostřednictvím infrastrukturu pro hello standardní nabízená oznámení. Tento kurz popisuje, jak tooachieve hello stejné prostředí posíláním důvěrných informací o prostřednictvím zabezpečeného a ověřené připojení mezi hello klienta zařízení se systémem Android a back-end aplikace hello.
+Kvůli zákonným omezení zabezpečení, někdy aplikace může chtít zahrnout něco v oznámení, kterou nelze přenést prostřednictvím infrastrukturu pro standardní nabízená oznámení. Tento kurz popisuje, jak zajistit stejné prostředí posíláním důvěrných informací o prostřednictvím zabezpečeného a ověřené připojení mezi klientské zařízení Android a back-end aplikace.
 
-Na vysoké úrovni tok hello vypadá takto:
+Na vysoké úrovni tok je následující:
 
-1. back-end Hello aplikace:
+1. Back-end aplikace:
    * Zabezpečení datové úložiště v databázi back-end.
-   * Odešle ID hello tato oznámení toohello zařízení se systémem Android (zabezpečené nebudou odeslány žádné informace).
-2. aplikace Hello na hello zařízení při přijetí oznámení hello:
-   * zařízení se systémem Android Hello kontaktuje hello back-end žádajícího hello zabezpečené datové části.
-   * Hello aplikace můžete zobrazit datové části hello jako upozornění na hello zařízení.
+   * ID tohoto oznámení se odešle do zařízení s Androidem (zabezpečené nebudou odeslány žádné informace).
+2. Aplikace na zařízení, když obdrží oznámení:
+   * Zařízení s Androidem kontaktuje back-end vyžaduje zabezpečené datové části.
+   * Aplikace můžete zobrazit datové části jako upozornění na zařízení.
 
-Je důležité, že toonote, v předchozím toku hello (a v tomto kurzu) předpokládáme, že hello zařízení ukládá ověřovací token do místního úložiště, po přihlášení uživatele hello. Zaručí se tím úplně jednoduché prostředí, protože hello zařízení můžete načíst pomocí tohoto tokenu zabezpečení datové hello oznámení. Pokud vaše aplikace nejsou uložené ověřovací tokeny na hello zařízení nebo pokud tyto tokeny můžete vypršela platnost, by měla aplikace hello zařízení při přijetí nabízeného oznámení hello zobrazit obecné oznámení výzvy hello uživatele toolaunch hello aplikace. aplikace Hello pak ověřuje uživatele hello a ukazuje datová část oznámení hello.
+Je důležité si uvědomit, že v předchozím toku (a v tomto kurzu) předpokládáme, že zařízení ukládá ověřovací token do místního úložiště, po přihlášení uživatele. Zaručí se tím úplně jednoduché prostředí, protože zařízení můžete načíst pomocí tohoto tokenu zabezpečení datové na oznámení. Pokud vaše aplikace nejsou uložené tokeny ověřování v zařízení, nebo pokud tyto tokeny můžete vypršela platnost, by měla aplikace zařízení při přijetí nabízeného oznámení zobrazit obecné oznámení uživateli zobrazuje výzvu spusťte aplikaci. Aplikace pak ověřuje uživatele a ukazuje datová část oznámení.
 
-Tento kurz ukazuje, jak toosend zabezpečené nabízená oznámení. Vychází hello [upozornění uživatelů](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) kurzu, takže byste měli dokončit hello kroky v tomto kurzu nejprve Pokud jste tak ještě neučinili.
+Tento kurz ukazuje, jak odesílat zabezpečené nabízená oznámení. Vychází [upozornění uživatelů](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) kurzu, takže byste měli dokončit kroky v tomto kurzu nejprve Pokud jste tak ještě neučinili.
 
 > [!NOTE]
 > V tomto kurzu se předpokládá, že jste vytvořili a nakonfigurovali vaše Centrum oznámení, jak je popsáno v [Začínáme s Notification Hubs (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md).
@@ -59,17 +59,17 @@ Tento kurz ukazuje, jak toosend zabezpečené nabízená oznámení. Vychází h
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
-## <a name="modify-hello-android-project"></a>Upravit hello projekt pro Android
-Teď, když upravit vaše aplikace právě hello back-end toosend *id* nabízená oznámení, máte toochange vaší aplikace pro Android toohandle oznámení a zpětných volání váš back-end tooretrieve hello zabezpečit zprávy toobe zobrazí.
-tooachieve tohoto cíle, máte jistotu, že zná svoji aplikaci pro Android toomake jak tooauthenticate samotné vaší back-end, pokud obdrží hello nabízená oznámení.
+## <a name="modify-the-android-project"></a>Upravit projektu pro Android
+Teď, když změnit váš back-end aplikace k odesílání jen na *id* nabízená oznámení, budete muset změnit svoji aplikaci pro Android ke zpracování tohoto oznámení a zpětné volání váš back-end pro načtení zabezpečenou zprávu, který se má zobrazit.
+K dosažení tohoto cíle, budete muset Ujistěte se, že vaše aplikace pro Android umí ke svému ověření s back-end, když obdrží nabízená oznámení.
 
-Nyní jsme upraví hello *přihlášení* tok v pořadí toosave hello ověřování hodnota v hlavičce hello sdílet předvolby vaší aplikace. Podobá mechanismy lze použít toostore žádné ověřovací token (např. tokenů OAuth), který hello aplikace bude mít toouse bez nutnosti přihlašovací údaje uživatele.
+Nyní jsme upraví *přihlášení* toku a uložte hodnota hlavičky ověřování v sdílet předvolby vaší aplikace. Podobá mechanismy slouží k uložení žádné ověřovací token (např. tokenů OAuth), která aplikace bude muset používat bez nutnosti přihlašovací údaje uživatele.
 
-1. V projektu aplikace pro Android, přidejte následující konstanty hello horní části hello hello **MainActivity** třídy:
+1. V projektu aplikace pro Android, přidejte následující konstanty v horní části **MainActivity** třídy:
    
         public static final String NOTIFY_USERS_PROPERTIES = "NotifyUsersProperties";
         public static final String AUTHORIZATION_HEADER_PROPERTY = "AuthorizationHeader";
-2. Stále v hello **MainActivity** třídy, aktualizaci hello `getAuthorizationHeader()` hello toocontain metoda následující kód:
+2. Pořád ještě v **MainActivity** třídy, aktualizaci `getAuthorizationHeader()` metoda obsahuje následující kód:
    
         private String getAuthorizationHeader() throws UnsupportedEncodingException {
             EditText username = (EditText) findViewById(R.id.usernameText);
@@ -82,20 +82,20 @@ Nyní jsme upraví hello *přihlášení* tok v pořadí toosave hello ověřov�
    
             return basicAuthHeader;
         }
-3. Přidejte následující hello `import` příkazy hello horní části hello **MainActivity** souboru:
+3. Přidejte následující `import` příkazy v horní části **MainActivity** souboru:
    
         import android.content.SharedPreferences;
 
-Nyní změníme hello obslužná rutina, která je volána, když je obdržena hello oznámení.
+Nyní změníme obslužná rutina, která je volána, když bylo přijato oznámení.
 
-1. V hello **MyHandler** třída změnit hello `OnReceive()` toocontain metoda:
+1. V **MyHandler** třídy změnu `OnReceive()` metoda obsahuje:
    
         public void onReceive(Context context, Bundle bundle) {
             ctx = context;
             String secureMessageId = bundle.getString("secureId");
             retrieveNotification(secureMessageId);
         }
-2. Pak přidejte hello `retrieveNotification()` metoda, nahraďte zástupný symbol hello `{back-end endpoint}` s koncovým bodem back-end hello získali při nasazování back-end:
+2. Pak přidejte `retrieveNotification()` metoda, nahraďte zástupný symbol `{back-end endpoint}` s koncovým bodem back-end získali při nasazování back-end:
    
         private void retrieveNotification(final String secureMessageId) {
             SharedPreferences sp = ctx.getSharedPreferences(MainActivity.NOTIFY_USERS_PROPERTIES, Context.MODE_PRIVATE);
@@ -116,7 +116,7 @@ Nyní změníme hello obslužná rutina, která je volána, když je obdržena h
                         JSONObject secureNotification = new JSONObject(secureNotificationJSON);
                         sendNotification(secureNotification.getString("Payload"));
                     } catch (Exception e) {
-                        Log.e("MainActivity", "Failed tooretrieve secure notification - " + e.getMessage());
+                        Log.e("MainActivity", "Failed to retrieve secure notification - " + e.getMessage());
                         return e;
                     }
                     return null;
@@ -124,15 +124,15 @@ Nyní změníme hello obslužná rutina, která je volána, když je obdržena h
             }.execute(null, null, null);
         }
 
-Tato metoda volá hello oznámení tooretrieve back-end aplikace obsahu pomocí hello přihlašovací údaje uložené v hello sdílet předvolby a zobrazí jako normální oznámení. Hello oznámení vypadá uživatele aplikace toohello úplně stejně jako ostatní nabízených oznámení.
+Tato metoda volá váš back-end aplikace k získání obsahu oznámení pomocí pověření uložených v sdílet předvolby a zobrazí jako normální oznámení. Oznámení vypadá na uživatele aplikace úplně stejně jako ostatní nabízených oznámení.
 
-Všimněte si, že je vhodnější toohandle hello případech chybějící vlastnost hlavičky ověřování nebo odmítání podle hello back-end. Hello konkrétní zpracování těchto případech závisí hlavně na cílové činnost koncového uživatele. Jednou z možností je toodisplay oznámení s obecné výzvu hello uživatele tooauthenticate tooretrieve hello skutečné oznámení.
+Všimněte si, že je vhodnější pro zpracování v případech chybějící vlastnost hlavičky ověřování nebo odmítání back-end. Konkrétní zpracování těchto případech závisí hlavně na cílové činnost koncového uživatele. Jednou z možností je zobrazit oznámení s výzvou obecný pro ověření uživatele pro načtení skutečné oznámení.
 
-## <a name="run-hello-application"></a>Spustit hello aplikace
-toorun hello aplikace, hello následující:
+## <a name="run-the-application"></a>Spuštění aplikace
+Ke spuštění aplikace, postupujte takto:
 
-1. Zajistěte, aby **AppBackend** je nasazené v Azure. Pokud používáte Visual Studio, spusťte hello **AppBackend** aplikace webového rozhraní API. Zobrazí se webová stránka ASP.NET.
-2. V prostředí Eclipse hello aplikace spusťte na fyzických Android zařízení nebo hello emulátor.
-3. V hello aplikace pro Android uživatelského rozhraní, zadejte uživatelské jméno a heslo. Mohou to být libovolný řetězec, ale musí být hello stejnou hodnotu.
-4. V hello aplikace pro Android uživatelského rozhraní, klikněte na **přihlásit**. Pak klikněte na tlačítko **odeslat nabízené**.
+1. Zajistěte, aby **AppBackend** je nasazené v Azure. Pokud používáte Visual Studio, spusťte **AppBackend** aplikace webového rozhraní API. Zobrazí se webová stránka ASP.NET.
+2. V nástroji Eclipse spusťte aplikaci v emulátoru nebo fyzické zařízení Android.
+3. V systému Android aplikace uživatelského rozhraní zadejte uživatelské jméno a heslo. Mohou to být libovolný řetězec, ale musí být stejnou hodnotu.
+4. V systému Android aplikace uživatelského rozhraní, klikněte na **přihlásit**. Pak klikněte na tlačítko **odeslat nabízené**.
 

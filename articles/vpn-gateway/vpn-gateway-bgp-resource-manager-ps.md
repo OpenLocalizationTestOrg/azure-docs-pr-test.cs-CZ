@@ -15,46 +15,46 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
-ms.openlocfilehash: a9d13ae6b319e2efa8965dc2955c9b89ac3fd12b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b00a3fe7ba4b12c2e9c486188c292cd6fafb60a3
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="how-tooconfigure-bgp-on-azure-vpn-gateways-using-powershell"></a>Jak tooconfigure BGP na Azure VPN Gateway pomocí prostředí PowerShell
-Tento článek vás provede kroky tooenable hello protokolu BGP na připojení Site-to-Site (S2S) VPN mezi různými místy a připojení VNet-to-VNet pomocí modelu nasazení Resource Manager hello a prostředí PowerShell.
+# <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>Postup konfigurace protokolu BGP na Azure VPN Gateway pomocí prostředí PowerShell
+Tento článek vás provede kroky k povolení protokolu BGP na připojení Site-to-Site (S2S) VPN mezi různými místy a připojení VNet-to-VNet pomocí modelu nasazení Resource Manager a prostředí PowerShell.
 
 ## <a name="about-bgp"></a>Informace o protokolu BGP
-BGP je standardní směrovací protokol hello běžně používaný v hello Internet tooexchange směrování a dostupnosti informací mezi dvěma nebo více sítěmi. Protokol BGP umožňuje hello Azure VPN Gateway a vaše místní zařízení VPN, nazývají partnerské uzly protokolu BGP nebo Sousedé BGP, tooexchange "tras", bude informovat obě brány o dostupnosti hello a dostupnosti pro ty předpony toogo prostřednictvím hello bránami nebo trasami související se situací. Protokol BGP můžete také povolit směrování přenosu mezi více sítěmi pomocí šíření tras, které brána s protokolem BGP zjistí od jednoho tooall partnera BGP ostatním partnerům BGP.
+BGP je standardní směrovací protokol, na internetu běžně používaný k výměně informací o směrování a dostupnosti mezi dvěma nebo více sítěmi. Protokol BGP umožňuje Azure VPN Gateway a vaše místní zařízení VPN, nazývají partnerské uzly protokolu BGP nebo Sousedé BGP, výměnu "tras" informujících obě brány o dostupnosti a dosažitelnosti předpon, které procházejí těmito bránami nebo trasami související se situací. Protokol BGP také umožňuje směrování přenosu mezi více sítěmi pomocí šíření tras, které brána s protokolem BGP zjistí od jednoho partnerského uzlu protokolu BGP, do všech dalších partnerských uzlů protokolu BGP.
 
-V tématu [přehled protokolu BGP službou Azure VPN Gateways](vpn-gateway-bgp-overview.md) pro další zabývat výhody protokol BGP a toounderstand hello technické požadavky a důležité informace o použití protokolu BGP.
+V tématu [přehled protokolu BGP službou Azure VPN Gateways](vpn-gateway-bgp-overview.md) pro další zabývat výhody protokolu BGP a pochopit technickými požadavky a důležité informace o použití protokolu BGP.
 
 ## <a name="getting-started-with-bgp-on-azure-vpn-gateways"></a>Začínáme s protokolem BGP na branách Azure VPN
 
-Tento článek vás provede hello kroky toodo hello následující úlohy:
+Tento článek vás provede kroky, jak provést následující úlohy:
 
 * [Část 1 - povolit protokol BGP na bráně Azure VPN](#enablebgp)
 * [Část 2 – navázání připojení mezi různými místy pomocí protokolu BGP](#crossprembgp)
 * [Část 3 – připojení VNet-to-VNet s protokolem BGP](#v2vbgp)
 
-Jednotlivých součástí hello pokyny tvoří základní stavební blok pro povolení protokolu BGP v připojení k síti. Pokud dokončíte všechny tři části, jak je znázorněno v následujícím diagramu hello sestavení hello topologie:
+Jednotlivých součástí pokynů tvoří základní stavební blok pro povolení protokolu BGP v připojení k síti. Pokud dokončíte všechny tři části, jak je znázorněno v následujícím diagramu sestavení topologie:
 
 ![Topologii BGP](./media/vpn-gateway-bgp-resource-manager-ps/bgp-crosspremv2v.png)
 
-Můžete kombinovat částí společně toobuild složitější, vícenásobného předávání tranzitní sítě, která vyhovuje vašim potřebám.
+Můžete kombinovat částí společně k vytvoření složitějších, vícenásobného předávání přenosu síti, která vyhovuje vašim potřebám.
 
-## <a name ="enablebgp"></a>Část 1: Konfigurace protokolu BGP na hello Azure VPN Gateway
-Postup konfigurace Hello nastavit hello parametry protokolu BGP brány Azure VPN hello jak je znázorněno v následujícím diagramu hello:
+## <a name ="enablebgp"></a>Část 1: Konfigurace protokolu BGP na bráně Azure VPN
+Postup konfigurace nastavení parametrů protokolu BGP brány Azure VPN, jak je znázorněno v následujícím diagramu:
 
 ![Protokol BGP brány](./media/vpn-gateway-bgp-resource-manager-ps/bgp-gateway.png)
 
 ### <a name="before-you-begin"></a>Než začnete
 * Ověřte, že máte předplatné Azure. Pokud ještě nemáte předplatné Azure, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
-* Nainstalujte rutiny Powershellu pro Azure Resource Manager hello. Další informace o instalaci rutin prostředí PowerShell hello najdete v tématu [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview). 
+* Nainstalujte rutiny Powershellu pro Azure Resource Manager. Další informace o instalaci rutin PowerShellu najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview). 
 
 ### <a name="step-1---create-and-configure-vnet1"></a>Krok 1 – Vytvoření a konfigurace VNet1
 #### <a name="1-declare-your-variables"></a>1. Deklarace proměnných
-Pro toto cvičení začneme deklarací proměnných. Hello následující příklad deklaruje hello proměnné pomocí hello hodnot pro toto cvičení. Zda tooreplace hello hodnoty vlastními být při konfiguraci pro produkční prostředí. Tyto proměnné můžete použít, pokud používáte prostřednictvím toobecome kroky hello seznámili s tímto typem konfigurace. Umožňuje změnit proměnné hello a pak zkopírujte a vložte do konzoly prostředí PowerShell.
+Pro toto cvičení začneme deklarací proměnných. V následujícím příkladu jsou proměnné deklarovány s použitím hodnot pro toto cvičení. Při konfiguraci pro ostrý provoz nezapomeňte nahradit hodnoty vlastními. Tyto proměnné můžete použít, pokud procházíte kroky, abyste se seznámili s tímto typem konfigurace. Upravte proměnné a pak je zkopírujte a vložte do konzoly prostředí PowerShell.
 
 ```powershell
 $Sub1 = "Replace_With_Your_Subcription_Name"
@@ -78,10 +78,10 @@ $Connection12 = "VNet1toVNet2"
 $Connection15 = "VNet1toSite5"
 ```
 
-#### <a name="2-connect-tooyour-subscription-and-create-a-new-resource-group"></a>2. Připojení tooyour odběru a vytvořit novou skupinu prostředků
-toouse hello rutiny Resource Manager, ujistěte se, že jste přešli tooPowerShell režimu. Další informace najdete v tématu [Použití prostředí Windows PowerShell s Resource Managerem](../powershell-azure-resource-manager.md).
+#### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2. Připojení k vašemu předplatnému a vytvořte novou skupinu prostředků
+Pokud chcete používat rutiny Resource Manageru, ujistěte se, že jste přešli do režimu prostředí PowerShell. Další informace najdete v tématu [Použití prostředí Windows PowerShell s Resource Managerem](../powershell-azure-resource-manager.md).
 
-Otevřete konzolu prostředí PowerShell a připojte tooyour účtu. Použijte následující ukázka toohelp, ke kterým se připojujete hello:
+Otevřete konzolu prostředí PowerShell a připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
 
 ```powershell
 Login-AzureRmAccount
@@ -90,7 +90,7 @@ New-AzureRmResourceGroup -Name $RG1 -Location $Location1
 ```
 
 #### <a name="3-create-testvnet1"></a>3. Vytvoření virtuální sítě TestVNet1
-Hello následující ukázka vytvoří virtuální síť s názvem TestVNet1 a tři podsítě, jednu s názvem GatewaySubnet, jednu s názvem FrontEnd a jednu s názvem Backend. Při nahrazování hodnot je důležité vždy přiřadit podsíti brány konkrétní název GatewaySubnet. Pokud použijete jiný název, vytvoření brány se nezdaří.
+Následující ukázka vytvoří virtuální síť s názvem TestVNet1 a tři podsítě, jednu s názvem GatewaySubnet, jednu s názvem FrontEnd a jednu s názvem Backend. Při nahrazování hodnot je důležité vždy přiřadit podsíti brány konkrétní název GatewaySubnet. Pokud použijete jiný název, vytvoření brány se nezdaří.
 
 ```powershell
 $fesub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1 $besub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubName1 -AddressPrefix $BESubPrefix1
@@ -99,9 +99,9 @@ $gwsub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $GWSubName1 -AddressPrefix
 New-AzureRmVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNetPrefix11,$VNetPrefix12 -Subnet $fesub1,$besub1,$gwsub1
 ```
 
-### <a name="step-2---create-hello-vpn-gateway-for-testvnet1-with-bgp-parameters"></a>Krok 2 – Vytvoření hello brána sítě VPN pro virtuální síť TestVNet1 s parametry protokolu BGP
-#### <a name="1-create-hello-ip-and-subnet-configurations"></a>1. Vytvoření hello konfigurací IP adresy a podsítě
-Požádat o veřejné IP adresy toobe přidělené toohello bránu, které vytvoříte pro virtuální síť. Budete také definovat hello vyžaduje podsíť a konfigurace protokolu IP.
+### <a name="step-2---create-the-vpn-gateway-for-testvnet1-with-bgp-parameters"></a>Krok 2 – Vytvoření brány VPN pro virtuální síť TestVNet1 s parametry protokolu BGP
+#### <a name="1-create-the-ip-and-subnet-configurations"></a>1. Vytvoření konfigurací IP adresy a podsítě
+Vyžádejte si veřejnou IP adresu, která bude přidělena bráně, kterou vytvoříte pro příslušnou virtuální síť. Budete také definovat vyžaduje podsíť a konfigurace protokolu IP.
 
 ```powershell
 $gwpip1 = New-AzureRmPublicIpAddress -Name $GWIPName1 -ResourceGroupName $RG1 -Location $Location1 -AllocationMethod Dynamic
@@ -111,22 +111,22 @@ $subnet1 = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualN
 $gwipconf1 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName1 -Subnet $subnet1 -PublicIpAddress $gwpip1
 ```
 
-#### <a name="2-create-hello-vpn-gateway-with-hello-as-number"></a>2. Vytvoření brány VPN hello s hello jako číslo
-Vytvoření brány virtuální sítě hello pro virtuální síť TestVNet1. Protokol BGP vyžaduje Trasové brány sítě VPN a také hello přidání parametru - číslo Asn, tooset hello ASN (čísla AS) pro virtuální síť TestVNet1. Pokud parametr číslo ASN hello nenastavíte, bude přiřazeno číslo ASN 65515. Vytvoření brány může chvíli trvat (30 minut nebo další toocomplete).
+#### <a name="2-create-the-vpn-gateway-with-the-as-number"></a>2. Vytvoření brány VPN s číslo AS
+Vytvořte bránu virtuální sítě pro virtuální síť TestVNet1. Protokol BGP vyžaduje brány VPN založené na směrování a také parametr přidání - Asn, chcete-li nastavit ASN (čísla AS) pro virtuální síť TestVNet1. Pokud parametr číslo ASN nenastavíte, bude přiřazeno číslo ASN 65515. Vytvoření brány může nějakou dobu trvat (30 minut nebo déle).
 
 ```powershell
 New-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gwipconf1 -GatewayType Vpn -VpnType RouteBased -GatewaySku HighPerformance -Asn $VNet1ASN
 ```
 
-#### <a name="3-obtain-hello-azure-bgp-peer-ip-address"></a>3. Získat adresu IP adresa partnera BGP Azure hello
-Po vytvoření brány hello musíte tooobtain hello IP adresy partnera BGP na hello Azure VPN Gateway. Tato adresa je potřebné tooconfigure hello Azure VPN Gateway jako partnerské zařízení protokolu BGP pro vaše místní zařízení VPN.
+#### <a name="3-obtain-the-azure-bgp-peer-ip-address"></a>3. Získat adresu IP adresa partnera BGP Azure
+Po vytvoření brány, budete muset získat adresu IP adresa partnera BGP na bráně Azure VPN. Tato adresa je potřeba ke konfiguraci Azure VPN Gateway jako partnerské zařízení protokolu BGP pro vaše místní zařízení VPN.
 
 ```powershell
 $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
 $vnet1gw.BgpSettingsText
 ```
 
-poslední příkaz Hello zobrazí odpovídající konfigurace protokolu BGP hello na hello Azure VPN Gateway; například:
+Poslední příkaz zobrazí odpovídající konfigurace protokolu BGP na bráně VPN Azure; například:
 
 ```powershell
 $vnet1gw.BgpSettingsText
@@ -137,21 +137,21 @@ $vnet1gw.BgpSettingsText
 }
 ```
 
-Po vytvoření brány hello lze použít toto připojení mezi různými místy tooestablish brány nebo připojení VNet-to-VNet s protokolem BGP. Hello následující části provede hello kroky toocomplete hello cvičení.
+Po vytvoření brány, můžete tuto bránu k navázání připojení mezi různými místy nebo připojení VNet-to-VNet s protokolem BGP. V následujících částech provede kroky k dokončení výkonu.
 
 ## <a name ="crossprembbgp"></a>Část 2 – navázání připojení mezi různými místy pomocí protokolu BGP
 
-tooestablish připojení mezi různými místy, budete potřebovat toocreate toorepresent bránu místní sítě vašeho místního zařízení VPN a brány VPN připojení tooconnect hello s hello brány místní sítě. Když jsou články, které vás provedou postupem, tento článek obsahuje parametry konfigurace protokolu BGP požadované toospecify hello aplikace hello další vlastnosti.
+Navázat připojení mezi různými místy, musíte vytvořit bránu místní sítě představují vaše místní zařízení VPN a připojení pro připojení brány sítě VPN s bránu místní sítě. Když jsou články, které vás provedou postupem, tento článek obsahuje další vlastnosti, které jsou zapotřebí zadat parametry konfigurace protokolu BGP.
 
 ![Protokol BGP pro více míst](./media/vpn-gateway-bgp-resource-manager-ps/bgp-crossprem.png)
 
 Než budete pokračovat, ujistěte se, když jste dokončili [část 1](#enablebgp) tohoto cvičení.
 
-### <a name="step-1---create-and-configure-hello-local-network-gateway"></a>Krok 1 – Vytvoření a konfigurace brány místní sítě hello
+### <a name="step-1---create-and-configure-the-local-network-gateway"></a>Krok 1 – Vytvoření a konfigurace brány místní sítě
 
 #### <a name="1-declare-your-variables"></a>1. Deklarace proměnných
 
-Toto cvičení pokračuje toobuild hello konfigurace znázorněné hello diagram. Být jisti tooreplace hello hodnoty hello ty, které jsou chcete toouse pro vaši konfiguraci.
+Toto cvičení i nadále sestavení konfigurace znázorněné na obrázku. Nezapomeňte nahradit hodnoty těmi, které chcete použít pro svou konfiguraci.
 
 ```powershell
 $RG5 = "TestBGPRG5"
@@ -163,17 +163,17 @@ $LNGASN5 = 65050
 $BGPPeerIP5 = "10.52.255.254"
 ```
 
-Pár věcí toonote týkající se parametrů brány místní sítě hello:
+Několik věcí, které si uvědomit o parametrech brány místní sítě:
 
-* Brána místní sítě Hello může být v hello stejné nebo jiné umístění a prostředků skupiny jako hello brány VPN. Tento příklad ukazuje je v různých skupinách prostředků v různých umístěních.
-* minimální předponu Hello potřebujete toodeclare pro bránu místní sítě hello je adresa hostitele hello vaší IP adresy partnera BGP v zařízení VPN. V takovém případě je /32 předponu "10.52.255.254/32".
-* Připomínáme je nutné použít různá čísla ASN protokolu BGP mezi vaší místní sítí a virtuální sítí VNet Azure. Pokud se jsou hello stejné, je třeba toochange vaší virtuální sítě ASN Pokud vaše místní zařízení VPN už používá hello ASN toopeer sousední ostatní směrovače BGP.
+* Brána místní sítě může být ve stejné nebo jiné umístění a skupině prostředků jako brána sítě VPN. Tento příklad ukazuje je v různých skupinách prostředků v různých umístěních.
+* Minimální předponu, které je třeba deklarovat pro bránu místní sítě je adresa hostitele vaší IP adresy partnera BGP v zařízení VPN. V takovém případě je /32 předponu "10.52.255.254/32".
+* Připomínáme je nutné použít různá čísla ASN protokolu BGP mezi vaší místní sítí a virtuální sítí VNet Azure. Pokud se shodují, budete muset změnit číslo ASN vaší virtuální sítě, pokud vaše místní zařízení VPN už používá číslo Autonomního rovnocenných počítačů sousední ostatní směrovače BGP.
 
-Než budete pokračovat, ujistěte se, že jsou stále připojená tooSubscription 1.
+Než budete pokračovat, zkontrolujte, že jste stále připojeni k předplatnému 1.
 
-#### <a name="2-create-hello-local-network-gateway-for-site5"></a>2. Vytvoření brány místní sítě hello pro Site5
+#### <a name="2-create-the-local-network-gateway-for-site5"></a>2. Vytvoření brány místní sítě pro Site5
 
-Být zda skupiny prostředků toocreate hello, pokud není vytvořená, před vytvořením brány místní sítě hello. Všimněte si hello dva další parametry pro bránu místní sítě hello: číslo Asn a BgpPeerAddress.
+Je nutné vytvořit skupinu prostředků, pokud není vytvořená, před vytvořením brány místní sítě. Všimněte si dva další parametry pro bránu místní sítě: číslo Asn a BgpPeerAddress.
 
 ```powershell
 New-AzureRmResourceGroup -Name $RG5 -Location $Location5
@@ -181,55 +181,55 @@ New-AzureRmResourceGroup -Name $RG5 -Location $Location5
 New-AzureRmLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG5 -Location $Location5 -GatewayIpAddress $LNGIP5 -AddressPrefix $LNGPrefix50 -Asn $LNGASN5 -BgpPeeringAddress $BGPPeerIP5
 ```
 
-### <a name="step-2---connect-hello-vnet-gateway-and-local-network-gateway"></a>Krok 2 – připojit hello brány virtuální sítě a brány místní sítě
+### <a name="step-2---connect-the-vnet-gateway-and-local-network-gateway"></a>Krok 2 – připojení brány virtuální sítě a brány místní sítě
 
-#### <a name="1-get-hello-two-gateways"></a>1. Získat hello dvě brány
+#### <a name="1-get-the-two-gateways"></a>1. Získat dvě brány
 
 ```powershell
 $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1  -ResourceGroupName $RG1
 $lng5gw  = Get-AzureRmLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG5
 ```
 
-#### <a name="2-create-hello-testvnet1-toosite5-connection"></a>2. Vytvoření připojení tooSite5 hello virtuální sítě TestVNet1
+#### <a name="2-create-the-testvnet1-to-site5-connection"></a>2. Vytvoření virtuální sítě TestVNet1 Site5 připojení
 
-V tomto kroku vytvoříte hello připojení z virtuální sítě TestVNet1 tooSite5. Je nutné zadat "-EnableBGP $True" tooenable protokolu BGP pro toto připojení. Jak už jsme probírali výše, je možné toohave připojení protokolu BGP i bez protokolu BGP pro hello stejné Azure VPN Gateway. Pokud je protokol BGP povolený ve vlastnosti připojení hello, neumožní Azure pro toto připojení protokolu BGP, i když BGP parametry jsou již nakonfigurované na obě brány.
+V tomto kroku vytvoříte připojení z virtuální sítě TestVNet1 k Site5. Je nutné zadat "-EnableBGP $True" Povolit protokol BGP pro toto připojení. Jak už jsme probírali výše, je možné, že připojení protokolu BGP i bez protokolu BGP pro stejné Azure VPN Gateway. Pokud je protokol BGP povolený ve vlastnosti připojení, neumožní Azure pro toto připojení protokolu BGP, i když BGP parametry jsou již nakonfigurované na obě brány.
 
 ```powershell
 New-AzureRmVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True
 ```
 
-Hello následující příklad obsahuje hello parametry, které zadáte do hello BGP konfigurační oddíl na vaše místní zařízení VPN pro tento postup:
+Následující příklad obsahuje parametry, které zadáte do protokolu BGP konfigurační oddíl na vaše místní zařízení VPN pro tento postup:
 
 ```
 
 - Site5 ASN            : 65050
 - Site5 BGP IP         : 10.52.255.254
-- Prefixes tooannounce : (for example) 10.51.0.0/16 and 10.52.0.0/16
+- Prefixes to announce : (for example) 10.51.0.0/16 and 10.52.0.0/16
 - Azure VNet ASN       : 65010
 - Azure VNet BGP IP    : 10.12.255.30
-- Static route         : Add a route for 10.12.255.30/32, with nexthop being hello VPN tunnel interface on your device
-- eBGP Multihop        : Ensure hello "multihop" option for eBGP is enabled on your device if needed
+- Static route         : Add a route for 10.12.255.30/32, with nexthop being the VPN tunnel interface on your device
+- eBGP Multihop        : Ensure the "multihop" option for eBGP is enabled on your device if needed
 ```
 
-Hello připojení po několik minut a hello BGP partnerského vztahu relace spustí po vytvoření hello připojení protokolu IPsec.
+Připojení po několika minutách a relaci partnerského vztahu protokolu BGP spustí jednou IPsec připojení.
 
 ## <a name ="v2vbgp"></a>Část 3 – připojení VNet-to-VNet s protokolem BGP
 
-Tato část přidá připojení VNet-to-VNet s protokolem BGP, jak je znázorněno v následujícím diagramu hello:
+Tato část přidá připojení VNet-to-VNet s protokolem BGP, jak je znázorněno v následujícím diagramu:
 
 ![Protokol BGP pro síť VNet-to-VNet](./media/vpn-gateway-bgp-resource-manager-ps/bgp-vnet2vnet.png)
 
-Hello pokynů pokračovat z předchozích kroků hello. Je třeba provést [části I](#enablebgp) toocreate a konfigurace virtuální sítě TestVNet1 a hello brány VPN s protokolem BGP. 
+Podle následujících pokynů pokračovat z předchozích kroků. Je třeba provést [části I](#enablebgp) vytvořit a nakonfigurovat virtuální síť TestVNet1 a bránu VPN s protokolem BGP. 
 
-### <a name="step-1---create-testvnet2-and-hello-vpn-gateway"></a>Krok 1 – Vytvoření brány VPN TestVNet2 a hello
+### <a name="step-1---create-testvnet2-and-the-vpn-gateway"></a>Krok 1 – Vytvoření TestVNet2 a brány VPN
 
-Je důležité toomake jistotu, že hello adresní prostor IP adres hello nové virtuální sítě, TestVNet2, nepřekrývá s žádným z rozsahů vaší virtuální sítě.
+Je důležité se ujistit, že adresní prostor IP adres nové virtuální sítě, TestVNet2, nepřekrývá s žádným z rozsahů vaší virtuální sítě.
 
-V tomto příkladu patří virtuální sítě hello toohello stejného předplatného. Můžete nastavit připojení VNet-to-VNet mezi různých předplatných. Další informace najdete v tématu [konfigurace připojení typu VNet-to-VNet](vpn-gateway-vnet-vnet-rm-ps.md). Zajistěte, aby přidáte hello "-EnableBgp $True" při vytváření hello tooenable připojení protokolu BGP.
+V tomto příkladu patří virtuální sítě ve stejném předplatném. Můžete nastavit připojení VNet-to-VNet mezi různých předplatných. Další informace najdete v tématu [konfigurace připojení typu VNet-to-VNet](vpn-gateway-vnet-vnet-rm-ps.md). Zajistěte, aby přidáte "-EnableBgp $True" při vytváření připojení k povolení protokolu BGP.
 
 #### <a name="1-declare-your-variables"></a>1. Deklarace proměnných
 
-Být jisti tooreplace hello hodnoty hello ty, které jsou chcete toouse pro vaši konfiguraci.
+Nezapomeňte nahradit hodnoty těmi, které chcete použít pro svou konfiguraci.
 
 ```powershell
 $RG2 = "TestBGPRG2"
@@ -252,7 +252,7 @@ $Connection21 = "VNet2toVNet1"
 $Connection12 = "VNet1toVNet2"
 ```
 
-#### <a name="2-create-testvnet2-in-hello-new-resource-group"></a>2. Vytvoření TestVNet2 v hello novou skupinu prostředků
+#### <a name="2-create-testvnet2-in-the-new-resource-group"></a>2. Vytvoření TestVNet2 do nové skupiny prostředků
 
 ```powershell
 New-AzureRmResourceGroup -Name $RG2 -Location $Location2
@@ -264,9 +264,9 @@ $gwsub2 = New-AzureRmVirtualNetworkSubnetConfig -Name $GWSubName2 -AddressPrefix
 New-AzureRmVirtualNetwork -Name $VNetName2 -ResourceGroupName $RG2 -Location $Location2 -AddressPrefix $VNetPrefix21,$VNetPrefix22 -Subnet $fesub2,$besub2,$gwsub2
 ```
 
-#### <a name="3-create-hello-vpn-gateway-for-testvnet2-with-bgp-parameters"></a>3. Vytvoření brány VPN hello pro TestVNet2 s parametry protokolu BGP
+#### <a name="3-create-the-vpn-gateway-for-testvnet2-with-bgp-parameters"></a>3. Vytvořit bránu sítě VPN pro TestVNet2 s parametry protokolu BGP
 
-Požádat o veřejné IP adresy toobe přidělené toohello bránu vytvoříte pro virtuální sítě a definujte hello vyžaduje podsíť a konfigurace protokolu IP.
+Požádat o veřejnou IP adresu, která bude přidělena pro bránu vytvoříte pro virtuální sítě a definujte vyžaduje podsíť a konfigurace protokolu IP.
 
 ```powershell
 $gwpip2    = New-AzureRmPublicIpAddress -Name $GWIPName2 -ResourceGroupName $RG2 -Location $Location2 -AllocationMethod Dynamic
@@ -276,19 +276,19 @@ $subnet2   = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -Virtua
 $gwipconf2 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName2 -Subnet $subnet2 -PublicIpAddress $gwpip2
 ```
 
-Vytvoření brány VPN hello s hello jako číslo. Na Azure VPN Gateway je nutné přepsat hello výchozí číslo ASN. Hello čísla ASN pro hello připojené virtuální sítě musí být jiný tooenable protokolu BGP a směrování přenosu.
+Vytvoření brány VPN s číslo AS. Na Azure VPN Gateway je nutné přepsat výchozí číslo ASN. Čísla ASN pro připojené virtuální sítě se musí lišit povolit protokol BGP a směrování přenosu.
 
 ```powershell
 New-AzureRmVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2 -Location $Location2 -IpConfigurations $gwipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard -Asn $VNet2ASN
 ```
 
-### <a name="step-2---connect-hello-testvnet1-and-testvnet2-gateways"></a>Krok 2 – připojení brány virtuální sítě TestVNet1 a TestVNet2 hello
+### <a name="step-2---connect-the-testvnet1-and-testvnet2-gateways"></a>Krok 2 – připojení brány virtuální sítě TestVNet1 a TestVNet2
 
-V tomto příkladu jsou obě brány v hello stejného předplatného. Můžete použít tento krok v hello stejné relace prostředí PowerShell.
+V tomto příkladu jsou obě brány ve stejném předplatném. Tento krok můžete provést ve stejné relaci prostředí PowerShell.
 
 #### <a name="1-get-both-gateways"></a>1. Získat obě brány
 
-Ujistěte se, přihlásit a připojte tooSubscription 1.
+Ujistěte se, že jste přihlášeni a připojeni k předplatnému 1.
 
 ```powershell
 $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
@@ -297,7 +297,7 @@ $vnet2gw = Get-AzureRmVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $R
 
 #### <a name="2-create-both-connections"></a>2. Vytvoření obě připojení
 
-V tomto kroku vytvoříte z TestVNet2 tooTestVNet1 hello připojení z virtuální sítě TestVNet1 tooTestVNet2 a hello připojení.
+V tomto kroku vytvoříte připojení z virtuální sítě TestVNet1 k TestVNet2 a připojení z TestVNet2 do virtuální sítě TestVNet1.
 
 ```powershell
 New-AzureRmVirtualNetworkGatewayConnection -Name $Connection12 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -VirtualNetworkGateway2 $vnet2gw -Location $Location1 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3' -EnableBgp $True
@@ -306,16 +306,16 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupNam
 ```
 
 > [!IMPORTANT]
-> Být jisti tooenable protokolu BGP pro obě připojení.
+> Je nutné povolit protokol BGP pro obě připojení.
 > 
 > 
 
-Po dokončení těchto kroků, hello připojení po několika minutách. relaci partnerského vztahu protokolu BGP Hello je až po dokončení hello připojení VNet-to-VNet.
+Po dokončení těchto kroků, připojení po několika minutách. Relaci partnerského vztahu protokolu BGP je až po dokončení připojení VNet-to-VNet.
 
-Pokud jste dokončili všechny tři části tohoto cvičení, jste vytvořili hello následující topologie sítě:
+Pokud jste dokončili všechny tři části tohoto cvičení, jste vytvořili následující topologie sítě:
 
 ![Protokol BGP pro síť VNet-to-VNet](./media/vpn-gateway-bgp-resource-manager-ps/bgp-crosspremv2v.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Po dokončení připojení můžete přidat virtuální počítače tooyour virtuální sítě. Kroky jsou uvedeny v tématu [Vytvoření virtuálního počítače](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Kroky jsou uvedeny v tématu [Vytvoření virtuálního počítače](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

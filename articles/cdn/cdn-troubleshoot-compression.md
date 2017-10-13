@@ -1,5 +1,5 @@
 ---
-title: "kompresí souborů aaaTroubleshooting v Azure CDN | Microsoft Docs"
+title: "Řešení potíží s kompresí souborů v Azure CDN | Microsoft Docs"
 description: "Vyřešte problémy s kompresí souborů Azure CDN."
 services: cdn
 documentationcenter: 
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: f00b98beaf6b3b3cd30108ece65a8191edc06ff5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5ef8a8262eb40aa827161764f03a63d031e43273
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>Poradce při potížích s kompresí souborů CDN
 Tento článek vám pomůže vyřešit problémy s [komprese souboru CDN](cdn-improve-performance.md).
 
-Pokud potřebujete další pomoc v libovolném bodě v tomto článku, obraťte se na hello Azure odborníky na [hello MSDN Azure a hello Stack Overflow fóra](https://azure.microsoft.com/support/forums/). Alternativně můžete také soubor incidentu podpory Azure. Přejděte toohello [podporu Azure lokality](https://azure.microsoft.com/support/options/) a klikněte na tlačítko **získat podporu**.
+Pokud potřebujete další pomoc v libovolném bodě v tomto článku, obraťte se na Azure odborníky na [MSDN Azure a fóra Stack Overflow](https://azure.microsoft.com/support/forums/). Alternativně můžete také soubor incidentu podpory Azure. Přejděte na [podporu Azure lokality](https://azure.microsoft.com/support/options/) a klikněte na tlačítko **získat podporu**.
 
 ## <a name="symptom"></a>Příznaky
 Je povolená komprese pro svůj koncový bod, ale soubory se vrací nekomprimované.
 
 > [!TIP]
-> toocheck zda vaše soubory se vrací komprimovaný, je nutné toouse jako nástroj [Fiddler](http://www.telerik.com/fiddler) nebo prohlížeče [nástroje pro vývojáře](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/).  Hlavičky odpovědi zkontrolujte hello HTTP vrátil s vaší mezipaměti CDN obsahu.  Pokud je záhlaví s názvem `Content-Encoding` s hodnotou **gzip**, **bzip2**, nebo **deflate**, obsah je komprimován.
+> Pokud chcete zkontrolovat, zda jsou vaše soubory nevrátila komprimovaný, budete muset použít nástroje, jako je [Fiddler](http://www.telerik.com/fiddler) nebo prohlížeče [nástroje pro vývojáře](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/).  Hlavičky odpovědi zkontrolujte HTTP vrátil s vaší mezipaměti CDN obsahu.  Pokud je záhlaví s názvem `Content-Encoding` s hodnotou **gzip**, **bzip2**, nebo **deflate**, obsah je komprimován.
 > 
 > ![Kódování obsahu hlaviček](./media/cdn-troubleshoot-compression/cdn-content-header.png)
 > 
@@ -38,21 +38,21 @@ Je povolená komprese pro svůj koncový bod, ale soubory se vrací nekomprimova
 ## <a name="cause"></a>Příčina
 Existuje několik možných příčin, včetně:
 
-* Hello požadovaného obsahu nejsou vhodné pro kompresi.
-* Není povolená komprese hello požadovaný typ souboru.
-* požadavek HTTP Hello nezahrnuli hlavičku požaduje typ platný komprese.
+* Požadovaný obsah nejsou vhodné pro kompresi.
+* Typ požadovaný soubor není povolená komprese.
+* Požadavek HTTP neobsahuje hlavičku požaduje typ platný komprese.
 
 ## <a name="troubleshooting-steps"></a>Řešení potíží
 > [!TIP]
-> Stejně jako u nasazení nové koncové body, provést změny konfigurace CDN některé čas toopropagate přes síť hello.  Obvykle změny se použijí během 90 minut.  Pokud je to hello poprvé, co jste nastavili komprese pro koncový bod CDN, měli byste zvážit čeká se, že rozšíření bodů POP toohello nastavení komprese hello 1 – 2 hodiny toobe. 
+> Stejně jako u nasazení nové koncové body, provést změny konfigurace CDN některé čas potřebný k šíření přes síť.  Obvykle změny se použijí během 90 minut.  Pokud je poprvé, které jste nastavili komprese pro koncový bod CDN, měli byste zvážit čekání 1 – 2 hodiny jistotu komprese, které se mají nastavení rozšíří do bodů POP. 
 > 
 > 
 
-### <a name="verify-hello-request"></a>Ověřit požadavek hello
-Nejdřív by měl provedeme kontrolu rychlé správností hello požadavku.  Můžete použít v prohlížeči na [nástroje pro vývojáře](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) tooview hello požadavků zasílaných.
+### <a name="verify-the-request"></a>Ověřit požadavek
+Nejdřív by měl provedeme kontrolu rychlé správností v požadavku.  Můžete použít v prohlížeči na [nástroje pro vývojáře](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) zobrazíte požadavky prováděné.
 
-* Ověřte hello odesílá se požadavek adresy URL koncového bodu tooyour, `<endpointname>.azureedge.net`a ne do zdrojového umístění.
-* Ověřit požadavek hello obsahuje **Accept-Encoding** záhlaví a hello hodnotu této hlavičky obsahuje **gzip**, **deflate**, nebo **bzip2** .
+* Ověření požadavku je odesílána vaše adresa URL koncového bodu `<endpointname>.azureedge.net`a ne do zdrojového umístění.
+* Ověřit požadavek obsahuje **Accept-Encoding** obsahuje hlavičku a hodnotu této hlavičky **gzip**, **deflate**, nebo **bzip2**.
 
 > [!NOTE]
 > **Azure CDN společnosti Akamai** profily podporuje se jen **gzip** kódování.
@@ -67,10 +67,10 @@ Nejdřív by měl provedeme kontrolu rychlé správností hello požadavku.  Mů
 > 
 > 
 
-Přejděte tooyour koncového bodu v hello [portál Azure](https://portal.azure.com) a klikněte na tlačítko hello **konfigurace** tlačítko.
+Přejděte na váš koncový bod v [portál Azure](https://portal.azure.com) a klikněte na tlačítko **konfigurace** tlačítko.
 
 * Ověřte, že je povolená komprese.
-* Ověřte hello typ MIME pro hello obsahu toobe komprimované je obsažena v seznamu hello komprimované formátů.
+* Ověřte, že typ MIME pro obsah, aby se komprimoval je obsažena v seznamu komprimované formátů.
 
 ![Nastavení komprese CDN](./media/cdn-troubleshoot-compression/cdn-compression-settings.png)
 
@@ -80,41 +80,41 @@ Přejděte tooyour koncového bodu v hello [portál Azure](https://portal.azure.
 > 
 > 
 
-Přejděte tooyour koncového bodu v hello [portál Azure](https://portal.azure.com) a klikněte na tlačítko hello **spravovat** tlačítko.  Otevře se Hello doplňkovém portálu.  Hover přes hello **HTTP velké** kartu a potom hover přes hello **nastavení mezipaměti** plovoucím panelem.  Klikněte na tlačítko **komprese**. 
+Přejděte na váš koncový bod v [portál Azure](https://portal.azure.com) a klikněte na tlačítko **spravovat** tlačítko.  Otevře se na doplňkovém portálu.  Najeďte myší **HTTP velké** a potom přejděte myší **nastavení mezipaměti** plovoucím panelem.  Klikněte na tlačítko **komprese**. 
 
 * Ověřte, že je povolená komprese.
-* Ověřte hello **typy souborů** seznam obsahuje seznam oddělený čárkami (bez mezer) typů standardu MIME.
-* Ověřte hello typ MIME pro hello obsahu toobe komprimované je obsažena v seznamu hello komprimované formátů.
+* Ověřte **typy souborů** seznam obsahuje seznam oddělený čárkami (bez mezer) typů standardu MIME.
+* Ověřte, že typ MIME pro obsah, aby se komprimoval je obsažena v seznamu komprimované formátů.
 
 ![Nastavení komprese CDN premium](./media/cdn-troubleshoot-compression/cdn-compression-settings-premium.png)
 
-### <a name="verify-hello-content-is-cached"></a>Ověřte, zda text hello obsah se uloží do mezipaměti
+### <a name="verify-the-content-is-cached"></a>Ověřte, že obsah se uloží do mezipaměti
 > [!NOTE]
 > Tento krok platí jenom v případě, že je váš profil CDN **Azure CDN společnosti Verizon** profil (Standard nebo Premium).
 > 
 > 
 
-Používání nástrojů pro vývojáře v prohlížeči, zkontrolujte, že hello odpověď záhlaví tooensure hello souboru je uložené v mezipaměti v hello oblasti, kde jsou požadovány.
+Používání nástrojů pro vývojáře v prohlížeči, zkontrolujte hlavičky odpovědi zajistit, že soubor je uložené v mezipaměti v oblasti, kde jsou požadovány.
 
-* Zkontrolujte hello **Server** hlavičky odpovědi.  Hlavička Hello by měl mít formát hello **platformy (ID POP nebo serveru)**, jak je vidět v hello následující ukázka.
-* Zkontrolujte hello **X mezipaměti** hlavičky odpovědi.  záhlaví Hello měli přečíst **DOSÁHL**.  
+* Zkontrolujte **Server** hlavičky odpovědi.  Záhlaví musí mít formát **platformy (ID POP nebo serveru)**, jak je vidět v následujícím příkladu.
+* Zkontrolujte **X mezipaměti** hlavičky odpovědi.  Záhlaví měli přečíst **DOSÁHL**.  
 
 ![Hlavičky odpovědi CDN](./media/cdn-troubleshoot-compression/cdn-response-headers.png)
 
-### <a name="verify-hello-file-meets-hello-size-requirements"></a>Ověřte, zda text hello soubor splňuje požadavky na velikost hello
+### <a name="verify-the-file-meets-the-size-requirements"></a>Ověřte, že soubor splňuje požadavky na velikost
 > [!NOTE]
 > Tento krok platí jenom v případě, že je váš profil CDN **Azure CDN společnosti Verizon** profil (Standard nebo Premium).
 > 
 > 
 
-toobe vhodné pro kompresi, soubor, musí splňovat následující požadavky na velikost hello:
+Přijatelné pro kompresi soubor musí splňovat následující požadavky na velikost:
 
 * Větší než 128 bajtů.
 * Menší než 1 MB.
 
-### <a name="check-hello-request-at-hello-origin-server-for-a-via-header"></a>Zkontrolujte hello požadavek na původní server hello pro **prostřednictvím** záhlaví
-Hello **prostřednictvím** hlavičky protokolu HTTP označuje toohello webový server, který hello požadavku je předávána pomocí serveru proxy.  Webové servery Microsoft IIS ve výchozím nastavení Nekomprimovat odpovědí hello požadavek obsahuje **prostřednictvím** záhlaví.  toooverride toto chování, proveďte následující hello:
+### <a name="check-the-request-at-the-origin-server-for-a-via-header"></a>Zkontrolujte požadavek na původním serveru **prostřednictvím** záhlaví
+**Prostřednictvím** hlavičky protokolu HTTP na webový server označuje, že požadavek je předávána pomocí serveru proxy.  Webové servery Microsoft IIS ve výchozím nastavení není kompresi odpovědí, pokud požadavek obsahuje **prostřednictvím** záhlaví.  Chcete-li toto chování potlačit, postupujte takto:
 
-* **Služby IIS 6**: [nastavit HcNoCompressionForProxies = "FALSE" ve vlastnostech hello metabáze služby IIS](https://msdn.microsoft.com/library/ms525390.aspx)
-* **Službu IIS 7 a vyšší**: [nastavit obě **noCompressionForHttp10** a **noCompressionForProxies** tooFalse v konfiguraci serveru hello](http://www.iis.net/configreference/system.webserver/httpcompression)
+* **Služby IIS 6**: [nastavit HcNoCompressionForProxies = "FALSE" ve vlastnostech metabáze služby IIS](https://msdn.microsoft.com/library/ms525390.aspx)
+* **Službu IIS 7 a vyšší**: [nastavit obě **noCompressionForHttp10** a **noCompressionForProxies** na hodnotu False v konfiguraci serveru](http://www.iis.net/configreference/system.webserver/httpcompression)
 

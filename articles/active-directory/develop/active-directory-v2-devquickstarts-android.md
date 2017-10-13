@@ -1,6 +1,6 @@
 ---
-title: "aplikace pro aaaAzure služby Active Directory v2.0 Android | Microsoft Docs"
-description: "Jak toobuild aplikace pro Android s přihlašováním uživatelů s osobní účet Microsoft a pracovní nebo školní účty a volání hello rozhraní Graph API pomocí knihoven jiných dodavatelů."
+title: Azure Active Directory v2.0 aplikace pro Android | Microsoft Docs
+description: "Postup vytvoření aplikace pro Android s přihlašováním uživatelů s osobní účet Microsoft a pracovní nebo školní účty a volání rozhraní Graph API pomocí knihoven jiných dodavatelů."
 services: active-directory
 documentationcenter: 
 author: danieldobalian
@@ -15,58 +15,58 @@ ms.topic: article
 ms.date: 05/07/2017
 ms.author: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 1dd40bd3bcea28c629abce09abaed66b38774162
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c0a5a818c61f7af7ff04bf890b54e8364f3b21b1
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="add-sign-in-tooan-android-app-using-a-third-party-library-with-graph-api-using-hello-v20-endpoint"></a>Přidat aplikaci pro Android tooan přihlášení pomocí rozhraní Graph API pomocí koncového bodu v2.0 hello knihovně třetích stran
-Platforma identity Microsoft Hello používá otevřete standardy, jako je OAuth2 a OpenID Connect. Vývojáři mohou použít žádnou knihovnu chtějí toointegrate s našich služeb. Vývojáři toohelp používat naše platforma s další knihovny, jsme jste zapsána několik návody jako tento jeden toodemonstrate jak tooconfigure třetích stran knihovny tooconnect toohello Microsoft identity platformy. Většina knihovny, které implementují [specifikace hello RFC6749 OAuth2](https://tools.ietf.org/html/rfc6749) můžete připojení toohello Microsoft identity platformy.
+# <a name="add-sign-in-to-an-android-app-using-a-third-party-library-with-graph-api-using-the-v20-endpoint"></a>Přidání přihlášení do aplikace pro Android pomocí rozhraní Graph API pomocí koncového bodu v2.0 knihovnu třetích stran
+Platforma Microsoft identity používá otevřené standardy, jako je například OAuth2 nebo OpenID Connect. Vývojáři mohou použít žádné knihovny, které chtějí integrovat našich služeb. Což vývojářům používat naše platforma s další knihovny, jsme jste zapisují několik návody podobné následujícímu abychom ukázali, jak nakonfigurovat třetích stran knihovny pro připojení k identitu platformy Microsoft. Většina knihovny, které implementují [specifikace RFC6749 OAuth2](https://tools.ietf.org/html/rfc6749) se může připojit k Microsoft identity platform.
 
-Hello aplikaci, která vytváří Tento názorný postup mohou uživatelé přihlásit tootheir organizace a poté vyhledejte sami ve své organizaci pomocí hello rozhraní Graph API.
+Aplikaci, která vytváří Tento názorný postup mohou uživatelé přihlásit k jejich organizace a poté vyhledejte sami ve své organizaci pomocí rozhraní Graph API.
 
-Pokud jste nový tooOAuth2 nebo OpenID Connect, mnohem této ukázkové konfigurace nemusí mít smysl tooyou. Doporučujeme, abyste si přečetli [2.0 protokoly - toku OAuth 2.0 autorizační kód](active-directory-v2-protocols-oauth-code.md) pozadí.
-
-> [!NOTE]
-> Některé funkce naše platformy, které mají výraz v hello OAuth2 nebo OpenID Connect standardy, jako je například podmíněný přístup a správu zásad Intune, vyžadují jste toouse naše s otevřeným zdrojem Identity pro knihovny Microsoft Azure.
-> 
-> 
-
-koncový bod v2.0 Hello nepodporuje všechny scénáře Azure Active Directory a funkce.
+Pokud jste ještě OAuth2 nebo OpenID Connect, mnohem této ukázkové konfigurace nemusí mít smysl pro vás. Doporučujeme, abyste si přečetli [2.0 protokoly - toku OAuth 2.0 autorizační kód](active-directory-v2-protocols-oauth-code.md) pozadí.
 
 > [!NOTE]
-> toodetermine Pokud byste měli používat koncového bodu v2.0 hello, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
+> Některé funkce naše platformy, které mají výrazu v OAuth2 nebo OpenID Connect standardy, jako je například podmíněný přístup a správu zásad Intune, musíte používat naše otevřený zdroj knihovny Identity Microsoft Azure.
 > 
 > 
 
-## <a name="download-hello-code-from-github"></a>Stáhněte si kód hello z Githubu
-Hello kód v tomto kurzu se udržuje [na Githubu](https://github.com/Azure-Samples/active-directory-android-native-oidcandroidlib-v2).  toofollow společně, můžete [stáhnout kostru aplikace hello jako ZIP](https://github.com/Azure-Samples/active-directory-android-native-oidcandroidlib-v2/archive/skeleton.zip) nebo hello kostru klonovat:
+Koncový bod v2.0 nepodporuje všechny scénáře Azure Active Directory a funkce.
+
+> [!NOTE]
+> Pokud chcete zjistit, pokud byste měli používat koncový bod v2.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
+> 
+> 
+
+## <a name="download-the-code-from-github"></a>Stáhněte si kód z Githubu
+Kód k tomuto kurzu je udržovaný [na GitHubu](https://github.com/Azure-Samples/active-directory-android-native-oidcandroidlib-v2).  Chcete-li sledovat, můžete [stáhnout kostru aplikace jako ZIP](https://github.com/Azure-Samples/active-directory-android-native-oidcandroidlib-v2/archive/skeleton.zip) nebo tuto kostru klonovat:
 
 ```
 git clone --branch skeleton git@github.com:Azure-Samples/active-directory-android-native-oidcandroidlib-v2.git
 ```
 
-Můžete také právě stažení ukázky hello a rovnou začít:
+Ukázku můžete také právě stáhnout a začít hned:
 
 ```
 git@github.com:Azure-Samples/active-directory-android-native-oidcandroidlib-v2.git
 ```
 
 ## <a name="register-an-app"></a>Registrace aplikace
-Vytvoření nové aplikace v hello [portálu pro registraci aplikace](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), nebo postupujte podle hello podrobné kroky v [jak tooregister aplikace s koncovým bodem v2.0 hello](active-directory-v2-app-registration.md).  Zkontrolujte, že:
+Vytvoření nové aplikace v [portálu pro registraci aplikace](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), nebo použijte podrobný postup v [postup registrace aplikace s koncovým bodem v2.0](active-directory-v2-app-registration.md).  Zkontrolujte, že:
 
-* Kopírování hello **Id aplikace** aplikace přiřazené tooyour důvodem je, že ho budete potřebovat brzy k dispozici.
-* Přidat hello **Mobile** platformu pro vaši aplikaci.
+* Kopírování **Id aplikace** , je přiřazen do vaší aplikace, protože ho budete potřebovat brzy.
+* Přidat **Mobile** platformu pro vaši aplikaci.
 
-> Poznámka: portál pro registraci aplikace hello poskytuje **identifikátor URI pro přesměrování** hodnotu. Ale v tomto příkladu musí používat výchozí hodnotu hello `https://login.microsoftonline.com/common/oauth2/nativeclient`.
+> Poznámka: Poskytuje portálu pro registraci aplikace **identifikátor URI pro přesměrování** hodnotu. Ale v tomto příkladu musí používat výchozí hodnotu `https://login.microsoftonline.com/common/oauth2/nativeclient`.
 > 
 > 
 
-## <a name="download-hello-nxoauth2-third-party-library-and-create-a-workspace"></a>Stažení hello NXOAuth2 třetích stran knihovny a vytvořit pracovní prostor
-V tomto návodu budete používat hello OIDCAndroidLib z Githubu, která je OAuth2 knihovny založené na hello kód Google OpenID Connect. Profil nativní aplikace hello implementuje a podporuje koncový bod autorizace hello hello uživatele. To je vše, co hello, že potřebujete toointegrate s platformou identity Microsoft hello.
+## <a name="download-the-nxoauth2-third-party-library-and-create-a-workspace"></a>Stažení knihovně NXOAuth2 třetích stran a vytvořit pracovní prostor
+V tomto návodu budete používat OIDCAndroidLib z Githubu, která je OAuth2 knihovny založené na kódu Google OpenID Connect. Profil nativní aplikace implementuje a podporuje koncový bod autorizace uživatele. Toto jsou všechny věci, které budete potřebovat k integraci s platformou identity Microsoft.
 
-Klonování hello OIDCAndroidLib úložišti tooyour počítače.
+Naklonujte úložiště OIDCAndroidLib do vašeho počítače.
 
 ```
 git@github.com:kalemontes/OIDCAndroidLib.git
@@ -75,69 +75,69 @@ git@github.com:kalemontes/OIDCAndroidLib.git
 ![androidStudio](../media/active-directory-android-native-oidcandroidlib-v2/emotes-url.png)
 
 ## <a name="set-up-your-android-studio-environment"></a>Nastavení prostředí Android Studio
-1. Vytvořte nový projekt Android Studio a přijměte výchozí hodnoty hello v Průvodci hello.
+1. Vytvořte nový projekt Android Studio a přijměte výchozí nastavení v průvodci.
    
     ![Vytvořit nový projekt v Android Studio](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample1.PNG)
    
     ![Cílové zařízení se systémem Android](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample2.PNG)
    
-    ![Přidat toomobile aktivity](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample3.PNG)
-2. tooset až moduly vašeho projektu přesunout umístění projektu toohello hello klonovat úložiště. Můžete také vytvořit hello projekt a poté klonovat ji přímo toohello umístění projektu.
+    ![Přidat aktivitu do mobile](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample3.PNG)
+2. Chcete-li nastavit moduly projektu, přesunete do umístění projektu klonovaný úložišti. Můžete také vytvořit projekt a poté klonovat přímo do umístění projektu.
    
     ![Moduly projektu](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample4_1.PNG)
-3. Otevřete nastavení moduly hello projektu pomocí hello kontextové nabídky, nebo pomocí zástupce Ctrl + Alt + avní + S hello.
+3. Otevřete nastavení projektu moduly pomocí místní nabídky nebo klávesové zkratky Ctrl + Alt + avní + S.
    
     ![Nastavení projektu moduly](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample4.PNG)
-4. Modul aplikace hello výchozí odeberte, protože chcete nastavení kontejneru projektu hello.
+4. Výchozí modul aplikace odeberte, protože chcete kontejneru nastavení projektu.
    
-    ![modul aplikace výchozí Hello](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample5.PNG)
-5. Naimportovat moduly z hello klonovaný úložišti toohello aktuálního projektu.
+    ![Výchozí modul aplikace](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample5.PNG)
+5. Importujte moduly z klonovaného úložiště do aktuálního projektu.
    
     ![Import projektu gradle](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample6.PNG) ![vytvořit novou stránku modulu](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample7.PNG)
-6. Opakujte tyto kroky u hello `oidlib-sample` modulu.
-7. Zkontrolujte hello oidclib závislostí na hello `oidlib-sample` modulu.
+6. Opakujte tyto kroky `oidlib-sample` modulu.
+7. Zkontrolovat závislosti oidclib `oidlib-sample` modulu.
    
-    ![oidclib závislosti na modulu hello oidlib – ukázka](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample8.PNG)
+    ![oidclib závislosti na modulu oidlib – ukázka](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample8.PNG)
 8. Klikněte na tlačítko **OK** a počkejte, než pro synchronizaci gradle.
    
     Vaše settings.gradle by měl vypadat podobně jako:
    
     ![Snímek obrazovky settings.gradle](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample8_1.PNG)
-9. Sestavení hello ukázkové aplikace toomake se, že hello ukázka funguje správně.
+9. Vytvoření ukázkové aplikace k Ujistěte se, že ukázkový, funguje správně.
    
-    Můžete nebudou moct toouse to s Azure Active Directory ještě. Budeme potřebovat tooconfigure některé koncové body nejdřív. Toto je tooensure nemáte oprávnění ke Android Studio než začneme přizpůsobení hello ukázkovou aplikaci.
-10. Sestavení a spuštění `oidlib-sample` jako cíl hello v Android Studio.
+    Nebudete moci ještě použít s Azure Active Directory. Budeme potřebovat nejprve nakonfigurovat některé koncové body. To je potřeba zajistit, že nemáte oprávnění ke Android Studio než začneme přizpůsobení ukázkovou aplikaci.
+10. Sestavení a spuštění `oidlib-sample` jako cíl v Android Studio.
     
     ![Průběh sestavení oidlib – ukázka](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample9.png)
-11. Odstranit hello `app ` adresáře, které bylo při odebrání hello modul z projektu hello protože Android Studio neodstraní, je pro zabezpečení.
+11. Odstranit `app ` adresáře, které bylo při odebrat modul z projektu, protože Android Studio neodstraní, je pro zabezpečení.
     
-    ![Struktura souborů, která obsahuje adresář aplikace hello](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample12.PNG)
-12. Otevřete hello **upravit konfigurace** nabídky tooremove hello spustit konfigurace, které bylo také při odebrání hello modul z projektu hello.
+    ![Struktura souborů, která obsahuje adresář aplikace](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample12.PNG)
+12. Otevřete **upravit konfigurace** nabídky k odebrání spuštění konfigurace, které bylo také při odebrání modul z projektu.
     
     ![Upravit nabídku konfigurace](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample10.PNG)
     ![spustit konfigurace aplikace](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample11.PNG)
 
-## <a name="configure-hello-endpoints-of-hello-sample"></a>Nakonfigurovat koncové body hello hello vzorku
-Teď, když máte hello `oidlib-sample` spuštěna úspěšně, tady upravit některé koncové body tooget tato práce s Azure Active Directory.
+## <a name="configure-the-endpoints-of-the-sample"></a>Nakonfigurovat koncové body vzorku
+Teď, když máte `oidlib-sample` spuštěna úspěšně, Pojďme upravit některé koncové body k získání tato práce s Azure Active Directory.
 
-### <a name="configure-your-client-by-editing-hello-oidcclientconfxml-file"></a>Nakonfigurujte klienta tak, že upravíte soubor oidc_clientconf.xml hello
-1. Vzhledem k tomu, že používáte OAuth2 toky pouze tooget token a volání hello rozhraní Graph API, nastavte hello toodo klienta OAuth2 pouze. OIDC vrátí se v pozdější příkladu.
+### <a name="configure-your-client-by-editing-the-oidcclientconfxml-file"></a>Nakonfigurujte klienta tak, že upravíte soubor oidc_clientconf.xml
+1. Vzhledem k tomu, že používáte OAuth2 toky pouze k získání tokenu a zavolat rozhraní Graph API, nastavení klienta jenom udělat OAuth2. OIDC vrátí se v pozdější příkladu.
    
     ```xml
         <bool name="oidc_oauth2only">true</bool>
     ```
-2. Nakonfigurujte vaše ID klienta, který jste obdrželi z portálu pro registraci hello.
+2. Nakonfigurujte vaše ID klienta, který jste obdrželi z portálu pro registraci.
    
     ```xml
         <string name="oidc_clientId">86172f9d-a1ae-4348-aafa-7b3e5d1b36f5</string>
         <string name="oidc_clientSecret"></string>
     ```
-3. Nakonfigurujte váš identifikátor URI přesměrování s hello jeden níže.
+3. Nakonfigurujte váš identifikátor URI pro přesměrování jedna níže.
    
     ```xml
         <string name="oidc_redirectUrl">https://login.microsoftonline.com/common/oauth2/nativeclient</string>
     ```
-4. Konfigurace vaší oborů, že budete potřebovat v pořadí tooaccess hello rozhraní Graph API.
+4. Konfigurace vaší obory, které potřebujete k přístup k rozhraní Graph API.
    
     ```xml
         <string-array name="oidc_scopes">
@@ -147,13 +147,13 @@ Teď, když máte hello `oidlib-sample` spuštěna úspěšně, tady upravit ně
         </string-array>
     ```
 
-Hello `User.Read` hodnotu `oidc_scopes` umožňuje vám tooread hello základní profil hello přihlášení uživatele.
-Další informace o všech dostupných oborů hello v [obory oprávnění Microsoft Graph](https://graph.microsoft.io/docs/authorization/permission_scopes).
+`User.Read` Hodnotu `oidc_scopes` umožňuje číst základní profil podepsané v uživatele.
+Další informace o všechny obory, které jsou k dispozici na [obory oprávnění Microsoft Graph](https://graph.microsoft.io/docs/authorization/permission_scopes).
 
 Pokud chcete o vysvětlení `openid` nebo `offline_access` jako obory v OpenID Connect, najdete v části [2.0 protokoly - toku OAuth 2.0 autorizační kód](active-directory-v2-protocols-oauth-code.md).
 
-### <a name="configure-your-client-endpoints-by-editing-hello-oidcendpointsxml-file"></a>Nakonfigurovat koncové body klienta úpravou souboru oidc_endpoints.xml hello
-* Otevřete hello `oidc_endpoints.xml` souboru a nastavit hello následující změny:
+### <a name="configure-your-client-endpoints-by-editing-the-oidcendpointsxml-file"></a>Nakonfigurovat koncové body klienta úpravou souboru oidc_endpoints.xml
+* Otevřete `oidc_endpoints.xml` souboru a proveďte následující změny:
   
     ```xml
     <!-- Stores OpenID Connect provider endpoints. -->
@@ -168,12 +168,12 @@ Pokud chcete o vysvětlení `openid` nebo `offline_access` jako obory v OpenID C
 Tyto koncové body nikdy změnit v případě, že používáte OAuth2 jako protokol.
 
 > [!NOTE]
-> Hello koncové body pro `userInfoEndpoint` a `revocationEndpoint` nejsou aktuálně podporovány službou Azure Active Directory. Pokud tyto výchozí example.com hodnotou hello, budete upozorněni, že nejsou k dispozici v ukázce hello :-)
+> Koncové body pro `userInfoEndpoint` a `revocationEndpoint` nejsou aktuálně podporovány službou Azure Active Directory. Pokud tyto výchozí hodnotou example.com, budete upozorněni, že nejsou k dispozici ve vzorku :-)
 > 
 > 
 
 ## <a name="configure-a-graph-api-call"></a>Konfigurace volání rozhraní Graph API
-* Otevřete hello `HomeActivity.java` souboru a nastavit hello následující změny:
+* Otevřete `HomeActivity.java` souboru a proveďte následující změny:
   
     ```Java
        //TODO: set your protected resource url
@@ -182,10 +182,10 @@ Tyto koncové body nikdy změnit v případě, že používáte OAuth2 jako prot
 
 Zde jednoduché volání rozhraní Graph API vrací naše informace.
 
-Ty jsou všechny změny hello, je nutné, aby toodo. Spustit hello `oidlib-sample` aplikace a klikněte na tlačítko **přihlášení**.
+Ty jsou všechny změny, které musíte udělat. Spustit `oidlib-sample` aplikace a klikněte na tlačítko **přihlášení**.
 
-Když jste úspěšně ověřen, vyberte hello **požadavku chráněných prostředků** tlačítko tootest toohello vaše volání rozhraní Graph API.
+Když jste úspěšně ověřen, vyberte **požadavku chráněných prostředků** tlačítko můžete otestovat volání rozhraní Graph API.
 
 ## <a name="get-security-updates-for-our-product"></a>Získejte bezpečnostní aktualizace našich produktů
-Doporučujeme vám tooget oznámení o bezpečnostní incidenty v oblasti návštěvou hello [Web Security TechCenter](https://technet.microsoft.com/security/dd252948) a přihlášení k odběru tooSecurity Advisory Alerts.
+Doporučujeme vám získávat oznámení o bezpečnostní incidenty v oblasti navštivte stránky [Web Security TechCenter](https://technet.microsoft.com/security/dd252948) a odběr Security Advisory Alerts.
 

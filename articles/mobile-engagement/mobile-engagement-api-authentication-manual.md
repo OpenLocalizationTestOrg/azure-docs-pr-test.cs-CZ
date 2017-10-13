@@ -1,6 +1,6 @@
 ---
-title: "aaaAuthenticate s Mobile Engagement REST API – ruční instalaci"
-description: "Popisuje, jak nastavit toomanually ověřování rozhraní REST API Mobile Engagement"
+title: "Ověření pomocí Mobile Engagement REST API – ruční instalaci"
+description: "Popisuje, jak ručně nastavit ověřování rozhraní REST API Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,33 +14,33 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 3884f94afcd6b9a62bfcf498fb6ee84bb6e837b7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 9d6132e1a01be489b8e8e28a0219cf8a0b50b318
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="authenticate-with-mobile-engagement-rest-apis---manual-setup"></a>Ověření pomocí Mobile Engagement REST API – ruční instalaci
-Tato dokumentace příloha je příliš[ověřit pomocí rozhraní API REST Mobile Engagement](mobile-engagement-api-authentication.md). Zajistěte, aby že čtení první tooget hello kontextu. Popisuje jiný způsob, jak toodo hello jednorázové instalační program pro nastavení ověřování pro použití rozhraní REST API Mobile Engagement hello hello portálu Azure. 
+Toto je dokumentaci příloha [ověřit pomocí rozhraní API REST Mobile Engagement](mobile-engagement-api-authentication.md). Zajistěte, aby že si ji nejprve se získat kontext přečíst. Popisuje jiný způsob, jak provést jednorázové nastavení pro nastavení ověřování pro použití portálu Azure Mobile Engagement REST API. 
 
 > [!NOTE]
-> níže uvedené pokyny Hello jsou založené na tomto [služby Active Directory průvodce](../azure-resource-manager/resource-group-create-service-principal-portal.md) a přizpůsobit pro co je vyžadován pro ověření pro zapojení mobilních rozhraní API. Pokud chcete, aby toounderstand hello následující postup podrobně tak naleznete tooit. 
+> Následující pokyny jsou založené na tomto [služby Active Directory průvodce](../azure-resource-manager/resource-group-create-service-principal-portal.md) a přizpůsobit pro co je vyžadován pro ověření pro zapojení mobilních rozhraní API. Proto na ni odkazuje Pokud chcete zjistit, následující postup podrobně. 
 > 
 > 
 
-1. Přihlášení tooyour účet Azure prostřednictvím hello [portálu classic](https://manage.windowsazure.com/).
-2. Vyberte **služby Active Directory** v levém podokně hello.
+1. Přihlášení k účtu Azure prostřednictvím [portálu classic](https://manage.windowsazure.com/).
+2. Vyberte **služby Active Directory** v levém podokně.
    
      ![Vyberte možnost Active Directory][1]
-3. Zvolte hello **výchozí služby Active Directory** na portálu Azure. 
+3. Vyberte **výchozí služby Active Directory** na portálu Azure. 
    
      ![Vybrat adresář.][2]
    
    > [!IMPORTANT]
-   > Tento postup funguje jenom v případě, že pracujete v hello výchozí služby Active Directory vašeho účtu a nebude fungovat, pokud je to dělají ve službě Active Directory, kterou jste vytvořili ve vašem účtu. 
+   > Tento postup funguje jenom v případě, že pracujete v výchozí služby Active Directory vašeho účtu a nebude fungovat, pokud je to dělají ve službě Active Directory, kterou jste vytvořili ve vašem účtu. 
    > 
    > 
-4. aplikace hello tooview ve vašem adresáři, klikněte na **aplikace**.
+4. Chcete-li zobrazit aplikace ve vašem adresáři, klikněte na **aplikace**.
    
      ![Zobrazit aplikace][3]
 5. Klikněte na **přidat**. 
@@ -49,49 +49,49 @@ Tato dokumentace příloha je příliš[ověřit pomocí rozhraní API REST Mobi
 6. Klikněte na **přidat aplikaci, kterou vyvíjí Moje organizace**
    
      ![Nová aplikace][5]
-7. Zadejte název aplikace hello a vyberte hello typu aplikace jako **webové aplikace nebo webové rozhraní API** a klikněte na tlačítko Další hello.
+7. Zadejte název aplikace a vyberte typ aplikace jako **webové aplikace nebo webové rozhraní API** a klikněte na tlačítko Další.
    
      ![název aplikace][6]
-8. Můžete zadat všechny fiktivní adresy URL pro **adresa URL přihlašování** a **identifikátor ID URI aplikace**. Nejsou použity pro náš scénář a adresy URL hello sami nejsou ověřené.  
+8. Můžete zadat všechny fiktivní adresy URL pro **adresa URL přihlašování** a **identifikátor ID URI aplikace**. Nejsou použity pro náš scénář a adresy URL sami nejsou ověřené.  
    
      ![Vlastnosti aplikace][7]
-9. Na konci hello tohoto budete mít AAD aplikace, které jste zadali dříve jako následující hello názvem hello. Toto je vaše **AD\_aplikace\_název** a poznamenejte si ho.  
+9. Na konci tohoto budete mít aplikaci AAD pomocí názvu, který jste zadali dříve jako následující. Toto je vaše **AD\_aplikace\_název** a poznamenejte si ho.  
    
      ![Název aplikace.][8]
-10. Klikněte na název aplikace hello a klikněte na **konfigurace**.
+10. Klikněte na název aplikace a klikněte na **konfigurace**.
     
       ![Konfigurace aplikace][9]
-11. Poznamenejte si hello ID klienta, který se použije jako **klienta\_ID** pro vaše rozhraní API volání. 
+11. Poznamenejte si ID klienta, který se použije jako **klienta\_ID** pro vaše rozhraní API volání. 
     
      ![Konfigurace aplikace][10]
-12. Projděte dolů toohello **klíče** a přidání klíče se nejlépe doba trvání 2 roky (vypršení platnosti) a klikněte na **Uložit**. 
+12. Přejděte dolů k položce **klíče** a přidání klíče se nejlépe doba trvání 2 roky (vypršení platnosti) a klikněte na **Uložit**. 
     
      ![Konfigurace aplikace][11]
-13. Zkopírujte okamžitě hello hodnotu, která je pro klíč hello zobrazen, jak se zobrazují pouze nyní a nejsou uložena, se někdy znovu nezobrazí. Pokud ho ztratíte pak budete mít toogenerate nový klíč. Bude jím hello **tajný klíč CLIENT_SECRET** pro vaše rozhraní API volání. 
+13. Okamžitě zkopírujte hodnotu, která je pro klíč zobrazen, jak se zobrazují pouze nyní a nejsou uložena, se někdy znovu nezobrazí. Pokud ho ztratíte budete muset vygenerovat nový klíč. To bude **tajný klíč CLIENT_SECRET** pro vaše rozhraní API volání. 
     
      ![Konfigurace aplikace][12]
     
     > [!IMPORTANT]
-    > Tento klíč vyprší na konci hello hello trvání určeného Ano toorenew se, ujistěte se, které je čas hello vycházejí jinak ověřování rozhraní API už nebude fungovat. Můžete také odstranit a znovu vytvořit tento klíč, pokud se domníváte, že byl napaden.
+    > Tento klíč vyprší na konci dobu, která jste zadali, ujistěte se, že ho obnovit, když nastane čas jinak ověřování rozhraní API nebude fungovat. Můžete také odstranit a znovu vytvořit tento klíč, pokud se domníváte, že byl napaden.
     > 
     > 
-14. Klikněte na **zobrazit koncové body** tlačítko nyní které se otevře hello **koncových bodů aplikace** dialogové okno. 
+14. Klikněte na **zobrazit koncové body** tlačítko nyní které se otevře **koncových bodů aplikace** dialogové okno. 
     
     ![][13]
-15. Z dialogového okna koncových bodů aplikace hello, zkopírujte hello **koncový bod TOKENU OAUTH 2.0**. 
+15. Z dialogového okna aplikace koncové body zkopírovat **koncový bod TOKENU OAUTH 2.0**. 
     
     ![][14]
-16. Tento koncový bod se bude nacházet v hello následující formulář, kde je hello identifikátor GUID v adrese URL hello vaše **TENANT_ID** , poznamenejte si ji: 
+16. Tento koncový bod bude ve formuláři následující, kde je identifikátor GUID v adrese URL vaší **TENANT_ID** , poznamenejte si ji: 
     
         https://login.microsoftonline.com/<GUID>/oauth2/token
-17. Nyní jsme bude pokračovat tooconfigure hello oprávnění v této aplikaci. To bude mít tooopen až hello [portál Azure](https://portal.azure.com). 
-18. Klikněte na **skupiny prostředků** a najde hello **Mobile Engagement** skupinu prostředků.  
+17. Nyní budeme pokračovat nakonfigurovat oprávnění v této aplikaci. Pro to budete muset otevře [portál Azure](https://portal.azure.com). 
+18. Klikněte na **skupiny prostředků** a najděte **Mobile Engagement** skupinu prostředků.  
     
     ![][15]
-19. Klikněte na tlačítko hello **Mobile Engagement** prostředků skupiny a přejděte toohello **nastavení** okno sem. 
+19. Klikněte na tlačítko **Mobile Engagement** prostředků skupiny a přejděte do **nastavení** okno sem. 
     
     ![][16]
-20. Klikněte na **uživatelé** v hello okno nastavení a potom klikněte na **přidat** tooadd uživatele. 
+20. Klikněte na **uživatelé** v okně Nastavení a pak klikněte na **přidat** přidat uživatele. 
     
     ![][17]
 21. Klikněte na **vybrat roli**
@@ -100,14 +100,14 @@ Tato dokumentace příloha je příliš[ověřit pomocí rozhraní API REST Mobi
 22. Klikněte na **vlastníka**
     
     ![][19]
-23. Vyhledávání pro název vaší aplikace hello **AD\_aplikace\_název** hello vyhledávacího pole. Se nezobrazí ve výchozím nastavení v tomto poli. Po nalezení, vyberte ho a klikněte na **vyberte** v hello dolní části okna hello. 
+23. Vyhledávání pro název vaší aplikace **AD\_aplikace\_název** do vyhledávacího pole. Se nezobrazí ve výchozím nastavení v tomto poli. Po nalezení, vyberte ho a klikněte na **vyberte** v dolní části okna. 
     
     ![][20]
-24. Na hello **přidat přístup** okně se zobrazí jako **1 uživatel, 0 skupiny**. Klikněte na tlačítko **OK** na tuto změnu hello tooconfirm okno. 
+24. Na **přidat přístup** okně se zobrazí jako **1 uživatel, 0 skupiny**. Klikněte na tlačítko **OK** v tomto okně pro potvrzení změny. 
     
     ![][21]
 
-Teď jste dokončili hello vyžaduje konfiguraci AAD a jsou všechny hello toocall sadu rozhraní API. 
+Teď jste dokončili požadované konfigurace AAD a jsou všechny nastavíte na volání rozhraní API. 
 
 <!-- Images -->
 [1]: ./media/mobile-engagement-api-authentication-manual/active-directory.png

@@ -1,6 +1,6 @@
 ---
-title: "nahrávání souborů Azure portálu tooconfigure hello aaaUse | Microsoft Docs"
-description: "Jak toouse hello Azure portálu tooconfigure souboru IoT hub tooenable ukládání z připojených zařízení. Obsahuje informace o konfiguraci hello, cílový účet úložiště Azure."
+title: "Pomocí portálu Azure ke konfiguraci nahrávání souborů | Microsoft Docs"
+description: "Postup konfigurace služby IoT hub, chcete-li povolit nahrávání souborů z připojených zařízení pomocí portálu Azure. Obsahuje informace o konfiguraci cílového účtu úložiště Azure."
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -14,51 +14,51 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: dobett
-ms.openlocfilehash: b90c3fbed47b4eb144d3cb7480068b7cfc776ba6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 149dd84d7d8f4ff9cd30f9fc649ced3cb364cfb7
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="configure-iot-hub-file-uploads-using-hello-azure-portal"></a>Konfigurace služby IoT Hub nahrávání souborů pomocí hello portálu Azure
+# <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>Konfigurace centra IoT nahrávání souborů pomocí portálu Azure
 
 [!INCLUDE [iot-hub-file-upload-selector](../../includes/iot-hub-file-upload-selector.md)]
 
 ## <a name="file-upload"></a>Nahrávání souborů
 
-toouse hello [souboru nahrávání funkce IoT hub][lnk-upload], je třeba nejprve přidružit účet služby Azure Storage pomocí centra. Vyberte **nahrávání souborů** toodisplay seznam vlastností nahrávání souboru pro hello IoT hub, která je upravována.
+Použít [souboru nahrávání funkce IoT hub][lnk-upload], je třeba nejprve přidružit účet služby Azure Storage pomocí centra. Vyberte **nahrávání souborů** zobrazíte seznam vlastností nahrávání souboru pro službu IoT hub, která je upravována.
 
-![Nastavení portálu hello odesílání souboru IoT Hub zobrazení][13]
+![Zobrazení IoT Hub soubor nahrát nastavení na portálu][13]
 
-**Kontejner úložiště**: použití hello Azure portálu tooselect kontejner objektů blob v účtu Azure Storage ve vaší aktuální předplatné tooassociate službou IoT Hub. Pokud potřeby můžete vytvořit účet úložiště Azure na hello **účty úložiště** okno a objektů blob kontejneru na hello **kontejnery** okno. Identifikátory URI SAS služby IoT Hub automaticky generuje s zápisu oprávnění toothis kontejner objektů blob pro toouse zařízení, když odesílají soubory.
+**Kontejner úložiště**: pomocí portálu Azure vyberte kontejner objektů blob v účtu Azure Storage v aktuálním předplatném Azure přidružit služby IoT Hub. Pokud potřeby můžete vytvořit účet úložiště Azure na **účty úložiště** okno a objektů blob kontejneru na **kontejnery** okno. IoT Hub automaticky vygeneruje identifikátory URI SAS s oprávněními k zápisu do tohoto kontejneru objektů blob pro zařízení se má použít při odesílají soubory.
 
-![Zobrazení portálu hello kontejnery úložiště pro nahrávání souborů][14]
+![Zobrazit kontejnery úložiště pro nahrávání souborů na portálu][14]
 
-**Přijímat oznámení pro nahraném soubory**: povolení nebo zakázání oznámení o odeslání souboru prostřednictvím přepnutí hello.
+**Přijímat oznámení pro nahraném soubory**: povolení nebo zakázání oznámení o odeslání souboru přes přepínač.
 
-**Hodnota TTL SAS**: Toto nastavení je hello time-to-live z hello identifikátory URI SAS vrácený toohello zařízení IoT Hub. Ve výchozím nastavení tooone hodinu, ale může být vlastní tooother hodnoty pomocí posuvníku hello.
+**Hodnota TTL SAS**: Toto nastavení je time-to-live identifikátorů URI SAS, vrácený do zařízení IoT Hub. Ve výchozím nastavení má jednu hodinu, ale můžete přizpůsobit tak, aby ostatní hodnoty pomocí posuvníku.
 
-**Upozornění na nastavení výchozí hodnota TTL souboru**: hello time-to-live oznámení nahrávání souboru předtím, než vyprší jejich platnost. Ve výchozím nastavení tooone den, ale může být vlastní tooother hodnoty pomocí posuvníku hello.
+**Upozornění na nastavení výchozí hodnota TTL souboru**: time-to-live souboru odeslat oznámení, než vyprší jejich platnost. Ve výchozím nastavení má jeden den, ale můžete přizpůsobit tak, aby ostatní hodnoty pomocí posuvníku.
 
-**Soubor doručení maximální počet oznámení**: hello kolikrát hello toodeliver pokusy o IoT Hub oznámení nahrávání souboru. Ve výchozím nastavení too10, ale může být vlastní tooother hodnoty pomocí posuvníku hello.
+**Soubor doručení maximální počet oznámení**: počet, kolikrát se Centrum IoT pokusí doručit soubor odeslat oznámení. Ve výchozím nastavení má 10, ale můžete přizpůsobit tak, aby ostatní hodnoty pomocí posuvníku.
 
-![Konfigurace služby IoT Hub nahrávání souborů hello portálu][15]
+![Konfigurace služby IoT Hub nahrávání souborů na portálu][15]
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o možnostech nahrávání souboru hello Centrum IoT najdete v tématu [nahrání souborů ze zařízení] [ lnk-upload] v hello Příručka vývojáře pro službu IoT Hub.
+Další informace o možnostech nahrávání souboru Centrum IoT najdete v tématu [nahrání souborů ze zařízení] [ lnk-upload] v příručce pro vývojáře IoT Hub.
 
-Použijte tyto odkazy toolearn informace o správě Azure IoT Hub:
+Další informace o správě Azure IoT Hub na následujících odkazech:
 
 * [Hromadné spravovat zařízení IoT][lnk-bulk]
 * [Metriky služby IoT Hub][lnk-metrics]
 * [Monitorování operací][lnk-monitor]
 
-toofurther prozkoumat hello služby IoT Hub, najdete v tématu:
+Pokud chcete prozkoumat další možnosti IoT Hub, najdete v části:
 
 * [Příručka vývojáře pro službu IoT Hub][lnk-devguide]
 * [Simulaci zařízení s hranou IoT][lnk-iotedge]
-* [Zabezpečení řešení IoT z hello pozadí][lnk-securing]
+* [Zabezpečení řešení IoT od základů nahoru][lnk-securing]
 
 [13]: ./media/iot-hub-configure-file-upload/file-upload-settings.png
 [14]: ./media/iot-hub-configure-file-upload/file-upload-container-selection.png

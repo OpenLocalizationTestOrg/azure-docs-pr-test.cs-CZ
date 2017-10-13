@@ -1,6 +1,6 @@
 ---
-title: aaaInstall .NET na role Azure Cloud Services | Microsoft Docs
-description: "Tento článek popisuje, jak toomanually instalovat hello rozhraní .NET Framework na vaše cloudové služby webových a pracovních rolí"
+title: "Instalace rozhraní .NET pro role Azure Cloud Services | Microsoft Docs"
+description: "Tento článek popisuje, jak ručně nainstalovat rozhraní .NET Framework na vaše cloudové služby webových a pracovních rolí"
 services: cloud-services
 documentationcenter: .net
 author: thraka
@@ -14,48 +14,48 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2017
 ms.author: adegeo
-ms.openlocfilehash: 45f0f30221292f98c591511b091b02ebe1c1272c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a9cffa275ae6b9315b821d3160b17a997a1523f7
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>Instalace rozhraní .NET pro role Azure Cloud Services
-Tento článek popisuje, jak tooinstall verze rozhraní .NET Framework, které nejsou součástí hello Azure hostovaného operačního systému. Rozhraní .NET můžete použít na tooconfigure hello hostovaného operačního systému vaší cloudové služby webových a pracovních rolí.
+Tento článek popisuje postup instalace verze rozhraní .NET Framework, které nejsou součástí hostovaného operačního systému Azure. .NET na hostovaného operačního systému vám pomůže nakonfigurovat role cloudové služby webové a pracovní.
 
-Například můžete nainstalovat rozhraní .NET 4.6.1 na hello hostovaného operačního systému rodiny 4, který není součástí žádné verzi rozhraní .NET 4.6. (hello hostovaného operačního systému rodiny 5 se dodávají s .NET 4.6.) Hello nejnovější informace o hello uvolní Azure hostovaného operačního systému najdete v tématu hello [Azure hostovaného operačního systému verze zprávy](cloud-services-guestos-update-matrix.md). 
+Například můžete nainstalovat rozhraní .NET 4.6.1 v hostovaného operačního systému řady 4, který není součástí žádné verzi rozhraní .NET 4.6. (Hostovaného operačního systému rodiny 5 se dodávají s .NET 4.6.) Nejnovější informace o verzích hostovaného operačního systému Azure, najdete v článku [Azure hostovaného operačního systému verze zprávy](cloud-services-guestos-update-matrix.md). 
 
 >[!IMPORTANT]
->Hello sadu Azure SDK 2.9 obsahuje omezení nasazení .NET 4.6 na hello hostovaného operačního systému rodiny 4 nebo dřívější. Oprava hello omezení je k dispozici na hello [Microsoft Docs](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9) lokality.
+>Azure SDK 2.9 obsahuje omezení nasazení .NET 4.6 na hostovaného operačního systému rodiny 4 nebo dřívější. Oprava pro omezení je k dispozici na [Microsoft Docs](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9) lokality.
 
-tooinstall .NET na webových a pracovních rolí, patří instalační program webové rozhraní .NET hello jako součást projekt cloudové služby. Spusťte instalační program hello jako součást hello role spuštění úlohy. 
+Na webových a pracovních rolí nainstalovat rozhraní .NET, patří instalační program webové rozhraní .NET v rámci projekt cloudové služby. Spusťte instalační program jako součást role spuštění úlohy. 
 
-## <a name="add-hello-net-installer-tooyour-project"></a>Přidání projektu tooyour instalační program rozhraní .NET hello
-Instalační program webové hello toodownload pro hello rozhraní .NET Framework, zvolte hello verze, kterou chcete tooinstall:
+## <a name="add-the-net-installer-to-your-project"></a>Do projektu přidejte instalační program rozhraní .NET
+Chcete-li stáhnout instalační program webové rozhraní .NET Framework, vyberte verzi, která chcete nainstalovat:
 
 * [Instalační program webové 4.7 rozhraní .NET](http://go.microsoft.com/fwlink/?LinkId=825298)
 * [Instalační program webové rozhraní .NET 4.6.1](http://go.microsoft.com/fwlink/?LinkId=671729)
 
-Instalační program hello tooadd pro *webové* role:
+Chcete-li přidat instalační program *webové* role:
   1. V **Průzkumníku řešení**v části **role** v projekt cloudové služby, klikněte pravým tlačítkem na vaše *webové* roli a vyberte **přidat**  >  **Novou složku**. Vytvořte složku s názvem **bin**.
-  2. Klikněte pravým tlačítkem na složku Koš hello a vyberte **přidat** > **existující položka**. Vyberte instalační program rozhraní .NET hello a přidejte ho toohello složky Koš.
+  2. Klikněte pravým tlačítkem na složku Koš a vyberte **přidat** > **existující položka**. Vyberte instalační program rozhraní .NET a přidejte ji do složky bin.
   
-Instalační program hello tooadd pro *pracovní* role:
-* Klikněte pravým tlačítkem na vaše *pracovní* roli a vyberte **přidat** > **existující položka**. Vyberte instalační program rozhraní .NET hello a přidejte ho toohello role. 
+Chcete-li přidat instalační program *pracovní* role:
+* Klikněte pravým tlačítkem na vaše *pracovní* roli a vyberte **přidat** > **existující položka**. Vyberte instalační program rozhraní .NET a přidejte ji do role. 
 
-Když soubory jsou přidány do této obsahu složky způsob toohello role, se automaticky přidají balíček tooyour cloudové služby. Hello soubory jsou pak konzistentní umístění nasazené tooa hello virtuálního počítače. Tento postup opakujte pro každý web a pracovní role v rámci cloudové služby tak, aby všechny role kopii instalačního programu hello.
+Když soubory jsou přidány do složky obsahu role tímto způsobem, se automaticky přidá do vašeho balíčku cloudové služby. Soubory se pak nasadí do konzistentní umístění na virtuálním počítači. Tento postup opakujte pro každý web a pracovní role v rámci cloudové služby tak, aby všechny role kopii Instalační služby.
 
 > [!NOTE]
-> Musíte nainstalovat rozhraní .NET 4.6.1 na vaše cloudové služby role i v případě, že vaše aplikace zaměřuje .NET 4.6. Hello hostovaného operačního systému zahrnuje hello znalostní báze Knowledge Base [aktualizace 3098779](https://support.microsoft.com/kb/3098779) a [aktualizace 3097997](https://support.microsoft.com/kb/3097997). Problémy se můžou objevit při spuštění aplikace rozhraní .NET, pokud .NET 4.6 je nainstalovaná na aktualizace hello znalostní báze Knowledge Base. tooavoid tyto potíže, nainstalujte rozhraní .NET 4.6.1 spíše než verze 4.6. Další informace najdete v tématu hello [článku znalostní báze 3118750](https://support.microsoft.com/kb/3118750).
+> Musíte nainstalovat rozhraní .NET 4.6.1 na vaše cloudové služby role i v případě, že vaše aplikace zaměřuje .NET 4.6. Hostovaného operačního systému zahrnuje znalostní báze [aktualizace 3098779](https://support.microsoft.com/kb/3098779) a [aktualizace 3097997](https://support.microsoft.com/kb/3097997). Problémy se můžou objevit při spuštění aplikace rozhraní .NET, pokud je nainstalován .NET 4.6 nad aktualizace znalostní báze Knowledge Base. Abyste se těmto problémům, nainstalujte rozhraní .NET 4.6.1 spíše než verze 4.6. Další informace najdete v tématu [článku znalostní báze 3118750](https://support.microsoft.com/kb/3118750).
 > 
 > 
 
 ![Obsah role s soubory Instalační služby systému][1]
 
 ## <a name="define-startup-tasks-for-your-roles"></a>Definování spuštění úloh pro své role
-Spuštění úlohy tooperform operace můžete před zahájením roli. Instalace hello rozhraní .NET Framework jako součástí hello spuštění úlohy zajistí, že hello framework se instaluje, před spuštěním jakékoli kódu aplikace. Další informace o spuštění úlohy najdete v tématu [spouštět úlohy spuštění v Azure](cloud-services-startup-tasks.md). 
+Spuštění úlohy můžete použít k provádění operací před zahájením roli. Instalace rozhraní .NET Framework jako součást spuštění úloh zajistí, že rozhraní je nainstalovat před spuštěním jakékoli kódu aplikace. Další informace o spuštění úlohy najdete v tématu [spouštět úlohy spuštění v Azure](cloud-services-startup-tasks.md). 
 
-1. Přidejte následující soubor ServiceDefinition.csdef obsahu toohello pod hello hello **WebRole** nebo **WorkerRole** uzlu u všech rolí:
+1. Přidejte následující obsah do souboru ServiceDefinition.csdef pod **WebRole** nebo **WorkerRole** uzlu u všech rolí:
    
     ```xml
     <LocalResources>
@@ -75,29 +75,29 @@ Spuštění úlohy tooperform operace můžete před zahájením roli. Instalace
     </Startup>
     ```
    
-    Hello předchozí konfigurace spustí příkaz konzoly hello `install.cmd` s tooinstall oprávnění správce hello rozhraní .NET Framework. Konfigurace Hello také vytvoří **LocalStorage** element s názvem **NETFXInstall**. spuštění skriptu Hello nastaví hello dočasnou složku toouse tento prostředek Místní úložiště. 
+    Předchozí konfiguraci spouští příkaz konzoly `install.cmd` s oprávněním správce pro instalaci rozhraní .NET Framework. Vytvoří také konfigurace **LocalStorage** element s názvem **NETFXInstall**. Spuštění skriptu Nastaví dočasnou složku používat tento prostředek Místní úložiště. 
     
     > [!IMPORTANT]
-    > tooensure opravte instalaci hello framework, velikost hello sadu tento prostředek tooat alespoň 1 024 MB.
+    > Aby se zajistilo správné instalaci rozhraní, nastavte velikost tohoto prostředku na alespoň 1 024 MB.
     
     Další informace o spuštění úlohy najdete v tématu [běžné Azure Cloud Services spuštění úlohy](cloud-services-startup-tasks-common.md).
 
-2. Vytvořte soubor s názvem **soubor install.cmd** a přidejte následující hello nainstalovat toohello souboru skriptu.
+2. Vytvořte soubor s názvem **soubor install.cmd** a přidejte následující nainstalujete skript do souboru.
 
-    Hello skript kontroluje, zda zadaná verze hello hello rozhraní .NET Framework je již nainstalována na počítači hello dotazováním hello registru. Pokud není nainstalovaná verze rozhraní .NET hello, je otevřené hello instalačního programu webové rozhraní .NET. toohelp vyřešte všechny problémy, hello skript protokoluje všechny aktivity toohello soubor startuptasklog-(aktuálním datem a časem) .txt uložených v **InstallLogs** místní úložiště.
+    Skript ověřuje, zda zadaná verze rozhraní .NET Framework je již nainstalována v počítači pomocí dotazu na registru. Pokud není nainstalovaná verze rozhraní .NET, je otevřít web instalační program rozhraní .NET. Chcete-li vyřešit jakékoliv problémy, skript protokoluje všechny aktivity do souboru startuptasklog-(aktuální datum a čas) .txt, který je uložen v **InstallLogs** místní úložiště.
 
     > [!IMPORTANT]
-    > Pomocí základní textového editoru, jako je soubor install.cmd hello toocreate Poznámkový blok systému Windows. Pokud používáte Visual Studio toocreate textového souboru a změnit hello rozšíření too.cmd, hello soubor může obsahovat stále značka pořadí bajtů ve formátu UTF-8. Tato značka může způsobit chybu při spuštění prvního řádku hello hello skriptu. tooavoid tato chyba, zkontrolujte hello je první řádek hello skript REM příkaz, který mohou být přeskočeny hello bajtů pořadí zpracování. 
+    > K vytvoření souboru soubor install.cmd použijte základní textový editor, například Poznámkový blok systému Windows. Pokud používáte Visual Studio k vytvoření textového souboru a změňte příponu na .cmd, soubor může obsahovat stále značka pořadí bajtů ve formátu UTF-8. Tato značka může způsobit chybu při spuštění první řádek skriptu. Chcete-li se vyhnout této chybě, zkontrolujte první řádek skriptu REM příkaz, který může být vynecháno zpracování pořadí bajtů. 
     > 
     >
    
     ```cmd
-    REM Set hello value of netfx tooinstall appropriate .NET Framework. 
-    REM ***** tooinstall .NET 4.5.2 set hello variable netfx too"NDP452" *****
-    REM ***** tooinstall .NET 4.6 set hello variable netfx too"NDP46" *****
-    REM ***** tooinstall .NET 4.6.1 set hello variable netfx too"NDP461" *****
-    REM ***** tooinstall .NET 4.6.2 set hello variable netfx too"NDP462" *****
-    REM ***** tooinstall .NET 4.7 set hello variable netfx too"NDP47" *****
+    REM Set the value of netfx to install appropriate .NET Framework. 
+    REM ***** To install .NET 4.5.2 set the variable netfx to "NDP452" *****
+    REM ***** To install .NET 4.6 set the variable netfx to "NDP46" *****
+    REM ***** To install .NET 4.6.1 set the variable netfx to "NDP461" *****
+    REM ***** To install .NET 4.6.2 set the variable netfx to "NDP462" *****
+    REM ***** To install .NET 4.7 set the variable netfx to "NDP47" *****
     set netfx="NDP47"
 
     REM ***** Set script start timestamp *****
@@ -108,7 +108,7 @@ Spuštění úlohy tooperform operace můžete před zahájením roli. Instalace
     REM ***** Exit script if running in Emulator *****
     if %ComputeEmulatorRunning%=="true" goto exit
 
-    REM ***** Needed toocorrectly install .NET 4.6.1, otherwise you may see an out of disk space error *****
+    REM ***** Needed to correctly install .NET 4.6.1, otherwise you may see an out of disk space error *****
     set TMP=%PathToNETFXInstall%
     set TEMP=%PathToNETFXInstall%
 
@@ -167,7 +167,7 @@ Spuštění úlohy tooperform operace můžete před zahájením roli. Instalace
         echo .NET (%netfx%) install failed with Error Code %ERRORLEVEL%. Further logs can be found in %netfxinstallerlog% >> %startuptasklog%
 
     :restart
-    echo Restarting toocomplete .NET (%netfx%) installation >> %startuptasklog%
+    echo Restarting to complete .NET (%netfx%) installation >> %startuptasklog%
     EXIT /B %ERRORLEVEL%
 
     :installed
@@ -181,20 +181,20 @@ Spuštění úlohy tooperform operace můžete před zahájením roli. Instalace
     ```
    
    > [!NOTE]
-   > Tento skript je ukázkou, jak tooinstall .NET 4.5.2 nebo verze 4.6 pro kontinuitu, i když je již k dispozici v rozhraní .NET 4.5.2 hello Azure hostovaného operačního systému. Měli byste přímo nainstalovat rozhraní .NET 4.6.1 spíše než verze 4.6, jak je popsáno v hello [článku znalostní báze 3118750](https://support.microsoft.com/kb/3118750).
+   > Tento skript ukazuje, jak nainstalovat rozhraní .NET 4.5.2 nebo verze 4.6 pro kontinuitu, i když .NET 4.5.2 již dostupný v Azure hostovaného operačního systému. Měli byste přímo nainstalovat rozhraní .NET 4.6.1 spíše než verze 4.6, jak je popsáno v [článku znalostní báze 3118750](https://support.microsoft.com/kb/3118750).
    > 
    > 
 
-3. Přidat hello soubor install.cmd souboru tooeach role pomocí **přidat** > **existující položka** v **Průzkumníku řešení** jak je popsáno výše v tomto tématu. 
+3. Přidejte soubor install.cmd ke každé roli pomocí **přidat** > **existující položka** v **Průzkumníku řešení** jak je popsáno výše v tomto tématu. 
 
-    Po dokončení tohoto kroku se všechny role měli hello souboru Instalační služby rozhraní .NET a soubor install.cmd hello.
+    Po dokončení tohoto kroku se všechny role měli soubor Instalační služby rozhraní .NET a soubor install.cmd.
 
    ![Obsah role se všechny soubory][2]
 
-## <a name="configure-diagnostics-tootransfer-startup-logs-tooblob-storage"></a>Konfigurace diagnostiky tootransfer spuštění protokoly tooBlob úložiště
-toosimplify řešení problémů instalace, můžete nakonfigurovat Azure Diagnostics tootransfer všechny soubory protokolů generovaných hello spuštění skriptu nebo hello úložiště objektů Blob tooAzure instalační program rozhraní .NET. Když použijete tuto metodu, můžete zobrazit protokoly hello stahování souborů protokolu hello z úložiště objektů Blob, místo aby tooremote plochu do hello role.
+## <a name="configure-diagnostics-to-transfer-startup-logs-to-blob-storage"></a>Konfiguraci diagnostiky protokoly spuštění přenést do úložiště objektů Blob
+Pro zjednodušení odstraňování problémů s instalací, můžete nakonfigurovat Azure Diagnostics pro přenos všechny soubory protokolů generovaných spouštěcí skript nebo instalačního programu .NET do úložiště objektů Blob Azure. Když použijete tuto metodu, můžete zobrazit protokoly stahování souborů protokolu z úložiště objektů Blob, namísto nutnosti vzdálenou plochu do role.
 
-Diagnostika tooconfigure, otevřete soubor diagnostics.wadcfgx hello a přidejte následující obsah v části hello hello **adresáře** uzlu: 
+Ke konfiguraci diagnostiky, otevřete soubor diagnostics.wadcfgx a přidejte do něj následující obsah v části **adresáře** uzlu: 
 
 ```xml 
 <DataSources>
@@ -204,18 +204,18 @@ Diagnostika tooconfigure, otevřete soubor diagnostics.wadcfgx hello a přidejte
 </DataSources>
 ```
 
-Tato konfigurace XML nakonfiguruje diagnostiky tootransfer hello soubory v adresáři protokolu hello v hello **NETFXInstall** toohello prostředků účtu úložiště diagnostiky v hello **netfx instalace** kontejner objektů blob.
+Tato konfigurace XML nakonfiguruje diagnostiky pro přenos souborů v adresáři protokolu v **NETFXInstall** prostředek pro účet úložiště diagnostiky **netfx instalace** kontejner objektů blob.
 
 ## <a name="deploy-your-cloud-service"></a>Nasazení cloudové služby
-Při nasazení cloudové služby, nainstalujte hello spuštění úlohy hello rozhraní .NET Framework, pokud je ještě není nainstalován. Role cloudové služby jsou v hello *zaneprázdněn* stavu hello framework je během instalace. Pokud hello framework instalace vyžaduje restartování, může také restartovat hello služby rolí. 
+Při nasazení cloudové služby, spuštění úlohy instalaci rozhraní .NET Framework, pokud je ještě není nainstalován. Role cloudové služby jsou v *zaneprázdněn* stav rozhraní je během instalace. Pokud framework instalace vyžaduje restartování, může také restartovat službu role. 
 
 ## <a name="additional-resources"></a>Další zdroje
-* [Instalace hello rozhraní .NET Framework][Installing hello .NET Framework]
+* [Instalace rozhraní .NET Framework][Installing the .NET Framework]
 * [Zjištění nainstalovaných verzí rozhraní .NET Framework][How to: Determine Which .NET Framework Versions Are Installed]
 * [Řešení potíží s instalací rozhraní .NET Framework][Troubleshooting .NET Framework Installations]
 
 [How to: Determine Which .NET Framework Versions Are Installed]: https://msdn.microsoft.com/library/hh925568.aspx
-[Installing hello .NET Framework]: https://msdn.microsoft.com/library/5a4x27ek.aspx
+[Installing the .NET Framework]: https://msdn.microsoft.com/library/5a4x27ek.aspx
 [Troubleshooting .NET Framework Installations]: https://msdn.microsoft.com/library/hh925569.aspx
 
 <!--Image references-->

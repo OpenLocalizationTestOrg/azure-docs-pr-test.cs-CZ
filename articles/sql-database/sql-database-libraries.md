@@ -1,6 +1,6 @@
 ---
-title: "aaaConnection knihovny pro databázi SQL. | Microsoft Docs"
-description: "Obsahuje odkazy pro stahování modulů, které umožňují připojení tooSQL Server a databáze SQL z mnoha rozličných programovacích jazyků klienta. moduly Hello vydávají hello komunitou nebo společností Microsoft."
+title: "Knihovny připojení pro databázi SQL. | Microsoft Docs"
+description: "Obsahuje odkazy pro stahování modulů, které umožňují připojení k systému SQL Server a databáze SQL z mnoha rozličných programovacích jazyků klienta. Moduly jsou vydávány komunitou nebo společností Microsoft."
 services: sql-database
 documentationcenter: 
 author: MightyPen
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: genemi
-ms.openlocfilehash: 6ea77670276ad3304c7531f7ffd8f7dffd31af46
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 082abf57b139b9f7d44774dce3a80e20b97f0e3b
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="connectivity-libraries-and-frameworks-for-microsoft-sql-server"></a>Připojení knihoven a architektur pro Microsoft SQL Server
 
-Podívejte se na naše [získávání kurzů](http://aka.ms/sqldev) tooquickly Začínáme s programováním jazyků, například C#, Java, Node.js, PHP a Python a sestavení aplikace pomocí systému SQL Server v systému Linux nebo Windows nebo Docker v systému macOS.
+Podívejte se na naše [získávání kurzů](http://aka.ms/sqldev) rychle začít pracovat s programovacích jazyků, například C#, Java, Node.js, PHP a Python a sestavení aplikace pomocí systému SQL Server v systému Linux nebo Windows nebo Docker v systému macOS.
 
-Hello následující tabulka obsahuje seznam připojení knihoven nebo *ovladače* , můžete z mnoha různých jazyků tooconnect tooand použití Microsoft SQL Server spuštěn místně nebo v cloudu hello na systému Linux, Windows nebo Docker použít klientské aplikace a také tooAzure SQL Database a Azure SQL Data Warehouse. 
+Následující tabulka uvádí připojení knihovny nebo *ovladače* používaný klientských aplikací z různých jazyků pro připojení k a používat Microsoft SQL Server spuštěn místně nebo v cloudu, na systému Linux, Windows nebo Docker a také pro Azure SQL Database a Azure SQL Data Warehouse. 
 
 | Jazyk | Platforma | Další zdroje | Ke stažení | Začínáme |
 | :-- | :-- | :-- | :-- | :-- |
@@ -37,7 +37,7 @@ Hello následující tabulka obsahuje seznam připojení knihoven nebo *ovladač
 | Ruby | Systému Windows, Linux, macOS | [Poznámky Ruby ovladač pro systém SQL Server](http://msdn.microsoft.com/library/mt691981.aspx) | [Instalace](https://msdn.microsoft.com/library/mt711041.aspx) | [Začínáme](https://www.microsoft.com/en-us/sql-server/developer-get-started/ruby/ubuntu)
 | C++ | Systému Windows, Linux, macOS | [Ovladač Microsoft ODBC pro SQL Server](https://msdn.microsoft.com/en-us/library/mt654048(v=sql.1).aspx) | [Stáhnout](https://msdn.microsoft.com/en-us/library/mt654048(v=sql.1).aspx) |  
 
-Hello následující tabulka uvádí několik příkladů architektury relační mapování ORM (Object) a webové platformy, které klientské aplikace můžete použít s Microsoft SQL Server spuštěn místně nebo v cloudu hello Linux, Windows nebo Docker a také tooAzure SQL Database a Azure SQL Data Warehouse. 
+Následující tabulka uvádí několik příkladů architektury relační mapování ORM (Object) a webové platformy, které klientské aplikace můžete použít s Microsoft SQL Server spuštěn místně nebo v cloudu, na systému Linux, Windows nebo Docker a také pro Azure SQL Database a Azure SQL Data Warehouse. 
 
 | Jazyk | Platforma | ORM(s) |
 | :-- | :-- | :-- |
@@ -50,9 +50,9 @@ Hello následující tabulka uvádí několik příkladů architektury relační
 
 ## <a name="related-links"></a>Související odkazy
 - [SQL Server ovladače](http://msdn.microsoft.com/library/mt654049.aspx) pro připojení z klientské aplikace
-- [Připojit tooSQL databáze pomocí rozhraní .NET (C#)](sql-database-connect-query-dotnet.md)
-- [Připojit tooSQL databáze pomocí PHP](sql-database-connect-query-php.md)
-- [Připojit tooSQL databáze pomocí Node.js](sql-database-connect-query-nodejs.md)
-- [Připojit tooSQL databáze pomocí Java](sql-database-connect-query-java.md)
-- [Připojit tooSQL databáze pomocí Python](sql-database-connect-query-python.md)
-- [Připojit tooSQL databáze pomocí Ruby](sql-database-connect-query-ruby.md)
+- [Připojení k SQL Database s použitím rozhraní .NET (C#)](sql-database-connect-query-dotnet.md)
+- [Připojení k SQL Database s použitím jazyka PHP](sql-database-connect-query-php.md)
+- [Připojení k SQL Database s použitím prostředí Node.js](sql-database-connect-query-nodejs.md)
+- [Připojení k SQL Database s použitím jazyka Java](sql-database-connect-query-java.md)
+- [Připojení k SQL Database s použitím jazyka Python](sql-database-connect-query-python.md)
+- [Připojení k SQL Database s použitím prostředí Ruby](sql-database-connect-query-ruby.md)

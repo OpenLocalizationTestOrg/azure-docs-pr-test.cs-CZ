@@ -1,10 +1,10 @@
 
-* Hello převod vyžaduje restartování hello virtuálních počítačů, takže naplánovat hello migraci virtuálních počítačů během existující údržby. 
+* Převod vyžaduje restartování virtuálního počítače, proto naplánujte migraci virtuálních počítačů během už existujícího časového období údržby. 
 
-* Převod Hello není reverzibilního. 
+* Převod je nevratný. 
 
-* Být, že conversion tootest hello. Migrujte testovací virtuální počítač, před provedením migrace hello v produkčním prostředí.
+* Nezapomeňte převod otestovat. Před migrací v produkčním prostředí proveďte migraci testovacího virtuálního počítače.
 
-* Při převodu hello navrácení hello virtuálních počítačů. Hello virtuálního počítače obdrží novou IP adresu, když se spustí po převodu hello. V případě potřeby můžete [přiřadit statickou IP adresu](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md) toohello virtuálních počítačů.
+* Během převodu virtuální počítač uvolníte. Virtuální počítač obdrží novou IP adresu při spuštění po převodu. V případě potřeby můžete virtuálnímu počítači [přiřadit statickou IP adresu](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md).
 
-* Hello původní virtuální pevné disky a účet úložiště hello používá hello virtuálních počítačů před převodem nebudou odstraněny. Budou pokračovat v práci tooincur poplatky. tooavoid se účtují pro tyto artefakty odstranit původní BLOB VHD hello po ověření, že dokončení převodu hello.
+* Původní virtuální pevné disky a účet úložiště používané virtuálním počítačem před převodem se neodstraní. Budou se vám za ně i nadále účtovat poplatky. Abyste se vyhnuli účtování poplatků za tyto artefakty, po ověření dokončení převodu odstraňte původní objekty blob virtuálních pevných disků.

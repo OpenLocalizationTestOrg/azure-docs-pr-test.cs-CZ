@@ -4,31 +4,31 @@ includes/sql-database-create-new-server-firewall-portal.md
 
 Latest Freshness check:  2016-11-28 , rickbyh.
 
-As of circa 2016-04-11, hello following topics might include this include:
+As of circa 2016-04-11, the following topics might include this include:
 articles/sql-database/sql-database-get-started.md
 articles/sql-database/sql-database-configure-firewall-settings
 articles/sql-data-warehouse-get-started-provision.md
 
 -->
-### <a name="create-a-server-level-firewall-rule-in-hello-azure-portal"></a>Vytvoření pravidla brány firewall na úrovni serveru v hello portálu Azure
+### <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Vytvoření pravidla brány firewall na úrovni serveru na webu Azure Portal
 
-1. Na hello okna SQL serveru, v části nastavení, klikněte na tlačítko **brány Firewall** tooopen hello brány Firewall okno pro hello SQL server.
+1. V okně SQL Server v části Nastavení klikněte na **Brána firewall**. Otevře se okno Brána firewall pro SQL Server.
 
     <!-- ![sql server firewall](../articles/sql-database/media/sql-database-get-started/sql-server-firewall.png) -->
 
-2. Zkontrolujte hello IP adresa klienta zobrazit a ověřit, že toto je vaše IP adresa na Internetu pomocí prohlížeče zvoleného hello (požádejte "Jaký je adresa IP). Čas od času si adresy z různých důvodů neodpovídají.
+2. Zkontrolujte zobrazenou IP adresu klienta a pomocí prohlížeče podle vašeho výběru ověřte, že je to vaše IP adresa na internetu (zadejte dotaz Jaká je moje IP adresa). Čas od času si adresy z různých důvodů neodpovídají.
 
     <!-- ![your IP address](../articles/sql-database/media/sql-database-get-started/your-ip-address.png) -->
 
-3. Za předpokladu, že hello IP adresy odpovídají, klikněte na tlačítko **přidat IP adresu klienta** na panelu nástrojů hello.
+3. Za předpokladu, že se IP adresy shodují, klikněte na panelu nástrojů na **Přidat IP adresu klienta**.
 
     ![Přidat IP adresu klienta](../articles/sql-data-warehouse/media/sql-data-warehouse-get-started-provision/add-client-ip.png)
 
     > [!NOTE]
-    > Můžete otevřít hello firewall SQL Database na server hello tooa jednu IP adresu nebo celý rozsah adres. Otevírání hello brána firewall umožňuje správci SQL a uživatelé toologin tooany databáze na hello toowhich serveru mají platné přihlašovací údaje.
+    > Bránu firewall služby SQL Database na serveru můžete otevřít pro jednu IP adresu nebo pro celý rozsah adres. Otevření brány firewall umožňuje uživatelům a správcům SQL přihlásit se k jakékoli databázi na serveru, ke kterému mají platné přihlašovací údaje.
     >
 
-4. Klikněte na tlačítko **Uložit** na panelu nástrojů toosave hello toto pravidlo brány firewall na úrovni serveru a pak klikněte na **OK**.
+4. Kliknutím na **Uložit** na panelu nástrojů uložte toto pravidlo brány firewall na úrovni serveru a potom klikněte na **OK**.
 
     ![Přidat IP adresu klienta](../articles/sql-database/media/sql-database-get-started-portal/server-firewall-rule.png)
 

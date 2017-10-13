@@ -1,6 +1,6 @@
 ---
-title: "aaaGet Začínáme s Azure Mobile Engagementem pro iOS v Objective C | Microsoft Docs"
-description: "Zjistěte, jak toouse Azure Mobile Engagement s analytickými funkcemi a nabízenými oznámeními pro aplikace iOS."
+title: "Začínáme s Azure Mobile Engagementem pro iOS v Objective C | Dokumentace Microsoftu"
+description: "Naučte se používat Azure Mobile Engagement s analytickými funkcemi a nabízenými oznámeními pro aplikace pro iOS."
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,60 +14,60 @@ ms.devlang: objective-c
 ms.topic: hero-article
 ms.date: 07/17/2017
 ms.author: piyushjo
-ms.openlocfilehash: 51a5013f23d2d04a7b9b30c83b47017898b2bb00
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 1b87a2ebb35b31ee3d3139ecead6267e62eb1033
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-ios-apps-in-objective-c"></a>Začínáme s Azure Mobile Engagementem pro aplikace pro iOS v Objective C
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
-Toto téma ukazuje, jak Azure Mobile Engagement toounderstand toouse využití aplikací a odesílat nabízená oznámení toosegmented uživatelé tooan iOS aplikace.
+V tomto tématu si ukážeme, jak používat Azure Mobile Engagement, jak porozumět používání aplikace a jak odesílat nabízená oznámení segmentovaným uživatelům aplikace pro iOS.
 V tomto kurzu vytvoříte prázdnou aplikaci iOS, která bude shromažďovat základní data a přijímat nabízená oznámení pomocí systému nabízených oznámení Apple (APNS). 
 
-Tento kurz vyžaduje hello následující:
+V tomto kurzu budete potřebovat následující:
 
 * XCode 8, který si můžete nainstalovat z MAC App Storu
-* Hello [Mobile Engagement iOS SDK]
+* [Mobile Engagement iOS SDK]
 
 Ve všech dalších kurzech k Mobile Engagement týkajících se aplikací pro iOS se předpokládá dokončení tohoto kurzu.
 
 > [!NOTE]
-> toocomplete tento kurz, musíte mít aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-ios-get-started).
+> K dokončení tohoto kurzu potřebujete mít aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-ios-get-started).
 >
 >
 
 ## <a id="setup-azme"></a>Nastavení Mobile Engagementu pro vaši aplikaci pro iOS
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a id="connecting-app"></a>Připojit vaše aplikace toohello Mobile Engagement back-end
-Tento kurzu si představíme "základní integraci", což je minimální hello nastavte požadované toocollect dat a odesílání nabízených oznámení. Hello kompletní dokumentaci k integraci najdete v hello [integraci sady Mobile Engagement iOS SDK](mobile-engagement-ios-sdk-overview.md)
+## <a id="connecting-app"></a>Připojení aplikace k back-endu Mobile Engagementu
+V tomto kurzu si představíme „základní integraci“, čili minimální sadu požadovanou pro shromažďování dat a odesílání nabízených oznámení. Kompletní dokumentaci k integraci najdete v článku [Integrace sady Mobile Engagement iOS SDK](mobile-engagement-ios-sdk-overview.md).
 
-Vytvoříme základní aplikaci s integrací hello toodemonstrate XCode.
+Pomocí XCodu si vytvoříme základní aplikaci, na které si tuto integraci předvedeme.
 
 ### <a name="create-a-new-ios-project"></a>Vytvoření nového projektu iOS
 [!INCLUDE [Create a new iOS Project](../../includes/mobile-engagement-create-new-ios-app.md)]
 
-### <a name="connect-your-app-toohello-mobile-engagement-backend"></a>Připojit vaše aplikace toohello Mobile Engagement back-end
-1. Stáhnout hello [Mobile Engagement iOS SDK].
-2. Extrahování hello. tar.gz souboru tooa složky v počítači.
-3. Klikněte pravým tlačítkem na projekt hello a potom vyberte **přidat soubory do**.
+### <a name="connect-your-app-to-the-mobile-engagement-backend"></a>Připojení aplikace k back-endu Mobile Engagementu
+1. Stáhněte si [Mobile Engagement iOS SDK].
+2. Extrahujte soubor .tar.gz do složky v počítači.
+3. Pravým tlačítkem myši klikněte na projekt a pak vyberte **Přidat soubory do**.
 
     ![][1]
-4. Přejděte toohello složky, které jste extrahovali hello SDK, vyberte hello `EngagementSDK` složku, klikněte na tlačítko **možnosti** hello levém dolním rohu a ujistěte se, toto zaškrtávací políčko hello **kopírovat položky v případě potřeby** a hello zaškrtávací políčko k cílovému jsou zaškrtnutá políčka stiskněte klávesu **OK**.
+4. Přejděte do složky, do které jste extrahovali sadu SDK, vyberte složku `EngagementSDK`, klikněte na **Možnosti** v levém dolním rohu, ujistěte se, že je zaškrtnuté políčko **Kopírovat položky v případě potřeby** a políčko pro váš cíl a stiskněte **OK**.
 
     ![][2]
-5. Otevřete hello **fáze buildu** kartě a v hello **odkaz binárních souborů a knihoven** nabídky, přidejte hello architektury, jak je uvedeno níže:
+5. Otevřete kartu **Build Phases** (Fáze sestavení) a v nabídce **Link Binary With Libraries** (Propojit binární kód s knihovnami) přidejte rozhraní, jak je zobrazeno níže:
 
     ![][3]
-6. Přejděte zpět toohello portál Azure ve vaší aplikaci **informace o připojení** stránky a zkopírujte připojovací řetězec hello.
+6. Přejděte zpět na portál Azure na stránku **Connection Info** (Informace o připojení) vaší aplikace a zkopírujte připojovací řetězec.
 
     ![][4]
-7. Přidejte následující řádek kódu hello vaše **AppDelegate.m** souboru.
+7. Do souboru **AppDelegate.m** přidejte následující řádek kódu.
 
         #import "EngagementAgent.h"
-8. Nyní vložte připojovací řetězec hello hello `didFinishLaunchingWithOptions` delegovat.
+8. Nyní vložte připojovací řetězec do delegáta `didFinishLaunchingWithOptions`.
 
         - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
         {
@@ -75,15 +75,15 @@ Vytvoříme základní aplikaci s integrací hello toodemonstrate XCode.
               [EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];
               [...]
         }
-9. `setTestLogEnabled`je volitelný příkaz, který protokolům SDK pro vás tooidentify problémy.
+9. `setTestLogEnabled`je volitelný příkaz, který protokolům SDK umožňuje identifikovat problémy.
 
 ## <a id="monitor"></a>Povolení sledování v reálném čase
-V pořadí toostart odesílat data a zajistit, že hello uživatelé jsou aktivní musíte odeslat alespoň jednu obrazovku (aktivitu) toohello Mobile Engagement back-end.
+Pokud chcete začít odesílat data a zajistit, že uživatelé jsou aktivní, musíte odeslat alespoň jednu obrazovku (aktivitu) na back-end Mobile Engagementu.
 
-1. Otevřete hello **ViewController.h** souboru a import **EngagementViewController.h**:
+1. Otevřete soubor **ViewController.h** a importujte **EngagementViewController.h**:
 
     `#import "EngagementViewController.h"`
-2. Nyní nahraďte super třídu hello hello **ViewController** rozhraní podle `EngagementViewController`:
+2. Nyní nahraďte super třídu rozhraní **ViewController** třídou `EngagementViewController`:
 
     `@interface ViewController : EngagementViewController`
 
@@ -91,25 +91,25 @@ V pořadí toostart odesílat data a zajistit, že hello uživatelé jsou aktivn
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
 ## <a id="integrate-push"></a>Povolení nabízených oznámení a zasílání zpráv v aplikaci
-Mobile Engagement umožňuje toointeract s uživateli a REACH s nabízená oznámení a zasílání zpráv v kontextu hello kampaní v aplikaci. Tento modul je hello portálu Mobile Engagement nazývá REACH.
-Hello následujících sekcích nastavíte tooreceive vaše aplikace je.
+Mobile Engagement vám umožňuje v rámci kampaní oslovit uživatele a komunikovat s nimi prostřednictvím nabízených oznámení a zpráv v aplikacích. Tento modul se na portálu Mobile Engagement nazývá REACH.
+V následujících sekcích nastavíte aplikaci, aby tato nabízená oznámení a zprávy přijímala.
 
-### <a name="enable-your-app-tooreceive-silent-push-notifications"></a>Povolit vaší aplikace tooreceive bezobslužných nabízených oznámení
+### <a name="enable-your-app-to-receive-silent-push-notifications"></a>Povolení přijímání bezobslužných nabízených oznámení v aplikaci
 [!INCLUDE [mobile-engagement-ios-silent-push](../../includes/mobile-engagement-ios-silent-push.md)]
 
-### <a name="add-hello-reach-library-tooyour-project"></a>Přidání projektu tooyour knihovny Reach hello
+### <a name="add-the-reach-library-to-your-project"></a>Přidání knihovny Reach do projektu
 1. Klikněte pravým tlačítkem na projekt.
 2. Vyberte **Add file to** (Přidat soubor).
-3. Přejděte toohello složky, které jste extrahovali hello SDK.
-4. Vyberte hello `EngagementReach` složky.
+3. Přejděte do složky, do které jste extrahovali sadu SDK.
+4. Vyberte složku `EngagementReach`.
 5. Klikněte na tlačítko **Přidat**.
 
 ### <a name="modify-your-application-delegate"></a>Úprava delegáta aplikace
-1. Zpět v **AppDeletegate.m** souboru, importujte modul Engagement Reach hello.
+1. V souboru **AppDeletegate.m** importujte modul Engagement Reach.
 
         #import "AEReachModule.h"
         #import <UserNotifications/UserNotifications.h>
-2. Uvnitř hello `application:didFinishLaunchingWithOptions` metoda, vytvořte modul kampaně Reach a předejte jej tooyour existujícího inicializačního řádku Engagement:
+2. V metodě `application:didFinishLaunchingWithOptions` vytvořte modul kampaně Reach a předejte jej do existujícího inicializačního řádku Engagement:
 
         - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
             AEReachModule * reach = [AEReachModule moduleWithNotificationIcon:[UIImage imageNamed:@"icon.png"]];
@@ -118,8 +118,8 @@ Hello následujících sekcích nastavíte tooreceive vaše aplikace je.
             return YES;
         }
 
-### <a name="enable-your-app-tooreceive-apns-push-notifications"></a>Povolit vaší aplikace tooreceive nabízených oznámení APNS
-1. Přidejte následující řádek toohello hello `application:didFinishLaunchingWithOptions` metoda:
+### <a name="enable-your-app-to-receive-apns-push-notifications"></a>Povolení přijímání nabízených oznámení APNS v aplikaci
+1. Do metody `application:didFinishLaunchingWithOptions` přidejte následující řádek:
 
         if (NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_8_0)
         {
@@ -136,20 +136,20 @@ Hello následujících sekcích nastavíte tooreceive vaše aplikace je.
         {
             [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
         }
-2. Přidat hello `application:didRegisterForRemoteNotificationsWithDeviceToken` metoda následujícím způsobem:
+2. Následujícím způsobem přidejte metodu `application:didRegisterForRemoteNotificationsWithDeviceToken`:
 
         - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
         {
              [[EngagementAgent shared] registerDeviceToken:deviceToken];
             NSLog(@"Registered Token: %@", deviceToken);
         }
-3. Přidat hello `didFailToRegisterForRemoteNotificationsWithError` metoda následujícím způsobem:
+3. Následujícím způsobem přidejte metodu `didFailToRegisterForRemoteNotificationsWithError`:
 
         - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
         {
-           NSLog(@"Failed tooget token, error: %@", error);
+           NSLog(@"Failed to get token, error: %@", error);
         }
-4. Přidat hello `didReceiveRemoteNotification:fetchCompletionHandler` metoda následujícím způsobem:
+4. Následujícím způsobem přidejte metodu `didReceiveRemoteNotification:fetchCompletionHandler`:
 
         - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))handler
         {

@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure AD v2 ASP.NET Web Server Začínáme - použití | Microsoft Docs"
+title: "Azure AD v2 rozhraní ASP.NET Web Server začínáte - použijte | Microsoft Docs"
 description: "Implementace přihlašování společnosti Microsoft na řešení technologie ASP.NET s tradiční webovou aplikací využívajících prohlížeč pomocí OpenID Connect standard"
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,21 +15,21 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 03afce6fa6598215e8c4af841c00762c143a0cd4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3b7d29e48c91f40e8782a5e32a52998b815fe331
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-## <a name="add-a-controller-toohandle-sign-in-and-sign-out-requests"></a>Přidejte žádosti řadič toohandle přihlášení a odhlášení
+## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>Přidat řadič pro zpracování požadavků na přihlášení a odhlášení
 
-Tento krok ukazuje, jak toocreate nový řadič tooexpose přihlášení a odhlášení metody.
+Tento krok ukazuje, jak vytvořit nový řadič vystavit metody přihlášení a odhlášení.
 
-1.  Klikněte pravým tlačítkem na hello `Controllers` složky a vyberte`Add` > `Controller`
+1.  Klikněte pravým tlačítkem `Controllers` složky a vyberte`Add` > `Controller`
 2.  Vyberte `MVC (.NET version) Controller – Empty`.
 3.  Klikněte na tlačítko *přidat*
 4.  Pojmenujte ji `HomeController` a klikněte na tlačítko *přidat*
-5.  Přidat *OWIN* odkazuje na třídu toohello:
+5.  Přidat *OWIN* odkazy na třídu:
 
 ```csharp
 using Microsoft.Owin.Security;
@@ -39,14 +39,14 @@ using Microsoft.Owin.Security.OpenIdConnect;
 <!-- Workaround for Docs conversion bug -->
 <ol start="6">
 <li>
-Přidáte dvě metody hello níže toohandle přihlášení a odhlášení tooyour řadiče pomocí inicializace výzvu ověřování prostřednictvím kódu:
+Přidejte tyto dvě metody níže zpracování přihlášení a odhlášení řadiče pomocí inicializace výzvu ověřování prostřednictvím kódu:
 </li>
 </ol>
 
 ```csharp
 /// <summary>
 /// Send an OpenID Connect sign-in request.
-/// Alternatively, you can just decorate hello SignIn method with hello [Authorize] attribute
+/// Alternatively, you can just decorate the SignIn method with the [Authorize] attribute
 /// </summary>
 public void SignIn()
 {
@@ -69,13 +69,13 @@ public void SignOut()
 }
 ```
 
-## <a name="create-hello-apps-home-page-toosign-in-users-via-a-sign-in-button"></a>Vytvoření aplikace hello domovskou stránku toosign v uživatele prostřednictvím přihlášení tlačítko
+## <a name="create-the-apps-home-page-to-sign-in-users-via-a-sign-in-button"></a>Vytvoření aplikace domovskou stránku pro přihlášení uživatele prostřednictvím přihlášení tlačítko
 
-V sadě Visual Studio vytvořte nové zobrazení tooadd hello přihlašovací tlačítko a zobrazit informace o uživateli po ověření:
+V sadě Visual Studio vytvořte nové zobrazení přidat tlačítko přihlásit a zobrazit informace o uživateli po ověření:
 
-1.  Klikněte pravým tlačítkem na hello `Views\Home` složky a vyberte`Add View`
+1.  Klikněte pravým tlačítkem `Views\Home` složky a vyberte`Add View`
 2.  Pojmenujte ji `Index`.
-3.  Přidejte následující HTML, který obsahuje hello přihlašovací tlačítko toohello souboru hello:
+3.  Přidejte následující kód HTML, která obsahuje tlačítko přihlášení, do souboru:
 
 ```html
 <html>
@@ -86,7 +86,7 @@ V sadě Visual Studio vytvořte nové zobrazení tooadd hello přihlašovací tl
 <body>
 @if (!Request.IsAuthenticated)
 {
-    <!-- If hello user is not authenticated, display hello sign-in button -->
+    <!-- If the user is not authenticated, display the sign-in button -->
     <a href="@Url.Action("SignIn", "Home")" style="text-decoration: none;">
         <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="300px" height="50px" viewBox="0 0 3278 522" class="SignInButton">
         <style type="text/css">.fil0:hover {fill: #4B4B4B;} .fnt0 {font-size: 260px;font-family: 'Segoe UI Semibold', 'Segoe UI'; text-decoration: none;}</style>
@@ -116,39 +116,39 @@ else
 ```
 <!--start-collapse-->
 ### <a name="more-information"></a>Další informace
-> Tato stránka přidá tlačítko přihlášení ve formátu SVG s černým pozadí:<br/>![Přihlášení se společností Microsoft](media/active-directory-serversidewebapp-aspnetwebappowin-use/aspnetsigninbuttonsample.png)<br/> Pro tlačítka Další přihlášení, přejděte prosím toohello [tuto stránku](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "Branding pokyny").
+> Tato stránka přidá tlačítko přihlášení ve formátu SVG s černým pozadí:<br/>![Přihlášení se společností Microsoft](media/active-directory-serversidewebapp-aspnetwebappowin-use/aspnetsigninbuttonsample.png)<br/> Tlačítka Další přihlášení, přejděte [tuto stránku](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "Branding guidelines").
 <!--end-collapse-->
 
-## <a name="add-a-controller-toodisplay-users-claims"></a>Přidání deklarace identity uživatele toodisplay řadiče
-Tento řadič ukazuje hello používání hello `[Authorize]` atribut tooprotect kontroleru. Tento atribut omezuje přístup toohello řadiče tím, že se pouze ověřené uživatele. Hello kódu níže využívá hello atribut toodisplay uživatele deklarace, které byly získány v rámci hello přihlásit.
+## <a name="add-a-controller-to-display-users-claims"></a>Přidat řadič zobrazíte deklarací identity uživatele
+Tento řadič ukazuje použití `[Authorize]` atribut k ochraně řadiči. Tento atribut omezuje přístup k řadiči tím, že se pouze ověřené uživatele. Následující kód využívá atribut zobrazíte deklarace identity uživatelů, které byly získány v rámci přihlášení.
 
-1.  Klikněte pravým tlačítkem na hello `Controllers` složky:`Add` > `Controller`
+1.  Klikněte pravým tlačítkem `Controllers` složky:`Add` > `Controller`
 2.  Vyberte `MVC {version} Controller – Empty`.
 3.  Klikněte na tlačítko *přidat*
 4.  Název`ClaimsController`
-5.  Nahraďte kód hello třídy controller kódem hello níže – tento postup přidá hello `[Authorize]` toohello třídy atributů:
+5.  Nahraďte kód vaší třídy kontroleru pomocí kódu níže – tím se přidá `[Authorize]` atribut třídy:
 
 ```csharp
 [Authorize]
 public class ClaimsController : Controller
 {
     /// <summary>
-    /// Add user's claims tooviewbag
+    /// Add user's claims to viewbag
     /// </summary>
     /// <returns></returns>
     public ActionResult Index()
     {
         var claimsPrincipalCurrent = System.Security.Claims.ClaimsPrincipal.Current;
-        //You get hello user’s first and last name below:
+        //You get the user’s first and last name below:
         ViewBag.Name = claimsPrincipalCurrent.FindFirst("name").Value;
 
-        // hello 'preferred_username' claim can be used for showing hello username
+        // The 'preferred_username' claim can be used for showing the username
         ViewBag.Username = claimsPrincipalCurrent.FindFirst("preferred_username").Value;
 
-        // hello subject claim can be used toouniquely identify hello user across hello web
+        // The subject claim can be used to uniquely identify the user across the web
         ViewBag.Subject = claimsPrincipalCurrent.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
 
-        // TenantId is hello unique Tenant Id - which represents an organization in Azure AD
+        // TenantId is the unique Tenant Id - which represents an organization in Azure AD
         ViewBag.TenantId = claimsPrincipalCurrent.FindFirst("http://schemas.microsoft.com/identity/claims/tenantid").Value;
 
         return View();
@@ -158,16 +158,16 @@ public class ClaimsController : Controller
 
 <!--start-collapse-->
 ### <a name="more-information"></a>Další informace
-> Kvůli použití hello hello `[Authorize]` atribut, všechny metody tohoto řadiče lze spustit pouze pokud hello uživatel ověřen. Pokud hello uživatel není ověřen a pokusí tooaccess hello řadiče, bude OWIN zahájit výzvu ověřování a vynutit tooauthenticate hello uživatele. Kód Hello výše vypadá na hello deklarací kolekce hello `ClaimsPrincipal.Current` instance pro konkrétního uživatele atributy součástí token uživatele hello. Tyto atributy zahrnují hello uživatele úplný název a uživatelské jméno, jakož i hello globální uživatelský identifikátor subjektu. Obsahuje taky hello *ID klienta*, která reprezentuje ID hello hello uživatele organizaci. 
+> Protože se používá `[Authorize]` atribut, všechny metody tohoto řadiče lze spustit pouze pokud je uživatel ověřený. Pokud uživatel není ověřen a pokusí o přístup k kontroleru, bude OWIN zahájit výzvu ověřování a nutí uživatele k ověření. Výše uvedený kód vypadá v kolekci deklarací identity `ClaimsPrincipal.Current` instance pro konkrétního uživatele atributy součástí token uživatele. Tyto atributy zahrnují úplné uživatelské jméno a uživatelské jméno, jakož i subjektu identifikátor globální uživatele. Obsahuje taky *ID klienta*, která reprezentuje ID pro uživatele organizaci. 
 <!--end-collapse-->
 
-## <a name="create-a-view-toodisplay-hello-users-claims"></a>Vytvoření zobrazení deklarace identity uživatelů toodisplay hello
+## <a name="create-a-view-to-display-the-users-claims"></a>Vytvoření zobrazení deklaracích identity uživatele
 
-V sadě Visual Studio vytvořte nové zobrazení deklarací identity toodisplay hello uživatele na webové stránce:
+V sadě Visual Studio vytvořte nové zobrazení zobrazíte deklaracích identity uživatele na webové stránce:
 
-1.  Klikněte pravým tlačítkem na hello `Views\Claims` složky a:`Add View`
+1.  Klikněte pravým tlačítkem `Views\Claims` složky a:`Add View`
 2.  Pojmenujte ji `Index`.
-3.  Přidejte následující soubor HTML toohello hello:
+3.  Do souboru přidejte následující kód HTML:
 
 ```html
 <html>

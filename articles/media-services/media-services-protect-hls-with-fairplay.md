@@ -1,6 +1,6 @@
 ---
-title: aaaProtect HLS obsahu se Microsoft PlayReady nebo Apple FairPlay - Azure | Microsoft Docs
-description: "Toto téma poskytuje přehled a ukazuje, jak Azure Media Services toodynamically toouse šifrování obsahu HTTP Live Streaming (HLS) s Apple FairPlay. Také ukazuje, jak toouse hello Media Services licence doručení služby toodeliver tooclients licence FairPlay."
+title: "Chránit obsah pomocí Microsoft PlayReady nebo Apple FairPlay - Azure HLS | Microsoft Docs"
+description: "Toto téma poskytuje přehled a ukazuje, jak pomocí Azure Media Services dynamicky šifrovat obsah HTTP Live Streaming (HLS) s Apple FairPlay. Také ukazuje, jak používat službu doručování licencí Media Services k doručování licence FairPlay klientům."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,152 +14,152 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
-ms.openlocfilehash: 91ca451e3e7bf0da1d74dac4c99180f08f39e4ff
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 895d6307b1cef74e195cc2ffd8dbef4196e97b1f
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Chránit váš obsah s Apple FairPlay nebo Microsoft PlayReady HLS
-Azure Media Services umožňuje toodynamically můžete šifrovat obsah HTTP Live Streaming (HLS) pomocí hello následujících formátů:  
+Azure Media Services umožňuje dynamicky šifrovat obsah HTTP Live Streaming (HLS) pomocí následujících formátů:  
 
 * **Nezašifrovaný klíč AES-128 obálky**
 
-    Hello celý blok se šifrují pomocí hello **AES-128 CBC** režimu. iOS a OS X player je nativně podporované Hello dešifrování hello datového proudu. Další informace najdete v tématu [dynamického šifrování pomocí standardu AES-128 a doručení klíče služby](media-services-protect-with-aes128.md).
+    Celý blok se šifrují pomocí **AES-128 CBC** režimu. IOS a OS X player je nativně podporované dešifrování datového proudu. Další informace najdete v tématu [dynamického šifrování pomocí standardu AES-128 a doručení klíče služby](media-services-protect-with-aes128.md).
 * **Apple FairPlay**
 
-    Hello jednotlivých videa a audia ukázky jsou šifrována pomocí hello **AES-128 CBC** režimu. **Streamování FairPlay** (FPS) je integrována do hello, operačních systémů zařízení s nativní podporou na iOS a Apple TV. Prohlížeč Safari na OS X umožňuje FPS s využitím podpory rozhraní hello šifrované rozšíření média (EME).
+    Jednotlivé vzorky videa a zvuku jsou šifrována pomocí **AES-128 CBC** režimu. **Streamování FairPlay** (FPS) je integrována do operačních systémů zařízení, s nativní podporou na iOS a Apple TV. Prohlížeč Safari na OS X umožňuje FPS s využitím podpory rozhraní šifrované rozšíření média (EME).
 * **Microsoft PlayReady**
 
-Hello následující obrázek ukazuje hello **HLS + FairPlay nebo PlayReady dynamického šifrování** pracovního postupu.
+Na následujícím obrázku **HLS + FairPlay nebo PlayReady dynamického šifrování** pracovního postupu.
 
 ![Diagram pracovního postupu dynamického šifrování](./media/media-services-content-protection-overview/media-services-content-protection-with-fairplay.png)
 
-Toto téma ukazuje, jak toouse Media Services toodynamically šifrovat obsah HLS s Apple FairPlay. Také ukazuje, jak toouse hello Media Services licence doručení služby toodeliver tooclients licence FairPlay.
+Toto téma ukazuje, jak pomocí služby Media Services dynamicky šifrovat obsah HLS s Apple FairPlay. Také ukazuje, jak používat službu doručování licencí Media Services k doručování licence FairPlay klientům.
 
 > [!NOTE]
-> Pokud také chcete tooencrypt vaše HLS obsahu pomocí technologie PlayReady, třeba toocreate běžné klíč obsahu a přidružte ji k asset. Je také nutné tooconfigure hello obsahu zásad autorizace klíče, jak je popsáno v [běžného dynamického šifrování PlayReady pomocí](media-services-protect-with-drm.md).
+> Pokud chcete zašifrovat obsah HLS pomocí technologie PlayReady, budete muset vytvořit běžné klíč obsahu a přidružte ji k asset. Budete také muset nakonfigurovat zásady autorizace pro klíč k obsahu, jak je popsáno v [běžného dynamického šifrování PlayReady pomocí](media-services-protect-with-drm.md).
 >
 >
 
 ## <a name="requirements-and-considerations"></a>Požadavky a důležité informace
 
-Následující Hello jsou požadovány při toodeliver Media Services, HLS zašifrován pomocí FairPlay a licence FairPlay toodeliver:
+Toto jsou požadovány při použití služby Media Services k poskytování HLS se šifrováním pomocí FairPlay a k poskytování licence FairPlay:
 
   * Účet Azure. Podrobnosti najdete na stránce [bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
-  * Účet Media Services. toocreate, najdete v části [vytvoření účtu Azure Media Services pomocí portálu Azure hello](media-services-portal-create-account.md).
+  * Účet Media Services. Chcete-li vytvořit, přečtěte si téma [vytvoření účtu Azure Media Services pomocí webu Azure portal](media-services-portal-create-account.md).
   * Zaregistrovat [vývoj programem](https://developer.apple.com/).
-  * Apple vyžaduje hello vlastníka obsahu tooobtain hello [balíček pro nasazení](https://developer.apple.com/contact/fps/). Stav už implementované klíč zabezpečení modulu (KSM) pomocí služby Media Services a že žádáte hello konečné FPS balíčku. Jsou pokyny v hello konečné FPS balíček toogenerate certifikační a získat hello aplikace tajný klíč (požádejte). Můžete použít požádejte tooconfigure FairPlay.
+  * Apple vyžaduje vlastníka obsahu k získání [balíček pro nasazení](https://developer.apple.com/contact/fps/). Stav už implementované klíč zabezpečení modulu (KSM) pomocí služby Media Services a že žádáte poslední balíček FPS. Pokyny v posledním FPS balíčku pro generování certifikační a získat klíč tajný klíč aplikace (požádejte) jsou. Požádejte použijete ke konfiguraci FairPlay.
   * Azure Media Services .NET SDK verze **3.6.0** nebo novější.
 
-na straně doručení klíče služby Media Services musí být nastavena Hello následující věci:
+Na straně doručení klíče služby Media Services musí být nastavena následujících akcí:
 
-  * **Aplikace Cert (AC)**: Toto je soubor .pfx, který obsahuje privátní klíč hello. Tento soubor vytvořte a šifrování pomocí hesla.
+  * **Aplikace Cert (AC)**: Toto je soubor .pfx, který obsahuje soukromý klíč. Tento soubor vytvořte a šifrování pomocí hesla.
 
-       Když konfigurujete zásady doručení klíče, je nutné zadat Tento soubor .pfx heslo a hello ve formátu Base64.
+       Když konfigurujete zásady doručení klíče, je nutné zadat toto heslo a soubor .pfx, ve formátu Base64.
 
-      Hello následující kroky popisují, jak souboru FairPlay toogenerate certifikátu .pfx:
+      Následující kroky popisují, jak generovat soubor .pfx certifikátu pro FairPlay:
 
     1. Nainstalujte OpenSSL z https://slproweb.com/products/Win32OpenSSL.html.
 
-        Přejděte toohello složku, kde jsou hello FairPlay certifikátu a další soubory dodané společností Apple.
-    2. Spusťte následující příkaz z příkazového řádku hello hello. Převede tento soubor .pem tooa soubor .cer hello.
+        Přejděte do složky, kde jsou FairPlay certifikátu a další soubory dodané společností Apple.
+    2. V příkazovém řádku spusťte následující příkaz. Tento soubor .cer převede na soubor .pem.
 
         "C:\OpenSSL-Win32\bin\openssl.exe" x509-informovat der – v fairplay.cer-out fairplay out.pem
-    3. Spusťte následující příkaz z příkazového řádku hello hello. Tento soubor .pfx tooa soubor .pem hello převede s privátním klíčem hello. Hello heslo pro soubor .pfx hello pak požaduje od OpenSSL.
+    3. V příkazovém řádku spusťte následující příkaz. Tento soubor .pem převede do souboru .pfx s privátním klíčem. Heslo pro soubor .pfx pak požaduje od OpenSSL.
 
         "C:\OpenSSL-Win32\bin\openssl.exe" pkcs12-export - out fairplay out.pfx-inkey privatekey.pem-v - passin file:privatekey-pem-pass.txt fairplay out.pem
-  * **Heslo aplikace Cert**: hello heslo pro vytvoření souboru .pfx hello.
-  * **ID aplikace Cert heslo**: je potřeba nahrát hello heslo, podobně jako toohow odesílají jiných klíčů Media Services. Použití hello **ContentKeyType.FairPlayPfxPassword** hello tooget hodnotu výčtu ID Media Services. Toto je požadované toouse uvnitř možnost zásady doručení klíče hello.
-  * **IV**: je to hodnota náhodných 16 bajtů. Musí se shodovat hello iv v hello zásady doručení assetu. Vygenerování hello iv a umístí jej na obou místech: zásady doručení assetu hello a možnost zásady doručení klíče hello.
-  * **Požádejte**: Tento klíč je oznámených při generování hello certifikační pomocí portálu pro vývojáře Apple hello. Každý vývojový tým obdrží jedinečný požádejte. Uložte kopii hello požádejte a uložit na bezpečném místě. Budete potřebovat tooconfigure požádejte jako FairPlayAsk tooMedia služby později.
-  * **Požádejte ID**: Toto ID je získali při nahrávání požádejte ve službě Media Services. Požádejte musíte nahrát pomocí hello **ContentKeyType.FairPlayAsk** hodnota výčtu. Jako výsledek hello je vrácen hello Media Services ID a je to, co by měl být použit při nastavení možnost zásady doručení klíče hello.
+  * **Heslo aplikace Cert**: heslo pro vytvoření souboru .pfx.
+  * **ID aplikace Cert heslo**: je potřeba načíst heslo, podobně jako jak odesílají jiných klíčů Media Services. Použití **ContentKeyType.FairPlayPfxPassword** hodnota výčtu získat ID služby média. Toto je požadované použít uvnitř možnost zásady doručení klíče.
+  * **IV**: je to hodnota náhodných 16 bajtů. Musí se shodovat iv do zásady doručení assetu. Generovat iv a umístí jej na obou místech: zásady doručení assetu a možnost zásady doručení klíče.
+  * **Požádejte**: Tento klíč je oznámených při generování certifikační pomocí portálu pro vývojáře Apple. Každý vývojový tým obdrží jedinečný požádejte. Uložte kopii požádejte a uložit na bezpečném místě. Musíte nakonfigurovat požádejte jako FairPlayAsk ke službě Media Services později.
+  * **Požádejte ID**: Toto ID je získali při nahrávání požádejte ve službě Media Services. Požádejte musíte nahrát pomocí **ContentKeyType.FairPlayAsk** hodnota výčtu. V důsledku toho se vrátí Media Services ID a je to, co by měl být použit při nastavení možnosti zásad doručení klíče.
 
-Hello následujících akcí musí nastavit hello FPS na straně klienta:
+Na straně klienta FPS musí nastavit následujících akcí:
 
-  * **Aplikace Cert (AC)**: Toto je.cer/.der soubor, který obsahuje veřejný klíč hello, jaký operační systém hello používá tooencrypt některé datové části. Media Services musí tooknow o něm, protože ji požaduje hello přehrávač. Hello doručení klíče služby dešifruje ji pomocí hello odpovídající privátní klíč.
+  * **Aplikace Cert (AC)**: Toto je.cer/.der soubor, který obsahuje veřejný klíč, který operační systém používá k šifrování některé datové části. Služba Media Services je potřeba upozornit, protože je požadována přehrávače. Službu doručení klíče dešifruje pomocí příslušného privátního klíče.
 
-tooplay zpět FairPlay šifrovaného datového proudu, získat skutečné požádejte první a pak vygenerovat skutečné certifikát. Tento proces vytvoří všech tří částí:
+Přehrát FairPlay šifrovaného datového proudu, převeďte skutečné požádejte první a pak vygenerovat certifikát skutečné. Tento proces vytvoří všech tří částí:
 
   * souboru .der
   * soubor .pfx
-  * hesla pro hello .pfx
+  * heslo .pfx
 
-Hello následující klienti podporují HLS s **AES-128 CBC** šifrování: Safari v systému OS X, Apple TV, iOS.
+Následující klienti podporují HLS s **AES-128 CBC** šifrování: Safari v systému OS X, Apple TV, iOS.
 
 ## <a name="configure-fairplay-dynamic-encryption-and-license-delivery-services"></a>Konfigurace FairPlay dynamické šifrování a licencí služeb doručování
-Hello následují obecné kroky pro své assety chráníte pomocí FairPlay pomocí službu doručování licencí Media Services hello a také používáte dynamické šifrování.
+Následují obecné kroky pro své assety chráníte pomocí FairPlay pomocí službu doručování licencí Media Services a také používáte dynamické šifrování.
 
-1. Vytvoření assetu a nahrání souborů do hello asset.
-2. Zakódujte asset hello, který obsahuje hello souboru toohello s adaptivní přenosovou rychlostí sady souborů MP4.
-3. Vytvoření klíče k obsahu a přidružte ji k hello kódovaný asset.  
-4. Nakonfigurujte zásady autorizace hello klíč obsahu. Zadejte hello následující:
+1. Vytvoření assetu a nahrání souborů do assetu.
+2. Zakódujte asset, který obsahuje soubor s adaptivní přenosovou rychlostí sady souborů MP4.
+3. Vytvořte klíč obsahu a přidružte ji k zakódovanému assetu.  
+4. Nakonfigurujte zásady autorizace pro klíč k obsahu. Zadejte následující informace:
 
-   * Hello metodu doručení (v tomto případě FairPlay).
-   * Konfigurace možností FairPlay zásad. Podrobnosti o tom tooconfigure FairPlay, najdete v části hello **ConfigureFairPlayPolicyOptions()** metoda v ukázce hello níže.
+   * Metodu doručení (v tomto případě FairPlay).
+   * Konfigurace možností FairPlay zásad. Podrobnosti o tom, jak nakonfigurovat FairPlay najdete v tématu **ConfigureFairPlayPolicyOptions()** metoda v následující ukázce.
 
      > [!NOTE]
-     > Obvykle budete by chtít tooconfigure FairPlay zásady Možnosti jenom jednou, protože budou mít pouze jednu sadu certifikace a ASK.
+     > Obvykle byste chcete nakonfigurovat možnosti zásad FairPlay jenom jednou, protože budou mít pouze jednu sadu certifikace a ASK.
      >
      >
    * Omezení (otevřené nebo s tokenem).
-   * Informace o konkrétní toohello doručení klíče typ, který definuje, jak je hello klíč doručen toohello klienta.
-5. Konfigurace zásad doručení assetu hello. Konfigurace zásad doručení Hello zahrnuje:
+   * Informace specifické pro daný typ doručení klíče, který definuje, jak je klíč doručen do klienta.
+5. Konfigurace zásad doručení assetu. Konfigurace zásad doručení zahrnuje:
 
-   * Hello doručovací protokol (HLS).
-   * Hello typ dynamického šifrování (běžné CBC šifrování).
-   * adresu URL licence pořízení Hello.
+   * Doručovací protokol (HLS).
+   * Typ dynamického šifrování (běžné CBC šifrování).
+   * Získávání adresu URL licence.
 
      > [!NOTE]
-     > Pokud chcete, aby toodeliver datový proud, který je šifrován FairPlay a jinému systému pro správu digitálních práv (DRM), je nutné tooconfigure samostatné doručení zásady:
+     > Pokud chcete poskytovat datový proud, který je šifrován FairPlay a jinému systému pro správu digitálních práv (DRM), budete muset nakonfigurovat zásady samostatné doručení:
      >
-     > * Jeden IAssetDeliveryPolicy tooconfigure dynamické adaptivní datové proudy přes protokol HTTP (pomlčka) s běžné šifrování (CENC) (PlayReady a Widevine) a protokol Smooth s technologií PlayReady
-     > * Jiné IAssetDeliveryPolicy tooconfigure FairPlay pro HLS
+     > * Jeden IAssetDeliveryPolicy konfigurace dynamické adaptivní datové proudy přes protokol HTTP (pomlčka) s běžné šifrování (CENC) (PlayReady a Widevine) a protokol Smooth s technologií PlayReady
+     > * Jiné IAssetDeliveryPolicy konfigurace FairPlay pro HLS
      >
      >
-6. Vytvořte adresu URL pro streamování tooget Lokátor OnDemand.
+6. Vytvořte Lokátor OnDemand získat adresu URL pro streamování.
 
 ## <a name="use-fairplay-key-delivery-by-player-apps"></a>Použít doručení klíče FairPlay player aplikace
-Přehrávač aplikace můžete vyvíjet pomocí hello iOS SDK. možnost tooplay toobe FairPlay obsahu, máte tooimplement hello licenci exchange protokolu. Tato položka protocol není zadán společností Apple. Tooeach aplikaci je, jak doručení klíče toosend požadavky. Hello doručení klíče služby Media Services FairPlay očekává hello SPC toocome jako zprávu kódovaného post www-form-url hello následující formulář:
+Přehrávač aplikace můžete vyvíjet pomocí iOS SDK. Abyste mohli k přehrávání obsahu FairPlay, budete muset implementovat protokol exchange licence. Tato položka protocol není zadán společností Apple. Je na každou aplikaci, jak odesílat žádosti o doručení klíče. Služba Media Services FairPlay doručení klíče očekává SPC pocházet jako zprávu kódovaného post www-form-url v následující podobě:
 
     spc=<Base64 encoded SPC>
 
 > [!NOTE]
-> Azure Media Player nepodporuje přehrávání FairPlay předinstalované hello. přehrávání FairPlay tooget na MAC OS X, získat hello ukázka player z hello účet pro vývojáře Apple.
+> Azure Media Player nepodporuje přehrávání FairPlay mimo pole. Pokud chcete získat FairPlay přehrávání na MAC OS X, získejte player ukázkové z účtu vývojáře Apple.
 >
 >
 
 ## <a name="streaming-urls"></a>Adresy URL streamování
-Pokud váš asset byla zašifrována pomocí více než jeden DRM, by měli používat značky šifrování v hello adresu URL streamování: (formát = 'm3u8-aapl' šifrování = 'xxx').
+Pokud váš asset byla zašifrována pomocí více než jeden DRM, ve adresu URL streamování byste měli používat značky šifrování: (formát = 'm3u8-aapl' šifrování = 'xxx').
 
-použít Hello následující aspekty:
+Platí následující aspekty:
 
 * Lze zadat pouze nula nebo jeden typ šifrování.
-* typ šifrování Hello nemá toobe zadaný v adrese URL hello, pokud jenom jeden šifrování byl použité toohello asset.
-* typ šifrování Hello je malá a velká písmena.
-* určit lze následující typy šifrování Hello:  
+* Typ šifrování nemusí být zadaného v adrese URL, pokud jenom jeden šifrování byla použita pro daný prostředek.
+* Typ šifrování je malá a velká písmena.
+* Určit lze následující typy šifrování:  
   * **šifrování cenc**: Common encryption (PlayReady nebo Widevine)
   * **cbcs-aapl**: FairPlay
   * **CBC**: šifrování AES obálky
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
-1. Nastavení vývojového prostředí a naplnění souboru app.config hello s informace o připojení, jak je popsáno v [vývoj pro Media Services s .NET](media-services-dotnet-how-to-use.md). 
-2. Přidejte následující prvky příliš hello**appSettings** definované v souboru app.config:
+1. Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
+2. Do části **appSettings** definované ve vašem souboru app.config přidejte následující elementy:
 
         <add key="Issuer" value="http://testacs.com"/>
         <add key="Audience" value="urn:test"/>
 
 ## <a name="example"></a>Příklad
 
-Hello následující ukázka ukazuje obsah šifrován FairPlay hello možnost toouse toodeliver Media Services. Tato funkce byla zavedená v hello Azure Media Services SDK pro .NET verze 3.6.0. 
+Následující příklad ukazuje možnost používat pro doručování obsahu šifrován FairPlay Media Services. Tato funkce byla zavedená v Azure Media Services SDK pro .NET verze 3.6.0. 
 
-Přepište hello kód v souboru Program.cs kódem hello uvedené v této sekci.
+Přepište kód v souboru Program.cs kódem zobrazeným v této části.
 
 >[!NOTE]
->Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Měli byste použít hello stejné ID zásad, pokud vždy používáte hello stejné dny / přístupová oprávnění, například zásady pro lokátory, které jsou určený tooremain zavedené po dlouhou dobu (bez odeslání zásady). Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) tématu.
+>Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Pokud vždy používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odeslání), měli byste použít stejné ID zásad. Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) tématu.
 
-Ujistěte se že proměnné tooupdate toopoint toofolders kde jsou umístěné vaše vstupní soubory.
+Nezapomeňte aktualizovat proměnné tak, aby odkazovaly do složek, ve kterých jsou umístěné vaše vstupní soubory.
 
     using System;
     using System.Collections.Generic;
@@ -178,7 +178,7 @@ Ujistěte se že proměnné tooupdate toopoint toofolders kde jsou umístěné v
     {
         class Program
         {
-        // Read values from hello App.config file.
+        // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
         ConfigurationManager.AppSettings["AADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
@@ -215,7 +215,7 @@ Ujistěte se že proměnné tooupdate toopoint toofolders kde jsou umístěné v
             Console.WriteLine("Encoded asset: {0}", encodedAsset.Id);
 
             IContentKey key = CreateCommonCBCTypeContentKey(encodedAsset);
-            Console.WriteLine("Created key {0} for hello asset {1} ", key.Id, encodedAsset.Id);
+            Console.WriteLine("Created key {0} for the asset {1} ", key.Id, encodedAsset.Id);
             Console.WriteLine("FairPlay License Key delivery URL: {0}", key.GetKeyDeliveryUrl(ContentKeyDeliveryType.FairPlay));
             Console.WriteLine();
 
@@ -238,13 +238,13 @@ Ujistěte se že proměnné tooupdate toopoint toofolders kde jsou umístěné v
             TokenRestrictionTemplate tokenTemplate =
                 TokenRestrictionTemplateSerializer.Deserialize(tokenTemplateString);
 
-            // Generate a test token based on hello hello data in hello given TokenRestrictionTemplate.
-            // Note, you need toopass hello key id Guid because we specified
-            // TokenClaim.ContentKeyIdentifierClaim in during hello creation of TokenRestrictionTemplate.
+            // Generate a test token based on the the data in the given TokenRestrictionTemplate.
+            // Note, you need to pass the key id Guid because we specified
+            // TokenClaim.ContentKeyIdentifierClaim in during the creation of TokenRestrictionTemplate.
             Guid rawkey = EncryptionUtils.GetKeyIdAsGuid(key.Id);
             string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate, null, rawkey,
                                         DateTime.UtcNow.AddDays(365));
-            Console.WriteLine("hello authorization token is:\nBearer {0}", testToken);
+            Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
             Console.WriteLine();
             }
 
@@ -312,7 +312,7 @@ Ujistěte se že proměnné tooupdate toopoint toofolders kde jsou umístěné v
                         "ContentKey",
                         ContentKeyType.CommonEncryptionCbcs);
 
-            // Associate hello key with hello asset.
+            // Associate the key with the asset.
             asset.ContentKeys.Add(key);
 
             return key;
@@ -352,7 +352,7 @@ Ujistěte se že proměnné tooupdate toopoint toofolders kde jsou umístěné v
 
             contentKeyAuthorizationPolicy.Options.Add(FairPlayPolicy);
 
-            // Associate hello content key authorization policy with hello content key.
+            // Associate the content key authorization policy with the content key.
             contentKey.AuthorizationPolicyId = contentKeyAuthorizationPolicy.Id;
             contentKey = contentKey.UpdateAsync().Result;
         }
@@ -388,7 +388,7 @@ Ujistěte se že proměnné tooupdate toopoint toofolders kde jsou umístěné v
 
             contentKeyAuthorizationPolicy.Options.Add(FairPlayPolicy);
 
-            // Associate hello content key authorization policy with hello content key
+            // Associate the content key authorization policy with the content key
             contentKey.AuthorizationPolicyId = contentKeyAuthorizationPolicy.Id;
             contentKey = contentKey.UpdateAsync().Result;
 
@@ -397,20 +397,20 @@ Ujistěte se že proměnné tooupdate toopoint toofolders kde jsou umístěné v
 
         private static string ConfigureFairPlayPolicyOptions()
         {
-            // For testing you can provide all zeroes for ASK bytes together with hello cert from Apple FPS SDK.
-            // However, for production you must use a real ASK from Apple bound tooa real prod certificate.
+            // For testing you can provide all zeroes for ASK bytes together with the cert from Apple FPS SDK.
+            // However, for production you must use a real ASK from Apple bound to a real prod certificate.
             byte[] askBytes = Guid.NewGuid().ToByteArray();
             var askId = Guid.NewGuid();
-            // Key delivery retrieves askKey by askId and uses this key toogenerate hello response.
+            // Key delivery retrieves askKey by askId and uses this key to generate the response.
             IContentKey askKey = _context.ContentKeys.Create(
                         askId,
                         askBytes,
                         "askKey",
                         ContentKeyType.FairPlayASk);
 
-            //Customer password for creating hello .pfx file.
-            string pfxPassword = "<customer password for creating hello .pfx file>";
-            // Key delivery retrieves pfxPasswordKey by pfxPasswordId and uses this key toogenerate hello response.
+            //Customer password for creating the .pfx file.
+            string pfxPassword = "<customer password for creating the .pfx file>";
+            // Key delivery retrieves pfxPasswordKey by pfxPasswordId and uses this key to generate the response.
             var pfxPasswordId = Guid.NewGuid();
             byte[] pfxPasswordBytes = System.Text.Encoding.UTF8.GetBytes(pfxPassword);
             IContentKey pfxPasswordKey = _context.ContentKeys.Create(
@@ -419,11 +419,11 @@ Ujistěte se že proměnné tooupdate toopoint toofolders kde jsou umístěné v
                         "pfxPasswordKey",
                         ContentKeyType.FairPlayPfxPassword);
 
-            // iv - 16 bytes random value, must match hello iv in hello asset delivery policy.
+            // iv - 16 bytes random value, must match the iv in the asset delivery policy.
             byte[] iv = Guid.NewGuid().ToByteArray();
 
-            //Specify hello .pfx file created by hello customer.
-            var appCert = new X509Certificate2("path toohello .pfx file created by hello customer", pfxPassword, X509KeyStorageFlags.Exportable);
+            //Specify the .pfx file created by the customer.
+            var appCert = new X509Certificate2("path to the .pfx file created by the customer", pfxPassword, X509KeyStorageFlags.Exportable);
 
             string FairPlayConfiguration =
             Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(
@@ -457,12 +457,12 @@ Ujistěte se že proměnné tooupdate toopoint toofolders kde jsou umístěné v
 
             FairPlayConfiguration configFP = JsonConvert.DeserializeObject<FairPlayConfiguration>(kdOption.KeyDeliveryConfiguration);
 
-            // Get hello FairPlay license service URL.
+            // Get the FairPlay license service URL.
             Uri acquisitionUrl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.FairPlay);
 
-            // hello reason hello below code replaces "https://" with "skd://" is because
-            // in hello IOS player sample code which you obtained in Apple developer account,
-            // hello player only recognizes a Key URL that starts with skd://.
+            // The reason the below code replaces "https://" with "skd://" is because
+            // in the IOS player sample code which you obtained in Apple developer account,
+            // the player only recognizes a Key URL that starts with skd://.
             // However, if you are using a customized player,
             // you can choose whatever protocol you want.
             // For example, "https".
@@ -480,22 +480,22 @@ Ujistěte se že proměnné tooupdate toopoint toofolders kde jsou umístěné v
             AssetDeliveryProtocol.HLS,
             assetDeliveryPolicyConfiguration);
 
-            // Add AssetDelivery Policy toohello asset
+            // Add AssetDelivery Policy to the asset
             asset.DeliveryPolicies.Add(assetDeliveryPolicy);
 
         }
 
 
         /// <summary>
-        /// Gets hello streaming origin locator.
+        /// Gets the streaming origin locator.
         /// </summary>
         /// <param name="assets"></param>
         /// <returns></returns>
         static public string GetStreamingOriginLocator(IAsset asset)
         {
 
-            // Get a reference toohello streaming manifest file from hello  
-            // collection of files in hello asset.
+            // Get a reference to the streaming manifest file from the  
+            // collection of files in the asset.
 
             var assetFile = asset.AssetFiles.Where(f => f.Name.ToLower().
                          EndsWith(".ism")).
@@ -506,12 +506,12 @@ Ujistěte se že proměnné tooupdate toopoint toofolders kde jsou umístěné v
             TimeSpan.FromDays(30),
             AccessPermissions.Read);
 
-            // Create a locator toohello streaming content on an origin.
+            // Create a locator to the streaming content on an origin.
             ILocator originLocator = _context.Locators.CreateLocator(LocatorType.OnDemandOrigin, asset,
             policy,
             DateTime.UtcNow.AddMinutes(-5));
 
-            // Create a URL toohello manifest file.
+            // Create a URL to the manifest file.
             return originLocator.Path + assetFile.Name;
         }
 

@@ -1,26 +1,26 @@
 ---
-title: "aaaAzure dokumentace k Mobile Apps – kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
-description: "Zjistěte, jak toouse Mobile Apps v Azure App Service toobuild a hostitelem nativní aplikace pro iOS, Android nebo Windows aplikace nebo aplikací pro víc platforem pomocí Xamarinu nebo Cordova."
-services: app-service\mobile
-author: carolz
+title: "Dokumentace ke službě Azure Mobile Apps – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
+description: "Naučte se využívat Mobile Apps ve službě Azure App Service k sestavování a hostování nativních aplikací pro iOS, Android nebo Windows nebo aplikací pro více platforem pomocí Xamarinu nebo Cordovy."
+services: app-service-mobile
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
-ms.service: app-service\mobile
+ms.service: app-service-mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 09b103b274c66f515d9a34bbdcb54cf0ff3a035a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d602d833286d1906a2e9bd38d3e99d737146310b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="mobile-apps-documentation"></a>Dokumentace k Mobile Apps
 
-Zjistěte, jak toouse Mobile Apps v Azure App Service toobuild nativní aplikace pro iOS, Android nebo Windows aplikace nebo aplikací pro víc platforem pomocí Xamarinu nebo Cordova. Kurzy, videa, dokumentaci k sadě SDK klienta a další ukazují, jak toobuild a hostitele hello back-end pro všechny mobilní aplikace.
+Naučte se využívat Mobile Apps ve službě Azure App Service k sestavování nativních aplikací pro iOS, Android nebo Windows nebo aplikací pro více platforem pomocí Xamarinu nebo Cordovy. Kurzy, videa, dokumentace ke klientským sadám SDK a další zdroje informací ukazují, jak sestavovat a hostovat back-end pro libovolnou mobilní aplikaci.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -142,7 +142,7 @@ Zjistěte, jak toouse Mobile Apps v Azure App Service toobuild nativní aplikace
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáme s vytvářením aplikace xamarin.Android</h3>
+                        <h3>Začínáme s vytvářením aplikace Xamarin.Android</h3>
                     </div>
                 </div>
             </div>
@@ -160,7 +160,7 @@ Zjistěte, jak toouse Mobile Apps v Azure App Service toobuild nativní aplikace
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáme s vytvářením aplikace xamarin.Forms</h3>
+                        <h3>Začínáme s vytvářením aplikace Xamarin.Forms</h3>
                     </div>
                 </div>
             </div>

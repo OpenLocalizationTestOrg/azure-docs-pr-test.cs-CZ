@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure AD služby tooservice ověřování pomocí OAuth2.0 On-Behalf-Of koncept specifikace | Microsoft Docs"
-description: "Tento článek popisuje, jak toouse HTTP zprávy tooimplement služby tooservice ověřování pomocí hello OAuth2.0 tok On-Behalf-Of."
+title: "Azure AD do služby ověřování pomocí OAuth2.0 On-Behalf-Of koncept specifikace | Microsoft Docs"
+description: "Tento článek popisuje, jak používat zprávy protokolu HTTP k implementaci služeb ověřování pomocí OAuth2.0 tok On-Behalf-Of."
 services: active-directory
 documentationcenter: .net
 author: navyasric
@@ -15,77 +15,77 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 55b7fcfe6c0223bddedd8d8fa2defcb5769b43c2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0bb74816f216f0965c3ec780c4895cf7e488c3cf
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# Služba tooservice volá pomocí identity delegovaný uživatel v hello tok On-Behalf-Of
-Hello toku OAuth 2.0 On-Behalf-Of slouží hello případ použití kde aplikace volá služby nebo webové rozhraní API, který se pak musí toocall jiná služba nebo webové rozhraní API. Rada Hello je, že toopropagate hello delegovaná oprávnění prostřednictvím hello řetězce požadavků a identity uživatele. Pro hello střední vrstvy toomake ověření požadavků toohello podřízené služby musí toosecure přístupový token ze služby Azure Active Directory (Azure AD) jménem uživatele hello.
+# Služby volání služby s využitím delegované identity uživatele v tok On-Behalf-Of
+On-Behalf-Of OAuth 2.0, které toku slouží případ použití, kde aplikace volá služby nebo webové rozhraní API, který se pak musí volat jiné služby nebo webové rozhraní API. Cílem je potřebný k šíření identity delegované uživatele a oprávnění pomocí řetězce požadavků. Pro službu střední vrstvy provést ověřené žádosti o připojení ke službě podřízené potřebuje přístupový token zabezpečení ze služby Azure Active Directory (Azure AD) jménem uživatele.
 
 ## On-Behalf-Of vývojový diagram
-Předpokládejme, tento uživatel hello byl ověřen na aplikaci pomocí hello [tok poskytování autorizačních kódů OAuth 2.0](active-directory-protocols-oauth-code.md). V tomto okamžiku aplikace hello má přístupový token (token A) s hello uživatele deklarace identity a souhlasu tooaccess hello střední vrstvu webového rozhraní API (rozhraní API A). Rozhraní API A potřebuje teď, toomake ověřeného požadavku toohello podřízené webové rozhraní API (API B).
+Předpokládejme, že má uživatel ověřen na aplikace pomocí [tok poskytování autorizačních kódů OAuth 2.0](active-directory-protocols-oauth-code.md). Aplikace v tomto okamžiku má přístupový token (token A) s deklarací identity uživatele a souhlasu pro přístup k střední vrstvu webového rozhraní API (rozhraní API A). Rozhraní API A potřebuje teď, aby požadavek na ověřeného k podřízené webové rozhraní API (API B).
 
-Hello kroky, které následují tvoří hello tok On-Behalf-Of a jsou vysvětleny hello pomoci hello následující diagram.
+Kroky, které následují tvoří tok On-Behalf-Of a jsou vysvětleny za pomoci následující diagram.
 
 ![OAuth2.0 tok On-Behalf-Of](media/active-directory-protocols-oauth-on-behalf-of/active-directory-protocols-oauth-on-behalf-of-flow.png)
 
 
-1. klienta aplikace Hello zadá požadavek tooAPI A s hello tokenu A.
-2. Rozhraní API A ověřuje koncový bod vystavování tokenů toohello Azure AD a požadavky tokenu tooaccess rozhraní API B.
-3. koncový bod vystavování tokenů Hello Azure AD ověřuje přihlašovací údaje A rozhraní API se token a problémy hello přístupového tokenu pro rozhraní API B (token B).
-4. Hello token B je nastavena v záhlaví autorizace hello hello požadavek tooAPI B.
-5. Vrátí data z hello zabezpečené prostředků API B.
+1. Klientská aplikace odešle požadavek na rozhraní API s tokenem A.
+2. Rozhraní API A přihlásí k vystavování tokenů koncového bodu Azure AD a požadavky token pro přístup k rozhraní API B.
+3. Koncový bod vystavování tokenů Azure AD ověřuje přihlašovací údaje A rozhraní API se token a vydá přístupový token pro rozhraní API B (tokenu B).
+4. Token B je nastaveny v hlavičce autorizace požadavku rozhraní API b.
+5. Vrátí data z zabezpečeným prostředkům rozhraní API B.
 
-## Registrovat hello aplikace a služby ve službě Azure AD
-Hello klientská aplikace a služby střední vrstvy hello zaregistrujte ve službě Azure AD.
-### Registrace služby střední vrstvy hello
-1. Přihlaste se toohello [portál Azure](https://portal.azure.com).
-2. Na horním panelu hello, klikněte na tlačítko na vašem účtu a v části hello **Directory** vyberte klienta hello služby Active Directory, kde chcete tooregister vaší aplikace.
-3. Klikněte na **více služeb** v hello navigaci vlevo a zvolte **Azure Active Directory**.
+## Registrace aplikace a služby ve službě Azure AD
+Klientská aplikace a služby střední vrstvy zaregistrujte ve službě Azure AD.
+### Registrace služby střední vrstvy
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+2. Na horním panelu klikněte na tlačítko na vašem účtu a v části **Directory** vyberte klienta služby Active Directory, kam chcete registrace vaší aplikace.
+3. Klikněte na **více služeb** v navigaci vlevo a zvolte **Azure Active Directory**.
 4. Klikněte na **registrace aplikace** a zvolte **nové registrace aplikace**.
-5. Zadejte popisný název aplikace hello a vyberte typ aplikace hello. Založený na typu aplikace hello hello přihlašování adresu URL sady nebo přesměrování URL toohello základní adresa URL. Klikněte na **vytvořit** toocreate hello aplikace.
-6. Při stále v hello portálu Azure, vyberte aplikaci a klikněte na **nastavení**. Z nabídky nastavení hello, zvolte **klíče** a přidejte klíč – vyberte dobu trvání klíče 1 rok nebo 2 roky. Při ukládání této stránky, hello hodnota klíče se zobrazí, zkopírujte a uložte do bezpečného umístění hello hodnotu – budete potřebovat tento klíč novější tooconfigure hello nastavení aplikace v implementaci - touto hodnotou klíče nebude znovu zobrazit, ani se dá načíst pomocí libovolné jiným způsobem, proto prosím záznam ho hned, jak je vidět hello portálu Azure.
+5. Zadejte popisný název aplikace a vyberte typ aplikace. Založené na sadě typu aplikace přihlašovací adresa URL nebo přesměrovat adresu URL na základní adresu URL. Klikněte na **vytvořit** k vytvoření aplikace.
+6. Při stále na portálu Azure, vyberte aplikaci a klikněte na **nastavení**. Z nabídky nastavení zvolte **klíče** a přidejte klíč – vyberte dobu trvání klíče 1 rok nebo 2 roky. Při ukládání této stránky, hodnota klíče se zobrazí, zkopírujte a uložte do bezpečného umístění hodnota – budete potřebovat tento klíč později ke konfiguraci nastavení aplikace v implementaci - touto hodnotou klíče nebude znovu zobrazit, ani se dá načíst jiným způsobem , takže si poznamenejte hned, jak je vidět na portálu Azure.
 
-### Registrace hello klientské aplikace
-1. Přihlaste se toohello [portál Azure](https://portal.azure.com).
-2. Na horním panelu hello, klikněte na tlačítko na vašem účtu a v části hello **Directory** vyberte klienta hello služby Active Directory, kde chcete tooregister vaší aplikace.
-3. Klikněte na **více služeb** v hello navigaci vlevo a zvolte **Azure Active Directory**.
+### Registrace aplikace klienta
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+2. Na horním panelu klikněte na tlačítko na vašem účtu a v části **Directory** vyberte klienta služby Active Directory, kam chcete registrace vaší aplikace.
+3. Klikněte na **více služeb** v navigaci vlevo a zvolte **Azure Active Directory**.
 4. Klikněte na **registrace aplikace** a zvolte **nové registrace aplikace**.
-5. Zadejte popisný název aplikace hello a vyberte typ aplikace hello. Založený na typu aplikace hello hello přihlašování adresu URL sady nebo přesměrování URL toohello základní adresa URL. Klikněte na **vytvořit** toocreate hello aplikace.
-6. Konfigurace oprávnění pro vaši aplikaci – v nabídce nastavení hello, zvolte hello **požadovaná oprávnění** části, klikněte na **přidat**, pak **vybrat rozhraní API**a typ hello název služby střední vrstvy hello v textovém poli hello. Potom klikněte na **vyberte oprávnění** a vyberte možnost ' přístup *název služby*'.
+5. Zadejte popisný název aplikace a vyberte typ aplikace. Založené na sadě typu aplikace přihlašovací adresa URL nebo přesměrovat adresu URL na základní adresu URL. Klikněte na **vytvořit** k vytvoření aplikace.
+6. Konfigurace oprávnění pro vaši aplikaci – v nabídce nastavení, vyberte **požadovaná oprávnění** části, klikněte na **přidat**, pak **vybrat rozhraní API**a zadejte název služby střední vrstvy do textového pole. Potom klikněte na **vyberte oprávnění** a vyberte možnost ' přístup *název služby*'.
 
 ### Konfigurace známé klientské aplikace
-V tomto scénáři má služby střední vrstvy hello žádné uživatelské interakce tooobtain hello uživatele souhlas tooaccess hello podřízené API. Proto hello možnost toogrant přístup toohello podřízené API musí být uvedené předem jako součást kroku souhlasu hello během ověřování.
-tooachieve tento, postupujte podle hello kroků tooexplicitly vazby hello klientské aplikace registrace ve službě Azure AD s registrací hello hello střední vrstvy služby, která sloučí hello souhlas potřebný hello klienta a střední vrstvy do jednoho dialogové okno.
-1. Přejděte registraci toohello střední vrstvy služby a klikněte na **Manifest** tooopen hello manifestu editor.
-2. V manifestu hello najít hello `knownClientApplications` pole vlastnosti, a přidejte hello ID klienta aplikace hello klienta jako element.
-3. Kliknutím na tlačítko Uložit hello uložte hello manifest.
+V tomto scénáři má služby střední vrstvy získat souhlas uživatele pro přístup k rozhraní API pro příjem dat žádná interakce s uživatelem. Možnost udělit přístup k rozhraní API pro příjem dat proto musí být uveden předem, jako součást souhlasu krok během ověřování.
+Jak toho docílit, použijte následující postup pro explicitně vazbu klientskou aplikaci registrace ve službě Azure AD s registrací služby střední vrstvy, která sloučí souhlas potřebný klientem a střední vrstvy do jednoho dialogové okno.
+1. Přejděte na registraci střední vrstvy služby a klikněte na **Manifest** k otevření editoru manifestu.
+2. V manifestu, vyhledejte `knownClientApplications` pole vlastnosti, a přidejte ID klienta aplikace klienta jako element.
+3. Uložte kliknutím uložit manifest tlačítko.
 
-## Žádost o služby tooservice přístup tokenu
-toorequest přístupový token, ujistěte se, koncový bod HTTP POST toohello konkrétního klienta Azure AD s hello následující parametry.
+## Služba service žádosti o token přístupu
+Chcete-li požádat o token přístupu, provést HTTP POST konkrétního klienta koncového bodu Azure AD s následujícími parametry.
 
 ```
 https://login.microsoftonline.com/<tenant>/oauth2/token
 ```
-Jsou dva případy, v závislosti na tom, zda klientská aplikace hello zvolí toobe zabezpečeny sdílený tajný klíč nebo certifikát.
+Jsou dva případy, v závislosti na tom, zda klientská aplikace rozhodne zabezpečeny sdílený tajný klíč nebo certifikát.
 
 ### Nejprve případ: žádosti o token přístupu s sdílený tajný klíč
-Pokud používáte sdílený tajný klíč, obsahuje žádosti o token service-to-service přístup hello následující parametry:
+Pokud používáte sdílený tajný klíč, žádosti o token přístupu service-to-service obsahuje následující parametry:
 
 | Parametr |  | Popis |
 | --- | --- | --- |
-| grant_type |Požadované | Typ Hello hello žádosti o token. Pro žádost o pomocí token JWT, musí být hodnota hello **urn: ietf:params:oauth:grant – typ: jwt-nosiče**. |
-| Kontrolní výraz |Požadované | Hodnota Hello hello token používaný v žádosti o hello. |
-| client_id |Požadované | Hello ID aplikace přiřazené toohello volání služby během registrace s Azure AD. Klikněte na tlačítko toofind hello ID aplikace v portálu pro správu Azure, hello **služby Active Directory**, klikněte na tlačítko hello adresář a potom klikněte na název aplikace hello. |
-| tajný klíč client_secret |Požadované | klíč Hello zaregistrovaný pro hello volání služby ve službě Azure AD. Tato hodnota je měli poznamenat hello během registrace. |
-| Prostředek |Požadované | Hello identifikátor ID URI aplikace z hello přijetí služby (zabezpečené prostředků). Klikněte na tlačítko toofind hello identifikátor ID URI aplikace v hello portálu pro správu Azure, **služby Active Directory**, klikněte na tlačítko hello adresář, klikněte na název aplikace hello, klikněte na **všechna nastavení** a pak klikněte na **vlastnosti** . |
-| requested_token_use |Požadované | Určuje, jak by měla být hello požadavek zpracovat. V hello tok On-Behalf-Of, musí být hodnota hello **on_behalf_of**. |
-| Obor |Požadované | Mezeru oddělený seznam obory pro žádosti o token hello. Pro OpenID Connect, hello oboru **openid** musí být zadán.|
+| grant_type |Požadované | Typ požadavku na token. Pro žádost o pomocí token JWT, hodnota musí být **urn: ietf:params:oauth:grant – typ: jwt-nosiče**. |
+| Kontrolní výraz |Požadované | Hodnota tokenu používaného v požadavku. |
+| client_id |Požadované | ID aplikace přiřazené ke službě volání během registrace s Azure AD. Chcete-li najít ID aplikace v portálu pro správu Azure, klikněte na tlačítko **služby Active Directory**, klikněte na adresář a potom klikněte na název aplikace. |
+| tajný klíč client_secret |Požadované | Klíč registrován pro volání služby ve službě Azure AD. Tato hodnota by měla mít poznamenat v době registrace. |
+| Prostředek |Požadované | Identifikátor ID URI aplikace služby přijímající (zabezpečené prostředků). Chcete-li najít identifikátor ID URI aplikace v portálu pro správu Azure, klikněte na tlačítko **služby Active Directory**, klikněte na adresář, klikněte na název aplikace, klikněte na **všechna nastavení** a pak klikněte na tlačítko **vlastnosti**. |
+| requested_token_use |Požadované | Určuje, jak by měl být požadavek zpracovat. Hodnota tok On-Behalf-Of, musí být **on_behalf_of**. |
+| Obor |Požadované | Mezeru oddělený seznam obory pro požadavek tokenu. Pro OpenID Connect, oboru **openid** musí být zadán.|
 
 #### Příklad
-Hello následující HTTP POST požadavků přístupový token pro hello https://graph.windows.net webové rozhraní API. Hello `client_id` identifikuje hello služba, která požaduje hello přístupový token.
+V následujícím příspěvku HTTP požadavků přístupový token pro https://graph.windows.net webové rozhraní API. `client_id` Identifikuje služba, která požaduje přístupový token.
 
 ```
 // line breaks for legibility only
@@ -104,23 +104,23 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 ```
 
 ### Druhé případ: tokenu žádosti o přístup pomocí certifikátu
-Žádosti o token service-to-service přístup pomocí certifikátu obsahuje hello následující parametry:
+Žádosti o token service-to-service přístup pomocí certifikátu obsahuje následující parametry:
 
 | Parametr |  | Popis |
 | --- | --- | --- |
-| grant_type |Požadované | Typ Hello hello žádosti o token. Pro žádost o pomocí token JWT, musí být hodnota hello **urn: ietf:params:oauth:grant – typ: jwt-nosiče**. |
-| Kontrolní výraz |Požadované | Hodnota Hello hello token používaný v žádosti o hello. |
-| client_id |Požadované | Hello ID aplikace přiřazené toohello volání služby během registrace s Azure AD. Klikněte na tlačítko toofind hello ID aplikace v portálu pro správu Azure, hello **služby Active Directory**, klikněte na tlačítko hello adresář a potom klikněte na název aplikace hello. |
-| client_assertion_type |Požadované |musí být hodnota Hello`urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |Požadované | Kontrolní výrazy (webového tokenu JSON), je nutné toocreate a přihlášení s hello certifikátů můžete zaregistrovat jako přihlašovací údaje pro vaši aplikaci.  Přečtěte si informace o [certifikát přihlašovacích údajů](active-directory-certificate-credentials.md) toolearn jak tooregister váš certifikát a hello formát hello assertion.|
-| Prostředek |Požadované | Hello identifikátor ID URI aplikace z hello přijetí služby (zabezpečené prostředků). Klikněte na tlačítko toofind hello identifikátor ID URI aplikace v hello portálu pro správu Azure, **služby Active Directory**, klikněte na tlačítko hello adresář, klikněte na název aplikace hello, klikněte na **všechna nastavení** a pak klikněte na **vlastnosti** . |
-| requested_token_use |Požadované | Určuje, jak by měla být hello požadavek zpracovat. V hello tok On-Behalf-Of, musí být hodnota hello **on_behalf_of**. |
-| Obor |Požadované | Mezeru oddělený seznam obory pro žádosti o token hello. Pro OpenID Connect, hello oboru **openid** musí být zadán.|
+| grant_type |Požadované | Typ požadavku na token. Pro žádost o pomocí token JWT, hodnota musí být **urn: ietf:params:oauth:grant – typ: jwt-nosiče**. |
+| Kontrolní výraz |Požadované | Hodnota tokenu používaného v požadavku. |
+| client_id |Požadované | ID aplikace přiřazené ke službě volání během registrace s Azure AD. Chcete-li najít ID aplikace v portálu pro správu Azure, klikněte na tlačítko **služby Active Directory**, klikněte na adresář a potom klikněte na název aplikace. |
+| client_assertion_type |Požadované |Hodnota musí být`urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion |Požadované | (Webového tokenu JSON) kontrolní výraz, který potřebujete k vytvoření a podepsání s certifikátem, můžete zaregistrovat jako přihlašovací údaje pro vaši aplikaci.  Přečtěte si informace o [certifikát přihlašovacích údajů](active-directory-certificate-credentials.md) Další informace o registraci vašeho certifikátu a formát kontrolní výraz.|
+| Prostředek |Požadované | Identifikátor ID URI aplikace služby přijímající (zabezpečené prostředků). Chcete-li najít identifikátor ID URI aplikace v portálu pro správu Azure, klikněte na tlačítko **služby Active Directory**, klikněte na adresář, klikněte na název aplikace, klikněte na **všechna nastavení** a pak klikněte na tlačítko **vlastnosti**. |
+| requested_token_use |Požadované | Určuje, jak by měl být požadavek zpracovat. Hodnota tok On-Behalf-Of, musí být **on_behalf_of**. |
+| Obor |Požadované | Mezeru oddělený seznam obory pro požadavek tokenu. Pro OpenID Connect, oboru **openid** musí být zadán.|
 
-Všimněte si, že jsou parametry hello téměř hello stejné jako v případě hello hello požadavku podle sdílený tajný klíč s tím rozdílem, že parametr tajný klíč client_secret hello je nahrazena dva parametry: client_assertion_type a client_assertion.
+Všimněte si, že parametry jsou téměř stejné jako v případě požadavku pomocí sdílený tajný klíč, s tím rozdílem, že parametr tajný klíč client_secret je nahrazena dva parametry: client_assertion_type a client_assertion.
 
 #### Příklad
-Hello následující HTTP POST požadavků přístupový token pro hello https://graph.windows.net webové rozhraní API s certifikátem. Hello `client_id` identifikuje hello služba, která požaduje hello přístupový token.
+V následujícím příspěvku HTTP požadavků přístupový token pro https://graph.windows.net webové rozhraní API s certifikátem. `client_id` Identifikuje služba, která požaduje přístupový token.
 
 ```
 // line breaks for legibility only
@@ -139,22 +139,22 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 &scope=openid
 ```
 
-## Služba tooservice odpovědi tokenu přístupu
-Úspěšná odpověď je odpověď JSON OAuth 2.0 se hello následující parametry.
+## Služba odpovědi tokenu přístupu služby
+Úspěšná odpověď je odpověď JSON OAuth 2.0 s následujícími parametry.
 
 | Parametr | Popis |
 | --- | --- |
-| token_type |Určuje hodnotu hello typ tokenu. Hello pouze typ, který podporuje Azure AD je **nosiče**. Další informace o nosné tokeny, najdete v části hello [Framework autorizace OAuth 2.0: použití tokenů nosiče (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt). |
-| Obor |rozsah Hello udělení v hello tokenu přístupu. |
-| expires_in |Délka Hello čas hello přístupový token je platný (v sekundách). |
-| expires_on |Hello čas, kdy vyprší platnost hello přístupový token. Datum Hello je reprezentován jako hello počet sekund od pod hodnotou 1970-01-01T0:0:0Z UTC dokud hello čas vypršení platnosti. Tato hodnota je použité toodetermine hello Životnost mezipaměti tokenů. |
-| Prostředek |Hello identifikátor ID URI aplikace z hello přijetí služby (zabezpečené prostředků). |
-| access_token |Hello požadovaný přístupový token. Hello volání služby můžete použít tento token tooauthenticate toohello přijímající služby. |
-| požadavku id_token |token požadovanému id Hello. Hello volání služby můžete použít identita uživatele tooverify hello a zahájit relaci s hello uživatele. |
-| refresh_token |Hello obnovovací token pro hello požadovaný přístupový token. Hello volání služby můžete použít tento token toorequest dalšího přístupového tokenu, po vypršení platnosti hello aktuální přístupový token. |
+| token_type |Určuje hodnotu typ tokenu. Pouze typ, který podporuje Azure AD je **nosiče**. Další informace o nosné tokeny, najdete v článku [Framework autorizace OAuth 2.0: použití tokenů nosiče (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt). |
+| Obor |Rozsah udělení v tokenu přístupu. |
+| expires_in |Doba přístupový token je platný (v sekundách). |
+| expires_on |Čas, kdy vyprší platnost přístupového tokenu. Datum je reprezentován jako počet sekund od pod hodnotou 1970-01-01T0:0:0Z UTC až do okamžiku vypršení platnosti. Tato hodnota se používá k určení doby platnosti tokenů v mezipaměti. |
+| Prostředek |Identifikátor ID URI aplikace služby přijímající (zabezpečené prostředků). |
+| access_token |Požadovaný přístupový token. Volání služby můžete použít tento token k ověření přijímající služby. |
+| požadavku id_token |Požadovaný id token. Volání služby můžete použít k ověření identity uživatele a zahájit relaci s uživatelem. |
+| refresh_token |Token obnovení pro požadovaný přístupový token. Volání služby můžete tento token vyžádat dalšího přístupového tokenu po vypršení platnosti aktuální přístupový token. |
 
 ### Příklad úspěšné odpovědi
-Hello následující příklad ukazuje úspěšné odpovědi tooa žádost o token přístupu pro hello https://graph.windows.net webové rozhraní API.
+Následující příklad ukazuje úspěšná odpověď na žádost o token přístupu pro https://graph.windows.net webové rozhraní API.
 
 ```
 {
@@ -172,12 +172,12 @@ Hello následující příklad ukazuje úspěšné odpovědi tooa žádost o tok
 ```
 
 ### Příklad chybové odpovědi
-Chybnou odpověď vrátí koncový bod tokenu Azure AD při pokusu o tooacquire přístupový token pro příjem dat API hello, pokud má zásady podmíněného přístupu, jako je vícefaktorové ověřování u něho nastavený hello podřízené rozhraní API. Hello střední vrstvy služby by měl surface této chyby toohello klientské aplikace, tak, aby aplikace hello klienta může poskytovat hello uživatelské interakce toosatisfy hello zásady podmíněného přístupu.
+Koncový bod tokenu Azure AD vrátí odpovědi na chybu při pokusu o získání přístupového tokenu pro rozhraní API pro příjem dat, pokud rozhraní API pro příjem dat má zásady podmíněného přístupu, jako je vícefaktorové ověřování u něho nastavený. Střední vrstvy služby by měl surface tato chyba do klientské aplikace, tak, aby klientská aplikace může poskytnout zásahu uživatele, aby pokryl zásady podmíněného přístupu.
 
 ```
 {
     "error":"interaction_required",
-    "error_description":"AADSTS50079: Due tooa configuration change made by your administrator, or because you moved tooa new location, you must enroll in multi-factor authentication tooaccess 'bf8d80f9-9098-4972-b203-500f535113b1'.\r\nTrace ID: b72a68c3-0926-4b8e-bc35-3150069c2800\r\nCorrelation ID: 73d656cf-54b1-4eb2-b429-26d8165a52d7\r\nTimestamp: 2017-05-01 22:43:20Z",
+    "error_description":"AADSTS50079: Due to a configuration change made by your administrator, or because you moved to a new location, you must enroll in multi-factor authentication to access 'bf8d80f9-9098-4972-b203-500f535113b1'.\r\nTrace ID: b72a68c3-0926-4b8e-bc35-3150069c2800\r\nCorrelation ID: 73d656cf-54b1-4eb2-b429-26d8165a52d7\r\nTimestamp: 2017-05-01 22:43:20Z",
     "error_codes":[50079],
     "timestamp":"2017-05-01 22:43:20Z",
     "trace_id":"b72a68c3-0926-4b8e-bc35-3150069c2800",
@@ -186,8 +186,8 @@ Chybnou odpověď vrátí koncový bod tokenu Azure AD při pokusu o tooacquire 
 }
 ```
 
-## Použití hello přístup tokenu tooaccess hello zabezpečené prostředků
-Nyní hello střední vrstvy služby pomocí hello tokenu získal výše toomake ověření požadavků toohello po proudu webové rozhraní API, podle nastavení hello token v hello `Authorization` záhlaví.
+## Použití tokenu přístupu pro přístup k zabezpečeným prostředku
+Nyní střední vrstvy služby pomocí tokenu získali výše provádět požadavky na ověření do podřízené webové rozhraní API, nastavením token v `Authorization` záhlaví.
 
 ### Příklad
 ```
@@ -197,6 +197,6 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdW
 ```
 
 ## Další kroky
-Další informace o protokolu OAuth 2.0 hello a jiný způsob tooperform služby tooservice ověřování pomocí přihlašovacích údajů klienta.
-* [Ověřování služby tooservice pomocí udělení pověření klienta OAuth 2.0 ve službě Azure AD](active-directory-protocols-oauth-service-to-service.md)
+Další informace o protokolu OAuth 2.0 a jiný způsob, jak provádět ověřování služeb pomocí pověření klienta.
+* [Služba ověřování služby pomocí udělení pověření klienta OAuth 2.0 ve službě Azure AD](active-directory-protocols-oauth-service-to-service.md)
 * [OAuth 2.0 ve službě Azure AD](active-directory-protocols-oauth-code.md)

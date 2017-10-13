@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate skupin zabezpečení - sítě, Azure CLI 2.0 | Microsoft Docs"
-description: "Zjistěte, jak toocreate a nasazení skupin zabezpečení sítě pomocí hello 2.0 rozhraní příkazového řádku Azure."
+title: "Vytvoření skupin zabezpečení sítě - 2.0 rozhraní příkazového řádku Azure | Microsoft Docs"
+description: "Zjistěte, jak vytvořit a nasadit pomocí Azure CLI 2.0 skupin zabezpečení sítě."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,36 +16,36 @@ ms.workload: infrastructure-services
 ms.date: 02/17/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30b1d60676331bf5e2bbbb046c747477be9d3338
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 8efb3ab66d07875b51f723fed5594bcb477ed025
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="create-network-security-groups-using-hello-azure-cli-20"></a>Vytvořit síť pomocí Azure CLI 2.0 hello skupin zabezpečení
+# <a name="create-network-security-groups-using-the-azure-cli-20"></a>Vytvořit síť pomocí Azure CLI 2.0 skupin zabezpečení
 
 [!INCLUDE [virtual-networks-create-nsg-selectors-arm-include](../../includes/virtual-networks-create-nsg-selectors-arm-include.md)]
 
-## <a name="cli-versions-toocomplete-hello-task"></a>Úloha hello toocomplete verze rozhraní příkazového řádku 
+## <a name="cli-versions-to-complete-the-task"></a>Verze rozhraní příkazového řádku pro dokončení úlohy 
 
-Můžete dokončit hello úloh pomocí jedné z hello následující verze rozhraní příkazového řádku: 
+K dokončení úlohy můžete využít jednu z následujících verzí rozhraní příkazového řádku: 
 
-- [Azure CLI 1.0](virtual-networks-create-nsg-cli-nodejs.md) – naše rozhraní příkazového řádku pro hello classic a resource správy nasazení modely 
-- [Azure CLI 2.0](#Create-the-nsg-for-the-front-end-subnet) -naší nové generace rozhraní příkazového řádku pro model nasazení prostředků správu hello (v tomto článku)
+- [Azure CLI 1.0](virtual-networks-create-nsg-cli-nodejs.md) – naše rozhraní příkazového řádku pro klasické modely nasazení a modely nasazení správy prostředků 
+- [Azure CLI 2.0](#Create-the-nsg-for-the-front-end-subnet) -naší nové generace rozhraní příkazového řádku pro správu model nasazení prostředku (v tomto článku)
 
 [!INCLUDE [virtual-networks-create-nsg-intro-include](../../includes/virtual-networks-create-nsg-intro-include.md)]
 
 [!INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
-Ukázka Hello Azure CLI 2.0 příkazy následující očekávat jednoduché prostředí již vytvořili závislosti na scénáři hello předchozí. 
+Následující vzorové příkazy Azure CLI 2.0 očekávat jednoduché prostředí již vytvořen na základě v předchozím scénáři. 
 
-## <a name="create-hello-nsg-for-hello-frontend-subnet"></a>Vytvoření hello skupina NSG pro hello `FrontEnd` podsítě
+## <a name="create-the-nsg-for-the-frontend-subnet"></a>Skupina NSG pro vytvoření `FrontEnd` podsítě
 
-toocreate skupinu NSG s názvem *NSG front-endu* podle hello scénář předchozí, postupujte podle následujících kroků hello.
+Chcete-li vytvořit skupinu NSG s názvem *NSG front-endu* založená na předchozím scénáři, postupujte podle následujících kroků.
 
-1. Pokud nebyly dosud, nainstalujete a nakonfigurujete hello nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) a přihlaste se pomocí účtu Azure tooan [az přihlášení](/cli/azure/#login). 
+1. Pokud nebyly dosud, nainstalovat a nakonfigurovat nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) a přihlaste se k Azure účet pomocí [az přihlášení](/cli/azure/#login). 
 
-2. Vytvořit skupinu NSG pomocí hello [vytvořit az sítě nsg](/cli/azure/network/nsg#create) příkaz. 
+2. Vytvoření pomocí NSG [vytvořit az sítě nsg](/cli/azure/network/nsg#create) příkaz. 
 
     ```azurecli
     az network nsg create \
@@ -56,11 +56,11 @@ toocreate skupinu NSG s názvem *NSG front-endu* podle hello scénář předchoz
 
     Parametry:
    
-   * `--resource-group`: Název skupiny prostředků hello, kde se má vytvořit hello NSG. V našem scénáři je to *TestRG*.
-   * `--location`: Oblast azure, kde hello nová skupina NSG je vytvořena. Pro náš scénář *westus*.
-   * `--name`: Název hello nová skupina NSG. Pro náš scénář *NSG front-endu*.
+   * `--resource-group`: Název skupiny prostředků, kde se má vytvořit NSG. V našem scénáři je to *TestRG*.
+   * `--location`: Oblast azure, kde se má vytvořit nová skupina NSG. Pro náš scénář *westus*.
+   * `--name`: Název nové skupiny NSG. Pro náš scénář *NSG front-endu*.
 
-    Hello očekává, že výstup je poměrně bit informace včetně seznam všech pravidel výchozí hello. Hello následující příklad ukazuje hello výchozí pravidla pomocí filtru dotazu JMESPATH hello `table` výstupní formát:
+    Očekávaný výstup je poměrně bit informací, včetně seznamu všechna výchozí pravidla. Následující příklad ukazuje, výchozí pravidla pomocí filtru dotazu JMESPATH s `table` výstupní formát:
 
     ```azurecli
     az network nsg show \
@@ -77,16 +77,16 @@ toocreate skupinu NSG s názvem *NSG front-endu* podle hello scénář předchoz
         Allow     Allow inbound traffic from all VMs in VNET              *                Inbound           65000
         Allow     Allow inbound traffic from azure load balancer          *                Inbound           65001
         Deny      Deny all inbound traffic                                *                Inbound           65500
-        Allow     Allow outbound traffic from all VMs tooall VMs in VNET  *                Outbound          65000
-        Allow     Allow outbound traffic from all VMs tooInternet         *                Outbound          65001
+        Allow     Allow outbound traffic from all VMs to all VMs in VNET  *                Outbound          65000
+        Allow     Allow outbound traffic from all VMs to Internet         *                Outbound          65001
         Deny      Deny all outbound traffic                               *                Outbound          65500
 
 
 
-3. Vytvořte pravidlo, které umožňuje přístup tooport 3389 (RDP) z hello Internet s hello [vytvořit pravidla nsg sítě az](/cli/azure/network/nsg/rule#create) příkaz.
+3. Vytvořte pravidlo, které umožňuje přístup k portu 3389 (RDP) z Internetu se [vytvořit pravidla nsg sítě az](/cli/azure/network/nsg/rule#create) příkaz.
 
     > [!NOTE]
-    > V závislosti na prostředí hello používáte, může být nutné toomodify hello `*` znak v argumentech hello následující tak, aby nebyla tooexpand hello argument před spuštěním.
+    > V závislosti na prostředí, kterou používáte, možná budete muset změnit `*` znak v argumentech následující tak, aby rozbalte argument před spuštěním.
    
     ```azurecli
     az network nsg rule create \
@@ -126,21 +126,21 @@ toocreate skupinu NSG s názvem *NSG front-endu* podle hello scénář předchoz
 
     Parametry:
 
-    * `--resource-group testrg`: hello toouse skupiny prostředků. Všimněte si, že se jedná o velká a malá písmena.
-    * `--nsg-name NSG-FrontEnd`: Název hello NSG, ve které hello bude vytvořeno pravidlo.
-    * `--name rdp-rule`: Název pro nové pravidlo hello.
-    * `--access Allow`: Úroveň přístupu pro pravidlo hello (zakázat nebo povolit).
+    * `--resource-group testrg`Použití: skupinu prostředků. Všimněte si, že se jedná o velká a malá písmena.
+    * `--nsg-name NSG-FrontEnd`: Název NSG, ve kterém se vytvoří pravidlo.
+    * `--name rdp-rule`: Název pro nové pravidlo.
+    * `--access Allow`: Úroveň přístupu pro pravidlo (zakázat nebo povolit).
     * `--protocol Tcp`: Protokol (Tcp, Udp nebo *).
-    * `--direction Inbound`: Směr hello připojení (příchozí nebo odchozí).
-    * `--priority 100`: Prioritu pro pravidlo hello.
+    * `--direction Inbound`: Směr připojení (příchozí nebo odchozí).
+    * `--priority 100`: Prioritu pro pravidlo.
     * `--source-address-prefix Internet`: Předpona zdrojové adresy v CIDR nebo pomocí výchozí značky.
-    * `--source-port-range "*"`: Zdrojové portu nebo rozsah portů. Port, který otevírá hello připojení.
+    * `--source-port-range "*"`: Zdrojové portu nebo rozsah portů. Port, který otevírá připojení.
     * `--destination-address-prefix "*"`: Předpona cílové adresy v CIDR nebo pomocí výchozí značky.
-    * `--destination-port-range 3389`: Cílový port nebo rozsah portů. Port, který obdrží požadavek na připojení hello.
+    * `--destination-port-range 3389`: Cílový port nebo rozsah portů. Port, který obdrží požadavek na připojení.
 
 
 
-4. Vytvořte pravidlo, které umožňuje přístup tooport 80 (HTTP) z hello Internet **vytvořit pravidla nsg sítě az** příkaz.
+4. Vytvoření pravidla, která umožňuje přístup k portu 80 (HTTP) z Internetu **vytvořit pravidla nsg sítě az** příkaz.
    
     ```azurecli
     az network nsg rule create \
@@ -178,7 +178,7 @@ toocreate skupinu NSG s názvem *NSG front-endu* podle hello scénář předchoz
     }
     ```
 
-5. Vazby hello NSG toohello **front-endu** podsíť s hello [aktualizace az sítě vnet podsíť](/cli/azure/network/vnet/subnet#update) příkaz.
+5. Skupiny NSG k vytvoření vazby **front-endu** podsíť s [aktualizace az sítě vnet podsíť](/cli/azure/network/vnet/subnet#update) příkaz.
         
     ```azurecli
     az network vnet subnet update \
@@ -231,10 +231,10 @@ toocreate skupinu NSG s názvem *NSG front-endu* podle hello scénář předchoz
     }
     ```
 
-## <a name="create-hello-nsg-for-hello-backend-subnet"></a>Vytvoření hello skupina NSG pro hello `BackEnd` podsítě
-toocreate skupinu NSG s názvem *NSG back-end* podle hello scénář předchozí, postupujte podle následujících kroků hello.
+## <a name="create-the-nsg-for-the-backend-subnet"></a>Skupina NSG pro vytvoření `BackEnd` podsítě
+Chcete-li vytvořit skupinu NSG s názvem *NSG back-end* založená na předchozím scénáři, postupujte podle následujících kroků.
 
-1. Vytvoření hello `NSG-BackEnd` NSG s **vytvořit az sítě nsg**.
+1. Vytvořte `NSG-BackEnd` NSG s **vytvořit az sítě nsg**.
    
     ```azurecli
     az network nsg create \
@@ -243,9 +243,9 @@ toocreate skupinu NSG s názvem *NSG back-end* podle hello scénář předchozí
     --location centralus
     ```
    
-    Jako v kroku 2, předchozí hello očekává, že výstup je poměrně rozsáhlé, včetně výchozí pravidla.
+    Jako v kroku 2, předchozí je očekávaný výstup poměrně rozsáhlé, včetně výchozí pravidla.
    
-2. Vytvořte pravidlo, které umožňuje přístup tooport 1433 (SQL) z hello `FrontEnd` podsíť s hello **vytvořit pravidla nsg sítě az** příkaz.
+2. Vytvoření pravidla, která umožňuje přístup k portu 1433 (SQL) z `FrontEnd` podsíť s **vytvořit pravidla nsg sítě az** příkaz.
    
     ```azurecli
     az network nsg rule create \
@@ -283,7 +283,7 @@ toocreate skupinu NSG s názvem *NSG back-end* podle hello scénář předchozí
     }
     ```
 
-3. Vytvořte pravidlo, které odepře přístup toohello Internetu pomocí hello **vytvořit pravidla nsg sítě az** příkaz.
+3. Vytvořte pravidlo, které odepře přístup k Internetu pomocí **vytvořit pravidla nsg sítě az** příkaz.
    
     ```azurecli
     az network nsg rule create \
@@ -321,7 +321,7 @@ toocreate skupinu NSG s názvem *NSG back-end* podle hello scénář předchozí
     }
     ```
 
-4. Vazby hello NSG toohello `BackEnd` podsíť pomocí zápisu hello **az sítě vnet podsíť sadu** příkaz.
+4. Skupiny NSG k vytvoření vazby `BackEnd` podsíť pomocí **az sítě vnet podsíť sadu** příkaz.
    
     ```azurecli
     az network vnet subnet update \

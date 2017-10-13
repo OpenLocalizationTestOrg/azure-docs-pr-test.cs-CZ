@@ -1,6 +1,6 @@
 ---
-title: "aaaReplicate technologie Hyper-V virtuální počítače v tooAzure cloudy VMM | Microsoft Docs"
-description: "Tento článek popisuje, jak tooreplicate technologie Hyper-V virtuální počítače na hostitele Hyper-V umístěný v tooAzure cloudech System Center VMM."
+title: "Replikace virtuálních počítačů Hyper-V v cloudech VMM do Azure | Dokumentace Microsoftu"
+description: "Tento článek popisuje, jak replikovat virtuální počítače Hyper-V na hostitelích Hyper-V, které jsou umístěné v cloudech System Center VMM, do Azure."
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/23/2017
 ms.author: raynew
-ms.openlocfilehash: 136f68585534c17b615ecc4e82c0133bf813503f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ac0931a71a2814723380256fc5326fc431c82f2c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-tooazure"></a>Replikace virtuálních počítačů technologie Hyper-V v tooAzure cloudy VMM
+# <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure"></a>Replikace virtuálních počítačů Hyper-V v cloudech VMM do Azure
 > [!div class="op_single_selector"]
 > * [Azure Portal](site-recovery-vmm-to-azure.md)
 > * [PowerShell – Resource Manager](site-recovery-vmm-to-azure-powershell-resource-manager.md)
@@ -29,20 +29,20 @@ ms.lasthandoff: 10/06/2017
 >
 >
 
-Hello služba Azure Site Recovery přispívá tooyour provozní kontinuitu a po havárii (BCDR) strategie Orchestrace replikace, převzetí služeb při selhání a obnovení virtuálních počítačů a fyzických serverů. Počítače může být replikované tooAzure nebo tooa sekundárního místního datového centra. Rychlý přehled najdete v článku [Co je Azure Site Recovery?](site-recovery-overview.md)
+Služba Azure Site Recovery přispívá ke strategii zachování plynulého chodu podniku a zotavení po havárii (BCDR) tím, že orchestruje replikaci, převzetí služeb při selhání a obnovení virtuálních počítačů a fyzických serverů. Počítače je možné replikovat do Azure nebo do sekundárního místního datového centra. Rychlý přehled najdete v článku [Co je Azure Site Recovery?](site-recovery-overview.md)
 
 ## <a name="overview"></a>Přehled
-Tento článek popisuje, jak toodeploy Site Recovery tooreplicate technologie Hyper-V virtuální počítače v Hyper-V hostitelské servery, které se nacházejí v tooAzure privátních cloudech VMM.
+Tento článek popisuje postup nasazení služby Size Recovery k replikaci virtuálních počítačů Hyper-V na hostitelských serverech technologie Hyper-V, které jsou na privátních cloudech VMM, do Azure.
 
-Hello článek obsahuje požadavky pro hello scénář a ukazuje, jak tooset do trezoru Site Recovery, získat hello Azure Site Recovery Provider nainstalovaný na zdrojovém serveru VMM hello, zaregistrujte hello server v trezoru hello, přidáte účet úložiště Azure, nainstalujte hello Agent služeb zotavení Azure na hostitelských serverech technologie Hyper-V, nakonfigurovat nastavení ochrany pro cloudy VMM, které budou použité tooall chráněné virtuální počítače a pak povolte ochranu pro tyto virtuální počítače. Nakonec testování převzetí služeb při selhání hello toomake se, že vše funguje podle očekávání.
+Článek uvádí předpoklady pro scénář a ukazuje, jak nastavit trezor Site Recovery, získat zprostředkovatele Azure Site Recovery nainstalovaného na zdrojovém serveru VMM, zaregistrovat server v trezoru, přidat účet úložiště Azure, nainstalovat agenta Služeb zotavení Azure na hostitelských serverech technologie Hyper-V, nakonfigurovat nastavení ochrany pro cloudy VMM, které budou použité pro všechny chráněné virtuální počítače, a pak pro tyto virtuální počítače povolit ochranu. Nakonec otestujete převzetí služeb při selhání, abyste měli jistotu, že všechno funguje podle očekávání.
 
-POST jakékoli dotazy nebo připomínky v hello dolní části tohoto článku nebo na hello [fóru Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Jakékoli dotazy nebo připomínky můžete publikovat na konci tohoto článku nebo na [fóru služby Azure Site Recovery](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 ## <a name="architecture"></a>Architektura
 ![Architektura](./media/site-recovery-vmm-to-azure-classic/topology.png)
 
-* Hello zprostředkovatele Azure Site Recovery je nainstalován na hello VMM během nasazování Site Recovery a hello VMM server je zaregistrován v trezoru Site Recovery hello. komunikuje se službou Site Recovery orchestraci replikace toohandle Hello zprostředkovatele.
-* agent služeb zotavení Azure Hello je nainstalován na hostitelských serverech technologie Hyper-V během nasazování Site Recovery. Zpracovává data replikace tooAzure úložiště.
+* Zprostředkovatel služby Azure Site Recovery je nainstalován na VMM během nasazování služby Site Recovery a VMM server je zaregistrován v trezoru Site Recovery. Zprostředkovatel komunikováním se službou Site Recovery zpracovává orchestraci replikace.
+* Agent Služeb zotavení Azure je nainstalován na hostitelských serverech technologie Hyper-V během nasazování Site Recovery. Zpracovává replikaci dat do úložiště Azure.
 
 ## <a name="azure-prerequisites"></a>Požadavky Azure
 Tady je seznam toho, co budete potřebovat v Azure.
@@ -50,29 +50,29 @@ Tady je seznam toho, co budete potřebovat v Azure.
 | **Požadavek** | **Podrobnosti** |
 | --- | --- |
 | **Účet Azure** |Budete potřebovat účet [Microsoft Azure](https://azure.microsoft.com/). Můžete začít s [bezplatnou zkušební verzí](https://azure.microsoft.com/pricing/free-trial/). [Další informace](https://azure.microsoft.com/pricing/details/site-recovery/) o cenách za Site Recovery |
-| **Úložiště Azure** |Budete potřebovat data toostore replikovat účtu úložiště Azure. Replikovaná data jsou uložena v úložišti Azure a virtuální počítače Azure se spouštějí, když je třeba převzít služby při selhání. <br/><br/>Potřebujete [účet se standardním geograficky redundantním úložištěm](../storage/common/storage-redundancy.md#geo-redundant-storage). Hello účet musí být ve stejné oblasti jako služba Site Recovery hello hello a přidružen hello stejného předplatného. Upozorňujeme, že účty úložiště toopremium replikace není aktuálně podporována a by se neměla používat.<br/><br/>[Přečtěte si informace o](../storage/common/storage-introduction.md) úložišti Azure. |
-| **Síť Azure** |Budete potřebovat virtuální síť Azure, virtuální počítače Azure připojí toowhen převzetí služeb při selhání. Hello virtuální síť Azure musí být v hello stejné oblasti jako trezor Site Recovery hello. |
+| **Úložiště Azure** |K ukládání replikovaných dat budete potřebovat účet úložiště Azure. Replikovaná data jsou uložena v úložišti Azure a virtuální počítače Azure se spouštějí, když je třeba převzít služby při selhání. <br/><br/>Potřebujete [účet se standardním geograficky redundantním úložištěm](../storage/common/storage-redundancy.md#geo-redundant-storage). Účet musí být ve stejné oblasti jako služba Site Recovery a musí být přidružený ke stejnému předplatnému. Poznámka: Replikace do účtů Storage úrovně Premium není aktuálně podporována a neměla by se používat.<br/><br/>[Přečtěte si informace o](../storage/common/storage-introduction.md) úložišti Azure. |
+| **Síť Azure** |Budete potřebovat virtuální síť Azure, ke které se budou virtuální počítače Azure připojovat, když dojde k převzetí služeb při selhání. Virtuální síť Azure musí být ve stejné oblasti jako trezor Site Recovery. |
 
 ## <a name="on-premises-prerequisites"></a>Místní požadavky
 Tady je seznam toho, co budete potřebovat místně.
 
 | **Požadavek** | **Podrobnosti** |
 | --- | --- |
-| **VMM** |Budete potřebovat minimálně jeden server VMM nasazený jako fyzický nebo virtuální samostatný server nebo jako virtuální cluster. <br/><br/>Hello VMM server by měl běžet System Center 2012 R2 s nejnovější kumulativní aktualizace hello.<br/><br/>Budete potřebovat alespoň jeden cloud nakonfigurované na serveru VMM hello.<br/><br/>Hello zdrojový cloud, které chcete tooprotect musí obsahovat jeden nebo více skupin hostitelů VMM.<br/><br/>Další informace o nastavení cloudů najdete na blogu Keithema Mayera v příspěvku [Návod: vytvoření privátních cloudů pomocí produktu System Center 2012 SP1 VMM](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx). |
-| **Hyper-V** |Budete potřebovat jeden nebo více hostitelských serverů Hyper-V nebo clusterů v cloudu VMM hello. Hello hostitelský server by měl mít a jeden nebo více virtuálních počítačů. <br/><br/>server Hello technologie Hyper-V musí být spuštěn alespoň **Windows Server 2012 R2** s rolí hello technologie Hyper-V nebo **Microsoft Hyper-V Server 2012 R2** a mít hello nainstalované nejnovější aktualizace.<br/><br/>Jakýkoli server Hyper-V obsahující virtuální počítače, budete chtít tooprotect se musí nacházet v cloudu VMM.<br/><br/>Pokud používáte technologii Hyper-V v clusteru, je důležité vědět, že zprostředkovatel clusteru se nevytvoří automaticky, pokud máte clustery založené na statických IP adresách. Zprostředkovatel clusteru hello tooconfigure budete potřebovat ručně. [Další informace](https://www.petri.com/use-hyper-v-replica-broker-prepare-host-clusters) v najdete blogu Aidana Finna. |
-| **Chráněné počítače** | Virtuální počítače chcete tooprotect, by měly splňovat [požadavky pro Azure](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements). |
+| **VMM** |Budete potřebovat minimálně jeden server VMM nasazený jako fyzický nebo virtuální samostatný server nebo jako virtuální cluster. <br/><br/>Na serveru VMM by měl běžet System Center 2012 R2 s nejnovější kumulativními aktualizacemi.<br/><br/>Na serveru VMM budete muset mít nakonfigurovaný aspoň jeden cloud.<br/><br/>Zdrojový cloud, který chcete chránit, musí obsahovat minimálně jednu skupinu hostitelů VMM.<br/><br/>Další informace o nastavení cloudů najdete na blogu Keithema Mayera v příspěvku [Návod: vytvoření privátních cloudů pomocí produktu System Center 2012 SP1 VMM](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx). |
+| **Hyper-V** |Budete potřebovat jeden nebo více hostitelských serverů Hyper-V nebo clusterů v cloudu VMM. Hostitelský server by měl mít a jeden nebo více virtuálních počítačů. <br/><br/>Na serveru Hyper-V musí běžet minimálně **Windows Server 2012 R2** s rolí Hyper-V nebo **Microsoft Hyper-V Server 2012 R2** a musí být na něm nainstalované nejnovější aktualizace.<br/><br/>Jakýkoli server Hyper-V obsahující virtuální počítače, které chcete chránit, musí být v cloudu VMM.<br/><br/>Pokud používáte technologii Hyper-V v clusteru, je důležité vědět, že zprostředkovatel clusteru se nevytvoří automaticky, pokud máte clustery založené na statických IP adresách. Budete ho muset nakonfigurovat ručně. [Další informace](https://www.petri.com/use-hyper-v-replica-broker-prepare-host-clusters) v najdete blogu Aidana Finna. |
+| **Chráněné počítače** | Virtuální počítače, které chcete chránit, by měly splňovat [požadavky Azure](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements). |
 
 ## <a name="network-mapping-prerequisites"></a>Požadavky na mapování sítě
-Při ochraně virtuálních počítačů v síti Azure mapování mapuje sítě virtuálních počítačů na zdrojovém serveru VMM hello a cílové sítě Azure tooenable hello následující:
+Při ochraně virtuálních počítačů v síti Azure mapování mapuje sítě virtuálních počítačů na zdrojovém serveru VMM a cílové sítě Azure, aby bylo možné následující:
 
-* Všechny počítače, které se Překlopí na hello stejné tooeach jiných, bez ohledu na plánu obnovení se mohou připojit.
-* Pokud na hello cílové síti Azure nastavená brána sítě, virtuální počítače můžete připojit tooother místní virtuální počítače.
-* Pokud nenakonfigurujete sítě mapování jenom virtuální počítače, které převzetí služeb při selhání v hello stejný plán obnovení bude možné tooconnect tooeach jiných po tooAzure převzetí služeb při selhání.
+* Všechny počítače, u kterých dojde k převzetí služeb při selhání ve stejné síti, se budou moct připojit k sobě navzájem, a to bez ohledu na to, v jakém jsou plánu obnovení.
+* Pokud je v cílové síti Azure nastavená síťová brána, virtuální počítače se budou moct připojit k jiným místním virtuálním počítačům.
+* Pokud nenakonfigurujete mapování sítě, budou se moct po předání služeb při selhání do Azure připojit k sobě navzájem pouze virtuální počítače, u kterých dojde k převzetí služeb při selhání v rámci stejného plánu obnovení.
 
-Pokud chcete, aby mapování sítě toodeploy budete potřebovat následující hello:
+Pokud chcete nasadit mapování sítě, budete potřebovat následující:
 
-* Hello virtuálních počítačů má tooprotect na zdrojovém serveru VMM hello by měl být připojený tooa síť virtuálních počítačů. Tuto síť by měla být propojené tooa logické sítě, který je přidružený k hello cloudu.
-* Po převzetí služeb při selhání můžete připojit síti Azure toowhich replikovat virtuální počítače. Tuto síť vyberete v době hello převzetí služeb při selhání. Hello síť musí být ve hello stejné oblasti jako vaše předplatné Azure Site Recovery.
+* Virtuální počítače, který chcete chránit na zdrojovém serveru VMM, musí být připojené k síti virtuálních počítačů. Tato síť musí být propojená na logickou síť, která je přidružená ke cloudu.
+* Síť Azure, ke které se budou moct po převzetí služeb při selhání připojit replikované virtuální počítače. Tuto síť vyberete v okamžiku převzetí služeb při selhání. Síť musí být ve stejné oblasti jako vaše předplatné Azure Site Recovery.
 
 
 Připravte sítě v nástroji VMM:
@@ -82,205 +82,205 @@ Připravte sítě v nástroji VMM:
 
 
 ## <a name="step-1-create-a-site-recovery-vault"></a>Krok 1: Vytvoření trezoru Site Recovery
-1. Přihlaste se toohello [portálu pro správu](https://portal.azure.com) ze serveru VMM hello chcete tooregister.
+1. Přihlaste se k [portálu pro správu](https://portal.azure.com) ze serveru VMM, který chcete zaregistrovat.
 2. Klikněte na **Data Services** > **Služby zotavení** > **Trezor Site Recovery**.
 3. Klikněte na **Vytvořit nový** > **Rychlé vytvoření**.
-4. V **název**, zadejte popisný název tooidentify hello trezoru.
-5. V **oblast**, hello vyberte zeměpisnou oblast trezoru hello. toocheck podporované oblasti, najdete v části geografickou dostupností v [Azure Site Recovery podrobnosti o cenách](https://azure.microsoft.com/pricing/details/site-recovery/).
+4. Jako **Název** zadejte popisný název pro identifikaci trezoru.
+5. V rozevírací nabídce **Oblast** vyberte zeměpisnou oblast trezoru. Informace o tom, které oblasti jsou podporované, najdete v tématu s [podrobnostmi o cenách Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/) v části s geografickou dostupností.
 6. Klikněte na **Vytvořit trezor**.
 
     ![Nový trezor](./media/site-recovery-vmm-to-azure-classic/create-vault.png)
 
-Zkontrolujte, zda tooconfirm hello stav panelu, který hello trezor byl úspěšně vytvořen. Hello trezor bude uvedený jako **Active** na hlavní stránce služeb zotavení hello.
+Podle informací na stavovém řádku si ověřte, že se trezor úspěšně vytvořil. Trezor bude uvedený jako **aktivní** na hlavní stránce Služeb zotavení.
 
 ## <a name="step-2-generate-a-vault-registration-key"></a>Krok 2: Vygenerování registračního klíče trezoru
-Vygenerujte registrační klíč v trezoru hello. Po stažení hello zprostředkovatele Azure Site Recovery a nainstalujte ji na serveru VMM hello, použijete tento klíč tooregister hello VMM server v trezoru hello.
+Vygenerujte registrační klíč v trezoru. Po tom, co si stáhnete zprostředkovatele Azure Site Recovery a nainstalujete ho na server VMM, použijete tento klíč k registraci serveru VMM v trezoru.
 
-1. V hello **služeb zotavení** klikněte na tlačítko hello trezoru tooopen hello stránky rychlý Start. Rychlý Start můžete otevřít také kdykoli pomocí ikony hello.
+1. Na stránce **Služby zotavení** kliknutím na trezor otevřete stránku Rychlý start. Stránku Rychlý Start je možné kdykoli otevřít pomocí ikony.
 
     ![Ikona Rychlý start](./media/site-recovery-vmm-to-azure-classic/qs-icon.png)
-2. V rozevíracím seznamu hello vyberte **mezi místními servery VMM a Microsoft Azure**.
-3. V části **Připravit servery VMM** klikněte na **Vygenerovat soubor registračního klíče**. soubor klíče Hello se vygeneruje automaticky a je platný po dobu 5 dní, po jeho vygenerování. Pokud nejsou k hello portálu Azure ze serveru VMM hello budete potřebovat toocopy tento souborový server toohello.
+2. V rozevíracím seznamu vyberte **Mezi místní lokalitou VMM a Microsoft Azure**.
+3. V části **Připravit servery VMM** klikněte na **Vygenerovat soubor registračního klíče**. Soubor klíče se vygeneruje automaticky a je platný po dobu 5 dní od vygenerování. Pokud k portálu Azure nepřistupujete ze serveru VMM, budete si muset tento soubor zkopírovat na server.
 
     ![Registrační klíč](./media/site-recovery-vmm-to-azure-classic/register-key.png)
 
-## <a name="step-3-install-hello-azure-site-recovery-provider"></a>Krok 3: Instalace hello zprostředkovatele Azure Site Recovery
-1. V **rychlý Start** > **připravit servery VMM**, klikněte na tlačítko **stáhnout zprostředkovatele Microsoft Azure Site Recovery pro instalaci na serverech VMM** tooobtain hello nejnovější verzi instalačního souboru zprostředkovatele hello.
-2. Spusťte tento soubor na zdrojovém serveru VMM hello.
+## <a name="step-3-install-the-azure-site-recovery-provider"></a>Krok 3: Nainstalování zprostředkovatele Azure Site Recovery
+1. V části **Rychlý Start** > **Připravit servery VMM** si kliknutím na **Stáhnout zprostředkovatele Microsoft Azure Site Recovery pro instalaci na servery VMM** stáhněte nejnovější verzi instalačního souboru zprostředkovatele.
+2. Spusťte tento soubor na zdrojovém serveru VMM.
 
    > [!NOTE]
-   > Pokud VMM je nasazen v clusteru a instalujete hello zprostředkovatele pro hello první instalaci na aktivním uzlu a dokončit hello instalace tooregister hello VMM server v trezoru hello. Nainstalujte hello zprostředkovatele na hello dalších uzlů. Všimněte si, že pokud upgradujete hello zprostředkovatele, budete potřebovat tooupgrade na všech uzlech, protože všechny by měly být spuštěná hello tutéž verzi zprostředkovatele.
+   > Pokud je server VMM nasazený v clusteru a instalujete zprostředkovatele poprvé, nainstalujte ho na aktivní uzel a dokončením instalace zaregistrujte server VMM v trezoru. Potom zprostředkovatele nainstalujte na ostatní uzly. Je třeba upozornit na to, že pokud zprostředkovatele upgradujete, budete ho muset upgradovat na všech uzlech, protože na všech by měla běžet stejná verze zprostředkovatele.
    >
    >
-3. Hello instalační program provádí kontrolu provádí a vyžádá oprávnění toostop hello VMM toobegin instalace produktu service Provider. Hello služby VMM se restartuje automaticky po dokončení instalace. Pokud instalujete na clusteru VMM, které budete výzva toostop hello Clusterové role.
-4. V nastavení služby **Microsoft Update** můžete vyjádřit výslovný souhlas se stahováním a instalací aktualizací. Toto nastavení povoleno zprostředkovatele aktualizace se nainstalují podle zásad tooyour Microsoft Update.
+3. Instalační program provádí kontrolu požadavků, které musí být splněné, a požádá o oprávnění k zastavení služby VMM, aby bylo možné spustit instalační program zprostředkovatele. Služba VMM se po dokončení instalace automaticky restartuje. Pokud zprostředkovatele instalujete na clusteru VMM, budete vyzváni k zastavení role Cluster.
+4. V nastavení služby **Microsoft Update** můžete vyjádřit výslovný souhlas se stahováním a instalací aktualizací. Když bude toto nastavení povoleno, aktualizace zprostředkovatele se budou instalovat v souladu s vašimi zásadami pro službu Microsoft Update.
 
     ![Aktualizace Microsoft Update](./media/site-recovery-vmm-to-azure-classic/updates.png)
-5. umístění instalace pro zprostředkovatele je nastaven příliš hello Hello**<SystemDrive>\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin**. Klikněte na **Nainstalovat**.
+5. Umístění instalace pro zprostředkovatele je nastaveno na **<SystemDrive>\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin**. Klikněte na **Nainstalovat**.
 
    ![InstallLocation](./media/site-recovery-vmm-to-azure-classic/install-location.png)
-6. Po hello je nainstalován poskytovatel klikněte na tlačítko **zaregistrovat** tooregister hello server v trezoru hello.
+6. Po nainstalování zprostředkovatele kliknutím na **Zaregistrovat** zaregistrujte server v trezoru.
 
     ![InstallComplete](./media/site-recovery-vmm-to-azure-classic/install-complete.png)
-7. V **název trezoru**, ověřte název hello hello úložiště, ve které hello bude server zaregistrovaný. Klikněte na *Další*.
+7. V poli **Název trezoru** ověřte název trezoru, ve kterém bude server zaregistrovaný. Klikněte na *Další*.
 
     ![Registrace serveru](./media/site-recovery-vmm-to-azure-classic/vaultcred.PNG)
-8. V **připojení k Internetu** zadat jak hello zprostředkovatel, který běží na hello VMM server připojuje toohello Internetu. Vyberte **připojit se s existujícím nastavením proxy serveru** toouse hello výchozí nastavení připojení k Internetu nakonfigurované na serveru hello.
+8. V části **Připojení k internetu** určete, jak se zprostředkovatel, který běží na serveru VMM, připojí k internetu. Pokud chcete použít výchozí nastavení připojení k internetu nakonfigurované na serveru, vyberte **Připojit pomocí stávajícího nastavení proxy**.
 
     ![Nastavení internetu](./media/site-recovery-vmm-to-azure-classic/proxydetails.PNG)
 
-   * Pokud chcete, aby toouse vlastní proxy server můžete musí ho nastavit před instalací hello zprostředkovatele. Při konfiguraci nastavení vlastního proxy serveru se test spustí toocheck hello proxy připojení.
-   * Pokud používáte vlastní proxy server nebo váš výchozí proxy server vyžaduje ověření, budete potřebovat tooenter hello podrobnosti o proxy serveru, včetně hello adresy a portu.
-   * Následující adresy URL musí být přístupný z hello serveru VMM a hostitelé Hyper-v hello
+   * Pokud chcete používat vlastní proxy server, měli byste ho nastavit před instalací zprostředkovatele. Při konfiguraci nastavení vlastního proxy serveru proběhne test, aby se zkontrolovalo připojení k proxy serveru.
+   * Pokud používáte vlastní proxy server nebo váš výchozí proxy server vyžaduje ověření, budete muset zadat podrobnosti o proxy serveru, včetně jeho adresy a portu.
+   * Ze serveru VMM a hostitelů Hyper-V by měly být přístupné následující adresy URL
      * *.hypervrecoverymanager.windowsazure.com
      * *.accesscontrol.windows.net
      * *.backup.windowsazure.com
      * *.blob.core.windows.net
      * *.store.core.windows.net
-   * Povolit hello IP adresy popsané v [rozsahy IP Datacentra Azure](https://www.microsoft.com/download/confirmation.aspx?id=41653) a protokol HTTPS (443). By měla mít toowhite seznam rozsahů IP hello oblast Azure, abyste naplánovali toouse a západní USA.
-   * Pokud používáte vlastní proxy server, účet VMM RunAs (DRAProxyAccount) bude vytvořen automaticky pomocí hello zadané přihlašovací údaje pro proxy. Hello proxy server nakonfigurujte tak, aby tento účet bylo možné úspěšně ověřit. nastavení účtu VMM RunAs Hello lze upravit v konzole VMM hello. toodo se otevřete hello **nastavení** pracovního prostoru, rozbalte položku **zabezpečení**, klikněte na tlačítko **účty spustit jako**a potom upravte hello heslo pro DRAProxyAccount. Služba VMM hello toorestart budete potřebovat, aby toto nastavení projevilo.
-9. V **registrační klíč**, vyberte klíč hello stáhli z Azure Site Recovery a zkopírovali toohello serveru VMM.
-10. nastavení šifrování Hello se používá pouze při replikaci virtuálních počítačů Hyper-V v tooAzure cloudy VMM. Pokud replikujete tooa sekundární lokality nepoužívá.
-11. V **název serveru**, zadejte popisný název tooidentify hello VMM server v trezoru hello. V konfiguraci clusteru zadejte název role clusteru VMM hello.
-12. V **synchronizovat metadata cloudu** vyberte, zda má toosynchronize metadata pro všechny cloudy na serveru VMM hello s úložištěm hello. Tuto akci stačí toohappen jednou na každém serveru. Pokud nechcete, aby toosynchronize všechny cloudy, můžete toto políčko nechat nezaškrtnuté a synchronizovat každý cloud jednotlivě ve vlastnostech hello cloudu v konzole VMM hello.
-13. Klikněte na tlačítko **Další** toocomplete hello procesu. Po registraci načte Azure Site Recovery metadata ze serveru VMM hello. Hello server se zobrazí na hello **servery VMM** karty v hello **servery** stránky v trezoru hello.
+   * Povolte IP adresy popsané v [rozsazích IP adres Azure Datacenter](https://www.microsoft.com/download/confirmation.aspx?id=41653) a protokol HTTPS (443). Musíte také povolit rozsahy IP adres oblasti Azure, kterou budete chtít používat, a oblasti Západní USA.
+   * Pokud používáte vlastní proxy server, vytvoří se automaticky účet VMM RunAs (DRAProxyAccount) pomocí zadaných přihlašovacích údajů proxy serveru. Proxy server nakonfigurujte tak, aby tento účet bylo možné úspěšně ověřit. Nastavení účtu VMM RunAs můžete upravovat v konzole VMM. Uděláte to tak, že otevřete pracovní prostor **Nastavení**, rozbalíte možnost **Zabezpečení**, kliknete na **Účty Spustit jako** a pak upravíte heslo pro DRAProxyAccount. Budete muset službu VMM restartovat, aby se toto nastavení projevilo.
+9. V části **Registrační klíč** vyberte klíč, který jste si stáhli z Azure Site Recovery a zkopírovali na server VMM.
+10. Nastavení šifrování se používá pouze při replikaci virtuálních počítačů Hyper-V v cloudech VMM do Azure. Pokud provádíte replikaci do sekundární lokality, tak se nepoužívá.
+11. Do pole **Název serveru** zadejte popisný název, který bude identifikovat server VMM v trezoru. V konfiguraci clusteru zadejte název role clusteru VMM.
+12. V části **Synchronizovat metadata cloudu** vyberte, zda chcete synchronizovat metadata pro všechny cloudy na serveru VMM v trezoru. Tuto akci stačí na každém serveru provést pouze jednou. Pokud nechcete provádět synchronizaci se všemi cloudy, můžete toto políčko nechat nezaškrtnuté a synchronizovat každý cloud jednotlivě ve vlastnostech cloudu v konzole VMM.
+13. Dokončete proces kliknutím na **Další**. Po registraci načte Azure Site Recovery metadata ze serveru VMM. Server se zobrazí na kartě **Servery VMM** stránky **Servery** v trezoru.
 
     ![Poslední stránka](./media/site-recovery-vmm-to-azure-classic/provider13.PNG)
 
-Po registraci načte Azure Site Recovery metadata ze serveru VMM hello. Hello server se zobrazí na hello **servery VMM** karty v hello **servery** stránky v trezoru hello.
+Po registraci načte Azure Site Recovery metadata ze serveru VMM. Server se zobrazí na kartě **Servery VMM** stránky **Servery** v trezoru.
 
 ### <a name="command-line-installation"></a>Instalace pomocí příkazového řádku
-Hello zprostředkovatele Azure Site Recovery můžete nainstalovat také pomocí hello následující příkazový řádek. Tato metoda může být použité tooinstall hello zprostředkovatele na serveru jádra pro Windows Server 2012 R2.
+Zprostředkovatele Azure Site Recovery je možné nainstalovat také pomocí následujícího příkazu z příkazového řádku. Tuto metodu je možné použít k instalaci zprostředkovatele na jádro serveru pro Windows Server 2012 R2.
 
-1. Hello zprostředkovatele instalace souboru a registraci klíče tooa složka pro stahování. Příklad: C:\ASR.
-2. Zastavit službu System Center Virtual Machine Manager hello
-3. Z příkazového řádku se zvýšenými oprávněními vyextrahujte instalační program zprostředkovatele hello pomocí těchto příkazů:
+1. Stáhněte si instalační soubor zprostředkovatele a registrační klíč do složky. Příklad: C:\ASR.
+2. Zastavte službu System Center Virtual Machine Manager.
+3. Z příkazového řádku se zvýšenými oprávněními pak pomocí následujících příkazů vyextrahujte instalační program zprostředkovatele:
 
         C:\Windows\System32> CD C:\ASR
         C:\ASR> AzureSiteRecoveryProvider.exe /x:. /q
-4. Nainstalujte zprostředkovatele hello následujícím způsobem:
+4. Nainstalujte zprostředkovatele následujícím způsobem:
 
         C:\ASR> setupdr.exe /i
-5. Zaregistrujte hello zprostředkovatele následujícím způsobem:
+5. Zaregistrujte zprostředkovatele následujícím způsobem:
 
         CD C:\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin
-        C:\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin\> DRConfigurator.exe /r  /Friendlyname <friendly name of hello server> /Credentials <path of hello credentials file> /EncryptionEnabled <full file name toosave hello encryption certificate>       
+        C:\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin\> DRConfigurator.exe /r  /Friendlyname <friendly name of the server> /Credentials <path of the credentials file> /EncryptionEnabled <full file name to save the encryption certificate>       
 
 Kde parametry mají následující význam:
 
-* **/ Credentials** : povinný parametr, který určuje hello umístění, ve které hello se nachází soubor registračního klíče  
-* **/ FriendlyName** : povinný parametr pro hello název hostitele serveru hello technologie Hyper-V, který se zobrazí na portálu Azure Site Recovery hello.
-* **/ EncryptionEnabled** : toospecify volitelný parametr, pokud chcete tooencryption vaše virtuální počítače v Azure (šifrování neaktivních dat). Název souboru Hello musí mít **.pfx** rozšíření.
-* **/ proxyaddress** : volitelný parametr, který určuje adresu hello hello proxy serveru.
-* **/ proxyport** : volitelný parametr, který určuje port hello hello proxy serveru.
-* **/ proxyusername** : volitelný parametr, který určuje uživatelské jméno proxy hello.
-* **/ proxypassword** : volitelný parametr, který určuje heslo pro proxy server hello.  
+* **/Credentials** je povinný parametr, který určuje, kde je umístěn soubor registračního klíče.  
+* **/FriendlyName** je povinný parametr pro název serveru hostitele technologie Hyper-V, který se zobrazí na portálu Azure Site Recovery.
+* **/EncryptionEnabled** je volitelný parametr umožňující určit, jestli chcete virtuální počítače v Azure šifrovat (šifrování neaktivních dat). Název souboru musí mít příponu **.pfx**.
+* **/proxyAddress** je volitelný parametr, který určuje adresu proxy serveru.
+* **/proxyport** je volitelný parametr, který určuje port proxy serveru.
+* **/proxyUsername** je volitelný parametr, který určuje uživatelské jméno proxy.
+* **/proxyPassword** je volitelný parametr, který určuje heslo k proxy serveru.  
 
 ## <a name="step-4-create-an-azure-storage-account"></a>Krok 4: Vytvoření účtu úložiště Azure
-1. Pokud nemáte účet úložiště Azure, klikněte na tlačítko **přidat účet úložiště Azure** toocreate účet.
-2. Vytvořte účet s povolenou geografickou replikací. Musí v hello stejné oblasti jako hello služba Azure Site Recovery a být přidružen k hello stejného předplatného.
+1. Pokud nemáte účet úložiště Azure, vytvořte si ho kliknutím na **Přidat účet úložiště Azure**.
+2. Vytvořte účet s povolenou geografickou replikací. Musí být ve stejné oblasti jako služba Azure Site Recovery a musí být přidružený ke stejnému předplatnému.
 
     ![Účet úložiště](./media/site-recovery-vmm-to-azure-classic/storage.png)
 
 > [!NOTE]
-> [Migrace účtů úložiště](../azure-resource-manager/resource-group-move-resources.md) napříč prostředků skupiny v hello stejného předplatného, nebo ve předplatných není podporována pro účty úložiště používá pro nasazení Site Recovery.
+> [Migrace účtů úložiště](../azure-resource-manager/resource-group-move-resources.md) napříč skupinami prostředků v rámci stejného předplatného nebo napříč předplatnými se pro účty úložiště použité k nasazení Site Recovery nepodporuje.
 >
 >
 
-## <a name="step-5-install-hello-azure-recovery-services-agent"></a>Krok 5: Instalace hello agenta služeb zotavení Azure
-Nainstalujte agenta služeb zotavení Azure hello na každém serveru hostitele technologie Hyper-V v cloudu VMM hello.
+## <a name="step-5-install-the-azure-recovery-services-agent"></a>Krok 5: Instalace agenta Služeb zotavení Azure
+Nainstalujte agenta služby Azure Site Recovery na každém serveru hostitele technologie Hyper-V v cloudu VMM.
 
-1. Klikněte na tlačítko **rychlý Start** > **stáhnout lokality agenta služeb zotavení Azure a nainstalovat ho na hostitele** tooobtain hello nejnovější verzi instalačního souboru agenta hello.
+1. Kliknutím na **Rychlý Start** > **Stáhnout agenta služby Azure Site Recovery a nainstalovat ho na hostitele** si stáhněte nejnovější verzi instalačního souboru agenta.
 
     ![Instalace agenta Služeb zotavení Azure](./media/site-recovery-vmm-to-azure-classic/install-agent.png)
-2. Spusťte instalační soubor hello na každém serveru hostitele technologie Hyper-V.
-3. Na hello **Kontrola předpokladů** klikněte na stránce **Další**. Automaticky se nainstalují všechny chybějící požadované součásti.
+2. Spusťte instalační soubor na každém serveru hostitele technologie Hyper-V.
+3. Na stránce **Kontrola předpokladů** klikněte na **Další**. Automaticky se nainstalují všechny chybějící požadované součásti.
 
     ![Požadavky agenta Služeb zotavení](./media/site-recovery-vmm-to-azure-classic/agent-prereqs.png)
-4. Na hello **nastavení instalace** určete, kam chcete tooinstall hello agenta a vyberte hello mezipaměti umístění, ve kterém se nainstalují metadata záloh. Pak klikněte na **Nainstalovat**.
-5. Po dokončení instalace klikněte na **Zavřít** toocomplete hello průvodce.
+4. Na stránce **Nastavení instalace** určete, kam chcete agenta nainstalovat, a vyberte umístění mezipaměti, do kterého se nainstalují metadata záloh. Pak klikněte na **Nainstalovat**.
+5. Po dokončení instalace kliknutím na **Zavřít** dokončete průvodce.
 
     ![Registrace agenta MARS](./media/site-recovery-vmm-to-azure-classic/agent-register.png)
 
 ### <a name="command-line-installation"></a>Instalace pomocí příkazového řádku
-Hello agenta služeb zotavení Microsoft Azure můžete také nainstalovat z příkazového řádku hello použití tohoto příkazu:
+Agenta Služeb zotavení Microsoft Azure můžete také nainstalovat z příkazového řádku pomocí tohoto příkazu:
 
     marsagentinstaller.exe /q /nu
 
 ## <a name="step-6-configure-cloud-protection-settings"></a>Krok 6: Nakonfigurování nastavení ochrany cloudu
-Po registraci serveru VMM hello můžete nakonfigurovat nastavení ochrany cloudu. Jste povolili možnost hello **synchronizovat data cloudu s trezorem hello** při instalaci hello poskytovatele, zobrazí se všechny cloudy na serveru VMM hello v hello <b>chráněné položky</b> kartě v trezoru hello.
+Po zaregistrování serveru VMM můžete nakonfigurovat nastavení ochrany cloudu. Při instalaci zprostředkovatele jste povolili možnost **Synchronizovat data cloudu s trezorem**, takže všechny cloudy na serveru VMM se v trezoru objeví na kartě <b>Chráněné položky</b>.
 
 ![Publikovaný cloud](./media/site-recovery-vmm-to-azure-classic/clouds-list.png)
 
-1. Na stránce hello rychlý Start, klikněte na **nastavení ochrany pro cloudy VMM**.
-2. Na hello **chráněné položky** klikněte na hello cloud chcete tooconfigure a přejděte toohello **konfigurace** kartě.
+1. Na stránce Rychlý Start klikněte na **Nastavení ochrany pro cloudy VMM**.
+2. Na kartě **Chráněné položky** klikněte na cloud, který chcete nakonfigurovat, a přejděte na kartu **Konfigurace**.
 3. V seznamu **Cíl** vyberte **Azure**.
-4. V **účet úložiště** vyberte účet úložiště Azure hello použít pro replikaci.
-5. Nastavit **šifrovat uložená data** příliš**vypnout**. Toto nastavení určuje, že data měla šifrovat během replikace mezi hello místními servery a Azure.
-6. V **frekvence kopírování** nechejte výchozí nastavení hello. Tato hodnota určuje, jak často se mají synchronizovat data mezi zdrojovým a cílovým umístěním.
-7. V **zachovat body obnovení pro**, nechejte výchozí nastavení hello. Výchozí hodnotu nula je na hostitelském serveru repliky uložený jenom hello nejnovější bod obnovení pro primární virtuální počítač.
-8. V **frekvence snímků konzistentní vzhledem k aplikacím**, nechejte výchozí nastavení hello. Tato hodnota určuje, jak často toocreate snímky. Snímky využívají službu Stínová kopie svazku (VSS) tooensure, které aplikace budou při pořízení snímku hello v konzistentním stavu.  Pokud nastavíte hodnotu, ujistěte se, že je menší než počet hello další body obnovení, které nakonfigurujete.
-9. V **čas spuštění replikace**, zadejte zahájení počáteční replikaci dat tooAzure. Hello časové pásmo na serveru hostitele technologie Hyper-V hello se použije. Doporučujeme, abyste naplánovali hello počáteční replikaci mimo špičku.
+4. V seznamu **Účet úložiště** vyberte účet úložiště Azure, který používáte pro replikaci.
+5. Možnost **Šifrovat uložená data** nastavte na **Vypnuto**. Toto nastavení určuje, že se data mají při replikaci mezi místní lokalitou a Azure šifrovat.
+6. V části **Frekvence kopírování** nechejte vybrané výchozí nastavení. Tato hodnota určuje, jak často se mají synchronizovat data mezi zdrojovým a cílovým umístěním.
+7. V části **Zachovávat body obnovení po tuto dobu** nechejte vybrané výchozí nastavení. Pokud zůstane nastavená výchozí hodnota nula, bude na hostitelském serveru repliky uložený jenom nejnovější bod obnovení pro primární virtuální počítač.
+8. V nastavení **Frekvence snímků konzistentních s aplikací** nechejte zadané výchozí nastavení. Tato hodnota určuje, jak často se mají vytvářet snímky. Snímky využívají službu Stínová kopie svazku (VSS), aby bylo zajištěno, že aplikace budou při pořízení snímku v konzistentním stavu.  Pokud budete nastavovat vlastní hodnotu, musí být menší než počet dalších bodů obnovení, které nakonfigurujete.
+9. V nastavení **Čas spuštění replikace** určete, kdy se má spustit počáteční replikace dat do Azure. Použije se časové pásmo na serveru hostitele technologie Hyper-V. Doporučujeme naplánovat si počáteční replikaci na dobu mimo špičku.
 
     ![Nastavení replikace cloudu](./media/site-recovery-vmm-to-azure-classic/cloud-settings.png)
 
-Po uložení nastavení hello úlohy se vytvoří a lze sledovat na hello **úlohy** kartě. Všechny servery hostitele technologie Hyper-V ve zdrojovém cloudu VMM hello budou nakonfigurované pro replikaci.
+Po uložení nastavení se vytvoří úloha, kterou je možné monitorovat na kartě **Úlohy**. Pro všechny hostitelské servery technologie Hyper-V ve zdrojovém cloudu VMM se nakonfiguruje replikace.
 
-Po uložení, lze nastavení cloudu změnit na hello **konfigurace** kartě toomodify hello cílové umístění nebo cílový účet úložiště budete potřebovat konfigurace cloudu hello tooremove a potom znovu nakonfigurovat hello cloudu. Všimněte si, že pokud změníte změny hello účtu úložiště hello se použijí jenom pro virtuální počítače, které jsou povolené pro ochranu po hello účet úložiště se změnilo. Existující virtuální počítače se nemigrují toohello nový účet úložiště.
+Po uložení je možné nastavení cloudu změnit na kartě **Konfigurace**. Pokud budete chtít cílové umístění nebo cílový účet úložiště upravit, budete muset odebrat konfiguraci cloudu a potom cloud znovu nakonfigurovat. Je potřeba počítat s tím, že pokud změníte účet úložiště, změna se po změně účtu úložiště aplikuje pouze na virtuální počítače, pro které je povolená ochrana. Stávající virtuální počítače se nebudou migrovat do nového účtu úložiště.
 
 ## <a name="step-7-configure-network-mapping"></a>Krok 7: Nakonfigurování mapování sítě
-Před zahájením mapování sítě ověřte, zda virtuální počítače na zdrojovém serveru VMM hello jsou připojené tooa síť virtuálních počítačů. Dále pak vytvořte jednu nebo více virtuálních sítí Azure. Všimněte si, že více sítí virtuálních počítačů může být namapované tooa jednu síť Azure.
+Před zahájením mapování sítě ověřte, jestli jsou virtuální počítače na zdrojovém serveru VMM připojené k síti virtuálních počítačů. Dále pak vytvořte jednu nebo více virtuálních sítí Azure. Na jednu síť Azure je možné namapovat více sítí virtuálních počítačů.
 
-1. Na stránce hello rychlý Start, klikněte na **mapovat sítě**.
-2. Na hello **sítě** ve **umístění zdroje**vyberte hello zdrojový server VMM. V části **Cílové umístění** vyberte Azure.
-3. V **zdroj** se zobrazí seznam sítí virtuálních počítačů, které jsou přidruženy serveru VMM hello sítě. V **cíl** sítě hello Azure se zobrazí sítě přidružené k předplatnému hello.
-4. Vyberte hello zdrojové síti virtuálních počítačů a klikněte na **mapy**.
-5. Na hello **výběr cílové sítě** stránky, vyberte hello cílovou síť Azure, které chcete toouse.
-6. Klikněte na tlačítko proces mapování hello zaškrtnutí toocomplete hello.
+1. Na obrazovce Rychlý start klikněte na **Mapovat sítě**.
+2. Na kartě **Sítě** v části **Zdrojové umístění** vyberte zdrojový server VMM. V části **Cílové umístění** vyberte Azure.
+3. V části se **zdrojovými** sítěmi se zobrazí seznam sítí virtuálních počítačů, které jsou přidružené k serveru VMM. V části s **cílovými** sítěmi se zobrazí sítě Azure přidružené k předplatnému.
+4. Vyberte zdrojovou síť virtuálních počítačů a klikněte na **Mapovat**.
+5. Na stránce pro **výběr cílové sítě** vyberte cílovou síť Azure, kterou chcete použít.
+6. Kliknutím na značku zaškrtnutí dokončete proces mapování.
 
     ![Nastavení replikace cloudu](./media/site-recovery-vmm-to-azure-classic/map-networks.png)
 
-Po uložení nastavení hello úloha spustí tootrack hello mapování průběh a je možné ji monitorovat na kartě úlohy hello. Všechny existující repliky virtuálních počítačů, které odpovídají zdrojové síti virtuálních počítačů toohello bude připojený toohello cílové sítě Azure. Nové virtuální počítače, které jsou připojené toohello zdrojové síti virtuálních počítačů bude po replikaci připojené toohello namapované síti Azure. Pokud upravíte existující mapování u nové sítě, virtuální počítače repliky připojí pomocí nového nastavení hello.
+Po uložení nastavení se spustí úloha pro sledování postupu mapování a je možné ji monitorovat na kartě Úlohy. Jakékoli existující virtuální počítače repliky, které odpovídají zdrojové síti virtuálních počítačů, budou připojené k cílovým sítím Azure. Nové virtuální počítače, které jsou připojené ke zdrojové síti virtuálních počítačů, budou po replikaci připojené k namapované síti Azure. Pokud upravíte existující mapování s novou sítí, virtuální počítače repliky budou připojené pomocí nového nastavení.
 
-Všimněte si, že pokud hello Cílová síť více podsítí a jedna z těchto podsítí má hello stejný název jako podsíť, na které hello zdrojový virtuální počítač se nachází, pak bude virtuální počítač repliky hello připojené toothat cílové podsíti po převzetí služeb při selhání. Pokud není žádná cílová podsíť s odpovídajícím názvem, hello virtuální počítač bude připojený toohello první podsíť v síti hello.
+Pamatujte, že pokud má cílová síť více podsítí a jedna z těchto podsítí má stejný název jako podsíť, ve které se nachází zdrojový virtuální počítač, bude virtuální počítač repliky po převzetí služeb při selhání připojen k této cílové podsíti. Pokud neexistuje žádná cílová podsíť s odpovídajícím názvem, připojí se virtuální počítač k první podsíti v síti.
 
 > [!NOTE]
-> [Migrace sítí](../azure-resource-manager/resource-group-move-resources.md) napříč prostředků skupiny v hello stejného předplatného, nebo ve předplatných není podporována pro sítě používá pro nasazení Site Recovery.
+> [Migrace sítí](../azure-resource-manager/resource-group-move-resources.md) napříč skupinami prostředků v rámci stejného předplatného nebo napříč předplatnými se pro sítě použité k nasazení Site Recovery nepodporuje.
 >
 >
 
 ## <a name="step-8-enable-protection-for-virtual-machines"></a>Krok 8: Povolení ochrany pro virtuální počítače
-Po serverů, cloudů a sítí jsou správně nakonfigurovaný, můžete povolit ochranu pro virtuální počítače v cloudu hello. Vezměte na vědomí následující hello:
+Po správném nakonfigurování serverů, cloudů a sítí můžete povolit ochranu pro virtuální počítače v cloudu. Je třeba počítat s následujícím:
 
 * Virtuální počítače, musí splňovat [požadavky Azure](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements).
-* tooenable ochrany hello operační systém a vlastnosti disku operačního systému musí být nastavena pro virtuální počítač hello. Při vytváření virtuálního počítače v nástroji VMM pomocí šablony virtuálního počítače můžete nastavit vlastnost hello. Můžete také nastavit tyto vlastnosti pro existující virtuální počítače v hello **Obecné** a **konfigurace hardwaru** karty hello vlastnosti virtuálního počítače. Pokud tyto vlastnosti nenastavíte v nástroji VMM budete moct tooconfigure je na portálu Azure Site Recovery hello.
+* Aby bylo možné povolit ochranu, musí být pro virtuální počítač nastavené vlastnosti operačního systému a disku operačního systému. Vlastnost můžete nastavit při vytváření virtuálního počítače v nástroji VMM pomocí šablony virtuálního počítače. Tyto vlastnosti také můžete nastavit pro existující virtuální počítače, a to na kartách **Obecné** a **Konfigurace hardwaru** ve vlastnostech virtuálního počítače. Pokud tyto vlastnosti nenastavíte v nástroji VMM, budete je moct nakonfigurovat na portálu Azure Site Recovery.
 
     ![Vytvoření virtuálního počítače](./media/site-recovery-vmm-to-azure-classic/enable-new.png)
 
     ![Změna vlastností virtuálního počítače](./media/site-recovery-vmm-to-azure-classic/enable-existing.png)
 
-1. tooenable ochranu na hello **virtuální počítače** v hello cloudu, ve které hello je umístěn virtuální počítač, klikněte na **povolení ochrany** > **přidat virtuální počítače**.
-2. Hello seznam virtuálních počítačů v cloudu hello vyberte hello jeden chcete tooprotect.
+1. Když budete chtít povolit ochranu, klikněte na kartě **Virtuální počítače** v cloudu, ve kterém se nachází virtuální počítač, na **Povolit ochranu** > **Přidat virtuální počítače**.
+2. Ze seznamu virtuálních počítačů v cloudu vyberte ten, který chcete chránit.
 
     ![Povolení ochrany virtuálního počítače](./media/site-recovery-vmm-to-azure-classic/select-vm.png)
 
-    Sledovat průběh hello **povolení ochrany** akce v hello **úlohy** kartě, včetně počáteční replikace hello. Po hello **dokončení ochrany** úloha spustí hello virtuální počítač je připraven na převzetí služeb při selhání. Po povolení ochrany a virtuální počítače jsou replikovány, budete moct tooview je v Azure.
+    Průběh akce **Povolit ochranu** můžete sledovat na kartě **Úlohy**, včetně počáteční replikace. Po spuštění úlohy **Dokončit ochranu** je virtuální počítač připraven k převzetí služeb při selhání. Když je povolena ochrana a virtuální počítače jsou replikovány, uvidíte je v Azure.
 
     ![Úloha ochrany virtuálního počítače](./media/site-recovery-vmm-to-azure-classic/vm-jobs.png)
 
-1. Ověřte vlastnosti virtuálního počítače hello a podle potřeby je upravte.
+1. Ověřte vlastnosti virtuálního počítače a podle potřeby je upravte.
 
     ![Ověření virtuálních počítačů](./media/site-recovery-vmm-to-azure-classic/vm-properties.png)
-2. Na hello **konfigurace** hello vlastností virtuálního počítače následující vlastnosti sítě je možné upravit.
+2. Na kartě **Konfigurace** ve vlastnostech virtuálního počítače je možné upravit následující vlastnosti sítě.
 
-* **Počet síťových adaptérů na hello cílový virtuální počítač** -hello počet síťových adaptérů je závisí na velikosti hello, kterou zadáte pro hello cílového virtuálního počítače. Zkontrolujte [specifikace velikosti virtuálního počítače](../virtual-machines/linux/sizes.md) hello počet adaptérů podporovaných velikostí virtuálního počítače hello. Když změníte hello velikost virtuálního počítače a uložit nastavení hello, hello počet síťových adaptérů se změní hello při příštím otevření hello **konfigurace** stránky. Hello počet síťových adaptérů cílových virtuálních počítačů je hello minimální počet síťových adaptérů na zdrojový virtuální počítač a hello maximální počet síťových adaptérů nepodporuje velikost hello hello virtuálního počítače jste vybrali, následujícím způsobem:
+* **Počet síťových adaptérů na cílovém virtuálním počítači:** Počet síťových adaptérů závisí na velikosti, kterou zadáte pro cílový virtuální počítač. Počet adaptérů podporovaných velikostí virtuálního počítače zjistíte ze [specifikace velikosti virtuálního počítače](../virtual-machines/linux/sizes.md). Když změníte velikost virtuálního počítače a uložíte nastavení, počet síťových adaptérů se změní při příštím otevření stránky **Konfigurace**. Počet síťových adaptérů cílových virtuálních počítačů představuje minimální počet síťových adaptérů na zdrojovém virtuálním počítači a maximální počet síťových adaptérů, který je podporovaný zvolenou velikostí virtuálního počítače, a to následujícím způsobem:
 
-  * Pokud hello počet síťových adaptérů na zdrojovém počítači hello je menší než nebo rovna toohello počet adaptérů povoleno pro velikost cílového počítače hello pak bude mít cíl hello hello stejný počet adaptérů jako zdroj hello.
-  * Pokud hello počet adaptérů pro hello zdrojový virtuální počítač překračuje počet hello povolený pro cílovou velikost hello pak maximální velikost cíle hello se použije.
-  * Například pokud má zdrojový počítač dva síťové adaptéry a velikost hello cílového počítače podporuje čtyři, bude mít hello cílový počítač dva adaptéry. Pokud má hello zdrojový počítač dva adaptéry, ale hello podporovaná velikost cíle podporuje pouze jeden, bude mít cílový počítač hello jenom jeden adaptér.     
-* **Síť hello cílového virtuálního počítače** -hello sítě toowhich hello virtuální počítač připojí toois dána mapováním sítě hello zdrojového virtuálního počítače. Pokud hello zdrojový virtuální počítač má více než jeden síťový adaptér a zdrojové sítě jsou namapované toodifferent sítě na cíli, pak musíte toochoose mezi jeden z cílových sítí hello.
-* **Podsíť každého síťového adaptéru** – pro každý síťový adaptér můžete vybrat hello podsíť toowhich hello při selhání virtuálního počítače k připojení.
-* **Cílová IP adresa** – Pokud hello síťový adaptér zdrojového virtuálního počítače je nakonfigurované toouse statických IP adres můžete zadat hello IP adresu pro hello cílového virtuálního počítače. Pomocí této funkce zachovat hello IP adresu zdrojového virtuálního počítače po převzetí služeb. Pokud žádné IP adresy se poskytuje pak libovolná dostupná IP adresa je uveden toohello síťový adaptér v době hello převzetí služeb při selhání. Pokud je zadaný hello cílová IP adresa, ale je již využíván jiným virtuálním počítačem spuštěným v Azure se nezdaří převzetí služeb při selhání.  
+  * Pokud je počet síťových adaptérů na zdrojovém počítači menší nebo roven počtu adaptérů, které jsou povolené pro velikost cílového počítače, pak bude mít cíl stejný počet adaptérů jako zdroj.
+  * Pokud počet adaptérů pro zdrojový virtuální počítač překračuje počet povolený pro cílovou velikost, použije se maximální velikost cíle.
+  * Pokud má například zdrojový počítač dva síťové adaptéry a velikost cílového počítače podporuje čtyři, bude mít cílový počítač dva adaptéry. Pokud má zdrojový počítač dva adaptéry, ale podporovaná velikost cíle podporuje pouze jeden, bude mít cílový počítač pouze jeden adaptér.     
+* **Síť cílového virtuálního počítače:** Sítě, ke které se virtuální počítač připojí, je dána mapováním sítě zdrojového virtuálního počítače. Pokud má zdrojový virtuální počítač více než jeden síťový adaptér a zdrojové sítě jsou namapované na různé sítě na cíli, budete muset zvolit jednu z cílových sítí.
+* **Podsíť každého síťového adaptéru:** Pro každý síťový adaptér můžete vybrat podsíť, ke které se virtuální počítač při převzetí služeb při selhání připojí.
+* **Cílová IP adresa:** Pokud je síťový adaptér zdrojového virtuálního počítače nakonfigurovaný tak, aby používal statickou IP adresu, můžete zadat IP adresu cílového virtuálního počítače. Pomocí této funkce můžete zachovat IP adresu zdrojového virtuálního počítače po převzetí služeb při selhání. Pokud není zadána žádná IP adresa, pak je síťovému adaptéru přiřazena libovolná dostupná IP adresa v okamžiku převzetí služeb při selhání. Pokud je zadána cílová IP adresa, ale ta už se používá jiným virtuálním počítačem spuštěným v Azure, převzetí služeb při selhání se nezdaří.  
 
     ![Úprava vlastností sítě](./media/site-recovery-vmm-to-azure-classic/multi-nic.png)
 
@@ -289,60 +289,60 @@ Po serverů, cloudů a sítí jsou správně nakonfigurovaný, můžete povolit 
 >
 >
 
-## <a name="test-hello-deployment"></a>Testovací nasazení pro hello
-Plánování nasazení můžete spustit testovací převzetí služeb při selhání pro jeden virtuální počítač nebo vytvořit plán obnovení, který se skládá z více virtuálních počítačů a spustit testovací převzetí služeb pro hello tootest.  
+## <a name="test-the-deployment"></a>Otestování nasazení
+Pokud chcete nasazení otestovat, můžete spustit testovací převzetí služeb při selhání pro jeden virtuální počítač nebo vytvořit plán obnovení, který se skládá z více virtuálních počítačů, a spustit testovací převzetí služeb při selhání pro celý plán.  
 
 Testovací převzetí služeb při selhání simuluje váš mechanismus převzetí služeb při selhání a zotavení v izolované síti. Poznámky:
 
-* Pokud chcete, aby tooconnect toohello virtuálního počítače v Azure pomocí vzdálené plochy po převzetí služeb při selhání hello, povolte připojení ke vzdálené ploše na virtuálním počítači hello před spuštěním hello testovací převzetí služeb při selhání.
-* Po převzetí služeb při selhání použijte veřejný toohello tooconnect IP adresu virtuálního počítače Azure pomocí vzdálené plochy. Pokud chcete, toodo to, ujistěte se, že nemáte žádné zásady domény, které vám zabrání připojování tooa virtuálnímu počítači pomocí veřejné adresy.
+* Pokud se chcete připojit k virtuálnímu počítači v Azure pomocí Vzdálené plochy po převzetí služeb po selhání, pak před spuštěním testu převzetí služeb povolte na virtuálním počítači připojení ke Vzdálené ploše.
+* Po převzetí služeb při selhání použijete veřejnou IP adresu pro připojení k virtuálnímu počítači v Azure pomocí Vzdálené plochy. Pokud to chcete provést, zkontrolujte, že nemáte žádné zásady domény, které by vám bránily v připojení k virtuálnímu počítači pomocí veřejné adresy.
 
 > [!NOTE]
-> tooget hello nejlepší výkon při selhání tooAzure, zkontrolujte, že jste nainstalovali hello agent Azure na hello virtuálních počítačů. Umožní rychlejší spouštění a pomáhá při řešení potíží. Stáhnout hello [agenta systému Linux](https://github.com/Azure/WALinuxAgent), nebo hello [agenta Windows](http://go.microsoft.com/fwlink/?LinkID=394789).
+> Aby byl při předání služeb při selhání do Azure zajištěn nejvyšší možný výkon, nainstalujte na virtuální počítač agenta Azure. Umožní rychlejší spouštění a pomáhá při řešení potíží. Stáhněte si [agenta pro Linux](https://github.com/Azure/WALinuxAgent) nebo [agenta pro Windows](http://go.microsoft.com/fwlink/?LinkID=394789).
 >
 >
 
 ### <a name="create-a-recovery-plan"></a>Vytvoření plánu obnovení
-1. Na hello **plány obnovení** přidejte nový plán. Zadejte název, **VMM** v **typ zdroje**a hello zdrojový server VMM **zdroj**. Hello cíl bude Azure.
+1. Na kartě **Plány obnovení** přidejte nový plán. Do pole **Typ zdroje** zadejte název, **VMM**, a do pole **Zdroj** zadejte zdrojový server VMM. Cíl bude Azure.
 
     ![Vytvoření plánu obnovení](./media/site-recovery-vmm-to-azure-classic/recovery-plan1.png)
-2. V hello **vyberte virtuální počítače** stránky, plán obnovení toohello tooadd vyberte virtuální počítače. Tyto virtuální počítače jsou přidány toohello výchozí skupiny plánu obnovení – skupina 1. V jednom plánu obnovení bylo otestováno maximálně 100 virtuálních počítačů.
+2. Na stránce pro **výběr virtuálních počítačů** vyberte virtuální počítače, které chcete přidat do plánu obnovení. Tyto virtuální počítače se přidají do výchozí skupiny plánu obnovení – Skupina 1. V jednom plánu obnovení bylo otestováno maximálně 100 virtuálních počítačů.
 
-* Pokud chcete vlastnosti virtuálního počítače hello tooverify před jejich přidáním toohello plán, klikněte na tlačítko hello virtuálního počítače na stránce vlastností hello hello cloudu, na němž je umístěna. Vlastnosti virtuálního počítače hello můžete také nakonfigurovat v konzole VMM hello.
-* Všechny hello virtuální počítače, které se zobrazují povolil pro ochranu. Hello seznam obsahuje jak virtuální počítače, které jsou povolené pro ochranu a počáteční replikace byla dokončena, a ty, které jsou povolené pro ochranu s počáteční replikace čeká na. Převzetí služeb při selhání v rámci plánu obnovení je možné pouze u virtuálních počítačů s dokončenou počáteční replikací.
+* Pokud chcete před přidáním virtuálních počítačů do plánu ověřit jejich vlastnosti, klikněte na virtuální počítač na stránce vlastností cloudu, ve kterém se nachází. Vlastnosti virtuálního počítače můžete také konfigurovat v konzole VMM.
+* Pro všechny virtuální počítače, které jsou zobrazené, byla povolena ochrana. Seznam obsahuje jak virtuální počítače, pro které je povolená ochrana a byla pro ně dokončena počáteční replikace, tak ty, pro které je povolená ochrana, ale u kterých se stále ještě čeká na provedení počáteční replikace. Převzetí služeb při selhání v rámci plánu obnovení je možné pouze u virtuálních počítačů s dokončenou počáteční replikací.
 
     ![Vytvoření plánu obnovení](./media/site-recovery-vmm-to-azure-classic/select-rp.png)
 
-Po jeho vytvoření plánu obnovení se zobrazí v hello **plány obnovení** kartě. Můžete také přidat [runbooky služby Azure automation](site-recovery-runbook-automation.md) toohello obnovení plán tooautomate akcí během převzetí služeb při selhání.
+Po vytvoření se plán obnovení zobrazí na kartě **Plány obnovení**. Můžete také k plánu obnovení přidat [Runbooky služby Azure Automation](site-recovery-runbook-automation.md) pro automatizaci akcí během převzetí služeb při selhání.
 
 ### <a name="run-a-test-failover"></a>Spuštění testovacího převzetí služeb při selhání
-Existují dva způsoby toorun tooAzure testovací převzetí služeb při selhání.
+Testovací předání služeb při selhání do Azure je možné spustit dvěma způsoby.
 
-* **Testovací převzetí služeb při selhání bez sítě Azure**– tento typ testovacího převzetí služeb při selhání ověří, že hello virtuální počítač se zobrazí správně v Azure. Hello virtuálního počítače nebudou připojené tooany síť Azure po převzetí služeb při selhání.
-* **Testovací převzetí služeb při selhání se sítí Azure**– tento typ převzetí služeb při selhání kontroly, které hello celé prostředí replikace dodává až podle očekávání a který převzal hello virtuální počítače budou připojené toohello zadané cílové síti Azure. Podsíť, vybere testovací převzetí služeb při selhání podsíť hello hello testovacího virtuálního počítače budou být započítáno na základě podsítě hello hello repliky virtuálního počítače. Toto je replikace různých tooregular-li hello podsíť virtuálního počítače repliky založena na podsíti hello hello zdrojového virtuálního počítače.
+* **Testovací převzetí služeb při selhání bez sítě Azure:** Tento typ testovacího převzetí služeb při selhání ověří, že virtuální počítač se zobrazí správně v Azure. Virtuální počítač nebude po převzetí služeb při selhání připojen k žádné síti Azure.
+* **Testovací převzetí služeb při selhání se sítí Azure:** Tento typ převzetí služeb při selhání kontroluje, že se očekávaným způsobem zobrazí celé prostředí replikace a že virtuální počítače, které převzaly služby při selhání, budou připojené k zadané cílové síti Azure. Aby bylo zajištěno, že bude použita správná podsíť, vybere se pro testovací převzetí služeb při selhání podsíť testovacího virtuálního počítače na základě podsítě virtuálního počítače repliky. Tím se replikace liší od standardní replikace, při které je podsíť virtuálního počítače repliky založena na podsíti zdrojového virtuálního počítače.
 
-Pokud chcete, aby toorun testovací převzetí služeb pro virtuální počítač, který je povolený pro ochranu tooAzure bez zadání cílové sítě Azure nepotřebujete tooprepare nic. toorun převzetí služeb při selhání s cílovou sítí Azure, budete potřebovat toocreate novou síť Azure, která bude izolovaná od produkční sítě Azure (výchozí chování při vytváření nových sítí v Azure). Podívejte se na to, jak příliš[spustit testovací převzetí služeb](site-recovery-failover.md) další podrobnosti.
+Pokud chcete spustit testovací předání služeb při selhání pro virtuální počítač, pro který je povolená ochrana, do Azure bez zadání cílové sítě Azure, nemusíte dělat žádné další přípravy. Pokud chcete spustit testovací převzetí služeb při selhání s cílovou sítí Azure, budete muset vytvořit novou síť Azure, která bude izolovaná od produkční sítě Azure (což je výchozí chování při vytváření nových sítí v Azure). Podívejte se na další podrobnosti o tom, jak [spustit testovací převzetí služeb](site-recovery-failover.md).
 
-Musíte také tooset až hello infrastruktury pro toowork hello replikovat virtuální počítač podle očekávání. Například virtuální počítač s řadičem domény a DNS může být replikované tooAzure pomocí Azure Site Recovery a lze vytvořit v testovací síti hello testovací převzetí služeb při selhání. Další podrobnosti najdete v tématu věnovaném [aspektům, které je třeba zvážit při testování převzetí služeb při selhání pro Active Directory](site-recovery-active-directory.md#test-failover-considerations).
+Také budete muset nastavit infrastrukturu, aby replikovaný virtuální počítač fungoval podle očekávání. Například virtuální počítač s řadičem domény a DNS je možné replikovat do Azure pomocí Azure Site Recovery a je možné ho vytvořit v testovací síti pomocí testovacího převzetí služeb při selhání. Další podrobnosti najdete v tématu věnovaném [aspektům, které je třeba zvážit při testování převzetí služeb při selhání pro Active Directory](site-recovery-active-directory.md#test-failover-considerations).
 
-toorun testovací převzetí služeb hello následující:
+Pokud chcete spustit testovací převzetí služeb při selhání, udělejte toto:
 
-1. Na hello **plány obnovení** vyberte hello plán a klikněte na tlačítko **testovací převzetí služeb při selhání**.
-2. Na hello **potvrzení převzetí služeb při selhání** vyberte **žádné** nebo konkrétní síť Azure.  Všimněte si, že pokud vyberete možnost žádné bude hello testovací převzetí služeb při selhání zkontrolujte, zda text hello virtuální počítač replikoval správně tooAzure ale neohlásí konfiguraci sítě replikace.
+1. Na kartě **Plány obnovení** vyberte plán a klikněte na **Testovací převzetí služeb při selhání**.
+2. Na stránce s **potvrzením testovacího převzetí služeb při selhání** vyberte možnost **Žádné** nebo konkrétní síť Azure.  Je třeba upozornit na to, že pokud vyberete možnost Žádné, testovací převzetí služeb při selhání zkontroluje, jestli se virtuální počítač replikoval správně do Azure, ale nezkontroluje konfiguraci sítě replikace.
 
     ![Žádná síť](./media/site-recovery-vmm-to-azure-classic/test-no-network.png)
-3. Pokud je povolené šifrování dat pro hello cloud v **šifrovací klíč** hello vyberte certifikát, který byl vydán během instalace hello zprostředkovatele na serveru VMM hello, pokud je zapnutá hello možnost tooenable šifrování dat pro cloud .
-4. Na hello **úlohy** můžete sledovat průběh převzetí služeb při selhání. Měli byste také mít testovací repliku virtuálního počítače může toosee hello v hello portálu Azure. Pokud jste nastavili tooaccess virtuální počítače z vaší místní sítě můžete spustit virtuální počítač toohello připojení vzdálené plochy.
-5. Když hello převzetí služeb při selhání dosáhne hello **dokončit testování** fáze, klikněte na tlačítko **dokončení testovacího** toofinish ho. Podrobnostem toohello **úlohy** kartě tootrack převzetí služeb při selhání průběh a stav a tooperform všechny akce, které jsou potřeba.
-6. Po převzetí služeb při selhání můžete zobrazit testovací repliku virtuálního počítače hello v hello portálu Azure. Pokud jste nastavili tooaccess virtuální počítače z vaší místní sítě můžete spustit virtuální počítač toohello připojení vzdálené plochy. Hello následující:
+3. Pokud je pro cloud povolené šifrování dat, vyberte v nastavení **Šifrovací klíč** certifikát, který byl vydán během instalace zprostředkovatele na serveru VMM, když jste zapnuli možnost povolení šifrování dat pro cloud.
+4. Na kartě **Úloha** můžete sledovat průběh převzetí služeb při selhání. Měli byste také mít možnost zobrazit si testovací repliku virtuálního počítače na portálu Azure. Pokud máte nastaven přístup k virtuálním počítačům ze své místní sítě, můžete iniciovat připojení k virtuálnímu počítači přes Vzdálenou plochu.
+5. Když převzetí služeb při selhání dosáhne fáze **Dokončit testování**, dokončete proces kliknutím na **Dokončit test**. Přechodem k podrobnostem na kartě **Úloha** můžete sledovat průběh a stav převzetí služeb při selhání a provádět všechny potřebné akce.
+6. Po převzetí služeb při selhání budete moct zobrazit testovací repliku virtuálního počítače na webu Azure Portal. Pokud máte nastaven přístup k virtuálním počítačům ze své místní sítě, můžete iniciovat připojení k virtuálnímu počítači přes Vzdálenou plochu. Udělejte toto:
 
-   1. Ověřte, že hello virtuální počítače úspěšně spustí.
-   2. Pokud chcete, aby tooconnect toohello virtuálního počítače v Azure pomocí vzdálené plochy po převzetí služeb při selhání hello, povolte připojení ke vzdálené ploše na virtuálním počítači hello před spuštěním hello testovací převzetí služeb při selhání. Budete také potřebovat tooadd koncový bod RDP na virtuální počítač hello. Můžete využít [sad Azure Automation Runbook](site-recovery-runbook-automation.md) toodo který.
-   3. Po převzetí služeb při selhání Pokud použijete veřejnou IP adresu tooconnect toohello virtuálního počítače v Azure pomocí vzdálené plochy, ujistěte se, že nemáte žádné zásady domény, které by vám bránily v připojení tooa virtuálnímu počítači pomocí veřejné adresy.
-7. Po dokončení testování hello hello následující:
+   1. Ověřte, že se virtuální počítače úspěšně spustí.
+   2. Pokud se chcete připojit k virtuálnímu počítači v Azure pomocí Vzdálené plochy po převzetí služeb po selhání, pak před spuštěním testu převzetí služeb povolte na virtuálním počítači připojení ke Vzdálené ploše. Také budete muset na virtuálním počítači přidat koncový bod RDP. Můžete k tomu použít [Runbooky služby Azure Automation](site-recovery-runbook-automation.md).
+   3. Pokud po převzetí služeb při selhání použijete k připojení k virtuálnímu počítači v Azure pomocí vzdálené plochy veřejnou IP adresu, nesmíte mít žádné zásady domény, které by vám bránily v připojení k virtuálnímu počítači pomocí veřejné adresy.
+7. Po dokončení testování udělejte toto:
 
-   * Klikněte na tlačítko **hello testovací převzetí služeb při selhání je dokončena**. Vyčištění hello testovací prostředí tooautomatically power vypnout a odstraňte hello testovací virtuální počítače.
-   * Klikněte na tlačítko **poznámky** toorecord a uložte jakékoli připomínky související s hello testovací převzetí služeb při selhání.
+   * Klikněte na **Testovací převzetí služeb při selhání se dokončilo**. Vyčistěte testovací prostředí. Testovací virtuální počítač se automaticky vypne a odstraní.
+   * Klikněte na **Poznámky** a zaznamenejte a uložte jakékoli připomínky související s testovacím převzetím služeb při selhání.
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -1,5 +1,5 @@
 ---
-title: aaaAzure integraci sady Android SDK Mobile Engagement
+title: Integraci sady Azure Mobile Engagement Android SDK
 description: "Nejnovější aktualizace a postupy pro Android SDK pro Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,14 +14,14 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 6085a9ba90b713235e0aae99759597af9db77865
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 27190b54fc2b3b5c77b5f0a02273883e36ceaf1d
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="sdk-content"></a>Obsah sady SDK
-Tento dokument uvádí a popisuje obsah hello hello SDK archivu.
+Tento dokument uvádí a popisuje obsah archivu SDK.
 
 `mobile-engagement-VERSION.jar`
 
@@ -31,7 +31,7 @@ Tento dokument uvádí a popisuje obsah hello hello SDK archivu.
 
 `res`Složka
 
-> Engagement Reach SDK prostředky (drawable a tooinclude soubory rozložení ve svých aplikacích).
+> Engagement Reach SDK prostředky (drawable a soubory rozložení pro zahrnutí do aplikace).
 > 
 > 
 
@@ -39,15 +39,15 @@ Tento dokument uvádí a popisuje obsah hello hello SDK archivu.
 
 > Engagement SDK zdrojového kódu.
 > 
-> Všimněte si, že hello zdroje služby hello nejsou zahrnuty (`com.microsoft.azure.engagement.service.EngagementService` a jeho souvisejících zdrojových souborů).
+> Všimněte si, že zdroje služby nejsou zahrnuty (`com.microsoft.azure.engagement.service.EngagementService` a jeho souvisejících zdrojových souborů).
 > 
 > 
 
 `documentation.html`
 
-> Zástupce toohello dokumentace lokality odpovídající toohello stáhnout verzi hello SDK.
+> Zástupce web dokumentace odpovídající stažené verze sady SDK.
 > 
 > 
 
-Ostatní soubory jsou kopie hello softwarových licencí.
+Ostatní soubory jsou kopie softwarových licencí.
 

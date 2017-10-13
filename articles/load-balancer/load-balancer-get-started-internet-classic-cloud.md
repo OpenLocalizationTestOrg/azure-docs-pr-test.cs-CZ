@@ -1,9 +1,9 @@
 ---
-title: "Vyrovnávání zatížení aaaCreate směřujících Internetu pro cloudové služby Azure | Microsoft Docs"
-description: "Zjistěte, jak toocreate přístupem Internetu pro vyrovnávání zátěže v modelu nasazení classic pro cloudové služby"
+title: "Vytvoření internetového nástroje pro vyrovnávání zatížení pro cloudové služby Azure | Dokumentace Microsoftu"
+description: "Zjistěte, jak vytvořit internetový nástroj pro vyrovnávání zatížení pro cloudové služby v modelu nasazení Classic"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 tags: azure-service-management
 ms.assetid: 0bb16f96-56a6-429f-88f5-0de2d0136756
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-ms.openlocfilehash: d93cf76d417cbfc744cf07ba48c43a63cc14df69
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 52824d5c39bb821351650584c33f70e2e84749cb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-for-cloud-services"></a>Začínáme vytvářet internetový nástroj pro vyrovnávání zatížení pro cloudové služby
 
@@ -31,17 +31,17 @@ ms.lasthandoff: 10/06/2017
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
 > [!IMPORTANT]
-> Než začnete pracovat s prostředky Azure, je důležité toounderstand Azure aktuálně má dva modely nasazení: Azure Resource Manager a Klasický model. Před zahájením práce s jakýmikoli prostředky Azure se ujistěte, že rozumíte [modelům nasazení a příslušným nástrojům](../azure-classic-rm.md). Hello dokumentaci k různým nástrojům můžete zobrazit kliknutím na karty hello hello horní části tohoto článku. Tento článek se týká modelu nasazení classic hello. Můžete také [zjistěte, jak toocreate přístupem Internetu pro vyrovnávání zátěže pomocí Azure Resource Manager](load-balancer-get-started-internet-arm-ps.md).
+> Než začnete pracovat s prostředky Azure, je potřeba si uvědomit, že Azure má v současné době dva modely nasazení: Azure Resource Manager a klasický. Před zahájením práce s jakýmikoli prostředky Azure se ujistěte, že rozumíte [modelům nasazení a příslušným nástrojům](../azure-classic-rm.md). Dokumentaci k různým nástrojům můžete zobrazit kliknutím na karty v horní části tohoto článku. Tento článek se týká modelu nasazení Classic. Případně [zjistěte, jak vytvořit internetový nástroj pro vyrovnávání zatížení pomocí Azure Resource Manageru](load-balancer-get-started-internet-arm-ps.md).
 
-Cloudové služby se automaticky nakonfigurují pomocí služby Vyrovnávání zatížení a lze přizpůsobit prostřednictvím modelu služby hello.
+Cloudové služby jsou automaticky nakonfigurované s nástrojem pro vyrovnávání zatížení a lze je přizpůsobit prostřednictvím modelu služby.
 
-## <a name="create-a-load-balancer-using-hello-service-definition-file"></a>Vytvořit nástroj pro vyrovnávání zatížení, pomocí souboru definice služby hello
+## <a name="create-a-load-balancer-using-the-service-definition-file"></a>Vytvoření nástroje pro vyrovnávání zatížení pomocí definičního souboru služby
 
-Hello Azure SDK pro .NET 2.5 tooupdate mohou využívat cloudové služby. Nastavení pro koncový bod pro cloudové služby se provádí v hello [služby definice](https://msdn.microsoft.com/library/azure/gg557553.aspx) souboru .csdef.
+K aktualizaci svojí cloudové služby můžete využít sadu Azure SDK pro .NET 2.5. Nastavení koncového bodu pro cloudové služby se provádí v [definičním souboru (.csdef) služby](https://msdn.microsoft.com/library/azure/gg557553.aspx).
 
-Hello následující příklad ukazuje, jak jsou nakonfigurované soubor servicedefinition.csdef pro nasazení cloudu:
+Následující příklad ukazuje, jak je nakonfigurován soubor servicedefinition.csdef pro nasazení v cloudu:
 
-Kontrola hello fragment souboru .csdef hello generované nasazení cloudu, uvidíte hello externí koncovým bodem nakonfigurovaným toouse porty HTTP na portu 10000, 10001 a 10002.
+Kontrolou fragmentu souboru .csdef vygenerovaného nasazením v cloudu zjistíte, že je externí koncový bod nakonfigurován pro používání protokolu HTTP na portech 10000, 10001 a 10002.
 
 ```xml
 <ServiceDefinition name=“Tenant“>
@@ -66,7 +66,7 @@ Kontrola hello fragment souboru .csdef hello generované nasazení cloudu, uvid�
 
 ## <a name="check-load-balancer-health-status-for-cloud-services"></a>Kontrola stavu nástroje pro vyrovnávání zatížení pro cloudové služby
 
-Hello následuje příklad test stavu:
+Následuje příklad testu stavu:
 
 ```xml
 <LoadBalancerProbes>
@@ -74,13 +74,13 @@ Hello následuje příklad test stavu:
 </LoadBalancerProbes>
 ```
 
-Hello nástroj pro vyrovnávání zatížení kombinuje hello koncového bodu hello hello informací a toocreate hello test adresy URL ve formě hello `http://{DIP of VM}:80/Probe.aspx` který lze použít tooquery hello stavu služby hello.
+Nástroj pro vyrovnávání zatížení zkombinuje informace koncového bodu a informace testu a vytvoří adresu URL ve tvaru `http://{DIP of VM}:80/Probe.aspx`, kterou lze použít k dotazování na stav služby.
 
-Hello služby rozpozná pravidelné sondy z hello stejnou IP adresu. Toto je hello stavu zkušebního požadavku pocházející od hostitele hello hello uzlu, kde je spuštěný virtuální počítač hello. Služba Hello má toorespond s stavový kód HTTP 200 pro tooassume nástroje pro vyrovnávání zatížení hello, že služba hello je v pořádku. Další stav protokolu HTTP kódu (například 503) přímo trvá hello virtuální počítač ze otočení.
+Služba detekuje pravidelné testy ze stejné IP adresy. To je požadavek testu stavu přicházející z hostitele uzlu, ve kterém běží virtuální počítač. Služba musí odpovědět stavovým kódem HTTP 200, aby nástroj pro vyrovnávání zatížení předpokládal, že je služba v pořádku. Jakýkoli jiný stavový kód (například 503) přímo vyřadí virtuální počítač ze smyčky.
 
-definice testu Hello také řídí hello četnost kontroly hello. V našem případě výše je nástroj pro vyrovnávání zatížení hello zjišťování hello koncového bodu každých 5 sekund. Pokud není žádná kladná odpověď pro 10 sekund (dva intervaly testu), test hello se předpokládá, že dolů a hello virtuálního počítače se provede mimo otočení. Podobně pokud je služba hello mimo otočení a přijetí kladná odpověď, hello služby je vrátit zpět toorotation hned. Pokud služba hello je kolísal mezi v pořádku a není v pořádku, nástroj pro vyrovnávání zatížení hello můžete rozhodnout toodelay hello umístění nových hello služby back toorotation, dokud byla pro počet sondy v pořádku.
+Definice testu také řídí frekvenci testu. V našem výše uvedeném případě provádí nástroj pro vyrovnávání zatížení testování koncového bodu každých 5 sekund. Pokud nedojde k obdržení kladné odpovědi po dobu 10 sekund (dva intervaly testu), předpokládá se, že je test mimo provoz a virtuální počítač je vyřazen ze smyčky. Podobně pokud je služba vyřazena ze smyčky a obdrží se kladná odpověď, služba se ihned zařadí zpět do smyčky. Pokud stav služby kolísá mezi V pořádku a Není v pořádku, nástroj pro vyrovnávání zatížení může rozhodnout, že se se zařazením služby zpět do smyčky počká, než bude v pořádku po dobu několika testů.
 
-Vyhledejte hello služby definice schématu hello [test stavu](https://msdn.microsoft.com/library/azure/jj151530.aspx) Další informace.
+Další informace najdete ve schématu definice služby pro [test stavu](https://msdn.microsoft.com/library/azure/jj151530.aspx).
 
 ## <a name="next-steps"></a>Další kroky
 

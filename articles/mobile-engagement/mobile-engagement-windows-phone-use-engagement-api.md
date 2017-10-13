@@ -1,6 +1,6 @@
 ---
-title: "aaaHow tooUse hello Engagement rozhraní API na Windows Phone Silverlight"
-description: "Jak tooUse hello Engagement rozhraní API na Windows Phone Silverlight"
+title: "Jak používat Engagement rozhraní API na Windows Phone Silverlight"
+description: "Jak používat Engagement rozhraní API na Windows Phone Silverlight"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,40 +14,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 1e84be95cc910be7f1227b4ae60eb483a1939284
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ec8b6c13ea052c8063dfde4321cdd286ab6cb817
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toouse-hello-engagement-api-on-windows-phone-silverlight"></a>Jak tooUse hello Engagement rozhraní API na Windows Phone Silverlight
-Tento dokument je dokument toohello rozšíření [jak toointegrate Mobile Engagement v aplikaci Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md). Poskytuje v hloubka podrobnosti o tom, jak toouse hello Engagement API tooreport statistik vaší aplikace.
+# <a name="how-to-use-the-engagement-api-on-windows-phone-silverlight"></a>Jak používat Engagement rozhraní API na Windows Phone Silverlight
+Tento dokument je doplněk k dokumentu [jak integrovat Mobile Engagement v aplikaci Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md). Poskytuje hloubka podrobnosti o tom, jak použít rozhraní API Engagement sestavy statistik vaší aplikace.
 
-Pokud chcete pouze Engagement tooreport, aplikace relací, aktivit, dojde k chybě a technické informace, pak hello nejjednodušší způsob je toomake všechny vaše `PhoneApplicationPage` dílčí třídy dědí hello `EngagementPage` třídy.
+Pokud chcete Engagement ohlásí aplikace relací, aktivity, dojde k chybě a technické informace, pak se nejjednodušší způsob, jak provést všechny vaše `PhoneApplicationPage` dílčí třídy dědí `EngagementPage` třídy.
 
-Pokud chcete, aby toodo další, např. Pokud potřebujete tooreport aplikace konkrétní události, chyb a úlohy, nebo pokud máte tooreport aktivitami aplikace jiným způsobem než jednu implementaci hello hello `EngagementPage` třídy, pak je nutné toouse hello Zapojení rozhraní API.
+Pokud chcete informace, například pokud je třeba ohlásit určité události aplikace, chyb a úlohy, nebo pokud máte k hlášení aktivitami aplikace jiným způsobem než ten, implementované v `EngagementPage` třídy, pak budete muset použít rozhraní API zapojení.
 
-Hello rozhraní API Engagement poskytuje hello `EngagementAgent` třídy. Dostanete toothose metody prostřednictvím `EngagementAgent.Instance`.
+Rozhraní API Engagement poskytuje `EngagementAgent` třídy. Můžete přístup k těmto metodám prostřednictvím `EngagementAgent.Instance`.
 
-I v případě, že modul agentem hello nebyla inicializována, každé rozhraní API toohello volání je odložení a budou spuštěny znovu, pokud je k dispozici hello agent.
+I v případě, že modul agenta nebyla inicializována, každé volání rozhraní API je odložení a budou spuštěny znovu, pokud je agent k dispozici.
 
 ## <a name="engagement-concepts"></a>Koncepty engagementu
-Následující části Hello Upřesnit hello koncepty Mobile Engagementu pro platformu Windows Phone hello.
+Následující části Upřesnit koncepty Mobile Engagementu pro platformu Windows Phone.
 
 ### <a name="session-and-activity"></a>`Session` a `Activity`
-*Aktivity* obvykle souvisí s jednu stránku hello aplikace, která je toosay hello *aktivity* spustí, když se zobrazí stránku hello a zastaví, když je uzavřený stránku hello: jedná o případ hello při hello Je engagement SDK integrovaná pomocí hello `EngagementPage` třídy.
+*Aktivity* je obvykle spojovány s jednu stránku aplikace, to znamená *aktivity* spustí, když se zobrazí na stránce a zastaví, když je uzavřený stránky: je tomu tak při sady Engagement SDK je integrován s použitím `EngagementPage` třídy.
 
-Ale *aktivity* můžete ručně kontrolovat také pomocí hello Engagement rozhraní API. To umožňuje toosplit danou stránku v několika dílčí části tooget hello další podrobnosti o použití této stránky (například jak často tooknown a jak dlouho se používají dialogová okna v rámci této stránce).
+Ale *aktivity* můžete ručně kontrolovat také pomocí rozhraní API zapojení. To umožňuje rozdělit danou stránku v několik částí Sub – Chcete-li získat další podrobnosti o použití této stránce (například jak často známé a jak dlouho se používají dialogová okna v rámci této stránce).
 
 ## <a name="reporting-activities"></a>Sestavy aktivit
 ### <a name="user-starts-a-new-activity"></a>Uživatel spustí novou aktivitu
 #### <a name="reference"></a>Referenční informace
             void StartActivity(string name, Dictionary<object, object> extras = null)
 
-Je třeba toocall `StartActivity()` Každá aktivita uživatele hello čas změny. Hello první volání funkce toothis spustí novou relaci uživatele.
+Je třeba volat `StartActivity()` pokaždé, když změny aktivity uživatelů. První volání této funkce spustí novou relaci uživatele.
 
 > [!IMPORTANT]
-> Hello SDK automaticky volání metoda EndActivity hello při zavření aplikace hello. Proto DŮRAZNĚ doporučujeme toocall hello StartActivity metoda vždy, když aktivita hello změnu hello uživatele a volání tooNEVER, že hello EndActivity metoda od voláním této metody vynutí toobe hello aktuální relace skončila.
+> Sada SDK automaticky volejte metodu EndActivity při ukončení aplikace. Proto důrazně volat metodu StartActivity vždy, když aktivita uživatele změny a nikdy volat metodu EndActivity, protože voláním této metody vynutí ukončit aktuální relaci.
 > 
 > 
 
@@ -58,7 +58,7 @@ Je třeba toocall `StartActivity()` Každá aktivita uživatele hello čas změn
 #### <a name="reference"></a>Referenční informace
             void EndActivity()
 
-Je třeba toocall `EndActivity()` alespoň jednou po dokončení hello uživatele poslední aktivita. Tento příkaz informuje hello vyprší Engagement SDK hello uživatel aktuálně nečinný, a že hello uživatelské relace nutné toobe uzavřít jednou hello časový limit relace (při volání `StartActivity()` vyprší časový limit relace hello hello relace je jednoduše dál).
+Je třeba volat `EndActivity()` alespoň jednou po dokončení uživatele poslední aktivita. Tento příkaz informuje sady Engagement SDK, že je uživatel aktuálně nečinnosti, a že relaci uživatele, který je třeba ukončit jednou časový limit relace vyprší (při volání `StartActivity()` předtím, než vyprší časový limit relace, relace se jednoduše pokračuje).
 
 #### <a name="example"></a>Příklad
             EngagementAgent.Instance.EndActivity();
@@ -68,12 +68,12 @@ Je třeba toocall `EndActivity()` alespoň jednou po dokončení hello uživatel
 #### <a name="reference"></a>Referenční informace
             void StartJob(string name, Dictionary<object, object> extras = null)
 
-Můžete vytvořit hello úlohy tootrack certains přes v časovém intervalu.
+Úlohy můžete sledovat certains úlohy v časovém intervalu.
 
 #### <a name="example"></a>Příklad
             // An upload begins...
 
-            // Set hello extras
+            // Set the extras
             var extras = new Dictionary<object, object>();
             extras.Add("title", "avatar");
             extras.Add("type", "image");
@@ -84,11 +84,11 @@ Můžete vytvořit hello úlohy tootrack certains přes v časovém intervalu.
 #### <a name="reference"></a>Referenční informace
             void EndJob(string name)
 
-Jakmile úloha sledovány v rámci úlohy byla ukončena, by měly volat metoda EndJob hello pro tuto úlohu zadáním hello název úlohy.
+Jakmile úloha sledovány v rámci úlohy byla ukončena, by měly volat metodu EndJob pro tuto úlohu zadáním název úlohy.
 
 #### <a name="example"></a>Příklad
-            // In hello previous section, we started an upload tracking with a job
-            // Then, hello upload ends
+            // In the previous section, we started an upload tracking with a job
+            // Then, the upload ends
 
             EngagementAgent.Instance.EndJob("uploadData");
 
@@ -103,7 +103,7 @@ Je k dispozici tři typy událostí:
 #### <a name="reference"></a>Referenční informace
             void SendEvent(string name, Dictionary<object, object> extras = null)
 
-Samostatné události může dojít mimo hello kontext relace.
+Samostatné události může dojít mimo kontext relace.
 
 #### <a name="example"></a>Příklad
             EngagementAgent.Instance.SendEvent("event", extra);
@@ -112,7 +112,7 @@ Samostatné události může dojít mimo hello kontext relace.
 #### <a name="reference"></a>Referenční informace
             void SendSessionEvent(string name, Dictionary<object, object> extras = null)
 
-Relace události jsou obvykle použité tooreport hello akce prováděné uživatelem během jeho relace.
+Relace události se obvykle používají k hlášení akcí prováděná uživatelem během jeho relace.
 
 #### <a name="example"></a>Příklad
 **Bez dat:**
@@ -133,7 +133,7 @@ Relace události jsou obvykle použité tooreport hello akce prováděné uživa
 #### <a name="reference"></a>Referenční informace
             void SendJobEvent(string eventName, string jobName, Dictionary<object, object> extras = null)
 
-Události úlohy jsou obvykle použité tooreport hello akce prováděné uživatelem během úlohy.
+Události úlohy jsou obvykle používají k hlášení akcí prováděná uživatelem během úlohy.
 
 #### <a name="example"></a>Příklad
             EngagementAgent.Instance.SendJobEvent("eventName", "jobName", extras);
@@ -149,7 +149,7 @@ Je k dispozici tři typy chyb:
 #### <a name="reference"></a>Referenční informace
             void SendError(string name, Dictionary<object, object> extras = null)
 
-Jinak zvláštní toosession chyby samostatné může dojít k chybám mimo hello kontext relace.
+Rozporu s touto relací chyb může dojít k chybám samostatné mimo kontext relace.
 
 #### <a name="example"></a>Příklad
             EngagementAgent.Instance.SendError("errorName", extras);
@@ -158,7 +158,7 @@ Jinak zvláštní toosession chyby samostatné může dojít k chybám mimo hell
 #### <a name="reference"></a>Referenční informace
             void SendSessionError(string name, Dictionary<object, object> extras = null)
 
-Relace chyby jsou obvykle použité tooreport hello chyby během jeho relace, které mají vliv hello uživatele.
+Relace chyby jsou obvykle používají k hlášení chyb během jeho relace, které mají vliv uživatele.
 
 #### <a name="example"></a>Příklad
             EngagementAgent.Instance.SendSessionError("errorName", extra);
@@ -167,13 +167,13 @@ Relace chyby jsou obvykle použité tooreport hello chyby během jeho relace, kt
 #### <a name="reference"></a>Referenční informace
             void SendJobError(string errorName, string jobName, Dictionary<object, object> extras = null)
 
-Chyby může být spuštěna úloha namísto související tooa související toohello se aktuální uživatelská relace.
+Chyby může souviset s probíhající úlohou místo má vztah k aktuální uživatelskou relaci.
 
 #### <a name="example"></a>Příklad
             EngagementAgent.Instance.SendJobError("errorName", "jobname", extra);
 
 ## <a name="reporting-crashes"></a>Generování sestav havárií
-Hello agent poskytuje dvě metody toodeal dojde k chybě.
+Agent nabízí dvě metody jak nakládat s havárií.
 
 ### <a name="send-an-exception"></a>Odeslat výjimku
 #### <a name="reference"></a>Referenční informace
@@ -184,26 +184,26 @@ Výjimku kdykoli můžete odeslat voláním:
 
             EngagementAgent.Instance.SendCrash(aCatchedException);
 
-Můžete použít také volitelný parametr tooterminate hello engagement relace v hello stejnou dobu, než odesílání hello havárií. toodo tedy volání:
+Můžete také volitelný parametr ukončit relaci engagement ve stejnou dobu než odesílání havárii. Chcete-li tak učinit, zavolejte:
 
             EngagementAgent.Instance.SendCrash(new Exception("example"), terminateSession: true);
 
-Pokud tak učiníte, úlohy a hello relace budou uzavřeny právě po odeslání hello havárií.
+Pokud tak učiníte, úlohy a relace budou uzavřeny právě po odeslání havárii.
 
 ### <a name="send-an-unhandled-exception"></a>Odeslat k neošetřené výjimce
 #### <a name="reference"></a>Referenční informace
             void SendCrash(ApplicationUnhandledExceptionEventArgs e)
 
-Engagement poskytuje také metoda toosend neošetřené výjimky. To je obzvláště užitečná při použití uvnitř hello silverlight UnhandledException obslužné rutiny.
+Engagement také poskytuje metodu pro odeslání neošetřených výjimek. To je obzvláště užitečná při použití uvnitř obslužné rutiny události UnhandledException silverlight.
 
-Tato metoda bude **vždy** ukončit relaci engagement hello a úlohy po volání.
+Tato metoda bude **vždy** ukončit relaci engagement a úlohy po volání.
 
 #### <a name="example"></a>Příklad
-Můžete ji tooimplement použít vlastní obslužnou rutinu UnhandledException (obzvláště pokud je zakázána hello automatické hlášení reporting funkce engagementu). Například v hello `Application_UnhandledException` metoda hello `App.xaml.cs` souboru:
+Můžete ho implementovat vlastní obslužnou rutinu UnhandledException (hlavně pokud mají zakázáno automatické hlášení funkci Engagement vytváření sestav). Například v `Application_UnhandledException` metodu `App.xaml.cs` souboru:
 
             // In your App.xaml.cs file
 
-            // Code tooexecute on Unhandled Exceptions
+            // Code to execute on Unhandled Exceptions
             private void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)
             {
               // your own code
@@ -215,15 +215,15 @@ Můžete ji tooimplement použít vlastní obslužnou rutinu UnhandledException 
 ### <a name="reference"></a>Referenční informace
             void OnActivated(ActivatedEventArgs e)
 
-Když hello uživatel přejde dopředu, mimo aplikaci, po hello deaktivováno událost se vyvolá, hello operační systém se pokusí aplikace hello tooput do stavu neaktivní. Aplikace hello je označení. V tomto procesu je aplikace ukončena, ale některá data o stavu hello hello aplikace a hello jednotlivé stránky v rámci aplikace hello je zachovaná.
+Když uživatel přejde dopředu, mimo aplikaci, po deaktivováno událost se vyvolá, operační systém se pokusí aplikaci převést do stavu neaktivní. Aplikace je označení. V tomto procesu je aplikace ukončena, ale některá data o stavu aplikace a na jednotlivých stránkách v aplikaci je zachovaná.
 
-Máte tooinsert `EngagementAgent.Instance.OnActivated(e)` v hello `Application_Activated` metoda z hello App.xaml.cs souboru tooreset hello Engagement agenta, když aplikace hello bylo označeno jako neplatné.
+Je nutné vložit `EngagementAgent.Instance.OnActivated(e)` v `Application_Activated` metoda ze souboru App.xaml.cs resetovat Engagement agenta, když aplikace bylo označeno jako neplatné.
 
 ### <a name="example"></a>Příklad
             // Inside your App.xaml.cs file
 
-            // Code tooexecute when hello application is activated (brought tooforeground)
-            // This code will not execute when hello application is first launched
+            // Code to execute when the application is activated (brought to foreground)
+            // This code will not execute when the application is first launched
             private void Application_Activated(object sender, ActivatedEventArgs e)
             {
               EngagementAgent.Instance.OnActivated(e);
@@ -232,12 +232,12 @@ Máte tooinsert `EngagementAgent.Instance.OnActivated(e)` v hello `Application_A
 ## <a name="device-id"></a>Id zařízení
             String GetDeviceId()
 
-Voláním této metody můžete získat id zařízení engagement hello.
+Voláním této metody můžete získat id zařízení v engagement.
 
 ## <a name="extras-parameters"></a>Parametry funkce
-Libovolná data může být připojené tooan události, k chybě, aktivity nebo úlohy. Tato data můžete strukturu pomocí slovníku. Klíče a hodnoty můžou být jakéhokoli typu.
+Libovolná data lze připojit k události, k chybě, aktivity nebo úlohy. Tato data můžete strukturu pomocí slovníku. Klíče a hodnoty můžou být jakéhokoli typu.
 
-Data funkce se serializují, takže pokud chcete tooinsert vlastní typ v funkce budete mít tooadd kontraktu dat pro tento typ.
+Data funkce se serializují, takže pokud chcete, která se přidá vlastní typ funkce budete muset přidat kontraktu dat pro tento typ.
 
 ### <a name="example"></a>Příklad
 Vytvoříme novou třídu "Osoba".
@@ -273,7 +273,7 @@ Vytvoříme novou třídu "Osoba".
               }
             }
 
-Potom přidáme `Person` instance tooan navíc.
+Potom přidáme `Person` instance na další.
 
             Person person = new Person("Engagement Haddock", 51);
             var extras = new Dictionary<object, object>();
@@ -282,28 +282,28 @@ Potom přidáme `Person` instance tooan navíc.
             EngagementAgent.Instance.SendEvent("Event", extras);
 
 > [!WARNING]
-> Když vložíte jiné typy objektů, ujistěte se, že jejich metodu ToString() implementovaná tooreturn lidské čitelných řetězců.
+> Když vložíte jiné typy objektů, ujistěte se, že jejich metodu ToString() je implementována vrátit lidského čitelných řetězců.
 > 
 > 
 
 ### <a name="limits"></a>Omezení
 #### <a name="keys"></a>Klíče
-Každý klíč v objektu hello musí odpovídat hello následující regulární výraz:
+Každý klíč v objektu musí odpovídat následujícímu regulárnímu výrazu:
 
 `^[a-zA-Z][a-zA-Z_0-9]*$`
 
 Znamená to, že klíče musí začínat aspoň jedním písmenem, za nímž následuje písmena, číslice nebo podtržítka (\_).
 
 #### <a name="size"></a>Velikost
-Funkce omezeny příliš**1024** znaků na jednu volání.
+Funkce jsou omezeny na **1024** znaků na jednu volání.
 
 ## <a name="reporting-application-information"></a>Informace o vytváření sestav aplikace
 ### <a name="reference"></a>Referenční informace
             void SendAppInfo(Dictionary<object, object> appInfos)
 
-Můžete ručně sestavy sledování informace (nebo všechny ostatní aplikace konkrétní informace) pomocí funkce SendAppInfo() hello.
+Můžete ručně sestavy sledování informace (nebo všechny ostatní aplikace konkrétní informace) pomocí SendAppInfo() funkce.
 
-Všimněte si, že tyto údaje lze odeslat přírůstkově: pouze hello nejnovější hodnotu pro daný klíč budou zachovány pro dané zařízení. Jako funkce událostí použití slovníku\<objektu, objekt\> – tooattach informace.
+Všimněte si, že tyto údaje lze odeslat přírůstkově: pouze nejnovější hodnotu pro daný klíč budou zachovány pro dané zařízení. Jako funkce událostí použití slovníku\<objektu, objekt\> připojit – informace.
 
 ### <a name="example"></a>Příklad
             Dictionary<object, object> appInfo = new Dictionary<object, object>()
@@ -316,23 +316,23 @@ Všimněte si, že tyto údaje lze odeslat přírůstkově: pouze hello nejnově
 
 ### <a name="limits"></a>Omezení
 #### <a name="keys"></a>Klíče
-Každý klíč v objektu hello musí odpovídat hello následující regulární výraz:
+Každý klíč v objektu musí odpovídat následujícímu regulárnímu výrazu:
 
 `^[a-zA-Z][a-zA-Z_0-9]*$`
 
 Znamená to, že klíče musí začínat aspoň jedním písmenem, za nímž následuje písmena, číslice nebo podtržítka (\_).
 
 #### <a name="size"></a>Velikost
-Informace o aplikaci jsou omezené příliš**1024** znaků na jednu volání.
+Informace o aplikaci jsou omezeny na **1024** znaků na jednu volání.
 
-Předchozí příklad, hello JSON odeslán toohello serveru v hello je 44 znaků:
+V předchozím příkladu je JSON odeslat na server 44 znaků:
 
             {"subscription":"2013-12-07","premium":"true"}
 
 ## <a name="logging"></a>Protokolování
 ### <a name="enable-logging"></a>Povolení protokolování
-Hello SDK může být nakonfigurované tooproduce protokolů testování v konzole IDE hello.
-Tyto protokoly nejsou ve výchozím nastavení aktivované. toocustomize se aktualizovat hello vlastnost `EngagementAgent.Instance.TestLogEnabled` tooone hello hodnota dostupná z hello `EngagementTestLogLevel` výčtu, například:
+Sada SDK se dá nakonfigurovat k vytvoření protokolů testování v konzole IDE.
+Tyto protokoly nejsou ve výchozím nastavení aktivované. Chcete-li přizpůsobit tím, aktualizujte vlastnost `EngagementAgent.Instance.TestLogEnabled` na jednu z hodnota dostupná z `EngagementTestLogLevel` výčtu pro instanci:
 
             EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
             EngagementAgent.Instance.Init();

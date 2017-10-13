@@ -1,15 +1,15 @@
 
-1. Navštivte hello [portál Azure].
-2. Klikněte na tlačítko **App Services** > hello back-end, který jste vytvořili.
-3. V nastavení mobilní aplikace hello, klikněte na tlačítko **rychlý Start** > **Cordova**.
+1. Navštivte [Azure Portal].
+2. Klikněte na **App Services** > back-end, který jste vytvořili.
+3. V nastavení mobilní aplikace klikněte na **Rychlý start** > **Cordova**.
 ![Azure Portal se zvýrazněnou možností Rychlý start Mobile Apps][quickstart]
 4. V části **Configure your client application** (Konfigurace klientské aplikace) vyberte možnost **Vytvořit novou aplikaci** a klikněte na **Stáhnout**.
-2. Rozbalte hello stáhnout ZIP soubor tooa adresáři na pevném disku, přejděte toohello soubor řešení (.sln) a otevřete jej pomocí sady Visual Studio.
-3. V sadě Visual Studio vyberte hello další toothe počáteční šipku platforma řešení hello (Android, iOS nebo Windows). Vyberte konkrétní nasazení zařízení nebo emulátoru kliknutím hello na hello zelenou šipku rozevíracího seznamu. Můžete použít platformu Android výchozí hello a Ripple emulatoru. Pokročilejší kurzy (například nabízená oznámení) vyžadují tooselect podporovaných zařízení nebo emulátor.
-4. toobuild a spuštění aplikace Cordova, stisknutím klávesy F5 nebo klikněte na tlačítko hello zelenou šipku. Pokud se zobrazí dialogové okno zabezpečení v síti žádajícího přístup toohello hello emulátoru, přijměte.
-5. Po spuštění aplikace hello na emulátoru nebo zařízení hello zadejte smysluplný text v **zadejte nový text**, jako například *hello dokončení kurzu* a pak klikněte na tlačítko hello **přidat** tlačítko.
+2. Rozbalte stažený soubor ZIP do adresáře na pevném disku, přejděte do souboru řešení (.sln) a otevřete ho pomocí sady Visual Studio.
+3. V sadě Visual Studio zvolte platformu řešení (Android, iOS nebo Windows) z rozevíracího seznamu vedle spouštěcí šipky. Vyberte konkrétní zařízení pro nasazení nebo emulátor kliknutím na rozevírací seznam na zelené šipce. Můžete použít výchozí platformu Android a emulátor Ripple. Pokročilejší kurzy (například k nabízeným oznámením) vyžadují výběr podporovaného zařízení nebo emulátoru.
+4. Aplikaci Cordova sestavíte a spustíte stisknutím klávesy F5 nebo kliknutím na zelenou šipku. Pokud se v emulátoru zobrazí dialogové okno zabezpečení požadující přístup k síti, potvrďte ho.
+5. Po spuštění aplikace v zařízení nebo emulátoru zadejte smysluplný text do pole **Zadejte nový text**, například *Dokončení kurzu*, a pak klikněte na tlačítko **Přidat**.
 
-Hello back-end vloží data z požadavku hello do tabulky TodoItem hello v hello databáze SQL a vrátí informace o hello nově uložených položkách back toohello mobilní aplikace. mobilní aplikace Hello zobrazí tato data v seznamu hello.
+Back-end vloží data z požadavku do tabulky TodoItem ve službě SQL Database a vrátí informace o nově uložených položkách do mobilní aplikace. Mobilní aplikace zobrazí tato data v seznamu.
 
 Kroky 3 až 5 můžete opakovat i pro jiné platformy.
 
@@ -17,4 +17,4 @@ Kroky 3 až 5 můžete opakovat i pro jiné platformy.
 [quickstart]: ./media/app-service-mobile-configure-new-backend/quickstart.png
 
 <!-- URLs -->
-[portál Azure]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/

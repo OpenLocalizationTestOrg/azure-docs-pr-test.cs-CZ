@@ -1,6 +1,6 @@
 ---
-title: "Aktivita aaaAudit sestavy v portálu Azure Active Directory hello | Microsoft Docs"
-description: "Úvod toohello audit sestavy aktivit v portálu Azure Active Directory hello"
+title: "Sestavy aktivit auditu na portálu Azure Active Directory | Dokumentace Microsoftu"
+description: "Seznámení se sestavami aktivit auditu na portálu Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,66 +15,66 @@ ms.workload: identity
 ms.date: 07/19/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 1567673f5030fc707b017c069f2ba7587962e5cb
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f2d0332d815c82d7d47625e020de2e9c5099deeb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="audit-activity-reports-in-hello-azure-active-directory-portal"></a>Audit aktivity sestav na portálu Azure Active Directory hello 
+# <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit auditu na portálu Azure Active Directory 
 
-S vytvářením sestav v Azure Active Directory (Azure AD), můžete získat hello informace, které potřebujete toodetermine úspěšnost prostředí.
+Generování sestav v Azure Active Directory (Azure AD) umožňuje získat všechny informace potřebné ke zjištění stavu vašeho prostředí.
 
-Hello reporting architektura ve službě Azure AD se skládá z hello následující součásti:
+Architektura generování sestav v Azure AD se skládá z následujících komponent:
 
 - **Aktivita** 
-    - **Přihlašovací aktivity** – informace o využití hello spravovaných aplikací a aktivit přihlášení uživatelů
+    - **Aktivity přihlašování** – informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů
     - **Protokoly auditu** – informace aktivit systému o správě uživatelů a skupin, spravovaných aplikacích a aktivitách adresářů
 - **Zabezpečení** 
-    - **Rizikové přihlášení** -rizikové přihlášení je indikátorem pro pokusu přihlášení, který se možná prováděly uživatelem, který není vlastníkem legitimní hello uživatelského účtu. Další podrobnosti najdete v tématu Riziková přihlášení.
+    - **Riziková přihlášení** –Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. Další podrobnosti najdete v tématu Riziková přihlášení.
     - **Uživatelé označení příznakem rizika** – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený. Další podrobnosti najdete v tématu Uživatelé označení příznakem rizika.
 
-Toto téma poskytuje přehled hello audit aktivity.
+V toto tématu najdete přehled aktivit auditu.
  
-## <a name="who-can-access-hello-data"></a>Kdo může přistupovat k datům hello?
-* Uživatelé v roli správce zabezpečení nebo zabezpečení čtečky hello
+## <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
+* Uživatelé v roli Správce zabezpečení nebo Čtenář zabezpečení
 * Globální správci
 * Jednotliví uživatelé (bez oprávnění správce) mohou zobrazit své vlastní aktivity.
 
 
 ## <a name="audit-logs"></a>Protokoly auditu
 
-protokoly auditu Hello v Azure Active Directory zadejte záznamů aktivit systému pro dodržování předpisů.  
-Je vaší první tooall bodu položka auditování dat **protokoly auditu** v hello **aktivity** části **Azure Active Directory**.
+Protokoly auditu v Azure Active Directory obsahují záznamy aktivit systému pro zajištění dodržování předpisů.  
+Prvním vstupním bodem k veškerým datům auditování je možnost **Protokoly auditu** v oddílu **Aktivita** služby **Azure Active Directory**.
 
 ![Protokoly auditu](./media/active-directory-reporting-activity-audit-logs/61.png "Protokoly auditu")
 
 Protokol auditu má výchozí zobrazení seznamu, které obsahuje následující položky:
 
-- Hello datum a čas výskytu hello
-- Hello iniciátor nebo objektu actor (*kdo*) aktivity 
-- Hello aktivity (*co*) 
-- cíl Hello
+- datum a čas výskytu
+- iniciátor/aktér aktivity (*kdo*) 
+- aktivita (*co*) 
+- cíl
 
 ![Protokoly auditu](./media/active-directory-reporting-activity-audit-logs/18.png "Protokoly auditu")
 
-Kliknutím můžete přizpůsobit zobrazení seznamu hello **sloupce** v panelu nástrojů hello.
+Zobrazení seznamu můžete upravit kliknutím na **Sloupce** na panelu nástrojů.
 
 ![Protokoly auditu](./media/active-directory-reporting-activity-audit-logs/19.png "Protokoly auditu")
 
-To vám umožní toodisplay další pole nebo odeberte pole, které jsou již zobrazen.
+To umožňuje zobrazit další pole, nebo odebrat pole, která jsou už zobrazená.
 
 ![Protokoly auditu](./media/active-directory-reporting-activity-audit-logs/21.png "Protokoly auditu")
 
 
-Kliknutím na položku v zobrazení seznamu hello zobrazí všechny dostupné podrobné informace o něm.
+Kliknutím na položku v zobrazení seznamu k ní zobrazíte všechny dostupné podrobnosti.
 
 ![Protokoly auditu](./media/active-directory-reporting-activity-audit-logs/22.png "Protokoly auditu")
 
 
 ## <a name="filtering-audit-logs"></a>Filtrování protokolů auditu
 
-toonarrow dolů hello nahlášené tooa dat na úrovni, funguje pro vás, můžete filtrovat data auditu hello pomocí hello následující pole:
+Abyste omezili zobrazovaná data na úroveň, která vám vyhovuje, můžete filtrovat data přihlašování s využitím následujících polí:
 
 - Rozsah dat
 - Spustil(a) (činitel)
@@ -85,7 +85,7 @@ toonarrow dolů hello nahlášené tooa dat na úrovni, funguje pro vás, může
 ![Protokoly auditu](./media/active-directory-reporting-activity-audit-logs/23.png "Protokoly auditu")
 
 
-Hello **rozsah dat** filtr povoluje tooyou toodefine časový rámec pro hello vrátil data.  
+Filtr pro **rozsah dat** umožňuje definovat časový rámec pro vracená data.  
 Možné hodnoty:
 
 - 1 měsíc
@@ -95,9 +95,9 @@ Možné hodnoty:
 
 Když vyberete vlastní časový rámec, můžete nakonfigurovat počáteční a koncový čas.
 
-Hello **iniciovaná** filtr umožňuje vám toodefine objektu actor název nebo jeho universal hlavní název (UPN).
+Filtr **Spustil(a)** umožňuje definovat jméno aktéra nebo hlavní název uživatele (UPN).
 
-Hello **kategorie** filtru vám umožní tooselect jeden hello následující filtru:
+Filtr **Kategorie** umožňuje vybrat jeden z následujících filtrů:
 
 - Všechny
 - Základní kategorie
@@ -110,7 +110,7 @@ Hello **kategorie** filtru vám umožní tooselect jeden hello následující fi
 - Identity Protection
 - B2C
 
-Hello **typ prostředku aktivity** filtru vám umožní tooselect jedna z následujících hello filtry:
+Filtr **Typ prostředku aktivity** umožňuje vybrat jeden z následujících filtrů:
 
 - Všechny 
 - Skupina
@@ -121,29 +121,29 @@ Hello **typ prostředku aktivity** filtru vám umožní tooselect jedna z násle
 - Zařízení
 - Ostatní
 
-Když vyberete **skupiny** jako **typ prostředku aktivity**, dojde další filtr kategorii, která vám umožní tooalso poskytují **zdroj**:
+Když jako **Typ prostředku aktivity** vyberete **Skupina**, zobrazí se další kategorie filtru, která umožňuje zadat také **Zdroj**:
 
 - Azure AD
 - O365
 
 
-Hello **aktivity** filtru je založené na kategorii hello a výběr typu prostředku aktivity provedete. Můžete vybrat konkrétní aktivity mají toosee nebo zvolit vše. 
+Filtr **Aktivita** je založený na vybrané kategorii a typu prostředku aktivity. Můžete vybrat konkrétní aktivitu, kterou chcete zobrazit, nebo zvolit všechny. 
 
-Můžete získat hello seznam všech aktivit auditu pomocí hello rozhraní Graph API https://graph.windows.net/$ tenantdomain/aktivity nebo auditActivityTypes? api-version = beta, kde $tenantdomain = název domény nebo najdete v článku toohello [audit sestavy události](active-directory-reporting-audit-events.md).
+Seznam všech aktivit auditu můžete získat pomocí Graph API https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta, kde $tenantdomain = název domény. Také se můžete podívat na článek o [událostech sestavy auditování](active-directory-reporting-audit-events.md).
 
 
 ## <a name="audit-logs-shortcuts"></a>Zástupci pro protokoly auditu
 
-Kromě toho příliš**Azure Active Directory**, hello portál Azure poskytuje dva další vstupní body tooaudit dat:
+Kromě **Azure Active Directory** poskytuje web Azure Portal dva další vstupní body k datům auditu:
 
 - Uživatelé a skupiny
 - Podnikové aplikace
 
 ### <a name="users-and-groups-audit-logs"></a>Protokoly auditu uživatelů a skupin
 
-Uživatele a sestavy na základě skupiny auditu můžete získat odpovědi tooquestions jako:
+S použitím sestav auditu orientovaných na uživatele a skupiny můžete najít odpovědi na otázky tohoto typu:
 
-- Jaké typy aktualizací byly použité hello uživatelů?
+- Jaké typy aktualizací uživatelé použili?
 
 - Kolik uživatelů bylo změněno?
 
@@ -151,38 +151,38 @@ Uživatele a sestavy na základě skupiny auditu můžete získat odpovědi tooq
 
 - Co provedl správce v adresáři?
 
-- Co jsou hello skupiny, které byly přidány?
+- Které skupiny byly přidány?
 
 - Došlo u některých skupin ke změnám členství?
 
-- Byl změněn hello vlastníků skupiny?
+- Došlo ke změnám vlastníků skupiny?
 
-- Jaké licence byly přiřazeny tooa skupinu nebo uživatele?
+- Jaké licence byly přiřazeny skupině nebo uživateli?
 
-Pokud chcete tooreview auditování data, která je související toousers a skupiny, můžete najít v části filtrované zobrazení **protokoly auditu** v hello **aktivity** části hello **uživatelů a skupin**. Tento vstupní bod má jako **Typ prostředku aktivity** předem vybranou možnost **Uživatelé a skupiny**.
+Pokud chcete jenom zkontrolovat data auditování týkající se uživatelů a skupin, najdete filtrované zobrazení v sekci **Protokoly auditu** v oddílu **Aktivity** v části **Uživatelé a skupiny**. Tento vstupní bod má jako **Typ prostředku aktivity** předem vybranou možnost **Uživatelé a skupiny**.
 
 ![Protokoly auditu](./media/active-directory-reporting-activity-audit-logs/93.png "Protokoly auditu")
 
 ### <a name="enterprise-applications-audit-logs"></a>Protokoly auditu podnikových aplikací
 
-S založené na aplikaci audit sestavy, můžete získat odpovědi tooquestions jako:
+S použitím sestav auditu orientovaných na aplikace můžete najít odpovědi na otázky tohoto typu:
 
-* Jaké jsou hello aplikace, které byl přidán nebo aktualizován?
-* Jaké jsou hello aplikace, které byly odebrány?
+* Které aplikace byly přidány nebo aktualizovány?
+* Které aplikace byly odebrány?
 * Změnil se instanční objekt pro aplikaci?
-* Byl změněn hello názvy aplikací?
-* Kdo jste dali souhlas tooan aplikace?
+* Změnily se názvy aplikací?
+* Kdo udělil souhlas pro aplikaci?
 
-Pokud chcete tooreview auditování data, která jsou aplikace související tooyour, můžete najít filtrované zobrazení pod **protokoly auditu** v hello **aktivity** části hello **podnikové aplikace**  okno. Tento vstupní bod má jako **Typ prostředku aktivity** předem vybranou možnost **Podniková aplikace**.
+Pokud chcete jenom zkontrolovat data auditování týkající se aplikací, najdete filtrované zobrazení v sekci **Protokoly auditu** v oddílu **Aktivity** v části **Podnikové aplikace**. Tento vstupní bod má jako **Typ prostředku aktivity** předem vybranou možnost **Podniková aplikace**.
 
 ![Protokoly auditu](./media/active-directory-reporting-activity-audit-logs/134.png "Protokoly auditu")
 
-Můžete filtrovat toto zobrazení další dolů toojust **skupiny** nebo právě **uživatelé**.
+Toto zobrazení je možné dál filtrovat až na samotné **skupiny** nebo **uživatele**.
 
 ![Protokoly auditu](./media/active-directory-reporting-activity-audit-logs/25.png "Protokoly auditu")
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Přehled vytváření sestav najdete v tématu hello [generování sestav Azure Active Directory](active-directory-reporting-azure-portal.md).
+Přehled generování sestav najdete v tématu [Generování sestav v Azure Active Directory](active-directory-reporting-azure-portal.md).
 

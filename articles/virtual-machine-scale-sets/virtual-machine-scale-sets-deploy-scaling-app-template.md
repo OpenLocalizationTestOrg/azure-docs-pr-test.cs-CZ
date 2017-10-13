@@ -1,6 +1,6 @@
 ---
-title: "aaaDeploy aplikace na sadu škálování virtuálního počítače Azure | Microsoft Docs"
-description: "Přečtěte si toodeploy jednoduché automatické škálování aplikace na škálování virtuálních počítačů, nastavit pomocí šablony Azure Resource Manager."
+title: "Nasazení aplikace ve škálovací sadě virtuálních počítačů Azure | Dokumentace Microsoftu"
+description: "Naučte se nasazovat jednoduché, automaticky škálovatelné aplikace ve škálovací sadě virtuálních počítačů Azure pomocí šablony Azure Resource Manageru."
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: rwike77
@@ -15,25 +15,25 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/24/2017
 ms.author: ryanwi
-ms.openlocfilehash: 6fccc310312cabfcdddfcbcd2d154fc5cc440417
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 07883a33382cc660b043c99872312a9e77228253
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-an-autoscaling-app-using-a-template"></a>Nasazení aplikace s automatickým škálováním pomocí šablony
 
-[Šablony Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) jsou skvělý způsob toodeploy skupiny související prostředky. V tomto kurzu vychází [nasadit jednoduchý škálovací sadu](virtual-machine-scale-sets-mvss-start.md) a popisuje, jak toodeploy jednoduché automatické škálování aplikace na škále nastaví pomocí šablony Azure Resource Manager.  Můžete také nastavit automatické škálování pomocí prostředí PowerShell, rozhraní příkazového řádku nebo hello portálu. Další informace najdete v tématu [Přehled automatického škálování](virtual-machine-scale-sets-autoscale-overview.md).
+[Šablony Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) nabízí skvělou možnost pro nasazení skupin souvisejících prostředků. Tento kurz vychází z [Nasazení jednoduché škálovací sady](virtual-machine-scale-sets-mvss-start.md) a popisuje, jak pomocí šablony Azure Resource Manageru nasadit jednoduchou, automaticky škálovatelnou aplikaci ve škálovací sadě.  Automatické škálování můžete nastavit také pomocí PowerShellu, rozhraní příkazového řádku nebo portálu. Další informace najdete v tématu [Přehled automatického škálování](virtual-machine-scale-sets-autoscale-overview.md).
 
 ## <a name="two-quickstart-templates"></a>Dvě šablony Quickstart
-Když nasadíte škálovací sadu, nový software můžete instalovat na image platformy pomocí [rozšíření virtuálního počítače](../virtual-machines/virtual-machines-windows-extensions-features.md). Rozšíření virtuálního počítače je malá aplikace, která na virtuálních počítačích Azure umožňuje konfiguraci a automatizaci úloh po nasazení, například nasazení aplikace. Dvě různé Ukázka šablony jsou uvedeny v [Azure nebo azure – rychlý start šablony](https://github.com/Azure/azure-quickstart-templates) které ukazují, jak nastavit automatické škálování aplikace na škále toodeploy pomocí rozšíření virtuálního počítače.
+Když nasadíte škálovací sadu, nový software můžete instalovat na image platformy pomocí [rozšíření virtuálního počítače](../virtual-machines/virtual-machines-windows-extensions-features.md). Rozšíření virtuálního počítače je malá aplikace, která na virtuálních počítačích Azure umožňuje konfiguraci a automatizaci úloh po nasazení, například nasazení aplikace. Ve složce [Azure/azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates) najdete dvě různé ukázkové šablony, díky kterým se dozvíte, jak pomocí rozšíření virtuálního počítači nasadit do škálovací sady automaticky škálovatelnou aplikaci.
 
 ### <a name="python-http-server-on-linux"></a>HTTP server s Pythonem v Linuxu
-Hello [server Python HTTP v systému Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) šablony ukázka nasadí jednoduché automatické škálování aplikace běžící v škálovací sada Linux.  [Bottle](http://bottlepy.org/docs/dev/), Python webu framework a jednoduchý server HTTP, které jsou nasazeny na každý virtuální počítač ve škálovací hello nastavit pomocí vlastního skriptu rozšíření virtuálního počítače. škálování Hello měřítka nastavit tak, když je větší než 60 % průměrné využití procesoru mezi všechny virtuální počítače a přizpůsobí, pokud využití CPU průměrné hello je méně než 30 %.
+Ukázková šablona [HTTP server s Pythonem v Linuxu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) nasadí jednoduchou, automaticky škálovatelnou aplikaci, která běží ve škálovací sadě systému Linux.  Na každém virtuálním počítači v dané škálovací sadě se pomocí rozšíření virtuálního počítače s přizpůsobeným skriptem nasadí [Bottle](http://bottlepy.org/docs/dev/), webové rozhraní založené na jazyce Python, a jednoduchý server HTTP. Škálovací sada vertikálně navýší kapacitu, když průměrné využití procesoru napříč všemi virtuálními počítači přesáhne 60 %. Pokud průměrné využití procesoru klesne pod 30 %, kapacitu vertikálně sníží.
 
-Kromě toho toohello sady škálování prostředku hello *azuredeploy.json* Ukázka šablony také deklaruje virtuální sítě, veřejnou IP adresu, nástroj pro vyrovnávání zatížení a škálování nastavení prostředky.  Další informace o vytvoření těchto prostředků v šabloně najdete v tématu [Škálovací sada s automatickým škálováním pro Linux](virtual-machine-scale-sets-linux-autoscale.md).
+Ukázková šablona *azuredeploy.json* kromě prostředku škálovací sady určuje také prostředky pro virtuální síť, veřejnou IP adresu, vyrovnávání zatížení a nastavení automatického škálování.  Další informace o vytvoření těchto prostředků v šabloně najdete v tématu [Škálovací sada s automatickým škálováním pro Linux](virtual-machine-scale-sets-linux-autoscale.md).
 
-V hello *azuredeploy.json* šablony, hello `extensionProfile` vlastnost hello `Microsoft.Compute/virtualMachineScaleSets` prostředků určuje rozšíření vlastních skriptů. `fileUris`Určuje umístění skriptů hello. V takovém případě dva soubory: *workserver.py*, která definuje jednoduchý server HTTP, a *installserver.sh*, která nainstaluje Bottle a spustí hello HTTP server. `commandToExecute`Určuje příkaz toorun hello po nasazení hello škálovací sadu.
+V šabloně *azuredeploy.json* vlastnost `extensionProfile` prostředku `Microsoft.Compute/virtualMachineScaleSets` specifikuje rozšíření s přizpůsobeným skriptem. `fileUris` určuje umístění skriptu. V tomto případě jde o dva soubory: *workserver.py*, který určujte jednoduchý HTTP server, a *installserver.sh*, který nainstaluje rozhraní Bottle a spustí daný HTTP server. `commandToExecute` určuje příkaz, který se spustí po nasazení škálovací sady.
 
 ```json
           "extensionProfile": {
@@ -59,11 +59,11 @@ V hello *azuredeploy.json* šablony, hello `extensionProfile` vlastnost hello `M
 ```
 
 ### <a name="aspnet-mvc-application-on-windows"></a>Aplikace ASP.NET MVC ve Windows
-Hello [aplikace ASP.NET MVC v systému Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) šablony ukázka nasadí jednoduchou aplikaci ASP.NET MVC systémem Windows škálovací sadu ve službě IIS.  Službu IIS a hello aplikace MVC jsou nasazeny pomocí hello [požadovaného prostředí PowerShell konfigurace stavu (DSC)](virtual-machine-scale-sets-dsc.md) rozšíření virtuálního počítače.  škálování Hello nastavit měřítka (v instanci virtuálního počítače v čase) Pokud je větší než 50 % využití procesoru po dobu 5 minut. 
+Vzorová šablona [Aplikace ASP.NET MVC ve Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) nasadí do škálovací sady Windows jednoduchou aplikaci ASP.NET MVC, která běží ve službě IIS.  Služba IIS a aplikace MVC se nasazují pomocí rozšíření virtuálního počítače [Požadovaná konfigurace stavu (DSC) PowerShellu](virtual-machine-scale-sets-dsc.md).  Škálovací sada vertikálně navýší kapacitu (postupně u všech instancí virtuálních počítačů), pokud využití procesoru přesáhne 50 % po dobu 5 minut. 
 
-Kromě toho toohello sady škálování prostředku hello *azuredeploy.json* Ukázka šablony také deklaruje virtuální sítě, veřejnou IP adresu, nástroj pro vyrovnávání zatížení a škálování nastavení prostředky. Tato šablona také ukazuje upgrade aplikace.  Další informace o vytvoření těchto prostředků v šabloně najdete v tématu [Škálovací sada s automatickým škálováním pro Windows](virtual-machine-scale-sets-windows-autoscale.md).
+Ukázková šablona *azuredeploy.json* kromě prostředku škálovací sady určuje také prostředky pro virtuální síť, veřejnou IP adresu, vyrovnávání zatížení a nastavení automatického škálování. Tato šablona také ukazuje upgrade aplikace.  Další informace o vytvoření těchto prostředků v šabloně najdete v tématu [Škálovací sada s automatickým škálováním pro Windows](virtual-machine-scale-sets-windows-autoscale.md).
 
-V hello *azuredeploy.json* šablony, hello `extensionProfile` vlastnost hello `Microsoft.Compute/virtualMachineScaleSets` určuje prostředků [konfigurace požadovaného stavu (DSC)](virtual-machine-scale-sets-dsc.md) rozšíření, který se nainstaluje službu IIS a výchozí webové aplikace z balíčku aplikace WebDeploy.  Hello *IISInstall.ps1* skript nainstaluje službu IIS na virtuálním počítači hello a je nalezena v hello *DSC* složky.  Hello MVC webové aplikace se nachází v hello *WebDeploy* složky.  Hello cesty toohello instalační skript a hello webové aplikace jsou definovány v hello `powershelldscZip` a `webDeployPackage` parametry v hello *azuredeploy.parameters.json* souboru. 
+V šabloně *azuredeploy.json* je vlastnost `extensionProfile` prostředku `Microsoft.Compute/virtualMachineScaleSets` určená rozšířením [Požadovaná konfigurace stavu](virtual-machine-scale-sets-dsc.md), které nainstaluje službu IIS a výchozí webovou aplikaci z balíčku WebDeploy.  Skript *IISInstall.ps1* nainstaluje službu IIS na virtuální počítač. Najdete ho ve složce *DSC*.  Webovou aplikaci MVC najdete ve složce *WebDeploy*.  Cesty pro instalaci skriptu a webové aplikace najdete v parametrech `powershelldscZip` a `webDeployPackage` v souboru *azuredeploy.parameters.json*. 
 
 ```json
           "extensionProfile": {
@@ -93,11 +93,11 @@ V hello *azuredeploy.json* šablony, hello `extensionProfile` vlastnost hello `M
           }
 ```
 
-## <a name="deploy-hello-template"></a>Nasazení šablony hello
-Hello nejjednodušší způsob, jak toodeploy hello [server Python HTTP v systému Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) nebo [aplikace ASP.NET MVC v systému Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) šablona je toouse hello **nasazení tooAzure** nalezeno tlačítko v hello v souborech readme hello v Githubu.  Můžete také použít PowerShell nebo rozhraní příkazového řádku Azure toodeploy hello Ukázka šablony.
+## <a name="deploy-the-template"></a>Nasazení šablony
+Nejjednodušší způsob, jak nasadit šablonu [HTTP server s Pythonem v Linuxu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) nebo [Aplikace ASP.NET MVC ve Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale), je pomocí tlačítka **Nasazení do Azure**, které najdete na GitHubu v souborech Readme.  Ukázkové šablony můžete nasadit také pomocí PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 
 ### <a name="powershell"></a>PowerShell
-Kopírování hello [server Python HTTP v systému Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) nebo [aplikace ASP.NET MVC v systému Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) soubory ze složky tooa úložišti GitHub hello v místním počítači.  Otevřete hello *azuredeploy.parameters.json* souboru a aktualizace hello výchozí hodnoty hello `vmssName`, `adminUsername`, a `adminPassword` parametry. Uložte následující skript prostředí PowerShell příliš hello*deploy.ps1* v hello stejné složce jako hello *azuredeploy.json* šablony. toodeploy hello Ukázka šablony spustit hello *deploy.ps1* skript z příkazové okno prostředí PowerShell.
+Zkopírujte soubory [HTTP server s Pythonem v Linuxu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) nebo [Aplikace ASP.NET MVC ve Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) z úložiště GitHub do složky v místním počítači.  Otevřete soubor *azuredeploy.parameters.json* a aktualizujte výchozí hodnoty parametrů `vmssName`, `adminUsername` a `adminPassword`. Následující skript PowerShellu uložte do souboru *deploy.ps1* ve stejné složce, jako je šablona *azuredeploy.json*. Pokud chcete nasadit vzorovou šablonu, v okně pro příkazy PowerShellu spusťte skript *deploy.ps1*.
 
 ```powershell
 param(
@@ -163,7 +163,7 @@ if($resourceProviders.length) {
 $resourceGroup = Get-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue
 if(!$resourceGroup)
 {
-    Write-Host "Resource group '$resourceGroupName' does not exist. toocreate a new resource group, please enter a location.";
+    Write-Host "Resource group '$resourceGroupName' does not exist. To create a new resource group, please enter a location.";
     if(!$resourceGroupLocation) {
         $resourceGroupLocation = Read-Host "resourceGroupLocation";
     }
@@ -174,7 +174,7 @@ else{
     Write-Host "Using existing resource group '$resourceGroupName'";
 }
 
-# Start hello deployment
+# Start the deployment
 Write-Host "Starting deployment...";
 if(Test-Path $parametersFilePath) {
     New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile $templateFilePath -TemplateParameterFile $parametersFilePath;
@@ -191,7 +191,7 @@ IFS=$'\n\t'
 
 # -e: immediately exit if any command has a non-zero exit status
 # -o: prevents errors in a pipeline from being masked
-# IFS new value is less likely toocause confusing bugs when looping arrays or arguments (e.g. $@)
+# IFS new value is less likely to cause confusing bugs when looping arrays or arguments (e.g. $@)
 
 usage() { echo "Usage: $0 -i <subscriptionId> -g <resourceGroupName> -n <deploymentName> -l <resourceGroupLocation>" 1>&2; exit 1; }
 
@@ -238,12 +238,12 @@ if [[ -z "$deploymentName" ]]; then
 fi
 
 if [[ -z "$resourceGroupLocation" ]]; then
-    echo "Enter a location below toocreate a new resource group else skip this"
+    echo "Enter a location below to create a new resource group else skip this"
     echo "ResourceGroupLocation:"
     read resourceGroupLocation
 fi
 
-#templateFile Path - template file toobe used
+#templateFile Path - template file to be used
 templateFilePath="template.json"
 
 if [ ! -f "$templateFilePath" ]; then
@@ -264,7 +264,7 @@ if [ -z "$subscriptionId" ] || [ -z "$resourceGroupName" ] || [ -z "$deploymentN
     usage
 fi
 
-#login tooazure using your credentials
+#login to azure using your credentials
 az account show 1> /dev/null
 
 if [ $? != 0 ];
@@ -272,7 +272,7 @@ then
     az login
 fi
 
-#set hello default subscription id
+#set the default subscription id
 az account set --name $subscriptionId
 
 set +e

@@ -1,5 +1,5 @@
 ---
-title: "Kodér standardní formáty aaaMedia a kodeky"
+title: "Media Encoder Standard formáty a kodeky"
 description: "Toto téma poskytuje přehled Media Encoder Standard formáty a kodeky."
 services: media-services
 documentationcenter: 
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: 51a67f372dff579383ffcfa988e8f4d38ad44a72
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1115408443e11c8b0d26b83217c5f63e4b6ba819
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Kodeky a standardní formáty kodéru médií
-Tento dokument obsahuje seznam hello nejběžnější import a export formáty souborů, které může používat pro Media Encoder Standard.
+Tento dokument obsahuje seznam nejčastějších import a export formáty souborů, které může používat pro Media Encoder Standard.
 
 ## <a name="input-containerfile-formats"></a>Zadejte kontejner nebo formátů
 | Formáty souborů (přípony souborů) | Podporuje se |
@@ -39,30 +39,30 @@ Tento dokument obsahuje seznam hello nejběžnější import a export formáty s
 | QuickTime (MOV) |Ano |
 
 > [!NOTE]
-> Výše je seznam přípon souborů hello běžně došlo. Media Encoder Standard podporuje mnoho dalších (například: .m2ts, .mpeg2video a Content). Pokud se pokusíte tooencode soubor a zobrazí chybovou zprávu o hello formátu, který není podporován, odešlete prosím svůj názor [zde](https://feedback.azure.com/forums/169396-media-services/category/144411-encoding-and-processing/).
+> Vyšší je seznam přípon běžně došlo k souboru. Media Encoder Standard podporuje mnoho dalších (například: .m2ts, .mpeg2video a Content). Pokud se pokusíte kódování souboru a zobrazí chybové hlášení o formátu, který není podporován, odešlete prosím svůj názor [zde](https://feedback.azure.com/forums/169396-media-services/category/144411-encoding-and-processing/).
 > 
 > 
 
 ### <a name="audio-formats-in-input-containers"></a>Formáty zvuku ve vstupní kontejnery
-Media Encoder Standard podporuje provádění hello následující formáty zvuku ve vstupní kontejnerů:
+Media Encoder Standard podporuje, provedení následujících formátů zvuk v kontejnerech vstupní:
 
 * MXF, GXF a QuickTime soubory, které mají zvukových stop s prokládaná stereofonním systémem nebo 5.1 ukázky
 
 nebo
 
-* Soubory MXF, GXF a QuickTime kde hello zvuk probíhá jako samostatné sleduje PCM ale hello kanál mapování (toostereo nebo 5.1) lze odvodit z metadata souboru hello
+* Soubory MXF, GXF a QuickTime kde zvukovém souboru se provádí jako samostatné stopy PCM ale mapování kanál (na stereofonním systémem nebo 5.1) lze odvodit z metadata souboru
 
-Všimněte si podporující pro explicitní nebo uživatelem zadané kanál mapování bude k dispozici v blízké budoucnosti hello.
+Všimněte si podporující pro explicitní nebo uživatelem zadané kanál mapování bude poskytnuta v blízké budoucnosti.
 
 ## <a name="input-video-codecs"></a>Vstupní Video kodeky
 | Vstupní Video kodeky | Podporuje se |
 | --- | --- | --- | --- |
-| AVC 8-bit nebo 10-bit, až too4:2:2, včetně AVCIntra |8 bitů 4:2:0, 4:2:2 |
+| AVC 8-bit nebo 10-bit, až 4:2:2, včetně AVCIntra |8 bitů 4:2:0, 4:2:2 |
 | Avid DNxHD (v MXF) |Ano |
 | DVCPro/DVCProHD (v MXF) |Ano |
 | Digitální video (DV) (v souborech souborů AVI) |Ano |
 | JPEG 2000 |Ano |
-| MPEG-2 (too422 profil a vysokou úroveň, včetně například XDCAM, XDCAM HD, XDCAM IMX, CableLabs® a D10 variant) |Too422 profil |
+| MPEG-2 (až 422 profil a vysokou úroveň, včetně například XDCAM, XDCAM HD, XDCAM IMX, CableLabs® a D10 variant) |Až 422 profilu |
 | MPEG-1 |Ano |
 | VC-1 NEBO WMV9 |Ano |
 | Canopus Ústředí/HQX |Ne |
@@ -79,7 +79,7 @@ Všimněte si podporující pro explicitní nebo uživatelem zadané kanál mapo
 ## <a name="input-audio-codecs"></a>Vstupní zvukových kodeků
 | Vstupní zvukových kodeků | Podporuje se |
 | --- | --- | --- | --- |
-| AAC (AAC-LC, AAC HE a AAC-HEv2; nahoru too5.1) |Ano |
+| AAC (AAC-LC, AAC HE a AAC-HEv2; až 5.1) |Ano |
 | MPEG vrstvy 2 |Ano |
 | MP3 (MPEG-1 zvuk vrstvy 3) |Ano |
 | Zvuk média systému Windows |Ano |
@@ -94,7 +94,7 @@ Všimněte si podporující pro explicitní nebo uživatelem zadané kanál mapo
 | Digitální Dolby® Plus (E-AC3) |Ne |
 
 ## <a name="output-formats-and-codecs"></a>Formáty výstup a kodeky
-Hello následující tabulka uvádí hello kodeků a soubor formáty, které jsou podporovány pro export.
+Následující tabulka uvádí formáty kodeky a souborů, které jsou podporovány pro export.
 
 | Formát souboru | Kodek videa | Zvukových kodeků |
 | --- | --- | --- |
@@ -110,5 +110,5 @@ Hello následující tabulka uvádí hello kodeků a soubor formáty, které jso
 ## <a name="see-also"></a>Viz také
 [Kódování obsahu na vyžádání pomocí služby Azure Media Services](media-services-encode-asset.md)
 
-[Jak tooencode pomocí procesoru Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md)
+[Postup Kódovat pomocí kodéru Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md)
 

@@ -1,6 +1,6 @@
 ---
-title: "aaaConfigure Azure AD jednotného přihlašování pro aplikace | Microsoft Docs"
-description: "Zjistěte, jak připojit tooself služby tooAzure aplikace služby Active Directory pomocí SAML a jednotné přihlašování založené na heslech"
+title: "Konfigurovat Azure AD jednotného přihlašování pro aplikace | Microsoft Docs"
+description: "Zjistěte, jak k samoobslužné připojit aplikace do Azure Active Directory pomocí SAML a jednotné přihlašování založené na heslech"
 services: active-directory
 author: asmalser-msft
 documentationcenter: na
@@ -15,52 +15,52 @@ ms.date: 07/20/2017
 ms.author: asmalser
 ms.reviewer: luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 002a19a6c7ad25ea2f3b9c6a7c7874ed2be23cce
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 9049f526243cb4659aaf86b3d31146abe8f5f3ef
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="configuring-single-sign-on-tooapplications-that-are-not-in-hello-azure-active-directory-application-gallery"></a>Konfigurace jednoho přihlášení tooapplications které nejsou v galerii aplikací Azure Active Directory hello
-Tento článek se týká funkce, která umožňuje správci tooconfigure jeden přihlašování tooapplications nejsou k dispozici v galerii aplikací Azure Active Directory hello *bez nutnosti psaní kódu*. Tato funkce byla vydána z 18. listopadu 2015 technical preview a je součástí [Azure Active Directory Premium](active-directory-editions.md). Pokud místo toho hledáte vývojáře pokyny najdete v části toointegrate vlastních aplikací s Azure AD prostřednictvím kódu, [scénáře ověřování pro Azure AD](active-directory-authentication-scenarios.md).
+# <a name="configuring-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory
+Tento článek se týká funkce, která umožňuje správci nakonfigurovat jednotné přihlašování k aplikacím, které nejsou k dispozici v galerii aplikací Azure Active Directory *bez nutnosti psaní kódu*. Tato funkce byla vydána z 18. listopadu 2015 technical preview a je součástí [Azure Active Directory Premium](active-directory-editions.md). Pokud místo toho hledáte Průvodce pro vývojáře o tom, jak integrovat vlastních aplikací s Azure AD prostřednictvím kódu, přečtěte si téma [scénáře ověřování pro Azure AD](active-directory-authentication-scenarios.md).
 
-Hello galerii aplikací Azure Active Directory poskytuje seznam aplikací, které jsou známé toosupport forma jednotné přihlašování s Azure Active Directory, jak je popsáno v [v tomto článku](active-directory-appssoaccess-whatis.md). Jakmile (jako IT specialista nebo systémový integrátor ve vaší organizaci) naleznete aplikace hello chcete tooconnect, abyste mohli začít podle postupujte podle hello podrobné pokyny uvedené v hello Azure management portal tooenable jednotné přihlašování.
+Poskytuje seznam aplikací, které jsou známé pro podporu forma jednotné přihlašování s Azure Active Directory, jak je popsáno v galerii aplikací Azure Active Directory [v tomto článku](active-directory-appssoaccess-whatis.md). Jakmile (jako IT specialista nebo systémový integrátor ve vaší organizaci) naleznete aplikace, které se chcete připojit, můžete začít používat podle postupujte podle podrobné pokyny uvedené v portálu správy Azure umožňující jednotného přihlašování.
 
 Zákazníci s [Azure Active Directory Premium](active-directory-editions.md) licence získat také tyto další funkce:
 
 * Samoobslužné integrace každou aplikaci, která podporuje poskytovatele identity SAML 2.0 (spouštěná SP nebo spouštěná IdP)
 * Samoobslužné integrace webové aplikace, který má k HTML na přihlašovací stránce pomocí [jednotné přihlašování založené na heslech](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)
-* Připojení aplikace, které používají protokol hello SCIM pro zřizování uživatelů samoobslužné služby ([zde popsané](active-directory-scim-provisioning.md))
-* Možnost tooadd odkazy tooany aplikace hello [Spouštěč aplikace Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) nebo hello [přístupový panel Azure AD](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)
+* Připojení aplikace, které používají protokol SCIM pro zřizování uživatelů samoobslužné služby ([zde popsané](active-directory-scim-provisioning.md))
+* Umožňuje přidat odkazy na všechny aplikace v [Spouštěč aplikace Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) nebo [přístupový panel Azure AD](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)
 
-To může zahrnovat pouze aplikací SaaS použít ale ještě nebyly na zahrnuté toohello galerii aplikací Azure AD, ale třetí strany webové aplikace, které vaše organizace nasadil tooservers, kterou řídíte, buď v hello cloudu nebo místně.
+To může zahrnovat pouze aplikace SaaS, které můžete použít, ale nebyly dosud byl na zahrnuté pro galerii aplikací Azure AD, ale třetí strany webových aplikací, které vaše organizace má nasazené servery, které řídíte, buď v cloudu nebo místně.
 
 Tyto možnosti, také známé jako *šablony integrace aplikace*, poskytovat založených na standardech spojovací body pro aplikace, které podporují SAML, SCIM nebo ověřování pomocí formulářů a zahrnuje nastavení pro kompatibilitu s mnoho aplikací a flexibilní možnosti. 
 
 ## <a name="adding-an-unlisted-application"></a>Přidání aplikace neuvedené
-tooconnect aplikace pomocí šablony integrace aplikací, přihlaste se k hello portál pro správu Azure pomocí účtu správce služby Azure Active Directory a procházet toohello **služby Active Directory > [Directory] > aplikace**vyberte **přidat**a potom **přidat aplikaci z Galerie hello**. 
+K připojení aplikace pomocí šablony integrace aplikaci, přihlaste se k portálu správy Azure pomocí účtu správce služby Azure Active Directory a přejděte do **služby Active Directory > [Directory] > aplikace** vyberte **přidat**a potom **přidat aplikaci z Galerie**. 
 
 ![][1]
 
-Galerie hello aplikací, můžete přidat aplikace neuvedené pomocí hello **vlastní** kategorie na levé straně hello nebo výběrem hello **přidání aplikace neuvedené** odkaz, který se zobrazí v hledání hello výsledků, pokud požadované aplikace nebyl nalezen. Po zadání název vaší aplikace, můžete nakonfigurovat hello jeden přihlašování možnosti a chování. 
+V galerii aplikací můžete přidat neuvedené aplikace pomocí **vlastní** kategorie na levé straně, nebo výběrem **přidání aplikace neuvedené** odkaz, který se zobrazí ve výsledcích hledání, pokud nebyla nalezena požadovaná aplikace. Po zadání název vaší aplikace, můžete nakonfigurovat, volby jednotného přihlašování a chování. 
 
-**Rychlý tip**: jako osvědčený postup použijte toosee toocheck funkce vyhledávání hello, pokud aplikace hello již existuje v galerii aplikací hello. Pokud je nalezen hello aplikace a její popis uvádí "jednotné přihlašování", pak aplikace hello je podporována pro federované jednotné přihlašování. 
+**Rychlý tip**: jako osvědčený postup, zkontrolujte, jestli aplikace už existuje v galerii aplikací pomocí funkce vyhledávání. Pokud je nalezen aplikace a její popis uvádí "jednotného přihlašování" a pak aplikaci je podporována pro federované jednotné přihlašování. 
 
 ![][2]
 
-Přidání aplikace tímto způsobem poskytuje velmi podobné prostředí toohello, jednu pro předběžně integrované aplikace k dispozici. toostart, vyberte **nakonfigurovat jednotné přihlašování**. úvodní obrazovka další uvede hello následující tři možnosti pro konfiguraci jednotné přihlašování, které jsou popsané v následující části hello.
+Přidání aplikace tímto způsobem, poskytuje možnosti velmi podobné tomu, které jsou k dispozici pro předběžně integrované aplikace. Chcete-li začít, vyberte **nakonfigurovat jednotné přihlašování**. Na další obrazovce uvede tři následující možnosti pro konfiguraci jednotné přihlašování, které jsou popsané v následujících částech.
 
 ![][3]
 
 ## <a name="azure-ad-single-sign-on"></a>Azure AD jednotné přihlášení
-Vyberte tuto možnost tooconfigure na základě SAML ověřování pro aplikaci hello. To vyžaduje, aby hello podporu aplikace SAML 2.0 a na tom, jak toouse hello funkce SAML hello aplikace před pokračováním by shromažďovat informace. Po výběru **Další**, bude výzvami tooenter tři různé adresy URL odpovídající toohello koncových bodů SAML pro aplikace hello. 
+Vyberte tuto možnost konfigurace založené na SAML ověřování pro aplikaci. To vyžaduje, aby podporu aplikace SAML 2.0 a by měl shromažďovat informace o tom, jak používat funkce SAML aplikace než budete pokračovat. Po výběru **Další**, zobrazí se výzva k zadání tři různé adresy URL odpovídající koncových bodů SAML pro aplikaci. 
 
 ![][4]
 
 Jsou to:
 
-* **Přihlašovací adresa URL (spouštěná SP pouze)** – kde hello uživatel přejde toothis toosign v aplikaci. Aplikace hello je nakonfigurována jedním spouštěná poskytovatele služby tooperform přihlásit, pak když uživatel přejde toothis adresu URL, poskytovatele služeb hello bude hello tooauthenticate tooAzure AD nezbytné přesměrování a přihlásit uživatele hello v. Pokud toto pole se vyplní, Azure AD použije tato adresa URL toolaunch hello aplikace z Office 365 a hello přístupový Panel Azure AD. Pokud toto pole je ommited, a poté Azure AD bude místo toho proveďte zprostředkovatele identity-initiated přihlašování při hello spuštění aplikace z Office 365, hello přístupový Panel Azure AD, nebo z hello Azure AD jeden přihlašování adresy URL (copiable z karty řídicí panel hello).
-* **URL vystavitele** -URL vystavitele hello jedinečně identifikoval hello aplikace, pro které jedním přihlásit se konfiguruje. Toto je hodnota text hello, Azure AD odešle back tooapplication jako hello **cílovou skupinu** parametr hello tokenu SAML a aplikace hello je očekávané toovalidate ho. Tato hodnota se rovněž zobrazuje jako hello **Entity ID** v veškerá metadata SAML poskytované aplikace hello. Podívejte se do dokumentace aplikace hello SAML podrobnosti k tomu, co je Entity ID nebo hodnota cílovou skupinu. Dole je příklad, jak se zobrazí v hello SAML token vrácený toohello aplikace hello URL cílové skupiny:
+* **Přihlašovací adresa URL (spouštěná SP pouze)** – Pokud uživatel přejde na přihlásit se k této aplikaci. Pokud aplikace je nakonfigurovaná k plnění jednotné přihlašování iniciované poskytovatele služby, pak když uživatel přejde na tuto adresu URL, bude poskytovatele služeb proveďte potřebné přesměrování do služby Azure AD k ověření a přihlaste se s uživatelem v. Pokud toto pole je vyplněný, budou Azure AD používat tuto adresu URL pro spuštění aplikace z Office 365 a Azure AD přístupového panelu. Pokud toto pole je ommited, a poté Azure AD bude místo toho proveďte zprostředkovatele identity-initiated přihlašování při spuštění aplikace z Office 365 přístupový Panel Azure AD, nebo z Azure AD jednotné přihlašování adresy URL (copiable z karty řídicí panel).
+* **URL vystavitele** -URL vystavitele musí jednoznačně identifikovat aplikace, pro které jedním přihlásit se konfiguruje. Toto je hodnota, která odešle Azure AD zpátky do aplikace, jako **cílovou skupinu** tokenu SAML a aplikace se očekává, že parametr pro jeho ověření. Tato hodnota se rovněž zobrazuje jako **Entity ID** v veškerá metadata SAML poskytuje aplikace. Podívejte se do dokumentace aplikace SAML podrobnosti k tomu, co je Entity ID nebo hodnota cílovou skupinu. Dole je příklad, jak se zobrazuje adresu URL cílové skupiny v tokenu SAML vrátí aplikaci:
 
 ```
     <Subject>
@@ -74,63 +74,63 @@ Jsou to:
       </Conditions>
 ```
 
-* **Adresa URL odpovědi** – adresa URL odpovědi hello je tam, kde aplikace hello očekává tooreceive hello SAML token. Toto je také hello odkazované tooas **Assertion příjemce Service (ACS) adresy URL**. Podívejte se do dokumentace aplikace hello SAML podrobnosti na to, co je jeho adresa URL odpovědi tokenu SAML nebo adresa URL služby ACS.
-  Po zadání těchto klikněte na tlačítko **Další** tooproceed toohello další obrazovce. Tato obrazovka poskytuje informace o tom, jaké požadavky toobe na tooenable straně aplikace hello ho tooaccept tokenu SAML z Azure AD. 
+* **Adresa URL odpovědi** – adresa URL odpovědi je, kde se předpokládá, že aplikace přijímat tokenu SAML. Tím se také označuje jako **Assertion příjemce Service (ACS) adresy URL**. Podívejte se do dokumentace aplikace SAML podrobnosti na to, co je odpovědět tokenu SAML adresu URL nebo adresa URL služby ACS.
+  Po zadání těchto klikněte na tlačítko **Další** pokračovat na další obrazovce. Tato obrazovka poskytuje informace o co je potřeba nakonfigurovat na straně aplikace povolit pro přijetí tokenu SAML z Azure AD. 
 
 ![][5]
 
-Hodnot, které jsou požadovány lišit v závislosti na aplikaci hello, takže podívejte se do dokumentace aplikace hello SAML podrobnosti. Hello **přihlašování** a **odhlášení** adresa URL služby obě řešení toohello stejný koncový bod, který je koncový bod zpracování požadavků hello SAML pro vaší instanci Azure AD. URL vystavitele Hello je hello hodnotu, která se zobrazí jako "Vystavitele" hello uvnitř hello aplikace vydaných toohello tokenu SAML. 
+Hodnoty, které jsou požadovány lišit v závislosti na aplikaci, takže podívejte se do dokumentace aplikace SAML podrobnosti. **Přihlašování** a **odhlášení** obě odkazující na stejné koncového bodu, což je koncový bod SAML zpracování požadavků pro vaše instance služby Azure AD adresu URL služby. URL vystavitele je hodnota, která se zobrazí jako "Vystavitele" uvnitř tokenu SAML vystaveno pro aplikace. 
 
-Po vaší aplikace byla nakonfigurovaná, klikněte na tlačítko **Další** tlačítko a pak hello **Complete** tooclose hello dialogu. 
+Jakmile vaše aplikace byla nakonfigurovaná, klikněte na tlačítko **Další** tlačítko a potom **Complete** zavřete dialogové okno. 
 
-## <a name="assigning-users-and-groups-tooyour-saml-application"></a>Přiřazení uživatelů a skupin tooyour SAML aplikace
-Jakmile vaše aplikace nakonfigurovaná toouse Azure AD jako zprostředkovatele identity na základě SAML, už je téměř Hotovo tootest. Jako ovládací prvek zabezpečení Azure AD nevydá token, což jim toosign do aplikace hello Pokud kterým byl udělen přístup pomocí služby Azure AD. Uživatelé mohou mít udělen přístup přímo nebo prostřednictvím skupiny, které jsou členy. 
+## <a name="assigning-users-and-groups-to-your-saml-application"></a>Přiřazení uživatelů a skupin k aplikaci SAML
+Jakmile vaše aplikace byla nakonfigurovaná pro použití Azure AD jako zprostředkovatele identity na základě SAML, je téměř připraveni otestovat. Jako ovládací prvek zabezpečení Azure AD nevydá token, což jim umožní přihlášení do aplikace, pokud mají udělené přístup pomocí služby Azure AD. Uživatelé mohou mít udělen přístup přímo nebo prostřednictvím skupiny, které jsou členy. 
 
-tooassign aplikaci tooyour uživatele nebo skupinu, klikněte na tlačítko hello **přiřadit uživatele** tlačítko. Vyberte hello uživatele nebo skupiny chcete tooassign a potom vyberte hello **přiřadit** tlačítko. 
+Chcete-li přiřadit uživatele nebo skupiny do vaší aplikace, klikněte na tlačítko **přiřadit uživatele** tlačítko. Vyberte uživatele nebo skupiny, které chcete přiřadit a pak vyberte **přiřadit** tlačítko. 
 
 ![][6]
 
-Přiřazení uživatele umožní Azure AD tooissue token pro uživatele hello, jakož i způsobuje dlaždice pro tuto aplikaci tooappear panelu hello uživatele přístup. Dlaždici aplikace se také zobrazí v Spouštěč aplikace hello Office 365, pokud uživatel hello používá Office 365. 
+Přiřazení uživatele vám umožní vystavit token pro uživatele, jakož i způsobuje dlaždice pro tuto aplikaci, než se objeví v uživatele přístupový Panel Azure AD. Dlaždici aplikace se také zobrazí v Spouštěč aplikace Office 365, pokud uživatel používá Office 365. 
 
-Můžete nahrávat logo dlaždice pro aplikace hello pomocí hello **nahrát Logo** na hello tlačítko **konfigurace** kartu pro aplikace hello. 
+Můžete nahrávat logo dlaždice pro aplikace pomocí **nahrát Logo** na tlačítko **konfigurace** kartě pro aplikaci. 
 
-### <a name="customizing-hello-claims-issued-in-hello-saml-token"></a>Přizpůsobení hello deklarace identity vystavené v tokenu SAML hello
-Když se uživatel ověřuje toohello aplikace, Azure AD vydá token toohello aplikace SAML, který obsahuje informace (nebo deklarace identity) o hello uživateli, který jedinečně identifikuje je. Ve výchozím nastavení to zahrnuje uživatelské jméno, e-mailová adresa, jméno a příjmení hello uživatele. 
+### <a name="customizing-the-claims-issued-in-the-saml-token"></a>Přizpůsobení deklarace identity vystavené v tokenu SAML
+Když se uživatel přihlásí k aplikaci, Azure AD vydá SAML token aplikaci, která obsahuje informace (nebo deklarace identity) o uživatele, který jednoznačně identifikuje je. Ve výchozím nastavení to zahrnuje uživatelské jméno, e-mailová adresa, jméno a příjmení uživatele. 
 
-Můžete zobrazit nebo upravit hello deklarace identity odeslat v hello aplikace toohello tokenu SAML pod hello **atributy** kartě. 
+Můžete zobrazit nebo upravit deklarace identity odeslat v tokenu SAML, aby aplikace v rámci **atributy** kartě. 
 
 ![][7]
 
-Existují dvě možné důvody, proč může být nutné tooedit hello deklarace identity vystavené v tokenu SAML hello: •hello aplikace byla zapsána toorequire jinou sadu deklarací identity identifikátory URI nebo deklarací identity, hodnoty •Your aplikace nasazený způsobem, který vyžaduje hello NameIdentifier deklarace toobe něco jiného než hello uživatelské jméno (hlavní název uživatele NEBOLI) uložené ve službě Azure Active Directory. 
+Existují dvě možné důvody, proč je potřeba upravit deklarace identity vystavené v tokenu SAML: •cílová aplikace byla zapsána na vyžadují jinou sadu deklarací identity identifikátory URI nebo nasazení aplikace •Your způsobem, který vyžaduje NameIdentifier hodnot deklarací identit deklarací na něco jiného než uživatelské jméno (hlavní název uživatele NEBOLI) uložené ve službě Azure Active Directory. 
 
-Informace o tom, jak tooadd a úpravy deklarací pro tyto scénáře, podívejte se na to [článku o přizpůsobení deklarace identity](active-directory-saml-claims-customization.md). 
+Informace o tom, jak přidávat a upravovat deklarace pro tyto scénáře, podívejte se na to [článku o přizpůsobení deklarace identity](active-directory-saml-claims-customization.md). 
 
-### <a name="testing-hello-saml-application"></a>Testování aplikace hello SAML
-Po hello SAML adresy URL a certifikát byly nakonfigurovány v Azure AD a hello aplikace, uživatele nebo skupiny mají přiřazený toohello aplikaci v Azure a hello deklarace identity byly zkontrolovány a upravovat v případě potřeby, pak uživatel hello je připraven toosign do hello aplikace. 
+### <a name="testing-the-saml-application"></a>Testování aplikace SAML
+Jakmile SAML adresy URL a certifikát jsou nakonfigurované v Azure AD a aplikace, uživatele nebo skupiny mají přiřazený k aplikaci v Azure a deklarace identity byly zkontrolovány a v případě potřeby upravit a pak uživatel je připraven k přihlášení do aplikace. 
 
-tootest, jednoduše přihlásit se k hello přístupový panel Azure AD v https://myapps.microsoft.com pomocí uživatelského účtu, že jste přiřadili toohello aplikace a potom klikněte na dlaždici hello tookick aplikace hello vypnout hello jeden přihlašování procesu. Alternativně můžete procházet přímo toohello adresa URL přihlašování pro aplikace hello a přihlásit se z ní. 
+Chcete-li otestovat, jednoduše přihlásit se k přístupovému panelu Azure AD na adrese https://myapps.microsoft.com pomocí uživatelského účtu, který jste přiřadili k aplikaci a potom klikněte na dlaždici aplikace, který ji procesu přihlášení. Alternativně můžete vyhledat přímo na adresu URL přihlašování pro aplikace a přihlaste se z ní. 
 
-Ladění tipy, najdete [článek věnovaný tomu, jak toodebug na základě SAML jeden přihlašování tooapplications](active-directory-saml-debugging.md) 
+Ladění tipy, najdete [článek o tom, jak ladit na základě SAML jednotného přihlašování k aplikacím](active-directory-saml-debugging.md) 
 
 ## <a name="password-single-sign-on"></a>Heslo jednotné přihlašování
-Vyberte tuto možnost tooconfigure [založené na heslech jednotné přihlašování](active-directory-appssoaccess-whatis.md) pro webovou aplikaci, která má přihlašovací stránku HTML. Založené na heslech SSO také heslo odkazované tooas vaulting, vám umožní toomanage uživatel přístup a hesla tooweb aplikace, které nepodporují federaci identit. Je také užitečné v případech, kde několika uživatelům musí tooshare jeden účet, například účty aplikace sociálních médií tooyour organizace. 
+Vyberte tuto možnost, chcete-li nakonfigurovat [založené na heslech jednotné přihlašování](active-directory-appssoaccess-whatis.md) pro webovou aplikaci, která má přihlašovací stránku HTML. Jednotné přihlašování založené na heslech, také označuje jako heslo vaulting, můžete spravovat přístup uživatelů a hesla k webovým aplikacím, které nepodporují federaci identit. Je také užitečné v případech, kdy je potřeba několik uživatelé sdílet jeden účet, například k účtům aplikace sociálních médií vaší organizace. 
 
-Po výběru **Další**, bude adresa URL hello výzvami tooenter hello aplikace založené na webu přihlašovací stránky. Všimněte si, že to musí být hello stránky, která zahrnuje hello uživatelské jméno a heslo vstupních polí. Spustí jednou zadané, Azure AD proces tooparse hello přihlašovací stránka pro vstup uživatelské jméno a heslo vstup. Pokud proces hello není úspěšné, pak provede vás alternativní procesem instalace rozšíření prohlížeče (vyžaduje Internet Explorer, Chrome nebo Firefox), které vám umožní toomanually zachycení hello pole.
+Po výběru **Další**, zobrazí se výzva k zadání adresu URL aplikace založené na webu přihlašovací stránky. Všimněte si, že to musí být stránky, která obsahuje vstupní pole uživatelské jméno a heslo. Jakmile se zadá, Azure AD spustí proces analyzovat přihlašovací stránce zadejte uživatelské jméno a heslo zadejte. Pokud proces není úspěšné, pak provede vás alternativní procesem instalace rozšíření prohlížeče (vyžaduje Internet Explorer, Chrome nebo Firefox), které vám umožní ručně zaznamenat pole.
 
-Jakmile zachytí přihlašovací stránku hello, může přiřadit uživatele a skupiny a zásady přihlašovacích údajů můžete nastavit stejně jako regulární [heslo jednotného přihlašování k aplikacím](active-directory-appssoaccess-whatis.md).
+Jakmile zachytí přihlašovací stránku, může přiřadit uživatele a skupiny a zásady přihlašovacích údajů můžete nastavit stejně jako regulární [heslo jednotného přihlašování k aplikacím](active-directory-appssoaccess-whatis.md).
 
-Poznámka: Můžete nahrávat logo dlaždice pro aplikace hello pomocí hello **nahrát Logo** na hello tlačítko **konfigurace** kartu pro aplikace hello. 
+Poznámka: Můžete nahrávat logo dlaždice pro aplikace pomocí **nahrát Logo** na tlačítko **konfigurace** kartě pro aplikaci. 
 
 ## <a name="existing-single-sign-on"></a>Existující jednotné přihlašování
-Vyberte tuto možnost tooadd portál odkazu tooan aplikace tooyour organizace přístupový Panel Azure AD nebo Office 365. Místo Azure AD pro ověřování můžete použít tento tooadd odkazy toocustom webových aplikací, které používají Azure Active Directory Federation Services (nebo jiné služby federation service). Nebo můžete přidat přímých odkazů toospecific SharePoint stránky nebo jiných webových stránek, že chcete tooappear na panelů přístup uživatelů. 
+Vyberte tuto možnost, chcete-li přidat odkaz na aplikaci na portál přístupový Panel Azure AD nebo Office 365 vaší organizace. To můžete použít k přidání odkazů na vlastní webové aplikace, které používají Azure Active Directory Federation Services (nebo jiné služby federation service) namísto Azure AD pro ověřování. Nebo můžete přidat přímé odkazy na konkrétní stránky SharePoint nebo jiných webových stránek, které chcete zobrazit na panelů přístup uživatelů. 
 
-Po výběru **Další**, bude výzvami tooenter hello URL toolink aplikace hello k. Po dokončení, uživatelé a skupiny přiřazeni toohello aplikace, což způsobí, že tooappear aplikace hello v hello [Spouštěč aplikace Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) nebo hello [přístupový panel Azure AD](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users) pro tyto uživatele.
+Po výběru **Další**, zobrazí se výzva k zadání adresy URL aplikace má být propojen s. Po dokončení, uživatelů a skupin může být přiřazen aplikaci, které způsobí, že aplikace se zobrazí v [Spouštěč aplikace Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) nebo [přístupový panel Azure AD](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users) pro tyto uživatele.
 
-Poznámka: Můžete nahrávat logo dlaždice pro aplikace hello pomocí hello **nahrát Logo** na hello tlačítko **konfigurace** kartu pro aplikace hello.
+Poznámka: Můžete nahrávat logo dlaždice pro aplikace pomocí **nahrát Logo** na tlačítko **konfigurace** kartě pro aplikaci.
 
 ## <a name="related-articles"></a>Související články
 * [Rejstřík článků o správě aplikací ve službě Azure Active Directory](active-directory-apps-index.md)
-* [Jak tooCustomize deklarace identity vystavené v hello tokenu SAML pro Pre-Integrated aplikace](active-directory-saml-claims-customization.md)
+* [Postup přizpůsobení deklarace identity vystavené v tokenu SAML pro předběžně integrované aplikace](active-directory-saml-claims-customization.md)
 * [Řešení potíží s na základě SAML jednotné přihlašování](active-directory-saml-debugging.md)
 
 <!--Image references-->

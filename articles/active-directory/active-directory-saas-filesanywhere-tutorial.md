@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s FilesAnywhere | Microsoft Docs'
-description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a FilesAnywhere."
+description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a FilesAnywhere."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,71 +13,71 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 376364a5c75f8d069ea6390c58586acb378cd8b4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4153056bd21006061c6ad8ff9cf3c17de9248628
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>Kurz: Azure Active Directory integrace s FilesAnywhere
 
-V tomto kurzu zjistíte, jak toointegrate FilesAnywhere s Azure Active Directory (Azure AD).
+V tomto kurzu zjistěte, jak integrovat FilesAnywhere s Azure Active Directory (Azure AD).
 
-Integrace FilesAnywhere s Azure AD poskytuje hello následující výhody:
+Integrace FilesAnywhere s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup tooFilesAnywhere
-- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooFilesAnywhere (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu pro správu Azure hello
+- Můžete řídit ve službě Azure AD, který má přístup k FilesAnywhere
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k FilesAnywhere (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - portálu pro správu Azure
 
-Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Integrace služby Azure AD s FilesAnywhere tooconfigure, je třeba hello následující položky:
+Konfigurace integrace Azure AD s FilesAnywhere, potřebujete následující položky:
 
 - Předplatné služby Azure AD
 - FilesAnywhere jednotného přihlašování povolené předplatné
 
 
 > [!NOTE]
-> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
 
-tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
+Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Provozním prostředí byste neměli používat, pokud je to nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání FilesAnywhere z Galerie hello
+1. Přidání FilesAnywhere z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
 
-## <a name="adding-filesanywhere-from-hello-gallery"></a>Přidání FilesAnywhere z Galerie hello
-tooconfigure hello integrace FilesAnywhere do Azure AD, je nutné tooadd FilesAnywhere hello Galerie tooyour seznamu spravovaných aplikací SaaS.
+## <a name="adding-filesanywhere-from-the-gallery"></a>Přidání FilesAnywhere z Galerie
+Při konfiguraci integrace FilesAnywhere do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS FilesAnywhere z galerie.
 
-**tooadd FilesAnywhere z Galerie hello, proveďte následující kroky hello:**
+**Pokud chcete přidat FilesAnywhere z galerie, proveďte následující kroky:**
 
-1. V hello  **[portálu pro správu Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
+1. V  **[portálu pro správu Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
+2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Klikněte na tlačítko **přidat** hello nahoře hello dialogového okna na tlačítko.
+3. Klikněte na tlačítko **přidat** tlačítko horní dialogové okno.
 
     ![Aplikace][3]
 
-4. Hello vyhledávacího pole zadejte **FilesAnywhere**.
+4. Do vyhledávacího pole zadejte **FilesAnywhere**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_FilesAnywhere_search.png)
 
-5. Na panelu výsledků hello vyberte **FilesAnywhere**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.
+5. Na panelu výsledků vyberte **FilesAnywhere**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_FilesAnywhere_addfromgallery.png)
 
@@ -85,75 +85,75 @@ tooconfigure hello integrace FilesAnywhere do Azure AD, je nutné tooadd FilesAn
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s FilesAnywhere podle testovacího uživatele názvem "Britta Simon".
 
-Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v FilesAnywhere je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v FilesAnywhere musí toobe navázat.
+Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v FilesAnywhere je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v FilesAnywhere musí navázat.
 
-Přiřazením hello hodnotu hello je vytvořen vztah tento odkaz **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** v FilesAnywhere.
+Tento vztah propojení se navazuje se hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v FilesAnywhere.
 
-tooconfigure a testu Azure AD jednotné přihlašování s FilesAnywhere, potřebujete následující stavební bloky hello toocomplete:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s FilesAnywhere, je třeba dokončit následující stavební bloky:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele FilesAnywhere](#creating-a-filesanywhere-test-user)**  -toohave protějšek Britta Simon v FilesAnywhere, která je jí reprezentace toohello propojené služby Azure AD.
-3. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
-4. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele FilesAnywhere](#creating-a-filesanywhere-test-user)**  – Pokud chcete mít protějšek Britta Simon v FilesAnywhere propojeném s Azure AD reprezentace jí.
+3. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
+4. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu pro správu Azure hello a nakonfigurovat jednotné přihlašování v aplikaci FilesAnywhere.
+V této části můžete povolit Azure AD jednotné přihlašování v portálu pro správu Azure a nakonfigurovat jednotné přihlašování v aplikaci FilesAnywhere.
 
-**tooconfigure Azure AD jednotné přihlašování s FilesAnywhere, proveďte následující kroky hello:**
+**Ke konfiguraci Azure AD jednotné přihlašování s FilesAnywhere, proveďte následující kroky:**
 
-1. V hello Azure Management portal na hello **FilesAnywhere** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na portálu Azure Management portal na **FilesAnywhere** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na hello **jednotného přihlašování** dialogové okno, jako **režimu** vyberte **na základě SAML přihlašování** jednotného přihlašování k tooenable.
+2. Na **jednotného přihlašování** dialogové okno, jako **režimu** vyberte **na základě SAML přihlašování** umožňující jednotného přihlašování na.
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_FilesAnywhere_samlbase.png)
 
-3. Na hello **FilesAnywhere domény a adresy URL** část, pokud chcete aplikace hello tooconfigure v **IDP iniciované režimu**:
+3. Na **FilesAnywhere domény a adresy URL** část, pokud chcete nakonfigurovat aplikace **IDP iniciované režimu**:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_filesanywhere_url.png)
     
-    a. V hello **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<company name>.filesanywhere.com/saml20.aspx?c=215`
+    a. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<company name>.filesanywhere.com/saml20.aspx?c=215`
 > [!NOTE]
-> Poznámka: Tato hodnota hello **215** je **clientid** a je jenom jako příklad. Je třeba tooreplace je hodnota skutečného clientid hello.
+> Pamatujte, že hodnota **215** je **clientid** a je jenom jako příklad. Potřebujete nahradit hodnotou skutečné clientid.
 
-4. Na hello **FilesAnywhere domény a adresy URL** část, pokud chcete aplikace hello tooconfigure v **SP iniciované režimu**, proveďte následující kroky hello:
+4. Na **FilesAnywhere domény a adresy URL** část, pokud chcete nakonfigurovat aplikace **SP iniciované režimu**, proveďte následující kroky:
     
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_filesanywhere_url1.png)
 
-    a. Klikněte na hello **zobrazit upřesňující nastavení adresy URL** možnost
+    a. Klikněte na **zobrazit upřesňující nastavení adresy URL** možnost
 
-    b. V hello **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<sub domain>.filesanywhere.com/`
+    b. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<sub domain>.filesanywhere.com/`
 
     > [!NOTE] 
-    > Upozorňujeme, že tyto nejsou hello skutečné hodnoty. Máte tooupdate tyto hodnoty pomocí hello skutečné přihlašovací adresa URL a odpovědi adresy URL. Obraťte se na [tým podpory FilesAnywhere](mailto:support@FilesAnywhere.com) tooget tyto hodnoty. 
+    > Upozorňujeme, že tyto nejsou skutečné hodnoty. Budete muset aktualizovat tyto hodnoty se skutečné přihlašovací adresa URL a adresa URL odpovědi. Obraťte se na [tým podpory FilesAnywhere](mailto:support@FilesAnywhere.com) k získání těchto hodnot. 
 
-5. FilesAnywhere softwarová aplikace očekává hello SAML kontrolní výrazy ve specifickém formátu. Nakonfigurujte hello následující deklarace identity pro tuto aplikaci. Můžete spravovat hello hodnoty těchto atributů z hello "**uživatelské atributy**" části na stránce integrace aplikace. Hello následující snímek obrazovky ukazuje příklad pro tento.
+5. FilesAnywhere softwarová aplikace očekává SAML kontrolní výrazy ve specifickém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnoty těchto atributů z "**uživatelské atributy**" části na stránce integrace aplikace. Následující snímek obrazovky ukazuje příklad pro tento.
     
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_filesanywhere_attribute.png)
     
-    Když uživatelé přihlásí do s FilesAnywhere získají hello hodnotu hello **clientid** atribut z [FilesAnywhere team](mailto:support@FilesAnywhere.com). Máte s hello poskytované FilesAnywhere jedinečnou hodnotu atributu "Id klienta" hello tooadd. Všechny tyto atributy, které jsou uvedené výše se vyžadují.
+    Pokud se uživatelé přihlásí s FilesAnywhere se získat hodnotu **clientid** atribut z [FilesAnywhere team](mailto:support@FilesAnywhere.com). Budete muset přidat atribut "Id klienta" s poskytované FilesAnywhere jedinečných hodnot. Všechny tyto atributy, které jsou uvedené výše se vyžadují.
     > [!NOTE] 
-    > Poznámka: Tato hodnota hello **2331** z **clientid** je jenom jako příklad. Je nutné tooprovide hello skutečnou hodnotu.
+    > Pamatujte, že hodnota **2331** z **clientid** je jenom jako příklad. Je třeba zadat skutečnou hodnotu.
 
 
-6. V hello **uživatelské atributy** část hello **jednotného přihlašování** dialogové okno, nakonfigurovat atribut tokenu SAML, jak je znázorněno v hello obrázku výše a provést hello následující kroky:
+6. V **uživatelské atributy** části na **jednotného přihlašování** dialogové okno, nakonfigurujte atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
     
     | Název atributu | Hodnota atributu |
     | ---------------| --------------- |    
     | ClientID | *"uniquevalue"* |
 
-    a. Klikněte na tlačítko **přidat atribut** tooopen hello **přidat atribut** dialogové okno.
+    a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_FilesAnywhere_04.png)
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_FilesAnywhere_05.png)
     
-    b. V hello **název** textovému poli, název atributu pro typ hello zobrazený pro tento řádek.
+    b. V **název** textovému poli, zadejte název atributu, který je uvedený na příslušném řádku.
     
-    c. Z hello **hodnotu** seznamu, hodnota atributu hello typ zobrazený pro tento řádek.
+    c. Z **hodnotu** seznamu, zadejte hodnotu atributu, který je uvedený na příslušném řádku.
     
     d. Klikněte na tlačítko **Ok**
 
@@ -161,46 +161,46 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_general_400.png)
 
-8. Na hello **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu hello ve vašem počítači.
+8. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_FilesAnywhere_certificate.png) 
 
-9. Na hello **FilesAnywhere konfigurace** klikněte na tlačítko **konfigurace FilesAnywhere** tooopen **konfigurovat přihlášení** okno.
+9. Na **FilesAnywhere konfigurace** klikněte na tlačítko **konfigurace FilesAnywhere** otevřete **konfigurovat přihlášení** okno.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_FilesAnywhere_configure.png) 
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_FilesAnywhere_configuresignon.png)
 
-10. pro aplikaci na konci FilesAnywhere, obraťte se na dokončení konfigurace jednotného přihlašování k tooget [tým podpory FilesAnywhere](mailto:support@FilesAnywhere.com) a poskytněte tokenu SAML hello stáhnout podpisový certifikát a jednotné přihlašování na (SSO) adresy URL.
+10. Chcete-li získat dokončení konfigurace jednotného přihlašování pro vaši aplikaci na konci FilesAnywhere, obraťte se na [tým podpory FilesAnywhere](mailto:support@FilesAnywhere.com) a poskytněte stažené tokenu SAML podpisový certifikát a jednotné přihlašování na (SSO) adresy URL.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Hello cílem této části je toocreate testovacího uživatele na portálu pro správu Azure hello názvem Britta Simon.
+Cílem této části je vytvoření zkušebního uživatele na portálu správy Azure, názvem Britta Simon.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
+**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
 
-1. V hello **portálu pro správu Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
+1. V **portálu pro správu Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-FilesAnywhere-tutorial/create_aaduser_01.png) 
 
-2. Přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé** toodisplay hello seznam uživatelů.
+2. Přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé** zobrazíte seznam uživatelů.
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-FilesAnywhere-tutorial/create_aaduser_02.png) 
 
-3. V horní části hello hello dialogového okna klikněte na tlačítko **přidat** tooopen hello **uživatele** dialogové okno.
+3. V horní části okna klikněte na tlačítko **přidat** otevřete **uživatele** dialogové okno.
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-FilesAnywhere-tutorial/create_aaduser_03.png) 
 
-4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
+4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-FilesAnywhere-tutorial/create_aaduser_04.png) 
 
-    a. V hello **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textovému poli, typ **BrittaSimon**.
 
-    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**. 
 
@@ -208,26 +208,26 @@ Hello cílem této části je toocreate testovacího uživatele na portálu pro 
 
 ### <a name="creating-a-filesanywhere-test-user"></a>Vytvoření zkušebního uživatele FilesAnywhere
 
-Aplikace podporuje pouze v době zřizování uživatelů a po ověření uživatele budou vytvořeny v hello aplikace automaticky. 
+Aplikace podporuje pouze v době zřizování uživatelů a po ověření uživatele automaticky se vytvoří v aplikaci. 
 
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
+### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon toouse Azure jednotné přihlašování, poskytněte tooFilesAnywhere svůj přístup.
+V této části povolíte Britta Simon používat tak, že udělíte přístup k FilesAnywhere Azure jednotné přihlašování.
 
 ![Přiřadit uživatele][200] 
 
-**tooassign Britta Simon tooFilesAnywhere, proveďte následující kroky hello:**
+**Pokud chcete přiřadit Britta Simon FilesAnywhere, proveďte následující kroky:**
 
-1. Na portálu pro správu Azure hello, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
+1. V portálu pro správu Azure, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikace hello vyberte **FilesAnywhere**.
+2. V seznamu aplikací vyberte **FilesAnywhere**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_FilesAnywhere_app.png) 
 
-3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
+3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
@@ -235,7 +235,7 @@ V této části povolíte Britta Simon toouse Azure jednotné přihlašování, 
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -245,14 +245,14 @@ V této části povolíte Britta Simon toouse Azure jednotné přihlašování, 
 
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.
+V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
-Když kliknete na dlaždici FilesAnywhere hello v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour FilesAnywhere aplikace.
+Když kliknete na dlaždici FilesAnywhere na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci FilesAnywhere.
 
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

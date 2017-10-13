@@ -1,5 +1,5 @@
 ---
-title: "aaaClient a server pro správu verzí sady SDK v Mobile Apps a Mobile Services | Microsoft Docs"
+title: "Klient a server správy verzí sady SDK v Mobile Apps a Mobile Services | Microsoft Docs"
 description: "Seznam klientskou sadu SDK a kompatibilitu s verzí serveru SDK pro Mobile Services a Azure Mobile Apps"
 services: app-service\mobile
 documentationcenter: 
@@ -14,24 +14,24 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.openlocfilehash: 5874b7455ea407ca8c77fb1bd03d97d0767ebb47
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f79e819b1547f81498ea213858faf3c75e374782
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Správa verzí klientských a serverových v Mobile Apps a Mobile Services
-nejnovější verzi Azure Mobile Services Hello je hello **Mobile Apps** funkce Azure App Service.
+Nejnovější verzi Azure Mobile Services je **Mobile Apps** funkce Azure App Service.
 
-Hello mobilní aplikace klienta a serveru SDK jsou původně založené na těch, které v Mobile Services, ale jsou *není* vzájemně kompatibilní.
-To znamená, že musí použít *Mobile Apps* klienta SDK s *Mobile Apps* serveru SDK a podobně pro *Mobile Services*. Tato smlouva se vynucuje prostřednictvím hodnotu speciální hlavičky používané hello klientských a serverových sad SDK, `ZUMO-API-VERSION`.
+Sady SDK pro klienta a serveru Mobile Apps jsou původně založené na těch, které v Mobile Services, ale jsou *není* vzájemně kompatibilní.
+To znamená, že musí použít *Mobile Apps* klienta SDK s *Mobile Apps* serveru SDK a podobně pro *Mobile Services*. Tato smlouva se vynucuje prostřednictvím hodnotu speciální hlavičky používané klientem a serverem sady SDK, `ZUMO-API-VERSION`.
 
-Poznámka: když tento dokument odkazuje tooa *Mobile Services* back-end, nemusí nutně toobe hostované na Mobile Services. Je teď možné toomigrate toorun mobilní službu v App Service beze změn kódu, ale stále používat služby hello *Mobile Services* verze sady SDK.
+Poznámka: když tento dokument odkazuje *Mobile Services* back-end, nemusí nutně pro hostování v Mobile Services. Nyní je možné migrovat mobilních služeb ke spuštění v App Service beze změn kódu, ale stále používat službu *Mobile Services* verze sady SDK.
 
-Další informace o toolearn migrace tooApp služby beze změn kódu, najdete v článku hello [migrovat tooAzure služby mobilní služby App Service].
+Další informace o migraci do služby App Service beze změn kódu, najdete v článku [migrace mobilní služby Azure App Service].
 
 ## <a name="header-specification"></a>Specifikace záhlaví
-klíč Hello `ZUMO-API-VERSION` je možné zadat hello HTTP, hlavičku nebo řetězec dotazu hello. Hello hodnota je řetězec verze ve formuláři hello **x.y.z**.
+Klíč `ZUMO-API-VERSION` může být určen v hlavičce HTTP nebo řetězec dotazu. Hodnota je řetězec verze ve formě **x.y.z**.
 
 Například:
 
@@ -42,15 +42,15 @@ HLAVIČKY: ZÁHLAVÍ ZUMO-API-VERSION: 2.0.0
 POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 
 ## <a name="opting-out-of-version-checking"></a>Zrušení kontrolu verzí
-Můžete vyjádření výslovného nesouhlasu kontroly nastavením hodnotu verze **true** pro nastavení aplikace hello **MS_SkipVersionCheck**. Tuto verzi uveďte v souboru web.config nebo v hello část nastavení aplikace hello portálu Azure.
+Můžete vyjádření výslovného nesouhlasu kontroly nastavením hodnotu verze **true** pro nastavení aplikace **MS_SkipVersionCheck**. Tuto verzi uveďte buď do souboru web.config, nebo v části Nastavení aplikace z portálu Azure.
 
 > [!NOTE]
-> Existuje několik změn v chování mezi Mobile Services a mobilní aplikace, zejména v oblasti hello ověřování, offline synchronizace a nabízených oznámení. Má jenom vyjádření výslovného nesouhlasu s verze kontrola po dokončení testování tooensure tyto změny chování není rozdělit funkce vaší aplikace.
+> Existuje několik změn v chování mezi Mobile Services a mobilní aplikace, zejména v oblasti ověřování, offline synchronizace a nabízených oznámení. Má jenom vyjádření výslovného nesouhlasu verze kontrola po dokončení testování pro zajištění, že tyto změny chování není rozdělit funkce vaší aplikace.
 >
 >
 
 ## <a name="summary-of-compatibility-for-all-versions"></a>Souhrn kompatibility pro všechny verze
-Graf Hello níže znázorňuje hello kompatibilitu mezi všechny typy klienta a serveru. Back-end je jsou klasifikovány jako buď Mobile **služby** nebo Mobile **aplikace** založené na serveru hello SDK, která používá.
+Následující graf zobrazuje kompatibilitu mezi všechny typy klienta a serveru. Back-end je jsou klasifikovány jako buď Mobile **služby** nebo Mobile **aplikace** založené na serveru SDK, která používá.
 
 |  | **Mobilní služby** Node.js, nebo .NET | **Mobilní aplikace** Node.js, nebo .NET |
 | --- | --- | --- |
@@ -59,14 +59,14 @@ Graf Hello níže znázorňuje hello kompatibilitu mezi všechny typy klienta a 
 
 \*To se dá nastavit podle určení **MS_SkipVersionCheck**.
 
-<!-- IMPORTANT!  hello anchors for Mobile Services and Mobile Apps MUST be 1.0.0 and 2.0.0 respectively, since there is an exception error message that uses those anchors. -->
+<!-- IMPORTANT!  The anchors for Mobile Services and Mobile Apps MUST be 1.0.0 and 2.0.0 respectively, since there is an exception error message that uses those anchors. -->
 
-<!-- NOTE: hello fwlink toothis document is http://go.microsoft.com/fwlink/?LinkID=690568 -->
+<!-- NOTE: the fwlink to this document is http://go.microsoft.com/fwlink/?LinkID=690568 -->
 
 ## <a name="1.0.0"></a>Klientem Mobile Services a serveru
-Hello klienta sady SDK v tabulce hello jsou kompatibilní s **Mobile Services**.
+Klientské sady SDK v následující tabulce jsou kompatibilní s **Mobile Services**.
 
-Poznámka: hello klientské sady SDK Mobile Services *nepodporují* odeslání hodnotu hlavičky pro `ZUMO-API-VERSION`. Pokud služba hello obdrží tato záhlaví nebo hodnotu řetězce dotazu, bude vrácena chyba, pokud jste explicitně zvolili odhlašování, jak je popsáno výše.
+Poznámka: Mobile Services klientskou sadu SDK *nepodporují* odeslání hodnotu hlavičky pro `ZUMO-API-VERSION`. Pokud služba přijme této hlavičky nebo hodnotu řetězce dotazu, bude vrácena chyba, pokud jste explicitně zvolili odhlašování, jak je popsáno výše.
 
 ### <a name="MobileServicesClients"></a>Mobilní *služby* klientskou sadu SDK
 | Klientské platformy | Verze | Hodnota záhlaví verze |
@@ -93,7 +93,7 @@ Poznámka: hello klientské sady SDK Mobile Services *nepodporují* odeslání h
 
 ## <a name="2.0.0"></a>Azure Mobile Apps klienta a serveru
 ### <a name="MobileAppsClients"></a>Mobilní *aplikace* klientskou sadu SDK
-Kontrola verze byla zavedena počínaje hello následující verzí hello klienta SDK pro **Azure Mobile Apps**:
+Kontrola verze byla zavedena spuštění v následujících verzích klienta SDK pro **Azure Mobile Apps**:
 
 | Klientské platformy | Verze | Hodnota záhlaví verze |
 | --- | --- | --- |
@@ -121,11 +121,11 @@ Kontrola verze je součástí následující verze sady SDK serveru:
 | 3.0.0-3.x.y |False nebo nebyla zadána |400 – Chybný požadavek |
 
 ## <a name="next-steps"></a>Další kroky
-* [migrovat tooAzure služby mobilní služby App Service]
+* [migrace mobilní služby Azure App Service]
 
 [Klienti Mobile Services]: #MobileServicesClients
 [Klienti Mobile Apps]: #MobileAppsClients
 
 
 [Mobile App Server SDK]: http://www.nuget.org/packages/microsoft.azure.mobile.server
-[migrovat tooAzure služby mobilní služby App Service]: app-service-mobile-migrating-from-mobile-services.md
+[migrace mobilní služby Azure App Service]: app-service-mobile-migrating-from-mobile-services.md

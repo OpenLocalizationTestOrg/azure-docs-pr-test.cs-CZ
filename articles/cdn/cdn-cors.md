@@ -1,6 +1,6 @@
 ---
-title: aaaUsing Azure CDN s CORS | Microsoft Docs
-description: "Zjistěte, jak toouse hello Azure Content Delivery Network (CDN) toowith sdílení prostředků různých původů (CORS)."
+title: "Pomocí Azure CDN CORS | Microsoft Docs"
+description: "Další informace o použití Azure Content Delivery Network (CDN) k s sdílení prostředků různých původů (CORS)."
 services: cdn
 documentationcenter: 
 author: zhangmanling
@@ -14,32 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 6c743b56c32a2d3aacc9a77094cb87d61b95d2f7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7070397f6e69b21add75bad8220f0b8ebe36d266
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="using-azure-cdn-with-cors"></a>Azure CDN pomocí CORS
 ## <a name="what-is-cors"></a>Co je CORS?
-CORS (mezi sdílení prostředků původu) je funkce protokolu HTTP, která umožňuje webová aplikace spuštěna v rámci jednoho prostředkům tooaccess domény v jiné doméně. V pořadí tooreduce hello možnost útoky skriptování mezi weby, všechny moderní prohlížeče implementovat omezení zabezpečení známé jako [stejného původu zásad](http://www.w3.org/Security/wiki/Same_Origin_Policy).  Zabrání se tak na webové stránce z volání rozhraní API v jiné doméně.  CORS poskytuje bezpečný tooallow jeden počátek (doménu původu hello) toocall rozhraní API v jiný počátek.
+CORS (mezi sdílení prostředků původu) je funkce protokolu HTTP, která umožňuje webové aplikace spuštěna v rámci jednoho domény přístup k prostředkům v jiné doméně. Chcete-li omezit možnost útoky skriptování mezi weby, všechny moderní prohlížeče implementovat omezení zabezpečení, označuje jako [stejného původu zásad](http://www.w3.org/Security/wiki/Same_Origin_Policy).  Zabrání se tak na webové stránce z volání rozhraní API v jiné doméně.  CORS poskytuje zabezpečení způsob, jak povolit jeden počátek (doménu původu) k volání rozhraní API v jiný počátek.
 
 ## <a name="how-it-works"></a>Jak to funguje
 Existují dva typy požadavků CORS *jednoduchých požadavků* a *komplexní požadavky.*
 
 ### <a name="for-simple-requests"></a>Pro jednoduché požadavky:
 
-1. Hello prohlížeč odešle požadavek CORS hello s další **původu** hlavičku požadavku HTTP. Hello hodnotu této hlavičky je hello původ, který obsluhuje hello nadřazená stránka, která je definována jako kombinace hello *protokol,* *domény,* a *portu.*  Když se na stránce z https://www.contoso.com pokusí tooaccess uživatelská data v hello fabrikam.com původu, mají být odeslány toofabrikam.com hello následující hlavičky žádosti:
+1. Prohlížeč odešle požadavek CORS s další **původu** hlavičku požadavku HTTP. Hodnotu této hlavičky je původ, který obsluhuje nadřazená stránka, která je definována jako kombinace *protokol,* *domény,* a *portu.*  Když stránku z https://www.contoso.com pokusí o přístup k datům uživatele v původu fabrikam.com, bude odesláno následující hlavičky žádosti na fabrikam.com:
 
    `Origin: https://www.contoso.com`
 
-2. Hello server může reagovat s žádným z následujících hello:
+2. Server odpoví některé z následujících:
 
    * **Access-Control-Allow-Origin** hlavičky v odpovědi označující původ lokality, která je povolena. Například:
 
      `Access-Control-Allow-Origin: https://www.contoso.com`
 
-   * Chyby protokolu HTTP code například 403, není-li hello server hello cross-origin požadavek po zkontrolování hlavičky počátku hello
+   * Kód chyby HTTP například 403, není-li server žádost cross-origin po zkontrolování hlavičku zdroje
 
    * **Access-Control-Allow-Origin** záhlaví se zástupnými znaky, které umožňuje všechny původy:
 
@@ -47,52 +47,52 @@ Existují dva typy požadavků CORS *jednoduchých požadavků* a *komplexní po
 
 ### <a name="for-complex-requests"></a>Pro komplexní požadavky:
 
-Žádost o komplexní je požadavek CORS, kde hello prohlížeče je požadovaná toosend *předběžný požadavek* (tj. předběžné kontroly) před odesláním hello aktuální požadavek CORS. Hello předběžný požadavek požádá oprávnění server hello Pokud hello původní požadavek CORS můžete pokračovat a je `OPTIONS` požadavku toohello stejnou adresu URL.
+Žádost o komplexní je požadavek CORS, kterých se v prohlížeči vyžaduje k odeslání *předběžný požadavek* (tj. předběžné kontroly) před odesláním aktuální požadavek CORS. Předběžný požadavek požádá oprávnění k serveru, pokud žádost původní CORS můžete pokračovat a je `OPTIONS` požadavek na stejnou adresu URL.
 
 > [!TIP]
-> Další informace o CORS toky a běžné nástrahy zobrazit hello [Průvodce tooCORS pro rozhraní REST API](https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs/).
+> Další informace o CORS toky a běžné nástrahy, podívejte se [Průvodce CORS pro rozhraní REST API](https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs/).
 >
 >
 
 ## <a name="wildcard-or-single-origin-scenarios"></a>Zástupný znak nebo jeden počátek scénáře
-CORS v Azure CDN budou automaticky fungovat žádnou další konfiguraci, když hello **Access-Control-Allow-Origin** záhlaví nastavena toowildcard (*) nebo jeden počátek.  Hello CDN bude ukládat do mezipaměti první odpověď hello a následné žádosti budou používat hello stejné záhlaví.
+CORS v Azure CDN budou automaticky fungovat s žádná další konfigurace při **Access-Control-Allow-Origin** záhlaví je nastaven na zástupný znak (*) nebo jeden počátek.  CDN se první odpověď do mezipaměti a následné žádosti bude používat stejné záhlaví.
 
-Pokud požadavky již byly provedeny toohello CDN předchozí tooCORS se nastavuje na hello do zdrojového umístění, budete potřebovat toopurge obsah na váš koncový bod obsahu tooreload hello obsahu s hello **Access-Control-Allow-Origin** záhlaví.
+Pokud již byly provedeny požadavky CDN před CORS se nastavuje na počátku, budete muset vymazat obsah na koncový bod obsah znovu načíst obsah s **Access-Control-Allow-Origin** záhlaví.
 
 ## <a name="multiple-origin-scenarios"></a>Více scénářů počátek
-Pokud potřebujete tooallow na konkrétní seznam původů toobe povolené pro CORS, získat věcí trochu složitější. Hello potížím dochází, pokud hello CDN ukládá do mezipaměti hello **Access-Control-Allow-Origin** záhlaví pro první zdroj CORS hello.  Pokud jiný zdroj CORS provede následného požadavku, hello CDN bude sloužit hello mezipaměti **Access-Control-Allow-Origin** hlavičky, která nebude odpovídat.  Existuje několik způsobů toocorrect to.
+Pokud je potřeba povolit konkrétní seznam původů smí pro CORS, získat věcí trochu složitější. Tento problém nastane, když CDN ukládá do mezipaměti **Access-Control-Allow-Origin** záhlaví pro první zdroj CORS.  Pokud jiný zdroj CORS provede následného požadavku, bude sloužit CDN uložená v mezipaměti **Access-Control-Allow-Origin** hlavičky, která nebude odpovídat.  Napravíte to tím několika způsoby.
 
 ### <a name="azure-cdn-premium-from-verizon"></a>Azure CDN Premium od Verizonu
-Hello tooenable nejlepší způsob, jak jde toouse **Azure CDN Premium od společnosti Verizon**, který zpřístupňuje některé rozšířené funkce. 
+Nejlepší způsob, jak povolit, je použití **Azure CDN Premium od společnosti Verizon**, který zpřístupňuje některé rozšířené funkce. 
 
-Budete potřebovat příliš[vytvořit pravidlo](cdn-rules-engine.md) toocheck hello **původu** hlavičky v požadavku hello.  Pokud je platný původu, pravidla nastaví hello **Access-Control-Allow-Origin** hlavička s hello původu uvedených v žádosti o hello.  Pokud hello počátek zadané v hello **původu** hlavičky není povolena, pravidla měli vynechejte hello **Access-Control-Allow-Origin** záhlaví, což způsobí hello prohlížeče tooreject hello požadavku. 
+Budete muset [vytvořit pravidlo](cdn-rules-engine.md) zkontrolujte **původu** hlavičky v požadavku.  Pokud je platný původu, pravidla nastaví **Access-Control-Allow-Origin** hlavička s počátek zadaný v požadavku.  Pokud počátek zadané v **původu** hlavičky není povolena, by měl vynechejte pravidla **Access-Control-Allow-Origin** záhlaví, což způsobí, že prohlížeč tak, aby zamítal žádosti. 
 
-Existují dva způsoby toodo to s stroj pravidel hello.  V obou případech hello **Access-Control-Allow-Origin** hlavička ze souboru hello zdrojový server je zcela ignorován, stroj pravidel hello CDN provádí kompletní správu hello povolené zdroje CORS.
+Existují dva způsoby, jak to provést pomocí stroj pravidel.  V obou případech **Access-Control-Allow-Origin** hlavička ze souboru zdrojový server je zcela ignorován, je CDN pravidla modul provádí kompletní správu povolené zdroje CORS.
 
 #### <a name="one-regular-expression-with-all-valid-origins"></a>Jeden regulární výraz s všechny původy platný
-V tomto případě vytvoříte regulární výraz, který obsahuje všechny hello původu chcete tooallow: 
+V tomto případě vytvoříte regulární výraz, který obsahuje všechny zdroje, které chcete povolit: 
 
     https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
 
 > [!TIP]
-> **Azure CDN společnosti Verizon** používá [Perl kompatibilní regulární výrazy](http://pcre.org/) jako jeho modul pro regulární výrazy.  Můžete použít nástroje, jako je [regulární výrazy 101](https://regex101.com/) toovalidate regulární výraz.  Všimněte si, že hello "/" znak je platný v regulárních výrazech a nepotřebuje toobe řídicí sekvencí, ale uvozovací znaky tento znak se považuje za osvědčený postup a očekává se některé validátory regulární výraz.
+> **Azure CDN společnosti Verizon** používá [Perl kompatibilní regulární výrazy](http://pcre.org/) jako jeho modul pro regulární výrazy.  Můžete použít nástroje, jako je [regulární výrazy 101](https://regex101.com/) ověření regulárního výrazu.  Všimněte si, že znak "/" je platná v regulárních výrazech a nemusí být uvozené však uvozovací znaky tento znak se považuje za osvědčený postup a očekává se některé validátory regulární výraz.
 > 
 > 
 
-Pokud regulární výraz hello odpovídá, nahradí pravidla hello **Access-Control-Allow-Origin** záhlaví (pokud existuje) ze zdroje hello s hello původ, který poslal žádost hello.  Můžete také přidat další hlavičky CORS, jako například **přístup – ovládací prvek-Allow-Methods**.
+Pokud odpovídá regulárnímu výrazu, dojde k nahrazení pravidla **Access-Control-Allow-Origin** záhlaví (pokud existuje) z tohoto počátku s původ, který požadavek odeslal.  Můžete také přidat další hlavičky CORS, jako například **přístup – ovládací prvek-Allow-Methods**.
 
 ![Příklad pravidla s regulárním výrazem](./media/cdn-cors/cdn-cors-regex.png)
 
 #### <a name="request-header-rule-for-each-origin"></a>Žádost o pravidlo záhlaví pro každý počátek.
-Místo regulární výrazy, můžete místo toho vytvořit samostatné pravidlo pro každý původ chcete tooallow pomocí hello **zástupné hlavičky požadavku** [vyhovují podmínce](https://msdn.microsoft.com/library/mt757336.aspx#Anchor_1). Jako regulární výraz metodou hello, modul hello pravidel samostatně nastaví hlavičky CORS hello. 
+Místo regulární výrazy, můžete místo toho vytvořit samostatné pravidlo pro každý původ chcete povolit používání **zástupné hlavičky požadavku** [vyhovují podmínce](https://msdn.microsoft.com/library/mt757336.aspx#Anchor_1). Stejně jako v případě metody regulární výraz modul pravidel samostatně nastaví hlavičky CORS. 
 
 ![Příklad pravidla bez regulární výraz](./media/cdn-cors/cdn-cors-no-regex.png)
 
 > [!TIP]
-> V předchozím příkladu hello, hello použití hello zástupný znak * informuje hello pravidla modul toomatch HTTP a HTTPS.
+> V příkladu výše, použít zástupný znak * informuje stroj pravidel tak, aby odpovídaly HTTP a HTTPS.
 > 
 > 
 
 ### <a name="azure-cdn-standard"></a>Azure CDN Standard
-Na Azure CDN Standard profily hello pouze tooallow mechanismus pro více zdroje bez použití hello původu zástupný znak hello je toouse [řetězce dotazu do mezipaměti](cdn-query-string.md).  Nastavení řetězec dotazu tooenable potřebovat pro koncový bod CDN hello a potom pomocí řetězce dotazu jedinečné požadavky z každé povolené domény. To způsobí hello CDN ukládání do mezipaměti samostatný objekt pro každý jedinečný dotazu řetězec. Tento přístup není ideální, ale, jak ho bude mít za následek více kopií hello stejný soubor v mezipaměti na hello CDN.  
+Na Azure CDN Standard profily, je použití pouze mechanismus povolit pro více zdroje bez použití zástupných znaků původu [řetězce dotazu do mezipaměti](cdn-query-string.md).  Budete muset povolit řetězec dotazu nastavení pro koncový bod CDN a potom pomocí řetězce dotazu jedinečné požadavky z každé povolené domény. To způsobí CDN ukládání do mezipaměti samostatný objekt pro každý jedinečný dotazu řetězec. Tento postup však není ideální, protože výsledkem bude více kopií stejného souboru do mezipaměti na CDN.  
 

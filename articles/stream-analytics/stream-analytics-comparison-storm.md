@@ -1,6 +1,6 @@
 ---
-title: "Analýza platformy: Apache Storm porovnání tooStream Analytics | Microsoft Docs"
-description: "Získáte pokyny výběr cloudové platformy analýzy pomocí tooStream porovnání Apache Storm Analytics. Pochopit funkce a rozdíly."
+title: "Analýza platformy: porovnání Apache Storm do služby Stream Analytics | Microsoft Docs"
+description: "Získáte pokyny výběr cloudové platformy analýzy pomocí porovnávání Apache Storm do služby Stream Analytics. Pochopit funkce a rozdíly."
 keywords: "analytické platformě, analýzy platformy, Cloudová platforma analýzy, storm porovnání"
 services: stream-analytics
 documentationcenter: 
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/27/2017
 ms.author: samacha
-ms.openlocfilehash: 5a0ec5b2439596f0da962f04b776472031660062
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 97044cb5d7b0b3fcb3b85328df618a265bc59b61
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="choosing-a-streaming-analytics-platform-comparing-apache-storm-and-azure-stream-analytics"></a>Výběr streamování analytické platformě: porovnání Apache Storm a Azure Stream Analytics
-Azure poskytuje několik řešení pro analýzu dat: [Azure streamování Analytics](https://docs.microsoft.com/azure/stream-analytics/) a [Apache Storm v Azure HDInsight](https://azure.microsoft.com/services/hdinsight/apache-storm/). Obě platformy analytics zadejte hello výhod PaaS řešení. Ale hello platformy mít některé významné rozdíly v jejich schopnosti stejně jako v tom, jak konfigurovat a spravovat je. 
+Azure poskytuje několik řešení pro analýzu dat: [Azure streamování Analytics](https://docs.microsoft.com/azure/stream-analytics/) a [Apache Storm v Azure HDInsight](https://azure.microsoft.com/services/hdinsight/apache-storm/). Obě platformy analytics poskytovat výhody PaaS řešení. Ale platformy mít některé významné rozdíly v jejich schopnosti stejně jako v tom, jak konfigurovat a spravovat je. 
 
-Tento článek obsahuje porovnání funkcí toohelp, vybraných mezi Apache Storm a Azure Stream Analytics jako cloudové platformy analytics vedle sebe. 
+Tento článek obsahuje vedle sebe porovnání funkcí, které vám pomohou zvolit mezi Apache Storm a Azure Stream Analytics jako cloudové platformy analytics. 
 
 ## <a name="general-features"></a>Obecné funkce
 
@@ -121,14 +121,14 @@ Uživatelé nasazení a monitorování celý cluster, který může být hostite
             </td>
             <td width="204" valign="top">
                 <p>
-Za cenu podle objemu dat, zpracování a hello počet jednotek streamování požadované za hodinu které hello úloha běží. 
+Za cenu podle objemu dat, zpracování a počet jednotek streamování, které jsou požadované za hodinu, která je spuštěna úloha. 
                 </p>
                     <p>Další informace najdete v tématu <a href="http://azure.microsoft.com/pricing/details/stream-analytics/">Stream Analytics ceny</a>.</p>
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-jednotka Hello od nákupu je založen na clusteru a je účtován na základě v době hello hello clusteru je spuštěn, nezávisle na úlohy nasazení.
+Jednotka nákupu je založená na clusteru a je účtován na základě času, které cluster používá, nezávisle na úlohy nasazení.
                 </p>
                 <p>
 Další informace najdete v tématu <a href="http://azure.microsoft.com/pricing/details/hdinsight/">HDInsight ceny</a>.
@@ -189,7 +189,7 @@ Ve výchozím nastavení jsou podporovány agregací v časových oknech a doča
             </td>
             <td width="246" valign="top">
                 <p>
-Dočasné operátory musí být implementované uživatelem hello.
+Dočasné operátory musí být implementované uživatelem.
                 </p>
             </td>
         </tr>
@@ -201,12 +201,12 @@ Dočasné operátory musí být implementované uživatelem hello.
             </td>
             <td width="204" valign="top">
                 <p>
-Uživatelé mohou vytvořit, ladění a monitorujte úlohy prostřednictvím hello portál Azure, pomocí ukázkových dat, které jsou odvozené od živý datový proud.
+Uživatelé mohou vytvořit, ladění a monitorujte úlohy prostřednictvím portálu Azure pomocí ukázkových dat, které jsou odvozené od živý datový proud.
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-Uživatelé pomocí rozhraní .NET můžete vyvíjet, ladit a sledovat pomocí sady Visual Studio. Uživatele, kteří používají Java nebo jiných jazyků, můžete použít hello IDE si sami vyberou.
+Uživatelé pomocí rozhraní .NET můžete vyvíjet, ladit a sledovat pomocí sady Visual Studio. Uživatele, kteří používají Java nebo jiných jazyků, můžete použít rozhraní IDE, které si sami vyberou.
                 </p>
             </td>
         </tr>
@@ -218,12 +218,12 @@ Uživatelé pomocí rozhraní .NET můžete vyvíjet, ladit a sledovat pomocí s
             </td>
             <td width="204" valign="top">
                 <p>
-Protokoly stavu a operací základní úlohy jsou k dispozici toohelp ladění. Stream Analytics aktuálně neumožňuje uživatelům zadejte, který obsah nebo kolik obsahu je zahrnuta v protokolech hello (tj. podrobné režim).
+Protokoly stavu a operací základní úlohy jsou k dispozici pomáhají ladit. Stream Analytics aktuálně neumožňuje uživatelům zadejte, který obsah nebo kolik obsahu je zahrnuta v protokolech (tj. podrobné režim).
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-Podrobné protokoly jsou k dispozici. Uživatelé můžou používat protokoly v sadě Visual Studio nebo protokolování v clusteru toohello a přístup k hello protokoly přímo.
+Podrobné protokoly jsou k dispozici. Uživatelé můžou používat protokoly v sadě Visual Studio nebo přihlášení do clusteru a přístup k protokoly přímo.
                 </p>
             </td>
         </tr>
@@ -388,7 +388,7 @@ Monitorování je implementovaná pomocí portálu Azure a rozhraní REST API. U
             </td>
             <td width="246" valign="top">
                 <p>
-Monitorování je implementovaná pomocí hello uživatelské rozhraní Storm a rozhraní REST API.
+Monitorování je implementovaná pomocí rozhraní REST API a uživatelské rozhraní Storm.
                 </p>
             </td>
         </tr>
@@ -400,12 +400,12 @@ Monitorování je implementovaná pomocí hello uživatelské rozhraní Storm a 
             </td>
             <td width="204" valign="top">
                 <p>
-Škálovatelnost je určen podle hello počet jednotek streamování (SUs) pro každou úlohu. Jednotlivé jednotky streamování zpracovává až too1 MB za sekundu, s maximální počet jednotek 50. Další informace najdete v tématu <a href="https://docs.microsoft.com/azure/stream-analytics/stream-analytics-scale-jobs">škálování tooincrease propustnost</a>.
+Škálovatelnost je určen podle počtu jednotek streamování (SUs) pro každou úlohu. Každá jednotka streamování zpracovává až 1 MB za sekundu, s maximální počet jednotek 50. Další informace najdete v tématu <a href="https://docs.microsoft.com/azure/stream-analytics/stream-analytics-scale-jobs">škálování zvýšení propustnosti</a>.
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-Škálovatelnost je určen podle hello počet uzlů v clusteru HDInsight Storm hello. horní limit Hello hello počet uzlů je definována Azure kvótu hello uživatele.
+Škálovatelnost je určen podle počtu uzlů v clusteru HDInsight Storm. Horní limit počtu uzlů je definována Azure kvóty uživatele.
                 </p>
             </td>
         </tr>
@@ -417,7 +417,7 @@ Monitorování je implementovaná pomocí hello uživatelské rozhraní Storm a 
             </td>
             <td width="204" valign="top">
                 <p>
-Uživatelé mohou zvýšit zpracování dat nebo optimalizovat náklady zvýšením nebo snížením hello počet jednotek streamování s maximální limit je 1 GB za sekundu.
+Uživatelé mohou zvýšit zpracování dat nebo optimalizovat náklady zvýšením nebo snížením počet jednotek streamování, s maximální limit je 1 GB za sekundu.
                 </p>
             </td>
             <td width="246" valign="top">
@@ -475,10 +475,10 @@ Automatické opravy bez výpadků.
             </td>
             <td width="246" valign="top">
                 <p>
-Smlouva SLA na úrovni 99,9 % doby provozu clusteru Storm hello. 
+Smlouva SLA na úrovni 99,9 % doby provozu clusteru Storm. 
                 </p>
                 <p>
-Apache Storm je odolný proti chybám streamování platforma. Je však tooensure odpovědnost hello uživatele, aby datové proudy úlohy spustit bez přerušení.
+Apache Storm je odolný proti chybám streamování platforma. Je však uživatele odpovědnost zajistit, že úloha streamování spustit bez přerušení.
                 </p>
             </td>
         </tr>
@@ -519,7 +519,7 @@ Konfigurovat integrovaných zásad můžete změnit pořadí událostí, odstra�
             </td>
             <td width="246" valign="top">
                 <p>
-Uživatelé musí implementovat logiku toohandle tento scénář.
+Uživatelé musí implementovat logiku tohoto scénáře.
                 </p>
             </td>
         </tr>
@@ -531,7 +531,7 @@ Uživatelé musí implementovat logiku toohandle tento scénář.
             </td>
             <td width="204" valign="top">
                 <p>
-Referenční data jsou k dispozici z Azure Blob storage s maximálně 100 MB mezipaměti v paměti. Referenční data se aktualizují službou hello.
+Referenční data jsou k dispozici z Azure Blob storage s maximálně 100 MB mezipaměti v paměti. Referenční data se aktualizují pomocí služby.
                 </p>
             </td>
             <td width="246" valign="top">

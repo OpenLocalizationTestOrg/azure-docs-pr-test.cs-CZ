@@ -1,6 +1,6 @@
 ---
-title: "velikosti virtuálního počítače s Linuxem aaaAzure – výpočetní optimalizované | Microsoft Docs"
-description: "Uvádí hello různými výpočetními optimalizované velikosti k dispozici pro virtuální počítače s Linuxem v Azure."
+title: "Velikosti virtuálního počítače Azure Linux – výpočetní optimalizované | Microsoft Docs"
+description: "Uvádí různé výpočetní optimalizované velikosti k dispozici pro virtuální počítače s Linuxem v Azure."
 services: virtual-machines-linux
 documentationcenter: 
 author: jonbeck7
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/28/2017
 ms.author: jonbeck
-ms.openlocfilehash: 92633d7b569eed084ac07258be4b2d67d9518dd3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 05b8fd98da0c87e383ba7d67fb8bee2eefb25981
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="compute-optimized-linux-vm-sizes"></a>Výpočetní optimalizované velikosti virtuálního počítače s Linuxem
 

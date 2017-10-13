@@ -1,5 +1,5 @@
 ---
-title: "aplikace logiky aaaManage v sadě Visual Studio – Azure Logic Apps | Microsoft Docs"
+title: "Správa aplikací logiky v sadě Visual Studio – Azure Logic Apps | Microsoft Docs"
 description: "Správa aplikace logiky a dalších prostředků Azure pomocí Průzkumníka cloudové služby Visual Studio"
 author: klam
 manager: anneta
@@ -15,15 +15,15 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 12/19/2016
 ms.author: LADocs; klam
-ms.openlocfilehash: 419f83eb062b56e4ac2642dea4de1a025f747521
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a5bf24de1a7a2b6d4c1ae6416c95d83ef7506da3
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="manage-your-logic-apps-with-visual-studio-cloud-explorer"></a>Správa aplikace logiky s cloudu Průzkumníka Visual Studio
 
-I když hello [portál Azure](https://portal.azure.com/) nabízí skvělý způsob pro vás toodesign a spravovat Azure Logic Apps, Průzkumník cloudu Visual Studio můžete použít pro správu mnoho prostředků Azure, včetně aplikace logiky. Průzkumník cloudu Visual Studio umožňuje procházet, spravovat, upravit, a stažení publikované aplikace logiky. Úlohy správy zahrnují povolit, zakázat a spustit zobrazení historie. 
+I když [portál Azure](https://portal.azure.com/) nabízí skvělý způsob, jak můžete navrhnout a spravovat Azure Logic Apps, můžete použít Průzkumníka cloudové služby Visual Studio pro správu mnoho prostředků Azure, včetně aplikace logiky. Průzkumník cloudu Visual Studio umožňuje procházet, spravovat, upravit, a stažení publikované aplikace logiky. Úlohy správy zahrnují povolit, zakázat a spustit zobrazení historie. 
 
 Než budete moct přístup a Správa aplikace logiky v sadě Visual Studio, nainstalujte a nakonfigurujte tyto nástroje Visual Studio pro Azure Logic Apps. 
 
@@ -32,54 +32,54 @@ Než budete moct přístup a Správa aplikace logiky v sadě Visual Studio, nain
 * [Visual Studio 2015 nebo Visual Studio 2017](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
 * [Nejnovější sadu Azure SDK](https://azure.microsoft.com/downloads/) (2.9.1 nebo vyšší)
 * [Průzkumník cloudu sady Visual Studio](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015)
-* Přístup k toohello webové při použití vložených Návrhář hello
+* Přístup k webovému při použití návrháře embedded
 
 ## <a name="install-visual-studio-tools-for-logic-apps"></a>Instalace nástrojů Visual Studio pro Logic Apps
 
-Po instalaci hello požadavky, stáhněte a nainstalujte nástroje aplikace logiky hello Azure pro sadu Visual Studio.
+Po instalaci požadavky, stáhněte a nainstalujte nástroje aplikace logiky Azure pro sadu Visual Studio.
 
-1. Otevřete sadu Visual Studio. Na hello **nástroje** nabídce vyberte možnost **rozšíření a aktualizace**.
-2. Rozbalte hello **Online** kategorie, můžete hledat online v hello Galerie sady Visual Studio.
+1. Otevřete sadu Visual Studio. Na **nástroje** nabídce vyberte možnost **rozšíření a aktualizace**.
+2. Rozbalte **Online** kategorie, můžete hledat online v Galerii Visual Studia.
 3. Procházet nebo Hledat **Logic Apps** vyhledejte **nástroje aplikace logiky Azure pro sadu Visual Studio**.
-4. toodownload a příponu hello instalace, klikněte na tlačítko **Stáhnout**.
+4. Chcete-li stáhnout a nainstalovat rozšíření, klikněte na tlačítko **Stáhnout**.
 5. Po instalaci, restartujte Visual Studio.
 
 > [!NOTE]
-> hello toodownload nástroje aplikace logiky Azure pro sadu Visual Studio přejděte přímo, toohello [Visual Studio Marketplace](https://visualstudiogallery.msdn.microsoft.com/e25ad307-46cf-412e-8ba5-5b555d53d2d9).
+> Pokud chcete stáhnout nástroje aplikace logiky Azure pro sadu Visual Studio přímo, přejděte na [Visual Studio Marketplace](https://visualstudiogallery.msdn.microsoft.com/e25ad307-46cf-412e-8ba5-5b555d53d2d9).
 
 ## <a name="browse-for-logic-apps-in-cloud-explorer"></a>Procházením vyhledejte aplikace logiky v Průzkumníku cloudu
 
-1.  tooopen Průzkumník cloudu na hello **zobrazení** nabídce zvolte **Průzkumník cloudu**.
+1.  Chcete otevřít v Průzkumníku cloudu **zobrazení** nabídce zvolte **Průzkumník cloudu**.
 2.  Procházením vyhledejte aplikaci logiky, skupinu prostředků nebo typ prostředku. 
 
-    * Pokud podle typů prostředků, vyberte předplatné Azure, rozbalte položku hello **Logic Apps** a vyberte svou aplikaci logiky. 
-    * Pokud ve skupině prostředků, rozbalte skupinu prostředků hello, který má svou aplikaci logiky a vyberte svou aplikaci logiky.
+    * Pokud podle typů prostředků, vyberte předplatné Azure, rozbalte **Logic Apps** a vyberte svou aplikaci logiky. 
+    * Pokud ve skupině prostředků, rozbalte skupinu prostředků, která má svou aplikaci logiky a vyberte svou aplikaci logiky.
 
-    příkazy tooview pro svou aplikaci logiky buď klikněte pravým tlačítkem na svou aplikaci logiky, nebo v hello dolní části Průzkumník cloudu, zvolte z hello **akce** nabídky.
+    Pokud chcete zobrazit příkazy pro svou aplikaci logiky, klikněte pravým tlačítkem na svou aplikaci logiky buď, nebo v dolní části Průzkumník cloudu, vyberte z **akce** nabídky.
 
     ![Procházením vyhledejte aplikaci logiky](./media/logic-apps-manage-from-vs/browse.png)
 
 ## <a name="edit-your-logic-app-with-logic-apps-designer"></a>Upravit aplikaci logiky pomocí návrháře aplikace logiky
 
-V Průzkumníku cloudu, můžete otevřít aplikace logiky aktuálně nasazená v hello stejné designer, které budete používat v hello portálu Azure. 
+V Průzkumníku cloudu můžete otevřít aplikace logiky aktuálně nasazená v Návrháři stejné, které budete používat v portálu Azure. 
 
-* tooedit aplikace logiky v Průzkumníku cloudu, klikněte pravým tlačítkem na svou aplikaci logiky a vyberte **otevřete pomocí editoru aplikace logiky**. 
+* Chcete-li upravit aplikaci logiky v Průzkumníku cloudu, klikněte pravým tlačítkem na svou aplikaci logiky a vyberte **otevřete pomocí editoru aplikace logiky**. 
 
-* toopublish cloudu vaší toohello aktualizace, zvolte **publikovat**. 
+* Chcete-li publikovat aktualizace do cloudu, zvolte **publikovat**. 
 
-* Zvolte toostart spuštění nové **spustit aktivační událost**.
+* Chcete-li spustit novou spustit, zvolte **spustit aktivační událost**.
 
 ![Návrhář aplikace logiky](./media/logic-apps-manage-from-vs/designer.png)
 
-Z Návrháře hello, můžete také **Stáhnout** aplikace logiky. Tato akce automaticky parameterizes definici aplikace logiky hello a uloží hello definice jako šablonu nasazení Azure Resource Manager. Můžete přidat tento projekt skupiny prostředků Azure tooyour šablonu nasazení.
+Z návrháře, můžete také **Stáhnout** aplikace logiky. Tato akce automaticky parameterizes definici aplikace logiky a uloží definici jako šablonu nasazení Azure Resource Manager. Tato šablona nasazení můžete přidat do projektu skupiny prostředků Azure.
 
 ## <a name="browse-your-logic-app-run-history"></a>Procházet aplikace logiky historie spouštění
 
-Klikněte pravým tlačítkem na svou aplikaci logiky tooview hello historie pro svou aplikaci logiky, spouštění a vyberte **historie spouštění otevřete**. na základě vaší historie spouštění tooreorder na žádném z záhlaví sloupce hello uvedené, vyberte vlastnosti hello.
+Chcete-li zobrazit historii spouštění aplikace logiky, klikněte pravým tlačítkem na svou aplikaci logiky a vyberte **historie spouštění otevřete**. Chcete-li změnit pořadí historii spuštění na základě některé vlastnosti zobrazené, vyberte na záhlaví sloupce.
 
 ![Historie spouštění](media/logic-apps-manage-from-vs/runs.png)
 
-hello tooshow historie pro instanci spouštění, můžete zkontrolovat hello spustit výsledky včetně hello vstupy a výstupy z každého kroku, dvakrát klikněte na spustit instance hello.
+Pokud chcete zobrazit historii spouštění instance, můžete zkontrolovat spuštění výsledky, včetně vstupy a výstupy z každého kroku, dvakrát klikněte na jednu z instancí spuštění.
 
 ![Výsledky historie spouštění, vstupy a výstupy z kroků](./media/logic-apps-manage-from-vs/history.png)
 

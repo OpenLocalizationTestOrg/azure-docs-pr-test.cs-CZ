@@ -1,5 +1,5 @@
 ---
-title: aaaExport tooPower BI z Application Insights | Microsoft Docs
+title: "Export do služby Power BI ze služby Application Insights | Microsoft Docs"
 description: "Analytické dotazy lze zobrazit v Power BI."
 services: application-insights
 documentationcenter: 
@@ -13,93 +13,93 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: bwren
-ms.openlocfilehash: 6668cd7f4e0fbf41695972617f5f8ec207356659
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 350a65b1c6432baf258e014c9e63133d2b29e34f
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Kanálu Power BI z Application Insights
 [Power BI](http://www.powerbi.com/) je sada nástrojů obchodní analýzy, které vám pomohou analyzovat data a sdílet uplatnitelné. Bohaté řídicí panely jsou k dispozici na každé zařízení. Můžete kombinovat data z mnoha zdrojů, včetně analytické dotazy z [Azure Application Insights](app-insights-overview.md).
 
-Export dat tooPower Application Insights BI tři doporučené způsoby. Můžete je používat samostatně nebo společně.
+Existují tři doporučené metody export dat Application Insights do Power BI. Můžete je používat samostatně nebo společně.
 
-* [**Power BI adaptér** ](#power-pi-adapter) -nastavit kompletní řídicí panel telemetrie z vaší aplikace. Předdefinovaná Hello sadu grafy, ale můžete přidat vlastní dotazy z jiných zdrojů.
-* [**Export analytické dotazy** ](#export-analytics-queries) -zápisu žádný dotaz chcete pomocí Analytics a exportovat je tooPower BI. Tento dotaz můžete umístit na řídicím panelu společně s dalšími daty.
-* [**Průběžné exportu a Stream Analytics** ](app-insights-export-stream-analytics.md) – to zahrnuje další pracovní tooset nahoru. Je užitečné, pokud chcete svá data, tookeep dlouhou dobu. V opačném hello jiné metody se nedoporučuje.
+* [**Power BI adaptér** ](#power-pi-adapter) -nastavit kompletní řídicí panel telemetrie z vaší aplikace. Předdefinovaná sadu grafy, ale můžete přidat vlastní dotazy z jiných zdrojů.
+* [**Export analytické dotazy** ](#export-analytics-queries) -zápisu žádný dotaz chcete pomocí Analytics a exportovat je do Power BI. Tento dotaz můžete umístit na řídicím panelu společně s dalšími daty.
+* [**Průběžné exportu a Stream Analytics** ](app-insights-export-stream-analytics.md) – to zahrnuje další práci nastavit. Je užitečné, pokud chcete zachovat data dlouhou dobu. Doporučuje se, jinak hodnota jiné metody.
 
 ## <a name="power-bi-adapter"></a>Adaptér Power BI
-Tato metoda vytvoří kompletní řídicí panel telemetrie. Předdefinovaná Hello počáteční datové sady, ale můžete přidat další tooit data.
+Tato metoda vytvoří kompletní řídicí panel telemetrie. Předdefinovaná počáteční datovou sadu, ale do něj může přidat další data.
 
-### <a name="get-hello-adapter"></a>Získat adaptér hello
-1. Přihlaste se příliš[Power BI](https://app.powerbi.com/).
+### <a name="get-the-adapter"></a>Získat adaptéru
+1. Přihlaste se k [Power BI](https://app.powerbi.com/).
 2. Otevřete **získat Data**, **služby**, **Application Insights**
    
     ![Získat ze zdroje dat Application Insights](./media/app-insights-export-power-bi/power-bi-adapter.png)
-3. Zadejte podrobnosti o hello prostředku Application Insights.
+3. Zadejte podrobnosti o prostředku Application Insights.
    
     ![Získat ze zdroje dat Application Insights](./media/app-insights-export-power-bi/azure-subscription-resource-group-name.png)
-4. Počkejte, než minutu nebo dvě pro toobe hello data importovat.
+4. Počkejte, než minutu nebo dvě pro data, která bude importována.
    
     ![Adaptér Power BI](./media/app-insights-export-power-bi/010.png)
 
-Můžete upravit řídicí panel hello, kombinace hello Application Insights grafy s u jiných zdrojů a se analytické dotazy. Je Galerie vizualizace můžete získat více grafů, kde každý graf obsahuje parametry, které můžete zadat.
+Můžete upravit řídicí panel, kombinace Application Insights grafy s u jiných zdrojů a se analytické dotazy. Je Galerie vizualizace můžete získat více grafů, kde každý graf obsahuje parametry, které můžete zadat.
 
-Po importu počáteční hello, hello řídicí panel a sestavy hello pokračovat tooupdate denně. Můžete ovládat hello plán aktualizace pro datovou sadu hello.
+Po počáteční importu nadále denně aktualizovat řídicí panel a sestavy. Můžete řídit plán aktualizace na datovou sadu.
 
 ## <a name="export-analytics-queries"></a>Export analytické dotazy
-Tato trasa vám umožní toowrite žádné Analytics dotazu vám líbilo a poté exportujte tento řídicí panel Power BI tooa. (Můžete přidat řídicí panel toohello vytvořený adaptér hello.)
+Tato trasa umožňuje zapsat všechny Analytics dotaz, který chcete a export, na řídicí panel Power BI. (Můžete přidat na řídicí panel vytvořený adaptér.)
 
 ### <a name="one-time-install-power-bi-desktop"></a>Jednou: Nainstalujte Power BI Desktop
-tooimport Application Insights dotaz, použít hello plochy verze Power BI. Ale pak ho můžete publikovat toohello web nebo tooyour prostoru cloudu Power BI. 
+Chcete-li importovat dotaz Application Insights, použijete verze aplikace Power BI. Ale pak je můžete publikovat na webu nebo do pracovního prostoru cloudu Power BI. 
 
 Nainstalujte [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
 ### <a name="export-an-analytics-query"></a>Export dotaz Analytics
 1. [Otevřete analýzy a napsat dotaz](app-insights-analytics-tour.md).
-2. Testování a dotaz hello Upřesnit, až budete spokojeni s výsledky hello.
+2. Testování a upřesnění dotazu, až budete s výsledky spokojeni.
 
-   **Ujistěte se, že hello dotazů běží správně v Analytics předtím, než ho exportovat.**
-3. Na hello **exportovat** nabídce zvolte **Power BI (M)**. Uložte soubor textu hello.
+   **Ujistěte se, že dotaz běží správně v Analytics předtím, než ho exportovat.**
+3. Na **exportovat** nabídce zvolte **Power BI (M)**. Uložte tento textový soubor.
    
     ![Export dotazu Power BI](./media/app-insights-export-power-bi/analytics-export-power-bi.png)
-4. V Power BI Desktop vyberte **načíst Data, prázdné dotazu** a pak v hello dotazu editor, v části **zobrazení** vyberte **Advanced Editor dotazů**.
+4. V Power BI Desktop vyberte **načíst Data, prázdné dotazu** a poté v editoru dotazů v rámci **zobrazení** vyberte **Advanced Editor dotazů**.
 
-    Skript jazyka M hello exportovat vložení do hello Advanced editoru dotazů.
+    Vložte do editoru dotazů Advanced exportovaný skript jazyka M.
 
     ![Rozšířený dotaz editoru](./media/app-insights-export-power-bi/power-bi-import-analytics-query.png)
 
-1. Můžete mít tooprovide pověření tooallow Power BI tooaccess Azure. Použijte toosign 'účet organizace, se pomocí účtu Microsoft.
+1. Možná budete muset zadat přihlašovací údaje, aby se mohl Power BI přístup k Azure. Použít 'účet organizace, a přihlaste se pomocí účtu Microsoft.
    
-    ![Zadejte přihlašovací údaje Azure tooenable Power BI toorun dotazu Application Insights](./media/app-insights-export-power-bi/power-bi-import-sign-in.png)
+    ![Zadejte přihlašovací údaje Azure umožňující Power BI ke spuštění dotazu Application Insights](./media/app-insights-export-power-bi/power-bi-import-sign-in.png)
 
-    (Pokud budete potřebovat přihlašovací údaje tooverify hello, použijte příkaz nabídky hello nastavení zdroje dat v hello editoru dotazů. Opatrní toospecify hello pověření, které používáte pro Azure, což může být liší od přihlašovacích údajů pro Power BI.)
-2. Zvolte vizualizaci dotazu a vyberte hello pole osy x, y a segmentace dimenze.
+    (Pokud potřebujete k ověření přihlašovacích údajů, použijte příkaz nabídky nastavení zdroje dat v editoru dotazů. Vezměte v potaz a zadejte přihlašovací údaje, které používáte pro Azure, což může být liší od přihlašovacích údajů pro Power BI.)
+2. Zvolte vizualizaci dotazu a vyberte pole pro osy x, y a segmentace dimenze.
    
     ![Vyberte vizualizace](./media/app-insights-export-power-bi/power-bi-analytics-visualize.png)
-3. Publikujte pracovní prostor sestavy tooyour Power BI cloudu. Odtud můžete synchronizované verze vložit do jiných webových stránek.
+3. Publikujte sestavy do pracovního prostoru cloudu Power BI. Odtud můžete synchronizované verze vložit do jiných webových stránek.
    
     ![Vyberte vizualizace](./media/app-insights-export-power-bi/publish-power-bi.png)
-4. Ručně aktualizujte hello sestavy v intervalech, nebo nastavení plánované aktualizace na stránce Možnosti hello.
+4. Sestavu v intervalech aktualizovat ručně, nebo nastavit plánovaná aktualizace na stránce Možnosti.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="401-or-403-unauthorized"></a>401 nebo 403 Neautorizováno 
-To může dojít, pokud zatím není aktualizovaná refesh tokenu. Opakujte tyto kroky tooensure máte pořád přístup. Pokud máte přístup a přihlašovací údaje hello refershing nefunguje, otevřete prosím lístek podpory.
+To může dojít, pokud zatím není aktualizovaná refesh tokenu. Opakujte tyto kroky, které zajišťují, že máte přístup. Pokud máte přístup a refershing přihlašovací údaje se nedají použít, otevřete prosím lístek podpory.
 
-1. Přihlaste se k portálu Azure hello a ujistěte se, že dostanete hello prostředků
-2. Zkuste toorefresh hello přihlašovací údaje pro hello řídicí panel
+1. Přihlaste se k portálu Azure a ujistěte se, že má přístup k prostředku
+2. Zkuste aktualizovat přihlašovací údaje pro řídicí panel
 
 ### <a name="502-bad-gateway"></a>502 Chybná brána
-To je obvykle způsobeno dotazu analýzy, který vrátí příliš mnoho dat. Měli zkuste použít menší časový rozsah, nebo pomocí hello [před](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analytics-reference#ago) nebo [startofweek/startofmonth](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analytics-reference#startofweek) funguje pouze [projektu](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analytics-reference#project-operator) hello polí je nutné.
+To je obvykle způsobeno dotazu analýzy, který vrátí příliš mnoho dat. Měli zkuste použít menší časový rozsah nebo pomocí [před](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analytics-reference#ago) nebo [startofweek/startofmonth](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analytics-reference#startofweek) funguje pouze [projektu](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analytics-reference#project-operator) pole, je nutné.
 
-Pokud snižuje datovou sadu hello pocházejících z dotazu hello Analytics není splňují vaše požadavky měli byste zvážit použití hello [rozhraní API](https://dev.applicationinsights.io/documentation/overview) toopull větší datové sady. Tady jsou pokyny, jak exportovat tooconvert hello M-Query toouse hello rozhraní API.
+Pokud snižuje datovou sadu pocházejících z dotazu Analytics není splňují vaše požadavky měli byste zvážit použití [rozhraní API](https://dev.applicationinsights.io/documentation/overview) vyžádat větší datové sady. Tady jsou pokyny, jak převést export M dotazu použít rozhraní API.
 
 1. Vytvoření [klíč rozhraní API](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID)
-2. Aktualizace hello Power BI M skript, který jste exportovali z Analytics nahrazením hello ARM adresu URL s rozhraním API AI (viz následující příklad)
+2. Aktualizovat Power BI M skript, který jste exportovali z Analytics nahrazením adresu URL ARM AI rozhraní API (viz následující příklad)
    * Nahraďte **https://management.azure.com/subscriptions/...**
    * s **https://api.applicationinsights.io/beta/apps/...**
-3. Nakonec aktualizujte toobasic přihlašovacích údajů a používání vašeho klíče rozhraní API
+3. Nakonec aktualizujte přihlašovací údaje k základní a používání vašeho klíče rozhraní API
   
 
 **Existující skriptu**
@@ -112,7 +112,7 @@ Pokud snižuje datovou sadu hello pocházejících z dotazu hello Analytics nen�
  ```
 
 ## <a name="about-sampling"></a>O vzorkování
-Pokud vaše aplikace odešle velké množství dat, může funkce adaptivního vzorkování hello pracovat a odesílat pouze procento vaší telemetrie. Dobrý den, je-li hodnotu true, pokud jste ručně nastavili vzorkování v hello SDK nebo na přijímání stejné. [Přečtěte si další informace o vzorkování.](app-insights-sampling.md)
+Pokud vaše aplikace odešle velké množství dat, může funkce adaptivního vzorkování pracovat a odesílat pouze procento vaší telemetrie. Totéž platí, pokud jste ručně nastavili vzorkování buď v sadě SDK, nebo na přijímání. [Přečtěte si další informace o vzorkování.](app-insights-sampling.md)
 
 
 ## <a name="next-steps"></a>Další kroky

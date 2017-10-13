@@ -1,6 +1,6 @@
 ---
-title: "sestavy aktivit aaaSign v portálu Azure Active Directory hello | Microsoft Docs"
-description: "Úvod aktivitu toosign sestav na portálu Azure Active Directory hello"
+title: "Sestavy aktivit přihlašování na portálu Azure Active Directory | Dokumentace Microsoftu"
+description: "Seznámení se sestavami aktivit přihlašování na portálu Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,47 +15,47 @@ ms.workload: identity
 ms.date: 07/19/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 49590d625a08d7dc189a629b89bab2261c2b4780
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: b9e61950654ba427b09dd608d354589a0804aaa5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="sign-in-activity-reports-in-hello-azure-active-directory-portal"></a>Přihlašovací aktivity sestav na portálu Azure Active Directory hello
+# <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit přihlašování na portálu Azure Active Directory
 
-S vytvářením sestav Azure Active Directory (Azure AD) v hello [portál Azure](https://portal.azure.com), můžete získat hello informace, které potřebujete toodetermine úspěšnost prostředí.
+Generování sestav Azure Active Directory (Azure AD) na webu [Azure Portal](https://portal.azure.com) umožňuje získat všechny informace potřebné ke zjištění stavu vašeho prostředí.
 
-Hello reporting architektury v Azure Active Directory se skládá z hello následující součásti:
+Architektuře generování sestav v Azure Active Directory se skládá z těchto součástí:
 
 - **Aktivita** 
-    - **Přihlašovací aktivity** – informace o využití hello spravovaných aplikací a aktivit přihlášení uživatelů
+    - **Aktivity přihlašování** – informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů
     - **Protokoly auditu** – informace aktivit systému o správě uživatelů a skupin, spravovaných aplikacích a aktivitách adresářů
 - **Zabezpečení** 
-    - **Rizikové přihlášení** -rizikové přihlášení je indikátorem pro pokusu přihlášení, který se možná prováděly uživatelem, který není vlastníkem legitimní hello uživatelského účtu. Další podrobnosti najdete v tématu Riziková přihlášení.
+    - **Riziková přihlášení** –Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. Další podrobnosti najdete v tématu Riziková přihlášení.
     - **Uživatelé označení příznakem rizika** – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený. Další podrobnosti najdete v tématu Uživatelé označení příznakem rizika.
 
-Toto téma poskytuje přehled hello přihlašovací aktivity.
+V toto tématu najdete přehled aktivit přihlašování.
 
 ## <a name="pre-requisite"></a>Předpoklad
 
-### <a name="who-can-access-hello-data"></a>Kdo může přistupovat k datům hello?
-* Uživatelé v roli správce zabezpečení nebo zabezpečení čtečky hello
+### <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
+* Uživatelé v roli Správce zabezpečení nebo Čtenář zabezpečení
 * Globální správci
 * Každý uživatel (bez oprávnění správce) může přistupovat k vlastnímu přihlašování. 
 
-### <a name="what-azure-ad-license-do-you-need-tooaccess-sign-in-activity"></a>Jaké licence Azure AD potřebujete přihlašovací aktivity tooaccess?
-* Váš klient musí mít licenci na Azure AD Premium s ním spojená toosee hello všechny až přihlašovací aktivity sestavy
+### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Jaká licence Azure AD je potřeba pro přístup k přihlašovací aktivitě?
+* Klient musí mít přiřazenou licenci Azure AD Premium, aby mohl zobrazit sestavu veškerých aktivit přihlašování.
 
 
 ## <a name="signs-in-activities"></a>Aktivity přihlašování
 
-S hello informací uvedených v sestavě přihlášení uživatele hello najít tooquestions odpovědi, například:
+Na základě informací poskytnutých sestavou přihlašování uživatelů najdete odpovědi na otázky tohoto typu:
 
-* Co je hello přihlášení vzor uživatele?
+* Jaký je vzorec přihlašování uživatele?
 * Kolik uživatelů se přihlásilo za týden?
-* Co je hello stav těchto přihlášení?
+* Jaký je stav těchto přihlášení?
 
-Vaše první vstupní bod tooall přihlašovací aktivity data **přihlášení** v části aktivity hello **Azure Active**.
+Váš první vstupní bod pro všechna data aktivit přihlašování je **Přihlášení** v části Aktivity služby **Azure Active**
 
 
 ![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/61.png "Aktivita přihlašování")
@@ -63,29 +63,29 @@ Vaše první vstupní bod tooall přihlašovací aktivity data **přihlášení*
 
 Protokol auditu má výchozí zobrazení seznamu, které obsahuje následující položky:
 
-- související uživatelské Hello
-- uživatel hello aplikace Hello má přihlášeného k
-- Stav přihlášení Hello
-- čas přihlášení Hello
+- související uživatel
+- aplikace, ke které se uživatel přihlásil
+- stav přihlášení
+- čas přihlášení
 
 ![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/41.png "Aktivita přihlašování")
 
-Kliknutím můžete přizpůsobit zobrazení seznamu hello **sloupce** v panelu nástrojů hello.
+Zobrazení seznamu můžete upravit kliknutím na **Sloupce** na panelu nástrojů.
 
 ![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/19.png "Aktivita přihlašování")
 
-To vám umožní toodisplay další pole nebo odeberte pole, které jsou již zobrazen.
+To umožňuje zobrazit další pole, nebo odebrat pole, která jsou už zobrazená.
 
 ![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/42.png "Aktivita přihlašování")
 
-Kliknutím na položku v zobrazení seznamu hello zobrazí všechny dostupné podrobné informace o něm.
+Kliknutím na položku v zobrazení seznamu k ní zobrazíte všechny dostupné podrobnosti.
 
 ![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/43.png "Aktivita přihlašování")
 
 
 ## <a name="filtering-sign-in-activities"></a>Filtrování aktivit přihlašování
 
-toonarrow dolů hello nahlášené tooa dat na úrovni, funguje pro vás, data lze filtrovat hello přihlášení pomocí hello následující pole:
+Abyste omezili zobrazovaná data na úroveň, která vám vyhovuje, můžete filtrovat data přihlašování s využitím následujících polí:
 
 - Časový interval
 - Uživatel
@@ -96,7 +96,7 @@ toonarrow dolů hello nahlášené tooa dat na úrovni, funguje pro vás, data l
 ![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/44.png "Aktivita přihlašování")
 
 
-Hello **časový interval** filtr povoluje tooyou toodefine časový rámec pro hello vrátil data.  
+Filtr pro **časový interval** umožňuje zadat časový rámec pro vracená data.  
 Možné hodnoty:
 
 - 1 měsíc
@@ -106,13 +106,13 @@ Možné hodnoty:
 
 Když vyberete vlastní časový rámec, můžete nakonfigurovat počáteční a koncový čas.
 
-Hello **uživatele** filtru vám umožní toospecify hello název nebo hello hlavní název uživatele (UPN) uživatele hello kterých vám nejvíc záleží.
+Filtr pro **uživatele** umožňuje určit jméno nebo hlavní název uživatele (UPN) pro uživatele, o kterého vám jde.
 
-Hello **aplikace** filtru vám umožní toospecify hello název aplikace hello kterých vám nejvíc záleží.
+Filtr pro **aplikaci** umožňuje určit název aplikace, o kterou vám jde.
 
-Hello **klienta** filtru vám umožní toospecify informace o zařízení hello kterých vám nejvíc záleží.
+Filtr pro **klienta** umožňuje určit informace o zařízení, o které vám jde.
 
-Hello **stav přihlášení** filtru vám umožní tooselect jeden hello následující filtru:
+Filtr pro **stav přihlášení** umožňuje vybrat jeden z následujících filtrů:
 
 - Všechny
 - Úspěch
@@ -121,7 +121,7 @@ Hello **stav přihlášení** filtru vám umožní tooselect jeden hello násled
 
 ## <a name="sign-in-activities-shortcuts"></a>Zkratky pro aktivity přihlašování
 
-Kromě tooAzure služby Active Directory, hello portál Azure poskytuje dva další vstupní body aktivity toosign v údaje:
+Kromě Azure Active Directory poskytuje web Azure Portal dva další vstupní body k datům aktivit přihlašování:
 
 - Uživatelé a skupiny
 - Podnikové aplikace
@@ -129,35 +129,35 @@ Kromě tooAzure služby Active Directory, hello portál Azure poskytuje dva dal�
 
 ### <a name="users-and-groups-sign-ins-activities"></a>Aktivity přihlašování uživatelů a skupin
 
-S hello informací uvedených v sestavě přihlášení uživatele hello najít tooquestions odpovědi, například:
+Na základě informací poskytnutých sestavou přihlašování uživatelů najdete odpovědi na otázky tohoto typu:
 
-- Co je hello přihlášení vzor uživatele?
+- Jaký je vzorec přihlašování uživatele?
 - Kolik uživatelů se přihlásilo za týden?
-- Co je hello stav těchto přihlášení?
+- Jaký je stav těchto přihlášení?
 
 
 
-Vstupní bod toothis dat je hello uživatele přihlásit grafu v hello **přehled** oddílu pod **uživatelů a skupin**.
+Vaším vstupním bodem pro tato data je graf přihlašování uživatelů v oddílu **Přehled** v části **Uživatelé a skupiny**.
 
 ![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/45.png "Aktivita přihlašování")
 
-Hello uživatele přihlásit graf znázorňuje týdenní agregací přihlašovací Plugin pro všechny uživatele v daném časovém období. Výchozí hodnota Hello hello časové období je 30 dní.
+V grafu přihlašování uživatelů jsou znázorněny týdenní agregace přihlášení všech uživatelů za dané časové období. Výchozí časové období je 30 dnů.
 
 ![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/46.png "Aktivita přihlašování")
 
-Když kliknete na den v hello přihlášení grafu, zobrazí podrobný seznam hello přihlašovací aktivity pro tento den.
+Když v grafu přihlašování kliknete na konkrétní den, zobrazí se pro tento den podrobný seznam aktivit přihlašování.
 
 ![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/41.png "Aktivita přihlašování")
 
-Každý řádek v hello přihlašovací aktivity nabízí seznamu hello podrobné informace o přihlášení hello vybraný jako:
+Každý řádek v seznamu aktivit přihlašování obsahuje podrobné informace o vybraném přihlášení. Příklad:
 
 * Kdo se přihlásil?
-* Jaká byla hello související UPN?
-* Jaké aplikace se hello cíl hello přihlásit?
-* Co je hello IP adresu hello přihlásit?
-* Jaká byla hello stav hello přihlásit?
+* Jaký byl související hlavní název uživatele (UPN)?
+* Která aplikace byla cílem přihlášení?
+* Jaká je IP adresa přihlášení?
+* Jaký byl stav přihlášení?
 
-Hello **přihlášení** možnost poskytuje úplný přehled všech přihlášení uživatele.
+Možnost **Přihlášení** poskytuje úplný přehled o všech přihlášeních uživatelů.
 
 ![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/51.png "Aktivita přihlašování")
 
@@ -168,29 +168,29 @@ Hello **přihlášení** možnost poskytuje úplný přehled všech přihlášen
 S použitím zobrazení dat přihlašování zaměřeného na aplikace můžete odpovídat na otázky tohoto typu:
 
 * Kdo používá mé aplikace?
-* Jaké jsou hlavní 3 aplikace hello ve vaší organizaci?
+* Které jsou 3 nejpoužívanější aplikace v organizaci?
 * Nedávno jsem zpřístupnil aplikaci. Jak to s ní vypadá?
 
-Vstupní bod toothis dat je hello hlavních 3 aplikací ve vaší organizaci v rámci hello posledních 30 dní sestavy v hello **přehled** oddílu pod **podnikové aplikace, které**.
+Vaším vstupním bodem k těmto datům jsou 3 nejpoužívanější aplikace v organizaci v rámci sestavy za posledních 30 dnů v oddílu **Přehled** v části **Podnikové aplikace**.
 
 ![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/64.png "Aktivita přihlašování")
 
-Hello aplikace využití grafu týdenní agregací přihlášení pro 3 hlavních aplikací v daném časovém období. Výchozí hodnota Hello hello časové období je 30 dní.
+Graf využívání aplikací s týdenními agregacemi přihlašování pro 3 nejpoužívanější aplikace v daném časovém období. Výchozí časové období je 30 dnů.
 
 ![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/47.png "Aktivita přihlašování")
 
-Pokud chcete, můžete nastavit hello zaměřit na konkrétní aplikaci.
+Pokud chcete, můžete se zaměřit na konkrétní aplikaci.
 
 
 ![Vytváření sestav](./media/active-directory-reporting-activity-sign-ins/single_spp_usage_graph.png "Vytváření sestav")
 
-Když kliknete na den v grafu využití aplikace hello, zobrazí podrobný seznam hello přihlašovací aktivity.
+Když v grafu využívání aplikací kliknete na konkrétní den, zobrazí se podrobný seznam aktivit přihlašování.
 
 
 ![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/48.png "Aktivita přihlašování")
 
 
-Hello **přihlášení** možnost poskytuje úplný přehled všech aplikací tooyour události přihlášení.
+Možnost **Přihlášení** poskytuje úplný přehled o všech událostech přihlašování pro vaše aplikace.
 
 ![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/49.png "Aktivita přihlašování")
 
@@ -198,5 +198,5 @@ Hello **přihlášení** možnost poskytuje úplný přehled všech aplikací to
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete více informací o kódy chyb přihlašovací aktivita tooknow, najdete v části hello [přihlášení kódy chyb v portálu Azure Active Directory hello aktivity sestavy](active-directory-reporting-activity-sign-ins-errors.md).
+Pokud se chcete dozvědět více o kódech chyb aktivit přihlašování, přečtěte si téma [Kódy chyb v sestavě aktivit přihlašování na portálu Azure Active Directory](active-directory-reporting-activity-sign-ins-errors.md).
 

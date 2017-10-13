@@ -1,6 +1,6 @@
 ---
-title: "aaaTroubleshoot HDFS pomocí Azure HDinsight | Microsoft Docs"
-description: "Získejte odpovědi toocommon dotazy týkající se práce s HDFS a Azure HDInsight."
+title: "Řešení potíží HDFS pomocí Azure HDinsight | Microsoft Docs"
+description: "Získejte odpovědi na časté otázky týkající se práce s HDFS a Azure HDInsight."
 keywords: "Azure HDInsight, HDFS, – nejčastější dotazy, řešení potíží s průvodce, časté otázky"
 services: Azure HDInsight
 documentationcenter: na
@@ -15,25 +15,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/7/2017
 ms.author: arijitt
-ms.openlocfilehash: f5adec6879c947fcff82112e95d9d0303592c834
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 58f3d160c1f2a32025b706f10863e0055d67bfcd
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="troubleshoot-hdfs-by-using-azure-hdinsight"></a>Řešení potíží HDFS pomocí Azure HDInsight
 
-Další informace o hello nejčastější problémy a jejich řešení při práci s Hadoop Distributed File System (HDFS) datové části v Apache Ambari.
+Další informace o hlavních problémů a jejich řešení při práci s Hadoop Distributed File System (HDFS) datové části v Apache Ambari.
 
-## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Jak získám přístup k místní HDFS z v clusteru s podporou hello
+## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Jak lze získat přístup do místní HDFS z v clusteru
 
 ### <a name="issue"></a>Problém
 
-Přístup hello místní HDFS z příkazového řádku a aplikace kód místo hello pomocí úložiště objektů Blob v Azure nebo Azure Data Lake Store z uvnitř hello clusteru HDInsight.   
+Přístup do místní HDFS z příkazového řádku a kód aplikace místo pomocí úložiště objektů Blob v Azure nebo Azure Data Lake Store z uvnitř clusteru HDInsight.   
 
 ### <a name="resolution-steps"></a>Kroky řešení
 
-1. Hello příkazového řádku, použijte `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` oznámena, stejně jako hello následující příkaz:
+1. Na příkazovém řádku použít `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` oznámena, stejně jako následující příkaz:
 
     ```apache
     hdiuser@hn0-spark2:~$ hdfs dfs -D "fs.default.name=hdfs://mycluster/" -ls /
@@ -43,7 +43,7 @@ Přístup hello místní HDFS z příkazového řádku a aplikace kód místo he
     drwx------   - hdiuser hdfs          0 2016-11-10 22:22 /user
     ```
 
-2. Zdrojový kód, použije hello URI `hdfs://mycluster/` oznámena, stejně jako hello následující ukázkovou aplikaci:
+2. Ze zdrojového kódu, použijte identifikátor URI `hdfs://mycluster/` oznámena, stejně jako následující ukázkovou aplikaci:
 
     ```csharp
     import java.io.IOException;
@@ -68,7 +68,7 @@ Přístup hello místní HDFS z příkazového řádku a aplikace kód místo he
     }
     ```
 
-3. Spuštění hello zkompilovat souboru .jar (například soubor s názvem `java-unit-tests-1.0.jar`) na hello HDInsight cluster s hello následující příkaz:
+3. Spusťte soubor kompilované .jar (například soubor s názvem `java-unit-tests-1.0.jar`) v clusteru HDInsight pomocí následujícího příkazu:
 
     ```apache
     hdiuser@hn0-spark2:~$ hadoop jar java-unit-tests-1.0.jar JavaUnitTests
@@ -83,23 +83,23 @@ Přístup hello místní HDFS z příkazového řádku a aplikace kód místo he
 
 ### <a name="issue"></a>Problém
 
-Hello místní HDFS se zasekla v nouzovém režimu v clusteru HDInsight hello.   
+Do místní HDFS se zasekla v nouzovém režimu v clusteru HDInsight.   
 
 ### <a name="detailed-description"></a>Podrobný popis
 
-Když spustíte následující příkaz HDFS hello dojde k chybě:
+Když spustíte následující příkaz HDFS dojde k chybě:
 
 ```apache
 hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
 ```
 
-Zobrazí následující chyba při spuštění příkazu hello hello:
+Při spuštění příkazu se zobrazí následující chyba:
 
 ```apache
 hdiuser@hn0-spark2:~$ hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
 17/04/05 16:20:52 WARN retry.RetryInvocationHandler: Exception while invoking ClientNamenodeProtocolTranslatorPB.mkdirs over hn0-spark2.2oyzcdm4sfjuzjmj5dnmvscjpg.dx.internal.cloudapp.net/10.0.0.22:8020. Not retrying because try once and fail.
 org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.hdfs.server.namenode.SafeModeException): Cannot create directory /temp. Name node is in safe mode.
-It was turned on manually. Use "hdfs dfsadmin -safemode leave" tooturn safe mode off.
+It was turned on manually. Use "hdfs dfsadmin -safemode leave" to turn safe mode off.
         at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1359)
         at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:4010)
         at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1102)
@@ -149,11 +149,11 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
 
 ### <a name="probable-cause"></a>Pravděpodobná příčina
 
-Hello clusteru HDInsight byl škálovat dolů tooa jen několik uzlů. Hello počet uzlů je menší než nebo zavřete toohello HDFS replikace faktor.
+Změny velikosti clusteru HDInsight se dolů k velmi několika uzlů. Počet uzlů je menší než nebo blízko Multi-Factor replikace HDFS.
 
 ### <a name="resolution-steps"></a>Kroky řešení 
 
-1. Získáte stav hello HDFS na clusteru HDInsight hello pomocí hello následující příkazy:
+1. Získáte stav HDFS na clusteru HDInsight pomocí následujících příkazů:
 
     ```apache
     hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
@@ -194,14 +194,14 @@ Hello clusteru HDInsight byl škálovat dolů tooa jen několik uzlů. Hello po�
     ...
     ```
 
-2. Zkontrolujte integritu hello HDFS na clusteru HDInsight hello pomocí hello následující příkazy:
+2. Zkontrolujte integritu HDFS v clusteru HDInsight pomocí následujících příkazů:
 
     ```apache
     hdiuser@hn0-spark2:~$ hdfs fsck -D "fs.default.name=hdfs://mycluster/" /
     ```
 
     ```apache
-    Connecting toonamenode via http://hn0-spark2.2oyzcdm4sfjuzjmj5dnmvscjpg.dx.internal.cloudapp.net:30070/fsck?ugi=hdiuser&path=%2F
+    Connecting to namenode via http://hn0-spark2.2oyzcdm4sfjuzjmj5dnmvscjpg.dx.internal.cloudapp.net:30070/fsck?ugi=hdiuser&path=%2F
     FSCK started by hdiuser (auth:SIMPLE) from /10.0.0.22 for path / at Wed Apr 05 16:40:28 UTC 2017
     ....................................................................................................
 
@@ -224,10 +224,10 @@ Hello clusteru HDInsight byl škálovat dolů tooa jen několik uzlů. Hello po�
     Number of racks:               1
     FSCK ended at Wed Apr 05 16:40:28 UTC 2017 in 187 milliseconds
 
-    hello filesystem under path '/' is HEALTHY
+    The filesystem under path '/' is HEALTHY
     ```
 
-3. Pokud zjistíte, že neexistují žádné chybějí, jsou poškozené nebo under-replikované bloky, nebo že tyto bloky můžete ignorovat, spusťte následující příkaz tootake hello název uzlu mimo nouzový režim hello:
+3. Pokud zjistíte, že neexistují žádné chybí, poškozený, nebo under-replikované bloky, nebo že tyto bloky můžete ignorovat, spusťte následující příkaz provést název uzlu mimo nouzový režim:
 
     ```apache
     hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -safemode leave

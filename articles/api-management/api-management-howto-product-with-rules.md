@@ -1,6 +1,6 @@
 ---
-title: "aaaProtect rozhraní API pomocí Azure API Management | Microsoft Docs"
-description: "Zjistěte, jak tooprotect vaše rozhraní API pomocí zásad kvót a omezování zásady (omezení rychlosti)."
+title: "Ochrana rozhraní API ve službě Azure API Management | Dokumentace Microsoftu"
+description: "Seznamte se s možnostmi ochrany rozhraní API pomocí zásad kvót a zásad omezování četnosti."
 services: api-management
 documentationcenter: 
 author: vladvino
@@ -14,106 +14,106 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 3113fd277d434da0c051b8b90fd629a102bf4867
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 300b1d762a61c810dbffde5aaacd8a85f12c9fca
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="protect-your-api-with-rate-limits-using-azure-api-management"></a>Ochrana rozhraní API omezením četnosti pomocí Azure API Management
-Tento průvodce vám ukáže, jak je snadné tooadd ochranu pro váš back-end rozhraní API podle konfigurace zásad kvót a omezování míra s Azure API Management.
+Tento průvodce vám ukáže, jak snadno můžete pomocí služby Azure API Management přidat ochranu rozhraní API vašeho back-endu tím, že nakonfigurujete zásady omezení četnosti a zásady kvót.
 
-V tomto kurzu vytvoříte "Bezplatnou zkušební verzi" rozhraní API produktu, který umožňuje vývojářům toomake too10 volání za minutu a až tooa maximálně 200 volání za týden tooyour rozhraní API pomocí hello [omezení četnosti volání podle předplatného](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) a [ Nastavení kvóty využití podle předplatného](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota) zásady. Potom publikovat hello rozhraní API a testování omezení četnosti hello.
+V tomto kurzu vytvoříte „bezplatnou zkušební verzi“ produktu s rozhraním API, která vývojářům umožní provádět až 10 volání za minutu a až 200 volání za týden do vašeho rozhraní API pomocí zásad [Omezení četnosti volání podle předplatného](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) a [Nastavení kvóty využití podle předplatného](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota). Potom rozhraní API publikujete a zásady omezení četnosti otestujete.
 
-Pro pokročilejší scénáře omezování pomocí hello [rate-limit-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRateByKey) a [quota-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuotaByKey) zásady, najdete v části [pokročilé omezování požadavků pomocí Azure API Management](api-management-sample-flexible-throttling.md).
+Pokud se zajímáte o pokročilejší scénáře omezování pomocí zásad [rate-limit-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRateByKey) a [quota-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuotaByKey), podívejte se na článek [Pokročilé omezování požadavků pomocí Azure API Management](api-management-sample-flexible-throttling.md).
 
-## <a name="create-product"></a>toocreate produktu
+## <a name="create-product"></a>Vytvoření produktu
 V tomto kroku vytvoříte bezplatnou zkušební verzi produktu, který nevyžaduje schválení předplatného.
 
 > [!NOTE]
-> Pokud už máte produkt nakonfigurovaný a chcete toouse ho v tomto kurzu, můžete přeskočit příliš[Konfigurace četnosti zásad kvót a omezování] [ Configure call rate limit and quota policies] a postupujte podle pokynů hello kurzu odtamtud se svým produktem místo hello bezplatné zkušební verze produktu.
+> Pokud už máte produkt nakonfigurovaný a chcete ho v tomto kurzu použít, můžete přeskočit na článek [Konfigurace zásad omezení četnosti a zásad kvót][Configure call rate limit and quota policies] a postupovat v kurzu odtamtud se svým produktem místo bezplatné zkušební verze produktu.
 > 
 > 
 
-tooget začít, klikněte na tlačítko **portál vydavatele** v hello portál Azure pro služby API Management.
+Začněte tak, že na webu Azure Portal dané služby API Management kliknete na **Portál vydavatele**.
 
 ![Portál vydavatele][api-management-management-console]
 
-> Pokud jste instanci služby API Management ještě nevytvořili, přečtěte si téma [vytvoření instance API Management] [ Create an API Management service instance] v hello [Správa vašeho prvního rozhraní API v Azure API Management] [ Manage your first API in Azure API Management] kurzu.
+> Pokud jste instanci služby API Management ještě nevytvořili, přečtěte si článek [Vytvoření instance API Management][Create an API Management service instance] v kurzu [Správa vašeho prvního rozhraní API v Azure API Management][Manage your first API in Azure API Management].
 > 
 > 
 
-Klikněte na tlačítko **produkty** v hello **API Management** nabídky na levém toodisplay hello hello **produkty** stránky.
+V nabídce **API Management** na levé straně klikněte na **Produkty** a zobrazte stránku **Produkty**.
 
 ![Přidání produktu][api-management-add-product]
 
-Klikněte na tlačítko **přidat produkt** toodisplay hello **přidání nového produktu** dialogové okno.
+Kliknutím na **Přidat produkt** zobrazíte dialogové okno **Přidání nového produktu**.
 
 ![Přidání nového produktu][api-management-new-product-window]
 
-V hello **název** zadejte **bezplatné zkušební verze**.
+Do pole **Nadpis** zadejte text **Bezplatná zkušební verze**.
 
-V hello **popis** pole, typ hello následující text: **Odběratelé, kteří budou mít toorun 10 volání za minutu až tooa maximálně 200 volání za týden. potom bude přístup odepřen.**
+Do pole **Popis** zadejte následující text: **Předplatitelé můžou spustit 10 volání za minutu až do maximálního počtu 200 volání za týden. Potom bude přístup odepřen.**
 
-Produkty ve službě API Management můžou být chráněné nebo otevřené. Chráněných produktů musí být odebírané toobefore, které mohou být použity. Otevřené produkty můžete používat bez předplatného. Ujistěte se, že **vyžadovat předplatné** je vybrané toocreate chráněný produkt, který vyžaduje předplatné. Toto je výchozí nastavení hello.
+Produkty ve službě API Management můžou být chráněné nebo otevřené. V případě chráněných produktů se musíte nejdřív přihlásit k jejich odběru a až potom je můžete používat. Otevřené produkty můžete používat bez předplatného. Pokud chcete vytvořit chráněný produkt, který vyžaduje předplatné, nezapomeňte vybrat možnost **Vyžadovat předplatné**. Toto je výchozí nastavení.
 
-Pokud chcete tooreview správce a přijměte nebo odmítněte předplatné pokusí toothis produktu, vyberte **vyžadovat schválení předplatného**. Pokud není zaškrtnuté políčko hello, pokusy o předplatné bude schvalovat automaticky. V tomto příkladu předplatné schvaluje automaticky, takže nezaškrtávejte políčko hello.
+Pokud chcete, aby pokusy o přihlášení k odběru produktu kontroloval a následně přijímal nebo odmítal správce, vyberte možnost **Vyžadovat schválení předplatného**. Pokud necháte políčko nezaškrtnuté, pokusy o přihlášení k odběru budou schvalovány automaticky. V tomto příkladu se předplatné schvaluje automaticky, proto políčko nezaškrtávejte.
 
-tooallow vývojáře účty toosubscribe několikrát toohello nového produktu, vyberte hello **povolit více souběžných předplatných** zaškrtávací políčko. Tento kurz několik souběžných předplatných nevyužívá, takže políčko nechte nezaškrtnuté.
+Pokud chcete vývojářským účtům povolit přihlášení k vícenásobným odběrům nového produktu, zaškrtněte políčko **Povolit více souběžných předplatných**. Tento kurz několik souběžných předplatných nevyužívá, takže políčko nechte nezaškrtnuté.
 
-Po zadání všech hodnot, klikněte na tlačítko **Uložit** toocreate hello produktu.
+Po zadání všech hodnot klikněte na **Uložit** a vytvořte produkt.
 
 ![Produkt přidán][api-management-product-added]
 
-Ve výchozím nastavení jsou nové produkty viditelné toousers v hello **správci** skupiny. Přidáme tooadd hello **vývojáři** skupiny. Klikněte na tlačítko **bezplatné zkušební verze**a potom klikněte na hello **viditelnost** kartě.
+Ve výchozím nastavení jsou nové produkty viditelné pro uživatele ve skupině **Správci**. Teď přidáme skupinu **Vývojáři**. Klikněte na **Bezplatná zkušební verze** a potom na kartu **Viditelnost**.
 
-> Skupiny ve službě API Management jsou použité toomanage hello viditelnost toodevelopers produkty. Produkty udělují viditelnost toogroups a vývojáři můžou zobrazovat a odebírat toohello produkty, které jsou viditelné toohello skupiny, do které patří. Další informace najdete v tématu [jak toocreate a používání skupin v Azure API Management][How toocreate and use groups in Azure API Management].
+> Ve službě API Management se ke správě viditelnosti produktů pro vývojáře používají skupiny. Produkty udělují viditelnost skupinám a vývojáři můžou zobrazovat a odebírat produkty, které jsou viditelné pro skupinu, do které patří. Další informace najdete v článku [Vytvoření a používání skupin v Azure API Management][How to create and use groups in Azure API Management].
 > 
 > 
 
 ![Přidání skupiny vývojářů][api-management-add-developers-group]
 
-Vyberte hello **vývojáři** zaškrtněte políčko a potom klikněte na **Uložit**.
+Zaškrtněte políčko **Vývojáři** a potom klikněte na **Uložit**.
 
-## <a name="add-api"></a>tooadd rozhraní API toohello produktu
-V tomto kroku kurzu hello přidáme hello Echo API toohello nové bezplatné zkušební verze produktu.
+## <a name="add-api"></a>Přidání rozhraní API do produktu
+V tomto kroku kurzu přidáme rozhraní API v programu Echo do nového produktu v bezplatné zkušební verzi.
 
-> Každá instance služby API Management je vybavená předem nakonfigurovaným rozhraním Echo API, které je možné použít tooexperiment s a další informace o službě API Management. Další informace najdete v článku [Správa vašeho prvního rozhraní API ve službě Azure API Management][Manage your first API in Azure API Management].
+> Každá instance služby API Management je vybavená předem nakonfigurovaným rozhraním API programu Echo, které můžete použít k experimentování a seznámení se službou API Management. Další informace najdete v článku [Správa vašeho prvního rozhraní API ve službě Azure API Management][Manage your first API in Azure API Management].
 > 
 > 
 
-Klikněte na tlačítko **produkty** z hello **API Management** nabídky na levé hello a pak klikněte na tlačítko **bezplatné zkušební verze** tooconfigure hello produktu.
+V nabídce **API Management** na levé straně klikněte na **Produkty**, potom na **Bezplatná zkušební verze** a nakonfigurujte produkt.
 
 ![Konfigurace produktu][api-management-configure-product]
 
-Klikněte na tlačítko **přidat rozhraní API tooproduct**.
+Klikněte na **Přidat rozhraní API do produktu**.
 
-![Přidání rozhraní API tooproduct][api-management-add-api]
+![Přidání rozhraní API do produktu][api-management-add-api]
 
 Vyberte **Rozhraní API v programu Echo** a potom klikněte na **Uložit**.
 
 ![Přidání rozhraní API v programu Echo][api-management-add-echo-api]
 
-## <a name="policies"></a>tooconfigure četnosti zásad kvót a omezování
-Omezení četnosti a kvóty se konfigurují v editoru zásad hello. zásady Hello dva přidáme v tomto kurzu jsou hello [omezení četnosti volání podle předplatného](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) a [nastavení kvóty využití podle předplatného](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota) zásady. Tyto zásady se musí použít v oboru produktu hello.
+## <a name="policies"></a>Konfigurace zásad kvót a zásad omezení četnosti volání
+Omezení četnosti a kvóty se konfigurují v editoru zásad. Dvě zásady, které v tomto kurzu budeme přidávat, jsou [Omezení četnosti volání podle předplatného](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) a [Nastavení kvóty využití podle předplatného](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota). Tyto zásady se musí použít na obor produktu.
 
-Klikněte na tlačítko **zásady** pod hello **API Management** nabídky na levé straně hello. V hello **produktu** seznamu, klikněte na tlačítko **bezplatné zkušební verze**.
+V nabídce **API Management** na levé straně klikněte na **Zásady**. V seznamu **Produkt** klikněte na položku **Bezplatná zkušební verze**.
 
 ![Zásady produktu][api-management-product-policy]
 
-Klikněte na tlačítko **přidat zásadu** tooimport hello šablony zásad a začněte vytvářet hello zásadami kvót a omezování rychlost.
+Kliknutím na **Přidat zásady** proveďte import šablony zásad a začněte vytvářet zásady omezení četnosti a zásady kvót.
 
 ![Přidání zásad][api-management-add-policy]
 
-Míra zásadami kvót a omezování jsou příchozími zásadami, tak kurzor hello pozici v hello příchozího prvku.
+Zásady omezení četnosti a zásady kvót jsou příchozími zásadami, proto kurzor umístěte do příchozího prvku.
 
 ![Editor zásad][api-management-policy-editor-inbound]
 
-Posuňte hello seznam zásad a najděte hello **omezení četnosti volání podle předplatného** zásadu.
+Posouváním seznamem zásad vyhledejte záznam zásady **Omezení četnosti volání podle předplatného**.
 
 ![Příkazy zásad][api-management-limit-policies]
 
-Po hello kurzor je nastavený v hello **příchozí** zásad klikněte na šipku hello vedle položky **omezení četnosti volání podle předplatného** tooinsert jeho šablonu zásad.
+Po umístění kurzoru v prvku **inbound** zásad klikněte na šipku vedle položky **Omezení četnosti volání podle předplatného** a vložte jeho šablonu zásad.
 
 ```xml
 <rate-limit calls="number" renewal-period="seconds">
@@ -123,21 +123,21 @@ Po hello kurzor je nastavený v hello **příchozí** zásad klikněte na šipku
 </rate-limit>
 ```
 
-Jak je vidět z hello fragment hello zásada umožňuje nastavení omezení pro rozhraní API a operace hello produktu. V tomto kurzu jsme nebude používat tuto funkci, proto můžete odstranit hello **rozhraní api** a **operace** elementy z hello **limit rychlosti** elementu, tak, aby se pouze hello vnější **limit rychlosti** element zůstává, jak ukazuje následující příklad hello.
+Jak je vidět ve fragmentu kódu, zásada umožňuje nastavení omezení pro operace a rozhraní API produktu. V tomto kurzu tuto schopnost využívat nebudeme, takže z elementu **rate-limit** odstraňte elementy **api** a **operation**, aby zůstal jenom vnější element **rate-limit**, jak je znázorněno v následujícím příkladu.
 
 ```xml
 <rate-limit calls="number" renewal-period="seconds">
 </rate-limit>
 ```
 
-V hello bezplatnou zkušební verzi produktu, hello maximální povolená Četnost volání 10 volání za minutu, proto **10** hello hodnotu hello **volání** atribut a **60** pro hello **doby obnovení** atribut.
+V případě bezplatné zkušební verze produktu je maximální povolená četnost volání 10 volání za minutu, proto do atributu **call** zadejte hodnotu**10** a do atributu **renewal-period** zadejte hodnotu **60**.
 
 ```xml
 <rate-limit calls="10" renewal-period="60">
 </rate-limit>
 ```
 
-tooconfigure hello **nastavení kvóty využití podle předplatného** zásady, pozice kurzor bezprostředně pod hello nově přidaná **limit rychlosti** v rámci hello **příchozí** element a poté vyhledejte a klikněte na tlačítko hello šipku toohello nalevo od **nastavení kvóty využití podle předplatného**.
+Pokud chcete nakonfigurovat zásadu **Nastavení kvóty využití podle předplatného**, umístěte kurzor bezprostředně pod nově přidaný element **rate-limit** v elementu **inbound** a potom vyhledejte a klikněte na šipku nalevo od **Nastavení kvóty využití podle předplatného**.
 
 ```xml
 <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
@@ -147,32 +147,32 @@ tooconfigure hello **nastavení kvóty využití podle předplatného** zásady,
 </quota>
 ```
 
-Podobně toohello **nastavení kvóty využití podle předplatného** zásady, **nastavení kvóty využití podle předplatného** umožňuje zásady CAP k vzdálené ploše pro nastavení na rozhraní API a operace hello produktu. V tomto kurzu jsme nebude používat tuto funkci, proto můžete odstranit hello **rozhraní api** a **operace** elementy z hello **kvóty** elementu, jak ukazuje následující příklad hello.
+Podobně jako zásada **Omezení četnosti volání podle předplatného** umožňuje i zásada **Nastavení kvóty využití podle předplatného** nastavení omezení pro operace a rozhraní API produktu. V tomto kurzu tuto schopnost využívat nebudeme, takže z elementu **quota** odstraňte elementy **api** a **operation**, jak je znázorněno v následujícím příkladu.
 
 ```xml
 <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
 </quota>
 ```
 
-Kvóty můžou být založené na hello počet volání za interval, šířky pásma nebo obou. V tomto kurzu Neprovádíme omezování na základě šířky pásma, proto můžete odstranit hello **šířky pásma** atribut.
+Kvóty můžou být založené na počtu volání za interval, na šířce pásma nebo na obojím. V tomto kurzu neprovádíme omezování na základě šířky pásma, proto můžete odstranit atribut **bandwidth** (šířka pásma).
 
 ```xml
 <quota calls="number" renewal-period="seconds">
 </quota>
 ```
 
-V hello bezplatnou zkušební verzi produktu hello kvóta hodnotu 200 volání za týden. Zadejte **200** hello hodnotu hello **volání** atributů a potom zadejte **604800** hello hodnotu hello **doby obnovení** atribut.
+V rámci bezplatné zkušební verze produktu má kvóta hodnotu 200 volání za týden. Do atributu **calls** zadejte hodnotu **200** a potom do atributu **renewal-period** zadejte hodnotu **604800**.
 
 ```xml
 <quota calls="200" renewal-period="604800">
 </quota>
 ```
 
-> Intervaly zásad se zadávají v sekundách. toocalculate hello interval pro týden, můžete násobení hello počet dní (7) hello počtem hodin za den (24) hello počtem minut za hodinu (60) a hello počtem sekund za minutu (60): 7 * 24 * 60 * 60 = 604800.
+> Intervaly zásad se zadávají v sekundách. Pokud chcete vypočítat interval pro týden, můžete počet dní (7) vynásobit počtem hodin za den (24), počtem minut za hodinu (60) a počtem sekund za minutu (60): 7 × 24 × 60 × 60 = 604 800.
 > 
 > 
 
-Po dokončení konfigurace zásad hello shodovat hello následující ukázka.
+Zásady by po dokončení konfigurace měly odpovídat následujícímu příkladu.
 
 ```xml
 <policies>
@@ -192,27 +192,27 @@ Po dokončení konfigurace zásad hello shodovat hello následující ukázka.
 </policies>
 ```
 
-Po hello potřeby, jsou zásady nakonfigurované, klikněte na tlačítko **Uložit**.
+Po nakonfigurování požadovaných zásad klikněte na **Uložit**.
 
 ![Uložení zásad][api-management-policy-save]
 
-## <a name="publish-product"></a> toopublish hello produktu
-Teď, když hello hello přidání rozhraní API, a jsou nakonfigurovány hello zásady, třeba hello produkt publikovat, aby se může použít vývojáři. Klikněte na tlačítko **produkty** z hello **API Management** nabídky na levé hello a pak klikněte na tlačítko **bezplatné zkušební verze** tooconfigure hello produktu.
+## <a name="publish-product"></a> Publikování produktu
+Když jste přidali rozhraní API a nakonfigurovali zásady, je třeba produkt publikovat, aby ho vývojáři mohli začít používat. V nabídce **API Management** na levé straně klikněte na **Produkty**, potom na **Bezplatná zkušební verze** a nakonfigurujte produkt.
 
 ![Konfigurace produktu][api-management-configure-product]
 
-Klikněte na tlačítko **publikovat**a potom klikněte na **Ano, publikovat** tooconfirm.
+Klikněte na **Publikovat** a potvrďte kliknutím na **Ano, publikovat**.
 
 ![Publikování produktu][api-management-publish-product]
 
-## <a name="subscribe-account"></a>toosubscribe produktu toohello účtu vývojáře
-Teď je publikována hello produktu, je k dispozici toobe odběru tooand používají vývojáři.
+## <a name="subscribe-account"></a>Přihlášení vývojářského účtu k odběru produktu
+Teď, když je produkt publikovaný, se vývojáři můžou přihlásit k jeho odběru a můžou ho začít používat.
 
-> Správci instance API Management jsou automaticky odebírané tooevery produktu. V tomto kroku kurzu jsme odběru jeden hello vývojáře bez oprávnění správce účtů toohello bezplatné zkušební verze produktu. Pokud vývojářský účet součástí role správců hello, potom můžete provést tímto krokem projít i v případě, že jste přihlášeni.
+> Správci instance API Management se automaticky přihlašují k odběru každého produktu. V tomto kroku kurzu přihlásíme jeden vývojářský účet bez oprávnění správce k odběru bezplatné zkušební verze produktu. Pokud je vývojářský účet součástí role správců, můžete tímto krokem projít i v případě, že už jste k odběru přihlášeni.
 > 
 > 
 
-Klikněte na tlačítko **uživatelé** na hello **API Management** nabídky na hello left a pak klikněte na název vývojářského účtu hello. V tomto příkladu používáme hello **Clayton Gragg** vývojářský účet.
+V nabídce **API Management** na levé straně klikněte na **Uživatelé** a potom klikněte na název vývojářského účtu. V tomto příkladu používáme vývojářský účet **Clayton Gragg**.
 
 ![Konfigurace vývojáře][api-management-configure-developer]
 
@@ -225,53 +225,53 @@ Vyberte **Bezplatná zkušební verze** a potom klikněte na **Přihlásit k odb
 ![Přidat předplatné][api-management-add-subscription]
 
 > [!NOTE]
-> V tomto kurzu více souběžných předplatných nejsou povolené pro hello bezplatné zkušební verze produktu. Pokud byly, by byl výzvami tooname hello předplatného, jak ukazuje následující příklad hello.
+> V tomto kurzu není v případě bezplatné zkušební verze produktu povoleno více souběžných předplatných. Pokud by bylo, zobrazila by se výzva jako v následujícím příkladu.
 > 
 > 
 
 ![Přidat předplatné][api-management-add-subscription-multiple]
 
-Po kliknutí na **přihlásit k odběru**, hello produkt zobrazí v hello **předplatné** seznamu pro uživatele hello.
+Po kliknutí na **Přihlásit k odběru** se produkt zobrazí v uživatelském seznamu **Předplatné**.
 
 ![Předplatné přidáno][api-management-subscription-added]
 
-## <a name="test-rate-limit"></a>toocall operace a testování omezení četnosti hello
-Teď, když hello bezplatnou zkušební verzi produktu nakonfigurovanou a publikovanou, jsme volat operace a testování omezení četnosti hello.
-Portál pro vývojáře toohello přepínač kliknutím **portál pro vývojáře** v pravé horní nabídce hello.
+## <a name="test-rate-limit"></a>Volání operace a testování omezení četnosti
+Když už máte bezplatnou zkušební verzi produktu nakonfigurovanou a publikovanou, můžete začít volat operace a testovat omezení četnosti.
+Kliknutím na **Portál pro vývojáře** v pravé horní nabídce přejděte na portál pro vývojáře.
 
 ![Portál pro vývojáře][api-management-developer-portal-menu]
 
-Klikněte na tlačítko **rozhraní API** v hello horní nabídce a potom klikněte na **Echo API**.
+Klikněte v horní nabídce na **Rozhraní API** a potom vyberte **Rozhraní API v programu Echo**.
 
-![Portál pro vývojáře][api-management-developer-portal-api-menu]
+![portálu pro vývojáře][api-management-developer-portal-api-menu]
 
 Klikněte na **GET Resource** a potom klikněte na **Zkouška**.
 
 ![Otevření konzoly][api-management-open-console]
 
-Ponechat hello výchozí hodnoty parametrů a pak vyberte svůj klíč předplatného pro bezplatnou zkušební verzi produktu hello.
+Ponechte výchozí hodnoty parametrů a potom vyberte svůj klíč předplatného pro bezplatnou zkušební verzi produktu.
 
 ![Klíč předplatného][api-management-select-key]
 
 > [!NOTE]
-> Pokud máte více předplatných, že klíč hello tooselect pro být **bezplatné zkušební verze**, nebo jiný hello zásady, které byly nakonfigurované v předchozích krocích hello nebudou platit.
+> Pokud máte více předplatných, vyberte klíč pro **bezplatnou zkušební verzi**, jinak zásady nakonfigurované v předchozích krocích nebudou platit.
 > 
 > 
 
-Klikněte na tlačítko **odeslat**a potom si prohlédněte hello odpovědi. Poznámka: hello **stav odpovědi** z **200 OK**.
+Klikněte na **Odeslat** a potom si zobrazte odezvu. Všimněte si, že **stav odezvy** je **200 – OK**.
 
 ![Výsledky operace][api-management-http-get-results]
 
-Klikněte na tlačítko **odeslat** rychlostí vyšší než hello dovolují zásady omezení 10 volání za minutu. Po překročení zásad omezení četnosti hello stav odezvy **429 – příliš mnoho požadavků** je vrácen.
+Klikněte na **Odeslat** víckrát, než dovolují zásady omezení četnosti (10 volání za minutu). Po překročení zásad omezení četnosti se vrátí stav odezvy **429 – Příliš mnoho požadavků**.
 
 ![Výsledky operace][api-management-http-get-429]
 
-Hello **obsah odpovědi** označuje hello zbývající interval předtím, než bude opakování úspěšné.
+**Obsah odezvy** zobrazuje zbývající délku intervalu, po kterém bude opakování úspěšné.
 
-Pokud platí zásady omezení četnosti hello 10 volání za minutu, následná volání nebudou úspěšná, dokud neuplyne 60 sekund od hello první hello 10 úspěšných volání toohello produktu před překročením omezení četnosti hello. V tomto příkladu je hello zbývající intervalu 54 sekund.
+Pokud platí zásady omezení četnosti v počtu 10 volání za minutu, následná volání nebudou úspěšná, dokud neuplyne 60 sekund od prvních 10 úspěšných volání produktu před překročením omezení četnosti volání. V tomto příkladu je zbývající délka intervalu 54 sekund.
 
 ## <a name="next-steps"></a>Další kroky
-* Podívejte se na ukázku nastavení kvót a omezení četnosti v hello následující videa.
+* V následujícím videu si pusťte ukázku nastavení kvót a omezení četnosti.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Rate-Limits-and-Quotas/player]
 > 
@@ -304,24 +304,24 @@ Pokud platí zásady omezení četnosti hello 10 volání za minutu, následná 
 [api-management-subscription-added]: ./media/api-management-howto-product-with-rules/api-management-subscription-added.png
 [api-management-add-subscription-multiple]: ./media/api-management-howto-product-with-rules/api-management-add-subscription-multiple.png
 
-[How tooadd operations tooan API]: api-management-howto-add-operations.md
-[How tooadd and publish a product]: api-management-howto-add-products.md
+[How to add operations to an API]: api-management-howto-add-operations.md
+[How to add and publish a product]: api-management-howto-add-products.md
 [Monitoring and analytics]: ../api-management-monitoring.md
-[Add APIs tooa product]: api-management-howto-add-products.md#add-apis
+[Add APIs to a product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
 [Manage your first API in Azure API Management]: api-management-get-started.md
-[How toocreate and use groups in Azure API Management]: api-management-howto-create-groups.md
-[View subscribers tooa product]: api-management-howto-add-products.md#view-subscribers
+[How to create and use groups in Azure API Management]: api-management-howto-create-groups.md
+[View subscribers to a product]: api-management-howto-add-products.md#view-subscribers
 [Get started with Azure API Management]: api-management-get-started.md
 [Create an API Management service instance]: api-management-get-started.md#create-service-instance
 [Next steps]: #next-steps
 
 [Create a product]: #create-product
 [Configure call rate limit and quota policies]: #policies
-[Add an API toohello product]: #add-api
-[Publish hello product]: #publish-product
-[Subscribe a developer account toohello product]: #subscribe-account
-[Call an operation and test hello rate limit]: #test-rate-limit
+[Add an API to the product]: #add-api
+[Publish the product]: #publish-product
+[Subscribe a developer account to the product]: #subscribe-account
+[Call an operation and test the rate limit]: #test-rate-limit
 
 [Limit call rate]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
 [Set usage quota]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota

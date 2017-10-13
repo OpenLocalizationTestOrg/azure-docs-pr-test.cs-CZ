@@ -1,5 +1,5 @@
 ---
-title: "aaaManage koncových bodů v Azure Traffic Manageru | Microsoft Docs"
+title: "Správa koncových bodů v Azure Traffic Manageru | Dokumentace Microsoftu"
 description: "Tento článek vám pomůže při přidávání, odebírání, povolování a zakazování koncových bodů v Azure Traffic Manageru."
 services: traffic-manager
 documentationcenter: 
@@ -14,66 +14,66 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: kumud
-ms.openlocfilehash: fc65874ae2eaeb6fca5d8c4f33403c258307bdb0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 765d12bc283d991783fb3190ce7917b573f9fc78
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>Přidávání, zakazování, povolování nebo odstraňování koncových bodů
 
-Hello funkce Web Apps v Azure App Service již poskytuje převzetí služeb při selhání a funkce směrování provozu kruhovým dotazováním pro weby v datacentru, bez ohledu na režim webu hello. Azure Traffic Manager umožňuje toospecify převzetí služeb při selhání a směrování provozu kruhovým dotazováním pro weby a služby cloud services v různých datových centrech. Hello první krok nezbytné tooprovide že jsou funkce tooadd hello cloudové služby nebo web koncového bodu tooTraffic správce.
+Funkce Web Apps v rámci služby Azure App Service již poskytuje funkce směrování provozu s převzetím služeb při selhání a s kruhovým dotazováním pro weby v datovém centru bez ohledu na režim příslušného webu. Azure Traffic Manager umožňuje určit směrování provozu s převzetím služeb při selhání a s kruhovým dotazováním pro weby a služby Cloud Services v různých datových centrech. Jako první krok pro poskytnutí těchto funkcí je třeba přidat příslušný koncový bod služby Cloud Services nebo webu do Traffic Manageru.
 
-Můžete také zakázat jednotlivé koncové body, které jsou součástí profilu Traffic Manageru. Zakázaný koncový bod zůstává součástí profilu hello, ale profil hello chová, jako koncový bod hello není zahrnutý v ní. Tato akce je užitečná pro dočasné odebrání koncového bodu, který se nachází v režimu údržby nebo který se znovu nasazuje. Jakmile je koncový bod hello znovu spuštěn a, může být povoleno.
+Můžete také zakázat jednotlivé koncové body, které jsou součástí profilu Traffic Manageru. Zakázaný koncový bod zůstává součástí profilu, profil však pracuje, jako by příslušný koncový bod neobsahoval. Tato akce je užitečná pro dočasné odebrání koncového bodu, který se nachází v režimu údržby nebo který se znovu nasazuje. Jakmile je koncový bod znovu spuštěn a pracuje, může být povolen.
 
 > [!NOTE]
-> Zakázání koncového bodu nijak nesouvisí toodo s jeho stavem nasazení v Azure. Funkční koncový bod zůstává nahoru a musí umožňovat provoz tooreceive i v případě, že v Traffic Manageru zakázán. Zakázání koncový bod v jednom profilu navíc nemá vliv na jeho stav v jiném profilu.
+> Zakázání koncového bodu nijak nesouvisí s jeho stavem nasazení v Azure. Funkční koncový bod zůstane v provozu a může přijímat provoz i poté, co je v Traffic Manageru zakázán. Zakázání koncový bod v jednom profilu navíc nemá vliv na jeho stav v jiném profilu.
 
-## <a name="tooadd-a-cloud-service-or-an-app-service-endpoint-tooa-traffic-manager-profile"></a>tooadd cloudové služby nebo tooa koncový bod služby aplikace profil služby Traffic Manager
+## <a name="to-add-a-cloud-service-or-an-app-service-endpoint-to-a-traffic-manager-profile"></a>Přidání cloudové služby nebo koncového bodu služby App Service do profilu služby Traffic Manager
 
-1. V prohlížeči přihlásit toohello [portál Azure](http://portal.azure.com).
-2. V panelu vyhledávání hello portál, vyhledejte hello **profil služby Traffic Manager** jméno, které chcete toomodify a pak klikněte na profil služby Traffic Manager hello v hello výsledky této hello zobrazí.
-3. V hello **profil služby Traffic Manager** okno, v hello **nastavení** klikněte na tlačítko **koncové body**.
-4. V hello **koncové body** okno, které se zobrazí, klikněte na tlačítko **přidat**.
-5. V hello **přidání koncového bodu** okně dokončení následujícím způsobem:
+1. V prohlížeči se přihlaste k webu [Azure Portal](http://portal.azure.com).
+2. Na panelu hledání na portálu vyhledejte název **profilu služby Traffic Manager**, který chcete upravit, a pak na tento profil služby Traffic Manager klikněte v zobrazených výsledcích.
+3. V okně **Profil služby Traffic Manager** v části **Nastavení** klikněte na **Koncové body**.
+4. V zobrazeném okně **Koncové body** klikněte na **Přidat**.
+5. Okno **Přidat koncový bod** vyplňte následujícím způsobem:
     1. V části **Typ** klikněte na **Koncový bod Azure**.
-    2. Zadejte **název** podle kterého chcete toorecognize tento koncový bod.
-    3. Pro **cíle typ prostředku**, z hello rozevíracího seznamu, vyberte typ prostředku odpovídající hello.
-    4. Pro **cíle prostředků**, z hello rozevíracího seznamu, vyberte prostředek, příslušná cílová hello hello tooshow hello seznamu prostředků v rámci stejného předplatného v hello **prostředky okno**. V hello **prostředků** okno, které se zobrazí, vyberte hello služby má tooadd jako hello první koncový bod.
-    5. V části **Priorita** vyberte **1**. Výsledkem je veškerý provoz směřující toothis koncový bod, pokud je v pořádku.
+    2. Zadejte **Název**, podle kterého tento koncový bod rozpoznáte.
+    3. V části **Typ cílového prostředku** zvolte z rozevírací nabídky vhodný typ prostředku.
+    4. V části **Cílový prostředek** zvolte z rozevírací nabídky vhodný cílový prostředek a v **okně Prostředky** se zobrazí výpis prostředků ve stejném předplatném. V zobrazeném okně **Prostředek** vyberte službu, kterou chcete přidat jako první koncový bod.
+    5. V části **Priorita** vyberte **1**. Výsledkem bude, že veškerý provoz bude přicházet do tohoto koncového bodu, pokud bude v pořádku.
     6. Políčko **Přidat jako zakázaný** ponechte nezaškrtnuté.
     7. Klikněte na tlačítko **OK**.
-6.  Opakujte kroky 4 a 5 tooadd hello další koncového bodu Azure. Ujistěte se, že tooadd se s jeho **s prioritou** hodnota nastavena na **2**.
-7.  Po dokončení přidávání hello obou koncových bodů jsou zobrazeny v hello **profil služby Traffic Manager** okno spolu s jejich stav monitorování jako **Online**.
+6.  Opakujte kroky 4 a 5 a přidejte další koncový bod Azure. Nezapomeňte ho přidat s hodnotou **Priorita** nastavenou na **2**.
+7.  Po přidání se oba koncové body zobrazí v okně **Profil služby Traffic Manager** a jejich stav monitorování bude **Online**.
 
 > [!NOTE]
-> Po přidání nebo odebrání koncového bodu z profilu pomocí hello *převzetí služeb při selhání* metoda směrování provozu, nemusí být seřazené hello seznam priorit převzetí služeb při selhání, budou požadovaným způsobem. Můžete upravit pořadí hello hello seznam priorit převzetí služeb při selhání na stránce konfigurace hello. Další informace najdete v části [Konfigurování směrování provozu s převzetím služeb při selhání](traffic-manager-configure-failover-routing-method.md).
+> Po přidání nebo odebrání koncového bodu z profilu metodou směrování provozu *Převzetí služeb při selhání* nemusí být seznam priorit přebírání služeb seřazen tak, jak si představujete. Pořadí tohoto seznamu priorit můžete upravit na stránce Konfigurace. Další informace najdete v části [Konfigurování směrování provozu s převzetím služeb při selhání](traffic-manager-configure-failover-routing-method.md).
 
-## <a name="toodisable-an-endpoint"></a>toodisable koncový bod
+## <a name="to-disable-an-endpoint"></a>Zakázání koncového bodu
 
-1. V prohlížeči přihlásit toohello [portál Azure](http://portal.azure.com).
-2. V panelu vyhledávání hello portál, vyhledejte hello **profil služby Traffic Manager** název má toomodify a pak klikněte na profil služby Traffic Manager hello v hello výsledky, které jsou zobrazeny.
-3. V hello **profil služby Traffic Manager** okno, v hello **nastavení** klikněte na tlačítko **koncové body**. 
-4. Klikněte na koncový bod hello, které chcete toodisable a pak na hello **koncový bod** okno, které se zobrazí, klikněte na tlačítko **upravit**.
-5. V hello **koncový bod** okně změnit stav koncového bodu hello příliš**zakázané**a potom klikněte na **Uložit**.
-6. Klienti dál toosend provoz toohello koncový bod pro dobu trvání hello Time-to-Live (TTL). Na stránce konfigurace hello hello profil služby Traffic Manager hello TTL můžete změnit.
+1. V prohlížeči se přihlaste k webu [Azure Portal](http://portal.azure.com).
+2. Na panelu hledání na portálu vyhledejte název **profilu služby Traffic Manager**, který chcete upravit, a pak na tento profil služby Traffic Manager klikněte v zobrazených výsledcích.
+3. V okně **Profil služby Traffic Manager** v části **Nastavení** klikněte na **Koncové body**. 
+4. Klikněte na koncový bod, který chcete zakázat, a v zobrazeném okně **Koncový bod** klikněte na **Upravit**.
+5. V okně **Koncový bod** změňte stav koncového bodu na **Zakázáno** a pak klikněte na **Uložit**.
+6. Klienti budou dál posílat data na koncový bod po dobu odpovídající hodnotě Time-to-Live (TTL). Hodnotu TTL můžete změnit na stránce Konfigurace profilu Traffic Manageru.
 
-## <a name="tooenable-an-endpoint"></a>tooenable koncový bod
+## <a name="to-enable-an-endpoint"></a>Povolení koncového bodu
 
-1. V prohlížeči přihlásit toohello [portál Azure](http://portal.azure.com).
-2. V panelu vyhledávání hello portál, vyhledejte hello **profil služby Traffic Manager** název má toomodify a pak klikněte na profil služby Traffic Manager hello v hello výsledky, které jsou zobrazeny.
-3. V hello **profil služby Traffic Manager** okno, v hello **nastavení** klikněte na tlačítko **koncové body**. 
-4. Klikněte na koncový bod hello, které chcete toodisable a pak na hello **koncový bod** okno, které se zobrazí, klikněte na tlačítko **upravit**.
-5. V hello **koncový bod** okně změnit stav koncového bodu hello příliš**povoleno**a potom klikněte na **Uložit**.
-6. Klienti dál toosend provoz toohello koncový bod pro dobu trvání hello Time-to-Live (TTL). Na stránce konfigurace hello hello profil služby Traffic Manager hello TTL můžete změnit.
+1. V prohlížeči se přihlaste k webu [Azure Portal](http://portal.azure.com).
+2. Na panelu hledání na portálu vyhledejte název **profilu služby Traffic Manager**, který chcete upravit, a pak na tento profil služby Traffic Manager klikněte v zobrazených výsledcích.
+3. V okně **Profil služby Traffic Manager** v části **Nastavení** klikněte na **Koncové body**. 
+4. Klikněte na koncový bod, který chcete zakázat, a v zobrazeném okně **Koncový bod** klikněte na **Upravit**.
+5. V okně **Koncový bod** změňte stav koncového bodu na **Povoleno** a pak klikněte na **Uložit**.
+6. Klienti budou dál posílat data na koncový bod po dobu odpovídající hodnotě Time-to-Live (TTL). Hodnotu TTL můžete změnit na stránce Konfigurace profilu Traffic Manageru.
 
-## <a name="toodelete-an-endpoint"></a>toodelete koncový bod
+## <a name="to-delete-an-endpoint"></a>Odstranění koncového bodu
 
-1. V prohlížeči přihlásit toohello [portál Azure](http://portal.azure.com).
-2. V panelu vyhledávání hello portál, vyhledejte hello **profil služby Traffic Manager** název má toomodify a pak klikněte na profil služby Traffic Manager hello v hello výsledky, které jsou zobrazeny.
-3. V hello **profil služby Traffic Manager** okno, v hello **nastavení** klikněte na tlačítko **koncové body**. 
-4. Klikněte na koncový bod hello, které chcete toodisable a pak na hello **koncový bod** okno, které se zobrazí, klikněte na tlačítko **upravit**.
-5. V hello **koncový bod** okně změnit stav koncového bodu hello příliš**povoleno**a potom klikněte na **Uložit**.
+1. V prohlížeči se přihlaste k webu [Azure Portal](http://portal.azure.com).
+2. Na panelu hledání na portálu vyhledejte název **profilu služby Traffic Manager**, který chcete upravit, a pak na tento profil služby Traffic Manager klikněte v zobrazených výsledcích.
+3. V okně **Profil služby Traffic Manager** v části **Nastavení** klikněte na **Koncové body**. 
+4. Klikněte na koncový bod, který chcete zakázat, a v zobrazeném okně **Koncový bod** klikněte na **Upravit**.
+5. V okně **Koncový bod** změňte stav koncového bodu na **Povoleno** a pak klikněte na **Uložit**.
 
 
 ## <a name="next-steps"></a>Další kroky

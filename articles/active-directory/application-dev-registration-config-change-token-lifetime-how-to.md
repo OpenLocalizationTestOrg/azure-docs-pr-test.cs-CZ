@@ -1,6 +1,6 @@
 ---
-title: "životnost tokenu hello aaaHow toochange výchozí nastavení pro aplikaci zákaznických | Microsoft Docs"
-description: "Jak tooupdate životnost tokenu zásady pro aplikace, které vyvíjíte na Azure AD"
+title: "Jak změnit dobu životnosti tokenu výchozí nastavení pro aplikaci zákaznických | Microsoft Docs"
+description: "Postup aktualizace životnost tokenu zásady pro aplikace, které vyvíjíte na Azure AD"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 6e1aa1f2a7c33c1f55c5fb619c618ad43cd96273
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a28eacd820ed28a6470992ce86b060e886c00bcb
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="how-toochange-hello-token-lifetime-defaults-for-a-custom-developed-application"></a>Jak životnost tokenu hello toochange výchozí nastavení pro aplikace vyvinuté vlastní
+# <a name="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application"></a>Jak změnit výchozí dobu životnosti tokenu aplikace vyvinuté vlastní
 
-Azure AD Premium umožňuje vývojáři aplikací a klienta admins tooconfigure hello životnost tokeny vydané pro-důvěrné klienty. Životnost tokenu zásady jsou nastaveny na základě klienta celou nebo hello prostředkům přistupuje.
+Azure AD Premium umožňuje vývojáři aplikace a správci klientů nakonfigurovat životnost tokeny vydané pro-důvěrné klienty. Životnost tokenu zásady jsou nastaveny na základě klienta celou nebo prostředkům přistupuje.
 
- * tooset zásadu životnost tokenu, je nutné toodownload hello [modulu Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureADPreview).
+ * Pokud chcete nastavit dobu životnosti tokenu zásady, budete muset stáhnout [modulu Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureADPreview).
 
- * Spustit hello **Connect-AzureAD-potvrďte** příkaz.
+ * Spustit **Connect-AzureAD-potvrďte** příkaz.
 
- * Tady je příklad zásady, které nastavuje hello maximální stáří jeden faktor obnovovací token. Vytvořte zásadu hello:```New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"```
+ * Tady je příklad zásady, která nastaví maximální stáří jeden faktor obnovovací token. Vytvořte zásadu:```New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"```
 
- * Najdete v článku věnovaném hello [životnost tokenu konfigurace](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-configurable-token-lifetimes) dokumentu toolearn jak toocreate další vlastní.
+ * Najdete v článku věnovaném [životnost tokenu konfigurace](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-configurable-token-lifetimes) dokumentu se dozvíte, jak vytvořit další vlastní.
 
 ## <a name="next-steps"></a>Další kroky
 [Konfigurace životnost tokenu](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-configurable-token-lifetimes)<br>

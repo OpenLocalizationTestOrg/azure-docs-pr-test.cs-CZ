@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure řešení sítě analýzy v Log Analytics | Microsoft Docs"
-description: "Můžete použít hello řešení Azure sítě analýzy protokolů skupiny zabezpečení sítě Azure tooreview analýzy protokolů a protokoly Azure Application Gateway."
+title: "Řešení Azure sítě analýzy v Log Analytics | Microsoft Docs"
+description: "Řešení Azure Analytics sítě můžete použít v analýzy protokolů ke kontrole protokolech skupiny zabezpečení sítě Azure a Azure Application Gateway."
 services: log-analytics
 documentationcenter: 
 author: richrundmsft
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: richrund
-ms.openlocfilehash: 3674189786bacccc82e6708e78f14c92178e6676
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 06b67322b3812a668a515ecc357171ede1d85441
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Monitorování řešení v analýzy protokolů Azure sítě
 
-Analýzy protokolů nabízí hello následující řešení pro monitorování vaší sítí:
+Analýzy protokolů nabízí následující řešení pro monitorování vaší sítí:
 * Sledování výkonu sítě (NPM) na
- * Sledování stavu hello vaší sítě
-* Tooreview analytics Azure Application Gateway
+ * Monitorování stavu sítě
+* Azure Application Gateway analytics ke kontrole
  * Protokoly služby Azure Application Gateway
  * Metriky Azure Application Gateway
-* Skupina zabezpečení sítě Azure analytics tooreview
+* Skupina zabezpečení sítě Azure analytics ke kontrole
  * Protokoly skupinu zabezpečení sítě Azure
 
 ## <a name="network-performance-monitor-npm"></a>Sledování výkonu sítě (NPM)
 
-Hello [sledování výkonu sítě](log-analytics-network-performance-monitor.md) řešení správy je monitorování řešení, která sleduje stav hello, dostupnosti a dostupnosti sítě sítě.  Jedná se o použitých toomonitor připojení mezi:
+[Sledování výkonu sítě](log-analytics-network-performance-monitor.md) řešení správy je monitorování řešení, která sleduje stav, dostupnosti a dostupnosti sítě sítě.  Se používá k monitorování připojení mezi:
 
 * veřejný cloud a místní
 * datových center a umístění uživatele (firemních pobočkách)
@@ -42,23 +42,23 @@ Hello [sledování výkonu sítě](log-analytics-network-performance-monitor.md)
 Další informace najdete v tématu [sledování výkonu sítě](log-analytics-network-performance-monitor.md).
 
 ## <a name="azure-application-gateway-and-network-security-group-analytics"></a>Analýza Azure Application Gateway a skupinu zabezpečení sítě
-toouse hello řešení:
-1. Přidat hello správu řešení tooLog analýzy, a
-2. Povolte diagnostiku toodirect hello diagnostiky tooa pracovní prostor analýzy protokolů. Není nutné toowrite hello protokoly tooAzure Blob storage.
+Použití řešení:
+1. Přidat do řešení pro správu k analýze protokolů a
+2. Povolte diagnostiku pro přesměrování diagnostiku do pracovního prostoru analýzy protokolů. Není nutné zapsat protokoly do úložiště objektů Blob v Azure.
 
-Diagnostika a řešení odpovídající hello můžete povolit pro jednoho nebo obou aplikační brány a skupiny zabezpečení sítě.
+Diagnostika a odpovídající řešení můžete povolit pro jednoho nebo obou aplikační brány a skupiny zabezpečení sítě.
 
-Pokud jste nepovolujte protokolování diagnostiky pro konkrétní typ prostředku, ale instalaci hello řešení, hello řídicí panel oken pro tento prostředek jsou prázdné a zobrazí se chybová zpráva.
+Pokud nepovolujte protokolování diagnostiky pro konkrétní typ prostředku, ale instalace řešení, jsou prázdné okna řídicí panel pro tento prostředek a zobrazí se chybová zpráva.
 
 > [!NOTE]
-> V ledna 2017 podporované hello způsob odesílání protokolů z tooLog aplikačních bran a skupiny zabezpečení sítě, analýza změnit. Pokud se zobrazí hello **Azure sítě Analytics (nepoužívané)** řešení, najdete příliš[migrace z řešení sítě analýzy staré hello](#migrating-from-the-old-networking-analytics-solution) kroky musíte toofollow.
+> V lednu 2017 podporované způsob odesílání protokolů z brány aplikace a skupiny zabezpečení sítě k analýze protokolů změnit. Pokud se zobrazí **Azure sítě Analytics (nepoužívané)** řešení, najdete [migrace z původního řešení sítě analýzy](#migrating-from-the-old-networking-analytics-solution) kroky je nutné postupovat.
 >
 >
 
 ## <a name="review-azure-networking-data-collection-details"></a>Zkontrolujte podrobnosti kolekce dat sítě Azure
-Hello Azure Application Gateway analýzy a řešení pro správu hello skupinu zabezpečení sítě analytics shromažďování protokolů diagnostiky přímo z Azure Application Gateway a skupiny zabezpečení sítě. Není nutné toowrite hello protokoly tooAzure úložiště objektů Blob a žádný agent je vyžadována pro shromažďování dat.
+Analýza Azure Application Gateway a řešením pro správu analytics skupinu zabezpečení sítě shromažďování protokolů diagnostiky přímo z Azure Application Gateway a skupiny zabezpečení sítě. Není nutné zapsat protokoly do úložiště objektů Blob v Azure a žádný agent je vyžadována pro shromažďování dat.
 
-Hello následující tabulka uvádí metody shromažďování dat a další podrobnosti o tom, jak se data shromažďují pro Azure Application Gateway analýzy a analýzy hello skupinu zabezpečení sítě.
+Následující tabulka uvádí metody shromažďování dat a další podrobnosti o tom, jak se data shromažďují pro Azure Application Gateway analýzy a analýzy skupinu zabezpečení sítě.
 
 | Platforma | Přímé agenta | Agent systémy Center Operations Manager | Azure | Nástroj Operations Manager vyžaduje? | Dat agenta nástroje Operations Manager odeslána prostřednictvím skupiny pro správu | Četnost shromažďování dat |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -69,40 +69,40 @@ Hello následující tabulka uvádí metody shromažďování dat a další podr
 
 ![Azure Application Gateway Analytics symbol](./media/log-analytics-azure-networking/azure-analytics-symbol.png)
 
-Hello následující protokoly jsou podporovány pro Application Gateway:
+Tyto protokoly jsou podporovány pro Application Gateway:
 
 * ApplicationGatewayAccessLog
 * ApplicationGatewayPerformanceLog
 * ApplicationGatewayFirewallLog
 
-pro Application Gateway se podporují Hello následující metriky:
+Pro Application Gateway se podporují následující metriky:
 
 * propustnost 5 minut
 
-### <a name="install-and-configure-hello-solution"></a>Instalace a konfigurace řešení hello
-Použijte následující pokyny tooinstall hello a řešení analytics Azure Application Gateway hello nakonfigurovat:
+### <a name="install-and-configure-the-solution"></a>Instalace a konfigurace řešení
+Použijte následující pokyny k instalaci a konfiguraci řešení analýzy Azure Application Gateway:
 
-1. Povolit řešení analýzy Azure Application Gateway hello z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) nebo pomocí hello procesu popsaného v tématu [řešení přidat analýzy protokolů z hello řešení Galerie](log-analytics-add-solutions.md).
-2. Zapnutí protokolování diagnostiky hello [Application Gateway](../application-gateway/application-gateway-diagnostics.md) chcete toomonitor.
+1. Povolit řešení Azure Application Gateway analýzy z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) nebo pomocí procesu popsaného v tématu [řešení přidat analýzy protokolů z Galerie řešení](log-analytics-add-solutions.md).
+2. Povolte protokolování pro diagnostiku [Application Gateway](../application-gateway/application-gateway-diagnostics.md) chcete monitorovat.
 
-#### <a name="enable-azure-application-gateway-diagnostics-in-hello-portal"></a>Povolte diagnostiku Azure Application Gateway hello portálu
+#### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>Povolte diagnostiku Azure Application Gateway na portálu
 
-1. V hello portálu Azure přejděte toomonitor prostředků toohello Application Gateway
-2. Vyberte *protokolů diagnostiky* tooopen hello následující stránky
+1. Na portálu Azure přejděte k prostředku aplikační brány k monitorování
+2. Vyberte *protokolů diagnostiky* otevřete na následující stránce
 
    ![bitové kopie prostředku Azure Application Gateway](./media/log-analytics-azure-networking/log-analytics-appgateway-enable-diagnostics01.png)
-3. Klikněte na tlačítko *zapněte diagnostiku* tooopen hello následující stránky
+3. Klikněte na tlačítko *zapněte diagnostiku* otevřete na následující stránce
 
    ![bitové kopie prostředku Azure Application Gateway](./media/log-analytics-azure-networking/log-analytics-appgateway-enable-diagnostics02.png)
-4. Klikněte na tlačítko tooturn na Diagnostika, *na* pod *stav*
-5. Klikněte na políčko hello *odeslat tooLog Analytics*
+4. Chcete-li zapněte diagnostiku, klikněte na tlačítko *na* pod *stav*
+5. Klikněte na zaškrtávací políčko pro *poslat analýzy protokolů*
 6. Vyberte existující pracovní prostor analýzy protokolů, nebo vytvořit pracovní prostor
-7. Klikněte na zaškrtávací políčko hello pod **protokolu** pro každou toocollect typy protokolu hello
-8. Klikněte na tlačítko *Uložit* tooenable hello protokolování diagnostiky tooLog Analytics
+7. Klikněte na zaškrtávací políčko v části **protokolu** pro každý typ protokolu ke shromažďování
+8. Klikněte na tlačítko *Uložit* povolení protokolování diagnostiky k analýze protokolů
 
 #### <a name="enable-azure-network-diagnostics-using-powershell"></a>Povolte diagnostiku sítě Azure pomocí prostředí PowerShell
 
-Hello následující skript prostředí PowerShell představuje příklad, jak tooenable diagnostické protokolování pro application Gateway.
+Následující skript prostředí PowerShell poskytuje příklad toho, jak povolit protokolování pro application Gateway diagnostiky.
 
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -115,7 +115,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $work
 ### <a name="use-azure-application-gateway-analytics"></a>Použití Azure Application Gateway analytics
 ![Obrázek analytics dlaždici Azure Application Gateway](./media/log-analytics-azure-networking/log-analytics-appgateway-tile.png)
 
-Po kliknutí na tlačítko hello **Azure Application Gateway analytics** dlaždici na hello přehled, můžete zobrazení souhrnných informací o protokoly a potom přejít k podrobnostem toodetails pro hello následujících kategorií:
+Po kliknutí **Azure Application Gateway analytics** dlaždici v přehledu, můžete zobrazit souhrny souborů protokolu a přejít k podrobnostem podrobnostech v těchto kategoriích:
 
 * Přístup k aplikaci brány protokolů
   * Chyby klienta a serveru pro službu Application Gateway přístup k protokolům
@@ -130,44 +130,44 @@ Po kliknutí na tlačítko hello **Azure Application Gateway analytics** dlaždi
 
 ![Obrázek panelu analýzy Azure Application Gateway](./media/log-analytics-azure-networking/log-analytics-appgateway02.png)
 
-Na hello **Azure Application Gateway analytics** řídicí panel, zkontrolujte souhrnné informace hello v jednom z okna hello a pak klikněte na jednu tooview podrobné informace na stránce vyhledávání protokolu hello.
+Na **analytics Azure Application Gateway** řídicí panel, zkontrolujte souhrnné informace v jednom z okna a pak klikněte na jednu Chcete-li zobrazit podrobné informace na stránce vyhledávání protokolu.
 
-Na žádném z hello protokolu hledání stránky můžete zobrazit výsledky čas, podrobné výsledky a historii hledání protokolu. Můžete také filtrovat podle výsledků hello toonarrow omezující vlastnosti.
+Na všech stránkách vyhledávání protokolu můžete zobrazit výsledky čas, podrobné výsledky a historii hledání protokolu. Můžete také filtrovat podle omezující vlastnosti výsledky upřesněte.
 
 
 ## <a name="azure-network-security-group-analytics-solution-in-log-analytics"></a>Skupina zabezpečení sítě Azure analytics řešení v analýzy protokolů
 
 ![Skupina zabezpečení sítě Azure Analytics symbol](./media/log-analytics-azure-networking/azure-analytics-symbol.png)
 
-pro skupiny zabezpečení sítě jsou podporovány následující protokoly Hello:
+Tyto protokoly jsou podporovány pro skupiny zabezpečení sítě:
 
 * NetworkSecurityGroupEvent
 * NetworkSecurityGroupRuleCounter
 
-### <a name="install-and-configure-hello-solution"></a>Instalace a konfigurace řešení hello
-Použijte následující pokyny tooinstall hello a nakonfigurujte řešení hello analýzy sítě Azure:
+### <a name="install-and-configure-the-solution"></a>Instalace a konfigurace řešení
+Použijte následující pokyny k instalaci a konfiguraci řešení analýzy sítě Azure:
 
-1. Povolit řešení analýzy hello skupinu zabezpečení sítě Azure z [Azure marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) nebo pomocí hello procesu popsaného v tématu [řešení přidat analýzy protokolů z hello řešení Galerie](log-analytics-add-solutions.md).
-2. Zapnutí protokolování diagnostiky hello [skupinu zabezpečení sítě](../virtual-network/virtual-network-nsg-manage-log.md) zdroje, které má toomonitor.
+1. Povolit řešení analýzy skupinu zabezpečení sítě Azure z [Azure marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) nebo pomocí procesu popsaného v tématu [řešení přidat analýzy protokolů z Galerie řešení](log-analytics-add-solutions.md).
+2. Povolte protokolování pro diagnostiku [skupinu zabezpečení sítě](../virtual-network/virtual-network-nsg-manage-log.md) prostředky, které chcete monitorovat.
 
-### <a name="enable-azure-network-security-group-diagnostics-in-hello-portal"></a>Povolte diagnostiku skupiny zabezpečení sítě Azure hello portálu
+### <a name="enable-azure-network-security-group-diagnostics-in-the-portal"></a>Povolte diagnostiku skupiny zabezpečení sítě Azure na portálu
 
-1. V hello portálu Azure přejděte toomonitor prostředků toohello skupinu zabezpečení sítě
-2. Vyberte *protokolů diagnostiky* tooopen hello následující stránky
+1. Na portálu Azure přejděte k prostředku skupinu zabezpečení sítě k monitorování
+2. Vyberte *protokolů diagnostiky* otevřete na následující stránce
 
    ![bitové kopie prostředku skupinu zabezpečení sítě Azure](./media/log-analytics-azure-networking/log-analytics-nsg-enable-diagnostics01.png)
-3. Klikněte na tlačítko *zapněte diagnostiku* tooopen hello následující stránky
+3. Klikněte na tlačítko *zapněte diagnostiku* otevřete na následující stránce
 
    ![bitové kopie prostředku skupinu zabezpečení sítě Azure](./media/log-analytics-azure-networking/log-analytics-nsg-enable-diagnostics02.png)
-4. Klikněte na tlačítko tooturn na Diagnostika, *na* pod *stav*
-5. Klikněte na políčko hello *odeslat tooLog Analytics*
+4. Chcete-li zapněte diagnostiku, klikněte na tlačítko *na* pod *stav*
+5. Klikněte na zaškrtávací políčko pro *poslat analýzy protokolů*
 6. Vyberte existující pracovní prostor analýzy protokolů, nebo vytvořit pracovní prostor
-7. Klikněte na zaškrtávací políčko hello pod **protokolu** pro každou toocollect typy protokolu hello
-8. Klikněte na tlačítko *Uložit* tooenable hello protokolování diagnostiky tooLog Analytics
+7. Klikněte na zaškrtávací políčko v části **protokolu** pro každý typ protokolu ke shromažďování
+8. Klikněte na tlačítko *Uložit* povolení protokolování diagnostiky k analýze protokolů
 
 ### <a name="enable-azure-network-diagnostics-using-powershell"></a>Povolte diagnostiku sítě Azure pomocí prostředí PowerShell
 
-Hello následující skript prostředí PowerShell představuje příklad, jak tooenable diagnostické protokolování pro skupiny zabezpečení sítě
+Následující skript prostředí PowerShell představuje příklad, jak povolit protokolování pro skupiny zabezpečení sítě diagnostiky
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
@@ -177,7 +177,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspac
 ```
 
 ### <a name="use-azure-network-security-group-analytics"></a>Použijte skupinu zabezpečení sítě Azure analytics
-Po kliknutí na tlačítko hello **skupinu zabezpečení sítě Azure analytics** dlaždici na hello přehled, můžete zobrazení souhrnných informací o protokoly a potom přejít k podrobnostem toodetails pro hello následujících kategorií:
+Po kliknutí **skupinu zabezpečení sítě Azure analytics** dlaždici v přehledu, můžete zobrazit souhrny souborů protokolu a přejít k podrobnostem podrobnostech v těchto kategoriích:
 
 * Skupina zabezpečení sítě blokované toky
   * Pravidla skupiny zabezpečení sítě s blokované toky
@@ -190,24 +190,24 @@ Po kliknutí na tlačítko hello **skupinu zabezpečení sítě Azure analytics*
 
 ![Obrázek panelu analýzy skupinu zabezpečení sítě Azure](./media/log-analytics-azure-networking/log-analytics-nsg02.png)
 
-Na hello **skupinu zabezpečení sítě Azure analytics** řídicí panel, zkontrolujte souhrnné informace hello v jednom z okna hello a pak klikněte na jednu tooview podrobné informace na stránce vyhledávání protokolu hello.
+Na **skupinu zabezpečení sítě Azure analytics** řídicí panel, zkontrolujte souhrnné informace v jednom z okna a pak klikněte na jednu Chcete-li zobrazit podrobné informace na stránce vyhledávání protokolu.
 
-Na žádném z hello protokolu hledání stránky můžete zobrazit výsledky čas, podrobné výsledky a historii hledání protokolu. Můžete také filtrovat podle výsledků hello toonarrow omezující vlastnosti.
+Na všech stránkách vyhledávání protokolu můžete zobrazit výsledky čas, podrobné výsledky a historii hledání protokolu. Můžete také filtrovat podle omezující vlastnosti výsledky upřesněte.
 
-## <a name="migrating-from-hello-old-networking-analytics-solution"></a>Migrace z řešení sítě analýzy staré hello
-V ledna 2017 podporované hello způsob odesílání protokolů z Azure Application Gateway a skupiny zabezpečení sítě Azure tooLog Analytics se změnila. Tyto změny poskytují hello následující výhody:
-+ Protokoly zapisují přímo tooLog Analytics bez hello potřebovat toouse účet úložiště
-+ Menší latenci hello čase, kdy protokoly generované toothem, který je k dispozici v analýzy protokolů
+## <a name="migrating-from-the-old-networking-analytics-solution"></a>Migrace z původního řešení sítě analýzy
+V ledna 2017 podporované způsob odesílání protokolů z Azure Application Gateway a skupiny zabezpečení sítě Azure k Log Analytics změnil. Tyto změny poskytovat následující výhody:
++ Protokoly zapisují přímo k Log Analytics, aniž by bylo nutné použít účet úložiště
++ Menší latenci od času po vygenerování protokoly jim je k dispozici v analýzy protokolů
 + Méně kroků konfigurace
 + Běžný formát pro všechny typy Azure diagnostics
 
-toouse hello aktualizovat řešení:
+Použití aktualizované řešení:
 
-1. [Konfigurace diagnostiky toobe odeslaných tooLog Analytics přímo z Azure Application Gateway](#enable-azure-application-gateway-diagnostics-in-the-portal)
-2. [Konfigurace diagnostiky toobe odeslaný přímo tooLog Analytics skupin zabezpečení sítě Azure](#enable-azure-network-security-group-diagnostics-in-the-portal)
-2. Povolit hello *Azure Application Gateway Analytics* a hello *Analytics skupiny zabezpečení sítě Azure* řešení pomocí procesu hello popsané v [řešení přidat analýzy protokolů z Hello Galerie řešení](log-analytics-add-solutions.md)
-3. Aktualizovat žádné uložené dotazy, řídicí panely nebo výstrahy toouse hello nový datový typ.
-  + Typ je tooAzureDiagnostics. Můžete použít hello ResourceType toofilter tooAzure síťových protokolů.
+1. [Konfiguraci diagnostiky k odeslání přímo k Log Analytics z Azure Application Gateway](#enable-azure-application-gateway-diagnostics-in-the-portal)
+2. [Konfiguraci diagnostiky k odeslání přímo k Log Analytics ze skupin zabezpečení sítě Azure](#enable-azure-network-security-group-diagnostics-in-the-portal)
+2. Povolit *Azure Application Gateway Analytics* a *Analytics skupiny zabezpečení sítě Azure* řešení pomocí procesu popsaného v tématu [řešení přidat analýzy protokolů z Galerie řešení](log-analytics-add-solutions.md)
+3. Aktualizovat žádné uložené dotazy, řídicí panely nebo výstrahy používat nový datový typ.
+  + Typ je AzureDiagnostics. Příkaz ResourceType můžete filtrovat, aby Azure síťových protokolů.
 
     | Namísto: | Použití: |
     | --- | --- |
@@ -215,15 +215,15 @@ toouse hello aktualizovat řešení:
     |`Type=NetworkApplicationgateways OperationName=ApplicationGatewayPerformance` | `Type=AzureDiagnostics ResourceType=APPLICATIONGATEWAYS OperationName=ApplicationGatewayPerformance` |
     | `Type=NetworkSecuritygroups` | `Type=AzureDiagnostics ResourceType=NETWORKSECURITYGROUPS` |
 
-   + Pro každé pole, které má příponu \_s, \_d, nebo \_g v hello názvu, změna hello první znak toolower případu
-   + Pro každé pole, které má příponu \_o název, hello dat je rozdělená do jednotlivých polí podle hello vnořené názvy polí.
-4. Odebrat hello *Analytics sítě Azure (nepoužívané)* řešení.
-  + Pokud používáte prostředí PowerShell, použijte`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that hello workspace is in> -WorkspaceName <name of hello log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
+   + Pro každé pole, které má příponu \_s, \_d, nebo \_g v názvu, změna po prvním znaku na malá písmena
+   + Pro každé pole, které má příponu \_o název, data je rozdělená do jednotlivých polí na základě názvů vnořená pole.
+4. Odeberte *Analytics sítě Azure (nepoužívané)* řešení.
+  + Pokud používáte prostředí PowerShell, použijte`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
 
-Data jsou shromažďována před hello změn není zobrazená v nové řešení hello. Můžete dál tooquery pro tato data pomocí hello starého typu a názvy polí.
+Data jsou shromažďována předtím, než tato změna není zobrazená v nové řešení. Můžete pokračovat se dotázat na tato data pomocí starého typu a názvy polí.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>Další kroky
-* Použití [přihlásit analýzy protokolů hledání](log-analytics-log-searches.md) tooview podrobné Azure diagnostická data.
+* Použití [přihlásit analýzy protokolů hledání](log-analytics-log-searches.md) zobrazíte podrobné Azure diagnostická data.

@@ -1,6 +1,6 @@
 ---
-title: "Připojit virtuální síťové weby toomultiple pomocí brány sítě VPN a prostředí PowerShell: Classic | Microsoft Docs"
-description: "Tento článek vás provede připojením více místní lokality tooa virtuální sítě pomocí brány VPN pro model nasazení classic hello."
+title: "Připojit virtuální síť k více lokalitám pomocí brány sítě VPN a prostředí PowerShell: Classic | Microsoft Docs"
+description: "Tento článek vás provede s více lokalit místní připojení k virtuální síti pomocí brány sítě VPN pro model nasazení classic."
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/20/2017
 ms.author: yushwang
-ms.openlocfilehash: 5404b1c55ed3453b4dbc94dfd93e47c0812025f4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: bb3129f70f5eeed99d5889226aa6727f675b6217
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="add-a-site-to-site-connection-tooa-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Přidat tooa připojení Site-to-Site virtuální sítě se existující připojení brány sítě VPN (klasické)
+# <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Přidat připojení Site-to-Site k virtuální síti s existující připojení brány sítě VPN (klasické)
 
 [!INCLUDE [deployment models](../../includes/vpn-gateway-classic-deployment-model-include.md)]
 
@@ -31,61 +31,61 @@ ms.lasthandoff: 10/06/2017
 >
 >
 
-Tento článek vás provede pomocí prostředí PowerShell tooadd Site-to-Site (S2S) připojení tooa VPN bránu, která má existující připojení. Tento typ připojení je často označují tooas "s více servery" konfigurace. Hello kroky v tomto článku použít toovirtual sítě vytvořené pomocí modelu nasazení classic hello (také označované jako Service Management). Tyto kroky se nevztahují konfigurace koexistujících připojení tooExpressRoute/Site-to-Site.
+Tento článek vás provede pomocí prostředí PowerShell pro přidání připojení Site-to-Site (S2S) do brány VPN, který má existující připojení. Tento typ připojení se často označuje jako "s více servery" konfigurace. Postup v tomto článku se vztahuje na virtuální sítě vytvořené pomocí modelu nasazení classic (označovaný taky jako Service Management). Tyto kroky se nevztahují na konfigurace koexistujících připojení ExpressRoute nebo Site-to-Site.
 
 ### <a name="deployment-models-and-methods"></a>Modely a metody nasazení
 
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-Tuto tabulku aktualizujeme jako nové články a další nástroje je k dispozici pro tuto konfiguraci. Když je článek k dispozici, jsme odkaz přímo tooit z této tabulky.
+Tuto tabulku aktualizujeme jako nové články a další nástroje je k dispozici pro tuto konfiguraci. Když je článek k dispozici, jsme přímý odkaz na něj z této tabulky.
 
 [!INCLUDE [vpn-gateway-table-multi-site](../../includes/vpn-gateway-table-multisite-include.md)]
 
 ## <a name="about-connecting"></a>O připojení
 
-Více místními lokalitami tooa jedné virtuální sítě se můžete připojit. To je zvláště atraktivní pro vytváření hybridní cloudové řešení. Vytvoření brány virtuální sítě Azure tooyour připojení typu Multi-Site je podobné toocreating jiná připojení Site-to-Site. Ve skutečnosti můžete použít existující bránu Azure VPN, tak dlouho, dokud hello brány je dynamický (trasové).
+Více místními servery můžete připojit k jedné virtuální sítě. To je zvláště atraktivní pro vytváření hybridní cloudové řešení. Vytvoření připojení více lokalit pro bránu virtuální sítě Azure je podobná vytváření jiná připojení Site-to-Site. Ve skutečnosti můžete použít existující bránu Azure VPN, tak dlouho, dokud brány je dynamický (trasové).
 
-Pokud již máte statická Brána virtuální sítě připojený tooyour, můžete změnit toodynamic typ brány hello bez nutnosti toorebuild hello virtuální sítě v pořadí tooaccommodate více lokalit. Před změnou typu hello směrování, ujistěte se, že vaše místní brána podporuje konfigurace sítě VPN založené na trasách.
+Pokud již máte statické brány připojené k virtuální síti, můžete změnit typ brány na dynamické, aniž by museli znovu sestavte virtuální sítě, aby mohla pojmout více lokalit. Před změnou typ směrování, ujistěte se, že vaše místní brána podporuje konfigurace sítě VPN založené na trasách.
 
 ![diagram Multi-Site](./media/vpn-gateway-multi-site/multisite.png "Multi-Site")
 
-## <a name="points-tooconsider"></a>Body tooconsider
+## <a name="points-to-consider"></a>Body, které je třeba zvážit
 
-**Nebudete moct toouse hello portálu toomake změny toothis virtuální sítě.** Budete potřebovat soubor konfigurace toomake změny toohello sítě místo pomocí portálu hello. Pokud provedete změny v portálu hello, že budete přepsat nastavení odkaz na více lokalit pro tuto virtuální síť.
+**Nebudete moci provádět změny do této virtuální sítě pomocí portálu.** Budete muset provést změny konfiguračního souboru sítě místo pomocí portálu. Pokud provedete změny v portálu, že budete přepsat nastavení odkaz na více lokalit pro tuto virtuální síť.
 
-Musí mít možnost hello sítě konfiguračního souboru pomocí hello čas jste dokončili postup hello více lokalit. Pokud máte více lidí pracujících na konfiguraci sítě, ale budete potřebovat toomake, že všichni ví o toto omezení. To neznamená, nelze použít hello portál vůbec. Můžete ji všem ostatním, s výjimkou provedení konfigurace změny toothis konkrétní virtuální sítě.
+Má vaše znalosti pomocí konfiguračního souboru sítě podle času, po dokončení procesu více lokalit. Pokud máte více lidí pracujících na konfiguraci sítě, budete ale muset zajistěte, aby všichni ví o toto omezení. To neznamená, že nelze použít na portálu vůbec. Můžete ji všem ostatním, kromě provádění změn konfigurace do této konkrétní virtuální sítě.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Před zahájením konfigurace, ověřte, zda máte hello následující:
+Před zahájením konfigurace, ověřte, zda máte následující:
 
-* Kompatibilní hardware sítě VPN pro jednotlivé místní umístění. Zkontrolujte [o zařízeních VPN pro připojení k virtuální síti](vpn-gateway-about-vpn-devices.md) tooverify Pokud hello zařízení, které chcete toouse něco, který se označuje toobe kompatibilní.
-* Zvenčí veřejnou IPv4 adresu IP pro každé zařízení VPN. Hello IP adresa nesmí být umístěné za adres (NAT) Toto je požadavek.
-* Budete potřebovat tooinstall hello nejnovější verzi rutin prostředí Azure PowerShell hello. Ujistěte se, že instalujete hello služby správy (SM) verze v přidání toohello Resource Manager verzi. V tématu [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) Další informace.
-* Někoho, kdo je znalosti v konfiguraci hardwaru sítě VPN. Budete mít toohave silné pochopení toho, jak tooconfigure zařízení VPN nebo práci s uživatelem, který nemá.
-* Hello rozsahy IP adres má toouse pro vaši virtuální síť (Pokud jste již žádný nevytvořili).
-* pro každou hello místních síťových webů, které budete připojovat k rozsahy Hello IP adres. Budete potřebovat toomake jistotu, že rozsahy hello IP adres pro každou hello místních síťových webů, které chcete tooconnect toodo není překrývají. V opačném hello portálu nebo hello REST API odmítnou hello Konfigurace odesílání.<br>Například pokud máte dvě místní sítě, že oba obsahují hello IP adresa rozsahu 10.2.3.0/24 a balíčků s cílovou adresou 10.2.3.3, Azure nebude vědět, který server chcete toosend hello balíček toobecause hello rozsahy adres jsou překrývající se. tooprevent směrování problémy, Azure vám neumožňuje tooupload konfiguračního souboru, který má překrývající se rozsahy.
+* Kompatibilní hardware sítě VPN pro jednotlivé místní umístění. Zkontrolujte [o zařízeních VPN pro připojení k virtuální síti](vpn-gateway-about-vpn-devices.md) Chcete-li ověřit, zda je zařízení, které chcete použít něco, co se označuje jako kompatibilní.
+* Zvenčí veřejnou IPv4 adresu IP pro každé zařízení VPN. IP adresa nesmí být umístěné za adres (NAT) Toto je požadavek.
+* Budete potřebovat nainstalovat nejnovější verzi rutin Azure PowerShellu. Ujistěte se, že instalujete službu správy (SM) verze kromě verze Resource Manager. V tématu [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) Další informace.
+* Někoho, kdo je znalosti v konfiguraci hardwaru sítě VPN. Budete muset silné znalosti o tom, jak nakonfigurovat zařízení VPN nebo pracovat s uživatelem, který nemá.
+* Rozsahy IP adres, které chcete použít pro virtuální síť (Pokud jste již žádný nevytvořili).
+* Rozsahy IP adres pro každou z místní sítě, které budete připojovat k. Budete potřebovat, abyste měli jistotu, že rozsahy IP adres pro každou z místní sítě, které se chcete připojit k nepřekrývají. Konfigurace odesílání bude odmítnout, jinak hodnota portálu nebo REST API.<br>Například pokud máte dvě místní sítě, že oba obsahují 10.2.3.0/24 rozsah adres IP a balíčků s cílovou adresou 10.2.3.3, Azure nebude vědět lokality, která chcete odeslat balíček, protože jsou překrývající se rozsahy adres. Aby se zabránilo problémům směrování, Azure vám neumožňuje nahrát konfiguračního souboru, který má překrývající se rozsahy.
 
 ## <a name="1-create-a-site-to-site-vpn"></a>1. Vytvoření S2S (Site-to-site) VPN
-Pokud už máte sítě Site-to-Site VPN s brány dynamického směrování, skvěle! Abyste mohli pokračovat příliš[exportovat nastavení konfigurace virtuální sítě hello](#export). Pokud ne, hello následující:
+Pokud už máte sítě Site-to-Site VPN s brány dynamického směrování, skvěle! Můžete přejít k [exportovat nastavení konfigurace virtuální sítě](#export). Pokud ne, postupujte takto:
 
 ### <a name="if-you-already-have-a-site-to-site-virtual-network-but-it-has-a-static-policy-based-routing-gateway"></a>Pokud již máte virtuální síť Site-to-Site, ale má statické směrování brány (zásadové):
-1. Změňte vaší brány typ toodynamic směrování. Síť VPN více lokalit vyžaduje (také označované jako založené na směrování) brány dynamického směrování. Zadejte toochange bránu, budete potřebovat toofirst odstranění hello existující bránu a pak vytvořte novou. Pokyny najdete v tématu [jak toochange hello směrování typ sítě VPN pro bránu](vpn-gateway-configure-vpn-gateway-mp.md).  
-2. Konfigurace nové brány a vytvořte vaše tunelového připojení sítě VPN. Pokyny najdete v tématu [konfigurovat bránu VPN v hello portálu Azure Classic](vpn-gateway-configure-vpn-gateway-mp.md). Nejprve změňte vaší brány typ toodynamic směrování.
+1. Změňte typ vaší brány na dynamické směrování. Síť VPN více lokalit vyžaduje (také označované jako založené na směrování) brány dynamického směrování. Chcete-li změnit váš typ brány, musíte nejprve odstraňte existující bránu, a poté vytvořit novou. Pokyny najdete v tématu [jak změnit typ směrování sítě VPN pro bránu](vpn-gateway-configure-vpn-gateway-mp.md).  
+2. Konfigurace nové brány a vytvořte vaše tunelového připojení sítě VPN. Pokyny najdete v tématu [konfigurovat bránu VPN na portálu Azure Classic](vpn-gateway-configure-vpn-gateway-mp.md). Nejprve změňte typ vaší brány na dynamické směrování.
 
 ### <a name="if-you-dont-have-a-site-to-site-virtual-network"></a>Pokud nemáte virtuální síť Site-to-Site:
-1. Vytvoření svojí virtuální sítě Site-to-Site pomocí těchto pokynů: [vytvoření virtuální sítě pomocí připojení Site-to-Site VPN v hello portálu Azure Classic](vpn-gateway-site-to-site-create.md).  
-2. Konfigurace brány dynamického směrování podle těchto pokynů: [konfigurovat bránu VPN](vpn-gateway-configure-vpn-gateway-mp.md). Být jisti tooselect **dynamické směrování** pro váš typ brány.
+1. Vytvoření svojí virtuální sítě Site-to-Site pomocí těchto pokynů: [vytvoření virtuální sítě pomocí připojení Site-to-Site VPN na portálu Azure Classic](vpn-gateway-site-to-site-create.md).  
+2. Konfigurace brány dynamického směrování podle těchto pokynů: [konfigurovat bránu VPN](vpn-gateway-configure-vpn-gateway-mp.md). Je nutné vybrat **dynamické směrování** pro váš typ brány.
 
-## <a name="export"></a>2. Konfigurační soubor exportu hello sítě
-Exportujte konfiguračního souboru sítě Azure tak, že spustíte následující příkaz hello. Hello umístění hello tooexport tooa jiné umístění souboru v případě potřeby můžete změnit.
+## <a name="export"></a>2. Exportovat konfigurační soubor sítě
+Spuštěním následujícího příkazu exportujte konfiguračního souboru sítě Azure. Můžete změnit umístění souboru pro export do jiného umístění v případě potřeby.
 
 ```powershell
 Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ```
 
-## <a name="3-open-hello-network-configuration-file"></a>3. Otevřete hello sítě konfiguračního souboru
-Otevřete hello sítě konfigurační soubor, který jste stáhli v posledním kroku hello. Pomocí editoru xml, který chcete. Hello soubor by měl vypadat podobně jako toohello následující:
+## <a name="3-open-the-network-configuration-file"></a>3. Otevření konfiguračního souboru sítě
+Otevření konfiguračního souboru sítě, který jste stáhli v předchozím kroku. Pomocí editoru xml, který chcete. Soubor by měl vypadat podobně jako následující:
 
         <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
           <VirtualNetworkConfiguration>
@@ -135,7 +135,7 @@ Otevřete hello sítě konfigurační soubor, který jste stáhli v posledním k
         </NetworkConfiguration>
 
 ## <a name="4-add-multiple-site-references"></a>4. Přidání více odkazů na web
-Když přidáváte nebo odebíráte lokality referenční informace, budete provedete změny konfigurace toohello ConnectionsToLocalNetwork/LocalNetworkSiteRef. Přidání odkazu na novou místní lokality aktivuje Azure toocreate nové tunelové propojení. V příkladu hello níže hello síťové konfigurace je pro připojení k jedné lokalitě. Jakmile dokončíte provádění změny, uložte soubor hello.
+Když přidáváte nebo odebíráte lokality referenční informace, budete provedete změny konfigurace ConnectionsToLocalNetwork/LocalNetworkSiteRef. Přidání nové vyvolá odkaz místního webu Azure k vytvoření nové tunelové propojení. V následujícím příkladu je konfigurace sítě pro připojení k jedné lokalitě. Jakmile dokončíte provádění změny, uložte soubor.
 
 ```
   <Gateway>
@@ -145,7 +145,7 @@ Když přidáváte nebo odebíráte lokality referenční informace, budete prov
   </Gateway>
 ```
 
-odkazy na další lokality tooadd (vytvořit konfiguraci s více servery), jednoduše přidejte další "LocalNetworkSiteRef" řádky, jak je znázorněno v následujícím příkladu hello:
+Chcete-li přidat odkazy na další lokality (vytvořit konfiguraci s více servery), jednoduše přidat další řádky "LocalNetworkSiteRef", jak je znázorněno v následujícím příkladu:
 
 ```
   <Gateway>
@@ -156,11 +156,11 @@ odkazy na další lokality tooadd (vytvořit konfiguraci s více servery), jedno
   </Gateway>
 ```
 
-## <a name="5-import-hello-network-configuration-file"></a>5. Soubor importu hello síťové konfigurace
-Import hello sítě konfigurační soubor. Při importování tohoto souboru se změnami hello, se přidají nové tunely hello. Hello tunely použije hello dynamickou bránu, kterou jste vytvořili dříve. Můžete použít buď portálu classic hello nebo soubor hello tooimport prostředí PowerShell.
+## <a name="5-import-the-network-configuration-file"></a>5. Import konfiguračního souboru sítě
+Importujte konfiguračního souboru sítě. Při importování tohoto souboru se změnami, bude přidána do nové tunelových propojení. Tunely použije dynamickou bránu, kterou jste vytvořili dříve. Můžete použít buď portálu classic nebo prostředí PowerShell pro import souboru.
 
 ## <a name="6-download-keys"></a>6. Stáhněte si klíče
-Po přidání vaší nové tunely, použijte hello prostředí PowerShell rutinu 'Get-AzureVNetGatewayKey' tooget hello protokolu IPsec/IKE předsdílených klíčů pro každé tunelové propojení.
+Po přidání vaší nové tunely, použijte rutinu prostředí PowerShell 'Get-AzureVNetGatewayKey' získat předsdílené klíče protokolu IPsec/IKE pro každé tunelové propojení.
 
 Například:
 
@@ -169,10 +169,10 @@ Get-AzureVNetGatewayKey –VNetName "VNet1" –LocalNetworkSiteName "Site1"
 Get-AzureVNetGatewayKey –VNetName "VNet1" –LocalNetworkSiteName "Site2"
 ```
 
-Pokud dáváte přednost, můžete také použít hello *získat virtuální sítě sdílený klíč brány* REST API tooget hello předsdílených klíčů.
+Pokud dáváte přednost, můžete také použít *získat virtuální sítě sdílený klíč brány* REST API získat předsdílených klíčů.
 
 ## <a name="7-verify-your-connections"></a>7. Zkontrolujte svá připojení
-Zkontrolujte stav hello tunelového propojení více lokalit. Po stažení hello klíče pro každé tunelové propojení, budete muset tooverify připojení. Použijte 'Get-AzureVnetConnection' tooget tunelových propojení seznam virtuální sítě, jak je znázorněno v následujícím příkladu hello. VNet1 je název hello hello virtuální sítě.
+Zkontrolujte stav tunelového propojení více lokalit. Po stažení klíče pro každé tunelové propojení, budete chtít ověřit připojení. Použijte 'Get-AzureVnetConnection' k získání seznamu tunelových propojení virtuální sítě, jak je znázorněno v následujícím příkladu. VNet1 je název sítě vnet.
 
 ```powershell
 Get-AzureVnetConnection -VNetName VNET1
@@ -186,7 +186,7 @@ Příklad návratový:
     IngressBytesTransferred   : 519207
     LastConnectionEstablished : 5/2/2014 2:51:40 PM
     LastEventID               : 23401
-    LastEventMessage          : hello connectivity state for hello local network site 'Site1' changed from Not Connected tooConnected.
+    LastEventMessage          : The connectivity state for the local network site 'Site1' changed from Not Connected to Connected.
     LastEventTimeStamp        : 5/2/2014 2:51:40 PM
     LocalNetworkSiteName      : Site1
     OperationDescription      : Get-AzureVNetConnection
@@ -198,7 +198,7 @@ Příklad návratový:
     IngressBytesTransferred   : 143908
     LastConnectionEstablished : 5/2/2014 3:20:40 PM
     LastEventID               : 23401
-    LastEventMessage          : hello connectivity state for hello local network site 'Site2' changed from Not Connected tooConnected.
+    LastEventMessage          : The connectivity state for the local network site 'Site2' changed from Not Connected to Connected.
     LastEventTimeStamp        : 5/2/2014 2:51:40 PM
     LocalNetworkSiteName      : Site2
     OperationDescription      : Get-AzureVNetConnection
@@ -208,4 +208,4 @@ Příklad návratový:
 
 ## <a name="next-steps"></a>Další kroky
 
-toolearn Další informace o branách VPN najdete v části [informace o branách VPN](vpn-gateway-about-vpngateways.md).
+Další informace o branách VPN najdete v tématu [informace o branách VPN](vpn-gateway-about-vpngateways.md).

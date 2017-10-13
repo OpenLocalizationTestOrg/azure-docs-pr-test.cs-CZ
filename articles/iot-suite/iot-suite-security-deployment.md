@@ -1,6 +1,6 @@
 ---
-title: "aaaSecure nasazením Internet věcí | Microsoft Docs"
-description: "Tento článek podrobnosti o tom, jak toosecure nasazení IoT"
+title: "Zabezpečit vaše nasazení Internet věcí | Microsoft Docs"
+description: "Tento článek podrobnosti o tom, jak zabezpečit vaše nasazení IoT"
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -15,65 +15,65 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: yurid
-ms.openlocfilehash: befba8f2009279c2217dcd3496d529139134ec01
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d752dd13b138cdae80dac5c0b2f84a19fe0aa670
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="secure-your-iot-deployment"></a>Zabezpečení nasazení IoT
-Tento článek obsahuje hello další úroveň podrobností pro zabezpečení infrastruktury založené na Azure IoT Internet věcí (IoT) hello. Odkazuje tooimplementation úroveň podrobností pro konfiguraci a nasazení jednotlivých součástí. Poskytuje taky porovnání a možnosti mezi různé konkurenční metody.
+Tento článek poskytuje další úroveň podrobností pro zabezpečení infrastruktury založené na Azure IoT Internet věcí (IoT). Odkazuje úrovně podrobnosti implementace pro konfiguraci a nasazení jednotlivých součástí. Poskytuje taky porovnání a možnosti mezi různé konkurenční metody.
 
-Zabezpečení nasazení Azure IoT hello je možné rozdělit do hello následující tři oblasti zabezpečení:
+Zabezpečení Azure IoT nasazení je možné rozdělit do těchto tří zabezpečení oblastí:
 
-* **Zabezpečení zařízení**: zabezpečení zařízení IoT hello při nasazení v divoký hello.
-* **Zabezpečení připojení**: zajištění všechna data přenášená mezi hello zařízení IoT a IoT Hub je důvěrný a manipulací.
-* **Zabezpečení cloudu**: poskytnutím prostředků toosecure dat prochází přes, a je uložen v cloudu hello.
+* **Zabezpečení zařízení**: při nasazení v zástupné zabezpečení zařízení IoT.
+* **Zabezpečení připojení**: zajištění všechna data přenášená mezi zařízení IoT a IoT Hub je důvěrný a manipulací.
+* **Zabezpečení cloudu**: poskytnutím prostředků k zabezpečení dat, zatímco prochází přes a je uložen v cloudu.
 
 ![Tři oblasti zabezpečení][img-overview]
 
 ## <a name="secure-device-provisioning-and-authentication"></a>Zabezpečené zřizování zařízení a ověřování
-Hello Azure IoT Suite zabezpečuje zařízení IoT pomocí hello následující dvě metody:
+Azure IoT Suite zabezpečuje zařízení IoT pomocí následujících dvou metod:
 
-* Tím, že pro každé zařízení, které mohou být využívána hello zařízení toocommunicate s hello IoT Hub poskytuje jedinečnou identitu klíč (tokeny zabezpečení).
-* Pomocí na zařízení [certifikát X.509] [ lnk-x509] a privátní klíče jako znamená tooauthenticate hello zařízení toohello IoT Hub. Tato metoda ověřování zajišťuje, že hello privátní klíč na zařízení hello nezná mimo hello zařízení kdykoli, poskytuje vyšší úroveň zabezpečení.
+* Tím, že pro každé zařízení, která umožňuje zařízením komunikovat s centrem IoT poskytuje jedinečnou identitu klíč (tokeny zabezpečení).
+* Pomocí na zařízení [certifikát X.509] [ lnk-x509] a privátní klíč jako prostředek k ověření zařízení do služby IoT Hub. Tato metoda ověřování zajišťuje, že privátní klíč v zařízení není znám mimo zařízení kdykoli, poskytuje vyšší úroveň zabezpečení.
 
-Metoda token zabezpečení Hello poskytuje ověření pro každé volání provedené hello zařízení tooIoT Centrum tím, že přidružíte hello symetrického klíče tooeach volání. Ověřování na základě X.509 umožňuje ověřování zařízení IoT ve fyzické vrstvě hello jako součást hello TLS připojení zařízení. Metoda na základě zabezpečení tokenu Hello můžete použít bez ověřování hello X.509, což je méně bezpečné vzor. Hello volba mezi hello dvě metody je primárně závisí podle míry budou zabezpečené hello ověřování zařízení potřebuje toobe a dostupnost zabezpečeného úložiště na zařízení hello (toostore hello privátní klíč bezpečně).
+V případě metody token zabezpečení poskytuje ověření pro každé volání zařízení do služby IoT Hub tím, že přidružíte symetrický klíč pro každé volání. Ověřování na základě X.509 umožňuje ověřování zařízení IoT ve fyzické vrstvě jako součást navázání připojení protokol TLS. Bez ověřování X.509, což je méně bezpečné vzor lze metodu na základě zabezpečení token. Volba mezi tyto dvě metody je primárně určen míry budou zabezpečené zařízení ověřování musí být a dostupnost zabezpečeného úložiště v zařízení (bezpečně uložit privátní klíč).
 
 ## <a name="iot-hub-security-tokens"></a>Tokeny zabezpečení IoT Hub
-IoT Hub používá zabezpečení tokeny tooauthenticate zařízení a služeb tooavoid, odesílání klíčů v síti hello. Kromě toho mají omezenou dobu platnosti a obor tokeny zabezpečení. Sady SDK služby Azure IoT automaticky generovat tokeny bez nutnosti žádnou zvláštní konfiguraci. Některé scénáře, ale vyžaduje toogenerate hello uživatele a používá tokeny zabezpečení přímo. Mezi ně patří hello přímého použití hello MQTT, AMQP nebo HTTP ploch nebo hello implementace vzoru hello služby tokenů.
+IoT Hub používá tokeny zabezpečení k ověřování zařízení a služby se odesílání klíčů v síti. Kromě toho mají omezenou dobu platnosti a obor tokeny zabezpečení. Sady SDK služby Azure IoT automaticky generovat tokeny bez nutnosti žádnou zvláštní konfiguraci. Některé scénáře, ale vyžadují uživatele pro vygenerování a použití tokenů zabezpečení přímo. Mezi ně patří přímého použití MQTT, AMQP nebo HTTP ploch nebo implementace vzoru služby tokenů.
 
-Další informace o struktuře hello hello token zabezpečení a jeho použití naleznete v hello následující články:
+Další informace o struktuře token zabezpečení a jeho použití naleznete v následujících článcích:
 
 * [Struktura tokenu zabezpečení][lnk-security-tokens]
 * [Pomocí SAS tokeny jako zařízení][lnk-sas-tokens]
 
-Každé centrum IoT má [registru identit] [ lnk-identity-registry] , může být prostředky na zařízení použité toocreate v hello služby, jako je například fronty, která obsahuje neukládají zprávy typu cloud zařízení a toohello tooallow přístup zařízení přístupem koncových bodů. Hello registru identit služby IoT Hub poskytuje zabezpečené úložiště identit zařízení a zabezpečení klíčů pro řešení. Jednotlivé nebo skupiny identit zařízení mohou být přidány tooan povolit seznam nebo seznamy bloku, povolení plnou kontrolu nad přístup k zařízení. Hello následující články poskytují další podrobnosti o hello struktura registru identit hello a podporované operace.
+Každé centrum IoT má [registru identit] [ lnk-identity-registry] které lze použít k vytvoření prostředků na zařízení v rámci služby, jako je například fronty, který obsahuje neukládají zprávy typu cloud zařízení a k povolení přístupu k zařízení přístupem koncových bodů. Registr identit služby IoT Hub poskytuje zabezpečené úložiště identit zařízení a zabezpečení klíčů pro řešení. Jednotlivé nebo skupiny identit zařízení lze přidat na seznam povolených nebo blokovaných, povolení plnou kontrolu nad přístup k zařízení. Následující články poskytují další informace o struktuře registru identit a podporované operace.
 
-[IoT Hub podporuje protokoly, například MQTT, AMQP a HTTP][lnk-protocols]. Každý z těchto protokolů jinak použijte tokeny zabezpečení z tooIoT zařízení IoT hello rozbočovače:
+[IoT Hub podporuje protokoly, například MQTT, AMQP a HTTP][lnk-protocols]. Každý z těchto protokolů jinak použijte tokeny zabezpečení ze zařízení IoT do služby IoT Hub:
 
-* AMQP: SASL prostý a založené na deklaracích AMQP zabezpečení ({policyName}@sas.root. { iothubName} v případě hello tokenů úrovni centra IoT; {deviceId} v případě zařízení obor tokeny).
-* MQTT: Připojení paketu používá {deviceId} jako hello {ClientId}, {IoThubhostname} / {deviceId} v hello **uživatelské jméno** pole a SAS token v hello **heslo** pole.
-* HTTP: Je platný token v hlavičce autorizace požadavku hello.
+* AMQP: SASL prostý a založené na deklaracích AMQP zabezpečení ({policyName}@sas.root. { iothubName} v případě tokeny úrovni centra IoT; {deviceId} v případě zařízení obor tokeny).
+* MQTT: Připojení paketu používá {deviceId} jako {ClientId}, {IoThubhostname} / {deviceId} v **uživatelské jméno** pole a SAS token v **heslo** pole.
+* HTTP: Je platný token v hlavičce autorizace požadavku.
 
-Registr identit služby IoT Hub může být použité tooconfigure podle zařízení zabezpečovací přihlašovací údaje a řízení přístupu. Však řešení IoT již má významné investice v [vlastní zařízení identity registru nebo ověřování schématu][lnk-custom-auth], lze ji integrovat do existující infrastruktury s centrem IoT vytvořením služby tokenů.
+Registr identit služby IoT Hub lze použít ke konfiguraci zařízení zabezpečovací přihlašovací údaje a řízení přístupu. Však řešení IoT již má významné investice v [vlastní zařízení identity registru nebo ověřování schématu][lnk-custom-auth], lze ji integrovat do existující infrastruktury s centrem IoT vytvořením služby tokenů.
 
 ### <a name="x509-certificate-based-device-authentication"></a>Ověřování zařízení na základě certifikátu X.509
-Hello použití [zařízení na základě certifikátu X.509] [ lnk-protocols] a jeho přidružený privátní a veřejné klíče dvojice povoluje další ověřování ve fyzické vrstvě hello. privátní klíč Hello je bezpečně uloženo na hello zařízení a není zjistitelný mimo hello zařízení. certifikát X.509 Hello obsahuje informace o hello zařízení, jako je například ID zařízení a další podrobnosti organizace. Podpis certifikátu hello je generována pomocí hello privátní klíč.
+Použití [zařízení na základě certifikátu X.509] [ lnk-protocols] a jeho přidružený privátní a veřejné klíče dvojice povoluje další ověřování ve fyzické vrstvě. Privátní klíč je bezpečně uloženo na zařízení a není zjistitelný mimo zařízení. Certifikát X.509 obsahuje informace o zařízení, jako je například ID zařízení a další podrobnosti organizace. Podpis certifikátu je vytvořen pomocí soukromého klíče.
 
 Zřizování toku vysoké úrovně zařízení:
 
-* Přidružte identifikátor tooa fyzického zařízení s – identitu zařízení a/nebo zařízení přidružených toohello certifikát X.509 během zařízení výrobní nebo uvedení do provozu.
-* Vytvořte záznam odpovídající identity ve IoT Hub – identitu zařízení a informace o přidružených zařízení v registru identit služby IoT Hub hello.
+* Přidružte identifikátor fyzického zařízení – identitu zařízení a/nebo certifikát X.509 přidružené k zařízení během zařízení výrobní nebo uvedení do provozu.
+* Vytvořte záznam odpovídající identity ve IoT Hub – identitu zařízení a informace o přidružených zařízení v registru identit služby IoT Hub.
 * Kryptografický otisk certifikátu X.509 bezpečně uložte v registru identit služby IoT Hub.
 
 ### <a name="root-certificate-on-device"></a>Kořenový certifikát na zařízení
-Při navazování připojení TLS zabezpečené službou IoT Hub, ověřuje hello zařízení IoT pomocí kořenový certifikát, který je součástí hello zařízení SDK služby IoT Hub. Pro klienta hello C sady SDK hello certifikát se nachází ve složce hello "\\c\\certifikátů" v kořenovém úložišti hello hello. I když tyto kořenových certifikátů je dlouhodobé, jsou stále může vyprší nebo odvolat. Pokud neexistuje žádný způsob aktualizace hello certifikát na zařízení hello hello, že zařízení nemusí být možné připojit toosubsequently toohello IoT Hub (nebo jiné cloudové služby). Toto riziko bude efektivně snížilo s znamená tooupdate hello kořenový certifikát po nasazení zařízení IoT hello.
+Při navazování připojení TLS zabezpečené službou IoT Hub, ověřuje zařízení IoT pomocí kořenový certifikát, který je součástí sady SDK zařízení IoT Hub. Pro klienta C sady SDK je certifikát umístěný ve složce "\\c\\certifikátů" v kořenovém úložišti. I když tyto kořenových certifikátů je dlouhodobé, jsou stále může vyprší nebo odvolat. Pokud neexistuje žádný způsob aktualizace certifikát v zařízení, nemusí být zařízení následně připojit ke službě IoT Hub (nebo jiné cloudové služby). Toto riziko bude efektivně snížilo s znamená aktualizovat kořenový certifikát po nasazení zařízení IoT.
 
-## <a name="securing-hello-connection"></a>Zabezpečení připojení hello
-Připojení k Internetu mezi hello zařízení IoT a IoT Hub, je zabezpečena pomocí hello standard zabezpečení TLS (Transport Layer). Azure IoT podporuje [TLS 1.2][lnk-tls12], TLS 1.1 a TLS 1.0, v tomto pořadí. Podpora pro protokol TLS 1.0 je k dispozici pouze z důvodů zpětné kompatibility. Vzhledem k tomu, že poskytuje nejvyšší zabezpečení hello se doporučuje toouse TLS 1.2.
+## <a name="securing-the-connection"></a>Zabezpečení připojení
+Připojení k Internetu mezi zařízení IoT a IoT Hub, je zabezpečena pomocí standardní zabezpečení TLS (Transport Layer). Azure IoT podporuje [TLS 1.2][lnk-tls12], TLS 1.1 a TLS 1.0, v tomto pořadí. Podpora pro protokol TLS 1.0 je k dispozici pouze z důvodů zpětné kompatibility. Doporučujeme použít protokol TLS 1.2, protože poskytuje nejvyšší zabezpečení.
 
-Azure IoT Suite podporuje hello následující šifrovací sady, v tomto pořadí.
+Azure IoT Suite podporuje následující šifrovací sady, v tomto pořadí.
 
 | Šifrovací sada | Délka |
 | --- | --- |
@@ -89,38 +89,38 @@ Azure IoT Suite podporuje hello následující šifrovací sady, v tomto pořad�
 | Protokol TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA (0x2f) |128 |
 | Protokol TLS\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA (0xa) |112 |
 
-## <a name="securing-hello-cloud"></a>Zabezpečení cloudu hello
-Azure IoT Hub umožňuje definice [zásad řízení přístupu] [ lnk-protocols] pro každý klíč zabezpečení. Používá hello následující sadu oprávnění toogrant přístup tooeach koncových bodů služby IoT Hub. Oprávnění omezit přístup tooan hello, IoT Hub v závislosti na funkcích.
+## <a name="securing-the-cloud"></a>Zabezpečení cloudu
+Azure IoT Hub umožňuje definice [zásad řízení přístupu] [ lnk-protocols] pro každý klíč zabezpečení. Následující sadu oprávnění, používá k udělení přístupu k všechny koncové body centra IoT. Oprávnění omezit přístup do služby IoT Hub, v závislosti na funkcích.
 
-* **RegistryRead**. Registr identit toohello uděluje přístup pro čtení. Další informace najdete v tématu [registru identit][lnk-identity-registry].
-* **RegistryReadWrite**. Uděluje oprávnění ke čtení a zápisu toohello registru identit. Další informace najdete v tématu [registru identit][lnk-identity-registry].
-* **ServiceConnect**. Uděluje přístup ke komunikaci služby směřujících toocloud a sledování koncových bodů. Například udělí oprávnění tooback-end cloudu zpráv typu zařízení cloud services tooreceive, odesílání zpráv typu cloud zařízení a načíst hello odpovídající doručení potvrzování.
-* **DeviceConnect**. Uděluje přístup k toodevice přístupem koncových bodů. Například uděluje oprávnění zpráv typu zařízení cloud toosend a příjem zpráv typu cloud zařízení. Toto oprávnění je používán zařízení.
+* **RegistryRead**. Uděluje přístup do registru identit pro čtení. Další informace najdete v tématu [registru identit][lnk-identity-registry].
+* **RegistryReadWrite**. Uděluje přístup čtení a zápisu do registru identit. Další informace najdete v tématu [registru identit][lnk-identity-registry].
+* **ServiceConnect**. Uděluje přístup do cloudu komunikace a sledování koncových bodů služby přístupem. Například uděluje oprávnění k back-end cloudové služby na příjem zpráv typu zařízení cloud, odesílání zpráv typu cloud zařízení a načíst odpovídající potvrzování doručení.
+* **DeviceConnect**. Uděluje přístup k zařízení přístupem koncových bodů. Například uděluje oprávnění k odesílání zpráv typu zařízení cloud a příjem zpráv typu cloud zařízení. Toto oprávnění je používán zařízení.
 
-Existují dva způsoby tooobtain **DeviceConnect** oprávnění službou IoT Hub s [tokeny zabezpečení][lnk-sas-tokens]: pomocí klíče identity zařízení nebo sdílený přístupový klíč. Kromě toho je důležité toonote zveřejněného všechny funkce, které jsou přístupné ze zařízení záměrné u koncových bodů s předponou `/devices/{deviceId}`.
+Existují dva způsoby, jak získat **DeviceConnect** oprávnění službou IoT Hub s [tokeny zabezpečení][lnk-sas-tokens]: pomocí klíče identity zařízení nebo sdílený přístupový klíč. Kromě toho je důležité si uvědomit, že všechny funkce, které jsou přístupné ze zařízení je zveřejněný prostřednictvím návrhu na koncové body s předponou `/devices/{deviceId}`.
 
-[Součásti služby můžete generovat jenom tokeny zabezpečení] [ lnk-service-tokens] pomocí sdílené zásady přístupu udělení hello příslušná oprávnění.
+[Součásti služby můžete generovat jenom tokeny zabezpečení] [ lnk-service-tokens] pomocí sdílené zásady přístupu udělení příslušných oprávnění.
 
-Azure IoT Hub a dalším službám, které může být součástí řešení hello povolit správu uživatele, kteří používají hello Azure Active Directory.
+Azure IoT Hub a dalším službám, které může být součástí řešení povolit správu uživatelů pomocí služby Azure Active Directory.
 
 Data ve službě Azure IoT Hub požity mohou být spotřebovávána různých služeb, jako je Azure Stream Analytics a úložiště objektů blob Azure. Tyto služby umožňují přístup pro správu. Další informace o těchto službách a k dispozici následující možnosti:
 
-* [Azure Cosmos DB][lnk-docdb]: škálovatelné a plně indexované databázová služba pro částečně strukturovaná data, která spravuje metadata pro zařízení hello zřídíte, jako je například atributy, konfiguraci a vlastnosti zabezpečení. Cosmos DB nabízí vysoce výkonné a vysokou propustností zpracování, bez ohledu na schéma indexování dat a bohaté rozhraní SQL.
-* [Azure Stream Analytics][lnk-asa]: streamu v reálném čase zpracování hello cloudu, který umožňuje vám toorapidly vývoji a nasazení nízkými náklady analytics řešení toouncover přehledy v reálném čase ze zařízení, senzorů, infrastruktury a aplikace. Hello data z tato plně spravovaná služba můžete škálovat tooany svazku, zatímco stále dosahuje vysoké propustnosti, s nízkou latencí a odolnost proti chybám.
-* [Azure App Services][lnk-appservices]: cloudové platformy toobuild výkonné webové a mobilní aplikace, které se připojují toodata kdekoli; v cloudu hello nebo místně. Vytvářejte poutavé mobilní aplikace pro iOS, Android a Windows. Integrate váš Software jako služba (SaaS) a podnikové aplikace s toodozens připojení se na pole cloudových služeb a podnikové aplikace. Kód v váš oblíbený jazyk a IDE toobuild webové aplikace (.NET, Node.js, PHP, Python nebo Java) a rozhraní API rychlejší než kdy dřív.
-* [Služba Logic Apps][lnk-logicapps]: hello funkce Logic Apps služby Azure App Service pomáhá integrovat IoT řešení tooyour existující-obchodní systémy a automatizovat pracovní postupy. Služba Logic Apps umožňuje vývojářům toodesign pracovních, které začínají spouštěčem událostí a provádějí sérii kroků – pravidla a akce, které pomocí výkonné konektory toointegrate své obchodní procesy. Služba Logic Apps nabízí připojení se na pole tooa velká ekosystém SaaS, cloudových a místních aplikací.
-* [Úložiště objektů blob Azure][lnk-blob]: spolehlivé a ekonomické cloudové úložiště pro data hello, že vaše zařízení odesílají toohello cloudu.
+* [Azure Cosmos DB][lnk-docdb]: škálovatelné a plně indexované databázová služba pro částečně strukturovaných dat, který spravuje metadata pro zařízení, zřídíte, jako je například atributy, konfiguraci a vlastnosti zabezpečení. Cosmos DB nabízí vysoce výkonné a vysokou propustností zpracování, bez ohledu na schéma indexování dat a bohaté rozhraní SQL.
+* [Azure Stream Analytics][lnk-asa]: zpracování v cloudu, která umožňuje rychle vyvíjet a nasadit řešení analytics nízkonákladové k odhalení přehledy v reálném čase ze zařízení, senzorů, infrastruktura, streamu v reálném čase a aplikace. Data z této plně spravovanou službu, můžete škálovat na jakýkoli svazek, zatímco stále dosahuje vysoké propustnosti, s nízkou latencí a odolnost proti chybám.
+* [Azure App Services][lnk-appservices]: Cloudová platforma vytvářet výkonné webové a mobilní aplikace, které se připojují k datům odkudkoli; v cloudu nebo místně. Vytvářejte poutavé mobilní aplikace pro iOS, Android a Windows. Integrate váš Software jako služba (SaaS) a podnikové aplikace s připojením se na pole k desítek cloudové služby a podnikové aplikace. Kód na váš oblíbený jazyk a IDE (.NET, Node.js, PHP, Python nebo Java) k vytvoření webové aplikace a rozhraní API rychleji než kdy dřív.
+* [Služba Logic Apps][lnk-logicapps]: funkce The Logic Apps služby Azure App Service pomáhá integrovat řešení IoT tak, aby vaše stávající-obchodní systémy a automatizovat pracovní postupy. Služba Logic Apps umožňuje vývojářům navrhovat pracovní postupy, které začínají spouštěčem událostí a provádějí sérii kroků – pravidla a akce, které použít Výkonné konektory pro integraci s procesy vaší firmy. Služba Logic Apps nabízí připojení se na pole k velká ekosystém SaaS, cloudových a místních aplikací.
+* [Úložiště objektů blob Azure][lnk-blob]: spolehlivé a ekonomické cloudové úložiště pro data, která vaše zařízení odesílají do cloudu.
 
 ## <a name="conclusion"></a>Závěr
-Tento článek obsahuje přehled implementace úroveň podrobností pro navrhování a nasazení infrastruktury IoT pomocí Azure IoT. Konfigurace jednotlivých součástí toobe zabezpečené je klíč v zabezpečení hello celé infrastruktury IoT. k dispozici v Azure IoT rozhodnutích při návrhu Hello zadejte určité úrovně flexibilitu a možnost výběru; Každý výběr však může mít vliv na zabezpečení. Doporučuje se každý z těchto možností vyhodnotí vyhodnoťte riziko/náklady.
+Tento článek obsahuje přehled implementace úroveň podrobností pro navrhování a nasazení infrastruktury IoT pomocí Azure IoT. Konfigurace jednotlivých součástí zabezpečená je klíč v zabezpečení celkové infrastruktury IoT. K dispozici v Azure IoT volbách návrhu zadejte určité úrovně flexibilitu a možnost výběru; Každý výběr však může mít vliv na zabezpečení. Doporučuje se každý z těchto možností vyhodnotí vyhodnoťte riziko/náklady.
 
 ## <a name="see-also"></a>Viz také
-Můžete také prozkoumat některé hello další funkce a možnosti hello předkonfigurovaná řešení IoT Suite:
+Můžete si taky prostudovat některé další funkce a možnosti předkonfigurovaných řešení sady IoT Suite:
 
 * [Přehled řešení předkonfigurované prediktivní údržby][lnk-predictive-overview]
 * [Nejčastější dotazy k sadě IoT Suite][lnk-faq]
 
-Další informace o zabezpečení služby IoT Hub v [řízení přístupu tooIoT rozbočovače] [ lnk-devguide-security] v hello Příručka vývojáře pro službu IoT Hub.
+Další informace o zabezpečení služby IoT Hub v [řízení přístupu ke službě IoT Hub] [ lnk-devguide-security] v příručce pro vývojáře IoT Hub.
 
 
 [img-overview]: media/iot-suite-security-deployment/overview.png

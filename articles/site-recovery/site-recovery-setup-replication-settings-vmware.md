@@ -1,6 +1,6 @@
 ---
-title: "aaaSet nastavení replikace pro Azure Site Recovery | Microsoft Docs"
-description: "Popisuje, jak toodeploy Site Recovery tooorchestrate replikace, převzetí služeb při selhání a obnovení virtuálních počítačů technologie Hyper-V v nástroji VMM cloudů tooAzure."
+title: "Konfigurace nastavení replikace pro Azure Site Recovery | Dokumentace Microsoftu"
+description: "Tento dokument popisuje způsob nasazení Site Recovery za účelem orchestrace replikace, převzetí služeb při selhání a obnovení virtuálních počítačů Hyper-V v cloudech VMM do Azure."
 services: site-recovery
 documentationcenter: 
 author: sujayt
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/05/2017
 ms.author: sutalasi
-ms.openlocfilehash: 618e92e42411732a2a1bb75c5e5ea8a433cd7d58
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 73a1f19177f23441f5f7165cf2bc92ba85e62aa5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="manage-replication-policy-for-vmware-tooazure"></a>Správa zásad replikace pro VMware tooAzure
+# <a name="manage-replication-policy-for-vmware-to-azure"></a>Správa zásad replikace pro VMware do Azure
 
 
 ## <a name="create-a-replication-policy"></a>Vytvoření zásady replikace
@@ -31,58 +31,58 @@ ms.lasthandoff: 10/06/2017
 
     ![Vytvoření zásady replikace](./media/site-recovery-setup-replication-settings-vmware/createpolicy.png)
 
-4. Zadejte název zásady hello.
+4. Zadejte název zásady.
 
-5. V **prahovou hodnotu RPO**, zadejte limit hello plánovaný bod obnovení. Když toto omezení průběžná replikace překročí, vygenerují se upozornění.
-6. V **uchování bodu obnovení**, zadejte (v hodinách) hello trvání intervalem pro uchovávání dat hello pro každý bod obnovení. Chráněné počítače může být obnovena tooany bodu v rámci časového období uchování.
+5. V části **Prahová hodnota cíle bodu obnovení (RPO)** zadejte omezení RPO. Když toto omezení průběžná replikace překročí, vygenerují se upozornění.
+6. V části **Uchování bodu obnovení** zadejte (v hodinách) délku intervalu uchovávání dat pro jednotlivé body obnovení. Chráněné počítače je možné obnovit do libovolného bodu v rámci tohoto intervalu.
 
     > [!NOTE]
-    > Pro úložiště replikované toopremium počítače je podporováno až too24 hodin uchování. Pro úložiště replikované toostandard počítače je podporováno až too72 hodin uchování.
+    > Pro počítače replikované do úložiště úrovně Premium se podporuje interval uchování až 24 hodin. Pro počítače replikované do úložiště úrovně Standard se podporuje interval uchování až 72 hodin.
 
     > [!NOTE]
     > Zásada replikace pro navrácení služeb po obnovení se vytvoří automaticky.
 
 7. V nastavení **Frekvence snímků konzistentní vzhledem k aplikacím** určete, jak často (v minutách) se mají vytvářet body obnovení obsahující snímky konzistentní vzhledem k aplikacím.
 
-8. Klikněte na **OK**. Hello zásad by měl být vytvořen v 30 sekund too60.
+8. Klikněte na tlačítko **OK**. Zásada by se měla vytvořit během přibližně 30–60 sekund.
 
 ![Generování zásad replikace](./media/site-recovery-setup-replication-settings-vmware/Creating-Policy.png)
 
 ## <a name="associate-a-configuration-server-with-a-replication-policy"></a>Přidružení konfiguračního serveru k zásadě replikace
-1. Zvolte toowhich zásady replikace hello chcete tooassociate hello konfigurační server.
+1. Vyberte zásadu replikace, ke které chcete přidružit konfigurační server.
 2. Klikněte na **Přidružit**.
 ![Přidružení konfiguračního serveru](./media/site-recovery-setup-replication-settings-vmware/Associate-CS-1.PNG)
 
-3. Vyberte konfigurační server hello hello seznamu serverů.
-4. Klikněte na **OK**. Hello konfigurační server by měl spojené v jedné tootwo minut.
+3. Ze seznamu serverů vyberte konfigurační server.
+4. Klikněte na tlačítko **OK**. Přidružení konfiguračního serveru by se mělo provést během přibližně 1 až 2 minut.
 
 ![Přidružení konfiguračního serveru](./media/site-recovery-setup-replication-settings-vmware/Associate-CS-2.png)
 
 ## <a name="edit-a-replication-policy"></a>Úprava zásady replikace
-1. Vyberte zásadu replikace hello, pro které chcete tooedit nastavení replikace.
+1. Vyberte zásadu replikace, pro kterou chcete nastavení replikace změnit.
 ![Úprava zásady replikace](./media/site-recovery-setup-replication-settings-vmware/Select-Policy.png)
 
 2. Klikněte na **Upravit nastavení**.
 ![Úprava nastavení zásady replikace](./media/site-recovery-setup-replication-settings-vmware/Edit-Policy.png)
 
-3. Změňte nastavení hello podle vašim potřebám.
-4. Klikněte na **Uložit**. Hello zásad by měla být uložena ve dvou minut toofive, v závislosti na tom, kolik virtuálních počítačů používají tuto zásadu replikace.
+3. Změňte nastavení podle vašich potřeb.
+4. Klikněte na **Uložit**. Zásada by se měla uložit během přibližně 2 až 5 minut v závislosti na tom, kolik virtuálních počítačů tuto zásadu replikace používá.
 
 ![Uložení zásady replikace](./media/site-recovery-setup-replication-settings-vmware/Save-Policy.png)
 
 ## <a name="dissociate-a-configuration-server-from-a-replication-policy"></a>Zrušení přidružení konfiguračního serveru k zásadě replikace
-1. Zvolte toowhich zásady replikace hello chcete tooassociate hello konfigurační server.
+1. Vyberte zásadu replikace, ke které chcete přidružit konfigurační server.
 2. Klikněte na **Zrušit přidružení**.
-3. Vyberte konfigurační server hello hello seznamu serverů.
-4. Klikněte na **OK**. v jedné tootwo minut by měl zrušit její přidružení Hello konfigurační server.
+3. Ze seznamu serverů vyberte konfigurační server.
+4. Klikněte na tlačítko **OK**. Přidružení konfiguračního serveru by se mělo zrušit během přibližně 1 až 2 minut.
 
     > [!NOTE]
-    > Konfigurační server nemůže zrušit přidružení, pokud je alespoň jednu položku replikovaná pomocí zásad hello. Zajistěte, aby nebyly nalezeny žádné replikované položky pomocí zásad hello před zrušíte přidružení hello konfigurační server.
+    > Přidružení konfiguračního serveru nejde zrušit, pokud existuje alespoň jedna replikovaná položka, která zásadu používá. Před zrušením přidružení konfiguračního serveru zkontrolujte, že žádné replikované položky zásadu nepoužívají.
 
 ## <a name="delete-a-replication-policy"></a>Odstranění zásady replikace
 
-1. Vyberte zásadu replikace hello, které chcete toodelete.
-2. Klikněte na **Odstranit**. 30 sekund too60 je potřeba odstranit zásady Hello.
+1. Vyberte zásadu replikace, kterou chcete odstranit.
+2. Klikněte na **Odstranit**. Zásada by se měla odstranit během přibližně 30–60 sekund.
 
     > [!NOTE]
-    > Zásady replikace nelze odstranit, pokud má alespoň jeden server přidružené tooit konfigurace. Ujistěte se, že neexistují žádné replikované položky pomocí zásad hello a odstranění všech hello související konfigurační servery před odstraněním hello zásad.
+    > Zásadu replikace nejde odstranit, pokud má přidružený aspoň jeden konfigurační server. Zkontrolujte, že neexistují žádné replikované položky, které zásadu používají, a před odstraněním zásady odstraňte všechny přidružené konfigurační servery.

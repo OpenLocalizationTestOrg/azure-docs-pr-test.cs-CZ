@@ -1,6 +1,6 @@
 ---
-title: "aaaLog na tooa classic virtuálního počítače Azure | Microsoft Docs"
-description: "Použijte hello Azure portálu toolog na virtuální počítač Windows tooa vytvořené pomocí modelu nasazení classic hello."
+title: "Přihlaste se k classic virtuálního počítače Azure | Microsoft Docs"
+description: "Použití portálu Azure k přihlášení k Windows virtuální počítač vytvořený s modelem nasazení classic."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,53 +15,53 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
-ms.openlocfilehash: 2e32b7036c2538e73b46580e0f5f8f4979e8a685
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 43d54de7e875de9212c23c49ad0539bf2272a312
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="log-on-tooa-windows-virtual-machine-using-hello-azure-portal"></a>Přihlaste se tooa Windows virtuálního počítače pomocí hello portálu Azure
-V hello portál Azure používáte hello **Connect** tlačítko toostart relaci vzdálené plochy a přihlaste se tooa virtuální počítač s Windows.
+# <a name="log-on-to-a-windows-virtual-machine-using-the-azure-portal"></a>Přihlášení k virtuálnímu počítači s Windows pomocí portálu Azure
+Na portálu Azure můžete použít **Connect** tlačítko spuštění relace vzdálené plochy a přihlaste se k virtuální počítač s Windows.
 
-Chcete, aby tooconnect tooa virtuálního počítače s Linuxem? V tématu [jak toolog na tooa virtuální počítač se systémem Linux](../../linux/mac-create-ssh-keys.md).
+Chcete se připojit k virtuální počítač s Linuxem? V tématu [přihlášení do virtuálního počítače se systémem Linux](../../linux/mac-create-ssh-keys.md).
 
 <!--
 Deleting, but not 100% sure
-Learn how too[perform these steps using new Azure portal](../connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Learn how to [perform these steps using new Azure portal](../connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 -->
 
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic hello. Společnost Microsoft doporučuje, aby většina nových nasazení používala model Resource Manager hello. Informace o tom, jak toolog na virtuální počítač pomocí tooa hello Resource Manager modelu najdete v tématu [zde](../connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Informace o tom, jak se přihlásit k virtuálnímu počítači pomocí modelu Resource Manager najdete v tématu [zde](../connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-## <a name="connect-toohello-virtual-machine"></a>Připojit toohello virtuálního počítače
-1. Přihlaste se toohello portálu Azure.
-2. Klikněte na hello virtuálního počítače, které chcete tooaccess. Název Hello je uvedený v hello **všechny prostředky** podokně.
+## <a name="connect-to-the-virtual-machine"></a>Připojení k virtuálnímu počítači
+1. Přihlaste se k portálu Azure.
+2. Klikněte na virtuální počítač, který chcete získat přístup. Název je uveden v **všechny prostředky** podokně.
 
     ![Virtuální počítač – umístění](./media/connect-logon/azureportaldashboard.png)
 
-3. Klikněte na tlačítko **Connect** na panelu příkazů hello na řídicí panel hello virtuálního počítače.
+3. Klikněte na tlačítko **Connect** na panelu příkazů na řídicím panelu virtuálního počítače.
 
-    ![Ikona pro virtuální počítač hello připojení](./media/connect-logon/virtualmachine_dashboard_connect.png)
+    ![Připojit ikonu pro virtuální počítač](./media/connect-logon/virtualmachine_dashboard_connect.png)
 
 <!-- Don't know if this still applies
      I think we can zap this.
 > [!TIP]
-> If hello **Connect** button isn't available, see hello troubleshooting tips at hello end of this article.
+> If the **Connect** button isn't available, see the troubleshooting tips at the end of this article.
 >
 >
 -->
 
-## <a name="log-on-toohello-virtual-machine"></a>Přihlaste se toohello virtuálního počítače
+## <a name="log-on-to-the-virtual-machine"></a>Přihlášení k virtuálnímu počítači
 [!INCLUDE [virtual-machines-log-on-win-server](../../../../includes/virtual-machines-log-on-win-server.md)]
 
 ## <a name="next-steps"></a>Další kroky
-* Pokud hello **Connect** tlačítko je neaktivní nebo máte další problémy s hello připojení vzdálené plochy, opakujte pokus o obnovení konfigurace hello. Klikněte na tlačítko **obnovte vzdálený přístup** z řídicího panelu hello virtuálního počítače.
+* Pokud **Connect** tlačítko je neaktivní nebo máte další problémy s připojením ke vzdálené ploše, zkuste resetuje se konfigurace. Klikněte na tlačítko **obnovte vzdálený přístup** na řídicím panelu virtuálního počítače.
 
     ![Resetování vzdálený přístup](./media/connect-logon/virtualmachine_dashboard_reset_remote_access.png)
 
-* Řešení problémů s heslo zkuste resetovat ho. Klikněte na tlačítko **resetovat heslo** podél hello levé hrany řídicího panelu virtuální počítač, v části **podporu + Poradce při potížích s**.
+* Řešení problémů s heslo zkuste resetovat ho. Klikněte na tlačítko **resetovat heslo** podél levého okraje virtuálního počítače v části řídicího panelu, **podporu + Poradce při potížích s**.
 
     ![Resetování hesla](./media/connect-logon/virtualmachine_dashboard_reset_password.png)
 
-Pokud tyto tipy nefungují nebo nejsou, co potřebujete, najdete v části [tooa připojení řešení Vzdálená plocha systému Windows virtuálního počítače Azure](../troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Tento článek vás provede diagnostikou a řešením běžných problémů.
+Pokud tyto tipy nefungují nebo nejsou, co potřebujete, najdete v části [řešení potíží s vzdálené plochy připojení k systému Windows Azure virtuální počítač](../troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Tento článek vás provede diagnostikou a řešením běžných problémů.

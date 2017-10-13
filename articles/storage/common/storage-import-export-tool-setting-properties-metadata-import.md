@@ -1,6 +1,6 @@
 ---
-title: "aaaSetting vlastnosti a metadat pomocí Azure Import/Export | Microsoft Docs"
-description: "Zjistěte, jak nastavit toospecify vlastnosti a metadata toobe na objekty BLOB cílové hello při spuštění nástroje Azure Import/Export tooprepare hello jednotky."
+title: "Nastavení vlastností a metadat pomocí Azure Import/Export | Microsoft Docs"
+description: "Zjistěte, jak zadat vlastnosti a metadata nastavení na cílový objektů BLOB při spuštění nástroje Azure Import/Export Příprava jednotky."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: c763237160f0e4b72ce88fd31e2958994bfe8e50
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1ba6d157402fae0c7d7bf841d2b4e4f6b1ee1084
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="setting-properties-and-metadata-during-hello-import-process"></a>Vlastnosti nastavení a metadata během hello importu
+# <a name="setting-properties-and-metadata-during-the-import-process"></a>Nastavení vlastností a metadat během procesu importu
 
-Když spustíte nástroj Microsoft Azure Import/Export tooprepare hello jednotky, můžete zadat vlastnosti a metadata toobe nastavit na hello cílové objekty BLOB. Postupujte následovně:
+Když spustíte nástroj Microsoft Azure Import/Export Příprava jednotky, můžete zadat vlastnosti a metadata nastavení na cílový objekty BLOB. Postupujte následovně:
 
-1.  vlastnosti objektu blob tooset, vytvořte textový soubor do místního počítače, který určuje názvy a hodnoty vlastností.
-2.  tooset metadata objektu blob, vytvořte textový soubor do místního počítače, který určuje metadata názvy a hodnoty.
-3.  Předat tooone hello úplnou cestu nebo oba tyto soubory toohello nástroj Azure Import/Export jako součást hello `PrepImport` operaci.
+1.  Pokud chcete nastavit vlastnosti objektů blob, vytvořte textový soubor do místního počítače, který určuje názvy a hodnoty vlastností.
+2.  Pokud chcete nastavit metadata objektu blob, vytvořte textový soubor do místního počítače, který určuje metadata názvy a hodnoty.
+3.  Předat úplnou cestu do jedné nebo obou těchto souborů do nástroje Azure Import/Export jako součást `PrepImport` operaci.
 
 > [!NOTE]
->  Když zadáte vlastnosti nebo metadata souboru v rámci relace kopírování, jsou pro každý objekt blob, který je naimportováno v rámci této relace kopie nastavit tyto vlastnosti nebo metadata. Pokud chcete pro některé objekty BLOB hello importovaných toospecify jinou sadu vlastnosti nebo metadata, budete potřebovat toocreate samostatné zkopírujte relace s jinou vlastnosti nebo soubory metadat.
+>  Když zadáte vlastnosti nebo metadata souboru v rámci relace kopírování, jsou pro každý objekt blob, který je naimportováno v rámci této relace kopie nastavit tyto vlastnosti nebo metadata. Pokud chcete určit jinou sadu vlastnosti nebo metadata pro některé objekty BLOB importována, budete muset vytvořit relaci samostatná kopie různé vlastnosti nebo soubory metadat.
 
 ## <a name="specify-blob-properties-in-a-text-file"></a>Zadejte vlastnosti objektů blob v textovém souboru
 
-vlastnosti objektu blob toospecify, vytvořte místní textový soubor a zahrnují kód XML, který určuje názvy vlastností jako elementy a hodnoty vlastností jako hodnoty. Tady je příklad, který určuje některé hodnoty vlastností:
+K určení vlastností objektu blob, vytvořte místní textový soubor a zahrnují kód XML, který určuje názvy vlastností jako elementy a hodnoty vlastností jako hodnoty. Tady je příklad, který určuje některé hodnoty vlastností:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -44,11 +44,11 @@ vlastnosti objektu blob toospecify, vytvořte místní textový soubor a zahrnuj
 </Properties>
 ```
 
-Uložit místní umístění tooa hello souboru jako `C:\WAImportExport\ImportProperties.txt`.
+Uložte soubor do místního umístění, jako je `C:\WAImportExport\ImportProperties.txt`.
 
 ## <a name="specify-blob-metadata-in-a-text-file"></a>Zadejte metadata objektu blob do textového souboru
 
-Podobně toospecify metadata objektu blob, vytvořte místní textový soubor, který určuje názvy metadat jako elementy a metadata hodnoty jako hodnoty. Tady je příklad, který určuje některé hodnoty metadat:
+Podobně zadejte metadata objektu blob, vytvořte místní textový soubor, který určuje názvy metadat jako elementy a metadata hodnoty jako hodnoty. Tady je příklad, který určuje některé hodnoty metadat:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -59,9 +59,9 @@ Podobně toospecify metadata objektu blob, vytvořte místní textový soubor, k
 </Metadata>
 ```
 
-Uložit místní umístění tooa hello souboru jako `C:\WAImportExport\ImportMetadata.txt`.
+Uložte soubor do místního umístění, jako je `C:\WAImportExport\ImportMetadata.txt`.
 
-## <a name="add-hello-path-tooproperties-and-metadata-files-in-datasetcsv"></a>Přidání hello cesta tooproperties a metadata souborů v dataset.csv
+## <a name="add-the-path-to-properties-and-metadata-files-in-datasetcsv"></a>Přidejte cestu k vlastnosti a soubory metadat v dataset.csv
 
 ```
 BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile

@@ -2,20 +2,21 @@
 ## [Co je služba Azure Analysis Services?](analysis-services-overview.md)
 ## [Podporované zdroje dat](analysis-services-datasource.md)
 ## [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md)
-## [Připojení tooon místní zdroje dat](analysis-services-gateway.md)
+## [Připojení k místním zdrojům dat](analysis-services-gateway.md)
 ## [Úroveň kompatibility](analysis-services-compat-level.md)
 ## [Vysoká dostupnost](analysis-services-bcdr.md)
 
 # Začínáme
 ## [Vytvoření serveru na portálu Azure](analysis-services-create-server.md)
-## [Vytvoření serveru s využitím PowerShellu](analysis-services-create-powershell.md)
+## [Vytvoření serveru s využitím Azure PowerShellu](analysis-services-create-powershell.md)
 ## [Nasazení modelu ze sady Visual Studio](analysis-services-deploy.md)
 ## [Vytvoření modelu na webu Azure Portal (Preview)](analysis-services-create-model-portal.md)
 
-# Postupy příliš
+# Postupy 
 ## [Správa serveru](analysis-services-manage.md)
 ## [Správa uživatelů databáze](analysis-services-database-users.md)
 ## [Správa správců serveru](analysis-services-server-admins.md)
+## [Monitorování metrik serveru](analysis-services-monitor.md)
 ## [Instalace a konfigurace místní brány dat](analysis-services-gateway-install.md)
 ## [Získání klientských knihoven](analysis-services-data-providers.md)
 ## [Zálohování a obnovení](analysis-services-backup.md)
@@ -42,14 +43,14 @@
 ### [Doplňková lekce – Nepravidelné hierarchie](tutorials/aas-supplemental-lesson-ragged-hierarchies.md)  
 
 # Referenční informace
-## [PowerShell](analysis-services-powershell.md)
+## [Azure PowerShell](analysis-services-powershell.md)
 ## [REST](/rest/api/analysisservices)
 ## [DAX](https://msdn.microsoft.com/library/gg413422.aspx)
 ## [Power Query M](https://msdn.microsoft.com/library/mt211003.aspx)
 ## [Jazyk TMSL (Tabular Model Scripting Language)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
 
 # Zdroje
-## [Vzorky kódu Analysis Services v GitHubu](https://github.com/Microsoft/Analysis-Services)
+## [Ukázky](analysis-services-samples.md)
 ## [Blog týmu Analysis Services](https://blogs.msdn.microsoft.com/analysisservices/)
 ## [Fórum Azure Analysis Services](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAnalysisServices)
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)

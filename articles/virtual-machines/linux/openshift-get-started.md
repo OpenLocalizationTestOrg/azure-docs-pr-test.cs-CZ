@@ -1,6 +1,6 @@
 ---
-title: "aaaDeploy OpenShift původu tooAzure | Microsoft Docs"
-description: "Přečtěte si toodeploy OpenShift původu tooAzure virtuálních počítačů."
+title: "Nasazení do Azure OpenShift počátek | Microsoft Docs"
+description: "Naučte se nasadit OpenShift původ na virtuálních počítačích Azure."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: jbinder
@@ -15,48 +15,48 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 
 ms.author: jbinder
-ms.openlocfilehash: a67450c46da41134a5f6c669a9e54e14773ac5b5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e03da05625e440eab29ccc28a2343d3433fc7607
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="deploy-openshift-origin-tooazure-virtual-machines"></a>Nasazení OpenShift původu tooAzure virtuální počítače 
+# <a name="deploy-openshift-origin-to-azure-virtual-machines"></a>Nasazení OpenShift původ na virtuálních počítačích Azure 
 
-[Původ OpenShift](https://www.openshift.org/) je kontejner platforma s otevřeným zdrojem založený na [Kubernetes](https://kubernetes.io/). Zjednodušuje proces hello nasazení, škálování a provozování víceklientským aplikacím. 
+[Původ OpenShift](https://www.openshift.org/) je kontejner platforma s otevřeným zdrojem založený na [Kubernetes](https://kubernetes.io/). Zjednodušuje proces nasazení, škálování a provozování víceklientským aplikacím. 
 
-Tato příručka popisuje, jak hello toodeploy OpenShift původ na virtuálních počítačích Azure pomocí rozhraní příkazového řádku Azure a šablon Azure Resource Manageru. V tomto kurzu se naučíte:
+Tato příručka popisuje postup nasazení OpenShift původ na virtuálních počítačích Azure pomocí rozhraní příkazového řádku Azure a šablon Azure Resource Manageru. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření klíčů SSH pro hello OpenShift cluster KeyVault toomanage.
+> * Vytvořte KeyVault ke správě klíčů SSH OpenShift clusteru.
 > * Nasazení clusteru OpenShift na virtuálních počítačích Azure. 
-> * Instalace a konfigurace hello [OpenShift CLI](https://docs.openshift.org/latest/cli_reference/index.html#cli-reference-index) toomanage hello clusteru.
-> * Přizpůsobte hello OpenShift nasazení.
+> * Instalace a konfigurace [OpenShift CLI](https://docs.openshift.org/latest/cli_reference/index.html#cli-reference-index) ke správě clusteru.
+> * Přizpůsobte OpenShift nasazení.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-Tento úvodní vyžaduje hello Azure CLI verze 2.0.8 nebo novější. verze hello toofind, spusťte `az --version`. Pokud potřebujete tooinstall nebo aktualizace, přečtěte si [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Tento úvodní vyžaduje Azure CLI verze 2.0.8 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="log-in-tooazure"></a>Přihlaste se tooAzure 
-Přihlaste se tooyour předplatné s hello [az přihlášení](/cli/azure/#login) příkazů a postupujte podle hello na obrazovce pokynů nebo klikněte na tlačítko **vyzkoušet** toouse cloudové prostředí.
+## <a name="log-in-to-azure"></a>Přihlaste se k Azure. 
+Přihlaste se k předplatnému Azure s [az přihlášení](/cli/azure/#login) příkazů a postupujte podle na obrazovce pokynů nebo klikněte na **vyzkoušet** používat cloudové prostředí.
 
 ```azurecli 
 az login
 ```
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků s hello [vytvořit skupinu az](/cli/azure/group#create) příkaz. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
 
-Hello následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v hello *eastus* umístění.
+Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
 
 ```azurecli 
 az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="create-a-key-vault"></a>Vytvoření trezoru klíčů
-Vytvoření klíčů SSH pro hello cluster hello toostore KeyVault s hello [vytvořit az keyvault](/cli/azure/keyvault#create) příkaz.  
+Vytvoření KeyVault pro ukládání klíčů SSH pro cluster s [vytvořit az keyvault](/cli/azure/keyvault#create) příkaz.  
 
 ```azurecli 
 az keyvault create --resource-group myResourceGroup --name myKeyVault \
@@ -65,19 +65,19 @@ az keyvault create --resource-group myResourceGroup --name myKeyVault \
 ```
 
 ## <a name="create-an-ssh-key"></a>Vytvoření klíče SSH 
-Klíč SSH je potřebné toosecure přístup toohello OpenShift původní cluster. Vytvoření SSH dvojici klíčů pomocí hello `ssh-keygen` příkaz. 
+Klíč SSH je potřeba zabezpečit přístup k počátku OpenShift clusteru. Vytvoření dvojice klíč SSH pomocí `ssh-keygen` příkaz. 
  
  ```bash
 ssh-keygen -f ~/.ssh/openshift_rsa -t rsa -N ''
 ```
 
 > [!NOTE]
-> heslo nesmí mít Hello pár klíčů SSH, které vytvoříte.
+> Pár klíčů SSH, které vytvoříte nesmí mít přístupové heslo.
 
-Další informace o klíče SSH v systému Windows [jak toocreate SSH klíčů v systému Windows](/azure/virtual-machines/linux/ssh-from-windows).
+Další informace o klíče SSH v systému Windows [vytvoření SSH klíčů v systému Windows](/azure/virtual-machines/linux/ssh-from-windows).
 
 ## <a name="store-ssh-private-key-in-key-vault"></a>Uložit privátní klíč SSH v Key Vault
-Hello OpenShift nasazení používá jste vytvořili toosecure přístup toohello OpenShift hlavní klíč SSH hello. tooenable hello nasazení toosecurely načíst klíč SSH hello, uložení klíče hello v Key Vault pomocí hello následující příkaz.
+Nasazení OpenShift používá klíč SSH, které jste vytvořili pro zabezpečený přístup k hlavnímu serveru OpenShift. Pokud chcete povolit nasazení tak, aby bezpečně načítat klíč SSH, uložení klíče v Key Vault, pomocí následujícího příkazu.
 
 # <a name="enabled-for-template-deployment"></a>Povolit pro nasazení šablony
 ```azurecli
@@ -85,16 +85,16 @@ az keyvault secret set --vault-name KeyVaultName --name OpenShiftKey --file ~/.s
 ```
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu 
-OpenShift komunikuje se službou Azure pomocí uživatelského jména a hesla nebo hlavní název služby. Objektu zabezpečení služby Azure je identita zabezpečení, která můžete použít s aplikací, služeb a automatizace nástroje, například OpenShift. Můžete řídit a definovat hello oprávnění objektu služby hello toowhat operace můžete provádět v rámci Azure. tooimprove zabezpečení přes právě poskytnutí uživatelského jména a hesla, tento příklad vytvoří základní služby hlavní.
+OpenShift komunikuje se službou Azure pomocí uživatelského jména a hesla nebo hlavní název služby. Objektu zabezpečení služby Azure je identita zabezpečení, která můžete použít s aplikací, služeb a automatizace nástroje, například OpenShift. Můžete řídit a definovat oprávnění, jaké operace objektu služby můžete provádět v Azure. Pokud chcete zvýšit zabezpečení přes právě poskytnutí uživatelského jména a hesla, tento příklad vytvoří základní služby hlavní.
 
-Vytvoření služby hlavní s [az ad sp vytvořit pro rbac](/cli/azure/ad/sp#create-for-rbac) a výstup hello pověření, které potřebuje OpenShift:
+Vytvoření služby hlavní s [az ad sp vytvořit pro rbac](/cli/azure/ad/sp#create-for-rbac) a výstupní přihlašovací údaje, které potřebuje OpenShift:
 
 ```azurecli
 az ad sp create-for-rbac --name openshiftsp \
           --role Contributor --password {strong password} \
           --scopes $(az group show --name myResourceGroup --query id)
 ```
-Poznamenejte si vlastnosti appId hello vrácená z příkazu hello.
+Poznamenejte si vlastnost appId vrácená z příkazu.
 ```json
 {
   "appId": "a487e0c1-82af-47d9-9a0b-af184eb87646d",
@@ -109,13 +109,13 @@ Poznamenejte si vlastnosti appId hello vrácená z příkazu hello.
 
 Další informace o objekty služby najdete v tématu [vytvořit objekt služby Azure pomocí Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli)
 
-## <a name="deploy-hello-openshift-origin-template"></a>Nasazení hello OpenShift počátek šablony
+## <a name="deploy-the-openshift-origin-template"></a>Nasazení šablony OpenShift původu
 Nasaďte další OpenShift počátek pomocí šablony Azure Resource Manager. 
 
 > [!NOTE] 
-> Hello následující příkaz vyžaduje az rozhraní příkazového řádku 2.0.8 nebo novější. Můžete ověřit hello az CLI verze s hello `az --version` příkaz. hello tooupdate verze rozhraní příkazového řádku najdete v části [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli).
+> Tento příkaz vyžaduje az rozhraní příkazového řádku 2.0.8 nebo novější. Můžete ověřit az CLI verze se `az --version` příkaz. K aktualizaci verze rozhraní příkazového řádku, najdete v části [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
-Použití hello `appId` hodnotu z objektu služby hello jste dříve vytvořili pro hello `aadClientId` parametr.
+Použití `appId` hodnotu z objektu služby, který jste dříve vytvořili pro `aadClientId` parametr.
 
 ```azurecli 
 az group deployment create --name myOpenShiftCluster \
@@ -131,7 +131,7 @@ az group deployment create --name myOpenShiftCluster \
         aadClientId={appId} \
         aadClientSecret={strong password} 
 ```
-Hello nasazení může trvat až toocomplete too20 minut. Hello adresu URL konzoly OpenShift hello a název DNS hello OpenShift hlavní server je vytištěny toohello Terminálové po dokončení nasazení hello.
+Nasazení může trvat až 20 minut. Adresa URL konzoly OpenShift a název DNS je hlavní server OpenShift vytiskne na terminálu po dokončení nasazení.
 
 ```json
 {
@@ -139,15 +139,15 @@ Hello nasazení může trvat až toocomplete too20 minut. Hello adresu URL konzo
   "OpenShift Master SSH": "ocpadmin@myopenshiftmaster.cloudapp.azure.com"
 }
 ```
-## <a name="connect-toohello-openshift-cluster"></a>Připojte toohello OpenShift cluster
-Po dokončení nasazení hello připojení konzole OpenShift toohello pomocí prohlížeče hello pomocí hello `OpenShift Console Uri`. Alternativně můžete připojit toohello OpenShift hlavní server pomocí hello následující příkaz.
+## <a name="connect-to-the-openshift-cluster"></a>Připojte se ke clusteru OpenShift
+Po dokončení nasazení připojit ke konzole OpenShift pomocí prohlížeče `OpenShift Console Uri`. Alternativně můžete připojit k hlavnímu OpenShift pomocí následujícího příkazu.
 
 ```bash
 $ ssh ocpadmin@myopenshiftmaster.cloudapp.azure.com
 ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud již nepotřebujete, můžete použít hello [odstranění skupiny az](/cli/azure/group#delete) příkaz skupiny prostředků hello tooremove, OpenShift clusteru a všechny související prostředky.
+Pokud již nepotřebujete, můžete použít [odstranění skupiny az](/cli/azure/group#delete) příkaz, který má-li odebrat skupinu prostředků, OpenShift clusteru a všechny související prostředky.
 
 ```azurecli 
 az group delete --name myResourceGroup
@@ -157,8 +157,8 @@ az group delete --name myResourceGroup
 
 V tento kurz, zjištěné postup:
 > [!div class="checklist"]
-> * Vytvoření klíčů SSH pro hello OpenShift cluster KeyVault toomanage.
+> * Vytvořte KeyVault ke správě klíčů SSH OpenShift clusteru.
 > * Nasazení clusteru OpenShift na virtuálních počítačích Azure. 
-> * Instalace a konfigurace hello [OpenShift CLI](https://docs.openshift.org/latest/cli_reference/index.html#cli-reference-index) toomanage hello clusteru.
+> * Instalace a konfigurace [OpenShift CLI](https://docs.openshift.org/latest/cli_reference/index.html#cli-reference-index) ke správě clusteru.
 
-Nyní je nasazený tento OpenShift původní cluster. Můžete postupovat podle OpenShift kurzy toolearn jak toodeploy vaší první aplikace a použití hello OpenShift nástroje. V tématu [Začínáme s OpenShift původu](https://docs.openshift.org/latest/getting_started/index.html) tooget spuštěna. 
+Nyní je nasazený tento OpenShift původní cluster. Zjistěte, jak nasadit svoji první aplikaci a používat nástroje OpenShift můžete výukové OpenShift. V tématu [Začínáme s OpenShift původu](https://docs.openshift.org/latest/getting_started/index.html) začít pracovat. 

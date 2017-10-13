@@ -1,5 +1,5 @@
 ---
-title: "aaaWindows univerzální aplikace SDK Upgrade procedury"
+title: "Postupy upgradu systému Windows Universal SDK aplikace"
 description: "Postupy upgradu systému Windows Universal SDK aplikací pro Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,47 +14,47 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 95aba5d55cd65d4190aad35737f872414b5ed443
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: fe85a99a92fb39082cafe7422b356de1f20f14bd
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="windows-universal-apps-sdk-upgrade-procedures"></a>Postupy upgradu systému Windows Universal SDK aplikace
-Pokud již mít integrovanou starší verze zapojení do své aplikace, musíte tooconsider hello následující body při upgradu hello SDK.
+Pokud již jste spojili starší verze zapojení do své aplikace, je nutné zvážit následující body při upgradu sady SDK.
 
-Toofollow může mít několik postupů, pokud provedena několik verzí hello SDK. Například pokud migrujete z 0.10.1 too0.11.0 máte toofirst postupujte podle hello "z 0.9.0 too0.10.1" postup pak hello "z 0.10.1 too0.11.0" postup.
+Možná budete muset několik postupy použijte, pokud provedena několik verzí sady SDK. Například pokud migrujete z 0.10.1 0.11.0 budete muset nejdřív postupujte podle pokynů "od 0.9.0 k 0.10.1" pak postupu "od 0.10.1 k 0.11.0".
 
-## <a name="from-330-too340"></a>Z 3.3.0 too3.4.0
+## <a name="from-330-to-340"></a>Z 3.3.0 k 3.4.0
 ### <a name="test-logs"></a>Protokolů testování
-Protokoly konzoly vyprodukované hello SDK teď může být povolena nebo zakázána nebo filtrovat. toocustomize se aktualizovat hello vlastnost `EngagementAgent.Instance.TestLogEnabled` tooone hello hodnota dostupná z hello `EngagementTestLogLevel` výčtu, například:
+Protokoly konzoly vyprodukované sady SDK teď může být povolena nebo zakázána nebo filtrovat. Chcete-li přizpůsobit tím, aktualizujte vlastnost `EngagementAgent.Instance.TestLogEnabled` na jednu z hodnota dostupná z `EngagementTestLogLevel` výčtu pro instanci:
 
             EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
             EngagementAgent.Instance.Init();
 
 ### <a name="resources"></a>Zdroje
-bylo vylepšeno Hello Reach překrytí. Je součástí prostředky pro balíček NuGet sady SDK hello.
+Bylo vylepšeno Reach překrytí. Je součástí zdroje balíčku NuGet sady SDK.
 
-Při upgradu toohello novou verzi hello SDK můžete zvolit, že jestli se mají tookeep existující soubory z hello překrytí složku vašich prostředků, nebo není:
+Při upgradu na novou verzi sady SDK můžete zvolit, zda chcete zachovat existující soubory ve složce překrytí vašich prostředků, nebo není:
 
-* Pokud předchozí překrytí hello pracuje pro vás nebo jsou integrací hello `WebView` elementy ručně pak můžete rozhodnout tookeep, vaše stávající soubory, ji budou i nadále fungovat. 
-* Pokud chcete, aby tooupdate toohello nové překrytí, jenom nahradit hello celou `overlay` složky z vašich prostředků s novým hello z balíčku SDK hello (aplikace UWP: Po provedení upgradu hello můžete získat novou složku překrytí hello % USERPROFILE %\\. nuget\ packages\MicrosoftAzure.MobileEngagement\3.4.0\content\win81\Resources).
+* Pokud předchozí překrytí pracuje pro vás nebo jsou integrací `WebView` elementy ručně pak můžete rozhodnout zachovat stávající soubory, ji budou i nadále fungovat. 
+* Pokud chcete aktualizovat na novou překrytí, právě nahradit všechny `overlay` složku z vašich prostředků s novým z balíčku SDK (aplikace UWP: Po dokončení upgradu, můžete získat novou složku překrytí % USERPROFILE %\\.nuget\packages\MicrosoftAzure.MobileEngagement\3.4.0\content\win81\Resources).
 
 > [!WARNING]
-> Pomocí nové překrytí hello přepíše všechny úpravy probíhají hello předchozí verze.
+> Pomocí nové překrytí přepíše všechny úpravy probíhají v předchozí verzi.
 > 
 > 
 
-## <a name="from-320-too330"></a>Z 3.2.0 too3.3.0
+## <a name="from-320-to-330"></a>Z 3.2.0 k 3.3.0
 ### <a name="resources"></a>Zdroje
-Tento krok se týká jenom vlastní prostředky. Pokud jste upravili hello prostředky poskytované hello SDK (html, obrázky, překrytí), pak máte toobackup je před upgradem a použít znovu vlastní na upgradovat prostředky.
+Tento krok se týká jenom vlastní prostředky. Pokud jste upravili prostředky poskytované sadě SDK (html, obrázky, překrytí) budete muset zálohování je před upgradem a znovu použít vlastní na upgradovaný prostředky.
 
-## <a name="from-310-too320"></a>Z 3.1.0 too3.2.0
+## <a name="from-310-to-320"></a>Z 3.1.0 k 3.2.0
 ### <a name="resources"></a>Zdroje
-Tento krok se týká jenom vlastní prostředky. Pokud jste upravili hello prostředky poskytované hello SDK (html, obrázky, překrytí), pak máte toobackup je před upgradem a použít znovu vlastní na upgradovat prostředky.
+Tento krok se týká jenom vlastní prostředky. Pokud jste upravili prostředky poskytované sadě SDK (html, obrázky, překrytí) budete muset zálohování je před upgradem a znovu použít vlastní na upgradovaný prostředky.
 
 ### <a name="webview-integration"></a>Integrace webové zobrazení
-V této verzi byly zavedeny velikostem některé vylepšení toomatch jiné zařízení. Ujistěte se, že vaše integrace webové zobrazení hello odpovídají hello následující:
+Některé vylepšení tak, aby odpovídaly velikostem jiné zařízení byly zavedeny v této verzi. Zajistěte, aby odpovídaly svoji integraci webové zobrazení následující:
 
 Ve vaší () stránky XAML:
 
@@ -73,7 +73,7 @@ A v souboru přidružené .cs:
     namespace My.Namespace.Example
     {
             /// <summary>
-            /// An empty page that can be used on its own or navigated toowithin a Frame.
+            /// An empty page that can be used on its own or navigated to within a Frame.
             /// </summary>
             public sealed partial class ExampleEngagementReachPage : EngagementPage
             {
@@ -81,25 +81,25 @@ A v souboru přidružené .cs:
               {
                 this.InitializeComponent();
 
-                /* Set your webview elements toohello correct size. */
+                /* Set your webview elements to the correct size. */
                 SetWebView(width, height);
               }
 
-              #region tooimplement
+              #region to implement
               /* Attach events when page is navigated. */
               protected override void OnNavigatedTo(NavigationEventArgs e)
               {
-                /* Update hello webview when hello app window is resized. */
+                /* Update the webview when the app window is resized. */
                 Window.Current.SizeChanged += DisplayProperties_OrientationChanged;
 
-                /* Update hello webview when hello app/status bar is resized. */
+                /* Update the webview when the app/status bar is resized. */
     #if WINDOWS_PHONE_APP || WINDOWS_UWP
                 ApplicationView.GetForCurrentView().VisibleBoundsChanged += DisplayProperties_VisibleBoundsChanged; 
     #endif
                 base.OnNavigatedTo(e);
               }
 
-              /* When page is left ensure toodetach SizeChanged handler. */
+              /* When page is left ensure to detach SizeChanged handler. */
               protected override void OnNavigatedFrom(NavigationEventArgs e)
               {
                 Window.Current.SizeChanged -= DisplayProperties_OrientationChanged;
@@ -109,7 +109,7 @@ A v souboru přidružené .cs:
                 base.OnNavigatedFrom(e);
               }
 
-              /* "width" and "height" are hello current size of your application display. */
+              /* "width" and "height" are the current size of your application display. */
     #if WINDOWS_PHONE_APP || WINDOWS_UWP
               double width = ApplicationView.GetForCurrentView().VisibleBounds.Width;
               double height = ApplicationView.GetForCurrentView().VisibleBounds.Height;
@@ -119,10 +119,10 @@ A v souboru přidružené .cs:
     #endif
 
               /// <summary>
-              /// Set your webview elements toohello correct size.
+              /// Set your webview elements to the correct size.
               /// </summary>
-              /// <param name="width">hello width of your current display.</param>
-              /// <param name="height">hello height of your current display.</param>
+              /// <param name="width">The width of your current display.</param>
+              /// <param name="height">The height of your current display.</param>
               private void SetWebView(double width, double height)
               {
                 #pragma warning disable 4014
@@ -136,7 +136,7 @@ A v souboru přidružené .cs:
               }
 
               /// <summary>
-              /// Handler that takes hello Windows.Current.SizeChanged and indicates that webviews have toobe resized.
+              /// Handler that takes the Windows.Current.SizeChanged and indicates that webviews have to be resized.
               /// </summary>
               /// <param name="sender">Original event trigger.</param>
               /// <param name="e">Window Size Changed Event arguments.</param>
@@ -145,22 +145,22 @@ A v souboru přidružené .cs:
                 double width = e.Size.Width;
                 double height = e.Size.Height;
 
-                /* Set your webview elements toohello correct size. */
+                /* Set your webview elements to the correct size. */
                 SetWebView(width, height);
               }
 
     #if WINDOWS_PHONE_APP || WINDOWS_UWP              
               /// <summary>
-              /// Handler that takes hello ApplicationView.VisibleBoundsChanged and indicates that webviews have toobe resized
+              /// Handler that takes the ApplicationView.VisibleBoundsChanged and indicates that webviews have to be resized
               /// </summary>
-              /// <param name="sender">hello related application view.</param>
+              /// <param name="sender">The related application view.</param>
               /// <param name="e">Related event arguments.</param>
               private void DisplayProperties_VisibleBoundsChanged(ApplicationView sender, Object e)
               {
                 double width = sender.VisibleBounds.Width;
                 double height = sender.VisibleBounds.Height;
 
-                /* Set your webview elements toohello correct size. */
+                /* Set your webview elements to the correct size. */
                 SetWebView(width, height);
               }
     #endif
@@ -168,37 +168,37 @@ A v souboru přidružené .cs:
             }
     }
 
-## <a name="from-200-too300"></a>Z 2.0.0 too3.0.0
+## <a name="from-200-to-300"></a>Z 2.0.0 k 3.0.0
 ### <a name="resources"></a>Zdroje
-Tento krok se týká jenom vlastní prostředky. Pokud jste upravili hello prostředky poskytované hello SDK (html, obrázky, překrytí), pak máte toobackup je před upgradem a použít znovu vlastní na upgradovat prostředky.
+Tento krok se týká jenom vlastní prostředky. Pokud jste upravili prostředky poskytované sadě SDK (html, obrázky, překrytí) budete muset zálohování je před upgradem a znovu použít vlastní na upgradovaný prostředky.
 
-## <a name="from-111-too200"></a>Z 1.1.1 too2.0.0
-Hello následující text popisuje, jak toomigrate integraci sady SDK z hello Capptain služby nabízených Capptain SAS do aplikace používá technologii Azure Mobile Engagement. 
+## <a name="from-111-to-200"></a>Z 1.1.1 k 2.0.0
+Následující část popisuje postup migrace integraci sady SDK z Capptain služby, které do aplikace používá technologii Azure Mobile Engagement nabízí Capptain SAS. 
 
 > [!IMPORTANT]
-> Capptain a Mobile Engagement nejsou hello stejné služby a postup hello níže uvedené jenom označuje, jak toomigrate hello klientskou aplikaci. Migrace hello SDK v aplikaci hello není migrace dat ze sady Mobile Engagement pro toohello hello Capptain servery
+> Capptain a Mobile Engagement nejsou stejné služby a postup níže uvedené jenom dozvíte, jak migrovat klientské aplikace. Migrace sady SDK v aplikaci není migrovat data ze serverů Capptain na servery Mobile Engagement
 > 
 > 
 
-Pokud provádíte migraci ze starší verze, prosím nejdřív najdete hello Capptain webu toomigrate too1.1.1 pak použít následující postup hello
+Pokud provádíte migraci ze starší verze, najdete na webu společnosti Capptain nejdřív přenést 1.1.1 pak použije následující postup
 
 ### <a name="nuget-package"></a>Balíček Nuget
 Nahraďte **Capptain.WindowsPhone** podle **MicrosoftAzure.MobileEngagement** balíček Nuget.
 
 ### <a name="applying-mobile-engagement"></a>Použití Mobile Engagement
-Hello SDK používá termín hello `Engagement`. Je třeba tooupdate vašeho projektu toomatch tuto změnu.
+Sada SDK používá termín `Engagement`. Je potřeba aktualizovat projekt tak, aby odpovídaly tuto změnu.
 
-Je nutné toouninstall váš aktuální Capptain balíček nuget. Zvažte, se odeberou všechny změny ve složce Capptain prostředky. Pokud chcete, aby tookeep tyto soubory pak proveďte jejich kopii.
+Je potřeba odinstalovat váš aktuální Capptain balíček nuget. Zvažte, se odeberou všechny změny ve složce Capptain prostředky. Pokud chcete, aby tyto soubory pak proveďte jejich kopii.
 
-Potom nainstalujte balíček nuget Microsoft Azure Engagement nové hello na projektu. Najdete ho přímo na [nuget webu]. nebo sem index. Tato akce nahradí všechny soubory prostředky používané Engagement a přidá nové tooyour Engagement DLL hello projektu odkazy.
+Potom nainstalujte nový balíček nuget Microsoft Azure Engagement na projektu. Najdete ho přímo na [nuget webu]. nebo sem index. Tato akce nahradí všechny soubory prostředky používané Engagement a přidá nová knihovna DLL Engagement odkazy projektu.
 
-Tooclean máte odstraněním Capptain DLL odkazy odkazy projektu. Pokud to neuděláte, budou v konfliktu hello verzi Capptain a dojde k chybám.
+Je nutné vyčistit odkazy projektu odstraněním Capptain DLL odkazy. Pokud to neuděláte, budou v konfliktu verze Capptain a dojde k chybám.
 
-Pokud jste upravili Capptain prostředky, zkopírujte původní soubory obsahu a vložit do nové soubory Engagement hello. Upozorňujeme, že soubory xaml a cs obsahují toobe aktualizovat.
+Pokud jste upravili Capptain prostředky, zkopírujte původní soubory obsahu a vložit do nové soubory zapojení. Upozorňujeme, že soubory xaml a cs muset aktualizovat.
 
-Po dokončení těchto kroků stačí tooreplace staré odkazy Capptain podle hello nové Engagement odkazy.
+Po dokončení těchto kroků stačí nahraďte staré odkazy Capptain pomocí nové odkazy zapojení.
 
-1. Všechny obory názvů Capptain mít toobe aktualizovat.
+1. Všechny obory názvů Capptain muset aktualizovat.
    
     Před migrací:
    
@@ -251,7 +251,7 @@ Po dokončení těchto kroků stačí tooreplace staré odkazy Capptain podle he
 4. Změny stránky překrytí
    
    > [!IMPORTANT]
-   > Překrytí také změní. Jeho nový obor názvů je `Microsoft.Azure.Engagement.Overlay`. Má toobe používají v souborech xaml a cs. Kromě toho `CapptainGrid` jmenuje toobe `EngagementGrid`, `capptain_notification_content` a `capptain_announcement_content` jsou pojmenované `engagement_notification_content` a `engagement_announcement_content`.
+   > Překrytí také změní. Jeho nový obor názvů je `Microsoft.Azure.Engagement.Overlay`. Je třeba použít v souboru xaml a cs. Kromě toho `CapptainGrid` je s názvem `EngagementGrid`, `capptain_notification_content` a `capptain_announcement_content` jsou pojmenované `engagement_notification_content` a `engagement_announcement_content`.
    > 
    > 
    
@@ -268,24 +268,24 @@ Po dokončení těchto kroků stačí tooreplace staré odkazy Capptain podle he
           engagement="using:Microsoft.Azure.Engagement.Overlay"
           ...
         </engagement:EngagementPageOverlay>
-5. Pro hello jiné prostředky, jako je Capptain obrázky a soubory HTML, Všimněte si, že také byly přejmenovat toouse "Engagement".
+5. Pro jiné prostředky jako jsou soubory HTML a obrázky Capptain Všimněte si, že se také přejmenovaná používat "Engagement".
 
 ### <a name="project-declaration"></a>Deklarace projektu
 Na Package.appxmanifest `File Type Associations` byla aktualizována z:
 
-* capptain\_dosáhnout\_obsahu tooengagement\_dosáhnout\_obsahu
-* capptain\_protokolu\_souboru tooengagement\_protokolu\_souboru
+* capptain\_dosáhnout\_obsahu engagement\_dosáhnout\_obsahu
+* capptain\_protokolu\_soubor engagement\_protokolu\_souboru
 
 ### <a name="application-id--sdk-key"></a>ID aplikace nebo klíč SDK
-Zapojení používá připojovací řetězec. Nemáte toospecify ID aplikací a klíčem SDK s Mobile Engagement, stačí toospecify připojovací řetězec. Můžete ho nastavit tak v souboru EngagementConfiguration.
+Zapojení používá připojovací řetězec. Nemáte a zadejte ID aplikace a klíč SDK s Mobile Engagement, stačí zadat připojovací řetězec. Můžete ho nastavit tak v souboru EngagementConfiguration.
 
-Hello Engagement konfigurace může být nastavena v vaší `Resources\EngagementConfiguration.xml` souboru projektu.
+Konfigurace Engagement může být nastavena v vaší `Resources\EngagementConfiguration.xml` souboru projektu.
 
-Upravte tento soubor toospecify:
+Upravte tento soubor k určení:
 
 * Připojovací řetězec aplikací mezi značky `<connectionString>` a `<\connectionString>`.
 
-Pokud chcete, aby ho za běhu místo toho můžete volat hello následující toospecify metoda před inicializací agenta hello Engagement:
+Pokud chcete zadat za běhu, můžete volat metodu před Engagement inicializaci agenta:
 
     /* Engagement configuration. */
     EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
@@ -294,10 +294,10 @@ Pokud chcete, aby ho za běhu místo toho můžete volat hello následující to
     /* Initialize Engagement agent with above configuration. */
     EngagementAgent.Instance.Init(args, engagementConfiguration);
 
-Hello připojovací řetězec pro vaši aplikaci se zobrazí na portálu Azure Classic hello.
+Připojovací řetězec pro vaši aplikaci se zobrazí na portálu Azure Classic.
 
 ### <a name="items-name-change"></a>Změna názvu položky
-Všechny položky s názvem *capptain* byly pojmenovány *engagement*. Podobně jako pro *Capptain* příliš*Engagement*.
+Všechny položky s názvem *capptain* byly pojmenovány *engagement*. Podobně jako pro *Capptain* k *Engagement*.
 
 Příklady běžně používané Capptain položek:
 

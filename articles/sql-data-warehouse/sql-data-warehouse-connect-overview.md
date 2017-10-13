@@ -1,6 +1,6 @@
 ---
-title: aaaConnect tooAzure SQL Data Warehouse | Microsoft Docs
-description: "Jak název serveru hello toofind a připojovací řetězce pro vaše tooAzure SQL Data Warehouse"
+title: "Připojení k Azure SQL Data Warehouse | Dokumentace Microsoftu"
+description: "Postup vyhledání názvu serveru a připojovacího řetězce pro Azure SQL Data Warehouse"
 services: sql-data-warehouse
 documentationcenter: NA
 author: antvgski
@@ -15,30 +15,30 @@ ms.workload: data-services
 ms.custom: connect
 ms.date: 10/31/2016
 ms.author: anvang;barbkess
-ms.openlocfilehash: f15e098026afb7c5efbbbfaf62b681e8cd7936bc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 72c2b404e66611da421eca0dc30aa71e18c6d120
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="connect-tooazure-sql-data-warehouse"></a>Připojit tooAzure SQL Data Warehouse
-Tento článek vám pomůže připojené tooSQL datového skladu pro hello poprvé.
+# <a name="connect-to-azure-sql-data-warehouse"></a>Připojení k Azure SQL Data Warehouse
+Tento článek vám pomůže s prvním připojením k SQL Data Warehouse.
 
 ## <a name="find-your-server-name"></a>Vyhledání názvu serveru
-Hello první krok tooconnecting tooSQL datového skladu je zároveň budete vědět, jak toofind název serveru.  Název serveru hello v hello následující ukázka je například sample.database.windows.net. název plně kvalifikovaný serveru toofind hello:
+Prvním krokem při připojení k SQL Data Warehouse je vědět, jak najít název serveru.  Například název serveru v následujícím příkladu je sample.database.windows.net. Plně kvalifikovaný název serveru zjistíte následujícím způsobem:
 
-1. Přejděte toohello [portál Azure][Azure portal].
+1. Přejděte na web [Azure Portal][Azure portal].
 2. Klikněte na **Databáze SQL**. 
-3. Klikněte na hello požadovaná tooconnect do databáze.
-4. Vyhledejte hello úplný název serveru.
+3. Klikněte na databázi, ke které se chcete připojit.
+4. Vyhledejte úplný název serveru.
    
     ![Úplný název serveru][1]
 
 ## <a name="supported-drivers-and-connection-strings"></a>Podporované ovladače a připojovací řetězce
-Azure SQL Data Warehouse podporuje [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] a [JDBC][JDBC]. Klikněte na jednu z hello předcházející ovladače toofind hello nejnovější verzi a dokumentaci. tooautomatically negeneruje hello Azure hello připojovací řetězec pro hello ovladač, který používáte portál, můžete kliknutím na hello **zobrazit databázové připojovací řetězce** z předchozích příklad hello.  Následuje několik příkladů toho, jak připojovací řetězce vypadají pro jednotlivé ovladače.
+Azure SQL Data Warehouse podporuje [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] a [JDBC][JDBC]. Kliknutím na jeden z předchozích ovladačů vyhledáte nejnovější verzi a dokumentaci. Chcete-li automaticky vygenerovat připojovací řetězec pro ovladač, který používáte, z webu Azure Portal, můžete kliknout na **Zobrazit připojovací řetězce databáze** z předchozího příkladu.  Následuje několik příkladů toho, jak připojovací řetězce vypadají pro jednotlivé ovladače.
 
 > [!NOTE]
-> Zvažte nastavení hello připojení časový limit too300 sekund tooallow vaše připojení toosurvive krátkodobých období nedostupnosti.
+> Zvažte nastavení časového limitu připojení na 300 sekund, pokud chcete, aby vaše připojení přestálo krátká období nedostupnosti.
 > 
 > 
 
@@ -54,7 +54,7 @@ Driver={SQL Server Native Client 11.0};Server=tcp:{your_server}.database.windows
 
 ### <a name="php-connection-string-example"></a>Příklad připojovacího řetězce pro PHP
 ```PHP
-Server: {your_server}.database.windows.net,1433 \r\nSQL Database: {your_database}\r\nUser Name: {your_user_name}\r\n\r\nPHP Data Objects(PDO) Sample Code:\r\n\r\ntry {\r\n   $conn = new PDO ( \"sqlsrv:server = tcp:{your_server}.database.windows.net,1433; Database = {your_database}\", \"{your_user_name}\", \"{your_password_here}\");\r\n    $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );\r\n}\r\ncatch ( PDOException $e ) {\r\n   print( \"Error connecting tooSQL Server.\" );\r\n   die(print_r($e));\r\n}\r\n\rSQL Server Extension Sample Code:\r\n\r\n$connectionInfo = array(\"UID\" => \"{your_user_name}\", \"pwd\" => \"{your_password_here}\", \"Database\" => \"{your_database}\", \"LoginTimeout\" => 30, \"Encrypt\" => 1, \"TrustServerCertificate\" => 0);\r\n$serverName = \"tcp:{your_server}.database.windows.net,1433\";\r\n$conn = sqlsrv_connect($serverName, $connectionInfo);
+Server: {your_server}.database.windows.net,1433 \r\nSQL Database: {your_database}\r\nUser Name: {your_user_name}\r\n\r\nPHP Data Objects(PDO) Sample Code:\r\n\r\ntry {\r\n   $conn = new PDO ( \"sqlsrv:server = tcp:{your_server}.database.windows.net,1433; Database = {your_database}\", \"{your_user_name}\", \"{your_password_here}\");\r\n    $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );\r\n}\r\ncatch ( PDOException $e ) {\r\n   print( \"Error connecting to SQL Server.\" );\r\n   die(print_r($e));\r\n}\r\n\rSQL Server Extension Sample Code:\r\n\r\n$connectionInfo = array(\"UID\" => \"{your_user_name}\", \"pwd\" => \"{your_password_here}\", \"Database\" => \"{your_database}\", \"LoginTimeout\" => 30, \"Encrypt\" => 1, \"TrustServerCertificate\" => 0);\r\n$serverName = \"tcp:{your_server}.database.windows.net,1433\";\r\n$conn = sqlsrv_connect($serverName, $connectionInfo);
 ```
 
 ### <a name="jdbc-connection-string-example"></a>Příklad připojovacího řetězce pro JDBC
@@ -73,11 +73,11 @@ SQL Data Warehouse během připojování a vytváření objektů používá něk
 | [DATEFIRST][DATEFIRST] |7 |
 
 ## <a name="next-steps"></a>Další kroky
-tooconnect a dotaz pomocí sady Visual Studio, najdete v části [dotazu pomocí sady Visual Studio][Query with Visual Studio]. toolearn Další informace o možnosti ověřování najdete v části [tooAzure ověřování SQL Data Warehouse][Authentication tooAzure SQL Data Warehouse].
+Informace o připojení a dotazování pomocí sady Visual Studio najdete v oddílu [Dotazování pomocí sady Visual Studio][Query with Visual Studio]. Další informace o možnostech ověřování najdete v oddílu [Ověřování do Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse].
 
 <!--Articles-->
 [Query with Visual Studio]: ./sql-data-warehouse-query-visual-studio.md
-[Authentication tooAzure SQL Data Warehouse]: ./sql-data-warehouse-authentication.md
+[Authentication to Azure SQL Data Warehouse]: ./sql-data-warehouse-authentication.md
 
 <!--MSDN references-->
 [ADO.NET]: https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx

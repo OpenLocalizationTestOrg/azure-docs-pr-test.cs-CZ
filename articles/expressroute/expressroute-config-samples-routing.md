@@ -1,5 +1,5 @@
 ---
-title: "Ukázky konfigurace směrovače zákazníka aaaExpressRoute | Microsoft Docs"
+title: "Ukázky konfigurace směrovače zákazníka ExpressRoute | Microsoft Docs"
 description: "Tato stránka obsahuje ukázky konfigurace směrovače pro směrovače Cisco a Juniper."
 documentationcenter: na
 services: expressroute
@@ -14,36 +14,36 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
-ms.openlocfilehash: 5c91f24e6082e01c3e8df91b4fcfda46a6c29fa8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 032e584dc5abf59e9e3e8d80673b402f1fbf721b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="router-configuration-samples-tooset-up-and-manage-routing"></a>Konfigurace směrovače ukázky tooset nahoru a spravovat směrování
-Tato stránka obsahuje rozhraní a směrování ukázky konfigurace pro Cisco IOS-XE a Juniper MX směrovače řady. Tyto jsou ukázky určený toobe pouze pokyny a nesmí se používat, protože je. Můžete pracovat s vaší toocome dodavatele s odpovídající konfigurací pro vaši síť. 
+# <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>Ukázky konfigurace směrovače nastavit a spravovat směrování
+Tato stránka obsahuje rozhraní a směrování ukázky konfigurace pro Cisco IOS-XE a Juniper MX směrovače řady. Tyto by měla být ukázky jenom pokyny a nesmí se používat, protože je. Můžete pracovat s vaším dodavatelem spolu s odpovídající konfigurací pro vaši síť. 
 
 > [!IMPORTANT]
-> Ukázky na této stránce jsou toobe určený výhradně pro pokyny. Musíte pracovat se tým prodeje / technické od dodavatele a vaší sítě team toocome až s odpovídající konfigurací toomeet vašim potřebám. Microsoft nebude podporovat problémy související s tooconfigurations uvedené na této stránce. Pro problémy podpory, bude nutné kontaktovat dodavatele zařízení.
+> Ukázky na této stránce by měla být čistě pokyny. Musíte pracovat se od dodavatele prodeje / technické vaší síťových adaptérů a spolu s odpovídající konfigurací podle svých potřeb. Problémy související s konfigurací, které jsou uvedené na této stránce nebudou podpory společnosti Microsoft. Pro problémy podpory, bude nutné kontaktovat dodavatele zařízení.
 > 
 > 
 
 ## <a name="mtu-and-tcp-mss-settings-on-router-interfaces"></a>Nastavení jednotek MTU a MSS protokolu TCP na rozhraní směrovače
-* Hello MTU pro rozhraní ExpressRoute hello je 1500, což je typický výchozí hello MTU pro rozhraní sítě Ethernet na směrovač. Pokud ve výchozím nastavení má směrovač jiné MTU, je bez nutnosti toospecify hodnotu na rozhraní směrovače hello.
-* Na rozdíl od služby Azure VPN Gateway hello MSS protokolu TCP pro okruh ExpressRoute není nutné toobe zadán.
+* MTU pro rozhraní ExpressRoute je 1500, což je typický výchozí MTU pro rozhraní sítě Ethernet na směrovač. Pokud ve výchozím nastavení má směrovač jiné MTU, není nutné zadat hodnotu na rozhraní směrovače.
+* Na rozdíl od služby Azure VPN Gateway MSS protokolu TCP pro okruh ExpressRoute nemusí být zadaný.
 
-Následující ukázky konfigurace směrovače použít tooall partnerských vztahů. Zkontrolujte [partnerských vztahů ExpressRoute](expressroute-circuit-peerings.md) a [požadavky na směrování služby ExpressRoute](expressroute-routing.md) Další informace o směrování.
+Následující ukázky směrovač konfigurace platí pro všechny partnerské vztahy. Zkontrolujte [partnerských vztahů ExpressRoute](expressroute-circuit-peerings.md) a [požadavky na směrování služby ExpressRoute](expressroute-routing.md) Další informace o směrování.
 
 
 ## <a name="cisco-ios-xe-based-routers"></a>Cisco IOS-XE na základě směrovače
-Ukázky Hello v této části se vztahují na všechny směrovač se systémem IOS XE operačních systémů hello.
+Ukázky v této části se vztahují na všechny směrovač se systémem IOS XE operačních systémů.
 
 ### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. Konfigurace rozhraní a dílčí rozhraní
-Budete potřebovat dílčí rozhraní na partnerský vztah v každé směrovače můžete připojit tooMicrosoft. Sub – rozhraní možné identifikovat pomocí ID sítě VLAN nebo pár skládaný ID sítě VLAN a IP adresu.
+Budete potřebovat dílčí rozhraní na partnerský vztah v každé směrovače se připojíte k Microsoftu. Sub – rozhraní možné identifikovat pomocí ID sítě VLAN nebo pár skládaný ID sítě VLAN a IP adresu.
 
 **Definice rozhraní Dot1Q**
 
-Tato ukázka poskytuje hello Definice dílčí rozhraní pro dílčí rozhraní s jeden ID sítě VLAN. Hello ID sítě VLAN je jedinečný pro každého partnerského vztahu. poslední oktet Hello vaší adresy IPv4, bude vždy lichý počet.
+Tato ukázka obsahuje definice dílčí rozhraní pro dílčí rozhraní s jeden ID sítě VLAN. ID sítě VLAN je jedinečný pro každého partnerského vztahu. Poslední oktet vaši adresu IPv4, bude vždy lichý počet.
 
     interface GigabitEthernet<Interface_Number>.<Number>
      encapsulation dot1Q <VLAN_ID>
@@ -51,14 +51,14 @@ Tato ukázka poskytuje hello Definice dílčí rozhraní pro dílčí rozhraní 
 
 **Definice rozhraní QinQ**
 
-Tato ukázka obsahuje hello Definice dílčí rozhraní pro dílčí rozhraní se dva identifikátory ID sítě VLAN. Dobrý den, který zůstane vnější ID sítě VLAN (s-tag), pokud se používá stejné hello napříč všech partnerských vztahů hello. vnitřní Hello ID sítě VLAN (c-tag) je jedinečný pro každého partnerského vztahu. poslední oktet Hello vaší adresy IPv4, bude vždy lichý počet.
+Tato ukázka obsahuje definice dílčí rozhraní pro dílčí rozhraní se dva identifikátory ID sítě VLAN. Vnější ID sítě VLAN (s-tag), pokud se používá zůstává stejná napříč všech partnerských vztahů. Vnitřní ID sítě VLAN (c-tag) je jedinečný pro každého partnerského vztahu. Poslední oktet vaši adresu IPv4, bude vždy lichý počet.
 
     interface GigabitEthernet<Interface_Number>.<Number>
      encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
      ip address <IPv4_Address><Subnet_Mask>
 
 ### <a name="2-setting-up-ebgp-sessions"></a>2. Nastavení relace eBGP
-Musíte nastavit relace protokolu BGP se společností Microsoft pro každý partnerský vztah. Následující ukázka Hello umožňuje toosetup relaci protokolu BGP se společností Microsoft. Pokud hello IPv4 adresu, která jste použili pro vaše rozhraní dílčí a.b.c.d, hello IP adresu BGP sousedním hello (Microsoft) bude a.b.c.d+1. poslední oktet Hello sousedním BGP hello adresy IPv4, bude vždy sudé číslo.
+Musíte nastavit relace protokolu BGP se společností Microsoft pro každý partnerský vztah. Následující ukázka umožňuje nastavit relace protokolu BGP se společností Microsoft. Pokud adresu IPv4, která jste použili pro vaše rozhraní dílčí a.b.c.d, IP adresu BGP sousedním (Microsoft) bude a.b.c.d+1. Poslední oktet sousedním BGP adresy IPv4, bude vždy sudé číslo.
 
     router bgp <Customer_ASN>
      bgp log-neighbor-changes
@@ -69,8 +69,8 @@ Musíte nastavit relace protokolu BGP se společností Microsoft pro každý par
      exit-address-family
     !
 
-### <a name="3-setting-up-prefixes-toobe-advertised-over-hello-bgp-session"></a>3. Nastavení toobe předpon inzerovaných během relace protokolu BGP hello
-Můžete nakonfigurovat tooMicrosoft vyberte předpony tooadvertise vašeho směrovače. Můžete toho dosáhnout pomocí hello následující ukázka.
+### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. Nastavení předpony chcete inzerovat přes relaci protokolu BGP
+Můžete nakonfigurovat směrovači inzerovat vyberte předpony společnosti Microsoft. Můžete tak učinit pomocí následující ukázky.
 
     router bgp <Customer_ASN>
      bgp log-neighbor-changes
@@ -83,7 +83,7 @@ Můžete nakonfigurovat tooMicrosoft vyberte předpony tooadvertise vašeho smě
     !
 
 ### <a name="4-route-maps"></a>4. Mapuje trasy
-Můžete použít mapy trasy a předponu uvádí toofilter předpony rozšíří do vaší sítě. Můžete použít ukázkové hello níže tooaccomplish hello úloh. Ujistěte se, že máte příslušné předpony zobrazí instalační program.
+Můžete použít mapy trasy a předponu seznamu filtru předpony rozšíří do vaší sítě. Následující ukázky můžete použít k provedení úlohy. Ujistěte se, že máte příslušné předpony zobrazí instalační program.
 
     router bgp <Customer_ASN>
      bgp log-neighbor-changes
@@ -101,13 +101,13 @@ Můžete použít mapy trasy a předponu uvádí toofilter předpony rozšíří
 
 
 ## <a name="juniper-mx-series-routers"></a>Směrovače Juniper MX řady
-Ukázky Hello v této části se vztahují na veškeré směrovače Juniper MX řady.
+Ukázky v této části se vztahují na veškeré směrovače Juniper MX řady.
 
 ### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. Konfigurace rozhraní a dílčí rozhraní
 
 **Definice rozhraní Dot1Q**
 
-Tato ukázka poskytuje hello Definice dílčí rozhraní pro dílčí rozhraní s jeden ID sítě VLAN. Hello ID sítě VLAN je jedinečný pro každého partnerského vztahu. poslední oktet Hello vaší adresy IPv4, bude vždy lichý počet.
+Tato ukázka obsahuje definice dílčí rozhraní pro dílčí rozhraní s jeden ID sítě VLAN. ID sítě VLAN je jedinečný pro každého partnerského vztahu. Poslední oktet vaši adresu IPv4, bude vždy lichý počet.
 
     interfaces {
         vlan-tagging;
@@ -124,7 +124,7 @@ Tato ukázka poskytuje hello Definice dílčí rozhraní pro dílčí rozhraní 
 
 **Definice rozhraní QinQ**
 
-Tato ukázka obsahuje hello Definice dílčí rozhraní pro dílčí rozhraní se dva identifikátory ID sítě VLAN. Dobrý den, který zůstane vnější ID sítě VLAN (s-tag), pokud se používá stejné hello napříč všech partnerských vztahů hello. vnitřní Hello ID sítě VLAN (c-tag) je jedinečný pro každého partnerského vztahu. poslední oktet Hello vaší adresy IPv4, bude vždy lichý počet.
+Tato ukázka obsahuje definice dílčí rozhraní pro dílčí rozhraní se dva identifikátory ID sítě VLAN. Vnější ID sítě VLAN (s-tag), pokud se používá zůstává stejná napříč všech partnerských vztahů. Vnitřní ID sítě VLAN (c-tag) je jedinečný pro každého partnerského vztahu. Poslední oktet vaši adresu IPv4, bude vždy lichý počet.
 
     interfaces {
         <Interface_Number> {
@@ -139,7 +139,7 @@ Tato ukázka obsahuje hello Definice dílčí rozhraní pro dílčí rozhraní s
     }                           
 
 ### <a name="2-setting-up-ebgp-sessions"></a>2. Nastavení relace eBGP
-Musíte nastavit relace protokolu BGP se společností Microsoft pro každý partnerský vztah. Následující ukázka Hello umožňuje toosetup relaci protokolu BGP se společností Microsoft. Pokud hello IPv4 adresu, která jste použili pro vaše rozhraní dílčí a.b.c.d, hello IP adresu BGP sousedním hello (Microsoft) bude a.b.c.d+1. poslední oktet Hello sousedním BGP hello adresy IPv4, bude vždy sudé číslo.
+Musíte nastavit relace protokolu BGP se společností Microsoft pro každý partnerský vztah. Následující ukázka umožňuje nastavit relace protokolu BGP se společností Microsoft. Pokud adresu IPv4, která jste použili pro vaše rozhraní dílčí a.b.c.d, IP adresu BGP sousedním (Microsoft) bude a.b.c.d+1. Poslední oktet sousedním BGP adresy IPv4, bude vždy sudé číslo.
 
     routing-options {
         autonomous-system <Customer_ASN>;
@@ -154,8 +154,8 @@ Musíte nastavit relace protokolu BGP se společností Microsoft pro každý par
         }                                   
     }
 
-### <a name="3-setting-up-prefixes-toobe-advertised-over-hello-bgp-session"></a>3. Nastavení toobe předpon inzerovaných během relace protokolu BGP hello
-Můžete nakonfigurovat tooMicrosoft vyberte předpony tooadvertise vašeho směrovače. Můžete toho dosáhnout pomocí hello následující ukázka.
+### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. Nastavení předpony chcete inzerovat přes relaci protokolu BGP
+Můžete nakonfigurovat směrovači inzerovat vyberte předpony společnosti Microsoft. Můžete tak učinit pomocí následující ukázky.
 
     policy-options {
         policy-statement <Policy_Name> {
@@ -180,7 +180,7 @@ Můžete nakonfigurovat tooMicrosoft vyberte předpony tooadvertise vašeho smě
 
 
 ### <a name="4-route-maps"></a>4. Mapuje trasy
-Můžete použít mapy trasy a předponu uvádí toofilter předpony rozšíří do vaší sítě. Můžete použít ukázkové hello níže tooaccomplish hello úloh. Ujistěte se, že máte příslušné předpony zobrazí instalační program.
+Můžete použít mapy trasy a předponu seznamu filtru předpony rozšíří do vaší sítě. Následující ukázky můžete použít k provedení úlohy. Ujistěte se, že máte příslušné předpony zobrazí instalační program.
 
     policy-options {
         prefix-list MS_Prefixes {
@@ -210,5 +210,5 @@ Můžete použít mapy trasy a předponu uvádí toofilter předpony rozšíří
     }
 
 ## <a name="next-steps"></a>Další kroky
-V tématu hello [ExpressRoute – nejčastější dotazy](expressroute-faqs.md) další podrobnosti.
+Další podrobnosti najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
 

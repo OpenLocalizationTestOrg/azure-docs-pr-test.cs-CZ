@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate vlastní obrázek z virtuálního počítače Azure DevTest Labs | Microsoft Docs"
-description: "Zjistěte, jak hello toocreate vlastní image v Azure DevTest Labs z zřízeného virtuálního počítače pomocí portálu Azure"
+title: "Z virtuálního počítače vytvořit vlastní image Azure DevTest Labs | Microsoft Docs"
+description: "Naučte se vytvořit vlastní image v Azure DevTest Labs ze zřízeného virtuálního počítače pomocí portálu Azure"
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: tomarcher
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: tarcher
-ms.openlocfilehash: 7dccb79d3db4aae676c7bd2f6b800301210491e2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 9d2dcf7164985508d691e8a0c123efaf3b8aa19a
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>Vytvořit vlastní image z virtuálního počítače
 
@@ -26,29 +26,29 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="step-by-step-instructions"></a>Podrobné pokyny
 
-Můžete vytvořit vlastní image ze zřízeného virtuálního počítače a pak použít tento vlastní image toocreate identické virtuální počítače. Hello následující kroky popisují, jak toocreate vlastní obrázek z virtuálního počítače:
+Můžete vytvořit vlastní image ze zřízeného virtuálního počítače a pak použít tento vlastní bitovou kopii k Vytvořte identické virtuální počítače. Následující kroky ukazují, jak vytvořit vlastní image z virtuálního počítače:
 
-1. Přihlaste se toohello [portál Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k webu [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Vyberte **další služby**a potom vyberte **DevTest Labs** hello seznamu.
+1. Vyberte **Další služby** a poté ze seznamu vyberte **DevTest Labs**.
 
-1. Ze seznamu hello labs vyberte požadované prostředí hello.  
+1. Ze seznamu labs vyberte požadované testovací prostředí.  
 
-1. V okně prostředí hello vyberte **Můj virtuální počítače**.
+1. V okně v prostředí, vyberte **Můj virtuální počítače**.
  
-1. Na hello **Můj virtuální počítače** okně vyberte hello virtuálních počítačů, ze kterého mají být toocreate hello vlastní image.
+1. Na **Můj virtuální počítače** okně vyberte virtuální počítač, ze kterého chcete vytvořit vlastní image.
 
-1. V okně hello Virtuálního počítače, vyberte **vytvořit vlastní image (VHD)**.
+1. V okně Virtuálního počítače, vyberte **vytvořit vlastní image (VHD)**.
 
     ![Vytvoření vlastní image položky nabídky](./media/devtest-lab-create-template/create-custom-image.png)
 
-1. Na hello **vytvořit image** okno, zadejte název a popis pro vlastní bitovou kopii. Tyto informace se zobrazí v seznamu hello základů při vytváření virtuálního počítače.
+1. Na **vytvořit image** okno, zadejte název a popis pro vlastní bitovou kopii. Tyto informace se zobrazí v seznamu základů při vytváření virtuálního počítače.
 
     ![Vytvořit vlastní image okno](./media/devtest-lab-create-template/create-custom-image-blade.png)
 
-1. Vyberte, zda byl spuštěn nástroj sysprep hello virtuálních počítačů. Pokud na hello virtuální počítač nebyl spuštěn nástroj sysprep hello, určete, jestli má nástroj sysprep, které jsou spuštěny při vytvoření virtuálního počítače z této vlastní image.
+1. Vyberte, zda byl spuštěn nástroj sysprep na virtuálním počítači. Pokud na virtuální počítač nebyl spuštěn nástroje sysprep, určete, jestli má nástroj sysprep, které jsou spuštěny při vytvoření virtuálního počítače z této vlastní image.
 
-1. Vyberte **OK** při dokončení toocreate hello vlastní image.
+1. Vyberte **OK** po dokončení vytvoření vlastní image.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
@@ -59,4 +59,4 @@ Můžete vytvořit vlastní image ze zřízeného virtuálního počítače a pa
 
 ##<a name="next-steps"></a>Další kroky
 
-- [Přidání testovacího prostředí tooyour virtuálních počítačů](./devtest-lab-add-vm-with-artifacts.md)
+- [Přidejte virtuální počítač do testovacího prostředí](./devtest-lab-add-vm-with-artifacts.md)

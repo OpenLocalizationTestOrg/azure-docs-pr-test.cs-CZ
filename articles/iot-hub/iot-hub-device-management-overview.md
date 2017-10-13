@@ -1,5 +1,5 @@
 ---
-title: "Správa aaaDevice službou Azure IoT Hub | Microsoft Docs"
+title: "Správa zařízení ve službě Azure IoT Hub | Dokumentace Microsoftu"
 description: "Přehled správy zařízení ve službě Azure IoT Hub: životní cyklus firemních zařízení a vzorce správy zařízení, jako je restartování, obnovení do výrobního nastavení, aktualizace firmwaru, konfigurace, dvojčata zařízení, dotazy a úlohy."
 services: iot-hub
 documentationcenter: 
@@ -14,83 +14,83 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: briz
-ms.openlocfilehash: 7e22fb6eb3c541a513b16a047c7c3ef557255532
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 6d667d42bfef2ec61b055009210d5621f51c17df
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>Přehled správy zařízení ve službě IoT Hub
 ## <a name="introduction"></a>Úvod
-Azure IoT Hub nabízí funkce hello a model rozšiřitelnosti, které umožňují zařízení a řešením pro správu serveru back-end vývojáři toobuild robustní zařízení. Zařízení v rozsahu od omezené senzory a microcontrollers jednoúčelové, toopowerful brány, které směrovat komunikaci pro skupiny zařízení.  Kromě toho hello případy použití a požadavcích pro IoT operátory lišit výrazně napříč odvětví.  Bez ohledu na případný rozdíl Správa zařízení pomocí služby IoT Hub poskytuje možnosti hello, vzory a kód knihovny toocater tooa různého typu zařízení a koncoví uživatelé.
+Azure IoT Hub poskytuje funkce a model rozšiřitelnosti, pomocí kterých mohou vývojáři zařízení a back-endů vytvářet robustní řešení pro správu zařízení IoT. Zařízení sahají od jednoduchých senzorů a jednoúčelových mikrokontrolerů po výkonné brány, které směrují komunikaci pro skupiny zařízení.  Kromě toho se způsoby použití a požadavky na operátory IoT výrazně liší v jednotlivých odvětvích.  Navzdory této variabilitě poskytuje správa zařízení pomocí IoT Hub takový rozsah možností, schémat a knihoven kódu, aby bylo možné naplnit potřeby této různorodé množiny zařízení a koncových uživatelů.
 
-Je zásadní součástí vytváření řešení IoT úspěšné celopodnikové tooprovide strategie pro jak pracovat s operátory hello průběžnou správu jejich kolekce zařízení. Operátory IoT vyžadují jednoduché a spolehlivé nástrojů a aplikací, které je toofocus na hello povolit další strategických aspektů svou práci. Tento článek obsahuje:
+Klíčovou součástí vytvoření úspěšného podnikového řešení IoT je sestavení strategie pro průběžnou správu kolekce zařízení ze strany operátorů. Operátoři IoT vyžadují jednoduché a spolehlivé nástroje a aplikace, které jim umožní zaměřit se na strategičtější aspekty přidělených úloh. Tento článek obsahuje:
 
-* Stručný přehled Azure IoT Hub přístup toodevice správy.
+* Stručný přehled přístupu ke správě zařízení ve službě Azure IoT Hub
 * Popis obecných principů správy zařízení
-* Popis životní cyklus zařízení hello.
+* Popis životního cyklu zařízení
 * Přehled běžných schémat správy zařízení
 
 ## <a name="device-management-principles"></a>Principy správy zařízení
-Přináší IoT s ním jedinečnou sadu problémy při správě zařízení a každé podnikové řešení, musí řešit hello následující zásady:
+IoT s sebou nese specifickou sadu výzev v oblasti správy zařízení a každé řešení určené pro velké podniky musí odpovídat následujícím principům:
 
 ![Grafické znázornění principů správy zařízení][img-dm_principles]
 
-* **Škálování a automatizace**: řešení IoT vyžadují jednoduché nástroje, které můžete automatizovat rutinní úlohy a povolení poměrně malý operací personál toomanage miliony zařízení. Každodenní, operátory očekávat operations toohandle zařízení vzdáleně, hromadně, a tooonly upozorněni případných problémech, které vyžadují jejich pozornost direct.
-* **Průhlednost a kompatibility**: ekosystém zařízení hello je mimořádně různých. Nástroje pro správu musí být šité na míru tooaccommodate velkého množství tříd zařízení, platformy a protokoly. Operátory musí být schopný toosupport mnoho typů zařízení, z hello nejvíce omezené vložených jedním proces čipy, toopowerful a plně funkční počítače.
-* **Znalost kontextu:** Prostředí služby IoT prostředí jsou dynamická a neustále se mění. Spolehlivost služby je prvořadá. Operace správy zařízení je třeba vzít v účtu hello následující faktory tooensure této údržby výpadek nebude ovlivnily provoz kritické obchodní nebo vytvořte nebezpečná podmínky:
+* **Škálování a automatizace:** Řešení IoT vyžadují jednoduché nástroje, které mohou automatizovat běžné úlohy a umožnit poměrně málo početnému provoznímu personálu správu miliónů zařízení. V každodenním provozu operátoři očekávají, že budou moci spravovat operace se zařízeními vzdáleně a hromadně a že budou upozorňování pouze na vznik problémů, které vyžadují jejich přímou pozornost.
+* **Otevřenost a kompatibilita**: Ekosystém zařízení je neobyčejně různorodý. Nástroje pro správu musí být upraveny tak, aby podporovaly velké množství tříd zařízení, platforem a protokolů. Operátoři musí být schopni poskytovat podporu pro mnoho typů zařízení: od nejjednodušších jednoprocesorových čipů po výkonné a plně funkční počítače.
+* **Znalost kontextu:** Prostředí služby IoT prostředí jsou dynamická a neustále se mění. Spolehlivost služby je prvořadá. Operace správy zařízení musí vzít v úvahu následující faktory, aby se zajistilo, že výpadek kvůli údržbě neovlivní kritické obchodní operace nebo nevytvoří nebezpečné podmínky:
     * Časová období údržby SLA
     * Stavy sítě a napájení
     * Podmínky využívání
     * Zeměpisná poloha zařízení
-* **Služby role mnoho**: podpora pro hello jedinečný pracovních postupů a procesů IoT rolí je zásadní. Hello provozní personál musí obchodu pracovat hello zadané omezení interní IT oddělení.  Najdou musí také udržitelná způsoby toosurface v reálném čase zařízení operations informace toosupervisors a jiné firmy správcovské role.
+* **Obsluha mnoha rolí:** Základním požadavkem je podpora jedinečných pracovních postupů a procesů rolí provozu služby IoT. Provozní personál musí pracovat v harmonii s danými omezeními interních oddělení IT.  Musí také najít udržitelné způsoby, jak pro vedoucí pracovníky na různých úrovních zobrazovat informace o provozu zařízení v reálném čase.
 
 ## <a name="device-lifecycle"></a>Životní cyklus zařízení
-Není sadu fáze správy Obecné zařízení, které jsou společné projekty IoT tooall enterprise. V Azure IoT jsou pět fází v rámci hello životní cyklus zařízení:
+Správa zařízení probíhá v několika obecných fázích, které jsou společné pro všechny firemní projekty IoT. V Azure IoT zahrnuje životní cyklus zařízení pět fází:
 
-![Hello pět fází životního cyklu zařízení Azure IoT: plánování, konfiguraci, monitorování, zřízení vyřadit z provozu][img-device_lifecycle]
+![Pět fází životního cyklu zařízení Azure IoT: plánování, zřízení, konfigurace, monitorování, vyřazení][img-device_lifecycle]
 
-V každém z těchto pět fází existuje několik požadavků operátor zařízení, které by měly být splněny tooprovide kompletního řešení:
+V každé z těchto pěti fází existuje několik požadavků souvisejících s operátory zařízení, které by měly být splněny, aby vzniklo kompletní řešení:
 
-* **Plánování**: Povolit operátory toocreate schéma metadat zařízení, která umožňuje jejich tooeasily a přesně dotaz pro a cílovou skupinu a zařízení pro hromadné operace správy. Hello zařízení twin toostore můžete tato zařízení metadata hello tvar značky a vlastnosti.
+* **Plánování:** Operátoři získají možnost vytvořit schéma metadat zařízení, na jehož základě mohou snadno a přesně zadávat dotazy na skupinu zařízení, kterou pak nastaví jako cíl pro hromadné operace správy. K uložení těchto metadat ve formě značek a vlastností můžete použít dvojče zařízení.
   
-    *Další čtení*: [začít pracovat s dvojčata zařízení][lnk-twins-getstarted], [pochopit dvojčata zařízení][lnk-twins-devguide], [jak Vlastnosti twin zařízení toouse][lnk-twin-properties].
-* **Zřízení**: bezpečně zřídit nové zařízení tooIoT rozbočovače a povolit operátory tooimmediately zjistit možnosti zařízení.  Použijte hello IoT Hub identity registru toocreate flexibilní zařízení identity a přihlašovací údaje a provést tuto operaci hromadné provádíte pomocí úlohy. Sestavení zařízení tooreport jejich funkce a podmínky prostřednictvím vlastnosti zařízení v dvojče zařízení hello.
+    *Další materiály:*[Začínáme s dvojčaty zařízení][lnk-twins-getstarted], [Principy dvojčat zařízení][lnk-twins-devguide], [Jak používat vlastnosti dvojčat zařízení][lnk-twin-properties].
+* **Zřízení:** Bezpečné zřízení nových zařízení pro IoT Hub a umožnění okamžitého zjištění možností zařízení pro operátory.  Pomocí registru identit ve službě IoT Hub můžete vytvářet flexibilní identity a přihlašovací údaje zařízení a provádět tuto operaci hromadně pomocí úlohy. Zařízení sestavujte tak, aby hlásila své možnosti a stav prostřednictvím svých vlastností v dvojčeti zařízení.
   
-    *Další čtení*: [Správa identit zařízení][lnk-identity-registry], [hromadné správu identit zařízení][lnk-bulk-identity], [Jak dvojče zařízení toouse vlastnosti][lnk-twin-properties].
-* **Konfigurace**: usnadnění hromadné změny konfigurace a firmware aktualizací toodevices při zachování stavu a zabezpečení. Tyto operace správy zařízení provádějte hromadně pomocí požadovaných vlastností nebo pomocí přímých metod a vysílacích úloh.
+    *Další materiály:*[Správa identit zařízení][lnk-identity-registry], [Hromadná správa identit zařízení][lnk-bulk-identity], [Jak používat vlastnosti dvojčat zařízení][lnk-twin-properties].
+* **Konfigurace:** Provádění hromadných změn konfigurace a aktualizací firmwaru v zařízeních při zachování stavu i zabezpečení. Tyto operace správy zařízení provádějte hromadně pomocí požadovaných vlastností nebo pomocí přímých metod a vysílacích úloh.
   
-    *Další čtení*: [použít přímé metody][lnk-c2d-methods], [vyvolat přímé metodu na zařízení][lnk-methods-devguide], [jak Vlastnosti twin zařízení toouse][lnk-twin-properties], [plán a všesměrového vysílání úlohy][lnk-jobs], [plánování úloh na několika zařízeních] [lnk-jobs-devguide].
-* **Monitorování**: monitorování stavu kolekce celkové zařízení, stav hello probíhající operace a tooissues výstrahy operátory, které mohou vyžadovat jejich pozornost.  Použijte hello zařízení twin tooallow zařízení tooreport v reálném čase provozních podmínek a stav operace aktualizace. Vytváření sestav výkonné řídicí panel tento prostor hello nejvíce okamžitou problémy pomocí dotazů twin zařízení.
+    *Další materiály:*[Použití přímých metod][lnk-c2d-methods], [Vyvolání přímé metody v zařízení][lnk-methods-devguide], [Jak používat vlastnosti dvojčat zařízení][lnk-twin-properties], [Plánování a vysílání úloh][lnk-jobs], [Plánování úloh na několika zařízeních][lnk-jobs-devguide].
+* **Monitorování:** Monitorování celkového stavu kolekce zařízení a stavu probíhajících operací, přičemž operátoři dostávají upozornění na problémy, které mohou vyžadovat jejich pozornost.  Dvojče zařízení umožní zařízením hlásit jejich provozní podmínky a stav aktualizačních operací v reálném čase. Vytvořte efektivní sestavy řídicího panelu, které budou bezprostředně informovat o problémech na základě dotazů na dvojčata zařízení.
   
-    *Další čtení*: [jak dvojče zařízení toouse vlastnosti][lnk-twin-properties], [IoT Hub dotazovacího jazyka pro dvojčata zařízení, úlohy a směrování zpráv] [ lnk-query-language].
-* **Vyřazení**: nahraďte nebo vyřadit z provozu zařízení po selhání, upgrade cyklus, nebo na konci hello životnosti hello služby.  Použijte hello zařízení twin toomaintain informace o zařízení, pokud hello fyzické zařízení, která má být nahrazen nebo archivovaných Pokud postupně vyřazuje z provozu. Použijte hello registru identit služby IoT Hub pro bezpečně odvolání identit zařízení a přihlašovací údaje.
+    *Další materiály*: [Jak používat vlastnosti dvojčat zařízení][lnk-twin-properties], [Dotazovací jazyk služby IoT pro dvojčata zařízení, úlohy a směrování zpráv][lnk-query-language].
+* **Vyřazení:** Výměna nebo zařízení nebo jejich vyloučení z provozu po selhání, po provedení cyklu upgradů nebo na konci životnosti služby.  Pomocí dvojčete zařízení můžete provést údržbu informací o zařízení, když se nahrazuje fyzické zařízení, nebo jejich archivaci při jeho vyřazení. Pro zabezpečené odvolávání identit zařízení a přihlašovacích údajů používejte registr identit ve službě IoT Hub.
   
-    *Další čtení*: [jak dvojče zařízení toouse vlastnosti][lnk-twin-properties], [Správa identit zařízení][lnk-identity-registry].
+    *Další materiály:*[Jak používat vlastnosti dvojčat zařízení][lnk-twin-properties], [Správa identit zařízení][lnk-identity-registry].
 
 ## <a name="device-management-patterns"></a>Schémata správy zařízení
-IoT Hub umožňuje hello následující sada schémat správy zařízení.  Hello [kurzy správy zařízení] [ lnk-get-started] jak ukazují podrobněji tooextend tyto vzory toofit přesný scénář a jak nové vzory toodesign založené na tyto základní šablony.
+IoT Hub umožňuje využívat následující schémata správy zařízení.  V [kurzech ke správě zařízení][lnk-get-started] se podrobněji dozvíte, jak tato schémata rozšířit tak, aby vyhovovala vašemu konkrétnímu scénáři, a jak na základě těchto základních šablon navrhnout nová schémata.
 
-* **Restartovat** -hello back-end aplikačním informuje hello zařízení prostřednictvím přímé metody, aby se zahájilo se restartování.  Hello zařízení používá hello hlášené vlastnosti tooupdate hello restartování stav hello zařízení.
+* **Restartování** – Back-endová aplikace informuje zařízení prostřednictvím přímé metody, že zahájila restartování.  Zařízení využívá ohlášené vlastnosti k aktualizaci stavu restartování příslušného zařízení.
   
     ![Grafické znázornění schématu restartování ve správě zařízení][img-reboot_pattern]
-* **Obnovení továrního nastavení** -hello back-end aplikačním informuje hello zařízení prostřednictvím přímé metody, inicioval obnovení továrního nastavení.  Hello zařízení používá hello ohlásil, že stav zařízení hello obnovit vlastnosti tooupdate hello tovární nastavení.
+* **Obnovení do výrobního nastavení** – Back-endová aplikace informuje zařízení prostřednictvím přímé metody, že zahájila obnovení do výrobního nastavení.  Zařízení využívá ohlášené vlastnosti k aktualizaci stavu obnovování výrobního nastavení příslušného zařízení.
   
     ![Grafické znázornění schématu obnovení výrobního nastavení][img-facreset_pattern]
-* **Konfigurace** -back-end aplikace hello používá hello potřeby vlastnosti tooconfigure softwaru spuštěné na zařízení hello.  Hello zařízení používá hello hlášené vlastnosti tooupdate stav konfigurace hello zařízení.
+* **Konfigurace** – Back-endová aplikace využívá požadované vlastnosti ke konfiguraci softwaru spuštěného v příslušném zařízení.  Zařízení využívá ohlášené vlastnosti k aktualizaci stavu konfigurace příslušného zařízení.
   
     ![Grafické znázornění schématu konfigurace ve správě zařízení][img-config_pattern]
-* **Aktualizace firmwaru** -hello back-end aplikačním informuje hello zařízení prostřednictvím přímé metody, inicioval aktualizaci firmwaru.  zařízení Hello zahájí proces zahrnující více kroků toodownload hello firmware bitové kopie, použít bitovou kopii hello firmware a nakonec znovu připojit toohello služby IoT Hub.  V rámci hello vícekrokový proces hello zařízení používá hello hlášené vlastnosti tooupdate hello průběh a stav hello zařízení.
+* **Aktualizace firmwaru** – Back-endová aplikace informuje zařízení prostřednictvím přímé metody, že zahájila aktualizaci firmwaru.  Zařízení zahájí vícefázový proces stahování balíčku firmwaru a jeho použití a následného opětného připojení ke službě IoT Hub.  Během tohoto vícefázového procesu zařízení využívá ohlášené vlastnosti k aktualizaci informací o průběhu zpracování a stavu zařízení.
   
     ![Grafické znázornění schématu aktualizace firmwaru ve správě zařízení][img-fwupdate_pattern]
-* **Vytváření sestav průběh a stav** -back-end hello řešení spouští zařízení twin dotazy, napříč sady zařízení, tooreport na dobrý stav a průběh akce běžící v zařízeních hello.
+* **Informování o průběhu a stavu** – Back-end řešení spouští dotazy dvojčete zařízení nad sadou zařízení a předává informace o stavu a průběhu zpracování akcí spuštěných v těchto zařízeních.
   
     ![Grafické znázornění schématu informování o průběhu a stavu ve správě zařízení][img-report_progress_pattern]
 
 ## <a name="next-steps"></a>Další kroky
-Možnosti Hello, vzory a knihovny kódu, které poskytuje služby IoT Hub pro správu zařízení, povolit toocreate IoT aplikace, které odpovídají enterprise IoT operátor požadavky v rámci každé fáze životního cyklu zařízení.
+Pomocí možností, schémat a knihoven kódu, které poskytuje správa zařízení ve službě IoT Hub, můžete vytvářet firemní aplikace IoT, které odpovídají požadavkům jejich operátorů, a to ve všech fázích jejich životního cyklu.
 
-toocontinue získávání informací o hello funkce správy zařízení IoT hub, najdete v části hello [Začínáme se správou zařízení] [ lnk-get-started] kurzu.
+Pokud si chcete přečíst více o funkcích správy zařízení ve službě IoT Hub, podívejte se na kurz [Začínáme se správou zařízení][lnk-get-started].
 
 <!-- Images and links -->
 [img-dm_principles]: media/iot-hub-device-management-overview/image4.png

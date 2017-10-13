@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure AD Xamarin Začínáme | Microsoft Docs"
+title: "Začínáme se službou Azure AD Xamarin | Microsoft Docs"
 description: "Sestavení Xamarin aplikace, které integrují s Azure AD pro přihlášení a volání Azure AD chráněné rozhraní API pomocí metody OAuth."
 services: active-directory
 documentationcenter: xamarin
@@ -15,55 +15,55 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 6a0d189648b7071558ac1cf2b908808668960a4e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 54ee403f283bc5dc79911e2e813dd513ff595828
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="integrate-azure-ad-with-xamarin-apps"></a>Integrace Azure AD s aplikacemi Xamarin
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-S Xamarinem může zapisovat mobilní aplikace v jazyce C#, můžete spustit na iOS, Android a Windows (mobilních zařízení a počítačů). Pokud vytváříte aplikace pomocí Xamarinu, Azure Active Directory (Azure AD) umožňuje jednoduché tooauthenticate uživatelů s účty služby Azure AD. aplikace Hello můžete také bezpečně využívat žádné webové rozhraní API, který je chráněný službou Azure AD, jako je například hello rozhraní API Office 365 nebo hello rozhraní API služby Azure.
+S Xamarinem může zapisovat mobilní aplikace v jazyce C#, můžete spustit na iOS, Android a Windows (mobilních zařízení a počítačů). Pokud vytváříte aplikace pomocí Xamarinu, Azure Active Directory (Azure AD) usnadňuje ověřování uživatelů s účty služby Azure AD. Aplikace může také bezpečně využívat žádné webové rozhraní API, který je chráněný službou Azure AD, jako je například rozhraní API Office 365 nebo rozhraní API služby Azure.
 
-Pro aplikace Xamarin, které vyžadují tooaccess chráněné zdroje Azure AD poskytuje hello Active Directory Authentication Library (ADAL). jediným účelem Hello adal je toomake snadno aplikace tooget přístupových tokenů. toodemonstrate jak snadné je, tento článek ukazuje, jak aplikace DirectorySearcher toobuild který:
+Pro aplikace Xamarin, které potřebují přístup k chráněným prostředkům Azure AD poskytuje službě Active Directory Authentication Library (ADAL). Jediný účel ADAL je snadno a získat tokeny přístupu aplikace. K předvedení, jak je snadné, tento článek ukazuje, jak vytvářet aplikace DirectorySearcher který:
 
 * Spusťte na iOS, Android, Windows Desktop, Windows Phone a Windows Store.
-* Použití jedné třídy přenosné knihovny (PCL) tooauthenticate uživatelů a získat tokeny pro hello Azure AD Graph API.
+* Použití jedné přenosných tříd knihovny (PCL) k ověření uživatelů a získat tokeny pro Azure AD Graph API.
 * Vyhledejte adresář pro uživatele s danou UPN.
 
 ## <a name="before-you-get-started"></a>Než začnete
-* Stáhnout hello [kostru projektu](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/skeleton.zip), nebo stáhnout hello [hotová ukázka](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/complete.zip). Každého stažení je řešením sady Visual Studio 2013.
-* Musíte taky klient služby Azure AD, ve které toocreate uživatelé a aplikace hello registrace. Pokud ještě nemáte klienta, [zjistěte, jak tooget jeden](active-directory-howto-tenant.md).
+* Stažení [kostru projektu](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/skeleton.zip), nebo stáhnout [hotová ukázka](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/complete.zip). Každého stažení je řešením sady Visual Studio 2013.
+* Musíte taky klient služby Azure AD, ve kterém se má vytvořit uživatele a registraci aplikace. Pokud ještě nemáte klienta, [zjistěte, jak získat](active-directory-howto-tenant.md).
 
-Až budete připravení, postupujte podle pokynů hello v hello další čtyři části.
+Až budete připravení, postupujte podle pokynů v další čtyři části.
 
 ## <a name="step-1-set-up-your-xamarin-development-environment"></a>Krok 1: Nastavení vývojového prostředí Xamarin
-Tento kurz zahrnuje projekty pro iOS, Android a Windows, a proto musíte Visual Studio a Xamarin. toocreate hello nezbytné prostředí, proces dokončení hello v [nastavit až a nainstalujte Visual Studio a Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) na webu MSDN. Hello pokyny zahrnují materiálu, kterou můžete zkontrolovat informace o Xamarin toolearn, zatímco čekáte toobe hello instalace byla dokončena.
+Tento kurz zahrnuje projekty pro iOS, Android a Windows, a proto musíte Visual Studio a Xamarin. Vytvořte potřebné prostředí, dokončete proces v [nastavit až a nainstalujte Visual Studio a Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) na webu MSDN. Pokyny zahrnují materiál, který najdete další informace o Xamarin, zatímco čekáte pro instalace dokončit.
 
-Po dokončení instalace hello, otevřete v sadě Visual Studio hello řešení. Zde najdete šesti projekty: pět projekty specifické pro platformu a jeden PCL DirectorySearcher.cs, které budou sdílet všechny platformy.
+Po dokončení instalace, otevřete řešení v sadě Visual Studio. Zde najdete šesti projekty: pět projekty specifické pro platformu a jeden PCL DirectorySearcher.cs, které budou sdílet všechny platformy.
 
-## <a name="step-2-register-hello-directorysearcher-app"></a>Krok 2: Registrace hello DirectorySearcher aplikace
-tooenable hello aplikace tooget tokeny, musíte nejprve tooregister ji ve službě Azure AD klienta a udělit mu oprávnění tooaccess hello Azure AD Graph API. Zde je uveden postup:
+## <a name="step-2-register-the-directorysearcher-app"></a>Krok 2: Registraci DirectorySearcher aplikace
+Pokud chcete povolit aplikaci získat tokeny, musíte nejprve zaregistrovat v klientovi služby Azure AD a udělit mu oprávnění k přístupu k Azure AD Graph API. Zde je uveden postup:
 
-1. Přihlaste se toohello [portál Azure](https://portal.azure.com).
-2. Na horním panelu hello klikněte na váš účet. Potom v části hello **Directory** seznamu, vyberte hello klienta služby Active Directory místo tooregister hello aplikace.
-3. Klikněte na tlačítko **více služeb** v levém podokně text hello a potom vyberte **Azure Active Directory**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+2. Na horním panelu klikněte na váš účet. Potom v části **Directory** vyberte klienta služby Active Directory, ve které chcete zaregistrovat aplikaci.
+3. Klikněte na tlačítko **více služeb** v levém podokně a potom vyberte **Azure Active Directory**.
 4. Klikněte na tlačítko **registrace aplikace**a potom vyberte **přidat**.
-5. toocreate nový **nativní klientská aplikace**, postupujte podle pokynů hello.
-  * **Název** popisuje toousers aplikace hello.
-  * **Identifikátor URI pro přesměrování** schématu a řetězec kombinací, Azure AD používá tooreturn odpovědi tokenu. Zadejte hodnotu (například http://DirectorySearcher).
-6. Po dokončení registrace Azure AD přiřadí aplikace hello ID jedinečný aplikace. Zkopírujte hodnotu hello z hello **aplikace** kartě, protože ho budete potřebovat později.
-7. Na hello **nastavení** vyberte **požadovaných oprávnění**a potom vyberte **přidat**.
-8. Vyberte **Microsoft Graph** jako hello rozhraní API. V části **delegovaná oprávnění**, přidejte hello **čtení dat adresáře** oprávnění.  
-Tato akce umožní hello aplikace tooquery hello rozhraní Graph API pro uživatele.
+5. Chcete-li vytvořit novou **nativní klientská aplikace**, postupujte podle pokynů.
+  * **Název** popis aplikace pro uživatele.
+  * **Identifikátor URI pro přesměrování** je kombinace schématu a řetězec, Azure AD se používá k vrácení odpovědi tokenu. Zadejte hodnotu (například http://DirectorySearcher).
+6. Po dokončení registrace Azure AD přiřadí aplikace ID jedinečný aplikace. Zkopírujte hodnotu z **aplikace** kartě, protože ho budete potřebovat později.
+7. Na **nastavení** vyberte **požadovaných oprávnění**a potom vyberte **přidat**.
+8. Vyberte **Microsoft Graph** jako rozhraní API. V části **delegovaná oprávnění**, přidejte **čtení dat adresáře** oprávnění.  
+Tato akce umožní aplikaci dotaz rozhraní Graph API pro uživatele.
 
 ## <a name="step-3-install-and-configure-adal"></a>Krok 3: Instalace a konfigurace ADAL
-Nyní když máte aplikaci ve službě Azure AD, můžete nainstalovat ADAL a zadejte kód, týkající se identity. tooenable ADAL toocommunicate s Azure AD, poskytněte některé informace o registraci aplikace hello.
+Nyní když máte aplikaci ve službě Azure AD, můžete nainstalovat ADAL a zadejte kód, týkající se identity. Pokud chcete povolit ADAL ke komunikaci s Azure AD, jí některé informace o registraci aplikace.
 
-1. Přidejte ADAL toohello DirectorySearcher projekt pomocí hello Konzola správce balíčků.
+1. Přidání ADAL do projektu DirectorySearcher pomocí konzoly Správce balíčků.
 
     `
     PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -ProjectName DirectorySearcherLib
@@ -85,27 +85,27 @@ Nyní když máte aplikaci ve službě Azure AD, můžete nainstalovat ADAL a za
     PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -ProjectName DirSearchClient-Universal
     `
 
-    Všimněte si, že dva odkazy knihovny jsou přidány tooeach projektu: část PCL hello ADAL a část specifické pro platformu.
-2. V projektu DirectorySearcherLib hello otevřete DirectorySearcher.cs.
-3. Nahraďte hodnoty členů třídy hello hello hodnoty, které jste zadali v hello portálu Azure. Váš kód odkazoval toothese hodnoty vždy, když ho využívá ADAL.
+    Všimněte si, že dva odkazy knihovny jsou přidány do jednotlivých projektů: část PCL ADAL a část specifické pro platformu.
+2. V projektu DirectorySearcherLib otevřete DirectorySearcher.cs.
+3. Nahraďte hodnoty členů třídy hodnoty, které jste zadali v portálu Azure. Váš kód odkazoval na tyto hodnoty vždy, když ho využívá ADAL.
 
-  * Hello *klienta* je hello domény klienta služby Azure AD (například contoso.onmicrosoft.com).
-  * Hello *clientId* je ID klienta hello hello aplikace, které jste zkopírovali z portálu hello.
-  * Hello *returnUri* je identifikátor URI, který jste zadali v portálu hello (například http://DirectorySearcher) hello přesměrování.
+  * *Klienta* je doména klienta služby Azure AD (například contoso.onmicrosoft.com).
+  * *ClientId* je ID klienta aplikace, které jste zkopírovali z portálu.
+  * *ReturnUri* je identifikátor URI, který jste zadali v portálu (například http://DirectorySearcher) přesměrování.
 
-## <a name="step-4-use-adal-tooget-tokens-from-azure-ad"></a>Krok 4: Použití ADAL tooget tokeny z Azure AD
-Téměř všechny logiku ověřování aplikace hello spočívá v `DirectorySearcher.SearchByAlias(...)`. Všechny, které je nezbytné v projektech specifické pro platformu hello je toopass toohello kontextových parametrů `DirectorySearcher` PCL.
+## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>Krok 4: Použití ADAL získat tokeny z Azure AD
+Téměř všechny aplikace logiky ověřování spočívá v `DirectorySearcher.SearchByAlias(...)`. Všechny, které je nezbytné v projektech specifických pro platformy je předat kontextové parametr, který se `DirectorySearcher` PCL.
 
-1. Otevřete DirectorySearcher.cs a pak přidejte nový parametr toohello `SearchByAlias(...)` metoda. `IPlatformParameters`je hello kontextové parametr, který zapouzdřuje hello specifické platformy objekty, ADAL potřebám tooperform hello ověření.
+1. Otevřete DirectorySearcher.cs a pak přidejte nový parametr, který se `SearchByAlias(...)` metoda. `IPlatformParameters`je kontextová parametr, který zapouzdřuje specifické pro platformu objekty, které potřebuje provést ověřování ADAL.
 
     ```C#
     public static async Task<List<User>> SearchByAlias(string alias, IPlatformParameters parent)
     {
     ```
 
-2. Inicializace `AuthenticationContext`, což je primární třídou hello adal.  
-Tato akce hello ADAL předává jej koordinuje potřebám toocommunicate s Azure AD.
-3. Volání `AcquireTokenAsync(...)`, který přijímá hello `IPlatformParameters` objektu a vyvolá hello tok ověřování, který je nutné tooreturn tokenu toohello aplikace.
+2. Inicializace `AuthenticationContext`, což je primární třídou adal.  
+Tato akce předá ADAL souřadnice ke komunikaci s Azure AD.
+3. Volání `AcquireTokenAsync(...)`, který přijímá `IPlatformParameters` objektu a vyvolá tok ověřování, které jsou nutné k návratu token do aplikace.
 
     ```C#
     ...
@@ -123,8 +123,8 @@ Tato akce hello ADAL předává jej koordinuje potřebám toocommunicate s Azure
     ...
     ```
 
-    `AcquireTokenAsync(...)`první tooreturn pokusy o token pro hello požadovaný prostředek (hello rozhraní Graph API v tomto případě) bez vyzvání uživatele tooenter přihlašovacích údajů (prostřednictvím ukládání do mezipaměti nebo obnovení původního tokeny). Podle potřeby zobrazuje hello Azure AD přihlašovací stránka uživatelé před získání tokenu požadovaný hello.
-4. Připojte hello žádost o rozhraní Graph API tokenu toohello přístup v hello **autorizace** hlavičky:
+    `AcquireTokenAsync(...)`Nejprve se pokusí vrátit token pro požadovaný prostředek (rozhraní Graph API v tomto případě) bez vyzvání uživatele k zadání přihlašovacích údajů (prostřednictvím ukládání do mezipaměti nebo obnovení původního tokeny). Podle potřeby zobrazuje uživatele, kteří na přihlašovací stránku služby Azure AD před získávání požadovaný token.
+4. Připojit k rozhraní Graph API požadavku v tokenu přístupu **autorizace** hlavičky:
 
     ```C#
     ...
@@ -132,15 +132,15 @@ Tato akce hello ADAL předává jej koordinuje potřebám toocommunicate s Azure
     ...
     ```
 
-To je všechno pro hello `DirectorySearcher` kódu spojené s PCL a hello aplikace. Zbývá toocall hello `SearchByAlias(...)` metoda v zobrazení pro každou platformu a v případě potřeby tooadd kód pro zpracování správně hello životní cyklus uživatelského rozhraní.
+To je všechno pro `DirectorySearcher` PCL a aplikace je spojené s kódem. Zbývá k volání `SearchByAlias(...)` metoda v zobrazení pro každou platformu a v případě potřeby přidejte kód pro zpracování správně životní cyklus uživatelského rozhraní.
 
 ### <a name="android"></a>Android
-1. V MainActivity.cs, přidejte volání příliš`SearchByAlias(...)` v hello tlačítko klikněte na obslužnou rutinu:
+1. V MainActivity.cs, že přidáte volání `SearchByAlias(...)` v tlačítko klikněte na obslužnou rutinu:
 
     ```C#
     List<User> results = await DirectorySearcher.SearchByAlias(searchTermText.Text, new PlatformParameters(this));
     ```
-2. Přepsání hello `OnActivityResult` životního cyklu metoda tooforward přesměruje back toohello odpovídající metodu ověřování. ADAL poskytuje Pomocná metoda pro to v Android:
+2. Přepsání `OnActivityResult` životního cyklu metoda předávat žádné ověřování přesměruje zpět na odpovídající metodu. ADAL poskytuje Pomocná metoda pro to v Android:
 
     ```C#
     ...
@@ -153,7 +153,7 @@ To je všechno pro hello `DirectorySearcher` kódu spojené s PCL a hello aplika
     ```
 
 ### <a name="windows-desktop"></a>Windows Desktop
-V MainWindow.xaml.cs, zkontrolujte volání příliš`SearchByAlias(...)` předáním `WindowInteropHelper` v hello plochy `PlatformParameters` objektu:
+V MainWindow.xaml.cs, zkontrolujte volání `SearchByAlias(...)` předáním `WindowInteropHelper` na ploše Desktop `PlatformParameters` objektu:
 
 ```C#
 List<User> results = await DirectorySearcher.SearchByAlias(
@@ -162,7 +162,7 @@ List<User> results = await DirectorySearcher.SearchByAlias(
 ```
 
 #### <a name="ios"></a>iOS
-V DirSearchClient_iOSViewController.cs, hello iOS `PlatformParameters` objekt trvá odkaz toohello řadiče zobrazení:
+V DirSearchClient_iOSViewController.cs, iOS `PlatformParameters` objekt trvá odkaz na řadiče zobrazení:
 
 ```C#
 List<User> results = await DirectorySearcher.SearchByAlias(
@@ -171,7 +171,7 @@ List<User> results = await DirectorySearcher.SearchByAlias(
 ```
 
 ### <a name="windows-universal"></a>Univerzální pro Windows
-Otevřete MainPage.xaml.cs v univerzální pro Windows a potom implementovat hello `Search` metoda. Tato metoda používá metodu helper v sdílený projekt tooupdate uživatelského rozhraní podle potřeby.
+Otevřete MainPage.xaml.cs v univerzální pro Windows a potom implementovat `Search` metoda. Tato metoda používá metodu helper v projektu sdíleného aktualizace uživatelského rozhraní podle potřeby.
 
 ```C#
 ...
@@ -182,15 +182,15 @@ List<User> results = await DirectorySearcherLib.DirectorySearcher.SearchByAlias(
 ## <a name="whats-next"></a>Kam dál
 Teď máte funkční aplikaci Xamarin, můžete ověřovat uživatele a bezpečně volat webové rozhraní API pomocí standardu OAuth 2.0 napříč pět různých platformách.
 
-Pokud již nejsou naplněny vašeho klienta s uživateli, teď proto je toodo čas hello.
+Pokud již nejsou naplněny vašeho klienta s uživateli, nyní je čas Uděláte to tak.
 
-1. Spuštění aplikace DirectorySearcher a pak se přihlaste pomocí jeden z uživatelů hello.
+1. Spuštění aplikace DirectorySearcher a pak se přihlaste pomocí jednoho uživatele.
 2. Hledání jiných uživatelů podle jejich UPN.
 
-ADAL umožňuje snadno tooincorporate běžné funkce identity do aplikace hello. Se postará všechny pracovní dirty hello, jako je například Správa mezipaměti podpora protokolu OAuth, prezentací hello uživatele s přihlašovacími údaji uživatelského rozhraní, a aktualizovat platnost tokenů. Je třeba volání tooknow pouze jediného rozhraní API `authContext.AcquireToken*(…)`.
+ADAL usnadňuje začlenit běžné funkce identity do aplikace. Se postará všechnu práci dirty, jako je například Správa mezipaměti podpora protokolu OAuth, představuje uživatele s přihlašovacími údaji uživatelského rozhraní, a aktualizovat platnost tokenů. Je nutné znát jenom jednoho volání rozhraní API, `authContext.AcquireToken*(…)`.
 
-Odkaz, stáhněte si hello [hotová ukázka](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/complete.zip) (bez vašich hodnot nastavení).
+Odkaz, stáhněte si [hotová ukázka](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/complete.zip) (bez vašich hodnot nastavení).
 
-Nyní se můžete přesunout na tooadditional identity scénáře. Zkuste například [zabezpečení webového rozhraní API .NET s Azure AD](active-directory-devquickstarts-webapi-dotnet.md).
+Nyní se můžete přesunout další identity scénářů. Zkuste například [zabezpečení webového rozhraní API .NET s Azure AD](active-directory-devquickstarts-webapi-dotnet.md).
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]

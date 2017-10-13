@@ -1,6 +1,6 @@
 ---
-title: "aaaGet začít s Data Lake Analytics pomocí rozhraní REST API | Microsoft Docs"
-description: "Použití rozhraní REST API WebHDFS tooperform operací v Data Lake Analytics"
+title: "Začínáme se službou Data Lake Analytics pomocí rozhraní REST API | Dokumentace Microsoftu"
+description: "Použití rozhraní REST API WebHDFS k provádění operací ve službě Data Lake Analytics"
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
@@ -14,43 +14,43 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/03/2017
 ms.author: jgao
-ms.openlocfilehash: a0b13d521821fd2d74716cc52485585feb7c51b2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 332d7af2539eea8890745005104ac5b0921c2b7f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-rest-apis"></a>Začínáme se službou Azure Data Lake Analytics pomocí rozhraní REST API
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Zjistěte, jak toouse rozhraní REST API WebHDFS a rozhraní API REST Data Lake Analytics toomanage Data Lake Analytics účty, úlohy a katalogu. 
+Zjistěte, jak používat rozhraní REST API WebHDFS a rozhraní REST API služby Data Lake Analytics ke správě účtů, úloh a katalogu služby Data Lake Analytics. 
 
 ## <a name="prerequisites"></a>Požadavky
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Vytvoření aplikace Azure Active Directory**. Hello Azure AD aplikace tooauthenticate hello Data Lake Analytics aplikaci můžete používat s Azure AD. Existují různé přístupy tooauthenticate s Azure AD, které jsou **ověřování koncového uživatele** nebo **service-to-service ověřování**. Pokyny a další informace o tooauthenticate, najdete v části [ověřit s Data Lake Analytics pomocí Azure Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
-* [cURL](http://curl.haxx.se/). Tento článek používá cURL toodemonstrate, jakým způsobem volá toomake REST API vůči účtu Data Lake Analytics.
+* **Vytvoření aplikace Azure Active Directory**. Aplikaci Azure AD použijete k ověření aplikace Data Lake Analytics ve službě Azure AD. Existují různé přístupy k ověřování ve službě Azure AD, jsou to **ověřování koncového uživatele** nebo **ověřování služba-služba**. Pokyny a další informace o ověřování najdete v tématu [Ověřování pomocí služby Data Lake Analytics s využitím Azure Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
+* [cURL](http://curl.haxx.se/). Tento článek používá cURL k předvedení toho, jak provádět volání rozhraní REST API vůči účtu Data Lake Analytics.
 
 ## <a name="authenticate-with-azure-active-directory"></a>Ověřování pomocí Azure Active Directory
 Existují dvě metody ověřování pomocí Azure Active Directory.
 
 ### <a name="end-user-authentication-interactive"></a>Ověření koncového uživatele (interaktivní)
-Pomocí této metody aplikace vyzve uživatele toolog hello v a všechny operace hello se provádějí v kontextu hello hello uživatele. 
+Když použijete tuto metodu, aplikace vyzve uživatele k přihlášení a všechny operace se provádějí v kontextu uživatele. 
 
 Pokud chcete zavést interaktivní ověřování, postupujte následovně:
 
-1. Prostřednictvím aplikace přesměrování toohello uživatele hello následující adresu URL:
+1. Prostřednictvím aplikace přesměrujte uživatele na tuto adresu URL:
    
         https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<CLIENT-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
    
    > [!NOTE]
-   > \<REDIRECT-URI > musí toobe kódováním pro použití v adrese URL. Pro adresu https://localhost proto použijte zápis `https%3A%2F%2Flocalhost`).
+   > \<REDIRECT-URI&gt; musí být zakódovaný, aby se dal použít jako adresa URL. Pro adresu https://localhost proto použijte zápis `https%3A%2F%2Flocalhost`).
    > 
    > 
    
-    Za účelem hello tohoto kurzu můžete nahradit zástupné hodnoty hello v adrese URL hello výše a vložte jej do adresního řádku webového prohlížeče. Bude přesměrované tooauthenticate pomocí přihlášení Azure. Po úspěšném přihlášení, hello odpovědi se zobrazí v adresním řádku prohlížeče hello. odpověď Hello bude v hello následující formát:
+    Pro účely tohoto kurzu můžete ve výše zobrazené adrese URL nahradit zástupné hodnoty a vložit ji do adresního řádku webového prohlížeče. Budete přesměrováni na ověření pomocí přihlášení Azure. Po úspěšném přihlášení se v adresním řádku prohlížeče zobrazí odpověď. Odpověď bude mít tento formát:
    
         http://localhost/?code=<AUTHORIZATION-CODE>&session_state=<GUID>
-2. Zaznamenejte hello autorizační kód z odpovědi hello. V tomto kurzu můžete zkopírovat hello autorizační kód z panelu Adresa hello hello webového prohlížeče a předat jej v hello POST požadavek toohello koncovému bodu tokenu, jak je uvedeno níže:
+2. Zaznamenejte autorizační kód z odpovědi. Pro účely tohoto kurzu můžete zkopírovat autorizační kód z adresního řádku webového prohlížeče a předat jej v požadavku POST koncovému bodu tokenu, jak vidíte níže:
    
         curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token \
         -F redirect_uri=<REDIRECT-URI> \
@@ -60,13 +60,13 @@ Pokud chcete zavést interaktivní ověřování, postupujte následovně:
         -F code=<AUTHORIZATION-CODE>
    
    > [!NOTE]
-   > V takovém případě hello \<REDIRECT-URI > nemusí být zakódován.
+   > V takovém případě nemusí být identifikátor \<REDIRECT-URI> zakódovaný.
    > 
    > 
-3. odpověď Hello je objekt JSON, který obsahuje přístupový token (například `"access_token": "<ACCESS_TOKEN>"`) a obnovovací token (například `"refresh_token": "<REFRESH_TOKEN>"`). Vaše aplikace používá hello přístupový token při přístupu k Azure Data Lake Store a hello aktualizace tokenu tooget dalšího přístupového tokenu když vyprší platnost přístupového tokenu.
+3. Odpovědí je objekt JSON, který obsahuje přístupový token (např. `"access_token": "<ACCESS_TOKEN>"`) a obnovovací token (např. `"refresh_token": "<REFRESH_TOKEN>"`). Aplikace používá přístupový token při přístupu k Azure Data Lake Store, zatímco obnovovací token používá k získání dalšího přístupového tokenu, když přístupovému tokenu vyprší platnost.
    
         {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","expires_on":"1461865782","not_before":    "1461861882","resource":"https://management.core.windows.net/","access_token":"<REDACTED>","refresh_token":"<REDACTED>","id_token":"<REDACTED>"}
-4. Když vyprší platnost hello přístupový token, můžete požádat o nový přístupový token pomocí hello aktualizace tokenu, jak je uvedeno níže:
+4. Když vyprší platnost přístupového tokenu, můžete pomocí obnovovacího tokenu požádat o nový přístupový token, jak vidíte níže:
    
         curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
              -F grant_type=refresh_token \
@@ -77,7 +77,7 @@ Pokud chcete zavést interaktivní ověřování, postupujte následovně:
 Další informace o interaktivním ověřování uživatelů najdete v tématu [Tok poskytování autorizačních kódů](https://msdn.microsoft.com/library/azure/dn645542.aspx).
 
 ### <a name="service-to-service-authentication-non-interactive"></a>Ověřování služba-služba (neinteraktivní)
-Pomocí této metody aplikace poskytuje svoje vlastní přihlašovací údaje při tooperform hello operace. V takovém případě musíte vydat požadavek POST jako hello níže: 
+Když použijete tuto metodu, aplikace poskytuje své vlastní přihlašovací údaje k provedení operací. V tomto případě musíte vydat požadavek POST podobný tomu, který vidíte níže: 
 
     curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
       -F grant_type=client_credentials \
@@ -85,20 +85,20 @@ Pomocí této metody aplikace poskytuje svoje vlastní přihlašovací údaje p�
       -F client_id=<CLIENT-ID> \
       -F client_secret=<AUTH-KEY>
 
-Hello výstup tohoto požadavku bude obsahovat autorizační token (odlišené `access-token` ve výstupu hello níže), potom budete předávat s voláními rozhraní REST API. Tento ověřovací token si uložte do textového souboru, protože ho budete později v tomto článku potřebovat.
+Výstup tohoto požadavku bude obsahovat autorizační token (níže ve výstupu označený jako `access-token`), který potom budete předávat s voláními rozhraní REST API. Tento ověřovací token si uložte do textového souboru, protože ho budete později v tomto článku potřebovat.
 
     {"token_type":"Bearer","expires_in":"3599","expires_on":"1458245447","not_before":"1458241547","resource":"https://management.core.windows.net/","access_token":"<REDACTED>"}
 
-Tento článek používá hello **neinteraktivní** přístup. Další informace o neinteraktivním (volání služba služba) najdete v tématu [služba pomocí přihlašovacích údajů volání tooservice](https://msdn.microsoft.com/library/azure/dn645543.aspx).
+Tento článek používá **neinteraktivní** přístup. Další informace o neinteraktivním přístupu (volání služba-služba) najdete v tématu [Volání služba-služba pomocí přihlašovacích údajů](https://msdn.microsoft.com/library/azure/dn645543.aspx).
 
 ## <a name="create-a-data-lake-analytics-account"></a>Vytvoření účtu Data Lake Analytics
 Před vytvořením účtu Data Lake Analytics je nutné vytvořit skupinu prostředků Azure a účet Data Lake Store.  Viz [Vytvoření účtu Data Lake Store](../data-lake-store/data-lake-store-get-started-rest-api.md#create-a-data-lake-store-account).
 
-Dobrý den, jak následující příkaz ukazuje Curl toocreate účet:
+Následující příkaz cURL znázorňuje, jak vytvořit účet:
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -H "Content-Type: application/json" https://management.azure.com/subscriptions/<AzureSubscriptionID>/resourceGroups/<AzureResourceGroupName>/providers/Microsoft.DataLakeAnalytics/accounts/<NewAzureDataLakeAnalyticsAccountName>?api-version=2016-11-01 -d@"C:\tutorials\adla\CreateDataLakeAnalyticsAccountRequest.json"
 
-Nahraďte \< `REDACTED` \> s tokenem autorizace hello, \< `AzureSubscriptionID` \> s svoje ID předplatného \< `AzureResourceGroupName` \> s existující prostředek Azure Název skupiny a \< `NewAzureDataLakeAnalyticsAccountName` \> s novým názvem účtu Data Lake Analytics. Hello datová část požadavku tohoto příkazu se nachází v hello **CreateDatalakeAnalyticsAccountRequest.json** soubor, který je k dispozici pro hello `-d` parametr výše. Hello obsah souboru Input.JSON vypadá hello vypadat hello následující:
+Nahraďte \<`REDACTED`\> autorizačním tokenem, \<`AzureSubscriptionID`\> svým ID předplatného, \<`AzureResourceGroupName`\> názvem existující skupiny prostředků Azure a \<`NewAzureDataLakeAnalyticsAccountName`\> názvem nového účtu Data Lake Analytics. Datová část požadavku tohoto příkazu se nachází v souboru **CreateDatalakeAnalyticsAccountRequest.json** poskytnutém pro parametr `-d` výše. Obsah souboru input.json vypadá přibližně takto:
 
     {  
         "location": "East US 2",  
@@ -116,11 +116,11 @@ Nahraďte \< `REDACTED` \> s tokenem autorizace hello, \< `AzureSubscriptionID` 
 
 
 ## <a name="list-data-lake-analytics-accounts-in-a-subscription"></a>Zobrazení seznamu účtů Data Lake Analytics v předplatném
-Následující příkaz Curl Hello ukazuje, jak toolist účty v předplatném:
+Následující příkaz cURL znázorňuje, jak zobrazit seznam účtů v předplatném:
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://management.azure.com/subscriptions/<AzureSubscriptionID>/providers/Microsoft.DataLakeAnalytics/Accounts?api-version=2016-11-01
 
-Nahraďte \< `REDACTED` \> s tokenem autorizace hello, \< `AzureSubscriptionID` \> s vaším ID předplatného. výstup Hello je podobná:
+Nahraďte \<`REDACTED`\> autorizačním tokenem a \<`AzureSubscriptionID`\> svým ID předplatného. Výstup je podobný tomuto:
 
     {
         "value": [
@@ -158,11 +158,11 @@ Nahraďte \< `REDACTED` \> s tokenem autorizace hello, \< `AzureSubscriptionID` 
     }
 
 ## <a name="get-information-about-a-data-lake-analytics-account"></a>Získání informací o účtu Data Lake Analytics
-Dobrý den, jak následující příkaz ukazuje Curl tooget informace účtu:
+Následující příkaz cURL znázorňuje, jak získat informace o účtu:
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://management.azure.com/subscriptions/<AzureSubscriptionID>/resourceGroups/<AzureResourceGroupName>/providers/Microsoft.DataLakeAnalytics/accounts/<DataLakeAnalyticsAccountName>?api-version=2015-11-01
 
-Nahraďte \< `REDACTED` \> s tokenem autorizace hello, \< `AzureSubscriptionID` \> s svoje ID předplatného \< `AzureResourceGroupName` \> s existující prostředek Azure Název skupiny a \< `DataLakeAnalyticsAccountName` \> s názvem hello stávajícího účtu Data Lake Analytics. výstup Hello je podobná:
+Nahraďte \<`REDACTED`\> autorizačním tokenem, \<`AzureSubscriptionID`\> svým ID předplatného, \<`AzureResourceGroupName`\> názvem existující skupiny prostředků Azure a \<`DataLakeAnalyticsAccountName`\> názvem existujícího účtu Data Lake Analytics. Výstup je podobný tomuto:
 
     {
         "properties": {
@@ -190,11 +190,11 @@ Nahraďte \< `REDACTED` \> s tokenem autorizace hello, \< `AzureSubscriptionID` 
     }
 
 ## <a name="list-data-lake-stores-of-a-data-lake-analytics-account"></a>Zobrazení seznamu služeb Data Lake Store pro účet Data Lake Analytics
-Následující příkaz Curl Hello ukazuje, jak ukládá toolist Data Lake účtu:
+Následující příkaz cURL znázorňuje, jak zobrazit seznam služeb Data Lake Store pro účet:
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://management.azure.com/subscriptions/<AzureSubscriptionID>/resourceGroups/<AzureResourceGroupName>/providers/Microsoft.DataLakeAnalytics/accounts/<DataLakeAnalyticsAccountName>/DataLakeStoreAccounts/?api-version=2016-11-01
 
-Nahraďte \< `REDACTED` \> s tokenem autorizace hello, \< `AzureSubscriptionID` \> s svoje ID předplatného \< `AzureResourceGroupName` \> s existující prostředek Azure Název skupiny a \< `DataLakeAnalyticsAccountName` \> s názvem hello stávajícího účtu Data Lake Analytics. výstup Hello je podobná:
+Nahraďte \<`REDACTED`\> autorizačním tokenem, \<`AzureSubscriptionID`\> svým ID předplatného, \<`AzureResourceGroupName`\> názvem existující skupiny prostředků Azure a \<`DataLakeAnalyticsAccountName`\> názvem existujícího účtu Data Lake Analytics. Výstup je podobný tomuto:
 
     {
         "value": [
@@ -210,11 +210,11 @@ Nahraďte \< `REDACTED` \> s tokenem autorizace hello, \< `AzureSubscriptionID` 
     }
 
 ## <a name="submit-u-sql-jobs"></a>Odesílání úloh U-SQL
-Dobrý den, jak následující příkaz ukazuje Curl úlohy toosubmit U-SQL:
+Následující příkaz cURL znázorňuje, jak odeslat úlohu U-SQL:
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" https://<DataLakeAnalyticsAccountName>.azuredatalakeanalytics.net/Jobs/<NewGUID>?api-version=2016-03-20-preview -d@"C:\tutorials\adla\SubmitADLAJob.json"
 
-Nahraďte \< `REDACTED` \> s tokenem autorizace hello, \< `DataLakeAnalyticsAccountName` \> s názvem hello stávajícího účtu Data Lake Analytics. Hello datová část požadavku tohoto příkazu se nachází v hello **SubmitADLAJob.json** soubor, který je k dispozici pro hello `-d` parametr výše. Hello obsah souboru Input.JSON vypadá hello vypadat hello následující:
+Nahraďte \<`REDACTED`\> autorizačním tokenem a \<`DataLakeAnalyticsAccountName`\> názvem existujícího účtu Data Lake Analytics. Datová část požadavku tohoto příkazu se nachází v souboru **SubmitADLAJob.json** poskytnutém pro parametr `-d` výše. Obsah souboru input.json vypadá přibližně takto:
 
     {
         "jobId": "8f8ebf8c-4b63-428a-ab46-a03d2cc5b65a",
@@ -226,11 +226,11 @@ Nahraďte \< `REDACTED` \> s tokenem autorizace hello, \< `DataLakeAnalyticsAcco
             "type": "USql",
             "script": "@searchlog =\n    EXTRACT UserId          int,\n            Start           DateTime,\n            Region          string,\n            Query          
         string,\n            Duration        int?,\n            Urls            string,\n            ClickedUrls     string\n    FROM \"/Samples/Data/SearchLog.tsv\"\n    US
-        ING Extractors.Tsv();\n\nOUTPUT @searchlog   \n    too\"/Output/SearchLog-from-Data-Lake.csv\"\nUSING Outputters.Csv();"
+        ING Extractors.Tsv();\n\nOUTPUT @searchlog   \n    TO \"/Output/SearchLog-from-Data-Lake.csv\"\nUSING Outputters.Csv();"
         }
     }
 
-výstup Hello je podobná:
+Výstup je podobný tomuto:
 
     {
         "jobId": "8f8ebf8c-4b63-428a-ab46-a03d2cc5b65a",
@@ -267,13 +267,13 @@ výstup Hello je podobná:
 
 
 ## <a name="list-u-sql-jobs"></a>Zobrazení seznamu úloh U-SQL
-Dobrý den, jak následující příkaz ukazuje Curl úlohy toolist U-SQL:
+Následující příkaz cURL znázorňuje, jak zobrazit seznam úloh U-SQL:
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://<DataLakeAnalyticsAccountName>.azuredatalakeanalytics.net/Jobs?api-version=2016-11-01 
 
-Nahraďte \< `REDACTED` \> s tokenem autorizace hello, a \< `DataLakeAnalyticsAccountName` \> s názvem hello stávajícího účtu Data Lake Analytics. 
+Nahraďte \<`REDACTED`\> autorizačním tokenem a \<`DataLakeAnalyticsAccountName`\> názvem existujícího účtu Data Lake Analytics. 
 
-výstup Hello je podobná:
+Výstup je podobný tomuto:
 
     {
     "value": [
@@ -322,11 +322,11 @@ výstup Hello je podobná:
 
 
 ## <a name="get-catalog-items"></a>Získání položek katalogu
-Následující příkaz Curl Hello ukazuje, jak hello tooget hello databáze z katalogu:
+Následující příkaz cURL znázorňuje, jak získat databáze z katalogu:
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://<DataLakeAnalyticsAccountName>.azuredatalakeanalytics.net/catalog/usql/databases?api-version=2016-11-01
 
-výstup Hello je podobná:
+Výstup je podobný tomuto:
 
     {
     "@odata.context":"https://myadla0831.azuredatalakeanalytics.net/sqlip/$metadata#databases","value":[
@@ -339,10 +339,10 @@ výstup Hello je podobná:
     }
 
 ## <a name="see-also"></a>Viz také
-* toosee komplexnější dotaz, najdete v části [analýza webových protokolů pomocí Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
-* tooget práce s vývojem aplikací U-SQL najdete v části [skriptů vyvíjet U-SQL pomocí nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
-* toolearn U-SQL, najdete v části [Začínáme s jazykem Azure Data Lake Analytics U-SQL](data-lake-analytics-u-sql-get-started.md).
+* Pokud chcete zobrazit komplexnější dotaz, přejděte k tématu [Analýza webových protokolů pomocí Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
+* Pokud chcete začít s vývojem aplikací U-SQL, přejděte k tématu [Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
+* Pokud se chcete naučit jazyk U-SQL, informace najdete v tématu [Začínáme s jazykem U-SQL Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md).
 * Informace týkající se úloh správy najdete v tématu [Správa služby Azure Data Lake Analytics pomocí webu Azure Portal](data-lake-analytics-manage-use-portal.md).
-* tooget uvádí přehled Data Lake Analytics najdete v části [přehled Azure Data Lake Analytics](data-lake-analytics-overview.md).
-* toosee hello stejný kurz pomocí jiných nástrojů, klikněte na selektory karet hello na hello horní části stránky hello.
+* Přehled Data Lake Analytics najdete v tématu [Přehled Azure Data Lake Analytics](data-lake-analytics-overview.md).
+* Pokud chcete použít jiné podporované nástroje a zobrazit stejný kurz, klikněte na selektory karet v horní části stránky.
 

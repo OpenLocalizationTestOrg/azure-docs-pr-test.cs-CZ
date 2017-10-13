@@ -1,24 +1,24 @@
 ## <a name="what-is-queue-storage"></a>Co je služba Queue Storage?
-Azure Queue storage je služba pro ukládání velkého počtu zpráv, které lze přistupovat z libovolné místo v hello, world prostřednictvím ověřených volání s využitím protokolu HTTP nebo HTTPS. Zpráva s jednou frontou může být až velikost too64 KB a jedna fronta můžete obsahovat miliony zpráv, až toohello limit celkové kapacity účtu úložiště.
+Azure Queue Storage je služba pro ukládání velkého počtu zpráv, ke které můžete získat přístup z jakéhokoli místa na světě prostřednictvím ověřených volání s využitím protokolu HTTP nebo HTTPS. Zpráva s jednou frontou může mít velikost až 64 kB a jedna fronta můžete obsahovat miliony zpráv, až do dosažení celkové kapacity účtu úložiště.
 
 Toto jsou některá běžná použití úložiště služby Queue Storage:
 
-* Vytvoření backlogu práce tooprocess asynchronně
-* Předávání zpráv z webové role tooan pracovního procesu Azure role Azure
+* Vytvoření backlogu práce k asynchronnímu zpracování
+* Předávání zpráv z webové role Azure do role pracovního procesu Azure
 
 ## <a name="queue-service-concepts"></a>Koncepty služby front
-Hello služba front obsahuje hello následující součásti:
+Služba front obsahuje následující součásti:
 
 ![Fronta1](./media/storage-queue-concepts-include/queue1.png)
 
-* **Formát adresy URL:** fronty jsou adresovatelné hello následující formát adresy URL:   
+* **Formát adresy URL:** Fronty jsou adresovatelné v následujícím formátu adresy URL:   
     http://`<storage account>`.queue.core.windows.net/`<queue>` 
   
-    Následující adresa URL Hello řeší frontu v diagramu hello:  
+    Následující adresa URL odkazuje na frontu v diagramu:  
   
     `http://myaccount.queue.core.windows.net/images-to-download`
 
-* **Účet úložiště:** všechny přístup tooAzure úložiště se provádí prostřednictvím účtu úložiště. Podrobné informace o kapacitě účtu úložiště najdete v článku [Škálovatelnost a cíle výkonnosti služby Azure Storage](../articles/storage/common/storage-scalability-targets.md).
-* **Fronta:** Fronta obsahuje sadu zpráv. Všechny zprávy musí být ve frontě. Všimněte si, že název fronty hello musí být psaný malými písmeny. Informace o pojmenování front najdete v tématu [Pojmenování front a metadata](https://msdn.microsoft.com/library/azure/dd179349.aspx).
-* **Zpráva:** A zprávy, v libovolném formátu o až too64 KB. Hello maximální dobu, kterou může zpráva zůstat ve frontě hello je 7 dní.
+* **Účet úložiště:** Veškerý přístup k úložišti Azure se provádí prostřednictvím účtu úložiště. Podrobné informace o kapacitě účtu úložiště najdete v článku [Škálovatelnost a cíle výkonnosti úložiště Azure](../articles/storage/common/storage-scalability-targets.md).
+* **Fronta:** Fronta obsahuje sadu zpráv. Všechny zprávy musí být ve frontě. Upozorňujeme, že název fronty musí být psaný malými písmeny. Informace o pojmenování front najdete v tématu [Pojmenování front a metadata](https://msdn.microsoft.com/library/azure/dd179349.aspx).
+* **Zpráva:** Zprávu v libovolném formátu o velikosti až 64 kB. Maximální doba, po kterou může zpráva zůstat ve frontě, je 7 dní.
 

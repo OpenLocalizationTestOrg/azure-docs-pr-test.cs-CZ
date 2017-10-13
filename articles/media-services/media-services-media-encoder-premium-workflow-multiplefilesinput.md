@@ -1,6 +1,6 @@
 ---
-title: "aaaMultiple vstupní soubory a vlastnosti komponenty pomocí kodéru Premium - Azure | Microsoft Docs"
-description: "Toto téma vysvětluje, jak toouse setRuntimeProperties toouse více vstupní soubory a předat procesor médií Media Encoder Premium pracovního postupu toohello vlastní data."
+title: "Více vstupní soubory a vlastnosti komponenty pomocí kodéru Premium - Azure | Microsoft Docs"
+description: "Toto téma vysvětluje, jak používat setRuntimeProperties k použití více vstupní soubory a předat vlastní data procesor médií Media Encoder Premium pracovního postupu."
 services: media-services
 documentationcenter: 
 author: xpouyat
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: xpouyat;anilmur;juliako
-ms.openlocfilehash: e14d10fbf9669e0b88e5ba1c519f1ba5e0bafdd4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: df1ee5089a0af6ffce1431b658843fcb34a66ce5
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Použití více vstupní soubory a vlastnosti komponenty s kodér úrovně Premium
 ## <a name="overview"></a>Přehled
-Existují scénáře, ve kterých může být nutné toocustomize vlastnosti komponenty, zadejte klip seznamu XML obsahu nebo odeslat více vstupních souborů při odesílání úlohy hello **Media Encoder Premium pracovního postupu** procesor médií. Tady je několik příkladů:
+Existují scénáře, ve kterých možná budete muset upravit vlastnosti komponenty, zadejte klip seznamu XML obsahu nebo odeslat více vstupních souborů při odesílání úlohy **Media Encoder Premium pracovního postupu** procesor médií. Tady je několik příkladů:
 
-* Překrytí text na video a nastavení v době běhu pro každý vstupní video hello textové hodnoty (například hello aktuální datum).
-* Přizpůsobení hello klip seznamu XML (toospecify jednu nebo několik zdrojových souborů, s nebo bez oříznutí, atd.).
-* Obrázek loga překrytí na hello vstupní video, při hello video je zakódován.
+* Překrytí text na video a nastavení v době běhu pro každý vstupní video textové hodnoty (například aktuální datum).
+* Přizpůsobení seznamu XML klip (tak, aby zadejte jednu nebo několik zdrojových souborů, s nebo bez oříznutí, atd.).
+* Obrázek loga překrytí na vstup videa, při přehrávání videa je zakódován.
 * Více kódování zvuk jazyka.
 
-toolet hello **Media Encoder Premium pracovního postupu** vědět, že chcete změnit některé vlastnosti v pracovním postupu hello při vytvoření úlohy hello nebo odeslání více vstupní soubory, máte toouse konfigurace řetězec, který obsahuje ** setRuntimeProperties** nebo **transcodeSource**. Toto téma vysvětluje, jak toouse je.
+Umožníte **Media Encoder Premium pracovního postupu** vědět, že chcete změnit některé vlastnosti v pracovním postupu při vytvoření úlohy nebo odeslat více vstupní soubory, budete muset použít konfigurační řetězec, který obsahuje  **setRuntimeProperties** nebo **transcodeSource**. Toto téma vysvětluje, jak je používat.
 
 ## <a name="configuration-string-syntax"></a>Konfigurace řetězec syntaxe
-Hello konfigurační řetězec tooset v hello kódování úloh používá dokument XML, který vypadá takto:
+Konfigurace řetězec, který nastavit v kódování úloh používá dokument XML, který vypadá takto:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -45,7 +45,7 @@ Hello konfigurační řetězec tooset v hello kódování úloh používá dokum
 </transcodeRequest>
 ```
 
-Hello následuje hello C# kód, který čte konfigurační soubor XML hello ze souboru, aktualizujte jej s hello právo video filename a předává je toohello úloh pro úlohu:
+Následuje kód C#, který čte konfigurační soubor XML ze souboru, jej aktualizovat s právo video název souboru a předává je na úlohu v rámci úlohy:
 
 ```c#
 string premiumConfiguration = ReadAllText(@"D:\home\site\wwwroot\Presets\SetRuntime.xml").Replace("VideoFileName", myVideoFileName);
@@ -53,33 +53,33 @@ string premiumConfiguration = ReadAllText(@"D:\home\site\wwwroot\Presets\SetRunt
 // Declare a new job.
 IJob job = _context.Jobs.Create("Premium Workflow encoding job");
 
-// Get a media processor reference, and pass tooit hello name of hello 
-// processor toouse for hello specific task.
+// Get a media processor reference, and pass to it the name of the 
+// processor to use for the specific task.
 IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Premium Workflow");
 
-// Create a task with hello encoding details, using a string preset.
+// Create a task with the encoding details, using a string preset.
 ITask task = job.Tasks.AddNew("Premium Workflow encoding task",
                               processor,
                               premiumConfiguration,
                               TaskOptions.None);
 
-// Specify hello input assets
+// Specify the input assets
 task.InputAssets.Add(workflow); // workflow asset
 task.InputAssets.Add(video); // video asset with multiple files
 
-// Add an output asset toocontain hello results of hello job. 
+// Add an output asset to contain the results of the job. 
 // This output is specified as AssetCreationOptions.None, which 
-// means hello output asset is not encrypted. 
+// means the output asset is not encrypted. 
 task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 ```
 
 ## <a name="customizing-component-properties"></a>Přizpůsobení vlastnosti komponenty
 ### <a name="property-with-a-simple-value"></a>Vlastnost s hodnotou jednoduché
-V některých případech je užitečné toocustomize vlastnost součásti společně s hello souboru pracovního postupu, který bude toobe provedený Media Encoder Premium pracovního postupu.
+V některých případech je užitečné, chcete-li přizpůsobit vlastnosti součásti společně s soubor pracovního postupu, který chcete provést, v pracovním postupu Premium kodér médií.
 
-Předpokládejme, že určený pracovního postupu tento text překryvy videa a textu hello (například hello aktuální data) by měla toobe sadu za běhu. To provedete odesláním toobe textu hello nastavit jako hello novou hodnotu pro vlastnost textu hello hello překrytí součásti od hello kódování úloh. Tento mechanismus toochange můžete použít další vlastnosti komponenty v pracovním postupu hello (například hello pozici nebo barvu hello překrytí, přenosovou rychlostí hello hello AVC kodér atd.).
+Předpokládejme, že určený pracovního postupu tento text překryvy videa a text (například aktuální datum) by měla být nastavena v době běhu. To provedete odesláním text, který má být nastavená jako novou hodnotu pro vlastnost text překrytí součásti z úlohy kódování. Tento mechanismus můžete změnit další vlastnosti komponenty v pracovním postupu (například pozici nebo barvu překrytí, přenosovou rychlostí AVC kodér atd.).
 
-**setRuntimeProperties** je použité toooverride vlastnost v součásti hello hello pracovního postupu.
+**setRuntimeProperties** se používá k přepsání na vlastnost ve součásti pracovního postupu.
 
 Příklad:
 
@@ -89,13 +89,13 @@ Příklad:
     <setRuntimeProperties>
       <property propertyPath="Media File Input/filename" value="MyInputVideo.mp4" />
       <property propertyPath="/primarySourceFile" value="MyInputVideo.mp4" />
-      <property propertyPath="Optional Text Overlay/Text tooImage Converter/text" value="Today is Friday hello 13th of May, 2016"/>
+      <property propertyPath="Optional Text Overlay/Text To Image Converter/text" value="Today is Friday the 13th of May, 2016"/>
   </setRuntimeProperties>
 </transcodeRequest>
 ```
 
 ### <a name="property-with-an-xml-value"></a>Vlastnost s hodnotou XML
-zapouzdření tooset vlastnost, která očekává hodnotu XML pomocí `<![CDATA[ and ]]>`.
+Pokud chcete nastavit vlastnost, která očekává hodnoty XML, zapouzdření pomocí `<![CDATA[ and ]]>`.
 
 Příklad:
 
@@ -129,47 +129,47 @@ Příklad:
 ```
 
 > [!NOTE]
-> Zajistěte, aby tooput znaků CR vrátit pouze po `<![CDATA[`.
+> Ujistěte se, není pro umístění znaků CR návratový právě po `<![CDATA[`.
 
 ### <a name="propertypath-value"></a>Hodnota propertyPath
-V předchozích příkladech hello, byla hello propertyPath "/ souborů médií vstup/filename" nebo "/ inactiveTimeout" nebo "clipListXml".
-Toto je, obecně hello názvu komponenty hello pak hello název vlastnosti hello. Hello cesta může mít více nebo méně úrovně, jako je třeba "/ primarySourceFile" (protože hello vlastnost je v kořenovém hello hello pracovního postupu) nebo "/ Video zpracování nebo obrázek překrytí nebo krytí" (protože hello překrytí se nachází ve skupině).    
+V předchozích příkladech propertyPath byla "/ souborů médií vstup/filename" nebo "/ inactiveTimeout" nebo "clipListXml".
+Toto je, obecně platí, názvu součásti a potom název vlastnosti. Cesta může mít více nebo méně úrovně, jako je třeba "/ primarySourceFile" (protože vlastnost je v kořenovém adresáři pracovního postupu) nebo "/ Video zpracování nebo obrázek překrytí nebo krytí" (protože překrytí se nachází ve skupině).    
 
-toocheck hello cesty a názvu vlastnosti, použijte hello akce tlačítka, které je okamžitě vedle každou vlastnost. Můžete kliknutím na toto tlačítko akce a vybrat **upravit**. Tato rutina ukáže vám hello skutečný název vlastnosti hello a okamžitě nad ním, hello oboru názvů.
+Chcete-li zkontrolovat název a cesta k vlastnosti, použijte tlačítko akce, která se nachází bezprostředně vedle každou vlastnost. Můžete kliknutím na toto tlačítko akce a vybrat **upravit**. To vám ukáže, skutečný název vlastnosti a okamžitě nad ním, obor názvů.
 
 ![Akce či upravit](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture6_actionedit.png)
 
 ![Vlastnost](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture7_viewproperty.png)
 
 ## <a name="multiple-input-files"></a>Více vstupní soubory
-Každý úkol, odešlete toohello **Media Encoder Premium pracovního postupu** vyžaduje dva prostředky:
+Každý úkol, který se odešle **Media Encoder Premium pracovního postupu** vyžaduje dva prostředky:
 
-* Hello nejprve jeden je *pracovního postupu Asset* obsahující soubor pracovního postupu. Soubory pracovního postupu můžete navrhnout pomocí hello [Návrhář postupu provádění](media-services-workflow-designer.md).
-* je technologie Hello druhá *média Asset* obsahující soubory hello média, které chcete tooencode.
+* První z nich je *pracovního postupu Asset* obsahující soubor pracovního postupu. Soubory pracovního postupu můžete navrhnout pomocí [Návrhář postupu provádění](media-services-workflow-designer.md).
+* Je druhá *média Asset* obsahující soubory médií, který chcete kódovat.
 
-Pokud odesíláte více toohello soubory médií **Media Encoder Premium pracovního postupu** použít kodér, hello následující omezení:
+Pokud odesíláte média soubory, které mají **Media Encoder Premium pracovního postupu** kodér, platí následující omezení:
 
-* Všechna média hello soubory musí být ve stejné hello *média Asset*. Použití více prostředků média není podporováno.
-* V tento prostředek média je nutné nastavit primární soubor hello (v ideálním případě jde hello hlavní soubor videa, který hello kodér se zobrazí výzva, tooprocess).
-* Je nezbytné toopass konfigurační data, která zahrnuje hello **setRuntimeProperties** nebo **transcodeSource** element toohello procesoru.
-  * **setRuntimeProperties** je vlastnost filename hello použité toooverride nebo jinou vlastnost v součásti hello hello pracovního postupu.
-  * **transcodeSource** je použité toospecify hello obsah klip seznamu XML.
+* Všechny soubory média musí být ve stejné *média Asset*. Použití více prostředků média není podporováno.
+* Je nutné nastavit primární soubor v tento prostředek média (v ideálním případě by toto je hlavní video soubor, který je kodér požadavku na zpracování).
+* Je nutné předat konfigurační data, která zahrnuje **setRuntimeProperties** nebo **transcodeSource** element pro procesor.
+  * **setRuntimeProperties** se používá k přepsání vlastnost název souboru nebo jinou vlastnost v součásti pracovního postupu.
+  * **transcodeSource** slouží k určení obsahu klip seznamu XML.
 
-Připojení v pracovním postupu hello:
+Připojení v pracovním postupu:
 
-* Pokud je použití jednoho nebo několika komponent vstupní soubor média a naplánujte toouse **setRuntimeProperties** toospecify hello název souboru a pak se nepřipojují hello primární soubor součást pin toothem. Ujistěte se, že neexistuje žádné připojení mezi objektu hello primární soubor a hello Input(s) soubor média.
-* Pokud dáváte přednost toouse klip seznamu XML a jedna součást zdrojové médium, pak se můžete připojit i společně.
+* Pokud je použití jednoho nebo několika komponent vstupní soubor média a plánujete používat **setRuntimeProperties** Pokud chcete zadat název souboru, pak se nepřipojují pin součást primární soubor k nim. Ujistěte se, že neexistuje žádné připojení mezi objektem primární soubor a Input(s) soubor média.
+* Pokud byste radši chtěli použít klip seznamu XML a jedna součást zdrojové médium, pak se můžete připojit i společně.
 
-![Žádné připojení z primární zdrojový soubor tooMedia vstupní soubor](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture0_nopin.png)
+![Žádné připojení z primární zdrojový soubor pro vstupní soubor média](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture0_nopin.png)
 
-*Pokud použijete vlastnost filename hello tooset setRuntimeProperties neexistuje žádné připojení z hello primární soubor tooMedia vstupní soubor součásti.*
+*Neexistuje žádné připojení z primární soubor do součásti vstupní soubor média, pokud používáte setRuntimeProperties set pro vlastnost název souboru.*
 
-![Připojení ze seznamu XML klip tooClip zdrojového seznamu](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture1_pincliplist.png)
+![Připojení ze seznamu klip XML tak, aby v případě potřeby upraví zdrojového seznamu](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture1_pincliplist.png)
 
-*Můžete připojit klip seznamu XML tooMedia zdroje a použít transcodeSource.*
+*Můžete připojit klip seznamu XML pro zdroj média a použít transcodeSource.*
 
 ### <a name="clip-list-xml-customization"></a>Oříznutí seznamu XML přizpůsobení
-Můžete zadat hello klip seznamu XML v pracovním postupu hello za běhu pomocí **transcodeSource** v konfiguraci hello řetězce XML. To vyžaduje hello klip seznamu XML pin toobe připojené toohello zdrojové médium součást v pracovním postupu hello.
+Můžete zadat seznam XML klip v pracovním postupu za běhu pomocí **transcodeSource** v konfiguraci řetězce XML. To vyžaduje PIN kód XML seznamu klip k připojení k komponentu zdroj média v pracovním postupu.
 
 ```xml
 <?xml version="1.0" encoding="utf-16"?>
@@ -197,7 +197,7 @@ Můžete zadat hello klip seznamu XML v pracovním postupu hello za běhu pomoc�
   </transcodeRequest>
 ```
 
-Pokud chcete toouse /primarySourceFile toospecify tento výstup hello tooname vlastnost soubory pomocí "Výrazy", pak doporučujeme předávání hello klip seznamu XML jako vlastnost *po* hello /primarySourceFile vlastnost, tooavoid s hello klip seznamu přepsat nastavení /primarySourceFile hello.
+Pokud chcete určit /primarySourceFile pomocí této vlastnosti názvu výstupní soubory pomocí "Výrazy", pak doporučujeme předávání XML seznamu klip jako vlastnost *po* /primarySourceFile vlastnost, abyste nemuseli klip Seznam možné přepsat nastavení /primarySourceFile.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -267,14 +267,14 @@ S další rámce přesné oříznutí:
   </transcodeRequest>
 ```
 
-## <a name="example-1--overlay-an-image-on-top-of-hello-video"></a>Příklad 1: Překrytí bitovou kopii nad hello video
+## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>Příklad 1: Překrytí bitovou kopii na video
 
 ### <a name="presentation"></a>Prezentace
-Zvažte příklad, ve kterém chcete toooverlay obrázek loga na hello vstupní video při hello video je zakódován. V tomto příkladu hello vstupní video má název "Microsoft_HoloLens_Possibilities_816p24.mp4" a hello logo je s názvem "logo.png". Měli byste provést hello následující kroky:
+Zvažte příklad, ve kterém chcete překrýt obrázek loga na vstup videa při přehrávání videa je zakódován. V tomto příkladu vstupní video má název "Microsoft_HoloLens_Possibilities_816p24.mp4" a logo je s názvem "logo.png". Měli byste provést následující kroky:
 
-* Vytvoření prostředku pracovního postupu s soubor pracovního postupu hello (viz následující ukázka hello).
-* Vytvoření média prostředku, který obsahuje dva soubory: MyInputVideo.mp4 jako hello primární soubor a MyLogo.png.
-* Odesílat toohello úlohy pracovního postupu Premium Media Encoder média prostředky procesoru s hello výše vstup a zadejte následující konfigurační řetězec hello.
+* Vytvoření prostředku pracovního postupu s soubor pracovního postupu (viz následující příklad).
+* Vytvoření média prostředku, který obsahuje dva soubory: MyInputVideo.mp4 jako primární soubor a MyLogo.png.
+* Odeslat úlohu procesor médií Media Encoder Premium pracovního postupu s výše vstupní prostředky a zadat následující řetězec konfigurace.
 
 Konfigurace:
 
@@ -289,17 +289,17 @@ Konfigurace:
   </transcodeRequest>
 ```
 
-V předchozím příkladu hello je odeslána hello název hello videosoubor toohello vstupní soubor média součásti a hello primarySourceFile vlastnost. Hello název souboru logo hello se odesílají tooanother vstup souboru média, který je připojený toohello součást grafické překrytí.
+V předchozím příkladu název souboru video posílá komponentu vstupní soubor média a vlastnost primarySourceFile. Název souboru logo se odesílají do jiné vstup souboru média, která je připojena k součásti grafické překrytí.
 
 > [!NOTE]
-> Název souboru videa Hello se odesílají toohello primarySourceFile vlastnost. Hello důvodem je tato vlastnost v hello pracovního postupu pro vytváření název souboru správný výstup hello pomocí výrazů, například toouse.
+> Název souboru videa se odesílají do primarySourceFile vlastnost. Důvodem je použití této vlastnosti v pracovním postupu pro vytváření pomocí výrazů, například název souboru správný výstup.
 
 ### <a name="step-by-step-workflow-creation"></a>Vytvoření pracovního postupu krok za krokem
-Tady jsou kroky toocreate hello pracovní postup, který přebírá dva soubory jako vstup: video a bitovou kopii. Ho bude překrytí hello image nad hello videa.
+Tady jsou kroky k vytvoření pracovního postupu, který přebírá dva soubory jako vstup: video a bitovou kopii. Ho bude překrytí bitovou kopii na video.
 
 Otevřete **Návrhář postupu provádění** a vyberte **soubor** > **nový pracovní prostor** > **převod plán, podle kterého**.
 
-nový pracovní postup Hello ukazuje tři prvky:
+Nový pracovní postup ukazuje tři prvky:
 
 * Primární zdrojový soubor
 * Seznam klip ve formátu XML
@@ -309,23 +309,23 @@ nový pracovní postup Hello ukazuje tři prvky:
 
 *Nový pracovní postup kódování*
 
-V pořadí tooaccept hello vstupními médii souboru začněte přidáte komponentu vstupní soubor média. tooadd toohello součást pracovního postupu, podívejte se do vyhledávacího pole úložiště hello a přetáhněte hello potřeby položku na návrháře podokně hello.
+Aby bylo možné přijímat souboru vstupní média, začněte přidáte komponentu vstupní soubor média. Chcete-li přidejte součást do pracovního postupu, podívejte se do vyhledávacího pole úložiště a přetáhněte na požadovanou položku na podokně návrháře.
 
-Dál přidejte toobe videosoubor hello používá pro navrhování pracovního postupu. toodo tak, klikněte na podokno pozadí hello v Návrháři pracovních postupů a vyhledejte hello primární zdrojový soubor vlastnosti v podokně pravém vlastnost hello. Klikněte na ikonu hello složky a vyberte příslušné videosoubor hello.
+V dalším kroku přidejte soubor video má být použit pro navrhování pracovního postupu. Uděláte to tak, klikněte v podokně pozadí v Návrháři pracovních postupů a vyhledejte vlastnost primární zdrojový soubor v podokně pravém vlastnost. Klikněte na ikonu složky a vyberte příslušný soubor videa.
 
 ![Primární soubor zdroje](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture10_primaryfile.png)
 
 *Primární soubor zdroje*
 
-Potom zadejte hello videosoubor v komponentě hello vstupní soubor média.   
+Potom zadejte soubor videa v komponentě vstupní soubor média.   
 
 ![Vstupní zdroj souborů médií](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture11_mediafileinput.png)
 
 *Vstupní zdroj souborů médií*
 
-Jakmile to uděláte, bude součást vstupní soubor média hello zkontrolujte soubor hello a naplnit její výstup PIN tooreflect hello soubor, který ho prověřovány.
+Jakmile to uděláte, bude komponentu vstupní soubor média zkontrolujte soubor a naplnit její výstup PIN tak, aby odrážela soubor, který ho prověřovány.
 
-dalším krokem Hello je tooadd tooRec.709 místo k barva "Aktualizační Video datového typu" toospecify hello. Přidání "Video formátu převaděč" nastavený typ rozložení a rozložení tooData = konfigurovat planární. Tato funkce převede hello datový proud videa tooa formátu, který může být přijata jako zdroj hello překrytí součásti.
+Dalším krokem je přidání "Video datový typ aktualizační" k určení barevný prostor pro Rec.709. Přidání "Video formátu převaděč" nastavené na typ rozložení dat, rozvržení = konfigurovat planární. Datový proud videa bude převedena do formátu, který může být přijata jako zdroj pro komponentu překrytí.
 
 ![Video aktualizační datový typ a formát převaděč](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture12_formatconverter.png)
 
@@ -335,34 +335,34 @@ dalším krokem Hello je tooadd tooRec.709 místo k barva "Aktualizační Video 
 
 *Je-li konfigurovat planární typ rozložení*
 
-V dalším kroku přidejte součást Video překrytí a připojte hello (nekomprimované) video pin toohello (nekomprimované) video pin vstupní soubor média hello.
+V dalším kroku přidejte součást Video překrytí a připojení (nekomprimované) video kódu pin (nekomprimované) video připnete vstupní soubor média.
 
-Přidejte jiný média vstupní soubor (tooload hello logo soubor), klikněte na tuto součást a přejmenujte ji příliš "Média souboru vstup Logo" a vyberte bitovou kopii (soubor .png např.) v souboru vlastnost hello. Připojte hello nekomprimované image pin toohello nekomprimované image pin hello překrytí.
+Přidat další vstup soubor média (se načíst soubor loga), klikněte na tuto součást a přejmenujte ji na "Logo vstupní soubor média" a vyberte bitovou kopii (soubor například .png) ve vlastnosti souboru. PIN kód nekomprimované image se připojte k nekomprimované image pin překrytí.
 
 ![Zdroj překrytí součásti a obrázkových souborů](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture13_overlay.png)
 
 *Zdroj překrytí součásti a obrázkových souborů*
 
-Pokud chcete umístění hello toomodify hello logo na hello video (například chtít tooposition ho na 10 procent z horní části hello levého horního rohu videa hello), zrušte zaškrtnutí políčka "Ruční vstup" hello. To můžete provést, protože používáte komponentu vstupní soubor média tooprovide hello logo souboru toohello překrytí.
+Pokud chcete upravit pozici loga na video (například můžete chtít umístěte ho na 10 procent z levého horního rohu na video), zrušte zaškrtnutí políčka "Ruční vstup". Lze provést, protože používáte vstup soubor média můžete zadat souboru logo součást překrytí.
 
 ![Překrytí pozice](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture14_overlay_position.png)
 
 *Překrytí pozice*
 
-tooencode hello tooH.264 datový proud videa, přidejte hello AVC kodér videa a AAC kodér součásti toohello návrháře prostor. Připojte hello PIN.
-Nastavit hello AAC kodér a vybrat přednastavení převodu formátu zvuk: 2.0 (L, R).
+Ke kódování datový proud videa na H.264, přidejte součásti kodér videa kodér AVC a AAC na plochu návrháře. Připojte kódy PIN.
+Nastavit kodér AAC a vybrat přednastavení převodu formátu zvuk: 2.0 (L, R).
 
 ![Audio a Video kodéry](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture15_encoders.png)
 
 *Audio a Video kodéry*
 
-Nyní přidejte hello **ISO Mpeg-4 multiplexor** a **výstup souboru** součásti a připojte PIN hello, jak je znázorněno.
+Nyní přidejte **ISO Mpeg-4 multiplexor** a **výstup souboru** součásti a připojte kódy PIN, jak je znázorněno.
 
 ![MP4 multiplexor a výstupní soubor](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture16_mp4output.png)
 
 *MP4 multiplexor a výstupní soubor*
 
-Je třeba název hello tooset hello výstupní soubor. Klikněte na tlačítko hello **výstup souboru** hello výraz součásti a úpravy souboru hello:
+Je nutné nastavit název souboru výstupního souboru. Klikněte **výstup souboru** součásti a úpravy výraz pro soubor:
 
     ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_withoverlay.mp4
 
@@ -370,33 +370,33 @@ Je třeba název hello tooset hello výstupní soubor. Klikněte na tlačítko h
 
 *Název výstupního souboru*
 
-Můžete spustit pracovní postup hello místně toocheck, zda je správně spuštěn.
+Můžete spustit místně postup zkontrolujte, zda je správně spuštěna.
 
 Po jejím dokončení, můžete ho spustit v Azure Media Services.
 
-Nejprve připravte ke dvěma souborům se prostředek ve službě Azure Media Services: hello videosoubor a hello logo. To provedete pomocí hello .NET nebo REST API. Můžete to provést taky pomocí hello portál Azure nebo [Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE).
+Nejprve připravte ke dvěma souborům se prostředek ve službě Azure Media Services: soubor videa a logo. To provedete pomocí .NET nebo REST API. Můžete to provést taky pomocí portálu Azure nebo [Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE).
 
-Tento kurz ukazuje, jak toomanage prostředky s AMSE. Existují dva způsoby tooadd soubory tooan asset:
+V tomto kurzu se dozvíte, jak spravovat prostředky s AMSE. Existují dva způsoby, jak přidat soubory do prostředek:
 
-* Vytvořte místní složku, zkopírujte hello dva soubory v něm a přetažení hello složky toohello **Asset** kartě.
-* Nahrát videosoubor hello jako prostředek, zobrazit informace o evidenčním hello, přejděte toohello kartě soubory a odeslat další soubor (logo).
+* Vytvořte místní složku, zkopírujte dva soubory v něm a přetažení složce **Asset** kartě.
+* Nahrát videosoubor jako prostředek, se zobrazí informace o prostředku, přejděte na kartu soubory a odeslat další soubor (logo).
 
 > [!NOTE]
-> Ujistěte se, že tooset primární soubor v hello asset (hello hlavní video soubor).
+> Nezapomeňte nastavit primární soubor v prostředku (hlavní soubor video).
 
 ![Soubory prostředků v AMSE](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture18_assetinamse.png)
 
 *Soubory prostředků v AMSE*
 
-Vyberte hello asset a zvolte tooencode ho pomocí kodéru Premium. Nahrát hello pracovního postupu a vyberte jej.
+Vyberte asset a rozhodnete Kódovat pomocí kodéru Premium. Nahrát pracovního postupu a vyberte jej.
 
-Klikněte na tlačítko hello, toopass procesor toohello dat a přidejte následující XML tooset hello runtime vlastnosti hello:
+Kliknutím na tlačítko předat data do procesoru a přidejte následující kód XML a nastavte vlastnosti modulu runtime:
 
 ![Kodér úrovně Premium v AMSE](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture19_amsepremium.png)
 
 *Kodér úrovně Premium v AMSE*
 
-Vložte následující XML data hello. Potřebujete název hello toospecify hello videosoubor hello vstupní soubor média a primarySourceFile. Zadejte název hello hello název souboru pro hello logo příliš.
+Vložte následující data XML. Je třeba zadat název souboru videa pro vstupní soubor média i primarySourceFile. Zadejte název název souboru pro logo příliš.
 
 ```xml
 <?xml version="1.0" encoding="utf-16"?>
@@ -413,37 +413,37 @@ Vložte následující XML data hello. Potřebujete název hello toospecify hell
 
 *setRuntimeProperties*
 
-Pokud používáte toocreate hello .NET SDK a spusťte úlohu hello, má tato data XML toobe předány jako hello konfigurační řetězec.
+Je-li používat sadu .NET SDK k vytvoření a spuštění úlohy, tato data XML musí předat jako konfigurační řetězec.
 
 ```c#
 public ITask AddNew(string taskName, IMediaProcessor mediaProcessor, string configuration, TaskOptions options);
 ```
 
-Po dokončení úlohy hello výstup hello MP4 souboru v hello asset zobrazí hello překrytí!
+Po dokončení úlohy soubor MP4 ve výstupní asset zobrazí překrytí!
 
-![Překrytí na hello video](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture21_resultoverlay.png)
+![Překrytí na video](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture21_resultoverlay.png)
 
-*Překrytí na hello video*
+*Překrytí na video*
 
-Můžete si stáhnout hello ukázkového pracovního postupu z [Githubu](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/).
+Můžete si stáhnout ukázkový pracovní postup z [Githubu](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/).
 
 ## <a name="example-2--multiple-audio-language-encoding"></a>Příklad 2: Více zvuk jazyk kódování
 
 Příkladem zvuk vícejazyčné kódování workfkow je k dispozici v [Githubu](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/MultilanguageAudioEncoding).
 
-Tato složka obsahuje ukázkový pracovní postup, který lze použít tooencode MXF souboru tooa více MP4 soubory asset s více zvukových stop.
+Tato složka obsahuje ukázkový pracovní postup, který můžete použít ke kódování souboru MXF k více majetku soubory MP4 s více zvukových stop.
 
-Tento pracovní postup předpokládá, že soubor MXF hello obsahuje jeden zvuk sledovat; Další zvukových stop Hello mají být předány jako samostatné zvukové soubory (WAV nebo MP4...).
+Tento pracovní postup předpokládá, že soubor MXF obsahuje jeden zvuk sledovat; Další zvukových stop mají být předány jako samostatné zvukové soubory (WAV nebo MP4...).
 
-tooencode, postupujte podle těchto kroků:
+Ke kódování, postupujte podle těchto kroků:
 
-* Vytvoření prostředku služby Media Services s hello MXF souboru a hello zvukové soubory (0 zvukové soubory too18).
-* Ujistěte se, že tento soubor MXF hello je nastaven jako primární soubor.
-* Vytvoření úlohy a úlohy pomocí hello kodér úrovně Premium pracovní postup procesoru. Použití pracovního postupu hello zadaný (MultiMP4-1080p-19audio-v1.workflow).
-* Předejte hello setruntime.xml data toohello úloh (Pokud používáte Azure Media Services Explorer, "předat pracovní postup xml data toohello" hello použití – tlačítko).
-  * Aktualizujte prosím hello data toospecify hello správný soubor názvy a jazyky značky XML.
-  * pracovní postup Hello obsahuje zvuk komponenty s názvem tooAudio zvuk 1 18.
-  * RFC5646 je podporována pro značky jazyka hello.
+* Vytvoření prostředku služby Media Services s MXF soubor a zvukové soubory (0 až 18 zvukové soubory).
+* Ujistěte se, že v souboru MXF nastavena jako primární soubor.
+* Vytvoření úlohy a úlohy pomocí procesoru kodér pracovního postupu úrovně Premium. Použití pracovního postupu poskytuje (MultiMP4-1080p-19audio-v1.workflow).
+* Předávání dat setruntime.xml úlohy (Pokud používáte Azure Media Services Explorer, použijte tlačítko "předávání dat xml do pracovního postupu").
+  * Aktualizujte data XML a určete správný soubor jazyky a názvy značek.
+  * Pracovní postup obsahuje zvuk komponenty s názvem zvuk 1 na zvukové 18.
+  * RFC5646 je podporována pro značku jazyka.
 
 ```xml
 <?xml version="1.0" encoding="utf-16"?>
@@ -462,11 +462,11 @@ tooencode, postupujte podle těchto kroků:
 </transcodeRequest>
 ```
 
-* Hello kódovaný asset bude obsahovat více jazyk zvukových stop a musí být tyto sleduje vybrat v Azure Media Player.
+* K zakódovanému assetu bude obsahovat více jazyk zvukových stop a musí být tyto sleduje vybrat v Azure Media Player.
 
 ## <a name="see-also"></a>Viz také
 * [Představení Premium kódování v Azure Media Services](http://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
-* [Jak toouse Premium kódování ve službě Azure Media Services](http://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
+* [Jak používat kódování Premium ve službě Azure Media Services](http://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
 * [Kódování obsahu na vyžádání pomocí Azure Media Services](media-services-encode-asset.md#media-encoder-premium-workflow)
 * [Formáty Media Encoder Premium pracovního postupu a kodeky](media-services-premium-workflow-encoder-formats.md)
 * [Ukázkové soubory pracovního postupu](https://github.com/AzureMediaServicesSamples/Encoding-Presets/tree/master/VoD/MediaEncoderPremiumWorkfows)

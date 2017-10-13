@@ -1,6 +1,6 @@
 ---
-title: "aaaUsing systému pro správu identit napříč doménami automaticky zřízení uživatelů a skupin ze služby Azure Active Directory tooapplications | Microsoft Docs"
-description: "Azure Active Directory, mohou automaticky poskytovat uživatelé a skupiny tooany aplikace nebo identity úložiště, které je přední stěnou webovou službou hello rozhraní definované v hello specifikace protokolu SCIM"
+title: "Pomocí systému pro správu identit napříč doménami automaticky zřízení uživatelů a skupin ze služby Azure Active Directory k aplikacím | Microsoft Docs"
+description: "Azure Active Directory, mohou automaticky poskytovat uživatelé a skupiny do aplikace nebo identity úložiště, který je přední stěnou webovou službou pomocí rozhraní definované v specifikace protokolu SCIM"
 services: active-directory
 documentationcenter: 
 author: asmalser-msft
@@ -16,81 +16,81 @@ ms.date: 07/28/2017
 ms.author: asmalser
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;oldportal
-ms.openlocfilehash: 43045c97e68d0d22db598dcb5ec23481c4e97718
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 91978cee88d55c99bcb63c63cdaf01581ae84668
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="using-system-for-cross-domain-identity-management-tooautomatically-provision-users-and-groups-from-azure-active-directory-tooapplications"></a>Pomocí systému pro správu identit napříč doménami tooautomatically zřizování uživatelů a skupin ze služby Azure Active Directory tooapplications
+# <a name="using-system-for-cross-domain-identity-management-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Pomocí systému pro správu identit napříč doménami pro automatické zřizování uživatelů a skupin ze služby Azure Active Directory k aplikacím
 
 ## <a name="overview"></a>Přehled
-Azure Active Directory (Azure AD), mohou automaticky poskytovat uživatelé a skupiny tooany aplikace nebo identity úložiště, které je přední stěnou webovou službou hello rozhraní definované v hello [systému pro napříč doménami Identity Management (SCIM) 2.0 Specifikace protokolu](https://tools.ietf.org/html/draft-ietf-scim-api-19). Azure Active Directory můžete odesílat požadavky toocreate, upravit nebo odstranit přiřazené uživatelů a skupin toohello webové služby. Hello webové služby může překládat pak tyto požadavky do operací na úložiště identit cíl hello. 
+Azure Active Directory (Azure AD), mohou automaticky poskytovat uživatelé a skupiny do aplikace nebo identity úložiště, který je přední stěnou pomocí webové služby pomocí rozhraní definované v [systému pro protokol napříč doménami Identity Management (SCIM) 2.0 specifikace](https://tools.ietf.org/html/draft-ietf-scim-api-19). Azure Active Directory může odesílat požadavky na vytvořit, upravit nebo odstranit přiřazené uživatelů a skupin k webové službě. Webová služba může překládat pak tyto požadavky do operací na úložiště identit cíl. 
 
 > [!IMPORTANT]
-> Společnost Microsoft doporučuje, která můžete spravovat Azure AD pomocí hello [centra pro správu Azure AD](https://aad.portal.azure.com) v hello hello portál Azure místo použití portálu Azure classic, kterou se odkazuje v tomto článku. 
+> Společnost Microsoft doporučuje při správě služby Azure AD používat [centrum pro správu Azure AD](https://aad.portal.azure.com) na webu Azure Portal namísto používání portálu Azure Classic, na který odkazuje tento článek. 
 
 
 
 ![][0]
-*Obrázek 1: Zřizování z úložiště identit Azure Active Directory tooan prostřednictvím webové služby*
+*Obrázek 1: Zřizování z Azure Active Directory k úložišti identity prostřednictvím webové služby*
 
-Tato funkce může používá ve spojení s hello "přineste vlastní aplikace" funkcích ve službě Azure AD tooenable jednotné přihlašování a automatické zřizování pro aplikace, které poskytují nebo jsou přední stěnou webovou službou SCIM uživatelů.
+Tato funkce slouží ve spojení s možností "přineste vlastní aplikace" v Azure AD umožňující jednotného přihlašování a automatické zřizování pro aplikace, které poskytují nebo jsou přední stěnou webovou službou SCIM uživatelů.
 
 Existují dva případy použití pro pomocí SCIM v Azure Active Directory:
 
-* **Zřizování uživatelů a skupin tooapplications, které podporují SCIM** aplikace, které podporují SCIM 2.0 a používala tokeny nosičů OAuth pro ověřování pracuje s Azure AD bez konfigurace.
-* **Vytvoření vlastního řešení zřizování pro aplikace, které podporují jiné zajišťování na základě rozhraní API** pro jiný SCIM aplikace, můžete vytvořit koncový bod tootranslate SCIM mezi koncový bod Azure AD SCIM hello a podporuje všechny rozhraní API hello aplikace pro zřizování uživatelů. toohelp vyvíjet koncový bod SCIM, poskytujeme knihovny společné jazykové infrastruktury (CLI) společně s ukázky kódu, které ukazují, jak toodo zadejte koncový bod SCIM a převede SCIM zprávy.  
+* **Zřizování uživatelů a skupin na aplikace, které podporují SCIM** aplikace, které podporují SCIM 2.0 a používala tokeny nosičů OAuth pro ověřování pracuje s Azure AD bez konfigurace.
+* **Vytvoření vlastního řešení zřizování pro aplikace, které podporují jiné zajišťování na základě rozhraní API** pro jiný SCIM aplikace, můžete vytvořit koncový bod SCIM pro převod mezi koncový bod Azure AD SCIM a jakéhokoli rozhraní API podporuje aplikace pro uživatele zřizování. Můžete vyvíjet koncový bod SCIM, poskytujeme knihovny společné jazykové infrastruktury (CLI) společně s ukázky kódu, které ukazují, jak k poskytování koncový bod SCIM a převede SCIM zprávy.  
 
-## <a name="provisioning-users-and-groups-tooapplications-that-support-scim"></a>Zřizování uživatelů a skupin tooapplications, které podporují SCIM
-Azure AD může být nakonfigurované tooautomatically přiřazené zřizování uživatelů a skupin tooapplications, implementovat [systému pro správu identit napříč doménami 2 (SCIM)](https://tools.ietf.org/html/draft-ietf-scim-api-19) webové služby a přijímat tokeny nosičů OAuth pro ověřování . V rámci specifikace hello SCIM 2.0 aplikace musí splňovat tyto požadavky:
+## <a name="provisioning-users-and-groups-to-applications-that-support-scim"></a>Zřizování uživatelů a skupin na aplikace, které podporují SCIM
+Azure AD lze nakonfigurovat, aby automaticky přiřazen zřizování uživatelů a skupin k aplikacím, které implementují [systému pro správu identit napříč doménami 2 (SCIM)](https://tools.ietf.org/html/draft-ietf-scim-api-19) webové služby a přijímat tokeny nosičů OAuth pro ověřování. V rámci specifikace SCIM 2.0 aplikace musí splňovat tyto požadavky:
 
-* Podporuje vytváření uživatelů nebo skupin, podle části 3.3 hello SCIM protokolu.  
-* Úprava uživatele nebo skupiny s požadavky patch podle části 3.5.2 hello SCIM protokol podporuje.  
-* Podporuje načítání známých prostředků podle části 3.4.1 hello SCIM protokolu.  
-* Podporuje dotazování uživatelů nebo skupin, podle části 3.4.2 hello SCIM protokolu.  Ve výchozím nastavení externalId se zadají dotaz uživatelé a skupiny se zadají dotaz displayName.  
-* Dotazování uživatele podle ID a správcem podle části 3.4.2 hello SCIM protokol podporuje.  
-* Podporuje dotazování skupin podle ID a členové podle části 3.4.2 hello SCIM protokolu.  
-* Přijímá tokeny nosičů OAuth pro autorizaci podle části 2.1 hello SCIM protokolu.
+* Podporuje vytváření uživatelů nebo skupin, podle části 3.3 SCIM protokolu.  
+* Úprava uživatele nebo skupiny s požadavky patch podle části 3.5.2 protokol SCIM podporuje.  
+* Podporuje načítání známých prostředků podle části 3.4.1 SCIM protokolu.  
+* Podporuje dotazování uživatelů nebo skupin, podle části 3.4.2 SCIM protokolu.  Ve výchozím nastavení externalId se zadají dotaz uživatelé a skupiny se zadají dotaz displayName.  
+* Dotazování uživatele podle ID a správcem podle části 3.4.2 protokol SCIM podporuje.  
+* Podporuje dotazování skupin podle ID a členové podle části 3.4.2 SCIM protokolu.  
+* Přijímá tokeny nosičů OAuth pro autorizaci podle části 2.1 SCIM protokolu.
 
 Zeptejte se svého poskytovatele aplikace nebo v dokumentaci poskytovatele aplikace pro příkazy kompatibility s těmito požadavky.
 
 ### <a name="getting-started"></a>Začínáme
-Aplikace, které podporují profil SCIM hello popsané v tomto článku může být připojené tooAzure služby Active Directory pomocí funkce hello "bez Galerie aplikace" v galerii aplikací Azure AD hello. Po spuštění připojené, Azure AD proces synchronizace každých 20 minut, kde vyžádá aplikace hello SCIM koncový bod pro přiřazené uživatele a skupiny a vytvoří nebo upraví je podle toohello podrobnosti o přiřazení.
+Aplikace, které podporují profilem SCIM popsané v tomto článku může být připojen k Azure Active Directory používá funkci "bez Galerie aplikace" v galerii aplikací Azure AD. Po připojení Azure AD spustí proces synchronizace každých 20 minut, kde se dotazuje aplikace SCIM koncový bod pro přiřazené uživatele a skupiny a vytvoří nebo upraví je na základě podrobností přiřazení.
 
-**tooconnect aplikace, která podporuje SCIM:**
+**Připojení aplikace, která podporuje SCIM:**
 
-1. Přihlaste se příliš[hello portál Azure](https://portal.azure.com). 
-2. Procházet příliš ** Azure Active Directory > podnikové aplikace a vyberte **novou aplikaci > všechny > aplikace bez Galerie**.
-3. Zadejte název pro vaši aplikaci a klikněte na tlačítko **přidat** ikonu toocreate objekt aplikace.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com). 
+2. Přejděte do ** Azure Active Directory > podnikové aplikace a vyberte **novou aplikaci > všechny > aplikace bez Galerie**.
+3. Zadejte název pro vaši aplikaci a klikněte na tlačítko **přidat** ikonu pro vytvoření objektu aplikace.
     
   ![][1]
   *Obrázek 2: Galerii aplikací Azure AD*
     
-4. Na obrazovce výsledné hello vyberte hello **zřizování** kartě v levém sloupci hello.
-5. V hello **režimu zřizování** nabídce vyberte možnost **automatické**.
+4. Na obrazovce výsledné vyberte **zřizování** kartě v levém sloupci.
+5. V **režimu zřizování** nabídce vyberte možnost **automatické**.
     
   ![][2]
-  *Obrázek 3: Konfigurace zřizování v hello portálu Azure*
+  *Obrázek 3: Konfigurace zřizování na portálu Azure*
     
-6. V hello **URL klienta** pole, zadejte adresu URL hello aplikace hello SCIM koncového bodu. Příklad: https://api.contoso.com/scim/v2/
-7. Pokud koncový bod SCIM hello vyžaduje tokenu nosiče OAuth z vystavitele než Azure AD, tak kopie hello požadované tokenu nosiče OAuth do hello volitelné **tajný klíč tokenu** pole. Pokud toto pole je prázdné, Azure AD zahrnuty tokenu nosiče OAuth, který je vydán z Azure AD s každou žádostí. Aplikace, které používají Azure AD jako zprostředkovatele identity můžete ověřit tento Azure AD-vydán token.
-8. Klikněte na tlačítko hello **Test připojení** tlačítko toohave Azure Active Directory pokus o tooconnect toohello SCIM koncový bod. Pokud hello pokusy selžou, zobrazí se informace o chybě.  
-9. Pokud aplikace toohello tooconnect pokusy o hello úspěšné, pak klikněte na **Uložit** přihlašovací údaje správce toosave hello.
-10. V hello **mapování** část, existují dvě sady vybrat mapování atributů: jeden pro uživatelské objekty a jeden pro objekty skupiny. Vyberte každý jeden tooreview hello atributy, které jsou synchronizované z tooyour aplikace Azure Active Directory. Hello atributy vybrán jako **párování** vlastnosti jsou použité toomatch hello uživatelů a skupin v aplikaci pro operace aktualizace. Vyberte toocommit tlačítko hello uložit změny.
+6. V **URL klienta** pole, zadejte adresu URL koncového bodu SCIM aplikace. Příklad: https://api.contoso.com/scim/v2/
+7. Pokud koncový bod SCIM vyžaduje tokenu nosiče OAuth z vystavitele než Azure AD, zkopírujte do nepovinný požadovaný token nosiče OAuth **tajný klíč tokenu** pole. Pokud toto pole je prázdné, Azure AD zahrnuty tokenu nosiče OAuth, který je vydán z Azure AD s každou žádostí. Aplikace, které používají Azure AD jako zprostředkovatele identity můžete ověřit tento Azure AD-vydán token.
+8. Klikněte **Test připojení** tlačítko tak, aby měl Azure Active Directory, pokusí se připojit ke koncovému bodu SCIM. Pokud pokusy o selhání, zobrazí se informace o chybě.  
+9. Pokud pokusy o připojení k úspěšné aplikaci, pak klikněte na tlačítko **Uložit** uložit přihlašovací údaje správce.
+10. V **mapování** část, existují dvě sady vybrat mapování atributů: jeden pro uživatelské objekty a jeden pro objekty skupiny. Vyberte každé z nich a zkontrolujte atributy, které jsou synchronizované z Azure Active Directory do vaší aplikace. Atributy vybrán jako **párování** vlastnosti jsou slouží k přiřazení uživatelů a skupin v aplikaci pro operace aktualizace. Kliknutím na tlačítko Uložit potvrzení změny.
 
     >[!NOTE]
-    >Volitelně můžete zakázat synchronizaci objektů skupiny zakázáním hello "skupiny" mapování. 
+    >Volitelně můžete zakázat synchronizaci objektů skupiny zakázáním "skupiny" mapování. 
 
-11. V části **nastavení**, hello **oboru** pole definuje, které uživatele nebo skupiny jsou synchronizovány. Výběr "Synchronizace přiřadit pouze uživatelé a skupiny" (doporučeno) bude synchronizovat pouze uživatelé a skupiny přiřazené v hello **uživatelů a skupin** kartě.
-12. Po dokončení konfiguraci změnit hello **Stav zřizování** příliš**na**.
-13. Klikněte na tlačítko **Uložit** toostart hello zřizování služby Azure AD. 
-14. Pokud synchronizaci pouze přiřazenou uživatelů a skupin (doporučeno), se že hello tooselect **uživatelů a skupin** a přiřaďte hello uživatelů nebo skupin, které chcete toosync.
+11. V části **nastavení**, **oboru** pole definuje, které uživatele nebo skupiny jsou synchronizovány. Výběr "Synchronizace přiřadit pouze uživatelé a skupiny" (doporučeno) se synchronizují pouze uživatelé a skupiny přiřazené v **uživatelů a skupin** kartě.
+12. Po dokončení konfiguraci změnit **Stav zřizování** k **na**.
+13. Klikněte na tlačítko **Uložit** zahájíte zřizování služby Azure AD. 
+14. Pokud synchronizaci přiřadit pouze uživatelé a skupiny (doporučeno), je nutné vybrat **uživatelů a skupin** a přiřaďte uživatele a skupiny, které chcete synchronizovat.
 
-Po zahájení hello počáteční synchronizaci, můžete hello **protokoly auditu** kartě toomonitor průběhu, který zobrazuje všechny akce prováděné hello zřizování služby ve vaší aplikaci. Další informace o zřizování hello Azure AD tooread jak protokolů najdete v tématu [zprávy o zřizování účtu automatické uživatele](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-provisioning-reporting).
+Po dokončení počáteční synchronizace se spustil, můžete **protokoly auditu** a sledovat postup, který zobrazuje všechny akce prováděné při zřizování služby ve vaší aplikaci. Další informace o tom, jak číst zřizování protokoly služby Azure AD najdete v tématu [zprávy o zřizování účtu automatické uživatele](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-provisioning-reporting).
 
 >[!NOTE]
->počáteční synchronizace Hello trvá déle tooperform než následné synchronizace, ke kterým dochází přibližně každých 20 minut, dokud se službou hello. 
+>Počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 20 minut, dokud se službou provést. 
 
 
 ## <a name="building-your-own-provisioning-solution-for-any-application"></a>Vytváření vlastní zřizování řešení pro všechny aplikace
@@ -98,82 +98,82 @@ Vytvořením SCIM webová služba, která rozhraní s Azure Active Directory, m�
 
 Zde je, jak to funguje:
 
-1. Azure AD poskytuje společné jazykové infrastruktury knihovny s názvem [Microsoft.SystemForCrossDomainIdentityManagement](https://www.nuget.org/packages/Microsoft.SystemForCrossDomainIdentityManagement/). Systémoví integrátoři a vývojářům toocreate této knihovny a nasadit můžete použít koncový bod na základě SCIM webové služby lze připojit aplikace Azure AD tooany úložiště identit.
-2. Mapování se implementují ve hello webové služby toomap hello standardizované schématu toohello uživatele schéma uživatele a protokol vyžaduje aplikace hello.
-3. Adresa URL koncového bodu Hello je zaregistrován ve službě Azure AD jako součást vlastní aplikaci v galerii aplikací hello.
-4. Uživatelé a skupiny přiřazené toothis aplikace ve službě Azure AD. Po přiřazení jsou vloženy do fronty toobe synchronizované toohello cílovou aplikaci. Proces synchronizace Hello zpracování hello fronty spouští každých 20 minut.
+1. Azure AD poskytuje společné jazykové infrastruktury knihovny s názvem [Microsoft.SystemForCrossDomainIdentityManagement](https://www.nuget.org/packages/Microsoft.SystemForCrossDomainIdentityManagement/). Systémoví integrátoři a vývojáři mohou použít tuto knihovnu vytvořit a nasadit koncový bod na základě SCIM webové služby lze připojit k libovolné aplikace úložiště identit Azure AD.
+2. Mapování se implementují ve webové službě k mapování schéma standardizované uživatele na schéma uživatele a protokol požadované aplikací.
+3. Adresa URL koncového bodu je zaregistrován ve službě Azure AD jako součást vlastní aplikaci v galerii aplikací.
+4. Uživatelé a skupiny přiřazené k této aplikaci ve službě Azure AD. Po přiřazení jsou vloženy do fronty na synchronizaci do cílové aplikace. Proces synchronizace zpracování fronty spouští každých 20 minut.
 
 ### <a name="code-samples"></a>Ukázky kódů
-toomake to zpracovat snadnější, sadu [ukázky kódu jsou](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master) jsou k dispozici, vytvořit koncový bod webové služby SCIM a ukázka automatické zřizování. Jeden ukázka je zprostředkovatele, který udržuje soubor s řádky představující uživatele a skupiny hodnot oddělených čárkami.  je Hello další zprostředkovatele, který funguje u služby Amazon Web Services identita a správa přístupu hello.  
+Chcete-li tento jednodušší, proces sadu [ukázky kódu jsou](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master) jsou k dispozici, vytvořit koncový bod webové služby SCIM a ukázka automatické zřizování. Jeden ukázka je zprostředkovatele, který udržuje soubor s řádky představující uživatele a skupiny hodnot oddělených čárkami.  Druhá je zprostředkovatele, který funguje ve službě Amazon Web Services identita a správa přístupu.  
 
 **Požadavky**
 
 * Visual Studio 2013 nebo novější
 * [Azure SDK pro .NET](https://azure.microsoft.com/downloads/)
-* Počítače s Windows, který podporuje toobe framework 4.5 ASP.NET hello používá jako hello SCIM koncový bod. Tento počítač musí být přístupné z cloudu hello
+* Windows počítač, který podporuje technologii ASP.NET 4.5 má být použit jako SCIM koncový bod. Tento počítač musí být přístupné z cloudu
 * [Předplatné Azure zkušební nebo licencovanou verzi Azure AD Premium](https://azure.microsoft.com/services/active-directory/)
-* Ukázka Amazon AWS Hello vyžaduje knihovny z hello [AWS nástrojů pro Visual Studio](http://docs.aws.amazon.com/AWSToolkitVS/latest/UserGuide/tkv_setup.html). Další informace najdete v tématu hello README hello ukázka je součástí souboru.
+* Ukázka Amazon AWS vyžaduje knihovny z [AWS nástrojů pro Visual Studio](http://docs.aws.amazon.com/AWSToolkitVS/latest/UserGuide/tkv_setup.html). Další informace naleznete v souboru README součástí vzorku.
 
 ### <a name="getting-started"></a>Začínáme
-Hello nejjednodušší způsob, jak tooimplement, které SCIM koncový bod, který může přijmout zřizování požadavky z Azure AD je toobuild a nasaďte hello ukázka kódu, který produkuje hello zřízené uživatelé tooa textový soubor s oddělovači (CSV) souboru.
+Nejjednodušší způsob, jak implementovat SCIM koncový bod, který může přijmout zřizování požadavky z Azure AD je sestavení a nasazení ukázka kódu, který produkuje zřízené uživatele do souboru s oddělovači (CSV).
 
-**toocreate SCIM koncový bod ukázka:**
+**Pokud chcete vytvořit koncový bod ukázka SCIM:**
 
-1. Stáhněte si balíček ukázkový kód hello v [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)
-2. Rozbalte balíček hello a umístěte ji na počítač se systémem Windows v umístění, jako je například C:\AzureAD-BYOA-Provisioning-Samples\.
-3. V této složce spusťte hello FileProvisioningAgent řešení v sadě Visual Studio.
-4. Vyberte **nástroje > Správce balíčků knihoven > Konzola správce balíčků**a spusťte následující příkazy pro hello FileProvisioningAgent tooresolve hello řešení odkazy na projekt hello:
+1. Stáhněte si balíček ukázkový kód v [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)
+2. Rozbalte balíček a umístěte ji na počítač se systémem Windows v umístění, jako je například C:\AzureAD-BYOA-Provisioning-Samples\.
+3. V této složce spusťte FileProvisioningAgent řešení v sadě Visual Studio.
+4. Vyberte **nástroje > Správce balíčků knihoven > Konzola správce balíčků**a spusťte následující příkazy pro projekt FileProvisioningAgent se vyřešit odkazy na řešení:
   ```` 
    Install-Package Microsoft.SystemForCrossDomainIdentityManagement
    Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
    Install-Package Microsoft.Owin.Diagnostics
    Install-Package Microsoft.Owin.Host.SystemWeb
   ````
-5. Sestavení projektu FileProvisioningAgent hello.
-6. Spuštění aplikace příkazového řádku hello v systému Windows (jako správce) a použít hello **cd** příkaz toochange hello directory tooyour **\AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug** složky.
-7. Spusťte následující příkaz, nahraďte < adresa > hello IP adresy nebo názvu domény počítače Windows hello hello:
+5. Sestavení projektu FileProvisioningAgent.
+6. Spuštění aplikace příkazového řádku v systému Windows (jako správce) a použít **cd** příkazu změňte adresář na vaše **\AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug** složka.
+7. Spusťte následující příkaz, nahraďte IP adresy nebo domény název počítače Windows < adresa >:
   ````   
    FileAgnt.exe http://<ip-address>:9000 TargetFile.csv
   ````
-8. V systému Windows v rámci **nastavení systému Windows > síť a Internet nastavení**, vyberte hello **brány Windows Firewall > Upřesnit nastavení**a vytvořit **příchozí pravidlo** , umožňuje příchozí přístup tooport 9000.
-9. Pokud je počítač Windows hello za směrovačem, hello směrovač potřebám toobe nakonfigurované tooperform překlad síťových přístup mezi její port 9000, je zveřejněné toohello internet a port 9000 na počítači Windows hello. To je potřeba pro Azure AD toobe možné tooaccess tento koncový bod v cloudu hello.
+8. V systému Windows v rámci **nastavení systému Windows > síť a Internet nastavení**, vyberte **brány Windows Firewall > Upřesnit nastavení**a vytvořit **příchozí pravidlo** , umožňuje příchozí přístup k portu 9000.
+9. Pokud je počítač Windows za směrovačem, je potřeba nakonfigurovat k provedení přístup překlad mezi její port 9000, který má přístup k Internetu a port 9000 na počítači Windows směrovači. To je potřeba pro Azure AD pro přístup k tomuto koncovému bodu v cloudu.
 
-**tooregister hello ukázka SCIM koncový bod ve službě Azure AD:**
+**Postup registrace koncového bodu SCIM ukázka ve službě Azure AD:**
 
-1. Přihlaste se příliš[hello portál Azure](https://portal.azure.com). 
-2. Procházet příliš ** Azure Active Directory > podnikové aplikace a vyberte **novou aplikaci > všechny > aplikace bez Galerie**.
-3. Zadejte název pro vaši aplikaci a klikněte na tlačítko **přidat** ikonu toocreate objekt aplikace. objekt aplikace Hello vytvořený je určený toorepresent hello cílové aplikace by zřizování tooand implementace jeden pro přihlašování a ne jenom hello SCIM koncový bod.
-4. Na obrazovce výsledné hello vyberte hello **zřizování** kartě v levém sloupci hello.
-5. V hello **režimu zřizování** nabídce vyberte možnost **automatické**.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com). 
+2. Přejděte do ** Azure Active Directory > podnikové aplikace a vyberte **novou aplikaci > všechny > aplikace bez Galerie**.
+3. Zadejte název pro vaši aplikaci a klikněte na tlačítko **přidat** ikonu pro vytvoření objektu aplikace. Objekt aplikace vytvořený je určený k reprezentaci cílové aplikaci jste by zajišťování, které a implementace jednotné přihlašování pro a nikoli pouze SCIM koncového bodu.
+4. Na obrazovce výsledné vyberte **zřizování** kartě v levém sloupci.
+5. V **režimu zřizování** nabídce vyberte možnost **automatické**.
     
   ![][2]
-  *Obrázek 4: Konfigurace zřizování v hello portálu Azure*
+  *Obrázek 4: Konfigurace zřizování na portálu Azure*
     
-6. V hello **URL klienta** zadejte hello vystaven internetové adresy URL a port SCIM koncový bod. To by něco jako http://testmachine.contoso.com:9000 nebo http://<ip-address>:9000/, kde < adresa > je hello internet zveřejněné IP adresu.  
-7. Pokud koncový bod SCIM hello vyžaduje tokenu nosiče OAuth z vystavitele než Azure AD, tak kopie hello požadované tokenu nosiče OAuth do hello volitelné **tajný klíč tokenu** pole. Pokud toto pole je prázdné, bude obsahovat Azure AD tokenu nosiče OAuth, který je vydán z Azure AD s každou žádostí. Aplikace, které používají Azure AD jako zprostředkovatele identity můžete ověřit tento Azure AD-vydán token.
-8. Klikněte na tlačítko hello **Test připojení** tlačítko toohave Azure Active Directory pokus o tooconnect toohello SCIM koncový bod. Pokud hello pokusy selžou, zobrazí se informace o chybě.  
-9. Pokud aplikace toohello tooconnect pokusy o hello úspěšné, pak klikněte na **Uložit** přihlašovací údaje správce toosave hello.
-10. V hello **mapování** část, existují dvě sady vybrat mapování atributů: jeden pro uživatelské objekty a jeden pro objekty skupiny. Vyberte každý jeden tooreview hello atributy, které jsou synchronizované z tooyour aplikace Azure Active Directory. Hello atributy vybrán jako **párování** vlastnosti jsou použité toomatch hello uživatelů a skupin v aplikaci pro operace aktualizace. Vyberte toocommit tlačítko hello uložit změny.
-11. V části **nastavení**, hello **oboru** pole definuje, které uživatele nebo skupiny jsou synchronizovány. Výběr "Synchronizace přiřadit pouze uživatelé a skupiny" (doporučeno) bude synchronizovat pouze uživatelé a skupiny přiřazené v hello **uživatelů a skupin** kartě.
-12. Po dokončení konfiguraci změnit hello **Stav zřizování** příliš**na**.
-13. Klikněte na tlačítko **Uložit** toostart hello zřizování služby Azure AD. 
-14. Pokud synchronizaci pouze přiřazenou uživatelů a skupin (doporučeno), se že hello tooselect **uživatelů a skupin** a přiřaďte hello uživatelů nebo skupin, které chcete toosync.
+6. V **URL klienta** pole, zadejte adresu URL a port váš koncový bod SCIM vystavené Internetu. To by něco jako http://testmachine.contoso.com:9000 nebo http://<ip-address>:9000/, kde < adresa > je Internetu zveřejněné IP adresu.  
+7. Pokud koncový bod SCIM vyžaduje tokenu nosiče OAuth z vystavitele než Azure AD, zkopírujte do nepovinný požadovaný token nosiče OAuth **tajný klíč tokenu** pole. Pokud toto pole je prázdné, bude obsahovat Azure AD tokenu nosiče OAuth, který je vydán z Azure AD s každou žádostí. Aplikace, které používají Azure AD jako zprostředkovatele identity můžete ověřit tento Azure AD-vydán token.
+8. Klikněte **Test připojení** tlačítko tak, aby měl Azure Active Directory, pokusí se připojit ke koncovému bodu SCIM. Pokud pokusy o selhání, zobrazí se informace o chybě.  
+9. Pokud pokusy o připojení k úspěšné aplikaci, pak klikněte na tlačítko **Uložit** uložit přihlašovací údaje správce.
+10. V **mapování** část, existují dvě sady vybrat mapování atributů: jeden pro uživatelské objekty a jeden pro objekty skupiny. Vyberte každé z nich a zkontrolujte atributy, které jsou synchronizované z Azure Active Directory do vaší aplikace. Atributy vybrán jako **párování** vlastnosti jsou slouží k přiřazení uživatelů a skupin v aplikaci pro operace aktualizace. Kliknutím na tlačítko Uložit potvrzení změny.
+11. V části **nastavení**, **oboru** pole definuje, které uživatele nebo skupiny jsou synchronizovány. Výběr "Synchronizace přiřadit pouze uživatelé a skupiny" (doporučeno) se synchronizují pouze uživatelé a skupiny přiřazené v **uživatelů a skupin** kartě.
+12. Po dokončení konfiguraci změnit **Stav zřizování** k **na**.
+13. Klikněte na tlačítko **Uložit** zahájíte zřizování služby Azure AD. 
+14. Pokud synchronizaci přiřadit pouze uživatelé a skupiny (doporučeno), je nutné vybrat **uživatelů a skupin** a přiřaďte uživatele a skupiny, které chcete synchronizovat.
 
-Po zahájení hello počáteční synchronizaci, můžete hello **protokoly auditu** kartě toomonitor průběhu, který zobrazuje všechny akce prováděné hello zřizování služby ve vaší aplikaci. Další informace o zřizování hello Azure AD tooread jak protokolů najdete v tématu [zprávy o zřizování účtu automatické uživatele](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-provisioning-reporting).
+Po dokončení počáteční synchronizace se spustil, můžete **protokoly auditu** a sledovat postup, který zobrazuje všechny akce prováděné při zřizování služby ve vaší aplikaci. Další informace o tom, jak číst zřizování protokoly služby Azure AD najdete v tématu [zprávy o zřizování účtu automatické uživatele](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-provisioning-reporting).
 
-ověření hello ukázka Hello posledním krokem je tooopen hello TargetFile.csv souboru ve složce \AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug hello na počítač se systémem Windows. Jakmile se spustí hello procesu zřizování, tento soubor zobrazuje hello podrobnosti o veškerém přiřazené a zřízení uživatelů a skupin.
+V posledním kroku ověření ukázce je k otevření souboru TargetFile.csv ve složce \AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug na počítač se systémem Windows. Po spuštění procesu zřizování, tento soubor zobrazuje podrobnosti o veškerém přiřazené a zřízení uživatelů a skupin.
 
 ### <a name="development-libraries"></a>Vývojářské knihovny
-toodevelop vlastní webové služby, který splňuje specifikace SCIM toohello, nejdřív seznámit se s hello poskytované společností Microsoft toohelp urychlit proces vývoje hello následující knihovny: 
+K vývoji vlastní webová služba, která odpovídá specifikaci SCIM, nejdřív seznámíte se s následující knihovny poskytované Microsoft pomoci urychlit proces vývoje: 
 
-1. Společné jazykové infrastruktury (CLI) knihovny jsou nabízena pro použití s jazyky na základě této infrastruktury, jako je například C#. Jedna z těchto knihoven [Microsoft.SystemForCrossDomainIdentityManagement.Service](https://www.nuget.org/packages/Microsoft.SystemForCrossDomainIdentityManagement/), deklaruje rozhraní, Microsoft.SystemForCrossDomainIdentityManagement.IProvider, znázorňuje následující obrázek hello: A Používání knihoven hello vývojáře by implementovat dané rozhraní s třídu, která může označovat, obecně jako zprostředkovatel. Hello knihovny povolte hello vývojáře toodeploy webové služby, který splňuje specifikace SCIM toohello. Hello webová služba může být buď hostovaný v rámci služby IIS nebo libovolného spustitelného souboru Common Language Infrastructure sestavení. Žádost je přeložit na zprostředkovatele toohello volání metody, které by být naprogramovaný tak podle hello vývojáře toooperate na některé úložiště identit.
+1. Společné jazykové infrastruktury (CLI) knihovny jsou nabízena pro použití s jazyky na základě této infrastruktury, jako je například C#. Jedna z těchto knihoven [Microsoft.SystemForCrossDomainIdentityManagement.Service](https://www.nuget.org/packages/Microsoft.SystemForCrossDomainIdentityManagement/), deklaruje rozhraní, Microsoft.SystemForCrossDomainIdentityManagement.IProvider, viz následující obrázek: A vývojáře pomocí knihovny by implementovat dané rozhraní s třídu, která může označovat, obecně jako zprostředkovatel. Knihovny povolte vývojáři nasazení webové služby, který splňuje specifikaci SCIM. Webová služba může být buď hostovaný v rámci služby IIS nebo libovolného spustitelného souboru Common Language Infrastructure sestavení. Žádost je přeložit na volání metody poskytovatele, které by být naprogramovaný tak vývojáře k provozu na některé úložiště identit.
   
   ![][3]
   
-2. [Obslužné rutiny trasy Express](http://expressjs.com/guide/routing.html) jsou k dispozici pro analýzu node.js požadavek objekty, které představují volání (jak je definována hello SCIM specification), tooa node.js webové služby.   
+2. [Obslužné rutiny trasy Express](http://expressjs.com/guide/routing.html) jsou k dispozici pro analýzu node.js požadavek objekty, které představují volání (podle specifikace SCIM), vytvářeny k webové službě node.js.   
 
 ### <a name="building-a-custom-scim-endpoint"></a>Vytváření koncový bod vlastní SCIM
-Používání knihoven hello rozhraní příkazového řádku, vývojáře, kteří používají tyto knihovny hostování své služby v rámci všech spustitelný soubor sestavení Common Language Infrastructure, nebo Internetová informační služba. Tady je ukázkový kód pro hostování služby v rámci spustitelný soubor sestavení, na adrese hello http://localhost:9000: 
+Používání knihoven rozhraní příkazového řádku, vývojáře, kteří používají tyto knihovny hostování své služby v rámci všech spustitelný soubor sestavení Common Language Infrastructure, nebo Internetová informační služba. Tady je ukázkový kód pro hostování služby v rámci spustitelný soubor sestavení, na adrese http://localhost:9000: 
 
     private static void Main(string[] arguments)
     {
@@ -244,7 +244,7 @@ Používání knihoven hello rozhraní příkazového řádku, vývojáře, kte�
     }
     }
 
-Tato služba musí mít HTTP adresa a server ověřování certifikát z které hello kořenové certifikační autority je jedním z následujících hello: 
+Tato služba musí mít HTTP adresa a server ověřování certifikát které kořenové certifikační autority je jedním z těchto: 
 
 * CNNIC
 * Comodo
@@ -256,13 +256,13 @@ Tato služba musí mít HTTP adresa a server ověřování certifikát z které 
 * VeriSign
 * WoSign
 
-Ověřovací certifikát serverů může být vázané tooa port na hostitele Windows hello nástroj shell sítě: 
+Ověřovací certifikát serverů může být vázaný na port na hostitele Windows pomocí nástroje prostředí sítě: 
 
     netsh http add sslcert ipport=0.0.0.0:443 certhash=0000000000003ed9cd0c315bbb6dc1c08da5e6 appid={00112233-4455-6677-8899-AABBCCDDEEFF}  
 
-Zde hello hodnota poskytnutá pro hello certhash argument je hello kryptografický otisk certifikátu hello, zatímco hello hodnota poskytnutá pro hello appid argument je libovolný identifikátor, globálně jedinečný.  
+Hodnota poskytnutá pro certhash argument tady, je kryptografický otisk certifikátu, zatímco hodnota poskytnutá pro appid argument je libovolný identifikátor, globálně jedinečný.  
 
-toohost hello služby v rámci Internetové informační služby, vývojář by pomocí třídy v oboru názvů výchozí hello hello sestavení s názvem spuštění sestavit sestavení knihovny CLA kódu.  Zde je ukázka této třídy: 
+K hostování služby v rámci Internetové informační služby, by vývojář sestavení sestavení knihovny kódu CLA s třídy s názvem spuštění v výchozí obor názvů sestavení.  Zde je ukázka této třídy: 
 
     public class Startup
     {
@@ -293,11 +293,11 @@ toohost hello služby v rámci Internetové informační služby, vývojář by 
     }
 
 ### <a name="handling-endpoint-authentication"></a>Zpracování koncový bod ověřování
-Žádosti z Azure Active Directory zahrnovat tokenu nosiče OAuth 2.0.   Každá žádost služby přijímající hello by měl ověřit hello vystavitele jako jménem klienta Azure Active Directory hello očekávání, pro přístup k toohello Azure Active Directory Graph webové služby Azure Active Directory.  V tokenu hello hello vystavitele identifikovaný deklaraci identity iss, například "iss": "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/".  V tomto příkladu hello základní adresa hello hodnoty deklarace identity, https://sts.windows.net, identifikuje Azure Active Directory jako hello vystavitele, zatímco hello relativní adresu segmentu, cbb1a5ac-f33b-45fa-9bf5-f37db0fed422, je jedinečný identifikátor hello Azure Active Klient Directory jménem které hello byl vydán token.  Pokud hello token vydán pro přístup k hello Azure Active Directory Graph webové služby, potom hello identifikátor této služby, 00000002-0000-0000-c000-000000000000, by měla být v hello hodnotu oblast hello token deklarace identity.  
+Žádosti z Azure Active Directory zahrnovat tokenu nosiče OAuth 2.0.   Všechny služby přijetí žádosti by měl ověřit vystavitele jako jménem očekávané klienta Azure Active Directory pro přístup k webové službě Azure Active Directory Graph Azure Active Directory.  V tokenu, Vystavitel je identifikována deklaraci identity iss, například "iss": "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/".  V tomto příkladu bázové adresy hodnota deklarace identity, https://sts.windows.net, Azure Active Directory identifikuje jako vydavatel, zatímco relativní adresu segmentu cbb1a5ac-f33b-45fa-9bf5-f37db0fed422, je jedinečný identifikátor služby Azure Active Directory Klient jménem kterého byl token vydán.  Pokud byl token vydán pro přístup k webové službě Azure Active Directory Graph, by měl být identifikátor této služby, 00000002-0000-0000-c000-000000000000, v hodnotě deklarace identity oblast je token.  
 
-Vývojáři pomocí knihovny CLA hello od společnosti Microsoft pro vytváření SCIM služby můžete ověřování žádostí z Azure Active Directory pomocí balíček Microsoft.Owin.Security.ActiveDirectory hello pomocí následujících kroků: 
+Vývojáři pomocí knihovny CLA od společnosti Microsoft pro vytváření SCIM služby můžete ověřování žádostí z Azure Active Directory pomocí balíček Microsoft.Owin.Security.ActiveDirectory pomocí následujících kroků: 
 
-1. U zprostředkovatele implementujte hello Microsoft.SystemForCrossDomainIdentityManagement.IProvider.StartupBehavior vlastnost tak, že ho vrátit toobe metoda volána, když je spuštěna služba hello: 
+1. U zprostředkovatele implementujte vlastnost Microsoft.SystemForCrossDomainIdentityManagement.IProvider.StartupBehavior tak, že se vrátí metoda, která se má volat při každém spuštění služby: 
 
   ````
     public override Action\<Owin.IAppBuilder, System.Web.Http.HttpConfiguration.HttpConfiguration\> StartupBehavior
@@ -315,7 +315,7 @@ Vývojáři pomocí knihovny CLA hello od společnosti Microsoft pro vytvářen�
     }
   ````
 
-2. Přidejte následující kód toothat metoda toohave hello všechny žádosti o tooany koncových bodů služby hello ověřený jako opatřené tokenem vydaným službou Azure Active Directory jménem zadaného klienta, pro přístup k toohello Azure AD Graph webové služby: 
+2. Přidejte následující kód do dané metody mít každá žádost o žádné koncové body služby ověřený jako opatřené tokenem vydaným službou Azure Active Directory jménem zadaného klienta, pro přístup k webové službě Azure AD Graph: 
 
   ````
     private void OnServiceStartup(
@@ -340,7 +340,7 @@ Vývojáři pomocí knihovny CLA hello od společnosti Microsoft pro vytvářen�
       WindowsAzureActiveDirectoryBearerAuthenticationOptions authenticationOptions =
         new WindowsAzureActiveDirectoryBearerAuthenticationOptions()    {
         TokenValidationParameters = tokenValidationParameters,
-        Tenant = "03F9FCBC-EA7B-46C2-8466-F81917F3C15E" // Substitute hello appropriate tenant’s 
+        Tenant = "03F9FCBC-EA7B-46C2-8466-F81917F3C15E" // Substitute the appropriate tenant’s 
                                                       // identifier for this one.  
       };
 
@@ -350,11 +350,11 @@ Vývojáři pomocí knihovny CLA hello od společnosti Microsoft pro vytvářen�
 
 
 ## <a name="user-and-group-schema"></a>Schéma uživatelů a skupin
-Azure Active Directory můžete zřídit dva typy prostředků tooSCIM webových služeb.  Tyto typy prostředků jsou uživatelé a skupiny.  
+Azure Active Directory můžete zřídit dva typy prostředků, aby SCIM webové služby.  Tyto typy prostředků jsou uživatelé a skupiny.  
 
-Uživatel prostředky jsou označeny hello identifikátor schématu, urn: ietf:params:scim:schemas:extension:enterprise:2.0:User, který je součástí této specifikace protokolu: http://tools.ietf.org/html/draft-ietf-scim-core-schema.  Hello výchozí mapování atributů hello uživatelů ve službě Azure Active Directory toohello atributy urn: ietf:params:scim:schemas:extension:enterprise:2.0:User prostředků je uvedené v tabulce 1, níže.  
+Uživatel prostředky jsou označeny identifikátor schématu urn: ietf:params:scim:schemas:extension:enterprise:2.0:User, který je součástí této specifikace protokolu: http://tools.ietf.org/html/draft-ietf-scim-core-schema.  Výchozí mapování atributů uživatelům atributy urn: ietf:params:scim:schemas:extension:enterprise:2.0:User prostředků v Azure Active Directory je uvedené v tabulce 1, níže.  
 
-Skupiny prostředků jsou identifikovány hello identifikátor schématu, http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group.  Tabulka 2 níže ukazuje hello výchozí mapování atributů hello skupin v Azure Active Directory toohello atributy http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group prostředků.  
+Skupiny prostředků jsou identifikovány identifikátor schématu http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group.  Tabulka 2 níže znázorňuje výchozí mapování atributů skupin v Azure Active Directory atributy http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group prostředků.  
 
 ### <a name="table-1-default-user-attribute-mapping"></a>Tabulka 1: Výchozí mapování atributů uživatele
 | Uživatele Azure Active Directory | název urn: ietf:params:scim:schemas:extension:enterprise:2.0:User |
@@ -388,17 +388,17 @@ Skupiny prostředků jsou identifikovány hello identifikátor schématu, http:/
 | proxyAddresses |[Zadejte eq "ostatní"] e-mailů. Hodnota |
 
 ## <a name="user-provisioning-and-de-provisioning"></a>Zřizování uživatelů a jeho rušení
-Následující obrázek ukazuje hello zprávy, že Azure Active Directory odešle životního cyklu tooa SCIM služby toomanage hello uživatele v jiné úložiště identit Hello. Hello diagram také ukazuje, jak SCIM implementovaná pomocí rozhraní příkazového řádku knihovny hello poskytovat službu Microsoft pro vytvoření, že tyto služby převede tyto požadavky na volání metody toohello zprostředkovatele.  
+Následující obrázek znázorňuje zprávy, že Azure Active Directory odešle SCIM službě pro správu životního cyklu uživatele v jiné úložiště identit. Diagram také ukazuje, jak SCIM implementovaná pomocí rozhraní příkazového řádku knihovny poskytovat službu Microsoft pro vytvoření, že tyto služby převede tyto požadavky na volání metody zprostředkovatele.  
 
 ![][4]
 *Obrázek 5: Zřizování uživatelů a jeho rušení pořadí*
 
-1. Azure dotazů služby Active Directory hello služby pro uživatele s hodnotou atributu externalId odpovídající hodnota atributu mailNickname hello uživatele ve službě Azure AD. Hello dotazu je vyjádřena jako žádost protokolu HTTP (Hypertext Transfer), jako je tento příklad, ve kterém jyoung je ukázka mailNickname uživatele v Azure Active Directory: 
+1. Azure Active Directory dotáže služby pro uživatele s hodnotou atributu externalId odpovídající hodnota atributu mailNickname uživatele ve službě Azure AD. Dotaz je vyjádřena jako žádost protokolu HTTP (Hypertext Transfer), jako je tento příklad, ve kterém jyoung je ukázka mailNickname uživatele v Azure Active Directory: 
   ````
     GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
     Authorization: Bearer ...
   ````
-  Pokud služba hello je vytvořená pomocí knihovny Common Language Infrastructure hello od společnosti Microsoft pro implementaci služby SCIM, žádost hello přeložit na volání toohello dotazu metoda zprostředkovatele služeb hello.  Tady je hello podpis této metody: 
+  Pokud služba je vytvořená pomocí knihovny Common Language Infrastructure od společnosti Microsoft pro implementaci služby SCIM, je požadavek přeložit na volání metody dotazu zprostředkovatele služby.  Tady je podpis této metody: 
   ````
     // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
     // Microsoft.SystemForCrossDomainIdentityManagement.Resource is defined in 
@@ -410,7 +410,7 @@ Následující obrázek ukazuje hello zprávy, že Azure Active Directory odešl
       Microsoft.SystemForCrossDomainIdentityManagement.IQueryParameters parameters, 
       string correlationIdentifier);
   ````
-  Zde je definice hello hello Microsoft.SystemForCrossDomainIdentityManagement.IQueryParameters rozhraní: 
+  Tady je definici rozhraní Microsoft.SystemForCrossDomainIdentityManagement.IQueryParameters: 
   ````
     public interface IQueryParameters: 
       Microsoft.SystemForCrossDomainIdentityManagement.IRetrievalParameters
@@ -446,14 +446,14 @@ Následující obrázek ukazuje hello zprávy, že Azure Active Directory odešl
         Equals
     }
   ````
-  V následující ukázkový dotaz pro uživatele s danou hodnotou atributu externalId hello hello hodnoty hello argumentů předaných metoda dotazu toohello jsou: 
+  V následující ukázce dotazu pro uživatele s danou hodnotou atributu externalId jsou hodnoty argumentů předaný metodě dotazu: 
   * Parametry. AlternateFilters.Count: 1
   * Parametry. AlternateFilters.ElementAt(0). AttributePath: "externalId"
   * Parametry. AlternateFilters.ElementAt(0). Porovnávací operátor: ComparisonOperator.Equals
   * Parametry. AlternateFilter.ElementAt(0). ComparisonValue: "jyoung"
   * correlationIdentifier: System.Net.Http.HttpRequestMessage.GetOwinEnvironment["owin. ID žádosti"] 
 
-2. Pokud hello odpovědi tooa dotazu toohello webové služby pro uživatele s hodnotou atributu externalId odpovídající hodnota atributu mailNickname hello uživatele nevrátí žádné uživatele, pak Azure Active Directory požadavky tohoto poskytování služeb hello uživatele odpovídající toohello jednu v Azure Active Directory.  Tady je příklad této žádosti: 
+2. Pokud odpověď na dotaz pro webovou službu pro uživatele s hodnotou atributu externalId odpovídající hodnota atributu mailNickname uživatele nevrátí žádné uživatele, pak Azure Active Directory požadavky že službu zřizovat uživatele odpovídající tomu v Azure Active Directory.  Tady je příklad této žádosti: 
   ````
     POST https://.../scim/Users HTTP/1.1
     Authorization: Bearer ...
@@ -484,7 +484,7 @@ Následující obrázek ukazuje hello zprávy, že Azure Active Directory odešl
       "department":null,
       "manager":null}
   ````
-  knihovny Common Language Infrastructure Hello od společnosti Microsoft pro implementaci služby SCIM by převede na volání toohello metodu Create zprostředkovatele služeb hello této žádosti.  Metoda Create Hello má tento podpis: 
+  Knihovny Common Language Infrastructure od společnosti Microsoft pro implementaci služby SCIM by převede tento požadavek na volání metody vytvoření poskytovatele služby.  Metodu Create má tento podpis: 
   ````
     // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
     // Microsoft.SystemForCrossDomainIdentityManagement.Resource is defined in 
@@ -494,14 +494,14 @@ Následující obrázek ukazuje hello zprávy, že Azure Active Directory odešl
       Microsoft.SystemForCrossDomainIdentityManagement.Resource resource, 
       string correlationIdentifier);
   ````
-  V žádosti o tooprovision uživatele hello hello prostředků argument hodnotu instanci hello Microsoft.SystemForCrossDomainIdentityManagement. Třída Core2EnterpriseUser definovaných v hello Microsoft.SystemForCrossDomainIdentityManagement.Schemas knihovny.  Pokud hello požadavek tooprovision hello uživatele úspěšné, pak hello implementace metody hello je očekávané tooreturn instanci hello Microsoft.SystemForCrossDomainIdentityManagement. Třída Core2EnterpriseUser s hodnotou hello hello identifikátor vlastnosti nastavit toohello jedinečný identifikátor uživatele nově zřízeného hello.  
+  V požadavku na přidělení uživatele je hodnota argumentu prostředků instanci Microsoft.SystemForCrossDomainIdentityManagement. Třída Core2EnterpriseUser, definována v knihovně Microsoft.SystemForCrossDomainIdentityManagement.Schemas.  Pokud neproběhne ke zřízení uživatele, implementace metody musí vrátit instanci Microsoft.SystemForCrossDomainIdentityManagement. Třída Core2EnterpriseUser s hodnotou vlastnost nastavena na jedinečný identifikátor nově zřízení uživatele na identifikátor.  
 
-3. tooupdate uživatele známé tooexist v úložišti identity přední stěnou pomocí SCIM, Azure Active Directory bude pokračovat podle požaduje hello aktuální stav daného uživatele ze služby hello s žádostí. například: 
+3. Provést aktualizaci uživatele ví, že existují v úložišti identity přední stěnou podle SCIM, pokračuje Azure Active Directory tím, že požádá aktuální stav daného uživatele ze služby s žádostí. například: 
   ````
     GET ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
     Authorization: Bearer ...
   ````
-  Ve službě sestaven pomocí knihovny Common Language Infrastructure hello od společnosti Microsoft pro implementaci služby SCIM je požadavek hello přeložit na toohello volání metody načtení poskytovatele služeb hello.  Tady je hello podpis metody načtení hello: 
+  Ve službě sestaven pomocí knihovny Common Language Infrastructure od společnosti Microsoft pro implementaci služby SCIM je požadavek přeložit na volání metody načtení zprostředkovatele služby.  Tady je podpis metody načtení: 
   ````
     // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
     // Microsoft.SystemForCrossDomainIdentityManagement.Resource and 
@@ -529,19 +529,19 @@ Následující obrázek ukazuje hello zprávy, že Azure Active Directory odešl
           { get; set; }
     }
   ````
-  V příkladu hello požadavek tooretrieve hello aktuálního stavu uživatele hello hodnoty vlastností hello objektu hello zadaný jako hodnota hello argumentu hello parametry jsou následující: 
+  V příkladu požadavek na načtení aktuálního stavu uživatele jsou hodnoty vlastností objektu zadaný jako hodnota argumentu parametry: 
   
   * Identifikátor: "54D382A4-2050-4C03-94D1-E769F1D15682"
   * SchemaIdentifier: "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
-4. Pokud atribut typu odkaz toobe aktualizován, pak Azure Active Directory dotazy hello služby toodetermine zda hello aktuální hodnotu atributu hello odkaz v úložišti identity hello přední stěnou pomocí služby hello již odpovídá hello hodnotu tohoto atributu. v Azure Active Directory. Pro uživatele hello pouze z které hello aktuální hodnota je dotazován tímto způsobem je atribut hello správce. Tady je příklad požadavek toodetermine zda atribut manager hello objektu konkrétní uživatel aktuálně má určitou hodnotu: 
+4. Pokud atribut typu odkaz je potřeba aktualizovat, Azure Active Directory dotazuje službu, kterou chcete zjistit, zda aktuální hodnotu atributu odkaz v úložišti identity přední stěnou službou již odpovídá hodnota tohoto atributu v Azure Active Adresář. Pro uživatele pouze atributů, které aktuální hodnota je dotazován tímto způsobem je atribut správce. Tady je příklad požadavku k určení, zda atribut manager objektu konkrétní uživatel aktuálně má určitou hodnotu: 
   ````
     GET ~/scim/Users?filter=id eq 54D382A4-2050-4C03-94D1-E769F1D15682 and manager eq 2819c223-7f76-453a-919d-413861904646&attributes=id HTTP/1.1
     Authorization: Bearer ...
   ````
-  Hello hodnota parametru dotazu hello atributy, id, označuje, která by splnila hello výraz zadaný jako hodnota hello parametru dotazu filtru hello pokud existuje objekt uživatele, pak služba hello je očekávané toorespond s urn: ietf:params:scim:schemas: Jádro: 2.0:User nebo urn: ietf:params:scim:schemas:extension:enterprise:2.0:User prostředků, včetně pouze hello hodnota atributu id tohoto zdroje.  Hello hodnotu hello **id** atribut je známý toohello žadatele. Je součástí hello hodnota parametru dotazu filtru hello; účelem Hello žádostí o jeho je ve skutečnosti toorequest minimální reprezentace prostředku, který neodpovídajících výraz filtru hello jako indikaci, jestli všechny například objekt již existuje.   
+  Hodnota parametru dotazu atributy id, označuje, že, pokud existuje objekt uživatele, který splňuje výraz zadaný jako hodnota parametru dotazu filtru a pak službu musí odpovědět s urn: ietf:params:scim:schemas:core:2.0:User nebo název urn: ietf:params:scim:schemas:extension:enterprise:2.0:User prostředků, včetně pouze hodnota atributu id tohoto zdroje.  Hodnota **id** atribut je znám žadatel. Hodnota parametru dotazu filtru; je součástí účelem žádostí o jeho je ve skutečnosti o minimální reprezentace daného prostředku, které splňují výraz filtru jako údaj o tom, zda existuje takový objekt.   
 
-  Pokud služba hello je vytvořená pomocí knihovny Common Language Infrastructure hello od společnosti Microsoft pro implementaci služby SCIM, žádost hello přeložit na volání toohello dotazu metoda zprostředkovatele služeb hello. Hodnota Hello hello vlastnosti objektu hello zadaný jako hodnota hello argumentu hello parametry jsou následující: 
+  Pokud služba je vytvořená pomocí knihovny Common Language Infrastructure od společnosti Microsoft pro implementaci služby SCIM, je požadavek přeložit na volání metody dotazu zprostředkovatele služby. Hodnota vlastnosti objektu zadaný jako hodnota argumentu parametry jsou následující: 
   
   * Parametry. AlternateFilters.Count: 2
   * Parametry. AlternateFilters.ElementAt(x). AttributePath: "id"
@@ -553,9 +553,9 @@ Následující obrázek ukazuje hello zprávy, že Azure Active Directory odešl
   * Parametry. RequestedAttributePaths.ElementAt(0): "id"
   * Parametry. SchemaIdentifier: "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
-  Zde hello hodnota indexu hello x může být 0 a hello hodnotu hello index y může být 1, nebo hello hodnota x může být 1 a hello hodnotu y, může být 0, v závislosti na hello pořadí hello výrazy hello parametr dotazu filtru.   
+  Zde hodnotu indexu x může být 0 a hodnotu index y může být 1, nebo může být hodnota parametru x 1 a hodnota y může být 0, v závislosti na pořadí výrazy parametru dotazu filtru.   
 
-5. Tady je příklad požadavku z Azure Active Directory tooan SCIM služby tooupdate uživatele: 
+5. Tady je příklad požadavku z Azure Active Directory do služby SCIM provést aktualizaci uživatele: 
   ````
     PATCH ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
     Authorization: Bearer ...
@@ -575,7 +575,7 @@ Následující obrázek ukazuje hello zprávy, že Azure Active Directory odešl
                 "$ref":"http://.../scim/Users/2819c223-7f76-453a-919d-413861904646",
                 "value":"2819c223-7f76-453a-919d-413861904646"}]}]}
   ````
-  knihovny Microsoft Common Language Infrastructure Hello pro implementaci služby SCIM by převede hello požadavek na volání toohello aktualizační metody poskytovatele služeb hello. Tady je hello podpis hello metoda aktualizace: 
+  Knihovny Microsoft Common Language Infrastructure pro implementaci služby SCIM by převede požadavek na volání metody aktualizace zprostředkovatele služby. Tady je podpis metody aktualizace: 
   ````
     // System.Threading.Tasks.Tasks and 
     // System.Collections.Generic.IReadOnlyCollection<T>
@@ -656,7 +656,7 @@ Následující obrázek ukazuje hello zprávy, že Azure Active Directory odešl
       { get; set; }
     }
   ````
-    V příkladu hello tooupdate požadavku uživatele má zadaný jako hodnota hello argumentu oprava hello objekt hello hodnoty těchto vlastností: 
+    V příkladu požadavek na aktualizaci uživatele má zadaný jako hodnota argumentu oprava objekt hodnoty těchto vlastností: 
   
   * ResourceIdentifier.Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
   * ResourceIdentifier.SchemaIdentifier: "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User"
@@ -667,12 +667,12 @@ Následující obrázek ukazuje hello zprávy, že Azure Active Directory odešl
   * (PatchRequest jako PatchRequest2). Operations.ElementAt(0). Value.ElementAt(0). Referenční dokumentace: http://.../scim/Users/2819c223-7f76-453a-919d-413861904646
   * (PatchRequest jako PatchRequest2). Operations.ElementAt(0). Value.ElementAt(0). Hodnota: 2819c223-7f76-453a-919d-413861904646
 
-6. toode-provision uživatele z identity úložiště přední stěnou služba SCIM, Azure AD, jako odešle žádost: 
+6. Zrušte zřídit uživatele z identity úložiště přední stěnou služba SCIM, Azure AD, jako odešle žádost: 
   ````
     DELETE ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
     Authorization: Bearer ...
   ````
-  Pokud služba hello je vytvořená pomocí knihovny Common Language Infrastructure hello od společnosti Microsoft pro implementaci služby SCIM, žádost hello přeložit na volání toohello metodu Delete zprostředkovatele služeb hello.   Tato metoda má tento podpis: 
+  Pokud služba je vytvořená pomocí knihovny Common Language Infrastructure od společnosti Microsoft pro implementaci služby SCIM, je požadavek přeložit na volání metody odstranění zprostředkovatele služby.   Tato metoda má tento podpis: 
   ````
     // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
     // Microsoft.SystemForCrossDomainIdentityManagement.IResourceIdentifier, 
@@ -682,29 +682,29 @@ Následující obrázek ukazuje hello zprávy, že Azure Active Directory odešl
         resourceIdentifier, 
       string correlationIdentifier);
   ````
-  zadaný jako hodnota hello argumentu resourceIdentifier hello Hello objekt má tyto hodnoty vlastností v příkladu hello žádost toode-provision uživatele: 
+  Zadaný jako hodnota argumentu resourceIdentifier objekt má tyto hodnoty vlastností v příkladu žádost zrušte zřídit uživatele: 
   
   * ResourceIdentifier.Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
   * ResourceIdentifier.SchemaIdentifier: "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
 ## <a name="group-provisioning-and-de-provisioning"></a>Zřizování skupiny a jeho rušení
-Následující obrázek ukazuje hello zprávy, že Azure AcD odešle životního cyklu tooa SCIM služby toomanage hello skupiny v jiné úložiště identit Hello.  Tyto zprávy se liší od hello zprávy, která se týkají toousers třemi způsoby: 
+Následující obrázek znázorňuje zprávy, že Azure AcD odešle SCIM službě pro správu životního cyklu skupiny v jiné úložiště identit.  Tyto zprávy se liší od zprávy týkající se uživatelů třemi způsoby: 
 
-* Hello schéma skupiny prostředků je označený jako http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group.  
-* Požadavky, že tooretrieve skupiny stanovení tento atribut členy hello je toobe vyloučené z jakémukoli prostředku, zadaný v požadavku toohello odpovědi.  
-* Toodetermine žádosti o tom, jestli atribut typu odkaz má určitou hodnotu se žádostí o hello členů atributu.  
+* Schéma skupiny prostředků je označený jako http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group.  
+* Požadavky k načtení skupin stanovení, že je atribut členů mají být vyloučeny z jakéhokoliv prostředku v odpovědi na požadavek.  
+* Požadavky na určit, zda atribut typu odkaz má určitou hodnotu jsou žádosti o atribut členy.  
 
 ![][5]
 *Obrázek 6: Zřizování skupiny a jeho rušení pořadí*
 
 ## <a name="related-articles"></a>Související články
 * [Rejstřík článků o správě aplikací ve službě Azure Active Directory](active-directory-apps-index.md)
-* [Automatizace zřizování uživatelů nebo jeho rušení tooSaaS aplikace](active-directory-saas-app-provisioning.md)
+* [Automatizovat uživatele zřízení nebo zrušení zřízení k aplikacím SaaS](active-directory-saas-app-provisioning.md)
 * [Přizpůsobení mapování atributů pro zřizování uživatelů](active-directory-saas-customizing-attribute-mappings.md)
 * [Zapisují se výrazy pro mapování atributů](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [Filtry pro zřizování uživatelů oborů](active-directory-saas-scoping-filters.md)
 * [Účet zřizování oznámení](active-directory-saas-account-provisioning-notifications.md)
-* [Seznam kurzů tooIntegrate aplikace SaaS](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů k integraci aplikací SaaS](active-directory-saas-tutorial-list.md)
 
 <!--Image references-->
 [0]: ./media/active-directory-scim-provisioning/scim-figure-1.PNG

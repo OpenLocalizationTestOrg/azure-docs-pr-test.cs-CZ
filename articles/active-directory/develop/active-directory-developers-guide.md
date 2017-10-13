@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure služby Active Directory pro vývojáře | Microsoft Docs"
+title: "Azure Active Directory pro vývojáře | Dokumentace Microsoftu"
 description: "Tento článek obsahuje přehled přihlašování pracovních a školních účtů Microsoft pomocí Azure Active Directory."
 services: active-directory
 author: dstrockis
@@ -14,22 +14,22 @@ ms.workload: identity
 ms.date: 04/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 4dbbea6c1e0b8a70c0c36ddd1caec5658130a003
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: dce813b885d492343428428056a2e8aada27b461
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-for-developers"></a>Azure Active Directory pro vývojáře
-Azure Active Directory je Cloudová služba identity, která umožňuje vývojářům toosecurely přihlásit založenou na každý uživatel s pracovní nebo školní účet Microsoft.  Hello dokumentace zde dozvíte, jak tooadd Azure AD podporuje tooyour aplikací pomocí OAuth a OpenID Connect standardní ověřovací protokoly odvětví.
+Azure Active Directory je cloudová služba identit, která vývojářům umožňuje bezpečně přihlásit jakéhokoli uživatele s pracovním nebo školním účtem, který zajišťuje Microsoft.  Dokumentace, kterou tady najdete, vám ukáže, jak do vaší aplikace přidat podporu Azure AD s použitím standardních oborových ověřovacích protokolů OAuth a OpenID Connect.
 
 | | |
 | --- | --- |
-|[Základy ověřování](active-directory-authentication-scenarios.md) | Úvod tooauthentication s Azure AD |
-|[Typy aplikací](active-directory-authentication-scenarios.md#application-types-and-scenarios) | Přehled scénářů ověřování hello podporovaný službou Azure AD |                                
+|[Základy ověřování](active-directory-authentication-scenarios.md) | Úvod k ověřování pomocí Azure AD |
+|[Typy aplikací](active-directory-authentication-scenarios.md#application-types-and-scenarios) | Přehled scénářů ověřování, které podporuje Azure AD |                                
                                                                               
 ## <a name="get-started"></a>Začínáme
-Tato nastavení s průvodcem vás provede procesem pomocí našich toosign knihovny ověřování v Azure Active Directory uživatelé.
+Tato praktická nastavení vás provedou použitím našich knihoven ověřování k přihlášení uživatelů Azure Active Directory.
 
 |  |  |  |  |
 | --- | --- | --- | --- |
@@ -40,13 +40,13 @@ Tato nastavení s průvodcem vás provede procesem pomocí našich toosign kniho
 | <center>![Služba-služba](./media/active-directory-developers-guide/Service_App.png)<br />Služba-služba</center> | [Přehled](active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api)<br /><br />[.NET](active-directory-code-samples.md#server-or-daemon-application-to-web-api)<br /><br />[Přihlašovací údaje pro klienta OAuth 2.0](active-directory-protocols-oauth-service-to-service.md) |  |
 
 ## <a name="guides"></a>Průvodci
-Tyto články informujte, jak tooperform běžné úlohy s Azure Active Directory.
+Tyto články obsahují informace o provádění běžných úloh s Azure Active Directory.
 
 |                                                                           |  |
 |---------------------------------------------------------------------------| --- |
-|[Registrace aplikace](active-directory-integrating-applications.md)           | Jak tooregister aplikace ve službě Azure AD |
-|[Aplikace s více tenanty](active-directory-devhowto-multi-tenant-overview.md)    | Jak fungují toosign v veškeré účtu |
-|[OAuth a OpenID Connect](active-directory-protocols-openid-connect-code.md)| Jak toosign-in Uživatelé a volání webových rozhraní API pomocí našich protokolů moderní ověřování |
+|[Registrace aplikace](active-directory-integrating-applications.md)           | Postup registrace aplikace v Azure AD |
+|[Aplikace s více tenanty](active-directory-devhowto-multi-tenant-overview.md)    | Postup přihlášení libovolného pracovního účtu Microsoft |
+|[OAuth a OpenID Connect](active-directory-protocols-openid-connect-code.md)| Postup přihlášení uživatelů a volání webových rozhraní API pomocí našich moderních ověřovacích protokolů |
 |[Další průvodci...](active-directory-developers-guide-index.md#guides)        |     |
 
 ## <a name="reference"></a>Referenční informace
@@ -54,13 +54,13 @@ Tyto články poskytují podrobné informace o rozhraních API, zprávách proto
 
 |                                                                                   | |
 | ----------------------------------------------------------------------------------| --- |
-| [Knihovny ověřování (ADAL)](active-directory-authentication-libraries.md)   | Přehled knihovny hello & SDK poskytuje Azure AD |
+| [Knihovny ověřování (ADAL)](active-directory-authentication-libraries.md)   | Přehled knihoven a sad SDK, které poskytuje Azure AD |
 | [Ukázky kódu](active-directory-code-samples.md)                                  | Seznam všech ukázek kódu Azure AD |
 | [Glosář](active-directory-dev-glossary.md)                                      | Terminologie a definice slov, která se používají v této dokumentaci |
 | [Další referenční materiály...](active-directory-developers-guide-index.md#reference)|     |
 
 ## <a name="help--support"></a>Nápověda a podpora
-Jedná se o hello nejlepší místech tooget pomoc s vývojem v Azure Active Directory.
+Na těchto místech získáte nejlepší pomoc s vývojem v Azure Active Directory.
 
 |  |  
 |---|
@@ -71,4 +71,4 @@ Jedná se o hello nejlepší místech tooget pomoc s vývojem v Azure Active Dir
 <br />
 
 > [!NOTE]
-> Pokud potřebujete toosign-in Microsoft osobní účty, můžete pomocí hello tooconsider [koncového bodu Azure AD v2.0](active-directory-appmodel-v2-overview.md).  koncový bod v2.0 Hello Azure AD je hello sjednocení osobní účty Microsoft & pracovních účtů Microsoft (z Azure AD) do jedné ověřování systému.
+> Pokud potřebujete přihlašovat osobní účty Microsoft, měli byste zvážit použití [koncového bodu Azure AD v2.0](active-directory-appmodel-v2-overview.md).  Koncový bod Azure AD v2.0 sjednocuje osobní účty Microsoft a pracovní účty Microsoft (z Azure AD) do jednoho ověřovacího systému.

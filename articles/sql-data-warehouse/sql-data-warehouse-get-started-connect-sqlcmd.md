@@ -1,6 +1,6 @@
 ---
-title: aaaConnect tooAzure SQL Data Warehouse sqlcmd | Microsoft Docs
-description: "Použijte [sqlcmd] [sqlcmd] nástroj příkazového řádku tooconnect tooand dotaz Azure SQL Data Warehouse."
+title: "Připojení ke službě Azure SQL Data Warehouse pomocí sqlcmd | Dokumentace Microsoftu"
+description: "Pomocí nástroje příkazového řádku [sqlcmd][sqlcmd] se můžete připojit a dotazovat službu Azure SQL Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: NA
 author: antvgski
@@ -15,13 +15,13 @@ ms.workload: data-services
 ms.custom: connect
 ms.date: 10/31/2016
 ms.author: anvang;barbkess
-ms.openlocfilehash: 0334df7b969da1966ba29c97f835a2dc9e383e29
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5a3fe1046c3417070ba8ff5bd18a0485e2152eff
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="connect-toosql-data-warehouse-with-sqlcmd"></a>Připojit tooSQL datového skladu pomocí sqlcmd
+# <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>Připojení k SQL Data Warehouse pomocí sqlcmd
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
@@ -31,43 +31,43 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Použití [sqlcmd] [ sqlcmd] tooand tooconnect nástroj příkazového řádku dotaz Azure SQL Data Warehouse.  
+Pomocí nástroje příkazového řádku [sqlcmd][sqlcmd] se můžete připojit a dotazovat službu Azure SQL Data Warehouse.  
 
 ## <a name="1-connect"></a>1. Připojení
-tooget začít s [sqlcmd][sqlcmd], otevřete hello příkazový řádek a zadejte **sqlcmd** následuje hello připojovací řetězec pro vaši databázi SQL Data Warehouse. Hello připojovací řetězec potřebuje hello následující parametry:
+Chcete-li začít s nástrojem [sqlcmd][sqlcmd], otevřete příkazový řádek a zadejte příkaz **sqlcmd** následovaný připojovacím řetězcem pro vaši databázi SQL Data Warehouse. Připojovací řetězec bude muset mít následující parametry:
 
-* **Server (-S):** serveru v podobě hello `<`název serveru`>`. database.windows.net
+* **Server (-S):** Server v následující podobě: `<`název serveru`>`.database.windows.net
 * **Database (-d):** Název databáze
-* **Enable Quoted Identifiers (-I):** identifikátory v uvozovkách, musí být povoleno tooconnect instanci SQL Data Warehouse tooa.
+* **Enable Quoted Identifiers (-I):** Aby bylo možné se připojit k instanci služby SQL Data Warehouse, musí být povolené identifikátory v uvozovkách.
 
-toouse ověřování systému SQL Server, je třeba tooadd hello uživatelského jména a hesla parametry:
+Chcete-li používat ověřování systému SQL Server, je třeba přidat parametry uživatelského jména a hesla:
 
-* **Uživatel (-U):** uživatel serveru v podobě hello `<`uživatele`>`
-* **Heslo (-P):** heslo, které jsou přidružené uživateli hello.
+* **User (-U):** Uživatel serveru v následující podobě: `<`Uživatel`>`
+* **Password (-P):** Heslo přidružené k uživateli
 
-Připojovací řetězec může například vypadat hello následující:
+Připojovací řetězec může například vypadat následovně:
 
 ```sql
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I
 ```
 
-Azure Active Directory integrované ověřování toouse, je třeba tooadd hello Azure Active Directory parametry:
+Chcete-li používat integrované ověřování v Azure Active Directory, je třeba přidat parametry Azure Active Directory:
 
 * **Azure Active Directory Authentication (-G):** Pro ověřování používat Azure Active Directory
 
-Připojovací řetězec může například vypadat hello následující:
+Připojovací řetězec může například vypadat následovně:
 
 ```sql
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 ```
 
 > [!NOTE]
-> Je třeba příliš[povolení ověřování Azure Active Directory](sql-data-warehouse-authentication.md) tooauthenticate pomocí služby Active Directory.
+> Abyste mohli provádět ověřování pomocí Active Directory, je třeba [povolit ověřování Azure Active Directory](sql-data-warehouse-authentication.md).
 > 
 > 
 
 ## <a name="2-query"></a>2. Dotaz
-Po připojení můžete použít všechny podporované příkazy jazyka Transact-SQL proti hello.  V tomto příkladu jsou dotazy zadávány v interaktivním režimu.
+Po připojení můžete pro instanci zadávat všechny podporované příkazy jazyka Transact-SQL.  V tomto příkladu jsou dotazy zadávány v interaktivním režimu.
 
 ```sql
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I
@@ -76,7 +76,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@s
 3> QUIT
 ```
 
-Tyto další příklady ukazují, jak můžete své dotazy spustit v dávkovém režimu pomocí možnosti -Q hello nebo potrubí vaší toosqlcmd SQL.
+Tyto další příklady ukazují, jak lze vaše dotazy spouštět v dávkovém režimu pomocí parametru -Q nebo vedení serveru SQL k příkazu sqlcmd.
 
 ```sql
 sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I -Q "SELECT name FROM sys.tables;"
@@ -87,7 +87,7 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 ```
 
 ## <a name="next-steps"></a>Další kroky
-V tématu [dokumentaci k sqlcmd] [ sqlcmd] Další informace o podrobnosti o možnostech hello k dispozici v sqlcmd.
+Viz část [Dokumentace sqlcmd][sqlcmd], kde najdete další informace o možnostech dostupných v sqlcmd.
 
 <!--Image references-->
 

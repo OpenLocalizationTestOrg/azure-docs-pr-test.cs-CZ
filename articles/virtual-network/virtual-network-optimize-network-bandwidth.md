@@ -1,6 +1,6 @@
 ---
-title: "propustnost sítě virtuálních počítačů aaaOptimize | Microsoft Docs"
-description: "Zjistěte, jak toooptimize virtuální počítač Azure sítě propustnost."
+title: "Optimalizovat propustnost sítě virtuálních počítačů | Microsoft Docs"
+description: "Zjistěte, jak optimalizovat propustnost sítě virtuálního počítače Azure."
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -14,34 +14,34 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: steveesp
-ms.openlocfilehash: a5cff2d0ab6e3553c3f90d99629521a431477de0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 914747983d4d974810836be66d6c6af343f58b60
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Optimalizovat propustnost sítě pro virtuální počítače Azure
 
-Azure virtuální počítače (VM) mají výchozí nastavení sítě, které lze dále optimalizovat pro propustnost sítě. Tento článek popisuje, jak toooptimize propustnost sítě pro Microsoft Azure Windows a virtuální počítače s Linuxem, včetně hlavních distribuce například Ubuntu a CentOS Red Hat.
+Azure virtuální počítače (VM) mají výchozí nastavení sítě, které lze dále optimalizovat pro propustnost sítě. Tento článek popisuje, jak optimalizovat propustnost sítě pro Microsoft Azure Windows a virtuální počítače s Linuxem, včetně hlavních distribuce například Ubuntu a CentOS Red Hat.
 
 ## <a name="windows-vm"></a>Virtuální počítač s Windows
 
-Pokud vaše virtuální počítač s Windows je podporovaná s [Accelerated sítě](virtual-network-create-vm-accelerated-networking.md), povolení této funkce by být hello optimální konfigurace pro propustnost. Pro všechny ostatní virtuální počítače Windows škálování na straně příjmu (RSS) pomocí dosáhnout vyšší maximální propustnost než virtuální počítač bez RSS. RSS může být nepovolený ve výchozím nastavení v systému Windows virtuálního počítače. Dokončete následující kroky toodetermine, zda byla povolená technologie RSS hello a tooenable ji, pokud je zakázána.
+Pokud vaše virtuální počítač s Windows je podporovaná s [Accelerated sítě](virtual-network-create-vm-accelerated-networking.md), povolení této funkce by být optimální konfigurace propustnost. Pro všechny ostatní virtuální počítače Windows škálování na straně příjmu (RSS) pomocí dosáhnout vyšší maximální propustnost než virtuální počítač bez RSS. RSS může být nepovolený ve výchozím nastavení v systému Windows virtuálního počítače. Proveďte následující kroky k určení, zda je povoleno RSS a povolit, pokud je zakázána.
 
-1. Zadejte hello `Get-NetAdapterRss` toosee příkaz prostředí PowerShell, pokud byla povolená technologie RSS pro síťový adaptér. Hello následující příklad výstupu vrácených hello `Get-NetAdapterRss`, RSS není povoleno.
+1. Zadejte `Get-NetAdapterRss` příkaz prostředí PowerShell, které chcete zobrazit, pokud byla povolená technologie RSS pro síťový adaptér. Ve výstupu v následujícím příkladu vrácená z `Get-NetAdapterRss`, RSS není povoleno.
 
     ```powershell
     Name                    : Ethernet
     InterfaceDescription    : Microsoft Hyper-V Network Adapter
     Enabled              : False
     ```
-2. Zadejte následující příkaz tooenable RSS hello:
+2. Zadejte následující příkaz, který RSS povolte:
 
     ```powershell
     Get-NetAdapter | % {Enable-NetAdapterRss -Name $_.Name}
     ```
-    předchozí příkaz Hello nemá výstup. příkaz Hello změnit nastavení síťový adaptér, což by způsobilo ztrátě dočasné připojení přibližně jednu minutu. Při ztrátě připojení hello se zobrazí dialogové okno Reconnecting. Obvykle se obnoví připojení k po pokusu o třetí hello.
-3. Zkontrolujte, zda je RSS povoleno v hello virtuálních počítačů tak, že zadáte hello `Get-NetAdapterRss` příkaz znovu. V případě úspěchu se vrátí hello následující příklad výstupu:
+    Předchozí příkaz nemá výstup. Příkaz změnit nastavení síťový adaptér, což by způsobilo ztrátě dočasné připojení přibližně jednu minutu. Při ztrátě připojení se zobrazí dialogové okno Reconnecting. Obvykle se obnoví připojení k po třetí pokus.
+3. Potvrďte, že byla povolená technologie RSS ve virtuálním počítači tak, že zadáte `Get-NetAdapterRss` příkaz znovu. V případě úspěchu se vrátí výstupu v následujícím příkladu:
 
     ```powershell
     Name                    :Ethernet
@@ -51,18 +51,18 @@ Pokud vaše virtuální počítač s Windows je podporovaná s [Accelerated sít
 
 ## <a name="linux-vm"></a>Virtuální počítač s Linuxem
 
-RSS je vždy povolena ve výchozím nastavení v systému Linux virtuálního počítače Azure. Linux jádra vydané od ledna 2017 zahrnují nové možnosti optimalizace sítě, které umožňují virtuální počítač s Linuxem tooachieve vyšší propustnost sítě.
+RSS je vždy povolena ve výchozím nastavení v systému Linux virtuálního počítače Azure. Linux jádra vydané od ledna 2017 zahrnují nové možnosti optimalizace sítě, které umožňují virtuálního počítače s Linuxem k dosažení vyšší propustnost sítě.
 
 ### <a name="ubuntu"></a>Ubuntu
 
-V modulu snap-in optimalizace hello tooget pořadí aktualizace toohello podporované nejnovější verzi, od června 2017, což je:
+Chcete-li získat optimalizace, nejprve aktualizovat na nejnovější podporovanou verzi, od června 2017, což je:
 ```json
 "Publisher": "Canonical",
 "Offer": "UbuntuServer",
 "Sku": "16.04-LTS",
 "Version": "latest"
 ```
-Po dokončení aktualizace hello zadejte následující příkazy tooget hello nejnovější jádra hello:
+Po dokončení aktualizace zadejte následující příkazy a získat nejnovější jádra:
 
 ```bash
 apt-get -f install
@@ -77,12 +77,12 @@ Volitelný příkaz:
 `apt-get -y dist-upgrade`
 #### <a name="ubuntu-azure-preview-kernel"></a>Ubuntu Azure Preview jádra
 > [!WARNING]
-> Tato verze Preview Linux Azure nemusí mít jádra hello stejnou úroveň dostupnost a spolehlivost jako obrázky Marketplace a jádra, která jsou obecně dostupnosti verze. Hello funkce nepodporuje, může mít omezené možnosti a nemusí být stejně spolehlivá jako hello výchozí jádra. Nepoužívejte tuto jádra pro úlohy v produkčním prostředí.
+> Tato jádra Azure Linux Preview nemusí mít stejnou úroveň dostupnost a spolehlivost jako obrázky Marketplace a verzí jádra, která jsou obecné dostupnosti. Funkce není podporována, může mít omezené možnosti a nemusí být stejně spolehlivá jako výchozí jádra. Nepoužívejte tuto jádra pro úlohy v produkčním prostředí.
 
-Nainstalováním hello navrhované jádra Azure Linux jde dosáhnout výrazné propustnost. tootry tento jádra, přidejte tento řádek too/etc/apt/sources.list
+Nainstalováním navrhované jádra Azure Linux jde dosáhnout výrazné propustnost. Pokud chcete vyzkoušet tuto jádra, přidejte následující řádek na /etc/apt/sources.list
 
 ```bash
-#add this toohello end of /etc/apt/sources.list (requires elevation)
+#add this to the end of /etc/apt/sources.list (requires elevation)
 deb http://archive.ubuntu.com/ubuntu/ xenial-proposed restricted main multiverse universe
 ```
 
@@ -95,15 +95,15 @@ reboot
 
 ### <a name="centos"></a>CentOS
 
-V pořadí tooget hello optimalizace aktualizace verze toohello nejnovější podporované od července 2017, což je:
+Chcete-li získat optimalizace, nejprve aktualizovat na nejnovější podporovanou verzi, od července 2017, což je:
 ```json
 "Publisher": "OpenLogic",
 "Offer": "CentOS",
 "Sku": "7.3",
 "Version": "latest"
 ```
-Po dokončení aktualizace hello hello instalovat nejnovější Linux integrační služby (LIS).
-Optimalizace propustnosti Hello se LIS, od 4.2.2-2. Zadejte následující příkazy tooinstall LIS hello:
+Po dokončení aktualizace nainstalujte nejnovější Linux integrační služby (LIS).
+Optimalizace propustnosti se LIS, od 4.2.2-2. Zadejte následující příkazy pro instalaci LIS:
 
 ```bash
 sudo yum update
@@ -113,15 +113,15 @@ sudo yum install microsoft-hyper-v
 
 ### <a name="red-hat"></a>Red Hat
 
-V pořadí tooget hello optimalizace aktualizace verze toohello nejnovější podporované od července 2017, což je:
+Chcete-li získat optimalizace, nejprve aktualizovat na nejnovější podporovanou verzi, od července 2017, což je:
 ```json
 "Publisher": "RedHat"
 "Offer": "RHEL"
 "Sku": "7.3"
 "Version": "7.3.2017071923"
 ```
-Po dokončení aktualizace hello hello instalovat nejnovější Linux integrační služby (LIS).
-Optimalizace propustnosti Hello se LIS, od 4.2. Zadejte následující příkazy toodownload hello a instalovat:
+Po dokončení aktualizace nainstalujte nejnovější Linux integrační služby (LIS).
+Optimalizace propustnosti se LIS, od 4.2. Zadejte následující příkazy ke stažení a instalaci LIS:
 
 ```bash
 mkdir lis4.2.2-2
@@ -132,8 +132,8 @@ cd LISISO
 install.sh #or upgrade.sh if prior LIS was previously installed
 ```
 
-Další informace o Linux integrační služby verzi 4.2 pro Hyper-V zobrazením hello [stránce pro stažení](https://www.microsoft.com/download/details.aspx?id=55106).
+Další informace o Linux integrační služby verzi 4.2 pro Hyper-V zobrazením [stránce pro stažení](https://www.microsoft.com/download/details.aspx?id=55106).
 
 ## <a name="next-steps"></a>Další kroky
-* Teď, když hello virtuálního počítače je optimalizovaná, najdete v části hello výsledek [šířky pásma nebo propustnost testování virtuální počítač Azure](virtual-network-bandwidth-testing.md) pro váš scénář.
+* Teď, když virtuální počítač je optimalizovaná, najdete v části výsledků [šířky pásma nebo propustnost testování virtuální počítač Azure](virtual-network-bandwidth-testing.md) pro váš scénář.
 * Další informace s [Azure Virtual Network nejčastější dotazy (FAQ)](virtual-networks-faq.md)

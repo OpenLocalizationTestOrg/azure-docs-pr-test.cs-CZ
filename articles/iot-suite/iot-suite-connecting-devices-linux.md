@@ -1,6 +1,6 @@
 ---
-title: "aaaConnect zařízení pomocí jazyka C v systému Linux | Microsoft Docs"
-description: "Popisuje, jak tooconnect toohello zařízení Azure IoT Suite předkonfigurované řešení vzdáleného monitorování pomocí aplikace napsané v jazyce C systémem Linux."
+title: "Připojení zařízení pomocí jazyka C v systému Linux | Microsoft Docs"
+description: "Popisuje, jak se připojit zařízení k Azure IoT Suite předkonfigurované řešení vzdáleného monitorování pomocí aplikace napsané v jazyce C systémem Linux."
 services: 
 suite: iot-suite
 documentationcenter: na
@@ -15,55 +15,55 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
-ms.openlocfilehash: 57393817d40d3555177956a01fa71058bc256988
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 9adbc9cc13f0b4cafa3a3a7703c46f8085b15232
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="connect-your-device-toohello-remote-monitoring-preconfigured-solution-linux"></a>Připojit vaše zařízení toohello pro vzdálené monitorování předkonfigurované řešení (Linux)
+# <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-linux"></a>Připojte zařízení k monitorování předkonfigurované řešení vzdáleného (Linux)
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
 ## <a name="build-and-run-a-sample-c-client-linux"></a>Sestavení a spuštění ukázkových C klienta Linux
-Hello následující kroky vám ukážou, jak toocreate klientskou aplikaci, která komunikuje s hello vzdálené monitorování předkonfigurované řešení. Tato aplikace napsané v jazyce C a vytvořené a spusťte na Ubuntu Linux.
+Následující kroky ukazují, jak vytvořit klientskou aplikaci, která komunikuje s předkonfigurovaného řešení vzdáleného monitorování. Tato aplikace napsané v jazyce C a vytvořené a spusťte na Ubuntu Linux.
 
-toocomplete tyto kroky, je třeba zařízení se systémem Ubuntu verze 15.04 nebo 15.10. Než budete pokračovat, nainstalujte požadované balíčky hello zařízení Ubuntu pomocí hello následující příkaz:
+K provedení těchto kroků, je třeba zařízení se systémem Ubuntu verze 15.04 nebo 15.10. Než budete pokračovat, nainstalujte požadované balíčky zařízení Ubuntu pomocí následujícího příkazu:
 
 ```
 sudo apt-get install cmake gcc g++
 ```
 
-## <a name="install-hello-client-libraries-on-your-device"></a>Nainstalujte klientské knihovny hello zařízení
-Hello knihovny klienta Azure IoT Hub jsou k dispozici jako balíček můžete nainstalovat na zařízení Ubuntu pomocí hello **výstižný get** příkaz. Proveďte následující kroky tooinstall hello balíček, který obsahuje hello Klientská knihovna pro IoT Hub a hlavičkových souborů v počítači Ubuntu hello:
+## <a name="install-the-client-libraries-on-your-device"></a>Nainstalujte klientské knihovny zařízení
+Knihovny klienta Azure IoT Hub jsou k dispozici jako balíček můžete nainstalovat pomocí zařízení Ubuntu **výstižný get** příkaz. Proveďte následující kroky k instalaci balíčku, který obsahuje IoT Hub knihovny a hlavičky souborů klienta v počítači Ubuntu:
 
-1. V prostředí přidejte hello AzureIoT úložiště tooyour počítače:
+1. V prostředí přidejte do počítače AzureIoT úložiště:
    
     ```
     sudo add-apt-repository ppa:aziotsdklinux/ppa-azureiot
     sudo apt-get update
     ```
-2. Nainstalovat balíček azure-iot-sdk-c-dev hello
+2. Nainstalovat balíček azure-iot-sdk-c vývojářů
    
     ```
     sudo apt-get install -y azure-iot-sdk-c-dev
     ```
 
-## <a name="install-hello-parson-json-parser"></a>Nainstalujte hello analyzátor Parson JSON
-Hello IoT Hub klientské knihovny používají hello datové části Parson JSON analyzátor tooparse zprávy. Ve složce vhodný ve vašem počítači klonovat úložiště Parson GitHub hello pomocí hello následující příkaz:
+## <a name="install-the-parson-json-parser"></a>Nainstalujte analyzátor Parson JSON
+Knihovny klienta služby IoT Hub pomocí analyzátoru Parson JSON analyzovat datové části zprávy. Ve složce vhodný ve vašem počítači naklonujte úložiště Parson GitHub pomocí následujícího příkazu:
 
 ```
 git clone https://github.com/kgabis/parson.git
 ```
 
 ## <a name="prepare-your-project"></a>Příprava projektu
-Na počítači Ubuntu, vytvořte složku s názvem **vzdáleného\_monitorování**. V hello **vzdáleného\_monitorování** složky:
+Na počítači Ubuntu, vytvořte složku s názvem **vzdáleného\_monitorování**. V **vzdáleného\_monitorování** složky:
 
-- Vytvoření hello čtyři soubory **main.c**, **vzdáleného\_monitoring.c**, **vzdáleného\_monitoring.h**, a **CMakeLists.txt**.
+- Vytvořit čtyři soubory **main.c**, **vzdáleného\_monitoring.c**, **vzdáleného\_monitoring.h**, a **CMakeLists.txt**.
 - Vytvořte složku s názvem **parson**.
 
-Zkopírujte soubory hello **parson.c** a **parson.h** z místní kopie hello Parson úložiště do hello **vzdáleného\_monitorování nebo parson** složky.
+Zkopírujte soubory **parson.c** a **parson.h** z místní kopie Parson úložiště do **vzdáleného\_monitorování nebo parson** složky.
 
-V textovém editoru otevřete hello **vzdáleného\_monitoring.c** souboru. Přidejte následující hello `#include` příkazy:
+V textovém editoru otevřete **vzdáleného\_monitoring.c** souboru. Přidejte následující příkazy `#include`:
    
 ```
 #include "iothubtransportmqtt.h"
@@ -78,14 +78,14 @@ V textovém editoru otevřete hello **vzdáleného\_monitoring.c** souboru. Při
 
 [!INCLUDE [iot-suite-connecting-code](../../includes/iot-suite-connecting-code.md)]
 
-## <a name="call-hello-remotemonitoringrun-function"></a>Volání hello vzdálené\_monitorování\_run – funkce
-V textovém editoru otevřete hello **remote_monitoring.h** souboru. Přidejte následující kód hello:
+## <a name="call-the-remotemonitoringrun-function"></a>Volání vzdálených\_monitorování\_run – funkce
+V textovém editoru otevřete **remote_monitoring.h** souboru. Přidejte následující kód:
 
 ```
 void remote_monitoring_run(void);
 ```
 
-V textovém editoru otevřete hello **main.c** souboru. Přidejte následující kód hello:
+V textovém editoru otevřete **main.c** souboru. Přidejte následující kód:
 
 ```
 #include "remote_monitoring.h"
@@ -98,12 +98,12 @@ int main(void)
 }
 ```
 
-## <a name="build-and-run-hello-application"></a>Sestavení a spuštění aplikace hello
-Hello následující kroky popisují, jak toouse *CMake* toobuild klientské aplikace.
+## <a name="build-and-run-the-application"></a>Sestavení a spuštění aplikace
+Následující kroky popisují způsob použití *CMake* k vytvoření klientské aplikace.
 
-1. V textovém editoru otevřete hello **CMakeLists.txt** souboru v hello **remote_monitoring** složky.
+1. V textovém editoru otevřete **CMakeLists.txt** v soubor **remote_monitoring** složky.
 
-1. Přidejte následující pokyny toodefine jak hello toobuild klientské aplikace:
+1. Přidejte podle následujících pokynů můžete definovat, jak vytvořit klientskou aplikaci:
    
     ```
     macro(compileAsC99)
@@ -151,7 +151,7 @@ Hello následující kroky popisují, jak toouse *CMake* toobuild klientské apl
         m
     )
     ```
-1. V hello **remote_monitoring** složky, vytvořit složku toostore hello *zkontrolujte* soubory této CMake generuje a pak spusťte hello **cmake** a **zkontrolujte** příkazy následujícím způsobem:
+1. V **remote_monitoring** složky, vytvořte složku pro uložení *Ujistěte se,* soubory, které generuje CMake a znovu spusťte **cmake** a **zkontrolujte** příkazy následujícím způsobem:
    
     ```
     mkdir cmake
@@ -160,7 +160,7 @@ Hello následující kroky popisují, jak toouse *CMake* toobuild klientské apl
     make
     ```
 
-1. Spuštění klienta aplikace hello a odesílat telemetrii tooIoT rozbočovače:
+1. Spusťte aplikaci klienta a odesílat telemetrická data do služby IoT Hub:
    
     ```
     ./sample_app

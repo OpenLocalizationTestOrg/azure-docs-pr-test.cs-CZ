@@ -1,6 +1,6 @@
 ---
-title: "vytváření sestav aaaAccess - Azure RBAC | Microsoft Docs"
-description: "Vygenerujte sestavu, že zobrazí všechny změny v přístupu tooyour předplatných Azure pomocí řízení přístupu na základě rolí přes hello posledních 90 dnů."
+title: "Přístup k vytváření sestav - Azure RBAC | Microsoft Docs"
+description: "Vygenerujte sestavu, která uvádí všechny změny v přístupu k vašemu předplatnému Azure pomocí řízení přístupu na základě rolí za posledních 90 dnů."
 services: active-directory
 documentationcenter: 
 author: andredm7
@@ -15,35 +15,35 @@ ms.date: 07/17/2017
 ms.author: andredm
 ms.reviewer: rqureshi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9ad85d3d8e66ce167032638a35e4afffb46d3892
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4e8028ab43ed02ef0c0a1374326b07f72f97d9d9
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-an-access-report-for-role-based-access-control"></a>Vytvoření sestavy přístup k řízení přístupu na základě rolí
-Vždy, když někdo uděluje nebo odvolá přístup v rámci vašich předplatných hello změny se budou protokolovat do Azure událostí. Můžete vytvořit toosee sestavy historie změn přístupu všechny změny pro hello posledních 90 dnů.
+Vždy, když někdo uděluje nebo odvolá přístup v rámci vašich předplatných, změny se budou protokolovat do Azure událostí. Můžete vytvořit sestavy historie změn přístupu zobrazíte všechny změny za posledních 90 dnů.
 
 ## <a name="create-a-report-with-azure-powershell"></a>Vytvoření sestavy pomocí prostředí Azure PowerShell
-Sestava historie v prostředí PowerShell, použijte hello změnit toocreate přístup [Get-AzureRMAuthorizationChangeLog](/powershell/module/azurerm.resources/get-azurermauthorizationchangelog) příkaz.
+K vytvoření sestavy historie změn přístupu v prostředí PowerShell, použijte [Get-AzureRMAuthorizationChangeLog](/powershell/module/azurerm.resources/get-azurermauthorizationchangelog) příkaz.
 
-Při volání tento příkaz můžete určit kterou vlastnost tohoto přiřazení hello uveden v seznamu, včetně hello následující:
+Při volání tento příkaz můžete určit kterou vlastnost tohoto přiřazení uveden v seznamu, včetně následujících:
 
 | Vlastnost | Popis |
 | --- | --- |
 | **Akce** |Jestli byl přístup udělen nebo odebrán |
-| **Volající** |změnit vlastníka Hello zodpovědná za přístup hello |
-| **PrincipalId** | Jedinečný identifikátor Hello hello uživatele, skupiny nebo aplikace, kterému byla přiřazena hello role |
-| **PrincipalName** |Název Hello hello uživatele, skupiny nebo aplikace |
-| **PrincipalType** |Jestli hello přiřazení byla pro uživatele, skupiny nebo aplikace |
-| **Hodnoty vlastnosti RoleDefinitionId** |Hello GUID hello role, který byl udělen nebo odebrán |
-| **RoleName** |Hello role, který byl udělen nebo odebrán |
-| **Rozsah** | Jedinečný identifikátor Hello hello předplatné, skupinu prostředků nebo prostředek, který hello přiřazení platí příliš| 
-| **ScopeName** |Název Hello hello předplatné, skupinu prostředků nebo prostředek |
-| **ScopeType** |Jestli hello přiřazení byl v hello předplatné, skupinu prostředků nebo prostředek oboru |
-| **Časové razítko** |Hello datum a čas, která byla změněna přístup |
+| **Volající** |Vlastník zodpovědná za změnu přístup |
+| **PrincipalId** | Jedinečný identifikátor uživatele, skupiny nebo aplikace, kterému byla přiřazena role |
+| **PrincipalName** |Jméno uživatele, skupiny nebo aplikace |
+| **PrincipalType** |Jestli přiřazení byla pro uživatele, skupiny nebo aplikace |
+| **Hodnoty vlastnosti RoleDefinitionId** |Identifikátor GUID role, který byl udělen nebo odebrán |
+| **RoleName** |Role, který byl udělen nebo odebrán |
+| **Rozsah** | Jedinečný identifikátor předplatné, skupinu prostředků nebo prostředek, který se vztahuje na přiřazení | 
+| **ScopeName** |Název předplatné, skupinu prostředků nebo prostředek |
+| **ScopeType** |Jestli přiřazení byl v předplatné, skupinu prostředků nebo prostředek oboru |
+| **Časové razítko** |Datum a čas, která byla změněna přístup |
 
-Příkaz v tomto příkladu jsou uvedeny všechny změny v přístupu v hello předplatné pro hello posledních sedmi dnech:
+Příkaz v tomto příkladu jsou uvedeny všechny změny v přístupu v rámci předplatného pro posledních sedmi dnech:
 
 ```
 Get-AzureRMAuthorizationChangeLog -StartTime ([DateTime]::Now - [TimeSpan]::FromDays(7)) | FT Caller,Action,RoleName,PrincipalType,PrincipalName,ScopeType,ScopeName
@@ -52,14 +52,14 @@ Get-AzureRMAuthorizationChangeLog -StartTime ([DateTime]::Now - [TimeSpan]::From
 ![Prostředí PowerShell Get-AzureRMAuthorizationChangeLog – snímek obrazovky](./media/role-based-access-control-configure/access-change-history.png)
 
 ## <a name="create-a-report-with-azure-cli"></a>Vytvoření sestavy pomocí rozhraní příkazového řádku Azure
-toocreate sestavy historie změn přístupu v hello rozhraní příkazového řádku Azure (CLI), použijte hello `azure role assignment changelog list` příkaz.
+K vytvoření sestavy historie změn přístupu v rozhraní příkazového řádku Azure (CLI), použijte `azure role assignment changelog list` příkaz.
 
-## <a name="export-tooa-spreadsheet"></a>Export tooa tabulka
-toosave hello sestavy nebo pracovat s daty hello, export hello přístup změny do souboru CSV. Potom můžete zobrazit sestavy hello v tabulce ke kontrole.
+## <a name="export-to-a-spreadsheet"></a>Export do tabulky
+Pokud chcete sestavu uložit nebo manipulovat s daty, exportujte přístup změny do souboru CSV. Potom můžete zobrazit zprávu v tabulce ke kontrole.
 
 ![Protokol změn zobrazit jako tabulku – snímek obrazovky](./media/role-based-access-control-configure/change-history-spreadsheet.png)
 
 ## <a name="next-steps"></a>Další kroky
 * Práce s [vlastní role v Azure RBAC](role-based-access-control-custom-roles.md)
-* Zjistěte, jak toomanage [RBAC Azure pomocí prostředí powershell](role-based-access-control-manage-access-powershell.md)
+* Naučte se spravovat [RBAC Azure pomocí prostředí powershell](role-based-access-control-manage-access-powershell.md)
 

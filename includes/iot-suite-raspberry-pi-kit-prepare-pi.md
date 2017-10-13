@@ -2,26 +2,26 @@
 
 ### <a name="install-raspbian"></a>Nainstalujte Raspbian
 
-Pokud je to hello poprvé použijete vaše malin platformy, je nutné tooinstall hello Raspbian operačního systému pomocí NOOBS na kartě SD hello součástí hello kit. Hello [malin pí softwaru průvodce] [ lnk-install-raspbian] popisuje, jak tooinstall operačního systému na vaše malin pí. Tento kurz předpokládá, že jste nainstalovali hello Raspbian operačního systému na vaše malin pí.
+Pokud používáte vaše platformy malin poprvé, musíte nainstalovat operační systém Raspbian pomocí NOOBS na kartu SD. součástí sady. [Malin pí softwaru průvodce] [ lnk-install-raspbian] popisuje postup instalace operačního systému na vaše malin pí. Tento kurz předpokládá, že jste nainstalovali Raspbian operačního systému na vaše malin pí.
 
 > [!NOTE]
-> Hello SD karty součástí hello [Microsoft Azure IoT Starter Kit malin pí 3] [ lnk-starter-kits] již NOOBS nainstalována. Můžete spustit hello malin pí z této karty a zvolte tooinstall hello Raspbian operačního systému.
+> Používání SD karet součástí [Microsoft Azure IoT Starter Kit malin pí 3] [ lnk-starter-kits] již má nainstalované NOOBS. Můžete spustit pí malin z této karty a zvolit instalaci operačního systému Raspbian.
 
-### <a name="set-up-hello-hardware"></a>Nastavení hardwaru hello
+### <a name="set-up-the-hardware"></a>Nastavení hardwaru
 
-Tento kurz používá hello BME280 senzor součástí hello [Microsoft Azure IoT Starter Kit malin pí 3] [ lnk-starter-kits] toogenerate telemetrická data. Když hello malin pí zpracovává volání metody z řídicí panel řešení hello používá tooindicate Indikátor.
+Tento kurz používá BME280 senzoru součástí [Microsoft Azure IoT Starter Kit malin pí 3] [ lnk-starter-kits] ke generování telemetrická data. Používá DIODU označíte, když pí malin zpracovává volání metody na řídicím panelu řešení.
 
-součásti Hello na panelu chléb hello jsou:
+Součásti na panelu chléb jsou:
 
 - Red DIODU
 - 220 Ohm odpor (červená, red menších.)
 - Senzor BME280
 
-Hello následující obrázek ukazuje, jak tooconnect hardwaru:
+Následující diagram ukazuje, jak připojit hardwaru:
 
 ![Nastavení hardwaru pro malin platformy][img-connection-diagram]
 
-Hello následující tabulka shrnuje hello připojení z hello malin pí toohello součásti na hello breadboard:
+Následující tabulka shrnuje připojení z platformy malin součástí na breadboard:
 
 | Raspberry Pi            | Breadboard             |Barva         |
 | ----------------------- | ---------------------- | ------------- |
@@ -34,52 +34,52 @@ Hello následující tabulka shrnuje hello připojení z hello malin pí toohell
 | ZEM (Pin 6)             | ZEM (35A)              | Černá         |
 | 3.3 V (Pin 1)           | 3Vo (34A)              | Červená           |
 
-toocomplete hello hardwaru Instalační program, potřebujete:
+Chcete-li dokončit nastavení hardwaru, je potřeba:
 
-- Připojte vaše malin pí toohello zdroj napájení součástí hello kit.
-- Propojení vaší sítě tooyour malin pí pomocí kabelu Ethernet hello součástí vaší sady. Alternativně můžete nastavit [bezdrátové připojení] [ lnk-pi-wireless] vaše malin pí.
+- Připojte vaše platformy malin k napájení součástí sady.
+- Vaše platformy malin připojte k síti pomocí kabelu Ethernet, který je součástí vaší sady. Alternativně můžete nastavit [bezdrátové připojení] [ lnk-pi-wireless] vaše malin pí.
 
-Teď jste dokončili nastavení hardwaru hello vaší malin pí.
+Teď jste dokončili nastavení hardwaru vaší malin pí.
 
-### <a name="sign-in-and-access-hello-terminal"></a>Přihlaste se a přístup k Terminálové hello
+### <a name="sign-in-and-access-the-terminal"></a>Přihlaste se a přístup k terminálu
 
-Dvě možnosti tooaccess máte na vaše platformy malin terminálu prostředí:
+Máte dvě možnosti pro přístup k Terminálové prostředí na vaše malin platformy:
 
-- Pokud máte klávesnici a sledování připojených tooyour malin platformy, můžete použít grafické uživatelské rozhraní Raspbian tooaccess hello okno terminálu.
+- Pokud máte klávesnici a monitorování, které jsou připojené k vaší malin platformy, můžete použít Raspbian grafického uživatelského rozhraní pro přístup k okno terminálu.
 
-- Přístup hello příkazového řádku na vaší malin pí pomocí protokolu SSH ze stolního počítače.
+- Přístup na příkazovém řádku vaší malin pí pomocí protokolu SSH ze stolního počítače.
 
-#### <a name="use-a-terminal-window-in-hello-gui"></a>Použijte okno terminálu v hello grafického uživatelského rozhraní
+#### <a name="use-a-terminal-window-in-the-gui"></a>Použijte okno terminálu v grafickém uživatelském rozhraní
 
-uživatelské jméno jsou Hello výchozí pověření pro Raspbian **pí** a heslo **malin**. Hello hlavním panelu v hello grafického uživatelského rozhraní, můžete spustit hello **Terminálové** nástroj pomocí hello ikonu, která vypadá jako monitorování.
+Výchozí pověření pro Raspbian jsou uživatelské jméno **pí** a heslo **malin**. Na hlavním panelu v grafickém uživatelském rozhraní, můžete spustit **Terminálové** nástroj pomocí ikonu, která vypadá jako monitorování.
 
 #### <a name="sign-in-with-ssh"></a>Přihlaste se pomocí protokolu SSH
 
-SSH můžete použít pro přístup přes příkazový řádek tooyour malin pí. článek Hello [SSH (Secure Shell)] [ lnk-pi-ssh] popisuje, jak tooconfigure SSH na vaše malin platformy a jak tooconnect z [Windows] [ lnk-ssh-windows] nebo [Operačního systému Linux & Mac][lnk-ssh-linux].
+SSH můžete použít pro příkazového řádku přístup k vaší malin pí. Článek [SSH (Secure Shell)] [ lnk-pi-ssh] popisuje postup konfigurace SSH na vaše malin platformy a jak se připojit z [Windows] [ lnk-ssh-windows] nebo [ Linux & Mac OS][lnk-ssh-linux].
 
 Přihlaste se pomocí uživatelského jména **pí** a heslo **malin**.
 
 #### <a name="optional-share-a-folder-on-your-raspberry-pi"></a>Volitelné: Sdílené složky na vaše malin platformy
 
-Volitelně můžete tooshare do složky na vaše malin pí s prostředí plochy. Sdílení složky umožňuje vám toouse upřednostňované plochy textový editor (například [Visual Studio Code](https://code.visualstudio.com/) nebo [Sublime Text](http://www.sublimetext.com/)) tooedit soubory na vaše malin platformy místo použití `nano` nebo `vi`.
+Volitelně můžete sdílet složky na vaše malin pí s prostředí plochy. Sdílení složky vám umožní použít upřednostňované plochy textový editor (například [Visual Studio Code](https://code.visualstudio.com/) nebo [Sublime Text](http://www.sublimetext.com/)) Chcete-li upravit soubory na vaše malin platformy místo použití `nano` nebo `vi`.
 
-tooshare složka s Windows, konfigurace serveru Samba hello malin pí. Můžete taky použít integrované hello [SFTP](https://www.raspberrypi.org/documentation/remote-access/) serveru s klientem SFTP na ploše.
+Sdílení složky s Windows, konfigurace serveru Samba na malin pí. Můžete taky použít integrované [SFTP](https://www.raspberrypi.org/documentation/remote-access/) serveru s klientem SFTP na ploše.
 
 ### <a name="enable-spi"></a>Povolit SPI
 
-Před spuštěním hello ukázkovou aplikaci, je nutné povolit hello sériové periferní rozhraní (SPI) sběrnice na hello malin pí. Hello malin platformy hello BME280 senzor zařízení komunikuje přes hello SPI sběrnice. Použijte následující příkaz tooedit hello konfigurační soubor hello:
+Než spustíte ukázkovou aplikaci, je nutné povolit sběrnici sériové periferní rozhraní (SPI) na malin pí. Malin platformy zařízení senzor BME280 komunikuje přes sběrnici SPI. Chcete-li upravit konfigurační soubor, použijte následující příkaz:
 
 ```sh
 sudo nano /boot/config.txt
 ```
 
-Najděte hello řádek:
+Vyhledejte řádek:
 
 `#dtparam=spi=on`
 
-- toouncomment hello řádku odstranění hello `#` při spuštění hello.
-- Uložte změny (**Ctrl-O**, **Enter**) a ukončete editor hello (**Ctrl-X**).
-- tooenable SPI, restartování hello malin pí. Restartování odpojí hello terminálu, musíte toosign v znovu, pokud restartování hello malin platformy:
+- Chcete-li Odkomentujte řádek, odstraňte `#` na začátku.
+- Uložte změny (**Ctrl-O**, **Enter**) a ukončete editor (**Ctrl-X**).
+- Pokud chcete povolit SPI, restartování malin pí. Restartování odpojí terminálu, musíte se přihlásit znovu, pokud restartování malin platformy:
 
   ```sh
   sudo reboot

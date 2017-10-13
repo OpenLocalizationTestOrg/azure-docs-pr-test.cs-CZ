@@ -1,6 +1,6 @@
 ---
-title: "zařízení VPN aaaAbout pro Azure připojení mezi různými místy | Microsoft Docs"
-description: "Tento článek probírá zařízení VPN a parametry protokolu IPsec pro připojení mezi různými místy pomocí VPN Gateway typu S2S. Odkazy jsou uvedeny pokyny tooconfiguration a ukázky."
+title: "Zařízení VPN pro připojení mezi různými místy pomocí Azure | Dokumentace Microsoftu"
+description: "Tento článek probírá zařízení VPN a parametry protokolu IPsec pro připojení mezi různými místy pomocí VPN Gateway typu S2S. V článku najdete také odkazy na pokyny a příklady pro konfiguraci."
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
@@ -15,27 +15,26 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: yushwang;cherylmc
-ms.openlocfilehash: 8b84afbf93d807342ecd56ab369d5909a13343e9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7b7e5f0f089cc87c9e63eee1fd3d29b7a2c0d49f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>O zařízeních VPN a o parametrech protokolu IPsec/IKE pro připojení typu Site-to-Site ke službě VPN Gateway
 
-Zařízení VPN je požadovaná tooconfigure připojení Site-to-Site (S2S) VPN mezi různými místy použitím brány VPN. Připojení Site-to-Site lze použít toocreate hybridní řešení, nebo vždy, když chcete zabezpečené připojení mezi místními sítěmi a virtuálních sítí. Tento článek obsahuje seznam ověřených zařízení VPN a seznam parametrů protokolu IPsec/IKE pro brány VPN.
+Pro konfiguraci připojení VPN typu Site-to-Site (S2S) mezi různými místy pomocí brány VPN Gateway je potřeba zařízení VPN. Připojení typu Site-to-Site lze použít k vytvoření hybridního řešení, nebo kdykoli chcete zabezpečit připojení mezi místními a virtuálními sítěmi. Tento článek obsahuje seznam ověřených zařízení VPN a seznam parametrů protokolu IPsec/IKE pro brány VPN.
 
 > [!IMPORTANT]
-> Pokud máte problémy s připojením mezi místními zařízeními VPN a brány VPN, podívejte se příliš[známé problémy s kompatibilitou zařízení](#known).
->
+> Pokud mezi místními zařízeními VPN a bránami VPN dochází k problémům s připojením, vyhledejte informace v části [Známé problémy s kompatibilitou zařízení](#known).
 >
 
-### <a name="items-toonote-when-viewing-hello-tables"></a>Při zobrazení tabulek hello položky toonote:
+### <a name="items-to-note-when-viewing-the-tables"></a>Při procházení tabulek si všimněte:
 
-* Došlo ke změně terminologie pro služby Azure VPN Gateway. Změnily se pouze názvy hello. Nedošlo k žádné změně funkce.
+* Došlo ke změně terminologie pro služby Azure VPN Gateway. Změnily se pouze názvy. Nedošlo k žádné změně funkce.
   * Statické směrování = PolicyBased
   * Dynamické směrování = RouteBased
-* Pokud není uvedeno jinak, jsou hello stejné, specifikace HighPerformance VPN gateway a brána sítě VPN RouteBased. Například jsou hello ověřit zařízení VPN, které jsou kompatibilní s bránami RouteBased VPN také kompatibilní s hello HighPerformance VPN gateway.
+* Specifikace pro vysokovýkonné brány VPN a brány VPN typu RouteBased jsou stejné, není-li uvedeno jinak. Například ověřená zařízení VPN, která jsou kompatibilní s bránami VPN typu RouteBased, budou kompatibilní také s vysokovýkonnou bránou VPN.
 
 ## <a name="devicetable"></a>Ověřená zařízení VPN a průvodci konfigurací zařízení
 
@@ -43,9 +42,9 @@ Zařízení VPN je požadovaná tooconfigure připojení Site-to-Site (S2S) VPN 
 > Při konfiguraci připojení typu Site-to-Site je pro vaše zařízení VPN vyžadována veřejná IP adresa IPv4.
 >
 
-Ve spolupráci s dodavateli zařízení jsme ověřili sadu standardních zařízení VPN. Všechna zařízení hello v řadách zařízení hello v následujícím seznamu hello by měla spolupracovat s bránami VPN. V tématu [o nastavení brány sítě VPN](vpn-gateway-about-vpn-gateway-settings.md#vpntype) toounderstand hello VPN zadejte použití (PolicyBased nebo RouteBased) pro hello chcete tooconfigure řešení VPN Gateway.
+Ve spolupráci s dodavateli zařízení jsme ověřili sadu standardních zařízení VPN. Všechna zařízení v řadách zařízení v následujícím seznamu by měla fungovat s bránami VPN. V tématu [Informace o nastavení služby VPN Gateway](vpn-gateway-about-vpn-gateway-settings.md#vpntype) zjistíte, jaký typ sítě VPN (PolicyBased nebo RouteBased) použít pro řešení VPN Gateway, které chcete konfigurovat.
 
-toohelp konfigurace zařízení VPN, získáte toohello odkazy, které odpovídají řada tooappropriate zařízení. Hello odkazy tooconfiguration pokyny na základě typu best effort. Pro podporu zařízení VPN kontaktujte výrobce zařízení.
+Pomoc s konfigurací zařízení VPN najdete pod odkazy, které odpovídají příslušné řadě zařízení. Při poskytování odkazů na pokyny se snažíme maximálně vyhovět. Pro podporu zařízení VPN kontaktujte výrobce zařízení.
 
 |**Dodavatel**          |**Řada zařízení**     |**Minimální verze operačního systému** |**Pokyny ke konfiguraci PolicyBased** |**Pokyny ke konfiguraci RouteBased** |
 | ---                | ---                  | ---                   | ---            | ---           |
@@ -55,9 +54,9 @@ toohelp konfigurace zařízení VPN, získáte toohello odkazy, které odpovída
 | Barracuda Networks, Inc. |Barracuda NextGen Firewall řady X |Barracuda Firewall 6.5 |[Průvodce konfigurací](https://techlib.barracuda.com/BFW/ConfigAzureVPNGateway) |Není kompatibilní |
 | Brocade            |Vyatta 5400 vRouter   |Virtual Router 6.6R3 GA|[Průvodce konfigurací](http://www1.brocade.com/downloads/documents/html_product_manuals/vyatta/vyatta_5400_manual/wwhelp/wwhimpl/js/html/wwhelp.htm#href=VPN_Site-to-Site%20IPsec%20VPN/Preface.1.1.html) |Není kompatibilní |
 | Check Point |Security Gateway |R77.30 |[Průvodce konfigurací](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[Průvodce konfigurací](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
-| Cisco              |ASA       |8.3 |[Ukázky konfigurace](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA) |Není kompatibilní |
+| Cisco              |ASA       |8.3<br>8.4+ (IKEv2*) |[Ukázky konfigurace](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA) |[Průvodce konfigurací*](vpn-gateway-3rdparty-device-config-cisco-asa.md) |
 | Cisco |ASR |PolicyBased: iOS 15.1<br>RouteBased: iOS 15.2 |[Ukázky konfigurace](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |[Ukázky konfigurace](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |
-| Cisco |ISR |PolicyBased: iOS 15.0<br>RouteBased*: iOS 15.1 |[Ukázky konfigurace](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |[Ukázky konfigurace*](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
+| Cisco |ISR |PolicyBased: iOS 15.0<br>RouteBased*: iOS 15.1 |[Ukázky konfigurace](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |[Ukázky konfigurace**](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
 | Citrix |NetScaler MPX, SDX, VPX |10.1 a vyšší |[Průvodce konfigurací](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |Není kompatibilní |
 | F5 |Řada BIG-IP |12.0 |[Průvodce konfigurací](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[Průvodce konfigurací](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
 | Fortinet |FortiGate |FortiOS 5.4.2 |  |[Průvodce konfigurací](http://cookbook.fortinet.com/ipsec-vpn-microsoft-azure-54) |
@@ -68,25 +67,28 @@ toohelp konfigurace zařízení VPN, získáte toohello odkazy, které odpovída
 | Juniper |SSG |ScreenOS 6.2 |[Ukázky konfigurace](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |[Ukázky konfigurace](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |
 | Microsoft |Služba Směrování a vzdálený přístup |Windows Server 2012 |Není kompatibilní |[Ukázky konfigurace](http://go.microsoft.com/fwlink/p/?LinkId=717761) |
 | Open Systems AG |Mission Control Security Gateway |– |[Průvodce konfigurací](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |Není kompatibilní |
-| Openswan |Openswan |2.6.32 |(Připravuje se) |Není kompatibilní |
 | Palo Alto Networks |Všechna zařízení se systémem PAN-OS |PAN-OS<br>PolicyBased: 6.1.5 nebo novější<br>RouteBased: 7.1.4 |[Průvodce konfigurací](https://live.paloaltonetworks.com/t5/Configuration-Articles/How-to-Configure-VPN-Tunnel-Between-a-Palo-Alto-Networks/ta-p/59065) |[Průvodce konfigurací](https://live.paloaltonetworks.com/t5/Integration-Articles/Configuring-IKEv2-VPN-for-Microsoft-Azure-Environment/ta-p/60340) |
-| SonicWall |Řada TZ, řada NSA<br>Řada SuperMassive<br>Řada E-Class NSA |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |[Průvodce konfigurací pro SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646)<br>[Průvodce konfigurací pro SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |[Průvodce konfigurací pro SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646)<br>[Průvodce konfigurací pro SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |
+| SonicWall |Řada TZ, řada NSA<br>Řada SuperMassive<br>Řada E-Class NSA |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |Nepodporuje se|[Průvodce konfigurací](https://www.sonicwall.com/en-us/support/knowledge-base/170505320011694) |
 | WatchGuard |Všechny |Fireware XTM<br> PolicyBased: v11.11.x<br>RouteBased: v11.12.x |[Průvodce konfigurací](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[Průvodce konfigurací](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
 
-(*) Směrovače řady ISR 7200 podporují pouze sítě VPN typu PolicyBased.
+> [!NOTE]
+>
+> (*) Cisco ASA verze 8.4+ přidávají podporu IKEv2 a umožňují připojení ke službě Azure VPN Gateway pomocí vlastních zásad IPsec/IKE s možností UsePolicyBasedTrafficSelectors. Další informace najdete v tomto [článku s postupem](vpn-gateway-connect-multiple-policybased-rm-ps.md).
+>
+> (**) Směrovače řady ISR 7200 podporují jenom sítě VPN typu PolicyBased.
 
 ## <a name="additionaldevices"></a>Neověřená zařízení VPN
 
-Pokud nevidíte svoje zařízení nevidíte v hello tabulce ověřená zařízení VPN, vaše zařízení stále může pracovat se připojení Site-to-Site. Kvůli další podpoře a pokynům ke konfiguraci se obraťte na výrobce zařízení.
+Nevidíte-li své zařízení v tabulce Ověřená zařízení VPN, stále je možné, že bude fungovat s připojením typu Site-to-Site. Kvůli další podpoře a pokynům ke konfiguraci se obraťte na výrobce zařízení.
 
 ## <a name="editing"></a>Ukázky úpravy konfigurace zařízení
 
-Po stažení ukázka konfigurace zařízení VPN hello zadaný, budete potřebovat tooreplace některé hello hodnoty tooreflect hello nastavení pro vaše prostředí.
+Po stažení ukázky konfigurace zařízení VPN budete muset nahradit některé hodnoty tak, aby odpovídaly nastavení vašeho prostředí.
 
-### <a name="tooedit-a-sample"></a>tooedit ukázku:
+### <a name="to-edit-a-sample"></a>Chcete-li upravit ukázku:
 
-1. Otevřete hello ukázku pomocí poznámkového bloku.
-2. Vyhledávání a nahrazení všech <*text*> řetězce s hodnotami hello, které odpovídají tooyour prostředí. Být jisti tooinclude < a >. Když je zadaný název, musí být jedinečné hello název, který jste vybrali. Pokud příkaz nefunguje, obraťte se na dokumentaci výrobce zařízení.
+1. Otevřete ukázku pomocí Poznámkového bloku.
+2. Vyhledejte všechny řetězce *text* a nahraďte je hodnotami, které odpovídají vašemu prostředí. Nezapomeňte zahrnout < a >. Zadané názvy by měly být jedinečné. Pokud příkaz nefunguje, obraťte se na dokumentaci výrobce zařízení.
 
 | **Text v ukázce** | **Změňte na** |
 | --- | --- |
@@ -99,17 +101,18 @@ Po stažení ukázka konfigurace zařízení VPN hello zadaný, budete potřebov
 | &lt;SP_AzureNetworkSubnetMask&gt; |Zadejte masku podsítě. Příklad: 255.255.0.0 |
 | &lt;SP_OnPremisesNetworkIpRange&gt; |Zadejte místní rozsah. Příklad: 10.2.1.0 |
 | &lt;SP_OnPremisesNetworkSubnetMask&gt; |Zadejte masku místní podsítě. Příklad: 255.255.255.0 |
-| &lt;SP_AzureGatewayIpAddress&gt; |Tato informace o konkrétní tooyour virtuální síť a najdete ji v hello portálu pro správu jako **IP adresa brány**. |
-| &lt;SP_PresharedKey&gt; |Tyto informace je konkrétní tooyour virtuální sítě a se nachází v hello portálu pro správu jako správa klíče. |
+| &lt;SP_AzureGatewayIpAddress&gt; |Tato informace je specifická pro vaši virtuální síť a najdete ji v Portálu pro správu jako **IP adresa brány**. |
+| &lt;SP_PresharedKey&gt; |Tato informace je specifická pro vaši virtuální síť a najdete ji v Portálu pro správu jako Správa klíče. |
 
 ## <a name="ipsec"></a>Parametry protokolu IPsec/IKE
 
-> [!NOTE]
-> I když hello hodnoty uvedené v následující tabulce hello aktuálně jsou podporovány hello VPN Gateway, že je žádný mechanismus pro vás toospecify nebo vybrat konkrétní kombinaci algoritmů nebo parametry z brány sítě VPN hello. Je nutné zadat jakákoli omezení ze zařízení hello místní VPN. Kromě toho musíte uchytit **MSS** na **1350**.
-> 
+> [!IMPORTANT]
+> 1. Následující tabulky obsahují kombinaci algoritmů a parametrů, které služba Azure VPN Gateway používá ve výchozí konfiguraci. Pro brány sítě VPN založené na trasách a vytvořené pomocí modelu nasazení správy prostředků Azure můžete zadat vlastní zásadu pro každé jednotlivé připojení. Podrobné pokyny najdete v tématu [Konfigurace zásad IPsec/IKE](vpn-gateway-ipsecikepolicy-rm-powershell.md).
+>
+> 2. Kromě toho musíte uchytit **MSS** protokolu TCP na **1350**. Pokud vaše zařízení nepodporuje uchycení MSS, můžete místo toho nastavit **MTU** na rozhraní tunelu na **1400** bajtů.
 >
 
-V následujících tabulkách hello:
+V následujících tabulkách:
 
 * SA je přidružení zabezpečení.
 * IKE fáze 1 se také nazývá „hlavní režim“.
@@ -139,7 +142,7 @@ V následujících tabulkách hello:
 
 ### <a name ="RouteBasedOffers"></a>Nabídky RouteBased VPN IPsec Security Association (rychlý režim IKE SA)
 
-Hello následující tabulka uvádí nabídky přidružení zabezpečení IPsec (IKE rychlého režimu). Nabídky jsou uvedené hello pořadí podle priority v rámci této nabídky hello předávání nebo přijímání.
+Následující tabulka uvádí nabídky IPsec SA (rychlý režim IKE). Nabídky jsou uvedeny v pořadí podle preference jejich předávání nebo přijímání.
 
 #### <a name="azure-gateway-as-initiator"></a>Služba Azure Gateway jako iniciátor
 
@@ -183,20 +186,20 @@ Hello následující tabulka uvádí nabídky přidružení zabezpečení IPsec 
 | 25|AES128        |SHA256            |14           |
 | 26|3DES          |SHA1              |14           |
 
-* U vysokovýkonných bran VPN a bran VPN typu RouteBased můžete zadat šifrování protokolem IPsec s prázdným ESP. Prázdné šifrování neposkytuje ochranu toodata při přenosu a musí být použit pouze při maximální propustnost a minimální latence je požadovaná. Klienti mohou tuto možnost vyberte toouse ve scénářích komunikaci VNet-to-VNet, nebo když šifrování dochází jinde v řešení hello.
-* Pro připojení mezi různými místy prostřednictvím hello Internetu použijte hello výchozí nastavení brány Azure VPN pomocí šifrování a algoritmy hash uvedenými v tabulce hello výše tooensure bezpečnost důležité komunikace.
+* U vysokovýkonných bran VPN a bran VPN typu RouteBased můžete zadat šifrování protokolem IPsec s prázdným ESP. Prázdné šifrování neposkytuje ochranu přenášených dat a mělo by se používat pouze pokud je vyžadována maximální propustnost a minimální latence. Klienti toho mohou využít ve scénářích komunikace typu VNet-to-VNet nebo pokud k šifrování dochází jinde v rámci řešení.
+* Pro připojení mezi různými místy prostřednictvím Internetu použijte výchozí nastavení služby Azure VPN Gateway s šifrováním a algoritmy hash uvedenými v tabulkách výše, abyste zajistili bezpečnost důležité komunikace.
 
 ## <a name="known"></a>Známé problémy s kompatibilitou zařízení
 
 > [!IMPORTANT]
-> Tyto jsou hello problémy s kompatibilitou mezi zařízeními VPN třetích stran a brány Azure VPN. Hello tým Azure aktivně ve spolupráci s dodavateli hello tooaddress hello problémy, které jsou zde uvedeny. Jakmile se hello problémy řeší, tato stránka bude aktualizováno hello nejnovější informace. Pravidelně se sem vracejte.
+> Jsou známy problémy s kompatibilitou mezi zařízeními VPN třetích stran a bránami VPN Azure. Tým Azure aktivně spolupracuje s dodavateli na řešení problémů, které jsou zde uvedeny. Po vyřešení problémů bude tato stránka aktualizována, aby obsahovala nejnovější informace. Pravidelně se sem vracejte.
 >
 >
 
 ### <a name="feb-16-2017"></a>16. února 2017
 
-**Zařízení sítě Palo Alto s too7.1.4 předchozí verze** pro Azure VPN založené na trasách: Pokud používáte zařízení VPN z Palo Alto sítí s too7.1.4 předchozí verze PAN-OS a dochází k připojení problémy tooAzure brány sítě VPN založené na směrování, Proveďte hello následující kroky:
+**Zařízení Palo Alto Networks s verzí dřívější než 7.1.4** pro síť VPN Azure založenou na trasách: Pokud používáte zařízení VPN z Palo Alto Networks s verzí PAN-OS dřívější než 7.1.4 a dochází k problémům s připojením k bránám sítě VPN Azure založené na směrování, proveďte následující kroky:
 
-1. Zkontrolujte verzi firmwaru hello vašeho zařízení Palo Alto sítě. Pokud vaše verze PAN-OS je starší než 7.1.4, upgradujte too7.1.4.
-2. Na zařízení hello Palo Alto Networks, změňte hello SA fáze 2 (nebo přidružení zabezpečení rychlého režimu) životnost too28, 800 sekund (8 hodin) při připojování toohello Azure VPN gateway.
-3. Pokud se stále setkáváte problémy s připojením, otevřete žádost o podporu od hello portálu Azure.
+1. Zkontrolujte verzi firmwaru zařízení Palo Alto Networks. Pokud je verze PAN-OS starší než 7.1.4, proveďte upgrade na verzi 7.1.4.
+2. Na zařízení Palo Alto Networks změňte při připojování k bráně VPN Azure životnost přidružení zabezpečení (SA) Fáze 2 (nebo přidružení zabezpečení rychlého režimu) na 28 800 sekund (8 hodin).
+3. Pokud i nadále dochází k problému s připojením, otevřete žádost o podporu na webu Azure Portal.

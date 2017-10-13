@@ -1,9 +1,9 @@
 ---
-title: "aaaCreate interní nástroj pro Azure Cloud Services | Microsoft Docs"
-description: "Zjistěte, jak toocreate na interní nástroj pro vyrovnávání pomocí prostředí PowerShell v modelu nasazení classic hello zatížení"
+title: "Vytvoření interního nástroje pro vyrovnávání zatížení pro Azure Cloud Services | Dokumentace Microsoftu"
+description: "Zjistěte, jak vytvořit interní nástroj pro vyrovnávání zatížení pomocí prostředí PowerShell v modelu nasazení Classic"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 tags: azure-service-management
 ms.assetid: 57966056-0f46-4f95-a295-483ca1ad135d
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-ms.openlocfilehash: fe7975bca7bec3248626b0ad0fad6823e278ade2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 6616c26ede13919b94a098dc38bdd6e2f0fc0b5b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-creating-an-internal-load-balancer-classic-for-cloud-services"></a>Začínáme vytvářet interní nástroj pro vyrovnávání zatížení (Classic) pro cloudové služby
 
@@ -28,32 +28,32 @@ ms.lasthandoff: 10/06/2017
 > * [Cloudové služby](../load-balancer/load-balancer-get-started-ilb-classic-cloud.md)
 
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../azure-resource-manager/resource-manager-deployment-model.md).  Tento článek se zabývá pomocí modelu nasazení classic hello. Společnost Microsoft doporučuje, aby většina nových nasazení používala model Resource Manager hello. Zjistěte, jak příliš[proveďte tyto kroky, pomocí modelu Resource Manager hello](load-balancer-get-started-ilb-arm-ps.md).
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../azure-resource-manager/resource-manager-deployment-model.md).  Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Zjistěte, jak [provést tento postup pomocí modelu Resource Manageru](load-balancer-get-started-ilb-arm-ps.md).
 
 ## <a name="configure-internal-load-balancer-for-cloud-services"></a>Konfigurace interního nástroje pro vyrovnávání zatížení pro cloudové služby
 
-Interní nástroj pro vyrovnávání zatížení je podporován pro virtuální počítače i cloudové služby. Koncový bod vyrovnávání interní služby load vytvořené v Cloudová služba, která je mimo regionální virtuální síť, budou přístupné pouze v rámci hello cloudové služby.
+Interní nástroj pro vyrovnávání zatížení je podporován pro virtuální počítače i cloudové služby. Koncový bod interního nástroje pro vyrovnávání zatížení vytvořený v cloudové službě, která je mimo regionální virtuální síť, bude dostupný pouze v rámci této cloudové služby.
 
-Konfigurace služby Vyrovnávání zatížení pro vnitřní Hello má toobe nastavit při vytváření hello hello první nasazení v hello cloudové služby, jak je znázorněno v ukázce hello níže.
+Konfigurace interního nástroje pro vyrovnávání zatížení musí být nastavena během vytváření prvního nasazení v cloudové službě, jak znázorňuje ukázka níže.
 
 > [!IMPORTANT]
-> Požadovaných toorun hello postup je toohave virtuální síti již vytvořené pro nasazení cloudu hello. Budete potřebovat hello virtuální sítě názvem a podsíť název toocreate hello interní Vyrovnávání zatížení.
+> Předpokladem pro spuštění níže uvedených kroků je již vytvořená virtuální síť pro nasazení v cloudu. K vytvoření interního vyrovnávání zatížení budete potřebovat název této virtuální sítě a název podsítě.
 
 ### <a name="step-1"></a>Krok 1
 
-Otevřete konfigurační soubor služby hello (.cscfg) pro vaše nasazení cloudu v sadě Visual Studio a přidejte následující části toocreate hello interní Vyrovnávání zatížení v rámci hello poslední hello "`</Role>`" položku pro konfiguraci sítě hello.
+V sadě Visual Studio otevřete konfigurační soubor služby (.cscfg) svého nasazení v cloudu a přidejte následující část, která vytvoří interní vyrovnávání zatížení pod poslední položkou `</Role>` pro konfiguraci sítě.
 
 ```xml
 <NetworkConfiguration>
     <LoadBalancers>
-    <LoadBalancer name="name of hello load balancer">
+    <LoadBalancer name="name of the load balancer">
         <FrontendIPConfiguration type="private" subnet="subnet-name" staticVirtualNetworkIPAddress="static-IP-address"/>
     </LoadBalancer>
     </LoadBalancers>
 </NetworkConfiguration>
 ```
 
-Přidejme hello hodnoty pro hello sítě konfigurační soubor tooshow jak bude vypadat. V příkladu hello předpokládá, že jste vytvořili virtuální síť s podsítí 10.0.0.0/24 názvem test_subnet a statická IP adresa 10.0.0.4 názvem "test_vnet". Nástroj pro vyrovnávání zatížení Hello budou pojmenované testLB.
+Přidejme hodnoty pro soubor s konfigurací sítě, abychom ukázali, jak bude vypadat. V příkladu předpokládejme, že jste vytvořili virtuální síť s názvem test_vnet s podsítí 10.0.0.0/24 s názvem test_subnet a statickou IP adresou 10.0.0.4. Nástroj pro vyrovnávání zatížení bude mít název testLB.
 
 ```xml
 <NetworkConfiguration>
@@ -65,11 +65,11 @@ Přidejme hello hodnoty pro hello sítě konfigurační soubor tooshow jak bude 
 </NetworkConfiguration>
 ```
 
-Další informace o schématu pro vyrovnávání zatížení hello najdete v tématu [nástroj pro vyrovnávání zatížení přidat](https://msdn.microsoft.com/library/azure/dn722411.aspx).
+Další informace o schématu nástroje pro vyrovnávání zatížení najdete v tématu [Přidání nástroje pro vyrovnávání zatížení](https://msdn.microsoft.com/library/azure/dn722411.aspx).
 
 ### <a name="step-2"></a>Krok 2
 
-Změňte hello služby definice (.csdef) souboru tooadd koncové body toohello interní Vyrovnávání zatížení. Hello okamžiku se vytvoří instanci role, souboru definice služby hello přidá toohello instancí role hello interní Vyrovnávání zatížení.
+Změňte definiční soubor služby (.csdef) tak, aby přidal koncové body do interního vyrovnávání zatížení. V okamžiku vytvoření instance role definiční soubor služby přidá příslušné instance rolí do interního vyrovnávání zatížení.
 
 ```xml
 <WorkerRole name="worker-role-name" vmsize="worker-role-size" enableNativeCodeExecution="[true|false]">
@@ -79,7 +79,7 @@ Změňte hello služby definice (.csdef) souboru tooadd koncové body toohello i
 </WorkerRole>
 ```
 
-Následující hello stejné hodnoty z hello příkladu výše přidejme souboru definice služby toohello hodnoty hello.
+Použijme stejné hodnoty z výše uvedeného příkladu a přidejme tyto hodnoty do definičního souboru služby.
 
 ```xml
 <WorkerRole name="WorkerRole1" vmsize="A7" enableNativeCodeExecution="[true|false]">
@@ -89,7 +89,7 @@ Následující hello stejné hodnoty z hello příkladu výše přidejme souboru
 </WorkerRole>
 ```
 
-Hello síťových přenosů bude Vyrovnávané pomocí vyrovnávání zatížení testLB hello používá port 80 pro příchozí požadavky a odesílání tooworker instance rolí také na portu 80.
+Vyrovnávání zatížení síťového provozu bude probíhat pomocí nástroje pro vyrovnávání zatížení testLB, který používá port 80 pro příchozí požadavky a odesílá provoz do instancí rolí pracovního procesu rovněž na portu 80.
 
 ## <a name="next-steps"></a>Další kroky
 

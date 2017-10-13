@@ -1,9 +1,9 @@
 ---
-title: "Konfigurace účtu Azure Automation aaaValidate | Microsoft Docs"
-description: "Tento článek popisuje, jak tooconfirm hello účtu Automation je správně nastavená konfigurace."
+title: "Ověření konfigurace účtu Azure Automation | Dokumentace Microsoftu"
+description: "Tento článek popisuje způsob ověření, že konfigurace vašeho účtu Automation je nastavená správně."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/07/2017
 ms.author: magoedte
-ms.openlocfilehash: 3a990dcc6661cf67c4b62592ce03d55a3791053a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 55f5d5524019ac63565e5ddd1f47dbdd65f05065
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="test-azure-automation-run-as-account-authentication"></a>Test ověření účtu Azure Automation Spustit jako
-Po úspěšném vytvoření účtu Automation se můžete provádět jednoduchá testovací tooconfirm, můžete ověřit toosuccessfully v Azure Resource Manager nebo nasazení Azure classic pomocí nově vytvořené nebo aktualizované účtu Automation spustit jako.    
+Po úspěšném vytvoření účtu Automation můžete provést jednoduchý test a zkontrolovat, že se jde úspěšně ověřit v nasazení Azure Resource Manager nebo Azure Classic pomocí nově vytvořeného nebo aktualizovaného účtu Automation Spustit jako.    
 
 ## <a name="automation-run-as-authentication"></a>Ověření pomocí účtu Automation Spustit jako
-Použít hello ukázkový kód níže příliš[vytvoření sady runbook PowerShell](automation-creating-importing-runbook.md) tooverify ověřování pomocí hello spuštěn pod účtem a také ve vaší vlastní runbooky tooauthenticate a spravovat prostředky Resource Manager pomocí účtu Automation.   
+Pomocí níže uvedeného ukázkového kódu [vytvořte powershellový runbook](automation-creating-importing-runbook.md), který bude kontrolovat ověřování pomocí účtu Spustit jako a také ve vašich vlastních runboocích ověřovat a spravovat prostředky Resource Manageru pomocí vašeho účtu služby Automation.   
 
     $connectionName = "AzureRunAsConnection"
     try
     {
-        # Get hello connection "AzureRunAsConnection "
+        # Get the connection "AzureRunAsConnection "
         $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
 
-        "Logging in tooAzure..."
+        "Logging in to Azure..."
         Add-AzureRmAccount `
            -ServicePrincipal `
            -TenantId $servicePrincipalConnection.TenantId `
@@ -64,50 +64,50 @@ Použít hello ukázkový kód níže příliš[vytvoření sady runbook PowerSh
        Write-Output ("")
     } 
 
-Všimněte si hello rutina, kterou používá pro ověřování v sadě runbook hello - **Add-AzureRmAccount**, používá hello *ServicePrincipalCertificate* sadu parametrů.  Ověřování provádí pomocí certifikátu objektu služby a ne pomocí přihlašovacích údajů.  
+Všimněte si, že rutina používaná pro ověřování v runbooku – **Add-AzureRmAccount**, používá sadu parametrů *ServicePrincipalCertificate*.  Ověřování provádí pomocí certifikátu objektu služby a ne pomocí přihlašovacích údajů.  
 
-Když můžete [spuštění sady runbook hello](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal) toovalidate účtu spustit jako [úlohy runbooku](automation-runbook-execution.md) je vytvořen, zobrazí se okno hello úlohy a stav úlohy hello v hello zobrazí **Souhrn úlohy**dlaždici. Počáteční stav úlohy Hello bude *zařazeno ve frontě* označující, že se čeká na pracovního procesu runbooku v toobecome cloudu hello k dispozici. Pak ji přesune příliš*počáteční* když pracovní proces hello úlohy a potom *systémem* při hello runbook skutečně spustí.  Po dokončení úlohy runbooku hello bychom měli vidět stav **dokončeno**.
+Když [spustíte runbook](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal) pro ověření účtu Spustit jako, vytvoří se [úloha runbooku](automation-runbook-execution.md), zobrazí se okno Úloha a na dlaždici **Souhrn úlohy** se zobrazí stav úlohy. Počáteční stav úlohy bude *Zařazeno ve frontě*. To označuje, že čekáte na zpřístupnění pracovního procesu runbooku v cloudu. Když pracovní proces úlohu přijme, změní se stav na *Spouštění*, a když se runbook skutečně spustí, změní se na *Spuštěno*.  Po dokončení úlohy runbooku by se měla zobrazit zpráva **Dokončeno**.
 
-toosee hello podrobné výsledky hello sady runbook, klikněte na hello **výstup** dlaždici.  Na hello **výstup** okno, měli byste vidět ho byl úspěšně ověřen a vrátí seznam všech prostředků ve všech skupinách prostředků ve vašem předplatném.  
+Pokud chcete zobrazit podrobné výsledky runbooku, klikněte na dlaždici **Výstup**.  V okně **Výstup** byste měli vidět, že se úspěšně ověřil a vrátil seznam všech prostředků ve všech skupinách prostředků v rámci vašeho předplatného.  
 
-Jenom nezapomeňte tooremove hello blok kódu, počínaje hello komentář `#Get all ARM resources from all resource groups` při opakovaně hello kód pro své sady runbook.
+Jenom nezapomeňte odebrat blok kódu začínající komentářem `#Get all ARM resources from all resource groups`, pokud kód znovu použijete pro vlastní runbooky.
 
 ## <a name="classic-run-as-authentication"></a>Ověření pomocí účtu Spustit jako pro Azure Classic
-Použít hello ukázkový kód níže příliš[vytvoření sady runbook PowerShell](automation-creating-importing-runbook.md) tooverify ověřování pomocí hello Classic spuštěn pod účtem a také ve vaší vlastní runbooky tooauthenticate a spravovat prostředky v modelu nasazení classic hello.  
+Pomocí níže uvedeného ukázkového kódu [vytvořte powershellový runbook](automation-creating-importing-runbook.md), který bude kontrolovat ověřování pomocí účtu Spustit jako pro Azure Classic a také ve vašich vlastních runboocích ověřovat a spravovat prostředky v modelu nasazení Classic.  
 
     $ConnectionAssetName = "AzureClassicRunAsConnection"
-    # Get hello connection
+    # Get the connection
     $connection = Get-AutomationConnection -Name $connectionAssetName        
 
-    # Authenticate tooAzure with certificate
+    # Authenticate to Azure with certificate
     Write-Verbose "Get connection asset: $ConnectionAssetName" -Verbose
     $Conn = Get-AutomationConnection -Name $ConnectionAssetName
     if ($Conn -eq $null)
     {
-       throw "Could not retrieve connection asset: $ConnectionAssetName. Assure that this asset exists in hello Automation account."
+       throw "Could not retrieve connection asset: $ConnectionAssetName. Assure that this asset exists in the Automation account."
     }
 
     $CertificateAssetName = $Conn.CertificateAssetName
-    Write-Verbose "Getting hello certificate: $CertificateAssetName" -Verbose
+    Write-Verbose "Getting the certificate: $CertificateAssetName" -Verbose
     $AzureCert = Get-AutomationCertificate -Name $CertificateAssetName
     if ($AzureCert -eq $null)
     {
-       throw "Could not retrieve certificate asset: $CertificateAssetName. Assure that this asset exists in hello Automation account."
+       throw "Could not retrieve certificate asset: $CertificateAssetName. Assure that this asset exists in the Automation account."
     }
 
-    Write-Verbose "Authenticating tooAzure with certificate." -Verbose
+    Write-Verbose "Authenticating to Azure with certificate." -Verbose
     Set-AzureSubscription -SubscriptionName $Conn.SubscriptionName -SubscriptionId $Conn.SubscriptionID -Certificate $AzureCert
     Select-AzureSubscription -SubscriptionId $Conn.SubscriptionID
     
-    #Get all VMs in hello subscription and return list with name of each
+    #Get all VMs in the subscription and return list with name of each
     Get-AzureVM | ft Name
 
-Když můžete [spuštění sady runbook hello](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal) toovalidate účtu spustit jako [úlohy runbooku](automation-runbook-execution.md) je vytvořen, zobrazí se okno hello úlohy a stav úlohy hello v hello zobrazí **Souhrn úlohy**dlaždici. Počáteční stav úlohy Hello bude *zařazeno ve frontě* označující, že se čeká na pracovního procesu runbooku v toobecome cloudu hello k dispozici. Pak ji přesune příliš*počáteční* když pracovní proces hello úlohy a potom *systémem* při hello runbook skutečně spustí.  Po dokončení úlohy runbooku hello bychom měli vidět stav **dokončeno**.
+Když [spustíte runbook](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal) pro ověření účtu Spustit jako, vytvoří se [úloha runbooku](automation-runbook-execution.md), zobrazí se okno Úloha a na dlaždici **Souhrn úlohy** se zobrazí stav úlohy. Počáteční stav úlohy bude *Zařazeno ve frontě*. To označuje, že čekáte na zpřístupnění pracovního procesu runbooku v cloudu. Když pracovní proces úlohu přijme, změní se stav na *Spouštění*, a když se runbook skutečně spustí, změní se na *Spuštěno*.  Po dokončení úlohy runbooku by se měla zobrazit zpráva **Dokončeno**.
 
-toosee hello podrobné výsledky hello sady runbook, klikněte na hello **výstup** dlaždici.  Na hello **výstup** okno, měli byste vidět ho byl úspěšně ověřen a vrátí seznam všech virtuálních počítačů Azure pomocí VMName, která jsou nasazena v rámci vašeho předplatného.  
+Pokud chcete zobrazit podrobné výsledky runbooku, klikněte na dlaždici **Výstup**.  V okně **Výstup** byste měli vidět, že se úspěšně ověřil a vrátil seznam všech virtuálních počítačů Azure nasazených ve vašem předplatném podle názvu.  
 
-Jenom nezapomeňte rutiny hello tooremove **Get-AzureVM** při opakovaně hello kód pro své sady runbook.
+Jenom nezapomeňte odebrat rutinu **Get-AzureVM**, pokud kód znovu použijete pro vlastní runbooky.
 
 ## <a name="next-steps"></a>Další kroky
-* tooget kroky s runbooky prostředí PowerShell najdete v části [Můj první Powershellový runbook](automation-first-runbook-textual-powershell.md).
-* toolearn Další informace o vytváření grafického obsahu, najdete v části [vytváření grafického obsahu ve službě Azure Automation](automation-graphical-authoring-intro.md).
+* První kroky s powershellovými runbooky najdete v článku [Můj první powershellový runbook](automation-first-runbook-textual-powershell.md).
+* Další informace o vytváření grafického obsahu najdete v článku [Vytváření grafického obsahu v Azure Automation](automation-graphical-authoring-intro.md).

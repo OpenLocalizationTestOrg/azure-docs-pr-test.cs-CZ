@@ -1,6 +1,6 @@
 ---
-title: "aaaIndexing mediálních souborů pomocí Azure Media Indexer 2 Preview | Microsoft Docs"
-description: "Azure Media Indexer vám umožní toomake obsah souborů médií s možností vyhledávání a toogenerate fulltextové přepis pro a klíčová slova. Toto téma ukazuje, jak zobrazit náhled toouse Media Indexer 2."
+title: "Indexování mediálních souborů pomocí Azure Media Indexer 2 Preview | Microsoft Docs"
+description: "Azure Media Indexer umožňuje zajistit obsah souborů médií s možností vyhledávání a ke generování fulltextového přepis pro skryté titulky nebo klíčová slova. Toto téma ukazuje způsob použití Media Indexer 2 Preview."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,48 +14,48 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: adsolank;juliako;
-ms.openlocfilehash: f83fa0db58b828ffa29933d68ce108b4906dcd78
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0afdd1c04e50215a55fb92c70b1210d1f80d8e3f
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Indexování mediálních souborů pomocí Azure Media Indexer 2 Preview
 ## <a name="overview"></a>Přehled
-Hello **Azure Media Indexer 2 Preview** procesor médií (PP) vám umožní toomake mediálních souborů a obsah s možností vyhledávání, a také generování uzavřené titulků sleduje. Porovnání toohello předchozí verze [Azure Media Indexer](media-services-index-content.md), **Azure Media Indexer 2 Preview** provede rychlejší indexování a nabízí širší jazyková podpora. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, čínština (Mandarínština, zjednodušená), portugalština, Arabské a japonštině.
+**Azure Media Indexer 2 Preview** procesor médií (PP) umožňuje vytvoření mediálních souborů a obsah s možností vyhledávání, jakož i generovat uzavřené titulků sleduje. Ve srovnání s předchozí verzi [Azure Media Indexer](media-services-index-content.md), **Azure Media Indexer 2 Preview** provede rychlejší indexování a nabízí širší jazyková podpora. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, čínština (Mandarínština, zjednodušená), portugalština, Arabské a japonštině.
 
-Hello **Azure Media Indexer 2 Preview** MP je aktuálně ve verzi Preview.
+**Azure Media Indexer 2 Preview** MP je aktuálně ve verzi Preview.
 
-Toto téma ukazuje, jak toocreate indexování úlohy s **Azure Media Indexer 2 Preview**.
+Toto téma ukazuje, jak vytvořit indexování úlohy s **Azure Media Indexer 2 Preview**.
 
 > [!NOTE]
-> použít Hello následující aspekty:
+> Platí následující aspekty:
 > 
 > Indexer 2 není podporována v Číně Azure a Azure Government.
 > 
-> Během indexování obsahu, ujistěte se, že toouse mediálních souborů, které mají velmi jasně řeči (bez pozadí Hudba, šumu, efekty nebo mikrofon hiss). Některé příklady příslušný obsah: zaznamenávají schůzek, přednášek nebo prezentací. Hello následující obsah nemusí být vhodný pro indexování: filmy, televizní pořady cokoli s smíšený zvuk a zvukové efekty špatně zaznamenány obsah s hluku na pozadí (hiss).
+> Během indexování obsah, nezapomeňte použít mediálních souborů, které mají velmi jasně řeči (bez pozadí Hudba, šumu, efekty nebo mikrofon hiss). Některé příklady příslušný obsah: zaznamenávají schůzek, přednášek nebo prezentací. Následující obsah nemusí být vhodný pro indexování: filmy, televizní pořady cokoli s smíšený zvuk a zvukové efekty špatně zaznamenány obsah s hluku na pozadí (hiss).
 > 
 > 
 
-Toto téma uvádí podrobnosti o **Azure Media Indexer 2 Preview** a ukazuje, jak toouse ho pomocí sady Media Services SDK pro .NET
+Toto téma uvádí podrobnosti o **Azure Media Indexer 2 Preview** a ukazuje, jak pomocí sady Media Services SDK pro .NET
 
 ## <a name="input-and-output-files"></a>Vstupní a výstupní soubory
 ### <a name="input-files"></a>Vstupní soubory
 Soubory zvuku a videa
 
 ### <a name="output-files"></a>Výstupní soubory
-Indexování úlohy mohou vytvářet soubory titulků v hello následujících formátů:  
+Úlohu indexování může generovat soubory titulků v následujících formátech:  
 
 * **SAMI**
 * **TTML**
 * **WebVTT**
 
-Uzavřené popisek (kopie) soubory v těchto formátů lze použít toomake zvuk a video soubory přístupné toopeople s postižení sluchu.
+Popisek (kopie) soubory v těchto formátů lze Zpřístupněte soubory audia a videa pro osoby s postižením sluchu uzavřít.
 
 ## <a name="task-configuration-preset"></a>Konfigurace úlohy (přednastavených)
 Při vytváření indexovat úloh s **Azure Media Indexer 2 Preview**, je nutné zadat jedno z přednastavení konfigurace.
 
-Hello následujícím kódu JSON nastaví dostupné parametry.
+Následujícím kódu JSON nastaví dostupné parametry.
 
     {
       "version":"1.0",
@@ -72,7 +72,7 @@ Hello následujícím kódu JSON nastaví dostupné parametry.
     }
 
 ## <a name="supported-languages"></a>Podporované jazyky
-Azure Media Indexer 2 ve verzi Preview podporuje řeči na text pro následující jazyky (při zadávání název jazyka hello do hello konfiguraci úloh, použijte znak 4 kódu v závorkách, jak je uvedeno níže) hello:
+Azure Media Indexer 2 ve verzi Preview podporuje řeči na text pro následující jazyky (při zadávání názvu jazyka v konfiguraci úloh, použijte znak 4 kódu v závorkách, jak je uvedeno níže):
 
 * Angličtina [EnUs]
 * Španělština [EsEs]
@@ -89,14 +89,14 @@ Azure Media Indexer 2 ve verzi Preview podporuje řeči na text pro následujíc
 
 ## <a name="supported-file-types"></a>Podporované typy souborů
 
-Informace o typech souborů podporovaných najdete v tématu hello [podporované kodeky/formáty](media-services-media-encoder-standard-formats.md#input-containerfile-formats) části.
+Informace o typech souborů podporovaných najdete v tématu [podporované kodeky/formáty](media-services-media-encoder-standard-formats.md#input-containerfile-formats) části.
 
 ## <a name="net-sample-code"></a>Ukázkový kód rozhraní .NET
 
-ukazuje programu Hello následující postup:
+Program zobrazí následující postup:
 
-1. Vytvořte asset a nahrajte soubor média do hello asset.
-2. Vytvořte úlohu indexování úlohy podle konfigurační soubor, který obsahuje následující json přednastavených hello.
+1. Vytvořte asset a nahrajte soubor média do assetu.
+2. Vytvořte úlohu indexování úlohy podle konfigurační soubor, který obsahuje následující přednastavení json.
    
         {
           "version":"1.0",
@@ -111,11 +111,11 @@ ukazuje programu Hello následující postup:
                "Type":"SpReco"
             }]
         }
-3. Stáhněte soubory výstup hello. 
+3. Stáhněte výstupní soubory. 
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
-Nastavení vývojového prostředí a naplnění souboru app.config hello s informace o připojení, jak je popsáno v [vývoj pro Media Services s .NET](media-services-dotnet-how-to-use.md). 
+Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
 
 #### <a name="example"></a>Příklad
 
@@ -131,7 +131,7 @@ Nastavení vývojového prostředí a naplnění souboru app.config hello s info
     {
         class Program
         {
-            // Read values from hello App.config file.
+            // Read values from the App.config file.
             private static readonly string _AADTenantDomain =
                 ConfigurationManager.AppSettings["AADTenantDomain"];
             private static readonly string _RESTAPIEndpoint =
@@ -151,13 +151,13 @@ Nastavení vývojového prostředí a naplnění souboru app.config hello s info
                 var asset = RunIndexingJob(@"C:\supportFiles\Indexer\BigBuckBunny.mp4",
                                             @"C:\supportFiles\Indexer\config.json");
 
-                // Download hello job output asset.
+                // Download the job output asset.
                 DownloadAsset(asset, @"C:\supportFiles\Indexer\Output");
             }
 
             static IAsset RunIndexingJob(string inputMediaFilePath, string configurationFile)
             {
-                // Create an asset and upload hello input media file toostorage.
+                // Create an asset and upload the input media file to storage.
                 IAsset asset = CreateAssetAndUploadSingleFile(inputMediaFilePath,
                     "My Indexing Input Asset",
                     AssetCreationOptions.None);
@@ -165,38 +165,38 @@ Nastavení vývojového prostředí a naplnění souboru app.config hello s info
                 // Declare a new job.
                 IJob job = _context.Jobs.Create("My Indexing Job");
 
-                // Get a reference tooAzure Media Indexer 2 Preview.
+                // Get a reference to Azure Media Indexer 2 Preview.
                 string MediaProcessorName = "Azure Media Indexer 2 Preview";
 
                 var processor = GetLatestMediaProcessorByName(MediaProcessorName);
 
-                // Read configuration from hello specified file.
+                // Read configuration from the specified file.
                 string configuration = File.ReadAllText(configurationFile);
 
-                // Create a task with hello encoding details, using a string preset.
+                // Create a task with the encoding details, using a string preset.
                 ITask task = job.Tasks.AddNew("My Indexing Task",
                     processor,
                     configuration,
                     TaskOptions.None);
 
-                // Specify hello input asset toobe indexed.
+                // Specify the input asset to be indexed.
                 task.InputAssets.Add(asset);
 
-                // Add an output asset toocontain hello results of hello job.
+                // Add an output asset to contain the results of the job.
                 task.OutputAssets.AddNew("My Indexing Output Asset", AssetCreationOptions.None);
 
-                // Use hello following event handler toocheck job progress.  
+                // Use the following event handler to check job progress.  
                 job.StateChanged += new EventHandler<JobStateChangedEventArgs>(StateChanged);
 
-                // Launch hello job.
+                // Launch the job.
                 job.Submit();
 
-                // Check job execution and wait for job toofinish.
+                // Check job execution and wait for job to finish.
                 Task progressJobTask = job.GetExecutionProgressTask(CancellationToken.None);
 
                 progressJobTask.Wait();
 
-                // If job state is Error, hello event handling
+                // If job state is Error, the event handling
                 // method for job progress should log errors.  Here we check
                 // for error state and exit if needed.
                 if (job.State == JobState.Error)

@@ -1,6 +1,6 @@
 ---
-title: "aaaMove tooAzure virtuálních počítačů AWS Windows | Microsoft Docs"
-description: "Přesuňte instanci tooAzure Windows EC2 Amazon Web Services (AWS) virtuálních počítačů pomocí Azure PowerShell."
+title: "Přesunout virtuální počítače Windows AWS do Azure | Microsoft Docs"
+description: "Přesuňte instanci Windows EC2 Amazon Web Services (AWS) pro virtuální počítače Azure pomocí Azure PowerShell."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,56 +15,56 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: cynthn
-ms.openlocfilehash: f912c28d3ffe585162c3add715a1318ac3cd4643
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7d2b498d3f84c4fd6cccf97c6d7781f293f5b395
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="move-a-windows-vm-from-amazon-web-services-aws-tooazure-using-powershell"></a>Přesunout virtuální počítač s Windows z tooAzure Amazon Web Services (AWS) pomocí prostředí PowerShell
+# <a name="move-a-windows-vm-from-amazon-web-services-aws-to-azure-using-powershell"></a>Přesunout virtuální počítač s Windows z Amazon Web Services (AWS) do Azure pomocí prostředí PowerShell
 
-Pokud hodnotíte virtuální počítače Azure pro hostování vašich úloh, můžete exportovat existující instanci virtuálního počítače Windows EC2 Amazon Web Services (AWS) pak odeslat tooAzure hello virtuální pevný disk (VHD). Jednou hello nahrání virtuálního pevného disku, můžete vytvořit nový virtuální počítač v Azure, z hello virtuálního pevného disku. 
+Pokud hodnotíte virtuální počítače Azure pro hostování vašich úloh, můžete exportovat existující instanci virtuálního počítače Windows EC2 Amazon Web Services (AWS) pak nahrajte virtuální pevný disk (VHD) do Azure. Po nahrání virtuálního pevného disku můžete vytvořit nový virtuální počítač v Azure z disku VHD. 
 
-Toto téma popisuje přesunutí jeden virtuální počítač z AWS tooAzure. Pokud chcete toomove virtuálních počítačů z AWS tooAzure ve velkém měřítku, najdete v části [migraci virtuálních počítačů v tooAzure Amazon Web Services (AWS) s Azure Site Recovery](../../site-recovery/site-recovery-migrate-aws-to-azure.md).
+Toto téma popisuje přesunutí jeden virtuální počítač z AWS do Azure. Pokud chcete přesunout virtuální počítače z AWS do Azure ve velkém měřítku, přečtěte si téma [migraci virtuálních počítačů v Amazon Web Services (AWS) do Azure s Azure Site Recovery](../../site-recovery/site-recovery-migrate-aws-to-azure.md).
 
-## <a name="prepare-hello-vm"></a>Příprava hello virtuálních počítačů 
+## <a name="prepare-the-vm"></a>Příprava virtuálního počítače 
  
-Můžete nahrát zobecněný i specializované tooAzure virtuální pevné disky. Každý typ vyžaduje, abyste připravili hello virtuálních počítačů před exportem z AWS. 
+Specializované i zobecněný virtuální pevné disky můžete nahrát do Azure. Každý typ vyžaduje, abyste připravili virtuální počítač před exportem z AWS. 
 
-- **Zobecněný virtuální pevný disk** -zobecněný virtuální pevný disk má měl všechny vaše osobní účet informace odebrat pomocí nástroje Sysprep. Pokud máte v úmyslu toouse hello virtuálního pevného disku jako image toocreate nové virtuální počítače z, měli byste: 
+- **Zobecněný virtuální pevný disk** -zobecněný virtuální pevný disk má měl všechny vaše osobní účet informace odebrat pomocí nástroje Sysprep. Pokud máte v úmyslu použít virtuální pevný disk jako bitovou kopii k vytvoření nové virtuální počítače z, proveďte následující kroky: 
  
     * [Příprava systému Windows virtuálního počítače](prepare-for-upload-vhd-image.md).  
-    * Generalize hello virtuálního počítače pomocí nástroje Sysprep.  
+    * Generalize virtuální počítač pomocí nástroje Sysprep.  
 
  
-- **Specializuje virtuálního pevného disku** -specializované virtuálního pevného disku udržuje hello uživatelské účty, aplikace a další data o stavu z vašeho původního virtuálního počítače. Pokud máte v úmyslu toouse hello virtuálního pevného disku jako-je toocreate nový virtuální počítač, je doplnit hello následující kroky.  
-    * [Příprava virtuální pevný disk Windows tooupload tooAzure](prepare-for-upload-vhd-image.md). **Nechcete** generalize hello virtuálního počítače pomocí nástroje Sysprep. 
-    * Odeberte všechny hosta virtualizačních nástrojů a agentů, které jsou nainstalované na hello virtuálního počítače (tj. nástroje VMware). 
-    * Ujistěte se, hello virtuální počítač je nakonfigurovaný toopull jeho IP adresu a nastavení DNS pomocí protokolu DHCP. Tím se zajistí, že tento server hello získá IP adresu v rámci hello virtuální síť při spuštění.  
+- **Specializuje virtuálního pevného disku** -specializované virtuálního pevného disku uchovává uživatelské účty, aplikace a další data o stavu z vašeho původního virtuálního počítače. Pokud máte v úmyslu použít virtuální pevný disk jako-je chcete vytvořit nový virtuální počítač, zkontrolujte následující kroky.  
+    * [Příprava virtuálního pevného disku Windows nahrát do Azure](prepare-for-upload-vhd-image.md). **Nechcete** generalize virtuální počítač pomocí nástroje Sysprep. 
+    * Odeberte všechny hosta virtualizačních nástrojů a agentů, které jsou nainstalovány do virtuálního počítače (tj. nástroje VMware). 
+    * Zajistěte, aby že virtuální počítač nakonfigurovaný tak, aby jeho IP adresu a nastavení DNS pomocí protokolu DHCP pro vyžádání obsahu. To zajistí, že server získá IP adresu v rámci virtuální sítě, při spuštění.  
 
 
-## <a name="export-and-download-hello-vhd"></a>Export a stáhnout hello virtuálního pevného disku 
+## <a name="export-and-download-the-vhd"></a>Export a stáhnout virtuální pevný disk 
 
-Exportujte hello EC2 instance tooa virtuálního pevného disku v sady Amazon S3. Postupujte podle kroků hello popsané v tématu dokumentace Amazon hello [export Instance jako virtuálních počítačů pomocí virtuálních počítačů importu a exportu](http://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) a spuštění hello [vytvořit instanci export úkolů](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) příkaz tooexport hello EC2 soubor VHD tooa instance. 
+Exportujte EC2 instance virtuálního pevného disku v sady Amazon S3. Postupujte podle kroků popsaných v tématu dokumentace Amazon [export Instance jako virtuálních počítačů pomocí virtuálních počítačů importu a exportu](http://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) a spusťte [vytvořit instanci export úkolů](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) příkaz pro export EC2 instance do souboru virtuálního pevného disku. 
 
-Hello exportovaný soubor virtuálního pevného disku se uloží do sady hello Amazon S3, které určíte. Hello základní syntaxe pro export hello virtuálního pevného disku je menší než, právě nahraďte zástupný symbol hello v <brackets> s informacemi.
+Exportovaný soubor virtuálního pevného disku se uloží do sady Amazon S3, které zadáte. Základní syntaxe pro export virtuálního pevného disku je menší než, nahraďte zástupný text v <brackets> s informacemi.
 
 ```
 aws ec2 create-instance-export-task --instance-id <instanceID> --target-environment Microsoft \
   --export-to-s3-task DiskImageFormat=VHD,ContainerFormat=ova,S3Bucket=<bucket>,S3Prefix=<prefix>
 ```
 
-Jakmile byla exportována hello virtuálního pevného disku, postupujte podle pokynů hello v [jak lze stáhnout objekt z sady S3?](http://docs.aws.amazon.com/AmazonS3/latest/user-guide/download-objects.html) toodownload hello virtuálního pevného disku soubor ze sady hello S3. 
+Jakmile byla exportována virtuálního pevného disku, postupujte podle pokynů v [jak lze stáhnout objekt z sady S3?](http://docs.aws.amazon.com/AmazonS3/latest/user-guide/download-objects.html) ke stažení souboru virtuálního pevného disku z sady S3. 
 
 > [!IMPORTANT]
-> AWS účtuje poplatky přenos dat pro stahování hello virtuálního pevného disku. V tématu [Amazon S3 ceny](https://aws.amazon.com/s3/pricing/) Další informace.
+> Přenos dat poplatky AWS poplatky za stahování virtuální pevný disk. V tématu [Amazon S3 ceny](https://aws.amazon.com/s3/pricing/) Další informace.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď můžete nahrát tooAzure hello virtuálního pevného disku a vytvořit nový virtuální počítač. 
+Nyní můžete nahrávat VHD do Azure a vytvořit nový virtuální počítač. 
 
-- Pokud jste spustili nástroj Sysprep na svůj zdroj příliš**generalize** je před exportem, najdete v části [nahrát zobecněný virtuální pevný disk a použít ho toocreate nové virtuální počítače v Azure](upload-generalized-managed.md)
-- Pokud před exportem nebyl spuštěn nástroj Sysprep, hello virtuálního pevného disku je považován za **specializované**, najdete v části [nahrát specializované tooAzure virtuální pevný disk a vytvořte nový virtuální počítač](create-vm-specialized.md)
+- Pokud jste spustili nástroj Sysprep na svůj zdroj k **generalize** je před exportem, najdete v části [nahrát zobecněný virtuální pevný disk a použít ho k vytvoření nové virtuální počítače v Azure](upload-generalized-managed.md)
+- Pokud před exportem nebyl spuštěn nástroj Sysprep, je považován za virtuální pevný disk **specializované**, najdete v části [nahrát specializované VHD do Azure a vytvoření nového virtuálního počítače](create-vm-specialized.md)
 
  

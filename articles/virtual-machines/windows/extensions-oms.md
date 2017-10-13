@@ -1,6 +1,6 @@
 ---
-title: "aaaOMS rozšíření virtuálního počítače Azure pro Windows | Microsoft Docs"
-description: "Nasaďte agenta OMS hello v systému Windows virtuálního počítače pomocí rozšíření virtuálního počítače."
+title: "Rozšíření virtuálního počítače OMS Azure pro Windows | Microsoft Docs"
+description: "Nasaďte agenta OMS na systému Windows virtuálního počítače pomocí rozšíření virtuálního počítače."
 services: virtual-machines-windows
 documentationcenter: 
 author: neilpeterson
@@ -15,27 +15,27 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: nepeters
-ms.openlocfilehash: 3000f66c0acdec1d1fad2125b8c6b72a92b1ec92
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d933f488fdda0c1d37892be65f2712cf0eb5694e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="oms-virtual-machine-extension-for-windows"></a>Rozšíření virtuálního počítače OMS pro Windows
 
-Operations Management Suite (OMS) poskytuje možnosti nápravy monitorování, výstrahy a výstrahy v cloudové a místní prostředky. rozšíření virtuálního počítače OMS Agent pro Windows Hello je publikována a společnost Microsoft podporuje. rozšíření Hello nainstaluje agenta OMS hello na virtuálních počítačích Azure a zaregistruje virtuální počítače do existující pracovní prostor OMS. Tento dokument podrobnosti hello podporované platformy, konfigurace a možnosti nasazení pro hello OMS rozšíření virtuálního počítače pro systém Windows.
+Operations Management Suite (OMS) poskytuje možnosti nápravy monitorování, výstrahy a výstrahy v cloudové a místní prostředky. Rozšíření virtuálního počítače OMS Agent pro systém Windows je publikována a společnost Microsoft podporuje. Rozšíření nainstaluje agenta OMS na virtuálních počítačích Azure a zaregistruje virtuální počítače do existující pracovní prostor OMS. Tento dokument podrobně popisuje podporované platformy, konfigurace a možnosti nasazení pro rozšíření virtuálního počítače OMS pro systém Windows.
 
 ## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém
-Hello agenta OMS rozšíření pro Windows můžete spustit na Windows Server 2008 R2, 2012, 2012 R2 a 2016 uvolní.
+Rozšíření agenta OMS pro pro Windows Server 2008 R2, můžete spouštět Windows 2012, 2012 R2 a 2016 uvolní.
 
 ### <a name="internet-connectivity"></a>Připojení k internetu
-Hello agenta OMS rozšíření pro Windows vyžaduje, aby hello cílový virtuální počítač je připojený toohello Internetu. 
+OMS Agent rozšíření pro Windows vyžaduje, aby cílový virtuální počítač je připojený k Internetu. 
 
 ## <a name="extension-schema"></a>Rozšíření schématu
 
-Hello následujícím kódu JSON ukazuje hello schéma pro hello rozšíření agenta OMS. rozšíření Hello vyžaduje klíč Id a pracovního prostoru pracovní prostor hello z hello cílového OMS pracovního prostoru, ty lze najít na portálu OMS hello. Protože hello klíč pracovního prostoru by měl být považován za citlivá data, by měly být uložené v chráněném nastavení konfigurace. Azure data virtuálního počítače chráněný rozšíření nastavení je zašifrovaná a dešifrovat jenom na hello cílového virtuálního počítače. Všimněte si, že **workspaceId** a **workspaceKey** malých a velkých písmen.
+Následujícím kódu JSON znázorňuje schéma pro rozšíření agenta OMS. Rozšíření vyžaduje pracovní prostor Id a klíč pracovního prostoru z je cílový pracovní prostor OMS, ty lze najít na portálu OMS. Vzhledem k tomu, že klíč pracovního prostoru by měl být považován za citlivá data, by měly být uložené v chráněném nastavení konfigurace. Data Azure nastavení rozšíření chráněný virtuální počítač je zašifrovaná a dešifrovat jenom na cílový virtuální počítač. Všimněte si, že **workspaceId** a **workspaceKey** malých a velkých písmen.
 
 ```json
 {
@@ -73,11 +73,11 @@ Hello následujícím kódu JSON ukazuje hello schéma pro hello rozšíření a
 
 ## <a name="template-deployment"></a>Nasazení šablon
 
-Rozšíření virtuálního počítače Azure se dá nasadit pomocí šablon Azure Resource Manager. popsané v předchozí části hello schématu JSON Hello lze použít v toorun hello šablony Azure Resource Manager rozšíření agenta OMS při nasazení šablony Azure Resource Manager. Ukázka šablony, která obsahuje rozšíření virtuálního počítače agenta OMS hello naleznete na hello [Azure rychlý Start Galerie](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm). 
+Rozšíření virtuálního počítače Azure se dá nasadit pomocí šablon Azure Resource Manager. Schéma JSON, které jsou popsané v předchozí části lze použít v šablonu Azure Resource Manager ke spuštění rozšíření agenta OMS při nasazení šablony Azure Resource Manager. Ukázka šablony, která obsahuje rozšíření virtuálního počítače agenta OMS naleznete na [Azure rychlý Start Galerie](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm). 
 
-Hello JSON pro rozšíření virtuálního počítače lze vnořit hello prostředek virtuálního počítače nebo umístěny na nejvyšší úrovni šablony Resource Manageru JSON nebo hello kořenové. umístění Hello hello JSON ovlivní hodnotu hello hello název prostředku a typem. Další informace najdete v tématu [nastavte název a typ pro podřízené prostředky](../../azure-resource-manager/resource-manager-template-child-resource.md). 
+JSON pro rozšíření virtuálního počítače můžete vnořit prostředek virtuálního počítače nebo umístěn na kořenový server WSUS nebo nejvyšší úrovně šablony JSON Resource Manager. Umístění formátu JSON, ovlivňuje hodnota název prostředku a typem. Další informace najdete v tématu [nastavte název a typ pro podřízené prostředky](../../azure-resource-manager/resource-manager-template-child-resource.md). 
 
-Hello následující příklad předpokládá, že rozšíření OMS hello je vnořit hello prostředek virtuálního počítače. Při vnoření hello rozšíření prostředků, hello JSON je umístěn v hello `"resources": []` objekt hello virtuálního počítače.
+V následujícím příkladu se předpokládá, že je rozšíření OMS vnořit prostředek virtuálního počítače. Při vnoření rozšíření prostředků, JSON je umístěn v `"resources": []` objektu virtuálního počítače.
 
 
 ```json
@@ -104,7 +104,7 @@ Hello následující příklad předpokládá, že rozšíření OMS hello je vn
 }
 ```
 
-Při vkládání hello rozšíření JSON v kořenu hello hello šablony, název prostředku hello zahrnuje odkaz toohello nadřazený virtuální počítač a typ hello odráží hello vnořené konfigurace. 
+Při vkládání rozšíření JSON v kořenovém adresáři šablony, názvu prostředku obsahuje odkaz na nadřazený virtuální počítač a typ odráží vnořené konfigurace. 
 
 ```json
 {
@@ -132,7 +132,7 @@ Při vkládání hello rozšíření JSON v kořenu hello hello šablony, název
 
 ## <a name="powershell-deployment"></a>Nasazení prostředí PowerShell
 
-Hello `Set-AzureRmVMExtension` příkaz lze použít toodeploy hello OMS agenta virtuálního počítače rozšíření tooan existující virtuální počítač. Před spuštěním příkazu hello, třeba hello veřejné a privátní konfigurace toobe uložené v prostředí PowerShell zatřiďovací tabulku. 
+`Set-AzureRmVMExtension` Příkaz lze použít k nasazení rozšíření virtuálního počítače agenta OMS na existující virtuální počítač. Před spuštěním příkazu, veřejné a privátní konfigurace muset být uložena v tabulce hash prostředí PowerShell. 
 
 ```powershell
 $PublicSettings = @{"workspaceId" = "myWorkspaceId"}
@@ -153,13 +153,13 @@ Set-AzureRmVMExtension -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
 
 ### <a name="troubleshoot"></a>Řešení potíží
 
-Data o stavu hello nasazení rozšíření mohou být načteny z hello portál Azure a pomocí modulu Azure PowerShell hello. Stav nasazení hello toosee rozšíření pro daný virtuální počítač, spusťte hello následující pomocí příkazu hello modul Azure PowerShell.
+Data o stavu nasazení rozšíření mohou být načteny z portálu Azure a pomocí modulu Azure PowerShell. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz modulu Azure PowerShell.
 
 ```powershell
 Get-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
 ```
 
-Rozšíření spuštění výstup je zaznamenané toofiles najít v hello následující adresář:
+Výstupu spuštění rozšíření se zaznamenává soubory, které jsou v následujícím adresáři:
 
 ```cmd
 C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\
@@ -167,4 +167,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonit
 
 ### <a name="support"></a>Podpora
 
-Pokud potřebujete další pomoc v libovolném bodě v tomto článku, obraťte se na hello Azure odborníky na hello [fórech MSDN Azure a Stack Overflow](https://azure.microsoft.com/en-us/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejděte toohello [podporu Azure lokality](https://azure.microsoft.com/en-us/support/options/) a vyberte Get podpory. Informace o používání Azure podporovat, najdete v tématu hello [podporu Microsoft Azure – nejčastější dotazy](https://azure.microsoft.com/en-us/support/faq/).
+Pokud potřebujete další pomoc v libovolném bodě v tomto článku, obraťte se na Azure odborníky na [fórech MSDN Azure a Stack Overflow](https://azure.microsoft.com/en-us/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejděte na [podporu Azure lokality](https://azure.microsoft.com/en-us/support/options/) a vyberte Get podpory. Informace o používání Azure podporovat, najdete v tématu [podporu Microsoft Azure – nejčastější dotazy](https://azure.microsoft.com/en-us/support/faq/).

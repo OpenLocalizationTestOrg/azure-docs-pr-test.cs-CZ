@@ -1,5 +1,5 @@
 ---
-title: "nastavení Azure Traffic Manager aaaVerify | Microsoft Docs"
+title: "Ověřte nastavení Azure Traffic Manageru | Microsoft Docs"
 description: "Tento článek vám pomůže ověřte nastavení Traffic Manager"
 services: traffic-manager
 documentationcenter: 
@@ -14,60 +14,60 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: c670be6cf55e140c7ab63d5d526de08e14774d2a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: aadff1806a7cb22347283143563467366e857569
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="verify-traffic-manager-settings"></a>Ověřte nastavení Traffic Manager
 
-tootest nastavení Traffic Manager, je nutné toohave více klientů v různých umístěních, ze kterých můžete spustit testy. Přepněte hello koncových bodů ve vašem profilu Traffic Manageru dolů po jednom.
+Můžete zkontrolovat nastavení Traffic Manager, musíte mít více klientů v různých umístěních, ze kterých můžete spustit testy. Potom přepněte koncových bodů ve vašem profilu Traffic Manageru dolů po jednom.
 
-* Nastavte hello hodnota DNS TTL nízkou tak, aby změny rozšíří rychle (například 30 sekund).
-* Znáte IP adresy služby Azure cloud services a weby v hello profilu, který testujete hello.
-* Pomocí nástrojů, které umožňují přeložit název DNS tooan IP adresu a zobrazit tuto adresu.
+* Nastavte hodnotu DNS TTL nízkou tak, aby změny rozšíří rychle (například 30 sekund).
+* Znáte IP adresy služby Azure cloud services a weby v profilu, který testujete.
+* Pomocí nástrojů, které umožňují přeložit název DNS na IP adresu a zobrazit tuto adresu.
 
-Při kontrole toosee, názvy DNS hello překládání adres tooIP hello koncových bodů ve vašem profilu. musí se překládat názvy Hello v souladu s metodu směrování hello provozu definované v hello profil služby Traffic Manager. Můžete použít nástroje hello jako **nslookup** nebo **prozkoumat** tooresolve názvy DNS.
+Probíhá kontrola, že přeložit názvy DNS na IP adresy koncových bodů ve vašem profilu. Musí se překládat názvy v souladu s metodu směrování provozu, který je definován v profilu Traffic Manageru. Můžete použít nástroje jako **nslookup** nebo **prozkoumat** k překladu názvů DNS.
 
-Hello následující příklady můžete otestovat váš profil Traffic Manageru.
+Následující příklady můžete otestovat váš profil Traffic Manageru.
 
 ### <a name="check-traffic-manager-profile-using-nslookup-and-ipconfig-in-windows"></a>Zkontrolujte profil služby Traffic Manager pomocí nástroje nslookup a ipconfig v systému Windows
 
 1. Otevřete příkaz či řádku prostředí Windows PowerShell jako správce.
-2. Typ `ipconfig /flushdns` tooflush hello mezipaměť Překladač DNS.
-3. Zadejte `nslookup <your Traffic Manager domain name>`. Například hello následující příkaz kontroly hello název domény s předponou hello *myapp.contoso*
+2. Typ `ipconfig /flushdns` k vyprázdnit mezipaměť DNS překladač.
+3. Zadejte `nslookup <your Traffic Manager domain name>`. Například následující příkaz ověří název domény s předponou *myapp.contoso*
 
         nslookup myapp.contoso.trafficmanager.net
 
-    Obvykle za následek ukazuje hello následující informace:
+    Obvykle za následek zobrazí následující informace:
 
-    + Hello název DNS a IP adresu se server DNS hello přístup tooresolve tento název domény Traffic Manageru.
-    + název domény Traffic Manageru Hello jste zadali na příkazovém řádku hello po nástroje "nslookup" a přeloží hello IP adresu toowhich hello doménu Traffic Manageru. Hello druhou IP adresu je důležité jeden toocheck hello. Měla by se shodovat veřejné virtuální adresy IP (VIP) pro jeden z hello cloudové služby nebo webů v hello profil služby Traffic Manager, které testujete.
+    + Název DNS a IP adresa serveru DNS, přistupuje na tento název domény Traffic Manageru.
+    + Název domény Traffic Manageru, jste zadali na příkazovém řádku po "nástroje nslookup" a IP adresu, na kterou se přeloží doménu Traffic Manageru. Druhou IP adresu je důležité zkontrolovat. Měla by se shodovat veřejné virtuální adresy IP (VIP) pro některý z cloudové služby nebo webů v profil služby Traffic Manager, který testujete.
 
-## <a name="how-tootest-hello-failover-traffic-routing-method"></a>Jak metoda směrování provozu tootest hello převzetí služeb při selhání
-
-1. Ponechejte si všechny koncové body.
-2. Pomocí jednoho klienta, požadavky na překlad DNS pro název domény vaší společnosti, pomocí nástroje nslookup nebo podobného nástroje.
-3. Zkontrolujte, zda že tento hello řešena IP adresa odpovídá hello primární koncový bod.
-4. Přeneste dolů váš primární koncový bod nebo odeberte hello monitorování souboru tak, aby správce provozu se domnívá, které aplikace hello je vypnutý.
-5. Počkejte hello DNS Time-to-Live (TTL) profil služby Traffic Manager hello plus dalších dvou minut. Například pokud vaše TTL DNS je 300 sekund (5 minut), je nutné počkat sedm minut.
-6. Vyprázdnění vaší DNS klienta mezipaměti a žádosti o překlad DNS pomocí nástroje nslookup. V systému Windows můžete vyprázdnit mezipaměť DNS pomocí hello ipconfig/flushdns příkazu.
-7. Zkontrolujte, zda že tento hello řešena IP adresa odpovídá sekundární koncový bod.
-8. Opakujte postup hello, zase ukončování každý koncový bod. Ověřte, že hello DNS vrátí hello IP adresa hello další koncového bodu v seznamu hello. Když jsou všechny koncové body dolů, by měl znovu získat IP adresu hello hello primární koncový bod.
-
-## <a name="how-tootest-hello-weighted-traffic-routing-method"></a>Jak tootest hello vážené metodu směrování provozu
+## <a name="how-to-test-the-failover-traffic-routing-method"></a>Postup testování metodu směrování provozu převzetí služeb při selhání
 
 1. Ponechejte si všechny koncové body.
 2. Pomocí jednoho klienta, požadavky na překlad DNS pro název domény vaší společnosti, pomocí nástroje nslookup nebo podobného nástroje.
-3. Zkontrolujte, zda že tento hello řešena IP adresa odpovídá jednomu z koncových bodů.
+3. Zajistěte, aby odpovídal přeložit IP adresu primární koncový bod.
+4. Přeneste dolů váš primární koncový bod nebo odeberte soubor monitorování, aby se tento Traffic Manager se domnívá, že aplikace je mimo provoz.
+5. Počkejte DNS Time-to-Live (TTL) profil služby Traffic Manager plus dalších dvou minut. Například pokud vaše TTL DNS je 300 sekund (5 minut), je nutné počkat sedm minut.
+6. Vyprázdnění vaší DNS klienta mezipaměti a žádosti o překlad DNS pomocí nástroje nslookup. V systému Windows můžete vyprázdnit mezipaměť DNS pomocí příkazu ipconfig/flushdns.
+7. Zajistěte, aby odpovídal přeložit IP adresu sekundární koncový bod.
+8. Opakujte tento postup, zase ukončování každý koncový bod. Ověřte, že DNS vrátí IP adresu další koncového bodu v seznamu. Když jsou všechny koncové body dolů, musí znovu získat IP adresu primární koncový bod.
+
+## <a name="how-to-test-the-weighted-traffic-routing-method"></a>Postup testování metodu směrování provozu vyvážené
+
+1. Ponechejte si všechny koncové body.
+2. Pomocí jednoho klienta, požadavky na překlad DNS pro název domény vaší společnosti, pomocí nástroje nslookup nebo podobného nástroje.
+3. Zkontrolujte, zda přeložit IP adresa odpovídá jeden z koncových bodů.
 4. Vyprázdnění mezipaměti klienta DNS a zopakujte kroky 2 a 3 pro každý koncový bod. Měli byste vidět různé IP adresy vrátí pro každou z koncových bodů.
 
-## <a name="how-tootest-hello-performance-traffic-routing-method"></a>Jak tootest hello výkonu metoda směrování provozu
+## <a name="how-to-test-the-performance-traffic-routing-method"></a>Postup testování metodu směrování provozu výkonu
 
-tooeffectively test metodu směrování provozu výkonu, musí mít klienti nacházející se v různých částech hello, world. Klienty můžete vytvořit v různých oblastech Azure, které se dají použít tootest vašim službám. Pokud máte globální sítě, můžete vzdáleně přihlaste tooclients v dalších částech tohoto hello, world a spouštění testů z ní.
+K testování efektivně metodu směrování provozu výkonu, musí mít klienti nacházející se v různých částech světa. Klienty můžete vytvořit v různých oblastech Azure, které lze použít k testování vašich služeb. Pokud máte globální sítě, můžete vzdáleně Přihlaste se na klienty v dalších částech světa a spouštění testů z ní.
 
-Alternativně existují uvolněte webové vyhledávání DNS a víc služeb, které jsou k dispozici. Některé z těchto nástrojů pro udělení hello překlad názvu DNS možnost toocheck z různých míst kolem hello, world. Proveďte hledání na "Vyhledávání DNS" příklady. Služby třetích stran, jako je Gomez nebo //Build lze použít tooconfirm profilech distribuovanému přenosy podle očekávání.
+Alternativně existují uvolněte webové vyhledávání DNS a víc služeb, které jsou k dispozici. Některé z těchto nástrojů získáte možnost zkontrolujte překlad názvu DNS z různých míst po celém světě. Proveďte hledání na "Vyhledávání DNS" příklady. Služby třetích stran, jako je Gomez nebo //Build slouží k potvrzení, že jsou vaše profily distribuci provoz podle očekávání.
 
 ## <a name="next-steps"></a>Další kroky
 

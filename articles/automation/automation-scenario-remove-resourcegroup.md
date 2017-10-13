@@ -1,9 +1,9 @@
 ---
-title: "Odstranění skupiny prostředků aaaAutomate | Microsoft Docs"
-description: "Pracovní postup prostředí PowerShell verzi scénářem automatizace Azure, včetně sady runbook tooremove prostředků všech skupin v rámci vašeho předplatného."
+title: "Automatizace odebrání skupin prostředků | Dokumentace Microsoftu"
+description: "Verze scénáře Azure Automation s pracovními postupy prostředí PowerShell, včetně runbooků pro odebrání všech skupin prostředků v rámci vašeho předplatného."
 services: automation
 documentationcenter: 
-author: MGoedtel
+author: eslesar
 manager: jwhit
 editor: 
 ms.assetid: b848e345-fd5d-4b9d-bc57-3fe41d2ddb5c
@@ -14,56 +14,56 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/26/2016
 ms.author: magoedte
-ms.openlocfilehash: d7ff8064842385d57b0eebdf7b263150c958255f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8b23e55a597f293b17183e80eea6c2763aabe9ba
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-automation-scenario---automate-removal-of-resource-groups"></a>Scénář Azure Automation – automatizace odebrání skupin prostředků
-Mnoho zákazníků vytváří více než jednu skupinu prostředků. Některé mohou sloužit ke správě produkčních aplikací, jiné mohou sloužit jako vývojové, testovací nebo přípravné prostředí. Automatizace hello nasazení těchto prostředků je jednou z věcí, ale je možné toodecommission skupinu prostředků s klikněte na tlačítko hello je jiné. Tuto běžnou úlohu správy můžete zjednodušit pomocí Azure Automation. To je užitečné, pokud pracujete s předplatné Azure, který má limitu útraty a automaticky prostřednictvím člen nabídka jako MSDN nebo hello programu Microsoft Partner sítě Cloud Essentials.
+Mnoho zákazníků vytváří více než jednu skupinu prostředků. Některé mohou sloužit ke správě produkčních aplikací, jiné mohou sloužit jako vývojové, testovací nebo přípravné prostředí. Automatizace nasazení těchto prostředků je jedna věc, ale možnost vyřadit skupinu prostředků z provozu jediným kliknutím něco úplně jiného. Tuto běžnou úlohu správy můžete zjednodušit pomocí Azure Automation. To je užitečné v případě, že pracujete s předplatným Azure, které má nastavený limit útraty prostřednictvím členské nabídky, jako je například MSDN nebo program Microsoft Partner Network Cloud Essentials.
 
-Tento scénář je založený na Powershellovém runbooku a navrženou tooremove je jeden nebo více skupin prostředků, které zadáte ze svého předplatného. Výchozí nastavení Hello hello sady runbook je tootest než budete pokračovat. Tím se zajistí, že neodstraníte omylem skupiny prostředků hello předtím, než jste připravené toocomplete tento postup.   
+Tento scénář je založený na runbooku PowerShellu a je určený k odebrání jedné nebo několika skupin prostředků, které zadáte ze svého předplatného. Ve výchozím nastavení runbook nejdříve testuje a poté pokračuje. Tím je zajištěno, že nechtěně neodstraníte skupinu prostředků dříve, než budete připraveni tento postup dokončit.   
 
-## <a name="getting-hello-scenario"></a>Získávání scénář hello
-Tento scénář se skládá z runbook Powershellu, které si můžete stáhnout z hello [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/Remove-ResourceGroup/1.0/DisplayScript). Můžete ho importovat také přímo z hello [Galerie Runbooků](automation-runbook-gallery.md) v hello portálu Azure.<br><br>
+## <a name="getting-the-scenario"></a>Získání scénáře
+Tento scénář se skládá z runbooku prostředí PowerShell, který si můžete stáhnou z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/Remove-ResourceGroup/1.0/DisplayScript). Můžete jej také importovat přímo z [Galerie runbooků](automation-runbook-gallery.md) na webu Azure Portal.<br><br>
 
 | Runbook | Popis |
 | --- | --- |
-| Remove-ResourceGroup |Odebere jedno nebo více skupin prostředků Azure a související prostředky z předplatného hello. |
+| Remove-ResourceGroup |Odebere z předplatného jednu nebo více skupin prostředků Azure a přidružené prostředky. |
 
 <br>
-Hello následující vstupní parametry jsou definovány pro tuto sadu runbook:
+Pro tento runbook jsou definované tyto vstupní parametry:
 
 | Parametr | Popis |
 | --- | --- |
-| NameFilter (povinný) |Určuje název filtru toolimit hello skupiny prostředků, které chcete o odstranění. Můžete předat několik hodnot ve formě seznamu odděleného čárkami.<br>Hello filtru není velká a malá písmena a bude odpovídat libovolné skupině prostředků, který obsahuje řetězec hello. |
-| PreviewMode (volitelný) |Provede toosee hello sady runbook, které skupiny prostředků by odstraněn, ale neprovede žádnou akci.<br>Výchozí hodnota Hello je **true** toohelp vyhnout náhodného odstranění jednoho nebo více skupin prostředků předán toohello runbook. |
+| NameFilter (povinný) |Zadává filtr názvů pro omezení skupin prostředků, které máte v úmyslu odstranit. Můžete předat několik hodnot ve formě seznamu odděleného čárkami.<br>Ve filtru se nerozlišují velká a malá písmena. Filtru odpovídá libovolná skupina prostředků, která obsahuje zadaný řetězec. |
+| PreviewMode (volitelný) |Spustí runbook, aby bylo vidět, které skupiny prostředků se odstraní, ale neprovede žádnou akci.<br>Výchozí hodnota je **true**, která pomáhá zabránit nechtěnému odstranění jedné nebo několika skupin prostředků předaných do runbooku. |
 
 ## <a name="install-and-configure-this-scenario"></a>Instalace a konfigurace tohoto scénáře
 ### <a name="prerequisites"></a>Požadavky
-Tato sada runbook se ověří pomocí hello [účet spustit v Azure jako](automation-sec-configure-azure-runas-account.md).    
+Tento runbook se ověřuje pomocí [účtu Spustit v Azure jako](automation-sec-configure-azure-runas-account.md).    
 
-### <a name="install-and-publish-hello-runbooks"></a>Instalace a publikování sad runbook hello
-Po stažení hello runbook, můžete ho importovat pomocí postupu hello v [import postupy runbook](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-azure-automation). Publikujte hello runbook po byl úspěšně importován do vašeho účtu Automation.
+### <a name="install-and-publish-the-runbooks"></a>Instalace a zveřejnění runbooků
+Po stažení můžete tento runbook naimportovat pomocí postupu uvedeného v tématu [Postupy importování runbooků](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-azure-automation). Po úspěšném dokončení importu do účtu Automation můžete runbook publikovat.
 
-## <a name="using-hello-runbook"></a>Pomocí sady runbook hello
-Hello následující postup vás provede hello provádění této sady runbook a nápovědy, které jste se seznámili s jak to funguje. Jenom testujete hello runbook v tomto příkladu, ve skutečnosti není odstranění skupiny prostředků hello.  
+## <a name="using-the-runbook"></a>Použití runbooku
+Následující kroky vás provedou spuštěním této sady runbook a pomohou vám seznámit se s tím, jak funguje. V tomto příkladu budete tento runbook pouze testovat a nebudete odstraňovat žádné skupiny prostředků.  
 
-1. Z hello portálu Azure otevřete účet Automation a klikněte na tlačítko **Runbooky**.
-2. Vyberte hello **Remove-ResourceGroup** runbook a klikněte na tlačítko **spustit**.
-3. Při spuštění sady runbook hello hello **spuštění Runbooku** otevře se okno a můžete nastavit parametry hello. Zadejte hello názvy skupin prostředků v rámci vašeho předplatného, můžete použít pro testování a způsobí není škodu, pokud náhodou smazala.<br> ![Parametry Remove-ResouceGroup](media/automation-scenario-remove-resourcegroup/remove-resourcegroup-input-parameters.png)
+1. Na webu Azure Portal otevřete svůj účet Automation a klikněte na **Runbooky**.
+2. Vyberte runbook **Remove-ResourceGroup** a klikněte na **Spustit**.
+3. Po spuštění runbooku se otevře okno **Spustit runbook** a můžete nakonfigurovat parametry. Zadejte názvy skupin prostředků ve vašem předplatném, které můžete použít pro testování a které by při náhodném odstranění nezpůsobily žádné potíže.<br> ![Parametry Remove-ResouceGroup](media/automation-scenario-remove-resourcegroup/remove-resourcegroup-input-parameters.png)
 
    > [!NOTE]
-   > Zajistěte, aby **Previewmode** je nastaven příliš**true** tooavoid odstraňování hello vybrané skupiny prostředků.  **Poznámka:** , nebude tato sada runbook odebrat hello skupinu prostředků, která obsahuje účet Automation hello, kterým je spuštěn tento runbook.  
+   > Zkontrolujte, že možnost **Previewmode** je nastavená na **true**, abyste zabránili odstranění vybraných skupin prostředků.  **Poznámka**: Tento runbook neodebere skupinu prostředků obsahující účet Automation, který spouští tento runbook.  
    >
    >
-4. Po nakonfigurování všech hodnot parametru hello, klikněte na tlačítko **OK**, a hello runbook se zařadí do fronty pro provedení.  
+4. Po dokončení konfigurace hodnot všech parametrů klikněte na **OK**. Runbook se zařadí do fronty pro spuštění.  
 
-Podrobnosti hello tooview hello **Remove-ResourceGroup** úlohy runbooku v hello portál Azure, vyberte **úlohy** v hello runbook. Hello úlohy Souhrn zobrazí hello vstupní parametry a výstup hello stream kromě toogeneral informace o úloze hello a všechny výjimky, které došlo k chybě.<br> ![Stav úlohy runbooku Remove-ResourceGroup](media/automation-scenario-remove-resourcegroup/remove-resourcegroup-runbook-job-status.png)
+Pokud chcete zobrazit podrobné informace o úloze runbooku **Remove-ResourceGroup** na webu Azure Portal, vyberte v runbooku **Úlohy**. V souhrnu úlohy se zobrazí vstupní parametry a výstupní datový proud a také obecné informace o příslušné úloze a případné výjimky, které nastaly.<br> ![Stav úlohy runbooku Remove-ResourceGroup](media/automation-scenario-remove-resourcegroup/remove-resourcegroup-runbook-job-status.png)
 
-Hello **Souhrn úlohy** zahrnuje zprávy z datových proudů hello výstup, upozornění a chyby. Vyberte **výstup** tooview podrobné výsledky z hello spuštění sady runbook.<br> ![Výsledky výstupu runbooku Remove-ResourceGroup](media/automation-scenario-remove-resourcegroup/remove-resourcegroup-runbook-job-output.png)
+**Souhrn úlohy** zahrnuje zprávy z datových proudů výstupu, upozornění a chyb. Pokud chcete zobrazit podrobné výsledky spuštění runbooku, vyberte **Výstup**.<br> ![Výsledky výstupu runbooku Remove-ResourceGroup](media/automation-scenario-remove-resourcegroup/remove-resourcegroup-runbook-job-output.png)
 
 ## <a name="next-steps"></a>Další kroky
-* tooget zahájeno vytváření vlastní sady runbook, najdete v části [vytvoření nebo import runbooku ve službě Azure Automation](automation-creating-importing-runbook.md).
-* tooget kroky s runbooky pracovních postupů Powershellu najdete v části [Můj první runbook pracovního postupu Powershellu](automation-first-runbook-textual.md).
+* Pokud se chcete pustit do vytváření vlastního runbooku, přečtěte si téma [Vytvoření nebo import runbooku ve službě Azure Automation](automation-creating-importing-runbook.md).
+* První kroky s runbooky pracovních postupů prostředí PowerShell najdete v článku [Můj první runbook pracovního postupu prostředí PowerShell](automation-first-runbook-textual.md).

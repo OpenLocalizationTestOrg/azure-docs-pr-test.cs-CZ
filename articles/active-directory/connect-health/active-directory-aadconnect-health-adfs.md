@@ -1,6 +1,6 @@
 ---
-title: "aaaUsing Azure AD Connect Health se službou AD FS | Microsoft Docs"
-description: "Toto je stránka hello Azure AD Connect Health jak toomonitor místní infrastrukturu AD FS."
+title: "Používání služby Azure AD Connect Health se službou AD FS | Dokumentace Microsoftu"
+description: "Toto je stránka o službě Azure AD Connect Health, která popisuje postup monitorování místní infrastruktury služby AD FS."
 services: active-directory
 documentationcenter: 
 author: karavar
@@ -15,107 +15,107 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0cd26e8762be65e09d22e1f113e5165c4f131715
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7946f11d209e6341caa3a11e946fb1596e758277
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Sledování služby AD FS pomocí služby Azure AD Connect Health
-Hello následující dokumentace je konkrétní toomonitoring infrastrukturu služby AD FS pomocí Azure AD Connect Health. Informace o sledování služby Azure AD Connect (Sync) pomocí služby Azure AD Connect Health najdete v článku [Používání služby Azure AD Connect Health pro synchronizaci](active-directory-aadconnect-health-sync.md). Informace o sledování služby Active Directory Domain Services pomocí služby Azure AD Connect Health najdete v článku [Používání služby Azure AD Connect Health se službou AD DS](active-directory-aadconnect-health-adds.md).
+Následující dokumentace se věnuje sledování infrastruktury služby AD FS ve službě Azure AD Connect Health. Informace o sledování služby Azure AD Connect (Sync) pomocí služby Azure AD Connect Health najdete v článku [Používání služby Azure AD Connect Health pro synchronizaci](active-directory-aadconnect-health-sync.md). Informace o sledování služby Active Directory Domain Services pomocí služby Azure AD Connect Health najdete v článku [Používání služby Azure AD Connect Health se službou AD DS](active-directory-aadconnect-health-adds.md).
 
 ## <a name="alerts-for-ad-fs"></a>Upozornění služby AD FS
-Hello části výstrahy Azure AD Connect Health poskytuje že Hello seznam aktivních výstrah. Každé upozornění obsahuje důležité informace, postup řešení a odkazy toorelated dokumentaci.
+Část pojednávající o upozorněních služby Azure AD Connect Health uvádí seznam aktivních upozornění. Každé upozornění obsahuje důležité informace, postup řešení a odkazy na související dokumentaci.
 
-Dvojitým kliknutím aktivní nebo vyřešený výstrah, tooopen nové okno s doplňujícími informacemi, kroky, které můžete provést tooresolve hello výstrahy a odkazy toorelevant dokumentaci. Můžete také zobrazit historická data na výstrahy, které byly vyřešeny hello posledních.
+Dvojitým kliknutím na aktivní nebo vyřešené upozornění můžete otevřít nové okno s doplňujícími informacemi, kroky, které můžete k vyřešení upozornění použít, a odkazy na relevantní dokumentaci. Můžete si zobrazit i historické údaje o dříve vyřešených upozorněních.
 
 ![Portál služby Azure AD Connect Health](./media/active-directory-aadconnect-health/alert2.png)
 
 ## <a name="usage-analytics-for-ad-fs"></a>Funkce analýzy využití služby AD FS
-Azure AD Connect Health analýzy využití analyzuje hello ověřovací provoz na federačních serverech. Poklepáním na hello políčka funkce analýzy využití, tooopen hello využití analytics okně se zobrazí několik metriky a seskupení.
+Funkce analýzy využití služby Azure AD Connect Health analyzuje ověřovací provoz na federačních serverech. Dvojitým kliknutím na políčko funkce analýzy využití můžete otevřít okno analýzy využití, ve kterém je zobrazeno několik metrik a seskupení.
 
 > [!NOTE]
-> toouse analýzy využití se službou AD FS, musíte zajistit, že je povoleno auditování služby AD FS. Další informace najdete v článku o [povolení auditování služby AD FS](active-directory-aadconnect-health-agent-install.md#enable-auditing-for-ad-fs).
+> Pokud chcete použít funkci analýzy využití ve službě AD FS, povolte auditování AD FS. Další informace najdete v článku o [povolení auditování služby AD FS](active-directory-aadconnect-health-agent-install.md#enable-auditing-for-ad-fs).
 >
 >
 
 ![Portál služby Azure AD Connect Health](./media/active-directory-aadconnect-health/report1.png)
 
-tooselect další metriky, určit časový rozsah, nebo seskupení hello toochange, klikněte pravým tlačítkem na graf analýzy využití hello a vyberte upravit graf. Potom můžete zadat hello časový rozsah, vyberte jiné metriky a změnit seskupení hello. Můžete zobrazit hello distribuci ověřovacího provozu hello podle různých "metrik" a jednotlivé metriky pomocí parametrů relevantní "Seskupit podle", které jsou popsané v následující části hello skupiny:
+Pokud chcete vybrat další metriky, určit časový rozsah nebo změnit seskupení, klikněte pravým tlačítkem na graf analýzy využití a vyberte Upravit graf. Potom můžete zadat časový rozsah, vybrat jiné metriky a změnit seskupení. Distribuci ověřovacího provozu můžete zobrazit podle různých „metrik“ a jednotlivé metriky můžete seskupit pomocí příslušných parametrů možnosti „Seskupit podle“, které jsou uvedené v následující části:
 
 **Metrika: Celkový počet požadavků** – Celkový počet požadavků zpracovaných servery AD FS.
 
-|Seskupit podle | Co hello seskupení znamená a proč je užitečné? |
+|Seskupit podle | Co seskupení znamená a proč je užitečné? |
 | --- | --- |
-| Všechny | Zobrazuje počet hello celkový počet požadavků zpracovaných ve všech serverech služby AD FS.|
-| Aplikace | Skupiny hello celkový počet požadavků podle cílové hello předávající strany. Toto seskupení je užitečné toounderstand, které jednotlivé aplikace přijímají procentem celkového provozu hello. |
-|  Server |Skupiny hello celkový počet požadavků podle hello serveru, který zpracovává požadavek hello. Toto seskupení je užitečné toounderstand hello distribucí zatížení celkového provozu hello.
-| Připojení k pracovišti |Skupiny hello celkový počet požadavků podle na tom, jestli jsou přicházející ze zařízení, které jsou připojené k síti na pracovišti (známá). Toto seskupení je užitečné toounderstand, pokud vaše prostředky ke kterým se přistupuje pomocí zařízení, které jsou neznámé toohello identity infrastruktury. |
-|  Metoda ověřování | Skupiny hello celkový počet požadavků podle hello metodu ověřování ověřování. Toto seskupení je užitečné toounderstand hello běžné metoda ověřování, která se k ověřování používá. Následují hello možné metody ověřování. <ol> <li>integrované ověřování systému Windows (Windows)</li> <li>ověřování pomocí formulářů (formuláře)</li> <li>jednotné přihlašování (SSO)</li> <li>ověření certifikátem X509 (certifikát)</li> <br>Pokud hello federační servery přijmout žádost o hello pomocí souboru Cookie jednotného přihlašování, tento požadavek se počítá jako jednotné přihlašování (jednotné přihlašování). V takových případech Pokud je platný, soubor cookie hello hello uživatele není vyzváni tooprovide přihlašovací údaje a získá bezproblémový přístup toohello aplikaci. Toto chování je běžné v případě, že máte několik přijímajících stran, které jsou chráněné federačními servery hello. |
-| Umístění v síti | Skupiny hello celkový počet požadavků podle umístění v síti hello hello uživatele. Může to být intranet nebo extranet. Toto seskupení je užitečné tooknow, jaké procento hello provoz pochází z hello intranet a vnější síť. |
+| Vše | Zobrazí celkový počet požadavků zpracovaných všemi servery AD FS.|
+| Aplikace | Seskupí celkový počet požadavků podle cílové přijímající strany. Toto seskupení vás seznámí s procentem celkového provozu, které jednotlivé aplikace přijímají. |
+|  Server |Seskupí celkový počet požadavků podle serveru, který požadavek zpracoval. Toto seskupení vás seznámí s distribucí zatížení celkového provozu.
+| Připojení k pracovišti |Seskupí celkový počet požadavků podle toho, jestli přicházejí ze zařízení, která jsou připojená k pracovišti (známá). Toto seskupení vás seznámí s tím, jestli se k vašim prostředkům přistupuje pomocí zařízení, které infrastruktura identity nezná. |
+|  Metoda ověřování | Seskupí celkový počet požadavků podle metody ověřování, která se k ověřování používá. Toto seskupení vás seznámí s běžnou metodu ověřování, která se k ověřování používá. Níže jsou uvedené možné metody ověřování. <ol> <li>integrované ověřování systému Windows (Windows)</li> <li>ověřování pomocí formulářů (formuláře)</li> <li>jednotné přihlašování (SSO)</li> <li>ověření certifikátem X509 (certifikát)</li> <br>Pokud federační servery požadavek přijmou pomocí souboru cookie jednotného přihlašování, příslušný požadavek se počítá jako jednotné přihlašování (SSO). V takových případech (pokud je soubor cookie platný) se od uživatele nevyžadují přihlašovací údaje a uživatel získá bezproblémový přístup k aplikaci. Toto chování je běžné v případě, kdy máte několik přijímajících stran, které jsou chráněné federačními servery. |
+| Umístění v síti | Seskupí celkový počet požadavků podle umístění uživatele v síti. Může to být intranet nebo extranet. Toto seskupení vás seznámí s procentuálním podílem provozu z intranetu vzhledem k provozu z extranetu. |
 
 
-**Metriky: Vyžádat celkový počet se nezdařilo** -hello celkový počet neúspěšných požadavků zpracovaných službou hello federation service. (Tato metrika je dostupná pouze ve službě AD FS pro Windows Server 2012 R2.)
+**Metrika: Celkový počet neúspěšných požadavků** – Celkový počet neúspěšných požadavků zpracovaných službou FS. (Tato metrika je dostupná pouze ve službě AD FS pro Windows Server 2012 R2.)
 
-|Seskupit podle | Co hello seskupení znamená a proč je užitečné? |
+|Seskupit podle | Co seskupení znamená a proč je užitečné? |
 | --- | --- |
-| Typ chyby | Znázorňuje hello počet chyb podle předdefinovaných typů chyb. Toto seskupení je užitečné toounderstand hello běžnými typy chyb. <ul><li>Nesprávné uživatelské jméno nebo heslo: chyby kvůli tooincorrect uživatelské jméno nebo heslo.</li> <li>"Uzamčení extranetu": selhání kvůli toohello požadavky přijatými od uživatele, který byl uzamčen z extranetu </li><li> "Prošlé heslo": selhání kvůli toousers přihlásíte platnost jeho hesla.</li><li>"Deaktivovaný účet": selhání kvůli toousers protokolování pomocí deaktivovaného účtu.</li><li>"Ověřování zařízení": chyby z důvodu selhání toousers tooauthenticate pomocí ověření zařízení.</li><li>"Ověřování certifikátu uživatele": chyby z důvodu selhání toousers tooauthenticate kvůli neplatnému certifikátu.</li><li>"MFA": chyby z důvodu selhání toouser tooauthenticate pomocí služby Multi-Factor Authentication.</li><li>"Jiné přihlašovací údaje": "Autorizace vystavení": chyby z důvodu selhání tooauthorization.</li><li>"Delegování vystavení": chyby z důvodu chyby tooissuance delegování.</li><li>"Přijetí tokenu": selhání kvůli tooADFS odmítat hello tokenu od poskytovatele Identity jiných výrobců.</li><li>(Protocol): Chyba z důvodu chyby tooprotocol.</li><li>„Neznámá“: Zachytit vše. Jakékoli jiné chyby, které se nehodí do hello definované kategorie.</li> |
-| Server | Skupiny hello chyby podle serveru hello. Toto seskupení je užitečné toounderstand hello Chyba distribuce mezi servery. Nerovnoměrná distribuce může naznačovat vadný stav serveru. |
-| Umístění v síti | Skupiny hello chyby podle umístění v síti hello hello požadavků (intranet vs. extranet). Toto seskupení je užitečné toounderstand hello typ neúspěšných požadavků. |
-|  Aplikace | Skupiny hello chyby podle hello cílové aplikace (přijímající strany). Toto seskupení je užitečné toounderstand, která cílová aplikace zaznamenává největší počet chyb. |
+| Typ chyby | Zobrazí počet chyb podle předdefinovaných typů chyb. Toto seskupení vás seznámí s běžnými typy chyb. <ul><li>Nesprávné uživatelské jméno nebo heslo: Chyby způsobené zadáním nesprávného uživatelského jména nebo hesla.</li> <li>„Uzamčení extranetu“: Selhání způsobené požadavky přijatými od uživatele, který má uzamčený přístup do extranetu. </li><li> „Prošlé heslo“: Chyby způsobené uživateli, kteří se přihlašují pomocí hesla, kterému vypršela platnost.</li><li>„Deaktivovaný účet“: Chyby způsobené uživateli, kteří se přihlašují pomocí deaktivovaného účtu.</li><li>„Ověřování zařízení“: Chyby způsobené uživateli, kteří neprovádějí ověřování pomocí ověření zařízení.</li><li>„Ověřování certifikátu uživatele“: Chyby způsobené uživateli, kterým nefunguje ověřování kvůli neplatnému certifikátu.</li><li>„MFA“: Chyby způsobené neúspěšným ověřením uživatele v případě použití Multi-Factor Authentication.</li><li>„Jiné přihlašovací údaje“: „Autorizace vystavení“: Chyby způsobené selháním autorizace.</li><li>„Delegování vystavení“: Chyby způsobené chybami delegace vystavení.</li><li>„Přijetí tokenu“: Chyby způsobené tím, že služba ADFS odmítla token od zprostředkovatele identity z řad třetích stran.</li><li>„Protokol“: Chyba způsobená chybami protokolu.</li><li>„Neznámá“: Zachytit vše. Jakékoli jiné chyby, které se nehodí do definovaných kategorií.</li> |
+| Server | Seskupí chyby podle serveru. Toto seskupení vás seznámí s distribucí chyb mezi servery. Nerovnoměrná distribuce může naznačovat vadný stav serveru. |
+| Umístění v síti | Seskupí chyby podle umístění požadavků v síti (intranet vs. extranet). Toto seskupení vás seznámí s typy neúspěšných požadavků. |
+|  Aplikace | Seskupí chyby podle cílové aplikace (přijímající strany). Toto seskupení vás seznámí s tím, která cílová aplikace zaznamenává největší počet chyb. |
 
 **Metrika: Počet uživatelů** – Průměrný počet jedinečných uživatelů aktivně ověřujících pomocí AD FS
 
-|Seskupit podle | Co hello seskupení znamená a proč je užitečné? |
+|Seskupit podle | Co seskupení znamená a proč je užitečné? |
 | --- | --- |
-|Všechny |Tato metrika poskytuje počet průměrný počet uživatelů pomocí služby FS hello v hello vybraném časovém intervalu. Hello uživatelé nejsou seskupení. <br>průměr Hello závisí na vybraném časovém intervalu hello. |
-| Aplikace |Skupiny hello průměrný počet uživatelů podle hello cílové aplikace (přijímající strany). Toto seskupení je užitečné toounderstand počet uživatelů, kteří používají aplikaci, pro kterou. |
+|Vše |Tato metrika poskytuje průměrný počet uživatelů, kteří používají službu FS ve vybraném časovém intervalu. Uživatelé nejsou seskupení. <br>Průměr závisí na vybraném časovém intervalu. |
+| Aplikace |Seskupí průměrný počet uživatelů podle cílové aplikace (přijímající strany). Toto seskupení vás seznámí s počtem uživatelů používajících jednotlivé aplikace. |
 
 ## <a name="performance-monitoring-for-ad-fs"></a>Sledování výkonu služby AD FS
-Sledování výkonu služby Azure AD Connect Health poskytuje sledovací informace o metrikách. Zaškrtnutím políčka sledování hello, otevře se nové okno s podrobné informace o metrikách hello.
+Sledování výkonu služby Azure AD Connect Health poskytuje sledovací informace o metrikách. Po zaškrtnutí políčka sledování se otevře nové okno s podrobnými informacemi o metrikách.
 
 ![Portál služby Azure AD Connect Health](./media/active-directory-aadconnect-health/perf1.png)
 
-Pokud vyberete možnost Filter hello hello horní části okna hello, můžete filtrovat podle serveru toosee metriky na jednotlivých serverech. Metrika toochange, klikněte pravým tlačítkem na hello monitorování grafu v části monitorování okno hello a vyberte upravit graf (nebo tlačítko Upravit graf vyberte hello). Z hello nové okno, které se otevře můžete vybrat další metriky pomocí rozevíracího seznamu hello a zadejte časový interval pro zobrazení dat výkonu hello.
+Výběrem možnosti Filtrovat (v horní části okna) můžete filtrovat podle serveru a prohlédnout si metriky na jednotlivých serverech. Pokud chcete změnit metriky, klikněte pravým tlačítkem na graf sledování pod oknem sledování a vyberte Upravit graf (nebo vyberte tlačítko Upravit graf). V nově otevřeném okně můžete vybrat další metriky pomocí rozevíracího seznamu a také zadat časový rozsah pro zobrazení dat výkonu.
 
 ## <a name="reports-for-ad-fs"></a>Sestavy služby AD FS
 Azure AD Connect Health poskytuje sestavy s informacemi o činnosti a výkonu služby AD FS. Tyto sestavy pomáhají správcům získat přehled o aktivitách na jejich serverech AD FS.
 
 ### <a name="top-50-users-with-failed-usernamepassword-logins"></a>Nejčastějších 50 uživatelů s neúspěšným přihlášením kvůli uživatelskému jména nebo heslu
-Jednou z běžných příčin neúspěšného požadavku na ověření na serveru služby AD FS hello je žádost s neplatnými přihlašovacími údaji, tedy nesprávným uživatelským jménem nebo heslo. Obvykle se stane toousers kvůli toocomplex hesla, zapomenutým heslům nebo překlepům.
+Jednou z běžných příčin neúspěšného požadavku na ověření na serveru AD FS je požadavek provedený s neplatnými přihlašovacími údaji, tedy s nesprávným uživatelským jménem nebo heslem. Do této situace se uživatelé zpravidla dostávají v důsledku používání složitých hesel, zapomenutí hesel nebo překlepů.
 
-Existují i jiné důvody, které může mít za následek neočekávaný počet požadavků zpracovanou server služby AD FS, jako například: aplikace, která vyprší platnost mezipaměti přihlašovací údaje uživatele a přihlašovací údaje hello nebo uživatel se zlými úmysly pokus toosign k účtu pomocí řady známých hesel. Tyto dva příklady jsou platné důvodům, které by mohlo vést tooa nárůst v žádosti.
+Existují však i další důvody, které mohou mít za následek neočekávaný počet požadavků zpracovávaných vašimi servery služby AD FS. Příklady: Aplikace, která ukládá do mezipaměti přihlašovací údaje uživatelů a vypršení jejich platnosti nebo pokus uživatele se zlými úmysly o přihlášení k účtu s použitím řady známých hesel. Tyto dva příklady jsou legitimními důvody, které by mohly vést k prudkému nárůstu množství požadavků.
 
-Azure AD Connect Health pro ADFS poskytuje sestavy o prvních 50 uživatelů s neúspěšných pokusů o přihlášení z důvodu tooinvalid uživatelské jméno nebo heslo. Tuto sestavu můžete dosáhnout zpracováním událostí auditu hello generované všechny servery hello služby AD FS ve farmách hello
+Azure AD Connect Health pro ADFS poskytuje sestavy s nejčastějšími 50 uživateli, kteří se neúspěšně přihlašovali pomocí neplatného uživatelského jména nebo hesla. Tuto sestavu můžete vytvořit zpracováním událostí auditu, které jsou vygenerované všemi servery AD FS ve farmách.
 
 ![Portál služby Azure AD Connect Health](./media/active-directory-aadconnect-health-adfs/report1a.png)
 
-V rámci této sestavy máte snadný přístup toohello následující informace:
+V rámci této sestavy máte snadný přístup k následujícím informacím:
 
-* Celkový počet neúspěšných požadavků s nesprávné uživatelské jméno a heslo v hello posledních 30 dnů
+* Celkový počet neúspěšných požadavků s nesprávným uživatelským jménem nebo heslem za posledních 30 dní.
 * Průměrný počet uživatelů, kteří mají problém s přihlašováním kvůli chybnému uživatelskému jménu nebo heslu, za jeden den.
 
-Kliknutím na tuto část přejdete okna toohello hlavní sestavy, které poskytuje další podrobnosti. Toto okno obsahuje graf s trendů informace toohelp stanovení základní úrovně o požadavků s nesprávným uživatelským jménem nebo heslem. Kromě toho poskytuje hello seznam prvních 50 uživatelů s hello počet neúspěšných pokusů o přihlášení.
+Kliknutím na tuto část přejdete do hlavního okna sestavy, které vám nabídne další podrobnosti. Toto okno obsahuje graf informace o trendech, které vám usnadní vytváření směrného plánu pro požadavky s nesprávným uživatelským jménem nebo heslem. Kromě toho obsahuje seznam 50 uživatelů s nejvyšším počtem neúspěšných pokusů.
 
-Hello graf obsahuje hello následující informace:
+Graf obsahuje následující informace:
 
-* Hello celkový počet neúspěšných přihlášení z důvodu tooa chybný uživatelského jména a hesla na denní bázi.
-* Hello celkový počet jedinečných uživatelů s neúspěšným přihlášení na denní bázi.
+* Celkový počet neúspěšných přihlášení z důvodu chybného uživatelského jména nebo hesla na denní bázi.
+* Celkový počet jedinečných uživatelů s neúspěšným přihlášení na denní bázi.
 * IP adresa klienta posledního požadavku
 
 ![Portál služby Azure AD Connect Health](./media/active-directory-aadconnect-health-adfs/report3a.png)
 
-Sestava Hello obsahuje hello následující informace:
+Sestava obsahuje následující informace:
 
 | Položky sestavy | Popis |
 | --- | --- |
-| ID uživatele |Zobrazuje hello ID uživatele, který byl použit. Tato hodnota je co hello uživatele zadali, což v některých případech je hello chybné uživatelské ID, které používá. |
-| Neúspěšné pokusy |Ukazuje hello celkový počet neúspěšných pokusů o přihlášení pro ID tohoto konkrétního uživatele. Hello tabulka je řazená hello nejvíce počet neúspěšných pokusů v sestupném pořadí. |
-| Poslední chyba |Zobrazuje časové razítko hello když hello poslední došlo k chybě. |
-| IP adresa poslední chyby |Zobrazuje hello IP adresa klienta z hello nejnovější chybný požadavek. |
+| ID uživatele |Zobrazuje použité ID uživatele. Tato hodnota odpovídá hodnotě zadané uživatelem, což je v některých případech nesprávné ID uživatele, které bylo použito. |
+| Neúspěšné pokusy |Zobrazuje celkový počet neúspěšných pokusů s konkrétním ID uživatele. Tabulka je řazená podle největšího počtu neúspěšných pokusů v sestupném pořadí. |
+| Poslední chyba |Zobrazuje časové razítko výskytu poslední chyby. |
+| IP adresa poslední chyby |Zobrazuje IP adresu klienta z posledního neúspěšného požadavku. |
 
 > [!NOTE]
-> Tato sestava se automaticky aktualizuje po každé dvě hodiny s hello nové informace shromážděné během této doby. V důsledku toho nemusí být pokusů o přihlášení v rámci hello poslední dvě hodiny zahrnuty v sestavě hello.
+> Sestava se každé dvě hodiny automaticky aktualizuje novými informacemi, které byly za tu dobu shromážděné. V důsledku tohoto postupu nemusí být v sestavě zahrnuté přihlašovací pokusy za poslední dvě hodiny.
 >
 >
 

@@ -1,6 +1,6 @@
 ---
-title: "aaaControl směrování v Azure Virtual Network - PowerShell – Classic | Microsoft Docs"
-description: "Zjistěte, jak toocontrol směrování v virtuální sítě pomocí prostředí PowerShell | Classic"
+title: "Řídit směrování v Azure Virtual Network - PowerShell – Classic | Microsoft Docs"
+description: "Zjistěte, jak řídit směrování v virtuální sítě pomocí prostředí PowerShell | Classic"
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
-ms.openlocfilehash: 36edf263fb434d5fb13310d4324da20e57f016a9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e9564d223cb85529f1fa97bc398d35c6debcedae
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="control-routing-and-use-virtual-appliances-classic-using-powershell"></a>Řídit směrování a použití virtuálních zařízení (klasické) pomocí prostředí PowerShell
 
@@ -33,26 +33,26 @@ ms.lasthandoff: 10/06/2017
 [!INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
 > [!IMPORTANT]
-> Než začnete pracovat s prostředky Azure, je důležité toounderstand Azure aktuálně má dva modely nasazení: Azure Resource Manager a Klasický model. Před zahájením práce s jakýmikoli prostředky Azure se ujistěte, že rozumíte [modelům nasazení a příslušným nástrojům](../azure-resource-manager/resource-manager-deployment-model.md). Hello dokumentaci k různým nástrojům můžete zobrazit výběrem možnosti v horní části hello tohoto článku. Tento článek se týká modelu nasazení classic hello.
+> Než začnete pracovat s prostředky Azure, je potřeba si uvědomit, že Azure má v současné době dva modely nasazení: Azure Resource Manager a klasický. Před zahájením práce s jakýmikoli prostředky Azure se ujistěte, že rozumíte [modelům nasazení a příslušným nástrojům](../azure-resource-manager/resource-manager-deployment-model.md). Dokumentaci k různým nástrojům můžete zobrazit výběrem možnosti v horní části tohoto článku. Tento článek se týká modelu nasazení Classic.
 > 
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
-Ukázka Hello prostředí Azure PowerShell níže uvedené příkazy očekávat jednoduché prostředí už vytvořený podle hello scénář výše. Pokud chcete příkazy hello toorun, jak jsou zobrazeny v tomto dokumentu, vytvoření prostředí hello ukazuje [vytvoření virtuální sítě (klasické) pomocí prostředí PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md).
+Ukázka prostředí Azure PowerShell níže uvedené příkazy očekávat jednoduché prostředí už vytvořený založené na výše uvedené scénáře. Pokud chcete ke spuštění příkazů, jak jsou zobrazeny v tomto dokumentu, vytvoření prostředí ukazuje [vytvoření virtuální sítě (klasické) pomocí prostředí PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md).
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
-## <a name="create-hello-udr-for-hello-front-end-subnet"></a>Vytvoření hello UDR pro podsítě front end hello
-toocreate hello směrovací tabulku a směrování, které jsou potřebné pro podsítě front end hello podle hello scénář výše, postupujte podle následujících kroků hello.
+## <a name="create-the-udr-for-the-front-end-subnet"></a>Vytvoření UDR pro podsítě front end
+Pokud chcete vytvořit směrovací tabulku a směrování, které jsou potřebné pro podsítě front end závislosti na scénáři výše, postupujte podle následujících kroků.
 
-1. Spusťte následující příkaz toocreate hello tabulka směrování pro podsíť pro front-end hello:
+1. Spusťte následující příkaz, který vytvořit směrovací tabulku front-end podsítě:
 
     ```powershell
     New-AzureRouteTable -Name UDR-FrontEnd -Location uswest `
     -Label "Route table for front end subnet"
     ```
 
-2. Spusťte následující příkaz toocreate trasy v toosend tabulky trasy hello hello všechny přenosy určené toohello podsítě back-end (192.168.2.0/24) toohello **FW1** virtuálních počítačů (192.168.0.4):
+2. Spusťte následující příkaz k vytvoření trasy ve směrovací tabulce odeslat veškerý provoz, jehož k podsíti back-end (192.168.2.0/24) na **FW1** virtuálních počítačů (192.168.0.4):
 
     ```powershell
     Get-AzureRouteTable UDR-FrontEnd `
@@ -61,7 +61,7 @@ toocreate hello směrovací tabulku a směrování, které jsou potřebné pro p
     -NextHopIpAddress 192.168.0.4
     ```
 
-3. Spuštění hello následující příkaz tooassociate hello směrovací tabulku s hello **front-endu** podsítě:
+3. Spusťte následující příkaz k přiřazení směrovací tabulka s **front-endu** podsítě:
 
     ```powershell
     Set-AzureSubnetRouteTable -VirtualNetworkName TestVNet `
@@ -69,10 +69,10 @@ toocreate hello směrovací tabulku a směrování, které jsou potřebné pro p
     -RouteTableName UDR-FrontEnd
     ```
 
-## <a name="create-hello-udr-for-hello-back-end-subnet"></a>Vytvoření hello UDR pro podsíť back-end hello
-toocreate hello směrovací tabulku a směrování, které jsou potřeba pro hello back ukončit podsítě podle hello scénář, dokončete hello následující kroky:
+## <a name="create-the-udr-for-the-back-end-subnet"></a>Vytvoření UDR pro podsíť back-end
+Pokud chcete vytvořit směrovací tabulku a směrování, které jsou potřeba pro back-end podsíť závislosti na scénáři, proveďte následující kroky:
 
-1. Spusťte následující příkaz toocreate hello tabulka směrování pro podsíť back-end hello:
+1. Spusťte následující příkaz a vytvořte tabulku směrování pro podsíť back-end:
 
     ```powershell
     New-AzureRouteTable -Name UDR-BackEnd `
@@ -80,7 +80,7 @@ toocreate hello směrovací tabulku a směrování, které jsou potřeba pro hel
     -Label "Route table for back end subnet"
     ```
 
-2. Spusťte následující příkaz toocreate trasy v toosend tabulky trasy hello hello všechny přenosy určené toohello front-end podsíť (192.168.1.0/24) toohello **FW1** virtuálních počítačů (192.168.0.4):
+2. Spusťte následující příkaz k vytvoření trasy ve směrovací tabulce odeslat veškerý provoz, jehož klientské podsíti (192.168.1.0/24) na **FW1** virtuálních počítačů (192.168.0.4):
 
     ```powershell
     Get-AzureRouteTable UDR-BackEnd
@@ -91,7 +91,7 @@ toocreate hello směrovací tabulku a směrování, které jsou potřeba pro hel
     -NextHopIpAddress 192.168.0.4
     ```
 
-3. Spuštění hello následující příkaz tooassociate hello směrovací tabulku s hello **back-end** podsítě:
+3. Spusťte následující příkaz k přiřazení směrovací tabulka s **back-end** podsítě:
 
     ```powershell
     Set-AzureSubnetRouteTable -VirtualNetworkName TestVNet `
@@ -99,18 +99,18 @@ toocreate hello směrovací tabulku a směrování, které jsou potřeba pro hel
     -RouteTableName UDR-BackEnd
     ```
 
-## <a name="enable-ip-forwarding-on-hello-fw1-vm"></a>Povolení předávání IP na hello FW1 virtuálních počítačů
+## <a name="enable-ip-forwarding-on-the-fw1-vm"></a>Povolení předávání IP ve virtuálním počítači FW1
 
-předávání IP tooenable v hello FW1 virtuálních počítačů, dokončení hello následující kroky:
+Pokud chcete povolit předávání ve virtuálním počítači FW1 protokolu IP, proveďte následující kroky:
 
-1. Spusťte následující příkaz toocheck hello stav předávání IP hello:
+1. Spusťte následující příkaz a zkontrolujte stav předávání IP:
 
     ```powershell
     Get-AzureVM -Name FW1 -ServiceName TestRGFW `
     | Get-AzureIPForwarding
     ```
 
-2. Hello spusťte následující příkaz předávání IP tooenable hello *FW1* virtuálních počítačů:
+2. Spusťte následující příkaz k povolení předávání protokolu IP pro *FW1* virtuálních počítačů:
 
     ```powershell
     Get-AzureVM -Name FW1 -ServiceName TestRGFW `

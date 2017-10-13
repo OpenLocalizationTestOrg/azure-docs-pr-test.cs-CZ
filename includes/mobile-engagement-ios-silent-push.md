@@ -1,20 +1,20 @@
 > [!IMPORTANT]
-> tooreceive nabízená oznámení z Mobile Engagement, je nutné tooenable `Silent Remote Notifications` ve vaší aplikaci. Je nutné tooadd hello hodnotu vzdáleného oznámení toohello UIBackgroundModes pole v souboru Info.plist.
+> Pokud chcete přijímat nabízená oznámení ze služby Mobile Engagement, je potřeba povolit ve vaší aplikaci funkci `Silent Remote Notifications`. Musíte přidat hodnotu vzdáleného oznámení do pole UIBackgroundModes v souboru Info.plist.
 > 
 > 
 
-1. Otevřete `info.plist` soubor v projektu hello
-2. Klikněte pravým tlačítkem na hello horní položku v seznamu hello (`Information Property List`) a přidejte nový řádek
+1. Otevřete v projektu soubor `info.plist`.
+2. Klikněte pravým tlačítkem myši na horní položku v seznamu (`Information Property List`) a přidejte nový řádek.
    
     ![](./media/mobile-engagement-ios-silent-push/xcode-plist-add-silent-push1.png)
-3. Hello zadejte nový řádek`Required background modes`
+3. Na novém řádku zadejte `Required background modes`.
    
     ![](./media/mobile-engagement-ios-silent-push/xcode-plist-add-silent-push2.png)
-4. Klikněte na řádek hello tooexpand šipku vlevo hello
-5. Přidejte následující položky toohello hodnotu 0 hello`App downloads content in response toopush notifications`
+4. Rozbalte řádek kliknutím na šipku vlevo.
+5. Přidejte k položce Item 0 tuto hodnotu:`App downloads content in response to push notifications`
    
     ![](./media/mobile-engagement-ios-silent-push/xcode-plist-add-silent-push3.png)
-6. Po provedení hello změnit hello info.plist XML by měl obsahovat hello následující klíč a hodnotu:
+6. Po provedení změny by měl kód XML souboru info.plist obsahovat následující klíč a hodnotu:
    
         <key>UIBackgroundModes</key>
         <array>

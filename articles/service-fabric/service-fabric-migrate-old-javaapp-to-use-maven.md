@@ -1,6 +1,6 @@
 ---
-title: "aaaMigrate ze sady Java SDK tooMaven - aktualizovat staré aplikací v jazyce Java Azure Service Fabric toouse Maven | Microsoft Docs"
-description: "Aktualizujte hello starší Java aplikace, které používá toouse hello Service Fabric Java SDK závislostí služby Fabric Java toofetch z Maven. Po dokončení této instalace, bude vaše starší aplikace Java možné toobuild."
+title: "Migrace z Java SDK do Mavenu – aktualizace starších aplikací Azure Service Fabric v Javě pro použití Mavenu | Dokumentace Microsoftu"
+description: "Aktualizace starších aplikací v Javě, které používaly Service Fabric Java SDK, k načtení závislostí Service Fabric v Javě z Mavenu. Po dokončení tohoto nastavení budou starší aplikace v Javě umožňovat sestavení."
 services: service-fabric
 documentationcenter: java
 author: sayantancs
@@ -14,36 +14,36 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2017
 ms.author: saysa
-ms.openlocfilehash: 11b979facd7b3865141a6d3a035a6021dd06ca0c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 2123c5f26d77045bd22af56a844fdbf222930e7b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="update-your-previous-java-service-fabric-application-toofetch-java-libraries-from-maven"></a>Aktualizovat předchozí Java Service Fabric aplikace toofetch Java knihovnách z Maven
-Nedávno jsme přesunuli binární soubory služby Fabric Java z hello Service Fabric Java SDK tooMaven hostování. Nyní můžete pomocí **mavencentral** toofetch hello nejnovější Service Fabric Java závislosti. Tento úvodní pomůže aktualizovat existující Java aplikace, které jste dříve vytvořili toobe použít s Service Fabric Java SDK, pomocí buď Yeoman šablony nebo Eclipse, toobe kompatibilní s hello Maven na základě sestavení.
+# <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Aktualizace předchozí aplikace Java Service Fabric pro načtení knihoven Javy z Mavenu
+Nedávno jsme přesunuli binární soubory Service Fabric Java ze sady Service Fabric Java SDK do hostování v Mavenu. Momentálně můžete k načtení nejnovějších závislostí Service Fabric Java využít **mavencentral**. Tento rychlý start vám pomůže aktualizovat stávající aplikace v Javě, které jste dříve vytvořili pro použití se sadou Service Fabric Java SDK, a to pomocí šablony Yeoman nebo Eclipse, aby byly kompatibilní se sestavením založeným na Mavenu.
 
 ## <a name="prerequisites"></a>Požadavky
-1. Je třeba nejprve toouninstall hello existující sady Java SDK.
+1. Nejdřív musíte odinstalovat stávající sadu Java SDK.
 
   ```bash
   sudo dpkg -r servicefabricsdkjava
   ```
-2. Instalace hello nejnovější Service Fabric rozhraní příkazového řádku následující hello uvedených pokynů [zde](service-fabric-cli.md).
+2. Pomocí kroků uvedených [tady](service-fabric-cli.md) nainstalujte nejnovější rozhraní příkazového řádku Service Fabric.
 
-3. toobuild a práce na hello aplikací Service Fabric Java, je nutné tooensure, že máte JDK 1.8 a Gradle nainstalována. Pokud dosud není nainstalován, můžete spustit hello následující tooinstall JDK 1.8 (openjdk-8-jdk) a Gradle -
+3. Pokud chcete sestavovat aplikace Service Fabric Java a pracovat s nimi, musíte zajistit, že máte nainstalovanou sadu JDK 1.8 a Gradle. Pokud ještě nejsou instalované, můžete sadu JDK 1.8.(openjdk-1.8-jdk) a Gradle nainstalovat spuštěním následujícího kódu:
 
  ```bash
  sudo apt-get install openjdk-8-jdk-headless
  sudo apt-get install gradle
  ```
-4. Aktualizace hello instalace nebo odinstalace skripty toouse vaší aplikace hello nové služby Fabric rozhraní příkazového řádku následující uvedených pokynů hello [zde](service-fabric-application-lifecycle-sfctl.md). Naleznete v části Začínáme tooour [příklady](https://github.com/Azure-Samples/service-fabric-java-getting-started) pro referenci.
+4. Aktualizujte instalační/odinstalační skripty vaší aplikace, aby používaly nové rozhraní příkazového řádku Service Fabric, a to pomocí kroků uvedených [tady](service-fabric-application-lifecycle-sfctl.md). Pro srovnání si můžete prohlédnout naše úvodní [příklady](https://github.com/Azure-Samples/service-fabric-java-getting-started).
 
 >[!TIP]
-> Po odinstalaci hello Service Fabric Java SDK Yeoman nebude fungovat. Postupujte podle uvedených požadavků hello [sem](service-fabric-create-your-first-linux-application-with-java.md) toohave Service Fabric Yeoman Java šablony generátor nahoru a práce.
+> Po odinstalaci Service Fabric Java SDK nebude Yeoman fungovat. Pokud chcete zprovoznit generátor šablon Service Fabric Yeoman Java, postupujte v souladu s požadavky uvedenými [tady](service-fabric-create-your-first-linux-application-with-java.md).
 
 ## <a name="service-fabric-java-libraries-on-maven"></a>Knihovny Service Fabric Java v Mavenu
-Hostitelem knihoven Service Fabric Java je Maven. Můžete přidat závislosti hello v hello ``pom.xml`` nebo ``build.gradle`` knihoven vaše projekty toouse Service Fabric Java z **mavenCentral**.
+Hostitelem knihoven Service Fabric Java je Maven. Můžete přidat závislosti do souborů ``pom.xml`` nebo ``build.gradle`` vašich projektů, aby se používaly knihovny Service Fabric Java z úložiště **mavenCentral**.
 
 ### <a name="actors"></a>Objekty actor
 
@@ -90,7 +90,7 @@ Podpora bezstavové služby Service Fabric pro vaši aplikaci.
 ### <a name="others"></a>Ostatní
 #### <a name="transport"></a>Přenos
 
-Podpora přenosové vrstvy pro aplikace Service Fabric Java. Není nutné tooexplicitly přidat tuto závislost tooyour spolehlivé objektu Actor nebo aplikace služby, pokud program v přenosové vrstvě hello.
+Podpora přenosové vrstvy pro aplikace Service Fabric Java. Pokud neprogramujete na úrovni přenosové vrstvy, nemusíte tuto závislost do aplikace Reliable Actor nebo aplikace služby explicitně přidávat.
 
   ```XML
   <dependency>
@@ -111,7 +111,7 @@ Podpora přenosové vrstvy pro aplikace Service Fabric Java. Není nutné tooexp
 
 #### <a name="fabric-support"></a>Podpora prostředků infrastruktury
 
-Systém úrovně podpory pro Service Fabric, která komunikuje toonative modulu runtime Service Fabric. Není nutné tooexplicitly přidat tuto závislost tooyour spolehlivé objektu Actor nebo aplikace služby. To získá automaticky načtených z Maven, jakmile zahrnete hello jiných závislostí uvedených výše.
+Podpora na úrovni systému pro Service Fabric, která komunikuje s modulem runtime nativním pro Service Fabric. Tuto závislost nemusíte do aplikace Reliable Actor nebo aplikace služby explicitně přidávat. Načte se z Mavenu automaticky, jakmile zahrnete ostatní závislosti uvedené výše.
 
   ```XML
   <dependency>
@@ -133,7 +133,7 @@ Systém úrovně podpory pro Service Fabric, která komunikuje toonative modulu 
 
 ## <a name="migrating-service-fabric-stateless-service"></a>Migrace bezstavové služby Service Fabric
 
-možnost toobuild toobe existující Service Fabric bezstavové Java service pomocí Service Fabric závislosti načtených z Maven, je nutné tooupdate hello ``build.gradle`` souboru uvnitř hello služby. Dříve takto - toobe jako použije
+Pokud chcete mít možnost sestavovat stávající bezstavové služby Service Fabric v Javě s využitím závislostí Service Fabric načtených z Mavenu, je potřeba v rámci příslušné služby aktualizovat soubor ``build.gradle``. Dříve vypadal takto:
 ```
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
@@ -166,7 +166,7 @@ task copyDeps <<{
     }
 }
 ```
-Nyní, závislostí hello toofetch z Maven, hello **aktualizovat** ``build.gradle`` by měla mít odpovídající části hello takto -
+Teď by měl **aktualizovaný** soubor ``build.gradle`` pro načtení závislostí z Mavenu mít příslušné části změněné takto:
 ```
 repositories {
         mavenCentral()
@@ -219,20 +219,20 @@ task copyDeps <<{
     }
 }
 ```
-Obecně platí tooget celkovou představu o tom, jak sestavit hello skript bude vypadat Service Fabric bezstavové služby Java, tooany ukázka můžete odkazovat z našich úvodních příklady. Tady je hello [build.gradle](https://github.com/Azure-Samples/service-fabric-java-getting-started/blob/master/Services/EchoServer/EchoServer1.0/EchoServerService/build.gradle) pro ukázku EchoServer hello.
+Obecně platí, že k získání celkové představy o tom, jak bude vypadat skript sestavení pro bezstavovou službu Service Fabric v Javě, můžete využít libovolnou ukázku z našich úvodních příkladů. Tady je [build.gradle](https://github.com/Azure-Samples/service-fabric-java-getting-started/blob/master/Services/EchoServer/EchoServer1.0/EchoServerService/build.gradle) pro ukázku EchoServer.
 
 ## <a name="migrating-service-fabric-actor-service"></a>Migrace Service Fabric Actor Service
 
-možnost toobuild toobe existující Service Fabric objektu Actor aplikace v jazyce Java pomocí Service Fabric závislosti načtených z Maven, je nutné tooupdate hello ``build.gradle`` soubor uvnitř balíčku rozhraní hello a v balíčku služby hello. Pokud máte TestClient balíčku, musíte to také tooupdate. Ano, pro vaše objektu actor ``Myactor``, následující hello by hello míst, kde je nutné tooupdate -
+Pokud chcete mít možnost sestavovat stávající aplikaci Service Fabric Actor v Javě s využitím závislostí Service Fabric načtených z Mavenu, je potřeba v rámci balíčku rozhraní a balíčku příslušné služby aktualizovat soubor ``build.gradle``. Pokud máte balíček TestClient, musíte ho také aktualizovat. Takže pro objekt actor ``Myactor``, je potřeba aktualizovat tato místa:
 ```
 ./Myactor/build.gradle
 ./MyactorInterface/build.gradle
 ./MyactorTestClient/build.gradle
 ```
 
-#### <a name="updating-build-script-for-hello-interface-project"></a>Aktualizace sestavení skript pro hello rozhraní projektu
+#### <a name="updating-build-script-for-the-interface-project"></a>Aktualizace skriptu sestavení pro projekt rozhraní
 
-Dříve takto - toobe jako použije
+Dříve vypadal takto:
 ```
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
@@ -240,7 +240,7 @@ dependencies {
 .
 .
 ```
-Nyní, závislostí hello toofetch z Maven, hello **aktualizovat** ``build.gradle`` by měla mít odpovídající části hello takto -
+Teď by měl **aktualizovaný** soubor ``build.gradle`` pro načtení závislostí z Mavenu mít příslušné části změněné takto:
 ```
 repositories {
     mavenCentral()
@@ -271,9 +271,9 @@ compileJava.dependsOn(explodeDeps)
 .
 ```
 
-#### <a name="updating-build-script-for-hello-actor-project"></a>Aktualizace sestavení skript pro projekt hello objektu actor
+#### <a name="updating-build-script-for-the-actor-project"></a>Aktualizace skriptu sestavení pro projekt objektu actor
 
-Dříve takto - toobe jako použije
+Dříve vypadal takto:
 ```
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
@@ -312,7 +312,7 @@ task copyDeps<< {
     }
 }
 ```
-Nyní, závislostí hello toofetch z Maven, hello **aktualizovat** ``build.gradle`` by měla mít odpovídající části hello takto -
+Teď by měl **aktualizovaný** soubor ``build.gradle`` pro načtení závislostí z Mavenu mít příslušné části změněné takto:
 ```
 repositories {
     mavenCentral()
@@ -370,9 +370,9 @@ task copyDeps<< {
 }
 ```
 
-#### <a name="updating-build-script-for-hello-test-client-project"></a>Aktualizace sestavení skript pro hello testovacího klienta projektu
+#### <a name="updating-build-script-for-the-test-client-project"></a>Aktualizace skriptu sestavení pro testovací klientský projekt
 
-Změny tady jsou podobné toohello změny popsané v předchozí části, tedy hello objektu actor projektu. Dříve hello Gradle toobe skriptu použít jako takto-
+Změny jsou v tomto případě podobné změnám probraným v předchozí části, to znamená u projektu objektu actor. Dříve skript Gradle vypadal takto:
 ```
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
@@ -412,7 +412,7 @@ task copyDeps<< {
         }
 }
 ```
-Nyní, závislostí hello toofetch z Maven, hello **aktualizovat** ``build.gradle`` by měla mít odpovídající části hello takto -
+Teď by měl **aktualizovaný** soubor ``build.gradle`` pro načtení závislostí z Mavenu mít příslušné části změněné takto:
 ```
 repositories {
     mavenCentral()
@@ -476,4 +476,4 @@ task copyDeps<< {
 
 * [Vytvoření a nasazení první aplikace Service Fabric v Javě v Linuxu pomocí Yeomana](service-fabric-create-your-first-linux-application-with-java.md)
 * [Vytvoření a nasazení první aplikace Service Fabric v Javě v Linuxu pomocí modulu plug-in Service Fabric pro Eclipse](service-fabric-get-started-eclipse.md)
-* [Komunikovat s clusterů Service Fabric pomocí hello Service Fabric rozhraní příkazového řádku](service-fabric-cli.md)
+* [Komunikace s clustery Service Fabric pomocí rozhraní příkazového řádku Service Fabric](service-fabric-cli.md)

@@ -1,6 +1,6 @@
 ---
-title: "aaaDelegate tooAzure vaší domény DNS | Microsoft Docs"
-description: "Pochopte, jak se toochange delegování domény a použití Azure DNS název, hostování domény tooprovide servery."
+title: "Delegování domény do Azure DNS | Dokumentace Microsoftu"
+description: "Zjistěte, jak změnit delegování domény a pomocí názvových serverů Azure DNS umožněte hosting domén."
 services: dns
 documentationcenter: na
 author: georgewallace
@@ -13,62 +13,62 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: gwallace
-ms.openlocfilehash: f780bdaa416150e5e3afe6c6845dc75ba54b6203
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 33b3ec24432ff1268860b9a2e9d5098600a8dedc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="delegate-a-domain-tooazure-dns"></a>Delegát tooAzure domény DNS
+# <a name="delegate-a-domain-to-azure-dns"></a>Delegování domény do Azure DNS
 
-Azure DNS vám umožní toohost zóny DNS a spravovat hello záznamy DNS pro doménu v Azure. Aby dotazy DNS pro domény tooreach Azure DNS, má doména hello toobe delegovaná z nadřazené domény hello tooAzure DNS. Mějte na paměti Azure DNS není doménový Registrátor hello. Tento článek vysvětluje, jak toodelegate tooAzure vaší domény DNS.
+Azure DNS vám umožňuje hostovat zónu DNS a spravovat záznamy DNS pro doménu v Azure. Mají-li se dotazy DNS pro doménu dostat k Azure DNS, musí doména být delegovaná z nadřazené domény do Azure DNS. Pamatujte, že Azure DNS není doménový registrátor. Tento článek vysvětluje, jak delegovat doménu do Azure DNS.
 
-U domén zakoupených od doménového registrátora registrátora nabízí možnost tooset hello si tyto záznamy NS. Nemáte tooown domény toocreate zónu DNS s tímto názvem domény v Azure DNS. Je však nutné, aby tooown hello domény tooset až tooAzure hello delegování DNS u registrátora hello.
+U domén zakoupených od doménového registrátora nabídne registrátor možnost nastavit tyto záznamy NS. Pro vytvoření zóny DNS s názvem domény v DNS Azure nemusíte tuto doménu vlastnit. Chcete-li však u registrátora nastavit delegování domény do Azure DNS, musíte tuto doménu vlastnit.
 
-Předpokládejme například, nákupu hello domény "contoso.net" a v Azure DNS vytvoříte zónu s názvem hello "contoso.net". Jako vlastník hello hello domény vašeho registrátora nabízí že Hello možnost tooconfigure hello adresy názvových serverů (tedy záznamy hello NS) pro doménu. Hello Registrátor uloží tyto záznamy NS v nadřazené doméně hello, v tomto případě ".net.. Klienti kolem hello, world pak lze směrovanou tooyour doménu v zóně Azure DNS, při pokusu o tooresolve záznamů DNS v "contoso.net".
+Předpokládejme například, že zakoupíte doménu contoso.net a v Azure DNS vytvoříte zónu s názvem contoso.net. Jako vlastníkovi domény vám registrátor nabídne možnost konfigurovat pro vaši doménu adresy názvových serverů (tj. záznamů NS). Doménový registrátor uloží tyto záznamy NS v nadřazené doméně, v tomto případě „.net“. Klienti po celém světě pak mohou být při pokusu o překlad záznamů DNS v contoso.net přesměrováni na vaši doménu v zóně Azure DNS.
 
 ## <a name="create-a-dns-zone"></a>Vytvoření zóny DNS
 
-1. Přihlaste se toohello portálu Azure
-1. V nabídce centra hello, klikněte na tlačítko a klikněte na tlačítko **nový > sítě >** a pak klikněte na **zónu DNS** tooopen hello vytvoření DNS zóny okno.
+1. Přihlášení k webu Azure Portal
+1. V nabídce centra klikněte na **Nový > Sítě >** a potom kliknutím na **Zóna DNS** otevřete okno Vytvořit zónu DNS.
 
     ![Zóna DNS](./media/dns-domain-delegation/dns.png)
 
-1. Na hello **zóny DNS vytvořte** okno Zadejte hello následující hodnoty a pak klikněte na **vytvořit**:
+1. V okně **Vytvořit zónu DNS** zadejte následující hodnoty a pak klikněte na **Vytvořit**:
 
    | **Nastavení** | **Hodnota** | **Podrobnosti** |
    |---|---|---|
-   |**Název**|contoso.net|Název zóny DNS hello Hello|
-   |**Předplatné**|[Vaše předplatné]|Vyberte bránu předplatné toocreate hello aplikace v.|
-   |**Skupina prostředků**|**Vytvořit novou:** contosoRG|Vytvořte skupinu prostředků. Název skupiny prostředků Hello musí být jedinečný v rámci předplatného hello, který jste vybrali. Další informace o skupinách prostředků, přečtěte si hello toolearn [Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) článek s přehledem.|
+   |**Název**|contoso.net|Název zóny DNS|
+   |**Předplatné**|[Vaše předplatné]|Vyberte předplatné, ve kterém se má služba Application Gateway vytvořit.|
+   |**Skupina prostředků**|**Vytvořit novou:** contosoRG|Vytvořte skupinu prostředků. Název skupiny prostředků musí být v rámci vybraného předplatného jedinečný. Další informace o skupinách prostředků najdete v článku s přehledem [Resource Manageru](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups).|
    |**Umístění**|Západní USA||
 
 > [!NOTE]
-> Skupina prostředků Hello odkazuje toohello umístění skupiny prostředků hello a nemá žádný vliv na zónu DNS hello. umístění zóny DNS Hello je vždy "globální" a není zobrazen.
+> Skupina prostředků označuje umístění skupiny prostředků a nemá žádný vliv na zónu DNS. Umístění zóny DNS je vždy globální a není zobrazeno.
 
 ## <a name="retrieve-name-servers"></a>Načtení názvových serverů
 
-Předtím, než můžete delegovat vaše tooAzure DNS zóny DNS, musíte nejprve názvy tooknow hello názvových serverů zóny. Azure DNS přiděluje názvové servery z fondu vždy, když je vytvořena zóna.
+Předtím, než budete moci svoji zónu DNS delegovat do Azure DNS, musíte znát názvy názvových serverů pro vaši zónu. Azure DNS přiděluje názvové servery z fondu vždy, když je vytvořena zóna.
 
-1. S zóny DNS hello vytvořené v hello portál Azure **Oblíbené** podokně klikněte na tlačítko **všechny prostředky**. Klikněte na tlačítko hello **contoso.net** zónu DNS v hello **všechny prostředky** okno. Pokud jste vybrali, již předplatné hello neobsahuje několik prostředků, můžete zadat **contoso.net** v hello filtr podle názvu... pole tooeasily přístup hello aplikační brány. 
+1. Když máte vytvořenou zónu DNS, na webu Azure Portal v podokně **Oblíbené** klikněte na **Všechny prostředky**. V okně **Všechny prostředky** klikněte na zónu DNS **contoso.net**. Pokud předplatné, které jste vybrali, již obsahovalo nějaké prostředky, můžete zadat **contoso.net** do pole Filtrovat podle názvu... pro snadný přístup ke službě Application Gateway. 
 
-1. V okně zóny DNS hello načíst hello názvové servery. V tomto příkladu hello zónu "contoso.net" přiřazené názvové servery ' ns1-01.azure-dns.com', 'ns2-01.azure-DNS.NET', ' ns3-01.azure-dns.org', a ' ns4-01.azure-dns.info':
+1. Načtěte názvové servery z okna zóny DNS. V tomto případě byly pro zónu contoso.net přiřazené názvové servery ns1-01.azure-dns.com, ns2-01.azure-dns.net, ns3-01.azure-dns.org a ns4-01.azure-dns.info:
 
  ![Názvový server DNS](./media/dns-domain-delegation/viewzonens500.png)
 
-Azure DNS automaticky vytvoří záznamy autoritativních NS ve vaší zóně obsahující hello přiřazené názvové servery.  názvy toosee hello název serveru pomocí prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure, jednoduše musíte tooretrieve tyto záznamy.
+Azure DNS automaticky vytvoří ve vaší zóně záznamy autoritativních NS, které obsahují přiřazené názvové servery.  Chcete-li zobrazit názvy názvových serverů prostřednictvím Azure PowerShellu nebo rozhraní příkazového řádku Azure, stačí jednoduše načíst tyto záznamy.
 
-Hello následující příklady také popisují hello tooretrieve hello názvové servery pro zónu v Azure DNS pomocí prostředí PowerShell a rozhraní příkazového řádku Azure.
+Následující příklady popisují také postup načtení názvových serverů pro zónu v Azure DNS pomocí PowerShellu a Azure CLI.
 
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-# hello record name "@" is used toorefer toorecords at hello top of hello zone.
+# The record name "@" is used to refer to records at the top of the zone.
 $zone = Get-AzureRmDnsZone -Name contoso.net -ResourceGroupName contosoRG
 Get-AzureRmDnsRecordSet -Name "@" -RecordType NS -Zone $zone
 ```
 
-Následující ukázka Hello je hello odpovědi.
+Dalším příkladem je tato odpověď.
 
 ```
 Name              : @
@@ -88,7 +88,7 @@ Metadata          :
 az network dns record-set show --resource-group contosoRG --zone-name contoso.net --type NS --name @
 ```
 
-Následující ukázka Hello je hello odpovědi.
+Dalším příkladem je tato odpověď.
 
 ```json
 {
@@ -116,25 +116,25 @@ Následující ukázka Hello je hello odpovědi.
 }
 ```
 
-## <a name="delegate-hello-domain"></a>Delegát hello domény
+## <a name="delegate-the-domain"></a>Delegování domény
 
-Teď, když je vytvořena zóna DNS hello a máte hello názvové servery, musí hello nadřazené domény toobe aktualizovat pomocí názvových serverů Azure DNS hello. Každý Registrátor má vlastní DNS správy nástroje toochange hello záznamy názvového serveru pro doménu. Na stránce správy DNS vašeho registrátora hello upravit záznamy NS hello a nahraďte záznamy NS hello hello ty, které vytvořil Azure DNS.
+Teď, když je vytvořena zóna DNS a máte názvové servery, je potřeba aktualizovat nadřazenou doménu o názvové servery Azure DNS. Každý registrátor má vlastní nástroje pro správu DNS, které umožňují měnit záznamy názvových serverů pro doménu. Na stránce správy DNS vašeho registrátora upravte záznamy NS a nahraďte je záznamy NS, které vytvořil Azure DNS.
 
-Při delegování domény tooAzure DNS, musíte použít názvy názvových serverů hello poskytuje Azure DNS. Je doporučeno toouse všechny čtyři název názvů serverů, bez ohledu na to hello název vaší domény. Delegování domény nevyžaduje hello název serveru název toouse hello stejné domény nejvyšší úrovně jako doménu.
+Při delegování domény do Azure DNS musíte použít názvy názvových serverů, které poskytuje Azure DNS. Doporučuje se vždycky použít všechny čtyři názvy názvových serverů bez ohledu na název domény. Delegování domény nevyžaduje, aby název názvového serveru používal jako vaši doménu stejnou doménu nejvyšší úrovně.
 
-Neměli byste používat "spojovací záznamy" toopoint toohello Azure DNS název IP adresy serverů, protože tyto IP adresy mohou v budoucnu měnit. Delegování pomocí názvů názvových serverů ve vaší vlastní zóně, někdy označovaných jako „jednoduché názvové servery“, v současné době není v Azure DNS podporované.
+Pro ukazování na IP adresy názvových serverů Azure DNS byste neměli používat „spojovací záznamy“, protože se tyto IP adresy mohou v budoucnu měnit. Delegování pomocí názvů názvových serverů ve vaší vlastní zóně, někdy označovaných jako „jednoduché názvové servery“, v současné době není v Azure DNS podporované.
 
 ## <a name="verify-name-resolution-is-working"></a>Ověření, že překlad názvů funguje
 
-Po dokončení hello delegování, můžete ověřit, že funguje překlad adres pomocí nástroje, jako je například "nslookup" tooquery hello záznam SOA pro vaši zónu (ten je také automaticky vytvořený při vytváření zóny hello).
+Po dokončení delegování můžete ověřit, že překlad názvů funguje, pomocí nástroje, jako je například nslookup, který se dotáže na záznam SOA pro vaši zónu (ten je také automaticky vytvořený při vytváření zóny).
 
-Nemají názvových serverů Azure DNS hello toospecify, pokud hello delegování byla nastavena správně, hello normální proces překladu DNS nalezne názvové servery hello automaticky.
+Nemusíte určit názvové servery Azure DNS, protože pokud bylo delegování správně nastaveno, normální proces překladu DNS najde názvové servery automaticky.
 
 ```
 nslookup -type=SOA contoso.com
 ```
 
-Hello následuje odpověď příklad z hello předcházející příkaz:
+Následuje příklad odpovědi z předchozího příkazu:
 
 ```
 Server: ns1-04.azure-dns.com
@@ -152,81 +152,81 @@ default TTL = 300 (5 mins)
 
 ## <a name="delegate-sub-domains-in-azure-dns"></a>Delegování subdomén v Azure DNS
 
-Pokud chcete tooset až samostatnou podřízenou zónu, můžete delegovat subdomény v Azure DNS. Například s nastavit a delegované "contoso.net" v Azure DNS Předpokládejme, že byste chtěli tooset až samostatnou podřízenou zónu, 'partners.contoso.net'.
+Chcete-li nastavit samostatnou podřízenou zónu, můžete subdoménu delegovat v Azure DNS. Předpokládejme například, že jste již v Azure DNS nastavili a delegovali contoso.net, a chtěli byste nastavit samostatnou podřízenou zónu partners.contoso.net.
 
-1. Partners.contoso.net' hello podřízenou zónu' vytvořte v Azure DNS.
-2. Vyhledejte záznamy autoritativních NS hello v hello podřízené zóny tooobtain hello názvové servery hostující podřízenou zónu hello v Azure DNS.
-3. Delegát hello podřízenou zónu pomocí konfigurace záznamů NS v nadřazené zóně hello odkazující toohello podřízenou zónu.
+1. V Azure DNS vytvořte podřízenou zónu partners.contoso.net.
+2. Vyhledejte záznamy autoritativních NS v podřízené zóně a získejte tak názvové servery hostující podřízenou zónu v Azure DNS.
+3. Delegujte podřízenou zónu pomocí konfigurace záznamů NS v nadřazené zóně tak, aby ukazovaly na podřízenou zónu.
 
 ### <a name="create-a-dns-zone"></a>Vytvoření zóny DNS
 
-1. Přihlaste se toohello portálu Azure
-1. V nabídce centra hello, klikněte na tlačítko a klikněte na tlačítko **nový > sítě >** a pak klikněte na **zónu DNS** tooopen hello vytvoření DNS zóny okno.
+1. Přihlášení k webu Azure Portal
+1. V nabídce centra klikněte na **Nový > Sítě >** a potom kliknutím na **Zóna DNS** otevřete okno Vytvořit zónu DNS.
 
     ![Zóna DNS](./media/dns-domain-delegation/dns.png)
 
-1. Na hello **zóny DNS vytvořte** okno Zadejte hello následující hodnoty a pak klikněte na **vytvořit**:
+1. V okně **Vytvořit zónu DNS** zadejte následující hodnoty a pak klikněte na **Vytvořit**:
 
    | **Nastavení** | **Hodnota** | **Podrobnosti** |
    |---|---|---|
-   |**Název**|partners.contoso.net|Název zóny DNS hello Hello|
-   |**Předplatné**|[Vaše předplatné]|Vyberte bránu předplatné toocreate hello aplikace v.|
-   |**Skupina prostředků**|**Použít existující:** contosoRG|Vytvořte skupinu prostředků. Název skupiny prostředků Hello musí být jedinečný v rámci předplatného hello, který jste vybrali. Další informace o skupinách prostředků, přečtěte si hello toolearn [Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) článek s přehledem.|
+   |**Název**|partners.contoso.net|Název zóny DNS|
+   |**Předplatné**|[Vaše předplatné]|Vyberte předplatné, ve kterém se má služba Application Gateway vytvořit.|
+   |**Skupina prostředků**|**Použít existující:** contosoRG|Vytvořte skupinu prostředků. Název skupiny prostředků musí být v rámci vybraného předplatného jedinečný. Další informace o skupinách prostředků najdete v článku s přehledem [Resource Manageru](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups).|
    |**Umístění**|Západní USA||
 
 > [!NOTE]
-> Skupina prostředků Hello odkazuje toohello umístění skupiny prostředků hello a nemá žádný vliv na zónu DNS hello. umístění zóny DNS Hello je vždy "globální" a není zobrazen.
+> Skupina prostředků označuje umístění skupiny prostředků a nemá žádný vliv na zónu DNS. Umístění zóny DNS je vždy globální a není zobrazeno.
 
 ### <a name="retrieve-name-servers"></a>Načtení názvových serverů
 
-1. S zóny DNS hello vytvořené v hello portál Azure **Oblíbené** podokně klikněte na tlačítko **všechny prostředky**. Klikněte na tlačítko hello **partners.contoso.net** zónu DNS v hello **všechny prostředky** okno. Pokud jste vybrali, již předplatné hello neobsahuje několik prostředků, můžete zadat **partners.contoso.net** v hello filtr podle názvu... pole tooeasily přístup hello DNS zóny.
+1. Když máte vytvořenou zónu DNS, na webu Azure Portal v podokně **Oblíbené** klikněte na **Všechny prostředky**. V okně **Všechny prostředky** klikněte na zónu DNS **partners.contoso.net**. Pokud předplatné, které jste vybrali, již obsahovalo nějaké prostředky, můžete zadat **partners.contoso.net** do pole Filtrovat podle názvu... pro snadný přístup k zóně DNS.
 
-1. V okně zóny DNS hello načíst hello názvové servery. V tomto příkladu hello zónu "contoso.net" přiřazené názvové servery ' ns1-01.azure-dns.com', 'ns2-01.azure-DNS.NET', ' ns3-01.azure-dns.org', a ' ns4-01.azure-dns.info':
+1. Načtěte názvové servery z okna zóny DNS. V tomto případě byly pro zónu contoso.net přiřazené názvové servery ns1-01.azure-dns.com, ns2-01.azure-dns.net, ns3-01.azure-dns.org a ns4-01.azure-dns.info:
 
  ![Názvový server DNS](./media/dns-domain-delegation/viewzonens500.png)
 
-Azure DNS automaticky vytvoří záznamy autoritativních NS ve vaší zóně obsahující hello přiřazené názvové servery.  názvy toosee hello název serveru pomocí prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure, jednoduše musíte tooretrieve tyto záznamy.
+Azure DNS automaticky vytvoří ve vaší zóně záznamy autoritativních NS, které obsahují přiřazené názvové servery.  Chcete-li zobrazit názvy názvových serverů prostřednictvím Azure PowerShellu nebo rozhraní příkazového řádku Azure, stačí jednoduše načíst tyto záznamy.
 
 ### <a name="create-name-server-record-in-parent-zone"></a>Vytvoření záznamu názvového serveru v nadřazené zóně
 
-1. Přejděte toohello **contoso.net** zónu DNS v hello portálu Azure.
+1. Na webu Azure Portal přejděte k zóně DNS **contoso.net**.
 1. Klikněte na **+ Sada záznamů**.
-1. Na hello **přidat sadu záznamů** okno, zadejte následující hodnoty hello a pak klikněte na **OK**:
+1. V okně **Přidat sadu záznamů** zadejte následující hodnoty a klikněte na **OK**:
 
    | **Nastavení** | **Hodnota** | **Podrobnosti** |
    |---|---|---|
-   |**Název**|partners|Název zóny DNS podřízené hello Hello|
+   |**Název**|partners|Název podřízené zóny DNS|
    |**Typ**|NS|Pro záznamy názvového serveru použijte NS.|
-   |**Hodnota TTL**|1|Čas toolive.|
-   |**Jednotka hodnoty TTL**|Hodiny|Nastaví toohours toolive jednotka času|
-   |**NÁZVOVÝ SERVER**|{názvové servery ze zóny partners.contoso.net}|Zadejte všechny 4 hello názvové servery z partners.contoso.net zóny. |
+   |**Hodnota TTL**|1|Hodnota TTL (Time to Live).|
+   |**Jednotka hodnoty TTL**|Hodiny|Nastaví jednotku hodnoty TTL (Time to Live) na hodiny.|
+   |**NÁZVOVÝ SERVER**|{názvové servery ze zóny partners.contoso.net}|Zadejte všechny 4 názvové servery ze zóny partners.contoso.net. |
 
    ![Názvový server DNS](./media/dns-domain-delegation/partnerzone.png)
 
 
 ### <a name="delegating-sub-domains-in-azure-dns-with-other-tools"></a>Delegování subdomén v Azure DNS pomocí jiných nástrojů
 
-Hello následující příklady popisují hello toodelegate subdomén v Azure DNS pomocí prostředí PowerShell a rozhraní příkazového řádku:
+Následující příklady popisují postup delegování subdomén v Azure DNS pomocí PowerShellu a rozhraní příkazového řádku:
 
 #### <a name="powershell"></a>PowerShell
 
-Hello následující příklad PowerShell ukazuje, jak to funguje. Hello stejný postup lze provést prostřednictvím hello portál Azure nebo prostřednictvím hello rozhraní příkazového řádku Azure napříč platformami.
+Následující příklad PowerShell ukazuje, jak to funguje. Stejný postup lze provést prostřednictvím webu Azure Portal nebo víceplatformového rozhraní příkazového řádku Azure CLI.
 
 ```powershell
-# Create hello parent and child zones. These can be in same resource group or different resource groups as Azure DNS is a global service.
+# Create the parent and child zones. These can be in same resource group or different resource groups as Azure DNS is a global service.
 $parent = New-AzureRmDnsZone -Name contoso.net -ResourceGroupName contosoRG
 $child = New-AzureRmDnsZone -Name partners.contoso.net -ResourceGroupName contosoRG
 
-# Retrieve hello authoritative NS records from hello child zone as shown in hello next example. This contains hello name servers assigned toohello child zone.
+# Retrieve the authoritative NS records from the child zone as shown in the next example. This contains the name servers assigned to the child zone.
 $child_ns_recordset = Get-AzureRmDnsRecordSet -Zone $child -Name "@" -RecordType NS
 
-# Create hello corresponding NS record set in hello parent zone toocomplete hello delegation. hello record set name in hello parent zone matches hello child zone name, in this case "partners".
+# Create the corresponding NS record set in the parent zone to complete the delegation. The record set name in the parent zone matches the child zone name, in this case "partners".
 $parent_ns_recordset = New-AzureRmDnsRecordSet -Zone $parent -Name "partners" -RecordType NS -Ttl 3600
 $parent_ns_recordset.Records = $child_ns_recordset.Records
 Set-AzureRmDnsRecordSet -RecordSet $parent_ns_recordset
 ```
 
-Použití `nslookup` tooverify, které všechno, co jsou nastaveny správně vyhledáním záznamu SOA podřízené zóny hello hello.
+Pomocí rutiny `nslookup` můžete vyhledat záznam SOA podřízené zóny a ověřit tak, že je všechno správně nastavené.
 
 ```
 nslookup -type=SOA partners.contoso.com
@@ -251,12 +251,12 @@ partners.contoso.com
 ```azurecli
 #!/bin/bash
 
-# Create hello parent and child zones. These can be in same resource group or different resource groups as Azure DNS is a global service.
+# Create the parent and child zones. These can be in same resource group or different resource groups as Azure DNS is a global service.
 az network dns zone create -g contosoRG -n contoso.net
 az network dns zone create -g contosoRG -n partners.contoso.net
 ```
 
-Načtení hello názvové servery pro hello `partners.contoso.net` zóny z výstupu hello.
+Načtěte z výstupu názvové servery pro zónu `partners.contoso.net`.
 
 ```
 {
@@ -278,12 +278,12 @@ Načtení hello názvové servery pro hello `partners.contoso.net` zóny z výst
 }
 ```
 
-Vytvořte hello sady záznamů a záznamy NS pro každý název serveru.
+Vytvořte pro každý názvový server sadu záznamů a záznamy NS.
 
 ```azurecli
 #!/bin/bash
 
-# Create hello record set
+# Create the record set
 az network dns record-set ns create --resource-group contosorg --zone-name contoso.net --name partners
 
 # Create a ns record for each name server.
@@ -295,11 +295,11 @@ az network dns record-set ns add-record --resource-group contosorg --zone-name c
 
 ## <a name="delete-all-resources"></a>Odstranění všech prostředků
 
-toodelete vytvořit všechny prostředky v tomto článku, dokončení hello následující kroky:
+Pokud chcete odstranit všechny prostředky vytvořené v rámci tohoto článku, proveďte následující kroky:
 
-1. V portálu Azure hello **Oblíbené** podokně klikněte na tlačítko **všechny prostředky**. Klikněte na tlačítko hello **contosorg** skupina prostředků v hello okno všechny prostředky. Pokud jste vybrali, již předplatné hello neobsahuje několik prostředků, můžete zadat **contosorg** v hello **filtrovat podle názvu...** pole tooeasily přístup hello prostředků skupiny.
-1. V hello **contosorg** okně klikněte na tlačítko hello **odstranit** tlačítko.
-1. Hello portál vyžaduje tootype hello název hello prostředků skupiny tooconfirm, které chcete toodelete ho. Typ *contosorg* hello název skupiny prostředků, klikněte **odstranit**. Odstranění skupiny prostředků se odstraní všechny prostředky v rámci skupiny prostředků hello, takže vždy být zda tooconfirm hello obsah skupinu prostředků. před odstraněním. Odstraní všechny prostředky obsažené v rámci skupiny prostředků hello Hello portálu, a pak odstraní samotná skupina prostředků hello. Tento proces trvá několik minut.
+1. Na webu Azure Portal v podokně **Oblíbené** klikněte na **Všechny prostředky**. V okně Všechny prostředky klikněte na skupinu prostředků **contosorg**. Pokud předplatné, které jste vybrali, již obsahovalo nějaké prostředky, můžete zadat **contosorg** do pole **Filtrovat podle názvu...** pro snadný přístup ke skupině prostředků.
+1. V okně **contosorg** klikněte na tlačítko **Odstranit**.
+1. Portál požaduje, abyste zadali název skupiny prostředků pro potvrzení, že ji skutečně chcete odstranit. Jako název skupiny prostředků zadejte *contosorg* a pak klikněte na **Odstranit**. Odstraněním skupiny prostředků se odstraní všechny prostředky v rámci dané skupiny prostředků. Proto nikdy nezapomeňte před odstraněním skupiny prostředků zkontrolovat její obsah. Portál odstraní všechny prostředky v rámci skupiny prostředků a potom odstraní samotnou skupinu prostředků. Tento proces trvá několik minut.
 
 ## <a name="next-steps"></a>Další kroky
 

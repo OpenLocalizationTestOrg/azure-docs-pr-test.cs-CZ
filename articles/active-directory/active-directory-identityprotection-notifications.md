@@ -1,5 +1,5 @@
 ---
-title: "oznámení ochrany identit služby Active Directory aaaAzure | Microsoft Docs"
+title: "Azure Active Directory Identity Protection oznámení | Microsoft Docs"
 description: "Zjistěte, jak oznámení podporují vaše aktivity šetření."
 services: active-directory
 keywords: "ochrany identit Azure active directory, cloud app discovery,. Správa aplikací, zabezpečení, rizik, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení"
@@ -16,29 +16,29 @@ ms.topic: article
 ms.date: 06/23/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 19e62374873f034591c658a779f97d935766c612
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 079d16bbf75cd2b3b94269d684e1ae1a0e6aa967
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure oznámení ochrany identit služby Active Directory
-Azure AD Identity Protection odešle dva typy oznámení automatizované e-maily toohelp, které můžete spravovat uživatele rizika a rizikových událostí:
+Azure AD Identity Protection odešle dva typy automatizované oznámení e-mailů vám pomůžou spravovat riziko pro uživatele a rizikových událostí:
 
 * Uživatel, dojde k ohrožení výstrahy e-mailu
 * Týdenní digest e-mailu
 
 ## <a name="user-compromised-alert-email"></a>Uživatel, dojde k ohrožení výstrahy e-mailu
-Ohrožené e-mailových upozornění na uživatele se vygeneruje, když Azure AD Identity Protection identifikuje účet jako ohrožení zabezpečení. e-mailu Hello zahrnuje odkaz toohello, které uživatelé označení příznakem pro sestavu riziko hello Identity Protection řídicím panelu. Doporučujeme prozkoumat okamžitě oznámení o ohrožených účty.
+Ohrožené e-mailových upozornění na uživatele se vygeneruje, když Azure AD Identity Protection identifikuje účet jako ohrožení zabezpečení. E-mailu obsahuje odkaz na uživatelé označení příznakem pro sestavu riziko v řídicím panelu ochrany identit. Doporučujeme prozkoumat okamžitě oznámení o ohrožených účty.
 
 ## <a name="weekly-digest-email"></a>Týdenní digest e-mailu
-Hello týdenní ověřování algoritmem digest, e-mailu obsahuje souhrn nových událostí riziko.<br>
+Týdenní digest e-mailu obsahuje souhrn nových událostí riziko.<br>
 Obsahuje:
 
 * Ohrožení uživatelé
 * Podezřelé aktivity
 * Zjištěné ohrožení zabezpečení
-* Odkazy toohello související sestavy v Identity Protection
+* Odkazy na související sestavy v Identity Protection
 
 <br>
 ![Náprava](./media/active-directory-identityprotection-notifications/400.png "nápravy")
@@ -49,13 +49,13 @@ Můžete přepnout odesílání týdenní ověřování algoritmem digest, e-mai
 ![Uživatel rizika](./media/active-directory-identityprotection-notifications/62.png "rizika uživatele")
 <br>
 
-**Dialogové okno související konfigurace hello tooopen**:
+**Tím otevřete dialogové okno Konfigurace související**:
 
-1. Na hello **Azure AD Identity Protection** okně klikněte na tlačítko **nastavení**.
+1. Na **Azure AD Identity Protection** okně klikněte na tlačítko **nastavení**.
    <br><br>
    ![Zásady uživatele riziko](./media/active-directory-identityprotection-notifications/401.png "riziko zásady uživatele")
    <br>
-2. V hello **Obecné** klikněte na tlačítko **oznámení**.
+2. V **Obecné** klikněte na tlačítko **oznámení**.
    <br><br>
    ![Zásady uživatele riziko](./media/active-directory-identityprotection-notifications/405.png "riziko zásady uživatele")
    <br>

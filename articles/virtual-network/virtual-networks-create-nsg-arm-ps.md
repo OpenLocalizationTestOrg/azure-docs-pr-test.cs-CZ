@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate skupin zabezpečení - sítě, prostředí Azure PowerShell | Microsoft Docs"
-description: "Zjistěte, jak toocreate a nasazení skupin zabezpečení sítě pomocí prostředí PowerShell."
+title: "Vytvoření skupin zabezpečení sítě - prostředí Azure PowerShell | Microsoft Docs"
+description: "Zjistěte, jak vytvořit a nasadit skupin zabezpečení sítě pomocí prostředí PowerShell."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1c8db773febb163d9cb010d23f2913b5ebe0fa94
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 26fe67b43d63c6685d8ae7644dd7df6931a4d2a5
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-network-security-groups-using-powershell"></a>Vytvoření sítě pomocí prostředí PowerShell skupin zabezpečení
 
@@ -28,17 +28,17 @@ ms.lasthandoff: 10/06/2017
 
 [!INCLUDE [virtual-networks-create-nsg-intro-include](../../includes/virtual-networks-create-nsg-intro-include.md)]
 
-Azure nabízí dva modely nasazení: Azure Resource Manager a Classic. Společnost Microsoft doporučuje vytváření prostředků prostřednictvím modelu nasazení Resource Manager hello. Další informace o toolearn hello rozdíly mezi hello dva modely, přečtěte si hello [modelech nasazení Azure pochopit](../azure-resource-manager/resource-manager-deployment-model.md) článku. Tento článek se týká modelu nasazení Resource Manager hello. Můžete také [vytvářet skupiny Nsg v modelu nasazení classic hello](virtual-networks-create-nsg-classic-ps.md).
+Azure nabízí dva modely nasazení: Azure Resource Manager a Classic. Microsoft doporučuje vytváření prostředků prostřednictvím modelu nasazení Resource Manager. Další informace o rozdílech mezi těmito dvěma modely najdete v článku [Vysvětlení modelů nasazení Azure](../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se týká modelu nasazení Resource Manager. Můžete také [vytvářet skupiny Nsg v modelu nasazení classic](virtual-networks-create-nsg-classic-ps.md).
 
 [!INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
-Ukázka Hello jednoduché prostředí už vytvořený očekávat níže uvedené příkazy prostředí PowerShell založené na scénář hello výše. Pokud chcete příkazy hello toorun, jak jsou zobrazeny v tomto dokumentu, vytvoření nasazením nejprve hello testovací prostředí [této šablony](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd), klikněte na tlačítko **nasazení tooAzure**, nahraďte hello výchozí hodnoty parametrů Pokud potřeby a postupujte podle pokynů hello v hello portálu.
+Ukázka jednoduché prostředí už vytvořený očekávat níže uvedené příkazy prostředí PowerShell založené na výše uvedené scénáře. Pokud chcete ke spuštění příkazů, jak jsou zobrazeny v tomto dokumentu, nasazením nejprve vytvořit testovací prostředí [této šablony](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd), klikněte na tlačítko **nasadit do Azure**, nahradí výchozí hodnoty parametrů v případě potřeby a postupujte podle pokynů v portálu.
 
-## <a name="how-toocreate-hello-nsg-for-hello-front-end-subnet"></a>Jak toocreate hello skupina NSG pro podsítě front end hello
-toocreate skupinu NSG s názvem *NSG front-endu* podle hello scénář, dokončete hello následující kroky:
+## <a name="how-to-create-the-nsg-for-the-front-end-subnet"></a>Postup vytvoření skupina NSG pro podsítě front end
+Chcete-li vytvořit skupinu NSG s názvem *NSG front-endu* závislosti na scénáři, proveďte následující kroky:
 
-1. Pokud jste prostředí Azure PowerShell nikdy nepoužívali, projděte si téma [jak tooInstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) a postupujte podle pokynů hello všechny toohello hello způsob ukončení toosign do Azure a vybrat své předplatné.
-2. Vytvořte pravidlo zabezpečení povolení přístupu z Internetu tooport hello 3389.
+1. Pokud jste prostředí Azure PowerShell nikdy nepoužívali, přejděte na téma [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) a proveďte všechny pokyny, abyste se mohli přihlásit k Azure a vybrat své předplatné.
+2. Vytvořte pravidlo zabezpečení umožňuje přístup k portu 3389 z Internetu.
 
     ```powershell
     $rule1 = New-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" `
@@ -47,7 +47,7 @@ toocreate skupinu NSG s názvem *NSG front-endu* podle hello scénář, dokonče
     -DestinationAddressPrefix * -DestinationPortRange 3389
     ```
 
-3. Vytvořte pravidlo zabezpečení povolení přístupu z Internetu tooport hello 80.
+3. Vytvořte pravidlo zabezpečení povolení přístupu z Internetu na port 80.
 
     ```powershell
     $rule2 = New-AzureRmNetworkSecurityRuleConfig -Name web-rule -Description "Allow HTTP" `
@@ -56,20 +56,20 @@ toocreate skupinu NSG s názvem *NSG front-endu* podle hello scénář, dokonče
     -DestinationPortRange 80
     ```
 
-4. Přidat pravidla hello vytvořili výše tooa s názvem nová skupina NSG **NSG front-endu**.
+4. Přidat pravidla vytvořili výše na nová skupina NSG s názvem **NSG front-endu**.
 
     ```powershell
     $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName TestRG -Location westus `
     -Name "NSG-FrontEnd" -SecurityRules $rule1,$rule2
     ```
 
-5. Zkontrolujte hello pravidel vytvořených v hello NSG zadáním hello následující:
+5. Zkontrolujte pravidla vytvořená v této skupině pomocí následujícího příkazu:
 
     ```powershell
     $nsg
     ```
    
-    Výstup zobrazuje jenom hello zabezpečení pravidla:
+    Výstup zobrazuje pouze pravidla zabezpečení:
    
         SecurityRules        : [
                                  {
@@ -103,7 +103,7 @@ toocreate skupinu NSG s názvem *NSG front-endu* podle hello scénář, dokonče
                                    "ProvisioningState": "Succeeded"
                                  }
                                ]
-6. Přidružení hello NSG vytvořili výše toohello *front-endu* podsítě.
+6. Přidružení skupiny NSG vytvořili výše na *front-endu* podsítě.
 
     ```powershell
     $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
@@ -111,7 +111,7 @@ toocreate skupinu NSG s názvem *NSG front-endu* podle hello scénář, dokonče
     -AddressPrefix 192.168.1.0/24 -NetworkSecurityGroup $nsg
     ```
 
-    Výstup zobrazuje pouze hello *front-endu* nastavení podsítě, hello hodnota upozornění pro hello **skupinu zabezpečení sítě** vlastnost:
+    Výstup zobrazuje jenom *front-endu* nastavení podsítě, Všimněte si, hodnota **skupinu zabezpečení sítě** vlastnost:
    
                     Subnets           : [
                                           {
@@ -135,25 +135,25 @@ toocreate skupinu NSG s názvem *NSG front-endu* podle hello scénář, dokonče
                                           }
    
    > [!WARNING]
-   > výstup Hello výše hello příkazu zobrazuje obsah hello hello virtuální sítě konfigurace objektu, který existuje pouze na hello počítače, kde běží prostředí PowerShell. Je třeba toorun hello `Set-AzureRmVirtualNetwork` rutiny toosave tooAzure těchto nastavení.
+   > Výstup výše uvedeného příkazu zobrazuje obsah pro objekt konfigurace virtuální sítě, který existuje pouze na počítače, kde běží prostředí PowerShell. Je třeba spustit `Set-AzureRmVirtualNetwork` rutiny uložit tato nastavení do Azure.
    > 
    > 
-7. Uložte hello tooAzure nastavení nové virtuální sítě.
+7. Uložte nastavení nové virtuální sítě do Azure.
 
     ```powershell
     Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
     ```
 
-    Výstup zobrazuje pouze část NSG hello:
+    Výstup zobrazuje pouze část NSG:
    
         "NetworkSecurityGroup": {
           "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkSecurityGroups/NSG-FrontEnd"
         }
 
-## <a name="how-toocreate-hello-nsg-for-hello-back-end-subnet"></a>Jak toocreate hello skupina NSG pro podsíť back-end hello
-toocreate skupinu NSG s názvem *NSG back-end* podle hello scénář výše, dokončete hello následující kroky:
+## <a name="how-to-create-the-nsg-for-the-back-end-subnet"></a>Postup vytvoření skupina NSG pro podsíť back-end
+Chcete-li vytvořit skupinu NSG s názvem *NSG back-end* závislosti na scénáři výše uvedené, proveďte následující kroky:
 
-1. Vytvořte pravidlo zabezpečení povolení přístupu z podsítě front-endu tooport hello 1433 (výchozí port používaný systémem SQL Server).
+1. Vytvořte pravidlo zabezpečení povolení přístupu z podsítě front-endu port 1433 (výchozí port používaný systémem SQL Server).
 
     ```powershell
     $rule1 = New-AzureRmNetworkSecurityRuleConfig -Name frontend-rule `
@@ -163,7 +163,7 @@ toocreate skupinu NSG s názvem *NSG back-end* podle hello scénář výše, dok
     -DestinationAddressPrefix * -DestinationPortRange 1433
     ```
 
-2. Vytvořte pravidlo zabezpečení blokování toohello přístup k Internetu.
+2. Vytvořte pravidlo zabezpečení blokuje přístup k Internetu.
 
     ```powershell
     $rule2 = New-AzureRmNetworkSecurityRuleConfig -Name web-rule `
@@ -173,7 +173,7 @@ toocreate skupinu NSG s názvem *NSG back-end* podle hello scénář výše, dok
     -DestinationAddressPrefix Internet -DestinationPortRange *
     ```
 
-3. Přidat pravidla hello vytvořili výše tooa s názvem nová skupina NSG **NSG back-end**.
+3. Přidat pravidla vytvořili výše na nová skupina NSG s názvem **NSG back-end**.
 
     ```powershell
     $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName TestRG `
@@ -181,14 +181,14 @@ toocreate skupinu NSG s názvem *NSG back-end* podle hello scénář výše, dok
     -SecurityRules $rule1,$rule2
     ```
 
-4. Přidružení hello NSG vytvořili výše toohello *back-end* podsítě.
+4. Přidružení skupiny NSG vytvořili výše na *back-end* podsítě.
 
     ```powershell
     Set-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name BackEnd ` 
     -AddressPrefix 192.168.2.0/24 -NetworkSecurityGroup $nsg
     ```
 
-    Výstup zobrazuje pouze hello *back-end* nastavení podsítě, hello hodnota upozornění pro hello **skupinu zabezpečení sítě** vlastnost:
+    Výstup zobrazuje jenom *back-end* nastavení podsítě, Všimněte si, hodnota **skupinu zabezpečení sítě** vlastnost:
    
         Subnets           : [
                       {
@@ -203,16 +203,16 @@ toocreate skupinu NSG s názvem *NSG back-end* podle hello scénář výše, dok
                         "RouteTable": null,
                         "ProvisioningState": "Succeeded"
                       }
-5. Uložte hello tooAzure nastavení nové virtuální sítě.
+5. Uložte nastavení nové virtuální sítě do Azure.
 
     ```powershell
     Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
     ```
 
-## <a name="how-tooremove-an-nsg"></a>Jak tooremove skupinu NSG
-toodelete existující skupina NSG, nazývá *NSG front-endu* v takovém případě postupujte podle kroku hello níže:
+## <a name="how-to-remove-an-nsg"></a>Postup odebrání skupiny NSG
+Odstranit existující skupina NSG názvem *NSG front-endu* v takovém případě postupujte podle níže uvedených kroků:
 
-Spustit hello **odebrat AzureRmNetworkSecurityGroup** vidíte níže a že tooinclude hello prostředků skupiny hello je skupina NSG v.
+Spustit **odebrat AzureRmNetworkSecurityGroup** vidíte níže a nezapomeňte zahrnout skupiny prostředků se NSG.
 
 ```powershell
 Remove-AzureRmNetworkSecurityGroup -Name "NSG-FrontEnd" -ResourceGroupName "TestRG"

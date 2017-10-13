@@ -1,6 +1,6 @@
 ---
-title: "instalace rozšíření prohlížeče hello aplikace přístup k panelu aaaProblem | Microsoft Docs"
-description: "Jak běžné chyby toofix došlo při instalaci rozšíření prohlížeče panely přístup hello"
+title: "Problém instalace přístup k aplikaci panelu rozšíření prohlížeče | Microsoft Docs"
+description: "Jak opravit běžné chyby při instalaci rozšíření přístup k panelu prohlížeče"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -14,23 +14,23 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.reviewer: japere
-ms.openlocfilehash: 5f750d12c5f9b405ec4f81596d5cc5e0a48f9a62
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 8b7327508633e33917d1fa9c1f35ed1bde5a26e1
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="problem-installing-hello-application-access-panel-browser-extension"></a>Problém instalace rozšíření prohlížeče hello aplikace přístup k panelu
+# <a name="problem-installing-the-application-access-panel-browser-extension"></a>Rozšíření prohlížeče panelu problém instalace přístup k aplikaci
 
-Hello přístupový Panel je, že je webový portál, který umožňuje uživatel, který má pracovní nebo školní účet v Azure Active Directory (Azure AD) tooview a spouštět cloudové aplikace tento správce hello Azure AD udělil přístup. Uživatel, který má edice Azure AD můžete také skupiny samoobslužné služby a možnosti správy aplikace prostřednictvím hello přístupového panelu. Hello přístupový Panel je oddělená od hello portál Azure a nevyžaduje, aby uživatelé toohave předplatné Azure.
+Přístupový Panel je webový portál, který uživatel, který má pracovní nebo školní účet ve službě Azure Active Directory (Azure AD) umožňuje zobrazovat a spouštět cloudové aplikace, které je správce Azure AD udělil přístup. Uživatel, který má edice Azure AD můžete také skupiny samoobslužné služby a možnosti správy aplikace prostřednictvím na přístupovém panelu. Přístupový Panel je nezávislý na portálu Azure a nevyžaduje, aby uživatelé měli předplatné Azure.
 
-toouse založené na heslech jednotné přihlašování (SSO) v hello přístupový Panel hello přístupový Panel rozšíření musí být nainstalován v prohlížeči hello uživatele. Toto rozšíření je stažen automaticky, když uživatel vybere aplikaci, která je nakonfigurována pro jednotné přihlašování založené na heslech.
+Pokud chcete používat založené na heslech jednotné přihlašování (SSO) na přístupovém panelu, musí být nainstalované rozšíření přístupového panelu v prohlížeče uživatele. Toto rozšíření je stažen automaticky, když uživatel vybere aplikaci, která je nakonfigurována pro jednotné přihlašování založené na heslech.
 
-## <a name="meeting-browser-requirements-for-hello-access-panel"></a>Splňuje požadavky na prohlížeč pro hello přístupového panelu
+## <a name="meeting-browser-requirements-for-the-access-panel"></a>Splňuje požadavky na prohlížeč pro přístup k panelu
 
-Hello přístupový Panel vyžaduje prohlížeč, který podporuje jazyk JavaScript a aktivoval šablon stylů CSS. toouse založené na heslech jednotné přihlašování (SSO) v hello přístupový Panel hello přístupový Panel rozšíření musí být nainstalován v prohlížeči hello uživatele. Toto rozšíření je stažen automaticky, když uživatel vybere aplikaci, která je nakonfigurována pro jednotné přihlašování založené na heslech.
+Přístupový Panel vyžaduje prohlížeč, který podporuje jazyk JavaScript a aktivoval šablon stylů CSS. Pokud chcete používat založené na heslech jednotné přihlašování (SSO) na přístupovém panelu, musí být nainstalované rozšíření přístupového panelu v prohlížeče uživatele. Toto rozšíření je stažen automaticky, když uživatel vybere aplikaci, která je nakonfigurována pro jednotné přihlašování založené na heslech.
 
-Pro jednotné přihlašování založené na heslech může být prohlížeče hello koncového uživatele:
+Pro jednotné přihlašování založené na heslech může být prohlížeče koncového uživatele:
 
 -   Internet Explorer 8, 9, 10, 11 – v systému Windows 7 nebo novější
 
@@ -40,25 +40,25 @@ Pro jednotné přihlašování založené na heslech může být prohlížeče h
 
 -   Firefox 26.0 nebo později – do systému Windows XP SP2 nebo novější a v systému Mac OS X 10,6 nebo novější
 
-## <a name="how-tooinstall-hello-access-panel-browser-extension"></a>Jak tooinstall hello rozšíření přístup k panelu prohlížeče
+## <a name="how-to-install-the-access-panel-browser-extension"></a>Postup instalace rozšíření přístup k panelu prohlížeče
 
-tooinstall hello rozšíření prohlížeče panely přístup, postupujte podle kroků hello níže:
+Chcete-li nainstalovat rozšíření přístup k panelu prohlížeče, postupujte následujícím způsobem:
 
-1.  Otevřete hello [přístupový Panel](https://myapps.microsoft.com) v jednom z hello podporované prohlížeče a přihlaste se jako **uživatele** ve službě Azure AD.
+1.  Otevřete [přístupový Panel](https://myapps.microsoft.com) v jednom z podporovaných prohlížečích a přihlaste se jako **uživatele** ve službě Azure AD.
 
-2.  Klikněte na tlačítko **SSO heslo aplikace** v hello přístupového panelu.
+2.  Klikněte na tlačítko **SSO heslo aplikace** na přístupovém panelu.
 
-3.  V hello výzva s dotazem tooinstall hello softwaru, vyberte **instalovat nyní**.
+3.  V řádku, požádá o instalaci softwaru, vyberte **instalovat nyní**.
 
-4.  Založené na prohlížeči, je možné směrovanou toohello odkaz ke stažení. **Přidat** hello rozšíření tooyour prohlížeče.
+4.  Založené na prohlížeči budete přesměrováni na odkaz ke stažení. **Přidat** rozšíření do prohlížeče.
 
-5.  Pokud prohlížeč zobrazí dotaz, vyberte tooeither **povolit** nebo **povolit** hello rozšíření.
+5.  Pokud prohlížeč zobrazí dotaz, vyberte buď **povolit** nebo **povolit** rozšíření.
 
 6.  Po instalaci **restartujte** relaci prohlížeče.
 
-7.  Přihlaste se do hello přístupového panelu a zobrazit, pokud můžete **spusťte** aplikace heslo SSO
+7.  Přihlaste se do přístupového panelu a zobrazit, pokud můžete **spusťte** aplikace heslo SSO
 
-Může také stáhnout hello rozšíření pro Chrome a hraniční z hello přímé odkazy níže:
+Rozšíření pro Chrome a hraniční může také stáhnout z přímé odkazy níže:
 
 -   [Rozšíření pro Chrome přístup panely](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
@@ -66,23 +66,23 @@ Může také stáhnout hello rozšíření pro Chrome a hraniční z hello pří
 
 ## <a name="setting-up-a-group-policy-for-internet-explorer"></a>Nastavení zásad skupiny pro Internet Explorer
 
-Můžete nastavit zásady skupiny, které umožňují tooremotely instalace hello přístupový Panel rozšíření pro Internet Explorer na počítačích uživatelů.
+Můžete nastavit zásady skupiny, které vám umožní vzdáleně instalovat rozšíření Panel přístupu pro Internet Explorer na počítače uživatelů.
 
-Hello požadavky patří:
+Požadavky patří:
 
--   Jste nastavili [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx), a připojení uživatelů počítačů tooyour domény.
+-   Jste nastavili [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx), a vaši uživatelé počítačů se připojili k vaší doméně.
 
--   Musíte mít hello "Upravit nastavení" oprávnění tooedit hello objekt zásad skupiny (GPO). Ve výchozím nastavení, toto oprávnění mají členové hello následující skupiny zabezpečení: Domain Administrators, Enterprise Administrators a Group Policy Creator Owners. [Další informace](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx).
+-   Musíte mít oprávnění "Upravit nastavení" k úpravě objektu zásad skupiny (GPO). Ve výchozím nastavení, toto oprávnění mají členy z těchto skupin zabezpečení: Domain Administrators, Enterprise Administrators a Group Policy Creator Owners. [Další informace](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx).
 
-Postupujte podle kurzu hello [jak tooDeploy hello rozšíření přístup k panelu pro Internet Explorer pomocí zásad skupiny](active-directory-saas-ie-group-policy.md) pro podrobné pokyny, jak tooconfigure hello zásad skupiny a nasadit ji toousers.
+Postupujte podle kurzu [nasazení rozšíření Panel přístupu pro Internet Explorer pomocí zásad skupiny](active-directory-saas-ie-group-policy.md) pro podrobné informace o tom, jak nakonfigurovat zásady skupiny a nasadit je uživatelům.
 
-## <a name="troubleshoot-hello-access-panel-in-internet-explorer"></a>Řešení potíží s hello přístupového panelu v aplikaci Internet Explorer
+## <a name="troubleshoot-the-access-panel-in-internet-explorer"></a>Řešení potíží s přístupového panelu v aplikaci Internet Explorer
 
-Postupujte podle hello [Poradce při potížích hello rozšíření panely přístup pro prohlížeč Internet Explorer](active-directory-saas-ie-troubleshooting.md) Průvodce pro přístup k nástroj pro diagnostiku a podrobné informace o konfiguraci hello rozšíření pro aplikaci Internet Explorer.
+Postupujte podle [řešení potíží s příponou Panel přístupu pro Internet Explorer](active-directory-saas-ie-troubleshooting.md) Průvodce pro přístup k nástroj pro diagnostiku a podrobné informace o konfiguraci rozšíření pro aplikaci Internet Explorer.
 
-## <a name="if-these-troubleshooting-steps-do-not-resolve-hello-issue"></a>Pokud tyto kroky řešení potíží Nepokoušejte se vyřešit problém hello
+## <a name="if-these-troubleshooting-steps-do-not-resolve-the-issue"></a>Pokud tyto kroky řešení potíží problém nevyřeší
 
-Otevřete lístek podpory se hello, pokud je k dispozici následující informace:
+Otevřete lístek podpory s následujícími informacemi, pokud je k dispozici:
 
 -   ID chyby korelace
 

@@ -1,6 +1,6 @@
 ---
-title: "kódování kódy chyb aaaAzure Media Services | Microsoft Docs"
-description: "Toto téma uvádí chybové kódy, které mohou být vráceny v případě, že došlo k chybě při provádění úlohy kódování hello..."
+title: "Azure Media Services kódování kódy chyb | Microsoft Docs"
+description: "Toto téma uvádí chybové kódy, které mohou být vráceny v případě, že došlo k chybě při kódování provádění úlohy..."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,30 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.openlocfilehash: b69b6abee797c40c9b8b8f23bf2398273c170e7f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f4fd2212d19f89148dde08c75c5a48cdd322d029
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="encoding-error-codes"></a>Kódování kódy chyb
 
-Hello následující tabulce jsou uvedeny kódy chyb, které mohou být vráceny v případě, že během hello kódování provádění úlohy došlo k chybě.  Podrobnosti o chybě tooget ve vašem kódu .NET použijte hello [detaily chyby](http://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) třídy. Podrobnosti o chybě tooget ve vašem kódu REST použít hello [ErrorDetail](https://msdn.microsoft.com/library/jj853026.aspx) REST API.
+V následující tabulce jsou uvedeny kódy chyb, které mohou být vráceny v případě, že při kódování provádění úlohy došlo k chybě.  Chcete-li získat podrobnosti o chybě v rozhraní .NET kódu, použijte [detaily chyby](http://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) třídy. Chcete-li získat podrobnosti o chybě v kódu REST, použijte [ErrorDetail](https://msdn.microsoft.com/library/jj853026.aspx) REST API.
 
 | ErrorDetail.Code | Možné příčiny chyb |
 | --- | --- |
-| Neznámý |Neznámá chyba při provádění úlohy hello |
+| Neznámý |Při provádění úlohy došlo k neznámé chybě. |
 | ErrorDownloadingInputAssetMalformedContent |Kategorie chyby, která obsahuje chyby ve stahování vstupní asset například názvy souborů, soubory nulové délky, nesprávný naformátuje a tak dále. |
-| ErrorDownloadingInputAssetServiceFailure |Kategorie chyby, které pokrývá problémy na straně služby hello – Příklad chyby sítě nebo úložiště při stahování. |
-| ErrorParsingConfiguration |Kategorie chyby kde úloha <see cref="MediaTask.PrivateData"/> (konfigurace) není platná, například hello konfigurace není platný systém přednastavení nebo obsahuje neplatný kód XML. |
-| ErrorExecutingTaskMalformedContent |Kategorie chyby během provádění hello hello úlohy, kde problémy uvnitř hello zadané mediálních souborů způsobit selhání. |
-| ErrorExecutingTaskUnsupportedFormat |Kategorie chyby kde procesor médií hello nemůže zpracovat soubory, hello – formátu média není podporován nebo neodpovídá hello konfigurace. Například při tooproduce pouze výstup z prostředek, který má jenom video |
-| ErrorProcessingTask |Během zpracování hello hello úlohy, které jsou nesouvisejícími toocontent zjistí kategorii jiné chyby, které hello procesor médií. |
-| ErrorUploadingOutputAsset |Kategorie chyby při odesílání výstupní asset hello |
-| ErrorCancelingTask |Kategorie chyby toocover selhání při pokusu o toocancel hello úloh |
-| TransientError |Kategorie chyby toocover přechodné problémy (např. dočasné síťové potíže s Azure Storage) |
+| ErrorDownloadingInputAssetServiceFailure |Kategorie chyby, které pokrývá problémy na straně služby – Příklad chyby sítě nebo úložiště při stahování. |
+| ErrorParsingConfiguration |Kategorie chyby kde úloha <see cref="MediaTask.PrivateData"/> (konfigurace) není platná, například konfigurace není platný systém přednastavení nebo obsahuje neplatný kód XML. |
+| ErrorExecutingTaskMalformedContent |Kategorie chyby během provádění úlohy, kde problémy uvnitř vstupní mediálních souborů způsobit selhání. |
+| ErrorExecutingTaskUnsupportedFormat |Kategorie chyby kde procesor médií nemůže zpracovat soubory zadané – formátu média není podporován nebo neodpovídá konfigurace. Například pokusu vytvořit pouze výstup z prostředek, který má jenom video |
+| ErrorProcessingTask |Kategorie jiné chyby, které procesor médií, zaznamená při zpracování úloh, které se nevztahují na obsah. |
+| ErrorUploadingOutputAsset |Kategorie chyby při odesílání výstupní asset |
+| ErrorCancelingTask |Kategorie chyby tak, aby pokrývalo selhání při pokusu o zrušení úlohy |
+| TransientError |Kategorie chyby tak, aby pokrývalo přechodné problémy (např. dočasné síťové potíže s Azure Storage) |
 
-tooget pomoci hello **Media Services** týmu, otevřete [lístek podpory](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Jak získat nápovědu z **Media Services** týmu, otevřete [lístek podpory](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

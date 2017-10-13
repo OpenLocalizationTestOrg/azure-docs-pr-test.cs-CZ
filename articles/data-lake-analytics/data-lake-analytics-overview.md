@@ -1,6 +1,6 @@
 ---
-title: aaaOverview Microsoft Azure Data Lake Analytics | Microsoft Docs
-description: "Data Lake Analytics je služba Azure velkých objemů dat, která vám umožní používat data toodrive podnikání díky informacím získaným z vašich dat v cloudu hello, bez ohledu na to trh jeho velikost nebo tam, kde je."
+title: "Přehled Microsoft Azure Data Lake Analytics | Dokumentace Microsoftu"
+description: "Data Lake Analytics je služba Azure pro velké objemy dat, která umožňuje využívat data k podpoře podnikání díky informacím získaným z vašich dat v cloudu, bez ohledu na jejich velikost a umístění."
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
@@ -14,35 +14,35 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/23/2017
 ms.author: saveenr
-ms.openlocfilehash: 15bcd549c5aeb167da1338f253270ad57f8c5123
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8817b511d779029421491194b50120d51ec9dbad
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-microsoft-azure-data-lake-analytics"></a>Přehled Microsoft Azure Data Lake Analytics
 ## <a name="what-is-azure-data-lake-analytics"></a>Co je Azure Data Lake Analytics?
-Azure Data Lake Analytics je analytické informace na vyžádání úlohy služby toosimplify analýzy velkých objemů dat. Můžete se soustředit na psaní, spouštění a správu úloh, a nikoli na provoz distribuované infrastruktury. Namísto nasazení, konfigurace a ladění hardwaru zápis dotazů tootransform vaše data a extrahovat cenné informace. Služba Hello analytics může zpracovávat úlohy libovolného rozsahu okamžitě nastavením hello dial jaký výkon potřebujete. Za úlohu platíte jenom tehdy, když je spuštěná, což je nákladově efektivní. Hello analytická služba podporuje službu Azure Active Directory umožňuje správu přístupu a rolí, integrovat s vaší identity v místním systému. Zahrnuje také U-SQL, jazyk, který kombinuje výhody hello SQL s hello výrazovou sílu uživatelského kódu. U-SQL škálovatelný distribuovaný modul runtime umožňuje tooefficiently můžete analyzovat data v úložišti hello a na serverech SQL v Azure, Azure SQL Database a Azure SQL Data Warehouse.
+Azure Data Lake Analytics je služba analytických úloh na vyžádání pro zjednodušení analýz velkých objemů dat. Můžete se soustředit na psaní, spouštění a správu úloh, a nikoli na provoz distribuované infrastruktury. Namísto nasazení, konfigurace a ladění hardwaru můžete psát dotazy, transformovat data a extrahovat cenné informace. Analytická služba dokáže okamžitě zpracovávat úlohy libovolného rozsahu – stačí nastavit, jaký výkon potřebujete. Za úlohu platíte jenom tehdy, když je spuštěná, což je nákladově efektivní. Analytická služba podporuje Azure Active Directory, takže můžete jednoduše spravovat přístup a role integrované do vašeho místního systému identit. Zahrnuje také jazyk U-SQL, který kombinuje výhody jazyka SQL a výrazovou sílu uživatelského kódu. Škálovatelný distribuovaný modul runtime jazyka U-SQL umožňuje efektivně analyzovat data v úložišti a na SQL Serverech v Azure, ve službě Azure SQL Database a Azure SQL Data Warehouse.
 
 ## <a name="key-capabilities"></a>Klíčové funkce
 * **Dynamické škálování**
   
-    Služba Data Lake Analytics je navržena pro cloudové škálování a výkon.  Dynamicky zřizuje prostředky a umožňuje provádět analýzy terabajtů nebo dokonce exabajtů dat. Po dokončení úlohy hello se postupně automaticky ukončí prostředky a platíte jenom za výpočetní výkon použít hello. Jak zvýšit nebo snížit velikost hello data uložená nebo hello množství výpočetní prostředky používá, nemáte toorewrite kódu. Můžete se soustředit pouze na obchodní logiku, a nikoli na způsob zpracování a ukládání rozsáhlých datových sad.
+    Služba Data Lake Analytics je navržena pro cloudové škálování a výkon.  Dynamicky zřizuje prostředky a umožňuje provádět analýzy terabajtů nebo dokonce exabajtů dat. Po dokončení úlohy postupně automaticky ukončí prostředky, takže platíte jenom za využitý výpočetní výkon. Při zvětšování a zmenšování objemu uložených dat nebo množství využitých výpočetních prostředků nemusíte přepisovat kód. Můžete se soustředit pouze na obchodní logiku, a nikoli na způsob zpracování a ukládání rozsáhlých datových sad.
 * **Rychlejší vývoj a inteligentnější ladění a optimalizace pomocí známých nástrojů**
   
-    Data Lake Analytics je těsně integrovaná se sadou Visual Studio, abyste mohli používat toorun známých nástrojů, ladit a optimalizovat kód. Vizualizace úloh U-SQL umožňuje sledovat běh kódu v reálných podmínkách a snadno identifikovat kritická místa výkonu a optimalizovat náklady.
+    Služba Data Lake Analytics je těsně integrovaná se sadou Visual Studio, takže můžete spouštět, ladit a optimalizovat kód pomocí známých nástrojů. Vizualizace úloh U-SQL umožňuje sledovat běh kódu v reálných podmínkách a snadno identifikovat kritická místa výkonu a optimalizovat náklady.
 * **Jazyk U-SQL: jednoduchý a známý, výkonný a rozšiřitelný**
   
-    Data Lake Analytics obsahuje dotazovací jazyk, který rozšiřuje hello obeznámeni, jednoduchý a deklarativní charakter jazyka SQL s hello výrazovou sílu jazyka C# U-SQL. Hello jazykem U-SQL je založený na hello stejné distribuované runtime, která pohání hello systémy velkých objemů dat u Microsoftu. Miliony vývojářů SQL a .NET teď můžou zpracovávat a analyzovat svoje data pomocí dovedností hello, které už mají.
+    Data Lake Analytics obsahuje dotazovací jazyk U-SQL, který rozšiřuje dobře známý, jednoduchý a deklarativní charakter jazyka SQL o výrazovou sílu jazyka C#. Jazyk U-SQL je založený na stejném distribuovaném modulu runtime, který využívají systémy velkých objemů dat ve společnosti Microsoft. Miliony vývojářů SQL a .NET teď můžou zpracovávat a analyzovat svá data pomocí dovedností, které už mají.
 * **Hladká integrace s vašimi investicemi do IT**
   
-    Služba Data Lake Analytics může využívat vaše stávající investice do IT pro účely identity, správy, zabezpečení a datových skladů. Tento přístup usnadňuje řízení dat a umožňuje snadno tooextend stávajících datových aplikací. Služba Data Lake Analytics je integrovaná se službou Active Directory pro účely oprávnění a správy uživatelů a obsahuje integrované monitorování a auditování.
+    Služba Data Lake Analytics může využívat vaše stávající investice do IT pro účely identity, správy, zabezpečení a datových skladů. Tento přístup usnadňuje řízení dat a umožňuje snadné rozšíření stávajících datových aplikací. Služba Data Lake Analytics je integrovaná se službou Active Directory pro účely oprávnění a správy uživatelů a obsahuje integrované monitorování a auditování.
 * **Cenová dostupnost a nákladová efektivita**
   
-    Služba Data Lake Analytics je nákladově efektivní řešení pro spouštění úloh s velkým objemem dat. Platíte za jednotlivé úlohy, kdy se zpracovávají data. Není potřeba žádný hardware, licence ani smlouvy o podpoře pro konkrétní službu. Hello systému automaticky přizpůsobí nahoru nebo dolů jako spuštění a dokončení, hello úlohy tak, že nikdy platíte víc než co potřebujete.
+    Služba Data Lake Analytics je nákladově efektivní řešení pro spouštění úloh s velkým objemem dat. Platíte za jednotlivé úlohy, kdy se zpracovávají data. Není potřeba žádný hardware, licence ani smlouvy o podpoře pro konkrétní službu. Při spuštění a dokončení úlohy systém automaticky vertikálně navyšuje a snižuje kapacitu, takže nikdy neplatíte za víc, než potřebujete.
 * **Možnost práce se všemi daty Azure**
   
-    Data Lake Analytics je optimalizované toowork s Azure Data Lake - poskytování hello nejvyšší úroveň výkonu, propustnosti a paralelizace pro úlohy big data.  Data Lake Analytics může spolupracovat také se službami Azure Blob Storage a Azure SQL Database.
+    Služba Data Lake Analytics je optimalizovaná pro práci se službou Azure Data Lake – nabízí tak nejvyšší úroveň výkonu, propustnosti a paralelizace vašich úloh s velkými objemy dat.  Data Lake Analytics může spolupracovat také se službami Azure Blob Storage a Azure SQL Database.
 
 ## <a name="next-steps"></a>Další kroky
  

@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure Mobile Engagement uživatelské rozhraní – Můj účet"
-description: "Zjistěte, jak toomanage účet profilu a testovací zařízení pomocí Azure Mobile Engagement"
+title: "Azure Mobile Engagement uživatelské rozhraní – Můj účet"
+description: "Zjistěte, jak spravovat váš účet profilu a testovací zařízení pomocí Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,45 +14,45 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 1d85f0e87c43605f59f6536ae42a7fb6a99ee36b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4e463e973dcfa1faa7b08e4738192161980b3aa2
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toomanage-your-account-profile-and-test-devices"></a>Jak toomanage účet profilu a testovací zařízení
-Tento článek popisuje hello **Domů** stránku hello **Mobile Engagement** portálu. Použít hello **Mobile Engagement** portálu toomonitor a spravovat své mobilní aplikace. 
+# <a name="how-to-manage-your-account-profile-and-test-devices"></a>Správa vašeho účtu profil a testovací zařízení
+Tento článek popisuje **Domů** stránky **Mobile Engagement** portálu. Můžete použít **Mobile Engagement** portálu ke sledování a správě mobilních aplikací. 
 
-tooget toohello **Můj účet** klikněte na váš účet na hello horní části stránky hello.
+Abyste se dostali na **Můj účet** klikněte na váš účet horní části stránky.
 
-Hello části Můj účet hello uživatelského rozhraní je, kde můžete zobrazit a změnit nastavení hello spojené s vaším účtem, včetně nastavení profilu a otestovat ID zařízení. Tato nastavení obsahují položky, které je přístupný také prostřednictvím hello rozhraní API pro zařízení.
+V části Můj účet uživatelského rozhraní je, kde můžete zobrazit a změnit nastavení spojená s vaším účtem, včetně nastavení profilu a otestovat ID zařízení. Tato nastavení obsahují položky, které lze také přistupovat přes rozhraní API pro zařízení.
 
 ![MyAccount1][7]  
 
 ## <a name="profile"></a>Profil:
-Můžete zobrazit nebo změnit libovolné nastavení svého účtu, který je uvedeno níže. Můžete také udělit jiné toouse oprávnění uživatele aplikace podle jejich e-mailovou adresu z hello [Domů](mobile-engagement-user-interface-home.md).
+Můžete zobrazit nebo změnit libovolné nastavení svého účtu, který je uvedeno níže. Můžete také udělit jiný uživatel oprávnění k používání aplikace podle jejich e-mailovou adresu z [Domů](mobile-engagement-user-interface-home.md).
 
 ![MyAccount2][8]  
 
 ## <a name="devices"></a>Zařízení:
-Můžete zobrazit, přidat nebo odebrat testovací zařízení ID hello testovací zařízení, které můžete použít tootest vaše **dosáhnout** nebo **nabízené** kampaně. Kontextová pokyny, jak toofind hello ID zařízení pro každou platformu zařízení (iOS, Android, Windows Phone, atd.) se zobrazí po kliknutí na tlačítko "Nové zařízení". 
+Můžete zobrazit, přidat nebo odebrat testovací zařízení ID testovací zařízení, které můžete použít k testování vaší **dosáhnout** nebo **nabízené** kampaně. Kontextová pokyny, jak zjistit ID zařízení pro každou platformu zařízení (iOS, Android, Windows Phone, atd.) se zobrazí po kliknutí na tlačítko "Nové zařízení". 
 
 ![MyAccount3][9]  
 
-toouse Push rozhraní API nebo Device API budete potřebovat tooknow vaši uživatelé jedinečný identifikátor zařízení (parametr hello deviceid). Existuje několik způsobů tooretrieve ho:
+Použít rozhraní API Push nebo rozhraní API pro zařízení, musíte znát vaši uživatelé jedinečný identifikátor zařízení (parametr deviceid). Ho chcete zjistit několika způsoby:
 
-1. Z váš back-end můžete použít funkci "Get" hello aplikace hello rozhraní API pro zařízení tooget hello úplný seznam identifikátorů zařízení.
-2. Z vaší aplikace, můžete použít hello SDK tooget ho. (V systému Android se volání funkce getDeviceID() hello hello Agent – třída a v systému iOS, přečtěte si hello deviceid vlastnost hello Agent – třída.)
-3. Z oznámení Reach Pokud adresa URL akce hello přidružené hello oznámení obsahuje vzor hello {deviceid} ho se automaticky nahradí identifikátorem hello hello zařízení spouštěcí akci hello.
+1. Z váš back-end můžete použít funkci "Get" rozhraní API zařízení získat úplný seznam identifikátorů zařízení.
+2. Z vaší aplikace můžete se dá stáhnout sadu SDK. (V systému Android se volání funkce getDeviceID() třídy agenta a v systému iOS, číst vlastnosti deviceid třídy agenta.)
+3. Z oznámení Reach Pokud adresa URL akce, které jsou přidružené k oznámení obsahuje vzoru {deviceid} ho se automaticky nahradí identifikátorem zařízení spouštěcí akci.
    http://<example>.com nebo registeruser? deviceid = {deviceid} & otherparam = myparamdata budou nahrazeny: http://<example>.com nebo registeruser? deviceid = XXXXXXXXXXXXXXXX & otherparam = myparamdata 
-4. Z webové oznámení Reach Pokud hello HTML kód hello oznámení obsahuje vzor hello {deviceid}, se automaticky nahradí hello identifikátor zařízení hello se zobrazuje sdělení webovém hello.
+4. Z webové oznámení Reach Pokud kód HTML oznámení obsahuje vzoru {deviceid} ho se automaticky nahradí identifikátorem zařízení, se zobrazuje sdělení webovém.
    Tady je identifikátor Moje zařízení: {deviceid} budou nahrazeny: tady je identifikátor Moje zařízení: XXXXXXXXXXXXXXXX
 5. Otevřete aplikaci na vašem zařízení a provádět událost ve vaší aplikaci, která má kterých byl označen.
-   Z "UI - app - monitorování – události – podrobnosti" najde hello událostí, které jste provedli v seznamu hello.
-   Klikněte na tlačítko toothis událost v hello monitorování.
-   V seznamu hello hello zařízení, které jste udělali Tato událost by měl zjistit ID zařízení.
-   Potom můžete zkopírovat toto ID zařízení a zaregistrovat ji hello "UI - Můj účet - zařízení – nové zařízení - vyberte platformu zařízení".
-   >(Mějte na paměti, že při IDFA je zakázán pro iOS, hello ID zařízení může změnit časem hello Pokud odinstalovat a znovu nainstalovat aplikaci.)
+   Z "UI - app - monitorování – události – podrobnosti" najděte událost, která jste provedli v seznamu.
+   Kliknutím na tuto událost v monitorování.
+   V seznamu zařízení, která jste udělali Tato událost by měl zjistit ID zařízení.
+   Potom můžete zkopírovat toto ID zařízení a zaregistrovat ji "UI - Můj účet - zařízení – nové zařízení - vyberte platformu zařízení".
+   >(Mějte na paměti, že při IDFA je zakázán pro iOS, ID zařízení může změnit přes čas Pokud odinstalovat a znovu nainstalovat aplikaci.)
 
 ## <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží s
 * [Průvodce odstraňováním potíží s – služby][Link 24]

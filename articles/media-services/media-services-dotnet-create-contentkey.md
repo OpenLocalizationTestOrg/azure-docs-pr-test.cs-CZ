@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate ContentKeys s rozhraním .NET"
-description: "Zjistěte, jak toocreate obsahu klíče, které zajišťují zabezpečený přístup k tooAssets."
+title: "Vytvoření ContentKeys s rozhraním .NET"
+description: "Informace o vytváření obsahu klíče, které zajišťují zabezpečený přístup k prostředkům."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 35909c64e8393e228be75c464a034ffc40122952
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3280a6fcde59bae360da7cb9fea4bb649f984e43
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-contentkeys-with-net"></a>Vytvoření ContentKeys s rozhraním .NET
 > [!div class="op_single_selector"]
@@ -27,28 +27,28 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Služba Media Services umožňuje toocreate a doručovat šifrované prostředky. A **ContentKey** poskytuje zabezpečený přístup tooyour **Asset**s. 
+Služba Media Services umožňuje vytvářet a doručovat šifrované prostředky. A **ContentKey** zajišťuje zabezpečený přístup k vaší **Asset**s. 
 
-Při vytváření nového prostředku (například před [nahrání souborů](media-services-dotnet-upload-files.md)), můžete zadat následující možnosti šifrování hello: **StorageEncrypted**, **CommonEncryptionProtected**, nebo **EnvelopeEncryptionProtected**. 
+Při vytváření nového prostředku (například před [nahrání souborů](media-services-dotnet-upload-files.md)), můžete zadat následující možnosti šifrování: **StorageEncrypted**, **CommonEncryptionProtected**, nebo **EnvelopeEncryptionProtected**. 
 
-Při předvádění prostředky tooyour klientů, můžete [konfigurace pro toobe prostředky dynamicky šifrovat](media-services-dotnet-configure-asset-delivery-policy.md) s jedním z následujících dvou šifrování hello: **DynamicEnvelopeEncryption** nebo  **DynamicCommonEncryption**.
+Při předvádění prostředky pro klienty, můžete [konfigurace pro prostředky dynamicky šifrovat](media-services-dotnet-configure-asset-delivery-policy.md) s jedním z následujících dvou šifrování: **DynamicEnvelopeEncryption** nebo  **DynamicCommonEncryption**.
 
-Šifrované prostředky mají toobe přidružené **ContentKey**s. Tento článek popisuje, jak toocreate klíč obsahu.
+Šifrované prostředky musí být přidružený **ContentKey**s. Tento článek popisuje postup vytvoření klíče k obsahu.
 
 > [!NOTE]
-> Při vytváření nového **StorageEncrypted** pomocí asset hello sady Media Services .NET SDK hello **ContentKey** je automaticky vytvořen a je propojená s hello asset.
+> Při vytváření nového **StorageEncrypted** asset pomocí sady Media Services .NET SDK **ContentKey** je automaticky vytvořené a připojené k assetu.
 > 
 > 
 
 ## <a name="contentkeytype"></a>ContentKeyType
-Jedna z hodnot hello musí nastavit při vytváření obsahu klíč je typ obsahu klíče hello. Vyberte jednu z následujících hodnot hello. 
+Jedna z hodnot musí nastavit při vytváření obsahu klíč je typ obsahu klíče. Vyberte jednu z následujících hodnot. 
 
     public enum ContentKeyType
     {
         /// <summary>
         /// Specifies a content key for common encryption.
         /// </summary>
-        /// <remarks>This is hello default value.</remarks>
+        /// <remarks>This is the default value.</remarks>
         CommonEncryption = 0,
 
         /// <summary>
@@ -68,7 +68,7 @@ Jedna z hodnot hello musí nastavit při vytváření obsahu klíč je typ obsah
     }
 
 ## <a id="envelope_contentkey"></a>Vytvoření typu obálky ContentKey
-Hello následující fragment kódu vytvoří klíč obsahu hello obálky šifrování typu. Potom přidruží hello klíč hello daný prostředek.
+Následující fragment kódu vytvoří klíč obsahu typu šifrování obálku. Potom přidruží klíč zadaný prostředek.
 
     static public IContentKey CreateEnvelopeTypeContentKey(IAsset asset)
     {
@@ -105,7 +105,7 @@ Volání
 
 
 ## <a id="common_contentkey"></a>Vytvoření stejného typu ContentKey
-Hello následující fragment kódu vytvoří klíč obsahu hello běžné šifrování typu. Potom přidruží hello klíč hello daný prostředek.
+Následující fragment kódu vytvoří klíč obsahu běžné typu šifrování. Potom přidruží klíč zadaný prostředek.
 
     static public IContentKey CreateCommonTypeContentKey(IAsset asset)
     {
@@ -119,7 +119,7 @@ Hello následující fragment kódu vytvoří klíč obsahu hello běžné šifr
                                 "ContentKey",
                                 ContentKeyType.CommonEncryption);
 
-        // Associate hello key with hello asset.
+        // Associate the key with the asset.
         asset.ContentKeys.Add(key);
 
         return key;

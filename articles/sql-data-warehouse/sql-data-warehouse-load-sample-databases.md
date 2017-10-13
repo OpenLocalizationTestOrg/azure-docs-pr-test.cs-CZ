@@ -1,5 +1,5 @@
 ---
-title: "aaaLoad ukázková data do SQL Data Warehouse | Microsoft Docs"
+title: "Načtení ukázkových dat do SQL Data Warehouse | Microsoft Docs"
 description: "Načtení ukázkových dat do SQL Data Warehouse"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,19 +15,19 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
-ms.openlocfilehash: 3459c42f3aae51c27fd35db7874faf99e1e577e5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1e0df958a2f18fe1e988168918e5cfd293f84e64
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="load-sample-data-into-sql-data-warehouse"></a>Načtení ukázkových dat do SQL Data Warehouse
-Postupujte podle těchto tooload jednoduchých kroků a ukázkové společnosti Adventure Works hello dotaz do databáze. Tyto skripty se nejprve pomocí sqlcmd toorun SQL, která bude vytvářet tabulky a zobrazení. Po vytvoření tabulky hello skripty bcp tooload data používat.  Pokud ještě nemáte sqlcmd a bcp nainstalována, použijte tyto odkazy příliš[nainstalovat bcp] [ install bcp] a příliš[nainstalovat sqlcmd][install sqlcmd].
+Postupujte podle těchto jednoduchých kroků se načíst a dotaz na databázi společnosti Adventure Works ukázka. Tyto skripty nejprve pomocí sqlcmd spustit SQL, která bude vytvářet tabulky a zobrazení. Po vytvoření tabulky skripty pomocí bcp načíst data.  Pokud ještě nemáte sqlcmd a bcp nainstalovaný, postupujte podle následujících odkazech na [nainstalovat bcp] [ install bcp] a [nainstalovat sqlcmd][install sqlcmd].
 
 ## <a name="load-sample-data"></a>Načíst ukázková data
-1. Stáhnout hello [společnosti Adventure Works ukázkové skripty pro SQL Data Warehouse] [ Adventure Works Sample Scripts for SQL Data Warehouse] soubor zip.
-2. Extrahujte soubory hello z adresáře tooa zip staženého v místním počítači.
-3. Upravte hello extrahovat soubor aw_create.bat a nastavte následující proměnné nalezen hello horní části souboru hello hello.  Být jisti tooleave žádné mezery mezi hello "=" a parametr hello.  Níže jsou příklady, jak může vypadat provedené úpravy.
+1. Stažení [společnosti Adventure Works ukázkové skripty pro SQL Data Warehouse] [ Adventure Works Sample Scripts for SQL Data Warehouse] soubor zip.
+2. Extrahujte soubory ze staženého zip do adresáře na místním počítači.
+3. Upravte aw_create.bat extrahovaných souborů a nastavte následující proměnné v horní části souboru nalezen.  Ponechejte žádné mezery mezi "=" a parametr.  Níže jsou příklady, jak může vypadat provedené úpravy.
    
     ```
     server=mylogicalserver.database.windows.net
@@ -35,25 +35,25 @@ Postupujte podle těchto tooload jednoduchých kroků a ukázkové společnosti 
     password=Mydwpassw0rd
     database=mydwdatabase
     ```
-4. Do příkazového řádku systému Windows spusťte aw_create.bat hello upravit.  Ujistěte se, že jste v hello adresáře, kam jste uložili vašeho upravenou verzi aw_create.bat.
+4. Do příkazového řádku systému Windows spusťte upravená aw_create.bat.  Ujistěte se, že jsou v adresáři, kam jste uložili vašeho upravenou verzi aw_create.bat.
    Tento skript bude...
    
    * Vyřaďte společnosti Adventure Works tabulky ani zobrazení, které již existují ve vaší databázi
-   * Vytvoření hello společnosti Adventure Works tabulek a zobrazení
+   * Vytvoření společnosti Adventure Works tabulky a zobrazení
    * Načíst každá tabulka společnosti Adventure Works pomocí bcp
-   * Ověření hello počty řádků pro každou tabulku společnosti Adventure Works
+   * Ověření počtu řádků pro každou tabulku společnosti Adventure Works
    * Shromáždit statistiku pro každý sloupec pro každou tabulku společnosti Adventure Works
 
 ## <a name="query-sample-data"></a>Dotaz na ukázková data
-Jakmile jste načíst ukázková data do SQL Data Warehouse, můžete rychle spustit pár dotazů.  toorun dotazu, připojení databáze společnosti Adventure Works tooyour nově vytvořený v Azure SQL DW pomocí sady Visual Studio a rozšíření SSDT, jak je popsáno v hello [dotazu pomocí sady Visual Studio] [ query with Visual Studio] dokumentu.
+Jakmile jste načíst ukázková data do SQL Data Warehouse, můžete rychle spustit pár dotazů.  Ke spuštění dotazu, připojit k nově vytvořenou databázi společnosti Adventure Works v Azure SQL DW pomocí sady Visual Studio a rozšíření SSDT, jak je popsáno v [dotazu pomocí sady Visual Studio] [ query with Visual Studio] dokumentu.
 
-Příklad použití jednoduchých vyberte příkaz tooget všechny údaje hello hello zaměstnanců:
+Příklad jednoduchého příkazu select se získat informace o zaměstnanci:
 
 ```sql
 SELECT * FROM DimEmployee;
 ```
 
-Příklad komplexnější dotaz pomocí konstruktory, jako jsou toolook GROUP BY v hello celkovou velikost pro všechny prodeje na každý den:
+Příklad komplexnější dotaz pomocí konstruktory, jako jsou GROUP BY se podívat na celkovou velikost pro všechny prodeje na každý den:
 
 ```sql
 SELECT OrderDateKey, SUM(SalesAmount) AS TotalSales
@@ -62,7 +62,7 @@ GROUP BY OrderDateKey
 ORDER BY OrderDateKey;
 ```
 
-Příklad výběru se toofilter klauzule WHERE se objednávky z do určitého data:
+Příklad SELECT s klauzulí WHERE filtrovat objednávky z do určitého data:
 
 ```
 SELECT OrderDateKey, SUM(SalesAmount) AS TotalSales
@@ -75,7 +75,7 @@ ORDER BY OrderDateKey;
 SQL Data Warehouse podporuje téměř všechny konstrukce T-SQL, které systém SQL Server podporuje.  Případné rozdíly jsou popsány v našem [migrace kódu] [ migrate code] dokumentaci.
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když využijete prvního tootry několik dotazů s ukázkovými daty, podívejte se jak příliš[vyvíjet][develop], [načíst][load], nebo [ migrace] [ migrate] tooSQL datového skladu.
+Teď, když vám, že možnost vyzkoušet několik dotazů s ukázkovými daty, podívejte se na postup [vyvíjet][develop], [načíst][load], nebo [ migrace] [ migrate] do SQL Data Warehouse.
 
 <!--Image references-->
 

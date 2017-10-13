@@ -1,5 +1,5 @@
 ---
-title: "aaaTransparent šifrování dat v SQL Data Warehouse (portál) | Microsoft Docs"
+title: "Transparentní šifrování dat v SQL Data Warehouse (portál) | Microsoft Docs"
 description: "Transparentní šifrování dat (šifrování TDE) v SQL Data Warehouse"
 services: sql-data-warehouse
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: security
 ms.date: 10/31/2016
 ms.author: rortloff;barbkess
-ms.openlocfilehash: 8233886ecf170844104e0d1459e2a829cafa9b8d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b1db3bdfdfb54bda325c9b971cfcb4dd5efa333a
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="get-started-with-transparent-data-encryption-tde-in-sql-data-warehouse"></a>Začínáme s transparentní dat šifrování (TDE) v SQL Data Warehouse
 > [!div class="op_single_selector"]
@@ -31,30 +31,30 @@ ms.lasthandoff: 10/06/2017
 > 
 
 ## <a name="required-permssions"></a>Požadovaná oprávnění
-tooenable transparentní dat šifrování (šifrování TDE), musíte být správce nebo člen hello dbmanager role.
+Pokud chcete povolit šifrování transparentní dat (TDE), musíte být správce nebo člen dbmanager role.
 
 ## <a name="enabling-encryption"></a>Povolení šifrování
-tooenable TDE pro SQL Data Warehouse, postupujte podle kroků hello níže:
+Pokud chcete povolit šifrování TDE pro SQL Data Warehouse, postupujte podle následujících kroků:
 
-1. Otevřete hello databáze v hello [portálu Azure](https://portal.azure.com)
-2. V okně databáze hello, klikněte na tlačítko hello **nastavení** tlačítko
-3. Vyberte hello **transparentní šifrování dat** možnost![][1]
-4. Vyberte hello **na** nastavení![][2]
+1. Otevřít v databázi [portálu Azure](https://portal.azure.com)
+2. V okně databáze klikněte na **nastavení** tlačítko
+3. Vyberte **transparentní šifrování dat** možnost![][1]
+4. Vyberte **na** nastavení![][2]
 5. Vyberte **uložit**
    ![][3]  
 
 ## <a name="disabling-encryption"></a>Zakázáním šifrování
-toodisable TDE pro SQL Data Warehouse, postupujte podle kroků hello níže:
+Zakázat šifrování TDE pro SQL Data Warehouse, postupujte podle následujících kroků:
 
-1. Otevřete hello databáze v hello [portálu Azure](https://portal.azure.com)
-2. V okně databáze hello, klikněte na tlačítko hello **nastavení** tlačítko
-3. Vyberte hello **transparentní šifrování dat** možnost![][1]
-4. Vyberte hello **vypnout** nastavení![][4]
+1. Otevřít v databázi [portálu Azure](https://portal.azure.com)
+2. V okně databáze klikněte na **nastavení** tlačítko
+3. Vyberte **transparentní šifrování dat** možnost![][1]
+4. Vyberte **vypnout** nastavení![][4]
 5. Vyberte **uložit**
    ![][5]  
 
 ## <a name="encryption-dmvs"></a>Šifrování zobrazení dynamické správy
-Šifrování lze potvrdit s hello následující zobrazení dynamické správy:
+Šifrování lze potvrdit s následující zobrazení dynamické správy:
 
 * [zobrazení Sys.Databases]
 * [Sys.dm_pdw_nodes_database_encryption_keys]

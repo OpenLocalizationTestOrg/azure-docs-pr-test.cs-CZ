@@ -1,4 +1,4 @@
-Azure nabízí hello následující SKU služby VPN gateway:
+Azure nabízí následující skladové jednotky (SKU) brány sítě VPN:
 
 |**SKU**   | **Tunely<br> S2S/VNet-to-VNet** | **Připojení<br>P2S** | **Srovnávací test<br>agregované propustnosti** |
 |---       | ---                             | ---                    | ---                         |
@@ -8,8 +8,8 @@ Azure nabízí hello následující SKU služby VPN gateway:
 |**Basic** | Max. 10                         | Max. 128               | 100 Mb/s                    | 
 |          |                                 |                        |                             | 
 
-- Srovnávací test agregované propustnosti je založen na měření více tunelů agregovaných prostřednictvím jedné brány. Není zaručenou propustnost kvůli tooInternet provoz podmínky a chování vaší aplikace.
+- Srovnávací test agregované propustnosti je založen na měření více tunelů agregovaných prostřednictvím jedné brány. Nejedná se o zaručenou propustnost kvůli provozním podmínkám v internetu a chování aplikace.
 
-- Informace o cenách najdete na hello [cenová](https://azure.microsoft.com/pricing/details/vpn-gateway) stránky.
+- Informace o cenách najdete na stránce [Ceny](https://azure.microsoft.com/pricing/details/vpn-gateway).
 
-- Informace o dokumentu SLA (smlouvy o úrovni služeb) můžete najít na hello [SLA](https://azure.microsoft.com/support/legal/sla/vpn-gateway/) stránky.
+- Informace o smlouvě SLA (smlouva o úrovni služeb) můžete najít na stránce [SLA](https://azure.microsoft.com/support/legal/sla/vpn-gateway/).

@@ -1,6 +1,6 @@
 ---
-title: "aaaGetting začít s Operations Management Suite zabezpečení a Audit řešení | Microsoft Docs"
-description: "Tento dokument pomůže tooget můžete začít s Operations Management Suite zabezpečení a Audit toomonitor možnosti řešení hybridního cloudu."
+title: "Začínáme s řešením Zabezpečení a audit v Operations Management Suite | Dokumentace Microsoftu"
+description: "Tento dokument vám poskytne úvodní přehled řešení Zabezpečení a audit v Operations Management Suite, abyste mohli začít monitorovat svůj hybridní cloud."
 services: operations-management-suite
 documentationcenter: na
 author: YuriDio
@@ -15,43 +15,43 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2017
 ms.author: yurid
-ms.openlocfilehash: 5cb3e5dbb3e60f9702a34c9413ddc1bf2b14b411
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: eb5283c8f32fddaa8a20a565e4b877821de979a4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started-with-operations-management-suite-security-and-audit-solution"></a>Začínáme s řešením Zabezpečení a audit v Operations Management Suite
 Tento dokument vám umožní rychle začít používat řešení Zabezpečení a audit v Operations Management Suite (OMS) a provede vás jednotlivými možnostmi.
 
 ## <a name="what-is-oms"></a>Co je OMS?
-Microsoft Operations Management Suite (OMS) je cloudové řešení společnosti Microsoft pro správu IT, které pomáhá se správou a ochranou místních a cloudových infrastruktur. Další informace o OMS, přečtěte si článek hello [Operations Management Suite](https://technet.microsoft.com/library/mt484091.aspx).
+Microsoft Operations Management Suite (OMS) je cloudové řešení společnosti Microsoft pro správu IT, které pomáhá se správou a ochranou místních a cloudových infrastruktur. Další informace o OMS najdete v článku [Operations Management Suite](https://technet.microsoft.com/library/mt484091.aspx).
 
 ## <a name="oms-security-and-audit-dashboard"></a>Řídicí panel Zabezpečení a audit v OMS
-Hello OMS zabezpečení a Audit řešení poskytuje komplexní pohled na vaše organizace IT postavení zabezpečení s integrovaný vyhledávací dotazy pro významné problémy, které vyžadují vaši pozornost. Hello **zabezpečení a Audit** řídicí panel je hello domovskou obrazovku všem související toosecurity v OMS. Poskytuje podrobný přehled o stavu zabezpečení hello vašich počítačů. Zahrnuje také možnost tooview hello všechny události z hello za posledních 24 hodin, 7 dní, nebo jakékoli jiné vlastní časový rámec. tooaccess hello **zabezpečení a Audit** řídicího panelu, postupujte takto:
+Řešení Zabezpečení a audit v OMS poskytuje ucelený přehled o stavu zabezpečení IT vaší organizace pomocí předdefinovaných vyhledávacích dotazů na důležité problémy, které vyžadují vaši pozornost. Řídicí panel **Zabezpečení a audit** je domovskou obrazovkou pro všechno, co v OMS souvisí se zabezpečením. Poskytuje celkový přehled o stavu zabezpečení vašich počítačů. Umožňuje také zobrazit všechny události za posledních 24 hodin, 7 dní nebo za jakýkoli zadaný interval. Řídicí panel **Zabezpečení a audit** je přístupný podle tohoto postupu:
 
-1. V hello **Microsoft Operations Management Suite** klikněte na hlavním řídicím **nastavení** dlaždice v levé hello.
-2. V hello **nastavení** okno, v části **řešení** klikněte na tlačítko **zabezpečení a Audit** možnost.
-3. Hello **zabezpečení a Audit** řídicího panelu se zobrazí:
+1. Na hlavním řídicím panelu **Microsoft Operations Management Suite** klikněte na dlaždici **Nastavení** nalevo.
+2. V okně **Nastavení** v části **Řešení** klikněte na možnost **Zabezpečení a audit**.
+3. Zobrazí se řídicí panel **Zabezpečení a audit**:
    
     ![Řídicí panel Zabezpečení a audit v OMS](./media/oms-security-getting-started/oms-getting-started-fig1-ga.png)
 
-Pokud přistupujete k tento řídicí panel pro hello poprvé a nemáte zařízení monitorovat pomocí OMS, nebude možné hello dlaždice naplnit data získaná z hello agenta. Po instalaci agenta hello může trvat některé toopopulate čas, proto se zobrazí původně pravděpodobně chybí některá data jako stále nahráváte toohello cloudu.  V takovém případě je normální toosee některé dlaždice bez konkrétní informace. Čtení [počítače se systémem Windows připojit přímo tooOMS](https://technet.microsoft.com/library/mt484108.aspx) Další informace o tom, agent OMS tooinstall v systému Windows a [tooOMS počítače připojit Linux](https://technet.microsoft.com/library/mt622052.aspx) Další informace o tom, tooperform této úlohy v systému Linux.
+Pokud tento řídicí panel otvíráte poprvé a nemáte ve službě OMS žádná sledovaná zařízení, dlaždice nebudou obsahovat žádná data z agentů. Po instalaci agenta může načtení dat ještě nějakou dobu trvat, proto mohou zpočátku chybět některá data, která se ještě odesílají do cloudu.  V takovém případě je normální, že některé dlaždice neobsahují smysluplné informace. Další informace o instalaci agenta OMS v systému Windows obsahuje článek [Přímé připojení počítačů s Windows do OMS](https://technet.microsoft.com/library/mt484108.aspx) a článek [Připojení počítačů s Linuxem do OMS](https://technet.microsoft.com/library/mt622052.aspx) obsahuje stejné informace pro systém Linux.
 
 > [!NOTE]
-> Hello agent shromažďuje informace hello na základě hello aktuální událostí, které jsou povolené, a pro instanci název počítače, IP adresy a uživatelského jména. Nejsou ale shromažďovány žádné soubory, dokumenty, databáze nebo soukromá data.   
+> Agent shromažďuje informace na základě aktuálních povolených událostí, například název počítače, IP adresu a uživatelské jméno. Nejsou ale shromažďovány žádné soubory, dokumenty, databáze nebo soukromá data.   
 > 
 > 
 
-Řešení jsou kolekce pravidel pro logiku, vizualizaci a získávání dat, které řeší klíčové problémy zákazníků. Zabezpečení a audit je jedním z nich, další mohou být přidána samostatně. Přečíst článek hello [přidat řešení](https://technet.microsoft.com/library/mt674635.aspx) Další informace o tom, tooadd nové řešení.
+Řešení jsou kolekce pravidel pro logiku, vizualizaci a získávání dat, které řeší klíčové problémy zákazníků. Zabezpečení a audit je jedním z nich, další mohou být přidána samostatně. Další informace o přidání nových řešení najdete v článku [Přidání řešení](https://technet.microsoft.com/library/mt674635.aspx).
 
-řídicí panel OMS zabezpečení a Audit Hello je uspořádány do čtyř hlavních kategorií:
+Řídicí panel Zabezpečení a audit v OMS je rozdělen do čtyř hlavních kategorií:
 
-* **Zabezpečení domény**: v této oblasti, nebudete moct toofurther prozkoumat záznamy zabezpečení v čase, přístup k posouzením malwaru, aktualizovat hodnocení, zabezpečení sítě, informace o přístupu a identit, počítače s událostmi zabezpečení a rychle mají řídicí panel Security Center tooAzure přístup.
-* **Významné problémy**: tuto možnost povolit, tooquickly identifikovat hello počet aktivní problémy a hello závažnost těchto problémů.
-* **Detekce (Preview)**: umožňuje vzorů útoků tooidentify vizualizací výstrahy zabezpečení, která je uloženo na vaše prostředky.
-* **Hrozby Intelligence**: umožňuje vzorů útoků tooidentify vizualizací hello celkový počet servery s odchozím škodlivým provozem IP, typu hello zjištění ohrožení a mapu, která ukazuje, kde jsou tyto IP adresy pocházejících z. 
-* **Běžné dotazy zabezpečení**: tuto možnost nabízí, můžete seznam nejčastějších zabezpečení hello dotazy, které můžete použít toomonitor prostředí. Po kliknutí na jednu z těchto dotazů, otevře se hello **vyhledávání** okno s hello výsledky pro tento dotaz.
+* **Domény zabezpečení**: v této oblasti můžete podrobněji zkoumat záznamy o zabezpečení v různých časech, zobrazovat informace o posouzení malwaru, o zabezpečení sítě, o posouzení aktualizací, o identitě a přístupu a o počítačích s událostmi zabezpečení, stejně jako rychle přecházet do řídicího panelu Azure Security Center.
+* **Významné problémy**: tato možnost vám umožní rychle identifikovat celou řadu aktivních problémů a jejich závažnost.
+* **Zjištění (Preview)**: umožňuje identifikovat vzory útoků na vaše prostředky pomocí vizualizací výstrah zabezpečení.
+* **Analýza hrozeb**: umožňuje identifikovat vzory útoků vizualizací celkového počtu serverů s odchozími škodlivými přenosy, typu škodlivých hrozeb a mapy, která ukazuje, odkud příslušné adresy IP pocházejí. 
+* **Běžné dotazy na zabezpečení**: tato možnost poskytuje seznam nejběžnějších bezpečnostních dotazů které můžete použít k monitorování vašeho prostředí. Když kliknete na některý z těchto dotazů, otevře se okno **Vyhledávání** s výsledky pro daný dotaz.
 
 > [!NOTE]
 > Další informace o tom, jak OMS zajišťuje ochranu vašich dat, obsahuje článek Jak OMS chrání vaše data.
@@ -59,24 +59,24 @@ Pokud přistupujete k tento řídicí panel pro hello poprvé a nemáte zaříze
 > 
 
 ## <a name="security-domains"></a>Domény zabezpečení
-Při monitorování prostředků, je důležité toobe možné tooquickly přístup hello aktuální stav vašeho prostředí. Je však také možné tootrack důležité toobe back se událostí, které nastaly v minulosti hello, který může vést lepší pochopení tooa, co se děje ve vašem prostředí v určitých bodu v čase. 
+Při monitorování prostředků je důležité, abyste byli schopni rychle se dostat k aktuálnímu stavu prostředí. Je ale také důležité mít možnost zpětně vysledovat události, ke kterým došlo v minulosti a které vám pomůžou pochopit, co se v daném okamžiku v prostředí děje. 
 
 > [!NOTE]
-> uchovávání dat se podle toohello OMS cenový plán. Další informace najdete v článku hello [Microsoft Operations Management Suite](https://www.microsoft.com/server-cloud/operations-management-suite/pricing.aspx) stránce s cenami.
+> Uchovávání dat probíhá podle cenového tarifu OMS. Další informace najdete v článku o cenách služby [Microsoft Operations Management Suite](https://www.microsoft.com/server-cloud/operations-management-suite/pricing.aspx).
 > 
 > 
 
-Scénáře incidentu odpovědi a forenzních šetření přímo využívat hello výsledky, které jsou k dispozici v hello **záznamy zabezpečení v průběhu času** dlaždici.
+Reakce na události a scénáře forenzního vyšetřování mohou informace dostupné na dlaždici **Záznamy zabezpečení v průběhu času** s výhodou využívat.
 
 ![Záznamy zabezpečení v průběhu času](./media/oms-security-getting-started/oms-getting-started-fig2.JPG)
 
-Když kliknete na tuto dlaždici, hello **vyhledávání** se otevře okno zobrazující výsledku dotazu pro **události zabezpečení** (typ = SecurityEvents) s daty na základě hello posledních sedmi dnů, jak je uvedeno níže:
+Když kliknete na tuto dlaždici, otevře se okno **Vyhledávání** s výsledkem dotazu pro **Události zabezpečení** (typ = SecurityEvents) na základě dat z posledních sedmi dnů, například:
 
 [!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![Záznamy zabezpečení v průběhu času](./media/oms-security-getting-started/oms-getting-started-fig3.JPG)
 
-výsledek hledání Hello je rozdělený do dvou panelů: levém podokně hello vám dává rozpis hello počet událostí zabezpečení, které nebyly nalezeny, ve kterých byly nalezeny tyto události, hello počet účtů, které byly zjištěny v těchto počítačích a typy hello počítače hello aktivity. Hello pravém podokně poskytuje celkový počet výsledků hello a chronologickém zobrazení událostí zabezpečení hello aktivitou počítače hello název a události. Můžete také kliknout na **zobrazit další** tooview další podrobnosti o této události, jako jsou data události hello, hello ID události a zdroj události hello.
+Výsledek vyhledávání je rozdělen do dvou podoken: v levém podokně je rozpis počtu nalezených událostí zabezpečení, počítačů, ve kterých k nim došlo, počet účtů, které byly v těchto počítačích zjištěny a typy aktivit. V pravém podokně jsou celkové výsledky a chronologické zobrazení událostí zabezpečení s názvem počítače a aktivitou události. Kliknutím na **Zobrazit další** můžete také zobrazit podrobnosti o této události, například data, ID a zdroj události.
 
 > [!NOTE]
 > Další informace o vyhledávacích dotazech OMS najdete v [Referenční příručce k vyhledávání pro službu OMS](https://technet.microsoft.com/library/mt450427.aspx).
@@ -84,23 +84,23 @@ výsledek hledání Hello je rozdělený do dvou panelů: levém podokně hello 
 > 
 
 ### <a name="antimalware-assessment"></a>Posouzení antimalwaru
-Tato možnost dovoluje tooquickly můžete identifikovat počítače s nedostatečnou ochranou a počítače, které jsou nekompromitovali úsek malwaru. Malware vyhodnocení stavu a zjištěných hrozeb na hello monitorované servery jsou přečteny a pak hello data se odešlou toohello OMS služby v cloudu hello ke zpracování. Servery se zjištěnými hrozbami a servery s nedostatečnou ochranou se zobrazují na řídicím panelu malwaru assessment hello, která je přístupná po kliknutí na tlačítko hello **antimalwarových Assessment** dlaždici. 
+Tato možnost umožňuje rychle identifikovat počítače s nedostatečnou ochranou a počítače, které jsou zasažené malwarem. Načte se posouzení stavu malwaru a zjištěná ohrožení na monitorovaných serverech a výsledky se odešlou službě OMS v cloudu pro zpracování. Servery, na kterých byla nalezena ohrožení a servery s nedostatečnou ochranou se zobrazí v řídicím panelu posouzení malwaru, která je přístupný kliknutím na dlaždici **Posouzení antimalwaru**. 
 
 ![Posouzení malwaru](./media/oms-security-getting-started/oms-getting-started-fig4-ga.png)
 
-Stejně jako všechny ostatní za provozu dlaždice k dispozici v OMS řídicího panelu, když na ni kliknete, hello **vyhledávání** otevře okno s výsledek dotazu hello. Pro tuto možnost, pokud kliknete v hello **nevykazují** možnost pod **stav ochrany**, budete mít hello výsledek dotazu, který ukazuje tato položka jeden, který obsahuje název hello počítače a jeho pořadí, jako vidíte níže:
+Stejně jako u kterékoli jiné živé dlaždice na řídicím panelu OMS můžete kliknutím na ni zobrazit okno **Vyhledávání** s výsledkem dotazu. Pokud u této možnosti kliknete na možnost **Negenerují se sestavy** v části **Stav ochrany**, získáte výsledky dotazu, které odpovídají této jedné položce s názvem počítače a pořadím, jak je uvedeno níže:
 
 ![Výsledky vyhledávání](./media/oms-security-getting-started/oms-getting-started-fig5.png)
 
 > [!NOTE]
-> *pořadí* je úrovni poskytnutí tooreflect hello stav ochrany hello (on, off, aktualizovat, atd.) a hrozeb, které se nacházejí. S, jako číslo agregace toomake pomáhá.
+> *Pořadí* odráží stav ochrany (zapnuto, vypnuto, aktualizováno atd.) a nalezených hrozeb. Číselné vyjádření umožňuje využití této hodnoty v agregacích.
 > 
 > 
 
-Pokud kliknete na název počítače hello, budete mít hello chronologickém zobrazení hello stav ochrany pro tento počítač. To je velmi užitečné pro scénáře, ve kterých je nutné toounderstand Pokud antimalwarových hello je nainstalovaný a v určitém okamžiku byla odebrána.   
+Pokud kliknete na název počítače, získáte chronologický přehled o stavu jeho zabezpečení. To je velmi užitečné v případech, kdy potřebujete zjistit, zda byl nainstalován antimalwarový software, případně kdy byl odebrán.   
 
 ### <a name="update-assessment"></a>Posouzení aktualizací
-Tato možnost dovoluje tooquickly můžete určit hello problémy se zabezpečením toopotential celkové ohrožení a jestli nebo jak důležité aktualizace jsou pro vaše prostředí. OMS zabezpečení a Audit řešení jenom zadejte hello vizualizace těchto aktualizací, hello reálná data pocházejí z [řešení pro správu aktualizací](oms-solution-update-management.md), což je jiný modul v OMS. Tady je příklad hello aktualizací:
+Tato možnost umožňuje rychle určit celkovou míru vystavení potenciálním problémům zabezpečení a zda a jak kritické jsou dostupné aktualizace pro vaše prostředí. Řešení Zabezpečení a audit v OMS pouze poskytuje vizualizaci těchto aktualizací, skutečná data pocházejí z [řešení Správa aktualizací](oms-solution-update-management.md), což je jiný modul v rámci OMS. Následuje příklad aktualizací:
 
 ![Aktualizace systému](./media/oms-security-getting-started/oms-getting-started-fig6-new.png)
 
@@ -110,93 +110,93 @@ Tato možnost dovoluje tooquickly můžete určit hello problémy se zabezpečen
 > 
 
 ### <a name="identity-and-access"></a>Identita a přístup
-Identita by měla být hello řízení roviny pro vaši firmu, ochrana identity by měla být nejvyšší prioritu. V posledních hello byly okruhu kolem organizace a byly tyto hranice mezi hello primární Obranným hranice, v současné době s více dat a další aplikace přesunutí toohello cloudu stane hello identity nové hraniční hello. 
+Identita by měla být základní „řídicí plochou“ vaší organizace a její ochrana je tou nejvyšší prioritou. V minulosti byly kolem organizací vytyčeny perimetry, které byly hlavní obrannou linií. V současné době se ale čím dál víc dat a aplikací přesouvá do cloudu a novým perimetrem se proto stává identita. 
 
 > [!NOTE]
-> v současné době hello dat je založena pouze na data události zabezpečení přihlášení (událost ID 4624) v Office 365 přihlášení budoucí hello a také data služby Azure AD budou zahrnuty.
+> Aktuálně jsou data založena jen na základě přihlašovacích dat Security Events (událost s ID 4624); v budoucnu budou doplněna i přihlášení Office365 a Azure AD.
 > 
 > 
 
-Pomocí monitorování aktivit vaší identity je bude možné tootake proaktivní akce před incident trvá místní nebo reaktivní akce toostop pokus útoku. Hello **identit a přístupu** řídicí panel poskytuje přehled o stavu vaší identity, včetně hello počet neúspěšných pokusů o přihlášení toolog na hello uživatelský účet, který jste použili při těmito pokusy účty, které byly uzamčen, účty se změněným nebo resetování hesla a je momentálně počet účtů, které se protokolují v. 
+Monitorování aktivit kolem vaší identity budete moci proaktivně jednat ještě než k problematické události dojde nebo provést reaktivní akci k zastavení pokusu o útok. Řídicí panel **Identita a přístup** poskytuje přehled stavu vaší identity, včetně počtu neúspěšných pokusů o přihlášení, uživatelského účtu použitého při těchto pokusech, uzamčených účtů, účtů se změněným nebo resetovaným heslem nebo počtu účtů, jejichž uživatelé jsou právě přihlášení. 
 
-Když kliknete na hello **identit a přístupu** dlaždice, zobrazí se následující řídicí panel hello:
+Když kliknete na dlaždici **Identita a přístupu**, zobrazí se následující řídicí panel:
 
 ![Identita a přístup](./media/oms-security-getting-started/oms-getting-started-fig7-ga.png)
 
-Hello informace, které jsou k dispozici v tomto řídicím panelu můžete okamžitě pracovníkům tooidentify potenciální podezřelou aktivitu. Například 338 pokusy o toolog na nejsou jako **správce** a 100 % tyto pokusy se nezdařilo. Může to znamenat útok hrubou silou na tento účet. Pokud kliknete na tento účet bude získat další informace, které vám pomůže toodetermine hello cílový prostředek pro tento útok potenciální:
+Informace, které jsou k dispozici na tomto řídicím panelu, vám pomůžou okamžitě identifikovat potenciálně podezřelé aktivity. Například je tu 338 pokusů o přihlášení jako **Administrator** a 100 % těchto pokusů o přihlášení se nezdařilo. Může to znamenat útok hrubou silou na tento účet. Když kliknete na tento účet, získáte další informace, které vám pomůžou určit cílový prostředek tohoto potenciálního rizika:
 
 ![Výsledky vyhledávání](./media/oms-security-getting-started/oms-getting-started-fig8.JPG)
 
-Hello podrobné sestavy obsahuje důležité informace o této události, včetně: hello cílového počítače, hello typ přihlášení (v této případu přihlášením k síti), hello aktivity (v tomto případu případě 4625) a komplexní časová osa každém pokusu o. 
+Podrobná sestava obsahuje důležité informace o této události, včetně cílového počítače, typu přihlášení (v tomto případě přihlášení k síti), aktivity (v tomto případě událost 4625) a podrobného časování každého pokusu. 
 
 ### <a name="computers"></a>Počítače
-Tuto dlaždici lze použít tooaccess všechny počítače, které mají aktivně události zabezpečení. Po kliknutí na tuto dlaždici uvidíte hello seznam počítačů s událostí zabezpečení a hello počet událostí na každém počítači:
+Tuto dlaždici můžete použít pro přístup ke všem počítačům, na kterých právě dochází k událostem zabezpečení. Po kliknutí na tuto dlaždici se zobrazí seznam počítačů s událostmi zabezpečení a počet událostí na každém z nich:
 
 ![Počítače](./media/oms-security-getting-started/oms-getting-started-fig9.JPG)
 
-Můžete pokračovat kliknutím na každém počítači šetření a kontrolovat hello události zabezpečení, které byly příznakem.
+Můžete pokračovat v šetření kliknutím na každý počítač a kontrolou hlášených událostí zabezpečení.
 
 ### <a name="threat-intelligence"></a>Analýza hrozeb
 
-Správci IT pomocí hello analýzou hrozeb možnost k dispozici v OMS zabezpečení a Audit můžete identifikovat bezpečnostní hrozby proti hello prostředí, například, zjistit, zda určitý počítač je součástí botnet. Uzly v botnet počítačů se může stát, když útočníci nedovoleným způsobem nainstaluje malware, který tajně připojí tento příkaz toohello počítače a řízení. Může také identifikovat potenciální hrozby přicházející z alternativních komunikačních kanálů, jako je například darknet. Další informace o analýzou hrozeb načtením [monitorování a odpovídá toosecurity výstrahy nástroje Operations Management Suite zabezpečení a Audit řešení](oms-security-responding-alerts.md) článku.
+Pomocí možnosti Analýza hrozeb, která je dostupná v řešení Zabezpečení a audit v OMS, můžou správci IT identifikovat ohrožení zabezpečení prostředí – například můžou určit, jestli je konkrétní počítač součástí botnetu. Z počítačů se můžou stát uzly v botnetu, když útočníci neoprávněně nainstalují malware, který tajně připojí počítač k řídicímu serveru. Může také identifikovat potenciální hrozby přicházející z alternativních komunikačních kanálů, jako je například darknet. Další informace o analýze hrozeb najdete v článku [Monitorování a reagování na výstrahy zabezpečení v řešení Zabezpečení a audit v Operations Management Suite](oms-security-responding-alerts.md).
 
 V některých scénářích si můžete všimnout potenciálně škodlivé IP adresy, ke které přistupoval jeden monitorovaný počítač:
 
 ![mapa analýzy hrozeb](./media/oms-security-responding-alerts/oms-security-responding-alerts-fig6.png)
 
-Tato výstraha a ostatní uživatele v hello stejnou kategorií, jsou generovány prostřednictvím zabezpečení OMS s využitím [analýzou hrozeb Microsoftu](https://youtu.be/O4WtxgUrDc8). Hello analýzou hrozeb dat je shromažďovaná společností Microsoft a také zakoupených od začátku poskytovatelů intelligence hrozeb. Tato data se často aktualizuje a přizpůsobit přesunutí toofast hrozeb. Z důvodu tooits povahy, měly být spojeny s další zdroje informací o zabezpečení při [příčin](https://blogs.technet.microsoft.com/msoms/2016/12/08/investigating-suspicious-activity-in-a-hybrid-cloud-with-oms-security/) výstrahy zabezpečení. 
+Tato výstraha a další v rámci stejné kategorie se generují prostřednictvím zabezpečení OMS s využitím [analýzy hrozeb Microsoftu](https://youtu.be/O4WtxgUrDc8). Data analýzy hrozeb shromažďuje Microsoft a také se kupují od vedoucích poskytovatelů analýzy hrozeb. Tato data se často aktualizují a přizpůsobují rychle se měnícím hrozbám. Díky jejich povaze je třeba při [vyšetřování](https://blogs.technet.microsoft.com/msoms/2016/12/08/investigating-suspicious-activity-in-a-hybrid-cloud-with-oms-security/) výstrah zabezpečení kombinovat je s dalšími zdroji informací o zabezpečení. 
 
 ### <a name="baseline-assessment"></a>Vyhodnocení standardních hodnot
 
 Společnost Microsoft, spolu s organizacemi z oboru a vládními organizacemi po celém světě, definuje konfiguraci systému Windows, která představuje vysoce zabezpečená nastavení serverů. Tuto konfiguraci tvoří sada klíčů registru, nastavení zásad auditu, nastavení zásad zabezpečení a společností Microsoft doporučené hodnoty pro tato nastavení. Tato sada pravidel se označuje jako standardní hodnoty zabezpečení. Další informace o této možnosti najdete v tématu [Vyhodnocování standardních hodnot v řešení Zabezpečení a audit v Operations Management Suite](oms-security-baseline.md).
 
 ### <a name="azure-security-center"></a>Azure Security Center
-Tato dlaždice je v podstatě řídicí panel Azure Security Center tooaccess zástupce. Další informace o tomto řešení najdete v článku [Začínáme s Azure Security Center](../security-center/security-center-get-started.md).
+Tato dlaždice je v podstatě zkratkou k řídicímu panelu Azure Security Center. Další informace o tomto řešení najdete v článku [Začínáme s Azure Security Center](../security-center/security-center-get-started.md).
 
 ## <a name="notable-issues"></a>Významné problémy
-Hello hlavní záměr této skupiny z možností je tooprovide rychlý přehled o hello problémy, které máte ve vašem prostředí, je zařazením kritická, upozornění a informativní. Hello aktivní problém typ dlaždice je vizualizaci tyto problémy, ale jeho vám neumožňuje tooexplore další podrobnosti o nich, pro které je třeba toouse hello dolní části této dlaždice, který má název hello hello problému (název), kolik objekty měly to umožní (počet) a jak kritické je (ZÁVAŽNOST).
+Hlavním záměrem této skupiny možností je poskytnout rychlý přehled o problémech, které máte ve svém prostředí roztříděním na kritické události, na upozornění a na informativní sdělení. Dlaždice typu Aktivní problém obsahuje vizualizaci těchto problémů, ale neumožňuje zkoumání jejich podrobností. K tomu budete muset použít dolní část této dlaždice, ve které je název problému, počet zasažených objektů a závažnost.
 
 ![Významné problémy](./media/oms-security-getting-started/oms-getting-started-fig10.JPG)
 
-Uvidíte, že byly tyto problémy již zahrnut v různých oblastech hello **zabezpečení domény** skupinu, která zvyšuje hello záměr tohoto zobrazení: vizualizovat hello nejdůležitější problémy ve vašem prostředí z jednoho místa.
+Můžete si všimnout, že tyto problémy již jsou pokryté ostatními oblastmi skupiny **Domény zabezpečení**, což posiluje záměr tohoto zobrazení: vizualizovat nejdůležitější problémy ve vašem prostředí na jednom místě.
 
 ## <a name="detections-preview"></a>Zjištění (Preview)
-Hello hlavní záměr této možnosti je tooallow IT tooquickly identifikovat potenciální hrozby tootheir prostředí prostřednictvím a hello závažnost této hrozby.
+Hlavním záměrem této možnosti je umožnit správcům IT rychle identifikovat potenciální ohrožení jejich prostředí a závažnost těchto hrozeb.
 
 ![Analýza hrozeb](./media/oms-security-getting-started/oms-getting-started-fig12.png)
 
-Tuto možnost můžete také použít během [reakcí na incidenty šetření](https://blogs.msdn.microsoft.com/azuresecurity/2016/11/30/investigating-suspicious-activity-in-a-hybrid-cloud-with-oms-security/) tooperform hello hodnocení a získat další informace o útoku hello.
+Tuto možnost můžete použít také při [šetření incidentů](https://blogs.msdn.microsoft.com/azuresecurity/2016/11/30/investigating-suspicious-activity-in-a-hybrid-cloud-with-oms-security/) k vyhodnocení a získání dalších informací o útoku.
 
 > [!NOTE]
-> Další informace o tom, toouse OMS pro reakcí na incidenty, si pusťte toto video: [jak tooLeverage hello Azure Security Center & Microsoft Operations Management Suite pro odpověď Incident](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703).
+> Ve videu [How to Leverage the Azure Security Center & Microsoft Operations Management Suite for an Incident Response](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703) (Jak reagovat na incidenty pomocí služeb Azure Security Center a Microsoft Operations Management Suite) najdete informace, jak používat OMS při reakci na incidenty.
 > 
 > 
 
 ## <a name="threat-intelligence"></a>Analýza hrozeb
-Hello nové hrozby intelligence část řešení zabezpečení a Audit hello vizualizuje vzorů možných útoků hello několika způsoby: Celkový počet servery s odchozím škodlivým provozem IP Dobrý den, hello typ zjištění ohrožení a mapu, která ukazuje, kde těchto IP adres pocházejících z. Můžete pracovat s hello mapy a klikněte na hello IP adresy pro další informace.
+Nový oddíl analýzy hrozeb v řešení Zabezpečení a audit vizualizuje vzory možných útoků různými způsoby: celkový počet serverů s odchozími škodlivými přenosy, typy škodlivých hrozeb a mapa, která ukazuje, odkud příslušné IP adresy pocházejí. S mapou můžete pracovat a zjišťovat další informace klikáním na IP adresy.
 
-Žlutý pushpins na mapě hello znamenat příchozí provoz z škodlivé IP adresy. Není pro servery, které jsou zveřejněné toohello internet toosee příchozí škodlivý přenos, ale doporučujeme posoudit tyto pokusy o toomake se, že žádný z nich bylo úspěšné. Tyto indikátory jsou založené na protokolech služby IIS, WireData a brány Windows Firewall.  
+Žluté špendlíky na mapě označují příchozí provoz ze škodlivých IP adres. U serverů dostupných z internetu je určitý podíl škodlivého provozu normální, doporučujeme ale tyto pokusy kontrolovat a ujistit se, že nejsou úspěšné. Tyto indikátory jsou založené na protokolech služby IIS, WireData a brány Windows Firewall.  
 
 ![Analýza hrozeb](./media/oms-security-getting-started/oms-getting-started-fig11-ga.png)
 
 ## <a name="common-security-queries"></a>Běžné dotazy zabezpečení
-Hello seznam běžných dotazů zabezpečení k dispozici může být užitečné informace můžete toorapidly přístup k prostředku a upravit ho na základě potřeb vašeho prostředí. Mezi běžné dotazy patří:
+Seznam běžných dotazů zabezpečení může být užitečný pro rychlé získání informací z prostředků a jejich přizpůsobení podle potřeb vašeho prostředí. Mezi běžné dotazy patří:
 
 * Všechny aktivity zabezpečení
-* Aktivity související se zabezpečením na počítači hello "computer01.contoso.com" (nahraďte názvem svého počítače)
-* Aktivity související se zabezpečením na počítači hello "computer01.contoso.com" pro účet "Administrator" (nahraďte názvem svého počítače a účtu)
+* Aktivity zabezpečení v počítači "computer01.contoso.com" (nahraďte název počítače podle potřeby)
+* Aktivity zabezpečení v počítači "computer01.contoso.com" pro účet „Administrator“ (nahraďte název počítače a účet podle potřeby)
 * Aktivity přihlášení k počítači
 * Účty, pod kterými byl na počítači ukončen antimalware Microsoftu
-* Počítače, na kterých se ukončil antimalwarový proces od Microsoftu hello
+* Počítače, na kterých byl ukončen proces antimalwaru Microsoftu
 * Počítače, na kterých spuštěn program "hash.exe" (nahraďte název procesu podle potřeby)
 * Všechny názvy procesů, které byly spuštěny
 * Aktivity přihlášení podle účtu
-* Účty, které se vzdáleně připojily na počítači hello "computer01.contoso.com" (nahraďte názvem svého počítače)
+* Účty, které se vzdáleně přihlásily k počítači "computer01.contoso.com" (nahraďte název počítače podle potřeby)
 
 ## <a name="see-also"></a>Viz také
-V tomto dokumentu jste přináší tooOMS zabezpečení a Audit řešení. Další informace o zabezpečení OMS toolearn najdete hello následující články:
+V tomto dokumentu jste se seznámili s řešením Zabezpečení a audit v OMS. Další informace o zabezpečení v OMS najdete v následujících článcích:
 
 * [Přehled Operations Management Suite (OMS)](operations-management-suite-overview.md)
-* [Monitorování a výstrahy tooSecurity odpovídá v Operations Management Suite zabezpečení a Audit řešení](oms-security-responding-alerts.md)
+* [Monitorování a reagování na výstrahy zabezpečení v řešení Zabezpečení a audit v Operations Management Suite](oms-security-responding-alerts.md)
 * [Monitorování prostředků v řešení Zabezpečení a audit v Operations Management Suite](oms-security-monitoring-resources.md)
 

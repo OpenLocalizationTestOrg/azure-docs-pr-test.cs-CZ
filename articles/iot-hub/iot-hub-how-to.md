@@ -1,6 +1,6 @@
 ---
-title: "IoT Hub jak aaaAzure příliš | Microsoft Docs"
-description: "Jako vývojář, jak používat hello různých funkcí služby IoT Hub?"
+title: Azure IoT Hub postup | Microsoft Docs
+description: "Jak se jako vývojář použít k různým funkcím služby IoT Hub?"
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -14,51 +14,51 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.openlocfilehash: d9c6e25bb332704dee4327bcdc361a299c064130
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 786121ae249d69376b4be4c74000868cbb208989
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="how-toouse-azure-iot-hub"></a>Jak toouse Azure IoT Hub
+# <a name="how-to-use-azure-iot-hub"></a>Jak používat Azure IoT Hub
 
-Máte toolearn různé možnosti, jak služba toodevelop pro hello IoT Hub:
+Máte různé možnosti, jak se naučit vyvíjet pro službu IoT Hub:
 
-* Přečtěte si hello koncepční články, které funkce hello IoT Hub podrobně popsány.
-* Proveďte jeden z hello kurzy, které se týkají hello různým funkcím služby IoT Hub.
+* Přečtěte si konceptuální články, které funkce IoT Hub podrobně popsány.
+* Proveďte jeden z kurzů, které se týkají k různým funkcím služby IoT Hub.
 
 ## <a name="developer-guide"></a>Příručka pro vývojáře
 
-Jako vývojář, můžete si přečíst podrobný koncepční informace o IoT Hub v hello [Příručka vývojáře][lnk-devguide]. Tato příručka obsahuje:
+Jako vývojář, můžete si přečíst podrobný koncepční informace o IoT Hub v [Příručka vývojáře][lnk-devguide]. Tato příručka obsahuje:
 
-* Podrobný popis všech funkcí služby IoT Hub, které vám pomůžou toolearn jak toouse je.
-* Pokyny toochoose, když jsou k dispozici více možností.
+* Podrobný popis všech funkcí služby IoT Hub, které vám pomůže dozvědět, jak je používat.
+* Pokyny o tom, jak zvolit, pokud jsou k dispozici více možností.
 
 ## <a name="tutorials"></a>Kurzy
 
-Pokud dáváte přednost toolearn týkající se konkrétních funkcí služby IoT Hub projdete praktických příkladech, existuje několik toochoose kurzy z. Řadu tyto kurzy jsou k dispozici v více programovacích jazyků. Tyto kurzy patří:
+Pokud dáváte přednost Další informace týkající se konkrétních funkcí služby IoT Hub projdete praktických příkladech, existuje několik kurzy lze vybírat. Řadu tyto kurzy jsou k dispozici v více programovacích jazyků. Tyto kurzy patří:
 
-- [Zpracování zpráv typu zařízení cloud IoT Hub pomocí trasy][lnk-routes-tutorial]. Tento kurz ukazuje, jak směrování IoT Hub toouse pravidla zpráv typu zařízení cloud toodispatch způsobem snadno, založené na konfiguraci.
+- [Zpracování zpráv typu zařízení cloud IoT Hub pomocí trasy][lnk-routes-tutorial]. V tomto kurzu se dozvíte, jak používat služby IoT Hub směrování pravidla k odesílání zpráv typu zařízení cloud způsobem snadno, založené na konfiguraci.
 
-- [Odesílání zpráv typu cloud zařízení s centrem IoT][lnk-c2d-tutorial]. V tomto kurzu se dozvíte, jak zprávy toosend cloud zařízení prostřednictvím služby IoT Hub a příjem zpráv typu cloud zařízení na zařízení.
+- [Odesílání zpráv typu cloud zařízení s centrem IoT][lnk-c2d-tutorial]. V tomto kurzu se dozvíte, jak k odesílání zpráv typu cloud zařízení prostřednictvím služby IoT Hub a příjem zpráv typu cloud zařízení na zařízení.
 
-- [Ukládání souborů z cloudu toohello zařízení s centrem IoT][lnk-upload-tutorial]. Tento kurz ukazuje, jak nahrát soubor hello toouse služby IoT Hub.
+- [Odeslání souborů ze zařízení do cloudu pomocí služby IoT Hub][lnk-upload-tutorial]. V tomto kurzu se dozvíte, jak používat funkce nahrávání souboru služby IoT Hub.
 
-- [Začínáme s dvojčata zařízení][lnk-twin-tutorial]. Tento kurz vás seznámí toodevice dvojčata, hlášené vlastnosti, požadované vlastnosti a značky. Můžete použít hodnoty toosynchronize dvojčata zařízení ve vašich zařízeních.
+- [Začínáme s dvojčata zařízení][lnk-twin-tutorial]. Tento kurz vás seznámí s dvojčata zařízení, hlášené vlastnosti, požadované vlastnosti a značky. Pomocí dvojčata zařízení synchronizovat hodnoty ve vašich zařízeních.
 
-- [Používat přímé metody][lnk-methods-tutorial]. Tento kurz ukazuje, jak toouse přímé metody. Přidejte obslužnou rutinu pro přímé metoda simulovaného zařízení a volání metody přímé hello ze služby IoT Hub.
+- [Používat přímé metody][lnk-methods-tutorial]. V tomto kurzu se dozvíte, jak používat přímé metody. Přidejte obslužnou rutinu pro přímé metoda simulovaného zařízení a vyvolání metody přímé ze služby IoT Hub.
 
-- [Začínáme se správou zařízení][lnk-dm-tutorial]. Tento kurz ukazuje, jak funkce správy klíčů zařízení toouse například dvojčata a přímé metody. Použijte tyto funkce tooremotely restartování simulovaného zařízení.
+- [Začínáme se správou zařízení][lnk-dm-tutorial]. V tomto kurzu se dozvíte, jak používat funkce správy klíčů zařízení jako dvojčata a přímé metody. Pomocí těchto funkcí vzdáleně restartování simulovaného zařízení.
 
-- [Použití zařízení tooconfigure požadované vlastnosti][lnk-properties-tutorial]. Tento kurz ukazuje, jak toouse hello dvojče zařízení pro potřeby a který ohlásil, vlastnosti, tooremotely konfigurace zařízení.
+- [Použijte požadované vlastnosti pro konfiguraci zařízení][lnk-properties-tutorial]. Tento kurz ukazuje, že jste způsobu pro použití zařízení pro dvojici potřeby a hlášené vlastnosti, na vzdáleně konfigurace zařízení.
 
-- [Použití zařízení úlohy tooinitiate aktualizaci firmwaru zařízení][lnk-jobs-tutorial]. Tento kurz ukazuje, jak funkce správy klíčů zařízení toouse například dvojčata a přímé metody. Zjistíte, jak toouse tyto funkce tooremotely aktualizaci firmwaru vaše zařízení.
+- [Používat úlohy zařízení k zahájení aktualizace firmwaru zařízení][lnk-jobs-tutorial]. V tomto kurzu se dozvíte, jak používat funkce správy klíčů zařízení jako dvojčata a přímé metody. Zjistíte, jak používat tyto funkce vzdálené aktualizace firmwaru zařízení.
 
-- [Plán a všesměrovým úlohy][lnk-schedule-tutorial]. Tento kurz ukazuje, jak toouse požadovaných vlastností a toointeract přímé metod s více zařízení v naplánovaném čase.
+- [Plán a všesměrovým úlohy][lnk-schedule-tutorial]. V tomto kurzu se dozvíte, jak používat požadované vlastnosti a metody pro přímý pro interakci s více zařízení v naplánovaném čase.
 
 ## <a name="next-steps"></a>Další kroky
 
-toolearn Další informace o hello služby IoT Hub, najdete v části hello [Příručka vývojáře][lnk-devguide].
+Další informace o službě IoT Hub, najdete v článku [Příručka vývojáře][lnk-devguide].
 
 [lnk-devguide]: ./iot-hub-devguide.md
 [lnk-routes-tutorial]: ./iot-hub-csharp-csharp-process-d2c.md

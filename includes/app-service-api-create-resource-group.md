@@ -1,11 +1,11 @@
-Vytvořte skupinu prostředků s hello [vytvořit skupinu az](/cli/azure/group#create) příkaz.
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#create).
 
 [!INCLUDE [resource group intro text](resource-group.md)]
 
-Hello následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v hello *westeurope* umístění.
+Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *westeurope*.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
 ```
 
-k dispozici umístění hello toosee, spusťte hello `az appservice list-locations` příkaz. Obvykle budete prostředky vytvářet v oblasti, kterou máte blízko.
+Pokud chcete zobrazit dostupná umístění, spusťte příkaz `az appservice list-locations`. Obvykle budete prostředky vytvářet v oblasti, kterou máte blízko.

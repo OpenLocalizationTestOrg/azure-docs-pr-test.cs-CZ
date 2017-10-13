@@ -1,6 +1,6 @@
 ---
-title: "došlo k aaaWhat toomy ASP.NET 5 projektu (Visual Studio připojené služby) | Microsoft Docs"
-description: "Popisuje, co se stane po připojení tooan účtu úložiště Azure v projektu Visual Studio ASP.NET 5 pomocí sady Visual Studio připojené služby"
+title: "Co se stalo s projektu ASP.NET 5 (Visual Studio připojené služby) | Microsoft Docs"
+description: "Popisuje, co se stane po připojení k účtu úložiště Azure v projektu Visual Studio ASP.NET 5 pomocí sady Visual Studio připojené služby"
 services: storage
 documentationcenter: 
 author: kraigb
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: kraigb
-ms.openlocfilehash: 75ce3bfb59e085bf08d98d9b0cd9442722d7566b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2a25c24fd7625374d269622a805f386fcd52bb5f
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="what-happened-toomy-aspnet-5-project-visual-studio-azure-storage-connected-services"></a>Co se stalo toomy ASP.NET 5 projektu (Visual Studio Azure Storage připojeno services)?
+# <a name="what-happened-to-my-aspnet-5-project-visual-studio-azure-storage-connected-services"></a>Co se stalo s projektu ASP.NET 5 (Visual Studio Azure Storage připojeno services)?
 ## <a name="references-added"></a>Přidanými referencemi
-balíček NuGet úložiště Azure Hello přidala tooyour projektu sady Visual Studio.  
-Tento balíček přidá hello následující odkazy na rozhraní .NET:
+Balíček NuGet úložiště Azure byl přidán do projektu sady Visual Studio.  
+Tento balíček přidá následující odkazy na rozhraní .NET:
 
 * **Microsoft.Data.Edm**
 * **Microsoft.Data.OData**
@@ -34,10 +34,10 @@ Tento balíček přidá hello následující odkazy na rozhraní .NET:
 * **System.Data**
 * **System.Spatial**
 
-Navíc balíček NuGet hello **Microsoft.Framework.Configuration.Json** byla přidána.
+Navíc balíček NuGet **Microsoft.Framework.Configuration.Json** byla přidána.
 
 ## <a name="connection-string-for-azure-storage-added"></a>Připojovací řetězec pro Azure Storage přidán
-V souboru config.json hello projektu pochází element připojovací řetězec a klíč účtu úložiště hello vybrané.
+V souboru config.json projektu byl vytvořen element připojovací řetězec a klíč účtu vybrané úložiště.
 
 Další informace najdete v tématu [ASP.NET 5](http://www.asp.net/vnext).
 

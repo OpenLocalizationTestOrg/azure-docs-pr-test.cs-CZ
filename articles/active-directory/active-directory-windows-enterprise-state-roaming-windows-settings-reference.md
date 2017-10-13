@@ -1,6 +1,6 @@
 ---
-title: "odkaz nastavení roamingu aaaWindows 10 | Microsoft Docs"
-description: "Úplný seznam všech hello nastavení, které budou roamované nebo zálohovat ve Windows 10."
+title: "Referenční příručka k nastavení roamingu Windows 10 | Microsoft Docs"
+description: "Úplný seznam všech nastavení, které budou roamované nebo zálohovat ve Windows 10."
 services: active-directory
 keywords: roaming, stav Enterprise windows cloud
 documentationcenter: 
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
 ms.author: markvi
-ms.openlocfilehash: 381e2220b698bb0e477c207984ff96c03ed132ca
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5082ed8d2f41e72fa979b978e2ac0b0840fdcdac
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Referenční informace k nastavení roamingu pro Windows 10
-Hello následuje úplný seznam všech hello nastavení, které budou roamované nebo zálohovat ve Windows 10. 
+Následuje úplný seznam všech nastavení, které budou roamované nebo zálohovat ve Windows 10. 
 
 ## <a name="devices-and-endpoints"></a>Koncové body a zařízení
-Viz následující tabulka pro souhrn hello zařízení a typy účtů, které jsou podporovány hello synchronizace, zálohování, hello a obnovte framework ve Windows 10.
+Najdete v následující tabulce najdete souhrn typy účtů, které jsou podporovány sync, zálohování, a zařízení a obnovte framework ve Windows 10.
 
 | Typ účtu a operace | Desktop | Mobilní |
 | --- | --- | --- |
@@ -35,10 +35,10 @@ Viz následující tabulka pro souhrn hello zařízení a typy účtů, které j
 | Účet Microsoft: zálohování a obnovení |Ne |Ano |
 
 ## <a name="what-is-backup"></a>Co je zálohování?
-Nastavení systému Windows se obecně synchronizaci ve výchozím nastavení, ale některá nastavení jsou jenom zálohovat, jako je například hello seznam nainstalovaných aplikací na zařízení. Zálohování je pro mobilní zařízení pouze a aktuálně nejsou k dispozici pro uživatele Enterprise State Roaming. Zálohování používá účet Microsoft a ukládá hello nastavení a data aplikací do OneDrive. Pokud uživatel zakáže synchronizace v zařízení hello pomocí hello nastavení aplikace, data aplikací, který se standardně synchronizuje se změní na zálohování jenom. Zálohovaná data jsou přístupné pouze prostřednictvím operace obnovení hello během hello prvního spuštění počítače nového zařízení. Zálohování je možné zakázat prostřednictvím nastavení zařízení hello a můžete spravovat a je Odstraněná v účtu OneDrive hello uživatele.
+Nastavení systému Windows se obecně synchronizaci ve výchozím nastavení, ale některá nastavení jsou jenom zálohovat, jako je například seznam nainstalovaných aplikací na zařízení. Zálohování je pro mobilní zařízení pouze a aktuálně nejsou k dispozici pro uživatele Enterprise State Roaming. Zálohování používá účet Microsoft a ukládá nastavení a data aplikací do OneDrive. Pokud uživatel zakáže synchronizace na zařízení pomocí nastavení aplikace, data aplikací, který se standardně synchronizuje se změní na zálohování jenom. Zálohovaná data jsou přístupné pouze prostřednictvím operace obnovení během prostředí prvního spuštění nového zařízení. Zálohy lze zakázat pomocí nastavení zařízení a můžete spravovat a Odstraněná v účtu OneDrive.
 
 ## <a name="windows-settings-overview"></a>Přehled nastavení systému Windows
-Hello následující skupiny nastavení jsou k dispozici pro synchronizaci nastavení koncoví uživatelé tooenable nebo zakáže na zařízení s Windows 10.
+Následující skupiny nastavení jsou k dispozici pro koncovým uživatelům povolit nebo zakázat synchronizaci nastavení na zařízení s Windows 10.
 
 * Motiv: pozadí plochy, dlaždici uživatele, pozice panelu, atd. 
 * Nastavení aplikace Internet Explorer: procházení historie zadané adresy URL, oblíbených položek, atd. 
@@ -54,10 +54,10 @@ Synchronizace skupiny (oblíbených položek, čtení seznamu) nastavení prohl�
 ![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-sync-content.png)
 
 ## <a name="windows-settings-details"></a>Podrobnosti o nastavení systému Windows
-V následující tabulce hello, další položky ve sloupci skupina nastavení hello odkazuje toosettings, které můžete zakázali přechodem tooSettings > účty > synchronizace nastavení > Nastavení ostatní systému Windows. 
+V následující tabulce, další položky ve sloupci skupina nastavení odkazuje na nastavení, které je možné zakázat tak, že přejdete do Nastavení > účty > synchronizace nastavení > Nastavení ostatní systému Windows. 
 
-Interní položky ve sloupci skupina nastavení hello najdete toosettings služby a aplikace, které se dá deaktivovat jenom ze synchronizace v rámci hello aplikace nebo zakázáním synchronizace hello zařízení pomocí správy mobilních zařízení (MDM) nebo nastavení zásad skupiny.
-Nastavení, která není přemístit nebo synchronizace nebude patřit tooa skupiny.
+Interní položky ve sloupci skupina nastavení viz nastavení a aplikace, které se dá deaktivovat jenom ze synchronizace v rámci aplikace nebo zakázáním synchronizace celý zařízení pomocí správy mobilních zařízení (MDM) nebo nastavení zásad skupiny.
+Nastavení, která není přemístit nebo synchronizace nebude patří do skupiny.
 
 | Nastavení | Desktop | Mobilní | Skupina |
 | --- | --- | --- | --- |
@@ -85,16 +85,16 @@ Nastavení, která není přemístit nebo synchronizace nebude patřit tooa skup
 | **Přizpůsobení plochy**: prezentace tapety |Synchronizace |X |Motiv |
 | **Přizpůsobení plochy**: nastavení hlavního panelu (pozice, automaticky skrýt atd.) |Synchronizace |X |Motiv |
 | **Přizpůsobení plochy**: rozložení obrazovky start |X |zálohování | |
-| **Zařízení**: sdílené tiskárny, které jste se připojili příliš|X |X |ostatní |
+| **Zařízení**: sdílené tiskárny, které jste se připojili k |X |X |ostatní |
 | **Prohlížeč Edge**: čtení seznamu |Synchronizace |Synchronizace |Interní |
 | **Prohlížeč Edge**: oblíbených položek |Synchronizace |Synchronizace |Interní |
 | **Prohlížeč Edge**: top lokality <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
 | **Prohlížeč Edge**: zadané adresy URL <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
 | **Prohlížeč Edge**: oblíbených položek panelu nastavení <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
-| **Prohlížeč Edge**: Zobrazit tlačítko Domů hello <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
+| **Prohlížeč Edge**: Zobrazit tlačítko Domů <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
 | **Prohlížeč Edge**: blokovat automaticky otevíraná okna <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
-| **Prohlížeč Edge**: dotaz na jaké toodo s každého stažení <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
-| **Prohlížeč Edge**: nabízejí hesla toosave <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
+| **Prohlížeč Edge**: dotaz na co dělat s každého stažení <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
+| **Prohlížeč Edge**: nabízejí pro ukládání hesel <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
 | **Prohlížeč Edge**: odeslání není sledování žádostí o <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
 | **Prohlížeč Edge**: uložit formuláře položky <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
 | **Prohlížeč Edge**: zobrazovat návrhy vyhledávání a lokality během zadávání <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
@@ -127,7 +127,7 @@ Nastavení, která není přemístit nebo synchronizace nebude patřit tooa skup
 | **Jazyk**: CHS QWERTY - klíč přepínač C/E, posunutí |Synchronizace |X |Jazyk |
 | **Jazyk**: CHS QWERTY - klíč přepínač C/E, Ctrl |Synchronizace |X |Jazyk |
 | **Jazyk**: CHS WUBI - vstupní režimu jednoho znaku |Synchronizace |X |Jazyk |
-| **Jazyk**: CHS WUBI - zobrazit hello zbývající kódování hello candidate |Synchronizace |X |Jazyk |
+| **Jazyk**: CHS WUBI - zobrazit zbývající kódování zájemce |Synchronizace |X |Jazyk |
 | **Jazyk**: CHS WUBI - zvukový signál při kódování 4 je neplatný |Synchronizace |X |Jazyk |
 | **Jazyk**: CHT Ču - zahrnují CJK Ext-A |Synchronizace |X |Jazyk |
 | **Jazyk**: editoru IME pro japonštinu - prediktivní zadáním a vlastní slova |Synchronizace |Synchronizace |Jazyk |
@@ -139,11 +139,11 @@ Nastavení, která není přemístit nebo synchronizace nebude patřit tooa skup
 | **Zamknout obrazovku**: všechny uzamknout nastavení obrazovky |X |X | |
 | **Lupa**: zapnout nebo vypnout (hlavní přepínač). |X |X |Usnadnění přístupu |
 | **Lupa**: inverzi barev vypnutí a zapnutí (ve výchozím nastavení vypnuté) |Synchronizace |X |Usnadnění přístupu |
-| **Lupa**: sledování – postupujte podle fokus klávesnice hello |Synchronizace |X |Usnadnění přístupu |
-| **Lupa**: sledování – postupujte podle hello myší |Synchronizace |X |Usnadnění přístupu |
+| **Lupa**: sledování – postupujte podle fokus klávesnice |Synchronizace |X |Usnadnění přístupu |
+| **Lupa**: sledování – ukazatele myši |Synchronizace |X |Usnadnění přístupu |
 | **Lupa**: spustit po přihlášení uživatelé (ve výchozím nastavení vypnuté) |Synchronizace |X |Usnadnění přístupu |
-| **Myš**: když změníte velikost hello myší |Synchronizace |X |ostatní |
-| **Myš**: změnit barvu hello myší |Synchronizace |X |ostatní |
+| **Myš**: Změna velikosti myší |Synchronizace |X |ostatní |
+| **Myš**: změnit barvu myší |Synchronizace |X |ostatní |
 | **Myš**: všechna ostatní nastavení |X |X | |
 | **Program Předčítání**: Snadné spuštění |Synchronizace |X |Usnadnění přístupu |
 | **Program Předčítání**: uživatelé mohou změnit Předčítání hovořícího výšky |Synchronizace |X |Usnadnění přístupu |
@@ -153,8 +153,8 @@ Nastavení, která není přemístit nebo synchronizace nebude patřit tooa skup
 | **Program Předčítání**: mít vložení kurzoru následující Předčítání (na ve výchozím nastavení) |Synchronizace |X |Usnadnění přístupu |
 | **Program Předčítání**: Povolit visual zvýraznění Předčítání kurzoru (na ve výchozím nastavení) |Synchronizace |X |Usnadnění přístupu |
 | **Program Předčítání**: přehrávání zvuku upozornění (na ve výchozím nastavení) |Synchronizace |X |Usnadnění přístupu |
-| **Program Předčítání**: aktivaci služby správy klíčů na hello touch klávesnice, při navýšení prstu (ve výchozím nastavení vypnuté) |Synchronizace |X |Usnadnění přístupu |
-| **Usnadnění přístupu**: nastavte hello tloušťka blikající kurzor hello |Synchronizace |X |Usnadnění přístupu |
+| **Program Předčítání**: Aktivace kláves na klávesnici touch při navýšení prstu (ve výchozím nastavení vypnuté) |Synchronizace |X |Usnadnění přístupu |
+| **Usnadnění přístupu**: nastavit tloušťku blikající kurzor |Synchronizace |X |Usnadnění přístupu |
 | **Usnadnění přístupu**: Odeberte obrázky na pozadí (ve výchozím nastavení vypnuté) |Synchronizace |X |Usnadnění přístupu |
 | **Napájení a režimu spánku**: všechna nastavení |X |X | |
 | **Přizpůsobení obrazovky Start**: zvýraznění barvu (pouze phone) |X |Synchronizace |Motiv |
@@ -163,8 +163,8 @@ Nastavení, která není přemístit nebo synchronizace nebude patřit tooa skup
 | **Zadáním**: zvýrazňovat slova překlepu |Synchronizace |zálohování |Jazyk |
 | **Zadáním**: zobrazovat návrhy text při psaní |Synchronizace |zálohování |Jazyk |
 | **Zadáním**: přidají mezeru po zvolit návrh textu |Synchronizace |zálohování |Jazyk |
-| **Zadáním**: Přidání doby po I poklepání MEZERNÍK hello |Synchronizace |zálohování |Jazyk |
-| **Zadáním**: velká počáteční hello první písmeno každého věty. |Synchronizace |zálohování |Jazyk |
+| **Zadáním**: Přidání doby po I poklepání MEZERNÍK |Synchronizace |zálohování |Jazyk |
+| **Zadáním**: počáteční písmeno každého věty. |Synchronizace |zálohování |Jazyk |
 | **Zadáním**: při I poklepání klávesu shift použít všechny velká písmena |Synchronizace |zálohování |Jazyk |
 | **Zadáním**: přehrání zvuků klíče při psaní |Synchronizace |zálohování |Jazyk |
 | **Zadáním**: data individuálního nastavení pro dotykové klávesnice |Synchronizace |zálohování |Jazyk |

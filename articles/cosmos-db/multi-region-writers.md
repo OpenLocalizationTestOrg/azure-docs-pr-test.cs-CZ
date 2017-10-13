@@ -1,6 +1,6 @@
 ---
-title: "architektury aaaMulti hlavní databáze s Azure Cosmos DB | Microsoft Docs"
-description: "Další informace o tom, jak toodesign architektury aplikací s místní čte a zapisuje v různých geografických oblastech s Azure Cosmos DB."
+title: "Více hlavní databázi architektury s Azure Cosmos DB | Microsoft Docs"
+description: "Další informace o návrhu architektury aplikací s místní čtení a zápisu v různých geografických oblastech s Azure Cosmos DB."
 services: cosmos-db
 documentationcenter: 
 author: arramac
@@ -15,43 +15,43 @@ ms.workload: na
 ms.date: 05/23/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3269c8405afe16f75db69b42e576fe76e00a8e16
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: cf1482ae7b1070023703f5dbe861d151f5d64fd8
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="multi-master-globally-replicated-database-architectures-with-azure-cosmos-db"></a>Více hlavní globálně replikované databáze architektury s Azure Cosmos DB
-Podporuje Azure Cosmos DB připraveného [globální replikace](distribute-data-globally.md), což vám umožní toodistribute datové oblasti toomultiple přístup s nízkou latencí kdekoli v hello zatížení. Tento model se často používá pro vydavatele nebo příjemce zatížení tam, kde je zapisovač v jedné zeměpisné oblasti a globálně distribuované čtečky v jiných oblastech (čtení). 
+Podporuje Azure Cosmos DB připraveného [globální replikace](distribute-data-globally.md), která umožňuje distribuci dat do několika oblastí přístup s nízkou latencí kdekoli v zatížení. Tento model se často používá pro vydavatele nebo příjemce zatížení tam, kde je zapisovač v jedné zeměpisné oblasti a globálně distribuované čtečky v jiných oblastech (čtení). 
 
-Můžete také použít Azure Cosmos DB globální replikace podporuje toobuild aplikace, ve kterých jsou globálně distribuované zapisovače a čtečky. Tento dokument popisuje vzor, který umožňuje dosažení místní zápisu a čtení místní pro distribuované zapisovače pomocí Azure Cosmos DB.
+Podpora globální replikace databáze Cosmos Azure můžete taky vytvářet aplikace, ve kterých jsou globálně distribuované zapisovače a čtečky. Tento dokument popisuje vzor, který umožňuje dosažení místní zápisu a čtení místní pro distribuované zapisovače pomocí Azure Cosmos DB.
 
 ## <a id="ExampleScenario"></a>Publikování obsahu – příklad scénáře
-Podívejme se na toodescribe skutečných scénář použití globálně distribuované více region nebo více master čtení zápisu vzory s Azure Cosmos DB. Vezměte v úvahu vytvořené v Azure Cosmos DB platforma pro publikování obsahu. Tady jsou některé požadavky, které tuto platformu musí splňovat pro vysoký výkon uživatele pro vydavatele a spotřebitelé.
+Podívejme se na scénář skutečných popisují, jak můžete používat vzory globálně distribuované více region nebo více master čtení zápisu s Azure Cosmos DB. Vezměte v úvahu vytvořené v Azure Cosmos DB platforma pro publikování obsahu. Tady jsou některé požadavky, které tuto platformu musí splňovat pro vysoký výkon uživatele pro vydavatele a spotřebitelé.
 
-* Autoři a Odběratelé, kteří jsou rozloženy hello, world 
-* Autoři musíte publikovat (zápisu) články tootheir místní (nejbližší) oblast
-* Autoři mají čtečky nebo odběratele, jejich článků kteří jsou rozmístěny v celém světě hello. 
+* Autoři a Odběratelé, kteří jsou rozloženy na světě. 
+* Autoři články (zápisu) musíte publikovat své místní oblast (nejbližší)
+* Autoři mají čtečky nebo odběratele, jejich článků kteří distribuují po celém světě. 
 * Odběratelé, kteří měli obdržet oznámení, při publikování nových článků.
-* Odběratelé, kteří musí být schopný tooread články ze své místní oblast. Měly by být také možné tooadd recenze toothese články. 
-* Každý, kdo včetně hello Autor článků hello by měl být schopný zobrazení, že všechny hello recenze připojené tooarticles z místní oblast. 
+* Odběratelé, kteří musí být možné číst články ze své místní oblast. Musí být také možné přidat recenze na tyto články. 
+* Každý, kdo včetně autora články musí být možné zobrazit všechny recenze připojená k články z místní oblast. 
 
-Za předpokladu, že miliony s až miliardy článků, vydavatelům a spotřebitelům brzy máme problémy hello tooconfront měřítka společně s zaručující polohu přístupu. Stejně jako u většiny problémů škálovatelnost, hello řešení spočívá ve strategii je dobré rozdělení. Dále umožňuje vyhledat jak toomodel články, zkontrolujte a oznámení jako dokumenty, nakonfigurovat účty Azure Cosmos DB a implementovat vrstva přístupu k datům. 
+Za předpokladu, že miliony s až miliardy článků, vydavatelům a spotřebitelům brzy máme boji s problémy měřítka společně s zaručující polohu přístupu. Stejně jako u většiny problémů škálovatelnost řešení spočívá ve strategii je dobré rozdělení. V dalším kroku podíváme, jak model články, zkontrolujte a oznámení jako dokumenty, nakonfigurovat účty Azure Cosmos DB a implementovat vrstva přístupu k datům. 
 
-Pokud vás zajímají další informace o vytváření oddílů a klíče oddílů toolearn, najdete v části [vytváření oddílů a škálování v Azure Cosmos DB](partition-data.md).
+Pokud vás zajímají další informace o vytváření oddílů a klíče oddílů, najdete v části [vytváření oddílů a škálování v Azure Cosmos DB](partition-data.md).
 
 ## <a id="ModelingNotifications"></a>Modelování oznámení
-Oznámení jsou data informační kanály konkrétní tooa uživatele. Proto hello přístupové vzorce pro dokumenty oznámení se vždycky nacházejí v kontextu hello jednoho uživatele. Například by "post uživatele tooa oznámení" nebo "načíst všechna oznámení pro daného uživatele". Ano, hello optimální volbou oddíly klíč pro tento typ by být `UserId`.
+Oznámení jsou datových kanálů specifické pro uživatele. Proto přístupové vzorce pro dokumenty oznámení jsou vždy v rámci jednoho uživatele. Například by "post oznámení pro uživatele" nebo "načíst všechna oznámení pro daného uživatele". Ano, bude optimální volbou oddíly klíč pro tento typ `UserId`.
 
     class Notification 
     { 
         // Unique ID for Notification. 
         public string Id { get; set; }
 
-        // hello user Id for which notification is addressed to. 
+        // The user Id for which notification is addressed to. 
         public string UserId { get; set; }
 
-        // hello partition Key for hello resource. 
+        // The partition Key for the resource. 
         public string PartitionKey 
         { 
             get 
@@ -63,12 +63,12 @@ Oznámení jsou data informační kanály konkrétní tooa uživatele. Proto hel
         // Subscription for which this notification is raised. 
         public string SubscriptionFilter { get; set; }
 
-        // Subject of hello notification. 
+        // Subject of the notification. 
         public string ArticleId { get; set; } 
     }
 
 ## <a id="ModelingSubscriptions"></a>Odběry modelování
-Odběry můžete vytvořit pro různé kritéria jako určitou kategorii články zájmu nebo konkrétní vydavatele. Proto hello `SubscriptionFilter` je vhodná pro klíč oddílu.
+Odběry můžete vytvořit pro různé kritéria jako určitou kategorii články zájmu nebo konkrétní vydavatele. Proto `SubscriptionFilter` je vhodná pro klíč oddílu.
 
     class Subscriptions 
     { 
@@ -91,7 +91,7 @@ Odběry můžete vytvořit pro různé kritéria jako určitou kategorii článk
     }
 
 ## <a id="ModelingArticles"></a>Články modelování
-Jakmile článek identifikuje prostřednictvím oznámení, další dotazy jsou obvykle založené na hello `Article.Id`. Výběr `Article.Id` jako oddíl hello klíč tak poskytuje hello nejlepší distribuce pro ukládání články v kolekci Azure Cosmos DB. 
+Jakmile článek identifikuje prostřednictvím oznámení, další dotazy jsou obvykle založené na `Article.Id`. Výběr `Article.Id` jako oddíl klíč tak poskytuje nejlepší distribuce pro ukládání články v kolekci Azure Cosmos DB. 
 
     class Article 
     { 
@@ -106,30 +106,30 @@ Jakmile článek identifikuje prostřednictvím oznámení, další dotazy jsou 
             } 
         }
         
-        // Author of hello article
+        // Author of the article
         public string Author { get; set; }
 
-        // Category/genre of hello article
+        // Category/genre of the article
         public string Category { get; set; }
 
-        // Tags associated with hello article
+        // Tags associated with the article
         public string[] Tags { get; set; }
 
-        // Title of hello article
+        // Title of the article
         public string Title { get; set; }
         
         //... 
     }
 
 ## <a id="ModelingReviews"></a>Zkontroluje modelování
-Jako články jsou recenze většinou zapisovat a číst v kontextu hello článku. Výběr `ArticleId` jako oddíl klíč poskytuje nejlepší distribuce a efektivní přístup recenze přidružené článku. 
+Jako články jsou recenze většinou zapisovat a číst v kontextu článku. Výběr `ArticleId` jako oddíl klíč poskytuje nejlepší distribuce a efektivní přístup recenze přidružené článku. 
 
     class Review 
     { 
         // Unique ID for Review 
         public string Id { get; set; }
 
-        // Article Id of hello review 
+        // Article Id of the review 
         public string ArticleId { get; set; }
 
         public string PartitionKey 
@@ -148,7 +148,7 @@ Jako články jsou recenze většinou zapisovat a číst v kontextu hello člán
     }
 
 ## <a id="DataAccessMethods"></a>Metody pro přístup k vrstvě
-Nyní Podíváme se na hlavní data hello potřebujeme tooimplement metody přístupu. Tady je seznam hello metody, které hello `ContentPublishDatabase` musí:
+Nyní Podíváme se na hlavní data musíme implementovat metody přístupu. Tady je seznam metod, `ContentPublishDatabase` musí:
 
     class ContentPublishDatabase 
     { 
@@ -164,18 +164,18 @@ Nyní Podíváme se na hlavní data hello potřebujeme tooimplement metody pří
     }
 
 ## <a id="Architecture"></a>Konfigurace účtu Azure Cosmos DB
-tooguarantee místní čte a zapisuje, jsme musí rozdělení dat nejen na klíč oddílu, ale také na základě hello zeměpisné přístup vzoru do oblasti. Hello model spoléhá na nutnosti geograficky replikované Azure Cosmos DB databázového účtu pro každou oblast. Například se dvěma oblastmi, zde je instalace s pro zápisy více oblasti:
+Zaručit místní čte a zapisuje, jsme musí oddílu data nejen v oddílu klíče, ale také podle vzoru zeměpisné přístup do oblasti. Model spoléhá na nutnosti geograficky replikované Azure Cosmos DB databázového účtu pro každou oblast. Například se dvěma oblastmi, zde je instalace s pro zápisy více oblasti:
 
 | Název účtu | Zápis oblast | Oblast pro čtení |
 | --- | --- | --- |
 | `contentpubdatabase-usa.documents.azure.com` | `West US` |`North Europe` |
 | `contentpubdatabase-europe.documents.azure.com` | `North Europe` |`West US` |
 
-Hello následující diagram ukazuje, jak provádět čtení a zápisu v typické aplikaci s tímto nastavením:
+Následující diagram znázorňuje, jak provádět čtení a zápisu v typické aplikaci s tímto nastavením:
 
 ![Azure Cosmos DB více hlavních architektura](./media/multi-region-writers/multi-master.png)
 
-Zde je fragment kódu ukazuje, jak tooinitialize hello klientům v DAL, spuštěné v hello `West US` oblast.
+Zde je fragment kódu znázorňující k chybě při inicializaci klienty v DAL, spuštěné v `West US` oblast.
     
     ConnectionPolicy writeClientPolicy = new ConnectionPolicy { ConnectionMode = ConnectionMode.Direct, ConnectionProtocol = Protocol.Tcp };
     writeClientPolicy.PreferredLocations.Add(LocationNames.WestUS);
@@ -195,7 +195,7 @@ Zde je fragment kódu ukazuje, jak tooinitialize hello klientům v DAL, spuště
         readRegionAuthKey,
         readClientPolicy);
 
-S hello před instalací může předat hello vrstva všech zápisů toohello místní účet na základě kde je nasazen. Čtení z obou účty tooget hello globální zobrazení dat provádí čtení. Tento přístup může být rozšířené tooas mnoha oblastech podle potřeby. Zde je ukázka, instalační program s tři zeměpisné oblasti:
+V předchozí instalaci může předat vrstva přístupu k datům všech zápisů místní účet, podle které se nasadí. Čtení ze oba účty, a získat globální zobrazení dat provádí čtení. Tuto metodu lze rozšířit na jako v mnoha oblastech podle potřeby. Zde je ukázka, instalační program s tři zeměpisné oblasti:
 
 | Název účtu | Zápis oblast | Oblast pro čtení 1 | Přečtěte si oblasti 2 |
 | --- | --- | --- | --- |
@@ -204,12 +204,12 @@ S hello před instalací může předat hello vrstva všech zápisů toohello m�
 | `contentpubdatabase-asia.documents.azure.com` | `Southeast Asia` |`North Europe` |`West US` |
 
 ## <a id="DataAccessImplementation"></a>Data access layer implementace
-Nyní Podíváme se na hello implementace hello vrstvou (DAL) pro aplikaci se dvěma oblastmi s možností zápisu. Hello DAL musí implementovat hello následující kroky:
+Nyní Podíváme se na provádění vrstva přístupu k datům (DAL) pro aplikaci se dvěma oblastmi s možností zápisu. DAL musí implementovat následující kroky:
 
 * Vytvoření více instancí `DocumentClient` pro jednotlivé účty. Se dvěma oblastmi jeden má každá instance vrstvy DAL `writeClient` a jeden `readClient`. 
-* Podle oblasti hello nasazené aplikace hello, nakonfigurovat hello koncové body pro `writeclient` a `readClient`. Například hello DAL nasazené v `West US` používá `contentpubdatabase-usa.documents.azure.com` pro provádění zápisy. Hello DAL nasazené v `NorthEurope` používá `contentpubdatabase-europ.documents.azure.com` pro zápis.
+* Podle oblasti nasazené aplikace, konfigurace koncových bodů pro `writeclient` a `readClient`. Například DAL nasazené v `West US` používá `contentpubdatabase-usa.documents.azure.com` pro provádění zápisy. DAL nasazené v `NorthEurope` používá `contentpubdatabase-europ.documents.azure.com` pro zápis.
 
-S hello předcházející instalace se dá implementovat metody pro přístup k hello. Zápis operací předávání hello zápisu toohello odpovídající `writeClient`.
+V předchozí instalaci se dá implementovat datové metody přístupu. Zápis předávat operace zápisu do odpovídajících `writeClient`.
 
     public async Task CreateSubscriptionAsync(string userId, string category)
     {
@@ -231,7 +231,7 @@ S hello předcházející instalace se dá implementovat metody pro přístup k 
         });
     }
 
-Pro čtení, oznámení a recenze, musí přečíst z oblasti a výsledky union hello jak je znázorněno v následujícím fragmentu kódu hello:
+Pro čtení, oznámení a recenze, můžete musí číst od oblasti a sjednocení výsledky jak je znázorněno v následujícím fragmentu kódu:
 
     public async Task<IEnumerable<Notification>> ReadNotificationFeedAsync(string userId)
     {
@@ -318,6 +318,6 @@ V tomto článku jsme popsané, jak je používat vzory globálně distribuovan�
 * Další informace o tom, jak Azure Cosmos DB podporuje [globální distribuční](distribute-data-globally.md)
 * Další informace o [automatickou a ruční převzetí služeb při selhání v Azure Cosmos DB](regional-failover.md)
 * Další informace o [globální konzistence s Azure Cosmos DB](consistency-levels.md)
-* Vývoj s více oblastí pomocí hello [DB Cosmos Azure - DocumentDB rozhraní API](tutorial-global-distribution-documentdb.md)
-* Vývoj s více oblastí pomocí hello [Azure Cosmos DB - MongoDB rozhraní API](tutorial-global-distribution-MongoDB.md)
-* Vývoj s více oblastí pomocí hello [Azure Cosmos DB - API tabulky](tutorial-global-distribution-table.md)
+* Vývoj s více oblastí pomocí [DB Cosmos Azure - DocumentDB rozhraní API](tutorial-global-distribution-documentdb.md)
+* Vývoj s více oblastí pomocí [Azure Cosmos DB - MongoDB rozhraní API](tutorial-global-distribution-MongoDB.md)
+* Vývoj s více oblastí pomocí [Azure Cosmos DB - API tabulky](tutorial-global-distribution-table.md)

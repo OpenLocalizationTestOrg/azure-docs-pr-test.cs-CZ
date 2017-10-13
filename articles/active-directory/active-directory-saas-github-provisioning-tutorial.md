@@ -1,6 +1,6 @@
 ---
 title: "Kurz: Konfigurace GitHub pro zřizování automatické uživatelů s Azure Active Directory | Microsoft Docs"
-description: "Zjistěte, jak tooconfigure Azure Active Directory tooautomatically zřídit a deaktivace zřízení uživatelských účtů tooGitHub."
+description: "Informace o konfiguraci Azure Active Directory a automaticky zřizovat a zrušte zřídit uživatelské účty na Githubu."
 services: active-directory
 documentationcenter: 
 author: asmalser-msft
@@ -14,89 +14,89 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: asmalser-msft
-ms.openlocfilehash: c1f0f7a42e4f8a94db3f409cd463e13bb1bc13bc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3cc70273e95dbf4913e7bbcd8a37bd9a52987b60
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/29/2017
 ---
 # <a name="tutorial-configuring-github-for-automatic-user-provisioning"></a>Kurz: Konfigurace GitHub pro zřizování automatické uživatelů
 
 
-cílem Hello tohoto kurzu je tooshow hello kroky nutné tooperform v Githubu a Azure AD tooautomatically zřídit a deaktivace zřízení uživatelských účtů z tooGitHub Azure AD. 
+Cílem tohoto kurzu je tak, aby zobrazovalo kroky, které je třeba provést v Githubu a Azure AD a automaticky zřizovat a zrušte zřízení uživatelských účtů ze služby Azure AD na Githubu. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Hello scénáři uvedeném v tomto kurzu se předpokládá, že už máte hello následující položky:
+Scénář uvedených v tomto kurzu se předpokládá, že už máte následující položky:
 
 *   Klienta služby Azure Active directory
-*   Github klienta s hello [obchodní plán](https://help.github.com/articles/organization-billing-plans/#business-plan) nebo lépe povolena. 
+*   Github klienta s [obchodní plán](https://help.github.com/articles/organization-billing-plans/#business-plan) nebo lépe povolena. 
 *   Uživatelský účet na webu GitHub s oprávnění správce 
 
 > [!NOTE]
-> Hello Azure AD zřizování integrace spoléhá na hello [Githubu SCIM API](https://developer.github.com/v3/scim/), která je k dispozici tooGithub týmy hello firmy plán nebo vyšší.
+> Azure AD zřizování integrace spoléhá na [Githubu SCIM API](https://developer.github.com/v3/scim/), který je k dispozici na Githubu týmy na obchodní plán nebo lepší.
 
-## <a name="assigning-users-toogithub"></a>Přiřazení uživatelů tooGitHub
+## <a name="assigning-users-to-github"></a>Přiřazení uživatelů ke Githubu
 
-Azure Active Directory používá koncept názvem "přiřazení" toodetermine uživatelů, kteří obdrželi přístup tooselected aplikace. V kontextu hello zřizování účtu automatické uživatele se synchronizují pouze hello uživatelů a skupin, které byly "přiřazeny" tooan aplikace ve službě Azure AD. 
+Azure Active Directory používá koncept označované jako "úlohy" k určení uživatelů, kteří obdrželi přístup k vybrané aplikace. V kontextu uživatele automatické zřizování účtu se synchronizují pouze uživatelé a skupiny, které byly "přiřazeny" aplikace ve službě Azure AD. 
 
-Než nakonfigurujete a povolíte hello zřizování služby, musíte toodecide jaké uživatelů nebo skupin v Azure AD představují hello uživatelé, kteří potřebují přístup k aplikaci tooyour Githubu. Jakmile se rozhodli, můžete přiřadit tyto aplikace Githubu tooyour uživatelů podle pokynů hello zde:
+Před konfigurací a povolení zřizování služby, musíte rozhodnout, jaké uživatelů nebo skupin ve službě Azure AD představují uživatele, kteří potřebují přístup k vaší aplikaci Githubu. Jakmile se rozhodli, můžete přiřadit těmto uživatelům aplikace Githubu podle pokynů tady:
 
-[Přiřadit uživatele nebo skupinu tooan firemní aplikace](active-directory-coreapps-assign-user-azure-portal.md)
+[Přiřazení uživatele nebo skupiny do aplikace enterprise](active-directory-coreapps-assign-user-azure-portal.md)
 
-### <a name="important-tips-for-assigning-users-toogithub"></a>Důležité tipy pro přiřazení uživatelů tooGitHub
+### <a name="important-tips-for-assigning-users-to-github"></a>Důležité tipy pro přiřazení uživatelů ke Githubu
 
-*   Dále je doporučeno jednoho uživatele Azure AD je přiřazen hello tootest tooGitHub zřizování konfigurace. Další uživatele nebo skupiny může být přiřazen později.
+*   Dále je doporučeno jednoho uživatele Azure AD se přiřadí ke Githubu a otestovat konfiguraci zřizování. Další uživatele nebo skupiny může být přiřazen později.
 
-*   Při přiřazování tooGitHub uživatele, je nutné vybrat buď hello **uživatele** role nebo jinou platnou specifické pro aplikaci rolí (Pokud je k dispozici) v dialogovém okně přiřazení hello. Hello **výchozího přístupu k** role nefunguje pro zřizování a tito uživatelé se přeskočí.
+*   Při přiřazení uživatele k Githubu, je nutné vybrat buď **uživatele** role nebo jinou platnou specifické pro aplikaci rolí (Pokud je k dispozici) v dialogovém okně přiřazení. **Výchozího přístupu k** role nefunguje pro zřizování a tito uživatelé se přeskočí.
 
 
-## <a name="configuring-user-provisioning-toogithub"></a>Konfigurace tooGitHub zřizování uživatelů 
+## <a name="configuring-user-provisioning-to-github"></a>Konfiguraci zřizování uživatelů na Githubu 
 
-Tato část vás provede připojením vaší služby Azure AD tooGitHub uživatelský účet zřizování rozhraní API a konfigurace hello zřizování služby toocreate, aktualizovat a zakázat přiřazené uživatelské účty v Githubu podle přiřazení uživatelů a skupin ve službě Azure AD.
+Tato část vás provede připojení k Githubu uživatelský účet zřizování rozhraní API služby Azure AD a konfiguraci zřizování službu, kterou chcete vytvořit, aktualizovat a zakažte přiřazené uživatelské účty v Githubu podle přiřazení uživatelů a skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete také zvolit tooenabled na základě SAML jednotné přihlašování pro GitHub, hello pokynů uvedených v [portál Azure](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce doplnění navzájem.
+> Můžete také povolit na základě SAML jednotné přihlašování pro GitHub, postupujte podle pokynů uvedených v [portál Azure](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce doplnění navzájem.
 
 
-### <a name="configure-automatic-user-account-provisioning-toogithub-in-azure-ad"></a>Konfigurace automatického uživatelského účtu zřizování tooGitHub ve službě Azure AD
+### <a name="configure-automatic-user-account-provisioning-to-github-in-azure-ad"></a>Konfigurace automatického účet zřizování uživatelů ke Githubu ve službě Azure AD
 
 
-1. V hello [portál Azure](https://portal.azure.com), procházet toohello **Azure Active Directory > podnikové aplikace > všechny aplikace** části.
+1. V [portál Azure](https://portal.azure.com), vyhledejte **Azure Active Directory > podnikové aplikace > všechny aplikace** části.
 
-2. Pokud jste již nakonfigurovali GitHub pro jednotné přihlašování, vyhledejte instanci Githubu pomocí hello vyhledávací pole. Jinak vyberte možnost **přidat** a vyhledejte **Githubu** v galerii aplikací hello. Vyberte Githubu z výsledků hledání hello a přidejte ji tooyour seznam aplikací.
+2. Pokud jste již nakonfigurovali GitHub pro jednotné přihlašování, vyhledejte instanci Githubu pomocí pole hledání. Jinak vyberte možnost **přidat** a vyhledejte **Githubu** v galerii aplikací. Vyberte Githubu ve výsledcích hledání a přidejte ji do seznamu aplikací.
 
-3. Vyberte instanci Githubu a pak vyberte hello **zřizování** kartě.
+3. Vyberte instanci Githubu a pak vyberte **zřizování** kartě.
 
-4. Sada hello **režimu zřizování** příliš**automatické**.
+4. Nastavte **režimu zřizování** k **automatické**.
 
     ![Zřizování Githubu](./media/active-directory-saas-github-provisioning-tutorial/GitHub1.png)
 
-5. V části hello **přihlašovací údaje správce** klikněte na tlačítko **Authorize**. Tato operace otevře dialogové okno Githubu autorizace v nové okno prohlížeče. 
+5. V části **přihlašovací údaje správce** klikněte na tlačítko **Authorize**. Tato operace otevře dialogové okno Githubu autorizace v nové okno prohlížeče. 
 
-6. V novém okně hello se přihlaste pomocí účtu správce Githubu. V dialogu autorizace výsledné hello, vyberte hello Githubu týmu, který má být tooenable zřizování pro a potom vyberte **Authorize**. Po dokončení, vrátí toohello Azure portálu toocomplete hello zřizování konfigurace.
+6. V novém okně se přihlaste pomocí účtu správce Githubu. V dialogovém okně výsledné autorizace, vyberte tým Githubu, který chcete povolit zajišťování pro a pak vyberte **Authorize**. Po dokončení se vraťte k portálu Azure k dokončení konfigurace zřizování.
 
     ![Dialogové okno autorizace](./media/active-directory-saas-github-provisioning-tutorial/GitHub2.png)
 
-7. V hello portálu Azure, zadejte **URL klienta** a klikněte na tlačítko **Test připojení** tooensure Azure AD můžete připojit tooyour Githubu aplikaci. Pokud hello připojení nezdaří, ujistěte se, váš účet GitHub má oprávnění správce a **URl klienta** je správně zadané hodnoty a zkuste to znovu "Autorizace" krok text hello (mohou představovat **URL klienta** pravidlem: "https : //api.github.com/scim/v2/organizations/ + < Organizations_name > ", vaší organizace můžete najít v rámci účtu GitHub: **nastavení** > **organizace**).
+7. Na portálu Azure vstupní **URL klienta** a klikněte na tlačítko **Test připojení** zajistit Azure AD může připojit k aplikaci Githubu. Pokud se nepovede připojit, ujistěte se, váš účet GitHub má oprávnění správce a **URl klienta** je správně zadané hodnoty, a akci opakujte krok "Ověřit" (mohou představovat **URL klienta** pravidlem: "https:// API.github.com/scim/v2/Organizations/ + < Organizations_name > ", vaší organizace můžete najít v rámci účtu GitHub: **nastavení** > **organizace**).
 
     ![Dialogové okno autorizace](./media/active-directory-saas-github-provisioning-tutorial/GitHub3.png)
 
-8. Zadejte hello e-mailovou adresu uživatele nebo skupiny, který by měly dostávat oznámení zřizování Chyba v hello **e-mailové oznámení** pole a zaškrtněte políčko hello "odesílat e-mailové oznámení, pokud dojde k chybě."
+8. Zadejte e-mailovou adresu uživatele nebo skupiny, který by měly dostávat oznámení zřizování Chyba v **e-mailové oznámení** pole a zaškrtněte políčko "Odesílat e-mailové oznámení, pokud dojde k chybě."
 
 9. Klikněte na **Uložit**. 
 
-10. V části hello části mapování, vyberte **synchronizaci uživatelů Azure Active Directory tooGitHub**.
+10. V části mapování vyberte **synchronizaci Azure Active Directory Users na Githubu**.
 
-11. V hello **mapování atributů** , projděte si hello uživatelské atributy, které jsou synchronizované z tooGitHub Azure AD. Hello atributy vybrán jako **párování** vlastnosti jsou použité toomatch hello uživatelské účty v Githubu pro operace aktualizace. Vyberte toocommit tlačítko hello uložit změny.
+11. V **mapování atributů** , projděte si uživatelské atributy, které jsou synchronizované z Azure AD Githubu. Atributy vybrán jako **párování** vlastnosti se používají tak, aby odpovídaly uživatelské účty v Githubu pro operace aktualizace. Kliknutím na tlačítko Uložit potvrzení změny.
 
-12. tooenable hello zřizování služby Azure AD pro GitHub, změna hello **Stav zřizování** příliš**na** v hello **nastavení** části
+12. Povolit Azure AD zřizování služby pro GitHub, změňte **Stav zřizování** k **na** v **nastavení** části
 
 13. Klikněte na **Uložit**. 
 
-Tato operace spustí hello počáteční synchronizaci všech uživatelů a skupiny přiřazené tooGitHub v hello uživatelé a skupiny oddílu. počáteční synchronizace Hello trvá déle tooperform než následné synchronizace, ke kterým dochází přibližně každých 20 minut, dokud se službou hello. Můžete použít hello **podrobnosti synchronizace** části toomonitor průběh a postupujte podle pokynů odkazy tooprovisioning aktivity sestavy, které popisují všechny akce prováděné hello zřizováním služby.
+Tato operace spustí počáteční synchronizaci všech uživatelů a skupiny přiřazené ke Githubu v části Uživatelé a skupiny. Počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 20 minut, dokud se službou provést. Můžete použít **podrobnosti synchronizace** části monitorovat průběh a odkazech zřízení sestavy aktivity, které popisují všechny akce prováděné při zřizování služby.
 
-Další informace o zřizování hello Azure AD tooread jak protokolů najdete v tématu [zprávy o zřizování účtu automatické uživatele](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-provisioning-reporting).
+Další informace o tom, jak číst zřizování protokoly služby Azure AD najdete v tématu [zprávy o zřizování účtu automatické uživatele](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-provisioning-reporting).
 
 
 ## <a name="additional-resources"></a>Další zdroje
@@ -106,4 +106,4 @@ Další informace o zřizování hello Azure AD tooread jak protokolů najdete v
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Zjistěte, jak tooreview protokoly a získat sestavy o zřizování aktivity](active-directory-saas-provisioning-reporting.md)
+* [Zjistěte, jak získat sestavy o zřizování aktivity a zkontrolujte protokoly](active-directory-saas-provisioning-reporting.md)

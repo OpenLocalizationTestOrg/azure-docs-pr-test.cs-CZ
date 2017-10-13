@@ -2,13 +2,13 @@
 
 Vytvořte nový soubor JavaScript s názvem `sender.js`.
 
-### <a name="add-hello-relay-npm-package"></a>Přidání balíčku NPM předávání hello
+### <a name="add-the-relay-npm-package"></a>Přidání balíčku NPM služby Relay
 
 Spusťte z příkazového řádku uzlu ve složce projektu příkaz `npm install hyco-ws`.
 
-### <a name="write-some-code-toosend-messages"></a>Napsat kód toosend zprávy
+### <a name="write-some-code-to-send-messages"></a>Napsání kódu pro odesílání zpráv
 
-1. Přidejte následující hello `constants` toohello horní části hello `sender.js` souboru.
+1. Na začátek souboru `sender.js` přidejte následující konstanty (`constants`):
    
     ```js
     const WebSocket = require('hyco-ws');
@@ -18,14 +18,14 @@ Spusťte z příkazového řádku uzlu ve složce projektu příkaz `npm install
             output: process.stdout
         });;
     ```
-2. Přidejte následující konstanty toohello hello `sender.js` hello hybridní připojení podrobnosti v souboru. Nahraďte zástupné symboly hello v závorkách hello hodnoty, které jste získali při vytváření hello hybridní připojení.
+2. Do souboru `sender.js` přidejte následující konstanty s podrobnostmi o hybridním připojení. Zástupné symboly v závorkách nahraďte hodnotami, které jste získali při vytváření hybridního připojení.
    
-   1. `const ns`-hello předávání názvů. Být jisti toouse hello obor názvů plně kvalifikovaný název; například `{namespace}.servicebus.windows.net`.
-   2. `const path`-Název hello hello hybridní připojení.
-   3. `const keyrule`-hello název klíče SAS hello.
-   4. `const key`-hello hodnotu klíče SAS.
+   1. `const ns` – Obor názvů služby Relay. Nezapomeňte použít plně kvalifikovaný obor názvů, například `{namespace}.servicebus.windows.net`.
+   2. `const path` – Název hybridního připojení.
+   3. `const keyrule` – Název klíče SAS.
+   4. `const key` – Hodnota klíče SAS.
 
-3. Přidejte následující kód toohello hello `sender.js` souboru:
+3. Do souboru `sender.js` přidejte následující kód:
    
     ```js
     WebSocket.relayedConnect(

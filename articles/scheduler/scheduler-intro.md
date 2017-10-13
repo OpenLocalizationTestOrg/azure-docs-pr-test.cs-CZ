@@ -1,6 +1,6 @@
 ---
-title: aaaWhat je Azure Scheduler? | Dokumentace Microsoftu
-description: "Azure Scheduler vám umožní toodeclaratively popisují akce toorun v cloudu hello. Potom naplánuje a automaticky spustí tyto akce."
+title: Co je Azure Scheduler? | Dokumentace Microsoftu
+description: "Azure Scheduler vám umožní deklarativně popisovat akce, které mají běžet v cloudu. Potom naplánuje a automaticky spustí tyto akce."
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
@@ -14,34 +14,34 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/18/2016
 ms.author: deli
-ms.openlocfilehash: 062e25ae473510264dc0038198c05e7ac1e86210
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a3bf1aacd6978499d7ef77cbcb451a06b857ac38
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="what-is-azure-scheduler"></a>Co je Azure Scheduler?
-Azure Scheduler vám umožní toodeclaratively popisují akce toorun v cloudu hello. Potom naplánuje a automaticky spustí tyto akce.  Scheduler k tomu pomocí [hello portál Azure](scheduler-get-started-portal.md), kód, [REST API](https://msdn.microsoft.com/library/mt629143.aspx), nebo Azure PowerShell.
+Azure Scheduler vám umožní deklarativně popisovat akce, které mají běžet v cloudu. Potom naplánuje a automaticky spustí tyto akce.  Scheduler k tomu použije [portál Azure](scheduler-get-started-portal.md), kód, [REST API](https://msdn.microsoft.com/library/mt629143.aspx) nebo Azure PowerShell.
 
 Scheduler vytváří, udržuje a vyvolává naplánovanou práci.  Scheduler nehostuje žádné úlohy ani nespouští žádný kód. On *vyvolává* kód hostovaný jinde – v Azure, v lokálním umístění nebo u jiného poskytovatele. Vyvolává přes HTTP, frontu úložiště, frontu sběrnice nebo téma sběrnice.
 
-Scheduler plánuje [úlohy](scheduler-concepts-terms.md), uchovává historii výsledků provedení úloh, která jeden můžete zkontrolovat, a deterministicky a spolehlivě spuštění toobe plány úloh. Azure WebJobs (součást hello funkce Web Apps v Azure App Service) a další možnosti plánování Azure používají Scheduler hello pozadí. Hello [REST API Scheduleru](https://msdn.microsoft.com/library/mt629143.aspx) pomáhá spravovat hello komunikaci pro tyto akce. Scheduler jako takový bez problémů podporuje [komplexní plánování a pokročilé opakování](scheduler-advanced-complexity.md).
+Scheduler plánuje [úlohy](scheduler-concepts-terms.md) uchovává historii výsledků provedení úloh, která se dá zobrazit, a deterministicky a spolehlivě plánuje spouštění úloh. Azure WebJobs (součást funkce Web Apps v Azure App Service) a další plánovací nástroje Azure používají Scheduler na pozadí. [REST API Scheduleru ](https://msdn.microsoft.com/library/mt629143.aspx) pomáhá spravovat komunikaci pro tyto akce. Scheduler jako takový bez problémů podporuje [komplexní plánování a pokročilé opakování](scheduler-advanced-complexity.md).
 
-Existuje několik situací, se samo toohello použití Scheduleru. Například:
+Použití Scheduleru se samo nabízí v několika situacích. Příklad:
 
 * *Opakující se akce aplikace:* Pravidelné shromažďování dat z Twitteru do informačního kanálu.
-* *Každodenní údržba:* Každodenní vyřazování protokolů, zálohování a další úkoly týkající se údržby. Například může správce zvolit tooback hello databáze v 1:00 každý den pro hello dalších devět měsíců.
+* *Každodenní údržba:* Každodenní vyřazování protokolů, zálohování a další úkoly týkající se údržby. Správce se například může rozhodnout zálohovat databáze v 1:00 v noci každý den dalších devět měsíců.
 
-Scheduler vám umožní toocreate, aktualizovat, odstranit, zobrazit a spravovat úlohy a [kolekce úloh](scheduler-concepts-terms.md) programově pomocí skriptů a hello portálu.
+Scheduler umožní vytvářet, aktualizovat, odstraňovat, zobrazovat a spravovat úlohy a [kolekce úloh](scheduler-concepts-terms.md) programově pomocí skriptů a pomocí portálu.
 
 ## <a name="see-also"></a>Viz také
  [Koncepty, terminologie a hierarchie entit Azure Scheduleru](scheduler-concepts-terms.md)
 
- [Začněte používat plánovače v hello portálu Azure](scheduler-get-started-portal.md)
+ [Úvod do používání Scheduleru na portálu Azure Portal](scheduler-get-started-portal.md)
 
  [Plány a fakturace v Azure Scheduleru](scheduler-plans-billing.md)
 
- [Jak toobuild komplexní plány a pokročilé opakování ve službě Azure Scheduler](scheduler-advanced-complexity.md)
+ [Sestavení komplexních plánů a pokročilé opakování v Azure Scheduleru](scheduler-advanced-complexity.md)
 
  [REST API Azure Scheduleru – referenční informace](https://msdn.microsoft.com/library/mt629143)
 

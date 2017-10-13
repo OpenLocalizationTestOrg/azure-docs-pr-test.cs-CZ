@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure zprostředkovatelé prostředků a typy prostředků | Microsoft Docs"
-description: "Popisuje zprostředkovatele hello prostředků, které podporují Resource Manager, jejich schémat a k dispozici verze rozhraní API a hello oblasti, které může být hostitelem hello prostředky."
+title: "Poskytovatelé prostředků Azure a typy prostředků | Microsoft Docs"
+description: "Popisuje zprostředkovatele prostředků, které podporují Resource Manager, jejich schémata a dostupné verze rozhraní API a oblastí, které může být hostitelem prostředky."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: 23db1d3808a20166f3b44ec801e1bcc46fbb9bd3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6a9128f45d4199404019cee594842d59c7f1aaf3
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="resource-providers-and-types"></a>Poskytovatelé prostředků a typy
 
-Pokud nasazujete prostředky, musíte často tooretrieve informace o poskytovatelích prostředků hello a typy. V tomto článku se dozvíte na:
+Při nasazení prostředků, můžete často potřebují k načtení informací o zprostředkovatelé prostředků a typy. V tomto článku se dozvíte na:
 
 * Zobrazení všech poskytovatelů prostředků v Azure
 * Zkontrolovat stav registrace poskytovatele prostředků
@@ -31,11 +31,11 @@ Pokud nasazujete prostředky, musíte často tooretrieve informace o poskytovate
 * Zobrazení platná umístění pro typ prostředku
 * Zobrazit platná verze rozhraní API pro typ prostředku
 
-Abyste mohli provést tyto kroky prostřednictvím portálu hello, prostředí PowerShell nebo rozhraní příkazového řádku Azure.
+Abyste mohli provést tyto kroky prostřednictvím portálu, prostředí PowerShell nebo rozhraní příkazového řádku Azure.
 
 ## <a name="powershell"></a>PowerShell
 
-toosee všech poskytovatelů prostředků v Azure a hello stav registrace pro vaše předplatné, použijte:
+Pokud chcete zobrazit všech poskytovatelů prostředků v Azure a stav registrace pro vaše předplatné, použijte:
 
 ```powershell
 Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
@@ -53,7 +53,7 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-Registruje se poskytovatel prostředků nakonfiguruje vaše předplatné toowork s poskytovatelem prostředků hello. Hello oboru pro registraci je vždy hello předplatného. Ve výchozím nastavení se automaticky registruje mnoho poskytovatelů prostředků. Ale musíte toomanually zaregistrovat někteří poskytovatelé prostředků. tooregister poskytovatele prostředků, musíte mít oprávnění tooperform hello `/register/action` operace pro poskytovatele prostředků hello. Tato operace je součástí hello Přispěvatel a vlastníka role.
+Registruje se poskytovatel prostředků nakonfiguruje vaše předplatné pro práci s poskytovatelem prostředků. Rozsah pro registraci je vždy předplatné. Ve výchozím nastavení se automaticky registruje mnoho poskytovatelů prostředků. Můžete však ručně zaregistrovat někteří poskytovatelé prostředků. Registrace poskytovatele prostředků, musíte mít oprávnění k provedení `/register/action` operace pro poskytovatele prostředků. Tato operace je součástí role Přispěvatel a vlastník.
 
 ```powershell
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
@@ -70,7 +70,7 @@ Locations         : {West Europe, East US, East US 2, West US...}
 
 Pokud máte pořád typy prostředků z tohoto zprostředkovatele prostředků v rámci vašeho předplatného, nelze zrušit registraci poskytovatele prostředků.
 
-informace o toosee pro určitý prostředek zprostředkovatele, použijte:
+Pokud chcete zobrazit informace pro určitý prostředek zprostředkovatele, použijte:
 
 ```powershell
 Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
@@ -87,7 +87,7 @@ Locations         : {West Europe, East US, East US 2, West US...}
 ...
 ```
 
-toosee hello typy prostředků pro poskytovatele prostředků, použijte:
+Chcete-li zobrazit typy prostředků pro poskytovatele prostředků, použijte:
 
 ```powershell
 (Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes.ResourceTypeName
@@ -102,9 +102,9 @@ locations
 locations/quotas
 ```
 
-verze rozhraní API Hello odpovídá verzi tooa operací REST API, které jsou vydané poskytovatelem prostředků hello. Zprostředkovatel prostředků umožňuje nové funkce, uvolní novou verzi hello REST API. 
+Verze rozhraní API odpovídá verzi operace REST API, které vydávají poskytovatelem prostředků. Zprostředkovatel prostředků umožňuje nové funkce, uvolní novou verzi rozhraní REST API. 
 
-tooget hello k dispozici rozhraní API verze pro typ prostředku, použijte:
+K dispozici verze rozhraní API pro typ prostředku, použijte:
 
 ```powershell
 ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes | Where-Object ResourceTypeName -eq batchAccounts).ApiVersions
@@ -120,9 +120,9 @@ Která vrací:
 2015-07-01
 ```
 
-Správce prostředků se podporuje ve všech oblastech, ale nemusí být hello prostředky, které nasazujete podporován ve všech oblastech. Kromě toho může být omezení na vaše předplatné, které zabránit vám v použití některé oblasti, které podporují hello prostředků. 
+Správce prostředků se podporuje ve všech oblastech, ale nemusí být podporován prostředky, které můžete nasadit ve všech oblastech. Kromě toho může být omezení na vaše předplatné, které zabránit vám v použití některé oblasti, které podporují prostředku. 
 
-umístění tooget hello podporované pro typ prostředku použít.
+Podporovaná umístění pro typ prostředku, použijte.
 
 ```powershell
 ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes | Where-Object ResourceTypeName -eq batchAccounts).Locations
@@ -139,7 +139,7 @@ West US
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
-toosee všech poskytovatelů prostředků v Azure a hello stav registrace pro vaše předplatné, použijte:
+Pokud chcete zobrazit všech poskytovatelů prostředků v Azure a stav registrace pro vaše předplatné, použijte:
 
 ```azurecli
 az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
@@ -157,7 +157,7 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-Registruje se poskytovatel prostředků nakonfiguruje vaše předplatné toowork s poskytovatelem prostředků hello. Hello oboru pro registraci je vždy hello předplatného. Ve výchozím nastavení se automaticky registruje mnoho poskytovatelů prostředků. Ale musíte toomanually zaregistrovat někteří poskytovatelé prostředků. tooregister poskytovatele prostředků, musíte mít oprávnění tooperform hello `/register/action` operace pro poskytovatele prostředků hello. Tato operace je součástí hello Přispěvatel a vlastníka role.
+Registruje se poskytovatel prostředků nakonfiguruje vaše předplatné pro práci s poskytovatelem prostředků. Rozsah pro registraci je vždy předplatné. Ve výchozím nastavení se automaticky registruje mnoho poskytovatelů prostředků. Můžete však ručně zaregistrovat někteří poskytovatelé prostředků. Registrace poskytovatele prostředků, musíte mít oprávnění k provedení `/register/action` operace pro poskytovatele prostředků. Tato operace je součástí role Přispěvatel a vlastník.
 
 ```azurecli
 az provider register --namespace Microsoft.Batch
@@ -167,7 +167,7 @@ Které vrátí zprávu, že registrace se průběžné.
 
 Pokud máte pořád typy prostředků z tohoto zprostředkovatele prostředků v rámci vašeho předplatného, nelze zrušit registraci poskytovatele prostředků.
 
-informace o toosee pro určitý prostředek zprostředkovatele, použijte:
+Pokud chcete zobrazit informace pro určitý prostředek zprostředkovatele, použijte:
 
 ```azurecli
 az provider show --namespace Microsoft.Batch
@@ -186,7 +186,7 @@ Které vrátí výsledky podobné:
 }
 ```
 
-toosee hello typy prostředků pro poskytovatele prostředků, použijte:
+Chcete-li zobrazit typy prostředků pro poskytovatele prostředků, použijte:
 
 ```azurecli
 az provider show --namespace Microsoft.Batch --query "resourceTypes[*].resourceType" --out table
@@ -203,9 +203,9 @@ locations
 locations/quotas
 ```
 
-verze rozhraní API Hello odpovídá verzi tooa operací REST API, které jsou vydané poskytovatelem prostředků hello. Zprostředkovatel prostředků umožňuje nové funkce, uvolní novou verzi hello REST API. 
+Verze rozhraní API odpovídá verzi operace REST API, které vydávají poskytovatelem prostředků. Zprostředkovatel prostředků umožňuje nové funkce, uvolní novou verzi rozhraní REST API. 
 
-tooget hello k dispozici rozhraní API verze pro typ prostředku, použijte:
+K dispozici verze rozhraní API pro typ prostředku, použijte:
 
 ```azurecli
 az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceType=='batchAccounts'].apiVersions | [0]" --out table
@@ -223,9 +223,9 @@ Result
 2015-07-01
 ```
 
-Správce prostředků se podporuje ve všech oblastech, ale nemusí být hello prostředky, které nasazujete podporován ve všech oblastech. Kromě toho může být omezení na vaše předplatné, které zabránit vám v použití některé oblasti, které podporují hello prostředků. 
+Správce prostředků se podporuje ve všech oblastech, ale nemusí být podporován prostředky, které můžete nasadit ve všech oblastech. Kromě toho může být omezení na vaše předplatné, které zabránit vám v použití některé oblasti, které podporují prostředku. 
 
-umístění tooget hello podporované pro typ prostředku použít.
+Podporovaná umístění pro typ prostředku, použijte.
 
 ```azurecli
 az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceType=='batchAccounts'].locations | [0]" --out table
@@ -245,29 +245,29 @@ West US
 
 ## <a name="portal"></a>Portál
 
-Vyberte všechny poskytovatele prostředků v Azure a hello stav registrace pro vaše předplatné toosee **odběry**.
+Pokud chcete zobrazit všech poskytovatelů prostředků v Azure a stav registrace pro vaše předplatné, vyberte **odběry**.
 
 ![Vyberte předplatná](./media/resource-manager-supported-services/select-subscriptions.png)
 
-Zvolte předplatné tooview hello.
+Zvolte předplatné, které chcete zobrazit.
 
 ![Zadejte předplatné](./media/resource-manager-supported-services/subscription.png)
 
-Vyberte **zprostředkovatelé prostředků** a hello zobrazit seznam dostupných poskytovatelů prostředků.
+Vyberte **zprostředkovatelé prostředků** a zobrazit seznam dostupných poskytovatelů prostředků.
 
 ![Zobrazit zprostředkovatelé prostředků](./media/resource-manager-supported-services/show-resource-providers.png)
 
-Registruje se poskytovatel prostředků nakonfiguruje vaše předplatné toowork s poskytovatelem prostředků hello. Hello oboru pro registraci je vždy hello předplatného. Ve výchozím nastavení se automaticky registruje mnoho poskytovatelů prostředků. Ale musíte toomanually zaregistrovat někteří poskytovatelé prostředků. tooregister poskytovatele prostředků, musíte mít oprávnění tooperform hello `/register/action` operace pro poskytovatele prostředků hello. Tato operace je součástí hello Přispěvatel a vlastníka role. Vyberte tooregister zprostředkovatel prostředků, **zaregistrovat**.
+Registruje se poskytovatel prostředků nakonfiguruje vaše předplatné pro práci s poskytovatelem prostředků. Rozsah pro registraci je vždy předplatné. Ve výchozím nastavení se automaticky registruje mnoho poskytovatelů prostředků. Můžete však ručně zaregistrovat někteří poskytovatelé prostředků. Registrace poskytovatele prostředků, musíte mít oprávnění k provedení `/register/action` operace pro poskytovatele prostředků. Tato operace je součástí role Přispěvatel a vlastník. Registrace poskytovatele prostředků, vyberte **zaregistrovat**.
 
 ![registrace poskytovatele prostředků](./media/resource-manager-supported-services/register-provider.png)
 
 Pokud máte pořád typy prostředků z tohoto zprostředkovatele prostředků v rámci vašeho předplatného, nelze zrušit registraci poskytovatele prostředků.
 
-informace o toosee pro určitý prostředek poskytovatele, vyberte **další služby**.
+Chcete-li zobrazit informace pro určitý prostředek poskytovatele, vyberte **další služby**.
 
 ![Vyberte další služby](./media/resource-manager-supported-services/more-services.png)
 
-Vyhledejte **Průzkumníka prostředků** a vyberte z dostupných možností hello.
+Vyhledejte **Průzkumníka prostředků** a vyberte z dostupných možností.
 
 ![Vyberte Průzkumník prostředků](./media/resource-manager-supported-services/select-resource-explorer.png)
 
@@ -275,20 +275,20 @@ Vyberte **zprostředkovatelé**.
 
 ![Vyberte zprostředkovatele](./media/resource-manager-supported-services/select-providers.png)
 
-Vyberte hello poskytovatele prostředků a prostředků zadejte, že chcete tooview.
+Vyberte zprostředkovatele prostředků a typ prostředku, který chcete zobrazit.
 
 ![Vyberte typ prostředku](./media/resource-manager-supported-services/select-resource-type.png)
 
-Správce prostředků se podporuje ve všech oblastech, ale nemusí být hello prostředky, které nasazujete podporován ve všech oblastech. Kromě toho může být omezení na vaše předplatné, které zabránit vám v použití některé oblasti, které podporují hello prostředků. Průzkumník prostředků Hello zobrazí platná umístění pro typ prostředku hello.
+Správce prostředků se podporuje ve všech oblastech, ale nemusí být podporován prostředky, které můžete nasadit ve všech oblastech. Kromě toho může být omezení na vaše předplatné, které zabránit vám v použití některé oblasti, které podporují prostředku. Průzkumník prostředků zobrazí platná umístění pro typ prostředku.
 
 ![Zobrazit umístění](./media/resource-manager-supported-services/show-locations.png)
 
-verze rozhraní API Hello odpovídá verzi tooa operací REST API, které jsou vydané poskytovatelem prostředků hello. Zprostředkovatel prostředků umožňuje nové funkce, uvolní novou verzi hello REST API. Průzkumník prostředků Hello zobrazí platná verze rozhraní API pro typ prostředku hello.
+Verze rozhraní API odpovídá verzi operace REST API, které vydávají poskytovatelem prostředků. Zprostředkovatel prostředků umožňuje nové funkce, uvolní novou verzi rozhraní REST API. Průzkumník prostředků zobrazí platná verze rozhraní API pro typ prostředku.
 
 ![Zobrazit verze rozhraní API](./media/resource-manager-supported-services/show-api-versions.png)
 
 ## <a name="next-steps"></a>Další kroky
-* toolearn o vytváření šablon Resource Manageru, najdete v části [šablon pro tvorbu Azure Resource Manageru](resource-group-authoring-templates.md).
-* toolearn o nasazení prostředků, najdete v části [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md).
-* operace hello tooview pro poskytovatele prostředků, najdete v části [rozhraní REST API Azure](/rest/api/).
+* Další informace o vytváření šablon Resource Manageru, najdete v části [šablon pro tvorbu Azure Resource Manageru](resource-group-authoring-templates.md).
+* Další informace o nasazení prostředků najdete v tématu [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md).
+* Operace pro poskytovatele prostředků najdete v tématu [rozhraní REST API Azure](/rest/api/).
 

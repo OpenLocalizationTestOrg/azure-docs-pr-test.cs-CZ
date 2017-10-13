@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate a spravovat služby Azure virtuálního počítače pomocí jazyka C# | Microsoft Docs"
-description: "Virtuální počítač a všechny její Podpůrné prostředky, pomocí toodeploy C# a Azure Resource Manager."
+title: "Vytvářet a spravovat virtuální počítač Azure pomocí jazyka C# | Microsoft Docs"
+description: "Použití jazyka C# a Azure Resource Manager k nasazení virtuálního počítače a všechny její Podpůrné prostředky."
 services: virtual-machines-windows
 documentationcenter: 
 author: davidmu1
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: davidmu
-ms.openlocfilehash: 8beeabde731bbaa25e68d2b9c5abbf71acbe377f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5d9021c2f65b70e36d5ea82992c9fb9d2d6d394a
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Vytvářet a spravovat virtuální počítače Windows v Azure pomocí jazyka C# #
 
@@ -27,27 +27,27 @@ ms.lasthandoff: 10/06/2017
 
 > [!div class="checklist"]
 > * Vytvoření projektu ve Visual Studiu
-> * Instalovat balíček hello
+> * Instalovat balíček
 > * Vytvořit přihlašovací údaje
 > * Vytvoření prostředků
 > * Provádění úloh správy
 > * Odstraňte prostředky
-> * Spuštění aplikace hello
+> * Spuštění aplikace
 
-Trvá přibližně 20 minut toodo tyto kroky.
+Proveďte tyto kroky trvá asi 20 minut.
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
 
-1. Pokud jste to ještě neudělali, nainstalujte [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Vyberte **vývoj aplikací .NET** na hello zatížení stránky a potom klikněte na **nainstalovat**. V hello souhrn, můžete uvidíte, že **nástrojů pro vývoj řešení pro rozhraní .NET Framework 4 4.6** je automaticky vybrána pro vás. Pokud jste již nainstalovali Visual Studio, můžete přidat hello .NET zatížení pomocí hello Spouštěče Visual Studio.
+1. Pokud jste to ještě neudělali, nainstalujte [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Vyberte **vývoj aplikací .NET** na stránce úlohy a pak klikněte na tlačítko **nainstalovat**. V souhrnu, můžete uvidíte, že **nástrojů pro vývoj řešení pro rozhraní .NET Framework 4 4.6** je automaticky vybrána pro vás. Pokud jste již nainstalovali Visual Studio, můžete přidat pomocí Spouštěče sady Visual Studio .NET zatížení.
 2. V sadě Visual Studio, klikněte na tlačítko **soubor** > **nový** > **projektu**.
-3. V **šablony** > **Visual C#**, vyberte **konzolovou aplikaci (rozhraní .NET Framework)**, zadejte *myDotnetProject* pro název hello Hello projekt, vyberte hello umístění projektu hello a potom klikněte na **OK**.
+3. V **šablony** > **Visual C#**, vyberte **konzolovou aplikaci (rozhraní .NET Framework)**, zadejte *myDotnetProject* pro název projektu a vyberte umístění projektu a pak klikněte na tlačítko **OK**.
 
-## <a name="install-hello-package"></a>Instalovat balíček hello
+## <a name="install-the-package"></a>Instalovat balíček
 
-Balíčky NuGet jsou hello nejjednodušší způsob, jak tooinstall hello knihovny, je nutné toofinish tyto kroky. tooget hello knihovny, které je nutné v sadě Visual Studio, proveďte tyto kroky:
+Balíčky NuGet jsou nejjednodušší způsob, jak nainstalovat knihovny, které potřebujete k dokončení těchto kroků. Chcete-li získat knihovny, které je nutné v sadě Visual Studio, proveďte tyto kroky:
 
 1. Klikněte na tlačítko **nástroje** > **Správce balíčků Nuget**a potom klikněte na **Konzola správce balíčků**.
-2. V konzole hello zadejte tento příkaz:
+2. V konzole zadejte tento příkaz:
 
     ```
     Install-Package Microsoft.Azure.Management.Fluent
@@ -55,11 +55,11 @@ Balíčky NuGet jsou hello nejjednodušší způsob, jak tooinstall hello knihov
 
 ## <a name="create-credentials"></a>Vytvořit přihlašovací údaje
 
-Než začnete tento krok, ujistěte se, zda máte přístup tooan [objektu služby Active Directory](../../azure-resource-manager/resource-group-create-service-principal-portal.md). Také byste měli zaznamenat ID aplikace hello hello ověřovací klíč a hello ID klienta, který budete potřebovat později.
+Než začnete tento krok, ujistěte se, zda máte přístup k [objektu služby Active Directory](../../azure-resource-manager/resource-group-create-service-principal-portal.md). Také byste měli zaznamenat ID aplikace, ověřovací klíč a ID klienta, který budete potřebovat později.
 
-### <a name="create-hello-authorization-file"></a>Vytvoření souboru autorizace hello
+### <a name="create-the-authorization-file"></a>Vytvoření souboru autorizace
 
-1. V Průzkumníku řešení klikněte pravým tlačítkem na *myDotnetProject* > **přidat** > **nová položka**a potom vyberte **textový soubor** v *Visual C# položky*. Název souboru hello *azureauth.properties*a potom klikněte na **přidat**.
+1. V Průzkumníku řešení klikněte pravým tlačítkem na *myDotnetProject* > **přidat** > **nová položka**a potom vyberte **textový soubor** v *Visual C# položky*. Název souboru *azureauth.properties*a potom klikněte na **přidat**.
 2. Přidejte tyto vlastnosti autorizace:
 
     ```
@@ -73,18 +73,18 @@ Než začnete tento krok, ujistěte se, zda máte přístup tooan [objektu služ
     graphURL=https://graph.windows.net/
     ```
 
-    Nahraďte  **&lt;id předplatného&gt;**  s ID vašeho předplatného  **&lt;id aplikace&gt;**  s hello aplikace Active Directory identifikátor,  **&lt;ověřovací klíč&gt;**  klíčem aplikace hello a  **&lt;id klienta&gt;**  s klientem hello identifikátor.
+    Nahraďte  **&lt;id předplatného&gt;**  s ID vašeho předplatného  **&lt;id aplikace&gt;**  s identifikátor aplikace služby Active Directory  **&lt;ověřovací klíč&gt;**  s klíč aplikace a  **&lt;id klienta&gt;**  s identifikátorem klienta.
 
-3. Uložte soubor azureauth.properties hello. 
-4. Nastavte proměnnou prostředí v systému Windows s názvem AZURE_AUTH_LOCATION s hello úplná cesta tooauthorization soubor, který jste vytvořili. Například můžete použít hello následující příkaz prostředí PowerShell:
+3. Uložte soubor azureauth.properties. 
+4. Nastavte proměnnou prostředí v systému Windows s názvem AZURE_AUTH_LOCATION s úplnou cestu k souboru autorizace, který jste vytvořili. Například můžete použít následující příkaz prostředí PowerShell:
 
     ```
     [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2017\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
     ```
 
-### <a name="create-hello-management-client"></a>Vytvoření klienta pro správu hello
+### <a name="create-the-management-client"></a>Vytvoření klienta správy
 
-1. Otevřete soubor Program.cs hello pro hello projekt, který jste vytvořili a pak přidejte tyto příkazy toohello existující příkazy using v horní části souboru hello:
+1. Otevřete soubor Program.cs pro projekt, který jste vytvořili a poté přidejte tyto příkazy using do existující příkazy v horní části souboru:
 
     ```
     using Microsoft.Azure.Management.Compute.Fluent;
@@ -94,7 +94,7 @@ Než začnete tento krok, ujistěte se, zda máte přístup tooan [objektu služ
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     ```
 
-2. Klient správy hello toocreate, přidejte tento kód toohello metodu Main:
+2. Pro vytvoření klienta správy, přidejte do metody Main tento kód:
 
     ```
     var credentials = SdkContext.AzureCredentialsFactory
@@ -109,11 +109,11 @@ Než začnete tento krok, ujistěte se, zda máte přístup tooan [objektu služ
 
 ## <a name="create-resources"></a>Vytvoření prostředků
 
-### <a name="create-hello-resource-group"></a>Vytvořte skupinu prostředků hello
+### <a name="create-the-resource-group"></a>Vytvoření skupiny prostředků
 
 Musí být všechny prostředky obsažené v [skupiny prostředků](../../azure-resource-manager/resource-group-overview.md).
 
-toospecify hodnoty pro hello aplikace a vytvořte skupinu prostředků hello, přidejte tento kód toohello metodu Main:
+Zadejte hodnoty pro aplikaci a vytvořte skupinu prostředků, přidejte tento kód do metody Main:
 
 ```
 var groupName = "myResourceGroup";
@@ -126,11 +126,11 @@ var resourceGroup = azure.ResourceGroups.Define(groupName)
     .Create();
 ```
 
-### <a name="create-hello-availability-set"></a>Vytvořit skupinu dostupnosti hello
+### <a name="create-the-availability-set"></a>Vytvořit sadu dostupnosti
 
-[Skupiny dostupnosti](tutorial-availability-sets.md) bylo snazší pro vás toomaintain hello virtuální počítače používané vaší aplikace.
+[Skupiny dostupnosti](tutorial-availability-sets.md) umožňují snadnější zachování virtuálních počítačů, které používá vaše aplikace.
 
-dostupnost hello toocreate nastavit, přidejte tento kód toohello metodu Main:
+Vytvořit skupinu dostupnosti, přidejte tento kód do metody Main:
 
 ```
 Console.WriteLine("Creating availability set...");
@@ -141,11 +141,11 @@ var availabilitySet = azure.AvailabilitySets.Define("myAVSet")
     .Create();
 ```
 
-### <a name="create-hello-public-ip-address"></a>Vytvoření veřejné IP adresy hello
+### <a name="create-the-public-ip-address"></a>Vytvoření veřejné IP adresy
 
-A [veřejnou IP adresu](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) je potřebné toocommunicate s hello virtuálního počítače.
+A [veřejnou IP adresu](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) je potřeba ke komunikaci s virtuálním počítačem.
 
-toocreate hello veřejnou IP adresu pro virtuální počítač hello, přidejte tento kód toohello metodu Main:
+Pokud chcete vytvořit veřejnou IP adresu pro virtuální počítač, přidejte do metodu Main tento kód:
    
 ```
 Console.WriteLine("Creating public IP address...");
@@ -156,11 +156,11 @@ var publicIPAddress = azure.PublicIPAddresses.Define("myPublicIP")
     .Create();
 ```
 
-### <a name="create-hello-virtual-network"></a>Vytvoření virtuální sítě hello
+### <a name="create-the-virtual-network"></a>Vytvoření virtuální sítě
 
 Virtuální počítač musí být v podsíti [virtuální síť](../../virtual-network/virtual-networks-overview.md).
 
-toocreate a podsítě a virtuální síti, přidejte tento kód toohello metodu Main:
+Pokud chcete vytvořit podsíť a virtuální síť, tento kód vložte do hlavní metoda:
 
 ```
 Console.WriteLine("Creating virtual network...");
@@ -172,11 +172,11 @@ var network = azure.Networks.Define("myVNet")
     .Create();
 ```
 
-### <a name="create-hello-network-interface"></a>Vytvoření hello síťové rozhraní
+### <a name="create-the-network-interface"></a>Vytvořit rozhraní sítě
 
-Virtuální počítač vyžaduje toocommunicate rozhraní sítě ve virtuální síti hello.
+Virtuální počítač vyžaduje síťové rozhraní pro komunikaci ve virtuální síti.
 
-toocreate síťového rozhraní, přidejte tento kód toohello metodu Main:
+Pokud chcete vytvořit síťové rozhraní, tento kód vložte do hlavní metoda:
 
 ```
 Console.WriteLine("Creating network interface...");
@@ -190,11 +190,11 @@ var networkInterface = azure.NetworkInterfaces.Define("myNIC")
     .Create();
  ```
 
-### <a name="create-hello-virtual-machine"></a>Vytvoření virtuálního počítače hello
+### <a name="create-the-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Teď, když jste vytvořili všechny hello Podpora prostředků, můžete vytvořit virtuální počítač.
+Teď, když jste vytvořili doprovodné materiály, můžete vytvořit virtuální počítač.
 
-toocreate hello virtuálního počítače, přidejte tento kód toohello metodu Main:
+Pokud chcete vytvořit virtuální počítač, přidejte do metodu Main tento kód:
 
 ```
 Console.WriteLine("Creating virtual machine...");
@@ -212,11 +212,11 @@ azure.VirtualMachines.Define(vmName)
 ```
 
 > [!NOTE]
-> V tomto kurzu vytvoří virtuální počítač s verzí operačního systému Windows Server hello. toolearn Další informace o výběru ostatní Image, najdete v části [vyhledání a výběr imagí virtuálních počítačů Azure pomocí prostředí Windows PowerShell a rozhraní příkazového řádku Azure hello](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> V tomto kurzu vytvoří virtuální počítač s verzí operačního systému Windows Server. Další informace o výběru ostatní Image, najdete v tématu [vyhledání a výběr imagí virtuálních počítačů Azure pomocí prostředí Windows PowerShell a rozhraní příkazového řádku Azure](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 > 
 >
 
-Pokud chcete toouse existující disk místo image pořízenou prostřednictvím marketplace, použijte tento kód:
+Pokud chcete použít stávající disk, místo image pořízenou prostřednictvím marketplace, použijte tento kód:
 
 ```
 var managedDisk = azure.Disks.Define("myosdisk")
@@ -239,20 +239,20 @@ azure.VirtualMachines.Define("myVM")
 
 ## <a name="perform-management-tasks"></a>Provádění úloh správy
 
-Během životního cyklu hello virtuálního počítače můžete úlohy správy toorun například spuštění, zastavení nebo odstranění virtuálního počítače. Kromě toho můžete toocreate kód tooautomate opakovaných nebo komplexní úlohy.
+Během životního cyklu virtuálního počítače můžete spustit úlohy správy, jako je například spuštění, zastavení nebo odstranění virtuálního počítače. Kromě toho můžete vytvořit kód pro automatizaci úloh opakovaných nebo komplexní.
 
-Pokud budete potřebovat toodo nic s hello virtuálních počítačů, je třeba tooget její instanci:
+Když potřebujete udělat nic s virtuálním Počítačem, budete muset získat instanci ho:
 
 ```
 var vm = azure.VirtualMachines.GetByResourceGroup(groupName, vmName);
 ```
 
-### <a name="get-information-about-hello-vm"></a>Získání informací o hello virtuálních počítačů
+### <a name="get-information-about-the-vm"></a>Získat informace o virtuálním počítači
 
-tooget informace o virtuálním počítači hello, přidejte tento kód toohello metodu Main:
+Chcete-li získat informace o virtuálním počítači, přidejte do metodu Main tento kód:
 
 ```
-Console.WriteLine("Getting information about hello virtual machine...");
+Console.WriteLine("Getting information about the virtual machine...");
 Console.WriteLine("hardwareProfile");
 Console.WriteLine("   vmSize: " + vm.Size);
 Console.WriteLine("storageProfile");
@@ -313,87 +313,87 @@ foreach (InstanceViewStatus stat in vm.InstanceView.Statuses)
     Console.WriteLine("  level: " + stat.Level);
     Console.WriteLine("  displayStatus: " + stat.DisplayStatus);
 }
-Console.WriteLine("Press enter toocontinue...");
+Console.WriteLine("Press enter to continue...");
 Console.ReadLine();
 ```
 
-### <a name="stop-hello-vm"></a>Zastavit hello virtuálních počítačů
+### <a name="stop-the-vm"></a>Zastavení virtuálního počítače
 
-Můžete zastavit virtuální počítač a ponechat jeho nastavení, ale pokračovat toobe účtovat pro něj nebo můžete zastavit virtuální počítač a jeho navrácení. Při zrušení jeho přidělení virtuálního počítače jsou končí deallocated a fakturace pro ni také všechny prostředky, které jsou s ním spojená.
+Můžete zastavit virtuální počítač a ponechat jeho nastavení, ale nadále účtovat poplatek za ho nebo můžete zastavit virtuální počítač a jeho navrácení. Při zrušení jeho přidělení virtuálního počítače jsou končí deallocated a fakturace pro ni také všechny prostředky, které jsou s ním spojená.
 
-toostop hello virtuální počítač bez rušení přidělení, přidejte tento kód toohello metodu Main:
+Zastavte virtuální počítač bez rušení přidělení ho, přidejte tento kód do metody Main:
 
 ```
 Console.WriteLine("Stopping vm...");
 vm.PowerOff();
-Console.WriteLine("Press enter toocontinue...");
+Console.WriteLine("Press enter to continue...");
 Console.ReadLine();
 ```
 
-Pokud chcete toodeallocate hello virtuální počítač, změňte hello PowerOff volání toothis kódu:
+Pokud chcete zrušit přidělení virtuálního počítače, změna volání PowerOff tento kód:
 
 ```
 vm.Deallocate();
 ```
 
-### <a name="start-hello-vm"></a>Hello spuštění virtuálního počítače
+### <a name="start-the-vm"></a>Spusťte virtuální počítač
 
-toostart hello virtuálního počítače, přidejte tento kód toohello metodu Main:
+Spuštění virtuálního počítače, přidejte tento kód do metody Main:
 
 ```
 Console.WriteLine("Starting vm...");
 vm.Start();
-Console.WriteLine("Press enter toocontinue...");
+Console.WriteLine("Press enter to continue...");
 Console.ReadLine();
 ```
 
-### <a name="resize-hello-vm"></a>Změnit velikost hello virtuálních počítačů
+### <a name="resize-the-vm"></a>Změnit velikost virtuálního počítače
 
 Mnoho aspektů nasazení měli zvážit při rozhodování o velikosti pro virtuální počítač. Další informace najdete v tématu [velikosti virtuálních počítačů](sizes.md).  
 
-velikost toochange hello virtuálního počítače, přidejte tento kód toohello metodu Main:
+Chcete-li změnit velikost virtuálního počítače, přidejte do metody Main tento kód:
 
 ```
 Console.WriteLine("Resizing vm...");
 vm.Update()
     .WithSize(VirtualMachineSizeTypes.StandardDS2) 
     .Apply();
-Console.WriteLine("Press enter toocontinue...");
+Console.WriteLine("Press enter to continue...");
 Console.ReadLine();
 ```
 
-### <a name="add-a-data-disk-toohello-vm"></a>Přidání disku toohello data virtuálního počítače
+### <a name="add-a-data-disk-to-the-vm"></a>Přidat datový disk k virtuálnímu počítači
 
-tooadd datového disku toohello virtuálního počítače, přidejte tento kód toohello hlavní metoda tooadd datový disk, který je 2 GB velikostí Hanu logické jednotce LUN 0 a typu ukládání do mezipaměti v režimu ReadWrite:
+Chcete-li přidat datový disk k virtuálnímu počítači, přidejte do metody Main přidat datový disk, který je 2 GB velikostí Hanu logické jednotce LUN 0 a typu ukládání do mezipaměti v režimu ReadWrite tento kód:
 
 ```
-Console.WriteLine("Adding data disk toovm...");
+Console.WriteLine("Adding data disk to vm...");
 vm.Update()
     .WithNewDataDisk(2, 0, CachingTypes.ReadWrite) 
     .Apply();
-Console.WriteLine("Press enter toodelete resources...");
+Console.WriteLine("Press enter to delete resources...");
 Console.ReadLine();
 ```
 
 ## <a name="delete-resources"></a>Odstraňte prostředky
 
-Vzhledem k tomu, že se vám účtovat prostředky využívané v Azure, vždycky je dobrým zvykem toodelete prostředky, které už nejsou potřeba. Pokud chcete, aby toodelete hello virtuální počítače a všechny hello podpora prostředky, všechny máte toodo je odstranit skupinu prostředků hello.
+Vzhledem k tomu, že se vám účtovat prostředky využívané v Azure, vždycky je dobrým zvykem odstranit prostředky, které už nejsou potřeba. Pokud chcete odstranit virtuální počítače a všechny podpůrné prostředky, je vše, co musíte udělat, odstraňte skupinu prostředků.
 
-toodelete hello prostředků skupiny, přidejte tento kód toohello metodu Main:
+Pokud chcete odstranit skupinu prostředků, přidejte do metody Main tento kód:
 
 ```
 azure.ResourceGroups.DeleteByName(groupName);
 ```
 
-## <a name="run-hello-application"></a>Spuštění aplikace hello
+## <a name="run-the-application"></a>Spuštění aplikace
 
-Má trvat přibližně pět minut, než tato toorun aplikace konzoly zcela od počáteční toofinish. 
+Dokončit má trvat přibližně pět minut, než tato Konzolová aplikace spustit úplně od začátku. 
 
-1. toorun hello konzolovou aplikaci, klikněte na tlačítko **spustit**.
+1. Chcete-li spustit aplikaci konzoly, klikněte na tlačítko **spustit**.
 
-2. Před stisknutím klávesy **Enter** toostart odstraňování prostředky, vám může trvat několik minut tooverify hello vytváření prostředků hello v hello portálu Azure. Klikněte na tlačítko hello nasazení toosee informace o stavu hello nasazení.
+2. Před stisknutím klávesy **Enter** zahájíte odstranění prostředků, může trvat několik minut na ověření vytváření prostředků na portálu Azure. Klikněte na tlačítko Stav nasazení zobrazíte informace o tomto nasazení.
 
 ## <a name="next-steps"></a>Další kroky
-* Využít výhod pomocí toocreate šablony virtuálního počítače pomocí informací o hello v [nasadit virtuální počítač Azure pomocí jazyka C# a šablony Resource Manageru](csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Další informace o používání hello [knihovny Azure pro .NET](https://docs.microsoft.com/dotnet/azure/?view=azure-dotnet).
+* Využít výhod pomocí šablony pro vytvoření virtuálního počítače pomocí informací v [nasadit virtuální počítač Azure pomocí jazyka C# a šablony Resource Manageru](csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Další informace o používání [knihovny Azure pro .NET](https://docs.microsoft.com/dotnet/azure/?view=azure-dotnet).
 

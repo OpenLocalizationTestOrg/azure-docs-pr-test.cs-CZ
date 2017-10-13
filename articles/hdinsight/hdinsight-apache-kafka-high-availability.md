@@ -1,6 +1,6 @@
 ---
-title: dostupnost aaaHigh s Apache Kafka - Azure HDInsight | Microsoft Docs
-description: "Zjistěte, jak tooensure vysoká dostupnost s Apache Kafka v Azure HDInsight. Zjistěte, jak toorebalance oddílu replik v Kafka, aby se na různé chyby domén v rámci hello oblast Azure, který obsahuje HDInsight."
+title: "Vysoká dostupnost s využitím Apache Kafka – Azure HDInsight | Dokumentace Microsoftu"
+description: "Zjistěte, jak zajistit vysokou dostupnost s využitím Apache Kafka ve službě Azure HDInsight. Naučte se obnovit rovnováhu replik oddílů v Kafka, aby byly v různých doménách selhání v rámci oblasti Azure, která obsahuje HDInsight."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -12,30 +12,30 @@ ms.devlang:
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/26/2017
+ms.date: 09/20/2017
 ms.author: larryfr
-ms.openlocfilehash: 337468f36b531f83c2999e87907de89cf3d19dd4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 3edec2e68356604562af2219ccd498732c564ec5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="high-availability-of-your-data-with-apache-kafka-preview-on-hdinsight"></a>Vysoká dostupnost dat s využitím Apache Kafka (Preview) ve službě HDInsight
 
-Zjistěte, jak tooconfigure oddílu replik pro Kafka témata tootake využívat základní hardware rack konfigurace. Tato konfigurace zajistí hello dostupnosti dat uložených v Kafka Apache v HDInsight.
+Zjistěte, jak nakonfigurovat repliky oddílů pro témata Kafka a využít výhod konfigurace použitého hardwarového racku. Tato konfigurace zajišťuje dostupnost dat uložených v Apache Kafka ve službě HDInsight.
 
 ## <a name="fault-and-update-domains-with-kafka"></a>Domény selhání a aktualizační domény s využitím Kafka
 
-Doména selhání je logické seskupení základního hardwaru v datovém centru Azure. Všechny domény selhání sdílí společný zdroje napájení a síťový přepínač. Hello virtuální počítače a spravované disky, které implementují hello uzlů v clusteru služby HDInsight jsou rozmístěny v těchto domén selhání. Tato architektura omezuje hello potenciální dopad selhání fyzického hardwaru.
+Doména selhání je logické seskupení základního hardwaru v datovém centru Azure. Všechny domény selhání sdílí společný zdroje napájení a síťový přepínač. Virtuální počítače a spravované disky, které implementují uzly v clusteru služby HDInsight, jsou distribuované napříč těmito doménami selhání. Tato architektura omezuje potenciální dopad selhání fyzického hardwaru.
 
-Každá oblast Azure má určitý počet domén selhání. Seznam domén a hello počet domén selhání obsahují najdete v tématu hello [sady dostupnosti](../virtual-machines/linux/regions-and-availability.md#availability-sets) dokumentaci.
+Každá oblast Azure má určitý počet domén selhání. Seznam domén a počet domén selhání, které obsahují, najdete v dokumentaci [Skupiny dostupnosti](../virtual-machines/linux/regions-and-availability.md#availability-sets).
 
 > [!IMPORTANT]
-> Kafka nemá o doménách selhání žádné informace. Když vytvoříte téma v Kafka, může je uložit všechny repliky oddílu v hello stejné domény selhání. toosolve tyto potíže odstranit, poskytujeme hello [Kafka oddílu obnovte rovnováhu nástroj](https://github.com/hdinsight/hdinsight-kafka-tools).
+> Kafka nemá o doménách selhání žádné informace. Když vytvoříte téma v Kafka, může uložit všechny repliky oddílů ve stejné doméně selhání. K vyřešení tohoto problému poskytujeme [nástroj pro obnovení rovnováhy oddílů Kafka](https://github.com/hdinsight/hdinsight-kafka-tools).
 
-## <a name="when-toorebalance-partition-replicas"></a>Když toorebalance oddílu repliky
+## <a name="when-to-rebalance-partition-replicas"></a>Kdy obnovit rovnováhu replik oddílů
 
-tooensure hello nejvyšší dostupnost vašich dat Kafka, musíte znovu vyvážit hello oddílu replik pro dané téma na hello časy následující:
+K zajištění nejvyšší dostupnost dat Kafka byste měli obnovit rovnováhu replik oddílů pro vaše téma v těchto situacích:
 
 * Při vytvoření nového tématu nebo oddílu
 
@@ -46,15 +46,15 @@ tooensure hello nejvyšší dostupnost vašich dat Kafka, musíte znovu vyváži
 > [!IMPORTANT]
 > Doporučujeme použít oblast Azure, která obsahuje tři domény selhání, a použít faktor replikace 3.
 
-Pokud musíte použít oblasti, která obsahuje pouze dva domén selhání, použijte replikace Multi-Factor 4 toospread hello replik rovnoměrně mezi dvěma doménami selhání hello.
+Pokud musíte použít oblast, která obsahuje jenom dvě domény selhání, použijte faktor replikace 4, abyste zajistili rovnoměrné rozložení replik napříč těmito dvěma doménami selhání.
 
-Příklad vytvoření témata a nastavení hello replikace faktor, naleznete v části hello [začínat Kafka v HDInsight](hdinsight-apache-kafka-get-started.md) dokumentu.
+Příklad vytvoření tématu a nastavení faktoru replikace najdete v dokumentu [Začínáme s Kafka ve službě HDInsight](hdinsight-apache-kafka-get-started.md).
 
-## <a name="how-toorebalance-partition-replicas"></a>Jak toorebalance oddílu repliky
+## <a name="how-to-rebalance-partition-replicas"></a>Jak obnovit rovnováhu replik oddílů
 
-Použití hello [Kafka oddílu obnovte rovnováhu nástroj](https://github.com/hdinsight/hdinsight-kafka-tools) toorebalance vybrané témata. Tento nástroj musí spustili z SSH relace toohello hlavního uzlu clusteru Kafka.
+K obnovení rovnováhy vybraných témat použijte [nástroj pro obnovení rovnováhy oddílů Kafka](https://github.com/hdinsight/hdinsight-kafka-tools). Tento nástroj se musí spustit z relace SSH na hlavní uzel clusteru Kafka.
 
-Další informace o připojení pomocí protokolu SSH tooHDInsight najdete v tématu [použití SSH s HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) dokumentu.
+Další informace o připojení ke službě HDInsight pomocí SSH najdete v dokumentu [Použití SSH s HDInsightem](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="next-steps"></a>Další kroky
 

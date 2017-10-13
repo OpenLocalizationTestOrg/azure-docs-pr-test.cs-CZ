@@ -1,6 +1,6 @@
 ---
-title: "auditování služby Active Directory aaaAzure referenční dokumentace rozhraní API | Microsoft Docs"
-description: "Jak tooget pracovat s hello API auditování Azure Active Directory"
+title: "Azure Active Directory auditu referenční dokumentace rozhraní API | Microsoft Docs"
+description: "Jak začít pracovat s rozhraním API auditování Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,22 +15,22 @@ ms.workload: identity
 ms.date: 07/05/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5f33b62ede9be445f35704739e328580dc454368
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 573e940c5390e7b990d889681eb37b73c5b253d9
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-active-directory-audit-api-reference"></a>Azure Active Directory auditu referenční dokumentace rozhraní API
-Toto téma je součástí kolekce témat o hello Azure Active Directory reporting rozhraní API.  
-Generování sestav služby Azure AD poskytuje rozhraní API, které vám umožní tooaccess auditu dat pomocí kódu nebo související nástroje.
-Hello obor tohoto tématu je tooprovide vám referenční informace o hello **audit rozhraní API**.
+Toto téma je součástí kolekce témat o službě Azure Active Directory, vytváření sestav rozhraní API.  
+Generování sestav služby Azure AD poskytuje rozhraní API, která umožňuje přístup k datům auditování pomocí kódu nebo související nástroje.
+Obor tohoto tématu je k poskytování referenční informace o **audit rozhraní API**.
 
 Přejděte na téma:
 
 * [Protokoly auditu](active-directory-reporting-azure-portal.md#activity-reports) další koncepční informace
 
-* [Začínáme s Azure Active Directory Reporting API hello](active-directory-reporting-api-getting-started.md) Další informace o hello reporting rozhraní API.
+* [Začínáme s Azure Active Directory Reporting API](active-directory-reporting-api-getting-started.md) Další informace o rozhraní API pro generování sestav.
 
 
 Pro:
@@ -40,32 +40,32 @@ Pro:
 - Problémy prosím [souboru lístek podpory](active-directory-troubleshooting-support-howto.md) 
 
 
-## <a name="who-can-access-hello-data"></a>Kdo může přistupovat k datům hello?
-* Uživatelé v roli správce zabezpečení nebo zabezpečení čtečky hello
+## <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
+* Uživatelé v roli Správce zabezpečení nebo Čtenář zabezpečení
 * Globální správci
-* Jakékoli aplikaci, která má autorizaci tooaccess hello rozhraní API (autorizace služby app lze pouze na základě oprávnění globálního správce)
+* Jakékoli aplikaci, která má oprávnění pro přístup k rozhraní API (autorizace služby app lze pouze na základě oprávnění globálního správce)
 
 ## <a name="prerequisites"></a>Požadavky
-V pořadí tooaccess to sestavy prostřednictvím hello Reporting rozhraní API, musíte mít:
+Chcete-li získat přístup k této sestavě prostřednictvím rozhraní API pro vytváření sestav, musíte mít:
 
 * [Lepší edici nebo Azure Active Directory volné](active-directory-editions.md)
-* Dokončené hello [požadavky tooaccess hello Azure AD reporting API](active-directory-reporting-api-prerequisites.md). 
+* Byla dokončena [požadavky pro přístup k Azure AD reporting rozhraní API](active-directory-reporting-api-prerequisites.md). 
 
-## <a name="accessing-hello-api"></a>Přístup k hello API
-Toto rozhraní API můžete buď přistupovat prostřednictvím hello [grafu Explorer](https://graphexplorer2.cloudapp.net) nebo prostřednictvím kódu programu, například pomocí prostředí PowerShell. V pořadí pro prostředí PowerShell toocorrectly interpretovat se syntaxí filtru OData hello používá při voláních REST grafu AAD, je nutné použít hello backtick (neboli: čárka) znak příliš "znaku" hello $. Hello backtick znak slouží jako [Powershellu řídicí znak](https://technet.microsoft.com/library/hh847755.aspx), povolení prostředí PowerShell toodo literálu výklad hello znak $ a zabránit složitá jako název proměnné prostředí PowerShell (ie: $filter).
+## <a name="accessing-the-api"></a>Přístup k rozhraní API
+Můžete buď přístup toto rozhraní API prostřednictvím [Explorer grafu](https://graphexplorer2.cloudapp.net) nebo prostřednictvím kódu programu, například pomocí prostředí PowerShell. Aby PowerShell správně interpretovat syntaxe filtru OData, který se používá při voláních REST grafu AAD, je nutné použít backtick (neboli: čárka) znak "řídicí" znak $. Backtick znak, který slouží jako [Powershellu řídicí znak](https://technet.microsoft.com/library/hh847755.aspx), povolení prostředí PowerShell provést literálu výklad znak $, a zamezit tak složitá jako název proměnné prostředí PowerShell (ie: $filter).
 
-hello grafu Explorer je aktivní Hello tohoto tématu. V příkladu prostředí PowerShell najdete [skript prostředí PowerShell](active-directory-reporting-api-audit-samples.md#powershell-script).
+Graf Explorer je aktivní v tomto tématu. V příkladu prostředí PowerShell najdete [skript prostředí PowerShell](active-directory-reporting-api-audit-samples.md#powershell-script).
 
 ## <a name="api-endpoint"></a>Koncový bod rozhraní API
-Toto rozhraní API pomocí hello následující identifikátor URI se můžete dostat:  
+Toto rozhraní API pomocí následující identifikátor URI se můžete dostat:  
 
     https://graph.windows.net/contoso.com/activities/audit?api-version=beta
 
-Neexistuje žádné omezení na hello počet záznamů vrácených API auditu hello Azure AD (pomocí stránkování OData).
+Neexistuje žádné omezení počtu záznamů vrácených rozhraní API auditu Azure AD (pomocí stránkování OData).
 Pro uchování omezení pro vytváření sestav dat, podívejte se na [Reporting zásady uchovávání informací](active-directory-reporting-retention.md).
 
-Toto volání se vrátí hello data v dávkách. Má každé dávky nesmí být delší než 1 000 záznamů.  
-hello další dávku tooget záznamů, použijte odkaz Další hello. Získáte informace o skiptoken hello z první sady hello vrácené záznamy. token přeskočit Hello bude na konci hello hello sadu výsledků dotazu.  
+Toto volání se vrátí data v dávkách. Má každé dávky nesmí být delší než 1 000 záznamů.  
+Chcete-li získat další dávky záznamů, použijte odkaz na další. Získáte informace o skiptoken z první sady vrácené záznamy. Token přeskočit bude na konci výsledek nastaveno.  
 
     https://graph.windows.net/contoso.com/activities/audit?api-version=beta&%24skiptoken=-1339686058
 
@@ -73,26 +73,26 @@ hello další dávku tooget záznamů, použijte odkaz Další hello. Získáte 
 
 
 ## <a name="supported-filters"></a>Podporované filtry
-Můžete zúžit hello počet záznamů, které se vrátí pomocí rozhraní API volat v podobě filtru.  
-Pro přihlášení rozhraní API související data, hello následující filtry jsou podporovány:
+Počet záznamů, které se vrátí pomocí rozhraní API můžete zúžit volání v podobě filtru.  
+Pro přihlášení rozhraní API související data, jsou podporovány následující filtry:
 
-* **$top =\<počet toobe záznamů vrácených\>**  -toolimit hello počet vrácených záznamů. Toto je náročná operace. Pokud chcete, aby tooreturn tisíc objektů, které byste neměli používat tento filtr.     
-* **$filter =\<údajů filtru\>**  -toospecify na základě hello podporovaný filtr polí, hello typ záznamy, na kterých vám nejvíc záleží
+* **$top =\<počet vrácených\>**  – Pokud chcete omezit počet vrácených záznamů. Toto je náročná operace. Tento filtr byste neměli používat, pokud chcete vrátit tisíce objektů.     
+* **$filter =\<údajů filtru\>**  – Pokud chcete zadat typ záznamy, na kterých vám nejvíc záleží na základě pole podporovaný filtr
 
 ## <a name="supported-filter-fields-and-operators"></a>Pole podporovaný filtr a operátory
-toospecify hello typu záznamů, které se zajímáte o, můžete vytvořit filtr příkaz, který může obsahovat jedno nebo kombinaci hello následující pole filtru:
+Pokud chcete zadat typ záznamů, které se zajímáte o, můžete vytvořit filtr příkaz, který může obsahovat jedno nebo kombinaci následující pole filtru:
 
 * [Datum](#activitydate) -definuje datum nebo rozsah dat
-* [kategorie](#category) – definuje kategorie hello chcete toofilter na.
-* [activityStatus](#activitystatus) -definuje hello stav aktivity
-* [activityType](#activitytype) -definuje hello typ aktivity
-* [aktivita](#activity) -definuje hello aktivitu jako řetězec  
-* [objektu actor nebo název](#actorname) -definuje hello objektu actor v podobě hello actor názvu
-* [objektu actor/objectid](#actorobjectid) -definuje hello objektu actor v podobě hello actor ID   
-* [objektu actor/upn](#actorupn) -definuje hello objektu actor v podobě hello actor název Princip uživatele (UPN) 
-* [Cílová nebo](#targetname) -definuje hello cíl v podobě hello actor názvu
-* [cíl/objectid](#targetobjectid) -definuje hello cíl v podobě ID cíle hello  
-* [cíl/upn](#targetupn) -definuje hello objektu actor v podobě hello actor název Princip uživatele (UPN)   
+* [kategorie](#category) – definuje kategorie, kterou chcete filtrovat.
+* [activityStatus](#activitystatus) -definuje stav aktivity
+* [activityType](#activitytype) -definuje typ aktivity
+* [aktivita](#activity) -definuje aktivitu jako řetězec  
+* [objektu actor nebo název](#actorname) -definuje objektu actor tvar názvu objektu actor
+* [objektu actor/objectid](#actorobjectid) -definuje objektu actor v podobě ID objektu actor   
+* [objektu actor/upn](#actorupn) -definuje objektu actor v podobě název Princip objektu actor uživatele (UPN) 
+* [Cílová nebo](#targetname) -definuje cílový tvar názvu objektu actor
+* [cíl/objectid](#targetobjectid) -definuje cíl v podobě ID cílové složky  
+* [cíl/upn](#targetupn) -definuje objektu actor v podobě název Princip objektu actor uživatele (UPN)   
 
 - - -
 ### <a name="activitydate"></a>Datum
@@ -213,7 +213,7 @@ Velká a malá písmena
 **Poznámky k**:
 
 * Velká a malá písmena
-* Je třeba při dotazování Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.TargetResourceUserEntity tooadd hello úplný obor názvů
+* Je nutné přidat úplný obor názvů při dotazování Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.TargetResourceUserEntity
 
 - - -
 ### <a name="targetobjectid"></a>cíl/objectId
@@ -234,10 +234,10 @@ Velká a malá písmena
 **Poznámky k**:
 
 * Velká a malá písmena 
-* Je třeba při dotazování Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.ActorUserEntity tooadd hello úplný obor názvů
+* Je nutné přidat úplný obor názvů při dotazování Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.ActorUserEntity
 
 - - -
 ## <a name="next-steps"></a>Další kroky
-* Chcete pro filtrovaný systému aktivity toosee příklady? Podívejte se na hello [ukázky auditu rozhraní API služby Azure Active Directory](active-directory-reporting-api-audit-samples.md).
-* Chcete, aby tooknow Další informace o vytváření sestav API hello Azure AD? V tématu [Začínáme s Azure Active Directory Reporting API hello](active-directory-reporting-api-getting-started.md).
+* Chcete příklady pro filtrovaný systému aktivity? Podívejte se [ukázky auditu rozhraní API služby Azure Active Directory](active-directory-reporting-api-audit-samples.md).
+* Opravdu chcete získat další informace o generování sestav rozhraní API Azure AD? V tématu [Začínáme s Azure Active Directory Reporting API](active-directory-reporting-api-getting-started.md).
 

@@ -1,6 +1,6 @@
 ---
-title: "aaaAdvanced možnosti zasílání zpráv o Azure Mobile Engagement Android SDK"
-description: "Popisuje, jak toodo pokročilou analýzu reporting toocapture pro Azure Mobile Engagement Android SDK"
+title: "Rozšířené možnosti vytváření sestav pro Azure Mobile Engagement Android SDK"
+description: "Popisuje, jak provést pokročilé vytváření sestav pro zachycení analytics pro Azure Mobile Engagement Android SDK"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,11 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/10/2016
 ms.author: piyushjo;ricksal
-ms.openlocfilehash: 5c8f4ea36c54715f4e09fd43c96132c15019a71b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2a1445afa2c2fca1a31ad9c012b9c8a917ebf65c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="advanced-reporting-with-engagement-on-android"></a>Pokročilé vytváření sestav s Engagement v systému Android
 > [!div class="op_single_selector"]
@@ -29,28 +29,28 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Toto téma popisuje další scénáře vytváření sestav v aplikaci pro Android. Můžete použít tyto možnosti toohello aplikace vytvořená v hello [Začínáme](mobile-engagement-android-get-started.md) kurzu.
+Toto téma popisuje další scénáře vytváření sestav v aplikaci pro Android. Tyto možnosti můžete použít pro aplikace vytvořená v [Začínáme](mobile-engagement-android-get-started.md) kurzu.
 
 ## <a name="prerequisites"></a>Požadavky
 [!INCLUDE [Prereqs](../../includes/mobile-engagement-android-prereqs.md)]
 
-Hello kurzu, které jste dokončili byla úmyslně direct a jednoduchý, ale jsou rozšířené možnosti, můžete si zvolit.
+Které jste dokončili kurz byl záměrně přímé a jednoduchý, ale jsou rozšířené možnosti, můžete si zvolit.
 
 ## <a name="modifying-your-activity-classes"></a>Úprava vaší `Activity` třídy
-V hello [kurzu Začínáme](mobile-engagement-android-get-started.md), všechny jste měli toodo byla toomake vaše `*Activity` podtřídy dědí hello odpovídající `Engagement*Activity` třídy. Například, pokud vaše aktivita starší verze rozšířené `ListActivity`, by ho rozšířit provedete `EngagementListActivity`.
+V [kurzu Začínáme](mobile-engagement-android-get-started.md), všechny jste museli provést aby byla vaše `*Activity` podtřídy dědí odpovídající `Engagement*Activity` třídy. Například, pokud vaše aktivita starší verze rozšířené `ListActivity`, by ho rozšířit provedete `EngagementListActivity`.
 
 > [!IMPORTANT]
-> Při použití `EngagementListActivity` nebo `EngagementExpandableListActivity`, ujistěte se, že žádném volání, příliš`requestWindowFeature(...);` je provedena před hello volání příliš`super.onCreate(...);`, jinak dojde k chybě.
+> Při použití `EngagementListActivity` nebo `EngagementExpandableListActivity`, ujistěte se, že všechny volat na `requestWindowFeature(...);` je provedena před volání `super.onCreate(...);`, jinak dojde k chybě.
 > 
 > 
 
-Tyto třídy můžete najít v hello `src` složku a můžete je zkopírovat do projektu. Hello třídy jsou také v hello **JavaDoc**.
+Můžete najít v těchto tříd `src` složku a můžete je zkopírovat do projektu. Třídy jsou i ve **JavaDoc**.
 
 ## <a name="alternate-method-call-startactivity-and-endactivity-manually"></a>Alternativní metoda: volání `startActivity()` a `endActivity()` ručně
-Pokud nemůžete nebo nechcete, aby toooverload vaše `Activity` třídy, můžete místo toho zahájení a ukončení vaše aktivity voláním hello `EngagementAgent`na metody přímo.
+Pokud nemůžete nebo nechcete přetížení vaše `Activity` třídy, můžete místo toho začínat a končit vaše aktivity voláním `EngagementAgent`na metody přímo.
 
 > [!IMPORTANT]
-> Hello Android SDK nikdy nevolá hello `endActivity()` metoda, i když ukončení aplikace hello (v systému Android, se nikdy ukončit aplikace). Z toho důvodu je *vysoce* doporučená toocall hello `startActivity()` metoda v hello `onResume` zpětného volání z *všechny* vaše aktivity a hello `endActivity()` metoda v hello `onPause()` zpětné volání z *všechny* vašich aktivit. Toto je hello pouze způsob toobe jistotu, že nejsou neuniknou relací. Pokud relace došlo k úniku, odpojí od hello Engagement back-end nikdy hello zapojení služby (od služby hello zůstane připojen tak dlouho, dokud relace čeká na vyřízení).
+> Nikdy nevolá SDK pro Android `endActivity()` metoda, i když ukončení aplikace (v systému Android, se nikdy ukončit aplikace). Z toho důvodu je *vysoce* doporučuje volat `startActivity()` metoda v `onResume` zpětného volání z *všechny* vaše aktivity a `endActivity()` metoda v `onPause()` zpětného volání z *všechny* vaše aktivity. Toto je jediný způsob, jak Ujistěte se, že nejsou neuniknou relací. Pokud relace došlo k úniku, Engagement služba nikdy odpojí z back-end Engagement (protože službu zůstane připojen tak dlouho, dokud relace čeká na vyřízení).
 > 
 > 
 
@@ -62,7 +62,7 @@ Zde naleznete příklad:
       protected void onResume()
       {
         super.onResume();
-        String activityNameOnEngagement = EngagementAgentUtils.buildEngagementActivityName(getClass()); // Uses short class name and removes "Activity" at hello end.
+        String activityNameOnEngagement = EngagementAgentUtils.buildEngagementActivityName(getClass()); // Uses short class name and removes "Activity" at the end.
         EngagementAgent.getInstance(this).startActivity(this, activityNameOnEngagement, null);
       }
 
@@ -74,12 +74,12 @@ Zde naleznete příklad:
       }
     }
 
-Tato ukázka je podobné toohello `EngagementActivity` třídy a jeho variant, jejichž zdrojový kód je k dispozici v hello `src` složky.
+V tomto příkladu je podobná `EngagementActivity` třídy a jeho variant, jejichž zdrojový kód je k dispozici v `src` složky.
 
 ## <a name="using-applicationoncreate"></a>Pomocí Application.onCreate()
-Kód, umístěte do `Application.onCreate()` a v jiné aplikaci zpětná volání spouští se pro všechny aplikace procesů, včetně služby zapojení hello. Může mít nežádoucí vedlejší účinky, jako je přidělování nepotřebné paměti a vláken v procesu hello Engagement, nebo duplicitní vysílání příjemci nebo služby.
+Kód, umístěte do `Application.onCreate()` a v jiné aplikaci zpětná volání spuštění pro procesy na všechny aplikace, včetně služby zapojení. Může mít nežádoucí vedlejší účinky, jako je přidělování nepotřebné paměti a vláken v procesu zapojení, nebo duplicitní všesměrového vysílání příjemci nebo službám.
 
-Pokud přepíšete `Application.onCreate()`, doporučujeme, abyste přidáním hello následující fragment kódu na začátku hello vaší `Application.onCreate()` funkce:
+Pokud přepíšete `Application.onCreate()`, doporučujeme, abyste přidáním následující fragment kódu na začátku vaší `Application.onCreate()` funkce:
 
      public void onCreate()
      {
@@ -89,17 +89,17 @@ Pokud přepíšete `Application.onCreate()`, doporučujeme, abyste přidáním h
        ... Your code...
      }
 
-Můžete provést hello samé pro `Application.onTerminate()`, `Application.onLowMemory()`, a `Application.onConfigurationChanged(...)`.
+Může stejnou věc udělat `Application.onTerminate()`, `Application.onLowMemory()`, a `Application.onConfigurationChanged(...)`.
 
-Můžete také rozšířit `EngagementApplication` místo rozšíření `Application`: hello zpětného volání `Application.onCreate()` hello procesu kontroly a volání `Application.onApplicationProcessCreate()` jen pokud aktuální proces hello není hello jedné hostování hello zapojení služby, hello stejná pravidla platí pro Hello jiných zpětných volání.
+Můžete také rozšířit `EngagementApplication` místo rozšíření `Application`: zpětné volání `Application.onCreate()` nemá procesu kontroly a volání `Application.onApplicationProcessCreate()` jen pokud aktuální proces není ta, který je hostitelem služby zapojení, stejná pravidla platit pro ostatní zpětných volání.
 
-## <a name="tags-in-hello-androidmanifestxml-file"></a>Značky v souboru AndroidManifest.xml hello
-Ve značce hello služby v souboru AndroidManifest.xml hello, hello `android:label` atribut vám umožní toochoose hello název hello zapojení služby jak se zobrazuje uživatelům tooend v obrazovce "Spuštění služby" hello svůj telefon. Je vhodné nastavení tohoto atributu příliš`"<Your application name>Service"` (například `"AcmeFunGameService"`).
+## <a name="tags-in-the-androidmanifestxml-file"></a>Značky v souboru AndroidManifest.xml
+Ve značce služby v souboru AndroidManifest.xml `android:label` atribut umožňuje zvolit název služby Engagement, jak se objevuje pro koncové uživatele na obrazovce "Spuštění služby" svůj telefon. Je vhodné nastavení tohoto atributu na `"<Your application name>Service"` (například `"AcmeFunGameService"`).
 
-Zadání hello `android:process` atribut zajistí, že hello Engagement service běží ve svém vlastním procesu (spouštění Engagement v hello stejný proces vaše aplikace provede potenciálně pomaleji vlákna vaší hlavní nebo uživatelského rozhraní).
+Určení `android:process` atribut zajišťuje, že služba Engagement běží ve svém vlastním procesu (systémem Engagement v rámci jednoho procesu jako vaše aplikace provede potenciálně pomaleji vlákna vaší hlavní nebo uživatelského rozhraní).
 
 ## <a name="building-with-proguard"></a>Sestavování s použitím ProGuard
-Pokud vytvoříte balíčku aplikace s ProGuard, musíte tookeep některé třídy. Můžete použít následující fragment kódu konfigurace hello:
+Pokud vytvoříte balíčku aplikace s ProGuard, budete muset zachovat některé třídy. Můžete použít následující fragment kódu konfigurace:
 
     -keep public class * extends android.os.IInterface
     -keep class com.microsoft.azure.engagement.reach.activity.EngagementWebAnnouncementActivity$EngagementReachContentJS {

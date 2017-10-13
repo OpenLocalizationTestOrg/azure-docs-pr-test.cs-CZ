@@ -1,25 +1,25 @@
 ---
-title: "aaaAzure portálu dokumentace k – kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
-description: "Zjistěte, jak toodeploy a spravovat prostředky v hello portálu Azure. Kurzy, reference k rozhraní API a další dokumentace"
-services: 
+title: "Dokumentace k webu Azure Portal – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
+description: "Zjistěte, jak nasadit a spravovat prostředky na webu Azure Portal. Kurzy, reference k rozhraní API a další dokumentace"
+services: azure portal
 documentationcenter: 
-author: squillace
-manager: timlt
+author: czeumault
+manager: carolz
 editor: 
 tags: 
 ms.assetid: 3e12c488-9c8c-4d0d-9b07-e018dec42fc6
-ms.service: value
+ms.service: azure-portal
 ms.devlang: na
-ms.topic: article
+ms.topic: landing-page
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2017
-ms.author: tysonn
-ms.openlocfilehash: 10dbec2bab5c5f1de29a3125aeeb33f80d722282
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.author: carolz
+ms.openlocfilehash: 9b4352dbbec053ccc4a681886d86582adddf132c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-portal-documentation"></a>Dokumentace k webu Azure Portal
-Další informace o hello funkce, že které můžete použít toodeploy prostředky v hello portálu Azure. Kurzy, odkazy na rozhraní API a další dokumentaci ukazují, jak toodeploy, správu a sledování prostředků Azure.
+Přečtěte si o funkcích, které můžete použít k nasazení prostředků na webu Azure Portal. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak můžete spravovat a monitorovat prostředky Azure.

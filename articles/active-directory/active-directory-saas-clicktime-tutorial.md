@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s ClickTime | Microsoft Docs'
-description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a ClickTime."
+description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ClickTime."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,225 +14,225 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: jeedes
-ms.openlocfilehash: a0259e31164cad6c6c77ed8aac1c50cd9a3e46ce
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0e0123a40d52dfd7a2e29c29cb2239e979089ca9
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Kurz: Azure Active Directory integrace s ClickTime
 
-V tomto kurzu zjistíte, jak toointegrate ClickTime s Azure Active Directory (Azure AD).
+V tomto kurzu zjistěte, jak integrovat ClickTime s Azure Active Directory (Azure AD).
 
-Integrace ClickTime s Azure AD poskytuje hello následující výhody:
+Integrace ClickTime s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup tooClickTime
-- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooClickTime (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup k ClickTime
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k ClickTime (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Integrace služby Azure AD s ClickTime tooconfigure, je třeba hello následující položky:
+Konfigurace integrace Azure AD s ClickTime, potřebujete následující položky:
 
 - Předplatné služby Azure AD
 - ClickTime jednotné přihlašování povolené předplatné
 
 > [!NOTE]
-> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
+Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání ClickTime z Galerie hello
+1. Přidání ClickTime z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-clicktime-from-hello-gallery"></a>Přidání ClickTime z Galerie hello
-tooconfigure hello integrace ClickTime do Azure AD, je nutné tooadd ClickTime hello Galerie tooyour seznamu spravovaných aplikací SaaS.
+## <a name="adding-clicktime-from-the-gallery"></a>Přidání ClickTime z Galerie
+Při konfiguraci integrace ClickTime do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS ClickTime z galerie.
 
-**tooadd ClickTime z Galerie hello, proveďte následující kroky hello:**
+**Pokud chcete přidat ClickTime z galerie, proveďte následující kroky:**
 
-1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
+1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
 
-    ![tlačítko Azure Active Directory Hello][1]
+    ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
+2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
 
-    ![okno aplikace Hello Enterprise][2]
+    ![V okně podnikové aplikace][2]
     
-3. tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
 
-    ![tlačítko nové aplikace Hello][3]
+    ![Tlačítko nové aplikace][3]
 
-4. Hello vyhledávacího pole zadejte **ClickTime**, vyberte **ClickTime** z panelu výsledků klikněte **přidat** tlačítko tooadd hello aplikace.
+4. Do vyhledávacího pole zadejte **ClickTime**, vyberte **ClickTime** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.
 
-    ![ClickTime v seznamu výsledků hello](./media/active-directory-saas-clicktime-tutorial/tutorial_clicktime_addfromgallery.png)
+    ![ClickTime v seznamu výsledků](./media/active-directory-saas-clicktime-tutorial/tutorial_clicktime_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
 
 V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s ClickTime podle testovacího uživatele názvem "Britta Simon".
 
-Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v ClickTime je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v ClickTime musí toobe navázat.
+Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v ClickTime je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v ClickTime musí navázat.
 
-V ClickTime, přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.
+V ClickTime, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
 
-tooconfigure a testu Azure AD jednotné přihlašování s ClickTime, potřebujete následující stavební bloky hello toocomplete:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s ClickTime, je třeba dokončit následující stavební bloky:
 
-1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
-2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele ClickTime](#create-a-clicktime-test-user)**  -toohave protějšek Britta Simon v ClickTime, která je propojená toohello Azure AD reprezentace uživatele.
-4. **[Přiřadit hello Azure AD testovacího uživatele](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
-5. **[Test jednotného přihlašování](#test-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
+1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
+2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele ClickTime](#create-a-clicktime-test-user)**  – Pokud chcete mít protějšek Britta Simon v ClickTime propojeném s Azure AD reprezentace daného uživatele.
+4. **[Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
+5. **[Test jednotného přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci ClickTime.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci ClickTime.
 
-**tooconfigure Azure AD jednotné přihlašování s ClickTime, proveďte následující kroky hello:**
+**Ke konfiguraci Azure AD jednotné přihlašování s ClickTime, proveďte následující kroky:**
 
-1. V portálu Azure, na hello hello **ClickTime** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na portálu Azure na **ClickTime** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurace propojení přihlášení][4]
 
-2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
+2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
  
     ![Jediné přihlášení dialogové okno](./media/active-directory-saas-clicktime-tutorial/tutorial_clicktime_samlbase.png)
 
-3. Na hello **ClickTime domény a adresy URL** část, proveďte následující kroky hello:
+3. Na **ClickTime domény a adresy URL** část, proveďte následující kroky:
 
     ![ClickTime domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-clicktime-tutorial/tutorial_clicktime_url.png)
 
-    a. V hello **identifikátor** textovému poli, zadejte adresu URL jako:`https://app.clicktime.com/sp/`
+    a. V **identifikátor** textovému poli, zadejte adresu URL jako:`https://app.clicktime.com/sp/`
     
-    b. V hello **adresa URL odpovědi** textové pole, zadejte adresu URL pomocí hello následující vzory: 
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: 
 
     | |
     |--|
     | `https://app.clicktime.com/Login/` |
     | `https://app.clicktime.com/App/Login/Consume.aspx` |
 
-4. Na hello **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu hello ve vašem počítači.
+4. Na **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu v počítači.
 
-    ![odkaz ke stažení certifikátu Hello](./media/active-directory-saas-clicktime-tutorial/tutorial_clicktime_certificate.png) 
+    ![Odkaz ke stažení certifikátu](./media/active-directory-saas-clicktime-tutorial/tutorial_clicktime_certificate.png) 
 
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-clicktime-tutorial/tutorial_general_400.png)
 
-6. Na hello **ClickTime konfigurace** klikněte na tlačítko **konfigurace ClickTime** tooopen **konfigurovat přihlášení** okno. Kopírování hello **SAML jeden přihlašování adresa URL služby** z hello **Stručná referenční příručka části.**
+6. Na **ClickTime konfigurace** klikněte na tlačítko **konfigurace ClickTime** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
 
     ![Konfigurace ClickTime](./media/active-directory-saas-clicktime-tutorial/tutorial_clicktime_configure.png) 
 
 7. V okně prohlížeče jiný web Přihlaste se jako správce k serveru vaší společnosti ClickTime.
 
-8. V panelu nástrojů hello hello nahoře, klikněte na **Předvolby**a potom klikněte na **nastavení zabezpečení**.
+8. Na panelu nástrojů v horní části klikněte na tlačítko **Předvolby**a potom klikněte na **nastavení zabezpečení**.
 
-9. V hello **předvolby přihlašování** konfigurace části, proveďte následující kroky hello:
+9. V **předvolby přihlašování** konfigurace části, proveďte následující kroky:
    
     ![Nastavení zabezpečení](./media/active-directory-saas-clicktime-tutorial/tic777280.png "nastavení zabezpečení")
    
     a.  Vyberte **povolit** přihlášení pomocí jednotné přihlašování (SSO) s **Azure AD**.
    
-    b. V hello **koncový bod zprostředkovatele Identity** textovému poli, vložte **SAML jeden přihlašování adresa URL služby** který jste zkopírovali z portálu Azure.
+    b. V **koncový bod zprostředkovatele Identity** textovému poli, vložte **SAML jeden přihlašování adresa URL služby** který jste zkopírovali z portálu Azure.
    
-    c.  Otevřete hello **certifikátu s kódováním base-64** stáhli z portálu Azure v **Poznámkový blok**, zkopírujte hello obsah a pak ji vložit do hello **certifikát X.509** textové pole.
+    c.  Otevřete **certifikátu s kódováním base-64** stáhli z portálu Azure v **Poznámkový blok**, kopírovat obsah a vložte ji do **certifikát X.509** textové pole.
    
     d.  Klikněte na **Uložit**.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
-Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
+Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
 
 ![Vytvořit testovací uživatele Azure AD][100]
 
-**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
+**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
 
-1. V hello portál Azure, v levém podokně hello, klikněte na tlačítko hello **Azure Active Directory** tlačítko.
+1. Na portálu Azure, v levém podokně klikněte **Azure Active Directory** tlačítko.
 
-    ![tlačítko Azure Active Directory Hello](./media/active-directory-saas-clicktime-tutorial/create_aaduser_01.png) 
+    ![Tlačítko Azure Active Directory](./media/active-directory-saas-clicktime-tutorial/create_aaduser_01.png) 
 
-2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin**a potom klikněte na **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na **všichni uživatelé**.
     
-    ![Hello "Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/active-directory-saas-clicktime-tutorial/create_aaduser_02.png) 
+    !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/active-directory-saas-clicktime-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello horní části hello **všichni uživatelé** dialogové okno.
+3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
  
-    ![tlačítko Přidat Hello](./media/active-directory-saas-clicktime-tutorial/create_aaduser_03.png) 
+    ![Tlačítko Přidat](./media/active-directory-saas-clicktime-tutorial/create_aaduser_03.png) 
 
-4. V hello **uživatele** dialogové okno pole, proveďte následující kroky hello:
+4. V **uživatele** dialogové okno pole, proveďte následující kroky:
  
-    ![Dialogové okno uživatelského Hello](./media/active-directory-saas-clicktime-tutorial/create_aaduser_04.png) 
+    ![Dialogové okno uživatele](./media/active-directory-saas-clicktime-tutorial/create_aaduser_04.png) 
 
-    a. V hello **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textovému poli, typ **BrittaSimon**.
 
-    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="create-a-clicktime-test-user"></a>Vytvoření zkušebního uživatele ClickTime
 
-V pořadí tooenable Azure AD Uživatelé toolog do ClickTime musí být zřízená do ClickTime.  
-V případě hello ClickTime zřizování je ruční úloha.
+Pokud chcete povolit uživatelům Azure AD přihlášení do ClickTime, musí být zřízená do ClickTime.  
+V případě ClickTime zřizování je ruční úloha.
 
 > [!NOTE]
-> Můžete použít všechny ostatní ClickTime uživatele účtu nástroje pro tvorbu nebo rozhraní API poskytované ClickTime tooprovision uživatelské účty Azure AD.
+> Můžete použít všechny ostatní ClickTime uživatele účtu nástroje pro tvorbu nebo rozhraní API poskytované ClickTime ke zřízení uživatelských účtů Azure AD.
 
-**tooprovision uživatelský účet, proveďte následující kroky hello:**
-1. Přihlaste se tooyour **ClickTime** klienta.
-2. V panelu nástrojů hello hello nahoře, klikněte na **společnosti**a potom klikněte na **osoby**.
+**K poskytnutí uživatelského účtu, proveďte následující kroky:**
+1. Přihlaste se k vaší **ClickTime** klienta.
+2. Na panelu nástrojů v horní části klikněte na tlačítko **společnosti**a potom klikněte na **osoby**.
    
     ![Lidé](./media/active-directory-saas-clicktime-tutorial/tic777282.png "osoby")
 3. Klikněte na tlačítko **přidat osobu**.
    
     ![Přidat osobu](./media/active-directory-saas-clicktime-tutorial/tic777283.png "přidat osoba")
-4. V části nové osobě hello proveďte hello následující kroky:
+4. V části nové osobě proveďte následující kroky:
    
     ![Lidé](./media/active-directory-saas-clicktime-tutorial/tic777284.png "osoby")
    
-    a.  V hello **celý název** textovému poli, celý název typ uživatele jako **Britta Simon**. 
+    a.  V **celý název** textovému poli, celý název typ uživatele jako **Britta Simon**. 
   
-    b.  V hello **e-mailová adresa** jako typ hello e-mailu uživatele k textovému poli,  **brittasimon@contoso.com** .
+    b.  V **e-mailová adresa** jako typ e-mailu uživatele k textovému poli,  **brittasimon@contoso.com** .
        
     > [!NOTE]
-    > Pokud chcete, můžete nastavit další vlastnosti hello nový uživatel objektu.
+    > Pokud chcete, můžete nastavit další vlastnosti nového objektu osoby.
    
     c.  Klikněte na **Uložit**.
 
-### <a name="assign-hello-azure-ad-test-user"></a>Přiřadit hello Azure AD testovacího uživatele
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
 
-V této části povolíte tak, že udělíte přístup tooClickTime toouse Britta Simon Azure jednotné přihlašování.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu ClickTime.
 
-![Přiřadit role uživatele hello][200] 
+![Přiřadit role uživatele][200] 
 
-**tooassign Britta Simon tooClickTime, proveďte následující kroky hello:**
+**Pokud chcete přiřadit Britta Simon ClickTime, proveďte následující kroky:**
 
-1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikace hello vyberte **ClickTime**.
+2. V seznamu aplikací vyberte **ClickTime**.
 
-    ![V seznamu aplikace hello ClickTimne odkaz](./media/active-directory-saas-clicktime-tutorial/tutorial_clicktime_app.png) 
+    ![Odkaz ClickTimne v seznamu aplikací](./media/active-directory-saas-clicktime-tutorial/tutorial_clicktime_app.png) 
 
-3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
+3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
-    ![odkaz "Uživatelé a skupiny" Hello][202] 
+    ![Odkaz "Uživatelé a skupiny"][202] 
 
 4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
 
-    ![Podokno Přidat přidružení Hello][203]
+    ![V podokně Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -240,14 +240,14 @@ V této části povolíte tak, že udělíte přístup tooClickTime toouse Britt
     
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.
+V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
-Když kliknete na dlaždici ClickTime hello v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour ClickTime aplikace.
-Další informace o na přístupovém panelu najdete v tématu [toohello Úvod přístupový Panel](active-directory-saas-access-panel-introduction.md).
+Když kliknete na dlaždici ClickTime na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci ClickTime.
+Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

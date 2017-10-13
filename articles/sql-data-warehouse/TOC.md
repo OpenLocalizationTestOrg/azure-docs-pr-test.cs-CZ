@@ -8,9 +8,10 @@
 # Začínáme
 
 ## [Kurz pro začátečníky](sql-data-warehouse-get-started-tutorial.md)
+## [Kurz k elastickým dotazům](tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md)
 ## [Osvědčené postupy](sql-data-warehouse-best-practices.md)
 ## [Správa](sql-data-warehouse-overview-manage.md)
-## [Získat podporu](sql-data-warehouse-get-started-create-support-ticket.md)
+
 
 
 # Postup
@@ -20,7 +21,7 @@
 ### [Přehled zálohování](sql-data-warehouse-backups.md)
 ### [Přehled obnovení](sql-data-warehouse-restore-database-overview.md)
 #### [Azure Portal](sql-data-warehouse-restore-database-portal.md)
-#### [PowerShell](sql-data-warehouse-restore-database-powershell.md)
+#### [Azure PowerShell](sql-data-warehouse-restore-database-powershell.md)
 #### [REST](sql-data-warehouse-restore-database-rest-api.md)
 
 ## Připojení
@@ -34,7 +35,7 @@
 
 ## Vytvořit
 ### [Azure Portal](sql-data-warehouse-get-started-provision.md)
-### [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
+### [Azure PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
 ### [T-SQL](sql-data-warehouse-get-started-create-database-tsql.md)
 
 ## Vývoj
@@ -80,6 +81,8 @@
 ### [Vizualizace Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 ### [Stream Analytics](sql-data-warehouse-integrate-azure-stream-analytics.md)
 
+### [Elastické dotazy s využitím SQL Database a SQL Data Warehouse](how-to-use-elastic-query-with-sql-data-warehouse.md)
+
 ## Načtení
 
 ### Koncepty
@@ -89,7 +92,7 @@
 ### Kurzy
 #### [PolyBase](sql-data-warehouse-get-started-load-with-polybase.md)
 
-### Jak tooguides
+### Návody
 #### [Ukázková data](sql-data-warehouse-load-sample-databases.md)
 #### [Azure Data Lake Store](sql-data-warehouse-load-from-azure-data-lake-store.md)
 #### [BCP](sql-data-warehouse-load-with-bcp.md)
@@ -106,7 +109,7 @@
 ### [Migrace schématu](sql-data-warehouse-migrate-schema.md)
 ### [Migrace kódu](sql-data-warehouse-migrate-code.md)
 ### [Migrace dat](sql-data-warehouse-migrate-data.md)
-### [Migrace úložiště toopremium](sql-data-warehouse-migrate-to-premium-storage.md)
+### [Migrace na Storage úrovně Premium](sql-data-warehouse-migrate-to-premium-storage.md)
 
 ## Správa výpočetních služeb
 
@@ -139,18 +142,22 @@
 # Referenční informace
 
 ## [Omezení kapacity](sql-data-warehouse-service-capacity-limits.md)
-## [Elementy jazyka T-SQL](sql-data-warehouse-reference-tsql-language-elements.md)
-## [Příkazy jazyka T-SQL](sql-data-warehouse-reference-tsql-statements.md)
-## [Zobrazení systému jazyka T-SQL](sql-data-warehouse-reference-tsql-system-views.md)
+## T-SQL
+### [Úplný přehled](https://docs.microsoft.com/sql/t-sql/language-reference/)
+### [Elementy jazyka SQL DW](sql-data-warehouse-reference-tsql-language-elements.md)
+### [Příkazy SQL DW](sql-data-warehouse-reference-tsql-statements.md)
+## [Systémová zobrazení](sql-data-warehouse-reference-tsql-system-views.md)
 ## [Rutiny PowerShellu](sql-data-warehouse-reference-powershell-cmdlets.md)
 
 # Zdroje a prostředky
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/?category=databases)
-## [Fórum](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse)
+## [Fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSQLDataWarehouse)
 ## [Ceny](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)
+## [Žádosti o funkce](https://feedback.azure.com/forums/307516-sql-data-warehouse/)
 ## [Aktualizace služeb](https://azure.microsoft.com/updates/?product=sql-data-warehouse)
 ## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw/)
+## [Podpora](sql-data-warehouse-get-started-create-support-ticket.md)
 ## [Videa](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 
 ## Partneři

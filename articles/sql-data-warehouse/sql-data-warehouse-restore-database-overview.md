@@ -1,6 +1,6 @@
 ---
-title: "aaaRestore Azure datového skladu, a-místní a geograficky redundantní | Microsoft Docs"
-description: "Přehled možností obnovení hello databáze pro obnovení databáze v Azure SQL Data Warehouse."
+title: "Obnovení Azure datového skladu, a-místní a geograficky redundantní | Microsoft Docs"
+description: "Přehled možností obnovení databáze pro obnovení databáze v Azure SQL Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: NA
 author: Lakshmi1812
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: backup-restore
 ms.date: 10/31/2016
 ms.author: lakshmir;barbkess
-ms.openlocfilehash: a96b898372b29d420e1416ca93a172ff8af47fc7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ea42b7135d0695b66d569095e70bb3d9f8b9594b
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="sql-data-warehouse-restore"></a>Obnovení SQL Data Warehouse
 > [!div class="op_single_selector"]
@@ -30,10 +30,10 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-SQL Data Warehouse nabízí místní i zeměpisné obnovení jako součást po havárii jeho datového skladu obnovení. Použijte datového skladu zálohy toorestore vašeho datového skladu tooa obnovení bodu v primární oblasti hello nebo použít geograficky redundantní zálohy toorestore tooa jiné zeměpisné oblasti. Tento článek vysvětluje hello specifika obnovení datového skladu.
+SQL Data Warehouse nabízí místní i zeměpisné obnovení jako součást po havárii jeho datového skladu obnovení. Použijte k obnovení datového skladu pro bod obnovení v primární oblasti datového skladu zálohy nebo použijte geograficky redundantní zálohy obnovit do jiné zeměpisné oblasti. Tento článek vysvětluje, jaké jsou specifikace obnovení datového skladu.
 
 ## <a name="what-is-a-data-warehouse-restore"></a>Co je datový sklad obnovení?
-Obnovení datového skladu je nový datový sklad, který je vytvořený z existující zálohy nebo odstraněné datového skladu. Hello obnovené datového skladu znovu vytvoří hello zálohovaná datového skladu v určitém čase. Vzhledem k tomu, že SQL Data Warehouse je distribuovaný systém, obnovení datového skladu je vytvořený z mnoha záložní soubory, které jsou uložené v Azure BLOB. 
+Obnovení datového skladu je nový datový sklad, který je vytvořený z existující zálohy nebo odstraněné datového skladu. Obnovená data warehouse znovu vytvoří skladu zálohovaná data v určitém čase. Vzhledem k tomu, že SQL Data Warehouse je distribuovaný systém, obnovení datového skladu je vytvořený z mnoha záložní soubory, které jsou uložené v Azure BLOB. 
 
 Obnovení databáze je nedílnou součást vámi vyžádaných jakékoli obchodní strategie pro obnovení kontinuity a po havárii, protože znovu vytváří data po náhodného poškození nebo odstranění.
 
@@ -43,41 +43,41 @@ Další informace naleznete v tématu:
 * [Přehled kontinuity obchodních](../sql-database/sql-database-business-continuity.md)
 
 ## <a name="data-warehouse-restore-points"></a>Body obnovení datového skladu
-Jako výhodou použití služby Azure Premium Storage SQL Data Warehouse používá Azure Storage Blob snímky toobackup hello primární datového skladu. Každý snímek je bod obnovení, který představuje hello čas spuštění snímku hello. toorestore datového skladu, vyberte bod obnovení a vydejte příkaz restore.  
+Jako výhodou používání Azure Premium Storage SQL Data Warehouse používá snímky Azure Storage Blob pro zálohování primárního datového skladu. Každý snímek je bod obnovení, který představuje spuštění snímku. Chcete-li obnovit datového skladu, vyberte bod obnovení a vydejte příkaz restore.  
 
-SQL Data Warehouse vždy obnoví hello zálohování tooa nový datový sklad. Můžete buď ponechat hello obnovené datového skladu a hello stávající nebo odstraňte jednu z nich. Pokud chcete tooreplace hello aktuální datového skladu s hello obnovit datového skladu, ho mohli přejmenovat.
+SQL Data Warehouse vždy obnoví zálohování na nový datový sklad. Můžete buď ponechat obnovené datový sklad a stávající nebo odstraňte jednu z nich. Pokud chcete nahradit aktuální datového skladu obnovené datového skladu, můžete ho změnit.
 
-Pokud potřebujete toorestore odstraněné nebo pozastavený datového skladu, můžete [vytvořit lístek podpory](sql-data-warehouse-get-started-create-support-ticket.md). 
+Pokud potřebujete obnovit odstraněné nebo pozastavený datového skladu, můžete [vytvořit lístek podpory](sql-data-warehouse-get-started-create-support-ticket.md). 
 
 <!-- 
 ### Can I restore a deleted data warehouse?
 
-Yes, you can restore hello last available restore point.
+Yes, you can restore the last available restore point.
 
-Yes, for hello next seven calendar days. When you delete a data warehouse, SQL Data Warehouse actually keeps hello data warehouse and its snapshots for seven days just in case you need hello data. After seven days, you won't be able toorestore tooany of hello restore points. -->
+Yes, for the next seven calendar days. When you delete a data warehouse, SQL Data Warehouse actually keeps the data warehouse and its snapshots for seven days just in case you need the data. After seven days, you won't be able to restore to any of the restore points. -->
 
 ## <a name="geo-redundant-restore"></a>Geograficky redundantní obnovení
-Můžete obnovit vaše datové oblasti tooany skladu podpora Azure SQL Data Warehouse stejné úrovni zvolené výkonu. Upozorňujeme, že 9000 a 18000 DWU nejsou podporovány ve všech oblastech během hello preview.
+Datový sklad můžete obnovit do libovolné oblasti podpora Azure SQL Data Warehouse stejné úrovni zvolené výkonu. Upozorňujeme, že 9000 a 18000 DWU nejsou podporovány ve všech oblastech ve verzi Preview.
 
 > [!NOTE]
-> obnovení geograficky redundantní tooperform nesmí Nesouhlasili jste tuto funkci.
+> Geograficky redundantní obnovení nesmí Nesouhlasili jste tuto funkci.
 > 
 > 
 
 ## <a name="restore-timeline"></a>Obnovení časové osy
-Můžete obnovit bod databáze tooany obnovení k dispozici v rámci hello posledních sedmi dnů. Snímky spuštění každé čtyři hodiny tooeight a jsou k dispozici sedm dní. Pokud snímek je starší než 7 dní, vypršení jeho platnosti a jeho bod obnovení již není k dispozici.
+Databázi můžete obnovit do libovolného bodu obnovení k dispozici v posledních sedmi dnů. Snímky spuštění každých čtyř do osmi hodin a jsou k dispozici sedm dní. Pokud snímek je starší než 7 dní, vypršení jeho platnosti a jeho bod obnovení již není k dispozici.
 
 ## <a name="restore-costs"></a>Obnovení náklady
-Hello úložiště zdarma pro obnovená data warehouse hello se fakturuje Azure Premium Storage rychlostí hello. 
+Zřizování úložiště pro obnovená data warehouse se fakturuje rychlostí Azure Premium Storage. 
 
-Pokud pozastavíte obnovené datového skladu, budou se vám účtovat pro úložiště Azure Premium Storage rychlostí hello. Výhodou Hello pozastavení je, že vám není účtován hello DWU výpočetních prostředků.
+Pokud pozastavíte obnovené datového skladu, budou se vám účtovat pro úložiště rychlostí Azure Premium Storage. Výhodou pozastavení je, že se vám neúčtují poplatky za výpočetní prostředky DWU.
 
 Další informace o cenách služby SQL Data Warehouse najdete v tématu [SQL Data Warehouse – ceny](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
 ## <a name="uses-for-restore"></a>Používá pro obnovení
-Hello primárního použití pro obnovení datového skladu je toorecover data po před náhodnou ztrátou dat nebo poškození.
+Primární použití pro obnovení datového skladu je k obnovení dat po před náhodnou ztrátou dat nebo poškození.
 
-Můžete taky datového skladu obnovení tooretain zálohu po dobu delší než 7 dní. Po obnovení hello zálohování online máte hello datového skladu a můžete pozastavit ho neomezeně dlouhou dobu toosave výpočetní náklady. Pozastavený databáze Hello způsobuje poplatky za úložiště Storage úrovně Premium rychlostí hello. 
+Obnovení datového skladu můžete taky uchovávat zálohu po dobu delší než 7 dní. Po obnovení zálohy online máte datového skladu a můžete ho po neomezenou dobu, abyste ušetřili náklady výpočetní pozastavit. Pozastavený databáze způsobuje poplatky za úložiště rychlostí Azure Premium Storage. 
 
 ## <a name="related-topics"></a>Související témata
 ### <a name="scenarios"></a>Scénáře
@@ -85,11 +85,11 @@ Můžete taky datového skladu obnovení tooretain zálohu po dobu delší než 
 
 <!-- ### Tasks -->
 
-tooperform datového skladu obnovit, obnovte pomocí:
+Pokud chcete provést obnovení datového skladu, obnovte pomocí:
 
-* Azure portálu, najdete v tématu [obnovit data warehouse pomocí hello portálu Azure](sql-data-warehouse-restore-database-portal.md)
+* Azure portálu, najdete v tématu [obnovit data warehouse pomocí portálu Azure](sql-data-warehouse-restore-database-portal.md)
 * Rutiny prostředí PowerShell najdete v části [obnovení datového skladu pomocí rutin prostředí PowerShell](sql-data-warehouse-restore-database-powershell.md)
-* Rozhraní REST API najdete v tématu [obnovit data warehouse pomocí hello rozhraní REST API](sql-data-warehouse-restore-database-rest-api.md)
+* Rozhraní REST API najdete v tématu [obnovit data warehouse pomocí rozhraní REST API](sql-data-warehouse-restore-database-rest-api.md)
 
 <!-- ### Tutorials -->
 

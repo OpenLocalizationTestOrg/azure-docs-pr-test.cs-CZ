@@ -1,6 +1,6 @@
 ---
-title: "doporučení výkonu aaaApply – Azure SQL Database | Microsoft Docs"
-description: "Můžete použít hello Azure portálu toofind výkonu doporučení, které můžete optimalizovat výkon databáze SQL Azure nebo toocorrect některé problém uvedený v vaše úlohy."
+title: "Použít výkonu doporučení – Azure SQL Database | Microsoft Docs"
+description: "Portálu Azure můžete použít k vyhledání doporučení výkonu, které můžete optimalizovat výkon vaší databáze SQL Azure nebo opravte některé problém uvedený v vaše úlohy."
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -15,131 +15,131 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 07/05/2017
 ms.author: sstein
-ms.openlocfilehash: 0b2234840fc3254d235db9e7d18f5bc912851c6d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 018afaa8b08bd001e55693390e80c8e2c4f33a30
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Najít a použít doporučení výkonu
 
-Můžete použít hello Azure portálu toofind výkonu doporučení, které můžete optimalizovat výkon databáze SQL Azure nebo toocorrect některé problém uvedený v vaše úlohy. **Výkon doporučení** stránka na portálu Azure vám umožňuje toofind hello nejvyšší doporučení podle jejich potenciální vliv. 
+Portálu Azure můžete použít k vyhledání doporučení výkonu, které můžete optimalizovat výkon vaší databáze SQL Azure nebo opravte některé problém uvedený v vaše úlohy. **Výkon doporučení** stránka na portálu Azure umožňuje najít nejvyšší doporučení podle jejich potenciální vliv. 
 
 ## <a name="viewing-recommendations"></a>Zobrazení doporučení
 
-tooview a použít výkonu doporučení, třeba hello správné [řízení přístupu na základě role](../active-directory/role-based-access-control-what-is.md) oprávnění v Azure. **Čtečka**, **Přispěvatel databází SQL** oprávnění jsou požadované tooview doporučení a **vlastníka**, **Přispěvatel databází SQL** jsou požadována oprávnění tooexecute všechny akce; Vytvořit nebo vyřadit indexy a zrušit vytváření indexu.
+Pokud chcete zobrazit a použít doporučení pro optimální výkon, je nutné správný [řízení přístupu na základě role](../active-directory/role-based-access-control-what-is.md) oprávnění v Azure. **Čtečka**, **Přispěvatel databází SQL** zobrazíte doporučení, jsou vyžadována oprávnění a **vlastníka**, **Přispěvatel databází SQL** se vyžadují oprávnění k provádět žádné akce; Vytvořit nebo vyřadit indexy a zrušit vytváření indexu.
 
-Použijte následující postup toofind výkonu doporučení na portálu Azure hello:
+Najít výkonu doporučení na portálu Azure pomocí následujících kroků:
 
-1. Přihlaste se toohello [portál Azure](https://portal.azure.com/).
-2. Přejděte příliš**další služby** > **databází SQL**a vyberte svou databázi.
-3. Přejděte příliš**výkonu doporučení** tooview dostupná doporučení pro vybranou databázi hello.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+2. Přejděte na **další služby** > **databází SQL**a vyberte svou databázi.
+3. Přejděte na **výkonu doporučení** zobrazíte doporučení k dispozici pro vybranou databázi.
 
-V tabulce hello podobné se toohello, té, kterou vidíte na následující obrázek hello výkonu doporučení jsou shonw:
+Výkon doporučení jsou shonw v tabulce podobně jako na následujícím obrázku:
 
 ![Doporučení](./media/sql-database-advisor-portal/recommendations.png)
 
-Doporučení jsou seřazené podle jejich potenciální dopad na výkon do hello následujících kategorií:
+Doporučení jsou seřazené podle jejich potenciální dopad na výkon do následujících kategorií:
 
 | Dopad | Popis |
 |:--- |:--- |
-| Vysoký |Vysoký dopad na doporučení by měl poskytovat hello nejvýraznější dopad na výkon. |
+| Vysoký |Vysoký dopad na doporučení by měl poskytovat nejvýraznější dopad na výkon. |
 | Střednědobé používání |Střední dopad doporučení by měla zvýšit výkon, ale není podstatně. |
 | Nízký |Nízký dopad doporučení by měl poskytovat lepší výkon než bez, ale nemusí být výrazné vylepšení. |
 
 
 > [!NOTE]
-> Databáze SQL Azure vyžaduje toomonitor aktivity alespoň za den v pořadí tooidentify několik doporučení. Hello Azure SQL Database můžete snadněji optimalizovat konzistentní dotazu v případě vzorů, než je to možné na náhodných problematického shluky aktivity. Pokud doporučení nejsou k dispozici corrently, hello **výkonu doporučení** stránka obsahuje zprávu s vysvětlením, proč.
+> Databáze SQL Azure je potřeba sledovat aktivity alespoň za den za účelem zjištění několik doporučení. Databáze SQL Azure můžete snadněji optimalizovat konzistentní dotazu v případě vzorů, než je to možné na náhodných problematického shluky aktivity. Pokud doporučení nejsou k dispozici, corrently **výkonu doporučení** stránka obsahuje zprávu s vysvětlením, proč.
 > 
 
-Můžete také zobrazit stav hello hello historických operací. Vyberte stav nebo doporučení toosee další podrobnosti.
+Můžete také zobrazit stav přehled činností. Vyberte doporučení nebo stav zobrazíte další podrobnosti.
 
-Tady je příklad "Vytvořit index" doporučení v hello portálu Azure.
+Tady je příklad "Vytvořit index" doporučení na portálu Azure.
 
 ![Vytvoření indexu](./media/sql-database-advisor-portal/sql-database-performance-recommendation.png)
 
 ## <a name="applying-recommendations"></a>Uplatňovat doporučení
-Databáze SQL Azure vám dává plnou kontrolu nad jak doporučení jsou povolit pomocí některé z hello následující tři možnosti: 
+Databáze SQL Azure vám dává plnou kontrolu nad jak doporučení jsou povolit pomocí některé z následujících tří možností: 
 
 * Používat jednotlivé doporučení jeden v daném okamžiku.
-* Povolit hello automatické ladění tooautomatically platí doporučení.
-* tooimplement doporučení ručně, spusťte hello doporučená skriptu T-SQL pro vaši databázi.
+* Povolte automatické ladění pro automatické použití doporučení.
+* Pokud chcete doporučení implementovat ručně, spusťte doporučené skript T-SQL databáze.
 
-Vyberte všechny doporučení tooview jeho podrobnosti a pak klikněte na **zobrazit skript** tooreview hello přesný podrobné informace o tom, jak je vytvoření hello doporučení.
+Vyberte všechny doporučení zobrazit jeho podrobnosti a potom klikněte na **zobrazit skript** ke kontrole přesné údaje o tom, jak vytvořit doporučení.
 
-Hello databáze zůstane online, zatímco hello doporučení platí – pomocí výkonu doporučení nebo automatické ladění nikdy převede databázi do režimu offline.
+Databáze zůstane online, zatímco doporučení platí – pomocí výkonu doporučení nebo automatické ladění nikdy převede do režimu offline databáze.
 
 ### <a name="apply-an-individual-recommendation"></a>Jednotlivá doporučení použít
 Můžete zkontrolovat a přijmout doporučení jeden najednou.
 
-1. Na hello **doporučení** okně vyberte doporučení.
-2. Na hello **podrobnosti** okně klikněte na tlačítko **použít** tlačítko.
+1. Na **doporučení** okně vyberte doporučení.
+2. Na **podrobnosti** okně klikněte na tlačítko **použít** tlačítko.
    
     ![použít doporučení](./media/sql-database-advisor-portal/apply.png)
 
-Vybrané doporučení se použijí v databázi hello.
+Vybrané doporučení se použijí v databázi.
 
-### <a name="removing-recommendations-from-hello-list"></a>Odebrání doporučení ze seznamu hello
-Pokud seznam doporučení obsahuje položky, které chcete tooremove hello seznamu, můžete zrušit hello doporučení:
+### <a name="removing-recommendations-from-the-list"></a>Odebrání doporučení ze seznamu
+Pokud seznam doporučení obsahuje položky, které chcete odebrat ze seznamu, můžete zrušit doporučení:
 
-1. Vyberte v seznamu hello doporučení **doporučení** tooopen hello podrobnosti.
-2. Klikněte na tlačítko **zahodit** na hello **podrobnosti** okno.
+1. V seznamu vyberte doporučení **doporučení** otevřete podrobnosti.
+2. Klikněte na tlačítko **zahodit** na **podrobnosti** okno.
 
-V případě potřeby můžete přidat vyřazené položky zpět toohello **doporučení** seznamu:
+V případě potřeby můžete přidat vyřazené položky zpět do **doporučení** seznamu:
 
-1. Na hello **doporučení** okně klikněte na tlačítko **zobrazení zahozena**.
-2. Vyberte položku zrušených ze seznamu tooview hello její podrobnosti.
-3. Volitelně klikněte na **vrátit zpět zahodit** tooadd hello index back toohello hlavní seznam **doporučení**.
+1. Na **doporučení** okně klikněte na tlačítko **zobrazení zahozena**.
+2. Vyberte položku zrušených ze seznamu zobrazíte její podrobnosti.
+3. Volitelně klikněte na **vrátit zpět zahodit** přidat index zpět do hlavní seznam **doporučení**.
 
 
 ### <a name="enable-automatic-tuning"></a>Povolení automatického ladění
-Hello Azure SQL Database tooimplement doporučení můžete nastavit automaticky. Dostupná doporučení budou automaticky použity. Jako s všechna doporučení spravuje hello služby pokud vlivu na výkon hello je záporný hello doporučení budou vráceny.
+Můžete nastavit Azure SQL Database k implementaci doporučení automaticky. Dostupná doporučení budou automaticky použity. Jako s všechna doporučení prostřednictvím služby spravovány, pokud je negativní dopad na výkon doporučení budou vráceny.
 
-1. Na hello **doporučení** okně klikněte na tlačítko **automatické**:
+1. Na **doporučení** okně klikněte na tlačítko **automatické**:
    
     ![Nastavení služby Advisor](./media/sql-database-advisor-portal/settings.png)
-2. Vyberte tooautomate akce:
+2. Vyberte akce automatizovat:
    
     ![Doporučené indexy](./media/sql-database-advisor-portal/automation.png)
 
-### <a name="manually-run-hello-recommended-t-sql-script"></a>Ručně spustit hello doporučená skriptu T-SQL
-Vyberte všechny doporučení a pak klikněte na tlačítko **zobrazit skript**. Spusťte tento skript pro vaši databázi toomanually použít hello doporučení.
+### <a name="manually-run-the-recommended-t-sql-script"></a>Ručně spustit doporučené skriptu T-SQL
+Vyberte všechny doporučení a pak klikněte na tlačítko **zobrazit skript**. Spusťte tento skript databázi doporučení použít ručně.
 
-*Indexy, které jsou spouštěny ručně nejsou sledovat a ověřit pro vlivu na výkon službou hello* , doporučuje se po vytvoření tooverify sledovat tyto indexy se poskytují zvýšení výkonu a upravit nebo odstranit je nezbytné. Podrobnosti o vytváření indexů najdete v tématu [CREATE INDEX (Transact-SQL)](https://msdn.microsoft.com/library/ms188783.aspx).
+*Indexy, které jsou spouštěny ručně nejsou sledovat a ověřit pro vlivu na výkon službou* , doporučujeme sledovat tyto indexy po vytvoření ověřte se poskytují zvýšení výkonu a upravit nebo odstranit v případě potřeby. Podrobnosti o vytváření indexů najdete v tématu [CREATE INDEX (Transact-SQL)](https://msdn.microsoft.com/library/ms188783.aspx).
 
 ### <a name="canceling-recommendations"></a>Zrušení doporučení
 Doporučení, které jsou v **čekající**, **ověření**, nebo **úspěch** stav se dají zrušit. Doporučení se stavem **zpracování** nelze zrušit.
 
-1. Vyberte doporučení v hello **ladění historie** oblasti tooopen hello **podrobnosti doporučení** okno.
-2. Klikněte na tlačítko **zrušit** tooabort hello proces použití hello doporučení.
+1. Vyberte doporučení v **ladění historie** oblasti otevřete **podrobnosti doporučení** okno.
+2. Klikněte na tlačítko **zrušit** k přerušení proces použití doporučení.
 
 ## <a name="monitoring-operations"></a>Monitorování operací
-Použití doporučeným nemusí dojít okamžitě. portál Hello poskytuje podrobnosti týkající se stavu hello doporučení. možné stavy, které může být indexu se Hello následující:
+Použití doporučeným nemusí dojít okamžitě. Portál obsahuje podrobné informace týkající se stavu doporučení. Toto jsou možné stavy, které může být index:
 
 | Status | Popis |
 |:--- |:--- |
 | Čekající na vyřízení |Platí doporučení, příkaz byl přijat a je naplánováno spuštění. |
-| Provádění |Hello doporučení se právě používá. |
-| Ověření |Bylo úspěšně aplikováno doporučení a hello služby je měření hello výhody. |
+| Provádění |Doporučuje se právě používá. |
+| Ověření |Bylo úspěšně aplikováno doporučení a službu je měření výhody. |
 | Úspěch |Bylo úspěšně aplikováno doporučení a měří výhody. |
-| Chyba |Došlo k chybě během procesu hello použití hello doporučení. Může to být dočasný problém, nebo může být tabulku toohello změnu schématu a skriptu hello již není platný. |
-| Návrat |doporučení Hello bylo použito, ale je považována za nenáročných a automaticky zrušeny. |
-| Vrátit zpět |Hello doporučení se vrátila. |
+| Chyba |Při zavádění doporučení se stala chyba. Může to být dočasný problém, nebo které by mohly mít schéma změnit do tabulky a skript již není platný. |
+| Návrat |Doporučení bylo použito, ale je považována za nenáročných a automaticky zrušeny. |
+| Vrátit zpět |Doporučuje se vrátila. |
 
-Kliknutím doporučení v procesu ze seznamu toosee hello další podrobnosti:
+Kliknutím na doporučení v procesu v seznamu zobrazíte další podrobnosti:
 
 ![Doporučené indexy](./media/sql-database-advisor-portal/operations.png)
 
 ### <a name="reverting-a-recommendation"></a>Při vrácení doporučení
-Pokud jste použili hello výkonu doporučení tooapply hello doporučení (což znamená, že nebyl spuštěn ručně skriptu hello T-SQL) se automaticky vrátí ho Pokud najde hello výkonu dopad toobe záporné. Pokud z nějakého důvodu chcete jednoduše toorevert doporučení můžete provést následující hello:
+Pokud jste použili výkonu doporučení k doporučení použít (což znamená, že nebyl spuštěn ručně skriptu T-SQL) se automaticky vrátí ho Pokud najde negativní dopad na výkon. Pokud z nějakého důvodu, že chcete jednoduše obnovit doporučení můžete provést následující:
 
-1. Vyberte úspěšně použité doporučení v hello **ladění historie** oblasti.
-2. Klikněte na tlačítko **vrátit** na hello **podrobnosti o doporučení** okno.
+1. Vyberte úspěšně použité doporučení v **ladění historie** oblasti.
+2. Klikněte na tlačítko **vrátit** na **podrobnosti o doporučení** okno.
 
 ![Doporučené indexy](./media/sql-database-advisor-portal/details.png)
 
 ## <a name="monitoring-performance-impact-of-index-recommendations"></a>Monitorování vlivu na výkon doporučení indexu
-Po doporučení jsou úspěšně implementováno (v současné době operace indexu a Parametrizace pouze dotazy doporučení) můžete kliknout na **přehled dotazu** na tooopen okno Podrobnosti doporučení hello [dotazu Přehled o výkonu](sql-database-query-performance.md) a zobrazit hello vlivu na výkon nejčastějších dotazů.
+Po doporučení jsou úspěšně implementováno (v současné době operace indexu a Parametrizace pouze dotazy doporučení) můžete kliknout na **přehled dotazu** v okně doporučení podrobnosti otevřete [dotazu Přehled o výkonu](sql-database-query-performance.md) a zobrazit dopad na výkon nejčastějších dotazů.
 
 ![Dopad na výkon monitorování](./media/sql-database-advisor-portal/query-insights.png)
 
@@ -147,11 +147,11 @@ Po doporučení jsou úspěšně implementováno (v současné době operace ind
 Databáze SQL Azure poskytuje doporučení pro zlepšení výkonu databáze SQL. Tím, že poskytuje skriptů T-SQL, a také jednotlivé a plně automaticky, získat užitečné pomoc při optimalizaci vaši databázi a nakonec zlepšení výkonu dotazů.
 
 ## <a name="next-steps"></a>Další kroky
-Sledovat vaše doporučení a pokračovat tooapply je toorefine výkonu. Databázové úlohy jsou dynamické a průběžně změnu. Databáze SQL Azure bude i nadále toomonitor a poskytovat doporučení, které může zlepšit výkon vaší databáze. 
+Sledovat vaše doporučení a pokračuje v používání jejich Upřesnit výkonu. Databázové úlohy jsou dynamické a průběžně změnu. Databáze SQL Azure bude sledovat a poskytovat doporučení, které může zlepšit výkon vaší databáze. 
 
-* V tématu [automatické ladění](sql-database-automatic-tuning.md) hello toolearn Další informace o automatické ladění ve službě Azure SQL Database.
+* V tématu [automatické ladění](sql-database-automatic-tuning.md) Další informace o automatické ladění ve službě Azure SQL Database.
 * V tématu [výkonu doporučení](sql-database-advisor.md) přehled o výkonu doporučení Azure SQL Database.
-* V tématu [Query Performance Insight](sql-database-query-performance.md) toolearn o zobrazení hello vlivu na výkon nejčastějších dotazů.
+* V tématu [Query Performance Insight](sql-database-query-performance.md) Další informace o zobrazení dopad na výkon nejčastějších dotazů.
 
 ## <a name="additional-resources"></a>Další zdroje
 * [Úložiště dotazů](https://msdn.microsoft.com/library/dn817826.aspx)

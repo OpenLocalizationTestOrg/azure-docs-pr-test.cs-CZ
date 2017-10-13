@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure Application Insights datový Model | Microsoft Docs"
+title: "Azure Application Insights datový Model | Microsoft Docs"
 description: "Popisuje vlastnosti exportován průběžné exportu ve formátu JSON a použít jako filtry."
 services: application-insights
 documentationcenter: 
@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2016
 ms.author: bwren
-ms.openlocfilehash: 5ff3ce7953b91cc69b5d96c0ea9b6d58a6016e61
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a485ddd555f65473d81896effc4a3562bda71410
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights Export datového modelu
-Tato tabulka uvádí vlastnosti hello telemetrická data odesílaná z hello [Application Insights](app-insights-overview.md) portál toohello sady SDK.
+Tato tabulka uvádí vlastnosti telemetrická data odesílaná z [Application Insights](app-insights-overview.md) sady SDK k portálu.
 Zobrazí se tyto vlastnosti v datovým výstupem z [průběžné exportovat](app-insights-export-telemetry.md).
 Zobrazí se také v filtry vlastností v [Explorer metrika](app-insights-metrics-explorer.md) a [diagnostické vyhledávání](app-insights-diagnostic-search.md).
 
-Toonote body:
+Všimněte si body:
 
-* `[0]`v těchto tabulkách označuje bod v cestě hello, ve které máte tooinsert index; ale není vždy 0.
+* `[0]`v těchto tabulkách označuje bod v cestě, kde je nutné vložit index; ale není vždy 0.
 * Dobách trvání jsou v desetin mikrosekund, takže 10000000 == 1 sekunda.
-* Data a časy jsou UTC a jsou uvedeny ve formátu ISO hello`yyyy-MM-DDThh:mm:ss.sssZ`
+* Data a časy jsou UTC a jsou uvedeny ve formátu ISO`yyyy-MM-DDThh:mm:ss.sssZ`
 
 
 ## <a name="example"></a>Příklad
@@ -41,15 +41,15 @@ Toonote body:
           "base": "/",
           "hashTag": ""
         },
-        "responseCode": 200, // Sent tooclient
+        "responseCode": 200, // Sent to client
         "success": true, // Default == responseCode<400
-        // Request id becomes hello operation id of child events
+        // Request id becomes the operation id of child events
         "id": "fCOhCdCnZ9I=",  
         "name": "GET Home/Index",
         "count": 1, // 100% / sampling rate
         "durationMetric": {
           "value": 1046804.0, // 10000000 == 1 second
-          // Currently hello following fields are redundant:
+          // Currently the following fields are redundant:
           "count": 1.0,
           "min": 1046804.0,
           "max": 1046804.0,
@@ -75,14 +75,14 @@ Toonote body:
       "location": { // derived from client ip
         "continent": "North America",
         "country": "United States",
-        // last octagon is anonymized too0 at portal:
+        // last octagon is anonymized to 0 at portal:
         "clientip": "168.62.177.0",
         "province": "",
         "city": ""
       },
       "data": {
         "isSynthetic": true, // we identified source as a bot
-        // percentage of generated data sent tooportal:
+        // percentage of generated data sent to portal:
         "samplingRate": 100.0,
         "eventTime": "2016-03-21T10:05:45.7334717Z" // UTC
       },
@@ -116,11 +116,11 @@ Všechny typy telemetrických dat se předěl doprovází oddíl kontextu. Ne v�
 
 | Cesta | Typ | Poznámky |
 | --- | --- | --- |
-| Context.Custom.Dimensions [0] |objekt] |Páry klíč hodnota řetězce nastavit parametrem vlastní vlastnosti. Maximální délka klíče 100, hodnoty maximální délky 1024. Více než 100 jedinečné hodnoty vlastnosti hello lze vyhledat, ale nelze použít v případě segmentace. 200 maximální počet klíčů na ikey. |
+| Context.Custom.Dimensions [0] |objekt] |Páry klíč hodnota řetězce nastavit parametrem vlastní vlastnosti. Maximální délka klíče 100, hodnoty maximální délky 1024. Více než 100 jedinečné hodnoty vlastnosti lze vyhledat, ale nelze použít v případě segmentace. 200 maximální počet klíčů na ikey. |
 | Context.Custom.Metrics [0] |objekt] |Nastavte parametr vlastní měření a TrackMetrics páry klíč hodnota. Maximální délka klíče 100, mohou být číselné hodnoty. |
 | context.data.eventTime |Řetězec |ČAS UTC |
-| context.data.isSynthetic |Logická hodnota |Žádost se zobrazí toocome robota nebo webový test. |
-| context.data.samplingRate |Číslo |Procento generované hello SDK, která je odeslána tooportal telemetrie. V rozsahu 0,0 100.0. |
+| context.data.isSynthetic |Logická hodnota |Žádost se zdá být od robota nebo webový test. |
+| context.data.samplingRate |Číslo |Procento telemetrii vygenerovanou sadou SDK, která je odeslána na portál. V rozsahu 0,0 100.0. |
 | Context.Device |Objekt |Klientské zařízení |
 | Context.Device.Browser |Řetězec |IE Chrome... |
 | context.device.browserVersion |Řetězec |Chrome 48,0... |
@@ -136,14 +136,14 @@ Všechny typy telemetrických dat se předěl doprovází oddíl kontextu. Ne v�
 | Context.Device.Type |Řetězec |Počítač, prohlížeč... |
 | Context.Location |Objekt |Odvozená od když. |
 | Context.location.City |Řetězec |Odvozené když, pokud je znám |
-| Context.location.ClientIP |Řetězec |Poslední Osmiúhelník je anonymizovaná too0. |
+| Context.location.ClientIP |Řetězec |Poslední Osmiúhelník je anonymní na hodnotu 0. |
 | Context.location.Continent |Řetězec | |
 | Context.location.Country |Řetězec | |
 | Context.location.Province |Řetězec |Kraj |
-| Context.Operation.ID |Řetězec |Položky, které mají stejné id operace se zobrazují jako související položky v portálu hello hello. Obvykle id žádosti hello. |
+| Context.Operation.ID |Řetězec |Položky, které mají stejné id operace se zobrazují jako související položky v portálu. Obvykle id požadavku. |
 | Context.Operation.Name |Řetězec |Adresa URL nebo žádosti o název |
 | context.operation.parentId |Řetězec |Umožňuje vnořené související položky. |
-| Context.Session.ID |Řetězec |ID skupiny operací z hello stejný zdroj. Po dobu 30 minut bez operace signály hello ukončení relace. |
+| Context.Session.ID |Řetězec |ID skupiny operací z jednoho zdroje. Po dobu 30 minut bez operace signalizuje ukončení relace. |
 | context.session.isFirst |Logická hodnota | |
 | context.user.accountAcquisitionDate |Řetězec | |
 | context.user.anonAcquisitionDate |Řetězec | |
@@ -165,7 +165,7 @@ Vlastní události vygenerované [TrackEvent()](app-insights-api-custom-events-m
 | události [0] urlData.host |Řetězec | |
 
 ## <a name="exceptions"></a>Výjimky
-Sestavy [výjimky](app-insights-asp-net-exceptions.md) hello serveru a v prohlížeči hello.
+Sestavy [výjimky](app-insights-asp-net-exceptions.md) na serveru a v prohlížeči.
 
 | Cesta | Typ | Poznámky |
 | --- | --- | --- |
@@ -194,17 +194,17 @@ Sestavy [výjimky](app-insights-asp-net-exceptions.md) hello serveru a v prohlí
 | typeName basicException [0] |Řetězec | |
 
 ## <a name="trace-messages"></a>Trasovací zprávy
-Poslal [TrackTrace](app-insights-api-custom-events-metrics.md#tracktrace)a podle hello [protokolování adaptéry](app-insights-asp-net-trace-logs.md).
+Poslal [TrackTrace](app-insights-api-custom-events-metrics.md#tracktrace)a [protokolování adaptéry](app-insights-asp-net-trace-logs.md).
 
 | Cesta | Typ | Poznámky |
 | --- | --- | --- |
 | zprávy [0] Název_protokolovače |Řetězec | |
 | zprávy [0] Parametry |Řetězec | |
-| zprávy [0] nezpracovaná |Řetězec |Hello zprávy protokolu, maximální délka 10 tis. |
+| zprávy [0] nezpracovaná |Řetězec |Zprávy protokolu, maximální délka 10 tis. |
 | úroveň závažnosti zpráva [0] |Řetězec | |
 
 ## <a name="remote-dependency"></a>Vzdálené závislostí
-Odesílá TrackDependency. Použít tooreport výkonu a využití [volá toodependencies](app-insights-asp-net-dependencies.md) hello server a volání AJAX do prohlížeče hello.
+Odesílá TrackDependency. Umožňuje sestavu výkonu a využití [volání závislosti](app-insights-asp-net-dependencies.md) v serveru a volání AJAX v prohlížeči.
 
 | Cesta | Typ | Poznámky |
 | --- | --- | --- |
@@ -213,7 +213,7 @@ Odesílá TrackDependency. Použít tooreport výkonu a využití [volá toodepe
 | commandName remoteDependency [0] |Řetězec |Například "domovskou nebo index" |
 | počet remoteDependency [0] |celé číslo |100 / ([vzorkování](app-insights-sampling.md) rychlost). Příklad 4 =&gt; 25 %. |
 | dependencyTypeName remoteDependency [0] |Řetězec |PROTOKOLU HTTP, SQL... |
-| durationMetric.value remoteDependency [0] |Číslo |Čas od volání toocompletion odpovědi závislostí |
+| durationMetric.value remoteDependency [0] |Číslo |Čas od volání dokončení odpovědi závislostí |
 | id remoteDependency [0] |Řetězec | |
 | Název remoteDependency [0] |Řetězec |Adresa URL. Maximální délka 250. |
 | resultCode remoteDependency [0] |Řetězec |z HTTP závislostí |
@@ -225,15 +225,15 @@ Odesílá TrackDependency. Použít tooreport výkonu a využití [volá toodepe
 | urlData.host remoteDependency [0] |Řetězec |Maximální délka 200 |
 
 ## <a name="requests"></a>Požadavky
-Poslal [TrackRequest](app-insights-api-custom-events-metrics.md#trackrequest). Standardní moduly Hello použít tento tooreports doba odezvy serveru, měří ve hello server.
+Poslal [TrackRequest](app-insights-api-custom-events-metrics.md#trackrequest). Standardní moduly pomocí tato doba odezvy serveru sestav, měří na serveru.
 
 | Cesta | Typ | Poznámky |
 | --- | --- | --- |
 | počet požadavku [0] |celé číslo |100 / ([vzorkování](app-insights-sampling.md) rychlost). Příklad: 4 =&gt; 25 %. |
-| durationMetric.value požadavku [0] |Číslo |Čas, ze které tooresponse požadavku. 1e7 == hodnotami 1 |
+| durationMetric.value požadavku [0] |Číslo |Čas požadavku přicházejících do odpovědi. 1e7 == hodnotami 1 |
 | id požadavku [0] |Řetězec |Id operace |
 | Název žádosti [0] |Řetězec |Základní adresa url + GET nebo POST.  Maximální délka 250 |
-| responseCode požadavku [0] |celé číslo |Tooclient odeslané odpovědi HTTP |
+| responseCode požadavku [0] |celé číslo |Odpovědi HTTP odeslané do klienta |
 | úspěšné žádosti [0] |Logická hodnota |Výchozí == (responseCode &lt; 400) |
 | Adresa url požadavku [0] |Řetězec |Není včetně hostitele |
 | urlData.base požadavku [0] |Řetězec | |
@@ -241,18 +241,18 @@ Poslal [TrackRequest](app-insights-api-custom-events-metrics.md#trackrequest). S
 | urlData.host požadavku [0] |Řetězec | |
 
 ## <a name="page-view-performance"></a>Stránka zobrazení výkonu
-Posílá prohlížeč hello. Míry hello tooprocess čas na stránce z uživatele inicializace hello požadavek toodisplay dokončení (s výjimkou asynchronní volání AJAX).
+Posílá prohlížeč. Měří času na zpracování stránky, od uživatele inicializaci žádost zobrazíte kompletní (s výjimkou asynchronní volání AJAX).
 
 Kontext hodnoty zobrazit klientského operačního systému a verze prohlížeče.
 
 | Cesta | Typ | Poznámky |
 | --- | --- | --- |
-| clientProcess.value clientPerformance [0] |celé číslo |Čas od konce přijetí stránku hello toodisplaying hello HTML. |
+| clientProcess.value clientPerformance [0] |celé číslo |Čas od konce přijetí HTML k zobrazení stránky. |
 | Název clientPerformance [0] |Řetězec | |
-| networkConnection.value clientPerformance [0] |celé číslo |Doba trvání tooestablish připojení k síti. |
-| receiveRequest.value clientPerformance [0] |celé číslo |Čas od konce odesílání hello požadavek tooreceiving hello HTML v odpovědi. |
-| sendRequest.value clientPerformance [0] |celé číslo |Čas od přijatá toosend hello HTTP žádosti. |
-| total.value clientPerformance [0] |celé číslo |Čas spuštění toosend hello požadavek toodisplaying hello stránky. |
+| networkConnection.value clientPerformance [0] |celé číslo |Čas potřebný k vytvoření síťového připojení. |
+| receiveRequest.value clientPerformance [0] |celé číslo |Čas od konce odesílání požadavku pro příjem kódu HTML v odpovědi. |
+| sendRequest.value clientPerformance [0] |celé číslo |Z čas potřebný k odeslání požadavku HTTP. |
+| total.value clientPerformance [0] |celé číslo |Čas spuštění odeslat požadavek na zobrazení stránky. |
 | Adresa url clientPerformance [0] |Řetězec |Adresa URL této žádosti |
 | urlData.base clientPerformance [0] |Řetězec | |
 | urlData.hashTag clientPerformance [0] |Řetězec | |
@@ -265,7 +265,7 @@ Poslal trackPageView() nebo [stopTrackPage](app-insights-api-custom-events-metri
 | Cesta | Typ | Poznámky |
 | --- | --- | --- |
 | Počet zobrazení [0] |celé číslo |100 / ([vzorkování](app-insights-sampling.md) rychlost). Příklad 4 =&gt; 25 %. |
-| zobrazení [0] durationMetric.value |celé číslo |Volitelně můžete nastavit v trackPageView() nebo startTrackPage() - hodnota stopTrackPage(). Není hello stejné jako clientPerformance hodnoty. |
+| zobrazení [0] durationMetric.value |celé číslo |Volitelně můžete nastavit v trackPageView() nebo startTrackPage() - hodnota stopTrackPage(). Není stejný jako clientPerformance hodnoty. |
 | Název zobrazení [0] |Řetězec |Název stránky.  Maximální délka 250 |
 | Adresa url zobrazení [0] |Řetězec | |
 | zobrazení [0] urlData.base |Řetězec | |
@@ -294,7 +294,7 @@ Sestavy [testy dostupnosti webu](app-insights-monitor-web-app-availability.md).
 ## <a name="metrics"></a>Metriky
 Generované TrackMetric().
 
-je Hello metriky hodnota nalezena v context.custom.metrics[0]
+Metriky hodnota je nalezena v context.custom.metrics[0]
 
 Například:
 
@@ -335,13 +335,13 @@ Metriky, v metriky sestavy i jinde, jsou uvedeny se strukturou standardní objek
         "sampledValue": 468.71603053650279
       }
 
-Aktuálně – Přestože to může změnit v hello budoucí – všechny hodnoty nahlásila hello standardní moduly SDK, `count==1` a pouze hello `name` a `value` pole jsou užitečné. Hello pouze případ, kdy by být odlišné by pokud napíšete voláními TrackMetric v který nastavíte hello další parametry.
+Aktuálně – Přestože to může změnit v budoucnu – všechny hodnoty nahlásila standardní moduly SDK `count==1` a jenom `name` a `value` pole jsou užitečné. Pouze případ, kdy by být odlišné by, pokud napíšete voláními TrackMetric v můžete nastavit další parametry.
 
-Hello účel hello další pole je toobe metriky tooallow agregován v hello SDK, portálu toohello tooreduce provoz. Například může průměrná několik následných odečty před odesláním všechny metriky sestavy. Potom by vypočítat hello min, max, směrodatná odchylka a celkovou hodnotu (suma nebo průměr) a nastavit počet toohello počet odečty reprezentována hello sestavy.
+V ostatních polích účelem je umožnit metriky mají agregovat v sadě SDK pro omezení provozu na portál. Například může průměrná několik následných odečty před odesláním všechny metriky sestavy. Potom by vypočítat min, max, směrodatná odchylka a celkovou hodnotu (suma nebo průměr) a nastavte počet počtu odečty reprezentována sestavy.
 
-V tabulkách hello výše jsme zapomněli hello málo používané pole count, min, max, stdDev a sampledValue.
+V tabulkách výš jsme zapomněli málo používané pole count, min, max, stdDev a sampledValue.
 
-Namísto předem prostředku metriky, můžete použít [vzorkování](app-insights-sampling.md) Pokud potřebujete tooreduce hello svazku telemetrie.
+Namísto předem prostředku metriky, můžete použít [vzorkování](app-insights-sampling.md) Pokud potřebujete snížit objem telemetrie.
 
 ### <a name="durations"></a>Doby trvání
 Pokud není uvedeno jinak, jinak jsou reprezentované doby trvání v desetin mikrosekund, tak, aby 10000000.0 znamená 1 sekunda.

@@ -1,6 +1,6 @@
 ---
-title: "aaaAn Úvod tooApache Kafka v HDInsight - Azure | Microsoft Docs"
-description: "Další informace o Kafka Apache v HDInsight: co je, jak funguje a kde toofind příklady a jak rychle začít informace."
+title: "Úvod k systému Apache Kafka ve službě HDInsight – Azure | Dokumentace Microsoftu"
+description: "Přečtěte si o systému Apache Kafka ve službě HDInsight: co to je, co to dělá a kde najít příklady a informace pro začátek."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -13,58 +13,67 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/15/2017
+ms.date: 09/07/2017
 ms.author: larryfr
-ms.openlocfilehash: 1bc198d4cf93a4682030d4fa5f71030f49ad64be
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 39234ca792983178cfd4304e001271ea30e28ae6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introducing-apache-kafka-on-hdinsight-preview"></a>Představení Apache Kafka ve službě HDInsight (Preview)
 
-[Apache Kafka](https://kafka.apache.org) je open-source distribuované streamování platforma, která lze použít v reálném čase toobuild streamování datových kanálů a aplikace. Kafka také poskytuje funkce podobné tooa fronta zpráv, kde můžete publikovat a přihlásit se toonamed datové proudy zprostředkovatele zpráv. Kafka v HDInsight vám poskytne spravované, vysoce škálovatelné a vysoce dostupné služby v cloudu Microsoft Azure hello.
+[Apache Kafka](https://kafka.apache.org) je open source distribuovaná streamovací platforma, kterou lze použít k vytváření aplikací a kanálů pro streamování dat v reálném čase. Kafka také poskytuje funkci pro zprostředkování zpráv podobnou frontě zpráv, ve které můžete publikovat pojmenované datové proudy a přihlásit se k jejich odběru. Kafka ve službě HDInsight představuje spravovanou, vysoce škálovatelnou a vysoce dostupnou službu v cloudu Microsoft Azure.
 
 ## <a name="why-use-kafka-on-hdinsight"></a>Proč používat Kafka ve službě HDInsight?
 
-Kafka poskytuje hello následující funkce:
+Kafka poskytuje následující funkce:
 
-* Publikování a odběru zpráv: Kafka poskytuje producent rozhraní API pro publikování záznamů tooa Kafka tématu. Hello příjemce rozhraní API se používá při přihlášení k odběru tooa tématu.
+* Vzorec zasílání zpráv na principu publikování a odběru: Kafka poskytuje rozhraní API pro autory k publikování záznamů v tématech Kafka. Rozhraní API pro příjemce se používá při přihlášení k odběru tématu.
 
-* Zpracování datových proudů: Kafka se často používá společně s Apache Storm nebo Spark ke zpracování datových proudů v reálném čase. Kafka 0.10.0.0 (HDInsight verze 3.5) zavedla streamování rozhraní API, které vám umožní toobuild streamování řešení bez nutnosti použití Storm a Spark.
+* Zpracování datových proudů: Kafka se často používá společně s Apache Storm nebo Spark ke zpracování datových proudů v reálném čase. Kafka 0.10.0.0 (HDInsight verze 3.5) zavedla rozhraní API pro streamování, které umožňuje vytvářet řešení streamování bez potřeby Stormu nebo Sparku.
 
-* Vodorovné škálování: Kafka oddíly datové proudy mezi hello uzly v clusteru HDInsight hello. Příjemce procesy lze přidružit jednotlivé oddíly tooprovide Vyrovnávání zatížení při využívání záznamy.
+* Horizontální škálování: Kafka rozděluje datové proudy mezi uzly v clusteru HDInsight. Procesy příjemců můžou být přidružené k jednotlivým oddílům pro zajištění vyrovnávání zatížení při využívání záznamů.
 
-* Doručení v daném pořadí: v rámci každý oddíl záznamy se ukládají do datového proudu hello v pořadí hello bylo přijato. Přidružením jednoho procesu příjemce na oddíl můžete zajistit zpracování záznamů v daném pořadí.
+* Doručení v daném pořadí: V rámci každého oddílu se záznamy ukládají v datovém proudu v pořadí, v jakém byly přijaty. Přidružením jednoho procesu příjemce na oddíl můžete zajistit zpracování záznamů v daném pořadí.
 
-* Odolné proti chybám: Oddílů je možné replikovat mezi uzly tooprovide odolnost proti chybám.
+* Odolnost proti chybám: Oddíly je možné replikovat mezi uzly a zajistit tak odolnost proti chybám.
 
-* Integrace s Azure spravované disky: spravované disky poskytuje vyšší škálování a propustnost pro disky hello používá hello virtuální počítače v clusteru HDInsight hello.
+* Integrace se službou Azure Managed Disks: Spravované disky přináší virtuálním počítačům v clusteru HDInsight lepší škálování a vyšší propustnost.
 
-    Spravované disky jsou ve výchozím nastavení povolená pro Kafka v HDInsight a hello počet disků použitou na uzlu můžete nakonfigurovat při vytváření HDInsight. Další informace o spravovaných discích najdete v tématu [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md).
+    Pro systém Kafka ve službě HDInsight jsou spravované disky povolené ve výchozím nastavení. Počet použitých disků na uzel je možné nakonfigurovat při vytváření služby HDInsight. Další informace o spravovaných discích najdete v tématu [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md).
 
     Informace o konfiguraci spravovaných disků v systému Kafka v HDInsight najdete v tématu [Zvýšení škálovatelnosti systému Kafka v prostředí HDInsight](hdinsight-apache-kafka-scalability.md).
 
 ## <a name="use-cases"></a>Případy použití
 
-* **Zasílání zpráv**: vzhledem k tomu, že podporuje hello publikování a odběru zpráv vzor, Kafka se často používá jako zprostředkovatele zpráv.
+* **Zasílání zpráv:** Protože Kafka podporuje vzorec zasílání zpráv na principu publikování a odběru, často se používá jako zprostředkovatel zpráv.
 
-* **Aktivita sledování**: protože Kafka poskytuje v daném pořadí protokolování záznamů, může být použité tootrack a znovu vytvořit aktivity. Například akcí uživatelů na webu nebo v aplikaci.
+* **Sledování aktivit:** Protože Kafka poskytuje protokolování záznamů v daném pořadí, je možné ji použít ke sledování a opětovnému vytvoření aktivit. Například akcí uživatelů na webu nebo v aplikaci.
 
-* **Agregace**: pomocí zpracování datového proudu, můžete shromažďovat informace z různých datových proudů toocombine a centralizovat hello informace do provozních dat.
+* **Agregace:** Pomocí zpracování datových proudů můžete agregovat a kombinovat informace z různých datových proudů a centralizovat je v podobě provozních dat.
 
 * **Transformace:** Pomocí zpracování datových proudů můžete kombinovat data z více vstupních témat a rozšiřovat je do jednoho nebo několika výstupních témat.
 
+## <a name="architecture"></a>Architektura
+
+![Konfigurace clusteru Kafka](./media/hdinsight-apache-kafka-introduction/kafka-cluster.png)
+
+Tento diagram ukazuje obvyklou konfiguraci Kafka s využitím skupin příjemců, dělení a replikace. Díky tomu nabízí paralelní čtení událostí s odolností proti chybám. Apache ZooKeeper spravuje stav clusteru Kafka a proto je postaven pro souběžné a odolné transakce s nízkou latencí. Kafka ukládá záznamy v *tématech*. Záznamy jsou vytvářeny *producenty* a spotřebovávány *konzumenty*. Producenti načítají záznamy ze *zprostředkovatelů* Kafka. Každý pracovní uzel v clusteru HDInsight je zprostředkovatelem Kafka. Pro každého příjemce se vytvoří jeden oddíl, což umožňuje paralelní zpracování streamovaných dat. K rozprostření oddílů mezi uzly se využívá replikace, která zajišťuje ochranu před výpadky uzlů (zprostředkovatelé). Oddíl s označením *(L)* je vedoucím daného uzlu. Provoz producenta se směruje do vedoucích jednotlivých uzlů pomocí stavu, který spravuje ZooKeeper.
+
+> [!IMPORTANT]
+> Kafka nemá žádné informace o podkladovém hardwaru (rack) v datovém centru Azure. Pokud chcete zajistit správné rozmístění oddílů napříč podkladovým hardwarem, přečtěte si téma věnované [konfiguraci vysoké dostupnosti dat (Kafka)](hdinsight-apache-kafka-high-availability.md).
+
 ## <a name="next-steps"></a>Další kroky
 
-Použití hello následující odkazy toolearn jak toouse Apache Kafka v HDInsight:
+Následující odkazy popisují používání Apache Kafka ve službě HDInsight:
 
 * [Začínáme s Kafka ve službě HDInsight](hdinsight-apache-kafka-get-started.md)
 
-* [Použít MirrorMaker toocreate repliku Kafka v HDInsight](hdinsight-apache-kafka-mirroring.md)
+* [Vytvoření repliky Kafka ve službě HDInsight pomocí MirrorMakeru](hdinsight-apache-kafka-mirroring.md)
 
 * [Použití Apache Stormu se systémem Kafka ve službě HDInsight](hdinsight-apache-storm-with-kafka.md)
 
 * [Použití Apache Sparku se systémem Kafka ve službě HDInsight](hdinsight-apache-spark-with-kafka.md)
 
-* [Připojení tooKafka přes virtuální síť Azure](hdinsight-apache-kafka-connect-vpn-gateway.md)
+* [Připojení k systému Kafka přes virtuální síť Azure](hdinsight-apache-kafka-connect-vpn-gateway.md)

@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Boomi | Microsoft Docs'
-description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a Boomi."
+description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Boomi."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,133 +13,133 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: ce64a4561697d311a8c7b1b244315bb552c5cfb7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1121d22beddf73fd2109a4b410422f76dd37478e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boomi"></a>Kurz: Azure Active Directory integrace s Boomi
 
-V tomto kurzu zjistíte, jak toointegrate Boomi s Azure Active Directory (Azure AD).
+V tomto kurzu zjistěte, jak integrovat Boomi s Azure Active Directory (Azure AD).
 
-Integrace Boomi s Azure AD poskytuje hello následující výhody:
+Integrace Boomi s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup tooBoomi
-- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooBoomi (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup k Boomi
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k Boomi (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Integrace služby Azure AD s Boomi tooconfigure, je třeba hello následující položky:
+Konfigurace integrace Azure AD s Boomi, potřebujete následující položky:
 
 - Předplatné služby Azure AD
 - Boomi jednotné přihlašování povolené předplatné
 
 > [!NOTE]
-> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
+Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Boomi z Galerie hello
+1. Přidání Boomi z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-boomi-from-hello-gallery"></a>Přidání Boomi z Galerie hello
-tooconfigure hello integrace Boomi do Azure AD, je nutné tooadd Boomi hello Galerie tooyour seznamu spravovaných aplikací SaaS.
+## <a name="adding-boomi-from-the-gallery"></a>Přidání Boomi z Galerie
+Při konfiguraci integrace Boomi do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS Boomi z galerie.
 
-**tooadd Boomi z Galerie hello, proveďte následující kroky hello:**
+**Pokud chcete přidat Boomi z galerie, proveďte následující kroky:**
 
-1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
+1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
+2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
 
     ![Aplikace][3]
 
-4. Hello vyhledávacího pole zadejte **Boomi**.
+4. Do vyhledávacího pole zadejte **Boomi**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_search.png)
 
-5. Na panelu výsledků hello vyberte **Boomi**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.
+5. Na panelu výsledků vyberte **Boomi**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Boomi podle testovacího uživatele názvem "Britta Simon".
 
-Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v Boomi je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v Boomi musí toobe navázat.
+Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Boomi je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Boomi musí navázat.
 
-V Boomi, přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.
+V Boomi, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
 
-tooconfigure a testu Azure AD jednotné přihlašování s Boomi, potřebujete následující stavební bloky hello toocomplete:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Boomi, je třeba dokončit následující stavební bloky:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Boomi](#creating-a-boomi-test-user)**  -toohave protějšek Britta Simon v Boomi, která je propojená toohello Azure AD reprezentace uživatele.
-4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele Boomi](#creating-a-boomi-test-user)**  – Pokud chcete mít protějšek Britta Simon v Boomi propojeném s Azure AD reprezentace daného uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci Boomi.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Boomi.
 
-**tooconfigure Azure AD jednotné přihlašování s Boomi, proveďte následující kroky hello:**
+**Ke konfiguraci Azure AD jednotné přihlašování s Boomi, proveďte následující kroky:**
 
-1. V portálu Azure, na hello hello **Boomi** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na portálu Azure na **Boomi** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
+2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_samlbase.png)
 
-3. Na hello **Boomi domény a adresy URL** část, proveďte následující kroky hello:
+3. Na **Boomi domény a adresy URL** část, proveďte následující kroky:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_url.png)
 
-    a. V hello **identifikátor** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://platform.boomi.com/sso/<accountname>/saml`
+    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://platform.boomi.com/sso/<accountname>/saml`
 
-    b. V hello **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://platform.boomi.com/sso/<accountname>/saml`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://platform.boomi.com/sso/<accountname>/saml`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte pomocí hello skutečné identifikátor dotazů a odpovědí adresy URL. Obraťte se na [tým podpory Boomi](https://boomi.com/company/contact/) tooget tyto hodnoty.
+    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem a adresa URL odpovědi. Obraťte se na [tým podpory Boomi](https://boomi.com/company/contact/) k získání těchto hodnot.
 
-4. Na hello **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu hello ve vašem počítači.
+4. Na **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu v počítači.
     
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_certificate.png)
 
-4. Aplikace Boomi očekává hello SAML kontrolní výrazy ve specifickém formátu. Nakonfigurujte hello následující deklarace identity pro tuto aplikaci. Můžete spravovat hello hodnoty těchto atributů z hello "**uživatelské atributy**" části na stránce integrace aplikace. Hello následující snímek obrazovky ukazuje příklad pro tento.
+4. Aplikace Boomi očekává SAML kontrolní výrazy ve specifickém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnoty těchto atributů z "**uživatelské atributy**" části na stránce integrace aplikace. Následující snímek obrazovky ukazuje příklad pro tento.
     
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-boomi-tutorial/tutorial_attribute.png)
 
-5. V hello **uživatelské atributy** část hello **jednotného přihlašování** dialogu pro každý řádek v tabulce hello níže, proveďte hello následující kroky:
+5. V **uživatelské atributy** části na **jednotného přihlašování** dialogu pro každý řádek v tabulce níže, proveďte následující kroky:
 
     | Název atributu | Hodnota atributu |
     | -------------- | --------------- |
     | FEDERATION_ID | User.Mail |
     
-    a. Klikněte na tlačítko **přidat atribut** tooopen hello **přidat atribut** dialogové okno.
+    a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
     
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-boomi-tutorial/tutorial_attribute_04.png)
     
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-boomi-tutorial/tutorial_attribute_05.png)
     
-    b. V hello **název** textovému poli, název atributu pro typ hello zobrazený pro tento řádek.
+    b. V **název** textovému poli, zadejte název atributu, který je uvedený na příslušném řádku.
     
-    c. Z hello **hodnotu** seznamu, hodnota atributu hello typ zobrazený pro tento řádek.
+    c. Z **hodnotu** seznamu, zadejte hodnotu atributu, který je uvedený na příslušném řádku.
     
     d. Klikněte na tlačítko **OK**.
 
@@ -147,113 +147,113 @@ V této části můžete povolit Azure AD jednotné přihlašování v hello por
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-boomi-tutorial/tutorial_general_400.png)
 
-7. Na hello **Boomi konfigurace** klikněte na tlačítko **konfigurace Boomi** tooopen **konfigurovat přihlášení** okno. Kopírování hello **SAML jeden přihlašování adresa URL služby** z hello **Stručná referenční příručka části.**
+7. Na **Boomi konfigurace** klikněte na tlačítko **konfigurace Boomi** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_configure.png) 
 
 8. V okně prohlížeče jiný web Přihlaste se jako správce k serveru vaší společnosti Boomi. 
 
-9. Přejděte příliš**název společnosti** a přejděte příliš**nastavit**.
+9. Přejděte na **název společnosti** a přejděte na **nastavit**.
 
-10. Klikněte na tlačítko hello **možnosti jednotného přihlašování k** kartě a proveďte následující kroky.
+10. Klikněte **možnosti jednotného přihlašování k** kartě a proveďte následující kroky.
 
     ![Konfigurace jednotného přihlašování na straně aplikace](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_11.png)
 
     a. Zkontrolujte **povolit SAML jednotné přihlašování** zaškrtávací políčko.
 
-    b. Klikněte na tlačítko **Import** tooupload hello stáhnout certifikát z Azure AD příliš**certifikát zprostředkovatele Identity**.
+    b. Klikněte na tlačítko **Import** na kterou odešlete certifikát stažený z Azure AD **certifikát zprostředkovatele Identity**.
     
-    c. V hello **adresu URL pro přihlášení zprostředkovatele Identity** textovému poli, vložte hodnotu hello z **SAML jeden přihlašování adresa URL služby** z okna konfigurace aplikace Azure AD.
+    c. V **adresu URL pro přihlášení zprostředkovatele Identity** textovému poli, vložte hodnotu **SAML jeden přihlašování adresa URL služby** z okna konfigurace aplikace Azure AD.
 
     d. Jako **Federation Id umístění**, vyberte **federace je v elementu FEDERATION_ID atribut** přepínač. 
 
     e. Klikněte na tlačítko **Uložit** tlačítko.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
+Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
+**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
 
-1. V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
+1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-boomi-tutorial/create_aaduser_01.png) 
 
-2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-boomi-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.
+3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-boomi-tutorial/create_aaduser_03.png) 
 
-4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
+4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-boomi-tutorial/create_aaduser_04.png) 
 
-    a. V hello **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textovému poli, typ **BrittaSimon**.
 
-    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-a-boomi-test-user"></a>Vytvoření zkušebního uživatele Boomi
 
-V pořadí tooenable Azure AD Uživatelé toolog v tooBoomi musí být zřízená do Boomi. V případě hello Boomi zřizování je ruční úloha.
+Pokud chcete povolit uživatelům Azure AD přihlášení k Boomi, musí být zřízená do Boomi. V případě Boomi zřizování je ruční úloha.
 
-### <a name="tooprovision-a-user-account-perform-hello-following-steps"></a>tooprovision uživatelský účet, proveďte následující kroky hello:
+### <a name="to-provision-a-user-account-perform-the-following-steps"></a>K poskytnutí uživatelského účtu, proveďte následující kroky:
 
-1. Přihlaste se tooyour Boomi společnosti lokality jako správce.
+1. Přihlaste se k serveru vaší společnosti Boomi jako správce.
 
-2. Po přihlášení přejděte příliš**Správa uživatelů** a přejděte příliš**uživatelé**.
+2. Po přihlášení, přejděte na **Správa uživatelů** a přejděte na **uživatelé**.
 
     ![Uživatelé](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_001.png "uživatelů")
 
-3. Klikněte na tlačítko  **+**  ikonu a hello **role uživatele přidat/zachování** otevře se dialogové okno.
+3. Klikněte na tlačítko  **+**  ikonu a **role uživatele přidat/zachování** otevře se dialogové okno.
 
     ![Uživatelé](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_002.png "uživatelů")
 
     ![Uživatelé](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_003.png "uživatelů")
 
-    a. V hello **e-mailová adresa uživatele** jako typ hello e-mailu uživatele k textovému poli, BrittaSimon@contoso.com.
+    a. V **e-mailová adresa uživatele** jako typ e-mailu uživatele k textovému poli, BrittaSimon@contoso.com.
     
-    b. V hello **křestní jméno** textovému poli, typ hello křestní jméno uživatele jako Britta.
+    b. V **křestní jméno** textovému poli, název typu první uživatele jako Britta.
 
-    c. V hello **příjmení** textovému poli, typ hello příjmení uživatele jako Simon.
+    c. V **příjmení** textovému poli, zadejte příjmení uživatele jako Simon.
     
-    d. Zadejte uživatele hello **federace**. Každý uživatel musí mít ID federace, která jednoznačně identifikuje uživatele hello v rámci účtu hello.
+    d. Zadejte uživatele **federace**. Každý uživatel musí mít ID federace, která jednoznačně identifikuje uživatele v rámci účtu.
     
-    e. Přiřadit hello **standardní uživatel** toohello uživatelské role. Vzhledem k tomu, který by mu udělit normální prostředí přístup, jakož i přístup přihlašování není přiřadit role správce hello.
+    e. Přiřazení **standardní uživatel** role pro uživatele. Vzhledem k tomu, který by mu udělit normální prostředí přístup, jakož i přístup přihlašování není přiřadit role správce.
     
     f. Klikněte na **OK**.
     
     > [!NOTE]
-    > Hello uživatel neobdrží úvodní oznamovací e-mail obsahující heslo, které můžou být použité toolog v toohello AtomSphere účet, protože heslo je spravován pomocí zprostředkovatele identity hello. Může použít jakékoli jiné Boomi uživatele účtu vytvoření nástroje nebo rozhraní API poskytované Boomi tooprovision AAD uživatelské účty. 
+    > Uživatel nebude přijímat úvodní oznamovací e-mail obsahující heslo, které lze použít k přihlášení k účtu AtomSphere, protože heslo je spravován pomocí zprostředkovatele identity. Může použít jakékoli jiné Boomi uživatele účtu vytvoření nástroje nebo rozhraní API poskytované Boomi zřídit AAD uživatelské účty. 
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
+### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte tak, že udělíte přístup tooBoomi toouse Britta Simon Azure jednotné přihlašování.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Boomi.
 
 ![Přiřadit uživatele][200] 
 
-**tooassign Britta Simon tooBoomi, proveďte následující kroky hello:**
+**Pokud chcete přiřadit Britta Simon Boomi, proveďte následující kroky:**
 
-1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikace hello vyberte **Boomi**.
+2. V seznamu aplikací vyberte **Boomi**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_app.png) 
 
-3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
+3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
@@ -261,7 +261,7 @@ V této části povolíte tak, že udělíte přístup tooBoomi toouse Britta Si
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -269,13 +269,13 @@ V této části povolíte tak, že udělíte přístup tooBoomi toouse Britta Si
     
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.
+V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
-Když kliknete na dlaždici Boomi hello v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour Boomi aplikace.
+Když kliknete na dlaždici Boomi na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Boomi.
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

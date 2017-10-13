@@ -1,6 +1,6 @@
 ---
-title: "aaaManage zásady zálohování pro vaše zařízení StorSimple | Microsoft Docs"
-description: "Vysvětluje, jak můžete použít toocreate služby StorSimple Manager hello a spravovat ručního zálohování, plánů zálohování a uchovávání záloh."
+title: "Spravovat zásady zálohování pro vaše zařízení StorSimple | Microsoft Docs"
+description: "Vysvětluje, jak je možné použít službu StorSimple Manager k vytváření a správě ručního zálohování, plánů zálohování a uchovávání záloh."
 services: storsimple
 documentationcenter: NA
 author: SharS
@@ -14,33 +14,33 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/10/2016
 ms.author: v-sharos
-ms.openlocfilehash: 710cbe54d14031b4de43e9da292ed169085d5af9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c1e9d5d0450bab5d371aafb40fd7c5920d39dfdb
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="use-hello-storsimple-manager-service-toomanage-backup-policies"></a>Použijte zásady zálohování služby toomanage StorSimple Manager pro hello
+# <a name="use-the-storsimple-manager-service-to-manage-backup-policies"></a>Použít službu StorSimple Manager ke správě zásady zálohování
 [!INCLUDE [storsimple-version-selector-manage-backup-policies](../../includes/storsimple-version-selector-manage-backup-policies.md)]
 
 ## <a name="overview"></a>Přehled
-Tento kurz popisuje, jak toouse hello služby StorSimple Manager **zásady zálohování** stránka toocontrol procesy zálohování a uchovávání záloh pro formátujte svazky zařízení StorSimple. Také popisuje, jak toocomplete ručního zálohování.
+Tento kurz vysvětluje, jak používat službu StorSimple Manager **zásady zálohování** stránky k řízení procesů zálohování a uchovávání záloh pro formátujte svazky zařízení StorSimple. Také popisuje, jak provést ruční zálohy.
 
-Hello **zásady zálohování** stránka vám umožní zásady zálohování toomanage a plán místních a cloudových snímků. (Zásady zálohování jsou použité tooconfigure plánů zálohování a uchovávání záloh pro kolekci svazků). Zásady zálohování umožňují tootake snímek více svazků najednou. To znamená, že hello zálohy vytvořené zásady zálohování bude kopie konzistentní při selhání. Tato stránka zobrazuje hello zásady zálohování, jejich typy, hello přidružené svazky, hello počet záloh uchována a hello možnost tooenable tyto zásady.
+**Zásady zálohování** stránka umožňuje spravovat zásady zálohování a plánování místních a cloudových snímků. (Zásady zálohování se používají ke konfiguraci plánů zálohování a uchovávání záloh pro kolekci svazků). Zásady zálohování umožňují pořízení snímku více svazků najednou. To znamená, že zálohy vytvořené zásady zálohování bude kopie konzistentní při selhání. Tato stránka obsahuje seznam zásady zálohování, jejich typy, přidružené svazky, počet záloh uchována a možnost povolit tyto zásady.
 
-Hello **zásady zálohování** stránka vám také umožní toofilter hello existující zásady zálohování pro jednu nebo více hello následující pole:
+**Zásady zálohování** stránce můžete také filtrovat existující zásady zálohování jednu nebo více z následujících polí:
 
-* **Název zásady** – hello název spojený s hello zásad. Zahrnout Hello různé typy zásad:
+* **Název zásady** – název přidružených k zásadě. Různé typy zásady patří:
   
-  * Naplánované zásady, které jsou explicitně vytvořené uživatelem hello.
-  * Automatické zásady, které vytvářejí, když hello výchozí zálohování pro tuto možnost svazek byl povolen v době hello vytváření svazků. Tyto zásady jsou pojmenované jako VolumeName_Default, kde název svazku odkazuje toohello název hello svazek StorSimple nakonfiguroval hello uživatel v hello portál Azure classic. Zásady automatické Hello za následek denní cloudových snímků od okamžiku zařízení 22:30.
-  * Importovat zásady, které byly původně vytvořil v hello StorSimple Snapshot Manager. Tyto mají značku, která popisuje hello StorSimple Snapshot Manager hostitele, který hello zásady, které byly naimportovány z.
-* **Svazky** – hello svazky, které jsou spojené s hello zásadami. Všechny svazky hello přidružené k zásadě zálohování jsou seskupeny dohromady při vytvoření zálohy.
-* **Poslední úspěšná zálohy** – hello datum a čas hello poslední úspěšné zálohy pořízené touto zásadou.
-* **Další zálohování** – hello datum a čas hello další naplánované zálohování, bude inicializován pomocí těchto zásad.
-* **Plány** – hello počet plány přidružené zásady zálohování hello.
+  * Naplánované zásady, které jsou explicitně vytvořený uživatelem.
+  * Automatické zásady, které vytvářejí, když výchozí zálohování pro tuto možnost svazek byl povolen v době vytváření svazků. Tyto zásady jsou pojmenované jako VolumeName_Default, kde název svazku odkazuje na název svazku zařízení StorSimple nakonfigurovaná uživatelem na portálu Azure classic. Výsledkem automatické zásad denní cloudových snímků od okamžiku zařízení 22:30.
+  * Importované zásady, které byly původně vytvořil v Snapshot Manager zařízení StorSimple. Tyto mají značku, která popisuje StorSimple Snapshot Manager hostitele, který zásady, které byly naimportovány z.
+* **Svazky** – svazky přidružených k zásadě. Všechny svazky, které jsou přidružené k zásadě zálohování jsou seskupeny dohromady při vytvoření zálohy.
+* **Poslední úspěšná zálohy** – datum a čas poslední úspěšné zálohy pořízené touto zásadou.
+* **Další zálohování** – datum a čas další naplánované zálohování, které bude inicializován pomocí těchto zásad.
+* **Plány** – počet plány přidružené zásady zálohování.
 
-jsou často používané Hello operace, které můžete provádět z této stránky:
+Jsou často používaných operace, které můžete provádět z této stránky:
 
 * Přidání zásady zálohování 
 * Přidat nebo změnit plán 
@@ -49,34 +49,34 @@ jsou často používané Hello operace, které můžete provádět z této strá
 * Vytvořit vlastní zásady zálohování s více svazků a plány 
 
 ## <a name="add-a-backup-policy"></a>Přidání zásady zálohování
-Přidáte zásady zálohování tooautomatically plán zálohování. Proveďte následující kroky v hello Azure classic portálu tooadd zásady zálohování pro zařízení StorSimple hello. Po přidání hello zásady můžete definovat plán (viz [přidat nebo změnit plán](#add-or-modify-a-schedule)).
+Přidáte zásadu zálohování automaticky naplánovat zálohování. Proveďte následující kroky na portálu Azure classic přidat zásady zálohování pro zařízení StorSimple. Po přidání zásady můžete definovat plán (viz [přidat nebo změnit plán](#add-or-modify-a-schedule)).
 
 [!INCLUDE [storsimple-add-backup-policy](../../includes/storsimple-add-backup-policy.md)]
 
-![Dostupné video](./media/storsimple-manage-backup-policies/Video_icon.png)**Dostupné video**
+![Dostupné video](./media/storsimple-manage-backup-policies/Video_icon.png) **Dostupné video**
 
-Klikněte na tlačítko toowatch video, které ukazuje, jak toocreate místní nebo cloudové zálohování zásad, [zde](https://azure.microsoft.com/documentation/videos/create-storsimple-backup-policies/).
+Pokud chcete přehrát video, které ukazuje, jak vytvořit místní nebo cloudové zásady zálohování, klikněte na tlačítko [zde](https://azure.microsoft.com/documentation/videos/create-storsimple-backup-policies/).
 
 ## <a name="add-or-modify-a-schedule"></a>Přidat nebo změnit plán
-Můžete přidat nebo změnit plán, který je připojený tooan existující zásady zálohování v zařízení StorSimple. Proveďte následující kroky v hello Azure classic portálu tooadd hello nebo změna plánu.
+Můžete přidat nebo změnit plán, který je připojen k existující zásady zálohování v zařízení StorSimple. Proveďte následující kroky na portálu Azure classic k přidání nebo úpravě plánu.
 
 [!INCLUDE [storsimple-add-modify-backup-schedule](../../includes/storsimple-add-modify-backup-schedule.md)]
 
 ## <a name="delete-a-backup-policy"></a>Odstranit zásady zálohování
-Proveďte následující kroky v hello Azure classic portálu toodelete zásady zálohování v zařízení StorSimple hello.
+Proveďte následující kroky na portálu Azure classic odstranit zásady zálohování v zařízení StorSimple.
 
 [!INCLUDE [storsimple-delete-backup-policy](../../includes/storsimple-delete-backup-policy.md)]
 
 ## <a name="take-a-manual-backup"></a>Proveďte ruční zálohy
-Proveďte následující kroky hello Azure classic portálu toocreate na vyžádání (ručně) zálohování pro samostatný svazek hello.
+Proveďte následující kroky na portálu Azure classic vytvořit zálohu na vyžádání (ručně) pro jeden svazek.
 
 [!INCLUDE [storsimple-create-manual-backup](../../includes/storsimple-create-manual-backup.md)]
 
 ## <a name="create-a-custom-backup-policy-with-multiple-volumes-and-schedules"></a>Vytvořit vlastní zásady zálohování s více svazků a plány
-Proveďte následující kroky v hello Azure classic portálu toocreate vlastní zásady zálohování, který má více svazků a plány hello.
+Proveďte následující kroky na portálu Azure classic k vytvoření vlastní zásady zálohování, který má více svazků a plány.
 
 [!INCLUDE [storsimple-create-custom-backup-policy](../../includes/storsimple-create-custom-backup-policy.md)]
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o [pomocí hello tooadminister služby StorSimple Manager zařízení StorSimple](storsimple-manager-service-administration.md).
+Další informace o [pomocí služby StorSimple Manager ke správě zařízení StorSimple](storsimple-manager-service-administration.md).
 

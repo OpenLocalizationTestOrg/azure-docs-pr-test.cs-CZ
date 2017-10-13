@@ -1,5 +1,5 @@
 ---
-title: "aaaDeploy SAP SP3 EHP7 integrovaného vývojového prostředí pro SAP ERP 6.0 v Azure | Microsoft Docs"
+title: "Nasazení SAP integrovaného vývojového prostředí EHP7 SP3 pro SAP ERP 6.0 v Azure | Microsoft Docs"
 description: "Nasazení SAP integrovaného vývojového prostředí EHP7 SP3 pro SAP ERP 6.0 na Azure"
 services: virtual-machines-windows
 documentationcenter: 
@@ -16,112 +16,112 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: 26d88c7b48a91d35602464c4f89ca7a30502c4b2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 91eed294077ff72d0760018b10c98f32db88f3be
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Nasazení SAP integrovaného vývojového prostředí EHP7 SP3 pro SAP ERP 6.0 na Azure
-Tento článek popisuje, jak toodeploy SAP integrovaného vývojového prostředí systému SQL Server a operační systém Windows hello na Azure prostřednictvím hello SAP cloudu zařízení knihoven (SAP CAL) 3.0. snímky obrazovky Hello zobrazit podrobný postup hello. toodeploy jiné řešení, postupujte podle stejných kroků hello.
+Tento článek popisuje postup nasazení SAP integrovaného vývojového prostředí systému spuštěné s SQL serverem a operačním systému Windows v Azure prostřednictvím SAP cloudu zařízení knihoven (SAP CAL) 3.0. Na snímcích obrazovky zobrazit podrobný postup. Pokud chcete nasadit jiné řešení, použijte stejný postup.
 
-toostart s hello CAL SAP, přejděte toohello [knihovny zařízení cloudu SAP](https://cal.sap.com/) webu. SAP má také blog o hello nové [SAP cloudu zařízení knihovna 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience). 
+Chcete-li začít s SAP CAL, přejděte na [SAP cloudu zařízení knihovny](https://cal.sap.com/) webu. SAP má také blog o nové [SAP cloudu zařízení knihovna 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience). 
 
 > [!NOTE]
-Jako 29. květen 2017, můžete pomocí modelu nasazení Azure Resource Manager hello kromě model nasazení classic méně než upřednostňovaný toohello toodeploy hello SAP CAL. Doporučujeme použít hello nového modelu nasazení Resource Manager a modelu nasazení classic hello ignorovat.
+Od 29. květen 2017 můžete v modelu nasazení Azure Resource Manager kromě modelu nasazení classic méně než upřednostňovaný nasazení SAP CAL. Doporučujeme použít nový model nasazení Resource Manager a modelu nasazení classic ignorovat.
 
-Pokud jste již vytvořili SAP CAL účet, který používá hello klasického modelu, *potřebujete toocreate jiný účet SAP CAL*. Tento účet musí tooexclusively nasadit do Azure pomocí modelu Resource Manager hello.
+Pokud jste již vytvořili SAP CAL účet, který používá v případě klasického modelu *musíte vytvořit jiný účet SAP CAL*. Tento účet musí výhradně nasadit do Azure pomocí modelu Resource Manager.
 
-Po přihlášení toohello SAP CAL první stránku hello obvykle vás toohello **řešení** stránky. řešení Hello nabízené na hello SAP CAL jsou vytrvale zvýšení, tak může být nutné tooscroll odlišují hello řešení toofind, které chcete. Hello zvýrazněná integrovaného vývojového prostředí systému Windows SAP řešení, které je k dispozici výhradně na Azure ukazuje procesu nasazení hello:
+Po přihlášení k prostředí SAP CAL na první stránku obvykle vede k **řešení** stránky. Řešení nabízí na SAP CAL jsou vytrvale zvýšení, takže možná budete muset posunout odlišují najít řešení, které chcete. Zvýrazněných integrovaného vývojového prostředí systému Windows SAP řešení, které je k dispozici výhradně na Azure znázorňuje proces nasazení:
 
 ![Řešení CAL SAP](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic1.jpg)
 
-### <a name="create-an-account-in-hello-sap-cal"></a>Vytvoření účtu na hello SAP CAL
-1. toosign v toohello SAP CAL pro hello poprvé, použijte S SAP-uživatele nebo jiný uživatel zaregistrována SAP. Poté definujte SAP CAL účtu, který je používán hello SAP CAL toodeploy zařízení v Azure. V definici hello účet budete muset:
+### <a name="create-an-account-in-the-sap-cal"></a>Vytvoření účtu na SAP CAL
+1. Přihlaste se k SAP CAL poprvé, použijte S SAP-uživatele nebo jiný uživatel zaregistrován u služby SAP. Poté definujte SAP CAL účtu, který je používán SAP CAL nasazení zařízení v Azure. V definici účtu budete muset:
 
-    a. Vyberte model nasazení hello v Azure (Resource Manager nebo classic).
+    a. Vyberte model nasazení v Azure (Resource Manager nebo classic).
 
-    b. Zadejte předplatné Azure. Účet SAP CAL lze přiřadit pouze tooone předplatné. Pokud potřebujete více než jedno předplatné, je třeba toocreate jiný účet SAP CAL.
+    b. Zadejte předplatné Azure. Účet SAP CAL lze přiřadit pouze jedno předplatné. Pokud potřebujete více než jedno předplatné, musíte vytvořit jiný účet SAP CAL.
     
-    c. Dejte hello SAP CAL oprávnění toodeploy do vašeho předplatného Azure.
+    c. Udělte oprávnění SAP CAL k nasazení do vašeho předplatného Azure.
 
     > [!NOTE]
-    Hello následující kroky ukazují, jak toocreate je SAP CAL účet pro nasazení Resource Manager. Pokud již máte účet SAP CAL, který je propojené toohello modelu nasazení classic, můžete *potřebovat* toofollow tyto kroky toocreate nový účet SAP CAL. nový účet SAP CAL Hello musí toodeploy v modelu Resource Manager hello.
+    Další kroky ukazují, jak vytvořit účet SAP CAL pro nasazení Resource Manager. Pokud již máte účet SAP CAL, který je propojený s modelem nasazení classic budete *potřebovat* postupovat podle těchto kroků můžete vytvořit nový účet SAP CAL. Nový účet SAP CAL je potřeba nasadit v modelu Resource Manager.
 
-2. toocreate nové CAL SAP účet, hello **účty** stránky zobrazí dvě možnosti pro Azure: 
+2. Chcete-li vytvořit nový účet SAP CAL, **účty** stránky zobrazí dvě možnosti pro Azure: 
 
-    a. **Microsoft Azure (klasický)** je hello modelu nasazení classic a již není upřednostňovaný.
+    a. **Microsoft Azure (klasický)** je modelu nasazení classic a již není upřednostňovaný.
 
-    b. **Microsoft Azure** je hello nového modelu nasazení Resource Manager.
+    b. **Microsoft Azure** je nový model nasazení Resource Manager.
 
     ![Účty CAL SAP](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic-2a.PNG)
 
-    Vyberte toodeploy v modelu Resource Manager hello **Microsoft Azure**.
+    Chcete-li nasadit v modelu Resource Manager, vyberte **Microsoft Azure**.
 
     ![Účty CAL SAP](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic3c.PNG)
 
-3. Zadejte hello Azure **ID předplatného** , naleznete na portálu Azure hello. 
+3. Zadejte Azure **ID předplatného** , naleznete na portálu Azure. 
 
     ![ID předplatného CAL SAP](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic3c.PNG)
 
-4. definované tooauthorize hello SAP CAL toodeploy do hello předplatné Azure, klikněte na tlačítko **Authorize**. hello záložce prohlížeče se zobrazí následující stránka Hello:
+4. K autorizaci CAL SAP k nasazení do předplatné Azure, které jste definovali, klikněte na tlačítko **Authorize**. Na následující stránce se zobrazí na záložce prohlížeče:
 
     ![Internet Explorer cloudových služeb přihlášení](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic4c.PNG)
 
-5. Pokud je uveden více než jeden uživatel, zvolte účet Microsoft hello, který je propojený toobe hello spolusprávce hello předplatné Azure, které jste vybrali. hello záložce prohlížeče se zobrazí následující stránka Hello:
+5. Pokud je uveden více než jeden uživatel, zvolte účet Microsoft, který je propojený jako spolusprávce předplatného Azure, které jste vybrali. Na následující stránce se zobrazí na záložce prohlížeče:
 
     ![Internet Explorer cloudové služby potvrzení](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic5a.PNG)
 
-6. Klikněte na tlačítko **přijmout**. Pokud autorizace hello je úspěšné, hello Definice SAP CAL účtu se zobrazí znovu. Po krátkou dobu zprávu potvrdí, že proces autorizace hello bylo úspěšné.
+6. Klikněte na tlačítko **přijmout**. Pokud ověřování úspěšné, zobrazí definici účtu SAP CAL znovu. Po krátkou dobu zprávu potvrdí, že proces autorizace bylo úspěšné.
 
-7. tooassign hello nově vytvořený uživatel tooyour účet SAP CAL, zadejte vaše **ID uživatele** v hello textového pole na hello správné a klikněte na tlačítko **přidat**. 
+7. Chcete-li přiřadit nově vytvořený účet SAP CAL pro vaše uživatele, zadejte vaše **ID uživatele** do textového pole na doprava a klikněte na **přidat**. 
 
-    ![Přidružení toouser účtu](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic8a.PNG)
+    ![Účet k přidružení uživatele](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic8a.PNG)
 
-8. Klikněte na tlačítko tooassociate vašeho účtu pomocí hello uživatele, že používáte toosign toohello SAP CAL, **zkontrolujte**. 
+8. Chcete-li přidružit uživatele, který používáte pro přihlášení k prostředí SAP CAL váš účet, klikněte na tlačítko **zkontrolujte**. 
 
-9. Klikněte na tlačítko toocreate hello přidružení mezi uživateli a hello nově vytvořený účet SAP CAL, **vytvořit**.
+9. Chcete-li vytvořit přidružení mezi uživateli a nově vytvořený účet SAP CAL, klikněte na tlačítko **vytvořit**.
 
-    ![Tooaccount přidružení uživatele](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic9b.PNG)
+    ![Uživatele k přidružení účtu](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic9b.PNG)
 
 Úspěšně jste vytvořili účet SAP CAL, aby bylo možné:
 
-- Pomocí modelu nasazení Resource Manager hello.
+- Pomocí modelu nasazení Resource Manager.
 - Nasazení systémů SAP do vašeho předplatného Azure.
 
 > [!NOTE]
-Před nasazením řešení integrovaného vývojového prostředí SAP hello založené na systému Windows a SQL Server, bude pravděpodobně nutné toosign pro předplatné SAP CAL. Jinak se může hello řešení nezobrazí jako **uzamčen** na stránce Přehled hello.
+Před nasazením řešení SAP integrovaného vývojového prostředí na základě systému Windows a SQL Server, možná budete muset zaregistrujte si předplatné SAP CAL. Jinak se možná řešení nezobrazí jako **uzamčen** na stránce Přehled.
 
 ### <a name="deploy-a-solution"></a>Nasazení řešení
-1. Když nastavíte účet SAP CAL, vyberte **hello řešení SAP integrovaného vývojového prostředí v systémech Windows a SQL Server** řešení. Klikněte na tlačítko **vytvořit instanci**a potvrďte podmínky použití a podmínky hello. 
+1. Když nastavíte účet SAP CAL, vyberte **řešení SAP integrovaného vývojového prostředí v systémech Windows a SQL Server** řešení. Klikněte na tlačítko **vytvořit instanci**a potvrďte podmínky použití a podmínky. 
 
-2. Na hello **základní režim: Vytvořte instanci** stránky, potřebujete:
+2. Na **základní režim: vytvoření Instance** stránky, potřebujete:
 
     a. Zadejte instance **název**.
 
-    b. Vyberte Azure **oblast**. Můžete potřebovat SAP CAL tooget předplatného nabízí několika oblastmi Azure.
+    b. Vyberte Azure **oblast**. Může být nutné předplatné SAP CAL získat několika oblastmi Azure nabízí.
 
-    c.  Zadejte hlavní hello **heslo** hello řešení, jak je znázorněno:
+    c.  Zadejte hlavní **heslo** pro řešení, jak je znázorněno:
 
     ![SAP CAL Basic režim: Vytvoření Instance](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
-3. Klikněte na možnost **Vytvořit**. Po určité době, v závislosti na složitosti hello řešení (hello, SAP CAL poskytuje odhad) a velikost hello hello stav se zobrazuje jako aktivní a připravena k použití: 
+3. Klikněte na možnost **Vytvořit**. Po určité době, v závislosti na velikost a složitost řešení (SAP CAL poskytuje odhad), je stav zobrazen jako aktivní a připravena k použití: 
 
     ![Instance SAP Kalendáře](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic12a.png)
 
-4. Skupina prostředků hello toofind a všechny její objekty, které byly vytvořeny hello SAP CAL, přejděte toohello portálu Azure. virtuální počítač Hello naleznete počínaje hello stejný název, který byl zadán v hello SAP CAL instance.
+4. Chcete-li najít skupinu prostředků a všechny její objekty, které byly vytvořeny SAP CAL, přejděte na portálu Azure. Virtuální počítač můžete najít spuštěním se stejným názvem instance, který byl zadán v SAP CAL.
 
     ![Objekty skupiny prostředků](./media/cal-ides-erp6-ehp7-sp3-sql/ides_resource_group.PNG)
 
-5. Na portálu SAP CAL hello, přejděte instancí toohello nasazení a klikněte na tlačítko **Connect**. Hello následující automaticky otevírané okno se zobrazí: 
+5. Na portálu SAP CAL, přejděte do nasazené instancí a klikněte na tlačítko **Connect**. Zobrazí se následující automaticky otevírané okno okno: 
 
-    ![Připojit toohello Instance](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic14a.PNG)
+    ![Připojte se k instanci](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic14a.PNG)
 
-6. Než budete moct použít jeden z hello možnosti tooconnect toohello nasazené systémy, klikněte na tlačítko **– Příručka Začínáme**. Hello dokumentace názvy hello uživatelů pro každou z metod hello připojení. Hello hesla pro uživatele, se nastavují toohello hlavní heslo, které jste definovali od začátku hello hello procesu nasazení. Hello dokumentace, jsou uvedena jiných více funkční uživatelů s jejich hesla, které můžete použít toosign v toohello nasazené systému.
+6. Než použijete jednu z možností pro připojení k nasazené systémy, klikněte na tlačítko **– Příručka Začínáme**. V dokumentaci názvy uživatelů pro každou metodu připojení. Hesla pro tyto uživatele jsou nastaveny na hlavní heslo, které jste definovali na začátku procesu nasazení. V dokumentaci jsou uvedeny další více funkční uživatelé s svá hesla, které můžete použít k přihlášení k systému nasazené.
 
     ![Vítejte v dokumentaci k SAP](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic15.jpg)
 
 V rámci několik hodin je v pořádku systému integrovaného vývojového prostředí SAP nasazené v Azure.
 
-Pokud jste si zakoupili předplatné SAP CAL, SAP plně podporuje nasazení prostřednictvím hello SAP CAL na platformě Azure. fronta podporu Hello je BC. VCM CAL.
+Pokud jste si zakoupili předplatné SAP CAL, SAP plně podporuje nasazení SAP CAL na Azure. Podpora fronta je BC. VCM CAL.
 

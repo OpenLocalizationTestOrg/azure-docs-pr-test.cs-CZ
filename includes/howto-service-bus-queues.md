@@ -1,5 +1,5 @@
 ## <a name="what-are-service-bus-queues"></a>Co jsou fronty služby Service Bus?
-Fronty služby Service Bus podporují komunikační model **zprostředkovaného zasílání zpráv**. Součásti distribuované aplikace při používání front nekomunikují navzájem přímo. Místo toho si zprávy vyměňují prostřednictvím fronty, která slouží jako zprostředkovatel. Autor zprávy (odesílatel) předá zprávu fronty toohello a poté pokračuje v jejím zpracování. Spotřebitel zprávy (příjemce) asynchronně, vrátí uvítací zprávu z fronty hello a zpracovává je. Hello producent neobsahovala toowait na odpověď od příjemce hello v pořadí toocontinue tooprocess a odesláním dalších zpráv. Fronty nabízejí **First In, první Out (FIFO)** zprávy tooone doručení nebo další konkurenčních spotřebitelů. To znamená jsou zprávy obvykle přijme a zpracuje hello příjemci v hello pořadí, ve kterém byly přidány toohello fronty, a každou zprávu přijme a zpracuje jenom jeden příjemce zprávy.
+Fronty služby Service Bus podporují komunikační model **zprostředkovaného zasílání zpráv**. Součásti distribuované aplikace při používání front nekomunikují navzájem přímo. Místo toho si zprávy vyměňují prostřednictvím fronty, která slouží jako zprostředkovatel. Autor zprávy (odesílatel) předá zprávu do fronty a potom pokračuje v jejím zpracování. Spotřebitel zprávy (příjemce) asynchronně přebírá zprávu z fronty a zpracovává ji. Autor nemusí čekat na odpověď od příjemce, aby mohl pokračovat se zpracováním a odesláním dalších zpráv. Fronty nabízejí doručování zpráv metodou **FIFO (First In First Out)** pro jednoho nebo několik konkurenčních spotřebitelů. To znamená, že příjemci zprávy obvykle přijímají a zpracovávají v pořadí, ve kterém byly přidány do fronty, a každou zprávu přijme a zpracuje jenom jeden příjemce zprávy.
 
 ![QueueConcepts](./media/howto-service-bus-queues/sb-queues-08.png)
 
@@ -9,6 +9,6 @@ Fronty služby Service Bus představují univerzální technologii, kterou můž
 * Komunikace mezi místními aplikacemi a aplikacemi hostovanými v Azure v případě hybridního řešení.
 * Komunikace mezi součástmi distribuované aplikace spuštěné místně v různých organizacích nebo odděleních organizace.
 
-Pomocí front umožňuje vám tooscale aplikace snadněji a povolit další architektura tooyour odolnost proti chybám.
+Použití fronty vám umožňuje snazší škálování aplikací a zvyšuje odolnost vaší architektury proti chybám.
 
 

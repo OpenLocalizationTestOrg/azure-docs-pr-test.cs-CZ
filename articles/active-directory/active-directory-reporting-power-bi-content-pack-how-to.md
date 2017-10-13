@@ -1,6 +1,6 @@
 ---
-title: "aaaHow toouse hello Azure Active Directory Power BI balíček obsahu | Microsoft Docs"
-description: "Zjistěte, jak toouse hello Azure Active Directory Power BI balíček obsahu"
+title: "Jak používat balíček obsahu Azure Active Directory Power BI Content Pack | Dokumentace Microsoftu"
+description: "Naučte se používat balíček obsahu Azure Active Directory Power BI Content Pack."
 services: active-directory
 author: MarkusVi
 manager: femila
@@ -13,29 +13,29 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d07d678aedbe3089c4ea5f981f72311bdb389a17
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 5c642bb814a279756e8391f12fdc86b6ec0b4a8f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-toouse-hello-azure-active-directory-power-bi-content-pack"></a>Jak toouse hello Azure Active Directory Power BI balíček obsahu
+# <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Jak používat balíček obsahu Azure Active Directory Power BI Content Pack
 
-Pro vás jako správce IT je naprosto nezbytné pochopit, jakým způsobem uživatelé přijímají a používají funkce služby Azure Active Directory. Umožňuje vám tooplan vaší IT infrastruktury a komunikace tooincrease využití a tooget hello nejvíce mimo funkce AAD. Pack obsah Power BI pro Azure Active Directory poskytuje hello toofurther možnost analyzovat vaše data toounderstand použití tato data toogather bohatší přehledy co se děje s Azure Active Directory pro hello různé možnosti můžete výraznou spoléhají na.  S hello integrace Azure Active Directory, rozhraní API do Power BI můžete snadno stáhnout hello balíčky předem připraveného obsahu a získáte přehled o tooall hello aktivity v rámci služby Azure Active Directory pomocí Power BI nabízí bohaté vizualizace prostředí. Můžete si vytvořit vlastní řídicí panel a snadno ho sdílet se všemi uživateli ve vaší organizaci. 
+Pro vás jako správce IT je naprosto nezbytné pochopit, jakým způsobem uživatelé přijímají a používají funkce služby Azure Active Directory. Umožní vám to plánovat infrastrukturu IT a komunikaci za účelem zvýšení míry využití a získání maxima z funkcí AAD. Balíček obsahu Power BI pro Azure Active Directory vám umožňuje podrobněji analyzovat data, abyste pochopili, jakým způsobem je můžete používat k získání lepšího přehledu o tom, jak služba Azure Active Directory funguje s různými možnostmi, na které spoléháte.  Integrace rozhraní Azure Active Directory API do Power BI umožňuje snadné stažení předem vytvořených balíčků obsahu a získání přehledu o veškerých aktivitách v rámci služby Azure Active Directory pomocí bohatých funkcí vizualizace, které Power BI nabízí. Můžete si vytvořit vlastní řídicí panel a snadno ho sdílet se všemi uživateli ve vaší organizaci. 
 
-Toto téma poskytuje vám podrobný návod, jak tooinstall a používání hello obsah pack ve vašem prostředí.
+Toto téma obsahuje podrobné pokyny pro instalaci a použití balíčku obsahu ve vašem prostředí.
 
 ## <a name="installation"></a>Instalace  
 
-**tooinstall hello balíček obsahu Power BI:**
+**Instalace balíčku obsahu Power BI:**
 
-1. Přihlaste se k [Power BI](https://app.powerbi.com/groups/me/getdata/services) pomocí účtu Power BI (Toto je hello stejný účet jako O365 nebo účtu služby Azure AD).
+1. Přihlaste se k [Power BI](https://app.powerbi.com/groups/me/getdata/services) pomocí svého účtu Power BI (jedná se o stejný účet jako pro O365 nebo Azure AD).
 
-2. V dolní části hello hello levém navigačním podokně, vyberte **načíst Data**.
+2. V dolní části levého navigačního podokna vyberte **Získat data**.
 
     ![Balíček obsahu Azure Active Directory Power BI Content Pack](./media/active-directory-reporting-power-bi-content-pack-how-to/01.png)
  
-3. V hello **služby** pole, klikněte na tlačítko **získat**.
+3. V okně **Služby** klikněte na **Získat**.
    
     ![Balíček obsahu Azure Active Directory Power BI Content Pack](./media/active-directory-reporting-power-bi-content-pack-how-to/02.png)
 
@@ -46,7 +46,7 @@ Toto téma poskytuje vám podrobný návod, jak tooinstall a používání hello
 5.  Po zobrazení výzvy zadejte ID klienta služby Azure AD a pak klikněte na **Další**.
 
     > [!TIP] 
-    > Hello tooget rychlý způsob Id klienta pro vašeho tenanta Office 365 / Azure AD je toologin toohello portálu Azure AD, Procházet adresář toohello a zkopírujte hello ID z hello následující adresu URL: https://manage.windowsazure.com/woodgroveonline.com#Workspaces/ ActiveDirectoryExtension/Directory/<tenantid>/directoryQuickStart
+    > Rychlý způsob, jak získat ID klienta vašeho klienta Office 365 / Azure AD, je přihlásit se k portálu Azure AD, přejít k adresáři a zkopírovat ID z následující adresy URL: https://manage.windowsazure.com/woodgroveonline.com#Workspaces/ActiveDirectoryExtension/Directory/<tenantid>/directoryQuickStart
 
     ![Balíček obsahu Azure Active Directory Power BI Content Pack](./media/active-directory-reporting-power-bi-content-pack-how-to/04.png) 
 
@@ -60,7 +60,7 @@ Toto téma poskytuje vám podrobný návod, jak tooinstall a používání hello
  
     ![Balíček obsahu Azure Active Directory Power BI Content Pack](./media/active-directory-reporting-power-bi-content-pack-how-to/06.png) 
 
-8.  V dialogovém okně souhlasu hello aplikace, klikněte na tlačítko **přijmout**.
+8.  V dialogovém okně souhlasu aplikace klikněte na **Přijmout**.
  
 9.  Jakmile řídicí panel protokolů aktivity služby Azure Active Directory vytvoříte, klikněte na něj.
  
@@ -68,46 +68,46 @@ Toto téma poskytuje vám podrobný návod, jak tooinstall a používání hello
 
 ## <a name="what-can-i-do-with-this-content-pack"></a>Co můžu s tímto balíčkem obsahu dělat?
 
-Před jsme přejít do co můžete dělat s Tento balíček obsahu, zde uvádíme rychlý náhled hello různé sestavy v obsahu hello aktualizací Service pack. Sestava dat přejde zpět toohello **posledních 30 dní**.
+Než se začneme zabývat tím, co s tímto balíčkem obsahu můžete dělat, podívejme se na rychlý přehled různých sestav, které balíček obsahu obsahuje. Data sestavy se týkají **posledních 30 dní**.
 
 ### <a name="reports-included-in-this-version-of-azure-active-directory-logs-content-pack"></a>Sestavy zahrnuté v této verzi balíčku obsahu protokolů služby Azure Active Directory
 
-**Sestavy využití aplikací a Trend**: získat přehled o hello aplikace použitý v organizaci a ty, které jsou používány hello nejvíce a kdy. Můžete použít tuto sestavu toogather přehledy využití aplikace, které se nedávno nasazen ve vaší organizaci nebo zjistit, které aplikace jsou oblíbených. Díky tomu může zvýšit využití, pokud se zobrazí, pokud aplikace hello nepoužívá.
+**Sestava využití aplikací a trendů**: Získejte přehled o aplikacích používaných ve vaší organizaci a o tom, které se používají nejvíce a kdy. Tato sestava slouží k získání přehledu o tom, jak se aplikace, kterou jste ve vaší organizaci nedávno zavedli, používá, nebo ke zjištění oblíbených aplikací. Umožní vám vylepšit využití v případě, že vidíte, že se aplikace nepoužívá.
 
-**Přihlášení podle umístění a uživatelé**: získat přehled o všech přihlášení hello provádí pomocí Azure Identity a poskytuje přehled o hello identity uživatelů hello. Můžete podrobněji analyzovat individuální přihlášení a odpovědět si na otázky jako:
+**Přihlášení podle umístění a uživatelů**: Získejte přehled o veškerých přihlášeních provedených pomocí Azure Identity a přehled o identitách uživatelů. Můžete podrobněji analyzovat individuální přihlášení a odpovědět si na otázky jako:
 
 - Odkud se tento uživatel přihlásil?
-- Které má uživatel hello většina přihlášení a kde budou přihlášení z? 
-- Úspěšné přihlášení hello?  
+- Který uživatel má nejvíce přihlášení a odkud se přihlašuje? 
+- Bylo přihlášení úspěšné?  
  
 Podrobnosti můžete rozbalit kliknutím na konkrétní datum nebo umístění.
 
 **Jedineční uživatelé na aplikaci**: Získejte přehled všech jedinečných uživatelů, kteří danou aplikaci využívají. Patří sem pouze uživatelé, kteří se k aplikaci *úspěšně* přihlásili.
 
-**Přihlášení zařízení**: získat zobrazení hello typ operačního systému a prohlížeče jsou používány uživatelé ve vaší organizaci s podrobné informace o hello uživatelů, včetně:
+**Přihlášení pomocí zařízení**: Získejte přehled o typu operačního systému a prohlížečích používaných uživateli ve vaší organizaci s podrobnými informacemi o uživatelích, včetně:
 
 - Uživatelské jméno
 - IP adresa
 - Umístění 
 - Stav přihlášení 
 
-U této sestavy můžete porozumět hello různé profily zařízení používá v rámci vaší organizace a určete, podle toho, co je použije zásady zařízení
+Tato sestava vám pomůže pochopit různé profily zařízení používané ve vaší organizaci a určit zásady zařízení podle toho, co se používá.
 
-**Trychtýř SSPR**: Získejte představu o tom, jakým způsobem se ve vaší organizaci resetují hesla. Získání funkce Náhled na tom, kolik heslo resetovat pokusů o pomocí nástroje SSPR hello a kolik z nich byly úspěšné. Chyby resetování hesla hello pomocí hello SSPR trychtýřového podrobněji a pochopit, proč došlo k určitým chybám. Tato sestava umožňuje lépe pochopili, jak nástroj SSPR hello se používá v rámci vaší organizace, abyste měli hello správné rozhodnutí.
+**Trychtýř SSPR**: Získejte představu o tom, jakým způsobem se ve vaší organizaci resetují hesla. Zjistěte, kolik pokusů o resetování hesla bylo provedeno prostřednictvím nástroje SSPR a kolik z nich bylo úspěšných. Podívejte se podrobněji na chyby při resetování hesel pomocí trychtýře SSPR a zjistěte, proč k některým chybám došlo. Tato sestava umožňuje lépe pochopit, jakým způsobem se nástroj SSPR ve vaší organizaci používá. Umožní vám pak správně se rozhodovat.
 
 ## <a name="customizing-azure-ad-activity-content-pack"></a>Přizpůsobení balíčku obsahu aktivit služby Azure AD
 
-**Změnit vizualizace**: vizualizace sestavy můžete změnit kliknutím **upravit sestavu** a vyberte hello vizualizace chcete.
+**Změna vizualizace**: Vizualizaci sestavy můžete změnit kliknutím na **Upravit sestavu** a výběrem požadované vizualizace.
  
 ![Balíček obsahu Azure Active Directory Power BI Content Pack](./media/active-directory-reporting-power-bi-content-pack-how-to/09.png) 
  
 ![Balíček obsahu Azure Active Directory Power BI Content Pack](./media/active-directory-reporting-power-bi-content-pack-how-to/10.png) 
 
-**Zahrnout další pole**: můžete přidat sestavu toohello pole nebo ho odebrat výběrem hello visual toowhich chcete pole hello tooadd nebo odebrat. V příkladu hello níže přidám zobrazení tabulky toohello pole "stav přihlášení". 
+**Zahrnutí dalších polí**: Pole můžete do sestavy přidat nebo ho z ní odebrat výběrem vizuálu, do kterého chcete pole přidat nebo z kterého ho chcete odebrat. V následujícím příkladu se přidává pole „stav přihlášení“ do zobrazení tabulky. 
  
 ![Balíček obsahu Azure Active Directory Power BI Content Pack](./media/active-directory-reporting-power-bi-content-pack-how-to/11.png) 
 
-**Řídicí panel tooyour vizualizace PIN**: přizpůsobit svůj řídicí panel, patří vlastní sestavu toohello vizualizace a připnout toohello řídicího panelu. V příkladu hello níže I přidán nový filtr, který se nazývá "stav přihlášení" a zahrnuty v sestavě hello. I taky hello vizualizace se změnil z pruhový graf tooa spojnicový graf a můžete Připnout tento nový visual toohello řídicí panel.
+**Připnutí vizualizací na řídicí panel**: Řídicí panel můžete přizpůsobit, do sestavy můžete zahrnout vlastní vizualizace a sestavu pak připnout na řídicí panel. V následujícím příkladu se přidává nový filtr s názvem „stav přihlášení“ a zahrnuje se do sestavy. Došlo také ke změně vizualizace z pruhového grafu na spojnicový. Tento nový vizuál se dá připnout na řídicí panel.
 
 ![Balíček obsahu Azure Active Directory Power BI Content Pack](./media/active-directory-reporting-power-bi-content-pack-how-to/12.png) 
 
@@ -117,7 +117,7 @@ U této sestavy můžete porozumět hello různé profily zařízení používá
  
 
 
-**Sdílení řídicího panelu**: Po vytvoření hello obsah, který chcete, můžete sdílet hello řídicí panel s hello uživateli ve vaší organizaci. Pamatovat si prosím, že jakmile hello sestavy sdílíte, uvidí vybraných v sestavě hello polí hello.
+**Sdílení řídicího panelu**: Jakmile vytvoříte požadovaný obsah, můžete řídicí panel sdílet s uživateli ve vaší organizaci. Mějte prosím na paměti, že jakmile sestavu sdílíte, můžou uživatelé vidět pole, která jste v sestavě vybrali.
  
 ![Balíček obsahu Azure Active Directory Power BI Content Pack](./media/active-directory-reporting-power-bi-content-pack-how-to/14.png) 
 
@@ -125,21 +125,21 @@ U této sestavy můžete porozumět hello různé profily zařízení používá
 
 ## <a name="scheduling-a-daily-refresh-of-your-power-bi-report"></a>Plánování denní aktualizace sestavy Power BI
 
-tooschedule denní aktualizaci sestavy Power BI, přejděte příliš**datové sady > Nastavení > naplánovat aktualizaci** a nastavte ji, jak je uvedeno níže.
+Pokud chcete naplánovat každodenní aktualizaci sestavy Power BI, přejděte na **Datové sady > Nastavení > Naplánovat aktualizaci** a nastavte ji podle příkladu níže.
  
 ![Balíček obsahu Azure Active Directory Power BI Content Pack](./media/active-directory-reporting-power-bi-content-pack-how-to/15.png) 
 
-## <a name="updating-toonewer-version-of-content-pack"></a>Aktualizace toonewer verze obsahu sady
+## <a name="updating-to-newer-version-of-content-pack"></a>Aktualizace na novější verzi balíčku obsahu
 
-Pokud chcete, aby tooupdate obsah pack tooget novější verze:
+Postup aktualizace balíčku obsahu na novější verzi:
 
-- Stáhněte si nový balíček obsahu hello a nastavení podle pokynů uvedených v tomto článku.
+- Stáhněte si nový balíček obsahu a nastavte ho podle pokynů uvedených v tomto článku.
 
-- Jakmile jste nastavili tak, přejděte příliš**zdroj dat > Nastavení > přihlašovací údaje ke zdroji dat** a znova zadejte přihlašovací údaje, jak je uvedeno níže
+- Jakmile ho nastavíte, přejděte na **Zdroj dat > Nastavení > Přihlašovací údaje ke zdroji dat** a znovu zadejte přihlašovací údaje, jak je uvedeno níže.
 
     ![Balíček obsahu Azure Active Directory Power BI Content Pack](./media/active-directory-reporting-power-bi-content-pack-how-to/16.png) 
 
-Jakmile hello novou verzi balíčku obsahu hello funguje, můžete odebrat předchozí verzi aplikace hello v případě potřeby odstraněním hello základní sestavy a datové sady přidružené k tento balíček obsahu.
+Jakmile bude nová verze balíčku obsahu funkční, můžete v případě potřeby odebrat starou verzi odstraněním podkladových sestav a databází přidružených danému balíčku obsahu.
 
 ## <a name="still-having-issues"></a>Pořád máte problémy? 
 
@@ -148,4 +148,4 @@ Podívejte se na [průvodce odstraňováním potíží](active-directory-reporti
 
 ## <a name="next-steps"></a>Další kroky
 
-Přehled vytváření sestav najdete v tématu hello [generování sestav Azure Active Directory](active-directory-reporting-azure-portal.md).
+Přehled generování sestav najdete v tématu [Generování sestav v Azure Active Directory](active-directory-reporting-azure-portal.md).

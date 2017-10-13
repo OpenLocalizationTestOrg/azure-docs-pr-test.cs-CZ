@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure dokumentace k Resource Manager – kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
-description: "Zjistěte, jak toouse toodeploy správce prostředků a spravovat řešení prostředky jako skupinu a toocreate šablony pro nasazení konzistentní a Opakovatelný prostředků."
+title: "Dokumentace ke službě Azure Resource Manager – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
+description: "Naučte se využívat Resource Manager k nasazování a správě prostředků řešení ve formě skupiny a k vytváření šablon pro konzistentní a opakovatelné nasazování prostředků."
 services: azure-resource-manager
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: dc920b14e84bbad1a178fc91a61a1d2642d644b1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ab6725298c9e9c496d2e20b4e68ff72af1432bb2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="azure-resource-manager-documentation"></a>Dokumentace ke službě Azure Resource Manager
 
-Zjistěte, jak toouse toodeploy Resource Manager, sledovat a spravovat řešení prostředky jako skupinu. Kurzy, odkazy na rozhraní API a další dokumentaci ukazují, jak tooset až prostředků skupiny a vytvoření šablony pro nasazení opakovatelné a konzistentní.
+Naučte se využívat Resource Manager k nasazování, monitorování a správě prostředků řešení ve formě skupiny. Kurzy, reference k rozhraní API a další dokumentace ukazují postupy nastavování skupin prostředků a vytváření šablon pro konzistentní a opakovatelné nasazování.
 
 <ul class="panelContent cardsFTitle">
     <li>

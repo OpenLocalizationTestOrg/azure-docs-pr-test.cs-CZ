@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate účtu Azure Media Services s hello portálu Azure | Microsoft Docs"
-description: "Tento kurz vás provede kroky hello k vytvoření účtu Azure Media Services s hello portálu Azure."
+title: "Vytvoření účtu Azure Media Services pomocí webu Azure Portal | Dokumentace Microsoftu"
+description: "Tento kurz vás provede kroky pro vytvoření účtu služby Azure Media Services pomocí webu Azure Portal."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -12,43 +12,46 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/10/2017
+ms.date: 09/03/2017
 ms.author: juliako
-ms.openlocfilehash: fdad93d5d470fc08380670ec0f6c2d33468b1492
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 4e811dee81bfbd01b3cbe7f78a57b2ce92d1c0f9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-an-azure-media-services-account-using-hello-azure-portal"></a>Vytvoření účtu Azure Media Services pomocí hello portálu Azure
+# <a name="create-an-azure-media-services-account-using-the-azure-portal"></a>Vytvoření účtu Azure Media Services pomocí webu Azure Portal
 > [!div class="op_single_selector"]
 > * [Azure Portal](media-services-portal-create-account.md)
 > * [PowerShell](media-services-manage-with-powershell.md)
 > * [REST](https://docs.microsoft.com/rest/api/media/mediaservice)
 > 
 > [!NOTE]
-> toocomplete tohoto kurzu potřebujete účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
+> K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
 > 
 > 
 
-Hello portál Azure poskytuje způsob, jak tooquickly vytvoření účtu Azure Media Services (AMS). Můžete použít tooaccess váš účet Media Services, který toostore můžete povolit, šifrovat, kódovat, spravovat a Streamovat mediální obsah v Azure. V době hello vytvořit účet Media Services, můžete také vytvořit přidružený účet úložiště (nebo použijte existující) v hello stejné zeměpisné oblasti jako hello účtu Media Services.
+Azure Portal nabízí rychlou možnost vytvoření účtu Azure Media Services (AMS). Účet můžete použít pro přístup ke službě Media Services, která vám umožní ukládat, šifrovat, kódovat, spravovat a streamovat mediální obsah v Azure. V okamžiku vytvoření účtu Media Services si současně vytvoříte i přidružený účet úložiště (nebo použijete existující) ve stejné zeměpisné oblasti jako účet Media Services.
 
-Tento článek popisuje některé běžné koncepty a ukazuje, jak toocreate Media Services účet s hello portálu Azure.
-
-## <a name="concepts"></a>Koncepty
-Přístup ke službě Media Services vyžaduje dva přidružené účty:
-
-* Účet Media Services. Váš účet poskytuje přístup tooa sadu cloudové služby Media Services, které jsou k dispozici v Azure. Účet Media Services neukládá samotný mediální obsah. Místo toho ukládají metadata o hello média obsahu a úlohách zpracování médií v účtu. V době hello vytvoříte účet hello vyberte oblast služby Media Services k dispozici. datové centrum, které ukládá hello záznamů metadat pro váš účet, je Hello oblast, kterou vyberete.
-  
-* Účet úložiště Azure. Účty úložiště se musí nacházet v hello stejné zeměpisné oblasti jako hello účtu Media Services. Při vytváření účtu Media Services můžete zvolit buď stávající účet úložiště v hello stejné oblasti, nebo můžete vytvořit nový účet úložiště v hello stejné oblasti. Pokud odstraníte účet Media Services, nebudou odstraněny hello objektů BLOB v souvisejícím účtu úložiště.
+Tento článek popisuje některé obvyklé koncepty a ukazuje jak vytvořit účet Media Services pomocí webu Azure Portal.
 
 > [!NOTE]
 > Informace o dostupnosti funkcí služby Azure Media Services v různých oblastech najdete v tématu popisujícím [dostupnost funkcí AMS v datových centrech](scenarios-and-availability.md#availability).
 
-## <a name="create-an-ams-account"></a>Vytvoření účtu AMS
-Hello kroků v tomto tématu zobrazit jak toocreate AMS účtu.
+## <a name="concepts"></a>Koncepty
+Přístup ke službě Media Services vyžaduje dva přidružené účty:
 
-1. Přihlaste se na hello [portál Azure](https://portal.azure.com/).
+* Účet Media Services. Váš účet umožňuje přístup k sadě cloudových služeb Media Services, které jsou dostupné v Azure. Účet Media Services neukládá samotný mediální obsah. Místo toho na vašem účtu ukládají metadata o mediálním obsahu a úlohách zpracování médií v účtu. Při vytváření účtu vybíráte dostupnou oblast služby Media Services. Oblast, kterou vyberete, je datové centrum, které ukládá záznamy metadat vašeho účtu.
+  
+* Účet úložiště Azure. Účty úložiště pro mediální soubory musí být umístěné ve stejné zeměpisné oblasti jako účet Media Services. Při vytváření účtu Media Services můžete zvolit buď stávající účet úložiště ve stejné oblasti, nebo můžete vytvořit nový účet úložiště ve stejné oblasti. Pokud odstraníte účet Media Services, objekty blob v souvisejícím účtu úložiště odstraněny nebudou.
+
+  > [!NOTE]
+  > Služba Media Services omezuje primární účet úložiště tak, že může být pouze **obecným účtem Storage** s tabulkami a frontami. Další informace o typech úložiště najdete v článku [Informace o účtech Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
+
+## <a name="create-an-ams-account"></a>Vytvoření účtu AMS
+Postup v této části ukazuje, jak vytvořit účet AMS.
+
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Klikněte na **+Nové** > **Web + mobilní zařízení** > **Media Services**.
    
     ![Media Services – vytvoření](./media/media-services-create-account/media-services-new1.png)
@@ -56,31 +59,31 @@ Hello kroků v tomto tématu zobrazit jak toocreate AMS účtu.
    
     ![Media Services – vytvoření](./media/media-services-create-account/media-services-new3.png)
    
-   1. V **název účtu**, zadejte název nového účtu AMS hello hello. Název účtu Media Services je všechny malých písmen nebo číslic bez mezer a je 3 too24 znaků.
-   2. V odběru vyberte mezi hello různých předplatných Azure, které máte přístup.
-   3. V **skupiny prostředků**, vyberte hello nový nebo existující prostředek.  Skupina prostředků je kolekce prostředků, které sdílejí životní cyklus, oprávnění a zásady. Další informace najdete [tady](../azure-resource-manager/resource-group-overview.md#resource-groups).
-   4. V **umístění**, hello vyberte zeměpisnou oblast, která bude použité toostore hello médií a záznamů metadat pro váš účet Media Services. Tato oblast bude použité tooprocess a vysílání datových proudů. V rozevíracím seznamu hello se zobrazí pouze hello dostupné oblasti Media Services. 
-   5. V **účet úložiště**, vyberte úložiště objektů blob tooprovide účet úložiště hello mediálního obsahu z vašeho účtu Media Services. Můžete vybrat existující účet úložiště v hello stejné zeměpisné oblasti jako váš účet Media Services, nebo můžete vytvořit účet úložiště. Nový účet úložiště je vytvořen v hello stejné oblasti. Hello pravidla pro účet úložiště, že jsou názvy hello stejné jako u účtů Media Services.
+   1. Do pole **Název účtu** zadejte název nového účtu AMS. Název účtu Media Services musí obsahovat jenom malá písmena a číslice, nesmí obsahovat mezery a musí mít délku 3 až 24 znaků.
+   2. V poli Předplatné si vyberte z různých předplatných Azure, ke kterým máte přístup.
+   3. V poli **Skupina prostředků** vyberte nový nebo existující prostředek.  Skupina prostředků je kolekce prostředků, které sdílejí životní cyklus, oprávnění a zásady. Další informace najdete [tady](../azure-resource-manager/resource-group-overview.md#resource-groups).
+   4. V poli **Umístění** vyberte zeměpisnou oblast, která se bude používat k ukládání médií a záznamů metadat pro váš účet Media Services. Tato oblast se bude používat ke zpracování a streamování vašeho média. V rozevíracím seznamu se vám zobrazí pouze ty oblasti Media Services, které jsou dostupné. 
+   5. V poli **Účet úložiště** vyberte účet úložiště, který bude sloužit jako úložiště objektů blob mediálního obsahu z vašeho účtu Media Services. Můžete vybrat existující účet úložiště ve stejné zeměpisné oblasti jako váš účet Media Services, nebo můžete vytvořit účet úložiště. Nový účet úložiště bude vytvořen ve stejné oblasti. Pro názvy účtů úložiště platí stejná pravidla jako pro názvy účtů Media Services.
       
        Další informace o ukládání a úložištích najdete [tady](../storage/common/storage-introduction.md).
-   6. Vyberte **Pin toodashboard** toosee hello průběh nasazení účtu hello.
-4. Klikněte na tlačítko **vytvořit** v hello dolní části formuláře hello.
+   6. Zaškrtněte **Připnout na řídicí panel**, abyste viděli průběh nasazení účtu.
+4. Klikněte na tlačítko **Vytvořit** dole na formuláři.
    
-    Po úspěšném vytvoření účtu hello načtení stránky přehled. V hello streamování koncový bod tabulky hello účet bude mít výchozí koncový bod v hello streamování **Zastaveno** stavu. 
+    Po úspěšném vytvoření účtu se načte stránka s přehledem. V tabulce koncových bodů streamování bude účet mít výchozí koncový bod streamování ve stavu **Zastaveno**. 
 
     >[!NOTE]
-    >Při vytvoření účtu AMS **výchozí** koncový bod streamování se přidá účet tooyour hello **Zastaveno** stavu. toostart streamování vašeho obsahu a proveďte výhod dynamického balení dynamické šifrování, hello streamování koncový bod, ze kterého mají být má obsah toostream toobe v hello **systémem** stavu. 
+    >Po vytvoření účtu AMS se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno**. Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování, ze kterého chcete streamovat obsah, být ve stavu **Spuštěno**. 
    
-## <a name="toomanage-your-ams-account"></a>toomanage vašeho účtu AMS
+## <a name="to-manage-your-ams-account"></a>Správa účtu AMS
 
-toomanage vašeho účtu AMS (například připojení toohello AMS rozhraní API prostřednictvím kódu programu, nahrávání videí, kódování assetů, konfigurace ochrany obsahu a sledovat průběh úlohy) vyberte **nastavení** na levé straně hello portálu hello. Z hello **nastavení**, přejděte tooone hello k dispozici oken (například: **přístup pomocí rozhraní API**, **prostředky**, **úlohy**, **Obsahu ochrany**).
+Pokud chcete spravovat svůj účet AMS (například připojit se prostřednictvím kódu programu k rozhraní API pro AMS, nahrát videa, kódovat prostředky, konfigurovat ochranu obsahu nebo monitorovat průběh úloh), vyberte **Nastavení** na levé straně portálu. V **Nastavení** přejděte do některého z dostupných oken (například: **Přístup k rozhraní API**, **Prostředky**, **Úlohy** nebo **Ochrana obsahu**).
 
 
 ## <a name="next-steps"></a>Další kroky
 
 Soubory teď můžete nahrát do účtu AMS. Další informace najdete v tématu [Nahrání souborů](media-services-portal-upload-files.md).
 
-Pokud máte v plánu prostřednictvím kódu programu tooaccess AMS rozhraní API, přečtěte si téma [hello přístup k rozhraní API služby Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md).
+Pokud plánujete přistupovat k rozhraní API pro AMS prostřednictvím kódu programu, přečtěte si téma [Přístup k rozhraní API pro službu Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md).
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

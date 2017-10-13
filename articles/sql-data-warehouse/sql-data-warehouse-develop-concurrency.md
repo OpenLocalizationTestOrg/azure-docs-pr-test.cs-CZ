@@ -1,5 +1,5 @@
 ---
-title: "aaaConcurrency a úlohy správy v SQL Data Warehouse | Microsoft Docs"
+title: "Souběžnost a úlohy správy v SQL Data Warehouse | Microsoft Docs"
 description: "Porozumět souběžnosti a úlohy správy v Azure SQL Data Warehouse pro vývoj řešení."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,24 +15,24 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 08/23/2017
 ms.author: joeyong;barbkess;kavithaj
-ms.openlocfilehash: 7f7e77aa687760252aed16573b609817ed9111c3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: eaf2d43286dbaa52ada1430fbb7ce1e37f41c0d4
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="concurrency-and-workload-management-in-sql-data-warehouse"></a>Souběžnost a úlohy správy v SQL Data Warehouse
-předvídatelný výkon toodeliver ve velkém měřítku, Microsoft Azure SQL Data Warehouse umožňuje řídit souběžnosti úrovně a přidělení prostředků jako paměti a procesoru stanovení priorit. Tento článek představuje koncepty toohello souběžnosti a úlohy správy, která vysvětluje, jak oba implementována a jak je můžete řídit v datovém skladu. Úlohy správy datového skladu SQL je určený toohelp podporu prostředí s více uživateli. Rozhraní není určeno pro více klientů úlohy.
+Zajistit předvídatelný výkon ve velkém měřítku, Microsoft Azure SQL Data Warehouse pomáhá řídit souběžnosti úrovně a přidělení prostředků jako paměti a procesoru stanovení priorit. Tento článek vás seznámí s koncepty souběžnosti a úlohy správy, která vysvětluje, jak oba implementována a jak je můžete řídit v datovém skladu. Úlohy správy datového skladu SQL je určený můžete podporovat prostředí s více uživateli. Rozhraní není určeno pro více klientů úlohy.
 
 ## <a name="concurrency-limits"></a>Omezení souběžnosti
-SQL Data Warehouse umožňuje až too1 024 souběžných připojení. Všechna 1 024 připojení mohou souběžně odesílat dotazy. Toooptimize propustnost, SQL Data Warehouse může však fronty tooensure některé dotazy, že každý dotaz obdrží grant minimální paměti. Služba Řízení front dojde v době provedení dotazu. Řízení front dotazy při může zvýšit souběžnost dosaženo omezení SQL Data Warehouse celková propustnost tím zajistí, že aktivní dotazy získat přístup toocritically potřeba paměťových prostředků.  
+SQL Data Warehouse umožňuje až 1 024 souběžných připojení. Všechna 1 024 připojení mohou souběžně odesílat dotazy. Optimalizovat výkon, ale může SQL Data Warehouse fronty některé dotazy zajistit, že každý dotaz přidělení minimální paměti. Služba Řízení front dojde v době provedení dotazu. Řízení front dotazy po dosažení souběžnosti omezení, SQL Data Warehouse může zvýšit celkovou propustnost zajistíte, že aktivní dotazy získat přístup k prostředkům zásadní potřebnou paměť.  
 
-Omezení souběžnosti se řídí dvěma konceptů: *souběžných dotazů* a *souběžnosti sloty*. Pro tooexecute dotaz musí provést v rámci omezení souběžnosti hello dotazu a hello souběžnosti slotu přidělení.
+Omezení souběžnosti se řídí dvěma konceptů: *souběžných dotazů* a *souběžnosti sloty*. Pro dotaz provést musí provést v rámci omezení souběžnosti dotazu a přidělení slotu souběžnosti.
 
-* Počet souběžných dotazů jsou hello dotazy na spuštění v hello stejný čas. SQL Data Warehouse podporuje až too32 souběžných dotazů hello větší velikostí DWU.
-* Sloty souběžnosti mají při přidělování podle DWU. Každý 100 DWU poskytuje 4 sloty souběžnosti. Například od DW100 přiděluje 4 sloty souběžnosti a DW1000 přiděluje 40. Každý dotaz využívá jednu nebo více souběžnosti sloty, závisí na hello [Třída prostředků](#resource-classes) hello dotazu. Dotazy na spouštění v Třída prostředků smallrc hello zabrat jeden slot souběžnosti. Dotazy spuštěnými v vyšší Třída prostředků využívat další sloty souběžnosti.
+* Počet souběžných dotazů jsou dotazy spuštění ve stejnou dobu. SQL Data Warehouse podporuje až 32 souběžné dotazy větší velikostí DWU.
+* Sloty souběžnosti mají při přidělování podle DWU. Každý 100 DWU poskytuje 4 sloty souběžnosti. Například od DW100 přiděluje 4 sloty souběžnosti a DW1000 přiděluje 40. Každý dotaz využívá jednu nebo více souběžnosti sloty, závisí na [Třída prostředků](#resource-classes) dotazu. Dotazy spuštěnými ve třídě prostředků smallrc využívat jeden slot souběžnosti. Dotazy spuštěnými v vyšší Třída prostředků využívat další sloty souběžnosti.
 
-Hello následující tabulka popisuje hello limity pro souběžné dotazy a sloty souběžnosti v hello různých velikostí DWU.
+Následující tabulka popisuje limity pro souběžné dotazy a sloty souběžnosti v různých velikostí DWU.
 
 ### <a name="concurrency-limits"></a>Omezení souběžnosti
 | DWU | Maximální počet souběžných dotazů | Přidělené sloty souběžnosti |
@@ -50,21 +50,21 @@ Hello následující tabulka popisuje hello limity pro souběžné dotazy a slot
 | DW3000 |32 |120 |
 | DW6000 |32 |240 |
 
-Když je splněna jedna z těchto prahových hodnot, nové dotazy jsou zařazeny do fronty a jsou prováděny na základě ven first-in.  Dokončení dotazy a počet hello dotazy a sloty klesne pod hello omezení, jsou vydávány ve frontě dotazů. 
+Když je splněna jedna z těchto prahových hodnot, nové dotazy jsou zařazeny do fronty a jsou prováděny na základě ven first-in.  Dokončení dotazy a počet dotazů a sloty klesne pod omezení, jsou vydávány ve frontě dotazů. 
 
 > [!NOTE]  
-> *Vyberte* dotazy na spuštění výhradně na zobrazení dynamické správy (zobrazení dynamické správy) nebo zobrazení katalogu se neřídí žádné omezení souběžnosti hello. Můžete monitorovat hello systém bez ohledu na počet hello dotazy na spuštění v něm.
+> *Vyberte* dotazy na spuštění výhradně na zobrazení dynamické správy (zobrazení dynamické správy) nebo zobrazení katalogu se neřídí žádné omezení souběžnosti. Můžete monitorovat systém bez ohledu na počet dotazy na spuštění v něm.
 > 
 > 
 
 ## <a name="resource-classes"></a>Třídy prostředků
-Prostředek třídy pomáhá řídit přidělování paměti a cyklů procesoru zadané tooa dotazu. Můžete přiřadit dva typy prostředků třídy tooa uživatele v podobě hello rolí databáze. Hello dva typy prostředků třídy jsou následující:
-1. Dynamické třídy prostředků (**smallrc, mediumrc, largerc, xlargerc**) přidělit proměnné množství paměti v závislosti na hello aktuální DWU. To znamená, že při škálování tooa větší DWU, vaše dotazy automaticky získat více paměti. 
-2. Statické třídy prostředků (**staticrc10, staticrc20, staticrc30, staticrc40, staticrc50, staticrc60, staticrc70, staticrc80**) přidělit hello stejné množství paměti, bez ohledu na to hello aktuální DWU (za předpokladu, že hello DWU sám sebe má dostatek paměti). To znamená, že na větší počet Dwu, můžete spouštět další dotazy v každé třídě prostředků současně.
+Třídy prostředků pomáhají řídit přidělování paměti a cyklů procesoru pro dotaz. Dva typy prostředků třídy můžete přiřadit uživatele ve formě role databáze. Oba typy prostředků třídy jsou následující:
+1. Dynamické třídy prostředků (**smallrc, mediumrc, largerc, xlargerc**) přidělit proměnné množství paměti v závislosti na aktuální DWU. To znamená, že při změně měřítka na větší DWU, vaše dotazy automaticky získat více paměti. 
+2. Statické třídy prostředků (**staticrc10, staticrc20, staticrc30, staticrc40, staticrc50, staticrc60, staticrc70, staticrc80**) přidělit stejnou velikost paměti, bez ohledu na aktuální DWU (za předpokladu, že DWU sám sebe dostatek paměti). To znamená, že na větší počet Dwu, můžete spouštět další dotazy v každé třídě prostředků současně.
 
-Uživatelé v **smallrc** a **staticrc10** mají menší množství paměti a můžete využít výhod vyšší souběžnosti. Naproti tomu uživatelům přiřazena příliš**xlargerc** nebo **staticrc80** mají velké množství paměti, a proto méně jejich dotazů můžou běžet souběžně.
+Uživatelé v **smallrc** a **staticrc10** mají menší množství paměti a můžete využít výhod vyšší souběžnosti. Naproti tomu uživatelé přiřazeni k **xlargerc** nebo **staticrc80** mají velké množství paměti, a proto méně jejich dotazů můžou běžet souběžně.
 
-Ve výchozím nastavení, každý uživatel je členem hello Třída prostředků se malé, **smallrc**. Hello postup `sp_addrolemember` je používá třída prostředků hello tooincrease, a `sp_droprolemember` se používá třída prostředků toodecrease hello. Například tento příkaz by zvýšit hello prostředků třídu loaduser příliš**largerc**:
+Ve výchozím nastavení, každý uživatel je členem Třída prostředků se malé, **smallrc**. Postup `sp_addrolemember` slouží ke zvýšení Třída prostředků, a `sp_droprolemember` se používá k snížit Třída prostředků. Tento příkaz by například zvýšit Třída prostředků loaduser k **largerc**:
 
 ```sql
 EXEC sp_addrolemember 'largerc', 'loaduser'
@@ -73,24 +73,24 @@ EXEC sp_addrolemember 'largerc', 'loaduser'
 
 ### <a name="queries-that-do-not-honor-resource-classes"></a>Dotazy, které nerespektují třídy prostředků
 
-Existuje několik typů dotazy, které nejsou nijak přínosné větší přidělení paměti. systém Hello ignoruje jejich přidělení Třída prostředků a vždy spusťte tyto dotazy v třídě malé prostředků hello místo. Pokud tyto dotazy spustit vždy v třída hello malé prostředků, mohou spouštět při souběžnosti sloty jsou přetížena a jejich nebude využívat další slotů, než je potřeba. V tématu [výjimky třídy prostředků](#query-exceptions-to-concurrency-limits) Další informace.
+Existuje několik typů dotazy, které nejsou nijak přínosné větší přidělení paměti. Systém ignoruje jejich přidělení Třída prostředků a vždy spusťte tyto dotazy ve třídě malé prostředků místo. Pokud tyto dotazy spustit vždy ve třídě malé prostředků, mohou spouštět při souběžnosti sloty jsou přetížena a jejich nebude využívat další slotů, než je potřeba. V tématu [výjimky třídy prostředků](#query-exceptions-to-concurrency-limits) Další informace.
 
 ## <a name="details-on-resource-class-assignment"></a>Informace o přiřazení třídy prostředků
 
 
 Několik další podrobnosti o Třída prostředků:
 
-* *Příkaz ALTER role* oprávnění jsou nutná Třída prostředků hello toochange uživatele.
-* I když můžete přidat uživatele tooone nebo více prostředků třídy vyšší hello, dynamické prostředků třídy mají přednost před třídy statické prostředků. To znamená pokud uživatel přiřazený tooboth **mediumrc**(dynamické) a **staticrc80**(statické), **mediumrc** je hello Třída prostředků, která je dodržení.
- * Když se uživatel je přiřazený toomore než jeden prostředek třídy v na konkrétní třídy typ prostředku (více než jeden dynamický prostředků nebo více než jeden statický prostředků třída), je dodržení hello nejvyšší Třída prostředků. To znamená pokud uživatel přiřazený tooboth mediumrc a largerc, je dodržení Třída prostředků vyšší hello (largerc). A pokud uživatel přiřazený tooboth **staticrc20** a **statirc80**, **staticrc80** je přijmout.
-* Třída prostředků Hello hello systému administrativní uživatele nelze změnit.
+* *Příkaz ALTER role* oprávnění je potřeba změnit Třída prostředků uživatele.
+* I když můžete přidat uživatele k jedné nebo několika vyšší třídy prostředků, prostředků dynamické třídy mají přednost před prostředků statické třídy. To znamená pokud uživatel je přiřazen k obě **mediumrc**(dynamické) a **staticrc80**(statické), **mediumrc** je třída prostředků, která je dodržení.
+ * Když uživatel je přiřazen více než jedna třída prostředků v na konkrétní třídy typ prostředku (více než jeden dynamický prostředků nebo více než jeden statický prostředků třída), je dodržení nejvyšší Třída prostředků. To znamená pokud uživatel je přiřazen k mediumrc a largerc, je dodržení vyšší Třída prostředků (largerc). A pokud je uživatel přiřazený k obě **staticrc20** a **statirc80**, **staticrc80** je přijmout.
+* Třída prostředků uživatele pro správu systému, nelze změnit.
 
 Podrobný příklad najdete v tématu [příklad třídy prostředků uživatele změna](#changing-user-resource-class-example).
 
 ## <a name="memory-allocation"></a>Přidělení paměti
-Existují výhody a nevýhody tooincreasing Třída prostředků uživatele. Zvýšení Třída prostředků pro uživatele, dává přístup toomore paměti, což může znamenat, že dotazy spouštět rychleji jejich dotazů.  Vyšší třídy prostředků však také snížit hello počet souběžných dotazů, které můžou běžet. Toto je hello kompromis mezi přidělování velké objemy paměti tooa jeden dotaz nebo povolením jiné dotazy, které je také třeba přidělení paměti, toorun současně. Pokud jeden uživatel vysoké přidělení paměti pro dotaz, ostatní uživatelé nebudou mít přístup toothat stejné paměti toorun dotazu.
+Existují výhody a nevýhody na zvýšení Třída prostředků uživatele. Zvýšení Třída prostředků pro uživatele, poskytuje jejich dotazy přístup k více paměti, což může znamenat, že dotazy spouštět rychleji.  Vyšší třídy prostředků však také snížit počet souběžných dotazů, které můžou běžet. Jedná se o kompromisu mezi přidělování velké množství paměti na jeden dotaz nebo povolením jiné dotazy, které je také třeba přidělení paměti spuštěny současně. Pokud jeden uživatel vysoké přidělení paměti pro dotaz, ostatní uživatelé nebudete mít přístup k této stejné paměti ke spuštění dotazu.
 
-Hello následující tabulka mapuje hello paměti přidělené tooeach distribuční třídou DWU a prostředků.
+Následující tabulka mapuje je paměť přidělená pro každý distribuční třídou DWU a prostředků.
 
 ### <a name="memory-allocations-per-distribution-for-dynamic-resource-classes-mb"></a>Přidělení paměti za distribuci pro dynamické prostředků třídy (MB)
 | DWU | smallrc | mediumrc | largerc | xlargerc |
@@ -108,7 +108,7 @@ Hello následující tabulka mapuje hello paměti přidělené tooeach distribu�
 | DW3000 |100 |1,600 |3,200 |6,400 |
 | DW6000 |100 |3,200 |6,400 |12,800 |
 
-Hello následující tabulka mapuje hello paměti přidělené tooeach distribuční DWU a třída statické prostředků. Všimněte si, že hello vyšší prostředků třídy mají jejich paměti snížit toohonor hello globální DWU omezení.
+Následující tabulka mapuje je paměť přidělená pro každý distribuční DWU a třída statické prostředků. Všimněte si, že vyšší prostředků třídy mají jejich paměti snížen na respektovat globální omezení DWU.
 
 ### <a name="memory-allocations-per-distribution-for-static-resource-classes-mb"></a>Přidělení paměti za distribuci pro statické prostředků třídy (MB)
 | DWU | staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
@@ -126,7 +126,7 @@ Hello následující tabulka mapuje hello paměti přidělené tooeach distribu�
 | DW3000 |100 |200 |400 |800 |1,600 |3,200 |6,400 |6,400 |
 | DW6000 |100 |200 |400 |800 |1,600 |3,200 |6,400 |12,800 |
 
-Z hello předcházející tabulce, můžete uvidíte, že dotaz spuštěný na DW2000 v hello **xlargerc** Třída prostředků by měla mít přístup too6, 400 MB paměti v každém z hello 60 distribuované databáze.  V SQL Data Warehouse jsou 60 distribuce. Proto by měl toocalculate hello celkové paměti přidělení pro dotaz v třídě daný prostředek, hello nad hodnotu vynásobeny 60.
+Z předchozí tabulky, můžete uvidíte, že dotaz spuštěný na DW2000 v **xlargerc** Třída prostředků bude mít přístup k 6 400 MB paměti v rámci každé 60 distribuované databáze.  V SQL Data Warehouse jsou 60 distribuce. Vypočítat celkové paměti přidělení pro dotaz v třídě daný prostředek, proto by výše uvedené hodnoty násobí hodnotou 60.
 
 ### <a name="memory-allocations-system-wide-gb"></a>Paměť přidělení systémové (GB)
 | DWU | smallrc | mediumrc | largerc | xlargerc |
@@ -144,12 +144,12 @@ Z hello předcházející tabulce, můžete uvidíte, že dotaz spuštěný na D
 | DW3000 |6 |94 |188 |375 |
 | DW6000 |6 |188 |375 |750 |
 
-Z této tabulky přidělených systémové paměti, uvidíte, že dotaz spuštěný na DW2000 ve třídě prostředků xlargerc hello je přidělen celkem 375 GB paměti (6 400 MB * 60 distribuce / 1 024 tooconvert tooGB) přes hello celého SQL Data Warehouse.
+Z této tabulky přidělených systémové paměti, uvidíte, že dotaz spuštěný na DW2000 ve třídě xlargerc prostředků je přidělen celkem 375 GB paměti (6 400 MB * 60 distribuce / 1 024 převést GB) přes celého SQL Data Warehouse.
 
-Hello stejný výpočet platí toostatic třídy prostředků.
+Stejný výpočet platí pro třídy statické prostředků.
  
 ## <a name="concurrency-slot-consumption"></a>Spotřeba slotu souběžnosti  
-SQL Data Warehouse uděluje více paměti tooqueries spuštěné v vyšší třídy prostředků. Velikost paměti je pevné prostředků.  Proto hello více paměti přidělené na dotaz, hello, které můžete provést méně souběžných dotazů. Hello následující tabulka opětovně uvádí, že všechny hello předchozí konceptů v rámci jednoho zobrazení, která zobrazuje počet hello sloty souběžnosti podle DWU a hello sloty spotřebovávají každá třída prostředků.  
+SQL Data Warehouse uděluje více paměti na dotazy, které jsou spuštěné v vyšší třídy prostředků. Velikost paměti je pevné prostředků.  Proto je další paměť přidělená na dotaz, méně souběžných dotazů můžete spustit. V následující tabulce opětovně uvádí, že všechny předchozí konceptů v rámci jednoho zobrazení, která zobrazuje počet souběžnosti sloty dostupné podle DWU a sloty spotřebovávají každá třída prostředků.  
 
 ### <a name="allocation-and-consumption-of-concurrency-slots-for-dynamic-resource-classes"></a>Přidělení a využití souběžnosti přihrádky pro dynamické prostředků třídy  
 | DWU | Maximální počet souběžných dotazů | Přidělené sloty souběžnosti | Sloty používané smallrc | Sloty používané mediumrc | Sloty používané largerc | Sloty používané xlargerc |
@@ -183,50 +183,50 @@ SQL Data Warehouse uděluje více paměti tooqueries spuštěné v vyšší tř�
 | DW3000 | 32| 120| 1| 2| 4| 8| 16| 32| 64| 64|
 | DW6000 | 32| 240| 1| 2| 4| 8| 16| 32| 64| 128|
 
-Z těchto tabulek zobrazí se systémem SQL Data Warehouse jako DW1000 přiděluje maximálně 32 souběžných dotazů a celkem 40 sloty souběžnosti. Pokud všichni uživatelé používají v smallrc, 32 souběžných dotazů by být povolena, protože každý dotaz by používat 1 slot souběžnosti. Pokud všechny uživatele DW1000 byly spuštěny v mediumrc, by se každý dotaz přidělit 800 MB za distribuci pro přidělení celkové paměti 47 GB na jeden dotaz a souběžnosti by uživatelé omezené too5 (40 sloty souběžnosti 8 přihrádek na mediumrc uživatele /).
+Z těchto tabulek zobrazí se systémem SQL Data Warehouse jako DW1000 přiděluje maximálně 32 souběžných dotazů a celkem 40 sloty souběžnosti. Pokud všichni uživatelé používají v smallrc, 32 souběžných dotazů by být povolena, protože každý dotaz by používat 1 slot souběžnosti. Pokud všechny uživatele DW1000 byly spuštěny v mediumrc, by se každý dotaz přidělit 800 MB za distribuci pro přidělení celkové paměti 47 GB na jeden dotaz a bude concurrency omezená na 5 uživatele (40 sloty souběžnosti 8 přihrádek na mediumrc uživatele /).
 
 ## <a name="selecting-proper-resource-class"></a>Výběr třídy odpovídající prostředek  
-Doporučeným postupem je třída prostředků toopermanently přiřazovat uživatele tooa nemusíte měnit jejich třídy prostředků. Můžete například vytvořit tabulky columnstore tooclustered zatížení kvalitnější indexy při přidělení více paměti. tooensure, objemy paměti toohigher přístup, vytvořte uživatele speciálně pro načítání dat a trvale přiřadit tento uživatel tooa vyšší Třída prostředků.
-Existuje několik osvědčených postupů toofollow sem. Jak je uvedeno nahoře, SQL DW podporuje dva druhy třída typy prostředků: prostředků statické třídy a třídy dynamického prostředku.
+Doporučeným postupem je trvale přiřazovat uživatele k Třída prostředků, nemusíte měnit jejich třídy prostředků. Můžete například vytvořit zatížení na Clusterované tabulky columnstore kvalitnější indexy při přidělení více paměti. Zajistit, aby zatížení měly přístup k vyšší paměti, vytvořte uživatele speciálně pro načítání dat a trvale tomuto uživateli přiřadit vyšší Třída prostředků.
+Existuje několik osvědčených postupů použít postup popsaný v tomto poli. Jak je uvedeno nahoře, SQL DW podporuje dva druhy třída typy prostředků: prostředků statické třídy a třídy dynamického prostředku.
 ### <a name="loading-best-practices"></a>Načítání osvědčené postupy
-1.  Pokud hello očekávání zatížení s regulární množství dat, třída statické prostředků je vhodné použít. Později při rozšiřování prostředků tooget další výpočetní výkon, hello datového skladu bude mít toorun více souběžných dotazuje out-of-the-box, jako uživatel zatížení hello nespotřebovává více paměti.
-2.  Pokud hello očekávání větší zatížení v některých případech, třída dynamické prostředků je vhodné použít. Později, při rozšiřování prostředků tooget další výpočetní výkon, hello zatížení uživatel dostane další paměť out-of-the-box, proto hello zatížení tooperform umožňuje rychlejší.
+1.  Pokud očekávání zatížení s regulární množství dat, třída statické prostředků je vhodné použít. Později při škálování Chcete-li získat další výpočetní výkon, datového skladu bude moci spustit více souběžných dotazů out-of-the-box, protože uživatel zatížení nespotřebovává více paměti.
+2.  Pokud očekávání větší zatížení v některých případech, třída dynamické prostředků je vhodné použít. Později, při škálování Chcete-li získat další výpočetní výkon, zatížení uživatel dostane další paměť out-of-the-box, proto povolení zatížení rychlejší.
 
-Hello objemy paměti vyžadované tooprocess efektivně závisí na povaze hello hello tabulka načíst a hello objemu zpracovaných dat.. Načítání dat do tabulek KÚS vyžaduje například, že některé paměti toolet KÚS rowgroups dosáhnout optimality. Další podrobnosti najdete v tématu indexy Columnstore hello - data načítání pokyny.
+Paměť potřebnému ke zpracování zatížení efektivně závisí na povahu načíst tabulky a množství dat, zpracování. Načítání dat do tabulek KÚS například vyžaduje některé paměti umožníte KÚS rowgroups dosáhnout optimality. Další podrobnosti najdete v tématu indexy Columnstore - data načítání pokyny.
 
-Jako osvědčený postup doporučujeme vám toouse alespoň 200MB paměti pro zatížení.
+Jako osvědčený postup doporučujeme používat pro zatížení alespoň 200MB paměti.
 
 ### <a name="querying-best-practices"></a>Dotazování osvědčené postupy
-Dotazy mají různé požadavky v závislosti na jejich složitost. Zvýšení paměti na jeden dotaz nebo zvýšení hello souběžnosti jsou obě platné způsoby tooaugment celkovou propustnost v závislosti na potřebách hello dotazu.
-1.  Pokud hello očekávání regulární a složité dotazy (například toogenerate denní nebo týdenní sestavy) a není nutné tootake výhod souběžnosti, třída dynamické prostředků je vhodné použít. Pokud má systém hello tooprocess další data, vertikálním navýšení kapacity hello datového skladu se proto automaticky pro další paměť toohello uživatele spuštění dotazu hello.
-2.  Pokud hello očekávání vzory proměnnou nebo křivka souběžnosti (pro instanci Pokud hello databáze je dotazován prostřednictvím webového uživatelského rozhraní široce dostupné), třída statické prostředků je vhodné použít. Později, při rozšiřování prostředků toodata skladu, hello uživatel přidružený ke třídě hello statické prostředků bude automaticky se možné toorun více souběžných dotazů.
+Dotazy mají různé požadavky v závislosti na jejich složitost. Zvýšení paměti na jeden dotaz nebo zvýšení souběžnost jsou obě platné způsoby posílení celkovou propustnost podle potřeb dotazu.
+1.  Pokud očekávání regulární a složité dotazy (například ke generování sestav denní nebo týdenní) a není nutné využívat výhod souběžnosti, třída dynamické prostředků je vhodné použít. Pokud má systém další data ke zpracování, vertikálním navýšení kapacity datového skladu se proto automaticky poskytnout další paměť uživatel, který spouští dotaz.
+2.  Pokud očekávání vzory proměnnou nebo křivka souběžnosti (pro instanci Pokud databáze je dotazován prostřednictvím webového uživatelského rozhraní široce dostupné), třída statické prostředků je vhodné použít. Později při rozšiřování prostředků do datového skladu, uživatel přidružený k třídě statické prostředků automaticky bude možné spouštět více souběžných dotazů.
 
-Výběr správné paměti grant podle potřeby hello tohoto dotazu je netriviální, protože závisí na mnoha faktorech, například hello množství dat získaných, hello povahu hello schémata tabulek a různé spojení, výběru a predikáty skupiny. Z hlediska obecné přidělení více paměti umožní dotazy toocomplete rychlejší, ale by snížení hello celkové souběžnosti. Pokud souběžnosti není problém, přepsání přidělování paměti není poškodit. toofine tune propustnost, při různých typů prostředků třídy mohou být vyžadovány.
+Výběr správné paměti grant podle potřeb vašeho dotazu je netriviální, protože závisí na mnoha faktorech, jako je množství dat získaných, povaha schémata tabulek a různé spojení, výběru a predikáty skupiny. Z hlediska obecné přidělení více paměti se povolit dotazy na rychlejší, ale by snížení celkového souběžnosti. Pokud souběžnosti není problém, přepsání přidělování paměti není poškodit. A systém doladit propustnost, při různých typů prostředků třídy mohou být vyžadovány.
 
-Můžete použít následující hello uložené procedury toofigure out souběžnosti a paměť grant za Třída prostředků na daný objekt SLO a hello nejbližší nejlepší prostředků třídu pro operace náročné na prostředky KÚS paměti na bez oddílů tabulky KÚS na třídy daného prostředku:
+Můžete provádět následující uložené procedury a pokuste se zjistit grant souběžnosti a paměti na třídě prostředků v dané SLO a nejbližší nejlepší Třída prostředků pro operace náročné na prostředky KÚS paměti na bez oddílů tabulky KÚS na třídy daného prostředku:
 
 #### <a name="description"></a>Popis:  
-Tady je hello účel tuto uloženou proceduru:  
-1. Obrázek uživatele toohelp out souběžnosti a paměť grant za Třída prostředků v daném objektu SLO. Uživatel potřebuje tooprovide hodnotu NULL pro schématu a název tabulky pro tento jak je znázorněno v následujícím příkladu hello.  
-2. toohelp uživatele zjistěte hello nejbližší nejlepší Třída prostředků pro hello paměti intensed KÚS operací (zatížení, kopie tabulku znovu sestavit index, atd.) na jiný dělenou tabulku KÚS na třídu daného prostředku. Hello uložená procedura používá pro tento toofind schématu tabulky se grant hello požadovanou paměť.
+Tady je účelem tuto uloženou proceduru:  
+1. Který pomůže zjistit uživateli souběžnosti a paměť udělit za Třída prostředků v daném objektu SLO. Uživatel musí zadejte hodnotu NULL pro schéma a název tabulky pro tento, jak je znázorněno v následujícím příkladu.  
+2. Abyste uživatele pochopit nejbližší nejlepší Třída prostředků pro intensed paměti KÚS operací (zatížení, kopie tabulku znovu sestavit index, atd.) na jiný dělenou tabulku KÚS na třídu daného prostředku. Uložená procedura používá schéma tabulky a zjistěte, udělte požadovanou paměť pro tento.
 
 #### <a name="dependencies--restrictions"></a>Závislosti & omezení:
-- Tato uložená procedura není požadavek na paměť navrženou toocalculate rozdělena na oddíly KÚS tabulky.    
-- Tato uložená procedura neberou požadavek na paměť v úvahu hello vyberte součást funkce CTAS/INSERT-výběr a předpokládá se toobe jednoduché vyberte.
-- Tato uložená procedura používá dočasnou tabulku, takže toto lze použít v relaci hello kde byl vytvořen tento uložené procedury.    
-- Tato uložená procedura závisí na aktuální nabídky hello (např. konfiguraci hardwaru, konfigurace DMS) a pokud se některé této změny pak tato uložená procedura nebude fungovat správně.  
+- Tato uložená procedura není určen k výpočtu tabulka rozdělena na oddíly KÚS požadavek na paměť.    
+- Tato uložená procedura neberou požadavek na paměť v úvahu vyberte součást funkce CTAS/INSERT-výběr a předpokládá, že bude jednoduché vyberte.
+- Tato uložená procedura používá dočasnou tabulku, takže toto lze použít v relaci kde byl vytvořen tento uložené procedury.    
+- Tato uložená procedura závisí na aktuální nabídky (např. konfiguraci hardwaru, konfigurace DMS) a pokud se některé této změny pak tato uložená procedura nebude fungovat správně.  
 - Tato uložená procedura závisí na existující nabízený souběžnosti limit a pokud se změní, pak tato uložená procedura nebude fungovat správně.  
 - Tato uložená procedura závisí na stávající nabídky Třída prostředků a který změní-li se pak to uložené procedura zamýšlenému není pracovní správně.  
 
 >  [!NOTE]  
->  Pokud se nezobrazují výstupu po spuštění uložené procedury s parametry zadané, pak může být dvěma případy. <br />1. Buď parametr datového skladu obsahuje neplatnou hodnotu SLO <br />2. NEBO pokud byl poskytnut název tabulky neexistují žádné odpovídající Třída prostředků pro operaci KÚS. <br />Například na od DW100, nejvyšší přidělení paměti k dispozici je 400MB a pokud je schéma tabulky široké dostatek toocross hello požadavek 400MB.
+>  Pokud se nezobrazují výstupu po spuštění uložené procedury s parametry zadané, pak může být dvěma případy. <br />1. Buď parametr datového skladu obsahuje neplatnou hodnotu SLO <br />2. NEBO pokud byl poskytnut název tabulky neexistují žádné odpovídající Třída prostředků pro operaci KÚS. <br />Například v od DW100, nejvyšší přidělení paměti k dispozici je 400MB a pokud je schéma tabulky dost široké překříží požadavek 400MB.
       
 #### <a name="usage-example"></a>Příklad použití:
 Syntaxe:  
 `EXEC dbo.prc_workload_management_by_DWU @DWU VARCHAR(7), @SCHEMA_NAME VARCHAR(128), @TABLE_NAME VARCHAR(128)`  
-1. @DWU:Buď zadejte parametr tooextract hodnotu NULL hello aktuální DWU z hello databázi datového skladu nebo zadejte jakýkoli podporovaný DWU hello tvar 'od DW100.
-2. @SCHEMA_NAME:Zadejte název schématu tabulky hello
-3. @TABLE_NAME:Zadejte název tabulky zájmu hello
+1. @DWU:Buď zadejte parametr hodnotu NULL pro rozbalení aktuální DWU z databáze datového skladu nebo zadejte všechny podporované DWU ve tvaru "od DW100.
+2. @SCHEMA_NAME:Zadejte název schématu tabulky
+3. @TABLE_NAME:Zadejte název tabulky zájmu
 
 Příklady provádění této uložené procedury:  
 ```sql  
@@ -236,10 +236,10 @@ EXEC dbo.prc_workload_management_by_DWU 'DW6000', NULL, NULL;
 EXEC dbo.prc_workload_management_by_DWU NULL, NULL, NULL;  
 ```
 
-By bylo možné vytvořit tabulky1 použít v hello výše příklady, jak je uvedeno níže:  
+Tabulky1 použít v uvedených příkladech by bylo možné vytvořit, jak je uvedeno níže:  
 `CREATE TABLE Table1 (a int, b varchar(50), c decimal (18,10), d char(10), e varbinary(15), f float, g datetime, h date);`
 
-#### <a name="heres-hello-stored-procedure-definition"></a>Zde je definice hello uložené procedury:
+#### <a name="heres-the-stored-procedure-definition"></a>Tady je definici uložené procedury:
 ```sql  
 -------------------------------------------------------------------------------
 -- Dropping prc_workload_management_by_DWU procedure if it exists.
@@ -259,7 +259,7 @@ CREATE PROCEDURE dbo.prc_workload_management_by_DWU
 AS
 IF @DWU IS NULL
 BEGIN
--- Selecting proper DWU for hello current DB if not specified.
+-- Selecting proper DWU for the current DB if not specified.
 SET @DWU = (
   SELECT 'DW'+CAST(COUNT(*)*100 AS VARCHAR(10))
   FROM sys.dm_pdw_nodes
@@ -271,7 +271,7 @@ SET @DWU_NUM = CAST (SUBSTRING(@DWU, 3, LEN(@DWU)-2) AS INT)
 
 -- Raise error if either schema name or table name is supplied but not both them supplied
 --IF ((@SCHEMA_NAME IS NOT NULL AND @TABLE_NAME IS NULL) OR (@TABLE_NAME IS NULL AND @SCHEMA_NAME IS NOT NULL))
---     RAISEERROR('User need toosupply either both Schema Name and Table Name or none of them')
+--     RAISEERROR('User need to supply either both Schema Name and Table Name or none of them')
        
 -- Dropping temp table if exists.
 IF OBJECT_ID('tempdb..#ref') IS NOT NULL
@@ -279,7 +279,7 @@ BEGIN
   DROP TABLE #ref;
 END
 
--- Creating ref. temptable (CTAS) toohold mapping info.
+-- Creating ref. temptable (CTAS) to hold mapping info.
 -- CREATE TABLE #ref
 CREATE TABLE #ref
 WITH (DISTRIBUTION = ROUND_ROBIN)
@@ -316,7 +316,7 @@ AS
   UNION ALL
     SELECT 'DW6000', 32, 240, 1, 32, 64, 128, 1, 2, 4, 8, 16, 32, 64, 128
 )
--- Creating workload mapping tootheir corresponding slot consumption and default memory grant.
+-- Creating workload mapping to their corresponding slot consumption and default memory grant.
 ,map
 AS
 (
@@ -554,11 +554,11 @@ GO
 ```
 
 ## <a name="query-importance"></a>Význam dotazu
-SQL Data Warehouse implementuje třídy prostředků pomocí skupiny úloh. Existují celkem osm zatížení skupin, které řídí chování hello třídy prostředků hello napříč hello různých velikostí DWU. Pro všechny DWU SQL Data Warehouse používá jenom čtyři hello osm skupiny úloh. To dává smysl, protože každé skupiny úlohy je přiřazen tooone čtyři třídy prostředků: smallrc, mediumrc, largerc, nebo xlargerc. Hello význam pochopení skupiny úloh hello je, že některé z těchto skupin úloh jsou nastaveny toohigher *důležitosti*. Důležitost se používá pro procesoru plánování. Dotazy spustit s vysokou důležitostí získají třikrát více cyklů procesoru než ty, které se střední důležitostí. Proto souběžnosti slotu mapování taky určit Priorita procesoru. Pokud je dotaz spotřebovává 16 nebo víc sloty, běží jako vysokou důležitostí.
+SQL Data Warehouse implementuje třídy prostředků pomocí skupiny úloh. Existují celkem osm skupiny úloh, které ovládání chování třídy prostředků pomocí různých velikostí DWU. Pro všechny DWU SQL Data Warehouse používá jenom čtyři skupiny osm úloh. To dává smysl, protože každé skupiny úlohy je přiřazen k jedné ze čtyř tříd prostředků: smallrc, mediumrc, largerc, nebo xlargerc. Význam pochopení skupiny úloh je, že některé z těchto skupin úloh jsou nastaveny na vyšší *důležitosti*. Důležitost se používá pro procesoru plánování. Dotazy spustit s vysokou důležitostí získají třikrát více cyklů procesoru než ty, které se střední důležitostí. Proto souběžnosti slotu mapování taky určit Priorita procesoru. Pokud je dotaz spotřebovává 16 nebo víc sloty, běží jako vysokou důležitostí.
 
-Hello následující tabulka uvádí hello důležitosti mapování pro každou skupinu úloh.
+Následující tabulka uvádí důležitosti mapování pro každou skupinu úloh.
 
-### <a name="workload-group-mappings-tooconcurrency-slots-and-importance"></a>Zatížení skupiny mapování tooconcurrency sloty a důležitostí
+### <a name="workload-group-mappings-to-concurrency-slots-and-importance"></a>Mapování skupin úloh souběžnosti sloty a význam
 | Skupiny úloh | Mapování slotu souběžnosti | MB / distribuce | Mapování důležitostí |
 |:--- |:---:|:---:|:--- |
 | SloDWGroupC00 |1 |100 |Střednědobé používání |
@@ -570,9 +570,9 @@ Hello následující tabulka uvádí hello důležitosti mapování pro každou 
 | SloDWGroupC06 |64 |6,400 |Vysoký |
 | SloDWGroupC07 |128 |12,800 |Vysoký |
 
-Z hello **přidělení a využití souběžnosti přihrádky** grafu, zjistíte, že DW500 používá 1, 4, 8 nebo 16 souběžnosti sloty pro smallrc, mediumrc, largerc a xlargerc, v uvedeném pořadí. Tyto hodnoty lze vyhledat v hello předcházející důležitosti hello toofind grafu pro každou třídu prostředků.
+Z **přidělení a využití souběžnosti přihrádky** grafu, zjistíte, že DW500 používá 1, 4, 8 nebo 16 souběžnosti sloty pro smallrc, mediumrc, largerc a xlargerc, v uvedeném pořadí. Tyto hodnoty lze vyhledat v předchozí tabulce najít význam pro každou třídu prostředků.
 
-### <a name="dw500-mapping-of-resource-classes-tooimportance"></a>Mapování DW500 tooimportance třídy prostředků
+### <a name="dw500-mapping-of-resource-classes-to-importance"></a>DW500 mapování třídy prostředků na význam
 | Třída prostředků | Skupina úlohy | Použít sloty souběžnosti | MB / distribuce | Význam |
 |:--- |:--- |:---:|:---:|:--- |
 | smallrc |SloDWGroupC00 |1 |100 |Střednědobé používání |
@@ -588,7 +588,7 @@ Z hello **přidělení a využití souběžnosti přihrádky** grafu, zjistíte,
 | staticrc70 |SloDWGroupC03 |16 |1,600 |Vysoký |
 | staticrc80 |SloDWGroupC03 |16 |1,600 |Vysoký |
 
-Můžete použít následující toolook dotazu DMV v hello rozdíly v přidělování prostředků paměti podrobně z perspektivy hello správce zdrojů hello nebo tooanalyze aktivní a historického využití skupiny úloh hello při řešení potíží s hello.
+Následující dotaz DMV můžete se podívat na rozdíly v přidělování prostředků paměti podrobně z pohledu správce zdrojů, nebo pro analýzu aktivní a historického využití skupin zatížení při řešení potíží s.
 
 ```sql
 WITH rg
@@ -637,9 +637,9 @@ ORDER BY
 ```
 
 ## <a name="queries-that-honor-concurrency-limits"></a>Dotazy, které respektovat omezení souběžnosti
-Třídy prostředků se řídí většina dotazů. Tyto dotazy se musí vejít do hello souběžných dotazů a prahové hodnoty slotu souběžnosti. Uživatel, nelze zvolit tooexclude dotaz z modelu slotu hello souběžnosti.
+Třídy prostředků se řídí většina dotazů. Tyto dotazy se musí vejít do obou souběžných dotazů a souběžnost slotu prahové hodnoty. Uživatel nemohou zvolit, aby vyloučili dotaz z modelu concurrency slot.
 
-tooreiterate, hello následující příkazy dodržet prostředků třídy:
+Chcete-li znovu opakují, následující příkazy respektovat třídy prostředků:
 
 * PŘÍKAZ INSERT SELECT
 * AKTUALIZACE
@@ -652,12 +652,12 @@ tooreiterate, hello následující příkazy dodržet prostředků třídy:
 * VYTVOŘIT CLUSTEROVANÝ INDEX COLUMNSTORE
 * VYTVOŘENÍ TABLE AS SELECT (FUNKCE CTAS)
 * Načítání dat
-* Operace přesunu dat prováděné hello služby přesun dat (DMS)
+* Operace přesunu dat prováděné pomocí služby přesun dat (DMS)
 
-## <a name="query-exceptions-tooconcurrency-limits"></a>Omezení tooconcurrency výjimky dotazu
-Některé dotazy nerespektují hello prostředků třída toowhich hello uživatel je přiřazen. Tyto limity souběžnosti toohello výjimky jsou vytvářeny po hello paměťové prostředky potřebné pro konkrétní příkaz nízká, často vzhledem k tomu, že příkaz hello je operace metadat. cílem Hello tyto výjimky je tooavoid větší přidělení paměti pro dotazy, které je nikdy nebudete potřebovat. V těchto případech přiřadit výchozí hello třída malé prostředků (smallrc) je vždycky použijí bez ohledu na Třída prostředků se skutečné hello toohello uživatele. Například `CREATE LOGIN` bude vždy spuštěn v smallrc. Hello prostředků, které vyžaduje toofulfill této operace jsou velmi nízkou, takže neprovede smysl tooinclude hello dotazu v modelu slotu souběžnosti hello.  Tyto dotazy nejsou také omezena hello 32 uživatele souběžnosti limit, neomezený počet tyto dotazy spustit až toohello omezení relace 1 024 relací.
+## <a name="query-exceptions-to-concurrency-limits"></a>Dotaz výjimky souběžnosti omezení
+Některé dotazy nerespektují Třída prostředků, ke kterému je přiřazena uživateli. Tyto výjimky souběžnosti limitům jsou vytvářeny, pokud paměťové prostředky potřebné pro konkrétní příkaz nízká, často vzhledem k tomu, že příkaz je operace metadat. Cílem tyto výjimky se vyhnete větší přidělení paměti pro dotazy, které je nikdy nebudete potřebovat. V těchto případech je výchozí třídu malé prostředků (smallrc) vždycky použijí bez ohledu na to třída skutečné prostředků, které jsou přiřazeny uživateli. Například `CREATE LOGIN` bude vždy spuštěn v smallrc. Prostředky potřebný ke splnění této operace jsou velmi nízkou, takže ho nemá smysl chcete zahrnout do modelu concurrency slotu dotazu.  Tyto dotazy nejsou také omezena souběžnosti limit 32 uživatele, na omezení relace 1 024 relací, které můžete spustit neomezený počet tyto dotazy.
 
-Následující příkazy Hello nerespektují třídy prostředků:
+Následující příkazy nerespektují třídy prostředků:
 
 * Vytvořit nebo VYŘADIT tabulku
 * PŘÍKAZ ALTER TABLE... PŘEPÍNAČE, rozdělení nebo sloučit oddíl
@@ -683,7 +683,7 @@ Removed as these two are not confirmed / supported under SQLDW
 -->
 
 ##  <a name="changing-user-resource-class-example"></a>Změnit v příkladu třída prostředků uživatele
-1. **Vytvořit přihlášení:** otevřete připojení tooyour **hlavní** databáze na serveru SQL hello hostování vaší databázi SQL Data Warehouse a spusťte následující příkazy hello.
+1. **Vytvořit přihlášení:** otevřít připojení k vaší **hlavní** databáze na SQL server hostující databázi SQL Data Warehouse a spusťte následující příkazy.
    
     ```sql
     CREATE LOGIN newperson WITH PASSWORD = 'mypassword';
@@ -691,37 +691,37 @@ Removed as these two are not confirmed / supported under SQLDW
     ```
    
    > [!NOTE]
-   > Je vhodné toocreate uživatele v hlavní databázi hello pro uživatele Azure SQL Data Warehouse. Vytváření uživatele v předloze umožňuje uživatele toologin, pomocí nástroje, například aplikace SSMS bez zadání názvu databáze.  Umožňuje také jejich toouse hello object explorer tooview všechny databáze na serveru SQL server.  Další informace o vytváření a správě uživatelů najdete v tématu [zabezpečení databáze v SQL Data Warehouse][Secure a database in SQL Data Warehouse].
+   > Je vhodné vytvořit uživateli v hlavní databázi pro uživatele Azure SQL Data Warehouse. Vytváření uživatele v předloze umožňuje uživateli přihlášení pomocí nástroje, například aplikace SSMS bez určení názvu databáze.  Také to umožňuje, aby uživatelé používali Průzkumník objektů pokud chcete zobrazit všechny databáze na serveru SQL server.  Další informace o vytváření a správě uživatelů najdete v tématu [zabezpečení databáze v SQL Data Warehouse][Secure a database in SQL Data Warehouse].
    > 
    > 
-2. **Vytvoření SQL Data Warehouse uživatele:** otevřete připojení toohello **SQL Data Warehouse** databáze a spusťte následující příkaz hello.
+2. **Vytvoření SQL Data Warehouse uživatele:** otevřít připojení k **SQL Data Warehouse** databáze a spusťte následující příkaz.
    
     ```sql
     CREATE USER newperson FOR LOGIN newperson;
     ```
-3. **Udělení oprávnění:** hello následující příklad uděluje `CONTROL` na hello **SQL Data Warehouse** databáze. `CONTROL`v hello je hello úroveň databáze ekvivalentní role db_owner v systému SQL Server.
+3. **Udělení oprávnění:** následující příklad povolí `CONTROL` na **SQL Data Warehouse** databáze. `CONTROL`v databázi úroveň je ekvivalentem db_owner v systému SQL Server.
    
     ```sql
-    GRANT CONTROL ON DATABASE::MySQLDW toonewperson;
+    GRANT CONTROL ON DATABASE::MySQLDW to newperson;
     ```
-4. **Zvýšit Třída prostředků:** použití hello následující dotaz tooadd roli uživatele tooa vyšší úlohy správy.
+4. **Zvýšit Třída prostředků:** následující dotaz použít k přidání uživatele do role vyšší úlohy správy.
    
     ```sql
     EXEC sp_addrolemember 'largerc', 'newperson'
     ```
-5. **Třída prostředků snížit:** použití hello následující dotaz tooremove uživatele z role úlohy správy.
+5. **Třída prostředků snížit:** odebrat uživatele z role, úlohy správy pomocí následujícího dotazu.
    
     ```sql
     EXEC sp_droprolemember 'largerc', 'newperson';
     ```
    
    > [!NOTE]
-   > Není možné tooremove uživatele z smallrc.
+   > Není možné odebrat uživatele z smallrc.
    > 
    > 
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>Detekce ve frontě dotazů a jiné zobrazení dynamické správy
-Můžete použít hello `sys.dm_pdw_exec_requests` DMV tooidentify dotazy, které jsou čekajících ve frontě souběžnosti. Dotazuje čekání slot souběžnosti bude mít stav **pozastaveno**.
+Můžete použít `sys.dm_pdw_exec_requests` DMV k identifikaci dotazy, které jsou čekajících ve frontě souběžnosti. Dotazuje čekání slot souběžnosti bude mít stav **pozastaveno**.
 
 ```sql
 SELECT      r.[request_id]                 AS Request_ID
@@ -742,7 +742,7 @@ WHERE   ro.[type_desc]      = 'DATABASE_ROLE'
 AND     ro.[is_fixed_role]  = 0;
 ```
 
-Hello následující dotaz uvádí role, které každý uživatel je přiřazen k.
+Následující dotaz uvádí role, které každý uživatel je přiřazen k.
 
 ```sql
 SELECT     r.name AS role_principal_name
@@ -753,14 +753,14 @@ JOIN    sys.database_principals AS m            ON rm.member_principal_id    = m
 WHERE    r.name IN ('mediumrc','largerc', 'xlargerc');
 ```
 
-SQL Data Warehouse má následující hello počkejte typy:
+SQL Data Warehouse má následující počkejte typy:
 
-* **LocalQueriesConcurrencyResourceType**: dotazy, které se nacházejí mimo hello souběžnosti slotu framework. DMV dotazy a systému funkce, jako `SELECT @@VERSION` jsou příklady místní dotazů.
-* **UserConcurrencyResourceType**: dotazy, které se nacházejí v hello souběžnosti slotu framework. Dotazy pro koncového uživatele tabulky představují příklady, které byste použili tento typ prostředku.
+* **LocalQueriesConcurrencyResourceType**: dotazy, které se nacházejí mimo rozhraní slotu souběžnosti. DMV dotazy a systému funkce, jako `SELECT @@VERSION` jsou příklady místní dotazů.
+* **UserConcurrencyResourceType**: dotazy, které se nacházejí v rozhraní framework slotu souběžnosti. Dotazy pro koncového uživatele tabulky představují příklady, které byste použili tento typ prostředku.
 * **DmsConcurrencyResourceType**: počká vyplývající z operace přesunu dat.
-* **BackupConcurrencyResourceType**: Tento čekání označuje, že se záloha databáze. Hello maximální hodnota pro tento typ prostředku je 1. Pokud požadovaly více záloh v hello současně, hello jiné fronty.
+* **BackupConcurrencyResourceType**: Tento čekání označuje, že se záloha databáze. Maximální hodnota pro tento typ prostředku je 1. Vyžádání více záloh ve stejnou dobu jiné fronty.
 
-Hello `sys.dm_pdw_waits` DMV lze použít toosee prostředky, ke kterým žádost čeká.
+`sys.dm_pdw_waits` DMV lze použít na prostředcích, které se čeká na žádost.
 
 ```sql
 SELECT  w.[wait_id]
@@ -796,7 +796,7 @@ JOIN    sys.dm_pdw_exec_requests r  ON w.[request_id] = r.[request_id]
 WHERE    w.[session_id] <> SESSION_ID();
 ```
 
-Hello `sys.dm_pdw_resource_waits` DMV zobrazuje pouze hello prostředků čeká spotřebovávají daný dotaz. Doba čekání prostředků pouze opatření hello času čekáním na prostředky toobe zadat, jak názvem na rozdíl od toosignal čekací dobu, což je čas hello je potřebná pro hello základní SQL servery tooschedule hello dotaz na hello procesoru.
+`sys.dm_pdw_resource_waits` DMV zobrazuje pouze prostředků čeká spotřebovávají daný dotaz. Doba čekání prostředků pouze měří doba čekání na prostředky, které mají být poskytovány a doba čekání signál, což je čas potřebný pro základní servery SQL při plánování dotaz na procesor.
 
 ```sql
 SELECT  [session_id]
@@ -814,7 +814,7 @@ FROM    sys.dm_pdw_resource_waits
 WHERE    [session_id] <> SESSION_ID();
 ```
 
-Hello `sys.dm_pdw_wait_stats` DMV lze použít pro analýzu Historický trend čeká.
+`sys.dm_pdw_wait_stats` DMV lze použít pro analýzu Historický trend čeká.
 
 ```sql
 SELECT    w.[pdw_node_id]
@@ -828,13 +828,13 @@ FROM    sys.dm_pdw_wait_stats w;
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o správě uživatelů a zabezpečení najdete v tématu [zabezpečení databáze v SQL Data Warehouse][Secure a database in SQL Data Warehouse]. Další informace o tom, jak větší třídy prostředků můžete zlepšení kvality indexu columnstore clusteru, najdete v části [znovu sestavit indexy tooimprove segment kvality].
+Další informace o správě uživatelů a zabezpečení najdete v tématu [zabezpečení databáze v SQL Data Warehouse][Secure a database in SQL Data Warehouse]. Další informace o tom, jak větší třídy prostředků můžete zlepšení kvality indexu columnstore clusteru, najdete v části [nové sestavení indexů ke zlepšení kvality segment].
 
 <!--Image references-->
 
 <!--Article references-->
 [Secure a database in SQL Data Warehouse]: ./sql-data-warehouse-overview-manage-security.md
-[znovu sestavit indexy tooimprove segment kvality]: ./sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality
+[nové sestavení indexů ke zlepšení kvality segment]: ./sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality
 [Secure a database in SQL Data Warehouse]: ./sql-data-warehouse-overview-manage-security.md
 
 <!--MSDN references-->

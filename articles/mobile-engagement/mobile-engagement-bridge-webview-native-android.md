@@ -1,6 +1,6 @@
 ---
-title: "aaaBridge Android webové zobrazení s nativní Mobile Engagement Android SDK"
-description: "Popisuje, jak toocreate most mezi webové zobrazení spuštěn Javascript a hello nativní Mobile Engagement Android SDK"
+title: "Android webové zobrazení most s nativní Mobile Engagement Android SDK"
+description: "Popisuje postup vytvoření most mezi systémem Javascript a nativní Mobile Engagement Android SDK webového zobrazení"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,11 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: a7a09bcc156490fe69ad29a67809745dcfc22da6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f4fc7b3c81747ec80974a99084eeb1acc311f11f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="bridge-android-webview-with-native-mobile-engagement-android-sdk"></a>Android webové zobrazení most s nativní Mobile Engagement Android SDK
 > [!div class="op_single_selector"]
@@ -27,9 +27,9 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Některé mobilní aplikace slouží jako hybridní aplikace, kde je hello aplikace vyvinuté pomocí nativní vývoj pro Android, ale některé nebo všechny hello obrazovky jsou vykreslovány v rámci Android webové zobrazení. Mobile Engagement Android SDK můžete i nadále využívat v rámci těchto aplikací a tento kurz popisuje, jak toogo o to. Ukázkový kód Hello níže podle hello Android dokumentaci [zde](https://developer.android.com/guide/webapps/webview.html#BindingJavaScript). Popisuje, jak by bylo možné tuto metodu zdokumentovaných tooimplement hello stejné pro Mobile Engagement Android SDK pro běžně používané metody tak, aby webové zobrazení z hybridní aplikace lze také zahájit události tootrack požadavků, úloh, chyb, app-info při jejich prostřednictvím potrubí Naše sady SDK pro Android. 
+Některé mobilní aplikace slouží jako hybridní aplikace, kde je aplikace vyvinuté pomocí nativní vývoj pro Android, ale některé nebo všechny obrazovky jsou vykreslovány v rámci Android webové zobrazení. Mobile Engagement Android SDK můžete i nadále využívat v rámci těchto aplikací a tento kurz popisuje, jak chcete-li přejít k provedení tohoto. Následující ukázkový kód podle Android dokumentaci [zde](https://developer.android.com/guide/webapps/webview.html#BindingJavaScript). Popisuje, jak tento zdokumentovaných přístup může k implementaci pro běžně používané metody Mobile Engagement Android SDK na stejný tak, aby webové zobrazení z hybridní aplikace lze také zahájit žádosti o sledování událostí, úloh, chyb, app-info při jejich potrubí pomocí naší sady SDK pro Android. 
 
-1. Je třeba nejprve všech, tooensure, který jste prošli naše [kurzu Začínáme](mobile-engagement-android-get-started.md) toointegrate hello Mobile Engagement Android SDK v hybridní aplikace. Jakmile to uděláte, vaše `OnCreate` metoda bude vypadat podobně jako následující hello.  
+1. První řadě je potřeba zajistit, že jste prošli naše [kurzu Začínáme](mobile-engagement-android-get-started.md) integrovat Mobile Engagement Android SDK v hybridní aplikace. Jakmile to uděláte, vaše `OnCreate` metoda bude vypadat podobně jako následující.  
    
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ Některé mobilní aplikace slouží jako hybridní aplikace, kde je hello aplik
             engagementConfiguration.setConnectionString("<Mobile Engagement Conn String>");
             EngagementAgent.getInstance(this).init(engagementConfiguration);
         }
-2. Nyní se ujistěte, že hybridní aplikace má na obrazovce s webové zobrazení. Hello kód pro něj bude podobné následující toohello kde jsme jsou načítání místní soubor HTML **Sample.html** v hello webové zobrazení v hello `onCreate` metoda obrazovky. 
+2. Nyní se ujistěte, že hybridní aplikace má na obrazovce s webové zobrazení. Kód pro něj bude podobný následujícímu kde jsme jsou načítání místní soubor HTML **Sample.html** ve webovém zobrazení v `onCreate` metoda obrazovky. 
    
         private void SetWebView() {
             WebView myWebView = (WebView) findViewById(R.id.webview);
@@ -52,7 +52,7 @@ Některé mobilní aplikace slouží jako hybridní aplikace, kde je hello aplik
             ...
             SetWebView();
         }
-3. Teď vytvořte most soubor s názvem **WebAppInterface** běžně vytváří obálku přes některé použít metody Mobile Engagement Android SDK pomocí hello `@JavascriptInterface` postupuje podle hello [Android dokumentace ](https://developer.android.com/guide/webapps/webview.html#BindingJavaScript):
+3. Nyní vytvořte most soubor s názvem **WebAppInterface** běžně vytváří obálku přes některé použít metody Mobile Engagement Android SDK, pomocí `@JavascriptInterface` postup uvedený v [Android dokumentaci](https://developer.android.com/guide/webapps/webview.html#BindingJavaScript):
    
         import android.content.Context;
         import android.os.Bundle;
@@ -67,7 +67,7 @@ Některé mobilní aplikace slouží jako hybridní aplikace, kde je hello aplik
         public class WebAppInterface {
             Context mContext;
    
-            /** Instantiate hello interface and set hello context */
+            /** Instantiate the interface and set the context */
             WebAppInterface(Context c) {
                 mContext = c;
             }
@@ -110,7 +110,7 @@ Některé mobilní aplikace slouží jako hybridní aplikace, kde je hello aplik
                 return extras;
             }
         }  
-4. Jakmile jsme vytvořili hello výše most souboru, potřebujeme tooensure, že je spojen s naše webové zobrazení. Pro tento toohappen, je třeba tooedit vaše `SetWebview` metoda, takže to vypadá hello následující:
+4. Jakmile jsme vytvořili výše uvedeného souboru most, potřebujeme zajistit, že je spojen s naše webové zobrazení. K tomu dojít, budete muset upravit vaše `SetWebview` metoda, takže to vypadá takto:
    
         private void SetWebView() {
             WebView myWebView = (WebView) findViewById(R.id.webview);
@@ -119,8 +119,8 @@ Některé mobilní aplikace slouží jako hybridní aplikace, kde je hello aplik
             webSettings.setJavaScriptEnabled(true);
             myWebView.addJavascriptInterface(new WebAppInterface(this), "EngagementJs");
         }
-5. V hello výše fragment kódu, volali jsme `addJavascriptInterface` tooassociate naše most s naše webové zobrazení třídy a také vytvořit popisovač názvem **EngagementJs** toocall hello metody ze souboru most hello. 
-6. Nyní vytvoří hello následující soubor s názvem **Sample.html** ve projekt ve složce s názvem **prostředky** který je načten do hello webové zobrazení a kde hello metody bude volat ze souboru most hello.
+5. Ve výše uvedeném fragmentu volali jsme `addJavascriptInterface` Naše třída most přidružit naše webové zobrazení a také vytvořit popisovač názvem **EngagementJs** volat metody ze souboru most. 
+6. Nyní vytvoří následující soubor s názvem **Sample.html** ve projekt ve složce s názvem **prostředky** který je načten do webové zobrazení a kde metody bude volat ze souboru most.
    
         <!doctype html>
         <html>
@@ -144,7 +144,7 @@ Některé mobilní aplikace slouží jako hybridní aplikace, kde je hello aplik
                         if(input)
                         {
                             var value = input.value;
-                            // Example of how extras info can be passed with hello Engagement logs
+                            // Example of how extras info can be passed with the Engagement logs
                             var extras = '{"CustomerId":"MS290011"}';
    
                             if(value && value.length > 0)
@@ -197,16 +197,16 @@ Některé mobilní aplikace slouží jako hybridní aplikace, kde je hello aplik
                 </div>
             </body>
         </html>
-7. Poznámka: hello následující body o soubor HTML hello výše:
+7. Vezměte na vědomí následující body týkající se souboru HTML výše:
    
-   * Obsahuje sadu vstupních polí, kde je možné poskytnout toobe dat použít jako názvy pro události, úlohy, chyba, AppInfo. Když kliknete na další tooit hello tlačítko, Přišla žádost o toohello Javascript, který nakonec volání metody hello ze hello most souboru toopass toohello toto volání Mobile Engagement Android SDK. 
-   * Jsme jsou označování na některé události toohello statické doplňující informace, úlohy a i chyby toodemonstrate jak to lze provést. Tyto další informace o je odeslán jako řetězec JSON, který je-li hledat v hello `WebAppInterface` souboru, analyzovat a umístí Android `Bundle` a je předána společně s odesílání událostí, úloh, chyb. 
-   * Mobile Engagement úloha je spuštěna s názvem hello zadáte hello vstupní pole, spusťte pro 10 sekund a vypnout. 
-   * Mobile Engagement appinfo nebo značka, se předá s 'jméno_zákazníka' jako hello statické klíč a hodnotu hello, kterou jste zadali v hello vstup jako hodnotu hello hello značky. 
-8. Spuštění hello aplikace a můžete se zobrazí následující hello. Nyní zadejte nějaký název pro událost testování jako hello následující a klikněte na **odeslat** pod ním. 
+   * Obsahuje sadu vstupních polí, kde můžete zadat data, která má být použit jako názvy pro události, úlohy, chyba, AppInfo. Když kliknete na tlačítko vedle sebe, Přišla žádost o jazyka JavaScript, který nakonec volá metody ze souboru most předat volání Mobile Engagement Android SDK. 
+   * Jsme jsou označování na některé statické doplňující informace o události, úlohy a k předvedení toho, jak to lze provést i chyby. Tyto doplňující informace o je odeslán jako řetězec JSON, který je-li hledat v `WebAppInterface` souboru, analyzovat a umístí Android `Bundle` a je předána společně s odesílání událostí, úloh, chyb. 
+   * Mobile Engagement úloha je spuštěna s názvem spustit 10 sekund a zadáte v dialogovém okně vstupní vypnout. 
+   * Mobile Engagement appinfo nebo značka, předá s 'jméno_zákazníka' jako statické klíč a hodnotu, kterou jste zadali v vstup jako hodnotu pro značku. 
+8. Spusťte aplikaci a zobrazí se následující. Nyní zadejte nějaký název pro událost testování takto a klikněte na **odeslat** pod ním. 
    
     ![][1]
-9. Nyní, pokud přejdete toohello **monitorování** karta aplikace a naleznete v části **události -> Podrobnosti o**, zobrazí se tato událost objeví spolu s hello statické aplikace informací, které jsme odesílání. 
+9. Nyní, pokud přejdete do **monitorování** karta aplikace a naleznete v části **události -> Podrobnosti o**, zobrazí se tato událost objeví spolu s statické aplikace informace, které jsme odesílání. 
    
    ![][2]
 

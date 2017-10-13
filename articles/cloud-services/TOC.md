@@ -25,18 +25,18 @@
 ### [Konfigurace pravidel přenosů pro roli](cloud-services-enable-communication-role-instances.md)
 ### [Zpracování událostí životního cyklu cloudových služeb](cloud-services-role-lifecycle-dotnet.md)
 ### [Socket.io (Node.js)](cloud-services-nodejs-chat-app-socketio.md)
-### [Použít Twilio toomake telefonní hovor (.NET)](../partner-twilio-cloud-services-dotnet-phone-call-web-role.md)
+### [Použití Twilia k telefonování (.NET)](../partner-twilio-cloud-services-dotnet-phone-call-web-role.md)
 ### [New Relic](../store-new-relic-cloud-services-dotnet-application-performance-management.md)
 
 ### Konfigurace úloh při spuštění
 #### [Vytvoření úloh při spuštění](cloud-services-startup-tasks.md)
 #### [Běžné úlohy při spuštění](cloud-services-startup-tasks-common.md)
-#### [Pomocí úloh tooInstall .NET role cloudové služby](cloud-services-dotnet-install-dotnet.md)
+#### [Použití úlohy pro instalaci .NET v roli cloudové služby](cloud-services-dotnet-install-dotnet.md)
 
 ### Konfigurace vzdálené plochy
 #### [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
 #### [Portál Classic](cloud-services-role-enable-remote-desktop.md)
-#### [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
+#### [Azure PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 
 ## Nasazení
 ### Vytvoření a nasazení cloudové služby na portálu
@@ -47,7 +47,7 @@
 #### [Azure Portal](cloud-services-custom-domain-name-portal.md)
 #### [Portál Classic](cloud-services-custom-domain-name.md)
 ### [Příprava nasazení cloudové služby (Node.js)](cloud-services-nodejs-stage-application.md)
-### [Připojit tooa vlastní řadiče domény](cloud-services-connect-to-custom-domain.md)
+### [Připojení k vlastnímu řadiči domény](cloud-services-connect-to-custom-domain.md)
 
 ## Správa služby
 ### Běžné úlohy správy
@@ -60,7 +60,7 @@
 ### Konfigurace automatického škálování
 #### [Azure Portal](cloud-services-how-to-scale-portal.md)
 #### [Portál Classic](cloud-services-how-to-scale.md)
-### [Používat prostředky Azure toomanage Python](cloud-services-python-how-to-use-service-management.md)
+### [Použití Pythonu ke správě prostředků Azure](cloud-services-python-how-to-use-service-management.md)
 
 ### [Opravy hostovaného operačního systému](cloud-services-guestos-msrc-releases.md)
 ### Vyřazení hostovaného operačního systému
@@ -80,13 +80,13 @@
 ### [Testování výkonu](../vs-azure-tools-performance-profiling-cloud-services.md)
 #### [Testování pomocí profileru sady Visual Studio](cloud-services-performance-testing-visual-studio-profiler.md)
 ### Povolení diagnostiky
-#### [PowerShell](cloud-services-diagnostics-powershell.md)
+#### [Azure PowerShell](cloud-services-diagnostics-powershell.md)
 #### [.NET](cloud-services-dotnet-diagnostics.md)
 #### [Visual Studio](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
 ### [Použití čítačů výkonu v Diagnostice Azure](cloud-services-dotnet-diagnostics-performance-counters.md)
 ### [Ukládání a zobrazení diagnostických dat v Azure Storage](cloud-services-dotnet-diagnostics-storage.md)
 ### [Trasování cloudové služby pomocí diagnostiky](cloud-services-dotnet-diagnostics-trace-flow.md)
-### [Odeslání diagnostických dat tooApp statistiky](cloud-services-dotnet-diagnostics-applicationinsights.md)
+### [Odesílání diagnostických dat do App Insights](cloud-services-dotnet-diagnostics-applicationinsights.md)
 
 ## Řešení potíží
 ### Ladění 
@@ -98,7 +98,7 @@
 ### [Běžné příčiny recyklování rolí cloudové služby](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md)
 ### [Výchozí velikost složky TEMP je pro roli příliš malá](cloud-services-troubleshoot-default-temp-folder-size-too-small-web-worker-role.md)
 ### [Běžné problémy s nasazením](cloud-services-troubleshoot-deployment-problems.md)
-### [Toostart role se nezdařilo](cloud-services-troubleshoot-roles-that-fail-start.md)
+### [Role se nespustila](cloud-services-troubleshoot-roles-that-fail-start.md)
 ### [Pokyny k zotavení](cloud-services-disaster-recovery-guidance.md)
 ### Cloud Services – nejčastější dotazy
 #### [Dostupnost aplikací a služeb – nejčastější dotazy](cloud-services-application-and-service-availability-faq.md)
@@ -108,8 +108,14 @@
 
 # Referenční informace
 ## [Ukázky kódu](https://azure.microsoft.com/en-us/resources/samples/?service=cloud-services)
-## [.csdef XMLSchema](https://msdn.microsoft.com/library/azure/ee758711)
-## [.cscfg XMLSchema](https://msdn.microsoft.com/library/azure/ee758710)
+## [Schéma .csdef XML](schema-csdef-file.md)
+### [Schéma LoadBalancerProbe](schema-csdef-loadbalancerprobe.md)
+### [Schéma WebRole](schema-csdef-webrole.md)
+### [Schéma WorkerRole](schema-csdef-workerrole.md)
+### [Schéma NetworkTrafficRules](schema-csdef-networktrafficrules.md)
+## [Schéma .cscfg XML](schema-cscfg-file.md)
+### [Schéma rolí](schema-cscfg-role.md)
+### [Schéma NetworkConfiguration](schema-cscfg-networkconfiguration.md)
 ## [REST](https://msdn.microsoft.com/library/azure/ee460812)
 
 # Zdroje a prostředky

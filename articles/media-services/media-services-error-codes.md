@@ -1,6 +1,6 @@
 ---
-title: "kódy chyb aaaAzure Media Services | Microsoft Docs"
-description: "Hello téma nabízí přehled kódů chyb Azure Media Services."
+title: "Kódy chyb Azure Media Services | Microsoft Docs"
+description: "Téma nabízí přehled kódů chyb Azure Media Services."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,91 +14,91 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: juliako
-ms.openlocfilehash: de1ffd6dee8901a3051eb5032536c3669482d6b3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 39886a955124429302609dd9d5a7c20ae7f498d9
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-media-services-error-codes"></a>Kódy chyb Azure Media Services
-Při použití Microsoft Azure Media Services, může se zobrazit kódy chyb protokolu HTTP z hello služby v závislosti na problémy, jako je například ověřování tokenů vypršení platnosti tooactions, které nejsou podporovány ve službě Media Services. Hello tady je seznam **kódy chyb HTTP** , mohou být vráceny Media Services a hello možné způsobí, že pro ně.  
+Při použití Microsoft Azure Media Services, může se zobrazit kódy chyb HTTP ze služby v závislosti na problémy, jako je například ověřování tokenů vypršení platnosti na akce, které nejsou podporovány ve službě Media Services. Následuje seznam **kódy chyb HTTP** , mohou být vráceny Media Services a možné příčiny pro ně.  
 
 ## <a name="400-bad-request"></a>400 – Chybný požadavek
-žádost o Hello obsahuje neplatné informace a se odmítne kvůli tooone hello následujících důvodů:
+Žádost obsahuje neplatné informace a se odmítne kvůli jednomu z následujících důvodů:
 
-* Je zadána Nepodporovaná verze rozhraní API. Nejaktuálnější verzi hello, najdete v části [instalační program pro Media Services REST API vývoj](media-services-rest-how-to-use.md).
-* není určená verze rozhraní API Hello Media Services. Informace o tom, jak toospecify hello verze rozhraní API najdete v tématu [média referenční dokumentace rozhraní API REST služby Operations](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
+* Je zadána Nepodporovaná verze rozhraní API. Nejnovější verzi, naleznete v části [instalační program pro Media Services REST API vývoj](media-services-rest-how-to-use.md).
+* Není určená verze rozhraní API služby Media Services. Informace o tom, jak určit verze rozhraní API najdete v tématu [média referenční dokumentace rozhraní API REST služby Operations](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
   
   > [!NOTE]
-  > Pokud používáte tooconnect tooMedia hello .NET nebo sady Java SDK služby, hello verze rozhraní API je zadán pro vás vždy, když akci a provedení několika akcí proti Media Services.
+  > Pokud používáte k připojení ke službě Media Services .NET nebo sady Java SDK, verze rozhraní API je určena pro vás vždy, když akci a provedení několika akcí proti Media Services.
   > 
   > 
-* Nedefinovaná vlastnost nebyla zadána. Název vlastnosti Hello je v chybové zprávě hello. Lze zadat pouze vlastnosti, které jsou členy dané entity. V tématu [Azure Media Services REST API – referenční informace](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference) seznam entity a jejich vlastnosti.
-* Byla zadána neplatnou hodnotu vlastnosti. Název vlastnosti Hello je v chybové zprávě hello. Zobrazit hello předchozí odkaz pro typy platný vlastností a jejich hodnoty.
+* Nedefinovaná vlastnost nebyla zadána. Název vlastnosti je v chybové zprávě. Lze zadat pouze vlastnosti, které jsou členy dané entity. V tématu [Azure Media Services REST API – referenční informace](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference) seznam entity a jejich vlastnosti.
+* Byla zadána neplatnou hodnotu vlastnosti. Název vlastnosti je v chybové zprávě. Najdete odkaz na předchozí platnou vlastnost typy a jejich hodnoty.
 * Hodnota vlastnosti je chybějící a musí se.
-* Součást hello adresa URL obsahuje neplatná hodnota.
-* Pokus o byl proveden tooupdate WriteOnce vlastnost.
-* Pokus o byl proveden toocreate úlohu, která má vstupní Asset primární AssetFile, který nebyl zadán nebo nebylo možné určit.
-* Pokus o byl proveden tooupdate lokátoru SAS. Lokátory SAS můžou jenom vytvořit nebo odstranit. Lokátory streamování lze aktualizovat. Další informace najdete v tématu [lokátory](https://docs.microsoft.com/rest/api/media/operations/locator).
+* Součást zadaná adresa URL obsahuje neplatná hodnota.
+* Došlo pokusu o aktualizujte vlastnost WriteOnce.
+* Došlo pokusu vytvořit úlohu, která má vstupní Asset primární AssetFile, který nebyl zadán nebo nebylo možné určit.
+* Došlo pokusu o aktualizaci lokátoru SAS. Lokátory SAS můžou jenom vytvořit nebo odstranit. Lokátory streamování lze aktualizovat. Další informace najdete v tématu [lokátory](https://docs.microsoft.com/rest/api/media/operations/locator).
 * Nepodporovanou operaci nebo dotaz byla odeslána.
 
 ## <a name="401-unauthorized"></a>401 unauthorized
-Hello žádost nešlo ověřit (dříve, než lze udělit oprávnění) kvůli tooone hello následujících důvodů:
+Žádost nešlo ověřit (dříve, než lze udělit oprávnění) kvůli jednomu z následujících důvodů:
 
 * Chybí záhlaví ověřování.
 * Hodnota hlavičky chybný ověřování.
-  * vypršela platnost tokenu Hello. 
-  * Hello token obsahuje neplatný podpis.
+  * Platnost tokenu vypršela. 
+  * Token obsahuje neplatný podpis.
 
 ## <a name="403-forbidden"></a>403 Zakázáno
-Hello žádost není povolena kvůli tooone hello následujících důvodů:
+Požadavek není povoleno z důvodu jednu z následujících důvodů:
 
-* Hello účtu Media Services nebyl nalezen nebo je odstraněný.
-* je zakázané Hello účtu Media Services a není typu hello požadavku HTTP GET. Operace služby vrátí 403 odpověď.
-* Hello ověřovací token neobsahuje informace o pověření uživatelů hello: název účtu nebo ID předplatného. Tyto informace najdete v hello rozšíření Media Services uživatelského rozhraní pro váš účet Media Services v hello portálu pro správu Azure.
-* Hello prostředků není přístupný.
+* Účet Media Services nebyl nalezen nebo je odstraněný.
+* Účet Media Services je zakázán a není typ požadavku HTTP GET. Operace služby vrátí 403 odpověď.
+* Ověřovací token neobsahuje přihlašovací údaje uživatele: název účtu nebo ID předplatného. Tyto informace najdete v rozšíření Media Services uživatelského rozhraní pro váš účet Media Services v Azure Management Portal.
+* Nelze získat přístup k prostředku.
   
-  * Pokus o byl proveden toouse MediaProcessor, který není k dispozici pro váš účet Media Services.
-  * Byl proveden pokus o tooupdate JobTemplate definované službou Media Services.
-  * Pokus o byl provedené toooverwrite některé jiné účtu Media Services je lokátoru.
-  * Pokus o byl provedené toooverwrite ContentKey některé jiné Media Services účtu.
-* Nelze vytvořit prostředek Hello kvůli tooa služby kvótu, kterou bylo dosaženo pro účet Media Services hello. Další informace o hello služby kvóty, najdete v části [kvóty a omezení](media-services-quotas-and-limitations.md).
+  * Došlo pokusu o použití MediaProcessor, který není k dispozici pro váš účet Media Services.
+  * Byl proveden pokus o aktualizace JobTemplate definované Media Services.
+  * Byl proveden pokus o přepsat některé jiné účtu Media Services je lokátoru.
+  * Byl proveden pokus o přepsat ContentKey některé jiné Media Services účtu.
+* Prostředek nelze vytvořit z důvodu kvótu služby, bylo dosaženo pro účet Media Services. Další informace o kvót služby najdete v tématu [kvóty a omezení](media-services-quotas-and-limitations.md).
 
 ## <a name="404-not-found"></a>404 – Nenalezeno
-Hello požadavku není povolená na prostředku kvůli tooone hello následujících důvodů:
+Žádost není povolená na prostředku kvůli jednomu z následujících důvodů:
 
-* Pokus o byl proveden tooupdate entita, která neexistuje.
-* Pokus o byl proveden toodelete entita, která neexistuje.
-* Pokus o byl proveden toocreate entita, která propojí tooan entity, která neexistuje.
-* Pokus o byl proveden tooGET entita, která neexistuje.
-* Pokus o byl proveden toospecify účet úložiště, který není spojen s hello účtu Media Services.  
+* Došlo pokusu o aktualizovat entitu, která neexistuje.
+* Došlo pokusu o odstranění entity, která neexistuje.
+* Došlo pokusu o vytvoření entity, který odkazuje na entity, která neexistuje.
+* Došlo k pokusu o NAČTENÍ entity, která neexistuje.
+* Došlo pokusu o zadejte účet úložiště, který není přidružen k účtu Media Services.  
 
 ## <a name="409-conflict"></a>409 – konflikt
-Hello žádost není povolena kvůli tooone hello následujících důvodů:
+Požadavek není povoleno z důvodu jednu z následujících důvodů:
 
-* Více než jeden AssetFile má zadaný název hello v rámci hello Asset.
-* Byl proveden pokus toocreate a sekundu primární AssetFile v rámci hello Asset.
-* Byl proveden pokus o toocreate ContentKey s hello zadané Id již používá.
-* Byl proveden pokus o toocreate lokátoru s hello zadané Id již používá.
-* Více než jeden IngestManifestFile má zadaný název hello v rámci hello IngestManifest.
-* Pokus o byl proveden toolink druhý toohello ContentKey šifrování úložiště Asset šifrovat úložiště.
-* Byl proveden pokus o toolink hello stejné ContentKey toohello Asset.
-* Byl proveden toocreate Lokátor tooan Asset jejichž kontejner úložiště chybí nebo je už přidružený hello Asset.
-* Pokus o byl proveden toocreate Lokátor tooan Asset, který již má 5 lokátory používá. (Úložiště azure vynucuje omezení hello pět zásady sdíleného přístupu na jeden kontejner úložiště.)
-* Propojení účtu úložiště Asset tooan IngestManifestAsset není hello stejný jako účet úložiště hello používá nadřazené hello IngestManifest.  
+* Více než jeden AssetFile má zadaný název v rámci prostředku.
+* Byl proveden pokus o vytvoření druhého primární AssetFile v rámci prostředku.
+* Došlo k pokusu o vytvoření ContentKey se zadaným Id už používá.
+* Došlo pokusu vytvořit lokátor se zadaným Id už používá.
+* Více než jeden IngestManifestFile má zadaný název v rámci IngestManifest.
+* Došlo pokusu o druhý šifrování úložiště ContentKey propojit Asset šifrovat úložiště.
+* Byl proveden pokus o propojení stejné ContentKey pro daný prostředek.
+* Došlo pokusu vytvořit lokátor pro prostředek, jehož kontejner úložiště chybí nebo je už přidružený Asset.
+* Došlo pokusu vytvořit lokátor pro prostředek, který již má 5 lokátory používá. (Úložiště azure vynucuje omezení pět zásady sdíleného přístupu na jeden kontejner úložiště.)
+* Propojování účtu úložiště prostředek IngestManifestAsset není stejný jako účet úložiště využívá nadřízený objekt IngestManifest.  
 
 ## <a name="500-internal-server-error"></a>500 vnitřní chybu serveru
-Během zpracování požadavku hello hello zaznamená Media Services nějaká chyba, která zabraňuje hello zpracování pokračovat. To může být kvůli tooone hello následujících důvodů:
+Během zpracování požadavku, zaznamená Media Services nějaká chyba, která zabraňuje zpracování pokračovat. Může to být způsobené jedním z následujících důvodů:
 
-* Vytvoření úlohy nebo Asset nezdaří, protože informace o kvótě účtu Media Services hello služba je dočasně nedostupná.
-* Vytvoření prostředku nebo IngestManifest kontejner úložiště objektů blob se nezdaří, protože informace o účtu úložiště hello účet je dočasně nedostupná.
+* Vytvoření úlohy nebo Asset nezdaří, protože informace o kvótě účtu Media Services služba je dočasně nedostupná.
+* Vytvoření prostředku nebo IngestManifest kontejner úložiště objektů blob se nezdaří, protože informace o účtu úložiště na účet je dočasně nedostupná.
 * Další neočekávané chyby.
 
 ## <a name="503-service-unavailable"></a>503 Služba nedostupná
-Hello server je momentálně nemůže tooreceive požadavky. Tato chyba může být způsobeno službou toohello nadměrné požadavky. Služba Media Services omezení mechanismus omezuje hello využití prostředků pro aplikace, které služby toohello nadměrné požadavku.
+Server je nyní nelze přijmout požadavky. Tato chyba může být způsobeno nadměrné požadavky na službu. Služba Media Services omezení mechanismus omezuje využití prostředků pro aplikace, které provést nadměrné požadavek na službu.
 
 > [!NOTE]
-> Kontrola hello chyba zprávu a chyba kód řetězec tooget podrobnější informace o hello důvod, které jste získali hello 503 chyby. Tato chyba vždy neznamená omezení.
+> Zkontrolujte chybovou zprávou a řetězec kódu chyby. Chcete-li získat podrobnější informace o příčině, že jste získali 503 chyby. Tato chyba vždy neznamená omezení.
 > 
 > 
 
@@ -108,10 +108,10 @@ Možné stav popisy jsou:
 * "Server je zaneprázdněn. Více než {0} požadavků za sekundu může být omezena."
 * "Server je zaneprázdněn. Více než {0} požadavky během několika sekund {1} může být omezena."
 
-toohandle této chybě, doporučujeme použít logiku exponenciální opakování back vypnout. To znamená, pomocí progresivně delší čeká mezi jednotlivými pokusy o po sobě jdoucích chybové odpovědi.  Další informace najdete v tématu [přechodné chyby zpracování bloku aplikace](https://msdn.microsoft.com/library/hh680905.aspx).
+Pro zpracování této chybě, doporučujeme používat logiku exponenciální opakování back vypnout. To znamená, pomocí progresivně delší čeká mezi jednotlivými pokusy o po sobě jdoucích chybové odpovědi.  Další informace najdete v tématu [přechodné chyby zpracování bloku aplikace](https://msdn.microsoft.com/library/hh680905.aspx).
 
 > [!NOTE]
-> Pokud používáte [Azure Media Services SDK pro .net](https://github.com/Azure/azure-sdk-for-media-services/tree/master), byl implementován hello logika opakovaných pokusů pro chybu hello 503 ve hello SDK.  
+> Pokud používáte [Azure Media Services SDK pro .net](https://github.com/Azure/azure-sdk-for-media-services/tree/master), logiku opakovaných pokusů pro chyby 503 nebyla implementovaná sadou SDK.  
 > 
 > 
 

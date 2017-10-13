@@ -1,6 +1,6 @@
 ---
-title: "aaaSet až úložiště pro virtuální počítač Azure repliction mezi oblastmi s Azure Site Recovery | Microsoft Docs"
-description: "Shrnuje kroky hello nutné tooset až do trezoru pro Azure replikaci mezi oblastmi Azure pomocí Azure Site Recovery"
+title: "Nastavení úložiště pro virtuální počítač Azure repliction mezi oblastmi s Azure Site Recovery | Microsoft Docs"
+description: "Shrnuje kroky, které budete muset nastavit trezor Azure replikace mezi oblastmi Azure pomocí Azure Site Recovery"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: raynew
-ms.openlocfilehash: 9959c59c7ea57114763f13bf060404ddd267ba80
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e03d17992ee0b12049636e40188950bcc4a6f31e
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="step-4-set-up-a-vault-for-azure-tooazure-replication"></a>Krok 4: Nastavení trezoru Azure tooAzure replikace
+# <a name="step-4-set-up-a-vault-for-azure-to-azure-replication"></a>Krok 4: Nastavení trezoru pro replikaci Azure do Azure
 
-Po [plánování sítě](azure-to-azure-walkthrough-network.md), použijte tento článek tooset nahoru k trezoru pro virtuální počítače Azure (VM) replikace tooanother oblast Azure, pomocí hello [Azure Site Recovery](site-recovery-overview.md) služby v hello portálu Azure.
+Po [plánování sítě](azure-to-azure-walkthrough-network.md), použijte tento článek k nastavení trezoru, pro virtuální počítače Azure (VM) replikující se do jiné oblasti Azure, pomocí [Azure Site Recovery](site-recovery-overview.md) službu na portálu Azure.
 
-- Po dokončení hello článku, měli byste mít nastavení trezoru služeb zotavení.
-- Odeslat všechny komentáře v dolní části hello tohoto článku nebo pokládání dotazů v hello [fóru Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+- Po dokončení článek, měli byste mít nastavení trezoru služeb zotavení.
+- Případné připomínky můžete publikovat na konci tohoto článku nebo na [fóru služby Azure Site Recovery](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 
 
@@ -42,9 +42,9 @@ Po [plánování sítě](azure-to-azure-walkthrough-network.md), použijte tento
 
 >[!NOTE]
 >
-> Doporučujeme vytvořit trezor služeb zotavení hello v hello umístění, kam má tooreplicate vaše virtuální počítače. Například pokud cílové umístění je hello střed USA, vytvořte trezor hello v **střed USA**.
+> Doporučujeme vytvořit trezor služeb zotavení v umístění, kde chcete replikovat virtuální počítače. Například, pokud cílové umístění je střed USA, vytvořte trezor v **střed USA**.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Přejděte příliš[krok 5: povolení replikace](azure-to-azure-walkthrough-enable-replication.md)
+Přejděte na [krok 5: povolení replikace](azure-to-azure-walkthrough-enable-replication.md)

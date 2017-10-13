@@ -1,6 +1,6 @@
 ---
-title: "aaaView aktivita Azure protokoly toomonitor prostředky | Microsoft Docs"
-description: "Použití hello aktivity protokoly tooreview uživatele akcí a chyby. Zobrazuje portálu prostředí Azure PowerShell, rozhraní příkazového řádku Azure a REST."
+title: "Zobrazit protokoly aktivita Azure k monitorování zdrojů | Microsoft Docs"
+description: "Použijte protokoly aktivity zkontrolujte akcemi uživatelů a chyby. Zobrazuje portálu prostředí Azure PowerShell, rozhraní příkazového řádku Azure a REST."
 services: azure-resource-manager
 documentationcenter: 
 author: tfitzmac
@@ -14,75 +14,75 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: tomfitz
-ms.openlocfilehash: 8430ed2a9c1dfe5f13423a55d358e590b0facb22
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 9f90bc80c146c6c2da04aacbc110f7d389c0baa2
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="view-activity-logs-tooaudit-actions-on-resources"></a>Zobrazit aktivitu protokoluje akce tooaudit na prostředky
+# <a name="view-activity-logs-to-audit-actions-on-resources"></a>Zobrazit protokoly aktivity akce u prostředků
 Prostřednictvím protokolů činnosti můžete určit:
 
-* jaké operace provedené na hello prostředky ve vašem předplatném
-* Kdo inicioval hello operace (i když operations iniciovaná back-end službu nevrátí uživatele jako volající hello)
-* Pokud došlo k operaci hello
-* Hello stav operace hello
-* Hello hodnotách jiných vlastností, které vám můžou pomoct zkoumání operaci hello
+* jaké operace provedené na prostředky v rámci vašeho předplatného
+* Kdo inicioval operaci (i když operations iniciovaná back-end službu nevrátí uživatele jako volající)
+* Při operaci došlo k chybě
+* Stav operace
+* Hodnoty další vlastnosti, které vám můžou pomoct zkoumání operaci
 
 [!INCLUDE [resource-manager-audit-limitations](../../includes/resource-manager-audit-limitations.md)]
 
-Mohou načítat informace z protokolů činnosti hello prostřednictvím portálu hello prostředí PowerShell, rozhraní příkazového řádku Azure, rozhraní API pro přehledy REST, nebo [knihovny .NET Insights](https://www.nuget.org/packages/Microsoft.Azure.Insights/).
+Můžete načíst informace z protokolů aktivity prostřednictvím portálu, prostředí PowerShell, rozhraní příkazového řádku Azure, rozhraní API pro přehledy REST, nebo [knihovny .NET Insights](https://www.nuget.org/packages/Microsoft.Azure.Insights/).
 
 ## <a name="portal"></a>Portál
-1. Vyberte protokoly aktivity hello tooview prostřednictvím portálu hello **monitorování**.
+1. Chcete-li zobrazit protokoly aktivity přes portál, vyberte **monitorování**.
    
     ![Vyberte protokoly aktivity](./media/resource-group-audit/select-monitor.png)
 
-   Nebo tooautomatically filtru hello protokol aktivit pro konkrétní prostředek nebo skupina prostředků, vyberte **protokol aktivit** z tohoto okna prostředků. Všimněte si, že protokol aktivit hello se automaticky filtruje hello vybraný prostředek.
+   Nebo pokud chcete automaticky filtrovat protokol aktivit pro konkrétní prostředek nebo skupina prostředků, vyberte **protokol aktivit** z tohoto okna prostředků. Všimněte si, že je protokol aktivit automaticky filtrovaná podle vybraného prostředku.
    
     ![Filtrovat podle prostředků](./media/resource-group-audit/filtered-by-resource.png)
-2. V hello **protokol aktivit** okně se zobrazí souhrn posledních operací.
+2. V **protokol aktivit** okně se zobrazí souhrn posledních operací.
    
     ![Zobrazit akce](./media/resource-group-audit/audit-summary.png)
-3. toorestrict hello počet operací se zobrazí, vyberte jiné podmínky. Například hello následující obrázek ukazuje hello **časový interval** a **událostí iniciovaná** pole změněna tooview hello akce provedené konkrétní uživatele nebo aplikace pro hello poslední měsíc. Vyberte **použít** tooview hello výsledky dotazu.
+3. Pokud chcete omezit počet operací zobrazí, vyberte jiné podmínky. Například na následujícím obrázku **časový interval** a **událostí iniciovaná** pole změnit tak, aby zobrazení akce prováděné konkrétního uživatele nebo aplikace pro poslední měsíc. Vyberte **použít** pro zobrazení výsledků dotazu.
    
     ![Nastavení možností filtru](./media/resource-group-audit/set-filter.png)
 
-4. Pokud později potřebujete toorun hello dotazu, vyberte **Uložit** a pojmenujte hello dotazu.
+4. Pokud potřebujete spusťte dotaz znovu později, vyberte **Uložit** a zadejte název dotazu.
    
     ![uložení dotazu](./media/resource-group-audit/save-query.png)
-5. tooquickly spuštění dotazu, můžete vybrat jeden z předdefinovaných hello dotazů, například selhání nasazení.
+5. Chcete-li rychle spuštění dotazu, můžete vybrat jeden z předdefinovaných dotazů, například selhání nasazení.
 
     ![Vybrat dotaz](./media/resource-group-audit/select-quick-query.png)
 
-   Vybraný dotaz Hello automaticky nastaví hello požadované hodnoty filtru.
+   Vybraný dotaz automaticky nastaví hodnoty požadované filtru.
 
     ![Zobrazit chyby nasazení](./media/resource-group-audit/view-failed-deployment.png)   
 
-6. Vyberte jednu z hello operations toosee souhrn události hello.
+6. Vyberte jednu z operace se zobrazí souhrn události.
 
     ![Operace zobrazení](./media/resource-group-audit/view-operation.png)  
 
 ## <a name="powershell"></a>PowerShell
-1. položky protokolu tooretrieve, spusťte hello **Get-AzureRmLog** příkaz. Je zadat další parametry toofilter hello seznamu položek. Pokud nezadáte počáteční a koncový čas, vrátí se záznamy pro hello poslední hodinu. Například spusťte tooretrieve hello operace pro skupinu prostředků během poslední hodiny hello:
+1. Chcete-li načíst položky protokolu, spusťte **Get-AzureRmLog** příkaz. Můžete zadat další parametry pro filtrování seznamu položek. Pokud nezadáte počáteční a koncový čas, vrátí se položky za poslední hodinu. Chcete-li například získat operace pro skupinu prostředků během poslední hodiny spustit:
 
   ```powershell
   Get-AzureRmLog -ResourceGroup ExampleGroup
   ```
    
-    Hello následující příklad ukazuje, jak toouse hello aktivity protokolu tooresearch operace prováděné během zadané doby. Hello počátečním a koncovým datem nejsou zadány ve formátu data.
+    Následující příklad ukazuje, jak používat protokol aktivit k operacím research prováděné během zadané doby. Počáteční a koncové datum nejsou zadány ve formátu data.
 
   ```powershell
   Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime 2015-08-28T06:00 -EndTime 2015-09-10T06:00
   ```
 
-    Nebo můžete použít funkce toospecify hello datum rozsah dat, jako je například hello posledních 14 dní.
+    Nebo můžete použít funkce datum zadat rozsah dat, jako je například posledních 14 dní.
    
   ```powershell 
   Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14)
   ```
 
-2. V závislosti na hello čas zahájení, který zadáte může vrátit předchozí příkazy hello dlouhý seznam operací pro skupinu prostředků hello. Můžete filtrovat výsledky hello co hledáte tím, že poskytuje kritéria vyhledávání. Například pokud se pokoušíte tooresearch jak webové aplikace byla zastavena, může spustit hello následující příkaz:
+2. V závislosti na čas spuštění, který zadáte může vrátit předchozí příkazy dlouhý seznam operací pro skupinu prostředků. Můžete filtrovat výsledky pro co hledáte tím, že poskytuje kritéria vyhledávání. Například pokud chcete prozkoumat, jak byla zastavena webovou aplikaci, můžete spustit následující příkaz:
 
   ```powershell
   Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14) | Where-Object OperationName -eq Microsoft.Web/sites/stop/action
@@ -108,7 +108,7 @@ Mohou načítat informace z protokolů činnosti hello prostřednictvím portál
   SubStatus         : OK
   ```
 
-3. Můžete vyhledat hello akce prováděné určitého uživatele, i pro skupinu prostředků, která již existuje.
+3. Můžete vyhledat akce prováděné určitého uživatele, i pro skupinu prostředků, která již existuje.
 
   ```powershell 
   Get-AzureRmLog -ResourceGroup deletedgroup -StartTime (Get-Date).AddDays(-14) -Caller someone@contoso.com
@@ -120,7 +120,7 @@ Mohou načítat informace z protokolů činnosti hello prostřednictvím portál
   Get-AzureRmLog -ResourceGroup ExampleGroup -Status Failed
   ```
 
-5. Můžete se zaměřit na jednu chybu prohlížením hello stavovou zprávu pro tuto položku.
+5. Můžete se zaměřit na jednu chybu pohledem na stavové zprávy pro tuto položku.
    
         ((Get-AzureRmLog -Status Failed -ResourceGroup ExampleGroup -DetailedOutput).Properties[1].Content["statusMessage"] | ConvertFrom-Json).error
    
@@ -132,7 +132,7 @@ Mohou načítat informace z protokolů činnosti hello prostřednictvím portál
 
 
 ## <a name="azure-cli"></a>Azure CLI
-* tooretrieve položky protokolu, spusťte hello **zobrazit skupiny azure protokolu** příkaz.
+* Chcete-li načíst položky protokolu, spusťte **zobrazit skupiny azure protokolu** příkaz.
 
   ```azurecli
   azure group log show ExampleGroup --json
@@ -140,11 +140,11 @@ Mohou načítat informace z protokolů činnosti hello prostřednictvím portál
 
 
 ## <a name="rest-api"></a>REST API
-Hello operace REST pro práci s hello protokolu aktivit jsou součástí hello [rozhraní REST API pro přehledy](https://msdn.microsoft.com/library/azure/dn931943.aspx). tooretrieve aktivity protokolu události, viz [seznam událostí správy hello v předplatném](https://msdn.microsoft.com/library/azure/dn931934.aspx).
+Operace REST pro práci s protokolu aktivit jsou součástí [rozhraní REST API pro přehledy](https://msdn.microsoft.com/library/azure/dn931943.aspx). Načtení aktivity protokolu události, najdete v části [seznam událostí správy v předplatném](https://msdn.microsoft.com/library/azure/dn931934.aspx).
 
 ## <a name="next-steps"></a>Další kroky
-* Azure protokoly aktivity lze použít s Power BI toogain lepší přehled o hello akce v rámci vašeho předplatného. V tématu [zobrazení a analýza protokolů Azure aktivity v Power BI a další](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
-* toolearn o nastavení zásad zabezpečení, najdete v části [řízení přístupu na základě Role v Azure](../active-directory/role-based-access-control-configure.md).
-* toolearn o hello příkazy pro zobrazení operace nasazení, najdete v části [zobrazit operace nasazení](resource-manager-deployment-operations.md).
-* jak zjistit, tooprevent odstranění prostředku pro všechny uživatele, toolearn [zamknutí prostředků pomocí Azure Resource Manageru](resource-group-lock-resources.md).
+* Azure protokoly aktivity s Power BI můžete použít k získání lepší přehled o akcích v rámci vašeho předplatného. V tématu [zobrazení a analýza protokolů Azure aktivity v Power BI a další](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
+* Další informace o nastavení zásad zabezpečení najdete v tématu [řízení přístupu na základě Role v Azure](../active-directory/role-based-access-control-configure.md).
+* Další informace o příkazy pro zobrazení operace nasazení najdete v tématu [zobrazit operace nasazení](resource-manager-deployment-operations.md).
+* Informace o tom, aby se zabránilo odstranění prostředku pro všechny uživatele, najdete v části [zamknutí prostředků pomocí Azure Resource Manageru](resource-group-lock-resources.md).
 

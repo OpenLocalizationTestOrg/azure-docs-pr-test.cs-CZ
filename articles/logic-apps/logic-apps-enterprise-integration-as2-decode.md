@@ -1,6 +1,6 @@
 ---
-title: "zprávy aaaDecode AS2 – Azure Logic Apps | Microsoft Docs"
-description: "Jak toouse hello AS2 decoder v hello Enterprise integrační balíček pro Azure Logic Apps"
+title: "Dekódovat AS2 zprávy – Azure Logic Apps | Microsoft Docs"
+description: "Jak používat dekodér AS2 v podniku integrační balíček pro Azure Logic Apps"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 2406e5ec68e0906700fad97d60cb83ef0d106cd6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a7920b2509fe368c6f7d55e17fe0bf0020c4562c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="decode-as2-messages-for-azure-logic-apps-with-hello-enterprise-integration-pack"></a>Dekódovat AS2 zprávy pro Azure Logic Apps s hello Enterprise integračního balíčku 
+# <a name="decode-as2-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Dekódovat AS2 zprávy pro Azure Logic Apps s Enterprise integračního balíčku 
 
-tooestablish zabezpečení a spolehlivost při přenášení zpráv pomocí konektoru zpráva dekódovat AS2 hello. Tento konektor poskytuje digitální podpis, dešifrování a potvrzení prostřednictvím zpráv dispozice oznámení (MDN).
+K vytvoření zabezpečení a spolehlivost při přenosu zprávy, pomocí konektoru zpráva dekódovat AS2. Tento konektor poskytuje digitální podpis, dešifrování a potvrzení prostřednictvím zpráv dispozice oznámení (MDN).
 
 ## <a name="before-you-start"></a>Než začnete
 
-Tady je hello položky, které budete potřebovat:
+Tady je položky, které budete potřebovat:
 
 * Účet Azure; můžete vytvořit [bezplatný účet](https://azure.microsoft.com/free)
-* [Integrace účet](logic-apps-enterprise-integration-create-integration-account.md) který již má definovaný a přidružené k předplatnému Azure. Musíte mít konektoru integrace účet toouse hello dekódovat AS2 zprávy.
+* [Integrace účet](logic-apps-enterprise-integration-create-integration-account.md) který již má definovaný a přidružené k předplatnému Azure. Musí mít účet integrace k používání konektoru zpráva dekódovat AS2.
 * Alespoň dva [partnery](logic-apps-enterprise-integration-partners.md) , jsou již definováni ve vašem účtu integrace
 * [Smlouvy AS2](logic-apps-enterprise-integration-as2.md) , již je definována v účtu integrace
 
@@ -37,13 +37,13 @@ Tady je hello položky, které budete potřebovat:
 
 1. [Vytvoření aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md).
 
-2. Hello dekódovat AS2 zpráva konektor nemá aktivačních událostí, je nutné přidat aktivační událost pro spuštění aplikace logiky, jako je aktivační událost požadavku. V hello návrhář aplikace logiky přidejte aktivační události a poté přidejte logiku aplikace tooyour akce.
+2. Konektor dekódovat AS2 zpráva nemá aktivačních událostí, je nutné přidat aktivační událost pro spuštění aplikace logiky, jako je aktivační událost požadavku. V návrháři aplikace logiky přidejte aktivační událost a potom přidat akci do aplikace logiky.
 
-3.  Hello vyhledávacího pole zadejte "AS2" filtru. Vyberte **AS2 - dekódovat AS2 zpráva**.
+3.  Do vyhledávacího pole zadejte "AS2" filtru. Vyberte **AS2 - dekódovat AS2 zpráva**.
    
     ![Vyhledejte "AS2"](media/logic-apps-enterprise-integration-as2-decode/as2decodeimage1.png)
 
-4. Pokud jste nevytvořili dříve všechna připojení tooyour integrace účet, se zobrazí výzva toocreate nyní toto připojení. Název připojení a vyberte účet hello integrace, které chcete tooconnect.
+4. Pokud jste nevytvořili dříve všechna připojení k vašemu účtu integrace, se zobrazí výzva k vytvoření připojení nyní. Název připojení a vyberte integrační účet, který chcete připojit.
    
     ![Vytvoření připojení integrace](media/logic-apps-enterprise-integration-as2-decode/as2decodeimage2.png)
 
@@ -52,13 +52,13 @@ Tady je hello položky, které budete potřebovat:
     | Vlastnost | Podrobnosti |
     | --- | --- |
     | Název připojení * |Zadejte libovolný název pro připojení. |
-    | Integrace účet * |Zadejte název pro váš účet integrace. Ujistěte se, že integrace účet a logiku aplikace jsou v hello stejného umístění Azure. |
+    | Integrace účet * |Zadejte název pro váš účet integrace. Ujistěte se, že integrace účet a logiku aplikace jsou ve stejné oblasti Azure. |
 
-5.  Když jste hotovi, podrobné informace o připojení by měla vypadat podobně jako příklad toothis. toofinish vytváření připojení, zvolte **vytvořit**.
+5.  Když jste hotovi, by měla vypadat podobně jako tento příklad podrobné informace o připojení. Dokončete vytváření připojení, zvolte **vytvořit**.
 
     ![Podrobné informace o integraci připojení](media/logic-apps-enterprise-integration-as2-decode/as2decodeimage3.png)
 
-6. Po vytvoření připojení, jak je znázorněno v tomto příkladu, vyberte **textu** a **hlavičky** z hello požadavku výstupy.
+6. Po vytvoření připojení, jak je znázorněno v tomto příkladu, vyberte **textu** a **hlavičky** z výstupů požadavku.
    
     ![Vytvoření připojení integrace](media/logic-apps-enterprise-integration-as2-decode/as2decodeimage4.png) 
 
@@ -68,27 +68,27 @@ Tady je hello položky, které budete potřebovat:
 
 ## <a name="as2-decoder-details"></a>Podrobnosti decoder AS2
 
-konektor dekódovat AS2 Hello provádí tyto úlohy: 
+Konektor dekódovat AS2 provádí tyto úlohy: 
 
 * Zpracuje hlavičky AS2/HTTP
-* Ověří podpis hello (Pokud je nakonfigurováno)
-* Dešifruje hello zprávy (Pokud je nakonfigurováno)
-* Dekomprimuje uvítací zprávu (Pokud je nakonfigurováno)
-* Sloučí přijaté MDN s původní odchozí zprávy hello
-* Aktualizace a korelaci záznamy v databázi nepopiratelnosti hello
+* Ověří podpis (Pokud je nakonfigurováno)
+* Dešifruje zprávy (Pokud je nakonfigurováno)
+* Dekomprimuje zprávy (Pokud je nakonfigurováno)
+* Sloučí přijaté MDN s původní odchozí zprávy
+* Aktualizace a záznamy v databázi nepopiratelnosti korelaci
 * Zapíše záznamy pro generování sestav o stavu AS2
-* Hello výstupní datovou část obsahu jsou kódováním base64
-* Určuje, jestli MDN je nutné a jestli hello MDN by měla být synchronní nebo asynchronní na základě konfigurace smlouvy AS2
+* Výstupní datové části obsahu jsou kódováním base64
+* Určuje, jestli MDN je nutné a jestli MDN by měla být synchronní nebo asynchronní na základě konfigurace smlouvy AS2
 * Generuje synchronní nebo asynchronní MDN (podle konfigurace smlouvy)
-* Nastaví na hello MDN hello korelace tokeny a vlastnosti
+* Nastaví na MDN korelace tokeny a vlastnosti
 
 ## <a name="try-this-sample"></a>Zkuste tuto ukázku
 
-tootry nasazení plně funkční logiku aplikace a ukázkové AS2 scénáři, najdete v části hello [AS2 šablona aplikace logiky a scénář](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/).
+Pokud chcete vyzkoušet nasazení plně funkční logiku aplikace a ukázkový scénář AS2, najdete v článku [AS2 šablona aplikace logiky a scénář](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/).
 
-## <a name="view-hello-swagger"></a>Zobrazení hello swagger
-V tématu hello [swagger podrobnosti](/connectors/as2/). 
+## <a name="view-the-swagger"></a>Zobrazení swagger
+Najdete v článku [swagger podrobnosti](/connectors/as2/). 
 
 ## <a name="next-steps"></a>Další kroky
-[Další informace o hello Enterprise integračního balíčku](logic-apps-enterprise-integration-overview.md) 
+[Další informace o Enterprise integračního balíčku](logic-apps-enterprise-integration-overview.md) 
 

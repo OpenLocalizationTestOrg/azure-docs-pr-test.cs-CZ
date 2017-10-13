@@ -1,6 +1,6 @@
 ---
-title: "aaaChange hello trezoru klíčů ID klienta po přesunutí předplatné | Microsoft Docs"
-description: "Zjistěte, jak přesunout tooswitch hello ID klienta pro trezor klíčů po předplatné tooa různých klienta"
+title: "Změna ID tenanta trezoru klíčů po přesunu předplatného | Dokumentace Microsoftu"
+description: "Zjistěte, jak přepnout ID tenanta pro trezor klíčů po přesunu předplatného na jiného tenanta"
 services: key-vault
 documentationcenter: 
 author: amitbapat
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: ambapat
-ms.openlocfilehash: 4d0607208c61c57959439d2d0bd8feade4141fee
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 2f007dd4f877b48003cddcefa5f4321049853361
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>Změna ID tenanta trezoru klíčů po přesunu předplatného
-### <a name="q-my-subscription-was-moved-from-tenant-a-tootenant-b-how-do-i-change-hello-tenant-id-for-my-existing-key-vault-and-set-correct-acls-for-principals-in-tenant-b"></a>Otázka: Moje předplatné byl přesunut z klienta A tootenant B. Jak změnit hello ID klienta pro moje existující trezor klíčů a nastavte správné seznamy ACL pro objekty v klientovi B?
-Při vytváření nového trezoru klíčů v odběru, je ID klienta Azure Active Directory automaticky vázanou toohello výchozí pro toto předplatné. Všechny položky zásad přístupu jsou také vázanou toothis ID klienta. Při přesunutí vašeho předplatného Azure z klienta tootenant B, vaše existující klíč, které jsou nedostupné podle trezory hello objekty (uživatelé a aplikace) v klientovi B. toofix tento problém, budete muset:
+### <a name="q-my-subscription-was-moved-from-tenant-a-to-tenant-b-how-do-i-change-the-tenant-id-for-my-existing-key-vault-and-set-correct-acls-for-principals-in-tenant-b"></a>Otázka: Moje předplatné bylo přesunuto z tenanta A na tenanta B. Jak změním ID tenanta pro stávající trezor klíčů a nastavím správné seznamy ACL pro objekty zabezpečení v tenantu B?
+Když v rámci předplatného vytvoříte nový trezor klíčů, je automaticky vázán na výchozí ID tenanta služby Azure Active Directory pro dané předplatné. Zároveň jsou k tomuto ID tenanta vázány i všechny položky zásad přístupu. Když přesunete předplatné Azure z tenanta A na tenanta B, stávající trezory klíčů budou pro objekty zabezpečení (uživatelé a aplikace) v tenantu B nepřístupné. Oprava tohoto problému vyžaduje následující postup:
 
-* Změňte ID klienta hello přidružené všechny existující trezorů klíčů ve toto předplatné tootenant B.
+* Změňte ID tenanta přidružené ke všem stávajícím trezorům klíčů v tomto předplatném na tenanta B.
 * Odeberte všechny stávající položky zásad přístupu.
 * Přidejte nové položky zásad přístupu, které jsou přidružené k tenantu B.
 
-Například pokud máte 'myvault' pro trezor klíčů v odběru, který byl přesunut z klienta A tootenant B, zde je jak toochange hello ID klienta pro tento trezor klíčů a odeberte starý zásady přístupu.
+Například pokud máte trezor klíčů s názvem „muj_trezor“ v předplatném, které bylo přesunuto z tenanta A na tenanta B, následujícím postupem změníte ID tenanta pro tento trezor klíčů a odeberete staré zásady přístupu.
 
 <pre>
 $Select-AzureRmSubscription -SubscriptionId YourSubscriptionID
@@ -39,10 +39,10 @@ $vault.Properties.AccessPolicies = @()
 Set-AzureRmResource -ResourceId $vaultResourceId -Properties $vault.Properties
 </pre>
 
-Protože se tento trezor klienta A před hello přesunutí, hello původní hodnotu **$vault. Properties.TenantId** je klienta A chvíli **(Get-AzureRmContext). Tenant.TenantId** je klienta B.
+Protože byl tento trezor před přesunem v tenantu A, původní hodnota proměnné **$vault.Properties.TenantId** je tenant A, zatímco **(Get-AzureRmContext).Tenant.TenantId** je tenant B.
 
-Teď, když je přidružen ID klienta správné hello trezoru a jsou odebrány staré položky zásady přístupu, nastavení přístupu nové zásady položky s [Set-AzureRmKeyVaultAccessPolicy](https://msdn.microsoft.com/library/mt603625.aspx).
+Teď když je trezor přidružený ke správnému ID tenanta a staré položky zásad přístupu jsou odebrány, nastavte nové položky zásad přístupu pomocí [Set-AzureRmKeyVaultAccessPolicy](https://msdn.microsoft.com/library/mt603625.aspx).
 
 ## <a name="next-steps"></a>Další kroky
-Pokud máte dotazy týkající se Azure Key Vault, navštivte hello [Azure Key Vault fóra](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault).
+Pokud máte dotazy ke službě Azure Key Vault, navštivte [fóra služby Azure Key Vault](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault).
 

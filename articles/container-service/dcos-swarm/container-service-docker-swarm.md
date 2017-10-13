@@ -1,6 +1,6 @@
 ---
-title: "aaaManage Azure Swarm clusteru s rozhraním API Docker | Microsoft Docs"
-description: "Nasazení clusteru Docker Swarm kontejnery tooa v Azure Container Service"
+title: "Správě clusteru Swarm v Azure s rozhraním API Docker | Microsoft Docs"
+description: "Nasazení kontejnerů do clusteru s podporou Docker Swarm v Azure Container Service"
 services: container-service
 documentationcenter: 
 author: rgardler
@@ -16,25 +16,25 @@ ms.workload: na
 ms.date: 09/13/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: bb9b07c82a7b48caeb2e351455797cbf2a6e7480
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6ca2d2e49c4b7f5eb0580e7091b09209f8b73a7c
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="container-management-with-docker-swarm"></a>Správa kontejnerů pomocí nástroje Docker Swarm
-Docker Swarm poskytuje prostředí pro nasazování kontejnerizovaných úloh v celé sadě hostitelů Docker uspořádaných do fondu. Docker Swarm používá hello nativní Docker API. Hello workflow správy kontejnerů v nástroji Docker Swarm je téměř identický toowhat, které má být na hostitele s jedním kontejnerem. Tento dokument poskytuje jednoduché příklady, jak nasadit kontejnerizované úlohy do instance Docker Swarm v Azure Container Service. Podrobnější dokumentaci k nástroji Docker Swarm najdete v tématu [Docker Swarm na Docker.com](https://docs.docker.com/swarm/).
+Docker Swarm poskytuje prostředí pro nasazování kontejnerizovaných úloh v celé sadě hostitelů Docker uspořádaných do fondu. Docker Swarm využívá nativní rozhraní Docker API. Workflow správy kontejnerů v nástroji Docker Swarm je téměř identický s workflow pro hostitele s jedním kontejnerem. Tento dokument poskytuje jednoduché příklady, jak nasadit kontejnerizované úlohy do instance Docker Swarm v Azure Container Service. Podrobnější dokumentaci k nástroji Docker Swarm najdete v tématu [Docker Swarm na Docker.com](https://docs.docker.com/swarm/).
 
 [!INCLUDE [container-service-swarm-mode-note](../../../includes/container-service-swarm-mode-note.md)]
 
-Cvičení toohello požadavky v tomto dokumentu:
+Předpoklady pro praktická cvičení v tomto dokumentu:
 
 [Vytvoření clusteru Swarm v Azure Container Service](container-service-deployment.md)
 
-[Propojení s clusterem Swarm hello v Azure Container Service](../container-service-connect.md)
+[Propojení s clusterem Swarm ve službě Azure Container Service](../container-service-connect.md)
 
 ## <a name="deploy-a-new-container"></a>Nasazení nového kontejneru
-toocreate nový kontejner v hello Docker Swarm, použijte hello `docker run` příkazu (zajistíte, že máte otevřený SSH tunel toohello hlavních serverů podle výš uvedené požadavky hello). Tento příklad vytvoří kontejner z hello `yeasy/simple-web` bitové kopie:
+Chcete-li vytvořit nový kontejner v Docker Swarm, použijte příkaz `docker run` (zajistí, že jste otevřeli tunelové propojení SSH k předlohám podle výše uvedených požadavků). Tento příklad vytvoří kontejner z image `yeasy/simple-web`:
 
 ```bash
 user@ubuntu:~$ docker run -d -p 80:80 yeasy/simple-web
@@ -42,7 +42,7 @@ user@ubuntu:~$ docker run -d -p 80:80 yeasy/simple-web
 4298d397b9ab6f37e2d1978ef3c8c1537c938e98a8bf096ff00def2eab04bf72
 ```
 
-Po vytvoření kontejneru hello použít `docker ps` tooreturn informace o kontejneru hello. Můžete si zde všimněte, že je uvedený tohoto agenta Swarm hello, který je hostitelem kontejneru hello:
+Až se kontejner vytvoří, zobrazte si informace o kontejneru příkazem `docker ps`. Můžete si zde všimnout, že je uveden agent Swarm, který je hostitelem kontejneru:
 
 ```bash
 user@ubuntu:~$ docker ps
@@ -51,14 +51,14 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 4298d397b9ab        yeasy/simple-web    "/bin/sh -c 'python i"   31 seconds ago      Up 9 seconds        10.0.0.5:80->80/tcp   swarm-agent-34A73819-1/happy_allen
 ```  
 
-Nyní máte přístup hello aplikace, která běží v tomto kontejneru prostřednictvím hello veřejný název DNS služby Vyrovnávání zatížení agenta Swarm hello. Tyto informace můžete najít v hello portálu Azure:  
+Nyní můžete k aplikaci, která běží v tomto kontejneru, přistoupit přes veřejný název DNS nástroje pro vyrovnávání zatížení agenta Swarm. Na Portálu Azure lze najít tyto informace:  
 
 ![Výsledky skutečných návštěv](./media/container-service-docker-swarm/real-visit.jpg)  
 
-Ve výchozím nastavení má hello nástroj pro vyrovnávání zatížení porty 80, 8080 a 443 otevřete. Pokud chcete, aby tooconnect na jiný port musíte tooopen tento port na hello nástroj pro vyrovnávání zatížení Azure pro hello fondu agenta.
+Ve výchozím nastavení má nástroj pro vyrovnávání zatížení otevřené porty 80, 8080 a 443. Pokud se chcete připojit k jinému portu, musíte otevřít tento port v nástroji Azure Load Balancer pro fond agenta.
 
 ## <a name="deploy-multiple-containers"></a>Nasazení několika kontejnerů
-Jak je spuštěno více kontejnerů, spuštěním 'docker spustit' vícekrát, můžete použít hello `docker ps` toosee příkaz, který hostuje hello kontejnery běží. V příkladu hello níže jsou tři kontejnery rovnoměrně rozloženy hello tři agenty Swarm:  
+Když je spuštěno více kontejnerů, je možné vícenásobným spuštěním příkazu „spuštění docker“ použít příkaz `docker ps` k zobrazení, na kterých hostitelích kontejnery běží. V tomto příkladu níže jsou tři kontejnery rovnoměrně rozloženy na tři agenty Swarm:  
 
 ```bash
 user@ubuntu:~$ docker ps
@@ -70,9 +70,9 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 ```  
 
 ## <a name="deploy-containers-by-using-docker-compose"></a>Nasazení kontejnerů pomocí Docker Compose
-Můžete použít Docker Compose tooautomate hello nasazení a konfiguraci několika kontejnerů. toodo Ano, zkontrolujte, zda je vytvořen tunel Secure Shell (SSH) a byla nastavena proměnná DOCKER_HOST této hello (viz hello požadavky výše).
+Pomocí Docker Compose je možné automatizovat nasazení a konfiguraci několika kontejnerů. Abyste toho mohli využít, ujistěte se, že je vytvořen tunel Secure Shell (SSH) a že je nastavena proměnná DOCKER_HOST (viz předpoklady výše).
 
-Vytvořte v lokálním systému soubor docker-compose.yml. toodo, použijte ji [ukázka](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/docker-compose.yml).
+Vytvořte v lokálním systému soubor docker-compose.yml. Použijte k tomu tuto [ukázku](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/docker-compose.yml).
 
 ```bash
 web:
@@ -88,7 +88,7 @@ rest:
 
 ```
 
-Spusťte `docker-compose up -d` nasazení kontejnerů toostart hello:
+Příkazem `docker-compose up -d` spusťte nasazení kontejnerů:
 
 ```bash
 user@ubuntu:~/compose$ docker-compose up -d
@@ -104,7 +104,7 @@ swarm-agent-3B7093B8-2: Pulling adtd/web:0.1... : downloaded
 Creating compose_web_1
 ```
 
-Nakonec se vrátí hello seznam spuštěných kontejnerů. Tento seznam obsahuje hello kontejnery, které byly nasazeny pomocí Docker Compose:
+Nakonec se vrátí seznam spuštěných kontejnerů. Tento seznam reflektuje kontejnery nasazené pomocí Docker Compose:
 
 ```bash
 user@ubuntu:~/compose$ docker ps
@@ -113,7 +113,7 @@ caf185d221b7        adtd/web:0.1        "apache2-foreground"   2 minutes ago    
 040efc0ea937        adtd/rest:0.1       "catalina.sh run"      3 minutes ago       Up 2 minutes        10.0.0.4:8080->8080/tcp   swarm-agent-3B7093B8-0/compose_rest_1
 ```
 
-Samozřejmě můžete použít `docker-compose ps` tooexamine pouze hello kontejnery, které jsou definované v vaší `compose.yml` souboru.
+Přirozeně, můžete použít `docker-compose ps` k prozkoumání samotných kontejnerů definovaných ve vašem souboru `compose.yml`.
 
 ## <a name="next-steps"></a>Další kroky
 [Další informace o Docker Swarmu](https://docs.docker.com/swarm/)

@@ -3,9 +3,13 @@
 # Začínáme
 ## [Správa vašeho prvního rozhraní API](api-management-get-started.md)
 ## [Ochrana rozhraní API pomocí omezení přenosové rychlosti](api-management-howto-product-with-rules.md)
-## [Přidání ukládání do mezipaměti tooimprove výkonu](api-management-howto-cache.md)
+## [Zvýšení výkonu přidáním mezipaměti](api-management-howto-cache.md)
 ## [Nejčastější dotazy](api-management-faq.md)
 # Postup
+## Nastavení služby APIM
+### [Vytvoření instance APIM](get-started-create-service-instance.md)
+### [Upgrade a škálování](upgrade-and-scale.md)
+### [Konfigurace vlastní domény](configure-custom-domain.md)
 ## Vývoj API
 ### [Přidání a publikování produktu rozhraní API](api-management-howto-add-products.md)
 ### [Přidání operací](api-management-howto-add-operations.md)
@@ -13,8 +17,8 @@
 ### [Import definice rozhraní API](api-management-howto-import-api.md)
 ## Zabezpečení back-endu
 ### [Ochrana webového rozhraní API back-endu pomocí AAD](api-management-howto-protect-backend-with-aad.md)
-### [Připojit virtuální síť tooa](api-management-using-with-vnet.md)
-### [Připojit tooan interní virtuální síť](api-management-using-with-internal-vnet.md)
+### [Připojení k virtuální síti](api-management-using-with-vnet.md)
+### [Připojení k interní virtuální síti](api-management-using-with-internal-vnet.md)
 ### [Integrace Application Gateway v interní virtuální síti](api-management-howto-integrate-internal-vnet-appgateway.md)
 ### [Vzájemné ověřování certifikátů](api-management-howto-mutual-certificates.md)
 ## Konfigurace zásad
@@ -26,7 +30,7 @@
 ### [Přehled zásad](api-management-howto-policies.md)
 ### [Správa tajných klíčů pomocí vlastností](api-management-howto-properties.md)
 ### [Zabezpečení rozhraní API pomocí ověření klientského certifikátu](api-management-howto-mutual-certificates-for-clients.md)
-## Přizpůsobit hello vývojáře prostředí
+## Přizpůsobení prostředí pro vývojáře
 ### [Změna rozložení a obsahu stránek](api-management-modify-content-layout.md)
 ### [Přizpůsobení stylu prvků na stránce](api-management-customize-styles.md)
 ### [Přizpůsobení systémových stránek pomocí šablon](api-management-developer-portal-templates.md)
@@ -37,10 +41,10 @@
 ### [Povolení podpory OAuth v konzole](api-management-howto-oauth2.md)
 ## Správa v produkčním prostředí
 ### [Správa skupin](api-management-howto-create-groups.md)
-### [Nasazení toomultiple Azure oblastí](api-management-howto-deploy-multi-region.md)
-### [Protokolování událostí tooAzure Event Hubs](api-management-howto-log-event-hubs.md)
+### [Nasazení do několika oblastí Azure](api-management-howto-deploy-multi-region.md)
+### [Protokolování událostí v Azure Event Hubs](api-management-howto-log-event-hubs.md)
 ### [Nastavení zotavení po havárii pomocí zálohování a obnovení](api-management-howto-disaster-recovery-backup-restore.md)
-### [Trasování volání s hello Inspector rozhraní API](api-management-howto-api-inspector.md)
+### [Trasování volání pomocí nástroje pro inspekci rozhraní API](api-management-howto-api-inspector.md)
 ### [Správa uživatelských účtů](api-management-howto-create-or-invite-developers.md)
 ### [Správa s použitím automatizace](automation-manage-api-management.md)
 ### [Konfigurace pomocí Git](api-management-configuration-repository-git.md)
@@ -51,7 +55,7 @@
 #### [Rychlý start](../service-fabric/service-fabric-api-management-quick-start.md)
 
 # Referenční informace
-## [PowerShell](/powershell/azure/overview)
+## [Azure PowerShell](/powershell/azure/overview)
 ## [REST](/rest/api/apimanagement/)
 ## [Rozhraní REST (původní)](/rest/api/apimanagement/ApiManagementREST/api-management-REST)
 ## [Zásady](api-management-policies.md)
@@ -81,14 +85,14 @@
 ## [API Management – jde skvěle dohromady s ostatními službami Azure](http://weblogs.asp.net/cschittko/api-management-plays-well-with-other-azure-services)
 ## [Plug-in API Management pro SmartBear Ready! Rozhraní API](http://smartbear.com/plugins/microsoft-azure-api-management-plugin/)
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/)
-## [Připojení služby Event Hubs tooAPI správy](http://weblogs.asp.net/cschittko/connecting-eventhubs-to-api-management)
+## [Propojení Event Hubs se službou API Management](http://weblogs.asp.net/cschittko/connecting-eventhubs-to-api-management)
 ## [Využívání služeb SOAP WCF přes HTTP](http://mostlydotnetdev.blogspot.nl/2015/03/azure-api-management-apim-consuming.html)
 ## [Fórum MSDN](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt)
 ## [Ceny](https://azure.microsoft.com/pricing/details/api-management/)
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)
-## [Poskytnutí přístupu RBAC jako pomocí hello REST API](http://blogs.msdn.com/b/katriend/archive/2015/12/21/using-the-azure-api-management-rest-api-as-workaround-to-rbac-functionality.aspx)
+## [Poskytnutí přístupu podobného RBAC pomocí rozhraní REST API](http://blogs.msdn.com/b/katriend/archive/2015/12/21/using-the-azure-api-management-rest-api-as-workaround-to-rbac-functionality.aspx)
 ## [Aktualizace služeb](https://azure.microsoft.com/updates/?product=api-management)
-## [Nastavit PostMan toocall rozhraní API pro správu rozhraní API](http://www.bizbert.com/bizbert/2015/07/08/Setting+Up+PostMan+To+Call+The+Azure+Management+APIs.aspx)
+## [Nastavení nástroje PostMan pro volání rozhraní API služby API Management](http://www.bizbert.com/bizbert/2015/07/08/Setting+Up+PostMan+To+Call+The+Azure+Management+APIs.aspx)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-api-management)
 ## [Videa](https://azure.microsoft.com/documentation/videos/index/?services=api-management) 
 ## [Dokument white paper: Cloud-based API Management (Cloudová správa rozhraní API)](http://j.mp/ms-apim-whitepaper)

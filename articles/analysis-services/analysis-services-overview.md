@@ -1,6 +1,6 @@
 ---
-title: aaaWhat je Azure Analysis Services | Microsoft Docs
-description: "Získáte hello velký obrázek služby Analysis Services v Azure."
+title: "Co je služba Azure Analysis Services | Dokumentace Microsoftu"
+description: "Získejte celkový přehled o službě Analysis Services v Azure."
 services: analysis-services
 documentationcenter: 
 author: minewiskan
@@ -15,115 +15,115 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/01/2017
 ms.author: owend
-ms.openlocfilehash: 48830a86f47a8ddc7770e6c44dd56c29927fe582
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8b3a538fc0fe34d0b7af8a99510cfb19abd32d55
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-azure-analysis-services"></a>Co je služba Azure Analysis Services?
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
 
-Azure Analysis Services poskytuje data podnikové úrovni modelování v cloudu hello. Je to plně spravovaná platforma jako služba (PaaS) integrovaná se službami datové platformy Azure. 
+Azure Analysis Services poskytuje modelování dat na podnikové úrovni v cloudu. Je to plně spravovaná platforma jako služba (PaaS) integrovaná se službami datové platformy Azure. 
 
-Se službou Analysis Services můžete provádět mashup a kombinování dat z více zdrojů, definovat metriky a zabezpečit svá data v jediném důvěryhodném sémantickém datovém modelu. datový model Hello poskytuje způsob snadnější a rychlejší pro vaše uživatele toobrowse masivní objemy dat pomocí klientské aplikace jako Power BI, Excel, služby Reporting Services, aplikace třetích stran a vlastní.
+Se službou Analysis Services můžete provádět mashup a kombinování dat z více zdrojů, definovat metriky a zabezpečit svá data v jediném důvěryhodném sémantickém datovém modelu. Datový model poskytuje uživatelům nejsnadnější a nejrychlejší způsob procházení obrovských objemů dat pomocí klientských aplikací, jako jsou Power BI, Excel, Reporting Services, aplikace třetích stran a vlastní aplikace.
 
 ![Zdroje dat](./media/analysis-services-overview/aas-overview-data-sources.png)
 
-Podívejte se na [toto video](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4) toolearn jak Azure Analysis Services zapadá do společnosti Microsoft je celkové BI schopnosti a jak můžete využívat výhod získávání datové modely do cloudu hello.
+Podívejte se na [toto video](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4) a zjistěte, jak služba Azure Analysis Services zapadá do celkových možností BI společnosti Microsoft a jaké výhody vám může přinést převedení datových modelů do cloudu.
 
 ## <a name="built-on-sql-server-analysis-services"></a>Vytvořeno na základě SQL Server Analysis Services
-Služba Azure Analysis Services je kompatibilní s mnoha skvělými funkcemi, které už jsou ve službě SQL Server Analysis Services Enterprise Edition. Azure Analysis Services podporuje tabulkové modely na hello 1200 a 1400 [úrovně kompatibility](analysis-services-compat-level.md). Podporují se oddíly, zabezpečení na úrovni řádku, obousměrné relace i překlady. Režimy In-Memory a DirectQuery znamenají bleskově rychlé dotazy nad obrovskými a komplexními datovými sadami.
+Služba Azure Analysis Services je kompatibilní s mnoha skvělými funkcemi, které už jsou ve službě SQL Server Analysis Services Enterprise Edition. Azure Analysis Services podporuje tabulkové modely na [úrovních kompatibility](analysis-services-compat-level.md) 1200 a 1400. Podporují se oddíly, zabezpečení na úrovni řádku, obousměrné relace i překlady. Režimy In-Memory a DirectQuery znamenají bleskově rychlé dotazy nad obrovskými a komplexními datovými sadami.
 
-Tabulkové modely nabízejí rychlý vývoj a jsou vysoce přizpůsobitelné. Pro vývojáře zahrnují tabulkové modely objekty modelu toodescribe hello tabulkové objektu modelu (TNÍ). TNÍ je k dispozici ve formátu JSON prostřednictvím hello [tabulkový Model skriptovací jazyk (TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference) a hello jazyk definice AMO data prostřednictvím hello [Microsoft.AnalysisServices.Tabular](https://msdn.microsoft.com/library/microsoft.analysisservices.tabular.aspx) oboru názvů.
+Tabulkové modely nabízejí rychlý vývoj a jsou vysoce přizpůsobitelné. Pro vývojáře tabulkové modely zahrnují tabulkový objektový model (TOM) pro popis objektů modelu. Tabulkový objektový model (TOM) je přístupný ve formátu JSON prostřednictvím [jazyka TMSL (Tabular Model Scripting Language)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference) a jazyka DDL AMO v oboru názvů [Microsoft.AnalysisServices.Tabular](https://msdn.microsoft.com/library/microsoft.analysisservices.tabular.aspx).
 
 ## <a name="better-with-azure"></a>Lepší s Azure
-Azure Analysis Services spolupracuje s řadou služeb Azure umožňuje toobuild pokročilé řešení pro analýzu. Integrace s [Azure Active Directory](../active-directory/active-directory-whatis.md) poskytuje zabezpečený přístup na základě rolí tooyour důležitá data. Integrovat [Azure Data Factory](../data-factory/data-factory-introduction.md) kanály zahrnutím aktivitu, která načte data do modelu hello. Můžete použít služby [Azure Automation](../automation/automation-intro.md) a [Azure Functions](../azure-functions/functions-overview.md) k prosté orchestraci modelů pomocí vlastního kódu.
+Azure Analysis Services se integruje s mnoha službami Azure a umožňuje tak sestavovat sofistikovaná analytická řešení. Integrace s [Azure Active Directory](../active-directory/active-directory-whatis.md) poskytuje zabezpečený přístup na základě role k důležitým datům. Můžete provést integraci s kanály [Azure Data Factory](../data-factory/introduction.md) vložením aktivity, která načte data do modelu. Můžete použít služby [Azure Automation](../automation/automation-intro.md) a [Azure Functions](../azure-functions/functions-overview.md) k prosté orchestraci modelů pomocí vlastního kódu.
 
 ## <a name="get-up-and-running-quickly"></a>Rychlé zprovoznění
 Na webu Azure Portal můžete [vytvořit server](analysis-services-create-server.md) během několika minut. A pomocí PowerShellu a [šablon](../azure-resource-manager/resource-manager-create-first-template.md) Azure Resource Manageru můžete zřizovat servery s využitím deklarativní šablony. S jedinou šablonou můžete nasadit několik služeb společně s dalšími komponentami Azure, jako jsou účty úložiště nebo služba Azure Functions. 
 
-Jakmile máte vytvořený server, můžete vytvořit tabulkový model přímo na webu Azure Portal. S novou hello (preview) [návrháře funkce webu](analysis-services-create-model-portal.md), můžete se připojit tooan databáze SQL Azure, Azure SQL Data Warehouse zdroje dat, nebo importovat soubor .pbix Power BI Desktop. Relace mezi tabulkami se vytvoří automaticky a můžete vytvořit míry nebo upravte hello model.bim soubor ve formátu json v pravém z prohlížeče.
+Jakmile máte vytvořený server, můžete vytvořit tabulkový model přímo na webu Azure Portal. Pomocí nové (ve verzi Preview) [funkce Webový návrhář](analysis-services-create-model-portal.md) se můžete připojit ke službě Azure SQL Database, zdroji dat Azure SQL Data Warehouse nebo importovat soubor .pbix aplikace Power BI Desktop. Relace mezi tabulkami se vytvoří automaticky a vy můžete vytvářet míry nebo upravovat soubor model.bim ve formátu JSON přímo z prohlížeče.
 
-## <a name="scale-tooyour-needs"></a>Škálování tooyour potřeb
-Služba Azure Analysis Services je dostupná v úrovních Developer, Basic a Standard. V jednotlivých vrstvách náklady na plán lišit podle velikosti tooprocessing napájení, QPUs a paměti. Při vytváření serveru si vyberete plán na nějaké úrovni. Můžete změnit plány nebo dolů v rámci hello stejnou úroveň nebo upgradu tooa vyšší úroveň, ale nepovedlo se downgradovat z vyšší úrovně tooa nižší úroveň.
+## <a name="scale-to-your-needs"></a>Škálování podle vašich potřeb
+Služba Azure Analysis Services je dostupná v úrovních Developer, Basic a Standard. Ceny plánů na jednotlivých úrovních se liší podle výpočetního výkonu, jednotek QPU a velikosti paměti. Při vytváření serveru si vyberete plán na nějaké úrovni. Plány můžete měnit na vyšší nebo nižší v rámci stejné úrovně nebo upgradovat na vyšší úroveň, není však možné downgradovat z vyšší úrovně na nižší.
 
-Vertikálně navyšujte nebo snižujte kapacitu vašeho serveru nebo ho pozastavte. Použít hello portál Azure nebo mít úplnou kontrolu na průběžně pomocí prostředí PowerShell. Platíte jenom za to, co používáte. toolearn Další informace o různých plánech hello a úrovně a použití hello cenové kalkulačky toodetermine hello správného plánu pro vás, najdete v části [ceník služby Azure Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services/).
+Vertikálně navyšujte nebo snižujte kapacitu vašeho serveru nebo ho pozastavte. Použijte web Azure Portal nebo mějte úplnou kontrolu za běhu pomocí PowerShellu. Platíte jenom za to, co používáte. Další informace o různých plánech a úrovních a cenovou kalkulačku, která vám pomůže s určením správného plánu, najdete v tématu [Ceny služby Azure Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services/).
 
 ## <a name="keep-your-data-close"></a>Mějte data blízko sebe
-Servery Azure Analysis Services mohou být vytvořeny v hello následující [oblastí Azure](https://azure.microsoft.com/regions/):
+Servery služby Azure Analysis Services je možné vytvořit v následujících [oblastech Azure](https://azure.microsoft.com/regions/):
 
 | Amerika | Evropa | Asie a Tichomoří |
 |----------|--------|--------------|
 |  Brazílie – jih<br> Střední Kanada<br> Východní USA 2<br> Střed USA – sever<br> Střed USA – jih<br> Západní střed USA<br> Západní USA | Severní Evropa<br> Spojené království – jih<br> Západní Evropa |   Austrálie – jihovýchod<br> Japonsko – východ<br> Jihovýchodní Asie<br> Indie – západ  |
 
-Nové oblasti přidávané celou dobu hello, takže tento seznam mohou být neúplné. Umístění volíte při vytváření serveru na webu Azure Portal nebo pomocí šablon Azure Resource Manageru. tooget hello co nejlepší výkon, vyberte umístění nejbližší největší uživatelskou základnu. Zajistěte [vysokou dostupnost](analysis-services-bcdr.md) nasazením modelů na redundantních serverech ve více oblastech.
+Neustále se přidávají nové oblasti, takže tento seznam nemusí být kompletní. Umístění volíte při vytváření serveru na webu Azure Portal nebo pomocí šablon Azure Resource Manageru. Pokud chcete získat nejlepší výkon, zvolte umístění co nejblíže vaší největší uživatelské základně. Zajistěte [vysokou dostupnost](analysis-services-bcdr.md) nasazením modelů na redundantních serverech ve více oblastech.
 
 ## <a name="migrate-your-existing-tabular-models"></a>Migrace existujících tabulkových modelů
-Pokud již máte existující řešení SQL Server Analysis Services modelu místně, můžete migrovat tooAzure Analysis Services bez významné změny. toomigrate, můžete použít rozšíření SSDT toodeploy serveru tooyour modelu. Nebo můžete v aplikaci SSMS použít zálohování a obnovení nebo jazyk TMSL.
+Pokud už máte existující řešení modelu SQL Server Analysis Services v místním prostředí, můžete je migrovat do služby Azure Analysis Services bez významných změn. Pokud chcete provést migraci, pomocí rozšíření SSDT můžete nasadit model na server. Nebo můžete v aplikaci SSMS použít zálohování a obnovení nebo jazyk TMSL.
 
-Pokud máte místní zdroje dat, je nutné tooinstall a nakonfigurovat [místní brána dat](analysis-services-gateway.md). Pokud máte role a členy role, které jsou již nakonfigurována, migrovat role, ale máte členy role tooreadd pomocí aplikace SSMS nebo prostředí PowerShell.
+Pokud máte místní zdroje dat, je potřeba nainstalovat a nakonfigurovat [místní bránu dat](analysis-services-gateway.md). Pokud už máte nakonfigurované role a členy rolí, vaše role se budou migrovat, ale členy rolí budete muset znovu přidat pomocí aplikace SSMS nebo PowerShellu.
 
-## <a name="connect-toopopular-data-sources"></a>Připojení zdroje dat toopopular
-Podporuje Azure Analysis Services [připojení zdroje toodata](analysis-services-datasource.md) místní ve vaší organizaci a v cloudu hello. Kombinací dat z místních a cloudových zdrojů dat získáte hybridní řešení. 
+## <a name="connect-to-popular-data-sources"></a>Připojení k oblíbeným zdrojům dat
+Azure Analysis Services podporuje [připojení ke zdrojům dat](analysis-services-datasource.md) v místním prostředí vaší organizace i v cloudu. Kombinací dat z místních a cloudových zdrojů dat získáte hybridní řešení. 
 
-Nové tabulkové modely 1400 pomocí funkce načíst Data moderní hello v sadě SSDT, na základě hello M vzorce dotazu jazyka. S načíst Data máte další transformaci dat a funkce hybridní webové aplikace a hello možnost toocreate a upravit vlastní rozšířené milion vzorce jazyka dotazů. Například u tabulkových modelů 1400 můžete modelovat na základě datových souborů ve službě Azure Blob Storage.
+Nové tabulkové modely 1400 využívají moderní funkci Získání dat v rozšíření SSDT založenou na dotazovacím jazyku se vzorci M. S funkcí Získání dat máte více funkcí pro transformaci a mashup dat a možnost vytvářet a upravovat vlastní pokročilé dotazy v jazyce vzorců M. Například u tabulkových modelů 1400 můžete modelovat na základě datových souborů ve službě Azure Blob Storage.
 
-## <a name="use-hello-tools-you-already-know"></a>Použít hello nástroje, které už znáte
+## <a name="use-the-tools-you-already-know"></a>Používejte známé nástroje.
 
 ![Vývojářské nástroje BI](./media/analysis-services-overview/aas-overview-dev-tools.png)
 
 #### <a name="sql-server-data-tools-ssdt-for-visual-studio"></a>SQL Server Data Tools (SSDT) pro Visual Studio
-Vývoj a nasazení modelů pomocí hello volné [SQL Server Data Tools (SSDT) pro Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx). Rozšíření SSDT zahrnuje šablony projektů Analysis Services, které vám pomůžou s rychlým zprovozněním. Rozšíření SSDT nyní zahrnuje hello moderní načíst Data zdroje dat dotazu a hybridní webové aplikace funkce pro tabulkové modely 1400. Pokud jste obeznámeni s načíst Data v Power BI Desktop a Excel 2016, již víte, jak je snadné toocreate vysoce uzpůsobeny dotazy na zdroj dat.
+Vyvíjejte a nasazujte modely pomocí bezplatného rozšíření [SQL Server Data Tools (SSDT) pro Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx). Rozšíření SSDT zahrnuje šablony projektů Analysis Services, které vám pomůžou s rychlým zprovozněním. Rozšíření SSDT teď pro tabulkové modely 1400 zahrnuje moderní funkci Získání dat pro dotazování a mashup zdrojů dat. Pokud už znáte funkci Získání dat v aplikacích Power BI Desktop a Excel 2016, tak už víte, jak snadné je vytvářet vysoce přizpůsobené dotazy na zdroj dat.
 
 #### <a name="sql-server-management-studio"></a>SQL Server Management Studio
-Spravujte servery a modelové databáze pomocí aplikace [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx). Připojte tooyour servery v cloudu hello. Spouštění skriptů TMSL přímo z okna dotazu hello XMLA a automatizaci úloh pomocí TMSL skriptů. Nové funkce se přidávají rychle – aplikace SSMS se aktualizuje každý měsíc.
+Spravujte servery a modelové databáze pomocí aplikace [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx). Připojte se k vašim serverům v cloudu. Spouštějte skripty jazyka TMSL přímo z okna dotazu XMLA a automatizujte pomocí nich úlohy. Nové funkce se přidávají rychle – aplikace SSMS se aktualizuje každý měsíc.
 
 #### <a name="powershell"></a>PowerShell
-Úlohy správy serveru prostředků jako je vytváření servery, pozastavení nebo obnovení operací serveru nebo změna úrovně služby hello (vrstvy) použít rutiny Azure Resource Manager (AzureRM). Další úlohy správy databáze například přidáním nebo odebráním členy role, zpracování, nebo spouštění skriptů TMSL použít rutiny v modulu SqlServer hello. Moduly AzureRM a SQL Server jsou k dispozici v hello [Galerie prostředí PowerShell](https://www.powershellgallery.com/).
+Úlohy správy prostředků serveru, jako je například vytváření serverů, pozastavení nebo obnovení operací serveru nebo změna úrovně služby, používají rutiny Azure Resource Manageru (AzureRM). Ostatní úlohy správy databází, jako je například přidávání nebo odebírání členů rolí, zpracování nebo spouštění skriptů jazyka TMSL, používají rutiny v modulu SqlServer. Moduly AzureRM a SQLServer jsou k dispozici v [Galerii prostředí PowerShell](https://www.powershellgallery.com/).
 
 
 ## <a name="your-data-is-secure"></a>Vaše data jsou v bezpečí
 ![Vizualizace dat](./media/analysis-services-overview/aas-overview-secure.png)
 
 #### <a name="authentication"></a>Ověřování
-Ověřování uživatelů pro Azure Analysis Services zařizuje služba [Azure Active Directory (AAD)](../active-directory/active-directory-whatis.md). Při pokusu o toolog v databázi tooan Azure Analysis Services, použijte uživatelé identity účet organizace s databází access toohello se pokoušíte tooaccess. Tyto identit uživatelů musí být členy hello výchozí Azure Active Directory pro předplatné hello, kde je umístěn server hello Azure Analysis Services. Další, najdete v části toolearn [ověřování a uživatel oprávnění](analysis-services-manage-users.md).
+Ověřování uživatelů pro Azure Analysis Services zařizuje služba [Azure Active Directory (AAD)](../active-directory/active-directory-whatis.md). Při pokusu o přihlášení k databázi Azure Analysis Services používají uživatelé identitu účtu organizace s přístupem k databázi, ke které se snaží získat přístup. Tyto identity uživatelů musí být členy výchozí služby Azure Active Directory pro předplatné, ve kterém se server služby Azure Analysis Services nachází. Další informace najdete v tématu [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md).
 
 #### <a name="data-security"></a>Zabezpečení dat
-Azure Analysis Services využívá úložiště toopersist úložiště objektů Azure Blob a metadat pro databáze služby Analysis Services. Datové soubory jsou v rámci objektu Blob šifrované pomocí šifrování na straně serveru Azure Blob. Při použití režimu přímých dotazů se ukládají jenom metada. skutečná data Hello přistupuje ze zdroje dat hello v době dotazu.
+Služba Azure Analysis Services využívá úložiště Azure Blob Storage k zachování úložiště a metadat pro databáze služby Analysis Services. Datové soubory jsou v rámci objektu Blob šifrované pomocí šifrování na straně serveru Azure Blob. Při použití režimu přímých dotazů se ukládají jenom metada. Ke skutečným datům se přistupuje ze zdroje dat v době dotazu.
 
 #### <a name="on-premises-data-sources"></a>Místní zdroje dat
-Zabezpečený přístup toodata zdržují na místě ve vaší organizaci se dosahuje instalování a konfigurování [místní brána dat](analysis-services-gateway.md). Brány zadejte toodata přístup pro přímý dotaz a režimy v paměti. Při model Azure Analysis Services připojí tooan zdroj dat na místě, se společně s hello šifrovat přihlašovací údaje pro zdroj dat pro místní hello vytvoří dotazu. cloudové službě Brána pro Hello analyzuje hello dotazu a nabízených oznámení hello požadavek tooan Azure Service Bus. místní brána Hello dotazuje hello Azure Service Bus pro žádosti čekající na vyřízení. Brána Hello pak získá hello dotazu, dešifruje hello přihlašovací údaje a připojí toohello zdroj dat pro spuštění. Hello výsledky jsou pak odeslané ze zdroje dat hello, zpět toohello brány a potom na toohello Azure Analysis Services databáze.
+Zabezpečeného přístupu k datům nacházejícím se místně ve vaší organizaci se dosahuje instalací a konfigurací [místní brány dat](analysis-services-gateway.md). Brány poskytují přístup k datům pro režimy přímých dotazů a v paměti. Když se model služby Azure Analysis Services připojuje k místnímu zdroji dat, vytvoří se dotaz společně se zašifrovanými přihlašovacími údaji pro místní zdroj dat. Cloudová služba brány analyzuje dotaz a nabídne žádost sběrnici Azure Service Bus. Místní brána zadá dotazy sběrnici Azure Service Bus na čekající žádosti. Brána pak získá dotaz, dešifruje přihlašovací údaje a připojí se ke zdroji dat pro provedení. Výsledky se pak odešlou ze zdroje dat zpět do brány a potom dále do databáze Azure Analysis Services.
 
-Azure Analysis Services se řídí hello [Microsoft Online Services podmínky](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) a hello [prohlášení o ochraně osobních údajů služeb Microsoft Online](https://www.microsoft.com/privacystatement/OnlineServices/Default.aspx).
-toolearn Další informace o zabezpečení Azure, najdete v části hello [Microsoft Trust Center](https://www.microsoft.com/trustcenter/Security/AzureSecurity).
+Služba Azure Analysis Services se řídí [podmínkami služeb Microsoft Online Services](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) a [prohlášením o zásadách ochrany osobních údajů služeb Microsoft Online](https://www.microsoft.com/privacystatement/OnlineServices/Default.aspx).
+Pokud se o službě Azure Security chcete dozvědět víc, podívejte se na [Microsoft Trust Center](https://www.microsoft.com/trustcenter/Security/AzureSecurity).
 
-## <a name="supports-hello-latest-client-tools"></a>Podporuje hello nejnovější klienta nástroje
+## <a name="supports-the-latest-client-tools"></a>Podporuje nejnovější nástroje klienta
 ![Vizualizace dat](./media/analysis-services-overview/aas-overview-clients.png)
 
 Moderní nástroje pro zkoumání a vizualizaci dat, jako jsou Power BI, Excel a nástroje třetích stran, poskytují uživatelům vysoce interaktivní a vizuálně bohaté přehledy o datech modelu.
 
-Klienti používají MSOLAP, AMO nebo ADOMD [klientské knihovny](analysis-services-data-providers.md) tooconnect tooAnalysis služby servery. Klientské aplikace Microsoftu jako Power BI Desktop a Excel instalují všechny tři klientské knihovny. Ale mějte na paměti, v závislosti na verzi hello nebo četnost aktualizací, knihovny klienta nemusí být hello nejnovější verze vyžadované službou Azure Analysis Services. Hello totéž platí i toocustom aplikace nebo dalších rozhraní, jako je například AsCmd, TNÍ, ADOMD.NET. Tyto aplikace obvykle vyžadují ruční instalaci hello knihovny jako součást balíčku.
+Klienti pro připojení k serverům služby Analysis Services používají [klientské knihovny](analysis-services-data-providers.md) MSOLAP, AMO nebo ADOMD. Klientské aplikace Microsoftu jako Power BI Desktop a Excel instalují všechny tři klientské knihovny. Mějte však na paměti, že v závislosti na verzi nebo četnosti aktualizací nemusí klientské knihovny být nejnovější verze, kterou vyžaduje služba Azure Analysis Services. To samé platí pro vlastní aplikace a další rozhraní, jako jsou AsCmd, Tom nebo ADOMD.NET. Tyto aplikace obvykle vyžadují ruční instalaci těchto knihoven jako součást balíčku.
 
 
 ## <a name="get-help"></a>Podpora
 
 #### <a name="documentation"></a>Dokumentace
-Azure Analysis Services je jednoduchý tooset nahoru a toomanage. Můžete najít všechny informace o hello potřebujete toocreate a spravovat váš server services. Při vytváření datového modelu toodeploy tooyour serveru, má se stejné mnohem hello, protože je pro vytvoření datového modelu nasazení tooan na místním serveru. [Analysis Services](https://docs.microsoft.com/sql/analysis-services/analysis-services) obsahuje rozsáhlou knihovnu článků s koncepty, postupy, kurzy a odkazy.
+Službu Azure Analysis Services je jednoduché nastavit a spravovat. Všechny potřebné informace týkající se vytvoření a správy služeb serveru najdete zde. Vytváření datového modelu pro nasazení na server je velmi podobné vytváření datového modelu nasazovaného na místní server. [Analysis Services](https://docs.microsoft.com/sql/analysis-services/analysis-services) obsahuje rozsáhlou knihovnu článků s koncepty, postupy, kurzy a odkazy.
 
 #### <a name="videos"></a>Videa
 Užitečná videa najdete v části [Azure Analysis Services na webu Channel 9](https://channel9.msdn.com/series/Azure-Analysis-Services).
 
 #### <a name="blogs"></a>Blogy
-Všechno se rychle mění. Vždy získáte hello nejnovější informace o hello [blogu týmu služby Analysis Services](https://blogs.msdn.microsoft.com/analysisservices/) a [Azure blog](https://azure.microsoft.com/blog/).
+Všechno se rychle mění. Nejnovější informace vždy najdete na [blogu týmu Analysis Services](https://blogs.msdn.microsoft.com/analysisservices/) a [blogu o Azure](https://azure.microsoft.com/blog/).
 
 #### <a name="community"></a>Komunita
-Služba Analysis Services má velmi aktivní komunitu uživatelů. Připojení hello konverzace na [fórum Azure Analysis Services](https://aka.ms/azureanalysisservicesforum).
+Služba Analysis Services má velmi aktivní komunitu uživatelů. Připojte se ke konverzaci na [fóru Azure Analysis Services](https://aka.ms/azureanalysisservicesforum).
 
 ## <a name="feedback"></a>Váš názor
-Máte návrhy nebo požadavky na funkce? Nacházet zda tooleave komentáře na [Azure Analysis Services zpětné vazby](https://aka.ms/azureanalysisservicesfeedback).
+Máte návrhy nebo požadavky na funkce? Své komentáře pište na web [Zpětná vazba ke službě Azure Analysis Services](https://aka.ms/azureanalysisservicesfeedback).
 
-Máte návrhy o dokumentaci hello? Můžete přidat komentář pomocí Livefyre dole hello jednotlivých článků.
+Máte návrhy týkající se dokumentace? Komentáře můžete přidávat pomocí Livefyre v dolní části každého článku.
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když víte, informace o Azure Analysis Services, je čas spuštění tooget. Zjistěte, jak příliš[vytvořit server](analysis-services-create-server.md) v Azure. Pokud váš server je připraven, krok prostřednictvím hello [společnosti Adventure Works kurzu](tutorials/aas-adventure-works-tutorial.md) toolearn jak toocreate plně funkční tabulkový model a nasaďte ho tooyour serveru.
+Teď, když už víte o Azure Analysis Services víc, je čas začít. Zjistěte, jak [vytvořit server](analysis-services-create-server.md) v Azure. Když už je váš server připravený, projděte si [kurz Adventure Works](tutorials/aas-adventure-works-tutorial.md), ve kterém se dozvíte, jak vytvořit plně funkční tabulkový model a nasadit ho na váš server.

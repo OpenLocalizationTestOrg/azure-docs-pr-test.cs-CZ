@@ -1,6 +1,6 @@
 ---
-title: "offline synchronizace aaaEnable pro vaši aplikaci pro univerzální platformu Windows (UWP) s Mobile Apps | Microsoft Docs"
-description: "Zjistěte, jak toouse mobilní aplikace Azure toocache a synchronizaci dat offline v aplikaci pro univerzální platformu Windows (UWP)."
+title: "Zapnutí offline synchronizace pro vaši aplikaci pro univerzální platformu Windows (UWP) s Mobile Apps | Microsoft Docs"
+description: "Další informace o použití služby Azure Mobile Apps do mezipaměti a synchronizaci dat offline v aplikaci pro univerzální platformu Windows (UWP)."
 documentationcenter: windows
 author: ggailey777
 manager: syntaxc4
@@ -14,87 +14,87 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.openlocfilehash: a9f4ad02e92c2c423f10f07b7f1a4270aafd6c6f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4b0a57c3bab688487eb9a50461b406e1a6e477c6
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="enable-offline-sync-for-your-windows-app"></a>Zapnutí offline synchronizace u aplikace pro Windows
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 ## <a name="overview"></a>Přehled
-Tento kurz ukazuje, jak tooadd offline podporují aplikace tooa univerzální platformu Windows (UWP) pomocí back-end mobilní aplikace Azure. Offline synchronizace umožňuje koncovým uživatelům toointeract s mobilní aplikací – zobrazení, přidávat a upravovat data - i v případě, že není žádné síťové připojení. Změny se ukládají do místní databáze. Jakmile je zařízení hello zpět do režimu online, tyto změny synchronizované s hello vzdálené back-end.
+V tomto kurzu se dozvíte, jak přidat podporu offline režimu do aplikace pro univerzální platformu Windows (UWP) pomocí back-end mobilní aplikace Azure. Offline synchronizace umožňuje koncovým uživatelům pracovat s mobilní aplikací – zobrazení, přidávat a upravovat data - i v případě, že není žádné síťové připojení. Změny se ukládají do místní databáze. Jakmile zařízení do režimu online, tyto změny se synchronizují s vzdálené back-end.
 
-V tomto kurzu aktualizujete projekt aplikace UPW hello z hello kurzu [vytvoření aplikace pro Windows] toosupport hello offline funkce Azure Mobile Apps. Pokud nepoužijete hello stáhli úvodní serverový projekt, je nutné přidat hello data přístup rozšíření balíčky tooyour projektu. Další informace o balíčcích rozšíření serveru najdete v tématu [pracovat s hello .NET back-end serveru SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+V tomto kurzu aktualizujete projekt aplikace UPW z tohoto kurzu [vytvoření aplikace pro Windows] pro podporu offline funkce Azure Mobile Apps. Pokud použijete serverový projekt stažené rychlý start, je nutné přidat data přístup rozšiřující balíčky do projektu. Další informace o balíčcích rozšíření serveru najdete v tématu [pracovat s .NET back-end serveru SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
-toolearn Další informace o funkci hello offline synchronizace, najdete v tématu hello [Offline synchronizací dat v Azure Mobile Apps].
+Další informace o funkci offline synchronizace, naleznete v tématu [Offline synchronizací dat v Azure Mobile Apps].
 
 ## <a name="requirements"></a>Požadavky
-Tento kurz vyžaduje hello následující požadavky:
+Tento kurz vyžaduje následující požadavky:
 
 * Visual Studio 2013 běžící na Windows 8.1 nebo novějším.
 * Dokončení [vytvoření aplikace pro Windows][Vytvoření aplikace pro windows].
 * [Azure Mobile Services SQLite úložiště][sqlite store nuget]
 * [SQLite pro vývoj pro univerzální platformu Windows](http://www.sqlite.org/downloads)
 
-## <a name="update-hello-client-app-toosupport-offline-features"></a>Aktualizovat hello klientských aplikací toosupport offline funkcí
-Offline funkce mobilní aplikace Azure umožňuje toointeract s místní databází v případě, že jste ve scénáři s offline. toouse inicializaci tyto funkce ve vaší aplikaci [SyncContext] [ synccontext] tooa místního úložiště. Potom referenční tabulku prostřednictvím hello [IMobileServiceSyncTable][IMobileServiceSyncTable] rozhraní. SQLite slouží jako místní úložiště hello na hello zařízení.
+## <a name="update-the-client-app-to-support-offline-features"></a>Aktualizace klienta aplikace pro podporu funkcím offline
+Offline funkce mobilní aplikace Azure umožňují interakci s místní databázi, pokud jste v offline scénář. V aplikaci použít tyto funkce, inicializovat [SyncContext] [ synccontext] do místního úložiště. Potom referenční tabulku prostřednictvím [IMobileServiceSyncTable][IMobileServiceSyncTable] rozhraní. SQLite slouží jako místní úložiště v zařízení.
 
-1. Nainstalujte hello [SQLite runtime pro univerzální platformu Windows hello](http://sqlite.org/2016/sqlite-uwp-3120200.vsix).
-2. V sadě Visual Studio otevřete hello Správce balíčků NuGet pro projekt aplikace UPW hello, který jste dokončili v hello [vytvoření aplikace pro Windows] kurzu.
-    Vyhledání a instalace hello **Microsoft.Azure.Mobile.Client.SQLiteStore** balíček NuGet.
+1. Nainstalujte [SQLite runtime pro univerzální platformu Windows](http://sqlite.org/2016/sqlite-uwp-3120200.vsix).
+2. V sadě Visual Studio, otevřete Správce balíčků NuGet pro projekt aplikace UPW, který jste dokončili v [vytvoření aplikace pro Windows] kurzu.
+    Vyhledat a nainstalovat **Microsoft.Azure.Mobile.Client.SQLiteStore** balíček NuGet.
 3. V Průzkumníku řešení klikněte pravým tlačítkem na **odkazy** > **přidat odkaz na...** >**Universal Windows** > **rozšíření**, potom povolte obě **SQLite pro univerzální platformu Windows** a **2015 modulu Runtime Visual C++ pro Universal Windows Platform apps**.
 
     ![Přidat odkaz na SQLite UWP][1]
-4. Otevřete soubor MainPage.xaml.cs hello a zrušte komentář u hello `#define OFFLINE_SYNC_ENABLED` definice.
-5. V sadě Visual Studio, stiskněte klávesu hello **F5** klíčů toorebuild a spuštění hello klientskou aplikaci. aplikace Hello funguje stejně jako jeho nebyla předtím, než jste povolili offline synchronizace hello. Však hello místní databáze je nyní obsahuje data, která lze použít v případě pomocí offline.
+4. Otevřete soubor MainPage.xaml.cs a zrušte komentář u `#define OFFLINE_SYNC_ENABLED` definice.
+5. V sadě Visual Studio, stiskněte **F5** klíč znovu sestavit a spustit klientskou aplikaci. Aplikace funguje stejným způsobem jako před jste povolili offline synchronizace. Však místní databáze je nyní obsahuje data, která lze použít v případě pomocí offline.
 
-## <a name="update-sync"></a>Aktualizovat toodisconnect aplikace hello z back-end hello
-V této části můžete rozdělit hello připojení tooyour mobilní aplikace back-end toosimulate offline situaci. Když přidáte datových položek, vaší obslužné rutiny výjimek zjistíte, že tuto aplikaci hello je v offline režimu. V tomto stavu nové položky přidán do místní hello ukládání a se budou synchronizovat s hello back-end mobilní aplikace při dalším spuštění nabízené v připojeném stavu.
+## <a name="update-sync"></a>Aktualizace aplikace k odpojení od back-end
+V této části Zrušení propojení na váš back-end mobilní aplikace k simulaci offline situaci. Když přidáte datových položek, vaše obslužná rutina výjimky zprávou, že aplikace je v offline režimu. V tomto stavu nové položky přidány v místním úložišti a se budou synchronizovat s back-end mobilní aplikace při dalším spuštění nabízené v připojeném stavu.
 
-1. Upravte App.xaml.cs v hello sdílený projekt. Komentář hello inicializace hello **MobileServiceClient** a přidejte následující řádek, který používá adresu URL neplatný mobilní aplikace hello:
+1. Upravte App.xaml.cs v sdílený projekt. Komentář inicializace **MobileServiceClient** a přidejte následující řádek, který používá adresu URL neplatný mobilní aplikace:
 
          public static MobileServiceClient MobileService = new MobileServiceClient("https://your-service.azurewebsites.fail");
 
-    Můžete také ukazují offline chování zakázáním Wi-Fi a mobilní sítě na zařízení hello nebo použít režim v letadle.
-2. Stiskněte klávesu **F5** toobuild a spuštění aplikace hello. Všimněte si vaše synchronizace se nezdařila při obnovení hello při spuštění aplikace.
-3. Zadejte nové položky a Všimněte si, že nabízené nezdaří a zobrazí se [CancelledByNetworkError] stav pokaždé, když kliknete na tlačítko **Uložit**. Však nové položky todo hello existovat v místním úložišti hello, dokud se můžou poslat back-end mobilní aplikace toohello.  V produkční aplikace, je-li potlačit tyto výjimky, které se chová hello klientskou aplikaci, pokud je stále připojená back-end mobilní aplikace toohello.
-4. Zavření aplikace hello a restartujte ji tooverify že hello nové položky, kterou jste vytvořili jsou trvalé toohello místního úložiště.
-5. (Volitelné) V sadě Visual Studio otevřete **Průzkumníka serveru**. Přejděte tooyour databáze v **Azure**->**databází SQL**. Klikněte pravým tlačítkem na databázi a vyberte **otevřít v Průzkumníku objektů systému SQL Server**. Teď můžete procházet tooyour tabulce databáze SQL a její obsah. Ověřte, že se nezměnil hello data v databázi back-end hello.
-6. (Volitelné) Použijte nástroj REST, například aplikaci Fiddler nebo Postman tooquery vaší mobilní back-end, pomocí dotazu GET ve tvaru `https://<your-mobile-app-backend-name>.azurewebsites.net/tables/TodoItem`.
+    Můžete také ukazují offline chování zakázáním Wi-Fi a mobilní sítě na zařízení nebo použít režim v letadle.
+2. Stiskněte klávesu **F5** sestavení a spuštění aplikace. Všimněte si vaše synchronizace se nezdařila při obnovení při spuštění aplikace.
+3. Zadejte nové položky a Všimněte si, že nabízené nezdaří a zobrazí se [CancelledByNetworkError] stav pokaždé, když kliknete na tlačítko **Uložit**. Však nové položky todo existovat v místním úložišti, dokud se můžou poslat na back-end mobilní aplikace.  V produkční aplikace je-li potlačit tyto výjimky klientské aplikace chová, jako by se stále připojeni k back-end mobilní aplikace.
+4. Zavřete aplikaci a restartujte ji k ověření, že nové položky, které jste vytvořili, jsou nastavené jako trvalé do místního úložiště.
+5. (Volitelné) V sadě Visual Studio otevřete **Průzkumníka serveru**. Přejděte k vaší databázi v **Azure**->**databází SQL**. Klikněte pravým tlačítkem na databázi a vyberte **otevřít v Průzkumníku objektů systému SQL Server**. Teď můžete procházet tabulku databáze SQL a její obsah. Ověřte, že se nezměnil na data v databázi back-end.
+6. (Volitelné) Dotaz na vaše mobilní back-end, pomocí dotazu GET ve formuláři pomocí REST nástroje, jako je Fiddler nebo Postman `https://<your-mobile-app-backend-name>.azurewebsites.net/tables/TodoItem`.
 
-## <a name="update-online-app"></a>Aktualizovat tooreconnect aplikace hello váš back-end mobilní aplikace
-V této části je znovu připojit back-end hello aplikace toohello mobilní aplikace. Tyto změny simulovat opětovné připojení sítě na aplikace hello.
+## <a name="update-online-app"></a>Aktualizace aplikace se znovu připojit váš back-end mobilní aplikace
+V této části je znovu připojit aplikace k back-end mobilní aplikace. Tyto změny simulovat opětovné připojení sítě na aplikaci.
 
-Při prvním spuštění aplikace hello, hello `OnNavigatedTo` volání obslužné rutiny události `InitLocalStoreAsync`. Tato metoda volá `SyncAsync` toosync na místní ukládání s databází hello back-end. aplikace Hello pokusí toosync při spuštění.
+Při prvním spuštění aplikace, `OnNavigatedTo` volání obslužné rutiny události `InitLocalStoreAsync`. Tato metoda volá `SyncAsync` synchronizaci místního úložiště s databází back-end. Aplikace se pokusí synchronizovat při spuštění.
 
-1. Otevřete v projektu sdíleného hello App.xaml.cs a zrušte komentář u vaší předchozí inicializace `MobileServiceClient` URL toouse hello správné hello mobilní aplikace.
-2. Stiskněte klávesu hello **F5** klíčů toorebuild a aplikaci spusťte hello. Hello aplikace synchronizuje místní změny s back-end mobilní aplikace Azure hello pomocí nabízení a vyžadování operace při hello `OnNavigatedTo` spustí obslužnou rutinu události.
-3. (Volitelné) Zobrazení hello aktualizovaná data pomocí Průzkumníka objektů systému SQL Server nebo REST nástroje, například aplikaci Fiddler. Všimněte si hello data umístění byl synchronizován mezi databáze back-end mobilní aplikace Azure hello a hello místní úložiště.
-4. V aplikaci hello, klikněte na tlačítko zaškrtnutí hello pole vedle několik položek toocomplete je v místním úložišti hello.
+1. Otevřete v projektu sdíleného souboru App.xaml.cs a zrušte komentář u vaší předchozí inicializace `MobileServiceClient` k používání správných adresu URL mobilní aplikace.
+2. Stiskněte **F5** klíč znovu sestavte a spusťte aplikaci. Aplikace synchronizuje místní změny s použitím operací nabízení a vyžadování back-end mobilní aplikace Azure při `OnNavigatedTo` spustí obslužnou rutinu události.
+3. (Volitelné) Zobrazte aktualizovaná data pomocí Průzkumníka objektů systému SQL Server nebo REST nástroje, například aplikaci Fiddler. Všimněte si data umístění byl synchronizován mezi databázi back-end mobilní aplikace Azure a místní úložiště.
+4. V aplikaci klikněte na zaškrtávací políčko vedle několik položek k jejich dokončení v místním úložišti.
 
-   `UpdateCheckedTodoItem`volání `SyncAsync` položku toosync každý byla dokončena s back-end mobilní aplikace hello. `SyncAsync`volá nabízení a vyžadování. Ale **vždy, když je spustit vyžádání pro tabulku tohoto klienta hello udělal změny, push se vždycky spustí automaticky**. To zaručuje, že všechny tabulky v místním úložišti hello společně s relací zůstaly konzistentní. Toto chování může způsobit neočekávané push.  Další informace o toto chování najdete v tématu [Offline synchronizací dat v Azure Mobile Apps].
+   `UpdateCheckedTodoItem`volání `SyncAsync` k položce každý byla úspěšně dokončena synchronizace s back-end mobilní aplikace. `SyncAsync`volá nabízení a vyžadování. Ale **vždy, když je spustit vyžádání pro tabulku, která klient udělal změny, push vždy provést automaticky**. To zaručuje, že všechny tabulky v místním úložišti společně s vztahy zůstaly konzistentní. Toto chování může způsobit neočekávané push.  Další informace o toto chování najdete v tématu [Offline synchronizací dat v Azure Mobile Apps].
 
 ## <a name="api-summary"></a>Souhrn rozhraní API
-Funkce offline toosupport hello mobilních služeb, použili jsme hello [IMobileServiceSyncTable] rozhraní a inicializovat [MobileServiceClient.SyncContext] [ synccontext] s místní databáze SQLite. Když do režimu offline, hello normální operace CRUD mobilních aplikací pracovat, jako kdyby aplikace hello stále připojený. během operace hello probíhají proti hello místního úložiště. Hello následující metody jsou použité toosynchronize hello místní úložiště s hello serveru:
+K podpoře offline funkce mobilních služeb, jsme použili [IMobileServiceSyncTable] rozhraní a inicializovat [MobileServiceClient.SyncContext] [ synccontext] s místní databáze SQLite. V režimu offline, normální operace CRUD pro Mobile Apps pracovat jako aplikace stále připojený. během operace dojít proti místní úložiště. Tyto metody slouží k synchronizaci místní úložiště se serverem:
 
-* **[PushAsync]**  vzhledem k tomu, že tato metoda je členem skupiny [IMobileServicesSyncContext], změny mezi všechny tabulky odesílají toohello back-end. Pouze záznamy s místní změny jsou odesílány toohello serveru.
-* **[PullAsync]**  vyžádání se spouští z [IMobileServiceSyncTable]. Pokud je v tabulce hello sledovaných změn, implicitní nabízené běží toomake jistotu, že všechny tabulky v místním úložišti hello společně s relací zůstaly konzistentní. Hello *pushOtherTables* parametr řídí, zda jiné tabulky v kontextu hello odesílají v implicitní push. Hello *dotazu* přebírá parametr [IMobileServiceTableQuery<T> ] [ IMobileServiceTableQuery] nebo data vrácená hello toofilter řetězec dotazu OData. Hello *queryId* parametr se používá toodefine přírůstkové synchronizace. Další informace najdete v tématu [Offline synchronizací dat v Azure Mobile Apps](app-service-mobile-offline-data-sync.md#how-sync-works).
-* **[PurgeAsync]**  vaše aplikace by měly volat pravidelně tato metoda toopurge zastaralá data z místního úložiště hello. Použití hello *vynutit* parametr, pokud budete potřebovat toopurge veškeré změny, které dosud nebyly synchronizovány.
+* **[PushAsync]**  vzhledem k tomu, že tato metoda je členem skupiny [IMobileServicesSyncContext], změny mezi všechny tabulky odesílají na back-end. Pouze záznamy s místní změny se odešlou server.
+* **[PullAsync]**  vyžádání se spouští z [IMobileServiceSyncTable]. Pokud je v tabulce sledovaných změn, implicitní nabízené běží a ujistěte se, že všechny tabulky v místním úložišti společně s vztahy zůstaly konzistentní. *PushOtherTables* parametr řídí, zda jiné tabulky v kontextu odesílají v implicitní push. *Dotazu* přebírá parametr [IMobileServiceTableQuery<T> ] [ IMobileServiceTableQuery] nebo řetězec dotazu OData k filtrování vrácená data. *QueryId* parametr se používá k definování přírůstkové synchronizace. Další informace najdete v tématu [Offline synchronizací dat v Azure Mobile Apps](app-service-mobile-offline-data-sync.md#how-sync-works).
+* **[PurgeAsync]**  vaše aplikace by měly pravidelně volat tuto metodu za účelem vymazat zastaralá data z místního úložiště. Použití *vynutit* parametr, pokud budete potřebovat k vyprázdnění. veškeré změny, které dosud nebyly synchronizovány.
 
 Další informace o těchto postupech najdete v tématu [Offline synchronizací dat v Azure Mobile Apps](app-service-mobile-offline-data-sync.md#how-sync-works).
 
 ## <a name="more-info"></a>Další informace
-Hello následující témata obsahují další informace o funkci offline synchronizace hello mobilních aplikací:
+Následující témata obsahují další informace o funkci offline synchronizace mobilních aplikací:
 
 * [Offline synchronizací dat v Azure Mobile Apps]
 * [Mobilní aplikace Azure .NET SDK postupy][8]
 
 <!-- Anchors. -->
-[Update hello app toosupport offline features]: #enable-offline-app
-[Update hello sync behavior of hello app]: #update-sync
-[Update hello app tooreconnect your Mobile Apps backend]: #update-online-app
+[Update the app to support offline features]: #enable-offline-app
+[Update the sync behavior of the app]: #update-sync
+[Update the app to reconnect your Mobile Apps backend]: #update-online-app
 [Next Steps]:#next-steps
 
 <!-- Images -->

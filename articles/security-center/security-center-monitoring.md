@@ -1,6 +1,6 @@
 ---
-title: "aaaSecurity sledování v Azure Security Center | Microsoft Docs"
-description: "Tento článek pomůže tooget práce s funkcemi sledováním v Azure Security Center."
+title: "Sledování zabezpečení v Azure Security Center | Dokumentace Microsoftu"
+description: "Tento článek vám pomůže začít pracovat s funkcemi sledování v Azure Security Center."
 services: security-center
 documentationcenter: na
 author: YuriDio
@@ -12,119 +12,128 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/09/2017
+ms.date: 09/07/2017
 ms.author: yurid
-ms.openlocfilehash: 43c2a8864d5fe27ba44b0d7bc979db970305ec17
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d610a4ae97657013f6bb784790f073c3d986959f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="security-health-monitoring-in-azure-security-center"></a>Sledování stavu zabezpečení v Azure Security Center
-Tento článek vám pomůže používat hello možnosti monitorování v Azure Security Center toomonitor dodržování zásad.
+Tento článek vám pomůže s využíváním možností v Azure Security Center ke sledování dodržování zásad.
 
 ## <a name="what-is-security-health-monitoring"></a>Co je sledování stavu zabezpečení?
-Myslíme si často monitorování jako pozorování a čekání událost toooccur, aby jsme mohly reagovat toohello situaci. Sledování zabezpečení odkazuje toohaving proaktivní strategie, kdy se auditují vaše prostředky tooidentify systémy, které nesplňují organizační standardy nebo osvědčené postupy.
+Pod pojmem sledování si často představujeme pozorování a čekání, až se stane nějaká událost, abychom na situaci reagovali. Sledování zabezpečení odkazuje na používání proaktivní strategie, kdy se auditují vaše prostředky a identifikují ty systémy, které nesplňují organizační standardy nebo osvědčené postupy.
 
 ## <a name="monitoring-security-health"></a>Sledování stavu zabezpečení
-Po povolení [zásady zabezpečení](security-center-policies.md) pro prostředky předplatného, Security Center analyzuje hello zabezpečení vaše prostředky tooidentify potenciální ohrožení zabezpečení. Informace o konfiguraci vaší sítě jsou k dispozici okamžitě. To může trvat hodinu nebo Další informace o konfiguraci virtuálního počítače, jako je například zabezpečení aktualizovat stav a konfiguraci operačního systému, toobecome k dispozici. Můžete zobrazit hello stav zabezpečení vašich prostředků a všechny problémy v hello **prevence** části. Můžete také zobrazit seznam těchto problémů na hello **doporučení** dlaždici.
+Po povolení [zásad zabezpečení](security-center-policies.md) pro prostředky předplatného služba Security Center analyzuje zabezpečení vašich prostředků, aby identifikovala potenciální ohrožení zabezpečení. Informace o konfiguraci vaší sítě jsou k dispozici okamžitě. Získání informací o konfiguraci virtuálních počítačů a počítačů, jako je stav aktualizace zabezpečení nebo konfigurace operačního systému, může trvat hodinu i déle v závislosti na počtu virtuálních počítačů a počítačů, na kterých máte nainstalovaného agenta. V části **Prevence** můžete zobrazit stav zabezpečení svých prostředků a případné problémy. Seznam těchto problémů můžete zobrazit také na dlaždici **Doporučení**.
 
-Další informace o tom, tooapply doporučení, přečtěte si [implementace doporučení zabezpečení v Azure Security Center](security-center-recommendations.md).
+Další informace o tom, jak používat doporučení, najdete v článku [Implementace doporučení zabezpečení v Azure Security Center](security-center-recommendations.md).
 
-V části hello **prevence** části, můžete monitorovat hello stav zabezpečení vašich prostředků. V následujícím příkladu hello, se zobrazí v dlaždici všechny prostředky (výpočetní, sítě, úložiště a data a aplikace) je celkový počet hello problémy, které byly zjištěny.
+V části **Prevence** můžete monitorovat stav zabezpečení svých prostředků. V následujícím příkladu vidíte, že dlaždice každého prostředku (Compute, Sítě, Úložiště a data a Aplikace) obsahuje celkový počet identifikovaných problémů.
 
 ![Dlaždice stavu zabezpečení prostředků](./media/security-center-monitoring/security-center-monitoring-fig1-newUI-2017.png)
 
 
 ### <a name="monitor-compute"></a>Monitorování služby Compute
-Když kliknete na tlačítko **výpočetní** dlaždici hello **výpočetní** okno, které se otevře zobrazuje tři karty:
+Po kliknutí na dlaždici **Compute** se zobrazí tři karty:
 
-- **Přehled:** Doporučení pro monitorování a virtuální počítač
-- **Virtuální počítače:** Seznam všech virtuálních počítačů a jejich aktuálního stavu zabezpečení
+- **Přehled:** Monitorování a doporučení.
+- **Virtuální počítače a počítače:** Seznam všech virtuálních počítačů a počítačů a jejich aktuálního stavu zabezpečení.
 - **Cloudová služby:** Seznam všech webových a pracovních rolí monitorovaných pomocí služby Security Center.
 
-![Chybějící aktualizace systému podle virtuálních počítačů](./media/security-center-monitoring/security-center-monitoring-fig1-new002-2017.png)
+![Chybějící aktualizace systému podle virtuálních počítačů](./media/security-center-monitoring/security-center-monitoring-fig1-sep2017.png)
 
-V každé kartě může mít více oddílů, a v každém oddílu můžete vybrat jednotlivé možnosti toosee další podrobnosti o hello doporučené kroky tooaddress tento konkrétní problém. 
+Na každé kartě můžete mít několik částí a v každé části můžete vybrat jednotlivé možnosti, abyste zobrazili další podrobnosti o doporučeném postupu k vyřešení konkrétního problému. 
 
 #### <a name="monitoring-recommendations"></a>Doporučení pro monitorování
-Tato část uvádí celkový počet virtuálních počítačů, které byly inicializovány pro shromažďování dat a jejich aktuální stav hello. Po všechny virtuální počítače mají shromažďování dat inicializováno, budou připravené tooreceive zásady zabezpečení Security Center. Když kliknete na tuto položku, hello **agenta virtuálního počítače je chybí nebo neodpovídá** otevře se okno. 
+Tato část uvádí celkový počet virtuálních počítačů a počítačů, které byly inicializovány pro automatické zřizování, a jejich aktuální stavy. Po kliknutí na tuto položku se otevře okno **Agent virtuálního počítače chybí nebo neodpovídá**. 
 
 ![Chybějící aktualizace systému podle virtuálních počítačů](./media/security-center-monitoring/security-center-monitoring-fig1-new003-2017.png)
 
 
-#### <a name="virtual-machine-recommendations"></a>Doporučení pro virtuální počítače
-Tato část obsahuje sadu [doporučení pro každý virtuální počítač](security-center-virtual-machine-recommendations.md) monitorovaný pomocí Azure Security Center. Hello první sloupec obsahuje doporučení hello. druhý sloupec Hello zobrazuje celkový počet virtuálních počítačů, které jsou ovlivněné tímto doporučením hello. Hello třetí sloupci se zobrazuje závažnost hello hello problému, jak ukazuje následující snímek obrazovky hello.
+#### <a name="recommendations"></a>Doporučení
+Tato část obsahuje sadu [doporučení pro každý virtuální počítač a počítač](security-center-virtual-machine-recommendations.md) monitorovaný pomocí Azure Security Center. První sloupec uvádí doporučení. Druhý sloupec zobrazuje celkový počet virtuálních počítačů a počítačů, které jsou ovlivněny tímto doporučením. Třetí sloupec zobrazuje závažnost problému, jak je znázorněno na následujícím snímku obrazovky:
 
-![Doporučení pro virtuální počítače](./media/security-center-monitoring/security-center-monitoring-fig1-new004-2017.png)
+![Doporučení pro virtuální počítače](./media/security-center-monitoring/security-center-monitoring-fig2-sep2017.png)
 
 > [!NOTE]
-> Pouze virtuální počítače, které mají alespoň jeden veřejný koncový bod se zobrazují v hello **sítě stavu** okno v hello **topologie sítě** seznamu.
+> V seznamu **Síťová topologie** v okně **Stav sítě** se zobrazí jenom virtuální počítače s alespoň jedním veřejným koncovým bodem.
 >
->
 
-Každé doporučení obsahuje sadu akcí, které můžete provést, když na ni kliknete. Například pokud kliknete na tlačítko **chybějící aktualizace systému**, hello **chybějící aktualizace systému** otevře se okno. Zobrazí se seznam hello virtuálních počítačů, které jsou chybějící opravy a závažnost chybějící aktualizace hello text hello, jak je znázorněno v následující hello snímek.
+Každé doporučení obsahuje sadu akcí, které můžete provést, když na ni kliknete. Pokud například kliknete na **Chybějící aktualizace systému**, zobrazí se seznam virtuálních počítačů a počítačů s chybějícími opravami a závažnost chybějících aktualizací, jak je znázorněno na následujícím snímku obrazovky:
 
-![Chybějící aktualizace systému pro virtuální počítače](./media/security-center-monitoring/security-center-monitoring-fig5-ga.png)
+![Chybějící aktualizace systému pro virtuální počítače](./media/security-center-monitoring/security-center-monitoring-fig9-sep2017.png)
 
-Hello **chybějící aktualizace systému** ukazovat tabulku s hello následující informace:
+**Chybějící aktualizace systému** obsahují souhrn důležitých aktualizací ve formátu grafu, jeden pro Windows a jeden pro Linux. Druhá část obsahuje tabulku s následujícími informacemi:
 
-* **VIRTUÁLNÍ počítač**: název hello hello virtuálního počítače, kterému chybí aktualizace.
-* **AKTUALIZACE systému**: hello počet aktualizací systému, které chybí.
-* **ČAS poslední kontroly**: čas hello Security Center naposledy hledala hello virtuálního počítače pro aktualizace.
-* **Stav**: hello aktuální stav doporučení hello:
-  * **Otevřete**: dosud nebylo řešeno hello doporučení.
-  * **V průběhu**: hello doporučení je v současné době použité toothose prostředky a není třeba žádné akce.
-  * **Vyřešit**: hello doporučení již byla dokončena. (Pokud hello problém byl vyřešen, položka hello je nedostupné)
-* **ZÁVAŽNOST**: Popisuje hello závažnost tohoto konkrétního doporučení:
+* **NÁZEV:** Název chybějící aktualizace.
+* **POČET VIRTUÁLNÍCH POČÍTAČŮ A POČÍTAČŮ:** Celkový počet virtuálních počítačů a počítačů, na kterých chybí daná aktualizace.
+* **STAV**: Aktuální stav doporučení:
+  * **Otevřené**: Doporučení dosud nebylo řešeno.
+  * **Probíhá**: Doporučení se aktuálně na tyto prostředky používá a není třeba provádět žádnou akci.
+  * **Vyřešeno**: Doporučení už je dokončené. (Pokud byl problém vyřešen, položka je vyšedlá.)
+* **ZÁVAŽNOST**: Popisuje závažnost tohoto konkrétního doporučení:
   * **Vysoká**: Ohrožení zabezpečení existuje u významného prostředku (aplikace, virtuální počítač nebo skupina zabezpečení sítě) a vyžaduje pozornost.
-  * **Střední**: nekritické nebo další kroky jsou požadované toocomplete procesu nebo odstranění ohrožení.
-  * **Nízká**: Ohrožení zabezpečení by se mělo řešit, ale nevyžaduje okamžitou pozornost. (Ve výchozím nastavení, nejsou přítomny nízkou doporučení, ale můžete filtrovat podle nízkou doporučení, pokud chcete, aby tooview jejich.)
+  * **Střední**: Nekritické nebo další kroky jsou potřebné k dokončení procesu nebo odstranění ohrožení.
+  * **Nízká**: Ohrožení zabezpečení by se mělo řešit, ale nevyžaduje okamžitou pozornost. (Ve výchozím nastavení nejsou doporučení s nízkou závažností uváděny, ale pokud je chcete zobrazit, je možné je vyfiltrovat.)
 
-Podrobnosti o doporučení hello tooview, klikněte na název hello hello virtuálního počítače. Jak je znázorněno v hello následující snímek obrazovky s hello seznam aktualizací, otevře se nové okno pro tento virtuální počítač.
+Pokud chcete zobrazit podrobnosti o doporučení, klikněte na název chybějící aktualizace v seznamu. 
 
-![Chybějící aktualizace systému pro konkrétní virtuální počítač](./media/security-center-monitoring/security-center-monitoring-fig6-ga.png)
+![Chybějící aktualizace systému pro konkrétní virtuální počítač](./media/security-center-monitoring/security-center-monitoring-fig4-sep2017.png)
 
 > [!NOTE]
-> Hello bezpečnostní doporučení uvedená tady jsou stejné jako v hello hello **doporučení** okno. V tématu hello [implementace doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) Další informace o tom najdete v článku tooresolve doporučení. Tento krok platí nejen pro virtuální počítače, ale i na všechny prostředky, které jsou k dispozici v hello **stav prostředku** dlaždici.
+> Bezpečnostní doporučení uvedená tady jsou stejná jako v možnosti **Doporučení**. Další informace o tom, jak řešit doporučení, najdete v článku [Implementace doporučení zabezpečení v Azure Security Center](security-center-recommendations.md). Týká se to nejen virtuálních počítačů a počítačů, ale také všech prostředků, které jsou k dispozici na dlaždici **Resource Health**.
 >
->
 
-#### <a name="virtual-machines-section"></a>Část virtuálních počítačů
-část virtuálních počítačů Hello získáte přehled o všech virtuálních počítačů a doporučení. Každý sloupec představuje jednu sadu doporučení, jak je uvedeno v hello následující snímek obrazovky:
+#### <a name="vms--computers-section"></a>Část virtuálních počítačů a počítačů
+Část virtuálních počítačů a počítačů poskytuje přehled doporučení pro všechny virtuální počítače a počítače. Každý sloupec představuje jednu sadu doporučení, jak ukazuje následující snímek obrazovky:
 
-![Přehled všech virtuálních počítačů a doporučení](./media/security-center-monitoring/security-center-monitoring-fig1-new005-2017.png)
+![Přehled všech virtuálních počítačů a doporučení](./media/security-center-monitoring/security-center-monitoring-fig5-sep2017.png)
 
-Hello ikonu, která se zobrazí pod každé doporučení pomáhá tooquickly můžete identifikovat hello virtuálních počítačů, které vyžadují pozornost a hello typ doporučení.
+V tomto seznamu se používají čtyři typy ikon, jak je popsáno v tomto seznamu:
 
-V předchozím příkladu hello má jeden virtuální počítač kritické doporučení týkající se služby endpoint protection. tooget Další informace o hello virtuální počítač, klikněte na něj. Nové okno, které se otevře představuje tento virtuální počítač, jak je uvedeno v následující snímek obrazovky hello.
+![icon1](./media/security-center-monitoring/security-center-monitoring-icon1.png) Počítač mimo Azure.
 
-![Podrobné informace o zabezpečení virtuálního počítače](./media/security-center-monitoring/security-center-monitoring-fig8-ga.png)
+![icon2](./media/security-center-monitoring/security-center-monitoring-icon2.png) Virtuální počítač Azure Resource Manageru.
 
-Toto okno obsahuje podrobné informace o zabezpečení hello hello virtuálního počítače. V dolní části hello tohoto okna uvidíte, že hello doporučené akce a hello závažnost jednotlivých problémů.
+![icon3](./media/security-center-monitoring/security-center-monitoring-icon3.png) Virtuální počítač Azure Classic.
+
+![icon4](./media/security-center-monitoring/security-center-monitoring-icon4.png) Virtuální počítače identifikované pouze z pracovního prostoru, který je součástí zobrazeného předplatného. To zahrnuje virtuální počítače z jiných předplatných, které se hlásí k pracovnímu prostoru v tomto předplatném, a virtuální počítače nainstalované s přímým agentem SCOM, které nemají žádné ID prostředku.
+
+Ikona, která se zobrazí pod každým doporučením, pomáhá rychle zjistit, které virtuální počítače a počítače vyžadují pozornost a o jaký typ doporučení se jedná. Pomocí možnosti **Filtr** můžete také vybrat, jaké možnosti se na obrazovce zobrazí.
+
+![Filtr](./media/security-center-monitoring/security-center-monitoring-fig6-sep2017.png)
+
+V předchozím příkladu má jeden virtuální počítač kritické doporučení týkající se ochrany koncových bodů. Pokud chcete získat další informace o tomto virtuálním počítači, klikněte na něj:
+
+![Podrobné informace o zabezpečení virtuálního počítače](./media/security-center-monitoring/security-center-monitoring-fig7-sep2017.png)
+
+Tady vidíte podrobné informace o zabezpečení pro virtuální počítač nebo počítač. V dolní části vidíte doporučenou akci a závažnost jednotlivých problémů.
 
 #### <a name="cloud-services-section"></a>Část cloudových služeb
-Pro cloudové služby doporučení se vytvoří při hello verze operačního systému je zastaralý jak ukazuje následující snímek obrazovky hello:
+Pro cloudové služby se doporučení vytvoří, když je verze operačního systému zastaralá, jak je znázorněno na následujícím snímku obrazovky:
 
 ![Stav pro cloudové služby](./media/security-center-monitoring/security-center-monitoring-fig1-new006-2017.png)
 
-V případě, kdy máte doporučení (která není hello případ předchozí příklad hello) je nutné kroky hello toofollow ve verzi operačního systému hello doporučení tooupdate hello. Když je k dispozici aktualizace, bude mít výstrahy (červené nebo oranžová - závisí na hello závažnost problému hello). Po kliknutí na toto upozornění řádky hello WebRole1 (běží Windows Server s vaší webové aplikaci automaticky nasadí tooIIS) nebo WorkerRole1 (běží Windows Server s vaší webové aplikaci automaticky nasadí tooIIS), otevře se nové okno s další podrobnosti o této doporučení, jak ukazuje následující snímek obrazovky hello:
+V případě, kdy máte doporučení (což není případ předchozího příkladu), budete muset postupovat podle kroků v doporučení, abyste aktualizovali verzi operačního systému. Když je k dispozici aktualizace, obdržíte výstrahu (červenou nebo oranžovou – v závislosti na závažnosti problému). Když kliknete na tuto výstrahu v řádku Webová role 1 (spouští Windows Server s vaší webovou aplikací automaticky nasazenou do služby IIS) nebo Role pracovního procesu 1 (spouští Windows Server s vaší webovou aplikací automaticky nasazenou do služby IIS), zobrazí se další podrobnosti týkající se tohoto doporučení, jak je znázorněno na následujícím snímku obrazovky:
 
 ![Podrobnosti cloudové služby](./media/security-center-monitoring/security-center-monitoring-fig8-new3.png)
 
-Klikněte na tlačítko toosee více doporučený vysvětlení tohoto doporučení **verze aktualizace operačního systému** pod hello **popis** sloupce. Hello **verze operačního systému aktualizaci (Preview)** otevře se okno s dalšími podrobnostmi.
+Pokud chcete zobrazit podrobnější vysvětlení tohoto doporučení, klikněte na **Aktualizovat verzi operačního systému** ve sloupci **POPIS**. 
 
 ![Doporučení pro Cloud Services](./media/security-center-monitoring/security-center-monitoring-fig8-new4.png)  
 
 ### <a name="monitor-virtual-networks"></a>Monitorování virtuálních sítí
-Když kliknete na tlačítko **sítě** dlaždici hello **sítě** otevře se okno s dalšími podrobnostmi, jak ukazuje následující snímek obrazovky hello:
+Po kliknutí na dlaždici **Sítě** se otevře okno **Sítě** s dalšími podrobnostmi, jak je znázorněno na následujícím snímku obrazovky:
 
 ![Okno Sítě](./media/security-center-monitoring/security-center-monitoring-fig9-new3.png)
 
 #### <a name="networking-recommendations"></a>Doporučení pro sítě
-Jako hello informací o stavu prostředků virtuálního počítače, toto okno obsahuje souhrnný seznam problémů v hello horní části okna hello a seznam monitorovaných sítí dolní hello.
+Podobně jako u informací o stavu prostředků virtuálních počítačů se tady zobrazí v horní části souhrnný seznam problémů a v dolní části seznam monitorovaných sítí.
 
-Hello část rozpisu stavu sítí uvádí možné problémy zabezpečení a nabízí [doporučení](security-center-network-recommendations.md). Možné problémy mohou zahrnovat:
+Část rozpisu stavu sítí uvádí možné problémy zabezpečení a nabízí [doporučení](security-center-network-recommendations.md). Možné problémy mohou zahrnovat:
 
 * Není nainstalována brána firewall příští generace (NGFW).
 * Nejsou povolené skupiny zabezpečení sítě v podsítích.
@@ -132,27 +141,25 @@ Hello část rozpisu stavu sítí uvádí možné problémy zabezpečení a nab�
 * Omezený externí přístup prostřednictvím veřejného externího koncového bodu.
 * Internetové koncové body, které jsou v pořádku
 
-Po kliknutí na tlačítko doporučení, otevře se nové okno s dalšími podrobnostmi o hello doporučení, jak ukazuje následující příklad hello.
+Po kliknutí na doporučení se zobrazí další podrobnosti o doporučení, jak je znázorněno v následujícím příkladu:
 
-![Podrobnosti o doporučení v okně sítě hello](./media/security-center-monitoring/security-center-monitoring-fig9-ga.png)
+![Podrobnosti o doporučení v okně Sítě](./media/security-center-monitoring/security-center-monitoring-fig9-ga.png)
 
-V tomto příkladu hello **nakonfigurovat chybějící skupiny zabezpečení sítě pro podsítě** okno se seznamem podsítě a sítě virtuálních počítačů, které chybí ochranu skupiny zabezpečení. Pokud kliknete na tlačítko toowhich podsíť hello chcete skupinu zabezpečení sítě hello tooapply, otevře se další okno.
-
-V hello **zvolit skupinu zabezpečení sítě** okno, můžete vybrat hello nejvíce příslušné sítě skupiny zabezpečení pro hello podsíť, nebo můžete vytvořit novou skupinu zabezpečení sítě.
+V tomto příkladu obsahuje okno **Nakonfigurovat chybějící skupiny zabezpečení sítě pro podsítě** seznam podsítí a virtuálních počítačů, kde chybí ochrana skupiny zabezpečení sítě. Pokud kliknete na podsíť, na kterou chcete použít skupinu zabezpečení sítě, zobrazí se okno **Zvolit skupinu zabezpečení sítě**. Tady můžete vybrat nejvhodnější skupinu zabezpečení sítě pro podsíť nebo můžete vytvořit novou skupinu zabezpečení sítě.
 
 #### <a name="internet-facing-endpoints-section"></a>Část internetových koncových bodů
-V hello **internetové koncové body** části uvidíte hello virtuálních počítačů, které jsou aktuálně nakonfigurované s internetovým koncového bodu a jeho aktuální stav.
+V části **Internetové koncové body** uvidíte virtuální počítače, které jsou aktuálně nakonfigurované s internetovým koncovým bodem, a jejich aktuální stav.
 
 ![Virtuální počítače nakonfigurované s internetovým koncovým bodem a stav](./media/security-center-monitoring/security-center-monitoring-fig10-ga.png)
 
-Tato tabulka má název hello koncový bod, který představuje hello virtuálního počítače, hello internetové IP adresu a hello aktuální stav závažnosti hello skupinu zabezpečení sítě a hello NGFW. Hello tabulka je řazená podle závažnosti:
+Tato tabulka obsahuje název koncového bodu, který představuje virtuální počítač, internetovou IP adresu, aktuální stav závažnosti skupiny zabezpečení sítě a bránu firewall příští generace. Tabulka je řazená podle závažnosti:
 
 * Červená (nahoře): Vysoká priorita, mělo by se řešit okamžitě.
 * Oranžová: Střední priorita, mělo by se řešit co nejdříve.
 * Zelená (poslední): Stav v pořádku.
 
 #### <a name="networking-topology-section"></a>Část topologie sítě
-Hello **topologie sítě** část obsahuje hierarchické zobrazení prostředků hello, jak ukazuje následující snímek obrazovky hello:
+Část **Topologie sítě** obsahuje hierarchické zobrazení prostředků, jak je znázorněno na následujícím snímku obrazovky:
 
 ![Hierarchické zobrazení prostředků v části topologie sítě](./media/security-center-monitoring/security-center-monitoring-fig121-new4.png)
 
@@ -162,55 +169,55 @@ Tato tabulka je řazená podle závažnosti (virtuální počítače a podsítě
 * Oranžová: Střední priorita, mělo by se řešit co nejdříve.
 * Zelená (poslední): Stav v pořádku.
 
-V tomto zobrazení topologie obsahuje první úroveň hello [virtuální sítě](../virtual-network/virtual-networks-overview.md), [brány virtuální sítě](/vpn-gateway/vpn-gateway-site-to-site-create.md), a [virtuální sítě (klasické)](/virtual-network/virtual-networks-create-vnet-classic-pportal.md). Hello druhé úrovni jsou podsítě a třetí úroveň hello má hello virtuální počítače, které patří toothose podsítě. Hello pravém sloupci je aktuální stav hello hello skupina zabezpečení sítě pro tyto prostředky, jak je znázorněno v hello následující ukázka:
+V tomto zobrazení topologie obsahuje první úroveň [virtuální sítě](../virtual-network/virtual-networks-overview.md), [brány virtuální sítě](/vpn-gateway/vpn-gateway-site-to-site-create.md) a [virtuální sítě (klasické)](/virtual-network/virtual-networks-create-vnet-classic-pportal.md). Na druhé úrovni jsou podsítě a na třetí úrovni virtuální počítače, které patří do těchto podsítí. V pravém sloupci je aktuální stav skupiny zabezpečení sítě pro tyto prostředky, jak ukazuje následující příklad:
 
-![Stav skupiny zabezpečení sítě hello v část topologie sítě](./media/security-center-monitoring/security-center-monitoring-fig12-ga.png)
+![Stav skupiny zabezpečení sítě v části topologie sítě](./media/security-center-monitoring/security-center-monitoring-fig12-ga.png)
 
-Hello dolní část toto okna obsahuje hello doporučení pro tento virtuální počítač, který je podobný toowhat je popsáno výše. Můžete kliknutím na Další doporučení toolearn nebo použít řízení hello potřeby zabezpečení nebo konfigurace.
+Dolní část tohoto okna obsahuje doporučení pro tento virtuální počítač, podobně jako jsme už uváděli dříve. Kliknutím na doporučení získáte další informace nebo použijete potřebný ovládací prvek zabezpečení nebo konfiguraci zabezpečení.
 
 ### <a name="monitor-storage--data"></a>Monitorování úložiště a dat
 
-Když kliknete na tlačítko **& úložiště dat** v hello **prevence** části hello **datové prostředky** otevře se okno s doporučeními pro SQL a úložiště. Je také [doporučení](security-center-sql-service-recommendations.md) pro hello obecný stav databáze hello. Další informace o šifrování úložiště najdete v tématu [Povolení šifrování účtu úložiště Azure v Azure Security Center](security-center-enable-encryption-for-storage-account.md).
+Po kliknutí na **Úložiště a data** v části **Prevence** se otevře okno **Datové prostředky** s doporučeními pro SQL a službu Storage. Také obsahuje [doporučení](security-center-sql-service-recommendations.md) pro obecný stav databáze. Další informace o šifrování úložiště najdete v tématu [Povolení šifrování účtu úložiště Azure v Azure Security Center](security-center-enable-encryption-for-storage-account.md).
 
 ![Datové prostředky](./media/security-center-monitoring/security-center-monitoring-fig13-newUI-2017.png)
 
-V části **SQL doporučení**, můžete kliknout na každé doporučení a get více podrobností o další akce tooresolve problém. Hello následující příklad ukazuje hello rozšíření hello **databáze auditování a detekce hrozeb v databázích SQL** doporučení.
+V části **Doporučení SQL** můžete kliknout na jakékoli doporučení a získáte další podrobnosti o další akci pro řešení problému. Následující příklad ukazuje rozbalení doporučení **Auditování databáze a detekce hrozeb u databází SQL**.
 
 ![Podrobnosti o doporučení SQL](./media/security-center-monitoring/security-center-monitoring-fig14-ga-new.png)
 
-Hello **povolení auditování a detekce hrozeb v databázích SQL** okno obsahuje hello následující informace:
+Okno **Povolit auditování a detekci hrozeb u databází SQL** obsahuje následující informace:
 
 * Seznam databází SQL
-* Hello serveru, na kterém jsou umístěny
-* Informace o tom, zda bylo toto nastavení zděděno ze serveru hello nebo pokud je v této databázi jedinečné
-* aktuální stav Hello
-* Hello závažnost problému hello
+* Server, na kterém jsou umístěné
+* Informace o tom, zda bylo toto nastavení zděděno ze serveru nebo zda je v této databázi jedinečné
+* Aktuální stav
+* Závažnosti problému
 
-Po kliknutí na tlačítko hello databáze tooaddress toto doporučení, hello **auditování a detekce hrozeb** jak je znázorněno v hello následující obrazovka, otevře se okno.
+Když kliknete na databázi, abyste vyřešili toto doporučení, otevře se okno **Auditování a detekce hrozeb**, jak je znázorněno na následující obrazovce.
 
-![Okno Auditování a detekce hrozeb](./media/security-center-monitoring/security-center-monitoring-fig15-ga.png)
+![Auditování a detekce hrozeb](./media/security-center-monitoring/security-center-monitoring-fig15-ga.png)
 
-tooenable auditování, vyberte **ON** pod hello **auditování** možnost.
+Pokud chcete povolit auditování, vyberte **Zapnuto** pod možností **Auditování**.
 
 ### <a name="monitor-applications"></a>Monitorování aplikací
 
-Pokud má vaše úloha Azure aplikace umístěné v [virtuálních počítačů (vytvořeny prostřednictvím Správce Azure Resource Manager)](../azure-resource-manager/resource-manager-deployment-model.md) s odhalenými webovými porty (porty TCP 80 a 443), můžete sledovat v Centru zabezpečení těchto tooidentify potenciální potíže se zabezpečením a doporučené kroky k nápravě. Když kliknete na tlačítko hello **aplikace** dlaždici hello **aplikace** otevře se okno s řadou doporučení v hello **aplikace doporučení** části. Také ukazuje rozpis aplikací hello na hostitele nebo virtuální IP adresu, jak ukazuje následující snímek obrazovky hello.
+Pokud má vaše úloha Azure aplikace, které jsou umístěné ve [virtuálních počítačích (vytvořených přes Azure Resource Managera)](../azure-resource-manager/resource-manager-deployment-model.md) se zpřístupněnými webovými porty (porty TCP 80 a 443), Security Center je může sledovat, aby se zjistily možné problémy zabezpečení a doporučily se kroky k nápravě. Když kliknete na dlaždici **Aplikace**, otevře se okno **Aplikace** s řadou doporučení v části **Doporučení pro aplikace**. Také ukazuje rozpis aplikací na hostitele, IP adresu nebo doménu a jestli je nainstalované řešení WAF:
 
-![Stav zabezpečení aplikací](./media/security-center-monitoring/security-center-monitoring-fig16-ga.png)
+![Stav zabezpečení aplikací](./media/security-center-monitoring/security-center-monitoring-fig8-sep2017.png)
 
-Stejně jako jste s hello ostatních doporučení, můžete kliknout na doporučení toosee další podrobnosti o problému hello a jak tooremediate. Hello příkladu v hello následující obrázek je aplikace, která byla identifikována jako nezabezpečená webová aplikace. Když vyberete hello aplikace, která není považovaná za zabezpečené, otevře se další okno s hello následující možnost k dispozici:
+Stejně jako u ostatních doporučení můžete kliknutím na doporučení zobrazit další podrobnosti o problému a způsobu řešení. Příklad uvedený na následujícím obrázku je aplikace, která byla identifikována jako nezabezpečená webová aplikace. Když vyberete aplikaci, která není považovaná za bezpečnou, zobrazí se následující možnost:
 
-![Podrobnosti o aplikaci, která není zabezpečená](./media/security-center-monitoring/security-center-monitoring-fig17-ga.png)
+![Podrobnosti](./media/security-center-monitoring/security-center-monitoring-fig17-ga.png)
 
-Toto okno bude mít seznam všech doporučení pro tuto aplikaci. Když kliknete na tlačítko hello **přidání brány firewall webových aplikací** doporučení, hello **přidání brány Firewall webových aplikací** otevře se okno Možnosti, jak můžete tooinstall brány firewall webových aplikací (firewall webových aplikací) z partnerského jako ukazuje následující snímek obrazovky hello.
+Tady máte seznam všech doporučení pro tuto aplikaci. Když kliknete na doporučení **Přidat firewall webových aplikací**, otevře se okno **Přidat firewall webových aplikací** s možnostmi instalace brány firewall webových aplikací (WAF) od partnera, jak je znázorněno na následujícím snímku obrazovky.
 
 ![Dialogové okno Přidat firewall webových aplikací](./media/security-center-monitoring/security-center-monitoring-fig18-ga.png)
 
 ## <a name="see-also"></a>Viz také
-V tomto článku jste se naučili jak toouse funkcemi sledováním v Azure Security Center. toolearn Další informace o službě Azure Security Center, najdete v části hello následující:
+V tomto článku jste zjistili, jak ve službě Azure Security Center používat funkce sledování. Pokud se o službě Azure Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-* [Nastavení zásad zabezpečení v Azure Security Center](security-center-policies.md): Zjistěte, jak tooconfigure nastavení zabezpečení v Azure Security Center.
-* [Správa a zda odpovídá toosecurity výstrahy v Azure Security Center](security-center-managing-and-responding-alerts.md): Zjistěte, jak toomanage a reakce toosecurity výstrahy.
-* [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md): Zjistěte, jak toomonitor hello stav vašich partnerských řešení.
-* [Nejčastější dotazy k Azure Security Center](security-center-faq.md): Přečtěte si nejčastější dotazy o použití služby hello.
+* [Nastavení zásad zabezpečení ve službě Azure Security Center](security-center-policies.md): Zjistěte, jak se v Azure Security Center konfiguruje nastavení zabezpečení.
+* [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md): Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
+* [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md): Zjistěte, jak sledovat stav vašich partnerských řešení.
+* [Časté otázky k Azure Security Center](security-center-faq.md): Přečtěte si nejčastější dotazy k používání této služby.
 * [Blog o zabezpečení Azure](http://blogs.msdn.com/b/azuresecurity/): Přečtěte si příspěvky o zabezpečení a dodržování předpisů Azure.

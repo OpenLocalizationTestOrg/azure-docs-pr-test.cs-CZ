@@ -1,6 +1,6 @@
 ---
-title: "aaaMonitor operace, události a čítače pro skupiny Nsg | Microsoft Docs"
-description: "Zjistěte, jak tooenable čítače, události a provozní protokolování pro skupiny Nsg"
+title: "Sledování operací, události a čítače pro skupiny Nsg | Microsoft Docs"
+description: "Informace o povolení čítače, události a provozní protokolování pro skupiny Nsg"
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,59 +15,59 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2017
 ms.author: jdial
-ms.openlocfilehash: f16f1a0ad693028ee7aba21574b5c8ddfcd27096
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 552f37dd704de25159bc0f0ad34fdae9ed8b73f5
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="log-analytics-for-network-security-groups-nsgs"></a>Analýza protokolu pro skupiny zabezpečení sítě (NSG)
 
-Můžete povolit hello následující kategorie protokolů diagnostiky pro skupiny zabezpečení sítě:
+Pro skupiny Nsg můžete povolit v těchto kategoriích protokolů diagnostiky:
 
-* **Události:** obsahuje položky, u které skupina NSG použitá tooVMs a instance rolí na základě adresy MAC jsou pravidla. Hello stav pro tato pravidla se shromažďují každých 60 sekund.
-* **Čítač pravidel:** obsahuje položky pro jednotlivé skupiny NSG počet použití pravidla je použité toodeny nebo povolení provozu.
+* **Události:** obsahuje položky, pro které skupina NSG pravidla, použije se pro virtuální počítače a instance rolí na základě adresy MAC. Stav pro tato pravidla se shromažďují každých 60 sekund.
+* **Čítač pravidel:** obsahuje položky pro jednotlivé skupiny NSG počet použití pravidla se aplikuje zakázat nebo povolit provoz.
 
 > [!NOTE]
-> Diagnostické protokoly jsou dostupné pouze pro skupiny Nsg nasazené prostřednictvím modelu nasazení Azure Resource Manager hello. Nelze povolit protokolování diagnostiky pro nasazení pomocí modelu nasazení classic hello skupiny Nsg. Lépe porozumět hello dva modely, odkazovat hello [modelech nasazení Azure Principy](../resource-manager-deployment-model.md) článku.
+> Diagnostické protokoly jsou dostupné pouze pro skupiny Nsg nasazené prostřednictvím modelu nasazení Azure Resource Manager. Nelze povolit protokolování diagnostiky pro skupiny Nsg nasazené prostřednictvím modelu nasazení classic. Lépe porozumět obou modelů, odkazovat [modelech nasazení Azure Principy](../resource-manager-deployment-model.md) článku.
 
-Ve výchozím nastavení je u skupiny Nsg vytvořena prostřednictvím buď modelu nasazení Azure povoleno protokolování aktivity (dříve označované jako auditování nebo provozní protokoly). toodetermine operací, které byly dokončeny podle skupin Nsg v hello protokol aktivit, podívejte se na položky, které obsahují hello následující typy prostředků: 
+Ve výchozím nastavení je u skupiny Nsg vytvořena prostřednictvím buď modelu nasazení Azure povoleno protokolování aktivity (dříve označované jako auditování nebo provozní protokoly). Pokud chcete zjistit, které operace byly dokončeny podle skupin Nsg v protokolu aktivit, vyhledejte položky, které obsahují následující typy prostředků: 
 
 - Microsoft.ClassicNetwork/networkSecurityGroups 
 - Microsoft.ClassicNetwork/networkSecurityGroups/securityRules
 - Microsoft.Network/networkSecurityGroups
 - Microsoft.Network/networkSecurityGroups/securityRules 
 
-Čtení hello [přehled hello protokol činnosti Azure](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) článku toolearn více informací o protokoly aktivity. 
+Pro čtení [přehled protokol činnosti Azure](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) článku Další informace o protokoly aktivity. 
 
 ## <a name="enable-diagnostic-logging"></a>Povolení protokolování diagnostiky
 
-Musí být povoleno protokolování diagnostiky pro *každý* NSG chcete toocollect data pro. Hello [přehled o Azure diagnostické protokoly](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) článek vysvětluje, kde lze odesílat diagnostické protokoly. Pokud nemáte existující skupina NSG, dokončení hello kroky v hello [vytvořit skupinu zabezpečení sítě](virtual-networks-create-nsg-arm-pportal.md) článku toocreate jeden. Můžete povolit NSG diagnostické protokolování pomocí kteréhokoli hello následující metody:
+Musí být povoleno protokolování diagnostiky pro *každý* NSG, které chcete shromažďovat data. [Přehled o Azure diagnostické protokoly](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) článek vysvětluje, kde lze odesílat diagnostické protokoly. Pokud nemáte existující skupina NSG, proveďte kroky v [vytvořit skupinu zabezpečení sítě](virtual-networks-create-nsg-arm-pportal.md) článek k jeho vytvoření. Můžete povolit NSG diagnostické protokolování pomocí kteréhokoli z následujících metod:
 
 ### <a name="azure-portal"></a>portál Azure
 
-toouse hello portálu tooenable protokolování, přihlášení toohello [portál](https://portal.azure.com). Klikněte na tlačítko **další služby**, pak zadejte *skupin zabezpečení sítě*. Vyberte hello chcete tooenable protokolování pro NSG. Postupujte podle pokynů hello za jiný výpočetní prostředky ve hello [povolení diagnostických protokolů portálu hello](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs) článku. Vyberte **NetworkSecurityGroupEvent**, **NetworkSecurityGroupRuleCounter**, nebo obě kategorie protokolů.
+Povolení protokolování, přihlášení, které budou používat portál [portál](https://portal.azure.com). Klikněte na tlačítko **další služby**, pak zadejte *skupin zabezpečení sítě*. Vyberte NSG, které chcete povolit protokolování. Postupujte podle pokynů pro jiný výpočetní prostředky v [povolení diagnostických protokolů na portálu](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs) článku. Vyberte **NetworkSecurityGroupEvent**, **NetworkSecurityGroupRuleCounter**, nebo obě kategorie protokolů.
 
 ### <a name="powershell"></a>PowerShell
 
-tooenable prostředí PowerShell toouse protokolování, postupujte podle pokynů hello v hello [povolení diagnostických protokolů pomocí prostředí PowerShell](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs) článku. Vyhodnoťte následující informace před zadáním příkazu z článku hello hello:
+Chcete-li povolit protokolování pomocí prostředí PowerShell, postupujte podle pokynů v [povolení diagnostických protokolů pomocí prostředí PowerShell](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs) článku. Vyhodnoťte následující informace před zadáním příkazu z článku:
 
-- Můžete určit hello hodnota toouse pro hello `-ResourceId` parametr nahrazením hello následující [text], podle potřeby, pak zadáte příkaz hello `Get-AzureRmNetworkSecurityGroup -Name [nsg-name] -ResourceGroupName [resource-group-name]`. Hello ID výstupu z příkazu hello bude vypadat podobně jako příliš*/subscriptions/ [název odběru Id]/resourceGroups/[resource-group]/providers/Microsoft.Network/networkSecurityGroups/[NSG]*.
-- Pokud chcete pouze toocollect dat z protokolu kategorie přidat `-Categories [category]` toohello konec příkazu hello v hello článku, kde kategorie je buď *NetworkSecurityGroupEvent* nebo *NetworkSecurityGroupRuleCounter*. Pokud nepoužijete hello `-Categories` parametr, shromažďování dat je povolený pro protokolu i kategorií.
+- Můžete určit hodnotu pro `-ResourceId` parametr nahrazením následující [text], podle potřeby, pak zadáte příkaz `Get-AzureRmNetworkSecurityGroup -Name [nsg-name] -ResourceGroupName [resource-group-name]`. ID výstup z tohoto příkazu bude vypadat podobně jako */subscriptions/ [název odběru Id]/resourceGroups/[resource-group]/providers/Microsoft.Network/networkSecurityGroups/[NSG]*.
+- Pokud chcete shromažďovat data z protokolu kategorie přidat `-Categories [category]` na konec příkazu v následujícím článku, kde kategorie je buď *NetworkSecurityGroupEvent* nebo *NetworkSecurityGroupRuleCounter*. Pokud nepoužijete `-Categories` parametr, shromažďování dat je povolený pro protokolu i kategorií.
 
 ### <a name="azure-command-line-interface-cli"></a>Rozhraní příkazového řádku Azure (CLI)
 
-toouse hello protokolování tooenable rozhraní příkazového řádku, postupujte podle pokynů hello v hello [povolení diagnostických protokolů prostřednictvím rozhraní příkazového řádku](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs) článku. Vyhodnoťte následující informace před zadáním příkazu z článku hello hello:
+Chcete-li povolit protokolování pomocí rozhraní příkazového řádku, postupujte podle pokynů [povolení diagnostických protokolů prostřednictvím rozhraní příkazového řádku](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs) článku. Vyhodnoťte následující informace před zadáním příkazu z článku:
 
-- Můžete určit hello hodnota toouse pro hello `-ResourceId` parametr nahrazením hello následující [text], podle potřeby, pak zadáte příkaz hello `azure network nsg show [resource-group-name] [nsg-name]`. Hello ID výstupu z příkazu hello bude vypadat podobně jako příliš*/subscriptions/ [název odběru Id]/resourceGroups/[resource-group]/providers/Microsoft.Network/networkSecurityGroups/[NSG]*.
-- Pokud chcete pouze toocollect dat z protokolu kategorie přidat `-Categories [category]` toohello konec příkazu hello v hello článku, kde kategorie je buď *NetworkSecurityGroupEvent* nebo *NetworkSecurityGroupRuleCounter*. Pokud nepoužijete hello `-Categories` parametr, shromažďování dat je povolený pro protokolu i kategorií.
+- Můžete určit hodnotu pro `-ResourceId` parametr nahrazením následující [text], podle potřeby, pak zadáte příkaz `azure network nsg show [resource-group-name] [nsg-name]`. ID výstup z tohoto příkazu bude vypadat podobně jako */subscriptions/ [název odběru Id]/resourceGroups/[resource-group]/providers/Microsoft.Network/networkSecurityGroups/[NSG]*.
+- Pokud chcete shromažďovat data z protokolu kategorie přidat `-Categories [category]` na konec příkazu v následujícím článku, kde kategorie je buď *NetworkSecurityGroupEvent* nebo *NetworkSecurityGroupRuleCounter*. Pokud nepoužijete `-Categories` parametr, shromažďování dat je povolený pro protokolu i kategorií.
 
 ## <a name="logged-data"></a>Data protokolu
 
-Data ve formátu JSON je napsán pro oba protokoly. Hello konkrétní data, zapsaná pro každý typ protokolu je uvedené v následující části hello:
+Data ve formátu JSON je napsán pro oba protokoly. Konkrétní data, zapsaná pro každý typ protokolu je uvedené v následujících částech:
 
 ### <a name="event-log"></a>V protokolu událostí
-Tento protokol obsahuje informace o které skupina NSG pravidla jsou použité tooVMs a instance rolí služby, na základě adresy MAC v cloudu. pro každou jednotlivou událost je protokolována Hello následující příklad dat:
+Tento protokol obsahuje informace o které skupina NSG pravidla, použije se pro virtuální počítače a instance role služby, na základě adresy MAC v cloudu. Pro všechny události se protokolují tato data příklad:
 
 ```json
 {
@@ -98,7 +98,7 @@ Tento protokol obsahuje informace o které skupina NSG pravidla jsou použité t
 
 ### <a name="rule-counter-log"></a>Pravidlo čítače protokolu
 
-Tento protokol obsahuje informace o každé pravidlo tooresources. Hello příklad se protokolují tato data pokaždé, když se použije pravidlo:
+Tento protokol obsahuje informace o každé pravidlo použito pro prostředky. Pokaždé, když se použije pravidlo se protokolují tato data příklad:
 
 ```json
 {
@@ -122,4 +122,4 @@ Tento protokol obsahuje informace o každé pravidlo tooresources. Hello příkl
 
 ## <a name="view-and-analyze-logs"></a>Zobrazení a analýza protokolů
 
-toolearn jak aktivity tooview protokolovat data, přečtěte si hello [přehled hello protokol činnosti Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) článku. toolearn jak Diagnostika tooview protokolovat data, přečtěte si hello [přehled o Azure diagnostické protokoly](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) článku. Při odeslání diagnostiky dat tooLog analýzy, můžete použít hello [skupinu zabezpečení sítě Azure analytics](../log-analytics/log-analytics-azure-networking-analytics.md) řešení pro správu (preview) pro rozšířené statistiky. 
+Zjistěte, jak zobrazit data protokolu aktivit, přečtěte si téma [přehled protokol činnosti Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) článku. Zjistěte, jak zobrazit data protokolů diagnostiky, přečtěte si téma [přehled o Azure diagnostické protokoly](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) článku. Pokud odešlete diagnostická data k analýze protokolů, můžete použít [skupinu zabezpečení sítě Azure analytics](../log-analytics/log-analytics-azure-networking-analytics.md) řešení pro správu (preview) pro rozšířené statistiky. 

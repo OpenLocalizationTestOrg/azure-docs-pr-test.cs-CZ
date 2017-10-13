@@ -1,6 +1,6 @@
 ---
-title: aaaHow tooScale Azure Redis Cache | Microsoft Docs
-description: "Zjistěte, jak tooscale vaší služby Azure Redis instancích mezipaměti"
+title: "Postup škálování Azure Redis Cache | Microsoft Docs"
+description: "Zjistěte, jak se škálovat vaše instance služby Azure Redis Cache"
 services: redis-cache
 documentationcenter: 
 author: steved0x
@@ -14,77 +14,77 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: sdanie
-ms.openlocfilehash: 8d7c015a539f872913056392aa080bf3f445bd03
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 91b3580491a1e3504a3891b66606a9bd18c0638f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-tooscale-azure-redis-cache"></a>Jak tooScale Azure mezipaměti Redis
-Azure Redis Cache má jiný mezipaměti nabídky, které poskytují flexibilitu při výběru hello velikost mezipaměti a funkcí. Po vytvoření mezipaměti můžete škálovat hello velikost a hello cenová úroveň mezipaměti hello, pokud se změní hello požadavky vaší aplikace. Tento článek ukazuje, jak tooscale svoji mezipaměť hello portál Azure a pomocí nástroje například Azure PowerShell a rozhraní příkazového řádku Azure.
+# <a name="how-to-scale-azure-redis-cache"></a>Postup škálování Azure Redis Cache
+Azure Redis Cache má jiný mezipaměti nabídky, které poskytují flexibilitu při výběru velikost mezipaměti a funkce. Po vytvoření mezipaměti je možné škálovat na velikost a cenovou úroveň mezipaměti, pokud se změní požadavky vaší aplikace. Tento článek ukazuje, jak se škálovat vaši mezipaměť na portálu Azure a pomocí nástrojů, jako je Azure PowerShell a rozhraní příkazového řádku Azure.
 
-## <a name="when-tooscale"></a>Když tooscale
-Můžete použít hello [monitorování](cache-how-to-monitor.md) funkce Azure Redis Cache toomonitor hello stav a výkon vaší mezipaměti a pomůže vám určit, kdy tooscale hello mezipaměti. 
+## <a name="when-to-scale"></a>Kdy škálovat
+Můžete použít [monitorování](cache-how-to-monitor.md) funkce Azure Redis Cache ke sledování stavu a výkonu vaší mezipaměti a zjistit, kdy škálovat mezipaměti. 
 
-Můžete monitorovat následující hello metriky toohelp určete, zda je nutné tooscale.
+Můžete monitorovat následující metriky, které vám pomohou určit, pokud potřebujete škálování.
 
 * Zatížení serveru redis
 * Využití paměti
 * Šířka pásma sítě
 * Využití procesoru
 
-Pokud zjistíte, že mezipaměť již splňuje požadavky vaší aplikace, je možné škálovat tooa větší nebo menší mezipaměti cenovou úroveň, která je pro vaši aplikaci nejvhodnější. Další informace o určení, které mezipaměti cenová úroveň toouse najdete v tématu [jaké mezipaměť Redis nabídky a velikosti použít](cache-faq.md#what-redis-cache-offering-and-size-should-i-use).
+Pokud zjistíte, že mezipaměť již splňuje požadavky vaší aplikace, je možné škálovat do mezipaměti větší nebo menší cenovou úroveň, která je pro vaši aplikaci nejvhodnější. Další informace o zjištění, které mezipaměti cenová úroveň používat najdete v tématu [jaké mezipaměť Redis nabídky a velikosti použít](cache-faq.md#what-redis-cache-offering-and-size-should-i-use).
 
 ## <a name="scale-a-cache"></a>Změnit velikost mezipaměti
-tooscale vaší mezipaměti [procházet mezipaměti toohello](cache-configure.md#configure-redis-cache-settings) v hello [portál Azure](https://portal.azure.com) a klikněte na tlačítko **škálování** z hello **prostředků nabídky**.
+Škálování vaší mezipaměti [přejděte do mezipaměti](cache-configure.md#configure-redis-cache-settings) v [portál Azure](https://portal.azure.com) a klikněte na tlačítko **škálování** z **prostředků nabídky**.
 
 ![Měřítko](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
-Vyberte hello potřeby cenová úroveň z hello **vyberte cenová úroveň** a klikněte na **vyberte**.
+Vyberte požadovanou cenovou úroveň z **vyberte cenová úroveň** a klikněte na **vyberte**.
 
 ![Cenová úroveň][redis-cache-pricing-tier-blade]
 
 
-Je možné škálovat tooa jinou cenovou úroveň s hello následující omezení:
+Je možné škálovat na jinou cenovou úroveň, s následujícími omezeními:
 
-* Nelze škálovat z vyšší cenová úroveň tooa nižší cenová úroveň.
-  * Nelze škálovat od **Premium** mezipaměti dolů tooa **standardní** nebo **základní** mezipaměti.
-  * Nelze škálovat od **standardní** mezipaměti dolů tooa **základní** mezipaměti.
-* Je možné škálovat od **základní** mezipaměti tooa **standardní** mezipaměti, ale nemůže změnit velikost hello v hello stejnou dobu. Pokud potřebujete jinou velikost, můžete provést následné velikost toohello potřeby operace škálování.
-* Nelze škálovat od **základní** mezipaměti přímo tooa **Premium** mezipaměti. Musí škálování z **základní** příliš**standardní** v rámci jedné operace škálování a potom z **standardní** příliš**Premium** v následných škálování operace.
-* Nelze škálovat z větší velikost dolů toohello **C0 (250 MB)** velikost.
+* Z používat vyšší cenová úroveň je nelze škálovat na nižší cenovou úroveň.
+  * Nelze škálovat od **Premium** dolů do mezipaměti **standardní** nebo **základní** mezipaměti.
+  * Nelze škálovat od **standardní** dolů do mezipaměti **základní** mezipaměti.
+* Je možné škálovat od **základní** mezipaměti tak, aby **standardní** mezipaměti, ale nemůže změnit velikost ve stejnou dobu. Pokud potřebujete jinou velikost, můžete provést následující operaci škálování na požadovanou velikost.
+* Nelze škálovat od **základní** přímo do mezipaměti **Premium** mezipaměti. Musí škálování z **základní** k **standardní** v rámci jedné operace škálování a potom z **standardní** k **Premium** v následných operaci škálování.
+* Nelze škálovat z větší velikost dolů na **C0 (250 MB)** velikost.
  
-Při hello mezipaměti se škáluje toohello nové cenovou úroveň, **škálování** stav se zobrazí v hello **Redis Cache** okno.
+Při mezipaměti je škálování na nové cenovou úroveň, **škálování** stav se zobrazí v **Redis Cache** okno.
 
 ![Škálování][redis-cache-scaling]
 
-Po dokončení škálování hello stav se změní z **škálování** příliš**systémem**.
+Po dokončení škálování se stav změní z **škálování** k **systémem**.
 
-## <a name="how-tooautomate-a-scaling-operation"></a>Jak tooautomate škálování operace
-V přidání tooscaling hello vaše instance mezipaměti v portálu Azure, můžete škálovat pomocí rutin prostředí PowerShell, rozhraní příkazového řádku Azure a pomocí hello Microsoft Azure Management knihovny (MAML). 
+## <a name="how-to-automate-a-scaling-operation"></a>Jak automatizovat škálování operace
+Kromě škálování vaší instance služby cache na portálu Azure, je možné škálovat pomocí rutin prostředí PowerShell, rozhraní příkazového řádku Azure a pomocí Microsoft Azure Management knihovny (MAML). 
 
 * [Škálování pomocí prostředí PowerShell](#scale-using-powershell)
 * [Škálování pomocí rozhraní příkazového řádku Azure](#scale-using-azure-cli)
 * [Škálování pomocí MAML](#scale-using-maml)
 
 ### <a name="scale-using-powershell"></a>Škálování pomocí prostředí PowerShell
-Je možné škálovat vaše instance služby Azure Redis Cache pomocí prostředí PowerShell pomocí hello [Set-AzureRmRedisCache](https://msdn.microsoft.com/library/azure/mt634518.aspx) rutiny při hello `Size`, `Sku`, nebo `ShardCount` jsou upraveny vlastnosti. Hello následující příklad ukazuje, jak tooscale mezipaměti s názvem `myCache` tooa 2,5 GB mezipaměti. 
+Je možné škálovat vaše instance služby Azure Redis Cache pomocí prostředí PowerShell pomocí [Set-AzureRmRedisCache](https://msdn.microsoft.com/library/azure/mt634518.aspx) rutiny při `Size`, `Sku`, nebo `ShardCount` jsou upraveny vlastnosti. Následující příklad ukazuje postup škálování mezipaměti s názvem `myCache` do mezipaměti 2,5 GB. 
 
     Set-AzureRmRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
 
-Další informace o škálování pomocí prostředí PowerShell najdete v tématu [tooscale Redis mezipaměti pomocí prostředí Powershell](cache-howto-manage-redis-cache-powershell.md#scale).
+Další informace o škálování pomocí prostředí PowerShell najdete v tématu [škálování mezipaměti Redis pomocí prostředí Powershell](cache-howto-manage-redis-cache-powershell.md#scale).
 
 ### <a name="scale-using-azure-cli"></a>Škálování pomocí rozhraní příkazového řádku Azure
-volání vaší instancí Azure Redis Cache pomocí rozhraní příkazového řádku Azure, tooscale hello `azure rediscache set` příkazu a předejte jí hello potřeby změny konfigurace, které zahrnují nové velikosti, sku nebo velikost clusteru, v závislosti na hello potřeby operace škálování.
+Chcete-li škálovat vaše instance služby Azure Redis Cache pomocí rozhraní příkazového řádku Azure, volejte `azure rediscache set` příkazů a předat změny požadované konfigurace, které zahrnují novou velikost, sku nebo velikost clusteru, v závislosti na požadované operace škálování.
 
 Další informace o škálování s Azure CLI, najdete v části [změnit nastavení existujícího Redis Cache](cache-manage-cli.md#scale).
 
 ### <a name="scale-using-maml"></a>Škálování pomocí MAML
-tooscale vaší instancí Azure Redis Cache pomocí hello [Microsoft Azure Management knihovny (MAML)](http://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/), volání hello `IRedisOperations.CreateOrUpdate` metoda a předejte jí hello novou velikost hello `RedisProperties.SKU.Capacity`.
+Škálování Azure Redis Cache instance pomocí [Microsoft Azure Management knihovny (MAML)](http://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/), volání `IRedisOperations.CreateOrUpdate` metoda a předejte jí novou velikost `RedisProperties.SKU.Capacity`.
 
     static void Main(string[] args)
     {
-        // For instructions on getting hello access token, see
+        // For instructions on getting the access token, see
         // https://azure.microsoft.com/documentation/articles/cache-configure/#access-keys
         string token = GetAuthorizationHeader();
 
@@ -93,20 +93,20 @@ tooscale vaší instancí Azure Redis Cache pomocí hello [Microsoft Azure Manag
         RedisManagementClient client = new RedisManagementClient(creds);
         var redisProperties = new RedisProperties();
 
-        // tooscale, set a new size for hello redisSKUCapacity parameter.
+        // To scale, set a new size for the redisSKUCapacity parameter.
         redisProperties.Sku = new Sku(redisSKUName,redisSKUFamily,redisSKUCapacity);
         redisProperties.RedisVersion = redisVersion;
         var redisParams = new RedisCreateOrUpdateParameters(redisProperties, redisCacheRegion);
         client.Redis.CreateOrUpdate(resourceGroupName,cacheName, redisParams);
     }
 
-Další informace najdete v tématu hello [spravovat Redis Cache pomocí MAML](https://github.com/rustd/RedisSamples/tree/master/ManageCacheUsingMAML) ukázka.
+Další informace najdete v tématu [spravovat Redis Cache pomocí MAML](https://github.com/rustd/RedisSamples/tree/master/ManageCacheUsingMAML) ukázka.
 
 ## <a name="scaling-faq"></a>Škálování – nejčastější dotazy
-Hello následující seznam obsahuje odpovědi toocommonly kladené dotazy týkající se Azure Redis Cache škálování.
+Následující seznam obsahuje odpovědi na nejčastější dotazy o škálování Azure Redis Cache.
 
 * [Možné škálovat na, z a do mezipaměti Premium?](#can-i-scale-to-from-or-within-a-premium-cache)
-* [Po škálování, je nutné provést toochange mé klíče název nebo přístupu k mezipaměti?](#after-scaling-do-i-have-to-change-my-cache-name-or-access-keys)
+* [Po škálování, je nutné změnit mé klíče název nebo přístupu k mezipaměti?](#after-scaling-do-i-have-to-change-my-cache-name-or-access-keys)
 * [Jak funguje škálování](#how-does-scaling-work)
 * [Bude možné ztrátě dat z mé mezipaměti při škálování?](#will-i-lose-data-from-my-cache-during-scaling)
 * [Je databází. vlastní nastavení ovlivněných během změny měřítka?](#is-my-custom-databases-setting-affected-during-scaling)
@@ -116,56 +116,56 @@ Hello následující seznam obsahuje odpovědi toocommonly kladené dotazy týka
 * [Jak poznám, škálování po dokončení?](#how-can-i-tell-when-scaling-is-complete)
 
 ### <a name="can-i-scale-to-from-or-within-a-premium-cache"></a>Možné škálovat na, z a do mezipaměti Premium?
-* Nelze škálovat od **Premium** mezipaměti dolů tooa **základní** nebo **standardní** cenová úroveň.
-* Je možné škálovat od jednoho **Premium** cenová úroveň tooanother mezipaměti.
-* Nelze škálovat od **základní** mezipaměti přímo tooa **Premium** mezipaměti. Je nutné nejprve škálovat z **základní** příliš**standardní** v rámci jedné operace škálování a potom z **standardní** příliš**Premium** v následné operace škálování.
-* Pokud jste povolili clustering při vytváření vašeho **Premium** mezipaměti, můžete [změnit velikost clusteru hello](cache-how-to-premium-clustering.md#cluster-size). Pokud vaše mezipaměť byl vytvořen bez clusteringu povoleno, nelze nakonfigurovat clustering později.
+* Nelze škálovat od **Premium** dolů do mezipaměti **základní** nebo **standardní** cenová úroveň.
+* Je možné škálovat od jednoho **Premium** mezipaměti cenová úroveň na jiný.
+* Nelze škálovat od **základní** přímo do mezipaměti **Premium** mezipaměti. Je nutné nejprve škálovat z **základní** k **standardní** v rámci jedné operace škálování a potom z **standardní** k **Premium** následných operací škálování.
+* Pokud jste povolili clustering při vytváření vašeho **Premium** mezipaměti, můžete [změnit velikost clusteru](cache-how-to-premium-clustering.md#cluster-size). Pokud vaše mezipaměť byl vytvořen bez clusteringu povoleno, nelze nakonfigurovat clustering později.
   
-  Další informace najdete v tématu [jak tooconfigure clusteringu pro mezipaměť Azure Redis Cache Premium](cache-how-to-premium-clustering.md).
+  Další informace najdete v článku [Postup konfigurace clusterů pro mezipaměť Azure Redis Cache Premium](cache-how-to-premium-clustering.md).
 
-### <a name="after-scaling-do-i-have-toochange-my-cache-name-or-access-keys"></a>Po škálování, je nutné provést toochange mé klíče název nebo přístupu k mezipaměti?
+### <a name="after-scaling-do-i-have-to-change-my-cache-name-or-access-keys"></a>Po škálování, je nutné změnit mé klíče název nebo přístupu k mezipaměti?
 Ne, název mezipaměti a klíče jsou beze změny během operace škálování.
 
 ### <a name="how-does-scaling-work"></a>Jak funguje škálování
-* Když **základní** mezipaměti bude změněno měřítko tooa různou velikost je vypnutý a zřizovat nové mezipaměti pomocí hello novou velikost. Během této doby hello mezipaměti není k dispozici a dojde ke ztrátě všech dat v mezipaměti hello.
-* Když **základní** mezipaměť je škálovat tooa **standardní** mezipaměti repliky mezipaměti je zřízený a hello data budou zkopírována z hello primární mezipaměti toohello repliky mezipaměť. Hello mezipaměti zůstává k dispozici během hello škálování procesu.
-* Když **standardní** mezipaměť je škálovat tooa jinou velikost nebo tooa **Premium** mezipaměti, jednu z replik hello se vypne a znovu zřídit toohello nová velikost a hello data přenosu a hello jiných repliky provede převzetí služeb při selhání, než je znovu zřízený, podobný proces toohello, ke kterému dochází při selhání jednoho z uzlů mezipaměti hello.
+* Když **základní** mezipaměti se mění podle různých velikosti, se vypne a zřizovat nové mezipaměti pomocí nové velikosti. Během této doby je k dispozici mezipaměti a dojde ke ztrátě všech dat v mezipaměti.
+* Když **základní** mezipaměti rozšířit tak, aby **standardní** mezipaměti repliky mezipaměti je zřízený a data budou zkopírována z primární mezipaměti do mezipaměti repliky. Mezipaměti v zůstal dostupný během procesu škálování.
+* Když **standardní** mezipaměti je škálovat různé velikost nebo na **Premium** mezipaměti, jednu z replik se vypnout a znovu zřídit nové velikosti a přenosu dat, a potom provede další repliky převzetí služeb při selhání předtím, než je znovu zřízený, podobný procesu, ke kterému dochází při selhání jednoho z uzlů mezipaměti.
 
 ### <a name="will-i-lose-data-from-my-cache-during-scaling"></a>Bude možné ztrátě dat z mé mezipaměti při škálování?
-* Když **základní** mezipaměti je škálovat tooa novou velikost, všechna data se ztratí a hello mezipaměti není k dispozici během hello operace škálování.
-* Když **základní** mezipaměť je škálovat tooa **standardní** mezipaměti, hello data v mezipaměti hello je obvykle zachovat.
-* Když **standardní** mezipaměť je škálovat tooa větší velikost nebo vrstvy, nebo **Premium** mezipaměti bude změněno měřítko tooa větší velikost, všechna data je obvykle zachovaná. Při zvětšení velikosti **standardní** nebo **Premium** mezipaměti dolů tooa menší velikost, data mohou být ztraceny v závislosti na tom, kolik dat je v mezipaměti hello související s novou velikost toohello, když bude změněno měřítko. Pokud dojde ke ztrátě dat při škálování směrem dolů, klíče jsou vyřazování pomocí hello [allkeys lru](http://redis.io/topics/lru-cache) zásady vyřazení. 
+* Když **základní** mezipaměti se mění podle nové velikosti, dojde ke ztrátě všech dat a mezipaměti není k dispozici v průběhu operace škálování.
+* Když **základní** mezipaměti rozšířit tak, aby **standardní** mezipaměti, data v mezipaměti je obvykle zachovaná.
+* Když **standardní** mezipaměti je škálovat na větší velikost nebo vrstvy, nebo **Premium** mezipaměti je škálovat na větší velikost, je obvykle zachovají všechna data. Při zvětšení velikosti **standardní** nebo **Premium** mezipaměti na menší velikost, data mohou být ztraceny v závislosti na tom, kolik dat je v mezipaměti související s novou velikost, když bude změněno měřítko. Pokud dojde ke ztrátě dat při škálování směrem dolů, jsou vyřazování klíče pomocí [allkeys lru](http://redis.io/topics/lru-cache) zásady vyřazení. 
 
 ### <a name="is-my-custom-databases-setting-affected-during-scaling"></a>Je databází. vlastní nastavení ovlivněných během změny měřítka?
-Některé cenové úrovně mají různé [databáze omezení](cache-configure.md#databases), takže existují některé aspekty při škálování směrem dolů v případě nakonfigurovat vlastní hodnotu hello `databases` nastavení během vytváření mezipaměti.
+Některé cenové úrovně mají různé [databáze omezení](cache-configure.md#databases), takže existují některé aspekty při škálování směrem dolů v případě nakonfigurovat vlastní hodnotu `databases` nastavení během vytváření mezipaměti.
 
-* Při příjmu tooa cenová úroveň s nižší `databases` limit než současná vrstva hello:
-  * Pokud používáte výchozí číslo hello `databases` tedy 16 pro všechny cenové úrovně, všechna data budou zachována.
-  * Pokud používáte vlastní počet `databases` který spadá do hello limity pro toowhich vrstvy hello jsou změny velikosti, to `databases` se zachovává nastavení a dojde ke ztrátě žádná data.
-  * Pokud používáte vlastní počet `databases` který překračuje omezení hello hello novou vrstvu, hello `databases` nastavení je snížený toohello omezení hello novou vrstvu a dojde ke ztrátě všech dat v databázích hello odebrat.
-* Při příjmu tooa cenová úroveň s hello stejná nebo vyšší `databases` limit než současná vrstva hello vaší `databases` se zachovává nastavení a dojde ke ztrátě žádná data.
+* Při zvětšení velikosti na cenovou úroveň s nižší `databases` limit než současná vrstva:
+  * Pokud používáte výchozí počet `databases` tedy 16 pro všechny cenové úrovně, všechna data budou zachována.
+  * Pokud používáte vlastní počet `databases` který spadá do limity pro vrstvu, do které jste se škálování, to `databases` se zachovává nastavení a dojde ke ztrátě žádná data.
+  * Pokud používáte vlastní počet `databases` který překračuje omezení novou vrstvu `databases` nastavení je snížena na omezení novou vrstvu a dojde ke ztrátě všech dat v odebrané databáze.
+* Při škálování cenové úrovně se stejným nebo vyšším `databases` limit než současná vrstva vaší `databases` se zachovává nastavení a dojde ke ztrátě žádná data.
 
 Všimněte si, že když Standard a Premium mezipamětí má SLA 99,9 % dostupnosti, bez ztráty dat smlouvy SLA.
 
 ### <a name="will-my-cache-be-available-during-scaling"></a>Moje mezipaměti bude k dispozici během změny měřítka?
-* **Standardní** a **Premium** mezipamětí zůstanou k dispozici během hello operace škálování.
-* **Základní** jsou offline během změny měřítka operations tooa jinou velikost mezipaměti, ale zůstanou dostupné při škálování z **základní** příliš**standardní**.
+* **Standardní** a **Premium** mezipamětí zůstanou dostupné během operace škálování.
+* **Základní** jsou offline během změny měřítka operace, které mají různou velikost mezipaměti, ale zůstanou dostupné při škálování z **základní** k **standardní**.
 
 ### <a name="operations-that-are-not-supported"></a>Operace, které nejsou podporovány
-* Nelze škálovat z vyšší cenová úroveň tooa nižší cenová úroveň.
-  * Nelze škálovat od **Premium** mezipaměti dolů tooa **standardní** nebo **základní** mezipaměti.
-  * Nelze škálovat od **standardní** mezipaměti dolů tooa **základní** mezipaměti.
-* Je možné škálovat od **základní** mezipaměti tooa **standardní** mezipaměti, ale nemůže změnit velikost hello v hello stejnou dobu. Pokud potřebujete jinou velikost, můžete provést následné velikost toohello potřeby operace škálování.
-* Nelze škálovat od **základní** mezipaměti přímo tooa **Premium** mezipaměti. Je nutné nejprve škálovat z **základní** příliš**standardní** v rámci jedné operace škálování a potom z **standardní** příliš**Premium** v následné operace škálování.
-* Nelze škálovat z větší velikost dolů toohello **C0 (250 MB)** velikost.
+* Z používat vyšší cenová úroveň je nelze škálovat na nižší cenovou úroveň.
+  * Nelze škálovat od **Premium** dolů do mezipaměti **standardní** nebo **základní** mezipaměti.
+  * Nelze škálovat od **standardní** dolů do mezipaměti **základní** mezipaměti.
+* Je možné škálovat od **základní** mezipaměti tak, aby **standardní** mezipaměti, ale nemůže změnit velikost ve stejnou dobu. Pokud potřebujete jinou velikost, můžete provést následující operaci škálování na požadovanou velikost.
+* Nelze škálovat od **základní** přímo do mezipaměti **Premium** mezipaměti. Je nutné nejprve škálovat z **základní** k **standardní** v rámci jedné operace škálování a potom z **standardní** k **Premium** následných operací škálování.
+* Nelze škálovat z větší velikost dolů na **C0 (250 MB)** velikost.
 
-Pokud škálování operace selže, hello služba se pokusí toorevert hello operace a hello mezipaměti bude používat původní velikost toohello.
+Pokud škálování operace selže, služba se pokusí vrátit operaci a mezipaměti se vrátí k původní velikost.
 
 ### <a name="how-long-does-scaling-take"></a>Jak dlouho škálování trvá?
-Škálování trvá přibližně 20 minut v závislosti na tom, kolik dat je v mezipaměti hello.
+Škálování trvá přibližně 20 minut v závislosti na tom, kolik dat je v mezipaměti.
 
 ### <a name="how-can-i-tell-when-scaling-is-complete"></a>Jak poznám, škálování po dokončení?
-V portálu Azure hello se zobrazí hello škálování operace probíhá. Po dokončení škálování hello hello mezipaměti změně stavu příliš**systémem**.
+Na portálu Azure najdete v probíhající operaci škálování. Po dokončení škálování stav mezipaměti se změní na **systémem**.
 
 <!-- IMAGES -->
 

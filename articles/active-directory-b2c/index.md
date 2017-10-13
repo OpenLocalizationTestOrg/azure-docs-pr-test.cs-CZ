@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure Active Directory B2C dokumentace - kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
-description: "Zjistěte, jak cloudové toodeploy komplexní příjemce identity management hello. Dokumentace ukazuje jak tooprotect určených webových a mobilních aplikací."
+title: "Dokumentace ke službě Azure Active Directory B2C – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
+description: "Naučte se nasazovat komplexní správu identit zákazníků v cloudu. Dokumentace ukazuje, jak můžete chránit webové a mobilní aplikace namířené k zákazníkům."
 services: active-directory-b2c
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: f9f6939d4d5bbe49533cad037a9085ce3da63155
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: e36baddffd634cb7d601d09ccebaf40b27798c7b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="active-directory-b2c-documentation"></a>Dokumentace ke službě Active Directory B2C
 
-Zjistěte, jak tooset a správa správu identit uživatelů komplexní v cloudu hello s Active Directory B2C. Kurzy, odkazy a další dokumentaci ukazují, jak zabezpečit tooprotect určených webové a mobilní aplikace s přihlášení.
+Naučte se nastavovat a spravovat komplexní správu identit zákazníků v cloudu pomocí Active Directory B2C. Kurzy, reference a další dokumentace ukazují způsoby ochrany webových a mobilních aplikací namířených k zákazníkům pomocí zabezpečeného přihlášení.
 
 <ul class="panelContent cardsFTitle">
     <li>

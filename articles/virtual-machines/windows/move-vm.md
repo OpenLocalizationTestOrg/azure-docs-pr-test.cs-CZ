@@ -1,6 +1,6 @@
 ---
-title: "aaaMove prostředek virtuálního počítače s Windows v Azure | Microsoft Docs"
-description: "Přesunete virtuální počítač s Windows tooanother předplatné nebo skupinu prostředků v modelu nasazení Resource Manager hello."
+title: "Přesunutí prostředku virtuálního počítače s Windows v Azure | Microsoft Docs"
+description: "Přesuňte virtuální počítač s Windows do jiné předplatné nebo prostředek skupiny Azure v modelu nasazení Resource Manager."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,31 +15,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2017
 ms.author: cynthn
-ms.openlocfilehash: 859e78dce9acf1168780d4ee8e9f6dac0e3c11cf
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1db25a5d9ff5cb6aa2787a0cafa40cfb010e3b06
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="move-a-windows-vm-tooanother-azure-subscription-or-resource-group"></a>Přesunout virtuální počítač s Windows tooanother předplatné nebo skupinu prostředků
-Tento článek vás provede toomove virtuální počítač s Windows mezi skupinami prostředků nebo předplatných. Přesouvání mezi předplatnými může být užitečné, pokud jste původně vytvořili virtuální počítač v odběru osobní a teď chcete toomove ho tooyour společnosti předplatné toocontinue práci.
+# <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>Přesunout virtuální počítač s Windows do Azure jiné předplatné nebo prostředek skupiny
+Tento článek vás provede jak přesunout virtuální počítač s Windows mezi skupinami prostředků nebo předplatných. Přesouvání mezi předplatnými může být užitečné, pokud jste původně vytvořili virtuální počítač v odběru osobní a chcete ho přesunout do předplatného vaší společnosti chcete-li pokračovat v práci.
 
 > [!IMPORTANT]
 >V tuto chvíli nelze přesunout spravované disky. 
 >
->Nové ID prostředků jsou vytvořené jako součást přesunutí hello. Jakmile hello virtuálního počítače byl přesunut, musíte tooupdate vaše nástroje a skripty toouse hello nové ID prostředku. 
+>Nové ID prostředků jsou vytvořené jako součást přesunutí. Po přesunutí virtuálního počítače je potřeba aktualizovat nástroje a skripty, které pomocí nového ID prostředku. 
 > 
 > 
 
 [!INCLUDE [virtual-machines-common-move-vm](../../../includes/virtual-machines-common-move-vm.md)]
 
-## <a name="use-powershell-toomove-a-vm"></a>Pomocí prostředí Powershell toomove virtuálního počítače
-toomove skupiny prostředků tooanother virtuálního počítače, musíte toomake jistotu, že také přesunout všechny závislé prostředky hello. rutinu Move-AzureRMResource hello toouse, potřebujete název prostředku hello a hello typ prostředku. Můžete získat z rutiny hello najít AzureRMResource i.
+## <a name="use-powershell-to-move-a-vm"></a>Přesunout virtuální počítač pomocí prostředí Powershell
+Chcete-li přesunout virtuální počítač do jiné skupiny prostředků, ujistěte se, že také přesunout všechny závislé prostředky. Chcete-li použijte rutinu Move-AzureRMResource, potřebujete název prostředku a typ prostředku. Můžete získat z rutiny najít AzureRMResource i.
 
     Find-AzureRMResource -ResourceGroupNameContains "<sourceResourceGroupName>"
 
 
-toomove potřebujeme toomove několik prostředků virtuálního počítače. Můžeme jenom vytvářet samostatné proměnných pro každý prostředek a potom jejich seznam. Tento příklad obsahuje většinu hello základní prostředků pro virtuální počítač, ale můžete přidat více podle potřeby.
+Přesunout virtuální počítač je potřeba přesunout více prostředků. Můžeme jenom vytvářet samostatné proměnných pro každý prostředek a potom jejich seznam. Tento příklad obsahuje většinu základní prostředků pro virtuální počítač, ale můžete přidat více podle potřeby.
 
     $sourceRG = "<sourceResourceGroupName>"
     $destinationRG = "<destinationResourceGroupName>"
@@ -54,14 +54,14 @@ toomove potřebujeme toomove několik prostředků virtuálního počítače. M�
 
     Move-AzureRmResource -DestinationResourceGroupName $destinationRG -ResourceId $vm.ResourceId, $storageAccount.ResourceId, $diagStorageAccount.ResourceId, $vNet.ResourceId, $nic.ResourceId, $ip.ResourceId, $nsg.ResourceId
 
-toomove hello prostředky předplatného toodifferent, zahrnout hello **- DestinationSubscriptionId** parametr. 
+Chcete-li přesunout prostředky do jiného předplatného, zahrňte **- DestinationSubscriptionId** parametr. 
 
     Move-AzureRmResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vm.ResourceId, $storageAccount.ResourceId, $diagStorageAccount.ResourceId, $vNet.ResourceId, $nic.ResourceId, $ip.ResourceId, $nsg.ResourceId
 
 
 
-Zobrazí se výzva, které chcete toomove hello tooconfirm zadané prostředky. Typ **Y** tooconfirm, že chcete toomove hello prostředky.
+Jste vyzváni k potvrzení, že chcete přesunout zadané prostředky. Typ **Y** potvrďte, že chcete přesunout prostředky.
 
 ## <a name="next-steps"></a>Další kroky
-Mnoho různých typů prostředků můžete přesouvat mezi skupinami prostředků a předplatná. Další informace najdete v tématu [přesunout skupiny prostředků toonew prostředků nebo předplatného](../../resource-group-move-resources.md).    
+Mnoho různých typů prostředků můžete přesouvat mezi skupinami prostředků a předplatná. Další informace najdete v tématu, které se zabývá [přesunutím prostředků do nové skupiny prostředků nebo předplatného](../../resource-group-move-resources.md).    
 

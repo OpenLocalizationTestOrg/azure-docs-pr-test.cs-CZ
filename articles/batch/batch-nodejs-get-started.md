@@ -1,6 +1,6 @@
 ---
-title: "aaaTutorial - použití hello Azure Batch Klientská knihovna pro Node.js | Microsoft Docs"
-description: "Informace hello základními koncepty Azure Batch a vytvoření jednoduché řešení pomocí Node.js."
+title: "Kurz – použití klientské knihovny Azure Batch pro Node.js | Dokumentace Microsoftu"
+description: "Informace o základních konceptech služby Azure Batch a vytvoření jednoduchého řešení pomocí Node.js."
 services: batch
 author: shwetams
 manager: timlt
@@ -11,11 +11,11 @@ ms.topic: hero-article
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shwetams
-ms.openlocfilehash: d2b0ecbe764e7100affd7b02839aef3077b073cc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: c48171d8634a651718a0775183414f463c6a468c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Začínáme se sadou SDK služby Batch pro Node.js
 
@@ -26,58 +26,58 @@ ms.lasthandoff: 10/06/2017
 >
 >
 
-Další hello základy vytváření Batch klienta v Node.js pomocí [Azure Batch Node.js SDK](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/). Pro pochopení scénáře pro aplikaci služby Batch si ho projdeme krok za krokem a pak aplikaci nastavíme pomocí klienta Node.js.  
+Naučíte se základy vytvoření klienta služby Batch v Node.js pomocí sady [SDK služby Azure Batch pro Node.js](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/). Pro pochopení scénáře pro aplikaci služby Batch si ho projdeme krok za krokem a pak aplikaci nastavíme pomocí klienta Node.js.  
 
 ## <a name="prerequisites"></a>Požadavky
-Tento článek předpokládá, že máte praktické znalosti Node.js a umíte do jisté míry pracovat s Linuxem. Předpokládá také, že máte instalaci účet Azure pomocí služby Batch a Storage práva toocreate přístupu.
+Tento článek předpokládá, že máte praktické znalosti Node.js a umíte do jisté míry pracovat s Linuxem. Předpokládá se také, že máte nastavený účet Azure s přístupovými právy k vytvoření služeb Batch a Storage.
 
-Doporučujeme, abyste čtení [technický přehled Azure Batch](batch-technical-overview.md) před projít hello kroků uvedených v tomto článku.
+Doporučujeme, abyste si přečetli článek [Technický přehled služby Azure Batch](batch-technical-overview.md), než budete postupovat podle kroků popsaných v tomto článku.
 
-## <a name="hello-tutorial-scenario"></a>kurz scénář Hello
-Dejte nám Pochopte scénář hello batch pracovního postupu. Máme jednoduchého skriptu napsané v Pythonu, který stahuje všechny csv souborů z kontejner úložiště objektů Blob v Azure a je převede tooJSON. tooprocess více úložiště účet kontejnery paralelně, můžeme nasadit hello skriptu jako úlohu služby Azure Batch.
+## <a name="the-tutorial-scenario"></a>Scénář tohoto kurzu
+Podívejme se na scénář pracovního postupu služby Batch. Máme jednoduchý skript napsaný v Pythonu, který z kontejneru služby Azure Blob Storage stáhne všechny soubory CSV a převede je do formátu JSON. Pokud chceme paralelně zpracovávat více kontejnerů účtu úložiště, můžeme skript nasadit jako úlohu služby Azure Batch.
 
 ## <a name="azure-batch-architecture"></a>Architektura služby Azure Batch
-Hello následující diagram znázorňuje jak jsme můžete škálovat skript v jazyce Python hello pomocí Azure Batch a Node.js klienta.
+Následující diagram znázorňuje možnost škálování skriptu Pythonu pomocí služby Azure Batch a klienta Node.js.
 
 ![Scénář služby Azure Batch](./media/batch-nodejs-get-started/BatchScenario.png)
 
-Klient node.js Hello nasadí dávkovou úlohu s přípravy úlohy (podrobně vysvětleny později) a sadu úloh v závislosti na hello počet kontejnerů v účtu úložiště hello. Hello skripty si můžete stáhnout z úložiště github hello.
+Klient Node.js nasadí dávkovou úlohu s přípravným úkolem (podrobně si ho popíšeme později) a sadou úkolů v závislosti na počtu kontejnerů v účtu úložiště. Skripty si můžete stáhnout z úložiště GitHub.
 
 * [Node.js](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/nodejs_batch_client_sample.js)
 * [Skripty prostředí pro přípravný úkol](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/startup_prereq.sh)
-* [Procesor tooJSON csv Python](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/processcsv.py)
+* [Procesor formátu CSV do formátu JSON v Pythonu](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/processcsv.py)
 
 > [!TIP]
-> klientovi Node.js Hello v zadaný odkaz hello neobsahuje nasadit jako aplikaci Azure funkce toobe konkrétního kódu. Následující odkazy na pokyny toocreate jeden toohello lze odkazovat.
+> Klient Node.js na uvedeném odkazu neobsahuje konkrétní kód umožňující nasadit ho jako aplikaci Azure Function App. Na následujících odkazech najdete pokyny k jejímu vytvoření.
 > - [Vytvoření aplikace Function App](../azure-functions/functions-create-first-azure-function.md)
 > - [Vytvoření funkce pro aktivaci časovače](../azure-functions/functions-bindings-timer.md)
 >
 >
 
-## <a name="build-hello-application"></a>Vytvoření aplikace hello
+## <a name="build-the-application"></a>Sestavení aplikace
 
-Nyní dejte nám postupujte podle procesu hello krok za krokem do vytváření hello Node.js klienta:
+Nyní si krok za krokem projdeme vytvoření klienta Node.js:
 
 ### <a name="step-1-install-azure-batch-sdk"></a>Krok 1: Nainstalování sady SDK služby Azure Batch
 
-Můžete nainstalovat Azure Batch SDK pro Node.js pomocí hello npm install příkazu.
+Sadu SDK služby Azure Batch pro Node.js můžete nainstalovat pomocí příkazu npm install.
 
 `npm install azure-batch`
 
-Tento příkaz nainstaluje nejnovější verzi azure-batch uzlu SDK hello.
+Tento příkaz nainstaluje nejnovější verzi sady azure-batch node SDK.
 
 >[!Tip]
-> V aplikaci funkce Azure, můžete přejít příliš nastavení "Kudu konzoly" v hello Azure funkce na kartě toorun hello npm nainstalujte příkazy. V této případu tooinstall Azure Batch SDK pro Node.js.
+> V aplikaci Azure Function App můžete spouštět příkazy npm install z konzoly Kudu na kartě Nastavení funkce Azure. V tomto případě k instalaci sady SDK služby Azure Batch pro Node.js.
 >
 >
 
 ### <a name="step-2-create-an-azure-batch-account"></a>Krok 2: Vytvoření účtu Azure Batch
 
-Můžete ho vytvořit z hello [portál Azure](batch-account-create-portal.md) nebo z příkazového řádku ([prostředí Powershell](batch-powershell-cmdlets-get-started.md) /[rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview)).
+Můžete ho vytvořit na webu [Azure Portal](batch-account-create-portal.md) nebo z příkazového řádku ([PowerShell](batch-powershell-cmdlets-get-started.md)  / [Azure CLI](https://docs.microsoft.com/cli/azure/overview)).
 
-Následují hello příkazy toocreate jeden prostřednictvím rozhraní příkazového řádku Azure.
+Následující příkazy vytvoří účet prostřednictvím Azure CLI.
 
-Vytvořte skupinu prostředků, tento krok přeskočte, pokud již účet máte místo toocreate hello účtu Batch:
+Vytvořte skupinu prostředků (tento krok přeskočte, pokud již máte skupinu prostředků, ve které chcete vytvořit účet Batch):
 
 `az group create -n "<resource-group-name>" -l "<location>"`
 
@@ -85,14 +85,14 @@ Dále vytvořte účet Azure Batch.
 
 `az batch account create -l "<location>"  -g "<resource-group-name>" -n "<batch-account-name>"`
 
-Každý účet Batch má odpovídající přístupové klíče. Tyto klíče jsou potřebné toocreate další prostředky v účtu Azure batch. Vhodné pro produkční prostředí je Azure Key Vault toostore toouse tyto klíče. Potom můžete vytvořit službu objektu zabezpečení pro aplikace hello. Pomocí této aplikace hello hlavní služby můžete vytvořit z trezoru klíčů hello klíče tooaccess tokenu OAuth.
+Každý účet Batch má odpovídající přístupové klíče. Tyto klíče jsou potřeba k vytvoření dalších prostředků v účtu Azure Batch. V produkčním prostředí je vhodné použít k uložení těchto klíčů službu Azure Key Vault. Potom můžete pro aplikaci vytvořit instanční objekt. Pomocí tohoto instančního objektu může aplikace vytvořit token OAuth pro přístup ke klíčům ve službě Key Vault.
 
 `az batch account keys list -g "<resource-group-name>" -n "<batch-account-name>"`
 
-Zkopírujte a uložte hello klíče toobe použit v následné kroky hello.
+Zkopírujte a uložte klíč, který použijete v dalších krocích.
 
 ### <a name="step-3-create-an-azure-batch-service-client"></a>Krok 3: Vytvoření klienta služby Azure Batch
-Následující fragment kódu nejprve importuje modul Node.js hello azure-batch a poté vytvoří služba Batch klienta. Je třeba toofirst vytvořit objekt SharedKeyCredentials s klíč účtu Batch hello zkopírovali v předchozím kroku hello.
+Následující fragment kódu nejprve importuje modul Node.js azure-batch a pak vytvoří klienta služby Batch. Nejprve musíte vytvořit objekt SharedKeyCredentials s klíčem účtu Batch, který jste zkopírovali v předchozím kroku.
 
 ```nodejs
 // Initializing Azure Batch variables
@@ -115,64 +115,64 @@ var batch_client = new batch.ServiceClient(credentials,accountUrl);
 
 ```
 
-Hello Azure Batch URI najdete v kartě Přehled hello hello portálu Azure. Je hello formátu:
+Identifikátor URI služby Azure Batch najdete na kartě Přehled na webu Azure Portal. Je ve formátu:
 
 `https://accountname.location.batch.azure.com`
 
-Odkažte toohello – snímek obrazovky:
+Podívejte se na snímek obrazovky:
 
 ![Identifikátor URI služby Azure Batch](./media/batch-nodejs-get-started/azurebatchuri.png)
 
 
 
 ### <a name="step-4-create-an-azure-batch-pool"></a>Krok 4: Vytvoření fondu služby Azure Batch
-Fond služby Azure Batch se skládá z několika virtuálních počítačů (označovaných také jako uzly služby Batch). Služba Azure Batch nasadí hello úlohy na tyto uzly a je spravuje. Můžete definovat hello následující parametry konfigurace pro váš fond.
+Fond služby Azure Batch se skládá z několika virtuálních počítačů (označovaných také jako uzly služby Batch). Služba Azure Batch do uzlů nasazuje úkoly a spravuje je. Pro váš fond můžete definovat následující parametry konfigurace.
 
 * Typ image virtuálních počítačů
 * Velikost uzlů virtuálních počítačů
 * Počet uzlů virtuálních počítačů
 
 > [!Tip]
-> Hello velikost a počet uzlů virtuálního počítače do značné míry závisí na hello počet úloh, které chcete toorun v paralelní a také vlastní úloha hello. Doporučujeme, abyste testování toodetermine hello ideální počet a velikost.
+> Velikost a počet uzlů virtuálních počítačů úzce souvisí s počtem úkolů, které chcete paralelně spouštět, a se samotnými úkoly. K určení ideálního počtu a velikosti doporučujeme otestovat různé možnosti.
 >
 >
 
-Hello následující fragment kódu vytvoří hello objekty parametr konfigurace.
+Následující fragment kódu vytvoří objekty parametrů konfigurace.
 
 ```nodejs
 // Creating Image reference configuration for Ubuntu Linux VM
 var imgRef = {publisher:"Canonical",offer:"UbuntuServer",sku:"14.04.2-LTS",version:"latest"}
 
-// Creating hello VM configuration object with hello SKUID
+// Creating the VM configuration object with the SKUID
 var vmconfig = {imageReference:imgRef,nodeAgentSKUId:"batch.node.ubuntu 14.04"}
 
-// Setting hello VM size tooStandard F4
+// Setting the VM size to Standard F4
 var vmSize = "STANDARD_F4"
 
-//Setting number of VMs in hello pool too4
+//Setting number of VMs in the pool to 4
 var numVMs = 4
 ```
 
 > [!Tip]
-> Seznam hello k dispozici pro Azure Batch a jejich ID SKU bitových kopií virtuálního počítače s Linuxem najdete v tématu [seznam bitové kopie virtuálních počítačů](batch-linux-nodes.md#list-of-virtual-machine-images).
+> Seznam imagí virtuálních počítačů s Linuxem, které jsou dostupné pro Azure Batch, a ID jejich skladových jednotek (SKU) najdete v tématu se [seznamem imagí virtuálních počítačů](batch-linux-nodes.md#list-of-virtual-machine-images).
 >
 >
 
-Po konfiguraci fondu hello je definována, můžete vytvořit fondu Azure Batch hello. Hello příkaz fondu Batch vytvoří virtuální počítač Azure uzly a připraví je toobe připraven tooreceive úlohy tooexecute. Každý fond musí mít jedinečné ID, abyste na něj mohli odkazovat v dalších krocích.
+Jakmile je konfigurace fondu definovaná, můžete vytvořit fond služby Azure Batch. Příkaz k vytvoření fondu služby Batch vytvoří uzly virtuálních počítačů Azure a připraví je na příjem úkolů ke zpracování. Každý fond musí mít jedinečné ID, abyste na něj mohli odkazovat v dalších krocích.
 
-Následující fragment kódu Hello vytvoří fondu Azure Batch.
+Následující fragment kódu vytvoří fond služby Azure Batch.
 
 ```nodejs
 // Create a unique Azure Batch pool ID
 var poolid = "pool" + customerDetails.customerid;
 var poolConfig = {id:poolid, displayName:poolid,vmSize:vmSize,virtualMachineConfiguration:vmconfig,targetDedicatedComputeNodes:numVms,enableAutoScale:false };
-// Creating hello Pool for hello specific customer
+// Creating the Pool for the specific customer
 var pool = batch_client.pool.add(poolConfig,function(error,result){
     if(error!=null){console.log(error.response)};
 });
 ```
 
-Můžete zkontrolovat stav hello hello fond vytvořen a zajistěte, aby byl stav hello v "aktivní" před pokračovat odeslání úlohy toothat fondu.
+Než budete pokračovat s odesláním úlohy do tohoto fondu, můžete zkontrolovat jeho stav a ověřit, že je „aktivní“.
 
 ```nodejs
 var cloudPool = batch_client.pool.get(poolid,function(error,result,request,response){
@@ -199,7 +199,7 @@ var cloudPool = batch_client.pool.get(poolid,function(error,result,request,respo
         });
 ```
 
-Následuje ukázka výsledný objekt, který vrácené funkcí pool.get hello.
+Následuje ukázka objektu výsledků vráceného funkcí pool.get.
 
 ```
 { id: 'processcsv_201721152',
@@ -261,46 +261,46 @@ Následuje ukázka výsledný objekt, který vrácené funkcí pool.get hello.
 
 
 ### <a name="step-4-submit-an-azure-batch-job"></a>Krok 4: Odeslání úlohy služby Azure Batch
-Úloha služby Azure Batch je logická skupina podobných úkolů. V našem scénáři je "Proces csv tooJSON." Každý z těchto úkolů může zpracovávat soubory CSV v jednotlivých kontejnerech služby Azure Storage.
+Úloha služby Azure Batch je logická skupina podobných úkolů. V našem scénáři se jedná o úlohu „Zpracování formátu CSV do formátu JSON“. Každý z těchto úkolů může zpracovávat soubory CSV v jednotlivých kontejnerech služby Azure Storage.
 
-Tyto úlohy by spouští paralelně a nasazení ve více uzlech, řízená služby Azure Batch hello.
+Tyto úkoly budou spouštěné paralelně, nasazené v několika uzlech a orchestrované službou Azure Batch.
 
 > [!Tip]
-> Můžete použít hello [maxTasksPerNode](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) vlastnost toospecify maximální počet úkolů, které můžou běžet současně na jednom uzlu.
+> Pomocí vlastnosti [maxTasksPerNode](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) můžete zadat maximální počet úkolů, které můžou být spuštěné současně v jednom uzlu.
 >
 >
 
 #### <a name="preparation-task"></a>Přípravný úkol
 
-Hello virtuálních počítačů uzlů vytvořené jsou prázdné Ubuntu uzly. Často je nutné tooinstall sadu programy jako požadované součásti.
-Obvykle pro uzly Linux můžete mít skript prostředí, který nainstaluje hello požadavky před hello skutečné úlohy spustit. Může se ale jednat o jakýkoli programovatelný spustitelný soubor.
-Hello [prostředí shell skriptu](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/startup_prereq.sh) v tomto příkladu nainstaluje Python pip a hello sada SDK úložiště Azure pro jazyk Python.
+Vytvořené uzly virtuálních počítačů jsou prázdné uzly s Ubuntu. Často musíte pro splnění požadavků nainstalovat řadu programů.
+Pro uzly s Linuxem obvykle můžete mít skript prostředí, který požadavky nainstaluje před spuštěním vlastních úkolů. Může se ale jednat o jakýkoli programovatelný spustitelný soubor.
+[Skript prostředí](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/startup_prereq.sh) v tomto příkladu nainstaluje Python-pip a sadu SDK služby Azure Storage pro Python.
 
-Můžete nahrát hello skriptu na účet úložiště Azure a vygenerovat skript hello tooaccess identifikátor URI pro SAS. Tento proces je také možné automatizovat pomocí hello SDK pro Node.js úložiště Azure.
+Skript můžete nahrát do účtu služby Azure Storage a vygenerovat identifikátor URI SAS pro přístup ke skriptu. Tento proces je také možné automatizovat pomocí sady SDK služby Azure Storage pro Node.js.
 
 > [!Tip]
-> Přípravy úlohy pro úlohu funguje pouze na uzly hello virtuálních počítačů, kdy je konkrétní úkol hello toorun. Pokud chcete, aby toobe požadované součásti nainstalované na všech uzlech bez ohledu na hello úlohy, které pro něj spustit, můžete použít hello [startTask](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) vlastnost při přidávání fondu. Můžete použít následující definici přípravy úlohy pro referenci hello.
+> Přípravný úkol pro úlohu se spustí pouze na uzlech virtuálních počítačů, na kterých je potřeba spustit konkrétní úkol. Pokud chcete, aby se požadované programy nainstalovaly na všech uzlech bez ohledu na to, jaké úkoly se na nich spouští, můžete během přidávání fondu použít vlastnost [startTask](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add). Pro srovnání můžete použít následující definici přípravného úkolu.
 >
 >
 
-Během odesílání hello úlohy Azure Batch je zadán přípravy úlohy. Následující jsou hello přípravy úlohy konfigurační parametry:
+Přípravný úkol se zadává během odesílání úlohy služby Azure Batch. Následují parametry konfigurace přípravného úkolu:
 
-* **ID**: Jedinečný identifikátor hello přípravy úlohy
-* **commandLine**: spustitelný soubor příkazového řádku tooexecute hello úlohy
-* **resourceFiles**: pole objektů, které poskytují podrobnosti o souborech potřeby toobe stáhnout pro tento toorun úloh.  Následují jeho možnosti:
-    - blobSource: hello identifikátor URI pro SAS hello souboru
-    - Cesta k souboru: toodownload místní cestu a uložte soubor hello
+* **ID:** Jedinečný identifikátor přípravného úkolu.
+* **commandLine:** Příkazový řádek, který spustí spustitelný soubor s úkolem.
+* **resourceFiles:** Pole objektů poskytujících podrobnosti o souborech, které je potřeba stáhnout pro spuštění tohoto úkolu.  Následují jeho možnosti:
+    - blobSource: Identifikátor URI SAS souboru.
+    - filePath: Místní cesta pro stažení a uložení souboru.
     - fileMode: Režim souboru, který lze použít pouze pro uzly s Linuxem, v osmičkovém formátu a s výchozí hodnotou 0770.
-* **waitForSuccess**: Pokud sada tootrue, hello úloh není spuštěna na selhání úkolů přípravy
-* **runElevated**: nastavte ji tootrue, pokud zvýšená oprávnění jsou potřebné toorun hello úloh.
+* **waitForSuccess:** Pokud je tento parametr nastavený na hodnotu true, úkol se nespustí, pokud dojde k chybě přípravného úkolu.
+* **runElevated:** Nastavte tento parametr na hodnotu true, pokud jsou ke spuštění úkolu potřeba zvýšená oprávnění.
 
-Následující fragment kódu ukazuje ukázka konfigurace hello přípravy úlohy skriptu:
+Následující fragment kódu ukazuje příklad konfigurace skriptu přípravného úkolu:
 
 ```nodejs
 var job_prep_task_config = {id:"installprereq",commandLine:"sudo sh startup_prereq.sh > startup.log",resourceFiles:[{'blobSource':'Blob SAS URI','filePath':'startup_prereq.sh'}],waitForSuccess:true,runElevated:true}
 ```
 
-Pokud neexistují žádné požadavky toobe pro vaše úlohy toorun nainstalována, můžete přeskočit hello přípravných kroků. Následující kód vytvoří úlohu se zobrazovaným názvem „process csv files“.
+Pokud ke spuštění vašich úkolů není potřeba instalovat žádné požadavky, můžete přípravné úkoly přeskočit. Následující kód vytvoří úlohu se zobrazovaným názvem „process csv files“.
 
  ```nodejs
  // Setting up Batch pool configuration
@@ -308,7 +308,7 @@ Pokud neexistují žádné požadavky toobe pro vaše úlohy toorun nainstalová
  // Setting up Job configuration along with preparation task
  var jobId = "processcsvjob"
  var job_config = {id:jobId,displayName:"process csv files",jobPreparationTask:job_prep_task_config,poolInfo:pool_config}
- // Adding Azure batch job toohello pool
+ // Adding Azure batch job to the pool
  var job = batch_client.job.add(job_config,function(error,result){
      if(error != null)
      {
@@ -319,14 +319,14 @@ Pokud neexistují žádné požadavky toobe pro vaše úlohy toorun nainstalová
 
 ### <a name="step-5-submit-azure-batch-tasks-for-a-job"></a>Krok 5: Odeslání úkolů služby Azure Batch pro úlohu
 
-Nyní, když máme vytvořenou úlohu pro zpracování formátu CSV, vytvoříme pro tuto úlohu úkoly. Za předpokladu, že máme čtyři kontejnery, máme čtyři úlohy toocreate, jednu pro každý kontejner.
+Nyní, když máme vytvořenou úlohu pro zpracování formátu CSV, vytvoříme pro tuto úlohu úkoly. Za předpokladu, že máme čtyři kontejnery, musíme vytvořit čtyři úkoly, jeden pro každý kontejner.
 
-Pokud se podíváme na hello [skript v jazyce Python](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/processcsv.py), přijímá dva parametry:
+Když se podíváme na [skript Pythonu](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/processcsv.py), uvidíme, že přijímá dva parametry:
 
-* název kontejneru: hello soubory toodownload kontejneru úložiště z
+* container name: Kontejner služby Storage, ze kterého se mají stáhnout soubory.
 * pattern: Volitelný parametr se vzorem názvu souboru.
 
-Za předpokladu, že máme čtyři kontejnery "con1", "con2", "con3", "con4" následující kód ukazuje odesílání pro úlohy toohello Azure batch úlohy "proces csv" jsme vytvořili předtím.
+Za předpokladu, že máme čtyři kontejnery con1, con2, con3 a con4, následující kód ukazuje odesílání úkolů do úlohy služby Azure Batch „process csv“, kterou jsme vytvořili dříve.
 
 ```nodejs
 // storing container names in an array
@@ -353,12 +353,12 @@ var container_list = ["con1","con2","con3","con4"]
     });
 ```
 
-Hello kód přidá více fondu toohello úlohy. A jednotlivé úlohy hello je provést na uzlu ve fondu hello virtuálních počítačů vytvořena. Pokud hello počet úloh překračuje hello počet virtuálních počítačů ve fondu nebo hello vlastnosti maxTasksPerNode, úlohy hello Počkejte, až uzel je k dispozici. Tuto orchestraci automaticky zařizuje služba Azure Batch.
+Kód do fondu přidá několik úkolů. Každý z úkolů se provede na uzlu ve vytvořeném fondu virtuálních počítačů. Pokud počet úkolů překročí počet virtuálních počítačů ve fondu nebo hodnotu vlastnosti maxTasksPerNode, úkoly počkají na uvolnění uzlu. Tuto orchestraci automaticky zařizuje služba Azure Batch.
 
-portál Hello má podrobné zobrazení na hello úlohy a stavy úlohy. Můžete také použít hello seznamu a získat funkce v hello Azure SDK uzlu. Podrobnosti jsou uvedeny v dokumentaci hello [odkaz](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html).
+Na portálu jsou podrobná zobrazení stavů úkolů a úloh. Můžete také použít funkce list a get v sadě SDK Azure pro Node.js. Podrobnosti jsou uvedeny v [dokumentaci](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zkontrolujte hello [funkcí přehled Azure Batch](batch-api-basics.md) článek, který doporučujeme, pokud jste novou službu toohello.
-- V tématu hello [Batch Node.js odkaz](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/) tooexplore hello Batch API.
+- Přečtěte si článek [Přehled funkcí Azure Batch](batch-api-basics.md), který doporučujeme všem novým uživatelům služby.
+- Pokud chcete prozkoumat rozhraní API služby Batch, přečtěte si článek [Reference k Batch Node.js](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/).
 

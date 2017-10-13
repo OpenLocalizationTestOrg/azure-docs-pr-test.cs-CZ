@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Atlassian cloudu | Microsoft Docs'
-description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a Atlassian cloudu."
+description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Atlassian cloudu."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,249 +13,249 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.openlocfilehash: f679e8b3306bf0efb9373d8baa0cfe095b760aaf
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2891838b56dd15cb5f97dcae391770143a80c781
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-atlassian-cloud"></a>Kurz: Azure Active Directory integrace s Atlassian cloudu
 
-V tomto kurzu zjistíte, jak toointegrate Atlassian cloudu s Azure Active Directory (Azure AD).
+V tomto kurzu zjistěte, jak integrovat Atlassian cloudu s Azure Active Directory (Azure AD).
 
-Integrace Atlassian cloudu s Azure AD poskytuje hello následující výhody:
+Integrace Atlassian cloudu s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup tooAtlassian cloudu
-- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooAtlassian cloudu (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup do cloudu Atlassian
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k Atlassian cloudu (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-tooconfigure integrace Azure AD s Atlassian cloudu, je třeba hello následující položky:
+Ke konfiguraci integrace služby Azure AD s cloudem Atlassian, potřebujete následující položky:
 
 - Předplatné služby Azure AD
 - Cloudu Atlassian jednotné přihlašování povolené předplatné
 
 > [!NOTE]
-> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
+Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat a jeden měsíc zkušební: [nabídka zkušební verze](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Atlassian cloudu z Galerie hello
+1. Přidání Atlassian cloudu z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-atlassian-cloud-from-hello-gallery"></a>Přidání Atlassian cloudu z Galerie hello
-tooconfigure hello integrace Atlassian cloudu do Azure AD, je nutné tooadd Atlassian cloudu hello Galerie tooyour seznamu spravovaných aplikací SaaS.
+## <a name="adding-atlassian-cloud-from-the-gallery"></a>Přidání Atlassian cloudu z Galerie
+Při konfiguraci integrace Atlassian cloudu do služby Azure AD, potřebujete přidat Atlassian cloudu z Galerie si na seznam spravovaných aplikací SaaS.
 
-**tooadd Atlassian cloudu z Galerie hello, proveďte následující kroky hello:**
+**Pokud chcete přidat Atlassian cloudu z galerie, proveďte následující kroky:**
 
-1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
+1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
+2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
 
     ![Aplikace][3]
 
-4. Hello vyhledávacího pole zadejte **Atlassian cloudu**.
+4. Do vyhledávacího pole zadejte **Atlassian cloudu**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_search.png)
 
-5. Na panelu výsledků hello vyberte **Atlassian cloudu**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.
+5. Na panelu výsledků vyberte **Atlassian cloudu**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 V této části nakonfigurujete a testu Azure AD jednotné přihlašování s Atlassian cloudu podle testovacího uživatele názvem "Britta Simon."
 
-Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v cloudu Atlassian je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v cloudu Atlassian musí toobe navázat.
+Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v cloudu Atlassian je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v cloudu Atlassian musí navázat.
 
-Přiřazením hello hodnotu hello je vytvořen vztah tento odkaz **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** v Atlassian cloudu.
+Tento vztah propojení se navazuje se hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v Atlassian cloudu.
 
-tooconfigure a testu Azure AD jednotné přihlašování s Atlassian cloudu, je třeba toocomplete hello stavební bloky následující:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Atlassian cloudu, je třeba dokončit následující stavební bloky:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytváření testovacího uživatele cloudu Atlassian](#creating-an-atlassian-cloud-test-user)**  -toohave protějšek Britta Simon Atlassian cloudu, který je propojený toohello Azure AD reprezentace uživatele.
-4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytváření testovacího uživatele cloudu Atlassian](#creating-an-atlassian-cloud-test-user)**  – Pokud chcete mít protějšek Britta Simon Atlassian cloudu, který je propojený s Azure AD reprezentace daného uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci Atlassian cloudu.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Atlassian cloudu.
 
-**tooconfigure Azure AD jednotné přihlašování s Atlassian cloudu, proveďte následující kroky hello:**
+**Ke konfiguraci Azure AD jednotné přihlašování s Atlassian cloudu, proveďte následující kroky:**
 
-1. V portálu Azure, na hello hello **Atlassian cloudu** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na portálu Azure na **Atlassian cloudu** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
+2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_samlbase.png)
 
-3. Na hello **Atlassian cloudové domény a adresy URL** část, proveďte následující kroky, pokud chcete aplikace hello tooconfigure hello **IDP** iniciované režimu:
+3. Na **Atlassian cloudové domény a adresy URL** část, proveďte následující kroky, pokud chcete nakonfigurovat aplikace **IDP** iniciované režimu:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_url.png)
 
-    a. V hello **identifikátor** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<instancename>.atlassian.net/admin/saml/edit`
+    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<instancename>.atlassian.net/admin/saml/edit`
 
-    b. V hello **adresa URL odpovědi** textovému poli, zadejte adresu URL jako:`https://id.atlassian.com/login/saml/acs`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL jako:`https://id.atlassian.com/login/saml/acs`
 
-4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL** a proveďte následující krok, pokud chcete aplikace hello tooconfigure hello **SP** iniciované režimu:
+4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_url1.png)
 
-    V hello **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<instancename>.atlassian.net`
+    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<instancename>.atlassian.net`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Aktualizovat tyto hodnoty s hello skutečné identifikátor a přihlašovací adresa URL. Přesné hodnoty hello můžete získat z obrazovky konfigurace SAML Atlassian cloudu.
+    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem a přihlašovací adresa URL. Přesné hodnoty můžete získat z obrazovky konfigurace SAML Atlassian cloudu.
  
-5. Na hello **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu hello ve vašem počítači.
+5. Na **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu v počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_certificate.png) 
 
-6. Na hello **konfigurace cloudu Atlassian** klikněte na tlačítko **konfigurace cloudu Atlassian** tooopen **konfigurovat přihlášení** okno. Kopírování hello **SAML Entity ID a SAML jeden přihlašování adresu URL služby** z hello **Stručná referenční příručka části.**
+6. Na **konfigurace cloudu Atlassian** klikněte na tlačítko **konfigurace cloudu Atlassian** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML Entity ID a SAML jeden přihlašování adresu URL služby** z **Stručná referenční příručka části.**
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_configure.png) 
 
-7. tooget jednotné přihlašování nakonfigurovat pro vaši aplikaci, přihlášení toohello Atlassian portálu pomocí hello práva správce.
+7. Chcete-li získat jednotné přihlašování, které jsou nakonfigurované pro vaši aplikaci, přihlášení k portálu Atlassian pomocí oprávnění správce.
 
-8. V části ověřování hello hello levé navigační na **domény**.
+8. V části ověřování navigaci vlevo klikněte na tlačítko **domény**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_06.png)
 
-    a. Hello textovému poli, zadejte název domény a pak klikněte na **přidáním domény**.
+    a. Do textového pole zadejte název domény a pak klikněte na tlačítko **přidáním domény**.
         
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_07.png)
 
-    b. tooverify hello domény, klikněte na tlačítko **ověřte**. 
+    b. Chcete-li ověřit doménu, klikněte na tlačítko **ověřte**. 
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_08.png)
 
-    c. Stáhnout soubor html ověření domény hello, nahrajte ho toohello kořenové složky vaší doméně webu a pak klikněte na tlačítko **ověřit doménu**.
+    c. Stáhněte si soubor html ověření domény, nahrajte ho do kořenové složky vaší domény webu a pak klikněte na tlačítko **ověřit doménu**.
     
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_09.png)
 
-    d. Po ověření domény hello hello hodnotu hello **stav** pole je **ověřeno**.
+    d. Po ověření domény hodnotu **stav** pole je **ověřeno**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_10.png)
 
-9. V levém navigačním panelu hello, klikněte na tlačítko **SAML**.
+9. V levém navigačním panelu klikněte na **SAML**.
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_11.png)
 
-10. Vytvoření konfigurace SAML a přidejte hello konfigurace zprostředkovatele Identity.
+10. Vytvoření konfigurace SAML a přidejte konfigurace zprostředkovatele Identity.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_12.png)
 
-    a. V hello **zprostředkovatele Identity Entity ID** textového pole, vložte hodnotu hello **SAML Entity ID** který jste zkopírovali z portálu Azure.
+    a. V **zprostředkovatele Identity Entity ID** textové pole, vložte hodnotu **SAML Entity ID** který jste zkopírovali z portálu Azure.
 
-    b. V hello **zprostředkovatele Identity jednotného přihlašování k adrese URL** textového pole, vložte hodnotu hello **SAML jeden přihlašování adresa URL služby** který jste zkopírovali z portálu Azure.
+    b. V **zprostředkovatele Identity URL jednotného přihlašování k** textové pole, vložte hodnotu **SAML jeden přihlašování adresa URL služby** který jste zkopírovali z portálu Azure.
 
-    c. Otevřete certifikát hello stáhli z Azure portal a zkopírujte hello hodnoty bez hello Begin a End řádky a vložte ji do hello **X509 veřejný certifikát** pole.
+    c. Otevřete certifikát stažený z portálu Azure a kopírovat hodnoty bez Begin a End řádky a vložte jej do **X509 veřejný certifikát** pole.
     
-    d. Klikněte na tlačítko **uložit konfiguraci** tooSave hello nastavení.
+    d. Klikněte na tlačítko **uložit konfiguraci** uložte nastavení.
      
-11. Aktualizujte hello Azure AD nastavení toomake že máte hello instalaci opravte identifikátoru adresy URL.
+11. Aktualizujte nastavení služby Azure AD a ujistěte se, že máte nastavený správný identifikátoru adresy URL.
   
-    a. Kopírování hello **SP Identity ID** z hello SAML obrazovky a vložte ji ve službě Azure AD jako hello **identifikátor** hodnotu.
+    a. Kopírování **SP Identity ID** z SAML obrazovky a vložte ji ve službě Azure AD jako **identifikátor** hodnotu.
 
-    b. Přihlašovací adresa URL je adresa URL klienta hello ve vašem cloudu Atlassian.     
+    b. Přihlašovací adresa URL je adresa URL klienta ve vašem cloudu Atlassian.   
 
      ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_13.png)
     
-12. V hello portálu Azure, klikněte na **Uložit** tlačítko.
+12. Na portálu Azure klikněte na tlačítko **Uložit** tlačítko.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_general_400.png)
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
+Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
+**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
 
-1. V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
+1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-atlassian-cloud-tutorial/create_aaduser_01.png) 
 
-2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-atlassian-cloud-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.
+3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-atlassian-cloud-tutorial/create_aaduser_03.png) 
 
-4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
+4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-atlassian-cloud-tutorial/create_aaduser_04.png) 
 
-    a. V hello **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textovému poli, typ **BrittaSimon**.
 
-    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-an-atlassian-cloud-test-user"></a>Vytváření testovacího uživatele Atlassian cloudu
 
-Uživatelé toolog tooenable Azure AD v cloudu tooAtlassian, se musí být zřízená do Atlassian cloudu.  
+Pokud chcete povolit uživatelům Azure AD přihlášení do cloudu Atlassian, musí být zřízená do Atlassian cloudu.  
 V případě cloudu Atlassian zřizování je ruční úloha.
 
-**tooprovision uživatelský účet, proveďte následující kroky hello:**
+**K poskytnutí uživatelského účtu, proveďte následující kroky:**
 
-1. V části Správa lokality hello, klikněte na tlačítko hello **uživatelé** tlačítko
+1. V části Správa lokality, klikněte **uživatelé** tlačítko
 
     ![Vytvoření uživatele Atlassian cloudu](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_14.png) 
 
-2. Klikněte na tlačítko hello **vytvořit uživatele** tlačítko toocreate uživatele v hello Atlassian cloudu
+2. Klikněte **vytvořit uživatele** tlačítko pro vytvoření uživatele v cloudu Atlassian
 
     ![Vytvoření uživatele Atlassian cloudu](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_15.png) 
 
-3. Zadejte uživatele hello **e-mailová adresa**, **uživatelské jméno**, a **úplný název** a přiřaďte hello přístup k aplikaci. 
+3. Zadejte uživatele **e-mailová adresa**, **uživatelské jméno**, a **úplný název** a přiřadit přístup k aplikaci. 
 
     ![Vytvoření uživatele Atlassian cloudu](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_16.png)
  
-4. Klikněte na tlačítko **vytvořit uživateli** tlačítko, kterou bude odesílat hello e-mailová pozvánka toohello uživatele a po přijetí hello pozvánku hello uživatel se bude v hello systému aktivní. 
+4. Klikněte na tlačítko **vytvořit uživateli** tlačítko odešle e-mailová pozvánka pro uživatele a uživatel se bude po přijetí pozvánky v systému aktivní. 
 
 >[!NOTE] 
->Můžete také vytvořit hello hromadné uživatele kliknutím hello **vytvořit hromadné** tlačítka na hello část uživatelé.
+>Můžete také vytvořit uživatele hromadné kliknutím **vytvořit hromadné** tlačítko v části uživatelé.
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
+### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte tak, že udělíte přístup tooAtlassian cloudu Britta Simon toouse Azure jednotné přihlašování.
+V této části povolíte Britta Simon používat tak, že udělíte přístup do cloudu Atlassian Azure jednotné přihlašování.
 
 ![Přiřadit uživatele][200] 
 
-**tooassign tooAtlassian Britta Simon cloudu, proveďte následující kroky hello:**
+**Přiřadit Britta Simon Atlassian cloudu, proveďte následující kroky:**
 
-1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikace hello vyberte **Atlassian cloudu**.
+2. V seznamu aplikací vyberte **Atlassian cloudu**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_app.png) 
 
-3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
+3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
@@ -263,7 +263,7 @@ V této části povolíte tak, že udělíte přístup tooAtlassian cloudu Britt
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -271,13 +271,13 @@ V této části povolíte tak, že udělíte přístup tooAtlassian cloudu Britt
     
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-V této části můžete otestovat vaši konfiguraci Azure AD jednotného přihlašování pomocí hello přístupového panelu.
+V této části můžete otestovat vaši konfiguraci Azure AD jednotného přihlašování k použití na přístupovém panelu.
 
-Po kliknutí na tlačítko hello Atlassian cloudu dlaždici v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour Atlassian cloudových aplikací. Další informace o hello přístupového panelu najdete v tématu [toohello Úvod přístupový Panel](active-directory-saas-access-panel-introduction.md). 
+Když kliknete na dlaždici Atlassian cloudu na přístupovém panelu, jste měli získat automaticky přihlášení k Atlassian cloudové aplikace. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

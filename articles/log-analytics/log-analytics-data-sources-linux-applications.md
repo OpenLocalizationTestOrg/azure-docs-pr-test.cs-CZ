@@ -1,6 +1,6 @@
 ---
-title: "aaaCollect Linux výkonu aplikace v OMS Log Analytics | Microsoft Docs"
-description: "Tento článek obsahuje podrobné informace pro konfiguraci hello agenta OMS pro čítače výkonu toocollect Linux MySQL a serveru Apache HTTP Server."
+title: "Shromažďování výkonu aplikace Linux v OMS Log Analytics | Microsoft Docs"
+description: "Tento článek obsahuje podrobné informace pro konfiguraci agenta OMS pro Linux ke shromažďování čítače výkonu pro MySQL a serveru Apache HTTP Server."
 services: log-analytics
 documentationcenter: 
 author: mgoedtel
@@ -14,51 +14,51 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: 51105c6add5c7941a004570a76a4d94c02fc8a71
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 04ea6f728e59ec8b47e54fe45e1adc6cbbfb85ff
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Shromáždit čítače výkonu pro Linux aplikace v analýzy protokolů 
-Tento článek obsahuje podrobné informace pro konfiguraci hello [OMS agenta pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) toocollect čítače výkonu pro konkrétní aplikace.  aplikace Hello zahrnuté v tomto článku jsou:  
+Tento článek obsahuje podrobné informace pro konfiguraci [OMS agenta pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) ke shromažďování čítače výkonu pro konkrétní aplikace.  Aplikace, zahrnuté v tomto článku jsou:  
 
 - [MySQL](#MySQL)
 - [Serveru Apache HTTP Server](#apache-http-server)
 
 ## <a name="mysql"></a>MySQL
-Pokud Server databáze MySQL nebo MariaDB Server v počítači se zjistí hello při instalaci agenta OMS hello, se automaticky nainstaluje zprostředkovatele pro Server databáze MySQL monitorování výkonu. Tento zprostředkovatel připojí toohello místní databáze MySQL nebo MariaDB tooexpose Statistika výkonu serveru. Přihlašovací údaje uživatele MySQL musí nakonfigurovat tak, aby hello zprostředkovatele přístup hello MySQL serveru.
+Pokud MySQL nebo MariaDB serveru je zjištěn v počítači, pokud je nainstalován OMS agent, se automaticky nainstaluje zprostředkovatele pro Server databáze MySQL monitorování výkonu. Tento zprostředkovatel připojí k místnímu serveru MySQL nebo MariaDB vystavit statistiku výkonu. Přihlašovací údaje uživatele MySQL musí nakonfigurovat tak, aby zprostředkovatel můžete přístup k serveru databáze MySQL.
 
 ### <a name="configure-mysql-credentials"></a>Konfigurovat přihlašovací údaje databáze MySQL
-Hello MySQL OMI zprostředkovatele vyžaduje předkonfigurované uživatele MySQL a nainstalovat MySQL klientské knihovny v pořadí tooquery hello výkonu a informace o stavu z instance databáze MySQL hello.  Tyto přihlašovací údaje jsou uloženy v souboru ověřování, který je uložený na hello Linux agent.  soubor pro ověření Hello určuje jaké vazby adresu a port hello MySQL instance naslouchá na a co pověření toouse toogather metriky.  
+Zprostředkovatel MySQL OMI vyžaduje předkonfigurované uživatele MySQL a nainstalovat MySQL klientské knihovny k dotazování na výkon a informace o stavu z instance databáze MySQL.  Tyto přihlašovací údaje jsou uložené v souboru ověřování, který je uložený na agenta systému Linux.  Soubor ověřování určuje, jaké vazby adresu a port instance databáze MySQL naslouchá na a jaké přihlašovací údaje se má použít ke shromažďování metrik.  
 
-Během instalace hello OMS agenta pro Linux hello MySQL OMI zprostředkovatele vyhledá MySQL my.cnf konfigurační soubory (výchozí umístění) vazby adresy a portu a částečně sadu hello soubor pro ověření MySQL OMI.
+Během instalace agenta OMS pro Linux MySQL OMI zprostředkovatele vyhledá MySQL my.cnf konfigurační soubory (výchozí umístění) pro vazbu adresy a portu a částečně nastavit MySQL OMI soubor pro ověření.
 
-Hello MySQL ověřování soubor je uložen v `/var/opt/microsoft/mysql-cimprov/auth/omsagent/mysql-auth`.
+MySQL ověřování je uložen v `/var/opt/microsoft/mysql-cimprov/auth/omsagent/mysql-auth`.
 
 
 ### <a name="authentication-file-format"></a>Formát souboru ověřování
-Následuje hello formát pro hello soubor pro ověření MySQL OMI
+Toto je formát pro ověření souboru MySQL OMI
 
     [Port]=[Bind-Address], [username], [Base64 encoded Password]
     (Port)=(Bind-Address), (username), (Base64 encoded Password)
     (Port)=(Bind-Address), (username), (Base64 encoded Password)
     AutoUpdate=[true|false]
 
-Hello položky v souboru authentication hello jsou popsané v následující tabulka hello.
+Položky v souboru ověřování jsou popsané v následující tabulce.
 
 | Vlastnost | Popis |
 |:--|:--|
-| Port | Představuje hello aktuální port hello instance naslouchá na MySQL. Port 0 určuje, že jsou následující vlastnosti hello používá výchozí instanci. |
+| Port | Představuje aktuální port, který naslouchá instance databáze MySQL na. Port 0 určuje, že jsou pro výchozí instanci používat následující vlastnosti. |
 | Vazby – adresy| Adresa-aktuální MySQL vazby. |
-| uživatelské jméno| Instance serveru toouse toomonitor hello MySQL použít MySQL uživatele. |
-| Kódováním base64, pomocí hesla| Heslo uživatele monitorování hello MySQL kódovaný jako Base64. |
-| Pomocí funkce Automatické aktualizace| Určuje, zda toorescan pro změny v souboru my.cnf hello a přepsat soubor MySQL OMI ověřování hello hello MySQL OMI zprostředkovatele upgradován. |
+| uživatelské jméno| Uživatel MySQL lze použít k monitorování instance serveru MySQL. |
+| Kódováním base64, pomocí hesla| Heslo uživatele monitorování MySQL kódovaný jako Base64. |
+| Pomocí funkce Automatické aktualizace| Určuje, jestli se znovu zkontrolujte změny v souboru my.cnf a při upgraduje se zprostředkovatel OMI MySQL přepsat soubor MySQL OMI ověřování. |
 
 ### <a name="default-instance"></a>Výchozí instance
-Hello MySQL OMI ověřování souboru můžete definovat výchozí instance a port číslo toomake správu více instancí databáze MySQL na jednom hostiteli systému Linux jednodušší.  instance s portem 0 je označený jako Hello výchozí instanci. Všechny další instance zdědí vlastnosti nastavit z hello výchozí instanci, pokud určí různé hodnoty. Například pokud je přidána instance databáze MySQL naslouchání na portu '3308', vazby adresu hello výchozí instance, uživatelské jméno a heslo kódováním Base64 bude použité tootry a monitorovat naslouchání na 3308 instance hello. Pokud je adresa vázané tooanother hello instanci na 3308 a používá hello stejné uživatelské jméno MySQL a je potřeba heslo pár pouze hello vazby adresa a hello další vlastnosti, zdědí.
+Soubor MySQL OMI ověřování můžete definovat výchozí instance a číslo portu provádět správu více instancí databáze MySQL na jednom hostiteli systému Linux jednodušší.  Instance s portem 0 je označený jako výchozí instanci. Všechny další instance zdědí vlastnosti nastavit z výchozí instanci, pokud určí různé hodnoty. Například pokud je přidána instance databáze MySQL naslouchání na portu '3308', vazby adresu výchozí instance, uživatelské jméno a heslo kódováním Base64 použije sledovat instance naslouchá na 3308 a zkuste to. Pokud instanci na 3308 je vázána na jinou adresu a používá stejný MySQL dvojici uživatelské jméno a heslo je potřeba jenom adresy vazby a zdědí vlastnosti.
 
-Hello následující tabulka obsahuje příklad nastavení instance 
+Následující tabulka obsahuje příklad nastavení instance 
 
 | Popis | File |
 |:--|:--|
@@ -67,53 +67,53 @@ Hello následující tabulka obsahuje příklad nastavení instance
 
 
 ### <a name="mysql-omi-authentication-file-program"></a>MySQL OMI ověřování souboru programu
-Je součástí instalace hello hello MySQL OMI zprostředkovatele MySQL OMI soubor programu ověřování, který lze použít tooedit hello MySQL OMI ověřování souboru. programu Hello ověřování souboru naleznete na následující umístění hello.
+Součástí instalace zprostředkovatele MySQL OMI je MySQL OMI soubor programu ověřování, který můžete použít k úpravě souboru MySQL OMI ověřování. Soubor programu ověřování najdete v následujícím umístění.
 
     /opt/microsoft/mysql-cimprov/bin/mycimprovauth
 
 > [!NOTE]
-> soubor s přihlašovacími údaji Hello musí být přečíst hello omsagent účtu. Spuštění příkazu mycimprovauth hello jako omsgent se doporučuje.
+> Soubor s přihlašovacími údaji musí být účet omsagent. Doporučuje se spuštěním příkazu mycimprovauth jako omsgent.
 
-Hello následující tabulka obsahuje podrobnosti o na hello syntaxe pro používání mycimprovauth.
+Následující tabulka obsahuje podrobnosti o syntaxi použití mycimprovauth.
 
 | Operace | Příklad | Popis
 |:--|:--|:--|
-| pomocí funkce Automatické aktualizace * false\|Hodnota TRUE * | false mycimprovauth automatických aktualizací | Nastaví, jestli se automaticky aktualizuje soubor pro ověření hello na restartovat nebo aktualizovat. |
-| výchozí *vazby adresu uživatelské jméno, heslo* | mycimprovauth výchozí 127.0.0.1 kořenové pwd | Nastaví hello výchozí instance v hello soubor pro ověření MySQL OMI.<br>pole hesla Hello by měly být zadány ve formátu prostého textu – hello heslo v hello souboru MySQL OMI ověřování bude kódováním Base 64. |
-| Odstranit * default\|port_num * | mycimprovauth 3308 | Odstraní zadanou instanci hello buď výchozí nebo číslo portu. |
-| Pomoc | mycimprov nápovědy | Vytiskne seznam toouse příkazy. |
-| Tisk | mycimprov tisku | Vytiskne snadno tooread soubor pro ověření MySQL OMI. |
-| Aktualizovat port_num *vazby adresu uživatelské jméno, heslo* | mycimprov aktualizace 3307 127.0.0.1 kořenové pwd | Aktualizuje zadaný instanci hello nebo přidá instanci hello, pokud neexistuje. |
+| pomocí funkce Automatické aktualizace * false\|Hodnota TRUE * | false mycimprovauth automatických aktualizací | Nastaví, jestli se automaticky aktualizuje soubor ověřování na restartovat nebo aktualizovat. |
+| výchozí *vazby adresu uživatelské jméno, heslo* | mycimprovauth výchozí 127.0.0.1 kořenové pwd | Nastaví výchozí instance databáze MySQL OMI soubor pro ověření.<br>Pole hesla by měly být zadány ve formátu prostého textu – heslo v souboru MySQL OMI ověřování bude kódováním Base 64. |
+| Odstranit * default\|port_num * | mycimprovauth 3308 | Odstraní zadanou instanci buď výchozí nebo číslo portu. |
+| Pomoc | mycimprov nápovědy | Vytiskne seznam příkazů použít. |
+| Tisk | mycimprov tisku | Vytiskne snadno MySQL OMI číst soubor pro ověření. |
+| Aktualizovat port_num *vazby adresu uživatelské jméno, heslo* | mycimprov aktualizace 3307 127.0.0.1 kořenové pwd | Aktualizuje zadaný instanci nebo přidá instanci, pokud neexistuje. |
 
-Hello následujících příkladech příkazů definovat výchozí uživatelského účtu pro hello MySQL server na localhost.  pole hesla Hello by měly být zadány ve formátu prostého textu – hello heslo v hello souboru MySQL OMI ověřování bude kódováním Base 64
+Příkazy v následujícím příkladu definovat výchozí uživatelského účtu pro server databáze MySQL na localhost.  Pole hesla by měly být zadány ve formátu prostého textu – heslo v souboru MySQL OMI ověřování bude kódováním Base 64
 
     sudo su omsagent -c '/opt/microsoft/mysql-cimprov/bin/mycimprovauth default 127.0.0.1 <username> <password>'
     sudo /opt/omi/bin/service_control restart
 
 ### <a name="database-permissions-required-for-mysql-performance-counters"></a>Databáze oprávnění vyžadovaná pro čítače výkonu databáze MySQL
-Hello MySQL uživatel vyžaduje přístup toohello následující dotazy toocollect data o výkonu serveru MySQL. 
+Uživatel MySQL vyžaduje přístup k následující dotazy ke shromažďování dat výkonu serveru MySQL. 
 
     SHOW GLOBAL STATUS;
     SHOW GLOBAL VARIABLES:
 
 
-uživatel MySQL Hello také vyžaduje následující výchozí tabulky toohello vyberte přístup.
+Uživatel MySQL taky vyžaduje vyberte přístup k následující výchozí tabulky.
 
 - INFORMATION_SCHEMA
 - databáze MySQL. 
 
-Tato oprávnění lze udělit tak, že spustíte následující příkazy grant hello.
+Tato oprávnění lze udělit spuštěním následujících příkazů grant.
 
-    GRANT SELECT ON information_schema.* too‘monuser’@’localhost’;
-    GRANT SELECT ON mysql.* too‘monuser’@’localhost’;
+    GRANT SELECT ON information_schema.* TO ‘monuser’@’localhost’;
+    GRANT SELECT ON mysql.* TO ‘monuser’@’localhost’;
 
 
 > [!NOTE]
-> toogrant oprávnění tooa MySQL monitorování uživatele hello udělení uživatele musí mít oprávnění "Udělit možnost" hello, jakož i udělení oprávnění hello.
+> Udělte oprávnění MySQL monitorování uživatel poskytující uživatel musí mít oprávnění k 'GRANT option, a také udělení oprávnění.
 
 ### <a name="define-performance-counters"></a>Definování čítače výkonu
 
-Jakmile nakonfigurujete hello OMS agenta pro Linux toosend data tooLog analýzy, je nutné nakonfigurovat toocollect čítače výkonu hello.  Pomocí postupu hello v [Windows a Linux zdroje dat výkonu v analýzy protokolů](log-analytics-data-sources-windows-events.md) s hello čítače v hello následující tabulka.
+Po dokončení konfigurace agenta OMS pro Linux k odesílání dat k analýze protokolů, je nutné nakonfigurovat shromažďování čítačů výkonu.  Pomocí postupu v [Windows a Linux zdroje dat výkonu v analýzy protokolů](log-analytics-data-sources-windows-events.md) s čítači v následující tabulce.
 
 | Název objektu | Název čítače |
 |:--|:--|
@@ -137,19 +137,19 @@ Jakmile nakonfigurujete hello OMS agenta pro Linux toosend data tooLog analýzy,
 | Server databáze MySQL | Tabulka zámku kolizí Pct |
 
 ## <a name="apache-http-server"></a>Serveru Apache HTTP Server 
-Pokud v počítači hello se zjistí serveru Apache HTTP Server, pokud je nainstalovaná sada omsagent hello, se automaticky nainstaluje zprostředkovatele pro serveru Apache HTTP Server monitorování výkonu. Tento zprostředkovatel spoléhá na modul Apache, který je nutné načíst do hello serveru Apache HTTP Server v datech o výkonu tooaccess pořadí. modul Hello mohou být načteny s hello následující příkaz:
+Pokud serveru Apache HTTP Server je v počítači nalezen, když je nainstalovaná sada omsagent, se automaticky nainstaluje zprostředkovatele pro serveru Apache HTTP Server monitorování výkonu. Tento zprostředkovatel spoléhá na modul Apache, který je nutné načíst do serveru Apache HTTP Server, aby měli přístup na údaje o výkonu. Modul můžete načíst pomocí následujícího příkazu:
 ```
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -c
 ```
 
-toounload hello Apache modulu sledování, spusťte následující příkaz hello:
+Unload modulu Sledování Apache, spusťte následující příkaz:
 ```
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 ```
 
 ### <a name="define-performance-counters"></a>Definování čítače výkonu
 
-Jakmile nakonfigurujete hello OMS agenta pro Linux toosend data tooLog analýzy, je nutné nakonfigurovat toocollect čítače výkonu hello.  Pomocí postupu hello v [Windows a Linux zdroje dat výkonu v analýzy protokolů](log-analytics-data-sources-windows-events.md) s hello čítače v hello následující tabulka.
+Po dokončení konfigurace agenta OMS pro Linux k odesílání dat k analýze protokolů, je nutné nakonfigurovat shromažďování čítačů výkonu.  Pomocí postupu v [Windows a Linux zdroje dat výkonu v analýzy protokolů](log-analytics-data-sources-windows-events.md) s čítači v následující tabulce.
 
 | Název objektu | Název čítače |
 |:--|:--|
@@ -167,4 +167,4 @@ Jakmile nakonfigurujete hello OMS agenta pro Linux toosend data tooLog analýzy,
 
 ## <a name="next-steps"></a>Další kroky
 * [Shromažďování čítačů výkonu](log-analytics-data-sources-performance-counters.md) od agentů systému Linux.
-* Další informace o [protokolu hledání](log-analytics-log-searches.md) tooanalyze hello data budou shromažďovat ze zdroje dat a řešení. 
+* Další informace o [protokolu hledání](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a řešení. 

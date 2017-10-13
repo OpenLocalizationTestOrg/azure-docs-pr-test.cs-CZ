@@ -1,6 +1,6 @@
 ---
-title: "aaaInstall balíčky aplikací na výpočetní uzly - Azure Batch | Microsoft Docs"
-description: "Použití hello aplikace balíčky funkcí Azure Batch tooeasily spravovat více aplikací a verze pro instalaci na Batch výpočetních uzlů."
+title: "Instalovat balíčky aplikací na výpočetní uzly - Azure Batch | Microsoft Docs"
+description: "Použijte funkci balíčků aplikací Azure Batch snadno spravovat více aplikací a verzí pro instalaci na Batch výpočetních uzlů."
 services: batch
 documentationcenter: .net
 author: tamram
@@ -15,197 +15,197 @@ ms.workload: big-compute
 ms.date: 07/20/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 683be7b7f1bd5db7835332016f6dccb72f45c3b5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: afcc04c80ec15872a22de5d5969a7ef6a583562f
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="deploy-applications-toocompute-nodes-with-batch-application-packages"></a>Nasaďte uzly toocompute aplikací pomocí balíčků aplikací Batch
+# <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Nasazení aplikací na výpočetní uzly pomocí balíčků aplikací Batch
 
-Funkce balíčky aplikace Hello služby Azure Batch poskytuje snadnou správu úloh aplikací a jejich nasazení toohello výpočetní uzly ve fondu. Pomocí balíčků aplikací můžete odeslat a spravovat více verzí hello aplikací, které vaše úkoly spouštět, včetně jejich podpůrné soubory. Pak můžete automaticky nasadit jednu nebo více z těchto aplikací toohello výpočetní uzly ve fondu.
+Funkci balíčků aplikací Azure Batch poskytuje snadnou správu úloh aplikací a jejich nasazení na výpočetní uzly ve fondu. Pomocí balíčků aplikací můžete odeslat a spravovat více verzí aplikací, které vaše úkoly spouštět, včetně jejich podpůrné soubory. Můžete pak automaticky nasadit jednu nebo více těchto aplikací na výpočetní uzly ve fondu.
 
-V tomto článku se dozvíte, jak tooupload a správě balíčků aplikací v nástroji hello portálu Azure. Potom se dozvíte, jak tooinstall je ve fondu na výpočetní uzly s hello [Batch .NET] [ api_net] knihovny.
+V tomto článku se dozvíte, jak odesílat a spravovat balíčky aplikací na portálu Azure. Potom se dozvíte, jak k instalaci na výpočetní uzly fondu s [Batch .NET] [ api_net] knihovny.
 
 > [!NOTE]
 > 
-> Balíčky aplikací jsou podporované ve všech fondech služby Batch vytvořených po 5. červenci 2017. Že jsou podporované v fondy Batch vytvořit až 10. března 2016 5 2017 července pouze v případě, že hello fondu byla vytvořena pomocí konfigurace cloudové služby. Fondy batch vytvořen předchozí too10. března 2016 nepodporují balíčky aplikací.
+> Balíčky aplikací jsou podporované ve všech fondech služby Batch vytvořených po 5. červenci 2017. Ve fondech služby Batch vytvořených mezi 10. březnem 2016 a 5. červencem 2017 jsou podporované, pouze pokud byl fond vytvořen pomocí konfigurace cloudové služby. Fondy služby Batch vytvořené před 10. březnem 2016 nepodporují balíčky aplikací.
 >
-> Hello rozhraní API pro vytváření a správě balíčků aplikací jsou součástí hello [rozhraní Batch Management .NET] [[api_net_mgmt]] knihovny. Hello rozhraní API pro instalaci balíčků aplikací na výpočetním uzlu jsou součástí hello [Batch .NET] [ api_net] knihovny.  
+> Rozhraní API pro vytváření a správě balíčků aplikací jsou součástí [rozhraní Batch Management .NET] [[api_net_mgmt]] knihovny. Rozhraní API pro instalaci balíčků aplikací na výpočetním uzlu jsou součástí [Batch .NET] [ api_net] knihovny.  
 >
-> Funkce balíčky aplikace Hello zde popsané nahrazuje funkce aplikace Batch hello k dispozici v předchozích verzích služby hello.
+> Funkci balíčků aplikací v rámci popsaného nahrazuje funkci aplikace Batch k dispozici v předchozích verzích služby.
 > 
 > 
 
 ## <a name="application-package-requirements"></a>Požadavky na balíček aplikace
-balíčky aplikací toouse, budete potřebovat příliš[propojení účtu Azure Storage](#link-a-storage-account) tooyour účtu Batch.
+Chcete-li použít balíčky aplikací, je potřeba [propojení účtu Azure Storage](#link-a-storage-account) k účtu Batch.
 
-Tato funkce byla zavedena v [Batch REST API] [ api_rest] verze 2015-12-01.2.2 a odpovídající hello [Batch .NET] [ api_net] knihovní verze 3.1.0. Doporučujeme vám, že vždy používáte nejnovější verzi rozhraní API hello při práci se službou Batch.
+Tato funkce byla zavedena v [Batch REST API] [ api_rest] verze 2015-12-01.2.2 a odpovídající [Batch .NET] [ api_net] knihovní verze 3.1.0. Doporučujeme vám, že vždy používáte nejnovější verzi rozhraní API při práci se službou Batch.
 
 > [!NOTE]
-> Balíčky aplikací jsou podporované ve všech fondech služby Batch vytvořených po 5. červenci 2017. Že jsou podporované v fondy Batch vytvořit až 10. března 2016 5 2017 července pouze v případě, že hello fondu byla vytvořena pomocí konfigurace cloudové služby. Fondy batch vytvořen předchozí too10. března 2016 nepodporují balíčky aplikací.
+> Balíčky aplikací jsou podporované ve všech fondech služby Batch vytvořených po 5. červenci 2017. Ve fondech služby Batch vytvořených mezi 10. březnem 2016 a 5. červencem 2017 jsou podporované, pouze pokud byl fond vytvořen pomocí konfigurace cloudové služby. Fondy služby Batch vytvořené před 10. březnem 2016 nepodporují balíčky aplikací.
 >
 >
 
 ## <a name="about-applications-and-application-packages"></a>O aplikacích a balíčky aplikací
-V rámci Azure Batch *aplikace* odkazuje tooa sadu verzí binární soubory, které se dají automaticky stažené toohello výpočetních uzlů ve fondu. *Balíčku aplikace* odkazuje tooa *konkrétní sadu* těchto binárních souborů a představuje danou *verze* aplikace hello.
+V rámci Azure Batch *aplikace* odkazuje na sadu verzí binární soubory, které lze automaticky staženy na výpočetní uzly ve fondu. *Balíčku aplikace* odkazuje *konkrétní sadu* těchto binárních souborů a představuje daný *verze* aplikace.
 
 ![Vysokoúrovňový diagram aplikace a balíčky aplikací][1]
 
 ### <a name="applications"></a>Aplikace
-Aplikace ve službě Batch obsahuje jeden nebo více aplikací, balíčků a určuje možnosti konfigurace pro aplikaci hello. Aplikace můžete například zadat hello výchozí aplikace balíčku verze tooinstall na výpočetní uzly a zda může být jeho balíčky aktualizovat ani odstranit.
+Aplikace ve službě Batch obsahuje jeden nebo více aplikací, balíčků a určuje možnosti konfigurace pro aplikaci. Aplikace můžete například zadat výchozí verze balíčku aplikace nainstalovat na výpočetní uzly a zda může být jeho balíčky aktualizovat ani odstranit.
 
 ### <a name="application-packages"></a>Balíčky aplikací
-Balíček aplikace je soubor .zip, který obsahuje binární soubory aplikace hello a podpůrné soubory, které jsou požadovány pro vaše aplikace hello toorun úlohy. Každý balíček aplikace představuje určitou verzi aplikace hello.
+Balíček aplikace je soubor .zip, který obsahuje binární soubory aplikace a podpůrné soubory, které jsou požadovány pro vaše úkoly a spusťte aplikaci. Každý balíček aplikace představuje určitou verzi aplikace.
 
-Můžete zadat balíčky aplikací na úrovních hello fondu a úloh. Nejméně jeden z těchto balíčků a (volitelně) verzi můžete zadat při vytváření fondu nebo úloh.
+Můžete zadat balíčky aplikací na úrovni fondu a úloh. Nejméně jeden z těchto balíčků a (volitelně) verzi můžete zadat při vytváření fondu nebo úloh.
 
-* **Fond aplikací balíčky** nasazených příliš*každých* uzlu ve fondu hello. Jestliže se uzel připojí fondu, a, pokud je restartovat nebo obnovit z Image se aplikace nasadí.
+* **Fond aplikací balíčky** nasazených *každých* uzlu ve fondu. Jestliže se uzel připojí fondu, a, pokud je restartovat nebo obnovit z Image se aplikace nasadí.
   
-    Balíčky fondu aplikací jsou vhodné, když všechny uzly v rámci fondu spuštění úlohy. Jeden nebo více balíčků aplikací můžete určit, když vytvoříte fond, a můžete přidat nebo aktualizovat existující fond balíčky. Pokud aktualizujete balíčky existující fond aplikací, je nutné restartovat nový balíček jeho uzly tooinstall hello.
-* **Úloha balíčky aplikací** nasazených jen tooa výpočetním uzlu naplánované toorun úlohy, právě před spuštěním příkazového řádku úkolu hello. Pokud hello zadaný balíček aplikace a verze, který již je na uzlu hello, není znovu nasazena a slouží hello existující balíček.
+    Balíčky fondu aplikací jsou vhodné, když všechny uzly v rámci fondu spuštění úlohy. Jeden nebo více balíčků aplikací můžete určit, když vytvoříte fond, a můžete přidat nebo aktualizovat existující fond balíčky. Pokud aktualizujete balíčky existující fond aplikací, je nutné restartovat jeho uzly k instalaci nového balíčku.
+* **Úloha balíčky aplikací** se nasadit jenom na výpočetním uzlu naplánované spuštění úlohy, právě před spuštěním příkazového řádku úkolu. Pokud zadaný balíček aplikace a verze je již v uzlu, není znovu nasazena a používá existující balíček.
   
-    Balíčky aplikací úloh jsou užitečné v sdílený fond prostředí, kde různé úlohy se spouštějí na jeden fond, a hello fondu se neodstraní po dokončení úlohy. Pokud vaše úlohy má méně úloh než uzly ve fondu hello, balíčky aplikací úloh Minimalizovat přenos dat vzhledem k tomu, že je vaše aplikace nasazené toohello pouze uzly, které využívají úlohy.
+    Balíčky aplikací úloh jsou užitečné v sdílený fond prostředí, kde různé úlohy se spouštějí na jeden fond, a fondu se neodstraní po dokončení úlohy. Pokud má vaše úloha méně úkolů, než je uzlů ve fondu, balíčky aplikací úkolů můžou omezit přenosy dat, protože se aplikace může nasadit jen na uzly, které úkoly budou skutečně provádět.
   
-    Další scénáře, které můžete využít balíčky aplikací úloh jsou úlohy, které spouštějí rozsáhlé aplikace, ale pouze několik úkolů. Předběžné zpracování fáze nebo sloučení úlohy, kde je aplikace hello předzpracováním nebo sloučená těžký, může například těžit z pomocí balíčků aplikací úloh.
+    Další scénáře, které můžete využít balíčky aplikací úloh jsou úlohy, které spouštějí rozsáhlé aplikace, ale pouze několik úkolů. Předběžné zpracování fáze nebo sloučení úlohy, kde je aplikace předběžné zpracování nebo sloučená těžký, může například těžit z pomocí balíčků aplikací úloh.
 
 > [!IMPORTANT]
-> Existují omezení počtu hello aplikace a balíčky aplikací v rámci účtu Batch a na velikost balíčku maximální aplikace hello. V tématu [kvóty a omezení pro hello služby Azure Batch](batch-quota-limit.md) podrobnosti o těchto omezeních.
+> Existují omezení počtu aplikace a balíčky aplikací v rámci účtu Batch a na velikosti balíčku maximální aplikace. V tématu [kvóty a omezení pro službu Azure Batch](batch-quota-limit.md) podrobnosti o těchto omezeních.
 > 
 > 
 
 ### <a name="benefits-of-application-packages"></a>Výhody balíčky aplikací
-Balíčky aplikací můžete zjednodušit kód hello v řešení Batch a nižší hello režijní požadované toomanage hello aplikace, které běží vaše úkoly.
+Balíčky aplikací, můžete zjednodušit kód v řešení pro Batch a snížení režie potřebná ke správě aplikací, které vaše úkoly spouštět.
 
-Pomocí balíčků aplikací váš fond spouštěcí úkol nemá toospecify dlouhý seznam tooinstall soubory jednotlivých prostředků na uzlech hello. Nemáte toomanually spravovat více verzí soubory aplikace v Azure Storage nebo na uzly. A nepotřebujete tooworry o generování [adresy URL SAS](../storage/common/storage-dotnet-shared-access-signature-part-1.md) tooprovide přístup k souborům toohello ve vašem účtu úložiště. Batch funguje hello pozadí pomocí balíčků aplikací Azure Storage toostore a nasadit je toocompute uzlů.
+Pomocí balíčků aplikací váš fond spouštěcí úkol nemá k určení dlouhý seznam jednotlivé zdrojové soubory k instalaci na uzlech. Nemusíte ručně spravovat více verzí soubory aplikace v Azure Storage nebo na uzly. A nemusíte si dělat starosti o generování [adresy URL SAS](../storage/common/storage-dotnet-shared-access-signature-part-1.md) k poskytování přístupu k souborům ve vašem účtu úložiště. Služba batch pracuje na pozadí s Azure Storage a ukládat balíčky aplikací, je nasadit na výpočetních uzlech.
 
 > [!NOTE] 
-> Hello celková velikost spouštěcí úkol musí být menší než nebo rovna too32768 znaků, včetně zdrojových souborů a proměnných prostředí. Pokud spouštěcí úkol překračuje tento limit, pak pomocí balíčků aplikací je jinou možnost. Můžete také vytvořit komprimované archivu obsahující soubory prostředků, nahrajte ho jako objekt blob tooAzure úložiště a pak ho rozbalte z hello příkazový řádek spouštěcího úkolu. 
+> Celková velikost spouštěcího úkolu nesmí přesahovat 32768 znaků, včetně souborů prostředků a proměnných prostředí. Pokud spouštěcí úkol překračuje tento limit, pak pomocí balíčků aplikací je jinou možnost. Můžete také vytvořit komprimované archivu obsahující soubory prostředků, nahrajte ho jako objekt blob do služby Azure Storage a potom rozbalte ho z příkazového řádku úkolu spuštění. 
 >
 >
 
 ## <a name="upload-and-manage-applications"></a>Odesílat a spravovat aplikace
-Můžete použít hello [portál Azure] [ portal] nebo hello [rozhraní Batch Management .NET](batch-management-dotnet.md) balíčky aplikací hello knihovně toomanage v účtu Batch. Hello v další části několik, nejprve ukazuje, jak toolink účtu úložiště, pak popisují přidáním aplikací a balíčků a jejich s správě hello portálu.
+Můžete použít [portál Azure] [ portal] nebo [rozhraní Batch Management .NET](batch-management-dotnet.md) knihovny ke správě balíčků aplikací v účtu Batch. V následujících částech několik nejprve ukážeme, jak propojit účet úložiště a pak zabývat přidáním aplikací a balíčků a jejich pomocí portálu pro správu.
 
 ### <a name="link-a-storage-account"></a>Odkaz účet úložiště
-toouse balíčky aplikací, je nutné nejprve propojit tooyour účet Azure Storage účtu Batch. Pokud ještě nemáte nakonfigurovaný účet úložiště, hello portál Azure zobrazí upozornění hello poprvé, klikněte na tlačítko hello **aplikace** dlaždici v hello **účet Batch** okno.
+Pokud chcete používat balíčky aplikací, je nutné nejprve propojit účtu Azure Storage k účtu Batch. Pokud ještě nemáte nakonfigurovaný účet úložiště, portálu Azure zobrazí upozornění poprvé kliknete **aplikace** dlaždice v nástroji **účet Batch** okno.
 
 > [!IMPORTANT]
-> Batch aktuálně podporuje *pouze* hello **pro obecné účely** typ účtu úložiště, jak je popsáno v kroku 5, [vytvořit účet úložiště](../storage/common/storage-create-storage-account.md#create-a-storage-account)v [o Azure účty úložiště](../storage/common/storage-create-storage-account.md). Při propojení tooyour účtu Azure Storage účtu Batch, propojte *pouze* **pro obecné účely** účet úložiště.
+> Batch aktuálně podporuje *pouze* **pro obecné účely** typ účtu úložiště, jak je popsáno v kroku 5, [vytvořit účet úložiště](../storage/common/storage-create-storage-account.md#create-a-storage-account)v [účty Azure storage](../storage/common/storage-create-storage-account.md). Při propojení účtu Azure Storage k účtu Batch, propojte *pouze* **pro obecné účely** účet úložiště.
 > 
 > 
 
 ![Upozornění: nakonfigurován žádný účet úložiště, na portálu Azure][9]
 
-Hello hello používá služba Batch související toostore účet úložiště balíčky aplikací. Po propojili jste hello dva účty Batch můžete automaticky nasadit balíčky hello uložené v hello propojené úložiště účet tooyour výpočetních uzlů. Klikněte na tlačítko toolink tooyour účet úložiště účtu Batch, **nastavení účtu úložiště** na hello **upozornění** okna a potom klikněte na **účet úložiště** na hello **Účet úložiště** okno.
+Služba Batch používá přidružený účet úložiště pro uložení balíčků vaší aplikace. Po připojení dva účty Batch můžete automaticky nasadit balíčky uložených v propojeném účtu úložiště pro výpočetní uzly. Odkaz účet úložiště k účtu Batch, klikněte na tlačítko **nastavení účtu úložiště** na **upozornění** okna a pak klikněte na tlačítko **účet úložiště** na **účet úložiště** okno.
 
 ![Zvolte okně účtu úložiště na portálu Azure][10]
 
-Doporučujeme vytvořit účet úložiště *konkrétně* pro použití s vaším účtem Batch a vyberte ho sem. Podrobnosti o toocreate účtu úložiště, najdete v části "Vytvoření účtu úložiště" v [účty Azure Storage](../storage/common/storage-create-storage-account.md). Po vytvoření účtu úložiště, pak můžete propojit se účtu Batch tooyour pomocí hello **účet úložiště** okno.
+Doporučujeme vytvořit účet úložiště *konkrétně* pro použití s vaším účtem Batch a vyberte ho sem. Podrobnosti o tom, jak vytvořit účet úložiště, najdete v části "Vytvoření účtu úložiště" v [účty Azure Storage](../storage/common/storage-create-storage-account.md). Po vytvoření účtu úložiště, můžete pak propojit se vašeho účtu Batch pomocí **účet úložiště** okno.
 
 > [!WARNING]
-> Hello služba Batch používá Azure Storage toostore balíčky aplikací jako objekty BLOB bloku. Jste [účtován jako normální] [ storage_pricing] pro data objektů blob bloku hello. Zda tooconsider hello velikost a počet balíčky aplikací a pravidelně odstraňuje zastaralá balíčky toominimize náklady.
+> Služba Batch používá Azure Storage k ukládání balíčky aplikací jako objekty BLOB bloku. Jste [účtován jako normální] [ storage_pricing] pro data objektů blob bloku. Je nutné vzít v úvahu velikost a počet balíčky aplikací a pravidelně odstraňuje zastaralá balíčky, chcete-li minimalizovat náklady.
 > 
 > 
 
 ### <a name="view-current-applications"></a>Zobrazit aktuální aplikace
-tooview hello aplikace v účtu Batch, klikněte na tlačítko hello **aplikace** položka nabídky v levé nabídce hello při zobrazení hello **účet Batch** okno.
+Chcete-li zobrazit aplikace v účtu Batch, klikněte na tlačítko **aplikace** položky nabídky v levé nabídce při prohlížení **účet Batch** okno.
 
 ![Dlaždice aplikace][2]
 
-Výběrem této možnosti nabídky otevře hello **aplikace** okno:
+Výběrem této možnosti nabídky otevře **aplikace** okno:
 
 ![Seznam aplikací][3]
 
-Hello **aplikace** zobrazí okno hello ID každé aplikace ve vašem účtu a hello následující vlastnosti:
+**Aplikace** ID každé aplikace zobrazuje v účtu a následující vlastnosti:
 
-* **Balíčky**: hello číslo verze přidružené k této aplikaci.
-* **Výchozí verze**: verze aplikace hello nainstalovat, pokud neuvedete na verzi, když zadáte hello aplikací pro fond. Toto nastavení je volitelné.
-* **Povolit aktualizace**: hello hodnotu, která určuje, zda balíček aktualizace, odstranění a přidání jsou povoleny. Pokud je toto nastaveno příliš**ne**, jsou pro aplikaci hello zakázány balíček aktualizace a odstranění. Můžete přidat pouze nové verze balíčku aplikace. Výchozí hodnota Hello je **Ano**.
+* **Balíčky**: číslo verze přidružené k této aplikaci.
+* **Výchozí verze**: verze aplikace nainstalovat, pokud neuvedete na verzi, když zadáte aplikací pro fond. Toto nastavení je volitelné.
+* **Povolit aktualizace**: hodnota, která určuje, zda balíček aktualizace, odstranění a přidání jsou povoleny. Pokud je nastavena v **ne**, balíček aktualizace a odstranění jsou zakázány pro aplikaci. Můžete přidat pouze nové verze balíčku aplikace. Výchozí hodnota je **Ano**.
 
 ### <a name="view-application-details"></a>Zobrazení podrobností o aplikaci
-okno hello tooopen, která zahrnuje hello podrobnosti pro aplikace, vyberte hello aplikaci v hello **aplikace** okno.
+Otevřete okno, které zahrnuje podrobné informace pro aplikaci, vyberte aplikaci v **aplikace** okno.
 
 ![Podrobnosti o aplikaci][4]
 
-V okně podrobností aplikace hello můžete nakonfigurovat následující nastavení pro vaše aplikace hello.
+V okně podrobností aplikace můžete nakonfigurovat následující nastavení pro vaši aplikaci.
 
 * **Povolit aktualizace**: Určete, zda jeho balíčky aplikací můžete aktualizovat nebo odstranit. Později v tomto článku najdete v části "Aktualizace nebo odstranění balíčku aplikace".
-* **Výchozí verze**: určit výchozí aplikace balíčku toodeploy toocompute uzlů.
-* **Zobrazovaný název**: Zadejte popisný název, který dávku řešení můžete použít při zobrazuje informace o aplikaci hello, například v hello uživatelského rozhraní služby, které poskytujete tooyour zákazníkům prostřednictvím Batch.
+* **Výchozí verze**: Zadejte výchozí balíček aplikace pro nasazení na výpočetní uzly.
+* **Zobrazovaný název**: Zadejte popisný název, který vaše řešení Batch můžete použít při zobrazuje informace o aplikaci, například v uživatelském rozhraní služby, která vám umožní vašim zákazníkům prostřednictvím Batch poskytovat.
 
 ### <a name="add-a-new-application"></a>Přidejte novou aplikaci
-toocreate novou aplikaci, přidejte balíček aplikace a zadejte ID aplikace nové, jedinečné. Hello první balíček aplikace, které přidáte s novým ID aplikace hello také vytvoří novou aplikaci hello.
+Chcete-li vytvořit novou aplikaci, přidejte balíček aplikace a zadejte ID aplikace nové, jedinečné. První balíček aplikace, který přidáte s novým ID aplikace také vytvoří novou aplikaci.
 
-Klikněte na tlačítko **přidat** na hello **aplikace** okno tooopen hello **novou aplikaci** okno.
+Klikněte na tlačítko **přidat** na **aplikace** otevřete **novou aplikaci** okno.
 
 ![Nové okno aplikace na portálu Azure][5]
 
-Hello **novou aplikaci** okno poskytuje následující hello polí toospecify hello nastavení nové aplikace a balíček aplikace.
+**Novou aplikaci** okno obsahuje následující pole k zadání nastavení pro novou aplikaci a balíček aplikace.
 
 **Id aplikace**
 
-Toto pole určuje hello ID novou aplikaci, která je subjektu toohello standardní ID dávky Azure ověřovacích pravidel. Hello pravidla pro zajištění ID aplikací jsou následující:
+Toto pole určuje ID novou aplikaci, která je předmětem standardní pravidla ověřování ID dávky Azure. Pravidla pro zajištění ID aplikací jsou následující:
 
-* Na uzlech Windows hello ID může obsahovat libovolnou kombinaci alfanumerických znaků, pomlčky a podtržítka. Na uzlech Linux jsou povoleny pouze alfanumerické znaky a podtržítka.
+* Na Windows se ID může obsahovat libovolnou kombinaci alfanumerických znaků, pomlčky a podtržítka. Na uzlech Linux jsou povoleny pouze alfanumerické znaky a podtržítka.
 * Nesmí obsahovat víc než 64 znaků.
-* Musí být jedinečný v rámci hello účtu Batch.
+* Musí být jedinečný v rámci účtu Batch.
 * Je zachována a velká a malá písmena.
 
 **Verze**
 
-Toto pole určuje hello verzi balíčku aplikace hello, který ukládáte. Verze řetězce jsou subjektu toohello následující pravidla ověřování:
+Toto pole určuje verzi balíčku aplikace, které odesíláte. Řetězce verzi se vztahují následující pravidla ověřování:
 
-* Na uzlech Windows hello řetězec verze může obsahovat libovolnou kombinaci alfanumerických znaků, pomlčky, podtržítka a tečky. Na uzlech Linux řetězec verze hello může obsahovat pouze alfanumerické znaky a podtržítka.
+* Na uzlech Windows řetězec verze může obsahovat libovolnou kombinaci alfanumerických znaků, pomlčky, podtržítka a tečky. Na uzlech Linux řetězec verze může obsahovat pouze alfanumerické znaky a podtržítka.
 * Nesmí obsahovat víc než 64 znaků.
-* Musí být jedinečný v rámci aplikace hello.
+* Musí být jedinečný v rámci aplikace.
 * Jsou zachována a velká a malá písmena.
 
 **Balíček aplikace**
 
-Toto pole určuje hello soubor .zip, který obsahuje binární soubory aplikace hello a podpůrné soubory, které jsou požadované tooexecute hello aplikace. Klikněte na tlačítko hello **vyberte soubor** pole nebo hello tooand toobrowse ikonu složky, vyberte soubor .zip, který obsahuje soubory aplikace.
+Toto pole určuje soubor .zip, který obsahuje binární soubory aplikace a podpůrné soubory, které jsou nutné ke spuštění aplikace. Klikněte **vyberte soubor** pole nebo na ikonu složky a vyhledejte a vyberte soubor .zip, který obsahuje soubory aplikace.
 
-Jakmile vyberete soubor, klikněte na tlačítko **OK** toobegin hello nahrávání tooAzure úložiště. Po dokončení operace nahrávání hello hello portál zobrazí oznámení a zavře okno hello. V závislosti na velikosti hello hello souboru se odesílání a hello rychlost síťového připojení může tato operace chvíli trvat.
+Jakmile vyberete soubor, klikněte na tlačítko **OK** zahájíte nahrávání do úložiště Azure. Po dokončení operace odesílání na portálu zobrazí oznámení a zavře okno. V závislosti na rychlosti síťového připojení a velikost souboru, který odesíláte může tato operace chvíli trvat.
 
 > [!WARNING]
-> Nezavírejte stránku hello **novou aplikaci** okno před dokončením operace nahrávání hello. Díky tomu se zastaví proces odesílání hello.
+> Nezavírejte okno **novou aplikaci** okno před dokončením operace odesílání. Díky tomu bude zastavení procesu nahrávání.
 > 
 > 
 
 ### <a name="add-a-new-application-package"></a>Přidat nový balíček aplikace
-tooadd novou verzi balíčku aplikace pro existující aplikace, vyberte aplikaci v hello **aplikace** okně klikněte na tlačítko **balíčky**, pak klikněte na tlačítko **přidat** tooopen Hello **přidat balíček** okno.
+Přidat novou verzi balíčku aplikace pro existující aplikace, vyberte aplikaci v **aplikace** okně klikněte na tlačítko **balíčky**, pak klikněte na tlačítko **přidat** otevřete **přidat balíček** okno.
 
 ![Přidejte balíček okna aplikací na portálu Azure][8]
 
-Jak vidíte, hello pole shodují s těmi hello **novou aplikaci** okno, ale hello **id aplikace** pole je zakázána. Stejně jako u nové aplikace hello zadejte hello **verze** pro nový balíček, procházet tooyour **balíčku aplikace** .zip souboru a pak klikněte na **OK** tooupload hello balíček.
+Jak vidíte, se pole shodují těch, které **novou aplikaci** okno, ale **id aplikace** pole je zakázána. Stejně jako u nové aplikace, zadejte **verze** pro nový balíček, přejděte do vaší **balíčku aplikace** .zip souboru a pak klikněte na **OK** pro nahrání balíčku.
 
 ### <a name="update-or-delete-an-application-package"></a>Aktualizace nebo odstranění balíčku aplikace
-tooupdate nebo odstranit, klikněte na existující balíček aplikace, otevřete hello okno Podrobnosti pro aplikace hello **balíčky** tooopen hello **balíčky** okně klikněte na tlačítko hello **třemi tečkami**v řádku hello balíčku aplikace hello má toomodify a vyberte hello akce, které chcete tooperform.
+Aktualizovat nebo odstranit existující balíček aplikace, otevřete okno Podrobnosti pro aplikace, klikněte na tlačítko **balíčky** otevřete **balíčky** okně klikněte na tlačítko **třemi tečkami** v řádku balíček aplikace, který chcete upravit a vyberte akci, kterou chcete provést.
 
 ![Aktualizace nebo odstranění balíčku na portálu Azure][7]
 
 **Aktualizace**
 
-Když kliknete na tlačítko **aktualizace**, hello *balíček aktualizace* zobrazí se okno. Toto okno je podobné toohello *nový balíček aplikace* okno, ale pouze pole výběr balíčku hello je povoleno, což vám toospecify nové tooupload souboru ZIP.
+Když kliknete na tlačítko **aktualizace**, *balíček aktualizace* zobrazí se okno. Toto okno je podobná *nový balíček aplikace* okno, ale pouze pole výběr balíčku je povoleno, umožní vám to zadat nový soubor ZIP k odeslání.
 
 ![Okno balíček aktualizace na portálu Azure][11]
 
 **Odstranění**
 
-Když kliknete na tlačítko **odstranit**, se zobrazí výzva tooconfirm hello odstranění verze balíčku hello a Batch odstraní hello balíček z úložiště Azure. Pokud odstraníte hello výchozí verze aplikace, hello **výchozí verze** je odebrat nastavení pro aplikace hello.
+Když kliknete na tlačítko **odstranit**, se zobrazí výzva k potvrzení odstranění verze balíčku a Batch odstraní balíček z úložiště Azure. Pokud odstraníte výchozí verze aplikace, **výchozí verze** nastavení se odebere pro aplikaci.
 
 ![Odstranit aplikaci][12]
 
 ## <a name="install-applications-on-compute-nodes"></a>Instalace aplikací na výpočetní uzly
-Teď, když jste se naučili, jak balíčky toomanage aplikace s hello portálu Azure, můžete probereme jak toodeploy je toocompute uzlů a jejich spuštění s úkoly služby Batch.
+Teď, když jste se naučili jak spravovat balíčky aplikací pomocí portálu Azure, můžete pojednává o je nasadit na výpočetní uzly a jejich spuštění s úkoly služby Batch.
 
 ### <a name="install-pool-application-packages"></a>Instalovat balíčky fondu aplikací
-tooinstall balíček aplikace na všech výpočetních uzlů ve fondu, zadejte balíček aplikace jeden nebo více *odkazy* hello fondu. Hello balíčky aplikací, které zadáte pro fond jsou nainstalované na každém výpočetním uzlu, pokud takový uzel připojí hello fondu a pokud je uzel hello restartovat nebo obnovit z Image.
+Balíček aplikace nainstalovat na všechny výpočetní uzly ve fondu, zadejte balíček aplikace jeden nebo více *odkazy* pro fond. Balíčky aplikací, které zadáte pro fond jsou nainstalované na každém výpočetním uzlu, pokud tento uzel připojí k fondu a pokud je uzel restartován nebo obnovit z Image.
 
-V Batch .NET, zadejte jednu nebo více [CloudPool][net_cloudpool].[ ApplicationPackageReferences] [ net_cloudpool_pkgref] při vytvoření nového fondu, nebo pro existující fond. Hello [ApplicationPackageReference] [ net_pkgref] třída určuje ID aplikace a verze tooinstall fondu výpočetních uzlů.
+V Batch .NET, zadejte jednu nebo více [CloudPool][net_cloudpool].[ ApplicationPackageReferences] [ net_cloudpool_pkgref] při vytvoření nového fondu, nebo pro existující fond. [ApplicationPackageReference] [ net_pkgref] třída určuje ID aplikace a verzi, instalace na vytvoření fondu výpočetních uzlů.
 
 ```csharp
-// Create hello unbound CloudPool
+// Create the unbound CloudPool
 CloudPool myCloudPool =
     batchClient.PoolOperations.CreatePool(
         poolId: "myPool",
@@ -213,7 +213,7 @@ CloudPool myCloudPool =
         virtualMachineSize: "small",
         cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "4"));
 
-// Specify hello application and version tooinstall on hello compute nodes
+// Specify the application and version to install on the compute nodes
 myCloudPool.ApplicationPackageReferences = new List<ApplicationPackageReference>
 {
     new ApplicationPackageReference {
@@ -221,20 +221,20 @@ myCloudPool.ApplicationPackageReferences = new List<ApplicationPackageReference>
         Version = "1.1001.2b" }
 };
 
-// Commit hello pool so that it's created in hello Batch service. As hello nodes join
-// hello pool, hello specified application package is installed on each.
+// Commit the pool so that it's created in the Batch service. As the nodes join
+// the pool, the specified application package is installed on each.
 await myCloudPool.CommitAsync();
 ```
 
 > [!IMPORTANT]
-> Pokud z nějakého důvodu selže nasazení balíček aplikace, značky služby Batch hello hello uzlu [nepoužitelná][net_nodestate], a žádné úlohy jsou naplánovány pro spuštění v tomto uzlu. V takovém případě byste měli **restartujte** hello uzlu tooreinitiate hello balíčku nasazení. Restartování uzlu hello taky umožňuje znovu plánování úkolů na uzlu hello.
+> Pokud z nějakého důvodu selže nasazení balíček aplikace, služba Batch označí uzlu [nepoužitelná][net_nodestate], a žádné úlohy jsou naplánovány pro spuštění v tomto uzlu. V takovém případě byste měli **restartujte** uzel k nasazení balíčku provést znovu. Restartování uzlu taky umožňuje znovu plánování úkolů na uzlu.
 > 
 > 
 
 ### <a name="install-task-application-packages"></a>Instalovat balíčky aplikace úkolů
-Podobně jako tooa fondu, zadejte balíček aplikace *odkazy* pro úlohu. Když je úkol naplánované toorun na uzlu, balíček hello stažena a extrahována těsně před hello úloh příkazový řádek se spustí. Pokud zadaného balíčku a verze je již nainstalován v uzlu hello, nebude stažen hello balíček a se používá existující balíček hello.
+Podobně jako u fondu, zadejte balíček aplikace *odkazy* pro úlohu. Když je naplánován ke spuštění na uzel, balíčku stažena a extrahována těsně před příkazový řádek úkolu je spustí. Pokud zadaného balíčku a verze je už nainstalovaný na uzlu, není-li stáhnout balíček a se používá existující balíček.
 
-tooinstall balíček aplikace úlohy, konfigurovat úlohy hello [CloudTask][net_cloudtask].[ ApplicationPackageReferences] [ net_cloudtask_pkgref] vlastnost:
+Chcete-li nainstalovat balíček aplikace úkolů, nakonfigurujte úkolu [CloudTask][net_cloudtask].[ ApplicationPackageReferences] [ net_cloudtask_pkgref] vlastnost:
 
 ```csharp
 CloudTask task =
@@ -252,44 +252,44 @@ task.ApplicationPackageReferences = new List<ApplicationPackageReference>
 };
 ```
 
-## <a name="execute-hello-installed-applications"></a>Spouštění aplikací hello nainstalován
-Hello balíčky, které jste určili pro fond nebo úloh jsou stažené a rozbalené tooa s názvem adresáře v rámci hello `AZ_BATCH_ROOT_DIR` hello uzlu. Batch vytvoří také proměnná prostředí, který obsahuje toohello hello cestu s názvem adresáře. Vaše příkazové řádky úkolu pomocí této proměnné prostředí při odkazování na aplikace hello na uzlu hello. 
+## <a name="execute-the-installed-applications"></a>Spuštění nainstalovaných aplikací
+Balíčky, které jste určili pro fond nebo úloh jsou stažené a rozbalené na adresář s názvem v rámci `AZ_BATCH_ROOT_DIR` uzlu. Batch vytvoří také proměnná prostředí, který obsahuje cestu k adresáři s názvem. Vaše příkazové řádky úkolu pomocí této proměnné prostředí při odkazování na aplikace na uzlu. 
 
-V uzlů Windows hello proměnné se v hello následující formát:
+V uzlech systému Windows je proměnná v následujícím formátu:
 
 ```
 Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-Na uzlech Linux formátu hello se mírně liší. Tečky (.) a pomlčky (-) a tyto znaky (#) jsou plochou toounderscores v proměnné prostředí hello. Například:
+Na Linuxových uzlů formát se mírně liší. Tečky (.) a pomlčky (-) a tyto znaky (#), se sloučí na podtržené v proměnné prostředí. Například:
 
 ```
 Linux:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID_version
 ```
 
-`APPLICATIONID`a `version` jsou hodnoty, které odpovídají toohello aplikace a verze balíčku jste určili pro nasazení. Například pokud jste zadali, že verze 2.7 aplikace *digestoru* by měly být nainstalovány na systému Windows se vaše příkazové řádky úkolu využije tento tooaccess proměnné prostředí jeho soubory:
+`APPLICATIONID`a `version` jsou hodnoty, které odpovídají verzi aplikací a balíčků, jste určili pro nasazení. Například pokud jste zadali, že verze 2.7 aplikace *digestoru* by měly být nainstalovány na uzlech Windows by vaše příkazové řádky úkolu pomocí této proměnné prostředí pro přístup k jeho soubory:
 
 ```
 Windows:
 AZ_BATCH_APP_PACKAGE_BLENDER#2.7
 ```
 
-Na Linuxových uzlů zadejte proměnnou prostředí hello v tomto formátu:
+Na Linuxových uzlů zadejte proměnné prostředí v tomto formátu:
 
 ```
 Linux:
 AZ_BATCH_APP_PACKAGE_BLENDER_2_7
 ``` 
 
-Při nahrávání balíčku aplikace, můžete zadat, výchozí verze toodeploy tooyour výpočetních uzlů. Pokud jste zadali výchozí verze pro aplikaci, můžete vynechat hello verze příponu když odkazujete aplikace hello. Verze aplikace hello výchozí můžete zadat v hello portál Azure, v okně aplikace hello, jak je znázorněno v [odesílat a spravovat aplikace](#upload-and-manage-applications).
+Při nahrávání balíčku aplikace, můžete zadat výchozí verze pro nasazení na výpočetní uzly. Pokud jste zadali výchozí verze pro aplikaci, můžete vynechat přípony verze při odkazu na aplikaci. V portálu Azure, v okně aplikace můžete určit výchozí verze aplikace, jak je znázorněno v [odesílat a spravovat aplikace](#upload-and-manage-applications).
 
-Například pokud nastavíte jako hello výchozí verze pro aplikace "2.7" *digestoru*a vaše úkoly odkazovat hello následující proměnné prostředí, pak uzlů Windows, budou spuštěny verze 2.7:
+Například pokud nastavíte jako výchozí verze pro aplikace "2.7" *digestoru*a vaše úkoly odkazování následující proměnné prostředí, pak uzlů Windows, budou spuštěny verze 2.7:
 
 `AZ_BATCH_APP_PACKAGE_BLENDER`
 
-Hello následující fragment kódu ukazuje příklad úloh příkazový řádek, který spouští hello výchozí verzi hello *digestoru* aplikace:
+Následující fragment kódu ukazuje příklad úloh příkazový řádek, který spustí výchozí verzi *digestoru* aplikace:
 
 ```csharp
 string taskId = "blendertask01";
@@ -299,18 +299,18 @@ CloudTask blenderTask = new CloudTask(taskId, commandLine);
 ```
 
 > [!TIP]
-> V tématu [nastavení prostředí pro úkoly](batch-api-basics.md#environment-settings-for-tasks) v hello [přehled funkcí Batch](batch-api-basics.md) Další informace o nastavení prostředí výpočetního uzlu.
+> V tématu [nastavení prostředí pro úkoly](batch-api-basics.md#environment-settings-for-tasks) v [přehled funkcí Batch](batch-api-basics.md) Další informace o nastavení prostředí výpočetního uzlu.
 > 
 > 
 
 ## <a name="update-a-pools-application-packages"></a>Aktualizace balíčků aplikací fondu
-Pokud se balíček aplikace již byla nakonfigurována existujícího fondu, můžete zadat nový balíček pro fond hello. Pokud zadáte nový odkaz na balíček pro fond, platí následující hello:
+Pokud se balíček aplikace již byla nakonfigurována existujícího fondu, můžete zadat nový balíček pro fond. Pokud zadáte nový odkaz na balíček pro fond následujících podmínek:
 
-* Hello služba Batch nainstaluje hello nově zadaný balíček na všechny nové uzly, které připojí hello fondu a na všechny existující uzlu, který je restartovat nebo obnovit z Image.
-* Výpočetní uzly, které jsou už ve fondu hello při aktualizaci hello balíček odkazuje neinstalujte automaticky hello nový balíček aplikace. Tyto výpočetní uzly, je nutné restartovat nebo přeinstalovanou tooreceive hello nový balíček.
-* Po nasazení nového balíčku projeví hello vytvoření proměnné prostředí balíček odkazuje nové aplikace hello.
+* Služba Batch nainstaluje nově zadaný balíček na všechny nové uzly, které se připojí k fondu a na všechny existující uzlu, který je restartovat nebo obnovit z Image.
+* Výpočetní uzly, které jsou již ve fondu, když aktualizujete balíček odkazuje automaticky neinstaluje nového balíčku aplikace. Tyto výpočetní uzly musí být restartovat nebo obnovit z Image pro příjem nového balíčku.
+* Po nasazení nového balíčku projeví proměnné vytvořené prostředí balíček odkazuje nové aplikace.
 
-V tomto příkladu má existující fond hello 2.7 verzi hello *digestoru* aplikace konfigurovaná jako jeden z jeho [CloudPool][net_cloudpool].[ ApplicationPackageReferences][net_cloudpool_pkgref]. uzly fondu hello tooupdate s verzí 2.76b, zadejte nový [ApplicationPackageReference] [ net_pkgref] s novou verzí hello a potvrzení změn hello.
+V tomto příkladu má existující fond verzi 2.7 *digestoru* aplikace konfigurovaná jako jeden z jeho [CloudPool][net_cloudpool].[ ApplicationPackageReferences][net_cloudpool_pkgref]. Pokud chcete aktualizovat uzly fondu s verzí 2.76b, zadejte nový [ApplicationPackageReference] [ net_pkgref] s novou verzí a potvrzení změn.
 
 ```csharp
 string newVersion = "2.76b";
@@ -324,13 +324,13 @@ boundPool.ApplicationPackageReferences = new List<ApplicationPackageReference>
 await boundPool.CommitAsync();
 ```
 
-Teď, když hello novou verzi byl nakonfigurován, hello služba Batch nainstaluje verzi 2.76b tooany *nové* uzlu, který připojí hello fondu. tooinstall 2.76b na hello uzlech, jež jsou *již* ve fondu hello restartovat nebo obnovit z Image je. Všimněte si, že restartovaný uzly zachovat hello soubory z předchozích nasazení balíčku.
+Teď, když byl nakonfigurován na novou verzi, služba Batch nainstaluje do jakéhokoli verze 2.76b *nové* uzlu, který se připojí k fondu. Chcete-li nainstalovat 2.76b na uzly, které jsou *již* ve fondu, restartovat nebo obnovit z Image je. Všimněte si, že restartovaný uzly zachovat soubory z předchozích nasazení balíčku.
 
-## <a name="list-hello-applications-in-a-batch-account"></a>Seznam hello aplikace v účtu Batch
-Můžete vytvořit seznam hello aplikace a jejich balíčky v účtu Batch pomocí hello [ApplicationOperations][net_appops].[ ListApplicationSummaries] [ net_appops_listappsummaries] metoda.
+## <a name="list-the-applications-in-a-batch-account"></a>Zobrazí seznam aplikací v účtu Batch
+Můžete vytvořit seznam aplikací a jejich balíčků v účtu Batch pomocí [ApplicationOperations][net_appops].[ ListApplicationSummaries] [ net_appops_listappsummaries] metoda.
 
 ```csharp
-// List hello applications and their application packages in hello Batch account.
+// List the applications and their application packages in the Batch account.
 List<ApplicationSummary> applications = await batchClient.ApplicationOperations.ListApplicationSummaries().ToListAsync();
 foreach (ApplicationSummary app in applications)
 {
@@ -344,11 +344,11 @@ foreach (ApplicationSummary app in applications)
 ```
 
 ## <a name="wrap-up"></a>Zabalení
-Pomocí balíčků aplikací můžete pomoct vašim zákazníkům vyberte hello aplikací pro svou práci a zadejte hello přesnou verzi toouse při zpracování úlohy se služby podporují službu Batch. Také můžete zadat hello možnost pro vaše zákazníky tooupload a sledovat své vlastní aplikace ve službě.
+Pomocí balíčků aplikací můžete pomoct vašim zákazníkům vyberte aplikace, pro svou práci a určete přesnou verze se má použít při zpracování úlohy se služby podporují službu Batch. Můžete zadat také možnost pro vaše zákazníky k odesílání a sledování vlastních aplikací ve službě.
 
 ## <a name="next-steps"></a>Další kroky
-* Hello [Batch REST API] [ api_rest] taky poskytuje podporu toowork pomocí balíčků aplikací. Například v tématu hello [applicationPackageReferences] [ rest_add_pool_with_packages] element v [přidat účet fondu tooan] [ rest_add_pool] informace o toospecify balíčky tooinstall pomocí hello REST API. V tématu [aplikace] [ rest_applications] podrobnosti o tom, jak informace o aplikaci tooobtain pomocí hello Batch REST API.
-* Zjistěte, jak tooprogrammatically [spravovat účty Azure Batch a kvóty pomocí rozhraní Batch Management .NET](batch-management-dotnet.md). Hello [rozhraní Batch Management .NET][api_net_mgmt] knihovny můžete povolit funkce vytváření a odstraňování účtu Batch aplikace nebo služby.
+* [Batch REST API] [ api_rest] taky poskytuje podporu pro práci s balíčky aplikací. Například najdete v článku [applicationPackageReferences] [ rest_add_pool_with_packages] element v [přidat fond na účet] [ rest_add_pool] informace o tom, jak zadat balíčků pro instalaci pomocí rozhraní REST API. V tématu [aplikace] [ rest_applications] podrobnosti o tom, jak získat informace o aplikaci pomocí rozhraní REST API služby Batch.
+* Zjistěte, jak programově [spravovat účty Azure Batch a kvóty pomocí rozhraní Batch Management .NET](batch-management-dotnet.md). [Rozhraní Batch Management .NET][api_net_mgmt] knihovny můžete povolit funkce vytváření a odstraňování účtu Batch aplikace nebo služby.
 
 [api_net]: https://docs.microsoft.com/dotnet/api/overview/azure/batch/client?view=azure-dotnet
 [api_net_mgmt]: https://docs.microsoft.com/dotnet/api/overview/azure/batch/management?view=azure-dotnet

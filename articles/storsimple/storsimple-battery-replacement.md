@@ -1,6 +1,6 @@
 ---
-title: "aaaReplace baterie na zařízení Microsoft Azure StorSimple | Microsoft Docs"
-description: "Popisuje, jak nahradit tooremove a udržovat hello modulu zálohování baterie zařízení StorSimple."
+title: "Nahraďte baterie na zařízení Microsoft Azure StorSimple | Microsoft Docs"
+description: "Popisuje, jak odebrat, nahraďte a udržovat modul zálohování baterie zařízení StorSimple."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,33 +14,33 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-ms.openlocfilehash: 542774a5f451ec7ad2bd442f88598df318d8b285
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f8b89b3f6851ec9ee0570f551b5407419fdba2d6
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="replace-hello-backup-battery-module-on-your-storsimple-device"></a>Nahraďte hello modulu zálohování baterie zařízení StorSimple
+# <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>Nahraďte modul zálohování baterie zařízení StorSimple
 ## <a name="overview"></a>Přehled
-primární skříň Hello napájení a chlazení modulu (PCM) na zařízení s Microsoft Azure StorSimple má balík další stav baterie. Tento balíček poskytuje power tak, aby hello zařízení StorSimple můžete uložit data Pokud dojde ke ztrátě AC power toohello primární skříň. Tato sada pack baterie je hello odkazované tooas *zálohování baterie modulu*. modul zálohování baterie Hello existuje pouze pro primární skříň hello v zařízení StorSimple (hello EBOD skříň neobsahuje modul zálohování baterie). 
+Primární skříň napájení a chlazení modulu (PCM) na zařízení s Microsoft Azure StorSimple má balík další stav baterie. Tento balíček poskytuje power tak, aby zařízení StorSimple můžete uložit data, pokud dojde ke ztrátě napájení ke skříni primární. Tato sada pack baterie se označuje jako *zálohování baterie modulu*. Modul zálohování baterie existuje pouze pro primární skříň v zařízení StorSimple (skříni EBOD neobsahuje modul zálohování baterie). 
 
 Tento kurz vysvětluje postup:
 
-* Modul zálohování baterie hello odebrat 
+* Odebere modul zálohování baterie 
 * Nainstalujte nový modul zálohování baterie
-* Udržovat hello zálohování baterie modulu
+* Udržovat modul zálohování baterie
 
 > [!IMPORTANT]
-> Před odebírání a nahrazování modul zálohování baterie zkontrolovat informace o zabezpečení hello v hello [Úvod tooStorSimple hardwarové součásti nahrazení](storsimple-hardware-component-replacement.md).
+> Před odebírání a nahrazování modul zálohování baterie zkontrolovat informace o zabezpečení v [Úvod do StorSimple hardwarové součásti nahrazení](storsimple-hardware-component-replacement.md).
 > 
 > 
 
-## <a name="remove-hello-backup-battery-module"></a>Modul zálohování baterie hello odebrat
-modul Hello zálohování baterie pro zařízení StorSimple je periferní Výměnná jednotka. Před instalací v hello PCM, modul baterie hello by měly být uložené v původním balení. Proveďte následující kroky tooremove hello zálohování baterie hello.
+## <a name="remove-the-backup-battery-module"></a>Odebere modul zálohování baterie
+Modul zálohování baterie pro zařízení StorSimple je periferní Výměnná jednotka. Před instalací v PCM, modul baterie by měly být uložené v původním balení. Proveďte následující kroky k odebrání zálohování baterie.
 
-#### <a name="tooremove-hello-backup-battery-module"></a>modul zálohování baterie tooremove hello
-1. V hello portál Azure classic, přejděte příliš**zařízení** > **údržby** > **stavu hardwaru**. V části **sdílené součásti**, podívejte se na stav baterie hello hello.
-2. Identifikujte hello PCM, ve které hello baterie selhal. Obrázek 1 zobrazuje hello zadní hello zařízení StorSimple.
+#### <a name="to-remove-the-backup-battery-module"></a>Chcete-li odebrat modul zálohování baterie
+1. Na portálu Azure classic, přejděte na **zařízení** > **údržby** > **stavu hardwaru**. V části **sdílené součásti**, podívejte se na stav baterie.
+2. Identifikujte PCM, ve kterém se nezdařilo baterie. Obrázek 1 zobrazuje zadní straně zařízení StorSimple.
    
     ![Propojovací rozhraní systému modulů skříň primární zařízení](./media/storsimple-battery-replacement/IC740994.png)
    
@@ -53,11 +53,11 @@ modul Hello zálohování baterie pro zařízení StorSimple je periferní Vým�
    | 3 |Řadič 0 |
    | 4 |Řadič 1 |
    
-    Jak je znázorněno číslem 3 v hello obrázek 2, hello monitorování indikátor VEDLA na PCM 0, která odpovídá příliš**baterie selhání** by měl být lit.
+    Jak je znázorněno číslem 3 na obrázku 2, monitorování indikátoru VEDLA na PCM 0, která odpovídá **baterie selhání** by měl být lit.
    
     ![Propojovací rozhraní systému zařízení PCM monitorování kláves](./media/storsimple-battery-replacement/IC740992.png)
    
-    **Obrázek 2** zpět of PCM zobrazující hello monitorování kláves
+    **Obrázek 2** zpět of PCM zobrazující monitorování indikátoru LED
    
    | Štítek | Popis |
    |:--- |:--- |
@@ -67,44 +67,44 @@ modul Hello zálohování baterie pro zařízení StorSimple je periferní Vým�
    | 4 |PCM OK |
    | 5 |Řadič domény výpadku proudu |
    | 6 |Dobrý stav baterie |
-3. tooremove hello PCM s selhání baterie, postupujte podle kroků hello v [odebrat PCM](storsimple-power-cooling-module-replacement.md#remove-a-pcm).
-4. S hello PCM odebrány, navýšení a otáčení hello baterie modul zpracování směrem nahoru, jak je uvedeno v hello následující obrázek a vyžádat si tooremove hello baterie.
+3. Chcete-li odebrat PCM s selhání baterie, postupujte podle kroků v [odebrat PCM](storsimple-power-cooling-module-replacement.md#remove-a-pcm).
+4. S PCM odebrána navýšení otočit popisovač modulu baterie směrem nahoru, jak je uvedeno v následující obrázek a načítat až odebrat baterie.
    
     ![Odebráním PCM stav baterie.](./media/storsimple-battery-replacement/IC741019.png)
    
-    **Obrázek 3** odebráním hello PCM hello baterie
-5. Umístěte hello modulu hello periferní výměnná Jednotka balení.
-6. Vrátí hello vadný jednotky tooMicrosoft správnou údržbu a zpracování.
+    **Obrázek 3** odebráním PCM baterie
+5. Umístěte modul periferní výměnná Jednotka balení.
+6. Vrátí vadný jednotky společnosti Microsoft pro správné údržby a zpracování.
 
 ## <a name="install-a-new-backup-battery-module"></a>Nainstalujte nový modul zálohování baterie
-Proveďte následující kroky tooinstall hello nahrazení baterie modulu v hello PCM v primární skříň hello zařízení StorSimple hello.
+Proveďte následující kroky k instalaci modulu baterie nahrazení v PCM ve skříni primární zařízení StorSimple.
 
-#### <a name="tooinstall-hello-battery-module"></a>tooinstall hello baterie modulu
-1. Umístěte hello zálohování baterie modulu hello správnou orientaci v hello PCM.
-2. Stiskněte klávesu dolů hello baterie modul zpracování všech hello způsob tooseat hello konektor.
-3. Nahraďte text hello PCM v primární skříň hello podle následujících pokynů hello v [nahrazení energii a chlazení modulu zařízení StorSimple](storsimple-power-cooling-module-replacement.md).
-4. Po dokončení hello nahrazení přejděte příliš**zařízení** > **údržby** > **stavu hardwaru** v hello portál Azure classic. Zkontrolujte stav hello toomake baterie hello se, zda text hello instalace byla úspěšná. Zelený stav označuje, že baterie hello je v pořádku.
+#### <a name="to-install-the-battery-module"></a>Nainstalovat modul stav baterie.
+1. Umístěte modul zálohování baterie správnou orientaci v PCM.
+2. Podržte popisovač modulu baterie úplně pro konektor.
+3. Nahraďte PCM ve skříni primární podle pokynů v [nahrazení energii a chlazení modulu zařízení StorSimple](storsimple-power-cooling-module-replacement.md).
+4. Po dokončení nahrazení přejít na **zařízení** > **údržby** > **stavu hardwaru** na portálu Azure classic. Zkontrolujte stav baterie a ujistěte se, že instalace proběhla úspěšně. Zelený stav označuje, že je v pořádku baterie.
 
-## <a name="maintain-hello-backup-battery-module"></a>Udržovat hello zálohování baterie modulu
-V zařízení StorSimple modul zálohování baterie hello poskytuje řadič toohello spotřeby během ztrátě power. To umožňuje hello StorSimple zařízení toosave důležitá data předchozí tooshutting dolů řízené způsobem. S dvě plně účtovat baterie v hello PCMs hello systému může zpracovávat dvě po sobě jdoucích ztrátu události.
+## <a name="maintain-the-backup-battery-module"></a>Udržovat modul zálohování baterie
+V zařízení StorSimple poskytuje modul zálohování baterie power řadiče při ztrátě událostí do power. Umožňuje zařízení StorSimple pro uložení důležitých dat před vypíná řízené způsobem. S dvě plně účtovat baterie v PCMs systému může zpracovávat dvě po sobě jdoucích ztrátu události.
 
-V hello portál Azure classic, hello **stavu hardwaru** na hello **údržby** stránky určuje, zda pracuje správně hello baterie nebo se blíží hello end životnosti. je indikován stav baterie Hello **baterie v PCM 0** nebo **baterie v PCM 1** pod **sdílené součásti**. Tato stránka se zobrazí **SNÍŽENÝ** stavu pro ukončenou životností blíží, a **se nezdařilo** pro koncové životnosti dostupný. 
+Na portálu Azure classic **stavu hardwaru** na **údržby** stránky určuje, zda pracuje správně baterie nebo se blíží koncoví-dobu životnosti. Je indikován stav baterie **baterie v PCM 0** nebo **baterie v PCM 1** pod **sdílené součásti**. Tato stránka se zobrazí **SNÍŽENÝ** stavu pro ukončenou životností blíží, a **se nezdařilo** pro koncové životnosti dostupný. 
 
 > [!NOTE]
-> může hlásit Hello baterie **se nezdařilo** když ho jednoduše toobe účtovat potřebuje.
+> Může hlásit baterie **se nezdařilo** když je jednoduše potřeba nic nestrhne.
 > 
 > 
 
-Pokud hello **SNÍŽENÝ** stav se zobrazí, doporučujeme hello následující postup:
+Pokud **SNÍŽENÝ** stav se zobrazí, doporučujeme během následující akce:
 
-* Hello systému pravděpodobně došlo k poslední výpadku napájení nebo hello baterie může probíhat periodické údržby. Sledujte hello systému 12 hodin, než budete pokračovat.
+* Systém pravděpodobně došlo k poslední výpadku napájení nebo baterie může probíhat periodické údržby. Sledujte systému 12 hodin, než budete pokračovat.
   
-  * Pokud stav hello je stále **SNÍŽENÝ** po 12 hodinách napájení tooAC nepřetržité připojení s hello řadiče a PCMs spuštěna, pak hello stav baterie musí toobe nahradit. Prosím [kontaktovat Microsoft Support](storsimple-contact-microsoft-support.md) pro modul zálohování baterie nahrazení.
-  * Pokud hello stav se změní na OK po 12 hodinách, baterie hello je funkční a potřeba jenom údržby poplatků.
-* Pokud nedošlo k přidružené ke ztrátě napájení ze sítě a hello PCM je zapnutý a připojený tooAC power, baterie hello musí toobe nahradit. [Kontaktujte Microsoft Support](storsimple-contact-microsoft-support.md) tooorder modul zálohování baterie nahrazení.
+  * Pokud stav není stále **SNÍŽENÝ** po 12 hodinách nepřetržité připojení k AC spotřeby s řadiči a PCMs systémem, pak baterie je nutné vyměnit. Prosím [kontaktovat Microsoft Support](storsimple-contact-microsoft-support.md) pro modul zálohování baterie nahrazení.
+  * Pokud stav se změní na OK po 12 hodinách, baterie funkční a potřeba jenom údržby poplatků.
+* Pokud nedošlo k přidružené ke ztrátě napájení a PCM je zapnutý a připojený k napájení ze sítě, je nutné vyměnit baterie. [Kontaktujte Microsoft Support](storsimple-contact-microsoft-support.md) pořadí modul zálohování baterie nahrazení.
 
 > [!IMPORTANT]
-> Uvolnění hello se nezdařila, baterie podle toonational a místní předpisy. 
+> Odstranění se nezdařilo baterie podle national a místní předpisy. 
 > 
 > 
 

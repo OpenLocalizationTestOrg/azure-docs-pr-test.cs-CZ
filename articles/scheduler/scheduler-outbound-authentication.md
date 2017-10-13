@@ -1,5 +1,5 @@
 ---
-title: "aaaScheduler odchozí ověření"
+title: "Odchozí ověření scheduleru"
 description: "Odchozí ověření scheduleru"
 services: scheduler
 documentationcenter: .NET
@@ -14,42 +14,42 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deli
-ms.openlocfilehash: ef713f4770b48d0a9176415e87c1042a823582e5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e345b2e22daae5b24c23645f7d2636f66df630ff
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="scheduler-outbound-authentication"></a>Odchozí ověření scheduleru
-Plánovač úloh může být nutné toocall out tooservices, které vyžadují ověřování. Tímto způsobem názvem služby můžete určit Pokud hello plánovače úloh můžete přistupovat k prostředkům. Některé z těchto služeb zahrnují dalším službám Azure, Salesforce.com, Facebook a zabezpečené vlastní weby.
+Plánovač úloh možná muset volat na služby, které vyžadují ověřování. Tímto způsobem názvem služby můžete určit Pokud úlohy plánovače může přistupovat k prostředkům. Některé z těchto služeb zahrnují dalším službám Azure, Salesforce.com, Facebook a zabezpečené vlastní weby.
 
 ## <a name="adding-and-removing-authentication"></a>Přidávání a odebírání ověřování
-Přidání ověřování tooa Plánovač úloh je jednoduchá – přidání podřízený element JSON `authentication` toohello `request` element při vytváření nebo aktualizaci úlohy. Tajné klíče předá služba Plánovač toohello v požadavku PUT, PATCH nebo POST – jako součást hello `authentication` objektu – nikdy jsou vráceny v odpovědi. V odpovědi tajné informace není nastaven toonull nebo může mít veřejné token, který představuje entitu hello ověření.
+Přidání ověřování do úlohy plánovače je jednoduchá – přidání podřízený element JSON `authentication` k `request` element při vytváření nebo aktualizaci úlohy. Tajné klíče předaný služby plánovače v požadavku PUT, PATCH nebo POST – jako součást `authentication` objektu – nikdy jsou vráceny v odpovědi. V odpovědi, tajné informace nastavena na hodnotu null, nebo může mít veřejné token, který představuje ověřený entitu.
 
-tooremove ověřování, PUT nebo PATCH hello úlohy explicitně, nastavení hello `authentication` objektu toonull. Neuvidíte žádné vlastnosti ověřování zpět v odpovědi.
+Pokud chcete odebrat ověřování, PUT nebo PATCH úlohu explicitně, nastavení `authentication` objekt, který má hodnotu null. Neuvidíte žádné vlastnosti ověřování zpět v odpovědi.
 
-V současné době hello podporovány pouze typy ověřování jsou hello `ClientCertificate` modelu (pro použití klientské certifikáty SSL/TLS hello), hello `Basic` modelu (pro základní ověřování) a hello `ActiveDirectoryOAuth` (pro Active Directory OAuth ověřování.)
+V současné době jsou typy podporované jenom ověřování `ClientCertificate` (pro použití protokolu SSL/TLS klientské certifikáty), `Basic` (pro základní ověřování) a `ActiveDirectoryOAuth` (pro ověřování Active Directory OAuth.)
 
 ## <a name="request-body-for-clientcertificate-authentication"></a>Text žádosti pro ClientCertificate ověřování
-Při přidávání ověřování pomocí hello `ClientCertificate` model, zadejte následující další prvky v textu žádosti hello hello.  
+Při přidávání ověřování pomocí `ClientCertificate` model, zadejte následující další prvky v textu požadavku.  
 
 | Element | Popis |
 |:--- |:--- |
 | *ověřování (nadřazený element)* |Objekt ověřování pro použití klientský certifikát SSL. |
-| *Typ* |Povinná hodnota. Typ ověřování. Pro klientské certifikáty protokolu SSL, musí být hodnota hello `ClientCertificate`. |
-| *soubor PFX* |Povinná hodnota. Kódování Base64 obsah souboru PFX hello. |
-| *heslo* |Povinná hodnota. Heslo souboru PFX hello tooaccess. |
+| *Typ* |Vyžaduje se. Typ ověřování. Pro klientské certifikáty protokolu SSL, hodnota musí být `ClientCertificate`. |
+| *soubor PFX* |Vyžaduje se. Kódování Base64 obsah souboru PFX. |
+| *heslo* |Vyžaduje se. Heslo pro přístup k souboru PFX. |
 
 ## <a name="response-body-for-clientcertificate-authentication"></a>Text odpovědi pro ClientCertificate ověřování
-Když přijde požadavek je s informacemi ověřování, hello odpověď obsahuje hello následující elementy související s ověřování.
+Když přijde požadavek je s informacemi ověřování, odpověď obsahuje následující prvky souvisejících s ověřováním.
 
 | Element | Popis |
 |:--- |:--- |
 | *ověřování (nadřazený element)* |Objekt ověřování pro použití klientský certifikát SSL. |
-| *Typ* |Typ ověřování. Pro klientské certifikáty protokolu SSL, je hodnota hello `ClientCertificate`. |
-| *certificateThumbprint* |Hello kryptografický otisk certifikátu hello. |
-| *certificateSubjectName* |Hello rozlišující název subjektu certifikátu hello. |
-| *certificateExpiration* |Hello datum vypršení platnosti certifikátu hello. |
+| *Typ* |Typ ověřování. Pro klientské certifikáty protokolu SSL, je hodnota `ClientCertificate`. |
+| *certificateThumbprint* |Kryptografický otisk certifikátu. |
+| *certificateSubjectName* |Rozlišující název subjektu certifikátu. |
+| *certificateExpiration* |Datum vypršení platnosti certifikátu. |
 
 ## <a name="sample-rest-request-for-clientcertificate-authentication"></a>Ukázka REST žádost o ověření ClientCertificate
 ```
@@ -144,23 +144,23 @@ Date: Wed, 16 Mar 2016 19:04:23 GMT
 ```
 
 ## <a name="request-body-for-basic-authentication"></a>Text žádosti pro základní ověřování
-Při přidávání ověřování pomocí hello `Basic` model, zadejte následující další prvky v textu žádosti hello hello.
+Při přidávání ověřování pomocí `Basic` model, zadejte následující další prvky v textu požadavku.
 
 | Element | Popis |
 |:--- |:--- |
 | *ověřování (nadřazený element)* |Objekt ověřování pro použití základního ověřování. |
-| *Typ* |Povinná hodnota. Typ ověřování. Pro základní ověřování, musí být hodnota hello `Basic`. |
-| *uživatelské jméno* |Povinná hodnota. Tooauthenticate uživatelské jméno. |
-| *heslo* |Povinná hodnota. Tooauthenticate heslo. |
+| *Typ* |Vyžaduje se. Typ ověřování. Pro základní ověřování, musí být hodnota `Basic`. |
+| *uživatelské jméno* |Vyžaduje se. Uživatelské jméno k ověření. |
+| *heslo* |Vyžaduje se. Heslo k ověření. |
 
 ## <a name="response-body-for-basic-authentication"></a>Text odpovědi pro základní ověřování
-Když přijde požadavek je s informacemi ověřování, hello odpověď obsahuje hello následující elementy související s ověřování.
+Když přijde požadavek je s informacemi ověřování, odpověď obsahuje následující prvky souvisejících s ověřováním.
 
 | Element | Popis |
 |:--- |:--- |
 | *ověřování (nadřazený element)* |Objekt ověřování pro použití základního ověřování. |
-| *Typ* |Typ ověřování. Pro základní ověřování, je hodnota hello `Basic`. |
-| *uživatelské jméno* |Hello ověřit uživatelské jméno. |
+| *Typ* |Typ ověřování. Pro základní ověřování, je hodnota `Basic`. |
+| *uživatelské jméno* |Ověřené uživatelské jméno. |
 
 ## <a name="sample-rest-request-for-basic-authentication"></a>Ukázková žádost REST pro základní ověřování
 ```
@@ -254,30 +254,30 @@ Date: Wed, 16 Mar 2016 19:05:06 GMT
 ```
 
 ## <a name="request-body-for-activedirectoryoauth-authentication"></a>Text žádosti pro ActiveDirectoryOAuth ověřování
-Při přidávání ověřování pomocí hello `ActiveDirectoryOAuth` model, zadejte následující další prvky v textu žádosti hello hello.
+Při přidávání ověřování pomocí `ActiveDirectoryOAuth` model, zadejte následující další prvky v textu požadavku.
 
 | Element | Popis |
 |:--- |:--- |
 | *ověřování (nadřazený element)* |Objekt ověřování pro použití ActiveDirectoryOAuth ověřování. |
-| *Typ* |Povinná hodnota. Typ ověřování. ActiveDirectoryOAuth ověřování, musí být hodnota hello `ActiveDirectoryOAuth`. |
-| *klienta* |Povinná hodnota. Hello identifikátor klienta pro klienta hello Azure AD. |
-| *Cílová skupina* |Povinná hodnota. Toto nastavení toohttps://management.core.windows.net/. |
-| *clientId* |Povinná hodnota. Zadejte identifikátor klienta hello hello aplikaci Azure AD. |
-| *tajný klíč* |Povinná hodnota. Tajný klíč klienta hello, který požaduje hello token. |
+| *Typ* |Vyžaduje se. Typ ověřování. ActiveDirectoryOAuth ověřování, musí být hodnota `ActiveDirectoryOAuth`. |
+| *klienta* |Vyžaduje se. Identifikátor klienta pro klienta Azure AD. |
+| *Cílová skupina* |Vyžaduje se. To je nastavena na https://management.core.windows.net/. |
+| *clientId* |Vyžaduje se. Zadejte identifikátor klienta aplikace Azure AD. |
+| *tajný klíč* |Vyžaduje se. Tajný klíč klienta, který vyžaduje token. |
 
 ### <a name="determining-your-tenant-identifier"></a>Určení ID vašeho klienta
-Identifikátor hello klienta pro klienta hello Azure AD můžete najít spuštěním `Get-AzureAccount` v prostředí Azure PowerShell.
+Identifikátor klienta pro klienta služby Azure AD můžete najít spuštěním `Get-AzureAccount` v prostředí Azure PowerShell.
 
 ## <a name="response-body-for-activedirectoryoauth-authentication"></a>Text odpovědi pro ActiveDirectoryOAuth ověřování
-Když přijde požadavek je s informacemi ověřování, hello odpověď obsahuje hello následující elementy související s ověřování.
+Když přijde požadavek je s informacemi ověřování, odpověď obsahuje následující prvky souvisejících s ověřováním.
 
 | Element | Popis |
 |:--- |:--- |
 | *ověřování (nadřazený element)* |Objekt ověřování pro použití ActiveDirectoryOAuth ověřování. |
-| *Typ* |Typ ověřování. Pro ověřování ActiveDirectoryOAuth hello hodnota je `ActiveDirectoryOAuth`. |
-| *klienta* |Hello identifikátor klienta pro klienta hello Azure AD. |
-| *Cílová skupina* |Toto nastavení toohttps://management.core.windows.net/. |
-| *clientId* |Hello identifikátor klienta pro aplikaci hello Azure AD. |
+| *Typ* |Typ ověřování. Pro ověřování ActiveDirectoryOAuth hodnota je `ActiveDirectoryOAuth`. |
+| *klienta* |Identifikátor klienta pro klienta Azure AD. |
+| *Cílová skupina* |To je nastavena na https://management.core.windows.net/. |
+| *clientId* |Identifikátor klienta aplikace Azure AD. |
 
 ## <a name="sample-rest-request-for-activedirectoryoauth-authentication"></a>Ukázka REST žádost o ověření ActiveDirectoryOAuth
 ```
@@ -380,7 +380,7 @@ Date: Wed, 16 Mar 2016 19:10:02 GMT
 
  [Koncepty, terminologie a hierarchie entit Azure Scheduleru](scheduler-concepts-terms.md)
 
- [Začněte používat plánovače v hello portálu Azure](scheduler-get-started-portal.md)
+ [Úvod do používání Scheduleru na portálu Azure Portal](scheduler-get-started-portal.md)
 
  [Plány a fakturace v Azure Scheduleru](scheduler-plans-billing.md)
 

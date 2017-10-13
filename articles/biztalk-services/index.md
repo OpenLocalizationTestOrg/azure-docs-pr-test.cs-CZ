@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure dokumentace služby Biztalk - kurzy | Microsoft Docs"
-description: "Zjistěte, jak toouse BizTalk services tooprovide cloudu tooon různými místy a pro integraci-obchodní aplikace pro SAP, Oracle EBS, SQL Server a PeopleSoft."
+title: "Dokumentace ke službě Azure BizTalk Services – kurzy | Dokumentace Microsoftu"
+description: "Podívejte se, jak jde pomocí BizTalk Services poskytovat integraci podnikových aplikací pro SAP, Oracle EBS, SQL Server a PeopleSoft spouštěných místně i v cloudu."
 services: biztalk-services
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 06411e211b987a96d4b79a93871e66157f7ecdb6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8aef3ad31551b0a4c5048e418cf8b1456bd4f274
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="biztalk-services-documentation"></a>Dokumentace ke službě BizTalk Services
 
-Zjistěte, jak toouse BizTalk services tooprovide cloudu tooon různými místy a pro integraci-obchodní aplikace pro SAP, Oracle EBS, SQL Server a PeopleSoft. Kurzy a další dokumenty popisují, jak cloudové toointegrate hello enterprise a hello.
+Podívejte se, jak jde pomocí BizTalk Services poskytovat integraci podnikových aplikací pro SAP, Oracle EBS, SQL Server a PeopleSoft spouštěných místně i v cloudu. Kurzy a další dokumentace ukazují, jak provádět integraci mezi podnikem a cloudem.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -70,7 +70,7 @@ Zjistěte, jak toouse BizTalk services tooprovide cloudu tooon různými místy 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáme s služby BizTalk Services pomocí hello portálu Azure</h3>
+                        <h3>Začínáme se službou BizTalk Services s využitím webu Azure Portal</h3>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Heroku | Microsoft Docs'
-description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a Heroku."
+description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Heroku."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,67 +13,67 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: ee11db647fd385140f1dbcab2586dfafffe5d912
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d30605e4757b484f327a784b73f939b62ef59373
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-heroku"></a>Kurz: Azure Active Directory integrace s Heroku
 
-V tomto kurzu zjistíte, jak toointegrate Heroku s Azure Active Directory (Azure AD).
+V tomto kurzu zjistěte, jak integrovat Heroku s Azure Active Directory (Azure AD).
 
-Integrace Heroku s Azure AD poskytuje hello následující výhody:
+Integrace Heroku s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup tooHeroku
-- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooHeroku (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup k Heroku
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k Heroku (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Integrace služby Azure AD s Heroku tooconfigure, je třeba hello následující položky:
+Konfigurace integrace Azure AD s Heroku, potřebujete následující položky:
 
 - Předplatné služby Azure AD
 - Heroku jednotné přihlašování povolené předplatné
 
 > [!NOTE]
-> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
+Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Heroku z Galerie hello
+1. Přidání Heroku z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-heroku-from-hello-gallery"></a>Přidání Heroku z Galerie hello
-tooconfigure hello integrace Heroku do Azure AD, je nutné tooadd Heroku hello Galerie tooyour seznamu spravovaných aplikací SaaS.
+## <a name="adding-heroku-from-the-gallery"></a>Přidání Heroku z Galerie
+Při konfiguraci integrace Heroku do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS Heroku z galerie.
 
-**tooadd Heroku z Galerie hello, proveďte následující kroky hello:**
+**Pokud chcete přidat Heroku z galerie, proveďte následující kroky:**
 
-1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
+1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
+2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
 
     ![Aplikace][3]
 
-4. Hello vyhledávacího pole zadejte **Heroku**.
+4. Do vyhledávacího pole zadejte **Heroku**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-heroku-tutorial/tutorial_heroku_search.png)
 
-5. Na panelu výsledků hello vyberte **Heroku**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.
+5. Na panelu výsledků vyberte **Heroku**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-heroku-tutorial/tutorial_heroku_addfromgallery.png)
 
@@ -81,46 +81,46 @@ tooconfigure hello integrace Heroku do Azure AD, je nutné tooadd Heroku hello G
 
 V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s Heroku podle testovacího uživatele názvem "Britta Simon."
 
-Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v Heroku je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v Heroku musí toobe navázat.
+Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Heroku je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Heroku musí navázat.
 
-V Heroku, přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.
+V Heroku, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
 
-tooconfigure a testu Azure AD jednotné přihlašování s Heroku, potřebujete následující stavební bloky hello toocomplete:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Heroku, je třeba dokončit následující stavební bloky:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Heroku](#creating-a-heroku-test-user)**  -toohave protějšek Britta Simon v Heroku, která je propojená toohello Azure AD reprezentace uživatele.
-4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele Heroku](#creating-a-heroku-test-user)**  – Pokud chcete mít protějšek Britta Simon v Heroku propojeném s Azure AD reprezentace daného uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci Heroku.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Heroku.
 
-**tooconfigure Azure AD jednotné přihlašování s Heroku, proveďte následující kroky hello:**
+**Ke konfiguraci Azure AD jednotné přihlašování s Heroku, proveďte následující kroky:**
 
-1. V portálu Azure, na hello hello **Heroku** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na portálu Azure na **Heroku** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
+2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-heroku-tutorial/tutorial_heroku_samlbase.png)
 
-3. Na hello **Heroku domény a adresy URL** část, proveďte následující kroky hello:
+3. Na **Heroku domény a adresy URL** část, proveďte následující kroky:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-heroku-tutorial/tutorial_heroku_url.png)
 
-    a. V hello **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí hello následující vzoru:    
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:    
     `https://sso.heroku.com/saml/<company-name>/init`
 
-    b. V hello **identifikátoru adresy URL** textovému poli, zadejte adresu URL pomocí hello následující vzoru:            
+    b. V **identifikátoru adresy URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:            
     `https://sso.heroku.com/saml/<company-name>`
 
     > [!NOTE]
-    >Tyto hodnoty nejsou skutečné. Aktualizovat tyto hodnoty s hello skutečné přihlašovací adresa URL a identifikátor. Tyto hodnoty můžete získat od Heroku týmu, který je popsán v pozdějších částech tohoto článku. 
+    >Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Tyto hodnoty můžete získat od Heroku týmu, který je popsán v pozdějších částech tohoto článku. 
         
-4. Na hello **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat hello ve vašem počítači.
+4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-heroku-tutorial/tutorial_heroku_certificate.png) 
 
@@ -128,57 +128,57 @@ V této části můžete povolit Azure AD jednotné přihlašování v hello por
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-heroku-tutorial/tutorial_general_400.png)
 
-6. tooenable jednotné přihlašování v Heroku, proveďte následující kroky hello:
+6. Pokud chcete povolit jednotné přihlašování v Heroku, proveďte následující kroky:
    
-    a. Přihlaste se toohello Heroku účet jako správce.
+    a. Přihlaste se k účtu Heroku jako správce.
 
-    b. Klikněte na tlačítko hello **nastavení** kartě.
+    b. Klikněte na kartu **Nastavení**.
 
-    c. Na hello **jediné přihlášení na stránce**, klikněte na tlačítko **nahrát Metadata**.
+    c. Na **jediné přihlášení na stránce**, klikněte na tlačítko **nahrát Metadata**.
 
-    d. Nahrajte hello metadata souboru, který jste si stáhli z portálu Azure hello.
+    d. Nahrajte soubor metadat, který jste si stáhli z portálu Azure.
 
-    e. Po úspěšné instalaci hello správci najdete v potvrzovacím dialogovém okně a zobrazí se adresa URL hello hello jednotného přihlášení pro koncové uživatele. 
+    e. Po úspěšné instalaci správci najdete v potvrzovacím dialogovém okně a zobrazí se adresa URL jednotného přihlášení pro koncové uživatele. 
 
-    f. Kopírování hello **Heroku přihlašovací adresa URL** a **Heroku Entity ID** hodnoty a přejděte zpátky příliš**Heroku domény a adresy URL** části na portálu Azure a vložte tyto hodnoty do hello **Přihlašovací adresa Url** a **identifikátor** textových polí v uvedeném pořadí.
+    f. Kopírování **Heroku přihlašovací adresa URL** a **Heroku Entity ID** hodnoty a vraťte se zpátky a **Heroku domény a adresy URL** části na portálu Azure a vložte tyto hodnoty do  **Adresa Url přihlašování** a **identifikátor** textových polí v uvedeném pořadí.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-heroku-tutorial/tutorial_heroku_52.png) 
     
 8. Klikněte na **Další**.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **Active Directory podnikové aplikace** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **Active Directory podnikové aplikace** jednoduše klikněte na tlačítko **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím  **Konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
 
-Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
+Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
+**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
 
-1. V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
+1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-heroku-tutorial/create_aaduser_01.png) 
 
-2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-heroku-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.
+3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-heroku-tutorial/create_aaduser_03.png) 
 
-4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
+4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-heroku-tutorial/create_aaduser_04.png) 
 
-    a. V hello **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textovému poli, typ **BrittaSimon**.
 
-    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
@@ -186,29 +186,29 @@ Hello cílem této části je toocreate testovacího uživatele v portálu Azure
 
 V této části vytvoříte volal Britta Simon v Heroku uživatele. Heroku podporuje za běhu zřizování, který je ve výchozím nastavení povolené.
 
-Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří při přístupu k Heroku, pokud ještě neexistuje hello uživatele. Po zřízení účtu hello hello koncový uživatel obdrží e-mail o ověření a musí propojit tooclick hello potvrzení.
+Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří při přístupu k Heroku, pokud uživatel ještě neexistuje. Po zřízení účtu koncový uživatel obdrží e-mail o ověření a je třeba ji kliknutím na odkaz potvrzení.
 
 >[!NOTE]
->Pokud potřebujete toocreate uživatel ručně, je nutné toocontact hello [tým podpory Heroku klienta](https://www.heroku.com/support).
+>Pokud potřebujete ručně vytvořit uživatele, budete muset kontaktovat [tým podpory Heroku klienta](https://www.heroku.com/support).
 >  
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
+### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte tak, že udělíte přístup tooHeroku toouse Britta Simon Azure jednotné přihlašování.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Heroku.
 
 ![Přiřadit uživatele][200] 
 
-**tooassign Britta Simon tooHeroku, proveďte následující kroky hello:**
+**Pokud chcete přiřadit Britta Simon Heroku, proveďte následující kroky:**
 
-1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikace hello vyberte **Heroku**.
+2. V seznamu aplikací vyberte **Heroku**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-heroku-tutorial/tutorial_heroku_app.png) 
 
-3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
+3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
@@ -216,7 +216,7 @@ V této části povolíte tak, že udělíte přístup tooHeroku toouse Britta S
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -224,13 +224,13 @@ V této části povolíte tak, že udělíte přístup tooHeroku toouse Britta S
     
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.
+V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
-Když kliknete na dlaždici Heroku hello v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour Heroku aplikace.
+Když kliknete na dlaždici Heroku na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Heroku.
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

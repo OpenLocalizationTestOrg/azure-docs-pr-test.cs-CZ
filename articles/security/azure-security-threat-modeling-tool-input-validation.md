@@ -1,6 +1,6 @@
 ---
-title: "aaaInput ověření - Microsoft Threat modelování nástroj – Azure | Microsoft Docs"
-description: "způsoby zmírnění hrozeb v hello nástroj modelování hrozeb"
+title: "Vstupní ověření – nástroj Microsoft Threat modelování – Azure | Microsoft Docs"
+description: "způsoby zmírnění hrozeb, které jsou zveřejněné v nástroji pro modelování hrozeb"
 services: security
 documentationcenter: na
 author: RodSan
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 823503881f4bae292ef021834d5e64acf2a0f54a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b7ce6f353cf8cf48d5fb038ee77b0d3fdae16fb7
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="security-frame-input-validation--mitigations"></a>Rámce zabezpečení: Ověřování vstupu | Způsoby zmírnění rizik 
 | Produktům a službám | Článek |
 | --------------- | ------- |
-| **Webové aplikace** | <ul><li>[Zakázat XSLT skriptování všechny transformací pomocí nedůvěryhodné šablony stylů](#disable-xslt)</li><li>[Ujistěte se, že každé stránce, která může obsahovat uživatele ovladatelné obsah výslovný nesouhlas automatické sledování toku dat MIME](#out-sniffing)</li><li>[Posílení zabezpečení nebo zakázat řešení Entity XML](#xml-resolution)</li><li>[Aplikace využívá ovladač http.sys provést ověření kanonizace adresy URL](#app-verification)</li><li>[Zajistěte, aby byl příslušný ovládací prvky jsou zavedené při přijetí soubory od uživatelů](#controls-users)</li><li>[Ujistěte se, jestli je pro přístup k datům ve webové aplikaci používají bezpečnost typů parametrů](#typesafe)</li><li>[Používat samostatný model vazby třídy nebo filtr vazeb vypíše tooprevent MVC velkokapacitního přiřazení ohrožení zabezpečení](#binding-mvc)</li><li>[Kódování předchozí toorendering nedůvěryhodné webové výstup](#rendering)</li><li>[Provedení ověření vstupu a filtrování u všech řetězec typu vlastnosti modelu](#typemodel)</li><li>[Čištění bude použito na pole formuláře, které přijímají všechny znaky, např, bohaté textového editoru](#richtext)</li><li>[Nepřiřazujte toosinks DOM elementy, které nemají integrované kódování](#inbuilt-encode)</li><li>[Ověřit, zda všechny jsou uzavřeny nebo bezpečně provést přesměrování v rámci aplikace hello](#redirect-safe)</li><li>[Implementace ověření vstupu na všechny parametry typu řetězec akceptovat metody Kontroleru](#string-method)</li><li>[Nastavit časový limit horní limit pro regulární výraz zpracování tooprevent DoS z důvodu toobad regulární výrazy](#dos-expression)</li><li>[Nepoužívejte Html.Raw v zobrazení syntaxe Razor](#html-razor)</li></ul> | 
+| **Webové aplikace** | <ul><li>[Zakázat XSLT skriptování všechny transformací pomocí nedůvěryhodné šablony stylů](#disable-xslt)</li><li>[Ujistěte se, že každé stránce, která může obsahovat uživatele ovladatelné obsah výslovný nesouhlas automatické sledování toku dat MIME](#out-sniffing)</li><li>[Posílení zabezpečení nebo zakázat řešení Entity XML](#xml-resolution)</li><li>[Aplikace využívá ovladač http.sys provést ověření kanonizace adresy URL](#app-verification)</li><li>[Zajistěte, aby byl příslušný ovládací prvky jsou zavedené při přijetí soubory od uživatelů](#controls-users)</li><li>[Ujistěte se, jestli je pro přístup k datům ve webové aplikaci používají bezpečnost typů parametrů](#typesafe)</li><li>[Používat samostatný model vazby třídy nebo seznamy vazby filtru, aby se zabránilo ohrožení zabezpečení velkokapacitního přiřazení MVC](#binding-mvc)</li><li>[Kódování nedůvěryhodné webové výstup před vykreslování](#rendering)</li><li>[Provedení ověření vstupu a filtrování u všech řetězec typu vlastnosti modelu](#typemodel)</li><li>[Čištění bude použito na pole formuláře, které přijímají všechny znaky, např, bohaté textového editoru](#richtext)</li><li>[Jímky, které nemají integrované kódování nepřiřazujte elementů modelu DOM](#inbuilt-encode)</li><li>[Ověřit, zda všechny jsou uzavřeny nebo bezpečně provést přesměrování v rámci aplikace](#redirect-safe)</li><li>[Implementace ověření vstupu na všechny parametry typu řetězec akceptovat metody Kontroleru](#string-method)</li><li>[Nastavit časový limit horní limit pro regulární výraz zpracování, aby se zabránilo DoS z důvodu chybné regulární výrazy](#dos-expression)</li><li>[Nepoužívejte Html.Raw v zobrazení syntaxe Razor](#html-razor)</li></ul> | 
 | **Database** | <ul><li>[Nepoužívejte dynamické dotazy v uložené procedury](#stored-proc)</li></ul> |
 | **Webové rozhraní API** | <ul><li>[Zajistit, aby ověření modelu pro metody webového rozhraní API](#validation-api)</li><li>[Implementace ověření vstupu na všechny parametry typu řetězec přijata metodami webového rozhraní API](#string-api)</li><li>[Ujistěte se, že bezpečnost typů parametrů se používají v webového rozhraní API pro přístup k datům](#typesafe-api)</li></ul> | 
 | **Azure Documentdb** | <ul><li>[Použít umožňující dotazy SQL pro DocumentDB](#sql-docdb)</li></ul> | 
@@ -38,27 +38,27 @@ ms.lasthandoff: 10/06/2017
 | **Použít technologie** | Obecné |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | [Zabezpečení XSLT](https://msdn.microsoft.com/library/ms763800(v=vs.85).aspx), [XsltSettings.EnableScript vlastnost](http://msdn.microsoft.com/library/system.xml.xsl.xsltsettings.enablescript.aspx) |
-| **Kroky** | XSLT podporuje skriptování uvnitř stylů pomocí hello `<msxml:script>` elementu. To umožňuje používat v transformaci XSLT toobe vlastní funkce. Hello skript se spustí v kontextu hello procesu hello provádění hello transformace. XSLT skriptu musí být zakázáno v nedůvěryhodných prostředí spuštění tooprevent nedůvěryhodné kódu. *Pokud pomocí rozhraní .NET:* skriptování XSLT je ve výchozím nastavení zakázané; ale ujistěte se, že ho nebylo povoleno explicitně prostřednictvím hello `XsltSettings.EnableScript` vlastnost.|
+| **Kroky** | XSLT podporuje skriptování uvnitř pomocí šablony stylů `<msxml:script>` elementu. To umožňuje vlastní funkce pro použití v transformaci XSLT. Skript se spustí v kontextu procesu provádění transformace. Když v nedůvěryhodné prostředí, aby se zabránilo vykonání nedůvěryhodnými musí být zakázáno XSLT skriptu. *Pokud pomocí rozhraní .NET:* skriptování XSLT je ve výchozím nastavení zakázané; ale ujistěte se, že ho nebylo povoleno explicitně prostřednictvím `XsltSettings.EnableScript` vlastnost.|
 
 ### <a name="example"></a>Příklad 
 
 ```C#
 XsltSettings settings = new XsltSettings();
-settings.EnableScript = true; // WRONG: THIS SHOULD BE SET toofalse
+settings.EnableScript = true; // WRONG: THIS SHOULD BE SET TO false
 ```
 
 ### <a name="example"></a>Příklad
-Pokud používáte pomocí MSXML 6.0, skriptování XSLT je zakázané ve výchozím nastavení; Nicméně je nutné zajistit, aby ho nebylo povoleno explicitně prostřednictvím vlastnosti objektu XML DOM hello AllowXsltScript. 
+Pokud používáte pomocí MSXML 6.0, skriptování XSLT je zakázané ve výchozím nastavení; Nicméně je nutné zajistit, aby ho nebylo povoleno explicitně prostřednictvím vlastnosti objektu XML DOM AllowXsltScript. 
 
 ```C#
-doc.setProperty("AllowXsltScript", true); // WRONG: THIS SHOULD BE SET toofalse
+doc.setProperty("AllowXsltScript", true); // WRONG: THIS SHOULD BE SET TO false
 ```
 
 ### <a name="example"></a>Příklad
-Pokud používáte MSXML 5 nebo níže, XSLT je povoleno skriptování ve výchozím nastavení je potřeba explicitně zakážete. Nastavte hello XML DOM objektu vlastnost AllowXsltScript toofalse. 
+Pokud používáte MSXML 5 nebo níže, XSLT je povoleno skriptování ve výchozím nastavení je potřeba explicitně zakážete. Nastavte vlastnost objektu XML DOM AllowXsltScript na hodnotu false. 
 
 ```C#
-doc.setProperty("AllowXsltScript", false); // CORRECT. Setting toofalse disables XSLT scripting.
+doc.setProperty("AllowXsltScript", false); // CORRECT. Setting to false disables XSLT scripting.
 ```
 
 ## <a id="out-sniffing"></a>Ujistěte se, že každé stránce, která může obsahovat uživatele ovladatelné obsah výslovný nesouhlas automatické sledování toku dat MIME
@@ -70,12 +70,12 @@ doc.setProperty("AllowXsltScript", false); // CORRECT. Setting toofalse disables
 | **Použít technologie** | Obecné |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | [IE8 V části zabezpečení - komplexní ochranu](http://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx)  |
-| **Kroky** | <p>Pro jednotlivé stránky, která by mohla obsahovat ovladatelné obsah uživatele, je nutné použít hello hlavičky protokolu HTTP `X-Content-Type-Options:nosniff`. toocomply s tímto požadavkem, můžete buď sadu hello požadovaná hlavička pro pouze stránky, které může obsahovat uživatele ovladatelné obsahu stránce stránky, nebo můžete ho nastavit globálně pro všechny stránky v aplikaci hello.</p><p>Každý typ souboru doručit z webového serveru má přidruženou [typ MIME](http://en.wikipedia.org/wiki/Mime_type) (označované taky jako *typu obsahu*), který popisuje hello povaha hello obsah (to znamená, obrázek, text, aplikace, atd.)</p><p>záhlaví Hello X obsah typu možnosti je hlavičky protokolu HTTP, která vývojářům umožní toospecify, že jejich obsah by neměl být MIME zachycení. Tuto hlavičku je navrženou toomitigate sledování toku dat MIME útoky. Přidala se podpora pro tuto hlavičku v aplikaci Internet Explorer 8 (IE8)</p><p>Jenom uživatelé aplikace Internet Explorer 8 (IE8) budou využívat X obsah typu možnosti. Předchozí verze aplikace Internet Explorer nerespektují aktuálně Hlavička X-obsah-typ-Options hello</p><p>Internet Explorer 8 (nebo novější) jsou hello pouze hlavní prohlížeče MIME-sledování toku dat tooimplement výslovný nesouhlas s funkcí. Pokud další hlavní prohlížeče (Firefox, Safari, Chrome) implementovat podobné funkce, toto doporučení budou aktualizované tooinclude syntaxe také tyto prohlížeče</p>|
+| **Kroky** | <p>Pro jednotlivé stránky, která může obsahovat uživatele ovladatelné obsahu, musíte použít záhlaví HTTP `X-Content-Type-Options:nosniff`. Abyste dosáhli souladu s tímto požadavkem, můžete buď nastavit požadovaná hlavička pro pouze stránky, které může obsahovat uživatele ovladatelné obsahu stránce stránky nebo můžete ho nastavit globálně pro všechny stránky v aplikaci.</p><p>Každý typ souboru doručit z webového serveru má přidruženou [typ MIME](http://en.wikipedia.org/wiki/Mime_type) (označované taky jako *typu obsahu*), který popisuje povaha obsah (to znamená, obrázek, text, aplikace, atd.)</p><p>Hlavička X-obsah-typ-Options je záhlaví HTTP, která umožňuje vývojářům určit, že obsah by neměl být MIME zachycení. Tuto hlavičku slouží ke zmírnění sledování toku dat MIME útoky. Přidala se podpora pro tuto hlavičku v aplikaci Internet Explorer 8 (IE8)</p><p>Jenom uživatelé aplikace Internet Explorer 8 (IE8) budou využívat X obsah typu možnosti. Předchozí verze aplikace Internet Explorer nerespektují aktuálně Hlavička X-obsah-typ-Options</p><p>Internet Explorer 8 (nebo novější) jsou pouze hlavní prohlížeče implementovat výslovný nesouhlas s funkci sledování toku dat MIME. Pokud další hlavní prohlížeče (Firefox, Safari, Chrome) implementovat podobné funkce, toto doporučení se aktualizují na zahrnují syntaxe také tyto prohlížeče</p>|
 
 ### <a name="example"></a>Příklad
-hello požadovaná hlavička tooenable globálně pro všechny stránky v aplikaci hello, můžete provést jednu z následujících akcí hello: 
+Pokud chcete povolit požadovaná hlavička globálně pro všechny stránky v aplikaci, můžete provést jednu z těchto možností: 
 
-* Přidat hlavičku hello v souboru web.config hello, pokud je aplikace hello hostovaná pomocí Internetové informační služby (IIS) 7 
+* Přidat hlavičku v souboru web.config, pokud je aplikace hostovaná pomocí Internetové informační služby (IIS) 7 
 
 ```
 <system.webServer> 
@@ -87,7 +87,7 @@ hello požadovaná hlavička tooenable globálně pro všechny stránky v aplika
 </system.webServer> 
 ```
 
-* Přidat hlavičku hello prostřednictvím hello globální aplikace\_BeginRequest 
+* Přidat hlavičku prostřednictvím aplikace globální\_BeginRequest 
 
 ``` 
 void Application_BeginRequest(object sender, EventArgs e)
@@ -124,7 +124,7 @@ public class XContentTypeOptionsModule : IHttpModule
 
 ``` 
 
-* Požadovaná hlavička hello pouze pro konkrétní stránky můžete povolit přidáním tooindividual odpovědí: 
+* Požadovaná hlavička pouze pro konkrétní stránky můžete povolit jeho přidáním do jednotlivých odpovědí: 
 
 ```
 this.Response.Headers[""X-Content-Type-Options""] = ""nosniff""; 
@@ -139,10 +139,10 @@ this.Response.Headers[""X-Content-Type-Options""] = ""nosniff"";
 | **Použít technologie** | Obecné |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | [Rozšíření Entity XML](http://capec.mitre.org/data/definitions/197.html), [útoků a obrany XML útok DoS](http://msdn.microsoft.com/magazine/ee335713.aspx), [Přehled zabezpečení MSXML](http://msdn.microsoft.com/library/ms754611(v=VS.85).aspx), [osvědčené postupy pro zabezpečení MSXML kódu](http://msdn.microsoft.com/library/ms759188(VS.85).aspx), [referenci na protokol NSXMLParserDelegate](http://developer.apple.com/library/ios/#documentation/cocoa/reference/NSXMLParserDelegate_Protocol/Reference/Reference.html), [řešení externí odkazy](https://msdn.microsoft.com/library/5fcwybb2.aspx) |
-| **Kroky**| <p>I když není využívány často, je funkce XML, který umožňuje tooexpand analyzátor XML hello makro entity s hodnotami, které jsou definované v rámci samotného hello dokumentu nebo z externích zdrojů. Například hello dokument může definovat entity "NázevSpolečnosti" s hodnotou hello "Microsoft", aby pokaždé, když hello text "&companyname;" se zobrazí v dokumentu hello se automaticky nahradí textem hello. Microsoft. Nebo hello dokument může definovat entity "MSFTStock", který odkazuje externí webovou službu toofetch hello aktuální hodnota Microsoft stock.</p><p>Pak kdykoli "&MSFTStock;" se zobrazí v dokumentu hello se automaticky nahradí aktuální uložených cena hello. Tato funkce se však může být překročen toocreate odepření služby (DoS) podmínek. Útočník může vnořit více entit toocreate bomb XML exponenciální rozšíření, které zabírá všechny dostupné paměti v systému hello. </p><p>Alternativně může udělat externího odkazu, který datové proudy zpět nekonečné množství dat nebo která jednoduše přestane reagovat hello přístup z více vláken. Všechny týmy v důsledku toho musíte zakázat interní nebo externí řešení entity XML, zcela, pokud jejich aplikace nemá ho použít, nebo ručně omezit hello množství paměti a dobu, po kterou hello aplikace můžou využívat pro překlad entity, pokud je tato funkce nezbytně nutné. Pokud řešení entity není vyžadován na základě vaší aplikace, potom jej vypněte. </p>|
+| **Kroky**| <p>I když není využívány často, je funkce XML, který umožňuje analyzátor XML rozbalte makro entity s hodnotami, které jsou definované v rámci samotného dokumentu nebo z externích zdrojů. Například dokument může definovat entity "NázevSpolečnosti" s hodnotou "Microsoft", který pokaždé, když text "&companyname;" se zobrazí v dokumentu, se automaticky nahradí textem Microsoft. Nebo, dokument může definovat entity "MSFTStock", který odkazuje na externí webovou službu načíst aktuální hodnota stock společnosti Microsoft.</p><p>Pak kdykoli "&MSFTStock;" se zobrazí v dokumentu, se automaticky nahradí aktuální uložených cena. Tuto funkci však lze zneužít k vytvoření útok na dostupnost služby (DoS) podmínek. Útočník může vnořit více entity k vytvoření bomb XML exponenciální rozšíření, které zabírá všechny dostupné paměti v systému. </p><p>Alternativně může udělat externího odkazu, který datové proudy zpět nekonečné množství dat nebo která jednoduše přestane reagovat vlákno. Všechny týmy v důsledku toho musíte zakázat interní nebo externí řešení entity XML zcela, pokud jejich aplikace nemá ho použít, nebo ručně omezit množství paměti a čas, který aplikace můžou využívat pro překlad entity, pokud je tato funkce je nezbytně nutné. Pokud řešení entity není vyžadován na základě vaší aplikace, potom jej vypněte. </p>|
 
 ### <a name="example"></a>Příklad
-Pro kód .NET Framework můžete použít hello následujících postupů:
+Pro kód .NET Framework můžete postupovat takto:
 
 ```C#
 XmlTextReader reader = new XmlTextReader(stream);
@@ -157,10 +157,10 @@ XmlReaderSettings settings = new XmlReaderSettings();
 settings.DtdProcessing = DtdProcessing.Prohibit;
 XmlReader reader = XmlReader.Create(stream, settings);
 ```
-Všimněte si, že hello výchozí hodnotu `ProhibitDtd` v `XmlReaderSettings` má hodnotu true, ale v `XmlTextReader` je false. Pokud používáte XmlReaderSettings, tooset ProhibitDtd tootrue není nutné explicitně, ale se doporučuje pro zabezpečení saké, abyste provedli. Všimněte si také, že třídy XmlDocument hello umožňuje entity řešení ve výchozím nastavení. 
+Všimněte si, že na výchozí hodnotu `ProhibitDtd` v `XmlReaderSettings` má hodnotu true, ale v `XmlTextReader` je false. Pokud používáte XmlReaderSettings, není nutné nastavovat ProhibitDtd na hodnotu true, explicitně, ale se doporučuje pro zabezpečení saké, abyste provedli. Všimněte si také, že třída třídou XMLDocument nastavenou na umožňuje řešení entity ve výchozím nastavení. 
 
 ### <a name="example"></a>Příklad
-toodisable entity řešení pro XmlDocuments, použijte hello `XmlDocument.Load(XmlReader)` přetížení hello Load – metoda a nastavte hello příslušné vlastnosti hello XmlReader argument toodisable rozlišení, jak je znázorněno v následujícím kódu hello: 
+Zakázat entity řešení pro XmlDocuments, použijte `XmlDocument.Load(XmlReader)` přetížení metody zatížení a nastavte příslušné vlastnosti v argumentu XmlReader zakázat řešení, jak je znázorněno v následujícím kódu: 
 
 ```C#
 XmlReaderSettings settings = new XmlReaderSettings();
@@ -171,7 +171,7 @@ doc.Load(reader);
 ```
 
 ### <a name="example"></a>Příklad
-Pokud zakázání řešení entity není možné pro vaši aplikaci, nastavte hello XmlReaderSettings.MaxCharactersFromEntities tooa přiměřenou hodnotu vlastnosti podle potřeb tooyour aplikace. To bude omezovat hello dopad útoků DoS potenciální exponenciální rozšíření. Hello následující kód představuje příklad tohoto přístupu: 
+Pokud zakázání řešení entity není možné pro vaši aplikaci, nastavte vlastnost XmlReaderSettings.MaxCharactersFromEntities na odpovídající hodnotu podle potřeb vaší aplikace. To omezí dopad útoků DoS potenciální exponenciální rozšíření. Následující kód představuje příklad tohoto přístupu: 
 
 ```C#
 XmlReaderSettings settings = new XmlReaderSettings();
@@ -181,7 +181,7 @@ XmlReader reader = XmlReader.Create(stream, settings);
 ```
 
 ### <a name="example"></a>Příklad
-Pokud třeba tooresolve vložené entity, ale není nutné tooresolve externí entity, nastavte toonull vlastnost XmlReaderSettings.XmlResolver hello. Například: 
+Pokud potřebujete vyřešit vložené entity, ale provést nebude potřebovat přeložit externí entity, nastavte vlastnost XmlReaderSettings.XmlResolver na hodnotu null. Například: 
 
 ```C#
 XmlReaderSettings settings = new XmlReaderSettings();
@@ -190,7 +190,7 @@ settings.MaxCharactersFromEntities = 1000;
 settings.XmlResolver = null;
 XmlReader reader = XmlReader.Create(stream, settings);
 ```
-Všimněte si, že v MSXML6, ProhibitDTD tootrue (zakázání zpracování souboru DTD protokolu) ve výchozím nastavení. Pro kód Apple OSX/iOS jsou dvě analyzátory jazyka XML, můžete použít: NSXMLParser a libXML2. 
+Všimněte si, že v MSXML6, ProhibitDTD nastavena na hodnotu true (zakázání DTD zpracování) ve výchozím nastavení. Pro kód Apple OSX/iOS jsou dvě analyzátory jazyka XML, můžete použít: NSXMLParser a libXML2. 
 
 ## <a id="app-verification"></a>Aplikace využívá ovladač http.sys provést ověření kanonizace adresy URL
 
@@ -201,7 +201,7 @@ Všimněte si, že v MSXML6, ProhibitDTD tootrue (zakázání zpracování soubo
 | **Použít technologie** | Obecné |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | Není k dispozici  |
-| **Kroky** | <p>Všechny aplikace, která používá soubor http.sys postupujte podle těchto pokynů:</p><ul><li>Omezte toono délka adresy URL hello více než 16 384 znaky (ASCII nebo Unicode). Toto je hello absolutní maximální délka adresy URL na základě nastavení Internetové informační služby (IIS) 6 výchozí hello. Weby musí zajistit dobu kratší než to, pokud je to možné</li><li>Použijte hello standardní rozhraní .NET Framework vstupně-výstupní třídy (například FileStream), jak tyto budou využívat výhod hello kanonizace pravidla v rozhraní .NET FX hello</li><li>Explicitně sestavit seznam povolených známé názvů souborů</li><li>Explicitně odmítnout známý typ souborů, neprovede UrlScan odmítne: exe bat, cmd, com, htw, ida, idq, htr, idc, shtm [l], stm, tiskárny, ini, pol, soubory dat</li><li>Catch hello následující výjimky:<ul><li>System.ArgumentException (pro názvy zařízení)</li><li>System.NotSupportedException (pro datové proudy)</li><li>System.IO.FileNotFoundException (pro neplatný uvozený názvy souborů)</li><li>System.IO.DirectoryNotFoundException (pro neplatný uvozený adresáře)</li></ul></li><li>*Nechcete* vyvolávající tooWin32 souborů API vstupně-výstupní operace. Při neplatná adresa URL elegantně vrátí uživatele toohello Chyba 400 a protokolu hello skutečné chyby.</li></ul>|
+| **Kroky** | <p>Všechny aplikace, která používá soubor http.sys postupujte podle těchto pokynů:</p><ul><li>Omezení délky adres URL na víc než 16 384 znaků (ASCII nebo Unicode). Toto je absolutní maximální délka adresy URL na základě výchozí nastavení Internetové informační služby (IIS) 6. Weby musí zajistit dobu kratší než to, pokud je to možné</li><li>Použití standardních vstupně-výstupní tříd rozhraní .NET Framework (například FileStream), jak to bude využívat výhod kanonizace pravidla v rozhraní .NET FX</li><li>Explicitně sestavit seznam povolených známé názvů souborů</li><li>Explicitně odmítnout známý typ souborů, neprovede UrlScan odmítne: exe bat, cmd, com, htw, ida, idq, htr, idc, shtm [l], stm, tiskárny, ini, pol, soubory dat</li><li>Catch následující výjimky:<ul><li>System.ArgumentException (pro názvy zařízení)</li><li>System.NotSupportedException (pro datové proudy)</li><li>System.IO.FileNotFoundException (pro neplatný uvozený názvy souborů)</li><li>System.IO.DirectoryNotFoundException (pro neplatný uvozený adresáře)</li></ul></li><li>*Nechcete* vyvolávající do souboru Win32 API vstupně-výstupní operace. Při neplatná adresa URL elegantně vrátí Chyba 400 na uživatele a protokolu skutečné chyby.</li></ul>|
 
 ## <a id="controls-users"></a>Zajistěte, aby byl příslušný ovládací prvky jsou zavedené při přijetí soubory od uživatelů
 
@@ -212,10 +212,10 @@ Všimněte si, že v MSXML6, ProhibitDTD tootrue (zakázání zpracování soubo
 | **Použít technologie** | Obecné |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | [Neomezený nahrávání souborů](https://www.owasp.org/index.php/Unrestricted_File_Upload), [soubor podpisu tabulky](http://www.garykessler.net/library/file_sigs.html) |
-| **Kroky** | <p>Odeslané soubory představují tooapplications významné riziko.</p><p>prvním krokem Hello v řada útoků je tooget některé kód toohello systému toobe napadení. Potom hello útoku stačí toofind kód hello tooget způsob, jak provést. Použití nahrávání souborů pomáhá hello útočník provést první krok hello. Hello důsledcích při nahrávání souborů neomezený se může lišit, včetně převzetí celý systém, databáze, předávání útoky tooback-end systémy a jednoduchý poškození vzhledu aplikace systému přetížené souborů nebo.</p><p>To závisí na jaké aplikace hello nepodporuje souborem hello nahrán a hlavně kde je uložen. Ověřování na straně serveru z nahrávání souborů nebyla nalezena. Následující kontrolní mechanismy zabezpečení, by měla být implementována pro nahrání souboru funkce:</p><ul><li>Soubor rozšíření kontrolu (jenom platnou sadu povolený typ měli accepted)</li><li>Maximální limit velikosti souboru</li><li>Soubor by neměl být nahrané toowebroot; Hello umístění musí být adresáře na nesystémové jednotky</li><li>Zásady vytváření názvů musí být sledována, tak, aby hello nahrávaný soubor název měly některé náhodnost tak jako tooprevent přepíše soubor</li><li>Soubory by měl být kontrolována antivirový před zápisem toohello disku</li><li>Aby se zajistilo hello název souboru a všechny další metadata (například cesta k souboru) ověření škodlivý znaků</li><li>Zkontrolovat podpis formát souboru, tooprevent uživatele z nahrávání masqueraded souboru (například odeslat soubor exe změnou tootxt rozšíření)</li></ul>| 
+| **Kroky** | <p>Odeslané soubory představuje významné riziko aplikace.</p><p>Prvním krokem při řada útoků se má získat kód, který se napadení systému. Útoku pak musí najít způsob, jak získat kód spustit. Použití nahrávání souborů pomáhá útočník provést v prvním kroku. Důsledky nahrávání neomezený souborů se může lišit, včetně převzetí celý systém, systém souborů přetížené nebo databáze, předávání útoků back-end systémy a jednoduchý poškození vzhledu.</p><p>To závisí na aplikace nemá s nahrávaný soubor a hlavně kde je uložen. Ověřování na straně serveru z nahrávání souborů nebyla nalezena. Následující kontrolní mechanismy zabezpečení, by měla být implementována pro nahrání souboru funkce:</p><ul><li>Soubor rozšíření kontrolu (jenom platnou sadu povolený typ měli accepted)</li><li>Maximální limit velikosti souboru</li><li>Soubor by neměl být odeslán do webroot; Toto umístění by měl být adresáře na nesystémové jednotky</li><li>Zásady vytváření názvů musí být sledována, tak, aby název nahrávaný soubor měly některé náhodnosti, aby se zabránilo souboru přepíše</li><li>Soubory by měl být kontrolována antivirový před zápisem na disk</li><li>Aby se zajistilo název souboru a všechny další metadata (například cesta k souboru) ověření škodlivý znaků</li><li>Podpis formátu souboru by měly být zkontrolovány, zabránit uživateli v nahrávání masqueraded souboru (například odeslat soubor exe změnou rozšíření na txt)</li></ul>| 
 
 ### <a name="example"></a>Příklad
-Hello posledního bodu týkající se ověřování podpisu formát souboru najdete v části toohello třída následující podrobnosti: 
+Pro vytvoření posledního bodu týkající se ověřování podpisu souboru formátu odkazovat na třídu následující podrobnosti: 
 
 ```C#
         private static Dictionary<string, List<byte[]>> fileSignature = new Dictionary<string, List<byte[]>>
@@ -328,10 +328,10 @@ Hello posledního bodu týkající se ověřování podpisu formát souboru najd
 | **Použít technologie** | Obecné |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | Není k dispozici  |
-| **Kroky** | <p>Pokud používáte hello parametry kolekce, vstup hello vyhodnotí SQL je jako hodnotu literálu místo pak jako spustitelný kód. Hello kolekce parametrů lze použít tooenforce typ a délku omezení na vstupní data. Hodnoty mimo rozsah hello aktivovat výjimku. Pokud se nepoužívají bezpečnost typů parametrů SQL, může být útočníci možné tooexecute vkládání útoků, které jsou součástí hello nefiltrovaná vstup.</p><p>Při vytváření SQL dotazuje tooavoid možné SQL vkládání útoků, které mohou nastat u nefiltrované vstup, použijte bezpečné parametry typu. Parametry typu bezpečné můžete použít s uložené procedury a dynamických příkazů SQL. Parametry jsou zpracovány jako literálových hodnot hello databáze a ne jako spustitelný kód. Parametry jsou zaškrtnutá políčka, typ a délku.</p>|
+| **Kroky** | <p>Pokud používáte kolekci Parameters, vyhodnotí SQL je vstup jako hodnotu literálu místo pak jako spustitelný kód. Kolekce parametrů slouží k vynucení omezení typ a délku vstupní data. Hodnoty mimo rozsah aktivovat výjimku. Pokud se nepoužívají bezpečnost typů parametrů SQL, může být útočníci provést vkládání útoků, které jsou součástí nefiltrované vstup.</p><p>Používejte bezpečné parametry typu předejdete možných útoků vkládání SQL, které mohou nastat u nefiltrované vstup při vytváření dotazů SQL. Parametry typu bezpečné můžete použít s uložené procedury a dynamických příkazů SQL. Parametry jsou zpracovány jako literálových hodnot v databázi a ne jako spustitelný kód. Parametry jsou zaškrtnutá políčka, typ a délku.</p>|
 
 ### <a name="example"></a>Příklad 
-Hello následující kód ukazuje, jak toouse bezpečné parametry typu s hello SqlParameterCollection při volání uložené procedury. 
+Následující kód ukazuje, jak pomocí bezpečné parametry typu SqlParameterCollection při volání uložené procedury. 
 
 ```C#
 using System.Data;
@@ -347,9 +347,9 @@ myCommand.SelectCommand.Parameters["@au_id"].Value = SSN.Text;
 myCommand.Fill(userDataset);
 }  
 ```
-V předchozím příkladu kódu hello hello vstupní hodnota nemůže být delší než 11 znaků. Pokud hello data neodpovídá typu toohello nebo délka definované parametrem hello, hello SqlParameter třída vyvolá výjimku. 
+V předchozím příkladu kódu vstupní hodnota nemůže být delší než 11 znaků. Pokud data neodpovídá typu nebo délka definované parametrem, třída SqlParameter vyvolá výjimku. 
 
-## <a id="binding-mvc"></a>Používat samostatný model vazby třídy nebo filtr vazeb vypíše tooprevent MVC velkokapacitního přiřazení ohrožení zabezpečení
+## <a id="binding-mvc"></a>Používat samostatný model vazby třídy nebo seznamy vazby filtru, aby se zabránilo ohrožení zabezpečení velkokapacitního přiřazení MVC
 
 | Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -357,10 +357,10 @@ V předchozím příkladu kódu hello hello vstupní hodnota nemůže být delš
 | **SDL fáze**               | Sestavení |  
 | **Použít technologie** | MVC5 MVC6 |
 | **Atributy**              | Není k dispozici  |
-| **Odkazy**              | [Atributy metadat](http://msdn.microsoft.com/library/system.componentmodel.dataannotations.metadatatypeattribute), [veřejný klíč ohrožení zabezpečení a snížení rizika zabezpečení](https://github.com/blog/1068-public-key-security-vulnerability-and-mitigation), [tooMass kompletní Příručka pro přiřazení v aplikaci ASP.NET MVC](http://odetocode.com/Blogs/scott/archive/2012/03/11/complete-guide-to-mass-assignment-in-asp-net-mvc.aspx), [Začínáme s EF pomocí MVC](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost) |
-| **Kroky** | <ul><li>**Pokud by měl vypadat pro typu overpost ohrožení zabezpečení? -** Typu overpost ohrožení zabezpečení může dojít, všechny místní vázat třídy modelu ze vstupu uživatele. Architektury, jako je MVC může představovat uživatelská data ve vlastní třídy rozhraní .NET, včetně prostý staré objekty CLR (POCOs). MVC automaticky naplní tyto třídy modelu s daty z požadavku hello poskytuje pohodlné reprezentaci pro práci s vstup uživatele. Pokud tyto třídy obsahovat vlastnosti, které by neměl být nastavený uživatelem hello, hello aplikace může být snadno napadnutelný tooover zveřejňování útoků, které povolí uživatelský ovládací prvek dat, která aplikace hello nikdy určena. Jako vazby modelu MVC, například objekt nebo relační mappers jako Entity Framework technologie pro přístup k databázi často také podporují, pomocí dat objektů POCO objekty toorepresent databáze. Tyto třídy modelu dat poskytují hello stejné pohodlí při plánování práce s data databáze stejně MVC v práci s vstup uživatele. Vzhledem k tomu MVC a hello databáze podporují podobné modely jako objektů POCO, se zdá být snadno tooreuse hello stejné třídy pro oba účely. Tento postup selže, toopreserve oddělení otázky ale je jeden běžné oblasti, kde nezamýšleným vlastnosti zveřejněné toomodel vazby, povolení přečerpání příspěvků útoky.</li><li>**Proč by neměl používat Můj třídy modelu nefiltrované databáze jako parametry toomy MVC akce? -** Vazby modelu MVC protože nic vazby v dané třídě. I když hello data nezobrazí v zobrazení, že uživatel se zlými úmysly může odeslat požadavek HTTP s těmito daty zahrnuté a MVC bude Ochotně navázat jej protože akci říká, že třída databáze je tvar hello dat musí přijmout na vstup uživatele.</li><li>**Proč by měla vědět o hello tvaru používanou pro vazbu modelu? -** Vazby modelu pomocí ASP.NET MVC s příliš široká modely zpřístupní útoky tooover příspěvků aplikaci. Přečerpání příspěvků by mohl útočník toochange aplikace dat přesahující jaké hello vývojáře určený, jako je například přepsání hello ceny pro položku nebo hello zabezpečení oprávnění pro účet. Aplikace by měly používat konkrétní akce vazby modelů (nebo seznamy filtrů určitou vlastnost povolené) tooprovide explicitní kontrakt, pro jaké nedůvěryhodné vstupní tooallow prostřednictvím vazby modelu.</li><li>**Má samostatnou vazbu modely právě duplikování kód? -** Ne, je otázka jsou oddělené oblasti zájmu. Použijete-li opakovaně modely databáze v metody akce, můžete si všechny vlastnosti (nebo dílčí vlastnosti) třída může být nastavena uživatelem hello v požadavku HTTP. Pokud nechcete MVC toodo, potřebujete seznam filtrů nebo samostatné třídy tvar tooshow MVC, jaká data mohou pocházet z místo vstupu uživatele.</li><li>**Pokud je nutné modely samostatnou vazbu na vstup uživatele, je nutné provést tooduplicate všechny moje atributy poznámky dat? -** Nemusí. Můžete vytvořit MetadataTypeAttribute hello databáze třída toolink toohello metadat modelu na třídu vazby modelu. Jenom Všimněte si, že hello typ odkazuje hello MetadataTypeAttribute musí být podmnožinou hello odkazující na typ (může mít méně vlastností, ale ne více).</li><li>**Přesunutí dat a zpět mezi modely vstupu uživatele a modely databáze je zdlouhavé. Je možné pouze kopírovat přes všechny vlastnosti pomocí reflexe? -** Ano. Hello pouze vlastnosti, které se zobrazují v hello vazby modely jsou hello ty, které jsou zjistíte toobe bezpečné pro vstup uživatele. Neexistuje žádný důvod zabezpečení, která zabraňuje pomocí reflexe toocopy přes všechny vlastnosti, které existují společné mezi tyto dva modely.</li><li>**Co se chystáte [Bind (vyloučit = "WinMgmt€ ¦")]. Můžete použít, místo nutnosti modely samostatnou vazbu? -** Tento přístup se nedoporučuje. Použití [Bind (vyloučit = "WinMgmt€ ¦")] znamená, že se všechny nové vlastnosti vazbu ve výchozím nastavení. Při přidání nové vlastnosti je bezpečné další krok tooremember tookeep věcí, nikoli s hello návrhu se ve výchozím nastavení zabezpečení. V závislosti na vývojáře hello pokaždé, když je vlastnost přidána kontrola tento seznam je rizikové.</li><li>**Je [Bind (zahrnout = "WinMgmt€ ¦")] užitečné pro operace upravit? -** Ne. [Bind (zahrnout = "WinMgmt€ ¦")] je vhodný pro operace INSERT stylu (přidání nových dat). Operace aktualizace stylu (Úprava existující data) použijte jiný přístup, jako má samostatnou vazbu modely nebo předání explicitní seznam povolených vlastnosti tooUpdateModel nebo TryUpdateModel. Přidání [Bind (zahrnout = "¦ €")] atribut u operace úpravy znamená, že MVC se vytvořit instanci objektu a nastavit jen hello uvedené vlastnosti, a všechny ostatní na jejich výchozí hodnoty. Při hello dat, nahradí zcela stávající entity hello resetování hello hodnoty pro všechny výchozí hodnoty tootheir vynechání vlastnosti. Například, pokud byl IsAdmin vynechaný [Bind (zahrnout = "¦ €")] atribut u operace úpravy, každý uživatel, jehož název byl upraven přes tato akce by tooIsAdmin resetování = false (všechny upravená uživatel ztratí přihlášeni jako správce). Pokud chcete tooprevent aktualizací toocertain vlastnosti, použijte jednu z hello jiné postupy výše. Všimněte si, že některé verze nástrojů pro MVC generovat řadiče tříd pomocí [Bind (zahrnout = "¦ €")] upravit akce a neznamená, že odebrání vlastnosti z tohoto seznamu, bude zabránit útokům přečerpání účtování. Ale jak je popsáno výše, nefunguje tak, jak má tento přístup a místo toho resetuje všechna data v hello vynechání vlastnosti tootheir výchozí hodnoty.</li><li>**Pro operace vytvoření, existují jakékoli upozornění pomocí [Bind (zahrnout = "WinMgmt€ ¦")] místo modely samostatnou vazbu? -** Ano. Nejprve tento přístup nefunguje pro scénářům, úpravy, které vyžadují zachování dva samostatné přístupy pro minimalizaci všechna ohrožení zabezpečení přečerpání příspěvků. Druhou, samostatnou vazbu modely vynutit oddělené oblasti zájmu mezi hello tvaru používanou pro vstup a hello tvar uživatele používané pro trvalost, něco [Bind (zahrnout = "WinMgmt€ ¦")] neprovádí. Třetí, Všimněte si, že [Bind (zahrnout = "WinMgmt€ ¦")] lze zpracovat pouze nejvyšší úrovně vlastnosti; v atributu hello nemůže povolit jenom části dílčí vlastnosti (například "Details.Name"). Nakonec a případně co je nejdůležitější – pomocí [Bind (zahrnout = "WinMgmt€ ¦")] Přidá další krok, který musí mít na paměti, všechny time hello třída se používá pro vazbu modelu. Pokud nové metody akce váže třída dat toohello přímo a zapomene tooinclude [vazby (zahrnout = "¦ €")] atribut, mohou být zranitelné v důsledku tooover zveřejňování útoky, takže hello [Bind (zahrnout = "¦ €")] přístup je méně zabezpečené ve výchozím nastavení. Pokud používáte [Bind (zahrnout = "WinMgmt€ ¦")], tooremember toospecify vždy postará se pokaždé, když vaše data třídy se zobrazí jako parametry metody akce.</li><li>**Pro operace vytvoření, co o spojování hello [Bind (zahrnout = "WinMgmt€ ¦")] atributu na vlastní třídy modelu hello? Není tento přístup vyhnout hello nutné tooremember uváděním hello atribut na každou metodu akce? -** Tento postup funguje v některých případech. Pomocí [Bind (zahrnout = "WinMgmt€ ¦")] na vlastní typ modelu hello (ne na parametry akci pomocí této třídy), vyhněte se hello nutné tooremember tooinclude hello [Bind (zahrnout = "WinMgmt€ ¦")] atribut na každou metodu akce. Pomocí atributu hello přímo na třídě hello efektivně vytvoří samostatné oblasti plochy této třídy pro účely vazby modelu. Však tento přístup umožňuje pouze pro jeden tvar vazby modelu za třídu modelu. Pokud musí jedna metoda akce vazby modelu tooallow pole (například pouze správce akci, která aktualizuje rolí uživatele) a další akce musí vazby modelu tooprevent tohoto pole, tento postup nebude fungovat. Každá třída může mít pouze jeden tvar vazby modelu; Pokud různé akce potřebovat tvarů vazbu jiného modelu, které potřebují toorepresent tyto samostatné obrazců pomocí třídy vazby buď samostatné modelu nebo oddělení [Bind (zahrnout = "WinMgmt€ ¦")] atributů na hello metody akce.</li><li>**Co jsou vazby modelů? Jsou že jejich hello samé jako Zobrazit modely? -** Toto jsou dva související koncepty. termín Hello odkazuje vazba modelu tooa modelu třída používaná v akce je seznam parametrů (hello tvaru předat z metody akce toohello vazby modelu MVC). model zobrazení termín Hello odkazuje třídu modelu tooa předán ze zobrazení tooa metoda akce. Použití modelu specifické pro zobrazení je běžný postup pro předávání dat ze zobrazení tooa metoda akce. Často tento tvar je také vhodná pro vazby modelu a modelu zobrazení hello podmínek může být použité toorefer hello používá stejný model na obou místech. toobe přesné, tento postup bude zmíněn konkrétně vazby modely, které jsou zaměřené na tvar hello předán toohello akce, která je to důležité pro účely velkokapacitního přiřazení.</li></ul>| 
+| **Odkazy**              | [Atributy metadat](http://msdn.microsoft.com/library/system.componentmodel.dataannotations.metadatatypeattribute), [veřejný klíč ohrožení zabezpečení a snížení rizika zabezpečení](https://github.com/blog/1068-public-key-security-vulnerability-and-mitigation), [Kompletní návod k přiřazení velkokapacitních v architektuře ASP.NET MVC](http://odetocode.com/Blogs/scott/archive/2012/03/11/complete-guide-to-mass-assignment-in-asp-net-mvc.aspx), [Začínáme s EF pomocí MVC](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost) |
+| **Kroky** | <ul><li>**Pokud by měl vypadat pro typu overpost ohrožení zabezpečení? -** Typu overpost ohrožení zabezpečení může dojít, všechny místní vázat třídy modelu ze vstupu uživatele. Architektury, jako je MVC může představovat uživatelská data ve vlastní třídy rozhraní .NET, včetně prostý staré objekty CLR (POCOs). MVC automaticky naplní tyto třídy modelu s daty z požadavku, poskytuje pohodlné reprezentaci pro práci s vstup uživatele. Pokud tyto třídy obsahovat vlastnosti, které by neměl být nastavený uživatelem, může být aplikace bude zranitelný vůči typu overpost útoků, které umožňují uživatelský ovládací prvek dat, která je určená aplikace nikdy. Jako vazby modelu MVC, databáze přístup technologie jako objekt nebo relační mappers jako Entity Framework často také podpora používání objektů POCO představují data databáze. Tyto třídy modelu dat poskytují stejné pohodlí při plánování práce s data databáze stejně MVC v práci s vstup uživatele. Vzhledem k tomu MVC a databáze podporují podobné modely jako objektů POCO, nejspíš snadno opakovaně používat stejné třídy pro oba účely. Tento postup selže zachovat oddělené oblasti zájmu a je jeden běžné oblasti, kde jsou umístěny nezamýšleným vlastnosti do vazby modelu, povolení přečerpání příspěvků útoky.</li><li>**Proč by neměl pomocí třídy modelu Moje nefiltrované databáze jako parametry Moje akce MVC? -** Vazby modelu MVC protože nic vazby v dané třídě. I v případě, že data se nezobrazí v zobrazení, uživatel se zlými úmysly může odeslat požadavek HTTP s těmito daty zahrnuté a MVC bude Ochotně svázat ho, protože akci říká, že třída databáze je obrazec data, která se má přijmout na vstup uživatele.</li><li>**Proč by měla vědět o tvaru používanou pro vazbu modelu? -** Vazby modelu pomocí ASP.NET MVC s příliš široká modely zpřístupní aplikaci útoky typu overpost. Přečerpání příspěvků by mohl útočník měnit data aplikace nad rámec vývojáře, co určený, jako je například přepsání ceny pro položku nebo oprávnění zabezpečení pro účet. Aplikace by měly používat konkrétní akce vazby modelů (nebo seznamy filtrů určitou vlastnost povolené) k poskytování explicitního kontrakt pro jaké nedůvěryhodné vstup umožňující prostřednictvím vazby modelu.</li><li>**Má samostatnou vazbu modely právě duplikování kód? -** Ne, je otázka jsou oddělené oblasti zájmu. Použijete-li opakovaně modely databáze v metody akce, můžete si všechny vlastnosti (nebo dílčí vlastnosti) třída může být nastavena uživatelem v požadavku HTTP. Pokud se nechcete MVC udělat, musíte seznam filtrů nebo samostatné třídy tvaru zobrazíte MVC, jaká data mohou pocházet z místo vstupu uživatele.</li><li>**Pokud je nutné modely samostatnou vazbu na vstup uživatele, je nutné duplicitní všechny moje atributy poznámky dat? -** Nemusí. MetadataTypeAttribute na třídu modelu databáze slouží k propojení s metadaty na třídu vazby modelu. Jenom nezapomeňte, že typ odkazuje MetadataTypeAttribute musí být podmnožinu odkazující typ (může mít méně vlastností, ale ne více).</li><li>**Přesunutí dat a zpět mezi modely vstupu uživatele a modely databáze je zdlouhavé. Je možné pouze kopírovat přes všechny vlastnosti pomocí reflexe? -** Ano. Pouze vlastnosti, které se zobrazují v modelech vazby jsou ty, které jste určili bezpečné na vstup uživatele. Neexistuje žádný důvod zabezpečení, která zabraňuje pomocí reflexe zkopírovat přes všechny vlastnosti, které existují společné mezi tyto dva modely.</li><li>**Co se chystáte [Bind (vyloučit = "WinMgmt€ ¦")]. Můžete použít, místo nutnosti modely samostatnou vazbu? -** Tento přístup se nedoporučuje. Použití [Bind (vyloučit = "WinMgmt€ ¦")] znamená, že se všechny nové vlastnosti vazbu ve výchozím nastavení. Při přidání nové vlastnosti je krok navíc pamatovat k lepšímu zabezpečení věcí, místo nutnosti návrh bylo zabezpečené, ve výchozím nastavení. V závislosti na vývojáře pokaždé, když je vlastnost přidána kontrola tento seznam je rizikové.</li><li>**Je [Bind (zahrnout = "WinMgmt€ ¦")] užitečné pro operace upravit? -** Ne. [Bind (zahrnout = "WinMgmt€ ¦")] je vhodný pro operace INSERT stylu (přidání nových dat). Operace aktualizace stylu (Úprava existující data) použijte jiný přístup, jako má samostatnou vazbu modely nebo předání explicitní seznam povolených vlastností do UpdateModel nebo TryUpdateModel. Přidání [Bind (zahrnout = "¦ €")] atribut u operace úpravy znamená, že MVC se vytvořit instanci objektu a nastavit pouze uvedené vlastnosti, a všechny ostatní na jejich výchozí hodnoty. Když jsou data uložena, nahradí zcela existující entity, resetování hodnoty pro všechny vlastnosti není uveden na výchozí hodnoty. Například, pokud byl vynechaný IsAdmin [Bind (zahrnout = "¦ €")] atribut u operace úpravy, každý uživatel, jehož název byl upraven přes tato akce by se obnovit do IsAdmin = false (všechny upravená uživatel ztratí přihlášeni jako správce). Pokud chcete zabránit aktualizace do určité vlastnosti, použijte jeden z přístupů výše. Všimněte si, že některé verze nástrojů pro MVC generovat řadiče tříd pomocí [Bind (zahrnout = "¦ €")] upravit akce a neznamená, že odebrání vlastnosti z tohoto seznamu, bude zabránit útokům přečerpání účtování. Ale jak je popsáno výše, nefunguje tak, jak má tento přístup a místo toho se obnoví všechna data ve vlastnostech vynechání na jejich výchozí hodnoty.</li><li>**Pro operace vytvoření, existují jakékoli upozornění pomocí [Bind (zahrnout = "WinMgmt€ ¦")] místo modely samostatnou vazbu? -** Ano. Nejprve tento přístup nefunguje pro scénářům, úpravy, které vyžadují zachování dva samostatné přístupy pro minimalizaci všechna ohrožení zabezpečení přečerpání příspěvků. Druhou, samostatnou vazbu modely vynutit oddělené oblasti zájmu mezi tvaru používanou pro vstup uživatele a tvar používané pro trvalost, něco [Bind (zahrnout = "WinMgmt€ ¦")] neprovádí. Třetí, Všimněte si, že [Bind (zahrnout = "WinMgmt€ ¦")] lze zpracovat pouze nejvyšší úrovně vlastnosti; nelze povolit jenom části dílčí vlastnosti (například "Details.Name") v atributu. Nakonec a případně co je nejdůležitější – pomocí [Bind (zahrnout = "WinMgmt€ ¦")] Přidá další krok, který musí mít na paměti, kdykoli se třída se používá pro vazbu modelu. Pokud nové metody akce váže k třídě data přímo a zapomene zahrnout [Bind (zahrnout = "¦ €")] atributu, může být ohrožena útoky, typu overpost proto [Bind (zahrnout = "¦ €")] přístup je méně zabezpečené ve výchozím nastavení. Pokud používáte [Bind (zahrnout = "WinMgmt€ ¦")], postará se vždy k nezapomeňte zadat pokaždé, když vaše data třídy se zobrazí jako parametry metody akce.</li><li>**Pro operace vytvoření, co o uvedení [Bind (zahrnout = "WinMgmt€ ¦")] atributu na vlastní třídy modelu? Není tento přístup nemuseli pamatovat uvedení atribut na každou metodu akce? -** Tento postup funguje v některých případech. Pomocí [Bind (zahrnout = "WinMgmt€ ¦")] na vlastní typ modelu (ne na parametry akci pomocí této třídy) nemuseli nezapomeňte zahrnout [Bind (zahrnout = "WinMgmt€ ¦")] atribut na každou metodu akce. Pomocí atributu přímo na třídě efektivně vytvoří samostatné oblasti plochy této třídy pro účely vazby modelu. Však tento přístup umožňuje pouze pro jeden tvar vazby modelu za třídu modelu. Pokud jedna metoda akce musí povolit vazby modelu pole (například pouze správce akci, která aktualizuje rolí uživatele) a další akce potřebujete zabránit vazbě modelu tohoto pole, tento postup nebude fungovat. Každá třída může mít pouze jeden tvar vazby modelu; Pokud různé akce potřebovat jiný model vazby tvarů, potřebují k představují tyto samostatné obrazců pomocí třídy vazby buď samostatné modelu nebo oddělení [Bind (zahrnout = "WinMgmt€ ¦")] atributů na metody akce.</li><li>**Co jsou vazby modelů? Budou totéž jako Zobrazit modely? -** Toto jsou dva související koncepty. Termín, na kterou odkazuje vazba modelu do modelu je třída používaná v akci seznam parametrů (tvaru z vazby modelu MVC předaný metodě akce). Model zobrazení termín odkazuje na třídu modelu, který je předán zobrazení z metody akce. Použití modelu specifické pro zobrazení je běžný postup pro předávání dat z metody akce k zobrazení. Často tento tvar je také vhodná pro vazbu modelu a modelu zobrazení termín lze odkazovat stejný model použít v obou místech. Přesnosti lze dosáhnout, tento postup bude zmíněn konkrétně vazby modely, které jsou zaměřené na tvar předaný akce, která je to důležité pro účely velkokapacitního přiřazení.</li></ul>| 
 
-## <a id="rendering"></a>Kódování předchozí toorendering nedůvěryhodné webové výstup
+## <a id="rendering"></a>Kódování nedůvěryhodné webové výstup před vykreslování
 
 | Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -368,8 +368,8 @@ V předchozím příkladu kódu hello hello vstupní hodnota nemůže být delš
 | **SDL fáze**               | Sestavení |  
 | **Použít technologie** | Obecné, webových formulářů, MVC5, MVC6 |
 | **Atributy**              | Není k dispozici  |
-| **Odkazy**              | [Jak tooprevent webů skriptování v technologii ASP.NET](http://msdn.microsoft.com/library/ms998274.aspx), [skriptování mezi](http://cwe.mitre.org/data/definitions/79.html), [list cheaty prevence XSS (skriptování mezi weby)](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet) |
-| **Kroky** | Skriptování mezi (často se používá zkratka jako XSS) je způsob útoku pro online služby nebo jakékoli aplikace nebo součásti, která využívá vstup z webové hello. Skriptování XSS může útočníkovi tooexecute skriptu v počítači jiného uživatele prostřednictvím ohrožené webové aplikace. Škodlivých skriptů může být toosteal použité soubory cookie a jinak manipulovat s počítači napadeného počítače prostřednictvím jazyka JavaScript. XSS brání ověřování uživatelského vstupu, zajistíte, že je správně vytvořen a kódování před vykreslením na webové stránce. Pomocí webové ochrany knihovny lze provést ověření vstupu a výstupu kódování. Pro spravovaný kód (C\#, VB.net, atd.), použít jeden nebo více vhodné kódování metody z hello knihovny webové ochrany (Anti-XSS), v závislosti na kontextu hello kde získá označované hello uživatelský vstup:| 
+| **Odkazy**              | [Jak zabránit skriptování v technologii ASP.NET](http://msdn.microsoft.com/library/ms998274.aspx), [skriptování mezi](http://cwe.mitre.org/data/definitions/79.html), [list cheaty prevence XSS (skriptování mezi weby)](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet) |
+| **Kroky** | Skriptování mezi (často se používá zkratka jako XSS) je způsob útoku pro online služby nebo jakékoli aplikace nebo součásti, která využívá vstup z webu. Skriptování XSS může útočníkovi umožnit spuštění skriptu na počítači jiného uživatele prostřednictvím ohrožené webové aplikace. Škodlivé skripty slouží k ukrást soubory cookie a jinak manipulovat s počítači napadeného počítače prostřednictvím jazyka JavaScript. XSS brání ověřování uživatelského vstupu, zajistíte, že je správně vytvořen a kódování před vykreslením na webové stránce. Pomocí webové ochrany knihovny lze provést ověření vstupu a výstupu kódování. Pro spravovaný kód (C\#, VB.net, atd.), použít jeden nebo více vhodné kódování metody z knihovny webové ochrany (Anti-XSS), v závislosti na kontextu, kde získá označované vstupu uživatele:| 
 
 ### <a name="example"></a>Příklad
 
@@ -394,7 +394,7 @@ V předchozím příkladu kódu hello hello vstupní hodnota nemůže být delš
 | **Použít technologie** | Obecné, MVC5, MVC6 |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | [Přidání ověřování](http://www.asp.net/mvc/overview/getting-started/introduction/adding-validation), [ověřování modelu dat v aplikaci MVC](http://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [hlavní zásady pro vaše aplikace ASP.NET MVC](http://msdn.microsoft.com/magazine/dd942822.aspx) |
-| **Kroky** | <p>Všechny hello vstupní parametry musí být ověřený, než jsou použity v tooensure aplikace hello, aplikace hello zabezpečení proti vstupy uživatel se zlými úmysly. Ověření hello vstupní hodnoty pomocí regulárního výrazu ověření na straně serveru s strategie ověření seznamu povolených IP adres. Unsanitized uživatelské vstupy / parametry předané metody toohello, může způsobit kódu chyby vkládání.</p><p>Pro webové aplikace vstupní body zahrnují také polí formuláře, QueryStrings, soubory cookie, hlaviček protokolu HTTP a parametry webové služby.</p><p>Následující kontroly ověření vstupu Hello musí provést při vazby modelu:</p><ul><li>Vlastnosti modelu Hello by měl být označený poznámkou s poznámkou regulární výraz pro přijetí povolený počet znaků a maximální povolenou délku</li><li>metody kontroleru Hello proveďte ModelState platnosti</li></ul>|
+| **Kroky** | <p>Před použitím v aplikaci k zajištění, že aplikace zabezpečení proti uživatel se zlými úmysly vstupy musí být ověřeny všechny vstupní parametry. Ověření vstupní hodnoty pomocí regulárního výrazu ověření na straně serveru s strategie ověření seznamu povolených IP adres. Unsanitized uživatelské vstupy / parametry předané do metod může způsobit kódu chyby vkládání.</p><p>Pro webové aplikace vstupní body zahrnují také polí formuláře, QueryStrings, soubory cookie, hlaviček protokolu HTTP a parametry webové služby.</p><p>Následující kontroly ověření vstupu musí být prováděny po vazby modelu:</p><ul><li>Vlastnosti modelu měli s poznámkou regulární výraz pro přijetí povolený počet znaků a maximální přípustná délka poznámky.</li><li>Metody kontroleru proveďte ModelState platnosti</li></ul>|
 
 ## <a id="richtext"></a>Čištění bude použito na pole formuláře, které přijímají všechny znaky, např, bohaté textového editoru
 
@@ -405,9 +405,9 @@ V předchozím příkladu kódu hello hello vstupní hodnota nemůže být delš
 | **Použít technologie** | Obecné |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | [Kódování Unsafe vstup](https://msdn.microsoft.com/library/ff647397.aspx#paght000003_step3), [HTML Sanitizér](https://github.com/mganss/HtmlSanitizer) |
-| **Kroky** | <p>Identifikujte všechny značky statické značek, které chcete toouse. Běžnou praxí je toorestrict formátování toosafe HTML prvky, jako například `<b>` (tučné) a `<i>` (kurzíva).</p><p>Před zápisem hello data, kódování HTML ho. Tato díky všech škodlivý skriptů bezpečné tím, že ho na toobe spravovány jako text, ne jako spustitelný kód.</p><ol><li>Zakázat žádost ASP.NET ověření přidáním hello hello ValidateRequest = "false" atribut toohello @ Page – direktiva</li><li>Kódování hello vstupní řetězec pomocí metody HtmlEncode hello</li><li>Použití StringBuilder a jeho tooselectively metoda nahradit odebrat hello kódování u elementů hello HTML, které chcete toopermit volání</li></ol><p>Hello odkazů na stránky v hello zakáže ověření požadavku ASP.NET nastavením `ValidateRequest="false"`. Ji umístí kódování HTML hello vstup a umožňuje selektivně hello `<b>` a `<i>` Alternativně knihovny .NET pro čištění HTML mohou být využity také.</p><p>HtmlSanitizer je knihovna pro .NET pro čištění fragmentů kódu HTML a dokumenty z konstrukce, které můžou vést útoky tooXSS. Používá AngleSharp tooparse, manipulaci a vykreslení HTML a CSS. HtmlSanitizer je možné nainstalovat jako balíčku NuGet a hello uživatelský vstup může být předána relevantní HTML nebo šablon stylů CSS čištění metody, jako příslušné na straně serveru hello. Upozorňujeme, který čištění jako ovládací prvek zabezpečení by měl být považován za pouze jako poslední možnost.</p><p>Ověření vstupu a výstupu kódování jsou považovány za lepší kontrolních mechanismů pro zabezpečení.</p> |
+| **Kroky** | <p>Identifikujte všechny značky statické značek, které chcete použít. Běžnou praxí je omezit formátování na bezpečné elementy HTML, jako například `<b>` (tučné) a `<i>` (kurzíva).</p><p>Před zápisem dat, kódování HTML ho. Díky tomu všech škodlivý skriptů bezpečné tak, že ho zpracovávat jako text, ne jako spustitelný kód.</p><ol><li>Zakázat ověřování žádostí ASP.NET tak, že přidáte ValidateRequest = "false" atribut @ Page – direktiva</li><li>Kódování vstupní řetězec pomocí metody HtmlEncode</li><li>Použití StringBuilder a volejte příslušnou metodu nahradit selektivně odebrat kódování na elementy HTML, které chcete povolit</li></ol><p>Na stránce in ověření žádosti odkazy zakáže ASP.NET nastavením `ValidateRequest="false"`. Ji umístí kódování HTML vstupu a umožňuje selektivně `<b>` a `<i>` Alternativně knihovny .NET pro čištění HTML mohou být využity také.</p><p>HtmlSanitizer je knihovna pro .NET pro čištění fragmentů kódu HTML a dokumenty z konstrukce, které můžou vést útoky XSS. Používá AngleSharp analyzovat, manipulaci a vykreslení HTML a CSS. HtmlSanitizer je možné nainstalovat jako balíčku NuGet a vstup uživatele může být předána relevantní HTML nebo šablon stylů CSS čištění metody, jako příslušné na straně serveru. Upozorňujeme, který čištění jako ovládací prvek zabezpečení by měl být považován za pouze jako poslední možnost.</p><p>Ověření vstupu a výstupu kódování jsou považovány za lepší kontrolních mechanismů pro zabezpečení.</p> |
 
-## <a id="inbuilt-encode"></a>Nepřiřazujte toosinks DOM elementy, které nemají integrované kódování
+## <a id="inbuilt-encode"></a>Jímky, které nemají integrované kódování nepřiřazujte elementů modelu DOM
 
 | Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -416,7 +416,7 @@ V předchozím příkladu kódu hello hello vstupní hodnota nemůže být delš
 | **Použít technologie** | Obecné |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | Není k dispozici  |
-| **Kroky** | Mnoho funkcí javascript nedělají nic kódování ve výchozím nastavení. Při přiřazování nedůvěryhodné vstupní tooDOM elementy prostřednictvím takové funkce, může vést k křížové spouštění skriptů (XSS) lokality.| 
+| **Kroky** | Mnoho funkcí javascript nedělají nic kódování ve výchozím nastavení. Při přiřazování nedůvěryhodné vstup na elementy DOM prostřednictvím takové funkce, může vést k křížové spouštění skriptů (XSS) lokality.| 
 
 ### <a name="example"></a>Příklad
 Následuje několik příkladů, nezabezpečené: 
@@ -429,7 +429,7 @@ $('body').append(resHTML);
 ```
 Nepoužívejte `innerHtml`; místo toho použijte `innerText`. Podobně, místo provedení `$("#elm").html()`, použijte`$("#elm").text()` 
 
-## <a id="redirect-safe"></a>Ověřit, zda všechny jsou uzavřeny nebo bezpečně provést přesměrování v rámci aplikace hello
+## <a id="redirect-safe"></a>Ověřit, zda všechny jsou uzavřeny nebo bezpečně provést přesměrování v rámci aplikace
 
 | Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -437,8 +437,8 @@ Nepoužívejte `innerHtml`; místo toho použijte `innerText`. Podobně, místo 
 | **SDL fáze**               | Sestavení |  
 | **Použít technologie** | Obecné |
 | **Atributy**              | Není k dispozici  |
-| **Odkazy**              | [Hello Framework autorizace OAuth 2.0 - otevřete přesměrovačů](http://tools.ietf.org/html/rfc6749#section-10.15) |
-| **Kroky** | <p>Návrh aplikace, které vyžadují přesměrování tooa uživatelem zadané umístění musí omezit hello možné přesměrování cíle tooa předdefinovaného "bezpečnou" seznamu sítě nebo domény. Všechny přesměrování aplikace hello musí být uzavřen nebo bezpečné.</p><p>toodo toto:</p><ul><li>Identifikujte všechny přesměrování</li><li>Implementujte příslušné zmírnění dopadů pro každou funkci přesměrování. Odpovídající jejich zmírnění zahrnují přesměrování potvrzení seznamu povolených IP adres nebo uživatele. Pokud webové stránky nebo služby s chybou otevřete přesměrování umožňující používá zprostředkovatelů identity Facebook nebo OAuth/OpenID, může útočník ukrást token přihlášení uživatele a zosobnit uživatele. To je nese riziko při použití OAuth, které jsou uvedené v RFC 6749 "hello Framework autorizace OAuth 2.0", podobně jako část 10.15 "otevřete přesměruje", přihlašovací údaje uživatelů můžete ohroženy útoky spear phishing pomocí otevřete přesměrování</li></ul>|
+| **Odkazy**              | [Rozhraní autorizace OAuth 2.0 - otevřete přesměrovačů](http://tools.ietf.org/html/rfc6749#section-10.15) |
+| **Kroky** | <p>Návrh aplikace, které vyžadují přesměrování na uživatelem zadané umístění musí omezit možné přesměrování cíle, které předem definovaného seznamu "bezpečnou" sítě nebo domény. Všechny přesměrování v aplikaci, musí být uzavřen nebo bezpečné.</p><p>Použijte následující postup:</p><ul><li>Identifikujte všechny přesměrování</li><li>Implementujte příslušné zmírnění dopadů pro každou funkci přesměrování. Odpovídající jejich zmírnění zahrnují přesměrování potvrzení seznamu povolených IP adres nebo uživatele. Pokud webové stránky nebo služby s chybou otevřete přesměrování umožňující používá zprostředkovatelů identity Facebook nebo OAuth/OpenID, může útočník ukrást token přihlášení uživatele a zosobnit uživatele. To je nese riziko při použití OAuth, které jsou uvedené v RFC 6749 "The OAuth 2.0 autorizace Framework", podobně jako část 10.15 "otevřete přesměruje", přihlašovací údaje uživatelů můžete ohroženy útoky spear phishing pomocí otevřete přesměrování</li></ul>|
 
 ## <a id="string-method"></a>Implementace ověření vstupu na všechny parametry typu řetězec akceptovat metody Kontroleru
 
@@ -449,9 +449,9 @@ Nepoužívejte `innerHtml`; místo toho použijte `innerText`. Podobně, místo 
 | **Použít technologie** | Obecné, MVC5, MVC6 |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | [Ověřování dat modelu v aplikaci MVC](http://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [hlavní zásady pro vaše aplikace ASP.NET MVC](http://msdn.microsoft.com/magazine/dd942822.aspx) |
-| **Kroky** | Pro metody, které právě přijímají primitivní datový typ a ne modely jako argument by mělo být provedeno ověření vstupu pomocí regulárního výrazu. Regex.IsMatch – v tomto poli musí být použit s vzor platný regulární výraz. Pokud vstup hello neodpovídá hello určený regulární výraz, řízení neměli pokračovat a má být zobrazena odpovídajícího upozornění týkající se chyby ověření.| 
+| **Kroky** | Pro metody, které právě přijímají primitivní datový typ a ne modely jako argument by mělo být provedeno ověření vstupu pomocí regulárního výrazu. Regex.IsMatch – v tomto poli musí být použit s vzor platný regulární výraz. Pokud vstupní neodpovídá zadanému regulárnímu výrazu, řízení neměli pokračovat a má být zobrazena odpovídajícího upozornění týkající se chyby ověření.| 
 
-## <a id="dos-expression"></a>Nastavit časový limit horní limit pro regulární výraz zpracování tooprevent DoS z důvodu toobad regulární výrazy
+## <a id="dos-expression"></a>Nastavit časový limit horní limit pro regulární výraz zpracování, aby se zabránilo DoS z důvodu chybné regulární výrazy
 
 | Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -460,10 +460,10 @@ Nepoužívejte `innerHtml`; místo toho použijte `innerText`. Podobně, místo 
 | **Použít technologie** | Obecné, webových formulářů, MVC5, MVC6  |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | [Vlastnost DefaultRegexMatchTimeout](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.defaultregexmatchtimeout.aspx) |
-| **Kroky** | útoků tooensure DOS proti chybně vytvořen regulární výrazy, které způsobí mnoho zpětné navracení, nastavte hello globální výchozí časový limit. Pokud doba zpracování hello trvá déle, než hello definované horní limit, by vyvolat výjimku časového limitu. Pokud je nakonfigurovaná nic, by nekonečné hello vypršení časového limitu.| 
+| **Kroky** | Zajistit útoků DoS proti chybně vytvořený regulární výrazy, které způsobí mnoho zpětné navracení, nastavte globální výchozí časový limit. Pokud bude čas zpracování trvá déle, než definované horní limit, by vyvolat výjimku časového limitu. Pokud je nakonfigurovaná nic, bude časový limit nekonečné.| 
 
 ### <a name="example"></a>Příklad
-Například hello následující konfiguraci vyvolá RegexMatchTimeoutException, pokud se zpracování hello trvá déle než 5 sekund: 
+Například následující konfigurace vyvolá RegexMatchTimeoutException, pokud se zpracování trvá déle než 5 sekund: 
 
 ```C#
 <httpRuntime targetFramework="4.5" defaultRegexMatchTimeout="00:00:05" />
@@ -478,7 +478,7 @@ Například hello následující konfiguraci vyvolá RegexMatchTimeoutException,
 | **Použít technologie** | MVC5 MVC6 |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | Není k dispozici  |
-| Krok | Webových stránek ASP.Net (Razor) provést automatické kódování HTML. Všechny řetězce tištěné útržky vloženého kódu (@ bloky) jsou automaticky kódovaný jazykem HTML. Ale když `HtmlHelper.Raw` metoda je volána, vrátí kód, který není kódován jazykem HTML. Pokud `Html.Raw()` Pomocná metoda se používá, obchází hello automatické kódování ochrany, která poskytuje Razor.|
+| Krok | Webových stránek ASP.Net (Razor) provést automatické kódování HTML. Všechny řetězce tištěné útržky vloženého kódu (@ bloky) jsou automaticky kódovaný jazykem HTML. Ale když `HtmlHelper.Raw` metoda je volána, vrátí kód, který není kódován jazykem HTML. Pokud `Html.Raw()` Pomocná metoda se používá, obchází automatickou ochranu kódování, která poskytuje Razor.|
 
 ### <a name="example"></a>Příklad
 Tady je příklad nezabezpečené: 
@@ -492,7 +492,7 @@ Tady je příklad nezabezpečené:
         </div>
 </div>
 ```
-Nepoužívejte `Html.Raw()` Pokud potřebujete toodisplay značek. Tato metoda neprovádí kódování implicitně výstup. Například použijte další Pomocníci ASP.NET`@Html.DisplayFor()` 
+Nepoužívejte `Html.Raw()` Pokud je třeba zobrazit značek. Tato metoda neprovádí kódování implicitně výstup. Například použijte další Pomocníci ASP.NET`@Html.DisplayFor()` 
 
 ## <a id="stored-proc"></a>Nepoužívejte dynamické dotazy v uložené procedury
 
@@ -503,7 +503,7 @@ Nepoužívejte `Html.Raw()` Pokud potřebujete toodisplay značek. Tato metoda n
 | **Použít technologie** | Obecné |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | Není k dispozici  |
-| **Kroky** | <p>Útok prostřednictvím injektáže SQL zneužije chyby zabezpečení v libovolné příkazy toorun ověření vstupu v databázi hello. Ho může dojít, když vaše aplikace používá vstupní tooconstruct dynamické, že tooaccess příkazy SQL hello databáze. Může také dojít, pokud kód používá uložené procedury, které se předávají řetězce, které obsahují nezpracovaná uživatelský vstup. Pomocí hello útok prostřednictvím injektáže SQL, hello útočník může spustit libovolný příkazy v databázi hello. Všechny příkazy SQL (včetně příkazů SQL hello v uložené procedury) musí být parametry. Parametrizované příkazy SQL, bude přijímat znaků, které mají zvláštní význam tooSQL (např. jednoduchých uvozovkách) bez problémů, protože jsou silného typu. |
+| **Kroky** | <p>Útok prostřednictvím injektáže SQL zneužije chyby zabezpečení v ověření vstupu ke spuštění libovolného příkazů v databázi. Ho může dojít, když vaše aplikace používá vstup k sestavování dynamických příkazů SQL pro přístup k databázi. Může také dojít, pokud kód používá uložené procedury, které se předávají řetězce, které obsahují nezpracovaná uživatelský vstup. Pomocí útok prostřednictvím injektáže SQL, útočník může spustit libovolný příkazy v databázi. Všechny příkazy SQL (včetně příkazy SQL v uložené procedury) musí být parametry. Parametrizované příkazy SQL, bude přijímat znaků, které mají zvláštní význam jazyka SQL (např. jednoduchých uvozovkách) bez problémů, protože jsou silného typu. |
 
 ### <a name="example"></a>Příklad
 Následuje příklad nezabezpečené dynamické uloženou proceduru: 
@@ -534,7 +534,7 @@ AS
 ```
 
 ### <a name="example"></a>Příklad
-Toto je stejný uložené procedury implementována bezpečně hello: 
+Toto je stejné implementována bezpečně uložené procedury: 
 ```C#
 CREATE PROCEDURE [dbo].[uspGetProductsByCriteriaSecure]
 (
@@ -563,10 +563,10 @@ AS
 | **Použít technologie** | MVC5 MVC6 |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | [Ověření modelu v rozhraní ASP.NET Web API](http://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
-| **Kroky** | Když klient odešle data tooa webové rozhraní API, je povinné toovalidate hello data před provedením jakékoli zpracovávání. Pro rozhraní ASP.NET Web API, kterou přijmout modely jako vstup, pomocí datových poznámek na modely tooset ověřovací pravidla ve vlastnostech hello hello modelu.|
+| **Kroky** | Když klient odešle data do webového rozhraní API, je nutné ověřit data před provedením jakékoli zpracovávání. Pro rozhraní ASP.NET Web API, kterou přijmout modely jako vstup, pomocí datových poznámek na modely nastavování pravidel ověřování pro vlastnosti modelu.|
 
 ### <a name="example"></a>Příklad
-Hello následující kód ukazuje hello stejné: 
+Následující kód ukazuje stejné: 
 
 ```C#
 using System.ComponentModel.DataAnnotations;
@@ -587,7 +587,7 @@ namespace MyApi.Models
 ```
 
 ### <a name="example"></a>Příklad
-V metodě akce hello řadičů hello rozhraní API má platnosti hello modelu toobe explicitně zaškrtnuto, jak je uvedeno níže: 
+V metodě akce řadičů rozhraní API platnosti modelu se musí explicitně zkontrolovat, jak je uvedeno níže: 
 
 ```C#
 namespace MyApi.Controllers
@@ -598,7 +598,7 @@ namespace MyApi.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Do something with hello product (not shown).
+                // Do something with the product (not shown).
 
                 return new HttpResponseMessage(HttpStatusCode.OK);
             }
@@ -620,7 +620,7 @@ namespace MyApi.Controllers
 | **Použít technologie** | Obecné, MVC 5, 6 MVC |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | [Ověřování dat modelu v aplikaci MVC](http://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [hlavní zásady pro vaše aplikace ASP.NET MVC](http://msdn.microsoft.com/magazine/dd942822.aspx) |
-| **Kroky** | Pro metody, které právě přijímají primitivní datový typ a ne modely jako argument by mělo být provedeno ověření vstupu pomocí regulárního výrazu. Regex.IsMatch – v tomto poli musí být použit s vzor platný regulární výraz. Pokud vstup hello neodpovídá hello určený regulární výraz, řízení neměli pokračovat a má být zobrazena odpovídajícího upozornění týkající se chyby ověření.|
+| **Kroky** | Pro metody, které právě přijímají primitivní datový typ a ne modely jako argument by mělo být provedeno ověření vstupu pomocí regulárního výrazu. Regex.IsMatch – v tomto poli musí být použit s vzor platný regulární výraz. Pokud vstupní neodpovídá zadanému regulárnímu výrazu, řízení neměli pokračovat a má být zobrazena odpovídajícího upozornění týkající se chyby ověření.|
 
 ## <a id="typesafe-api"></a>Ujistěte se, že bezpečnost typů parametrů se používají v webového rozhraní API pro přístup k datům
 
@@ -631,10 +631,10 @@ namespace MyApi.Controllers
 | **Použít technologie** | Obecné |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | Není k dispozici  |
-| **Kroky** | <p>Pokud používáte hello parametry kolekce, vstup hello vyhodnotí SQL je jako hodnotu literálu místo pak jako spustitelný kód. Hello kolekce parametrů lze použít tooenforce typ a délku omezení na vstupní data. Hodnoty mimo rozsah hello aktivovat výjimku. Pokud se nepoužívají bezpečnost typů parametrů SQL, může být útočníci možné tooexecute vkládání útoků, které jsou součástí hello nefiltrovaná vstup.</p><p>Při vytváření SQL dotazuje tooavoid možné SQL vkládání útoků, které mohou nastat u nefiltrované vstup, použijte bezpečné parametry typu. Parametry typu bezpečné můžete použít s uložené procedury a dynamických příkazů SQL. Parametry jsou zpracovány jako literálových hodnot hello databáze a ne jako spustitelný kód. Parametry jsou zaškrtnutá políčka, typ a délku.</p>|
+| **Kroky** | <p>Pokud používáte kolekci Parameters, vyhodnotí SQL je vstup jako hodnotu literálu místo pak jako spustitelný kód. Kolekce parametrů slouží k vynucení omezení typ a délku vstupní data. Hodnoty mimo rozsah aktivovat výjimku. Pokud se nepoužívají bezpečnost typů parametrů SQL, může být útočníci provést vkládání útoků, které jsou součástí nefiltrované vstup.</p><p>Používejte bezpečné parametry typu předejdete možných útoků vkládání SQL, které mohou nastat u nefiltrované vstup při vytváření dotazů SQL. Parametry typu bezpečné můžete použít s uložené procedury a dynamických příkazů SQL. Parametry jsou zpracovány jako literálových hodnot v databázi a ne jako spustitelný kód. Parametry jsou zaškrtnutá políčka, typ a délku.</p>|
 
 ### <a name="example"></a>Příklad
-Hello následující kód ukazuje, jak toouse bezpečné parametry typu s hello SqlParameterCollection při volání uložené procedury. 
+Následující kód ukazuje, jak pomocí bezpečné parametry typu SqlParameterCollection při volání uložené procedury. 
 
 ```C#
 using System.Data;
@@ -650,7 +650,7 @@ myCommand.SelectCommand.Parameters["@au_id"].Value = SSN.Text;
 myCommand.Fill(userDataset);
 }  
 ```
-V předchozím příkladu kódu hello hello vstupní hodnota nemůže být delší než 11 znaků. Pokud hello data neodpovídá typu toohello nebo délka definované parametrem hello, hello SqlParameter třída vyvolá výjimku. 
+V předchozím příkladu kódu vstupní hodnota nemůže být delší než 11 znaků. Pokud data neodpovídá typu nebo délka definované parametrem, třída SqlParameter vyvolá výjimku. 
 
 ## <a id="sql-docdb"></a>Použít umožňující dotazy SQL pro Cosmos DB
 
@@ -661,7 +661,7 @@ V předchozím příkladu kódu hello hello vstupní hodnota nemůže být delš
 | **Použít technologie** | Obecné |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | [Uvedení Parametrizace SQL v DocumentDB](https://azure.microsoft.com/blog/announcing-sql-parameterization-in-documentdb/) |
-| **Kroky** | I když DocumentDB podporuje pouze dotazy jen pro čtení, je stále možné v případě, že dotazy jsou vytvořený zřetězením s uživatelský vstup Injektáž SQL. Je možné pro toodata toogain přístupu uživatele, by neměl být přístup v rámci hello stejné kolekci tím, že vytvoří škodlivý dotazy SQL. Parametrizované dotazy SQL pomocí Pokud dotazy se vytvářejí na základě na vstup uživatele. |
+| **Kroky** | I když DocumentDB podporuje pouze dotazy jen pro čtení, je stále možné v případě, že dotazy jsou vytvořený zřetězením s uživatelský vstup Injektáž SQL. Je možné, pro uživatele k získání přístupu k datům, které budou by neměla přístup v rámci stejné kolekce, tím, že vytvoří škodlivý dotazy SQL. Parametrizované dotazy SQL pomocí Pokud dotazy se vytvářejí na základě na vstup uživatele. |
 
 ## <a id="schema-binding"></a>Ověření vstupu WCF prostřednictvím vazbou schématu
 
@@ -672,7 +672,7 @@ V předchozím příkladu kódu hello hello vstupní hodnota nemůže být delš
 | **Použít technologie** | Obecné, NET Framework 3 |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff647820.aspx) |
-| **Kroky** | <p>Nedostatečná ověření vede toodifferent typů vkládání útoků.</p><p>Zpráva ověření představuje jeden řádek obrany v hello ochrany aplikace WCF. S tímto přístupem ověřit zpráv pomocí operací služby WCF tooprotect schémata před útokem škodlivý klientem. Ověřte všechny zprávy přijaté službou hello klient tooprotect hello klient před útokem škodlivý službou. Zpráva ověření je možné toovalidate zprávy při operations využívat kontrakty zpráv nebo datové kontrakty, které není možné pomocí ověření parametru. Zpráva ověření umožňuje logiku ověření toocreate uvnitř schémat, a tím poskytuje větší flexibilitu a zkrácení doby vývoj. Schémata můžete opětovně použít napříč různými aplikacemi uvnitř organizace hello, vytváření standardy pro znázornění dat. Kromě toho zpráva ověření můžete tooprotect operace při spotřebování kontrakty představující obchodní logiku zahrnující komplexnější datové typy.</p><p>tooperform zpráva ověření, nejprve vytvořit schéma, které představuje hello operations vaší služby a hello datových typů, které spotřebovávají tyto operace. Pak vytvoříte třídu rozhraní .NET, která implementuje inspector zpráva vlastního klienta a vlastní dispečera zpráv inspector toovalidate hello zprávy ze služby hello odeslat/přijmout. V dalším kroku implementovat vlastní koncový bod chování tooenable zpráva ověřování klienta hello i hello služby. Nakonec implementovat vlastní konfigurace element na hello třídu, která umožňuje tooexpose hello rozšířené chování vlastní koncového bodu v konfiguračním souboru hello hello služby nebo hello klienta"</p>|
+| **Kroky** | <p>Nedostatečná ověření vede k prostřednictvím injektáže jiného typu.</p><p>Zpráva ověření představuje jeden řádek obrany v oblasti ochrany aplikace WCF. S tímto přístupem ověření zprávy použití schémata k ochraně před útoky ze strany škodlivého klienta operací služby WCF. Ověřte všechny zprávy přijaté službou klienta pro ochranu klienta před útokem škodlivý službou. Zpráva ověření umožňuje ověření zprávy při operations využívat kontrakty zpráv nebo datové kontrakty, které není možné pomocí ověření parametru. Zpráva ověření můžete vytvořit logiku ověření uvnitř schémat, a tím poskytuje větší flexibilitu a zkrácení doby vývoj. Schémata můžete opětovně použít napříč různými aplikacemi v organizaci, vytváření standardy pro znázornění dat. Kromě toho zpráva ověření umožňuje chránit operace, pokud budou využívat kontrakty představující obchodní logiku zahrnující komplexnější datové typy.</p><p>K provedení ověření zprávy, nejprve vytvoříte schéma, které představuje provozu služby a datové typy uplatníte tyto operace. Pak vytvoříte třídu rozhraní .NET, která implementuje inspector zpráva vlastního klienta a nástroj inspector vlastní dispečera zpráv k ověření zprávy odeslané/přijal od služby. V dalším kroku implementujete chování vlastní koncový bod pro povolení ověřování zpráv na klienta a služby. Nakonec implementovat vlastní konfigurace elementu na třídu, která umožňuje vystavit chování Rozšířené vlastní koncového bodu v konfiguračním souboru služby nebo klienta"</p>|
 
 ## <a id="parameters"></a>Ověření vstupu WCF prostřednictvím parametru kontroly
 
@@ -683,4 +683,4 @@ V předchozím příkladu kódu hello hello vstupní hodnota nemůže být delš
 | **Použít technologie** | Obecné, NET Framework 3 |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff647875.aspx) |
-| **Kroky** | <p>Vstup a ověření dat představuje jeden důležité linii obrany v hello ochrany aplikace WCF. Měli byste ověřit, všechny parametry, které jsou zveřejněné v WCF operations tooprotect hello služby před útokem škodlivého klienta. Naopak by mělo také ověřit všechny návratové hodnoty přijatých hello klient tooprotect hello klient před útokem škodlivý službou</p><p>WCF poskytuje body rozšiřitelnosti jiný, které vám umožňují toocustomize hello WCF modul runtime chování tak, že vytvoříte vlastní rozšíření. Zpráva, že kontrol a parametr inspektoři dvěma způsoby rozšiřitelnost použít toogain větší kontrolu nad daty hello předávání mezi klientem a služby. Můžete by měl použít parametr inspektoři pro ověření vstupu a používat inspektoři zpráv pouze v případě potřeby tooinspect hello celý zpráv předávaných do/z služby.</p><p>ověřování vstupu tooperform, bude sestavovat třídu rozhraní .NET a implementovat vlastní parametr inspector v pořadí parametrů toovalidate na operace ve službě. Pak budete implementovat vlastní koncový bod ověřování tooenable chování hello klienta i hello služby. Nakonec budete implementovat vlastní konfigurace element na hello třídu, která umožňuje tooexpose hello rozšířené chování vlastní koncového bodu v konfiguračním souboru hello hello služby nebo hello klienta</p>|
+| **Kroky** | <p>Vstup a ověření dat představuje jeden důležité linii obrany v oblasti ochrany aplikace WCF. Měli byste ověřit, všechny parametry, které jsou zveřejněné v operací služby WCF k ochraně před útokem službu Klient se zlými úmysly. Naopak by mělo také ověřit všechny návratové hodnoty přijatých klientem pro ochranu klienta před útokem škodlivý službou</p><p>WCF poskytuje body rozšiřitelnosti jiný, které vám umožní přizpůsobit chování runtime WCF tak, že vytvoříte vlastní rozšíření. Inspektoři zpráv a parametr inspektoři dvěma způsoby rozšiřitelnost použít k získání větší kontrolu nad daty předávání mezi klientem a služby. By měl použít parametr inspektoři pro ověření vstupu a používejte inspektoři zpráv jenom v případě, že je potřeba zkontrolovat celý zpráv předávaných do/z služby.</p><p>K provedení ověření vstupu, bude sestavovat třídu rozhraní .NET a implementovat vlastní parametr inspector k ověřování parametry na operace ve službě. Potom budete implementovat vlastní koncový bod chování pro povolení ověřování klienta a služby. Nakonec budete implementovat vlastní konfigurace elementu na třídu, která umožňuje vystavit chování Rozšířené vlastní koncového bodu v konfiguračním souboru služby nebo klienta</p>|

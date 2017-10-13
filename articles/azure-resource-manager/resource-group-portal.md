@@ -1,6 +1,6 @@
 ---
-title: "aaaUse Azure portálu toomanage prostředky Azure | Microsoft Docs"
-description: "Pomocí portálu Azure a Azure Resource Manageru toomanage vašich prostředků. Ukazuje, jak toowork s prostředky toomonitor řídicí panely."
+title: "Použití portálu Azure ke správě prostředků Azure | Microsoft Docs"
+description: "Ke správě prostředků pomocí portálu Azure a správě prostředků Azure. Ukazuje, jak pracovat s řídicí panely a sledujte prostředky."
 services: azure-resource-manager,azure-portal
 documentationcenter: 
 author: tfitzmac
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: tomfitz
-ms.openlocfilehash: 0c89a197a31c5b6dd03ba457cb4d1fdf9f6d00f6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7a94fd5065de93384460e851627a9813d439956b
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="manage-azure-resources-through-portal"></a>Spravovat prostředky prostřednictvím portálu Azure
 > [!div class="op_single_selector"]
@@ -29,89 +29,89 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Toto téma ukazuje, jak toouse hello [portál Azure](https://portal.azure.com) s [Azure Resource Manager](resource-group-overview.md) toomanage vašich prostředků Azure. v tématu toolearn o nasazení prostředků prostřednictvím portálu hello [nasazení prostředků pomocí šablony Resource Manageru a portálu Azure](resource-group-template-deploy-portal.md).
+Toto téma ukazuje, jak používat [portál Azure](https://portal.azure.com) s [Azure Resource Manager](resource-group-overview.md) ke správě prostředků Azure. Další informace o nasazení prostředků prostřednictvím portálu najdete v tématu [nasazení prostředků pomocí šablony Resource Manageru a portálu Azure](resource-group-template-deploy-portal.md).
 
-Ne všechny služby v současné době podporuje hello portál nebo Resource Manager. Pro tyto služby, je třeba toouse hello [portálu classic](https://manage.windowsazure.com). Hello stav každé služby, najdete v části [Azure portálu dostupnosti grafu](https://azure.microsoft.com/features/azure-portal/availability/).
+Ne všechny služby v současné době podporuje portál nebo Resource Manager. Pro tyto služby, budete muset použít [portálu classic](https://manage.windowsazure.com). Stav jednotlivých služeb, naleznete v části [Azure portálu dostupnosti grafu](https://azure.microsoft.com/features/azure-portal/availability/).
 
 ## <a name="manage-resource-groups"></a>Správa skupin prostředků
 
-Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení s Azure. Skupina prostředků Hello může zahrnovat všechny hello prostředky pro řešení hello nebo jenom prostředky, které chcete toomanage jako skupina. Můžete určit, jak mají prostředky tooallocate tooresource skupin podle díky hello nejvhodnější pro vaši organizaci. Obecně platí, přidejte prostředky, které sdílejí hello stejný životní cyklus toohello skupina stejné prostředků, můžete snadno nasadit, aktualizovat a odstranit jejich jako skupina. 
+Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení s Azure. Skupina prostředků může zahrnovat všechny prostředky pro řešení nebo pouze ty prostředky, které chcete spravovat jako skupinu. Na základě toho, co je pro vaši organizaci nejvhodnější, rozhodnete, jakým způsobem se mají prostředky přidělovat do skupin prostředků. Obecně platí přidejte prostředky, které sdílejí stejný životní cyklus do stejné skupiny prostředků, můžete snadno nasadit, aktualizovat a odstranit jejich jako skupina. 
 
-Skupina prostředků Hello ukládají metadata o hello prostředky. Proto když zadáte umístění pro skupinu prostředků hello, určíte se uloží aby metadata. Pro dodržování předpisů, pravděpodobně bude třeba tooensure data uložená v určité oblasti.
+Skupina prostředků ukládá metadata o prostředcích. Při zadávání umístění skupiny prostředků tedy určujete, kde se tato metadata ukládají. Z důvodu dodržování předpisů může být nutné zajistit, aby se data ukládala v určité oblasti.
 
-1. Vyberte všechny skupiny zdrojů hello ve vašem předplatném toosee **skupiny prostředků**.
+1. Pokud chcete zobrazit všechny skupiny prostředků v rámci vašeho předplatného, vyberte **skupiny prostředků**.
    
     ![Procházet skupiny prostředků](./media/resource-group-portal/browse-groups.png)
-2. Vyberte skupinu prostředků prázdný toocreate **přidat**.
+2. Vytvořit skupinu prostředků prázdný, vyberte **přidat**.
    
     ![Přidat skupinu prostředků](./media/resource-group-portal/add-resource-group.png)
-3. Zadejte název a umístění pro novou skupinu prostředků hello. Vyberte **Vytvořit**.
+3. Zadejte název a umístění pro novou skupinu prostředků. Vyberte **Vytvořit**.
    
     ![Vytvořte skupinu prostředků](./media/resource-group-portal/create-empty-group.png)
-4. Může být nutné tooselect **aktualizovat** toosee hello nedávno vytvořen prostředek skupiny.
+4. Je nutné vybrat **aktualizovat** zobrazíte skupině nedávno vytvořených prostředků.
    
     ![Aktualizace skupiny prostředků](./media/resource-group-portal/refresh-resource-groups.png)
-5. Vyberte toocustomize hello informace zobrazené pro vaší skupiny prostředků **sloupce**.
+5. Chcete-li přizpůsobit informace zobrazené pro vaší skupiny prostředků, vyberte **sloupce**.
    
     ![přizpůsobení sloupců](./media/resource-group-portal/select-columns.png)
-6. Vyberte sloupce tooadd hello a pak vyberte **aktualizace**.
+6. Vyberte sloupce, které chcete přidat a potom vyberte **aktualizace**.
    
     ![Přidání sloupců](./media/resource-group-portal/add-columns.png)
-7. toolearn o nasazení prostředků tooyour novou skupinu prostředků, najdete v části [nasazení prostředků pomocí šablony Resource Manageru a portálu Azure](resource-group-template-deploy-portal.md).
-8. Pro skupinu prostředků tooa rychlý přístup budete moct připnout hello okno tooyour řídicího panelu.
+7. Další informace o nasazování prostředků do nové skupiny prostředků najdete v tématu [nasazení prostředků pomocí šablony Resource Manageru a portálu Azure](resource-group-template-deploy-portal.md).
+8. Pro rychlý přístup do skupiny prostředků můžete Připnout okno na řídicí panel.
    
     ![Skupina prostředků PIN kódu](./media/resource-group-portal/pin-group.png)
-9. řídicí panel Hello zobrazí hello skupinu prostředků a její prostředky. Můžete vybrat skupiny prostředků hello nebo všechny jeho prostředky toonavigate toohello položky.
+9. Řídicí panel zobrazuje skupina prostředků a její prostředky. Můžete vybrat buď skupiny prostředků, nebo kterýkoli z jeho prostředků a přejděte k položce.
    
     ![Skupina prostředků PIN kódu](./media/resource-group-portal/show-resource-group-dashboard.png)
 
 ## <a name="tag-resources"></a>Značka prostředky
-Můžete použít skupiny tooresource značky a prostředky toologically uspořádání vaše prostředky. Informace o práci s značky najdete v tématu [pomocí značky tooorganize vašich prostředků Azure](resource-group-using-tags.md).
+Značky můžete použít pro skupiny prostředků a prostředky logicky uspořádat vaše prostředky. Informace o práci s značky najdete v tématu [použití značek k uspořádání prostředků Azure](resource-group-using-tags.md).
 
 [!INCLUDE [resource-manager-tag-resource](../../includes/resource-manager-tag-resources.md)]
 
 ## <a name="monitor-resources"></a>Sledování prostředků
-Když vyberete prostředek, uvede okna prostředků hello výchozí grafů a tabulek pro monitorování tohoto typu prostředku.
+Když vyberete prostředku, v okně prostředků uvede výchozí grafů a tabulek pro monitorování tohoto typu prostředku.
 
-1. Vyberte prostředek a Všimněte si, hello **monitorování** části. Obsahuje grafy, které jsou relevantní toohello typ prostředku. Hello následující obrázek znázorňuje hello výchozí údaje pro účet úložiště.
+1. Vyberte prostředek a upozornění **monitorování** části. Obsahuje grafy, které jsou relevantní pro typ prostředku. Následující obrázek znázorňuje výchozí sledování dat pro účet úložiště.
    
     ![zobrazení monitorování](./media/resource-group-portal/show-monitoring.png)
-2. Oddíl hello okno tooyour řídicí panel můžete připnout výběrem hello tečkami (...) nad sekcí hello. Můžete také přizpůsobit hello velikost hello oddíl v okně hello nebo ji úplně odebrat. Hello následující obrázek ukazuje, jak přizpůsobit toopin, nebo odeberte hello procesoru a paměti části.
+2. Oddíl v okně můžete připnout na řídicí panel tak, že vyberete se třemi tečkami (...) výše v části. Můžete také přizpůsobit velikost oddílu v okně nebo ji úplně odebrat. Následující obrázek ukazuje, jak připnout, upravit nebo odebrat oddíl procesoru a paměti.
    
     ![části kódu PIN](./media/resource-group-portal/pin-cpu-section.png)
-3. Po Připnutí hello části toohello řídicí panel, uvidíte na řídicím panelu hello hello souhrnu. A okamžitě ji vyberete trvá toomore údaje o datech hello.
+3. Po Připnutí části řídicího panelu, zobrazí se souhrn na řídicím panelu. A okamžitě ji vyberete přejdete na další informace o datech.
    
     ![Zobrazení řídicí panel](./media/resource-group-portal/view-startboard.png)
-4. toocompletely přizpůsobit hello data monitorování prostřednictvím hello portálu, přejděte tooyour výchozí řídicí panely a vyberte **novým řídicím panelem**.
+4. Chcete-li zcela přizpůsobit data monitorování prostřednictvím portálu, přejděte na řídicí panel Výchozí a vyberte **novým řídicím panelem**.
    
     ![řídicí panel](./media/resource-group-portal/dashboard.png)
-5. Pojmenujte váš nový řídicí panel a přetáhněte dlaždice na řídicím panelu hello. dlaždice Hello jsou filtrovány podle různé možnosti.
+5. Pojmenujte váš nový řídicí panel a přetáhněte dlaždice na řídicím panelu. Dlaždice jsou filtrovány podle různé možnosti.
    
     ![řídicí panel](./media/resource-group-portal/create-dashboard.png)
    
-     toolearn o práci s řídicí panely, najdete v části [vytvoření a sdílení řídicích panelů v hello portál Azure](../azure-portal/azure-portal-dashboards.md).
+     Další informace o práci s řídicích panelů najdete v tématu [sdílení řídicích panelů na portálu Azure a vytvoření](../azure-portal/azure-portal-dashboards.md).
 
 ## <a name="manage-resources"></a>Správa prostředků
-V okně hello prostředku najdete v části hello možností pro správu prostředků hello. portál Hello zobrazí možnosti správy pro tuto konkrétní typ prostředku. Zobrazí příkazy pro správu hello napříč hello horní části okna prostředků hello a na levé straně hello.
+V okně prostředku najdete v části Možnosti pro správu prostředku. Na portálu uvede možnosti správy pro tuto konkrétní typ prostředku. Příkazy pro správu zobrazí v horní části okna prostředků a na levé straně.
 
 ![Správa prostředků](./media/resource-group-portal/manage-resources.png)
 
-Z těchto možností můžete provádět operace, jako je například spuštění a zastavení virtuálního počítače nebo znovu konfigurovat vlastnosti hello hello virtuálního počítače.
+Z těchto možností můžete provádět operace, jako je například spuštění a zastavení virtuálního počítače nebo znovu konfigurovat vlastnosti virtuálního počítače.
 
 ## <a name="move-resources"></a>Přesunutí prostředků
-Pokud potřebujete skupinu prostředků tooanother toomove prostředky nebo jiné předplatné, přečtěte si [přesunout skupiny prostředků toonew prostředků nebo předplatného](resource-group-move-resources.md).
+Pokud potřebujete k přesunu prostředků do jiné skupině prostředků nebo jiné předplatné, přečtěte si [přesunutím prostředků do nové skupiny prostředků nebo předplatného](resource-group-move-resources.md).
 
 ## <a name="lock-resources"></a>Uzamčení prostředků
-Můžete uzamknout předplatné, skupinu prostředků nebo prostředek tooprevent ostatní uživatelé ve vaší organizaci neúmyslnému odstranění nebo úprava důležitých prostředků. Další informace najdete v tématu [Zamknutí prostředků pomocí Azure Resource Manageru](resource-group-lock-resources.md).
+Je možné zamknout předplatné, skupinu prostředků nebo prostředek zabránit ostatním uživatelům ve vaší organizaci neúmyslnému odstranění nebo úprava důležitých prostředků. Další informace najdete v tématu [Zamknutí prostředků pomocí Azure Resource Manageru](resource-group-lock-resources.md).
 
 [!INCLUDE [resource-manager-lock-resources](../../includes/resource-manager-lock-resources.md)]
 
 ## <a name="view-your-subscription-and-costs"></a>Zobrazit vaše předplatné a náklady
-Pro všechny vaše prostředky můžete zobrazit informace o předplatném a hello zahrnuté náklady. Vyberte **odběry** a chcete, aby toosee předplatné hello. Může mít pouze jeden tooselect předplatné.
+Můžete zobrazit informace o předplatného a náklady na zahrnuté pro všechny vaše prostředky. Vyberte **odběry** a předplatné, které chcete zobrazit. Může mít pouze jeden odběr k výběru.
 
 ![předplatné](./media/resource-group-portal/select-subscription.png)
 
-V okně hello předplatné najdete v části pracovní tempo.
+V okně předplatného najdete v části pracovní tempo.
 
 ![rychlost zápisu](./media/resource-group-portal/burn-rate.png)
 
@@ -120,22 +120,22 @@ A rozdělení nákladů podle typů prostředků.
 ![náklady na prostředek](./media/resource-group-portal/cost-by-resource.png)
 
 ## <a name="export-template"></a>Export šablony
-Po nastavení vaší skupiny prostředků, může být vhodné šablony Resource Manageru hello tooview pro skupinu prostředků hello. Export šablony hello nabízí dvě výhody:
+Po nastavení vaší skupiny prostředků, můžete zobrazit šablony Resource Manageru pro skupinu prostředků. Export šablony nabízí dvě výhody:
 
-1. Snadno můžete automatizovat budoucí nasazení řešení hello protože hello šablona obsahuje všechny hello kompletní infrastrukturu.
-2. Můžete seznámit se syntaxí šablony prohlížením hello JSON JavaScript Object Notation () představující řešení.
+1. Budoucí nasazení řešení můžete snadno automatizovat, protože šablona obsahuje kompletní infrastrukturu.
+2. Můžete seznámit se syntaxí šablony tak, že vyhledá na JSON JavaScript Object Notation () představující řešení.
 
 Podrobné pokyny najdete v tématu [šablony exportovat Azure Resource Manageru ze stávajících prostředků](resource-manager-export-template.md).
 
 ## <a name="delete-resource-group-or-resources"></a>Odstranit skupinu prostředků nebo prostředky
-Odstranění skupiny prostředků se odstraní všechny hello prostředky, které jsou v něm obsažena. Můžete také odstranit jednotlivé prostředky ve skupině prostředků. Pokud odstraníte skupinu prostředků, protože může být prostředky další skupiny zdrojů, které jsou propojené tooit chcete tooexercise upozornění. Správce prostředků nedojde k odstranění propojené prostředky, ale nemusí správně fungovat bez hello očekává prostředků.
+Odstranění skupiny prostředků se odstraní všechny prostředky, které jsou v něm obsažena. Můžete také odstranit jednotlivé prostředky ve skupině prostředků. Chcete postupujte opatrně při odstranění skupiny prostředků vzhledem k tomu může být prostředky další skupiny zdrojů, které jsou propojeny s ho. Správce prostředků nedojde k odstranění propojené prostředky, ale nemusí správně fungovat bez očekávané prostředků.
 
 ![Odstranění skupiny](./media/resource-group-portal/delete-group.png)
 
 ## <a name="next-steps"></a>Další kroky
-* Protokoly aktivity tooview, najdete v části [auditovat operace s Resource Managerem](resource-group-audit.md).
-* tooview podrobnosti o nasazení, najdete v tématu [zobrazit operace nasazení](resource-manager-deployment-operations.md).
-* toodeploy prostředky prostřednictvím portálu hello, najdete v části [nasazení prostředků pomocí šablony Resource Manageru a portálu Azure](resource-group-template-deploy-portal.md).
-* toomanage tooresources přístup, najdete v části [používat roli přiřazení toomanage přístup tooyour předplatného Azure prostředky](../active-directory/role-based-access-control-configure.md).
-* Pokyny k použití Resource Manager tooeffectively podniky můžou spravovat předplatná najdete v tématu [Azure enterprise vygenerované uživatelské rozhraní – zásady správného řízení doporučený předplatné](resource-manager-subscription-governance.md).
+* Chcete-li zobrazit protokoly aktivity, najdete v části [auditovat operace s Resource Managerem](resource-group-audit.md).
+* Chcete-li zobrazit podrobnosti o nasazení, přečtěte si téma [zobrazit operace nasazení](resource-manager-deployment-operations.md).
+* Nasazení prostředků prostřednictvím portálu najdete v tématu [nasazení prostředků pomocí šablony Resource Manageru a portálu Azure](resource-group-template-deploy-portal.md).
+* Pokud chcete spravovat přístup k prostředkům, najdete v části [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../active-directory/role-based-access-control-configure.md).
+* Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](resource-manager-subscription-governance.md).
 

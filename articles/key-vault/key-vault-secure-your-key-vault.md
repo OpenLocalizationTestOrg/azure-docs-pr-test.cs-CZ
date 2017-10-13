@@ -1,6 +1,6 @@
 ---
-title: "aaaSecure klíč trezoru | Microsoft Docs"
-description: "Spravujte přístupová oprávnění pro trezor klíčů pro správu trezorů, klíčů a tajných klíčů. Ověřování a autorizace model pro trezor klíčů a jak toosecure klíč trezoru"
+title: "Zabezpečení trezoru klíčů | Dokumentace Microsoftu"
+description: "Spravujte přístupová oprávnění pro trezor klíčů pro správu trezorů, klíčů a tajných klíčů. Model ověřování a autorizace pro trezor klíčů a jak trezor klíčů zabezpečit"
 services: key-vault
 documentationcenter: 
 author: amitbapat
@@ -14,155 +14,155 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: ambapat
-ms.openlocfilehash: 84f5fc18142a1ad89babbd11f4f65eca105afc32
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: b81791f0bce7e6f57782dfe7bc5fb5fc21369e7d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="secure-your-key-vault"></a>Zabezpečení trezoru klíčů
-Azure Key Vault je cloudová služba, která chrání šifrovací klíče a tajné klíče (například certifikáty, připojovací řetězce a hesla) a pro vaše cloudové aplikace. Vzhledem k tomu, že tato data se velká a malá písmena a business kritické, mají trezorů klíčů tooyour toosecure přístup tak, aby pouze oprávnění aplikace a uživatelé mají přístup k trezoru klíčů. Tento článek obsahuje přehled model přístupu trezoru klíčů, vysvětluje, ověřování a autorizace a popisuje, jak toosecure přístup tookey trezoru pro cloudové aplikace se příklad.
+Azure Key Vault je cloudová služba, která chrání šifrovací klíče a tajné klíče (například certifikáty, připojovací řetězce a hesla) a pro vaše cloudové aplikace. Jelikož tato data jsou citlivá a zcela klíčová pro vaši obchodní (i jinou) činnost, je na místě zabezpečit přístup k trezorům klíčů tak, aby k nim mohli přistupovat jen autorizované aplikace a autorizovaní uživatelé. Tento článek představuje model přístupu k trezoru klíčů, vysvětluje ověření a autorizaci a na příkladu názorně popisuje, jak lze zabezpečit přístup k trezoru klíčů pro vaše cloudové aplikace.
 
 ## <a name="overview"></a>Přehled
-Trezor klíčů tooa přístup je řízen pomocí dvou samostatných rozhraní: správy a rovinu data. Pro obě roviny správné ověřování a autorizace je vyžadována před volající (uživatele nebo aplikace) můžete získat přístup k tookey trezoru. Ověřování prokáže hello identitu volajícího hello při autorizaci Určuje, jaké operace hello volající smí tooperform.
+Přístup k trezoru klíčů je řízen prostřednictvím dvou oddělených rozhraní: rovina správy a rovina dat. Pro obě roviny je požadováno řádné ověření a autorizace, než může volající (uživatel nebo aplikace) získat k trezoru klíčů přístup. Ověření určí identitu volajícího a autorizace následně určí, které operace má daný volající povoleno provádět.
 
 K ověření využívají rovina správy i rovina dat službu Azure Active Directory. K autorizaci ale rovina správy používá řízení přístupu podle role (RBAC), zatímco rovina dat používá zásady přístupu trezoru klíčů.
 
-Zde je stručný přehled hello témata:
+Stručný přehled tímto článkem pokrytých témat:
 
-[Ověřování pomocí služby Azure Active Directory](#authentication-using-azure-active-directory) – Tato část vysvětluje, jak volající ověřuje s Azure Active Directory tooaccess trezoru klíčů přes správu a rovinu data. 
+[Ověření s použitím Azure Active Directory](#authentication-using-azure-active-directory): Tato část vysvětluje, jak se volající ověřuje ve službě Azure Active Directory za účelem přístupu k trezoru klíčů prostřednictvím roviny správy i roviny dat. 
 
-[Rovina správy a rovina dat](#management-plane-and-data-plane): Rovina správy a rovina dat jsou dvě roviny přístupu, které se používají pro přístup k vašemu trezoru klíčů. Každá rovina podporuje určité operace. Tato část popisuje hello přístup koncových bodů, operace podporované a přístup k řízení metodu používanou pro každé plochy. 
+[Rovina správy a rovina dat](#management-plane-and-data-plane): Rovina správy a rovina dat jsou dvě roviny přístupu, které se používají pro přístup k vašemu trezoru klíčů. Každá rovina podporuje určité operace. Tato část popisuje koncové body přístupu, podporované operace a metody řízení přístupu používané těmito rovinami. 
 
-[Správa řízení přístupu roviny](#management-plane-access-control) – v této části se podíváme povolením přístupu toomanagement roviny operace pomocí řízení přístupu na základě rolí.
+[Řízení přístupu roviny správy](#management-plane-access-control): V této části se podíváme na povolení přístupu k operacím roviny správy s použitím řízení přístupu podle role.
 
-[Ovládací prvek pro datové roviny přístup](#data-plane-access-control) – Tato část popisuje, jak data toocontrol zásad přístupu k trezoru klíčů toouse roviny přístup.
+[Řízení přístupu roviny dat](#data-plane-access-control): Tato část popisuje, jak použít zásady přístupu trezoru klíčů k řízení přístupu k rovině dat.
 
-[Příklad](#example) – tento příklad popisuje, jak toosetup přistupovat k řízení pro váš trezor klíčů tooallow tři různé týmy (tým pro zabezpečení, vývojáři nebo operátory a auditoři) tooperform toodevelop konkrétní úlohy, spravovat a monitorovat aplikace v Azure .
+[Příklad](#example): Tento příklad popisuje, jak nastavit řízení přístupu pro váš trezor klíčů, abyste umožnili třem různým týmům (bezpečnostní tým, vývojářský/provozní tým a auditoři) provádět konkrétní úkoly za účelem vývoje, správy a monitorování aplikace v Azure.
 
 ## <a name="authentication-using-azure-active-directory"></a>Ověření pomocí služby Azure Active Directory
-Při vytváření trezoru klíčů v předplatné Azure, se automaticky přidruží hello předplatného klienta Azure Active Directory. Všechny volající (uživatelé a aplikace) musí být zaregistrovaný v této klienta tooaccess tímto trezorem klíčů. Aplikace nebo uživatel musí provést ověření pomocí klíče trezoru tooaccess Azure Active Directory. To platí tooboth správy a datovou rovinu přístup. V obou případech může aplikace přistupovat k trezoru klíčů dvěma způsoby:
+Když v rámci předplatného Azure vytvoříte trezor klíčů, je automaticky přidružen k tenantovi Azure Active Directory pro dané předplatné. Všichni volající (uživatelé a aplikace) musí být v tomto tenantovi registrováni, aby mohli k trezoru klíčů přistupovat. Aplikace nebo uživatel se musí nejdříve ověřit ve službě Azure Active Directory, až potom může přistupovat k trezoru klíčů. To platí pro přístup k rovině správy i přístup k rovině dat. V obou případech může aplikace přistupovat k trezoru klíčů dvěma způsoby:
 
-* **přístup uživatele a aplikace** – obvykle se používá pro aplikace, které přistupují k trezoru klíčů jménem přihlášeného uživatele. Příklady tohoto typu přístupu jsou Azure PowerShell a Azure Portal. Existují dva způsoby toogrant přístup toousers: jedním ze způsobů je toogrant přístup toousers tak získají přístup k trezoru klíčů ze všech aplikací a hello jiný způsob je toogrant trezoru tookey přístup uživatele jenom v případě, že používají konkrétní aplikaci (označují tooas složená identita). 
-* **přístup jen aplikace** – pro aplikace, spouštění služeb démon, úlohy na pozadí identitu aplikace hello atd., jsou udělena přístup toohello klíče trezoru.
+* **přístup uživatele a aplikace** – obvykle se používá pro aplikace, které přistupují k trezoru klíčů jménem přihlášeného uživatele. Příklady tohoto typu přístupu jsou Azure PowerShell a Azure Portal. Jsou dva způsoby, jak udělit přístup uživatelům. Jeden způsob je udělit přístup uživatelům tak, aby mohli přistupovat k trezoru klíčů z libovolné aplikace, a druhý způsob je udělit uživatelům přístup k trezoru klíčů jen při použití konkrétní aplikace (označováno jako složená identita). 
+* **přístup pouze aplikace** – používá se pro aplikace, které spouští služby démonů, úlohy na pozadí a podobně. Přístup k trezoru klíčů je udělen identitě aplikace.
 
-V obou typech aplikací, aplikace hello ověřuje s Azure Active Directory pomocí kteréhokoli hello [podporované metody ověřování](../active-directory/active-directory-authentication-scenarios.md) a získá token. Použitá metoda ověřování závisí na typu aplikace hello. Pak aplikace hello používá tento token a odešle trezoru tookey požadavku REST API. V případě správy roviny přístup hello požadavky jsou směrovány prostřednictvím koncového bodu Azure Resource Manager. Při přístupu k rovině data, aplikace hello komunikuje přímo koncový bod tooa trezoru klíčů. Další informace najdete na hello [tok ověřování celou](../active-directory/active-directory-protocols-oauth-code.md). 
+U obou typů aplikací s aplikace nejprve ověří ve službě Azure Active Directory s použitím libovolné [podporované metody ověření](../active-directory/active-directory-authentication-scenarios.md) a získá token. Použitá metoda ověření závisí na typu aplikace. Aplikace pak tento token použije a odešle požadavek REST API na trezor klíčů. V případě přístupu k rovině správy jsou požadavky směrovány přes koncový bod Azure Resource Manager. Při přístupu k rovině dat aplikace komunikují přímo s koncovým bodem trezoru klíčů. Další podrobnosti najdete v [úplném diagramu procesu ověření](../active-directory/active-directory-protocols-oauth-code.md). 
 
-název prostředku Hello, pro které aplikace hello požaduje token se liší v závislosti na tom, jestli aplikace hello je přístup k správu roviny nebo roviny data. Proto se název prostředku hello buď roviny nebo data roviny koncový bod správy popsané v tabulce hello v další části, v závislosti na hello prostředí Azure.
+Název prostředku, pro který aplikace žádá token, je různý podle toho, jestli aplikace přistupuje k rovině správy nebo rovině dat. Název prostředku je tak buď koncový bod roviny správy, nebo koncový bod roviny dat, jak je popsáno v tabulce níže, v závislosti na prostředí Azure.
 
-Jeden jeden mechanismus pro ověřování tooboth Správa a datové roviny má svou vlastní výhody:
+Používání jediného mechanismu ověřování pro rovinu správy i rovinu dat má svoje výhody:
 
-* Organizace mohou centrálně řídit přístup tooall trezorů klíčů v organizaci
-* Pokud uživatel odejde, se okamžitě ztratit přístup tooall trezorů klíčů v organizaci hello
-* Organizace můžete přizpůsobit ověřování prostřednictvím možnosti hello v Azure Active Directory (například povolení služby Multi-Factor authentication pro zvýšení zabezpečení)
+* Organizace mohou centrálně řídit přístup ke všem trezorům klíčů v organizaci.
+* Když uživatel organizaci opustí, ztratí okamžitě přístup ke všem trezorům klíčů v organizaci.
+* Organizace si mohou ověření přizpůsobit prostřednictvím možností v Azure Active Directory (mohou například povolit vícefaktorové ověřování pro vyšší bezpečnost).
 
 ## <a name="management-plane-and-data-plane"></a>Rovina správy a rovina dat
-Azure Key Vault je služba Azure, která je dostupná prostřednictvím modelu nasazení Azure Resource Manager. Když vytvoříte trezor klíčů, získáte virtuální kontejner, ve kterém můžete vytvářet další objekty, jako jsou klíče, tajné klíče a certifikáty. Pak máte přístup k trezoru klíčů pomocí roviny a datové roviny tooperform konkrétní operace správy. Rozhraní pro správu roviny je použité toomanage klíč trezoru samostatně, jako je například vytváření, odstraňování, aktualizaci atributů trezoru klíčů a nastavení zásad přístupu pro datové roviny. Rozhraní roviny dat je použité tooadd, odstranit, upravit a použít hello klíčů, tajných klíčů a certifikátů uložené v trezoru klíčů.
+Azure Key Vault je služba Azure, která je dostupná prostřednictvím modelu nasazení Azure Resource Manager. Když vytvoříte trezor klíčů, získáte virtuální kontejner, ve kterém můžete vytvářet další objekty, jako jsou klíče, tajné klíče a certifikáty. Následně pak přistupujete ke svému trezoru klíčů pomocí roviny správy nebo roviny dat, abyste prováděli konkrétní operace. Rozhraní roviny správy slouží ke správě samotného trezoru klíčů – například vytváření, odstraňování a aktualizace atributů trezoru klíčů nebo nastavení zásad přístupu pro rovinu dat. Rozhraní roviny dat se používá k přidávání, odstraňování, změnám a používání klíčů, tajných klíčů a certifikátů uložených v trezoru klíčů.
 
-Hello roviny a datové roviny rozhraní pro správu jsou přístupné prostřednictvím různých koncových bodů (viz tabulka). Hello druhý sloupec v tabulce hello popisuje hello názvy DNS pro tyto koncové body v různých prostředích Azure. třetí sloupec Hello popisuje hello operace, které můžete provést z každé plochy přístup. Každá rovina přístupu má také vlastní mechanismus řízení přístupu: pro rovinu správy se řízení přístupu nastavuje pomocí služby řízení přístupu podle role (RBAC) služby Azure Resource Manager, pro rovinu dat se řízení přístupu nastavuje pomocí zásad přístupu trezoru klíčů.
+K rozhraní roviny správy a roviny dat se přistupuje prostřednictvím různých koncových bodů (viz tabulka). Druhý sloupec v tabulce popisuje názvy DNS pro tyto koncové body v různých prostředích Azure. Třetí sloupec popisuje operace, které můžete z každé roviny přístupu provádět. Každá rovina přístupu má také vlastní mechanismus řízení přístupu: pro rovinu správy se řízení přístupu nastavuje pomocí služby řízení přístupu podle role (RBAC) služby Azure Resource Manager, pro rovinu dat se řízení přístupu nastavuje pomocí zásad přístupu trezoru klíčů.
 
 | Rovina přístupu | Koncové body přístupu | Operace | Mechanismus řízení přístupu |
 | --- | --- | --- | --- |
 | Rovina správy |**Globální:**<br> management.azure.com:443<br><br> **Azure China:**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> management.microsoftazure.de:443 |Vytvořit (create), číst (read), aktualizovat (update), odstranit (delete) trezor klíčů <br> Nastavit zásady přístupu pro trezor klíčů<br>Nastavit značky pro trezor klíčů |Řízení přístupu podle role (RBAC) služby Azure Resource Manager |
 | Rovina dat |**Globální:**<br> &lt;název_trezoru&gt;.vault.azure.net:443<br><br> **Azure China:**<br> &lt;název_trezoru&gt;.vault.azure.cn:443<br><br> **Azure US Government:**<br> &lt;název_trezoru&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> &lt;název_trezoru&gt;.vault.microsoftazure.de:443 |Pro klíče: dešifrovat (decrypt), zašifrovat (encrypt), rozbalit (UnwrapKey), zabalit (WrapKey), ověřit (verify), podepsat (sign), získat (get), vypsat (list), aktualizovat (update), vytvořit (create), importovat (import), odstranit (delete), zálohovat (backup), obnovit (restore)<br><br> Pro tajné klíče: získat (get), vypsat (list), nastavit (set), odstranit (delete) |Zásady přístupu trezoru klíčů |
 
-Hello správu roviny a datové roviny řízení přístupu fungovat nezávisle. Pokud chcete toogrant aplikace přístupových toouse klíčů v trezoru klíčů, stačí pouze toogrant datové roviny přístupová oprávnění pomocí zásad přístupu k trezoru klíčů a je potřeba žádné roviny přístup pro správu pro tuto aplikaci. A naopak, pokud chcete toobe uživatele možné tooread trezoru vlastnosti a značky, ale nemá žádné tookeys přístup, tajné klíče ani certifikáty, můžete udělit pro tohoto uživatele, je vyžadován přístup "read" pomocí RBAC a roviny toodata žádný přístup.
+Řízení přístupu roviny správy a roviny dat fungují nezávisle. Pokud například chcete aplikaci udělit přístup k používání klíčů v trezoru klíčů, je třeba jí jen udělit přístup k rovině dat pomocí zásad přístup trezoru klíčů. Aplikace nepotřebuje přístup k rovině správy. A obráceně, pokud chcete, aby uživatel mohl číst vlastnosti a značky trezoru, ale neměl přístup k žádným klíčům, tajným klíčům ani certifikátům, můžete tomuto uživateli udělit přístup pro čtení pomocí RBAC a není potřeba žádný přístup k rovině dat.
 
 ## <a name="management-plane-access-control"></a>Řízení přístupu roviny správy
-Hello správu roviny se skládá z operace, které ovlivňují hello trezoru klíčů, sám sebe. Můžete například vytvořit nebo odstranit trezor klíčů. Můžete získat seznam trezorů klíčů v určitém předplatném. Můžete načíst vlastnosti trezoru klíčů (například SKU, značky) a nastavit zásady přístupu, které řídí hello uživatelé a aplikace, které mají přístup k klíčů a tajných klíčů v trezoru klíčů hello trezoru klíčů. Řízení přístupu roviny správy používá RBAC. Viz hello úplný seznam operací trezoru klíčů, které je možné provádět prostřednictvím správy roviny v tabulce hello v předchozím oddílu. 
+Rovina správy se skládá z operací, které mají vliv na samotný trezor klíčů. Můžete například vytvořit nebo odstranit trezor klíčů. Můžete získat seznam trezorů klíčů v určitém předplatném. Můžete načíst vlastnosti trezoru klíčů (například SKU, značky) a nastavit zásady přístupu trezoru klíčů, které řídí, kteří uživatelé a aplikace mají přístup ke klíčům a tajným klíčům v trezoru klíčů. Řízení přístupu roviny správy používá RBAC. Úplný seznam operací trezoru klíčů, které lze provádět prostřednictvím roviny správy, najdete v tabulce v předchozí části. 
 
 ### <a name="role-based-access-control-rbac"></a>Řízení přístupu podle role (RBAC)
-Každé předplatné Azure zahrnuje službu (adresář) Azure Active Directory. Uživatelé, skupiny a aplikace z tohoto adresáře můžete udělit přístup k prostředkům toomanage v hello předplatné Azure, které používají model nasazení Azure Resource Manager hello. Tento typ řízení přístupu se označují tooas řízení přístupu na základě Role (RBAC). toomanage tento přístup, můžete použít hello [portál Azure](https://portal.azure.com/), hello [nástrojů příkazového řádku Azure](../cli-install-nodejs.md), [prostředí PowerShell](/powershell/azureps-cmdlets-docs), nebo hello [rozhraní REST APIAzureResourceManager](https://msdn.microsoft.com/library/azure/dn906885.aspx).
+Každé předplatné Azure zahrnuje službu (adresář) Azure Active Directory. Uživatelům, skupinám a aplikacím z tohoto adresáře lze udělit přístup ke správě prostředků v tomto předplatném Azure, které používají model nasazení Azure Resource Manager. Tento typ řízení přístupu je označován řízení přístupu podle role (RBAC). Ke správě tohoto přístupu můžete používat [Azure Portal](https://portal.azure.com/), [nástroje Azure CLI](../cli-install-nodejs.md), [PowerShell](/powershell/azureps-cmdlets-docs) nebo [rozhraní Azure Resource Manager REST API](https://msdn.microsoft.com/library/azure/dn906885.aspx).
 
-S hello modelu Azure Resource Manager je vytvoření trezoru klíčů v prostředku skupiny a řízení přístupu toohello správu rovině klíče trezoru pomocí služby Azure Active Directory. Například můžete udělit uživatelům nebo skupiny možnost toomanage trezorů klíčů v určité skupiny zdrojů.
+S modelem Azure Resource Manager vytváříte trezor klíčů ve skupině prostředků a řídíte přístup k rovině správy tohoto trezoru klíčů pomocí služby Azure Active Directory. Můžete například uživatelům nebo skupině udělit schopnost spravovat trezory klíčů v určité skupině prostředků.
 
-Přiřazením příslušné role RBAC můžete udělit přístup toousers, skupin a aplikací na konkrétní obor. Například toogrant přístup tooa uživatele toomanage trezorů klíčů předdefinované role 'trezoru klíčů přispěvatele, bude přiřazen toothis uživatele v konkrétní obor. Hello oboru v takovém případě bude předplatné, skupinu prostředků nebo jenom určité trezoru klíčů. Role přiřazené na úrovni předplatného se vztahuje tooall skupiny prostředků a prostředky v rámci tohoto předplatného. Role přiřazené na úrovni skupiny prostředků se vztahuje tooall prostředky v příslušné skupině prostředků. Role přiřazené pro určitý prostředek se vztahuje pouze na toothat prostředků. Existuje několik předdefinovaných rolí (viz [RBAC: předdefinované role](../active-directory/role-based-access-built-in-roles.md)), a pokud hello předdefinované role nebudou vyhovovat vašim potřebám, je možné definovat také vlastní role.
+Přístup lze udělit uživatelům, skupinám nebo aplikacím v konkrétním oboru přiřazením odpovídajících rolí RBAC. Když například chcete uživateli udělit přístup ke správě trezorů klíčů, přiřadíte tomuto uživateli v konkrétním oboru předdefinovanou roli Přispěvatel trezoru klíčů (key vault Contributor). Oborem by v tomto případě bylo předplatné, skupina prostředků nebo určitý trezor klíčů. Role přiřazená na úrovni předplatného se bude vztahovat na všechny skupiny prostředků a prostředky v tomto předplatném. Role přiřazená na úrovni skupiny prostředků se bude vztahovat na všechny prostředky v této skupině. Role přiřazená pouze pro určitý prostředek se vztahuje pouze na tento prostředek. Je k dispozici několik předdefinovaných rolí (viz [RBAC: vestavěné role](../active-directory/role-based-access-built-in-roles.md)). Pokud tyto neodpovídají vašim potřebám, můžete si definovat i vlastní role.
 
 > [!IMPORTANT]
-> Všimněte si, že pokud má uživatel Přispěvatel oprávnění (RBAC) tooa trezoru klíčů správu rovině, Jana můžete udělit samu sebe roviny toodata přístup, nastavením zásad pro přístup k trezoru klíčů, který řídí roviny toodata přístup. Proto se doporučuje tootightly určit, kdo má 'Přispěvatel' přístup tooyour trezorů klíčů tooensure v pouze oprávněných osob můžete otvírat a spravovat trezorů klíčů, klíčů, tajných klíčů a certifikátů.
+> Všimněte si, že pokud uživatel má oprávnění role Přispěvatel (RBAC) k rovině správy trezoru klíčů, může sám sobě udělit i přístup k rovině dat – může totiž nastavovat zásady přístupu trezoru klíčů, které řídí přístup k rovině dat. Doporučujeme proto důsledně kontrolovat, kdo má k vašim trezorům klíčů přístup jako Přispěvatel, aby bylo zajištěno, že jen autorizované osoby budou mít přístup a budou moci spravovat vaše trezory klíčů, klíče, tajné klíče a certifikáty.
 > 
 > 
 
 ## <a name="data-plane-access-control"></a>Řízení přístupu roviny dat
-Hello trezoru klíčů datové roviny se skládá z operace, které ovlivňují objekty hello v trezoru klíčů, jako je například klíčů, tajných klíčů a certifikátů.  To zahrnuje operace s klíči, jako je vytvoření, import, aktualizace, výpis, zálohování a obnova klíčů, kryptografické operace jako podepsání, ověření, zašifrování, dešifrování, zabalení a rozbalení a nastavení značek a dalších atributů pro klíče. Pro tajné klíče sem podobně patří operace získat, nastavit, vypsat a odstranit.
+Rovina dat trezoru klíčů se skládá z operací, které mají vliv na objekty v trezoru klíčů, jako jsou klíče, tajné klíče a certifikáty.  To zahrnuje operace s klíči, jako je vytvoření, import, aktualizace, výpis, zálohování a obnova klíčů, kryptografické operace jako podepsání, ověření, zašifrování, dešifrování, zabalení a rozbalení a nastavení značek a dalších atributů pro klíče. Pro tajné klíče sem podobně patří operace získat, nastavit, vypsat a odstranit.
 
-Přístup k rovině dat je udělován nastavením zásad přístupu pro trezor klíčů. Uživatele, skupiny nebo aplikace, musí mít oprávnění přispěvatele (RBAC) pro správu roviny pro trezoru klíčů toobe možné tooset zásady přístupu pro tento trezor klíčů. Uživatele, skupiny nebo aplikace můžete udělit přístup tooperform konkrétních operací pro klíčů nebo tajných klíčů v trezoru klíčů. Trezor klíčů podpora až too16 položek zásad přístupu pro trezoru klíčů. Vytvoření skupiny zabezpečení služby Azure Active Directory a přidání uživatelů toothat skupiny toogrant data roviny přístup tooseveral uživatelé tooa trezoru klíčů.
+Přístup k rovině dat je udělován nastavením zásad přístupu pro trezor klíčů. Uživatel, skupina nebo aplikace musí mít oprávnění role Přispěvatel (RBAC) pro rovinu správy trezoru klíčů, aby mohla nastavovat zásady pro tento trezor klíčů. Uživateli, skupině nebo aplikaci lze udělit přístup k provádění konkrétních operací pro klíče nebo tajné klíče v trezoru klíčů. Trezor klíčů podporuje až 16 položek zásad přístupu na jeden trezor klíčů. Vytvořte skupinu zabezpečení Azure Active Directory a do této skupiny přidejte uživatele, kterým chcete udělit přístup k rovině dat trezoru klíčů.
 
 ### <a name="key-vault-access-policies"></a>Zásady přístupu trezoru klíčů
-Zásady přístupu k trezoru klíčů udělit oprávnění tookeys, tajných klíčů a certifikátů samostatně. Například můžete udělit klíče tooonly přístup uživatele, ale žádná oprávnění pro tajných klíčů. Oprávnění tooaccess klíčů nebo tajných klíčů nebo certifikáty, ale jsou na úrovni hello trezoru. Zásady přístupu trezoru klíčů tedy nepodporují oprávnění na úrovni objektu. Můžete použít [portál Azure](https://portal.azure.com/), hello [nástrojů příkazového řádku Azure](../cli-install-nodejs.md), [prostředí PowerShell](/powershell/azureps-cmdlets-docs), nebo hello [trezoru klíčů rozhraní REST API pro správu](https://msdn.microsoft.com/library/azure/mt620024.aspx) tooset zásady přístupu pro trezoru klíčů.
+Zásady přístupu trezoru klíčů udělují odděleně oprávnění pro klíče, tajné klíče a certifikáty. Můžete tak například uživateli udělit přístup pouze ke klíčům, ale žádná oprávnění k tajným klíčům. Nicméně oprávnění pro přístup ke klíčům, tajným klíčům a certifikátům se nastavují na úrovni trezoru. Zásady přístupu trezoru klíčů tedy nepodporují oprávnění na úrovni objektu. K nastavení zásad přístupu pro trezor klíčů můžete použít [Azure Portal](https://portal.azure.com/), [nástroje Azure CLI](../cli-install-nodejs.md), [PowerShell](/powershell/azureps-cmdlets-docs) nebo [rozhraní REST API správy trezoru klíčů](https://msdn.microsoft.com/library/azure/mt620024.aspx).
 
 > [!IMPORTANT]
-> Nezapomeňte, že zásady přístupu k trezoru klíčů platí na úrovni hello trezoru. Například když uživatel jsou udělena oprávnění toocreate a odstranění klíče, mohla provádět tyto operace na všechny klíče v tomto trezoru klíčů.
+> Zásady přístupu trezoru klíčů se aplikuj a úrovni trezoru. Když má například uživatel oprávnění vytvářet a odstraňovat klíče, může tyto operace provádět na všech klíčích v daném trezoru klíčů.
 > 
 > 
 
 ## <a name="example"></a>Příklad
-Řekněme, že vyvíjíte aplikaci, která používá certifikát pro SSL, službu Azure Storage k ukládání dat a používá 2048bitový klíč RSA pro podpisové operace. A tato aplikace běží ve virtuálním počítači (nebo ve škálovací sadě virtuálních počítačů). Můžete použít trezoru klíčů toostore všechny hello tajné klíče aplikace a použití klíče trezoru toostore hello bootstrap certifikát, který je používán hello tooauthenticate aplikací s Azure Active Directory.
+Řekněme, že vyvíjíte aplikaci, která používá certifikát pro SSL, službu Azure Storage k ukládání dat a používá 2048bitový klíč RSA pro podpisové operace. A tato aplikace běží ve virtuálním počítači (nebo ve škálovací sadě virtuálních počítačů). Můžete použít trezor klíčů, ve kterém budou uloženy všechny tajné klíče aplikace, a použít tento trezor klíčů k uložení zaváděcího certifikátu, který aplikace používá k ověření v Azure Active Directory.
 
-Ano zde je souhrn všech hello klíče a tajné klíče toobe uloženého v trezoru klíčů.
+Takže souhrn všech klíčů a tajných klíčů, které budou uložené v trezoru klíčů.
 
 * **Certifikát SSL** – používá se pro SSL.
-* **Klíč k úložišti** -použil tooget přístup tooStorage účet
+* **Klíč úložiště** – používá se k získání přístupu k účtu úložiště.
 * **2048bitový klíč RSA** – používá se pro podpisové operace.
-* **Zavedení certifikátu** -použít tooauthenticate tooAzure služby Active Directory, tooget přístup tookey trezoru toofetch hello klíč úložiště a klíč RSA hello použít pro podepisování.
+* **Zaváděcí certifikát** – používá se k ověření v Azure Active Directory pro získání přístupu k trezoru klíčů, ze kterého se načte klíč úložiště a použije klíč RSA k podpisu.
 
-Nyní Pojďme splňovat hello lidé, kteří jsou správě, nasazení a auditování této aplikace. V tomto příkladu použijeme tři role.
+Nyní se podívejme na lidi, kteří budou spravovat, nasazovat a auditovat tuto aplikaci. V tomto příkladu použijeme tři role.
 
-* **Tým pro zabezpečení** – obvykle se jedná o pracovníky IT z hello "úřad hello CSO (ředitel zabezpečení)" nebo ekvivalentní, zodpovědná za hello správné udržován tajné klíče, jako certifikáty protokolu SSL, použít pro podepisování připojovací řetězce pro klíče RSA databáze, klíče účtu úložiště.
-* **Vývojáři nebo operátory** – jedná se o hello zaměstnance, kteří vyvíjet tuto aplikaci a poté ji nasadit v Azure. Obvykle nejsou součástí týmu hello zabezpečení a proto by neměl mít přístup tooany citlivých dat, jako třeba certifikáty protokolu SSL, klíče RSA, ale aplikace hello nasadí by měl mít toothose přístup.
-* **Auditory** – to je obvykle jinou sadu uživatelů, které jsou izolovány od vývojáře hello a obecné zaměstnanců IT. Zodpovídají je tooreview správné použití a správa certifikátů, klíče, atd. a dodržování standardů zabezpečení data. 
+* **Bezpečnostní tým**: Obvykle pracovníci IT z kanceláře bezpečnostního ředitele (CSO, Chief Security Officer) nebo ekvivalentní úrovně, kteří odpovídají za řádné a zabezpečené ukládání tajných klíčů, například certifikátů SSL, klíčů RSA pro podpisové operace, připojovacích řetězců pro databáze a klíčů účtu úložiště.
+* **Vývojáři/operátoři**: To jsou lidé, kteří tuto aplikaci vyvíjejí a potom nasazují v Azure. Obvykle nejsou přímo součástí bezpečnostního týmu, a proto by neměli mít přístup k žádným citlivým datům, jako jsou certifikáty SSL a klíče RSA, nicméně jimi nasazovaná aplikace k těmto datům přístup potřebuje.
+* **Auditoři**: Obvykle zcela odlišná skupina lidí, izolovaná od vývojářů i obecných pracovníků IT. Jejich odpovědností je kontrolovat, jestli se certifikáty, klíče a podobně řádně používají a udržují, jak to předepisují standardy zabezpečení dat. 
 
-Je jeden další role, která je mimo rozsah hello této aplikace, ale příslušné sem toobe uvedených a který bude předplatné hello (nebo skupinu prostředků) správce. Nastaví počáteční přístupová oprávnění pro tým zabezpečení hello správce předplatného. Zde předpokládáme, že správce předplatného hello udělil přístup toohello team tooa prostředků skupiny zabezpečení ve které všechny prostředky potřebné k této aplikaci bydliště hello.
+Ještě je tu jedna role, která je mimo obor této aplikace, nicméně je relevantní a měli bychom jí tu zmínit. Jde o roli správce předplatného (nebo skupiny prostředků). Správce předplatného nastavuje počáteční přístupová oprávnění pro bezpečnostní tým. Tady předpokládáme, že správce předplatného udělil bezpečnostnímu týmu přístup ke skupině prostředků, ve které jsou všechny prostředky potřebné pro tuto aplikaci.
 
-Nyní si ukážeme, jaké akce provede každou roli v kontextu hello této aplikace.
+Teď se podívejme, jaké akce každá role v kontextu aplikace provádí.
 
 * **Bezpečnostní tým**
   * Vytváření trezorů klíčů
   * Zapnutí protokolování trezoru klíčů
   * Přidání klíčů / tajných klíčů
   * Vytvoření zálohy klíčů pro zotavení po havárii
-  * Nastavení přístupu trezoru klíčů zásad toogrant oprávnění toousers a aplikace tooperform konkrétních operací
+  * Nastavení zásad přístupu trezoru klíčů, aby se uživatelům a aplikacím udělila oprávnění provádět konkrétní operace
   * Pravidelná obměna klíčů / tajných klíčů
 * **Vývojáři/operátoři**
-  * Získat odkazy toobootstrap a certifikátů protokolu SSL (kryptografické otisky), klíč k úložišti (tajný klíč URI) a podpisový klíč (klíč URI) od týmu zabezpečení
+  * Získání reference na zaváděcí certifikáty a certifikáty SSL (kryptografické otisky), klíč úložiště (URI tajného klíče) a podpisový klíč (URI klíče) od bezpečnostního týmu
   * Vývoj a nasazení aplikace, která přistupuje ke klíčům a tajným klíčům prostřednictvím programového kódu
 * **Auditoři**
-  * Zkontrolujte využití protokolů tooconfirm správné použití klíče nebo tajného klíče a dodržování standardů zabezpečení dat
+  * Kontrola protokolů použití, aby bylo možné potvrdit, že se klíče / tajné klíče používají řádně a jsou plněny standardy zabezpečení dat
 
-Nyní si ukážeme, jaký přístup oprávnění tookey trezoru jsou vyžadovány všechny role (a aplikace hello) tooperform jejich přiřazené úlohy. 
+Teď se podívejme, jaká přístupová oprávnění k trezoru klíčů každá role (a aplikace) potřebuje, aby mohla provádět úkoly, které jí přísluší. 
 
 | Role uživatele | Oprávnění k rovině správy | Oprávnění k rovině dat |
 | --- | --- | --- |
 | Bezpečnostní tým |Přispěvatel trezoru klíčů |Klíče: zálohovat (backup), vytvořit (create), odstranit (delete), získat (get), importovat (import), vypsat (list), obnovit (restore) <br> Tajné klíče: vše |
-| Vývojáři/operátoři |Trezor klíčů nasazení oprávnění tak, aby virtuální počítače hello nasadí můžete načíst tajné klíče z trezoru klíčů hello |Žádný |
+| Vývojáři/operátoři |Oprávnění k nasazení trezoru klíčů, aby virtuální počítač, který nasazují, mohl načítat tajné klíče z trezoru klíčů |Žádný |
 | Auditoři |Žádný |Klíče: vypsat (list)<br>Tajné klíče: vypsat (list) |
 | Aplikace |Žádný |Klíče: podepsat (sign)<br>Tajné klíče: získat (get) |
 
 > [!NOTE]
-> Auditory potřebovat seznam oprávnění pro klíče a tajné klíče, navrhují atributy pro klíče a tajné klíče, které nejsou vygenerované v hello protokoly, jako je například značky, aktivace a datum vypršení platnosti.
+> Auditoři potřebují oprávnění vypsat seznam pro klíče a tajné klíče, aby mohli provádět kontrolu i těch atributů klíčů a tajných klíčů, které nejsou zaznamenávány do protokolů, jako jsou například značky, aktivace a data vypršení platnosti.
 > 
 > 
 
-Kromě oprávnění tookey trezoru všechny tři role také potřebovat přístup k tooother prostředkům. Například toobe možné toodeploy virtuální počítače (nebo webové aplikace atd.) Vývojáři nebo operátory také potřebovat typy prostředků toothose přístup, Přispěvatel'. Auditory potřebovat účet úložiště toohello přístup pro čtení, kde jsou uloženy protokoly trezoru klíčů hello.
+Vedle oprávnění k trezoru klíčů budou všechny tři role potřebovat přístup k dalším prostředkům. Například vývojáři a operátoři potřebují nasazovat virtuální počítače (nebo webové aplikace a podobně) a budou tedy potřebovat přístup úrovně Přispěvatel i k těmto typům prostředků. Auditoři potřebují přístup ke čtení k účtu úložiště, kam se ukládají protokoly trezoru klíčů.
 
-Vzhledem k tomu, že hello fokus tohoto článku je zabezpečení přístupu k trezoru klíčů tooyour, jsme pouze ilustrovat hello příslušné části tématu toothis, která se týkají a Přeskočit podrobnosti týkající se nasazení certifikátů, přístup k klíče a tajné klíče prostřednictvím kódu programu atd. Tyto podrobnosti jsou popsány v jiných článcích. Nasazení certifikátů uložené v trezoru klíčů tooVMs, najdete v článku [příspěvku na blogu](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/)a je [ukázkový kód](https://www.microsoft.com/download/details.aspx?id=45343) k dispozici, ukazuje, jak toouse zavedení certifikátu tooget tooauthenticate tooAzure AD Trezor tookey přístup.
+Jelikož tento článek se soustředí na zabezpečení přístupu k trezoru klíčů, popisujeme tu podrobněji jen části, které jsou relevantní pro toto téma. Podrobnosti ohledně nasazení certifikátů, přístupu ke klíčům a tajným klíčům prostřednictvím programového kódu a dalších témat zde přeskakujeme. Tyto podrobnosti jsou popsány v jiných článcích. Nasazením certifikátů uložených v trezoru klíčů do virtuálního počítače se zabývá [tento blogový příspěvek](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/) a je k dispozici [ukázkový kód](https://www.microsoft.com/download/details.aspx?id=45343), který ilustruje použití zaváděcího certifikátu pro ověření v Azure AD, aby se získal přístup k trezoru klíčů.
 
-Většina hello přístupová oprávnění lze udělit pomocí portálu Azure, ale může být nutné toouse prostředí Azure PowerShell (nebo Azure CLI) tooachieve hello oprávnění na podrobné úrovni toogrant požadovaného výsledku. 
+Většinu přístupových oprávnění lze udělit prostřednictvím webu Azure Portal, nicméně pokud potřebujete udělovat různě odstupňovaná oprávnění, může být nutné použít Azure PowerShell (nebo Azure CLI), abyste docílili požadovaného výsledku. 
 
-Předpokládejme, Hello následující fragmenty prostředí PowerShell:
+Následující fragmenty kódu PowerShellu předpokládají:
 
-* Správce služby Azure Active Directory Hello vytvořil skupiny zabezpečení, které představují hello tři role, konkrétně tým pro zabezpečení společnosti Contoso, Devops aplikace Contoso, auditory aplikace Contoso. Hello správce má také přidat uživatele toohello skupiny, ke kterým patří.
-* **ContosoAppRG** je skupina prostředků hello, kde jsou umístěny všechny prostředky hello. **contosologstorage** je, kde jsou uloženy protokoly hello. 
-* Trezor klíčů **ContosoKeyVault** a účet úložiště pro protokoly trezoru klíčů **contosologstorage** musí být v hello stejného umístění Azure
+* Správce Azure Active Directory vytvořil skupiny zabezpečení, které reprezentují uvedené tři role, a sice Contoso Security Team, Contoso App Devops, Contoso App Auditors. Správce již také přidal uživatele do skupin, do kterých patří.
+* **ContosoAppRG** je skupina prostředků, ve které jsou všechny tyto prostředky. **contosologstorage** je úložiště, kam se ukládají protokoly. 
+* Trezor klíčů **ContosoKeyVault** a účet úložiště používaný pro protokoly trezoru klíčů **contosologstorage** musí být ve stejném umístění Azure
 
-První správce předplatného hello přiřadí 'klíče trezoru přispěvatele a tým zabezpečení toohello role správce přístupu uživatelů. To umožňuje hello zabezpečení team toomanage přístup tooother prostředků a spravovat trezorů klíčů ve skupině prostředků hello ContosoAppRG.
+Nejprve správce předplatného přiřadí bezpečnostnímu týmu role „key vault Contributor“ a „User Access Administrator“. To dovolí bezpečnostnímu týmu spravovat přístup pro další prostředky a spravovat trezory klíčů ve skupině prostředků ContosoAppRG.
 
 ```
 New-AzureRmRoleAssignment -ObjectId (Get-AzureRmADGroup -SearchString 'Contoso Security Team')[0].Id -RoleDefinitionName "key vault Contributor" -ResourceGroupName ContosoAppRG
 New-AzureRmRoleAssignment -ObjectId (Get-AzureRmADGroup -SearchString 'Contoso Security Team')[0].Id -RoleDefinitionName "User Access Administrator" -ResourceGroupName ContosoAppRG
 ```
 
-Hello následující skript ukazuje, jak můžete tým zabezpečení hello vytvoření trezoru klíčů, nastavení protokolování a nastavte přístupová oprávnění pro další role a aplikace hello. 
+Následující skript ilustruje, jak může bezpečnostní tým vytvořit trezor klíčů, nastavit protokolování a nastavit přístupová oprávnění pro ostatní role a aplikaci. 
 
 ```
 # Create key vault and enable logging
@@ -185,61 +185,61 @@ $devopsrole.AssignableScopes = @("/subscriptions/<SUBSCRIPTION-GUID>")
 $devopsrole.Actions.Add("Microsoft.KeyVault/vaults/deploy/action")
 New-AzureRmRoleDefinition -Role $devopsrole
 
-# Assign this newly defined role tooDev ops security group
+# Assign this newly defined role to Dev ops security group
 New-AzureRmRoleAssignment -ObjectId (Get-AzureRmADGroup -SearchString 'Contoso App Devops')[0].Id -RoleDefinitionName "Contoso App Devops" -ResourceGroupName ContosoAppRG
 
 # Data plane permissions for Auditors
 Set-AzureRmKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzureRmADGroup -SearchString 'Contoso App Auditors')[0].Id -PermissionsToKeys list -PermissionsToSecrets list
 ```
 
-vlastní role Hello definován, je pouze přiřadit toohello předplatné, kde se má vytvořit skupinu prostředků ContosoAppRG hello. Pokud hello stejné vlastní role se použije pro další projekty v jiných předplatných, můžou mít její obor přidat více odběrů.
+Definovanou vlastní roli je možné přiřadit jenom v předplatném, ve kterém je vytvořená skupina prostředků ContosoAppRG. Pokud budou stejné vlastní role používány v dalších projektech v jiných předplatných, je možné do jejich oboru přidat další předplatná.
 
-přiřazení vlastní role Hello hello vývojáři nebo operátorů oprávnění "nasazení nebo action" hello je vymezená toohello skupinu prostředků. Tímto způsobem pouze virtuální počítače hello vytvořit ve skupině prostředků hello 'ContosoAppRG' získají hello tajné klíče (certifikát SSL a zavedení certifikátu). Všechny virtuální počítače, které vytvoří člen týmu dev/ops v jiné skupině prostředků nebude možné tooget těchto tajných klíčů i v případě, že znal hello tajný klíč identifikátory URI.
+Přiřazení vlastní role pro vývojáře/operátory pro oprávnění „deploy/action“ má nastavený obor na skupinu prostředků. Tímto způsobem bude moci tajné klíče (certifikát SSL a zaváděcí certifikát) získat jen virtuální počítače vytvořené ve skupině prostředků ContosoAppRG. Jakýkoli virtuální počítač, který člen týmu vývojářů a operátorů vytvoří v jiné skupině prostředků, nebude moci získat tyto tajné klíče, a to i navzdory znalosti URI tajných klíčů.
 
-Tento příklad znázorňuje jednoduchý scénář. Scénáře reálného života může být složitější a může být nutné tooadjust oprávnění tooyour trezoru klíčů na základě potřeb. Například v našem příkladu předpokládáme, že bude tento tým zabezpečení poskytovat hello klíče a tajné odkazy (identifikátory URI a kryptografické otisky), že vývojáři nebo operátory team nutné tooreference ve svých aplikacích. Proto nemusí toogrant vývojáři nebo operátory žádné přístup k datům roviny. Také připomínáme, že tento příklad se zaměřuje na zabezpečení trezoru klíčů. Podobně jako třeba zvážit toosecure [virtuální počítače](https://azure.microsoft.com/services/virtual-machines/security/), [účty úložiště](../storage/common/storage-security-guide.md) a dalším prostředkům služby Azure příliš.
+Tento příklad znázorňuje jednoduchý scénář. Reálné scénáře v praxi mohou být komplexnější a může se stát, že bude nutné oprávnění k vašemu trezoru klíčů upravit, aby odpovídala vašim potřebám. V našem příkladu třeba předpokládáme, že bezpečnostní tým poskytne reference klíčů a tajných klíčů (URI a kryptografické otisky), které tým vývojářů a operátorů potřebuje k odkazování ve svých aplikacích. Není tu tedy nutné udělovat vývojářům a operátorům přístup k rovině dat. Také připomínáme, že tento příklad se zaměřuje na zabezpečení trezoru klíčů. Obdobnou péči byste nicméně měli věnovat i zabezpečení [virtuálních počítačů](https://azure.microsoft.com/services/virtual-machines/security/), [účtů úložiště](../storage/common/storage-security-guide.md) a dalších prostředků Azure.
 
 > [!NOTE]
-> Poznámka: Tento příklad ukazuje, jak bude přístup k trezoru klíčů uzamčen v produkčním prostředí. Vývojáři Hello by měl mít vlastní předplatné nebo resourcegroup které mají úplná oprávnění toomanage jejich trezory, virtuální počítače a účet úložiště kde vyvíjejí aplikace hello.
+> Poznámka: Tento příklad ukazuje, jak bude přístup k trezoru klíčů uzamčen v produkčním prostředí. Vývojáři by měli mít vedle toho vlastní předplatné nebo skupinu prostředků, ve kterých budou mít oprávnění k plné správě svých trezorů, virtuálních počítačů a účtů úložiště při vývoji aplikace.
 > 
 > 
 
-## <a name="resources"></a>Zdroje
+## <a name="resources"></a>Zdroje a prostředky
 * [Řízení přístupu na základě role v Azure Active Directory](../active-directory/role-based-access-control-configure.md)
   
-  Tento článek vysvětluje hello řízení přístupu na základě Role v Azure Active Directory a jak to funguje.
+  Tento článek popisuje řízení přístupu podle role v Azure Active Directory a vysvětluje, jak funguje.
 * [RBAC: vestavěné role](../active-directory/role-based-access-built-in-roles.md)
   
-  Tento článek podrobnosti všechny hello vestavěné role, které jsou k dispozici v RBAC.
+  Tento článek podrobně popisuje všechny vestavěné role dostupné v RBAC.
 * [Principy nasazení podle modelu Resource Manager a klasického nasazení](../azure-resource-manager/resource-manager-deployment-model.md)
   
-  Tento článek popisuje nasazení Resource Manager hello a modely nasazení classic a vysvětluje hello výhody použití Resource Manager a prostředek skupiny hello
+  Tento článek popisuje model nasazení Resource Manager ve srovnání s klasickým modelem nasazení a vysvětluje, jaké výhody přináší Resource Manager a skupiny prostředků.
 * [Správa řízení přístupu na základě role pomocí Azure PowerShellu](../active-directory/role-based-access-control-manage-access-powershell.md)
   
-  Tento článek vysvětluje, jak toomanage na základě rolí přistupovat k řízení pomocí prostředí Azure PowerShell
-* [Správa řízení přístupu na základě rolí pomocí rozhraní REST API hello](../active-directory/role-based-access-control-manage-access-rest.md)
+  Tento článek vysvětluje, jak spravovat řízení přístupu podle role pomocí prostředí Azure PowerShell.
+* [Správa řízení přístupu na základě role pomocí REST API](../active-directory/role-based-access-control-manage-access-rest.md)
   
-  Tento článek ukazuje, jak toouse hello REST API toomanage RBAC.
+  Tento článek popisuje, jak používat rozhraní REST API ke správě RBAC.
 * [Řízení přístupu na základě role pro Microsoft Azure z Ignite](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
   
-  Toto je odkaz tooa, který je na webu Channel 9 video z konference Ignite 2015 MS hello. V této relaci se mluvit o přístup k správy a možnosti vytváření sestav v Azure a zkoumat osvědčených postupů zabezpečení přístupu tooAzure odběry pomocí služby Azure Active Directory.
-* [Autorizace přístupu tooweb aplikací pomocí OAuth 2.0 a Azure Active Directory](../active-directory/active-directory-protocols-oauth-code.md)
+  Odkaz na video na Channel 9 z konference MS Ignite 2015. Na tomto sezení se hovoří o možnostech správy přístupu a generování sestav v Azure a probírají se osvědčené postupy pro zabezpečení přístupu k předplatným Azure pomocí Azure Active Directory.
+* [Autorizace přístupu k webovým aplikacím s použitím OAuth 2.0 a Azure Active Directory](../active-directory/active-directory-protocols-oauth-code.md)
   
   Tento článek popisuje úplný proces OAuth 2.0 pro ověřování v Azure Active Directory.
 * [Rozhraní REST API správy trezoru klíčů](https://msdn.microsoft.com/library/azure/mt620024.aspx)
   
-  Tento dokument je hello odkaz pro toomanage rozhraní REST API hello klíč trezoru prostřednictvím kódu programu, včetně nastavení zásad přístupu k trezoru klíčů.
+  Tento dokument slouží jako reference k rozhraním REST API na správu trezoru klíčů (včetně nastavení jeho zásad přístupu) prostřednictvím programového kódu.
 * [Rozhraní REST API trezoru klíčů](https://msdn.microsoft.com/library/azure/dn903609.aspx)
   
-  Odkaz tookey trezor referenční dokumentace rozhraní API REST.
+  Odkaz na referenční dokumentaci k rozhraní API REST trezoru klíčů.
 * [Řízení přístupu ke klíčům](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_KeyAccessControl)
   
-  Odkaz tooSecret přístup řízení referenční dokumentaci k nástroji.
+  Odkaz na referenční dokumentaci pro řízení přístupu k tajným klíčům.
 * [Řízení přístupu k tajným klíčům](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_SecretAccessControl)
   
-  Odkaz tooKey přístup řízení referenční dokumentaci k nástroji.
+  Odkaz na referenční dokumentaci pro řízení přístupu k tajným klíčům.
 * [Nastavení](https://msdn.microsoft.com/library/mt603625.aspx) a [odebrání](https://msdn.microsoft.com/library/mt619427.aspx) zásady přístupu trezoru klíčů pomocí PowerShellu
   
-  Odkazy tooreference dokumentace pro zásady přístupu trezoru klíčů toomanage rutiny prostředí PowerShell.
+  Odkazy na referenční dokumentaci pro rutiny PowerShell na správu zásad přístupu trezoru klíčů.
 
 ## <a name="next-steps"></a>Další kroky
 Úvodní kurz pro správce najdete v tématu [Začínáme s Azure Key Vault](key-vault-get-started.md).
@@ -248,5 +248,5 @@ Další informace o protokolování využití trezoru klíčů najdete v tématu
 
 Další informace o používání klíčů a tajných klíčů se službou Azure Key Vault najdete v tématu [Informace o klíčích a tajných klíčích](https://msdn.microsoft.com/library/azure/dn903623.aspx).
 
-Pokud máte dotazy k trezoru klíčů, navštivte hello [Azure trezoru klíčů fóra](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)
+Pokud máte dotazy k trezorům klíčů, navštivte [fóra služby Azure Key Vault](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault).
 

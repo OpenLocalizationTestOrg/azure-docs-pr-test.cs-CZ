@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure AD v2.0 NodeJS AngularJS jednostránkové aplikace Začínáme | Microsoft Docs"
-description: "Jak toobuild úhlová JS jednostránkové aplikace s přihlašováním uživatelů pomocí obou Microsoft osobní účty a pracovní nebo školní účty."
+title: "Služba Azure AD v2.0 NodeJS AngularJS jednostránkové aplikace Začínáme | Microsoft Docs"
+description: "Jak sestavit úhlová JS jednostránkové aplikace s přihlašováním uživatelů s i osobní účty Microsoft a pracovní nebo školní účty."
 services: active-directory
 documentationcenter: 
 author: navyasric
@@ -15,54 +15,54 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 1ab450caf08ab05fba140b94b1b8de652e99cbc1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0e90171afd9c4c782fbb18375ab2d147497ef442
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="add-sign-in-tooan-angularjs-single-page-app---nodejs"></a>Přidat přihlašovací tooan AngularJS jednostránkové aplikace – NodeJS
-V tomto článku přidáme Přihlaste se pomocí používá technologii Microsoft účty tooan AngularJS aplikace pomocí koncového bodu v2.0 hello Azure Active Directory. koncový bod v2.0 Hello umožňují tooperform jeden integrace ve vaší aplikaci a ověřuje uživatele pomocí osobní i pracovní nebo školní účty.
+# <a name="add-sign-in-to-an-angularjs-single-page-app---nodejs"></a>Přidejte přihlášení do AngularJS jednostránkové aplikace - NodeJS
+V tomto článku přidáme přihlašují účty Microsoft používá technologii aplikace AngularJS pomocí koncového bodu v2.0 Azure Active Directory. koncový bod v2.0 umožňují provádět jeden integrace ve vaší aplikaci a ověřuje uživatele pomocí osobní i pracovní nebo školní účty.
 
-Tato ukázka je jednoduchou aplikaci seznamu úkolů jednu stránku, která ukládá úkoly do back-end REST API, napsané v NodeJS a zabezpečit pomocí nosných tokenů OAuth z Azure AD.  Hello AngularJS aplikace bude používat naše knihovna JavaScript ověřování s otevřeným zdrojem [adal.js](https://github.com/AzureAD/azure-activedirectory-library-for-js) toohandle hello celý v procesu přihlašování a získávat tokeny pro hello volání rozhraní REST API.  Hello stejného vzoru může být použité tooauthenticate tooother rozhraní REST API, jako je hello [Microsoft Graph](https://graph.microsoft.com) nebo hello rozhraní API Správce Azure Resource Manager.
+Tato ukázka je jednoduchou aplikaci seznamu úkolů jednu stránku, která ukládá úkoly do back-end REST API, napsané v NodeJS a zabezpečit pomocí nosných tokenů OAuth z Azure AD.  AngularJS aplikace bude používat naše knihovna JavaScript ověřování s otevřeným zdrojem [adal.js](https://github.com/AzureAD/azure-activedirectory-library-for-js) ke zpracování celý proces přihlášení a získávat tokeny pro volání rozhraní REST API.  Stejného vzoru lze použít k ověřování pro jiná rozhraní API REST, jako je třeba [Microsoft Graph](https://graph.microsoft.com) nebo rozhraní API Azure Resource Manager.
 
 > [!NOTE]
-> Ne všechny scénáře Azure Active Directory a funkce jsou podporovány koncového bodu v2.0 hello.  toodetermine Pokud byste měli používat koncového bodu v2.0 hello, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
+> Ne všechny scénáře Azure Active Directory a funkce jsou podporovány koncového bodu v2.0.  Pokud chcete zjistit, pokud byste měli používat koncový bod v2.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
 > 
 > 
 
 ## <a name="download"></a>Ke stažení
-tooget spuštění, budete potřebovat toodownload & instalace [node.js](https://nodejs.org).  Potom můžete klonování nebo [Stáhnout](https://github.com/AzureADQuickStarts/AppModelv2-SinglePageApp-AngularJS-NodeJS/archive/skeleton.zip) kostru aplikace:
+Abyste mohli začít, budete muset stáhnout a nainstalovat [node.js](https://nodejs.org).  Potom můžete klonování nebo [Stáhnout](https://github.com/AzureADQuickStarts/AppModelv2-SinglePageApp-AngularJS-NodeJS/archive/skeleton.zip) kostru aplikace:
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-SinglePageApp-AngularJS-NodeJS.git
 ```
 
-kostru aplikace Hello zahrnuje všechny hello často používaný kód pro jednoduchou aplikaci AngularJS, ale chybí všechny součásti související s identity hello.  Pokud nechcete, aby toofollow společně, můžete místo toho klonovat nebo [Stáhnout](https://github.com/AzureADQuickStarts/AppModelv2-SinglePageApp-AngularJS-NodeJS/archive/complete.zip) ukázka hello byla dokončena.
+Kostru aplikace zahrnuje všechny standardní kód pro jednoduchou aplikaci AngularJS, ale všechny součásti související s identity chybí.  Pokud nechcete, aby se podle nich zorientujete, můžete místo toho klonovat nebo [Stáhnout](https://github.com/AzureADQuickStarts/AppModelv2-SinglePageApp-AngularJS-NodeJS/archive/complete.zip) je hotová ukázka.
 
 ```
 git clone https://github.com/AzureADSamples/SinglePageApp-AngularJS-NodeJS.git
 ```
 
 ## <a name="register-an-app"></a>Registrace aplikace
-Nejprve vytvořte aplikaci v hello [portálu pro registraci aplikace](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), nebo postupujte podle těchto [podrobné kroky](active-directory-v2-app-registration.md).  Zkontrolujte, že:
+Nejprve vytvořte aplikaci [portálu pro registraci aplikace](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), nebo postupujte podle těchto [podrobné kroky](active-directory-v2-app-registration.md).  Zkontrolujte, že:
 
-* Přidat hello **webové** platformu pro vaši aplikaci.
-* Zadejte správný hello **identifikátor URI pro přesměrování**. Výchozí hodnota Hello Tato ukázka je `http://localhost:8080`.
-* Nechte hello **povolit implicitní tok** zaškrtávací políčko povoleno. 
+* Přidat **webové** platformu pro vaši aplikaci.
+* Zadejte správný **identifikátor URI pro přesměrování**. Výchozí hodnota pro tato ukázka je `http://localhost:8080`.
+* Ponechte **povolit implicitní tok** zaškrtávací políčko povoleno. 
 
-Poznamenejte hello **ID aplikace** přiřazené tooyour aplikace, budete ho potřebovat za chvíli. 
+Zkopírování **ID aplikace** přiřazené do vaší aplikace, budete ho potřebovat za chvíli. 
 
 ## <a name="install-adaljs"></a>Nainstalujte adal.js
-toostart, přejděte tooproject, které jste stáhli a nainstalujte adal.js.  Pokud máte [bower](http://bower.io/) nainstalovaná, právě spuštěním tohoto příkazu.  Pro žádné neshody verze závislosti vyberte právě hello vyšší verze.
+Pokud chcete spustit, přejděte do projektu můžete stáhnout a nainstalovat adal.js.  Pokud máte [bower](http://bower.io/) nainstalovaná, právě spuštěním tohoto příkazu.  Pro žádné neshody verze závislosti vyberte právě vyšší verze.
 
 ```
 bower install adal-angular#experimental
 ```
 
-Alternativně můžete ručně stáhnout [adal.js](https://raw.githubusercontent.com/AzureAD/azure-activedirectory-library-for-js/experimental/dist/adal.min.js) a [adal angular.js](https://raw.githubusercontent.com/AzureAD/azure-activedirectory-library-for-js/experimental/dist/adal-angular.min.js).  Přidat oba soubory toohello `app/lib/adal-angular-experimental/dist` adresáře.
+Alternativně můžete ručně stáhnout [adal.js](https://raw.githubusercontent.com/AzureAD/azure-activedirectory-library-for-js/experimental/dist/adal.min.js) a [adal angular.js](https://raw.githubusercontent.com/AzureAD/azure-activedirectory-library-for-js/experimental/dist/adal-angular.min.js).  Přidat oba soubory `app/lib/adal-angular-experimental/dist` adresáře.
 
-Nyní otevřete projekt hello ve svém oblíbeném textovém editoru a načíst adal.js na konci hello obsahu stránce hello:
+Nyní otevřete projekt ve svém oblíbeném textovém editoru a načíst adal.js na konci obsahu stránky:
 
 ```html
 <!--index.html-->
@@ -75,31 +75,31 @@ Nyní otevřete projekt hello ve svém oblíbeném textovém editoru a načíst 
 ...
 ```
 
-## <a name="set-up-hello-rest-api"></a>Nastavit hello REST API
-Když jste nastavujeme, umožňuje get hello back-end REST API práci.  V příkazovém řádku, nainstalujte všechny potřebné balíčky hello spuštěním (ujistěte se, můžete začít adresář nejvyšší úrovně hello projektu hello):
+## <a name="set-up-the-rest-api"></a>Nastavení rozhraní REST API
+Když jste nastavujeme, umožní začít pracovat REST API back-end.  V příkazovém řádku, nainstaluje všechny potřebné balíčky spuštěním (ujistěte se, zda pracujete v adresáři nejvyšší úrovně projektu):
 
 ```
 npm install
 ```
 
-Nyní otevřete `config.js` a nahraďte hello `audience` hodnotu:
+Nyní otevřete `config.js` a nahraďte `audience` hodnotu:
 
 ```js
 exports.creds = {
 
-     // TODO: Replace this value with hello Application ID from hello registration portal
+     // TODO: Replace this value with the Application ID from the registration portal
      audience: '<Your-application-id>',
 
      ...
 }
 ```
 
-Hello REST API použije tento hodnota toovalidate tokeny, které obdrží z hello úhlová aplikace na požadavky AJAX.  Všimněte si, že toto jednoduché rozhraní API REST ukládá data v paměti - takže každý server hello toostop čas dojde ke ztrátě všech vytvořených úkolů.
+Rozhraní REST API bude tato hodnota slouží k ověření tokeny, které obdrží z úhlová aplikace na požadavky AJAX.  Všimněte si, že toto jednoduché rozhraní API REST ukládá data v paměti - takže každý čas stop pro server, budou ztraceny všechny dříve vytvořenou úlohy.
 
-To je všechno hello čas vytvoříme toospend hovoříte o tom, jak funguje hello REST API.  Myslíte, že volné toopoke v hello kódu, ale pokud chcete, aby toolearn více informací o zabezpečení webového rozhraní API s Azure AD, podívejte se na [v tomto článku](active-directory-v2-devquickstarts-node-api.md). 
+Je vždy, které vytvoříme zatěžovat hovoříte o tom, jak funguje rozhraní REST API.  Nebojte se Vyvrtejte v kódu, ale pokud chcete získat další informace o zabezpečení webové rozhraní API s Azure AD, podívejte se na [v tomto článku](active-directory-v2-devquickstarts-node-api.md). 
 
 ## <a name="sign-users-in"></a>Přihlášení uživatelů
-Čas toowrite nějaký kód identity.  Možná jste již si všimli, že tento adal.js obsahuje poskytovatele AngularJS, který hraje vhodně s úhlová směrování mechanismy.  Začněte přidáním hello adal modulu toohello aplikace:
+Čas napsat kód, identity.  Možná jste již si všimli, že tento adal.js obsahuje poskytovatele AngularJS, který hraje vhodně s úhlová směrování mechanismy.  Začněte přidáním modulu adal k aplikaci:
 
 ```js
 // app/scripts/app.js
@@ -111,7 +111,7 @@ angular.module('todoApp', ['ngRoute','AdalAngular'])
 ...
 ```
 
-Nyní můžete inicializovat hello `adalProvider` s vaší aplikace ID:
+Nyní můžete inicializovat `adalProvider` s vaší aplikace ID:
 
 ```js
 // app/scripts/app.js
@@ -120,22 +120,22 @@ Nyní můžete inicializovat hello `adalProvider` s vaší aplikace ID:
 
 adalProvider.init({
 
-        // Use this value for hello public instance of Azure AD
+        // Use this value for the public instance of Azure AD
         instance: 'https://login.microsoftonline.com/', 
 
-        // hello 'common' endpoint is used for multi-tenant applications like this one
+        // The 'common' endpoint is used for multi-tenant applications like this one
         tenant: 'common',
 
-        // Your application id from hello registration portal
+        // Your application id from the registration portal
         clientId: '<Your-application-id>',
 
-        // If you're using IE, uncommment this line - hello default HTML5 sessionStorage does not work for localhost.
+        // If you're using IE, uncommment this line - the default HTML5 sessionStorage does not work for localhost.
         //cacheLocation: 'localStorage',
 
     }, $httpProvider);
 ```
 
-Skvělé, teď adal.js má všechny informace o hello potřebuje toosecure uživatelům přihlášení a aplikace.  tooforce přihlášení pro daný postup v aplikaci hello, vyžaduje se jeden řádek kódu:
+Skvělé, teď adal.js má všechny informace, které je nutné zabezpečit vaši aplikaci a přihlášení uživatelů.  Chcete-li vynutit přihlášení pro daný postup v aplikaci, jak dlouho trvá je jeden řádek kódu:
 
 ```js
 // app/scripts/app.js
@@ -145,29 +145,29 @@ Skvělé, teď adal.js má všechny informace o hello potřebuje toosecure uživ
 }).when("/TodoList", {
     controller: "todoListCtrl",
     templateUrl: "/static/views/TodoList.html",
-    requireADLogin: true, // Ensures that hello user must be logged in tooaccess hello route
+    requireADLogin: true, // Ensures that the user must be logged in to access the route
 })
 
 ...
 ```
 
-Teď, když uživatel klikne hello `TodoList` odkaz, adal.js se automaticky přesměruje tooAzure AD pro přihlášení v případě potřeby.  Vyvoláním adal.js v řadičích můžete odeslat také explicitně požadavků na přihlášení a odhlášení:
+Nyní když uživatel klikne na `TodoList` odkaz, adal.js automaticky přesměruje do služby Azure AD pro přihlášení v případě potřeby.  Vyvoláním adal.js v řadičích můžete odeslat také explicitně požadavků na přihlášení a odhlášení:
 
 ```js
 // app/scripts/homeCtrl.js
 
 angular.module('todoApp')
-// Load adal.js hello same way for use in controllers and views   
+// Load adal.js the same way for use in controllers and views   
 .controller('homeCtrl', ['$scope', 'adalAuthenticationService','$location', function ($scope, adalService, $location) {
     $scope.login = function () {
 
-        // Redirect hello user toosign in
+        // Redirect the user to sign in
         adalService.login();
 
     };
     $scope.logout = function () {
 
-        // Redirect hello user toolog out    
+        // Redirect the user to log out    
         adalService.logOut();
 
     };
@@ -175,7 +175,7 @@ angular.module('todoApp')
 ```
 
 ## <a name="display-user-info"></a>Zobrazit informace o uživateli
-Teď, když hello uživatel se přihlásí, pravděpodobně budete potřebovat data ověřování tooaccess hello přihlášeného uživatele ve vaší aplikaci.  Adal.js zpřístupní tyto informace můžete v hello `userInfo` objektu.  tooaccess tento objekt v zobrazení, musíte nejdřív přidat adal.js toohello kořenovém oboru odpovídající řadiče hello:
+Teď, když se uživatel přihlásí, budete pravděpodobně potřebovat pro přístup k datům ověřování přihlášeného uživatele ve vaší aplikaci.  Adal.js zpřístupní tyto informace můžete v `userInfo` objektu.  Chcete-li přístup k tomuto objektu v zobrazení, nejprve přidáte adal.js na kořenovém oboru odpovídající řadiče.
 
 ```js
 // app/scripts/userDataCtrl.js
@@ -185,14 +185,14 @@ angular.module('todoApp')
 .controller('userDataCtrl', ['$scope', 'adalAuthenticationService', function ($scope, adalService) {}]);
 ```
 
-Potom můžete přímo vyřešit hello `userInfo` objekt ve svém zobrazení: 
+Pak můžete vyřešit přímo `userInfo` objekt ve svém zobrazení: 
 
 ```html
 <!--app/views/UserData.html-->
 
 ...
 
-    <!--Get hello user's profile information from hello ADAL userInfo object-->
+    <!--Get the user's profile information from the ADAL userInfo object-->
     <tr ng-repeat="(key, value) in userInfo.profile">
         <td>{{key}}</td>
         <td>{{value}}</td>
@@ -200,14 +200,14 @@ Potom můžete přímo vyřešit hello `userInfo` objekt ve svém zobrazení:
 ...
 ```
 
-Můžete taky hello `userInfo` objektu toodetermine Pokud hello uživatel je přihlášený nebo ne.
+Můžete také `userInfo` objektem pro určení, pokud se uživatel je přihlášen nebo ne.
 
 ```html
 <!--index.html-->
 
 ...
 
-    <!--Use hello ADAL userInfo object tooshow hello right login/logout button-->
+    <!--Use the ADAL userInfo object to show the right login/logout button-->
     <ul class="nav navbar-nav navbar-right">
         <li><a class="btn btn-link" ng-show="userInfo.isAuthenticated" ng-click="logout()">Logout</a></li>
         <li><a class="btn btn-link" ng-hide="userInfo.isAuthenticated" ng-click="login()">Login</a></li>
@@ -215,12 +215,12 @@ Můžete taky hello `userInfo` objektu toodetermine Pokud hello uživatel je př
 ...
 ```
 
-## <a name="call-hello-rest-api"></a>Hello volání rozhraní REST API
-Nakonec je čas tooget některé tokeny a volání hello toocreate REST API, číst, aktualizovat a odstraňovat úkoly.  A co s?  Nemáte toodo *co*.  Adal.js se automaticky postará o získávání, ukládání do mezipaměti a aktualizaci tokeny.  Je také postará o připojení těchto tokenů toooutgoing AJAX požadavky, které odesíláte toohello REST API.  
+## <a name="call-the-rest-api"></a>Volání rozhraní REST API
+Nakonec je čas získat některé tokeny a volání rozhraní REST API vytvářet, číst, aktualizovat a odstraňovat úkoly.  A co s?  Není nutné provádět *co*.  Adal.js se automaticky postará o získávání, ukládání do mezipaměti a aktualizaci tokeny.  Je také postará o tyto tokeny se připojuje k odchozí požadavky AJAX, které odesílají do rozhraní REST API.  
 
-Jak přesně to funguje? Je všechny magic toohello Děkujeme z [AngularJS sběrače](https://docs.angularjs.org/api/ng/service/$http), což umožňuje adal.js tootransform odchozí a příchozí zprávy http.  Kromě toho adal.js předpokládá, že všechny žádosti odeslat toohello stejné doméně jako hello okna měli používat tokeny, které jsou určené pro hello stejným ID aplikace, jako hello aplikace AngularJS.  Z tohoto důvodu jsme použili hello stejným ID aplikace v obou úhlová aplikace hello a hello NodeJS REST API.  Samozřejmě můžete toto chování potlačit a řekněte adal.js tooget tokeny pro jiná rozhraní API REST v případě potřeby - ale pro tento scénář jednoduchého hello provede výchozí hodnoty.
+Jak přesně to funguje? Je všechny díky magic z [AngularJS sběrače](https://docs.angularjs.org/api/ng/service/$http), což umožňuje adal.js k transformaci odchozí a příchozí zprávy http.  Kromě toho adal.js předpokládá, že všechny žádosti odeslat do stejné domény jako okna měli používat tokeny, které jsou určené pro stejné ID aplikace jako aplikace AngularJS.  Z tohoto důvodu jsme použili stejné ID aplikace v úhlová aplikace a rozhraní REST API NodeJS.  Samozřejmě můžete toto chování potlačit a řekněte adal.js získat tokeny pro jiná rozhraní API REST v případě potřeby - ale pro tento scénář jednoduchého provede výchozí hodnoty.
 
-Zde je fragment kódu, který ukazuje, jak je snadné toosend požadavků s nosné tokeny z Azure AD:
+Zde je fragment kódu, který ukazuje, jak snadné je k posílání požadavků s nosné tokeny z Azure AD:
 
 ```js
 // app/scripts/todoListSvc.js
@@ -230,20 +230,20 @@ return $http.get('/api/tasks');
 ...
 ```
 
-Blahopřejeme!  Integrované jednostránkové aplikace Azure AD je nyní dokončen.  Pokračujte, proveďte předních.  Ho můžete ověřovat uživatele, bezpečně volat jeho back-end pomocí OpenID Connect rozhraní REST API a získat základní informace o uživateli hello.  Předinstalované hello podporuje každý uživatel s osobní Account Microsoft nebo pracovní nebo školní účet z Azure AD.  Poskytněte hello aplikaci zkuste to spuštěním:
+Blahopřejeme!  Integrované jednostránkové aplikace Azure AD je nyní dokončen.  Pokračujte, proveďte předních.  Ho můžete ověřovat uživatele, bezpečně volat jeho back-end pomocí OpenID Connect rozhraní REST API a získat základní informace o uživateli.  Předinstalované podporuje každý uživatel s osobní Account Microsoft nebo pracovní nebo školní účet z Azure AD.  Dejte aplikaci zkuste to spuštěním:
 
 ```
 node server.js
 ```
 
-V prohlížeči přejděte příliš`http://localhost:8080`.  Přihlaste se pomocí osobního účtu Microsoft nebo pracovní nebo školní účet.  Přidejte seznam úkolů uživatele toohello úlohy a odhlaste.  Zkuste podepisování s hello jiný druh účtu. Pokud potřebujete pracovní nebo školní uživatele toocreate klienta Azure AD [zjistěte, jak jeden zde tooget](active-directory-howto-tenant.md) (je to zdarma).
+V prohlížeči přejděte na `http://localhost:8080`.  Přihlaste se pomocí osobního účtu Microsoft nebo pracovní nebo školní účet.  Přidání úkolů do seznamu úkolů uživatele a odhlášení.  Pokuste se přihlásit jiný typ účtu. Pokud potřebujete klienta Azure AD pro vytváření uživatelů pracovní nebo školní [zjistěte, jak získat tady](active-directory-howto-tenant.md) (je to zdarma).
 
-získávání informací o hello toocontinue hello koncového bodu v2.0, přejděte zpět tooour [Příručka vývojáře v2.0](active-directory-appmodel-v2-overview.md).  Další zdroje projděte si:
+A pokračujte ve čtení o koncový bod v2.0, přejděte zpět naše [Příručka vývojáře v2.0](active-directory-appmodel-v2-overview.md).  Další zdroje projděte si:
 
 * [Azure – ukázky z webu GitHub >>](https://github.com/Azure-Samples)
 * [Azure AD na přetečení zásobníku >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 * Dokumentace k Azure AD na [Azure.com >>](https://azure.microsoft.com/documentation/services/active-directory/)
 
 ## <a name="get-security-updates-for-our-products"></a>Získejte bezpečnostní aktualizace našich produktů
-Doporučujeme vám tooget oznámení o bezpečnostních incidentech navštivte stránky [tuto stránku](https://technet.microsoft.com/security/dd252948) a přihlášení k odběru tooSecurity Advisory Alerts.
+Doporučujeme vám získávat oznámení o bezpečnostních incidentech tak, že navštívíte [tuto stránku](https://technet.microsoft.com/security/dd252948) a přihlásíte se k odběru služby Security Advisory Alerts.
 

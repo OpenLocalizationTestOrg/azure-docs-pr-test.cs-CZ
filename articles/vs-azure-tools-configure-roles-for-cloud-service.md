@@ -1,6 +1,6 @@
 ---
-title: "role hello aaaConfigure Azure cloud service pomocí sady Visual Studio | Microsoft Docs"
-description: "Zjistěte, jak tooset až a konfigurovat role pro cloudové služby Azure pomocí sady Visual Studio."
+title: "Konfigurace role pro cloudové služby Azure pomocí sady Visual Studio | Microsoft Docs"
+description: "Zjistěte, jak nastavit a konfigurovat role pro cloudové služby Azure pomocí sady Visual Studio."
 services: visual-studio-online
 documentationcenter: na
 author: kraigb
@@ -14,123 +14,123 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 03/21/2017
 ms.author: kraigb
-ms.openlocfilehash: d3c62eb57040ebe987787e73b17b468bb82122bd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 17da71ac0c5ab9330b9244c0354e4d161d98229e
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="configure-azure-cloud-service-roles-with-visual-studio"></a>Konfigurace role Azure cloud service pomocí sady Visual Studio
-Cloudové služby Azure může mít jeden nebo více pracovních nebo webové role. Pro každou roli potřebovat toodefine nastavení dané role a taky nakonfigurovat, jak tato role běží. toolearn Další informace o rolí v cloudových služeb, najdete v části hello video [tooAzure Úvod cloudové služby](https://channel9.msdn.com/Series/Windows-Azure-Cloud-Services-Tutorials/Introduction-to-Windows-Azure-Cloud-Services). 
+Cloudové služby Azure může mít jeden nebo více pracovních nebo webové role. Pro každou roli musíte definovat nastavení dané role a taky nakonfigurovat, jak tato role běží. Další informace o rolích v cloudové služby najdete v tématu video [Úvod do Azure Cloud Services](https://channel9.msdn.com/Series/Windows-Azure-Cloud-Services-Tutorials/Introduction-to-Windows-Azure-Cloud-Services). 
 
-Hello informace pro cloudové služby jsou uloženy v hello následující soubory:
+Informace pro cloudové služby jsou uloženy v následujících souborech:
 
-- **ServiceDefinition.csdef** -souboru definice služby hello definuje hello nastavení běhového prostředí pro cloudové služby, včetně toho, jaké role jsou požadovány, koncových bodů a velikost virtuálního počítače. Žádná z hello data uložená v `ServiceDefinition.csdef` jde změnit, pokud vaše role běží.
-- **Souboru ServiceConfiguration.cscfg** – konfigurační soubor služby hello konfiguruje, jak velký počet instancí role spouštějí a hello hodnoty hello nastavení definované pro roli. Hello data uložená v `ServiceConfiguration.cscfg` lze změnit, když vaše role běží.
+- **ServiceDefinition.csdef** -definiční soubor služby definuje nastavení běhového prostředí pro cloudové služby, včetně toho, jaké role jsou požadovány, koncových bodů a velikost virtuálního počítače. Žádná data uložená v `ServiceDefinition.csdef` jde změnit, pokud vaše role běží.
+- **Souboru ServiceConfiguration.cscfg** – konfigurační soubor služby konfiguruje, jak velký počet instancí role spouštějí a hodnoty nastavení definované pro roli. Data uložená v `ServiceConfiguration.cscfg` lze změnit, když vaše role běží.
 
-toostore různé hodnoty pro hello nastavení, které určují běh roli, můžete definovat více konfigurace služby. Konfigurace různé služby můžete použít pro jednotlivá prostředí nasazení. Můžete například nastavit vašeho úložiště účet připojovací řetězec toouse hello místní emulátoru úložiště Azure v konfiguraci místní služby a vytvořit další toouse konfigurace služby Azure storage v cloudu hello.
+Pokud chcete uložit různé hodnoty pro nastavení, které řídí, jak role běží, můžete definovat více konfigurace služby. Konfigurace různé služby můžete použít pro jednotlivá prostředí nasazení. Například můžete nastavit připojovací řetězec účet úložiště můžete použít emulátor místního úložiště Azure v místní službě konfigurace a vytvořte jinou konfiguraci služby pro použití úložiště Azure v cloudu.
 
-Při vytváření cloudové služby Azure v sadě Visual Studio, dvě konfigurace služby se automaticky vytvoří a přidány tooyour projektu Azure:
+Při vytváření cloudové služby Azure v sadě Visual Studio, jsou automaticky vytvořen a přidán do projektu Azure dvě konfigurace služby:
 
 - `ServiceConfiguration.Cloud.cscfg`
 - `ServiceConfiguration.Local.cscfg`
 
 ## <a name="configure-an-azure-cloud-service"></a>Konfigurace Azure cloud service
-Cloudové služby Azure v Průzkumníku řešení v sadě Visual Studio, můžete nakonfigurovat, jak je znázorněno v hello následující kroky:
+Cloudové služby Azure v Průzkumníku řešení v sadě Visual Studio, můžete nakonfigurovat, jak je znázorněno v následujícím postupu:
 
 1. Vytvořit nebo otevřít projekt Azure cloud service v sadě Visual Studio.
 
-1. V **Průzkumníku řešení**, klikněte pravým tlačítkem na projekt hello a hello místní nabídce vyberte **vlastnosti**.
+1. V **Průzkumníku řešení**, klikněte pravým tlačítkem na projekt a v místní nabídce vyberte **vlastnosti**.
    
     ![Místní nabídku projektu Průzkumník řešení](./media/vs-azure-tools-configure-roles-for-cloud-service/solution-explorer-project-context-menu.png)
 
-1. Na stránce vlastností projektu hello vyberte hello **vývoj** kartě. 
+1. Na stránce vlastností projektu, vyberte **vývoj** kartě. 
 
     ![Stránka vlastností projektu - karta vývoj](./media/vs-azure-tools-configure-roles-for-cloud-service/project-properties-development-tab.png)
 
-1. V hello **konfigurace služby** seznamu, vyberte hello název hello konfigurace služby, které chcete tooedit. (Pokud chcete toomake změny konfigurace služby hello tooall pro tuto roli, vyberte **všechny konfigurace**.)
+1. V **konfigurace služby** seznamu, vyberte název konfigurace služby, který chcete upravit. (Pokud chcete změnit konfiguraci služby pro tuto roli, vyberte **všechny konfigurace**.)
    
     > [!IMPORTANT]
-    > Pokud si zvolíte specifické služby konfigurace, některé vlastnosti jsou zakázané, protože jejich lze nastavit pouze pro všechny konfigurace. tooedit tyto vlastnosti, je nutné vybrat **všechny konfigurace**.
+    > Pokud si zvolíte specifické služby konfigurace, některé vlastnosti jsou zakázané, protože jejich lze nastavit pouze pro všechny konfigurace. Chcete-li upravit tyto vlastnosti, je nutné vybrat **všechny konfigurace**.
     > 
     > 
    
     ![Seznam konfigurace služby pro cloudové služby Azure](./media/vs-azure-tools-configure-roles-for-cloud-service/cloud-service-service-configuration-property.png)
 
-## <a name="change-hello-number-of-role-instances"></a>Změnit hello počet instancí role
-výkon hello tooimprove cloudové služby, můžete změnit hello počet instancí role, které běží na základě hello počtu uživatelů nebo hello zatížení pro konkrétní roli. Samostatný virtuální počítač se vytvoří pro každou instanci role, když hello Cloudová služba běží v Azure. Tato akce ovlivní hello fakturace pro hello nasazení pro tuto cloudovou službu. Další informace o fakturaci, viz [porozumět vaší faktuře pro Microsoft Azure](billing/billing-understand-your-bill.md).
+## <a name="change-the-number-of-role-instances"></a>Změnit počet instancí role
+Pokud chcete zlepšit výkon cloudové služby, můžete změnit počet instancí role, které běží na základě počtu uživatelů nebo zatížení pro konkrétní roli. Samostatný virtuální počítač se vytvoří pro každou instanci role, při spuštění cloudové služby v Azure. Tato akce ovlivní fakturace pro nasazení pro tuto cloudovou službu. Další informace o fakturaci, viz [porozumět vaší faktuře pro Microsoft Azure](billing/billing-understand-your-bill.md).
 
 1. Vytvořit nebo otevřít projekt Azure cloud service v sadě Visual Studio.
 
-1. V **Průzkumníku**, rozbalte uzel projektu hello. V části hello **role** uzel, klikněte pravým tlačítkem na hello role chcete tooupdate a, hello místní nabídce vyberte **vlastnosti**.
+1. V **Průzkumníku**, rozbalte uzel projektu. V části **role** uzel, klikněte pravým tlačítkem na roli, kterou chcete aktualizovat a v místní nabídce vyberte **vlastnosti**.
 
     ![Řešení Explorer Azure role kontextové nabídky](./media/vs-azure-tools-configure-roles-for-cloud-service/solution-explorer-azure-role-context-menu.png)
 
-1. Vyberte hello **konfigurace** kartě.
+1. Vyberte **konfigurace** kartě.
 
     ![Na kartě Konfigurace](./media/vs-azure-tools-configure-roles-for-cloud-service/role-configuration-properties-page.png)
 
-1. V hello **konfigurace služby** seznamu, vyberte hello konfigurace služby, které chcete tooupdate.
+1. V **konfigurace služby** vyberte konfiguraci služby, který chcete aktualizovat.
    
     ![Konfigurace služby seznamu](./media/vs-azure-tools-configure-roles-for-cloud-service/role-configuration-properties-page-select-configuration.png)
 
-1. V hello **Instance počet** textové pole, zadejte hello počet instancí, který má toostart pro tuto roli. Každá instance běží na samostatný virtuální počítač při publikování hello cloudové služby tooAzure.
+1. V **Instance počet** textové pole, zadejte počet instancí, které chcete spustit pro tuto roli. Každá instance běží na samostatný virtuální počítač při publikování cloudové služby Azure.
 
-    ![Aktualizace hello počet instancí](./media/vs-azure-tools-configure-roles-for-cloud-service/role-configuration-properties-page-instance-count.png)
+    ![Aktualizuje se počet instancí](./media/vs-azure-tools-configure-roles-for-cloud-service/role-configuration-properties-page-instance-count.png)
 
-1. Z hello Visual Studio panelu nástrojů vyberte **Uložit**.
+1. Ze sady Visual Studio panelu nástrojů vyberte **Uložit**.
 
 ## <a name="manage-connection-strings-for-storage-accounts"></a>Spravovat připojovací řetězce pro účty úložiště
-Můžete přidat, odebrat nebo upravit připojovací řetězce pro vaše konfigurace služby. Například můžete místní připojovací řetězec pro konfiguraci místní služby, který má hodnotu `UseDevelopmentStorage=true`. Také můžete chtít tooconfigure konfigurace služby cloud, který používá účet úložiště v Azure.
+Můžete přidat, odebrat nebo upravit připojovací řetězce pro vaše konfigurace služby. Například můžete místní připojovací řetězec pro konfiguraci místní služby, který má hodnotu `UseDevelopmentStorage=true`. Můžete také nakonfigurovat služby konfigurace cloudu, který používá účet úložiště v Azure.
 
 > [!WARNING]
-> Když zadáte hello Azure klíčové informace o účtu úložiště pro připojovací řetězec, účet úložiště, tyto informace jsou uloženy místně v konfiguračním souboru služby hello. Tyto informace nejsou aktuálně uloženy jako šifrovaný text.
+> Když zadáte údaje klíče účtu úložiště Azure pro připojovací řetězce k účtu úložiště, tyto informace jsou uloženy místně v konfiguračním souboru služby. Tyto informace nejsou aktuálně uloženy jako šifrovaný text.
 > 
 > 
 
-Pomocí jinou hodnotu pro každou konfiguraci služby nemáte mít toouse různých připojovací řetězce v rámci cloudové služby nebo upravit kód při publikování tooAzure vaše cloudové služby. Můžete použít stejný název pro hello připojovací řetězec v kódu a hello hodnota se liší podle konfigurace služby hello, kterou jste vybrali při sestavování cloudové služby, nebo pokud ji publikujete hello.
+Pomocí jinou hodnotu pro každou konfiguraci služby není muset použít jiné připojovací řetězce v rámci cloudové služby nebo upravit kód při publikování cloudové služby Azure. Můžete použít stejný název pro připojovací řetězec v kódu a hodnota se liší v závislosti na konfiguraci služby, kterou vyberete při sestavování cloudové služby, nebo při jeho publikování.
 
 1. Vytvořit nebo otevřít projekt Azure cloud service v sadě Visual Studio.
 
-1. V **Průzkumníku**, rozbalte uzel projektu hello. V části hello **role** uzel, klikněte pravým tlačítkem na hello role chcete tooupdate a, hello místní nabídce vyberte **vlastnosti**.
+1. V **Průzkumníku**, rozbalte uzel projektu. V části **role** uzel, klikněte pravým tlačítkem na roli, kterou chcete aktualizovat a v místní nabídce vyberte **vlastnosti**.
 
     ![Řešení Explorer Azure role kontextové nabídky](./media/vs-azure-tools-configure-roles-for-cloud-service/solution-explorer-azure-role-context-menu.png)
 
-1. Vyberte hello **nastavení** kartě.
+1. Vyberte **nastavení** kartě.
 
     ![Karta nastavení](./media/vs-azure-tools-configure-roles-for-cloud-service/project-properties-settings-tab.png)
 
-1. V hello **konfigurace služby** seznamu, vyberte hello konfigurace služby, které chcete tooupdate.
+1. V **konfigurace služby** vyberte konfiguraci služby, který chcete aktualizovat.
 
     ![Konfigurace služby](./media/vs-azure-tools-configure-roles-for-cloud-service/project-properties-settings-tab-select-configuration.png)
 
-1. Vyberte tooadd připojovací řetězec, **přidat nastavení**.
+1. Chcete-li přidat připojovací řetězec, vyberte **přidat nastavení**.
 
     ![Přidat připojovací řetězec](./media/vs-azure-tools-configure-roles-for-cloud-service/project-properties-settings-tab-add-setting.png)
 
-1. Po přidání seznamu toohello nové nastavení hello aktualizujte hello řádek v seznamu hello hello potřebné informace.
+1. Jakmile se nové nastavení byl přidán do seznamu, aktualizujte řádek v seznamu nezbytné informace.
 
     ![Nový připojovací řetězec](./media/vs-azure-tools-configure-roles-for-cloud-service/project-properties-settings-tab-add-setting-new-setting.png)
 
-    - **Název** – zadejte název hello chcete toouse pro hello připojovací řetězec.
-    - **Typ** – vyberte **připojovací řetězec** z rozevíracího seznamu hello.
-    - **Hodnota** -hello připojovací řetězec můžete zadat přímo do hello **hodnotu** buňku nebo toowork třemi tečkami (...) vyberte hello v hello **vytvoření připojovacího řetězce úložiště** dialogové okno.  
+    - **Název** – zadejte název, který chcete použít pro připojovací řetězec.
+    - **Typ** – vyberte **připojovací řetězec** z rozevíracího seznamu.
+    - **Hodnota** – můžete buď zadat připojovací řetězec přímo do **hodnotu** buňky, nebo vyberte se třemi tečkami (...) pro práci v **vytvoření připojovacího řetězce úložiště** dialogové okno.  
 
-1. V hello **vytvoření připojovacího řetězce úložiště** dialogovém okně, vyberte možnost pro **připojit pomocí**. Postupujte podle pokynů hello hello možnost, kterou vyberete:
+1. V **vytvoření připojovacího řetězce úložiště** dialogovém okně, vyberte možnost pro **připojit pomocí**. Postupujte podle pokynů pro možnosti, kterou jste vybrali:
 
-    - **Emulátor úložiště Microsoft Azure** – Pokud vyberete tuto možnost, hello zbývající nastavení v dialogovém okně hello jsou zakázána, protože se vztahují pouze tooAzure. Vyberte **OK**.
-    - **Vaše předplatné** – Pokud vyberte tuto možnost, použít hello rozevíracího seznamu tooeither vybrat a přihlášení do účtu Microsoft, nebo přidat účet Microsoft. Vyberte účet předplatného a úložiště Azure. Vyberte **OK**.
-    - **Ručně zadali přihlašovací údaje** – zadejte název účtu úložiště hello a buď hello primární a druhý klíč. Vyberte možnost pro **připojení** (HTTPS se doporučuje pro většinu scénářů). Vyberte **OK**.
+    - **Emulátor úložiště Microsoft Azure** – Pokud vyberete tuto možnost, zbývající nastavení v dialogovém okně jsou zakázány, protože se vztahují pouze na Azure. Vyberte **OK**.
+    - **Vaše předplatné** – Pokud vyberete tuto možnost, pomocí rozevíracího seznamu vyberte a přihlaste se k účtu Microsoft nebo přidání účtu Microsoft. Vyberte účet předplatného a úložiště Azure. Vyberte **OK**.
+    - **Ručně zadali přihlašovací údaje** – zadejte název účtu úložiště a druhý nebo primární klíč. Vyberte možnost pro **připojení** (HTTPS se doporučuje pro většinu scénářů). Vyberte **OK**.
 
-1. toodelete připojovací řetězec, vyberte hello připojovací řetězec a pak vyberte **odebrat nastavení**.
+1. Chcete-li odstranit připojovací řetězec, vyberte připojovací řetězec a pak vyberte **odebrat nastavení**.
 
-1. Z hello Visual Studio panelu nástrojů vyberte **Uložit**.
+1. Ze sady Visual Studio panelu nástrojů vyberte **Uložit**.
 
 ## <a name="programmatically-access-a-connection-string"></a>Programový přístup připojovací řetězec
 
-Hello následující kroky ukazují, jak tooprogrammatically přístup připojovací řetězec pomocí jazyka C#.
+Následující kroky ukazují, jak k programovému přístupu ke připojovací řetězec pomocí jazyka C#.
 
-1. Přidejte následující hello pomocí souboru tooa C# direktivy kam toouse hello nastavení:
+1. Přidejte následující direktivy using do souboru C# kam používá nastavení:
 
     ```csharp
     using Microsoft.WindowsAzure;
@@ -138,55 +138,55 @@ Hello následující kroky ukazují, jak tooprogrammatically přístup připojov
     using Microsoft.WindowsAzure.ServiceRuntime;
     ```
 
-1. Hello následující kód ukazuje příklad tooaccess připojovací řetězec. Nahraďte hello &lt;ConnectionStringName > zástupný symbol hello odpovídající hodnotu. 
+1. Následující kód ukazuje příklad přístup připojovací řetězec. Nahraďte &lt;ConnectionStringName > zástupný symbol na odpovídající hodnotu. 
 
     ```csharp
-    // Setup hello connection tooAzure Storage
+    // Setup the connection to Azure Storage
     var storageAccount = CloudStorageAccount.Parse(RoleEnvironment.GetConfigurationSettingValue("<ConnectionStringName>"));
     ```
 
-## <a name="add-custom-settings-toouse-in-your-azure-cloud-service"></a>Přidat vlastní nastavení toouse ve službě Azure cloud
-Vlastní nastavení v konfiguračním souboru služby hello umožňuje přidat název a hodnotu řetězce pro konfiguraci konkrétní služby. Můžete zvolit, toouse tato nastavení tooconfigure funkce v cloudové službě načtením hello hodnotu hello nastavení a použití této hodnoty toocontrol hello logiky v kódu. Tyto hodnoty konfigurace služby můžete změnit bez nutnosti toorebuild vašeho balíčku služby, nebo když cloudové služby běží. Kódu můžete zkontrolovat pro oznámení, když se změní nastavení. V tématu [RoleEnvironment.Changing událostí](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.changing.aspx).
+## <a name="add-custom-settings-to-use-in-your-azure-cloud-service"></a>Přidat vlastní nastavení pro použití v cloudové služby Azure
+Vlastní nastavení v konfiguračním souboru služby můžete přidat název a hodnotu řetězce pro konfiguraci konkrétní služby. Můžete zvolit pomocí tohoto nastavení můžete nakonfigurovat funkce v rámci cloudové služby tak, že čtení hodnoty nastavení a použití této hodnoty pro řízení logiku v kódu. Tyto hodnoty konfigurace služby můžete změnit bez nutnosti znovu vytvořit balíček vaší služby nebo při spuštění cloudové služby. Kódu můžete zkontrolovat pro oznámení, když se změní nastavení. V tématu [RoleEnvironment.Changing událostí](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.changing.aspx).
 
 Můžete přidat, odebrat nebo upravit vlastní nastavení pro vaše konfigurace služby. Můžete chtít různé hodnoty pro tyto řetězce pro různé služby konfigurace.
 
-Pomocí jinou hodnotu pro každou konfiguraci služby nemáte máte toouse jiné řetězce v rámci cloudové služby nebo upravit kód při publikování tooAzure vaše cloudové služby. Můžete použít stejný název pro hello řetězec v kódu a hello hodnota se liší podle konfigurace služby hello, kterou jste vybrali při sestavování cloudové služby, nebo pokud ji publikujete hello.
+Pomocí jinou hodnotu pro každou konfiguraci služby není muset použít jiné řetězce v rámci cloudové služby nebo upravit kód při publikování cloudové služby Azure. Můžete použít stejný název pro řetězec v kódu a hodnota se liší v závislosti na konfiguraci služby, kterou vyberete při sestavování cloudové služby, nebo při jeho publikování.
 
 1. Vytvořit nebo otevřít projekt Azure cloud service v sadě Visual Studio.
 
-1. V **Průzkumníku**, rozbalte uzel projektu hello. V části hello **role** uzel, klikněte pravým tlačítkem na hello role chcete tooupdate a, hello místní nabídce vyberte **vlastnosti**.
+1. V **Průzkumníku**, rozbalte uzel projektu. V části **role** uzel, klikněte pravým tlačítkem na roli, kterou chcete aktualizovat a v místní nabídce vyberte **vlastnosti**.
 
     ![Řešení Explorer Azure role kontextové nabídky](./media/vs-azure-tools-configure-roles-for-cloud-service/solution-explorer-azure-role-context-menu.png)
 
-1. Vyberte hello **nastavení** kartě.
+1. Vyberte **nastavení** kartě.
 
     ![Karta nastavení](./media/vs-azure-tools-configure-roles-for-cloud-service/project-properties-settings-tab.png)
 
-1. V hello **konfigurace služby** seznamu, vyberte hello konfigurace služby, které chcete tooupdate.
+1. V **konfigurace služby** vyberte konfiguraci služby, který chcete aktualizovat.
 
     ![Konfigurace služby seznamu](./media/vs-azure-tools-configure-roles-for-cloud-service/project-properties-settings-tab-select-configuration.png)
 
-1. tooadd vlastního nastavení, vyberte **přidat nastavení**.
+1. Chcete-li přidat vlastní nastavení, vyberte **přidat nastavení**.
 
     ![Přidat vlastní nastavení](./media/vs-azure-tools-configure-roles-for-cloud-service/project-properties-settings-tab-add-setting.png)
 
-1. Po přidání seznamu toohello nové nastavení hello aktualizujte hello řádek v seznamu hello hello potřebné informace.
+1. Jakmile se nové nastavení byl přidán do seznamu, aktualizujte řádek v seznamu nezbytné informace.
 
     ![Nové vlastní nastavení](./media/vs-azure-tools-configure-roles-for-cloud-service/project-properties-settings-tab-add-setting-new-setting.png)
 
-    - **Název** – zadejte název hello hello nastavení.
-    - **Typ** – vyberte **řetězec** z rozevíracího seznamu hello.
-    - **Hodnota** – zadejte hodnotu hello hello nastavení. Můžete buď zadat hello hodnotu přímo do hello **hodnotu** buňky, nebo vyberte hello třemi tečkami (...) tooenter hello hodnota ve hello **Upravit řetězec** dialogové okno.  
+    - **Název** – zadejte název nastavení.
+    - **Typ** – vyberte **řetězec** z rozevíracího seznamu.
+    - **Hodnota** – zadejte hodnotu nastavení. Můžete buď zadat hodnotu přímo do **hodnotu** buňky, nebo vyberte se třemi tečkami (...) zadejte hodnotu v **Upravit řetězec** dialogové okno.  
 
-1. Vyberte nastavení hello toodelete vlastního nastavení a pak vyberte **odebrat nastavení**.
+1. Chcete-li odstranit vlastní nastavení, vyberte nastavení a pak vyberte **odebrat nastavení**.
 
-1. Z hello Visual Studio panelu nástrojů vyberte **Uložit**.
+1. Ze sady Visual Studio panelu nástrojů vyberte **Uložit**.
 
 ## <a name="programmatically-access-a-custom-settings-value"></a>Programový přístup hodnoty vlastní nastavení
  
-Hello následující kroky ukazují, jak tooprogrammatically přístup vlastního nastavení pomocí jazyka C#.
+Následující kroky ukazují, jak k programovému přístupu ke vlastního nastavení pomocí jazyka C#.
 
-1. Přidejte následující hello pomocí souboru tooa C# direktivy kam toouse hello nastavení:
+1. Přidejte následující direktivy using do souboru C# kam používá nastavení:
 
     ```csharp
     using Microsoft.WindowsAzure;
@@ -194,58 +194,58 @@ Hello následující kroky ukazují, jak tooprogrammatically přístup vlastníh
     using Microsoft.WindowsAzure.ServiceRuntime;
     ```
 
-1. Hello následující kód ukazuje příklad tooaccess vlastního nastavení. Nahraďte hello &lt;SettingName > zástupný symbol hello odpovídající hodnotu. 
+1. Následující kód ukazuje příklad toho, jak pro přístup k vlastní nastavení. Nahraďte &lt;SettingName > zástupný symbol na odpovídající hodnotu. 
     
     ```csharp
     var settingValue = RoleEnvironment.GetConfigurationSettingValue("<SettingName>");
     ```
 
 ## <a name="manage-local-storage-for-each-role-instance"></a>Spravovat místní úložiště pro každou instanci role
-Můžete přidat úložiště systému místní soubor pro každou instanci role. Hello datům uloženým v úložiště není přístupné ostatní instance hello role, pro které hello data uložená nebo jiné role.  
+Můžete přidat úložiště systému místní soubor pro každou instanci role. Data uložená na tomto úložiště není přístupné ostatní instance role jsou data uložena, nebo jiné role.  
 
 1. Vytvořit nebo otevřít projekt Azure cloud service v sadě Visual Studio.
 
-1. V **Průzkumníku**, rozbalte uzel projektu hello. V části hello **role** uzel, klikněte pravým tlačítkem na hello role chcete tooupdate a, hello místní nabídce vyberte **vlastnosti**.
+1. V **Průzkumníku**, rozbalte uzel projektu. V části **role** uzel, klikněte pravým tlačítkem na roli, kterou chcete aktualizovat a v místní nabídce vyberte **vlastnosti**.
 
     ![Řešení Explorer Azure role kontextové nabídky](./media/vs-azure-tools-configure-roles-for-cloud-service/solution-explorer-azure-role-context-menu.png)
 
-1. Vyberte hello **místní úložiště** kartě.
+1. Vyberte **místní úložiště** kartě.
 
     ![Karta místní úložiště](./media/vs-azure-tools-configure-roles-for-cloud-service/role-local-storage-tab.png)
 
-1. V hello **konfigurace služby** seznamu, ujistěte se, že **všechny konfigurace** je vybrán jako nastavení místní úložiště hello použít tooall služby konfigurace. Jakákoli jiná hodnota výsledkem všechny hello vstupních polí na stránce hello zakázaná. 
+1. V **konfigurace služby** seznamu, ujistěte se, že **všechny konfigurace** je vybrán jako místní úložiště nastavení se použije pro všechny konfigurace služby. Jakákoli jiná hodnota výsledkem všech vstupních polí na stránce bude zakázán. 
 
     ![Konfigurace služby seznamu](./media/vs-azure-tools-configure-roles-for-cloud-service/role-local-storage-tab-service-configuration.png)
 
-1. Vyberte položku místní úložiště tooadd **přidat místní úložiště**.
+1. Přidání položky místní úložiště, vyberte **přidat místní úložiště**.
 
     ![Přidejte místní úložiště](./media/vs-azure-tools-configure-roles-for-cloud-service/role-local-storage-tab-add-local-storage.png)
 
-1. Po přidání seznamu toohello hello nové místní úložiště položku aktualizujte hello řádek v seznamu hello hello potřebné informace.
+1. Jakmile nový záznam místní úložiště byl přidán do seznamu, aktualizujte řádek v seznamu nezbytné informace.
 
     ![Nová položka místní úložiště](./media/vs-azure-tools-configure-roles-for-cloud-service/role-local-storage-tab-new-local-storage.png)
 
-    - **Název** – zadejte název hello má toouse pro hello nové místní úložiště.
-    - **Velikost (MB)** – zadejte velikost hello v MB, kterou potřebujete pro hello nové místní úložiště.
-    - **Čištění na role recyklaci** – vyberte tuto možnost tooremove hello data v nové místní úložiště hello po recyklaci hello virtuálního počítače pro roli hello.
+    - **Název** – zadejte název, který chcete použít pro nové místní úložiště.
+    - **Velikost (MB)** – zadejte velikost v MB, kterou potřebujete pro nové místní úložiště.
+    - **Čištění na role recyklaci** – vyberte tuto možnost, chcete-li odstranit data v nové místní úložiště po recyklaci virtuálního počítače pro roli.
 
-1. Vyberte položku hello toodelete položku místní úložiště a potom vyberte **odebrat místní úložiště**.
+1. Chcete-li odstranit položku místní úložiště, vyberte položku a pak vyberte **odebrat místní úložiště**.
 
-1. Z hello Visual Studio panelu nástrojů vyberte **Uložit**.
+1. Ze sady Visual Studio panelu nástrojů vyberte **Uložit**.
 
 ## <a name="programmatically-accessing-local-storage"></a>Prostřednictvím kódu programu přístup k místnímu úložišti
 
-Tato část ukazuje, jak tooprogrammatically přistupovat k místnímu úložišti pomocí jazyka C# vytvořením textového souboru testovací `MyLocalStorageTest.txt`.  
+V této části ukazuje, jak se prostřednictvím kódu programu přístup k místnímu úložišti pomocí jazyka C# vytvořením textového souboru testovací `MyLocalStorageTest.txt`.  
 
-### <a name="write-a-text-file-toolocal-storage"></a>Zápis textu souboru toolocal úložiště
+### <a name="write-a-text-file-to-local-storage"></a>Zápis do místního úložiště do textového souboru
 
-Hello následující kód ukazuje příklad jak toowrite textový toolocal úložiště souborů. Nahraďte hello &lt;LocalStorageName > zástupný symbol hello odpovídající hodnotu. 
+Následující kód ukazuje příklad zápis do textového souboru do místního úložiště. Nahraďte &lt;LocalStorageName > zástupný symbol na odpovídající hodnotu. 
 
     ```csharp
-    // Retrieve an object that points toohello local storage resource
+    // Retrieve an object that points to the local storage resource
     LocalResource localResource = RoleEnvironment.GetLocalResource("<LocalStorageName>");
     
-    //Define hello file name and path
+    //Define the file name and path
     string[] paths = { localResource.RootPath, "MyLocalStorageTest.txt" };
     String filePath = Path.Combine(paths);
     
@@ -257,24 +257,24 @@ Hello následující kód ukazuje příklad jak toowrite textový toolocal úlo�
 
     ```
 
-### <a name="find-a-file-written-toolocal-storage"></a>Vyhledat soubor zapsána toolocal úložiště
+### <a name="find-a-file-written-to-local-storage"></a>Vyhledat soubor zapisovat do místního úložiště
 
-soubor hello tooview vytvořené hello kód v předchozí části hello, postupujte takto:
+Chcete-li zobrazit soubor vytvořený pomocí kódu v předchozí části, postupujte takto:
     
-1.  V oznamovací oblasti systému Windows hello, klikněte pravým tlačítkem na hello Azure – ikona a, hello místní nabídce vyberte **zobrazit uživatelské prostředí emulátoru výpočtů**. 
+1.  V oznamovací oblasti systému Windows klikněte pravým tlačítkem na ikonu Azure a, v místní nabídce vyberte **zobrazit uživatelské prostředí emulátoru výpočtů**. 
 
     ![Zobrazit emulátoru služby výpočty Azure](./media/vs-azure-tools-configure-roles-for-cloud-service/show-compute-emulator.png)
 
-1. Vyberte roli webový hello.
+1. Vyberte webovou roli.
 
     ![Emulátoru služby výpočty Azure](./media/vs-azure-tools-configure-roles-for-cloud-service/compute-emulator.png)
 
-1. Na hello **Microsoft Azure výpočetní emulátor** nabídce vyberte možnost **nástroje** > **otevřete místní úložiště**.
+1. Na **Microsoft Azure výpočetní emulátor** nabídce vyberte možnost **nástroje** > **otevřete místní úložiště**.
 
     ![Položky nabídky otevřete místního úložiště.](./media/vs-azure-tools-configure-roles-for-cloud-service/compute-emulator-open-local-store-menu.png)
 
-1. Když se otevře okno Průzkumníka Windows hello, zadejte ' MyLocalStorageTest.txt'' do hello **vyhledávání** textového pole a vyberte **Enter** toostart hello vyhledávání. 
+1. Když se otevře okno Průzkumníka Windows, zadejte "MyLocalStorageTest.txt'' do **vyhledávání** textového pole a vyberte **Enter** má začít prohledávání. 
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o Azure projekty v sadě Visual Studio načtením [konfigurace projektu Azure](vs-azure-tools-configuring-an-azure-project.md). Další informace o hello cloudové služby schéma načtením [– odkaz schématu](https://msdn.microsoft.com/library/azure/dd179398).
+Další informace o Azure projekty v sadě Visual Studio načtením [konfigurace projektu Azure](vs-azure-tools-configuring-an-azure-project.md). Další informace o schématu cloudové služby načtením [– odkaz schématu](https://msdn.microsoft.com/library/azure/dd179398).
 

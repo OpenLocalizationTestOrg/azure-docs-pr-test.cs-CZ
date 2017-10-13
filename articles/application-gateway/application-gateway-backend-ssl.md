@@ -1,6 +1,6 @@
 ---
-title: aaaEnabling end tooend protokolu SSL na Azure Application Gateway | Microsoft Docs
-description: "Tato stránka obsahuje přehled hello Application Gateway end tooend podporu protokolu SSL."
+title: "Povolení koncového šifrování protokolu SSL ve službě Azure Application Gateway | Dokumentace Microsoftu"
+description: "Tato stránka poskytuje přehled podpory koncového šifrování protokolu SSL ve službě Application Gateway."
 documentationcenter: na
 services: application-gateway
 author: amsriva
@@ -15,33 +15,33 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 07/19/2017
 ms.author: amsriva
-ms.openlocfilehash: c5cb398a1e7d9a08662a3120baad98edb5575917
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 689ee54dc1db2ea371b08270718278fd98c65bb5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="overview-of-end-tooend-ssl-with-application-gateway"></a>Přehled end tooend SSL s aplikační brány
+# <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>Přehled koncového šifrování protokolu SSL pomocí služby Application Gateway
 
-Aplikační brána podporuje ukončení protokolu SSL na hello brány, po které obvykle přenosy dat bez šifrování toohello back-end serverů. Tato funkce umožňuje webové servery toobe unburdened z nákladná režii šifrování a dešifrování. Ale někteří zákazníci nešifrovaná komunikace toohello back-end serverech není přijatelné možnost. Tato nešifrovaná komunikace může být z důvodu toosecurity požadavky, požadavky na dodržování předpisů, nebo hello aplikace přijímá pouze zabezpečené připojení. Pro tyto aplikace, aplikační brána podporuje end tooend SSL šifrování.
+Služba Application Gateway podporuje ukončení protokolu SSL na bráně, po čemž provoz typicky teče nešifrován na back-endové servery. Tato funkce webovým serverům umožňuje snížení nákladné režie spojené s šifrováním a dešifrováním. Pro některé zákazníky je však nešifrovaná komunikace s back-endovými servery nepřijatelnou možností. Může to být z důvodu požadavků na zabezpečení nebo dodržování předpisů nebo protože aplikace může přijímat pouze zabezpečená připojení. Pro takové aplikace služba Application Gateway podporuje koncové šifrování protokolu SSL.
 
 ## <a name="overview"></a>Přehled
 
-End tooend SSL můžete toosecurely přenášet back-end toohello citlivá data šifrují, když poskytuje i nadále využívat výhod hello výhod funkce Vyrovnávání zatížení vrstvy 7 které aplikační brány. Některé z těchto funkcí jsou spřažení na základě souboru cookie relace, na základě adresy URL směrování, podporu pro směrování na základě lokality, nebo možnost tooinject X - předávaných-* hlavičky.
+Koncové šifrování protokolu SSL umožňuje bezpečně přenášet citlivá data do back-endu v zašifrované podobě a současně využívat výhody funkcí pro vyrovnávání zatížení vrstvy 7, které nabízí aplikační brána. Jde například o spřažení relací na základě souborů cookie, směrování na základě adres URL, podporu směrování založeného na webech nebo možnost vkládat hlavičky X-Forwarded-*.
 
-Jestliže nakonfigurované s režimem komunikace SSL tooend end, aplikační brána hello relací SSL na hello brány a dešifruje provozu generovaného uživateli. Pak provede hello nakonfigurovaná pravidla tooselect odpovídající back-end fondu instance tooroute provoz do. Aplikační brána pak inicializuje nový toohello back-end server připojení SSL a znovu je zašifruje data před přenosem hello požadavek toohello back-end pomocí certifikátu veřejného klíče hello back-end serveru. End tooend, který je povolen protokol SSL nastavením nastavení protokolu v BackendHTTPSetting tooHTTPS, který je pak použije tooa back-endový fond. Každý server back-end ve fondu back-end hello s tooend end, který povolen protokol SSL musí být nakonfigurované zabezpečené komunikace tooallow certifikátu.
+Když je nakonfigurována s režimem komunikace koncového šifrování protokolu SSL, služba Application Gateway ukončuje na bráně relace protokolu SSL a dešifruje provoz uživatelů. Následně použije nakonfigurovaná pravidla k výběru příslušné instance back-endového fondu, na kterou provoz přesměruje. Služba Application Gateway poté zahájí nové připojení SSL k back-endovému serveru a před odesláním požadavku do back-endu znovu zašifruje data pomocí certifikátu s veřejným klíčem back-endového serveru. Koncové šifrování protokolu SSL se povoluje nastavením nastavení protokolu v BackendHTTPSetting na hodnotu HTTPS. Toto nastavení se následně použije na back-endový fond. Každý back-endový server v back-endovém fondu s povoleným koncovým šifrováním protokolu SSL musí být pro umožnění bezpečné komunikace nakonfigurován s certifikátem.
 
-![end tooend ssl scénář][1]
+![scénář koncového šifrování protokolu ssl][1]
 
-V tomto příkladu požadavky pomocí TLS1.2 jsou směrované toobackend v Pool1 pomocí end tooend SSL.
+V tomto příkladu jsou požadavky, které používají šifrování TLS 1.2, přesměrované koncovým šifrováním protokolu SSL na back-endové servery fondu Pool1.
 
-## <a name="end-tooend-ssl-and-whitelisting-of-certificates"></a>Ukončení tooend SSL a povolených certifikátů
+## <a name="end-to-end-ssl-and-whitelisting-of-certificates"></a>Koncové šifrování protokolu SSL a vytváření seznamu povolených certifikátů
 
-Aplikační brána komunikuje pouze se službou známé back-end instancí, které mají seznam povolených adres jejich certifikát s hello aplikační brány. tooenable povolených certifikáty, musíte nahrát hello veřejný klíč back-end serveru certifikáty toohello aplikační brány (ne hello kořenový certifikát). Pouze připojení tooknown a seznam povolených adres back-EndY jsou poté povoleny. Hello zbývající back-EndY výsledkem chyba brány. Certifikáty podepsané svým držitelem slouží pouze k testování a nedoporučují se pro úlohy v produkčním prostředí. Tyto certifikáty mít seznam povolených adres toobe s hello aplikační bránu, jak je popsáno v předchozích krocích před použitím hello.
+Služba Application Gateway komunikuje pouze se známými back-endovými instancemi, jejichž certifikáty jsou uvedeny v seznamu povolených certifikátů ve službě Application Gateway. Chcete-li povolit vytváření seznamu povolených certifikátů, musíte do aplikační brány nahrát veřejný klíč certifikátů back-endového serveru (nikoliv kořenový certifikát). Potom budou povolena jenom připojení ke známým back-endům uvedeným v seznamu. Zbývající back-endy způsobí chybu brány. Certifikáty podepsané svým držitelem slouží pouze k testování a nedoporučují se pro úlohy v produkčním prostředí. Takové certifikáty také musí být uvedeny v seznamu povolených certifikátů aplikační brány (viz popis v předchozích krocích), aby bylo možné je použít.
 
 ## <a name="next-steps"></a>Další kroky
 
-Po získání informací o end tooend SSL, přejděte příliš[povolit koncové tooend SSL na aplikační brána](application-gateway-end-to-end-ssl-powershell.md) toocreate brány aplikace pomocí ukončení tooend SSL.
+Po získání informací o koncovém šifrování protokolu SSL přejděte k tématu [Povolení koncového šifrování protokolu SSL v aplikační bráně](application-gateway-end-to-end-ssl-powershell.md) a vytvořte aplikační bránu s koncovým šifrováním protokolu SSL.
 
 <!--Image references-->
 

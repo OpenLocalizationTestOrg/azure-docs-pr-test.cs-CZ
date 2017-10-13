@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Jive | Microsoft Docs'
-description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a Jive."
+description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Jive."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,89 +13,89 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: jeedes
-ms.openlocfilehash: b1c0d0bc2d79427c055f577fe5f9d30d10f1bbdd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 957b152fdd40d08a867e788b0cb9f7d57ed481e4
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-configuring-jive-for-user-provisioning"></a>Kurz: Konfigurace Jive pro zřizování uživatelů
 
-cílem Hello tohoto kurzu je tooshow hello kroky nutné tooperform v Jive a Azure AD tooautomatically zřídit a deaktivace zřízení uživatelských účtů z tooJive Azure AD.
+Cílem tohoto kurzu je tak, aby zobrazovalo kroky, které je třeba provést v Jive a Azure AD do automaticky zřizovat a deaktivace zřízení uživatelských účtů ze služby Azure AD k Jive.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Hello scénáři uvedeném v tomto kurzu se předpokládá, že už máte hello následující položky:
+Scénář uvedených v tomto kurzu se předpokládá, že už máte následující položky:
 
 *   Klienta služby Azure Active directory.
 *   Jive jednotného přihlašování povolené předplatné.
 *   Uživatelský účet v Jive s oprávněními správce týmu.
 
-## <a name="assigning-users-toojive"></a>Přiřazení uživatelů tooJive
+## <a name="assigning-users-to-jive"></a>Přiřazení uživatelů k Jive
 
-Azure Active Directory používá koncept názvem "přiřazení" toodetermine uživatelů, kteří obdrželi přístup tooselected aplikace. V kontextu hello zřizování účtu automatické uživatele se synchronizují pouze hello uživatelů a skupin, které byly "přiřazeny" tooan aplikace ve službě Azure AD.
+Azure Active Directory používá koncept označované jako "úlohy" k určení uživatelů, kteří obdrželi přístup k vybrané aplikace. V kontextu uživatele automatické zřizování účtu se synchronizují pouze uživatelé a skupiny, které byly "přiřazeny" aplikace ve službě Azure AD.
 
-Před konfigurací a povolení hello zřizování služby, musíte toodecide jaké uživatelů nebo skupin ve službě Azure AD představují hello uživatele, kteří potřebují přístup k aplikaci Jive tooyour. Jakmile se rozhodli, můžete přiřadit tyto aplikace Jive tooyour uživatelů podle pokynů hello zde:
+Před konfigurací a povolení zřizování služby, musíte rozhodnout, jaké uživatelů nebo skupin ve službě Azure AD představují uživatele, kteří potřebují přístup k vaší aplikaci Jive. Jakmile se rozhodli, můžete přiřadit těmto uživatelům aplikace Jive podle pokynů tady:
 
-[Přiřadit uživatele nebo skupinu tooan firemní aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Přiřazení uživatele nebo skupiny do aplikace enterprise](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-toojive"></a>Důležité tipy pro přiřazení uživatelů tooJive
+### <a name="important-tips-for-assigning-users-to-jive"></a>Důležité tipy pro přiřazování uživatelů do Jive
 
-*   Dále je doporučeno jednoho uživatele Azure AD přiřadit hello tootest tooJive zřizování konfigurace. Další uživatele nebo skupiny může být přiřazen později.
+*   Dále je doporučeno jednoho uživatele Azure AD pro Jive přidělí otestovat konfiguraci zřizování. Další uživatele nebo skupiny může být přiřazen později.
 
-*   Při přiřazování tooJive uživatele, musíte vybrat platné uživatelské role. role "Výchozí přístup" Hello nefunguje pro zřizování.
+*   Při přiřazování Jive uživatele, musíte vybrat platné uživatelské role. Roli "Výchozí přístup" nefunguje pro zřizování.
 
 ## <a name="enable-user-provisioning"></a>Povolit zřizování uživatelů
 
-Tato část vás provede připojením vaší služby Azure AD tooJive uživatelský účet zřizování rozhraní API a konfigurace hello zřizování služby toocreate, aktualizovat a zakázat přiřazené uživatelské účty v Jive podle přiřazení uživatelů a skupin ve službě Azure AD.
+Tato část vás provede připojení k Jive na uživatelský účet zřizování rozhraní API služby Azure AD a konfiguraci zřizování službu, kterou chcete vytvořit, aktualizovat a zakažte přiřazené uživatelské účty v Jive podle přiřazení uživatelů a skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete také tooenabled na základě SAML jednotné přihlašování pro Jive, hello pokynů uvedených v [portál Azure](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce doplnění navzájem.
+> Můžete také povolit na základě SAML jednotné přihlašování pro Jive, postupujte podle pokynů uvedených v [portál Azure](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce doplnění navzájem.
 
-### <a name="tooconfigure-user-account-provisioning"></a>tooconfigure uživatel účet zřizování:
+### <a name="to-configure-user-account-provisioning"></a>Ke konfiguraci zřizování účtu uživatele:
 
-Hello cílem této části je toooutline jak tooenable zřizování uživatelů služby Active Directory uživatele tooJive účty.
-V rámci tohoto postupu jsou požadované tooprovide potřebujete toorequest z Jive.com token zabezpečení uživatele.
+Cílem této části se popisují postup povolení zřizování uživatelů z uživatelských účtů služby Active Directory pro Jive.
+V rámci tohoto postupu jsou nezbytné, které budete muset požádat Jive.com token zabezpečení uživatele.
 
-1. V hello [portál Azure](https://portal.azure.com), procházet toohello **Azure Active Directory > podnikové aplikace > všechny aplikace** části.
+1. V [portál Azure](https://portal.azure.com), vyhledejte **Azure Active Directory > podnikové aplikace > všechny aplikace** části.
 
-2. Pokud jste již nakonfigurovali Jive pro jednotné přihlašování, vyhledejte instanci Jive pomocí hello vyhledávací pole. Jinak vyberte možnost **přidat** a vyhledejte **Jive** v galerii aplikací hello. Vyberte Jive z výsledků hledání hello a přidejte ji tooyour seznam aplikací.
+2. Pokud jste již nakonfigurovali Jive pro jednotné přihlašování, vyhledejte instanci Jive pomocí pole hledání. Jinak vyberte možnost **přidat** a vyhledejte **Jive** v galerii aplikací. Vyberte Jive ve výsledcích hledání a přidejte ji do seznamu aplikací.
 
-3. Vyberte instanci Jive a pak vyberte hello **zřizování** kartě.
+3. Vyberte instanci Jive a pak vyberte **zřizování** kartě.
 
-4. Sada hello **režimu zřizování** příliš**automatické**. 
+4. Nastavte **režimu zřizování** k **automatické**. 
 
     ![Zřizování](./media/active-directory-saas-jive-provisioning-tutorial/provisioning.png)
 
-5. V části hello **přihlašovací údaje správce** části, zadejte následující nastavení konfigurace hello:
+5. V části **přihlašovací údaje správce** části, zadejte následující nastavení konfigurace:
    
-    a. V hello **uživatelské jméno správce Jive** textovému poli, typ Jive účet název, který má hello **správce systému** profil v Jive.com přiřazen.
+    a. V **uživatelské jméno správce Jive** textovému poli, zadejte název, který má účtu Jive **správce systému** profil v Jive.com přiřazen.
    
-    b. V hello **heslo správce Jive** textovému poli, zadejte hello heslo pro tento účet.
+    b. V **heslo správce Jive** textovému poli, zadejte heslo pro tento účet.
    
-    c. V hello **URL klienta Jive** textovému poli, URL typu hello Jive klienta.
+    c. V **URL klienta Jive** textovému poli, zadejte adresu URL Jive klienta.
       
       > [!NOTE]
-      > Hello Jive klienta adresa URL je adresa URL, která se používá ve vaší organizaci toolog v tooJive.  
-      > Obvykle hello adresa URL má hello následující formát: **www.\< organizace\>. jive.com**.          
+      > Adresa URL Jive klienta je adresa URL, která je vaše organizace používá k přihlášení do Jive.  
+      > Obvykle se adresa URL má následující formát: **www.\< organizace\>. jive.com**.          
 
-6. V hello portálu Azure, klikněte na **Test připojení** tooensure Azure AD můžete připojit tooyour Jive aplikaci.
+6. Na portálu Azure klikněte na tlačítko **Test připojení** zajistit Azure AD může připojit k aplikaci Jive.
 
-7. Zadejte hello e-mailovou adresu uživatele nebo skupiny, který by měly dostávat oznámení zřizování Chyba v hello **e-mailové oznámení** pole a zaškrtněte políčko hello níže.
+7. Zadejte e-mailovou adresu uživatele nebo skupiny, který by měly dostávat oznámení zřizování Chyba v **e-mailové oznámení** pole a zaškrtněte políčko níže.
 
 8. Klikněte na tlačítko **uložit.**
 
-9. V části hello části mapování, vyberte **tooJive synchronizaci uživatelů Azure Active Directory.**
+9. V části mapování vyberte **synchronizaci Azure Active Directory uživatelům Jive.**
 
-10. V hello **mapování atributů** , projděte si hello uživatelské atributy, které jsou synchronizované z tooJive Azure AD. Hello atributy vybrán jako **párování** vlastnosti jsou použité toomatch hello uživatelské účty v Jive pro operace aktualizace. Vyberte toocommit tlačítko hello uložit změny.
+10. V **mapování atributů** , projděte si uživatelské atributy, které jsou synchronizované z Azure AD Jive. Atributy vybrán jako **párování** vlastnosti se používají tak, aby odpovídaly uživatelské účty v Jive pro operace aktualizace. Kliknutím na tlačítko Uložit potvrzení změny.
 
-11. tooenable hello zřizování služby Azure AD pro Jive, změna hello **Stav zřizování** příliš**na** v části Nastavení hello
+11. Povolit zřizování služby pro Jive Azure AD, změňte **Stav zřizování** k **na** v části Nastavení
 
 12. Klikněte na tlačítko **uložit.**
 
-Spustí hello počáteční synchronizaci všech uživatelů a skupiny přiřazené tooJive v hello uživatelé a skupiny oddílu. počáteční synchronizace Hello trvá déle tooperform než následné synchronizace, ke kterým dochází přibližně každých 20 minut, dokud se službou hello. Můžete použít hello **podrobnosti synchronizace** části toomonitor průběh a postupujte podle pokynů odkazy tooprovisioning aktivity sestavy, které popisují všechny akce prováděné hello zřizování služby ve vaší aplikaci Jive.
+Spustí počáteční synchronizaci všech uživatelů a skupiny přiřazené k Jive v části Uživatelé a skupiny. Počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 20 minut, dokud se službou provést. Můžete použít **podrobnosti synchronizace** části monitorovat průběh a odkazech zřízení sestavy aktivity, které popisují všechny akce prováděné při zřizování služby ve vaší aplikaci Jive.
 
-Nyní můžete vytvořit testovací účet. Počkejte, až minut too20 tooverify, který hello účet byl synchronizován tooJive.
+Nyní můžete vytvořit testovací účet. Chcete-li ověřit, že účet byly synchronizovány Jive Počkejte až 20 minut.
 
 ## <a name="additional-resources"></a>Další zdroje
 

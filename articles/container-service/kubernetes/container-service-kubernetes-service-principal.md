@@ -1,9 +1,9 @@
 ---
-title: "objekt zabezpečení aaaService pro cluster Azure Kubernetes | Microsoft Docs"
+title: "Instanční objekt pro cluster Azure Kubernetes | Dokumentace Microsoftu"
 description: "Vytvoření a správa instančního objektu služby Azure Active Directory pro cluster Kubernetes v Azure Container Service"
 services: container-service
 documentationcenter: 
-author: dlepow
+author: neilpeterson
 manager: timlt
 editor: 
 tags: acs, azure-container-service, kubernetes
@@ -13,131 +13,126 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2017
-ms.author: danlep
+ms.date: 09/26/2017
+ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 7a01624c5ac3fa717dbcbd570e05ceb4d917c53a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 14975454cbc0afcfbdbd3aa6b52983be4d4b1785
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>Nastavení instančního objektu služby Azure AD pro cluster Kubernetes ve službě Container Service
 
 
-V Azure Container Service vyžaduje Kubernetes cluster [objektu služby Azure Active Directory](../../active-directory/develop/active-directory-application-objects.md) toointeract s rozhraními API Azure. Hello instanční objekt je potřeba toodynamically spravovat prostředky, jako [trasy definované uživatelem](../../virtual-network/virtual-networks-udr-overview.md) a hello [pro vyrovnávání zatížení vrstvy 4 Azure](../../load-balancer/load-balancer-overview.md). 
+Cluster Kubernetes vyžaduje v Azure Container Service [instanční objekt služby Azure Active Directory](../../active-directory/develop/active-directory-application-objects.md) pro interakci s rozhraními API Azure. Instanční objekt je potřeba k dynamické správě prostředků, jako jsou například [uživatelem definované trasy](../../virtual-network/virtual-networks-udr-overview.md) a [vrstva 4 služby Azure Load Balancer](../../load-balancer/load-balancer-overview.md).
 
 
-Tento článek popisuje různé možnosti tooset až služba hlavní Kubernetes clusteru. Například, pokud jste nainstalovali ale nastavení hello [Azure CLI 2.0](/cli/azure/install-az-cli2), můžete spustit hello [ `az acs create` ](/cli/azure/acs#create) příkaz toocreate hello Kubernetes clusteru a hello instančního objektu v hello stejnou dobu.
+Tento článek ukazuje různé možnosti nastavení instančního objektu pro cluster Kubernetes. Pokud jste například nainstalovali a nastavili [Azure CLI 2.0](/cli/azure/install-az-cli2), můžete spustit příkaz [`az acs create`](/cli/azure/acs#create) a vytvořit současně cluster Kubernetes i instanční objekt.
 
 
-## <a name="requirements-for-hello-service-principal"></a>Požadavky pro hello instančního objektu
+## <a name="requirements-for-the-service-principal"></a>Požadavky pro instanční objekt
 
-Můžete použít existující Azure AD instanční objekt zda splňuje hello následující požadavky, nebo vytvořte novou.
+Můžete vytvořit existující instanční objekt služby Azure AD splňující následující požadavky nebo můžete vytvořit nový.
 
-* **Obor**: hello skupiny prostředků v předplatném hello použít toodeploy hello Kubernetes clusteru nebo (méně restriktivně) hello předplatné použít toodeploy hello clusteru.
+* **Obor:** Předplatné použité k nasazení clusteru
 
 * **Role:****Přispěvatel**
 
 * **Tajný kód klienta:** Musí se jednat o heslo. V současné době nemůžete použít instanční objekt nastavený pro ověření certifikátu.
 
-> [!IMPORTANT] 
-> toocreate instančního objektu, musíte mít oprávnění tooregister aplikace pomocí klienta Azure AD a tooassign hello aplikace tooa role v rámci vašeho předplatného. toosee, pokud máte hello požadované oprávnění [změnami hello portál](../../azure-resource-manager/resource-group-create-service-principal-portal.md#required-permissions). 
+> [!IMPORTANT]
+> Abyste mohli vytvořit instanční objekt, musíte mít oprávnění k registraci aplikace v tenantu Azure AD a přiřazení aplikace k roli v předplatném. Pokud chcete zjistit, jestli máte požadovaná oprávnění, [podívejte se na portál](../../azure-resource-manager/resource-group-create-service-principal-portal.md#required-permissions).
 >
 
 ## <a name="option-1-create-a-service-principal-in-azure-ad"></a>Možnost 1: Vytvoření instančního objektu v Azure AD
 
-Pokud před nasazením clusteru Kubernetes chcete toocreate objektu služby Azure AD, Azure poskytuje několik metod. 
+Pokud chcete instanční objekt služby Azure AD vytvořit před nasazením clusteru Kubernetes, Azure k tomu nabízí několik metod.
 
-Následující příklady příkazů Hello ukazují, jak toodo o hello [Azure CLI 2.0](../../azure-resource-manager/resource-group-authenticate-service-principal-cli.md). Případně můžete vytvořit službu objektu zabezpečení pomocí [prostředí Azure PowerShell](../../azure-resource-manager/resource-group-authenticate-service-principal.md), hello [portál](../../azure-resource-manager/resource-group-create-service-principal-portal.md), nebo jiné metody.
+Příkazy v následujícím příkladu vám ukážou, jak to můžete udělat pomocí [Azure CLI 2.0](../../azure-resource-manager/resource-group-authenticate-service-principal-cli.md). Instanční objekt můžete případně vytvořit pomocí [Azure PowerShellu](../../azure-resource-manager/resource-group-authenticate-service-principal.md), [portálu](../../azure-resource-manager/resource-group-create-service-principal-portal.md) nebo jinou metodou.
 
 ```azurecli
 az login
 
 az account set --subscription "mySubscriptionID"
 
-az group create -n "myResourceGroupName" -l "westus"
+az group create --name "myResourceGroup" --location "westus"
 
-az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/mySubscriptionID/resourceGroups/myResourceGroupName"
+az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/mySubscriptionID"
 ```
 
-Výstup se podobně jako následující toohello (tady zobrazené zredigované):
+Výstup je podobný tomuto (zobrazuje se zde zrevidovaně):
 
 ![Vytvoření instančního objektu](./media/container-service-kubernetes-service-principal/service-principal-creds.png)
 
-Zvýrazněná jsou hello **ID klienta** (`appId`) a hello **tajný klíč klienta** (`password`), použít jako parametry hlavní služby pro nasazení clusteru.
+Zvýrazní se **ID klienta** (`appId`) a **tajný kód klienta** (`password`), které se použijí jako parametry instančního objektu pro nasazení clusteru.
 
 
-### <a name="specify-service-principal-when-creating-hello-kubernetes-cluster"></a>Při vytváření clusteru Kubernetes hello zadat instančního objektu
+### <a name="specify-service-principal-when-creating-the-kubernetes-cluster"></a>Zadání instančního objektu při vytváření clusteru Kubernetes
 
-Zadejte hello **ID klienta** (také nazývané hello `appId`, pro ID aplikace) a **tajný klíč klienta** (`password`) z existující službu hlavní jako parametry při vytváření hello Kubernetes clusteru. Ujistěte se, že hello instanční objekt splňuje požadavky hello v hello od tohoto článku.
+Při vytváření clusteru Kubernetes zadejte **ID klienta** (pro ID aplikace také označované jako `appId`) a **tajný kód klienta** (`password`) existujícího instančního objektu jako parametry. Ujistěte se, že instanční objekt splňuje požadavky uvedené na začátku tohoto článku.
 
-Tyto parametry můžete zadat při nasazování clusteru Kubernetes hello pomocí hello [rozhraní příkazového řádku Azure (CLI) 2.0](container-service-kubernetes-walkthrough.md), [portál Azure](../dcos-swarm/container-service-deployment.md), nebo jiné metody.
+Tyto parametry můžete zadat při nasazování clusteru Kubernetes pomocí [rozhraní příkazového řádku Azure (CLI) 2.0](container-service-kubernetes-walkthrough.md), webu [Azure Portal](../dcos-swarm/container-service-deployment.md) nebo jiné metody.
 
->[!TIP] 
->Při zadávání hello **ID klienta**, se, zda text hello toouse `appId`, není hello `ObjectId`, z hello instanční objekt.
+>[!TIP]
+>Při zadávání **ID klienta** se ujistěte, že používáte `appId` instančního objektu, a nikoli `ObjectId` instančního objektu.
 >
 
-Hello následující příklad ukazuje jeden ze způsobů toopass hello parametry s hello 2.0 rozhraní příkazového řádku Azure. Tento příklad používá hello [šablony rychlý start Kubernetes](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes).
+Následující příklad ukazuje jeden ze způsobů předání parametrů pomocí Azure CLI 2.0. Tento příklad používá [šablonu Kubernetes pro rychlý start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes).
 
-1. [Stáhněte si](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-acs-kubernetes/azuredeploy.parameters.json) soubor parametrů šablony hello `azuredeploy.parameters.json` z Githubu.
+1. [Stáhněte si](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-acs-kubernetes/azuredeploy.parameters.json) soubor parametrů šablony `azuredeploy.parameters.json` z GitHubu.
 
-2. Služba hello toospecify hlavní, zadejte hodnoty pro `servicePrincipalClientId` a `servicePrincipalClientSecret` v souboru hello. (Je také nutné tooprovide vlastních hodnot pro `dnsNamePrefix` a `sshRSAPublicKey`. Hello druhé je hello SSH veřejného klíče tooaccess hello cluster). Uložte soubor hello.
+2. Instanční objekt specifikujte zadáním hodnot pro `servicePrincipalClientId` a `servicePrincipalClientSecret` v souboru. (Pro `dnsNamePrefix` a `sshRSAPublicKey` musíte zadat také vlastní hodnoty. V druhém případě se jedná o veřejný klíč SSH pro přístup ke clusteru.) Uložte soubor.
 
     ![Předání parametrů instančního objektu](./media/container-service-kubernetes-service-principal/service-principal-params.png)
 
-3. Hello spusťte následující příkaz, pomocí `--parameters` tooset hello cestě toohello azuredeploy.parameters.json souboru. Tento příkaz nasadí hello clusteru ve skupině prostředků vytvoříte volané `myResourceGroup` v oblasti západní USA hello.
+3. Spusťte následující příkaz a možnost `--parameters` použijte k nastavení cesty k souboru azuredeploy.parameters.json. Tento příkaz nasadí cluster ve vámi vytvořené skupině prostředků s názvem `myResourceGroup` v oblasti Západní USA.
 
     ```azurecli
     az login
 
     az account set --subscription "mySubscriptionID"
 
-    az group create --name "myResourceGroup" --location "westus" 
-    
+    az group create --name "myResourceGroup" --location "westus"
+
     az group deployment create -g "myResourceGroup" --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-acs-kubernetes/azuredeploy.json" --parameters @azuredeploy.parameters.json
     ```
 
 
-## <a name="option-2-generate-a-service-principal-when-creating-hello-cluster-with-az-acs-create"></a>Možnost 2: Vygenerování hlavní název služby, při vytváření clusteru hello s`az acs create`
+## <a name="option-2-generate-a-service-principal-when-creating-the-cluster-with-az-acs-create"></a>Možnost 2: Vygenerování instančního objektu při vytváření clusteru pomocí příkazu `az acs create`
 
-Pokud spustíte hello [ `az acs create` ](/cli/azure/acs#create) toocreate příkaz hello Kubernetes clusteru, máte možnost toogenerate hello objekt služby automaticky.
+Pokud vytváříte cluster Kubernetes spuštěním příkazu [`az acs create`](/cli/azure/acs#create), máte možnost instanční objekt vygenerovat automaticky.
 
-Stejně jako u ostatních možností vytvoření clusteru Kubernetes můžete při spuštění příkazu `az acs create` určit parametry pro existující instanční objekt. Ale pokud vynecháte tyto parametry, hello rozhraní příkazového řádku Azure vytvoří automaticky pro použití s Container Service. To probíhá transparentně během nasazení hello. 
+Stejně jako u ostatních možností vytvoření clusteru Kubernetes můžete při spuštění příkazu `az acs create` určit parametry pro existující instanční objekt. Pokud však tyto parametry vynecháte, Azure CLI automaticky vytvoří instanční objekt pro použití se službou Container Service. Tato akce se provede transparentně během nasazení.
 
-Hello následující příkaz vytvoří Kubernetes cluster a vygeneruje klíčů SSH a pověření hlavní služby:
+Následující příkaz vytvoří cluster Kubernetes a vygeneruje klíče SSH a pověření instančního objektu:
 
 ```console
 az acs create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-keys --orchestrator-type kubernetes
 ```
 
 > [!IMPORTANT]
-> Pokud váš účet nemá hello Azure AD a předplatné oprávnění toocreate hlavní název služby, hello příkaz vygeneruje chybu podobné příliš`Insufficient privileges toocomplete hello operation.`
-> 
+> Pokud váš účet nemá v Azure AD a předplatném oprávnění k vytvoření instančního objektu, příkaz vygeneruje chybu podobnou této: `Insufficient privileges to complete the operation.`.
+>
 
 ## <a name="additional-considerations"></a>Další aspekty
 
-* Pokud nemáte oprávnění toocreate objekt služby v rámci vašeho předplatného, bude pravděpodobně nutné tooask služby Azure AD nebo předplatné správce tooassign hello potřebná oprávnění, nebo požádejte je o hlavní toouse s Azure Container Service služby. 
+* Pokud nemáte oprávnění k vytvoření instančního objektu v předplatném, možná budete muset požádat správce Azure AD nebo předplatného o přidělení potřebných oprávnění nebo o instanční objekt pro použití s Azure Container Service.
 
-* Hello instanční objekt pro Kubernetes je součástí konfigurace clusteru hello. Nepoužívejte však hello identity toodeploy hello clusteru.
+* Instanční objekt pro Kubernetes je součástí konfigurace clusteru. K nasazení clusteru ale nepoužívejte identitu.
 
-* Každý instanční objekt je přidružený k aplikaci Azure AD. Hello objekt služby pro cluster s podporou Kubernetes mohou být přidruženy žádné platné Azure AD název aplikace (například: `https://www.contoso.org/example`). Hello adresa URL pro aplikaci hello nemá toobe skutečné koncový bod.
+* Každý instanční objekt je přidružený k aplikaci Azure AD. Instanční objekt pro cluster Kubernetes může být přidružený k jakémukoli platnému názvu aplikace Azure AD (například `https://www.contoso.org/example`). Adresa URL aplikace nemusí být skutečný koncový bod.
 
-* Při určování hello instanční objekt **ID klienta**, můžete použít hodnotu hello hello `appId` (jak je uvedeno v tomto článku) nebo hello odpovídající instanční objekt `name` (například`https://www.contoso.org/example`).
+* Při zadávání **ID klienta** instančního objektu můžete použít hodnotu `appId` (jak je ukázáno v tomto článku) nebo odpovídající `name` instančního objektu (například `https://www.contoso.org/example`).
 
-* Na hlavní server hello a agenta virtuálních počítačů v clusteru Kubernetes hello hlavní přihlašovací údaje služby hello ukládají v souboru /etc/kubernetes/azure.json hello.
+* Na hlavním virtuálním počítači a virtuálních počítačích agentů v clusteru Kubernetes se přihlašovací údaje instančního objektu ukládají v souboru /etc/kubernetes/azure.json.
 
-* Při použití hello `az acs create` příkaz toogenerate hello instanční objekt automaticky, hlavní přihlašovací údaje služby hello se zapisují toohello ~/.azure/acsServicePrincipal.json soubor na počítači hello používá příkaz toorun hello. 
+* Pokud použijete příkaz `az acs create` k automatickému vygenerování instančního objektu, zapíší se přihlašovací údaje instančního objektu do souboru ~/.azure/acsServicePrincipal.json na počítači, který jste ke spuštění příkazu použili.
 
-* Při použití hello `az acs create` příkaz toogenerate hello instanční objekt automaticky, hello instanční objekt lze také ověřovat pomocí [kontejner Azure registru](../../container-registry/container-registry-intro.md) vytvořené v hello stejné předplatné.
-
-
-
+* Pokud použijete příkaz `az acs create` k automatickému vygenerování instančního objektu, bude se tento instanční objekt moci ověřovat také pomocí služby [Azure Container Registry](../../container-registry/container-registry-intro.md) vytvořené ve stejném předplatném.
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Začněte používat Kubernetes](container-service-kubernetes-walkthrough.md) v clusteru služby kontejneru.
 
-* tootroubleshoot hello instanční objekt pro Kubernetes, najdete v části hello [ACS modul dokumentaci](https://github.com/Azure/acs-engine/blob/master/docs/kubernetes.md#troubleshooting).
-
-
+* Informace o řešení potíží s instančním objektem pro Kubernetes najdete v [dokumentaci k modulu ACS](https://github.com/Azure/acs-engine/blob/master/docs/kubernetes.md#troubleshooting).

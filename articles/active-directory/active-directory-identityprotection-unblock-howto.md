@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure Active Directory Identity Protection - jak uživatelé toounblock | Microsoft Docs"
+title: "Azure Active Directory identitu ochrana – jak odblokovat uživatele | Microsoft Docs"
 description: "Zjistěte, jak odblokovat uživatele, které byly blokována zásady služby Azure Active Directory Identity Protection."
 services: active-directory
 keywords: "ochrany identit Azure active directory, odblokovat uživatele"
@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: cdda2808822888f76aa75cf46478738c94df51a1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ce6b2805e7281dff7752a73ada86be11d7e01fc3
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="azure-active-directory-identity-protection---how-toounblock-users"></a>Azure Active Directory identitu ochrana – jak toounblock uživatelů
-S Azure Active Directory Identity Protection můžete nakonfigurovat zásady, které uživatelé tooblock Pokud hello nakonfigurované podmínky jsou splněny. Obvykle blokovaný uživatel kontakty nápovědy podpory toobecome odblokováno. Tato témata vysvětluje hello kroky můžete provádět toounblock blokovaný uživatel.
+# <a name="azure-active-directory-identity-protection---how-to-unblock-users"></a>Azure Active Directory identitu ochrana – jak odblokovat uživatele
+S Azure Active Directory Identity Protection můžete nakonfigurovat zásady pro blokování uživatele, pokud jsou splněny podmínky nakonfigurované. Obvykle blokovaný uživatel kontakty technické podpory k odblokování. Tato témata vysvětluje kroky můžete provádět, abyste odblokovat blokovaný uživatel.
 
-## <a name="determine-hello-reason-for-blocking"></a>Určení hello důvod pro blokování
-Jako první krok toounblock uživatele musíte toodetermine hello typ zásad, který má blokovaný hello uživatele, protože na něm závisí další kroky.
+## <a name="determine-the-reason-for-blocking"></a>Určete důvod pro blokování
+Jako první krok odblokovat uživatele budete muset určit typ zásady, které má uživatel blokován, protože na něm závisí další kroky.
 S Azure Active Directory Identity Protection může se uživatel buď blokovaný přihlášení riziko zásadu nebo zásady riziko uživatele.
 
-Můžete získat hello typ zásad, který má blokovaný uživatel z hello záhlaví v dialogovém okně hello, který byl předložený toohello uživatele při pokusu o přihlášení:
+Můžete získat typ zásady, který má blokovaný uživatel z záhlaví v dialogu, který byl předložený uživateli při pokusu o přihlášení:
 
 | Zásada | Dialogové okno uživatele |
 | --- | --- |
@@ -41,19 +41,19 @@ Uživatel, který je blokována:
 * Zásady uživatele riziko je také označován jako účet v ohrožení
 
 ## <a name="unblocking-suspicious-sign-ins"></a>Odblokování podezřelé přihlášení
-toounblock podezřelé přihlášení, máte následující možnosti hello:
+Chcete-li odblokovat podezřelé přihlášení, máte následující možnosti:
 
-1. **Přihlášení ze zařízení nebo známé umístění** -běžným důvodem pro blokované podezřelé přihlášení jsou pokusů o přihlášení z neznámých míst nebo zařízení. Vaši uživatelé můžete rychle zjistit, zda je hello Důvod blokování tak, že zkusíte toosign-in ze známé umístění nebo zařízení.
-2. **Vyloučit ze zásad** – Pokud se domníváte, že hello aktuální konfiguraci zásad přihlášení způsobuje problémy pro konkrétní uživatele, můžete vyloučit hello uživatelé z něj. V tématu [Azure Active Directory Identity Protection](active-directory-identityprotection.md) další podrobnosti.
-3. **Zakažte zásadu** – Pokud se domníváte, že vaše konfigurace zásad způsobuje problémy pro všechny uživatele, můžete zakázat hello zásad. V tématu [Azure Active Directory Identity Protection](active-directory-identityprotection.md) další podrobnosti.
+1. **Přihlášení ze zařízení nebo známé umístění** -běžným důvodem pro blokované podezřelé přihlášení jsou pokusů o přihlášení z neznámých míst nebo zařízení. Vaši uživatelé můžete rychle zjistit, zda je z důvodu blokování tak, že zkusíte přihlášení ze zařízení nebo známé umístění.
+2. **Vyloučit ze zásad** – Pokud se domníváte, že aktuální konfiguraci zásad přihlášení způsobuje problémy pro konkrétní uživatele, můžete vyloučit uživatele z něj. V tématu [Azure Active Directory Identity Protection](active-directory-identityprotection.md) další podrobnosti.
+3. **Zakažte zásadu** – Pokud se domníváte, že vaše konfigurace zásad způsobuje problémy pro všechny uživatele, můžete zakázat zásadu. V tématu [Azure Active Directory Identity Protection](active-directory-identityprotection.md) další podrobnosti.
 
 ## <a name="unblocking-accounts-at-risk"></a>Odblokování účty v ohrožení
-toounblock na účtu ohrožený, máte následující možnosti hello:
+Chcete-li odblokovat účtu ohrožený, máte následující možnosti:
 
-1. **Resetovat heslo** -resetujete heslo uživatele hello. V tématu [ruční zabezpečené heslo resetovat](active-directory-identityprotection.md#manual-secure-password-reset) další podrobnosti.
-2. **Zavřít všechny události riziko** – Pokud bylo dosaženo úroveň rizika uživatele hello nakonfigurované pro blokování přístupu blokuje hello uživatele riziko zásad uživatele. Můžete snížit uživatele je úroveň rizika ručně ukončením hlášené rizikových událostech. Další podrobnosti najdete v tématu [zavření rizikových událostí ručně](active-directory-identityprotection.md#closing-risk-events-manually).
-3. **Vyloučit ze zásad** – Pokud se domníváte, že hello aktuální konfiguraci zásad přihlášení způsobuje problémy pro konkrétní uživatele, můžete vyloučit hello uživatelé z něj. V tématu [Azure Active Directory Identity Protection](active-directory-identityprotection.md) další podrobnosti.
-4. **Zakažte zásadu** – Pokud se domníváte, že vaše konfigurace zásad způsobuje problémy pro všechny uživatele, můžete zakázat hello zásad. V tématu [Azure Active Directory Identity Protection](active-directory-identityprotection.md) další podrobnosti.
+1. **Resetovat heslo** -resetujete heslo uživatele. V tématu [ruční zabezpečené heslo resetovat](active-directory-identityprotection.md#manual-secure-password-reset) další podrobnosti.
+2. **Zavřít všechny události riziko** – na uživatel bloky zásad riziko uživatele Pokud uživatel nakonfigurovaný úroveň blokování přístupu rizika byl dosažen. Můžete snížit uživatele je úroveň rizika ručně ukončením hlášené rizikových událostech. Další podrobnosti najdete v tématu [zavření rizikových událostí ručně](active-directory-identityprotection.md#closing-risk-events-manually).
+3. **Vyloučit ze zásad** – Pokud se domníváte, že aktuální konfiguraci zásad přihlášení způsobuje problémy pro konkrétní uživatele, můžete vyloučit uživatele z něj. V tématu [Azure Active Directory Identity Protection](active-directory-identityprotection.md) další podrobnosti.
+4. **Zakažte zásadu** – Pokud se domníváte, že vaše konfigurace zásad způsobuje problémy pro všechny uživatele, můžete zakázat zásadu. V tématu [Azure Active Directory Identity Protection](active-directory-identityprotection.md) další podrobnosti.
 
 ## <a name="next-steps"></a>Další kroky
- Chcete, aby tooknow Další informace o Azure AD Identity Protection? Podívejte se na [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
+ Opravdu chcete získat další informace o Azure AD Identity Protection? Podívejte se na [Azure Active Directory Identity Protection](active-directory-identityprotection.md).

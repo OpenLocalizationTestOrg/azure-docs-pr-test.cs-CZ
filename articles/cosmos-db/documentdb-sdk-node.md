@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure Cosmos DB Node.js API, sadu SDK a prostředky | Microsoft Docs"
-description: "Další informace o hello rozhraní API Node.js a sady SDK, včetně data vydání, vyřazení dat a změny provedené mezi každou verzi hello Azure Cosmos DB Node.js SDK."
+title: "Azure Cosmos DB Node.js API, sadu SDK a prostředky | Microsoft Docs"
+description: "Další informace o rozhraní API Node.js a sady SDK, včetně data vydání, vyřazení dat a změny provedené mezi každou verzi sady Azure Cosmos DB Node.js SDK."
 services: cosmos-db
 documentationcenter: nodejs
 author: rnagpal
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/14/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d450b9a9ea7b0f4717ddae8940121fc458ea3744
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4376a5c07b5f00311ce0fe3c0056efdf79c273f9
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-release-notes-and-resources"></a>Azure SDK Cosmos DB Node.js: Poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -43,11 +43,11 @@ ms.lasthandoff: 10/06/2017
 
 <tr><td>**Pokyny k instalaci sady SDK**</td><td>[Pokyny k instalaci](http://azure.github.io/azure-documentdb-node/)</td></tr>
 
-<tr><td>**Přispívat tooSDK**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-node/tree/master/source)</td></tr>
+<tr><td>**Můžete přispět k sadě SDK**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-node/tree/master/source)</td></tr>
 
 <tr><td>**Ukázky**</td><td>[Ukázky kódu Node.js](documentdb-nodejs-samples.md)</td></tr>
 
-<tr><td>**Kurz Začínáme**</td><td>[Začínáme s hello Node.js SDK](documentdb-nodejs-get-started.md)</td></tr>
+<tr><td>**Kurz Začínáme**</td><td>[Začínáme s Node.js SDK](documentdb-nodejs-get-started.md)</td></tr>
 
 <tr><td>**Kurz vývoje webové aplikace**</td><td>[Vytvoření webové aplikace Node.js pomocí Azure Cosmos DB](documentdb-nodejs-application.md)</td></tr>
 
@@ -66,8 +66,8 @@ ms.lasthandoff: 10/06/2017
 
 ### <a name="1.12.1"/>1.12.1</a>
 * Pevná chyby ve executeStoredProcedure kde dokumentů, které měl speciální znaky znakové sady Unicode (LS, PS).
-* Opravit chyby při zpracování dokumentů s znaky kódování Unicode v hello klíč oddílu.
-* Opravené podpora pro vytváření kolekcí s hello název média. Problém Githubu #114.
+* Opravit chyby při zpracování dokumentů s znaky kódování Unicode v klíč oddílu.
+* Opravené podpora pro vytváření kolekcí s názvem média. Problém Githubu #114.
 * Opravené podpora oprávnění autorizační token. Problém Githubu #178.
 
 ### <a name="1.12.0"/>1.12.0</a>
@@ -76,19 +76,19 @@ ms.lasthandoff: 10/06/2017
 * Opravit chyby Podpora kódování Unicode. #171 potíže Githubu.
 
 ### <a name="1.11.0"/>1.11.0</a>
-* Podpora přidání hello dotazy agregace (COUNT, MIN, MAX, součet a průměr).
-* Přidání hello možnost řízení stupně paralelního zpracování pro různé dotazy oddílu.
-* Přidání hello možnost pro zákaz protokolu SSL ověření při spuštění emulátoru DB Cosmos Azure.
-* Snížena minimální propustnosti na dělené kolekce z 10,100 RU/s too2500 RU/s.
-* Chyby tokenu pevné hello pokračování pro kolekce tvořené jedním oddílem. Problém Githubu #107.
-* Chyby opravené hello executeStoredProcedure při zpracování 0 jako jeden param. Problém Githubu #155.
+* Přidaná podpora pro dotazy agregace (COUNT, MIN, MAX, součet a průměr).
+* Přidání možnosti pro řízení stupně paralelního zpracování pro různé dotazy oddílu.
+* Přidání možnosti pro zákaz protokolu SSL ověření při spuštění emulátoru DB Cosmos Azure.
+* Snížena minimální propustnosti na dělené kolekce z 10,100 RU/s na 2 500 RU/s.
+* Opravit chyby token pokračování pro kolekce tvořené jedním oddílem. Problém Githubu #107.
+* Opravit chyby executeStoredProcedure při zpracování 0 jako jeden param. Problém Githubu #155.
 
 ### <a name="1.10.2"/>1.10.2</a>
-* Opravené identifikační hlavička tooinclude hello SDK verze.
+* Záhlaví pevné user-agent zahrnout verze sady SDK.
 * Méně závažné kód čištění.
 
 ### <a name="1.10.1"/>1.10.1</a>
-* Při použití hello SDK tootarget hello emulator(hostname=localhost) se zakazuje ověření protokol SSL.
+* Zakázání ověřování SSL, když pomocí sady SDK cílit emulator(hostname=localhost).
 * Přidaná podpora pro povolení protokolování skriptu během provádění uložené procedury.
 
 ### <a name="1.10.0"/>1.10.0</a>
@@ -96,27 +96,27 @@ ms.lasthandoff: 10/06/2017
 * Byla přidána podpora pro horní nebo ORDER BY a dotazy pro dělené kolekce.
 
 ### <a name="1.9.0"/>1.9.0</a>
-* Podpora zásad přidané opakování omezenému požadavky. (Omezenému požadavky obdrží žádost o míra příliš velký výjimka, kód chyby 429.) Ve výchozím nastavení Azure Cosmos DB opakuje devětkrát pro každý požadavek vyskytne kód chyby 429, aby byla dodržena hello retryAfter čas v hlavičku odpovědi hello. Časový interval opakování pevné lze nyní nastavit jako součást hello RetryOptions vlastnost u objektu ConnectionPolicy hello Pokud chcete, aby tooignore hello retryAfter čas vrácená serverem mezi opakovanými pokusy hello. Azure Cosmos DB nyní čeká maximálně 30 sekund pro každý požadavek, který je omezené (bez ohledu na počet opakování) a vrátí odpověď hello s kódem chyby 429. Tentokrát lze také ve hello RetryOptions vlastnosti v objektu ConnectionPolicy přepsat.
-* Cosmos DB nyní vrátí x-ms omezení--počet opakování a x-ms-throttle-retry-wait-time-ms jako hello hlavičky odpovědi v každé žádosti toodenote hello omezení počtu a hello kumulativní čas požadavku hello čekali mezi opakovanými pokusy hello zkuste provést znovu.
-* byla přidána Hello RetryOptions třída vystavení hello RetryOptions vlastnost u hello ConnectionPolicy třídy, které můžou být použité toooverride některé hello výchozí možnosti opakování.
+* Podpora zásad přidané opakování omezenému požadavky. (Omezenému požadavky obdrží žádost o míra příliš velký výjimka, kód chyby 429.) Ve výchozím nastavení Azure Cosmos DB opakuje devětkrát pro každý požadavek vyskytne kód chyby 429, aby byla dodržena retryAfter čas v hlavičku odpovědi. Časový interval opakování pevné lze nyní nastavit jako součást RetryOptions vlastnost v objektu ConnectionPolicy Pokud budete chtít ignorovat čas retryAfter vrácená serverem mezi jednotlivými pokusy o odeslání. Azure Cosmos DB nyní čeká maximálně 30 sekund pro každý požadavek, který je omezené (bez ohledu na počet opakování) a vrátí odpověď s kódem chyby 429. Nyní lze přepsat také ve vlastnosti RetryOptions ConnectionPolicy objektu.
+* Cosmos DB nyní vrátí x-ms omezení--počet opakování a x-ms-throttle-retry-wait-time-ms jako opakovat hlavičky odpovědi v každé žádosti k označení omezení počtu a kumulativní čas požadavku čekali mezi jednotlivými pokusy o odeslání.
+* Třída RetryOptions byla přidána vystavení vlastnost RetryOptions na ConnectionPolicy třídu, která slouží k některé z možností opakování výchozí přepsat.
 
 ### <a name="1.8.0"/>1.8.0</a>
-* Podpora přidání hello účty databáze více oblast.
+* Přidaná podpora pro účty databáze více oblast.
 
 ### <a name="1.7.0"/>1.7.0</a>
-* Přidání hello podporu pro funkci tooLive(TTL) čas pro dokumenty.
+* Přidaná podpora pro funkce čas k Live(TTL) pro dokumenty.
 
 ### <a name="1.6.0"/>1.6.0</a>
 * Implementovat [oddíly kolekce](partition-data.md) a [úrovně výkonu uživatelem definované](performance-levels.md).
 
 ### <a name="1.5.6"/>1.5.6</a>
-* Opravené chyby RangePartitionResolver.resolveForRead, kde ji nebyl vrácení odkazy z důvodu chybné concat tooa výsledků.
+* Opravené chyby RangePartitionResolver.resolveForRead, kde ji nebyl vrácení odkazy z důvodu chybné concat výsledků.
 
 ### <a name="1.5.5"/>1.5.5</a>
 * Pevné hashParitionResolver resolveForRead(): žádné předaný klíč oddílu byla při vyvolání výjimky, místo vrací seznam všech registrovaných odkazů.
 
 ### <a name="1.5.4"/>1.5.4</a>
-* Řeší problém [#100](https://github.com/Azure/azure-documentdb-node/issues/100) -vyhrazené agenta HTTPS: neměli upravovat hello globální agenta pro účely Azure Cosmos DB. Použijte vyhrazenou agenta pro všechny požadavky hello lib.
+* Řeší problém [#100](https://github.com/Azure/azure-documentdb-node/issues/100) -vyhrazené agenta HTTPS: neměli upravovat globální agenta pro účely Azure Cosmos DB. Použijte vyhrazenou agenta pro všechny požadavky lib.
 
 ### <a name="1.5.3"/>1.5.3</a>
 * Řeší problém [#81](https://github.com/Azure/azure-documentdb-node/issues/81) – správně zpracovat pomlčky v ID média.
@@ -125,7 +125,7 @@ ms.lasthandoff: 10/06/2017
 * Řeší problém [#95](https://github.com/Azure/azure-documentdb-node/issues/95) -naslouchací proces EventEmitter úniku upozornění.
 
 ### <a name="1.5.1"/>1.5.1</a>
-* Řeší problém [#92](https://github.com/Azure/azure-documentdb-node/issues/90) -přejmenovat složku Hash toohash systémů malá a velká písmena.
+* Řeší problém [#92](https://github.com/Azure/azure-documentdb-node/issues/90) -přejmenovat složku Hash na hodnotu hash pro systémy malá a velká písmena.
 
 ### <a name="1.5.0"/>1.5.0</a>
 * Podpora horizontálního dělení implementace přidáním hash p & ro překladače oddílu.
@@ -134,11 +134,11 @@ ms.lasthandoff: 10/06/2017
 * Implementujte Upsert. Nové metody upsertXXX na documentClient.
 
 ### <a name="1.3.0"/>1.3.0</a>
-* Přeskočené toobring čísla verze v zarovnání s dalších sadách SDK.
+* Přeskočeno mají být předány čísla verzí zarovnání s dalších sadách SDK.
 
 ### <a name="1.2.2"/>1.2.2</a>
-* Rozdělení Q nabízí obálku toonew úložiště.
-* Aktualizujte soubor toopackage pro npm registru.
+* Rozdělení Q nabízí obálku do nového úložiště.
+* Aktualizace k souboru balíčku pro npm registru.
 
 ### <a name="1.2.1"/>1.2.1</a>
 * Implementuje ID založené na směrování.
@@ -147,19 +147,19 @@ ms.lasthandoff: 10/06/2017
 ### <a name="1.2.0"/>1.2.0</a>
 * Byla přidána podpora pro geoprostorové index.
 * Ověří vlastnost id pro všechny prostředky. Identifikátory prostředků nesmí obsahovat?, /, # &#47; &#47; znaky nebo končit mezerou.
-* Přidá nový tooResourceResponse "průběh transformace index" záhlaví.
+* Přidá nové záhlaví "index transformace průběh" ResourceResponse.
 
 ### <a name="1.1.0"/>1.1.0</a>
 * Implementuje zásady indexování V2.
 
 ### <a name="1.0.3"/>1.0.3</a>
-* Problém [#40](https://github.com/Azure/azure-documentdb-node/issues/40) – implementována eslint grunt konfigurace v hello jádra a promise SDK.
+* Problém [#40](https://github.com/Azure/azure-documentdb-node/issues/40) – implementována eslint grunt konfigurace v základní a promise SDK.
 
 ### <a name="1.0.2"/>1.0.2</a>
 * Problém [#45](https://github.com/Azure/azure-documentdb-node/issues/45) -lišící obálku nezahrnuje hlavičky s chybou.
 
 ### <a name="1.0.1"/>1.0.1</a>
-* Přidání readConflicts, readConflictAsync a queryConflicts implementují možnost tooquery konflikty.
+* Implementovaná možnost dotazu pro přidáním readConflicts, readConflictAsync a queryConflicts je v konfliktu.
 * Aktualizované dokumentace rozhraní API.
 * Problém [#41](https://github.com/Azure/azure-documentdb-node/issues/41) -client.createDocumentAsync chyby.
 
@@ -167,11 +167,11 @@ ms.lasthandoff: 10/06/2017
 * GA SDK.
 
 ## <a name="release--retirement-dates"></a>Verze & vyřazení kalendářních dat
-Společnost Microsoft poskytuje oznámení alespoň **dobu 12 měsíců** před vyřazením z provozu v pořadí toosmooth hello přechod tooa novější nebo v nepodporované verzi sady SDK.
+Společnost Microsoft poskytuje oznámení alespoň **dobu 12 měsíců** předem vyřazení sady SDK k funkce smooth přechodu na novější nebo podporované verzi.
 
-Nové funkce a funkce a optimalizace, jsou přidány pouze aktuální toohello SDK, jako například se doporučuje tento můžete vždy upgradu toohello nejnovější verze sady SDK co nejdříve.
+Nové funkce a funkce a optimalizace, jsou přidány pouze v aktuální sadě SDK, jako takový se doporučuje, aby vždy upgradu na nejnovější verze sady SDK v míře.
 
-Každá žádost tooCosmos DB pomocí vyřazeno sady SDK je odmítnuta službou hello.
+Každá žádost o pomocí Cosmos DB, že je vyřazeno SDK odmítnuta službou.
 
 <br/>
 
@@ -210,5 +210,5 @@ Každá žádost tooCosmos DB pomocí vyřazeno sady SDK je odmítnuta službou 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Viz také
-toolearn Další informace o Cosmos databáze, najdete v části [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) stránku služby.
+Další informace o Cosmos DB najdete v tématu [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) stránku služby.
 

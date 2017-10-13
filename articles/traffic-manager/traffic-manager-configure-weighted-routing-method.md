@@ -1,6 +1,6 @@
 ---
-title: "pomocí Azure Traffic Manager metodu směrování provozu aaaConfigure vážené kruhové dotazování | Microsoft Docs"
-description: "Tento článek vysvětluje, jak tooload vyrovnávat přenosy pomocí jiné metody kruhového dotazování v Traffic Manageru"
+title: "Konfigurace metody směrování provozu vážené kruhové dotazování pomocí Azure Traffic Manageru | Microsoft Docs"
+description: "Tento článek vysvětluje, jak načíst vyrovnávání přenosů pomocí jiné metody kruhového dotazování v Traffic Manageru"
 services: traffic-manager
 documentationcenter: 
 author: kumudd
@@ -14,35 +14,35 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: kumud
-ms.openlocfilehash: 7e2866ead0b2b653845435dd420a763c5e175f4b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7aa4c9120d44ff1b3e59a57090ea04e3f8021fc4
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="configure-hello-weighted-traffic-routing-method-in-traffic-manager"></a>Konfigurace metody směrování provozu hello vážené v Traffic Manageru
+# <a name="configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Konfigurace metody směrování vyvážené provoz v Traffic Manageru
 
-Běžné vzor metoda směrování provozu je tooprovide sadu identické koncové body, které zahrnují cloudové služby a weby a odeslat tooeach provoz v kruhového dotazování. Hello následující kroky popisují, jak tooconfigure tento typ metoda směrování provozu.
+Běžné vzor metoda směrování provozu je poskytují sadu identické koncové body, které zahrnují cloudové služby a weby, a odesílá data na každý kruhového dotazování. Následující kroky popisují postup konfigurace tento typ metodu směrování provozu.
 
 > [!NOTE]
-> Weby Azure již poskytují funkce pro weby v rámci datového centra (označované také jako oblast) pro vyrovnávání zatížení pomocí kruhového dotazování. Traffic Manager umožňuje toospecify metodu směrování provozu kruhovým dotazováním pro weby v různých datových centrech.
+> Weby Azure již poskytují funkce pro weby v rámci datového centra (označované také jako oblast) pro vyrovnávání zatížení pomocí kruhového dotazování. Traffic Manager umožňuje určit metodu směrování provozu kruhovým dotazováním pro weby v různých datových centrech.
 
-## <a name="tooconfigure-hello-weighted-traffic-routing-method"></a>tooconfigure hello vážené metodu směrování provozu
+## <a name="to-configure-the-weighted-traffic-routing-method"></a>Nakonfigurovat metodu směrování provozu vyvážené
 
-1. V prohlížeči přihlásit toohello [portál Azure](http://portal.azure.com). Pokud ještě účet nemáte, můžete si zaregistrovat [zkušební verzi na měsíc zdarma](https://azure.microsoft.com/free/). 
-2. V panelu vyhledávání hello portál, vyhledejte hello **profily Traffic Manageru** a pak klikněte na název profilu hello, který chcete tooconfigure hello metody směrování pro.
-3. V hello **profil služby Traffic Manager** okno, ověřte, že oba hello cloudové služby a nejsou weby, že chcete tooinclude ve vaší konfiguraci.
-4. V hello **nastavení** klikněte na tlačítko **konfigurace**a v hello **konfigurace** okně dokončení následujícím způsobem:
-    1. Pro **nastavení metodu směrování provozu**, ověřte, zda text hello metodu směrování provozu je **vážená**. Pokud není, klikněte na tlačítko **vážená** z rozevíracího seznamu hello.
-    2. Sada hello **nastavení monitorování koncového bodu** stejné pro všechny každý koncový bod v tomto profilu následujícím způsobem:
-        1. Vyberte odpovídající hello **protokol**a zadejte hello **Port** číslo. 
-        2. Pro **cesta** zadejte lomítkem  */* . toomonitor koncových bodů, musíte zadat cestu a název souboru. A dopředné lomítko "/" je platná položka pro hello relativní cestu a znamená, že soubor hello je v kořenovém adresáři hello (výchozí).
-        3. V horní části hello hello stránky, klikněte na tlačítko **Uložit**.
-5. Testovací hello změny v konfiguraci následujícím způsobem:
-    1.  V panelu vyhledávání hello portál vyhledejte název profilu Traffic Manageru hello a klikněte na profil služby Traffic Manager hello ve výsledcích hello této hello zobrazí.
-    2.  V hello **Traffic Manager** profilu okno, klikněte na tlačítko **přehled**.
-    3.  Hello **profil služby Traffic Manager** zobrazuje název DNS hello vaše nově vytvořený profil služby Traffic Manager. Toho můžete využít všechny klienty (například přechodem tooit pomocí webového prohlížeče) tooget směrovány toohello pravý koncový bod určeného typ směrování hello. V takovém případě jsou směrovat všechny požadavky každý koncový bod v kruhového dotazování.
-6. Po váš profil služby Traffic Manager funguje, upravte záznam DNS hello na vaše autoritativní server toopoint DNS domény název toohello Traffic Manager název domény vaší společnosti.
+1. V prohlížeči se přihlaste k webu [Azure Portal](http://portal.azure.com). Pokud ještě účet nemáte, můžete si zaregistrovat [zkušební verzi na měsíc zdarma](https://azure.microsoft.com/free/). 
+2. V panelu vyhledávání na portálu, vyhledejte **profily Traffic Manageru** a pak klikněte na název profilu, který chcete nakonfigurovat metodu směrování.
+3. V **profil služby Traffic Manager** okno, ověřte, zda cloudové služby i weby, které chcete zahrnout do vaší konfigurace.
+4. V **nastavení** klikněte na tlačítko **konfigurace**a v **konfigurace** okně dokončení následujícím způsobem:
+    1. Pro **nastavení metodu směrování provozu**, ověřte, zda je metodu směrování provozu **vážená**. Pokud není, klikněte na tlačítko **vážená** z rozevíracího seznamu.
+    2. Nastavte **nastavení monitorování koncového bodu** stejné pro všechny každý koncový bod v tomto profilu následujícím způsobem:
+        1. Vyberte odpovídající **protokol**a zadejte **Port** číslo. 
+        2. Pro **cesta** zadejte lomítkem  */* . Chcete-li monitorovat koncových bodů, musíte zadat cestu a název souboru. A dopředné lomítko "/" je platná položka pro relativní cestu a znamená, že soubor je v kořenovém adresáři (výchozí).
+        3. V horní části stránky klikněte na tlačítko **Uložit**.
+5. Testovací změny v konfiguraci následujícím způsobem:
+    1.  V panelu vyhledávání na portálu, vyhledejte název profilu Traffic Manageru a klikněte na profil služby Traffic Manager ve výsledcích, zobrazené.
+    2.  V **Traffic Manager** profilu okno, klikněte na tlačítko **přehled**.
+    3.  **Profil služby Traffic Manager** zobrazuje název DNS vašeho nově vytvořený profil služby Traffic Manager. Tímto lze všechny klienty (například tak, že přejdete do ní pomocí webového prohlížeče) k získání směruje na pravý koncový bod jako Určuje typ směrování. V takovém případě jsou směrovat všechny požadavky každý koncový bod v kruhového dotazování.
+6. Jakmile váš profil služby Traffic Manager funguje, upravte záznam DNS na autoritativního serveru DNS pro název domény vaší společnosti přejděte na název domény Traffic Manageru.
 
 ![Konfigurace metody směrování vyvážené provozu pomocí Traffic Manager][1]
 
@@ -51,7 +51,7 @@ Běžné vzor metoda směrování provozu je tooprovide sadu identické koncové
 - Další informace o [metoda směrování provozu s prioritou](traffic-manager-configure-priority-routing-method.md).
 - Další informace o [metoda směrování provozu výkonu](traffic-manager-configure-performance-routing-method.md).
 - Další informace o [geografické metody směrování](traffic-manager-configure-geographic-routing-method.md).
-- Zjistěte, jak příliš[Traffic Manager nastavení testů](traffic-manager-testing-settings.md).
+- Zjistěte, jak [Traffic Manager nastavení testů](traffic-manager-testing-settings.md).
 
 <!--Image references-->
 [1]: ./media/traffic-manager-weighted-routing-method/traffic-manager-weighted-routing-method.png

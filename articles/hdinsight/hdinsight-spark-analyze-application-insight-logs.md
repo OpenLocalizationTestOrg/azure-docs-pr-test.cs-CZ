@@ -1,6 +1,6 @@
 ---
-title: "aaaAnalyze přehled aplikace protokoly s Spark - Azure HDInsight | Microsoft Docs"
-description: "Zjistěte, jak tooexport přehled aplikace protokoly tooblob úložiště a pak Analýza protokolů hello pomocí Spark v HDInsight."
+title: "Analýza protokolů přehled aplikace s Spark - Azure HDInsight | Microsoft Docs"
+description: "Další informace o exportu aplikace přehledy protokoluje události do úložiště objektů blob a potom analyzovat protokoly s Spark v HDInsight."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -15,85 +15,85 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/15/2017
 ms.author: larryfr
-ms.openlocfilehash: 11ed8cf68dba8d5f9d6e4a65eba0d2b5a950cd00
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d98e403683618ef6115372f99e4949af87af4490
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-spark-on-hdinsight"></a>Analýza protokolů telemetrie Application Insights pomocí Spark v HDInsight
 
-Zjistěte, jak toouse Spark na HDInsight tooanalyze přehled aplikace telemetrická data.
+Naučte se používat Spark v HDInsight k analýze přehled aplikace telemetrická data.
 
-[Visual Studio Application Insights](../application-insights/app-insights-overview.md) je služba analýzy, která monitoruje webové aplikace. Telemetrická data generované Application Insights může být exportovaný tooAzure úložiště. Jakmile hello dat ve službě Azure Storage, HDInsight lze použít tooanalyze ho.
+[Visual Studio Application Insights](../application-insights/app-insights-overview.md) je služba analýzy, která monitoruje webové aplikace. Telemetrická data generované Application Insights je možné exportovat do služby Azure Storage. Jakmile jsou data ve službě Azure Storage, HDInsight lze použít k analýze ho.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Aplikace, která je nakonfigurovaná toouse Application Insights.
+* Aplikace, která je konfigurovaná pro používání Application Insights.
 
 * Znalost vytvoření clusteru HDInsight se systémem Linux. Další informace najdete v tématu [vytvořit Spark v HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
 
   > [!IMPORTANT]
-  > Hello kroky v tomto dokumentu vyžadují clusteru služby HDInsight, který používá Linux. Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+  > Kroky v tomto dokumentu vyžadují clusteru služby HDInsight, který používá Linux. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * Webový prohlížeč.
 
-Hello následující prostředky byly používány v vývoj a testování tohoto dokumentu:
+Vývoj a testování tohoto dokumentu se používaly v následujících zdrojích informací:
 
-* Application Insights telemetrická data byla generována pomocí [webové aplikace Node.js nakonfiguroval službu toouse Application Insights](../application-insights/app-insights-nodejs.md).
+* Application Insights telemetrická data byla generována pomocí [webové aplikace Node.js nakonfigurované na používání Application Insights](../application-insights/app-insights-nodejs.md).
 
-* Spark založené na verzi clusteru HDInsight 3.5 se použité tooanalyze hello data.
+* K analýze dat byl použit systémem Linux Spark v HDInsight clusteru verze 3.5.
 
 ## <a name="architecture-and-planning"></a>Plánování a architektura
 
-Hello následující diagram znázorňuje architektura služby hello tohoto příkladu:
+Následující diagram znázorňuje architektura služby tohoto příkladu:
 
-![Diagram zobrazující dat odesílaných ze služby Application Insights tooblob úložiště a pak zpracovávaných Spark v HDInsight](./media/hdinsight-spark-analyze-application-insight-logs/appinsightshdinsight.png)
+![Diagram zobrazující dat odesílaných z Application Insights do úložiště objektů blob, pak zpracovávaných Spark v HDInsight](./media/hdinsight-spark-analyze-application-insight-logs/appinsightshdinsight.png)
 
 ### <a name="azure-storage"></a>Úložiště Azure
 
-Application Insights může být nakonfigurované toocontinuously export telemetrie informace tooblobs. HDInsight můžete pak přečte data uložená v hello objekty BLOB. Existuje však několik požadavků, které je třeba postupovat podle:
+Application Insights se dá nakonfigurovat nepřetržitě exportovat informace telemetrická data do objektů BLOB. HDInsight pak můžete číst data uložená v objekty BLOB. Existuje však několik požadavků, které je třeba postupovat podle:
 
-* **Umístění**: Pokud hello účtu úložiště a HDInsight jsou v různých umístěních, se může prodloužit latence. Také zvyšuje náklady, jsou s nimi spojeným nákladům použité toodata přesun mezi oblastmi.
+* **Umístění**: Pokud účet úložiště a HDInsight jsou v různých umístěních, se může prodloužit latence. Taky zvýší náklady, jako odchozí poplatky za použití k datům přesun mezi oblastmi.
 
     > [!WARNING]
     > Použití účtu úložiště v jiném umístění než HDInsight není podporováno.
 
-* **Typ objektu BLOB**: HDInsight podporuje pouze objekty BLOB bloku. Application Insights výchozí toousing objekty BLOB bloku, takže by měla fungovat ve výchozím nastavení s HDInsight.
+* **Typ objektu BLOB**: HDInsight podporuje pouze objekty BLOB bloku. Aplikace výchozí Insights používá objekty BLOB bloku, proto by měly fungovat ve výchozím nastavení s HDInsight.
 
-Informace o přidání dalšího úložiště tooan stávající HDInsight cluster, naleznete v části hello [přidat další účty úložiště](hdinsight-hadoop-add-storage.md) dokumentu.
+Informace o přidání dalšího úložiště do existujícího clusteru HDInsight, najdete v článku [přidat další účty úložiště](hdinsight-hadoop-add-storage.md) dokumentu.
 
 ### <a name="data-schema"></a>Schéma dat
 
-Poskytuje služby Application Insights [Exportovat datový model](../application-insights/app-insights-export-data-model.md) tooblobs exportovat informace o formátu data telemetrie hello. Hello kroky v tomto dokumentu používají toowork Spark SQL s daty hello. Spark SQL můžete automaticky generovat schéma pro datovou strukturu JSON hello zaznamenaných Application Insights.
+Poskytuje služby Application Insights [Exportovat datový model](../application-insights/app-insights-export-data-model.md) informace pro tento formát dat telemetrie exportovány do objektů BLOB. Kroky v tomto dokumentu používají Spark SQL pro práci s daty. Spark SQL můžete automaticky generovat schéma JSON struktuře dat zaznamenaných funkcí Application Insights.
 
 ## <a name="export-telemetry-data"></a>Exportovat data telemetrie
 
-Postupujte podle kroků hello v [nakonfigurovat nepřetržité exportovat](../application-insights/app-insights-export-telemetry.md) tooconfigure vaše Application Insights tooexport telemetrie informace tooan úložiště Azure blob.
+Postupujte podle kroků v [nakonfigurovat nepřetržité exportovat](../application-insights/app-insights-export-telemetry.md) ke konfiguraci vaší Application Insights pro export telemetrické informace do objektu blob úložiště Azure.
 
-## <a name="configure-hdinsight-tooaccess-hello-data"></a>Konfigurace HDInsight tooaccess hello dat
+## <a name="configure-hdinsight-to-access-the-data"></a>Konfigurace HDInsight k přístupu k datům
 
-Při vytváření clusteru služby HDInsight, přidejte účet úložiště hello při vytváření clusteru.
+Při vytváření clusteru služby HDInsight, přidejte účet úložiště při vytváření clusteru.
 
-tooadd hello účet úložiště Azure tooan existující cluster, použijte informace hello v hello [přidat další účty úložiště](hdinsight-hadoop-add-storage.md) dokumentu.
+K přidání účtu úložiště Azure ve stávajícím clusteru, použijte informace v [přidat další účty úložiště](hdinsight-hadoop-add-storage.md) dokumentu.
 
-## <a name="analyze-hello-data-pyspark"></a>Analýza dat hello: PySpark
+## <a name="analyze-the-data-pyspark"></a>Analyzovat data: PySpark
 
-1. Z hello [portál Azure](https://portal.azure.com), vyberte vaše Spark v clusteru HDInsight. Z hello **rychlé odkazy** vyberte **řídicí panely clusteru**a potom vyberte **Poznámkový blok Jupyter** v okně clusteru Dashboard__ hello.
+1. Z [portál Azure](https://portal.azure.com), vyberte vaše Spark v clusteru HDInsight. Z **rychlé odkazy** vyberte **řídicí panely clusteru**a potom vyberte **Poznámkový blok Jupyter** z okna clusteru Dashboard__.
 
-    ![řídicí panely Hello clusteru](./media/hdinsight-spark-analyze-application-insight-logs/clusterdashboards.png)
+    ![Řídicí panely clusteru](./media/hdinsight-spark-analyze-application-insight-logs/clusterdashboards.png)
 
-2. V hello pravém horním rohu stránky Jupyter hello, vyberte **nový**a potom **PySpark**. Otevře novou kartu prohlížeče obsahující poznámkového bloku Jupyter na základě Python.
+2. V pravém horním rohu stránky Jupyter vyberte **nový**a potom **PySpark**. Otevře novou kartu prohlížeče obsahující poznámkového bloku Jupyter na základě Python.
 
-3. V prvním poli hello (nazývá **buňky**) na stránce hello, zadejte následující text hello:
+3. V prvním poli (nazývá **buňky**) na stránce, zadejte následující text:
 
    ```python
    sc._jsc.hadoopConfiguration().set('mapreduce.input.fileinputformat.input.dir.recursive', 'true')
    ```
 
-    Tento kód konfiguruje Spark toorecursively přístup hello adresářovou strukturu pro vstupní data hello. Telemetrii Application Insights je zaznamenané tooa directory struktura podobné toohello `/{telemetry type}/YYYY-MM-DD/{##}/`.
+    Tento kód konfiguruje Spark rekurzivně přístupu strukturu adresáře pro vstupní data. Telemetrii Application Insights je zaznamenána do do struktury adresářů podobně jako `/{telemetry type}/YYYY-MM-DD/{##}/`.
 
-4. Použití **SHIFT + ENTER** toorun hello kódu. Na levé straně hello buňky hello '\*, zobrazí se mezi tooindicate závorky hello je spouštěna hello kódu v této buňce. Po jeho dokončení hello '\*se změní tooa číslo a výstup podobný toohello následující text se zobrazí pod buňky hello:
+4. Použití **SHIFT + ENTER** spustit kód. Na levé straně buňky '\*, zobrazí se v hranatých závorkách indikující, že kód v této buňce je spouštěna. Po jeho dokončení "\*' změny číslo a výstup podobný tento text se zobrazí pod buňky:
 
         Creating SparkContext as 'sc'
 
@@ -102,38 +102,38 @@ tooadd hello účet úložiště Azure tooan existující cluster, použijte inf
 
         Creating HiveContext as 'sqlContext'
         SparkContext and HiveContext created. Executing user code ...
-5. Bude vytvořen nový buňku hello první z nich. Zadejte následující text v buňce nové hello hello. Nahraďte `CONTAINER` a `STORAGEACCOUNT` s názvem účtu úložiště Azure hello a název kontejneru objektu blob, který obsahuje data Application Insights.
+5. První z nich bude vytvořen nový buňku. Zadejte následující text do nové buňky. Nahraďte `CONTAINER` a `STORAGEACCOUNT` s názvem účtu úložiště Azure a název kontejneru objektu blob, který obsahuje data Application Insights.
 
    ```python
    %%bash
    hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
    ```
 
-    Použití **SHIFT + ENTER** tooexecute tuto buňku. Zobrazí výsledek podobné toohello následující text:
+    Použití **SHIFT + ENTER** provést tuto buňku. Zobrazí výsledek podobná následující text:
 
         Found 1 items
         drwxrwxrwx   -          0 1970-01-01 00:00 wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
 
-    Cesta wasb Hello vrátil je hello umístění hello Application Insights telemetrická data. Změna hello `hdfs dfs -ls` řádek v hello buňky toouse hello wasb cestu vrátila a pak použijte **SHIFT + ENTER** toorun hello znovu buňky. Tentokrát hello výsledky by měl zobrazit hello adresáře, které obsahují telemetrická data.
+    Cesta wasb vrátil je umístění data telemetrie Application Insights. Změna `hdfs dfs -ls` řádek v buňce na použití cesty wasb vrátil a pak použijte **SHIFT + ENTER** buňky spustit znovu. Tentokrát výsledky by měl zobrazit adresáře, které obsahují telemetrická data.
 
    > [!NOTE]
-   > Pro zbytek hello hello kroky v této části, hello `wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` adresáře byl použit. Struktury adresářů se může lišit.
+   > Pro zbývající kroky v této části `wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` adresáře byl použit. Struktury adresářů se může lišit.
 
-6. V následující buňky hello, zadejte následující kód hello: Nahraďte `WASB_PATH` s cestou hello hello v předchozím kroku.
+6. V následující buňky, zadejte následující kód: Nahraďte `WASB_PATH` s cestou z předchozího kroku.
 
    ```python
    jsonFiles = sc.textFile('WASB_PATH')
    jsonData = sqlContext.read.json(jsonFiles)
    ```
 
-    Tento kód vytvoří dataframe z soubory JSON hello exportované procesem průběžné export hello. Použití **SHIFT + ENTER** toorun tuto buňku.
-7. V následující buňky hello zadejte a spusťte následující schéma hello tooview, Spark vytvořené pro soubory JSON hello hello:
+    Tento kód vytvoří dataframe z soubory JSON exportované sadou procesu průběžné exportu. Použití **SHIFT + ENTER** spustit tuto buňku.
+7. V následující buňky zadejte a spusťte následující příkaz a zobrazí schéma Spark vytvořené pro soubory JSON:
 
    ```python
    jsonData.printSchema()
    ```
 
-    Hello schématu pro každý typ telemetrie se liší. Hello následující příklad je hello schématu, který se vygeneruje pro webové žádosti (data uložená v hello `Requests` podadresáři):
+    Schéma pro každý typ telemetrie se liší. Následující příklad je schéma, který se vygeneruje pro webové žádosti (data uložená v `Requests` podadresáři):
 
         root
         |-- context: struct (nullable = true)
@@ -195,7 +195,7 @@ tooadd hello účet úložiště Azure tooan existující cluster, použijte inf
         |    |    |    |-- hashTag: string (nullable = true)
         |    |    |    |-- host: string (nullable = true)
         |    |    |    |-- protocol: string (nullable = true)
-8. Použijte následující tooregister hello dataframe jako dočasná tabulka hello a spuštění dotazu pro hello data:
+8. Použijte následující postupy k registraci dataframe jako dočasné tabulky a spouštění dotazů na data:
 
    ```python
    jsonData.registerTempTable("requests")
@@ -203,12 +203,12 @@ tooadd hello účet úložiště Azure tooan existující cluster, použijte inf
    df.show()
    ```
 
-    Tento dotaz vrací informace o městě hello hello nejvyšší 20 záznamů, kde context.location.city není null.
+    Tento dotaz vrací informace o městě pro horní 20 záznamy, kde context.location.city není null.
 
    > [!NOTE]
-   > Struktura Hello kontextu není k dispozici ve všech telemetrických dat zaznamenaných funkcí Application Insights. element města Hello nemusí vložené do protokolů. Použijte hello schématu tooidentify další prvky s možností dotazu, které mohou obsahovat data pro svoje protokoly.
+   > Struktura kontextu je součástí všech telemetrických dat zaznamenaných funkcí Application Insights. Element města nemusí vložené do protokolů. Schéma slouží k identifikaci další prvky s možností dotazu, které mohou obsahovat data pro svoje protokoly.
 
-    Tento dotaz vrací informace o podobné toohello následující text:
+    Tento dotaz vrací informace podobná následující text:
 
         +---------+
         |     city|
@@ -220,21 +220,21 @@ tooadd hello účet úložiště Azure tooan existující cluster, použijte inf
         ...
         +---------+
 
-## <a name="analyze-hello-data-scala"></a>Analýza dat hello: Scala
+## <a name="analyze-the-data-scala"></a>Analyzovat data: Scala
 
-1. Z hello [portál Azure](https://portal.azure.com), vyberte vaše Spark v clusteru HDInsight. Z hello **rychlé odkazy** vyberte **řídicí panely clusteru**a potom vyberte **Poznámkový blok Jupyter** v okně clusteru Dashboard__ hello.
+1. Z [portál Azure](https://portal.azure.com), vyberte vaše Spark v clusteru HDInsight. Z **rychlé odkazy** vyberte **řídicí panely clusteru**a potom vyberte **Poznámkový blok Jupyter** z okna clusteru Dashboard__.
 
-    ![řídicí panely Hello clusteru](./media/hdinsight-spark-analyze-application-insight-logs/clusterdashboards.png)
-2. V hello pravém horním rohu stránky Jupyter hello, vyberte **nový**a potom **Scala**. Zobrazí se na nové záložce prohlížeče obsahující na základě Scala poznámkového bloku Jupyter.
-3. V prvním poli hello (nazývá **buňky**) na stránce hello, zadejte následující text hello:
+    ![Řídicí panely clusteru](./media/hdinsight-spark-analyze-application-insight-logs/clusterdashboards.png)
+2. V pravém horním rohu stránky Jupyter vyberte **nový**a potom **Scala**. Zobrazí se na nové záložce prohlížeče obsahující na základě Scala poznámkového bloku Jupyter.
+3. V prvním poli (nazývá **buňky**) na stránce, zadejte následující text:
 
    ```scala
    sc.hadoopConfiguration.set("mapreduce.input.fileinputformat.input.dir.recursive", "true")
    ```
 
-    Tento kód konfiguruje Spark toorecursively přístup hello adresářovou strukturu pro vstupní data hello. Application Insights telemetrie je zaznamenána tooa adresářovou strukturu podobné příliš`/{telemetry type}/YYYY-MM-DD/{##}/`.
+    Tento kód konfiguruje Spark rekurzivně přístupu strukturu adresáře pro vstupní data. Telemetrii Application Insights je zaznamenána do do struktury adresářů podobná `/{telemetry type}/YYYY-MM-DD/{##}/`.
 
-4. Použití **SHIFT + ENTER** toorun hello kódu. Na levé straně hello buňky hello '\*, zobrazí se mezi tooindicate závorky hello je spouštěna hello kódu v této buňce. Po jeho dokončení hello '\*se změní tooa číslo a výstup podobný toohello následující text se zobrazí pod buňky hello:
+4. Použití **SHIFT + ENTER** spustit kód. Na levé straně buňky '\*, zobrazí se v hranatých závorkách indikující, že kód v této buňce je spouštěna. Po jeho dokončení "\*' změny číslo a výstup podobný tento text se zobrazí pod buňky:
 
         Creating SparkContext as 'sc'
 
@@ -243,24 +243,24 @@ tooadd hello účet úložiště Azure tooan existující cluster, použijte inf
 
         Creating HiveContext as 'sqlContext'
         SparkContext and HiveContext created. Executing user code ...
-5. Bude vytvořen nový buňku hello první z nich. Zadejte následující text v buňce nové hello hello. Nahraďte `CONTAINER` a `STORAGEACCOUNT` s názvem účtu úložiště Azure hello a název kontejneru objektu blob, který obsahuje Application Insights protokoly.
+5. První z nich bude vytvořen nový buňku. Zadejte následující text do nové buňky. Nahraďte `CONTAINER` a `STORAGEACCOUNT` s názvem účtu úložiště Azure a název kontejneru objektu blob, který obsahuje Application Insights protokoly.
 
    ```scala
    %%bash
    hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
    ```
 
-    Použití **SHIFT + ENTER** tooexecute tuto buňku. Zobrazí výsledek podobné toohello následující text:
+    Použití **SHIFT + ENTER** provést tuto buňku. Zobrazí výsledek podobná následující text:
 
         Found 1 items
         drwxrwxrwx   -          0 1970-01-01 00:00 wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
 
-    Cesta wasb Hello vrátil je hello umístění hello Application Insights telemetrická data. Změna hello `hdfs dfs -ls` řádek v hello buňky toouse hello wasb cestu vrátila a pak použijte **SHIFT + ENTER** toorun hello znovu buňky. Tentokrát hello výsledky by měl zobrazit hello adresáře, které obsahují telemetrická data.
+    Cesta wasb vrátil je umístění data telemetrie Application Insights. Změna `hdfs dfs -ls` řádek v buňce na použití cesty wasb vrátil a pak použijte **SHIFT + ENTER** buňky spustit znovu. Tentokrát výsledky by měl zobrazit adresáře, které obsahují telemetrická data.
 
    > [!NOTE]
-   > Pro zbytek hello hello kroky v této části, hello `wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` adresáře byl použit. Tento adresář neexistuje, není-li telemetrická data pro webovou aplikaci.
+   > Pro zbývající kroky v této části `wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` adresáře byl použit. Tento adresář neexistuje, není-li telemetrická data pro webovou aplikaci.
 
-6. V následující buňky hello, zadejte následující kód hello: Nahraďte `WASB\_PATH` s cestou hello hello v předchozím kroku.
+6. V následující buňky, zadejte následující kód: Nahraďte `WASB\_PATH` s cestou z předchozího kroku.
 
    ```scala
    var jsonFiles = sc.textFile('WASB_PATH')
@@ -268,15 +268,15 @@ tooadd hello účet úložiště Azure tooan existující cluster, použijte inf
    var jsonData = sqlContext.read.json(jsonFiles)
    ```
 
-    Tento kód vytvoří dataframe z soubory JSON hello exportované procesem průběžné export hello. Použití **SHIFT + ENTER** toorun tuto buňku.
+    Tento kód vytvoří dataframe z soubory JSON exportované sadou procesu průběžné exportu. Použití **SHIFT + ENTER** spustit tuto buňku.
 
-7. V následující buňky hello zadejte a spusťte následující schéma hello tooview, Spark vytvořené pro soubory JSON hello hello:
+7. V následující buňky zadejte a spusťte následující příkaz a zobrazí schéma Spark vytvořené pro soubory JSON:
 
    ```scala
    jsonData.printSchema
    ```
 
-    Hello schématu pro každý typ telemetrie se liší. Hello následující příklad je hello schématu, který se vygeneruje pro webové žádosti (data uložená v hello `Requests` podadresáři):
+    Schéma pro každý typ telemetrie se liší. Následující příklad je schéma, který se vygeneruje pro webové žádosti (data uložená v `Requests` podadresáři):
 
         root
         |-- context: struct (nullable = true)
@@ -339,21 +339,21 @@ tooadd hello účet úložiště Azure tooan existující cluster, použijte inf
         |    |    |    |-- host: string (nullable = true)
         |    |    |    |-- protocol: string (nullable = true)
 
-8. Použijte následující tooregister hello dataframe jako dočasná tabulka hello a spuštění dotazu pro hello data:
+8. Použijte následující postupy k registraci dataframe jako dočasné tabulky a spouštění dotazů na data:
 
    ```scala
    jsonData.registerTempTable("requests")
    var city = sqlContext.sql("select context.location.city from requests where context.location.city is not null limit 10").show()
    ```
 
-    Tento dotaz vrací informace o městě hello hello nejvyšší 20 záznamů, kde context.location.city není null.
+    Tento dotaz vrací informace o městě pro horní 20 záznamy, kde context.location.city není null.
 
    > [!NOTE]
-   > Struktura Hello kontextu není k dispozici ve všech telemetrických dat zaznamenaných funkcí Application Insights. element města Hello nemusí vložené do protokolů. Použijte hello schématu tooidentify další prvky s možností dotazu, které mohou obsahovat data pro svoje protokoly.
+   > Struktura kontextu je součástí všech telemetrických dat zaznamenaných funkcí Application Insights. Element města nemusí vložené do protokolů. Schéma slouží k identifikaci další prvky s možností dotazu, které mohou obsahovat data pro svoje protokoly.
    >
    >
 
-    Tento dotaz vrací informace o podobné toohello následující text:
+    Tento dotaz vrací informace podobná následující text:
 
         +---------+
         |     city|
@@ -367,15 +367,15 @@ tooadd hello účet úložiště Azure tooan existující cluster, použijte inf
 
 ## <a name="next-steps"></a>Další kroky
 
-Další příklady použití Spark toowork s daty a služby v Azure najdete v tématu hello následující dokumenty:
+Další příklady použití Spark pro práci s daty a služby v Azure najdete v následujících dokumentech:
 
 * [Spark s BI: Provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](hdinsight-apache-spark-use-bi-tools.md)
 * [Spark s Machine Learning: Používejte Spark v HDInsight pro analýzu teploty v budově pomocí dat HVAC](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
-* [Spark s Machine Learning: používejte Spark v výsledků kontroly potravin toopredict HDInsight](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
+* [Spark s Machine Learning: Používejte Spark v HDInsight k předpovědím výsledků kontrol potravin](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 * [Datové proudy Spark: Používejte Spark v HDInsight pro vytváření aplikací pro streamování](hdinsight-apache-spark-eventhub-streaming.md)
 * [Analýza protokolu webu pomocí Sparku v HDInsight](hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
-Informace o vytváření a spouštění aplikací Spark najdete v tématu hello následující dokumenty:
+Informace o vytváření a spouštění aplikací Spark najdete v následujících dokumentech:
 
 * [Vytvoření samostatné aplikace pomocí Scala](hdinsight-apache-spark-create-standalone-application.md)
 * [Vzdálené spouštění úloh na clusteru Sparku pomocí Livy](hdinsight-apache-spark-livy-rest-interface.md)

@@ -1,6 +1,6 @@
 ---
-title: "aaaManage svazky zařízení StorSimple (Update 3) | Microsoft Docs"
-description: "Vysvětluje, jak tooadd, upravit, monitorování a odstranit svazky zařízení StorSimple a tootake je v režimu offline v případě potřeby."
+title: "Spravovat svazky zařízení StorSimple (Update 3) | Microsoft Docs"
+description: "Vysvětluje, jak přidat, upravit, sledovat a odstraňovat svazky zařízení StorSimple a jak je převést do režimu offline, v případě potřeby."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,49 +14,49 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/19/2017
 ms.author: alkohli
-ms.openlocfilehash: 6228c4486dd5a7887df670c4c4584c4edcdfc509
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 09f4de79ab9b0cdfafd10c7c7c29b0f8e6304f14
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="use-hello-storsimple-device-manager-service-toomanage-volumes-update-3-or-later"></a>Použijte svazky služby toomanage hello Správce zařízení StorSimple (Update 3 nebo novější)
+# <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Použít službu StorSimple Manager zařízení ke správě svazky (Update 3 nebo novější)
 
 ## <a name="overview"></a>Přehled
 
-Tento kurz vysvětluje, jak toouse hello toocreate service Manager zařízení StorSimple a spravovat svazky na řadu zařízení StorSimple 8000 hello verzi Update 3 nebo novější.
+Tento kurz vysvětluje, jak používat službu StorSimple Manager zařízení k vytváření a správě svazky na řadu zařízení StorSimple 8000 verzi Update 3 nebo novější.
 
-Hello služby StorSimple Manager zařízení je rozšíření hello portálu Azure, která umožňuje spravovat z jedné webové rozhraní vašeho řešení StorSimple. Použijte hello Azure portálu toomanage svazky na všechna zařízení. Můžete také vytvořit a spravovat služby StorSimple, spravovat zařízení, zásady zálohování a zálohování katalogu a zobrazovat výstrahy.
+Služba Správce zařízení StorSimple je rozšíření na portálu Azure, která umožňuje spravovat z jedné webové rozhraní vašeho řešení StorSimple. Použití portálu Azure ke správě svazky na všech zařízeních. Můžete také vytvořit a spravovat služby StorSimple, spravovat zařízení, zásady zálohování a zálohování katalogu a zobrazovat výstrahy.
 
 ## <a name="volume-types"></a>Typy svazku
 
 Svazky zařízení StorSimple může být:
 
-* **Místně vázaný svazky**: Data v těchto svazcích zůstane na místním zařízení StorSimple hello za všech okolností.
-* **Zřízeny vrstvené svazky**: Data v těchto svazků můžete distribuována toohello cloudu.
+* **Místně vázaný svazky**: Data v těchto svazcích zůstane na místním zařízení StorSimple za všech okolností.
+* **Zřízeny vrstvené svazky**: Data v těchto svazků můžete distribuována do cloudu.
 
-Archivace svazek je typ vrstvený svazek. Hello větší odstranění duplicit velikost bloku použít pro archivaci svazky umožňuje hello zařízení tootransfer větší segmentů toohello dat v cloudu.
+Archivace svazek je typ vrstvený svazek. Použít pro archivaci svazky větší velikost bloku odstranění duplicitních dat umožňuje zařízení k přenosu větší segmenty dat do cloudu.
 
-V případě potřeby můžete změnit typ svazku hello z místní tootiered nebo vrstvené toolocal. Další informace, přejděte příliš[změnit typ svazku hello](#change-the-volume-type).
+Pokud potřeby můžete změnit svazek typu z místní pro vrstvené nebo z vrstvené na místní. Další informace, přejděte na [změnit typ svazku](#change-the-volume-type).
 
 ### <a name="locally-pinned-volumes"></a>Místně vázaných svazků
 
-Místně vázaných svazků jsou zcela zřizované svazky, které není vrstvy toohello dat v cloudu, a zajistí tak místní záruky pro primární data, nezávisle na cloudu připojení. Není data na místně vázaných svazků s odstraněním duplicitních dat a komprimované; Nicméně jsou odstranění duplicit snímky místně vázaných svazků. 
+Místně vázaných svazků jsou zcela zřizované svazky, které provádějí není dat vrstev do cloudu, a zajistí tak místní záruky pro primární data, nezávisle na cloudu připojení. Není data na místně vázaných svazků s odstraněním duplicitních dat a komprimované; Nicméně jsou odstranění duplicit snímky místně vázaných svazků. 
 
-Místně vázaných svazků jsou plně zřízený; proto musí mít dostatek místa na vašem zařízení, při jejich vytváření. Můžete zřídit místně vázaných svazků až tooa maximální velikosti 8 TB na zařízení hello StorSimple 8100 a 20 TB na zařízení 8600 hello. StorSimple si vyhrazuje zbývající volné místo na hello zařízení pro snímky, metadat a zpracování dat hello. Můžete zvýšit velikost hello místně vázaný svazek toohello maximální prostoru k dispozici, ale nelze snížit velikost svazku po vytvoření hello.
+Místně vázaných svazků jsou plně zřízený; proto musí mít dostatek místa na vašem zařízení, při jejich vytváření. Můžete zřídit místně vázaných svazků až maximální velikosti 8 TB zařízení StorSimple 8100 a 20 TB na zařízení 8600. StorSimple si vyhrazuje zbývající volné místo na zařízení pro snímky, metadata a data zpracování. Můžete zvýšit velikost místně vázaný svazek na maximální místo k dispozici, ale nelze snížit velikost svazku po vytvoření.
 
-Když vytvoříte místně vázaný svazek, se snižuje hello volné místo pro vytvoření vrstvené svazky. Hello zpětné platí také: Pokud máte vrstvené svazky, bude místo hello dostupné pro vytváření místně připojené svazky menší než maximální limit hello uvedené výše. Další informace o místní svazky, najdete v části toohello [nejčastější dotazy na místně vázaných svazků](storsimple-8000-local-volume-faq.md).
+Když vytvoříte místně vázaný svazek, dostupné místo pro vytvoření vrstvené svazky se snižuje. Platí to i naopak: Pokud máte vrstvené svazky, volné místo dostupné pro vytváření místně připojené svazky bude nižší než maximální limit uvedené výše. Další informace o místní svazky, najdete v části [nejčastější dotazy na místně vázaných svazků](storsimple-8000-local-volume-faq.md).
 
 ### <a name="tiered-volumes"></a>Vrstvené svazky
 
-Vrstvené svazky jsou dynamicky zřizované svazky, ve které hello často používaná data zůstává v zařízení hello místní a méně často používaná data se automaticky vrstvené toohello cloudu. Dynamické zajišťování je technologie virtualizace, ve kterém úložiště k dispozici, zobrazí se tooexceed fyzické prostředky. Místo předem rezervování dostatečné úložiště, StorSimple používá dynamického zřizování tooallocate akorát toomeet aktuální požadavky na volné místo. Hello elastické povaha cloudového úložiště usnadňuje tento přístup, protože StorSimple můžete zvýšit nebo snížit cloudové úložiště toomeet splněné měnící se požadavky.
+Vrstvené svazky jsou dynamicky zřizované svazky, ve kterých často používaná data zůstává místní na zařízení a automaticky vrstveny méně často používaná data do cloudu. Dynamické zajišťování je technologie virtualizace, ve kterém se zobrazuje dostupné úložiště delší než fyzické prostředky. StorSimple používá k přidělení právě dostatek místa, aby splňovala aktuální požadavky místo rezervování dostatečné úložiště předem, dynamické zajišťování. Elastické povaha cloudového úložiště usnadňuje tento přístup, protože StorSimple můžete zvýšit nebo snížit úložiště v cloudu splňovat požadavky na změny.
 
-Pokud používáte vrstvený svazek pro archivní data, vyberte hello hello **použít tento svazek pro archivní data s méně často používaná** velikost bloku políčko toochange hello odstranění duplicitních dat pro svazek too512 KB. Pokud tuto možnost nevyberete, hello příslušný vrstvený svazek bude používat velikost bloku dat 64 KB. Větší velikost bloku odstranění duplicitních dat umožňuje hello zařízení tooexpedite hello přenos velkých objemů archivních dat toohello cloudu.
+Pokud používáte vrstvený svazek pro archivní data, vyberte **použít tento svazek pro archivní data s méně často používaná** zaškrtávací políčko, chcete-li změnit velikost bloku odstranění duplicitních dat pro svazek na 512 KB. Pokud tuto možnost nevyberete, příslušný vrstvený svazek bude používat velikost bloku dat 64 KB. Větší velikost deduplikačního bloku dat umožňuje zařízení urychlit přenos velkých objemů archivních dat do cloudu.
 
 
 ### <a name="provisioned-capacity"></a>Zřízená kapacita
 
-Následující tabulka pro maximální zřízená kapacita pro každý typ zařízení a svazek toohello naleznete v nápovědě. (Všimněte si, že nejsou dostupné na virtuálním zařízení místně vázaných svazků.)
+Naleznete v následující tabulce maximální zřízená kapacita pro každý typ zařízení a svazku. (Všimněte si, že nejsou dostupné na virtuálním zařízení místně vázaných svazků.)
 
 |  | Vrstvený svazek maximální velikost | Maximální místně připnutý velikost svazku |
 | --- | --- | --- |
@@ -67,24 +67,24 @@ Následující tabulka pro maximální zřízená kapacita pro každý typ zař�
 | 8010 |30 TB |Není k dispozici |
 | 8020 |64 TB |Není k dispozici |
 
-## <a name="hello-volumes-blade"></a>okno svazky Hello
+## <a name="the-volumes-blade"></a>V okně svazky
 
-Hello **svazky** okno vám umožní toomanage hello úložné svazky, které jsou zřízené v hello Microsoft Azure StorSimple zařízení pro vaše iniciátorů (serverů). Zobrazuje hello seznam svazků na službě připojené tooyour zařízení StorSimple hello.
+**Svazky** okno umožňuje správu svazků úložiště, které jsou zřízené v Microsoft Azure StorSimple zařízení pro vaše iniciátorů (serverů). Zobrazuje seznam svazků v zařízení StorSimple připojené k vaší službě.
 
  ![Stránka svazky](./media/storsimple-8000-manage-volumes-u2/volumeslist.png)
 
 Svazek se skládá z řady atributy:
 
-* **Název svazku** – popisný název, který musí být jedinečný a pomáhá identifikovat hello svazku. Tento název se také používá v monitorování sestavy při filtrování na konkrétním svazku. Po vytvoření svazku hello nelze přejmenovat.
-* **Stav** – může být online nebo offline. Pokud je svazek offline, není viditelné tooinitiators (servery) povolený přístup toouse hello svazku.
-* **Kapacita** – určuje hello celkové množství dat, které můžou být uložené ve iniciátor hello (server). Místně vázaný svazky jsou plně zřízený a jsou umístěny na zařízení StorSimple hello. Vrstvené svazky jsou tence zřízený a hello data se odstraňují. S dynamicky zřizované svazky nebude zařízení předem přidělit kapacity fyzického úložiště, interně, nebo v cloudu hello podle tooconfigured kapacita svazku. kapacita svazku Hello je přidělené a využívat na vyžádání.
-* **Typ** – Určuje, zda je svazek hello **nastavování** (hello výchozí) nebo **místně vázaný**.
+* **Název svazku** – popisný název, který musí být jedinečný a pomáhá identifikovat svazku. Tento název se také používá v monitorování sestavy při filtrování na konkrétním svazku. Po vytvoření svazku nelze přejmenovat.
+* **Stav** – může být online nebo offline. Pokud je svazek offline, není viditelná pro iniciátorů (serverů), které jsou povoleny přístup k použití svazku.
+* **Kapacita** – Určuje celkový objem dat, která mohou být uloženy iniciátor (server). Místně vázaný svazky jsou plně zřízený a jsou umístěny v zařízení StorSimple. Vrstvené svazky jsou tence zřízený a data se odstraňují. S dynamicky zřizované svazky nebude zařízení předem přidělit kapacity fyzického úložiště, interně, nebo v cloudu podle kapacita nakonfigurované svazku. Kapacita svazku je přidělené a využívat na vyžádání.
+* **Typ** – Určuje, zda je svazek **nastavování** (výchozí) nebo **místně vázaný**.
 
-Používejte hello pokyny v této kurz tooperform hello následující úlohy:
+Postupujte podle pokynů v tomto kurzu k provádění následujících úloh:
 
 * Přidání svazku 
 * Upravit svazku 
-* Změnit typ svazku hello
+* Změnit typ svazku
 * Odstranění svazku 
 * Svazek převést do režimu offline 
 * Monitorování svazku 
@@ -93,243 +93,243 @@ Používejte hello pokyny v této kurz tooperform hello následující úlohy:
 
 Můžete [vytvořili svazek](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) během nasazování zařízení řady StorSimple 8000. Přidání svazku je podobným způsobem.
 
-#### <a name="tooadd-a-volume"></a>tooadd svazku
+#### <a name="to-add-a-volume"></a>Chcete-li přidat svazek
 
-1. Z hello tabulkové seznam zařízení hello v hello **zařízení** okně vyberte příslušné zařízení. Klikněte na **+ Přidat svazek**.
+1. V tabulkovém výpisu zařízení v okně **Zařízení** vyberte vaše zařízení. Klikněte na **+ Přidat svazek**.
 
     ![Přidání nového svazku](./media/storsimple-8000-manage-volumes-u2/step5createvol1.png)
 
-2. V hello **přidat svazek** okno:
+2. V okně **Přidat svazek**:
    
-    1. Hello **vyberte zařízení** s aktuální zařízení se automaticky vyplní pole.
+    1. Do pole **Vybrat zařízení** se automaticky vyplní vaše aktuální zařízení.
 
-    2. Hello rozevíracím seznamu vyberte kontejner svazků hello, kde je nutné tooadd svazku.
+    2. Z rozevíracího seznamu vyberte kontejner svazků, do kterého potřebujete přidat svazek.
 
-    3.  Zadejte **Název** svazku. Po vytvoření svazku hello nelze přejmenovat hello svazku.
+    3.  Zadejte **Název** svazku. Po vytvoření svazku nelze přejmenovat svazku.
 
-    4. V rozevíracím seznamu hello, vyberte hello **typ** svazku. Pro úlohy, které vyžadují místní záruky, nízkou latenci a vyšší výkon, vyberte typ svazku **Místně vázaný**. Pro ostatní typy dat vyberte typ svazku **Vrstvený**. Pokud tento svazek používáte k archivaci dat, zaškrtněte políčko **Použít tento svazek pro archivní data s méně častým přístupem**.
+    4. V rozevíracím seznamu vyberte **Typ** svazku. Pro úlohy, které vyžadují místní záruky, nízkou latenci a vyšší výkon, vyberte typ svazku **Místně vázaný**. Pro ostatní typy dat vyberte typ svazku **Vrstvený**. Pokud tento svazek používáte k archivaci dat, zaškrtněte políčko **Použít tento svazek pro archivní data s méně častým přístupem**.
       
-       Vrstvený svazek je zřizovaný dynamicky a lze jej rychle vytvořit. Výběr **použít tento svazek pro archivní data s méně často používaná** pro vrstvený svazek určený pro velikost bloku archivní data změny hello odstranění duplicitních dat pro svazek too512 KB. Pokud políčko není zaškrtnuté, příslušný vrstvený svazek hello používá velikost bloku dat 64 KB. Větší velikost bloku odstranění duplicitních dat umožňuje hello zařízení tooexpedite hello přenos velkých objemů archivních dat toohello cloudu.
+       Vrstvený svazek je zřizovaný dynamicky a lze jej rychle vytvořit. Výběrem možnosti **Použít tento svazek pro archivní data s méně častým přístupem** u vrstveného svazku určeného k uchovávání archivních dat změníte velikost bloku odstranění duplicit vašeho svazku na 512 kB. Pokud políčko není zaškrtnuté, příslušný vrstvený svazek bude používat velikost bloku 64 kB. Větší velikost deduplikačního bloku dat umožňuje zařízení urychlit přenos velkých objemů archivních dat do cloudu.
        
-       Místně vázaný svazek je tlustě zřízený a zajišťuje, že hello primární dat na svazku hello zůstává místní toohello zařízení a nebudou distribuována toohello cloudu.  Pokud vytvoříte místně vázaný svazek, zařízení hello kontrolovat dostupný prostor v místních vrstvách hello tooprovision hello objem hello požadovanou velikost. Hello operaci vytváření místně vázaný svazek může být existující data z cloudu toohello hello zařízení a doba hello toocreate hello svazku může trvat dlouho. Celkový čas Hello závisí na velikosti hello hello zřídit svazek, dostupnou šířku pásma sítě a hello dat ve vašem zařízení.
+       Místně vázaný svazek je tlustě zřízený a zajišťuje, že primární data uložená ve svazku zůstanou uložená v místním zařízení a nebudou distribuována do cloudu.  Pokud vytvoříte místně vázaný svazek, zařízení zkontroluje dostupné místo v místních vrstvách a zřídí svazek požadované velikosti. Při operaci vytváření místně vázaného svazku mohou být existující data ze zařízení distribuována do cloudu a vytvoření svazku může trvat dlouhou dobu. Celková doba závisí na velikosti zřizovaného svazku, dostupné šířce pásma sítě a datech uložených v zařízení.
 
-    5. Zadejte hello **zřízená kapacita** svazku. Poznamenejte si hello kapacity, která je k dispozici podle vybraného typu svazku hello. Hello zadat velikost svazku nesmí překročit hello volné místo.
+    5. Zadejte hodnotu **Zřízená kapacita** svazku. Poznamenejte si kapacitu dostupnou na základě vybraného typu svazku. Zadaná velikost svazku nesmí překročit velikost dostupného místa.
       
-       Můžete zřídit místně vázaných svazků až too8.5 TB a vrstvené svazky až too200 TB na zařízení 8100 hello. Větší zařízení 8600 hello můžete zřídit místně vázaných svazků až too22.5 TB a vrstvené svazky až too500 TB. Volné místo v zařízení hello je požadovaná toohost hello pracovní sady vrstvených svazků, vytváření místně vázaných svazků ovlivní hello místa ke zřizování vrstvených svazků. Proto pokud vytvoříte místně připojený svazek, zmenší se dostupné volné místo pro vytváření vrstvených svazků. Podobně pokud vrstvený svazek je vytvořen, se snižuje hello volného prostoru vytváření místně vázaných svazků.
+       Zařízení 8100 umožňuje zřizovat místně vázané svazky o velikosti až 8.5 TB a vrstvené svazky o velikosti až 200 TB. Větší zařízení 8600 umožňuje zřizovat místně vázané svazky o velikosti až 22.5 TB a vrstvené svazky o velikosti až 500 TB. Protože k hostování fungující sady vrstvených svazků je vyžadováno volné místo v zařízení, vytváření místně vázaných svazků ovlivňuje volné místo dostupné ke zřizování vrstvených svazků. Proto pokud vytvoříte místně připojený svazek, zmenší se dostupné volné místo pro vytváření vrstvených svazků. Podobně pokud vytvoříte vrstvený svazek, zmenší se dostupné volné místo potřebné k vytváření místně vázaných svazků.
       
-       Pokud v zařízení 8100 zřídíte místně vázaný svazek šířka 8,5 TB (maximální možná velikost), vyčerpáte všechny hello volné místo dostupné v zařízení hello. Nelze vytvořit žádné vrstvené svazky od tohoto okamžiku už nezbude žádné volné místo na hello zařízení toohost hello pracovní sadu hello vrstvené svazku. Hello místa ovlivňují také vrstvené svazky existující. Pokud například používáte zařízení 8100, ve kterém jsou už zřízeny vrstvené svazky o velikosti zhruba 106 TB, k vytváření místně vázaných svazků zbude už jenom 4 TB dostupného volného místa.
+       Pokud v zařízení 8100 zřídíte místně vázaný svazek o velikosti 8.5 TB (maximální možná velikost), vyčerpáte tím veškeré volné místo dostupné v zařízení. Od této chvíle už nebudete moct vytvořit žádné vrstvené svazky, protože v zařízení už nebude žádné volné místo k hostování pracovní sady vrstveného svazku. Objem dostupného volného místa ovlivňují také vrstvené svazky. Pokud například používáte zařízení 8100, ve kterém jsou už zřízeny vrstvené svazky o velikosti zhruba 106 TB, k vytváření místně vázaných svazků zbude už jenom 4 TB dostupného volného místa.
 
-    6. V hello **připojení hostitele** pole, klikněte na šipku hello. 
+    6. V poli **Připojení hostitelé** klikněte na šipku. 
 
         ![Připojení hostitelé](./media/storsimple-8000-manage-volumes-u2/step5createvol2.png)
 
-    7. V hello **připojení hostitele** okně zvolte existující ACR nebo přidat nový ACR. Pokud si zvolíte nové ACR, potom zadejte **název** acr, zadejte hello **iSCSI Qualified Name** (IQN) hostitele s Windows. Pokud hello IQN nemáte, přejděte příliš[Get hello názvu IQN hostitele Windows serveru](#get-the-iqn-of-a-windows-server-host). Klikněte na možnost **Vytvořit**. Svazek je vytvořen s hello zadané nastavení.
+    7. V **připojení hostitele** okně zvolte existující ACR nebo přidat nový ACR. Pokud si zvolíte nové ACR, potom zadejte **název** acr, zadejte **iSCSI Qualified Name** (IQN) hostitele s Windows. Pokud název IQN nemáte, přejděte do části [Získání názvu hostitele se systémem Windows Server](#get-the-iqn-of-a-windows-server-host). Klikněte na možnost **Vytvořit**. Vytvoří se svazek se zadaným nastavením.
 
         ![Kliknutí na Vytvořit](./media/storsimple-8000-manage-volumes-u2/step5createvol3.png)
 
-Nový svazek je nyní připraven toouse.
+Nový svazek je nyní připraven k použití.
 
 > [!NOTE]
-> Pokud vytvoříte místně vázaný svazek a pak vytvořit jiné místně připnuli svazku okamžitě později, úlohy vytvoření svazku hello spouští sekvenčně. Úloha vytvoření svazku první Hello musí ukončit předtím, než můžete začít hello další úloha vytvoření svazku.
+> Pokud vytvoříte místně vázaný svazek a pak vytvořit jiné místně vázaný svazek okamžitě později, vytvoření svazku, postupně spuštění úlohy. První úloha vytvoření svazku se musí ukončit předtím, než můžete začít další úloha vytvoření svazku.
 
 ## <a name="modify-a-volume"></a>Upravit svazku
 
-Upravte svazek, když potřebujete tooexpand ho nebo změňte hello hostitele, kteří přístup hello svazku.
+Upravte svazek, když je potřeba ho rozšířit nebo změnit hostitelů, které přístup ke svazku.
 
 > [!IMPORTANT]
-> * Pokud změníte velikost svazku hello na hello zařízení, musí velikost svazku hello toobe změnit také v hostiteli se hello.
-> * Hello hostitelské kroků popsaných v tomto poli se pro Windows Server 2012 (2012 R2). Postupy pro Linux nebo jiných hostitelských operačních systémech se liší. Tooyour hostitele operačního systému pokyny najdete v případě úpravy hello svazek na hostitele s jiným operačním systémem.
+> * Pokud změníte velikost svazku v zařízení, je potřeba změnit na hostitele a velikost svazku.
+> * Hostitelské kroků popsaných v tomto poli se pro Windows Server 2012 (2012 R2). Postupy pro Linux nebo jiných hostitelských operačních systémech se liší. Vyhledejte vaše hostitele operačního systému při úpravě svazek na hostitele s jiným operačním systémem.
 
-#### <a name="toomodify-a-volume"></a>toomodify svazku
+#### <a name="to-modify-a-volume"></a>Chcete-li upravit svazku
 
-1. Přejděte služby StorSimple Manager zařízení tooyour a pak klikněte na tlačítko **zařízení**. Hello tabulkové výpis hello zařízení, vyberte hello zařízení, která obsahuje hello svazku, že máte v úmyslu toomodify. Klikněte na tlačítko **Nastavení > svazky**.
+1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. Tabulkový seznam zařízení, vyberte zařízení, která obsahuje svazek, který chcete upravit. Klikněte na tlačítko **Nastavení > svazky**.
 
-    ![Přejděte tooVolumes okno](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+    ![Přejděte do okna svazky](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
-2. Hello tabulkové seznam svazků vyberte hello svazku a klikněte pravým tlačítkem na tooinvoke hello kontextové nabídky. Vyberte **převést do režimu offline** svazku hello tootake upravíte v režimu offline.
+2. Tabulkový seznam svazků, vyberte svazek a klikněte pravým tlačítkem na má být vyvolán v místní nabídce. Vyberte **převést do režimu offline** uvedení svazku upravíte do režimu offline.
 
     ![Vyberte a do offline režimu svazku](./media/storsimple-8000-manage-volumes-u2/modifyvol4.png)
 
-3. V hello **převést do režimu offline** okně zkontrolovat dopad hello hello svazku přepnutím do režimu offline a zaškrtněte odpovídající políčko hello. Zkontrolujte, zda text hello odpovídající svazek na hostiteli hello offline nejdřív. Informace o tom, jak tootake svazek offline na hostitelském serveru připojený tooStorSimple najdete v části konkrétní pokyny týkající se systému toooperating. Klikněte na tlačítko **převést do režimu offline**.
+3. V **převést do režimu offline** okně zkontrolovat dopad svazku přepnutím do režimu offline a zaškrtněte odpovídající políčko. Zajistěte, aby byl odpovídající svazek na hostiteli offline nejdřív. Informace o tom, jak provést offline svazku na serveru hostitele připojené k StorSimple postupujte podle pokynů pro konkrétní operační systém. Klikněte na tlačítko **převést do režimu offline**.
 
     ![Zkontrolujte dopad svazku přepnutím do režimu offline](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
 
-4. Po hello svazek je offline (jak ukazují stav svazku hello), vyberte svazek hello a klikněte pravým tlačítkem na tooinvoke hello kontextové nabídky. Vyberte **upravit svazek**.
+4. Po svazek je offline (jak ukazují stav svazku), vyberte svazek a klikněte pravým tlačítkem na má být vyvolán v místní nabídce. Vyberte **upravit svazek**.
 
     ![Vyberte Změnit svazku](./media/storsimple-8000-manage-volumes-u2/modifyvol9.png)
 
 
-5. V hello **upravit svazek** okno, můžete provést hello následující změny:
+5. V **upravit svazek** okno, můžete provést následující změny:
    
-   1. Hello svazku **název** nelze upravit.
-   2. Převést hello **typ** z místně vázaný tootiered nebo vrstvené toolocally připnutý (najdete v části [změnit typ svazku hello](#change-the-volume-type) informace).
-   3. Zvýšit hello **zřízená kapacita**. Hello **zřízená kapacita** může být pouze zvýšena. Po vytvoření, nelze zmenšit svazek.
-   4. V části **připojení hostitele**, můžete upravit hello ACR. toomodify ACR hello svazek musí být v režimu offline.
+   1. Svazek **název** nelze upravit.
+   2. Převést **typ** z místně vázaný k vrstvené nebo z vrstvené pro místně vázaný (najdete v části [změnit typ svazku](#change-the-volume-type) informace).
+   3. Zvýšit **zřídit kapacitu**. **Zřízená kapacita** může být pouze zvýšena. Po vytvoření, nelze zmenšit svazek.
+   4. V části **připojení hostitele**, můžete upravit ACR. Pokud chcete upravit ACR, musí být svazek offline.
 
        ![Zkontrolujte dopad svazku přepnutím do režimu offline](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 
-5. Klikněte na tlačítko **Uložit** toosave změny. Po zobrazení výzvy k potvrzení klikněte na **Ano**. Hello portál Azure se zobrazí zprávu aktualizací svazku. Zpráva o úspěšném provedení zobrazí při hello svazku byla úspěšně aktualizována.
+5. Klikněte na tlačítko **Uložit** uložte provedené změny. Po zobrazení výzvy k potvrzení klikněte na **Ano**. Portál Azure se zobrazí zprávu aktualizací svazku. Zpráva o úspěšném provedení zobrazí při svazku byla úspěšně aktualizována.
 
     ![Zkontrolujte dopad svazku přepnutím do režimu offline](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
 
-7. Pokud se rozšířit svazek, proveďte následující kroky v hostitelském počítači Windows hello:
+7. Pokud se rozšířit svazek, proveďte následující kroky v hostitelském počítači Windows:
    
-   1. Přejděte příliš**Správa počítače** ->**Správa disků**.
+   1. Přejděte na **Správa počítače** ->**disku správu**.
    2. Klikněte pravým tlačítkem na **Správa disků** a vyberte **Prohledat disky**.
-   3. V seznamu hello disků vyberte hello svazek, který jste aktualizaci, klikněte pravým tlačítkem a pak vyberte **rozšířit svazek**. Spustí se Průvodce rozšířit svazek Hello. Klikněte na **Další**.
-   4. Dokončete Průvodce hello, přijetí hello výchozí hodnoty. Po dokončení Průvodce hello hello svazku by měl zobrazit hello zvětšit velikost.
+   3. V seznamu disků, vyberte svazek, který jste aktualizaci, klikněte pravým tlačítkem a pak vyberte **rozšířit svazek**. Spustí se Průvodce rozšířit svazek. Klikněte na **Další**.
+   4. Dokončete průvodce, přijetím výchozích hodnot. Po dokončení průvodce by se zobrazit vyšší velikost svazku.
       
       > [!NOTE]
-      > Pokud rozbalte místně vázaný svazek a potom rozbalte jiné místně připnuli svazku okamžitě později, hello svazku rozšíření úloh spouští sekvenčně. Úloha rozšíření svazku první Hello musí ukončit předtím, než můžete začít hello další svazek rozšíření úlohy.
+      > Pokud rozbalte místně vázaný svazek a potom rozbalte jiné místně připnuli svazku okamžitě později, úlohy rozšíření svazku spouští sekvenčně. První úloha rozšíření svazku se musí ukončit předtím, než můžete začít další úlohy rozšíření svazku.
       
 
-## <a name="change-hello-volume-type"></a>Změnit typ svazku hello
+## <a name="change-the-volume-type"></a>Změnit typ svazku
 
-Typ svazku hello můžete změnit z vrstvené toolocally připnuté nebo místně vázaný tootiered. Tento převod však by neměl být časté výskyt.
+Můžete změnit typ svazku z vrstvené pro místně vázaný nebo z místně vázaný na vrstvené. Tento převod však by neměl být časté výskyt.
 
-### <a name="tiered-toolocal-volume-conversion-considerations"></a>Informace o převodu toolocal vrstvený svazek
+### <a name="tiered-to-local-volume-conversion-considerations"></a>Víceúrovňová aspektech převod místního svazku
 
-Důvody pro převod svazku z vrstvené toolocally připnutý zahrnují:
+Důvody pro převod svazku z vrstvené pro místně vázaný zahrnují:
 
 * Místní záruky týkající se data dostupnosti a výkonu
 * Odstranění cloudu latenci a problémy s připojením k cloudu.
 
-Obvykle jsou malé existující svazky, které chcete tooaccess často. Když je vytvořeno místně vázaný svazek plně zřízený. 
+Obvykle jsou malé existující svazky, které chcete pro přístup k často. Když je vytvořeno místně vázaný svazek plně zřízený. 
 
-Pokud převádíte tooa místně vázaný svazek vrstvený svazek, StorSimple ověřuje mít dostatek místa na zařízení, než začne hello převod. Pokud máte dostatek místa, dojde k chybě a hello operace, budou zrušeny. 
+Při převodu vrstvený svazek k místně vázaný svazek, StorSimple ověřuje mít dostatek místa na zařízení, než začne převod. Pokud máte dostatek místa, dojde k chybě a operace bude zrušena. 
 
 > [!NOTE]
-> Před zahájením převodu z vrstvené toolocally připnutý, ujistěte se, zvažte hello požadavky na místo na vašich dalších zatížení. 
+> Před zahájením převodu z vrstvené pro místně vázaný, ujistěte se, vezměte v úvahu požadavky na místo vašich dalších zatížení. 
 
-Převod z vrstvené tooa místně vázaný svazek může nepříznivě ovlivnit výkon zařízení. Kromě toho hello následující faktory může zvýšit hello doba trvání toocomplete hello převod:
+Převod vrstvené na místně vázaný svazek může nepříznivě ovlivnit výkon zařízení. Kromě toho následující faktory může se prodloužit doba potřebná k dokončení převodu:
 
 * Není k dispozici dostatečná šířka pásma.
 * Není žádná aktuální záloha.
 
-účinky hello toominimize, které mohou mít tyto faktory:
+Chcete-li minimalizovat účinky, které může mít tyto faktory:
 
 * Zkontrolujte vaše zásady omezení šířky pásma a ujistěte se, že vyhrazené šířky pásma 40 MB/s je k dispozici.
-* Naplánovat hello převod hodiny mimo špičku.
-* Pořízení snímku cloudu před zahájením převodu hello.
+* Plánování převod hodiny mimo špičku.
+* Pořízení snímku cloudu před zahájením převodu.
 
-Pokud převádíte více svazků (Podpora různých zátěží), by měl tak, aby vyšší prioritu svazky se převedou nejprve upřednostňovat převodu svazku hello. Například je třeba převést svazky, které jsou hostiteli virtuálních počítačů (VM) nebo svazky s úlohami SQL před převodem svazky s úlohami sdílené složky souborů.
+Pokud převádíte více svazků (Podpora různých zátěží), by měl tak, aby vyšší prioritu svazky se převedou nejprve upřednostňovat převodu svazku. Například je třeba převést svazky, které jsou hostiteli virtuálních počítačů (VM) nebo svazky s úlohami SQL před převodem svazky s úlohami sdílené složky souborů.
 
-### <a name="local-tootiered-volume-conversion-considerations"></a>Informace o převodu svazku místní tootiered
+### <a name="local-to-tiered-volume-conversion-considerations"></a>Místní vrstvený svazek převod aspektech
 
-Budete pravděpodobně chtít toochange tooa místně vázaný svazek vrstvené svazku Pokud budete potřebovat další místo tooprovision jiných svazků. Při převodu hello místně vázaný svazek tootiered hello dostupné kapacity na hello zařízení zvyšuje úroveň hello velikost kapacity hello vydání. Pokud problémy s připojením k zabránění hello převod svazku z místního typu toohello hello vrstvené typu, hello místní svazek bude mít květy vlastnosti vrstvený svazek až po dokončení převodu hello. Je to proto, že některá data mohou přesahovat toohello cloudu. Tato data spilled pokračuje toooccupy volné místo na hello zařízení, které nelze uvolnit, dokud je restartovat a dokončit operaci hello.
+Můžete změnit místně vázaný svazek na vrstvený svazek, pokud potřebujete další místa pro zřízení jiných svazků. Při převodu místně vázaný svazek k vrstvené dostupné kapacity na zařízení zvyšuje velikost vydaná kapacitu. Pokud problémy s připojením k zabránit převod svazku místního typu vrstvené typ, místní svazek bude mít květy vlastnosti vrstvený svazek, až po dokončení převodu. Je to proto, že některá data mohou přesahovat do cloudu. Tato spilled data i nadále zabírají volné místo na zařízení, které nelze uvolnit, dokud je restartovat a dokončit operaci.
 
 > [!NOTE]
-> Převod svazku může určitou dobu trvat a nelze zrušit převodu z po jeho spuštění. Při převodu hello, zůstane online Hello svazku a záloh, ale nelze rozbalit nebo obnovit svazek hello během probíhající hello převod.
+> Převod svazku může určitou dobu trvat a nelze zrušit převodu z po jeho spuštění. Zachování svazku online během převodu a můžete provést zálohování, ale nelze rozbalit nebo obnovit svazek během probíhající převod.
 
 
-#### <a name="toochange-hello-volume-type"></a>Typ svazku toochange hello
+#### <a name="to-change-the-volume-type"></a>Chcete-li změnit typ svazku
 
-1. Přejděte služby StorSimple Manager zařízení tooyour a pak klikněte na tlačítko **zařízení**. Hello tabulkové výpis hello zařízení, vyberte hello zařízení, která obsahuje hello svazku, že máte v úmyslu toomodify. Klikněte na tlačítko **Nastavení > svazky**.
+1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. Tabulkový seznam zařízení, vyberte zařízení, která obsahuje svazek, který chcete upravit. Klikněte na tlačítko **Nastavení > svazky**.
 
-    ![Přejděte tooVolumes okno](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+    ![Přejděte do okna svazky](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
-3. Hello tabulkové seznam svazků vyberte hello svazku a klikněte pravým tlačítkem na tooinvoke hello kontextové nabídky. Vyberte **upravit**.
+3. Tabulkový seznam svazků, vyberte svazek a klikněte pravým tlačítkem na má být vyvolán v místní nabídce. Vyberte **upravit**.
 
     ![Vyberte změnit z kontextové nabídky](./media/storsimple-8000-manage-volumes-u2/changevoltype2.png)
 
-4. Na hello **upravit svazek** okně změnit typ svazku hello výběrem hello nový typ z hello **typ** rozevíracího seznamu.
+4. Na **upravit svazek** okně změnit typ svazku výběrem nového typu z **typ** rozevíracího seznamu.
    
-   * Pokud chcete změnit typ hello příliš**místně vázaný**, StorSimple, toosee zkontroluje, jestli je dostatečnou kapacitu.
-   * Pokud chcete změnit typ hello příliš**nastavování** a použije tento svazek pro archivní data, vyberte hello **použít tento svazek pro archivní data s méně často používaná** zaškrtávací políčko.
-   * Pokud konfigurujete místně vázaný svazek jako vrstvené nebo _naopak_, hello zobrazí se následující zpráva.
+   * Pokud chcete změnit typ, který má **místně vázaný**, StorSimple zkontroluje, jestli je dostatečnou kapacitu.
+   * Pokud chcete změnit typ, který má **nastavování** a použije tento svazek pro archivní data, vyberte **použít tento svazek pro archivní data s méně často používaná** zaškrtávací políčko.
+   * Pokud konfigurujete místně vázaný svazek jako vrstvené nebo _naopak_, zobrazí se následující zpráva.
    
     ![Změna svazek zadejte text zprávy.](./media/storsimple-8000-manage-volumes-u2/changevoltype3.png)
 
-7. Klikněte na tlačítko **Uložit** toosave hello změny. Po zobrazení výzvy k potvrzení, klikněte na tlačítko **Ano** procesu převodu toostart hello. 
+7. Kliknutím na **Uložit** uložte změny. Po zobrazení výzvy k potvrzení, klikněte na tlačítko **Ano** zahájíte proces převodu. 
 
     ![Uložte a potvrďte](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 
-8. Hello portál Azure zobrazí oznámení pro vytvoření úlohy hello, že by aktualizace hello svazku. Klikněte na hello oznámení toomonitor hello stav úlohy převodu svazku hello.
+8. Portál Azure zobrazí oznámení pro vytvoření úlohy, které by aktualizaci svazku. Kliknutím na oznámení k monitorování stavu úlohy převod svazku.
 
     ![Úlohy pro převod svazku](./media/storsimple-8000-manage-volumes-u2/changevoltype5.png)
 
 ## <a name="take-a-volume-offline"></a>Svazek převést do režimu offline
 
-Při plánování toomodify nebo odstranění hello svazek může být nutné tootake svazek offline. Pokud je svazek offline, není k dispozici pro přístup pro čtení a zápis. Je třeba provést offline hello svazek na hostiteli hello a hello zařízení.
+Potřebujete do offline režimu svazku při plánování k úpravě nebo odstranění svazku. Pokud je svazek offline, není k dispozici pro přístup pro čtení a zápis. Je třeba provést svazek offline na hostiteli a zařízení.
 
-#### <a name="tootake-a-volume-offline"></a>tootake svazek offline
+#### <a name="to-take-a-volume-offline"></a>Uvedení svazku do režimu offline
 
-1. Ujistěte se, že svazek hello dotyčném není používán před přepnutím do režimu offline.
-2. Trvat hello svazku do offline režimu na hostiteli hello první. Tím se eliminuje všechny potenciální riziko poškození dat na svazku hello. Konkrétní kroky najdete v části toohello pokyny pro operační systém hostitele.
-3. Po hello hostitel je v režimu offline, trvat hello svazku na hello zařízení do offline režimu provedením hello následující kroky:
+1. Ujistěte se, že dotyčný svazek není používána před přepnutím do režimu offline.
+2. Proveďte offline svazek na hostiteli první. Tím se eliminuje všechny potenciální riziko poškození dat na svazku. Konkrétní kroky přečtěte si pokyny pro operační systém hostitele.
+3. Až bude hostitel v režimu offline, proveďte svazek v zařízení do offline režimu provedením následujících kroků:
    
-    1. Přejděte služby StorSimple Manager zařízení tooyour a pak klikněte na tlačítko **zařízení**. Hello tabulkové výpis hello zařízení, vyberte hello zařízení, která obsahuje hello svazku, že máte v úmyslu toomodify. Klikněte na tlačítko **Nastavení > svazky**.
+    1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. Tabulkový seznam zařízení, vyberte zařízení, která obsahuje svazek, který chcete upravit. Klikněte na tlačítko **Nastavení > svazky**.
 
-        ![Přejděte tooVolumes okno](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+        ![Přejděte do okna svazky](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
-    2. Hello tabulkové seznam svazků vyberte hello svazku a klikněte pravým tlačítkem na tooinvoke hello kontextové nabídky. Vyberte **převést do režimu offline** svazku hello tootake upravíte v režimu offline.
+    2. Tabulkový seznam svazků, vyberte svazek a klikněte pravým tlačítkem na má být vyvolán v místní nabídce. Vyberte **převést do režimu offline** uvedení svazku upravíte do režimu offline.
 
         ![Vyberte a do offline režimu svazku](./media/storsimple-8000-manage-volumes-u2/modifyvol4.png)
 
-3. V hello **převést do režimu offline** okně zkontrolovat dopad hello hello svazku přepnutím do režimu offline a zaškrtněte odpovídající políčko hello. Klikněte na tlačítko **převést do režimu offline**. 
+3. V **převést do režimu offline** okně zkontrolovat dopad svazku přepnutím do režimu offline a zaškrtněte odpovídající políčko. Klikněte na tlačítko **převést do režimu offline**. 
 
     ![Zkontrolujte dopad svazku přepnutím do režimu offline](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
       
-      Budete informováni hello svazek je offline. Stav svazku Hello rovněž aktualizuje tooOffline.
+      Budete upozorněni, když je svazek offline. Stav svazku se také aktualizace Offline.
       
-4. Jakmile je svazek offline, pokud vyberete hello svazek a klikněte pravým tlačítkem, **přepnout do režimu Online** bude k dispozici v kontextové nabídce hello.
+4. Jakmile je svazek offline, pokud vyberete svazek a klikněte pravým tlačítkem, **přepnout do režimu Online** bude k dispozici v místní nabídce.
 
 > [!NOTE]
-> Hello **přepnout do režimu Offline** příkaz odešle žádost toohello zařízení tootake hello svazek offline. Pokud hostitele stále používají hello svazku, to vede k přerušení připojení, ale nebudou hello svazku přepnutím do režimu offline.
+> **Přepnout do režimu Offline** příkaz odešle požadavek na zařízení do offline režimu svazku. Pokud svazek stále používají hostitelé, to vede k přerušení připojení, ale nebudou svazku přepnutím do režimu offline.
 
 ## <a name="delete-a-volume"></a>Odstranění svazku
 
 > [!IMPORTANT]
 > Svazek můžete odstranit pouze v případě, že je offline.
 
-Proveďte následující kroky toodelete svazek hello.
+Proveďte následující kroky odstranění svazku.
 
-#### <a name="toodelete-a-volume"></a>toodelete svazku
+#### <a name="to-delete-a-volume"></a>Odstranění svazku
 
-1. Přejděte služby StorSimple Manager zařízení tooyour a pak klikněte na tlačítko **zařízení**. Hello tabulkové výpis hello zařízení, vyberte hello zařízení, která obsahuje hello svazku, že máte v úmyslu toomodify. Klikněte na tlačítko **Nastavení > svazky**.
+1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. Tabulkový seznam zařízení, vyberte zařízení, která obsahuje svazek, který chcete upravit. Klikněte na tlačítko **Nastavení > svazky**.
 
-    ![Přejděte tooVolumes okno](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+    ![Přejděte do okna svazky](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
-3. Zkontrolujte stav hello hello svazku chcete toodelete. Pokud chcete toodelete svazku hello není v režimu offline, odpojte jej nejprve. Postupujte podle kroků hello v [do offline režimu svazku](#take-a-volume-offline).
-4. Po hello svazek je offline, vyberte svazek hello, klikněte pravým tlačítkem na tooinvoke hello kontextovou nabídku a pak vyberte **odstranit**.
+3. Zkontrolujte stav svazku, který chcete odstranit. Pokud na svazek, který chcete odstranit není v režimu offline, odpojte jej nejprve. Postupujte podle kroků v [do offline režimu svazku](#take-a-volume-offline).
+4. Jakmile je svazek offline, vyberte svazek, klikněte pravým tlačítkem na vyvolání v místní nabídce a potom vyberte **odstranit**.
 
     ![Vyberte možnost odstranit z kontextové nabídky](./media/storsimple-8000-manage-volumes-u2/deletevol1.png)
 
-5. V hello **odstranit** okno zkontrolujte a vyberte hello políčko proti hello dopad odstraněním svazku. Pokud odstraníte svazek, dojde ke ztrátě všech hello data, která se nachází na svazku hello. 
+5. V **odstranit** okně zkontrolovat a zaškrtněte políčko proti důsledcích odstranění svazku. Pokud odstraníte svazek, dojde ke ztrátě všechna data, která se nachází na svazku. 
 
     ![Uložte a potvrďte změny](./media/storsimple-8000-manage-volumes-u2/deletevol2.png)
 
-6. Po odstranění svazku hello hello tabulkového seznamu svazků aktualizuje tooindicate hello odstranění.
+6. Po odstranění svazku tabulkového seznamu svazků aktualizuje označit pro odstranění.
 
     ![Seznam aktualizované svazků](./media/storsimple-8000-manage-volumes-u2/deletevol3.png)
    
    > [!NOTE]
-   > Pokud odstraníte místně vázaný svazek, hello místa na disku pro nové svazky nemusí být okamžitě aktualizován. Hello služby StorSimple Manager zařízení pravidelně aktualizuje hello volné místo k dispozici. Doporučujeme, že Počkejte několik minut, než se pokusíte toocreate hello nový svazek.
+   > Pokud odstraníte místně vázaný svazek, místa na disku pro nové svazky nemusí být okamžitě aktualizován. Volné místo dostupné aktualizace služby StorSimple Manager zařízení pravidelně. Doporučujeme, že Počkejte několik minut, než se pokusíte vytvořit nový svazek.
    >
-   > Kromě toho pokud odstraníte místně vázaný svazek a potom odstraňte jiné místně připnuli svazku okamžitě později, úlohy odstranění svazku hello spouští sekvenčně. úlohy odstranění svazku první Hello musí ukončit předtím, než můžete začít hello další úlohy odstranění svazku.
+   > Kromě toho pokud odstraníte místně vázaný svazek a potom odstraňte jiné místně připnuli svazku okamžitě později, postupně spuštění úlohy odstranění svazku. První úlohy odstranění svazku se musí ukončit předtím, než můžete začít další úlohy odstranění svazku.
 
 ## <a name="monitor-a-volume"></a>Monitorování svazku
 
-Monitorování svazku můžete toocollect I/E-související statistiky pro svazek. Monitorování je povoleno ve výchozím nastavení pro hello nejprve 32 svazky, které vytvoříte. Ve výchozím nastavení vypnutá monitorování další svazky. 
+Svazek monitorování umožňuje shromažďování statistik I/E-související pro svazek. Monitorování je povoleno ve výchozím nastavení nejprve 32 svazků, které vytvoříte. Ve výchozím nastavení vypnutá monitorování další svazky. 
 
 > [!NOTE]
 > Monitorování klonovaný svazků je ve výchozím nastavení zakázáno.
 
 
-Proveďte následující kroky tooenable hello nebo zakázat monitorování pro svazek.
+Proveďte následující kroky, které chcete povolit nebo zakázat monitorování pro svazek.
 
-#### <a name="tooenable-or-disable-volume-monitoring"></a>tooenable nebo zakažte monitorování svazku
+#### <a name="to-enable-or-disable-volume-monitoring"></a>Chcete povolit nebo zakázat monitorování svazku
 
-1. Přejděte služby StorSimple Manager zařízení tooyour a pak klikněte na tlačítko **zařízení**. Hello tabulkové výpis hello zařízení, vyberte hello zařízení, která obsahuje hello svazku, že máte v úmyslu toomodify. Klikněte na tlačítko **Nastavení > svazky**.
-2. Hello tabulkové seznam svazků vyberte hello svazku a klikněte pravým tlačítkem na tooinvoke hello kontextové nabídky. Vyberte **upravit**.
-3. V hello **upravit svazek** okně pro **monitorování** vyberte **povolit** nebo **zakázat** tooenable nebo zakažte monitorování.
+1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. Tabulkový seznam zařízení, vyberte zařízení, která obsahuje svazek, který chcete upravit. Klikněte na tlačítko **Nastavení > svazky**.
+2. Tabulkový seznam svazků, vyberte svazek a klikněte pravým tlačítkem na má být vyvolán v místní nabídce. Vyberte **upravit**.
+3. V **upravit svazek** okně pro **monitorování** vyberte **povolit** nebo **zakázat** chcete povolit nebo zakázat monitorování.
 
     ![Zakázání sledování](./media/storsimple-8000-manage-volumes-u2/monitorvol1.png) 
 
-4. Klikněte na tlačítko **Uložit** a po zobrazení výzvy k potvrzení, klikněte na tlačítko **Ano**. Hello portál Azure zobrazí oznámení pro aktualizaci hello svazek a potom zpráva o úspěšném provedení po úspěšné aktualizaci hello svazku.
+4. Klikněte na tlačítko **Uložit** a po zobrazení výzvy k potvrzení, klikněte na tlačítko **Ano**. Portál Azure zobrazí oznámení pro aktualizaci svazek a potom zpráva o úspěšném provedení po úspěšné aktualizaci svazku.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Zjistěte, jak příliš[klonovat svazek StorSimple](storsimple-8000-clone-volume-u2.md).
-* Zjistěte, jak příliš[použití hello tooadminister service Manager zařízení StorSimple zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Zjistěte, jak [klonovat svazek StorSimple](storsimple-8000-clone-volume-u2.md).
+* Zjistěte, jak [použít službu StorSimple Manager zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

@@ -1,6 +1,6 @@
 ---
-title: "přihlášení aplikace vyvinuté vlastní tooan aaaProblems | Microsoft Docs"
-description: "Běžné rrors, které by mohlo být příčinou toonot být schopný toosign do aplikace, kterou jste vytvořili s Azure AD"
+title: "Potíže při přihlašování k aplikaci zákaznických | Microsoft Docs"
+description: "Běžné rrors, které by mohlo být příčinou vám nebudou moci přihlásit k aplikaci jste si vytvořili s Azure AD"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: cc302e68ae6c129b74387c6fc5ba4fb45ccb8fb3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b0df23e040a73d18968f547eef7347f14cc577c6
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="problems-signing-in-tooan-custom-developed-application"></a>Potíže s přihlášením tooan zákaznických aplikace
+# <a name="problems-signing-in-to-an-custom-developed-application"></a>Přihlášení k aplikaci zákaznických problémů
 
-Existuje několik chyb, které by mohlo být příčinou je toonot být schopný toosign do aplikace. Hello největších důvodu, že se uživatelé setkávají tento problém je nesprávně nakonfigurované aplikace.
+Existuje několik chyb, které by mohlo být příčinou vám nebudou moci přihlásit do aplikace. Největších důvod uživatelé setkávají tento problém je špatně nakonfigurovaný. aplikace.
 
-## <a name="errors-related-too-misconfigured-apps"></a>Chyby související s příliš konfigurace aplikace
+## <a name="errors-related-to--misconfigured-apps"></a>Chyby související s nesprávně nakonfigurované aplikace
 
-* Ověřte, že obě hello konfigurace portálu hello shodovat, co máte ve vaší aplikaci. Konkrétně porovnejte ID klienta nebo aplikace, adresy URL odpovědí, tajné klíče nebo klíče klienta a identifikátor ID URI aplikace.
+* Ověřte, že konfigurace na portálu shodovat, co máte ve vaší aplikaci. Konkrétně porovnejte ID klienta nebo aplikace, adresy URL odpovědí, tajné klíče nebo klíče klienta a identifikátor ID URI aplikace.
 
-* Porovnání hello prostředků, kterou žádáte kód tooin přístup s oprávněními hello nakonfigurované v hello **požadované prostředky** toomake kartě, zda jste pouze požadavky na prostředky jste nakonfigurovali.
+* Porovnání prostředků, kterou žádáte o přístup k v kódu s nakonfigurovanou oprávnění v **požadované prostředky** a zajistěte, aby vám pouze požadavky na prostředky, které jste nakonfigurovali.
 
 * V tématu [Azure AD StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory) všechny podobné chyby nebo problémy.
 
@@ -35,7 +35,7 @@ Existuje několik chyb, které by mohlo být příčinou je toonot být schopný
 
 [Příručka vývojáře pro službu Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)<br>
 
-[TooAzure souhlasu a integrace aplikace AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications>)<br>
+[Souhlasu a integrace aplikací do Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications>)<br>
 
 [Souhlasu a systému oprávnění rolích pro Azure AD v2.0 konvergované aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
 

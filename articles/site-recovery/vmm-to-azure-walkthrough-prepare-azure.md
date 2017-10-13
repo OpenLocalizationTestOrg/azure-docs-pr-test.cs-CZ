@@ -1,6 +1,6 @@
 ---
-title: "aaaPrepare prostředky Azure tooreplicate virtuálních počítačů Hyper-V (s nástrojem System Center VMM) tooAzure pomocí Azure Site Recovery | Microsoft Docs"
-description: "Popisuje, co potřebujete zavedené v Azure před zahájením replikace virtuálních počítačů Hyper-V (s nástrojem VMM) tooAzure pomocí Azure Site Recovery"
+title: "Příprava prostředků Azure k replikaci virtuálních počítačů Hyper-V (s nástrojem System Center VMM) do Azure pomocí Azure Site Recovery | Microsoft Docs"
+description: "Popisuje, co potřebujete zavedené v Azure před zahájením replikace virtuálních počítačů technologie Hyper-V (s nástrojem VMM) do Azure pomocí Azure Site Recovery"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,48 +14,48 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/23/2017
 ms.author: raynew
-ms.openlocfilehash: 86bfbab7722fe5bd5b93b92e398d1d441505d3b0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 63b005f37ab5e15e8a1b4645446d65f1529f1bbd
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="step-5-prepare-azure-resources-for-hyper-v-replication-with-vmm-tooazure"></a>Krok 5: Příprava prostředků Azure pro tooAzure replikace (s VMM) technologie Hyper-V
+# <a name="step-5-prepare-azure-resources-for-hyper-v-replication-with-vmm-to-azure"></a>Krok 5: Příprava prostředků Azure pro replikaci technologie Hyper-V (s nástrojem VMM) do Azure.
 
-Po ověření [požadavky na síťovou](vmm-to-azure-walkthrough-network.md), použijte hello pokyny v této článku tooprepare Azure prostředky tak, aby můžete replikovat místní virtuální počítače Hyper-v tooAzure cloudech System Center Virtual Machine Manager (VMM), pomocí Hello [Azure Site Recovery](site-recovery-overview.md) služby.
+Po ověření [požadavky na síťovou](vmm-to-azure-walkthrough-network.md), postupujte podle pokynů v tomto článku Příprava prostředků Azure, takže můžete replikovat místní virtuální počítače Hyper-V v cloudech System Center Virtual Machine Manager (VMM) do Azure, pomocí [ Azure Site Recovery](site-recovery-overview.md) služby.
 
-Po přečtení tohoto článku, post jakékoli komentáře v dolní části hello, nebo požádat technické dotazy na hello [fóru Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Po přečtení tohoto článku, post jakékoli komentáře v dolní části, nebo požádat technické dotazy na [fóru Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 
 ## <a name="set-up-an-azure-account"></a>Nastavit účet Azure
 
 - Získání [účet Microsoft Azure](http://azure.microsoft.com/).
 - Můžete začít s [bezplatnou zkušební verzí](https://azure.microsoft.com/pricing/free-trial/).
-- Zkontrolujte hello podporované oblasti pro obnovení lokality v rámci geografickou dostupností v [Azure Site Recovery podrobnosti o cenách](https://azure.microsoft.com/pricing/details/site-recovery/).
-- Další informace o [cenách za Site Recovery](site-recovery-faq.md#pricing)a získat hello [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/site-recovery/).
-- Ověřte, zda má váš účet Azure hello správné [oprávnění](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)toocreate virtuálních počítačích Azure. [Další informace](../active-directory/role-based-access-built-in-roles.md) o řízení přístupu Azure na základě rolí.
+- Zkontrolujte podporované oblasti pro obnovení lokality v rámci geografickou dostupností v [Azure Site Recovery podrobnosti o cenách](https://azure.microsoft.com/pricing/details/site-recovery/).
+- Další informace o [cenách za Site Recovery](site-recovery-faq.md#pricing)a získat [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/site-recovery/).
+- Ověřte, zda má správný účtu Azure [oprávnění](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)k vytvoření virtuálních počítačích Azure. [Další informace](../active-directory/role-based-access-built-in-roles.md) o řízení přístupu Azure na základě rolí.
 
 
 ## <a name="set-up-an-azure-network"></a>Nastavení sítě Azure
 
 - Nastavení [síť Azure](../virtual-network/virtual-network-get-started-vnet-subnet.md). Virtuální počítače Azure jsou umístěny v této síti, když jste vytvořili po převzetí služeb při selhání.
-- Hello síť musí být ve hello stejné oblasti jako hello trezoru služeb zotavení
-- Site Recovery na hello portálu Azure můžete použít nastavení sítích [Resource Manager](../resource-manager-deployment-model.md), nebo v klasickém režimu.
-- Doporučujeme nastavit síť ještě před tím, než začnete. Pokud to neuděláte, musíte toodo ji během nasazování Site Recovery.
+- Síť musí být ve stejné oblasti jako trezor služeb zotavení
+- Site Recovery na portálu Azure můžete použít nastavení sítích [Resource Manager](../resource-manager-deployment-model.md), nebo v klasickém režimu.
+- Doporučujeme nastavit síť ještě před tím, než začnete. Pokud to neuděláte, budete to muset udělat při nasazení služby Site Recovery.
 - Další informace o [ceny virtuální sítě](https://azure.microsoft.com/pricing/details/virtual-network/).
 
 
 ## <a name="set-up-an-azure-storage-account"></a>Nastavení účtu úložiště Azure
 
-- Site Recovery replikuje úložiště tooAzure místního počítače. Virtuální počítače Azure jsou vytvořené z úložiště hello po převzetí služeb při selhání.
-- Nastavit standard nebo premium [účtu úložiště Azure](../storage/common/storage-create-storage-account.md#create-a-storage-account) toohold data replikují tooAzure.
-- [Storage úrovně Premium](../storage/common/storage-premium-storage.md) se obvykle používá u virtuálních počítačů, které je třeba konzistentně vysoký výkon vstupně-výstupní operace a s nízkou latencí toohost vstupně-výstupní operace náročné úlohy.
-- Pokud chcete toouse toostore účtu premium replikovaná data, musíte taky standardní úložiště účet toostore protokoly replikace, zachycení probíhající změny tooon místní data.
-- V závislosti na modelu prostředků hello chcete toouse pro převzetí služeb virtuálních počítačích Azure při selhání, nastavíte účet v [režimu Resource Manager](../storage/common/storage-create-storage-account.md), nebo [klasickém režimu](../storage/common/storage-create-storage-account.md).
-- Doporučujeme, abyste před zahájením nastavení účtu úložiště. Pokud to neuděláte, budete potřebovat toodo ji během nasazování Site Recovery. Hello účty musí být v hello stejné oblasti jako hello trezoru služeb zotavení.
-- Nelze přesunout, účty úložiště používané při Site Recovery přes skupiny prostředků v rámci hello stejné předplatné, nebo v různých předplatných.
+- Site Recovery replikuje místní počítače do úložiště Azure. Virtuální počítače Azure jsou vytvořené z úložiště po převzetí služeb při selhání.
+- Nastavit standard nebo premium [účtu úložiště Azure](../storage/common/storage-create-storage-account.md#create-a-storage-account) k ukládání dat replikovaných do Azure.
+- [Storage úrovně Premium](../storage/common/storage-premium-storage.md) se obvykle používá u virtuálních počítačů, které je třeba neustále vysoké vstupně-výstupní výkon a nízká latence pro zatížení s intenzivním vstupně-výstupní operace hostitele.
+- Pokud pro ukládání replikovaných dat chcete používat účet Storage úrovně Premium, musíte mít také účet Storage úrovně Standard pro ukládání protokolů replikace, do kterých se zaznamenávají průběžné změny místních dat.
+- V závislosti na modelu prostředků, který chcete použít pro převzal virtuálních počítačích Azure, které nastavíte účet v [režimu Resource Manager](../storage/common/storage-create-storage-account.md), nebo [klasickém režimu](../storage/common/storage-create-storage-account.md).
+- Doporučujeme, abyste před zahájením nastavení účtu úložiště. Pokud to neuděláte, budete muset udělat při nasazování Site Recovery. Tyto účty musí být ve stejné oblasti jako trezor služeb zotavení.
+- Nelze přesunout úložiště účtů používaných při obnovení lokality, mezi skupinami prostředků v rámci stejného předplatného, nebo v různých předplatných.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Přejděte příliš[krok 6: Příprava VMM](vmm-to-azure-walkthrough-vmm-hyper-v.md)
+Přejděte na [krok 6: Příprava VMM](vmm-to-azure-walkthrough-vmm-hyper-v.md)

@@ -1,6 +1,6 @@
 ---
-title: aaaWhat stalo projekt ASP.NET toomy? | Dokumentace Microsoftu
-description: "Popisuje, co se stane po přidání projekt ASP.NET tooa Azure Storage pomocí sady Visual Studio připojené služby"
+title: Co se stalo s Moje projekt ASP.NET? | Dokumentace Microsoftu
+description: "Popisuje, co se stane po přidání do projektu ASP.NET pomocí sady Visual Studio Azure Storage services"
 services: storage
 documentationcenter: 
 author: kraigb
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: kraigb
-ms.openlocfilehash: 175e9b825c32f4930d5093b6a4ad13ffb9ab8aa7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 680960f51201a98c81db4bce3615e1602e795651
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="what-happened-toomy-aspnet-project-visual-studio-azure-storage-connected-service"></a>Co se stalo toomy projekt ASP.NET (Visual Studio Azure Storage připojeno service)?
+# <a name="what-happened-to-my-aspnet-project-visual-studio-azure-storage-connected-service"></a>Co se stalo s Moje projekt ASP.NET (Visual Studio Azure Storage připojeno service)?
 ## <a name="references-added"></a>Přidanými referencemi
-balíček NuGet úložiště Azure Hello přidala tooyour projektu sady Visual Studio.  
-Tento balíček přidá hello následující odkazy na rozhraní .NET:
+Balíček NuGet úložiště Azure byl přidán do projektu sady Visual Studio.  
+Tento balíček přidá následující odkazy na rozhraní .NET:
 
 * **Microsoft.Data.Edm**
 * **Microsoft.Data.OData**
@@ -35,7 +35,7 @@ Tento balíček přidá hello následující odkazy na rozhraní .NET:
 * **System.Spatial**
 
 ## <a name="connection-string-for-azure-storage-added"></a>Připojovací řetězec pro Azure Storage přidán
-V souboru web.config hello projektu byl vytvořen element připojovací řetězec a klíč účtu úložiště hello vybrané.
+V souboru web.config vašeho projektu byl vytvořen element připojovací řetězec a klíč účtu vybrané úložiště.
 
 Další informace najdete v tématu [ASP.NET](http://www.asp.net).
 

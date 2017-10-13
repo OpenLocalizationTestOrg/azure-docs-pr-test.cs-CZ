@@ -1,10 +1,10 @@
-Můžete se připojit tooa virtuální počítač, který je nasazený tooyour virtuální sítě tak, že vytvoříte tooyour připojení ke vzdálené ploše virtuálního počítače. Hello nejlepší způsob, jak tooinitially ověřte, zda můžete připojit virtuální počítač je tooconnect podle tooyour pomocí jeho privátní IP adresa, místo názvu počítače. Tímto způsobem toosee jsou testování, pokud se můžete připojit, a zda překlad není správně nakonfigurována.
+K virtuálnímu počítači nasazenému ve vaší virtuální síti se můžete připojit vytvořením Připojení ke vzdálené ploše tohoto virtuálního počítače. Nejlepším způsobem, jak na začátku ověřit, že se k virtuálnímu počítači můžete připojit, je použít k připojení privátní IP adresu místo názvu počítače. Tímto způsobem testujete, jestli se můžete připojit, a ne, jestli je správně nakonfigurovaný překlad IP adres.
 
-1. Vyhledejte hello privátní IP adresu. Hello privátní IP adresu virtuálního počítače můžete získat několika způsoby. Níže ukážeme hello kroky pro hello portál Azure a prostředí PowerShell.
+1. Vyhledejte privátní IP adresu. Privátní IP adresu virtuálního počítače je možné vyhledat více způsoby. Níže uvádíme kroky pro Azure Portal a PowerShell.
 
-  - Portál Azure – najít virtuálního počítače v hello portálu Azure. Zobrazit vlastnosti hello hello virtuálních počítačů. Hello privátní IP adresa je uvedena.
+  - Azure Portal – Vyhledejte virtuální počítač na webu Azure Portal. Zobrazte vlastnosti virtuálního počítače. Ve výpisu uvidíte privátní IP adresu.
 
-  - PowerShell – použití hello příklad tooview seznam virtuálních počítačů a privátní IP adresy z vaší skupiny prostředků. Tento příklad toomodify není nutné před jeho použitím.
+  - PowerShell – Pomocí příkladu zobrazte seznam virtuálních počítačů a privátních IP adres z vašich skupin prostředků. Tento příklad nemusíte před použitím upravovat.
 
     ```powershell
     $VMs = Get-AzureRmVM
@@ -19,15 +19,15 @@ Můžete se připojit tooa virtuální počítač, který je nasazený tooyour v
     }
     ```
 
-2. Ověřte, že jste tooyour připojené virtuální sítě pomocí připojení VPN hello.
-3. Otevřete **připojení ke vzdálené ploše** zadáním "RDP" nebo "Připojení ke vzdálené ploše" hello vyhledávacího pole na panelu hello, pak vyberte připojení ke vzdálené ploše. Můžete také otevřít připojení ke vzdálené ploše pomocí příkazu "mstsc" hello v prostředí PowerShell. 
-4. Připojení ke vzdálené ploše zadejte hello privátní IP adresu hello virtuálních počítačů. Klikněte na tlačítko "Zobrazit možnosti" tooadjust další nastavení a potom připojit.
+2. Zkontrolujte, že jste k virtuální síti připojeni pomocí připojení VPN.
+3. Otevřete **Připojení ke vzdálené ploše** tak, že do vyhledávacího pole na hlavním panelu zadáte „RDP“ nebo „Připojení ke vzdálené ploše“ a pak vyberete Připojení ke vzdálené ploše. Připojení ke vzdálené ploše můžete otevřít také v PowerShellu pomocí příkazu mstsc. 
+4. V Připojení ke vzdálené ploše zadejte privátní IP adresu virtuálního počítače. Můžete kliknout na Zobrazit možnosti a upravit další nastavení, pak se připojte.
 
-### <a name="tootroubleshoot-an-rdp-connection-tooa-vm"></a>tootroubleshoot tooa připojení RDP virtuálních počítačů
+### <a name="to-troubleshoot-an-rdp-connection-to-a-vm"></a>Řešení potíží s připojením ke vzdálené ploše virtuálního počítače
 
-Pokud máte potíže s připojením tooa virtuálního počítače přes připojení k síti VPN, zkontrolujte následující hello:
+Pokud se vám nedaří připojit k virtuálnímu počítači přes připojení VPN, zkontrolujte následující:
 
 - Ověřte, že je úspěšně navázáno připojení VPN.
-- Ověřte, zda se připojujete toohello privátní IP adresu pro hello virtuálních počítačů.
-- Pokud připojíte toohello virtuálních počítačů pomocí hello privátní IP adresa, ale není hello název počítače, ověřte, že jste správně nakonfigurovali DNS. Další informace o tom, jak funguje překlad IP adres pro virtuální počítače, najdete v tématu [Překlad IP adres pro virtuální počítače](../articles/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
-- Další informace o připojení RDP najdete v tématu [tooa připojení vzdálené plochy řešení virtuálních počítačů](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md).
+- Ověřte, že se připojujete k privátní IP adrese virtuálního počítače.
+- Pokud se k virtuálnímu počítači můžete připojit s použitím privátní IP adresy, ale ne pomocí názvu počítače, ověřte, že jste správně nakonfigurovali DNS. Další informace o tom, jak funguje překlad IP adres pro virtuální počítače, najdete v tématu [Překlad IP adres pro virtuální počítače](../articles/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+- Další informace o připojení ke vzdálené ploše najdete v tématu [Řešení potíží s připojením ke vzdálené ploše virtuálního počítače](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md).

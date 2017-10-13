@@ -1,6 +1,6 @@
 ---
-title: "Koncové body REST aaaCall pomocí protokolu HTTP + Swagger konektor pro Azure Logic Apps | Microsoft Docs"
-description: "Připojit tooREST koncových bodů z aplikace logiky prostřednictvím Swagger s hello HTTP + Swagger konektoru"
+title: "Volání REST koncové body pomocí protokolu HTTP + Swagger konektor pro Azure Logic Apps | Microsoft Docs"
+description: "Připojit k koncové body REST z aplikace logiky prostřednictvím Swagger pomocí protokolu HTTP + Swagger konektoru"
 services: logic-apps
 author: jeffhollan
 manager: anneta
@@ -15,81 +15,81 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: baaa57689ff41fcd052f9d86086e36619ddec46e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3e9229d94e96aad7b769d0e55d208d856e3b80bc
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="get-started-with-hello-http--swagger-action"></a>Začínáme s hello HTTP + Swagger akce
+# <a name="get-started-with-the-http--swagger-action"></a>Začínáme s HTTP + Swagger akce
 
-Můžete vytvořit koncový bod prvotřídní konektor tooany REST prostřednictvím [dokumentu Swagger](https://swagger.io) při použití hello HTTP + Swagger akce v pracovním postupu logiku aplikace. Můžete také rozšířit logiku aplikace toocall žádný koncový bod REST prvotřídní prostředí návrhář aplikace logiky.
+Můžete vytvořit první třídy konektor pro libovolný koncový bod REST prostřednictvím [dokumentu Swagger](https://swagger.io) při použití protokolu HTTP + Swagger akce v pracovním postupu logiku aplikace. Můžete také rozšířit logic apps, abyste volat žádný koncový bod REST prvotřídní prostředí návrhář aplikace logiky.
 
-jak zjistit, aplikace logiky toocreate s konektory, toolearn [vytvoření nové aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md).
+Chcete-li informace o vytváření aplikací logiky s konektory, přečtěte si téma [vytvoření nové aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md).
 
 ## <a name="use-http--swagger-as-a-trigger-or-an-action"></a>Použít protokol HTTP + Swagger jako aktivační událost nebo akci.
 
-Vítejte HTTP + Swagger aktivační události a akce pracovní hello stejné jako hello [akce HTTP](connectors-native-http.md) , ale poskytuje lepší prostředí v návrháři aplikace logiky díky zpřístupnění strukturu hello rozhraní API a výstupy z hello [Swagger metadata](https://swagger.io) . Můžete také použít hello HTTP + Swagger konektor jako trigger. Pokud chcete, aby tooimplement cyklického dotazování aktivační událost, postupujte podle hello dotazování vzor, který je popsán v [vytvořit vlastní toocall rozhraní API pro ostatní rozhraní API, služeb a systémů z aplikace logiky](../logic-apps/logic-apps-create-api-app.md#polling-triggers).
+HTTP + Swagger aktivovat a akce fungovat stejně jako [akce HTTP](connectors-native-http.md) ale zajistit lepší prostředí v návrháři aplikace logiky díky zpřístupnění strukturu rozhraní API a výstupy z [Swagger metadata](https://swagger.io). Můžete také použít HTTP + Swagger konektor jako trigger. Pokud chcete implementovat cyklického dotazování aktivační událost, postupujte podle vzoru dotazování, která je popsána v [vytvořte vlastní rozhraní API volat další rozhraní API, služeb a systémů z aplikace logiky](../logic-apps/logic-apps-create-api-app.md#polling-triggers).
 
 Další informace o [logiku aplikace triggery a akce](connectors-overview.md).
 
-Tady je příklad, jak toouse hello HTTP + Swagger operace jako akce v pracovním postupu v aplikaci logiky.
+Tady je příklad toho, jak pomocí HTTP + operací Swagger jako akce v pracovním postupu v aplikaci logiky.
 
-1. Vyberte hello **nový krok** tlačítko.
+1. Vyberte **nový krok** tlačítko.
 2. Vyberte **přidat akci**.
-3. Hello akce vyhledávacího pole zadejte **swagger** toolist hello HTTP + Swagger akce.
+3. Zadejte do vyhledávacího pole Akce **swagger** seznamu HTTP + Swagger akce.
    
     ![Vyberte HTTP + Swagger akce](./media/connectors-native-http-swagger/using-action-1.png)
-4. Zadejte adresu URL hello dokumentem Swagger:
+4. Zadejte adresu URL dokumentu Swagger:
    
-   * toowork z hello návrhář aplikace na základě logiky, hello adresa URL musí být koncový bod HTTPS a povolení CORS.
-   * Pokud dokumentu Swagger hello nesplňuje tento požadavek, můžete použít [Azure Storage s povolením CORS](#hosting-swagger-from-storage) toostore hello dokumentu.
-5. Klikněte na tlačítko **Další** tooread a vykreslování z hello dokumentu Swagger.
-6. Přidejte do žádné parametry, které jsou požadovány pro volání hello protokolu HTTP.
+   * Chcete-li z návrháře aplikace logiky, adresa URL musí být koncový bod HTTPS a povolení CORS.
+   * Pokud dokumentu Swagger nesplňuje tento požadavek, můžete použít [Azure Storage s povolením CORS](#hosting-swagger-from-storage) k uložení dokumentů.
+5. Klikněte na tlačítko **Další** ke čtení a vykreslování z dokumentu Swagger.
+6. Přidejte do žádné parametry, které jsou požadovány pro volání protokolu HTTP.
    
     ![Dokončení akce HTTP](./media/connectors-native-http-swagger/using-action-2.png)
-7. toosave a publikovat aplikace logiky, klikněte na tlačítko **Uložit** na panelu nástrojů návrháře.
+7. Pokud chcete uložit a publikovat aplikace logiky, klikněte na tlačítko **Uložit** na panelu nástrojů návrháře.
 
 ### <a name="host-swagger-from-azure-storage"></a>Swagger hostitele ze služby Azure Storage
-Můžete chtít tooreference dokumentu Swagger, který není hostovaný nebo který nesplňuje požadavky zabezpečení a cross-origin hello hello Designer. tooresolve-li tento problém, můžete ukládat hello dokumentu Swagger ve službě Azure Storage a povolení CORS tooreference hello dokumentu.  
+Můžete tak, aby odkazovaly dokumentu Swagger, který není hostovaný nebo který nesplňuje požadavky cross-origin pro návrháře a zabezpečení. Chcete-li vyřešit tento problém, můžete ukládat dokumentu Swagger ve službě Azure Storage a zapnout CORS a odkazovat na dokumentu.  
 
-Tady jsou kroky toocreate hello, konfigurace a ukládat dokumenty Swagger ve službě Azure Storage:
+Zde jsou kroky pro vytvoření, konfigurace a ukládat dokumenty Swagger ve službě Azure Storage:
 
-1. [Vytvoření účtu úložiště Azure s Azure Blob storage](../storage/common/storage-create-storage-account.md). tooperform tento krok, nastavte oprávnění příliš**veřejný přístup**.
+1. [Vytvoření účtu úložiště Azure s Azure Blob storage](../storage/common/storage-create-storage-account.md). Chcete-li provést tento krok, nastavte oprávnění na **veřejný přístup**.
 
-2. Povolení CORS u objektu blob hello. 
+2. Povolení CORS u objektu blob. 
 
-   tooautomatically nakonfigurujte toto nastavení, můžete použít [tento skript prostředí PowerShell](https://github.com/logicappsio/EnableCORSAzureBlob/blob/master/EnableCORSAzureBlob.ps1).
+   Chcete-li automaticky konfigurovat toto nastavení, můžete použít [tento skript prostředí PowerShell](https://github.com/logicappsio/EnableCORSAzureBlob/blob/master/EnableCORSAzureBlob.ps1).
 
-3. Nahrajte objekt blob toohello hello Swagger souboru. 
+3. Nahrajte soubor Swagger do objektu blob. 
 
-   Tento krok můžete provést z hello [portál Azure](https://portal.azure.com) nebo z nástroje, jako je [Azure Storage Explorer](http://storageexplorer.com/).
+   Můžete provést tento krok z [portál Azure](https://portal.azure.com) nebo z nástroje, jako je [Azure Storage Explorer](http://storageexplorer.com/).
 
-4. Referenční dokument HTTPS odkaz toohello v Azure Blob storage. 
+4. Referenční odkazu HTTPS v dokumentu v Azure Blob storage. 
 
-   odkaz Hello používá tento formát:
+   Odkaz používá tento formát:
 
    `https://*storageAccountName*.blob.core.windows.net/*container*/*filename*`
 
 ## <a name="technical-details"></a>Technické podrobnosti
-Následují hello podrobnosti o hello triggery a akce, které tento HTTP + Swagger konektor podporuje.
+Následují podrobnosti triggery a akce, který tento HTTP + Swagger konektor podporuje.
 
 ## <a name="http--swagger-triggers"></a>HTTP + aktivační události Swagger
-Aktivační událost je událost, která lze použít toostart hello workflow, který je definován v aplikaci logiky. [Další informace o aktivační události.](connectors-overview.md) Hello HTTP + Swagger konektor má jedna aktivační událost.
+Aktivační událost je událost, která můžete použít ke spuštění pracovního postupu, který je definován v aplikaci logiky. [Další informace o aktivační události.](connectors-overview.md) HTTP + Swagger konektor má jedna aktivační událost.
 
 | Aktivační události | Popis |
 | --- | --- |
-| HTTP + Swagger |Ujistěte se, volání protokolu HTTP a vrátí obsah odpovědi hello |
+| HTTP + Swagger |Ujistěte se, volání protokolu HTTP a vrátit obsahu odpovědi |
 
 ## <a name="http--swagger-actions"></a>HTTP + Swagger akce
-Akce je operace, která se provádí v pracovním postupu hello, která je definována v aplikaci logiky. [Další informace o akcích.](connectors-overview.md) Hello HTTP + Swagger konektor má jednu možné akci.
+Akce je operace, která se provádí v pracovním postupu, který je definován v aplikaci logiky. [Další informace o akcích.](connectors-overview.md) HTTP + Swagger konektor má jednu možné akci.
 
 | Akce | Popis |
 | --- | --- |
-| HTTP + Swagger |Ujistěte se, volání protokolu HTTP a vrátí obsah odpovědi hello |
+| HTTP + Swagger |Ujistěte se, volání protokolu HTTP a vrátit obsahu odpovědi |
 
 ### <a name="action-details"></a>Podrobnosti akce
-Hello HTTP + Swagger konektor se dodává s možné jednu akci. Dále najdete informace o jednotlivých hello akcí, jejich povinné a nepovinné vstupní pole a hello odpovídající výstup podrobnosti, které jsou spojeny s jejich využití.
+HTTP + Swagger konektor se dodává s možné jednu akci. Dále najdete informace o jednotlivých akce, jejich povinné a nepovinné vstupní pole a odpovídající výstup podrobnosti, které jsou spojeny s jejich využití.
 
 #### <a name="http--swagger"></a>HTTP + Swagger
 Pomoc při metadat Swagger Zkontrolujte odchozí požadavku HTTP.
@@ -97,11 +97,11 @@ Znak hvězdičky (*) znamená povinné pole.
 
 | Zobrazované jméno | Název vlastnosti | Popis |
 | --- | --- | --- |
-| Metoda * |– Metoda |Toouse operaci HTTP. |
-| IDENTIFIKÁTOR URI * |identifikátor URI |Identifikátor URI pro požadavek hello protokolu HTTP. |
-| Záhlaví |Záhlaví |Objekt JSON tooinclude hlavičky protokolu HTTP. |
-| Tělo |Text |Hello požadavku HTTP. |
-| Authentication |Ověřování |Ověřování toouse pro požadavek. Další informace najdete v tématu hello [HTTP konektor](connectors-native-http.md#authentication). |
+| Metoda * |– Metoda |Příkaz HTTP, používat. |
+| IDENTIFIKÁTOR URI * |identifikátor URI |Identifikátor URI pro požadavek HTTP. |
+| Záhlaví |Záhlaví |Objekt JSON hlaviček HTTP, které chcete zahrnout. |
+| Tělo |Text |Požadavek HTTP. |
+| Authentication |Ověřování |Ověřování chcete použít pro požadavek. Další informace najdete v tématu [HTTP konektor](connectors-native-http.md#authentication). |
 
 **Podrobnosti o výstupu**
 
@@ -114,7 +114,7 @@ Odpověď HTTP
 | Stavový kód |celá čísla |Stavový kód protokolu HTTP |
 
 ### <a name="http-responses"></a>Odpovědi HTTP
-Při provádění akce toovarious volání, může být určité odpovědi. Následuje tabulka, která popisuje odpovídající odpovědi a popisy.
+Při volání různé akce, může být určité odpovědi. Následuje tabulka, která popisuje odpovídající odpovědi a popisy.
 
 | Name (Název) | Popis |
 | --- | --- |

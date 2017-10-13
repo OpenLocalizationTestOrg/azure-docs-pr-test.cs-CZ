@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate modul Azure IoT Edge pomocí C# | Microsoft Docs"
-description: "V tomto kurzu hodnotí, jak zakázat datovou převaděč modulu pomocí toowrite hello nejnovější balíčky Azure IoT Edge NuGet, Visual Studio Code a C#."
+title: "Modul služby Azure IoT Edge vytvořit pomocí jazyka C# | Microsoft Docs"
+description: "V tomto kurzu umožňující prezentovat jak napsat modulu převaděč dat zakázat pomocí nejnovější balíčky Azure IoT Edge NuGet, Visual Studio Code a C#."
 services: iot-hub
 author: jeffreyCline
 manager: timlt
@@ -12,32 +12,32 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2017
 ms.author: jcline
-ms.openlocfilehash: b104609c05d1613e21acc7d7bed547f311179151
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7175ffc8de2c043593d61143b402484d33e4a8cc
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="create-an-azure-iot-edge-module-with-cx23"></a>Vytvořte modul Azure IoT Edge s C & #x23;
 
-V tomto kurzu umožňující prezentovat jak toocreate a modul pro `Azure IoT Edge` pomocí `Visual Studio Code` a `C#`.
+V tomto kurzu umožňující prezentovat vytvoření modulu pro `Azure IoT Edge` pomocí `Visual Studio Code` a `C#`.
 
-V tomto kurzu jsme provede procesem nastavení prostředí a jak toowrite [lit](https://en.wikipedia.org/wiki/Bluetooth_Low_Energy) dat převaděč modulu pomocí nejnovější hello `Azure IoT Edge NuGet` balíčky. 
+V tomto kurzu jsme provede procesem nastavení prostředí a jak napsat [lit](https://en.wikipedia.org/wiki/Bluetooth_Low_Energy) modulu převaděč data pomocí poslední `Azure IoT Edge NuGet` balíčky. 
 
 >[!NOTE]
-Tento kurz používá hello `.NET Core SDK`, který podporuje mezi různými platformami. Hello následující kurz je napsán pomocí hello `Windows 10` operačního systému. Některé příkazy hello v tomto kurzu se můžou lišit v závislosti na vaší `development environment`. 
+Tento kurz používá `.NET Core SDK`, který podporuje mezi různými platformami. Následující kurz je napsán pomocí `Windows 10` operačního systému. Některé příkazy v tomto kurzu se můžou lišit v závislosti na vaší `development environment`. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-V této části jsme nastavení prostředí pro `Azure IoT Edge` vývoj modulu. Platí tooboth **64bitová verze Windows** a **64-bit Linux (8 Ubuntu/Debian)** operační systémy.
+V této části jsme nastavení prostředí pro `Azure IoT Edge` vývoj modulu. Platí pro obě **64bitová verze Windows** a **64-bit Linux (8 Ubuntu/Debian)** operační systémy.
 
-je potřeba Hello následující software:
+Je vyžadován následující software:
 
 - [Git klienta](https://git-scm.com/downloads)
 - [Sada .NET Core SDK](https://www.microsoft.com/net/core#windowscmd)
 - [Visual Studio Code](https://code.visualstudio.com/)
 
-Tato ukázka nepotřebujete tooclone hello úložiště, ale všechny hello ukázkový kód, které jsou popsané v tomto kurzu se nachází v hello následující úložiště:
+Není potřeba naklonujte úložiště pro tuto ukázku, ale všechny ukázkový kód popsané v tomto kurzu se nachází v úložišti následující:
 
 - `git clone https://github.com/Azure-Samples/iot-edge-samples.git`.
 - `cd iot-edge-samples/dotnetcore/simulated_ble`
@@ -45,24 +45,24 @@ Tato ukázka nepotřebujete tooclone hello úložiště, ale všechny hello uká
 ## <a name="getting-started"></a>Začínáme
 
 1. Nainstalujte `.NET Core SDK`.
-2. Nainstalujte `Visual Studio Code` a hello `C# extension` z hello Visual Studio Code Marketplace.
+2. Nainstalujte `Visual Studio Code` a `C# extension` v sadě Visual Studio Marketplace kódu.
 
-Zobrazit [rychlý kurz video](https://channel9.msdn.com/Blogs/dotnet/Get-started-VSCode-Csharp-NET-Core-Windows) o tom, jak začít tooget pomocí `Visual Studio Code` a hello `.NET Core SDK`.
+Zobrazit [rychlý kurz video](https://channel9.msdn.com/Blogs/dotnet/Get-started-VSCode-Csharp-NET-Core-Windows) o tom, jak začít používat `Visual Studio Code` a `.NET Core SDK`.
 
-## <a name="creating-hello-azure-iot-edge-converter-module"></a>Vytváření modulu převaděč Azure IoT Edge hello
+## <a name="creating-the-azure-iot-edge-converter-module"></a>Vytváření modulu převaděč Azure IoT Edge
 
 1. Inicializace novou `.NET Core` projektu knihovny jazyka C# – třída:
     - Otevřete příkazový řádek (`Windows + R` -> `cmd` -> `enter`).
-    - Přejděte toohello složku, kam chcete toocreate hello `C#` projektu.
+    - Přejděte do složky, kde chcete vytvořit `C#` projektu.
     - Typ **dotnet nové classlib -o IoTEdgeConverterModule -f netstandard1.3**. 
     - Tento příkaz vytvoří prázdný třídu s názvem `Class1.cs` ve vašem adresáři projektů.
-2. Přejděte toohello složku, kde jsme právě vytvořili projektu knihovny tříd hello zadáním **cd IoTEdgeConverterModule**.
-3. Hello otevřete projekt v `Visual Studio Code` zadáním **kód.**.
-4. Po otevření projektu hello v `Visual Studio Code`, klikněte na hello **IoTEdgeConverterModule.csproj** tooopen hello souboru, jak ukazuje následující obrázek hello:
+2. Přejděte do složky, kde právě vytvořený projektu knihovny tříd zadáním **cd IoTEdgeConverterModule**.
+3. Otevřete projekt ve `Visual Studio Code` zadáním **kód.**.
+4. Po otevření projektu v `Visual Studio Code`, klikněte na **IoTEdgeConverterModule.csproj** k otevření souboru, jak je znázorněno na následujícím obrázku:
 
     ![Visual Studio Code okno úprav.](media/iot-hub-iot-edge-create-module/vscode-edit-csproj.png)
 
-5. Vložit hello `XML` blob uvedené v následující fragment kódu mezi hello uzavírací hello `PropertyGroup` značky a hello zavřením `Project` značky; řádek šest v hello předcházející bitové kopie a uložte soubor hello stisknutím `Ctrl`  +  `S`.
+5. Vložit `XML` blob uvedené v následující fragment kódu mezi ukončovací `PropertyGroup` značky a zavření `Project` značky; řádek šest na předchozím obrázku a uložte soubor stisknutím `Ctrl`  +  `S`.
 
    ```xml
      <ItemGroup>
@@ -72,29 +72,29 @@ Zobrazit [rychlý kurz video](https://channel9.msdn.com/Blogs/dotnet/Get-started
      </ItemGroup> 
    ```
 
-6. Po uložení hello `.csproj` souboru `Visual Studio Code` by se zobrazit výzva s `unresolved dependencies` dialogové okno, jak je vidět v hello následující bitové kopie: 
+6. Po uložení `.csproj` souboru `Visual Studio Code` by se zobrazit výzva s `unresolved dependencies` dialogové okno, jak je vidět na následujícím obrázku: 
 
     ![Visual Studio Code obnovení závislosti dialogové okno](media/iot-hub-iot-edge-create-module/vscode-restore.png)
 
-    a) klikněte na tlačítko `Restore` toorestore všechny hello odkazuje v projektech hello `.csproj` souboru včetně hello `PackageReferences` jsme přidali. 
+    (a) klikněte na tlačítko `Restore` chcete obnovit všechny odkazy v projektech `.csproj` včetně souborů `PackageReferences` jsme přidali. 
 
-    b) `Visual Studio Code` automaticky vytvoří hello `project.assets.json` soubor ve vašich projektů `obj` složky. Tento soubor obsahuje informace o projektu na závislosti toomake následné obnovení rychlejší.
+    b) `Visual Studio Code` automaticky vytvoří `project.assets.json` soubor ve vašich projektů `obj` složky. Tento soubor obsahuje informace o závislostech vašeho projektu aby následné obnovení rychlejší.
  
     >[!NOTE]
     `.NET Core Tools`jsou nyní využívající MSBuild. To znamená `.csproj` místo k vytvoření souboru projektu `project.json`.
 
-    - Pokud `Visual Studio Code` nezobrazuje výzvy k zadání, který je v pořádku, jsme můžete provést ručně. Otevřete hello `Visual Studio Code` integrované okno terminálu pomocí klávesy hello `Ctrl`  +  `backtick` klíče nebo pomocí nabídky hello `View`  ->  `Integrated Terminal`.
-    - V hello `Integrated Terminal` okno – typ **dotnet obnovení**.
+    - Pokud `Visual Studio Code` nezobrazuje výzvy k zadání, který je v pořádku, jsme můžete provést ručně. Otevřete `Visual Studio Code` integrované okno terminálu stisknutím `Ctrl`  +  `backtick` klíčů nebo používat nabídky `View`  ->  `Integrated Terminal`.
+    - V `Integrated Terminal` okno – typ **dotnet obnovení**.
     
-7. Přejmenujte hello `Class1.cs` souboru příliš`BleConverterModule.cs`. 
+7. Přejmenujte `Class1.cs` do souboru `BleConverterModule.cs`. 
 
-    a) soubor hello toorename nejprve klikněte na soubor hello stiskněte klávesu hello `F2` klíč.
+    (a) Chcete-li přejmenovat soubor nejdřív kliknutím na soubor stiskněte `F2` klíč.
     
-    b) zadejte nový název hello **BleConverterModule**, jak je vidět v hello následující bitové kopie:
+    b) zadejte nový název **BleConverterModule**, jak je vidět na následujícím obrázku:
 
     ![Visual Studio Code přejmenování třídy](media/iot-hub-iot-edge-create-module/vscode-rename.png)
 
-8. Nahradit existující kód hello v hello `BleConverterModule.cs` souboru tak, že kopírování a vkládání hello následující fragment kódu do vaší `BleConverterModule.cs` souboru.
+8. Nahraďte stávající kód v `BleConverterModule.cs` souboru zkopírováním a vložením následující fragment kódu do vaší `BleConverterModule.cs` souboru.
 
    ```csharp
    using System;
@@ -151,13 +151,13 @@ Zobrazit [rychlý kurz video](https://channel9.msdn.com/Blogs/dotnet/Get-started
    }
    ```
 
-9. Uložte soubor hello stisknutím `Ctrl`  +  `S`.
+9. Uložte soubor stisknutím `Ctrl`  +  `S`.
 
-10. Vytvořte nový soubor s názvem `Untitled-1` pomocí klávesy hello `Ctrl`  +  `N` klíče, jak je vidět v hello následující bitové kopie:
+10. Vytvořte nový soubor s názvem `Untitled-1` stisknutím `Ctrl`  +  `N` klíče, jak je vidět na následujícím obrázku:
 
     ![Visual Studio Code nový soubor](media/iot-hub-iot-edge-create-module/vscode-new-file.png)
 
-11. toodeserialize hello `JSON` objekt, který jsme obdrželi od hello simulated `BLE` zařízení, kopie hello následující kód do hello `Untitled-1` okno editoru kódu souboru. 
+11. K deserializaci `JSON` objekt, který jsme obdrželi od simulované `BLE` zařízení, zkopírujte následující kód do `Untitled-1` okno editoru kódu souboru. 
 
    ```csharp
    using System;
@@ -173,14 +173,14 @@ Zobrazit [rychlý kurz video](https://channel9.msdn.com/Blogs/dotnet/Get-started
    }
    ```
 
-12. Uložte soubor hello jako `BleData.cs` stisknutím `Ctrl`  +  `Shift`  +  `S` klíče.
-    - Na hello uložit jako dialogové okno, v hello `Save as Type` rozevírací nabídce vyberte `C# (*.cs;*.csx)` jak je vidět v hello následující bitové kopie:
+12. Uložte soubor jako `BleData.cs` stisknutím `Ctrl`  +  `Shift`  +  `S` klíče.
+    - Na Uložit jako dialogové okno v `Save as Type` rozevírací nabídce vyberte `C# (*.cs;*.csx)` jak je vidět na následujícím obrázku:
 
     ![Visual Studio Code uložit jako dialogové okno](media/iot-hub-iot-edge-create-module/vscode-save-as.png)
 
-13. Vytvořte nový soubor s názvem `Untitled-1` pomocí klávesy hello `Ctrl`  +  `N` klíče.
+13. Vytvořte nový soubor s názvem `Untitled-1` stisknutím `Ctrl`  +  `N` klíče.
 
-14. Zkopírujte a vložte následující fragment kódu do hello hello `Untitled-1` souboru. Tato třída je `Azure IoT Edge` modul, který používáme toooutput hello data přijatá z našich `BleConverterModule`.
+14. Zkopírujte a vložte následující fragment kódu do `Untitled-1` souboru. Tato třída je `Azure IoT Edge` modul, který používáme k vypsání data přijatá z našich `BleConverterModule`.
 
    ```csharp
    using System;
@@ -233,12 +233,12 @@ Zobrazit [rychlý kurz video](https://channel9.msdn.com/Blogs/dotnet/Get-started
    }
    ```
 
-15. Uložte soubor hello jako `DotNetPrinterModule.cs` stisknutím `Ctrl`  +  `Shift`  +  `S`.
-    - Na hello uložit jako dialogové okno, v hello `Save as Type` rozevírací nabídce vyberte `C# (*.cs;*.csx)`.
+15. Uložte soubor jako `DotNetPrinterModule.cs` stisknutím `Ctrl`  +  `Shift`  +  `S`.
+    - Na Uložit jako dialogové okno v `Save as Type` rozevírací nabídce vyberte `C# (*.cs;*.csx)`.
 
-16. Vytvořte nový soubor s názvem `Untitled-1` pomocí klávesy hello `Ctrl`  +  `N` klíče.
+16. Vytvořte nový soubor s názvem `Untitled-1` stisknutím `Ctrl`  +  `N` klíče.
 
-17. toodeserialize hello `JSON` objekt, který jsme obdrželi od hello `BleConverterModule`, kopírování a vložení hello následující fragment kódu do hello `Untitled-1` souboru. 
+17. K deserializaci `JSON` objekt, který jsme obdrželi od `BleConverterModule`, kopírování a vkládání následující fragment kódu do kódu `Untitled-1` souboru. 
 
    ```csharp
    using System;
@@ -260,12 +260,12 @@ Zobrazit [rychlý kurz video](https://channel9.msdn.com/Blogs/dotnet/Get-started
    }
    ```
 
-18. Uložte soubor hello jako `BleConverterData.cs` stisknutím `Ctrl`  +  `Shift`  +  `S`.
-    - Na hello uložit jako dialogové okno, v hello `Save as Type` rozevírací nabídce vyberte `C# (*.cs;*.csx)`.
+18. Uložte soubor jako `BleConverterData.cs` stisknutím `Ctrl`  +  `Shift`  +  `S`.
+    - Na Uložit jako dialogové okno v `Save as Type` rozevírací nabídce vyberte `C# (*.cs;*.csx)`.
 
-19. Vytvořte nový soubor s názvem `Untitled-1` pomocí klávesy hello `Ctrl`  +  `N` klíče.
+19. Vytvořte nový soubor s názvem `Untitled-1` stisknutím `Ctrl`  +  `N` klíče.
 
-20. Zkopírujte a vložte následující fragment kódu do hello hello `Untitled-1` souboru.
+20. Zkopírujte a vložte následující fragment kódu do `Untitled-1` souboru.
 
    ```json
    {
@@ -328,10 +328,10 @@ Zobrazit [rychlý kurz video](https://channel9.msdn.com/Blogs/dotnet/Get-started
    }
    ```
 
-21. Uložte soubor hello jako `gw-config.json` stisknutím `Ctrl`  +  `Shift`  +  `S`.
-    - Na hello uložit jako dialogové okno, v hello `Save as Type` rozevírací nabídce vyberte `JSON (*.json;*.bowerrc;*.jshintrc;*.jscsrc;*.eslintrc;*.babelrc;*webmanifest)`.
+21. Uložte soubor jako `gw-config.json` stisknutím `Ctrl`  +  `Shift`  +  `S`.
+    - Na Uložit jako dialogové okno v `Save as Type` rozevírací nabídce vyberte `JSON (*.json;*.bowerrc;*.jshintrc;*.jscsrc;*.eslintrc;*.babelrc;*webmanifest)`.
 
-22. tooenable kopírování hello konfigurační soubor toohello výstupní adresář, aktualizace hello `IoTEdgeConverterModule.csproj` s hello následující XML blob:
+22. Povolit kopírování konfiguračního souboru do výstupního adresáře, aktualizovat `IoTEdgeConverterModule.csproj` s objektem blob následující XML:
 
    ```xml
      <ItemGroup>
@@ -339,13 +339,13 @@ Zobrazit [rychlý kurz video](https://channel9.msdn.com/Blogs/dotnet/Get-started
      </ItemGroup>
    ```
     
-   - Hello aktualizovat `IoTEdgeConverterModule.csproj` by měl vypadají hello následující bitové kopie:
+   - Aktualizovaný `IoTEdgeConverterModule.csproj` by měl vypadat jako na následujícím obrázku:
 
     ![Visual Studio Code aktualizovat souboru .csproj](media/iot-hub-iot-edge-create-module/vscode-update-csproj.png)
 
-23. Vytvořte nový soubor s názvem `Untitled-1` pomocí klávesy hello `Ctrl`  +  `N` klíče.
+23. Vytvořte nový soubor s názvem `Untitled-1` stisknutím `Ctrl`  +  `N` klíče.
 
-24. Zkopírujte a vložte následující fragment kódu do hello hello `Untitled-1` souboru.
+24. Zkopírujte a vložte následující fragment kódu do `Untitled-1` souboru.
 
    ```powershell
    Copy-Item -Path $env:userprofile\.nuget\packages\microsoft.azure.devices.gateway.native.windows.x64\1.1.3\runtimes\win-x64\native\* -Destination .\bin\Debug\netstandard1.3
@@ -357,32 +357,32 @@ Zobrazit [rychlý kurz video](https://channel9.msdn.com/Blogs/dotnet/Get-started
    Copy-Item -Path $env:userprofile\.nuget\packages\system.collections.specialized\4.3.0\lib\netstandard1.3\* -Destination .\bin\Debug\netstandard1.3
    ```
 
-25. Uložte soubor hello jako `binplace.ps1` stisknutím `Ctrl`  +  `Shift`  +  `S`.
-    - Na hello uložit jako dialogové okno, v hello `Save as Type` rozevírací nabídce vyberte `PowerShell (*.ps1;*.psm1;*.psd1;*.pssc;*.psrc)`.
+25. Uložte soubor jako `binplace.ps1` stisknutím `Ctrl`  +  `Shift`  +  `S`.
+    - Na Uložit jako dialogové okno v `Save as Type` rozevírací nabídce vyberte `PowerShell (*.ps1;*.psm1;*.psd1;*.pssc;*.psrc)`.
 
-26. Sestavení projektu hello pomocí klávesy hello `Ctrl`  +  `Shift`  +  `B` klíče. Když vytváříte projekt hello pro hello poprvé, `Visual Studio Code` vyzve vás s hello `No build task defined.` dialogové okno, jak je vidět v hello následující bitové kopie:
+26. Sestavení projektu stisknutím `Ctrl`  +  `Shift`  +  `B` klíče. Při sestavování projektu poprvé, `Visual Studio Code` vyzve vás s `No build task defined.` dialogové okno, jak je vidět na následujícím obrázku:
 
     ![Dialogové okno úloha sestavení Visual Studio Code](media/iot-hub-iot-edge-create-module/vscode-build-task.png)
 
-    (a) klikněte na tlačítko hello `Configure Build Task` tlačítko.
+    a) klikněte na tlačítko `Configure Build Task` tlačítko.
 
-    b) v hello `Select a Task Runner` dialogové okno rozevírací nabídce. Vyberte `.NET Core` jak je vidět v hello následující bitové kopie: 
+    b) v `Select a Task Runner` dialogové okno rozevírací nabídce. Vyberte `.NET Core` jak je vidět na následujícím obrázku: 
 
     ![Visual Studio Code vyberte dialogové okno úloha](media/iot-hub-iot-edge-create-module/vscode-build-task-runner.png)
 
-    hello c) kliknutím `.NET Core` položky vytvoří hello `tasks.json` ve vaší `.vscode` adresář a otevře se okno hello souboru v hello `code editor` okno. Neexistuje žádné toomodify nutné tento soubor zavřít hello karta.
+    c) kliknutím `.NET Core` vytvoří položku `tasks.json` ve vaší `.vscode` adresáře a otevře soubor v `code editor` okno. Není potřeba pro úpravu tohoto souboru, zavřete kartu.
 
-27.  Otevřete hello `Visual Studio Code` integrované okno terminálu pomocí klávesy hello `Ctrl`  +  `backtick` klíče nebo pomocí nabídky hello `View`  ->  `Integrated Terminal` a typ **.\binplace.ps1**do hello `PowerShell` příkazového řádku. Tento příkaz zkopíruje všechny naše závislosti toohello výstupního adresáře.
+27.  Otevřete `Visual Studio Code` integrované okno terminálu stisknutím `Ctrl`  +  `backtick` klíčů nebo používat nabídky `View`  ->  `Integrated Terminal` a typ **.\binplace.ps1** na `PowerShell` příkazového řádku. Tento příkaz zkopíruje všechny naše závislosti do výstupního adresáře.
 
-28. Přejděte toohello projekty výstupního adresáře v hello `Integrated Terminal` okno zadáním **cd.\bin\Debug\netstandard1.3**.
+28. Přejděte do výstupního adresáře projektů v `Integrated Terminal` okno zadáním **cd.\bin\Debug\netstandard1.3**.
 
-29. Spustit ukázkový projekt hello zadáním **. \gw.exe gw-config.json** do hello `Integrated Terminal` okno řádku. 
-    - Pokud jste postupovali podle kroků hello v tomto kurzu úzce, zda nyní je spuštěna hello `Azure IoT Edge BLE Data Converter Module` ukázkový projekt, jak je vidět v hello následující bitové kopie:
+29. Spustit ukázkový projekt zadáním **. \gw.exe gw-config.json** do `Integrated Terminal` okno řádku. 
+    - Pokud jste postupovali podle kroků v tomto kurzu úzce, zda nyní je spuštěna `Azure IoT Edge BLE Data Converter Module` ukázkový projekt, jak je vidět na následujícím obrázku:
     
         ![Příklad Simulovaná zařízení spuštěná v kódu Visual Studio](media/iot-hub-iot-edge-create-module/vscode-run.png)
     
-    - Pokud chcete aplikace hello tooterminate, stiskněte klávesu hello `<Enter>` klíč.
+    - Pokud chcete aplikaci ukončit, stiskněte `<Enter>` klíč.
 
 >[!IMPORTANT]
-Není doporučeno toouse `Ctrl`  +  `C` tooterminate hello `IoT Edge` brány aplikace (tedy **gw.exe**). Protože tato akce může způsobit hello proces tooterminate neobvyklým způsobem.
+Nedoporučuje se používat `Ctrl`  +  `C` ukončit `IoT Edge` brány aplikace (tedy **gw.exe**). Protože tato akce může způsobit neobvyklým způsobem ukončení procesu.
 

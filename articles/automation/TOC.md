@@ -5,6 +5,7 @@
 ## Kurz k runbookům
 ### [Vytvoření grafického runbooku](automation-first-runbook-graphical.md)
 ### [Vytvoření powershellového runbooku](automation-first-runbook-textual-powershell.md)
+### [Můj první runbook Pythonu](automation-first-runbook-textual-python2.md)
 ### [Vytvoření runbooku pracovního postupu PowerShellu](automation-first-runbook-textual.md)
 # Postup
 ## Ověřování a zabezpečení
@@ -34,17 +35,21 @@
 ### [Nastavení runbooku](automation-runbook-settings.md)
 ### [Správa dat Azure Automation](automation-managing-data.md)
 ### [Volání runbooku Azure Automation z upozornění Log Analytics](automation-invoke-runbook-from-omsla-alert.md)
-### [Předat Azure Automation runbook tooan objekt JSON](automation-pass-json-string.md)
+### [Předání objektu JSON do runbooku Azure Automation](automation-pass-json-string.md)
 ## Hybrid Runbook Worker
 ### [Nasazení funkce Hybrid Runbook Worker](automation-hybrid-runbook-worker.md)
+### [Funkce Hybrid Runbook Worker služby Azure Automation ve Windows](automation-windows-hrw-install.md)
+### [Funkce Hybrid Runbook Worker služby Azure Automation v Linuxu](automation-linux-hrw-install.md)
 ### [Spouštění runbooků v pracovním procesu](automation-hrw-run-runbooks.md)
+### [Odebrání funkce Hybrid Runbook Worker služby Azure Automation](automation-remove-hrw.md)
 ## Nasazení správy konfigurace (DSC)
 ### [Přehled konfigurace požadovaného stavu (DSC)](automation-dsc-overview.md)
 ### [Začínáme](automation-dsc-getting-started.md)
+### [Konfigurace serverů do požadovaného stavu a správa odchylek s využitím Azure Automation](tutorial-configure-servers-desired-state.md)
 ### [Připojování počítačů pro správu](automation-dsc-onboarding.md)
 ### [Kompilace konfigurací DSC](automation-dsc-compile.md)
 ### [Nepřetržité nasazování pomocí Chocolatey](automation-dsc-cd-chocolatey.md)
-### [Předávání sestav dat tooOMS analýzy protokolů Azure Automation DSC.](automation-dsc-diagnostics.md)
+### [Předání dat sestav Azure Automation DSC do služby OMS Log Analytics](automation-dsc-diagnostics.md)
 ## Správa prostředků
 ### [Certifikáty](automation-certificates.md)
 ### [Připojení](automation-connections.md)
@@ -64,11 +69,15 @@
 ### [Volání runbooku Azure Automation z upozornění Log Analytics](automation-invoke-runbook-from-omsla-alert.md)
 ### [Nasazení šablony Azure Resource Manageru v powershellového runbooku Azure Automation](automation-deploy-template-runbook.md)
 ## Řešení
-### [Sledování změn](../log-analytics/log-analytics-change-tracking.md)
 ### [Správa aktualizací](../operations-management-suite/oms-solution-update-management.md)
+#### [Správa aktualizací pro několik virtuálních počítačů](manage-update-multi.md)
+#### [Integrace SCCMr s OMS Update Managementem](oms-solution-updatemgmt-sccmintegration.md)
+### [Sledování změn](../log-analytics/log-analytics-change-tracking.md)
+### [Sledování změn ve vašich virtuálních počítačích](automation-vm-change-tracking.md)
+### [Správa virtuálního počítače se shromažďování dat pro inventarizaci](automation-vm-inventory.md)
 ### [Spuštění/zastavení virtuálních počítačů mimo špičku](automation-solution-vm-management.md)
 ## Monitorování
-### [Předávání tooLog data úlohy automatizace Azure Analytics](automation-manage-send-joblogs-log-analytics.md)
+### [Předávání dat úloh Azure Automation do Log Analytics](automation-manage-send-joblogs-log-analytics.md)
 ### [Zrušení propojení účtu Azure Automation s Log Analytics](automation-unlink-from-log-analytics.md)
 ## Migrace
 ### [Migrace z Orchestratoru](automation-orchestrator-migration.md)
@@ -77,8 +86,8 @@
 ### [Odstraňování běžných chyb](automation-troubleshooting-automation-errors.md)
 ### [Řešení potíží s funkcí Hybrid Runbook Worker](automation-troubleshooting-hybrid-runbook-worker.md)
 # Referenční informace
-## [PowerShell](/powershell/module/azurerm.automation)
-## [PowerShell (Classic)](/powershell/module/azure/?view=azuresmps-3.7.0)
+## [Azure PowerShell](/powershell/module/azurerm.automation)
+## [Azure PowerShell (Classic)](/powershell/module/azure/?view=azuresmps-3.7.0)
 ## [.NET](/dotnet/api/microsoft.azure.management.automation)
 ## [REST](/rest/api/automation)
 ## [REST (Classic)](https://msdn.microsoft.com/library/azure/mt163781)

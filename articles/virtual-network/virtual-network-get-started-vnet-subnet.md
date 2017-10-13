@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate vaše první Azure virtuální sítě | Microsoft Docs"
-description: "Zjistěte, jak toocreate virtuální síť Azure (VNet), připojení dvě virtuální počítače (VM) toohello virtuální sítě a připojení toohello virtuálních počítačů."
+title: "Vytvoření první virtuální sítě Azure | Dokumentace Microsoftu"
+description: "Zjistěte, jak vytvořit virtuální síť Azure, připojit k ní dva virtuální počítače, a jak se k těmto virtuálním počítačům připojit."
 services: virtual-network
 documentationcenter: 
 author: jimdial
@@ -15,79 +15,79 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2016
 ms.author: jdial
-ms.openlocfilehash: 1981524cf706d5ebc83b1ff77735617550ff058a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: e653764d7cb514d50b44fadd0cc5963dd404d99e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-your-first-virtual-network"></a>Vytvoření první virtuální sítě
 
-Zjistěte, jak toocreate virtuální síť (VNet) se dvěma podsítěmi, vytvořte dva virtuální počítače (VM) a připojení každého virtuálního počítače tooone hello podsítí, jak je znázorněno v následujícím obrázku hello:
+Zjistěte, jak vytvořit virtuální síť se dvěma podsítěmi a jak vytvořit dva virtuální počítače a oba připojit k jedné z podsítí, jak je znázorněno na následujícím obrázku:
 
 ![Diagram virtuální sítě](./media/virtual-network-get-started-vnet-subnet/vnet-diagram.png)
 
-Virtuální sítě Azure (VNet) je reprezentace vlastní sítě v cloudu hello. Můžete ovládat své sítě Azure a určovat bloky adres DHCP, nastavení DNS, zásady zabezpečení a směrování. Další informace o virtuální síť koncepty, přečtěte si hello toolearn [Přehled virtuálních sítí](virtual-networks-overview.md) článku. Proveďte následující kroky toocreate hello prostředky vidět na obrázku hello hello:
+Virtuální síť Azure je reprezentace vaší vlastní sítě v cloudu. Můžete ovládat své sítě Azure a určovat bloky adres DHCP, nastavení DNS, zásady zabezpečení a směrování. Další informace o konceptech virtuálních sítí najdete v článku [Přehled virtuálních sítí](virtual-networks-overview.md). Provedením následujících kroků vytvoříte prostředky uvedené na obrázku:
 
 1. [Vytvoření virtuální sítě se dvěma podsítěmi](#create-vnet)
-2. [Vytvořte dva virtuální počítače, každý s jedním síťovým rozhraním (NIC)](#create-vms)a přidružte tooeach (NSG) skupiny zabezpečení sítě síťový adaptér
-3. [Připojit tooand z hello virtuální počítače](#connect-to-from-vms)
-4. [Odstranění všech prostředků](#delete-resources). Pro některé prostředky hello vytvořené v tomto cvičení, při jejich jste zřízený platit poplatky. poplatky za hello toominimize po dokončení hello cvičení, ujistěte se, že toocomplete hello kroky v této části toodelete hello prostředky, které vytvoříte.
+2. [Vytvoření dvou virtuálních počítačů, každý s jedním síťovým rozhraním](#create-vms), a přidružení skupiny zabezpečení sítě (NSG) ke každému síťovému rozhraní
+3. [Připojení k virtuálním počítačům a z virtuálních počítačů](#connect-to-from-vms)
+4. [Odstranění všech prostředků](#delete-resources). Za poskytnutí některých prostředků, které v tomto cvičení vytvoříte, se vám budou účtovat poplatky. Abyste tyto poplatky minimalizovali, po dokončení cvičení nezapomeňte dokončit postup v této části, kterým odstraníte vytvořené prostředky.
 
-Budete mít základní znalosti o tom, jak můžete použít virtuální síť po dokončuje hello kroky v tomto článku. Další kroky jsou uvedeny tak další informace o toouse virtuální sítě na podrobnější úrovni.
+Po dokončení kroků v tomto článku získáte základní znalosti o používání virtuálních sítí. K dispozici jsou i další kroky, které vám pomůžou k hlubšímu porozumění virtuálním sítím.
 
 ## <a name="create-vnet"></a>Vytvoření virtuální sítě se dvěma podsítěmi
 
-toocreate virtuální síť se dvěma podsítěmi, dokončení hello kroky, které provést. Jiné podsítě jsou obvykle používá toocontrol hello tok přenosů dat mezi podsítěmi.
+Pokud chcete vytvořit virtuální síť se dvěma podsítěmi, dokončete následující kroky. Různé podsítě se obvykle používají k řízení toku přenosů mezi podsítěmi.
 
-1. Přihlaste se toohello [portál Azure](<https://portal.azure.com>). Pokud ještě účet nemáte, můžete si zaregistrovat [zkušební verzi na měsíc zdarma](https://azure.microsoft.com/free). 
-2. V hello **Oblíbené** podokně hello portálu, klikněte na tlačítko **nový**.
-3. V hello **nový** okně klikněte na tlačítko **sítě**. V hello **sítě** okně klikněte na tlačítko **virtuální síť**, jak ukazuje následující obrázek hello:
+1. Přihlaste se k [portálu Azure](<https://portal.azure.com>). Pokud ještě účet nemáte, můžete si zaregistrovat [zkušební verzi na měsíc zdarma](https://azure.microsoft.com/free). 
+2. V podokně portálu **Oblíbené** klikněte na **Nový**.
+3. V okně **Nový** klikněte na **Sítě**. V okně **Sítě** klikněte na **Virtuální síť**, jak je znázorněno na následujícím obrázku:
 
     ![Diagram virtuální sítě](./media/virtual-network-get-started-vnet-subnet/virtual-network.png)
 
-4.  V hello **virtuální síť** okno, ponechejte *Resource Manager* vybrán jako model nasazení hello a klikněte na **vytvořit**.
-5.  V hello **okno vytvořit virtuální síť** které se zobrazí, zadejte následující hodnoty hello a pak klikněte na tlačítko **vytvořit**:
+4.  V okně **Virtuální síť** ponechte vybraný *Resource Manager* jako model nasazení a klikněte na **Vytvořit**.
+5.  V okně **Vytvořit virtuální síť**, které se zobrazí, zadejte následující hodnoty a potom klikněte na **Vytvořit**:
 
     |**Nastavení**|**Hodnota**|**Podrobnosti**|
     |---|---|---|
-    |**Název**|*MyVNet*|Název Hello musí být jedinečný v rámci skupiny prostředků hello.|
+    |**Název**|*MyVNet*|Název musí být v rámci skupiny prostředků jedinečný.|
     |**Adresní prostor**|*10.0.0.0/16*|Můžete zadat libovolný adresní prostor v notaci CIDR.|
-    |**Název podsítě**|*Front-end*|název podsítě Hello musí být jedinečný v rámci virtuální sítě hello.|
-    |**Rozsah adres podsítě**|*10.0.0.0/24*| Hello oblast, kterou zadáte, musí existovat v rámci hello adresního prostoru definovaného pro virtuální síť hello.|
-    |**Předplatné**|*[Vaše předplatné]*|Vyberte hello toocreate předplatné virtuální sítě v. Virtuální síť existuje v jednom předplatném.|
-    |**Skupina prostředků**|**Vytvořit novou:***MyRG*|Vytvořte skupinu prostředků. Název skupiny prostředků Hello musí být jedinečný v rámci předplatného hello, který jste vybrali. Další informace o skupinách prostředků, přečtěte si hello toolearn [Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-groups) článek s přehledem.|
-    |**Umístění**|*Západní USA*| Obvykle je vybrána hello umístění, které je nejblíže tooyour fyzické umístění.|
+    |**Název podsítě**|*Front-end*|Název podsítě musí být v rámci virtuální sítě jedinečný.|
+    |**Rozsah adres podsítě**|*10.0.0.0/24*| Zadaný rozsah musí existovat v rámci adresního prostoru, který jste nadefinovali pro virtuální síť.|
+    |**Předplatné**|*[Vaše předplatné]*|Vyberte předplatné, ve kterém se má virtuální síť vytvořit. Virtuální síť existuje v jednom předplatném.|
+    |**Skupina prostředků**|**Vytvořit novou:***MyRG*|Vytvořte skupinu prostředků. Název skupiny prostředků musí být v rámci vybraného předplatného jedinečný. Další informace o skupinách prostředků najdete v článku s přehledem [Resource Manageru](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-groups).|
+    |**Umístění**|*Západní USA*| Obvykle je vybráno umístění co nejblíže vašemu fyzickému umístění.|
 
-    Hello virtuální síť trvá několik sekund toocreate. Jakmile je vytvořen, zobrazí hello Azure řídicí panel portálu.
+    Vytvoření virtuální sítě trvá několik sekund. Jakmile se vytvoří, zobrazí se řídicí panel webu Azure Portal.
 
-6. S hello virtuální sítě vytvořené v hello portál Azure **Oblíbené** podokně klikněte na tlačítko **všechny prostředky**. Klikněte na tlačítko hello **MyVNet** virtuální sítě v hello **všechny prostředky** okno. Pokud jste vybrali, již předplatné hello neobsahuje několik prostředků, můžete zadat *MyVNet* v hello **filtrovat podle názvu...** pole tooeasily přístup hello virtuální sítě.
-7. Hello **MyVNet** okno otevře a zobrazí informace o hello sítě VNet, jak je znázorněno v následujícím obrázku hello:
+6. Když máte vytvořenou virtuální síť, na webu Azure Portal v podokně **Oblíbené** klikněte na **Všechny prostředky**. Klikněte na virtuální síť **MyVNet** v okně **Všechny prostředky**. Pokud předplatné, které jste vybrali, již obsahovalo nějaké prostředky, můžete zadat *MyVNet* do pole **Filtrovat podle názvu...** pro snadný přístup k virtuální síti.
+7. Otevře se okno **MyVNet** s informacemi o virtuální síti, jak je znázorněno na následujícím obrázku:
 
     ![Diagram virtuální sítě](./media/virtual-network-get-started-vnet-subnet/myvnet.png)
 
-8. Jak ukazuje předchozí obrázek hello, klikněte na tlačítko **podsítě** toodisplay seznam hello podsítí v rámci hello virtuální sítě. Hello pouze podsíť, existuje je **Front-end**, hello podsítě, které jste vytvořili v kroku 5.
-9. V hello MyVNet - okno podsítě, klikněte na **+ podsíť** toocreate podsíť s hello následující informace a klikněte na tlačítko **OK** toocreate hello podsítě:
+8. Jak je vidět na předchozím obrázku, kliknutím na **Podsítě** zobrazíte seznam podsítí v rámci virtuální sítě. Jediná existující podsíť je **Front-end** – podsíť, kterou jste vytvořili v kroku 5.
+9. V okně MyVNet – Podsítě kliknutím na **+ Podsíť** vytvořte podsíť s použitím následujících informací, a kliknutím na **OK** podsíť vytvořte:
 
     |**Nastavení**|**Hodnota**|**Podrobnosti**|
     |---|---|---|
-    |**Název**|*Back-end*|Název Hello musí být jedinečný v rámci virtuální sítě hello.|
-    |**Rozsah adres**|*10.0.1.0/24*|Hello oblast, kterou zadáte, musí existovat v rámci hello adresního prostoru definovaného pro virtuální síť hello.|
-    |**Skupina zabezpečení sítě** a **Tabulka směrování**|*Žádný* (výchozí)|Skupinám zabezpečení sítě se věnujeme dále v tomto článku. Další informace o trasy definované uživatelem, přečtěte si hello toolearn [trasy definované uživatelem](virtual-networks-udr-overview.md) článku.|
+    |**Název**|*Back-end*|Název musí být v rámci virtuální sítě jedinečný.|
+    |**Rozsah adres**|*10.0.1.0/24*|Zadaný rozsah musí existovat v rámci adresního prostoru, který jste nadefinovali pro virtuální síť.|
+    |**Skupina zabezpečení sítě** a **Tabulka směrování**|*Žádný* (výchozí)|Skupinám zabezpečení sítě se věnujeme dále v tomto článku. Další informace o trasách definovaných uživatelem najdete v článku [Trasy definované uživatelem](virtual-networks-udr-overview.md).|
 
-10. Po přidání novou podsíť hello toohello virtuální síť, můžete zavřít hello **MyVNet – podsítě** okna a potom zavřete hello **všechny prostředky** okno.
+10. Po přidání nové podsítě do virtuální sítě můžete zavřít okno **MyVNet – Podsítě** a potom zavřete okno **Všechny prostředky**.
 
 ## <a name="create-vms"></a>Vytvoření virtuálních počítačů
 
-Hello virtuální sítě a podsítě vytvořit můžete vytvořit virtuální počítače hello. Pro toto cvičení oba virtuální počítače spustit operační systém Windows Server hello, ale mohou spouštět žádný operační systém nepodporuje v Azure, včetně několik různých distribucí Linux.
+Když máte vytvořenou virtuální síť a podsítě, můžete vytvořit virtuální počítače. Pro toto cvičení bude na obou virtuálních počítačích operační systém Windows Server, ale může na nich být jakýkoli operační systém podporovaný v Azure, a to včetně několika různých linuxových distribucí.
 
-### <a name="create-web-server-vm"></a>Vytvoření hello webový server virtuálního počítače
+### <a name="create-web-server-vm"></a>Vytvoření virtuálního počítače s webovým serverem
 
-toocreate hello webový server virtuální počítač, dokončení hello následující kroky:
+Pokud chcete vytvořit virtuální počítač s webovým serverem, proveďte následující postup:
 
-1. V podokně hello Azure portálu Oblíbené položky, klikněte na **nový**, **výpočetní**, pak **Windows Server 2016 Datacenter**.
-2. V hello **Windows Server 2016 Datacenter** okně klikněte na tlačítko **vytvořit**.
-3. V hello **Základy** okno, které se zobrazí, zadejte nebo vyberte hello následující hodnoty a klikněte na tlačítko **OK**:
+1. V podokně webu Azure Portal Oblíbené klikněte na **Nový**, **Výpočetní prostředky** a potom na **Windows Server 2016 Datacenter**.
+2. V okně **Windows Server 2016 Datacenter** klikněte na **Vytvořit**.
+3. V okně **Základy**, které se zobrazí, zadejte nebo vyberte následující hodnoty a klikněte na **OK**:
 
     |**Nastavení**| **Hodnota**|**Podrobnosti**|
     |---|---|---|
@@ -95,156 +95,156 @@ toocreate hello webový server virtuální počítač, dokončení hello násled
     |**Typ disku virtuálního počítače**|*SSD*|
     |**Uživatelské jméno**|*Nějaké si zvolte*|
     |**Heslo a Potvrzení hesla**|*Nějaké si zvolte*|
-    | **Předplatné**|*<Your subscription>*|Hello odběr, musí být stejné předplatné, které jste vybrali v kroku 5 hello hello [vytvořit virtuální síť se dvěma podsítěmi](#create-vnet) tohoto článku. Hello virtuální síť připojení virtuálních počítačů toomust existovat v hello stejné předplatné jako hello virtuálních počítačů.|
-    |**Skupina prostředků**|**Použít existující:** Vyberte *MyRG*|V případě, že používáme hello stejnou skupinu prostředků, jako jsme to udělali pro hello sítě VNet, hello prostředky nemají tooexist v hello stejnou skupinu prostředků.|
-    |**Umístění**|*Západní USA*|musí být umístění Hello hello stejné umístění, které jste zadali v kroku 5 hello [vytvořit virtuální síť se dvěma podsítěmi](#create-vnet) tohoto článku. Virtuální počítače a hello virtuální sítě se připojují toomust existovat v hello stejné umístění.|
+    | **Předplatné**|*<Your subscription>*|Předplatné musí být stejné jako předplatné, které jste vybrali v kroku 5 části [Vytvoření virtuální sítě se dvěma podsítěmi](#create-vnet) tohoto článku. Virtuální počítač a virtuální síť, ke které virtuální počítač připojíte, musí existovat v rámci stejného předplatného.|
+    |**Skupina prostředků**|**Použít existující:** Vyberte *MyRG*|I když používáme stejnou skupinu prostředků, jakou jsme použili pro virtuální síť, prostředky nemusí existovat ve stejné skupině prostředků.|
+    |**Umístění**|*Západní USA*|Umístění musí být stejné jako umístění, které jste zadali v kroku 5 části [Vytvoření virtuální sítě se dvěma podsítěmi](#create-vnet) tohoto článku. Virtuální počítače a virtuální sítě, ke kterým se připojují, musí existovat ve stejném umístění.|
 
-4. V hello **zvolte velikost** okně klikněte na tlačítko *DS1_V2 standardní*, pak klikněte na tlačítko **vyberte**. Čtení hello [velikosti virtuálních počítačů Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) článku seznam všech velikostí virtuálního počítače s Windows nepodporuje v Azure.
-5. V hello **nastavení** okno, zadejte nebo vyberte hello následující hodnoty a klikněte na tlačítko **OK**:
+4. V okně **Zvolit velikost** klikněte na *DS1_V2 Standard* a pak na **Vybrat**. Seznam všech velikostí virtuálních počítačů s Windows, které Azure podporuje, najdete v článku [Velikosti virtuálních počítačů s Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+5. V okně **Nastavení** zadejte nebo vyberte následující hodnoty a klikněte na **OK**:
 
     |**Nastavení**|**Hodnota**|**Podrobnosti**|
     |---|---|---|
     |**Úložiště: Použít spravované disky**|*Ano*||
-    |**Virtuální síť**| Vyberte *MyVNet*|Můžete vybrat všechny virtuální sítě, který již existuje v hello stejné umístění jako hello virtuálních počítačů, kterou vytváříte. Další informace o virtuální sítě a podsítě, přečtěte si hello toolearn [virtuální síť](virtual-networks-overview.md) článku.|
-    |**Podsíť**|Vyberte *Front-end*|Můžete vybrat všechny podsítě, která existuje v rámci hello virtuální sítě.|
-    |**Veřejná IP adresa**|Přijměte výchozí hello|Veřejná IP adresa umožňuje vám tooconnect toohello virtuálních počítačů z hello Internetu. Další informace o veřejné IP adresy, přečtěte si hello toolearn [IP adresy](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) článku.|
-    |**Skupina zabezpečení sítě (brána firewall)**|Přijměte výchozí hello|Klikněte na tlačítko hello **(Nový) MyWebServer nsg** výchozí NSG hello portál vytvořit tooview jeho nastavení. V hello **vytvořit skupinu zabezpečení sítě** okno, které se otevře, Všimněte si, má jeden příchozí pravidlo, které umožňuje přenos TCP/3389 (RDP) z libovolná Zdrojová IP adresa.|
-    |**Všechny ostatní hodnoty**|Přijměte výchozí hodnoty hello|Další informace o hello zbývající nastavení, přečtěte si hello toolearn [o virtuálních počítačích](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) článku.|
+    |**Virtuální síť**| Vyberte *MyVNet*|Můžete vybrat jakoukoli virtuální síť, která existuje ve stejném umístění jako virtuální počítač, který vytváříte. Další informace o virtuálních sítích a podsítích najdete v článku [Virtuální síť](virtual-networks-overview.md).|
+    |**Podsíť**|Vyberte *Front-end*|Můžete vybrat jakoukoli podsíť, která existuje v rámci vybrané virtuální sítě.|
+    |**Veřejná IP adresa**|Přijměte výchozí hodnotu|Veřejná IP adresa umožňuje připojení k virtuálnímu počítači z internetu. Další informace o veřejných IP adresách najdete v článku [IP adresy](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses).|
+    |**Skupina zabezpečení sítě (brána firewall)**|Přijměte výchozí hodnotu|Klikněte na výchozí skupinu zabezpečení sítě **(nové) MyWebServer-nsg**, kterou portál vytvořil, a zobrazte její nastavení. Otevře se okno **Vytvořit skupinu zabezpečení sítě**. V něm si všimněte, že obsahuje jedno příchozí pravidlo, které umožňuje provoz prostřednictvím protokolu TCP/3389 (RDP) z jakékoli zdrojové IP adresy.|
+    |**Všechny ostatní hodnoty**|Přijměte výchozí hodnoty|Další informace o zbývajících nastaveních najdete v článku [O virtuálních počítačích](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
 
-    Skupiny zabezpečení sítě (NSG) umožňují toocreate příchozí nebo odchozí pravidla pro hello typ síťového provozu, který může obtékat tooand z hello virtuálních počítačů. Ve výchozím nastavení všechny příchozí přenosy toohello virtuálního počítače byl odepřen. Pro produkční webový server můžete přidat další příchozí pravidla pro port TCP/80 (HTTP) a TCP/443 (HTTPS). Pro odchozí provoz žádné pravidlo není, protože ve výchozím nastavení je veškerý odchozí provoz povolen. Je můžete přidat nebo odebrat pravidla toocontrol provoz na vaše zásady. Čtení hello [skupin zabezpečení sítě](virtual-networks-nsg.md) článku toolearn více informací o skupiny Nsg.
+    Skupiny zabezpečení sítě (NSG) umožňují vytvořit příchozí a odchozí pravidla pro typ síťového provozu, který může téct do a z virtuálního počítače. Ve výchozím nastavení je zakázán veškerý příchozí provoz do virtuálního počítače. Pro produkční webový server můžete přidat další příchozí pravidla pro port TCP/80 (HTTP) a TCP/443 (HTTPS). Pro odchozí provoz žádné pravidlo není, protože ve výchozím nastavení je veškerý odchozí provoz povolen. Přidáváním a odebíráním pravidel můžete řídit provoz pro vaše zásady. Další informace o skupinách NSG najdete v tématu [Skupiny zabezpečení sítě](virtual-networks-nsg.md).
 
-6.  V hello **Souhrn** okně zkontrolujte hello nastavení a klikněte na tlačítko **OK** toocreate hello virtuálních počítačů. Dlaždice stav se zobrazí na řídicí panel portálu hello hello, které vytvoří virtuální počítač. Může trvat několik minut toocreate. Toowait není nutné pro něj toocomplete. Můžete pokračovat dalším krokem toohello při hello, které vytvoří virtuální počítač.
+6.  V okně **Souhrn** zkontroluje nastavení a klikněte na **OK**. Vytvoří se virtuální počítač. Jakmile se vytvoří virtuální počítač, na řídicím panelu portálu se zobrazí dlaždice stavu. Vytvoření může trvat několik minut. Nemusíte čekat na dokončení. Můžete pokračovat k dalšímu kroku, zatímco se virtuální počítač vytváří.
 
-### <a name="create-database-server-vm"></a>Vytvoření databáze serveru hello virtuálních počítačů
+### <a name="create-database-server-vm"></a>Vytvoření virtuálního počítače s databázovým serverem
 
-toocreate hello databázový server virtuální počítač, dokončení hello následující kroky:
+Pokud chcete vytvořit virtuální počítač s databázovým serverem, proveďte následující postup:
 
-1.  V podokně hello Oblíbené položky, klikněte na **nový**, **výpočetní**, pak **Windows Server 2016 Datacenter**.
-2.  V hello **Windows Server 2016 Datacenter** okně klikněte na tlačítko **vytvořit**.
-3.  V hello **okno Základy**, zadejte nebo vyberte hello následující hodnoty a potom klikněte na tlačítko **OK**:
+1.  V podokně Oblíbené klikněte na **Nový**, **Výpočetní prostředky** a potom na **Windows Server 2016 Datacenter**.
+2.  V okně **Windows Server 2016 Datacenter** klikněte na **Vytvořit**.
+3.  V okně **Základy** zadejte nebo vyberte následující hodnoty a klikněte na **OK**:
 
     |**Nastavení**|**Hodnota**|**Podrobnosti**|
     |---|---|---|
-    |**Název**|*MyDBServer*|Tento virtuální počítač slouží jako databázový server, který webový server hello připojuje ke službě, že tento hello Internet se nemůže připojit k.|
+    |**Název**|*MyDBServer*|Tento virtuální počítač slouží jako databázový server, ke kterému se připojuje webový server, ale z internetu k němu není přístup.|
     |**Typ disku virtuálního počítače**|*SSD*||
     |**Uživatelské jméno**|Nějaké si zvolte||
     |**Heslo a Potvrzení hesla**|Nějaké si zvolte||
-    |**Předplatné**|<Your subscription>|Hello odběr, musí být stejné předplatné, které jste vybrali v kroku 5 hello hello [vytvořit virtuální síť se dvěma podsítěmi](#create-vnet) tohoto článku.|
-    |**Skupina prostředků**|**Použít existující:** Vyberte *MyRG*|V případě, že používáme hello stejnou skupinu prostředků, jako jsme to udělali pro hello sítě VNet, hello prostředky nemají tooexist v hello stejnou skupinu prostředků.|
-    |**Umístění**|*Západní USA*|musí být umístění Hello hello stejné umístění, které jste zadali v kroku 5 hello [vytvořit virtuální síť se dvěma podsítěmi](#create-vnet) tohoto článku.|
+    |**Předplatné**|<Your subscription>|Předplatné musí být stejné jako předplatné, které jste vybrali v kroku 5 části [Vytvoření virtuální sítě se dvěma podsítěmi](#create-vnet) tohoto článku.|
+    |**Skupina prostředků**|**Použít existující:** Vyberte *MyRG*|I když používáme stejnou skupinu prostředků, jakou jsme použili pro virtuální síť, prostředky nemusí existovat ve stejné skupině prostředků.|
+    |**Umístění**|*Západní USA*|Umístění musí být stejné jako umístění, které jste zadali v kroku 5 části [Vytvoření virtuální sítě se dvěma podsítěmi](#create-vnet) tohoto článku.|
 
-4.  V hello **zvolte velikost** okně klikněte na tlačítko *DS1_V2 standardní*, pak klikněte na tlačítko **vyberte**.
-5.  V hello **nastavení** okno, zadejte nebo vyberte hello následující hodnoty a klikněte na tlačítko **OK**:
+4.  V okně **Zvolit velikost** klikněte na *DS1_V2 Standard* a pak na **Vybrat**.
+5.  V okně **Nastavení** zadejte nebo vyberte následující hodnoty a klikněte na **OK**:
 
     |**Nastavení**|**Hodnota**|**Podrobnosti**|
     |----|----|---|
     |**Úložiště: Použít spravované disky**|*Ano*||
-    |**Virtuální síť**|Vyberte *MyVNet*|Můžete vybrat všechny virtuální sítě, který již existuje v hello stejné umístění jako hello virtuálních počítačů, kterou vytváříte.|
-    |**Podsíť**|Vyberte *Back-end* kliknutím hello **podsíť** pole, pak výběrem **Back-end** z hello **zvolte podsíť** okno|Můžete vybrat všechny podsítě, která existuje v rámci hello virtuální sítě.|
-    |**Veřejná IP adresa**|NONE – klikněte na tlačítko hello výchozí adresu a pak klikněte na **žádné** z hello **zvolte veřejnou IP adresu** okno|Bez veřejnou IP adresu, budete moct připojit jen toohello virtuálního počítače z jiného virtuálního počítače připojené toohello stejnou virtuální síť. Tooit nemůžete se připojit přímo z hello Internetu.|
-    |**Skupina zabezpečení sítě (brána firewall)**|Přijměte výchozí hello| Jako výchozí hello, které skupina NSG vytvořili pro hello MyWebServer virtuální počítač, tato skupina NSG také má hello stejné výchozí příchozí pravidlo. Pro databázový server můžete přidat další příchozí pravidlo pro protokol TCP/1433 (MS SQL). Pro odchozí provoz žádné pravidlo není, protože ve výchozím nastavení je veškerý odchozí provoz povolen. Je můžete přidat nebo odebrat pravidla toocontrol provoz na vaše zásady.|
-    |**Všechny ostatní hodnoty**|Přijměte výchozí hodnoty hello||
+    |**Virtuální síť**|Vyberte *MyVNet*|Můžete vybrat jakoukoli virtuální síť, která existuje ve stejném umístění jako virtuální počítač, který vytváříte.|
+    |**Podsíť**|Vyberte *Back-end* tak, že kliknete na **Podsíť** a potom vyberete **Back-end** v okně **Zvolit podsíť**.|Můžete vybrat jakoukoli podsíť, která existuje v rámci vybrané virtuální sítě.|
+    |**Veřejná IP adresa**|Žádná – Klikněte na výchozí adresu a potom klikněte na **Žádná** v okně **Zvolit veřejnou IP adresu**.|Bez veřejné IP adresy se k virtuálnímu počítači můžete připojit jenom z jiného virtuálního počítače připojeného ke stejné virtuální síti. Nemůžete se k němu připojit přímo z internetu.|
+    |**Skupina zabezpečení sítě (brána firewall)**|Přijměte výchozí hodnotu| Stejně jako výchozí skupina zabezpečení sítě vytvořená pro virtuální počítač MyWebServer, obsahuje i tato skupina zabezpečení sítě ve výchozím nastavení stejné příchozí pravidlo. Pro databázový server můžete přidat další příchozí pravidlo pro protokol TCP/1433 (MS SQL). Pro odchozí provoz žádné pravidlo není, protože ve výchozím nastavení je veškerý odchozí provoz povolen. Přidáváním a odebíráním pravidel můžete řídit provoz pro vaše zásady.|
+    |**Všechny ostatní hodnoty**|Přijměte výchozí hodnoty||
 
-6.  V hello **Souhrn** okně zkontrolujte hello nastavení a klikněte na tlačítko **OK** toocreate hello virtuálních počítačů. Dlaždice stav se zobrazí na řídicí panel portálu hello hello, které vytvoří virtuální počítač. Může trvat několik minut toocreate. Toowait není nutné pro něj toocomplete. Můžete pokračovat dalším krokem toohello při hello, které vytvoří virtuální počítač.
+6.  V okně **Souhrn** zkontroluje nastavení a klikněte na **OK**. Vytvoří se virtuální počítač. Jakmile se vytvoří virtuální počítač, na řídicím panelu portálu se zobrazí dlaždice stavu. Vytvoření může trvat několik minut. Nemusíte čekat na dokončení. Můžete pokračovat k dalšímu kroku, zatímco se virtuální počítač vytváří.
 
 ## <a name="review"></a>Kontrola prostředků
 
-I když jste vytvořili jednu virtuální síť a dva virtuální počítače, hello portál Azure pro můžete vytvořit několik dalších prostředků ve skupině prostředků MyRG hello. Zkontrolujte obsah hello skupiny prostředků MyRG hello provedením hello následující kroky:
+Přestože jste vytvořili jednu virtuální síť a dva virtuální počítače, Azure Portal vytvořil ve skupině prostředků MyRG několik dalších prostředků za vás. Pokud si chcete prohlédnout obsah skupiny prostředků MyRG, proveďte následující kroky:
 
-1. V hello **Oblíbené** podokně klikněte na tlačítko **další služby**.
-2. V hello **další služby** podokně, typ *skupiny prostředků* hello pole, který má aplikace word hello *filtru* v ní. Klikněte na tlačítko **skupiny prostředků** až se zobrazí v hello filtrovaný seznam.
-3. V hello **skupiny prostředků** podokně klikněte na tlačítko hello *MyRG* skupinu prostředků. Pokud máte mnoho existujících skupin prostředků v rámci vašeho předplatného, můžete zadat *MyRG* hello pole, která obsahuje hello text *filtrovat podle názvu...* Skupina tooquickly přístup hello MyRG prostředků.
-4.  V hello **MyRG** okně uvidíte příslušné skupině hello prostředků obsahuje prostředky, 12, jak je znázorněno v následujícím obrázku hello:
+1. V podokně **Oblíbené** klikněte na **Další služby**.
+2. V podokně **Další služby** zadejte *Skupiny prostředků* do pole, které obsahuje slovo *Filtrovat*. Jakmile ve filtrovaném seznamu uvidíte položku **Skupiny prostředků**, klikněte na ni.
+3. V podokně **Skupiny prostředků** klikněte na skupinu prostředků *MyRG*. Pokud ve vašem předplatném existuje mnoho skupin prostředků, můžete zadat *MyRG* do pole, které obsahuje text *Filtrovat podle názvu...* pro rychlý přístup ke skupině prostředků MyRG.
+4.  V okně **MyRG** uvidíte, že skupina prostředků obsahuje 12 prostředků, jak je znázorněno na následujícím obrázku:
 
     ![Obsah skupiny prostředků](./media/virtual-network-get-started-vnet-subnet/resource-group-contents.png)
 
-Další informace o virtuálních počítačů, disků a účty úložiště, přečtěte si hello toolearn [virtuálního počítače](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [disku](../virtual-machines/windows/about-disks-and-vhds.md?toc=%2fazure%2fvirtual-network%2ftoc.json), a [účet úložiště](../storage/common/storage-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) přehled články. Můžete zobrazit hello dvě výchozí skupiny Nsg hello portál vám vytvoří. Můžete také zjistit tohoto portálu hello vytvořit dvě síťové prostředky rozhraní (NIC). Síťový adaptér umožňuje prostředky virtuálních počítačů tooconnect tooother přes hello virtuální sítě. Čtení hello [seskupování](virtual-network-network-interface.md) článku toolearn Další informace o síťových karet. portál Hello také vytvořit jeden prostředek veřejné IP adresy. Veřejné IP adresy jsou jedním z nastavení prostředku veřejné IP adresy. Další informace o veřejné IP adresy, přečtěte si hello toolearn [IP adresy](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) článku.
+Další informace o virtuálních počítačích, discích a účtech úložiště najdete v článcích, které obsahují přehledy [virtuálních počítačů](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [disků](../virtual-machines/windows/about-disks-and-vhds.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a [účtů úložiště](../storage/common/storage-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Vidíte dvě výchozí skupiny zabezpečení sítě, které pro vás portál vytvořil. Vidíte také, že portál vytvořil dva prostředky síťového rozhraní. Síťové rozhraní umožňuje připojení virtuálního počítače k ostatním prostředkům přes virtuální síť. Další informace o síťových rozhraních najdete v článku [Síťová rozhraní](virtual-network-network-interface.md). Portál také vytvořil jeden prostředek veřejné IP adresy. Veřejné IP adresy jsou jedním z nastavení prostředku veřejné IP adresy. Další informace o veřejných IP adresách najdete v článku [IP adresy](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses).
 
-## <a name="connect-to-from-vms"></a>Připojit virtuální počítače toohello
+## <a name="connect-to-from-vms"></a>Připojení k virtuálním počítačům
 
-Virtuální síť a vytvořit dva virtuální počítače můžete teď připojit toohello virtuální počítače pomocí kroků hello v následující části hello:
+Když máte vytvořenou virtuální síť a dva virtuální počítače, můžete se teď připojit k virtuálním počítačům. K tomu slouží postupy v následujících částech:
 
-### <a name="connect-from-internet"></a>Připojit toohello webový server virtuálního počítače z hello Internetu
+### <a name="connect-from-internet"></a>Připojení k virtuálnímu počítači s webovým serverem z internetu
 
-aplikace tooconnect toohello webový server virtuálního počítače z hello Internetu, dokončení hello následující kroky:
+Pokud se chcete připojit k virtuálnímu počítači s webovým serverem přes internet, proveďte následující kroky:
 
-1. Hello portálu, skupinu prostředků MyRG otevřete hello provedením hello kroky hello [zkontrolujte prostředky](#review) tohoto článku.
-2. V hello **MyRG** okně klikněte na tlačítko hello **MyWebServer** virtuálních počítačů.
-3. V hello **MyWebServer** okně klikněte na tlačítko **Connect**, jak ukazuje následující obrázek hello:
+1. Na portálu otevřete skupinu prostředků MyRG podle postupu uvedeného v části [Kontrola prostředků](#review) v tomto článku.
+2. V okně **MyRG** klikněte na virtuální počítač **MyWebServer**.
+3. V okně **MyWebServer** klikněte na **Připojit**, jak je znázorněno na následujícím obrázku:
 
-    ![Připojení serveru tooweb virtuálních počítačů](./media/virtual-network-get-started-vnet-subnet/webserver.png)
+    ![Připojení k virtuálnímu počítači s webovým serverem](./media/virtual-network-get-started-vnet-subnet/webserver.png)
 
-4. Povolit váš prohlížeč toodownload hello *MyWebServer.rdp* souboru a potom ho otevřete.
-5. Pokud se zobrazí, dialogové okno pole informování, můžete tento hello vydavatel hello vzdáleného připojení nelze ověřit, klikněte na tlačítko **Connect**.
-6. Při zadávání přihlašovacích údajů, ujistěte se, přihlásit se hello uživatelské jméno a heslo, které jste zadali v kroku 3 hello [vytvořit hello webový server virtuálního počítače](#create-web-server-vm) tohoto článku. Pokud hello **zabezpečení systému Windows** není pole, které se zobrazí seznam hello správné přihlašovací údaje, bude pravděpodobně nutné tooclick **další možnosti**, pak **použít jiný účet**, tak, aby se Zadejte hello správné uživatelské jméno a heslo). Klikněte na tlačítko **OK** tooconnect toohello virtuálních počítačů.
-7. Pokud se zobrazí **připojení ke vzdálené ploše** pole oznamující, že hello identity hello vzdáleného počítače nelze ověřit, klikněte na tlačítko **Ano**.
-8. Nyní jste připojené toohello MyWebServer virtuálních počítačů z hello Internetu. Ponechte připojení ke vzdálené ploše hello otevřete toocomplete hello kroků v další části hello.
+4. Povolte v prohlížeči stažení souboru *MyWebServer.rdp* a potom ho otevřete.
+5. Pokud se zobrazí dialogové okno s informací o tom, že nelze ověřit vydavatele vzdáleného připojení, klikněte na **Připojit**.
+6. Při zadávání přihlašovacích údajů se ujistěte, že se přihlašujete pomocí uživatelského jména a hesla, které jste zadali v kroku 3 části [Vytvoření virtuálního počítače s webovým serverem](#create-web-server-vm) tohoto článku. Pokud v zobrazeném okně **Zabezpečení systému Windows** nejsou uvedeny správné přihlašovací údaje, možná budete muset kliknout na **Další možnosti** a potom na **Použít jiný účet**, abyste mohli zadat správné uživatelské jméno a heslo. Kliknutím na **OK** se připojte k virtuálnímu počítači.
+7. Pokud se zobrazí okno **Připojení ke vzdálené ploše** s informací, že nelze ověřit identitu vzdáleného počítače, klikněte na **Ano**.
+8. Nyní jste připojeni k virtuálnímu počítači MyWebServer z internetu. Připojení ke vzdálené ploše ponechte otevřené, abyste mohli dokončit kroky v další části.
 
-připojení ke vzdálené Hello je toohello veřejnou IP adresu přiřadit toohello veřejnou IP adresu prostředku hello portál vytvořili v kroku 5 hello [vytvořit virtuální síť se dvěma podsítěmi](#create-vnet) tohoto článku. Hello připojení povoleno, protože hello výchozí pravidlo vytvořeny v hello **MyWebServer nsg** NSG povolené TCP/3389 (RDP) příchozí toohello virtuálních počítačů z libovolná Zdrojová IP adresa. Pokud se pokusíte tooconnect toohello virtuálních počítačů přes jiný port, hello připojení selže, pokud přidáte další příchozích pravidel toohello NSG povolení hello další porty.
+Toto vzdálené připojení je k veřejné IP adrese přiřazené prostředku veřejné IP adresy, kterou portál vytvořil v kroku 5 části [Vytvoření virtuální sítě se dvěma podsítěmi](#create-vnet) tohoto článku. Připojení je umožněno, protože výchozí pravidlo vytvořené ve skupině zabezpečení sítě **MyWebServer-nsg** povolilo k tomuto virtuálnímu počítači příchozí provoz prostřednictvím protokolu TCP/3389 (RDP) z jakékoli zdrojové IP adresy. Pokud se pokusíte k virtuálnímu počítači připojit přes jakýkoli jiný port, připojení selže, jestliže do skupiny zabezpečení sítě nepřidáte další příchozí pravidla povolující další porty.
 
 >[!NOTE]
->Pokud přidáte další příchozích pravidel toohello NSG, ujistěte se, že hello stejné porty jsou otevřené bránu firewall systému Windows hello nebo hello připojení selže.
+>Pokud do skupiny zabezpečení sítě přidáte další příchozí pravidla, ujistěte se, že stejné porty jsou otevřené i v bráně Windows Firewall, jinak připojení selže.
 >
 
-### <a name="connect-to-internet"></a>Připojit toohello Internetu z webového serveru hello virtuálních počítačů
+### <a name="connect-to-internet"></a>Připojení k internetu z virtuálního počítače s webovým serverem
 
-tooconnect odchozí toohello Internetu z webového serveru hello virtuálních počítačů, dokončení hello následující kroky:
+Pokud se chcete připojit k internetu z virtuálního počítače s webovým serverem, proveďte následující kroky:
 
-1. Pokud ještě nemáte připojení ke vzdálené toohello, otevřete MyWebServerVM, ujistěte se, toohello vzdáleného připojení virtuálních počítačů pomocí kroků hello v hello [Connect toohello webový server virtuálního počítače z hello Internet](#connect-from-internet) tohoto článku.
-2. Z plochy Windows hello otevřete Internet Explorer. V hello **instalační program aplikace Internet Explorer 11** dialogové okno, klikněte na tlačítko **nepoužívejte doporučená nastavení**, pak klikněte na tlačítko **OK**. Je doporučené tooaccept hello doporučené nastavení pro provozní server.
-3. Do adresního řádku Internet Exploreru hello, zadejte [vyhledávače bing.com](http:www.bing.com). Pokud se zobrazí dialogové okno aplikace Internet Explorer, klikněte na tlačítko **přidat**, pak **přidat** v hello **Důvěryhodné servery** dialogové okno a klikněte na tlačítko **Zavřít**. Tento postup opakujte pro všechna další dialogová okna aplikace Internet Explorer.
-4. V hello Bing stránka hledání, zadejte *whatsmyipaddress*, pak klikněte na tlačítko s ikonou lupy hello. Bing vrátí hello veřejnou IP adresu přiřazenou toohello prostředek veřejné IP adresy vytvoří hello portálu, když jste vytvořili hello virtuálních počítačů. Pokud si projdete hello nastavení pro hello **MyWebServer ip** prostředků, uvidíte hello stejnou IP adresu přiřadit toohello prostředek veřejné IP adresy, jak je znázorněno v hello obrázek, který následuje dále. Hello IP adresu přiřazenou tooyour virtuálních počítačů se liší ale.
+1. Pokud ještě nemáte otevřené vzdálené připojení k virtuálnímu počítači MyWebServer, vytvořte ho provedením kroků v části [Připojení k virtuálnímu počítači s webovým serverem z internetu](#connect-from-internet) tohoto článku.
+2. Z plochy Windows otevřete aplikaci Internet Explorer. V dialogovém okně **Nastavit aplikaci Internet Explorer 11** klikněte na **Nepoužívat doporučené nastavení** a potom na **OK**. Pro produkční server doporučujeme přijmout doporučené nastavení.
+3. Do adresního řádku aplikace Internet Explorer zadejte [bing.com](http:www.bing.com). Pokud se zobrazí dialogové okno aplikace Internet Explorer, klikněte na **Přidat**, potom na **Přidat** v dialogovém okně **Důvěryhodné servery** a klikněte na **Zavřít**. Tento postup opakujte pro všechna další dialogová okna aplikace Internet Explorer.
+4. Na stránce vyhledávání Bing zadejte *whatsmyipaddress* a potom klikněte na tlačítko lupy. Bing vrátí veřejnou IP adresu přiřazenou k prostředku veřejné IP adresy, kterou portál vytvořil při vytváření virtuálního počítače. Pokud prozkoumáte nastavení prostředku **MyWebServer-ip**, uvidíte stejnou IP adresu přiřazenou k prostředku veřejné IP adresy, jak je znázorněno na následujícím obrázku. IP adresa přiřazená k vašemu virtuálnímu počítači je však jiná.
 
-    ![Připojení serveru tooweb virtuálních počítačů](./media/virtual-network-get-started-vnet-subnet/webserver-pip.png)
+    ![Připojení k virtuálnímu počítači s webovým serverem](./media/virtual-network-get-started-vnet-subnet/webserver-pip.png)
 
-5.  Ponechte připojení ke vzdálené ploše hello otevřete toocomplete hello kroků v další části hello.
+5.  Připojení ke vzdálené ploše ponechte otevřené, abyste mohli dokončit kroky v další části.
 
-Vzhledem k tomu, že všechny odchozí připojení z hello virtuálních počítačů je povoleno ve výchozím nastavení se možné tooconnect toohello Internetu z hello virtuálních počítačů. Odchozí připojení můžete omezit přidáním přidání pravidla toohello skupina NSG použitá toohello síťového adaptéru, toohello podsíť hello síťový adaptér je připojený, nebo obojí.
+Z virtuálního počítače se můžete připojit k internetu, protože veškerá odchozí připojení z virtuálního počítače jsou ve výchozím nastavení povolená. Odchozí připojení můžete omezit přidáním dalších pravidel do skupiny zabezpečení sítě, která se používá pro síťové rozhraní, pro podsíť, ke které je síťové rozhraní připojeno nebo pro obojí.
 
-Pokud hello virtuálního počítače je uvést do hello zastavena (deallocated) stavu pomocí hello portálu, můžete změnit hello veřejnou IP adresu. Pokud požadujete hello veřejných IP adres nikdy změn, můžete použít hello statickou metodou přidělení pro hello IP adresu, nikoli metody dynamického přidělení hello, (což je výchozí hello). Další informace o toolearn hello rozdíly mezi metody přidělení, přečtěte si hello [IP adres, typy a metody přidělení](virtual-network-ip-addresses-overview-arm.md) článku.
+Pokud je virtuální počítač uveden do zastaveného (uvolněného) stavu pomocí portálu, veřejná IP adresa se může změnit. Pokud vyžadujete, aby se veřejná IP adresa nikdy neměnila, můžete pro IP adresu použít metodu statického přidělování namísto metody dynamického přidělování (která je výchozí). Další informace o rozdílech mezi metodami přidělování najdete v článku [Typy IP adres a metody jejich přidělování](virtual-network-ip-addresses-overview-arm.md).
 
-### <a name="webserver-to-dbserver"></a>Připojení serveru databáze toohello virtuálních počítačů z webového serveru hello virtuálních počítačů
+### <a name="webserver-to-dbserver"></a>Připojení k virtuálnímu počítači s databázovým serverem z virtuálního počítače s webovým serverem
 
-aplikace tooconnect toohello databázového serveru virtuálního počítače z webového serveru hello virtuálních počítačů, dokončení hello následující kroky:
+Pokud se chcete připojit k virtuálnímu počítači s databázovým serverem z virtuálního počítače s webovým serverem, proveďte následující kroky:
 
-1. Pokud ještě nemáte připojení ke vzdálené toohello, otevřete MyWebServer virtuálních počítačů, ujistěte se, toohello vzdáleného připojení virtuálních počítačů pomocí kroků hello v hello [Connect toohello webový server virtuálního počítače z hello Internet](#connect-from-internet) tohoto článku.
-2. Klikněte na tlačítko Start hello v levém dolním rohu hello plochy Windows hello a pak začněte psát *vzdálené plochy*. Když se zobrazí seznam nabídky Start hello **připojení ke vzdálené ploše**, klikněte na něj.
-3. V hello **připojení ke vzdálené ploše** dialogovém okně zadejte *DBServer* hello názvu počítače a klikněte na tlačítko **Connect**.
-4. Zadejte hello uživatelského jména a hesla, které jste zadali v kroku 3 hello [vytvořit hello databázový server virtuálního počítače](#create-database-server-vm) části tohoto článku, klikněte **OK**.
-5. Pokud se zobrazí, dialogové okno pole informování, můžete tuto identitu hello hello vzdáleného počítače nelze ověřit, klikněte na tlačítko **Ano**.
-6. Ponechte připojení ke vzdálené ploše hello tooboth servery, které otevřete toocomplete hello kroků v další části hello.
+1. Pokud ještě nemáte otevřené vzdálené připojení k virtuálnímu počítači MyWebServer, vytvořte ho provedením kroků v části [Připojení k virtuálnímu počítači s webovým serverem z internetu](#connect-from-internet) tohoto článku.
+2. Klikněte na tlačítko Start v levém dolním rohu plochy Windows a začněte zadávat *připojení ke vzdálené*. Jakmile se v seznamu nabídky Start zobrazí **Připojení ke vzdálené ploše**, klikněte na něj.
+3. V dialogovém okně **Připojení ke vzdálené ploše** zadejte jako název počítače *MyDBServer* a klikněte na **Připojit**.
+4. Zadejte uživatelské jméno a heslo, které jste zadali v kroku 3 části [Vytvoření virtuálního počítače s databázovým serverem](#create-database-server-vm) tohoto článku, a potom klikněte na **OK**.
+5. Pokud se zobrazí dialogové okno s informací, že nelze ověřit identitu vzdáleného počítače, klikněte na **Ano**.
+6. Připojení ke vzdálené ploše obou serverů ponechte otevřené, abyste mohli dokončit kroky v další části.
 
-Budete mít toomake hello připojení toohello databázového serveru virtuálního počítače z hello webový server virtuálních počítačů pro hello následujících důvodů:
+Připojení k virtuálnímu počítači s databázovým serverem z virtuálního počítače s webovým serverem můžete navázat z následujících důvodů:
 
-- Příchozí připojení TCP nebo 3389 jsou povolené pro všechny zdrojové IP adresy v NSG vytvořen v kroku 5 hello výchozí hello [vytvořit hello databázový server virtuálního počítače](#create-database-server-vm) tohoto článku.
-- Inicializovali hello připojení z webového serveru hello virtuální počítač, který je připojený toohello stejnou virtuální síť jako databázového serveru hello virtuálních počítačů. tooconnect tooa virtuální počítač, který nemá veřejnou IP adresu přiřazenou tooit, je nutné připojit z jiného virtuálního počítače připojené toohello stejné virtuální síti, i když hello virtuální počítač je připojený tooa jiné podsíti.
-- I když hello virtuální počítače jsou připojené toodifferent podsítě, Azure vytvoří výchozí trasy, které umožňují připojení mezi podsítěmi. Vytvořením vlastní ale můžete přepsat výchozí trasy hello. Čtení hello [trasy definované uživatelem](virtual-networks-udr-overview.md) článku toolearn více informací o směrování v Azure.
+- Příchozí připojení prostřednictvím protokolu TCP/3389 jsou povolena pro jakékoli zdrojové IP adresy ve výchozí skupině zabezpečení sítě vytvořené v kroku 5 části [Vytvoření virtuálního počítače s databázovým serverem](#create-database-server-vm) tohoto článku.
+- Připojení jste navázali z virtuálního počítače s webovým serverem, který je připojený ke stejné virtuální síti jako virtuální počítač s databázovým serverem. Abyste se mohli připojit k virtuálnímu počítači, který nemá přiřazenou veřejnou IP adresu, musíte se připojit z jiného virtuálního počítače připojeného ke stejné virtuální síti, dokonce i kdyby byl připojený k jiné podsíti.
+- I když jsou virtuální počítače připojené k různým podsítím, Azure vytváří výchozí trasy, které umožňují připojení mezi podsítěmi. Výchozí trasy ale můžete přepsat vytvořením vlastních tras. Další informace o směrování v Azure najdete v článku [Trasy definované uživatelem](virtual-networks-udr-overview.md).
 
-Pokud se pokusíte tooinitiate vzdáleného připojení toohello databázový server virtuálního počítače z hello Internetu, jako jste to udělali v hello [Connect toohello webový server virtuálního počítače z hello Internet](#connect-from-internet) části tohoto článku, uvidíte, že hello **připojit** možnost je zobrazena šedě. Připojení je šedě, protože neexistuje žádný veřejnou IP adresu přiřazenou toohello virtuálních počítačů, takže tooit příchozí připojení z Internetu hello nejsou možné.
+Pokud se pokusíte navázat vzdálené připojení k virtuálnímu počítači s databázovým serverem z internetu, jako jste to udělali v části [Připojení k virtuálnímu počítači s webovým serverem z internetu](#connect-from-internet) tohoto článku, uvidíte, že možnost **Připojit** je zobrazena šedě. Možnost Připojit je zobrazena šedě, protože k tomuto virtuálnímu počítači není přiřazena žádná veřejná IP adresa, takže příchozí připojení z internetu není možné.
 
-### <a name="connect-toohello-internet-from-hello-database-server-vm"></a>Připojit toohello Internet ze serveru databáze hello virtuálních počítačů
+### <a name="connect-to-the-internet-from-the-database-server-vm"></a>Připojení k internetu z virtuálního počítače s databázovým serverem
 
-Připojte odchozí toohello Internet ze serveru databáze hello virtuálního počítače provedením hello následující kroky:
+Pokud se chcete připojit k internetu z virtuálního počítače s databázovým serverem, proveďte následující kroky:
 
-1. Pokud ještě nemáte toohello vzdáleného připojení virtuálních počítačů DBServer otevřít z hello MyWebServer virtuálních počítačů, dokončení hello kroky v hello [Connect toohello databázového serveru virtuálního počítače z webového serveru hello virtuálních počítačů](#webserver-to-dbserver) tohoto článku.
-2. Z plochy Windows hello na hello DBServer virtuální počítač, otevřete Internet Explorer a reagovat toohello dialogových oken, jako jste to udělali v kroky 2 a 3 hello [připojit toohello Internetu z webového serveru hello virtuálních počítačů](#connect-to-internet) tohoto článku.
-3. V panelu Adresa hello, zadejte [vyhledávače bing.com](http:www.bing.com).
-4. Klikněte na tlačítko **přidat** v hello Internet Explorer dialogu, který se zobrazí, **přidat**, pak **Zavřít** v hello **důvěryhodné** dialogové okno lokality. Stejné kroky proveďte ve všech dalších dialogových oknech, která se případně zobrazí.
-5. V hello Bing stránka hledání, zadejte *whatsmyipaddress*, pak klikněte na tlačítko s ikonou lupy hello. Bing vrátí hello veřejné IP adresy, které jsou přiřazeny toohello virtuálních počítačů na základě hello infrastruktury Azure. 6. Zavřete hello vzdálené plochy toohello DBServer virtuálních počítačů z hello MyWebServer virtuálních počítačů a potom zavřete hello vzdáleného připojení toohello MyWebServer virtuálních počítačů.
+1. Pokud ještě nemáte otevřené vzdálené připojení k virtuálnímu počítači MyDBServer z virtuálního počítače MyWebServer, proveďte kroky v části [Připojení k virtuálnímu počítači s databázovým serverem z virtuálního počítače s webovým serverem](#webserver-to-dbserver) tohoto článku.
+2. Z plochy Windows na virtuálním počítači MyDBServer otevřete aplikaci Internet Explorer a na dialogová okna reagujte stejně jako v krocích 2 a 3 části [Připojení k internetu z virtuálního počítače s webovým serverem](#connect-to-internet) tohoto článku.
+3. Do adresního řádku zadejte [bing.com](http:www.bing.com).
+4. V dialogovém okně aplikace Internet Explorer, které se zobrazí, klikněte na **Přidat**, a potom v dialogovém okně **Důvěryhodné servery** klikněte na **Přidat** a **Zavřít**. Stejné kroky proveďte ve všech dalších dialogových oknech, která se případně zobrazí.
+5. Na stránce vyhledávání Bing zadejte *whatsmyipaddress* a potom klikněte na tlačítko lupy. Bing vrátí veřejnou IP adresu, která je aktuálně přiřazená k virtuálnímu počítači infrastrukturou Azure. 6. Zavřete připojení ke vzdálené ploše virtuálního počítače MyDBServer z virtuálního počítače MyWebServer a potom zavřete vzdálené připojení k virtuálnímu počítači MyWebServer.
 
-toohello Hello odchozí připojení k Internetu je povolena, protože všechny odchozí přenosy je povoleno ve výchozím nastavení, i když prostředek veřejné IP adresy není přiřazen toohello DBServer virtuálních počítačů. Všechny virtuální počítače, ve výchozím nastavení, je možné tooconnect odchozí toohello Internetu, s nebo bez veřejné toohello prostředků přiřazené IP adresy virtuálních počítačů. Nejste možné tooconnect toohello veřejnou IP adresu z hello Internetu však jako měla mít toofor hello MyWebServer virtuální počítač, který má veřejnou IP adresu adres zdroj přiřazený.
+Odchozí připojení k internetu je povoleno, protože ve výchozím nastavení je povolen veškerý odchozí provoz, i když k virtuálnímu počítači MyDBServer není přiřazen prostředek veřejné IP adresy. Všechny virtuální počítače se ve výchozím nastavení můžou připojit k internetu bez ohledu na to, jestli k nim je nebo není přiřazen prostředek veřejné IP adresy. Nemůžete se ale připojit k veřejné IP adrese z internetu, jako jste mohli v případě virtuálního počítače MyWebServer s přiřazeným prostředkem veřejné IP adresy.
 
 ## <a name="delete-resources"></a>Odstranění všech prostředků
 
-toodelete vytvořit všechny prostředky v tomto článku, dokončení hello následující kroky:
+Pokud chcete odstranit všechny prostředky vytvořené v rámci tohoto článku, proveďte následující kroky:
 
-1. tooview hello MyRG vytvoření skupiny prostředků v tomto článku, dokončení kroků 1 až 3 v hello [zkontrolujte prostředky](#review) tohoto článku. Znovu zkontrolujte hello prostředky ve skupině prostředků hello. Pokud jste vytvořili skupinu prostředků MyRG hello, podle předchozího postupu, uvidíte hello 12 prostředky znázorněno hello obrázku v kroku 4.
-2. V okně MyRG hello, klikněte na tlačítko hello **odstranit** tlačítko.
-3. Hello portál vyžaduje tootype hello název hello prostředků skupiny tooconfirm, které chcete toodelete ho. Pokud uvidíte prostředky jiné než hello prostředky uvedené v kroku 4 hello [zkontrolujte prostředky](#review) části tohoto článku, klikněte na tlačítko **zrušit**. Pokud se zobrazí pouze hello 12 prostředky, které jsou vytvořené jako součást tohoto článku, zadejte *MyRG* hello název skupiny prostředků, klikněte **odstranit**. Odstranění skupiny prostředků se odstraní všechny prostředky v rámci skupiny prostředků hello, takže vždy být zda tooconfirm hello obsah skupinu prostředků. před odstraněním. Odstraní všechny prostředky obsažené v rámci skupiny prostředků hello Hello portálu, a pak odstraní samotná skupina prostředků hello. Tento proces trvá několik minut.
+1. Chcete-li zobrazit skupinu prostředků MyRG vytvořenou v rámci tohoto článku, proveďte kroky 1 až 3 v části [Kontrola prostředků](#review) tohoto článku. Znovu si prohlédněte prostředky ve skupině prostředků. Pokud jste vytvořili skupinu prostředků MyRG podle předchozích postupů, uvidíte 12 prostředků jako na obrázku v kroku 4.
+2. V okně MyRG klikněte na tlačítko **Odstranit**.
+3. Portál požaduje, abyste zadali název skupiny prostředků pro potvrzení, že ji skutečně chcete odstranit. Pokud uvidíte jiné prostředky než prostředky uvedené v kroku 4 části [Kontrola prostředků](#review) tohoto článku, klikněte na **Zrušit**. Pokud vidíte pouze 12 prostředků vytvořených jako součást tohoto článku, zadejte název skupiny prostředků *MyRG* a potom klikněte na **Odstranit**. Odstraněním skupiny prostředků se odstraní všechny prostředky v rámci dané skupiny prostředků. Proto nikdy nezapomeňte před odstraněním skupiny prostředků zkontrolovat její obsah. Portál odstraní všechny prostředky v rámci skupiny prostředků a potom odstraní samotnou skupinu prostředků. Tento proces trvá několik minut.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto cvičení jste vytvořili virtuální síť a dva virtuální počítače. Během vytváření virtuálních počítačů jste zadali některá vlastní nastavení a přijali několik výchozích nastavení. Doporučujeme, abyste si přečetli hello následující články, před nasazením produkční virtuálních sítí a virtuálních počítačů, tooensure pochopit všech dostupných nastavení:
+V tomto cvičení jste vytvořili virtuální síť a dva virtuální počítače. Během vytváření virtuálních počítačů jste zadali některá vlastní nastavení a přijali několik výchozích nastavení. Doporučujeme, abyste si před nasazením virtuálních sítí a virtuálních počítačů v produkčním prostředí přečetli následující články a ujistili se, že rozumíte všem dostupným nastavením:
 
 - [Virtuální sítě](virtual-networks-overview.md)
 - [Veřejné IP adresy](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)

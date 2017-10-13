@@ -1,5 +1,5 @@
 ---
-title: "aaaSQL dotazy pro rozhraní API služby Azure Cosmos databáze DocumentDB | Microsoft Docs"
+title: "Dotazy SQL pro rozhraní API služby Azure Cosmos databáze DocumentDB | Microsoft Docs"
 description: "Další informace o syntaxi jazyka SQL, databáze koncepty a dotazy SQL pro Azure Cosmos DB. SQL lze použít jako dotazovací jazyk JSON v Azure Cosmos DB."
 keywords: "syntaxe SQL, dotaz sql, sql dotazy, json dotazovací jazyk, databázových koncepcí a sql, agregační funkce"
 services: cosmos-db
@@ -15,32 +15,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: arramac
-ms.openlocfilehash: f4db95b87f5796c4e4299aaf016435cb6301bbfe
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 9b2b5668ef0552485a86f63a120b57c4623bfe35
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="sql-queries-for-azure-cosmos-db-documentdb-api"></a>Dotazy SQL pro rozhraní API služby Azure Cosmos databáze DocumentDB
-Microsoft Azure Cosmos DB podporuje dotazování dokumentů pomocí jazyka SQL (Structured Query Language) jako dotazovací jazyk JSON. Cosmos DB je skutečně bez schémat. Na základě jeho závazků toohello datového modelu JSON přímo v rámci hello databázový stroj poskytuje automatické indexování dokumentů JSON bez nutnosti explicitního schématu nebo vytváření sekundárních indexů. 
+Microsoft Azure Cosmos DB podporuje dotazování dokumentů pomocí jazyka SQL (Structured Query Language) jako dotazovací jazyk JSON. Cosmos DB je skutečně bez schémat. Na základě jeho závazků do datového modelu JSON přímo v rámci databázový stroj poskytuje automatické indexování dokumentů JSON bez nutnosti explicitního schématu nebo vytváření sekundárních indexů. 
 
-Při navrhování hello dotazovacího jazyka pro Cosmos DB, jsme měli dva cíle v paměti:
+Při navrhování dotazovacího jazyka pro Cosmos DB, jsme měli dva cíle v paměti:
 
-* Místo inventing o nový jazyk dotazů JSON, jsme chtěli toosupport SQL. SQL je jedním z jazyků hello nejvíce známé a oblíbených dotazů. SQL databáze cosmos umožňuje formální programovací model o bohaté dotazy prostřednictvím dokumentů JSON.
-* Jako dokument databáze JSON může provést JavaScript přímo v databázovém stroji hello jsme chtěli toouse JavaScript programovací model jako hello foundation pro naše dotazovací jazyk. Hello DocumentDB SQL rozhraní API je integrován do systému typů JavaScript na vyhodnocení výrazu a volání funkce. Tato naopak poskytuje přirozené programovací model pro projekce relačních, hierarchických navigace mezi dokumenty JSON, vlastní spojení, prostorových dotazů a vyvolání uživatelem definovaných funkcí (UDF) vytvořené zcela v JavaScriptu mezi dalších funkcí. 
+* Místo inventing o nový jazyk dotazů JSON, jsme chtěli podporu SQL. SQL je jedním z nejvíce známé a oblíbených jazyků dotazu. SQL databáze cosmos umožňuje formální programovací model o bohaté dotazy prostřednictvím dokumentů JSON.
+* Jako dokument databáze JSON může provést JavaScript přímo v databázovém stroji jsme chtěli použít model programování v jazyce JavaScript jako základ pro naše dotazovací jazyk. DocumentDB SQL rozhraní API je integrován do systému typů JavaScript na vyhodnocení výrazu a volání funkce. Tato naopak poskytuje přirozené programovací model pro projekce relačních, hierarchických navigace mezi dokumenty JSON, vlastní spojení, prostorových dotazů a vyvolání uživatelem definovaných funkcí (UDF) vytvořené zcela v JavaScriptu mezi dalších funkcí. 
 
-Věříme, že tyto funkce jsou klíče tooreducing hello tření mezi hello databázové a aplikační hello a jsou zásadní pro produktivita vývojářů.
+Věříme, že tyto funkce jsou klíčem k omezení tření mezi aplikací a databáze a jsou zásadní pro produktivita vývojářů.
 
-Doporučujeme začít hello následující video, kde Aravind Ramachandran zobrazí možnosti dotazování Cosmos DB, sledování a navštívíte naše [Query Playground](http://www.documentdb.com/sql/demo), kde můžete vyzkoušet Cosmos DB a spouštět dotazy SQL pro naší datové sadě.
+Doporučujeme začít následujícím videem, kde Aravind Ramachandran zobrazí Cosmos DB je dotazování možnosti, a navštívíte naše [Query Playground](http://www.documentdb.com/sql/demo), kde můžete vyzkoušet Cosmos DB a spouštět dotazy SQL pro naše datové sady.
 
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/DataExposedQueryingDocumentDB/player]
 > 
 > 
 
-Pak se vraťte toothis článku, kde Začneme s kurz dotaz SQL, který vás provede některé jednoduché dokumentů JSON a příkazy SQL.
+Pak se vraťte k tomuto článku, kde Začneme s kurz dotaz SQL, který vás provede některé jednoduché dokumentů JSON a příkazy SQL.
 
 ## <a id="GettingStarted"></a>Začínáme s příkazy SQL v databázi systému Cosmos
-toosee Cosmos SQL databáze v práci, umožňuje začínat několik jednoduchých dokumentů JSON a provede několik jednoduchých dotazů u ní. Vezměte v úvahu tyto dva dokumenty JSON o dvou řad. S Cosmos DB jsme nemusí toocreate všechny schémata nebo sekundárních indexů explicitně. Můžeme jednoduše potřebovat tooinsert hello JSON dokumentů tooa Cosmos DB kolekce a následně dotazu. Tady bychom měli jednoduché JSON dokumentů pro hello rodinu, hello nadřazených položek, děti (a jejich mazlíčků), adresu a informace o registraci. Hello dokumentu je řetězců, čísel, logické hodnoty, pole a vnořené vlastnosti. 
+SQL databáze Cosmos v práci najdete umožňuje začínat několik jednoduchých dokumentů JSON a provede několik jednoduchých dotazů u ní. Vezměte v úvahu tyto dva dokumenty JSON o dvou řad. S Cosmos DB jsme není potřeba explicitně vytvořit žádné schémata nebo sekundárních indexů. Jednoduše musíme vložit dokumenty JSON do kolekce Cosmos DB a následně dotazu. Tady bychom měli jednoduché JSON dokumentů pro rodinu, rodiče, děti (a jejich mazlíčků), adresu a informace o registraci. Má dokument řetězců, čísel, logické hodnoty, pole a vnořené vlastnosti. 
 
 **Dokument**  
 
@@ -99,7 +99,7 @@ Tady je druhý dokument s jedním jemně rozdílem – `givenName` a `familyName
 }
 ```
 
-Nyní nyní si vyzkoušíte několik dotazů vůči tato data toounderstand některé hello klíče aspektů DocumentDB SQL rozhraní API. Například hello následující dotaz vrátí hello dokumenty, kde pole id hello odpovídá `AndersenFamily`. Vzhledem k tomu, že je `SELECT *`, výstup hello hello dotazu je hello dokončení dokumentu JSON:
+Nyní nyní si vyzkoušíte několik dotazů pro tato data pochopit některé z klíčových aspektů DocumentDB SQL rozhraní API. Například následující dotaz vrátí dokumenty, kde v poli id odpovídá `AndersenFamily`. Vzhledem k tomu, že je `SELECT *`, výstup tohoto dotazu je kompletní dokumentu JSON:
 
 **Dotaz**
 
@@ -128,7 +128,7 @@ Nyní nyní si vyzkoušíte několik dotazů vůči tato data toounderstand něk
     }]
 
 
-Teď se podíváme hello případ potřebujeme tooreformat hello výstup JSON v různých obrazce. Tento dotaz, zda projekty nové JSON objektu s dvě vybrané pole název a města, když hello adresa město má hello stejný název jako hello stavu. V tomto případě "NY, NY" odpovídá.
+Teď se podíváme případu, které je třeba přeformátujte výstup JSON v různých obrazce. Tento dotaz projekty nový objekt JSON s dvě vybrané pole název a města, když na adresu města má stejný název jako stavu. V tomto případě "NY, NY" odpovídá.
 
 **Dotaz**    
 
@@ -146,7 +146,7 @@ Teď se podíváme hello případ potřebujeme tooreformat hello výstup JSON v 
     }]
 
 
-Hello další dotaz vrátí všechny názvy daným hello podřízených prvků řady hello shoduje s id `WakefieldFamily` seřazené podle města hello pobytu.
+Další dotaz vrátí všechny názvy daným podřízených prvků v dané rodině, jehož id odpovídá `WakefieldFamily` seřazené podle města pobytu.
 
 **Dotaz**
 
@@ -164,30 +164,30 @@ Hello další dotaz vrátí všechny názvy daným hello podřízených prvků �
     ]
 
 
-Rádi bychom znali tooa pozornost toodraw několik pozoruhodné aspektů hello Cosmos DB dotazu jazyka prostřednictvím hello příklady, které jste viděli, pokud:  
+Rádi bychom se upozornit na několik pozoruhodné aspektů dotazovací jazyk Cosmos DB provede příklady, které jste viděli, pokud:  
 
-* Vzhledem k tomu, že DocumentDB SQL rozhraní API funguje na hodnoty JSON, zabývá stromu ve tvaru entity místo řádků a sloupců. Proto hello jazyk umožňuje naleznete toonodes hello stromu při jakékoli libovolný hloubce, jako je třeba `Node1.Node2.Node3…..Nodem`, podobně jako toorelational SQL odkazující toohello dvě části odkaz `<table>.<column>`.   
-* Hello strukturovaná dotazu jazyka funguje s daty bez schématu. Proto dynamicky hello typ systému potřebám toobe hranice. Hello stejný výraz může přinést různých typů na různé dokumenty. Hello výsledek dotazu není platná hodnota JSON, ale není zaručena toobe pevného schématu.  
-* Cosmos databáze podporuje pouze striktní dokumentů JSON. To znamená, že systém typů hello a výrazy s omezeným přístupem toodeal jenom s typy JSON. Odkazovat toohello [JSON specifikace](http://www.json.org/) další podrobnosti.  
-* Cosmos DB kolekce je kontejner dokumentů JSON bez schémat. Hello vztahy v datových entit v rámci a na dokumentech v kolekci jsou implicitně zaznamenat členství ve skupině a ne primárního a cizího klíče relace. Toto je důležitým aspektem vhodné odkazující na základě spojení intra-document hello probírat později v tomto článku.
+* Vzhledem k tomu, že DocumentDB SQL rozhraní API funguje na hodnoty JSON, zabývá stromu ve tvaru entity místo řádků a sloupců. Proto jazyk umožňuje vztahují na všechny uzly stromu v jakékoli libovolný hloubku jako `Node1.Node2.Node3…..Nodem`, podobně jako relační SQL odkazující na odkaz na dvě části `<table>.<column>`.   
+* Jazyk SQL pracuje s daty bez schématu. Systém typů proto musí být vázána dynamicky. Stejný výraz může přinést různých typů na různé dokumenty. Výsledek dotazu není platná hodnota JSON, ale není zaručena bezpečnost pro přístup z pevného schématu.  
+* Cosmos databáze podporuje pouze striktní dokumentů JSON. To znamená, že systém typů a výrazy jsou omezeny na pracují jenom s typy JSON. Odkazovat [JSON specifikace](http://www.json.org/) další podrobnosti.  
+* Cosmos DB kolekce je kontejner dokumentů JSON bez schémat. Vztahy v datových entit v rámci a na dokumentech v kolekci jsou implicitně zaznamenat členství ve skupině a ne primárního a cizího klíče relace. Toto je důležitým aspektem vhodné odkazující na základě spojení intra-document probírat později v tomto článku.
 
 ## <a id="Indexing"></a>Indexování cosmos DB
-Než se nám získat do hello syntaxi DocumentDB SQL rozhraní API, je vhodné využít hello indexování návrhu v Cosmos DB. 
+Než se nám získat do syntaxi DocumentDB SQL rozhraní API, je vhodné využít indexování návrhu v Cosmos DB. 
 
-účelem Hello indexy databáze je tooserve dotazy v různých formách a obrazců pomocí spotřeby minimální prostředků (např. využití procesoru a vstup/výstup) současně poskytují dobrý prostupnosti a nízké latence. Často hello Volba správného indexu hello k dotazování databáze vyžaduje mnohem plánování a experimenty. Tento přístup představuje výzvu pro bez schématu databáze, kde hello data neodpovídají schématu striktní tooa a zpracovaní rychle. 
+Účelem indexy databáze je poskytovat dotazy v různých formách a tvarů s spotřeby minimální prostředků (např. využití procesoru a vstup/výstup) současně poskytují dobrý prostupnosti a nízké latence. Volba správného indexu pro dotazování databáze často vyžaduje mnohem plánování a experimentování. Tento přístup představuje výzvu pro bez schématu databáze, kde data neodpovídají striktní schéma a zpracovaní rychle. 
 
-Proto když jsme navržený hello Cosmos DB indexování subsystému, nastaví hello následující cíle:
+Proto když jsme navržený subsystém indexování Cosmos DB, nastaví sledovat tyto cíle:
 
-* Indexování dokumentů bez nutnosti schématu: hello indexování subsystému nevyžaduje žádné informace o schématu ani vytvořit žádný odhad o schématu hello dokumentů. 
-* Podpora pro efektivní, bohaté hierarchické a relační dotazy: hello index podporuje hello Cosmos databáze dotazovací jazyk efektivně, včetně podpory pro hierarchické a relační projekce.
-* Podpora pro konzistentní dotazy in face of svazek dlouhodobě zápisů: pro zápisu vysokou propustnost úlohy s konzistentní dotazy, hello aktualizace indexu postupně, efektivně a online hello stěně dlouhodobě svazku zápisů. aktualizace konzistentní index Hello je zásadní tooserve hello dotazy na úrovni konzistence hello v které hello uživateli nakonfigurovanému hello dokumentu služby.
-* Podpora pro více klientů: zadána hello založené na vyhrazené modelu pro řízení prostředků mezi klienty v rámci rozpočtu hello systémových prostředků (procesoru, paměti a vstupně-výstupních operací za sekundu) přidělený na repliky jsou provedeny aktualizace indexu. 
-* Efektivitu úložiště: pro finanční efektivita je hello na disk úložiště režie hello indexu ohraničené a předvídatelné. Toto je velmi důležitý, protože Cosmos DB vývojáře toomake náklady na základě kompromisy mezi režijní náklady na index výkonnosti dotazu toohello vztah umožňuje hello.  
+* Indexování dokumentů bez nutnosti schématu: subsystém indexování nevyžaduje žádné informace o schématu ani vytvořit žádný odhad o schéma dokumentů. 
+* Podpora pro efektivní, bohaté hierarchické a relační dotazy: index podporuje dotazovací jazyk Cosmos DB efektivně, včetně podpory pro hierarchické a relační projekce.
+* Podpora pro konzistentní dotazy in face of svazek dlouhodobě zápisů: pro zápisu vysokou propustnost úlohy s konzistentní dotazy, aktualizace indexu postupně, efektivně a online při krátkodobém dlouhodobě svazku zápisů. Aktualizace konzistentní index je zásadní význam pro poskytovat dotazy na úrovni konzistence, ve kterém uživatel nakonfigurovali službu dokumentu.
+* Podpora pro více klientů: zadána modelu založené na vyhrazené pro řízení prostředků mezi klienty v rámci rozpočtu systémových prostředků (procesoru, paměti a vstupně-výstupních operací za sekundu) přidělený na repliky jsou provedeny aktualizace indexu. 
+* Efektivitu úložiště: pro finanční efektivita režijní náklady na úložiště na disku indexu je ohraničené a předvídatelné. To je velmi důležitý, protože Cosmos DB umožňuje vývojáři aby náklady na základě kompromisy mezi režijní náklady na indexů ve vztahu k dotazu výkon.  
 
-Odkazovat toohello [Azure Cosmos DB – ukázky](https://github.com/Azure/azure-documentdb-net) na webu MSDN ukázek znázorňující, jak tooconfigure hello zásady indexování pro kolekci. Nyní Pojďme do hello podrobnosti o hello syntaxe Azure Cosmos DB SQL.
+Odkazovat [Azure Cosmos DB – ukázky](https://github.com/Azure/azure-documentdb-net) na webu MSDN ukázek znázorňující postup konfigurace zásady indexování pro kolekci. Nyní Pojďme na podrobné informace o syntaxi Azure Cosmos DB SQL.
 
 ## <a id="Basics"></a>Základní informace o příkazu jazyka Azure Cosmos DB SQL
-Každý dotaz sestává z klauzule SELECT a volitelné FROM a klauzule WHERE za standardy ANSI SQL. Pro každý dotaz, obvykle je výčet hello zdroj v klauzuli FROM hello. Potom hello filtrovat v hello klauzule WHERE se použije na hello zdroj tooretrieve podmnožinu dokumentů JSON. Nakonec se používá klauzuli SELECT hello tooproject hello požadované hodnoty JSON v hello vybrat seznamu.
+Každý dotaz sestává z klauzule SELECT a volitelné FROM a klauzule WHERE za standardy ANSI SQL. Pro každý dotaz, obvykle je výčet zdroji v klauzuli FROM. Filtru v klauzuli WHERE se pak použije ve zdroji k načtení podmnožinu dokumentů JSON. Klauzule SELECT se nakonec slouží k plánování požadovaný JSON hodnot v seznamu select.
 
     SELECT <select_list> 
     [FROM <from_specification>] 
@@ -196,16 +196,16 @@ Každý dotaz sestává z klauzule SELECT a volitelné FROM a klauzule WHERE za 
 
 
 ## <a id="FromClause"></a>FROM – klauzule
-Hello `FROM <from_specification>` klauzule je nepovinný, pokud je zdroj hello filtrovat nebo projekci později v dotazu hello. účelem Hello tuto klauzuli je zdroj dat hello toospecify, při které hello musí fungovat dotazu. Běžně hello celé kolekce je zdrojem hello, ale jeden místo toho zadat podmnožinu kolekce hello. 
+`FROM <from_specification>` Klauzule je nepovinný, pokud je zdroj filtrovat nebo projekci později v dotazu. Účelem této klauzule je zadat zdroj dat, na kterém musí fungovat dotazu. Běžně celé kolekce je zdrojem, ale jeden místo toho zadat podmnožinu kolekce. 
 
-Dotaz jako `SELECT * FROM Families` označuje, že celou kolekci rodiny hello je přes které tooenumerate hello zdroje. Zvláštní identifikátor KOŘENOVÉ lze použít toorepresent hello kolekce místo použití hello název kolekce. Hello následující seznam obsahuje hello pravidla, které vynucuje na jeden dotaz:
+Dotaz jako `SELECT * FROM Families` označuje, že je celou kolekci rodiny zdroji, za které se vytvořit výčet. Identifikátor speciální KOŘENOVÉ slouží k představují kolekci nepoužívejte název kolekce. Následující seznam obsahuje pravidla, které vynucuje na jeden dotaz:
 
-* kolekce Hello je to možné, jako například `SELECT f.id FROM Families AS f` nebo jednoduše `SELECT f.id FROM Families f`. Zde `f` je ekvivalentem hello `Families`. `AS`je identifikátor hello tooalias optional – klíčové slovo.
-* Jednou alias, nemůže být vázán hello původního zdroje. Například `SELECT Families.id FROM Families f` je syntakticky neplatný, protože už nelze přeložit identifikátor hello "Rodiny".
-* Všechny vlastnosti, které je třeba toobe odkazuje musí být plně kvalifikovaný. V hello chybí dodržování striktní schématu, je to vynucené tooavoid žádné nejednoznačný vazby. Proto `SELECT id FROM Families f` je syntakticky neplatný od hello vlastnost `id` není vázán.
+* Kolekce je to možné, jako například `SELECT f.id FROM Families AS f` nebo jednoduše `SELECT f.id FROM Families f`. Zde `f` je ekvivalentem `Families`. `AS`optional – klíčové slovo alias je identifikátor.
+* Jednou alias, nemůže být vázán původního zdroje. Například `SELECT Families.id FROM Families f` je syntakticky neplatný, protože už nelze přeložit identifikátor "Rodiny".
+* Všechny vlastnosti, které je potřeba na něj odkazovat musí být plně kvalifikovaný. Chybí dodržování striktní schématu tato velikost je vyžadována předejdete žádné nejednoznačný vazby. Proto `SELECT id FROM Families f` je syntakticky neplatný, protože vlastnost `id` není vázán.
 
 ### <a name="subdocuments"></a>Vnořené dokumenty
-Hello zdroj může být také snížené tooa menší podmnožinu. Například tooenumerating pouze podstrom v každém dokumentu hello subroot může pak mohou stát hello zdroje, jak ukazuje následující příklad hello:
+Zdroj může být také omezené menší podmnožinu. Například k vytváření výčtu pouze podstrom v každém dokumentu, subroot může pak mohou stát zdroje, jak je znázorněno v následujícím příkladu:
 
 **Dotaz**
 
@@ -243,7 +243,7 @@ Hello zdroj může být také snížené tooa menší podmnožinu. Například t
       ]
     ]
 
-Při hello výše příklad pole jako zdroj hello, objekt mohou být využity také jako hello zdroj, který je informace zobrazené v hello následující ukázka: žádné platná hodnota JSON (nedefinovaná), můžete najít ve zdroji hello je považován za pro zařazení výsledek hello dotaz Hello. Pokud nemáte některé rodiny `address.state` hodnotu, jsou vyloučeny ve výsledku dotazu hello.
+Při výše uvedeném příkladu pole jako zdroj, objekt může také použít jako zdroj, který je co je znázorněno v následujícím příkladu: žádné platná hodnota JSON (nedefinovaná), můžete najít ve zdroji je považován za pro zahrnutí do výsledků dotazu. Pokud nemáte některé rodiny `address.state` hodnotu, jsou vyloučeny ve výsledku dotazu.
 
 **Dotaz**
 
@@ -259,9 +259,9 @@ Při hello výše příklad pole jako zdroj hello, objekt mohou být využity ta
 
 
 ## <a id="WhereClause"></a>Klauzule WHERE
-klauzule WHERE Hello (**`WHERE <filter_condition>`**) je volitelný. Určuje, zda text hello, podmínku (podmínky), musí splňovat dokumentů JSON hello poskytované hello zdroje v pořadí toobe jako součást výsledků hello. Dokumentu JSON se musí vyhodnotit hello zadané podmínky příliš "true" toobe považována za výsledek hello. použití klauzule vrstvou hello indexu v pořadí toodetermine hello absolutní nejmenší podmnožinu dokumentů zdroje, které můžou být součástí hello výsledek Hello. 
+Klauzule WHERE (**`WHERE <filter_condition>`**) je volitelný. Určuje, že podmínku (podmínky), které dokumenty JSON poskytuje zdroj musí splňovat, aby byla součástí výsledek. Dokumentu JSON se musí vyhodnotit na hodnotu true, aby byla považována za pro výsledek k zadaným podmínkám. Klauzule WHERE se používá vrstvou index aby bylo možné zjistit absolutní nejmenší podmnožinu dokumentů zdroje, které můžou být součástí výsledek. 
 
-Hello následující dotaz požadavků dokumentů, které obsahují název vlastnosti, jehož hodnota je `AndersenFamily`. Jiného dokumentu, který nemá název vlastnosti, nebo kde hello hodnota neodpovídá `AndersenFamily` je vyloučen. 
+Následující dotaz požadavků dokumentů, které obsahují název vlastnosti, jehož hodnota je `AndersenFamily`. Jiného dokumentu, který nemá název vlastnosti, nebo kde hodnota neodpovídá `AndersenFamily` je vyloučen. 
 
 **Dotaz**
 
@@ -280,9 +280,9 @@ Hello následující dotaz požadavků dokumentů, které obsahují název vlast
     }]
 
 
-Hello předchozí příklad ukázal dotazu jednoduché rovnosti. DocumentDB SQL rozhraní API také podporuje celou řadu skalární výrazy. Hello nejčastěji používaná jsou binární a unární výrazy. Odkazy na vlastnost z objektu JSON, hello zdroje jsou také platné výrazy. 
+Předchozí příklad ukázal dotazu jednoduché rovnosti. DocumentDB SQL rozhraní API také podporuje celou řadu skalární výrazy. Nejčastěji používané jsou výrazy binární a unární. Vlastnost odkazy z objektu JSON zdroje jsou také platné výrazy. 
 
-Hello následující binární operátory jsou aktuálně podporovány a lze je použít v dotazech, jak je znázorněno v hello následující příklady:  
+Následující binární operátory jsou aktuálně podporovány a lze použít v dotazech, jak je znázorněno v následujících příkladech:  
 
 <table>
 <tr>
@@ -323,7 +323,7 @@ Podívejme se na některé dotazy pomocí binární operátory.
     WHERE c.grade >= 5     -- matching grades == 5
 
 
-Unární operátory Hello +,-, ~ není jsou podporovány také a dá se použít uvnitř dotazy, jak je znázorněno v hello následující ukázka:
+Unární operátory +,-, ~ není jsou podporovány také a dá se použít uvnitř dotazy, jak je znázorněno v následujícím příkladu:
 
     SELECT *
     FROM Families.children[0] c
@@ -335,10 +335,10 @@ Unární operátory Hello +,-, ~ není jsou podporovány také a dá se použít
 
 
 
-Kromě toho toobinary a unární operátory, vlastnost odkazy jsou také povoleny. Například `SELECT * FROM Families f WHERE f.isRegistered` vrátí hello dokumentu JSON obsahující hello vlastnost `isRegistered` kde hodnota vlastnosti hello je rovna toohello JSON `true` hodnotu. Všechny ostatní hodnoty (false, hodnotu null a nedefinovaná, `<number>`, `<string>`, `<object>`, `<array>`atd) vede k vyloučení z výsledku hello toohello zdrojový dokument. 
+Kromě binární a unární operátory mohou také vlastnost odkazy. Například `SELECT * FROM Families f WHERE f.isRegistered` vrátí dokumentu JSON obsahující vlastnost `isRegistered` kde hodnotu vlastnosti rovná JSON `true` hodnotu. Všechny ostatní hodnoty (false, hodnotu null a nedefinovaná, `<number>`, `<string>`, `<object>`, `<array>`atd) vede k zdrojový dokument k vyloučení z výsledku. 
 
 ### <a name="equality-and-comparison-operators"></a>Operátory rovnosti a porovnání
-Hello následující tabulka uvádí hello výsledek porovnání rovnosti v DocumentDB API SQL mezi všechny dva typy JSON.
+Následující tabulka uvádí výsledek porovnání rovnosti v DocumentDB API SQL mezi všechny dva typy JSON.
 
 <table style = "width:300px">
    <tbody>
@@ -510,33 +510,33 @@ Nedefinovaná </td>
    </tbody>
 </table>
 
-Pro jiné operátory porovnání jako >, > =,! =, < a < =, hello platí následující pravidla:   
+Pro jiné operátory porovnání jako >, > =,! =, < a < =, následující pravidla platí:   
 
 * Výsledkem porovnání mezi typy Undefined.
 * Porovnání mezi dvěma objekty nebo dvě maticových má za následek Undefined.   
 
-Pokud je výsledek hello hello skalární výraz, který ve filtru hello Undefined, hello odpovídající dokument není zahrnuta do hello výsledek, protože Undefined není označení rovnosti logicky příliš "true".
+Pokud je výsledek skalární výraz, který ve filtru není definována, odpovídající dokument není zahrnuta do výsledek, protože Undefined není logicky rovnat "true".
 
 ### <a name="between-keyword"></a>MEZI klíčové slovo
-Můžete taky hello BETWEEN – klíčové slovo tooexpress dotazy na rozsah hodnot jako v ANSI SQL. MEZI můžete použít u řetězců nebo čísla.
+Můžete taky – klíčové slovo BETWEEN pro dotazy na rozsah hodnot jako v ANSI SQL express. MEZI můžete použít u řetězců nebo čísla.
 
-Například tento dotaz vrací všechny rodiny dokumenty, ve které hello úrovni prvním podřízeným objektem je mezi 1-5 (obě včetně). 
+Například tento dotaz vrací všechny rodiny dokumenty, ve kterých je prvním podřízeným objektem úrovni mezi 1-5 (obě včetně). 
 
     SELECT *
     FROM Families.children[0] c
     WHERE c.grade BETWEEN 1 AND 5
 
-Na rozdíl od v ANSI SQL, můžete taky klauzule BETWEEN hello v klauzuli FROM hello jako hello následující ukázka.
+Na rozdíl od v ANSI SQL, můžete taky klauzuli BETWEEN v klauzuli FROM jako v následujícím příkladu.
 
     SELECT (c.grade BETWEEN 0 AND 10)
     FROM Families.children[0] c
 
-Kratší časy spuštění dotazu mějte na paměti toocreate indexování zásad, která používá typ indexu rozsah proti jakékoli číselné vlastnosti nebo cesty, které jsou filtrovány v klauzuli BETWEEN hello. 
+Pro kratší časy spuštění dotazu mějte na paměti k vytvoření zásady indexování, která používá typ indexu rozsah proti jakékoli číselné vlastnosti nebo cesty, které jsou filtrovány v klauzuli BETWEEN. 
 
-Hello hlavní rozdíl mezi použitím BETWEEN v DocumentDB rozhraní API a ANSI SQL je, že můžete express rozsah dotazy na vlastnosti smíšený typů – například můžete mít "základní" být číslo (5) v některých dokumentů a řetězce v jiné ("grade4"). V těchto případech jako je v jazyce JavaScript, porovnání mezi dva různé typy výsledků v "undefined" a hello dokumentu bude přeskočen.
+Hlavní rozdíl mezi použitím BETWEEN v DocumentDB rozhraní API a ANSI SQL je, že můžete express rozsah dotazy na vlastnosti smíšený typů – například můžete mít "základní" být číslo (5) v některých dokumentů a řetězce v jiné ("grade4"). V těchto případech jako je v jazyce JavaScript, porovnání mezi dva různé typy výsledků v "undefined" a dokument bude přeskočen.
 
 ### <a name="logical-and-or-and-not-operators"></a>Logický (AND, OR a NOT) operátory
-Logické operátory pracovat logické hodnoty. Hello logické pravdivosti tabulky pro tyto operátory jsou uvedené v následující tabulky hello.
+Logické operátory pracovat logické hodnoty. Logické tabulky pravdivosti pro tyto operátory jsou uvedené v následujících tabulkách.
 
 | NEBO | True | False | Nedefinovaná |
 | --- | --- | --- | --- |
@@ -557,40 +557,40 @@ Logické operátory pracovat logické hodnoty. Hello logické pravdivosti tabulk
 | Nedefinovaná |Nedefinovaná |
 
 ### <a name="in-keyword"></a>IN – klíčové slovo
-Hello IN – klíčové slovo lze použít toocheck, zda zadaná hodnota odpovídá žádnou hodnotu v seznamu. Například tento dotaz vrací všechny rodiny dokumenty, kde je hello id "WakefieldFamily" nebo "AndersenFamily". 
+Klíčové slovo IN slouží ke kontrole, zda zadaná hodnota odpovídá žádnou hodnotu v seznamu. Například tento dotaz vrací všechny rodiny dokumenty, kde id je jedním z "WakefieldFamily" nebo "AndersenFamily". 
 
     SELECT *
     FROM Families 
     WHERE Families.id IN ('AndersenFamily', 'WakefieldFamily')
 
-Tento příklad vrátí všechny dokumenty, je-li hello stát žádné hello zadané hodnoty.
+Tento příklad vrátí všechny dokumenty, kde je stav žádný ze zadaných hodnot.
 
     SELECT *
     FROM Families 
     WHERE Families.address.state IN ("NY", "WA", "CA", "PA", "OH", "OR", "MI", "WI", "MN", "FL")
 
 ### <a name="ternary--and-coalesce--operators"></a>Unární (?) a operátory Coalesce (?)
-operátory Unární a Coalesce Hello se dá použít toobuild podmíněné výrazy, podobně jako toopopular programovacích jazyků, jako je C# a JavaScript. 
+Operátory Unární a Coalesce lze použít k vytvoření podmíněné výrazy, podobně jako oblíbené programovacích jazyků, jako je C# a JavaScript. 
 
-operátor unární (?) Hello může být velmi užitečný, pokud fyzicky dostavili vytváření nových vlastností JSON na hello. Například teď můžete napsat dotazy tooclassify hello třída úrovně do lidského čitelné podoby jako Začátečník nebo zprostředkující nebo Upřesnit, jak je uvedeno níže.
+Operátor unární (?) může být velmi užitečné při vytváření nové vlastnosti JSON za chodu. Například teď můžete napsat dotazy ke klasifikaci třída úrovně do lidského čitelné podoby jako Začátečník nebo zprostředkující nebo Upřesnit, jak je uvedeno níže.
 
      SELECT (c.grade < 5)? "elementary": "other" AS gradeLevel 
      FROM Families.children[0] c
 
-Můžete také vnořovat hello operátor volání toohello jako v dotazu hello níže.
+Můžete také vnořit volání operátor jako v dotazu níže.
 
     SELECT (c.grade < 5)? "elementary": ((c.grade < 9)? "junior": "high")  AS gradeLevel 
     FROM Families.children[0] c
 
-Jako s dalšími operátory dotazu, pokud hello odkazované vlastnosti podmíněného výrazu hello chybí v dokumentu, nebo pokud hello typy porovnávané se liší, pak tyto dokumenty jsou vyloučeny ve výsledcích dotazů hello.
+Jako s dalšími operátory dotazu, pokud v dokumentu chybí odkazovaný vlastností v podmíněným výrazem, nebo pokud typy porovnávané se liší, pak tyto dokumenty nevylučují se ve výsledcích dotazu.
 
-Hello Coalesce (?) operátor může být použit tooefficiently zkontrolujte přítomnost hello vlastnost (také známa jako je definován) v dokumentu. To je užitečné při dotazování na částečně strukturovaných nebo data smíšený typů. Tento dotaz vrací například hello "lastName" Pokud existuje, nebo "Přezdívka" hello, pokud není přítomen.
+Operátor Coalesce (?) slouží k efektivní (také známa jako kontrolovat přítomnost vlastnost je definován) v dokumentu. To je užitečné při dotazování na částečně strukturovaných nebo data smíšený typů. Tento dotaz vrací například "lastName", pokud existuje, nebo "Přezdívka" Pokud není přítomen.
 
     SELECT f.lastName ?? f.surname AS familyName
     FROM Families f
 
 ### <a id="EscapingReservedKeywords"></a>Vlastnost uvozovkách přístupového objektu
-Můžete také přístup k vlastnostem pomocí operátoru vlastnost uvozovkách hello `[]`. Například `SELECT c.grade` a `SELECT c["grade"]` odpovídají. Tato syntaxe je užitečné, když potřebujete tooescape vlastnost, která obsahuje mezery, speciální znaky, nebo se stane tooshare hello stejný název jako SQL – klíčové slovo nebo vyhrazené slovo.
+Můžete také přístup k vlastnostem pomocí operátoru vlastnost uvozovkách `[]`. Například `SELECT c.grade` a `SELECT c["grade"]` odpovídají. Tato syntaxe je užitečné, když potřebujete, abyste se vyhnuli vlastnost, která obsahuje mezery, speciální znaky, nebo se stane sdílet stejný název jako SQL – klíčové slovo nebo vyhrazené slovo.
 
     SELECT f["lastName"]
     FROM Families f
@@ -598,9 +598,9 @@ Můžete také přístup k vlastnostem pomocí operátoru vlastnost uvozovkách 
 
 
 ## <a id="SelectClause"></a>Klauzule SELECT
-Klauzule SELECT Hello (**`SELECT <select_list>`**) je povinná a určuje, jaké hodnoty jsou načteny z hello dotaz, podobně jako v ANSI SQL. podmnožina Hello je filtrované nad hello zdroj dokumenty jsou předávány do fáze projekce hello, kde hello zadané hodnoty JSON se načítají a je vytvořený nový objekt JSON, pro každý vstupní předán na něj. 
+Klauzule SELECT (**`SELECT <select_list>`**) je povinná a určuje, jaké hodnoty jsou načteny z dotazu, podobně jako v ANSI SQL. Podmnožina je filtrované nad dokumenty zdroje jsou předávány do fáze projekce, kde jsou načteny zadaných hodnot JSON a je vytvořený nový objekt JSON, pro každý vstupní předán na něj. 
 
-Hello následující příklad ukazuje typické dotaz SELECT. 
+Následující příklad ukazuje typické dotaz SELECT. 
 
 **Dotaz**
 
@@ -620,7 +620,7 @@ Hello následující příklad ukazuje typické dotaz SELECT.
 
 
 ### <a name="nested-properties"></a>Vnořené vlastnosti
-V následujícím příkladu hello, jsme jsou projekce dvě vnořené vlastnosti `f.address.state` a `f.address.city`.
+V následujícím příkladu jsme jsou projekce dvě vnořené vlastnosti `f.address.state` a `f.address.city`.
 
 **Dotaz**
 
@@ -636,7 +636,7 @@ V následujícím příkladu hello, jsme jsou projekce dvě vnořené vlastnosti
     }]
 
 
-Projekce také podporuje JSON výrazy, jak ukazuje následující příklad hello:
+Projekce také podporuje JSON výrazy, jak je znázorněno v následujícím příkladu:
 
 **Dotaz**
 
@@ -655,7 +655,7 @@ Projekce také podporuje JSON výrazy, jak ukazuje následující příklad hell
     }]
 
 
-Podívejme se na roli hello `$1` sem. Hello `SELECT` klauzule potřebuje toocreate objekt JSON a vzhledem k tomu, že žádný klíč je k dispozici, používáme názvy proměnných implicitní argument počínaje `$1`. Například tento dotaz vrací dvě implicitní argument proměnné s názvem bez přípony `$1` a `$2`.
+Podívejme se na roli `$1` sem. `SELECT` Klauzule musí vytvořit objekt JSON a vzhledem k tomu, že žádný klíč je k dispozici, používáme názvy proměnných implicitní argument počínaje `$1`. Například tento dotaz vrací dvě implicitní argument proměnné s názvem bez přípony `$1` a `$2`.
 
 **Dotaz**
 
@@ -678,9 +678,9 @@ Podívejme se na roli hello `$1` sem. Hello `SELECT` klauzule potřebuje toocrea
 
 
 ### <a name="aliasing"></a>Aliasy
-Nyní Pojďme hello příklad rozšířit nad s explicitní aliasy hodnot. Stejně jako se používá pro aliasy – klíčové slovo hello. Zadání je volitelné, jak je znázorněno při plánování hello druhá hodnota, která jako `NameInfo`. 
+Teď umožňuje rozšířit výše uvedeného příkladu s explicitní aliasy hodnot. Tak, jak jsou klíčové slovo používané pro aliasy. Zadání je volitelné, jak je znázorněno při promítnutí druhá hodnota jako `NameInfo`. 
 
-V případě, že dotaz má dvě vlastnosti se hello stejný název, aliasy musí být použité toorename jedno nebo obě hello vlastnosti tak, aby se jsou od sebe jednoznačně rozlišeny v projekci hello výsledek.
+V případě, že dotaz má dvě vlastnosti se stejným názvem, musí být aliasy používá k přejmenování jedno nebo obě vlastnosti tak, aby se jsou od sebe jednoznačně rozlišeny ve předpokládané výsledku.
 
 **Dotaz**
 
@@ -704,7 +704,7 @@ V případě, že dotaz má dvě vlastnosti se hello stejný název, aliasy mus�
 
 
 ### <a name="scalar-expressions"></a>Skalární výrazy
-Kromě toho tooproperty odkazuje, klauzule SELECT hello také podporuje skalární výrazy konstanty, aritmetických výrazech, logických výrazů, atd. Tady je příklad jednoduchého dotazu "Hello World".
+Kromě odkazů na vlastnost klauzule SELECT také podporuje skalární výrazy konstanty, aritmetických výrazech, logických výrazů, atd. Tady je příklad jednoduchého dotazu "Hello World".
 
 **Dotaz**
 
@@ -730,7 +730,7 @@ Zde je ukázka používající skalární výraz.
     }]
 
 
-V následujícím příkladu hello hello výsledek hello skalární výraz, který je logická hodnota.
+V následujícím příkladu je výsledek skalární výraz logická hodnota.
 
 **Dotaz**
 
@@ -750,7 +750,7 @@ V následujícím příkladu hello hello výsledek hello skalární výraz, kter
 
 
 ### <a name="object-and-array-creation"></a>Vytvoření objektu a pole
-Další klíčovou funkcí DocumentDB SQL rozhraní API je vytvoření pole nebo objektu. V předchozím příkladu hello Všimněte si, že jsme vytvořili nový objekt JSON. Podobně jeden můžete také vytvořit pole jak je znázorněno v hello následující příklady:
+Další klíčovou funkcí DocumentDB SQL rozhraní API je vytvoření pole nebo objektu. V předchozím příkladu Všimněte si, že jsme vytvořili nový objekt JSON. Podobně jeden můžete také vytvořit pole podle následujících příkladů:
 
 **Dotaz**
 
@@ -775,7 +775,7 @@ Další klíčovou funkcí DocumentDB SQL rozhraní API je vytvoření pole nebo
     ]
 
 ### <a id="ValueKeyword"></a>VALUE – klíčové slovo
-Hello **hodnotu** – klíčové slovo poskytuje hodnotu způsob tooreturn formátu JSON. Například hello dotazu vidíte níže vrátí hello skalární `"Hello World"` místo `{$1: "Hello World"}`.
+**Hodnotu** – klíčové slovo poskytuje způsob, jak vrátit hodnotu JSON. Například následující dotaz vrátí skalárních `"Hello World"` místo `{$1: "Hello World"}`.
 
 **Dotaz**
 
@@ -788,7 +788,7 @@ Hello **hodnotu** – klíčové slovo poskytuje hodnotu způsob tooreturn form�
     ]
 
 
-Hello následující dotaz vrátí hodnotu JSON hello bez hello `"address"` popisek ve výsledcích hello.
+Následující dotaz vrátí hodnotu JSON bez `"address"` popisek ve výsledcích.
 
 **Dotaz**
 
@@ -810,7 +810,7 @@ Hello následující dotaz vrátí hodnotu JSON hello bez hello `"address"` popi
       }
     ]
 
-Hello následující příklad rozšiřuje tento tooshow jak tooreturn JSON primitivní hodnoty (hello listové úrovni stromu hello JSON). 
+Následující příklad rozšiřuje na ukazují, jak vrátit JSON primitivní hodnoty (úroveň listu stromu JSON). 
 
 **Dotaz**
 
@@ -826,7 +826,7 @@ Hello následující příklad rozšiřuje tento tooshow jak tooreturn JSON prim
 
 
 ### <a name="-operator"></a>* – Operátor
-Hello speciální – operátor (*) je podporované tooproject hello dokumentu jako-je. Pokud se používá, musí být, že hello k projekci pouze pole. Při dotazu jako `SELECT * FROM Families f` je platný, `SELECT VALUE * FROM Families f ` a `SELECT *, f.id FROM Families f ` nejsou platné.
+Podporován je speciální operátor (*) do projektu dokumentu jako-je. Pokud se používá, musí být pouze předpokládané pole. Při dotazu jako `SELECT * FROM Families f` je platný, `SELECT VALUE * FROM Families f ` a `SELECT *, f.id FROM Families f ` nejsou platné.
 
 **Dotaz**
 
@@ -855,7 +855,7 @@ Hello speciální – operátor (*) je podporované tooproject hello dokumentu j
     }]
 
 ### <a id="TopKeyword"></a>Operátor TOP
-TOP – klíčové slovo Hello lze použít toolimit hello počet hodnot z dotazu. Při horní se používá ve spojení s hello klauzule ORDER by, sadu výsledků hello je omezená toohello první N počet seřazené hodnoty; Funkce hello první N počet výsledků v nedefinované pořadí. Jako osvědčený postup v příkazu SELECT, vždy používejte klauzuli ORDER BY pomocí klauzule TOP hello. To je jedinou možností hello toopredictably označují řádky, které jsou ovlivněné TOP. 
+TOP – klíčové slovo lze omezit počet hodnot z dotazu. Když horní se používá ve spojení s klauzulí ORDER BY, sadu výsledků dotazu je omezený na první číslo N seřazené hodnot. jinak vrátí první N počet výsledků v nedefinované pořadí. Jako osvědčený postup v příkazu SELECT, s vždy používejte klauzuli ORDER BY v klauzuli nejvyšší. Toto je jediný způsob, jak předvídatelné označují řádky, které jsou ovlivněné TOP. 
 
 **Dotaz**
 
@@ -885,7 +885,7 @@ TOP – klíčové slovo Hello lze použít toolimit hello počet hodnot z dotaz
 HORNÍ lze použít s konstantní hodnotou (jak jsme ukázali výše) nebo s hodnotou proměnné použití parametrických dotazů. Další podrobnosti najdete v tématu parametrizované dotazy níže.
 
 ### <a id="Aggregates"></a>Agregační funkce
-Můžete také provádět agregace v hello `SELECT` klauzule. Agregační funkce provádět výpočet sadu hodnot a vrátí jednu hodnotu. Například hello následující dotaz vrátí počet hello rodiny dokumentů v rámci kolekce hello.
+Můžete také provést agregace v `SELECT` klauzule. Agregační funkce provádět výpočet sadu hodnot a vrátí jednu hodnotu. Například následující dotaz vrátí počet rodiny dokumentů v rámci kolekce.
 
 **Dotaz**
 
@@ -898,7 +898,7 @@ Můžete také provádět agregace v hello `SELECT` klauzule. Agregační funkce
         "$1": 2
     }]
 
-Můžete se taky vrátit hello skalární hodnota hello agregační pomocí hello `VALUE` – klíčové slovo. Například hello následující dotaz vrátí hello počet hodnot jako jediné číslo:
+Můžete se taky vrátit skalární hodnota agregace pomocí `VALUE` – klíčové slovo. Například následující dotaz vrátí počet hodnot jako jediné číslo:
 
 **Dotaz**
 
@@ -909,7 +909,7 @@ Můžete se taky vrátit hello skalární hodnota hello agregační pomocí hell
 
     [ 2 ]
 
-Můžete také provést agregace v kombinaci s filtry. Například hello následující dotaz vrátí hello počet dokumentů s adresou hello v hello státu Washington.
+Můžete také provést agregace v kombinaci s filtry. Například následující dotaz vrátí počet dokumentů s adresou v státu Washington.
 
 **Dotaz**
 
@@ -921,28 +921,28 @@ Můžete také provést agregace v kombinaci s filtry. Například hello násled
 
     [ 1 ]
 
-Hello následující tabulka uvádí hello seznam podporovaných agregační funkce v DocumentDB rozhraní API. `SUM`a `AVG` se provádí přes číselných hodnot, zatímco `COUNT`, `MIN`, a `MAX` lze provést přes čísla, řetězce, logické hodnoty a hodnoty Null. 
+Následující tabulka uvádí seznam podporovaných agregační funkce v DocumentDB rozhraní API. `SUM`a `AVG` se provádí přes číselných hodnot, zatímco `COUNT`, `MIN`, a `MAX` lze provést přes čísla, řetězce, logické hodnoty a hodnoty Null. 
 
 | Využití | Popis |
 |-------|-------------|
-| POČET | Vrátí hello počet položek ve výrazu hello. |
-| SOUČET   | Vrátí hello součet všech hodnot hello ve výrazu hello. |
-| MIN.   | Vrátí hello minimální hodnotu ve výrazu hello. |
-| MAXIMÁLNÍ POČET   | Vrátí hello maximální hodnotu ve výrazu hello. |
-| PRŮMĚR   | Vrátí hello průměr hodnot hello ve výrazu hello. |
+| POČET | Vrátí počet položek ve výrazu. |
+| SOUČET   | Vrátí součet všech hodnot ve výrazu. |
+| MIN.   | Vrátí minimální hodnotu ve výrazu. |
+| MAXIMÁLNÍ POČET   | Vrací maximální hodnotu ve výrazu. |
+| PRŮMĚR   | Vrátí průměr hodnot ve výrazu. |
 
-Agreguje lze také provést přes hello výsledky iterace pole. Další informace najdete v tématu [pole iterace v dotazech](#Iteration).
+Agreguje lze také provést přes výsledky iterace pole. Další informace najdete v tématu [pole iterace v dotazech](#Iteration).
 
 > [!NOTE]
-> Při použití hello Průzkumníka dotazů portálu Azure, Všimněte si, že agregace dotazy může vracet hello částečně agregované výsledky dotazu stránky. Hello sady SDK vytvoří jednu kumulativní hodnotu na všech stránkách. 
+> Při použití Průzkumníka dotazů portálu Azure, Všimněte si, že agregace dotazy může vracet částečně agregované výsledky dotazu stránky. Sady SDK vytvoří jednu kumulativní hodnotu na všech stránkách. 
 > 
-> V pořadí tooperform agregace dotazy pomocí kódu, potřebujete .NET SDK 1.12.0, .NET Core SDK 1.1.0 nebo Java SDK 1.9.5 nebo vyšší.    
+> Aby bylo možné provádět dotazy agregace pomocí kódu, je nutné .NET SDK 1.12.0, .NET Core SDK 1.1.0 nebo Java SDK 1.9.5 nebo vyšší.    
 >
 
 ## <a id="OrderByClause"></a>Klauzuli ORDER by
-Podobně jako v ANSI SQL, můžete zahrnout volitelné klauzule Order By při dotazování. klauzule Hello může obsahovat volitelné ASC nebo DESC argument toospecify hello pořadí ve kterém musí načíst výsledky.
+Podobně jako v ANSI SQL, můžete zahrnout volitelné klauzule Order By při dotazování. V klauzuli může zahrnovat nepovinný argument ASC nebo DESC zadat pořadí, ve kterém musí načíst výsledky.
 
-Zde je například dotaz, který načte rodiny v pořadí podle název hello města trvalé.
+Tady je příklad dotaz, který načte rodiny v pořadí podle název trvalé města.
 
 **Dotaz**
 
@@ -963,7 +963,7 @@ Zde je například dotaz, který načte rodiny v pořadí podle název hello mě
       }
     ]
 
-A tady je dotaz, který načte rodiny v pořadí podle data vytvoření, které je uloženo jako číslo představující hello epoch čas, tj, uplynulý čas od 1. ledna 1970 v sekundách.
+A zde uvádíme dotaz, který načte rodiny v pořadí podle data vytvoření, který je uložený jako číslo představující epoch čas, tj, uplynulý čas od 1 ledna, pod hodnotou 1970 v sekundách.
 
 **Dotaz**
 
@@ -987,7 +987,7 @@ A tady je dotaz, který načte rodiny v pořadí podle data vytvoření, které 
 ## <a id="Advanced"></a>Pokročilé databázových koncepcí a dotazy SQL
 
 ### <a id="Iteration"></a>Iterace
-Byl přidán nový konstrukce prostřednictvím hello **IN** – klíčové slovo v DocumentDB API SQL tooprovide podpora iterování přes pole JSON. Zdroj FROM Hello poskytuje podporu pro iterací. Začneme hello následující ukázka:
+Byl přidán nový konstrukce prostřednictvím **IN** – klíčové slovo v DocumentDB SQL rozhraní API poskytuje podporu pro iterování přes pole JSON. Zdroj FROM poskytuje podporu pro iterací. Začneme v následujícím příkladu:
 
 **Dotaz**
 
@@ -1021,7 +1021,7 @@ Byl přidán nový konstrukce prostřednictvím hello **IN** – klíčové slov
       ]
     ]
 
-Nyní Podíváme se na další dotaz, který provádí iteraci přes podřízené položky v kolekci hello. Všimněte si hello rozdíl v poli výstup hello. Tento příklad rozdělí `children` a vyrovná hello výsledky do jednoho pole.  
+Nyní Podíváme se na další dotaz, který provádí iteraci přes podřízené položky v kolekci. Poznámka: rozdíl v poli výstup. Tento příklad rozdělí `children` a vyrovná výsledky do jednoho pole.  
 
 **Dotaz**
 
@@ -1051,7 +1051,7 @@ Nyní Podíváme se na další dotaz, který provádí iteraci přes podřízen�
       }
     ]
 
-To může být další používané toofilter na každou položku hello pole, jak je znázorněno v hello následující ukázka:
+To dále lze filtrovat na každou položku pole, jak je znázorněno v následujícím příkladu:
 
 **Dotaz**
 
@@ -1065,7 +1065,7 @@ To může být další používané toofilter na každou položku hello pole, ja
       "givenName": "Lisa"
     }]
 
-Můžete také provést agregace přes hello výsledek iterace pole. Například hello následující dotaz vrátí hello počet podřízených prvků mezi všechny řady.
+Můžete také provést agregace přes výsledek iterace pole. Například následující dotaz vrátí počet podřízených prvků mezi všechny řady.
 
 **Dotaz**
 
@@ -1081,11 +1081,11 @@ Můžete také provést agregace přes hello výsledek iterace pole. Například
     ]
 
 ### <a id="Joins"></a>Spojení
-V relační databázi je důležité hello nutné toojoin mezi tabulkami. Jeho hello logické corollary toodesigning normalized schémat. Jinak zvláštní toothis, DocumentDB rozhraní API se zabývá hello nenormalizované datový model bez schémat dokumentů. Toto je logický ekvivalent hello a "spojení sama na sebe".
+V relační databázi je důležité potřeba připojení u tabulky. Je logické důsledkem k navrhování normalizovaný schémat. Na rozdíl od toho se zabývá DocumentDB API nenormalizované datový model bez schémat dokumentů. Toto je logický ekvivalent a "spojení sama na sebe".
 
-Hello syntaxe, který podporuje jazyk hello je < from_source1 > připojit < from_source2 > připojit... Připojte < from_sourceN >. Celkově platí, tento příkaz vrátí sadu **N**- n-tice (řazené kolekce členů s **N** hodnoty). Každá řazená kolekce členů má vyprodukované všechny aliasy kolekce iterování přes jejich příslušné sady hodnot. Jinými slovy Toto je úplná smíšený produkt sad hello účastní spojení hello.
+Syntaxe, které jazyk podporuje je < from_source1 > připojit < from_source2 > připojit... Připojte < from_sourceN >. Celkově platí, tento příkaz vrátí sadu **N**- n-tice (řazené kolekce členů s **N** hodnoty). Každá řazená kolekce členů má vyprodukované všechny aliasy kolekce iterování přes jejich příslušné sady hodnot. Jinými slovy Toto je úplná smíšený produkt sad účastní spojení.
 
-Hello následující příklady ukazují, jak funguje klauzuli JOIN hello. V následujícím příkladu hello hello výsledek je prázdná, protože hello smíšený produkt každého dokumentu ze zdroje a prázdnou sadou je prázdný.
+Následující příklady ukazují, jak funguje klauzuli JOIN. V následujícím příkladu výsledkem je prázdný, od smíšený produkt každého dokumentu ze zdroje a prázdnou sadou je prázdný.
 
 **Dotaz**
 
@@ -1099,7 +1099,7 @@ Hello následující příklady ukazují, jak funguje klauzuli JOIN hello. V ná
     }]
 
 
-V následujícím příkladu hello, je hello spojení mezi kořen dokumentu hello a hello `children` subroot. Je smíšený produkt mezi dvěma objekty JSON. Hello skutečnost, že podřízené objekty je pole není platná v hello spojení, protože jsme se zabývají na jednom kořenovou, která je hello podřízených prvků pole. Proto hello výsledek obsahuje pouze dva výsledky, protože hello smíšený produkt každý dokument s polem hello vypočítá přesně pouze jeden dokument.
+V následujícím příkladu je spojení mezi kořen dokumentu a `children` subroot. Je smíšený produkt mezi dvěma objekty JSON. Skutečnost, že je podřízených prvků pole není platná ve spojení vzhledem k tomu, že jsme se zabývají na jednom kořenovou, která je pole podřízené objekty. Proto výsledek obsahuje pouze dva výsledky, protože smíšený produkt každý dokument s poli vypočítá přesně pouze jeden dokument.
 
 **Dotaz**
 
@@ -1119,7 +1119,7 @@ V následujícím příkladu hello, je hello spojení mezi kořen dokumentu hell
     ]
 
 
-Hello následující příklad ukazuje konvenční připojení:
+Následující příklad ukazuje konvenční připojení:
 
 **Dotaz**
 
@@ -1143,15 +1143,15 @@ Hello následující příklad ukazuje konvenční připojení:
 
 
 
-Hello nejprve thing toonote je tento hello `from_source` z hello **připojení** klauzule je iterátor. Ano hello tok v takovém případě je následující:  
+Nejprve si všimněte si je, že `from_source` z **připojení** klauzule je iterátor. Ano tok v takovém případě je následující:  
 
-* Rozbalte každý podřízený element **c** v poli hello.
-* Použít smíšený produkt s hello kořen dokumentu hello **f** s každou podřízený element **c** , byl průmětu v prvním kroku hello.
-* Nakonec projektu hello kořenový objekt **f** name – vlastnost samostatně. 
+* Rozbalte každý podřízený element **c** v poli.
+* Použít smíšený produkt s kořene dokumentu **f** s každou podřízený element **c** , byl průmětu v prvním kroku.
+* Nakonec projektu kořenový objekt **f** name – vlastnost samostatně. 
 
-první dokument Hello (`AndersenFamily`) obsahuje pouze jeden podřízený element, takže hello sadu výsledků dotazu obsahuje pouze jeden objekt odpovídající toothis dokumentu. druhý dokumentu Hello (`WakefieldFamily`) obsahuje dva podřízené položky. Ano hello smíšený produkt vytváří samostatný objekt pro všechny podřízené, což by vedlo k dva objekty, jednu pro každý dokument podřízené odpovídající toothis. Kořenová Hello pole v obou tyto dokumenty jsou stejné, hello stejně, jako byste očekávali v smíšený produkt.
+První dokument (`AndersenFamily`) obsahuje pouze jeden podřízený element, takže sadu výsledků dotazu obsahuje pouze jeden objekt odpovídající do tohoto dokumentu. Druhý dokumentu (`WakefieldFamily`) obsahuje dva podřízené položky. Ano smíšený produkt vytváří samostatný objekt pro všechny podřízené, což by vedlo k dva objekty, jeden pro každou podřízenou odpovídající do tohoto dokumentu. Kořenové pole v obou tyto dokumenty jsou stejné, stejně, jako byste očekávali v smíšený produkt.
 
-Hello skutečných nástroj z hello spojení je tooform řazenými kolekcemi členů z hello smíšený produkt ve tvaru, který je jinak tooproject obtížná. Kromě toho, jak vidíte v následujícím příkladu hello, byste mohli vyfiltrovat na kombinaci hello řazené kolekce členů umožňuje hello Uživatel reagoval podmínku celkové uspokojit hello řazené kolekce členů.
+Skutečné nástroje připojení k je formulář řazených kolekcí členů z smíšený produkt tvar, který je jinak obtížné projektu. Kromě toho, jak vidíte v následujícím příkladu můžete vyfiltrovat na kombinaci řazené kolekce členů, aby se umožňuje se uživatel rozhodl podmínku splňují celkové řazené kolekce členů.
 
 **Dotaz**
 
@@ -1186,7 +1186,7 @@ Hello skutečných nástroj z hello spojení je tooform řazenými kolekcemi čl
 
 
 
-Tento příklad představuje přirozené rozšíření Dobrý den předcházející příklad a spojí double. Ano hello smíšený produkt je možné zobrazit jako hello následující pseudo kódu:
+Tento příklad představuje přirozené rozšíření v předchozím příkladu a spojí double. Ano smíšený produkt lze zobrazit jako pseudo následující kód:
 
     for-each(Family f in Families)
     {    
@@ -1202,9 +1202,9 @@ Tento příklad představuje přirozené rozšíření Dobrý den předcházejí
         }
     }
 
-`AndersenFamily`má jednu podřízenou, který má jednoho nebo více mazlíčků. Ano, hello smíšený produkt vypočítá jeden řádek (1\*1\*1) z této rodiny. WakefieldFamily ale má dva podřízené, ale pouze jednu podřízenou "Jesse" má mazlíčků. Jesse, když má dva mazlíčků. Proto hello smíšený produkt vypočítá 1\*1\*řádků z této rodině, 2 = 2.
+`AndersenFamily`má jednu podřízenou, který má jednoho nebo více mazlíčků. Ano, smíšený produkt vypočítá jeden řádek (1\*1\*1) z této rodiny. WakefieldFamily ale má dva podřízené, ale pouze jednu podřízenou "Jesse" má mazlíčků. Jesse, když má dva mazlíčků. Proto smíšený produkt vypočítá 1\*1\*řádků z této rodině, 2 = 2.
 
-V dalším příkladu hello, je další filtr na `pet`. Nevztahuje se na všechny řazených kolekcí členů hello kde hello pet název není "Stínové". Všimněte si, že jsme jsou možné toobuild řazenými kolekcemi členů z pole filtru na všech elementů hello hello řazené kolekce členů a projektu libovolnou kombinaci elementů hello. 
+V následujícím příkladu je další filtr na `pet`. Nevztahuje se na všech záznamů, kde název pet není "Stínové". Všimněte si, že jsou jsme sestavení řazenými kolekcemi členů z pole filtru na všech elementů řazené kolekce členů a projektu libovolnou kombinaci prvků. 
 
 **Dotaz**
 
@@ -1230,17 +1230,17 @@ V dalším příkladu hello, je další filtr na `pet`. Nevztahuje se na všechn
 
 
 ## <a id="JavaScriptIntegration"></a>Integrace jazyka JavaScript
-Azure Cosmos DB poskytuje programovací model pro spouštění logiky aplikace založené na jazyce JavaScript přímo na hello kolekce z hlediska uložených procedur a aktivačních událostí. To umožňuje, aby obě:
+Azure Cosmos DB poskytuje programovací model pro spouštění logiky aplikace založené na jazyce JavaScript přímo na kolekcích z hlediska uložených procedur a aktivačních událostí. To umožňuje, aby obě:
 
-* Možnost toodo vysoce výkonné transakční operace CRUD a dotazy na dokumenty v kolekci na základě hello těsná integrace běhu programu JavaScript přímo v rámci hello databázového stroje. 
-* Fyzická modelování tok řízení, proměnné rozsahu a přiřazení a integrace výjimky zpracování primitiv s databázové transakce. Další informace o podpoře Azure Cosmos DB integrace jazyka JavaScript naleznete v toohello JavaScript na straně serveru programovatelnosti dokumentaci.
+* Možnost udělat transakční operace CRUD vysoce výkonné a dotazy na dokumenty v kolekci na základě těsná integrace běhu programu JavaScript přímo v rámci databázového stroje. 
+* Fyzická modelování tok řízení, proměnné rozsahu a přiřazení a integrace výjimky zpracování primitiv s databázové transakce. Další podrobnosti o podpoře Azure Cosmos DB integrace jazyka JavaScript naleznete v dokumentaci serverové programovatelnosti JavaScript.
 
 ### <a id="UserDefinedFunctions"></a>Uživatelem definované funkce (UDF)
-Společně s typy hello už definované v tomto článku DocumentDB SQL rozhraní API poskytuje podporu pro uživatele definované funkce (UDF). Skalární funkce UDF zejména, jsou podporovány, kde hello vývojáři můžete předat v počtu nula či více argumentů a vrácení zpět výsledku jeden argument. Každý z těchto argumentů, se kontroluje na právě platné hodnoty na JSON.  
+Společně s typy již definována v tomto článku DocumentDB SQL rozhraní API poskytuje podporu pro uživatele definované funkce (UDF). Skalární funkce UDF zejména, jsou podporovány, kde mohou vývojáři předejte v počtu nula či více argumentů a vrácení zpět výsledku jeden argument. Každý z těchto argumentů, se kontroluje na právě platné hodnoty na JSON.  
 
-Hello syntaxi DocumentDB SQL rozhraní API je rozšířeno toosupport vlastní logiky aplikace pomocí tyto funkce definované uživatelem. Funkce UDF lze registrovat pomocí rozhraní API DocumentDB a pak odkazuje v rámci dotazu SQL. Ve skutečnosti hello UDF jsou exquisitely určená toobe vyvolané dotazy. Jako volba corollary toothis, funkce UDF nemají objekt kontextu toohello přístup který hello jiných JavaScript mají typy (uložených procedur a aktivačních událostí). Vzhledem k tomu, že dotazy se spustí jen pro čtení, mohou spouštět na primární nebo na sekundární repliky. Proto UDF jsou navrženou toorun na sekundárních replikách na rozdíl od jiných typů jazyka JavaScript.
+Syntaxi DocumentDB SQL rozhraní API není rozšířené k podpoře vlastní logiky aplikace pomocí tyto funkce definované uživatelem. Funkce UDF lze registrovat pomocí rozhraní API DocumentDB a pak odkazuje v rámci dotazu SQL. Ve skutečnosti UDF jsou exquisitely navrženy pro vyvolat dotazy. Jako nezbytným důsledkem této volby UDF nemají přístup k objektu kontextu, které mají jiné JavaScript typy (uložených procedur a aktivačních událostí). Vzhledem k tomu, že dotazy se spustí jen pro čtení, mohou spouštět na primární nebo na sekundární repliky. Proto UDF jsou určená ke spuštění na sekundárních replikách na rozdíl od jiných typů jazyka JavaScript.
 
-Níže je příklad, jak můžete registrovat UDF u databáze hello Cosmos DB, konkrétně v rámci kolekce dokumentů.
+Níže je příklad, jak se dají registrovat UDF v databázi Cosmos DB, konkrétně v rámci kolekce dokumentů.
 
        UserDefinedFunction regexMatchUdf = new UserDefinedFunction
        {
@@ -1254,12 +1254,12 @@ Níže je příklad, jak můžete registrovat UDF u databáze hello Cosmos DB, k
            UriFactory.CreateDocumentCollectionUri("testdb", "families"), 
            regexMatchUdf).Result;  
 
-Hello předchozí příklad vytvoří UDF, jehož název je `REGEX_MATCH`. Přijímá dvou řetězcových hodnot JSON `input` a `pattern` a ověří, zda je první odpovídá hello zadat vzor hello v hello druhý pomocí funkce string.match() jazyce JavaScript.
+V předchozím příkladu se vytváří UDF, jehož název je `REGEX_MATCH`. Přijímá dvou řetězcových hodnot JSON `input` a `pattern` a ověří, zda je první odpovídá vzoru zadaný ve druhém pomocí funkce string.match() jazyce JavaScript.
 
-Tato UDF jsme teď můžete použít v dotazu v projekci. Funkce UDF musí být kvalifikovaný pomocí hello malá a velká písmena předponu "udf." Když je volána v rámci dotazů. 
+Tato UDF jsme teď můžete použít v dotazu v projekci. Funkce UDF musí být kvalifikovaný pomocí malá a velká písmena předponu "udf." Když je volána v rámci dotazů. 
 
 > [!NOTE]
-> Předchozí too3/17/2015 Cosmos DB podporované UDF volání bez hello "udf." Předpona jako vyberte REGEX_MATCH(). Tento vzor volání je zastaralá.  
+> Před 3/17/2015 Cosmos DB podporované UDF volání bez "udf." Předpona jako vyberte REGEX_MATCH(). Tento vzor volání je zastaralá.  
 > 
 > 
 
@@ -1279,7 +1279,7 @@ Tato UDF jsme teď můžete použít v dotazu v projekci. Funkce UDF musí být 
       }
     ]
 
-Hello UDF můžete použít také uvnitř filtr, jak je znázorněno v následujícím příkladu hello, také kvalifikovaný pomocí hello "udf." Předpona:
+UDF můžete použít také uvnitř filtr, jak je znázorněno v následujícím příkladu také kvalifikovaný pomocí "udf." Předpona:
 
 **Dotaz**
 
@@ -1297,7 +1297,7 @@ Hello UDF můžete použít také uvnitř filtr, jak je znázorněno v následuj
 
 V podstatě UDF jsou platné skalární výrazy a mohou být používány projekce a filtry. 
 
-tooexpand na výkon hello UDF, podíváme se na další příklad s podmíněnou logiku:
+Chcete-li rozšířit na výkon UDF, podíváme se na další příklad s podmíněnou logiku:
 
        UserDefinedFunction seaLevelUdf = new UserDefinedFunction()
        {
@@ -1320,7 +1320,7 @@ tooexpand na výkon hello UDF, podíváme se na další příklad s podmíněnou
                 seaLevelUdf);
 
 
-Dole je příklad, cvičení hello UDF.
+Níže je příklad, který vykonává UDF.
 
 **Dotaz**
 
@@ -1341,21 +1341,21 @@ Dole je příklad, cvičení hello UDF.
     ]
 
 
-Jako hello předchozí příklady představením, funkce UDF integrovat hello sílu jazyka JavaScript tooprovide hello DocumentDB SQL rozhraní API bohaté programovatelný rozhraní toodo komplexní procedurální, podmíněného logiku hello pomoci integrované prostředí JavaScript runtime Možnosti.
+Jako v předchozích příkladech prezentují, funkce UDF integrovat s DocumentDB SQL rozhraní API k poskytnutí bohaté programovatelný rozhraní udělat komplexní logiku procedurální, podmíněného pomocí integrované funkce JavaScript runtime sílu jazyka JavaScript.
 
-DocumentDB SQL rozhraní API poskytuje hello argumenty toohello UDF pro každý dokument ve zdroji hello, v hello aktuální fázi (klauzuli WHERE nebo klauzuli SELECT) zpracování hello UDF. Hello výsledek je obsažena v bezproblémově hello celkové spouštěcí kanál. Pokud hello vlastnosti odkazované tooby hello UDF parametry nejsou k dispozici v hello hodnota JSON hello, že parametr se považuje za není definována a proto hello UDF volání zcela přeskočen. Podobně pokud hello výsledek hello UDF, není součástí hello výsledek. 
+DocumentDB SQL rozhraní API poskytuje argumenty k UDF pro každý dokument ve zdroji na aktuální fázi (klauzuli WHERE nebo klauzuli SELECT) zpracování UDF. Výsledkem je obsažena v celkové spouštěcí kanál bezproblémově. Jestliže podle vlastnosti ve UDF parametry nejsou k dispozici v hodnotě JSON, parametr se považuje za není definována a proto je volání UDF zcela přeskočeno. Podobně pokud výsledek UDF, není součástí výsledek. 
 
-V souhrnu funkce UDF jsou skvělý nástroje toodo komplexní obchodní logiky v rámci dotazu hello.
+V souhrnu funkce UDF jsou vynikající aplikace udělat komplexní obchodní logiky v rámci dotazu.
 
 ### <a name="operator-evaluation"></a>Vyhodnocení – operátor
-Cosmos databáze, hello důsledku způsobená databáze JSON nevykresluje parallels s operátory jazyka JavaScript a jeho sémantiku vyhodnocení. Při Cosmos DB pokusí toopreserve sémantiku JavaScript z hlediska podporu JSON, v některých případech odchylují hello operaci vyhodnocení.
+Cosmos databáze, důsledku způsobená databáze JSON nevykresluje parallels s operátory jazyka JavaScript a jeho sémantiku vyhodnocení. Při Cosmos DB pokusí zachovat sémantiku JavaScript z hlediska podporu JSON, v některých případech odchylují vyhodnocení operaci.
 
-V DocumentDB SQL rozhraní API, na rozdíl od v tradiční SQL hello typů hodnot se často není známý dokud hello hodnoty jsou načteny z databáze. V pořadí tooefficiently spouštět dotazy, většina hello operátory má požadavky na typ strict. 
+V DocumentDB SQL rozhraní API, na rozdíl od v tradiční SQL, typy hodnot, jsou často není známý teprve po načtení hodnoty z databáze. Efektivní provádění dotazů, většina operátory má požadavky na typ strict. 
 
-DocumentDB API SQL neprovede implicitní převody, na rozdíl od jazyka JavaScript. Například dotazu jako `SELECT * FROM Person p WHERE p.Age = 21` odpovídá dokumentů, které obsahují ve vlastnosti stáří, jehož hodnota je 21. Jiného dokumentu, jejichž stáří vlastnost odpovídá řetězec "21" nebo jiných může být nekonečné variace jako "021", "21.0", "0021", "00021", nebude odpovídat atd. Toto je na rozdíl od toohello JavaScript, kde jsou hodnoty řetězce hello implicitně převedena toonumbers (podle operátoru, například: ==). Tato volba je zásadní pro efektivní indexu odpovídající v DocumentDB SQL rozhraní API. 
+DocumentDB API SQL neprovede implicitní převody, na rozdíl od jazyka JavaScript. Například dotazu jako `SELECT * FROM Person p WHERE p.Age = 21` odpovídá dokumentů, které obsahují ve vlastnosti stáří, jehož hodnota je 21. Jiného dokumentu, jejichž stáří vlastnost odpovídá řetězec "21" nebo jiných může být nekonečné variace jako "021", "21.0", "0021", "00021", nebude odpovídat atd. Jde na rozdíl od jazyka JavaScript, kde jsou implicitně převedena na čísla řetězcové hodnoty (podle operátoru, například: ==). Tato volba je zásadní pro efektivní indexu odpovídající v DocumentDB SQL rozhraní API. 
 
 ## <a name="parameterized-sql-queries"></a>Parametrizované dotazy SQL
-Cosmos DB podporuje dotazy s parametry vyjádřit s hello známé @ zápis. Parametrizované SQL poskytuje robustní zpracování a uvozovací znaky vstup uživatele brání náhodnou expozici dat prostřednictvím Injektáž SQL. 
+Cosmos DB podporuje dotazy s parametry vyjádřené se známými @ zápis. Parametrizované SQL poskytuje robustní zpracování a uvozovací znaky vstup uživatele brání náhodnou expozici dat prostřednictvím Injektáž SQL. 
 
 Můžete například napsat dotaz, který přebírá příjmení a stav adresy jako parametry a potom spusťte pro různé hodnoty příjmení a stav adresy založené na vstup uživatele.
 
@@ -1363,7 +1363,7 @@ Můžete například napsat dotaz, který přebírá příjmení a stav adresy j
     FROM Families f
     WHERE f.lastName = @lastName AND f.address.state = @addressState
 
-Tento požadavek potom můžete odeslat tooCosmos DB jako parametrizovaného dotazu JSON, jako vidíte níže.
+Tento požadavek potom můžete odeslat do databáze Cosmos jako parametrizovaného dotazu JSON, jako vidíte níže.
 
     {      
         "query": "SELECT * FROM Families f WHERE f.lastName = @lastName AND f.address.state = @addressState",     
@@ -1373,7 +1373,7 @@ Tento požadavek potom můžete odeslat tooCosmos DB jako parametrizovaného dot
         ] 
     }
 
-Hello argument tooTOP se dá nastavit pomocí parametrizované dotazy, jako vidíte níže.
+Argument TOP se dá nastavit pomocí parametrizované dotazy, jako vidíte níže.
 
     {      
         "query": "SELECT TOP @n * FROM Families",     
@@ -1395,39 +1395,39 @@ Cosmos DB podporuje také řadu integrovaných funkcí pro běžné operace, kte
 | Funkce pole         | ARRAY_CONCAT, ARRAY_CONTAINS, ARRAY_LENGTH a ARRAY_SLICE                                                                                         |
 | Prostorové funkce       | ST_DISTANCE, ST_WITHIN, ST_INTERSECTS, ST_ISVALID a ST_ISVALIDDETAILED                                                                           | 
 
-Pokud aktuálně používáte uživatelem definované funkce (UDF) pro kterou integrovaná funkce je nyní k dispozici, byste měli používat hello odpovídající integrovaná funkce, bude rychlejší toorun toobe a další efektivně. 
+Pokud aktuálně používáte uživatelem definované funkce (UDF) pro kterou integrovaná funkce je nyní k dispozici, byste měli používat odpovídající integrované funkce, má být ke spuštění rychlejší a efektivnější. 
 
 ### <a name="mathematical-functions"></a>Matematické funkce
-Hello matematické funkce každé provedení výpočtu, podle vstupní hodnoty, které jsou k dispozici jako argumenty a vrátí číselnou hodnotu. Zde je tabulku podporovaných předdefinovaných matematické funkce.
+Matematické funkce provedení výpočtu, podle vstupní hodnoty, které jsou k dispozici jako argumenty a vrátí číselnou hodnotu. Zde je tabulku podporovaných předdefinovaných matematické funkce.
 
 
 | Využití | Popis |
 |----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [[ABS (num_expr)](#bk_abs) | Vrátí hello absolutní (kladné) hello zadána hodnota číselného výrazu. |
-| [Horní MEZ (num_expr)](#bk_ceiling) | Vrátí hello nejmenší celé číslo větší než nebo rovno, hello zadaný číselný výraz. |
-| [FLOOR (num_expr)](#bk_floor) | Vrátí hello největší celé číslo menší než nebo rovna toohello zadán číselný výraz. |
-| [EXP (num_expr)](#bk_exp) | Vrátí exponent hello hello zadán číselný výraz. |
-| [PROTOKOL (num_expr [, základní])](#bk_log) | Vrátí hello přirozený logaritmus hello číselného výrazu, nebo pomocí hello logaritmus hello zadán základní |
-| [LOG10 (num_expr)](#bk_log10) | Vrátí hello základu 10 logaritmické hello zadána hodnota číselného výrazu. |
-| [ZAOKROUHLÍ (num_expr)](#bk_round) | Vrátí číselnou hodnotu, zaokrouhlené toohello nejbližší celé číslo. |
-| [TRUNC (num_expr)](#bk_trunc) | Vrátí číselnou hodnotu, zkrácený toohello nejbližší celé číslo. |
-| [SQRT (num_expr)](#bk_sqrt) | Vrátí hello druhou odmocninu čísla hello zadán číselný výraz. |
-| [HRANATÉ (num_expr)](#bk_square) | Vrátí hello odmocnina z hello zadán číselný výraz. |
-| [NAPÁJENÍ (num_expr, num_expr)](#bk_power) | Vrátí hello výkon hello zadán toohello hodnotu číselného výrazu. |
-| [PŘIHLÁŠENÍ (num_expr)](#bk_sign) | Vrátí hello přihlašovací (-1, 0, 1) hello zadána hodnota číselného výrazu. |
-| [ACOS (num_expr)](#bk_acos) | Vrátí hello úhel v radiánech, jehož kosinus je hello zadaný číselného výrazu; Zkratka Arkus. |
-| [ASIN (num_expr)](#bk_asin) | Vrátí hello úhlu, v radiánech, jehož sinus je hello zadán číselný výraz. To je také označován Arkus sinus. |
-| [ATAN (num_expr)](#bk_atan) | Vrátí hello úhlu, v radiánech, jehož tangens je hello zadán číselný výraz. To je také označován Arkus. |
-| [ATN2 (num_expr)](#bk_atn2) | Vrátí text hello úhel v radiánech, mezi hello kladné osy x a hello ray z hello počátek toohello bodu (y, x), kde x a y jsou hodnoty hello hello dvou výrazů zadaný float. |
-| [COS (num_expr)](#bk_cos) | Vrátí hello trigonometrické kosinus hello úhlu, uvedeného v radiánech, v hello zadaný výraz. |
-| [COP (num_expr)](#bk_cot) | Vrátí hello trigonometrické kotangens hello úhlu, uvedeného v radiánech, v hello zadán číselný výraz. |
-| [STUPŇŮ (num_expr)](#bk_degrees) | Vrátí hello odpovídající úhel ve stupních pro úhlu uvedeného v radiánech. |
-| [PI)](#bk_pi) | Vrátí hello konstantní hodnotu čísla PÍ. |
+| [[ABS (num_expr)](#bk_abs) | Vrátí absolutní hodnotu (kladné) zadaný číselný výraz. |
+| [Horní MEZ (num_expr)](#bk_ceiling) | Vrátí nejmenší hodnotu, celé číslo větší než nebo rovna hodnotě zadané číselný výraz. |
+| [FLOOR (num_expr)](#bk_floor) | Vrátí největší celé číslo menší než nebo rovna zadané číselný výraz. |
+| [EXP (num_expr)](#bk_exp) | Vrátí exponent zadaný číselný výraz. |
+| [PROTOKOL (num_expr [, základní])](#bk_log) | Vrátí přirozený logaritmus zadaný číselný výraz nebo pomocí o zadaném základu logaritmus |
+| [LOG10 (num_expr)](#bk_log10) | Vrátí hodnotu logaritmické základu 10 zadaný číselný výraz. |
+| [ZAOKROUHLÍ (num_expr)](#bk_round) | Vrátí číselnou hodnotu, zaokrouhlí na nejbližší celé číslo. |
+| [TRUNC (num_expr)](#bk_trunc) | Vrátí číselnou hodnotu, zkrácen na nejbližší celé číslo. |
+| [SQRT (num_expr)](#bk_sqrt) | Vrátí druhou odmocninu čísla zadaný číselný výraz. |
+| [HRANATÉ (num_expr)](#bk_square) | Vrátí druhou mocninu zadaný číselný výraz. |
+| [NAPÁJENÍ (num_expr, num_expr)](#bk_power) | Hodnota zadaná vrátí sílu zadaný číselný výraz. |
+| [PŘIHLÁŠENÍ (num_expr)](#bk_sign) | Vrátí hodnotu přihlašovací (-1, 0, 1) zadaný číselný výraz. |
+| [ACOS (num_expr)](#bk_acos) | Vrací úhel, v radiánech, jehož kosinus je zadaný číselný výraz. Zkratka Arkus. |
+| [ASIN (num_expr)](#bk_asin) | Vrací úhel, v radiánech, jehož sinus je zadaný číselný výraz. To je také označován Arkus sinus. |
+| [ATAN (num_expr)](#bk_atan) | Vrací úhel, v radiánech, jehož tangens je zadaný číselný výraz. To je také označován Arkus. |
+| [ATN2 (num_expr)](#bk_atn2) | Vrací úhel, v radiánech, mezi kladné osy x a paprsek z tohoto počátku do bodu (y, x), kde x a y jsou hodnoty dvou výrazů zadaný float. |
+| [COS (num_expr)](#bk_cos) | Vrací trigonometrické kosinus určeného úhlu v radiánech v zadaným výrazem. |
+| [COP (num_expr)](#bk_cot) | Vrací trigonometrické kotangens zadaný úhel v radiánech v zadaný číselný výraz. |
+| [STUPŇŮ (num_expr)](#bk_degrees) | Vrací odpovídající úhel ve stupních pro úhlu uvedeného v radiánech. |
+| [PI)](#bk_pi) | Vrátí konstantní hodnotu čísla PÍ. |
 | [RADIÁNECH (num_expr)](#bk_radians) | Vrátí radiánech při zadání číselného výrazu, ve stupních, se. |
-| [SIN (num_expr)](#bk_sin) | Vrátí hello trigonometrické sinus hello úhlu, uvedeného v radiánech, v hello zadaný výraz. |
-| [TAN (num_expr)](#bk_tan) | Vrátí tangens hello vstupní výraz hello v hello zadaný výraz. |
+| [SIN (num_expr)](#bk_sin) | Vrací trigonometrické sinus určeného úhlu v radiánech v zadaným výrazem. |
+| [TAN (num_expr)](#bk_tan) | Vrátí tangens vstupní výraz zadaný výraz. |
 
-Například můžete spustit nyní dotazy jako hello následující:
+Například můžete spustit nyní dotazy takto:
 
 **Dotaz**
 
@@ -1437,10 +1437,10 @@ Například můžete spustit nyní dotazy jako hello následující:
 
     [4]
 
-Hello hlavní rozdíl mezi tooANSI funkce porovnání Cosmos databáze SQL je, že jsou navrženou toowork i s daty bez schématu a smíšený schématu. Například pokud máte dokument, kdy hello velikost vlastnost chybí, nebo má jiné než číselné hodnoty jako "Neznámý" a potom dokument hello je přeskočil, místo vrátila chybu.
+Hlavní rozdíl mezi Cosmos DB funkce ve srovnání s ANSI SQL je, že jsou navrženy fungují dobře u dat bez schématu a smíšený schématu. Například pokud máte dokument, kdy je velikost vlastnost chybí, nebo má jiné než číselné hodnoty jako "Neznámý" a potom dokument se přeskočil, místo vrátila chybu.
 
 ### <a name="type-checking-functions"></a>Typ kontroly funkce
-Kontrola, zda Funkce Hello typu Povolit toocheck hello typ výrazu v rámci dotazů SQL. Typ funkce Kontrola, zda lze použít toodetermine hello typ vlastnosti v rámci dokumenty v chodu hello, když je neznámý nebo proměnné. Zde je tabulku kontroluje funkce podporované předdefinovaný typ.
+Kontrola, zda funkce typů umožňují zkontrolujte typ výrazu v rámci dotazů SQL. Kontrola, zda funkce typu slouží k určení typu vlastnosti v rámci dokumenty za chodu, když je neznámý nebo proměnné. Zde je tabulku kontroluje funkce podporované předdefinovaný typ.
 
 <table>
 <tr>
@@ -1449,40 +1449,40 @@ Kontrola, zda Funkce Hello typu Povolit toocheck hello typ výrazu v rámci dota
 </tr>
 <tr>
   <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_array">IS_ARRAY (výraz)</a></td>
-  <td>Vrátí logickou hodnotu udávající, pokud je typ hello hello hodnoty pole.</td>
+  <td>Vrátí logickou hodnotu, která určuje, jestli je typ hodnoty pole.</td>
 </tr>
 <tr>
   <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_bool">IS_BOOL (výraz)</a></td>
-  <td>Vrátí logickou hodnotu udávající, pokud hello typ hodnoty hello je logická hodnota.</td>
+  <td>Vrátí logickou hodnotu udávající, pokud typ hodnoty je logická hodnota.</td>
 </tr>
 <tr>
   <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_null">IS_NULL (výraz)</a></td>
-  <td>Vrátí logickou hodnotu udávající, pokud je typ hello hello hodnoty null.</td>
+  <td>Vrátí logickou hodnotu, která určuje, jestli je typ hodnoty null.</td>
 </tr>
 <tr>
   <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_number">IS_NUMBER (výraz)</a></td>
-  <td>Vrátí logickou hodnotu udávající, pokud je typ hello hello hodnoty number.</td>
+  <td>Vrátí logickou hodnotu udávající, zda je typ hodnoty číslo.</td>
 </tr>
 <tr>
   <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_object">IS_OBJECT (výraz)</a></td>
-  <td>Vrátí logickou hodnotu udávající, pokud hello typ hodnoty hello je objekt JSON.</td>
+  <td>Vrátí logickou hodnotu udávající, pokud typ hodnoty je objekt JSON.</td>
 </tr>
 <tr>
   <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_string">IS_STRING (výraz)</a></td>
-  <td>Vrátí logickou hodnotu udávající, pokud je typ hello hello hodnoty string.</td>
+  <td>Vrátí logickou hodnotu udávající, pokud je typ hodnoty string.</td>
 </tr>
 <tr>
   <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_defined">IS_DEFINED (výraz)</a></td>
-  <td>Vrátí logickou hodnotu udávající, pokud byla vlastnost hello přiřazena hodnota.</td>
+  <td>Vrátí logickou hodnotu udávající, pokud byla vlastnost přiřazenou hodnotu.</td>
 </tr>
 <tr>
   <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_primitive">IS_PRIMITIVE (výraz)</a></td>
-  <td>Vrátí logickou hodnotu udávající, pokud je typ hello hello hodnoty řetězce, číslo, logickou hodnotu nebo hodnotu null.</td>
+  <td>Vrátí logickou hodnotu, která udává, pokud je typ hodnoty řetězce, číslo, logickou hodnotu nebo hodnotu null.</td>
 </tr>
 
 </table>
 
-Pomocí těchto funkcí, teď můžete spouštět dotazy jako hello následující:
+Pomocí těchto funkcí, teď můžete spouštět dotazy takto:
 
 **Dotaz**
 
@@ -1493,28 +1493,28 @@ Pomocí těchto funkcí, teď můžete spouštět dotazy jako hello následujíc
     [true]
 
 ### <a name="string-functions"></a>Řetězcové funkce
-Hello následující skalární funkce provést operaci s vstupní hodnotu řetězce a vrátí řetězec, číselnou nebo logická hodnota. Tady je tabulku funkce integrované řetězce:
+Následující skalární funkce provést operaci s vstupní hodnotu řetězce a vrátí řetězec, číselnou nebo logická hodnota. Tady je tabulku funkce integrované řetězce:
 
 | Využití | Popis |
 | --- | --- |
-| [Délka (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_length) |Vrátí hello počet znaků, který hello zadán řetězcovým výrazem |
-| [CONCAT (str_expr, str_expr [, str_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_concat) |Vrátí řetězec, který je výsledkem hello zřetězení dvou nebo více řetězcové hodnoty. |
+| [Délka (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_length) |Vrátí počet znaků ze zadaného řetězcového výrazu |
+| [CONCAT (str_expr, str_expr [, str_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_concat) |Vrátí řetězec, který je výsledkem zřetězení dvou nebo více řetězcové hodnoty. |
 | [SUBSTRING (str_expr, num_expr num_expr.)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_substring) |Vrátí část řetězcového výrazu. |
-| [STARTSWITH (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_startswith) |Vrátí logickou hodnotu udávající, zda text hello první řetězcového výrazu končí hello druhý |
-| [ENDSWITH (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_endswith) |Vrátí logickou hodnotu udávající, zda text hello první řetězcového výrazu končí hello druhý |
-| [OBSAHUJE (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_contains) |Vrátí logickou hodnotu udávající, zda text hello první řetězcového výrazu obsahuje hello druhý. |
-| [INDEX_OF (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_index_of) |Vrátí počáteční pozici prvního výskytu hello hello druhý řetězcového výrazu v rámci zadaného řetězcového výrazu první hello nebo -1, pokud není nalezen řetězec hello hello. |
-| [LEFT (str_expr, num_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_left) |Vrátí hello levé části řetězce s hello zadaný počet znaků. |
-| [RIGHT (str_expr, num_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_right) |Vrátí hello právo součástí řetězec s hello zadaný počet znaků. |
+| [STARTSWITH (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_startswith) |Vrátí logická hodnota, která určuje zda první řetězec výraz končí druhý |
+| [ENDSWITH (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_endswith) |Vrátí logická hodnota, která určuje zda první řetězec výraz končí druhý |
+| [OBSAHUJE (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_contains) |Vrátí logická hodnota, která určuje zda první řetězec výraz obsahuje druhý. |
+| [INDEX_OF (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_index_of) |Vrátí počáteční pozici prvního výskytu druhý řetězec výrazu v rámci první zadaného řetězcového výrazu nebo -1, pokud není nalezen řetězec. |
+| [LEFT (str_expr, num_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_left) |Vrátí levé části řetězec s zadaný počet znaků. |
+| [RIGHT (str_expr, num_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_right) |Vrátí pravou část řetězec s zadaný počet znaků. |
 | [LTRIM (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_ltrim) |Vrací výraz řetězce po ho odebere úvodní mezery. |
 | [RTRIM (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_rtrim) |Vrací výraz řetězce po zkracování všechny koncové mezery. |
-| [NIŽŠÍ (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_lower) |Vrací výraz řetězce po převodu dat toolowercase velké písmeno. |
-| [HORNÍ (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_upper) |Vrací výraz řetězce po převodu dat toouppercase malé písmeno. |
+| [NIŽŠÍ (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_lower) |Vrací výraz řetězce po převodu dat velké písmeno na malá písmena. |
+| [HORNÍ (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_upper) |Vrací výraz řetězce po převodu dat malé písmeno na velká písmena. |
 | [NAHRAĎTE (str_expr, str_expr str_expr.)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_replace) |Nahradí všechny výskyty zadaná řetězcová hodnota s jinou hodnotou řetězce. |
 | [REPLIKOVAT (str_expr, num_expr)](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-reference#bk_replicate) |Opakuje hodnotu řetězce zadaného počtu opakování. |
-| [ZPĚTNÉHO (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_reverse) |Vrátí hello zpětné pořadí řetězcovou hodnotu. |
+| [ZPĚTNÉHO (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_reverse) |Vrátí obráceném pořadí řetězcovou hodnotu. |
 
-Pomocí těchto funkcí, můžete nyní spustit dotazy jako následující hello. Například se můžete vrátit název rodiny hello na velká písmena následujícím způsobem:
+Pomocí těchto funkcí, můžete nyní spustit dotazy podobně jako tento. Například se můžete vrátit název rodiny na velká písmena následujícím způsobem:
 
 **Dotaz**
 
@@ -1547,7 +1547,7 @@ Nebo zřetězení řetězců jako v tomto příkladu:
     }]
 
 
-Funkce řetězce mohou sloužit také v hello kde klauzule toofilter výsledky, stejně jako v nástroji hello následující ukázka:
+Funkce řetězce mohou sloužit také v klauzuli WHERE chcete filtrovat výsledky, jako v následujícím příkladu:
 
 **Dotaz**
 
@@ -1563,16 +1563,16 @@ Funkce řetězce mohou sloužit také v hello kde klauzule toofilter výsledky, 
     }]
 
 ### <a name="array-functions"></a>Funkce pole
-Hello následující skalární funkce provedení operace hodnota vstupní pole a vrátí číselnou, logická hodnota nebo pole hodnota. Zde je také tabulka předdefinovaných pole funkcí:
+Následující skalární funkce provedení operace hodnota vstupní pole a vrátí číselnou, logická hodnota nebo pole hodnota. Zde je také tabulka předdefinovaných pole funkcí:
 
 | Využití | Popis |
 | --- | --- |
-| [ARRAY_LENGTH (arr_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_length) |Vrátí číslo hello elementů hello zadaný výraz pole. |
-| [ARRAY_CONCAT (arr_expr, arr_expr [, arr_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_concat) |Vrátí pole, které je výsledkem hello zřetězení dvě nebo více hodnot pole. |
-| [ARRAY_CONTAINS (arr_expr, výraz [, bool_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_contains) |Vrátí logickou hodnotu udávající, zda text hello pole obsahuje hello zadané hodnotě. Můžete zadat, pokud je shoda hello celé nebo jeho část. |
+| [ARRAY_LENGTH (arr_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_length) |Vrátí počet prvků výrazu zadané pole. |
+| [ARRAY_CONCAT (arr_expr, arr_expr [, arr_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_concat) |Vrátí pole, které je výsledkem zřetězení dvě nebo více hodnot pole. |
+| [ARRAY_CONTAINS (arr_expr, výraz [, bool_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_contains) |Vrátí logickou hodnotu udávající, zda pole obsahuje zadanou hodnotu. Můžete zadat, pokud je shoda celé nebo jeho část. |
 | [ARRAY_SLICE (arr_expr, num_expr [, num_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_slice) |Vrátí část výraz pole. |
 
-Pole funkce se dá použít toomanipulate pole v rámci JSON. Tady je příklad dotaz, který vrátí všechny dokumenty, kde jedním z nadřazené položky hello je "Každý s každým Wakefieldů". 
+Funkce pole můžete použít k manipulaci s pole v rámci JSON. Tady je příklad dotaz, který vrátí všechny dokumenty, kde jeden z rodičů je "Každý s každým Wakefieldů". 
 
 **Dotaz**
 
@@ -1586,7 +1586,7 @@ Pole funkce se dá použít toomanipulate pole v rámci JSON. Tady je příklad 
       "id": "WakefieldFamily"
     }]
 
-Můžete zadat částečné fragment pro odpovídající elementů v rámci pole hello. Hello následující dotaz hledá všechny nadřazené objekty s hello `givenName` z `Robin`.
+Můžete zadat částečné fragment pro párování elementů v rámci pole. Následující dotaz hledá všechny nadřazené objekty s `givenName` z `Robin`.
 
 **Dotaz**
 
@@ -1601,7 +1601,7 @@ Můžete zadat částečné fragment pro odpovídající elementů v rámci pole
     }]
 
 
-Zde je další příklad používající ARRAY_LENGTH tooget hello počet podřízených prvků na rodiny.
+Zde je další příklad používající ARRAY_LENGTH získat počet podřízených za rodiny.
 
 **Dotaz**
 
@@ -1620,7 +1620,7 @@ Zde je další příklad používající ARRAY_LENGTH tooget hello počet podř�
     }]
 
 ### <a name="spatial-functions"></a>Prostorové funkce
-Cosmos DB podporuje následující otevřete geoprostorové Consortium (OGC) integrované funkce pro dotazování geoprostorové hello. 
+Cosmos DB podporuje následující předdefinované funkce otevřete geoprostorové Consortium (OGC) pro geoprostorové dotazování. 
 
 <table>
 <tr>
@@ -1629,27 +1629,27 @@ Cosmos DB podporuje následující otevřete geoprostorové Consortium (OGC) int
 </tr>
 <tr>
   <td>ST_DISTANCE (point_expr, point_expr)</td>
-  <td>Vrátí hello vzdálenost mezi hello dva GeoJSON bodu, mnohoúhelníku nebo LineString výrazů.</td>
+  <td>Vrací vzdálenost mezi dvěma GeoJSON bodu, mnohoúhelníku nebo LineString výrazy.</td>
 </tr>
 <tr>
   <td>ST_WITHIN (point_expr, polygon_expr)</td>
-  <td>Vrací výraz logická hodnota určující, zda text hello první GeoJSON objekt (bod, mnohoúhelníku nebo LineString) je v rámci hello druhý GeoJSON objekt (bod, mnohoúhelníku nebo LineString).</td>
+  <td>Vrací výraz logická hodnota určující, zda je první objekt GeoJSON (bod, mnohoúhelníku nebo LineString) je v rámci druhý objekt GeoJSON (bod, mnohoúhelníku nebo LineString).</td>
 </tr>
 <tr>
   <td>ST_INTERSECTS (spatial_expr, spatial_expr)</td>
-  <td>Vrátí hodnotu označující, zda text hello dva zadané GeoJSON objekty (bod, mnohoúhelníku nebo LineString) intersect logický výraz.</td>
+  <td>Vrátí hodnotu označující, zda dva zadané GeoJSON objekty (bod, mnohoúhelníku nebo LineString) intersect logický výraz.</td>
 </tr>
 <tr>
   <td>ST_ISVALID</td>
-  <td>Vrátí logickou hodnotu udávající, zda zadaný hello GeoJSON bodu, mnohoúhelníku nebo LineString výraz není platný.</td>
+  <td>Vrátí logickou hodnotu udávající, zda je zadaný výraz GeoJSON bodu, mnohoúhelníku nebo LineString platný.</td>
 </tr>
 <tr>
   <td>ST_ISVALIDDETAILED</td>
-  <td>Vrátí hodnotu JSON obsahující logickou hodnotu, pokud hello Zadaný bod GeoJSON, mnohoúhelníku nebo LineString výraz je platná a pokud je neplatná, kromě hello důvod jako hodnotu řetězce.</td>
+  <td>Vrátí hodnotu hodnotu JSON obsahující logickou hodnotu, pokud zadaný výraz GeoJSON bodu, mnohoúhelníku nebo LineString je platný a pokud neplatný, dále z důvodu jako hodnotu řetězce.</td>
 </tr>
 </table>
 
-Prostorové funkce můžou být použité tooperform blízkosti dotazy pro prostorová data. Tady je příklad dotaz, který vrátí že všechny rodiny dokumenty, v rámci 30 km hello zadané umístění používáte hello ST_DISTANCE integrovaná funkce. 
+Prostorové funkcí lze provádět dotazy blízkosti proti prostorová data. Tady je příklad dotaz, který vrátí všechny rodiny dokumenty, které jsou v rámci 30 km v zadaném umístění pomocí předdefinované funkci ST_DISTANCE. 
 
 **Dotaz**
 
@@ -1663,17 +1663,17 @@ Prostorové funkce můžou být použité tooperform blízkosti dotazy pro prost
       "id": "WakefieldFamily"
     }]
 
-Další informace o podporovaných geoprostorové v Cosmos DB, najdete v tématu [práci s daty geoprostorové v Azure Cosmos DB](geospatial.md). Který zabalí prostorových funkce a hello syntaxe SQL pro Cosmos DB. Nyní Podívejme se na tom, jak LINQ dotazování funguje a jak komunikuje se syntaxí hello jsme viděli dosavadní.
+Další informace o podporovaných geoprostorové v Cosmos DB, najdete v tématu [práci s daty geoprostorové v Azure Cosmos DB](geospatial.md). Který zabalí prostorových funkce a syntaxe SQL pro Cosmos DB. Nyní Podívejme se na tom, jak LINQ dotazování funguje a jak komunikuje se syntaxí jsme viděli dosavadní.
 
-## <a id="Linq"></a>LINQ tooDocumentDB SQL rozhraní API
-LINQ je programovací model rozhraní .NET, která vyjadřuje výpočetní jako dotazy na datové proudy objektů. Cosmos DB poskytuje knihovna klienta toointerface s dotazy LINQ usnadněním převod mezi objekty JSON a rozhraní .NET a mapování z určité podmnožiny LINQ dotazy tooCosmos DB dotazy. 
+## <a id="Linq"></a>Technologie LINQ to SQL DocumentDB rozhraní API
+LINQ je programovací model rozhraní .NET, která vyjadřuje výpočetní jako dotazy na datové proudy objektů. Cosmos DB poskytuje knihovnu klienta pro rozhraní s dotazy LINQ usnadněním převod mezi objekty JSON a rozhraní .NET a mapování z určité podmnožiny dotazů LINQ dotazy Cosmos DB. 
 
-Hello obrázek níže ukazuje architekturu hello podporu dotazů LINQ pomocí Cosmos DB.  Pomocí klienta aplikace hello Cosmos DB vývojáři můžou vytvářet **IQueryable** objektu, že přímo dotazy hello Cosmos DB dotaz na zprostředkovatele, který pak překládá dotaz LINQ hello do dotazu Cosmos DB. Hello dotazu je předána toohello tooretrieve Cosmos DB serveru a sadu výsledků ve formátu JSON. výsledky jsou deserializovat do datového proudu objektů .NET na straně klienta hello vrátit Hello.
+Následující obrázek ukazuje architekturu podporu dotazů LINQ pomocí Cosmos DB.  Pomocí klienta aplikace Cosmos DB vývojáři můžou vytvářet **IQueryable** objekt, který dotazuje přímo poskytovatele dotazu Cosmos DB, který pak překládá dotaz LINQ do dotazu Cosmos DB. Dotaz je předána na server Cosmos databáze k načtení sady výsledků ve formátu JSON. Do vrácených výsledků se deserializovat do datového proudu objektů .NET na straně klienta.
 
 ![Architektura podporu dotazů LINQ pomocí rozhraní API DocumentDB - syntaxe SQL, JSON dotazovací jazyk, databázových koncepcí a dotazy SQL][1]
 
 ### <a name="net-and-json-mapping"></a>Rozhraní .NET a mapování JSON
-Hello mapování mezi objekty .NET a dokumenty JSON je přirozené – každé datové pole, člen je mapován objekt JSON tooa, kde je název pole hello namapované část "klíč" toohello objektu hello a část "value" hello je součástí hodnota toohello rekurzivně namapované hello objektu. Vezměte v úvahu hello následující ukázka: objekt rodiny hello vytvořený je namapované toohello dokumentu JSON, jak je uvedeno níže. A naopak a hello dokumentu JSON je namapované back tooa objekt .NET.
+Mapování mezi objekty .NET a dokumenty JSON přirozené – každé datové pole, člen je namapovaný na objekt JSON, kde název pole je namapovaná na část "klíč" objektu a části "value" je rekurzivní namapované na část hodnoty objektu. Podívejte se na následující příklad: rodiny objekt vytvořený je namapována na dokumentu JSON, jak je uvedeno níže. A naopak a dokumentu JSON je mapována na objekt .NET.
 
 **C# – třída**
 
@@ -1754,19 +1754,19 @@ Hello mapování mezi objekty .NET a dokumenty JSON je přirozené – každé d
 
 
 
-### <a name="linq-toosql-translation"></a>Překlad tooSQL LINQ
-Hello Cosmos DB dotaz na zprostředkovatele provede nejlepší úsilí mapování z dotazu LINQ do dotazu Cosmos DB SQL. V následující popis hello předpokládáme, že hello čtečky má základní znalosti o LINQ.
+### <a name="linq-to-sql-translation"></a>Technologie LINQ to SQL překlad
+Zprostředkovatel dotazu Cosmos DB provede nejlepší úsilí mapování z dotazu LINQ do dotazu Cosmos DB SQL. V následující popis předpokládáme, že program pro čtení má základní znalosti o LINQ.
 
-Nejprve hello typ systému, budeme podporovat všechny JSON primitivní typy – číselnými typy, logická hodnota, string a hodnotu null. Jsou podporovány pouze tyto typy JSON. jsou podporovány následující skalární výrazy Hello.
+Nejprve pro typ systému, budeme podporovat všechny JSON primitivní typy – číselnými typy, logická hodnota, string a hodnotu null. Jsou podporovány pouze tyto typy JSON. Jsou podporovány následující skalární výrazy.
 
-* Konstantní hodnoty – patří konstantní hodnoty hello primitivní datové typy ve hello dobu, kdy je vyhodnocován dotaz hello.
-* Vlastnost nebo pole indexu výrazy – tyto výrazy odkazovat toohello vlastnosti objektu nebo k elementu pole.
+* Konstantní hodnoty – patří konstantní hodnoty primitivní datové typy v době, kdy je vyhodnocován dotaz.
+* Vlastnost nebo pole indexu výrazy – tyto výrazy odkazovat na vlastnost objekt nebo pole elementu.
   
      rodiny. ID;    Family.Children[0].familyName;    Family.Children[0].Grade;    Family.Children[n].Grade; n je proměnná typu int.
-* Aritmetických výrazech – jedná se o běžné aritmetických výrazech na číselné a logické hodnoty. Úplný seznam hello najdete v části specifikace toohello SQL.
+* Aritmetických výrazech – jedná se o běžné aritmetických výrazech na číselné a logické hodnoty. Úplný seznam najdete v části specifikace SQL.
   
      2 * family.children[0].grade;    x a y;
-* Výraz pro porovnání řetězce - patří porovnávání řetězcovou hodnotu toosome konstantní řetězec hodnotu.  
+* Výraz pro porovnání řetězce - patří porovnávání řetězcovou hodnotu na hodnotu konstantní řetězec.  
   
      mother.familyName == "Smith";    child.givenName == s; s je proměnná řetězce
 * Objekt nebo pole vytvoření výrazu - tyto výrazy návratový typ složené hodnoty nebo anonymní typ objekt nebo pole tyto objekty. Tyto hodnoty mohou být použity.
@@ -1775,27 +1775,27 @@ Nejprve hello typ systému, budeme podporovat všechny JSON primitivní typy –
      New [] int {3, child.grade, 5};
 
 ### <a id="SupportedLinqOperators"></a>Seznam podporovaných operátory LINQ
-Tady je seznam podporovaných LINQ operátory ve zprostředkovateli LINQ hello součástí hello DocumentDB .NET SDK.
+Tady je seznam podporovaných LINQ operátory ve zprostředkovateli LINQ součástí sadu DocumentDB .NET SDK.
 
-* **Vyberte**: projekce převede toohello SQL SELECT, včetně vytváření objektů
-* **Kde**: filtry převede toohello kde SQL a podporovat překlad mezi & &, || a! operátory toohello SQL
-* **Označit více**: umožňuje unwinding klauzule SQL JOIN toohello pole. Může být toofilter výrazy použité toochain/vnoření na elementy pole
-* **OrderBy a OrderByDescending**: překládá tooORDER BY pořadí
+* **Vyberte**: projekce převede vyberte SQL, včetně vytváření objektů
+* **Kde**: filtry nepřeloží na SQL kde a podporovat překlad mezi & &, || a! SQL operátorů
+* **Označit více**: umožňuje unwinding polí pro klauzuli SQL JOIN. Je možné řetězec nebo vnoření výrazy k filtrování v rámci prvků pole
+* **OrderBy a OrderByDescending**: přeloží na order pořadí
 * **Počet**, **součet**, **Min**, **maximální**, a **průměrná** operátory pro agregaci a jejich ekvivalenty asynchronní  **CountAsync**, **SumAsync**, **MinAsync**, **MaxAsync**, a **AverageAsync**.
-* **CompareTo**: překládá toorange porovnání. Běžně používané pro řetězce vzhledem k tomu, že nejste porovnatelný v rozhraní .NET
-* **Trvat**: překládá toohello horní SQL pro omezení výsledků dotazu
-* **Matematické funkce**: podporuje překlad z. Asin Abs Acos, je NET, Atan, Ceiling Cos, Exp, Floor, protokolu, Log10, Pow, kruhové, přihlášení, Sin, Sqrt, Tan, zkrátit toohello ekvivalentní SQL integrované funkce.
-* **Funkce pro řetězce**: podporuje překlad z. NET na Concat, obsahuje, EndsWith, IndexOf, počet, ToLower, TrimStart, nahraďte, zpětného, TrimEnd, StartsWith, dílčí řetězec, ToUpper toohello ekvivalentní SQL integrované funkce.
-* **Pole funkce**: podporuje překlad z. NET na Concat, obsahuje a počet toohello ekvivalentní SQL integrované funkce.
-* **Funkce rozšíření geoprostorové**: podporuje překlad z metod se zakázaným inzerováním vzdálenost v rámci IsValid a IsValidDetailed toohello ekvivalentní SQL integrované funkce.
-* **Uživatelem definované funkce rozšíření funkce**: podporuje překlad z hello zóny se zakázaným inzerováním metoda UserDefinedFunctionProvider.Invoke toohello odpovídající uživatelem definované funkce.
-* **Různé**: podporuje překlad hello sloučení a podmíněné operátory. Může překládat obsahuje tooString obsahuje, ARRAY_CONTAINS nebo hello v SQL v závislosti na kontextu.
+* **CompareTo**: překládá do rozsahu porovnání. Běžně používané pro řetězce vzhledem k tomu, že nejste porovnatelný v rozhraní .NET
+* **Trvat**: překládá do horní části SQL pro omezení výsledků dotazu
+* **Matematické funkce**: podporuje překlad z. Asin Abs Acos, je NET, Atan, Ceiling Cos, Exp, Floor, protokolu, Log10, Pow, kruhové, přihlášení, Sin, Sqrt, Tan, Truncate na ekvivalentní integrované funkce SQL.
+* **Funkce pro řetězce**: podporuje překlad z. NET na Concat, obsahuje, EndsWith, IndexOf, počet, ToLower, TrimStart –, nahraďte, zpětného, TrimEnd, StartsWith, SubString, ToUpper na ekvivalentní integrované funkce SQL.
+* **Pole funkce**: podporuje překlad z. NET na Concat, obsahuje a počet, který má ekvivalentní integrované funkce SQL.
+* **Funkce rozšíření geoprostorové**: podporuje překlad z metod se zakázaným inzerováním vzdálenost v rámci, IsValid a IsValidDetailed na ekvivalentní integrované funkce SQL.
+* **Uživatelem definované funkce rozšíření funkce**: podporuje překlad z metody se zakázaným inzerováním UserDefinedFunctionProvider.Invoke odpovídající uživatelem definované funkce.
+* **Různé**: podporuje překlad coalesce a podmíněné operátory. Může překládat obsahuje řetězec obsahuje, ARRAY_CONTAINS nebo v SQL v závislosti na kontextu.
 
 ### <a name="sql-query-operators"></a>Operátory dotazu SQL
-Zde jsou některé příklady, které ilustrují, jak některé hello standardní operátory dotazu LINQ přeložit dolů tooCosmos DB dotazy.
+Zde jsou některé příklady, které ilustrují, jak některé standardní operátory dotazu LINQ přeložit dolů Cosmos DB dotazy.
 
 #### <a name="select-operator"></a>Select – operátor
-Syntaxe Hello je `input.Select(x => f(x))`, kde `f` je skalární výraz.
+Syntaxe je `input.Select(x => f(x))`, kde `f` je skalární výraz.
 
 **Výraz lambda LINQ**
 
@@ -1838,7 +1838,7 @@ Syntaxe Hello je `input.Select(x => f(x))`, kde `f` je skalární výraz.
 
 
 #### <a name="selectmany-operator"></a>Označit více – operátor
-Syntaxe Hello je `input.SelectMany(x => f(x))`, kde `f` se skalární výraz, který vrátí typ kolekce.
+Syntaxe je `input.SelectMany(x => f(x))`, kde `f` se skalární výraz, který vrátí typ kolekce.
 
 **Výraz lambda LINQ**
 
@@ -1852,7 +1852,7 @@ Syntaxe Hello je `input.SelectMany(x => f(x))`, kde `f` se skalární výraz, kt
 
 
 #### <a name="where-operator"></a>Kde – operátor
-Syntaxe Hello je `input.Where(x => f(x))`, kde `f` je skalární výraz, který vrací logickou hodnotu.
+Syntaxe je `input.Where(x => f(x))`, kde `f` je skalární výraz, který vrací logickou hodnotu.
 
 **Výraz lambda LINQ**
 
@@ -1881,10 +1881,10 @@ Syntaxe Hello je `input.Where(x => f(x))`, kde `f` je skalární výraz, který 
 
 
 ### <a name="composite-sql-queries"></a>Složené příkazy jazyka SQL
-Hello výše operátory může být složený tooform více výkonných dotazů. Vzhledem k tomu, že Cosmos DB podporuje vnořené kolekcí, hello složení můžete být zřetězen nebo vnořený.
+Výše uvedené operátory musí být komponovaná k vytvoření více výkonných dotazů. Vzhledem k tomu, že Cosmos DB podporuje vnořené kolekcí, složení můžete být zřetězen nebo vnořený.
 
 #### <a name="concatenation"></a>Zřetězení
-Syntaxe Hello je `input(.|.SelectMany())(.Select()|.Where())*`. Zřetězené dotaz můžete spustit v volitelný `SelectMany` dotazu následuje více `Select` nebo `Where` operátory.
+Syntaxe je `input(.|.SelectMany())(.Select()|.Where())*`. Zřetězené dotaz můžete spustit v volitelný `SelectMany` dotazu následuje více `Select` nebo `Where` operátory.
 
 **Výraz lambda LINQ**
 
@@ -1939,9 +1939,9 @@ Syntaxe Hello je `input(.|.SelectMany())(.Select()|.Where())*`. Zřetězené dot
 
 
 #### <a name="nesting"></a>Vnoření
-Syntaxe Hello je `input.SelectMany(x=>x.Q())` kde Q je `Select`, `SelectMany`, nebo `Where` operátor.
+Syntaxe je `input.SelectMany(x=>x.Q())` kde Q je `Select`, `SelectMany`, nebo `Where` operátor.
 
-Vnitřní dotaz hello v vnořený dotaz, je použité tooeach elementu hello vnější kolekce. Jednou z důležitou součást je, že takový dotaz vnitřní hello najdete toohello pole hello elementů v kolekci vnější hello jako spojení sama na sebe.
+Pro každý prvek vnější kolekce se v vnořený dotaz, použít vnitřní dotaz. Jednou z důležitou součást je, že vnitřní dotaz mohou odkazovat na pole elementů v kolekci vnější jako spojení sama na sebe.
 
 **Výraz lambda LINQ**
 
@@ -1983,16 +1983,16 @@ Vnitřní dotaz hello v vnořený dotaz, je použité tooeach elementu hello vn�
 
 
 ## <a id="ExecutingSqlQueries"></a>Provádění dotazů SQL
-Cosmos DB zveřejňuje prostředky přes rozhraní REST API, kterou lze volat v jakémkoli jazyce schopném zasílat požadavky HTTP/HTTPS. Cosmos DB dále nabízí programovací knihovny pro několik oblíbených jazyků, jako je rozhraní .NET, Node.js, JavaScript a Python. Hello REST API a hello různé knihovny všechny podporovat, dotazování pomocí SQL. Hello .NET SDK podporuje dotazování kromě tooSQL LINQ.
+Cosmos DB zveřejňuje prostředky přes rozhraní REST API, kterou lze volat v jakémkoli jazyce schopném zasílat požadavky HTTP/HTTPS. Cosmos DB dále nabízí programovací knihovny pro několik oblíbených jazyků, jako je rozhraní .NET, Node.js, JavaScript a Python. Rozhraní REST API různých knihoven podporují a dotazování pomocí SQL. .NET SDK podporuje LINQ dotazování kromě SQL.
 
-Dobrý den, jak následující příklady zobrazují toocreate dotazu a odešlete ji proti Cosmos DB databázového účtu.
+Následující příklady ukazují, jak vytvořit dotaz a odešlete ji proti Cosmos DB databázového účtu.
 
 ### <a id="RestAPI"></a>ROZHRANÍ REST API
-Cosmos DB nabízí otevřete RESTful programovací model přes protokol HTTP. Databáze účtů se dá zřídit pomocí předplatného Azure. model prostředků Cosmos DB Hello obsahuje sadu prostředků v rámci účtu databáze, z nichž každý je adresovatelné logické a stabilní identifikátoru URI. Sadu prostředků je odkazované tooas informačního kanálu v tomto dokumentu. Databázový účet se skládá ze sady databází, každá obsahuje několik kolekcí, každý z které naopak obsahovat dokumenty, funkce UDF a další typy prostředků.
+Cosmos DB nabízí otevřete RESTful programovací model přes protokol HTTP. Databáze účtů se dá zřídit pomocí předplatného Azure. Model prostředků Cosmos DB obsahuje sadu prostředků v rámci účtu databáze, z nichž každý je adresovatelné logické a stabilní identifikátoru URI. Sadu prostředků se označuje jako informačního kanálu v tomto dokumentu. Databázový účet se skládá ze sady databází, každá obsahuje několik kolekcí, každý z které naopak obsahovat dokumenty, funkce UDF a další typy prostředků.
 
-model základní interakce Hello pomocí těchto prostředků je prostřednictvím příkazy hello HTTP GET, PUT, POST a odstranit pomocí jejich standardní překladu. příkaz POST Hello se používá pro vytvoření nového prostředku, pro spuštění uložené procedury nebo pro zadání dotazu Cosmos DB. Dotazy jsou vždy jen pro čtení operací s žádné vedlejší účinky.
+Základní interakce model pomocí těchto prostředků je pomocí příkazů HTTP GET, PUT, POST a odstranit pomocí jejich standardní překladu. Příkaz POST se používá pro vytvoření nového prostředku, pro spuštění uložené procedury nebo pro zadání dotazu Cosmos DB. Dotazy jsou vždy jen pro čtení operací s žádné vedlejší účinky.
 
-Hello následující příklady ukazují POST pro rozhraní API DocumentDB dotaz směřovaný na kolekce obsahující hello dva ukázkové dokumenty, že jsme si přečetli dosavadní práce. Hello dotazu je jednoduchý filtr u hello JSON název vlastnosti. Všimněte si použití hello hello `x-ms-documentdb-isquery` a Content-Type: `application/query+json` toodenote hlavičky, která hello operaci je dotaz.
+Následující příklady ukazují POST pro rozhraní API DocumentDB dotaz směřovaný na kolekce obsahující dva ukázkové dokumenty, že jsme si přečetli dosavadní práce. Dotaz je jednoduchý filtr na název vlastnosti JSON. Všimněte si použití `x-ms-documentdb-isquery` a Content-Type: `application/query+json` hlavičky k označení, že operace je dotazu.
 
 **Požadavek**
 
@@ -2060,7 +2060,7 @@ Hello následující příklady ukazují POST pro rozhraní API DocumentDB dotaz
     }
 
 
-Hello druhý příklad ukazuje komplexnější dotaz, který vrátí více výsledků z hello spojení.
+Druhý příklad ukazuje komplexnější dotaz, který vrátí více výsledků z spojení.
 
 **Požadavek**
 
@@ -2114,16 +2114,16 @@ Hello druhý příklad ukazuje komplexnější dotaz, který vrátí více výsl
     }
 
 
-Pokud výsledku dotazu se nemůže vejít do jedné stránky s výsledky, pak hello REST API vrátí token pokračování prostřednictvím hello `x-ms-continuation-token` hlavičky odpovědi. Klienti mohou stránkování výsledků zahrnutím hello hlavičky v následných výsledky. Hello počet výsledků na stránce lze také řídit prostřednictvím hello `x-ms-max-item-count` číslo záhlaví. Pokud zadaný dotaz hello má agregační funkci jako `COUNT`, pak stránku hello dotaz může vrátit hodnotu částečně agregované přes hello stránky s výsledky. Hello klientům musí provést přes tyto výsledky tooproduce hello konečných výsledků, například agregace druhé úrovně, součet přes hello počty vrátil hello jednotlivé stránky tooreturn hello celkový počet.
+Pokud výsledku dotazu se nemůže vejít do jedné stránky s výsledky, pak rozhraní REST API vrátí token pokračování prostřednictvím `x-ms-continuation-token` hlavičky odpovědi. Klienty můžete stránkování výsledků zahrnutím záhlaví v následných výsledky. Počet výsledků na stránce lze také řídit prostřednictvím `x-ms-max-item-count` číslo záhlaví. Pokud zadaný dotaz obsahuje agregační funkci jako `COUNT`, pak stránce dotaz může vrátit hodnotu částečně agregované přes stránky s výsledky. Klienti musí provést druhé úrovně agregace nad těmito výsledky. Chcete-li vytvořit konečných výsledků, například, součet přes počty vrátil na jednotlivých stránkách vrátit celkového počtu.
 
-zásady konzistence dat hello toomanage pro dotazy, použijte hello `x-ms-consistency-level` záhlaví jako všechny požadavky REST API. Konzistence typu relace, je požadovaná tooalso echo hello nejnovější `x-ms-session-token` hello dotazu požadavek obsahoval hlavičku souboru Cookie. Hello zásady indexování dotazované kolekce můžete také ovlivnit hello konzistence výsledků dotazu. Hello výchozí nastavení zásady indexování, pro kolekce hello index je vždy aktuální pomocí obsahu dokumentu hello a dotazů, výsledky odpovídaly hello konzistence zvolené pro data. Pokud hello indexování zásad volný tooLazy, dotazy mohou vracet zastaralé výsledky. Další informace najdete v tématu [úrovně konzistence databáze Azure Cosmos][consistency-levels].
+Ke správě zásad konzistence dat pro dotazy, použijte `x-ms-consistency-level` záhlaví jako všechny požadavky REST API. Konzistence typu relace, je potřeba také odezvu na nejnovější `x-ms-session-token` hlavička Cookie v dotazu požadavku. Zásady indexování dotazované kolekce můžete ovlivnit taky konzistence výsledků dotazu. S výchozí nastavení zásady indexování, pro kolekce index je vždy aktuální pomocí obsahu dokumentu a výsledky dotazu odpovídat konzistence zvolené pro data. Pokud k Lazy je zmírnit zásady indexování, dotazy mohou vracet zastaralé výsledky. Další informace najdete v tématu [úrovně konzistence databáze Azure Cosmos][consistency-levels].
 
-Pokud zásady indexování hello nakonfigurované na kolekci hello nepodporuje zadaný dotaz hello, vrátí server Azure Cosmos DB hello 400 "Chybný požadavek". Se vrátí pro dotazy na rozsah pro cesty, které jsou nakonfigurované pro vyhledávání hodnoty hash (rovnosti) a cesty explicitně vyloučená z indexování. Hello `x-ms-documentdb-query-enable-scan` záhlaví může být zadaný tooallow hello dotazu tooperform kontrolu, když indexu není k dispozici.
+Pokud nakonfigurované zásady indexování na kolekce nepodporuje zadaný dotaz, vrátí server Azure Cosmos DB 400 "Chybný požadavek". Se vrátí pro dotazy na rozsah pro cesty, které jsou nakonfigurované pro vyhledávání hodnoty hash (rovnosti) a cesty explicitně vyloučená z indexování. `x-ms-documentdb-query-enable-scan` Záhlaví lze povolit dotazu, který chcete provést kontrolu, když indexu není k dispozici.
 
-Podrobné metriky můžete získat na spuštění dotazu nastavením `x-ms-documentdb-populatequerymetrics` záhlaví příliš`True`. Další informace najdete v tématu [metriky dotazů SQL pro rozhraní API služby Azure Cosmos databáze DocumentDB](documentdb-sql-query-metrics.md).
+Podrobné metriky můžete získat na spuštění dotazu nastavením `x-ms-documentdb-populatequerymetrics` hlavičky k `True`. Další informace najdete v tématu [metriky dotazů SQL pro rozhraní API služby Azure Cosmos databáze DocumentDB](documentdb-sql-query-metrics.md).
 
 ### <a id="DotNetSdk"></a>SADA SDK JAZYKA C# (.NET)
-Hello .NET SDK podporuje LINQ i SQL dotazování. Hello následující příklad ukazuje, jak tooperform hello jednoduchého filtru dotazu zavedená dříve v tomto dokumentu.
+.NET SDK podporuje LINQ a SQL dotazování. Následující příklad ukazuje, jak k provedení dotazu jednoduchý filtr zavedená dříve v tomto dokumentu.
 
     foreach (var family in client.CreateDocumentQuery(collectionLink, 
         "SELECT * FROM Families f WHERE f.id = \"AndersenFamily\""))
@@ -2183,7 +2183,7 @@ Tato ukázka porovná dvě vlastnosti rovnosti v rámci každého dokumentu a po
     }
 
 
-Hello další příklad ukazuje spojení, vyjádřit pomocí LINQ označit více.
+Další příklad ukazuje spojení, vyjádřit pomocí LINQ označit více.
 
     foreach (var pet in client.CreateDocumentQuery(collectionLink,
           @"SELECT p
@@ -2207,16 +2207,16 @@ Hello další příklad ukazuje spojení, vyjádřit pomocí LINQ označit více
 
 
 
-klient .NET Hello automaticky iteruje všechny stránky hello výsledků dotazu v blocích foreach hello jako v příkladu nahoře. Možnosti zavedené v hello REST API části jsou také k dispozici v dotazu Hello hello .NET SDK pomocí hello `FeedOptions` a `FeedResponse` třídy v hello CreateDocumentQuery metoda. Dobrý den, kolik stránek se dá řídit pomocí hello `MaxItemCount` nastavení. 
+Klient .NET automaticky iteruje všechny stránky výsledků dotazu v blocích foreach, jak je uvedeno výše. Možnosti dotazu byla zavedená v části REST API jsou také k dispozici v pomocí .NET SDK `FeedOptions` a `FeedResponse` třídy v metodě CreateDocumentQuery. Počet stránek se dá řídit pomocí `MaxItemCount` nastavení. 
 
-Můžete také explicitně řídit stránkování tak, že vytvoříte `IDocumentQueryable` pomocí hello `IQueryable` objekt, pak načtením` ResponseContinuationToken` hodnot a jejich předání zpět jako `RequestContinuationToken` v `FeedOptions`. `EnableScanInQuery`může být sada tooenable kontrol, když hello dotazu nemůže být nepodporuje hello nakonfigurované zásady indexování. Pro dělené kolekce, můžete použít `PartitionKey` toorun hello dotaz jednoho oddílu (i když Cosmos DB může automaticky extrahovat to z textu hello dotazu), a `EnableCrossPartitionQuery` toorun dotazy, které může být nutné toobe spouštění více oddílů. 
+Můžete také explicitně řídit stránkování tak, že vytvoříte `IDocumentQueryable` pomocí `IQueryable` objekt, pak načtením` ResponseContinuationToken` hodnot a jejich předání zpět jako `RequestContinuationToken` v `FeedOptions`. `EnableScanInQuery`lze nastavit pro povolení kontroly, pokud dotaz nemůže být podporována nakonfigurované zásady indexování. Pro dělené kolekce, můžete použít `PartitionKey` ke spouštění dotazu na jednoho oddílu (i když Cosmos DB může automaticky extrahovat to z text dotazu), a `EnableCrossPartitionQuery` ke spouštění dotazů, které může být nutné ke spuštění s více oddílů. 
 
-Odkazovat příliš[Azure Cosmos DB .NET ukázky](https://github.com/Azure/azure-documentdb-net) pro další ukázky obsahující dotazy. 
+Odkazovat na [Azure Cosmos DB .NET ukázky](https://github.com/Azure/azure-documentdb-net) pro další ukázky obsahující dotazy. 
 
 ### <a id="JavaScriptServerSideApi"></a>Rozhraní API jazyka JavaScript na straně serveru
-Cosmos DB poskytuje programovací model pro spouštění logiky aplikace založené na jazyce JavaScript přímo na kolekce hello pomocí uložených procedur a aktivačních událostí. logiky Javascriptové Hello registrované na úrovni kolekce potom můžou provádět databázové operace na operace hello na dokumentech hello hello zadané kolekce. Tyto operace jsou zabalená vedlejším ACID transakcí.
+Cosmos DB poskytuje programovací model pro spouštění logiky aplikace založené na jazyce JavaScript přímo na kolekce pomocí uložených procedur a aktivačních událostí. JavaScript logiku registrované na úrovni kolekce potom můžou provádět databázové operace na operace s dokumenty dané kolekce. Tyto operace jsou zabalená vedlejším ACID transakcí.
 
-Hello následující příklad ukazuje, jak se dotazuje dokumenty toouse hello dotazu v toomake hello rozhraní API serveru JavaScript z uvnitř uložené procedury a triggery.
+Následující příklad ukazuje, jak lze pomocí dokumenty dotazu v rozhraní API serveru JavaScript na dotazy z uvnitř uložené procedury a triggery.
 
     function businessLogic(name, author) {
         var context = getContext();
@@ -2237,10 +2237,10 @@ Hello následující příklad ukazuje, jak se dotazuje dokumenty toouse hello d
                         if (err) throw new Error(err.message);
     context.getResponse().setBody(matchingDocuments.length);
 
-                        // Replace hello author name for all documents that satisfied hello query.
+                        // Replace the author name for all documents that satisfied the query.
                         for (var i = 0; i < matchingDocuments.length; i++) {
                             matchingDocuments[i].author = "George R. R. Martin";
-                            // we don't need tooexecute a callback because they are in parallel
+                            // we don't need to execute a callback because they are in parallel
                             collectionManager.replaceDocument(matchingDocuments[i]._self,
                                 matchingDocuments[i]);
                         }
@@ -2249,7 +2249,7 @@ Hello následující příklad ukazuje, jak se dotazuje dokumenty toouse hello d
     }
 
 ## <a id="References"></a>Odkazy
-1. [Úvod tooAzure Cosmos DB][introduction]
+1. [Úvod do Azure Cosmos DB][introduction]
 2. [Azure Cosmos DB SQL specifikace](http://go.microsoft.com/fwlink/p/?LinkID=510612)
 3. [Ukázek Azure DB Cosmos rozhraní .NET](https://github.com/Azure/azure-documentdb-net)
 4. [Úrovně konzistence databáze Azure Cosmos][consistency-levels]
@@ -2261,7 +2261,7 @@ Hello následující příklad ukazuje, jak se dotazuje dokumenty toouse hello d
 10. Zpracování v systémech paralelní relační databáze, stiskněte společnosti IEEE počítače, 1994 dotazů
 11. Logická jednotka, Ooi, Tan, zpracování v systémech paralelní relační databáze, stiskněte společnosti IEEE počítače, 1994 dotazů.
 12. Olston Kryštof, Robert Reed, Utkarsh Srivastava, Ravi Kumar, Andrew Tomkins: Pig Latin: není tak cizí jazyk pro zpracování dat, SIGMOD 2008.
-13. G. Graefe. Hello Cascades architektura pro optimalizaci dotazu. Eng. IEEE dat Bull., 18(3): 1995.
+13. G. Graefe. Cascades architektura pro optimalizaci dotazu. Eng. IEEE dat Bull., 18(3): 1995.
 
 [1]: ./media/documentdb-sql-query/sql-query1.png
 [introduction]: introduction.md

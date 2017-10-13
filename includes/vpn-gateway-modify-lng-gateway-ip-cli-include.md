@@ -1,12 +1,12 @@
-### <a name="toomodify-hello-local-network-gateway-gatewayipaddress"></a>Brána místní sítě hello toomodify 'gatewayIpAddress.
+### <a name="to-modify-the-local-network-gateway-gatewayipaddress"></a>Úprava IP adresy brány místní sítě (gatewayIpAddress)
 
-Pokud hello zařízení VPN, které chcete tooconnect toohas změnit jeho veřejnou IP adresu, musíte toomodify hello místní síťové brány tooreflect, který změnit. IP adresa brány Hello lze změnit bez předchozího odstranění stávajícího připojení brány sítě VPN (pokud nějaký máte). toomodify hello brány IP adres, nahraďte hello hodnoty 'Site2' a 'TestRG1' s vlastními pomocí hello [aktualizace brány místní sítě az](https://docs.microsoft.com/cli/azure/network/local-gateway#update) příkaz.
+Pokud zařízení VPN, ke kterému se chcete připojit, změnilo svou veřejnou IP adresu, musíte upravit bránu místní sítě, aby odrážela tuto změnu. IP adresu brány je možné změnit bez odebrání existujícího připojení brány VPN (pokud nějaké máte). Pokud chcete upravit IP adresu brány, nahraďte hodnoty „Site2“ a „TestRG1“ vlastními hodnotami pomocí příkazu [az network local-gateway update](https://docs.microsoft.com/cli/azure/network/local-gateway#az_network_local_gateway_update).
 
 ```azurecli
 az network local-gateway update --gateway-ip-address 23.99.222.170 --name Site2 --resource-group TestRG1
 ```
 
-Ověřte správnost hello IP adresu ve výstupu hello:
+Na výstupu ověřte správnost IP adresy:
 
 ```
 "gatewayIpAddress": "23.99.222.170",

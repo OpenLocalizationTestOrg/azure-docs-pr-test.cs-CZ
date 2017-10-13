@@ -1,6 +1,6 @@
 ---
-title: "aaaReset místní heslo systému Windows bez agenta Azure | Microsoft Docs"
-description: "Jak tooreset hello hesla místního uživatelského účtu systému Windows, když hello Azure hostovaný agent není nainstalován nebo je funkční na virtuálním počítači"
+title: "Resetovat heslo místního systému Windows bez agenta Azure | Microsoft Docs"
+description: "Obnovení hesla místního uživatelského účtu systému Windows, když Azure hostovaného agenta, není nainstalován nebo je funkční na virtuálním počítači"
 services: virtual-machines-windows
 documentationcenter: 
 author: iainfoulds
@@ -14,70 +14,70 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/07/2017
 ms.author: iainfou
-ms.openlocfilehash: c559c31ea142f9cf50d2c5b6182c5355fec9bac5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 880f5e5967298401fc2522124af3746d9906ffa8
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-tooreset-local-windows-password-for-azure-vm"></a>Jak tooreset místní heslo systému Windows pro virtuální počítač Azure
-Můžete obnovit heslo místního Windows hello virtuálního počítače v Azure pomocí hello [portál Azure nebo Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zadaný je nainstalován agent hosta Azure hello. Tato metoda je hello primární způsob tooreset heslo pro virtuální počítač Azure. Pokud narazíte na potíže s hello Azure hostovaný agent neodpovídá, nebo selhání tooinstall po nahrání vlastní image, můžete ručně obnovit heslo systému Windows. Tento článek podrobně popisuje, jak tooreset heslo místního účtu připojením hello tooanother zdrojový OS virtuálního disku virtuálního počítače. 
+# <a name="how-to-reset-local-windows-password-for-azure-vm"></a>Jak obnovit heslo místního systému Windows pro virtuální počítač Azure
+Můžete resetovat hesla místního systému Windows virtuálního počítače v Azure pomocí [portál Azure nebo Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zadaný je nainstalován agent hosta Azure. Tato metoda je primární způsob, jak resetovat heslo pro virtuální počítač Azure. Pokud narazíte na potíže s agentem Azure hosta neodpovídá nebo je možné nainstalovat, nahráním vlastní image, můžete ručně obnovit heslo systému Windows. Tento článek popisuje, jak resetovat heslo místního účtu pomocí zdrojový OS virtuální disk se připojuje k jiným virtuálním Počítačem. 
 
 > [!WARNING]
-> Tento proces lze používejte pouze jako poslední možnost. Vždy zkuste tooreset hesla pomocí hello [portál Azure nebo Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) první.
+> Tento proces lze používejte pouze jako poslední možnost. Vždy se pokusí resetovat heslo pomocí [portál Azure nebo Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) první.
 > 
 > 
 
-## <a name="overview-of-hello-process"></a>Přehled procesu hello
-Hello základní kroky pro místní heslo resetovat pro virtuální počítač s Windows v Azure, když není žádný agent hosta Azure toohello přístup je následující:
+## <a name="overview-of-the-process"></a>Přehled procesu
+Základní kroky pro místní heslo resetovat pro virtuální počítač s Windows v Azure, když není k dispozici přístup k Azure hostovaného agenta je následující:
 
-* Odstraňte hello zdrojového virtuálního počítače. virtuální disky Hello zůstanou zachovány.
-* Připojte tooanother disku operačního systému virtuálního počítače hello zdrojového Virtuálního počítače na hello stejné umístění v rámci vašeho předplatného Azure. Tento virtuální počítač je hello odkazované tooas řešení potíží s virtuálních počítačů.
-* Pomocí hello řešení potíží s virtuálního počítače, vytvořte některé konfigurační soubory na disk s operačním systémem hello zdrojového Virtuálního počítače.
-* Odpojte disk s operačním systémem hello Virtuálního počítače z hello řešení potíží s virtuálních počítačů.
-* Použijte toocreate správce prostředků šablony virtuálního počítače, pomocí hello původní virtuální disk.
-* Když hello nový virtuální počítač spustí, hello konfigurační soubory můžete vytvořit heslo hello aktualizace hello požadované uživatele.
+* Odstraňte zdrojový virtuální počítač. Virtuální disky se zachovají.
+* Disk s operačním systémem zdrojového Virtuálního počítače připojte k jiným virtuálním Počítačem na stejné umístění v rámci vašeho předplatného Azure. Tento virtuální počítač se označuje jako řešení potíží virtuální počítač.
+* Pomocí řešení potíží virtuální počítač, vytvořte některé konfigurační soubory na disku pro operační systém zdrojového Virtuálního počítače.
+* Odpojte disk s operačním systémem Virtuálního počítače z virtuálního počítače, řešení potíží.
+* Pomocí šablony Resource Manageru k vytvoření virtuálního počítače, pomocí původní virtuální disk.
+* Když se nový virtuální počítač spustí, konfigurační soubory, které vytvoříte aktualizovat heslo požadovaného uživatele.
 
 ## <a name="detailed-steps"></a>Podrobné kroky
-Vždy zkuste tooreset hesla pomocí hello [portál Azure nebo Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) než to zkusíte hello následující kroky. Ujistěte se, že máte zálohu virtuálního počítače, před zahájením. 
+Vždy se pokusí resetovat heslo pomocí [portál Azure nebo Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) než to zkusíte následující kroky. Ujistěte se, že máte zálohu virtuálního počítače, před zahájením. 
 
-1. Odstranit hello vliv virtuálního počítače na portálu Azure. Odstraňování hello virtuálních počítačů odstraní pouze metadata hello, hello odkaz hello virtuálních počítačů v rámci Azure. Při odstranění hello virtuálních počítačů, zůstanou zachovány Hello virtuální disky:
+1. Odstraňte ovlivněné virtuální počítač na portálu Azure. Odstraňuje se virtuální počítač odstraní pouze metadata, odkaz na virtuální počítač v rámci Azure. Virtuální disky jsou uchovány při odstranění virtuálního počítače:
    
-   * Vyberte hello virtuálních počítačů v hello portál Azure, klikněte na tlačítko *odstranit*:
+   * Vyberte virtuální počítač na portálu Azure, klikněte na *odstranit*:
      
      ![Odstraňte existující virtuální počítač](./media/reset-local-password-without-agent/delete_vm.png)
-2. Připojte toohello disku operačního systému hello zdrojového Virtuálního počítače, řešení potíží s virtuálních počítačů. Hello řešení potíží s virtuálního počítače musí být v hello stejné oblasti jako disk s operačním systémem hello zdrojového Virtuálního počítače (například `West US`):
+2. Disk s operačním systémem zdrojového Virtuálního počítače připojte k řešení potíží virtuální počítač. Řešení potíží virtuální počítač musí být ve stejné oblasti jako disk s operačním systémem zdrojového Virtuálního počítače (například `West US`):
    
-   * Vyberte hello řešení potíží s virtuálních počítačů v hello portálu Azure. Klikněte na tlačítko *disky* | *připojit existující*:
+   * Vyberte řešení potíží virtuální počítač na portálu Azure. Klikněte na tlačítko *disky* | *připojit existující*:
      
      ![Připojit stávající disk](./media/reset-local-password-without-agent/disks_attach_existing.png)
      
-     Vyberte *souboru virtuálního pevného disku* a potom vyberte účet úložiště hello, která obsahuje vaše zdrojového virtuálního počítače:
+     Vyberte *souboru virtuálního pevného disku* a potom vyberte účet úložiště, který obsahuje vaše zdrojového virtuálního počítače:
      
      ![Výběr účtu úložiště](./media/reset-local-password-without-agent/disks_select_storageaccount.PNG)
      
-     Vyberte kontejner zdroj hello. kontejner Hello zdroj je obvykle *virtuální pevné disky*:
+     Vyberte kontejner zdroje. Kontejner zdroj je obvykle *virtuální pevné disky*:
      
      ![Vyberte kontejner úložiště](./media/reset-local-password-without-agent/disks_select_container.png)
      
-     Vyberte hello tooattach virtuální pevný disk operačního systému. Klikněte na tlačítko *vyberte* toocomplete hello proces:
+     Vyberte virtuální pevný disk operačního systému připojit. Klikněte na tlačítko *vyberte* dokončete proces:
      
      ![Vybrat zdroj virtuálního disku](./media/reset-local-password-without-agent/disks_select_source_vhd.png)
-3. Připojit toohello řešení potíží s virtuálního počítače pomocí vzdálené plochy a ujistěte se, že disk s operačním systémem hello zdrojového Virtuálního počítače je viditelná:
+3. Připojení k řešení potíží virtuálního počítače pomocí vzdálené plochy a ujistěte se, že disk s operačním systémem zdrojového Virtuálního počítače je viditelná:
    
-   * Vyberte hello řešení potíží s virtuálních počítačů v hello portál Azure a klikněte na *Connect*.
-   * Otevřete soubor RDP hello, který stahuje. Zadejte hello uživatelské jméno a heslo hello řešení potíží s virtuálních počítačů.
-   * V Průzkumníku souborů vyhledejte hello datový disk, který jste připojili. Když hello zdroj, který virtuální pevný disk Virtuálního počítače hello pouze datový disk připojený toohello řešení potíží s virtuálních počítačů, měla by být hello F: jednotky:
+   * Vyberte řešení potíží virtuální počítač na portálu Azure a klikněte na tlačítko *Connect*.
+   * Otevřete soubor RDP, který stahuje. Zadejte uživatelské jméno a heslo řešení potíží virtuálního počítače.
+   * V Průzkumníku souborů vyhledejte datový disk, který jste připojili. Když zdroj virtuálního pevného disku Virtuálního počítače je pouze datový disk připojen k řešení potíží virtuální počítač, měla by být F: jednotky:
      
      ![Zobrazit připojené datový disk](./media/reset-local-password-without-agent/troubleshooting_vm_fileexplorer.png)
-4. Vytvoření `gpt.ini` v `\Windows\System32\GroupPolicy` na jednotce hello zdrojového Virtuálního počítače (pokud existuje gpt.ini, přejmenujte toogpt.ini.bak):
+4. Vytvoření `gpt.ini` v `\Windows\System32\GroupPolicy` na jednotce zdrojového Virtuálního počítače (pokud existuje gpt.ini, přejmenujte gpt.ini.bak):
    
    > [!WARNING]
-   > Zajistěte, aby náhodně vytvořit hello následující soubory v C:\Windows, hello jednotky operačního systému pro hello řešení potíží s virtuálních počítačů. Vytvořte hello následující soubory v jednotce hello operačního systému pro vaše zdrojového virtuálního počítače, který je připojen jako datový disk.
+   > Ujistěte se, že nevytvoříte omylem následující soubory v C:\Windows, disk operačního systému pro řešení potíží virtuální počítač. Vytvořte tyto soubory na jednotce operačního systému pro vaše zdrojového virtuálního počítače, který je připojen jako datový disk.
    > 
    > 
    
-   * Přidejte následující řádky do hello hello `gpt.ini` souborů, které jste vytvořili:
+   * Přidejte následující řádky do `gpt.ini` souborů, které jste vytvořili:
      
      ```
      [General]
@@ -87,9 +87,9 @@ Vždy zkuste tooreset hesla pomocí hello [portál Azure nebo Azure PowerShell](
      ```
      
      ![Vytvoření gpt.ini](./media/reset-local-password-without-agent/create_gpt_ini.png)
-5. Vytvoření `scripts.ini` v `\Windows\System32\GroupPolicy\Machine\Scripts`. Ujistěte se, že se zobrazují skrytých složek. V případě potřeby vytvořte hello `Machine` nebo `Scripts` složek.
+5. Vytvoření `scripts.ini` v `\Windows\System32\GroupPolicy\Machine\Scripts`. Ujistěte se, že se zobrazují skrytých složek. V případě potřeby vytvořte `Machine` nebo `Scripts` složek.
    
-   * Přidejte následující řádky hello hello `scripts.ini` souborů, které jste vytvořili:
+   * Přidejte následující řádky `scripts.ini` souborů, které jste vytvořili:
      
      ```
      [Startup]
@@ -98,7 +98,7 @@ Vždy zkuste tooreset hesla pomocí hello [portál Azure nebo Azure PowerShell](
      ```
      
      ![Vytvoření scripts.ini](./media/reset-local-password-without-agent/create_scripts_ini.png)
-6. Vytvoření `FixAzureVM.cmd` v `\Windows\System32` s hello následující obsah, nahraďte `<username>` a `<newpassword>` vlastními hodnotami:
+6. Vytvoření `FixAzureVM.cmd` v `\Windows\System32` s následující obsah, nahraďte `<username>` a `<newpassword>` vlastními hodnotami:
    
     ```
     net user <username> <newpassword> /add
@@ -109,40 +109,40 @@ Vždy zkuste tooreset hesla pomocí hello [portál Azure nebo Azure PowerShell](
 
     ![Vytvoření FixAzureVM.cmd](./media/reset-local-password-without-agent/create_fixazure_cmd.png)
    
-    Při definování hello nové heslo, musí splňovat požadavky na složitost hesla hello nakonfigurované pro virtuální počítač.
-7. Na portálu Azure odpojte disk hello od hello řešení potíží s virtuálních počítačů:
+    Při definování nové heslo, musí splňovat požadavky na složitost nakonfigurovaným heslem pro váš virtuální počítač.
+7. Na portálu Azure odpojte disk z virtuálního počítače, řešení potíží:
    
-   * Vyberte hello řešení potíží s virtuálních počítačů v hello portálu Azure, klikněte na *disky*.
-   * Vyberte hello datový disk připojený v kroku 2, klikněte na tlačítko *odpojení*:
+   * Vyberte řešení potíží virtuální počítač na portálu Azure, klikněte na *disky*.
+   * Klikněte na tlačítko připojit datový disk v kroku 2, vyberte *odpojení*:
      
      ![Odpojte disk](./media/reset-local-password-without-agent/detach_disk.png)
-8. Než vytvoříte virtuální počítač, získejte hello URI tooyour zdrojový OS disk:
+8. Než vytvoříte virtuální počítač, získejte identifikátor URI pro váš zdrojový disk operačního systému:
    
-   * Klikněte na účet úložiště vyberte hello hello portál Azure, *objekty BLOB*.
-   * Vyberte kontejner hello. kontejner Hello zdroj je obvykle *virtuální pevné disky*:
+   * Vyberte účet úložiště na portálu Azure, klikněte na tlačítko *objekty BLOB*.
+   * Vyberte kontejner. Kontejner zdroj je obvykle *virtuální pevné disky*:
      
      ![Vyberte účet úložiště objektů blob](./media/reset-local-password-without-agent/select_storage_details.png)
      
-     Vyberte zdroj virtuální pevný disk operačního systému virtuálního počítače a klikněte na tlačítko hello *kopie* tlačítko Další toohello *URL* název:
+     Vyberte zdroj virtuální pevný disk operačního systému virtuálního počítače a klikněte na tlačítko *kopie* vedle položky *URL* název:
      
      ![Zkopírujte disk identifikátor URI](./media/reset-local-password-without-agent/copy_source_vhd_uri.png)
-9. Vytvoření virtuálního počítače z disku operačního systému hello zdrojového Virtuálního počítače:
+9. Vytvoření virtuálního počítače z disku operačního systému zdrojového Virtuálního počítače:
    
-   * Použití [této šablony Azure Resource Manageru](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd) toocreate virtuálního počítače z specializované virtuálního pevného disku. Klikněte na tlačítko hello `Deploy tooAzure` tlačítko tooopen hello portál Azure s použitím šablon podrobnostmi hello vyplní za vás.
-   * Pokud chcete tooretain všech hello předchozí nastavení pro hello virtuálního počítače, vyberte *úpravy šablony* tooprovide existující virtuální síť, podsíť, síťový adaptér nebo veřejné IP adresy.
-   * V hello `OSDISKVHDURI` parametr textového pole, vložte hello získat identifikátor URI zdrojového virtuálního pevného disku v předchozím kroku hello:
+   * Použití [této šablony Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd) vytvoření virtuálního počítače z specializované virtuálního pevného disku. Klikněte `Deploy to Azure` tlačítko otevřete portál Azure s použitím šablon podrobnosti vyplní za vás.
+   * Pokud chcete zachovat předchozí nastavení pro virtuální počítač, vyberte *úpravy šablony* zajistit existující virtuální síť, podsíť, síťový adaptér nebo veřejné IP adresy.
+   * V `OSDISKVHDURI` parametr textového pole, vložte identifikátor URI virtuálního pevného disku zdrojového získat v předchozím kroku:
      
      ![Vytvoření virtuálního počítače ze šablony](./media/reset-local-password-without-agent/create_new_vm_from_template.png)
-10. Po hello nový virtuální počítač spuštěný, připojit toohello virtuálního počítače pomocí vzdálené plochy s hello nové heslo jste zadali v hello `FixAzureVM.cmd` skriptu.
-11. Z vaší relace vzdálené toohello nového virtuálního počítače, odeberte hello následující soubory tooclean hello prostředí:
+10. Po spuštění nového virtuálního počítače připojit k virtuálnímu počítači pomocí vzdálené plochy s nové heslo, které jste zadali v `FixAzureVM.cmd` skriptu.
+11. Ze vzdálené relace do nového virtuálního počítače odeberte tyto soubory do vyčištění prostředí:
     
     * Z %windir%\System32
       * odebrat FixAzureVM.cmd
     * Z %windir%\System32\GroupPolicy\Machine\
       * odebrat scripts.ini
     * Z %windir%\System32\GroupPolicy
-      * Odeberte gpt.ini (pokud existoval gpt.ini a přejmenovat toogpt.ini.bak, přejmenování hello .bak souboru back toogpt.ini)
+      * Odeberte gpt.ini (pokud existoval gpt.ini a přejmenoval jej na gpt.ini.bak, přejmenujte soubor .bak zpět do gpt.ini)
 
 ## <a name="next-steps"></a>Další kroky
-Pokud se pořád nemůžete připojit pomocí vzdálené plochy, přečtěte si téma hello [Průvodci odstraňováním potíží RDP](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Hello [podrobný Průvodce odstraňováním potíží s RDP](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) vypadá na řešení potíží s metody, nikoli konkrétní kroky. Můžete také [otevřete žádost o podporu Azure](https://azure.microsoft.com/support/options/) praktických pomoc.
+Pokud se pořád nemůžete připojit pomocí vzdálené plochy, přečtěte si téma [Průvodci odstraňováním potíží RDP](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). [Podrobný Průvodce odstraňováním potíží s RDP](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) vypadá na řešení potíží s metody, nikoli konkrétní kroky. Můžete také [otevřete žádost o podporu Azure](https://azure.microsoft.com/support/options/) praktických pomoc.
 

@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure dokumentace k Security Center – kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
-description: "Zjistěte, jak tooset až Správa zásad a monitorování zabezpečení pro prostředky Azure. Kurzy, reference k rozhraní REST API a další dokumentace"
+title: "Dokumentace ke službě Azure Security Center – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
+description: "Naučte se, jak nastavit monitorování zabezpečení a správu zásad pro prostředky Azure. Kurzy, reference k rozhraní REST API a další dokumentace"
 services: security-center
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: b2bed6a128c7c767687871389f982d6155c6161d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8a17bd97f758db843cecc53b02722344d6b9d6dc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="security-center-documentation"></a>Dokumentace ke službě Security Center
 
-Zjistěte, jak toouse Security Center tooget přehled a kontrolu nad hello zabezpečení vašich prostředků Azure.  Kurzy, referenční dokumentace rozhraní API REST a další dokumentaci ukazují, jak tooset správy zásad a monitorování zabezpečení, která spolupracuje s řadou řešení zabezpečení pro zařízení.
+Naučte se využívat službu Security Center k získání přehledu o zabezpečení prostředků Azure a kontrole nad ním.  Kurzy, reference k rozhraní REST API a další dokumentace ukazují postupy nastavení monitorování zabezpečení a správy zásad, které fungují pro řadu různých řešení zabezpečení.
 
 <ul class="panelContent cardsFTitle">
     <li>

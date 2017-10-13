@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate clusterů systému Hadoop pomocí rozhraní API REST Azure - Azure | Microsoft Docs"
-description: "Zjistěte, jak toocreate HDInsight clustery odesláním toohello šablony Azure Resource Manager rozhraní REST API Azure."
+title: "Vytváření clusterů systému Hadoop pomocí rozhraní API REST Azure - Azure | Microsoft Docs"
+description: "Naučte se vytvářet clustery HDInsight odesláním šablon Azure Resource Manageru do rozhraní API REST Azure."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,31 +16,31 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/10/2017
 ms.author: larryfr
-ms.openlocfilehash: 87b585e5084eccdc3d7c57483deabb4ad6e32597
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a36a41c231472ceeeb46d02ddb65549b1c79728a
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="create-hadoop-clusters-using-hello-azure-rest-api"></a>Vytváření clusterů systému Hadoop pomocí hello REST API služby Azure
+# <a name="create-hadoop-clusters-using-the-azure-rest-api"></a>Vytváření clusterů systému Hadoop pomocí REST API služby Azure
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Zjistěte, jak toocreate HDInsight clusteru pomocí šablony Azure Resource Manager a hello rozhraní REST API Azure.
+Informace o vytváření clusteru HDInsight pomocí šablony Azure Resource Manager a REST API služby Azure.
 
-Hello rozhraní REST API Azure vám umožní operace správy tooperform na služby hostované v hello platformy Azure, včetně hello vytváření nových prostředků, jako je například clusterů HDInsight.
+Rozhraní REST API Azure umožňuje provádět operace správy na služby hostované v Azure platformy, včetně vytváření nových prostředků, jako je například clusterů HDInsight.
 
 > [!IMPORTANT]
-> Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 > [!NOTE]
-> Hello kroky hello použití tohoto dokumentu [curl (https://curl.haxx.se/)](https://curl.haxx.se/) toocommunicate nástroj s hello rozhraní REST API Azure.
+> Kroky v tomto dokumentu pomocí [curl (https://curl.haxx.se/)](https://curl.haxx.se/) nástroj ke komunikaci s REST API služby Azure.
 
 ## <a name="create-a-template"></a>Vytvoření šablony
 
-Šablony Azure Resource Manageru jsou dokumenty JSON, které popisují **skupiny prostředků** a všechny prostředky v ní (například HDInsight.) Tento přístup na základě šablon můžete toodefine hello prostředky, které potřebujete pro HDInsight v jedné šabloně.
+Šablony Azure Resource Manageru jsou dokumenty JSON, které popisují **skupiny prostředků** a všechny prostředky v ní (například HDInsight.) Tento přístup na základě šablon můžete zadat prostředky, které potřebujete pro HDInsight v jedné šabloně.
 
-Hello následující dokumentu JSON je fúzi hello šablony a parametry soubory z [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password), která vytvoří systémem Linux cluster pomocí hello toosecure a heslo SSH uživatelský účet.
+V následujícím dokumentu JSON je fúze ze souborů šablony a parametry [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password), která vytvoří cluster se systémem Linux pomocí hesla pro zabezpečení účtu uživatele SSH.
 
    ```json
    {
@@ -56,50 +56,50 @@ Hello následující dokumentu JSON je fúzi hello šablony a parametry soubory 
                        "storm",
                        "spark"],
                        "metadata": {
-                           "description": "hello type of hello HDInsight cluster toocreate."
+                           "description": "The type of the HDInsight cluster to create."
                        }
                    },
                    "clusterName": {
                        "type": "string",
                        "metadata": {
-                           "description": "hello name of hello HDInsight cluster toocreate."
+                           "description": "The name of the HDInsight cluster to create."
                        }
                    },
                    "clusterLoginUserName": {
                        "type": "string",
                        "metadata": {
-                           "description": "These credentials can be used toosubmit jobs toohello cluster and toolog into cluster dashboards."
+                           "description": "These credentials can be used to submit jobs to the cluster and to log into cluster dashboards."
                        }
                    },
                    "clusterLoginPassword": {
                        "type": "securestring",
                        "metadata": {
-                           "description": "hello password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
+                           "description": "The password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
                        }
                    },
                    "sshUserName": {
                        "type": "string",
                        "metadata": {
-                           "description": "These credentials can be used tooremotely access hello cluster."
+                           "description": "These credentials can be used to remotely access the cluster."
                        }
                    },
                    "sshPassword": {
                        "type": "securestring",
                        "metadata": {
-                           "description": "hello password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
+                           "description": "The password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
                        }
                    },
                    "clusterStorageAccountName": {
                        "type": "string",
                        "metadata": {
-                           "description": "hello name of hello storage account toobe created and be used as hello cluster's storage."
+                           "description": "The name of the storage account to be created and be used as the cluster's storage."
                        }
                    },
                    "clusterWorkerNodeCount": {
                        "type": "int",
                        "defaultValue": 4,
                        "metadata": {
-                           "description": "hello number of nodes in hello HDInsight cluster."
+                           "description": "The number of nodes in the HDInsight cluster."
                        }
                    }
                },
@@ -215,52 +215,52 @@ Hello následující dokumentu JSON je fúzi hello šablony a parametry soubory 
    }
    ```
 
-V tomto příkladu se používá v hello kroky v tomto dokumentu. Nahraďte hello příklad *hodnoty* v hello **parametry** oddíl s hello hodnoty pro váš cluster.
+V tomto příkladu se používá v kroky v tomto dokumentu. Nahradit příklad *hodnoty* v **parametry** část s hodnotami pro váš cluster.
 
 > [!IMPORTANT]
-> Šablona Hello používá hello výchozí počet uzlů pracovního procesu (4) pro cluster služby HDInsight. Pokud máte v plánu na víc než 32 uzlů pracovního procesu, je nutné vybrat velikost hlavního uzlu s alespoň s 8 jádry a 14 GB paměti ram.
+> Šablona používá výchozí počet uzlů pracovního procesu (4) pro cluster služby HDInsight. Pokud máte v plánu na víc než 32 uzlů pracovního procesu, je nutné vybrat velikost hlavního uzlu s alespoň s 8 jádry a 14 GB paměti ram.
 >
 > Další informace o velikosti uzlu a souvisejících nákladů, najdete v části [HDInsight ceny](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-## <a name="log-in-tooyour-azure-subscription"></a>Přihlaste se tooyour předplatného Azure
+## <a name="log-in-to-your-azure-subscription"></a>Přihlášení k předplatnému Azure
 
-Postupujte podle kroků hello popsaných v [Začínáme s Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) a připojte se pomocí hello předplatné tooyour `az login` příkaz.
+Postupujte podle kroků popsaných v [Začínáme s Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) a připojte se k předplatnému pomocí `az login` příkaz.
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
 > [!NOTE]
-> Tyto kroky nejsou stručné verzi hello *vytvoření instančního objektu s heslem* části hello [použití Azure CLI toocreate objekt služby prostředků tooaccess](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md#create-service-principal-with-password) dokumentu. Tyto kroky vytvoření instančního objektu, který je použité tooauthenticate toohello REST API služby Azure.
+> Tyto kroky nejsou stručné verzi *vytvoření instančního objektu s heslem* části [použití Azure CLI pro vytvoření objektu služby pro přístup k prostředkům](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md#create-service-principal-with-password) dokumentu. Tyto kroky vytvořit objekt služby, který se používá k ověření na rozhraní REST API Azure.
 
-1. Z příkazového řádku použijte následující příkaz toolist hello předplatné Azure.
+1. Z příkazového řádku použijte následující příkaz k zobrazení seznamu vašich předplatných Azure.
 
    ```bash
    az account list --query '[].{Subscription_ID:id,Tenant_ID:tenantId,Name:name}'  --output table
    ```
 
-    V seznamu hello, vyberte předplatné hello má toouse a Všimněte si hello **ID_ODBĚRU** a __Tenant_ID__ sloupce. Uložte tyto hodnoty.
+    V seznamu vyberte předplatné, který chcete použít a poznamenejte si **ID_ODBĚRU** a __Tenant_ID__ sloupce. Uložte tyto hodnoty.
 
-2. Použijte následující příkaz toocreate aplikace v Azure Active Directory hello.
+2. Použijte následující příkaz k vytvoření aplikace v Azure Active Directory.
 
    ```bash
    az ad app create --display-name "exampleapp" --homepage "https://www.contoso.org" --identifier-uris "https://www.contoso.org/example" --password <Your password> --query 'appId'
    ```
 
-    Nahraďte hodnoty hello hello `--display-name`, `--homepage`, a `--identifier-uris` vlastními hodnotami. Zadejte heslo pro nový záznam služby Active Directory hello.
+    Nahraďte hodnoty `--display-name`, `--homepage`, a `--identifier-uris` vlastními hodnotami. Zadejte heslo pro nový záznam služby Active Directory.
 
    > [!NOTE]
-   > Hello `--home-page` a `--identifier-uris` hodnoty nepotřebujete tooreference vlastní webové stránky hostované na hello Internetu. Musí být jedinečné identifikátory URI.
+   > `--home-page` a `--identifier-uris` hodnoty nemusíte odkazovat na vlastní webové stránky hostované na Internetu. Musí být jedinečné identifikátory URI.
 
-   Hello hodnota vrácená z tohoto příkazu je hello __ID aplikace__ pro novou aplikaci hello. Uložte tuto hodnotu.
+   Hodnota vrácená z tohoto příkazu je __ID aplikace__ pro novou aplikaci. Uložte tuto hodnotu.
 
-3. Použití hello následující příkaz toocreate hlavní název služby pomocí hello **ID aplikace**.
+3. Použijte následující příkaz k vytvoření objektu služby pomocí **ID aplikace**.
 
    ```bash
    az ad sp create --id <App ID> --query 'objectId'
    ```
 
-     Hello hodnota vrácená z tohoto příkazu je hello __ID objektu__. Uložte tuto hodnotu.
+     Hodnota vrácená z tohoto příkazu je __ID objektu__. Uložte tuto hodnotu.
 
-4. Přiřadit hello **vlastníka** role toohello službu objektu zabezpečení pomocí hello **ID objektu** hodnotu. Použití hello **ID předplatného** jste dříve získali.
+4. Přiřazení **vlastníka** role hlavní služby pomocí **ID objektu** hodnotu. Použití **ID předplatného** jste dříve získali.
 
    ```bash
    az role assignment create --assignee <Object ID> --role Owner --scope /subscriptions/<Subscription ID>/
@@ -268,7 +268,7 @@ Postupujte podle kroků hello popsaných v [Začínáme s Azure CLI 2.0](https:/
 
 ## <a name="get-an-authentication-token"></a>Získat ověřovací token
 
-Použijte následující příkaz tooretrieve ověřovací token hello:
+Chcete-li získat ověřovací token, použijte následující příkaz:
 
 ```bash
 curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
@@ -280,11 +280,11 @@ curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
 --data-urlencode "resource=https://management.azure.com/"
 ```
 
-Nastavit `$TENANTID`, `$APPID`, a `$PASSWORD` toohello hodnoty získané nebo použít dříve.
+Nastavit `$TENANTID`, `$APPID`, a `$PASSWORD` na hodnoty získané nebo použít dříve.
 
-Pokud tento požadavek je úspěšné, obdrží odpověď 200 řady a hello odpovědi obsahuje dokument JSON.
+Pokud tento požadavek je úspěšné, obdrží odpověď 200 řady a text odpovědi obsahuje dokument JSON.
 
-Hello dokumentu JSON vrácený tuto žádost obsahuje element s názvem **access_token**. Hello hodnotu **access_token** je použité tooauthentication požadavky toohello REST API.
+Dokument JSON vrácený tuto žádost obsahuje element s názvem **access_token**. Hodnota **access_token** slouží k žádosti o ověření rozhraní REST API.
 
 ```json
 {
@@ -298,12 +298,12 @@ Hello dokumentu JSON vrácený tuto žádost obsahuje element s názvem **access
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Použijte hello následující toocreate skupinu prostředků.
+Následující informace vám pomůžou vytvořit skupinu prostředků.
 
-* Nastavit `$SUBSCRIPTIONID` ID předplatného toohello přijal při vytváření hello instanční objekt.
-* Nastavit `$ACCESSTOKEN` obdrželi v předchozím kroku hello toohello přístupový token.
-* Nahraďte `DATACENTERLOCATION` s hello datového centra chcete skupinu prostředků hello toocreate a prostředky v. Například 'jihu USA".
-* Nastavit `$RESOURCEGROUPNAME` název toohello chcete toouse pro tuto skupinu:
+* Nastavit `$SUBSCRIPTIONID` k předplatnému ID přijal při vytváření objektu služby.
+* Nastavit `$ACCESSTOKEN` do tokenu přístupu přijaté v předchozím kroku.
+* Nahraďte `DATACENTERLOCATION` s Chcete vytvořit skupinu prostředků a prostředky v datovém centru. Například 'jihu USA".
+* Nastavit `$RESOURCEGROUPNAME` na název, který chcete použít pro tuto skupinu:
 
 ```bash
 curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME?api-version=2015-01-01" \
@@ -314,34 +314,34 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 }'
 ```
 
-Pokud tento požadavek je úspěšné, obdrží odpověď 200 řady a hello odpovědi obsahuje dokument JSON obsahující informace o skupině hello. Hello `"provisioningState"` element obsahuje hodnotu `"Succeeded"`.
+Pokud tento požadavek je úspěšné, obdrží odpověď 200 řady a text odpovědi obsahuje dokument JSON obsahující informace o této skupině. `"provisioningState"` Element obsahuje hodnotu `"Succeeded"`.
 
 ## <a name="create-a-deployment"></a>Vytvoření nasazení
 
-Použijte následující příkaz toodeploy hello skupiny prostředků šablony toohello hello.
+Použijte následující příkaz k nasazení šablony do skupiny prostředků.
 
-* Nastavit `$DEPLOYMENTNAME` název toohello chcete toouse pro toto nasazení.
+* Nastavit `$DEPLOYMENTNAME` na název, který chcete použít pro toto nasazení.
 
 ```bash
 curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME/providers/microsoft.resources/deployments/$DEPLOYMENTNAME?api-version=2015-01-01" \
 -H "Authorization: Bearer $ACCESSTOKEN" \
 -H "Content-Type: application/json" \
--d "{set your body string toohello template and parameters}"
+-d "{set your body string to the template and parameters}"
 ```
 
 > [!NOTE]
-> Pokud jste uložili soubor tooa hello šablony, můžete použít následující příkaz místo hello `-d "{ template and parameters}"`:
+> Pokud jste uložili soubor šablony, můžete použít následující příkaz místo `-d "{ template and parameters}"`:
 >
 > `--data-binary "@/path/to/file.json"`
 
-Pokud tento požadavek je úspěšné, obdrží odpověď 200 řady a hello odpovědi obsahuje dokument JSON obsahující informace o operaci nasazení hello.
+Pokud tento požadavek je úspěšné, obdrží odpověď 200 řady a text odpovědi obsahuje dokument JSON obsahující informace o operaci nasazení.
 
 > [!IMPORTANT]
-> nasazení Hello byla odeslána, ale nebyl dokončen. Může trvat několik minut, obvykle přibližně 15 pro nasazení toocomplete hello.
+> Nasazení byla odeslána, ale nebyl dokončen. Může trvat několik minut, obvykle přibližně 15, pro dokončení nasazení.
 
-## <a name="check-hello-status-of-a-deployment"></a>Zkontrolujte stav hello nasazení
+## <a name="check-the-status-of-a-deployment"></a>Zkontrolujte stav nasazení
 
-Stav hello toocheck hello nasazení, hello použijte následující příkaz:
+Pokud chcete zkontrolovat stav nasazení, použijte následující příkaz:
 
 ```bash
 curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME/providers/microsoft.resources/deployments/$DEPLOYMENTNAME?api-version=2015-01-01" \
@@ -349,7 +349,7 @@ curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 -H "Content-Type: application/json"
 ```
 
-Tento příkaz vrátí dokumentu JSON obsahující informace o operaci nasazení hello. Hello `"provisioningState"` element obsahuje hello stav nasazení hello. Pokud tento prvek obsahuje hodnotu `"Succeeded"`, pak nasazení hello byla úspěšně dokončena.
+Tento příkaz vrátí dokumentu JSON obsahující informace o operaci nasazení. `"provisioningState"` Element obsahuje stav nasazení. Pokud tento prvek obsahuje hodnotu `"Succeeded"`, pak nasazení bylo úspěšně dokončeno.
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
@@ -357,7 +357,7 @@ Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se 
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste úspěšně vytvořili clusteru služby HDInsight, použijte následující toolearn jak hello toowork k vašemu clusteru.
+Teď, když jste úspěšně vytvořili clusteru služby HDInsight, použijte následující informace o práci s vašeho clusteru.
 
 ### <a name="hadoop-clusters"></a>Clustery Hadoop
 

@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure dokumentaci k bráně VPN - kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
-description: "Zjistěte, jak tooconfigure virtuální privátní sítě (VPN) brány toomanage provoz mezi virtuálními sítěmi cloudové a místní, nebo mezi cloudu virtuálních sítí."
+title: "Dokumentace ke službě Azure VPN Gateway – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
+description: "Naučte se konfigurovat brány virtuální privátní sítě (VPN) ke správě přenosů dat mezi cloudovými virtuálními sítěmi a místními systémy, nebo mezi cloudovými virtuálními sítěmi."
 services: vpn-gateway
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: a518f39e0cb8761e239d0c033a7801803edfd0a7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 61273e472dd0d0727df40984ad277aaf4c244611
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="vpn-gateway-documentation"></a>Dokumentace služby VPN Gateway
 
-Zjistěte, jak tooconfigure brány sítě VPN, bránu virtuální privátní sítě. Dokumentace ukazuje, jak toosend síťový provoz mezi virtuálními sítěmi Azure a místními umístění nebo jiné virtuální sítě Azure (virtuální sítě).
+Naučte se konfigurovat VPN Gateway, bránu virtuální privátní sítě. Dokumentace ukazuje, jak můžete posílat síťový provoz mezi virtuálními sítěmi Azure a místními systémy nebo jinými virtuálními sítěmi Azure (VNet).
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -88,7 +88,7 @@ Zjistěte, jak tooconfigure brány sítě VPN, bránu virtuální privátní sí
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začít vytvářet připojení site-to-site pomocí hello portálu Azure</h3>
+                        <h3>Začínáme vytvářet připojení typu Site-to-Site s využitím webu Azure Portal</h3>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@ Zjistěte, jak tooconfigure brány sítě VPN, bránu virtuální privátní sí
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začít vytvářet připojení point-to-site pomocí hello portálu Azure</h3>
+                        <h3>Začínáme vytvářet připojení typu Point-to-Site s využitím webu Azure Portal</h3>
                     </div>
                 </div>
             </div>
@@ -124,7 +124,7 @@ Zjistěte, jak tooconfigure brány sítě VPN, bránu virtuální privátní sí
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začít vytvářet připojení VNet-to-VNet pomocí hello portálu Azure</h3>
+                        <h3>Začínáme vytvářet připojení typu VNet-to-VNet s využitím webu Azure Portal</h3>
                     </div>
                 </div>
             </div>

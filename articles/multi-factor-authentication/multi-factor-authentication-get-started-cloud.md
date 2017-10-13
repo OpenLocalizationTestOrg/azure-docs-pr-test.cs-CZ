@@ -1,6 +1,6 @@
 ---
-title: "aaaGet spuštění Azure MFA v cloudu hello | Microsoft Docs"
-description: "Toto je stránka hello Microsoft Azure Multi-Factor authentication, která popisuje, jak tooget pracovat s Azure MFA v cloudu hello."
+title: "Začínáme s ověřováním Azure Multi-Factor Authentication v cloudu | Dokumentace Microsoftu"
+description: "Toto je stránka ověřování Azure Multi-Factor Authentication, která popisuje, jak začít s Azure MFA v cloudu."
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -14,35 +14,35 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/24/2017
 ms.author: kgremban
-ms.openlocfilehash: a4aaf44bf08d96f2baad155072fdd6e0e727ce8e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 19f3228b874fc4e37bf83388dae4341428226482
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="getting-started-with-azure-multi-factor-authentication-in-hello-cloud"></a>Začínáme s Azure Multi-Factor Authentication v cloudu hello
-Tento článek vás provede způsob spuštění tooget používání ověřování Azure Multi-Factor Authentication v cloudu hello.
+# <a name="getting-started-with-azure-multi-factor-authentication-in-the-cloud"></a>Začínáme s ověřováním Azure Multi-Factor Authenticatin v cloudu
+V tomto článku se dozvíte, jak začít používat Azure Multi-Factor Authentication v cloudu.
 
 > [!NOTE]
-> Hello následující dokumentace obsahuje informace o způsobu tooenable uživatele, kteří používají hello **portálu Azure Classic**. Pokud hledáte informace o tom, najdete v části tooset si Azure Multi-Factor Authentication pro uživatele O365, [nastavení služby Multi-Factor authentication pro Office 365.](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6?ui=en-US&rs=en-US&ad=US)
+> V následující dokumentaci naleznete informace o tom, jak povolit uživatelům používání **portálu Azure Classic**. Pokud hledáte informace o nastavení ověřování Azure Multi-Factor Authentication pro uživatele O365, najdete je v tématu [Nastavení ověřování Multi-Factor Authentication pro Office 365.](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6?ui=en-US&rs=en-US&ad=US)
 
-![MFA v cloudu hello](./media/multi-factor-authentication-get-started-cloud/mfa_in_cloud.png)
+![MFA v cloudu](./media/multi-factor-authentication-get-started-cloud/mfa_in_cloud.png)
 
 ## <a name="prerequisite"></a>Požadavek
-[Zaregistrujte si předplatné Azure](https://azure.microsoft.com/pricing/free-trial/) -Pokud už nemáte předplatné Azure, je třeba toosign-up pro jeden. Pokud právě začínáte a používáte Azure MFA, můžete použít zkušební verzi předplatného
+[Zaregistrujte si předplatné Azure](https://azure.microsoft.com/pricing/free-trial/) – pokud ještě nemáte předplatné Azure, musíte se zaregistrovat. Pokud právě začínáte a používáte Azure MFA, můžete použít zkušební verzi předplatného
 
 ## <a name="enable-azure-multi-factor-authentication"></a>Povolení služby Azure Multi-Factor Authentication
-Tak dlouho, dokud uživatelé mají licence, které zahrnují Azure Multi-Factor Authentication, není nic, je nutné, aby toodo tooturn na Azure MFA. Můžete začít s vyžadováním dvoustupňového ověřování u jednotlivých uživatelů. Hello licence, které umožňují Azure MFA jsou:
+Pokud vaši uživatelé mají licence, které zahrnují službu Azure Multi-Factor Authentication, pro zapnutí Azure MFA není potřeba nic dělat. Můžete začít s vyžadováním dvoustupňového ověřování u jednotlivých uživatelů. Licence, které umožňují Azure MFA, jsou:
 - Azure Multi-Factor Authentication
 - Azure Active Directory Premium
 - Enterprise Mobility + Security
 
-Pokud nemáte jedna z těchto tří licencí, nebo nemáte dostatečný počet licencí toocover všichni uživatelé, které je příliš ok. Právě máte toodo na další krok a [vytvoření poskytovatele Multi-Factor Auth](multi-factor-authentication-get-started-auth-provider.md) ve vašem adresáři.
+Pokud nemáte některou z těchto tří licencí nebo nemáte dostatek licencí pro pokrytí všech uživatelů, nic se neděje. Stačí jenom přidat další krok a v adresáři [vytvořit poskytovatele Multi-Factor Auth](multi-factor-authentication-get-started-auth-provider.md).
 
 ## <a name="turn-on-two-step-verification-for-users"></a>Zapnutí dvoustupňového ověřování pro uživatele
 
-Použijte jeden z postupů hello uvedené v [jak toorequire dvoustupňové ověřování pro uživatele nebo skupinu](multi-factor-authentication-get-started-user-states.md) toostart pomocí Azure MFA. Můžete zvolit tooenforce dvoustupňové ověřování pro všechny přihlášení nebo podmíněného přístupu zásady toorequire dvoustupňové ověření můžete vytvořit pouze v případě, že ho záleží tooyou.
+Pokud chcete začít používat Azure MFA, postupujte podle některého z postupů uvedených v tématu [Vyžadování dvoustupňového ověřování pro uživatele nebo skupinu](multi-factor-authentication-get-started-user-states.md). Můžete se rozhodnout vynucovat dvoustupňové ověřování pro všechna přihlášení nebo můžete vytvořit zásady podmíněného přístupu a vyžadovat dvoustupňové ověřování, jenom když potřebujete.
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste nastavili Azure Multi-Factor Authentication v cloudu hello, můžete nakonfigurovat a nastavení nasazení. Další podrobnosti najdete v části [Konfigurace Azure Multi-Factor Authentication](multi-factor-authentication-whats-next.md).
+Teď, když máte nastavené Azure Multi-Factor Authentication v cloudu, můžete konfigurovat a nastavit nasazení. Další podrobnosti najdete v části [Konfigurace Azure Multi-Factor Authentication](multi-factor-authentication-whats-next.md).
 

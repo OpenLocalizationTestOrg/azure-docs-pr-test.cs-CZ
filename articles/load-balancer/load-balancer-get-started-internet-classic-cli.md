@@ -1,9 +1,9 @@
 ---
-title: "aaaCreate směřujících Internetu pro vyrovnávání zátěže - rozhraní příkazového řádku Azure classic | Microsoft Docs"
-description: "Zjistěte, jak toocreate k Internetu přístupných pro vyrovnávání zatížení pomocí modelu nasazení classic hello rozhraní příkazového řádku Azure"
+title: "Vytvoření internetového nástroje pro vyrovnávání zatížení – rozhraní příkazového řádku Azure Classic | Dokumentace Microsoftu"
+description: "Zjistěte, jak vytvořit internetový nástroj pro vyrovnávání zatížení v modelu nasazení Classic pomocí rozhraní příkazového řádku Azure"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 tags: azure-service-management
 ms.assetid: e433a824-4a8a-44d2-8765-a74f52d4e584
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-ms.openlocfilehash: e6070cbc574f74bca0cccb960ff192847d6511bc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 0813cb0ccf976b7e47420b33ec65714fd8e60ac1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="get-started-creating-an-internet-facing-load-balancer-classic-in-hello-azure-cli"></a>Začínáte s vytvářením internetovým Vyrovnávání zatížení (klasické) v hello rozhraní příkazového řádku Azure
+# <a name="get-started-creating-an-internet-facing-load-balancer-classic-in-the-azure-cli"></a>Začínáme vytvářet internetový nástroj pro vyrovnávání zatížení (Classic) v rozhraní příkazového řádku Azure
 
 > [!div class="op_single_selector"]
 > * [Portál Azure Classic](../load-balancer/load-balancer-get-started-internet-classic-portal.md)
@@ -31,16 +31,16 @@ ms.lasthandoff: 10/06/2017
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
 > [!IMPORTANT]
-> Než začnete pracovat s prostředky Azure, je důležité toounderstand Azure aktuálně má dva modely nasazení: Azure Resource Manager a Klasický model. Před zahájením práce s jakýmikoli prostředky Azure se ujistěte, že rozumíte [modelům nasazení a příslušným nástrojům](../azure-classic-rm.md). Hello dokumentaci k různým nástrojům můžete zobrazit kliknutím na karty hello hello horní části tohoto článku. Tento článek se týká modelu nasazení classic hello. Můžete také [zjistěte, jak toocreate přístupem Internetu pro vyrovnávání zátěže pomocí Azure Resource Manager](load-balancer-get-started-internet-arm-ps.md).
+> Než začnete pracovat s prostředky Azure, je potřeba si uvědomit, že Azure má v současné době dva modely nasazení: Azure Resource Manager a klasický. Před zahájením práce s jakýmikoli prostředky Azure se ujistěte, že rozumíte [modelům nasazení a příslušným nástrojům](../azure-classic-rm.md). Dokumentaci k různým nástrojům můžete zobrazit kliknutím na karty v horní části tohoto článku. Tento článek se týká modelu nasazení Classic. Případně [zjistěte, jak vytvořit internetový nástroj pro vyrovnávání zatížení pomocí Azure Resource Manageru](load-balancer-get-started-internet-arm-ps.md).
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
-## <a name="step-by-step-creating-an-internet-facing-load-balancer-using-cli"></a>Vytvoření internetového nástroje pro vyrovnávání zatížení pomocí rozhraní příkazového řádku krok za krokem
+## <a name="create-an-internet-facing-load-balancer-using-cli"></a>Vytvoření internetového nástroje pro vyrovnávání zatížení pomocí rozhraní příkazového řádku
 
-Tato příručka ukazuje, jak toocreate k Internetu pro vyrovnávání zatížení na základě výše uvedené hello scénář.
+Tento průvodce ukazuje, jak vytvořit internetový nástroj pro vyrovnávání zatížení založený na výše uvedeném scénáři.
 
-1. Pokud jste rozhraní příkazového řádku Azure nikdy nepoužívali, projděte si téma [instalace a konfigurace rozhraní příkazového řádku Azure hello](../cli-install-nodejs.md) a postupujte podle pokynů hello až toohello bodu, kde můžete vybrat svůj účet Azure a předplatné.
-2. Spustit hello **azure konfigurace režim** příkaz tooswitch tooclassic režimu, jak je uvedeno níže.
+1. Pokud jste rozhraní příkazového řádku Azure nikdy nepoužívali, přejděte na téma [Instalace a konfigurace rozhraní příkazového řádku Azure](../cli-install-nodejs.md) a postupujte podle pokynů až do chvíle, kdy můžete vybrat svůj účet a předplatné Azure.
+2. Spuštěním příkazu **azure config mode** přejděte do režimu Classic, jak vidíte níže.
 
     ```azurecli
     azure config mode asm
@@ -52,34 +52,34 @@ Tato příručka ukazuje, jak toocreate k Internetu pro vyrovnávání zatížen
 
 ## <a name="create-endpoint-and-load-balancer-set"></a>Vytvoření koncového bodu a sady nástroje pro vyrovnávání zatížení
 
-Hello scénář předpokládá hello virtuálních počítačů "web1" a "web2" byly vytvořeny.
-Tento průvodce vytvoří sadu nástroje pro vyrovnávání zatížení používající port 80 jako veřejný port a port 80 jako místní port. Port testu je také konfigurován na portu 80 a nástroj pro vyrovnávání zatížení s názvem hello nastavte "lbset".
+Tento scénář předpokládá, že byly vytvořeny virtuální počítače web1 a web2.
+Tento průvodce vytvoří sadu nástroje pro vyrovnávání zatížení používající port 80 jako veřejný port a port 80 jako místní port. Port testu je také nakonfigurován na port 80 a název sady nástroje pro vyrovnávání zatížení je lbset.
 
 ### <a name="step-1"></a>Krok 1
 
-Vytvoření první koncový bod hello a nastavit pomocí nástroje pro vyrovnání zatížení `azure network vm endpoint create` pro virtuální počítač "web1".
+Vytvořte první koncový bod a sadu nástroje pro vyrovnávání zatížení pro virtuální počítač web1 pomocí příkazu `azure network vm endpoint create`.
 
 ```azurecli
 azure vm endpoint create web1 80 --local-port 80 --protocol tcp --probe-port 80 --load-balanced-set-name lbset
 ```
 
-## <a name="step-2"></a>Krok 2
+### <a name="step-2"></a>Krok 2
 
-Přidáte sadu Nástroje pro vyrovnávání zatížení toohello druhý virtuální počítač "webu 2".
+Přidejte do sady nástroje pro vyrovnávání zatížení druhý virtuální počítač web2.
 
 ```azurecli
 azure vm endpoint create web2 80 --local-port 80 --protocol tcp --probe-port 80 --load-balanced-set-name lbset
 ```
 
-## <a name="step-3"></a>Krok 3
+### <a name="step-3"></a>Krok 3
 
-Ověření konfigurace služby Vyrovnávání zatížení hello pomocí `azure vm show` .
+Ověřte konfiguraci nástroje pro vyrovnávání zatížení pomocí příkazu `azure vm show`.
 
 ```azurecli
 azure vm show web1
 ```
 
-výstup Hello bude:
+Výstup bude:
 
     data:    DNSName "contoso.cloudapp.net"
     data:    Location "East US"
@@ -125,7 +125,7 @@ výstup Hello bude:
 
 ## <a name="create-a-remote-desktop-endpoint-for-a-virtual-machine"></a>Vytvoření koncového bodu vzdálené plochy pro virtuální počítač
 
-Můžete vytvořit vzdálené ploše koncový bod tooforward síťový provoz z místního portu veřejný port tooa pro konkrétní virtuální počítač pomocí `azure vm endpoint create`.
+Koncový bod vzdálené plochy k přesměrování síťového provozu z veřejného portu na místní port konkrétního virtuálního počítače můžete vytvořit pomocí příkazu `azure vm endpoint create`.
 
 ```azurecli
 azure vm endpoint create web1 54580 -k 3389
@@ -133,16 +133,16 @@ azure vm endpoint create web1 54580 -k 3389
 
 ## <a name="remove-virtual-machine-from-load-balancer"></a>Odebrání virtuálního počítače z nástroje pro vyrovnávání zatížení
 
-Máte toodelete hello koncový bod přidružené toohello sady Nástroje pro vyrovnávání zatížení z virtuálního počítače hello. Odebraný hello koncový bod virtuálního počítače hello nepatří toohello s vyrovnáváním zatížení už.
+Je třeba odstranit koncový bod přidružený k sadě nástroje pro vyrovnávání zatížení z virtuálního počítače. Po odebrání koncového bodu již virtuální počítač nebude patřit do sady nástroje pro vyrovnávání zatížení.
 
-Pomocí výše uvedeném příkladu hello, můžete odebrat hello koncového bodu pro virtuální počítač "web1" vytvořit z nástroje pro vyrovnávání zatížení "lbset" pomocí příkazu hello `azure vm endpoint delete`.
+Když použijeme výše uvedený příklad, koncový bod vytvořený pro virtuální počítač web1 můžete odebrat z nástroje pro vyrovnávání zatížení lbset pomocí příkazu `azure vm endpoint delete`.
 
 ```azurecli
 azure vm endpoint delete web1 tcp-80-80
 ```
 
 > [!NOTE]
-> Můžete si prostudovat další koncové body toomanage možnosti pomocí příkazu hello`azure vm endpoint --help`
+> Další možnosti správy koncových bodů můžete prozkoumat pomocí příkazu `azure vm endpoint --help`.
 
 ## <a name="next-steps"></a>Další kroky
 

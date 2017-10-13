@@ -1,6 +1,6 @@
 ---
-title: aaaInstall v2 serveru Azure Backup | Microsoft Docs
-description: "Azure v2 zálohování serveru poskytuje vylepšené možnosti zálohování pro ochranu virtuálních počítačů, soubory a složky, úlohy a další. Zjistěte, jak tooinstall nebo upgradu tooAzure v2 zálohování serveru."
+title: Nainstalujte Azure Backup Server v2 | Microsoft Docs
+description: "Azure v2 zálohování serveru poskytuje vylepšené možnosti zálohování pro ochranu virtuálních počítačů, soubory a složky, úlohy a další. Informace o instalaci nebo upgradu na Azure Backup Server v2."
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -14,71 +14,71 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: masaran;markgal
-ms.openlocfilehash: 5b1699dadd3a173f1c0ef91a1a600bc5e12f20ad
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1bbb16afef7940933b4c3ae23873f212770137e0
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="install-azure-backup-server-v2"></a>Nainstalujte Azure Backup Server v2
 
 Azure Backup Server pomáhá chránit vaše virtuální počítače (VM), úlohy, soubory a složky a další. Azure Backup Server v2 staví na serveru Azure Backup v1 a poskytuje nové funkce, které nejsou k dispozici v v1. Porovnání funkcí mezi v1 a v2 najdete v tématu [matice ochrany serveru Azure Backup](backup-mabs-protection-matrix.md). 
 
-Hello další funkce Zálohování serveru v2 jsou upgrade z verze 1 zálohování serveru. V1 zálohování serveru ale není předpoklady pro instalaci v2 zálohování serveru. Pokud chcete tooupgrade z zálohovat Server v1 tooBackup Server v2, nainstalujte na hello zálohování serveru ochrany v2 zálohování serveru. Existující nastavení zálohování serveru zůstanou beze změn.
+Další funkce v zálohování serveru v2 jsou upgrade z verze 1 zálohování serveru. V1 zálohování serveru ale není předpoklady pro instalaci v2 zálohování serveru. Pokud chcete upgradovat z v1 zálohování serveru k zálohování serveru v2, nainstalujte na server ochrany zálohovat Server v2 zálohování serveru. Existující nastavení zálohování serveru zůstanou beze změn.
 
-Zálohování serveru v2 můžete nainstalovat na Windows Server 2012 R2 nebo Windows Server 2016. tootake výhod nových funkcí, například System Center 2016 Data Protection Manager moderních úložiště záloh, v2 zálohování serveru je třeba nainstalovat do systému Windows Server 2016. Před provedením upgradu tooor instalace v2 Backup Server, přečtěte si informace o hello [požadavky pro instalaci](https://docs.microsoft.com/system-center/dpm/install-dpm#setup-prerequisites).
+Zálohování serveru v2 můžete nainstalovat na Windows Server 2012 R2 nebo Windows Server 2016. Abyste mohli využívat nové funkce, například System Center 2016 Data Protection Manager moderních úložiště záloh, je nutné nainstalovat v2 zálohování serveru v systému Windows Server 2016. Před upgradovat nebo instalací v2 Backup Server, přečtěte si informace o [požadavky pro instalaci](https://docs.microsoft.com/system-center/dpm/install-dpm#setup-prerequisites).
 
 > [!NOTE]
-> Azure Backup Server má hello stejný kód základní jako System Center Data Protection Manager. Zálohování serveru v1 je ekvivalentní tooData Protection Manager 2012 R2 a v2 zálohování serveru je ekvivalentní tooData Protection Manager 2016. Tento článek příležitostně odkazuje dokumentace k Data Protection Manager hello.
+> Azure Backup Server má stejný kód základní jako System Center Data Protection Manager. Zálohování serveru v1 je ekvivalentní k Data Protection Manager 2012 R2 a v2 zálohování serveru je ekvivalentní k Data Protection Manager 2016. Tento článek příležitostně odkazuje dokumentace k Data Protection Manager.
 >
 >
 
-## <a name="upgrade-backup-server-toov2"></a>Upgrade toov2 zálohování serveru
-tooupgrade z zálohovat Server v1 tooBackup v2 serveru, zajistěte, aby vaše instalace má hello požadované aktualizace:
+## <a name="upgrade-backup-server-to-v2"></a>Upgrade záložní Server pro v2
+K upgradu na Backup Server v2 zálohovat Server v1, zkontrolujte, zda že má instalace požadovaných aktualizací:
 
-- [Aktualizovat agenty ochrany hello](backup-mabs-upgrade-to-v2.md#update-the-dpm-protection-agent) na hello chráněných serverů.
-- Upgrade systému Windows Server 2012 R2 tooWindows Server 2016.
+- [Aktualizovat agenty ochrany](backup-mabs-upgrade-to-v2.md#update-the-dpm-protection-agent) na chráněných serverech.
+- Upgrade systému Windows Server 2012 R2 na Windows Server 2016.
 - Správce vzdáleného serveru Azure Backup upgradujte na všech provozních serverech.
-- Ujistěte se, že jsou zálohy nastaveny toocontinue bez restartování provozním serveru.
+- Ujistěte se, že jsou zálohy nastaveny na pokračovat bez restartování provozním serveru.
 
 
 ### <a name="upgrade-steps-for-backup-server-v2"></a>Postup upgradu serveru zálohování v2
 
-1. V hello Download Center [stažení aktualizace instalačního programu hello](https://go.microsoft.com/fwlink/?LinkId=626082).
+1. V centru stažení [stažení aktualizace instalačního programu](https://go.microsoft.com/fwlink/?LinkId=626082).
 
-2. Po extrahování hello Průvodce instalací, ujistěte se, že **spuštění setup.exe** vybrané, a pak vyberte možnost **Dokončit**.
+2. Po extrahování Průvodce instalací, ujistěte se, že **spuštění setup.exe** vybrané, a pak vyberte možnost **Dokončit**.
 
   ![Instalační program instalaci - spustit instalační program](./media/backup-mabs-upgrade-to-v2/run-setup.png)
 
-3. V průvodci Microsoft Azure Backup Server hello pod **nainstalovat**, vyberte **Microsoft Azure Backup Server**.
+3. V průvodci Microsoft Azure Backup Server v části **nainstalovat**, vyberte **Microsoft Azure Backup Server**.
 
   ![Instalační program instalaci - vyberte možnost instalace](./media/backup-mabs-upgrade-to-v2/mabs-installer-s1.png)
 
-4. Na hello **úvodní** , přečtěte si upozornění hello a pak vyberte **Další**.
+4. Na **úvodní** , přečtěte si upozornění a potom vyberte **Další**.
 
   ![Instalační program instalaci – úvodní stránka](./media/backup-mabs-upgrade-to-v2/mabs-installer-s2.png)
 
-5. Průvodce instalací Hello provede toomake kontrol požadovaných součástí se, že můžete upgradovat prostředí. Na hello **požadovaných součástí kontroluje** vyberte **zkontrolujte**.
+5. Průvodce instalací provádí kontroly předpokladů, abyste měli jistotu, že můžete upgradovat prostředí. Na **požadovaných součástí kontroluje** vyberte **zkontrolujte**.
 
   ![Instalační program instalaci - požadovaných součástí kontroluje stránky](./media/backup-mabs-upgrade-to-v2/mabs-installer-s3-perform-checks.png)
 
-6. Prostředí musí projít hello kontrol požadovaných součástí. Pokud vaše prostředí neprojde hello kontroly, poznamenejte si hello problémy a opravte je. Pak vyberte **zkontrolujte znovu**. Když předáte hello kontroly splnění podmínek, vyberte **Další**.
+6. Prostředí musí projít kontrol požadovaných součástí. Pokud vaše prostředí neprojde kontrol, Všimněte si, problémy a opravit je. Pak vyberte **zkontrolujte znovu**. Když předáte kontroly předpokladů, vyberte **Další**.
 
   ![Instalační program instalace - zkontrolujte znovu tlačítko](./media/backup-mabs-upgrade-to-v2/mabs-installer-s4-pass-checks.png)
 
-7. Na hello **nastavení SQL** vyberte hello relevantní možnost pro instalaci SQL a potom vyberte **zkontrolovat a nainstalovat**.
+7. Na **nastavení SQL** vyberte příslušnou volbu pro instalaci SQL a potom vyberte **zkontrolovat a nainstalovat**.
 
   ![Instalační program instalaci - stránka nastavení SQL](./media/backup-mabs-upgrade-to-v2/mabs-installer-s5-sql-settings.png)
 
-  Hello kontroly může trvat několik minut. Když jsou hello kontroluje dokončení, vyberte **Další**.
+  Kontroly může trvat několik minut. Po dokončení kontroly vyberte **Další**.
 
   ![Instalační program instalace - zkontrolujte nastavení SQL a tlačítko Instalovat](./media/backup-mabs-upgrade-to-v2/mabs-installer-s5a-check-and fix-settings.png)
 
-8. Na hello **nastavení instalace** stránky, zajistěte, aby všechny změny toohello umístění, kde je nainstalován Backup Server nebo toohello pomocné umístění. Vyberte **Další**.
+8. Na **nastavení instalace** stránky, proveďte požadované změny umístění, kde je nainstalován Backup Server, nebo cesta k pomocnému umístění. Vyberte **Další**.
 
   ![Instalační program instalaci - stránka nastavení instalace](./media/backup-mabs-upgrade-to-v2/mabs-installer-s6-installation-settings.png)
 
-9. toofinish hello Průvodce instalací, vyberte **Dokončit**.
+9. Chcete-li dokončit Průvodce instalací, vyberte **Dokončit**.
 
   ![Instalační program instalaci - dokončit](./media/backup-mabs-upgrade-to-v2/run-setup.png)
 
@@ -86,38 +86,38 @@ tooupgrade z zálohovat Server v1 tooBackup v2 serveru, zajistěte, aby vaše in
 
 ## <a name="add-storage-for-modern-backup-storage"></a>Přidání úložiště pro moderní úložiště záloh
 
-tooimprove efektivitu úložiště zálohování, zálohování serveru v2 přidává podporu pro svazky. Podobně jako Backup Server v1 v2 zálohování serveru podporuje disky.
+Pokud chcete zlepšit efektivitu úložiště záloh, v2 zálohování serveru přidává podporu pro svazky. Podobně jako Backup Server v1 v2 zálohování serveru podporuje disky.
 
 ### <a name="add-volumes-and-disks"></a>Přidat svazky a disků
-Pokud spustíte v2 zálohování serveru v systému Windows Server 2016, můžete data záloh toostore svazky. Svazky nabízejí úspory úložiště a rychlejší zálohování. Vzhledem k tomu, že jsou svazky tooBackup nový Server, musíte je přidat. 
+Pokud spustíte v2 zálohování serveru v systému Windows Server 2016, můžete k uložení zálohy dat svazky. Svazky nabízejí úspory úložiště a rychlejší zálohování. Protože svazky jsou nové zálohování serveru, musíte je přidat. 
 
-Když přidáte tooBackup svazku serveru, můžete přiřadit svazek hello popisný název. Klikněte na tlačítko hello **popisný název** sloupec hello svazku chcete tooname. V případě potřeby můžete později změnit název hello. Také můžete použít tooadd prostředí PowerShell nebo změnit popisné názvy pro svazky.
+Když přidáte Server zálohování svazku, můžete přiřadit svazek popisný název. Klikněte **popisný název** sloupec chcete název svazku. V případě potřeby můžete později změnit název. Také můžete použít PowerShell k přidání nebo změna popisné názvy pro svazky.
 
-tooadd svazek v hello konzoly pro správu:
+Postup přidání svazku v konzole pro správu:
 
-1. V konzole správce serveru zálohování Azure hello, vyberte **správy** > **diskového úložiště** > **přidat**.
+1. V konzole správce serveru zálohování Azure vyberte **správy** > **diskového úložiště** > **přidat**.
 
-    ![Průvodce přidáním úložiště disku otevřete hello](./media//backup-mabs-upgrade-to-v2/open-add-disk-storage-wizard.png)
+    ![Otevřete Průvodce přidáním úložiště disku](./media//backup-mabs-upgrade-to-v2/open-add-disk-storage-wizard.png)
 
-    Otevře se Průvodce přidáním úložiště disku hello.
+    Otevře se Průvodce přidáním úložiště disku.
 
-2. Na hello **přidání disku úložiště** stránku hello **dostupných svazků** , vyberte svazek a pak vyberte **přidat**.
-3. V hello **vybrané svazky** pole, zadejte popisný název pro hello svazek a potom vyberte **OK**.
+2. Na **přidání disku úložiště** stránky v **dostupných svazků** , vyberte svazek a pak vyberte **přidat**.
+3. V **vybrané svazky** pole, zadejte popisný název pro svazek a potom vyberte **OK**.
 
       ![Průvodce přidáním úložiště disku – Přidání svazku](./media/backup-mabs-upgrade-to-v2/add-volume.png)
 
-  Pokud chcete tooadd disk, hello disk musí patřit tooa ochranné skupiny, která je starší verze úložiště. Tyto disky použít jenom pro tyto skupiny ochrany. Pokud Backup Server nemá zdroje, které mají další ochranu starší verze, se neuvádějí hello disku.
+  Pokud chcete přidat disk, disk musí patřit do skupiny ochrany, která má starší verze úložiště. Tyto disky použít jenom pro tyto skupiny ochrany. Pokud Backup Server nemá zdroje, které mají další ochranu starší verze, se neuvádějí disku.
 
-  Další informace o přidávání disků, najdete v tématu [přidávání disků tooincrease starší verze úložiště](http://docs.microsoft.com/system-center/dpm/upgrade-to-dpm-2016#adding-disks-to-increase-legacy-storage). Disk nelze udělit popisný název.
+  Další informace o přidávání disků, najdete v tématu [přidávání disků, pokud chcete zvýšit starší verze úložiště](http://docs.microsoft.com/system-center/dpm/upgrade-to-dpm-2016#adding-disks-to-increase-legacy-storage). Disk nelze udělit popisný název.
 
 
-### <a name="assign-workloads-toovolumes"></a>Přiřadit toovolumes úlohy
+### <a name="assign-workloads-to-volumes"></a>Přiřadit svazky úlohy
 
-Zálohování serveru zadejte, které úlohy jsou přiřazeny toowhich svazky. Například můžete nastavit nákladné svazky, které podporují vysoký počet vstupně-výstupních operací na druhý (IOPS) úlohy pouze toostore, které vyžadují časté, vysoký počet záloh. Příkladem je SQL Server s protokoly transakcí.
+Zálohování serveru zadejte, které úlohy jsou přiřazeny k svazků, které. Například můžete nastavit nákladné svazky, které podporují vysoký počet vstupně výstupních operací za sekundu (IOPS) pro uložení pouze úlohy, které vyžadují časté, vysoký počet záloh. Příkladem je SQL Server s protokoly transakcí.
 
 #### <a name="update-dpmdiskstorage"></a>Aktualizace DPMDiskStorage
 
-Vlastnosti hello tooupdate svazku ve fondu úložiště hello zálohování serveru, použijte rutinu Powershellu hello DPMDiskStorage aktualizace.
+Pokud chcete aktualizovat vlastnosti svazku ve fondu úložiště zálohování serveru, použijte rutinu prostředí PowerShell DPMDiskStorage aktualizace.
 
 Syntaxe:
 
@@ -127,151 +127,151 @@ Syntaxe:
 Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-DatasourceType] <VolumeTag[]> ] [-Confirm] [-WhatIf] [ <CommonParameters>]
 ```
 
-Všechny změny, které můžete provést pomocí prostředí PowerShell se projeví v hello uživatelského rozhraní.
+V uživatelském rozhraní se projeví všechny změny, které můžete provést pomocí prostředí PowerShell.
 
 
 ## <a name="protect-data-sources"></a>Chránit zdroje dat
-toobegin ochranu datových zdrojů, vytvořte skupinu ochrany. Hello následující kroky zvýraznění změny nebo přidání toohello průvodci nové skupiny ochrany.
+Chcete-li začít chránit zdroje dat, vytvořte skupinu ochrany. Následující kroky zvýrazněte změny nebo přidání do Průvodce vytvořením nové skupiny ochrany.
 
-toocreate skupinu ochrany:
+Chcete-li vytvořit skupinu ochrany:
 
-1. V hello konzoly správce zálohování serveru, vyberte **ochrany**.
+1. V konzole správce zálohování serveru vyberte **ochrany**.
 
-2. Na pásu karet nástroje hello, vyberte **nový**.
+2. Na pásu karet vyberte **nový**.
 
-    Otevře se Průvodce vytvořením nové skupiny ochrany hello.
+    Otevře se Průvodce vytvořením nové skupiny ochrany.
 
   ![Průvodce vytvořením nové skupiny ochrany](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-1.png)
 
-3. Na hello **úvodní** vyberte **Další**.
-4. Na hello **vybrat typ skupiny ochrany** vyberte hello typ skupiny ochrany má toocreate a potom vyberte **Další**.
+3. Na **úvodní** vyberte **Další**.
+4. Na **vybrat typ skupiny ochrany** vyberte typ skupiny ochrany, kterou chcete vytvořit a potom vyberte **Další**.
 
   ![Stránka Typ vyberte skupinu ochrany](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-2.png)
 
-5. Na hello **vybrat členy skupiny** stránku hello **Dostupní členové** podokně, hello členy s jsou uvedeny agenty ochrany. V tomto příkladu vyberte svazek D:\ a E:\ a přidat je toohello **vybrané členy** podokně. Vyberte **Další**.
+5. Na **vybrat členy skupiny** stránky v **Dostupní členové** podokně, členy s jsou uvedeny agenty ochrany. V tomto příkladu vyberte svazek D:\ a E:\ a přidat je do **vybrané členy** podokně. Vyberte **Další**.
 
   ![Vyberte skupiny členy stránky](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-3.png)
 
-6. Na hello **vyberte způsob ochrany dat** stránky, zadejte **název skupiny ochrany**, vyberte způsob ochrany hello a pak vyberte **Další**. Pokud chcete krátkodobou ochranu, je nutné vybrat hello **disku** zálohování metoda.
+6. Na **vyberte způsob ochrany dat** stránky, zadejte **název skupiny ochrany**, zvolte metodu ochrany a pak vyberte **Další**. Pokud chcete krátkodobou ochranu, je nutné vybrat **disku** zálohování metoda.
 
   ![Vyberte způsob ochrany dat stránky](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-4.png)
 
-7. Na hello **zadat krátkodobé cíle** stránky, vyberte hello podrobnosti **rozsah uchování** a **četnost synchronizace**. Pak vyberte **Další**. Volitelně můžete toochange hello plán pro při body obnovení jsou přijatých, vyberte **upravit**.
+7. Na **zadat krátkodobé cíle** vyberte podrobnosti **rozsah uchování** a **četnost synchronizace**. Pak vyberte **Další**. Pokud chcete změnit plán, kdy jsou pořizovány body obnovení, vyberte **upravit**.
 
   ![Určení krátkodobých cílů stránky](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-5.png)
 
-8. Na hello **zkontrolovat přidělení diskového úložiště** zkontrolujte podrobnosti o zdrojích dat hello jste vybrali, jejich velikosti a hodnoty pro toobe místo hello zřízený a hello cílový svazek úložiště.
+8. Na **zkontrolovat přidělení diskového úložiště** stránka, zkontrolujte podrobnosti o zdroji dat jste vybrali, jejich velikosti a hodnoty pro místo, na které se má zřídit a cílový svazek úložiště.
 
   ![Stránka Kontrola přidělení diskového úložiště](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-6.png)
 
-  Svazky úložiště jsou založené na hello zatížení svazku přidělení (nastavte pomocí prostředí PowerShell) a hello úložiště k dispozici. Svazky úložiště hello můžete změnit výběrem jiných svazků v rozevírací nabídce hello. Pokud změníte hodnotu hello **úložiště v cíli**, hello hodnotu pro **úložiště disku** dynamicky změní tooreflect hodnoty v části **volného místa** a **Underprovisioned místo**.
+  Svazky úložiště jsou založené na svazku přidělení zatížení (nastavte pomocí prostředí PowerShell) a úložiště k dispozici. Svazky úložiště můžete změnit výběrem jiných svazků v rozevírací nabídce. Pokud změníte hodnotu **úložiště v cíli**, hodnota **úložiště disku** dynamicky se změní podle hodnoty v části **volného místa** a  **Underprovisioned místo**.
 
-  Pokud zdroje dat hello růst podle plánu, hello hodnotu hello **Underprovisioned místo** sloupec v **úložiště disku** odráží hello množství další úložiště, které je potřeba. Použijte tento plán toohelp hodnotu úložiště, musí technologie smooth zálohy. Pokud hello hodnota nula, neexistují v blízké budoucnosti hello potenciální problémy s úložištěm. Pokud je hodnota hello číslo větší než nula, nemáte dostatečné úložiště přidělené (podle vaší ochrany zásady a hello velikost dat chráněných členů).
+  Pokud zdroje dat růst podle plánu, hodnota **Underprovisioned místo** sloupec v **úložiště disku** odráží množství další úložiště, které je potřeba. Tato hodnota se používá k pomohou naplánovat požadavky na ukládání smooth zálohování. Pokud je hodnota nula, neexistují v blízké budoucnosti potenciální problémy s úložištěm. Pokud je hodnota číslo větší než nula, nemáte dostatečné úložiště přidělené (podle zásady ochrany vaší a velikost dat chráněných členů).
 
   ![Nevytížených diskového úložiště](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-7.png)
 
-   toofinish vytváření hello skupiny, dokončení Průvodce ochrany.
+   Dokončete vytváření skupinu ochrany, dokončete průvodce.
 
-## <a name="migrate-legacy-storage-toomodern-backup-storage"></a>Migrovat starší verze úložiště tooModern úložiště záloh
-Po upgradu tooor instalace v2 zálohování serveru a tooWindows hello upgradu operačního systému serveru 2016 se aktualizujte vaši toouse skupiny ochrany moderní úložiště záloh. Ve výchozím nastavení se nezmění skupin ochrany. Budou pokračovat v práci toofunction jako původně určené. 
+## <a name="migrate-legacy-storage-to-modern-backup-storage"></a>Migrovat starší verze úložiště do moderní úložiště záloh
+Po upgradu na Backup Server v2 a upgradovat operační systém na Windows Server 2016, aktualizujte skupin ochrany používat moderní úložiště záloh. Ve výchozím nastavení se nezmění skupin ochrany. Budou i nadále fungovat jako původně určené. 
 
-Aktualizace toouse skupiny ochrany moderní úložiště záloh je volitelné. skupiny ochrany hello tooupdate, zastavte ochranu všech zdrojů dat pomocí hello zachovat data možnost. Pak přidejte hello datového zdroje tooa nové skupiny ochrany.
+Aktualizace skupiny ochrany a používat moderní úložiště zálohy je volitelné. Aktualizace skupiny ochrany, ukončete ochranu všech zdrojů dat pomocí možnosti zachovat data. Pak přidejte zdroje dat do nové skupiny ochrany.
 
-1. V konzole pro správu hello, vyberte hello **ochrany** funkce. V hello **člena skupiny ochrany** seznamu, klikněte pravým tlačítkem na hello člen a pak vyberte **zastavit ochranu člena**.
+1. V konzole pro správu, vyberte **ochrany** funkce. V **člena skupiny ochrany** seznamu, klikněte pravým tlačítkem na člen a pak vyberte **zastavit ochranu člena**.
 
   ![Zastavit ochranu člena](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
-2. V hello **odebrat ze skupiny** dialogové okno, zkontrolujte místo na disku hello používá a dostupné volné místo pro fond úložiště hello hello. Výchozí Hello je tooleave hello body obnovení na disku hello a mohly tooexpire podle jejich přidružené uchování zásad. Klikněte na **OK**.
+2. V **odebrat ze skupiny** dialogové okno pole, zkontrolujte použité místo na disku a dostupné volné místo pro fond úložiště. Ve výchozím nastavení se nechte body obnovení na disku a povolení jejich platnost vyprší za jejich zásady uchovávání informací přidružených. Klikněte na **OK**.
 
-  Pokud chcete tooimmediately návratový hello používá disku fondu úložiště volné místo toohello, vyberte hello **odstranit repliku na disku** políčko toodelete hello zálohovaná data (a bodů obnovení) přidružené tohoto člena.
+  Pokud chcete hned vrátí do fondu úložiště volné použité místo na disku, vyberte **odstranit repliku na disku** políčko Odstranit záložní data (a bodů obnovení) přidružené k tohoto člena.
 
   ![Odebrat ze skupiny, dialogové okno](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
 
-3. Vytvořte skupinu ochrany, která používá moderní úložiště záloh. Zahrnout zdroje dat hello bez ochrany.
+3. Vytvořte skupinu ochrany, která používá moderní úložiště záloh. Zahrnout nechráněné datových zdrojů.
 
 
-## <a name="add-disks-tooincrease-legacy-storage"></a>Přidat disky tooincrease starší verze úložiště
+## <a name="add-disks-to-increase-legacy-storage"></a>Přidat disky, které chcete zvýšit velikost úložiště starší verze
 
-Pokud chcete, aby starší verze úložiště dat toouse pomocí zálohování serveru, bude pravděpodobně nutné tooadd disky tooincrease starší verze úložiště. 
+Pokud chcete používat starší verze úložiště s zálohování serveru, vám může být nutné přidat disky, které chcete zvýšit starší verze úložiště. 
 
-tooadd diskového úložiště:
+Přidání disku úložiště:
 
-1. V konzole pro správu hello, vyberte **správy** > **diskového úložiště** > **přidat**.
+1. V konzole pro správu vyberte **správy** > **diskového úložiště** > **přidat**.
 
     ![Přidat dialogové okno diskového úložiště](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 
-4. V hello **přidání disku úložiště** dialogovém okně, vyberte **přidat disky**.
+4. V **přidání disku úložiště** dialogovém okně, vyberte **přidat disky**.
 
-5. V seznamu hello dostupných disků, vyberte hello disky, které chcete tooadd, vyberte **přidat**a potom vyberte **OK**.
+5. Vyberte disky, které chcete přidat, vyberte v seznamu dostupných disků, **přidat**a potom vyberte **OK**.
 
-## <a name="update-hello-data-protection-manager-protection-agent"></a>Aktualizovat agenta ochrany hello Data Protection Manager
+## <a name="update-the-data-protection-manager-protection-agent"></a>Aktualizujte agenta ochrany aplikace Data Protection Manager
 
-Zálohování serveru používá hello System Center Data Protection Manager protection agent aktualizací. Pokud provádíte upgrade agenta ochrany, který není připojený toohello sítí, nemůžete použít hello konzole pro správu Data Protection Manager toocomplete upgrade připojeného agenta. Je nutné upgradovat agenta ochrany hello v prostředí neaktivní domény. Dokud hello klientský počítač je připojený toohello síť, hello konzole pro správu Data Protection Manager ukazuje, že aktualizace agenta ochrany hello čeká na vyřízení.
+Zálohování serveru System Center Data Protection Manager protection agent používá pro aktualizace. Pokud provádíte upgrade agenta ochrany, který není připojen k síti, nelze použít konzolu nástroje Data Protection Manager Administrator k dokončení upgradu připojeného agenta. Je nutné upgradovat agenta ochrany v prostředí neaktivní domény. Dokud klientský počítač je připojený k síti, konzolu nástroje Data Protection Manager Administrator ukazuje, že aktualizace agenta ochrany čeká na vyřízení.
 
-Hello následující části popisují, jak tooupdate agenty ochrany pro klientské počítače, které jsou připojené a klientské počítače, které nejsou připojené.
+Následující části popisují, jak aktualizovat agenty ochrany pro klientské počítače, které jsou připojené a klientské počítače, které nejsou připojené.
 
 ### <a name="update-a-protection-agent-for-a-connected-client-computer"></a>Aktualizace agenta ochrany pro připojené klientské počítače
 
-1. V hello konzoly správce zálohování serveru, vyberte **správy** > **agenti**.
+1. V konzole správce zálohování serveru vyberte **správy** > **agenti**.
 
-2. V podokně zobrazení hello vyberte hello klientské počítače, pro které chcete agenta ochrany tooupdate hello.
+2. V podokně zobrazení vyberte klientské počítače, pro které chcete aktualizovat agenta ochrany.
 
   > [!NOTE]
-  > Hello **aktualizací agenta** sloupec zobrazuje, když je k dispozici pro každý chráněný počítač aktualizace agenta ochrany. V hello **akce** podokně, hello **aktualizace** akce je dostupná, pouze když je vybrán chráněný počítač a jsou k dispozici aktualizace.
+  > **Aktualizací agenta** sloupec zobrazuje, když je k dispozici pro každý chráněný počítač aktualizace agenta ochrany. V **akce** podokně **aktualizace** akce je dostupná, pouze když je vybrán chráněný počítač a jsou k dispozici aktualizace.
   >
   >
 
-3. tooinstall aktualizovat agenty ochrany na počítačích hello vybrané v hello **akce** podokně, vyberte **aktualizace**.
+3. Chcete-li nainstalovat aktualizované agenty ochrany na vybraných počítačích, v **akce** podokně, vyberte **aktualizace**.
 
 ### <a name="update-a-protection-agent-on-a-client-computer-that-is-not-connected"></a>Aktualizace agenta ochrany na klientském počítači, který není připojen
 
-1. V hello konzoly správce zálohování serveru, vyberte **správy** > **agenti**.
+1. V konzole správce zálohování serveru vyberte **správy** > **agenti**.
 
-2. V podokně zobrazení hello vyberte hello klientské počítače, pro které chcete agenta ochrany tooupdate hello.
+2. V podokně zobrazení vyberte klientské počítače, pro které chcete aktualizovat agenta ochrany.
 
   > [!NOTE]
-   > Hello **aktualizací agenta** sloupec zobrazuje, když je k dispozici pro každý chráněný počítač aktualizace agenta ochrany. V hello **akce** podokně, hello **aktualizace** akce není dostupná, když je vybrán chráněný počítač, pokud jsou k dispozici aktualizace.
+   > **Aktualizací agenta** sloupec zobrazuje, když je k dispozici pro každý chráněný počítač aktualizace agenta ochrany. V **akce** podokně **aktualizace** akce není dostupná, když je vybrán chráněný počítač, pokud jsou k dispozici aktualizace.
   >
   >
 
-3. tooinstall aktualizovat agenty ochrany na počítačích hello vybrána, vyberte **aktualizace**.
+3. Chcete-li nainstalovat aktualizované agenty ochrany na vybraných počítačích, vyberte **aktualizace**.
 
-4. Pro klientský počítač, který není připojený toohello síti, dokud hello počítači je připojených toohello síť, hello **stav agenta** sloupci se zobrazuje stav **aktualizace čeká na vyřízení**.
+4. Pro klientské počítače, který není připojen k síti, dokud je počítač připojen k síti **stav agenta** sloupci se zobrazuje stav **aktualizace čeká na vyřízení**.
 
-  Až klientský počítač je připojený toohello síť, hello **aktualizací agenta** sloupci hello klientského počítače se zobrazuje stav **aktualizace**.
+  Až se klientský počítač připojí k síti, **aktualizací agenta** sloupci pro klientský počítač se zobrazuje stav **aktualizace**.
   
-### <a name="move-legacy-protection-groups-from-old-version-and-sync-hello-new-version-with-azure"></a>Přesunout starší verze skupin ochrany z předchozí verzi aplikace a synchronizace hello novou verzi pomocí Azure
+### <a name="move-legacy-protection-groups-from-old-version-and-sync-the-new-version-with-azure"></a>Přesunout z původní verze starší verze skupin ochrany a synchronizovat s Azure na novou verzi
 
-Jakmile serveru Azure Backup a hello operačního systému jsou obě aktualizovány, jste nové zdroje dat připravené tooprotect pomocí moderní úložiště záloh. Ale již chráněného zdroje dat bude toobe chráněné v hello starší verze způsobem, jak byly v serveru Azure Backup, ale všechny nové ochrany použije moderní úložiště záloh.
+Jakmile serveru Azure Backup a operačního systému jsou obě aktualizovány, jste připraveni k ochraně nové zdroje dat pomocí moderní úložiště záloh. Ale již chráněných zdrojů dat nadále chráněné starší verze způsobem, jako byly v serveru Azure Backup, ale všechny nové ochrany použije moderní úložiště záloh.
 
-Následující kroky jsou toomigrate zdroje dat z režimu starší verze ochrany tooModern zálohování úložiště.
+Následující kroky jsou při migraci zdroje dat z režimu starší verze ochrany do moderní úložiště záloh.
 
-• Přidat hello nové svazky toohello fondu úložiště DPM a přiřadit popisné názvy a data zdroj značky v případě potřeby.
-• Pro každý zdroj dat, který je v režimu starší verze, zastavte ochranu zdroje dat hello a "Uchovat chráněná Data".  To vám umožní obnovení starých bodů obnovení po migraci.
+• Přidat nové svazky do fondu úložiště aplikace DPM a přiřadit popisné názvy a data zdroj značky v případě potřeby.
+• Pro každý zdroj dat, který je v režimu starší verze, zastavte ochranu zdroje dat a "Uchovat chráněná Data".  To vám umožní obnovení starých bodů obnovení po migraci.
 
-• Vytvořte nové PG a vyberte hello zdroje dat, které jsou toobe uložené pomocí nový formát.
-• Aplikace DPM provede kopie repliky ze starší verze úložiště záloh hello do hello moderní úložiště zálohování svazku místně.
+• Vytvořte nové PG a vyberte zdroje dat, které mají být uloženy pomocí nový formát.
+• Aplikace DPM provede kopie repliky ze starší verze zálohování úložiště do úložiště moderní zálohování svazku místně.
 Poznámka: Toto se zobrazí jako • operaci po obnovení úlohy, které všechny nové synchronizace a bodů obnovení bude uložen v moderní úložiště záloh.
-• Staré body obnovení se vyřazují, protože platnost a nakonec uvolněte místo na disku hello.
-• Po všechny starší verze svazky hello jsou odstraněny z hello původní úložiště, hello disku lze odebrat z Azure backup a hello systému.
-• Proveďte zálohování hello Azure DPMDB.
+• Staré body obnovení se vyřazují, protože platnost a nakonec uvolněte místo na disku.
+• Po všechny starší verze svazky jsou odstraněny z původní úložiště, disk může odebrat z Azure backup a v systému.
+• Proveďte zálohu databáze dpmdb Azure.
 
-Část 2:-důležité položky > Nový server hello potřebovat toobe stejný název jako původní server Azure Backup hello. Pokud chcete toouse staré fondu úložiště a body obnovení tooretain DPMDB - musí mít zálohu databáze aplikace DPMDB je nutné obnovit toobe nelze změnit název hello hello nový server Azure backup
+Část 2:-důležité položky > Nový server se musí mít stejný název jako původní server Azure Backup. Název nový server Azure backup nelze změnit, pokud chcete zachovat pomocí staré fondu úložiště a databáze aplikace DPMDB bodů obnovení - musí mít zálohu DPMDB ji budou muset obnovit
 
-1) Vypnutí hello původní server Azure backup nebo trvat vypnout hello přenosu.
-2) Resetovat hello účet počítače ve službě active directory.
-3) Nainstalujte Server 2016 na nový počítač a název je hello stejný název počítače jako původní server Azure Backup hello.
-4) Připojení k hello domény
+1) Vypnutí původní Azure zálohování serveru nebo trvat vypnout drátové síti.
+2) Resetovat účet počítače ve službě active directory.
+3) Nainstalujte Server 2016 na nový počítač s názvem stejný název počítače jako původní server Azure Backup.
+4) Připojení k doméně
 5) Nainstalujte server Azure Backup V2 (disků fondu úložiště aplikace DPM přesunout z původní server a import)
-6) Obnovení hello DPMDB prováděné od konce část 2
-7) Připojte hello úložiště z hello původní backup server toohello nový server.
-8) Z obnovení SQL hello DPMDB
-9) Z příkazového řádku správce na disku cd tooMicrosoft nový server Azure Backup nainstalujte umístění a složky koše
+6) Obnovte DPMDB prováděné od konce část 2
+7) Připojení úložiště z původního zálohování serveru na nový server.
+8) Z obnovení SQL databáze DPMDB
+9) Z příkazového řádku správce na nový disk cd server Microsoft Azure Backup nainstalujte umístění a složky koše
 
 Příklad cesty: C:\windows\system32 > cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\
-zálohování tooAzure spusťte příkaz DPMSYNC-SYNC
+zálohování do Azure, spusťte příkaz DPMSYNC-SYNC
 
-10) Spusťte synchronizaci DPMSYNC-SYNC Poznámka: Pokud jste přidali nový fond úložiště DPM toohello disky místo přesunutím hello staré, spusťte příkaz DPMSYNC - Reallocatereplica
+10) Spusťte synchronizaci DPMSYNC-SYNC Poznámka: Pokud jste přidali nové disky do fondu úložiště DPM místo přesunutím staré, spusťte příkaz DPMSYNC - Reallocatereplica
 
 ## <a name="new-powershell-cmdlets-in-v2"></a>Nové rutiny prostředí PowerShell v v2
 
@@ -281,9 +281,9 @@ Při instalaci serveru Azure Backup v2 jsou k dispozici dvě nové rutiny:
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak tooprepare serveru nebo začít chránit zatížení:
+Zjistěte, jak připravit server nebo začít chránit zatížení:
 - [Příprava úlohy zálohování serveru](backup-azure-microsoft-azure-backup.md)
-- [Pomocí zálohování serveru tooback server VMware](backup-azure-backup-server-vmware.md)
-- [Použít tooback zálohování serveru SQL Server](backup-azure-sql-mabs.md)
+- [Pomocí zálohování serveru zálohovat VMware server](backup-azure-backup-server-vmware.md)
+- [Použít zálohování serveru k zálohování systému SQL Server](backup-azure-sql-mabs.md)
 - [Moderní úložiště zálohování pomocí zálohování serveru](backup-mabs-add-storage.md)
 

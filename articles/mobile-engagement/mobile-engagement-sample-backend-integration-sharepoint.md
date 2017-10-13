@@ -1,6 +1,6 @@
 ---
-title: aaaAzure Mobile Engagement - integraci back-end
-description: "Připojení Azure Mobile Engagement s SharePoint back-end toocreate kampaně ze služby SharePoint"
+title: "Azure Mobile Engagement – integrace back-end"
+description: "Připojení Azure Mobile Engagement s back-end služby SharePoint, k vytvoření kampaně ze služby SharePoint"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,32 +14,32 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 89e1ef57db607d63c326a760b20260ad439f08b2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d49f1094f4c3f170f3618f3e19e42266f9ae8858
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-mobile-engagement---api-integration"></a>Azure Mobile Engagement – integrace rozhraní API
-V automatizovaný systém marketing vytvoření a aktivace hello marketingových kampaní také dojít k automaticky. Pro tento účel - Azure Mobile Engagement umožňuje vytváření takové automatizované marketingových kampaní, které jsou také pomocí rozhraní API. 
+V automatizovaný systém marketing vytvoření a aktivace marketingových kampaní taky dojít automaticky. Pro tento účel - Azure Mobile Engagement umožňuje vytváření takové automatizované marketingových kampaní, které jsou také pomocí rozhraní API. 
 
-Obvykle zákazníci používat jako součást svých marketingových kampaní hello Mobile Engagement front-endové rozhraní toocreate oznámení nebo hlasování atd. Ale jako hello marketingových kampaní stát vyspělá, je třeba tooleverage hello data zamknutý v hello back-end systémy (například systému CRM nebo systém CMS jako SharePoint), aby bylo možné vytvořit plně automatizovaného kanálu vytváří kampaně v Mobile Zapojení dynamicky podle hello dat odesílaných v z back-end systémy hello. 
+Obvykle zákazníkům použít rozhraní front-endu Mobile Engagement k vytvoření oznámení nebo hlasování podobně jako součást svých marketingových kampaní. Ale protože stále vyspělá marketingových kampaní, je zapotřebí využívat data zamknutý v back-end systémy (například systému CRM nebo systém CMS jako SharePoint), aby bylo možné vytvořit plně automatizovaného kanálu vytváří kampaně v Mobile Engagementu dynamicky na základě dat odesílaných v z back-end systémy. 
 
 ![][5]
 
-Tento kurz vloží prostřednictvím scénáři, kde uživatel obchodní SharePoint naplní seznam serveru SharePoint s marketingové dat a automatizovaného procesu převezme položek seznamu hello a připojí hello Mobile Engagement systém pomocí hello k dispozici rozhraní REST API toocreate marketingovou kampaň z hello dat služby SharePoint. 
+V tomto kurzu projde scénář, kde uživatel obchodní SharePoint naplní seznam serveru SharePoint marketing daty a automatizovaného procesu převezme položek v seznamu a připojí se sadou Mobile Engagement použití dostupných rozhraní API REST k vytvoření marketingovou kampaň z dat služby SharePoint. 
 
 > [!IMPORTANT]
-> Obecně platí můžete tato ukázka jako výchozí bod pro pochopení, jak toocall žádné Mobile Engagement REST API jako jeho podrobnosti hello dva klíčové aspekty volání hello rozhraní API - ověřování a předejte parametry. 
+> Obecně platí můžete tuto ukázku jako výchozí bod porozumět tomu, jak voláním jakéhokoli rozhraní API služby Mobile Engagement REST jako obsahuje podrobné informace o dva klíčové aspekty volání rozhraní API - ověřování a předejte parametry. 
 > 
 > 
 
 ## <a name="sharepoint-integration"></a>Integrace služby SharePoint
-1. Zde je ukázka jaké hello vypadá seznamu služby SharePoint. **Název**, **kategorie**, **NotificationTitle**, **zpráva** a **URL** jsou používány k vytvoření hello oznámení. Existuje sloupec s názvem **IsProcessed** který je používán procesem automatizace ukázka hello hello tvar program konzoly. Tento program konzoly můžete buď spustit jako webová úloha Azure tak, aby ji můžete naplánovat nebo přímo pomocí hello SharePoint pracovního postupu tooprogram vytvoření a aktivace hello oznámení při vložení položky do seznamu služby SharePoint hello. V této ukázce používáme hello program konzoly, která přejde prostřednictvím položky hello v hello SharePoint seznam a vytvořit oznámení v Azure Mobile Engagementu pro každý z nich a nakonec označí hello **IsProcessed** příznak toobe true na vytvoření úspěšné oznámení.
+1. Zde je ukázka seznamu služby SharePoint, která bude vypadat takto. **Název**, **kategorie**, **NotificationTitle**, **zpráva** a **URL** jsou používány k vytvoření oznámení. Existuje sloupec s názvem **IsProcessed** který je používán procesem automatizace ukázka ve formě program konzoly. Můžete buď spustit tato konzola programu jako webová úloha služby Azure tak, aby ji můžete naplánovat nebo můžete přímo pracovního postupu služby SharePoint k programu, vytvoření a aktivace oznámení, když vložíte položky do seznamu služby SharePoint. V této ukázce používáme program konzoly, která přejde prostřednictvím položky v SharePoint seznam a vytvořit oznámení v Azure Mobile Engagementu pro každý z nich a nakonec označí **IsProcessed** příznak pravdivá na vytvoření úspěšné oznámení.
    
     ![][1]
-2. Používáme hello kód z ukázkové hello *vzdáleného ověřování v hello SharePoint Online pomocí objektového modelu klienta* [sem](https://code.msdn.microsoft.com/Remote-Authentication-in-b7b6f43c) tooauthenticate s hello seznamu služby SharePoint.
-3. Po ověření, jsme projít toofind položky seznamu hello na všech nově vytvořených položek (které budou mít **IsProcessed** = false). 
+2. Používáme kód z ukázky *vzdáleného ověřování ve službě SharePoint Online pomocí objektového modelu klienta* [sem](https://code.msdn.microsoft.com/Remote-Authentication-in-b7b6f43c) k ověření pomocí seznamu služby SharePoint.
+3. Po ověření, jsme projít položky seznamu a zjistěte, všechny nově vytvořené položky (které budou mít **IsProcessed** = false). 
    
          static async void CreateCampaignFromSharepoint()
         {
@@ -52,12 +52,12 @@ Tento kurz vloží prostřednictvím scénáři, kde uživatel obchodní SharePo
                 query.ViewXml = "<View/>";
                 ListItemCollection items = list.GetItems(query);
    
-                // Load hello SharePoint list
+                // Load the SharePoint list
                 clientContext.Load(list);
                 clientContext.Load(items);
                 clientContext.ExecuteQuery();
    
-                // Loop through hello list toogo through all hello items which are newly added
+                // Loop through the list to go through all the items which are newly added
                 foreach (ListItem item in items)
                     if (item["IsProcessed"].ToString() != "Yes")
                     {
@@ -67,16 +67,16 @@ Tento kurz vloží prostřednictvím scénáři, kde uživatel obchodní SharePo
                         string category = item["Category"].ToString();
                         string actionURL = ((FieldUrlValue)item["URL"]).Url;
    
-                        // Send an HTTP request toocreate AzME campaign
+                        // Send an HTTP request to create AzME campaign
                         int campaignId = CreateAzMECampaign
                             (name, notificationTitle, notificationMessage, category, actionURL).Result;
    
                         if (campaignId != -1)
                         {
-                            // If creating campaign is successful then set this tootrue
+                            // If creating campaign is successful then set this to true
                             item["IsProcessed"] = "Yes";
    
-                            // Now try tooactivate hello campaign also
+                            // Now try to activate the campaign also
                             await ActivateAzMECampaign(campaignId);
                         }
                         else
@@ -90,8 +90,8 @@ Tento kurz vloží prostřednictvím scénáři, kde uživatel obchodní SharePo
         }
 
 ## <a name="mobile-engagement-integration"></a>Integrace Mobile Engagement
-1. Jakmile se nám najít položku, která vyžaduje zpracování – jsme extrahovat informace hello požadované toocreate oznámení z hello položky seznamu a volání `CreateAzMECampaign` toocreate jej a následně `ActivateAzMECampaign` tooactivate ho. Toto jsou v podstatě volání rozhraní REST API volání toohello Mobile Engagement back-end. 
-2. vyžadovat, Hello Mobile Engagement REST API **základní ověřování schématu autorizační HTTP hlavičky** který se skládá z hello `ApplicationId` a hello `ApiKey` který můžete získat z hello portálu Azure. Ujistěte se, že používáte hello klíč z hello **klíče rozhraní api** části a *není* z hello **sdk klíče** části. 
+1. Jakmile se nám najít položku, která vyžaduje zpracování - jsme extrahovat informace požadované pro vytvoření oznámení z položky seznamu a volání `CreateAzMECampaign` ji vytvořit a následně `ActivateAzMECampaign` aktivovat. Toto jsou v podstatě volání rozhraní REST API na back-end Mobile Engagementu volání. 
+2. Vyžadovat Mobile Engagement REST API **základní ověřování schématu autorizační HTTP hlavičky** který se skládá z `ApplicationId` a `ApiKey` který můžete získat z portálu Azure. Ujistěte se, že používáte klíč z **klíče rozhraní api** části a *není* z **sdk klíče** části. 
    
    ![][2]
    
@@ -107,7 +107,7 @@ Tento kurz vloží prostřednictvím scénáři, kde uživatel obchodní SharePo
            string returnValue = System.Convert.ToBase64String(toEncodeAsBytes);
            return returnValue;
        }  
-3. Pro vytvoření typ oznámení hello kampaně – odkazovat toohello [dokumentaci](https://msdn.microsoft.com/library/azure/mt683750.aspx). Je nutné se, že určíte hello kampaň toomake `kind` jako *oznámení* a hello [datové části](https://msdn.microsoft.com/library/azure/mt683751.aspx) a předejte ji jako FormUrlEncodedContent. 
+3. Pro vytvoření oznámení zadejte kampaň – odkazovat [dokumentaci](https://msdn.microsoft.com/library/azure/mt683750.aspx). Musíte zajistit, že určíte kampaň `kind` jako *oznámení* a [datové části](https://msdn.microsoft.com/library/azure/mt683751.aspx) a předejte ji jako FormUrlEncodedContent. 
    
         static async Task<int> CreateAzMECampaign(string campaignName, string notificationTitle, 
             string notificationMessage, string notificationCategory, string actionURL)
@@ -119,7 +119,7 @@ Tento kurz vloží prostřednictvím scénáři, kde uživatel obchodní SharePo
                 // Add Authorization Header
                 client.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", CreateAuthZHeader());
    
-                // Create hello payload toosend hello content
+                // Create the payload to send the content
                 // Reference -> https://msdn.microsoft.com/library/dn913749.aspx
                 string data =
                     @"{""name"":""" + campaignName + @"""," + 
@@ -135,13 +135,13 @@ Tento kurz vloží prostřednictvím scénáři, kde uživatel obchodní SharePo
                     new KeyValuePair<string, string>("data", data),
                 });
    
-                // Send hello POST request
+                // Send the POST request
                 var response = await client.PostAsync(url + createURIFragment, content);
                 var responseString = response.Content.ReadAsStringAsync().Result;
                 int campaignId = -1;
                 if (response.StatusCode.ToString() == "OK")
                 {
-                    // This is hello campaign id
+                    // This is the campaign id
                     campaignId = Convert.ToInt32(responseString);
                     Console.WriteLine("Campaign successfully created with id {0}", campaignId);
                 }
@@ -152,10 +152,10 @@ Tento kurz vloží prostřednictvím scénáři, kde uživatel obchodní SharePo
                 return campaignId;
             }
         }
-4. Jakmile máte hello oznámení vytvořen, zobrazí se něco podobného jako hello následující na portál Mobile Engagement hello (Všimněte si, že hello stav = Koncept a aktivované = není k dispozici)
+4. Jakmile máte oznámení vytvořen, zobrazí se něco jako následující na portál Mobile Engagement (Všimněte si, že stav = Koncept a aktivované = není k dispozici)
    
     ![][3]
-5. `CreateAzMECampaign`Vytvoří oznámení kampaně a vrátí jeho Id toohello volajícího. `ActivateAzMECampaign`Toto Id vyžaduje jako hello parametr tooactivate hello kampaně. 
+5. `CreateAzMECampaign`Vytvoří oznámení kampaně a vrátí jeho Id na volajícího. `ActivateAzMECampaign`Toto Id vyžaduje jako parametr k aktivaci kampaně. 
    
         static async Task<bool> ActivateAzMECampaign(int campaignId)
         {
@@ -171,7 +171,7 @@ Tento kurz vloží prostřednictvím scénáři, kde uživatel obchodní SharePo
                     new KeyValuePair<string, string>("id", campaignId.ToString()),
                 });
    
-                // Send hello POST request
+                // Send the POST request
                 var response = await client.PostAsync(url + activateUriFragment, content);
                 var responseString = response.Content.ReadAsStringAsync().Result;
                 if (response.StatusCode.ToString() == "OK")
@@ -186,13 +186,13 @@ Tento kurz vloží prostřednictvím scénáři, kde uživatel obchodní SharePo
                 }
             }
         }
-6. Až budete mít hello oznámení aktivovat, zobrazí se něco podobného jako následující hello na portál Mobile Engagement hello:
+6. Až budete mít aktivovaný oznámení, zobrazí se něco jako následující na portál Mobile Engagement:
    
     ![][4]
-7. Při aktivaci kampaně hello získá jakékoli zařízení, které splňují kritéria hello na kampaň hello začne zobrazuje oznámení. 
-8. Také si všimnete, že položka seznamu hello označena s IsProcessed = false je nastavená tooTrue po vytvoření hello oznámení kampaně.  
+7. Po aktivaci kampaně získá jakékoli zařízení, které splňují kritérium na kampaň začne zobrazuje oznámení. 
+8. Také si všimnete, že položka seznamu označené IsProcessed = false je nastavená na hodnotu True, po vytvoření kampaně oznámení.  
 
-Tato ukázka vytvořit jednoduché oznámení kampaň zadání většinou hello požadované vlastnosti. Tuto možnost můžete upravit z portálu hello co nejvíce, pomocí informací o hello [zde](https://msdn.microsoft.com/library/azure/mt683751.aspx). 
+Tato ukázka vytvořit jednoduché oznámení kampaň zadání nejčastěji požadované vlastnosti. Tuto možnost můžete upravit tolik, kolik z portálu můžete pomocí informací o [zde](https://msdn.microsoft.com/library/azure/mt683751.aspx). 
 
 <!-- Images. -->
 [1]: ./media/mobile-engagement-sample-backend-integration-sharepoint/sharepointlist.png

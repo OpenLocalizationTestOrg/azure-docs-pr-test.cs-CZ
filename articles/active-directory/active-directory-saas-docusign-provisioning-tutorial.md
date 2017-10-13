@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s DocuSign | Microsoft Docs'
-description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a DocuSign."
+description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a DocuSign."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,82 +13,82 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 8562a8f9e05fb72d3331507b7da5c6afee38f9b8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3b509ffa934949200277ae431761d2accd4a02d6
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/29/2017
 ---
 # <a name="tutorial-configuring-docusign-for-user-provisioning"></a>Kurz: Konfigurace DocuSign pro zřizování uživatelů
 
-cílem Hello tohoto kurzu je tooshow hello kroky nutné tooperform v DocuSign a Azure AD tooautomatically zřídit a deaktivace zřízení uživatelských účtů z tooDocuSign Azure AD.
+Cílem tohoto kurzu je tak, aby zobrazovalo kroky, které je třeba provést v DocuSign a Azure AD a automaticky zřizovat a zrušte zřízení uživatelských účtů ze služby Azure AD do DocuSign.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Hello scénáři uvedeném v tomto kurzu se předpokládá, že už máte hello následující položky:
+Scénář uvedených v tomto kurzu se předpokládá, že už máte následující položky:
 
 *   Klienta služby Azure Active directory.
 *   DocuSign jednotné přihlašování povolené předplatné.
 *   Uživatelský účet v DocuSign s oprávněními správce týmu.
 
-## <a name="assigning-users-toodocusign"></a>Přiřazení uživatelů tooDocuSign
+## <a name="assigning-users-to-docusign"></a>Přiřazení uživatelů k DocuSign
 
-Azure Active Directory používá koncept názvem "přiřazení" toodetermine uživatelů, kteří obdrželi přístup tooselected aplikace. V kontextu hello zřizování účtu automatické uživatele jsou synchronizovány pouze hello uživatelů a skupin, které byly "přiřazeny" tooan aplikace ve službě Azure AD.
+Azure Active Directory používá koncept označované jako "úlohy" k určení uživatelů, kteří obdrželi přístup k vybrané aplikace. V kontextu uživatele automatické zřizování účtu jsou synchronizovány pouze uživatelé a skupiny, které byly "přiřazeny" aplikace ve službě Azure AD.
 
-Než nakonfigurujete a povolíte hello zřizování služby, je nutné toodecide, jaké uživatelů nebo skupin v Azure AD představují hello uživatelé, kteří potřebují přístup k aplikaci DocuSign tooyour. Jakmile se rozhodli, můžete přiřadit tyto aplikace DocuSign tooyour uživatelů podle pokynů hello zde:
+Před konfigurací a povolení zřizování služby, musíte rozhodnout, jaké uživatelů nebo skupin ve službě Azure AD představují uživatele, kteří potřebují přístup k vaší aplikaci DocuSign. Jakmile se rozhodli, můžete přiřadit těmto uživatelům aplikace DocuSign podle pokynů tady:
 
-[Přiřadit uživatele nebo skupinu tooan firemní aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Přiřazení uživatele nebo skupiny do aplikace enterprise](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-toodocusign"></a>Důležité tipy pro přiřazení uživatelů tooDocuSign
+### <a name="important-tips-for-assigning-users-to-docusign"></a>Důležité tipy pro přiřazování uživatelů do DocuSign
 
-*   Dále je doporučeno jednoho uživatele Azure AD je přiřazen hello tootest tooDocuSign zřizování konfigurace. Další uživatele nebo skupiny může být přiřazen později.
+*   Dále je doporučeno jednoho uživatele Azure AD se přiřadí ke DocuSign a otestovat konfiguraci zřizování. Další uživatele nebo skupiny může být přiřazen později.
 
-*   Při přiřazování tooDocuSign uživatele, musíte vybrat platné uživatelské role. role "Výchozí přístup" Hello nefunguje pro zřizování.
+*   Při přiřazování DocuSign uživatele, musíte vybrat platné uživatelské role. Roli "Výchozí přístup" nefunguje pro zřizování.
 
 ## <a name="enable-user-provisioning"></a>Povolit zřizování uživatelů
 
-Tato část vás provede připojením vaší služby Azure AD tooDocuSign uživatelský účet zřizování rozhraní API a konfigurace hello zřizování služby toocreate, aktualizovat a zakázat přiřazené uživatelské účty v DocuSign podle přiřazení uživatelů a skupin ve službě Azure AD.
+Tato část vás provede připojení k DocuSign na uživatelský účet zřizování rozhraní API služby Azure AD a konfiguraci zřizování službu, kterou chcete vytvořit, aktualizovat a zakažte přiřazené uživatelské účty v DocuSign podle přiřazení uživatelů a skupin ve službě Azure AD.
 
 > [!Tip]
-> Můžete také zvolit tooenabled na základě SAML jednotné přihlašování pro DocuSign, hello pokynů uvedených v [portál Azure](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce doplnění navzájem.
+> Můžete také pro DocuSign povoleno na základě SAML jednotné přihlašování, postupujte podle pokynů uvedených v [portál Azure](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce doplnění navzájem.
 
-### <a name="tooconfigure-user-account-provisioning"></a>tooconfigure uživatel účet zřizování:
+### <a name="to-configure-user-account-provisioning"></a>Ke konfiguraci zřizování účtu uživatele:
 
-Hello cílem této části je toooutline jak tooenable zřizování uživatelů služby Active Directory uživatele tooDocuSign účty.
+Cílem této části se popisují postup povolení zřizování uživatelů z uživatelských účtů služby Active Directory pro DocuSign.
 
-1. V hello [portál Azure](https://portal.azure.com), procházet toohello **Azure Active Directory > podnikové aplikace > všechny aplikace** části.
+1. V [portál Azure](https://portal.azure.com), vyhledejte **Azure Active Directory > podnikové aplikace > všechny aplikace** části.
 
-2. Pokud jste již nakonfigurovali DocuSign pro jednotné přihlašování, vyhledejte instanci DocuSign pomocí hello vyhledávací pole. Jinak vyberte možnost **přidat** a vyhledejte **DocuSign** v galerii aplikací hello. Vyberte DocuSign z výsledků hledání hello a přidejte ji tooyour seznam aplikací.
+2. Pokud jste již nakonfigurovali DocuSign pro jednotné přihlašování, vyhledejte instanci DocuSign pomocí pole hledání. Jinak vyberte možnost **přidat** a vyhledejte **DocuSign** v galerii aplikací. Vyberte DocuSign ve výsledcích hledání a přidejte ji do seznamu aplikací.
 
-3. Vyberte instanci DocuSign a pak vyberte hello **zřizování** kartě.
+3. Vyberte instanci DocuSign a pak vyberte **zřizování** kartě.
 
-4. Sada hello **režimu zřizování** příliš**automatické**. 
+4. Nastavte **režimu zřizování** k **automatické**. 
 
     ![Zřizování](./media/active-directory-saas-docusign-provisioning-tutorial/provisioning.png)
 
-5. V části hello **přihlašovací údaje správce** části, zadejte následující nastavení konfigurace hello:
+5. V části **přihlašovací údaje správce** části, zadejte následující nastavení konfigurace:
    
-    a. V hello **uživatelské jméno správce** textovému poli, typ DocuSign účet název, který má hello **správce systému** profil v DocuSign.com přiřazen.
+    a. V **uživatelské jméno správce** textovému poli, zadejte název, který má účtu DocuSign **správce systému** profil v DocuSign.com přiřazen.
    
-    b. V hello **heslo správce** textovému poli, zadejte hello heslo pro tento účet.
+    b. V **heslo správce** textovému poli, zadejte heslo pro tento účet.
 
-6. V hello portálu Azure, klikněte na **Test připojení** tooensure Azure AD můžete připojit tooyour DocuSign aplikaci.
+6. Na portálu Azure klikněte na tlačítko **Test připojení** zajistit Azure AD může připojit k aplikaci DocuSign.
 
-7. V hello **e-mailové oznámení** zadejte hello e-mailovou adresu uživatele nebo skupiny, kdo by měly dostávat oznámení zřizování chyby a zaškrtněte políčko hello.
+7. V **e-mailové oznámení** pole, zadejte e-mailovou adresu uživatele nebo skupiny, kdo by měly dostávat oznámení zřizování chyby a zaškrtněte políčko.
 
 8. Klikněte na tlačítko **uložit.**
 
-9. V části hello části mapování, vyberte **tooDocuSign synchronizaci uživatelů Azure Active Directory.**
+9. V části mapování vyberte **synchronizaci Azure Active Directory uživatelům DocuSign.**
 
-10. V hello **mapování atributů** , projděte si hello uživatelské atributy, které jsou synchronizované z tooDocuSign Azure AD. Hello atributy vybrán jako **párování** vlastnosti jsou použité toomatch hello uživatelské účty v DocuSign pro operace aktualizace. Vyberte toocommit tlačítko hello uložit změny.
+10. V **mapování atributů** , projděte si uživatelské atributy, které jsou synchronizované z Azure AD DocuSign. Atributy vybrán jako **párování** vlastnosti se používají tak, aby odpovídaly uživatelské účty v DocuSign pro operace aktualizace. Kliknutím na tlačítko Uložit potvrzení změny.
 
-11. tooenable hello zřizování služby Azure AD pro DocuSign, změna hello **Stav zřizování** příliš**na** v části Nastavení hello
+11. Povolit zřizování služby pro DocuSign Azure AD, změňte **Stav zřizování** k **na** v části Nastavení
 
 12. Klikněte na tlačítko **uložit.**
 
-Spustí hello počáteční synchronizaci všech uživatelů a skupiny přiřazené tooDocuSign v hello uživatelé a skupiny oddílu. počáteční synchronizace Hello trvá déle tooperform než následné synchronizace, ke kterým dochází přibližně každých 20 minut, dokud se službou hello. Můžete použít hello **podrobnosti synchronizace** části toomonitor průběh a postupujte podle pokynů odkazy tooprovisioning aktivity sestavy, které popisují všechny akce prováděné hello zřizování služby ve vaší aplikaci DocuSign.
+Spustí počáteční synchronizaci všech uživatelů a skupiny přiřazené k DocuSign v části Uživatelé a skupiny. Počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 20 minut, dokud se službou provést. Můžete použít **podrobnosti synchronizace** části monitorovat průběh a odkazech zřízení sestavy aktivity, které popisují všechny akce prováděné při zřizování služby ve vaší aplikaci DocuSign.
 
-Nyní můžete vytvořit testovací účet. Počkejte, až minut too20 tooverify, který hello účet byl synchronizován tooDocuSign.
+Nyní můžete vytvořit testovací účet. Chcete-li ověřit, že účet byly synchronizovány DocuSign Počkejte až 20 minut.
 
 ## <a name="additional-resources"></a>Další zdroje
 

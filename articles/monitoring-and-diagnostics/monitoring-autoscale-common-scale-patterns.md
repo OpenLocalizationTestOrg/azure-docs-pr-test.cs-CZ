@@ -1,6 +1,6 @@
 ---
-title: "aaaOverview běžných vzorů škálování | Microsoft Docs"
-description: "Podívejte se, že některé z běžných vzorů tooauto hello škálování prostředku v Azure."
+title: "Přehled běžných vzorů škálování | Microsoft Docs"
+description: "Další některých běžných vzorů na automatické škálování prostředku v Azure."
 author: anirudhcavale
 manager: orenr
 editor: 
@@ -14,28 +14,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2017
 ms.author: ancav
-ms.openlocfilehash: fc5bd97852e0af01aa32940c99721ab8e21033ad
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: fce51546e041c8989d813c3935e058c52b38ba77
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="overview-of-common-autoscale-patterns"></a>Přehled běžných vzorů škálování
-Tento článek popisuje některé běžné vzory tooscale hello prostředku v Azure.
+Tento článek popisuje některé z běžných vzorů škálování prostředku v Azure.
 
-Azure monitorování automatického škálování se vztahují pouze tooVirtual počítač škálování sady (VMSS), cloudové služby, plány služby app a prostředí app service. 
+Azure monitorování automatického škálování se vztahuje pouze na virtuální počítač škálování sady (VMSS), cloudové služby, plány služby app a prostředí app service. 
 
 # <a name="lets-get-started"></a>Umožňuje Začínáme
 
-Tento článek předpokládá, že jste obeznámeni s automatické škálování. Můžete [získat Začínáme sem tooscale prostředku][1]. Hello Toto jsou některé z běžných vzorů škálování hello.
+Tento článek předpokládá, že jste obeznámeni s automatické škálování. Můžete [Začněte zde škálování prostředku][1]. Toto jsou některé obecné vzory škálování.
 
 ## <a name="scale-based-on-cpu"></a>Škálování podle využití procesoru
 
 Máte webovou aplikaci (/ VMSS/cloudové služby role) a 
 
-- Chcete-li tooscale na více systémů nebo měřítka v závislosti na procesor.
-- Kromě toho chcete tooensure je minimální počet instancí. 
-- Navíc chcete tooensure, která můžete nastavit maximální limit toohello, počet instancí, které je možné škálovat na.
+- Chcete Škálováním na více systémů nebo měřítka ve na základě využití procesoru.
+- Kromě toho chcete zajistit, že je minimální počet instancí. 
+- Navíc chcete zajistit nastavit maximální limit pro počet instancí, které je možné škálovat na.
 
 ![Škálování podle využití procesoru][2]
 
@@ -44,7 +44,7 @@ Máte webovou aplikaci (/ VMSS/cloudové služby role) a
 Máte webovou aplikaci (/ VMSS/cloudové služby role) a
 
 - Chcete 3 instance ve výchozím nastavení (ve všední dny)
-- O víkendech nepředpokládáte přenosy a proto chcete tooscale dolů too1 instance o víkendech.
+- O víkendech nepředpokládáte přenosy a proto chcete škálovat dolů 1 instance o víkendech.
 
 ![Škálování jinak o víkendech vs dny v týdnu][3]
 
@@ -52,16 +52,16 @@ Máte webovou aplikaci (/ VMSS/cloudové služby role) a
 
 Máte webovou aplikaci (/ VMSS/cloudové služby role) a 
 
-- Chcete-li tooscale nahoru/dolů podle využití procesoru ve výchozím nastavení
-- Během sváteční sezóny (nebo konkrétní dny, které jsou důležité pro vaši firmu) však má výchozí hello toooverride a mít k dispozici větší kapacitu.
+- Chcete škálovat nahoru/dolů podle využití procesoru ve výchozím nastavení
+- Však během sváteční sezóny (nebo konkrétní dny, které jsou důležité pro vaši firmu) chcete přepsat výchozí hodnoty a mít k dispozici větší kapacitu.
 
 ![Jinak na svátků škálování][4]
 
 ## <a name="scale-based-on-custom-metric"></a>Škálování podle vlastní metriku
 
-Máte front-end webové a vrstvu rozhraní API, který komunikuje s back-end hello. 
+Máte front-end webové a vrstvu rozhraní API, který komunikuje s back-end. 
 
-- Chcete tooscale hello rozhraní API vrstvy na základě vlastních událostí v hello front end (Příklad: Chcete tooscale procesu odbavení podle hello počet položek v hello nákupní košík)
+- Chcete-li škálovat vrstvu rozhraní API na základě vlastních událostí v části front end (Příklad: Chcete škálovat procesu odbavení na základě počtu položek v nákupní košík)
 
 ![Škálování podle vlastní metriku][5]
 

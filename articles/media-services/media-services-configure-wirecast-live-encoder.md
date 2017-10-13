@@ -1,6 +1,6 @@
 ---
-title: "aaaConfigure hello toosend kodér Telestream Wirecast živý datový proud s jednou přenosovou rychlostí | Microsoft Docs"
-description: "Toto téma ukazuje, jak tooconfigure hello Wirecast live kodér toosend jednou přenosovou rychlostí datového proudu tooAMS kanály, které jsou povolené pro kódování v reálném čase. "
+title: "Konfigurace kodér Telestream wirecast odeslat živý datový proud s jednou přenosovou rychlostí | Microsoft Docs"
+description: "Toto téma ukazuje, jak nakonfigurovat za provozu kodér Wirecast k odeslání datový proud s jednou přenosovou rychlostí do AMS kanály, které jsou povolené kódování v reálném čase. "
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,13 +14,13 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: e373f6c08232c652e65db584ded409c405d8cffe
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c4df14f24650ce431dfb31cc774cab6d3cf3aef0
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="use-hello-wirecast-encoder-toosend-a-single-bitrate-live-stream"></a>Použít hello Wirecast kodér toosend živý datový proud s jednou přenosovou rychlostí
+# <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Pomocí kodéru Wirecast odesílat živý datový proud s jednou přenosovou rychlostí
 > [!div class="op_single_selector"]
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)
 > * [Elemental za provozu](media-services-configure-elemental-live-encoder.md)
@@ -29,48 +29,48 @@ ms.lasthandoff: 10/06/2017
 >
 >
 
-Toto téma ukazuje, jak tooconfigure hello [Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) live kodér toosend jednou přenosovou rychlostí datového proudu tooAMS kanály, které jsou povolené pro kódování v reálném čase.  Další informace najdete v tématu [práce s kanály, že jsou povolené tooPerform živé kódování službou Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
+Toto téma ukazuje, jak nakonfigurovat [Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) za provozu kodér Odeslat datový proud s jednou přenosovou rychlostí do AMS kanály, které jsou povolené kódování v reálném čase.  Další informace najdete v článku o [práci s kanály, které mají povolené kódování v reálném čase pomocí služby Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
 
-Tento kurz ukazuje, jak toomanage Azure Media Services (AMS) s nástrojem Azure Media Services Explorer (AMSE). Tento nástroj lze spustit pouze na počítačích s Windows. Pokud jste na Mac nebo Linux, použijte hello Azure portálu toocreate [kanály](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) a [programy](media-services-portal-creating-live-encoder-enabled-channel.md).
+Tento kurz ukazuje, jak spravovat Azure Media Services (AMS) s nástrojem Azure Media Services Explorer (AMSE). Tento nástroj lze spustit pouze na počítačích s Windows. Pokud jste na Mac nebo Linux, použijte portál Azure k vytvoření [kanály](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) a [programy](media-services-portal-creating-live-encoder-enabled-channel.md).
 
 ## <a name="prerequisites"></a>Požadavky
 * [Vytvoření účtu Azure Media Services](media-services-portal-create-account.md)
 * Ujistěte se, je koncový bod streamování, spuštěná. Další informace najdete v tématu [spravovat koncové body streamování v účtu Media Services](media-services-portal-manage-streaming-endpoints.md)
-* Nainstalujte nejnovější verzi hello hello [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) nástroj.
-* Spusťte nástroj hello a připojte se účet tooyour AMS.
+* Nainstalujte nejnovější verzi [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) nástroj.
+* Spusťte nástroj a připojte se ke svému účtu AMS.
 
 ## <a name="tips"></a>Tipy
 * Pokud je to možné, použijte standardní kabelové internetové připojení.
-* Obvykle při určování nároky na šířku pásma je toodouble hello streamování přenosových rychlostí. Přestože není povinný požadavek, pomůže zmírnit dopad hello zahlcení sítě.
+* Obvykle při určování nároky na šířku pásma je dvakrát streamování přenosových rychlostí. Přestože není povinný požadavek, pomůže omezit účinek zahlcení sítě.
 * Při použití softwaru na základě kodéry, zavřete se všechny nepotřebné programy.
 
 ## <a name="create-a-channel"></a>Vytvoření kanálu
-1. Přejděte v hello nástroj AMSE, toohello **živé** kartě a klikněte pravým tlačítkem v rámci oblasti kanál hello. Vyberte **vytvořit kanál...** v nabídce hello.
+1. V nástroj AMSE, přejděte na **živé** kartě a klikněte pravým tlačítkem v oblasti kanálu. Vyberte **vytvořit kanál...** v nabídce.
 
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast1.png)
 
-2. Zadejte název kanálu, hello pole popisu je volitelné. V části Nastavení kanál, vyberte **standardní** pro hello Live Encoding možnost s hello vstupní protokol nastaven příliš**RTMP**. Všechna ostatní nastavení jako je můžete nechat.
+2. Zadejte název kanálu, pole popisu je volitelné. V části Nastavení kanál, vyberte **standardní** pro Live Encoding možnost s protokolem vstup nastavena na **RTMP**. Všechna ostatní nastavení jako je můžete nechat.
 
-    Ujistěte se, zda text hello **počáteční hello nový kanál teď** je vybrána.
+    Zajistěte, aby **nyní spustit nový kanál** je vybrána.
 
 3. Klikněte na tlačítko **vytvořit kanál**.
 
    ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast2.png)
 
 > [!NOTE]
-> Hello kanálu může trvat stejně dlouho jako toostart 20 minut.
+> Kanál může trvat až 20 minut před spuštěním.
 >
 >
 
-Při spouštění hello kanál můžete [konfigurace hello kodér](media-services-configure-wirecast-live-encoder.md#configure_wirecast_rtmp).
+Při spouštění kanál můžete [nakonfigurovat kodér](media-services-configure-wirecast-live-encoder.md#configure_wirecast_rtmp).
 
 > [!IMPORTANT]
 > Všimněte si, že fakturace začne hned, jak kanál přejde do stavu Připraveno. Další informace najdete v tématu [kanálu stavy](media-services-manage-live-encoder-enabled-channels.md#states).
 >
 >
 
-## <a id=configure_wirecast_rtmp></a>Konfigurace hello kodér Telestream wirecast
-V tento kurz hello se používají následující výstup nastavení. Hello zbývající část tohoto oddílu popisuje kroky konfigurace podrobněji.
+## <a id=configure_wirecast_rtmp></a>Konfigurace kodér Telestream wirecast
+V tomto kurzu se používají následující nastavení výstup. Zbývající část tohoto oddílu popisuje kroky konfigurace podrobněji.
 
 **Video**:
 
@@ -87,19 +87,19 @@ V tento kurz hello se používají následující výstup nastavení. Hello zbý
 * Vzorkovací frekvence: 44,1 kHz
 
 ### <a name="configuration-steps"></a>Kroky konfigurace
-1. Otevřete hello Telestream Wirecast aplikace na hello počítač se používá a nastavte pro streamování RTMP.
-2. Výstup hello nakonfigurovat tak, že přejdete toohello **výstup** kartě a výběrem **nastavení výstupní...** .
+1. Otevřete aplikaci Telestream Wirecast na počítač se používá a nastavte pro streamování RTMP.
+2. Konfigurace výstup přechodem na **výstup** kartě a výběrem **nastavení výstupní...** .
 
-    Ujistěte se, zda text hello **cíl výstupu** je nastaven příliš**RTMP serveru**.
+    Zajistěte, aby **cíl výstupu** je nastaven na **RTMP serveru**.
 3. Klikněte na **OK**.
-4. Na stránce nastavení hello nastavit hello **cílové** pole toobe **Azure Media Services**.
+4. Na stránce nastavení nastavit **cílové** pole, které chcete být **Azure Media Services**.
 
-    Hello kódování profilu je předem vybraná příliš**Azure H.264 720 p 16:9 (1280 × 720)**. toocustomize tato nastavení, vyberte hello ozubené kolečko ikonu toohello napravo od hello rozevírací nabídku a pak zvolte **nové přednastavení**.
+    Profil kódování je předem vybraný k **Azure H.264 720 p 16:9 (1280 × 720)**. Pokud chcete toto nastavení upravit, vyberte ikonu ozubené kolečko napravo od rozevíracího dolů a poté zvolte **nové přednastavení**.
 
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast3.png)
 5. Nakonfigurujte kodér přednastavení.
 
-    Název hello přednastavení a vyhledejte hello následující doporučené nastavení:
+    Název přednastavení a vyhledejte následující doporučené nastavení:
 
     **Video**
 
@@ -117,59 +117,59 @@ V tento kurz hello se používají následující výstup nastavení. Hello zbý
      ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast4.png)
 6. Stiskněte klávesu **Uložit**.
 
-    pole Encoding Hello má nyní k dispozici pro výběr hello nově vytvořený profil.
+    Pole Encoding má nyní k dispozici pro výběr nově vytvořený profil.
 
-    Ujistěte se, že je vybraný nový profil hello.
-7. Získání vstupní adresa URL kanálu hello v pořadí tooassign ho toohello Wirecast **koncový bod RTMP**.
+    Ujistěte se, že je vybraný nový profil.
+7. Get kanál vstup URL aby bylo možné ho přiřadit Wirecast **koncový bod RTMP**.
 
-    Přejděte zpět toohello nástroj AMSE a zkontrolovat stav dokončení kanálu hello. Jakmile hello stav se změnil z **počáteční** příliš**systémem**, můžete získat hello vstupní adresa URL.
+    Přejděte zpět na nástroj AMSE a zkontrolovat stav dokončení kanálu. Jakmile se stav změnil ze **počáteční** k **systémem**, můžete získat vstupní adresa URL.
 
-    Když běží hello kanál, klikněte pravým tlačítkem na název kanálu hello, přejděte dolů toohover přes **kopie vstupu URL tooclipboard** a pak vyberte **primární adresa URL vstupu**.  
+    Při spuštění je kanál, klikněte pravým tlačítkem na název kanálu, přejděte dolů hover přes **adresa URL vstupu kopírování do schránky** a pak vyberte **primární adresa URL vstupu**.  
 
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast6.png)
-8. V hello Wirecast **nastavení výstupní** okno, vložte tyto informace hello **adresu** pole části výstup hello a přiřadit název datového proudu.
+8. V Wirecast **nastavení výstupní** okně Vložit tyto informace **adresu** pole výstup oddílu, a přiřadit název datového proudu.
 
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast5.png)
 
 1. Vyberte **OK**.
-2. Na hlavní hello **Wirecast** zkontrolujte vstupní zdroje pro připravení videa a zvuku a pak klikněte na tlačítko **datového proudu** v levém horním rohu hello.
+2. V hlavním **Wirecast** zkontrolujte vstupní zdroje pro připravení videa a zvuku a pak klikněte na tlačítko **datového proudu** v levém horním rohu.
 
    ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
 
 > [!IMPORTANT]
-> Před kliknutím na **datového proudu**, můžete **musí** zajistěte, aby byl kanál hello připraven.
-> Ujistěte se také, není tooleave hello kanál ve stavu Připraveno bez vstupní příspěvku kanálu po dobu delší než > 15 minut.
+> Před kliknutím na **datového proudu**, můžete **musí** Ujistěte se, že kanál je připravený.
+> Ujistěte se také, nechcete bez vstupní příspěvku kanálu po dobu delší než 15 minut > z kanál ve stavu Připraveno.
 >
 >
 
 ## <a name="test-playback"></a>Přehrávání testu
 
-Nástroj AMSE toohello přejděte a klikněte pravým tlačítkem na toobe kanál hello testována. V nabídce hello, najeďte myší na **přehrávání hello Preview** a vyberte **s Azure Media Player**.  
+Přejděte do nástroj AMSE, a klikněte pravým tlačítkem na kanál, který má být testována. V nabídce pozastavte ukazatel myši nad **přehrávání ve verzi Preview** a vyberte **s Azure Media Player**.  
 
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast8.png)
 
-Pokud datový proud hello objeví v hello player, hello kodér bylo správně nakonfigurované tooconnect tooAMS.
+Pokud datový proud se zobrazí v přehrávači, pak kodér správně nakonfigurovaný pro připojení k AMS.
 
-Je-li k chybě, bude nutné hello kanál toobe resetování a kodér nastavení upravit. Najdete v tématu hello [řešení potíží s](media-services-troubleshooting-live-streaming.md) tématu pokyny.  
+Je-li k chybě, kanál bude nutné resetovat a upravit nastavení kodéru. Podrobnosti najdete [řešení potíží s](media-services-troubleshooting-live-streaming.md) tématu pokyny.  
 
 ## <a name="create-a-program"></a>Vytvořit program
-1. Po potvrzení kanálu přehrávání vytvořte program. V části hello **živé** v nástroj AMSE hello, klikněte v oblasti programu hello pravým tlačítkem a vyberte **vytvořit nový Program**.  
+1. Po potvrzení kanálu přehrávání vytvořte program. V části **živé** v nástroj AMSE, klikněte v oblasti program pravým tlačítkem a vyberte **vytvořit nový Program**.  
 
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast9.png)
-2. Název programu hello a v případě potřeby upravit hello **délka archivačního okna** (které hodiny too4 výchozí nastavení). Můžete také určit umístění úložiště nebo ponechte jako výchozí hello.  
-3. Zkontrolujte hello **počáteční hello teď Program** pole.
+2. Název programu a v případě potřeby upravit **délka archivačního okna** (výchozí 4 hodiny). Můžete také určit umístění úložiště nebo ponechte jako výchozí.  
+3. Zkontrolujte **nyní spustit Program** pole.
 4. Klikněte na tlačítko **vytvořit Program**.  
 
    >[!NOTE]
    >Vytváření programu trvá kratší dobu, než vytvoření kanálu.
        
-5. Jakmile hello aplikaci, potvrďte přehrávání tak, že kliknete pravým tlačítkem programu hello a navigace příliš**přehrávání hello programech** a potom vyberete **s Azure Media Player**.  
-6. Po potvrzení, klikněte pravým tlačítkem na programu hello znovu a vyberte **zkopírujte tooClipboard URL výstup hello** (nebo načtení těchto informací z hello **programu informace a nastavení** možnost nabídce hello).
+5. Jakmile program běží, potvrďte přehrávání tak, že kliknete program pravým tlačítkem a přejdete na **přehrávání programech** a potom vyberete **s Azure Media Player**.  
+6. Po potvrzení, klikněte pravým tlačítkem na program znovu a vyberte **zkopírujte adresu URL výstup do schránky** (nebo načtení těchto informací z **programu informace a nastavení** možnost v nabídce).
 
-datový proud Hello je nyní připraven toobe vložených v přehrávač nebo cílovou skupinu distribuované tooan live zobrazení.  
+Datový proud je nyní připravena vložených v přehrávač, nebo distribuovány do cílovou skupinu pro zobrazení za provozu.  
 
 ## <a name="troubleshooting"></a>Řešení potíží
-Najdete v tématu hello [řešení potíží s](media-services-troubleshooting-live-streaming.md) tématu pokyny.
+Podrobnosti najdete [řešení potíží s](media-services-troubleshooting-live-streaming.md) tématu pokyny.
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

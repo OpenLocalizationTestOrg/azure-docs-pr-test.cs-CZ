@@ -1,9 +1,9 @@
 ---
-title: "aaaCreate Azure Automation účty spustit jako | Microsoft Docs"
-description: "Tento článek popisuje, jak tooupdate vaše automatizace účtu a vytvoření účtů spustit jako pomocí prostředí PowerShell nebo z portálu hello."
+title: "Vytváření účtů Azure Automation Spustit jako | Dokumentace Microsoftu"
+description: "Tento článek popisuje postup aktualizace účtu Automation a vytváření účtů Spustit jako pomocí PowerShellu nebo z portálu."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 
@@ -14,87 +14,87 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/27/2017
 ms.author: magoedte
-ms.openlocfilehash: 94eb54fa0b518056a726d17146c63411e248273b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8a42f73fbe33b422b7881f8a17a1f421e2b5dfc8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>Aktualizace ověřování účtu Automation o účty Spustit jako 
-Můžete aktualizovat svůj existující účet Automation z hello portálu nebo pomocí prostředí PowerShell, pokud:
+Existující účet Automation můžete aktualizovat z portálu nebo pomocí PowerShellu, pokud jste postupovali takto:
 
-* Vytvoření účtu Automation, ale odmítnout toocreate hello účet Spustit jako.
-* Už používáte prostředky Resource Manager toomanage účet Automation a chcete tooupdate hello tooinclude hello spustit jako účet pro ověřování sady runbook.
-* Už používáte toomanage účet Automation pro klasické prostředky a chcete, aby tooupdate ho toouse hello Classic spustit jako účet, místo vytvoření nového účtu a migrace tooit vaše runbooky a prostředky.   
-* Chcete toocreate spustit jako a Classic spustit jako účet pomocí certifikát vydaný certifikační autoritou (CA) rozlehlé sítě.
+* Vytvořili jste účet Automation, ale odmítli jste vytvoření účtu Spustit jako.
+* Už máte účet Automation pro správu prostředků Resource Manageru a chcete ho aktualizovat, aby zahrnoval účet Spustit jako pro ověřování runbooků.
+* Už máte účet Automation pro správu klasických prostředků a chcete ho aktualizovat, abyste mohli použít účet Spustit jako pro Classic a nemuseli vytvářet nový účet a migrovat na něj runbooky a prostředky.   
+* Rozhodli jste se vytvořit účet Spustit jako a účet Spustit jako pro Classic pomocí certifikátu, který vydala vaše podniková certifikační autorita.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* skript Hello lze spustit pouze v systému Windows 10 a Windows Server 2016 s moduly Azure Resource Manager 3.0.0 a novější. V předchozích verzích Windows není podporován.
-* Azure PowerShell 1.0 nebo novější. Informace o verzi hello PowerShell 1.0 najdete v tématu [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs).
-* Účet služby Automation, který je odkazováno jako hodnota hello hello *-AutomationAccountName* a *- ApplicationDisplayName* parametry v hello následující skript prostředí PowerShell.
+* Tento skript je možné spustit jenom v systémech Windows 10 a Windows Server 2016 s nainstalovanými moduly Azure Resource Manageru verze 3.0.0 nebo novější. V předchozích verzích Windows není podporován.
+* Azure PowerShell 1.0 nebo novější. Informace o vydání PowerShellu 1.0 najdete v článku [Postup instalace a konfigurace Azure PowerShellu](/powershell/azureps-cmdlets-docs).
+* Účet Automation, na který se odkazuje jako na hodnotu parametrů *-AutomationAccountName* a *-ApplicationDisplayName* v následujícím skriptu PowerShellu.
 
-tooget hello hodnoty pro *SubscriptionID*, *ResourceGroup*, a *AutomationAccountName*, které jsou požadované parametry pro skript hello, hello následující:
+Abyste získali hodnoty pro parametry *SubscriptionID*, *ResourceGroup* a *AutomationAccountName*, které jsou pro skript povinné, postupujte takto:
 
-1. V hello portálu Azure, vyberte svůj účet Automation na hello **účet Automation** a pak vyberte **všechna nastavení**.  
-2. Na hello **všechna nastavení** okno, v části **nastavení účtu**, vyberte **vlastnosti**. 
-3. Všimněte si hodnot hello hello **vlastnosti** okno.<br><br> ![okno "Vlastnosti" účet Automation Hello](media/automation-create-runas-account/automation-account-properties.png)  
+1. Na webu Azure Portal v okně **Účet Automation** vyberte příslušný účet Automation a potom vyberte **Všechna nastavení**.  
+2. V okně **Všechna nastavení** v části **Nastavení účtu** vyberte **Vlastnosti**. 
+3. Hodnoty v okně **Vlastnosti** si poznamenejte.<br><br> ![Podokno vlastností účtu Automation](media/automation-create-runas-account/automation-account-properties.png)  
 
-### <a name="required-permissions-tooupdate-your-automation-account"></a>Požadované oprávnění tooupdate účtu Automation
-tooupdate účet Automation, musí mít hello následující konkrétní oprávnění a vyžadují oprávnění toocomplete v tomto tématu.   
+### <a name="required-permissions-to-update-your-automation-account"></a>Požadovaná oprávnění k aktualizaci účtu Automation
+Pokud chcete aktualizovat účet Automation, musíte mít následující specifická oprávnění vyžadovaná k dokončení tohoto tématu.   
  
-* Účtu uživatele AD musí toobe přidané tooa role s role Přispěvatel toohello ekvivalentní oprávnění pro Microsoft.Automation prostředky, jak je uvedeno v článku [řízení přístupu na základě Role ve službě Azure Automation](automation-role-based-access-control.md#contributor-role-permissions).  
-* Uživatelé bez oprávnění správce v klientovi služby Azure AD mohou [registraci aplikací AD](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions) pokud registrace aplikace hello nastavení je nastaven příliš**Ano**.  Pokud registrace aplikace hello nastavení je nastaven příliš**ne**, uživatel hello provedení této akce musí být globálním správcem ve službě Azure AD. 
+* Váš uživatelský účet AD musí být přidán do role se stejnými oprávněními jako role přispěvatele pro prostředky Microsoft.Automation, jak je uvedeno v článku [Řízení přístupu na základě role ve službě Azure Automation](automation-role-based-access-control.md#contributor-role-permissions).  
+* Uživatelé ve vašem tenantovi Azure AD, kteří nejsou správci, můžou [registrovat aplikace služby AD](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions), pokud je nastavení Registrace aplikací nastaveno na **Ano**.  Pokud je nastavení Registrace aplikací nastaveno na **Ne**, uživatel provádějící tuto akci musí být globálním správcem služby Azure AD. 
 
-Pokud si nejste členem instanci Active Directory hello předplatné, předtím, než jsou přidány toohello globální správce nebo řidičská-administrator role hello předplatné, se přidají tooActive Directory jako Host. V takovém případě se zobrazí "Nemáte oprávnění toocreate..." upozornění na hello **přidat účet Automation** okno. Uživatelé, kteří byly přidány toohello globální správce nebo řidičská-administrator role nejprve lze odebrat z instance služby Active Directory hello předplatného a znova se přidal toomake je úplné uživatelské ve službě Active Directory. tooverify této situaci se z hello **Azure Active Directory** podokně hello portál Azure, vyberte **uživatelů a skupin**, vyberte **všichni uživatelé** a po výběru hello konkrétního uživatele, vyberte **profil**. Hello hodnotu hello **typ uživatele** atribut v profilu uživatele hello nesmí rovnat **hosta**.
+Pokud před přidáním do role globálního správce nebo spolusprávce nejste členem instance Active Directory příslušného předplatného, budete do služby Active Directory přidaní jako host. V takové situaci se zobrazí upozornění Nemáte oprávnění k vytvoření... v okně **Přidání účtu Automation**. Uživatele, kteří byli nejdřív přidaní do role globálního správce nebo spolusprávce, je možné z instance Active Directory předplatného odebrat a potom je znovu přidat – tak se z nich ve službě Active Directory stanou úplní uživatelé. Takovou situaci můžete ověřit v podokně **Azure Active Directory** na webu Azure Portal. Vyberte **Uživatelé a skupiny**, potom **Všichni uživatelé** a po výběru konkrétního uživatele vyberte **Profil**. Hodnota atributu **Typ uživatele** v profilu uživatele by neměla být **Host**.
 
-## <a name="create-run-as-account-from-hello-portal"></a>Vytvořte účet Spustit jako z portálu hello
-V této části proveďte následující kroky tooupdate hello si účet Azure Automation ze hello portálu Azure.  Můžete vytvořit hello účty spustit jako a Classic spustit jako jednotlivě, a pokud nepotřebujete toomanage prostředky na portálu Azure classic hello, můžete vytvořit pouze hello spustit v Azure jako účet.  
+## <a name="create-run-as-account-from-the-portal"></a>Vytvoření účtu Spustit jako z portálu
+V této části provedete následující kroky a aktualizujete účet Azure Automation z webu Azure Portal.  Účty Spustit jako a Spustit jako pro Azure Classic vytváříte samostatně. Pokud nepotřebujete spravovat prostředky na portálu Azure Classic, stačí vytvořit jenom účet Spustit jako pro Azure.  
 
-proces Hello vytvoří hello následující položky v účtu Automation.
+Tento proces vytvoří ve vašem účtu Automation následující položky.
 
 **Pro účty Spustit jako:**
 
-* Vytvoří aplikaci Azure AD se certifikát podepsaný svým držitelem, vytvoří hlavní účet služby pro aplikaci hello ve službě Azure AD a přiřadí role Přispěvatel hello hello účtu v aktuálním předplatném. Můžete změnit tato nastavení tooOwner nebo jakákoli jiná role. Další informace najdete v tématu [Řízení přístupu na základě role ve službě Azure Automation](automation-role-based-access-control.md).
-* Vytvoří prostředek certifikátu automatizace s názvem *AzureRunAsCertificate* v hello určený účet Automation. asset certifikátu Hello obsahuje hello privátní klíč certifikátu používaného aplikací hello Azure AD.
-* Vytvoří prostředek připojení automatizace s názvem *AzureRunAsConnection* v hello určený účet Automation. asset připojení Hello obsahuje hello applicationId, tenantId, subscriptionId a kryptografický otisk certifikátu.
+* Vytvoří aplikaci Azure AD s certifikátem podepsaným svým držitelem, vytvoří účet instančního objektu pro tuto aplikaci v Azure AD a přiřadí roli přispěvatele pro tento účet v aktuálním předplatném. Toto nastavení můžete změnit na roli Vlastník nebo libovolnou jinou roli. Další informace najdete v tématu [Řízení přístupu na základě role ve službě Azure Automation](automation-role-based-access-control.md).
+* V příslušném účtu Automation vytvoří prostředek certifikátu Automation s názvem *AzureRunAsCertificate*. Prostředek certifikátu obsahuje privátní klíč certifikátu, který používá aplikace Azure AD.
+* V příslušném účtu Automation vytvoří prostředek připojení Automation s názvem *AzureRunAsConnection*. Prostředek připojení obsahuje parametry applicationId, tenantId, subscriptionId a certificate thumbprint.
 
 **Pro účet Spustit jako pro Classic:**
 
-* Vytvoří prostředek certifikátu automatizace s názvem *AzureClassicRunAsCertificate* v hello určený účet Automation. asset Hello certifikát obsahuje privátní klíč pro hello certifikátu používá certifikát pro správu hello.
-* Vytvoří prostředek připojení automatizace s názvem *AzureClassicRunAsConnection* v hello určený účet Automation. asset připojení Hello obsahuje název odběru hello, subscriptionId a název certifikátu asset.
+* V příslušném účtu Automation vytvoří prostředek certifikátu Automation s názvem *AzureClassicRunAsCertificate*. Prostředek certifikátu obsahuje privátní klíč certifikátu, který používá certifikát pro správu.
+* V příslušném účtu Automation vytvoří prostředek připojení Automation s názvem *AzureClassicRunAsConnection*. Prostředek propojení obsahuje název a ID předplatného a název prostředku certifikátu.
 
-1. Přihlaste se toohello portálu Azure pomocí účtu, který je členem role Správci předplatného hello a spolusprávce předplatného hello.
-2. V okně účtu Automation hello, vyberte **účty spustit jako** části hello **nastavení účtu**.  
-3. Podle toho, který účet požadujete, vyberte buď **Účet Spustit jako pro Azure**, nebo **Účet Spustit jako pro Azure Classic**.  Po výběru buď hello **přidat spustit v Azure jako** nebo **přidat Azure Classic účet Spustit jako** okno se zobrazí a po zkontrolování hello souhrnné informace, klikněte na tlačítko **vytvořit** tooproceed s vytváření účtu spustit jako.  
-4. Zatímco Azure vytváří účet Spustit jako hello, můžete sledovat průběh hello pod **oznámení** z hello nabídky a banner se zobrazí s informacemi o tom Probíhá vytváření účtu hello.  Tento proces může trvat několik minut toocomplete.  
+1. Přihlaste se k webu Azure Portal pomocí účtu, který je členem role správců předplatného a spolusprávcem předplatného.
+2. Z okna účtu Automation vyberte **Účty Spustit jako** v části **Nastavení účtu**.  
+3. Podle toho, který účet požadujete, vyberte buď **Účet Spustit jako pro Azure**, nebo **Účet Spustit jako pro Azure Classic**.  Po výběru se zobrazí okno **Přidat účet Spustit jako pro Azure** nebo **Přidat účet Spustit jako pro Azure Classic**. Jakmile zkontrolujete souhrnné informace, klikněte na **Vytvořit** a pokračujte ve vytváření účtu Spustit jako.  
+4. Zatímco Azure vytváří účet Spustit jako, zobrazuje se banner s informací o vytváření účtu a průběh vytváření můžete sledovat prostřednictvím možnosti nabídky **Oznámení**.  Dokončení tohoto procesu může trvat několik minut.  
 
 ## <a name="create-run-as-account-using-powershell-script"></a>Vytvoření účtu Spustit jako pomocí skriptu PowerShellu
-Tento skript prostředí PowerShell zahrnuje podporu pro hello následující konfigurace:
+Tento skript PowerShellu zahrnuje podporu následujících konfigurací:
 
 * Vytvoření účtu Spustit v Azure jako pomocí certifikátu podepsaného svým držitelem
 * Vytvoření účtu Spustit jako a účtu Spustit jako pro Classic pomocí certifikátu podepsaného svým držitelem
 * Vytvoření účtu Spustit jako a účtu Spustit jako pro Classic pomocí podnikového certifikátu
-* Vytvořte účet Spustit jako a Classic spustit jako účet pomocí certifikát podepsaný svým držitelem v hello cloudu Azure Government.
+* Vytvoření účtu Spustit jako a účtu Spustit jako pro Classic pomocí certifikátu podepsaného svým držitelem v cloudu Azure Government
 
-V závislosti na hello možnost konfigurace, kterou vyberete vytvoří skript hello hello následující položky.
+V závislosti na možnosti konfigurace, kterou vyberete, skript vytvoří následující položky.
 
 **Pro účty Spustit jako:**
 
-* Vytvoří Azure AD application toobe exportovaný s buď hello podepsaného svým držitelem nebo enterprise veřejný klíč certifikátu, vytvoří hlavní účet služby pro aplikaci hello ve službě Azure AD a hello přiřadí role Přispěvatel pro účet hello ve vaší stávající předplatné. Můžete změnit tato nastavení tooOwner nebo jakákoli jiná role. Další informace najdete v tématu [Řízení přístupu na základě role ve službě Azure Automation](automation-role-based-access-control.md).
-* Vytvoří prostředek certifikátu automatizace s názvem *AzureRunAsCertificate* v hello určený účet Automation. asset certifikátu Hello obsahuje hello privátní klíč certifikátu používaného aplikací hello Azure AD.
-* Vytvoří prostředek připojení automatizace s názvem *AzureRunAsConnection* v hello určený účet Automation. asset připojení Hello obsahuje hello applicationId, tenantId, subscriptionId a kryptografický otisk certifikátu.
+* Vytvoří aplikaci Azure AD, která se exportuje s veřejným klíčem certifikátu podepsaného svým držitelem nebo podnikového certifikátu, vytvoří účet instančního objektu pro tuto aplikaci v Azure AD a přiřadí roli přispěvatele pro tento účet v aktuálním předplatném. Toto nastavení můžete změnit na roli Vlastník nebo libovolnou jinou roli. Další informace najdete v tématu [Řízení přístupu na základě role ve službě Azure Automation](automation-role-based-access-control.md).
+* V příslušném účtu Automation vytvoří prostředek certifikátu Automation s názvem *AzureRunAsCertificate*. Prostředek certifikátu obsahuje privátní klíč certifikátu, který používá aplikace Azure AD.
+* V příslušném účtu Automation vytvoří prostředek připojení Automation s názvem *AzureRunAsConnection*. Prostředek připojení obsahuje parametry applicationId, tenantId, subscriptionId a certificate thumbprint.
 
 **Pro účet Spustit jako pro Classic:**
 
-* Vytvoří prostředek certifikátu automatizace s názvem *AzureClassicRunAsCertificate* v hello určený účet Automation. asset Hello certifikát obsahuje privátní klíč pro hello certifikátu používá certifikát pro správu hello.
-* Vytvoří prostředek připojení automatizace s názvem *AzureClassicRunAsConnection* v hello určený účet Automation. asset připojení Hello obsahuje název odběru hello, subscriptionId a název certifikátu asset.
+* V příslušném účtu Automation vytvoří prostředek certifikátu Automation s názvem *AzureClassicRunAsCertificate*. Prostředek certifikátu obsahuje privátní klíč certifikátu, který používá certifikát pro správu.
+* V příslušném účtu Automation vytvoří prostředek připojení Automation s názvem *AzureClassicRunAsConnection*. Prostředek propojení obsahuje název a ID předplatného a název prostředku certifikátu.
 
 >[!NOTE]
-> Pokud vyberete jednu z možností pro vytvoření účtu Classic spustit jako, po hello skript se spustí, nahrávání hello veřejné správy toohello (přípona názvu souboru .cer) úložiště certifikátů pro předplatné hello této hello účet Automation byla vytvořena v.
+> Pokud při vytváření účtu Spustit jako pro Classic vyberete libovolnou z těchto možností, po spuštění skriptu nahrajte veřejný certifikát (soubor s příponou .cer) do úložiště správy předplatného, ve kterém byl účet Automation vytvořený.
 > 
 
-1. Uložte následující skript v počítači hello. V tomto příkladu ho uložte pod názvem hello *New-RunAsAccount.ps1*.
+1. Uložte následující skript do počítače. V tomto příkladu ho uložte s názvem *New-RunAsAccount.ps1*.
 
         #Requires -RunAsAdministrator
         Param (
@@ -164,7 +164,7 @@ V závislosti na hello možnost konfigurace, kterou vyberete vytvoří skript he
         $ServicePrincipal = New-AzureRMADServicePrincipal -ApplicationId $Application.ApplicationId
         $GetServicePrincipal = Get-AzureRmADServicePrincipal -ObjectId $ServicePrincipal.Id
 
-        # Sleep here for a few seconds tooallow hello service principal application toobecome active (ordinarily takes a few seconds)
+        # Sleep here for a few seconds to allow the service principal application to become active (ordinarily takes a few seconds)
         Sleep -s 15
         $NewRole = New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $Application.ApplicationId -ErrorAction SilentlyContinue
         $Retries = 0;
@@ -195,7 +195,7 @@ V závislosti na hello možnost konfigurace, kterou vyberete vytvoří skript he
         $AzureRMProfileVersion= (Get-Module AzureRM.Profile).Version
         if (!(($AzureRMProfileVersion.Major -ge 3 -and $AzureRMProfileVersion.Minor -ge 0) -or ($AzureRMProfileVersion.Major -gt 3)))
         {
-            Write-Error -Message "Please install hello latest Azure PowerShell and retry. Relevant doc url : https://docs.microsoft.com/powershell/azureps-cmdlets-docs/ "
+            Write-Error -Message "Please install the latest Azure PowerShell and retry. Relevant doc url : https://docs.microsoft.com/powershell/azureps-cmdlets-docs/ "
             return
         }
 
@@ -222,16 +222,16 @@ V závislosti na hello možnost konfigurace, kterou vyberete vytvoří skript he
         $PfxCert = New-Object -TypeName System.Security.Cryptography.X509Certificates.X509Certificate2 -ArgumentList @($PfxCertPathForRunAsAccount, $PfxCertPlainPasswordForRunAsAccount)
         $ApplicationId=CreateServicePrincipal $PfxCert $ApplicationDisplayName
 
-        # Create hello Automation certificate asset
+        # Create the Automation certificate asset
         CreateAutomationCertificateAsset $ResourceGroup $AutomationAccountName $CertifcateAssetName $PfxCertPathForRunAsAccount $PfxCertPlainPasswordForRunAsAccount $true
 
-        # Populate hello ConnectionFieldValues
+        # Populate the ConnectionFieldValues
         $SubscriptionInfo = Get-AzureRmSubscription -SubscriptionId $SubscriptionId
         $TenantID = $SubscriptionInfo | Select TenantId -First 1
         $Thumbprint = $PfxCert.Thumbprint
         $ConnectionFieldValues = @{"ApplicationId" = $ApplicationId; "TenantId" = $TenantID.TenantId; "CertificateThumbprint" = $Thumbprint; "SubscriptionId" = $SubscriptionId}
 
-        # Create an Automation connection asset named AzureRunAsConnection in hello Automation account. This connection uses hello service principal.
+        # Create an Automation connection asset named AzureRunAsConnection in the Automation account. This connection uses the service principal.
         CreateAutomationConnectionAsset $ResourceGroup $AutomationAccountName $ConnectionAssetName $ConnectionTypeName $ConnectionFieldValues
 
         if ($CreateClassicRunAsAccount) {
@@ -239,9 +239,9 @@ V závislosti na hello možnost konfigurace, kterou vyberete vytvoří skript he
              $ClassicRunAsAccountCertifcateAssetName = "AzureClassicRunAsCertificate"
              $ClassicRunAsAccountConnectionAssetName = "AzureClassicRunAsConnection"
              $ClassicRunAsAccountConnectionTypeName = "AzureClassicCertificate "
-             $UploadMessage = "Please upload hello .cer format of #CERT# toohello Management store by following hello steps below." + [Environment]::NewLine +
-                     "Log in toohello Microsoft Azure Management portal (https://manage.windowsazure.com) and select Settings -> Management Certificates." + [Environment]::NewLine +
-                     "Then click Upload and upload hello .cer format of #CERT#"
+             $UploadMessage = "Please upload the .cer format of #CERT# to the Management store by following the steps below." + [Environment]::NewLine +
+                     "Log in to the Microsoft Azure Management portal (https://manage.windowsazure.com) and select Settings -> Management Certificates." + [Environment]::NewLine +
+                     "Then click Upload and upload the .cer format of #CERT#"
 
               if ($EnterpriseCertPathForClassicRunAsAccount -and $EnterpriseCertPlainPasswordForClassicRunAsAccount ) {
               $PfxCertPathForClassicRunAsAccount = $EnterpriseCertPathForClassicRunAsAccount
@@ -256,22 +256,22 @@ V závislosti na hello možnost konfigurace, kterou vyberete vytvoří skript he
               CreateSelfSignedCertificate $KeyVaultName $ClassicRunAsAccountCertificateName $PfxCertPlainPasswordForClassicRunAsAccount $PfxCertPathForClassicRunAsAccount $CerCertPathForClassicRunAsAccount $SelfSignedCertNoOfMonthsUntilExpired
         }
 
-        # Create hello Automation certificate asset
+        # Create the Automation certificate asset
         CreateAutomationCertificateAsset $ResourceGroup $AutomationAccountName $ClassicRunAsAccountCertifcateAssetName $PfxCertPathForClassicRunAsAccount $PfxCertPlainPasswordForClassicRunAsAccount $false
 
-        # Populate hello ConnectionFieldValues
+        # Populate the ConnectionFieldValues
         $SubscriptionName = $subscription.Subscription.Name
         $ClassicRunAsAccountConnectionFieldValues = @{"SubscriptionName" = $SubscriptionName; "SubscriptionId" = $SubscriptionId; "CertificateAssetName" = $ClassicRunAsAccountCertifcateAssetName}
 
-        # Create an Automation connection asset named AzureRunAsConnection in hello Automation account. This connection uses hello service principal.
+        # Create an Automation connection asset named AzureRunAsConnection in the Automation account. This connection uses the service principal.
         CreateAutomationConnectionAsset $ResourceGroup $AutomationAccountName $ClassicRunAsAccountConnectionAssetName $ClassicRunAsAccountConnectionTypeName $ClassicRunAsAccountConnectionFieldValues
 
         Write-Host -ForegroundColor red $UploadMessage
         }
 
-2. V počítači, spusťte **prostředí Windows PowerShell** z hello **spustit** obrazovky se zvýšenými uživatelskými právy.
-3. Z hello se zvýšenými oprávněními prostředí příkazového řádku, přejděte toohello složku, která obsahuje hello skript, který jste vytvořili v kroku 1.  
-4. Spusťte skript hello pomocí hodnoty parametrů hello hello konfigurace, kterou požadujete.
+2. Na svém počítači na obrazovce **Start** spusťte **Windows PowerShell** se zvýšenými uživatelskými právy.
+3. V prostředí příkazového řádku se zvýšenými oprávněními přejděte do složky, která obsahuje skript vytvořený v kroku 1.  
+4. Spusťte tento skript s využitím hodnot parametrů pro požadovanou konfiguraci.
 
     **Vytvoření účtu Spustit v Azure jako pomocí certifikátu podepsaného svým držitelem**  
     `.\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $false`
@@ -282,19 +282,19 @@ V závislosti na hello možnost konfigurace, kterou vyberete vytvoří skript he
     **Vytvoření účtu Spustit jako a účtu Spustit jako pro Classic pomocí podnikového certifikátu**  
     `.\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication>  -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true -EnterpriseCertPathForRunAsAccount <EnterpriseCertPfxPathForRunAsAccount> -EnterpriseCertPlainPasswordForRunAsAccount <StrongPassword> -EnterpriseCertPathForClassicRunAsAccount <EnterpriseCertPfxPathForClassicRunAsAccount> -EnterpriseCertPlainPasswordForClassicRunAsAccount <StrongPassword>`
 
-    **Vytvořit účet Spustit jako a Classic spustit jako účet pomocí certifikát podepsaný svým držitelem v hello cloudu Azure Government.**  
+    **Vytvoření účtu Spustit jako a účtu Spustit jako pro Classic pomocí certifikátu podepsaného svým držitelem v cloudu Azure Government**  
     `.\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true  -EnvironmentName AzureUSGovernment`
 
     > [!NOTE]
-    > Po provedení hello skript bude výzvami tooauthenticate s Azure. Přihlaste se pomocí účtu, který je členem role Správci předplatného hello a spolusprávce předplatného hello.
+    > Po spuštění skriptu se zobrazí výzva k ověření pomocí Azure. Přihlaste se pomocí účtu, který je členem role správců předplatného a spolusprávcem předplatného.
     >
     >
 
-Po hello skript byl úspěšně proveden, vezměte na vědomí následující hello:
-* Pokud jste vytvořili účet Classic spustit jako s certifikát podepsaný svým držitelem veřejné (soubor .cer), skript hello vytvoří a uloží jej toohello dočasné soubory složky v počítači v rámci profilu uživatele hello *%USERPROFILE%\AppData\Local\Temp*, který používá relaci prostředí PowerShell tooexecute hello.
-* Pokud jste vytvořili účet Spustit jako pro Classic s využitím podnikového veřejného certifikátu (soubor .cer), použijte tento certifikát. Postupujte podle pokynů hello pro [odesílání toohello certifikátu rozhraní API pro správu portálu Azure classic](../azure-api-management-certs.md)a potom ověřit konfiguraci hello přihlašovacích údajů s prostředky nasazení classic pomocí hello [ukázkový kód tooauthenticate s prostředky Azure Classic nasazení](automation-verify-runas-authentication.md#classic-run-as-authentication). 
-* Pokud jste to udělali *není* vytvořit účet Classic spustit jako, ověření pomocí prostředků Resource Manageru a ověřit konfiguraci hello přihlašovacích údajů pomocí hello [ukázkový kód pro ověřování pomocí služby správy prostředky](automation-verify-runas-authentication.md#automation-run-as-authentication).
+Po úspěšném spuštění skriptu je třeba počítat s následujícím:
+* Pokud jste vytvořili účet Spustit jako pro Classic s využitím veřejného certifikátu podepsaného svým držitelem (soubor .cer), skript ho vytvoří a uloží ve složce dočasných souborů ve vašem počítači pod profilem uživatele *%USERPROFILE%\AppData\Local\Temp*, který používáte ke spuštění relace PowerShellu.
+* Pokud jste vytvořili účet Spustit jako pro Classic s využitím podnikového veřejného certifikátu (soubor .cer), použijte tento certifikát. Postupujte podle kroků pro [odeslání certifikátu rozhraní API pro správu na portál Azure Classic](../azure-api-management-certs.md) a potom použijte [ukázkový kód pro ověření pomocí prostředků nasazení Azure Classic](automation-verify-runas-authentication.md#classic-run-as-authentication) k ověření konfigurace přihlašovacích údajů pomocí prostředků nasazení Classic. 
+* Pokud jste *nevytvořili* účet Spustit jako pro Classic, použijte k ověření pomocí prostředků Resource Manageru a ke kontrole konfigurace přihlašovacích údajů [ukázkový kód pro ověření s využitím prostředků správy služeb](automation-verify-runas-authentication.md#automation-run-as-authentication).
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o objektech služby najdete v části příliš[objekty aplikací a hlavní objekty služeb](../active-directory/active-directory-application-objects.md).
-* Další informace o certifikátech a službám Azure, najdete v části příliš[Přehled certifikátů pro Azure Cloud Services](../cloud-services/cloud-services-certs-create.md).
+* Další informace o objektech služby najdete v článku [Objekty aplikací a hlavní objekty služeb](../active-directory/active-directory-application-objects.md).
+* Další informace o certifikátech a službách Azure najdete v článku [Přehled certifikátů pro Azure Cloud Services](../cloud-services/cloud-services-certs-create.md).

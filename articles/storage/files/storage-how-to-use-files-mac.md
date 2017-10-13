@@ -1,6 +1,6 @@
 ---
-title: "aaaMount Azure sdílené složky přes protokol SMB systému macOS | Microsoft Docs"
-description: "Zjistěte, jak sdílet toomount soubor Azure přes protokol SMB s systému macOS."
+title: "Připojení sdílené složky Azure přes protokol SMB v systému macOS | Dokumentace Microsoftu"
+description: "Zjistěte, jak připojit sdílenou složku Azure přes protokol SMB v systému macOS."
 services: storage
 documentationcenter: 
 author: RenaShahMSFT
@@ -12,19 +12,19 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/27/2017
+ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: 71aaec8a77b770fe147b783c0ab9f86830176bec
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 6e71a13f99160fdd310be1e9a59717c9fecbf35d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>Připojení sdílené složky Azure přes protokol SMB v systému macOS
-[Úložiště Azure File](../storage-dotnet-how-to-use-files.md) služby společnosti Microsoft, která vám umožní toocreate a použití síťových sdílených souborů v hello Azure používá standardní hello. Sdílené složky Azure je možné připojit v systémech macOS Sierra (10.12) a El Capitan (10.11). Tento článek ukazuje dva různé způsoby toomount Azure sdílené složky v systému macOS s hello vyhledávací uživatelského rozhraní a pomocí hello terminálu.
+[Soubory Azure](storage-files-introduction.md) je služba Microsoftu, která umožňuje vytváření a používání sdílených složek souborů sítě v Azure s využitím oborových standardů. Sdílené složky Azure je možné připojit v systémech macOS Sierra (10.12) a El Capitan (10.11). Tento článek ukazuje dva různé způsoby připojení sdílené složky Azure v systému macOS – pomocí uživatelského rozhraní Finder a pomocí Terminálu.
 
 > [!Note]  
-> Před připojením sdílené složky Azure přes protokol SMB doporučujeme zakázat podepisování paketů SMB. Není tak může yield nízký výkon při přístupu ke službě Azure sdílenou složku hello ze systému macOS. Připojení SMB budou zašifrovaná, takže to nemá vliv na zabezpečení hello připojení. Z hello terminálu, hello následující příkazy vypne podepisování paketů SMB, jak je popsáno to [článek podpory od společnosti Apple při vypnutí podepisování paketů](https://support.apple.com/HT205926):  
+> Před připojením sdílené složky Azure přes protokol SMB doporučujeme zakázat podepisování paketů SMB. Pokud to neuděláte, můžete při přistupování ke sdílené složce Azure ze systému macOS dosahovat nízkého výkonu. Připojení SMB bude šifrované, takže to nijak neovlivní zabezpečení vašeho připojení. Podepisování paketů SMB zakážete spuštěním následujících příkazů v Terminálu, jak je popsáno v tomto článku [Apple support article on disabling SMB packet signing](https://support.apple.com/HT205926) (Článek podpory Apple o zakázání podepisování paketů SMB):  
 >    ```
 >    sudo -s
 >    echo "[default]" >> /etc/nsmb.conf
@@ -33,39 +33,39 @@ ms.lasthandoff: 10/06/2017
 >    ```
 
 ## <a name="prerequisites-for-mounting-an-azure-file-share-on-macos"></a>Požadavky pro připojení sdílené složky Azure v systému macOS
-* **Název účtu úložiště**: sdílenou složku Azure File toomount, bude nutné hello název účtu úložiště hello.
+* **Název účtu úložiště:** Pro připojení sdílené složky Azure budete potřebovat název účtu úložiště.
 
-* **Klíč účtu úložiště**: sdílenou složku Azure File toomount, bude nutné hello klíč primární (nebo sekundární) úložiště. Klíče SAS aktuálně nejsou pro připojení podporovány.
+* **Klíč účtu úložiště:** Pro připojení sdílené složky Azure budete potřebovat primární (nebo sekundární) klíč úložiště. Klíče SAS aktuálně nejsou pro připojení podporovány.
 
-* **Ujistěte se, že je otevřený port 445:** Protokol SMB komunikuje přes port TCP 445. Na klientském počítači (hello Mac) zkontrolujte toomake se, že brána firewall neblokuje TCP port 445.
+* **Ujistěte se, že je otevřený port 445:** Protokol SMB komunikuje přes port TCP 445. Na klientském počítači (Mac) zkontrolujte, že brána firewall neblokuje port TCP 445.
 
 ## <a name="mount-an-azure-file-share-via-finder"></a>Připojení sdílené složky Azure přes Finder
-1. **Otevřete vyhledávací**: vyhledávací je otevřen v systému macOS ve výchozím nastavení, ale můžete zajistit je hello aktuálně vybrané aplikace kliknutím hello "systému macOS čelí ikona" na ukotvení hello:  
-    ![Ikona čelí systému macOS Hello](./media/storage-how-to-use-files-mac/mount-via-finder-1.png)
+1. **Otevřete Finder:** Finder je v systému macOS otevřený standardně, ale můžete se ujistit, že je aktuálně vybranou aplikací, kliknutím na ikonu obličeje macOS v Docku:  
+    ![Ikona obličeje macOS](./media/storage-how-to-use-files-mac/mount-via-finder-1.png)
 
-2. **Vyberte "Connect tooServer" hello "Přejděte" nabídky**: pomocí cesty UNC hello z hello [požadavky](#preq), převést hello začátku dvojité zpětné lomítko (`\\`) příliš`smb://` a všechny ostatní zpětná lomítka (`\`) tooforwards lomítka (`/`). Odkaz na vaši by měl vypadat jako následující hello: ![hello "Connect tooServer" dialogové okno](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
+2. **Z nabídky Go (Přejít) vyberte Connect to Server (Připojit k serveru):** Použijte cestu UNC z části [Požadavky](#preq) a převeďte počáteční dvojité zpětné lomítko (`\\`) na `smb://` a všechna ostatní zpětná lomítka (`\`) na lomítka (`/`). Odkaz by měl vypadat následovně: ![Dialogové okno Connect to Server (Připojit k serveru)](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
 
-3. **Použití hello sdílené složky a jeho název klíč účtu po zobrazení výzvy k zadání uživatelského jména a hesla**: Po kliknutí na tlačítko "Připojit" v dialogovém okně "Connect tooServer" hello, zobrazí se výzva k hello uživatelského jména a hesla (to se stane autopopulated s vašeho systému macOS uživatelské jméno). Máte možnost hello umístění klíč účtu úložiště název sdílené složky hello do vašeho systému macOS řetězce klíčů.
+3. **Po zobrazení výzvy k zadání uživatelského jména a hesla použijte název sdílené složky a klíč úložiště:** Po kliknutí na Connect (Připojit) v dialogovém okně Connect to Server (Připojit k serveru) budete vyzváni k zadání uživatelského jména a hesla (automaticky se vyplní uživatelské jméno macOS). Máte možnost uložit název sdílené složky a klíč účtu úložiště do klíčenky macOS.
 
-4. **Použijte sdílenou složku Azure File hello podle potřeby**: po nahrazení hello sdílené složky a jeho název klíč účtu v hello uživatelské jméno a heslo, se připojí hello sdílené složky. Můžete to použít jako běžně používáte místní složky nebo sdílené složky, včetně přetahování souborů do sdílené složky hello:
+4. **Používejte sdílenou složku Azure, jak potřebujete:** Po nahrazení uživatelského jména a hesla za název sdílené složky a klíč účtu úložiště se sdílená složka připojí. Můžete ji používat stejně, jako běžně používáte místní složky nebo sdílené složky, včetně přetahování souborů do sdílené složky:
 
     ![Snímek připojené sdílené složky Azure](./media/storage-how-to-use-files-mac/mount-via-finder-3.png)
 
 ## <a name="mount-an-azure-file-share-via-terminal"></a>Připojení sdílené složky Azure přes Terminál
-1. Nahraďte `<storage-account-name>` hello název účtu úložiště. Po zobrazení výzvy zadejte klíč účtu úložiště a heslo. 
+1. Nahraďte `<storage-account-name>` názvem vašeho účtu úložiště. Po zobrazení výzvy zadejte klíč účtu úložiště a heslo. 
 
     ```
     mount_smbfs //<storage-account-name>@<storage-account-name>.file.core.windows.net/<share-name> <desired-mount-point>
     ```
 
-2. **Použijte sdílenou složku Azure File hello podle potřeby**: sdílenou složku Azure File hello se připojí na hello přípojného bodu určeného hello předchozí příkaz.  
+2. **Používejte sdílenou složku Azure, jak potřebujete:** Sdílená složka Azure se připojí na přípojný bod zadaný v předchozím příkazu.  
 
-    ![Snímek hello připojit sdílenou složku Azure File](./media/storage-how-to-use-files-mac/mount-via-terminal-1.png)
+    ![Snímek připojené sdílené složky Azure](./media/storage-how-to-use-files-mac/mount-via-terminal-1.png)
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o úložišti Azure File jsou dostupné na těchto odkazech.
+Další informace o službě Soubory Azure najdete na těchto odkazech.
 
-* [Článek podpory od společnosti Apple - jak tooconnect s sdílení souborů na počítači Mac](https://support.apple.com/HT204445)
+* [Apple Support Article – How to connect with File Sharing on your Mac](https://support.apple.com/HT204445) (Článek podpory Apple – Jak se na Macu připojit pomocí Sdílení souborů)
 * [Nejčastější dotazy](../storage-files-faq.md)
 * [Řešení potíží ve Windows](storage-troubleshoot-windows-file-connection-problems.md)      
 * [Řešení potíží v Linuxu](storage-troubleshoot-linux-file-connection-problems.md)    

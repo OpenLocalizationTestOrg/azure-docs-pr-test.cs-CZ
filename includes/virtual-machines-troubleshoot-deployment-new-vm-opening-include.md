@@ -1,5 +1,5 @@
-Při pokusu o toocreate nového virtuálního počítače (virtuální počítač Azure), jsou hello běžné chyby, které zaznamenáte zřizování chyb nebo selhání přidělení.
+Při pokusu o vytvoření virtuálního počítače pro nové Azure (VM), jsou zřizování běžné chyby, na které narazíte na selhání nebo chyby v přidělení.
 
-* Selhání zřizování se stane, když image hello operačního systému nezdaří tooload buď z důvodu tooincorrect přípravné kroky nebo z důvodu výběr hello chybné nastavení během hello image zaznamenat z portálu hello.
-* K selhání výsledky přidělení při hello clusteru nebo oblast buď nemá k dispozici prostředky nebo nemůže podporovat hello požadovaná velikost virtuálního počítače.
+* Selhání zřizování se stane, když bitovou kopii operačního systému nepodaří načíst z důvodu nesprávné přípravné kroky nebo z důvodu chybné nastavení výběr během vytváření bitové kopie z portálu.
+* Došlo k chybě přidělení výsledky při clusteru nebo oblast buď nemá k dispozici prostředky nebo nemůže podporovat požadovaná velikost virtuálního počítače.
 

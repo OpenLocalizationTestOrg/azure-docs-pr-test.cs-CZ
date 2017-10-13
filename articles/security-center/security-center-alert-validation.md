@@ -1,6 +1,6 @@
 ---
-title: "aaaAlerts ověřování v Azure Security Center | Microsoft Docs"
-description: "Tento dokument vám pomůže toovalidate hello výstrah zabezpečení v Azure Security Center."
+title: "Ověřování výstrah v Azure Security Center | Dokumentace Microsoftu"
+description: "Tento dokument vám pomůže s ověřováním výstrah zabezpečení ve službě Azure Security Center."
 services: security-center
 documentationcenter: na
 author: YuriDio
@@ -12,42 +12,45 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/11/2017
+ms.date: 09/07/2017
 ms.author: yurid
-ms.openlocfilehash: 030e9e74303758192eedaf517f1cb0d2e4a7852e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d7aa8544f50b42bacfa1e1f16fdce468d8fc81ef
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="alerts-validation-in-azure-security-center"></a>Ověřování výstrah ve službě Azure Security Center
-Tento dokument vám pomůže se naučit jak tooverify Pokud váš systém byl správně nakonfigurován pro Azure Security Center výstrahy.
+Pomocí tohoto dokumentu se naučíte ověřovat, jestli je váš systém správně nakonfigurovaný pro výstrahy služby Azure Security Center.
 
 ## <a name="what-are-security-alerts"></a>Co jsou výstrahy zabezpečení?
-Security Center automaticky shromažďuje, analyzuje a integruje data protokolu z vaše prostředky Azure, sítě hello a připojených partnerských řešení, jako jsou brány firewall a endpoint protection řešení, toodetect a výstrah toothreats. Čtení [správy a zda odpovídá toosecurity výstrahy v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts) Další informace o výstrahách zabezpečení a čtení [pochopení výstrah zabezpečení v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) toolearn další o hello různé typy výstrah.
+Služba Security Center automaticky shromažďuje, analyzuje a integruje data protokolu z vašich prostředků Azure, sítě a připojených partnerských řešení, jako jsou brány firewall a řešení ochrany koncových bodů, aby zjistila hrozby a mohla vás na ně upozornit. Přečtěte si téma [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts), kde najdete další informace o výstrahách zabezpečení, a téma [Principy výstrah zabezpečení ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type), kde najdete další informace o různých typech výstrah.
 
 ## <a name="alert-validation"></a>Ověřování výstrah
-Po instalaci agenta Security Center ve vašem počítači, postupujte podle hello kroků z počítače hello místo prostředků hello napadení toobe hello výstrahy:
+Po nainstalování agenta Security Center do vašeho počítače postupujte na počítači, na kterém chcete mít napadený prostředek výstrahy, podle následujících kroků:
 
-1. Zkopírujte plochu spustitelný soubor (pro příklad calc.exe) toohello počítače nebo jiného adresáře usnadnění vaší práce.
-2. Přejmenujte tento soubor příliš**ASC_AlertTest_662jfi039N.exe**.
-3. Otevřete příkazový řádek se hello a spusťte tento soubor s parametrem (pouze název falešných argument), jako například: *ASC_AlertTest_662jfi039N.exe - foo*
-4. Počkejte 5 minut too10 a otevřete výstrahy Security Center. Existuje byste měli najít výstrahy podobné toofollowing, jeden:
+1. Zkopírujte spustitelný soubor (například calc.exe) na plochu počítače nebo do jiného adresáře, který vám vyhovuje.
+2. Přejmenujte tento soubor na **ASC_AlertTest_662jfi039N.exe**.
+3. Otevřete příkazový řádek a spusťte tento soubor s argumentem (pouze vymyšlený název argumentu), například: *ASC_AlertTest_662jfi039N.exe -foo*
+4. Počkejte 5 až 10 minut a otevřete výstrahy služby Security Center. Měla by se tam zobrazit výstraha podobá této:
 
-    ![Ověřování výstrah](./media/security-center-alert-validation/security-center-alert-validation-fig1.png)
+    ![Ověřování výstrah](./media/security-center-alert-validation/security-center-alert-validation-fig2.png)
 
-Při revizi tuto výstrahu, zkontrolujte, zda pole hello povoleno auditování argumenty, zobrazí se jako true. Pokud se zobrazí hodnotu false, je třeba argumenty příkazového řádku tooenable auditování. Můžete povolit tuto možnost, pomocí hello následující příkaz:
+Při kontrole této výstrahy ověřte, že se v poli Arguments Auditing Enabled (Auditování argumentů povoleno) zobrazuje hodnota true. Pokud se zobrazuje hodnota false, je potřeba povolit auditování argumentů příkazového řádku. Tuto možnost můžete povolit pomocí následujícího příkazového řádku:
 
 *reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"*
 
 
-## <a name="see-also"></a>Viz také
-Tento článek se zavedl toohello výstrahy ověření procesu. Teď, když jste obeznámeni s toto ověření, zkuste hello následující články:
+> [!NOTE]
+> Pokud chcete vidět ukázku této funkce, podívejte se na video [Ověřování výstrah v Azure Security Center](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Alert-Validation-in-Azure-Security-Center). 
 
-* [Správa a zda odpovídá toosecurity výstrahy v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Zjistěte, jak toomanage výstrah a incidentů toosecurity reakce ve službě Security Center.
-* [Monitorování stavu zabezpečení ve službě Azure Security Center](security-center-monitoring.md). Zjistěte, jak toomonitor hello stav svých prostředků Azure.
-* [Principy výstrah zabezpečení ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Další informace o různých typech hello výstrahy zabezpečení.
-* [Průvodce odstraňováním potíží pro službu Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Zjistěte, jak tootroubleshoot běžné problémy ve službě Security Center. 
-* [Azure Security Center – nejčastější dotazy](security-center-faq.md). Nejčastější dotazy o použití hello služby najít.
+## <a name="see-also"></a>Viz také
+V tomto článku jste se seznámili s procesem ověřování výstrah. Teď, když už jste obeznámeni s tímto ověřováním, zkuste následující články:
+
+* [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Zjistěte, jak spravovat výstrahy a reagovat na incidenty zabezpečení ve službě Security Center.
+* [Monitorování stavu zabezpečení ve službě Azure Security Center](security-center-monitoring.md). Zjistěte, jak monitorovat stav svých prostředků Azure.
+* [Principy výstrah zabezpečení ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Seznamte se s dalšími typy výstrah zabezpečení.
+* [Průvodce odstraňováním potíží pro službu Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Zjistěte, jak řešit běžné problémy ve službě Security Center. 
+* [Azure Security Center – nejčastější dotazy](security-center-faq.md). Přečtěte si nejčastější dotazy o použití této služby.
 * [Blog o zabezpečení Azure](http://blogs.msdn.com/b/azuresecurity/). Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.
 

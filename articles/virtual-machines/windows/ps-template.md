@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate virtuální počítač s Windows pomocí šablony v Azure | Microsoft Docs"
-description: "Pomocí šablony Resource Manageru a tooeasily prostředí PowerShell vytvořit nový virtuální počítač s Windows."
+title: "Vytvoření virtuálního počítače s Windows pomocí šablony v Azure | Microsoft Docs"
+description: "Snadno vytvářet nový virtuální počítač s Windows pomocí šablony Resource Manageru a prostředí PowerShell."
 services: virtual-machines-windows
 documentationcenter: 
 author: davidmu1
@@ -16,23 +16,23 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: davidmu
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 630111482c7dc046091632e2ed458ac143325d59
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ddab80262fe27c1f5995858ec7de75d7c46df081
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Vytvoření virtuálního počítače s Windows pomocí šablony Resource Manageru
 
-Tento článek ukazuje, jak toodeploy Azure Resource Manageru šablony pomocí prostředí PowerShell. Hello šablonu, kterou vytvoříte nasadí jednoho virtuálního počítače se systémem Windows Server v nové virtuální sítě s jedinou podsítí.
+Tento článek ukazuje, jak nasadit šablonu Azure Resource Manager pomocí prostředí PowerShell. Šablona, kterou vytvoříte nasadí jednoho virtuálního počítače se systémem Windows Server v nové virtuální sítě s jedinou podsítí.
 
-Podrobný popis hello prostředek virtuálního počítače naleznete v tématu [virtuálních počítačů v šablonu Azure Resource Manager](template-description.md). Další informace o všech hello prostředcích v šabloně najdete v tématu [názorný Průvodce šablonou Azure Resource Manager](../../azure-resource-manager/resource-manager-template-walkthrough.md).
+Podrobný popis prostředek virtuálního počítače naleznete v tématu [virtuálních počítačů v šablonu Azure Resource Manager](template-description.md). Další informace o všechny prostředky v šabloně najdete v tématu [názorný Průvodce šablonou Azure Resource Manager](../../azure-resource-manager/resource-manager-template-walkthrough.md).
 
-Má trvat přibližně pět minut, po které toodo hello kroky v tomto článku.
+Proveďte kroky v tomto článku má trvat asi pět minut.
 
 ## <a name="install-azure-powershell"></a>Instalace prostředí Azure PowerShell
 
-V tématu [jak tooinstall a konfigurace prostředí Azure PowerShell](../../powershell-install-configure.md) informace o instalaci hello nejnovější verzi prostředí Azure PowerShell, výběr předplatného a přihlášení tooyour účtu.
+Projděte si článek [Jak nainstalovat a nakonfigurovat Azure PowerShell](../../powershell-install-configure.md), kde najdete informace o instalaci nejnovější verze prostředí Azure PowerShell, výběru předplatného a přihlášení k účtu.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -44,17 +44,17 @@ Všechny prostředky musí být nasazený v [skupiny prostředků](../../azure-r
     Get-AzureRmLocation | sort DisplayName | Select DisplayName
     ```
 
-2. Vytvořte skupinu prostředků hello v hello umístění, které vyberete. Tento příklad ukazuje vytvoření hello skupinu prostředků s názvem **myResourceGroup** v hello **západní USA** umístění:
+2. Vytvořte skupinu prostředků v místě, které vyberete. Tento příklad ukazuje vytvoření skupiny prostředků s názvem **myResourceGroup** v **západní USA** umístění:
 
     ```powershell   
     New-AzureRmResourceGroup -Name "myResourceGroup" -Location "West US"
     ```
 
-## <a name="create-hello-files"></a>Vytvoření souborů hello
+## <a name="create-the-files"></a>Vytvoření souborů
 
-V tomto kroku vytvoříte soubor šablony, která nasazuje hello prostředky a soubor parametrů, který poskytuje šablony toohello hodnoty parametru. Můžete také vytvořit soubor autorizace, který je použité tooperform Azure Resource Manager operace.
+V tomto kroku vytvoříte soubor šablony, která nasazuje prostředky a soubor parametrů, který poskytuje hodnoty parametrů šablony. Můžete také vytvořit soubor autorizace, který se používá k provádění operací Azure Resource Manager.
 
-1. Vytvořte soubor s názvem *CreateVMTemplate.json* a přidejte tento tooit kódu JSON:
+1. Vytvořte soubor s názvem *CreateVMTemplate.json* a přidejte do ní tento kód JSON:
 
     ```json
     {
@@ -159,7 +159,7 @@ V tomto kroku vytvoříte soubor šablony, která nasazuje hello prostředky a s
     }
     ```
 
-2. Vytvořte soubor s názvem *Parameters.JSON tímto kódem* a přidejte tento tooit kódu JSON:
+2. Vytvořte soubor s názvem *Parameters.JSON tímto kódem* a přidejte do ní tento kód JSON:
 
     ```json
     {
@@ -182,18 +182,18 @@ V tomto kroku vytvoříte soubor šablony, která nasazuje hello prostředky a s
     New-AzureStorageContainer -Name "templates" -Context $context -Permission Container
     ```
 
-4. Odešlete účet úložiště toohello hello soubory:
+4. Nahrání souborů do účtu úložiště:
 
     ```powershell
     Set-AzureStorageBlobContent -File "C:\templates\CreateVMTemplate.json" -Context $context -Container "templates"
     Set-AzureStorageBlobContent -File "C:\templates\Parameters.json" -Context $context -Container templates
     ```
 
-    Změna hello - souboru cesty toohello umístění pro uložení souborů hello.
+    Změna cesty k umístění, kam jste uložili soubory-souborům.
 
-## <a name="create-hello-resources"></a>Vytvořit prostředky hello
+## <a name="create-the-resources"></a>Vytvořit prostředky
 
-Nasazení šablony hello pomocí parametrů hello:
+Nasazení šablony pomocí parametrů:
 
 ```powershell
 $templatePath = "https://" + $storageName + ".blob.core.windows.net/templates/CreateVMTemplate.json"
@@ -202,10 +202,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "myResourceGroup" -Name "m
 ```
 
 > [!NOTE]
-> Můžete také nasadit parametry z místní soubory a šablony. Další, najdete v části toolearn [použití Azure Powershellu s Azure Storage](../../storage/common/storage-powershell-guide-full.md).
+> Můžete také nasadit parametry z místní soubory a šablony. Další informace najdete v tématu [použití Azure Powershellu s Azure Storage](../../storage/common/storage-powershell-guide-full.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud byly nějaké problémy s nasazením hello, může si prohlédněte [odstraňování běžných chyb nasazení Azure pomocí Azure Resource Manageru](../../resource-manager-common-deployment-errors.md).
-- Zjistěte, jak toocreate a spravovat virtuální počítač v [vytvořit a spravovat virtuální počítače Windows hello modul Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Pokud byly nějaké problémy s nasazením, může si prohlédněte [odstraňování běžných chyb nasazení Azure pomocí Azure Resource Manageru](../../resource-manager-common-deployment-errors.md).
+- Naučte se vytvářet a spravovat virtuální počítač v [vytvořit a spravovat virtuální počítače Windows pomocí modulu Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

@@ -1,6 +1,6 @@
 ---
-title: "aaaScript vývoj akcí s HDInsight - Azure | Microsoft Docs"
-description: "Zjistěte, jak toocustomize Hadoop clusterů s akce skriptu. Akce skriptu lze použít tooinstall systémem Hadoop clusteru nebo toochange hello konfigurací aplikace nainstalované v clusteru s podporou další software."
+title: "Vývoj akcí skriptů v prostředí HDInsight - Azure | Microsoft Docs"
+description: "Zjistěte, jak přizpůsobit clustery Hadoop pomocí akce skriptu. Akce skriptu lze nainstalovat další software spuštěných v clusteru s Hadoop nebo změnit konfiguraci aplikace nainstalované v clusteru."
 services: hdinsight
 documentationcenter: 
 tags: azure-portal
@@ -16,36 +16,36 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4fc3a389df8a003f7129ab00b4cd9bc7ad81a419
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0e182e6b43fd2d17524c1da36cf4c204bb1b865a
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>Vývoj skriptů akce skriptu pro clustery se systémem HDInsight Windows
-Zjistěte, jak toowrite akce skriptu skriptů pro HDInsight. Informace o použití akce skriptu skriptů najdete v tématu [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster.md). Hello stejný článek napsán pro clustery HDInsight se systémem Linux naleznete v části [vyvíjet akce skriptu skripty pro HDInsight](hdinsight-hadoop-script-actions-linux.md).
+Zjistěte, jak k psaní skriptů akce skriptu pro HDInsight. Informace o použití akce skriptu skriptů najdete v tématu [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster.md). Stejný článek napsán pro clustery HDInsight se systémem Linux, najdete v části [vyvíjet akce skriptu skripty pro HDInsight](hdinsight-hadoop-script-actions-linux.md).
 
 
 
 > [!IMPORTANT]
-> Hello kroky v této dokumentu funguje jenom pro clustery HDInsight se systémem Windows. HDInsight je k dispozici pouze v systému Windows verze nižší než HDInsight 3.4. Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement). Informace o použití akce skriptu s clustery se systémem Linux najdete v tématu [vývoj akcí skriptů v prostředí HDInsight (Linux)](hdinsight-hadoop-script-actions-linux.md).
+> Kroky v tomto dokumentu fungovat pouze pro clustery HDInsight se systémem Windows. HDInsight je k dispozici pouze v systému Windows verze nižší než HDInsight 3.4. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement). Informace o použití akce skriptu s clustery se systémem Linux najdete v tématu [vývoj akcí skriptů v prostředí HDInsight (Linux)](hdinsight-hadoop-script-actions-linux.md).
 >
 >
 
 
 
-Akce skriptu lze použít tooinstall systémem Hadoop clusteru nebo toochange hello konfigurací aplikace nainstalované v clusteru s podporou další software. Akce skriptů jsou skripty, které jsou spuštěny na uzlech clusteru hello při nasazených clusterů HDInsight, a jsou prováděna po uzly v clusteru hello dokončení konfigurace HDInsight. Akce skriptu se spustí v části oprávnění k účtu správce systému a poskytuje úplná přístupová práva toohello uzly clusteru. Každý cluster lze zadat seznam toobe skript akce provést v hello pořadí, ve kterém jsou uvedené.
+Akce skriptu lze nainstalovat další software spuštěných v clusteru s Hadoop nebo změnit konfiguraci aplikace nainstalované v clusteru. Akce skriptů jsou skripty, které jsou spuštěny na uzlech clusteru při nasazených clusterů HDInsight, a jsou prováděna po dokončení konfigurace HDInsight uzly v clusteru. Akce skriptu se spustí v části oprávnění k účtu správce systému a poskytuje úplná přístupová práva pro uzly clusteru. Každý cluster lze zadat seznam akcí skriptů spouštění v pořadí, ve kterém jsou uvedené.
 
 > [!NOTE]
-> Pokud se setkáte hello následující chybová zpráva:
+> Pokud se setkáte se následující chybová zpráva:
 >
-> System.Management.Automation.CommandNotFoundException; ExceptionMessage: hello termín 'Uložit-HDIFile' nebyl rozpoznán jako hello název rutiny, funkce, soubor skriptu nebo spustitelného programu. Kontrola pravopisu hello hello názvu, nebo pokud byl zahrnut cestu, ověřte, zda text hello cesta správné a zkuste to znovu.
-> Je to proto, že jste nezahrnuli hello pomocné metody.  V tématu [pomocné metody pro vlastní skripty](hdinsight-hadoop-script-actions.md#helper-methods-for-custom-scripts).
+> System.Management.Automation.CommandNotFoundException; ExceptionMessage: Termín 'Uložit-HDIFile' nebyl rozpoznán jako název rutiny, funkce, soubor skriptu nebo spustitelného programu. Zkontrolujte, zda název, nebo pokud byl zahrnut cestu, ověřte, zda je cesta správná a zkuste to znovu.
+> Je to proto, že jste nezahrnuli pomocné metody.  V tématu [pomocné metody pro vlastní skripty](hdinsight-hadoop-script-actions.md#helper-methods-for-custom-scripts).
 >
 >
 
 ## <a name="sample-scripts"></a>Ukázkové skripty
-Hello akce skriptu pro vytváření clusterů HDInsight v operačním systému Windows, je skript prostředí Azure PowerShell. Hello následující skript je ukázkou pro konfiguraci hello lokality konfigurační soubory:
+Akce skriptu pro vytváření clusterů HDInsight v operačním systému Windows, je skript prostředí Azure PowerShell. Následující skript je ukázkou pro konfiguraci lokality konfigurační soubory:
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
@@ -69,7 +69,7 @@ Hello akce skriptu pro vytváření clusterů HDInsight v operačním systému W
     }
 
     if (!($hdiConfigFiles[$ConfigFileName])) {
-        Write-HDILog "Unable tooconfigure $ConfigFileName because it is not part of hello HDI configuration files."
+        Write-HDILog "Unable to configure $ConfigFileName because it is not part of the HDI configuration files."
         return
     }
 
@@ -92,15 +92,15 @@ Hello akce skriptu pro vytváření clusterů HDInsight v operačním systému W
 
     Write-HDILog "$configFileName has been configured."
 
-skript Hello trvá čtyři parametry, hello název konfiguračního souboru, vlastnosti hello chcete toomodify, hodnota hello chcete tooset a popis. Například:
+Skript používá čtyři parametry, název konfiguračního souboru, vlastnosti, kterou chcete upravit, hodnotu, kterou chcete nastavit a popis. Například:
 
     hive-site.xml hive.metastore.client.socket.timeout 90
 
-Tyto parametry nastaví hello hive.metastore.client.socket.timeout hodnotu too90 v souboru hive-site.xml hello.  Hello výchozí hodnota je 60 sekund.
+Tyto parametry nastaví hive.metastore.client.socket.timeout hodnotu na 90 v souboru hive-site.xml.  Výchozí hodnota je 60 sekund.
 
 Tento vzorový skript naleznete také v [https://hditutorialdata.blob.core.windows.net/customizecluster/editSiteConfig.ps1](https://hditutorialdata.blob.core.windows.net/customizecluster/editSiteConfig.ps1).
 
-HDInsight nabízí několik skriptů tooinstall další součásti v clusterech HDInsight:
+HDInsight nabízí několik skriptů k instalaci dalších součástí v clusterech HDInsight:
 
 | Name (Název) | Skript |
 | --- | --- |
@@ -109,15 +109,15 @@ HDInsight nabízí několik skriptů tooinstall další součásti v clusterech 
 | **Nainstalujte Solr** |https://hdiconfigactions.BLOB.Core.Windows.NET/solrconfigactionv01/solr-Installer-v01.ps1. V tématu [instalace a použití clusterů v HDInsight Solr](hdinsight-hadoop-solr-install.md). |
 | - **Nainstalujte Giraph** |https://hdiconfigactions.BLOB.Core.Windows.NET/giraphconfigactionv01/giraph-Installer-v01.ps1. V tématu [instalace a použití clusterů v HDInsight Giraph](hdinsight-hadoop-giraph-install.md). |
 
-Akce skriptu můžete nasadit z hello portál Azure, Azure PowerShell nebo pomocí hello HDInsight .NET SDK.  Další informace najdete v tématu [HDInsight přizpůsobit clustery pomocí akce skriptu][hdinsight-cluster-customize].
+Akce skriptu se dá nasadit na portálu Azure, Azure PowerShell nebo pomocí sady .NET SDK HDInsight.  Další informace najdete v tématu [HDInsight přizpůsobit clustery pomocí akce skriptu][hdinsight-cluster-customize].
 
 > [!NOTE]
-> Ukázkové skripty Hello pracovat pouze s verze clusteru HDInsight verze 3.1 nebo vyšší. Další informace o verzích clusterů HDInsight, naleznete v části [verze clusteru HDInsight](hdinsight-component-versioning.md).
+> Ukázkové skripty pracovat pouze s verze clusteru HDInsight verze 3.1 nebo vyšší. Další informace o verzích clusterů HDInsight, naleznete v části [verze clusteru HDInsight](hdinsight-component-versioning.md).
 >
 >
 
 ## <a name="helper-methods-for-custom-scripts"></a>Pomocné metody pro vlastní skripty
-Pomocné metody akcí skriptů jsou nástroje, které můžete použít při zápisu vlastních skriptů. Tyto metody jsou definovány v [https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1](https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1)a můžou být součástí skripty pomocí hello následující ukázka:
+Pomocné metody akcí skriptů jsou nástroje, které můžete použít při zápisu vlastních skriptů. Tyto metody jsou definovány v [https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1](https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1)a můžou být součástí skripty pomocí následující ukázka:
 
     # Download config action module from a well-known directory.
     $CONFIGACTIONURI = "https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1";
@@ -125,84 +125,84 @@ Pomocné metody akcí skriptů jsou nástroje, které můžete použít při zá
     $webclient = New-Object System.Net.WebClient;
     $webclient.DownloadFile($CONFIGACTIONURI, $CONFIGACTIONMODULE);
 
-    # (TIP) Import config action helper method module toomake writing config action easy.
+    # (TIP) Import config action helper method module to make writing config action easy.
     if (Test-Path ($CONFIGACTIONMODULE))
     {
         Import-Module $CONFIGACTIONMODULE;
     }
     else
     {
-        Write-Output "Failed tooload HDInsightUtilities module, exiting ...";
+        Write-Output "Failed to load HDInsightUtilities module, exiting ...";
         exit;
     }
 
-Zde jsou hello pomocné metody, které jsou poskytovány tento skript:
+Zde jsou pomocné metody, které jsou poskytovány tento skript:
 
 | Pomocná metoda | Popis |
 | --- | --- |
-| **Uložit HDIFile** |Stažení souboru z hello zadaný identifikátor URI (Uniform Resource) tooa umístění na hello místní disk, který je přidružen cluster pro uzly přiřazené toohello hello virtuálního počítače Azure. |
+| **Uložit HDIFile** |Stažení souboru z zadaný identifikátor URI (Uniform Resource) do umístění na místní disk, který je přidružený k uzlu virtuálního počítače Azure přiřadili ke clusteru. |
 | **Rozbalte položku HDIZippedFile** |Rozbalte soubor ZIP. |
 | **Vyvolání HDICmdScript** |Spusťte skript z cmd.exe. |
-| **Zápis HDILog** |Zapište výstup z vlastní skript hello používané pro akci skriptu. |
-| **Get-Services** |Získejte seznam služby spuštěné na počítači hello kde hello skript spustí. |
-| **Get-Service** |S názvem hello konkrétní služby jako vstup, získat podrobné informace pro konkrétní službu (název služby, zpracovat ID, stavu, atd.) v počítači hello kde hello skript spustí. |
-| **Get-HDIServices** |Získejte seznam služby HDInsight na hello počítači spuštěny, kde hello skript spustí. |
-| **Get-HDIService** |S hello konkrétní HDInsight název služby jako vstup, získat podrobné informace pro konkrétní službu (název služby, zpracovat ID, stavu, atd.) v počítači hello kde hello skript spustí. |
-| **Get-ServicesRunning** |Získáte seznam služeb, které jsou spuštěny v počítači hello kde hello skript spustí. |
-| **Get-ServiceRunning** |Zkontrolujte, zda specifické služby (podle názvu) je spuštěn v počítači hello, kde hello skript spustí. |
-| **Get-HDIServicesRunning** |Získejte seznam služby HDInsight na hello počítači spuštěny, kde hello skript spustí. |
-| **Get-HDIServiceRunning** |Zkontrolujte, zda specifické služby HDInsight (podle názvu) je spuštěn na hello počítači, kde hello skript spustí. |
-| **Get-HDIHadoopVersion** |Vrátí hello Hadoop nainstalovaná na počítači hello kde hello skript spustí. |
-| **Test IsHDIHeadNode** |Zkontrolujte, zda text hello kde hello skript spustí hlavního uzlu. |
-| **Test IsActiveHDIHeadNode** |Zkontrolujte, zda text hello kde hello skript spustí active hlavního uzlu. |
-| **Test IsHDIDataNode** |Zkontrolujte, zda text hello kde hello skript spustí datový uzel. |
-| **Upravit HDIConfigFile** |Upravte hello konfigurační soubory hive-site.xml, core-site.xml, hdfs-site.xml, mapred-site.xml nebo yarn-site.xml. |
+| **Zápis HDILog** |Zapište výstup z vlastní skript používané pro akci skriptu. |
+| **Get-Services** |Získáte seznam služeb, které jsou spuštěny na počítači, kde se skript spustí. |
+| **Get-Service** |S názvem konkrétní služby jako vstup, získat podrobné informace pro konkrétní službu (název služby, zpracovat ID, stavu, atd.) v počítači, kde se skript spustí. |
+| **Get-HDIServices** |Získejte seznam HDInsight služby spuštěné v počítači, kde se skript spustí. |
+| **Get-HDIService** |S konkrétním názvem služby HDInsight jako vstup, získat podrobné informace pro konkrétní službu (název služby, zpracovat ID, stavu, atd.) v počítači, kde se skript spustí. |
+| **Get-ServicesRunning** |Získání seznamu služeb, které jsou spuštěné v počítači, kde se skript spustí. |
+| **Get-ServiceRunning** |Zkontrolujte, zda specifické služby (podle názvu) je spuštěn v počítači, kde se skript spustí. |
+| **Get-HDIServicesRunning** |Získejte seznam HDInsight služby spuštěné v počítači, kde se skript spustí. |
+| **Get-HDIServiceRunning** |Zkontrolujte, zda specifické služby HDInsight (podle názvu) je spuštěn v počítači, kde se skript spustí. |
+| **Get-HDIHadoopVersion** |Získá verzi Hadoop nainstalovaná na počítači, kde se skript spustí. |
+| **Test IsHDIHeadNode** |Zkontrolujte, jestli je počítač, kde se skript spustí hlavního uzlu. |
+| **Test IsActiveHDIHeadNode** |Zkontrolujte, jestli je počítač, kde se skript spustí active hlavního uzlu. |
+| **Test IsHDIDataNode** |Zkontrolujte, jestli je počítač, kde se skript spustí datový uzel. |
+| **Upravit HDIConfigFile** |Upravte konfigurační soubory hive-site.xml, core-site.xml, hdfs-site.xml, mapred-site.xml nebo yarn-site.xml. |
 
 ## <a name="best-practices-for-script-development"></a>Osvědčené postupy pro vývoj skriptů
-Při vývoji vlastních skriptů pro cluster služby HDInsight, existuje několik osvědčených postupů tookeep nezapomeňte:
+Při vývoji vlastních skriptů pro cluster služby HDInsight, existuje několik doporučených postupech pro mějte na paměti:
 
-* Kontrola verze Hadoop hello
+* Kontrola verze Hadoop
 
-    Pouze HDInsight verze 3.1 (Hadoop 2.4) a vyšší podpora použití akce skriptu tooinstall vlastní součásti v clusteru. Ve vašem vlastního skriptu, je nutné použít hello **Get-HDIHadoopVersion** Pomocná metoda toocheck hello Hadoop verze než budete pokračovat v provádění další úloh ve skriptu hello.
-* Zadejte, že stabilní odkazy tooscript prostředky
+    Pouze HDInsight verze 3.1 (Hadoop 2.4) a vyšší podporu pomocí akce skriptu k instalaci vlastní součásti v clusteru. Ve vašem vlastního skriptu, je nutné použít **Get-HDIHadoopVersion** pomocnou metodu, zkontrolujte verzi Hadoop, než budete pokračovat v provádění další úloh ve skriptu.
+* Zadejte stabilní odkazy na zdroje skriptu
 
-    Uživatelé měli ujistit, všechny hello skripty a další artefaktů použít v hello přizpůsobení clusteru zůstaly dostupné v celém hello životnost hello clusteru a že hello verze těchto souborů se nezmění pro dobu trvání hello. Pokud hello obnovování uzlů v clusteru hello je vyžadováno, je nutné tyto prostředky. Hello osvědčeným postupem je toodownload a archivaci, které se nacházejí v účtu úložiště, který hello uživatelské ovládací prvky. To může být hello výchozí účet úložiště nebo některé z dalších účtů úložiště hello zadaný v době hello nasazení pro vlastní cluster.
-    V hello Spark a R přizpůsobit clusteru ukázky zadaný hello dokumentace, například jsme provedli místní kopie hello prostředků v rámci tohoto účtu úložiště: https://hdiconfigactions.blob.core.windows.net/.
-* Zajistěte, aby hello clusteru přizpůsobení skriptu idempotent
+    Uživatelé měli ujistit, všechny skripty a další artefaktů použít do vlastního nastavení clusteru s podporou zůstaly dostupné v celém dobu životnosti clusteru a že verze těchto souborů se po dobu trvání nemění. Pokud obnovování uzly v clusteru se vyžaduje, je nutné tyto prostředky. Osvědčeným postupem je ke stažení a archivaci vše v účtu úložiště, který uživatelské ovládací prvky. To může být výchozí účet úložiště nebo některé z dalších účtů úložiště, zadaný v době nasazení pro vlastní cluster.
+    V Spark a R přizpůsobit clusteru ukázky zadaný v dokumentaci, například jsme provedli místní kopii prostředky v rámci tohoto účtu úložiště: https://hdiconfigactions.blob.core.windows.net/.
+* Zajistěte, aby byl skript přizpůsobení clusteru idempotent
 
-    Měli očekávat, že je hello uzly clusteru HDInsight obnovit z Image během doby života hello clusteru. spuštění skriptu přizpůsobení clusteru Hello vždy, když je obnovit z Image clusteru. Tento skript musí být navrženou toobe idempotent v hello smyslu, že při obnovování, hello skriptu by měl zajistěte, aby že tento cluster hello se vrátí stejné přizpůsobené stavu, který byl právě po hello skript spustili pro hello první čas, kdy hello clusteru bylo původně toohello vytvořit. Například pokud vlastní skript nainstalovat aplikaci na D:\AppLocation na prvním spuštění, pak na každé následné spuštění při obnovování, by měl hello skriptu zkontrolujte, zda text hello aplikace existuje v hello D:\AppLocation umístění než budete pokračovat s jinými kroky ve skriptu hello.
-* Vlastní součásti nainstalovat na optimální umístění hello
+    Měli očekávat, že uzly clusteru služby HDInsight, je obnovit z Image po dobu životnosti clusteru. Spuštění skriptu přizpůsobení clusteru vždy, když je obnovit z Image clusteru. Tento skript musí být navržena pro uzpůsobeny idempotent v tom smyslu, že při obnovování, skript by měl zajištění, že clusteru je vráceny do stejného stavu, který byl právě po skript spustili poprvé původně vytvoření clusteru. Například pokud vlastní skript nainstalován při prvním spuštění aplikace v D:\AppLocation, pak na každé následné spuštění při obnovování, skript by měl zkontrolujte, zda aplikace existuje v umístění D:\AppLocation předtím, než budete pokračovat v dalších krocích skript.
+* Vlastní součásti nainstalovat na optimální umístění
 
-    Když se obnoví z Image uzly clusteru, hello C:\ prostředků disku a jednotku D:\ systému můžete naformátována, tím hello dojít ke ztrátě dat a aplikací nainstalovaných na těchto jednotkách. To může také dojít, pokud do virtuálních počítačů (VM) Azure uzlu, který je součástí clusteru hello přestane fungovat a bude nahrazen nový uzel. Součásti můžete nainstalovat na jednotku D:\ hello nebo v umístění C:\apps hello v clusteru hello. Všech jiných umístění na jednotce C:\ hello jsou vyhrazené. Zadejte hello umístění, kde jsou aplikace nebo knihovny toobe nainstalován ve skriptu přizpůsobení hello clusteru.
-* Ujistěte se, vysokou dostupnost clusteru architektury hello
+    Pokud uzly clusteru se obnoví z Image, jednotku C:\ prostředků a systémové jednotce D:\ můžete naformátována, což vede ke ztrátě dat a aplikací nainstalovaných na těchto jednotkách. To může také dojít, pokud do virtuálních počítačů (VM) Azure uzlu, který je součástí clusteru přestane fungovat a bude nahrazen nový uzel. Součásti můžete nainstalovat na jednotku D:\, nebo v umístění C:\apps v clusteru. Všech jiných umístění na jednotce C:\ jsou vyhrazené. Zadejte umístění, kde aplikace nebo knihovny se nainstalují ve skriptu přizpůsobení clusteru.
+* Zajištění vysoké dostupnosti architektury clusteru
 
-    HDInsight má aktivní – pasivní architekturu pro zajištění vysoké dostupnosti, v head jeden uzel, který je v aktivním režimu (kde hello HDInsight jsou spuštěny služby) a hello jiných hlavního uzlu v pohotovostním režimu (v HDInsight, které nejsou spuštěny služby). uzly Hello přepínače aktivní a pasivní režim, pokud jsou přerušení služby HDInsight. Pokud akce skriptu použité tooinstall služeb v obou head uzlů pro vysokou dostupnost, Poznámka že této hello HDInsight mechanismus převzetí služeb při selhání není možné tooautomatically selhání přes tyto služby uživatel nainstaloval. Proto uživatel nainstaloval služeb v HDInsight head uzlů, které jsou očekávané toobe vysokou dostupností musí mít vlastní mechanismus převzetí služeb při selhání, pokud v režimu aktivní pasivní nebo v režimu aktivní aktivní.
+    HDInsight má aktivní – pasivní architekturu pro vysokou dostupnost, ve kterém jednou z hlavního uzlu je v aktivním režimu (které jsou spuštěny služby HDInsight) a z hlavního uzlu je v pohotovostním režimu (v HDInsight, které nejsou spuštěny služby). Uzly přepínače aktivní a pasivní režim, pokud jsou přerušení služby HDInsight. Pokud akce skriptu se používá k instalaci služby na obou head uzlů pro vysokou dostupnost, Všimněte si, že není možné automaticky převzít tyto služby uživatel nainstaloval mechanismus převzetí služeb při selhání HDInsight. Proto uživatel nainstaloval služeb v HDInsight hlavních uzlech, které jsou očekávané k zajištění vysoké dostupnosti musí mít vlastní mechanismus převzetí služeb při selhání, pokud v režimu aktivní pasivní nebo v režimu aktivní aktivní.
 
-    Příkaz akce skriptu HDInsight spustí na obou hlavních uzlech při role hello hlavní uzel je zadán jako hodnota v hello *ClusterRoleCollection* parametr. Proto při návrhu vlastní skript, ujistěte se, že váš skript známa tento instalační program. Nespouštějte k potížím, kde hello stejné služby jsou instalaci a spuštění na oba uzly head hello a jejich skončili neslučitelných mezi sebou. Navíc mějte na paměti, že dojde ke ztrátě dat během obnovování, takže softwaru nainstalované prostřednictvím akce skriptu má toobe odolné toosuch události. Aplikace by měla být navrženou toowork s vysokou dostupností data, která se distribuuje do mnoha uzly. Všimněte si, že až 1/5 hello uzlů v clusteru lze obnovit z Image na hello stejnou dobu.
-* Konfigurace úložiště objektů Azure Blob toouse hello vlastní komponenty
+    Příkaz akce skriptu HDInsight spustí na obou hlavních uzlech při roli Hlavní uzel je zadán jako hodnota v *ClusterRoleCollection* parametr. Proto při návrhu vlastní skript, ujistěte se, že váš skript známa tento instalační program. Nespouštějte k potížím, kde jsou stejné služby instalaci a spuštění na obou hlavních uzlech a jejich skončili neslučitelných mezi sebou. Navíc mějte na paměti, že dojde ke ztrátě dat během obnovování, takže softwaru nainstalované prostřednictvím akce skriptu musí být odolné vůči tyto události. Aplikace by měl být pro práci s vysokou dostupností data, která se distribuuje do mnoha uzly. Všimněte si, že až 1/5 uzlů v clusteru lze obnovit z Image ve stejnou dobu.
+* Konfigurace vlastní součásti, které budou používat úložiště objektů Blob v Azure
 
-    Hello vlastní součásti, které instalujete na uzlech clusteru hello pravděpodobně výchozí konfigurace toouse Hadoop Distributed File System (HDFS) úložiště. Místo toho byste měli změnit hello konfigurace toouse úložiště objektů Blob v Azure. Na obnovení z Image clusteru systému souborů HDFS hello získá formátu a by ztratíte všechna data, která je uložena existuje. Použití úložiště objektů Blob v Azure místo toho zajišťuje, aby vaše data se uchovávají.
+    Vlastní komponenty, které instalujete na uzlech clusteru může mít výchozí konfiguraci, kterou chcete používat Hadoop Distributed File System (HDFS) úložiště. Měli byste změnit konfiguraci místo toho používat úložiště objektů Blob Azure. Na obnovení z Image clusteru systému souborů HDFS získá formátu a by ztratíte všechna data, která je uložena existuje. Použití úložiště objektů Blob v Azure místo toho zajišťuje, aby vaše data se uchovávají.
 
 ## <a name="common-usage-patterns"></a>Obecné vzory využití
-Tato část obsahuje pokyny k implementaci některé hello běžné využití vzory, které se mohou vyskytnout při zápisu vlastních skriptů.
+Tato část obsahuje pokyny k implementaci některých běžných vzorů využití, které se mohou vyskytnout při zápisu vlastních skriptů.
 
 ### <a name="configure-environment-variables"></a>Nakonfigurujte proměnné prostředí
-Často v vývoj akcí skriptů, si myslíte, že hello potřebovat tooset proměnné prostředí. Například je nejpravděpodobnější scénář při stahování binární z externího webu, nainstalujte na hello clusteru a přidejte hello umístění tam, kde je proměnná prostředí nainstalovaná tooyour 'PATH'. Hello následující fragment kódu ukazuje, jak tooset proměnné prostředí v hello vlastních skriptů.
+Často v vývoj akcí skriptů, si myslíte, že třeba nutnost nastavení proměnných prostředí. Například je nejpravděpodobnější scénář při stahování binární z externího webu, nainstalujte ji na clusteru a přidejte umístění, kde je instalována do proměnné prostředí vaší 'PATH'. Následující fragment kódu ukazuje, jak nastavení proměnných prostředí ve vlastních skriptů.
 
     Write-HDILog "Starting environment variable setting at: $(Get-Date)";
     [Environment]::SetEnvironmentVariable('MDS_RUNNER_CUSTOM_CLUSTER', 'true', 'Machine');
 
-Tento příkaz nastaví proměnnou prostředí hello **MDS_RUNNER_CUSTOM_CLUSTER** toohello hodnotu "true" a také nastaví hello oboru této proměnné toobe celého systému. V některých případech je důležité, aby proměnné prostředí se nastavují v příslušné oboru hello – počítače nebo uživatele. Odkazovat [sem] [ 1] Další informace o nastavení proměnných prostředí.
+Tento příkaz nastaví proměnnou prostředí **MDS_RUNNER_CUSTOM_CLUSTER** na hodnotu "true" a také nastaví rozsah této proměnné můžete být celého systému. V některých případech je důležité, aby proměnné prostředí se nastavují v příslušné oboru – počítače nebo uživatele. Odkazovat [sem] [ 1] Další informace o nastavení proměnných prostředí.
 
-### <a name="access-toolocations-where-hello-custom-scripts-are-stored"></a>Přístup k toolocations, kde jsou uloženy vlastní skripty hello
-Skripty použité toocustomize tooeither clusteru musí být v hello výchozí účet úložiště pro hello cluster nebo ve veřejném kontejneru jen pro čtení na jiný účet úložiště. Pokud skript odkazuje na prostředky, které se nacházejí jinde požadavky toobe ve veřejně přístupné (alespoň veřejné jen pro čtení). Pro instanci může tooaccess soubor a uložte ji pomocí příkazu hello SaveFile HDI.
+### <a name="access-to-locations-where-the-custom-scripts-are-stored"></a>Přístup k umístění, kde jsou uloženy vlastní skripty
+Skripty použít pro přizpůsobení cluster musí buď nacházet ve výchozí účet úložiště pro cluster nebo ve veřejném kontejneru jen pro čtení na jiný účet úložiště. Pokud skript odkazuje na prostředky, které se nacházejí jinde tyto musí být v veřejně přístupná (alespoň veřejné jen pro čtení). Můžete například chtít přístup k souboru a uložte ho pomocí příkazu SaveFile HDI.
 
     Save-HDIFile -SrcUri 'https://somestorageaccount.blob.core.windows.net/somecontainer/some-file.jar' -DestFile 'C:\apps\dist\hadoop-2.4.0.2.1.9.0-2196\share\hadoop\mapreduce\some-file.jar'
 
-V tomto příkladu můžete zajistit, aby byl tento kontejner hello 'somecontainer' v účtu úložiště 'somestorageaccount' veřejně přístupná. Skript hello, jinak hodnota vyhodí výjimku "Nebyl nalezen" a selhání.
+V tomto příkladu je nutné zajistit, že kontejner 'somecontainer' v účtu úložiště 'somestorageaccount' je veřejně přístupná. Skript, jinak hodnota vyhodí výjimku "Nebyl nalezen" a selhání.
 
-### <a name="pass-parameters-toohello-add-azurermhdinsightscriptaction-cmdlet"></a>Předávání parametrů toohello přidat AzureRmHDInsightScriptAction rutiny
-toopass více rutiny toohello AzureRmHDInsightScriptAction přidat parametry, musíte všechny parametry pro tooformat hello řetězec hodnotu toocontain hello skriptu. Například:
+### <a name="pass-parameters-to-the-add-azurermhdinsightscriptaction-cmdlet"></a>Předat parametry do rutiny přidat AzureRmHDInsightScriptAction
+Chcete-li předat do rutiny přidat AzureRmHDInsightScriptAction několik parametrů, je potřeba formátu řetězcovou hodnotu tak, aby obsahovala všechny parametry pro skript. Například:
 
     "-CertifcateUri wasb:///abc.pfx -CertificatePassword 123456 -InstallFolderName MyFolder"
 
@@ -212,7 +212,7 @@ nebo
 
 
 ### <a name="throw-exception-for-failed-cluster-deployment"></a>Throw – výjimka pro nasazení clusteru se nezdařilo
-Tooget přesně oznámení faktu hello, pokud přizpůsobení tohoto clusteru se nezdařilo podle očekávání, je důležité toothrow výjimku a vytváření clusteru hello nezdaří. Můžete například chcete tooprocess soubor, pokud existuje a zpracovat hello chyba případy, kdy hello soubor neexistuje. To by zajistěte, aby skript hello ukončí řádně a se správně označuje stav hello hello clusteru. Hello následující fragment kódu poskytuje příklad tooachieve toto:
+Pokud chcete získat přesně informováni o nebylo úspěšné skutečnost, že přizpůsobení clusteru podle očekávání, je nutné vyvolat výjimku a selhání vytvoření clusteru. Můžete například chtít zpracovat soubor, pokud existuje a zpracování chyby případu, kdy soubor neexistuje. To by zajistěte, aby skript ukončí řádně a stav clusteru správně je známý. Následující fragment kódu poskytuje příklad toho, jak to můžete udělat:
 
     If(Test-Path($SomePath)) {
         #Process file in some way
@@ -222,7 +222,7 @@ Tooget přesně oznámení faktu hello, pokud přizpůsobení tohoto clusteru se
     exit
     }
 
-V tento fragment kódu Pokud soubor hello neexistoval, by vedlo tooa stavu hello skriptu ve skutečnosti řádně ukončí po tisku hello chybová zpráva, kde hello clusteru dosáhne stavu spuštěno za předpokladu, že ji "úspěšně" dokončit proces přizpůsobení clusteru. Toobe přesně oznámení faktu hello, pokud přizpůsobení tohoto clusteru v podstatě se nezdařilo z důvodu chybějícího souboru očekávaným způsobem, je vhodnější toothrow výjimku a selhání hello clusteru přizpůsobení krok. tooachieve to hello následující fragment kódu ukázka místo toho musíte použít.
+V tento fragment kódu Pokud soubor neexistuje, by vedlo ke stavu, kde skript ve skutečnosti řádně ukončí po tisku chybovou zprávu, a cluster dosáhne stavu spuštěno za předpokladu, že ji "úspěšně" dokončit proces přizpůsobení clusteru. Pokud chcete lépe informováni o skutečnost, že cluster přizpůsobení v podstatě se nezdařilo z důvodu chybějícího souboru očekávaným způsobem, je vhodnější a vyvolána výjimka, selžou krok přizpůsobení clusteru. K dosažení tohoto cíle musíte použít následující fragment kódu ukázka.
 
     If(Test-Path($SomePath)) {
         #Process file in some way
@@ -234,27 +234,27 @@ V tento fragment kódu Pokud soubor hello neexistoval, by vedlo tooa stavu hello
 
 
 ## <a name="checklist-for-deploying-a-script-action"></a>Kontrolní seznam pro nasazení akce skriptu
-Zde jsou hello kroky, které jsme trvalo při přípravě toodeploy tyto skripty:
+Zde jsou kroky, které jsme trvalo při přípravě nasazení těchto skriptů:
 
-1. Uveďte hello soubory, které obsahují vlastní skripty hello na místě, které je přístupné uzly clusteru hello během nasazení. To může být libovolná z výchozí hello nebo další účty úložiště zadaný v době hello nasazení clusteru nebo jiných veřejně přístupná úložiště kontejneru.
-2. Přidat kontroly do skriptů toomake jistotu, že spouštění idempotently, tak, aby hello skriptu lze provést několikrát u hello stejného uzlu.
-3. Použití hello **Write-Output** tooSTDOUT tooprint rutiny prostředí Azure PowerShell, jakož i STDERR. Nepoužívejte **Write-Host**.
-4. Použijte složku dočasného souboru, jako je například $env: dočasné, tookeep hello stažený soubor používá hello skripty a pak vyčištění je po mají spouštět skripty.
-5. Nainstalujte jenom na D:\ nebo C:\apps vlastní software. Jiných umístění na jednotce C: hello nepoužívejte, protože se jedná o vyhrazené. Všimněte si, že instalaci souborů na jednotce C: hello mimo složku C:\apps hello může vést instalace selhání během reimages hello uzlu.
-6. V případě hello, nastavení na úrovni operačního systému nebo Hadoop služby konfigurační soubory se změnily můžete služby HDInsight toorestart tak, aby se vyzvedávat všechna nastavení, úrovni operačního systému, jako je například nastavit ve skriptech hello proměnné prostředí hello.
+1. Uveďte soubory, které obsahují vlastní skripty na místě, která je přístupná na uzlech clusteru během nasazení. To může být libovolná z výchozí nebo další účty úložiště zadaný v době nasazení clusteru nebo jiných veřejně přístupná úložiště kontejneru.
+2. Přidejte kontroly na skripty a ujistěte se, že spouštění idempotently, tak, aby skript můžete spustit několikrát na stejném uzlu.
+3. Použití **Write-Output** rutiny Azure Powershellu tisknout do STDOUT a také STDERR. Nepoužívejte **Write-Host**.
+4. Použijte složku dočasného souboru, jako je například $env: dočasné zachovat stažený soubor používá skripty a vyčistit je po mají spouštět skripty.
+5. Nainstalujte jenom na D:\ nebo C:\apps vlastní software. Jiných umístění na jednotce C: není vhodné používat, protože se jedná o vyhrazené. Všimněte si, že instalaci souborů na jednotce C: mimo složku C:\apps může vést instalace selhání během reimages uzlu.
+6. V případě, že nastavení na úrovni operačního systému nebo Hadoop služby konfigurační soubory se změnily, můžete tak, aby se vyzvedávat všechna nastavení, úrovni operačního systému, jako je například proměnné prostředí, které jsou nastavené ve skriptech restartovat služby HDInsight.
 
 ## <a name="debug-custom-scripts"></a>Ladění vlastních skriptů
-protokoly chyb skriptu Hello ukládají spolu s další výstupu v hello výchozí úložiště účet, který jste zadali pro hello clusteru při jeho vytváření. Hello protokoly se ukládají v tabulce s názvem hello *u < \cluster-name-fragment >< \time-stamp > setuplog*. Toto jsou agregovaná protokoly, které mají záznamy ze všech uzlů hello (hlavního uzlu a pracovní uzly) na které hello skript se spustí v clusteru hello.
-Snadný způsob toocheck hello protokoly je toouse nástroje HDInsight pro Visual Studio. Instalace nástrojů hello, najdete v části [začněte používat nástroje Visual Studio Hadoop pro HDInsight](hdinsight-hadoop-visual-studio-tools-get-started.md#install-data-lake-tools-for-visual-studio)
+Spolu s další výstupu v výchozí účet úložiště, který jste zadali pro clusteru při jeho vytváření jsou uložené v souborech protokolů chyb skriptu. Protokoly jsou uložené v tabulce s názvem *u < \cluster-name-fragment >< \time-stamp > setuplog*. Toto jsou agregovaná protokoly, které mají záznamy ze všech uzlů (hlavního uzlu a pracovní uzly), na kterých bude skript spuštěn v clusteru.
+Snadný způsob, jak v protokolech je používat nástroje HDInsight pro Visual Studio. Instalace nástrojů, najdete v části [začněte používat nástroje Visual Studio Hadoop pro HDInsight](hdinsight-hadoop-visual-studio-tools-get-started.md#install-data-lake-tools-for-visual-studio)
 
-**toocheck hello protokolu pomocí sady Visual Studio**
+**Zkontrolujte protokol pomocí sady Visual Studio**
 
 1. Otevřete sadu Visual Studio.
 2. Klikněte na tlačítko **zobrazení**a potom klikněte na **Průzkumníka serveru**.
-3. Klikněte pravým tlačítkem na "Azure", klikněte na tlačítko připojit příliš**předplatná Microsoft Azure**a pak zadejte svoje přihlašovací údaje.
-4. Rozbalte položku **úložiště**, rozbalte účet úložiště Azure hello používá jako výchozí systém souborů hello, rozbalte položku **tabulky**a potom dvakrát klikněte na název tabulky hello.
+3. Klikněte pravým tlačítkem na "Azure", klikněte na tlačítko Připojit k **předplatná Microsoft Azure**a pak zadejte svoje přihlašovací údaje.
+4. Rozbalte položku **úložiště**, rozbalte účet úložiště Azure používat jako výchozí systém souborů, rozbalte položku **tabulky**a potom dvakrát klikněte na název tabulky.
 
-Můžete také vzdáleného do toosee uzly clusteru hello STDOUT a STDERR pro vlastní skripty. Hello protokoly na každém uzlu jsou konkrétním uzlu pouze toothat a se protokolují do **C:\HDInsightLogs\DeploymentAgent.log**. Tyto soubory protokolu zaznamenejte všechny výstupy z hello vlastních skriptů. Fragment kódu příklad protokolu pro akci skriptu Spark vypadá takto:
+Můžete také vzdáleného do uzlů clusteru zobrazíte STDOUT a STDERR pro vlastní skripty. Protokoly na každém uzlu jsou určené jenom pro tento uzel a jsou zaznamenány do **C:\HDInsightLogs\DeploymentAgent.log**. Tyto soubory protokolu zaznamenejte všechny výstupy z vlastních skriptů. Fragment kódu příklad protokolu pro akci skriptu Spark vypadá takto:
 
     Microsoft.Hadoop.Deployment.Engine.CustomPowershellScriptCommand; Details : BEGIN: Invoking powershell script https://configactions.blob.core.windows.net/sparkconfigactions/spark-installer.ps1.;
     Version : 2.1.0.0;
@@ -294,9 +294,9 @@ Můžete také vzdáleného do toosee uzly clusteru hello STDOUT a STDERR pro vl
     Exception : ;
 
 
-Tento protokol je jasné, že akce skriptu Spark hello provedl na hello virtuálního počítače s názvem HEADNODE0 a že žádné výjimky došlo k během provádění hello.
+Tento protokol je jasné, že akce skriptu Spark byla provedena ve virtuálním počítači s názvem HEADNODE0 a že žádné výjimky došlo k během provádění.
 
-V hello události, k níž dojde k chybě provádění je výstup hello popisující ho také obsažený v tomto souboru protokolu. Hello informací uvedených v těchto protokolech by měl být užitečné při ladění skriptu problémy, které by mohlo dojít.
+V případě, že dojde k chybě provádění, výstup popisující je také součástí tohoto souboru protokolu. Informací uvedených v těchto protokolech by měl být užitečné při ladění skriptu problémy, které by mohlo dojít.
 
 ## <a name="see-also"></a>Viz také
 * [Přizpůsobení clusterů HDInsight pomocí akce skriptu][hdinsight-cluster-customize]

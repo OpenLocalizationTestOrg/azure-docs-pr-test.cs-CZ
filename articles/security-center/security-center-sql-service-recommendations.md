@@ -1,5 +1,5 @@
 ---
-title: "aaaProtecting Azure SQL služby a data v Azure Security Center | Microsoft Docs"
+title: "Ochrana služby Azure SQL a data v Azure Security Center | Microsoft Docs"
 description: "Tento dokument adresy doporučení v Azure Security Center, které vám pomůžou chránit vaše data a služba Azure SQL a zůstat souladu se zásadami zabezpečení."
 services: security-center
 documentationcenter: na
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2017
 ms.author: terrylan
-ms.openlocfilehash: 75d782d3c2418f9645139e4cd6ecb7765c488f91
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0c3a11e9a86767641533b16de1b96b4c59bfdf51
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="protecting-azure-sql-service-and-data-in-azure-security-center"></a>Ochrana služby Azure SQL a data v Azure Security Center
-Azure Security Center analyzuje stav zabezpečení hello vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se doporučení, která vás provede procesem hello konfigurace hello potřebné ovládací prvky.  Doporučení se týkají tooAzure typy prostředků: virtuální počítače (VM), sítě, SQL a datům a aplikacím.
+Azure Security Center analyzuje stav zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se doporučení, která vás provede procesem konfigurace potřebných kontrol.  Doporučení platí pro typy prostředků Azure: virtuální počítače (VM), sítě, SQL a datům a aplikacím.
 
-Tento článek se zaměřuje na doporučení, které se vztahují tooAzure SQL služby a data. Doporučení center kolem povolení auditování pro servery Azure SQL a databáze, povolení šifrování u databází SQL a povolení šifrování vašeho účtu úložiště Azure.  Použití hello tabulce jako referenční toohelp porozumíte hello k dispozici SQL služby a data doporučení a co každé z nich dělá, pokud ji použijete.
+Tento článek se zaměřuje na doporučení, která se týkají služby Azure SQL a data. Doporučení center kolem povolení auditování pro servery Azure SQL a databáze, povolení šifrování u databází SQL a povolení šifrování vašeho účtu úložiště Azure.  Použijte v následující tabulce vám pomohou pochopit dostupné doporučení služby a data SQL a co každé z nich dělá Pokud použijete ho jako odkaz.
 
 ## <a name="available-sql-service-and-data-recommendations"></a>K dispozici doporučení služby a dat SQL
 | Doporučení | Popis |
@@ -33,14 +33,14 @@ Tento článek se zaměřuje na doporučení, které se vztahují tooAzure SQL s
 | [Povolit transparentní šifrování dat v databázích SQL](security-center-enable-transparent-data-encryption.md) |Doporučuje se, že povolíte šifrování pro databáze SQL (pouze služby Azure SQL). |
 
 ## <a name="see-also"></a>Viz také
-toolearn Další informace o doporučení, které se vztahují tooother typy prostředků Azure, najdete v části hello následující:
+Další informace o doporučení, které se vztahují na jiné typy prostředků Azure, naleznete v následujících tématech:
 
 * [Ochrana virtuálních počítačů v Azure Security Center](security-center-virtual-machine-recommendations.md)
 * [Ochrana aplikací v Azure Security Center](security-center-application-recommendations.md)
 * [Ochrana sítě v Azure Security Center](security-center-network-recommendations.md)
 
-toolearn Další informace o Security Center, najdete v části hello následující:
+Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-* [Nastavení zásad zabezpečení v Azure Security Center](security-center-policies.md) – zjistěte, jak tooconfigure zásady zabezpečení pro skupiny prostředků a předplatná Azure.
-* [Správa a zda odpovídá toosecurity výstrahy v Azure Security Center](security-center-managing-and-responding-alerts.md) – zjistěte, jak toomanage a reakce toosecurity výstrahy.
-* [Nejčastější dotazy k Azure Security Center](security-center-faq.md) – přečtěte si nejčastější dotazy o použití služby hello.
+* [Nastavení zásad zabezpečení v Azure Security Center](security-center-policies.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
+* [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
+* [Nejčastější dotazy k Azure Security Center](security-center-faq.md) – Přečtěte si nejčastější dotazy k používání této služby.

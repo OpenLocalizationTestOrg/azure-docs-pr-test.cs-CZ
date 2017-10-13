@@ -1,65 +1,83 @@
 ---
-Title: aaa "Azure Analysis Services kurz lekce 12: analyzovat v aplikaci Excel | Microsoft Docs"Popis: Popisuje, jak toouse analyzovat v aplikaci Excel v hello Azure Analysis Services kurz projektu. služby: documentationcenter služby analysis services: '' Autor: minewiskan správce: erikre editor: '' značky: "
-
-MS.AssetID: ms.service: ms.devlang služby analysis services: NA ms.topic: get-started-article ms.tgt_pltfrm: NA ms.workload: na ms.date: 05/26 nebo 2017 ms.author: owend
+title: "Kurz služby Azure Analysis Services – Lekce 12: Analýza v aplikaci Excel | Dokumentace Microsoftu"
+description: "Popisuje, jak používat funkci Analýza v aplikaci Excel v projektu Kurz služby Azure Analysis Services."
+services: analysis-services
+documentationcenter: 
+author: Minewiskan
+manager: erikre
+editor: 
+tags: 
+ms.assetid: 
+ms.service: analysis-services
+ms.devlang: NA
+ms.topic: get-started-article
+ms.tgt_pltfrm: NA
+ms.workload: na
+ms.date: 09/20/2017
+ms.author: owend
+ms.openlocfilehash: e257862a88d39b96360703117f544c43e82b0e3d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="lesson-12-analyze-in-excel"></a>Lekce 12: Analýza v aplikaci Excel
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-V této lekci použijete hello analyzovat v aplikaci Excel funkce tooopen Microsoft Excel, automaticky vytvořit pracovní prostor připojení toohello modelu a automaticky přidat do kontingenční tabulky toohello listu. Hello analyzovat v aplikaci Excel funkci je určen tooprovide rychlý a snadný způsob tootest hello účinnosti modelu návrh předchozí toodeploying modelu. V této lekci nebudete provádět žádné analýzy dat. účelem této lekci Hello je toofamiliarize, vytvářet hello model, pomocí nástrojů hello můžete použít tootest návrhu modelu.   
+V této lekci pomocí funkce Analýza v aplikaci Excel otevřete aplikaci Microsoft Excel, automaticky vytvoříte připojení k pracovnímu prostoru modelu a automaticky do listu přidáte kontingenční tabulku. Smyslem funkce Analýza v aplikaci Excel je poskytnout rychlý a snadný způsob, jak otestovat efektivnost návrhu modelu před jeho nasazením. V této lekci nebudete provádět žádné analýzy dat. Účelem této lekce je seznámit vás jako autora modelu s nástroji, pomocí kterých můžete otestovat návrh modelu.   
   
-toocomplete této lekci Excel musí být nainstalován na hello stejného počítače jako rozšíření SSDT.
+K dokončení této lekce je nutné, aby byla aplikace Excel nainstalována na stejném počítači jako SSDT.
   
-Odhadovaný čas toocomplete této lekci: **pět minut**  
+Odhadovaný čas dokončení této lekce: **5 minut**  
   
 ## <a name="prerequisites"></a>Požadavky  
-Toto téma je součástí kurzu tabelárního modelování, který by se měl dokončit v daném pořadí. Před provedením úlohy hello v této lekci, by měl mít dokončit předchozí lekci hello: [lekce 11: vytvoření role](../tutorials/aas-lesson-11-create-roles.md).  
+Toto téma je součástí kurzu tabelárního modelování, který by se měl dokončit v daném pořadí. Před provedením úkolů v této lekci byste měli mít dokončenou předchozí lekci: [Lekce 11: Vytvoření rolí](../tutorials/aas-lesson-11-create-roles.md).  
   
-## <a name="browse-using-hello-default-and-internet-sales-perspectives"></a>Procházet pomocí perspektivy výchozí a Internetu prodejní hello  
-V těchto první úloh, můžete procházet váš model pomocí obou hello výchozí perspektivu, která obsahuje všechny objekty modelu, a také pomocí perspektivy internetového prodeje hello jste dříve. Hello perspektivy internetového prodeje vyloučí hello zákazníka tabulky objektu.  
+## <a name="browse-using-the-default-and-internet-sales-perspectives"></a>Procházení s využitím výchozí perspektivy a perspektivy Internet Sales  
+V rámci těchto prvních úkolů budete procházet model s využitím výchozí perspektivy, která zahrnuje všechny objekty modelu, a také s využitím perspektivy Internet Sales, kterou jste vytvořili dříve. Perspektiva Internet Sales nezahrnuje objekt tabulky se zákazníky.  
   
-#### <a name="toobrowse-by-using-hello-default-perspective"></a>toobrowse pomocí hello výchozí perspektivu  
+#### <a name="to-browse-by-using-the-default-perspective"></a>Procházení s využitím výchozí perspektivy  
   
-1.  Klikněte na tlačítko hello **modelu** nabídky > **analyzovat v aplikaci Excel**.  
+1.  Klikněte na nabídku **Model** > **Analyzovat v aplikaci Excel**.  
   
-2.  V hello **analyzovat v aplikaci Excel** dialogové okno, klikněte na tlačítko **OK**.  
+2.  V dialogovém okně **Analýza v aplikaci Excel** klikněte na **OK**.  
   
-    Otevře se aplikace Excel s novým sešitem. Připojení ke zdroji dat je vytvořen pomocí hello aktuální uživatelský účet a hello výchozí perspektivu je použité toodefine zobrazit pole. Kontingenční tabulky se automaticky přidá toohello listu.  
+    Otevře se aplikace Excel s novým sešitem. Vytvoří se připojení ke zdroji dat pomocí aktuálního uživatelského účtu a k definování zobrazitelných polí se použije výchozí perspektiva. Do listu se automaticky přidá kontingenční tabulka.  
   
-3.  V aplikaci Excel v hello **seznamu polí kontingenční tabulky**, Všimněte si hello **DimDate** a **FactInternetSales** zobrazí skupiny měr. Hello **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**, **DimProductCategory**, **DimProductSubcategory**, a **FactInternetSales** tabulky s jejich příslušné sloupce se také zobrazí.  
+3.  V aplikaci Excel si všimněte, že v části **Seznam polí kontingenční tabulky** se zobrazí skupiny měr **DimDate** a **FactInternetSales**. Zobrazí se také tabulky **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**, **DimProductCategory**, **DimProductSubcategory** a **FactInternetSales** s příslušnými sloupci.  
   
-4.  Zavřete bez uložení hello sešitu aplikace Excel.  
+4.  Zavřete aplikaci Excel bez ukládání sešitu.  
   
-#### <a name="toobrowse-by-using-hello-internet-sales-perspective"></a>toobrowse pomocí perspektivy internetového prodeje hello  
+#### <a name="to-browse-by-using-the-internet-sales-perspective"></a>Procházení s využitím perspektivy Internet Sales  
   
-1.  Klikněte na tlačítko hello **modelu** nabídce a pak klikněte na tlačítko **analyzovat v aplikaci Excel**.  
+1.  Klikněte na nabídku **Model** a potom na **Analyzovat v aplikaci Excel**.  
   
-2.  V hello **analyzovat v aplikaci Excel** dialogové okno, ponechejte **aktuálního uživatele systému Windows** vybraná, pak v hello **perspektivy** listbox rozevíracího seznamu, vyberte **Internet prodeje** a potom klikněte na **OK**. 
+2.  V dialogovém okně **Analýza v aplikaci Excel** ponechte vybranou možnost **Aktuální uživatel systému Windows**, v rozevíracím seznamu **Perspektiva** vyberte **Internet Sales** a potom klikněte na **OK**. 
     
     ![aas-lesson12-perspective](../tutorials/media/aas-lesson12-perspective.png)
     
-3.  V aplikaci Excel v **pole kontingenční tabulky**, Všimněte si hello DimCustomer tabulky jsou vyloučeny ze seznamu polí hello.  
+3.  V aplikaci Excel si všimněte, že v části **Pole kontingenční tabulky** není tabulka DimCustomer zahrnuta do seznamu polí.  
     
     ![aas-lesson12-fields](../tutorials/media/aas-lesson12-fields.png)
     
-4.  Zavřete bez uložení hello sešitu aplikace Excel.  
+4.  Zavřete aplikaci Excel bez ukládání sešitu.  
   
 ## <a name="browse-by-using-roles"></a>Procházení s využitím rolí  
-Role jsou důležitou součástí každého tabelárního modelu. Bez alespoň jednu roli uživatele toowhich přidány jako členové, uživatelé nemůže získat přístup a analýza dat pomocí modelu. Hello analyzovat v aplikaci Excel funkce poskytuje způsob, jak můžete tootest hello rolí, které jste definovali.  
+Role jsou důležitou součástí každého tabelárního modelu. Pokud nemáte alespoň jednu roli, do které se uživatelé přidávají jako členové, pak uživatelé nebudou mít přístup k datům a nebudou je moci analyzovat pomocí vašeho modelu. Funkce Analýza v aplikaci Excel nabízí způsob, jak otestovat role, které jste definovali.  
   
-#### <a name="toobrowse-by-using-hello-sales-manager-user-role"></a>toobrowse pomocí role uživatele Správce prodejních hello  
+#### <a name="to-browse-by-using-the-sales-manager-user-role"></a>Procházení s využitím role uživatele Manažer prodeje  
   
-1.  V sadě SSDT, klikněte na tlačítko hello **modelu** nabídce a pak klikněte na tlačítko **analyzovat v aplikaci Excel**.  
+1.  V SSDT klikněte na nabídku **Model** a potom na **Analyzovat v aplikaci Excel**.  
   
-2.  V **zadejte hello uživatelské jméno nebo roli toouse tooconnect toohello modelu**, vyberte **Role**a poté v hello listbox rozevíracího seznamu, vyberte **vedoucí prodeje**a pak klikněte na tlačítko  **OK**.  
+2.  V části **Zadejte uživatelské jméno nebo roli pro připojení k modelu** vyberte **Role**, v rozevíracím seznamu vyberte **Manažer prodeje** a potom klikněte na **OK**.  
   
-    Otevře se aplikace Excel s novým sešitem. Automaticky se vytvoří kontingenční tabulka. Hello seznamu polí kontingenční tabulka obsahuje všechny hello data dostupná pole v novém modelu.  
+    Otevře se aplikace Excel s novým sešitem. Automaticky se vytvoří kontingenční tabulka. Seznam polí kontingenční tabulky zahrnuje všechna datová pole, která jsou v novém modelu k dispozici.  
       
-3.  Zavřete bez uložení hello sešitu aplikace Excel.  
+3.  Zavřete aplikaci Excel bez ukládání sešitu.  
   
 ## <a name="whats-next"></a>Co dále?
-Další lekce přejděte toohello: [lekce 13: nasazení](../tutorials/aas-lesson-13-deploy.md).
+Přejděte na další lekci: [Lekce 13: Nasazení](../tutorials/aas-lesson-13-deploy.md).
 
   
   

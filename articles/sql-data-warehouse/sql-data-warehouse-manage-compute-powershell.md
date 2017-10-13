@@ -1,6 +1,6 @@
 ---
-title: "aaaManage výpočetní výkon v Azure SQL Data Warehouse (PowerShell) | Microsoft Docs"
-description: "Prostředí PowerShell úlohy toomanage výpočetní výkon. Škálovat výpočetní prostředky úpravou Dwu. Nebo, pozastavení a obnovení toosave náklady na výpočetní prostředky."
+title: "Spravovat výpočetní výkon v Azure SQL Data Warehouse (PowerShell) | Microsoft Docs"
+description: "Úkoly prostředí PowerShell pro správu výpočetního výkonu. Škálovat výpočetní prostředky úpravou Dwu. Nebo, pozastavení a obnovení výpočetní prostředky, abyste ušetřili náklady."
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
-ms.openlocfilehash: 8b379d4cf89570649767f6896d2c630d4f1111d7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6a185d96447c2e1b0b463439dd062081e783da5f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-powershell"></a>Spravovat výpočetní výkon v Azure SQL Data Warehouse (PowerShell)
 > [!div class="op_single_selector"]
@@ -32,17 +32,17 @@ ms.lasthandoff: 10/06/2017
 >
 
 ## <a name="before-you-begin"></a>Než začnete
-### <a name="install-hello-latest-version-of-azure-powershell"></a>Nainstalujte nejnovější verzi prostředí Azure PowerShell hello
+### <a name="install-the-latest-version-of-azure-powershell"></a>Nainstalujte nejnovější verzi prostředí Azure PowerShell
 > [!NOTE]
-> toouse prostředí Azure PowerShell s SQL Data Warehouse, je nutné prostředí Azure PowerShell verze 1.0.3 nebo novější.  tooverify vaší aktuální verzí spusťte příkaz hello **Get-Module - ListAvailable-Name Azure**. Můžete nainstalovat nejnovější verzi hello [instalačního programu webové platformy Microsoft][Microsoft Web Platform Installer].  Další informace najdete v tématu [jak tooinstall a konfigurace prostředí Azure PowerShell][How tooinstall and configure Azure PowerShell].
+> Pomocí prostředí Azure PowerShell s SQL Data Warehouse, je nutné prostředí Azure PowerShell verze 1.0.3 nebo novější.  K ověření vaší aktuální verzí, spusťte příkaz **Get-Module - ListAvailable-Name Azure**. Můžete nainstalovat nejnovější verzi z [instalačního programu webové platformy Microsoft][Microsoft Web Platform Installer].  Další informace najdete v tématu [postup instalace a konfigurace prostředí Azure PowerShell][How to install and configure Azure PowerShell].
 >
 > 
 
 ### <a name="get-started-with-azure-powershell-cmdlets"></a>Začínáme s rutinami prostředí Azure PowerShell
-tooget spuštění:
+Abyste mohli začít:
 
 1. Otevřete prostředí Azure PowerShell.
-2. Na příkazovém řádku prostředí PowerShell text hello spusťte tyto příkazy toosign v toohello Azure Resource Manager a vybrat své předplatné.
+2. Do příkazového řádku prostředí PowerShell spusťte tyto příkazy a přihlaste se k Azure Resource Manager a vybrat své předplatné.
 
     ```PowerShell
     Login-AzureRmAccount
@@ -56,7 +56,7 @@ tooget spuštění:
 ## <a name="scale-compute-power"></a>Škálování výpočetní výkon
 [!INCLUDE [SQL Data Warehouse scale DWUs description](../../includes/sql-data-warehouse-scale-dwus-description.md)]
 
-hello toochange Dwu, použijte hello [Set-AzureRmSqlDatabase] [ Set-AzureRmSqlDatabase] rutiny prostředí PowerShell. Hello následující příklad ilustruje hello služby úrovně cíle tooDW1000 pro databázi hello MySQLDW, který je hostován na serveru MyServer.
+Chcete-li změnit jednotkami Dwu, použijte [Set-AzureRmSqlDatabase] [ Set-AzureRmSqlDatabase] rutiny prostředí PowerShell. Následující příklad nastaví DW1000 cíle na úrovni služby pro databázi MySQLDW, který je hostován na serveru MyServer.
 
 ```Powershell
 Set-AzureRmSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000"
@@ -67,10 +67,10 @@ Set-AzureRmSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -Requested
 ## <a name="pause-compute"></a>Pozastavit výpočetní
 [!INCLUDE [SQL Data Warehouse pause description](../../includes/sql-data-warehouse-pause-description.md)]
 
-toopause databázi, použijte hello [Suspend-AzureRmSqlDatabase] [ Suspend-AzureRmSqlDatabase] rutiny. Hello následující příklad pozastaví databáze s názvem Database02 hostovaná na serveru s názvem Server01. Hello server je ve skupině prostředků Azure s názvem ResourceGroup1.
+Chcete-li pozastavit databázi, použijte [Suspend-AzureRmSqlDatabase] [ Suspend-AzureRmSqlDatabase] rutiny. Následující příklad pozastaví databáze s názvem Database02 hostovaná na serveru s názvem Server01. Server je ve skupině prostředků Azure s názvem ResourceGroup1.
 
 > [!NOTE]
-> Všimněte si, že pokud je váš server foo.database.windows.net, použijte "foo" jak hello - ServerName hello rutiny prostředí PowerShell.
+> Všimněte si, že pokud je váš server foo.database.windows.net, použijte "foo" jako parametr ServerName - rutin prostředí PowerShell.
 >
 > 
 
@@ -78,7 +78,7 @@ toopause databázi, použijte hello [Suspend-AzureRmSqlDatabase] [ Suspend-Azure
 Suspend-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" `
 –ServerName "Server01" –DatabaseName "Database02"
 ```
-Variace, načte tento další příklad hello databáze do hello $database objektu. Je následně prostřednictvím kanálu předá objekt hello příliš[Suspend-AzureRmSqlDatabase][Suspend-AzureRmSqlDatabase]. výsledky Hello jsou uloženy v objektu resultDatabase hello. poslední příkaz Hello zobrazuje výsledky hello.
+Variace, načte tento další příklad databázi do $database objektu. Je následně prostřednictvím kanálu předá objekt, který má [Suspend-AzureRmSqlDatabase][Suspend-AzureRmSqlDatabase]. Výsledky jsou uloženy v resultDatabase objektu. Poslední příkaz zobrazí výsledky.
 
 ```Powershell
 $database = Get-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" `
@@ -92,14 +92,14 @@ $resultDatabase
 ## <a name="resume-compute"></a>Obnovit výpočetní
 [!INCLUDE [SQL Data Warehouse resume description](../../includes/sql-data-warehouse-resume-description.md)]
 
-toostart databázi, použijte hello [Resume-AzureRmSqlDatabase] [ Resume-AzureRmSqlDatabase] rutiny. Hello následující příklad spustí databáze s názvem Database02 hostovaná na serveru s názvem Server01. Hello server je ve skupině prostředků Azure s názvem ResourceGroup1.
+Chcete-li spustit databázi, použijte [Resume-AzureRmSqlDatabase] [ Resume-AzureRmSqlDatabase] rutiny. Následující příklad spustí databáze s názvem Database02 hostovaná na serveru s názvem Server01. Server je ve skupině prostředků Azure s názvem ResourceGroup1.
 
 ```Powershell
 Resume-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" `
 –ServerName "Server01" -DatabaseName "Database02"
 ```
 
-Variace, načte tento další příklad hello databáze do hello $database objektu. Je následně prostřednictvím kanálu předá objekt hello příliš[Resume-AzureRmSqlDatabase] [ Resume-AzureRmSqlDatabase] a ukládá výsledky hello $resultDatabase. poslední příkaz Hello zobrazuje výsledky hello.
+Variace, načte tento další příklad databázi do $database objektu. Je následně prostřednictvím kanálu předá objekt, který má [Resume-AzureRmSqlDatabase] [ Resume-AzureRmSqlDatabase] a ukládá výsledky do $resultDatabase. Poslední příkaz zobrazí výsledky.
 
 ```Powershell
 $database = Get-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" `
@@ -112,7 +112,7 @@ $resultDatabase
 
 ## <a name="check-database-state"></a>Zkontrolujte stav databáze
 
-Jak je znázorněno v hello výše příklady, můžete použít jednu [Get-AzureRmSqlDatabase] [ Get-AzureRmSqlDatabase] rutiny tooget informace o databázi, a tím kontrola hello stav, ale také toouse jako argument. 
+Jak je znázorněno v předchozích příkladech, můžete použít jednu [Get-AzureRmSqlDatabase] [ Get-AzureRmSqlDatabase] rutiny získat informace o databázi, a tím Kontrola stavu, ale také použít jako argument. 
 
 ```powershell
 Get-AzureRmSqlDatabase [-ResourceGroupName] <String> [-ServerName] <String> [[-DatabaseName] <String>]
@@ -142,7 +142,7 @@ ElasticPoolName               :
 EarliestRestoreDate           : 1/1/0001 12:00:00 AM
 ```
 
-Kde pak zkontrolujte toosee hello *stav* hello databáze. V takovém případě se zobrazí, že tato databáze je online. 
+Kde je můžete pak zkontrolovat *stav* databáze. V takovém případě se zobrazí, že tato databáze je online. 
 
 Když spustíte tento příkaz, měli byste obdržet hodnotou stavu buď Online, pozastavení, obnovování, škálování a pozastaveno.
 
@@ -156,7 +156,7 @@ Další úlohy správy, najdete v části [přehled správy][Management overview
 <!--Article references-->
 [Service capacity limits]: ./sql-data-warehouse-service-capacity-limits.md
 [Management overview]: ./sql-data-warehouse-overview-manage.md
-[How tooinstall and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
+[How to install and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
 [Manage compute overview]: ./sql-data-warehouse-manage-compute-overview.md
 
 <!--MSDN references-->

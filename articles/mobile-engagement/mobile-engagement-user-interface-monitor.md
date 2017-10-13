@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure Mobile Engagement uživatelské rozhraní – monitorování"
-description: "Zjistěte, jak toomonitor v reálném čase data o vaší aplikaci pomocí Azure Mobile Engagement"
+title: "Azure Mobile Engagement uživatelské rozhraní – monitorování"
+description: "Naučte se monitorovat data v reálném čase o vaší aplikaci pomocí Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,45 +14,45 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 3a581e4166bc88e6ee7aa784d4047c94533685b5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5f8a02e35db93585e0fe46d77b3ad18b94c99597
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toomonitor-real-time-data-about-your-application"></a>Jak toomonitor v reálném čase dat o aplikaci
-Tento článek popisuje hello **monitorování** kartě hello **Mobile Engagement** portálu. Použít hello **Mobile Engagement** portálu toomonitor a spravovat své mobilní aplikace. Všimněte si, že toostart hello portálu musíte nejprve toocreate **Azure Mobile Engagement** účtu. 
+# <a name="how-to-monitor-real-time-data-about-your-application"></a>Postup sledování v reálném čase dat o aplikaci
+Tento článek popisuje **monitorování** kartě **Mobile Engagement** portálu. Můžete použít **Mobile Engagement** portálu ke sledování a správě mobilních aplikací. Všimněte si, že pokud chcete začít používat portál musíte nejprve vytvořit **Azure Mobile Engagement** účtu. 
 
-Hello monitorování části hello uživatelského rozhraní poskytuje informace pro analýzu v reálném čase a umožňuje vám tooset výstrahy, když se dosáhne mezní hodnoty pro většinu hello stejné informace, které jsou k dispozici v minulosti v hello [ANALYTICS](mobile-engagement-user-interface-analytics.md) část Hello uživatelského rozhraní. V tématu hello **Glosář** část v hello [koncepty](http://go.microsoft.com/fwlink/?LinkId=525555) tématu definice termínů a zkratek v analýzy a monitorování (například následující hello: aktivního uživatele, nový uživatel uchovávají uživatele, relace, Uživatel cesta grafu, uživatelé mapy, sledování adres URL, trendy, aktivity, událostí, úlohy, chyba, doplňující informace, havárií a App-info).
+V části monitorování uživatelského rozhraní obsahuje informace analýzu v reálném čase a umožňuje nastavit výstrahy při dosažení prahové hodnoty pro většinu stejné informace, které je k dispozici v minulosti v [ANALYTICS](mobile-engagement-user-interface-analytics.md) část uživatelského rozhraní. Najdete v článku **Glosář** tématu [koncepty](http://go.microsoft.com/fwlink/?LinkId=525555) tématu definice termínů a zkratek v analýzy a monitorování (například následující: aktivního uživatele, nový uživatel uchovávají uživatele, relace, cesta uživatele Graf, uživatelé mapy, sledování adres URL, trendy, aktivity, události, úlohy, chyba, doplňující informace, havárií a App-info).
 
 > [!NOTE]
-> Mnoho oddílů hello **Mobile Engagement** portál uživatelského rozhraní obsahovat hello **zobrazit NÁPOVĚDU k** tlačítko. Stisknutím tohoto tlačítka tooget další kontextové informace o oddílu.
+> Mnoho části **Mobile Engagement** portál obsahovat uživatelského rozhraní **zobrazit NÁPOVĚDU k** tlačítko. Chcete-li získat další kontextové informace o oddílu na toto tlačítko.
 > 
 > 
 
 ## <a name="monitor---sessions-jobs-events-errors-and-crashes"></a>Monitorování – relací, úlohy, události, chyb a dojde k chybě
-Zobrazí počet uživatelů, kteří jsou aktuálně v relaci a na konkrétní obrazovky nebo provádění určitých akcí. Můžete zobrazit aktivitu uživatelů rozdělené podle relací, úlohy, události, chyb a dojde k chybě. Můžete zobrazit aktuální informace o hello a zobrazovat informace o hello z hello poslední hodinu dne nebo týdne. Můžete zobrazit všechny informace hello v každé kategorii nebo seřadit hello konkrétní relace, úlohy, události, chyby a havárií.  Monitorování za provozu je užitečné toouse během události třeba toosee kampaň nabízených, pokud dojde uptick v akci správné po odeslání nabízených oznámení.
+Zobrazí počet uživatelů, kteří jsou aktuálně v relaci a na konkrétní obrazovky nebo provádění určitých akcí. Můžete zobrazit aktivitu uživatelů rozdělené podle relací, úlohy, události, chyb a dojde k chybě. Můžete zobrazit informace o aktuálním a zobrazit informace z poslední hodinu, den nebo týden. Zobrazí se všechny informace v každé kategorii nebo řazení podle konkrétní relace, úlohy, události, chyb a havárií.  Monitorování za provozu je vhodné použít během události, jako je například kampaně nabízených, pokud je uptick v akci správné po odeslání nabízených oznámení.
 
 ![Monitor1][14]  
 
 ## <a name="troubleshooting-with-monitor---events---details"></a>Řešení potíží s monitorování - události – podrobnosti
-Generování událost v aplikaci z testovací zařízení a hledání v monitorování - události – podrobnosti je jedním z nejjednodušší toofind způsoby hello ID zařízení pro testovací zařízení a tooconfirm této integrace Azure Mobile Engagement Analytics, monitorování, a Segmenty pracuje z vaší aplikace. Až budete mít hello zařízení ID testovací zařízení, můžete ho přidat tooyour testovací zařízení v "Moje zařízení – účet". Pokud nelze generovat událost, ujistěte se, že Azure Mobile Engagement je správně integrovaný do vaší aplikace Android nebo iOS/Web/Windows/Windows Phone pomocí hello SDK.
+Generování událost v aplikaci z testovací zařízení a hledání v monitorování - události – podrobnosti je jedním z nejjednodušších způsobů chcete zjistit ID zařízení pro testovací zařízení a potvrďte, že integrace Azure Mobile Engagement Analytics, monitorování, a Segmenty pracuje z vaší aplikace. Až budete mít ID zařízení v testovací zařízení, můžete ho přidat do zařízení pomocí testu "Moje zařízení – účet". Pokud nelze generovat událost, ujistěte se, že Azure Mobile Engagement je správně integrovaný do vaší aplikace Android nebo iOS/Web/Windows/Windows Phone pomocí sady SDK.
 
 Další informace najdete v tématu: [dokumentaci k sadě SDK][Link 5]
 
 ![Monitor2][15]  
 
 ## <a name="troubleshooting-with-monitor---crashes---details"></a>Řešení potíží s monitorováním - spadne – podrobnosti
-O aplikaci z monitorování - havárií - podrobnosti toohelp určení příčiny chyb aplikace můžete zkontrolovat informace o havárii. Vyhledání by také známé problémy s každou verzi hello SDK v hello poznámky k verzi pro každou verzi hello SDK pro Android nebo iOS/Web/Windows/Windows Phone.
+O aplikaci z monitorování - havárií - podrobnosti sloužící k určení příčiny chyb aplikace můžete zkontrolovat informace o havárii. Vyhledání by také známé problémy s každou verzi sady SDK v poznámkách k verzi pro každou verzi sady SDK pro Android nebo iOS/Web/Windows/Windows Phone.
 
 Další informace najdete v tématu: [dokumentaci k sadě SDK – poznámky k verzi][Link 5]
 
 ![Monitor3][16]
 
 ## <a name="monitor---alerts"></a>Monitorování – výstrahy
-Můžete také zadat podmínek pro výstrahy, které se budou automaticky posílat tooyou prostřednictvím e-mailu nebo pomocí rychlé zprávy. (Všechny služby vyhovující protokolu XMPP, například Google Talk nebo Apple iChat nejsou podporovány.) Výstrahy jsou založené na předem definované detekce prahová hodnota větší než (>) nebo menší než (<) určitý počet relací, úlohy, události, chyby nebo dojde k chybě za sekundu, minutu nebo hodinu. Výstrahy můžete sledovat všechny aktivity daného typu nebo právě sledovat konkrétní úlohy, události nebo chyba činnost. 
+Můžete také zadat podmínek pro výstrahy, které se budou automaticky posílat vám prostřednictvím e-mailu nebo pomocí rychlé zprávy. (Všechny služby vyhovující protokolu XMPP, například Google Talk nebo Apple iChat nejsou podporovány.) Výstrahy jsou založené na předem definované detekce prahová hodnota větší než (>) nebo menší než (<) určitý počet relací, úlohy, události, chyby nebo dojde k chybě za sekundu, minutu nebo hodinu. Výstrahy můžete sledovat všechny aktivity daného typu nebo právě sledovat konkrétní úlohy, události nebo chyba činnost. 
 
-Můžete také zadat minimální rychlost detekce, což je minimální množství minut, po které dojde k oddělení dvou oznámení hello stejné výstrahy toomake jistotu, že při aktivaci upozornění nikdy nedostanete vyšší než 1 oznámení za intervalu zadaném hello.
+Můžete také zadat minimální rychlost detekce, což je minimální množství minut, po které dojde k oddělení dvou oznámení stejného upozornění a ujistěte se, že při aktivaci upozornění nikdy nedostanete více než 1 oznámení na zadaný interval.
 
 ![Monitor4][17]
 

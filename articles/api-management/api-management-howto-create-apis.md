@@ -1,6 +1,6 @@
 ---
-title: "aaaHow toocreate rozhraní API v Azure API Management"
-description: "Zjistěte, jak toocreate a konfigurace rozhraní API v Azure API Management."
+title: "Vytvoření rozhraní API v Azure API Management"
+description: "Zjistěte, jak vytvořit a nakonfigurovat rozhraní API v Azure API Management."
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -14,64 +14,64 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 48ed8d93947253aa1e67ad995927ed6101cac072
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ab08256fbc3caca05bf23a12016ad2acf4fc7412
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toocreate-apis-in-azure-api-management"></a>Jak toocreate rozhraní API v Azure API Management
-Rozhraní API ve službě API Management představuje sadu operací, které můžete vyvolat klientské aplikace. Vytvoří se nová rozhraní API portálu vydavatele hello a pak hello potřeby, že operace jsou přidány. Jakmile hello operace jsou přidány, hello rozhraní API je přidána tooa produktu a může být publikována. Po publikování rozhraní API může být odebírané tooand používají vývojáři.
+# <a name="how-to-create-apis-in-azure-api-management"></a>Vytvoření rozhraní API v Azure API Management
+Rozhraní API ve službě API Management představuje sadu operací, které můžete vyvolat klientské aplikace. Vytvoří se nová rozhraní API na portálu vydavatele a pak požadované operace jsou přidány. Jakmile se operace, které jsou přidány, rozhraní API se přidá do produktu a může být publikována. Po publikování rozhraní API se můžete přihlásit k odběru a používají vývojáři.
 
-Tato příručka obsahuje hello prvním krokem v procesu hello: jak toocreate a nakonfigurujte nové rozhraní API ve službě API Management. Další informace o přidávání operací a publikování produktu najdete v tématu [jak tooan tooadd operace rozhraní API] [ How tooadd operations tooan API] a [jak toocreate a publikování produktu] [ How toocreate and publish a product].
+Tato příručka obsahuje prvním krokem v procesu: postup vytvoření a konfigurace nové rozhraní API ve službě API Management. Další informace o přidávání operací a publikování produktu najdete v tématu [přidání operací do rozhraní API] [ How to add operations to an API] a [postup vytvoření a publikování produktu][How to create and publish a product].
 
 ## <a name="create-new-api"></a>Vytvořit nové rozhraní API
-Rozhraní API vytvoříte a nakonfigurujete na portálu vydavatele hello. Klikněte na portálu vydavatele hello tooaccess **portál vydavatele** v hello portál Azure pro služby API Management.
+Rozhraní API vytvoříte a nakonfigurujete na portálu vydavatele. Chcete-li získat přístup k portálu vydavatele, klikněte na tlačítko **portál vydavatele** služby API Management na portálu Azure.
 
 ![Portál vydavatele][api-management-management-console]
 
-> Pokud jste instanci služby API Management ještě nevytvořili, přečtěte si téma [vytvoření instance API Management] [ Create an API Management service instance] v hello [Začínáme s Azure API Management] [ Get started with Azure API Management] kurzu.
+> Pokud jste instanci služby API Management ještě nevytvořili, přečtěte si článek [Vytvoření instance API Management][Create an API Management service instance] v kurzu [Začínáme se službou Azure API Management][Get started with Azure API Management].
 > 
 > 
 
-Klikněte na tlačítko **rozhraní API** z hello **API Management** nabídky na levé hello a pak klikněte na tlačítko **přidání rozhraní API**.
+Klikněte na tlačítko **rozhraní API** z **API Management** nabídky na levé straně a pak klikněte na **přidání rozhraní API**.
 
 ![Vytvoření rozhraní API][api-management-create-api]
 
-Použití hello **přidání nového rozhraní API** okno tooconfigure hello nové rozhraní API.
+Použití **přidání nového rozhraní API** okno Konfigurace nového rozhraní API.
 
 ![Přidání nového rozhraní API][api-management-add-new-api]
 
-Hello následující pole jsou použité tooconfigure hello nové rozhraní API.
+Následující pole se používají ke konfiguraci nového rozhraní API.
 
-* **Název webové rozhraní API** poskytuje jedinečný a popisný název pro rozhraní API hello. Zobrazí se na vývojáře a vydavatele portálech hello.
-* **Adresu URL webové služby** odkazy hello služba HTTP implementace rozhraní API hello. Rozhraní API správy předává požadavky toothis adresu.
-* **Přípona adresy URL rozhraní API webové** je připojením toohello základní adresu URL pro službu správy hello rozhraní API. základní adresu URL Hello je společná pro všechna rozhraní API hostované instanci služby API Management. API Management odlišuje rozhraní API podle jejich přípona a proto hello přípona musí být jedinečný pro každé rozhraní API pro daného vydavatele.
-* **Schéma adresy URL rozhraní API webové** určuje protokoly, které lze použít tooaccess hello API. Ve výchozím nastavení je zadán HTTPs.
-* toooptionally přidat tento nový tooa produkt rozhraní API, klikněte na tlačítko hello **produkty (volitelné)** rozevíracího seznamu a vyberte produkt. Tento krok může být opakovaný vícekrát tooadd hello rozhraní API toomultiple produkty.
+* **Název webové rozhraní API** poskytuje jedinečný a popisný název pro rozhraní API. Zobrazí se na vývojáře a vydavatele portálech.
+* **Adresu URL webové služby** odkazuje na službu HTTP implementace rozhraní API. Rozhraní API správy předá požadavky na tuto adresu.
+* **Přípona adresy URL rozhraní API webové** se připojí k základní adresu URL pro službu správy rozhraní API. Základní adresa URL je společný pro všechny rozhraní API hostovaná v instanci služby API Management. API Management odlišuje rozhraní API podle jejich přípona a proto přípona musí být jedinečný pro každé rozhraní API pro daného vydavatele.
+* **Schéma adresy URL rozhraní API webové** určuje protokoly, které lze použít pro přístup k rozhraní API. Ve výchozím nastavení je zadán HTTPs.
+* Chcete-li volitelně přidat toto nové rozhraní API pro určitý produkt, klikněte na tlačítko **produkty (volitelné)** rozevíracího seznamu a vyberte produkt. Tento krok můžete přidat rozhraní API k více produktům opakuje vícekrát.
 
-Jakmile hello potřeby hodnoty jsou nakonfigurované, klikněte na možnost **Uložit**. Po vytvoření nového rozhraní API hello hello souhrnná stránka rozhraní API hello se zobrazí na portálu vydavatele hello.
+Po nakonfigurování požadované hodnoty, klikněte na tlačítko **Uložit**. Po vytvoření nového rozhraní API na portálu vydavatele zobrazí souhrnná stránka rozhraní API.
 
 ![Souhrn rozhraní API][api-management-api-summary]
 
 ## <a name="configure-api-settings"></a>Nastavení konfigurace rozhraní API
-Můžete použít hello **nastavení** kartě tooverify a upravit hello konfigurace rozhraní API. **Název webové rozhraní API**, **adresu URL webové služby**, a **přípona adresy URL webového rozhraní API** původně nastaveny při hello rozhraní API je vytvořen a je možné upravit zde. **Popis** poskytuje volitelný popis a **schéma adresy URL webového rozhraní API** určuje protokoly, které lze použít tooaccess hello API.
+Můžete použít **nastavení** kartě ověřte a úpravě konfigurace rozhraní API. **Název webové rozhraní API**, **adresu URL webové služby**, a **přípona adresy URL webového rozhraní API** původně nastaveny při vytvoření rozhraní API a nelze jej změnit zde. **Popis** poskytuje volitelný popis a **schéma adresy URL webového rozhraní API** určuje protokoly, které lze použít pro přístup k rozhraní API.
 
 ![Nastavení rozhraní API][api-management-api-settings]
 
-ověřování brány tooconfigure hello back-end služby implementující rozhraní API hello, vyberte hello **zabezpečení** kartě hello **s přihlašovacími údaji** rozevíracího seznamu lze použít tooconfigure **HTTP základní** nebo **klientské certifikáty** ověřování. Základní ověřování toouse HTTP, jednoduše zadejte přihlašovací údaje hello potřeby. Informace o používání ověřování certifikátu klienta najdete v tématu [jak toosecure back endové služby pomocí klientského certifikátu ověřování ve službě Azure API Management][How toosecure back-end services using client certificate authentication in Azure API Management].
+Ke konfiguraci ověřování brány pro back-end službu implementace rozhraní API, vyberte **zabezpečení** kartě. **s přihlašovacími údaji** rozevíracího seznamu můžete použít ke konfiguraci **HTTP basic** nebo **klientské certifikáty** ověřování. Pokud chcete používat základní ověřování protokolu HTTP, jednoduše zadejte požadované pověření. Informace o používání ověřování certifikátu klienta najdete v tématu [jak zabezpečit back endové služby pomocí klienta pro ověřování pomocí certifikátu ve službě Azure API Management][How to secure back-end services using client certificate authentication in Azure API Management].
 
-Hello **zabezpečení** karta může být také použít tooconfigure **autorizace uživatelů** pomocí OAuth 2.0. Další informace najdete v tématu [jak účtů tooauthorize vývojáře pomocí OAuth 2.0 ve službě Azure API Management][How tooauthorize developer accounts using OAuth 2.0 in Azure API Management].
+**Zabezpečení** můžete také použít ke konfiguraci **autorizace uživatelů** pomocí OAuth 2.0. Další informace najdete v tématu [autorizace vývojářským účtům pomocí OAuth 2.0 ve službě Azure API Management][How to authorize developer accounts using OAuth 2.0 in Azure API Management].
 
 ![Nastavení základního ověřování][api-management-api-settings-credentials]
 
-Klikněte na tlačítko **Uložit** toosave provedené změny toohello nastavení rozhraní API.
+Klikněte na tlačítko **Uložit** uložit změny provedené nastavení rozhraní API.
 
-## <a name="next-steps"></a>Další kroky
-Po vytvoření rozhraní API a hello nastavení, hello další kroky jsou tooadd hello operations toohello rozhraní API, přidejte hello rozhraní API tooa produktu a publikovat, aby bylo k dispozici pro vývojáře. Další informace najdete v tématu hello následující články.
+## <a name="next-steps"> </a>Další kroky
+Po vytvoření rozhraní API a nakonfigurované nastavení jsou další kroky pro přidání operací do rozhraní API, přidat rozhraní API do produktu a publikujete ji tak, aby se k dispozici pro vývojáře. Další informace naleznete v následujících článcích.
 
-* [Jak tooan tooadd operace rozhraní API][How tooadd operations tooan API]
-* [Jak toocreate a publikování produktu][How toocreate and publish a product]
+* [Přidání operací do rozhraní API][How to add operations to an API]
+* [Postup vytvoření a publikování produktu][How to create and publish a product]
 
 [api-management-create-api]: ./media/api-management-howto-create-apis/api-management-create-api.png
 [api-management-management-console]: ./media/api-management-howto-create-apis/api-management-management-console.png
@@ -87,10 +87,10 @@ Po vytvoření rozhraní API a hello nastavení, hello další kroky jsou tooadd
 [Configure API operations]: #configure-api-operations
 [Next steps]: #next-steps
 
-[How tooadd operations tooan API]: api-management-howto-add-operations.md
-[How toocreate and publish a product]: api-management-howto-add-products.md
+[How to add operations to an API]: api-management-howto-add-operations.md
+[How to create and publish a product]: api-management-howto-add-products.md
 
 [Get started with Azure API Management]: api-management-get-started.md
 [Create an API Management service instance]: api-management-get-started.md#create-service-instance
-[How toosecure back-end services using client certificate authentication in Azure API Management]: api-management-howto-mutual-certificates.md
-[How tooauthorize developer accounts using OAuth 2.0 in Azure API Management]: api-management-howto-oauth2.md
+[How to secure back-end services using client certificate authentication in Azure API Management]: api-management-howto-mutual-certificates.md
+[How to authorize developer accounts using OAuth 2.0 in Azure API Management]: api-management-howto-oauth2.md

@@ -1,6 +1,6 @@
 ---
-title: "aaaMigrate tooSQL vaše řešení datového skladu | Microsoft Docs"
-description: "Migrace pokyny k uvedení platforma SQL Data Warehouse tooAzure vaše řešení."
+title: "Migrace vašeho řešení do SQL Data Warehouse | Microsoft Docs"
+description: "Migrace pokyny k uvedení řešení pro platformu Azure SQL Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: NA
 author: sqlmojo
@@ -15,23 +15,23 @@ ms.workload: data-services
 ms.custom: migrate
 ms.date: 06/27/2017
 ms.author: joeyong;barbkess
-ms.openlocfilehash: 27b51f15247603f054070f360ede7f24541c0288
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 771b9456e66b8a1e41f72340b695b19e2adaf793
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="migrate-your-solution-tooazure-sql-data-warehouse"></a>Migrace vašeho řešení tooAzure SQL Data Warehouse
-Najdete v části Postup při migraci stávající tooAzure řešení databáze SQL Data Warehouse. 
+# <a name="migrate-your-solution-to-azure-sql-data-warehouse"></a>Migrace vašeho řešení do Azure SQL Data Warehouse
+Najdete v části Postup při migraci do stávajícího řešení pro databázi Azure SQL Data Warehouse. 
 
 ## <a name="profile-your-workload"></a>Profil velikosti pracovní zátěže
-Před migrací, budete chtít toobe určité že datový sklad SQL je hello správným řešením pro úlohy. Datový sklad SQL je tooperform analýzy velkých objemů dat distribuovaný systém určený.  Migrace tooSQL datového skladu vyžaduje některé změny návrhu, které nejsou příliš pevný toounderstand, ale může trvat některé tooimplement čas. Jestli podnik potřebuje podnikové třídy datového skladu, hello výhody jsou vhodné hello úsilí. Pokud nepotřebujete hello power služby SQL Data Warehouse, je však další nákladově efektivní toouse systému SQL Server nebo Azure SQL Database.
+Před migrací, mají být, že určité SQL Data Warehouse je to správné řešení pro úlohy. Datový sklad SQL je navržený tak, aby provádět analýzy na velkých objemů dat distribuovaného systému.  Migrace do SQL Data Warehouse vyžaduje některé změny návrhu, které nejsou příliš pevného, abyste pochopili, ale může trvat nějakou dobu implementace. Jestli podnik potřebuje podnikové třídy datového skladu, výhody to stojí. Pokud nepotřebujete power služby SQL Data Warehouse, je však cenově výhodnější používat SQL Server nebo Azure SQL Database.
 
 Zvažte použití SQL Data Warehouse při můžete:
 - Mít jeden nebo více terabajtů dat
-- Plán toorun analýzy velkých objemů dat.
-- Třeba hello možnost tooscale výpočetního prostředí a úložiště 
-- Chtít toosave náklady ponecháte-výpočetní prostředky, když je nepotřebujete.
+- Chcete spustit analýzu na velkých objemů dat.
+- Potřebují možnost škálovat výpočetní kapacity a úložiště 
+- Chcete uložit náklady pozastavení výpočetní prostředky, když je nepotřebujete.
 
 Nepoužívejte SQL Data Warehouse pro provozní úlohy (OLTP), které mají:
 - Vysoká frekvence čte a zapisuje
@@ -41,33 +41,33 @@ Nepoužívejte SQL Data Warehouse pro provozní úlohy (OLTP), které mají:
 - Nekompatibilních formátech (JSON, XML)
 
 
-## <a name="plan-hello-migration"></a>Plánování migrace hello
+## <a name="plan-the-migration"></a>Plánování migrace
 
-Jakmile jste se rozhodli toomigrate existující řešení tooSQL datového skladu, je důležité tooplan hello migrace před Začínáme. 
+Až se rozhodnete k migraci existujícího řešení do SQL Data Warehouse, je důležité plánovat migraci před Začínáme. 
 
-Jeden cíl plánování tooensure data, vaše schémata tabulek a kódu jsou kompatibilní s SQL Data Warehouse. Existují toowork některé kompatibility rozdíly kolem mezi aktuálním systému a SQL Data Warehouse. Plus migraci velkých objemů dat tooAzure trvá určitou dobu. Pečlivé plánování urychluje získávání tooAzure vaše data. 
+Plánování jeden cílem je zajistit, že vaše data, vaše schémata tabulek a kódu jsou kompatibilní s SQL Data Warehouse. Existují určité rozdíly kompatibility obejít mezi aktuálním systému a SQL Data Warehouse. Plus migrace velké objemy dat do Azure trvá určitou dobu. Pečlivé plánování urychluje získávání dat do Azure. 
 
-Jiné cílem plánování je toomake návrhu tooensure úpravy, které řešení využívá výhod hello vysokého výkonu dotazu, který datový sklad SQL je určený tooprovide. Návrh datových skladů pro škálování zavádí vzory návrhu různých a proto tradiční přístupy nejsou vždy hello nejlépe. I když můžete provést některé úpravy návrhu po migraci, uloží dříve provádění změn v procesu hello později.
+Jiné cílem plánování je provádět úpravy návrhu Ujistěte se, že vaše řešení využívá výhod vysokého výkonu dotazu, který SQL Data Warehouse je určená k poskytnutí. Návrh datových skladů pro škálování představuje různé návrhu vzory a proto tradiční přístupy nejsou vždy nejvhodnější. I když můžete provést některé úpravy návrhu po migraci, provedení změn dříve v procesu uloží později.
 
-tooperform úspěšné migrace, je nutné toomigrate vaše schémata tabulek, kód a data. Pokyny v těchto tématech migrace najdete v tématu:
+K provedení úspěšné migrace, musíte migrovat vaší schémata tabulek, kód a data. Pokyny v těchto tématech migrace najdete v tématu:
 
 -  [Migrace vaší schémata](sql-data-warehouse-migrate-schema.md)
 -  [Migrace vašeho kódu](sql-data-warehouse-migrate-code.md)
 -  [Migrace dat](sql-data-warehouse-migrate-data.md). 
 
 <!--
-## Perform hello migration
+## Perform the migration
 
 
-## Deploy hello solution
+## Deploy the solution
 
 
-## Validate hello migration
+## Validate the migration
 
 -->
 
 ## <a name="next-steps"></a>Další kroky
-Hello CAT (poradní tým) má také některé skvělé SQL Data Warehouse pokyny, které publikují prostřednictvím blogy.  Podívejte se na jejich článku [migrace dat tooAzure SQL Data Warehouse v praxi] [ Migrating data tooAzure SQL Data Warehouse in practice] o další pokyny k migraci.
+CAT (poradní tým) má také některé skvělé SQL Data Warehouse pokyny, které publikují prostřednictvím blogy.  Podívejte se na jejich článku [migrace dat do Azure SQL Data Warehouse v praxi] [ Migrating data to Azure SQL Data Warehouse in practice] o další pokyny k migraci.
 
 <!--Image references-->
 
@@ -76,4 +76,4 @@ Hello CAT (poradní tým) má také některé skvělé SQL Data Warehouse pokyny
 <!--MSDN references-->
 
 <!--Other Web references-->
-[Migrating data tooAzure SQL Data Warehouse in practice]: https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
+[Migrating data to Azure SQL Data Warehouse in practice]: https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/

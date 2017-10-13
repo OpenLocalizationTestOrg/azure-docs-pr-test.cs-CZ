@@ -1,6 +1,6 @@
 ---
-title: "aaaExclude disky z ochrany pomocí Azure Site Recovery | Microsoft Docs"
-description: "Popisuje, proč a jak tooexclude virtuálních počítačů disky z replikace pro scénáře VMware tooAzure a tooAzure technologie Hyper-V."
+title: "Vyloučení disků z ochrany pomocí Azure Site Recovery | Dokumentace Microsoftu"
+description: "Tento článek popisuje, proč a jak vyloučit disky virtuálních počítačů z replikace pro scénáře z VMware do Azure a Hyper-V do Azure."
 services: site-recovery
 documentationcenter: 
 author: nsoneji
@@ -14,129 +14,129 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/05/2017
 ms.author: nisoneji
-ms.openlocfilehash: f47146bc57aeab3fce90123d0894fa86dde93417
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: fccbe88e3c0c2b2f3e9958f5f2f27adc017e4d03
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="exclude-disks-from-replication"></a>Vyloučení disků z replikace
-Tento článek popisuje, jak tooexclude disky z replikace. Toto vyloučení můžete optimalizovat replikace hello využívat šířku pásma nebo optimalizovat hello straně cíle prostředky, které využívají tyto disky. Funkce Hello je podporována pro scénáře VMware tooAzure a tooAzure technologie Hyper-V.
+Tento článek popisuje, jak vyloučit disky z replikace. Takové vyloučení může optimalizovat jak využití šířky pásma potřebné pro replikaci, tak i prostředků využívaných na cílové straně těmito disky. Tato funkce je podporovaná ve scénářích VMware do Azure a Hyper-V do Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ve výchozím nastavení se replikují všechny disky virtuálního počítače. tooexclude disku z replikace, musíte ručně nainstalovat hello služba Mobility na počítači hello předtím, než povolíte replikaci, pokud replikujete z VMware tooAzure.
+Ve výchozím nastavení se replikují všechny disky virtuálního počítače. Chcete-li některý disk z replikace vyloučit, je třeba na virtuální počítač ručně nainstalovat službu Mobility ještě předtím, než povolíte replikaci z VMware do Azure.
 
 
 ## <a name="why-exclude-disks-from-replication"></a>Proč vylučovat disky z replikace?
 Vyloučení disků z replikace je často nutné z těchto důvodů:
 
-- Hello data, která je na disku hello vyloučené churned není důležité nebo nepotřebuje toobe replikovat.
+- Často měněná data uložená na vyloučených discích nejsou důležitá nebo nemusí být replikována.
 
-- Chcete toosave úložiště a síťové prostředky podle nereplikuje tato změn.
+- Odstraněním potřeby replikace těchto častých změn dat chcete šetřit prostředky úložiště a síťové prostředky.
 
-## <a name="what-are-hello-typical-scenarios"></a>Jaké jsou typické scénáře hello?
-Můžete určit konkrétní příklady častých změn dat, které jsou skvělými kandidáty na vyloučení. Příklady mohou zahrnovat zapíše tooa stránkovací soubor (pagefile.sys) a zapíše soubor databáze tempdb toohello systému Microsoft SQL Server. V závislosti na zatížení hello a hello subsystému úložiště můžete zaregistrovat hello stránkovacího souboru významné množství změn. Tato data replikace z primární lokality tooAzure hello by však být náročné. Proto můžete použít následující kroky toooptimize replikace virtuálního počítače s jeden virtuální disk, který má hello operační systém a stránkovací soubor hello hello:
+## <a name="what-are-the-typical-scenarios"></a>Jaké jsou typické scénáře?
+Můžete určit konkrétní příklady častých změn dat, které jsou skvělými kandidáty na vyloučení. Příklady můžou zahrnovat zapisování do stránkovacího souboru (pagefile.sys) nebo zapisování Microsoft SQL Serveru do souboru databáze tempdb. V závislosti na zatížení a podsystému úložiště může stránkovací soubor zaznamenat značné množství změn dat. Replikace těchto dat z primární lokality do Azure by však byla náročná na prostředky. Proto můžete pomocí následujícího postupu optimalizovat replikaci virtuálního počítače s jedním virtuálním diskem, který obsahuje operační systém i stránkovací soubor:
 
-1. Rozdělit hello jeden virtuální disk na dva virtuální disky. Jeden virtuální disk má hello operační systém a hello jiných má hello stránkovacího souboru.
-2. Z replikace vylučte disku se souborem hello stránkování.
+1. Rozdělíte jeden virtuální disk na dva virtuální disky. Jeden virtuální disk obsahuje operační systém, druhý stránkovací soubor.
+2. Disk se stránkovacím souborem vyloučíte z replikace.
 
-Podobně můžete použít následující kroky toooptimize disk, který má obě databáze tempdb systému Microsoft SQL Server hello souboru hello a hello soubor systémové databáze:
+Podobně můžete pomocí následujícího postupu optimalizovat disk, který obsahuje jak soubor tempdb Microsoft SQL Serveru, tak soubor se systémovou databází:
 
-1. Zachovat hello systémovou databázi a databázi tempdb na dvou různých disků.
-2. Z replikace vylučte hello databáze tempdb disku.
+1. Systémovou databázi a databázi tempdb budete uchovávat na dvou různých discích.
+2. Disk s databází tempdb vyloučíte z replikace.
 
-## <a name="how-tooexclude-disks-from-replication"></a>Jak tooexclude disky z replikace?
+## <a name="how-to-exclude-disks-from-replication"></a>Jak vyloučit disky z replikace?
 
-### <a name="vmware-tooazure"></a>VMware tooAzure
-Postupujte podle hello [povolit replikaci](site-recovery-vmware-to-azure.md) tooprotect pracovního postupu pro virtuální počítač z portálu Azure Site Recovery hello. V hello čtvrtý krok hello pracovního postupu, použijte hello **tooREPLICATE disku** sloupec tooexclude disky z replikace. Ve výchozím nastavení jsou pro replikaci vybrány všechny disky. Zrušte zaškrtnutí políčka hello disků, které chcete tooexclude z replikace a pak dokončení hello kroky tooenable replikace.
+### <a name="vmware-to-azure"></a>Z VMware do Azure
+Pokud chcete chránit virtuální počítač z portálu Azure Site Recovery, postupujte podle pracovního postupu pro [povolení replikace](site-recovery-vmware-to-azure.md). Ve čtvrtém kroku pracovního postupu můžete pomocí sloupce **DISK TO REPLICATE** vyloučit disky z replikace. Ve výchozím nastavení jsou pro replikaci vybrány všechny disky. Zrušte výběr disků, které chcete vyloučit z replikace, a potom dokončete postup povolení replikace.
 
-![Z replikace vyloučit disky a povolení replikace pro navrácení služeb po obnovení VMware tooAzure](./media/site-recovery-exclude-disk/v2a-enable-replication-exclude-disk1.png)
+![Vyloučení disků z replikace a povolení replikace pro navrácení služeb po obnovení z VMware do Azure](./media/site-recovery-exclude-disk/v2a-enable-replication-exclude-disk1.png)
 
 
 >[!NOTE]
 >
-> * Můžete vyloučit jenom ty disky, které už máte nainstalovaná služba Mobility hello. Služba Mobility hello toomanually instalace, je nutné, protože hello služba Mobility je nainstalován pouze pomocí mechanizmu nabízené hello po povolení replikace.
+> * Můžete vyloučit jenom disky, na kterých už je nainstalovaná služba Mobility. Službu Mobility musíte nainstalovat ručně, protože se jinak instaluje pomocí mechanismu nabízených instalací až po povolení replikace.
 > * Z replikace můžete vyloučit pouze běžné disky. Nemůžete vyloučit disk operačního systému ani dynamické disky.
-> * Po povolení replikace už není možné přidávat nebo odebírat disky pro replikaci. Chcete-li tooadd nebo vyloučit disk, můžete potřebovat toodisable ochrany pro počítač hello a pak ji znovu povolte.
-> * Pokud vyloučíte disk, který je potřeba pro toooperate aplikaci po převzetí služeb při selhání tooAzure, budete potřebovat disk hello toocreate ručně v Azure tak, aby bylo možné spouštět aplikace hello replikovat. Alternativně můžete integrovat Azure automation na disk hello toocreate plán obnovení během převzetí služeb při selhání hello počítače.
-> * Virtuální počítače s Windows: Disky, které ručně vytvoříte v Azure, nebude možné po navrácení služeb obnovit. Například když při selhání převezmete tři disky a pak přímo ve službě Azure Virtual Machines vytvoříte další dva, při navrácení služeb po obnovení se přenesou jen tři disky replikované při selhání. Nesmí obsahovat disky, které jste vytvořili ručně v navrácení služeb po obnovení nebo opětovné ochrany z místní tooAzure.
+> * Po povolení replikace už není možné přidávat nebo odebírat disky pro replikaci. Pokud chcete přidat nebo vyloučit disk, budete muset zakázat ochranu virtuálního počítače a potom ji znovu povolit.
+> * Pokud vyloučíte disk, který je nezbytný pro provoz aplikace, po převzetí služeb při selhání do Azure budete muset v Azure disk znovu ručně vytvořit, aby se replikovaná aplikace mohla spustit. Alternativně můžete do plánu obnovení integrovat službu Azure Automation, která disk vytvoří během převzetí služeb při selhání počítače.
+> * Virtuální počítače s Windows: Disky, které ručně vytvoříte v Azure, nebude možné po navrácení služeb obnovit. Například když při selhání převezmete tři disky a pak přímo ve službě Azure Virtual Machines vytvoříte další dva, při navrácení služeb po obnovení se přenesou jen tři disky replikované při selhání. Ručně vytvořené disky není možné zahrnout do navrácení služeb po obnovení ani do zpětné replikace z místního počítače do Azure.
 > * Virtuální počítače s Linuxem: Disky, které ručně vytvoříte v Azure, se po navrácení služeb obnoví. Například když při selhání převezmete tři disky a pak přímo ve službě Azure Virtual Machines vytvoříte další dva, při navrácení služeb se obnoví všech pět. Ručně vytvořené disky nemůžete vyloučit z navrácení služeb po obnovení.
 >
 
-### <a name="hyper-v-tooazure"></a>TooAzure technologie Hyper-V
-Postupujte podle hello [povolit replikaci](site-recovery-hyper-v-site-to-azure.md) tooprotect pracovního postupu pro virtuální počítač z portálu Azure Site Recovery hello. V hello čtvrtý krok hello pracovního postupu, použijte hello **tooREPLICATE disku** sloupec tooexclude disky z replikace. Ve výchozím nastavení jsou pro replikaci vybrány všechny disky. Zrušte zaškrtnutí políčka hello disků, které chcete tooexclude z replikace a pak dokončení hello kroky tooenable replikace.
+### <a name="hyper-v-to-azure"></a>Z Hyper-V do Azure
+Pokud chcete chránit virtuální počítač z portálu Azure Site Recovery, postupujte podle pracovního postupu pro [povolení replikace](site-recovery-hyper-v-site-to-azure.md). Ve čtvrtém kroku pracovního postupu můžete pomocí sloupce **DISK TO REPLICATE** vyloučit disky z replikace. Ve výchozím nastavení jsou pro replikaci vybrány všechny disky. Zrušte výběr disků, které chcete vyloučit z replikace, a potom dokončete postup povolení replikace.
 
-![Z replikace vyloučit disky a povolení replikace pro navrácení služeb po obnovení technologie Hyper-V tooAzure](./media/site-recovery-vmm-to-azure/enable-replication6-with-exclude-disk.png)
+![Vyloučení disků z replikace a povolení replikace pro navrácení služeb po obnovení z Hyper-V do Azure](./media/site-recovery-vmm-to-azure/enable-replication6-with-exclude-disk.png)
 
 >[!NOTE]
 >
-> * Z replikace můžete vyloučit pouze běžné disky. Nemůžete vyloučit disky operačního systému. Doporučujeme, abyste nevylučovali dynamické disky. Azure Site Recovery nemůže identifikovat, které virtuální pevný disk (VHD) je základní nebo dynamické v hello hostovaného virtuálního počítače.  Pokud nejsou všechny disky, závislé dynamický svazek vyloučené, hello chráněné dynamického disku se změní na disku na virtuálním počítači převzetí služeb při selhání, který selhal a hello dat na disk není dostupný.
-> * Po povolení replikace už není možné přidávat nebo odebírat disky pro replikaci. Chcete-li tooadd nebo vyloučit disk, potřebujete toodisable ochranu pro virtuální počítač hello a pak ji znovu povolte.
-> * Pokud vyloučíte disk, který je potřeba pro toooperate aplikaci, po převzetí služeb při selhání tooAzure budete potřebovat disk hello toocreate ručně v Azure tak, aby bylo možné spouštět aplikace hello replikovat. Alternativně můžete integrovat Azure automation na disk hello toocreate plán obnovení během převzetí služeb při selhání hello počítače.
-> * Disky, které ručně vytvoříte v Azure, nebude možné po obnovení navrátit. Například pokud nezdaří tři disky a vytvořit dva disky přímo v Azure Virtual Machines, jenom tři disky, které byly převzetí služeb při selhání se nepodařilo zpět z Azure tooHyper-V. Nesmí obsahovat disky, které byly vytvořeny ručně v navrácení služeb po obnovení, nebo v zpětná replikace z tooAzure technologie Hyper-V.
+> * Z replikace můžete vyloučit pouze běžné disky. Nemůžete vyloučit disky operačního systému. Doporučujeme, abyste nevylučovali dynamické disky. Azure Site Recovery nemůže zjistit, který virtuální pevný disk (VHD) je v hostovaném virtuálním počítači běžný a který dynamický.  Pokud nejsou vyloučeny všechny disky se závislými dynamickými svazky, z chráněného dynamického disku se na virtuálním počítači po převzetí služeb při selhání stane chybný disk a data na takovém disku budou nepřístupná.
+> * Po povolení replikace už není možné přidávat nebo odebírat disky pro replikaci. Pokud chcete přidat nebo vyloučit disk, budete muset zakázat ochranu virtuálního počítače a potom ji znovu povolit.
+> * Pokud vyloučíte disk, který je nezbytný pro provoz aplikace, po převzetí služeb při selhání do Azure budete muset v Azure disk znovu ručně vytvořit, aby se replikovaná aplikace mohla spustit. Alternativně můžete do plánu obnovení integrovat službu Azure Automation, která disk vytvoří během převzetí služeb při selhání počítače.
+> * Disky, které ručně vytvoříte v Azure, nebude možné po obnovení navrátit. Například pokud provedete převzetí služeb při selhání u tří disků a dva disky vytvoříte přímo ve službě Azure Virtual Machines, po obnovení z Azure do Hyper-V se navrátí pouze tři disky, u nichž se provedlo převzetí služeb při selhání. Ručně vytvořené disky není možné zahrnout do navrácení služeb po obnovení ani do zpětné replikace z Hyper-V do Azure.
 
 
 
 ## <a name="end-to-end-scenarios-of-exclude-disks"></a>Úplné scénáře vyloučení disků
-Zvažte dva scénáře toounderstand hello vyloučení disku funkce:
+Pojďme se podívat na dva scénáře, abychom porozuměli funkci vyloučení disku:
 
 - Disk s databází tempdb systému SQL Server
 - Disk se stránkovacím souborem (pagefile.sys)
 
-### <a name="exclude-hello-sql-server-tempdb-disk"></a>Vyloučení disku databáze tempdb systému SQL Server hello
+### <a name="exclude-the-sql-server-tempdb-disk"></a>Vyloučení disku s databází tempdb systému SQL Server
 Uvažujme virtuální počítač se systémem SQL Server, který používá databázi tempdb, kterou chcete vyloučit z replikace.
 
-Název Hello hello virtuálního disku je SalesDB.
+Název virtuálního disku je SalesDB.
 
-Disky na hello zdrojového virtuálního počítače jsou následující:
+Na zdrojovém virtuálním počítači jsou následující disky:
 
 
-**Název disku** | **Označení disku v hostovaném operačním systému** | **Písmeno jednotky** | **Typ dat na disku hello**
+**Název disku** | **Označení disku v hostovaném operačním systému** | **Písmeno jednotky** | **Typ dat na disku**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 | C:\ | Disk operačním systému
 DB-Disk1| Disk1 | D:\ | Databáze systému SQL a uživatelská databáze 1
-DB-Disk2 (disk hello vyloučené z ochrany) | Disk2 | E:\ | Dočasné soubory
-DB-Disk3 (disk hello vyloučené z ochrany) | Disk3 | F:\ | SQL databáze tempdb (cesta ke složce (F:\MSSQL\Data\) < /br/>< /br/> zapište cestu ke složce hello před převzetí služeb při selhání.
+DB-Disk2 (disk vyloučený z ochrany) | Disk2 | E:\ | Dočasné soubory
+DB-Disk3 (disk vyloučený z ochrany) | Disk3 | F:\ | Databáze SQL tempdb (cesta ke složce (F:\MSSQL\Data\) </br /> </br /> Poznamenejte si cestu ke složce před převzetím služeb při selhání.
 DB Disk4 | Disk4 |G:\ |Uživatelská databáze 2
 
-Protože změn dat na dva disky hello virtuálního počítače je dočasný, když chráníte hello SalesDB virtuálního počítače, Disk2 a Disk3 vylučte z replikace. Azure Site Recovery nebude tyto disky replikovat. Na převzetí služeb při selhání nemusí být tyto disky na hello převzetí služeb při selhání virtuálního počítače na platformě Azure.
+Protože časté změny dat na dvou discích virtuálního počítače jsou dočasné, při ochraně virtuálního počítače SalesDB vylučte Disk2 a Disk3 z replikace. Azure Site Recovery nebude tyto disky replikovat. Po převzetí služeb při selhání tyto disky nebudou na cílovém virtuálním počítači v Azure připojené.
 
-Disky na virtuální počítač Azure po převzetí služeb při selhání hello jsou následující:
+Ve virtuálním počítači Azure budou po převzetí služeb při selhání tyto disky:
 
-**Označení disku v hostovaném operačním systému** | **Písmeno jednotky** | **Typ dat na disku hello**
+**Označení disku v hostovaném operačním systému** | **Písmeno jednotky** | **Typ dat na disku**
 --- | --- | ---
 DISK0 | C:\ | Disk operačním systému
-Disk1 | E:\ | Dočasné úložiště < /br / >< /br / > Azure přidá tento disk a přiřadí hello první dostupné písmeno jednotky.
+Disk1 | E:\ | Dočasné úložiště</br /> </br />Azure tento disk přidá a přiřadí mu první dostupné písmeno jednotky.
 Disk2 | D:\ | Databáze systému SQL a uživatelská databáze 1
 Disk3 | G:\ | Uživatelská databáze 2
 
-Protože Disk2 a Disk3 byly vyloučeny z hello SalesDB virtuálního počítače, je E: hello první písmeno jednotky ze seznamu dostupných hello. Azure přiřadí svazku E: toohello dočasné úložiště. Pro všechny disky hello replikovat hello hello jednotku, kterou písmena zůstávají stejné.
+Protože Disk2 a Disk3 byly vyloučeny z virtuálního počítače SalesDB, první volné písmeno jednotky je E:. Azure přiřadí písmeno jednotky E: svazku dočasného úložiště. Pro všechny replikované disky zůstala písmena jednotek stejná.
 
-Disk3, která byla hello SQL databáze tempdb disku (cesta ke složce databáze tempdb F:\MSSQL\Data\), byla z replikace vyloučit. Hello disk není k dispozici na hello převzetí služeb při selhání virtuálního počítače. V důsledku toho hello služba SQL je v zastaveném stavu a je nutné hello F:\MSSQL\Data cesta.
+Disk3, na kterém byla databáze SQL tempdb (cesta ke složce databáze tempdb je F:\MSSQL\Data\), byl z replikace vyloučený. Disk není dostupný na virtuálním počítači po převzetí služeb při selhání. V důsledku toho je služba SQL zastavená a je nutné zajistit cestu F:\MSSQL\Data.
 
-Existují dva způsoby toocreate tuto cestu:
+Existují dva způsoby, jak tuto cestu vytvořit:
 
 - Přidejte nový disk a přiřaďte mu cestu ke složce databáze tempdb.
-- Použijte stávající disk dočasné úložiště pro cestu ke složce databáze tempdb hello.
+- Použijte pro cestu ke složce s databází tempdb stávající disk dočasného úložiště.
 
 #### <a name="add-a-new-disk"></a>Přidání nového disku:
 
-1. Poznamenejte si hello cesty SQL tempdb.mdf a tempdb.ldf před převzetí služeb při selhání.
-2. Z hello portálu Azure přidáte nový disk toohello převzetí služeb při selhání virtuální počítač s hello stejné nebo další velikost jako hello zdroje SQL databáze tempdb disku (Disk3).
-3. Přihlaste se toohello virtuální počítač Azure. Z konzoly pro správu (diskmgmt.msc) disku hello inicializovat a formát hello nově přidaná disku.
-4. Hello přiřadit stejné písmeno, který byl používán hello SQL databáze tempdb disku (F:) jednotky.
-5. Vytvořte složku databáze tempdb na hello svazku F: (F:\MSSQL\Data).
-6. Spusťte službu SQL hello z konzoly služby hello.
+1. Poznamenejte si cesty k souborům SQL tempdb.mdf a tempdb.ldf před převzetím služeb při selhání.
+2. Na webu Azure Portal přidejte do virtuálního počítače přebírajícího služby při selhání nový disk se stejnou nebo větší velikostí, jakou měl zdrojový disk s databází SQL tempdb (Disk3).
+3. Přihlaste se k virtuálnímu počítači Azure. Z konzoly pro správu disků (diskmgmt.msc) inicializujte a naformátujte nově přidaný disk.
+4. Přiřaďte stejné písmeno jednotky, kterou používal disk s databází SQL tempdb (F:).
+5. Vytvořte složku databáze tempdb na svazku F: (F:\MSSQL\Data).
+6. Spusťte službu SQL z konzoly služby.
 
-#### <a name="use-an-existing-temporary-storage-disk-for-hello-sql-tempdb-folder-path"></a>Použijte stávající disk dočasné úložiště pro cestu ke složce hello SQL databáze tempdb:
+#### <a name="use-an-existing-temporary-storage-disk-for-the-sql-tempdb-folder-path"></a>Použijte pro cestu ke složce s databází tempdb stávající disk dočasného úložiště:
 
 1. Otevřete příkazový řádek.
-2. Spusťte systém SQL Server v režimu obnovení z příkazového řádku hello.
+2. Spusťte z příkazového řádku SQL Server v režimu obnovení.
 
         Net start MSSQLSERVER /f / T3608
 
-3. Spusťte hello následující sqlcmd toochange hello databáze tempdb cesta toohello novou cestu.
+3. Spuštěním následujícího příkazu sqlcmd změňte cestu k databázi tempdb na novou cestu.
 
         sqlcmd -A -S SalesDB        **Use your SQL DBname**
         USE master;     
@@ -149,50 +149,50 @@ Existují dva způsoby toocreate tuto cestu:
         GO
 
 
-4. Zastavte službu Microsoft SQL Server hello.
+4. Zastavte službu Microsoft SQL Server.
 
         Net stop MSSQLSERVER
-5. Spusťte službu Microsoft SQL Server hello.
+5. Spusťte službu Microsoft SQL Server.
 
         Net start MSSQLSERVER
 
-Odkažte toohello následující Azure platí pro dočasné úložiště disku:
+Seznamte se s následujícími pravidly Azure pro dočasné disky úložiště:
 
-* [Pomocí SSD disky ve virtuálních počítačích Azure toostore databáze TempDB systému SQL Server a rozšíření fondu vyrovnávací paměti](https://blogs.technet.microsoft.com/dataplatforminsider/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)
+* [Použití disků SSD ve virtuálních počítačích Azure k uložení databáze TempDB systému SQL Server a rozšíření fondu vyrovnávací paměti](https://blogs.technet.microsoft.com/dataplatforminsider/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)
 * [Osvědčené postupy z hlediska výkonu pro SQL Server na Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance)
 
-### <a name="failback-from-azure-tooan-on-premises-host"></a>Navrácení služeb po obnovení (z Azure tooan místní hostitel)
-Nyní Pojďme pochopit hello disky, které jsou replikované, kdy jste převzetí služeb při selhání z Azure tooyour místní VMware nebo technologie Hyper-V v hostiteli. Disky, které vytvoříte v Azure ručně, se replikovat nebudou. Například když při selhání převezmete tři disky a pak přímo ve službě Azure Virtual Machines vytvoříte další dva, při navrácení služeb po obnovení se přenesou jen tři disky replikované při selhání. Nesmí obsahovat disky, které byly vytvořeny ručně v navrácení služeb po obnovení nebo opětovné ochrany z místní tooAzure. Je také se nereplikuje hello dočasné úložiště disku tooon místního hostitele.
+### <a name="failback-from-azure-to-an-on-premises-host"></a>Navrácení služeb po obnovení (z Azure na místního hostitele)
+Nyní se pojďme podívat na to, které disky se budou replikovat při navrácení služeb po obnovení z Azure na místního hostitele VMware nebo Hyper-V. Disky, které vytvoříte v Azure ručně, se replikovat nebudou. Například když při selhání převezmete tři disky a pak přímo ve službě Azure Virtual Machines vytvoříte další dva, při navrácení služeb po obnovení se přenesou jen tři disky replikované při selhání. Ručně vytvořené disky není možné zahrnout do navrácení služeb po obnovení ani do zpětné replikace z místního počítače do Azure. Také se nereplikují disky s dočasným úložištěm na místní hostitele.
 
-#### <a name="failback-toooriginal-location-recovery"></a>Obnovení do umístění toooriginal navrácení služeb po obnovení
+#### <a name="failback-to-original-location-recovery"></a>Navrácení služeb po obnovení do původního umístění
 
-V předchozím příkladu hello konfigurace disku virtuálního počítače Azure hello vypadá takto:
+V předchozím příkladu vypadá konfigurace disků virtuálního počítače Azure takto:
 
-**Označení disku v hostovaném operačním systému** | **Písmeno jednotky** | **Typ dat na disku hello**
+**Označení disku v hostovaném operačním systému** | **Písmeno jednotky** | **Typ dat na disku**
 --- | --- | ---
 DISK0 | C:\ | Disk operačním systému
-Disk1 | E:\ | Dočasné úložiště < /br / >< /br / > Azure přidá tento disk a přiřadí hello první dostupné písmeno jednotky.
+Disk1 | E:\ | Dočasné úložiště</br /> </br />Azure tento disk přidá a přiřadí mu první dostupné písmeno jednotky.
 Disk2 | D:\ | Databáze systému SQL a uživatelská databáze 1
 Disk3 | G:\ | Uživatelská databáze 2
 
 
-#### <a name="vmware-tooazure"></a>VMware tooAzure
-Pokud navrácení služeb po obnovení se provádí toohello původního umístění, konfigurace disku virtuálního počítače navrácení služeb po obnovení hello nemá vyloučené disky. Disky, které byly vyloučeny z VMware tooAzure nebudete mít k dispozici na hello navrácení služeb po obnovení virtuálního počítače.
+#### <a name="vmware-to-azure"></a>Z VMware do Azure
+Po dokončení navrácení služeb po obnovení do původního umístění neobsahuje konfigurace disků obnoveného virtuálního počítače vyloučené disky. Disky vyloučené z replikace z VMware do Azure nebudou po navrácení služeb po obnovení virtuálního počítače dostupné.
 
-Po plánovaném převzetí služeb při selhání Azure tooon místní VMware jsou disky na virtuální počítač VMWare hello (původní umístění):
+Po naplánovaném převzetí služeb při selhání z Azure do místního počítače VMware budou disky na virtuálním počítači VMWare (v původním umístění) následující:
 
-**Označení disku v hostovaném operačním systému** | **Písmeno jednotky** | **Typ dat na disku hello**
+**Označení disku v hostovaném operačním systému** | **Písmeno jednotky** | **Typ dat na disku**
 --- | --- | ---
 DISK0 | C:\ | Disk operačním systému
 Disk1 | D:\ | Databáze systému SQL a uživatelská databáze 1
 Disk2 | G:\ | Uživatelská databáze 2
 
-#### <a name="hyper-v-tooazure"></a>TooAzure technologie Hyper-V
-Při navrácení služeb po obnovení je toohello původního umístění, hello navrácení služeb po obnovení virtuálního počítače disku konfigurace zůstanou hello stejné jako původní konfigurace disku virtuálního počítače pro technologii Hyper-V. Disky, které byly vyloučeny z technologie Hyper-V lokality tooAzure jsou k dispozici na hello navrácení služeb po obnovení virtuálního počítače.
+#### <a name="hyper-v-to-azure"></a>Z Hyper-V do Azure
+Pokud se navrácení služeb po obnovení provádí do původního umístění, zůstává konfigurace disků virtuálního počítače stejná jako konfigurace disků původního virtuálního počítače Hyper-V. Disky vyloučené z replikace z Hyper-V do Azure budou dostupné po navrácení služeb po obnovení virtuálního počítače.
 
-Po plánovaném převzetí služeb při selhání Azure tooon místní technologie Hyper-V jsou disky na virtuální počítače Hyper-V hello (původní umístění):
+Po naplánovaném převzetí služeb při selhání z Azure do místního počítače Hyper-V budou disky na virtuálním počítači Hyper-V (v původním umístění) následující:
 
-**Název disku** | **Označení disku v hostovaném operačním systému** | **Písmeno jednotky** | **Typ dat na disku hello**
+**Název disku** | **Označení disku v hostovaném operačním systému** | **Písmeno jednotky** | **Typ dat na disku**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 |   C:\ | Disk operačním systému
 DB-Disk1 | Disk1 | D:\ | Databáze systému SQL a uživatelská databáze 1
@@ -201,69 +201,69 @@ DB-Disk3 (vyloučený disk) | Disk3 | F:\ | SQL databáze tempdb (cesta ke slož
 DB Disk4 | Disk4 | G:\ | Uživatelská databáze 2
 
 
-#### <a name="exclude-hello-paging-file-pagefilesys-disk"></a>Vyloučení disku se souborem (pagefile.sys) hello stránkování
+#### <a name="exclude-the-paging-file-pagefilesys-disk"></a>Vyloučení disku se stránkovacím souborem (pagefile.sys)
 
 Uvažujme virtuální počítač s diskem pro stránkovací soubor, který je možné vyloučit z replikace.
 Existují dva možné případy.
 
-#### <a name="case-1-hello-paging-file-is-configured-on-hello-d-drive"></a>Případ 1: hello stránkovacího souboru je nakonfigurovaná na hello jednotky D:
-Tady je hello konfigurace disku:
+#### <a name="case-1-the-paging-file-is-configured-on-the-d-drive"></a>Případ 1: Stránkovací soubor je nakonfigurován na jednotce D:
+Tady je konfigurace disků:
 
 
-**Název disku** | **Označení disku v hostovaném operačním systému** | **Písmeno jednotky** | **Typ dat na disku hello**
+**Název disku** | **Označení disku v hostovaném operačním systému** | **Písmeno jednotky** | **Typ dat na disku**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 | C:\ | Disk operačním systému
-DB-disk 1 (disk hello vyloučené z ochrany hello) | Disk1 | D:\ | pagefile.sys
+DB-Disk1 (disk vyloučený z ochrany) | Disk1 | D:\ | pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Uživatelská data 1
 DB-Disk3 | Disk3 | F:\ | Uživatelská data 2
 
-Zde jsou nastavení hello stránkovacího souboru na hello zdrojového virtuálního počítače:
+Tady je nastavení stránkovacího souboru na zdrojovém virtuálním počítači:
 
 ![Nastavení stránkovacího souboru na zdrojovém virtuálním počítači](./media/site-recovery-exclude-disk/pagefile-on-d-drive-sourceVM.png)
 
 
-Disky na hello virtuálního počítače Azure po převzetí služeb při selhání hello virtuálního počítače z VMware tooAzure nebo tooAzure technologie Hyper-V, jsou následující:
+Po převzetí služeb virtuálního počítače při selhání z VMware do Azure nebo z Hyper-V do Azure budou disky na virtuálním počítači Azure následující:
 
-**Název disku** | **Označení disku v hostovaném operačním systému** | **Písmeno jednotky** | **Typ dat na disku hello**
+**Název disku** | **Označení disku v hostovaném operačním systému** | **Písmeno jednotky** | **Typ dat na disku**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 | C:\ | Disk operačním systému
 DB-Disk1 | Disk1 | D:\ | Dočasné úložiště</br /> </br />pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Uživatelská data 1
 DB-Disk3 | Disk3 | F:\ | Uživatelská data 2
 
-Protože se vyloučila disk 1 (D:), je D: hello první písmeno jednotky ze seznamu dostupných hello. Azure přiřadí svazku D: toohello dočasné úložiště. Protože D: je dostupný na hello virtuální počítač Azure, hello hello stránkovacího souboru z hello virtuální počítač zůstane stejný.
+Protože Disk1 (D:) byl vyloučen, první volné písmeno jednotky je D:. Azure přiřadí písmeno jednotky D: svazku dočasného úložiště. Protože písmeno jednotky D: je dostupné i na virtuálním počítači Azure, nastavení stránkovacího souboru virtuálního počítače zůstane stejné.
 
-Zde jsou nastavení hello stránkovacího souboru na hello virtuální počítač Azure:
+Tady je nastavení stránkovacího souboru na virtuálním počítači Azure:
 
 ![Nastavení stránkovacího souboru na virtuálním počítači Azure](./media/site-recovery-exclude-disk/pagefile-on-Azure-vm-after-failover.png)
 
-#### <a name="case-2-hello-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>Případ 2: hello stránkovacího souboru je nakonfigurovaná na jinou jednotku (jiné než jednotka D:)
+#### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>Případ 2: Stránkovací soubor je nakonfigurovaný na jiné jednotce (než je D:)
 
-Tady je konfigurace disku virtuálního počítače zdrojového hello:
+Tady je konfigurace disků zdrojového virtuálního počítače:
 
-**Název disku** | **Označení disku v hostovaném operačním systému** | **Písmeno jednotky** | **Typ dat na disku hello**
+**Název disku** | **Označení disku v hostovaném operačním systému** | **Písmeno jednotky** | **Typ dat na disku**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 | C:\ | Disk operačním systému
-DB-disk 1 (disk hello vyloučené z ochrany) | Disk1 | G:\ | pagefile.sys
+DB-Disk1 (disk vyloučený z ochrany) | Disk1 | G:\ | pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Uživatelská data 1
 DB-Disk3 | Disk3 | F:\ | Uživatelská data 2
 
-Zde jsou nastavení hello stránkovacího souboru na hello místní virtuální počítač:
+Tady je nastavení stránkovacího souboru na místním virtuálním počítači:
 
-![Stránkovací soubor nastavení na hello místní virtuální počítač](./media/site-recovery-exclude-disk/pagefile-on-g-drive-sourceVM.png)
+![Nastavení stránkovacího souboru na místním virtuálním počítači](./media/site-recovery-exclude-disk/pagefile-on-g-drive-sourceVM.png)
 
-Disky na hello virtuálního počítače Azure po převzetí služeb při selhání hello virtuálního počítače z tooAzure VMware nebo Hyper-V, jsou následující:
+Po převzetí služeb virtuálního počítače při selhání z VMware nebo Hyper-V do Azure budou disky na virtuálním počítači Azure následující:
 
-**Název disku**| **Označení disku v hostovaném operačním systému**| **Písmeno jednotky** | **Typ dat na disku hello**
+**Název disku**| **Označení disku v hostovaném operačním systému**| **Písmeno jednotky** | **Typ dat na disku**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0  |C:\ |Disk operačním systému
 DB-Disk1 | Disk1 | D:\ | Dočasné úložiště</br /> </br />pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Uživatelská data 1
 DB-Disk3 | Disk3 | F:\ | Uživatelská data 2
 
-Vzhledem k tomu, že D: hello první písmeno jednotky ze seznamu dostupných hello se Azure přiřadí svazku D: toohello dočasné úložiště. Pro všechny disky hello replikovat zůstane písmeno jednotky hello hello stejné. Protože hello G: disku není k dispozici, bude systém hello používat jednotky C: hello hello stránkovací soubor.
+Protože D: je první volné písmeno jednotky, Azure ho přiřadí svazku dočasného úložiště. Pro všechny replikované disky zůstala písmena jednotek stejná. Protože disk G: není k dispozici, systém použije pro stránkovací soubor jednotku C:.
 
-Zde jsou nastavení hello stránkovacího souboru na hello virtuální počítač Azure:
+Tady je nastavení stránkovacího souboru na virtuálním počítači Azure:
 
 ![Nastavení stránkovacího souboru na virtuálním počítači Azure](./media/site-recovery-exclude-disk/pagefile-on-Azure-vm-after-failover-2.png)
 

@@ -1,6 +1,6 @@
 ---
-title: aaaCreate aplikace pro Android v Azure App Service Mobile Apps | Microsoft Docs
-description: "Postupujte podle tohoto kurzu tooget začít s pomocí back-EndY mobilní aplikace Azure pro vývoj pro Android"
+title: "Vytvoření aplikace pro Android v Azure App Service Mobile Apps | Dokumentace Microsoftu"
+description: "V tomto kurzu začnete používat back-endy mobilní aplikace Azure pro vývoj na platformě Android."
 services: app-service\mobile
 documentationcenter: android
 author: ggailey777
@@ -14,34 +14,34 @@ ms.devlang: java
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.openlocfilehash: 0af85a3a4de9fc265976bbe3f34d73effc3807df
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 418a5229a084d570bc6cab5925dbd8d30945a3c5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-android-app"></a>Vytvoření aplikace pro Android
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
 ## <a name="overview"></a>Přehled
-Tento kurz ukazuje, jak tooadd back-end cloudové služby tooan mobilních aplikací systému Android pomocí back-end mobilní aplikace Azure.  Vytvoříte jak nový back-end mobilní aplikace, tak jednoduchou aplikaci pro Android, která bude představovat *seznam úkolů* a ukládat data do Azure.
+V tomto kurzu se dozvíte, jak přidat cloudovou back-end službu do mobilní aplikace Android pomocí back-endu mobilní aplikace Azure.  Vytvoříte jak nový back-end mobilní aplikace, tak jednoduchou aplikaci pro Android, která bude představovat *seznam úkolů* a ukládat data do Azure.
 
-Dokončení tohoto kurzu je předpokladem pro všechny ostatní Android kurzech k používání funkce Mobile Apps hello v Azure App Service.
+Dokončení tohoto kurzu se předpokládá ve všech dalších kurzech k používání funkce Mobile Apps v Azure App Service pro Android.
 
 ## <a name="prerequisites"></a>Požadavky
-toocomplete tohoto kurzu budete potřebovat hello následující:
+Pro absolvování tohoto kurzu potřebujete:
 
-* [Android Developer Tools](https://developer.android.com/sdk/index.html), které zahrnují integrované vývojové prostředí Android Studio hello a nejnovější platformu Android hello.
-* Azure Mobile Android SDK, která je automaticky odkazuje jako na součást projektu pro rychlý start hello, který si stáhnete.
+* [Android Developer Tools](https://developer.android.com/sdk/index.html), což zahrnuje integrované vývojové prostředí Android Studio a nejnovější platformu Android
+* Sadu SDK Azure Mobile pro Android, na kterou se automaticky odkazuje jako na součást projektu pro rychlý start, který si stáhnete
 * [Aktivní účet Azure](https://azure.microsoft.com/pricing/free-trial/)
 
 ## <a name="create-a-new-azure-mobile-app-backend"></a>Vytvoření nového back-endu mobilní aplikace Azure
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="configure-hello-server-project"></a>Konfigurace projektu server hello
+## <a name="configure-the-server-project"></a>Konfigurace serverového projektu
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="download-and-run-hello-android-app"></a>Stáhněte a spusťte aplikaci pro Android hello
+## <a name="download-and-run-the-android-app"></a>Stažení a spuštění aplikace pro Android
 [!INCLUDE [app-service-mobile-android-run-app](../../includes/app-service-mobile-android-run-app.md)]
 
 <!-- URLs -->

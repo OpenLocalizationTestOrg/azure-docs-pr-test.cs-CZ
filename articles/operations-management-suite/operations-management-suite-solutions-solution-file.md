@@ -1,6 +1,6 @@
 ---
-title: "řešení pro správu aaaCreating v Operations Management Suite (OMS) | Microsoft Docs"
-description: "Řešení pro správu rozšíření hello funkce služby Operations Management Suite (OMS) tím, že poskytuje scénářů správy zabalené, aby zákazníci můžete přidat pracovní prostor OMS tootheir.  Tento článek obsahuje informace o tom, jak můžete vytvořit toobe řešení správy použít ve svém vlastním prostředí nebo provedené dostupné tooyour zákazníků."
+title: "Vytváření řešení pro správu v Operations Management Suite (OMS) | Microsoft Docs"
+description: "Řešení pro správu rozšířit funkce služby Operations Management Suite (OMS) tím, že poskytuje scénářů zabalené správy, které zákazníci mohou přidat do jejich pracovním prostorem OMS.  Tento článek poskytuje podrobné informace o tom, jak můžete vytvořit řešení správy, který se má použít ve svém vlastním prostředí nebo k dispozici pro vaše zákazníky."
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -15,22 +15,22 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f408df1b21f519fd1eb2cbeb19cca18f6c4161f5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ee3462c13101d18921dc488b08c79e1e4e02ff3a
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="creating-a-management-solution-file-in-operations-management-suite-oms-preview"></a>Vytvoření souboru řešení pro správu v Operations Management Suite (OMS) (Preview)
 > [!NOTE]
-> Toto je předběžná dokumentace pro vytváření řešení pro správu v OMS, které jsou aktuálně ve verzi preview. Žádné schéma níže popsané je toochange subjektu.  
+> Toto je předběžná dokumentace pro vytváření řešení pro správu v OMS, které jsou aktuálně ve verzi preview. Žádné schéma popsané níže se mohou změnit.  
 
-Řešení pro správu v Operations Management Suite (OMS) jsou implementované jako [šablony Resource Manageru](../azure-resource-manager/resource-manager-template-walkthrough.md).  hlavní úloh Hello dozvědět, jak je řešení pro správu tooauthor učení jak příliš[vytvořit šablonu](../azure-resource-manager/resource-group-authoring-templates.md).  Tento článek obsahuje jedinečné Podrobnosti šablony použité pro řešení a jak tooconfigure typické řešení prostředky.
+Řešení pro správu v Operations Management Suite (OMS) jsou implementované jako [šablony Resource Manageru](../azure-resource-manager/resource-manager-template-walkthrough.md).  Hlavní úloha naučit vytvářet řešení pro správu je učení postup [vytvořit šablonu](../azure-resource-manager/resource-group-authoring-templates.md).  Tento článek obsahuje jedinečné Podrobnosti šablony použité pro řešení a jak nakonfigurovat prostředky typické řešení.
 
 
 ## <a name="tools"></a>Nástroje
 
-Všechny toowork textového editoru můžete používat se soubory řešení, ale doporučujeme, abyste využití hello funkce poskytované v sadě Visual Studio nebo Visual Studio Code, jak je popsáno v následujících článcích hello.
+Libovolného textového editoru můžete pracovat se soubory řešení, ale doporučujeme využívat funkce uvedené v sadě Visual Studio nebo Visual Studio Code, jak je popsáno v následujících článcích.
 
 - [Vytvoření a nasazení skupin prostředků Azure pomocí sady Visual Studio](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
 - [Práce s šablony Azure Resource Manageru v sadě Visual Studio kódu](../azure-resource-manager/resource-manager-vs-code.md)
@@ -39,7 +39,7 @@ Všechny toowork textového editoru můžete používat se soubory řešení, al
 
 
 ## <a name="structure"></a>Struktura
-Základní struktura Hello soubor řešení správy je hello stejné jako [šablony Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md#template-format) tedy následujícím způsobem.  Každý z níže uvedených částech hello popisuje elementy hello nejvyšší úrovně a a jejich obsah v řešení.  
+Základní struktura soubor řešení správy je stejné jako [šablony Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md#template-format) tedy následujícím způsobem.  Každý z níže uvedených částech popisuje elementy nejvyšší úrovně a a jejich obsah v řešení.  
 
     {
        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -51,11 +51,11 @@ Základní struktura Hello soubor řešení správy je hello stejné jako [šabl
     }
 
 ## <a name="parameters"></a>Parametry
-[Parametry](../azure-resource-manager/resource-group-authoring-templates.md#parameters) jsou hodnoty, které požadujete od hello uživatele při instalaci hello řešení pro správu.  Jsou standardní parametry, které budou mít všechna řešení a podle potřeby můžete přidat další parametry pro vaše konkrétní řešení.  Jak budou uživatelé zadali hodnoty parametrů při instalaci řešení bude záviset na konkrétní parametr hello a jak se instaluje hello řešení.
+[Parametry](../azure-resource-manager/resource-group-authoring-templates.md#parameters) jsou hodnoty, které požadujete od uživatele při instalaci řešení pro správu.  Jsou standardní parametry, které budou mít všechna řešení a podle potřeby můžete přidat další parametry pro vaše konkrétní řešení.  Jak budou uživatelé zadali hodnoty parametrů při instalaci řešení bude záviset na konkrétní parametr a jak se instaluje řešení.
 
-Když uživatel nainstaluje řešení pro správu prostřednictvím hello [Azure Marketplace](operations-management-suite-solutions.md#finding-and-installing-management-solutions) nebo [šablony Azure QuickStart](operations-management-suite-solutions.md#finding-and-installing-management-solutions) jsou výzvami tooselect [OMS pracovní prostor a účet Automation. ](operations-management-suite-solutions.md#oms-workspace-and-automation-account).  Toto jsou hodnoty používané toopopulate hello každé standardní parametry hello.  Hello uživatel nebude vyzván k toodirectly zadejte hodnoty pro parametry hello standardní, ale jsou výzvami tooprovide hodnoty pro žádné další parametry.
+Když uživatel nainstaluje řešení pro správu prostřednictvím [Azure Marketplace](operations-management-suite-solutions.md#finding-and-installing-management-solutions) nebo [šablony Azure QuickStart](operations-management-suite-solutions.md#finding-and-installing-management-solutions) se výzva k výběru [pracovním prostorem OMS a automatizace účtu](operations-management-suite-solutions.md#oms-workspace-and-automation-account).  Ty se používají k naplnění hodnoty jednotlivých standardní parametry.  Uživatel nebude vyzván k přímo zadat hodnoty pro standardní parametry, ale bude vyzván k zadání hodnot pro žádné další parametry.
 
-Když uživatel hello nainstaluje řešení [jinou metodu](operations-management-suite-solutions.md#finding-and-installing-management-solutions), musí zadat hodnotu pro všechny standardní parametry a všech dalších parametrů.
+Když uživatel nainstaluje řešení [jinou metodu](operations-management-suite-solutions.md#finding-and-installing-management-solutions), musí zadat hodnotu pro všechny standardní parametry a všech dalších parametrů.
 
 Ukázka parametrů jsou uvedeny níže.  
 
@@ -67,20 +67,20 @@ Ukázka parametrů jsou uvedeny níže.
             "category": "Schedule"
         }
 
-Hello následující tabulka popisuje atributy hello parametru.
+Následující tabulka popisuje atributy parametru.
 
 | Atribut | Popis |
 |:--- |:--- |
-| type |Datový typ pro parametr hello. Hello vstupního ovládacího prvku zobrazuje pro uživatele hello závisí na typu dat hello.<br><br>BOOL – rozevíracího seznamu<br>String – textové pole<br>int – textové pole<br>SecureString - pole pro heslo<br> |
-| category |Volitelné kategorie pro parametr hello.  Parametry v hello stejné kategorii jsou seskupeny dohromady. |
-| Ovládací prvek |Další funkce pro parametry řetězce.<br><br>Zobrazí se datum a čas - datum a čas řízení.<br>identifikátor GUID – hodnota identifikátoru Guid je generován automaticky, a parametr hello se nezobrazí. |
-| description |Volitelný popis pro parametr hello.  Zobrazí informace o bublinách další toohello parametr. |
+| type |Datový typ pro parametr. Vstupní ovládací prvek zobrazí pro uživatele, závisí na typu dat.<br><br>BOOL – rozevíracího seznamu<br>String – textové pole<br>int – textové pole<br>SecureString - pole pro heslo<br> |
+| category |Volitelné kategorie pro parametr.  Parametry ve stejné kategorii jsou seskupeny dohromady. |
+| Ovládací prvek |Další funkce pro parametry řetězce.<br><br>Zobrazí se datum a čas - datum a čas řízení.<br>identifikátor GUID – hodnota identifikátoru Guid je generován automaticky, a parametr nezobrazuje. |
+| Popis |Volitelný popis pro parametr.  Zobrazí v bublinách informace vedle parametru. |
 
 ### <a name="standard-parameters"></a>Standardní parametry
-Hello následující tabulka uvádí hello standardní parametry pro všechna řešení pro správu.  Tyto hodnoty jsou naplněny pro uživatele hello místo dotaz na ně při řešení z Azure Marketplace nebo rychlý start šablon hello.  Pokud řešení hello se instaluje s jinou metodu, musí uživatel Hello zadat hodnoty pro ně.
+Následující tabulka uvádí standardní parametry pro všechna řešení pro správu.  Tyto hodnoty jsou naplněny pro uživatele místo dotaz na ně při řešení z Azure Marketplace nebo šablony rychlý start.  Uživatel musí poskytnout hodnoty pro ně, pokud řešení se instaluje s jinou metodu.
 
 > [!NOTE]
-> Hello uživatelské rozhraní v šablonách Azure Marketplace a rychlý start hello očekává hello názvy parametrů v tabulce hello.  Pokud používáte jiný parametr názvy pak hello uživateli zobrazí výzva pro ně, a nebude se automaticky vyplní.
+> Uživatelské rozhraní v Azure Marketplace a šablony rychlý start očekává názvy parametrů v tabulce.  Pokud používáte jiný parametr názvy pak uživatele vyzváni k jejich a nebude se automaticky vyplní.
 >
 >
 
@@ -88,13 +88,13 @@ Hello následující tabulka uvádí hello standardní parametry pro všechna ř
 |:--- |:--- |:--- |
 | název účtu |Řetězec |Název účtu Azure Automation. |
 | pricingTier |Řetězec |Cenová úroveň pracovní prostor analýzy protokolů a účet Azure Automation. |
-| regionId |Řetězec |Oblast hello účet Azure Automation. |
-| Název řešení SolutionName |Řetězec |Název řešení hello.  Pokud nasazujete řešení prostřednictvím šablony rychlý start, pak byste měli definovat název řešení solutionName jako parametr, můžete definovat místo nutnosti toospecify hello uživatele, jeden řetězec. |
+| regionId |Řetězec |Oblast účet Azure Automation. |
+| Název řešení SolutionName |Řetězec |Název řešení.  Pokud nasazujete řešení prostřednictvím šablony rychlý start, pak byste měli definovat název řešení solutionName jako parametr, můžete definovat místo nutnosti uživateli zadat jeden řetězec. |
 | workspaceName |Řetězec |Název pracovního prostoru analýzy protokolů |
-| workspaceRegionId |Řetězec |Oblast pracovního prostoru analýzy protokolů hello. |
+| workspaceRegionId |Řetězec |Oblast pracovního prostoru analýzy protokolů. |
 
 
-Následuje hello struktura hello standardní parametry, které můžete zkopírovat a vložit do souboru řešení.  
+Následuje strukturu standardní parametry, které můžete zkopírovat a vložit do souboru řešení.  
 
     "parameters": {
         "workspaceName": {
@@ -112,13 +112,13 @@ Následuje hello struktura hello standardní parametry, které můžete zkopíro
         "workspaceRegionId": {
                "type": "string",
                "metadata": {
-                   "description": "Region of hello Log Analytics workspace"
+                   "description": "Region of the Log Analytics workspace"
             }
         },
         "regionId": {
             "type": "string",
             "metadata": {
-                "description": "Region of hello Azure Automation account"
+                "description": "Region of the Azure Automation account"
             }
         },
         "pricingTier": {
@@ -130,10 +130,10 @@ Následuje hello struktura hello standardní parametry, které můžete zkopíro
     }
 
 
-Odkazovat tooparameter hodnoty v další prvky hello řešení se syntaxí hello **parametry (název parametru)**.  Například tooaccess hello název pracovního prostoru, byste použili **parameters('workspaceName')**
+Odkazujete na hodnoty parametrů v další prvky řešení se syntaxí **parametry (název parametru)**.  Například pokud chcete získat přístup k název pracovního prostoru, použijte **parameters('workspaceName')**
 
 ## <a name="variables"></a>Proměnné
-[Proměnné](../azure-resource-manager/resource-group-authoring-templates.md#variables) jsou hodnoty, které budete používat v hello zbytek hello řešení pro správu.  Tyto hodnoty nejsou zveřejněné toohello uživatel, který instaluje hello řešení.  Jsou to určený tooprovide hello Autor na jednom místě, kde můžete spravovat hodnoty, které se dají použít více než jednou v celé řešení hello. Řešení konkrétních tooyour hodnoty měli umístit do proměnné jako názvem na rozdíl od toohard kódování je v hello **prostředky** elementu.  To usnadňuje srozumitelnější hello kódu a umožňuje vám tooeasily změnit tyto hodnoty v novějších verzích.
+[Proměnné](../azure-resource-manager/resource-group-authoring-templates.md#variables) jsou hodnoty, které budete používat ve zbývající části řešení pro správu.  Tyto hodnoty nejsou zveřejněné má uživatel instalující řešení.  Ty jsou určené Autor poskytnout na jednom místě, kde můžete spravovat hodnoty, které se dají použít více než jednou v celé řešení. Byste měli umístit všechny hodnoty specifické pro vaše řešení v proměnné a pevné kódování v **prostředky** elementu.  To usnadňuje kód srozumitelnější a umožňuje snadno změnit tyto hodnoty v novějších verzích.
 
 Následuje příklad **proměnné** element s typické parametry použité v řešení.
 
@@ -145,9 +145,9 @@ Následuje příklad **proměnné** element s typické parametry použité v ře
         "AutomationApiVersion": "2015-10-31"
     },
 
-Najdete hodnoty toovariable prostřednictvím řešení hello se syntaxí hello **proměnné ('název proměnné')**.  Například tooaccess hello název řešení SolutionName proměnné, byste použili **variables('SolutionName')**.
+Odkazujete na hodnoty proměnné prostřednictvím řešení se syntaxí **proměnné ('název proměnné')**.  Například pokud chcete přístup k proměnné Název řešení SolutionName, použijte **variables('SolutionName')**.
 
-Můžete také definovat komplexní proměnné tohoto několik sad hodnot.  Tyto jsou zvláště užitečné při řešení pro správu, které definujete více vlastností pro různé typy prostředků.  Například může změnit strukturu proměnné hello řešení uvedené výše toohello následující.
+Můžete také definovat komplexní proměnné tohoto několik sad hodnot.  Tyto jsou zvláště užitečné při řešení pro správu, které definujete více vlastností pro různé typy prostředků.  Například může změnit strukturu proměnné řešení uvedené výše takto.
 
     "variables": {
         "Solution": {
@@ -159,20 +159,20 @@ Můžete také definovat komplexní proměnné tohoto několik sad hodnot.  Tyto
         "AutomationApiVersion": "2015-10-31"
     },
 
-V takovém případě najdete hodnoty toovariable prostřednictvím řešení hello se syntaxí hello **variables('variable name').property**.  Například tooaccess hello řešení název proměnné, byste použili **variables('Solution'). Název**.
+V takovém případě je odkazovat na hodnoty proměnné prostřednictvím řešení se syntaxí **variables('variable name').property**.  Například pokud chcete přístup k proměnné Název řešení, použijte **variables('Solution'). Název**.
 
 ## <a name="resources"></a>Zdroje
-[Prostředky](../azure-resource-manager/resource-group-authoring-templates.md#resources) definovat hello různé prostředky, které nainstaluje a nakonfiguruje vaše řešení pro správu.  Bude jím hello největší a těch nejsložitějších část hello šablony.  Můžete získat hello strukturu a úplný popis elementů prostředků v [šablon pro tvorbu Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md#resources).  Různé prostředky, které se obvykle definují, jsou popsané v další články v této dokumentaci. 
+[Prostředky](../azure-resource-manager/resource-group-authoring-templates.md#resources) definovat různé prostředky, které nainstaluje a nakonfiguruje vaše řešení pro správu.  To bude největší a těch nejsložitějších část šablony.  Můžete získat strukturu a úplný popis elementů prostředků v [šablon pro tvorbu Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md#resources).  Různé prostředky, které se obvykle definují, jsou popsané v další články v této dokumentaci. 
 
 
 ### <a name="dependencies"></a>Závislosti
-Hello **dependsOn** určuje elementy [závislostí](../azure-resource-manager/resource-group-define-dependencies.md) na jiný prostředek.  Při instalaci hello řešení prostředku se nevytvoří, dokud všechny jeho závislé součásti byly vytvořeny.  Například může být vaše řešení [spuštění sady runbook](operations-management-suite-solutions-resources-automation.md#runbooks) při instalaci pomocí [úlohy prostředků](operations-management-suite-solutions-resources-automation.md#automation-jobs).  prostředek úlohy Hello by být závislá na hello runbook prostředků toomake se, že dané sady runbook hello je vytvořen, než bude vytvořena úloha hello.
+**DependsOn** určuje elementy [závislostí](../azure-resource-manager/resource-group-define-dependencies.md) na jiný prostředek.  Při instalaci řešení prostředku se nevytvoří, dokud všechny jeho závislé součásti byly vytvořeny.  Například může být vaše řešení [spuštění sady runbook](operations-management-suite-solutions-resources-automation.md#runbooks) při instalaci pomocí [úlohy prostředků](operations-management-suite-solutions-resources-automation.md#automation-jobs).  Prostředek úlohy by být závislý na prostředku sady runbook, abyste měli jistotu, že je sada runbook vytvořena předtím, než se vytvoří úloha.
 
 ### <a name="oms-workspace-and-automation-account"></a>Pracovní prostor OMS a účet Automation.
-Vyžaduje řešení pro správu [pracovním prostorem OMS](../log-analytics/log-analytics-manage-access.md) toocontain zobrazení a [účet Automation](../automation/automation-security-overview.md#automation-account-overview) toocontain sady runbook a související prostředky.  Toto musí být k dispozici před hello prostředky v řešení hello vytvářejí a nesmí být definována v hello řešení sám sebe.  Hello uživatele bude [zadejte prostoru a účet](operations-management-suite-solutions.md#oms-workspace-and-automation-account) při jejich nasazování svého řešení, ale jako autor hello byste měli zvážit následující body hello.
+Vyžaduje řešení pro správu [pracovním prostorem OMS](../log-analytics/log-analytics-manage-access.md) tak, aby obsahovala zobrazení a [účet Automation](../automation/automation-security-overview.md#automation-account-overview) tak, aby obsahovala sady runbook a související prostředky.  Musí mít k dispozici před prostředky v řešení jsou vytvořeny a nesmí být definována v řešení sám sebe.  Uživatel bude [zadejte prostoru a účet](operations-management-suite-solutions.md#oms-workspace-and-automation-account) při jejich nasazování svého řešení, ale jako autor byste měli zvážit následující body.
 
 ## <a name="solution-resource"></a>Řešení prostředků
-Každé řešení vyžaduje záznam prostředků v hello **prostředky** element, který definuje hello řešení sám sebe.  To bude mít typ **Microsoft.OperationsManagement/solutions** a mít hello strukturu. To zahrnuje [standardní parametry](#parameters) a [proměnné](#variables) , které jsou obvykle používanými toodefine vlastnosti hello řešení.
+Každé řešení vyžaduje záznam prostředků v **prostředky** element, který definuje řešení sám sebe.  To bude mít typ **Microsoft.OperationsManagement/solutions** a mít následující strukturu. To zahrnuje [standardní parametry](#parameters) a [proměnné](#variables) , jsou obvykle používány k definování vlastností řešení.
 
 
     {
@@ -206,41 +206,41 @@ Každé řešení vyžaduje záznam prostředků v hello **prostředky** element
 
 
 ### <a name="dependencies"></a>Závislosti
-musí mít Hello řešení prostředků [závislostí](../azure-resource-manager/resource-group-define-dependencies.md) na každý jiný prostředek v řešení hello vzhledem k tomu, že potřebují tooexist před vytvořením hello řešení.  To uděláte tak, že přidáte položku pro všechny prostředky v hello **dependsOn** elementu.
+Musí mít prostředek řešení [závislostí](../azure-resource-manager/resource-group-define-dependencies.md) na každý jiný prostředek v řešení vzhledem k tomu, že potřebují existovat, aby bylo možné vytvořit řešení.  To uděláte tak, že přidáte položku pro každý zdroj v **dependsOn** elementu.
 
 ### <a name="properties"></a>Vlastnosti
-Hello řešení prostředků má hello vlastnosti v hello následující tabulka.  To zahrnuje hello prostředky odkazovat a obsažených hello řešení, která definuje, jak se spravuje hello prostředků po instalaci hello řešení.  Všechny prostředky v řešení hello by měl být uvedený v buď hello **referencedResources** nebo hello **containedResources** vlastnost.
+Řešení prostředek má vlastnosti v následující tabulce.  To zahrnuje prostředky odkazuje a obsažený v řešení, která definuje, jak se spravuje prostředku po instalaci řešení.  Všechny prostředky v řešení by měl být uveden buď **referencedResources** nebo **containedResources** vlastnost.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| workspaceResourceId |ID pracovního prostoru analýzy protokolů hello v podobě hello  *<Resource Group ID>/providers/Microsoft.OperationalInsights/workspaces/\<název pracovního prostoru\>*. |
-| referencedResources |Seznam prostředků v hello řešení, které by se neměly odebírat, když dojde k odebrání hello řešení. |
-| containedResources |Seznam prostředků v hello řešení, které byste měli odebrat, když dojde k odebrání hello řešení. |
+| workspaceResourceId |ID pracovního prostoru analýzy protokolů ve formě  *<Resource Group ID>/providers/Microsoft.OperationalInsights/workspaces/\<název pracovního prostoru\>*. |
+| referencedResources |Seznam prostředků v řešení, které by se neměly odebírat, když dojde k odebrání řešení. |
+| containedResources |Seznam prostředků v řešení, které byste měli odebrat, když dojde k odebrání řešení. |
 
-výše uvedený příklad Hello je řešení s sady runbook, plán a zobrazení.  plán Hello a sady runbook jsou *odkazované* v hello **vlastnosti** element tak nejsou odebrány při odebrání hello řešení.  zobrazení Hello *obsažené* proto je odebrána, když dojde k odebrání hello řešení.
+V předchozím příkladu je řešení s sady runbook, plán a zobrazení.  Plán a sady runbook jsou *odkazované* v **vlastnosti** element tak nejsou odebrány při odebrání řešení.  Zobrazení je *obsažené* proto je odebrána, když dojde k odebrání řešení.
 
 ### <a name="plan"></a>Plánování
-Hello **plán** entity hello řešení prostředku má hello vlastnosti v hello následující tabulka.
+**Plán** entity řešení prostředku má vlastnosti v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| jméno |Název řešení hello. |
-| Verze |Verze hello řešení, počítáno od autora hello. |
-| Produktu |Jedinečné řetězce tooidentify hello řešení. |
-| Vydavatele |Vydavatel hello řešení. |
+| jméno |Název řešení. |
+| Verze |Verze řešení, počítáno od autora. |
+| Produktu |Jedinečný řetězec k identifikaci řešení. |
+| Vydavatele |Vydavatel řešení. |
 
 
 
 ## <a name="sample"></a>Ukázka
-Ukázky soubory řešení s prostředek řešení můžete zobrazit v hello následující umístění.
+Můžete zobrazit ukázky soubory řešení s prostředek řešení v následujících umístěních.
 
 - [Prostředky služby Automation](operations-management-suite-solutions-resources-automation.md#sample)
 - [Hledání a výstraha prostředky](operations-management-suite-solutions-resources-searches-alerts.md#sample)
 
 
 ## <a name="next-steps"></a>Další kroky
-* [Přidat uložená hledání a výstrahy](operations-management-suite-solutions-resources-searches-alerts.md) tooyour řešení pro správu.
-* [Přidání zobrazení](operations-management-suite-solutions-resources-views.md) tooyour řešení pro správu.
-* [Přidat sady runbook a dalším prostředkům Automation](operations-management-suite-solutions-resources-automation.md) tooyour řešení pro správu.
-* Další podrobnosti o hello [šablon pro tvorbu Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md).
+* [Přidat uložená hledání a výstrahy](operations-management-suite-solutions-resources-searches-alerts.md) do řešení pro správu.
+* [Přidání zobrazení](operations-management-suite-solutions-resources-views.md) do řešení pro správu.
+* [Přidat sady runbook a dalším prostředkům Automation](operations-management-suite-solutions-resources-automation.md) do řešení pro správu.
+* Další podrobnosti o [šablon pro tvorbu Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md).
 * Hledání [šablon Azure rychlý Start](https://azure.microsoft.com/documentation/templates) ukázky různých šablonách Resource Manager.

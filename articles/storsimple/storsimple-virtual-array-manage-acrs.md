@@ -1,6 +1,6 @@
 ---
-title: "aaaManage záznamy řízení přístupu pro pole virtuální zařízení StorSimple | Microsoft Docs"
-description: "Popisuje, jak řízení přístupu toomanage záznamy toodetermine (ACRs), které hostitele může připojit tooa svazek na hello pole virtuální zařízení StorSimple."
+title: "Spravovat záznamy řízení přístupu pro pole virtuální zařízení StorSimple | Microsoft Docs"
+description: "Popisuje, jak spravovat záznamy řízení přístupu (ACRs) k určení, které hostitele může připojit k svazek v poli virtuální zařízení StorSimple."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -15,114 +15,114 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 608fdf72413761ce3c9c4bf297a748489c415685
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2ce65aa4efba735305208f7a6d761bc2814d1b8f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="use-storsimple-device-manager-toomanage-access-control-records-for-storsimple-virtual-array"></a>Pomocí Správce zařízení StorSimple toomanage záznamy řízení přístupu pro pole virtuální zařízení StorSimple
+# <a name="use-storsimple-device-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>Pomocí Správce zařízení StorSimple Spravovat záznamy řízení přístupu pro pole virtuální zařízení StorSimple
 
 ## <a name="overview"></a>Přehled
 
-Záznamy řízení přístupu (ACRs) umožňují toospecify, které hostitele může připojit tooa svazek na hello pole virtuální zařízení StorSimple (také označované jako hello místní virtuální zařízení StorSimple). ACRs jsou nastavené určité svazku tooa a obsahovat hello iSCSI (IQN) kvalifikované názvy hostitelů hello. Když se hostitel pokusí tooconnect tooa svazek, zařízení hello ověří hello ACR přidružený tento svazek pro název IQN hello, a pokud je nalezena shoda, pak hello připojení. Hello **záznamy řízení přístupu** okno v rámci hello **konfigurace** části služby Správce zařízení zobrazí všechny záznamy řízení přístupu hello s hello odpovídající IQN hello hostitelů.
+Záznamy řízení přístupu (ACRs) umožňují určit, které hostitele může připojit k svazek v poli virtuální zařízení StorSimple (také označované jako místní virtuální zařízení StorSimple). ACRs jsou nastaveny na konkrétním svazku a obsahovat kvalifikované názvy iSCSI (IQN) hostitele. Když hostitel pokusí o připojení ke svazku, zařízení ověří ACR přidružený tento svazek pro název IQN, a pokud je nalezena shoda, pak připojení. **Záznamy řízení přístupu** okno v rámci **konfigurace** části služby Správce zařízení zobrazí všechny záznamy řízení přístupu s odpovídající IQN hostitelů.
 
 ![Spravovat přístup k záznamům v ovládací prvek](./media/storsimple-virtual-array-manage-acrs/ova-manage-acrs.png)
 
-Tento kurz vysvětluje hello následující běžné úlohy související s ACR:
+Tento kurz vysvětluje následující běžné úlohy související s ACR:
 
-* Získání názvu IQN hello
+* Získání názvu IQN
 * Přidání záznamu o řízení přístupu
 * Upravit záznam řízení přístupu
 * Odstranit záznam řízení přístupu
 
 > [!IMPORTANT]
 > 
-> * Při přiřazování svazek tooa ACR, vezměte v potaz, že hello svazek není přístup souběžně více než jednomu hostiteli neclusterované protože to může způsobit poškození svazku hello.
-> * Při odstraňování ACR ze svazku, ujistěte se, že tohoto hostitele odpovídající hello není přístup k hello svazek, protože odstranění hello může mít za následek přerušení pro čtení a zápis.
+> * Při přiřazování ACR svazku, vezměte v potaz, že svazek není přístup souběžně více než jednomu hostiteli neclusterované protože to může způsobit poškození svazku.
+> * Při odstraňování ACR ze svazku, ujistěte se, že odpovídající hostitele není přístup k svazku vzhledem k tomu, že odstranění může mít za následek přerušení pro čtení a zápis.
 
 
-## <a name="get-hello-iqn"></a>Získání názvu IQN hello
+## <a name="get-the-iqn"></a>Získání názvu IQN
 
-Proveďte následující kroky tooget hello názvu IQN hostitele se systémem Windows Server 2012 Windows hello.
+Proveďte následující kroky k získání názvu IQN hostitele Windows se systémem Windows Server 2012.
 
 [!INCLUDE [storsimple-get-iqn](../../includes/storsimple-get-iqn.md)]
 
 ## <a name="add-an-acr"></a>Přidat ACR
 
-Používáte **záznamy řízení přístupu** okno v rámci hello **konfigurace** část vaší tooadd služby StorSimple Manager zařízení ACRs. Obvykle přidružíte jednu ACR jeden svazek.
+Používáte **záznamy řízení přístupu** okno v rámci **konfigurace** části služby StorSimple Manager zařízení přidat ACRs. Obvykle přidružíte jednu ACR jeden svazek.
 
-Informace o přiřazení ACR svazku, přejděte příliš[přidat svazek](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume).
+Další informace o přiřazení ACR svazku [přidat svazek](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume).
 
 > [!IMPORTANT]
-> Při přiřazování svazek tooa ACR, vezměte v potaz, že hello svazek není přístup souběžně více než jednomu hostiteli neclusterované protože to může způsobit poškození svazku hello.
+> Při přiřazování ACR svazku, vezměte v potaz, že svazek není přístup souběžně více než jednomu hostiteli neclusterované protože to může způsobit poškození svazku.
 
 
-Proveďte následující kroky tooadd ACR hello.
+Proveďte následující postup pro přidání ACR.
 
-#### <a name="tooadd-an-acr"></a>tooadd ACR
+#### <a name="to-add-an-acr"></a>Chcete-li přidat ACR
 
-1. Na cílovou stránku hello služby, vyberte svoji službu, klikněte dvakrát na hello název služby a potom v rámci hello **konfigurace** klikněte na tlačítko **záznamy řízení přístupu**.
-2. V hello **záznamy řízení přístupu** okně klikněte na tlačítko **přidat**.
-3. V hello **přidat ACR** okně hello následující:
+1. Na stránce cílové služby, vyberte svoji službu, dvakrát klikněte na název služby a pak v rámci **konfigurace** klikněte na tlačítko **záznamy řízení přístupu**.
+2. V **záznamy řízení přístupu** okně klikněte na tlačítko **přidat**.
+3. V **přidat ACR** okno, postupujte takto:
    
     1. Zadejte **Název** záznamu ACR.
     
-    2. V části **název iniciátoru iSCSI**, zadejte název IQN hello hostitele s Windows. hello tooget názvu IQN hostitele vašeho systému Windows Server hello následující:
+    2. V části **název iniciátoru iSCSI**, zadejte název IQN hostitele s Windows. Získání názvu IQN hostitele vašeho systému Windows Server, postupujte takto:
    
-    3. Na hostiteli s Windows spusťte iniciátor iSCSI společnosti Microsoft hello. V okně hello při vlastnosti iniciátoru iSCSI na hello **konfigurace** , vyberte a zkopírujte řetězec hello z hello **název iniciátoru** pole.
-    Vložte tento řetězec hello **IQN** pole hello **přidat ACR** okno.
+    3. Na hostiteli s Windows spusťte iniciátor iSCSI od Microsoftu. V okně Vlastnosti iniciátoru iSCSI na **konfigurace** , vyberte a zkopírujte řetězec z **název iniciátoru** pole.
+    Vložte tento řetězec v **IQN** pole **přidat ACR** okno.
    
-    6. Klikněte na tlačítko **přidat** tooadd hello ACR.  
+    6. Klikněte na tlačítko **přidat** přidat ACR.  
    
         ![Přidat záznamy řízení přístupu](./media/storsimple-virtual-array-manage-acrs/ova-add-acrs.png)
-4. Hello tabulkové výpis je aktualizovaný tooreflect přidání.
+4. Tabulkový výčet je aktualizována tak, aby odrážela přidání.
 
 ## <a name="edit-an-acr"></a>Upravit ACR
 
-Použít hello **záznamy řízení přístupu** okno v rámci hello **konfigurace** části služby Správce zařízení v Azure portálu tooedit ACRs hello.
+Můžete použít **záznamy řízení přístupu** okno v rámci **konfigurace** části služby Správce zařízení na portálu Azure, chcete-li upravit ACRs.
 
 > [!NOTE]
-> ACR, který je aktuálně používán, byste neměli upravovat. tooedit přidruženého ACR svazku, který je aktuálně používán, byste měli nejdřív vzít hello svazek offline.
+> ACR, který je aktuálně používán, byste neměli upravovat. Upravit ACR přidružené k svazku, který je aktuálně používán, byste měli nejdřív vzít svazek offline.
 
 
-Proveďte následující kroky tooedit ACR hello.
+Proveďte následující kroky, chcete-li upravit ACR.
 
-#### <a name="tooedit-an-acr"></a>tooedit ACR
+#### <a name="to-edit-an-acr"></a>Chcete-li upravit ACR
 
-1. Na cílovou stránku hello služby, vyberte svoji službu, klikněte dvakrát na hello název služby a potom v rámci hello **konfigurace** části **záznamy řízení přístupu**.
-2. V hello **záznamy řízení přístupu** okno z hello tabulkové seznam hello záznamy řízení přístupu, klikněte dvakrát na hello ACR chcete toomodify.
-3. V hello **upravit záznamy řízení přístupu** okně hello následující:
+1. Na stránce cílové služby, vyberte svoji službu, dvakrát klikněte na název služby a pak v rámci **konfigurace** části **záznamy řízení přístupu**.
+2. V **záznamy řízení přístupu** okno z tabulkové seznam záznamů, řízení přístupu, klikněte dvakrát na ACR, který chcete upravit.
+3. V **upravit záznamy řízení přístupu** okno, postupujte takto:
    
-    1. Zadejte hello IQN pro hello ACR.
+    1. Zadáním názvu IQN pro ACR.
    
-    2. Klikněte na tlačítko **Uložit** hello horní části okna toosave hello hello upravit ACR. Zobrazí následující potvrzující zpráva hello:
+    2. Klikněte na tlačítko **Uložit** v horní části okna uložit upravené ACR. Zobrazí následující potvrzující zpráva:
    
         ![Úpravy záznamů o řízení přístupu](./media/storsimple-virtual-array-manage-acrs/ova-edit-acrs.png)
 
 ## <a name="delete-an-access-control-record"></a>Odstranit záznam řízení přístupu
 
-Použít hello **konfigurace** stránku hello Azure portálu toodelete ACRs.
+Můžete použít **konfigurace** na portálu Azure odstranit ACRs.
 
 > [!NOTE]
 > 
-> * Nedoporučuje se mazat ACR, který je aktuálně používán. toodelete přidruženého ACR svazku, který je aktuálně používán, byste měli nejdřív vzít hello svazek offline.
-> * Při odstraňování ACR ze svazku, ujistěte se, že tohoto hostitele odpovídající hello není přístup k hello svazek, protože odstranění hello může mít za následek přerušení pro čtení a zápis.
+> * Nedoporučuje se mazat ACR, který je aktuálně používán. Pokud chcete odstranit ACR přidružené k svazku, který je aktuálně používán, byste měli nejdřív vzít svazek offline.
+> * Při odstraňování ACR ze svazku, ujistěte se, že odpovídající hostitele není přístup k svazku vzhledem k tomu, že odstranění může mít za následek přerušení pro čtení a zápis.
 
 
-Proveďte následující kroky toodelete záznam řízení přístupu hello.
+Proveďte následující kroky a odstraňte záznam řízení přístupu.
 
-#### <a name="toodelete-an-access-control-record"></a>toodelete záznam řízení přístupu
+#### <a name="to-delete-an-access-control-record"></a>Odstranit záznam řízení přístupu
 
-1. Na cílovou stránku hello služby, vyberte svoji službu, klikněte dvakrát na hello název služby a potom v rámci hello **konfigurace** části **záznamy řízení přístupu**.
+1. Na stránce cílové služby, vyberte svoji službu, dvakrát klikněte na název služby a pak v rámci **konfigurace** části **záznamy řízení přístupu**.
 
-2. V hello **záznamy řízení přístupu** okno z hello tabulkové seznam hello záznamy řízení přístupu, klikněte dvakrát na hello ACR chcete toodelete.
+2. V **záznamy řízení přístupu** okno z tabulkové seznam záznamů, řízení přístupu, klikněte dvakrát na ACR, který chcete odstranit.
 
-3. V okně hello úpravy přístupu řízení záznamy, klikněte na tlačítko **odstranit**.
+3. V okně Upravit přístup řízení záznamy klikněte na tlačítko **odstranit**.
    
     ![Odstranit ACRS](./media/storsimple-virtual-array-manage-acrs/ova-del-acrs.png)
 
-4. Po zobrazení výzvy k potvrzení, klikněte na tlačítko **odstranit** toocontinue s hello odstranění. tabulkový výčet Hello je aktualizovaný tooreflect hello odstranění.
+4. Po zobrazení výzvy k potvrzení, klikněte na tlačítko **odstranit** Chcete-li pokračovat v odstraňování. Tabulkový výčet je aktualizována tak, aby odrážela odstranění.
    
    ![Zpráva upozornění](./media/storsimple-virtual-array-manage-acrs/ova-del-acrs-warning.png)
 

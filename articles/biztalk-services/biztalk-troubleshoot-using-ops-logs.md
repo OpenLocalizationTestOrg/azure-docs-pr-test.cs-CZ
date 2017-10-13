@@ -1,5 +1,5 @@
 ---
-title: "BizTalk Services aaaTroubleshoot pomocí protokoly operací | Microsoft Docs"
+title: "Řešení potíží s služby BizTalk Services pomocí protokoly operací | Microsoft Docs"
 description: "Řešení potíží s služby BizTalk Services pomocí protokoly operací. MABS, WABS"
 services: biztalk-services
 documentationcenter: 
@@ -14,51 +14,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 102779ed6e29784f190c28e4102a7d9670614914
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c0c83361f94ffd9c30d7fcc551ff4b85ad7d6fa5
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="biztalk-services-troubleshoot-using-operation-logs"></a>BizTalk Services: Řešení problémů pomocí protokolů operací
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
-## <a name="what-are-hello-operation-logs"></a>Jaké jsou protokoly operací hello
-Protokoly operací je funkce služby správy, k dispozici v hello portál Azure classic, který vám umožní tooview historické protokoly operací týkajících se služeb Azure, včetně služby BizTalk Services. To vám umožní tooview historická data související s operací toomanagement na své předplatné služby BizTalk až 180 dní.
+## <a name="what-are-the-operation-logs"></a>Jaké jsou protokoly operací
+Protokoly operací je funkce služby pro správu, k dispozici na portálu Azure classic, který vám umožní zobrazit historické protokoly operací týkajících se služeb Azure, včetně služby BizTalk Services. To umožňuje zobrazit historická data týkající se správy operací na své předplatné služby BizTalk až 180 dní.
 
 > [!NOTE]
-> Tato funkce zaznamená pouze protokoly pro operace správy v BizTalk Services, například při spuštění služby hello, založenou na aktivní, a tak dále. Tyto operace jsou sledovány bez ohledu na to, jestli se provedlo z hello portál Azure classic nebo pomocí hello [rozhraní API REST služby BizTalk](http://msdn.microsoft.com/library/azure/dn232347.aspx). Úplný seznam operací, které jsou sledovány pomocí služby správy najdete v tématu [Operations sledovaných pomocí služeb Azure Management](#bizops).<br/><br/>
-> Není to zachytit hello protokoly pro aktivity související tooBizTalk běh služby (například zprávy zpracovává mostů atd.). tooview tyto protokoly, použijte hello zobrazení sledování z portálu služby BizTalk Services hello. Další informace najdete v tématu [sledování zpráv](http://msdn.microsoft.com/library/azure/hh949805.aspx).
+> Tato funkce zaznamená pouze protokoly pro operace správy v BizTalk Services, například při spuštění služby, založenou na aktivní, a tak dále. Tyto operace jsou sledovány bez ohledu na to, jestli se provedlo z portálu Azure classic nebo pomocí [rozhraní API REST služby BizTalk](http://msdn.microsoft.com/library/azure/dn232347.aspx). Úplný seznam operací, které jsou sledovány pomocí služby správy najdete v tématu [Operations sledovaných pomocí služeb Azure Management](#bizops).<br/><br/>
+> Není to zachytit v protokolech činnosti týkající se služby BizTalk runtime (například zprávy zpracovává mostů atd.). Pokud chcete zobrazit tyto protokoly, použijte zobrazení sledování z portálu služby BizTalk Services. Další informace najdete v tématu [sledování zpráv](http://msdn.microsoft.com/library/azure/hh949805.aspx).
 > 
 > 
 
 ## <a name="view-biztalk-services-operation-logs"></a>Zobrazení, protokoly operací služby BizTalk Services
-1. V hello portál Azure classic, vyberte **Management Services**a potom vyberte hello **protokoly operací** kartě.
-2. Můžete filtrovat na základě různých parametrů jako předplatné, rozsah kalendářních dat, typu služby (např. služby BizTalk), název služby nebo stav operace hello (úspěšné, neúspěšné) protokoly hello.
-3. Vyberte hello zaškrtnutí tooview hello filtrovaný seznam. Hello následující obrázek znázorňuje aktivity související tootestbiztalkservice: ![zobrazit protokoly operací][ViewLogs] 
-4. Vyberte řádek hello tooview Další informace o určité operace a klikněte na tlačítko **podrobnosti** hello hlavním panelu v dolní části hello.
+1. Na portálu Azure classic, vyberte **Management Services**a pak vyberte **protokoly operací** kartě.
+2. Můžete filtrovat na základě různých parametrů jako předplatné, rozsah kalendářních dat, typu služby (např. služby BizTalk), název služby nebo stav operace (úspěšné, neúspěšné) protokolů.
+3. Vyberte na značku zaškrtnutí zobrazíte filtrované seznamu. Následující obrázek znázorňuje aktivity související s testbiztalkservice: ![zobrazit protokoly operací][ViewLogs] 
+4. Chcete-li zobrazit více o konkrétní operaci, vyberte řádek a klikněte na **podrobnosti** na hlavním panelu v dolní části.
 
 ## <a name="bizops"></a>Operace sledovat pomocí služby Azure pro
-Hello následující tabulka uvádí hello operace, které jsou sledovány pomocí služeb Azure Management hello:
+Následující tabulka uvádí operace, které jsou sledovány pomocí služby pro Azure:
 
 | Název operace | Úkol |
 | --- | --- |
-| CreateBizTalkService |Operace toocreate novou službu BizTalk |
-| DeleteBizTalkService |Operace toodelete služby BizTalk |
-| RestartBizTalkService |Operace toorestart služby BizTalk |
-| StartBizTalkService |Operace toostart služby BizTalk |
-| StopBizTalkService |Operace toostop služby BizTalk |
-| DisableBizTalkService |Operace toodisable služby BizTalk |
-| EnableBizTalkService |Operace tooenable služby BizTalk |
-| BackupBizTalkService |Operace tooback až služby BizTalk |
-| RestoreBizTalkService |Operace toorestore služby BizTalk ze zadané zálohy |
-| SuspendBizTalkService |Operace toosuspend služby BizTalk |
-| ResumeBizTalkService |Operace tooresume služby BizTalk |
-| ScaleBizTalkService |Operace tooscale může služba BizTalk nahoru nebo dolů |
-| ConfigUpdateBizTalkService |Operace tooupdate hello konfigurace služby BizTalk |
-| ServiceUpdateBizTalkService |Operace tooupgrade nebo přechod na starší verzi jinou verzi tooa služby BizTalk |
-| PurgeBackupBizTalkService |Operace zálohování toopurge hello služby BizTalk mimo dobu uchování hello |
+| CreateBizTalkService |Operace vytvoření nové služby BizTalk |
+| DeleteBizTalkService |Operace odstranění služby BizTalk |
+| RestartBizTalkService |Operace restartování služby BizTalk |
+| StartBizTalkService |Operaci pro spuštění služby BizTalk |
+| StopBizTalkService |Operace zastavení služby BizTalk |
+| DisableBizTalkService |Operace zakázání služby BizTalk |
+| EnableBizTalkService |Operaci povolení služby BizTalk |
+| BackupBizTalkService |Operace zálohování služby BizTalk |
+| RestoreBizTalkService |Operace obnovení služby BizTalk ze zadané zálohy |
+| SuspendBizTalkService |Operace pozastavení služby BizTalk |
+| ResumeBizTalkService |Operace obnovení služby BizTalk |
+| ScaleBizTalkService |Operace škálování služby BizTalk nahoru nebo dolů |
+| ConfigUpdateBizTalkService |Operace se aktualizovat konfiguraci služby BizTalk |
+| ServiceUpdateBizTalkService |Operace k aktualizaci nebo starší verzi služby BizTalk na jinou verzi |
+| PurgeBackupBizTalkService |Operace k vyprázdnění zálohování služby BizTalk mimo dobu uchování |
 
 ## <a name="see-also"></a>Viz také
 * [Zálohování služby BizTalk](http://go.microsoft.com/fwlink/p/?LinkID=325584)
@@ -69,7 +69,7 @@ Hello následující tabulka uvádí hello operace, které jsou sledovány pomoc
 * [BizTalk Services: Karty Řídicí panel, Sledování a Škálování](http://go.microsoft.com/fwlink/p/?LinkID=302281)
 * [BizTalk Services: Omezování](http://go.microsoft.com/fwlink/p/?LinkID=302282)
 * [BizTalk Services: Název a klíč vystavitele](http://go.microsoft.com/fwlink/p/?LinkID=303941)
-* [Jak začít používat hello Azure BizTalk Services SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)
+* [Jak začít používat sadu SDK Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [ViewLogs]: ./media/biztalk-troubleshoot-using-ops-logs/Operation-Logs.png
 

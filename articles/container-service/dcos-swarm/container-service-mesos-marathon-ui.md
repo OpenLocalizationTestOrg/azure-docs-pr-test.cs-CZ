@@ -1,6 +1,6 @@
 ---
-title: "aaaManage Azure DC/OS clusteru pomocí uživatelského rozhraní Marathon | Microsoft Docs"
-description: "Nasazení služby clusteru Azure Container Service tooan kontejnery pomocí webového uživatelského rozhraní Marathon hello."
+title: "Správa clusteru Azure DC/OS pomocí uživatelského rozhraní Marathon | Microsoft Docs"
+description: "Využijte webového uživatelského rozhraní Marathon k nasazení kontejnerů do clusteru Azure Container Service."
 services: container-service
 documentationcenter: 
 author: dlepow
@@ -16,40 +16,40 @@ ms.workload: na
 ms.date: 04/04/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: a90180e1b4763e6d2ddfa699ed4b7269f209f728
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b00088bb005519dc5d533433308c0e3e33c7f433
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="manage-an-azure-container-service-dcos-cluster-through-hello-marathon-web-ui"></a>Spravovat clusteru Azure Container Service DC/OS prostřednictvím webového uživatelského rozhraní Marathon hello
-DC/OS poskytuje prostředí pro nasazování a škálování clusterových úloh a zároveň poskytuje abstrakci používaného hardwaru hello. Nad DC/OS je rozhraní, které spravuje plánování a provádění výpočetních úloh.
+# <a name="manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>Správa clusteru Azure Container Service DC/OS přes webové uživatelské rozhraní Marathon
+DC/OS poskytuje prostředí pro nasazování a škálování clusterových úloh a zároveň poskytuje abstrakci používaného hardwaru. Nad DC/OS je rozhraní, které spravuje plánování a provádění výpočetních úloh.
 
-Jsou k dispozici pro mnoho populárních úloh rozhraní, tento dokument popisuje, jak tooget začít s nasazením kontejnery pomocí Marathonu. 
+Jsou k dispozici pro mnoho populárních úloh rozhraní, tento dokument popisuje, jak začít nasazení kontejnerů pomocí Marathonu. 
 
 
 ## <a name="prerequisites"></a>Požadavky
-Než si projdete tyto příklady, budete potřebovat cluster DC/OS nakonfigurovaný v Azure Container Service. Budete také potřebovat clusteru toothis toohave vzdáleného připojení. Další informace o těchto položek najdete v tématu hello následující články:
+Než si projdete tyto příklady, budete potřebovat cluster DC/OS nakonfigurovaný v Azure Container Service. Kromě toho je nutné mít možnost se k tomuto clusteru připojit vzdáleně. Další informace k těmto záležitostem najdete v těchto článcích:
 
 * [Nasazení clusteru Azure Container Service](container-service-deployment.md)
-* [Připojení clusteru Azure Container Service tooan](../container-service-connect.md)
+* [Připojení ke clusteru Azure Container Service](../container-service-connect.md)
 
 > [!NOTE]
-> Tento článek předpokládá, že máte k dispozici tunel clusteru DC/OS toohello prostřednictvím místního portu 80.
+> Tento článek předpokládá, že máte k dispozici tunel na clusteru DC/OS prostřednictvím místního portu 80.
 >
 
-## <a name="explore-hello-dcos-ui"></a>Prozkoumejte hello uživatelského rozhraní DC/OS
-S tunel Secure Shell (SSH) [navázat](../container-service-connect.md), procházet toohttp://localhost/. To načte hello DC/OS webového uživatelského rozhraní a informace o hello clusteru, například využité prostředky, aktivní agenti a spuštěné služby.
+## <a name="explore-the-dcos-ui"></a>Zkoumáme uživatelské rozhraní DC/OS
+Po [vytvoření](../container-service-connect.md) tunelu Secure Shell (SSH) přejděte na http://localhost/. Načte se webové uživatelské rozhraní DC/OS a zobrazí se informace o clusteru, například využité prostředky, aktivní agenti a spuštěné služby.
 
 ![Uživatelské rozhraní DC/OS](./media/container-service-mesos-marathon-ui/dcos2.png)
 
-## <a name="explore-hello-marathon-ui"></a>Prozkoumejte hello uživatelského rozhraní Marathon
-toosee hello uživatelského rozhraní Marathon, přejděte toohttp://localhost/marathon. Prostřednictvím této obrazovky můžete spustit nový kontejner nebo jinou aplikaci v clusteru Azure Container Service DC/OS hello. Taky uvidíte informace o spuštěných kontejnerech a aplikacích.  
+## <a name="explore-the-marathon-ui"></a>Zkoumáme uživatelské rozhraní Marathon
+Pokud chcete zobrazit uživatelské rozhraní Marathon, přejděte na http://localhost/marathon. Prostřednictvím této obrazovky můžete spustit nový kontejner nebo jinou aplikaci z clusteru Azure Container Service na bázi DC/OS. Taky uvidíte informace o spuštěných kontejnerech a aplikacích.  
 
 ![Uživatelské rozhraní Marathon](./media/container-service-mesos-marathon-ui/dcos3.png)
 
 ## <a name="deploy-a-docker-formatted-container"></a>Nasazení kontejneru formátovaného Dockerem
-Klikněte na tlačítko toodeploy nový kontejner pomocí Marathonu, **vytvořit aplikaci**a zadejte následující informace do formuláře karet hello hello:
+Pokud chcete pomocí Marathonu nasadit nový kontejner, klikněte na **Create Application** (Vytvořit aplikaci) a zadejte na kartách formuláře následující informace:
 
 | Pole | Hodnota |
 | --- | --- |
@@ -66,7 +66,7 @@ Klikněte na tlačítko toodeploy nový kontejner pomocí Marathonu, **vytvořit
 
 ![Nová aplikace uživatelského rozhraní – porty a zjišťování služby](./media/container-service-mesos-marathon-ui/dcos6.png)
 
-Pokud chcete, aby toostatically mapy hello port kontejneru tooa port hello agenta, je třeba toouse režim JSON. toodo příliš tedy přepínač Průvodce novou aplikací hello**režim JSON** pomocí přepnutí hello. Potom zadejte následující nastavení v části hello hello `portMappings` části definice aplikace hello. Tento příklad vytvoří vazbu na port 80 hello kontejneru tooport 80 agenta DC/OS hello. Po provedení této změny můžete režim JSON v průvodci opět vypnout.
+Pokud chcete staticky namapovat port kontejneru na port agenta, budete muset použít režim JSON. Provedete to tak, že pomocí přepínače přepnete průvodce novou aplikací na **JSON Mode** (Režim JSON). Potom v části `portMappings` definice aplikace zadejte následující nastavení. Tento příklad namapuje port číslo 80 kontejneru na port číslo 80 agenta DC/OS. Po provedení této změny můžete režim JSON v průvodci opět vypnout.
 
 ```none
 "hostPort": 80,
@@ -74,42 +74,42 @@ Pokud chcete, aby toostatically mapy hello port kontejneru tooa port hello agent
 
 ![Nová aplikace uživatelského rozhraní – příklad u portu číslo 80](./media/container-service-mesos-marathon-ui/dcos13.png)
 
-Pokud chcete, aby tooenable kontroly stavu, nastavte cestu na hello **kontroluje stav** kartě.
+Pokud chcete povolit kontroly stavu, nastavte cestu na kartě **Health Checks** (Kontroly stavu).
 
 ![Nová aplikace uživatelského rozhraní – kontroly stavu](./media/container-service-mesos-marathon-ui/dcos_healthcheck.png)
 
-Hello clusteru DC/OS se nasazuje se sadou privátních a veřejných agentů. Hello clusteru toobe možné tooaccess aplikací z hello Internet musíte toodeploy hello aplikace tooa veřejného agenta. toodo tedy vyberte hello **volitelné** karta hello Průvodce novou aplikaci a zadejte **ACCEPTED** pro hello **role prostředků**.
+Cluster DC/OS se nasazuje se sadou privátních a veřejných agentů. Pokud chcete, aby měl cluster přístup k aplikacím z internetu, musíte aplikace nasadit s použitím veřejného agenta. Uděláte to následovně: V průvodci novou aplikací vyberete kartu **Optional** (Volitelné) a do **Accepted Resource Roles** (Povolené role prostředků) zadáte **slave_public**.
 
 Pak klikněte na **Create Application** (Vytvořit aplikaci).
 
 ![Nová aplikace uživatelského rozhraní – nastavení veřejného agenta](./media/container-service-mesos-marathon-ui/dcos14.png)
 
-Zpět na hlavní stránku Marathonu hello uvidíte stav nasazení hello hello kontejneru. Zpočátku uvidíte stav **Deploying** (Nasazování). Po úspěšné nasazení se hello změny stavu příliš**systémem**.
+Když se vrátíte na hlavní stránku Marathonu, uvidíte stav nasazení daného kontejneru. Zpočátku uvidíte stav **Deploying** (Nasazování). Po úspěšném nasazení se stav změní na **Running** (spuštěno).
 
 ![Hlavní stránka uživatelského rozhraní Marathon – stav nasazení kontejneru](./media/container-service-mesos-marathon-ui/dcos7.png)
 
-Pokud přepnete zpět toohello DC/OS webového uživatelského rozhraní (http://localhost/), uvidíte, že úloha (v tomto případě kontejner formátovaný) běží na clusteru DC/OS hello.
+Když přepnete zpět do webového uživatelského rozhraní DC/OS (http://localhost/), uvidíte, že úloha (v tomto případě kontejner formátovaný Dockerem) je spuštěná na clusteru DC/OS.
 
-![DC/OS webové uživatelské rozhraní – úloha spuštěná na clusteru hello](./media/container-service-mesos-marathon-ui/dcos8.png)
+![Webové uživatelské rozhraní DC/OS – úloha spuštěná na clusteru](./media/container-service-mesos-marathon-ui/dcos8.png)
 
-toosee hello uzlu, který hello úloha běží na, klikněte na tlačítko hello **uzly** kartě.
+Pokud chcete zobrazit uzel clusteru, na kterém je úloha spuštěná, klikněte na kartu **Nodes** (Uzly).
 
 ![Webové uživatelské rozhraní DC/OS – uzel clusteru úlohy](./media/container-service-mesos-marathon-ui/dcos9.png)
 
-## <a name="reach-hello-container"></a>Dosažení hello kontejneru
+## <a name="reach-the-container"></a>Dosažení kontejneru
 
-V tomto příkladu hello aplikace běží na uzlu veřejného agenta. Nedostanete hello aplikace hello internet procházením toohello agenta plně kvalifikovaný název domény clusteru hello: `http://[DNSPREFIX]agents.[REGION].cloudapp.azure.com`, kde:
+V tomto příkladu aplikace běží na uzlu veřejného agenta. Nedostanete aplikaci z Internetu procházením agenta plně kvalifikovaný název domény clusteru: `http://[DNSPREFIX]agents.[REGION].cloudapp.azure.com`, kde:
 
-* **DNSPREFIX** hello předpona DNS, který jste zadali při nasazení clusteru hello.
-* **OBLAST** hello oblast, ve kterém se nachází vaší skupiny prostředků.
+* **DNSPREFIX** je předpona DNS zadaná ve chvíli, kdy jste nasadili cluster.
+* **REGION** je oblast, ve které je umístěna skupina prostředků.
 
     ![Nginx z Internetu](./media/container-service-mesos-marathon-ui/nginx.png)
 
 
 ## <a name="next-steps"></a>Další kroky
-* [Práce s DC/OS a hello Marathon API](container-service-mesos-marathon-rest.md)
+* [Práce s DC/OS a rozhraním API Marathonu](container-service-mesos-marathon-rest.md)
 
-* Podrobné informace o hello Azure Container Service s Mesos
+* Podrobná prohlídka služby Azure Container Service s Mesos
 
     > [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON203/player]
     > 

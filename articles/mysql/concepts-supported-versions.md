@@ -1,6 +1,6 @@
 ---
-title: "verze aaaSupported ve službě Azure Database pro databázi MySQL | Microsoft Docs"
-description: "Popisuje verze hello podporované ve službě Azure Database pro databázi MySQL."
+title: "Podporované verze ve službě Azure Database pro databázi MySQL | Microsoft Docs"
+description: "Popisuje podporované verze ve službě Azure Database pro databázi MySQL."
 services: mysql
 author: v-chenyh
 ms.author: v-chenyh
@@ -9,23 +9,23 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 05/10/2017
-ms.openlocfilehash: 0adea61fd6bac9a1dfdf2f59917ef93a93713e85
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 04ccb4ab4e60a11cdce11ca8194c157b8e8f11f4
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Podporované Azure databáze MySQL verzí serveru
-Byla vytvořena databáze Azure pro databázi MySQL, z databáze MySQL Community Edition [MySQL Community Edition](https://www.mysql.com/products/community/), pomocí modulu InnoDB hello.  Databáze pro databázi MySQL Azure aktuálně podporuje následující verze hello.
+Byla vytvořena databáze Azure pro databázi MySQL, z databáze MySQL Community Edition [MySQL Community Edition](https://www.mysql.com/products/community/), pomocí modulu InnoDB.  Databáze pro databázi MySQL Azure aktuálně podporuje následující verze.
 
 ## <a name="mysql-version-5635"></a>Verze databáze MySQL 5.6.35
-Odkazovat toohello MySQL [dokumentace] (https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-35.html) Další informace o vylepšení a opravy v MySQL 5.6.35 toolearn.
+Podívejte se na MySQL [dokumentace] (https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-35.html) Další informace o vylepšení a opravy v MySQL 5.6.35.
 
 ## <a name="mysql-version-5717"></a>Verze databáze MySQL 5.7.17
-Odkazovat toohello MySQL [dokumentace] (https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-17.html) toolearn o vylepšení a opravy v MySQL 5.7.17.
+Podívejte se na MySQL [dokumentace] (https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-17.html) Další informace o vylepšení a opravy v MySQL 5.7.17.
 
 ## <a name="managing-updates-and-upgrades"></a>Správa aktualizací a upgradů
-Azure databáze pro databázi MySQL automaticky spravuje opravy pro vedlejší verze aktualizace. V současné době ve verzi public preview, nepodporuje upgrade hlavní verze. Například upgrade z databáze MySQL 5.6 tooMySQL 5.7 není podporován.
+Azure databáze pro databázi MySQL automaticky spravuje opravy pro vedlejší verze aktualizace. V současné době ve verzi public preview, nepodporuje upgrade hlavní verze. Například upgrade z databáze MySQL 5.6 MySQL 5.7 není podporován.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,5 +1,5 @@
 ---
-title: "aaaGet spuštění se Schedulerem na portálu Azure | Microsoft Docs"
+title: "Začínáme se Schedulerem na webu Azure Portal | Dokumentace Microsoftu"
 description: "Začínáme se Schedulerem na portálu Azure"
 services: scheduler
 documentationcenter: .NET
@@ -14,33 +14,33 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/10/2016
 ms.author: deli
-ms.openlocfilehash: 58255c0ad19da65932f8b1d36cb8fef1ff6e651b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 3861ee121ed1c4d086ea81640e84d924d7d17ea1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-scheduler-in-azure-portal"></a>Začínáme se Schedulerem na portálu Azure
-Je snadno toocreate naplánované úlohy ve službě Azure Scheduler. V tomto kurzu se dozvíte jak toocreate úlohu. Taky poznáte možnosti Scheduleru pro sledování a správu.
+Ve službě Azure Scheduler je vytváření plánovaných úloh snadné. V tomto kurzu se naučíte, jak vytvořit úlohu. Taky poznáte možnosti Scheduleru pro sledování a správu.
 
 ## <a name="create-a-job"></a>Vytvoření úlohy
-1. Přihlaste se příliš[portál Azure](https://portal.azure.com/).  
-2. Klikněte na tlačítko **+ nový** > typ *Plánovač* hello vyhledávacího pole > vyberte **Plánovač** ve výsledcích > klikněte na tlačítko **vytvořit**.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/).  
+2. Klikněte na **+Nový** > v poli pro vyhledávání zadejte *Scheduler* > ve výsledcích vyberte **Scheduler** > klikněte na **Vytvořit**.
    
     ![][marketplace-create]
-3. Teď vytvoříme úlohu, která jednoduše vyšle požadavek GET na http://www.microsoft.com/. V hello **Plánovač úloh** obrazovky, zadejte hello následující informace:
+3. Teď vytvoříme úlohu, která jednoduše vyšle požadavek GET na http://www.microsoft.com/. Na obrazovce **Úloha Scheduleru** zadejte následující informace:
    
    1. **Název:**`getmicrosoft`  
    2. **Předplatné:** Vaše předplatné Azure   
    3. **Kolekce úloh:** Vyberte existující kolekci úloh nebo klikněte na **Vytvořit novou** &gt; zadejte název.
-4. Vedle **nastavení akce**, definovat hello následující hodnoty:
+4. Dál klikněte na **Nastavení akce** a definujte tyto hodnoty:
    
    1. **Typ akce:**` HTTP`  
    2. **Metoda:**`GET`  
    3. **Adresa URL:**` http://www.microsoft.com`  
       
       ![][action-settings]
-5. Nakonec nastavíme plán. Hello úlohy by se mohl definovat jako jednorázová, ale My vytvoříme plán opakování:
+5. Nakonec nastavíme plán. Úloha se může definovat jako jednorázová, ale my vytvoříme plán opakování:
    
    1. **Opakování**: `Recurring`
    2. **Začátek**: Dnešní datum
@@ -51,7 +51,7 @@ Je snadno toocreate naplánované úlohy ve službě Azure Scheduler. V tomto ku
 6. Klikněte na **Vytvořit**
 
 ## <a name="manage-and-monitor-jobs"></a>Správa a sledování úloh
-Po vytvoření úlohy se zobrazí v hello hlavním řídicím panelu Azure. Klikněte na úlohu hello a nový otevře se okno s hello následující karty:
+Úloha se po vytvoření objeví v hlavním řídicím panelu Azure. Klikněte na úlohu a otevře se nové okno s těmito kartami:
 
 1. Vlastnosti  
 2. Nastavení akce  
@@ -62,34 +62,34 @@ Po vytvoření úlohy se zobrazí v hello hlavním řídicím panelu Azure. Klik
    ![][job-overview]
 
 ### <a name="properties"></a>Vlastnosti
-Tyto vlastnosti jen pro čtení popisují metadata správy hello pro úlohu Scheduleru hello.
+Tyto vlastnosti jsou jen pro čtení a popisují metadata správy pro úlohu Scheduleru.
 
    ![][job-properties]
 
 ### <a name="action-settings"></a>Nastavení akce
-Kliknutím na úlohu v hello **úlohy** obrazovce můžete tooconfigure, které úlohy. Díky tomu můžete nakonfigurovat upřesňující nastavení, pokud jste nenakonfigurovali v hello Průvodci rychlým vytvořením.
+Pokud chcete nakonfigurovat úlohu, klikněte na ni na obrazovce **Úlohy**. Pokud jste pokročilá nastavení nenakonfigurovali v průvodci rychlým vytvořením podle svých představ, můžete je konfigurovat tady.
 
-Pro všechny typy akcí můžete změnit zásady opakovaných pokusů hello a hello akci chyby.
+Pro všechny typy akcí můžete změnit zásady opakovaných pokusů a akci při chybě.
 
-Pro akce úlohy typy HTTP a HTTPS můžete změnit tooany hello metoda akce HTTP povolena. Můžete také přidat, odstranit nebo změnit hello hlavičky a základní ověřovací údaje.
+Pro akce úloh HTTP a HTTPS můžete změnit metodu na libovolnou povolenou operaci HTTP. Taky můžete přidat, odstranit nebo změnit hlavičky a základní ověřovací údaje.
 
-Pro akce fronty úložiště můžete změnit účet úložiště hello, název fronty, SAS token a text.
+Pro akce fronty úložiště můžete změnit účet úložiště, název fronty, token SAS a hlavní část.
 
-Pro akce sběrnice můžete změnit hello obor názvů, cestu k tématu/frontě, nastavení ověřování, typ přenosu, vlastnosti zprávy a text zprávy.
+Pro akce sběrnice můžete změnit obory názvů, cestu k tématu/frontě, nastavení ověření, typ přenosu, vlastnosti zprávy a hlavní část zprávy.
 
    ![][job-action-settings]
 
 ### <a name="schedule"></a>Plán
-Díky tomu můžete znovu nakonfigurovat plán hello, pokud chcete toochange hello plán, který jste vytvořili v hello Průvodci rychlým vytvořením.
+Pokud vám plán vytvořený v průvodci rychlým vytvořením nevyhovuje, můžete ho tady změnit.
 
-Jedná se možnost toobuild [komplexní plány a pokročilé opakování ve vaší úloze](scheduler-advanced-complexity.md)
+To je příležitost k sestavení [komplexních plánů a pokročilého opakování ve vaší úloze](scheduler-advanced-complexity.md).
 
-Můžete změnit hello počáteční datum a čas, plán opakování a hello koncové datum a čas (Pokud hello úloha opakuje).
+Můžete změnit datum a čas zahájení, plán opakování a datum a čas ukončení (pokud se úloha opakuje).
 
    ![][job-schedule]
 
 ### <a name="history"></a>Historie
-Hello **historie** karta zobrazené vybrané metriky pro každé provedení úlohy v systému hello hello vybrané úlohy. Tyto metriky poskytují v reálném čase hodnoty ohledně kondice vašeho Scheduleru hello:
+Na kartě **Historie** jsou zobrazené vybrané metriky pro každé provedení vybrané úlohy v systému. Tyto metriky v reálném čase poskytují hodnoty ohledně kondice vašeho Scheduleru:
 
 1. Status  
 2. Podrobnosti  
@@ -100,12 +100,12 @@ Hello **historie** karta zobrazené vybrané metriky pro každé provedení úlo
    
    ![][job-history]
 
-Kliknutím na spustit tooview jeho **podrobnosti historie**, včetně kompletní odpovědi hello na každé provedení. Toto dialogové okno vám umožní toocopy hello odpovědi toohello schránky.
+Můžete kliknout na běh a zobrazí se **Podrobnosti historie** včetně kompletní odpovědi na každé provedení. Toto dialogové okno vám taky umožní zkopírovat odpověď do schránky.
 
    ![][job-history-details]
 
 ### <a name="users"></a>Uživatelé
-Řízení přístupu na základě role ve službě Azure Scheduler umožňuje přesnou správu přístupu. jak toouse hello kartě Uživatelé odkazovat příliš toolearn[řízení přístupu](../active-directory/role-based-access-control-configure.md)
+Řízení přístupu na základě role ve službě Azure Scheduler umožňuje přesnou správu přístupu. Pokud se chcete naučit používat kartu Uživatelé, přečtěte si témě [Řízení přístupu Azure na základě rolí](../active-directory/role-based-access-control-configure.md).
 
 ## <a name="see-also"></a>Viz také
  [Co je Scheduler?](scheduler-intro.md)
@@ -114,7 +114,7 @@ Kliknutím na spustit tooview jeho **podrobnosti historie**, včetně kompletní
 
  [Plány a fakturace v Azure Scheduleru](scheduler-plans-billing.md)
 
- [Jak toobuild komplexní plány a pokročilé opakování ve službě Azure Scheduler](scheduler-advanced-complexity.md)
+ [Sestavení komplexních plánů a pokročilé opakování v Azure Scheduleru](scheduler-advanced-complexity.md)
 
  [Referenční materiály k rozhraní REST API Scheduleru](https://msdn.microsoft.com/library/mt629143)
 

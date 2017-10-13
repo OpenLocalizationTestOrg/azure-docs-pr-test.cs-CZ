@@ -1,6 +1,6 @@
 ---
-title: aaaAdd hello Microsoft Translator v aplikace logiky | Microsoft Docs
-description: "Přehled konektoru Microsoft Translator hello s parametry rozhraní REST API"
+title: "Přidání Microsoft Translator v aplikace logiky | Microsoft Docs"
+description: "Přehled konektoru Microsoft Translator s parametry rozhraní REST API"
 services: 
 suite: 
 documentationcenter: 
@@ -16,28 +16,28 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/07/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 598405dfbc13b340f34923157dfb967da5e7d55a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f36cd801a0572d671977e2e48a7f1e743e38e768
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="get-started-with-hello-microsoft-translator-connector"></a>Začínáme s konektorem Microsoft Translator hello
-Připojte tooMicrosoft překladač tootranslate text, zjistit jazyk a další. Microsoft Translator můžete: 
+# <a name="get-started-with-the-microsoft-translator-connector"></a>Začínáme s Microsoft Translator konektoru
+Připojte k Microsoft Translator převede text, zjistit jazyk a další. Microsoft Translator můžete: 
 
-* Sestavení vaší firmy toku na základě hello dat, které můžete získat z Microsoft Translator. 
-* Použijte akce tootranslate text, zjišťovat jazyk a další. Tyto akce se odpověď a pak proveďte výstup hello k dispozici pro další akce. Například když je vytvořen nový soubor v Dropbox, může překládat hello text v jazyce tooanother souboru hello pomocí Microsoft Translator.
+* Sestavení vaší firmy toku na základě dat, které můžete získat z Microsoft Translator. 
+* Pomocí akcí se převede text, zjistit jazyk a další. Tyto akce se odpověď a pak proveďte výstup k dispozici pro další akce. Například když je vytvořen nový soubor v Dropbox, může překládat text v souboru na jiném jazyce pomocí Microsoft Translator.
 
 Můžete začít s vytvářením aplikace logiky teď najdete v tématu [vytvoření aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md).
 
-## <a name="create-a-connection-toomicrosoft-translator"></a>Vytvoření připojení tooMicrosoft překladač
-> [!INCLUDE [Steps toocreate a connection tooMicrosoft Translator](../../includes/connectors-create-api-microsofttranslator.md)]
+## <a name="create-a-connection-to-microsoft-translator"></a>Umožňuje vytvořit připojení k Microsoft Translator
+> [!INCLUDE [Steps to create a connection to Microsoft Translator](../../includes/connectors-create-api-microsofttranslator.md)]
 > 
 > 
 
 ## <a name="connector-specific-details"></a>Podrobnosti o konkrétní konektor
 
-Zobrazit všechny aktivační události a akce definované v hello swagger a také zobrazit žádné limity v hello [connector – podrobnosti](/connectors/microsofttranslator/).
+Zobrazit všechny aktivační události a akce definované v swagger a také zobrazit žádné limity v [connector – podrobnosti](/connectors/microsofttranslator/).
 
 ## <a name="more-connectors"></a>Více konektorů
-Přejděte zpět toohello [rozhraní API seznamu](apis-list.md).
+Přejděte zpět [rozhraní API seznamu](apis-list.md).

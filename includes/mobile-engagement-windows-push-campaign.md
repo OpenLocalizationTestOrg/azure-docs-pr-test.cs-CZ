@@ -1,10 +1,10 @@
-Nyní vytvoříme kampaně jednoduché nabízených oznámení, který odesílá nabízená oznámení tooour aplikace pro práci s.
+Teď vytvoříme jednoduchou kampaň nabízených oznámení. Ta bude odesílat oznámení do vaší aplikace.
 
-1. Přejděte toohello **dosáhnout** na portálu Mobile Engagement.
-2. Klikněte na tlačítko **nové oznámení** toocreate kampaň nabízených oznámení.
+1. Na portálu Mobile Engagement přejděte na kartu **REACH**.
+2. Kliknutím na **Nové oznámení** vytvořte kampaň nabízených oznámení.
    
     ![](./media/mobile-engagement-windows-push-campaign/new-announcement.png)
-3. Nastavte první pole kampaně pomocí následujících kroků hello hello:
+3. Nastavte první pole kampaně pomocí následujících kroků:
    
     ![](./media/mobile-engagement-windows-push-campaign/campaign-first-params.png)
    
@@ -12,14 +12,14 @@ Nyní vytvoříme kampaně jednoduché nabízených oznámení, který odesílá
    
     b. U položky **Delivery time** (Čas doručení) nastavte možnost *Any time* (Kdykoli).
    
-    d. Do textu oznámení hello - zadejte hello **název** který bude v tučné v nabízené hello.
+    d. Do textu oznámení zadejte **Název**, který se v nabízeném oznámení zobrazí tučně.
    
     e. Do pole **Zpráva** zadejte zprávu.
-4. Přejděte dolů a v hello **obsahu** vyberte **pouze oznámení**.
+4. Přejděte dolů a v části **Obsah** vyberte **Pouze oznámení**.
    
     ![](./media/mobile-engagement-windows-push-campaign/campaign-content.png)
-5. Dokončení nastavení hello nejzákladnější kampaně možné. Nyní znovu přejděte dolů a klikněte na tlačítko hello **vytvořit** tlačítko toosave kampaně.
-6. Poslední krok: Kliknutím na **aktivovat** tooactivate kampaň a toosend nabízená oznámení.
+5. Tím jste dokončili nastavení nejzákladnější možné kampaně. Nyní znovu přejděte dolů a kliknutím na tlačítko **Vytvořit** kampaň uložte.
+6. Poslední krok: Kliknutím na **Aktivovat** aktivujte svoji kampaň a odešlete nabízená oznámení.
    
     ![](./media/mobile-engagement-windows-push-campaign/campaign-activate.png)
 

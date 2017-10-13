@@ -1,6 +1,6 @@
 ---
-title: "aaaTroubleshoot trasy – prostředí PowerShell | Microsoft Docs"
-description: "Zjistěte, jak tootroubleshoot směruje v modelu nasazení Azure Resource Manager hello pomocí Azure PowerShell."
+title: "Řešení potíží s trasy – prostředí PowerShell | Microsoft Docs"
+description: "Informace o řešení potíží s trasy v modelu nasazení Azure Resource Manager pomocí Azure PowerShell."
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: 7a07806df5c1d0caee921187e6ad29f6755ab535
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 141e3c571d744470fd07e99538b6e38d4144e8d7
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="troubleshoot-routes-using-azure-powershell"></a>Řešení potíží s postupy pomocí prostředí Azure PowerShell
 > [!div class="op_single_selector"]
@@ -28,48 +28,48 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Máte-li tooor problémy síťové připojení z vaší virtuální počítač Azure (VM), tras, které mohou ovlivňovat vaše datové přenosy virtuálních počítačů. Tento článek obsahuje přehled možností diagnostiky pro trasy toohelp pokračovat v řešení potíží.
+Pokud dochází k problémům se síťovým připojením do nebo z vaší virtuální počítač Azure (VM), tras, které mohou ovlivňovat vaše datové přenosy virtuálních počítačů. Tento článek obsahuje přehled možností diagnostiky pro směrování, aby mohl pomoct řešit problémy s další.
 
-Směrovací tabulky jsou spojeny s podsítěmi a platí na všech síťových rozhraní (NIC) v této podsíti. následující typy tras Hello může být použité tooeach síťové rozhraní:
+Směrovací tabulky jsou spojeny s podsítěmi a platí na všech síťových rozhraní (NIC) v této podsíti. Každé rozhraní sítě můžete použít následující typy trasy:
 
 * **Systémové trasy:** ve výchozím nastavení, má každá podsíť vytvořená ve virtuální síti Azure (VNet) systému směrovací tabulky, které umožňují místní provoz VNet, místní provoz prostřednictvím brány sítě VPN a přenosy z Internetu. Systémové trasy existovat také pro peered virtuální sítě.
-* **Trasy protokolu BGP:** rozšíří toonetwork rozhraní prostřednictvím ExpressRoute nebo VPN připojení site-to-site. Další informace o směrování protokolu BGP načtením hello [protokol BGP s bránami VPN](../vpn-gateway/vpn-gateway-bgp-overview.md) a [přehled ExpressRoute](../expressroute/expressroute-introduction.md) články.
-* **Trasy definované uživatelem (UDR):** použití virtuálních zařízení sítě nebo jsou vynutit tunelové propojení provoz tooan do místní sítě prostřednictvím sítě site-to-site VPN, může mít trasy definované uživatelem (udr) přidružené tabulky tras podsítě. Pokud si nejste obeznámeni s udr, přečtěte si hello [trasy definované uživatelem](virtual-networks-udr-overview.md#user-defined-routes) článku.
+* **Trasy protokolu BGP:** rozšíří na rozhraní sítě prostřednictvím ExpressRoute nebo VPN připojení site-to-site. Další informace o směrování protokolu BGP načtením [protokol BGP s bránami VPN](../vpn-gateway/vpn-gateway-bgp-overview.md) a [přehled ExpressRoute](../expressroute/expressroute-introduction.md) články.
+* **Trasy definované uživatelem (UDR):** Pokud používáte virtuální zařízení sítě nebo jsou vynucené tunelování provozu do místní sítě prostřednictvím sítě site-to-site VPN, může mít trasy definované uživatelem (udr) přidružené tabulky tras podsítě. Pokud si nejste obeznámeni s udr, přečtěte si [trasy definované uživatelem](virtual-networks-udr-overview.md#user-defined-routes) článku.
 
-S hello různé trasy, které můžou být použité tooa síťového rozhraní, může být obtížné toodetermine které agregační trasy jsou platné. toohelp řešení potíží s připojení k síti virtuálních počítačů, můžete zobrazit všechny hello efektivní trasy pro rozhraní sítě v modelu nasazení Azure Resource Manager hello.
+S různými tras, které lze použít k síťovému rozhraní může být obtížné určit, které agregační trasy jsou platné. Pomoc při řešení potíží s připojení k síti virtuálních počítačů, můžete zobrazit všechny efektivní trasy pro rozhraní sítě v modelu nasazení Azure Resource Manager.
 
-## <a name="using-effective-routes-tootroubleshoot-vm-traffic-flow"></a>Pomocí tok přenosů dat virtuálního počítače tootroubleshoot efektivní trasy
-Tento článek používá hello podle scénáře jako tooillustrate příklad, jak tootroubleshoot hello platné tras pro síťové rozhraní:
+## <a name="using-effective-routes-to-troubleshoot-vm-traffic-flow"></a>Řešení potíží s přenosy virtuálních počítačů pomocí efektivní trasy
+Tento článek používá následující scénář jako příklad k ukazují, jak vyřešit efektivní trasy pro síťové rozhraní:
 
-Virtuální počítač (*VM1*) připojené toohello virtuální síť (*VNet1*, předpona: 10.9.0.0/16) selže tooconnect tooa VM(VM3) ve virtuální síti nově peered (*VNet3*, předpony 10.10.0.0/16). Neexistují žádné udr nebo BGP směruje použité tooVM1 NIC1 síťové rozhraní připojené toohello virtuálních počítačů, se použijí jenom systémové trasy.
+Virtuální počítač (*VM1*) připojené k virtuální síti (*VNet1*, předpona: 10.9.0.0/16) nepodaří připojit k VM(VM3) ve virtuální síti nově peered (*VNet3*, předpony 10.10.0.0/16). Neexistují žádné udr nebo BGP směruje u VM1 NIC1 síťové rozhraní připojené k virtuálnímu počítači, se použijí jenom systémové trasy.
 
-Tento článek vysvětluje, jak toodetermine hello způsobit selhání připojení hello, pomocí funkce efektivní trasy v modelu nasazení správou prostředků Azure.
-Příklad hello používá jenom systémové trasy, hello stejný postup lze použít toodetermine selhání příchozí a odchozí připojení přes jakýkoli typ trasy.
+Tento článek vysvětluje, jak a zjistěte příčinu selhání připojení pomocí funkce efektivní trasy v modelu nasazení správou prostředků Azure.
+Tento příklad používá jenom systémové trasy, stejný postup slouží k určení selhání příchozí a odchozí připojení přes jakýkoli typ trasy.
 
 > [!NOTE]
-> Pokud virtuální počítač má více než jeden síťový adaptér připojený, zkontrolujte efektivní trasy pro každou hello tooand problémy síťové adaptéry toodiagnose síťové připojení z virtuálního počítače.
+> Pokud virtuální počítač má více než jeden síťový adaptér připojený, zkontrolujte efektivní trasy pro jednotlivé síťové adaptéry diagnostikovat problémy s připojením k síti do a z virtuálního počítače.
 > 
 > 
 
 ### <a name="view-effective-routes-for-a-virtual-machine"></a>Zobrazit účinné postupy pro virtuální počítač
-toosee hello agregační tras, které jsou použité tooa virtuálních počítačů, dokončení hello následující kroky:
+Agregace tras, které se použijí k virtuálnímu počítači najdete proveďte následující kroky:
 
 ### <a name="view-effective-routes-for-a-network-interface"></a>Zobrazit účinné postupy pro rozhraní sítě
-toosee hello agregační tras, které jsou použité tooa síťového rozhraní, dokončení hello následující kroky:
+Agregace tras, které se použijí k síťovému rozhraní najdete proveďte následující kroky:
 
-1. Spusťte tooAzure relaci a přihlaste se prostředí Azure PowerShell. Pokud si nejste obeznámeni s prostředím Azure PowerShell, přečtěte si hello [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) článku.
-2. Hello následující příkaz vrátí všechny trasy použít tooa síťové rozhraní s názvem *VM1 NIC1* ve skupině prostředků hello *RG1*.
+1. Spuštění z relace prostředí Azure PowerShell a do Azure. Pokud si nejste obeznámeni s prostředím Azure PowerShell, přečtěte si [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) článku.
+2. Následující příkaz vrátí všechny trasy použije k síťovému rozhraní s názvem *VM1 NIC1* ve skupině prostředků *RG1*.
    
        Get-AzureRmEffectiveRouteTable -NetworkInterfaceName VM1-NIC1 -ResourceGroupName RG1
    
    > [!TIP]
-   > Pokud neznáte název hello síťového rozhraní, zadejte následující příkaz tooretrieve hello názvy všech síťových rozhraní v group.* prostředků hello
+   > Pokud neznáte název síťového rozhraní, zadejte následující příkaz pro načtení názvy všech síťových rozhraní v group.* prostředků
    > 
    > 
    
        Get-AzureRmNetworkInterface -ResourceGroupName RG1 | Format-Table Name
    
-   Hello následující výstup vypadá podobně jako výstup toohello pro každý trasy použít toohello podsíť hello síťový adaptér je připojen k:
+   Tento výstup bude vypadat podobně jako výstup pro každý postup použije na podsíť, které síťový adaptér je připojen k:
    
        Name :
        State : Active
@@ -83,29 +83,29 @@ toosee hello agregační tras, které jsou použité tooa síťového rozhraní,
        NextHopType : Internet
        NextHopIpAddress : {}
    
-   Všimněte si následujících hello ve výstupu hello:
+   Všimněte si následující výstup:
    
-   * **Název**: název platná směrovací hello může být prázdný, pokud není výslovně uvedeno, pro trasy definované uživatelem. 
-   * **Stav**: označuje stav platná směrovací hello. Možné hodnoty jsou "Aktivní" nebo "Neplatná"
-   * **Adres**: Určuje předponu adresy hello hello efektivní trasy v notaci CIDR. 
-   * **nextHopType**: označuje hello další segment pro danou trasu hello. Možné hodnoty jsou *VirtualAppliance*, *Internet*, *VNetLocal*, *VNetPeering*, nebo *Null*. Hodnota *Null* pro **nextHopType** UDR může znamenat neplatná. Například pokud **nextHopType** je *VirtualAppliance* a hello sítě virtuální zařízení virtuálního počítače není zřízený nebo spuštěném stavu. Pokud **nextHopType** je *Brána VPN* a neexistuje žádná brána zřízený/běží v hello zadané virtuální síti, může zneplatní hello trasy.
-   * **NextHopIpAddress**: Určuje hello IP adresa dalšího směrování hello hello efektivní trasy.
+   * **Název**: název efektivní trasy, může být prázdný, pokud není výslovně uvedeno, pro trasy definované uživatelem. 
+   * **Stav**: označuje stav efektivní trasy. Možné hodnoty jsou "Aktivní" nebo "Neplatná"
+   * **Adres**: Určuje předpona adresy efektivní trasy v notaci CIDR. 
+   * **nextHopType**: označuje dalšího přechodu pro danou trasu. Možné hodnoty jsou *VirtualAppliance*, *Internet*, *VNetLocal*, *VNetPeering*, nebo *Null*. Hodnota *Null* pro **nextHopType** UDR může znamenat neplatná. Například pokud **nextHopType** je *VirtualAppliance* a virtuální zařízení sítě virtuálního počítače není zřízený nebo spuštěném stavu. Pokud **nextHopType** je *Brána VPN* a neexistuje žádná brána zřízený/běží v dané virtuální síti, může zneplatní trasy.
+   * **NextHopIpAddress**: Určuje IP adresu dalšího přechodu efektivní trasy.
    
-   Hello následující příkaz vrátí hello trasy v jednodušší tooview tabulce:
+   Následující příkaz vrátí trasy v snazší zobrazení tabulky:
    
        Get-AzureRmEffectiveRouteTable -NetworkInterfaceName VM1-NIC1 -ResourceGroupName RG1 | Format-Table
    
-   Hello následující výstup je některý obdržel hello scénář popsaný dřív výstup hello:
+   Následující výstup je některé výstup, přijal scénář popsaný dříve:
    
        Name State AddressPrefix NextHopType NextHopIpAddress
        ---- ----- ------------- ----------- ----------------
        Active {10.9.0.0/16} VnetLocal {}
        Active {0.0.0.0/0} Internet {}
-3. Neexistuje žádná trasa uvedené toohello *WestUS VNet3* virtuální síť (předpony 10.10.0.0/16)** z *WestUS VNet1* (předpony 10.9.0.0/16) ve výstupu hello hello v předchozím kroku. Jak ukazuje následující obrázek hello, hello partnerského vztahu propojení virtuální sítě s hello *WestUS VNet3* virtuální sítě je v hello *odpojeno* stavu.
+3. Neexistuje žádná trasa uvedené *WestUS VNet3* virtuální síť (předpony 10.10.0.0/16)** z *WestUS VNet1* (předpony 10.9.0.0/16) ve výstupu z předchozího kroku. Jak je znázorněno na následujícím obrázku, virtuální síť partnerského vztahu propojení *WestUS VNet3* virtuální sítě je v *odpojeno* stavu.
    
     ![](./media/virtual-network-routes-troubleshoot-portal/image4.png)
    
-    Hello obousměrný odkaz pro partnerský vztah hello se přeruší, která vysvětluje, proč VM1 se nemohl připojit tooVM3 v hello *WestUS VNet3* virtuální sítě. Instalační program partnerského vztahu odkaz obousměrný virtuální síť znovu pro *WestUS VNet1* a *WestUS VNet3* virtuální sítě. výstup Hello po správně vytvoření partnerského vztahu propojení virtuální sítě hello takto:
+    Obousměrná odkaz pro partnerského vztahu se přeruší, která vysvětluje, proč VM1 se nemohl připojit k VM3 v *WestUS VNet3* virtuální sítě. Instalační program partnerského vztahu odkaz obousměrný virtuální síť znovu pro *WestUS VNet1* a *WestUS VNet3* virtuální sítě. Výstup po správně vytvoření partnerského vztahu propojení virtuální sítě zahrnuje:
    
         Name State AddressPrefix NextHopType NextHopIpAddress
         ---- ----- ------------- ----------- ----------------
@@ -113,26 +113,26 @@ toosee hello agregační tras, které jsou použité tooa síťového rozhraní,
         Active {10.10.0.0/16} VNetPeering {}
         Active {0.0.0.0/0} Internet {}
    
-    Po určení hello problém, můžete přidat, odebrat, nebo změňte trasy a směrovacích tabulek. Zadejte následující příkaz toosee seznam hello příkazy používané toodo tak hello:
+    Po určení problém, můžete přidat, odebrat, nebo změňte trasy a směrovacích tabulek. Pomocí následujícího příkazu zobrazte seznam příkazů určených k tomu:
    
         Get-Help *-AzureRmRouteConfig
 
 ## <a name="considerations"></a>Požadavky
-Vrátí pár věcí tookeep pamatujte při revizi hello seznam tras:
+Pokud kontrola seznam tras vrátí mějte na paměti několik akcí:
 
-* Směrování je založena na nejdelší shody předpony (LPM) mezi udr, směrování protokolu BGP a systému. Pokud existuje víc tras s hello stejné LPM shodují, pak trasa se vybere na základě původu v hello následující pořadí:
+* Směrování je založena na nejdelší shody předpony (LPM) mezi udr, směrování protokolu BGP a systému. Pokud existuje víc tras se stejnou shodou LPM, pak trasa se vybere na základě původu v následujícím pořadí:
   
   * Trasy definované uživatelem
   * Trasa protokolu BGP
   * Trasy systému (výchozí)
     
-    S efektivní směrování uvidí jenom účinné postupy, které jsou založené na všechny dostupné trasy hello shodou LPM. Ukazuje, jak se ve skutečnosti vyhodnocují hello trasy pro daný síťový adaptér, proto je mnohem snazší konkrétní trasy tootroubleshoot, které mohou ovlivňovat připojení z virtuálního počítače.
-* Pokud máte udr a odesílání přenosů tooa sítě virtuální zařízení (hodnocení chyb zabezpečení), s *VirtualAppliance* jako **nextHopType**, ujistěte se, zda je povoleno předávání IP na provoz přijímající hello hello hodnocení chyb zabezpečení nebo dojde ke ztrátě paketů. 
-* Pokud vynuceném tunelovém propojení je povoleno, bude veškerý odchozí internetový provoz směrovaný tooon místní. Připojení RDP/SSH z Internetu tooyour, kterou virtuální počítač nemusí fungovat s tímto nastavením, v závislosti na tom, jak hello místní zpracovává tento provoz. 
+    S efektivní směrování uvidí jenom účinné postupy, které jsou založené na všechny dostupné trasy shodou LPM. Ukazuje, jak se ve skutečnosti vyhodnocují trasy pro daný síťový adaptér, díky tomu mnohem snazší řešení potíží s konkrétní trasy, které mohou ovlivňovat připojení z virtuálního počítače.
+* Pokud máte udr a odesílání provozu pro virtuální síťové zařízení (hodnocení chyb zabezpečení), s *VirtualAppliance* jako **nextHopType**, ujistěte se, zda je na hodnocení chyb zabezpečení, který provoz přijímá povolena předávání IP nebo dojde ke ztrátě paketů. 
+* Pokud vynuceném tunelovém propojení je povoleno, veškerý odchozí internetový provoz se směruje na místní. Připojení RDP/SSH z Internetu do virtuální počítač nemusí fungovat s tímto nastavením, v závislosti na tom, jak místní zpracovává tento provoz. 
   Můžete povolit vynucené tunelování:
   * Pokud připojení site-to-site VPN pomocí nastavení trasy definované uživatelem (UDR) s nextHopType jako brány sítě VPN
   * Pokud je výchozí trasy inzerované přes protokol BGP
-* Pro virtuální síť správně, partnerský vztah toowork provozu systému trasa se **nextHopType** *VNetPeering* pro hello peered rozsahu předpony virtuální sítě, musí existovat. Pokud tyto trasy neexistuje a hello partnerský vztah virtuální síť odkaz vypadá v pořádku:
-  * Počkejte několik sekund a opakovat, pokud se jedná o nově vytvořeným partnerského vztahu odkaz. Někdy trvá déle, toopropagate trasy tooall hello síťových rozhraní v podsíti.
-  * Skupina zabezpečení sítě (NSG) pravidla, které mohou ovlivňovat hello přenosové toky. Další informace najdete v tématu hello [odstraňování skupin zabezpečení sítě](virtual-network-nsg-troubleshoot-powershell.md) článku.
+* Pro virtuální síť partnerského vztahu provoz fungovala správně, systémová trasa s **nextHopType** *VNetPeering* peered VNet předponu rozsahu, musí existovat. Pokud tyto trasy neexistuje a partnerského vztahu propojení virtuální sítě vypadá v pořádku:
+  * Počkejte několik sekund a opakovat, pokud se jedná o nově vytvořeným partnerského vztahu odkaz. Někdy trvá déle šířil trasy na všech síťových rozhraní v podsíti.
+  * Skupina zabezpečení sítě (NSG) pravidla, které mohou ovlivňovat tok provozu. Další informace najdete v tématu [odstraňování skupin zabezpečení sítě](virtual-network-nsg-troubleshoot-powershell.md) článku.
 

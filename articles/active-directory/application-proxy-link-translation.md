@@ -1,6 +1,6 @@
 ---
-title: aaaTranslate odkazy a Proxy aplikace Azure AD adresy URL | Microsoft Docs
-description: "Popisuje hello základní informace o Azure AD Application Proxy konektory."
+title: "Převede uzel odkazy a Proxy aplikace Azure AD adresy URL | Microsoft Docs"
+description: "Popisuje základní informace o Azure AD Application Proxy konektory."
 services: active-directory
 documentationcenter: 
 author: kgremban
@@ -15,78 +15,78 @@ ms.date: 08/10/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 7ec2b9fb01617067cf5d676037877bf72c19217b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 57218346d236b376d2227e0ffaea6c6dd5ebe855
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Přesměrování pevně zakódované odkazy k aplikacím publikovaným pomocí proxy aplikace služby Azure AD
 
-Proxy aplikace služby Azure AD díky vaše místní aplikace k dispozici toousers, kdo jsou vzdálené nebo na jejich vlastní zařízení. Některé aplikace, ale měla vyvinuté pomocí místních odkazů v hello HTML. Tyto odkazy nefungují správně, při aplikace hello používá vzdáleně. Až budete mít několik místní aplikace bodu tooeach jiné, uživatelé očekávají, že tookeep odkazy hello pracovat, když nejsou v hello office. 
+Proxy aplikace služby Azure AD umožňuje místní aplikace k dispozici pro uživatele, kteří jsou vzdálené nebo na jejich vlastní zařízení. Některé aplikace, ale měla vyvinuté pomocí místních odkazů vložených v kódu HTML. Tyto odkazy správně nefungují, pokud je aplikace používat vzdáleně. Pokud máte několik místní aplikace, přejděte na sobě navzájem, uživatelé očekávají, že na odkazy pokračovat v práci při jejich nejste v kanceláři. 
 
-Hello nejlepší způsob, jak toomake se, že odkazy fungovaly hello stejné prostředí uvnitř a mimo podnikovou síť je tooconfigure hello externí adresy URL vaší aplikace toobe hello stejné jako jejich interní adresy URL. Použití [vlastní domény](active-directory-application-proxy-custom-domains.md) tooconfigure vaše externí adresy URL toohave podnikové doméně název místo hello výchozí doméně proxy aplikace.
+Ke konfiguraci externí adresy URL aplikací být stejné jako jejich interní adresy URL je nejlepší způsob, jak se ujistěte, že odkazy fungovat stejně uvnitř i vně podnikové sítě. Použití [vlastní domény](active-directory-application-proxy-custom-domains.md) nakonfigurovat tak, aby měl název vaší firemní domény místo výchozí domény proxy aplikace vašeho externí adresy URL.
 
-Pokud nemůžete použít vlastní domény ve vašem klientovi, hello odkaz překlad funkce proxy aplikací zajišťuje vaše odkazy práce bez ohledu na to, kde jsou vaši uživatelé. Pokud máte aplikace, které bod přímo toointernal koncových bodů nebo porty, můžete namapovat tyto interní toohello adresy URL publikovat externí adresy URL Proxy aplikace. Pokud je povoleno překlad odkaz, a hledá Proxy aplikací pomocí jazyka HTML, CSS a vyberte značky jazyka JavaScript pro publikované interní odkazy. Potom hello Proxy aplikace služby znamená, že je tak, aby uživatelé získají bez přerušení prostředí.
+Pokud nemůžete použít vlastní domény ve vašem klientovi, funkci překlad odkazů proxy aplikací zajišťuje vaše odkazy práce bez ohledu na to, kde jsou vaši uživatelé. Pokud máte aplikace, které přejděte přímo na vnitřních koncových bodů nebo porty, můžete namapovat tyto interní adresy URL publikované externí URL Proxy aplikace. Pokud je povoleno překlad odkaz, a hledá Proxy aplikací pomocí jazyka HTML, CSS a vyberte značky jazyka JavaScript pro publikované interní odkazy. Potom služba Proxy aplikace znamená, že je tak, aby uživatelé získají bez přerušení prostředí.
 
 >[!NOTE]
->Hello odkaz překlad funkce je pro klienty, kteří pro ať důvodu, nemůžete použít vlastní domény toohave hello stejné interní a externí adresy URL pro svoje aplikace. Před povolením této funkce najdete v části Pokud [vlastních domén v Azure AD Application Proxy](active-directory-application-proxy-custom-domains.md) může fungovat pro vás.
+>Funkce překladu odkaz je pro klienty, kteří ať důvodu, nelze použít vlastní domény tak, aby měl stejné interní a externí adresy URL pro svoje aplikace. Před povolením této funkce najdete v části Pokud [vlastních domén v Azure AD Application Proxy](active-directory-application-proxy-custom-domains.md) může fungovat pro vás.
 >
->Pokud potřebujete tooconfigure s odkaz překlad aplikace hello služby SharePoint, naleznete v [konfigurace mapování alternativních adres URL pro službu SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx) pro jiné odkazy toomapping přístup.
+>Nebo, pokud je aplikace, budete muset nakonfigurovat s odkazem překlad služby SharePoint, najdete v části [konfigurace mapování alternativních adres URL pro službu SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx) jiný způsob mapování odkazy.
 
 ## <a name="how-link-translation-works"></a>Jak funguje překlad propojení
 
-Po ověření když hello proxy serveru předá hello aplikace dat toohello uživatele, Proxy aplikace prohledá hello aplikace pro pevně zakódované odkazy a nahradí je jejich odpovídající publikovaná externí adresy URL.
+Po ověření pokud proxy server předává data aplikací pro uživatele, Proxy aplikace vyhledá aplikace pro pevně zakódované odkazy a nahradí je jejich odpovídajících publikovaná externí adresy URL.
 
-Proxy aplikace se předpokládá, že aplikace jsou kódování ve formátu UTF-8. Pokud to není hello případ, zadejte typ kódování hello v hlavičce http odpovědi jako `Content-Type:text/html;charset=utf-8`.
+Proxy aplikace se předpokládá, že aplikace jsou kódování ve formátu UTF-8. Pokud není tento případ, zadejte typ kódování v hlavičce http odpovědi jako `Content-Type:text/html;charset=utf-8`.
 
 ### <a name="which-links-are-affected"></a>Odkazy, které se vztahuje?
 
-funkce překladu propojení Hello pouze vyhledá odkazy, které jsou v kódu značek v textu hello aplikace. Proxy aplikace má samostatné funkce pro překlad adres URL nebo soubory cookie v záhlaví. 
+Funkci překlad odkazů pouze vyhledá odkazy, které jsou v kódu značek v těle aplikace. Proxy aplikace má samostatné funkce pro překlad adres URL nebo soubory cookie v záhlaví. 
 
 Existují dva typy běžné interní odkazů v místním aplikacím:
 
-- **Relativní odkazy interní** tento bod tooa sdíleného prostředku do místního souboru struktury jako `/claims/claims.html`. Tyto odkazy se automaticky fungovat v aplikacích, které jsou publikované prostřednictvím Proxy aplikace a pokračovat toowork s nebo bez překladu odkaz. 
-- **Vnitřní propojení pevně zakódované** tooother místní aplikace, jako je `http://expenses` nebo publikovat soubory, jako jsou `http://expenses/logo.jpg`. Hello odkaz překlad funkce funguje na interní odkazy pevně zakódované a změní jejich toopoint toohello externí adresy URL vyžadující toogo prostřednictvím vzdálených uživatelů.
+- **Relativní odkazy interní** , přejděte na příkaz sdíleného prostředku do místního souboru struktury jako `/claims/claims.html`. Tyto odkazy se automaticky fungovat v aplikacích, které jsou publikované prostřednictvím Proxy aplikace a pokračovat v práci s nebo bez překladu odkaz. 
+- **Vnitřní propojení pevně zakódované** do jiných aplikací místní jako `http://expenses` nebo publikovat soubory, jako jsou `http://expenses/logo.jpg`. Funkci překlad odkazů na interní odkazy pevně zakódované funguje a je tak, aby odkazoval na externí adresy URL, které je třeba projít vzdálení uživatelé změní.
 
-### <a name="how-do-apps-link-tooeach-other"></a>Jak aplikace propojit tooeach další?
+### <a name="how-do-apps-link-to-each-other"></a>Jak aplikace propojit k sobě navzájem?
 
-Překlad odkaz je povolené pro každou aplikaci tak, aby budete mít kontrolu nad hello činnost koncového uživatele pro aplikaci na úrovni hello. Zapnout překlad odkaz pro aplikaci, když chcete, aby odkazy hello *z* přeložit toobe této aplikace, není odkazy *k* tuto aplikaci. 
+Překlad odkaz je povolena pro každou aplikaci tak, že budete mít kontrolu nad činnost koncového uživatele na úrovni pro aplikaci. Zapnout překlad odkaz pro aplikaci, když chcete, aby odkazy *z* aplikaci k převodu, není odkazy *k* tuto aplikaci. 
 
-Předpokládejme například, že máte tři aplikacích publikovaných prostřednictvím Proxy aplikace, že všechny odkaz tooeach jiných: výhody, náklady a cesta. Je čtvrtá aplikaci a zpětnou vazbu, která není publikována prostřednictvím Proxy aplikace.
+Předpokládejme například, že máte tři aplikacích publikovaných prostřednictvím Proxy aplikace všech propojení mezi sebou: výhody, náklady a cesta. Je čtvrtá aplikaci a zpětnou vazbu, která není publikována prostřednictvím Proxy aplikace.
 
-Když povolíte překlad odkaz pro aplikaci hello výhody, tooExpenses hello odkazy a cesta jsou přesměrovaného toohello externí adresy URL pro tyto aplikace, ale hello odkaz tooFeedback není přesměrován, protože neexistuje žádná externí adresa URL. Odkazy z výdajů a cesta back tooBenefits nefungují, protože odkaz překlad nebyla povolena pro tyto dvě aplikace.
+Když povolíte překlad odkaz pro aplikaci výhody, odkazy na výdaje a cesta přesměrování na externí adresy URL pro tyto aplikace, ale odkaz zpětná vazba není přesměrován, protože neexistuje žádná externí adresa URL. Nefungují odkazy z výdajů a cesta zpět na výhody, protože odkaz překlad nebyla povolena pro tyto dvě aplikace.
 
-![Odkazy z aplikací tooother výhody, pokud je povoleno překlad odkaz](./media/application-proxy-link-translation/one_app.png)
+![Odkazy z výhody do jiných aplikací, pokud je povoleno překlad odkaz](./media/application-proxy-link-translation/one_app.png)
 
 ### <a name="which-links-arent-translated"></a>Odkazy, které nejsou přeloženy?
 
-tooimprove výkonu a zabezpečení, nejsou některé odkazy přeložit:
+Pro zvýšení výkonu a zabezpečení, nejsou přeložit některé odkazy:
 
 - Odkazy není uvnitř značky kódu. 
 - Odkazy nejsou v HTML, CSS a JavaScript. 
-- Vnitřní propojení otevřít z jiných aplikací. Odkazy budou odesílat prostřednictvím e-mailu nebo pomocí rychlé zprávy nebo součástí jiné dokumenty, nebude možné přeložit. Hello uživatelé potřebovat tooknow toogo toohello externí URL.
+- Vnitřní propojení otevřít z jiných aplikací. Odkazy budou odesílat prostřednictvím e-mailu nebo pomocí rychlé zprávy nebo součástí jiné dokumenty, nebude možné přeložit. Uživatelé musí vědět, přejít na externí adresu URL.
 
-Pokud potřebujete toosupport jednu z těchto dvou scénářů, použijte hello stejné interní a externí adresy URL místo překlad odkaz.  
+Pokud potřebujete podporovat některý z těchto dvou scénářů, použijte místo odkaz překlad stejné interní a externí adresy URL.  
 
 ## <a name="enable-link-translation"></a>Povolit překlad odkaz
 
 Začínáme s překlad odkaz je stejně snadná jako kliknutí na tlačítko:
 
-1. Přihlaste se toohello [portál Azure](https://portal.azure.com) jako správce.
-2. Přejděte příliš**Azure Active Directory** > **podnikové aplikace, které** > **všechny aplikace** > hello vyberte aplikaci, které se mají toomanage > **Proxy aplikace**.
-3. Zapnout **překládat adresy URL v textu aplikace** příliš**Ano**.
+1. Přihlaste se na webu [Azure Portal](https://portal.azure.com) jako správce.
+2. Přejděte na **Azure Active Directory** > **podnikové aplikace, které** > **všechny aplikace** > vyberte aplikaci, kterou chcete spravovat > **proxy aplikace**.
+3. Zapnout **překládat adresy URL v textu aplikace** k **Ano**.
 
-   ![Vyberte Ano tootranslate adresy URL v textu aplikace](./media/application-proxy-link-translation/select_yes.png).
-4. Vyberte **Uložit** tooapply změny.
+   ![Vyberte možnost Ano překládat adresy URL v textu aplikace](./media/application-proxy-link-translation/select_yes.png).
+4. Vyberte **Uložit** proveďte změny.
 
-Teď když vaši uživatelé přístup k této aplikaci, hello proxy automaticky vyhledá interní adresy URL, které byly publikovány prostřednictvím Proxy aplikace na klientovi.
+Teď když vaši uživatelé přístup k této aplikaci, proxy server automaticky vyhledá interní adresy URL, které byly publikovány prostřednictvím Proxy aplikace na klientovi.
 
 ## <a name="send-feedback"></a>Pošlete svůj názor
 
-Chceme, aby vaše nápovědy toomake tento pracovní funkce pro všechny aplikace. Jsme hledání více než 30 značky v kódu HTML a CSS a jsou vzhledem k tomu, které toosupport případech JavaScript. Pokud máte příkladem generovaného odkazy, které nejsou se překlad vztahuje, pošlete fragmentu kódu příliš[zpětnou vazbu Proxy aplikací](mailto:aadapfeedback@microsoft.com). 
+Chceme, abyste Ujistěte se, tato funkce fungovat pro všechny aplikace. Jsme hledání více než 30 značky v kódu HTML a CSS a jsou vzhledem k tomu, který JavaScript případů pro podporu. Pokud máte příkladem generovaného odkazy, které nejsou se překlad vztahuje, pošlete fragment kódu do [zpětnou vazbu Proxy aplikací](mailto:aadapfeedback@microsoft.com). 
 
 ## <a name="next-steps"></a>Další kroky
-[Použití vlastních domén s Azure AD Application Proxy](active-directory-application-proxy-custom-domains.md) toohave hello stejnou interní a externí adresu URL
+[Použití vlastních domén s Azure AD Application Proxy](active-directory-application-proxy-custom-domains.md) mít stejnou interní a externí adresu URL
 
 [Konfigurace mapování alternativních adres URL pro službu SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx)

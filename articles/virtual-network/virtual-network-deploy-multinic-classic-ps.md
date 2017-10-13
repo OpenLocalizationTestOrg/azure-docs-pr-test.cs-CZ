@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate virtuální počítač (klasický) s více síťovými kartami - prostředí Azure PowerShell | Microsoft Docs"
-description: "Zjistěte, jak toocreate virtuální počítač (klasický) s více síťovými kartami pomocí prostředí PowerShell."
+title: "Vytvoření virtuálního počítače (klasické) s více síťovými kartami - prostředí Azure PowerShell | Microsoft Docs"
+description: "Naučte se vytvořit virtuální počítač (klasický) s více síťovými kartami pomocí prostředí PowerShell."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,42 +16,42 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 90c967929bb418042c3fb7079e0f69246faac53c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 923d4817d96399fc423b0a89cbf88f8d397f1af0
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="create-a-vm-classic-with-multiple-nics-using-powershell"></a>Vytvoření virtuálního počítače (klasické) s více síťovými kartami pomocí prostředí PowerShell
 
 [!INCLUDE [virtual-network-deploy-multinic-classic-selectors-include.md](../../includes/virtual-network-deploy-multinic-classic-selectors-include.md)]
 
-Můžete vytvořit virtuální počítače (VM) v Azure a připojit více síťových rozhraní (NIC) tooeach vaše virtuálních počítačů. Několik síťových adaptérů povolit oddělení typů přenosů mezi síťové adaptéry. Například jedna síťová karta může komunikovat s hello Internetu, zatímco jiné komunikuje jenom s interním prostředkům není připojen toohello Internetu. Hello možnost tooseparate síťový provoz na několik síťových adaptérů je vyžadována pro mnoho síťových virtuálních zařízení, například doručení aplikace a řešení optimalizace sítě WAN.
+Můžete vytvořit virtuální počítače (VM) v Azure a připojit více síťových rozhraní (NIC) ke každému z virtuálních počítačů. Několik síťových adaptérů povolit oddělení typů přenosů mezi síťové adaptéry. Jeden síťový adaptér může například komunikují přes Internet, zatímco jiné komunikuje jenom s interním prostředkům, které nejsou připojené k Internetu. Schopnost oddělit síťový provoz na několik síťových adaptérů je vyžadována pro mnoho síťových virtuálních zařízení, například doručení aplikace a řešení optimalizace sítě WAN.
 
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení classic hello. Společnost Microsoft doporučuje, aby většina nových nasazení používala model Resource Manager hello. Zjistěte, jak tooperform tyto kroky, pomocí hello [modelu nasazení Resource Manager](virtual-network-deploy-multinic-arm-ps.md).
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../resource-manager-deployment-model.md). Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Naučte se provádět tyto kroky, pomocí [modelu nasazení Resource Manager](virtual-network-deploy-multinic-arm-ps.md).
 
 [!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
-Hello následující postup použijte skupinu prostředků s názvem *IaaSStory* pro hello webové servery a skupinu prostředků s názvem *IaaSStory back-end* pro servery hello DB.
+Následující postup použijte skupinu prostředků s názvem *IaaSStory* pro webové servery a skupinu prostředků s názvem *IaaSStory back-end* pro servery DB.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před vytvořením hello servery DB, musíte toocreate hello *IaaSStory* skupina prostředků se všechny hello potřebné prostředky pro tento scénář. toocreate těchto prostředků, dokončení hello kroky, které následují. Vytvoření virtuální sítě pomocí následujících kroků hello v hello [vytvořit virtuální síť](virtual-networks-create-vnet-classic-netcfg-ps.md) článku.
+Před vytvořením servery DB, je potřeba vytvořit *IaaSStory* skupina prostředků se všechny potřebné prostředky pro tento scénář. Chcete-li vytvořit tyto prostředky, proveďte kroky, které následují. Vytvoření virtuální sítě pomocí následujících kroků v [vytvořit virtuální síť](virtual-networks-create-vnet-classic-netcfg-ps.md) článku.
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
-## <a name="create-hello-back-end-vms"></a>Vytvořit hello back-end virtuální počítače
-Hello virtuálních počítačů v back-end závisí na vytvoření hello hello následující prostředky:
+## <a name="create-the-back-end-vms"></a>Vytvořit virtuální počítače back-end
+Virtuální počítače back-end závisí na vytvoření v následujících zdrojích informací:
 
-* **Back-end podsítě**. Hello databázové servery budou součástí samostatnou podsíť, toosegregate provoz. níže uvedený skript Hello očekává, že tuto podsíť tooexist ve virtuální síti s názvem *WTestVnet*.
-* **Účet úložiště pro datové disky**. Pro lepší výkon použije hello datových disků na serverech databáze hello technologii SSD jednotky (SSD Solid-State Drive), která vyžaduje účet úložiště premium. Ujistěte se, zda text hello umístění Azure nasazujete toosupport storage úrovně premium.
-* **Skupina dostupnosti**. Všechny databázové servery budou přidány sady dostupnosti. jeden tooa, tooensure alespoň jeden z virtuálních počítačů hello je v provozu během údržby.
+* **Back-end podsítě**. Databázové servery budou součástí samostatnou podsíť, oddělit provoz. Níže uvedený skript předpokládá, že tuto podsíť existovat ve virtuální síti s názvem *WTestVnet*.
+* **Účet úložiště pro datové disky**. Pro lepší výkon datové disky v databázových serverech použije technologii SSD jednotky (SSD Solid-State Drive), která vyžaduje účet úložiště premium. Zajistěte, aby umístění Azure, můžete nasadit pro podporu služby storage úrovně premium.
+* **Skupina dostupnosti**. Všechny databázové servery se zařadí do jedné dostupnosti nastavte, ujistěte se, že nejméně jedna z virtuálních počítačů je nahoru a během údržby.
 
 ### <a name="step-1---start-your-script"></a>Krok 1 – spustit skript
-Si můžete stáhnout hello úplné použít skript prostředí PowerShell [zde](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-ps.ps1). Postupujte podle kroků hello toochange hello skriptu toowork ve vašem prostředí.
+Si můžete stáhnout úplné skript prostředí PowerShell použít [zde](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-ps.ps1). Postupujte podle pokynů níže změňte skript pro práci ve vašem prostředí.
 
-1. Změnit hello hodnoty proměnných hello níže podle vaší existující skupinu prostředků, které jsou nasazené výše v [požadavky](#Prerequisites).
+1. Změňte hodnoty proměnných níže podle vaší existující skupinu prostředků, které jsou nasazené výše v [požadavky](#Prerequisites).
 
     ```powershell
     $location              = "West US"
@@ -59,7 +59,7 @@ Si můžete stáhnout hello úplné použít skript prostředí PowerShell [zde]
     $backendSubnetName     = "BackEnd"
     ```
 
-2. Změna hodnoty hello hello proměnných níže na základě hodnot hello chcete toouse pro vaše nasazení back-end.
+2. Změňte hodnoty proměnných níže na základě hodnot, které chcete použít pro vaše nasazení back-end.
 
     ```powershell
     $backendCSName         = "IaaSStory-Backend"
@@ -74,7 +74,7 @@ Si můžete stáhnout hello úplné použít skript prostředí PowerShell [zde]
     ```
 
 ### <a name="step-2---create-necessary-resources-for-your-vms"></a>Krok 2 – Vytvoření potřebné prostředky pro virtuální počítače
-Je nutné toocreate nová Cloudová služba a úložiště účtu pro hello datových disků pro všechny virtuální počítače. Budete také potřebovat toospecify bitovou kopii a účet místního správce pro hello virtuálních počítačů. dokončení těchto prostředků, toocreate hello následující kroky:
+Potřebujete vytvořit novou cloudovou službu a účet úložiště pro datové disky pro všechny virtuální počítače. Také musíte zadat bitovou kopii a účet místního správce pro virtuální počítače. Pokud chcete vytvořit tyto prostředky, proveďte následující kroky:
 
 1. Vytvořte novou cloudovou službu.
 
@@ -88,7 +88,7 @@ Je nutné toocreate nová Cloudová služba a úložiště účtu pro hello dato
     New-AzureStorageAccount -StorageAccountName $prmStorageAccountName `
     -Location $location -Type Premium_LRS
     ```
-3. Účet úložiště hello sadu vytvořili výše jako hello aktuální účet úložiště pro vaše předplatné.
+3. Nastavte účet úložiště vytvořili výše jako aktuální účet úložiště pro vaše předplatné.
 
     ```powershell
     $subscription = Get-AzureSubscription | where {$_.IsCurrent -eq $true}  
@@ -96,7 +96,7 @@ Je nutné toocreate nová Cloudová služba a úložiště účtu pro hello dato
     -CurrentStorageAccountName $prmStorageAccountName
     ```
 
-4. Vyberte bitovou kopii pro hello virtuálních počítačů.
+4. Vyberte bitovou kopii pro virtuální počítač.
 
     ```powershell
     $image = Get-AzureVMImage `
@@ -105,22 +105,22 @@ Je nutné toocreate nová Cloudová služba a úložiště účtu pro hello dato
     | select -ExpandProperty ImageName -First 1
     ```
 
-5. Nastavte přihlašovací údaje účtu místního správce hello.
+5. Nastavte přihlašovací údaje k účtu místního správce.
 
     ```powershell
     $cred = Get-Credential -Message "Enter username and password for local admin account"
     ```
 
 ### <a name="step-3---create-vms"></a>Krok 3 – vytvoření virtuálních počítačů
-Musíte toouse toocreate smyčky, jak velký počet virtuálních počítačů a vytvořit hello potřebné síťové karty a virtuální počítače v rámci hello smyčky. toocreate hello síťové karty a virtuální počítače, spusťte hello následující kroky.
+Budete muset použít smyčku vytvořit libovolný počet virtuálních počítačů a vytvořit potřebné síťové karty a virtuální počítače v rámci smyčky. Chcete-li vytvořit síťové karty a virtuální počítače, spusťte následující kroky.
 
-1. Spuštění `for` smyčky toorepeat hello příkazy toocreate virtuální počítač a dva síťové adaptéry s funkcí jako mnohokrát podle potřeby podle hello hodnotu hello `$numberOfVMs` proměnné.
+1. Spuštění `for` cykly opakování příkazů pro vytvoření virtuálního počítače a dva síťové adaptéry tolikrát, kolikrát podle potřeby, na základě hodnoty z `$numberOfVMs` proměnné.
 
     ```powershell
     for ($suffixNumber = 1; $suffixNumber -le $numberOfVMs; $suffixNumber++){
     ```
 
-2. Vytvoření `VMConfig` objekt hello obrázku, velikost a sadu dostupnosti pro hello virtuálních počítačů.
+2. Vytvoření `VMConfig` objekt obrázku, velikost a sadu dostupnosti pro virtuální počítač.
 
     ```powershell
     $vmName = $vmNamePrefix + $suffixNumber
@@ -130,7 +130,7 @@ Musíte toouse toocreate smyčky, jak velký počet virtuálních počítačů a
         -AvailabilitySetName $avSetName
     ```
 
-3. Hello zřídit virtuální počítač jako virtuální počítač s Windows.
+3. Zřídit virtuální počítač jako virtuální počítač systému Windows.
 
     ```powershell
     Add-AzureProvisioningConfig -VM $vmConfig -Windows `
@@ -138,7 +138,7 @@ Musíte toouse toocreate smyčky, jak velký počet virtuálních počítačů a
         -Password $cred.GetNetworkCredential().Password
     ```
 
-4. Nastavit výchozí hello síťový adaptér a přiřaďte mu statickou IP adresu.
+4. Nastavit výchozí síťový adaptér a přiřaďte mu statickou IP adresu.
 
     ```powershell
     Set-AzureSubnet         -SubnetNames $backendSubnetName -VM $vmConfig
@@ -154,7 +154,7 @@ Musíte toouse toocreate smyčky, jak velký počet virtuálních počítačů a
     -VM $vmConfig
     ```
 
-6. Vytvořte toodata disků pro každý virtuální počítač.
+6. Vytvoření datových disků, pro každý virtuální počítač.
 
     ```powershell
     $dataDisk1Name = $vmName + "-" + $dataDiskSuffix + "-1"    
@@ -170,7 +170,7 @@ Musíte toouse toocreate smyčky, jak velký počet virtuálních počítačů a
     -LUN 1
     ```
 
-7. Vytvořte každý virtuální počítač a end hello smyčky.
+7. Vytvořit jednotlivé virtuální počítače a ukončení smyčky.
 
     ```powershell
     New-AzureVM -VM $vmConfig `
@@ -180,10 +180,10 @@ Musíte toouse toocreate smyčky, jak velký počet virtuálních počítačů a
     }
     ```
 
-### <a name="step-4---run-hello-script"></a>Krok 4 – spustit skript hello
-Teď, když jste stáhli a změnit hello skriptu na základě potřeb, o mu skriptu toocreate hello back-end databáze virtuálních počítačů s více síťovými kartami.
+### <a name="step-4---run-the-script"></a>Krok 4 – spuštění skriptu
+Teď, když jste stáhli a změnit skript na základě potřeb, o, které mu skript pro vytvoření back-end databáze virtuálních počítačů s více síťovými kartami.
 
-1. Uložte skript a spusťte jej z hello **prostředí PowerShell** příkazového řádku, nebo **prostředí PowerShell ISE**. Zobrazí se výstup hello počáteční, a jak je uvedeno níže.
+1. Uložte skript a spusťte jej z **prostředí PowerShell** příkazového řádku, nebo **prostředí PowerShell ISE**. Počáteční výstupu uvidíte, jak je uvedeno níže.
 
         OperationDescription    OperationId                          OperationStatus
 
@@ -191,7 +191,7 @@ Teď, když jste stáhli a změnit hello skriptu na základě potřeb, o mu skri
         New-AzureStorageAccount xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
         
         WARNING: No deployment found in service: 'IaaSStory-Backend'.
-2. Vyplňte hello informace potřebné v řádku hello přihlašovací údaje a klikněte na **OK**. výstup Hello níže se vrátí.
+2. Vyplňte informace potřebné v řádku přihlašovací údaje a klikněte na **OK**. Následující výstup se vrací.
 
         New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
         New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded

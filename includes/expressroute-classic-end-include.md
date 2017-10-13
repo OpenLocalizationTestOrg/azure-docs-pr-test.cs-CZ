@@ -1,10 +1,10 @@
 > [!IMPORTANT] 
-> Od verze 1. března 2017 nelze vytvořit nové okruhy ExpressRoute v modelu nasazení classic hello.
+> Od 1. března 2017 už v modelu nasazení Classic není možné vytvářet nové okruhy ExpressRoute.
 > 
-> - Žádné připojení výpadek nedochází přitom můžete přesunout existujícímu okruhu ExpressRoute z modelu nasazení classic hello, toohello modelu nasazení Resource Manager. Další informace najdete v tématu věnovaném [přesunu stávajících okruhů](../articles/expressroute/expressroute-move.md).
-> - Připojíte toovirtual sítí v modelu nasazení classic hello nastavením **allowClassicOperations** tooTRUE.
+> - Stávající okruh ExpressRoute můžete z modelu nasazení Classic do modelu nasazení Resource Manager přesunout, aniž by došlo k výpadku připojení. Další informace najdete v tématu věnovaném [přesunu stávajících okruhů](../articles/expressroute/expressroute-move.md).
+> - K virtuálním sítím v modelu nasazení Classic se můžete připojit tak, že nastavíte **allowClassicOperations** na TRUE.
 > 
-> Použijte následující odkazy toocreate hello a spravovat okruhy ExpressRoute v modelu nasazení Resource Manager hello:
+> K vytvoření a správě okruhů ExpressRoute v modelu nasazení Resource Manager použijte následující odkazy:
 
 > - [Vytvoření a správa okruhů ExpressRoute](../articles/expressroute/expressroute-howto-circuit-portal-resource-manager.md)<br>
 > - [Konfigurace směrování (partnerského vztahu) pro okruhy ExpressRoute](../articles/expressroute/expressroute-howto-routing-portal-resource-manager.md)

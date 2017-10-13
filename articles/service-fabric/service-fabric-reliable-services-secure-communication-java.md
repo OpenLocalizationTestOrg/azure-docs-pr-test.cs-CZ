@@ -1,6 +1,6 @@
 ---
-title: "aaaHelp zabezpečené komunikace pro služby v Azure Service Fabric | Microsoft Docs"
-description: "Přehled o tom, jak toohelp zabezpečení komunikace pro spolehlivé služby, jsou spuštěny v clusteru služby Azure Service Fabric."
+title: "Pomůže zabezpečené komunikace pro služby v Azure Service Fabric | Microsoft Docs"
+description: "Přehled o tom, jak pomoci zabezpečenou komunikaci pro spolehlivé služby, které jsou spuštěny v clusteru služby Azure Service Fabric."
 services: service-fabric
 documentationcenter: java
 author: PavanKunapareddyMSFT
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: 14db54d50c35478c1f2c156de0dba36f1427c8cb
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c4634e3d8efb1745fffcfe3e647e43d867038716
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="help-secure-communication-for-services-in-azure-service-fabric"></a>Nápověda zabezpečené komunikace pro služby v Azure Service Fabric
 > [!div class="op_single_selector"]
@@ -27,9 +27,9 @@ ms.lasthandoff: 10/06/2017
 >
 
 ## <a name="help-secure-a-service-when-youre-using-service-remoting"></a>Pomoc se zabezpečením služby, pokud používáte vzdálenou komunikaci služby
-Budeme používat existující [příklad](service-fabric-reliable-services-communication-remoting-java.md) to vysvětluje, jak tooset až vzdálené komunikace pro spolehlivé služby. toohelp zabezpečení služby, pokud používáte vzdálenou komunikaci služby, postupujte takto:
+Budeme používat existující [příklad](service-fabric-reliable-services-communication-remoting-java.md) to vysvětluje, jak nastavit vzdálenou komunikaci pro spolehlivé služby. Chcete-li pomoc se zabezpečením služby, pokud používáte vzdálenou komunikaci služby, postupujte takto:
 
-1. Vytvořit rozhraní, `HelloWorldStateless`, který definuje hello metody, které budou k dispozici pro vzdálené volání procedury vaší služby. Bude vaše služba používat `FabricTransportServiceRemotingListener`, kterého je deklarovaná v hello `microsoft.serviceFabric.services.remoting.fabricTransport.runtime` balíčku. Jedná se `CommunicationListener` implementace, která poskytuje funkce vzdálené komunikace.
+1. Vytvořit rozhraní, `HelloWorldStateless`, který definuje metody, které budou k dispozici pro vzdálené volání procedury vaší služby. Bude vaše služba používat `FabricTransportServiceRemotingListener`, kterého je deklarovaná v `microsoft.serviceFabric.services.remoting.fabricTransport.runtime` balíčku. Jedná se `CommunicationListener` implementace, která poskytuje funkce vzdálené komunikace.
 
     ```java
     public interface HelloWorldStateless extends Service {
@@ -53,11 +53,11 @@ Budeme používat existující [příklad](service-fabric-reliable-services-comm
     ```
 2. Přidejte nastavení naslouchacího procesu a zabezpečovací pověření.
 
-    Ujistěte se, že hello certifikát, který má toouse toohelp zabezpečené komunikace vaší služby je nainstalován ve všech uzlech clusteru hello hello. Zadejte nastavení naslouchacího procesu a zabezpečovací pověření dvěma způsoby:
+    Ujistěte se, že certifikát, který chcete použít k zabezpečení komunikace vaší služby je nainstalována na všech uzlech v clusteru. Zadejte nastavení naslouchacího procesu a zabezpečovací pověření dvěma způsoby:
 
    1. Poskytněte pomocí [konfigurační balíček](service-fabric-application-model.md):
 
-       Přidat `TransportSettings` v souborech settings.xml souboru hello.
+       Přidat `TransportSettings` v souborech settings.xml souboru.
 
        ```xml
        <!--Section name should always end with "TransportSettings".-->
@@ -72,7 +72,7 @@ Budeme používat existující [příklad](service-fabric-reliable-services-comm
 
        ```
 
-       V takovém případě hello `createServiceInstanceListeners` metoda bude vypadat například takto:
+       V takovém případě `createServiceInstanceListeners` metoda bude vypadat například takto:
 
        ```java
         protected List<ServiceInstanceListener> createServiceInstanceListeners() {
@@ -84,7 +84,7 @@ Budeme používat existující [příklad](service-fabric-reliable-services-comm
         }
        ```
 
-        Pokud přidáte `TransportSettings` v souborech settings.xml souboru hello bez jakékoli předpony `FabricTransportListenerSettings` načte všechna nastavení hello z této části ve výchozím nastavení.
+        Pokud přidáte `TransportSettings` v souborech settings.xml souboru bez jakékoli předpony `FabricTransportListenerSettings` načte všechna nastavení z tohoto oddílu ve výchozím nastavení.
 
         ```xml
         <!--"TransportSettings" section without any prefix.-->
@@ -92,7 +92,7 @@ Budeme používat existující [příklad](service-fabric-reliable-services-comm
             ...
         </Section>
         ```
-        V takovém případě hello `CreateServiceInstanceListeners` metoda bude vypadat například takto:
+        V takovém případě `CreateServiceInstanceListeners` metoda bude vypadat například takto:
 
         ```java
         protected List<ServiceInstanceListener> createServiceInstanceListeners() {
@@ -103,9 +103,9 @@ Budeme používat existující [příklad](service-fabric-reliable-services-comm
             return listeners;
         }
        ```
-3. Při volání metody ve službě zabezpečené pomocí hello zásobník vzdálenou komunikaci, místo použití hello `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase` toocreate třídy proxy služby, použijte `microsoft.serviceFabric.services.remoting.client.FabricServiceProxyFactory`.
+3. Při volání metody ve službě zabezpečené pomocí vzdálené komunikace zásobníku, místo použití `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase` třídy vytvořit proxy služby, použijte `microsoft.serviceFabric.services.remoting.client.FabricServiceProxyFactory`.
 
-    Pokud kód klienta hello je spuštěn jako součást služby, můžete načíst `FabricTransportSettings` ze souboru souborech settings.xml hello. Vytvořte TransportSettings oddíl, který je podobný kódu toohello služby, jako je uvedené výše. Proveďte následující změny kódu klienta toohello hello:
+    Pokud kód klienta je spuštěn jako součást služby, můžete načíst `FabricTransportSettings` ze souboru souborech settings.xml. Vytvořte TransportSettings oddíl, který je podobný kódu služby, jako je uvedené výše. Na kód klienta, proveďte následující změny:
 
     ```java
 

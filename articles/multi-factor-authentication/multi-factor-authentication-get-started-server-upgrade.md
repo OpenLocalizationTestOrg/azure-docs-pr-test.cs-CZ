@@ -1,6 +1,6 @@
 ---
-title: aaaUpgrade PhoneFactor tooAzure MFA serveru | Microsoft Docs
-description: "Začínáme s Azure MFA serveru po upgradu ze staršího agenta phonefactor hello."
+title: Upgrade PhoneFactoru na Azure MFA Server | Dokumentace Microsoftu
+description: "Zahájení práce s Azure MFA Serverem, když upgradujete ze staršího agenta PhoneFactor"
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -14,68 +14,68 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/06/2017
 ms.author: kgremban
-ms.openlocfilehash: 15b7b8517929c30f66e6a39cd44c69d12d25c6d7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7ab7e693909f807781744ae53eed75d425096590
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="upgrade-hello-phonefactor-agent-tooazure-multi-factor-authentication-server"></a>Upgrade agenta PhoneFactor tooAzure aplikace Multi-Factor Authentication Server hello
-tooupgrade hello PhoneFactor agenta v5.x nebo starší tooAzure aplikace Multi-Factor Authentication Server, odinstalujte hello agenta PhoneFactor a nejprve spojit součásti. Potom hello aplikace Multi-Factor Authentication Server a jeho přidružených součásti lze nainstalovat.
+# <a name="upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>Upgrade agenta PhoneFactor na Azure Multi-Factor Authentication Server
+Pokud chcete upgradovat agenta PhoneFactor verze 5.x nebo starší na Azure Multi-Factor Authentication Server, odinstalujte nejprve agenta PhoneFactor a připojené součásti. Pak lze instalovat Multi-Factor Authentication Server a jeho připojené součásti.
 
-## <a name="uninstall-hello-phonefactor-agent"></a>Odinstalujte agenta PhoneFactor hello
+## <a name="uninstall-the-phonefactor-agent"></a>Odinstalace agenta PhoneFactor
 
-1. Nejprve zálohujte datový soubor PhoneFactor hello. Hello výchozí umístění instalace je C:\Program Files\PhoneFactor\Data\Phonefactor.pfdata.
+1. Nejprve zálohujte datový soubor PhoneFactor. Výchozí umístění instalace je C:\Program Files\PhoneFactor\Data\Phonefactor.pfdata.
 
-2. Pokud je nainstalovaná hello uživatelského portálu:
-  1. Přejděte toohello složky instalace a zálohujte soubor web.config hello. Hello výchozí umístění instalace je C:\inetpub\wwwroot\PhoneFactor.
+2. Pokud je nainstalován portál uživatele:
+  1. Přejděte do složky instalace a zálohujte soubor web.config. Výchozí umístění instalace je C:\inetpub\wwwroot\PhoneFactor.
 
-  2. Pokud jste přidali vlastní motivy toohello portál, zálohujte vlastní složky pod adresářem C:\inetpub\wwwroot\PhoneFactor\App_Themes hello.
+  2. Pokud jste přidali vlastní motivy na portál, zálohujte vlastní složky pod adresářem C:\inetpub\wwwroot\PhoneFactor\App_Themes.
 
-  3. Odinstalujte hello portálu User Portal, buď prostřednictvím hello agenta PhoneFactor (dostupné, pouze pokud je nainstalován na hello stejný server jako hello agenta PhoneFactor) nebo prostřednictvím Windows programy a funkce.
+  3. Odinstalujte rozhraní User Portal prostřednictvím agenta PhoneFactor (dostupné, pouze pokud je nainstalován na stejném serveru jako agent PhoneFactor) nebo pomocí programů a funkcí systému Windows.
 
-3. Pokud je nainstalovaná hello webové služby mobilní aplikace:
+3. Pokud je nainstalována webová služba mobilní aplikace:
 
-  1. Přejděte toohello složky instalace a zálohujte soubor web.config hello. Hello výchozí umístění instalace je C:\inetpub\wwwroot\PhoneFactorPhoneAppWebService.
+  1. Přejděte do složky instalace a zálohujte soubor web.config. Výchozí umístění instalace je C:\inetpub\wwwroot\PhoneFactorPhoneAppWebService.
 
-  2. Odinstalujte hello webové služby mobilní aplikace prostřednictvím Windows programy a funkce.
+  2. Odinstalujte službu mobilní webové aplikace prostřednictvím programů a funkcí systému Windows.
 
-4. Pokud je nainstalovaná hello Web Service SDK, odinstalujte ji prostřednictvím agenta PhoneFactor hello nebo prostřednictvím Windows programy a funkce.
+4. Pokud je nainstalována sada Web Service SDK, odinstalujte ji prostřednictvím agenta PhoneFactor nebo programů a funkcí systému Windows.
 
-5. Odinstalujte hello PhoneFactor Agent prostřednictvím programů Windows a funkce.
+5. Odinstalujte službu agent PhoneFactor prostřednictvím programů a funkcí systému Windows.
 
-## <a name="install-hello-multi-factor-authentication-server"></a>Instalace aplikace Multi-Factor Authentication Server hello
+## <a name="install-the-multi-factor-authentication-server"></a>Instalace Multi-Factor Authentication Serveru
 
-Hello cesta instalace je převzata z hello registru z předchozí instalace agenta PhoneFactor hello, takže by se měla nainstalovat v hello stejné umístění (například C:\Program Files\PhoneFactor). Nové instalace mají různé výchozí instalační cesty (například C:\Program Files\Multi-Factor Authentication Server). Hello datový soubor zanechaný předchozí hello agenta PhoneFactor musí být upgradován během instalace, takže nastavení uživatelů a měli byste být, že existuje po instalaci hello nové aplikace Multi-Factor Authentication Server.
+Cesta instalace se převzala z registru z předchozí instalace agenta PhoneFactor, takže by instalace měla proběhnout do stejného umístění (například C:\Program Files\PhoneFactor). Nové instalace mají různé výchozí instalační cesty (například C:\Program Files\Multi-Factor Authentication Server). Datový soubor zanechaný předchozí agentem PhoneFactor musí být upgradován během instalace, takže nastavení uživatelů by mělo být po instalaci nového serveru Multi-Factor Authentication stále přítomno.
 
-1. Pokud se zobrazí výzva, aktivovat hello aplikace Multi-Factor Authentication Server a ujistěte se, že je přiřazen toohello správné replikační skupině.
+1. Pokud budete vyzváni, aktivovujte server Multi-Factor Authentication a ujistěte se, že je přiřazen do správné replikační skupiny.
 
-2. Pokud byla hello Web Service SDK dříve nainstalována, nainstalujte hello nový Web Service SDK prostřednictvím hello uživatelského rozhraní serveru Multi-Factor Authentication.
+2. Pokud byla sada Web Service SDK dříve nainstalována, nainstalujte novou sadu Web Service SDK prostřednictvím uživatelského rozhraní serveru Multi-Factor Authentication.
 
-  Hello výchozí název virtuálního adresáře je nyní **MultiFactorAuthWebServiceSdk** místo **PhoneFactorWebServiceSdk**. Pokud chcete toouse hello předchozí název, musíte změnit název hello hello virtuálního adresáře během instalace. Jinak Pokud povolíte hello instalace toouse hello nového výchozího názvu, máte toochange hello URL ve všech aplikacích, tento odkaz hello toopoint sady SDK webové služby (např. hello portálu User Portal a webová služba mobilní aplikace) na správné místo hello.
+  Výchozí název virtuálního adresáře je nyní **MultiFactorAuthWebServiceSdk**, a ne **PhoneFactorWebServiceSdk**. Pokud chcete použít předchozí název, musíte změnit název virtuálního adresáře během instalace. Jinak pokud instalaci povolíte použít nový výchozí název, musíte změnit adresu URL ve všech aplikacích, které odkazují na sadu Web Service SDK (například portál User Portal a Webová služba mobilní aplikace), aby odkazovaly na správné místo.
 
-3. Pokud hello portálu User Portal dříve instalovaná na hello serveru agenta PhoneFactor, nainstalujte hello nové služby Multi-Factor Authentication User Portal prostřednictvím hello uživatelského rozhraní serveru Multi-Factor Authentication.
+3. Pokud bylo rozhraní User Portal dříve nainstalováno na serveru agenta PhoneFactor, nainstalujte nový uživatelský portál Multi-Factor Authentication prostřednictvím uživatelského rozhraní serveru Multi-Factor Authentication.
 
-  Hello výchozí název virtuálního adresáře je nyní **MultiFactorAuth** místo **PhoneFactor**. Pokud chcete toouse hello předchozí název, musíte změnit název hello hello virtuálního adresáře během instalace. Jinak Pokud povolíte hello instalace toouse hello nového výchozího názvu, doporučujeme klikněte na ikonu portálu pro uživatele hello v hello aplikace Multi-Factor Authentication Server a aktualizovat hello URL uživatelského portálu na kartě nastavení hello.
+  Výchozí název virtuálního adresáře je nyní **MultiFactorAuth**, a ne **PhoneFactor**. Pokud chcete použít předchozí název, musíte změnit název virtuálního adresáře během instalace. Jinak pokud povolíte instalaci pro použití nového výchozího názvu, doporučujeme kliknout na ikonu portálu pro uživatele na serveru Multi-Factor Authentication a aktualizovat adresu URL portálu pro uživatele na kartě Nastavení.
 
-4. Pokud hello portál pro uživatele nebo webové služby mobilní aplikace byla předtím nainstalovaná na jiném serveru než PhoneFactor Agent hello:
+4. Pokud byly portál pro uživatele nebo webové služby mobilní aplikace dříve nainstalovány na jiném serveru než agent PhoneFactor:
 
-  1. Přejděte toohello umístění instalace (například C:\Program Files\PhoneFactor) a zkopírujte jeden nebo více instalačních programů toohello jiný server. Existují 32bitové a 64bitové verze instalačních programů pro hello portálu User Portal a webová služba mobilní aplikace. Nazývají se MultiFactorAuthenticationUserPortalSetupXX.msi a MultiFactorAuthenticationMobileAppWebServiceSetupXX.msi.
+  1. Přejděte do umístění instalace (například C:\Program Files\PhoneFactor) a zkopírujte jeden nebo několik instalačních programů na jiný server. Existují 32bitové a 64bitové verze instalačních programů pro portál pro uživatele a webové služby mobilní aplikace. Nazývají se MultiFactorAuthenticationUserPortalSetupXX.msi a MultiFactorAuthenticationMobileAppWebServiceSetupXX.msi.
 
-  2. tooinstall hello portálu User Portal na hello webový server, otevřete příkazový řádek jako správce a spusťte soubor MultiFactorAuthenticationUserPortalSetupXX.msi.
+  2. Chcete-li nainstalovat portál pro uživatele na webovém serveru, otevřete příkazový řádek jako správce a spusťte soubor MultiFactorAuthenticationUserPortalSetupXX.msi.
 
-    Hello výchozí název virtuálního adresáře je nyní **MultiFactorAuth** místo **PhoneFactor**. Pokud chcete toouse hello předchozí název, musíte změnit název hello hello virtuálního adresáře během instalace. Jinak Pokud povolíte hello instalace toouse hello nového výchozího názvu, doporučujeme klikněte na ikonu portálu pro uživatele hello v hello aplikace Multi-Factor Authentication Server a aktualizovat hello URL uživatelského portálu na kartě nastavení hello. Stávající uživatelé potřebovat toobe informováni o nové adrese URL hello.
+    Výchozí název virtuálního adresáře je nyní **MultiFactorAuth**, a ne **PhoneFactor**. Pokud chcete použít předchozí název, musíte změnit název virtuálního adresáře během instalace. Jinak pokud povolíte instalaci pro použití nového výchozího názvu, doporučujeme kliknout na ikonu portálu pro uživatele na serveru Multi-Factor Authentication a aktualizovat adresu URL portálu pro uživatele na kartě Nastavení. Je potřeba informovat stávající uživatele o nové adrese URL.
 
-  3. Přejděte toohello umístění instalace portálu User Portal (např. C:\inetpub\wwwroot\MultiFactorAuth) a upravte soubor web.config hello. Zkopírujte hodnoty hello v hello appSettings a applicationSettings z původního souboru web.config, který byl zálohován před upgradem hello do nového souboru web.config hello. Pokud hello nový výchozí název virtuálního adresáře byl zachovány při instalaci hello sady SDK webové služby, změňte adresu URL hello hello applicationSettings části toopoint toohello správné místo. Pokud byly v hello předchozím soubor web.config změněny ostatní výchozí hodnoty, platí tyto stejné změny toohello nový soubor web.config.
+  3. Přejděte do umístění instalace portálu User Portal (například C:\inetpub\wwwroot\MultiFactorAuth) a upravte soubor web.config. Zkopírujte hodnoty v oddílech appSettings a applicationSettings z původního souboru web.config, který se zálohoval před upgradem, do nového souboru web.config. Pokud byl při instalaci sady Web Service SDK zachován výchozí název virtuálního adresáře, změňte adresu URL v části applicationSettings tak, aby odkazovala na správné místo. Pokud byly v předchozím soubor web.config změněny ostatní výchozí hodnoty, tyto změny budou stejně použity na nový soubor web.config.
 
-  4. tooinstall hello webové služby mobilní aplikace na webovém serveru hello, otevřete příkazový řádek jako správce a spusťte soubor MultiFactorAuthenticationMobileAppWebServiceSetupXX.msi hello.
+  4. Chcete-li nainstalovat webové služby mobilní aplikace na webovém serveru, otevřete příkazový řádek jako správce a spusťte soubor MultiFactorAuthenticationMobileAppWebServiceSetupXX.msi.
 
-    Hello výchozí název virtuálního adresáře je nyní **MultiFactorAuthMobileAppWebService** místo **PhoneFactorPhoneAppWebService**. Pokud chcete toouse hello předchozí název, musíte změnit název hello hello virtuálního adresáře během instalace. Může být vhodné toochoose kratší název toomake snadno tootype koncovým uživatelům v na mobilním zařízení. Jinak Pokud povolíte hello instalace toouse hello nového výchozího názvu, doporučujeme klikněte na ikonu mobilní aplikace hello hello aplikace Multi-Factor Authentication Server a aktualizace hello adresa URL webové služby mobilní aplikace.
+    Výchozí název virtuálního adresáře je nyní **MultiFactorAuthMobileAppWebService**, a ne **PhoneFactorPhoneAppWebService**. Pokud chcete použít předchozí název, musíte změnit název virtuálního adresáře během instalace. Můžete vybrat kratší název pro usnadnění zadávání na mobilních zařízeních koncovým uživatelům. Jinak pokud povolíte instalaci pro použití nového výchozího názvu, doporučujeme kliknout na ikonu mobilní aplikace na serveru Multi-Factor Authentication a aktualizovat adresu URL webových služeb mobilní aplikace.
 
-  5. Přejděte toohello umístění instalace webové služby mobilní aplikace (např. C:\inetpub\wwwroot\MultiFactorAuthMobileAppWebService) a upravte soubor web.config hello. Zkopírujte hodnoty hello v hello appSettings a applicationSettings z původního souboru web.config, který byl zálohován před upgradem hello do nového souboru web.config hello. Pokud hello nový výchozí název virtuálního adresáře byl zachovány při instalaci hello sady SDK webové služby, změňte adresu URL hello hello applicationSettings části toopoint toohello správné místo. Pokud byly v hello předchozím soubor web.config změněny ostatní výchozí hodnoty, platí tyto stejné změny toohello nový soubor web.config.
+  5. Přejděte do umístění instalace webové služby mobilní aplikace (například C:\inetpub\wwwroot\MultiFactorAuthMobileAppWebService) a upravte soubor web.config. Zkopírujte hodnoty v oddílech appSettings a applicationSettings z původního souboru web.config, který se zálohoval před upgradem, do nového souboru web.config. Pokud byl při instalaci sady Web Service SDK zachován výchozí název virtuálního adresáře, změňte adresu URL v části applicationSettings tak, aby odkazovala na správné místo. Pokud byly v předchozím soubor web.config změněny ostatní výchozí hodnoty, tyto změny budou stejně použity na nový soubor web.config.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Instalace portálu uživatelů hello](multi-factor-authentication-get-started-portal.md) pro hello Azure Multi-Factor Authentication Server.
+- [Instalace uživatelského portálu](multi-factor-authentication-get-started-portal.md) pro Azure Multi-Factor Authentication Server
 
 - [Konfigurace ověřování systému Windows](multi-factor-authentication-get-started-server-windows.md) pro vaše aplikace 

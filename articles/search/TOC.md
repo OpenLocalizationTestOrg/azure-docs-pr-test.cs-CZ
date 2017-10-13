@@ -29,8 +29,8 @@
 
 ## Vývoj
 ### [Verze rozhraní API](search-api-versions.md)
-### [Upgrade hello SDK](search-dotnet-sdk-migration.md)
-### [Upgrade hello REST API](search-api-migration.md)
+### [Upgrade sady SDK](search-dotnet-sdk-migration.md)
+### [Upgrade rozhraní REST API](search-api-migration.md)
 ### [Modelování komplexních datových typů](search-howto-complex-data-types.md)
 ### [Zpracování souběžných aktualizací](search-howto-concurrency.md)
 ### [Ukázky kódu](https://azure.microsoft.com/resources/samples/?service=search)
@@ -38,7 +38,7 @@
 ## Spravovat
 ### Správa Azure Search
 #### [Azure Portal](search-manage.md)
-#### [PowerShell](search-manage-powershell.md)
+#### Azure [Azure PowerShell](search-manage-powershell.md)
 ### [Monitorování využití a statistiky](search-monitor-usage.md)
 ### [Prohledání analýzy provozu](search-traffic-analytics.md)
 ### [Výkon a optimalizace](search-performance-optimization.md)
@@ -50,7 +50,7 @@
 ### [Indexer databáze Azure Cosmos](search-howto-index-documentdb.md)
 ### [Indexování objektů blob CSV](search-howto-index-csv-blobs.md)
 ### [Indexování objektů blob JSON](search-howto-index-json-blobs.md)
-### [Konfigurace připojení tooSQL indexer Server na virtuálním počítači Azure](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
+### [Konfigurace připojení indexeru do SQL Serveru na virtuálním počítači Azure](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 ### [Mapování polí v indexerech](search-indexer-field-mappings.md)
 ##  Hledání
 ### [Jak funguje fulltextové vyhledávání](search-lucene-query-architecture.md)
@@ -59,7 +59,8 @@
 #### [Syntaxe dotazů Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 #### [Příklady dotazů syntaxe Lucene](search-query-lucene-examples.md)
 #### [Syntaxe výrazů filtru](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
-### Vlastní vyhledávání
+### Analyzátory ve službě Azure Search
+#### [Přehled](search-analyzers.md)
 #### [Analyzátory jazyka](https://docs.microsoft.com/rest/api/searchservice/language-support)
 #### [Vlastní analyzátory](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)
 ### [Výsledky stránkování](search-pagination-page-layout.md)

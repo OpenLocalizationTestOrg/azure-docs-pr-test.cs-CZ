@@ -1,6 +1,6 @@
 ---
-title: "nástroje Plánovač kapacity aaaRun hello technologie Hyper-V pro obnovení lokality | Microsoft Docs"
-description: "Tento článek popisuje, jak toorun hello nástroje Plánovač kapacity technologie Hyper-V pro Azure Site Recovery"
+title: "Spuštění nástroje Hyper-V capacity planner pro Site Recovery | Microsoft Docs"
+description: "Tento článek popisuje, jak spustit nástroje Hyper-V capacity planner pro Azure Site Recovery"
 services: site-recovery
 documentationcenter: na
 author: rayne-wiselman
@@ -14,122 +14,122 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: nisoneji
-ms.openlocfilehash: b853598e5cd290c48b59794ba48eefc72ac8ded6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 272b5abb5e6451164ca7900dda399b6aac65f986
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="run-hello-hyper-v-capacity-planner-tool-for-site-recovery"></a>Spuštění nástroje Plánovač kapacity hello technologie Hyper-V pro obnovení lokality
+# <a name="run-the-hyper-v-capacity-planner-tool-for-site-recovery"></a>Spuštění nástroje Hyper-V capacity planner pro obnovení lokality
 
-Jako součást nasazení Azure Site Recovery je nutné toofigure replikace a nároky na šířku pásma. nástroje Plánovač kapacity Hello technologie Hyper-V pro obnovení lokality pomáhá vám toodo, pro replikaci virtuálního počítače technologie Hyper-V.
+Jako součást nasazení Azure Site Recovery musíte pochopit replikace a nároky na šířku pásma. Nástroje Hyper-V capacity planner pro Site Recovery pomáhá to provést pro replikaci virtuálního počítače technologie Hyper-V.
 
-Tento článek popisuje, jak toorun hello nástroje Plánovač kapacity technologie Hyper-V. Tento nástroj slouží spolu s informacemi hello v [plánování kapacity pro Site Recovery](site-recovery-capacity-planner.md).
+Tento článek popisuje, jak ke spuštění nástroje capacity planner technologie Hyper-V. Tento nástroj slouží spolu s informacemi v [plánování kapacity pro Site Recovery](site-recovery-capacity-planner.md).
 
 ## <a name="before-you-start"></a>Než začnete
-Spuštění nástroje hello na uzlu serveru nebo clusteru Hyper-V v primární lokalitě. potřebuje toorun hello nástroj hello technologie Hyper-V hostitelské servery:
+Spusťte nástroj na uzlu serveru nebo clusteru Hyper-V v primární lokalitě. Hostitelské servery technologie Hyper-V potřebuje ke spuštění nástroje:
 
 * Operační systém: Windows Server 2012 nebo 2012 R2
 * Paměť: 20 MB (minimálně)
 * Procesoru: zatížení 5 procent (minimálně)
 * Místo na disku: 5 MB (minimálně)
 
-Před spuštěním nástroje hello, je nutné tooprepare hello primární lokality. Pokud replikujete mezi dvěma místními lokalitami a chcete, aby toocheck šířky pásma, musíte tooprepare i server repliky.
+Před spuštěním nástroje je nutné připravit primární lokality. Pokud replikujete mezi dvěma místními lokalitami a chcete provést kontrolu šířky pásma, je nutné připravit server repliky.
 
-## <a name="step-1-prepare-hello-primary-site"></a>Krok 1: Příprava hello primární lokality
+## <a name="step-1-prepare-the-primary-site"></a>Krok 1: Příprava primární lokality
 
-1. V primární lokalitě hello zkontrolujte seznam všech virtuálních počítačů technologie Hyper-V, které chcete hello tooreplicate a na kterých se nachází hostitele nebo clustery hello Hyper-V. Hello nástroj můžete spustit pro více samostatných hostitelů, nebo pro jeden cluster, ale ne obojí společně. Také musí toorun odděleně pro každý operační systém, takže byste měli získat informace o serverech technologie Hyper-V následujícím způsobem:
+1. V primární lokalitě zkontrolujte seznam všech virtuálních počítačů technologie Hyper-V, které chcete replikovat, a hostitele nebo Clustery Hyper-V, na kterých se nachází. Nástroj můžete spustit pro více samostatných hostitelů, nebo pro jeden cluster, ale ne obojí společně. Je také nutné ho spustit odděleně pro každý operační systém, které byste měli získat informace o serverech technologie Hyper-V následujícím způsobem:
 
    * Samostatné servery systému Windows Server 2012
    * Clustery systému Windows Server 2012
    * Samostatné servery Windows Server 2012 R2
    * Clustery systému Windows Server 2012 R2
-2. Povolte tooWMI vzdáleného přístupu na všech hostitelích hello Hyper-V a clustery. Tento příkaz spustit na každém serveru clusteru, zda pravidla brány firewall toomake a oprávnění uživatele jsou nastaveny:
+2. Povolte vzdálený přístup k rozhraní WMI na všech hostitelích Hyper-V a clustery. Tento příkaz spusťte na každém serveru nebo clusteru, a ujistěte se, že jsou nastavené pravidla brány firewall a oprávnění uživatele:
 
         netsh firewall set service RemoteAdmin enable
 3. Povolte monitorování výkonu u serverů a clusterů, následujícím způsobem:
 
-   * Otevřete hello brány Windows Firewall s hello **pokročilým zabezpečením** modul snap-in, a potom povolit hello následující příchozí pravidla: **síťového přístupu COM + (DCOM-IN)** a všechna pravidla v hello **vzdáleného protokolu událostí Skupina pro správu**.
+   * Otevřít bránu Windows Firewall s **pokročilým zabezpečením** modul snap-in a potom povolit příchozí následující pravidla: **síťového přístupu COM + (DCOM-IN)** a všechna pravidla v **skupiny Vzdálená správa protokolu událostí**.
 
-## <a name="step-2-prepare-a-replica-server-on-premises-tooon-premises-replication"></a>Krok 2: Příprava serveru repliky (místní tooon místní replikace)
-Nebudete potřebovat, toodo Pokud replikujete tooAzure.
+## <a name="step-2-prepare-a-replica-server-on-premises-to-on-premises-replication"></a>Krok 2: Příprava serveru repliky (místní na místní replikaci)
+Nemusíte to dělat, když replikujete do Azure.
 
-Doporučujeme že nastavit jeden hostitel Hyper-V jako server pro obnovení, tak, aby fiktivní virtuální počítač může být replikované tooit toocheck šířky pásma.  To můžete přeskočit, ale pokud se nebudete moct toomeasure šířky pásma.
+Doporučujeme že nastavit jeden hostitel Hyper-V jako server pro obnovení, tak, aby k němu pro kontrolu šířky pásma, lze replikovat fiktivní virtuálního počítače.  To můžete přeskočit, ale nebudete moct měřit šířku pásma, pokud je to provést.
 
-1. Pokud chcete, aby toouse uzlu clusteru jako repliky hello konfigurace zprostředkovatele replik technologie Hyper-V:
+1. Pokud chcete použít uzlem clusteru zprostředkovatele replik technologie Hyper-V můžete nakonfigurovat repliku:
 
    * V **správce serveru**, otevřete **Správce clusteru převzetí služeb při selhání**.
-   * Připojení clusteru toohello, zvýrazněte hello název clusteru a klikněte na tlačítko **akce** > **konfigurovat roli** Průvodce vysokou dostupností tooopen hello.
-   * V **vybrat roli**, klikněte na tlačítko **zprostředkovatele replik technologie Hyper-V**. V Průvodci hello poskytují **název pro rozhraní NetBIOS** a hello **IP adresu** toobe použít jako hello připojení toohello bod clusteru (označovaný jako klientský přístupový bod). Hello **zprostředkovatele replik technologie Hyper-V** bude nakonfigurován, výsledkem je název klientského přístupového bodu, který si všimněte.
-   * Ověřte, že hello role zprostředkovatele replik technologie Hyper-V úspěšně přepne do online a mohou přecházet mezi všemi uzly v clusteru hello. toodo, klikněte pravým tlačítkem na roli hello, přejděte příliš**přesunout**a potom klikněte na **vybrat uzel**. Vyberte uzel > **OK**.
-   * Pokud používáte ověřování pomocí certifikátů, zkontrolujte, že každý uzel clusteru a hello klientský přístupový bod všechny mají nainstalovaný certifikát hello.
+   * Připojte se ke clusteru, zvýrazněte název clusteru a klikněte na **akce** > **konfigurovat roli** otevřete Průvodce vysokou dostupností.
+   * V **vybrat roli**, klikněte na tlačítko **zprostředkovatele replik technologie Hyper-V**. V průvodci zadejte **název pro rozhraní NetBIOS** a **IP adresu** má být použit jako bod připojení ke clusteru (označovaný jako klientský přístupový bod). **Zprostředkovatele replik technologie Hyper-V** bude nakonfigurován, výsledkem je název klientského přístupového bodu, který si všimněte.
+   * Ověřte, že se role zprostředkovatele replik technologie Hyper-V úspěšně přepne do režimu online a mohou přecházet mezi všemi uzly v clusteru. Chcete-li to provést, klikněte pravým tlačítkem na roli, přejděte na **přesunout**a potom klikněte na **vybrat uzel**. Vyberte uzel > **OK**.
+   * Pokud používáte ověřování pomocí certifikátů, zajistěte, aby všechny uzly clusteru a přístupové body mají nainstalovaný certifikát klienta.
 2. Povolte serveru repliky:
 
-   * Pro cluster s podporou otevřete Správce clusteru selhání, připojte toohello cluster a klikněte na tlačítko **role** > vyberte role > **nastavení replikace** > **povolit tento cluster jako replika Server**. Pokud používáte cluster jako hello repliky, musíte toohave hello zprostředkovatele replik technologie Hyper-V role přítomná v clusteru hello v hello primární lokality.
-   * Samostatný server otevřete Správce technologie Hyper-V. V hello **akce** podokně klikněte na tlačítko **nastavení technologie Hyper-V** pro hello server chcete tooenable a v **konfiguraci replikace** klikněte na tlačítko **povolit počítač jako server repliky**.
+   * Pro cluster s podporou otevřete Správce clusteru selhání, připojte se ke clusteru a klikněte na tlačítko **role** > vyberte role > **nastavení replikace** > **povolit tento cluster jako server repliky**. Pokud používáte cluster jako serveru repliky, musíte mít roli zprostředkovatele replik technologie Hyper-V, který je přítomen v clusteru v primární lokalitě.
+   * Samostatný server otevřete Správce technologie Hyper-V. V **akce** podokně klikněte na tlačítko **nastavení technologie Hyper-V** pro server, které chcete povolit a v **konfiguraci replikace** klikněte na tlačítko **povolit tento počítač jako server repliky**.
 3. Nastavení ověřování:
 
-   * V **ověřování a porty**vyberte, jak tooauthenticate hello primární server a porty ověřování hello. Pokud používáte klikněte na certifikát **vybrat certifikát** tooselect jeden. Používat protokol Kerberos, pokud jsou hello primárními a obnovovacími hostitelů Hyper-V v hello stejné doméně, nebo v důvěryhodných doménách. Použijte certifikáty pro jiné domény nebo pracovní skupiny nasazení.
-   * V **ověřování a úložiště**, povolit **žádné** ověřeného (primárního) serveru toosend replikace dat toothis serveru repliky.
+   * V **ověřování a porty**vyberte, jak ověřit primární server a ověřování porty. Pokud používáte klikněte na certifikát **vybrat certifikát** vyberte jednu. Použijte protokol Kerberos, pokud primární server a obnovení hostitelů Hyper-V ve stejné doméně nebo v důvěryhodných doménách. Použijte certifikáty pro jiné domény nebo pracovní skupiny nasazení.
+   * V **ověřování a úložiště**, povolit **žádné** ověřeného (primárního) serveru, aby odesílat data replikace na tento server repliky.
 
      ![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image1.png)
-   * Spustit **netsh http show servicestate**, toocheck pro hello protokolu nebo je zadaný port je spuštěný naslouchací proces této hello:  
-4. Nastavení brány firewall. Během instalace technologie Hyper-V se pravidla brány firewall na hello výchozí porty (HTTPS na 443, protokolu Kerberos na 80) vytvoří tooallow provoz. Tato pravidla povolte následujícím způsobem:
+   * Spustit **netsh http show servicestate**, zkontrolujte, zda je spuštěna naslouchací proces pro protokol nebo port, který jste zadali:  
+4. Nastavení brány firewall. Při instalaci technologie Hyper-V jsou pravidla brány firewall vytvoří aby povolovala přenosy na výchozí porty (HTTPS na 443, protokolu Kerberos na 80). Tato pravidla povolte následujícím způsobem:
   - Ověření certifikátu v clusteru (443):``Get-ClusterNode | ForEach-Object {Invoke-command -computername \$\_.name -scriptblock {Enable-Netfirewallrule -displayname "Hyper-V Replica HTTPS Listener (TCP-In)"}}``
   - Ověřování protokolem Kerberos v clusteru (80):``Get-ClusterNode | ForEach-Object {Invoke-command -computername \$\_.name -scriptblock {Enable-Netfirewallrule -displayname "Hyper-V Replica HTTP Listener (TCP-In)"}}``
   - Ověření certifikátu na samostatný server:``Enable-Netfirewallrule -displayname "Hyper-V Replica HTTPS Listener (TCP-In)"``
   - Ověřování protokolu Kerberos na samostatný server:``Enable-Netfirewallrule -displayname "Hyper-V Replica HTTP Listener (TCP-In)"``
 
-## <a name="step-3-run-hello-capacity-planner-tool"></a>Krok 3: Spuštění nástroje Plánovač kapacity hello
-Poté, co jste připravili primární lokalitu a nastavit server pro obnovení, mohou spouštět nástroj hello.
+## <a name="step-3-run-the-capacity-planner-tool"></a>Krok 3: Spuštění nástroje capacity planner
+Poté, co jste připravili primární lokalitu a nastavit server pro obnovení, můžete spustit nástroj.
 
-1. [Stáhněte si](https://www.microsoft.com/download/details.aspx?id=39057) hello nástroj z hello Microsoft Download Center.
-2. Spusťte nástroj hello z jedním z primárních serverů hello (nebo jeden z hello uzlů z clusteru primární hello). Klikněte pravým tlačítkem na soubor .exe hello a potom vyberte **spustit jako správce**.
-3. V **před zahájením**, zadejte, jak dlouho chcete toocollect data. Doporučujeme, že spusťte nástroj hello během provozní hodiny tooensure, že data jsou zástupce. Pokud zkoušíte pouze toovalidate připojení k síti, můžete shromáždit pro pouze několik minut.
+1. [Stáhněte si](https://www.microsoft.com/download/details.aspx?id=39057) nástroj z webu Microsoft Download Center.
+2. Spusťte nástroj z jednoho z primárních serverů (nebo jeden z uzlů z primární clusteru). Klikněte pravým tlačítkem na soubor .exe a potom vyberte **spustit jako správce**.
+3. V **před zahájením**, zadejte, jak dlouho chcete shromažďovat data. Doporučujeme že spustit nástroj během pracovní doby, abyste měli jistotu, že data zástupcem. Pokud zkoušíte pouze ověření síťového připojení, můžete shromáždit pro pouze několik minut.
 
     ![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image2.png)
-4. V **podrobnosti primární lokality**, zadejte název serveru hello nebo plně kvalifikovaný název domény pro samostatný hostitel nebo pro cluster s podporou hello plně kvalifikovaný název domény klienta hello přijmout bodu, název clusteru nebo libovolného uzlu v clusteru hello a pak klikněte na **Další**. Nástroj Hello automaticky rozpozná hello název hello serveru, který je spuštěn na. Hello nástroj příjmem virtuálních počítačů, které jde monitorovat hello zadané servery.
+4. V **podrobnosti primární lokality**, zadejte název serveru nebo plně kvalifikovaný název domény pro samostatné hostitele nebo clusteru zadejte plně kvalifikovaný název domény klienta přijmout bodu, clusteru název nebo libovolný uzel v clusteru a pak klikněte na tlačítko **Další**. Nástroj automaticky rozpozná název, který je spuštěn na serveru. Nástroj převezme virtuálních počítačů, které pro zadané servery se dá sledovat.
 
     ![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image3.png)
-5. V **podrobnosti lokality repliky**, pokud se při replikaci tooAzure, nebo pokud se při replikaci tooa sekundárního datového centra a nenastavili server repliky, vyberte **zahrnující lokality repliky testy přeskočte**. Pokud replikujete tooa sekundárního datového centra a nastavili jste si typ repliky, zadejte plně kvalifikovaný název domény hello samostatný server nebo hello klientský přístupový bod pro hello clusteru v **Server name (nebo) CAP zprostředkovatele repliky technologie Hyper-V**.
+5. V **podrobnosti lokality repliky**, pokud se při replikaci do Azure, nebo pokud se při replikaci do sekundárního datacentra a nenastavili server repliky, vyberte **zahrnující lokality repliky testy přeskočte**. Pokud replikujete do sekundárního datacentra a nastavili jste si typ repliky, zadejte plně kvalifikovaný název domény serveru samostatné nebo klientský přístupový bod pro cluster, do **Server name (nebo) CAP zprostředkovatele repliky technologie Hyper-V**.
 
     ![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image4.png)
-6. V **rozšířené repliky podrobnosti**, povolit **přeskočit hello testy zahrnující lokality rozšířených replik**. Tyto testy nejsou podporovány službou Site Recovery.
-7. V **vyberte virtuální počítače tooReplicate**, nástroje hello připojí toohello serveru nebo clusteru a zobrazí virtuálních počítačů, a disky spuštěných na primárním serveru hello, v souladu s nastavením hello jste zadali na hello **podrobnosti primární lokality**  stránky. Virtuální počítače, které již jsou povoleny pro replikaci nebo který neběží, nebudou zobrazeny. Vyberte hello virtuální počítače, pro které chcete toocollect metriky. Výběr virtuálních pevných disků hello automaticky příliš shromažďuje data pro hello virtuálních počítačů.
-8. Pokud jste nakonfigurovali na serveru repliky nebo clusteru, v **sítě informace**, hello přibližnou šířky pásma sítě WAN si myslíte, bude použit mezi lokalitami hello primárním serverem a repliky a certifikáty vyberte hello, pokud jste nakonfigurovali ověřování pomocí certifikátu.
+6. V **rozšířené repliky podrobnosti**, povolit **testy zahrnující lokality rozšířené repliky přeskočte**. Tyto testy nejsou podporovány službou Site Recovery.
+7. V **vyberte virtuální počítače replikace**, disky spuštěných na primárním serveru, v souladu s nastavení jste zadali na nástroje připojení k serveru nebo clusteru a zobrazí se virtuální počítače a **primární lokality podrobnosti** stránky. Virtuální počítače, které již jsou povoleny pro replikaci nebo který neběží, nebudou zobrazeny. Vyberte virtuální počítače, pro které chcete shromažďovat metriky. Výběr virtuálních pevných disků automaticky shromažďuje data pro virtuální počítače příliš.
+8. Pokud jste nakonfigurovali na serveru repliky nebo clusteru, v **sítě informace**, přibližný šířky pásma sítě WAN si myslíte, bude použit mezi primárním a repliky lokality a vyberte certifikáty, pokud jste nakonfigurovali ověření certifikátem.
 
     ![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image5.png)
-9. V **Souhrn**, zkontrolujte hello nastavení a klikněte na **Další** toobegin shromažďování metrik. Nástroj průběh a stav se zobrazí na hello **vypočítat kapacitu** stránky. Po ukončení běhu hello nástroje, klikněte na tlačítko **zobrazit sestavu** tooview hello výstup. Ve výchozím nastavení, sestavy a protokoly jsou uloženy v **%systemdrive%\Users\Public\Documents\Capacity Planner**.
+9. V **Souhrn**, zkontrolujte nastavení a klikněte na **Další** zahájíte shromažďování metrik. Nástroj průběh a stav se zobrazí na **vypočítat kapacitu** stránky. Po ukončení běhu nástroje, klikněte na tlačítko **zobrazit sestavu** zobrazte výstup. Ve výchozím nastavení, sestavy a protokoly jsou uloženy v **%systemdrive%\Users\Public\Documents\Capacity Planner**.
 
    ![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image6.png)
 
-## <a name="step-4-interpret-hello-results"></a>Krok 4: Interpretovat výsledky hello
+## <a name="step-4-interpret-the-results"></a>Krok 4: Interpretovat výsledky
 
-Tady jsou důležité metriky hello. Metriky, které zde nejsou uvedeny, můžete ignorovat. Nejsou relevantní pro Site Recovery.
+Tady jsou důležité metriky. Metriky, které zde nejsou uvedeny, můžete ignorovat. Nejsou relevantní pro Site Recovery.
 
-### <a name="on-premises-tooon-premises-replication"></a>Místní tooon místní replikace
+### <a name="on-premises-to-on-premises-replication"></a>Místně na místní replikaci
 
-* Dopad replikace na výpočty hello primárním hostitelem, a paměti
-* Dopad replikace na hello primární, místo na disku úložiště obnovení hostitelů, IOPS
+* Dopad replikace na primárním hostitelem výpočty, a paměti
+* Dopad replikaci na primární, místo na disku úložiště obnovení hostitelů, IOPS
 * Celková šířka pásma vyžadovaná pro replikaci rozdílů (MB/s)
-* Zjištěnou šířku pásma sítě mezi primárním hostitelem hello a hello hostiteli obnovení (MB/s)
-* Návrh pro hello ideální počet active paralelní přenosů mezi dvěma hello hostitele nebo clustery
+* Zjištěnou šířku pásma sítě mezi primárním hostitelem a hostiteli obnovení (MB/s)
+* Návrh pro ideální počet active paralelní přenosů mezi dvěma hostitele nebo clustery
 
-### <a name="on-premises-tooazure-replication"></a>Místní tooAzure replikace
+### <a name="on-premises-to-azure-replication"></a>Místním nasazením a Azure replikace
 
-* Dopad replikace na výpočty hello primárním hostitelem, a paměti
-* Dopad replikace hello primárním hostitelem úložiště místa na disku, IOPS
+* Dopad replikace na primárním hostitelem výpočty, a paměti
+* Dopad replikace primárním hostitelem úložiště místa na disku, IOPS
 * Celková šířka pásma vyžadovaná pro replikaci rozdílů (MB/s)
 
 ## <a name="more-resources"></a>Další zdroje informací
-* Podrobné informace o nástroji hello přečíst hello dokumentu, který doprovází hello nástroj pro stažení.
-* Podívejte se na návod hello nástroj na Keithema Mayera [blog na TechNetu](http://blogs.technet.com/b/keithmayer/archive/2014/02/27/guided-hands-on-lab-capacity-planner-for-windows-server-2012-hyper-v-replica.aspx).
-* [Získat výsledky hello](site-recovery-performance-and-scaling-testing-on-premises-to-on-premises.md) z našich testování výkonu pro replikaci mezi lokálními tooon místní technologie Hyper-V
+* Podrobné informace o tomto nástroji najdete v tématu dokumentu, který doprovází nástroj pro stažení.
+* Podívejte se na návod nástroj na Keithema Mayera [blog na TechNetu](http://blogs.technet.com/b/keithmayer/archive/2014/02/27/guided-hands-on-lab-capacity-planner-for-windows-server-2012-hyper-v-replica.aspx).
+* [Získat výsledky](site-recovery-performance-and-scaling-testing-on-premises-to-on-premises.md) z našich testování výkonu pro místně na místní replikaci technologie Hyper-V
 
 ## <a name="next-steps"></a>Další kroky
 
 Po dokončení plánování kapacity můžete začít nasazovat Site Recovery:
 
-* [Replikace virtuálních počítačů technologie Hyper-V v tooAzure cloudy VMM](site-recovery-vmm-to-azure.md)
-* [Replikovat virtuální počítače Hyper-V (bez VMM) tooAzure](site-recovery-hyper-v-site-to-azure.md)
+* [Replikace virtuálních počítačů Hyper-V v cloudech VMM do Azure](site-recovery-vmm-to-azure.md)
+* [Replikace virtuálních počítačů technologie Hyper-V (bez VMM) do Azure](site-recovery-hyper-v-site-to-azure.md)
 * [Replikace virtuálních počítačů technologie Hyper-V mezi lokalitami VMM](site-recovery-vmm-to-vmm.md)

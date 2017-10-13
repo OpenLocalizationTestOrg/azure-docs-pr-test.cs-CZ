@@ -1,6 +1,6 @@
 ---
-title: "aaaGuide toocreating datové služby pro hello Marketplace | Microsoft Docs"
-description: "Podrobné pokyny, jak toocreate, certifikovat a nasadit službu Data pro zakoupit na hello Azure Marketplace."
+title: "Příručka o vytváření datové služby pro Marketplace | Microsoft Docs"
+description: "Podrobné pokyny o tom, jak vytvořit, certifikovat a datové služby pro nasazení zakoupit na webu Azure Marketplace."
 services: marketplace-publishing
 documentationcenter: 
 author: HannibalSII
@@ -14,123 +14,123 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
-ms.openlocfilehash: 0220d357ae0ec89e7d4f6399605850e57c646f73
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c0c9362f1c2e15c947aaaf7187f3383ad243140f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="data-service-publishing-guide-for-hello-azure-marketplace"></a>Příručka pro publikování dat služby pro hello Azure Marketplace
+# <a name="data-service-publishing-guide-for-the-azure-marketplace"></a>Služba data publikování průvodce pro Azure Marketplace
 > [!IMPORTANT]
-> **V tuto chvíli jsme již nejsou registrace všechny nové služby Data vydavatele. Nové dataservices nebude získat schválení pro výpis.** Pokud máte obchodní aplikace SaaS chcete toopublish na AppSource najdete další informace [zde](https://appsource.microsoft.com/partners). Pokud máte IaaS aplikace nebo služba vývojáře by jako toopublish na webu Azure Marketplace můžete najít další informace [zde](https://azure.microsoft.com/marketplace/programs/certified/).
+> **V tuto chvíli jsme již nejsou registrace všechny nové služby Data vydavatele. Nové dataservices nebude získat schválení pro výpis.** Pokud máte SaaS obchodní aplikace, který chcete publikovat na AppSource můžete najít další informace [zde](https://appsource.microsoft.com/partners). Pokud máte IaaS aplikace nebo služby vývojáře, které chcete publikovat na webu Azure Marketplace můžete najít další informace [zde](https://azure.microsoft.com/marketplace/programs/certified/).
 > 
 > 
 
-Po dokončení hello kroku 1, [vytváření účtů a jejich registrace](marketplace-publishing-accounts-creation-registration.md), jsme vám na základě prostřednictvím hello [obecné netechnické](marketplace-publishing-pre-requisites.md) a [technické požadavky](marketplace-publishing-data-service-creation-prerequisites.md) z datové služby nabídku Azure Marketplace. Nyní jsme vás provede procesem hello kroky pro vytváření dat služby nabídka na hello [publikování portál] [ link-pubportal] pro hello Azure Marketplace.
+Po dokončení kroku 1, [vytváření účtů a jejich registrace](marketplace-publishing-accounts-creation-registration.md), jsme na základě vás [obecné netechnické](marketplace-publishing-pre-requisites.md) a [technické požadavky](marketplace-publishing-data-service-creation-prerequisites.md) z datové služby nabídku Azure Marketplace. Nyní jsme vás provede kroky pro vytvoření nabídka služby Data na [publikování portál] [ link-pubportal] pro Azure Marketplace.
 
-## <a name="1----login-toohello-publishing-portal"></a>1.    Přihlášení toohello publikování portálu.
-Přejděte příliš[https://publish.windowsazure.com](https://publish.windowsazure.com.)
+## <a name="1----login-to-the-publishing-portal"></a>1.    Přihlášení k publikování portálu.
+Přejděte na [https://publish.windowsazure.com](https://publish.windowsazure.com.)
 
-**Pro první čas tooPublishing přihlášení portálu použijte hello stejný účet, pomocí kterého vaše společnost prodejce profil byl zapsaný ve středisku pro vývojáře.**  (Později můžete přidat všechny zaměstnance ve vaší společnosti jako spolusprávce v hello publikování portálu).
+**Pro první čas přihlášení na portál publikování použijte stejný účet, pomocí kterého byl zaregistrován vaší společnosti prodejce profil ve středisku pro vývojáře.**  (Později můžete přidat všechny zaměstnance ve vaší společnosti jako spolusprávce publikování portálu).
 
-Klikněte na hello **publikovat Data Services** dlaždici, pokud je to první přihlášení hello hello publikování portálu.
+Klikněte na **publikovat Data Services** dlaždici, pokud je to první přihlášení na portál pro publikování.
 
-## <a name="2----choose-data-services-in-hello-navigation-menu-on-hello-left-side"></a>2.    Zvolte **datové služby** v hello navigační nabídce na levé straně hello.
+## <a name="2----choose-data-services-in-the-navigation-menu-on-the-left-side"></a>2.    Zvolte **datové služby** v navigační nabídce na levé straně.
   ![Kreslení](media/marketplace-publishing-data-service-creation/pubportal-main-nav.png)
 
 ## <a name="3----create-a-new-data-service"></a>3.    Vytvoření nové služby dat
-Vyplňte hello název pro vaše nové dat služby nabízejí a klikněte na "+" na hello správné.
+Zadejte název pro vaše nové dat služby nabízejí a klikněte na "+" na pravé straně.
 
   ![Kreslení](media/marketplace-publishing-data-service-creation/step-3.png)
 
-## <a name="4----review-hello-sub-menu-under-hello-newly-created-data-service-in-hello-navigation-menu"></a>4.    Služba Data zkontrolujte hello dílčí nabídky v části hello nově vytvořený v navigační nabídce hello.
-Klikněte na hello **návod** a zkontrolujte všechny potřebné kroky potřebné toopublish správně hello služba dat na hello Azure Marketplace.
+## <a name="4----review-the-sub-menu-under-the-newly-created-data-service-in-the-navigation-menu"></a>4.    Zkontrolujte dílčí nabídky pod nově vytvořený službou Data v navigační nabídce.
+Klikněte na **návod** a zkontrolujte všechny potřebné kroky potřebné k publikování správně službu dat v Azure Marketplace.
 
 > [!TIP]
-> Vždy můžete kliknutím na odkazy hello stránce "Postup" hello nebo použití karet na nabídka služby Data hello dílčí nabídky na levé straně hello.
+> Vždy můžete kliknutím na odkazy na stránce "Postup" nebo použití karet na nabídku služby Data dílčí nabídky na levé straně.
 > 
 > 
 
 ## <a name="5----create-a-new-plan"></a>5.    Vytvořte nový plán.
 ### <a name="offers-plans-transactions"></a>Nabízí, plánů, transakce.
-Každý nabídka může mít více plánů, ale musí mít alespoň jedna (1) plánu. Když koncoví uživatelé přihlášení k odběru tooyour nabídka přihlášení odběru pro jednu nabídku hello plánu. Každý plán definuje, jak koncoví uživatelé budou mít možnost toouse služby.
+Každý nabídka může mít více plánů, ale musí mít alespoň jedna (1) plánu. Když koncoví uživatelé přihlášení k odběru na vaši nabídku přihlášení odběru pro jednu nabídku na plánu. Každý plán definuje, jak koncoví uživatelé budou moci používat vaši službu.
 
-Aktuálně Azure Marketplace podporovat pouze měsíční předplatné transakce založené model pro datové služby, tj. koncoví uživatelé budou platit měsíční poplatek podle toohello cena hello konkrétní plán se zaregistrovali tooand bude mít tooconsume každý měsíc počet transakce definované hello plánu.
+Aktuálně Azure Marketplace podporovat pouze měsíční předplatné transakce založené model pro datové služby, tj. koncoví uživatelé budou platit měsíční poplatek podle cenu konkrétní plán, který se přihlásit k odběru a budou moci využívat každý měsíc počet transakcí definované v plánu.
 
-Každou transakci, obvykle definovány jako počet záznamů, které vrátí Data služby založené na dotazu hello odeslané toohello služby. Hello výchozí hodnota je 100. Počet transakcí vrácených tooeach dotazu bude počet záznamů dělený 100 a zaokrouhlený nahoru na nejbližší celé číslo toohello.
+Každou transakci, obvykle definovány jako počet záznamů, které vrátí Data služby založené na dotazu, odešle do služby. Výchozí hodnota je 100. Počet transakcí vrátil pro každý dotaz musí být počet záznamů dělený 100 a zaokrouhlené nahoru na nejbližší celé číslo.
 
-Je služba Azure Marketplace vrstvy odpovědnost toomonitor (monitorování) počet transakcí spotřebovávají každý dotaz.
+Je odpovědností vrstvy služby Azure Marketplace monitorování (monitorování) počet transakcí spotřebovávají každý dotaz.
 
 > [!IMPORTANT]
-> Koncoví uživatelé, které bylo dosaženo limitu transakce hello v měsíci hello se bude blokovat pokračování služby hello toouse až konce jejich měsíčním cyklu předplatného.
+> Koncoví uživatelé, které bylo dosaženo limitu transakce v měsíci se bude blokovat pokračovat v používání služby až konce jejich měsíčním cyklu předplatného.
 > 
-> Hello plán nebo jeden z plánů hello může (ale není nutné) obsahovat neomezený počet transakcí.
+> Plán nebo jeden z plánů může (ale není nutné) obsahovat neomezený počet transakcí.
 > 
 > 
 
 ### <a name="create-a-plan"></a>Vytvoření plánu.
-1. Klikněte na **"+"** další toohello "Přidat nový plán".
-2. Vyberte jednu z možností hello: **neomezený** nebo **omezené** využití pro tento plán.  Je-li omezené zadejte hello počet transakcí hello plán umožňuje tooconsume za měsíc.
+1. Klikněte na **"+"** vedle "Přidat nový plán".
+2. Vyberte jednu z možností: **neomezený** nebo **omezené** využití pro tento plán.  Pokud omezené potom zadejte počet transakcí s plánem vám umožní využívat za měsíc.
    
     ![Kreslení](media/marketplace-publishing-data-service-creation/step-5.1.png)  
    
-    Publikování portál také navrhne "Plán identifikátor", které budou použité toocommunicate toohello koncoví uživatelé hello název plánu hello v hello uživatelského rozhraní a také používány hello Marketplace služby tooidentify hello plánu. Pokud chcete, můžete změnit hello "Plánování identifikátor".
+    Publikování portál také navrhnout "Plán identifikátor", který bude používaný pro komunikaci se koncoví uživatelé název plánu v uživatelském rozhraní a také používá služba Marketplace k identifikaci plánu. Pokud chcete, můžete změnit "Plánování identifikátor".
    
    > [!NOTE]
-   > Hello "Plánování identifikátor" musí být jedinečný v rámci oboru hello každou nabídku. Jako v mnoha identifikátory použité v hello identifikátor bude zablokován po hello první publikování tooproduction a nebude je možné toochange publikování plánování portálu tohoto identifikátoru.
+   > "Plánování identifikátor" musí být jedinečný v rámci oboru každou nabídku. Po první publikování do výroby a nebude možné změnit tento identifikátor se uzamkne jako mnoho dalších identifikátorů použít v identifikátoru plánování publikování portálu.
    > 
    > 
-3. Klikněte na tlačítko tooaccept svého výběru.
+3. Kliknutím na tlačítko Přijmout svého výběru.
 4. Potom budete požádáni několik další otázky týkající se nově vytvořená plánu.
    
     ![Kreslení](media/marketplace-publishing-data-service-creation/step-5.2.png)
 
 | Otázky | Násobek. |
 | --- | --- |
-| **Tento plán je volné a dostupné celosvětové?** |Můžete vytvořit plán úplně bez z – zdarma. Pokud jeho hello pouze v rámci této nabídky – plánování, znamená to, že publikujete "Volné nabízejí" v hello Marketplace. Pokud se jedná pouze pro jeden (z několika) plán, nabízí více informací o služby s relativně malý počet transakcí za měsíc možnost toolearn koncoví uživatelé toooffer hello.  Pokud je odpověď hello "Ano", bude se dotaz žádné další otázky. |
+| **Tento plán je volné a dostupné celosvětové?** |Můžete vytvořit plán úplně bez z – zdarma. Pokud se jedná pouze plán k této nabídce –, znamená to, že publikujete "Volné nabízejí" na webu Marketplace. Pokud se jedná pouze pro jeden (z několika) plán, it vám dává možnost nabízí koncovým uživatelům, aby další informace o služby s relativně malý počet transakcí za měsíc.  Pokud je odpověď "Ano", bude se dotaz žádné další otázky. |
 
 > [!NOTE]
-> Koncoví uživatelé můžete upgradovat vždy toohello placené plány.
+> Koncoví uživatelé můžete vždy upgradovat na placené plány.
 > 
 > 
 
 | Otázky | Násobek. |
 | --- | --- |
-| **Je k dispozici bezplatná zkušební verze?** |Můžete vybrat mezi "Ne zkušební verzi" vůbec nebo poskytnout toouse možnost plánu pro "Jeden měsíc". Vydavatelé jako toouse tuto možnost tooprovide koncoví uživatelé hello možnost toounderstand hello výhody hello nabízejí zdarma pro jeden měsíc. |
+| **Je k dispozici bezplatná zkušební verze?** |Můžete vybrat mezi "Ne zkušební verzi" vůbec nebo poskytnout možnost k použití vašeho plánu pro "Jeden měsíc". Vydavatelé se chtěli použít tuto možnost dát koncovým uživatelům možnost pochopit výhody sady nabídku zdarma pro jeden měsíc. |
 
 > [!IMPORTANT]
-> Koncoví uživatelé pouze bude možné toopurchase bezplatnou zkušební verzi, pokud se zavedly platebním nástrojem například platební karty, smlouvy enterprise.
+> Koncoví uživatelé budou pouze moct zakoupit bezplatnou zkušební verzi, pokud budou mít vytvořené platebním nástrojem například platební karty, smlouvy enterprise.
 > 
-> Po jednom měsíci hello bezplatnou zkušební verzi Azure Marketplace se spustí poplatků zákazníkům hello ceníku k datu hello hello předplatného, pokud zákazník hello iniciované hello zrušení předplatného. Koncoví uživatelé toohello bude poskytnuta žádná speciální oznámení.
+> Po jednom měsíci z bezplatné zkušební verze Azure Marketplace se spustí zákazníkům poplatků za cenu k datu odběru, pokud zákazník iniciované zrušení předplatného. Žádná speciální oznámení bude potřeba poskytnout koncovým uživatelům.
 > 
 > 
 
 | Otázky | Násobek. |
 | --- | --- |
-| **Tento plán vyžaduje toopurchase kódu povýšení?** |Vydavatelé mít možnost toolimit přístup tootheir plánů služby Service tím, že poskytuje speciální kódu, nazývají "A Promocode" toospecific zákazníků. Pouze koncoví uživatelé, kteří budou mít tento Promocode bude mít toosubscribe toohello plán. Pokud zvolíte "Ne", pak souhlasíte, že je k dispozici všem uživatelům z hello oblasti, kde hello nabízejí (najdete v části [Marketplace Marketing obsahu Průvodce](marketplace-publishing-push-to-staging.md) podrobnosti) bude možné toosubscribe toothis plán. Žádné další otázky se dotaz. |
-| **Také skrýt tento plán z každý, kdo nemá platný propagační kód?** |Pokud hello odpovědí toohello předchozí otázce je "Ano" hello vydavatele má toocompletely možnost odebrání zobrazovaných v hello uživatelské hello Marketplace tento plán. Znamená to, zákazníci neuvidí tento plán v stránce s podrobnostmi o nabídka hello. Koncoví uživatelé, kteří obdrží promocode toopurchase, bude možné toosubscribe tooit pomocí této promocode. |
+| **Tento plán vyžaduje propagační kód, chcete-li zakoupit?** |Vydavatelé mít možnost omezit přístup k jejich plány služby tím, že poskytuje speciální kódu, nazývají "A Promocode" pro konkrétní zákazníky. Pouze koncoví uživatelé, kteří budou mít tento Promocode budou moci přihlásit do plánu. Pokud zvolíte "Ne", pak souhlasíte s tím, každý z oblasti, kde je k dispozici nabídku (najdete v části [Marketplace Marketing obsahu Průvodce](marketplace-publishing-push-to-staging.md) podrobnosti) budou moci přihlásit na tento plán. Žádné další otázky se dotaz. |
+| **Také skrýt tento plán z každý, kdo nemá platný propagační kód?** |Pokud je odpověď na otázku předchozí "Ano" vydavatele má možnost úplně odebrat tento plán zobrazování v uživatelském rozhraní Marketplace. Znamená to, zákazníci neuvidí tento plán nabídku na stránce Podrobnosti. Koncoví uživatelé, kteří obdrží promocode o zakoupení, budou moci přihlásit se pomocí této promocode. |
 
 ## <a name="6----create-your-marketplace-marketing-content"></a>6.    Vytvoření vašeho webu Marketplace marketingové obsahu
-Pro jak tooprovide informace požadované v **Marketing, Cenová, podpory a kategorie** karty navštivte [Marketplace Marketing obsahu Průvodce](marketplace-publishing-push-to-staging.md) což je běžný tooall artefakty publikované v hello Azure Marketplace.  
+Postup zadejte informace v **Marketing, Cenová, podpory a kategorie** karty navštivte [Marketplace Marketing obsahu Průvodce](marketplace-publishing-push-to-staging.md) tedy společné pro všechny artefakty publikována ve službě Azure Marketplace.  
 
-## <a name="7----connect-your-offer-tooyour-service-sql-azure-based-or-web-service-based"></a>7.    Připojte vaše tooyour nabídka služby (na základě SQL Azure nebo na základě webové služby).
-Klikněte na hello **datové služby** dílčí nabídky.
+## <a name="7----connect-your-offer-to-your-service-sql-azure-based-or-web-service-based"></a>7.    Vaši nabídku připojení k službě (na základě SQL Azure nebo na základě webové služby).
+Klikněte na **datové služby** dílčí nabídky.
 
-V horní polovině hello stránku hello budete dotázáni, nabídka hello tooprovide **Namespace**.  
+V horní polovině stránky budete požádáni o zadání nabídka **Namespace**.  
 
   ![Kreslení](media/marketplace-publishing-data-service-creation/step-7.png)
 
-Hello níže otázku bude určení, jak hello vydavatele bude nově vytvořený tooexpose nabídka tooAzure Marketplace. (Podrobnosti najdete v části hello [Data služby technické požadovaných průvodce](marketplace-publishing-data-service-creation-prerequisites.md)).
+Následující otázky bude definovat jak vydavatele bude nově vytvořený zveřejněte nabídku na webu Azure Marketplace. (Podrobnosti najdete v části [Data služby technické požadovaných průvodce](marketplace-publishing-data-service-creation-prerequisites.md)).
 
   ![Kreslení](media/marketplace-publishing-data-service-creation/step-7.2.png)
 
-**Publikování hello databáze na základě služby**
+**Publikování databáze na základě služby**
 
-Klikněte na **databáze**. Zobrazí se následující stránka Hello:
+Klikněte na **databáze**. Zobrazí se následující stránka:
 
   ![Kreslení](media/marketplace-publishing-data-service-creation/step-7.3.png)
 
-toocreate CSDL mapování pro hello datové sady založené na hello databázi SQL Azure:
+Vytvořit mapování CSDL datové sady založené na databázi SQL Azure:
 
   ![Kreslení](media/marketplace-publishing-data-service-creation/step-7.4.png)
 
@@ -145,17 +145,17 @@ Pokud webová služba
   ![Kreslení](media/marketplace-publishing-data-service-creation/step-7.7.png)
 
 > [!IMPORTANT]
-> Čtení [mapování existující webové služby tooOData prostřednictvím CSDL](marketplace-publishing-data-service-creation-odata-mapping.md) podrobné pokyny a příklady pro vytváření CSDL webové služby.
+> Čtení [mapování existující webové služby OData prostřednictvím CSDL](marketplace-publishing-data-service-creation-odata-mapping.md) podrobné pokyny a příklady pro vytváření CSDL webové služby.
 > 
 > 
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste vytvořili vaši nabídku Data Service, zkontrolujte, zda dokončení hello pokyny v hello [Marketplace Marketing obsahu Průvodce](marketplace-publishing-push-to-staging.md) před přesunutím dál příliš[testování služby dat v pracovním](marketplace-publishing-data-service-test-in-staging.md).
+Teď, když jste vytvořili vaši nabídku Data Service, zkontrolujte, že provedete podle pokynů v [Marketplace Marketing obsahu Průvodce](marketplace-publishing-push-to-staging.md) předtím, než můžete přejít ke [testování služby dat v pracovním](marketplace-publishing-data-service-test-in-staging.md).
 
 ## <a name="see-also"></a>Viz také
-* [Začínáme: Jak toopublish toohello nabídka Azure Marketplace](marketplace-publishing-getting-started.md)
-* Pokud vás zajímá Principy hello celý proces mapování OData a účel, přečtěte si tento článek [mapování dat služby OData](marketplace-publishing-data-service-creation-odata-mapping.md) tooreview definice struktury a pokynů.
-* Pokud vás zajímá učení a pochopení hello konkrétní uzlů a jejich parametrů, přečtěte si tento článek [datové služby OData mapování uzly](marketplace-publishing-data-service-creation-odata-mapping-nodes.md) pro definice a vysvětlení, příklady a kontext případů použití.
-* Pokud vás zajímá kontrola příklady, přečtěte si tento článek [Data služby OData mapování příklady](marketplace-publishing-data-service-creation-odata-mapping-examples.md) toosee ukázkový kód a pochopit syntaxe kódu a kontext.
+* [Začínáme: Jak publikování nabídky pro Azure Marketplace](marketplace-publishing-getting-started.md)
+* Pokud vás zajímá porozumět celkový proces mapování OData a účel, přečtěte si tento článek [mapování dat služby OData](marketplace-publishing-data-service-creation-odata-mapping.md) ke kontrole definice struktury a pokynů.
+* Pokud vás zajímá učení a seznámit se s konkrétním uzlům a jejich parametrů, přečtěte si tento článek [datové služby OData mapování uzly](marketplace-publishing-data-service-creation-odata-mapping-nodes.md) pro definice a vysvětlení, příklady a kontext případů použití.
+* Pokud vás zajímá kontrola příklady, přečtěte si tento článek [Data služby OData mapování příklady](marketplace-publishing-data-service-creation-odata-mapping-examples.md) najdete ukázkový kód a pochopit syntaxe kódu a kontext.
 
 [link-pubportal]:https://publish.windowsazure.com

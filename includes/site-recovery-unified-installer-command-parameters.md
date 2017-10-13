@@ -1,16 +1,16 @@
 |Název parametru| Typ | Popis| Možné hodnoty|
 |-|-|-|-|
-| /ServerMode|Povinné|Určuje, zda by měly být nainstalovány oba servery konfigurace a proces hello, nebo jenom procesový server hello|CS<br>PS|
-|/InstallLocation|Povinné|Hello složku, ve které hello součásti| Libovolné složky v počítači hello|
-|/MySQLCredsFilePath|Povinné|Cesta k souboru Hello v které hello MySQL jsou uložené přihlašovací údaje serveru|Hello soubor by měl být ve formátu hello níže uvedené|
-|/VaultCredsFilePath|Povinné|Hello cestu souboru s přihlašovacími údaji hello|Platná cesta k souboru|
-|/EnvType|Povinné|Typ prostředí, které chcete tooprotect |VMware<br>NonVMware|
-|/PSIP|Povinné|IP adresa toobe hello síťový adaptér používá pro přenos dat replikace| Libovolná platná IP adresa|
-|/CSIP|Povinné|IP adresa Hello hello síťové karty, na které hello konfigurační server naslouchá na| Libovolná platná IP adresa|
-|/PassphraseFilePath|Povinné|Úplná cesta toolocation Hello hello přístupové heslo souboru|Platná cesta k souboru|
-|/BypassProxy|Nepovinné|Určuje, že konfigurační server hello připojí tooAzure bez serveru proxy|toodo získat tuto hodnotu z Venu|
-|/ProxySettingsFilePath|Nepovinné|Nastavení proxy serveru (hello výchozí proxy server vyžaduje ověřování, nebo vlastní proxy server)|Hello soubor by měl být ve formátu hello níže uvedené|
-|DataTransferSecurePort|Nepovinné|Číslo portu na toobe PSIP hello používá pro replikaci dat| Platné číslo portu (výchozí hodnota je 9433)|
+| /ServerMode|Povinné|Určuje, jestli se má nainstalovat konfigurační i procesový server, nebo jenom procesový server.|CS<br>PS|
+|/InstallLocation|Povinné|Složka, ve které jsou nainstalované komponenty| Libovolná složka v počítači|
+|/MySQLCredsFilePath|Povinné|Cesta k souboru, ve kterém jsou uložené přihlašovací údaje serveru MySQL|Soubor by měl být v níže uvedeném formátu.|
+|/VaultCredsFilePath|Povinné|Cesta k souboru s přihlašovacími údaji trezoru|Platná cesta k souboru|
+|/EnvType|Povinné|Typ prostředí, které chcete chránit |VMware<br>NonVMware|
+|/PSIP|Povinné|IP adresa NIC, která se použije pro přenos dat replikace| Libovolná platná IP adresa|
+|/CSIP|Povinné|IP adresa NIC, na které konfigurační server naslouchá| Libovolná platná IP adresa|
+|/PassphraseFilePath|Povinné|Úplná cesta k umístění souboru s heslem|Platná cesta k souboru|
+|/BypassProxy|Nepovinné|Určuje, že se konfigurační server připojí k Azure bez proxy serveru.|Tuto hodnotu získejte z Venu.|
+|/ProxySettingsFilePath|Nepovinné|Nastavení proxy serveru (výchozí proxy server vyžaduje ověření, nebo vlastní proxy server)|Soubor by měl být v níže uvedeném formátu.|
+|DataTransferSecurePort|Nepovinné|Číslo portu na PSIP, které se má použít pro data replikace| Platné číslo portu (výchozí hodnota je 9433)|
 |/SkipSpaceCheck|Nepovinné|Přeskočí kontrolu místa na disku mezipaměti.| |
 |/AcceptThirdpartyEULA|Povinné|Příznak značí přijetí smlouvy EULA třetích stran| |
 |/ShowThirdpartyEULA|Nepovinné|Zobrazí smlouvy EULA třetích stran. Pokud je zadán jako vstup, všechny ostatní parametry budou ignorovány| |

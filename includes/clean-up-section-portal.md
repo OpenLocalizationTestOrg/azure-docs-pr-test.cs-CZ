@@ -1,9 +1,9 @@
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-V předchozích krocích hello jste vytvořili prostředky Azure ve skupině prostředků. Pokud nepředpokládáte tooneed tyto prostředky v hello budoucí, můžete je odstranit odstraněním skupiny prostředků hello.
+V předchozích krocích jste vytvořili prostředky Azure ve skupině prostředků. Pokud předpokládáte, že už tyto prostředky nebudete potřebovat, můžete je odstranit tak, že odstraníte skupinu prostředků.
  
-Hello levé nabídce v hello portálu Azure, vyberte **skupiny prostředků** a pak vyberte **myResourceGroup**.
+Na webu Azure Portal v nabídce vlevo vyberte **Skupiny prostředků** a pak vyberte **myResourceGroup**.
 
-Na stránce skupiny prostředků hello, ujistěte se, že hello hello ty, které potřebujete toodelete jsou uvedené prostředky.
+Na stránce skupiny prostředků zkontrolujte, že chcete všechny uvedené prostředky odstranit.
 
-Vyberte **odstranit**, typ **myResourceGroup** v hello textového pole a pak vyberte **odstranit**.
+Vyberte **Odstranit**, do textového pole zadejte **myResourceGroup** a potom vyberte **Odstranit**.

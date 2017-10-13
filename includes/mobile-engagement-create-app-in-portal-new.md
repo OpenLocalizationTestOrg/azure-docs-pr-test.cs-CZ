@@ -1,32 +1,32 @@
 
-1. Přihlaste se toohello [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Klikněte na **Nový**, pak na **Web + mobilní zařízení** a potom na **Mobile Engagement**.
    
     ![](./media/mobile-engagement-create-app-in-portal-new/browse-azme-extension.png)
-3. V hello **novou kolekci aplikací Mobile Engagement** okno, které se zobrazí, vytváříte kolekci aplikace namísto aplikace jako v hello portál Azure classic. Zadejte hello následující informace:
+3. V zobrazeném okně **Nová kolekce aplikací Mobile Engagement** budete vytvářet kolekce aplikací, místo aplikací jako na portálu Azure Classic. Zadejte následující informace:
    
     ![](./media/mobile-engagement-create-app-in-portal-new/new-azme-app.png)
    
    * **Název:** Název vaší *kolekce aplikací* 
-   * **Platformy**: vyberte cílové platformy pro aplikace v okně hello platformy, které se otevře. Například pokud chcete aplikaci pro platformu iOS i Android, vyberte obě platformy a v této kolekci aplikací budete mít vytvořené dvě aplikace. 
+   * **Platformy:** V okně Platformy, které se otevře, vyberte cílové platformy pro vaši aplikaci. Například pokud chcete aplikaci pro platformu iOS i Android, vyberte obě platformy a v této kolekci aplikací budete mít vytvořené dvě aplikace. 
      
       ![](./media/mobile-engagement-create-app-in-portal-new/choose-platform.png)
-   * **Předplatné**: Vyberte hello předplatného Azure. 
-   * **Skupina prostředků**: skupiny prostředků Azure vyberte hello, ve kterém chcete prostředků Azure (kolekce aplikací Mobile Engagementu). Můžete toocreate novou.  
-   * **Umístění**: oblasti, kde bude uložena hello data o této aplikace a kolekce aplikací.
-4. Procházet hello kolekce aplikace Mobile Engagement kliknutím **Procházet** a vyhledejte **Mobile Engagement**
+   * **Předplatné:** Vyberte předplatné Azure. 
+   * **Skupina prostředků:** Vyberte skupinu prostředků Azure, ve které chcete mít tento prostředek Azure (Kolekce aplikací Mobile Engagement). Můžete zvolit vytvoření nové.  
+   * **Umístění:** Oblast, kde budou uložené údaje o této kolekci aplikací a aplikaci.
+4. Kolekce aplikací Mobile Engagement můžete procházet kliknutím na **Procházet** a vyhledáním textu **Mobile Engagement**.
    
     ![](./media/mobile-engagement-create-app-in-portal-new/browse-mobile-engagement-menu.png)
-5. Zobrazí se seznam z kolekce aplikace Mobile Engagement - zajistěte, aby byla hello stejné předplatné, které jste vytvořili kolekce aplikací.
+5. Zobrazí se seznam kolekcí aplikací Mobile Engagement – ověřte, že používáte stejné předplatné Azure, jako ve kterém jste vytvořili vaši kolekci aplikací.
    
     ![](./media/mobile-engagement-create-app-in-portal-new/browse-mobile-engagement.png)
-6. Klikněte na hello kolekce aplikací, který jste vytvořili v předchozí krok tooopen hello až hello okna prostředků kolekce aplikací, které se zobrazí různé aplikace hello nachází uvnitř této kolekce aplikací. 
+6. Klikněte na kolekci aplikací, kterou jste vytvořili v předchozím kroku, aby se otevřelo okno Kolekce aplikací, kde se zobrazí různé aplikace přítomné uvnitř této kolekce aplikací. 
    
     ![](./media/mobile-engagement-create-app-in-portal-new/mobile-engagement-app-collection.png)
-7. Kliknutím na text hello, který aplikaci vytvořili pro hello platformy, které vyvíjíte pro. 
+7. Klikněte na aplikaci vytvořenou pro platformu, pro kterou vyvíjíte. 
    
     ![](./media/mobile-engagement-create-app-in-portal-new/mobile-engagement-app.png)
-8. Klikněte na **informace o připojení** příkazového tlačítka v horní tooopen hello až hello informace o připojení okno a zkopírujte hello připojovací řetězec z ní. 
+8. Klikněte na příkazové tlačítko **Informace o připojení** v horní části, abyste otevřeli okno Informace o připojení a zkopírovali z něj připojovací řetězec. 
    
     ![](./media/mobile-engagement-create-app-in-portal-new/app-connection-info.png)
 

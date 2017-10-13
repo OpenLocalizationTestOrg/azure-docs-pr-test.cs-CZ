@@ -1,9 +1,9 @@
 ---
 layout: LandingPage
-description: "Zjistěte, jak toocreate virtuálního počítače pomocí hello Linux s nasazení classic."
-title: "aaaAzure virtuálních počítačů pro Linux (nasazení Classic) dokumentace | Microsoft Docs"
+description: "Naučte se vytvářet virtuální počítače s Linuxem pomocí modelu nasazení Classic."
+title: "Azure Virtual Machines pro Linux (model nasazení Classic) | Dokumentace Microsoftu"
 services: virtual-machines-linux
-author: carolz
+author: czeumault
 manager: carolz
 ms.assetid: 
 ms.service: virtual-machines-linux
@@ -12,9 +12,9 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 79ab4b850ed09173fa9d64314e603214744dcf3e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d32588fcd2864f1a62407c6a57b038f818063f3c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---

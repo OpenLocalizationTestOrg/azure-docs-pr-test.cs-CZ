@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure API sady SDK webové Mobile Engagement | Microsoft Docs"
-description: "Hello nejnovější aktualizace a postupy pro hello Web SDK pro Azure Mobile Engagement"
+title: "Azure Mobile Engagement webové rozhraní API sady SDK | Microsoft Docs"
+description: "Nejnovější aktualizace a postupy pro Web SDK pro Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,48 +14,48 @@ ms.devlang: js
 ms.topic: article
 ms.date: 06/07/2016
 ms.author: piyushjo
-ms.openlocfilehash: ec1261d6ad573b8c3ad6d5f616ab7bbe560d6fe2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 54c22ce6a03e382b1bbde102bccc97deec249b30
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="use-hello-azure-mobile-engagement-api-in-a-web-application"></a>Použití hello rozhraní API služby Azure Mobile Engagement ve webové aplikaci
-Tento dokument je dokument toohello přidání informující o tom, jak příliš[integrovat Mobile Engagement ve webové aplikaci](mobile-engagement-web-integrate-engagement.md). Poskytuje podrobné informace o tom, jak toouse hello tooreport rozhraní API služby Azure Mobile Engagement statistik vaší aplikace.
+# <a name="use-the-azure-mobile-engagement-api-in-a-web-application"></a>Ve webové aplikaci pomocí rozhraní API služby Azure Mobile Engagement
+Tento dokument je doplňkem k dokumentu, který se dozvíte, jak k [integrovat Mobile Engagement ve webové aplikaci](mobile-engagement-web-integrate-engagement.md). Poskytuje podrobné informace týkající se sestav vaší statistik aplikace pomocí rozhraní API služby Azure Mobile Engagement.
 
-Hello Mobile Engagement API poskytuje hello `engagement.agent` objektu. výchozí sada SDK webové služby Azure Mobile Engagement alias je Hello `engagement`. Můžete změnit definici tento alias z konfigurace sady SDK hello.
+Rozhraní API služby Mobile Engagement poskytuje `engagement.agent` objektu. Výchozí sada SDK webové služby Azure Mobile Engagement alias je `engagement`. Můžete změnit definici tento alias z konfigurace sady SDK.
 
 ## <a name="mobile-engagement-concepts"></a>Koncepty Mobile Engagementu
-Hello následujících částí Upřesnit běžné [koncepty Mobile Engagementu](mobile-engagement-concepts.md) pro hello webové platformy.
+Následující části Upřesnit běžné [koncepty Mobile Engagementu](mobile-engagement-concepts.md) pro webovou platformu.
 
 ### <a name="session-and-activity"></a>`Session` a `Activity`
-Pokud uživatel hello zůstane nečinné více než několik sekund mezi dvěma aktivitami, hello uživatele posloupnost aktivit je rozdělit na dvě odlišné relace. Tyto několik sekund, se nazývají hello časový limit relace.
+Pokud uživatel zůstane nečinné více než několik sekund mezi dvěma aktivitami, uživatele posloupnost aktivit je rozdělit na dvě odlišné relace. Tyto několik sekund, se nazývají časový limit relace.
 
-Pokud webová aplikace není deklarovat hello konec aktivity uživatele samostatně (pomocí volání hello `engagement.agent.endActivity` funkce), server hello Mobile Engagement automaticky vyprší hello relace uživatele do tří minut po zavření stránky aplikace hello. Tomu se říká časový limit relace server hello.
+Pokud webová aplikace není deklarovat konec aktivity uživatele samostatně (voláním `engagement.agent.endActivity` funkce), server Mobile Engagement automaticky vyprší platnost relace uživatele do tří minut po zavření stránky aplikace. Tomu se říká časový limit relace serveru.
 
 ### `Crash`
-Ve výchozím nastavení nejsou vytvořeny automatizované sestavy nezachycená výjimek jazyka JavaScript. Však může hlásit havárií ručně pomocí hello `sendCrash` funkce (viz část hello na reporting havárií).
+Ve výchozím nastavení nejsou vytvořeny automatizované sestavy nezachycená výjimek jazyka JavaScript. Však může hlásit havárií ručně pomocí `sendCrash` funkce (viz část o nahlašování dojde k chybě).
 
 ## <a name="reporting-activities"></a>Sestavy aktivit
-Zprávy o aktivity uživatelů zahrnuje, když uživatel spustí novou aktivitu, a při ukončení hello aktuální aktivita uživatele hello.
+Zprávy o aktivity uživatelů zahrnuje, když uživatel spustí novou aktivitu, a když uživatel končí aktuální aktivita.
 
 ### <a name="user-starts-a-new-activity"></a>Uživatel spustí novou aktivitu
     engagement.agent.startActivity("MyUserActivity");
 
-Je třeba toocall `startActivity()` Každá aktivita uživatele čas změny. Hello první volání funkce toothis spustí novou relaci uživatele.
+Je třeba volat `startActivity()` Každá aktivita uživatele čas změny. První volání této funkce spustí novou relaci uživatele.
 
-### <a name="user-ends-hello-current-activity"></a>Uživatel končí hello aktuální aktivita
+### <a name="user-ends-the-current-activity"></a>Uživatel končí aktuální aktivita
     engagement.agent.endActivity();
 
-Je třeba toocall `endActivity()` alespoň jednou po dokončení hello uživatele jejich poslední aktivita. Tento příkaz informuje hello Mobile Engagement Web SDK je aktuálně nečinnosti hello uživatele, a že hello uživatelské relace musí toobe po vyprší časový limit relace hello ukončeno. Když zavoláte `startActivity()` vyprší časový limit relace hello hello relaci je jednoduše obnovit.
+Je třeba volat `endActivity()` alespoň jednou po dokončení uživatele jejich poslední aktivita. Tento příkaz informuje Mobile Engagement Web SDK, že uživatel je v současné době nečinnosti a že se musí po vypršení časového limitu relace je třeba ukončit relaci uživatele. Když zavoláte `startActivity()` předtím, než vyprší časový limit relace, relaci jednoduše obnovit.
 
-Protože neexistuje žádný spolehlivý volání pro při zavření okna Navigátor hello, je obtížné nebo dokonce znemožňují toocatch hello konec aktivity uživatele v prostředí webové. Proč je hello Mobile Engagement serveru automaticky vyprší hello uživatelské relace do tří minut po zavření stránky aplikace hello.
+Protože neexistuje žádný spolehlivý volání pro při zavření okna Navigátor, je to často složité nebo dokonce znemožňují catch konec aktivity uživatele v prostředí webové. To je důvod, proč server Mobile Engagement automaticky vyprší platnost relace uživatele do tří minut po zavření stránky aplikace.
 
 ## <a name="reporting-events"></a>Události vytváření sestav
 Zprávy o události popisuje relace události a události samostatné.
 
 ### <a name="session-events"></a>Události relací
-Relace události jsou obvykle použité tooreport hello akce prováděné uživatelem během relace hello uživatele.
+Relace události se obvykle používají k hlášení akcí prováděná uživatelem během relace uživatele.
 
 **Příklad bez doplňující data:**
 
@@ -72,7 +72,7 @@ Relace události jsou obvykle použité tooreport hello akce prováděné uživa
     }
 
 ### <a name="standalone-events"></a>Samostatné události
-Na rozdíl od relace události může dojít k událostem samostatné mimo hello kontext relace.
+Na rozdíl od relace události může dojít k událostem samostatné mimo kontext relace.
 
 K tomu použít ``engagement.agent.sendEvent`` místo ``engagement.agent.sendSessionEvent``.
 
@@ -80,7 +80,7 @@ K tomu použít ``engagement.agent.sendEvent`` místo ``engagement.agent.sendSes
 Zprávy o chybách obsahuje chyby relace a samostatné chyby.
 
 ### <a name="session-errors"></a>Chyby relace
-Relace chyby jsou obvykle použité tooreport hello chyby, které mají vliv na uživatele hello během relace hello uživatele.
+Relace chyby jsou obvykle používají k hlášení chyb, které mají vliv na uživatele během relace uživatele.
 
 **Příklad bez doplňující data:**
 
@@ -103,7 +103,7 @@ Relace chyby jsou obvykle použité tooreport hello chyby, které mají vliv na 
     }
 
 ### <a name="standalone-errors"></a>Samostatné chyby
-Na rozdíl od relace chyby může dojít k chybám samostatné mimo hello kontext relace.
+Na rozdíl od relace chyb může dojít k chybám samostatné mimo kontext relace.
 
 K tomu použít `engagement.agent.sendError` místo `engagement.agent.sendSessionError`.
 
@@ -112,7 +112,7 @@ Zprávy o zahrnuje úlohy vytváření sestav chyb a událostí, ke kterým doš
 
 **Příklad:**
 
-Pokud chcete toomonitor požadavek AJAX, použijte následující hello:
+Pokud chcete monitorovat požadavek AJAX, použijete následující:
 
     // [...]
     xhr.onreadystatechange = function() {
@@ -126,11 +126,11 @@ Pokud chcete toomonitor požadavek AJAX, použijte následující hello:
     // [...]
 
 ### <a name="reporting-errors-during-a-job"></a>Generování sestav chyb během úlohy
-Chyby může být související tooa spuštění úlohy místo toohello se aktuální uživatelská relace.
+Chyby může souviset s probíhající úlohou místo pro aktuální relaci uživatele.
 
 **Příklad:**
 
-Pokud chcete, aby tooreport chybu, pokud požadavek AJAX selže:
+Pokud chcete zobrazovat chyby, pokud se nezdaří požadavek AJAX:
 
     // [...]
     xhr.onreadystatechange = function() {
@@ -147,22 +147,22 @@ Pokud chcete, aby tooreport chybu, pokud požadavek AJAX selže:
     // [...]
 
 ### <a name="reporting-events-during-a-job"></a>Události vytváření sestav během úlohy
-Události může být související tooa spuštění úlohy místo toohello se aktuální uživatelská relace, thanks toohello `engagement.agent.sendJobEvent` funkce.
+Události může souviset s probíhající úlohou místo pro aktuální uživatelskou relaci, Poděkování `engagement.agent.sendJobEvent` funkce.
 
 Tato funkce funguje stejně jako `engagement.agent.sendJobError`.
 
 ### <a name="reporting-crashes"></a>Vytváření sestav dojde k chybě
-Použití hello `sendCrash` dojde k chybě funkce tooreport ručně.
+Použití `sendCrash` funkce do sestavy dojde k chybě ručně.
 
-Hello `crashid` argument je řetězec, který identifikuje hello typ havárie.
-Hello `crash` argument je obvykle trasování zásobníku hello hello havárie jako řetězec.
+`crashid` Argument je řetězec, který určuje typ havárie.
+`crash` Argument je obvykle trasování zásobníku havárie jako řetězec.
 
     engagement.agent.sendCrash(crashid, crash);
 
 ## <a name="extra-parameters"></a>Další parametry
-Můžete připojit libovolná data tooan události, chyba, aktivity nebo úlohy.
+Libovolná data můžete připojit k události, chyba, aktivity nebo úlohy.
 
-Hello dat může být jakýkoli objekt JSON (ale ne pole nebo primitivní typ).
+Data může být jakýkoli objekt JSON (ale ne pole nebo primitivní typ).
 
 **Příklad:**
 
@@ -170,48 +170,48 @@ Hello dat může být jakýkoli objekt JSON (ale ne pole nebo primitivní typ).
     engagement.agent.sendEvent("video_clicked", extras);
 
 ### <a name="limits"></a>Omezení
-Omezení, které se vztahují tooextra parametry jsou v oblastech hello regulárních výrazů pro klíče, hodnotové typy a velikosti.
+Omezení, které platí pro další parametry jsou v oblastech regulárních výrazů pro klíče, hodnotové typy a velikosti.
 
 #### <a name="keys"></a>Klíče
-Každý klíč v objektu hello musí odpovídat hello následující regulární výraz:
+Každý klíč v objektu musí odpovídat následujícímu regulárnímu výrazu:
 
     ^[a-zA-Z][a-zA-Z_0-9]*
 
 To znamená, že klíče musí začínat aspoň jedním písmenem, za nímž následuje písmena, číslice nebo podtržítka (\_).
 
 #### <a name="values"></a>Hodnoty
-Hodnoty jsou omezené toostring, počtu a typů logická hodnota.
+Hodnoty jsou omezeny na řetězec, počtu a typů logická hodnota.
 
 #### <a name="size"></a>Velikost
-Funkce jsou omezené too1 024 znaků na jednu volání (po hello Mobile Engagement Web SDK kóduje ho ve formátu JSON).
+Funkce jsou omezeny na 1024 znaků na jednu volání (po Mobile Engagement SDK webové kóduje ho ve formátu JSON).
 
 ## <a name="reporting-application-information"></a>Informace o vytváření sestav aplikace
-Můžete ručně odesílat zprávy o sledování informace (nebo všechny ostatní informace specifické pro aplikace) pomocí hello `sendAppInfo()` funkce.
+Můžete ručně odesílat zprávy o sledování informace (nebo všechny ostatní informace specifické pro aplikace) pomocí `sendAppInfo()` funkce.
 
-Všimněte si, že tyto údaje lze odeslat postupně. Pro určité zařízení se zachová hello nejnovější hodnotu pouze pro konkrétního klíče.
+Všimněte si, že tyto údaje lze odeslat postupně. Pro určité zařízení se zachová pouze nejnovější hodnotu pro konkrétní klíč.
 
-Jako funkce událostí můžete použít informace o všech JSON objektu tooabstract aplikace. Všimněte si, že pole nebo dílčí objekty jsou považovány za plochý řetězce (pomocí serializace JSON).
+Jako funkce událostí můžete použít libovolný objekt JSON abstrahovat informace o aplikaci. Všimněte si, že pole nebo dílčí objekty jsou považovány za plochý řetězce (pomocí serializace JSON).
 
 **Příklad:**
 
-Zde je ukázka kódu pro odesílání hello uživatele pohlaví a datum narození:
+Zde je ukázka kódu pro odesílání pohlaví uživatele a datum narození:
 
     var appInfos = {"birthdate":"1983-12-07","gender":"female"};
     engagement.agent.sendAppInfo(appInfos);
 
 ### <a name="limits"></a>Omezení
-Omezení, které se vztahují tooapplication informace jsou v oblastech hello regulárních výrazů pro klíče a velikost.
+Omezení, která se týkají informací o aplikaci nejsou v oblastech regulárních výrazů pro klíče a velikost.
 
 #### <a name="keys"></a>Klíče
-Každý klíč v objektu hello musí odpovídat hello následující regulární výraz:
+Každý klíč v objektu musí odpovídat následujícímu regulárnímu výrazu:
 
     ^[a-zA-Z][a-zA-Z_0-9]*
 
 To znamená, že klíče musí začínat aspoň jedním písmenem, za nímž následuje písmena, číslice nebo podtržítka (\_).
 
 #### <a name="size"></a>Velikost
-Informace o aplikaci je omezená too1 024 znaků na jednu volání (po hello Mobile Engagement Web SDK kóduje ho ve formátu JSON).
+Informace o aplikaci je omezená na 1024 znaků na jednu volání (po Mobile Engagement SDK webové kóduje ho ve formátu JSON).
 
-V předchozím příkladu hello hello JSON odeslané toohello serveru je 44 znaků:
+V předchozím příkladu je JSON odeslat na server 44 znaků:
 
     {"birthdate":"1983-12-07","gender":"female"}

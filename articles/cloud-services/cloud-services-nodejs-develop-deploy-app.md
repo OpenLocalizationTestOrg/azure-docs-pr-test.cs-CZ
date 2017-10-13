@@ -1,6 +1,6 @@
 ---
-title: "aaaNode.js Příručka Začínáme | Microsoft Docs"
-description: "Zjistěte, jak toocreate jednoduché Node.js webové aplikace a nasadit tooan cloudové služby Azure."
+title: "Úvodní příručka k prostředí Node.js | Dokumentace Microsoftu"
+description: "Naučte se vytvořit jednoduchou webovou aplikaci Node.js a nasadit ji v cloudové službě Azure Cloud Service."
 services: cloud-services
 documentationcenter: nodejs
 author: TomArcher
@@ -14,65 +14,65 @@ ms.devlang: nodejs
 ms.topic: hero-article
 ms.date: 08/17/2017
 ms.author: tarcher
-ms.openlocfilehash: 22945bfcc1b0e5da2a2d37dc5cc86be013cc0b5c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: b1e08e79c7fe2acbdb9c17607641612ffa2934ee
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="build-and-deploy-a-nodejs-application-tooan-azure-cloud-service"></a>Sestavení a nasazení tooan aplikace Node.js Cloudová služba Azure
+# <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Sestavení a nasazení aplikace Node.js ve službě Azure Cloud Service
 
-Tento kurz ukazuje, jak toocreate jednoduché Node.js aplikace běžící v cloudové službě Azure. Cloudové služby jsou hello stavebními bloky škálovatelných cloudových aplikací v Azure. Umožňují hello oddělení, nezávislou správu a škálování součástí front-end a back-end vaší aplikace.  Cloud Services poskytují výkonný vyhrazený virtuální počítač, který spolehlivě hostuje jednotlivé role.
+V tomto návodu se dozvíte, jak vytvořit jednoduchou aplikaci Node.js, běžící v cloudové službě Azure Cloud Service. Cloud Services jsou stavebními bloky škálovatelných cloudových aplikací v systému Azure. Umožňují oddělení, nezávislou správu a škálování front-endových a back-endových komponent vaší aplikace.  Cloud Services poskytují výkonný vyhrazený virtuální počítač, který spolehlivě hostuje jednotlivé role.
 
-Další informace o cloudové služby a jejich porovnání tooAzure weby a virtuálních počítačů najdete v tématu [porovnání webů Azure, cloudové služby a virtuální počítače].
+Další informace o službách Cloud Services a jejich porovnání se službami Azure Websites a Virtual Machines najdete v tématu [Porovnání webů Azure, služby Cloud Services a služby Virtual Machines].
 
 > [!TIP]
-> Hledáte toobuild jednoduchý Web? Pokud váš scénář zahrnuje jen jednoduchý front-endový web, zvažte [Použití jednoduché webové aplikace]. Můžete snadno upgradovat tooa cloudové služby jako vaše webová aplikace naroste a vaše požadavky se změní.
+> Chcete si vytvořit jednoduchý web? Pokud váš scénář zahrnuje jen jednoduchý front-endový web, zvažte [Použití jednoduché webové aplikace]. V případě potřeby budete moci snadno upgradovat na Cloud Service, až vaše webová aplikace naroste a vaše požadavky se změní.
 
-V následujícím kurzu si vytvoříte jednoduchou webovou aplikaci, hostovanou v rámci webové role. Budou používat hello výpočetní emulátor tootest vaši aplikaci místně a potom ho pomocí nástroje příkazového řádku Powershellu nasadit.
+V následujícím kurzu si vytvoříte jednoduchou webovou aplikaci, hostovanou v rámci webové role. Přes výpočetní emulátor si budete moci svou aplikaci lokálně otestovat a pak ji přes nástroje příkazového řádku PowerShellu nasadit.
 
-aplikace Hello je jednoduchou aplikaci "hello world":
+Jedná se o jednoduchou aplikaci "hello world":
 
-![Webový prohlížeč zobrazující webovou stránku Hello World hello][A web browser displaying hello Hello World web page]
+![A web browser displaying the Hello World web page][A web browser displaying the Hello World web page]
 
 ## <a name="prerequisites"></a>Požadavky
 > [!NOTE]
 > Tento kurz používá prostředí Azure PowerShell, které vyžaduje systém Windows.
 
 * Nainstalujte a nakonfigurujte [Azure Powershell].
-* Stáhněte a nainstalujte hello [Azure SDK pro .NET 2.7]. Hello nainstalovat Instalační program, vyberte:
+* Stáhněte a nainstalujte sadu [Azure SDK pro .NET 2.7]. V nastavení instalace vyberte:
   * MicrosoftAzureAuthoringTools
   * MicrosoftAzureComputeEmulator
 
 ## <a name="create-an-azure-cloud-service-project"></a>Vytvoření projektu Azure Cloud Service
-Proveďte následující úlohy toocreate nový projekt Azure Cloud Service, společně s základní uživatelské rozhraní Node.js hello:
+Proveďte následující kroky, a vytvořte tak nový projekt Azure Cloud Service a vygenerujte základní uživatelské rozhraní Node.js:
 
-1. Spustit **prostředí Windows PowerShell** jako správce; z hello **nabídce Start** nebo **obrazovce Start**, vyhledejte **prostředí Windows PowerShell**.
-2. [Připojení Powershellu] tooyour předplatné.
-3. Zadejte hello následující prostředí PowerShell rutinu toocreate toocreate hello projektu:
+1. Jako správce spusťte **Windows PowerShell** – v **nabídce Start** nebo na **obrazovce Start** vyhledejte **Windows PowerShell**.
+2. Proveďte [připojení PowerShellu] ke svému předplatnému.
+3. Zadejte následující rutiny PowerShellu, a vytvořte tak projekt.
 
         New-AzureServiceProject helloworld
 
-    ![výsledek Hello hello New-AzureService helloworld příkazu][hello result of hello New-AzureService helloworld command]
+    ![The result of the New-AzureService helloworld command][The result of the New-AzureService helloworld command]
 
-    Hello **New-AzureServiceProject** rutina generuje základní strukturu pro publikování tooa aplikace Node.js cloudové služby. Obsahuje konfigurační soubory, které jsou nezbytné pro publikování tooAzure. Hello rutina také změní pracovní adresář toohello adresář pro službu hello.
+    Rutina **New-AzureServiceProject** generuje základní strukturu pro publikování aplikace Node.js na službě Cloud Service. Obsahuje konfigurační soubory, které jsou nezbytné pro publikování v systému Azure. Rutina také změní pracovní adresář na adresář pro službu.
 
-    Hello rutina vytvoří hello následující soubory:
+    Rutina vytvoří následující soubory:
 
    * **ServiceConfiguration.Cloud.cscfg**, **ServiceConfiguration.Local.cscfg** a **ServiceDefinition.csdef**: soubory specifické pro Azure, které jsou zapotřebí pro publikování aplikace. Další informace najdete v tématu [Přehled vytváření hostované služby pro Azure].
-   * **deploymentSettings.json**: uloží místní nastavení, které jsou používány hello rutin nasazení prostředí Azure PowerShell.
-4. Zadejte následující příkaz tooadd nové webové role hello:
+   * **deploymentSettings.json**: uloží místní nastavení, které používají rutiny Azure PowerShellu sloužící k nasazení.
+4. Zadejte následující příkaz pro přidání nové webové role:
 
        Add-AzureNodeWebRole
 
-   ![výstup Hello hello příkazu Add-AzureNodeWebRole][hello output of hello Add-AzureNodeWebRole command]
+   ![The output of the Add-AzureNodeWebRole command][The output of the Add-AzureNodeWebRole command]
 
-   Hello **Add-AzureNodeWebRole** rutina vytvoří základní aplikaci Node.js. Také upraví hello **.csfg** a **.csdef** soubory tooadd položky konfigurace pro novou roli hello.
+   Rutina **Add-AzureNodeWebRole** vytvoří základní aplikaci Node.js. Také upraví soubory **.csfg** a **.csdef** pro přidání konfiguračních údajů pro novou roli.
 
    > [!NOTE]
-   > Pokud nezadáte název role, použije se výchozí název. Název můžete zadat jako první parametr rutiny hello:`Add-AzureNodeWebRole MyRole`
+   > Pokud nezadáte název role, použije se výchozí název. Název můžete zadat jako první parametr rutiny: `Add-AzureNodeWebRole MyRole`
 
-aplikace Node.js Hello je definována v souboru hello **server.js**, který je umístěn v adresáři hello hello webovou roli (**WebRole1** ve výchozím nastavení). Tady je kód hello:
+Aplikace Node.js je definována v souboru **server.js**, který je umístěn v adresáři pro webovou roli (ve výchozím nastavení **WebRole1**). Zde je kód:
 
     var http = require('http');
     var port = process.env.port || 1337;
@@ -81,103 +81,103 @@ aplikace Node.js Hello je definována v souboru hello **server.js**, který je u
         res.end('Hello World\n');
     }).listen(port);
 
-Tento kód je v podstatě hello stejná hodnota jako text "Hello, World" hello ukázku hello [nodejs.org] web, s výjimkou používá hello číslo portu přiřazené hello cloudového prostředí.
+Tento kód je v podstatě stejný jako u příkladu "Hello World" na webu [nodejs.org] až na to, že používá číslo portu přiřazené cloudovému prostředí.
 
-## <a name="deploy-hello-application-tooazure"></a>Nasazení aplikace tooAzure hello
+## <a name="deploy-the-application-to-azure"></a>Nasazení aplikace v Azure
 
 > [!NOTE]
-> toocomplete tohoto kurzu potřebujete účet Azure. Můžete si [aktivovat výhody předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo si [zaregistrovat bezplatný účet](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF).
+> K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete si [aktivovat výhody předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo si [zaregistrovat bezplatný účet](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF).
 
-### <a name="download-hello-azure-publishing-settings"></a>Hello Azure stáhnout nastavení publikování
-toodeploy tooAzure vaší aplikace, musíte nejprve stáhnout hello publikování nastavení pro vaše předplatné Azure.
+### <a name="download-the-azure-publishing-settings"></a>Stažení nastavení publikování v systému Azure
+Než aplikaci nasadíte v systému Azure, musíte si nejdřív stáhnout nastavení publikování pro své předplatné Azure.
 
-1. Spusťte následující rutiny Azure Powershellu hello:
+1. Spusťte následující rutiny Azure PowerShellu:
 
        Get-AzurePublishSettingsFile
 
-   Tímto dojde k použití prohlížeče toonavigate toohello stránky stažení nastavení publikování. Může být výzvami toolog pomocí Account Microsoft. Pokud ano, použijte účet hello spojený s předplatným Azure.
+   Tím ve svém prohlížeči přejdete na stránku, odkud můžete stáhnout nastavení publikování. Můžete být vyzváni k přihlášení pomocí účtu Microsoft Account. Pokud k tomu dojde, použijte účet spojený s předplatným Azure.
 
-   Uložte hello stáhnout umístění souboru tooa profil, který lze snadno přistupovat.
-2. Spusťte následující rutinu tooimport hello stažený profil publikování:
+   Soubor se staženým profilem uložte do umístění, kam se snadno dostanete.
+2. Spusťte následující rutinu, která importuje stažený profil publikování.
 
-       Import-AzurePublishSettingsFile [path toofile]
+       Import-AzurePublishSettingsFile [path to file]
 
     > [!NOTE]
-    > Po importu hello nastavení publikování, zvažte odstranění hello stáhli soubor .publishSettings, protože obsahuje informace, které by někomu mohly umožnit tooaccess váš účet.
+    > Po importu nastavení publikování zvažte, zda byste neměli smazat soubor .publishSettings. Obsahuje totiž informace, které by někomu mohly umožnit přístup na váš účet.
 
-### <a name="publish-hello-application"></a>Publikování aplikace hello
-toopublish spustit hello následující příkazy:
+### <a name="publish-the-application"></a>Publikování aplikace
+Pokud chcete aplikaci publikovat, spusťte následující příkazy:
 
       $ServiceName = "NodeHelloWorld" + $(Get-Date -Format ('ddhhmm'))
     Publish-AzureServiceProject -ServiceName $ServiceName  -Location "East US" -Launch
 
-* **-ServiceName** určuje hello název pro nasazení hello. Toto musí být jedinečný název, jinak hello publikovat proces se nezdaří. Hello **Get-Date** přiřadí k řetězci datum/čas, aby hello název jedinečný.
-* **-Umístění** určuje hello datacenter, jejímž hostitelem aplikace hello. seznam dostupných datových center, použijte hello toosee **Get-AzureLocation** rutiny.
-* **-Launch** otevře okno prohlížeče a po dokončení nasazení přejde toohello hostované služby.
+* **-ServiceName** určuje název pro nasazení. Název musí být jedinečný, jinak se proces publikování nezdaří. Příkaz **Get-Date** přiřadí k řetězci datum/čas, aby byl název jedinečný.
+* **-Location** určuje datové centrum, kde bude aplikace hostována. Pokud chcete zobrazit seznam dostupných datových center, použijte rutinu **Get-AzureLocation**.
+* **-Launch** otevře okno prohlížeče a po dokončení nasazení přejde na hostovanou službu.
 
-Po publikování bude úspěšné, zobrazí se odpověď podobnou toohello následující:
+Po úspěšném publikování uvidíte odpověď podobnou této:
 
-![výstup Hello hello příkazu Publish-AzureService][hello output of hello Publish-AzureService command]
+![The output of the Publish-AzureService command][The output of the Publish-AzureService command]
 
 > [!NOTE]
-> Může trvat několik minut, než toodeploy aplikace hello a k dispozici při prvním publikování.
+> Při prvním publikování může trvat několik minut, než se aplikace nasadí a bude k dispozici.
 
-Po dokončení nasazení hello bude okno prohlížeče otevřete a přejděte toohello cloudové služby.
+Po dokončení nasazení se otevře okno prohlížeče a zobrazí stránku cloudové služby.
 
-![Okno prohlížeče zobrazující hello hello world stránky; Hello URL značí, že hello stránka hostována v Azure.][A browser window displaying hello hello world page; hello URL indicates hello page is hosted on Azure.]
+![A browser window displaying the hello world page; the URL indicates the page is hosted on Azure.][A browser window displaying the hello world page; the URL indicates the page is hosted on Azure.]
 
 Aplikace je nyní spuštěna v systému Azure.
 
-Hello **Publish-AzureServiceProject** rutina provede hello následující kroky:
+Rutina **Publish-AzureServiceProject** provede následující kroky:
 
-1. Vytvoří toodeploy balíčku. Hello balíček obsahuje všechny hello soubory ve složce aplikace.
-2. Vytvoří nový **účet úložiště**, pokud žádný neexistuje. Hello účtu úložiště Azure je balíček aplikace hello toostore používané během nasazení. Po dokončení nasazení můžete bezpečně odstranit účet úložiště hello.
-3. Vytvoří novou **cloudovou službu**, pokud žádná neexistuje. A **Cloudová služba** je hello kontejner, ve kterém je vaše aplikace hostována, když je nasazené tooAzure. Další informace najdete v tématu [Přehled vytváření hostované služby pro Azure].
-4. Publikuje tooAzure balíčku nasazení hello.
+1. Vytvoří balíček pro nasazení. Tento balíček obsahuje všechny soubory ve složce vaší aplikace.
+2. Vytvoří nový **účet úložiště**, pokud žádný neexistuje. Účet úložiště Azure slouží k ukládání balíčku aplikace během nasazení. Po dokončení nasazení můžete účet úložiště bezpečně smazat.
+3. Vytvoří novou **cloudovou službu**, pokud žádná neexistuje. **Cloudová služba** je kontejner, ve kterém je vaše aplikace hostována, když ji nasadíte v systému Azure. Další informace najdete v tématu [Přehled vytváření hostované služby pro Azure].
+4. Publikuje balíček pro nasazení v systému Azure.
 
 ## <a name="stopping-and-deleting-your-application"></a>Zastavení a odstranění vaší aplikace
-Po nasazení aplikace, může být vhodné toodisable ji tak, že se můžete vyhnout poplatkům. Azure účtuje poplatky za instance webových rolí podle času (v hodinách), který na serveru spotřebují. Čas serveru se spotřebovává, jakmile vaše aplikace je nasazená, i když hello instance nejsou spuštěné a jsou ve stavu hello byla zastavena.
+Může se stát, že po nasazení budete chtít aplikaci zastavit a vyhnout se tak dalším poplatkům. Azure účtuje poplatky za instance webových rolí podle času (v hodinách), který na serveru spotřebují. Čas serveru se spotřebovává, jakmile je vaše aplikace nasazena, i když jsou instance zrovna zastaveny a neběží.
 
-1. V okně prostředí Windows PowerShell hello zastavte hello nasazení služby vytvořené v předchozí části hello s hello následující rutiny:
+1. V okně prostředí Windows PowerShell pomocí následující rutiny ukončete nasazení služby vytvořené v předchozí části:
 
        Stop-AzureService
 
-   Zastavování služby hello může trvat několik minut. Pokud je hello služba zastavená, obdržíte zprávu s upozorněním, že se zastavil.
+   Zastavování služby může trvat několik minut. Až bude služba zastavená, obdržíte zprávu s oznámením, že se tak stalo.
 
-   ![Hello stav příkazu hello Stop-AzureService][hello status of hello Stop-AzureService command]
-2. toodelete hello služba, volání hello následující rutiny:
+   ![The status of the Stop-AzureService command][The status of the Stop-AzureService command]
+2. Pokud chcete službu odstranit, zavolejte následující rutinu:
 
        Remove-AzureService
 
-   Po zobrazení výzvy zadejte **Y** toodelete hello služby.
+   Po zobrazení výzvy zadejte **Y**, a službu tak odstraňte.
 
-   Odstraněním hello služby může trvat několik minut. Po odstranění hello služby obdržíte zprávu s upozorněním, že se odstranila služba hello.
+   Odstraňování služby může trvat několik minut. Po odstranění služby obdržíte zprávu s oznámením, že se tak stalo.
 
-   ![Hello stav příkazu hello Remove-AzureService][hello status of hello Remove-AzureService command]
+   ![The status of the Remove-AzureService command][The status of the Remove-AzureService command]
 
    > [!NOTE]
-   > Odstraněním služby hello nedojde k odstranění účtu úložiště hello, který byl vytvořen při prvním publikování služby hello a bude pokračovat toobe účtovány poplatky za úložiště použít. Pokud se nic jiného používá hello úložiště, může být vhodné toodelete ho.
+   > Odstraněním služby nedojde k odstranění účtu úložiště, který byl vytvořen při prvním publikování služby. Budou vám tedy i nadále účtovány poplatky za využívání úložiště. Pokud se úložiště nepoužívá pro nic jiného, můžete je odstranit.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace najdete v tématu hello [středisku pro vývojáře Node.js].
+Další informace najdete ve [Středisku pro vývojáře Node.js].
 
 <!-- URL List -->
 
-[porovnání webů Azure, cloudové služby a virtuální počítače]: ../app-service-web/choose-web-site-cloud-service-vm.md
-[Použití jednoduché webové aplikace]: ../app-service-web/app-service-web-get-started-nodejs.md
+[Porovnání webů Azure, služby Cloud Services a služby Virtual Machines]: ../app-service/choose-web-site-cloud-service-vm.md
+[Použití jednoduché webové aplikace]: ../app-service/app-service-web-get-started-nodejs.md
 [Azure Powershell]: /powershell/azureps-cmdlets-docs
 [Azure SDK pro .NET 2.7]: http://www.microsoft.com/en-us/download/details.aspx?id=48178
-[Připojení Powershellu]: /powershell/azureps-cmdlets-docs#step-3-connect
+[připojení PowerShellu]: /powershell/azureps-cmdlets-docs#step-3-connect
 [nodejs.org]: http://nodejs.org/
 [Přehled vytváření hostované služby pro Azure]: https://azure.microsoft.com/documentation/services/cloud-services/
-[středisku pro vývojáře Node.js]: https://azure.microsoft.com/develop/nodejs/
+[Středisku pro vývojáře Node.js]: https://azure.microsoft.com/develop/nodejs/
 
 <!-- IMG List -->
 
-[hello result of hello New-AzureService helloworld command]: ./media/cloud-services-nodejs-develop-deploy-app/node9.png
-[hello output of hello Add-AzureNodeWebRole command]: ./media/cloud-services-nodejs-develop-deploy-app/node11.png
-[A web browser displaying hello Hello World web page]: ./media/cloud-services-nodejs-develop-deploy-app/node14.png
-[hello output of hello Publish-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node19.png
-[A browser window displaying hello hello world page; hello URL indicates hello page is hosted on Azure.]: ./media/cloud-services-nodejs-develop-deploy-app/node21.png
-[hello status of hello Stop-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node48.png
-[hello status of hello Remove-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node49.png
+[The result of the New-AzureService helloworld command]: ./media/cloud-services-nodejs-develop-deploy-app/node9.png
+[The output of the Add-AzureNodeWebRole command]: ./media/cloud-services-nodejs-develop-deploy-app/node11.png
+[A web browser displaying the Hello World web page]: ./media/cloud-services-nodejs-develop-deploy-app/node14.png
+[The output of the Publish-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node19.png
+[A browser window displaying the hello world page; the URL indicates the page is hosted on Azure.]: ./media/cloud-services-nodejs-develop-deploy-app/node21.png
+[The status of the Stop-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node48.png
+[The status of the Remove-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node49.png

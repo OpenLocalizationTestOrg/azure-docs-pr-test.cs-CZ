@@ -1,15 +1,15 @@
 ## <a name="load-balancer"></a>Load Balancer
-Nástroj pro vyrovnávání zatížení se používá, když chcete tooscale, vaše aplikace. Typické nasazení scénáře zahrnují aplikací běžících na více instancí virtuálního počítače. Nástroj pro vyrovnávání zatížení, která pomáhá toodistribute síťový provoz toohello různé instance jsou přední stěnou Hello instance virtuálních počítačů. 
+Nástroj pro vyrovnávání zatížení se používá, když chcete škálovat vaše aplikace. Typické nasazení scénáře zahrnují aplikací běžících na více instancí virtuálního počítače. Nástroj pro vyrovnávání zatížení, která pomáhá distribuovat síťový provoz na různých instancí jsou přední stěnou instance virtuálních počítačů. 
 
 ![Karty síťového rozhraní na jeden virtuální počítač](./media/resource-groups-networking/figure8.png)
 
 | Vlastnost | Popis |
 | --- | --- |
-| *frontendIPConfigurations* |Nástroj pro vyrovnávání zatížení může obsahovat jednu nebo více adres IP front-endu známé jako virtuální IP adresy (VIP). Tyto IP adresy sloužit jako příchozího provozu hello a může být veřejné IP adresy nebo privátní IP |
-| *backendAddressPools* |Toto jsou IP adresy přidružené hello zatížení toowhich síťové adaptéry virtuálního počítače budou distribuována. |
-| *Pravidla* |Vlastnost rule mapuje danou front-end IP a portu kombinace tooa sadu back-end IP adresy a portu kombinaci. S definicí jeden prostředek pro vyrovnávání zatížení můžete definovat více pravidel Vyrovnávání zatížení, každé pravidlo odrážející kombinaci popředí end IP adresy a portu a zpět Koncová IP adresa a port přidružený virtuálních počítačů. pravidlo Hello je jeden port v hello front-endu fondu toomany virtuální počítače ve fondu back-end hello |
-| *Sondy* |sondy umožňují sledovat tookeep hello stav instancí virtuálních počítačů. Pokud selže test stavu, hello instanci virtuálního počítače se provedou mimo otočení automaticky |
-| *inboundNatRules* |Definování hello pravidla NAT příchozí provoz v IP front-endu hello a distribuovaných toohello back-end IP tooa konkrétní virtuální počítač instance. Pravidlo NAT je jeden port v hello front-endu fondu tooone virtuálního počítače ve fondu back-end hello |
+| *frontendIPConfigurations* |Nástroj pro vyrovnávání zatížení může obsahovat jednu nebo více adres IP front-endu známé jako virtuální IP adresy (VIP). Tyto IP adresy sloužit jako příchozího provozu a může být veřejné IP adresy nebo privátní IP |
+| *backendAddressPools* |Toto jsou IP adresy přidružené síťové adaptéry virtuálních počítačů, do které budou distribuována zatížení |
+| *Pravidla* |Vlastnost rule mapuje danou front-end IP a portu kombinace na sadu back-end IP adresy a portu. S definicí jeden prostředek pro vyrovnávání zatížení můžete definovat více pravidel Vyrovnávání zatížení, každé pravidlo odrážející kombinaci popředí end IP adresy a portu a zpět Koncová IP adresa a port přidružený virtuálních počítačů. Pravidlo je jeden port ve front-endu fondu se mají velký počet virtuálních počítačů ve fondu back-end |
+| *Sondy* |sondy umožňují udržování přehledu o stavu instance virtuálních počítačů. Pokud selže test stavu, instance virtuálního počítače se provedou mimo otočení automaticky |
+| *inboundNatRules* |Definování příchozí provoz předávaných mezi přední pravidla NAT ukončení IP a distribuovat do back-end IP do instance konkrétní virtuální počítač. Pravidlo NAT je jeden port ve front-endu fondu k jednomu virtuálnímu počítači ve fondu back-end |
 
 Příklad šablony služby Vyrovnávání zatížení ve formátu Json:
 
@@ -33,7 +33,7 @@ Příklad šablony služby Vyrovnávání zatížení ve formátu Json:
             "Southeast Asia"
           ],
           "metadata": {
-            "description": "Location toodeploy"
+            "description": "Location to deploy"
           }
         },
         "addressPrefix": {

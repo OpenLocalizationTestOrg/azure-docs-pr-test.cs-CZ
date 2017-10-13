@@ -1,6 +1,6 @@
 ---
-title: "aaaUse Hive se systémem Hadoop pro analýzu protokolu Web - Azure HDInsight | Microsoft Docs"
-description: "Zjistěte, jak toouse Hive s HDInsight tooanalyze webu protokoly. Můžete použít soubor protokolu jako vstup do tabulky HDInsight a použít HiveQL tooquery hello data."
+title: "Použijte Hive s Hadoop pro analýzu protokolu Web - Azure HDInsight | Microsoft Docs"
+description: "Další informace o použití Hive s HDInsight k analýze webových protokolů. Budete používat soubor protokolu jako vstup do tabulky HDInsight a použít HiveQL k dotazování data."
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -16,44 +16,44 @@ ms.topic: article
 ms.date: 05/17/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9cbce3cc8cf8bc3ad104dc4ca6a5628802c8fe89
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e1cdb786bb6049980aafc0213abf53013e342618
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="use-hive-with-windows-based-hdinsight-tooanalyze-logs-from-websites"></a>Použijte Hive s HDInsight se systémem Windows tooanalyze protokoly z webů
-Zjistěte, jak toouse HiveQL s HDInsight tooanalyze protokoly z webu. Analýza protokolu webu můžete být použité toosegment cílovou skupinu podle podobné aktivity, kategorizace návštěvníky demografické údaje a toofind hello obsah, který uživatel vidí, hello webů, které pocházejí z a tak dále.
+# <a name="use-hive-with-windows-based-hdinsight-to-analyze-logs-from-websites"></a>Použijte Hive s HDInsight se systémem Windows k analýze protokolů z webů
+Zjistěte, jak použít HiveQL v prostředí HDInsight k analýze protokolů z webu. Analýza protokolu webu můžete použít, segmentovat cílovou skupinu podle podobné aktivity, kategorizace návštěvníky podle demografické údaje a zjistit, obsah se zobrazení, webů, které pocházejí z a tak dále.
 
 > [!IMPORTANT]
-> Hello kroky v této dokumentu funguje jenom s clustery HDInsight se systémem Windows. HDInsight je k dispozici pouze v systému Windows verze nižší než HDInsight 3.4. Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Kroky v tomto dokumentu pracovat pouze s clustery HDInsight se systémem Windows. HDInsight je k dispozici pouze v systému Windows verze nižší než HDInsight 3.4. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-V této ukázce použijete HDInsight clusteru tooanalyze webu protokolu soubory tooget lépe pochopit četnost hello webu toohello návštěv z externích webových stránek za den. Pokud vytvoříte souhrn chyb na webových stránkách, které uživatelé hello zaznamenat. Se dozvíte, jak:
+V této ukázce použijete clusteru služby HDInsight k analýze webu soubory protokolu pro získání přehledu o četnosti návštěv k webu z externích webových stránek za den. Pokud vytvoříte souhrn chyb na webových stránkách, kterými se uživatelé setkávají. Se dozvíte, jak:
 
-* Připojte tooa úložiště objektů Azure Blob, který obsahuje soubory protokolu webové stránky.
-* Vytvoření HIVE tabulky tooquery tyto protokoly.
-* Tooanalyze hello data vytvořte dotazy HIVE.
-* Pomocí aplikace Microsoft Excel tooconnect tooHDInsight (pomocí otevřenou databázi připojení (ODBC) tooretrieve hello analyzovat data.
+* Připojte k Azure Blob storage, který obsahuje soubory protokolu webové stránky.
+* Vytváření tabulek HIVE k dotazování tyto protokoly.
+* Vytváření dotazů HIVE analyzovat data.
+* V aplikaci Microsoft Excel pro připojení k HDInsight (pomocí připojení k databázi otevřít (ODBC) pro načtení analyzovaná data.
 
 ![HDI. Samples.Website.Log.Analysis][img-hdi-weblogs-sample]
 
 ## <a name="prerequisites"></a>Požadavky
 * Musí být zřízená clusteru Hadoop v Azure HDInsight. Pokyny najdete v tématu [zřizování clusterů HDInsight][hdinsight-provision].
 * Musíte mít aplikaci Microsoft Excel 2013 nebo nainstalovat aplikaci Excel 2010.
-* Musíte mít [ovladače ODBC Microsoft Hive](http://www.microsoft.com/download/details.aspx?id=40886) tooimport data z podregistru do aplikace Excel.
+* Musíte mít [ovladače ODBC Microsoft Hive](http://www.microsoft.com/download/details.aspx?id=40886) k importu dat z podregistru do aplikace Excel.
 
-## <a name="toorun-hello-sample"></a>Ukázka toorun hello
-1. Z hello [portálu Azure](https://portal.azure.com/), z hello úvodní panel (Pokud je připnutý hello clusteru existuje), klikněte na dlaždici clusteru hello, na kterém chcete toorun hello ukázka.
-2. Z hello clusteru okno, v části **rychlé odkazy**, klikněte na tlačítko **řídicí panel clusteru**a potom z hello **řídicí panel clusteru** okně klikněte na tlačítko **clusteru HDInsight Řídicí panel**. Alternativně můžete přímo otevřít řídicí panel hello pomocí hello následující adresu URL:
+## <a name="to-run-the-sample"></a>Ke spuštění ukázky
+1. Z [portálu Azure](https://portal.azure.com/), z úvodního panelu (Pokud je připnutý clusteru existuje), klikněte na dlaždici clusteru, na kterém chcete spustit ukázku.
+2. V okně clusteru pod **rychlé odkazy**, klikněte na tlačítko **řídicí panel clusteru**a potom z **řídicí panel clusteru** okně klikněte na tlačítko **řídicí panel clusteru HDInsight**. Alternativně můžete přímo otevře řídicí panel pomocí následující adresu URL:
 
          https://<clustername>.azurehdinsight.net
 
-    Po zobrazení výzvy ověřování pomocí hello správce uživatelského jména a hesla, který jste použili při zřizování clusteru hello.
-3. Z hello webové stránky, které se otevře, klikněte na tlačítko hello **postupem Začínáme Galerie** kartě a potom v části hello **řešení s ukázkovými daty** kategorii, klikněte na tlačítko hello **analýza protokolu webu** Ukázka.
-4. Postupujte podle pokynů hello vzorkem hello toofinish webovou stránku hello.
+    Po zobrazení výzvy ověřování pomocí správce uživatelské jméno a heslo, které jste použili při zřizování clusteru.
+3. Z webové stránky, které se otevře, klikněte na tlačítko **postupem Začínáme Galerie** kartě a potom v části **řešení s ukázkovými daty** kategorie, klikněte na tlačítko **analýza webového protokolu** ukázka.
+4. Postupujte podle pokynů na webové stránce ukončíte vzorku.
 
 ## <a name="next-steps"></a>Další kroky
-Zkuste hello následující ukázka: [analýza dat snímače používání Hive s HDInsight](hdinsight-hive-analyze-sensor-data.md).
+Zkuste následující ukázka: [analýza dat snímače používání Hive s HDInsight](hdinsight-hive-analyze-sensor-data.md).
 
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 [hdinsight-sensor-data-sample]: ../hdinsight-use-hive-sensor-data-analysis.md

@@ -1,5 +1,5 @@
 ---
-title: "aaaOperations Management Suite zabezpečení a Audit řešení Data zabezpečení | Microsoft Docs"
+title: "Zabezpečení dat v řešení Zabezpečení a audit pro Operations Management Suite | Dokumentace Microsoftu"
 description: "Tento dokument popisuje způsob správy a ochrany dat v řešení Zabezpečení a audit pro Operations Management Suite."
 services: operations-management-suite
 documentationcenter: na
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: yurid
-ms.openlocfilehash: 9c4181b3b491e4f7f0c57d7252eca78a819722d6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 3b6327b1f5150f32afd71639f32c55d823f1d1f0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="operations-management-suite-security-and-audit-solution-data-security"></a>Zabezpečení dat v řešení Zabezpečení a audit pro Operations Management Suite
-toohelp zákazníkům zabránit, zjistit a reagovat toothreats, [Operations Management Suite (OMS) zabezpečení a Audit řešení](operations-management-suite-overview.md) shromažďuje a zpracovává data o vašich prostředků, která zahrnuje:
+[Řešení Zabezpečení a audit pro Operations Management Suite (OMS)](operations-management-suite-overview.md) pomáhá zákazníkům předcházet hrozbám, rozpoznat je a reagovat na ně tím, že shromažďuje a zpracovává data o prostředcích, k nimž patří:
 
 * Protokol událostí zabezpečení
 * Události Trasování událostí pro Windows
@@ -32,30 +32,30 @@ toohelp zákazníkům zabránit, zjistit a reagovat toothreats, [Operations Mana
 * Výsledky základního vyhodnocování
 * Výsledky antimalwarového vyhodnocování
 * Výsledky vyhodnocování aktualizací a oprav
-* Datové proudy systémové protokoly, které jsou explicitně povoleno na hello agenta
+* Datové proudy syslog explicitně povolené v agentu
 
-Provedeme silné závazky tooprotect hello ochrany osobních údajů a zabezpečení tato data. Microsoft dodržuje pravidla dodržování předpisů a zabezpečení toostrict – z kódování toooperating služby.
+Zavázali jsme se, že soukromí a bezpečnost těchto dat budeme chránit. Společnost Microsoft dodržuje přísné pokyny pro dodržování předpisů a zabezpečení – od psaní kódu po provoz služeb.
 Tento článek popisuje způsob správy a ochrany dat v řešení Zabezpečení a audit v OMS.
 
 ## <a name="data-sources"></a>Zdroje dat
-OMS zabezpečení a Audit řešení analyzovat data ze své virtuální počítače a fyzické počítače, kde je nainstalován hello OMS Agent. Řešení Zabezpečení a audit v OMS může shromažďovat informace o konfiguraci událostí zabezpečení, jako jsou například protokoly událostí a auditu systému Windows, protokoly služby IIS a zprávy syslog. Mezi příklady těchto dat patří: typ a verze operačního systému, spuštěné procesy, název počítače, IP adresy, přihlášený uživatel a ID tenanta.  
+Řešení Zabezpečení a audit v OMS analyzuje data z virtuálních a fyzických počítačů s nainstalovaným agentem OMS. Řešení Zabezpečení a audit v OMS může shromažďovat informace o konfiguraci událostí zabezpečení, jako jsou například protokoly událostí a auditu systému Windows, protokoly služby IIS a zprávy syslog. Mezi příklady těchto dat patří: typ a verze operačního systému, spuštěné procesy, název počítače, IP adresy, přihlášený uživatel a ID tenanta.  
 
 ## <a name="data-protection"></a>Ochrana dat
-**Oddělení dat**: Data se ukládají na jednotlivých součástí v rámci služby hello logicky samostatné. Všechna data jsou označená podle organizace. Toto značení přetrvává v průběhu cyklu hello dat a je požadováno v jednotlivých vrstvách služby hello. 
+**Oddělení dat**: Data se v rámci služby ukládají logicky oddělená pro jednotlivé komponenty. Všechna data jsou označená podle organizace. Toto značení přetrvává v průběhu celého životního cyklu dat a je vyžadováno na každé úrovni služby. 
 
-**Přístup k datům**: tooprovide doporučení zabezpečení a prozkoumat potenciální ohrožení zabezpečení, pracovníky společnosti Microsoft může přistupovat k informacím shromažďovaných či analyzovat služby. Jsme splňovat toohello [Microsoft Online Services podmínky](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) a [prohlášení o ochraně osobních údajů](https://www.microsoft.com/privacystatement/en-us/OnlineServices/Default.aspx), který stavu, že Microsoft nebude používat Data zákazníků nebo odvození informací z něj jakémukoliv inzerování nebo podobné obchodní účely. doporučení zabezpečení tooprovide a prozkoumat potenciální ohrožení zabezpečení, pracovníky společnosti Microsoft může přistupovat k informacím shromažďovaných či analyzovat služby. Data zákazníků používáme pouze jako potřebné tooprovide vám Azure služby, včetně účely, které jsou kompatibilní s poskytování těchto služeb. Je-li zachovat všechna práva tooyour vlastní data.
+**Přístup k datům**: Aby bylo možné poskytovat doporučení týkající se zabezpečení a prošetřovat potenciální ohrožení zabezpečení, mají pracovníci společnosti Microsoft přístup k informacím shromažďovaným nebo analyzovaným službami. Dodržujeme [Podmínky online služeb společnosti Microsoft](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) a [Prohlášení o zásadách ochrany osobních údajů](https://www.microsoft.com/privacystatement/en-us/OnlineServices/Default.aspx), ve kterých je uvedeno, že společnost Microsoft nebude informace o zákaznících používat ani z nich odvozovat další informace pro reklamní nebo podobné obchodní účely. Aby bylo možné poskytovat doporučení týkající se zabezpečení a prošetřovat potenciální ohrožení zabezpečení, mají pracovníci společnosti Microsoft přístup k informacím shromažďovaným nebo analyzovaným službami. Informace o zákaznících podle potřeby používáme pouze k poskytování služeb Azure a k účelům slučitelným s poskytováním těchto služeb. Všechna práva na vaše data zůstávají ve vašem vlastnictví.
 
-**Data použití**: Společnost Microsoft používá vzory a analýzou hrozeb vidět napříč více klienty tooenhance naše funkce prevence a detekce; jsme učinit v souladu s závazky týkajícími se ochrany osobních údajů hello popsané v našem [ochrany osobních údajů Příkaz](https://www.microsoft.com/privacystatement/en-us/OnlineServices/Default.aspx).
+**Použití dat**: Společnost Microsoft vylepšuje své schopnosti prevence a detekce pomocí schémat a analýzy hrozeb napříč několika klienty. Činíme tak v souladu se závazky k ochraně osobních údajů popsanými v našem [Prohlášení o zásadách ochrany osobních údajů](https://www.microsoft.com/privacystatement/en-us/OnlineServices/Default.aspx).
 
 > [!NOTE]
-> Umístění dat je konfigurována na úrovni pracovní prostor OMS hello, při vytváření pracovního prostoru hello, která je součástí hello počáteční OMS zabezpečení a Audit proces konfigurace.
+> Umístění dat je konfigurováno na úrovni pracovního prostoru OMS během jeho vytváření, což je součástí procesu prvotní konfigurace řešení Zabezpečení a audit pro OMS.
 > 
 > 
 
 ## <a name="see-also"></a>Viz také
-V tomto dokumentu jste se dozvěděli, jakým způsobem probíhá správa a ochrana dat v OMS. toolearn informace o OMS zabezpečení a Audit řešení, najdete v části:
+V tomto dokumentu jste se dozvěděli, jakým způsobem probíhá správa a ochrana dat v OMS. Další informace o řešení Zabezpečení a audit v OMS najdete v tématech:
 
 * [Přehled Operations Management Suite (OMS)](operations-management-suite-overview.md)
-* [Monitorování a výstrahy tooSecurity odpovídá v Operations Management Suite zabezpečení a Audit řešení](oms-security-responding-alerts.md)
+* [Monitorování a reagování na výstrahy zabezpečení v řešení Zabezpečení a audit v Operations Management Suite](oms-security-responding-alerts.md)
 * [Monitorování prostředků v řešení Zabezpečení a audit v Operations Management Suite](oms-security-monitoring-resources.md)
 

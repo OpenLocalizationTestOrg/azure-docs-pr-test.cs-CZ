@@ -1,9 +1,9 @@
 ---
-title: AAA "Azure Analysis Services Adventure Works kurzu | Microsoft Docs"
-description: "Zavádí hello společnosti Adventure Works kurz pro Azure Analysis Services"
+title: Kurz Adventure Works pro Azure Analysis Services | Dokumentace Microsoftu
+description: "Představuje kurz Adventure Works pro Azure Analysis Services"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 
@@ -15,67 +15,67 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 06/01/2017
 ms.author: owend
-ms.openlocfilehash: 2df8b3ab4e8c4ffbe0086418d60fd2e2abd35e7d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 81a378c6b1a15cc240ca30fa19b557312ca54922
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-analysis-services---adventure-works-tutorial"></a>Azure Analysis Services – Kurz Adventure Works
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-Tento kurz obsahuje lekce toocreate a nasazovat s využitím tabulkový model na úroveň kompatibility hello 1400 [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
+V tomto kurzu najdete lekce zabývající se vytvořením a nasazením tabelárního modelu na úrovni kompatibility 1400 pomocí [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
 
-Pokud jste nové služby tooAnalysis a tabulkové modelování, dokončení tohoto kurzu je nejrychlejší způsob, jak toolearn hello jak toocreate a nasazení základní tabulkový model. Jakmile máte hello požadavky na místě, má mezi dvěma toocomplete hodin toothree trvat.  
+Pokud se službou Analysis Services a tabelárním modelováním teprve začínáte, absolvováním tohoto kurzu se nejrychleji naučíte vytvořit a nasadit základní tabelární model. Jakmile splníte všechny požadavky, dokončení kurzu by vám mělo trvat přibližně 2 až 3 hodiny.  
   
 ## <a name="what-you-learn"></a>Co se naučíte   
   
--   Jak toocreate nový tabulkový model projektu na hello **úroveň kompatibility 1400** v sadě SSDT.
+-   Vytvořit v SSDT nový projekt s tabelárním modelem na **úrovni kompatibility 1400**.
   
--   Jak tooimport data z relační databáze do projektu tabulkový model.  
+-   Importovat data z relační databáze do projektu s tabelárním modelem.  
   
--   Jak toocreate a spravovat vztahy mezi tabulkami v modelu hello.  
+-   Vytvořit a spravovat relace mezi tabulkami v modelu.  
   
--   Jak toocreate počítané sloupce, míry a klíčové ukazatele výkonu, které pomáhají uživatelům analyzovat kritické obchodní metriky.  
+-   Vytvořit počítané sloupce, míry a klíčové ukazatele výkonu, které uživatelům pomůžou analyzovat důležité obchodní metriky.  
   
--   Jak toocreate a spravovat perspektivy a hierarchií, které pomáhají uživatelům snadno procházet data modelu tím, že poskytuje firmy a hlediska specifické pro aplikaci.  
+-   Vytvořit a spravovat perspektivy a hierarchie, které uživatelům usnadní procházení dat modelu díky poskytování pohledů specifických pro podnik a aplikaci.  
   
--   Jak toocreate oddíly které rozdělují data tabulky do menších logických částí, které lze zpracovat nezávisle z jiných oddílů.  
+-   Vytvořit oddíly, které rozdělí tabulková data do menších logické jednotky s možností zpracování nezávisle na ostatních oddílech.  
   
--   Jak toosecure model objektů a dat po vytvoření se členy uživatelské role.  
+-   Zabezpečit objekty a data modelu vytvořením rolí s uživateli jako členy.  
   
--   Jak toodeploy tabulkový model tooan **Azure Analysis Services** server nebo místní server SQL Server 2017 Analysis Services.  
+-   Nasadit tabelární model na server **Azure Analysis Services** nebo místní server se službou SQL Server 2017 Analysis Services.  
   
 ## <a name="prerequisites"></a>Požadavky  
-toocomplete tohoto kurzu potřebujete:  
+Pro absolvování tohoto kurzu potřebujete:  
   
--   Azure Analysis Services nebo SQL Server 2017 Analysis Services instanci toodeploy váš model. Zaregistrujte si bezplatnou [zkušební verzi Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) a [vytvořte server](../analysis-services-create-server.md). Nebo si zaregistrujte a stáhněte verzi [SQL Server 2017 Community Technology Preview](https://www.microsoft.com/evalcenter/evaluate-sql-server-vnext-ctp). 
+-   Instanci služby Azure Analysis Services nebo SQL Server 2017 Analysis Services, do které se model nasadí. Zaregistrujte si bezplatnou [zkušební verzi Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) a [vytvořte server](../analysis-services-create-server.md). Nebo si zaregistrujte a stáhněte verzi [SQL Server 2017 Community Technology Preview](https://www.microsoft.com/evalcenter/evaluate-sql-server-vnext-ctp). 
 
--   Datový sklad SQL Server nebo Azure SQL Data Warehouse s hello [AdventureWorksDW2014 ukázkové databáze](http://go.microsoft.com/fwlink/?LinkID=335807). Tato ukázková databáze obsahuje nezbytné toocomplete hello data v tomto kurzu. Stáhněte si [bezplatnou edici SQL Serveru](https://www.microsoft.com/sql-server/sql-server-downloads). Nebo si zaregistrujte bezplatnou [zkušební verzi Azure SQL Database](https://azure.microsoft.com/services/sql-database/). 
+-   SQL Server Data Warehouse nebo Azure SQL Data Warehouse s [ukázkovou databází AdventureWorksDW2014](http://go.microsoft.com/fwlink/?LinkID=335807). Tato ukázková databáze obsahuje data potřebná k dokončení tohoto kurzu. Stáhněte si [bezplatnou edici SQL Serveru](https://www.microsoft.com/sql-server/sql-server-downloads). Nebo si zaregistrujte bezplatnou [zkušební verzi Azure SQL Database](https://azure.microsoft.com/services/sql-database/). 
 
-    **Důležité:** Pokud instalace hello ukázkové databáze na serveru SQL na místě a nasazení serveru Azure Analysis Services tooan modelu, [místní brána dat](../analysis-services-gateway.md) je vyžadován.
+    **Důležité:** Pokud instalujete ukázkovou databázi na místní SQL Server a model nasazujete na server Azure Analysis Services, vyžaduje se [Místní brána dat](../analysis-services-gateway.md).
 
--   nejnovější verze Hello [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx).
+-   Nejnovější verzi [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx).
 
--   nejnovější verze Hello [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).    
+-   Nejnovější verzi aplikace [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).    
 
 -   Klientskou aplikaci, jako je [Power BI Desktop](https://powerbi.microsoft.com/desktop/) nebo Excel. 
 
 ## <a name="scenario"></a>Scénář  
-Tento kurz je založený na fiktivní společnosti Adventure Works Cycles. Společnosti Adventure Works je velké mezinárodní výrobní společnost, která vytvoří a distribuuje jízdních kol a části, příslušenství toocommercial trhů v Severní Americe, Evropy a Asie. Hello společnosti využívá 500 pracovních procesů. Kromě toho Adventure Works zaměstnává několik regionálních prodejních týmů na všech základních trzích. Projekt je toocreate tabulkový model pro tooanalyze prodeje a marketingu uživatelů Internetu prodejní data v databázi AdventureWorksDW hello.  
+Tento kurz je založený na fiktivní společnosti Adventure Works Cycles. Adventure Works je velká mezinárodní výrobní společnost, která vyrábí jízdní kola, náhradní díly a příslušenství a distribuuje je na komerční trhy v Severní Americe, Evropě a Asii. Společnost zaměstnává 500 pracovníků. Kromě toho Adventure Works zaměstnává několik regionálních prodejních týmů na všech základních trzích. Vaším projektem je vytvoření tabelárního modelu pro uživatele prodeje a marketingu, pomocí kterého budou moci analyzovat data o prodejích na internetu v databázi AdventureWorksDW.  
   
-toocomplete hello kurz, musíte dokončit různé lekce. Každá lekce zahrnuje úkoly. Dokončení každý úkol v pořadí, je nutné pro dokončení lekce hello. Některé lekce obsahují několik úkolů, jejichž výsledek je podobný, ale způsob jejich dokončení se mírně liší. Tato metoda zobrazí často je více než jedním ze způsobů toocomplete úlohu a toochallenge naučili jste se s použitím znalostí jste v předchozím lekce a úlohy.  
+Pro absolvování tohoto kurzu musíte dokončit různé lekce. Každá lekce zahrnuje úkoly. Dokončení všech úkolů v daném pořadí je nezbytné pro dokončení lekce. Některé lekce obsahují několik úkolů, jejichž výsledek je podobný, ale způsob jejich dokončení se mírně liší. Tato metoda ukazuje, že k dokončení úkolu často vede víc cest, a vybízí vás k využití dovedností, které jste se naučili v předchozích lekcích a úkolech.  
   
-účelem Hello lekce hello je tooguide vytvářením základní tabulkový model pomocí mnoho funkcí hello zahrnutých v sadě SSDT. Protože každé lekce navazuje na předchozí lekci hello, musíte provést hello lekce v pořadí.
+Účelem lekcí je provést vás vytvořením a spuštěním základního tabelárního modelu pomocí řady funkcí obsažených v SSDT. Vzhledem k tomu, že každá lekce navazuje na předchozí lekci, měli byste lekce dokončovat v daném pořadí.
   
-V tomto kurzu neposkytuje poznatky o správu serveru na portálu Azure, Správa serveru nebo v databázi pomocí aplikace SSMS, nebo pomocí klienta aplikace data modelu toobrowse. 
+Tento kurz nezahrnuje lekce týkající se správy serveru na webu Azure Portal, správy serveru nebo databáze pomocí aplikace SSMS ani procházení dat modelu pomocí klientské aplikace. 
 
 
 ## <a name="lessons"></a>Lekce  
-Tento kurz obsahuje následující lekce hello:  
+Tento kurz se skládá z následujících lekcí:  
   
-|Lekce|Odhadovaná doba toocomplete|  
+|Lekce|Odhadovaný čas dokončení|  
 |----------|------------------------------|  
 |[1 – Vytvoření nového projektu s tabelárním modelem](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md)|10 minut|  
 |[2 – Získání dat](../tutorials/aas-lesson-2-get-data.md)|10 minut|  
@@ -92,9 +92,9 @@ Tento kurz obsahuje následující lekce hello:
 |[13 – Nasazení](../tutorials/aas-lesson-13-deploy.md)|5 minut|  
   
 ## <a name="supplemental-lessons"></a>Doplňkové lekce  
-Tyto poznatky získají nejsou požadované toocomplete hello kurzu, ale může být užitečné pro lepší pochopení pokročilé tabulkový model. vytváření funkcí.  
+Tyto lekce nejsou vyžadovány pro absolvování kurzu, ale můžete díky nim lépe porozumět pokročilým funkcím pro vytváření tabelárních modelů.  
   
-|Lekce|Odhadovaná doba toocomplete|  
+|Lekce|Odhadovaný čas dokončení|  
 |----------|------------------------------|  
 |[Řádky podrobností](../tutorials/aas-supplemental-lesson-detail-rows.md)|10 minut|
 |[Dynamické zabezpečení](../tutorials/aas-supplemental-lesson-dynamic-security.md)|30 minut|
@@ -102,7 +102,7 @@ Tyto poznatky získají nejsou požadované toocomplete hello kurzu, ale může 
 
   
 ## <a name="next-steps"></a>Další kroky  
-tooget začít, najdete v části [lekci 1: vytvoření nového projektu tabulkový Model](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md).  
+Pokud chcete začít, přejděte k [lekci 1: Vytvoření nového projektu s tabelárním modelem](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md).  
   
   
   

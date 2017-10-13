@@ -1,6 +1,6 @@
 ---
-title: soubor aaaLoad data ze souboru CSV do Azure SQL Database (bcp) | Microsoft Docs
-description: "Pro malou velikost dat využívá bcp tooimport data do Azure SQL Database."
+title: "Načtení dat ze souboru CSV do Azure SQL Database (bcp) | Microsoft Docs"
+description: "Pro malá množství dat se k importu dat do databáze SQL Azure používá bcp."
 services: sql-database
 documentationcenter: NA
 author: CarlRabeler
@@ -15,32 +15,32 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 01/10/2017
 ms.author: carlrab
-ms.openlocfilehash: 9350e459aa844223820fbbd849a830cf0354d4e9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 84bebab7763bb21f73880a6c8b367a62b0c137d3
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-flat-files"></a>Načtení dat ze souboru CSV do Azure SQL Database (ploché soubory)
-Můžete data tooimport nástroj příkazového řádku bcp hello ze souboru CSV do Azure SQL Database.
+Nástroj příkazového řádku bcp můžete použít k importu dat ze souboru CSV do databáze Azure SQL Database.
 
 ## <a name="before-you-begin"></a>Než začnete
 ### <a name="prerequisites"></a>Požadavky
-toocomplete hello kroky v tomto článku, budete potřebovat:
+Chcete-li provést kroky v tomto článku, je třeba:
 
 * Logický server a databáze Azure SQL Database
-* Hello bcp nainstalovaný nástroj příkazového řádku
-* Hello sqlcmd nainstalovaný nástroj příkazového řádku
+* Nainstalovaný nástroj příkazového řádku bcp
+* Nainstalovaný nástroj příkazového řádku sqlcmd
 
-Hello nástroje bcp a sqlcmd si můžete stáhnout z hello [Microsoft Download Center][Microsoft Download Center].
+Nástroje bcp a sqlcmd si můžete stáhnout z webu [Stažení softwaru společnosti Microsoft][Microsoft Download Center].
 
 ### <a name="data-in-ascii-or-utf-16-format"></a>Data ve formátu ASCII nebo UTF-16
-Pokud se tento kurz používáte svoje vlastní data, musí vaše data toouse hello ASCII nebo UTF-16 kódování, protože bcp nepodporuje kódování UTF-8. 
+Pokud pro tento kurz používáte svoje vlastní data, musí vaše data používat kódování ASCII nebo UTF-16, protože bcp nepodporuje kódování UTF-8. 
 
 ## <a name="1-create-a-destination-table"></a>1. Vytvoření cílové tabulky
-Definujte tabulku v databázi SQL jako hello cílové tabulky. Hello sloupců v tabulce hello musí odpovídat toohello dat v jednotlivých řádcích vašeho datového souboru.
+Definujte tabulku ve službě SQL Database jako cílovou tabulku. Sloupce v tabulce musí odpovídat datům v jednotlivých řádcích vašeho datového souboru.
 
-toocreate tabulku, otevřete příkazový řádek a pomocí sqlcmd.exe toorun hello následující příkaz:
+Pokud chcete vytvořit tabulku, otevřete okno příkazového řádku a pomocí sqlcmd.exe spusťte následující příkaz:
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "
@@ -56,7 +56,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 
 
 ## <a name="2-create-a-source-data-file"></a>2. Vytvoření zdrojového datového souboru
-Otevřete Poznámkový blok a zkopírujte hello následující řádky dat do nového textového souboru a potom uložte tento soubor tooyour místního dočasného adresáře C:\Temp\DimDate2.txt. Tato data jsou ve formátu ASCII.
+Otevřete Poznámkový blok a zkopírujte následující řádky dat do nového textového souboru. Pak tento soubor uložte do místního dočasného adresáře C:\Temp\DimDate2.txt. Tato data jsou ve formátu ASCII.
 
 ```
 20150301,1,3
@@ -73,26 +73,26 @@ Otevřete Poznámkový blok a zkopírujte hello následující řádky dat do no
 20150101,1,3
 ```
 
-(Volitelné) tooexport svoje vlastní data z databáze systému SQL Server, otevřete příkazový řádek a spusťte následující příkaz hello. TableName, ServerName, DatabaseName, Username a Password nahraďte svými vlastními informacemi.
+(Volitelné) Pokud chcete z databáze SQL Serveru vyexportovat svoje vlastní data, otevřete příkazový řádek a spusťte následující příkaz. TableName, ServerName, DatabaseName, Username a Password nahraďte svými vlastními informacemi.
 
 ```bcp
 bcp <TableName> out C:\Temp\DimDate2_export.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <Password> -q -c -t , 
 ```
 
-## <a name="3-load-hello-data"></a>3. Načtení dat hello
-tooload hello data, otevřete příkazový řádek a spusťte následující příkaz, nahraďte hello hodnoty pro název serveru, název databáze, uživatelské jméno a heslo s informacemi o sobě hello.
+## <a name="3-load-the-data"></a>3. Načtení dat
+Pokud chcete načíst data, otevřete příkazový řádek a spusťte následující příkaz, přičemž hodnoty parametrů Server Name (Název serveru), Database name (Název databáze), Username (Uživatelské jméno) a Password (Heslo) nahraďte svými vlastními informacemi.
 
 ```bcp
 bcp DimDate2 in C:\Temp\DimDate2.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <password> -q -c -t  ,
 ```
 
-Použijte tento příkaz tooverify hello data načetla správně.
+Pomocí tohoto příkazu ověřte, že se data načetla správně.
 
 ```bcp
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "SELECT * FROM DimDate2 ORDER BY 1;"
 ```
 
-výsledky Hello by měl vypadat takto:
+Výsledky by měly vypadat takto:
 
 | DateId | CalendarQuarter | FiscalQuarter |
 | --- | --- | --- |
@@ -110,7 +110,7 @@ výsledky Hello by měl vypadat takto:
 | 20151201 |4 |2 |
 
 ## <a name="next-steps"></a>Další kroky
-toomigrate databázi systému SQL Server najdete v části [migrace databáze SQL serveru](sql-database-cloud-migrate.md).
+Postup migrace databáze serveru SQL Server naleznete v části [Migrace databáze serveru SQL Server](sql-database-cloud-migrate.md).
 
 <!--MSDN references-->
 [bcp]: https://msdn.microsoft.com/library/ms162802.aspx

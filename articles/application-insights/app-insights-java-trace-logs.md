@@ -1,5 +1,5 @@
 ---
-title: "protokoly aaaExplore trasování Java v Azure Application Insights | Microsoft Docs"
+title: "Prozkoumejte Java protokolů trasování v Azure Application Insights | Microsoft Docs"
 description: "Hledání Log4J nebo Logback trasování ve službě Application Insights"
 services: application-insights
 documentationcenter: java
@@ -13,29 +13,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2016
 ms.author: bwren
-ms.openlocfilehash: e5f8e8c67e57753ba7574b97aa96dbb41db00ce1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5baba3deaf58a1a24995c60381592a9c2ffefd81
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Prozkoumejte Java protokolů trasování ve službě Application Insights
-Pokud používáte Logback nebo Log4J (verze 1.2 nebo v2.0) pro trasování, může mít vaše protokoly trasování automaticky odešlou tooApplication statistiky, které vám umožní zkoumat a hledat v nich.
+Pokud používáte Logback nebo Log4J (verze 1.2 nebo v2.0) pro trasování, může mít vaše protokoly trasování automaticky odešlou do Application Insights, kde vám umožní zkoumat a hledat v nich.
 
-## <a name="install-hello-java-sdk"></a>Nainstalujte hello sady Java SDK
+## <a name="install-the-java-sdk"></a>Nainstalujte Java SDK
 
 Nainstalujte [Application Insights SDK pro jazyk Java][java], pokud ještě neudělali.
 
-(Pokud nechcete, aby požadavky tootrack HTTP, můžete vynechat většinu hello .xml konfigurační soubor, ale musí obsahovat alespoň hello `InstrumentationKey` elementu. Měli byste také zavolat `new TelemetryClient()` tooinitialize hello SDK.)
+(Pokud nechcete, aby pro sledování požadavků HTTP, můžete vynechat většinu konfiguračního souboru .xml, ale musí obsahovat alespoň `InstrumentationKey` elementu. Měli byste také zavolat `new TelemetryClient()` k chybě při inicializaci sady SDK.)
 
 
-## <a name="add-logging-libraries-tooyour-project"></a>Přidání protokolování knihovny tooyour projektu
-*Zvolte hello vhodný způsob pro váš projekt.*
+## <a name="add-logging-libraries-to-your-project"></a>Do projektu přidejte knihovny protokolování
+*Zvolte vhodný způsob pro váš projekt.*
 
 #### <a name="if-youre-using-maven"></a>Pokud používáte Maven...
-Pokud je váš projekt již nastaven toouse Maven pro sestavení, slučte jednu z následujících fragmentů kódu do souboru pom.xml hello.
+Pokud je váš projekt již nastaven na sestavení s použitím nástroje Maven, slučte jednu z následujících fragmentů kódu do souboru pom.xml.
 
-Pak obnovte závislosti projektu hello, stažených binárních souborů tooget hello.
+Pak obnovte závislosti projektu, k získání stažených binárních souborů.
 
 *Logback*
 
@@ -77,9 +77,9 @@ Pak obnovte závislosti projektu hello, stažených binárních souborů tooget 
 ```
 
 #### <a name="if-youre-using-gradle"></a>Pokud používáte Gradle...
-Pokud váš projekt již nastaven toouse Gradle pro sestavení, přidejte jeden z následujících řádků toohello hello `dependencies` v souboru build.gradle:
+Pokud váš projekt je již nastaven na Gradle použít pro sestavení, přidejte jeden z následujících řádky, které se `dependencies` v souboru build.gradle:
 
-Pak obnovte závislosti projektu hello, stažených binárních souborů tooget hello.
+Pak obnovte závislosti projektu, k získání stažených binárních souborů.
 
 **Logback**
 
@@ -101,7 +101,7 @@ Pak obnovte závislosti projektu hello, stažených binárních souborů tooget 
 ```
 
 #### <a name="otherwise-"></a>V opačném případě...
-Stažení a extrakci odpovídající appender hello a pak přidejte hello příslušnou knihovnu tooyour projektu:
+Stažení a extrakci odpovídající appender a pak přidejte příslušnou knihovnu do projektu:
 
 | Protokoly | Ke stažení | Knihovna |
 | --- | --- | --- |
@@ -109,8 +109,8 @@ Stažení a extrakci odpovídající appender hello a pak přidejte hello přís
 | Log4J v2.0 |[SDK Log4J v2 appender](https://aka.ms/qypznq) |applicationinsights. protokolování log4j2 |
 | Log4j v1.2 |[SDK Log4J v1.2 appender](https://aka.ms/ky9cbo) |applicationinsights. protokolování log4j1_2 |
 
-## <a name="add-hello-appender-tooyour-logging-framework"></a>Přidání rozhraní protokolování tooyour appender hello
-toostart načtení trasování, sloučení hello relevantní fragmentu kódu toohello Log4J nebo Logback konfigurační soubor: 
+## <a name="add-the-appender-to-your-logging-framework"></a>Přidat appender do vašeho rozhraní protokolování
+Chcete-li spustit načtení trasování, sloučení relevantní fragment kódu do konfiguračního souboru Log4J nebo Logback: 
 
 *Logback*
 
@@ -153,12 +153,12 @@ toostart načtení trasování, sloučení hello relevantní fragmentu kódu too
     </root>
 ```
 
-appenders Hello Application Insights může být odkaz žádné nakonfigurované protokolovacího nástroje a nemusí protokolovač kořenové hello (jak je znázorněno v ukázky kódu hello výše).
+Appenders Application Insights může být odkaz žádné nakonfigurované protokolovacího nástroje a nemusí protokolovacího nástroje root (jak je znázorněno v ukázky kódu, výše).
 
-## <a name="explore-your-traces-in-hello-application-insights-portal"></a>Prozkoumat vaše trasování portálu Application Insights hello
-Nyní, když jste nakonfigurovali vašeho projektu toosend trasování tooApplication statistiky, můžete zobrazit a hledání toto trasování Application Insights portálu hello v hello [vyhledávání] [ diagnostic] okno.
+## <a name="explore-your-traces-in-the-application-insights-portal"></a>Prozkoumat vaše trasování v portálu služby Application Insights
+Nyní, když jste nakonfigurovali projekt k odeslání trasování do Application Insights, můžete zobrazit a vyhledávat tyto trasování v portálu služby Application Insights [vyhledávání] [ diagnostic] okno.
 
-![Hello portálu Application Insights otevřete vyhledávání](./media/app-insights-java-trace-logs/10-diagnostics.png)
+![Otevřete vyhledávání v portálu služby Application Insights](./media/app-insights-java-trace-logs/10-diagnostics.png)
 
 ## <a name="next-steps"></a>Další kroky
 [Diagnostické vyhledávání][diagnostic]

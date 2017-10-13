@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s PolicyStat | Microsoft Docs'
-description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a PolicyStat."
+description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a PolicyStat."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,139 +13,139 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 868053cd0d37359fd9b4aeb93dba42cbbaa09845
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 704afd5515b02ce2a4fbf35da65fad74dc506271
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>Kurz: Azure Active Directory integrace s PolicyStat
 
-V tomto kurzu zjistíte, jak toointegrate PolicyStat s Azure Active Directory (Azure AD).
+V tomto kurzu zjistěte, jak integrovat PolicyStat s Azure Active Directory (Azure AD).
 
-Integrace PolicyStat s Azure AD poskytuje hello následující výhody:
+Integrace PolicyStat s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup tooPolicyStat
-- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooPolicyStat (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup k PolicyStat
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k PolicyStat (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Integrace služby Azure AD s PolicyStat tooconfigure, je třeba hello následující položky:
+Konfigurace integrace Azure AD s PolicyStat, potřebujete následující položky:
 
 - Předplatné služby Azure AD
 - PolicyStat jednotné přihlašování povolené předplatné
 
 > [!NOTE]
-> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
+Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání PolicyStat z Galerie hello
+1. Přidání PolicyStat z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-policystat-from-hello-gallery"></a>Přidání PolicyStat z Galerie hello
-tooconfigure hello integrace PolicyStat do Azure AD, je nutné tooadd PolicyStat hello Galerie tooyour seznamu spravovaných aplikací SaaS.
+## <a name="adding-policystat-from-the-gallery"></a>Přidání PolicyStat z Galerie
+Při konfiguraci integrace PolicyStat do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS PolicyStat z galerie.
 
-**tooadd PolicyStat z Galerie hello, proveďte následující kroky hello:**
+**Pokud chcete přidat PolicyStat z galerie, proveďte následující kroky:**
 
-1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
+1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
+2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
 
     ![Aplikace][3]
 
-4. Hello vyhledávacího pole zadejte **PolicyStat**.
+4. Do vyhledávacího pole zadejte **PolicyStat**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-policystat-tutorial/tutorial_policystat_search.png)
 
-5. Na panelu výsledků hello vyberte **PolicyStat**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.
+5. Na panelu výsledků vyberte **PolicyStat**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-policystat-tutorial/tutorial_policystat_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s PolicyStat podle testovacího uživatele názvem "Britta Simon".
 
-Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v PolicyStat je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v PolicyStat musí toobe navázat.
+Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v PolicyStat je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v PolicyStat musí navázat.
 
-V PolicyStat, přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.
+V PolicyStat, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
 
-tooconfigure a testu Azure AD jednotné přihlašování s PolicyStat, potřebujete následující stavební bloky hello toocomplete:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s PolicyStat, je třeba dokončit následující stavební bloky:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele PolicyStat](#creating-a-policystat-test-user)**  -toohave protějšek Britta Simon v PolicyStat, která je propojená toohello Azure AD reprezentace uživatele.
-4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele PolicyStat](#creating-a-policystat-test-user)**  – Pokud chcete mít protějšek Britta Simon v PolicyStat propojeném s Azure AD reprezentace daného uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci PolicyStat.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci PolicyStat.
 
-**tooconfigure Azure AD jednotné přihlašování s PolicyStat, proveďte následující kroky hello:**
+**Ke konfiguraci Azure AD jednotné přihlašování s PolicyStat, proveďte následující kroky:**
 
-1. V portálu Azure, na hello hello **PolicyStat** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na portálu Azure na **PolicyStat** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
+2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-policystat-tutorial/tutorial_policystat_samlbase.png)
 
-3. Na hello **PolicyStat domény a adresy URL** část, proveďte následující kroky hello:
+3. Na **PolicyStat domény a adresy URL** část, proveďte následující kroky:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-policystat-tutorial/tutorial_policystat_url.png)
 
-    a. V hello **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<companyname>.policystat.com`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.policystat.com`
 
-    b. V hello **identifikátor** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<companyname>.policystat.com/saml2/metadata/`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.policystat.com/saml2/metadata/`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Aktualizovat tyto hodnoty s hello skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory PolicyStat klienta](http://www.policystat.com/support/) tooget tyto hodnoty. 
+    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory PolicyStat klienta](http://www.policystat.com/support/) k získání těchto hodnot. 
  
-4. Na hello **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat hello ve vašem počítači.
+4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-policystat-tutorial/tutorial_policystat_certificate.png) 
 
-5. Hello cílem této části je toooutline jak tooPolicyStat tooauthenticate tooenable uživatelé do svého účtu ve službě Azure AD využívající federaci založené na protokolu SAML hello.
+5. Cílem této části se popisují, jak uživatelům povolit ověřování na PolicyStat ke svému účtu ve službě Azure AD využívající federaci na základě protokolu SAML.
 
-    Hello PolicyStat aplikace očekává hello SAML kontrolní výrazy ve specifickém formátu, který vyžaduje, abyste tooadd vlastních atributů mapování tooyour **atributy tokenu SAML** konfigurace.  
+    Aplikace PolicyStat očekává SAML kontrolní výrazy ve specifickém formátu, který můžete přidat mapování vlastní atribut vyžaduje vaše **atributy tokenu SAML** konfigurace.  
 
-     Hello následující snímek obrazovky ukazuje příklad tohoto objektu.
+     Následující snímek obrazovky ukazuje příklad tohoto objektu.
 
      ![Atributy](./media/active-directory-saas-policystat-tutorial/tutorial_policystat_attribute.png "atributy")
 
-6. mapování atributů tooadd hello vyžaduje, proveďte následující kroky hello:
+6. Pokud chcete přidat mapování požadovaný atribut, proveďte následující kroky:
 
     | Název atributu    |   Hodnota atributu |
     |------------------- | -------------------- |
     | UID | ExtractMailPrefix([mail]) |
     
-    a. Klikněte na tlačítko **přidat atribut** tooopen hello **přidat atribut** dialogové okno.
+    a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-policystat-tutorial/tutorial_policystat_04.png)
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-policystat-tutorial/tutorial_policystat_addatribute.png)
     
-    b. V hello **název atributu** textovému poli, typ **uid**.
+    b. V **název atributu** textovému poli, typ **uid**.
 
-    c. V hello **hodnota atributu** textovému poli, vyberte **ExtractMailPrefix()**.    
+    c. V **hodnota atributu** textovému poli, vyberte **ExtractMailPrefix()**.    
    
-    d. Z hello **e-mailu** seznamu, vyberte **User.mail**.
+    d. Z **e-mailu** seznamu, vyberte **User.mail**.
     
     e. Klikněte na tlačítko **Ok**
 
@@ -155,98 +155,98 @@ V této části můžete povolit Azure AD jednotné přihlašování v hello por
 
 8. V okně prohlížeče jiný web Přihlaste se jako správce k serveru vaší společnosti PolicyStat.
 
-9. Klikněte na tlačítko hello **správce** a pak klikněte **konfigurace přihlášení** v levém navigačním podokně.
+9. Klikněte **správce** a pak klikněte **konfigurace přihlášení** v levém navigačním podokně.
    
     ![Správce nabídek](./media/active-directory-saas-policystat-tutorial/ic808633.png "správce nabídek")
 
-10. V hello **instalace** vyberte **povolit jeden integrace přihlašování**.
+10. V **instalace** vyberte **povolit jeden integrace přihlašování**.
    
     ![Jednotné přihlašování konfigurace](./media/active-directory-saas-policystat-tutorial/ic808634.png "jednotné přihlašování v konfiguraci")
 
-11. Klikněte na tlačítko **konfigurace atributů**a pak na hello **konfigurace atributů** část, proveďte následující kroky hello:
+11. Klikněte na tlačítko **konfigurace atributů**a pak na **konfigurace atributů** část, proveďte následující kroky:
    
     ![Jednotné přihlašování konfigurace](./media/active-directory-saas-policystat-tutorial/ic808635.png "jednotné přihlašování v konfiguraci")
    
-    a. V hello **uživatelské jméno atribut** textovému poli, typ **uid**.
+    a. V **uživatelské jméno atribut** textovému poli, typ **uid**.
 
-    b. V hello **křestní jméno atribut** textovému poli, typ **firstname** uživatele **Britta**.
+    b. V **křestní jméno atribut** textovému poli, typ **firstname** uživatele **Britta**.
 
-    c. V hello **poslední atribut Name** textovému poli, typ **lastname** uživatele **Simon**.
+    c. V **poslední atribut Name** textovému poli, typ **lastname** uživatele **Simon**.
 
-    d. V hello **atribut e-mailu** textovému poli, typ **emailaddress** uživatele  **BrittaSimon@contoso.com** .
+    d. V **atribut e-mailu** textovému poli, typ **emailaddress** uživatele  **BrittaSimon@contoso.com** .
 
     e. Klikněte na tlačítko **uložit změny**.
 
-12. Klikněte na tlačítko **si Metadata IDP**a pak na hello **si Metadata IDP** část, proveďte následující kroky hello:
+12. Klikněte na tlačítko **si Metadata IDP**a pak na **si Metadata IDP** část, proveďte následující kroky:
    
     ![Jednotné přihlašování konfigurace](./media/active-directory-saas-policystat-tutorial/ic808636.png "jednotné přihlašování v konfiguraci")
    
-    a. Otevřete soubor stažený metadat, hello kopírování obsahu a pak ji vložit do hello **vaše metadat zprostředkovatelů Identity** textové pole.
+    a. Otevřete váš soubor stažený metadata, kopírovat obsah a vložte ji do **vaše metadat zprostředkovatelů Identity** textové pole.
 
     b. Klikněte na tlačítko **uložit změny**.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
+Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
+**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
 
-1. V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
+1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-policystat-tutorial/create_aaduser_01.png) 
 
-2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-policystat-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.
+3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-policystat-tutorial/create_aaduser_03.png) 
 
-4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
+4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-policystat-tutorial/create_aaduser_04.png) 
 
-    a. V hello **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textovému poli, typ **BrittaSimon**.
 
-    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-a-policystat-test-user"></a>Vytvoření zkušebního uživatele PolicyStat
 
-V pořadí tooenable Azure AD Uživatelé toolog do PolicyStat musí být zřízená do PolicyStat.  
+Pokud chcete povolit uživatelům Azure AD přihlášení do PolicyStat, musí být zřízená do PolicyStat.  
 
-PolicyStat podporuje jenom při zřizování uživatelů čas. To znamená, tooadd hello uživatelů není nutné ručně tooPolicyStat. Hello uživatelé budou se přidají automaticky na jejich první přihlášení pomocí jednotného přihlašování.
+PolicyStat podporuje jenom při zřizování uživatelů čas. To znamená, není nutné ručně přidat uživatele do PolicyStat. Uživatelé bude se automaticky přidají na jejich první přihlášení pomocí jednotného přihlašování.
 
 >[!NOTE]
->Můžete použít všechny ostatní PolicyStat uživatele účtu nástroje pro tvorbu nebo rozhraní API poskytované PolicyStat tooprovision uživatelské účty Azure AD.
+>Můžete použít všechny ostatní PolicyStat uživatele účtu nástroje pro tvorbu nebo rozhraní API poskytované PolicyStat ke zřízení uživatelských účtů Azure AD.
 > 
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
+### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte tak, že udělíte přístup tooPolicyStat toouse Britta Simon Azure jednotné přihlašování.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu PolicyStat.
 
 ![Přiřadit uživatele][200] 
 
-**tooassign Britta Simon tooPolicyStat, proveďte následující kroky hello:**
+**Pokud chcete přiřadit Britta Simon PolicyStat, proveďte následující kroky:**
 
-1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikace hello vyberte **PolicyStat**.
+2. V seznamu aplikací vyberte **PolicyStat**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-policystat-tutorial/tutorial_policystat_app.png) 
 
-3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
+3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
@@ -254,7 +254,7 @@ V této části povolíte tak, že udělíte přístup tooPolicyStat toouse Brit
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -262,14 +262,14 @@ V této části povolíte tak, že udělíte přístup tooPolicyStat toouse Brit
     
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.
+V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
-Když kliknete na dlaždici PolicyStat hello v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour PolicyStat aplikace.
-Další informace o hello přístupového panelu najdete v tématu [toohello Úvod přístupový Panel](active-directory-saas-access-panel-introduction.md).
+Když kliknete na dlaždici PolicyStat na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci PolicyStat.
+Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

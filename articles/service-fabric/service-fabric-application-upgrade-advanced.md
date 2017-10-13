@@ -1,6 +1,6 @@
 ---
-title: "aaaAdvanced témata upgradu aplikace | Microsoft Docs"
-description: "Tento článek se zabývá některá Pokročilá témata, která se týkají tooupgrading aplikace Service Fabric."
+title: "Rozšířené témata týkající se upgradu aplikace | Microsoft Docs"
+description: "Tento článek se zabývá některá Pokročilá témata týkající se upgradu aplikace Service Fabric."
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,50 +14,50 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar;chackdan
-ms.openlocfilehash: bdaf3db6209c574d39f57e0bf9951fad5ad1cbec
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 8d3b922f3d50b645ac9db2cc879a319df1262e0a
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Upgrade aplikace Service Fabric: advanced témata
 ## <a name="adding-or-removing-services-during-an-application-upgrade"></a>Přidání nebo odebrání služby během upgradu aplikace
-Pokud nové služby je přidali tooan aplikace, která je již nasazen a publikovat jako upgrade, je nová služba hello přidané toohello nasazené aplikace.  Takové upgrade neovlivní žádné hello služeb, které již byly součástí aplikace hello. Však musí být spuštěná instance hello služby, která byla přidána pro hello nové služby toobe active (pomocí hello `New-ServiceFabricService` rutiny).
+Pokud nové služby je přidán do aplikace, která je již nasazen a publikovat jako upgrade, nové služby se přidá do nasazené aplikace.  Takové upgrade neovlivní žádné služby, které již byly součástí aplikace. Však musí být spuštěná instance služby, která byla přidána nové služby, aby byl aktivní (pomocí `New-ServiceFabricService` rutiny).
 
-Služby může být odebrán také z aplikace jako součást upgradu. Ale musí být všechny aktuální instance služby k-be odstraněné hello zastaven před pokračováním upgradu hello (pomocí hello `Remove-ServiceFabricService` rutiny).
+Služby může být odebrán také z aplikace jako součást upgradu. Ale musí být všechny aktuální instance služby k-be odstraněné zastaven před pokračováním v upgradu (pomocí `Remove-ServiceFabricService` rutiny).
 
 ## <a name="manual-upgrade-mode"></a>Režim manuálního upgradu
 > [!NOTE]
-> měli byste zvážit Hello sledována ruční režim pouze pro upgrade selhání nebo pozastavený. režim monitorovaných Hello je, že hello doporučená režimu upgradu pro Service Fabric aplikace.
+> Měli byste zvážit sledována ruční režim pouze pro upgrade selhání nebo pozastavený. Monitorované režim je doporučené režimu upgradu pro Service Fabric aplikace.
 >
 >
 
-Azure Service Fabric nabízí více upgradu režimy toosupport vývoj a produkční clustery. Zvolené možnosti nasazení se může lišit pro různá prostředí.
+Azure Service Fabric nabízí více upgradu režimy pro podporu vývoje a produkční clustery. Zvolené možnosti nasazení se může lišit pro různá prostředí.
 
-Hello monitorovat postupného upgradu aplikace je nejčastější upgradu toouse hello hello produkčního prostředí. Při upgradu hello zadat zásady, Service Fabric zajišťuje, že aplikace hello je v pořádku, před provedením upgradu hello.
+Monitorované postupného upgradu aplikace je nejčastější upgrade pro použití v provozním prostředí. Pokud je zadána zásad upgradu, Service Fabric zajistí, že aplikace je v pořádku, před upgradem.
 
- Hello aplikace může správce ruční hello vrácení aplikace režimu upgradu toohave celkový kontrolu nad průběh upgradu hello prostřednictvím hello různých domén upgradu. Tento režim je užitečné, když se děje-konvenční upgrade nebo zásad vyhodnocení stavu přizpůsobené nebo komplexní, je požadována (například hello aplikace je již dojít ke ztrátě dat.).
+ Správce aplikací můžete použít ruční postupného upgradu režim aplikací mít úplnou kontrolu nad průběh upgradu prostřednictvím různých domén upgradu. Tento režim je užitečné, když se děje-konvenční upgrade nebo zásad vyhodnocení stavu přizpůsobené nebo komplexní, je požadována (například aplikace je již dojít ke ztrátě dat.).
 
-Nakonec hello automatizované postupného upgradu aplikace je užitečné pro vývoj nebo testování prostředí tooprovide rychlé iterace cyklus během vývoje služby.
+Nakonec automatizované postupného upgradu aplikace je užitečné pro vývoj nebo testování prostředí zajistit rychlou iterační cyklus během vývoje služby.
 
-## <a name="change-toomanual-upgrade-mode"></a>Změna režimu upgradu toomanual
-**Ruční**– upgradu aplikace hello zastavit v aktuální UD a změňte hello hello upgrade režimu tooUnmonitored ručně. Hello musí správce volání toomanually **MoveNextApplicationUpgradeDomainAsync** tooproceed s hello upgradovat nebo aktivovat vrácení zpět pomocí inicializace nového upgradu. Po upgradu hello vstoupí v ručním režimu hello, zůstane v režimu ručního hello dokud nového upgradu je zahájeno. Hello **GetApplicationUpgradeProgressAsync** příkaz vrátí FABRIC\_aplikace\_UPGRADE\_stavu\_kolejová\_dál\_čeká na vyřízení.
+## <a name="change-to-manual-upgrade-mode"></a>Změnit na režim manuálního upgradu
+**Ruční**– zastavit upgradu aplikace na aktuální UD a změňte režim upgradu na sledována ručně. Správci musí ručně volání **MoveNextApplicationUpgradeDomainAsync** pokračovat v upgradu nebo aktivovat vrácení zpět pomocí inicializace nového upgradu. Po upgradu vstoupí v ručním režimu, zůstane v ručním režimu dokud nového upgradu je zahájeno. **GetApplicationUpgradeProgressAsync** příkaz vrátí FABRIC\_aplikace\_UPGRADE\_stavu\_kolejová\_dál\_čeká na vyřízení.
 
 ## <a name="upgrade-with-a-diff-package"></a>Upgrade s balíčkem rozdílů
-Aplikace Service Fabric může být upgradována pomocí zřizování s balíčkem aplikace úplné, úplný a samostatný. Aplikace lze také upgradovat pomocí rozdílové balíček, který obsahuje pouze soubory aplikace hello aktualizovat, hello aktualizovala manifest aplikace a soubory manifestu hello služby.
+Aplikace Service Fabric může být upgradována pomocí zřizování s balíčkem aplikace úplné, úplný a samostatný. Aplikace lze také upgradovat pomocí rozdílové balíček, který obsahuje pouze soubory aktualizované aplikace, manifest aktualizované aplikace a soubory manifestu služby.
 
-Celou aplikaci balíčku obsahuje všechny potřebné toostart hello soubory a spuštění aplikace Service Fabric. Diff balíček obsahuje pouze hello soubory, které změnily mezi hello poslední zřídit a aktuální upgrade hello plus manifest úplné aplikace hello a hello service manifest soubory. Všechny odkazy v manifestu aplikace hello nebo manifest služby, který nebyl nalezen v sestavení rozložení hello je hledán v hello úložiště bitových kopií.
+Celou aplikaci balíček obsahuje všechny soubory potřebné ke spuštění a spuštění aplikace Service Fabric. Diff balíček obsahuje pouze soubory, které změnily mezi poslední zřídit a aktuální upgrade a další manifest úplné aplikace a služby manifest soubory. Všechny odkazy v manifestu aplikace nebo služby manifestu, který nebyl nalezen v sestavení rozložení je hledán v úložišti bitové kopie.
 
-Celou aplikaci balíčky se vyžadují pro instalaci první hello clusteru toohello aplikace. Následné aktualizace může být balíček celou aplikaci nebo balíček rozdílové.
+Celou aplikaci balíčky jsou požadovány pro první instalaci aplikace do clusteru. Následné aktualizace může být balíček celou aplikaci nebo balíček rozdílové.
 
 Situace při pomocí balíčku rozdílové by být vhodné použít:
 
 * Diff balíček je upřednostňované, když máte velké aplikace balíček, který odkazuje na několik souborů manifestu služby nebo několik balíčků kódu, konfigurace balíčky nebo balíčky data.
-* Balíček rozdílové jsou upřednostňované, když máte nasazení systém, který generuje hello sestavení rozložení přímo z vašeho procesu sestavení aplikace. V takovém případě sice hello kódu se nezměnila, nově vytvořený sestavení získá různé kontrolního součtu. Pomocí balíčku pro celou aplikaci by vyžadovaly jste tooupdate hello verze na všechny balíčky kódu. Pomocí balíčku rozdílů, pouze poskytnete hello soubory, které změnily a soubory manifestu hello nichž došlo ke změně verze hello.
+* Diff balíčku jsou upřednostňované, když máte nasazení systému, který generuje rozložení sestavení přímo z vašeho procesu sestavení aplikace. V tomto případě to i v případě, že kód se nezměnila, nově vytvořený sestavení získat různé kontrolního součtu. Pomocí balíčku pro celou aplikaci by vyžadují aktualizaci verze na všechny balíčky kódu. Pomocí balíčku rozdílů, je jenom zadat soubory, které změnily a souborů manifestu nichž došlo ke změně verze.
 
-Při upgradu aplikace pomocí sady Visual Studio hello rozdílové balíček je automaticky publikován. toocreate balíček rozdílové ručně hello manifest aplikace a manifesty hello služby musí být aktualizované, ale jenom balíčky hello změnit by měl být součástí balíčku poslední aplikace hello.
+Při upgradu aplikace pomocí sady Visual Studio rozdílové balíček je automaticky publikován. Vytvoření balíčku rozdílové ručně, musí být aktualizovány manifest aplikace a služby manifesty, ale pouze změněné balíčky by měl být součástí balíčku poslední aplikace.
 
-Například začneme hello následující aplikace (čísla verzí zadaná pro snadné pochopení):
+Například začneme následující aplikace (čísla verzí zadaná pro snadné pochopení):
 
 ```text
 app1           1.0.0
@@ -69,7 +69,7 @@ app1           1.0.0
     config     1.0.0
 ```
 
-Nyní předpokládejme chtěli tooupdate pouze hello kód balíček service1 pomocí balíčku rozdílové pomocí prostředí PowerShell. Nyní aplikace aktualizovaná má hello následující strukturu složek:
+Nyní předpokládejme, chcete-li aktualizovat pouze kód balíček service1 pomocí balíčku rozdílové pomocí prostředí PowerShell. Nyní aplikace aktualizovaná má následující strukturu složek:
 
 ```text
 app1           2.0.0      <-- new version
@@ -81,7 +81,7 @@ app1           2.0.0      <-- new version
     config     1.0.0
 ```
 
-V takovém případě je aktualizovat too2.0.0 manifestu aplikace hello a hello service manifest pro service1 tooreflect hello kód balíčku aktualizace. Hello složku balíčku aplikace by mít hello strukturu:
+V takovém případě je aktualizovat manifest aplikace a 2.0.0, service manifest pro service1 tak, aby odrážela aktualizace balíčku kódu. Složku balíčku aplikace by mít následující strukturu:
 
 ```text
 app1/
@@ -96,6 +96,6 @@ app1/
 
 Řídí, jak vaše aplikace upgraduje pomocí [Upgrade parametry](service-fabric-application-upgrade-parameters.md).
 
-Aby aplikace upgradů kompatibilní metodou učení jak toouse [serializace dat](service-fabric-application-upgrade-data-serialization.md).
+Zkontrolujte upgradů aplikace kompatibilní podle naučit se používat [serializace dat](service-fabric-application-upgrade-data-serialization.md).
 
-Řešení běžných potíží v upgradů aplikací tím, že odkazuje toohello kroky v [řešení potíží s aplikací upgrady](service-fabric-application-upgrade-troubleshooting.md).
+Řešení běžných potíží v upgradů aplikací podle kroků v části [řešení potíží s aplikací upgrady](service-fabric-application-upgrade-troubleshooting.md).

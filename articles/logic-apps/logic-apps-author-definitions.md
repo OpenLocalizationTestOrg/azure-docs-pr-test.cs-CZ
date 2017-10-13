@@ -1,6 +1,6 @@
 ---
-title: "pracovní postupy aaaDefine s JSON - Azure Logic Apps | Microsoft Docs"
-description: "Jak toowrite definice pracovního postupu ve formátu JSON pro logic apps"
+title: "Definovat pracovní postupy s JSON - Azure Logic Apps | Microsoft Docs"
+description: "Jak napsat definice pracovního postupu ve formátu JSON pro logic apps"
 author: jeffhollan
 manager: anneta
 editor: 
@@ -15,23 +15,23 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 03/29/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 0d69d334ecee9c3e7f8684cfde68ef0e85280358
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7f9e5a10066df8a464c285273e77a85c0d562ebb
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-workflow-definitions-for-logic-apps-using-json"></a>Vytvoření definice pracovního postupu pro logic apps pomocí JSON
 
-Vytvořením definice pracovního postupu pro [Azure Logic Apps](logic-apps-what-are-logic-apps.md) jednoduchý a deklarativní jazyce JSON. Pokud jste to ještě neudělali, přečtěte si nejprve [jak toocreate svou první aplikaci logiky pomocí návrháře aplikace logiky](logic-apps-create-a-logic-app.md). Viz také hello [úplné referenční informace pro jazyk definic workflowů hello](http://aka.ms/logicappsdocs).
+Vytvořením definice pracovního postupu pro [Azure Logic Apps](logic-apps-what-are-logic-apps.md) jednoduchý a deklarativní jazyce JSON. Pokud jste to ještě neudělali, přečtěte si nejprve [postup vytvoření první aplikace logiky pomocí návrháře aplikace logiky](logic-apps-create-a-logic-app.md). Další informace naleznete [úplné referenční dokumentace pro jazyk definic workflowů](http://aka.ms/logicappsdocs).
 
 ## <a name="repeat-steps-over-a-list"></a>Opakujte kroky pro seznam
 
-tooiterate prostřednictvím pole, které má až too10 000 položek a provedení akce pro každou položku, použijte hello [typu foreach](logic-apps-loops-and-scopes.md).
+K iteraci v rámci pole, které má až 10 000 položek a provedení akce pro každou položku, použijte [typu foreach](logic-apps-loops-and-scopes.md).
 
 ## <a name="handle-failures-if-something-goes-wrong"></a>Zpracování chyb, pokud dojde k chybě
 
-Obvykle chcete tooinclude *nápravy krok* – některé logiky, která provede *jenom v případě* jeden nebo více voláními nezdaří. Tento příklad načte data z různých míst, ale pokud hello volání selže, chceme tooPOST zprávu někde tak jsme můžete sledovat tohoto selhání později:  
+Obvykle, které chcete zahrnout *nápravy krok* – některé logiky, která provede *jenom v případě* jeden nebo více voláními nezdaří. Tento příklad načte data z různých míst, ale pokud volání selže, chceme, takže jsme můžete sledovat tohoto selhání později někde odeslat zprávu:  
 
 ```
 {
@@ -66,13 +66,13 @@ Obvykle chcete tooinclude *nápravy krok* – některé logiky, která provede *
 }
 ```
 
-toospecify, `postToErrorMessageQueue` spouští pouze `readData` má `Failed`, použijte hello `runAfter` vlastnosti, například toospecify seznamu možných hodnot tak, aby `runAfter` může být `["Succeeded", "Failed"]`.
+Chcete-li určit, že `postToErrorMessageQueue` spouští pouze `readData` má `Failed`, použít `runAfter` vlastnosti, například pro zadání seznamu možných hodnot, tak, aby `runAfter` může být `["Succeeded", "Failed"]`.
 
-Nakonec, protože v tomto příkladu teď zpracovává hello chyba, jsme už označit hello spustit jako `Failed`. Vzhledem k tomu, že jsme přidali hello krok pro zpracování této chyby v tomto příkladu, má hello spustit `Succeeded` i když jeden krok `Failed`.
+Nakonec, protože v tomto příkladu teď zpracovává chyby, jsme už označit spustit jako `Failed`. Vzhledem k tomu, že jsme přidali v kroku pro zpracování této chyby v tomto příkladu, má spustit `Succeeded` i když jeden krok `Failed`.
 
 ## <a name="execute-two-or-more-steps-in-parallel"></a>Paralelní spuštění dvou nebo více kroků
 
-toorun více akcí paralelně, hello `runAfter` vlastnost musí být shodná za běhu. 
+Ke spouštění více akcí paralelně, `runAfter` vlastnost musí být shodná za běhu. 
 
 ```
 {
@@ -122,13 +122,13 @@ toorun více akcí paralelně, hello `runAfter` vlastnost musí být shodná za 
 }
 ```
 
-V tomto příkladu obě `branch1` a `branch2` jsou nastaveny toorun po `readData`. V důsledku toho obou poboček spustit souběžně. Hello časové razítko pro obě pobočky se shoduje.
+V tomto příkladu obě `branch1` a `branch2` jsou nastaveny na spouštění `readData`. V důsledku toho obou poboček spustit souběžně. Časové razítko pro obě pobočky se shoduje.
 
 ![Paralelní](media/logic-apps-author-definitions/parallel.png)
 
 ## <a name="join-two-parallel-branches"></a>Připojení dvě paralelních větvích
 
-Toho se můžete zapojit dvě akce, které jsou nastaveny toorun paralelně přidáním položky toohello `runAfter` vlastnost jako v předchozím příkladu hello.
+Toho se můžete zapojit dvě akce, které jsou nastaveny na spouštění paralelní přidáním položky `runAfter` vlastnost jako v předchozím příkladu.
 
 ```
 {
@@ -199,9 +199,9 @@ Toho se můžete zapojit dvě akce, které jsou nastaveny toorun paralelně při
 
 ![Paralelní](media/logic-apps-author-definitions/join.png)
 
-## <a name="map-list-items-tooa-different-configuration"></a>Mapování jinou konfiguraci tooa seznamu položek
+## <a name="map-list-items-to-a-different-configuration"></a>Položky seznamu mapy do jiné konfigurace
 
-Dále Řekněme, že má být tooget jiný obsah na základě hello hodnoty vlastnosti. Můžeme vytvořit mapu toodestinations hodnoty jako parametr:  
+Dále Řekněme, že má získat jiný obsah na základě hodnoty vlastnosti. Jako parametr jsme vytvořit mapování hodnot na cíle:  
 
 ```
 {
@@ -271,19 +271,19 @@ Dále Řekněme, že má být tooget jiný obsah na základě hello hodnoty vlas
 }
 ```
 
-V takovém případě nám nejdřív získat seznam článků. Na základě hello kategorie, která byla definována jako parametr, druhý krok text hello používá mapy toolook až hello adresu URL pro získání obsahu hello.
+V takovém případě nám nejdřív získat seznam článků. Podle kategorie, která byla definována jako parametr, druhý krok používá mapu vyhledat adresu URL pro získání obsahu.
 
-Některé časy toonote tady: 
+Některé časy si zde: 
 
-*   Hello [ `intersection()` ](https://msdn.microsoft.com/library/azure/mt643789.aspx#intersection) funkce kontroluje, zda hello kategorie odpovídá jeden hello známé definovaných kategorií.
+*   [ `intersection()` ](https://msdn.microsoft.com/library/azure/mt643789.aspx#intersection) Funkce kontroluje, zda kategorii odpovídá jedné ze známé definovaných kategorií.
 
-*   Po hello kategorie se nám získat, jsme pull hello položku z hello mapy pomocí hranatými závorkami:`parameters[...]`
+*   Po kategorie se nám získat, jsme načítat položky od mapy pomocí hranatými závorkami:`parameters[...]`
 
 ## <a name="process-strings"></a>Proces řetězce
 
-Můžete použít různé funkce toomanipulate řetězce. Předpokládejme například, že máme řetězec chceme toopass tooa systému, že jsme nejsou jisti, o správné zpracování pro kódování znaků. Jednou z možností je toobase64 kódování tento řetězec. Ale tooavoid uvozovací znaky v adrese URL, přidáme tooreplace pár znaků. 
+Různé funkce můžete použít k manipulaci s řetězci. Předpokládejme například, máme řetězec, který chcete předat do systému, ale nemůžeme nejsou jisti, o správné zpracování pro kódování znaků. Jednou z možností je ve formátu Base64 kódování tento řetězec. Ale abyste se vyhnuli uvozovací znaky v adrese URL, přidáme nahrazení pár znaků. 
 
-Chceme také dílčí řetězec názvu hello pořadí, protože se nepoužívají hello prvních 5 znaků.
+Chceme také dílčí řetězec názvu pořadí, protože se nepoužívají prvních 5 znaků.
 
 ```
 {
@@ -318,23 +318,23 @@ Chceme také dílčí řetězec názvu hello pořadí, protože se nepoužívaj�
 }
 ```
 
-Funkční z uvnitř toooutside:
+Pracovní z uvnitř k mimo:
 
-1. Získat hello [ `length()` ](https://msdn.microsoft.com/library/azure/mt643789.aspx#length) pro název hello orderer, takže se nám získat zpět hello celkový počet znaků.
+1. Získat [ `length()` ](https://msdn.microsoft.com/library/azure/mt643789.aspx#length) pro název orderer, takže se nám získat zpět celkový počet znaků.
 
 2. Odečtena 5, protože chceme kratší řetězec.
 
-3. Ve skutečnosti, trvat hello [ `substring()` ](https://msdn.microsoft.com/library/azure/mt643789.aspx#substring). Začneme v indexu `5` a přejděte hello zbytek hello řetězec.
+3. Ve skutečnosti, proveďte [ `substring()` ](https://msdn.microsoft.com/library/azure/mt643789.aspx#substring). Začneme v indexu `5` a přejděte zbytek řetězce.
 
-4. Převést tento dílčí řetězec tooa [ `base64()` ](https://msdn.microsoft.com/library/azure/mt643789.aspx#base64) řetězec.
+4. Převést tento dílčí [ `base64()` ](https://msdn.microsoft.com/library/azure/mt643789.aspx#base64) řetězec.
 
-5. [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace)všechny hello `+` znaků a obsahující `-` znaků.
+5. [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace)všechny `+` znaků a obsahující `-` znaků.
 
-6. [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace)všechny hello `/` znaků a obsahující `_` znaků.
+6. [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace)všechny `/` znaků a obsahující `_` znaků.
 
 ## <a name="work-with-date-times"></a>Práce s data a času
 
-Hodnoty data a času může být užitečná, zejména v případě, že se pokoušíte toopull data ze zdroje dat, která nepodporuje přirozeně *aktivační události*. Můžete taky data a času pro hledání, jak dlouho jednotlivých kroků trvá.
+Hodnoty data a času může být užitečná, zejména v případě, že se pokoušíte vyžádá data ze zdroje dat, která nepodporuje přirozeně *aktivační události*. Můžete taky data a času pro hledání, jak dlouho jednotlivých kroků trvá.
 
 ```
 {
@@ -386,18 +386,18 @@ Hodnoty data a času může být užitečná, zejména v případě, že se poko
 }
 ```
 
-V tomto příkladu jsme extrahujte hello `startTime` hello v předchozím kroku. Potom jsme hello získat aktuální čas a odečítání sekundu:
+V tomto příkladu jsme extrahujte `startTime` z předchozího kroku. Potom jsme získat aktuální čas a odečítání sekundu:
 
 [`addseconds(..., -1)`](https://msdn.microsoft.com/library/azure/mt643789.aspx#addseconds) 
 
-Můžete použít jiné jednotky doby, jako je třeba `minutes` nebo `hours`. Nakonec jsme můžete porovnat tyto dvě hodnoty. Pokud hello první hodnota je menší než druhá hodnota, která hello pak více než jedna sekunda byla úspěšná, protože byl nejprve umístit hello pořadí.
+Můžete použít jiné jednotky doby, jako je třeba `minutes` nebo `hours`. Nakonec jsme můžete porovnat tyto dvě hodnoty. Pokud první hodnota je menší než druhá hodnota, která pak více než jedna sekunda byla úspěšná, protože byl nejprve umístit pořadí.
 
-tooformat kalendářních dat, můžeme použít formátování řetězce. Například tooget hello RFC1123, používáme [ `utcnow('r')` ](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow). toolearn o formátování data, najdete v části [jazyk definic workflowů](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow).
+K formátování kalendářních dat, můžeme použít formátování řetězce. Například RFC1123 získáte používáme [ `utcnow('r')` ](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow). Další informace o formátování data, najdete v části [jazyk definic workflowů](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow).
 
 ## <a name="deployment-parameters-for-different-environments"></a>Parametry nasazení pro různá prostředí
 
-Běžně mají životní cykly nasazení prostředí pro vývoj, pracovní prostředí a provozním prostředí. Například můžete použít stejné definice v těchto prostředích hello ale použít různé databáze. Podobně můžete chtít toouse hello stejné definice v různých oblastech pro vysokou dostupnost, ale má každé logiku aplikace instance tootalk toothat oblasti databáze.
-Tento scénář se liší od trvá parametry v *runtime* kde místo toho používejte hello `trigger()` fungovat stejně jako v předchozím příkladu hello.
+Běžně mají životní cykly nasazení prostředí pro vývoj, pracovní prostředí a provozním prostředí. Například můžete použít stejné definice v těchto prostředích ale použití různých databází. Podobně můžete chtít použít stejné definice v různých oblastech pro vysokou dostupnost, ale má každá instance aplikace logiky ke komunikaci s danou oblast databáze.
+Tento scénář se liší od trvá parametry v *runtime* kde místo toho by měla použít `trigger()` fungovat jako v předchozím příkladu.
 
 Můžete začít s základní definice následujícím způsobem:
 
@@ -429,13 +429,13 @@ Můžete začít s základní definice následujícím způsobem:
 }
 ```
 
-V hello skutečné `PUT` požadavku pro hello logic apps, můžete zadat parametr hello `uri`. Protože výchozí hodnota už existuje, datové části aplikace logiky hello vyžaduje tento parametr:
+V skutečnou `PUT` požadavku pro logic apps, můžete zadat parametr `uri`. Protože výchozí hodnota už existuje, datové části aplikace logiky vyžaduje tento parametr:
 
 ```
 {
     "properties": {},
         "definition": {
-          // Use hello definition from above here
+          // Use the definition from above here
         },
         "parameters": {
             "connection": {
@@ -447,6 +447,6 @@ V hello skutečné `PUT` požadavku pro hello logic apps, můžete zadat paramet
 }
 ``` 
 
-V každé prostředí je zadat jinou hodnotu pro hello `connection` parametr. 
+V každém prostředí, můžete zadat jinou hodnotu pro `connection` parametr. 
 
-Všechny hello možnosti, které máte k vytváření a správě aplikací logiky, najdete v části hello [dokumentace k REST API](https://msdn.microsoft.com/library/azure/mt643787.aspx). 
+Všechny možnosti, které máte k vytváření a správě aplikací logiky najdete v tématu [dokumentace k REST API](https://msdn.microsoft.com/library/azure/mt643787.aspx). 

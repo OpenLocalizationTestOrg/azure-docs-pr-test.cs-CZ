@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate exportu úlohy pro Azure Import/Export | Microsoft Docs"
-description: "Zjistěte, jak toocreate exportu úlohy pro hello služby Microsoft Azure Import/Export."
+title: "Vytvoření exportu úlohy pro Azure Import/Export | Microsoft Docs"
+description: "Naučte se vytvářet úlohy exportu pro službu Microsoft Azure Import/Export."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,84 +14,84 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 4a10b42cc86dbf3bcea3a515bc065e2259228ef9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: bdeac373aa8270bd9de8f135ec7166d744fd83ae
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="creating-an-export-job-for-hello-azure-importexport-service"></a>Vytvoření úlohy exportu pro hello služba Azure Import/Export
-Vytvoření úlohy exportu pro službu Microsoft Azure Import/Export hello pomocí hello REST API zahrnuje hello následující kroky:
+# <a name="creating-an-export-job-for-the-azure-importexport-service"></a>Vytvoření úlohy exportu pro službu Azure Import/Export
+Vytvoření úlohy exportu pro službu Microsoft Azure Import/Export pomocí rozhraní REST API zahrnuje následující kroky:
 
--   Výběr hello objekty BLOB tooexport.
+-   Výběr objektů blob pro export.
 
 -   Získání přesouvání umístění.
 
--   Vytvoření úlohy exportu hello.
+-   Vytvoření úlohy exportu.
 
--   Přesouvání vaší prázdný jednotky tooMicrosoft prostřednictvím podporovaných poskytovatel služby.
+-   Přesouvání prázdný jednotky společnosti Microsoft prostřednictvím podporovaných poskytovatel služby.
 
--   Probíhá aktualizace informací o balíčku hello úloha exportu hello.
+-   Úloha exportu aktualizace s informací o balíčku.
 
--   Přijetí hello jednotky zpět od společnosti Microsoft.
+-   Získání jednotky zpět od společnosti Microsoft.
 
- V tématu [pomocí hello Windows Azure Import/Export služby tooTransfer Data tooBlob úložiště](storage-import-export-service.md) přehled hello importu/exportu služby a kurz, který ukazuje, jak toouse hello [portál Azure](https://portal.azure.com/) toocreate a spravovat import a export úloh.
+ V tématu [pomocí služby Windows Azure Import/Export přenos dat do úložiště objektů Blob](storage-import-export-service.md) přehled službu Import/Export a kurz, který ukazuje, jak používat [portál Azure](https://portal.azure.com/) pro vytváření a správu import a export úloh.
 
-## <a name="selecting-blobs-tooexport"></a>Výběr tooexport objektů BLOB
- toocreate úlohy exportu, budete potřebovat tooprovide seznam objektů BLOB, který má tooexport z vašeho účtu úložiště. Existuje několik způsobů tooselect objekty BLOB toobe export:
+## <a name="selecting-blobs-to-export"></a>Výběr objektů blob pro export
+ Pokud chcete vytvořit úlohy exportu, musíte poskytnout seznam objektů BLOB, které chcete exportovat z vašeho účtu úložiště. Vyberte objekty BLOB export několika způsoby:
 
--   Můžete vytvořit tooselect cesta relativní objektů blob a jediného objektu blob a všechny jeho snímků.
+-   Cesta relativní objektů blob můžete vybrat jediného objektu blob a všechny jeho snímků.
 
--   Můžete vytvořit tooselect cesta relativní blob jediného objektu blob s výjimkou jeho snímků.
+-   Cesta relativní objektů blob můžete vybrat jeden objekt blob, s výjimkou jeho snímky.
 
--   Můžete použít cestu k relativní objektů blob a tooselect čas snímku jeden snímek.
+-   Vyberte jeden snímek můžete cesta relativní objektů blob a čas snímku.
 
--   Předpona tooselect objektů blob můžete použít všechny objekty BLOB a snímky s hello zadané předpony.
+-   Předponu objektu blob můžete vybrat všechny objekty BLOB a snímky s danou předponu.
 
--   Můžete exportovat všechny objekty BLOB a snímky v účtu úložiště hello.
+-   Můžete exportovat všechny objekty BLOB a snímky v účtu úložiště.
 
- Další informace o zadání objekty BLOB tooexport, najdete v části hello [Put úlohy](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operaci.
+ Další informace o zadání objektů blob pro export, najdete v článku [Put úlohy](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operaci.
 
 ## <a name="obtaining-your-shipping-location"></a>Získání vaši polohu přesouvání
-Před vytvořením úlohy exportu, budete potřebovat tooobtain přenosů název umístění a adresy podle volání hello [získat umístění](https://portal.azure.com) nebo [umístění seznamu](/rest/api/storageimportexport/listlocations) operaci. `List Locations`Vrátí seznam umístění a jejich poštovní adresy. Můžete vybrat umístění z hello vrátil seznam a dodávat vaše adresa toothat pevné disky. Můžete taky hello `Get Location` operace tooobtain hello přímo přesouvání adresu konkrétního umístění.
+Před vytvořením úlohy exportu, je nutné získat přenosů umístění názvu a adresy voláním [získat umístění](https://portal.azure.com) nebo [umístění seznamu](/rest/api/storageimportexport/listlocations) operaci. `List Locations`Vrátí seznam umístění a jejich poštovní adresy. Můžete vybrat umístění ze seznamu vrácených a dodávat vaše pevné disky na tuto adresu. Můžete také `Get Location` operace přesouvání adresu pro konkrétní umístění získat přímo.
 
-Postupujte podle kroků hello tooobtain hello přenosů umístění:
+Použijte následující postup k získání přesouvání umístění:
 
--   Určení názvu hello hello umístění účtu úložiště. Tuto hodnotu najdete v části hello **umístění** na účet úložiště hello **řídicí panel** v klasickém hello portálu nebo předmětem dotazu pro pomocí hello service management operace rozhraní API [získat Vlastnosti účtu úložiště](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties).
+-   Určete název umístění účtu úložiště. Tuto hodnotu najdete v části **umístění** na účet úložiště **řídicí panel** v klasickém portálu nebo předmětem dotazu pro pomocí operace rozhraní API pro správu služby [získat vlastnosti účtu úložiště](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties).
 
--   Načíst hello umístění, které jsou k dispozici tooprocess tento účet úložiště tak, že volání hello `Get Location` operaci.
+-   Načíst umístění, které jsou k dispozici pro zpracování tento účet úložiště pomocí volání `Get Location` operaci.
 
--   Pokud hello `AlternateLocations` vlastnost hello umístění obsahuje hello umístění sám sebe a potom je v pořádku toouse toto umístění. Jinak volání hello `Get Location` operaci zopakovat s hello alternativního umístění. Hello původního umístění může být dočasně ukončeny kvůli údržbě.
+-   Pokud `AlternateLocations` vlastnost umístění obsahuje umístění, sám sebe a potom je to v pořádku pro toto umístění používat. Jinak volání `Get Location` operaci zopakovat s alternativní umístění. Do původního umístění může být pro údržbu dočasně ukončeny.
 
-## <a name="creating-hello-export-job"></a>Vytvoření úlohy exportu hello
- Úloha exportu toocreate hello, volání hello [Put úlohy](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operaci. Budete potřebovat tooprovide hello následující informace:
+## <a name="creating-the-export-job"></a>Vytvoření úlohy exportu
+ Chcete-li vytvořit úlohu export, zavolejte [Put úlohy](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operaci. Budete muset zadat následující informace:
 
--   Název úlohy hello.
+-   Název úlohy.
 
--   název účtu úložiště Hello.
+-   Název účtu úložiště.
 
--   Hello přesouvání název umístění, získaných v předchozím kroku hello.
+-   Přenosů název umístění, získaných v předchozím kroku.
 
 -   Typ úlohy (exportovat).
 
--   zpětná adresa Hello kde hello jednotky by měly být odeslány po dokončení úlohy exportu hello.
+-   Zpětná adresa, kde by měly být odeslány jednotky po dokončení úlohy exportu.
 
--   seznam objektů BLOB (nebo objekt blob předpony) toobe Hello exportovat.
+-   Seznam objektů BLOB (nebo objekt blob předpony) pro export.
 
 ## <a name="shipping-your-drives"></a>Přesouvání jednotky
- V dalším kroku použít hello nástroj Azure Import/Export toodetermine hello počet jednotek, je nutné toosend, založené na objekty BLOB hello výběru toobe exportovali a hello velikost disku. V tématu hello [Azure Import/Export nástroj odkaz](storage-import-export-tool-how-to-v1.md) podrobnosti.
+ V dalším kroku nástrojem Azure Import/Export můžete určit počet jednotek, které potřebujete k odeslání, na základě objektů BLOB, které jste vybrali pro export a velikost disku. Najdete v článku [Azure Import/Export nástroj odkaz](storage-import-export-tool-how-to-v1.md) podrobnosti.
 
- Balíček hello jednotky v jednom balíčku a dodávat je toohello adres získaných v hello dříve krok. Všimněte si hello sledování Číslo vašeho balíčku hello další krok.
+ Balíček jednotek v jednom balíčku a jejich odeslání na adresu získaných v předchozím kroku. Poznamenejte si číslo sledování vašeho balíčku pro další krok.
 
 > [!NOTE]
 >  Je nutné dodat jednotky prostřednictvím podporovaných poskytovatel služby, která bude poskytovat sledování Číslo pro svůj balíček.
 
-## <a name="updating-hello-export-job-with-your-package-information"></a>Aktualizace úlohy exportu hello s informací o balíčku
- Až budete mít vaše číslo sledování, volání hello [vlastnosti úlohy aktualizace](/rest/api/storageimportexport/jobs#Jobs_Update) operace tooupdated hello poskytovatel název a číslo pro úlohu hello sledování. Volitelně můžete zadat počet hello jednotky, hello zpáteční adresu a také hello přesouvání datum.
+## <a name="updating-the-export-job-with-your-package-information"></a>Aktualizace úlohy exportu s informací o balíčku
+ Až budete mít vaše číslo sledování, volání [vlastnosti úlohy aktualizace](/rest/api/storageimportexport/jobs#Jobs_Update) operace aktualizovala poskytovatel název a číslo úlohy sledování. Volitelně můžete zadat počet jednotek, zpáteční adresu a také přesouvání datum.
 
-## <a name="receiving-hello-package"></a>Přijetí balíčku hello
- Po zpracování vaše úloha exportu, jednotky, bude vrácen tooyou s šifrovaná data. Pro každou hello jednotek tím volání hello můžete načíst klíč nástroje BitLocker hello [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) operaci. Potom můžete odemknout jednotku hello pomocí klíče hello. Soubor manifestu Hello jednotku na každém disku obsahuje hello seznam souborů na jednotce hello také hello původní objekt blob adresu pro každý soubor.
+## <a name="receiving-the-package"></a>Přijetí balíčku
+ Po zpracování vaše úloha exportu, budou vráceny jednotky vám s šifrovaná data. Klíč nástroje BitLocker pro každou z jednotky můžete načíst pomocí volání [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) operaci. Potom můžete odemknout jednotku pomocí klíče. Soubor manifestu jednotku na každém disku obsahuje seznam souborů na jednotce, stejně jako původní adresu objektů blob pro každý soubor.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Pomocí REST API služby importu a exportu hello](storage-import-export-using-the-rest-api.md)
+* [Pomocí REST API služby importu a exportu](storage-import-export-using-the-rest-api.md)

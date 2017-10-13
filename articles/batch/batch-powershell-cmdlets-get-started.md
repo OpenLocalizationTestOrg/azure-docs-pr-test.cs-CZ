@@ -1,6 +1,6 @@
 ---
-title: "aaaGet spuštění pomocí prostředí PowerShell pro Azure Batch | Microsoft Docs"
-description: "Rychlý úvod toohello toomanage prostředky Batch můžete použít rutiny prostředí Azure PowerShell."
+title: "Začínáme se službou Azure Batch pomocí PowerShellu | Dokumentace Microsoftu"
+description: "Rychlý úvod do rutin prostředí Azure PowerShell, jejichž pomocí lze spravovat prostředky služby Batch"
 services: batch
 documentationcenter: 
 author: tamram
@@ -15,48 +15,48 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3e4d12e9c1e52a5b2db2dd44346edda93b7ef92b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: e33be6ed658e00250ea1e80cd7da4d348fb18296
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Správa prostředků služby Batch pomocí rutin PowerShellu
 
-S hello rutiny prostředí PowerShell Azure Batch, můžete provést a skriptu řadu hello stejné úlohy, které se provádějí pomocí rozhraní API služby Batch, hello hello portál Azure a hello rozhraní příkazového řádku Azure (CLI). Toto je toohello rutiny rychlý úvod, můžete použít toomanage účty Batch a pracovat s prostředky služby Batch, například fondy, úlohy a úkoly.
+Pomocí rutin prostředí PowerShell služby Batch můžete provádět a převádět na skripty řadu stejných úkolů, které se provádějí pomocí rozhraní API služby Batch, webu Azure Portal a rozhraní příkazového řádku (CLI) Azure. Tento článek obsahuje rychlý úvod do rutin, s jejichž pomocí můžete spravovat účty Batch a pracovat s prostředky služby Batch, jako jsou fondy, úlohy a úkoly.
 
-Úplný seznam rutin prostředí Batch a podrobný popis syntaxe rutin najdete v části hello [rutiny Azure Batch – reference](/powershell/module/azurerm.batch/#batch).
+Úplný seznam rutin prostředí Batch a podrobný popis syntaxe rutin najdete v článku [Rutiny služby Azure Batch – reference](/powershell/module/azurerm.batch/#batch).
 
-Tento článek vychází z rutin prostředí Azure PowerShell verze 3.0.0. Doporučujeme aktualizovat prostředí Azure PowerShell často tootake výhod aktualizace a vylepšení služby.
+Tento článek vychází z rutin prostředí Azure PowerShell verze 3.0.0. Prostředí Azure PowerShell doporučujeme často aktualizovat, abyste mohli využívat výhody, které vám přinášejí aktualizace a vylepšení služby.
 
 ## <a name="prerequisites"></a>Požadavky
-Proveďte následující operace toouse prostředí Azure PowerShell toomanage hello prostředky služby Batch.
+Pokud chcete používat Azure PowerShell ke správě prostředků služby Batch, proveďte následující operace.
 
 * [Nainstalujte a nakonfigurujte Azure PowerShell.](/powershell/azure/overview)
-* Spustit hello **Login-AzureRmAccount** rutiny tooconnect tooyour předplatné (hello Azure Batch lodě rutiny v modulu Azure Resource Manager hello):
+* Spusťte rutinu **Login-AzureRmAccount**, abyste připojili své předplatné (rutiny služby Azure Batch jsou dodávané v modulu Azure Resource Manager):
   
     `Login-AzureRmAccount`
-* **Zaregistrovat se obor názvů zprostředkovatele Batch hello**. Tuto operaci, stačí provést toobe **jednou za předplatné**.
+* **Zaregistrujte se u poskytovatele oboru názvů služby Batch**. Tuto operaci stačí provést jen **jednou za předplatné**.
   
     `Register-AzureRMResourceProvider -ProviderNamespace Microsoft.Batch`
 
 ## <a name="manage-batch-accounts-and-keys"></a>Správa účtů a klíčů služby Batch
 ### <a name="create-a-batch-account"></a>Vytvoření účtu Batch
-Rutina **New-AzureRmBatchAccount** vytvoří v zadané skupině prostředků účet služby Batch. Pokud ještě nemáte skupinu prostředků, vytvořte ji spuštěním hello [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) rutiny. Zadejte jednu z hello Azure oblasti v hello **umístění** parametru, jako je například "Střed USA". Například:
+Rutina **New-AzureRmBatchAccount** vytvoří v zadané skupině prostředků účet služby Batch. Pokud skupinu prostředků ještě nemáte, použijte k jejímu vytvoření rutinu [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Do parametru **Location** zadejte některou oblast Azure, třeba „Střed USA“. Například:
 
     New-AzureRmResourceGroup –Name MyBatchResourceGroup –location "Central US"
 
-Pak vytvořte dávkový účet ve skupině prostředků hello, zadejte název pro účet hello v <*account_name*> a hello umístění a název vaší skupiny prostředků. Vytvoření účtu Batch hello může trvat některé toocomplete čas. Například:
+Potom ve skupině prostředků vytvořte účet Batch. Do parametru <*account_name*> zadejte název účtu a zadejte také umístění a název skupiny prostředků. Vytváření účtu Batch může nějakou dobu trvat. Příklad:
 
     New-AzureRmBatchAccount –AccountName <account_name> –Location "Central US" –ResourceGroupName <res_group_name>
 
 > [!NOTE]
-> účet Batch Hello název musí být jedinečný toohello oblast Azure pro skupinu prostředků hello, obsahovat 3 až 24 znaků a používat jenom malá písmena a číslice.
+> Název účtu Batch musí být v dané oblasti Azure skupiny prostředků jedinečný, musí být tvořen 3 až 24 znaky a obsahovat pouze malá písmena a číslice.
 > 
 > 
 
 ### <a name="get-account-access-keys"></a>Získání přístupových klíčů k účtu
-**Get-AzureRmBatchAccountKeys** ukazuje hello přístupové klíče asociované s účtem Azure Batch. Například spusťte hello následující tooget hello primární a sekundární klíče hello účtu, který jste vytvořili.
+**Get-AzureRmBatchAccountKeys** zobrazí přístupové klíče asociované s účtem Azure Batch. Pokud například chcete získat primární a sekundární klíče vytvořeného účtu, spusťte následující rutinu:
 
     $Account = Get-AzureRmBatchAccountKeys –AccountName <account_name>
 
@@ -65,83 +65,83 @@ Pak vytvořte dávkový účet ve skupině prostředků hello, zadejte název pr
     $Account.SecondaryAccountKey
 
 ### <a name="generate-a-new-access-key"></a>Vygenerování nového přístupového klíče
-**New-AzureRmBatchAccountKey** vygeneruje nový primární nebo sekundární přístupový klíč pro účet Azure Batch. Například toogenerate nový primární klíč pro dávkový účet, zadejte:
+**New-AzureRmBatchAccountKey** vygeneruje nový primární nebo sekundární přístupový klíč pro účet Azure Batch. Pokud například chcete vygenerovat nový primární klíč pro účet Batch, zadejte:
 
     New-AzureRmBatchAccountKey -AccountName <account_name> -KeyType Primary
 
 > [!NOTE]
-> toogenerate nový sekundární klíč, zadejte "Sekundární" hello **KeyType** parametr. Máte tooregenerate hello primární a sekundární klíče samostatně.
+> Pokud chcete vygenerovat nový sekundární klíč, zadejte jako parametr **KeyType** Secondary. Primární a sekundární klíče je nutné vygenerovat odděleně.
 > 
 > 
 
 ### <a name="delete-a-batch-account"></a>Odstranění účtu Batch
-**Remove-AzureRmBatchAccount** odstraní účet Batch. Například:
+**Remove-AzureRmBatchAccount** odstraní účet Batch. Příklad:
 
     Remove-AzureRmBatchAccount -AccountName <account_name>
 
-Po zobrazení výzvy potvrďte, že chcete účet tooremove hello. Odebrání účtu může trvat některé toocomplete čas.
+Až k tomu budete vyzváni, potvrďte, že chcete odebrat účet. Odebrání účtu může trvat nějakou dobu.
 
 ## <a name="create-a-batchaccountcontext-object"></a>Vytvoření objektu BatchAccountContext
-rutiny prostředí PowerShell Batch pomocí tooauthenticate hello, při vytváření a správě Batch fondy, úlohy a úlohy, a další prostředky, nejprve vytvořit toostore objekt BatchAccountContext, název účtu a klíče:
+Pokud chcete ve službě Batch při vytváření a správě fondů, úloh, úkolů a dalších prostředků k ověřování používat rutiny prostředí PowerShell, je nutné nejprve vytvořit objekt BatchAccountContext, který bude uchovávat název vašeho účtu a klíče:
 
     $context = Get-AzureRmBatchAccountKeys -AccountName <account_name>
 
-Předání objektu BatchAccountContext hello do rutin tohoto použití hello **BatchContext** parametr.
+Objekt BatchAccountContext budete předávat rutinám, které pracují s parametrem **BatchContext**.
 
 > [!NOTE]
-> Ve výchozím nastavení, primární klíč účtu hello slouží k ověřování, ale můžete explicitně vybrat klíče toouse hello změnou objekt BatchAccountContext **KeyInUse** vlastnost: `$context.KeyInUse = "Secondary"`.
+> Ve výchozím nastavení se k ověřování používá primární klíč účtu, ale změnou hodnoty vlastnosti **KeyInUse** objektu BatchAccountContext lze klíč vybrat explicitně: `$context.KeyInUse = "Secondary"`.
 > 
 > 
 
 ## <a name="create-and-modify-batch-resources"></a>Vytváření a úpravy prostředků služby Batch
-Pomocí rutin, jako například **New-AzureBatchPool**, **New-AzureBatchJob**, a **New-AzureBatchTask** toocreate prostředky v účtu Batch. Existují odpovídající **Get -** a **Set -** rutiny tooupdate hello vlastnosti existujících prostředků a **Remove -** rutiny tooremove prostředky v účtu Batch.
+Pomocí rutin, jako třeba **New-AzureBatchPool**, **New-AzureBatchJob** a **New-AzureBatchTask**, můžete v účtu Batch vytvářet prostředky. Pomocí rutin **Get-** a **Set-** lze aktualizovat vlastnosti existujících prostředků a pomocí rutin **Remove-** lze prostředky v účtu Batch odebírat.
 
-Při použití řadu tyto rutiny v přidání toopassing objekt BatchContext, třeba toocreate nebo předejte objekty, které obsahují nastavení podrobné prostředků, jak ukazuje následující příklad hello. V tématu hello podrobnou nápovědu pro všechny rutiny pro další příklady.
+Při použití řady těchto rutin musíte kromě předání objektu BatchContext navíc taky vytvořit nebo předat objekty, které obsahují podrobné nastavení prostředků, jak ukazuje následující příklad. Další příklady najdete v podrobné nápovědě k jednotlivým rutinám.
 
 ### <a name="create-a-batch-pool"></a>Vytvoření fondu služby Batch
-Při vytváření nebo aktualizaci fondu služby Batch, vyberete konfigurace hello cloudové služby nebo konfigurace virtuálního počítače hello pro hello operační systém na hello výpočetních uzlů (viz [přehled funkcí Batch](batch-api-basics.md#pool)). Pokud zadáte konfigurace hello cloudové služby, výpočetní uzly se vytvoří jeho bitová kopie s jedním z hello [uvolní Azure hostovaného operačního systému](../cloud-services/cloud-services-guestos-update-matrix.md#releases). Pokud zadáte hello konfigurace virtuálního počítače, můžete zadat jednu z hello nepodporuje Linux nebo Image virtuálního počítače s Windows uvedených v hello [Marketplace virtuálních počítačů Azure][vm_marketplace], nebo zadejte vlastní obrázek, který jste připravili.
+Při vytváření nebo aktualizaci fondu Batch vyberete buď konfiguraci cloudové služby, nebo konfiguraci virtuálního počítače pro operační systém výpočetních uzlů (viz [Přehled funkcí služby Batch](batch-api-basics.md#pool)). Pokud zadáte konfiguraci cloudové služby, vaše výpočetní uzly obdrží image některé z [vydaných verzí hostovaného operačního systému Azure](../cloud-services/cloud-services-guestos-update-matrix.md#releases). Pokud zadáte konfiguraci virtuálního počítače, můžete zadat některou z imagí podporovaných virtuálních počítačů s Linuxem nebo Windows uvedených na webu [Azure Virtual Machines Marketplace][vm_marketplace] nebo vlastní image, kterou jste si připravili.
 
-Při spuštění **New-AzureBatchPool**, předat objekt PSCloudServiceConfiguration nebo PSVirtualMachineConfiguration hello nastavení operačního systému. Například hello následující rutina vytvoří nový fond služby Batch s velikost malých výpočetní uzly v konfiguraci služby hello cloudu s obrázky hello nejnovější verzi operačního systému rodiny 3 (Windows Server 2012). Zde hello **CloudServiceConfiguration** parametr určuje hello *$configuration* proměnné jako objekt PSCloudServiceConfiguration hello. Hello **BatchContext** parametr určuje dříve definovanou proměnnou *$context* jako objekt BatchAccountContext hello.
+Když spouštíte rutinu **New-AzureBatchPool**, předejte nastavení operačního systému v objektu PSCloudServiceConfiguration nebo PSVirtualMachineConfiguration. Následující rutina třeba vytvoří nový fond Batch s výpočetními uzly malé velikosti v konfiguraci cloudové služby, které obdrží image nejnovější verze operačního systému z řady 3 (Windows Server 2012). Parametr **CloudServiceConfiguration** tady určuje proměnnou *$configuration* jako objekt PSCloudServiceConfiguration. Parametr **BatchContext** určuje jako objekt BatchAccountContext dříve definovanou proměnnou *$context*.
 
     $configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration" -ArgumentList @(4,"*")
 
     New-AzureBatchPool -Id "AutoScalePool" -VirtualMachineSize "Small" -CloudServiceConfiguration $configuration -AutoScaleFormula '$TargetDedicated=4;' -BatchContext $context
 
-Hello cílovým počtem výpočetních uzlů ve fondu nové hello je určen vzorcem pro automatické škálování. V takovém případě se jednoduše hello vzorec **$TargetDedicated = 4**, určující hello počet výpočetních uzlů ve fondu hello je maximálně 4.
+Cílový počet výpočetních uzlů v novém fondu určuje vzorec automatického škálování. V tomto případě se používá jednoduchý vzorec **$TargetDedicated=4**, který značí, že maximální počet výpočetních uzlů ve fondu je 4.
 
 ## <a name="query-for-pools-jobs-tasks-and-other-details"></a>Dotazy na fondy, úlohy, úkoly a další podrobnosti
-Pomocí rutin, jako například **Get-AzureBatchPool**, **Get-AzureBatchJob**, a **Get-AzureBatchTask** tooquery entity vytvořené v účtu Batch.
+Pomocí rutin, jako například **Get-AzureBatchPool**, **Get-AzureBatchJob** a **Get-AzureBatchTask**, lze zadávat dotazy na entity vytvořené v účtu Batch.
 
 ### <a name="query-for-data"></a>Dotazy na data
-Jako příklad použijte **Get-AzureBatchPools** toofind fondech. Ve výchozím nastavení dotazuje na všechny fondy v účtu, za předpokladu, že jste již uložený objekt BatchAccountContext hello *$context*:
+Jako příklad použijte rutinu **Get-AzureBatchPools** k vyhledání fondů. Tato rutina se ve výchozím nastavení dotazuje na všechny fondy v účtu, za předpokladu, že jste už uložili objekt BatchAccountContext do hodnoty *$context*:
 
     Get-AzureBatchPool -BatchContext $context
 
 ### <a name="use-an-odata-filter"></a>Použití filtru OData
-Můžete zadat filtru OData pomocí hello **filtru** parametr toofind hello pouze objekty, které vás zajímají. Například můžete vyhledat všechny fondy s ID začínajícími řetězcem myPool.
+Pomocí parametru **Filter** lze použít filtr OData a vyhledat pouze objekty, které vás zajímají. Například můžete vyhledat všechny fondy s ID začínajícími řetězcem myPool.
 
     $filter = "startswith(id,'myPool')"
 
     Get-AzureBatchPool -Filter $filter -BatchContext $context
 
-Tato metoda není tak účinná jako použití klauzule Where-Object v místním kanálu. Ale hello dotazu se odešlou toohello služby Batch přímo, aby veškeré filtrování provede na straně serveru hello, ukládání šířky pásma Internetu.
+Tato metoda není tak účinná jako použití klauzule Where-Object v místním kanálu. Dotaz se však odešle do služby Batch přímo, takže se veškeré filtrování provede na straně serveru, což šetří šířku pásma připojení k internetu.
 
-### <a name="use-hello-id-parameter"></a>Pomocí parametru Id hello
-Alternativní tooan filtru OData je toouse hello **Id** parametr. tooquery na konkrétní fond s id "myPool":
+### <a name="use-the-id-parameter"></a>Použití parametru Id
+Alternativou k použití filtru OData je použití parametru **Id**. Postup zadání dotazu na konkrétní fond s parametrem Id myPool
 
     Get-AzureBatchPool -Id "myPool" -BatchContext $context
 
-Hello **Id** podporuje pouze vyhledávání úplných id, nepodporuje zástupné znaky nebo filtry stylu typu OData.
+Parametr **Id** podporuje pouze vyhledávání úplných ID, nepodporuje zástupné znaky ani filtry stylu typu OData.
 
-### <a name="use-hello-maxcount-parameter"></a>Použití parametru MaxCount hello
-Ve výchozím nastavení každá rutina vrací maximálně 1 000 objektů. Pokud tento limit překročíte, buď upřesněte vaše filtru toobring vracel méně objektů, nebo explicitně nastavit maximální pomocí hello **MaxCount** parametr. Například:
+### <a name="use-the-maxcount-parameter"></a>Použití parametru MaxCount
+Ve výchozím nastavení každá rutina vrací maximálně 1 000 objektů. Pokud tento limit překročíte, můžete buď upřesnit filtr, aby vracel méně objektů, nebo explicitně nastavit maximální hodnotu pomocí parametru **MaxCount**. Příklad:
 
     Get-AzureBatchTask -MaxCount 2500 -BatchContext $context
 
-nastavit tooremove hello horní mez, **MaxCount** too0 nebo méně.
+Pokud chcete horní omezení počtu zcela odebrat, nastavte parametr **MaxCount** na hodnotu 0 nebo menší.
 
-### <a name="use-hello-powershell-pipeline"></a>Použití kanálu hello prostředí PowerShell
-Rutiny služby batch mohou využívat hello prostředí PowerShell kanálu toosend dat mezi rutinami. Tato akce nemá hello stejné ovlivňuje jako zadání parametru, ale díky práci s více entit.
+### <a name="use-the-powershell-pipeline"></a>Použití kanálu prostředí PowerShell
+Rutiny služby Batch mohou využívat kanál prostředí PowerShell k odesílání dat mezi rutinami. Výsledek je stejný, jako když zadáte parametr, ale zjednoduší se práce s více entitami.
 
 Když chcete například najít a zobrazit všechny úlohy ve svém účtu:
 
@@ -152,7 +152,7 @@ Restartování všech výpočetních uzlů ve fondu:
     Get-AzureBatchComputeNode -PoolId "myPool" -BatchContext $context | Restart-AzureBatchComputeNode -BatchContext $context
 
 ## <a name="application-package-management"></a>Správa balíčků aplikací
-Balíčky aplikací poskytují jednodušší způsob toodeploy aplikace toohello výpočetních uzlů ve fondech. S hello rutin Powershellu ve službě Batch můžete odeslat a spravovat balíčky aplikací v účtu Batch a nasadit balíček verze toocompute uzlů.
+Balíčky aplikací umožňují zjednodušené nasazování aplikací ve výpočetních uzlech ve vašich fondech. Rutinami PowerShellu ve službě Batch můžete odesílat a spravovat balíčky aplikací v účtu Batch a nasazovat verze balíčků do výpočetních uzlů.
 
 **Vytvoření** aplikace:
 
@@ -162,7 +162,7 @@ Balíčky aplikací poskytují jednodušší způsob toodeploy aplikace toohello
 
     New-AzureRmBatchApplicationPackage -AccountName <account_name> -ResourceGroupName <res_group_name> -ApplicationId "MyBatchApplication" -ApplicationVersion "1.0" -Format zip -FilePath package001.zip
 
-Sada hello **výchozí verze** aplikace hello:
+Nastavte pro aplikaci **výchozí verzi**:
 
     Set-AzureRmBatchApplication -AccountName <account_name> -ResourceGroupName <res_group_name> -ApplicationId "MyBatchApplication" -DefaultVersion "1.0"
 
@@ -181,14 +181,14 @@ Sada hello **výchozí verze** aplikace hello:
     Remove-AzureRmBatchApplication -AccountName <account_name> -ResourceGroupName <res_group_name> -ApplicationId "MyBatchApplication"
 
 > [!NOTE]
-> Před odstraněním hello aplikace je nutné odstranit všechny aplikace verze balíčku aplikace. Zobrazí se chybové 'konfliktu, a pokud se pokusíte toodelete aplikace, která má v současné době balíčky aplikací.
+> Před odstraněním aplikace musíte odstranit všechny verze balíčků aplikace. Pokud se pokusíte odstranit aplikaci, která ještě má balíčky, zobrazí se chyba s informací o konfliktu.
 > 
 > 
 
 ### <a name="deploy-an-application-package"></a>Nasazení balíčku aplikace
-Při vytváření fondu můžete zadat jeden nebo více balíčků aplikací, které budete nasazovat. Když zadáte balíček v okamžiku vytvoření fondu, je nasazené tooeach uzlu jako hello uzlu spojení fondu. Balíčky se také nasazují při restartování uzlu nebo jeho obnovení z image.
+Při vytváření fondu můžete zadat jeden nebo více balíčků aplikací, které budete nasazovat. Když určíte balíček při vytváření fondu, bude nasazen v každém uzlu při jeho přidání do fondu. Balíčky se také nasazují při restartování uzlu nebo jeho obnovení z image.
 
-Zadejte hello `-ApplicationPackageReference` možnost při vytváření fondu toodeploy balíček toohello fondu aplikací uzly připojí hello fondu. Nejprve vytvořte **PSApplicationPackageReference** objektu a nakonfigurujte ho s hello aplikace Id balíčku verze a chcete, aby toodeploy toohello fondu výpočetních uzlů:
+Pokud vytváříte fond pro nasazení balíčku aplikace na uzly fondu při jejich přidávání do fondu, zadejte parametr `-ApplicationPackageReference`. Nejprve vytvořte objekt **PSApplicationPackageReference** a nakonfigurujte ho pomocí ID aplikace a verze balíčku, který chcete nasadit do výpočetních uzlů fondu:
 
     $appPackageReference = New-Object Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference
 
@@ -196,19 +196,19 @@ Zadejte hello `-ApplicationPackageReference` možnost při vytváření fondu to
 
     $appPackageReference.Version = "1.0"
 
-Teď vytvořte fond hello a určit hello balíček referenční objekt jako hello argument toohello `ApplicationPackageReferences` možnost:
+Teď vytvořte fond a zadejte referenční objekt balíčku jako argument možnosti `ApplicationPackageReferences`:
 
     New-AzureBatchPool -Id "PoolWithAppPackage" -VirtualMachineSize "Small" -CloudServiceConfiguration $configuration -BatchContext $context -ApplicationPackageReferences $appPackageReference
 
-Můžete najít další informace o balíčky aplikací v [nasazení uzly toocompute aplikací pomocí balíčků aplikací Batch](batch-application-packages.md).
+Další informace o balíčcích aplikací najdete v tématu [Nasazení aplikací do výpočetních uzlů pomocí balíčků aplikací Batch](batch-application-packages.md).
 
 > [!IMPORTANT]
-> Je nutné [propojení účtu Azure Storage](#linked-storage-account-autostorage) tooyour dávkového účtu toouse balíčky aplikací.
+> Chcete-li používat balíčky aplikací, je třeba [propojit účet Azure Storage](#linked-storage-account-autostorage) s vaším účtem Batch.
 > 
 > 
 
 ### <a name="update-a-pools-application-packages"></a>Aktualizace balíčků aplikací fondu
-aplikace hello tooupdate přidělené tooan existujícího fondu, nejprve vytvořit objekt PSApplicationPackageReference s vlastnostmi hello požadovaného (Id a balíček verze aplikace):
+Pokud chcete aktualizovat aplikace přiřazené do stávajícího fondu, nejprve vytvořte objekt PSApplicationPackageReference s požadovanými vlastnostmi (ID aplikace a verze balíčku):
 
     $appPackageReference = New-Object Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference
 
@@ -216,7 +216,7 @@ aplikace hello tooupdate přidělené tooan existujícího fondu, nejprve vytvo�
 
     $appPackageReference.Version = "2.0"
 
-V dalším kroku sám hello fondu Batch, vymažte všechny existující balíčky, přidat naše nový odkaz na balíček a aktualizaci služby Batch hello se nové nastavení fondu hello:
+Potom získejte fond ze služby Batch, smažte všechny stávající balíčky, přidejte odkaz na nový balíček a aktualizujte ve službě Batch nastavení nového balíčku:
 
     $pool = Get-AzureBatchPool -BatchContext $context -Id "PoolWithAppPackage"
 
@@ -226,17 +226,17 @@ V dalším kroku sám hello fondu Batch, vymažte všechny existující balíčk
 
     Set-AzureBatchPool -BatchContext $context -Pool $pool
 
-Jste nyní aktualizovat vlastnosti hello fondu v hello služby Batch. tooactually nasadit hello nové aplikace balíčku toocompute uzly ve fondu hello, ale musí restartovat nebo obnovit z Image tyto uzly. K restartování všech uzlů ve fondu můžete použít tento příkaz:
+Aktualizovali jste vlastnosti fondu ve službě Batch. Pokud chcete nový balíček aplikace skutečně nasadit do výpočetních uzlů ve fondu, musíte příslušné uzly restartovat nebo je obnovit z image. K restartování všech uzlů ve fondu můžete použít tento příkaz:
 
     Get-AzureBatchComputeNode -PoolId "PoolWithAppPackage" -BatchContext $context | Restart-AzureBatchComputeNode -BatchContext $context
 
 > [!TIP]
-> Můžete nasadit víc aplikací balíčky toohello výpočetních uzlů ve fondu. Pokud chcete příliš*přidat* balíček aplikace místo nahrazení hello aktuálně nasazená balíčky, vynechejte hello `$pool.ApplicationPackageReferences.Clear()` řádku výše.
+> Do výpočetních uzlů ve fondu můžete nasadit několik balíčků aplikací. Pokud chcete balíček aplikace *přidat*, místo abyste jím nahrazovali aktuálně nasazené balíčky, vynechte řádek `$pool.ApplicationPackageReferences.Clear()`, (viz výše).
 > 
 > 
 
 ## <a name="next-steps"></a>Další kroky
 * Podrobný popis syntaxe rutin najdete v článku [Rutiny služby Azure Batch – reference](/powershell/module/azurerm.batch/#batch).
-* Další informace o aplikacích a balíčky aplikací ve službě Batch najdete v tématu [nasazení uzly toocompute aplikací pomocí balíčků aplikací Batch](batch-application-packages.md).
+* Další informace o aplikacích a balíčcích aplikací ve službě Batch najdete v tématu [Nasazení aplikací do výpočetních uzlů pomocí balíčků aplikací Batch](batch-application-packages.md).
 
 [vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/

@@ -1,9 +1,9 @@
 ---
 layout: LandingPage
-description: "Zjistěte, jak pomocí toocreate virtuální počítače Windows hello nasazení Classic."
-title: "aaaAzure virtuálních počítačů pro dokumentaci systému Windows | Microsoft Docs"
+description: "Naučte se vytvářet virtuální počítače s Windows pomocí modelu nasazení Classic."
+title: Dokumentace k Azure Virtual Machines pro Windows | Dokumentace Microsoftu
 services: virtual-machines
-author: carolz
+author: czeumault
 manager: carolz
 ms.assetid: 
 ms.service: virtual-machines-windows
@@ -12,9 +12,9 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 416bc70d583a70a75a674a041e36f1da94bd04dd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 77265ad5e5c5b201d782a4f3765e644e84e36e70
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---

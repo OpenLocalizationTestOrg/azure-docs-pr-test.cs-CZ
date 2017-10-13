@@ -1,29 +1,46 @@
 ---
-Title: aaa "kurz dodatečné lekce Azure Analysis Services: nepravidelné hierarchie s logickými | Microsoft Docs"Popis: Popisuje, jak toofix nepravidelné logickými hierarchií v kurzu hello Azure Analysis Services.
-služby: documentationcenter služby analysis services: '' Autor: minewiskan správce: erikre editor: '' značky: "
-
-MS.AssetID: ms.service: ms.devlang služby analysis services: NA ms.topic: get-started-article ms.tgt_pltfrm: NA ms.workload: na ms.date: 05/26 nebo 2017 ms.author: owend
+title: "Kurz služby Azure Analysis Services – Doplňková lekce: Nepravidelné hierarchie | Dokumentace Microsoftu"
+description: "Popisuje, jak opravit nepravidelné hierarchie v kurzu služby Azure Analysis Services."
+services: analysis-services
+documentationcenter: 
+author: Minewiskan
+manager: erikre
+editor: 
+tags: 
+ms.assetid: 
+ms.service: analysis-services
+ms.devlang: NA
+ms.topic: get-started-article
+ms.tgt_pltfrm: NA
+ms.workload: na
+ms.date: 05/26/2017
+ms.author: owend
+ms.openlocfilehash: d34b2123153406640cf03bc9f57efa557af4cfaa
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="supplemental-lesson---ragged-hierarchies"></a>Doplňková lekce – Nepravidelné hierarchie
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-V této doplňkové lekci vyřešíte běžný problém vyskytující se při přesunu do hierarchií, které obsahují prázdné hodnoty (členy) na různých úrovních. Může se to například týkat organizace, ve které vysoce postavenému manažerovi přímo reportují manažeři a jiní zaměstnanci oddělení. Nebo se může jednat o geografické hierarchie skládající se z položek Země, Oblast, Město, kde některá města nemají nadřazený stát nebo kraj, například Washington D. C. nebo Vatikán. Hierarchie má prázdné členy, je často descends toodifferent nebo nepravidelné logickými úrovně.
+V této doplňkové lekci vyřešíte běžný problém vyskytující se při přesunu do hierarchií, které obsahují prázdné hodnoty (členy) na různých úrovních. Může se to například týkat organizace, ve které vysoce postavenému manažerovi přímo reportují manažeři a jiní zaměstnanci oddělení. Nebo se může jednat o geografické hierarchie skládající se z položek Země, Oblast, Město, kde některá města nemají nadřazený stát nebo kraj, například Washington D. C. nebo Vatikán. Pokud hierarchie obsahuje prázdné členy, dělí se často do různých nebo nepravidelných úrovni.
 
 ![aas-lesson-detail-ragged-hierarchies-table](../tutorials/media/aas-lesson-detail-ragged-hierarchies-table.png)
 
-Tabulkové modely na úrovni kompatibility hello 1400 mají další **skrýt členy** vlastnost pro hierarchie. Hello **výchozí** nastavení předpokládá, že neexistují členové, prázdné jakékoli úrovni. Hello **skrýt prázdné členy** nastavení vyloučí prázdné členy z hierarchie hello při přidání tooa kontingenční tabulku nebo sestavy.  
+Tabulkové modely na úrovni kompatibility 1400 mají pro hierarchie další vlastnost – **Skrýt členy**. Nastavení **Výchozí** předpokládá, že se na žádné z úrovní nevyskytují prázdné členy. Nastavení **Skrýt prázdné členy** vyloučí po přidání do kontingenční tabulky nebo sestavy z hierarchie prázdné členy.  
   
-Odhadovaný čas toocomplete této lekci: **20 minut**  
+Odhadovaný čas dokončení této lekce: **20 minut**  
   
 ## <a name="prerequisites"></a>Požadavky  
-Toto téma doplňkové lekce je součástí kurzu tabulkového modelování. Před provedením úlohy hello v této další lekci, by byly dokončeny všechny předchozí lekce nebo máte dokončený projekt modelu ukázkové společnosti Adventure Works Internet prodej. 
+Toto téma doplňkové lekce je součástí kurzu tabulkového modelování. Než začnete provádět úkoly v této doplňkové lekci, měli byste mít dokončené všechny předchozí lekce nebo mít dokončený ukázkový projekt modelu Adventure Works Internet Sales. 
 
-Pokud vytvoříte projekt AW Internet prodej hello v rámci kurzu hello modelu ještě neobsahuje data ani hierarchie, které jsou nepravidelné. toocomplete tento doplňkový lekce, musíte se napřed toocreate hello problém tak, že přidáte některé další tabulky, vytvořte relace, počítané sloupce, míry a nové hierarchie organizace. Tato část zabere přibližně 15 minut. Potom můžete získat toosolve ho za několik minut.  
+Pokud jste projekt AW Internet Sales vytvořili v rámci kurzu, neobsahuje model zatím žádná data nebo hierarchie, které by byly nepravidelné. Abyste mohli tuto doplňkovou lekci dokončit, musíte nejdřív problém vytvořit tak, že přidáte nějaké další tabulky, vytvoříte relace, počítané sloupce, míru a novou hierarchii Organization. Tato část zabere přibližně 15 minut. Řešení pak vytvoříte za pár minut.  
 
 ## <a name="add-tables-and-objects"></a>Přidání tabulek a objektů
   
-### <a name="tooadd-new-tables-tooyour-model"></a>tooadd nové tabulky tooyour modelu
+### <a name="to-add-new-tables-to-your-model"></a>Postup přidání nových tabulek do modelu
   
 1.  V Průzkumníku tabulkových modelů rozbalte položku **Zdroje Dat**, potom klikněte pravým tlačítkem myši na vaše připojení > **Importovat nové tabulky**.
   
@@ -31,7 +48,7 @@ Pokud vytvoříte projekt AW Internet prodej hello v rámci kurzu hello modelu j
 
 3.  V Editoru dotazů klikněte na **Importovat**.
 
-4.  Vytvořte následující hello [vztahy](../tutorials/aas-lesson-4-create-relationships.md):
+4.  Vytvořte následující [relace](../tutorials/aas-lesson-4-create-relationships.md):
 
     | Tabulka 1           | Sloupec       | Směr filtru   | Tabulka 2     | Sloupec      | Aktivní |
     |-------------------|--------------|--------------------|-------------|-------------|--------|
@@ -39,9 +56,9 @@ Pokud vytvoříte projekt AW Internet prodej hello v rámci kurzu hello modelu j
     | FactResellerSales | DueDate      | Výchozí            | DimDate     | Datum        | Ne     |
     | FactResellerSales | ShipDateKey  | Výchozí            | DimDate     | Datum        | Ne     |
     | FactResellerSales | ProductKey   | Výchozí            | DimProduct  | ProductKey  | Ano    |
-    | FactResellerSales | EmployeeKey  | tooBoth tabulky | DimEmployee | EmployeeKey | Ano    |
+    | FactResellerSales | EmployeeKey  | Na obě tabulky | DimEmployee | EmployeeKey | Ano    |
 
-5. V hello **DimEmployee** tabulky, vytvořte následující hello [počítaných sloupců](../tutorials/aas-lesson-5-create-calculated-columns.md): 
+5. V tabulce **DimEmployee** vytvořte následující [počítané sloupce](../tutorials/aas-lesson-5-create-calculated-columns.md): 
 
     **Cesta** 
     ```
@@ -78,23 +95,23 @@ Pokud vytvoříte projekt AW Internet prodej hello v rámci kurzu hello modelu j
     =LOOKUPVALUE(DimEmployee[FullName],DimEmployee[EmployeeKey],PATHITEM([Path],1,5)) 
     ```
 
-6.  V hello **DimEmployee** tabulky, vytvořte [hierarchie](../tutorials/aas-lesson-9-create-hierarchies.md) s názvem **organizace**. Přidat hello následující sloupce v daném pořadí: **Level1**, **Level2**, **Level3**, **Level4**, **Level5**.
+6.  V tabulce **DimEmployee** vytvořte [hierarchii](../tutorials/aas-lesson-9-create-hierarchies.md) s názvem **Organization**. Přidejte následující sloupce v daném pořadí: **Level1**, **Level2**, **Level3**, **Level4**, **Level5**.
 
-7.  V hello **FactResellerSales** tabulky, vytvořte následující hello [měr](../tutorials/aas-lesson-6-create-measures.md):
+7.  V tabulce **FactResellerSales** vytvořte následující [míru](../tutorials/aas-lesson-6-create-measures.md):
 
     ```
     ResellerTotalSales:=SUM([SalesAmount])
     ```
 
-8.  Použití [analyzovat v aplikaci Excel](../tutorials/aas-lesson-12-analyze-in-excel.md) tooopen aplikace Excel a automaticky vytvořit kontingenční tabulku.
+8.  Pomocí funkce [Analyzovat v aplikaci Excel](../tutorials/aas-lesson-12-analyze-in-excel.md) otevřete Excel a automaticky vytvořte kontingenční tabulku.
 
-9.  V **pole kontingenční tabulky**, přidejte hello **organizace** hierarchie z hello **DimEmployee** tabulky příliš**řádky**a hello **ResellerTotalSales** míru z hello **FactResellerSales** tabulky příliš**hodnoty**.
+9.  V části **Pole kontingenční tabulky** přidejte hierarchii **Organization** z tabulky **DimEmployee** do **Řádky**a míru **ResellerTotalSales** z tabulky **FactResellerSales** do **Hodnoty**.
 
     ![aas-lesson-detail-ragged-hierarchies-pivottable](../tutorials/media/aas-lesson-detail-ragged-hierarchies-pivottable.png)
 
-    Jak vidíte v hello kontingenční tabulky, zobrazí hello hierarchie řádků, které jsou nepravidelné. Je tam množství řádků, které zobrazují prázdné členy.
+    V kontingenční tabulce můžete vidět, že hierarchie zobrazuje nepravidelné řádky. Je tam množství řádků, které zobrazují prázdné členy.
 
-## <a name="toofix-hello-ragged-hierarchy-by-setting-hello-hide-members-property"></a>toofix hello nepravidelné hierarchie logickými nastavením vlastnosti hello skrýt členy
+## <a name="to-fix-the-ragged-hierarchy-by-setting-the-hide-members-property"></a>Postup opravy nepravidelné hierarchie nastavením vlastnosti Skrýt členy
 
 1.  V **Průzkumníku tabulkových modelů** rozbalte **Tabulky** > **DimEmployee** > **Hierarchie** > **Organization**.
 
@@ -102,7 +119,7 @@ Pokud vytvoříte projekt AW Internet prodej hello v rámci kurzu hello modelu j
 
     ![aas-lesson-detail-ragged-hierarchies-hidemembers](../tutorials/media/aas-lesson-detail-ragged-hierarchies-hidemembers.png)
 
-3.  Zpět v aplikaci Excel aktualizujte hello kontingenční tabulky. 
+3.  Zpět v aplikaci Excel aktualizujte kontingenční tabulku. 
 
     ![aas-lesson-detail-ragged-hierarchies-pivottable-refresh](../tutorials/media/aas-lesson-detail-ragged-hierarchies-pivottable-refresh.png)
 

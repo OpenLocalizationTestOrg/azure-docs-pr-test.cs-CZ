@@ -1,6 +1,6 @@
 ---
-title: "aaaIntegrate Key Vault se systémem SQL Server na virtuálních počítačích Windows v Azure (Resource Manager) | Microsoft Docs"
-description: "Zjistěte, jak tooautomate hello konfigurace systému SQL Server šifrování pro použití s Azure Key Vault. Toto téma vysvětluje, jak vytvořit toouse Azure Key Vault integrace s virtuálními počítači systému SQL Server pomocí Správce prostředků."
+title: "Trezor klíčů integraci se službou SQL Server na virtuálních počítačích Windows v Azure (Resource Manager) | Microsoft Docs"
+description: "Zjistěte, jak k automatizaci konfigurace systému SQL Server šifrování pro použití s Azure Key Vault. Toto téma vysvětluje, jak používat Azure Key Vault integrace s SQL Server na virtuální počítače vytvořené pomocí Resource Manageru."
 services: virtual-machines-windows
 documentationcenter: 
 author: rothja
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/23/2017
 ms.author: jroth
-ms.openlocfilehash: 0d36d3d075d6538c18cd5ecb43c19a4b000a99e0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 32b9564fa5c9ca6864ade343fda309b2c3edf123
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Konfigurace integrace Azure Key Vault pro SQL Server na virtuálních počítačích Azure (Resource Manager)
 > [!div class="op_single_selector"]
@@ -29,11 +29,11 @@ ms.lasthandoff: 10/06/2017
 > 
 
 ## <a name="overview"></a>Přehled
-Existuje více funkcí šifrování systému SQL Server, například [transparentní šifrování dat (šifrování TDE)](https://msdn.microsoft.com/library/bb934049.aspx), [šifrování na úrovni sloupce (Vymazat)](https://msdn.microsoft.com/library/ms173744.aspx), a [zálohu šifrovacího](https://msdn.microsoft.com/library/dn449489.aspx). Tyto formuláře šifrování vyžadovat toomanage a uložení hello kryptografických klíčů, které používáte pro šifrování. Hello službou Azure Key Vault (AZURE) služby je navrženou tooimprove hello zabezpečení a správu tyto klíče v umístění zabezpečené a vysoce dostupné. Hello [konektor služby serveru SQL](http://www.microsoft.com/download/details.aspx?id=45344) umožňuje tyto klíče z Azure Key Vault toouse systému SQL Server.
+Existuje více funkcí šifrování systému SQL Server, například [transparentní šifrování dat (šifrování TDE)](https://msdn.microsoft.com/library/bb934049.aspx), [šifrování na úrovni sloupce (Vymazat)](https://msdn.microsoft.com/library/ms173744.aspx), a [zálohu šifrovacího](https://msdn.microsoft.com/library/dn449489.aspx). Tyto formuláře šifrování vyžadovat ke správě a ukládání kryptografických klíčů, které používáte pro šifrování. Službu službou Azure Key Vault (AZURE) slouží k vylepšení zabezpečení a správu tyto klíče v umístění zabezpečené a vysoce dostupné. [Konektor služby serveru SQL](http://www.microsoft.com/download/details.aspx?id=45344) umožňuje serveru SQL pro použití těchto klíčů z Azure Key Vault.
 
-Pokud jste s místním systémem SQL Server počítačů existuje jsou [kroky, které vám pomůžou tooaccess Azure Key Vault z vašeho místního počítače systému SQL Server](https://msdn.microsoft.com/library/dn198405.aspx). Ale pro SQL Server ve virtuálních počítačích Azure, můžete ušetřit čas pomocí hello *Azure Key Vault integrace* funkce.
+Pokud jste s místním systémem SQL Server počítačů existuje jsou [kroky, pomocí kterých můžete pro přístup k Azure Key Vault z vašeho místního počítače systému SQL Server](https://msdn.microsoft.com/library/dn198405.aspx). Ale pro SQL Server ve virtuálních počítačích Azure, můžete ušetřit čas pomocí *Azure Key Vault integrace* funkce.
 
-Pokud je tato funkce povolena, automaticky se nainstaluje hello konektor služby serveru SQL, nakonfiguruje hello EKM provider tooaccess Azure Key Vault a vytvoří tooallow hello přihlašovacích údajů můžete tooaccess svůj trezor. Pokud hledá v hello kroky v hello už jsme zmínili místní dokumentaci, uvidíte, že tato funkce automatizuje kroky 2 a 3. Hello pouze věc stále nutné toodo ručně, je trezor klíčů hello toocreate a klíče. Z tohoto místa se automatizované hello celý nastavení virtuálního počítače SQL. Po dokončení této instalace této funkce můžete spustit T-SQL příkazy toobegin šifrování databáze nebo zálohy běžným způsobem.
+Pokud je tato funkce povolena, automaticky se nainstaluje konektor serveru SQL, nakonfiguruje zprostředkovatele EKM. pro přístup k Azure Key Vault a vytvoří pověření umožňují přístup k trezoru. Pokud zvážení kroky v dokumentaci k výše uvedených v místě, uvidíte, že tato funkce automatizuje kroky 2 a 3. Jediné, co by se stále potřeba udělat ručně je vytvoření trezoru klíčů a klíče. Z tohoto místa se automatizované celé nastavení virtuálního počítače SQL. Po dokončení této instalace této funkce můžete spustit příkazů T-SQL zahájíte šifrování databáze nebo zálohy běžným způsobem.
 
 [!INCLUDE [AKV Integration Prepare](../../../../includes/virtual-machines-sql-server-akv-prepare.md)]
 
@@ -41,22 +41,22 @@ Pokud je tato funkce povolena, automaticky se nainstaluje hello konektor služby
 Můžete povolit integrace se službou AZURE při zřizování nebo ho nakonfigurovat pro existující virtuální počítače.
 
 ### <a name="new-vms"></a>Nové virtuální počítače
-Pokud zřizujete nového virtuálního počítače systému SQL Server s Resource Managerem, hello portál Azure poskytuje krok tooenable integrace se službou Azure Key Vault. Funkce Hello Azure Key Vault je dostupná pouze pro hello Enterprise, Developer a zkušební edice systému SQL Server.
+Pokud zřizujete nového virtuálního počítače systému SQL Server s Resource Managerem, portál Azure poskytuje krok k povolení integrace se službou Azure Key Vault. Funkce Azure Key Vault je dostupná pouze pro Enterprise, Developer a zkušební edice systému SQL Server.
 
 ![Integrace se službou Azure Key Vault pro SQL](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-arm-akv.png)
 
-Podrobný návod k zřizování, najdete v části [zřízení virtuálního počítače s SQL Server v hello portálu Azure](virtual-machines-windows-portal-sql-server-provision.md).
+Podrobný návod k zřizování, najdete v části [zřízení virtuálního počítače s SQL serverem na portálu Azure](virtual-machines-windows-portal-sql-server-provision.md).
 
 ### <a name="existing-vms"></a>Existující virtuální počítače
-Pro existující virtuální počítače systému SQL Server vyberte virtuální počítač systému SQL Server. Potom vyberte hello **konfigurace systému SQL Server** části hello **nastavení** okno.
+Pro existující virtuální počítače systému SQL Server vyberte virtuální počítač systému SQL Server. Vyberte **konfigurace systému SQL Server** části **nastavení** okno.
 
 ![Integrace se službou AZURE SQL pro existující virtuální počítače](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-rm-akv-existing-vms.png)
 
-V hello **konfigurace systému SQL Server** okně klikněte na tlačítko hello **upravit** tlačítka na hello části Integrace automatizované Key Vault.
+V **konfigurace systému SQL Server** okně klikněte **upravit** tlačítko v části Integrace automatizované Key Vault.
 
 ![Konfigurace integrace se službou AZURE SQL pro existující virtuální počítače](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-rm-akv-configuration.png)
 
-Po dokončení klikněte na tlačítko hello **OK** na konci hello hello tlačítko **konfigurace systému SQL Server** okno toosave změny.
+Po dokončení klikněte **OK** tlačítko v dolní části **konfigurace systému SQL Server** okno a uložte změny.
 
 > [!NOTE]
 > Můžete také nakonfigurovat integrace se službou AZURE pomocí šablony. Další informace najdete v tématu [šablony Azure rychlý start pro integraci Azure Key Vault](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-keyvault-update).

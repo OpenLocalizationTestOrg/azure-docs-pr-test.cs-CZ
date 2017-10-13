@@ -1,6 +1,6 @@
 ---
-title: "aaaGet začít s Azure Notification Hubs pomocí Baidu | Microsoft Docs"
-description: "V tomto kurzu zjistíte, jak toouse Azure Notification Hubs toopush oznámení tooAndroid zařízení pomocí Baidu."
+title: "Začínáme s používáním Azure Notification Hubs s Baidu | Dokumentace Microsoftu"
+description: "V tomto kurzu zjistíte, jak používat Azure Notification Hubs k odesílání nabízených oznámení do zařízení se systémem Android pomocí Baidu."
 services: notification-hubs
 documentationcenter: android
 author: ysxu
@@ -14,149 +14,149 @@ ms.tgt_pltfrm: mobile-baidu
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: yuaxu
-ms.openlocfilehash: 2767fdd3bb04674e7a531634237cc05cd8c21cb8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: df3bbda15e1245b6068c2b8290d0c96856051f1f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Začínáme s použitím Notification Hubs pomocí Baidu
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ## <a name="overview"></a>Přehled
-Je cloudu baidu představuje čínskou cloudovou službu, které můžete použít toosend nabízená oznámení toomobile zařízení. Tato služba je užitečné v Číně, kde doručování nabízených oznámení, že tooAndroid je komplexní z důvodu hello přítomnosti různých obchodů s aplikacemi a nabízených služeb, kromě toohello dostupnosti zařízení Android, které nejsou obvykle připojené tooGCM (Google Cloud Messaging).
+Nabídka cloudu Baidu představuje čínskou cloudovou službu, kterou můžete použít k zasílání nabízených oznámení na mobilní zařízení. Tato služba je užitečná v Číně, kde je doručování nabízených oznámení na Android komplexní z důvodu přítomnosti různých obchodů s aplikacemi a služeb nabízených oznámení, navíc k dostupnosti zařízení Android, která nejsou obvykle připojena k GCM (Google Cloud Messaging).
 
 ## <a name="prerequisites"></a>Požadavky
 V tomto kurzu budete potřebovat:
 
-* Sadu Android SDK (předpokládáme, že použijete Eclipse), kterou si můžete stáhnout z hello <a href="http://go.microsoft.com/fwlink/?LinkId=389797">lokality Android</a>
+* Sadu Android SDK (předpokládáme, že používáte Eclipse), kterou si můžete stáhnout z <a href="http://go.microsoft.com/fwlink/?LinkId=389797">webu Android</a>
 * [Mobile Services Android SDK]
 * [Baidu Push Android SDK]
 
 > [!NOTE]
-> toocomplete tento kurz, musíte mít aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-baidu-get-started%2F).
+> K dokončení tohoto kurzu potřebujete mít aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-baidu-get-started%2F).
 > 
 > 
 
 ## <a name="create-a-baidu-account"></a>Vytvořte účet Baidu
-toouse Baidu, musíte mít účet Baidu. Pokud již účet máte, přihlaste se toohello [portál Baidu] a toohello další krok přeskočit. Jinak, najdete v části hello následující pokyny o tom, toocreate účet Baidu.  
+Chcete-li použít Baidu, musíte mít účet Baidu. Pokud již účet máte, přihlaste se na [portál Baidu] a přejděte k dalšímu kroku. Jinak pro vytvoření účtu Baidu postupujte podle následujících pokynů.  
 
-1. Přejděte toohello [portál Baidu] a klikněte na tlačítko hello**登录**(**přihlášení**) odkaz. Klikněte na tlačítko**立即注册**toostart hello účet registraci.
+1. Přejděte na stránku [portál Baidu] a klikněte na odkaz **登录** (**Přihlášení**). Klikněte na tlačítko **立即注册** s spusťte proces registrace účtu.
    
    ![][1]
-2. Zadejte hello požadované podrobnosti – telefon nebo e-mailovou adresu, heslo a ověřovací kód – a klikněte na tlačítko **registrace**.
+2. Zadejte požadované podrobnosti – telefon a e-mailovou adresu, heslo a ověřovací kód – a klikněte na tlačítko **Registrace**.
    
    ![][2]
-3. Vám bude zasláno e-mailovou toohello e-mailovou adresu, že jste zadali s tooactivate odkaz účet Baidu.
+3. Na e-mailovou adresu, kterou jste zadali, vám dorazí e-mail s odkazem k aktivaci Baidu.
    
    ![][3]
-4. Přihlaste tooyour e-mailový účet, otevřete aktivaci baidu hello a klikněte na tlačítko tooactivate odkaz hello aktivaci účtu Baidu.
+4. Přihlaste se k e-mailovému účtu, otevřete e-mail pro aktivaci Baidu a kliknutím na aktivační odkaz účet Baidu aktivujte.
    
    ![][4]
 
-Po aktivaci účtu Baidu máte, přihlaste se toohello [portál Baidu].
+Po aktivaci účtu Baidu se přihlaste na [portál Baidu].
 
 ## <a name="register-as-a-baidu-developer"></a>Zaregistrujte se jako vývojář Baidu
-1. Jakmile jste byli přihlášeni toohello [portál Baidu], klikněte na tlačítko**更多 >>** (**Další**).
+1. Po přihlášení na [portál Baidu] klikněte na tlačítko **更多 >>** (**Další**).
    
       ![][5]
-2. Přejděte dolů v hello**站长与开发者服务 (správce webového serveru a služby pro vývojáře)** části a klikněte na tlačítko**百度开放云平台**(**Baidu otevřete Cloudová platforma**).
+2. Posuňte se dolů v části **站长与开发者服务 (Správce webového serveru a služeb pro vývojáře)** a klikněte na tlačítko **百度开放云平台** (**Otevřená cloudová platforma Baidu**).
    
       ![][6]
-3. Na další stránku hello, klikněte na tlačítko**开发者服务**(**služby pro vývojáře**) v pravém horním rohu hello.
+3. Na další stránce klikněte na tlačítko **开发者服务** (**Služby pro vývojáře**) v pravém horním rohu.
    
       ![][7]
-4. Na další stránku hello, klikněte na tlačítko**注册开发者**(**zaregistrován vývojáři**) z nabídky hello v pravém horním rohu hello.
+4. Na další stránce klikněte na tlačítko **注册开发者** (**Registrovaní vývojáři**) z nabídky v pravém horním rohu.
    
       ![][8]
-5. Zadejte své jméno, popis a číslo mobilního telefonu pro příjem ověřovací textové zprávy a pak klikněte na tlačítko **送验证码** (**Odeslat ověřovací kód**). Pro mezinárodní telefonní čísla budete potřebovat kód země hello tooenclose v závorkách. Například pro USA se bude jednat o číslo **(1) 1234567890**.
+5. Zadejte své jméno, popis a číslo mobilního telefonu pro příjem ověřovací textové zprávy a pak klikněte na tlačítko **送验证码** (**Odeslat ověřovací kód**). Pro mezinárodní telefonní čísla bude je nutné uvést kód země v závorkách. Například pro USA se bude jednat o číslo **(1) 1234567890**.
    
       ![][9]
-6. Následně byste měli obdržet textovou zprávu s číslem ověření, jak je znázorněno v hello následující ukázka:
+6. Následně byste měli obdržet textovou zprávu s číslem ověření, jak je znázorněno v následujícím příkladu:
    
       ![][10]
-7. Zadejte číslo ověření hello z uvítací zprávu v**验证码**(**potvrzovací kód**).
-8. Nakonec dokončit registraci vývojáře hello přijetí smlouvy hello Baidu a kliknutím na**提交**(**odeslání**). Zobrazí se následující stránka při úspěšném dokončení registrace hello:
+7. Zadejte číslo ověření ze zprávy do **验证码** (**Potvrzovací kód**).
+8. Nakonec dokončete registraci vývojářů přijetím podmínek smlouvy Baidu a kliknutím na **提交** (**Odeslat**). Při úspěšném dokončení registrace se zobrazí následující stránka:
    
       ![][11]
 
 ## <a name="create-a-baidu-cloud-push-project"></a>Vytvořte projekt nabízených oznámení cloudu Baidu
 Při vytváření projektu nabízených oznámení cloudu Baidu obdržíte své ID aplikace, klíč rozhraní API a tajný klíč.
 
-1. Jakmile jste byli přihlášeni toohello [portál Baidu], klikněte na tlačítko**更多 >>** (**Další**).
+1. Po přihlášení na [portál Baidu] klikněte na tlačítko **更多 >>** (**Další**).
    
       ![][5]
-2. Přejděte dolů v hello**站长与开发者服务**(**správce webového serveru a služby pro vývojáře**) a klikněte na**百度开放云平台**(**Baidu otevřete Cloudová platforma**).
+2. Posuňte se dolů v části **站长与开发者服务** (**Správce webového serveru a služeb pro vývojáře**) a klikněte na tlačítko **百度开放云平台** (**Otevřená cloudová platforma Baidu**).
    
       ![][6]
-3. Na další stránku hello, klikněte na tlačítko**开发者服务**(**služby pro vývojáře**) v pravém horním rohu hello.
+3. Na další stránce klikněte na tlačítko **开发者服务** (**Služby pro vývojáře**) v pravém horním rohu.
    
       ![][7]
-4. Na další stránku hello, klikněte na tlačítko**云推送**(**cloudu Push**) z hello**云服务**(**cloudové služby**) oddílu.
+4. Na další stránce klikněte na tlačítko **云推送** (**Cloud Push**) z části **云服务** (**Cloudové služby**).
    
       ![][12]
-5. Jakmile jste vývojář registrovaný, zobrazí**管理控制台**(**konzoly pro správu**) v horní nabídce hello. Klikněte na tlačítko **开发者服务管理** (**Správa služeb pro vývojáře**).
+5. Jakmile jste registrovaný vývojář, zobrazí se v horní nabídce **管理控制台** (**Konzola pro správu**). Klikněte na tlačítko **开发者服务管理** (**Správa služeb pro vývojáře**).
    
       ![][13]
-6. Na další stránku hello, klikněte na tlačítko**创建工程**(**vytvoření projektu**).
+6. Na další stránce klikněte na tlačítko **创建工程** (**Vytvořit projekt**).
    
       ![][14]
 7. Zadejte název aplikace a klikněte na tlačítko **创建** (**Vytvořit**).
    
       ![][15]
-8. Po úspěšném vytvoření projektu nabízených oznámení cloudu Baidu se zobrazí stránka s **AppID**, **klíčem rozhraní API** a **tajným klíčem**. Poznamenejte si klíč hello rozhraní API a tajný klíč, který použijeme později.
+8. Po úspěšném vytvoření projektu nabízených oznámení cloudu Baidu se zobrazí stránka s **AppID**, **klíčem rozhraní API** a **tajným klíčem**. Poznamenejte si klíč rozhraní API a tajný klíč, který použijeme později.
    
       ![][16]
-9. Konfigurace projektu hello nabízená oznámení kliknutím**云推送**(**cloudu nabízené**) v levém podokně hello.
+9. Nakonfigurujte projekt pro nabízená oznámení kliknutím na **云推送** (**Cloud Push**) v levém podokně.
    
       ![][31]
-10. Na další stránku hello, klikněte na tlačítko hello**推送设置**(**Push nastavení**) tlačítko.
+10. Na další stránce klikněte na tlačítko **推送设置** (**Nastavení Push**).
     
     ![][32]  
-11. Na stránce konfigurace hello, přidejte název hello balíčku, který budete používat v projektu Android v hello**应用包名**(**balíčku aplikace**) pole a pak klikněte na**保存设置**() **Uložit**).  
+11. Na stránce konfigurace přidejte název balíčku, který budete používat v projektu Android v poli **应用包名** (**Balíček aplikace**) a pak klikněte na tlačítko **保存设置** (**Uložit**).  
     
     ![][33]
 
-Zobrazí hello**保存成功!** zpráva (**Úspěšně uloženo!**) .
+Zobrazí se **保存成功！zpráva** (**Úspěšně uloženo!**).
 
 ## <a name="configure-your-notification-hub"></a>Konfigurace centra oznámení
-1. Přihlaste se toohello [portálu Azure Classic]a potom klikněte na **+ nový** v hello dolní části obrazovky hello.
+1. Přihlaste se k [portál Azure Classic] a v dolní části obrazovky klikněte na **+ NOVÝ**.
 2. Klikněte na tlačítko **aplikační služby**, klikněte na tlačítko **Sběrnice**, klikněte na tlačítko **Notification Hubs** a pak klikněte na tlačítko **Rychle vytvořit**.
-3. Zadejte název vaší **centra oznámení**, vyberte hello **oblast** a hello **Namespace** kde toto centrum oznámení se vytvoří a pak klikněte na tlačítko  **Vytvoření nového centra oznámení**.  
+3. Zadejte název pro vaše **Notification Hubs**, vyberte **Oblast** a **Obor názvů** kde bude toto centrum oznámení vytvořeno a pak klikněte na tlačítko **Vytvoření nového centra oznámení**.  
    
       ![][17]
-4. Klikněte na tlačítko hello obor názvů, ve které jste vytvořili centrum oznámení a pak klikněte na **Notification Hubs** v horní části hello.
+4. Klikněte na obor názvů, ve kterém jste vytvořili centrum oznámení a pak klikněte na tlačítko **Notification Hubs** nahoře.
    
       ![][18]
-5. Vyberte hello centra oznámení, který jste vytvořili a pak klikněte na tlačítko **konfigurace** hello hlavní nabídce.
+5. Vyberte vytvořené centrum oznámení a pak klikněte na tlačítko **Konfigurovat** v hlavní nabídce.
    
       ![][19]
-6. Projděte dolů toohello **nastavení oznámení baidu** a zadejte klíč hello rozhraní API a tajný klíč, který jste získali z konzoly Baidu hello dříve pro váš projekt nabízených oznámení cloudu Baidu. Klikněte na **Uložit**.
+6. Přejděte dolů do části **Nastavení oznámení baidu** a zadejte klíč rozhraní API a tajný klíč, který jste dříve získali z konzoly Baidu pro váš projekt nabízených oznámení cloudu Baidu. Klikněte na **Uložit**.
    
       ![][20]
-7. Klikněte na tlačítko hello **řídicí panel** hello horní pro Centrum oznámení hello a pak klikněte **zobrazení připojovacího řetězce**.
+7. Klikněte na tlačítko **Řídicí panel** v horní části pro Centrum oznámení a klikněte na tlačítko **Zobrazení připojovacího řetězce**.
    
       ![][21]
-8. Poznamenejte si hello **DefaultListenSharedAccessSignature** a **DefaultFullSharedAccessSignature** z hello **informace o přístupovém připojení** okno.
+8. Poznamenejte si **DefaultListenSharedAccessSignature** a **DefaultFullSharedAccessSignature** z okna **Přístup k informacím připojení**.
    
     ![][22]
 
-## <a name="connect-your-app-toohello-notification-hub"></a>Připojit vaše Centrum oznámení toohello aplikace
+## <a name="connect-your-app-to-the-notification-hub"></a>Připojte aplikaci k centru oznámení
 1. V Eclipse ADT vytvořte nový projekt Android (**Soubor** > **Nový** > **Projekt aplikace Android**).
    
     ![][23]
-2. Zadejte **název aplikace** a ujistěte se, že hello **minimální požadované SDK** verze je nastaven příliš**rozhraní API 16: Android 4.1**.
+2. Zadejte **Název aplikace** a ověřte, že **Minimální požadované SDK** verze je nastaveno na **Rozhraní API 16: Android 4.1**.
    
     ![][24]
-3. Klikněte na tlačítko **Další** a pokračovat, dokud hello následující hello průvodce **vytvořit aktivity** se zobrazí v okně. Ujistěte se, že **prázdné aktivity** je vybrané a nakonec vyberte možnost **Dokončit** toocreate nové aplikace pro Android.
+3. Klikněte na tlačítko **Další** a pokračuje podle pokynů Průvodce, dokud se nezobrazí okno **Vytvořit aktivity**. Ujistěte se, že je zvolena možnost **Prázdné aktivity** a nakonec vyberte možnost **Dokončit** k vytvoření nové aplikace pro Android.
    
     ![][25]
-4. Ujistěte se, že hello **cíl sestavení projektu** nastavena správně.
+4. Ujistěte se, že je možnost **Cíl sestavení projektu** správně nastavena.
    
     ![][26]
-5. Stáhněte si soubor notification-hubs-0.4.jar hello ze hello **soubory** kartě hello [Notification-Hubs-Android-SDK na panelu koše](https://bintray.com/microsoftazuremobile/SDK/Notification-Hubs-Android-SDK/0.4). Přidejte soubor toohello hello **knihovny** složky projektu Eclipse a aktualizace hello *knihovny* složky.
-6. Stáhněte a rozbalte hello [Baidu Push Android SDK], otevřete hello **knihovny** složku a potom kopie hello **pushservice-x.y.z** jar souborové služby a hello **armeabi**  &  **mips** složek v hello **knihovny** složky vaší aplikace Android.
-7. Otevřete hello **AndroidManifest.xml** souboru systémem Android projekt a přidejte hello oprávnění, které jsou vyžadované Baidu SDK hello.
+5. Stáhněte si soubor notification-hubs-0.4.jar z karty **Soubory** v části [Notification-Hubs-Android-SDK na panelu koše](https://bintray.com/microsoftazuremobile/SDK/Notification-Hubs-Android-SDK/0.4). Přidejte soubor do složky **knihovny** projektu Eclipse a aktualizujte složku *knihovny*.
+6. Stáhněte a rozbalte složku [Baidu Push Android SDK], otevřete složku **knihovny** a pak zkopírujte soubor jar **pushservice-x.y.z** a složky **armeabi** & **mips** ve složce **knihovny** do vaší aplikace Android.
+7. Otevřete soubor **AndroidManifest.xml** vašeho projektu Android a přidejte oprávnění vyžadované Baidu SDK.
    
         <uses-permission android:name="android.permission.INTERNET" />
         <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -170,10 +170,10 @@ Zobrazí hello**保存成功!** zpráva (**Úspěšně uloženo!**) .
         <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
         <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
         <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
-8. Přidat hello **android: name** vlastnost tooyour **aplikace** element v **AndroidManifest.xml**, ve které nahradíte *názevvašehoprojektu* (pro například **com.example.BaiduTest**). Ujistěte se, že tento název projektu odpovídá hello jeden, který jste nakonfigurovali v konzole Baidu hello.
+8. Přidejte vlastnost **android:name** do elementu **application** v souboru **AndroidManifest.xml** a nahraďte řetězec *yourprojectname* názvem vašeho projektu (například **com.example.BaiduTest**). Ujistěte se, že tento název projektu odpovídá názvu, který jste nakonfigurovali v konzole Baidu.
    
         <application android:name="yourprojectname.DemoApplication"
-9. Přidejte následující konfigurace v rámci elementu aplikace hello po hello hello **. MainActivity** prvku aktivity, nahraďte *názevvašehoprojektu* (například **com.example.BaiduTest**):
+9. Přidejte následující konfiguraci v rámci elementu aplikace po elementu aktivity **.MainActivity** a nahraďte řetězec *yourprojectname* názvem vašeho projektu (například **com.example.BaiduTest**):
    
         <receiver android:name="yourprojectname.MyPushMessageReceiver">
             <intent-filter>
@@ -212,12 +212,12 @@ Zobrazí hello**保存成功!** zpráva (**Úspěšně uloženo!**) .
                 <action android:name="com.baidu.android.pushservice.action.PUSH_SERVICE" />
             </intent-filter>
         </service>
-10. Přidejte novou třídu s názvem **ConfigurationSettings.java** toohello projektu.
+10. Přidejte novou třídu s názvem **ConfigurationSettings.java** do projektu.
     
      ![][28]
     
      ![][29]
-11. Přidejte následující kód tooit hello:
+11. Přidejte do ní následující kód:
     
         public class ConfigurationSettings {
                 public static String API_KEY = "...";
@@ -225,8 +225,8 @@ Zobrazí hello**保存成功!** zpráva (**Úspěšně uloženo!**) .
                 public static String NotificationHubConnectionString = "...";
             }
     
-    Nastavte hodnotu hello **API_KEY** s co jste získali z projektu cloudu Baidu hello dříve, **NotificationHubName** s vaším jménem centra oznámení z hello portálu Azure Classic a  **NotificationHubConnectionString** pomocí DefaultListenSharedAccessSignature z portálu Azure Classic hello.
-12. Přidejte novou třídu s názvem **DemoApplication.java**a přidejte následující kód tooit hello:
+    Nastavte hodnotu **API_KEY** pomocí dříve načteného projektu Baidu, **NotificationHubName** s vaším jménem centra oznámení z portálu Azure Classic a **NotificationHubConnectionString** pomocí DefaultListenSharedAccessSignature z portálu Azure Classic.
+12. Přidejte novou třídu s názvem **DemoApplication.java** a přidejte do ní následující kód:
     
         import com.baidu.frontia.FrontiaApplication;
     
@@ -236,7 +236,7 @@ Zobrazí hello**保存成功!** zpráva (**Úspěšně uloženo!**) .
                 super.onCreate();
             }
         }
-13. Přidejte další novou třídu s názvem **MyPushMessageReceiver.java**a přidejte následující kód tooit hello. Je hello třídu, která zpracovává hello nabízená oznámení, které jsou přijaty ze serveru nabízených oznámení Baidu hello.
+13. Přidejte další novou třídu s názvem **MyPushMessageReceiver.java** a přidejte do ní následující kód. Tato třída zpracovává nabízená oznámení přijatá ze serveru nabízených oznámení Baidu.
     
         import java.util.List;
         import android.content.Context;
@@ -246,7 +246,7 @@ Zobrazí hello**保存成功!** zpráva (**Úspěšně uloženo!**) .
         import com.microsoft.windowsazure.messaging.NotificationHub;
     
         public class MyPushMessageReceiver extends FrontiaPushMessageReceiver {
-            /** TAG tooLog */
+            /** TAG to Log */
             public static NotificationHub hub = null;
             public static String mChannelId, mUserId;
             public static final String TAG = MyPushMessageReceiver.class
@@ -344,29 +344,29 @@ Zobrazí hello**保存成功!** zpráva (**Úspěšně uloženo!**) .
                 Log.d(TAG, messageString);
             }
         }
-14. Otevřete **MainActivity.java**a přidejte následující toohello hello **onCreate** metoda:
+14. Otevřete soubor **MainActivity.java** a přidejte následující metodu **onCreate**:
     
             PushManager.startWork(getApplicationContext(),
                     PushConstants.LOGIN_TYPE_API_KEY, ConfigurationSettings.API_KEY);
-15. Otevřete následující prohlášení importu v horní části hello hello:
+15. Otevřete následující prohlášení importu v horní části:
     
             import com.baidu.android.pushservice.PushConstants;
             import com.baidu.android.pushservice.PushManager;
 
-## <a name="send-notifications-tooyour-app"></a>Odeslat oznámení tooyour aplikace
-Můžete rychle otestovat příjem oznámení ve vaší aplikaci odesláním oznámení hello [portál Azure](https://portal.azure.com/) pomocí hello **odeslat** tlačítko hello centra oznámení, jak je znázorněno v hello následující obrazovka:
+## <a name="send-notifications-to-your-app"></a>Odešlete oznámení do aplikace
+Příjem oznámení ve vaší aplikaci můžete rychle otestovat zasláním oznámení z webu [Azure Portal](https://portal.azure.com/) pomocí tlačítka **Odeslat** v centru oznámení, jak je znázorněno na následující obrazovce:
 
 ![](./media/notification-hubs-baidu-get-started/notification-hub-test-send-baidu.png)
 
-Nabízená oznámení se většinou posílají ve službě back-end, jako je služba Mobile Services, nebo v technologii ASP.NET pomocí kompatibilní knihovny. Pokud není žádná knihovna k dispozici pro back-end, můžete použít hello REST API přímo toosend zpráv s oznámením.
+Nabízená oznámení se většinou posílají ve službě back-end, jako je služba Mobile Services, nebo v technologii ASP.NET pomocí kompatibilní knihovny. Pokud pro váš back-end není dostupná žádná knihovna, můžete k přímému odesílání oznámení použít také rozhraní REST API.
 
-V tomto kurzu jsme dělat nic složitého a jednoduše předvedeme testování vaší klientské aplikace pomocí odesílání oznámení hello .NET SDK pro centra oznámení v konzolové aplikaci, místo back-end službu. Doporučujeme, abyste hello [použití centra oznámení toopush oznámení toousers](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) kurz jako hello další krok pro odesílání oznámení z backendu ASP.NET. Hello následující přístupy lze však použít pro zasílání oznámení:
+V tomto kurzu pro zjednodušení předvádíme pouze testování vaší klientské aplikace odesíláním oznámení pomocí sady .NET SDK pro centra oznámení v konzolové aplikaci, místo služby back-end. Jako další krok pro odesílání oznámení z backendu ASP.NET doporučujeme absolvovat kurz [Použití Notification Hubs k odeslání nabízených oznámení uživatelům](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md). Následující přístupy lze však použít pro zasílání oznámení:
 
-* **Rozhraní REST**: oznámení můžete podporovat na jakékoli platformě back-end pomocí hello [rozhraní REST](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx).
-* **Microsoft Azure oznámení centra .NET SDK**: hello Správce balíčků Nuget pro Visual Studio, spusťte [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
-* **Node.js**: [jak toouse Notification Hubs z Node.js](notification-hubs-nodejs-push-notification-tutorial.md).
-* **Mobile Apps**: pro příklad toosend oznámení z backendu Azure App Service Mobile Apps, které jsou integrovány v centrech oznámení najdete v části [přidat nabízená oznámení tooyour mobilní aplikace](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md).
-* **Java / PHP**: Příklad jak hello toosend oznámení pomocí rozhraní REST API, naleznete v části "jak toouse centra oznámení z Java/PHP" ([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md)).
+* **Rozhraní REST**: oznámení můžete podporovat na jakékoli backend platformě pomocí [rozhraní REST](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx).
+* **Microsoft Azure oznámení centra .NET SDK**: Ve správci balíčků Nuget pro Visual Studio spusťte položku [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+* **Node.js:**[Jak používat Notification Hubs z Node.js](notification-hubs-nodejs-push-notification-tutorial.md).
+* **Mobile Apps**: Příklad zasílání oznámení z back-endu Azure App Service Mobile Apps integrovaného se službou Notification Hubs najdete v tématu [Přidání nabízených oznámení do mobilních aplikací](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md).
+* **Java / PHP**: Příklad odesílání oznámení pomocí rozhraní API REST najdete v části „Použití centra oznámení z Java/PHP“ ([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md)).
 
 ## <a name="optional-send-notifications-from-a-net-console-app"></a>(Volitelné) Odesílání oznámení z konzoly aplikace .NET.
 V této části ukážeme odesílání oznámení pomocí konzolové aplikace .NET.
@@ -374,17 +374,17 @@ V této části ukážeme odesílání oznámení pomocí konzolové aplikace .N
 1. Vytvořte novou konzolovou aplikaci Visual C#:
    
     ![][30]
-2. V okně konzoly Správce balíčků hello, nastavte hello **výchozí projekt** tooyour nové konzoly projekt aplikace a potom v okně konzoly hello, spusťte následující příkaz hello:
+2. V okně konzoly Správce balíčků nastavte **Výchozí projekt** na nový projekt konzolové aplikace a pak v okně konzoly spusťte následující příkaz:
    
         Install-Package Microsoft.Azure.NotificationHubs
    
-    Tento pokyn přidá odkaz toohello SDK centra oznámení Azure pomocí hello <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">balíčku Microsoft.Azure.Notification Hubs NuGet</a>.
+    Tento příkaz přidá referenci na sadu SDK služby Azure Notification Hubs pomocí <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">balíčku NuGet Microsoft.Azure.Notification Hubs</a>.
    
     ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
-3. Soubor otevřete hello **Program.cs** a přidejte následující hello pomocí příkazu:
+3. Otevřete soubor **Program.cs** a přidejte následující možnost pomocí příkazu:
    
         using Microsoft.Azure.NotificationHubs;
-4. Ve vašem `Program` třídy, přidejte následující metodu hello a nahraďte *DefaultFullSharedAccessSignatureSASConnectionString* a *NotificationHubName* hello hodnotami, které máte.
+4. Do své třídy `Program` přidejte následující metodu a nahraďte *DefaultFullSharedAccessSignatureSASConnectionString* a *NotificationHubName* pomocí hodnot, které máte.
    
         private static async void SendNotificationAsync()
         {
@@ -392,19 +392,19 @@ V této části ukážeme odesílání oznámení pomocí konzolové aplikace .N
             string message = "{\"title\":\"((Notification title))\",\"description\":\"Hello from Azure\"}";
             var result = await hub.SendBaiduNativeNotificationAsync(message);
         }
-5. Přidejte následující řádky do hello vaše **hlavní** metoda:
+5. Přidejte následující řádky do vaší **Hlavní** metody:
    
          SendNotificationAsync();
          Console.ReadLine();
 
 ## <a name="test-your-app"></a>Testování aplikace
-tootest této aplikace pomocí skutečného telefonu, jednoduše připojte hello phone tooyour počítači pomocí kabelu USB. Tato akce načte aplikaci do phone hello připojen.
+K testování této aplikace pomocí skutečného telefonu, jednoduše připojte telefon k počítači pomocí kabelu USB. Tato akce načte aplikaci do připojeného telefonu.
 
-Klikněte na této aplikaci pomocí hello emulátoru na horním nástrojů Eclipse hello tootest **spustit**a pak vyberte svou aplikaci: začne hello emulátoru, zatížení, a spustí hello aplikace.
+Pokud chcete tuto aplikaci otestovat pomocí emulátoru, na horním panelu nástrojů Eclipse klikněte na **Run** (Spustit) a pak vyberte vaši aplikaci: spustí se emulátor, načte se aplikace a spustí se.
 
-aplikace Hello načte hello "userId" a "channelId" ze hello služby nabízených oznámení Baidu a zaregistruje hello centra oznámení.
+Aplikace načte „userID“ a „channelID“ ze služby nabízených oznámení Baidu a zaregistruje centrum oznámení.
 
-toosend testovací oznámení, můžete použít hello ladění kartě hello portálu Azure Classic. Pokud jste vytvořili hello konzolové aplikace .NET pro Visual Studio, stačí stisknout klávesu F5 klíč hello v sadě Visual Studio toorun hello aplikaci. aplikace Hello odešle oznámení, že se zobrazí v horní oznamovací oblasti hello emulátoru nebo zařízení.
+Pro odeslání testovacího oznámení můžete použít kartu ladění na portálu Azure Classic. Pokud jste vytvořili konzolovou aplikaci .NET pro Visual Studio, jednoduše ke spuštění aplikace stiskněte klávesu F5 ve Visual Studiu. Aplikace odešle oznámení, které se zobrazí v horní oznamovací oblasti vašeho zařízení nebo emulátoru.
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-baidu-get-started/BaiduRegistration.png
@@ -444,5 +444,5 @@ toosend testovací oznámení, můžete použít hello ladění kartě hello por
 <!-- URLs. -->
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Baidu Push Android SDK]: http://developer.baidu.com/wiki/index.php?title=docs/cplat/push/sdk/clientsdk
-[portálu Azure Classic]: https://manage.windowsazure.com/
+[portál Azure Classic]: https://manage.windowsazure.com/
 [portál Baidu]: http://www.baidu.com/

@@ -5,7 +5,7 @@
 ## [Začínáme s portálem Cloud Partner](./cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md)
 ## [Podporované produkty](./Cloud-partner-portal-products-that-can-get-published-via-portal.md)
 
-# Jak tooguides
+# Návody
 ## Správa virtuálních počítačů
 ### [Vytvoření nabídky virtuálních počítačů](./cloud-partner-portal-publish-virtual-machine.md)
 #### [Požadavky](./cloud-partner-portal-publish-virtual-machine.md#what-are-pre-requisites-for-publishing-a-vm)
@@ -21,7 +21,7 @@
 
 ### [Aktualizace stávající nabídky](./cloud-partner-portal-update-existing-offer.md)
 ### [Odstranění nabídky virtuálního počítače nebo skladové jednotky](./cloud-partner-portal-delete-an-offer.md)
-### [Portál pro partnery toocloud migrace](./cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)
+### [Migrace na portál Cloud Partner](./cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)
 ## [Příručka pro prodejce na Azure Marketplace](./cloud-partner-portal-seller-guide.md)
 
 ## [Získání potenciálních zákazníků](./cloud-partner-portal-get-customer-leads.md)

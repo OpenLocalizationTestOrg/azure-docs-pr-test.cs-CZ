@@ -1,6 +1,6 @@
 ---
-title: "aaaOptimize prostředí System Center Operations Manager s nástrojem Azure Log Analytics | Microsoft Docs"
-description: "Můžete použít hello System Center Operations Manager Assessment řešení tooassess hello stavu serveru prostředí a riziko v pravidelných intervalech."
+title: "Optimalizace prostředí System Center Operations Manager s nástrojem Azure Log Analytics | Microsoft Docs"
+description: "Řešení System Center Operations Manager posouzení můžete použít k vyhodnocení rizik a stavu serveru prostředí v pravidelných intervalech."
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -15,53 +15,53 @@ ms.workload: infrastructure-services
 ms.date: 08/11/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c024e53826e91524c120bdb98ae7d96d6dc37d15
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4992d98397da409f7c1cfbdeb40fdb0cdd0d2f19
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="optimize-your-environment-with-hello-system-center-operations-manager-assessment-preview-solution"></a>Optimalizace prostředí s hello řešení System Center Operations Manager Assessment (Preview)
+# <a name="optimize-your-environment-with-the-system-center-operations-manager-assessment-preview-solution"></a>Optimalizace prostředí s nástrojem System Center Operations Manager Assessment (Preview) řešení
 
 ![System Center Operations Manager Assessment symbol](./media/log-analytics-scom-assessment/scom-assessment-symbol.png)
 
-Můžete použít hello System Center Operations Manager Assessment řešení tooassess hello rizika a stavu prostředí serveru System Center Operations Manager v pravidelných intervalech. Tento článek vám umožňuje instalovat, konfigurovat a používat řešení hello, takže můžete provést nápravné akce pro potenciální problémy.
+Řešení System Center Operations Manager posouzení můžete použít k vyhodnocení rizik a stavu prostředí serveru System Center Operations Manager v pravidelných intervalech. Tento článek vám umožňuje instalovat, konfigurovat a používat řešení, takže můžete provést nápravné akce pro potenciální problémy.
 
-Toto řešení poskytuje seznam doporučení konkrétní tooyour nasazená serverová infrastruktura seřazený podle priority. Hello doporučení jsou rozdělené mezi čtyři fokus, které oblasti, které vám pomůžou rychle pochopit hello riziko a proveďte opravné akce.
+Toto řešení poskytuje seznam doporučení, které jsou specifické pro infrastrukturu nasazené serverů seřazený podle priority. Doporučení jsou rozdělené mezi čtyři konkrétní oblasti, které vám pomůžou rychle pochopit riziko a proveďte opravné akce.
 
-Hello doporučení, která jsou založené na hello znalosti a zkušenosti technici Microsoft z tisíce zákazníka návštěvách. Každé doporučení obsahuje informace, proč problému, může vás tooyou a jak tooimplement hello navrhované změny.
+Doporučení, která jsou založené na znalosti a zkušenosti technici Microsoft z tisíce zákazníka návštěvách. Každé doporučení obsahuje informace, proč může pro vás důležitá problém a implementaci navrhované změny.
 
-Můžete vybrat konkrétní oblasti, které jsou nejdůležitější tooyour organizace a sledovat průběh směrem k spuštění prostředí riziko volné a v pořádku.
+Můžete vybrat konkrétní oblasti, které jsou důležité pro vaši organizaci a sledovat průběh směrem k spuštění prostředí riziko volné a v pořádku.
 
-Když jste přidali hello řešení a posouzení je dokončené, souhrnné informace pro konkrétní oblasti je zobrazena na hello **System Center Operations Manager Assessment** řídicí panel pro vaši infrastrukturu. Hello následující části popisují, jak toouse hello informace o hello **System Center Operations Manager Assessment** řídicí panel, kde můžete zobrazit a pak proveďte doporučené akce pro vaši infrastrukturu SCOM.
+Když jste přidali řešení a posouzení je dokončené, souhrnné informace pro konkrétní oblasti je zobrazena na **System Center Operations Manager Assessment** řídicí panel pro vaši infrastrukturu. Následující části popisují, jak používat informace na **System Center Operations Manager Assessment** řídicí panel, kde můžete zobrazit a pak proveďte doporučené akce pro vaši infrastrukturu SCOM.
 
 ![Dlaždice řešení System Center Operations Manager](./media/log-analytics-scom-assessment/scom-tile.png)
 
 ![System Center Operations Manager Assessment řídicí panel](./media/log-analytics-scom-assessment/scom-dashboard01.png)
 
-## <a name="installing-and-configuring-hello-solution"></a>Instalace a konfigurace řešení hello
+## <a name="installing-and-configuring-the-solution"></a>Instalace a konfigurace řešení
 
-řešení Hello funguje pro Microsoft System Operations Manager 2012 R2 a 2012 SP1.
+Toto řešení funguje s Microsoft systému Operations Manager 2012 R2 a 2012 s aktualizací SP1.
 
-Použijte následující informace tooinstall hello a nakonfigurujte hello řešení.
+Použijte následující informace k instalaci a konfiguraci řešení.
 
- - Než v OMS můžete použít řešení pro vyhodnocení, musíte mít nainstalován řešení hello. Instalaci hello řešení z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview) nebo podle pokynů hello v [řešení přidat analýzy protokolů z hello řešení Galerie](log-analytics-add-solutions.md).
+ - Než v OMS můžete použít řešení pro vyhodnocení, musíte mít nainstalován řešení. Instalaci řešení z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview) nebo podle pokynů v [řešení přidat analýzy protokolů z Galerie řešení](log-analytics-add-solutions.md).
 
- - Po přidání prostoru toohello hello řešení, zobrazuje hello System Center Operations Manager Assessment dlaždice na řídicím panelu hello uvítací zprávu vyžaduje další konfiguraci. Klikněte na dlaždici hello a postupujte podle kroků konfigurace hello uvedený v stránku hello
+ - Po přidání řešení do pracovního prostoru, System Center Operations Manager Assessment dlaždice na řídicím panelu zobrazí zpráva vyžaduje další konfiguraci. Klikněte na dlaždici a postupujte podle kroků konfigurace uvedených na stránce
 
  ![Dlaždice řídicího panelu System Center Operations Manager](./media/log-analytics-scom-assessment/scom-configrequired-tile.png)
 
- Konfigurace hello System Center Operations Manager lze provést prostřednictvím hello skript podle následujících kroků hello v stránku hello konfigurace hello řešení v OMS.
+ Konfigurace nástroje System Center Operations Manager lze provést prostřednictvím skript podle kroků uvedených na stránce konfigurace řešení v OMS.
 
- Místo toho tooconfigure hello assessment prostřednictvím konzoly SCOM, hello postupujte podle níže uvedené kroky v hello stejné pořadí
-1. [Nastavit účet Spustit jako hello pro System Center Operations Manager hodnocení](#operations-manager-run-as-accounts-for-oms)  
-2. [Konfigurace pravidla System Center Operations Manager Assessment hello](#configure-the-assessment-rule)
+ Místo toho nakonfigurovat assessment prostřednictvím konzoly SCOM, použijte následujících kroků ve stejném pořadí
+1. [Nastavit účet Spustit jako pro System Center Operations Manager hodnocení](#operations-manager-run-as-accounts-for-oms)  
+2. [Konfigurace pravidla System Center Operations Manager hodnocení](#configure-the-assessment-rule)
 
 ## <a name="system-center-operations-manager-assessment-data-collection-details"></a>Informace o System Center Operations Manager assessment datových kolekce
 
-Hello assessment System Center Operations Manager shromažďuje data rozhraní WMI, registru dat, data protokolu událostí, data nástroje Operations Manager prostřednictvím prostředí Windows PowerShell a dotazy SQL, souborů informace kolekci pomocí hello serveru, který jste povolili.
+Hodnocení nástroje System Center Operations Manager shromažďuje data rozhraní WMI, registru dat, data protokolu událostí, data nástroje Operations Manager prostřednictvím prostředí Windows PowerShell a dotazy SQL, souborů informace kolekci pomocí serveru, který jste povolili.
 
-Hello následující tabulka uvádí metody shromažďování dat pro System Center Operations Manager hodnocení a jak často se data shromážděná pomocí agenta.
+Následující tabulka uvádí metody shromažďování dat pro System Center Operations Manager hodnocení a jak často se data shromážděná pomocí agenta.
 
 | Platforma | Přímé agenta | Agenta nástroje SCOM | Azure Storage | SCOM vyžaduje? | Data agenta SCOM odeslána prostřednictvím skupiny pro správu | Frekvence kolekce |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -69,74 +69,74 @@ Hello následující tabulka uvádí metody shromažďování dat pro System Cen
 
 ## <a name="operations-manager-run-as-accounts-for-oms"></a>Účty spustit jako nástroje Operations Manager pro OMS
 
-OMS staví na sady management Pack pro úlohy tooprovide přidanou hodnotou services. Každé zatížení vyžaduje oprávnění konkrétních úloh toorun management Pack v odlišném kontextu zabezpečení, jako je například účet domény. Konfigurace Operations Manager spustit jako účet tooprovide přihlašovacích údajů.
+OMS staví na sady management Pack pro úlohy zajistit přidanou hodnotou services. Každé zatížení vyžaduje určeného pro konkrétní úlohy oprávnění ke spouštění sad management Pack v odlišném kontextu zabezpečení, jako je například účet domény. Konfigurace Operations Manager účet Spustit jako a zadejte přihlašovací údaje.
 
-Použijte následující informace tooset hello účet Spustit jako nástroje Operations Manager pro System Center Operations Manager Assessment hello.
+K nastavení účet Spustit jako nástroje Operations Manager pro System Center Operations Manager Assessment použijte následující informace.
 
-### <a name="set-hello-run-as-account"></a>Sada hello účet Spustit jako
+### <a name="set-the-run-as-account"></a>Nastavit účet Spustit jako
 
-1. V konzole nástroje Operations Manager hello, přejděte toohello **správy** kartě.
-2. V části hello **konfigurace spustit jako**, klikněte na tlačítko **účty**.
-3. Vytvořte účet Spustit jako, následující prostřednictvím hello Průvodce vytvoření účtu Windows hello. účet toouse Hello je hello jeden identifikovat, které mají všechny požadavky hello níže:
+1. V konzole nástroje Operations Manager, přejděte do **správy** kartě.
+2. V části **konfigurace spustit jako**, klikněte na tlačítko **účty**.
+3. Vytvořte účet Spustit jako, následující pomocí Průvodce vytvoření účtu systému Windows. Účet, který chcete použít, je ten, identifikovat a má následující požadavky:
 
     >[!NOTE]
-    Hello účet Spustit jako, musí splňovat následující požadavky:
-    - Účet členem domény hello místní skupině Administrators na všech serverech v prostředí hello (všechny Operations Manager role - Server pro správu, databáze OpsMgr, datového skladu, vytváření sestav, webové konzole, brány)
-    - Role správce Manager operace pro skupinu pro správu hello hodnotí
-    - Spuštění hello [skriptu](#sql-script-to-grant-granular-permissions-to-the-run-as-account) toogrant oprávnění na podrobné úrovni toohello účtu v instanci SQL používaných nástrojem Operations Manager.
-      Poznámka: Pokud tento účet již má oprávnění správce systému, potom přeskočte hello provádění skriptu.
+    Účet Spustit jako, musí splňovat následující požadavky:
+    - Domény účtu, členem místní skupiny Administrators na všech serverech v prostředí (všechny Operations Manager role - Server pro správu, databáze OpsMgr, datového skladu, vytváření sestav, webové konzole, brány)
+    - Role správce Manager operace pro skupinu pro správu probíhá vyhodnocení
+    - Spuštění [skriptu](#sql-script-to-grant-granular-permissions-to-the-run-as-account) udělit oprávnění na podrobné úrovni k účtu v instanci SQL používaných nástrojem Operations Manager.
+      Poznámka: Pokud tento účet již má oprávnění správce systému, potom přeskočte provádění skriptu.
 
 4. V části **zabezpečení distribuce**, vyberte **bezpečnější**.
-5. Zadejte server pro správu hello kde je hello účet distribuován.
-3. Přejděte zpět toohello konfigurace spustit jako a klikněte na tlačítko **profily**.
-4. Vyhledejte hello *SCOM Assessment profil*.
-5. Název profilu Hello by měl být: *Microsoft System Center Advisor SCOM Assessment profilu spustit jako*.
-6. Klikněte pravým tlačítkem myši a aktualizujte jeho vlastnosti a přidejte hello nedávno vytvořen účet Spustit jako jste vytvořili v kroku 3.
+5. Určení serveru správy, kde je účet distribuován.
+3. Vraťte se zpátky a konfigurace spustit jako a klikněte na tlačítko **profily**.
+4. Vyhledejte *SCOM Assessment profil*.
+5. Název profilu musí být: *Microsoft System Center Advisor SCOM Assessment profilu spustit jako*.
+6. Klikněte pravým tlačítkem myši a aktualizujte jeho vlastnosti a přidejte naposledy vytvořený účet Spustit jako jste vytvořili v kroku 3.
 
-### <a name="sql-script-toogrant-granular-permissions-toohello-run-as-account"></a>SQL skriptu toogrant oprávnění na podrobné úrovni toohello účet Spustit jako
+### <a name="sql-script-to-grant-granular-permissions-to-the-run-as-account"></a>Skript SQL k udělení oprávnění na podrobné úrovni k účtu spustit jako
 
-Spusťte následující skript toogrant požadované oprávnění toohello spustit jako účet služby SQL v instanci SQL hello používaných nástrojem Operations Manager hello.
+Spusťte následující skript SQL udělit potřebná oprávnění k účtu spustit jako v instanci SQL používaných nástrojem Operations Manager.
 
 ```
--- Replace <UserName> with hello actual user name being used as Run As Account.
+-- Replace <UserName> with the actual user name being used as Run As Account.
 USE master
 
--- Create login for hello user, comment this line if login is already created.
+-- Create login for the user, comment this line if login is already created.
 CREATE LOGIN [UserName] FROM WINDOWS
 
 
---GRANT permissions toouser.
-GRANT VIEW SERVER STATE too[UserName]
-GRANT VIEW ANY DEFINITION too[UserName]
-GRANT VIEW ANY DATABASE too[UserName]
+--GRANT permissions to user.
+GRANT VIEW SERVER STATE TO [UserName]
+GRANT VIEW ANY DEFINITION TO [UserName]
+GRANT VIEW ANY DATABASE TO [UserName]
 
--- Add database user for all hello databases on SQL Server Instance, this is required for connecting tooindividual databases.
--- NOTE: This command must be run anytime new databases are added tooSQL Server instances.
+-- Add database user for all the databases on SQL Server Instance, this is required for connecting to individual databases.
+-- NOTE: This command must be run anytime new databases are added to SQL Server instances.
 EXEC sp_msforeachdb N'USE [?]; CREATE USER [UserName] FOR LOGIN [UserName];'
 
 Use msdb
-GRANT SELECT too[UserName]
+GRANT SELECT To [UserName]
 Go
 
 --Give SELECT permission on all Operations Manager related Databases
 
---Replace hello Operations Manager database name with hello one in your environment
+--Replace the Operations Manager database name with the one in your environment
 Use [OperationsManager];
-GRANT SELECT too[UserName]
+GRANT SELECT To [UserName]
 GO
 
---Replace hello Operations Manager DatawareHouse database name with hello one in your environment
+--Replace the Operations Manager DatawareHouse database name with the one in your environment
 Use [OperationsManagerDW];
-GRANT SELECT too[UserName]
+GRANT SELECT To [UserName]
 GO
 
---Replace hello Operations Manager Audit Collection database name with hello one in your environment
+--Replace the Operations Manager Audit Collection database name with the one in your environment
 Use [OperationsManagerAC];
-GRANT SELECT too[UserName]
+GRANT SELECT To [UserName]
 GO
 
 --Give db_owner on [OperationsManager] DB
---Replace hello Operations Manager database name with hello one in your environment
+--Replace the Operations Manager database name with the one in your environment
 USE [OperationsManager]
 GO
 ALTER ROLE [db_owner] ADD MEMBER [UserName]
@@ -144,149 +144,149 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 ```
 
 
-### <a name="configure-hello-assessment-rule"></a>Konfigurace pravidla assessment hello
+### <a name="configure-the-assessment-rule"></a>Konfigurace pravidla hodnocení
 
-Hello System Center Operations Manager Assessment sada řešení management pack obsahuje pravidla s názvem *Microsoft System Center Advisor SCOM Assessment spustit Assessment pravidlo*. Toto pravidlo je zodpovědná za spuštění hello hodnocení. tooenable hello pravidlo a nakonfigurovat četnost hello, použijte následující postupy hello.
+Sada management pack řešení System Center Operations Manager Assessment zahrnuje na pravidlo s názvem *Microsoft System Center Advisor SCOM Assessment spustit Assessment pravidlo*. Toto pravidlo je zodpovědná za spuštění hodnocení. Následující postupy použijte, pokud chcete povolit pravidlo a nastavte četnost.
 
-Hello Microsoft System Center Advisor SCOM Assessment spustit Assessment pravidlo je ve výchozím nastavení zakázaná. hodnocení hello toorun, je nutné povolit pravidlo hello na serveru pro správu. Pomocí následujících kroků hello.
+Microsoft System Center Advisor SCOM Assessment spustit Assessment pravidlo je ve výchozím nastavení zakázaná. Chcete-li spustit vyhodnocení, je nutné povolit pravidlo na serveru pro správu. Pomocí následujících kroků.
 
-#### <a name="enable-hello-rule-for-a-specific-management-server"></a>Povolení hello pravidla pro konkrétní management server
+#### <a name="enable-the-rule-for-a-specific-management-server"></a>Povolení pravidla pro konkrétní management server
 
-1. V hello **vytváření** prostoru hello Konzola nástroje Operations Manager, vyhledejte pravidlo hello *Microsoft System Center Advisor SCOM Assessment spustit Assessment pravidlo* v hello **pravidla** podokně.
-2. Ve výsledcích hledání hello, vyberte text, které obsahuje hello textu hello *typu: Server pro správu*.
-3. Klikněte pravým tlačítkem hello pravidlo a pak klikněte na **přepsání** > **pro konkrétní objekt třídy: Server pro správu**.
-4.  V seznamu serverů pro správu k dispozici hello vyberte server pro správu hello kde hello pravidlo spustit.
-5.  Ujistěte se, že změníte hodnotu přepsání příliš**True** pro hello **povoleno** hodnota parametru.  
+1. V **vytváření** prostoru konzoly nástroje Operations Manager, vyhledejte pravidlo *Microsoft System Center Advisor SCOM Assessment spustit Assessment pravidlo* v **pravidla** podokno.
+2. Ve výsledcích hledání vyberte ten, který obsahuje text *typu: Server pro správu*.
+3. Klikněte pravým tlačítkem na pravidlo a pak klikněte na **přepsání** > **pro konkrétní objekt třídy: Server pro správu**.
+4.  V seznamu serverů pro správu k dispozici vyberte server pro správu kde se má pravidlo spustit.
+5.  Ujistěte se, že změníte hodnotu přepsání **True** pro **povoleno** hodnota parametru.  
     ![Přepište parametr](./media/log-analytics-scom-assessment/rule.png)
 
-Během tohoto okna nakonfigurujte četnost hello hello spustí pomocí dalšího postupu hello.
+Při stále v tomto okně nakonfigurujte četnost spustit pomocí dalšího postupu.
 
-#### <a name="configure-hello-run-frequency"></a>Nakonfigurovat četnost hello spustit
+#### <a name="configure-the-run-frequency"></a>Nastavte četnost, spuštění
 
-posouzení Hello je výchozí interval hello nakonfigurované toorun každých 10 080 minut (nebo sedm dní). Minimální hodnota tooa hello hodnota 1 440 minut (nebo jeden den), můžete přepsat. Hodnota Hello představuje minimální časové prodlevy hello požadované mezi následných vyhodnocení běží. toooverride hello interval, použijte následující postup hello.
+Hodnocení je nakonfigurovaná pro spuštění každých 10 080 minut (nebo sedm dní), je výchozí interval. Hodnota, která má minimální hodnotu 1 440 minut (nebo jeden den), můžete přepsat. Hodnota představuje minimální časové prodlevy požadované mezi následných vyhodnocení běží. K přepsání intervalu, použijte následující postup.
 
-1. V hello **vytváření** prostoru hello Konzola nástroje Operations Manager, vyhledejte pravidlo hello *Microsoft System Center Advisor SCOM Assessment spustit Assessment pravidlo* v hello **pravidla** podokně.
-2. Ve výsledcích hledání hello, vyberte text, které obsahuje hello textu hello *typu: Server pro správu*.
-3. Klikněte pravým tlačítkem hello pravidlo a pak klikněte na **hello přepsat pravidlo** > **pro všechny objekty třídy: Server pro správu**.
-4. Změna hello **Interval** hodnota intervalu požadovaného tooyour hodnotu parametru. V příkladu hello níže nastavena hodnota hello too1440 minut (jeden den).  
+1. V **vytváření** prostoru konzoly nástroje Operations Manager, vyhledejte pravidlo *Microsoft System Center Advisor SCOM Assessment spustit Assessment pravidlo* v **pravidla** podokno.
+2. Ve výsledcích hledání vyberte ten, který obsahuje text *typu: Server pro správu*.
+3. Klikněte pravým tlačítkem na pravidlo a pak klikněte na **přepsat pravidlo** > **pro všechny objekty třídy: Server pro správu**.
+4. Změna **Interval** hodnota parametru hodnotu požadovaného intervalu pro. V následujícím příkladu je hodnota nastavena na 1 440 minut (jeden den).  
     ![Parametr interval](./media/log-analytics-scom-assessment/interval.png)  
-    Pokud tooless než 1 440 minut je nastavena hodnota hello, hello pravidlo spouští v intervalu jeden den. V tomto příkladu hello pravidlo ignoruje hodnota intervalu hello a spustí frekvencí jeden den.
+    Pokud je hodnota nastavena na méně než 1 440 minut, se pravidlo spustí v intervalu jeden den. V tomto příkladu pravidlo ignoruje hodnota intervalu a spustí frekvencí jeden den.
 
 
 ## <a name="understanding-how-recommendations-are-prioritized"></a>Pochopení, jak budou doporučení mít vyšší prioritu
 
-Každé doporučení je uveden vyvážení hodnotu, která identifikuje hello relativní důležitost hello doporučení. Jsou zobrazeny pouze hello 10 nejdůležitějších doporučení.
+Každé doporučení je zadána hodnota vyvážení, která určuje relativní důležitost doporučení. Jsou zobrazeny pouze 10 nejdůležitějších doporučení.
 
 ### <a name="how-weights-are-calculated"></a>Jak jsou vypočítávány váhu
 
 Váhy jsou agregovaných hodnot založena na tři klíčové faktory:
 
-- Hello *pravděpodobnosti* způsobí, že problém identifikovat problémy. Vyšší pravděpodobnost znamená zároveň tooa větší celkové skóre pro hello doporučení.
-- Hello *dopad* hello problému na vaší organizaci, pokud ji způsobovat problémy. Vyšší dopad znamená zároveň tooa větší celkové skóre pro hello doporučení.
-- Hello *úsilí* požadované tooimplement hello doporučení. Vyšší úsilí znamená zároveň tooa menší celkové skóre pro hello doporučení.
+- *Pravděpodobnosti* způsobí, že problém identifikovat problémy. Vyšší pravděpodobnost rovná větší celkové skóre pro doporučení.
+- *Dopad* problému na vaší organizaci, pokud ji způsobovat problémy. Vyšší dopad rovná větší celkové skóre pro doporučení.
+- *Úsilí* potřebnou k implementaci doporučení. Vyšší úsilí rovná menší celkové skóre pro doporučení.
 
-Hello vážení v případě každé doporučení je vyjádřený jako procentní podíl celkové skóre hello k dispozici pro každou oblast fokus. Například pokud doporučení v hello dostupnost a provozní kontinuita oblastí zájmu je skóre % 5, implementace tímto doporučením zvyšuje celkové skóre podle 5 % dostupnost a provozní kontinuita.
+Vyvážení pro každé doporučení je vyjádřený jako procentní podíl celkové skóre, které jsou k dispozici pro každou oblast fokus. Například pokud doporučení v oblasti fokus dostupnost a provozní kontinuita je skóre % 5, implementace tímto doporučením zvyšuje celkové skóre podle 5 % dostupnost a provozní kontinuita.
 
 ### <a name="focus-areas"></a>Konkrétní oblasti
 
 **Dostupnost a provozní kontinuita** – v tomto poli fokus zobrazí doporučení pro dostupnost služeb, odolnost vaší infrastruktury a obchodní ochrany.
 
-**Výkon a škálovatelnost** – v tomto poli fokus zobrazí doporučení toohelp vaší organizace IT infrastruktury růst, zajistěte, aby vaše IT prostředí splňuje aktuální požadavky na výkon a je možné toorespond toochanging musí se infrastruktura.
+**Výkon a škálovatelnost** – v tomto poli fokus zobrazí doporučení, která pomůžou vaší organizace IT infrastruktury růst, zajistěte, aby vaše IT prostředí splňuje aktuální požadavky na výkon a schopné reagovat na měnící se infrastruktury potřebuje.
 
-**Nasazení, upgrade a migrace** – upgradu toohelp doporučení v tomto poli fokus zobrazí, migrace a nasazení systému SQL Server tooyour stávající infrastruktury.
+**Nasazení, upgrade a migrace** – v tomto poli fokus zobrazí doporučení, která vám pomohou upgradovat, migrace a nasazení systému SQL Server k vaší stávající infrastruktury.
 
-**Operace a monitorování** – v tomto poli fokus zobrazí doporučení toohelp zjednodušit vaše IT oddělení, implementovat preventivní údržby a maximalizovat výkon.
+**Operace a monitorování** – v tomto poli fokus zobrazí doporučení, která pomůžou zjednodušení operací IT a implementaci preventivní údržby, maximalizovat výkon.
 
-### <a name="should-you-aim-tooscore-100-in-every-focus-area"></a>By odpovídajícím způsobem tooscore 100 % v každé oblasti fokus?
+### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Mají usilovat o stanovení skóre 100 % v každé oblasti fokus?
 
-Ne nutně. Hello doporučení jsou založená na prostředí, které nebyly získány prostřednictvím Microsoft technici napříč tisíce návštěvy zákazníka a hello znalostní báze. Žádné serverové infrastruktury jsou však stejné hello a konkrétní doporučení může být vyšší nebo nižší relevantní tooyou. Například může být několik doporučení zabezpečení méně důležité, pokud vaše virtuální počítače nejsou zveřejněné toohello Internetu. Některá doporučení, jaké dostupnosti může být méně důležité pro služby, které poskytují kolekce s nízkou prioritou ad hoc dat a vytváření sestav. Problémy, které jsou důležité tooa vyspělá firmy může být méně důležité tooa spuštění. Možná chcete tooidentify, které konkrétní oblasti jsou vašich priorit a podívejte se na tom, jak se vaše skóre časem změnit.
+Ne nutně. Doporučení jsou založené na prostředí, které nebyly získány prostřednictvím Microsoft technici napříč tisíce návštěvy zákazníka a znalostní báze. Ale žádné serverové infrastruktury jsou stejné, a konkrétní doporučení může být vyšší nebo nižší relevantní pro vás. Například může být několik doporučení zabezpečení méně důležité, pokud vaše virtuální počítače nejsou vystaveny v Internetu. Některá doporučení, jaké dostupnosti může být méně důležité pro služby, které poskytují kolekce s nízkou prioritou ad hoc dat a vytváření sestav. Problémy, které jsou důležité, abyste vyspělých firmy může být méně důležité Startup. Můžete určit, které konkrétní oblasti mají vašich priorit a podívejte se na tom, jak se vaše skóre časem změnit.
 
-Každé doporučení obsahuje pokyny o tom, proč je důležité. Pomocí této tooevaluate pokyny, zda implementace hello doporučení je vhodné pro vás, daná hello povaha IT služeb a hello obchodních potřeb vaší organizace.
+Každé doporučení obsahuje pokyny o tom, proč je důležité. Tyto pokyny slouží k vyhodnocení, zda implementace doporučení je vhodné pro vás, daná povaze vašich IT služeb a obchodním potřebám vaší organizace.
 
 ## <a name="use-assessment-focus-area-recommendations"></a>Použít assessment fokus oblasti doporučení
 
-Než v OMS můžete použít řešení pro vyhodnocení, musíte mít nainstalován řešení hello. tooread Další informace o instalaci řešení, najdete v části [řešení přidat analýzy protokolů z hello řešení Galerie](log-analytics-add-solutions.md). Po instalaci, zobrazí se souhrn hello doporučení pomocí dlaždice System Center Operations Manager Assessment hello na stránce Přehled hello v OMS.
+Než v OMS můžete použít řešení pro vyhodnocení, musíte mít nainstalován řešení. Další informace o instalaci řešení, najdete v části [řešení přidat analýzy protokolů z Galerie řešení](log-analytics-add-solutions.md). Po instalaci, zobrazí se souhrn doporučení pomocí System Center Operations Manager Assessment dlaždice na stránce Přehled v OMS.
 
-Hello zobrazení souhrnu vyhodnocování dodržování předpisů pro infrastrukturu a potom přejít k podrobnostem doporučení.
+Zobrazte vyhodnocování souhrnné dodržování předpisů pro infrastrukturu a potom přejít k podrobnostem doporučení.
 
-### <a name="tooview-recommendations-for-a-focus-area-and-take-corrective-action"></a>tooview doporučení pro výběr oblasti a proveďte opravnou akci
+### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Proveďte opravné akce a zobrazit doporučení pro oblastí zájmu
 
-1. Na hello **přehled** klikněte na tlačítko hello **System Center Operations Manager Assessment** dlaždici.
-2. Na hello **System Center Operations Manager Assessment** zkontrolujte hello souhrnné informace v jednom z hello fokus oblast okna a pak klikněte na jednu tooview doporučení pro tuto oblast fokus.
-3. Na žádném z hello fokus oblast stránky můžete zobrazit hello nastavovat doporučení, která pro vaše prostředí. Klikněte na tlačítko doporučení v části **vliv na objekty** tooview podrobnosti, proč se provádí doporučení hello.  
+1. Na **přehled** klikněte na tlačítko **System Center Operations Manager Assessment** dlaždici.
+2. Na **System Center Operations Manager Assessment** zkontrolujte souhrnné informace v jednom z okna oblasti fokus a pak klikněte na jednu zobrazíte doporučení pro tuto oblast fokus.
+3. Na všech stránkách oblasti fokus můžete zobrazit seřazený podle priority doporučení, která se pro vaše prostředí. Klikněte na tlačítko doporučení v části **vliv na objekty** Chcete-li zobrazit podrobnosti, proč se provádí doporučení.  
     ![oblastí zájmu](./media/log-analytics-scom-assessment/focus-area.png)
-4. Můžete provést nápravné akce navržený v **doporučované akce**. Při hello položky vyřeší, bude záznam novější vyhodnocování které doporučené akce provedené a zvýší se vaše skóre dodržování předpisů. Opravené položky se zobrazí jako **předán objekty**.
+4. Můžete provést nápravné akce navržený v **doporučované akce**. Když položka vyřeší, bude záznam novější vyhodnocování které doporučené akce provedené a zvýší se vaše skóre dodržování předpisů. Opravené položky se zobrazí jako **předán objekty**.
 
 ## <a name="ignore-recommendations"></a>Ignorovat doporučení
 
-Pokud máte doporučení, které chcete tooignore, můžete vytvořit textový soubor, který používá OMS tooprevent doporučení ze storu ve výsledky hodnocení.
+Pokud máte doporučení, které chcete ignorovat, můžete vytvořit textový soubor, který OMS používá k ochraně před doporučení ze storu ve výsledky hodnocení.
 
 [!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
-### <a name="tooidentify-recommendations-that-you-want-tooignore"></a>tooidentify doporučení, které chcete tooignore
+### <a name="to-identify-recommendations-that-you-want-to-ignore"></a>K identifikaci doporučení, které chcete ignorovat
 
-1. Přihlaste se tooyour prostoru a otevřete vyhledávání protokolu. Použití hello následující dotaz toolist doporučení, které selhaly pro počítače ve vašem prostředí.
+1. Přihlaste se do pracovního prostoru a otevřete vyhledávání protokolu. Pro počítače ve vašem prostředí použijte následující dotaz, který seznam doporučení, které selhaly.
 
     ```
     Type=SCOMAssessmentRecommendationRecommendationResult=Failed | select  Computer, RecommendationId, Recommendation | sort  Computer
     ```
 
-    Zde je snímek obrazovky znázorňující hello protokolu vyhledávací dotaz:  
+    Zde je snímek obrazovky zobrazující protokolu vyhledávací dotaz:  
     ![prohledávání protokolů](./media/log-analytics-scom-assessment/scom-log-search.png)
 
-2. Zvolte doporučení, které chcete tooignore. Hodnoty hello budete používat pro RecommendationId v dalším postupu hello.
+2. Zvolte doporučení, které chcete ignorovat. Hodnoty pro RecommendationId budete používat v dalším postupu.
 
-### <a name="toocreate-and-use-an-ignorerecommendationstxt-text-file"></a>toocreate a použít textový soubor s IgnoreRecommendations.txt
+### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Vytváření a používání textový soubor s IgnoreRecommendations.txt
 
 1. Vytvořte soubor s názvem IgnoreRecommendations.txt.
-2. Vložit nebo zadejte každou RecommendationId pro jednotlivá doporučení má tooignore OMS na samostatném řádku a potom uložte a zavřete soubor hello.
-3. Uložte soubor hello do následující složky na každém počítači, kam chcete OMS tooignore doporučení hello.
-4. Na serveru pro správu nástroje Operations Manager hello - *SystemDrive*: \Program Files\Microsoft System Center 2012 R2\Operations Manager\Server.
+2. Vložit nebo zadejte každou RecommendationId pro jednotlivá doporučení, které chcete OMS ignorovat na samostatném řádku a potom uložte a zavřete soubor.
+3. Uložte soubor v následující složce na každém počítači, kam chcete OMS ignorovat doporučení.
+4. Na serveru pro správu nástroje Operations Manager - *SystemDrive*: \Program Files\Microsoft System Center 2012 R2\Operations Manager\Server.
 
-### <a name="tooverify-that-recommendations-are-ignored"></a>tooverify, že se ignorovat doporučení
+### <a name="to-verify-that-recommendations-are-ignored"></a>Chcete-li ověřit, že se ignorovat doporučení
 
-1. Po spuštění hello další naplánované vyhodnocení ve výchozím nastavení každých sedm dní, hello zadané doporučení jsou označeny ignorovaná a nezobrazí se na řídicí panel assessment hello.
-2. Hello následující dotazy toolist hledání protokolů můžete použít všechny hello ignorovat doporučení.
+1. Po na další naplánované vyhodnocení běží ve výchozím nastavení každých sedm dní, zadaný doporučení jsou označeny ignorovaná a nezobrazí se na řídicím panelu hodnocení.
+2. Následující dotazy hledání protokolů můžete použít k zobrazení seznamu všech ignorováno doporučení.
 
     ```
     Type=SCOMAssessmentRecommendationRecommendationResult=Ignored | select  Computer, RecommendationId, Recommendation | sort  Computer
     ```
 
-3. Pokud se později rozhodnete, že chcete toosee ignorovat doporučení, odeberte všechny soubory IgnoreRecommendations.txt nebo RecommendationIDs můžete odebrat z nich.
+3. Pokud se později rozhodnete, zda chcete zobrazit ignorováno doporučení, odeberte všechny soubory IgnoreRecommendations.txt nebo RecommendationIDs můžete odebrat z nich.
 
 ## <a name="system-center-operations-manager-assessment-solution-faq"></a>Řešení System Center Operations Manager Assessment – nejčastější dotazy
 
-*Po přidání hello assessment řešení toomy pracovním prostorem OMS. Ale hello doporučení se nezobrazí. Proč ne?* Po přidání hello řešení, použijte následující postup zobrazení hello doporučení na řídicím panelu OMS hello hello.  
+*Po přidání řešení pro vyhodnocení do části pracovní prostor OMS. Ale doporučení se nezobrazí. Proč ne?* Po přidání řešení, použijte následující postup zobrazení doporučení na řídicím panelu OMS.  
 
-- [Nastavit účet Spustit jako hello pro System Center Operations Manager hodnocení](#operations-manager-run-as-accounts-for-oms)  
-- [Konfigurace pravidla System Center Operations Manager Assessment hello](#configure-the-assessment-rule)
+- [Nastavit účet Spustit jako pro System Center Operations Manager hodnocení](#operations-manager-run-as-accounts-for-oms)  
+- [Konfigurace pravidla System Center Operations Manager hodnocení](#configure-the-assessment-rule)
 
 
-*Je k dispozici způsob tooconfigure jak často hello assessment běží?* Ano. V tématu [hello konfigurace spustit frekvence](#configure-the-run-frequency).
+*Existuje způsob, jak nakonfigurovat, jak často se hodnocení spouštět?* Ano. V tématu [nakonfigurovat spuštění četnost](#configure-the-run-frequency).
 
-*Pokud po byly přidány řešení System Center Operations Manager Assessment hello je zjistit jiný server, bude ho vyhodnocena?* Ano, po zjišťování, se bude posouzeno chvíle – ve výchozím nastavení, každých sedm dní.
+*Pokud je zjištěno jiný server, poté, co byly přidány řešení System Center Operations Manager hodnocení, bude ho vyhodnocena?* Ano, po zjišťování, se bude posouzeno chvíle – ve výchozím nastavení, každých sedm dní.
 
-*Jaké je jméno hello hello procesu, který hello shromažďování dat?* AdvisorAssessment.exe
+*Jaký je název procesu, který nemá shromažďování dat?* AdvisorAssessment.exe
 
-*Kde hello AdvisorAssessment.exe proces spustit?* AdvisorAssessment.exe běží pod hello stavu serveru pro správu hello podporou hello assessment pravidlo. Pomocí tohoto procesu, zjišťování celé prostředí je dosaženo pomocí vzdálených dat kolekce.
+*Kde proces AdvisorAssessment.exe spustit?* AdvisorAssessment.exe kompatibilní serveru pro správu služby Health Service se podporou pravidlo hodnocení. Pomocí tohoto procesu, zjišťování celé prostředí je dosaženo pomocí vzdálených dat kolekce.
 
-*Jak dlouho trvá pro shromažďování dat?* Shromažďování dat na serveru hello trvá asi jednu hodinu. Může trvat déle v prostředích, která mají mnoho instancí nástroje Operations Manager nebo databáze.
+*Jak dlouho trvá pro shromažďování dat?* Shromažďování dat na serveru trvá asi jednu hodinu. Může trvat déle v prostředích, která mají mnoho instancí nástroje Operations Manager nebo databáze.
 
-*Co když nastavit interval hello hello assessment tooless než 1 440 minut?*  hello assessment je předem nakonfigurovaný toorun maximálně jednou za den. Pokud přepíšete hello interval hodnota tooa hodnotu menší než 1 440 minut, pak hello assessment používá jako hodnota intervalu hello 1 440 minut.
+*Co když lze nastavit interval hodnocení na méně než 1 440 minut?* Hodnocení je předem nakonfigurovaný pro spouštění na maximálně jednou za den. Pokud přepíšete hodnota intervalu na hodnotu menší než 1 440 minut, pak hodnocení používá jako hodnota intervalu 1 440 minut.
 
-*Jak tooknow, pokud jsou předběžné selhání?* Pokud spustili hello hodnocení a se nezobrazí výsledky, je pravděpodobné, že některé hello předpoklady pro vyhodnocení hello se nezdařilo. Můžete provést dotazy: `Type=Operation Solution=SCOMAssessment` a `Type=SCOMAssessmentRecommendation FocusArea=Prerequisites` v hello toosee vyhledávání protokolu se nezdařilo předpoklady.
+*Jak vědět, pokud se předběžné selhání?* Pokud spustili hodnocení a se nezobrazí výsledky, je pravděpodobné, že některé předpoklady pro hodnocení se nezdařilo. Můžete provést dotazy: `Type=Operation Solution=SCOMAssessment` a `Type=SCOMAssessmentRecommendation FocusArea=Prerequisites` v protokolu hledat neúspěšné požadavky.
 
-*Došlo `Failed tooconnect toohello SQL Instance (….).` zpráva předběžné selhání. Co je hello problém?* AdvisorAssessment.exe hello proces, který shromažďuje data, je spuštěn pod hello HealthService hello serveru pro správu. V rámci vyhodnocování hello se pokusí hello proces tooconnect toohello SQL Server, kde se nachází databáze nástroje Operations Manager hello. Této chybě může dojít, když pravidla brány firewall zablokovat připojení hello, toohello instance systému SQL Server.
+*Došlo `Failed to connect to the SQL Instance (….).` zpráva předběžné selhání. Co je problém?* AdvisorAssessment.exe, proces, který shromažďuje data, se spustí v serveru pro správu služby Health Service. V rámci hodnocení se proces pokusí připojit k systému SQL Server, kde databáze nástroje Operations Manager nachází. Této chybě může dojít, když pravidla brány firewall zablokovat připojení k instanci systému SQL Server.
 
-*Jaký typ dat shromažďovaných?*  se shromažďují hello následující typy dat: - dat služby WMI – registru data – data protokolu událostí – Operations Manager data prostřednictvím prostředí Windows PowerShell, dotazy SQL a soubor informace kolekce.
+*Jaký typ dat shromažďovaných?* Se shromažďují následující typy dat: - dat služby WMI – registru data – data protokolu událostí – Operations Manager data prostřednictvím prostředí Windows PowerShell, dotazy SQL a soubor informace kolekce.
 
-*Proč musím tooconfigure účet Spustit jako?* Pro server Operations Manager se spouštějí různé dotazy SQL. Aby k nim toorun, musíte použít účet Spustit jako s potřebnými oprávněními. Kromě toho jsou přihlašovací údaje místního správce požadované tooquery rozhraní WMI.
+*Proč je nutné nakonfigurovat účet Spustit jako?* Pro server Operations Manager se spouštějí různé dotazy SQL. Aby mohly spustit musíte použít účet Spustit jako s potřebnými oprávněními. Kromě toho je potřeba dotaz WMI přihlašovací údaje místního správce.
 
-*Proč zobrazit pouze prvních 10 doporučení hello?* Namísto udělení vyčerpávající, čtenáře seznam úloh, doporučujeme můžete soustředit na první adresování hello nastavovat doporučení. Po jejich řešení, bude k dispozici další doporučení. Pokud dáváte přednost toosee hello podrobný seznam, můžete zobrazit všechna doporučení pomocí hledání protokolů.
+*Proč zobrazit pouze prvních 10 doporučení?* Namísto udělení vyčerpávající, čtenáře seznam úloh, doporučujeme, byste se zaměřit na první adresování seřazený podle priority doporučení. Po jejich řešení, bude k dispozici další doporučení. Pokud ji chcete zobrazit podrobný seznam, můžete zobrazit všechna doporučení pomocí hledání protokolů.
 
-*Existuje způsob, jak tooignore doporučení?* Ano, najdete v části hello [ignorovat doporučení](#Ignore-recommendations).
+*Existuje způsob, jak ignorovat doporučení?* Ano, najdete v článku [ignorovat doporučení](#Ignore-recommendations).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [V protokolech Hledat](log-analytics-log-searches.md) tooview podrobné doporučení a údaje o System Center Operations Manager hodnocení.
+- [V protokolech Hledat](log-analytics-log-searches.md) zobrazíte doporučení a podrobné údaje o System Center Operations Manager hodnocení.

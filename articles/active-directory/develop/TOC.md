@@ -26,7 +26,7 @@
 ### [Přehled](active-directory-authentication-scenarios.md#web-application-to-web-api)
 ### [ASP.NET](active-directory-devquickstarts-webapi-dotnet.md)
 ### [NodeJS](active-directory-devquickstarts-webapi-nodejs.md)
-## TooService služby
+## Komunikace mezi službami
 ### [Přehled](active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api)
 ### [.NET](active-directory-code-samples.md#server-or-daemon-application-to-web-api)
 ### [Přihlašovací údaje pro klienta OAuth 2.0](active-directory-protocols-oauth-service-to-service.md)
@@ -59,7 +59,7 @@
 ### [Začínáme s připojenými službami sady Visual Studio](vs-active-directory-dotnet-getting-started.md)
 ### [Chyba během detekce ověřování](vs-active-directory-error.md)
 ### [Začínáme s WebApi](vs-active-directory-webapi-getting-started.md)
-### [Co se stalo toomy webové rozhraní API projektu](vs-active-directory-webapi-what-happened.md)
+### [Co se stalo s mým projektem webového rozhraní API](vs-active-directory-webapi-what-happened.md)
 ## [Windows Server ADFS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/overview/ad-fs-scenarios-for-developers)
 # Referenční informace
 ## [Ukázky kódu](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
@@ -69,7 +69,7 @@
 ## [Protokoly pro ověřování](active-directory-authentication-protocols.md)
 ### [OpenID Connect](active-directory-protocols-openid-connect-code.md)
 ### [Oauth](active-directory-protocols-oauth-code.md)
-### [Volání tooservice služby](active-directory-protocols-oauth-service-to-service.md)
+### [Volání mezi službami](active-directory-protocols-oauth-service-to-service.md)
 ### [Tok On-Behalf-Of](active-directory-protocols-oauth-on-behalf-of.md)
 ### [Podporované typy deklarací identity a tokenů](active-directory-token-and-claims.md)
 ### [Výměna podpisových klíčů](active-directory-signing-key-rollover.md)

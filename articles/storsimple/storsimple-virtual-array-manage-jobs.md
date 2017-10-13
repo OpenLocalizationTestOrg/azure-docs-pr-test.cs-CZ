@@ -1,6 +1,6 @@
 ---
-title: "aaaView a spravovat úlohy pole virtuální zařízení StorSimple | Microsoft Docs"
-description: "Popisuje stránku hello Správce zařízení StorSimple služby úlohy a jak toouse ho tootrack poslední a aktuální úlohy pro hello pole virtuální zařízení StorSimple."
+title: "Zobrazit a spravovat úlohy pole virtuální zařízení StorSimple | Microsoft Docs"
+description: "Popisuje stránku úlohy služby StorSimple Manager zařízení a způsobu jeho použití ke sledování poslední a aktuální úlohy pro pole virtuální zařízení StorSimple."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,54 +14,54 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
-ms.openlocfilehash: cf3f3e7bcdfff0ff2328b7354db2482286800e93
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3fd1c262a8ce94d8e98f2b066a8028d974b15b1d
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="use-hello-storsimple-device-manager-service-tooview-jobs-for-hello-storsimple-virtual-array"></a>Pomocí hello Správce zařízení StorSimple služby tooview úloh pro hello pole virtuální zařízení StorSimple
+# <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>Zobrazit úlohy pro pole virtuální zařízení StorSimple pomocí služby StorSimple Manager zařízení
 ## <a name="overview"></a>Přehled
-Hello **úlohy** okno poskytuje jednu centrální portál pro zobrazování a správu úloh, které jsou spuštěny na virtuální pole, které jsou připojené tooyour služby StorSimple Manager zařízení. Můžete zobrazit spuštěné, dokončené a k selhání úlohy pro více virtuální zařízení. Výsledky se zobrazí v tabulkovém formátu.
+**Úlohy** okno poskytuje jednu centrální portál pro zobrazování a správu úloh, které jsou spuštěny na virtuální pole, které jsou připojené k vaší službě StorSimple Manager zařízení. Můžete zobrazit spuštěné, dokončené a k selhání úlohy pro více virtuální zařízení. Výsledky se zobrazí v tabulkovém formátu.
 
 ![Okno úlohy](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
 
-Můžete rychle najít hello úlohy, které zajímá pomocí filtrování pole, jako:
+Můžete rychle najít úlohy, které zajímá pomocí filtrování na pole, jako například:
 
-* **Čas rozsah** – úloh může být filtrovaná podle hello rozsah data a času.
-* **Zařízení** – úloh se spouští na konkrétní zařízení, které jsou připojené tooyour službě. Hello filtrované úlohy jsou pak v tabulce podle hello následující atributy:
+* **Čas rozsah** – úlohy je možné filtrovat podle rozsahu datum a čas.
+* **Zařízení** – úloh se spouští na konkrétní zařízení připojena k službě. Filtrované úlohy jsou pak poskytovalo na základě následujících atributů:
   
-  * **Název** – může být název úlohy hello **všechny**, **zálohování**, **klon**, **převzetí služeb při selhání**, **stahování aktualizací** , nebo **nainstalovat aktualizace**.
+  * **Název** – název úlohy může být **všechny**, **zálohování**, **klon**, **převzetí služeb při selhání**, **stahování aktualizací**, nebo **nainstalovat aktualizace**.
   * **Stav** – úloh může být **všechny**, **v průběhu**, **úspěšné**, nebo **se nezdařilo**, nebo **zrušeno**.
-  * **Entity** – hello úloh může být přidružen svazek, sdílená složka nebo zařízení.
-  * **Zařízení** – hello název hello zařízení, na které hello úloha byla spuštěna.
-  * **Bylo zahájeno** – hello čas, kdy byla spuštěna úloha hello.
-  * **Doba trvání** – hello doba na která hello úloha byla spuštěna.
+  * **Entity** – úloh může být přidružen svazek, sdílená složka nebo zařízení.
+  * **Zařízení** – název zařízení, na kterém byla úloha spuštěna.
+  * **Bylo zahájeno** – čas zahájení úlohy.
+  * **Doba trvání** – dobu trvání pro na úloha byla spuštěna.
 * **Stav** – můžete vyhledat všechny, se nezdařila, dokončené nebo spuštěné úlohy.
-* **Typ úlohy** – typ úlohy hello být vše, zálohování, obnovení, převzetí služeb při selhání, stažení aktualizací nebo instalace aktualizací.
+* **Typ úlohy** – typ úlohy může být vše, zálohování, obnovení, převzetí služeb při selhání, stáhnout aktualizace nebo instalace aktualizací.
 
-Hello seznam úloh se aktualizují každých 30 sekund.
+Seznam úloh se aktualizují každých 30 sekund.
 
 ## <a name="view-job-details"></a>Zobrazení podrobností o úloze
-Proveďte následující kroky tooview hello podrobnosti libovolné úlohy hello.
+Proveďte následující kroky, chcete-li zobrazit podrobnosti libovolné úlohy.
 
-#### <a name="tooview-job-details"></a>Podrobnosti úlohy tooview
-1. Na hello **úlohy** okno, zobrazení úloh hello zajímá spuštěním dotazu s odpovídající filtry. Můžete vyhledat dokončené nebo spuštěné úlohy.
-2. Vyberte úlohu z hello tabulkového seznamu úloh.
+#### <a name="to-view-job-details"></a>Chcete-li zobrazit podrobnosti úlohy
+1. Na **úlohy** okně zobrazení úloh se zajímá spuštěním dotazu s příslušné filtry. Můžete vyhledat dokončené nebo spuštěné úlohy.
+2. Vyberte úlohu z tabulkového seznamu úloh.
    
     ![Okno úlohy](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
-3. V dolní části hello hello stránky, klikněte na tlačítko **podrobnosti**.
-4. V hello **podrobnosti** dialogové okno, můžete zobrazit stav, podrobnosti a statistiku časových údajů. Hello následující obrázek ukazuje příklad hello **podrobnosti úlohy zálohování** dialogové okno.
+3. V dolní části stránky klikněte na tlačítko **podrobnosti**.
+4. V **podrobnosti** dialogové okno, můžete zobrazit stav, podrobnosti a statistiku časových údajů. Následující obrázek ukazuje příklad **podrobnosti úlohy zálohování** dialogové okno.
    
     ![Podrobnosti úlohy](./media/storsimple-virtual-array-manage-jobs/ova-jobs-details.png)
 
-#### <a name="job-failures-when-hello-virtual-machine-is-paused-in-hello-hypervisor"></a>Selhání úlohy při hello virtuálního počítače je pozastaven v hypervisoru hello
-Když je úloha v průběhu na pole virtuální zařízení StorSimple a hello zařízení (virtuálního počítače v hypervisoru zřídit) je pozastavena pro více než 15 minut, úloha hello selže. To je z důvodu tooyour pole virtuální zařízení StorSimple čas nejsou synchronizovány s časem hello Microsoft Azure. 
+#### <a name="job-failures-when-the-virtual-machine-is-paused-in-the-hypervisor"></a>Selhání úlohy při virtuálního počítače je pozastaven v hypervisoru
+Když je úloha v průběhu na pole virtuální zařízení StorSimple a zařízení (virtuálního počítače v hypervisoru zřídit) je pozastavena pro více než 15 minut, úloha selže. To je z důvodu doby pole virtuální zařízení StorSimple nejsou synchronizovány s časem Microsoft Azure. 
 
-Zobrazí se hello následující chybě: "váš čas zařízení není synchronizován s časem hello Microsoft Azure ve víc než 15 minut. Ujistěte se, že hello hypervisoru a hello zařízení časy jsou synchronizovány se server NTP. Ověřte, že neexistují žádné problémy s připojením. problémy s připojením tootroubleshoot, dat spuštění diagnostických testů z hello místního webového uživatelského rozhraní vašeho virtuální zařízení."
+Zobrazí se následující chyba: "váš čas zařízení není synchronizován s časem Microsoft Azure ve víc než 15 minut. Zajistěte, aby hypervisoru a zařízení, které jsou synchronizovány časy se server NTP. Ověřte, že neexistují žádné problémy s připojením. Chcete-li vyřešit problémy s připojením, spustit diagnostické testy z místního webového uživatelského rozhraní vašeho virtuální zařízení."
 
-Selhání použít toobackup, obnovení, aktualizace až po převzetí služeb při selhání úlohy. Pokud virtuální počítač je zajištěna v Hyper-V, počítač hello nakonec synchronizuje čas s vaší hypervisoru. Jakmile k tomu dojde, můžete ji znovu úlohu.
+Tyto chyby se vztahují na úlohy zálohování, obnovení, aktualizace a převzetí služeb při selhání. Pokud zřízení virtuálního počítače technologie Hyper-V na počítač nakonec synchronizuje čas s vaší hypervisoru. Jakmile k tomu dojde, můžete ji znovu úlohu.
 
 ## <a name="next-steps"></a>Další kroky
-[Zjistěte, jak toouse hello místního webového uživatelského rozhraní tooadminister pole virtuální zařízení StorSimple](storsimple-ova-web-ui-admin.md).
+[Další informace o použití místního webového uživatelského rozhraní pro správu pole virtuální zařízení StorSimple](storsimple-ova-web-ui-admin.md).
 

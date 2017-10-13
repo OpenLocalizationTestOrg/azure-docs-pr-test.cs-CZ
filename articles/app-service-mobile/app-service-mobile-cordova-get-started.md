@@ -1,6 +1,6 @@
 ---
-title: aaaCreate aplikace Cordova v Azure App Service Mobile Apps | Microsoft Docs
-description: "Postupujte podle tohoto kurzu tooget začít s pomocí back-EndY mobilní aplikace Azure pro vývoj pro Apache Cordova"
+title: "Vytvoření aplikace Cordova v Azure App Service Mobile Apps | Dokumentace Microsoftu"
+description: "V tomto kurzu začnete používat back-endy mobilních aplikací Azure pro vývoj na platformě Apache Cordova."
 services: app-service\mobile
 documentationcenter: javascript
 author: ggailey777
@@ -16,46 +16,46 @@ ms.devlang: javascript
 ms.topic: hero-article
 ms.date: 07/07/2017
 ms.author: glenga
-ms.openlocfilehash: 4981cbc0686c15230019ac9f30495f30cbf2c791
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: b620465cdc3cfa04933dc6e70163fc32aa9a839b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-apache-cordova-app"></a>Vytvoření aplikace na platformě Apache Cordova
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
 ## <a name="overview"></a>Přehled
-Tento kurz ukazuje, jak tooadd back-end cloudové služby mobilní aplikace Apache Cordova tooan pomocí back-end mobilní aplikace Azure.  Vytvoříte jak nový back-end mobilní aplikace, tak jednoduchou aplikaci Apache Cordova, která bude představovat *seznam úkolů* a ukládat data do Azure.
+V tomto kurzu se dozvíte, jak přidat cloudovou back-end službu k mobilní aplikaci Apache Cordova pomocí back-endu mobilní aplikace Azure.  Vytvoříte jak nový back-end mobilní aplikace, tak jednoduchou aplikaci Apache Cordova, která bude představovat *seznam úkolů* a ukládat data do Azure.
 
-Dokončení tohoto kurzu je předpokladem pro Apache Cordova o všech dalších kurzech k používání funkce Mobile Apps hello v Azure App Service.
+Dokončení tohoto kurzu se předpokládá ve všech dalších kurzech k používání funkce Mobile Apps v Azure App Service pro Apache Cordova.
 
 ## <a name="prerequisites"></a>Požadavky
-toocomplete tohoto kurzu budete potřebovat hello následující požadavky:
+Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
 * Počítač se sadou [Visual Studio Community 2017] nebo novější
 * [Visual Studio Tools for Apache Cordova]
 * [Aktivní účet Azure](https://azure.microsoft.com/pricing/free-trial/)
 
-Také můžete vynechat Visual Studio a používat přímo hello Apache Cordova příkazového řádku.  Pomocí příkazového řádku hello je užitečné, když dokončení kurzu hello na počítači Mac.  Kompilování klientských aplikací Apache Cordova pomocí příkazového řádku hello není předmětem tohoto kurzu.
+Visual Studio je možné obejít a používat přímo příkazový řádek platformy Apache Cordova.  Použití příkazového řádku je užitečné v případě, že kurz budete absolvovat na počítači Mac.  Tento kurz se nezabývá kompilací klientských aplikací Apache Cordova pomocí příkazového řádku.
 
 ## <a name="create-an-azure-mobile-app-backend"></a>Vytvoření back-endu mobilní aplikace Azure
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
 [Podívejte se na video zobrazující podobný postup.](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-1-Create-an-Azure-Mobile-App)
 
-## <a name="configure-hello-server-project"></a>Konfigurace projektu server hello
+## <a name="configure-the-server-project"></a>Konfigurace serverového projektu
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="download-and-run-hello-apache-cordova-app"></a>Stažení a spuštění aplikace Apache Cordova hello
+## <a name="download-and-run-the-apache-cordova-app"></a>Stažení a spuštění aplikace Apache Cordova
 [!INCLUDE [app-service-mobile-cordova-run-app](../../includes/app-service-mobile-cordova-run-app.md)]
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste dokončili tento úvodní kurz, přesunete na tooone hello následující kurzy:
+Teď když jste dokončili tento kurz, jak rychle začít, přejděte k jednomu z následujících kurzů: 
 
-* [Přidání dat do offline režimu](app-service-mobile-cordova-get-started-offline-data.md) tooyour aplikace Apache Cordova.
-* [Přidání ověřování](app-service-mobile-cordova-get-started-users.md) tooyour aplikace Apache Cordova.
-* [Přidat nabízená oznámení](app-service-mobile-cordova-get-started-push.md) tooyour aplikace Apache Cordova.
+* [Přidání offline dat](app-service-mobile-cordova-get-started-offline-data.md) do aplikace Apache Cordova
+* [Přidání ověřování](app-service-mobile-cordova-get-started-users.md) do aplikace Apache Cordova
+* [Přidání nabízených oznámení](app-service-mobile-cordova-get-started-push.md) do aplikace Apache Cordova
 
 Další informace o klíčových konceptech Azure App Service
 
@@ -63,7 +63,7 @@ Další informace o klíčových konceptech Azure App Service
 * [Ověřování]
 * [Nabízená oznámení]
 
-Zjistěte, jak toouse hello sady SDK.
+Zjistěte, jak používat sady SDK.
 
 * [Apache Cordova SDK]
 * [ASP.NET Server SDK]

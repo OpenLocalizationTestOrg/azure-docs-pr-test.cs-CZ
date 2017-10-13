@@ -1,6 +1,6 @@
 ---
-title: "aaaUse popisků tooinstrument dotazů v SQL Data Warehouse | Microsoft Docs"
-description: "Tipy pro používání dotazy tooinstrument popisky v Azure SQL Data Warehouse pro vývoj řešení."
+title: "Použití popisků na nástrojích dotazy v SQL Data Warehouse | Microsoft Docs"
+description: "Tipy pro používání popisky na nástrojích dotazy v Azure SQL Data Warehouse na vývoj řešení."
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
@@ -15,13 +15,13 @@ ms.workload: data-services
 ms.custom: queries
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-ms.openlocfilehash: 82e7ea98e1417134227f1d7c529fdaf2f1df3853
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 9e75bbe528a427724a623305fbd45e2277e9d0af
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="use-labels-tooinstrument-queries-in-sql-data-warehouse"></a>Pomocí popisků tooinstrument dotazů v SQL Data Warehouse
+# <a name="use-labels-to-instrument-queries-in-sql-data-warehouse"></a>Použití popisků k nástroji dotazů v SQL Data Warehouse
 SQL Data Warehouse podporuje koncept názvem popisky dotazu. Před přechodem do jakékoli hloubka umožňuje podívejte se na příklad jednoho:
 
 ```sql
@@ -31,11 +31,11 @@ OPTION (LABEL = 'My Query Label')
 ;
 ```
 
-Tento poslední řádek značky hello řetězec popisek Moje dotazu toohello dotazu. To je zvláště užitečné, protože popisek hello je dotaz může prostřednictvím hello zobrazení dynamické správy. To nám poskytuje mechanismus tootrack dolů problém dotazy a také toohelp identifikovat průběh prostřednictvím spustit ETL.
+Tento poslední řádek značky řetězec popisek Moje dotazu pro dotaz. To je zvláště užitečné, protože popisek je dotaz může prostřednictvím zobrazení dynamické správy. To poskytuje nám mechanismus sledovat problém dotazy a také k identifikaci průběh prostřednictvím spustit ETL.
 
-Dobrý zásady vytváření názvů pomáhá skutečně sem. Například něco jako ' projektu: postup: příkaz: komentář se pomohou toouniquely identifikovat hello dotaz mezi všechny hello kódu ve správě zdrojového kódu.
+Dobrý zásady vytváření názvů pomáhá skutečně sem. Například něco jako ' projektu: postup: příkaz: komentář se pomohou k jednoznačné identifikaci dotazu v mezi všechny kód ve správě zdrojového kódu.
 
-toosearch popiskem, můžete použít následující dotaz, který používá hello hello zobrazení dynamické správy:
+Pokud chcete hledat podle popisku můžete použít následující dotaz, který používá zobrazení dynamické správy:
 
 ```sql
 SELECT  *
@@ -45,7 +45,7 @@ WHERE   r.[label] = 'My Query Label'
 ```
 
 > [!NOTE]
-> Je nezbytné při dotazování zabalení hranaté závorky a dvojité uvozovky kolem hello word popisek. Popisek je vyhrazené slovo a způsobilo chybu, pokud nebyla oddělené.
+> Je nezbytné při dotazování zabalení hranaté závorky a dvojité uvozovky kolem popisek aplikace word. Popisek je vyhrazené slovo a způsobilo chybu, pokud nebyla oddělené.
 > 
 > 
 

@@ -1,5 +1,5 @@
 ---
-title: "iOS v2 aaaAzure AD Začínáme - Test | Microsoft Docs"
+title: "Azure AD v2 iOS Začínáme - Test | Microsoft Docs"
 description: "Jak aplikace pro iOS (Swift) můžete volat rozhraní API, které vyžadují přístupové tokeny bodem v2 Azure Active Directory"
 services: active-directory
 documentationcenter: dev-center-name
@@ -13,32 +13,32 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
-ms.openlocfilehash: 98c73eddabf9664feb19ac6878e9d7315b9aa79b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4a88096d2b0a23708acdbc1798eac528599b4f71
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-## <a name="test-querying-hello-microsoft-graph-api-from-your-ios-application"></a>Test dotazování hello Microsoft Graph API z vaší aplikace iOS
+## <a name="test-querying-the-microsoft-graph-api-from-your-ios-application"></a>Test dotazování Microsoft Graph API z vaší aplikace iOS
 
-Stiskněte klávesu `Command`  +  `R` toorun hello kód v simulátoru hello.
+Stiskněte klávesu `Command`  +  `R` spustí kód v simulátoru.
 
 ![Snímek obrazovky](media/active-directory-mobileanddesktopapp-ios-test/iostestscreenshot.png)
 
-Pokud jste připravené tootest, klepněte na *'volání Microsoft Graph API,* a bude výzvami tootype svoje uživatelské jméno a heslo.
+Až budete připraveni k testování, klepněte na *'volání Microsoft Graph API,* a zobrazí se výzva k zadání uživatelského jména a hesla.
 
 ### <a name="consent"></a>Vyjádřit souhlas.
-Hello při prvním přihlášení tooyour aplikace, zobrazí se souhlasu obrazovky podobné toohello níže, kde je nutné přijmout tooexplicitly:
+Při prvním přihlášení do aplikace, zobrazí obrazovka podobná souhlasu s níže, kde je potřeba explicitně přijmout:
 
 ![Souhlas obrazovky](media/active-directory-mobileanddesktopapp-ios-test/iosconsentscreen.png)
 
 ### <a name="expected-results"></a>Očekávané výsledky
-Měli byste vidět informace o profilu uživatele vrácený hello Microsoft Graph API volání v hello *protokolování* části.
+Informace o profilu uživatele vrácený Microsoft Graph API volat v byste měli vidět *protokolování* části.
 
 <!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Další informace o oborech a přidělená oprávnění
 
-Hello Microsoft Graph API vyžaduje hello `user.read` obor tooread hello uživatelský profil. Tento obor je automaticky přidán ve výchozím nastavení každá aplikace na náš portál registrace registrována. Některé rozhraní API pro Microsoft Graph i vlastní rozhraní API pro back-end serveru může vyžadovat další obory. Například pro Microsoft Graph hello oboru `Calendars.Read` je kalendářích požadované toolist hello uživatele. V pořadí tooaccess hello kalendáře uživatele v kontextu aplikace, musíte tooadd hello `Calendars.Read` delegovaná oprávnění toohello registrace aplikace na informace a poté přidejte hello `Calendars.Read` toohello oboru `acquireTokenSilent` volání. zvýšit číslo hello oborů, může být Hello uživatel vyzván pro další souhlas všech uživatelů.
+Vyžaduje rozhraní Microsoft Graph API `user.read` obory a čtení profilu uživatele. Tento obor je automaticky přidán ve výchozím nastavení každá aplikace na náš portál registrace registrována. Některé rozhraní API pro Microsoft Graph i vlastní rozhraní API pro back-end serveru může vyžadovat další obory. Například pro Microsoft Graph oboru `Calendars.Read` je potřeba seznamu kalendářích uživatele. Chcete-li získat přístup k kalendáře uživatele v kontextu aplikace, je nutné přidat `Calendars.Read` delegovaná oprávnění k registraci aplikace informace a poté přidejte `Calendars.Read` obor na `acquireTokenSilent` volání. Zvýšit počet oborů, může být uživatel vyzván pro další souhlas všech uživatelů.
 
 <!--end-collapse-->
 

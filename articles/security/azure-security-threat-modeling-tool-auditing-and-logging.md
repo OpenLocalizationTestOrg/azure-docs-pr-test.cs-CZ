@@ -1,6 +1,6 @@
 ---
-title: "aaaAuditing a protokolování - Microsoft Threat modelování nástroj – Azure | Microsoft Docs"
-description: "způsoby zmírnění hrozeb v hello nástroj modelování hrozeb"
+title: "Auditování a protokolování Azure - modelování nástroj Microsoft Threat - | Microsoft Docs"
+description: "způsoby zmírnění hrozeb, které jsou zveřejněné v nástroji pro modelování hrozeb"
 services: security
 documentationcenter: na
 author: RodSan
@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: f28988833eba251b6ceb8bbd47cde37e871af609
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3f1933fc59862eca7ae6ee40bbd5136e449e5cf1
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="security-frame-auditing-and-logging--mitigations"></a>Zabezpečení rámce: Auditování a protokolování | Způsoby zmírnění rizik 
 | Produktům a službám | Článek |
 | --------------- | ------- |
 | **Dynamics CRM**    | <ul><li>[Identifikovat citlivé entity ve vašem řešení a implementovat auditování změn](#sensitive-entities)</li></ul> |
-| **Webové aplikace** | <ul><li>[Ujistěte se, že se vynucuje auditování a protokolování u aplikace hello](#auditing)</li><li>[Zkontrolujte, zda jsou na místě oběh protokolu a oddělení](#log-rotation)</li><li>[Ujistěte se, aplikace hello není přihlašujete citlivá uživatelská data](#log-sensitive-data)</li><li>[Ujistěte se, že auditu a soubory protokolů mají omezený přístup](#log-restricted-access)</li><li>[Ujistěte se, že jsou zaznamenány události správy uživatelů](#user-management)</li><li>[Zkontrolujte, zda text hello systému integrované obranu proti zneužití](#inbuilt-defenses)</li><li>[Povolit protokolování diagnostiky pro webové aplikace v Azure App Service](#diagnostics-logging)</li></ul> |
+| **Webové aplikace** | <ul><li>[Ujistěte se, že auditování a protokolování je vynucená u aplikace](#auditing)</li><li>[Zkontrolujte, zda jsou na místě oběh protokolu a oddělení](#log-rotation)</li><li>[Ujistěte se, aplikace nejsou přihlašujete citlivá uživatelská data](#log-sensitive-data)</li><li>[Ujistěte se, že auditu a soubory protokolů mají omezený přístup](#log-restricted-access)</li><li>[Ujistěte se, že jsou zaznamenány události správy uživatelů](#user-management)</li><li>[Zkontrolujte, zda má systém integrované obranu proti zneužití](#inbuilt-defenses)</li><li>[Povolit protokolování diagnostiky pro webové aplikace v Azure App Service](#diagnostics-logging)</li></ul> |
 | **Database** | <ul><li>[Ujistěte se, že přihlášení auditování je povolena v systému SQL Server](#identify-sensitive-entities)</li><li>[Povolení detekce hrozeb v Azure SQL](#threat-detection)</li></ul> |
-| **Azure Storage** | <ul><li>[Použití Azure Storage Analytics tooaudit přístupu Azure Storage](#analytics)</li></ul> |
+| **Azure Storage** | <ul><li>[Použití Azure Storage Analytics auditovat přístup k Azure Storage](#analytics)</li></ul> |
 | **WCF** | <ul><li>[Implementace dostatečná protokolování](#sufficient-logging)</li><li>[Implementace dostatečná auditu selhání zpracování](#audit-failure-handling)</li></ul> |
 | **Webové rozhraní API** | <ul><li>[Ujistěte se, že se vynucuje auditování a protokolování u webového rozhraní API](#logging-web-api)</li></ul> |
 | **Brána pole IoT** | <ul><li>[Ujistěte se, že odpovídající auditování a protokolování se vynucuje u brána pole](#logging-field-gateway)</li></ul> |
@@ -43,7 +43,7 @@ ms.lasthandoff: 10/06/2017
 | **Odkazy**              | Není k dispozici  |
 | **Kroky**                   | Určit entity ve vašem řešení obsahující citlivá data a implementovat auditování změn v těchto entit a polí |
 
-## <a id="auditing"></a>Ujistěte se, že se vynucuje auditování a protokolování u aplikace hello
+## <a id="auditing"></a>Ujistěte se, že auditování a protokolování je vynucená u aplikace
 
 | Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -63,9 +63,9 @@ ms.lasthandoff: 10/06/2017
 | **Použít technologie** | Obecné |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | Není k dispozici  |
-| **Kroky**                   | <p>Oběh protokolu se používá v systému správy, ve kterém datem protokolu soubory jsou archivovány automatizovaný proces. Servery, které používají velké aplikace často protokolovat každou žádost: hello stěně objemné protokoly, je oběh protokolu způsob toolimit hello celková velikost protokolů hello zároveň umožňuje analýzu poslední události. </p><p>Oddělení protokolu v podstatě znamená, že budete mít toostore útokům vaše soubory protokolu na jiný oddíl jako kde operačního systému nebo aplikace běží v pořadí tooavert odmítnutí služby nebo hello přechod na starší verzi aplikace jeho výkon</p>|
+| **Kroky**                   | <p>Oběh protokolu se používá v systému správy, ve kterém datem protokolu soubory jsou archivovány automatizovaný proces. Servery, které používají velké aplikace často protokolovat každou žádost: při krátkodobém objemné protokoly oběh protokolu je způsob, jak omezit celkovou velikost protokolů zároveň umožňuje analýzu poslední události. </p><p>Oddělení protokolu v podstatě znamená, že máte k uložení protokolu souborů do různých oddílů jako kde operačního systému nebo aplikace běží, aby zabránily útoku DOS nebo Downgrade aplikace jeho výkon</p>|
 
-## <a id="log-sensitive-data"></a>Ujistěte se, aplikace hello není přihlašujete citlivá uživatelská data
+## <a id="log-sensitive-data"></a>Ujistěte se, aplikace nejsou přihlašujete citlivá uživatelská data
 
 | Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -74,7 +74,7 @@ ms.lasthandoff: 10/06/2017
 | **Použít technologie** | Obecné |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | Není k dispozici  |
-| **Kroky**                   | <p>Kontrola protokolu citlivé údaje, aby uživatel odešle tooyour lokality. Kontrola úmyslné protokolování, jakož i vedlejší účinky, které jsou způsobeny problémy návrhu. Příklady citlivých dat:</p><ul><li>Přihlašovací údaje uživatele</li><li>Číslo sociálního pojištění nebo jiné identifikační údaje</li><li>Čísla platebních karet nebo jiné finanční informace</li><li>Informace o stavu</li><li>Privátní klíče nebo jiná data, které by mohly být použité toodecrypt šifrované informace</li><li>Systém nebo aplikace, informace, které mohou být použity toomore efektivně útokům aplikace hello</li></ul>|
+| **Kroky**                   | <p>Zkontrolujte, jestli připojovat všechny důvěrné osobní údaje, které uživatel odešle na váš web. Kontrola úmyslné protokolování, jakož i vedlejší účinky, které jsou způsobeny problémy návrhu. Příklady citlivých dat:</p><ul><li>Přihlašovací údaje uživatele</li><li>Číslo sociálního pojištění nebo jiné identifikační údaje</li><li>Čísla platebních karet nebo jiné finanční informace</li><li>Informace o stavu</li><li>Privátní klíče nebo jiná data, která by mohla být použité k dešifrování šifrovaných informací</li><li>Systém nebo aplikace, informace, které umožňuje efektivněji útokům aplikace</li></ul>|
 
 ## <a id="log-restricted-access"></a>Ujistěte se, že auditu a soubory protokolů mají omezený přístup
 
@@ -85,7 +85,7 @@ ms.lasthandoff: 10/06/2017
 | **Použít technologie** | Obecné |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | Není k dispozici  |
-| **Kroky**                   | <p>Zkontrolujte, zda jsou správně nastaveny tooensure přístup práva toolog soubory. Účty aplikace by měl mít přístup jen pro zápis a operátory a pracovníky technické podpory by měl mít přístup jen pro čtení, podle potřeby.</p><p>Účty správců jsou hello pouze účty, které by měl mít úplný přístup. Zkontrolujte, že seznamů ACL systému Windows v protokolu soubory tooensure jsou správně s omezeným přístupem:</p><ul><li>Účty aplikace mají mít přístup jen pro zápis</li><li>Operátory a pracovníky technické podpory musí mít oprávnění jen pro čtení, podle potřeby</li><li>Správci jsou hello pouze účty, které by měl mít úplný přístup</li></ul>|
+| **Kroky**                   | <p>Zkontrolujte přístupová práva do souborů protokolu jsou správně nastaveny. Účty aplikace by měl mít přístup jen pro zápis a operátory a pracovníky technické podpory by měl mít přístup jen pro čtení, podle potřeby.</p><p>Účty správců jsou pouze účty, které by měl mít úplný přístup. Zkontrolujte seznamů ACL systému Windows pro soubory protokolu pro jistotu, že jsou správně s omezeným přístupem:</p><ul><li>Účty aplikace mají mít přístup jen pro zápis</li><li>Operátory a pracovníky technické podpory musí mít oprávnění jen pro čtení, podle potřeby</li><li>Správci jsou pouze účty, které by měl mít úplný přístup</li></ul>|
 
 ## <a id="user-management"></a>Ujistěte se, že jsou zaznamenány události správy uživatelů
 
@@ -96,9 +96,9 @@ ms.lasthandoff: 10/06/2017
 | **Použít technologie** | Obecné |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | Není k dispozici  |
-| **Kroky**                   | <p>Zkontrolujte, zda aplikace hello monitoruje událostí správy uživatele jako je přihlášení úspěšné i neúspěšné uživatelů, resetování hesel, změny hesel, uzamčení účtu, registrace uživatele. To pomáhá toodetect a reagovat toopotentially podezřelého chování. Umožňuje také dat nástroje operations toogather; například tootrack, kdo přistupuje k aplikaci hello</p>|
+| **Kroky**                   | <p>Zkontrolujte, zda aplikace monitoruje událostí správy uživatele jako je přihlášení úspěšné i neúspěšné uživatelů, resetování hesel, změny hesel, uzamčení účtu, registrace uživatele. Díky této pomáhají zjistit a reagovat na potenciálně podezřelého chování. Taky umožňuje shromažďovat data operace; například sledovat, kdo přistupuje k aplikaci</p>|
 
-## <a id="inbuilt-defenses"></a>Zkontrolujte, zda text hello systému integrované obranu proti zneužití
+## <a id="inbuilt-defenses"></a>Zkontrolujte, zda má systém integrované obranu proti zneužití
 
 | Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -107,7 +107,7 @@ ms.lasthandoff: 10/06/2017
 | **Použít technologie** | Obecné |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | Není k dispozici  |
-| **Kroky**                   | <p>Ovládací prvky musí být na místě, které vyvolávají výjimka zabezpečení v případě zneužití aplikací. Například pokud ověření vstupu je na místě a útočník pokusí tooinject škodlivého kódu, který neodpovídá hello regex, vyvolána výjimka zabezpečení může být může být předběžné zneužít systému</p><p>Doporučujeme například toohave výjimky zabezpečení přihlášení a akce prováděné na hello následující problémy:</p><ul><li>Ověření vstupu</li><li>Porušení proti útokům CSRF</li><li>Útok hrubou silou (horní limit pro počet požadavků na uživatele na prostředků)</li><li>Narušení nahrávání souborů</li><ul>|
+| **Kroky**                   | <p>Ovládací prvky musí být na místě, které vyvolávají výjimka zabezpečení v případě zneužití aplikací. Například pokud je ověření vstupu na svém místě a útočník pokusí vložit škodlivého kódu, který neodpovídá regulární výraz, vyvolána výjimka zabezpečení může být může být předběžné zneužít systému</p><p>Například se doporučuje mít výjimky zabezpečení přihlášení a akce prováděné na následující problémy:</p><ul><li>Ověření vstupu</li><li>Porušení proti útokům CSRF</li><li>Útok hrubou silou (horní limit pro počet požadavků na uživatele na prostředků)</li><li>Narušení nahrávání souborů</li><ul>|
 
 ## <a id="diagnostics-logging"></a>Povolit protokolování diagnostiky pro webové aplikace v Azure App Service
 
@@ -118,7 +118,7 @@ ms.lasthandoff: 10/06/2017
 | **Použít technologie** | Obecné |
 | **Atributy**              | EnvironmentType – Azure |
 | **Odkazy**              | Není k dispozici  |
-| **Kroky** | <p>Azure poskytuje integrované diagnostiky tooassist s laděním aplikační službu webové aplikace. Platí také tooAPI a mobilní aplikace. Webové aplikace služby App Service poskytují diagnostické funkce pro protokolování informací z hello webový server a hello webové aplikace.</p><p>Tyto jsou logicky rozdělené do webového serveru diagnostics a application diagnostics</p>|
+| **Kroky** | <p>Azure poskytuje integrované diagnostiky vám pomůže při ladění aplikační službu webové aplikace. Platí také pro rozhraní API a mobilní aplikace. Webové aplikace služby App Service poskytují diagnostické funkce pro protokolování informací z webového serveru a webové aplikace.</p><p>Tyto jsou logicky rozdělené do webového serveru diagnostics a application diagnostics</p>|
 
 ## <a id="identify-sensitive-entities"></a>Ujistěte se, že přihlášení auditování je povolena v systému SQL Server
 
@@ -129,7 +129,7 @@ ms.lasthandoff: 10/06/2017
 | **Použít technologie** | Obecné |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | [Konfigurace auditování přihlášení](https://msdn.microsoft.com/library/ms175850.aspx) |
-| **Kroky** | <p>Auditování databáze serveru přihlášení musí být povoleno toodetect nebo potvrďte za účelem uhodnutí hesla útoky. Je důležité toocapture neúspěšné pokusy o přihlášení. Další výhodou zaznamenávání obou pokusů o přihlášení úspěšné i neúspěšné poskytuje během forenzního vyšetřování</p>|
+| **Kroky** | <p>Auditování databáze serveru přihlášení musí být povolena pro detekci potvrďte za účelem uhodnutí hesla útoky. Je důležité pro zachycení neúspěšných pokusů o přihlášení. Další výhodou zaznamenávání obou pokusů o přihlášení úspěšné i neúspěšné poskytuje během forenzního vyšetřování</p>|
 
 ## <a id="threat-detection"></a>Povolení detekce hrozeb v Azure SQL
 
@@ -140,9 +140,9 @@ ms.lasthandoff: 10/06/2017
 | **Použít technologie** | SQL Azure |
 | **Atributy**              | Verze SQL - V12 |
 | **Odkazy**              | [Začínáme s detekce hrozeb databáze SQL](https://azure.microsoft.com/documentation/articles/sql-database-threat-detection-get-started/)|
-| **Kroky** |<p>Detekce hrozeb zjistila nezvyklé databázové aktivity, které indikují potenciální bezpečnostní hrozby toohello databáze. Poskytuje novou vrstvu zabezpečení, což umožňuje zákazníkům toodetect a toopotential hrozeb reagovat, když k nim dojde tím, že poskytuje výstrahy zabezpečení na neobvyklé aktivity.</p><p>Uživatele můžete prozkoumat hello podezřelé události pomocí audity Azure SQL Database toodetermine pokud vyplývají z tooaccess pokusu o porušení nebo zneužití data v databázi hello.</p><p>Detekce hrozeb je jednoduchý tooaddress potenciální hrozby toohello databáze bez hello nutné toobe expert zabezpečení nebo spravovat pokročilým zabezpečením monitorování systémů</p>|
+| **Kroky** |<p>Detekce hrozeb zjistila nezvyklé databázové aktivity, které indikují potenciální ohrožení databáze. Poskytuje novou vrstvu zabezpečení, která uživatelům umožňuje zjistit a reagovat na potenciální hrozby, kdy k nim dojde tím, že poskytuje výstrahy zabezpečení na neobvyklé aktivity.</p><p>Uživatele můžete prozkoumat podezřelé události pomocí audity Azure SQL Database k určení, pokud vyplývají z pokus o přístup, porušení nebo využívat data v databázi.</p><p>Detekce hrozeb zjednodušuje na potenciální hrozby adres do databáze bez nutnosti odborné zabezpečení nebo spravovat pokročilým zabezpečením monitorování systémů</p>|
 
-## <a id="analytics"></a>Použití Azure Storage Analytics tooaudit přístupu Azure Storage
+## <a id="analytics"></a>Použití Azure Storage Analytics auditovat přístup k Azure Storage
 
 | Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -150,8 +150,8 @@ ms.lasthandoff: 10/06/2017
 | **SDL fáze**               | Nasazení |  
 | **Použít technologie** | Obecné |
 | **Atributy**              | Není k dispozici |
-| **Odkazy**              | [Pomocí Storage Analytics toomonitor autorizace typu](https://azure.microsoft.com/documentation/articles/storage-security-guide/#storage-analytics) |
-| **Kroky** | <p>Pro každý účet úložiště jeden můžete povolit protokolování tooperform Azure Storage Analytics a ukládat data metriky. Hello úložiště analýzy protokolů obsahují důležité informace, jako je například metodu ověřování používanou někdo při přístupu k úložišti.</p><p>To může být velmi užitečné, pokud jsou úzce ochrana toostorage přístup. V úložišti objektů Blob můžete například nastavit všechny kontejnery tooprivate hello a implementovat hello použití služby SAS v celé vaší aplikace. Zkontrolujte, zda text hello protokoly pravidelně toosee Pokud objektů BLOB ke kterým se přistupuje pomocí klíčů k účtu úložiště hello, které mohou indikovat porušení zabezpečení, nebo pokud jsou objekty BLOB hello veřejné, ale nemělo by být.</p>|
+| **Odkazy**              | [Pomocí Storage Analytics k monitorování typ autorizace](https://azure.microsoft.com/documentation/articles/storage-security-guide/#storage-analytics) |
+| **Kroky** | <p>Pro každý účet úložiště jeden můžete povolit Azure Storage Analytics k provedení protokolování a ukládání dat metriky. Protokoly analýzy úložiště obsahují důležité informace, jako je například metodu ověřování používanou někdo při přístupu k úložišti.</p><p>To může být velmi užitečné, pokud jsou úzce ochrana přístup k úložišti. V úložišti objektů Blob můžete například nastavit všechny kontejnery do privátního a implementovat použití služby SAS v celé vaší aplikace. Zkontrolujte protokoly pravidelně zobrazíte Pokud objektů BLOB ke kterým se přistupuje pomocí klíče účtu úložiště, které mohou indikovat porušení zabezpečení, nebo pokud jsou veřejné objekty BLOB, ale nemělo by být.</p>|
 
 ## <a id="sufficient-logging"></a>Implementace dostatečná protokolování
 
@@ -162,10 +162,10 @@ ms.lasthandoff: 10/06/2017
 | **Použít technologie** | Rozhraní .NET framework |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.fortify.com/en/vulncat/index.html) |
-| **Kroky** | <p>Nedostatečná Hello správné kontrolní záznam incidentu zabezpečení může zabránit spuštění forenzní úsilí. Windows Communication Foundation (WCF) nabízí hello možnost toolog úspěšné nebo neúspěšné pokusy o přihlášení.</p><p>Protokolování neúspěšných pokusů o přihlášení může upozornit, že správci potenciální útoky hrubou silou. Protokolování událostí úspěšné ověření podobně, zadejte záznam pro audit užitečné při ohrožení legitimní účtu. Povolení funkce auditu zabezpečení služby WCF na |
+| **Kroky** | <p>Nedostatečná správné kontrolní záznam incidentu zabezpečení může zabránit spuštění forenzní úsilí. Windows Communication Foundation (WCF) nabízí schopnost protokolovat pokusy o ověření úspěšné nebo neúspěšné.</p><p>Protokolování neúspěšných pokusů o přihlášení může upozornit, že správci potenciální útoky hrubou silou. Protokolování událostí úspěšné ověření podobně, zadejte záznam pro audit užitečné při ohrožení legitimní účtu. Povolení funkce auditu zabezpečení služby WCF na |
 
 ### <a name="example"></a>Příklad
-Následuje příklad konfigurace auditování povolené Hello
+Tady je příklad konfigurace auditování povolené
 ```
 <system.serviceModel>
     <behaviors>
@@ -191,10 +191,10 @@ Následuje příklad konfigurace auditování povolené Hello
 | **Použít technologie** | Rozhraní .NET framework |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.fortify.com/en/vulncat/index.html) |
-| **Kroky** | <p>Je nakonfigurovaný vyvinuté řešení toogenerate výjimku, pokud se nezdaří toowrite tooan auditní protokol. Pokud je nakonfigurovaný WCF toothrow výjimku, pokud je protokol auditování tooan nelze toowrite, programu hello nebudete nijak upozorněni hello selhání a může přestat docházet k auditování událostí zabezpečení.</p>|
+| **Kroky** | <p>Vyvinuté řešení je nakonfigurován tak, aby se vygeneruje výjimka, když se nepodaří zápis do protokolu auditu. Pokud WCF je nakonfigurován tak, aby způsobí výjimku, pokud nelze zapisovat do protokolu auditování, program nebude informováni o selhání a může přestat docházet k auditování událostí zabezpečení.</p>|
 
 ### <a name="example"></a>Příklad
-Hello `<behavior/>` prvek hello WCF konfiguračního souboru níže dá pokyn WCF toonot informovala, že aplikace hello WCF selže toowrite tooan auditní protokol.
+`<behavior/>` Prvek konfiguračního souboru WCF, které jsou níže dá pokyn WCF není upozornit aplikaci, když selže WCF k zápisu do protokolu auditování.
 ````
 <behaviors>
     <serviceBehaviors>
@@ -207,7 +207,7 @@ Hello `<behavior/>` prvek hello WCF konfiguračního souboru níže dá pokyn WC
     </serviceBehaviors>
 </behaviors>
 ````
-Konfigurace programu hello toonotify WCF vždy, když je protokol auditování tooan nelze toowrite. Hello program by měl mít příslušné schéma alternativní oznámení v místě tooalert hello organizace nejsou neudržují záznamy auditu. 
+Nakonfigurujte WCF oznámit program vždy, když nelze zapisovat do protokolu auditování. Program by měl mít příslušné schéma alternativní oznámení výstrahy nejsou neudržují organizace, která audit záznamům. 
 
 ## <a id="logging-web-api"></a>Ujistěte se, že se vynucuje auditování a protokolování u webového rozhraní API
 
@@ -229,7 +229,7 @@ Konfigurace programu hello toonotify WCF vždy, když je protokol auditování t
 | **Použít technologie** | Obecné |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | Není k dispozici  |
-| **Kroky** | <p>Pokud se více zařízení připojují tooa brána pole, zajistěte, aby pokusy o připojení a stavu ověření (úspěch nebo neúspěch) pro jednotlivá zařízení jsou přihlášení a udržovaný na hello brána pole.</p><p>Také v případech, kde je brána pole zachování hello IoT Hub přihlašovací údaje pro jednotlivá zařízení, ujistěte se, že auditování se provádí tyto přihlašovací údaje jsou načteny. Vývoj proces tooperiodically nahrávání hello protokoly tooAzure IoT Hub úložiště pro dlouhodobé uchovávání.</p> |
+| **Kroky** | <p>Když více zařízení připojit k bráně pole, zajistěte, aby pokusy o připojení a stavu ověření (úspěch nebo neúspěch) pro jednotlivá zařízení jsou přihlášení a udržuje na bráně pole.</p><p>Také v případech, kde je brána pole zachování IoT Hub přihlašovací údaje pro jednotlivá zařízení, ujistěte se, že auditování se provádí tyto přihlašovací údaje jsou načteny. Vytvořte proces pro protokoly pravidelně nahrát do Azure IoT Hub za úložiště pro dlouho období uchování.</p> |
 
 ## <a id="logging-cloud-gateway"></a>Ujistěte se, že odpovídající auditování a protokolování se vynucuje u brány cloudu
 
@@ -239,5 +239,5 @@ Konfigurace programu hello toonotify WCF vždy, když je protokol auditování t
 | **SDL fáze**               | Sestavení |  
 | **Použít technologie** | Obecné |
 | **Atributy**              | Není k dispozici  |
-| **Odkazy**              | [Úvod tooIoT rozbočovače operations monitorování](https://azure.microsoft.com/documentation/articles/iot-hub-operations-monitoring/) |
-| **Kroky** | <p>Návrh pro shromažďování a ukládání dat auditu shromáždit prostřednictvím monitorování nástroje Operations IoT Hub. Povolte hello následující monitorování kategorií:</p><ul><li>Operace identity zařízení</li><li>Komunikace zařízení cloud</li><li>Komunikace cloud zařízení</li><li>Připojení</li><li>Nahrávání souborů</li></ul>|
+| **Odkazy**              | [Úvod do služby IoT Hub operations monitorování](https://azure.microsoft.com/documentation/articles/iot-hub-operations-monitoring/) |
+| **Kroky** | <p>Návrh pro shromažďování a ukládání dat auditu shromáždit prostřednictvím monitorování nástroje Operations IoT Hub. Povolte monitorování následujících kategorií:</p><ul><li>Operace identity zařízení</li><li>Komunikace zařízení cloud</li><li>Komunikace cloud zařízení</li><li>Připojení</li><li>Nahrávání souborů</li></ul>|

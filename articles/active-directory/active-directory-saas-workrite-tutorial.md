@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Workrite | Microsoft Docs'
-description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a Workrite."
+description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Workrite."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,210 +14,210 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: a663374ae3c8b102b53d8cf05a9cb083b80dbb83
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4358c4c621634c17cbbd7fa1c72f12746b8e4a2a
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workrite"></a>Kurz: Azure Active Directory integrace s Workrite
 
-V tomto kurzu zjistíte, jak toointegrate Workrite s Azure Active Directory (Azure AD).
+V tomto kurzu zjistěte, jak integrovat Workrite s Azure Active Directory (Azure AD).
 
-Integrace Workrite s Azure AD poskytuje hello následující výhody:
+Integrace Workrite s Azure AD poskytuje následující výhody:
 
-- Můžete ovládat ve službě Azure AD, který má přístup tooWorkrite.
-- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooWorkrite (jednotné přihlášení) s jejich účty Azure AD.
-- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure.
+- Můžete ovládat ve službě Azure AD, který má přístup k Workrite.
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k Workrite (jednotné přihlášení) s jejich účty Azure AD.
+- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Integrace služby Azure AD s Workrite tooconfigure, je třeba hello následující položky:
+Konfigurace integrace Azure AD s Workrite, potřebujete následující položky:
 
 - Předplatné služby Azure AD
 - Workrite jednotné přihlašování povolené předplatné
 
 > [!NOTE]
-> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
+Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Workrite z Galerie hello
+1. Přidání Workrite z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-workrite-from-hello-gallery"></a>Přidání Workrite z Galerie hello
-tooconfigure hello integrace Workrite do Azure AD, je nutné tooadd Workrite hello Galerie tooyour seznamu spravovaných aplikací SaaS.
+## <a name="adding-workrite-from-the-gallery"></a>Přidání Workrite z Galerie
+Při konfiguraci integrace Workrite do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS Workrite z galerie.
 
-**tooadd Workrite z Galerie hello, proveďte následující kroky hello:**
+**Pokud chcete přidat Workrite z galerie, proveďte následující kroky:**
 
-1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
+1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
 
-    ![tlačítko Azure Active Directory Hello][1]
+    ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
+2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
 
-    ![okno aplikace Hello Enterprise][2]
+    ![V okně podnikové aplikace][2]
     
-3. tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
 
-    ![tlačítko nové aplikace Hello][3]
+    ![Tlačítko nové aplikace][3]
 
-4. Hello vyhledávacího pole zadejte **Workrite**, vyberte **Workrite** z panelu výsledků klikněte **přidat** tlačítko tooadd hello aplikace.
+4. Do vyhledávacího pole zadejte **Workrite**, vyberte **Workrite** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.
 
-    ![Workrite v seznamu výsledků hello](./media/active-directory-saas-workrite-tutorial/tutorial_workrite_addfromgallery.png)
+    ![Workrite v seznamu výsledků](./media/active-directory-saas-workrite-tutorial/tutorial_workrite_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
 
 V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Workrite podle testovacího uživatele názvem "Britta Simon".
 
-Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v Workrite je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v Workrite musí toobe navázat.
+Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Workrite je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Workrite musí navázat.
 
-V Workrite, přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.
+V Workrite, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
 
-tooconfigure a testu Azure AD jednotné přihlašování s Workrite, potřebujete následující stavební bloky hello toocomplete:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Workrite, je třeba dokončit následující stavební bloky:
 
-1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
-2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Workrite](#create-a-workrite-test-user)**  -toohave protějšek Britta Simon v Workrite, která je propojená toohello Azure AD reprezentace uživatele.
-4. **[Přiřadit hello Azure AD testovacího uživatele](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
-5. **[Test jednotného přihlašování](#test-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
+1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
+2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele Workrite](#create-a-workrite-test-user)**  – Pokud chcete mít protějšek Britta Simon v Workrite propojeném s Azure AD reprezentace daného uživatele.
+4. **[Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
+5. **[Test jednotného přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci Workrite.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Workrite.
 
-**tooconfigure Azure AD jednotné přihlašování s Workrite, proveďte následující kroky hello:**
+**Ke konfiguraci Azure AD jednotné přihlašování s Workrite, proveďte následující kroky:**
 
-1. V portálu Azure, na hello hello **Workrite** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na portálu Azure na **Workrite** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurace propojení přihlášení][4]
 
-2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
+2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
  
     ![Jediné přihlášení dialogové okno](./media/active-directory-saas-workrite-tutorial/tutorial_workrite_samlbase.png)
 
-3. Na hello **Workrite domény a adresy URL** část, proveďte následující kroky hello:
+3. Na **Workrite domény a adresy URL** část, proveďte následující kroky:
 
     ![Workrite domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-workrite-tutorial/tutorial_workrite_url.png)
 
-    V hello **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://app.workrite.co.uk/securelogin/samlgateway.aspx?id=<uniqueid>`
+    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://app.workrite.co.uk/securelogin/samlgateway.aspx?id=<uniqueid>`
 
     > [!NOTE] 
-    > Tato hodnota není skutečné. Aktualizujte tuto hodnotu s hello skutečná adresa URL přihlašování. Obraťte se na [tým podpory Workrite klienta](mailto:support@workrite.co.uk) tooget tuto hodnotu.
+    > Tato hodnota není skutečné. Aktualizujte tuto hodnotu s skutečná adresa URL přihlašování. Obraťte se na [tým podpory Workrite klienta](mailto:support@workrite.co.uk) získat tuto hodnotu.
 
-4. Na hello **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu hello ve vašem počítači.
+4. Na **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu v počítači.
 
-    ![odkaz ke stažení certifikátu Hello](./media/active-directory-saas-workrite-tutorial/tutorial_workrite_certificate.png) 
+    ![Odkaz ke stažení certifikátu](./media/active-directory-saas-workrite-tutorial/tutorial_workrite_certificate.png) 
 
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-workrite-tutorial/tutorial_general_400.png)
 
-6. Na hello **Workrite konfigurace** klikněte na tlačítko **konfigurace Workrite** tooopen **konfigurovat přihlášení** okno. Kopírování hello **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z hello **Stručná referenční příručka části.**
+6. Na **Workrite konfigurace** klikněte na tlačítko **konfigurace Workrite** otevřete **konfigurovat přihlášení** okno. Kopírování **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
 
     ![Konfigurace Workrite](./media/active-directory-saas-workrite-tutorial/tutorial_workrite_configure.png) 
 
-7. tooconfigure jednotného přihlašování na **Workrite** straně, je nutné stáhnout hello toosend **Certificate(Base64), adresa URL Sign-Out, SAML Entity ID a SAML jeden přihlašování adresa URL služby** příliš[Workrite tým podpory](mailto:support@workrite.co.uk).
+7. Konfigurace jednotného přihlašování na **Workrite** straně, budete muset odeslat stažené **Certificate(Base64), adresa URL Sign-Out, SAML Entity ID a SAML jeden přihlašování adresa URL služby** k [Workrite tým podpory](mailto:support@workrite.co.uk).
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 
-Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
+Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
 
    ![Vytvořit testovací uživatele Azure AD][100]
 
-**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
+**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
 
-1. V hello portál Azure, v levém podokně hello, klikněte na tlačítko hello **Azure Active Directory** tlačítko.
+1. Na portálu Azure, v levém podokně klikněte **Azure Active Directory** tlačítko.
 
-    ![tlačítko Azure Active Directory Hello](./media/active-directory-saas-workrite-tutorial/create_aaduser_01.png)
+    ![Tlačítko Azure Active Directory](./media/active-directory-saas-workrite-tutorial/create_aaduser_01.png)
 
-2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin**a potom klikněte na **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na **všichni uživatelé**.
 
-    ![Hello "Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/active-directory-saas-workrite-tutorial/create_aaduser_02.png)
+    !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/active-directory-saas-workrite-tutorial/create_aaduser_02.png)
 
-3. tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello horní části hello **všichni uživatelé** dialogové okno.
+3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
-    ![tlačítko Přidat Hello](./media/active-directory-saas-workrite-tutorial/create_aaduser_03.png)
+    ![Tlačítko Přidat](./media/active-directory-saas-workrite-tutorial/create_aaduser_03.png)
 
-4. V hello **uživatele** dialogové okno pole, proveďte následující kroky hello:
+4. V **uživatele** dialogové okno pole, proveďte následující kroky:
 
-    ![Dialogové okno uživatelského Hello](./media/active-directory-saas-workrite-tutorial/create_aaduser_04.png)
+    ![Dialogové okno uživatele](./media/active-directory-saas-workrite-tutorial/create_aaduser_04.png)
 
-    a. V hello **název** zadejte **BrittaSimon**.
+    a. V **název** zadejte **BrittaSimon**.
 
-    b. V hello **uživatelské jméno** pole typu hello e-mailovou adresu uživatele Britta Simon.
+    b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
 
-    c. Vyberte hello **zobrazit hesla** zaškrtněte políčko a zapište si ji hello hodnotu, která se zobrazí v hello **heslo** pole.
+    c. Vyberte **zobrazit hesla** zaškrtněte políčko a zapište si ji hodnotu, která se zobrazí v **heslo** pole.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="create-a-workrite-test-user"></a>Vytvoření zkušebního uživatele Workrite
 
-Hello cílem této části je toocreate volal Britta Simon v Workrite uživatele.
+Cílem této části je vytvoření uživatele v Workrite nazývá Britta Simon.
 
-**toocreate uživatel volal Britta Simon v Workrite, proveďte následující kroky hello:**
+**Vytvoření uživatele v Workrite nazývá Britta Simon, proveďte následující kroky:**
 
-1. Přihlaste se na webu společnosti workrite tooyour jako správce.
+1. Přihlásit se k serveru vaší společnosti workrite jako správce.
 
-2. V navigačním podokně hello, klikněte na tlačítko **správce**.
+2. V navigačním podokně klikněte na tlačítko **správce**.
    
     ![Správce řízení][400]
 
-3. Přejděte tooQuick odkazy a pak klikněte na tlačítko **vytvořte uživatele**.
+3. Přejděte na rychlé odkazy a potom klikněte na **vytvořte uživatele**.
    
     ![Vytvořit oddíl uživatele][401]
 
-4. Na hello **vytvořit uživatele** dialogové okno, proveďte následující kroky hello:
+4. Na **vytvořit uživatele** dialogové okno, proveďte následující kroky:
    
     ![Vytvořit uživatele Dailog][402]
     
-    a. V hello **e-mailu** jako typ hello e-mailovou adresu uživatele k textovému poli, Brittasimon@contoso.com.
+    a. V **e-mailu** jako typ e-mailovou adresu uživatele k textovému poli, Brittasimon@contoso.com.
 
-    b. V hello **křestní jméno** textovému poli, firstname hello typ uživatele jako Britta.
+    b. V **křestní jméno** textovému poli, zadejte jméno uživatele jako Britta.
 
-    c. V hello **Přezdívka** textovému poli, typ hello Přezdívka uživatele jako Simon.
+    c. V **Přezdívka** textovému poli, zadejte příjmení uživatele jako Simon.
     
     d. Vyberte **správce klienta** jako **zvolte roli**.
     
     e. Klikněte na **Uložit**.   
 
-### <a name="assign-hello-azure-ad-test-user"></a>Přiřadit hello Azure AD testovacího uživatele
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
 
-V této části povolíte tak, že udělíte přístup tooWorkrite toouse Britta Simon Azure jednotné přihlašování.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Workrite.
 
-![Přiřadit role uživatele hello][200] 
+![Přiřadit role uživatele][200] 
 
-**tooassign Britta Simon tooWorkrite, proveďte následující kroky hello:**
+**Pokud chcete přiřadit Britta Simon Workrite, proveďte následující kroky:**
 
-1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikace hello vyberte **Workrite**.
+2. V seznamu aplikací vyberte **Workrite**.
 
-    ![v seznamu aplikace hello Hello Workrite odkaz](./media/active-directory-saas-workrite-tutorial/tutorial_workrite_app.png)  
+    ![V seznamu aplikací na Workrite odkaz](./media/active-directory-saas-workrite-tutorial/tutorial_workrite_app.png)  
 
-3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
+3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
-    ![odkaz "Uživatelé a skupiny" Hello][202]
+    ![Odkaz "Uživatelé a skupiny"][202]
 
 4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
 
-    ![Podokno Přidat přidružení Hello][203]
+    ![V podokně Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -225,13 +225,13 @@ V této části povolíte tak, že udělíte přístup tooWorkrite toouse Britta
     
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-Hello cílem této části je tootest pomocí konfigurace Azure AD jednotného přihlašování k přístupovému panelu hello.
+Cílem této části je testování konfigurace Azure AD jednotného přihlašování k použití na přístupovém panelu.
 
-Když kliknete na dlaždici Workrite hello v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour Workrite aplikace.
+Když kliknete na dlaždici Workrite na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Workrite.
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

@@ -1,5 +1,5 @@
 ---
-title: "Co je nového v nástroji Správa podniková aplikace v Azure Active Directory aaa | Microsoft Docs"
+title: "Co je nového v nástroji Správa podniková aplikace v Azure Active Directory | Microsoft Docs"
 description: "Zjistěte, co je nového v nástroji Správa podniková aplikace v Azure Active Directory."
 services: active-directory
 documentationcenter: 
@@ -15,141 +15,141 @@ ms.workload: identity
 ms.date: 07/13/2017
 ms.author: asteen
 ms.reviewer: asteen
-ms.openlocfilehash: 7f4b7b11b256f1e910e557f45f3709d762416f0c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0c32a6719292aa903aa32dfdc4a31114e7a28346
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="whats-new-in-enterprise-application-management-in-azure-active-directory"></a>Co je nového v nástroji Správa podniková aplikace v Azure Active Directory 
 
-Azure Active Directory (Azure AD) má rozšířené nástroje pro správu podnikových aplikací, nové funkce a možnosti toomake Správa aplikací jednodušší a efektivní.
+Azure Active Directory (Azure AD) je vylepšené enterprise nástroje pro správu aplikací, s nové funkce a možnosti, aby Správa aplikací jednodušší a efektivní.
 
-Zde jsou některé hello vylepšení pro Azure AD v hello [portál Azure](https://portal.azure.com).
+Zde jsou některé rozšířením pro službu Azure AD v [portál Azure](https://portal.azure.com).
 
-- Vylepšené aplikace galerii prostředí s vytvoření modelu zjednodušené aplikací a podpora pro všechny typy hello aplikací, které jste použili. 
+- Vylepšené aplikace galerii prostředí s vytvoření modelu zjednodušené aplikací a podpora pro všechny typy aplikací, které jste použili. 
 - Zcela nový rychlý start prostředí, které vám může pomoct zprovoznění pilotní nasazení vaší aplikace. 
 - Nakonfigurujte zásady samoobslužné služby pomocí několika kliknutí. 
-- Vylepšení tooapplication proxy, jednotné přihlašování v konfiguraci a přineste vlastní aplikace prostředí, umožní vám tooget více než před provést.
+- Vylepšení proxy aplikace jednotného přihlašování konfigurace a přineste si vlastní prostředí aplikace umožňuje získat více done než před.
 
-## <a name="improvements-toohello-azure-active-directory-application-gallery"></a>Vylepšení toohello Azure Active Directory Application Gallery
+## <a name="improvements-to-the-azure-active-directory-application-gallery"></a>Vylepšení galerii aplikací Azure Active Directory
 
-Vaše oblíbené aplikace přidat, ať už z hello [galerii aplikací](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery), vlastních aplikací se rozšíření toohello cloud nebo nové aplikace, které vyvíjíte.  Můžete začít používat s toto nové prostředí kliknutím **přidat** na hello **podnikové aplikace, které** přehled nebo **všechny aplikace** okna.
+Vaše oblíbené aplikace přidat, ať už z [galerii aplikací](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery), vlastních aplikací, které jste rozšíření do cloudu nebo nové aplikace, které vyvíjíte.  Můžete začít používat s toto nové prostředí kliknutím **přidat** na **podnikové aplikace, které** přehled nebo **všechny aplikace** okna.
  
   ![Přidání aplikace](./media/active-directory-enterprise-apps-whats-new-azure-portal/01.png)
 
-Jednou v galerii hello, uvidíte, že všechny naše vybrané aplikace, které podporují zřizování uživatelů zobrazí přední a center.  Můžete procházet nejrůznějším různých kategorií toodrill do hello aplikací, které vám záleží, nebo můžete použít hello vyhledávání prostředí toorapidly najít hello aplikací chcete toointegrate.
+Jednou v galerii, uvidíte, že všechny naše vybrané aplikace, které podporují zřizování uživatelů zobrazí přední a center.  Můžete procházet nejrůznějším různých kategorií přejdete do aplikace, které se zajímáte o nebo možnosti vyhledávání můžete rychle najít aplikací, které chcete integrovat.
 
-  ![Galerie aplikace Hello](./media/active-directory-enterprise-apps-whats-new-azure-portal/02.png)
+  ![Galerii aplikací](./media/active-directory-enterprise-apps-whats-new-azure-portal/02.png)
 
 ## <a name="add-custom-applications-from-one-place"></a>Přidat vlastní aplikace z jednoho místa
 
-Kromě toho tooadding předem integrovaných aplikací z Galerie hello a všech hello vlastní aplikaci konfigurace zkušeností že jste se použít tooin hello správu classic portal jsou teď v hello nového portálu. Zda jsou rozšíření aplikace z místního pomocí proxy aplikací hello, integraci hesla a federovaného jednotného přihlašování k aplikaci nebo vytvoření zcela nové aplikace pomocí registru hello aplikace, můžete získat tooit všechny z této jeden jedné místní.
+Kromě přidání předem integrovaných aplikací z galerie, všechny, které narazí konfiguraci vlastní aplikace měla použitá při na portálu classic správu jsou nyní v nového portálu. Zda jsou rozšíření aplikace v místním prostředí pomocí proxy aplikace, integraci vlastní heslo nebo federovaného jednotného přihlašování k aplikaci, nebo vytvoření zcela nové aplikace pomocí klíče registru aplikace, můžete získat k němu z jediné jeden.
 
   ![Přidání vlastní aplikace](./media/active-directory-enterprise-apps-whats-new-azure-portal/03.png)
 
  
-**tooget zahájeno přidávání vlastní aplikaci**:
+**Abyste mohli začít přidání vlastní aplikace**:
 
-1. Klikněte na tlačítko hello **přidat odkaz na vaši vlastní** hello horní části Galerie aplikace hello. 
-2. Uvidíte dvě možnosti před jste: **nasadit existující aplikaci** nebo **vytvořte novou aplikaci**. Přečtěte si toolearn hello rozdíl mezi hello dvě možnosti a jak toouse je.
+1. Klikněte **přidat odkaz na vaši vlastní** v horní části galerii aplikací. 
+2. Uvidíte dvě možnosti před jste: **nasadit existující aplikaci** nebo **vytvořte novou aplikaci**. Přečtěte si informace o rozdílu mezi dvě možnosti a jejich použití.
 
 ### <a name="deploying-existing-applications"></a>Existující nasazení aplikace
 
-1. Pokud máte k dispozici již spustili aplikaci a právě chcete toointegrate do Azure AD pro jednotného přihlašování nebo zřizování, zvolte hello **nasadit existující aplikaci** možnost. Vyberte název vaší aplikace, klikněte na tlačítko **přidat**.
-2. A to je vše! Místo nutnosti tooknow všechny hello podrobnosti o aplikaci předem, můžete nyní nastavit fungování novou aplikaci procházení hello levé nabídce a konfigurací libosti tooyour aplikace hello kdykoli.
+1. Pokud máte k dispozici již spuštěné aplikace a chcete jen na jeho integraci do Azure AD pro jednotné přihlašování nebo zřizování, zvolte **nasadit existující aplikaci** možnost. Vyberte název vaší aplikace, klikněte na tlačítko **přidat**.
+2. A to je vše! Místo nepotřebuje vědět všechny podrobnosti o aplikaci předem, můžete nyní nastavit jak novou aplikaci funguje tak, že procházení v levé nabídce a konfigurace aplikace libovolně kdykoli.
 
   ![Přidání stávající aplikace s jedním kliknutím](./media/active-directory-enterprise-apps-whats-new-azure-portal/04.png)
  
 ### <a name="developing-new-applications"></a>Vývoj nových aplikací
 
-1. Pokud vytváříte novou aplikaci, je snadné je tooget toohello registru aplikace přímo z Galerie hello:
-2. Klikněte na hello **přidat vlastní** možnost hello galerii aplikací, vyberte hello **vyvíjet existující aplikaci** volba a zobrazí se vpravo toohello aplikace přidat prostředí rychlý odkaz.
+1. Pokud vytváříte novou aplikaci, je snadný způsob získání registru aplikace pravé z galerie:
+2. Klikněte na **přidat vlastní** možnost z Galerie aplikace, vyberte **vyvíjet existující aplikaci** volba a zobrazí se odkaz rychlé právo na používání aplikací přidat.
 
   ![Přidání aplikace nově vyvinutých stačí jen pár kliknutí](./media/active-directory-enterprise-apps-whats-new-azure-portal/05.png)
 
 
 >[!NOTE]
->Jakmile přidáte aplikace pomocí hello registru aplikace, uvidíte ji zobrazit v seznamu hello podnikové aplikace, kde budete moct tooconfigure jednotného přihlašování a spravovat zásady přístupu pro novou aplikaci.
+>Jakmile přidáte aplikace pomocí klíče registru aplikace, zobrazí se zobrazí v seznamu podnikové aplikace, kde budete moci konfigurovat jednotné přihlašování a spravovat zásady přístupu pro novou aplikaci.
 
-  ![Správa přístupu tooyour nové aplikace v rámci podnikové aplikace](./media/active-directory-enterprise-apps-whats-new-azure-portal/06.png)
+  ![Správa přístupu k nové aplikaci v podnikových aplikací](./media/active-directory-enterprise-apps-whats-new-azure-portal/06.png)
 
 
 ## <a name="quick-start-get-going-with-your-new-application-right-away"></a>Rychlý start: Začínáme s novou aplikaci hned 
 
-Po přidání aplikace, jestli se předem integrované nebo vlastní aplikace, vytvořili jsme tooget šité na míru úvodní prostředí, které je založena nové prostředí aplikace hello rychle. Pokud budete postupovat systematičtěji podle jednotlivých možností, budete jsme vás provede procesem hello uživatelského rozhraní a ukáže, jak tooget co nejrychleji budete s pilotní nasazení nové aplikace. 
+Po přidání aplikace, jestli se předem integrované nebo vlastní aplikace, vytvořili jsme šité na míru prostředí úvodní, abyste si rychle založena na nové prostředí aplikace. Pokud budete postupovat systematičtěji podle jednotlivých možností, budete jsme vás provede procesem uživatelského rozhraní a ukazují, jak co nejrychleji začít s pilotní nasazení nové aplikace. 
  
-  ![nové aplikace Hello rychlý start prostředí](./media/active-directory-enterprise-apps-whats-new-azure-portal/07.png)
+  ![Nové aplikace rychlý start prostředí](./media/active-directory-enterprise-apps-whats-new-azure-portal/07.png)
 
- Toto nové prostředí úvodní kdykoli a pro každou aplikaci, můžete taky navštívit kliknutím na **úvodní** z hello aplikace levé navigační nabídky.
+ Toto nové prostředí úvodní kdykoli a pro každou aplikaci, můžete taky navštívit kliknutím na **úvodní** z levé navigační nabídce aplikace.
 
 
 ## <a name="updated-application-proxy-configuration"></a>Konfigurace proxy aktualizované aplikace
-Nyní Pojďme indikované jeden hello jste přidali nové aplikace běží v místním prostředí a chcete toointegrate se službou Azure AD.  Jeden z hello nástrojů nových informací o hello nové prostředí pro konfiguraci aplikace portálu hello nové Azure AD je, že rozdělením aplikace hello přihlašování v režimu z jeho konfigurace proxy aplikace nyní můžete snadno vystavit heslo jednotného přihlašování nebo federovaných aplikace, které jsou spuštěny v podnikové síti pravým toohello cloudu, bez nutnosti toocreate několik instancí aplikace hello.
+Nyní Pojďme indikované jeden z nové aplikace, které jste přidali běží v místním prostředí a chcete integrovat se službou Azure AD.  Jedním z nástrojů nových informací o nové rozhraní konfigurace aplikací v nové službě Azure AD portál je, že rozdělením aplikace přihlašování v režimu z jeho konfigurace proxy aplikace nyní můžete snadno vystavit heslo jednotného přihlašování nebo federovaných aplikací, které běží ve vaší podnikové síti přímo do cloudu, aniž by bylo nutné vytvořit více instancí aplikace.
 
-Kromě toho toothis, můžete teď můžete také nakonfigurovat žádné z hello nové aplikace, které jste přidali pro použití s hello proxy aplikace služby Azure AD přímo na nový portál hello, včetně aplikací, které podporují nativní ověřování systému Windows dojde.
+Kromě toho teď můžete také konfigurovat žádné nové aplikace, které jste přidali pro použití se službou Azure AD Application Proxy přímo z portálu nový, včetně aplikací, které podporují nativní prostředí ověřování Windows.
 
-  ![Konfigurace aplikace toouse hello integrované ověřování systému Windows přihlašování možnost](./media/active-directory-enterprise-apps-whats-new-azure-portal/08.png)
+  ![Konfigurace aplikace použít možnost přihlášení integrované ověřování systému Windows](./media/active-directory-enterprise-apps-whats-new-azure-portal/08.png)
  
 
-tooget spuštěn konfigurace nativní aplikaci ověřování systému Windows s hello Proxy aplikace:
-1. Kliknutím na položku hello jednoho navigačního přihlašování a zvolte **integrované ověřování systému Windows** v okně Nastavení přihlášení hello a nakonfigurujte hello nastavení tooyour libosti.
-2. Nad podporuje tyto nové režimy ověřování, teď můžete také nahrát certifikáty z vlastní domény toosupport aplikací běžících na zabezpečené koncové body v rámci vaší organizace.  
+Chcete začít konfigurovat nativní aplikaci ověřování systému Windows s Proxy aplikace:
+1. Kliknutím na položku jednoho navigačního přihlašování a zvolte **integrované ověřování systému Windows** z okna Nastavení přihlášení a nakonfigurujte nastavení libovolně.
+2. Nad podporuje tyto nové režimy ověřování, teď můžete také nahrát certifikáty z vlastní domény pro podporu aplikací běžících na zabezpečené koncové body v rámci vaší organizace.  
  
-   ![Nahrávání certifikátu toobe, použít s hello Proxy aplikace](./media/active-directory-enterprise-apps-whats-new-azure-portal/09.png)
+   ![Nahrávání certifikátu pro použití s Proxy aplikace](./media/active-directory-enterprise-apps-whats-new-azure-portal/09.png)
 
-3. tooupload nový certifikát pro vaše oblíbené místní aplikace, klikněte na hello **proxy aplikace** možnost z hello levé navigační nabídky, klikněte na tlačítko hello **certifikát** selektor a nahrajte soubor certifikátu používáme tooencrypt žádostí z naší aplikaci tooyour koncový bod cloudu.
+3. Pokud chcete nahrát nový certifikát pro vaše oblíbené místní aplikace, klikněte na **proxy aplikace** možnost z levé navigační nabídky, klikněte na tlačítko **certifikát** selektor a nahrání souboru certifikátu můžeme použít k šifrování požadavky z našich koncového bodu cloudu do vaší aplikace.
 
 ## <a name="advanced-federated-single-sign-on-configuration"></a>Pokročilé federované přihlašování jednotné
 
-U těch, které používáte federovaným aplikacím dnes existuje mnoho nových funkcí v okně přihlašování v konfiguraci na základě SAML hello. toostart, teď můžete plně přizpůsobit, přidejte, odeberte a mapovat existující atributy uživatele hello vystaví jako deklarace identity v tokenech SAML.
+U těch, které používáte federovaným aplikacím dnes existuje mnoho nových funkcí v okně přihlašování v konfiguraci na základě SAML. Abyste mohli začít teď můžete plně přizpůsobit, přidat, odebrat a mapovat existující uživatelské atributy vystaví jako deklarace identity v tokenech SAML.
  
-  ![Přizpůsobení hello SAML token uživatelské atributy předán tooa Federovaná aplikace](./media/active-directory-enterprise-apps-whats-new-azure-portal/10.png)
+  ![Přizpůsobení atributy SAML token uživatele předaný federovaných aplikací](./media/active-directory-enterprise-apps-whats-new-azure-portal/10.png)
 
 
-toocheck, že hello nové federovaného jednotného přihlašování k konfigurace:
-1. Otevřete federovaných aplikací **jednotného přihlašování** okno z hello levé navigační nabídku a ujistěte se, hello '*na základě SAML přihlašování** vybrat režim. 
-2. Jednou existuje, povolit hello políčko pod hello **uživatelské atributy** záhlaví toomodify všechny atributy hello součástí tokenu SAML hello předán toothat aplikace.
+Zkontrolujte, že se nový federovaný Konfigurace jednotného přihlašování:
+1. Otevřete federovaných aplikací **jednotného přihlašování** okno z levé navigační nabídku a ujistěte se, že '*na základě SAML přihlašování** vybrat režim. 
+2. Existuje, povolit políčka pod jednou **uživatelské atributy** záhlaví upravit všechny atributy, které jsou součástí tokenu SAML předaný tuto aplikaci.
 
-Můžete můžete také vytvořit, výměny a spravovat certifikáty používané pro federované jednotné přihlašování, a také upravit, který získá upozorněni, když je váš certifikát o tooexpire. Zobrazí se tyto nové možnosti v části hello **certifikáty** záhlaví na hello stejné okno přihlášení.
+Můžete můžete také vytvořit, výměny a spravovat certifikáty používané pro federované jednotné přihlašování, jakož i upravit, který získá upozorněni, když váš certifikát již brzy vyprší. Zobrazí se tyto nové možnosti v části **certifikáty** záhlaví na stejné jeden přihlašování v okně.
  
   ![Vytvoření nového certifikátu, přizpůsobení vypršení platnosti oznámení e-mailu a možnosti podepsání certifikátu](./media/active-directory-enterprise-apps-whats-new-azure-portal/11.png)
 
 ### <a name="relay-state-paramenter"></a>Stav předávání paramenter
-Nakonec jsme jste také rozšířené hello sadu parametrů, adresa URL SAML podporujeme tooinclude hello **parametru State předávání**, tedy stránku hello uživatelům budou zobrazovat uvnitř federovaných aplikací po dokončení přihlášení hello. To je velmi užitečné nastavení tooconfigure, pokud chcete, aby toosend tooa konkrétní uživatelé v rámci tooget aplikace hello je umístit probíhající rychle.
+Nakonec jsme jste také rozšířit sadu parametrů SAML URL podporujeme zahrnout **parametru State předávání**, což je stránce uživatelům budou zobrazovat uvnitř federovaných aplikací po dokončení přihlášení. Toto je velmi užitečná nastavení konfigurace, pokud chcete uživatelům odeslat na konkrétní místo v aplikaci je nelze vrátit probíhající rychle.
 
-  ![Nastavení parametru SAML předávání stavu hello](./media/active-directory-enterprise-apps-whats-new-azure-portal/12.png)
+  ![Nastavení parametru SAML předávání stavu](./media/active-directory-enterprise-apps-whats-new-azure-portal/12.png)
  
-**Parametr stavu předávání hello tooset**:
+**Nastavení parametru stavu předávání**:
 
-1. Povolit hello **zobrazit upřesňující nastavení adresy URL** políčko pod hello **domény a adresy URL** záhlaví na hello jednotné přihlašování v okně konfigurace. 
-2. Jakmile to uděláte, zobrazí se, že sadu nové adrese URL vstupních polí se zobrazují, které vám umožní tooset tohoto a jiných, nastavení adresy URL SAML.
+1. Povolit **zobrazit upřesňující nastavení adresy URL** políčko v části **domény a adresy URL** záhlaví na jednotné přihlašování v okně konfigurace. 
+2. Jakmile to uděláte, zobrazí se, že sadu nové adrese URL vstupních polí se zobrazují, které vám umožní nastavit tyto a další nastavení adresy URL SAML.
 
 ## <a name="bring-your-own-password-sso-applications"></a>Přineste vlastní heslo aplikace jednotného přihlašování
 
-Víme, že ne každé aplikace podporuje federační právo předinstalované hello. Může být například jeden hello nové aplikace, které jste přidali má vlastní přihlašovací obrazovku, kterou budou uživatelé používat uživatelské jméno a heslo toosign v k. Tyto typy aplikací můžete stále integraci s Azure AD pomocí našich **přineste si vlastní aplikace** funkci, která je nyní k dispozici pro tooconfigure můžete v hello nového portálu.
+Víme, že ne každé aplikace podporuje federační okamžitě po nasazení. Může být například jeden nové aplikace, které jste přidali má vlastní přihlašovací obrazovku, kterou budou uživatelé používat uživatelské jméno a heslo pro přihlášení k aplikaci. Tyto typy aplikací můžete stále integraci s Azure AD pomocí našich **přineste si vlastní aplikace** funkci, která je nyní k dispozici, můžete nakonfigurovat v nového portálu.
  
   ![Integrace vlastního hesla vaulting aplikací s Azure AD](./media/active-directory-enterprise-apps-whats-new-azure-portal/13.png)
 
-**toocheck out hello "přineste vlastní aplikace, funkce**:
+**Rezervovat funkci "přineste vlastní aplikace,**:
 
-1. Po nastavení hello jeden přihlašování v režimu pro novou vlastní aplikaci, která jste přidali příliš**založené na heslech přihlašování**, zadejte adresu URL hello, kde aplikace hello vykreslí jeho obrazovka pro přihlášení a klikněte na **Uložit**.  
-2. Jakmile to uděláte, jsme budete automaticky scrape tuto adresu URL pro uživatelské jméno a heslo vstupní pole a umožňují toouse Azure AD toosecurely přenášet hesla toothat aplikace pomocí rozšíření prohlížeče panely hello přístup.
+1. Po nastavení jedné přihlašování v režimu pro novou vlastní aplikaci, kterou jste přidali do **založené na heslech přihlašování**, zadejte adresu URL, kde aplikace vykreslí jeho obrazovka pro přihlášení a klikněte na tlačítko **Uložit**.  
+2. Jakmile to uděláte, jsme budete automaticky scrape tuto adresu URL pro uživatelské jméno a heslo vstupní pole a vám umožní používat Azure AD bezpečně přenést hesla k dané aplikaci pomocí rozšíření přístup k panelu prohlížeče.
 
 ## <a name="configure-self-service-application-access"></a>Konfigurace přístupu k aplikaci Samoobslužné služby
 
-Po přidání spoustu nové aplikace, možná tooallow vaši uživatelé toobrowse a přidejte tyto aplikace tootheir vlastní přístup panelů, bez nutnosti toobother můžete jako správce. Nyní tato nejnovější verze, můžete nakonfigurovat a spravovat přístup k samoobslužné služby aplikaci přímo na nový portál hello.
+Po přidání spoustu nové aplikace, možná budete chtít povolit uživatelům procházet a přidejte k vlastní panelů přístup k těmto aplikacím, aniž by museli jste Nepokoušejte se jako správce. Nyní tato nejnovější verze, můžete nakonfigurovat a spravovat přístup k aplikaci Samoobslužné služby přímo z nového portálu.
 
   ![Konfigurace samoobslužné služby aplikace přístup k zadání hesla aplikace jednotného přihlašování](./media/active-directory-enterprise-apps-whats-new-azure-portal/14.png)
  
-**tooconfigure a spravovat přístup k aplikaci Samoobslužné služby**:
+**Konfigurovat a spravovat přístup k aplikaci Samoobslužné služby**:
 
-1. tooget spuštění, můžete vybrat hello **samoobslužné služby** možnost z aplikace hello levé navigační nabídku a nastavit hello **povolit uživatelům toorequest přístup toothis aplikace?** možnost příliš ' **Ano**'. 
-2. To vám umožní tooconfigure, který je povolená tooapprove přístup toothis aplikace a přidá se které uživatelé samoobslužné služby skupiny. Kromě toho pokud aplikace hello je nakonfigurovaná pro heslo jednotného přihlašování, také uvidíte, že další možností, které lze volitelně povolíte těchto schvalovatelů toomanage hello hesla přiřadili toohello aplikace.
+1. Chcete-li začít, můžete vybrat **samoobslužné služby** levé navigační nabídku a nastavit možnost z aplikace **povolit uživatelům žádat o přístup k této aplikaci?** možnost k '**Ano**'. 
+2. To vám umožní nakonfigurovat, kdo může schválit přístup k této aplikaci a kteří uživatelé samoobslužné služby skupiny budou přidáni. Kromě toho pokud aplikace je nakonfigurovaná pro heslo jednotného přihlašování, se také zobrazí jinou možnost, která umožňuje volitelně povolit tyto schvalovatelů spravovat hesla přiřazené k aplikaci.
 
 ##<a name="feedback"></a>Váš názor
 
-Věříme, že pomocí hello vylepšené možnosti Azure AD. Uchovávejte hello zpětnou vazbu, než dorazí! Zveřejněte vaše názory a návrhy pro zlepšení ve hello **portál pro správu** části našich [fóru pro zpětnou vazbu](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Jsme se vzrušení o vytváření nástrojů nové vlastní položky každý den a používat vaše tooshape pokyny a definovat, co se máme zaměřit příště.
+Věříme, že je jako vylepšenou prostředí Azure AD. Prosím udržovat zpětnou vazbu, než dorazí! POST vaše názory a návrhy pro zlepšení **portál pro správu** části našich [fóru pro zpětnou vazbu](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Jsme se vzrušení o vytváření nástrojů nové vlastní položky každý den a použijte vaše pokyny na obrazec a definovat, co se máme zaměřit příště.
 
 ## <a name="next-steps"></a>Další kroky
 

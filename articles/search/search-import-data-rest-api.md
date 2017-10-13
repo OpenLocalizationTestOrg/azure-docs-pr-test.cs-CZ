@@ -1,6 +1,6 @@
 ---
-title: "AAA \"nahrání dat (rozhraní REST - API Azure Search) | Microsoft Docs\""
-description: "Zjistěte, jak hello tooupload data tooan index Azure Search pomocí REST API."
+title: "Nahrání dat (REST API – Azure Search) | Dokumentace Microsoftu"
+description: "Zjistěte, jak odesílat data do indexu Azure Search pomocí REST API."
 services: search
 documentationcenter: 
 author: ashmaka
@@ -15,13 +15,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 12/08/2016
 ms.author: ashmaka
-ms.openlocfilehash: 6ba1336012d1f0f6d6d6c933e16aa879afb9b824
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f22a33ed86fbfc46dfa732239263a49f34c4afee
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="upload-data-tooazure-search-using-hello-rest-api"></a>Nahrávání dat tooAzure vyhledávání pomocí hello REST API
+# <a name="upload-data-to-azure-search-using-the-rest-api"></a>Odesílání dat do služby Azure Search pomocí REST API
 > [!div class="op_single_selector"]
 >
 > * [Přehled](search-what-is-data-import.md)
@@ -30,43 +30,43 @@ ms.lasthandoff: 10/06/2017
 >
 >
 
-Tento článek vám ukáže, jak toouse hello [REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice/) tooimport data do indexu Azure Search.
+Tento článek vám ukáže, jak používat [REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice/) k importu dat do indexu Azure Search.
 
 Před zahájením tohoto názorného průvodce byste již měli mít [vytvořený index Azure Search](search-what-is-an-index.md).
 
-V pořadí toopush dokumentů do indexu pomocí hello REST API vydáte HTTP POST požadavek tooyour indexu na URL koncového bodu. text Hello hello požadavek HTTP, že text je objekt JSON obsahující dokumenty hello toobe přidat, upravit nebo odstranit.
+Pro vkládání dokumentů do indexu pomocí REST API budete vydávat na URL koncového bodu indexu požadavek HTTP POST. Text žádosti požadavku HTTP je objekt JSON obsahující dokumenty, které se mají přidat, upravit nebo odstranit.
 
 ## <a name="identify-your-azure-search-services-admin-api-key"></a>Identifikace klíče rozhraní API správce služby Azure Search
-Při odesílání požadavků HTTP na vaši službu pomocí REST API hello *každý* požadavku API musí zahrnovat hello klíč api-key generovaný pro hello službu vyhledávání jste zřídili. Platný klíč vytváří na základě žádosti mezi hello aplikace odesílání hello požadavku a hello služby, která ji zpracovává vztah důvěryhodnosti.
+Při odesílání požadavků HTTP na vaši službu pomocí REST API musí *každá* žádost na rozhraní API obsahovat klíč api-key, který byl vygenerovaný pro zřízenou službu Vyhledávání. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
-1. toofind klíče služby api Key, se můžete přihlásit toohello [portálu Azure](https://portal.azure.com/)
-2. Okno služby Azure Search přejděte tooyour
-3. Klikněte na hello ikonu klíčů."
+1. Pokud chcete najít klíče api-key svojí služby, přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+2. Přejděte do okna služby Azure Search.
+3. Klikněte na ikonu klíčů.
 
 Vaše služba bude mít *klíče správce* a *klíče dotazů*.
 
-* Primární a sekundární *klíče správce* udělit úplná práva tooall operace, včetně hello možnost toomanage hello služby, vytvářet a odstraňovat indexy, indexery a zdroje dat.. Existují dva klíče, aby mohl pokračovat toouse hello sekundární klíč, pokud se rozhodnete tooregenerate hello primární klíč a naopak.
-* Vaše *klíče dotazů* udělit oprávnění jen pro čtení tooindexes a dokumentům a obvykle distribuované tooclient aplikace, které vydávají požadavky hledání.
+* Primární a sekundární *klíče správce* udělují úplná práva ke všem operacím, včetně možnosti spravovat službu, vytvářet a odstraňovat indexy, indexery a zdroje dat. Existují dva klíče, takže pokud se rozhodnete znovu vygenerovat primární klíč, můžete dál používat sekundární klíč, a naopak.
+* Vaše *klíče dotazů* udělují přístup jen pro čtení k indexům a dokumentům a obvykle se distribuují klientským aplikacím, které vydávají požadavky hledání.
 
-Pro účely hello importování dat do indexu, můžete použít buď vaší primární nebo sekundární klíč správce.
+Pro účely importování dat do indexu můžete použít primární nebo sekundární klíč správce.
 
-## <a name="decide-which-indexing-action-toouse"></a>Rozhodněte, které indexování toouse akce
-Pokud používáte hello REST API, vydáte požadavky HTTP POST s JSON požadavek těla tooyour indexu Azure Search na adresu URL koncového bodu. Hello objekt JSON v požadavku HTTP bude obsahovat jedno pole JSON s názvem "value" s objekty JSON reprezentujícími dokumenty, které byste chtěli tooadd tooyour indexu, aktualizovat nebo odstranit.
+## <a name="decide-which-indexing-action-to-use"></a>Rozhodněte, jakou akci indexování použít
+Při používání REST API budete na URL koncového bodu indexu Azure Search vydávat požadavky HTTP POST s textem žádosti ve formátu JSON. Objekt JSON v požadavku HTTP bude obsahovat jedno pole JSON s názvem „value“ s objekty JSON reprezentujícími dokumenty, které si přejete přidat do indexu, aktualizovat nebo odstranit.
 
-Každý objekt JSON v poli "value" hello představuje dokumentu toobe, indexovat. Každý z těchto objektů obsahuje klíč dokumentu hello a určuje akci hello potřeby indexování (odeslání, sloučení, odstranění atd.). Podle toho, která hello níže akce, který zvolíte musí být objekt pro každý dokument obsahovat pouze určitá pole:
+Každý objekt JSON v poli „value“ reprezentuje dokument, který se má indexovat. Každý z těchto objektů obsahuje klíč dokumentu a určuje požadovanou akci indexování (odeslání, sloučení, odstranění atd.). V závislosti na zvolené akci musí objekt pro každý dokument obsahovat pouze určitá pole.
 
 | @search.action | Popis | Potřebná pole pro každý dokument | Poznámky |
 | --- | --- | --- | --- |
-| `upload` |`upload` Akci je podobný tooan "upsert", kde hello dokument vložený, pokud je nový a aktualizovaný nebo nahrazený, pokud existuje. |klíč a další pole chcete toodefine |Pokud aktualizujete nebo nahrazujete stávající dokument, bude každé pole, které není určený v požadavku hello mít nastavené příliš`null`. K tomu dojde i v případě, že bylo hello pole dříve nastavené tooa jinou hodnotu než null. |
-| `merge` |Aktualizace stávající dokumentů s hello zadaná pole. Pokud hello dokument v indexu hello neexistuje, sloučení hello se nezdaří. |klíč a další pole chcete toodefine |Každé pole zadané ve sloučení nahradí stávající pole hello v dokumentu hello. To zahrnuje i pole typu `Collection(Edm.String)`. Například pokud hello dokument obsahuje pole `tags` s hodnotou `["budget"]` a vy spustíte sloučení s hodnotou `["economy", "pool"]` pro `tags`, hello konečná hodnota hello `tags` pole bude `["economy", "pool"]`. Hodnota nebude `["budget", "economy", "pool"]`. |
-| `mergeOrUpload` |Tato akce se chová jako `merge` Pokud dokument s hello zadaný klíč již existuje v indexu hello. Pokud hello dokument neexistuje, chová se jako `upload` s novým dokumentem. |klíč a další pole chcete toodefine |- |
-| `delete` |Odebere zadaný dokument hello hello index. |pouze klíč |Všechna zadaná pole kromě pole klíče hello budou ignorovány. Pokud chcete tooremove z dokumentu jednotlivá pole, použijte `merge` místo a jednoduše nastavte pole hello explicitně toonull. |
+| `upload` |Akce `upload` je podobná akci „upsert“, kdy je dokument vložený, pokud je nový a aktualizovaný nebo nahrazený, pokud již existuje. |klíč a další pole, která si přejete definovat |Pokud aktualizujete nebo nahrazujete stávající dokument, bude každé pole, které není zadané v žádosti, nastavené na `null`. K tomu dojde i v případě, že bylo pole dříve nastavené na nenulovou hodnotu. |
+| `merge` |Aktualizuje stávající dokument se zadanými poli. Pokud dokument v indexu neexistuje, sloučení selže. |klíč a další pole, která si přejete definovat |Každé pole zadané ve sloučení nahradí stávající pole v dokumentu. To zahrnuje i pole typu `Collection(Edm.String)`. Například pokud dokument obsahuje pole `tags` s hodnotou `["budget"]` a vy spustíte sloučení s polem `tags` s hodnotou `["economy", "pool"]`, konečná hodnota pole `tags` bude `["economy", "pool"]`. Hodnota nebude `["budget", "economy", "pool"]`. |
+| `mergeOrUpload` |Pokud již dokument s daným klíčem v indexu existuje, chová se tato akce jako `merge`. Pokud dokument neexistuje, chová se s novým dokumentem jako `upload`. |klíč a další pole, která si přejete definovat |- |
+| `delete` |Odebere z indexu zadaný dokument. |pouze klíč |Všechna zadaná pole kromě pole klíče budou ignorována. Chcete-li odebrat z dokumentu jednotlivá pole, použijte místo toho `merge` a jednoduše nastavte hodnotu pole na „null“. |
 
 ## <a name="construct-your-http-request-and-request-body"></a>Konstrukce požadavku HTTP a textu žádosti
-Teď, když jste shromáždili hello potřebné hodnoty polí pro akce indexu, jsou připravené tooconstruct hello vlastní požadavek HTTP a JSON vaše data žádosti tooimport textu.
+Nyní, když jste shromáždili potřebné hodnoty polí pro akce indexu, jste připraveni vytvořit vlastní požadavek HTTP a text žádosti ve formátu JSON pro import vašich dat.
 
 #### <a name="request-and-request-headers"></a>Požadavek a hlavičky požadavku
-V adrese URL hello, budete potřebovat tooprovide váš název služby, název indexu ("hotels" v tomto případě), a také hello správnou verzi rozhraní API (aktuální verze rozhraní API hello je `2016-09-01` v době publikování tohoto dokumentu hello). Budete potřebovat toodefine hello `Content-Type` a `api-key` hlavičky požadavku. Pro pozdější hello použijte jeden z klíčů správce vaší služby.
+V URL budete muset poskytnout název služby, název indexu (v tomto případě „hotels“) a správnou verzi rozhraní API (v době publikování tohoto dokumentu je aktuální verze rozhraní API `2016-09-01`). Budete muset definovat `Content-Type` a hlavičky požadavku `api-key`. K tomu použijte jeden z klíčů správce vaší služby.
 
     POST https://[search service].search.windows.net/indexes/hotels/docs/index?api-version=2016-09-01
     Content-Type: application/json
@@ -110,7 +110,7 @@ V adrese URL hello, budete potřebovat tooprovide váš název služby, název i
             "@search.action": "mergeOrUpload",
             "hotelId": "3",
             "baseRate": 129.99,
-            "description": "Close tootown hall and hello river"
+            "description": "Close to town hall and the river"
         },
         {
             "@search.action": "delete",
@@ -122,13 +122,13 @@ V adrese URL hello, budete potřebovat tooprovide váš název služby, název i
 
 V tomto případě používáme jako akce hledání `upload`, `mergeOrUpload`, a `delete`.
 
-Předpokládejme, že je ukázkový index „hotels“ již naplněný řadou dokumentů. Všimněte si, jak nebylo nutné toospecify všechny hello možná pole dokumentu při použití `mergeOrUpload` a jak jsme zadali pouze klíč dokumentu hello (`hotelId`) při použití `delete`.
+Předpokládejme, že je ukázkový index „hotels“ již naplněný řadou dokumentů. Všimněte si, že při použití `mergeOrUpload` nebylo nutné zadat všechna možná pole dokumentu, a při použití `delete` jsme zadali pouze klíč dokumentu (`hotelId`).
 
-Také Upozorňujeme, že jste může obsahovat jenom too1000 dokumentů (nebo 16 MB) v jedné žádosti indexování.
+Mějte také na paměti, že můžete v jedné žádosti indexování zahrnout maximálně 1000 dokumentů (nebo 16 MB).
 
 ## <a name="understand-your-http-response-code"></a>Pochopení kódu odpovědi HTTP
 #### <a name="200"></a>200
-Po odeslání úspěšné žádosti indexování obdržíte odpověď protokolu HTTP se stavovým kódem `200 OK`. Hello text JSON hello odpověď HTTP bude vypadat takto:
+Po odeslání úspěšné žádosti indexování obdržíte odpověď protokolu HTTP se stavovým kódem `200 OK`. Text JSON odpovědi protokolu HTTP bude následující:
 
 ```JSON
 {
@@ -144,7 +144,7 @@ Po odeslání úspěšné žádosti indexování obdržíte odpověď protokolu 
 ```
 
 #### <a name="207"></a>207
-Stavový kód `207` se vrátí, pokud nebyla alespoň jedna položka úspěšně indexovaná. Hello text JSON hello odpověď HTTP bude obsahovat informace o neúspěšných dokumentech hello.
+Stavový kód `207` se vrátí, pokud nebyla alespoň jedna položka úspěšně indexovaná. Text JSON odpovědi protokolu HTTP bude obsahovat informace o neúspěšných dokumentech.
 
 ```JSON
 {
@@ -152,7 +152,7 @@ Stavový kód `207` se vrátí, pokud nebyla alespoň jedna položka úspěšně
         {
             "key": "unique_key_of_document",
             "status": false,
-            "errorMessage": "hello search service is too busy tooprocess this document. Please try again later."
+            "errorMessage": "The search service is too busy to process this document. Please try again later."
         },
         ...
     ]
@@ -160,22 +160,22 @@ Stavový kód `207` se vrátí, pokud nebyla alespoň jedna položka úspěšně
 ```
 
 > [!NOTE]
-> Často to znamená, že hello zatížení na hledání služby dosahuje bodu, kdy začnou požadavky indexování tooreturn `503` odpovědi. V tom případě důrazně doporučujeme, aby se váš klientský kód stáhnul a chvíli počkal před tím, než to zkusí znovu. To vám poskytne hello systému některé toorecover čas, zvýšit hello šanci na úspěšné provedení dalších požadavků. Rychlé opakování požadavků pouze prodlouží situaci hello.
+> Často to znamená, že zatížení vaší služby vyhledávání dosahuje bodu, kdy začnou požadavky indexování vracet odpovědi `503`. V tom případě důrazně doporučujeme, aby se váš klientský kód stáhnul a chvíli počkal před tím, než to zkusí znovu. Systému tak poskytnete čas k obnovení, což zvýší šanci na úspěšné provedení dalších požadavků. Rychlé opakování požadavků pouze prodlouží situaci.
 >
 >
 
 #### <a name="429"></a>429
-Stavový kód `429` bude vrácen, pokud jste překročili kvótu hello počet dokumentů na index.
+Stavový kód `429` bude vrácen, pokud jste překročili kvótu pro počet dokumentů na index.
 
 #### <a name="503"></a>503
-Stavový kód `503` bude vrácen, pokud žádná z položek hello v požadavku hello byly úspěšně indexovat. Tato chyba znamená, že hello systém je velmi zatížen a váš požadavek nelze zpracovat v tuto chvíli.
+Stavový kód `503` bude vrácen, pokud nedošlo k úspěšné indexaci položek v požadavku. Tato chyba znamená, že je systém velmi zatížen a váš požadavek nelze v tuto chvíli zpracovat.
 
 > [!NOTE]
-> V tom případě důrazně doporučujeme, aby se váš klientský kód stáhnul a chvíli počkal před tím, než to zkusí znovu. To vám poskytne hello systému některé toorecover čas, zvýšit hello šanci na úspěšné provedení dalších požadavků. Rychlé opakování požadavků pouze prodlouží situaci hello.
+> V tom případě důrazně doporučujeme, aby se váš klientský kód stáhnul a chvíli počkal před tím, než to zkusí znovu. Systému tak poskytnete čas k obnovení, což zvýší šanci na úspěšné provedení dalších požadavků. Rychlé opakování požadavků pouze prodlouží situaci.
 >
 >
 
 Další informace o akcích dokumentu a úspěšných/neúspěšných odpovědích naleznete v tématu [Přidání, aktualizování nebo odstranění dokumentů](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents). Další informace o stavových kódech HTTP, které se mohou vrátit v případě selhání, naleznete v tématu [Stavové kódy HTTP (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
 
 ## <a name="next-steps"></a>Další kroky
-Po naplnění indexu Azure Search, bude připravená toostart vystavování toosearch dotazy pro dokumenty. Podrobnosti naleznete v tématu [Dotazování indexu Azure Search](search-query-overview.md).
+Po naplnění indexu Azure Search budete připraveni začít vydávat dotazy pro vyhledávání dokumentů.  Podrobnosti naleznete v tématu [Dotazování indexu Azure Search](search-query-overview.md).

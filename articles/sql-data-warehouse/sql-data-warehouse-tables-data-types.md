@@ -1,6 +1,6 @@
 ---
-title: aaaData typy pokyny - Azure SQL Data Warehouse | Microsoft Docs
-description: "Doporučení, že toodefine datové typy, které jsou kompatibilní s datovým skladem SQL."
+title: "Datové typy pokyny - Azure SQL Data Warehouse | Microsoft Docs"
+description: "Doporučení k definování typů dat, které jsou kompatibilní s SQL Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: NA
 author: shivaniguptamsft
@@ -15,29 +15,29 @@ ms.workload: data-services
 ms.custom: tables
 ms.date: 06/02/2017
 ms.author: shigu;barbkess
-ms.openlocfilehash: a2f7a394feb73d273b25101735b00eb12db2b292
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5c24c71af16bd9851d9caf15fecfa4bb76f5f77e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="guidance-for-defining-data-types-for-tables-in-sql-data-warehouse"></a>Pokyny pro definování typů dat pro tabulky v SQL Data Warehouse
-Pomocí těchto doporučení toodefine tabulky typy dat, které jsou kompatibilní s SQL Data Warehouse. Kromě toho toocompatibility, minimalizovat hello velikost datových typů zlepšuje výkon dotazů.
+Tato doporučení použijte k definování typů tabulek dat, které jsou kompatibilní s datovým skladem SQL. Kromě kompatibility minimalizovat velikost datových typů zlepšuje výkon dotazů.
 
-SQL Data Warehouse podporuje hello nejčastěji používané datové typy. Seznam hello podporované datové typy, naleznete v části [datové typy](/sql/docs/t-sql/statements/create-table-azure-sql-data-warehouse.md#datatypes) v hello příkazu CREATE TABLE. 
+SQL Data Warehouse podporuje nejčastěji používané datové typy. Seznam podporované datové typy, naleznete v části [datové typy](/sql/docs/t-sql/statements/create-table-azure-sql-data-warehouse.md#datatypes) v příkazu CREATE TABLE. 
 
 
 ## <a name="minimize-row-length"></a>Minimalizovat délka řádku
-Minimalizace hello velikost datových typů zkracuje délku řádku hello, což vede toobetter výkon dotazů. Použití hello nejmenší datový typ, který se dá použít pro vaše data. 
+Minimalizace velikost datových typů zkracuje délku řádku, což vede k lepší výkon dotazů. Použijte nejmenší datový typ, který funguje pro vaše data. 
 
-- Nedefinujte znak sloupce s délkou velké výchozí. Například pokud hello nejdelší hodnota je 25 znaků, pak definujte vaše sloupec jako VARCHAR(25). 
+- Nedefinujte znak sloupce s délkou velké výchozí. Například pokud nejdelší hodnota je 25 znaků, pak definujte vaše sloupec jako VARCHAR(25). 
 - Nepoužívejte [NVARCHAR] [ NVARCHAR] když potřebujete jenom VARCHAR.
 - Pokud je to možné, použijte místo NVARCHAR(MAX) nebo VARCHAR(MAX) NVARCHAR(4000) nebo VARCHAR(8000).
 
-Pokud používáte Polybase tooload vaše tabulky, nesmí překročit délka hello definované řádku tabulky hello 1 MB. Pokud řádek s proměnnou délkou dat překročí 1 MB, můžete načíst řádek hello pomocí BCP, ale ne pomocí funkce PolyBase.
+Pokud používáte Polybase načíst vaše tabulky, nesmí překročit definované délka řádku tabulky 1 MB. Pokud řádek s proměnnou délkou dat překročí 1 MB, můžete načíst řádek pomocí BCP, ale ne pomocí funkce PolyBase.
 
 ## <a name="identify-unsupported-data-types"></a>Identifikovat nepodporované datové typy
-Pokud migrujete z jiné databáze SQL databáze, můžete se setkat datové typy, které nejsou podporované v SQL Data Warehouse. Použijte tento dotaz toodiscover nepodporované datové typy ve vaší stávající schématu SQL.
+Pokud migrujete z jiné databáze SQL databáze, můžete se setkat datové typy, které nejsou podporované v SQL Data Warehouse. Pomocí tohoto dotazu ke zjištění nepodporované datové typy ve vaší stávající schématu SQL.
 
 ```sql
 SELECT  t.[name], c.[name], c.[system_type_id], c.[user_type_id], y.[is_user_defined], y.[name]
@@ -51,7 +51,7 @@ WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','
 
 ## <a name="unsupported-data-types"></a>Alternativní řešení pomocí nepodporované datové typy
 
-Hello následujícím seznamu jsou uvedeny hello typy dat, které nepodporuje SQL Data Warehouse a poskytuje alternativy, které můžete použít místo hello nepodporované datové typy.
+Následující seznam obsahuje typy dat, že SQL Data Warehouse nepodporuje a alternativy, které můžete použít místo nepodporované datové typy.
 
 | Nepodporovaný datový typ. | Alternativní řešení |
 | --- | --- |
@@ -62,15 +62,15 @@ Hello následujícím seznamu jsou uvedeny hello typy dat, které nepodporuje SQ
 | [text][ntext,text,image] |[varchar][varchar] |
 | [ntext][ntext,text,image] |[nvarchar][nvarchar] |
 | [SQL_VARIANT][sql_variant] |Rozdělí sloupec do několika sloupců silného typu. |
-| [Tabulka][table] |Převeďte tootemporary tabulky. |
-| [časové razítko][timestamp] |Přepracování kódu toouse [datetime2] [ datetime2] a `CURRENT_TIMESTAMP` funkce.  Jsou podporovány pouze konstanty jako výchozí, proto current_timestamp nelze definovat jako výchozí omezení. Pokud potřebujete hodnoty verze toomigrate řádků ze zadaných sloupec časového razítka, použijte [binární][BINARY](8) nebo [VARBINARY][BINARY](8) pro NOT NULL nebo Řádek verze hodnoty NULL. |
+| [Tabulka][table] |Převeďte na dočasné tabulky. |
+| [časové razítko][timestamp] |Přepracování kódu pro použití [datetime2] [ datetime2] a `CURRENT_TIMESTAMP` funkce.  Jsou podporovány pouze konstanty jako výchozí, proto current_timestamp nelze definovat jako výchozí omezení. Pokud potřebujete migrovat hodnoty verze řádků z typu sloupec časového razítka, použijte [binární][BINARY](8) nebo [VARBINARY][BINARY](8) pro NOT NULL nebo Řádek verze hodnoty NULL. |
 | [XML][xml] |[varchar][varchar] |
-| [uživatelsky definovaný typ.][user defined types] |Převeďte zpět toohello nativní datový typ, pokud je to možné. |
+| [uživatelsky definovaný typ.][user defined types] |Převeďte zpátky na nativní datový typ, pokud je to možné. |
 | výchozí hodnoty | Výchozí hodnoty podporují literály a pouze konstanty.  Nedeterministické výrazy nebo funkce, jako například `GETDATE()` nebo `CURRENT_TIMESTAMP`, nejsou podporovány. |
 
 
 ## <a name="next-steps"></a>Další kroky
-toolearn více, najdete v části:
+Další informace naleznete v tématu:
 
 - [SQL Data Warehouse osvědčené postupy][SQL Data Warehouse Best Practices]
 - [Tabulka – přehled][Overview]

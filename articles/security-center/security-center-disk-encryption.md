@@ -1,6 +1,6 @@
 ---
-title: "Virtuální počítač Azure aaaEncrypt | Microsoft Docs"
-description: "Tento dokument vám pomůže tooencrypt virtuální počítač Azure po přijetí oznámení z Azure Security Center."
+title: "Šifrování virtuálního počítače Azure | Dokumentace Microsoftu"
+description: "Tento dokument vám pomůže zašifrovat virtuální počítač Azure, pokud dostanete výstrahu od služby Azure Security Center."
 services: security, security-center
 documentationcenter: na
 author: TomShinder
@@ -14,134 +14,134 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
-ms.openlocfilehash: 7c7c6eed39d16bde8a0dfaffe3a3331c58101634
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8d39aafb0ab7b0e87afdf4d2f50f1e224b8d251f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="encrypt-an-azure-virtual-machine"></a>Šifrování virtuálního počítače Azure
-Azure Security Center vás upozorní, pokud máte virtuální počítače, které nejsou šifrované. Tyto výstrahy se zobrazují jako vysokou závažností a hello doporučení je tooencrypt těchto virtuálních počítačů.
+Azure Security Center vás upozorní, pokud máte virtuální počítače, které nejsou šifrované. Tyto výstrahy se zobrazují jako upozornění s vysokou závažností. Doporučuje se tyto virtuální počítače zašifrovat.
 
 ![Doporučení pro šifrování disku](./media/security-center-disk-encryption/security-center-disk-encryption-fig1.png)
 
 > [!NOTE]
-> Hello informace v tomto dokumentu se vztahuje tooencrypting virtuální počítače bez použití šifrování klíče, (které jsou nezbytné pro zálohování virtuálních počítačů pomocí služby Azure Backup). Prosím najdete v článku hello [Azure Disk Encryption pro systém Windows a Linux Azure Virtual Machines](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption) informace o tom toouse klíč šifrovacího klíče toosupport Azure Backup pro šifrované virtuální počítače Azure.
+> Informace v tomto dokumentu se vztahují k šifrování virtuálních počítačů bez použití klíčového šifrovacího klíče (který se vyžaduje k zálohování virtuálních počítačů pomocí služby Azure Backup). Informace o použití klíčového šifrovacího klíče k zajištění podpory služby Azure Backup pro šifrované Azure Virtual Machines najdete v článku [Azure Disk Encryption pro Azure Virtual Machines s Windows a Linuxem](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption).
 >
 >
 
-tooencrypt virtuální počítače Azure, které byly identifikovány pomocí služby Azure Security Center potřebují šifrování, doporučujeme hello následující kroky:
+Pokud chcete zašifrovat virtuální počítače Azure, u kterých služba Azure Security Center zjistila, že potřebují šifrování, doporučujeme použít následující postup:
 
-* Instalace a konfigurace Azure Powershellu. To vám umožní toorun hello prostředí PowerShell příkazy požadované tooset až hello požadavky požadované tooencrypt virtuální počítače Azure.
-* Získat a spustit skript prostředí Azure PowerShell Azure Disk Encryption požadavky hello
+* Instalace a konfigurace Azure Powershellu. Díky tomu bude možné spustit příkazy PowerShellu, které jsou nutné k instalaci požadovaných součástí pro šifrování Azure Virtual Machines.
+* Získání a spuštění skriptu Azure PowerShellu pro Azure Disk Encryption
 * Šifrování virtuálních počítačů
 
-Hello cílem tohoto dokumentu je tooenable tooencrypt můžete virtuální počítače, i v případě, že máte v prostředí Azure PowerShell nebo téměř žádné zkušenosti.
-Tento dokument předpokládá, že používáte Windows 10 jako hello klientský počítač, ze kterého budete konfigurovat Azure Disk Encryption.
+Cílem tohoto dokumentu je umožnit šifrování virtuálních počítačů i v případě, že nemáte s Azure PowerShellem žádné nebo téměř žádné zkušenosti.
+Tento dokument předpokládá, že používáte Windows 10 jako klientský počítač, ze kterého budete konfigurovat Azure Disk Encryption.
 
-Existuje mnoho přístupů, které se dají použít toosetup hello požadavky a tooconfigure šifrování pro virtuální počítače Azure. Pokud jste už dobře versed v prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure, dáte možná přednost alternativním přístupům toouse.
+Existuje celá řada přístupů, které lze využít pro instalaci požadovaných součástí a konfiguraci šifrování pro Azure Virtual Machines. Pokud jste už s Azure PowerShellem nebo rozhraním příkazového řádku Azure CLI dobře obeznámeni, dáte možná přednost alternativním přístupům.
 
 > [!NOTE]
-> toolearn Další informace o alternativních přístupech tooconfiguring šifrování pro virtuální počítače Azure, najdete v tématu [Azure Disk Encryption pro systém Windows a Linux Azure Virtual Machines](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0).
+> Další informace o alternativních přístupech ke konfiguraci šifrování pro virtuální počítače Azure najdete v tématu [Azure Disk Encryption pro Azure Virtual Machines s Windows a Linuxem](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0).
 >
 >
 
 ## <a name="install-and-configure-azure-powershell"></a>Instalace a konfigurace Azure Powershellu
-Budete potřebovat, aby na vašem počítači byl nainstalovaný Azure PowerShell verze 1.2.1 nebo novější. článek Hello [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) obsahuje všechny kroky hello potřebujete tooprovision toowork váš počítač s prostředím Azure PowerShell. Hello nejjednodušší je toouse hello instalaci Web PI uvedenou v tomto článku. I když už máte Azure PowerShell nainstalovaný, nainstalujte znovu pomocí instalace webové platformy přístup hello tak, že máte nejnovější verzi prostředí Azure PowerShell hello.
+Budete potřebovat, aby na vašem počítači byl nainstalovaný Azure PowerShell verze 1.2.1 nebo novější. Všechny kroky nutné k tomu, abyste ve svém počítači mohli pracovat s Azure PowerShellem, najdete v článku [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview). Nejjednodušší je využít instalaci Web PI uvedenou v tomto článku. Instalaci Web PI využijte, i když už máte Azure PowerShell nainstalovaný. Zajistíte tak, abyste měli jeho nejnovější verzi.
 
-## <a name="obtain-and-run-hello-azure-disk-encryption-prerequisites-configuration-script"></a>Získání a spuštění hello Azure disk encryption požadavky konfigurační skript
-Hello konfigurační skript požadovaných součástí pro Azure Disk Encryption nastaví všechny hello nezbytné součásti potřebné pro šifrování Azure Virtual Machines.
+## <a name="obtain-and-run-the-azure-disk-encryption-prerequisites-configuration-script"></a>Získání a spuštění konfiguračního skriptu požadovaných součástí pro Azure Disk Encryption
+Konfigurační skript požadovaných součástí pro Azure Disk Encryption nastaví všechny požadované součásti, které jsou potřeba pro šifrování Azure Virtual Machines.
 
-1. Přejděte toohello GitHub stránce, která má hello [skript Azure Disk Encryption požadovaných součástí instalace](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1).
-2. Na stránce Gibhubu hello klikněte hello **Raw** tlačítko.
-3. Použít **CTRL-A** tooselect všechny hello text na stránce hello a pak použijte **CTRL-C** toocopy všechny hello textu hello stránky toohello schránky.
-4. Otevřete **Poznámkový blok** a vložte hello zkopírovat text do poznámkového bloku.
+1. Přejděte na stránku GitHubu, která obsahuje [skript pro instalaci požadovaných součástí pro Azure Disk Encryption](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1).
+2. Na stránce GibHubu klikněte na tlačítko **Raw**.
+3. Pomocí kombinace kláves **CTRL-A** vyberte veškerý text na této stránce a potom pomocí kombinace kláves **CTRL-C** zkopírujte tento text do schránky.
+4. Otevřete **Poznámkový blok** a vložte zkopírovaný text do Poznámkového bloku.
 5. Na jednotce C: vytvořte novou složku s názvem **AzureADEScript**.
-6. Uložte soubor poznámkového bloku hello – klikněte na tlačítko **soubor**, pak klikněte na tlačítko **uložit jako**. Do textového pole název souboru hello, zadejte **"ADEPrereqScript.ps1"** a klikněte na tlačítko **Uložit**. (Nezapomeňte uvést název hello hello uvozovky, jinak bude ukládat hello soubor s příponou .txt souboru).
+6. Uložte soubor Poznámkového bloku – klikněte na **Soubor** a potom klikněte na **Uložit jako**. Do textového pole Název souboru zadejte **ADEPrereqScript.ps1** a klikněte na **Uložit**. (Nezapomeňte v názvu souboru použít uvozovky, jinak se soubor uloží s příponou .txt.)
 
-Teď, když je hello obsah skriptu uložený, otevřete v hello PowerShell ISE hello skriptu:
+Když je obsah skriptu uložený, otevřete skript v integrovaném skriptovacím prostředí v PowerShellu:
 
-1. V nabídce Start hello, klikněte na **Cortana**. Požádejte **Cortana** "PowerShell" zadáním **prostředí PowerShell** hello Cortana vyhledávání textového pole.
+1. V nabídce Start klikněte na **Cortana**. Vyhledejte **Cortana** PowerShell zadáním řetězce **PowerShell** do textového pole Cortany pro vyhledávání.
 2. Klikněte pravým tlačítkem na **Integrované skriptovací prostředí (ISE) v prostředí Windows PowerShell** a klikněte na **Spustit jako správce**.
-3. V hello **správce: Windows PowerShell ISE** okně klikněte na tlačítko **zobrazení** a pak klikněte na **zobrazit podokno skriptu**.
-4. Pokud se zobrazí hello **příkazy** podokně na pravé straně hello hello okna, klikněte na tlačítko hello **"x"** v hello pravém horním rohu hello podokně tooclose ho. Pokud je příliš malá pro toosee jste hello text, použijte **CTRL + Add** ("Přidat" je hello "+" přihlášení). Pokud hello text je příliš velký, použijte **CTRL + Subtract** (Subtract je hello "-" přihlášení).
-5. Klikněte na **Soubor** a potom klikněte na **Otevřete**. Přejděte toohello **C:\AzureADEScript** složku a hello dvakrát klikněte na hello **ADEPrereqScript**.
-6. Hello **ADEPrereqScript** obsahu by se měla zobrazit v hello PowerShell ISE a je barevně toohelp snadněji najdete různé komponenty, například příkazy, parametry a proměnné.
+3. V okně **Správce: Integrované skriptovací prostředí (ISE) v prostředí Windows PowerShell** klikněte na **Zobrazit** a potom klikněte na **Zobrazit podokno skriptu**.
+4. Pokud se na pravé straně tohoto okna zobrazí podokno **Příkazy**, zavřete ho kliknutím na **x** v pravém horním rohu. Pokud je text příliš malý, použijte **CTRL+Add** (Add je znak +). Pokud je text příliš velký, použijte **CTRL+Subtract** (Subtract je znak -).
+5. Klikněte na **Soubor** a potom klikněte na **Otevřete**. Přejděte ke složce **C:\AzureADEScript** a poklikejte na **ADEPrereqScript**.
+6. V integrovaném skriptovacím prostředí (ISE) v prostředí PowerShell by se měl zobrazit obsah souboru **ADEPrereqScript**. Jednotlivé komponenty, například příkazy, parametry a proměnné, jsou rozlišené barevně.
 
-Měli byste vidět něco podobného jako na následujícím obrázku hello.
+Měli byste vidět něco podobného jako na následujícím obrázku.
 
 ![Okno integrovaného skriptovacího prostředí (ISE) v prostředí PowerShell](./media/security-center-disk-encryption/security-center-disk-encryption-fig2.png)
 
-horní podokno Hello je odkazované tooas hello "podokno skriptu" a hello dolní podokno je odkazované tooas hello "console". Tyto termíny využijeme dále v tomto článku.
+Horní podokno se označuje jako podokno skriptu a dolní podokno se označuje jako konzola. Tyto termíny využijeme dále v tomto článku.
 
-## <a name="run-hello-azure-disk-encryption-prerequisites-powershell-command"></a>Spusťte příkaz prostředí PowerShell hello Azure disk encryption požadavky
-Hello Azure Disk Encryption požadavky skript zobrazí výzvu k hello po spuštění skriptu hello následující informace:
+## <a name="run-the-azure-disk-encryption-prerequisites-powershell-command"></a>Spuštění příkazu PowerShellu pro požadované součásti služby Azure Disk Encryption
+Skript pro požadované součásti služby Azure Disk Encryption po spuštění zobrazí výzvu k zadání následujících informací:
 
-* **Název skupiny prostředků** – název z hello skupinu prostředků, které chcete tooput hello Key Vault do.  Novou skupinu prostředků s názvem hello, kterou zadáte bude vytvořen, pokud není k dispozici již s tímto názvem vytvořen. Pokud už máte skupinu prostředků, které chcete toouse v tomto předplatném, zadejte název hello této skupiny prostředků.
-* **Název pro Key Vault** -název hello Key Vault, ve které šifrovací klíče jsou toobe umístit. Pokud služba Key Vault se zadaným názvem neexistuje, vytvoří se nová. Pokud jste již máte službu Key Vault, které chcete toouse, zadejte název hello hello existující Key Vault.
-* **Umístění** -umístění hello Key Vault. Zkontrolujte, zda jsou hello Key Vault a virtuální počítače toobe šifrované v hello stejné umístění. Pokud si nejste jisti hello umístění, jsou dále v tomto článku, který vám ukáže, jak kroky toofind limitu.
-* **Azure Active Directory název_aplikace** -název hello aplikaci Azure Active Directory, které se bude toohello tajné klíče používané toowrite Key Vault. Pokud aplikace se zadaným názvem neexistuje, vytvoří se nová. Pokud již máte aplikaci Azure Active Directory, které chcete toouse, zadejte název hello této aplikace Azure Active Directory.
+* **Název skupiny prostředků** – 	Název skupiny prostředků, do kterého chcete vložit Key Vault.  Pokud skupina prostředků se zadaným názvem neexistuje, vytvoří se nová. Pokud už máte skupinu prostředků, kterou chcete použít v tomto předplatném, zadejte název této skupiny prostředků.
+* **Název pro Key Vault** – Název služby Key Vault, do které se umístí šifrovací klíče. Pokud služba Key Vault se zadaným názvem neexistuje, vytvoří se nová. Pokud už máte službu Key Vault, kterou chcete použít, zadejte název této služby Key Vault.
+* **Umístění** – Umístění služby Key Vault. Ověřte, že Key Vault a virtuální počítače, které se mají šifrovat, jsou ve stejném umístění. Pokud toto umístění neznáte, dále v tomto článku jsou uvedené kroky, které vám ukážou, jak toto umístění zjistit.
+* **Název aplikace Azure Active Directory** – Název aplikace Azure Active Directory, která se použije k zápisu tajných klíčů do služby Key Vault. Pokud aplikace se zadaným názvem neexistuje, vytvoří se nová. Pokud už máte aplikaci Azure Active Directory, kterou chcete použít, zadejte název této aplikace Azure Active Directory.
 
 > [!NOTE]
-> Pokud jste zvědaví jako toowhy potřebujete toocreate aplikaci Azure Active Directory najdete v tématu *zaregistrovat aplikaci s Azure Active Directory* v článku hello [Začínáme s Azure Key Vault](../key-vault/key-vault-get-started.md).
+> Pokud vás zajímá, proč je potřeba vytvořit aplikaci Azure Active Directory, přečtěte si oddíl věnovaný *registraci aplikace ve službě Azure Active Directory* v článku [Začínáme se službou Azure Key Vault](../key-vault/key-vault-get-started.md).
 >
 >
 
-Proveďte následující kroky tooencrypt virtuální počítač Azure hello:
+Pomocí následujících kroků zašifrujte virtuální počítač Azure:
 
-1. Pokud jste zavřeli hello PowerShell ISE, otevřete instanci hello PowerShell ISE se zvýšenými oprávněními. Pokud otevřete hello PowerShell ISE není již, postupujte podle pokynů hello dříve v tomto článku. Pokud jste zavřeli hello skriptu, otevřete hello **ADEPrereqScript.ps1** kliknutím na tlačítko **soubor**, pak **otevřete** a vyberete hello skriptu z hello **c:\ AzureADEScript** složky. Pokud jste tento článek procházeli od začátku hello, přejděte na další krok toohello.
-2. V konzole hello hello PowerShell ISE (hello dolní podokno hello PowerShell ISE), změňte hello fokus toohello místní hello skriptu zadáním **cd c:\AzureADEScript** a stiskněte klávesu **ENTER**.
-3. Nastavte zásady spouštění hello na počítači, aby můžete spustit skript hello. Typ **Set-ExecutionPolicy Unrestricted** v hello konzoly a stiskněte klávesu ENTER. Pokud se zobrazí dialogové okno s informacemi o hello účinky zásad tooexecution hello změn, klikněte na možnost **Ano tooall** nebo **Ano** (Pokud se zobrazí **Ano tooall**, vyberte tuto možnost – Pokud nevidíte **Ano tooall**, pak klikněte na tlačítko **Ano**).
-4. Přihlaste se ke svému účtu Azure. V konzole hello zadejte **Login-AzureRmAccount** a stiskněte klávesu **ENTER**. Dialogové okno se zobrazí při zadávání přihlašovacích údajů (ujistěte se, máte práva toochange hello virtuální počítače – Pokud nemáte práva, nebudete moct tooencrypt je. Pokud si nejste jisti, zeptejte se správce nebo vlastníka předplatného.) Měly by se zobrazit tyto informace: **prostředí**, **účet**, **ID tenanta**, **ID předplatného** a **aktuální účet úložiště**. Kopírování hello **SubscriptionId** tooNotepad. Budete potřebovat toouse v kroku #6.
-5. Jaké předplatné najít virtuálního počítače patří tooand jeho umístění. Přejděte příliš[https://portal.azure.com](ttps://portal.azure.com) a přihlaste se.  Na levé straně stránky hello hello, klikněte na tlačítko **virtuální počítače**. Zobrazí se seznam virtuálních počítačů a předplatná hello, ke které patří.
+1. Pokud jste zavřeli Integrované skriptovací prostředí (ISE) v prostředí PowerShell, otevřete jeho instanci se zvýšenými oprávněními. Pokud Integrované skriptovací prostředí (ISE) v prostředí PowerShell ještě není spuštěné, postupujte podle pokynů uvedených výše v tomto článku. Pokud jste skript zavřeli, otevřete **ADEPrereqScript.ps1** kliknutím na **Soubor** a **Otevřít** a výběrem tohoto skriptu ve složce **c:\AzureADEScript**. Pokud jste tento článek procházeli od začátku, přejděte k následujícímu kroku.
+2. V konzole Integrovaného skriptovacího prostředí (ISE) v prostředí PowerShell (dolní podokno Integrovaného skriptovacího prostředí (ISE) v prostředí PowerShell) nastavte zadáním **cd c:\AzureADEScript** fokus na umístění skriptu a stiskněte **ENTER**.
+3. Nastavte na počítači zásady spouštění, aby bylo možné skript spustit. V konzole zadejte **Set-ExecutionPolicy Unrestricted** a stiskněte ENTER. Pokud se zobrazí dialogové okno s informacemi o důsledcích změny zásady spouštění, klikněte na **Ano všem** nebo **Ano** (pokud se zobrazí **Ano všem**, vyberte tuto možnost; pokud se nezobrazí **Ano všem**, klikněte na **Ano**).
+4. Přihlaste se ke svému účtu Azure. V konzole zadejte **Login-AzureRmAccount** a stiskněte **ENTER**. Zobrazí se dialogové okno pro zadání přihlašovacích údajů. (Zkontrolujte, že máte práva měnit virtuální počítače. Pokud tato práva nemáte, nebudete je moct zašifrovat. Pokud si nejste jisti, zeptejte se správce nebo vlastníka předplatného.) Měly by se zobrazit tyto informace: **prostředí**, **účet**, **ID tenanta**, **ID předplatného** a **aktuální účet úložiště**. Zkopírujte **ID předplatného** do Poznámkového bloku. Budete ho potřebovat v kroku 6.
+5. Zjistěte, k jakému předplatnému patří váš virtuální počítač, a dál zjistěte jeho umístění. Přejděte na [https://portal.azure.com](ttps://portal.azure.com) a přihlaste se.  Na levé straně stránky klikněte na **Virtual Machines**. Zobrazí se seznam vašich virtuálních počítačů a předplatná, ke kterým patří.
 
    ![Virtuální počítače](./media/security-center-disk-encryption/security-center-disk-encryption-fig3.png)
-6. Vrátí toohello prostředí PowerShell ISE. Nastavte kontext předplatného hello, ve kterém se spustí skript hello. V konzole hello zadejte **Select-AzureRmSubscription – SubscriptionId < id_předplatného >** (Nahraďte **< id_předplatného >** s aktuální ID předplatného) a stiskněte klávesu  **Zadejte**. Zobrazí se informace o hello prostředí **účet**, **TenantId**, **SubscriptionId** a **aktuální účet úložiště**.
-7. Nyní je připraven toorun hello skriptu. Klikněte na tlačítko hello **spustit skript** tlačítko nebo klikněte na tlačítko **F5** na hello klávesnice.
+6. Vraťte se do Integrovaného skriptovacího prostředí (ISE) v prostředí PowerShell. Nastavte kontext předplatného, ve kterém skript poběží. V konzole zadejte **Select-AzureRmSubscription –SubscriptionId <ID_předplatného>** (místo **< ID_předplatného>** zadejte aktuální ID předplatného) a stiskněte **ENTER**. Zobrazí se tyto informace: prostředí, **účet**, **ID tenanta**, **ID předplatného** a **aktuální účet úložiště**.
+7. Nyní jste připraveni skript spustit. Klikněte na tlačítko **Spustit skript** nebo stiskněte **F5** na klávesnici.
 
    ![Spuštění powershellového skriptu](./media/security-center-disk-encryption/security-center-disk-encryption-fig4.png)
-8. Hello skript vyzve k zadání **resourceGroupName:** – zadejte název hello *skupiny prostředků* chcete toouse, stiskněte **ENTER**. Pokud nemáte, zadejte název pro novou chcete toouse. Pokud již máte *skupiny prostředků* má toouse (například hello, virtuální počítač je v, jeden), zadejte název hello hello existující skupinu prostředků.
-9. Hello skript vyzve k zadání **keyVaultName:** – zadejte název hello hello *Key Vault* toouse a pak stiskněte klávesu ENTER. Pokud nemáte, zadejte název pro novou chcete toouse. Pokud jste již máte službu Key Vault, které chcete toouse, zadejte název hello hello existující *Key Vault*.
-10. Hello skript vyzve k zadání **umístění:** – zadejte název hello hello umístění, ve které hello tooencrypt chcete virtuální počítač se nachází, a stiskněte **ENTER**. Pokud jste hello umístění nepamatujete, přejděte zpátky toostep #. 5.
-11. Hello skript vyzve k zadání **aadAppName:** – zadejte název hello hello *Azure Active Directory* aplikace, které chcete toouse, stiskněte **ENTER**. Pokud nemáte, zadejte název pro novou chcete toouse. Pokud už máte *aplikaci Azure Active Directory* má toouse, zadejte název hello hello existující *aplikaci Azure Active Directory*.
-12. Zobrazí se přihlašovací dialogové okno. Zadejte svoje přihlašovací údaje (Ano, jste byli přihlášeni jednou, ale nyní je třeba toodo ho znovu).
-13. Hello skript se spustí a po dokončení se zobrazí dotaz, toocopy hello hodnoty hello **aadClientID**, **aadClientSecret**, **diskEncryptionKeyVaultUrl**a **keyVaultResourceId**. Každý z těchto hodnot toohello schránky zkopírujte a vložte je do poznámkového bloku.
-14. Vrátí toohello prostředí PowerShell ISE a umístěte kurzor hello na konci hello hello posledního řádku a stiskněte klávesu **ENTER**.
+8. Skript vyzve k zadání **resourceGroupName:** Zadejte název *skupiny prostředků*, kterou chcete použít, a stiskněte **ENTER**. Pokud ji nemáte, zadejte název, pod kterým ji chcete vytvořit. Pokud už máte *skupinu prostředků*, kterou chcete použít (například skupinu, ve které je váš virtuální počítač), zadejte název této skupiny prostředků.
+9. Skript vyzve k zadání **keyVaultName:** Zadejte název služby *Key Vault*, kterou chcete použít, a stiskněte ENTER. Pokud ji nemáte, zadejte název, pod kterým ji chcete vytvořit. Pokud už máte službu Key Vault, kterou chcete použít, zadejte název této služby *Key Vault*.
+10. Skript vyzve k zadání **umístění:** zadejte název umístění, ve kterém je virtuální počítač, který chcete zašifrovat, a stiskněte **ENTER**. Pokud si umístění nepamatujete, přejděte zpátky ke kroku 5.
+11. Skript vyzve k zadání **aadAppName:** Zadejte název aplikace *Azure Active Directory*, kterou chcete použít, a stiskněte **ENTER**. Pokud ji nemáte, zadejte název, pod kterým ji chcete vytvořit. Pokud už máte *aplikaci Azure Active Directory*, kterou chcete použít, zadejte název této *aplikace Azure Active Directory*.
+12. Zobrazí se přihlašovací dialogové okno. Zadejte svoje přihlašovací údaje (ano, už jste se přihlásili, ale teď to musíte udělat znova).
+13. Skript se spustí a po jeho dokončení se zobrazí výzva ke zkopírování hodnot **aadClientID**, **aadClientSecret**, **diskEncryptionKeyVaultUrl** a **keyVaultResourceId**. Zkopírujte všechny tyto hodnoty do schránky a pak je vložte do Poznámkového bloku.
+14. Vraťte se do Integrovaného skriptovacího prostředí (ISE) v prostředí PowerShell, nastavte kurzor na konec posledního řádku a stiskněte **ENTER**.
 
-výstup Hello hello skriptu by měl vypadat podobně jako úvodní obrazovka níže:
+Výstup skriptu by měl vypadat podobně jako na následujícím obrázku:
 
 ![Výstup prostředí PowerShell](./media/security-center-disk-encryption/security-center-disk-encryption-fig5.png)
 
-## <a name="encrypt-hello-azure-virtual-machine"></a>Šifrování hello virtuální počítač Azure
-Můžete je nyní připraven tooencrypt virtuálního počítače. Pokud virtuální počítač nachází ve stejné skupině prostředků jako služba Key Vault, hello, můžete přesunout na toohello šifrování krokům. Ale pokud virtuální počítač není v hello stejné skupina prostředků jako služba Key Vault, budete potřebovat následující hello tooenter v konzole hello v hello PowerShell ISE:
+## <a name="encrypt-the-azure-virtual-machine"></a>Šifrování virtuálního počítače Azure
+Nyní jste připraveni k šifrování virtuálního počítače. Pokud je virtuální počítač umístěný ve stejné skupině prostředků jako služba Key Vault, můžete přejít ke krokům pro šifrování. Pokud ale virtuální počítač není ve stejné skupině prostředků jako služba Key Vault, budete muset v konzole Integrovaného skriptovacího prostředí (ISE) v prostředí PowerShell zadat následující:
 
 **$resourceGroupName = &lt;’skupina_prostředků_virtuálního_počítače’&gt;**
 
-Nahraďte **< ' skupina_prostředků_virtuálního_počítače ' >** s hello název skupiny prostředků hello, ve kterém jsou obsaženy virtuálních počítačů, obklopená v jednoduchých uvozovkách. Potom stiskněte **ENTER**.
-tooconfirm, který Dobrý den správné, že byl zadán název skupiny prostředků, zadejte následující hello hello konzole PowerShell ISE:
+Místo **<’skupina_prostředků_virtuálního_počítače’>** použijte název skupiny prostředků, která obsahuje váš virtuální počítač (v jednoduchých uvozovkách). Potom stiskněte **ENTER**.
+Pro potvrzení, že byla zadaná správná skupina prostředků, zadejte v konzole Integrovaného skriptovacího prostředí (ISE) v prostředí PowerShell následující text:
 
 **$resourceGroupName**
 
-Stiskněte **ENTER**. Měli byste vidět hello název skupiny prostředků, které jsou umístěné vaše virtuální počítače v. Například:
+Stiskněte **ENTER**. Měl by se zobrazit název skupiny prostředků, ve které jsou umístěné vaše virtuální počítače. Příklad:
 
 ![Výstup prostředí PowerShell](./media/security-center-disk-encryption/security-center-disk-encryption-fig6.png)
 
 ### <a name="encryption-steps"></a>Kroky pro šifrování
-Nejprve je třeba název hello prostředí PowerShell tootell hello virtuálního počítače chcete tooencrypt. V konzole hello zadejte:
+Nejdřív musíte PowerShellu předat název virtuálního počítače, který chcete zašifrovat. V konzole zadejte:
 
 **$vmName = &lt;’název_virtuálního_počítače’&gt;**
 
-Nahraďte **<' název_virtuálního_počítače' >** s hello název vašeho virtuálního počítače (ujistěte se, název hello mezi v jednoduchých uvozovkách) a potom stiskněte klávesu **ENTER**.
+Místo **<’název_virtuálního_počítače’>** zadejte název vašeho virtuálního počítače (v jednoduchých uvozovkách) a potom stiskněte **ENTER**.
 
-tooconfirm, který Dobrý den správné, že byl zadán název virtuálního počítače, zadejte:
+K potvrzení, že byl zadaný správný název virtuálního počítače, zadejte:
 
 **$vmName**
 
-Stiskněte **ENTER**. Měli byste vidět název hello hello virtuálního počítače chcete tooencrypt. Například:
+Stiskněte **ENTER**. Měl by se zobrazit název virtuálního počítače, který chcete zašifrovat. Příklad:
 
 ![Výstup prostředí PowerShell](./media/security-center-disk-encryption/security-center-disk-encryption-fig7.png)
 
-Existují dvě metody toorun hello šifrování příkaz tooencrypt všechny disky na virtuálním počítači hello. První metoda Hello je tootype hello následující příkaz v konzole PowerShell ISE hello:
+Existují dva způsoby, kterými je možné spustit šifrovací příkazy pro zašifrování všech jednotek virtuálního počítače. Prvním způsobem je zadat v konzole Integrovaného skriptovacího prostředí (ISE) v prostředí PowerShell následující příkaz:
 
 ~~~
 Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -VolumeType All
@@ -149,32 +149,32 @@ Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMNa
 
 Po zadání tohoto příkazu stiskněte **ENTER**.
 
-Druhá metoda Hello je tooclick v podokně skriptu hello (hello horní podokno hello PowerShell ISE) a přejděte dolů toohello dolní hello skriptu. Zvýrazněte příkaz hello uvedený výše a pak klikněte pravým tlačítkem ji a pak klikněte na tlačítko **spustit výběr** nebo stiskněte klávesu **F8** na hello klávesnice.
+Druhý způsob spočívá v tom, že kliknete v podokně skriptu (horní podokno Integrovaného skriptovacího prostředí (ISE) v prostředí PowerShell) a posunete se dolů na konec skriptu. Zvýrazněte příkaz uvedený výše, klikněte na něj pravým tlačítkem a potom klikněte na **Spustit výběr** nebo stiskněte **F8** na klávesnici.
 
 ![Integrované skriptovací prostředí (ISE) v prostředí PowerShell](./media/security-center-disk-encryption/security-center-disk-encryption-fig8.png)
 
-Bez ohledu na to hello metodu použijete, dialogové okno se zobrazí upozorněním, že bude trvat 10 až 15 minut pro operaci toocomplete hello. Klikněte na **Ano**.
+Bz ohledu na způsob, který použijete, se zobrazí dialogové okno informující o tom, že dokončení této operace bude trvat 10 až 15 minut. Klikněte na **Ano**.
 
-Během procesu šifrování hello probíhající, můžete vrátit toohello portálu Azure a zobrazit stav hello hello virtuálního počítače. Na levé straně stránky hello hello, klikněte na tlačítko **virtuální počítače**, potom v hello **virtuální počítače** okně klikněte na název hello hello virtuálního počítače, který šifrujete. V okně hello, který se zobrazí, můžete si všimnout, že hello **stav** informacemi o tom, že je **aktualizace**. To znamená, že probíhá šifrování.
+V průběhu šifrování se můžete vrátit na web Azure Portal a prohlédnout si stav virtuálního počítače. Na levé straně stránky klikněte na **Virtual Machines** a potom v okně **Virtual Machines** klikněte na název virtuálního počítače, který šifrujete. V zobrazeném okně uvidíte, že jako **stav** se uvádí **aktualizace**. To znamená, že probíhá šifrování.
 
-![Další podrobnosti o hello virtuálních počítačů](./media/security-center-disk-encryption/security-center-disk-encryption-fig9.png)
+![Další podrobnosti o virtuálním počítači](./media/security-center-disk-encryption/security-center-disk-encryption-fig9.png)
 
-Vrátí toohello prostředí PowerShell ISE. Po dokončení skriptu hello uvidíte, co se zobrazí v hello obrázek.
+Vraťte se do Integrovaného skriptovacího prostředí (ISE) v prostředí PowerShell. Po dokončení skriptu uvidíte to, co je na obrázku výš.
 
 ![Výstup prostředí PowerShell](./media/security-center-disk-encryption/security-center-disk-encryption-fig10.png)
 
-toodemonstrate, který hello virtuální počítač je zašifrovaný, vraťte toohello portálu Azure a klikněte na tlačítko **virtuální počítače** na levé straně stránky hello hello. Klikněte na název hello hello virtuálního počítače, který jste zašifrovali. V hello **nastavení** okně klikněte na tlačítko **disky**.
+Abyste se přesvědčili, že virtuální počítač je zašifrovaný, vraťte se na web Azure Portal a klikněte na **Virtual Machines** na levé straně stránky. Klikněte na název virtuálního počítače, který jste zašifrovali. V okně **Nastavení** klikněte na **Disky**.
 
 ![Možnosti nastavení](./media/security-center-disk-encryption/security-center-disk-encryption-fig11.png)
 
-Na hello **disky** okno, zobrazí se **šifrování** je **povoleno**.
+V okně **Disky** uvidíte, že **šifrování** je **povolené**.
 
 ![Vlastnosti disku](./media/security-center-disk-encryption/security-center-disk-encryption-fig12.png)
 
 ## <a name="next-steps"></a>Další kroky
-V tomto dokumentu jste se naučili jak tooencrypt virtuální počítač Azure. toolearn Další informace o službě Azure Security Center, najdete v části hello následující:
+V tomto dokumentu jste se naučili zašifrovat virtuální počítač Azure. Pokud se o službě Azure Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-* [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – zjistěte, jak toomonitor hello stav svých prostředků Azure
-* [Správa a zda odpovídá toosecurity výstrahy v Azure Security Center](security-center-managing-and-responding-alerts.md) – zjistěte, jak toomanage a reakce toosecurity výstrahy
-* [Nejčastější dotazy k Azure Security Center](security-center-faq.md) – přečtěte si nejčastější dotazy o použití služby hello
+* [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se monitorovat stav svých prostředků Azure.
+* [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
+* [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Přečtěte si nejčastější dotazy o použití této služby.
 * [Blog o zabezpečení Azure](http://blogs.msdn.com/b/azuresecurity/) – Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.

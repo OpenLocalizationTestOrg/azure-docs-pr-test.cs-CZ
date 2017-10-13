@@ -1,6 +1,6 @@
 ---
-title: "škálování aaaAutomatic a virtuálního počítače sady škálování | Microsoft Docs"
-description: "Další informace o použití diagnostiky a škálování prostředky tooautomatically škálování virtuálních počítačů v sadě škálování."
+title: "Automatické škálování a virtuálního počítače sady škálování | Microsoft Docs"
+description: "Další informace o použití diagnostiky a škálování prostředky automaticky škálovat virtuální počítače ve škálovací sadě."
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: Thraka
@@ -16,23 +16,23 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: adegeo
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 25f54b693e3c991577238242008c262023ed479c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 06ff9d9ae1dd8256f0d22c1a60ed6a85554f1f17
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toouse-automatic-scaling-and-virtual-machine-scale-sets"></a>Jak toouse automatické škálování a sady škálování virtuálního počítače
-Automatické škálování virtuálních počítačů v sadě škálování je hello vytvoření nebo odstranění počítačů v hello nastavit jako potřeby toomatch požadavky na výkon. S růstem hello objem práce aplikace může vyžadovat další prostředky tooenable ho tooeffectively provádět úlohy.
+# <a name="how-to-use-automatic-scaling-and-virtual-machine-scale-sets"></a>Jak používat automatické škálování a sady škálování virtuálního počítače
+Automatické škálování virtuálních počítačů v sadě škálování je vytvoření nebo odstranění počítačů v sadě podle potřeby tak, aby odpovídaly požadavkům na výkon. S růstem objem pracovní aplikace, může vyžadovat další zdroje, které umožní, aby efektivní provádění úloh.
 
-Automatické škálování je automatizovaný proces, pomáhá usnadňují režie na správu. Protože se sníží režie, není nutné toocontinually sledování výkonu systému nebo rozhodnout, jak toomanage prostředky. Škálování je elastické proces. Další prostředky se dá přidat jako zvyšuje zatížení hello. A jako vyžádání snížení prostředky můžete odebrané toominimize náklady a zachovat úrovně výkonu.
+Automatické škálování je automatizovaný proces, pomáhá usnadňují režie na správu. Protože se sníží režie, nemusíte průběžně monitorovat výkon systému nebo rozhodnout, jak spravovat prostředky. Škálování je elastické proces. Při rostoucí zátěži, můžete přidat další zdroje. A jak vyžádání snižuje, minimalizovat náklady a Udržovat úrovně výkonu lze odebrat prostředky.
 
-Nastavte automatické škálování na škále nastavit pomocí šablony, prostředí Azure PowerShell, rozhraní příkazového řádku Azure nebo hello portál Azure Azure Resource Manager.
+Nastavte automatické škálování na škále nastavit pomocí šablonu Azure Resource Manager, Azure PowerShell, rozhraní příkazového řádku Azure nebo portálu Azure.
 
 ## <a name="set-up-scaling-by-using-resource-manager-templates"></a>Nastavení škálování pomocí šablony Resource Manageru
-Namísto nasazení a samostatně spravovat každý prostředek vaší aplikace, použijte šablonu, která nasadí všechny prostředky v rámci jediné koordinované operace. V šabloně hello prostředky aplikace jsou definované a jsou zadány parametry nasazení pro různá prostředí. Šablona Hello se skládá z JSON a výrazy, můžete použít hodnoty tooconstruct pro vaše nasazení. toolearn víc, podívejte se na [šablon pro tvorbu Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md).
+Namísto nasazení a samostatně spravovat každý prostředek vaší aplikace, použijte šablonu, která nasadí všechny prostředky v rámci jediné koordinované operace. V šabloně jsou definovány prostředky aplikace a jsou zadány parametry nasazení pro různá prostředí. Šablona se skládá z JSON a výrazy, které můžete použít k vytvoření hodnot pro vaše nasazení. Další informace, podívejte se na [šablon pro tvorbu Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md).
 
-V šabloně hello zadejte element kapacity hello:
+V šabloně zadejte element kapacity:
 
 ```json
 "sku": {
@@ -42,14 +42,14 @@ V šabloně hello zadejte element kapacity hello:
 },
 ```
 
-Kapacita identifikuje hello počet virtuálních počítačů v sadě hello. Můžete ručně změnit hello kapacity nasazení šablony s jinou hodnotou. Pokud nasazujete kapacitou hello tooonly změny šablony, můžete zahrnout pouze element SKU hello s kapacitou hello aktualizovat.
+Kapacita identifikuje počet virtuálních počítačů v sadě. Můžete ručně změnit kapacitu nasazení šablony s jinou hodnotou. Pokud nasazujete šablonu, která má kapacitu, pouze změní, můžete zahrnout pouze element SKU s aktualizované kapacitu.
 
-Hello kapacity škálovací sady můžete být automaticky upravována pomocí kombinace hello **autoscaleSettings** prostředků a hello rozšíření diagnostiky.
+Kapacitu škálovací sadu pomocí kombinace automaticky upravována **autoscaleSettings** prostředků a rozšíření diagnostiky.
 
-### <a name="configure-hello-azure-diagnostics-extension"></a>Konfigurace rozšíření Azure Diagnostics hello
-Automatické škálování provést pouze pokud se kolekce metriky úspěšné na každém virtuálním počítači v sadě škálování hello. Hello rozšíření diagnostiky Azure poskytuje možnosti pro monitorování a Diagnostika hello vyhovujících potřebám kolekce metriky hello hello škálování prostředku. Rozšíření hello můžete nainstalovat v rámci šablony Resource Manageru hello.
+### <a name="configure-the-azure-diagnostics-extension"></a>Konfigurace rozšíření Azure Diagnostics
+Automatické škálování provést pouze pokud se kolekce metriky úspěšné na každém virtuálním počítači v sadě škálování. Rozšíření diagnostiky Azure poskytuje možnosti monitorování a diagnostiky, které splňuje potřeby kolekce metriky automatického škálování prostředku. Rozšíření můžete nainstalovat v rámci šablony Resource Manageru.
 
-Tento příklad ukazuje hello proměnné, které se používají v rozšíření diagnostiky hello šablony tooconfigure hello:
+Tento příklad ukazuje proměnné, které se používají v šabloně ke konfiguraci rozšíření diagnostiky:
 
 ```json
 "diagnosticsStorageAccountName": "[concat(parameters('resourcePrefix'), 'saa')]",
@@ -61,9 +61,9 @@ Tento příklad ukazuje hello proměnné, které se používají v rozšíření
 "wadcfgxend": "[concat('\"><MetricAggregation scheduledTransferPeriod=\"PT1H\"/><MetricAggregation scheduledTransferPeriod=\"PT1M\"/></Metrics></DiagnosticMonitorConfiguration></WadCfg>')]"
 ```
 
-Parametry jsou k dispozici při nasazení šablony hello. V tomto příkladu, hello název účtu úložiště hello (které jsou uložená data) a hello je zadaný název sady škálování hello (kdy se shromažďují data). Také v tomto příkladu systému Windows Server se shromažďují pouze hello čítače výkonu počtu vláken. Všechny hello čítače výkonu k dispozici v systému Windows nebo Linux lze použít toocollect diagnostické informace a můžou být součástí konfigurace rozšíření hello.
+Parametry jsou k dispozici při nasazení šablony. V tomto příkladu jsou zadat název účtu úložiště (které jsou uložená data) a název sady škálování (kdy se shromažďují data). Také v tomto příkladu systému Windows Server se shromažďují pouze počet vláken počítadla výkonu. Všechny čítače výkonu k dispozici v systému Windows nebo Linux umožňuje shromažďovat diagnostické informace a může být zahrnutý v konfiguraci rozšíření.
 
-Tento příklad ukazuje definici rozšíření hello hello v šabloně hello:
+Tento příklad ukazuje definici rozšíření v šabloně:
 
 ```json
 "extensionProfile": {
@@ -90,14 +90,14 @@ Tento příklad ukazuje definici rozšíření hello hello v šabloně hello:
 }
 ```
 
-Po spuštění rozšíření diagnostiky hello hello data ukládají a shromažďují v tabulce v hello účet úložiště, který určíte. V hello **WADPerformanceCounters** tabulky, můžete najít hello shromažďovaných dat:
+Při spuštění rozšíření diagnostiky, se data uložená a shromažďují v tabulce v účtu úložiště, který určíte. V **WADPerformanceCounters** tabulky, můžete najít na shromážděná data:
 
 ![](./media/virtual-machine-scale-sets-autoscale-overview/ThreadCountBefore2.png)
 
-### <a name="configure-hello-autoscalesettings-resource"></a>Konfigurace prostředků autoScaleSettings hello
-prostředek autoscaleSettings Hello používá hello informace z toodecide rozšíření diagnostiky hello zda tooincrease nebo snížení hello počet virtuálních počítačů v hello škálování nastavit.
+### <a name="configure-the-autoscalesettings-resource"></a>Konfigurace prostředků autoScaleSettings
+Prostředek autoscaleSettings používá informace z rozšíření diagnostiky se rozhodnout, jestli se má zvýšit nebo snížit počet virtuálních počítačů v sadě škálování.
 
-Tento příklad ukazuje hello konfigurace hello prostředku v šabloně hello:
+Tento příklad ukazuje konfiguraci prostředku v šabloně:
 
 ```json
 {
@@ -166,34 +166,34 @@ Tento příklad ukazuje hello konfigurace hello prostředku v šabloně hello:
 }
 ```
 
-V předchozím příkladu hello vytvoří se dvě pravidla pro definování hello automatické škálování akce. první pravidlo Hello definuje akce škálování hello a druhé pravidlo hello definuje hello škálování v akci. Tyto hodnoty jsou k dispozici v pravidlech hello:
+V příkladu nahoře vytvoří se dvě pravidla pro definování automatické škálování akce. První pravidlo definuje akce škálování a druhé pravidlo definuje akce škálování v. Tyto hodnoty jsou k dispozici v pravidlech:
 
 | Pravidlo | Popis |
 | ---- | ----------- |
-| metricName        | Tato hodnota je hello stejné jako čítače výkonu hello jste definovali v hello wadperfcounter proměnnou pro rozšíření diagnostiky hello. V předchozím příkladu hello se používá čítač počtu vláken hello.    |
-| metricResourceUri | Tato hodnota je identifikátor prostředku hello škálovací sadu virtuálních počítačů hello. Tento identifikátor obsahuje hello název skupiny prostředků hello hello název zprostředkovatele prostředků hello a hello název tooscale sada škálování hello. |
-| Časovými úseky         | Tato hodnota je hello členitost hello metriky, které jsou shromážděny. V předchozím příkladu hello data jsou shromažďována v intervalu jedné minuty. Tato hodnota se používá s hodnota timeWindow. |
-| statistiky         | Tato hodnota určuje, jak hello metriky jsou kombinované tooaccommodate hello automatického škálování akce. Hello možné hodnoty jsou: průměr, minimum, maximum. |
-| Hodnota timeWindow        | Tato hodnota je rozsah hello času, ve kterém se shromažďují instance data. Musí být mezi 5 minutami a 12 hodin. |
-| Agregace času   | Tato hodnota určuje, jak by měla být kombinovány hello data, která se shromažďují v čase. Hello výchozí hodnota je průměr. Hello možné hodnoty jsou: průměr, minimální, maximální, poslední, celkový počet, počet. |
-| Operátor          | Tato hodnota je hello operátor, který je použité toocompare hello metriky dat a hello prahovou hodnotu. Hello možné hodnoty jsou: rovná NotEquals, GreaterThan, GreaterThanOrEqual, LessThan, LessThanOrEqual. |
-| Prahová hodnota         | Tato hodnota je hello hodnotu, která aktivuje hello akce škálování. Být jisti tooprovide dostatečná rozdíl mezi hello prahové hodnoty pro hello **Škálováním na více systémů** a **škálování v** akce. Pokud jste nastavili hello stejné hodnoty pro obě akce, připravená na hello systému konstantní změna, která zabraňuje v jeho implementaci akce škálování. Například nebude fungovat nastavení obou too600 vláken v předchozím příkladu hello. |
-| Směr         | Tato hodnota určuje hello akce, která se provede, když je dosaženo hello prahovou hodnotu. Hello možné hodnoty jsou zvýšení nebo snížení. |
-| type              | Tato hodnota je hello typ akce, který má vzniknout a musí být nastaven tooChangeCount. |
-| hodnota             | Tato hodnota je hello počet virtuálních počítačů, které jsou přidány tooor odebrána z hello škálovací sadu. Tato hodnota musí být 1 nebo vyšší. |
-| cooldown          | Tato hodnota je hello množství toowait času od poslední akce škálování hello předtím, než dojde k hello další akce. Tato hodnota musí být mezi minutu a jeden týden. |
+| metricName        | Tato hodnota je stejná jako čítače výkonu, který jste definovali v proměnné wadperfcounter pro rozšíření diagnostiky. V předchozím příkladu se používá čítač počtu vláken.    |
+| metricResourceUri | Tato hodnota je identifikátor prostředku sady škálování virtuálního počítače. Tento identifikátor obsahuje název skupiny prostředků, název zprostředkovatele prostředků a názvu sad škálování škálování. |
+| Časovými úseky         | Tato hodnota je členitost metriky, které se shromažďují. V předchozím příkladu data jsou shromažďována v intervalu jedné minuty. Tato hodnota se používá s hodnota timeWindow. |
+| statistiky         | Tato hodnota určuje, jak se zkombinují metriky pro přizpůsobení automatické škálování akci. Možné hodnoty jsou: průměr, minimum, maximum. |
+| Hodnota timeWindow        | Tato hodnota je doba, ve kterém se shromažďují instance data. Musí být mezi 5 minutami a 12 hodin. |
+| Agregace času   | Tato hodnota určuje, jak by měla být kombinovány data, která se shromažďují v čase. Výchozí hodnota je průměr. Možné hodnoty jsou: průměr, minimální, maximální, poslední, celkový počet, počet. |
+| Operátor          | Tato hodnota je operátor, který se používá k porovnání data metriky a prahovou hodnotu. Možné hodnoty jsou: rovná NotEquals, GreaterThan, GreaterThanOrEqual, LessThan, LessThanOrEqual. |
+| Prahová hodnota         | Tato hodnota je hodnota, která aktivuje akci škálování. Nezapomeňte poskytnout dostatečnou rozdíl mezi prahové hodnoty pro **Škálováním na více systémů** a **škálování v** akce. Pokud jste nastavili stejné hodnoty pro obě akce, připravená na systém konstantní změna, která zabraňuje v jeho implementaci akce škálování. Například nebude fungovat nastavení na 600 vláken v předchozím příkladu. |
+| Směr         | Tato hodnota určuje akce, která se provede, když je dosaženo prahové hodnoty. Možné hodnoty jsou zvýšení nebo snížení. |
+| type              | Tato hodnota je typ akce, který má vzniknout a musí být nastavena na ChangeCount. |
+| hodnota             | Tato hodnota je počet virtuálních počítačů, které jsou přidat nebo odebrat ze sady škálování. Tato hodnota musí být 1 nebo vyšší. |
+| cooldown          | Tato hodnota je množství času má počkat od poslední akce škálování, než dojde k další akce. Tato hodnota musí být mezi minutu a jeden týden. |
 
-V závislosti na hello čítače výkonu který používáte, některé hello elementů v konfiguraci šablony hello fungují jinak. V předchozím příkladu hello čítače výkonu hello je počet vláken, hello prahová hodnota je 650 pro akci škálování a hello prahová hodnota je 550 pro hello škálování v akci. Pokud používáte čítače, jako je % času procesoru, hello prahová hodnota nastavená toohello procento využití procesoru, který určuje škálování akce.
+V závislosti na čítače výkonu který používáte, některé prvky v konfiguraci šablony fungují jinak. V předchozím příkladu je hodnota čítače výkonu počtu vláken, prahová hodnota je 650 pro akci škálování a prahová hodnota je 550 pro akci škálování in. Pokud používáte čítače, jako je % času procesoru, prahová hodnota nastavená na procento využití procesoru, který určuje škálování akce.
 
-Když se aktivuje škálování akce, jako je například vysoké zatížení, je vyšší kapacita hello sady hello podle hello hodnotu v šabloně hello. Například v škálování nastavit kde kapacity hello je nastavený too3 a hodnotu akce škálování hello too1:
+Když se aktivuje škálování akce, jako je například vysoké zatížení, je vyšší kapacita sady závislosti na hodnotě v šabloně. Například v škálování sady, kde je kapacitu nastaven na 3 a hodnotu akce škálování je nastaven na 1:
 
 ![](./media/virtual-machine-scale-sets-autoscale-overview/ResourceExplorerBefore.png)
 
-Když hello aktuální zatížení příčiny hello vlákno průměrný počet toogo nad prahovou hodnotou hello 650:
+Pokud aktuální zatížení způsobí, že počet průměrná vláken přejdete nad prahovou hodnotou 650:
 
 ![](./media/virtual-machine-scale-sets-autoscale-overview/ThreadCountAfter.png)
 
-A **Škálováním na více systémů** akce se aktivuje, že příčiny hello kapacitu toobe sadu hello zvýšenou o hodnotu jedna:
+A **Škálováním na více systémů** akce se aktivuje, který způsobuje, že kapacita sady do dá zvětšit o jeden:
 
 ```json
 "sku": {
@@ -203,50 +203,50 @@ A **Škálováním na více systémů** akce se aktivuje, že příčiny hello k
 },
 ```
 
-Hello výsledkem je, že virtuální počítač se přidá toohello škálovací sadu:
+Výsledkem je, že virtuální počítač je přidat do sady škálování:
 
 ![](./media/virtual-machine-scale-sets-autoscale-overview/ResourceExplorerAfter.png)
 
-Po dobu cooldown pět minut je-li hello průměrný počet vláken na počítačích hello více než 600 jiný počítač přidání toohello sady. Je-li počet vláken průměrná hello níže 550, kapacity hello škálovací sady hello se sníží o jedna a počítač je odebrán ze sady hello.
+Po určité době cooldown pět minut je-li průměrný počet vláken na počítačích více než 600 je jiný počítač přidat do sady. Je-li počet průměrná vláken níže 550, kapacita sady škálování se sníží o jedna a počítač je odebrán ze sady.
 
 ## <a name="set-up-scaling-using-azure-powershell"></a>Nastavení škálování pomocí Azure PowerShell
 
-Příklady toosee pomocí prostředí PowerShell tooset až automatické škálování, podívejte se na [Azure PowerShell monitorování rychlý start ukázky](../monitoring-and-diagnostics/insights-powershell-samples.md).
+Chcete-li zobrazit příklady použití prostředí PowerShell pro nastavení automatického škálování, podívejte se na [Azure PowerShell monitorování rychlý start ukázky](../monitoring-and-diagnostics/insights-powershell-samples.md).
 
 ## <a name="set-up-scaling-using-azure-cli"></a>Nastavení škálování pomocí rozhraní příkazového řádku Azure
 
-toosee příklady použití Azure CLI tooset až automatické škálování, podívejte se na [Azure monitorování napříč platformami CLI rychlý start ukázky](../monitoring-and-diagnostics/insights-cli-samples.md).
+Pokud chcete zobrazit příklady použití Azure CLI pro nastavení automatického škálování, podívejte se na [Azure monitorování napříč platformami CLI rychlý start ukázky](../monitoring-and-diagnostics/insights-cli-samples.md).
 
-## <a name="set-up-scaling-using-hello-azure-portal"></a>Nastavení škálování pomocí hello portálu Azure
+## <a name="set-up-scaling-using-the-azure-portal"></a>Nastavení škálování pomocí portálu Azure
 
-Příklad použití toosee hello Azure portálu tooset až automatické škálování, vyhledejte v [vytvoření sady škálování virtuálního počítače pomocí portálu Azure hello](virtual-machine-scale-sets-portal-create.md).
+Pokud chcete zobrazit příklad nastavení automatického škálování pomocí portálu Azure, podívejte se na [vytvoření sady škálování virtuálního počítače pomocí portálu Azure](virtual-machine-scale-sets-portal-create.md).
 
 ## <a name="investigate-scaling-actions"></a>Prozkoumat škálování akce
 
 * **Azure Portal**  
-Teď můžete získat omezené množství informací pomocí portálu hello.
+Teď můžete získat omezené množství informací pomocí portálu.
 
 * **Průzkumník prostředků Azure**  
-Tento nástroj je nejlepší pro zkoumání hello aktuální stav škálovací sady hello. Postupujte podle této cestě a měli byste vidět sadu zobrazení instance hello hello měřítka, kterou jste vytvořili:  
+Tento nástroj je nejvhodnější pro zkoumání aktuálního stavu škálovací sadu. Postupujte podle této cestě a měli byste vidět zobrazení instance škálovací sady, který jste vytvořili:  
 **Odběry > {vaše předplatné} > Skupinyprostředků > {vaší skupiny prostředků} > poskytovatelé > Microsoft.Compute > virtualMachineScaleSets > {škálovací sadu} > virtuálních počítačů**
 
 * **Azure PowerShell**  
-Použijte tento příkaz tooget některé informace:
+Určité informace, použijte tento příkaz:
 
   ```powershell
   Get-AzureRmResource -name vmsstest1 -ResourceGroupName vmsstestrg1 -ResourceType Microsoft.Compute/virtualMachineScaleSets -ApiVersion 2015-06-15
   Get-Autoscalesetting -ResourceGroup rainvmss -DetailedOutput
   ```
 
-* Připojte toohello jumpbox virtuálního počítače stejně, jako by všechny ostatní počítače a pak můžete vzdáleně přistupovat hello virtuálních počítačů v hello škálování sadu toomonitor jednotlivých procesů.
+* Připojte k virtuálnímu počítači jumpbox stejně, jako by všechny ostatní počítače a potom můžete virtuální počítače v sad pro monitorování jednotlivých procesů škálování vzdálený přístup.
 
 ## <a name="next-steps"></a>Další kroky
-* Podívejte se na [automaticky škálovat počítače ve Škálovací sadě virtuálního počítače](virtual-machine-scale-sets-windows-autoscale.md) toosee příklad jak toocreate škálování nastavit s nakonfigurovat automatické škálování.
+* Podívejte se na [automaticky škálovat počítače ve Škálovací sadě virtuálního počítače](virtual-machine-scale-sets-windows-autoscale.md) příklad toho, jak vytvořit měřítko nastavit automatické škálování nakonfigurované.
 
 * Najít příklady Azure monitorování monitorování funkcí v [Azure PowerShell monitorování rychlý start ukázky](../monitoring-and-diagnostics/insights-powershell-samples.md)
 
-* Další informace o funkcích oznámení v [použití automatického škálování akce toosend e-mailu a webhooku oznámení výstrah v monitorování Azure](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md).
+* Další informace o funkcích oznámení v [používat akce škálování k odesílání e-mailu a webhooku oznámení výstrah v monitorování Azure](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md).
 
-* Další informace o tom příliš[protokoly auditu použití toosend e-mailu a webhooku oznámení výstrah v monitorování Azure](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)
+* Další informace o tom, jak [protokoly auditu použijte k odesílání e-mailu a webhooku oznámení výstrah v monitorování Azure](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)
 
 * Další informace o [pokročilé scénáře škálování](virtual-machine-scale-sets-advanced-autoscale.md).

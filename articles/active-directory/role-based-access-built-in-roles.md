@@ -1,6 +1,6 @@
 ---
-title: "aaaActions a NotActions - Azure na základě rolí (RBAC) řízení přístupu | Microsoft Docs"
-description: "Toto téma popisuje hello součástí role pro řízení přístupu na základě role (RBAC). Hello jsou nepřetržitě přidat role, tak zaškrtnutí hello dokumentace aktuálnosti."
+title: "Akce a NotActions – řízení přístupu Azure na základě rolí (RBAC) | Microsoft Docs"
+description: "Toto téma popisuje předdefinovaných do rolí pro řízení přístupu na základě role (RBAC). Role jsou neustále přidali, proto zkontrolujte aktuálnosti dokumentaci."
 services: active-directory
 documentationcenter: 
 author: andredm7
@@ -16,35 +16,35 @@ ms.date: 06/28/2017
 ms.author: andredm
 ms.reviewer: 
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0a4ef9923fe05ec38e968534951911eaa4440b88
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 9a5de00793621cfdecea887c53a22d482a25d1b8
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Předdefinované role pro řízení přístupu Azure na základě rolí
-Azure na základě rolí řízení přístupu (RBAC) se dodává s hello následující předdefinované role, které lze přiřadit toousers, skupinám a službám. Definice hello předdefinované role se nedá změnit. Můžete však vytvořit [vlastní role v Azure RBAC](role-based-access-control-custom-roles.md) toofit hello potřeb vaší organizace.
+Azure na základě rolí řízení přístupu (RBAC) obsahuje následující předdefinované role, které lze přiřadit uživatelům, skupinám a službám. Definice předdefinované role se nedá změnit. Můžete však vytvořit [vlastní role v Azure RBAC](role-based-access-control-custom-roles.md) podle konkrétních potřeb vaší organizace.
 
 ## <a name="roles-in-azure"></a>Role v Azure
-Hello následující tabulka obsahuje stručný popis hello předdefinované role. Klikněte na tlačítko hello role název toosee hello podrobný seznam **akce** a **notactions** pro roli hello. Hello **akce** vlastnost určuje hello povolené akce na prostředky Azure. Řetězce akce můžete použít zástupné znaky. Hello **notactions** vlastnost určuje hello akce, které jsou vyloučené z hello povolené akce.
+Následující tabulka obsahuje stručný popis předdefinovaných rolí. Klikněte na název role, které chcete zobrazit podrobný seznam **akce** a **notactions** pro roli. **Akce** vlastnost určuje povolené akce u prostředků Azure. Řetězce akce můžete použít zástupné znaky. **Notactions** vlastnost určuje akce, které jsou vyloučeny z povolených akcí.
 
-Akce Hello definuje, jaký typ operace můžete provádět na typ daného prostředku. Například:
-- **Zápis** umožňuje jste tooperform PUT, POST, PATCH a operace odstranění.
-- **Čtení** vám umožní operace GET tooperform.
+Akce definuje, jaký typ operace můžete provádět na typ daného prostředku. Například:
+- **Zápis** umožňuje provádět operace PUT, POST, PATCH a DELETE.
+- **Čtení** umožňuje provádět operace GET.
 
-V tomto článku pouze adresy hello různé role, které existují ještě dnes. Když přiřadíte uživatele tooa role, ale můžete omezit hello povolené akce další definováním obor. To je užitečné, pokud chcete toomake někdo webu Přispěvatel, ale jenom u jedné skupiny prostředků.
+V tomto článku pouze adresy různé role, které existují ještě dnes. Když přiřadíte roli pro uživatele, ale můžete omezit povolených akcí další definováním obor. To je užitečné, pokud chcete, aby někdo webu Přispěvatel, ale jenom u jedné skupiny prostředků.
 
 > [!NOTE]
-> definice rolí Azure Hello neustále vyvíjí. Tento článek se ukládají jako až toodate co možná, ale můžete vždy najít hello nejnovější definice rolí v prostředí Azure PowerShell. Použití hello [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) toolist rutiny všechny aktuální role. Ponořte se do tooa konkrétní role pomocí `(get-azurermroledefinition "<role name>").actions` nebo `(get-azurermroledefinition "<role name>").notactions` podle. Použití [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) toolist operations zprostředkovatelů konkrétních prostředků Azure.
+> Definice Azure role se neustále vyvíjejí. Tento článek se ukládají jako aktuální nejblíže, ale vždy najdete nejnovější definice rolí v prostředí Azure PowerShell. Použití [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) rutiny seznamu všechny aktuální role. Můžete podrobné informace konkrétní roli pomocí `(get-azurermroledefinition "<role name>").actions` nebo `(get-azurermroledefinition "<role name>").notactions` podle. Použití [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) k operacím seznamu zprostředkovatelů konkrétních prostředků Azure.
 
 
 | Název role | Popis |
 | --- | --- |
-| [Rozhraní API správy služby přispěvatele](#api-management-service-contributor) |Můžete spravovat služba API Management a hello rozhraní API |
-| [Role operátora služby API Management](#api-management-service-operator-role) | Můžete spravovat služba API Management, ale není hello rozhraní API, sami |
-| [Role čtenáře služby API Management](#api-management-service-reader-role) | Služba správy tooAPI oprávnění jen pro čtení a rozhraní API |
+| [Rozhraní API správy služby přispěvatele](#api-management-service-contributor) |Můžete spravovat služba API Management a rozhraní API |
+| [Role operátora služby API Management](#api-management-service-operator-role) | Můžete spravovat služba API Management, ale není sami rozhraní API |
+| [Role čtenáře služby API Management](#api-management-service-reader-role) | Přístup jen pro čtení k služba API Management a rozhraní API |
 | [Application Insights součást Přispěvatel](#application-insights-component-contributor) |Můžete spravovat součásti Application Insights |
-| [Operátor automatizace](#automation-operator) |Možnost toostart, zastavení, pozastavení a obnovení úlohy |
+| [Operátor automatizace](#automation-operator) |Možnost spuštění, zastavení, pozastavení a obnovení úlohy |
 | [Zálohování přispěvatele](#backup-contributor) | Můžete spravovat zálohy v trezoru služeb zotavení |
 | [Operátor zálohování](#backup-operator) | Můžete spravovat zálohování, vyjma případu odebírání zálohování, v trezoru služeb zotavení |
 | [Zálohování čtečky](#backup-reader) | Můžete zobrazit všechny služby zálohování správy  |
@@ -73,20 +73,20 @@ V tomto článku pouze adresy hello různé role, které existují ještě dnes.
 | [Operátor obnovení lokality](#site-recovery-operator) | Můžete spravovat převzetí služeb při selhání a navrácení služeb po obnovení operace obnovení lokality v trezoru služeb zotavení |
 | [Čtečka obnovení lokality](#site-recovery-reader) | Můžete zobrazit všechny operace správy Site Recovery  |
 | [Přispěvatel databází SQL](#sql-db-contributor) |Můžete spravovat databáze SQL, ale není jejich zásady zabezpečení |
-| [Správce zabezpečení SQL](#sql-security-manager) |Můžete spravovat hello zásady zabezpečení serverů SQL a databáze |
+| [Správce zabezpečení SQL](#sql-security-manager) |Můžete spravovat zásady vztahující se k zabezpečení serverů SQL a databáze |
 | [Přispěvatel serveru SQL](#sql-server-contributor) |Můžete spravovat servery SQL Server a databáze, ale není jejich zásady zabezpečení |
 | [Přispěvatel účet úložiště Classic](#classic-storage-account-contributor) |Můžete spravovat klasických účtů úložiště |
 | [Přispěvatel účtu úložiště](#storage-account-contributor) |Můžete spravovat účty úložiště |
 | [Přispěvatel žádosti o podporu](#support-request-contributor) | Můžete vytvořit a spravovat žádosti o podporu |
-| [Správce přístupu uživatelů](#user-access-administrator) |Můžete spravovat prostředky tooAzure přístupu uživatelů |
-| [Přispěvatel Classic virtuálních počítačů](#classic-virtual-machine-contributor) |Můžete spravovat klasické virtuální počítače, ale není hello virtuální sítě nebo toowhich účet úložiště, které jsou připojeny |
-| [Přispěvatel virtuálních počítačů](#virtual-machine-contributor) |Můžete spravovat virtuální počítače, ale není hello virtuální sítě nebo úložiště účet toowhich, které jsou připojeny |
+| [Správce přístupu uživatelů](#user-access-administrator) |Můžete spravovat přístup uživatelů k prostředkům Azure |
+| [Přispěvatel Classic virtuálních počítačů](#classic-virtual-machine-contributor) |Můžete spravovat klasické virtuální počítače, ale není virtuální sítě nebo úložiště účet ke kterému jsou připojeny |
+| [Přispěvatel virtuálních počítačů](#virtual-machine-contributor) |Můžete spravovat virtuální počítače, ale není virtuální sítě nebo úložiště účet ke kterému jsou připojeny |
 | [Přispěvatel klasických sítí](#classic-network-contributor) |Můžete spravovat klasické virtuální sítě a vyhrazené IP adresy |
 | [Plán přispěvatelů webu](#web-plan-contributor) |Můžete spravovat plány web |
-| [Přispěvatel webu](#website-contributor) |Můžete spravovat weby, ale není hello toowhich plány webové, které jsou připojeny |
+| [Přispěvatel webu](#website-contributor) |Můžete spravovat weby, ale není webové plány, na které jsou připojeny |
 
 ## <a name="role-permissions"></a>Oprávnění role
-Hello následující tabulky popisují hello tooeach role přidělena konkrétní oprávnění. To může zahrnovat **akce**, který udělit oprávnění, a **NotActions**, což je omezit.
+Následující tabulky popisují konkrétní oprávnění na každou roli. To může zahrnovat **akce**, který udělit oprávnění, a **NotActions**, což je omezit.
 
 ### <a name="api-management-service-contributor"></a>Rozhraní API správy služby přispěvatele
 Můžete spravovat služby API Management
@@ -96,7 +96,7 @@ Můžete spravovat služby API Management
 | Microsoft.ApiManagement/Service/* |Vytvářet a spravovat služby API Management |
 | Microsoft.Authorization/*/read |Autorizace pro čtení |
 | Microsoft.Insights/alertRules/* |Vytvářet a spravovat pravidla výstrah |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav hello prostředků |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav prostředků |
 | Microsoft.Resources/deployments/* |Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Čtení rolí a přiřazení rolí |
 | Microsoft.Support/* |Vytvářet a spravovat lístky žádostí o podporu |
@@ -107,16 +107,16 @@ Můžete spravovat služby API Management
 | **Akce** |  |
 | --- | --- |
 | Microsoft.ApiManagement/Service/*/read | Instance služby API Management pro čtení |
-| Microsoft.ApiManagement/Service/backup/action | Zálohování služby API Management toohello zadaný kontejner v uživatel zadaný účet úložiště |
+| Microsoft.ApiManagement/Service/backup/action | Zálohování služby API Management do zadaného kontejneru. v uživatel zadaný účet úložiště |
 | Microsoft.ApiManagement/Service/delete | Odstranění instance služby API Management |
 | Microsoft.ApiManagement/Service/managedeployments/action | Změna SKU nebo jednotky; Přidat nebo odebrat místní nasazení služby API Management |
 | Microsoft.ApiManagement/Service/read | Číst metadata pro instanci služby API Management |
-| Microsoft.ApiManagement/Service/restore/action | Obnovení služby API Management ze zadaného kontejneru hello v uživatel zadaný účet úložiště |
+| Microsoft.ApiManagement/Service/restore/action | Obnovení ze zadaného kontejneru v uživatel zadaný účet úložiště služby API Management |
 | Microsoft.ApiManagement/Service/updatehostname/action | Nastavit, aktualizovat nebo odebrat vlastní názvy domén pro služby API Management |
 | Microsoft.ApiManagement/Service/write | Vytvoření nové instance služby API Management |
 | Microsoft.Authorization/*/read |Autorizace pro čtení |
 | Microsoft.Insights/alertRules/* |Vytvářet a spravovat pravidla výstrah |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav hello prostředků |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav prostředků |
 | Microsoft.Resources/deployments/* |Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Čtení rolí a přiřazení rolí |
 | Microsoft.Support/* |Vytvářet a spravovat lístky žádostí o podporu |
@@ -130,7 +130,7 @@ Můžete spravovat služby API Management
 | Microsoft.ApiManagement/Service/read | Číst metadata pro instanci služby API Management |
 | Microsoft.Authorization/*/read |Autorizace pro čtení |
 | Microsoft.Insights/alertRules/* |Vytvářet a spravovat pravidla výstrah |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav hello prostředků |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav prostředků |
 | Microsoft.Resources/deployments/* |Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Čtení rolí a přiřazení rolí |
 | Microsoft.Support/* |Vytvářet a spravovat lístky žádostí o podporu |
@@ -144,13 +144,13 @@ Můžete spravovat součásti Application Insights
 | Microsoft.Insights/alertRules/* |Vytvářet a spravovat pravidla výstrah |
 | Microsoft.Insights/components/* |Vytvoření a správa přehled komponenty |
 | Microsoft.Insights/webtests/* |Vytvoření a Správa webové testy |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav hello prostředků |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav prostředků |
 | Microsoft.Resources/deployments/* |Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Skupiny prostředků pro čtení |
 | Microsoft.Support/* |Vytvářet a spravovat lístky žádostí o podporu |
 
 ### <a name="automation-operator"></a>Operátor služby Automation
-Možnost toostart, zastavení, pozastavení a obnovení úlohy
+Možnost spuštění, zastavení, pozastavení a obnovení úlohy
 
 | **Akce** |  |
 | --- | --- |
@@ -168,13 +168,13 @@ Možnost toostart, zastavení, pozastavení a obnovení úlohy
 | Microsoft.Automation/automationAccounts/schedules/read |Číst plány účet automation. |
 | Microsoft.Automation/automationAccounts/schedules/write |Zápis plány účet automation. |
 | Microsoft.Insights/components/* |Vytvoření a správa přehled komponenty |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav hello prostředků |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav prostředků |
 | Microsoft.Resources/deployments/* |Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Skupiny prostředků pro čtení |
 | Microsoft.Support/* |Vytvářet a spravovat lístky žádostí o podporu |
 
 ### <a name="backup-contributor"></a>Zálohování přispěvatele
-Můžete spravovat všechny akce správy zálohování, s výjimkou vytvoření trezoru služeb zotavení a udělení přístupu tooothers
+Můžete spravovat všechny akce správy zálohování, s výjimkou vytvoření trezoru služeb zotavení a udělení přístupu ke ostatními
 
 | **Akce** | |
 | --- | --- |
@@ -183,14 +183,14 @@ Můžete spravovat všechny akce správy zálohování, s výjimkou vytvoření 
 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/* | Vytvářet a spravovat zálohy kontejnery uvnitř zálohování Fabric trezor služeb zotavení |
 | Microsoft.RecoveryServices/Vaults/backupJobs/* | Vytvářet a spravovat úlohy zálohování |
 | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Úlohy zálohování export do aplikace excel |
-| Microsoft.RecoveryServices/Vaults/backupManagementMetaData/* | Vytvoření a správa meta data související s toobackup správy |
+| Microsoft.RecoveryServices/Vaults/backupManagementMetaData/* | Vytvářet a spravovat metadata související se správou zálohování |
 | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | Vytvořit a spravovat výsledky operací zálohování správy |
 | Microsoft.RecoveryServices/Vaults/backupPolicies/* | Vytvářet a spravovat zásady zálohování |
 | Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | Vytváření a Správa položek, které lze zálohovat |
 | Microsoft.RecoveryServices/Vaults/backupProtectedItems/* | Vytváření a správa zálohovaných položek |
 | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/* | Vytvoření a Správa kontejnerů, která uchovává položky zálohování |
-| Microsoft.RecoveryServices/Vaults/certificates/* | Vytvářet a spravovat certifikáty související toobackup v trezoru služeb zotavení |
-| Microsoft.RecoveryServices/Vaults/extendedInformation/* | Vytváření a správě rozšířené informace související s toovault |
+| Microsoft.RecoveryServices/Vaults/certificates/* | Vytváření a správě certifikátů související s zálohování v trezoru služeb zotavení |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/* | Vytváření a správě rozšířené informace související s trezoru |
 | Microsoft.RecoveryServices/Vaults/read | Číst trezory služeb zotavení |
 | Microsoft.RecoveryServices/Vaults/refreshContainers/* | Spravovat operaci zjišťování pro načítání nově vytvořený kontejnery |
 | Microsoft.RecoveryServices/Vaults/registeredIdentities/* | Vytvářet a spravovat registrovaná identit |
@@ -201,7 +201,7 @@ Můžete spravovat všechny akce správy zálohování, s výjimkou vytvoření 
 | Microsoft.Support/* |Vytvářet a spravovat lístky žádostí o podporu |
 
 ### <a name="backup-operator"></a>Operátor zálohování
-Můžete spravovat všechny akce správy zálohování kromě vytváření trezory, odebrání zálohování a udělení přístupu tooothers
+Můžete spravovat všechny akce správy zálohování kromě vytváření trezory, odebrání zálohování a uvádějící přístup ostatním uživatelům
 
 | **Akce** | |
 | --- | --- |
@@ -218,21 +218,21 @@ Můžete spravovat všechny akce správy zálohování kromě vytváření trezo
 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | Načetla kontejnery, která uchovává zálohování položek |
 | Microsoft.RecoveryServices/Vaults/backupJobs/* | Vytvářet a spravovat úlohy zálohování |
 | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Úlohy zálohování export do aplikace excel |
-| Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read | Čtení metadat data související s toobackup správy |
+| Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read | Číst metadata související se správou zálohování |
 | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | Vytvořit a spravovat výsledky operací zálohování správy |
 | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | Výsledky operace provedené na zásady zálohování pro čtení |
 | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Zásady zálohování pro čtení |
 | Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | Vytváření a Správa položek, které lze zálohovat |
 | Microsoft.RecoveryServices/Vaults/backupProtectedItems/read | Čtení zálohovat položky |
 | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | Čtení zálohovat kontejnery, která uchovává položky zálohování |
-| Microsoft.RecoveryServices/Vaults/extendedInformation/read | Čtení rozšířené informace související s toovault |
-| Microsoft.RecoveryServices/Vaults/extendedInformation/write | Informace o zápisu rozšířené související toovault |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/read | Číst rozšířené informace související s trezoru |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/write | Rozšířené informace o související s trezoru |
 | Microsoft.RecoveryServices/Vaults/read | Číst trezory služeb zotavení |
 | Microsoft.RecoveryServices/Vaults/refreshContainers/* | Spravovat operaci zjišťování pro načítání nově vytvořený kontejnery |
-| Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read | Čtení výsledky operace provedené na registrovaná položky hello trezoru |
-| Microsoft.RecoveryServices/Vaults/registeredIdentities/read | Přečtěte si registrovaných položek hello trezoru |
-| Microsoft.RecoveryServices/Vaults/registeredIdentities/write | Zápis toovault registrovaných položek |
-| Microsoft.RecoveryServices/Vaults/usages/read | Čtení využití hello trezoru služeb zotavení |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read | Čtení výsledky operace provedené na registrovaná položky trezoru |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/read | Číst registrované položky trezoru |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/write | Zápis registrované položky do trezoru |
+| Microsoft.RecoveryServices/Vaults/usages/read | Přečtěte si využití trezor služeb zotavení |
 | Microsoft.Resources/deployments/* | Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read | Skupiny prostředků pro čtení |
 | Microsoft.Storage/storageAccounts/read | Účty úložiště pro čtení |
@@ -252,18 +252,18 @@ Můžete monitorovat správu záloh v trezoru služeb zotavení
 | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read  | Přečtěte si výsledky úloh zálohování |
 | Microsoft.RecoveryServices/Vaults/backupJobs/read  | Úlohy zálohování pro čtení |
 | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Úlohy zálohování export do aplikace excel |
-| Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read  | Čtení metadat data související s toobackup správy |
+| Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read  | Číst metadata související se správou zálohování |
 | Microsoft.RecoveryServices/Vaults/backupOperationResults/read  | Přečtěte si správu záloh výsledky operace |
 | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read  | Výsledky operace provedené na zásady zálohování pro čtení |
 | Microsoft.RecoveryServices/Vaults/backupPolicies/read  | Zásady zálohování pro čtení |
 | Microsoft.RecoveryServices/Vaults/backupProtectedItems/read  |  Čtení zálohovat položky |
 | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read  | Čtení zálohovat kontejnery, která uchovává položky zálohování |
-| Microsoft.RecoveryServices/Vaults/extendedInformation/read  | Čtení rozšířené informace související s toovault |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/read  | Číst rozšířené informace související s trezoru |
 | Microsoft.RecoveryServices/Vaults/read  | Číst trezory služeb zotavení |
 | Microsoft.RecoveryServices/Vaults/refreshContainers/read  | Načíst výsledek operace zjišťování pro načítání nově vytvořený kontejnery |
-| Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read  | Čtení výsledky operace provedené na registrovaná položky hello trezoru |
-| Microsoft.RecoveryServices/Vaults/registeredIdentities/read  | Přečtěte si registrovaných položek hello trezoru |
-| Microsoft.RecoveryServices/Vaults/usages/read  |  Čtení využití hello trezoru služeb zotavení |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read  | Čtení výsledky operace provedené na registrovaná položky trezoru |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/read  | Číst registrované položky trezoru |
+| Microsoft.RecoveryServices/Vaults/usages/read  |  Přečtěte si využití trezor služeb zotavení |
 
 ### <a name="billing-reader"></a>Čtečka fakturace
 Můžete zobrazit všechny informace o fakturaci
@@ -282,7 +282,7 @@ Můžete spravovat služby BizTalk services
 | Microsoft.Authorization/*/read |Čtení rolí a přiřazení rolí |
 | Microsoft.BizTalkServices/BizTalk/* |Vytvářet a spravovat služby BizTalk services |
 | Microsoft.Insights/alertRules/* |Vytvářet a spravovat pravidla výstrah |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav hello prostředků |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav prostředků |
 | Microsoft.Resources/deployments/* |Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Skupiny prostředků pro čtení |
 | Microsoft.Support/* |Vytvářet a spravovat lístky žádostí o podporu |
@@ -294,7 +294,7 @@ Můžete spravovat databáze MySQL cleardb –
 | --- | --- |
 | Microsoft.Authorization/*/read |Čtení rolí a přiřazení rolí |
 | Microsoft.Insights/alertRules/* |Vytvářet a spravovat pravidla výstrah |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav hello prostředků |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav prostředků |
 | Microsoft.Resources/deployments/* |Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Skupiny prostředků pro čtení |
 | Microsoft.Support/* |Vytvářet a spravovat lístky žádostí o podporu |
@@ -320,7 +320,7 @@ Vytvořit a spravovat datové továrny a podřízené prostředky v nich.
 | Microsoft.Authorization/*/read |Čtení role a role přiřazení |
 | Microsoft.DataFactory/dataFactories/* |Vytvořit a spravovat datové továrny a podřízené prostředky v nich. |
 | Microsoft.Insights/alertRules/* |Vytvářet a spravovat pravidla výstrah |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav hello prostředků |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav prostředků |
 | Microsoft.Resources/deployments/* |Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Skupiny prostředků pro čtení |
 | Microsoft.Support/* |Vytvářet a spravovat lístky žádostí o podporu |
@@ -331,13 +331,13 @@ Můžete zobrazit vše, co a připojit, spuštění, restart a vypnutí virtuál
 | **Akce** |  |
 | --- | --- |
 | Microsoft.Authorization/*/read |Čtení role a role přiřazení |
-| Microsoft.Compute/availabilitySets/read |Čtení hello vlastností skupiny dostupnosti |
-| Microsoft.Compute/virtualMachines/*/read |Číst hello vlastnosti virtuálního počítače (velikosti virtuálních počítačů, stav modulu runtime, rozšíření virtuálního počítače, atd.) |
+| Microsoft.Compute/availabilitySets/read |Číst vlastnosti služby skupiny dostupnosti |
+| Microsoft.Compute/virtualMachines/*/read |Číst vlastnosti virtuálního počítače (velikosti virtuálních počítačů, stav modulu runtime, rozšíření virtuálního počítače, atd.) |
 | Microsoft.Compute/virtualMachines/deallocate/action |Deallocate – virtuální počítače |
-| Microsoft.Compute/virtualMachines/read |Číst hello vlastnosti virtuálního počítače |
+| Microsoft.Compute/virtualMachines/read |Číst vlastnosti virtuálního počítače |
 | Microsoft.Compute/virtualMachines/restart/action |Restartovat virtuální počítače |
 | Microsoft.Compute/virtualMachines/start/action |Spuštění virtuálních počítačů |
-| Microsoft.DevTestLab/*/read |Čtení vlastnosti hello testovacího prostředí |
+| Microsoft.DevTestLab/*/read |Číst vlastnosti služby testovacího prostředí |
 | Microsoft.DevTestLab/labs/createEnvironment/action |Vytvoření testovacího prostředí |
 | Microsoft.DevTestLab/labs/formulas/delete |Odstranit vzorce |
 | Microsoft.DevTestLab/labs/formulas/read |Vzorce pro čtení |
@@ -345,11 +345,11 @@ Můžete zobrazit vše, co a připojit, spuštění, restart a vypnutí virtuál
 | Microsoft.DevTestLab/labs/policySets/evaluatePolicies/action |Vyhodnocení zásad testovacího prostředí |
 | Microsoft.Network/loadBalancers/backendAddressPools/join/action |Připojení k fondu back-end adresy Vyrovnávání zatížení. |
 | Microsoft.Network/loadBalancers/inboundNatRules/join/action |Připojení k službě Vyrovnávání zatížení příchozí pravidlo NAT |
-| Microsoft.Network/networkInterfaces/*/read |Číst vlastnosti hello rozhraní sítě (například všechny hello služby Vyrovnávání zatížení rozhraní sítě, hello je součástí) |
-| Microsoft.Network/networkInterfaces/join/action |Připojení k síťovému rozhraní virtuálního počítače tooa |
+| Microsoft.Network/networkInterfaces/*/read |Při čtení vlastností rozhraní sítě (například všechny služby Vyrovnávání zatížení, které síťové rozhraní je součástí) |
+| Microsoft.Network/networkInterfaces/join/action |Připojit virtuální počítač k síťovému rozhraní |
 | Microsoft.Network/networkInterfaces/read |Síťová rozhraní pro čtení |
 | Microsoft.Network/networkInterfaces/write |Zápis síťových rozhraní |
-| Microsoft.Network/publicIPAddresses/*/read |Číst vlastnosti hello veřejné IP adresy |
+| Microsoft.Network/publicIPAddresses/*/read |Číst vlastnosti služby veřejnou IP adresu |
 | Microsoft.Network/publicIPAddresses/join/action |Spojit veřejnou IP adresu |
 | Microsoft.Network/publicIPAddresses/read |Veřejné IP adresy sítě pro čtení |
 | Microsoft.Network/virtualNetworks/subnets/join/action |Připojení k virtuální síti |
@@ -366,7 +366,7 @@ Můžete spravovat zóny DNS a záznamy.
 | Microsoft.Authorization/ \* /číst |Čtení rolí a přiřazení rolí |
 | Microsoft.Insights/alertRules/\* |Vytvářet a spravovat pravidla výstrah |
 | Microsoft.Network/dnsZones/\* |Vytváření a Správa zón DNS a záznamů |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav hello hello prostředků |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav prostředků |
 | Microsoft.Resources/deployments/\* |Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Skupiny prostředků pro čtení |
 | Microsoft.Support/\* |Vytvářet a spravovat lístky žádostí o podporu |
@@ -379,7 +379,7 @@ Můžete spravovat účty pro Azure Cosmos DB
 | Microsoft.Authorization/*/read |Čtení role a role přiřazení |
 | Microsoft.DocumentDb/databaseAccounts/* |Vytvářet a spravovat účty DocumentDB |
 | Microsoft.Insights/alertRules/* |Vytvářet a spravovat pravidla výstrah |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav hello prostředků |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav prostředků |
 | Microsoft.Resources/deployments/* |Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Skupiny prostředků pro čtení |
 | Microsoft.Support/* |Vytvářet a spravovat lístky žádostí o podporu |
@@ -392,7 +392,7 @@ Můžete spravovat účty inteligentních systémů
 | Microsoft.Authorization/*/read |Čtení role a role přiřazení |
 | Microsoft.Insights/alertRules/* |Vytvářet a spravovat pravidla výstrah |
 | Microsoft.IntelligentSystems/accounts/* |Vytváření a správě účtů inteligentních systémů |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav hello prostředků |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav prostředků |
 | Microsoft.Resources/deployments/* |Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Skupiny prostředků pro čtení |
 | Microsoft.Support/* |Vytvářet a spravovat lístky žádostí o podporu |
@@ -415,11 +415,11 @@ Můžete načíst všechna data monitorování a upravit nastavení monitorován
 | Microsoft.Insights/AlertRules/* |Pravidla výstrah pro čtení, zápisu a odstranění. |
 | Microsoft.Insights/components/* |Součásti Application Insights pro čtení, zápisu a odstranění. |
 | Microsoft.Insights/DiagnosticSettings/* |Nastavení diagnostiky pro čtení, zápisu a odstranění. |
-| Microsoft.Insights/eventtypes/* |Zobrazí seznam aktivity protokolu události (události management) v předplatném. Toto oprávnění je použít tooboth programová a portálu přístup toohello protokol aktivit. |
-| Microsoft.Insights/LogDefinitions/* |Toto oprávnění je nutné pro uživatele, kteří potřebují přístup k protokolům tooActivity přes portál hello. Seznam kategorií protokolu v protokolu aktivit. |
+| Microsoft.Insights/eventtypes/* |Zobrazí seznam aktivity protokolu události (události management) v předplatném. Toto oprávnění se vztahuje na portálu i programový přístup k protokolu aktivit. |
+| Microsoft.Insights/LogDefinitions/* |Tato oprávnění jsou nezbytné pro uživatele, kteří potřebují přístup k protokolům aktivity prostřednictvím portálu. Seznam kategorií protokolu v protokolu aktivit. |
 | Microsoft.Insights/MetricDefinitions/* |Číst definice metrik (seznamu dostupných typů metriky pro prostředek). |
 | Microsoft.Insights/Metrics/* |Číst metriky pro prostředek. |
-| Microsoft.Insights/Register/Action |Registrace zprostředkovatele Microsoft.Insights hello. |
+| Microsoft.Insights/Register/Action |Zaregistrujte zprostředkovatele Microsoft.Insights. |
 | Microsoft.Insights/webtests/* |Application Insights pro čtení, zápisu a odstranění webové testy. |
 | Microsoft.OperationalInsights/workspaces/intelligencepacks/* |Balíčky řešení analýzy protokolů pro čtení, zápisu a odstranění. |
 | Microsoft.OperationalInsights/workspaces/savedSearches/* |Analýzy protokolů pro čtení, zápisu a odstraňování uložená hledání. |
@@ -435,7 +435,7 @@ Můžete spravovat všechny síťové prostředky
 | Microsoft.Authorization/*/read |Čtení role a role přiřazení |
 | Microsoft.Insights/alertRules/* |Vytvářet a spravovat pravidla výstrah |
 | Microsoft.Network/* |Vytvoření a Správa sítě |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav hello prostředků |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav prostředků |
 | Microsoft.Resources/deployments/* |Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Skupiny prostředků pro čtení |
 | Microsoft.Support/* |Vytvářet a spravovat lístky žádostí o podporu |
@@ -447,7 +447,7 @@ Můžete spravovat novou Správa výkonu aplikací New Relic účty a aplikace
 | --- | --- |
 | Microsoft.Authorization/*/read |Čtení role a role přiřazení |
 | Microsoft.Insights/alertRules/* |Vytvářet a spravovat pravidla výstrah |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav hello prostředků |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav prostředků |
 | Microsoft.Resources/deployments/* |Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Skupiny prostředků pro čtení |
 | Microsoft.Support/* |Vytvářet a spravovat lístky žádostí o podporu |
@@ -475,7 +475,7 @@ Můžete spravovat mezipaměti Redis
 | Microsoft.Authorization/*/read |Čtení role a role přiřazení |
 | Microsoft.Cache/redis/* |Vytváření a správě mezipaměti Redis |
 | Microsoft.Insights/alertRules/* |Vytvářet a spravovat pravidla výstrah |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav hello prostředků |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav prostředků |
 | Microsoft.Resources/deployments/* |Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Skupiny prostředků pro čtení |
 | Microsoft.Support/* |Vytvářet a spravovat lístky žádostí o podporu |
@@ -487,7 +487,7 @@ Můžete spravovat kolekce úloh plánovače
 | --- | --- |
 | Microsoft.Authorization/*/read |Čtení role a role přiřazení |
 | Microsoft.Insights/alertRules/* |Vytvářet a spravovat pravidla výstrah |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav hello prostředků |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav prostředků |
 | Microsoft.Resources/deployments/* |Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Skupiny prostředků pro čtení |
 | Microsoft.Scheduler/jobcollections/* |Vytvoření a správa kolekcí úloh |
@@ -500,7 +500,7 @@ Můžete spravovat služby vyhledávání
 | --- | --- |
 | Microsoft.Authorization/*/read |Čtení role a role přiřazení |
 | Microsoft.Insights/alertRules/* |Vytvářet a spravovat pravidla výstrah |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav hello prostředků |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav prostředků |
 | Microsoft.Resources/deployments/* |Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Skupiny prostředků pro čtení |
 | Microsoft.Search/searchServices/* |Vytvoření a Správa služby vyhledávání |
@@ -516,23 +516,23 @@ Můžete spravovat součásti zabezpečení, zásady zabezpečení a virtuální
 | Microsoft.ClassicCompute/virtualMachines/*/write |Zapsat konfiguraci pro virtuální počítače |
 | Microsoft.ClassicNetwork/*/read |Přečtěte si informace o konfiguraci o classic sítě |
 | Microsoft.Insights/alertRules/* |Vytvářet a spravovat pravidla výstrah |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav hello prostředků |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav prostředků |
 | Microsoft.Resources/deployments/* |Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Skupiny prostředků pro čtení |
 | Microsoft.Security/* |Vytvořit a spravovat zabezpečení komponenty a zásady |
 | Microsoft.Support/* |Vytvářet a spravovat lístky žádostí o podporu |
 
 ### <a name="site-recovery-contributor"></a>Přispěvatel obnovení lokality
-Můžete spravovat všechny akce správy Site Recovery, s výjimkou vytvoření trezoru služeb zotavení a přiřazení přístupu tooother uživatelé s právy
+Můžete spravovat všechny akce správy Site Recovery, s výjimkou vytvoření trezoru služeb zotavení a přiřazení přístupová práva jiným uživatelům
 
 | **Akce** | |
 | --- | --- |
 | Microsoft.Authorization/*/read | Čtení rolí a přiřazení rolí |
 | Microsoft.Insights/alertRules/* | Vytvářet a spravovat pravidla výstrah |
 | Microsoft.Network/virtualNetworks/read | Virtuální sítě pro čtení |
-| Microsoft.RecoveryServices/Vaults/certificates/write | Certifikát přihlašovacích údajů trezoru hello aktualizace |
-| Microsoft.RecoveryServices/Vaults/extendedInformation/* | Vytváření a správě rozšířené informace související s toovault |
-| Microsoft.RecoveryServices/Vaults/monitoringAlerts/*  | Načtení výstrah pro trezor služeb zotavení hello |
+| Microsoft.RecoveryServices/Vaults/certificates/write | Aktualizace certifikát přihlašovacích údajů trezoru |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/* | Vytváření a správě rozšířené informace související s trezoru |
+| Microsoft.RecoveryServices/Vaults/monitoringAlerts/*  | Načtení výstrah pro trezor služeb zotavení |
 | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/ notificationConfiguration/čtení  | Konfigurace oznámení trezoru služeb zotavení pro čtení |
 | Microsoft.RecoveryServices/Vaults/read | Trezory služeb zotavení pro čtení |
 | Microsoft.RecoveryServices/Vaults/refreshContainers/read | Spravovat operaci zjišťování pro načítání nově vytvořený kontejnery |
@@ -546,22 +546,22 @@ Můžete spravovat všechny akce správy Site Recovery, s výjimkou vytvoření 
 | Microsoft.RecoveryServices/Vaults/storageConfig/* | Vytvoření a správě konfigurace úložiště z trezoru služeb zotavení |
 | Microsoft.RecoveryServices/Vaults/tokenInfo/read | Informace o tokenu trezoru služeb zotavení pro čtení |
 | Microsoft.RecoveryServices/Vaults/usages/read | Přečtěte si podrobnosti o využití trezoru služeb zotavení |
-| Microsoft.ResourceHealth/availabilityStatuses/read | Načíst stav hello prostředků |
+| Microsoft.ResourceHealth/availabilityStatuses/read | Načíst stav prostředků |
 | Microsoft.Resources/deployments/* | Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read | Skupiny prostředků pro čtení |
 | Microsoft.Storage/storageAccounts/read | Účty úložiště pro čtení |
 | Microsoft.Support/* |Vytvářet a spravovat lístky žádostí o podporu |
 
 ### <a name="site-recovery-operator"></a>Operátor obnovení lokality
-Můžete převzetí služeb při selhání a navrácení služeb po obnovení, ale nemůže provádět další akce správy Site Recovery nebo přiřazení přístupu tooother uživatelů
+Můžete převzetí služeb při selhání a navrácení služeb po obnovení, ale nemůže provádět další akce správy Site Recovery nebo přiřadit přístup ostatním uživatelům
 
 | **Akce** | |
 | --- | --- |
 | Microsoft.Authorization/*/read | Čtení rolí a přiřazení rolí |
 | Microsoft.Insights/alertRules/* | Vytvářet a spravovat pravidla výstrah |
 | Microsoft.Network/virtualNetworks/read | Virtuální sítě pro čtení |
-| Microsoft.RecoveryServices/Vaults/extendedInformation/read | Čtení rozšířené informace související s toovault |
-| Microsoft.RecoveryServices/Vaults/monitoringAlerts/*  | Načtení výstrah pro trezor služeb zotavení hello |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/read | Číst rozšířené informace související s trezoru |
+| Microsoft.RecoveryServices/Vaults/monitoringAlerts/*  | Načtení výstrah pro trezor služeb zotavení |
 | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/ notificationConfiguration/čtení  | Konfigurace oznámení trezoru služeb zotavení pro čtení |
 | Microsoft.RecoveryServices/Vaults/read | Trezory služeb zotavení pro čtení |
 | Microsoft.RecoveryServices/Vaults/refreshContainers/read | Spravovat operaci zjišťování pro načítání nově vytvořený kontejnery |
@@ -569,7 +569,7 @@ Můžete převzetí služeb při selhání a navrácení služeb po obnovení, a
 | Microsoft.RecoveryServices/Vaults/registeredIdentities/read | Kontejnery pro čtení zaregistrovat pro prostředek |
 | Microsoft.RecoveryServices/vaults/replicationAlertSettings/read | Čtení výstrah nastavení replikace |
 | Microsoft.RecoveryServices/vaults/replicationEvents/read | Číst události replikace |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/checkConsistency/action | Kontrola konzistence hello Fabric |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/checkConsistency/action | Kontrola konzistence prostředků úložiště |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/read | Prostředků infrastruktury replikace pro čtení |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ reassociateGateway nebo akce | Znovu přidružte replikační brána |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/renewcertificate/action | Obnovit certifikát prostředků infrastruktury replikace |
@@ -587,7 +587,7 @@ Můžete převzetí služeb při selhání a navrácení služeb po obnovení, a
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/testFailover nebo akce | Spustit test převzetí služeb při selhání chráněné položky |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup nebo akce | Spustit čištění testovací převzetí služeb |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/unplannedFailover nebo akce | Spustit neplánované převzetí služeb při selhání chráněné položky |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/updateMobilityService nebo akce | Aktualizace služby mobility hello |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/updateMobilityService nebo akce | Aktualizace služby mobility |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectionContainerMappings/čtení | Číst mapování kontejnerů ochrany |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationRecoveryServicesProviders/čtení | Poskytovatelé služeb zotavení pro čtení |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationRecoveryServicesProviders/refreshProvider nebo akce | Aktualizujte zprostředkovatele služeb zotavení |
@@ -606,7 +606,7 @@ Můžete převzetí služeb při selhání a navrácení služeb po obnovení, a
 | Microsoft.RecoveryServices/Vaults/storageConfig/read | Číst konfiguraci úložiště trezoru služeb zotavení |
 | Microsoft.RecoveryServices/Vaults/tokenInfo/read | Informace o tokenu trezoru služeb zotavení pro čtení |
 | Microsoft.RecoveryServices/Vaults/usages/read | Přečtěte si podrobnosti o využití trezoru služeb zotavení |
-| Microsoft.ResourceHealth/availabilityStatuses/read | Načíst stav hello prostředků |
+| Microsoft.ResourceHealth/availabilityStatuses/read | Načíst stav prostředků |
 | Microsoft.Resources/deployments/* | Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read | Skupiny prostředků pro čtení |
 | Microsoft.Storage/storageAccounts/read | Účty úložiště pro čtení |
@@ -618,8 +618,8 @@ Můžete sledovat stav obnovení lokality v trezoru služeb zotavení a zvýšit
 | **Akce** | |
 | --- | --- |
 | Microsoft.Authorization/*/read | Čtení rolí a přiřazení rolí |
-| Microsoft.RecoveryServices/Vaults/extendedInformation/read  | Čtení rozšířené informace související s toovault |
-| Microsoft.RecoveryServices/Vaults/monitoringAlerts/read  | Načtení výstrah pro trezor služeb zotavení hello |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/read  | Číst rozšířené informace související s trezoru |
+| Microsoft.RecoveryServices/Vaults/monitoringAlerts/read  | Načtení výstrah pro trezor služeb zotavení |
 | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/ notificationConfiguration/čtení  | Konfigurace oznámení trezoru služeb zotavení pro čtení |
 | Microsoft.RecoveryServices/Vaults/read  | Trezory služeb zotavení pro čtení |
 | Microsoft.RecoveryServices/Vaults/refreshContainers/read  | Spravovat operaci zjišťování pro načítání nově vytvořený kontejnery |
@@ -654,7 +654,7 @@ Můžete spravovat databáze SQL, ale není jejich zásady zabezpečení
 | --- | --- |
 | Microsoft.Authorization/*/read |Čtení role a role přiřazení |
 | Microsoft.Insights/alertRules/* |Vytvářet a spravovat pravidla výstrah |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav hello prostředků |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav prostředků |
 | Microsoft.Resources/deployments/* |Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Skupiny prostředků pro čtení |
 | Microsoft.Sql/servers/databases/* |Vytvářet a spravovat databáze SQL |
@@ -672,13 +672,13 @@ Můžete spravovat databáze SQL, ale není jejich zásady zabezpečení
 | Microsoft.Sql/servers/databases/securityMetrics/* |Nelze upravit zabezpečení metriky |
 
 ### <a name="sql-security-manager"></a>Správce zabezpečení SQL
-Můžete spravovat hello zásady zabezpečení serverů SQL a databáze
+Můžete spravovat zásady vztahující se k zabezpečení serverů SQL a databáze
 
 | **Akce** |  |
 | --- | --- |
 | Microsoft.Authorization/*/read |Autorizace Microsoft pro čtení |
 | Microsoft.Insights/alertRules/* |Vytvářet a spravovat pravidla výstrah statistiky |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav hello prostředků |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav prostředků |
 | Microsoft.Resources/deployments/* |Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Skupiny prostředků pro čtení |
 | Microsoft.Sql/servers/auditingPolicies/* |Vytvořit a spravovat zásady auditování SQL serveru |
@@ -705,7 +705,7 @@ Můžete spravovat servery SQL Server a databáze, ale není jejich zásady zabe
 | --- | --- |
 | Microsoft.Authorization/*/read |Autorizace pro čtení |
 | Microsoft.Insights/alertRules/* |Vytvářet a spravovat pravidla výstrah statistiky |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav hello prostředků |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav prostředků |
 | Microsoft.Resources/deployments/* |Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Skupiny prostředků pro čtení |
 | Microsoft.Sql/servers/* |Vytvoření a správa serverů SQL |
@@ -732,27 +732,27 @@ Můžete spravovat klasických účtů úložiště
 | Microsoft.Authorization/*/read |Autorizace pro čtení |
 | Microsoft.ClassicStorage/storageAccounts/* |Vytváření a správě účtů úložiště |
 | Microsoft.Insights/alertRules/* |Vytvářet a spravovat pravidla výstrah statistiky |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav hello prostředků |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav prostředků |
 | Microsoft.Resources/deployments/* |Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Skupiny prostředků pro čtení |
 | Microsoft.Support/* |Vytvářet a spravovat lístky žádostí o podporu |
 
 ### <a name="storage-account-contributor"></a>Přispěvatel účtu úložiště
-Můžete spravovat účty úložiště, ale ne přístup toothem.
+Můžete spravovat účty úložiště, ale ne přístup k nim.
 
 | **Akce** |  |
 | --- | --- |
 | Microsoft.Authorization/*/read |Číst všechny autorizace |
 | Microsoft.Insights/alertRules/* |Vytvářet a spravovat pravidla výstrah statistiky |
 | Microsoft.Insights/diagnosticSettings/* |Spravovat nastavení pro diagnostiku |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav hello prostředků |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav prostředků |
 | Microsoft.Resources/deployments/* |Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Skupiny prostředků pro čtení |
 | Microsoft.Storage/storageAccounts/* |Vytváření a správě účtů úložiště |
 | Microsoft.Support/* |Vytvářet a spravovat lístky žádostí o podporu |
 
 ### <a name="support-request-contributor"></a>Přispěvatel žádosti o podporu
-Můžete vytvořit a spravovat lístky žádostí o podporu na obor předplatného hello
+Můžete vytvořit a spravovat lístky žádostí o podporu na obor předplatného
 
 | **Akce** |  |
 | --- | --- |
@@ -761,7 +761,7 @@ Můžete vytvořit a spravovat lístky žádostí o podporu na obor předplatné
 | Microsoft.Resources/subscriptions/resourceGroups/read | Čtení rolí a přiřazení rolí |
 
 ### <a name="user-access-administrator"></a>Správce přístupu uživatelů
-Můžete spravovat prostředky tooAzure přístupu uživatelů
+Můžete spravovat přístup uživatelů k prostředkům Azure
 
 | **Akce** |  |
 | --- | --- |
@@ -770,7 +770,7 @@ Můžete spravovat prostředky tooAzure přístupu uživatelů
 | Microsoft.Support/* |Vytvářet a spravovat lístky žádostí o podporu |
 
 ### <a name="classic-virtual-machine-contributor"></a>Přispěvatel Classic virtuálních počítačů
-Můžete spravovat klasické virtuální počítače, ale není hello virtuální sítě nebo toowhich účet úložiště, které jsou připojeny
+Můžete spravovat klasické virtuální počítače, ale není virtuální sítě nebo úložiště účet ke kterému jsou připojeny
 
 | **Akce** |  |
 | --- | --- |
@@ -787,13 +787,13 @@ Můžete spravovat klasické virtuální počítače, ale není hello virtuáln�
 | Microsoft.ClassicStorage/storageAccounts/listKeys/action |Vypsat klíče účtu úložiště |
 | Microsoft.ClassicStorage/storageAccounts/read |Přečtěte si klasických účtů úložiště |
 | Microsoft.Insights/alertRules/* |Vytvářet a spravovat pravidla výstrah statistiky |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav hello prostředků |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav prostředků |
 | Microsoft.Resources/deployments/* |Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Skupiny prostředků pro čtení |
 | Microsoft.Support/* |Vytvářet a spravovat lístky žádostí o podporu |
 
 ### <a name="virtual-machine-contributor"></a>Přispěvatel virtuálních počítačů
-Můžete spravovat virtuální počítače, ale není hello virtuální sítě nebo úložiště účet toowhich, které jsou připojeny
+Můžete spravovat virtuální počítače, ale není virtuální sítě nebo úložiště účet ke kterému jsou připojeny
 
 | **Akce** |  |
 | --- | --- |
@@ -816,7 +816,7 @@ Můžete spravovat virtuální počítače, ale není hello virtuální sítě n
 | Microsoft.Network/publicIPAddresses/read |Veřejné IP adresy sítě pro čtení |
 | Microsoft.Network/virtualNetworks/read |Virtuální sítě pro čtení |
 | Microsoft.Network/virtualNetworks/subnets/join/action |Připojení k virtuální síti podsítě |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav hello prostředků |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav prostředků |
 | Microsoft.Resources/deployments/* |Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Skupiny prostředků pro čtení |
 | Microsoft.Storage/storageAccounts/listKeys/action |Vypsat klíče účtu úložiště |
@@ -831,7 +831,7 @@ Můžete spravovat klasické virtuální sítě a vyhrazené IP adresy
 | Microsoft.Authorization/*/read |Autorizace pro čtení |
 | Microsoft.ClassicNetwork/* |Vytvoření a správa klasické sítě |
 | Microsoft.Insights/alertRules/* |Vytvářet a spravovat pravidla výstrah statistiky |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav hello prostředků |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav prostředků |
 | Microsoft.Resources/deployments/* |Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Skupiny prostředků pro čtení |
 | Microsoft.Support/* |Vytvářet a spravovat lístky žádostí o podporu |
@@ -843,32 +843,32 @@ Můžete spravovat plány web
 | --- | --- |
 | Microsoft.Authorization/*/read |Autorizace pro čtení |
 | Microsoft.Insights/alertRules/* |Vytvářet a spravovat pravidla výstrah statistiky |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav hello prostředků |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav prostředků |
 | Microsoft.Resources/deployments/* |Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Skupiny prostředků pro čtení |
 | Microsoft.Support/* |Vytvářet a spravovat lístky žádostí o podporu |
 | Microsoft.Web/serverFarms/* |Vytvoření a správa serverové farmy |
 
 ### <a name="website-contributor"></a>Přispěvatel webu
-Můžete spravovat weby, ale není hello toowhich plány webové, které jsou připojeny
+Můžete spravovat weby, ale není webové plány, na které jsou připojeny
 
 | **Akce** |  |
 | --- | --- |
 | Microsoft.Authorization/*/read |Autorizace pro čtení |
 | Microsoft.Insights/alertRules/* |Vytvářet a spravovat pravidla výstrah statistiky |
 | Microsoft.Insights/components/* |Vytvoření a správa přehled komponenty |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav hello prostředků |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Načíst stav prostředků |
 | Microsoft.Resources/deployments/* |Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Skupiny prostředků pro čtení |
 | Microsoft.Support/* |Vytvářet a spravovat lístky žádostí o podporu |
 | Microsoft.Web/certificates/* |Vytvářet a spravovat certifikáty webu |
-| Microsoft.Web/listSitesAssignedToHostName/read |Název hostitele tooa přiřazené lokality pro čtení |
+| Microsoft.Web/listSitesAssignedToHostName/read |Servery pro čtení, které jsou přiřazené název hostitele |
 | Microsoft.Web/serverFarms/join/action |Připojit k serverové farmy |
 | Microsoft.Web/serverFarms/read |Přečtěte si serverové farmy |
-| Microsoft.Web/sites/* |Vytvoření a správa webů (vytváření webu taky vyžaduje oprávnění toohello zápisu spojené plán služby App Service) |
+| Microsoft.Web/sites/* |Vytvoření a správa webů (vytváření webu taky vyžaduje oprávnění k zápisu do přidružené plán služby App Service) |
 
 ## <a name="see-also"></a>Viz také
-* [Řízení přístupu na základě role](role-based-access-control-configure.md): Začínáme s RBAC v hello portálu Azure.
-* [Vlastní role v Azure RBAC](role-based-access-control-custom-roles.md): Zjistěte, jak se toocreate vlastní role toofit přístup musí.
+* [Řízení přístupu na základě role](role-based-access-control-configure.md): Začínáme s RBAC na portálu Azure.
+* [Vlastní role v Azure RBAC](role-based-access-control-custom-roles.md): Naučte se vytvářet vlastní role podle vašich potřeb přístup.
 * [Vytvoření sestavy historie změn přístupu](role-based-access-control-access-change-history-report.md): udržování přehledu o změně přiřazení rolí v RBAC.
 * [Na základě rolí řešení potíží s řízení přístupu](role-based-access-control-troubleshooting.md): umožňuje získat návrhy pro řešení běžných problémů.

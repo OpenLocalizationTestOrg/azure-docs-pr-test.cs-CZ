@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory B2C: Přepínání tooa B2C klienta | Microsoft Docs"
-description: Jak tooswitch do kontextu hello Active Directory B2C klienta
+title: "Azure Active Directory B2C: Přepnutí na tenanta B2C | Dokumentace Microsoftu"
+description: "Postup přepnutí do kontextu tenanta Active Directory B2C"
 services: active-directory-b2c
 documentationcenter: 
 author: parakhj
@@ -14,33 +14,33 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/13/2017
 ms.author: parakhj
-ms.openlocfilehash: 572f9ab283ecac68d284bb04fdfc98575bcf9393
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 40d8d57d974a949fbdc0a06eeceb2d06bfbaa09f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="switching-tooyour-azure-ad-b2c-tenant"></a>Přepínání klienta tooyour Azure AD B2C
+# <a name="switching-to-your-azure-ad-b2c-tenant"></a>Přepnutí na tenanta Azure AD B2C
 
-Pořadí tooconfigure Azure AD B2C je nutné toobe v kontextu hello klienta služby Azure AD B2C.
+Abyste mohli konfigurovat Azure AD B2C, musíte být v kontextu tenanta Azure AD B2C.
 
 ## <a name="log-into-azure-ad-b2c-tenant"></a>Přihlášení k tenantovi Azure AD B2C
 
-toonavigate tooyour klienta Azure AD B2C, musíte být přihlášeni do hello portálu Azure jako globální správce klienta hello Azure AD B2C.
+Abyste mohli přejít do tenanta Azure AD B2C, musíte být přihlášeni na webu Azure Portal jako globální správce tenanta Azure AD B2C.
 
-1. Přihlaste se k hello [portál Azure](http://portal.azure.com).
-1. Kliknutím na e-mailovou adresu nebo obrázek v pravém horním rohu hello přepínače klientů.
-1. V hello `Directory` seznam, který se zobrazí, vyberte hello Azure AD B2C klienta chcete toomanage.
+1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).
+1. Tenanty můžete přepínat kliknutím na vaši e-mailovou adresu nebo váš obrázek v horním pravém rohu.
+1. V seznamu `Directory`, který se zobrazí, vyberte tenanta Azure AD B2C, kterého chcete spravovat.
 
-aktualizuje Hello portálu Azure.  Jsou nyní přihlášeni v kontextu hello klienta služby Azure AD B2C hello portálu Azure.
+Azure Portal se aktualizuje.  Nyní jste na webu Azure Portal přihlášeni v kontextu vašeho tenanta Azure AD B2C.
 
-## <a name="navigate-toohello-b2c-features-blade"></a>Přejděte okno s funkcemi B2C toohello
+## <a name="navigate-to-the-b2c-features-blade"></a>Přejděte do okna s funkcemi B2C.
 
-1. Klikněte na tlačítko **Procházet** na levém navigačním hello.
-1. Klikněte na tlačítko **> víc služeb** a poté vyhledejte `Azure AD B2C` v levém navigačním podokně hello.  (toopin tooyour levé úvodní panel, klikněte na tlačítko hello hvězdičkami toohello nalevo od Azure AD B2C)
-1. Klikněte na tlačítko **Azure AD B2C** tooaccess hello okno s funkcemi B2C.
+1. Klikněte na **Procházet** v levém navigačním panelu.
+1. Klikněte na **> Další služby** a pak v levém navigačním panelu vyhledejte `Azure AD B2C`.  (Pro připnutí na Úvodní panel vlevo klikněte na hvězdičku nalevo od Azure AD B2C)
+1. Kliknutím na **Azure AD B2C** otevřete okno s funkcemi B2C.
    
-    ![Snímek obrazovky okna funkce tooB2C procházení](./media/active-directory-b2c-get-started/b2c-browse.png)
+    ![Snímek obrazovky s přechodem do okna s funkcemi B2C](./media/active-directory-b2c-get-started/b2c-browse.png)
 
 > [!IMPORTANT]
-> Je nutné toobe globálním správcem hello klienta toobe možné tooaccess hello B2C okno s funkcemi B2C. Globální správce jiného klienta ani uživatel jakéhokoli klienta nemají k oknu přístup.  Pomocí klienta přepínači hello v hello pravém horním rohu hello portálu Azure můžete přepnout tooyour klienta B2C.
+> Pro přístup k oknu s funkcemi B2C musíte být Globální správce klienta B2C. Globální správce jiného klienta ani uživatel jakéhokoli klienta nemají k oknu přístup.  Můžete přepnout na svého klienta B2C pomocí přepínače klienta v pravém horním rohu webu Azure Portal.

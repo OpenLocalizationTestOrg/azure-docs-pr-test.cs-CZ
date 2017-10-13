@@ -1,6 +1,6 @@
 ---
-title: "aaaCollect a analyzovat protokoly událostí systému Windows v OMS Log Analytics | Microsoft Docs"
-description: "Protokoly událostí systému Windows jsou jedním z nejčastějších zdroje dat hello používané analýzy protokolů.  Tento článek popisuje, jak tooconfigure shromažďování protokolů událostí systému Windows a podrobnosti záznamů hello vytvoří v úložišti OMS hello."
+title: "Shromažďovat a analyzovat protokoly událostí systému Windows v OMS Log Analytics | Microsoft Docs"
+description: "Protokoly událostí systému Windows jsou jedním z nejčastějších zdroje dat používané analýzy protokolů.  Tento článek popisuje postup konfigurace shromažďování protokolů událostí systému Windows a podrobnosti záznamů, které vytvoří v úložišti OMS."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -14,55 +14,55 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/15/2017
 ms.author: bwren
-ms.openlocfilehash: c05648af39258443f22fd11e1d751b5ccec8c391
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1be8500ec2cb78ef0edf57f4d8561336cf00ebcb
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>Zdroje dat protokolu událostí systému Windows v analýzy protokolů
-Protokoly událostí systému Windows jsou jedním z nejčastějších hello [zdroje dat](log-analytics-data-sources.md) pro shromažďování dat pomocí agentů v systému Windows, vzhledem k tomu, že řada aplikací pro zápis toohello protokolu událostí systému Windows.  Může shromažďovat události z standardní protokoly, jako je například systém a aplikace v přidání toospecifying žádné vlastní protokoly vytvořit aplikace potřebujete toomonitor.
+Protokoly událostí systému Windows jsou jedním z většiny běžných [zdroje dat](log-analytics-data-sources.md) pro shromažďování dat pomocí agentů v systému Windows, vzhledem k tomu, že řada aplikací pro zápis do protokolu událostí systému Windows.  Kromě určení žádné vlastní protokoly, které jsou vytvořené pomocí aplikací, které potřebujete k monitorování může shromažďovat události z standardní protokoly, jako je například systém a aplikace.
 
 ![Události systému Windows](media/log-analytics-data-sources-windows-events/overview.png)     
 
 ## <a name="configuring-windows-event-logs"></a>Protokoly událostí konfigurace systému Windows
-Konfigurace protokolů událostí systému Windows z hello [nabídce Data v nastavení analýzy protokolů](log-analytics-data-sources.md#configuring-data-sources).
+Protokoly událostí systému Windows z konfigurace [nabídce Data v nastavení analýzy protokolů](log-analytics-data-sources.md#configuring-data-sources).
 
-Analýzy protokolů pouze shromažďuje události z protokolů událostí systému Windows hello, které jsou určené v nastavení hello.  Protokol událostí můžete přidat zadáním v hello název hello protokolu a kliknutím na tlačítko  **+** .  Pro každý protokol se shromažďují pouze hello události s hello vybrané závažnosti.  Zkontrolujte hello závažnosti pro hello konkrétní protokolu, které chcete toocollect.  Žádné další kritéria nemůžete zadat toofilter události.
+Analýzy protokolů pouze shromažďuje události z protokolů událostí systému Windows, které jsou určené v nastavení.  Protokol událostí můžete přidat zadáním názvu do protokolu a kliknutím na tlačítko  **+** .  Pro každý protokol se shromažďují jenom události s vybranou závažnosti.  Zkontrolujte závažnosti pro určitý protokol, který chcete shromáždit.  Nelze poskytnout žádná další kritéria filtrování událostí.
 
-Jak budete zadávat hello název protokolu událostí, analýzy protokolů poskytuje návrhy běžné názvy protokolu událostí. Pokud chcete, aby tooadd protokolu hello se nezobrazí v seznamu hello, je stále přidat ji tak, že zadáte v hello úplný název hello protokolu. Úplný název hello hello protokolu můžete najít pomocí prohlížeče událostí. V prohlížeči událostí, otevřete hello *vlastnosti* stránku hello protokolu a zkopírujte řetězec hello z hello *úplný název* pole.
+Jak budete zadávat název protokolu událostí, analýzy protokolů poskytuje návrhy běžné názvy protokolu událostí. Pokud na protokol, který chcete přidat v seznamu nezobrazí, můžete ho přidat stále zadáním do úplného názvu protokolu. Úplný název protokolu můžete najít pomocí prohlížeče událostí. V prohlížeči událostí, otevřete *vlastnosti* stránky pro protokol a zkopírujte řetězec z *úplný název* pole.
 
 ![Konfigurace události systému Windows](media/log-analytics-data-sources-windows-events/configure.png)
 
 ## <a name="data-collection"></a>Shromažďování dat
-Analýzy protokolů shromažďuje všechny události, která odpovídá vybrané závažnost z monitorovaných protokolu událostí při vytváření událostí hello.  Hello agent zaznamenává jeho místo v každém protokolu událostí, shromažďující z.  Pokud agenta hello přejde do režimu offline dobu, pak analýzy protokolů shromažďuje události od poslední místa vypnout, i v případě, že tyto události byly vytvořeny v době, kdy hello agent offline.  Pro tyto události toonot shromáždit, pokud protokol událostí hello zabalí s nesebraný události přepsáním při offline hello agenta, existuje možnost.
+Analýzy protokolů shromažďuje všechny události, která odpovídá vybrané závažnost z monitorovaných protokolu událostí, při vytváření události.  Agent zaznamenává jeho místo v každém protokolu událostí, shromažďující z.  Pokud agenta přejde do režimu offline dobu, pak analýzy protokolů shromažďuje události od poslední místa vypnout, i v případě, že tyto události byly vytvořeny v době, kdy agent offline.  Existuje možnost pro tyto události, které nelze shromažďovat, pokud v protokolu událostí zabalí s nesebraný události přepsáním při agenta je offline.
 
 >[!NOTE]
 >Analýzy protokolů nejsou shromažďovány události auditu vytvořené systémem SQL Server ze zdroje *MSSQLSERVER* s ID události 18453, který obsahuje klíčová slova - *Classic* nebo *auditovat úspěšné* a – klíčové slovo *0xa0000000000000*.
 >
 
 ## <a name="windows-event-records-properties"></a>Vlastnosti záznamů událostí systému Windows
-Záznamy událostí Windows mít typ **událostí** a mít hello vlastnosti v hello následující tabulka:
+Záznamy událostí Windows mít typ **událostí** a mít vlastnosti v následující tabulce:
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Počítač |Název hello počítače, který hello událost nebyla shromážděna z. |
-| EventCategory |Kategorie události hello. |
+| Počítač |Název počítače, který událost nebyla shromážděna z. |
+| EventCategory |Kategorie události. |
 | EventData |Data všech událostí v nezpracovaném formátu. |
-| ID události |Počet událostí hello. |
-| eventLevel |Závažnost události hello v číselný tvar. |
-| EventLevelName |Závažnost události hello v textové podobě. |
-| Protokol událostí |Název protokolu událostí hello hello událost nebyla shromážděna z. |
+| ID události |Číslo události. |
+| eventLevel |Závažnost události v číselný tvar. |
+| EventLevelName |Závažnost události v textové podobě. |
+| Protokol událostí |Název protokolu událostí, který událost nebyla shromážděna z. |
 | ParameterXml |Hodnoty parametru události ve formátu XML. |
-| ManagementGroupName |Název skupiny pro správu hello agenty nástroje System Center Operations Manager.  Pro jiné agenty tato hodnota je AOI-<workspace ID> |
+| ManagementGroupName |Název skupiny pro správu pro agenty nástroje System Center Operations Manager.  Pro jiné agenty tato hodnota je AOI-<workspace ID> |
 | RenderedDescription |Popis události s hodnotami parametrů |
-| Zdroj |Zdroj události hello. |
-| SourceSystem |Typ události hello agenta nebyla shromážděna z. <br> Připojit OpsManager – agent systému Windows, buď přímo nebo spravovaná nástroje Operations Manager <br> Linux – všechny agenty Linux  <br> Azurestorage – Azure Diagnostics. |
-| TimeGenerated |Datum a čas hello událost byla vytvořena v systému Windows. |
-| Uživatelské jméno |Uživatelské jméno účtu hello, které protokoluje události hello. |
+| Zdroj |Zdroj události. |
+| SourceSystem |Typ agenta událost nebyla shromážděna z. <br> Připojit OpsManager – agent systému Windows, buď přímo nebo spravovaná nástroje Operations Manager <br> Linux – všechny agenty Linux  <br> Azurestorage – Azure Diagnostics. |
+| TimeGenerated |Datum a čas vytvoření události v systému Windows. |
+| Uživatelské jméno |Uživatelské jméno účtu, která událost zaznamenala. |
 
 ## <a name="log-searches-with-windows-events"></a>Protokol hledání se události systému Windows
-Hello následující tabulka obsahuje různé příklady vyhledávání protokolu, které načtení záznamů událostí systému Windows.
+Následující tabulka obsahuje různé příklady vyhledávání protokolu, které načtení záznamů událostí systému Windows.
 
 | Dotaz | Popis |
 |:--- |:--- |
@@ -73,7 +73,7 @@ Hello následující tabulka obsahuje různé příklady vyhledávání protokol
 
 
 >[!NOTE]
-> Pokud pracovní prostor byl upgradovaný toohello [nové analýzy protokolů dotazu jazyka](log-analytics-log-search-upgrade.md), pak změní následující toohello hello výše dotazy.
+> Pokud byl váš pracovní prostor upgradován na [nový dotazovací jazyk Log Analytics](log-analytics-log-search-upgrade.md), výše uvedené dotazy se změní na následující.
 >
 >| Dotaz | Popis |
 |:---|:---|
@@ -84,7 +84,7 @@ Hello následující tabulka obsahuje různé příklady vyhledávání protokol
 
 
 ## <a name="next-steps"></a>Další kroky
-* Konfigurace analýzy protokolů toocollect jiných [zdroje dat](log-analytics-data-sources.md) pro analýzu.
-* Další informace o [protokolu hledání](log-analytics-log-searches.md) tooanalyze hello data budou shromažďovat ze zdroje dat a řešení.  
-* Použití [vlastní pole](log-analytics-custom-fields.md) tooparse hello záznamů událostí do jednotlivých polí.
+* Konfigurace analýzy protokolů ke shromažďování dalších [zdroje dat](log-analytics-data-sources.md) pro analýzu.
+* Další informace o [protokolu hledání](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a řešení.  
+* Použití [vlastní pole](log-analytics-custom-fields.md) k analýze záznamů událostí do jednotlivých polí.
 * Konfigurace [kolekci čítačů výkonu](log-analytics-data-sources-performance-counters.md) z agentů v systému Windows.

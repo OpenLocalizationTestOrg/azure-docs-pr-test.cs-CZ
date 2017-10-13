@@ -1,6 +1,6 @@
 ---
-title: "aaaHow tooselect oprávnění pro dané rozhraní API | Microsoft Docs"
-description: "Jak toofind hello ověřování koncové body pro vlastní aplikaci vývoji nebo Probíhá registrace ve službě Azure AD."
+title: "Jak vybrat oprávnění pro dané rozhraní API | Microsoft Docs"
+description: "Jak najít koncové body ověřování pro vlastní aplikaci vývoji nebo Probíhá registrace ve službě Azure AD."
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,25 +13,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 303793eae96872c37b4de00e757ed0256494afa4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6966cf145375bf3d830d476564c428502ae40fd4
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="how-tooselect-permissions-for-a-given-api"></a>Jak tooselect oprávnění pro dané rozhraní API
+# <a name="how-to-select-permissions-for-a-given-api"></a>Jak vybrat oprávnění pro dané rozhraní API
 
-Můžete najít hello koncové body ověřování pro aplikaci v hello [portál Azure](https://portal.azure.com).
+Můžete najít koncové body ověřování pro aplikaci v [portál Azure](https://portal.azure.com).
 
--   Přejděte toohello [portál Azure](https://portal.azure.com).
+-   Přejděte na [Azure Portal](https://portal.azure.com).
 
--   V levém navigačním podokně hello, klikněte na **Azure Active Directory**.
+-   V levém navigačním podokně klikněte na tlačítko **Azure Active Directory**.
 
 -   Klikněte na tlačítko **registrace aplikace** a zvolte **koncové body**.
 
--   Tento otevřete hello **koncové body** stránky, seznam všechny koncové body hello ověřování pro vašeho klienta.
+-   Otevře **koncové body** stránku, který zobrazí seznam všech koncových bodů ověřování pro vašeho klienta.
 
--   Použijte hello koncový bod konkrétní toohello ověřovací protokol, který používáte, ve spojení s hello aplikace ID toocraft hello ověření požadavku tooyour konkrétní aplikace.
+-   Použít specifické pro ověřovací protokol, který používáte koncový bod, ve spojení s ID aplikace vytvořit ověření požadavku specifický pro vaši aplikaci.
 
 ## <a name="next-steps"></a>Další kroky
 [Příručka pro vývojáře pro službu Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-developers-guide#authentication-and-authorization-protocols)

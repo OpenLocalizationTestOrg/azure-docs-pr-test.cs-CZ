@@ -5,7 +5,7 @@
 ## [Webová aplikace v Pythonu s Dockerem a PostgreSQL](/azure/app-service-web/app-service-web-tutorial-docker-python-postgresql-app)
 ## [CI/CD s Docker Swarm a VSTS](/azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine)
 ## [Průběžná integrace a doručování s využitím Dockeru, Jenkinse a Linuxu](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd)
-# Jak tooguides
+# Návody
 ## [Rozšíření Docker VM](/azure/virtual-machines/linux/dockerextension)
 ## [Docker Machine](/azure/virtual-machines/linux/docker-machine)
 ## [Registr kontejneru Docker](/azure/container-registry/container-registry-get-started-portal)

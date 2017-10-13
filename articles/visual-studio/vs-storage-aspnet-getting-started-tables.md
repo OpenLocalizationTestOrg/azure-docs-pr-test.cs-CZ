@@ -1,6 +1,6 @@
 ---
-title: "aaaGet začít s Azure table storage a Visual Studio připojené služby (ASP.NET) | Microsoft Docs"
-description: "Způsob tooget spuštění pomocí úložiště tabulek Azure po připojení účtu úložiště tooa pomocí Visual Studio připojené služby v projektu ASP.NET v sadě Visual Studio"
+title: "Začínáme s Azure table storage a Visual Studio připojené služby (ASP.NET) | Microsoft Docs"
+description: "Jak začít používat úložiště tabulek Azure po připojení k účtu úložiště pomocí Visual Studio připojené služby v projektu ASP.NET v sadě Visual Studio"
 services: storage
 documentationcenter: 
 author: kraigb
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2016
 ms.author: kraigb
-ms.openlocfilehash: 04f79db7aad60ca51c3c866da1f4b01d9e11ac52
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 32a57e77bf6fe3cff88b9d6772ede9e6669ec75f
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Začínáme s Azure table storage a Visual Studio připojené služby (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
 ## <a name="overview"></a>Přehled
 
-Azure Table storage vám umožní toostore velkých objemů strukturovaná data. Hello služba je úložištěm dat typu NoSQL, která přijímá ověřených volání z vnitřní a vnější hello cloudu Azure. Tabulky Azure jsou ideální pro ukládání strukturovaných, nerelačních dat.
+Azure Table storage umožňuje ukládat velké množství strukturovaná data. Služba je úložištěm dat typu NoSQL, která přijímá ověřených volání z uvnitř i vně cloudu Azure. Tabulky Azure jsou ideální pro ukládání strukturovaných, nerelačních dat.
 
-Tento kurz ukazuje, jak kód toowrite ASP.NET pro některé běžné scénáře s využitím Azure table storage entity. Mezi tyto scénáře patří vytvoření tabulky a přidání, dotazování a odstranění entity tabulky. 
+Tento kurz ukazuje, jak napsat kód ASP.NET pro některé běžné scénáře s využitím Azure table storage entity. Mezi tyto scénáře patří vytvoření tabulky a přidání, dotazování a odstranění entity tabulky. 
 
 ##<a name="prerequisites"></a>Požadavky
 
@@ -42,19 +42,19 @@ Tento kurz ukazuje, jak kód toowrite ASP.NET pro některé běžné scénáře 
 
 ### <a name="create-an-mvc-controller"></a>Vytvořit řadič MVC 
 
-1. V hello **Průzkumníku řešení**, klikněte pravým tlačítkem na **řadiče**a v místní nabídce hello, vyberte **Přidat -> řadiče**.
+1. V **Průzkumníku řešení**, klikněte pravým tlačítkem na **řadiče**a v místní nabídce vyberte **Přidat -> řadiče**.
 
-    ![Přidat řadič tooan aplikace ASP.NET MVC](./media/vs-storage-aspnet-getting-started-tables/add-controller-menu.png)
+    ![Přidat řadič do aplikace ASP.NET MVC](./media/vs-storage-aspnet-getting-started-tables/add-controller-menu.png)
 
-1. Na hello **přidat vygenerované uživatelské rozhraní** dialogovém okně, vyberte **kontroler MVC 5 – prázdný**a vyberte **přidat**.
+1. Na **přidat vygenerované uživatelské rozhraní** dialogovém okně, vyberte **kontroler MVC 5 – prázdný**a vyberte **přidat**.
 
     ![Zadejte typ řadiče MVC](./media/vs-storage-aspnet-getting-started-tables/add-controller.png)
 
-1. Na hello **přidat kontroler** dialogové okno, název hello řadič *TablesController*a vyberte **přidat**.
+1. Na **přidat kontroler** dialogové okno, názvu kontroleru *TablesController*a vyberte **přidat**.
 
-    ![Název hello MVC jsou řadič MVC](./media/vs-storage-aspnet-getting-started-tables/add-controller-name.png)
+    ![Název řadiče MVC](./media/vs-storage-aspnet-getting-started-tables/add-controller-name.png)
 
-1. Přidejte následující hello *pomocí* toohello direktivy `TablesController.cs` souboru:
+1. Přidejte následující *pomocí* direktivy pro `TablesController.cs` souboru:
 
     ```csharp
     using Microsoft.Azure;
@@ -65,19 +65,19 @@ Tento kurz ukazuje, jak kód toowrite ASP.NET pro některé běžné scénáře 
 
 ### <a name="create-a-model-class"></a>Vytvořte třídu modelu
 
-Řadu hello příklady v tomto článku používají **TableEntity**-odvozené třídy s názvem **CustomerEntity**. Hello následující kroky vás provedou deklarace tuto třídu jako třídu modelu:
+Řadu příklady v tomto článku používají **TableEntity**-odvozené třídy s názvem **CustomerEntity**. Následující postup vás provede deklarace tuto třídu jako třídu modelu:
 
-1. V hello **Průzkumníku řešení**, klikněte pravým tlačítkem na **modely**a v místní nabídce hello, vyberte **Přidat -> třída**.
+1. V **Průzkumníku řešení**, klikněte pravým tlačítkem na **modely**a v místní nabídce vyberte **Přidat -> třída**.
 
-1. Na hello **přidat novou položku** dialogové okno, název třídy hello, **CustomerEntity**.
+1. Na **přidat novou položku** dialogové okno, název třídy, **CustomerEntity**.
 
-1. Otevřete hello `CustomerEntity.cs` souboru a přidejte následující hello **pomocí** – direktiva:
+1. Otevřete `CustomerEntity.cs` souboru a přidejte následující **pomocí** – direktiva:
 
     ```csharp
     using Microsoft.WindowsAzure.Storage.Table;
     ```
 
-1. Třída hello upravte tak, aby po dokončení hello třída je deklarován jako hello následující kód. Třída Hello deklaruje třídu entity, která je volána **CustomerEntity** že hello používá jméno zákazníka jako klíč řádku hello a příjmení jako klíč oddílu hello.
+1. Třída upravte tak, aby po dokončení třída je deklarován jako v následujícím kódu. Třída deklaruje třídu entity, která je volána **CustomerEntity** která používá jméno zákazníka jako klíč řádku a jeho příjmení jako klíč oddílu.
 
     ```csharp
     public class CustomerEntity : TableEntity
@@ -96,26 +96,26 @@ Tento kurz ukazuje, jak kód toowrite ASP.NET pro některé běžné scénáře 
 
 ## <a name="create-a-table"></a>Vytvoření tabulky
 
-Hello následující kroky popisují jak toocreate tabulku:
+Následující kroky ukazují, jak vytvořit tabulku:
 
 > [!NOTE]
 > 
-> V této části se předpokládá dokončení hello kroků v [nastavení prostředí pro vývoj hello](#set-up-the-development-environment). 
+> V této části se předpokládá dokončení kroků v [nastavení vývojového prostředí](#set-up-the-development-environment). 
 
-1. Otevřete hello `TablesController.cs` souboru.
+1. Otevřete soubor `TablesController.cs`.
 
 1. Přidejte metodu s názvem **CreateTable** , který vrací **ActionResult**.
 
     ```csharp
     public ActionResult CreateTable()
     {
-        // hello code in this section goes here.
+        // The code in this section goes here.
 
         return View();
     }
     ```
 
-1. V rámci hello **CreateTable** metody get **CloudStorageAccount** objekt, který reprezentuje informace o účtu úložiště. Použití hello následující kód tooget hello připojovací řetězec a úložiště informace o účtu úložiště z konfigurace služby Azure hello: (Změna  *&lt;název účtu úložiště >* toohello název hello úložiště Azure účet, ke které přistupujete.)
+1. V rámci **CreateTable** metody get **CloudStorageAccount** objekt, který reprezentuje informace o účtu úložiště. Použít následující kód k získání připojovacího řetězce úložiště a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -128,29 +128,29 @@ Hello následující kroky popisují jak toocreate tabulku:
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
     ```
 
-1. Získání **CloudTable** objekt, který reprezentuje název požadované tabulky toohello odkaz. Hello **CloudTableClient.GetTableReference** metoda neprovede požadavek tabulka úložiště. odkaz na Hello se vrátí, zda existuje tabulka hello. 
+1. Získání **CloudTable** objekt, který reprezentuje odkaz na název požadované tabulky. **CloudTableClient.GetTableReference** metoda neprovede požadavek tabulka úložiště. Odkaz se vrátí, zda existuje v tabulce. 
    
     ```csharp
     CloudTable table = tableClient.GetTableReference("TestTable");
     ```
 
-1. Volání hello **CloudTable.CreateIfNotExists** metoda toocreate hello tabulky, pokud ještě neexistuje. Hello **CloudTable.CreateIfNotExists** metoda vrátí **true** Pokud hello tabulka neexistuje a je úspěšně vytvořen. V opačném **false** je vrácen.    
+1. Volání **CloudTable.CreateIfNotExists** metodu pro vytvoření tabulky, pokud ještě neexistuje. **CloudTable.CreateIfNotExists** metoda vrátí **true** Pokud tabulka neexistuje a je úspěšně vytvořen. V opačném **false** je vrácen.    
 
     ```csharp
     ViewBag.Success = table.CreateIfNotExists();
     ```
 
-1. Aktualizace hello **ViewBag** s názvem hello hello tabulky.
+1. Aktualizace **ViewBag** s názvem tabulky.
 
     ```csharp
     ViewBag.TableName = table.Name;
     ```
 
-1. V hello **Průzkumníku řešení**, rozbalte položku hello **zobrazení** složku, klikněte pravým tlačítkem na **tabulky**a z hello kontextové nabídky, vyberte **Přidat -> zobrazení**.
+1. V **Průzkumníku řešení**, rozbalte **zobrazení** složku, klikněte pravým tlačítkem na **tabulky**a v místní nabídce vyberte **Přidat -> zobrazení**.
 
-1. Na hello **přidat zobrazení** dialogové okno, zadejte **CreateTable** pro hello název zobrazení, vyberte **přidat**.
+1. Na **přidat zobrazení** dialogové okno, zadejte **CreateTable** pro název zobrazení, vyberte **přidat**.
 
-1. Otevřete `CreateTable.cshtml`a upravit ho tak, aby vypadal jako hello následující fragment kódu:
+1. Otevřete `CreateTable.cshtml`a upravit ho tak, aby vypadal jako následující fragment kódu:
 
     ```csharp
     @{
@@ -162,32 +162,32 @@ Hello následující kroky popisují jak toocreate tabulku:
     Creation of @ViewBag.TableName @(ViewBag.Success == true ? "succeeded" : "failed")
     ```
 
-1. V hello **Průzkumníku řešení**, rozbalte položku hello **-zobrazení > sdílené** složky a otevřete `_Layout.cshtml`.
+1. V **Průzkumníku řešení**, rozbalte **-zobrazení > sdílené** složky a otevřete `_Layout.cshtml`.
 
-1. Po hello poslední **Html.ActionLink**, přidejte následující hello **Html.ActionLink**:
+1. Za poslední **Html.ActionLink**, přidejte následující **Html.ActionLink**:
 
     ```html
     <li>@Html.ActionLink("Create table", "CreateTable", "Tables")</li>
     ```
 
-1. Spuštění aplikace hello a vyberte **vytvořit tabulku** toosee výsledky podobné toohello následující snímek obrazovky:
+1. Spusťte aplikaci a vyberte **vytvořit tabulku** a zobrazte výsledky podobné následujícím snímku obrazovky:
   
     ![Vytvoření tabulky](./media/vs-storage-aspnet-getting-started-tables/create-table-results.png)
 
-    Jak je uvedeno nahoře, hello **CloudTable.CreateIfNotExists** metoda vrátí **true** pouze když neexistuje a k vytvoření tabulky hello. Proto pokud hello aplikaci spustíte, když hello tabulka existuje, hello metoda vrátí **false**. aplikace hello toorun vícekrát, je nutné odstranit tabulku hello před spuštěním aplikace hello znovu. Odstranění hello tabulky, můžete to udělat pomocí hello **CloudTable.Delete** metoda. Můžete také odstranit hello tabulky pomocí hello [portál Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040) nebo hello [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).  
+    Jak je uvedeno nahoře, **CloudTable.CreateIfNotExists** metoda vrátí **true** pouze když neexistuje a k vytvoření tabulky. Proto pokud spustíte aplikaci v tabulce existuje, vrátí metoda **false**. Aplikace je třeba spustit vícekrát, je nutné odstranit tabulky před spuštěním aplikace znovu. Odstraňování tabulky, můžete to udělat pomocí **CloudTable.Delete** metoda. Můžete také odstranit pomocí tabulky [portál Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040) nebo [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).  
 
-## <a name="add-an-entity-tooa-table"></a>Přidat tooa tabulka entity
+## <a name="add-an-entity-to-a-table"></a>Přidání entity do tabulky
 
-*Entity* mapy tooC\# objekty pomocí vlastní třídy odvozené od **TableEntity**. tooadd tooa tabulka entity, vytvořte třídu, která definuje hello vlastnosti vaší entity. V této části se zobrazí, jak hello toodefine třídu entity, která používá jméno zákazníka jako klíč řádku hello a příjmení jako klíč oddílu hello. Společně oddílu a klíč řádku jednoznačně hello entity v tabulce hello. Na entity se stejným klíčem oddílu je možné se (v porovnání s těmi, které mají různé klíče oddílů) rychleji dotazovat, ale používání různých klíčů oddílů umožňuje větší škálovatelnost paralelních operací. Jakákoli vlastnost, která by měly být uložené v hello služby table musí být vlastnost hello veřejná vlastnost podporovaného typu, který zveřejňuje nastavení i načítání hodnot.
-Hello třídy entita *musí* deklarovat veřejný konstruktor bez parametrů.
+*Entity* mapu, která C\# objekty pomocí vlastní třídy odvozené od **TableEntity**. Když budete chtít do tabulky přidat entitu, vytvořte třídu, která definuje vlastnosti vaší entity. V této části se zobrazí, jak definovat třídu entity, která používá jméno zákazníka jako klíč řádku a jeho příjmení jako klíč oddílu. Společně pak klíč oddílu a řádku entity jednoznačně identifikují entitu v tabulce. Na entity se stejným klíčem oddílu je možné se (v porovnání s těmi, které mají různé klíče oddílů) rychleji dotazovat, ale používání různých klíčů oddílů umožňuje větší škálovatelnost paralelních operací. Jakákoli vlastnost, která by měly být uložené ve službě table musí být vlastnost veřejná vlastnost podporovaného typu, který zveřejňuje nastavení i načítání hodnot.
+Třídy entita *musí* deklarovat veřejný konstruktor bez parametrů.
 
 > [!NOTE]
 > 
-> V této části se předpokládá dokončení hello kroků v [nastavení prostředí pro vývoj hello](#set-up-the-development-environment).
+> V této části se předpokládá dokončení kroků v [nastavení vývojového prostředí](#set-up-the-development-environment).
 
-1. Otevřete hello `TablesController.cs` souboru.
+1. Otevřete soubor `TablesController.cs`.
 
-1. Přidejte následující direktiva, která hello kód v hello hello `TablesController.cs` k souboru přístup hello **CustomerEntity** třídy:
+1. Přidejte následující direktivu tak, aby kód `TablesController.cs` můžete přístup k souboru **CustomerEntity** – třída:
 
     ```csharp
     using StorageAspnet.Models;
@@ -198,13 +198,13 @@ Hello třídy entita *musí* deklarovat veřejný konstruktor bez parametrů.
     ```csharp
     public ActionResult AddEntity()
     {
-        // hello code in this section goes here.
+        // The code in this section goes here.
 
         return View();
     }
     ```
 
-1. V rámci hello **AddEntity** metody get **CloudStorageAccount** objekt, který reprezentuje informace o účtu úložiště. Použití hello následující kód tooget hello připojovací řetězec a úložiště informace o účtu úložiště z konfigurace služby Azure hello: (Změna  *&lt;název účtu úložiště >* toohello název hello úložiště Azure účet, ke které přistupujete.)
+1. V rámci **AddEntity** metody get **CloudStorageAccount** objekt, který reprezentuje informace o účtu úložiště. Použít následující kód k získání připojovacího řetězce úložiště a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -217,43 +217,43 @@ Hello třídy entita *musí* deklarovat veřejný konstruktor bez parametrů.
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
     ```
 
-1. Získání **CloudTable** objekt, který reprezentuje toowhich odkaz toohello tabulky budete tooadd hello novou entitu. 
+1. Získání **CloudTable** objekt, který reprezentuje odkaz na tabulku, do které chcete přidat novou entitu. 
    
     ```csharp
     CloudTable table = tableClient.GetTableReference("TestTable");
     ```
 
-1. Vytváření instancí a inicializace hello **CustomerEntity** třídy.
+1. Vytváření instancí a inicializace **CustomerEntity** třídy.
 
     ```csharp
     CustomerEntity customer1 = new CustomerEntity("Harp", "Walter");
     customer1.Email = "Walter@contoso.com";
     ```
 
-1. Vytvoření **TableOperation** objekt, který se vloží entitu zákazníka hello.
+1. Vytvoření **TableOperation** objekt, který se vloží entitu zákazníka.
 
     ```csharp
     TableOperation insertOperation = TableOperation.Insert(customer1);
     ```
 
-1. Spuštění operace insert hello pomocí volání hello **CloudTable.Execute** metoda. Můžete ověřit hello výsledek operace hello zkontrolováním hello **TableResult.HttpStatusCode** vlastnost. Stavový kód 2xx označuje, že požadovaná klientem hello akce hello byl úspěšně zpracován. Například úspěšné vložení nové entity výsledkem kód stavu HTTP 204, což znamená, že operace hello byl úspěšně zpracován a hello server nevrátil žádný obsah.
+1. Spuštění operace insert voláním **CloudTable.Execute** metoda. Výsledek operace můžete ověřit zkontrolováním **TableResult.HttpStatusCode** vlastnost. Stavový kód 2xx označuje, že akce, kterou klient požaduje byl úspěšně zpracován. Například úspěšné vložení výsledků nové entity v kód stavu HTTP 204, což znamená, že operace byla úspěšně zpracována a server nevrátil žádný obsah.
 
     ```csharp
     TableResult result = table.Execute(insertOperation);
     ```
 
-1. Aktualizace hello **ViewBag** s hello název tabulky a hello výsledky operace insert hello.
+1. Aktualizace **ViewBag** pomocí názvu tabulky a výsledky operace insert.
 
     ```csharp
     ViewBag.TableName = table.Name;
     ViewBag.Result = result.HttpStatusCode;
     ```
 
-1. V hello **Průzkumníku řešení**, rozbalte položku hello **zobrazení** složku, klikněte pravým tlačítkem na **tabulky**a z hello kontextové nabídky, vyberte **Přidat -> zobrazení**.
+1. V **Průzkumníku řešení**, rozbalte **zobrazení** složku, klikněte pravým tlačítkem na **tabulky**a v místní nabídce vyberte **Přidat -> zobrazení**.
 
-1. Na hello **přidat zobrazení** dialogové okno, zadejte **AddEntity** pro hello název zobrazení, vyberte **přidat**.
+1. Na **přidat zobrazení** dialogové okno, zadejte **AddEntity** pro název zobrazení, vyberte **přidat**.
 
-1. Otevřete `AddEntity.cshtml`a upravit ho tak, aby vypadal jako hello následující fragment kódu:
+1. Otevřete `AddEntity.cshtml`a upravit ho tak, aby vypadal jako následující fragment kódu:
 
     ```csharp
     @{
@@ -264,42 +264,42 @@ Hello třídy entita *musí* deklarovat veřejný konstruktor bez parametrů.
 
     Insert of entity into @ViewBag.TableName @(ViewBag.Result == 204 ? "succeeded" : "failed")
     ```
-1. V hello **Průzkumníku řešení**, rozbalte položku hello **-zobrazení > sdílené** složky a otevřete `_Layout.cshtml`.
+1. V **Průzkumníku řešení**, rozbalte **-zobrazení > sdílené** složky a otevřete `_Layout.cshtml`.
 
-1. Po hello poslední **Html.ActionLink**, přidejte následující hello **Html.ActionLink**:
+1. Za poslední **Html.ActionLink**, přidejte následující **Html.ActionLink**:
 
     ```html
     <li>@Html.ActionLink("Add entity", "AddEntity", "Tables")</li>
     ```
 
-1. Spuštění aplikace hello a vyberte **Přidat entitu** toosee výsledky podobné toohello následující snímek obrazovky:
+1. Spusťte aplikaci a vyberte **Přidat entitu** a zobrazte výsledky podobné následujícím snímku obrazovky:
   
     ![Přidání entity](./media/vs-storage-aspnet-getting-started-tables/add-entity-results.png)
 
-    Můžete ověřit, zda text hello entity přidány hello postupem v části hello, [získat jedné entity](#get-a-single-entity). Můžete taky hello [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) tooview všechny hello entity pro vaše tabulky.
+    Můžete ověřit, že byl přidán entity podle pokynů v části [získat jedné entity](#get-a-single-entity). Můžete také [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) zobrazíte všechny entity pro vaše tabulky.
 
-## <a name="add-a-batch-of-entities-tooa-table"></a>Přidat dávky entit tooa tabulky
+## <a name="add-a-batch-of-entities-to-a-table"></a>Přidat do tabulky dávky entit
 
-V přidání toobeing možné příliš[přidat tabulku tooa entity, jeden v čase](#add-an-entity-to-a-table), můžete také přidat entity v dávce. Přidávání entit v dávce snižuje hello dobu odezvy mezi kódem a hello služby Azure table. Hello následující kroky popisují, jak tooadd více entit tooa tabulky s operace jeden insert:
+Kromě toho moct [přidání entity do tabulky, jeden v čase](#add-an-entity-to-a-table), můžete také přidat entity v dávce. Přidávání entit v dávce zkracuje dobu odezvy mezi kódu a služby Azure table. Následující kroky ukazují, jak přidat více entit do tabulky s jedním vložit operace:
 
 > [!NOTE]
 > 
-> V této části se předpokládá dokončení hello kroků v [nastavení prostředí pro vývoj hello](#set-up-the-development-environment).
+> V této části se předpokládá dokončení kroků v [nastavení vývojového prostředí](#set-up-the-development-environment).
 
-1. Otevřete hello `TablesController.cs` souboru.
+1. Otevřete soubor `TablesController.cs`.
 
 1. Přidejte metodu s názvem **AddEntities** , který vrací **ActionResult**.
 
     ```csharp
     public ActionResult AddEntities()
     {
-        // hello code in this section goes here.
+        // The code in this section goes here.
 
         return View();
     }
     ```
 
-1. V rámci hello **AddEntities** metody get **CloudStorageAccount** objekt, který reprezentuje informace o účtu úložiště. Použití hello následující kód tooget hello připojovací řetězec a úložiště informace o účtu úložiště z konfigurace služby Azure hello: (Změna  *&lt;název účtu úložiště >* toohello název hello úložiště Azure účet, ke které přistupujete.)
+1. V rámci **AddEntities** metody get **CloudStorageAccount** objekt, který reprezentuje informace o účtu úložiště. Použít následující kód k získání připojovacího řetězce úložiště a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -312,13 +312,13 @@ V přidání toobeing možné příliš[přidat tabulku tooa entity, jeden v ča
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
     ```
 
-1. Získání **CloudTable** objekt, který reprezentuje toowhich odkaz toohello tabulky jsou probíhající tooadd hello nové entity. 
+1. Získání **CloudTable** objekt, který reprezentuje odkaz na tabulku, do které chcete přidat nové entity. 
    
     ```csharp
     CloudTable table = tableClient.GetTableReference("TestTable");
     ```
 
-1. Vytvoření instance některých objektů zákazníka podle hello **CustomerEntity** třída uvedené v části hello modelu [přidat tooa tabulka entity](#add-an-entity-to-a-table).
+1. Vytvoření instance některých objektů zákazníka na základě **CustomerEntity** třída uvedené v části modelu [do tabulky přidat entitu](#add-an-entity-to-a-table).
 
     ```csharp
     CustomerEntity customer1 = new CustomerEntity("Smith", "Jeff");
@@ -334,30 +334,30 @@ V přidání toobeing možné příliš[přidat tabulku tooa entity, jeden v ča
     TableBatchOperation batchOperation = new TableBatchOperation();
     ```
 
-1. Přidejte objekt operace vložení dávky toohello entity.
+1. Přidání entity do objektu operace dávkové vložení.
 
     ```csharp
     batchOperation.Insert(customer1);
     batchOperation.Insert(customer2);
     ```
 
-1. Spusťte operaci vložení dávky hello tak, že volání hello **CloudTable.ExecuteBatch** metoda.   
+1. Spuštění operace insert batch voláním **CloudTable.ExecuteBatch** metoda.   
 
     ```csharp
     IList<TableResult> results = table.ExecuteBatch(batchOperation);
     ```
 
-1. Hello **CloudTable.ExecuteBatch** metoda vrátí seznam hodnot **TableResult** objekty kde každý **TableResult** objekt může být zkontrolován toodetermine hello úspěch nebo neúspěch každé operace. V tomto příkladu předat zobrazení tooa seznamu hello a umožní zobrazení hello zobrazit hello výsledky jednotlivých operací. 
+1. **CloudTable.ExecuteBatch** metoda vrátí seznam hodnot **TableResult** objekty kde každý **TableResult** objekt můžete prověřit, abyste zjistili úspěch nebo neúspěch každé operace. V tomto příkladu předat zobrazení seznamu a umožní zobrazení zobrazit výsledky jednotlivých operací. 
  
     ```csharp
     return View(results);
     ```
 
-1. V hello **Průzkumníku řešení**, rozbalte položku hello **zobrazení** složku, klikněte pravým tlačítkem na **tabulky**a z hello kontextové nabídky, vyberte **Přidat -> zobrazení**.
+1. V **Průzkumníku řešení**, rozbalte **zobrazení** složku, klikněte pravým tlačítkem na **tabulky**a v místní nabídce vyberte **Přidat -> zobrazení**.
 
-1. Na hello **přidat zobrazení** dialogové okno, zadejte **AddEntities** pro hello název zobrazení, vyberte **přidat**.
+1. Na **přidat zobrazení** dialogové okno, zadejte **AddEntities** pro název zobrazení, vyberte **přidat**.
 
-1. Otevřete `AddEntities.cshtml`a upravit ho tak, aby vypadal jako následující hello.
+1. Otevřete `AddEntities.cshtml`a upravit ho tak, aby vypadal jako následující.
 
     ```csharp
     @model IEnumerable<Microsoft.WindowsAzure.Storage.Table.TableResult>
@@ -384,42 +384,42 @@ V přidání toobeing možné příliš[přidat tabulku tooa entity, jeden v ča
     </table>
     ```
 
-1. V hello **Průzkumníku řešení**, rozbalte položku hello **-zobrazení > sdílené** složky a otevřete `_Layout.cshtml`.
+1. V **Průzkumníku řešení**, rozbalte **-zobrazení > sdílené** složky a otevřete `_Layout.cshtml`.
 
-1. Po hello poslední **Html.ActionLink**, přidejte následující hello **Html.ActionLink**:
+1. Za poslední **Html.ActionLink**, přidejte následující **Html.ActionLink**:
 
     ```html
     <li>@Html.ActionLink("Add entities", "AddEntities", "Tables")</li>
     ```
 
-1. Spuštění aplikace hello a vyberte **přidat entity** toosee výsledky podobné toohello následující snímek obrazovky:
+1. Spusťte aplikaci a vyberte **přidat entity** a zobrazte výsledky podobné následujícím snímku obrazovky:
   
     ![Přidání entit](./media/vs-storage-aspnet-getting-started-tables/add-entities-results.png)
 
-    Můžete ověřit, zda text hello entity přidány hello postupem v části hello, [získat jedné entity](#get-a-single-entity). Můžete taky hello [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) tooview všechny hello entity pro vaše tabulky.
+    Můžete ověřit, že byl přidán entity podle pokynů v části [získat jedné entity](#get-a-single-entity). Můžete také [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) zobrazíte všechny entity pro vaše tabulky.
 
 ## <a name="get-a-single-entity"></a>Získat jedné entity
 
-Tato část ukazuje, jak tooget jedné entity z tabulky pomocí hello klíč řádku entity a klíč oddílu. 
+Tato část ukazuje, jak získat jedné entity z tabulky pomocí klíč řádku entity a klíč oddílu. 
 
 > [!NOTE]
 > 
-> Této části se předpokládá dokončení kroků hello v [nastavení prostředí pro vývoj hello](#set-up-the-development-environment)a používá data z [přidat dávky entit tooa tabulky](#add-a-batch-of-entities-to-a-table). 
+> V této části se předpokládá dokončení kroků v [nastavení vývojového prostředí](#set-up-the-development-environment)a používá data z [dávky entit přidat do tabulky](#add-a-batch-of-entities-to-a-table). 
 
-1. Otevřete hello `TablesController.cs` souboru.
+1. Otevřete soubor `TablesController.cs`.
 
 1. Přidejte metodu s názvem **GetSingle** , který vrací **ActionResult**.
 
     ```csharp
     public ActionResult GetSingle()
     {
-        // hello code in this section goes here.
+        // The code in this section goes here.
 
         return View();
     }
     ```
 
-1. V rámci hello **GetSingle** metody get **CloudStorageAccount** objekt, který reprezentuje informace o účtu úložiště. Použití hello následující kód tooget hello připojovací řetězec a úložiště informace o účtu úložiště z konfigurace služby Azure hello: (Změna  *&lt;název účtu úložiště >* toohello název hello úložiště Azure účet, ke které přistupujete.)
+1. V rámci **GetSingle** metody get **CloudStorageAccount** objekt, který reprezentuje informace o účtu úložiště. Použít následující kód k získání připojovacího řetězce úložiště a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -432,35 +432,35 @@ Tato část ukazuje, jak tooget jedné entity z tabulky pomocí hello klíč ř�
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
     ```
 
-1. Získání **CloudTable** objekt, který reprezentuje odkaz na tabulku toohello ze kterého jsou načítání hello entity. 
+1. Získání **CloudTable** objekt, který reprezentuje odkaz na tabulku, ze kterého jsou načítání entity. 
    
     ```csharp
     CloudTable table = tableClient.GetTableReference("TestTable");
     ```
 
-1. Vytvořit objekt operaci načtení, která přebírá objekt entity, který je odvozen od **TableEntity**. první parametr Hello je hello *partitionKey*, a druhý parametr hello je hello *rowKey*. Pomocí hello **CustomerEntity** třídy a data uvedená v části hello [přidat dávky entit tooa tabulky](#add-a-batch-of-entities-to-a-table), hello následující kód fragment kódu dotazy hello tabulku pro **CustomerEntity** entit *partitionKey* hodnotu "Smith" a *rowKey* hodnotu "Ben":
+1. Vytvořit objekt operaci načtení, která přebírá objekt entity, který je odvozen od **TableEntity**. První parametr je *partitionKey*, a druhý parametr je *rowKey*. Pomocí **CustomerEntity** třídy a data uvedená v části [dávky entit přidat do tabulky](#add-a-batch-of-entities-to-a-table), následující fragment kódu dotazuje tabulku pro **CustomerEntity** entita s *partitionKey* hodnotu "Smith" a *rowKey* hodnotu "Ben":
 
     ```csharp
     TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
     ```
 
-1. Provést operaci načtení hello.   
+1. Provedení operace načtení.   
 
     ```csharp
     TableResult result = table.Execute(retrieveOperation);
     ```
 
-1. Předejte hello výsledek toohello zobrazení pro zobrazení.
+1. Výsledek předejte zobrazení pro zobrazení.
 
     ```csharp
     return View(result);
     ```
 
-1. V hello **Průzkumníku řešení**, rozbalte položku hello **zobrazení** složku, klikněte pravým tlačítkem na **tabulky**a z hello kontextové nabídky, vyberte **Přidat -> zobrazení**.
+1. V **Průzkumníku řešení**, rozbalte **zobrazení** složku, klikněte pravým tlačítkem na **tabulky**a v místní nabídce vyberte **Přidat -> zobrazení**.
 
-1. Na hello **přidat zobrazení** dialogové okno, zadejte **GetSingle** pro hello název zobrazení, vyberte **přidat**.
+1. Na **přidat zobrazení** dialogové okno, zadejte **GetSingle** pro název zobrazení, vyberte **přidat**.
 
-1. Otevřete `GetSingle.cshtml`a upravit ho tak, aby vypadal jako hello následující fragment kódu:
+1. Otevřete `GetSingle.cshtml`a upravit ho tak, aby vypadal jako následující fragment kódu:
 
     ```csharp
     @model Microsoft.WindowsAzure.Storage.Table.TableResult
@@ -486,40 +486,40 @@ Tato část ukazuje, jak tooget jedné entity z tabulky pomocí hello klíč ř�
     </table>
     ```
 
-1. V hello **Průzkumníku řešení**, rozbalte položku hello **-zobrazení > sdílené** složky a otevřete `_Layout.cshtml`.
+1. V **Průzkumníku řešení**, rozbalte **-zobrazení > sdílené** složky a otevřete `_Layout.cshtml`.
 
-1. Po hello poslední **Html.ActionLink**, přidejte následující hello **Html.ActionLink**:
+1. Za poslední **Html.ActionLink**, přidejte následující **Html.ActionLink**:
 
     ```html
     <li>@Html.ActionLink("Get single", "GetSingle", "Tables")</li>
     ```
 
-1. Spuštění aplikace hello a vyberte **získat jeden** toosee výsledky podobné toohello následující snímek obrazovky:
+1. Spusťte aplikaci a vyberte **získat jeden** a zobrazte výsledky podobné následujícím snímku obrazovky:
   
     ![Získat jeden](./media/vs-storage-aspnet-getting-started-tables/get-single-results.png)
 
 ## <a name="get-all-entities-in-a-partition"></a>Získání všech entit v oddílu
 
-Jak je uvedeno v části hello [přidat tabulka entity tooa](#add-an-entity-to-a-table), kombinace hello oddílu a klíč řádku jednoznačně identifikují entitu v tabulce. Entity se stejným klíčem oddílu můžete položit dotaz na rychlejší než entity s různé klíče oddílů. Tato část ukazuje způsob tooquery tabulky pro všechny entity hello z zadaný oddíl.  
+Jak je uvedeno v části [do tabulky přidat entitu](#add-an-entity-to-a-table), kombinace oddílu a klíč řádku jednoznačně identifikují entitu v tabulce. Entity se stejným klíčem oddílu můžete položit dotaz na rychlejší než entity s různé klíče oddílů. V této části ukazuje, jak dotaz na tabulku pro všechny entity ze zadaného oddílu.  
 
 > [!NOTE]
 > 
-> Této části se předpokládá dokončení kroků hello v [nastavení prostředí pro vývoj hello](#set-up-the-development-environment)a používá data z [přidat dávky entit tooa tabulky](#add-a-batch-of-entities-to-a-table). 
+> V této části se předpokládá dokončení kroků v [nastavení vývojového prostředí](#set-up-the-development-environment)a používá data z [dávky entit přidat do tabulky](#add-a-batch-of-entities-to-a-table). 
 
-1. Otevřete hello `TablesController.cs` souboru.
+1. Otevřete soubor `TablesController.cs`.
 
 1. Přidejte metodu s názvem **GetPartition** , který vrací **ActionResult**.
 
     ```csharp
     public ActionResult GetPartition()
     {
-        // hello code in this section goes here.
+        // The code in this section goes here.
 
         return View();
     }
     ```
 
-1. V rámci hello **GetPartition** metody get **CloudStorageAccount** objekt, který reprezentuje informace o účtu úložiště. Použití hello následující kód tooget hello připojovací řetězec a úložiště informace o účtu úložiště z konfigurace služby Azure hello: (Změna  *&lt;název účtu úložiště >* toohello název hello úložiště Azure účet, ke které přistupujete.)
+1. V rámci **GetPartition** metody get **CloudStorageAccount** objekt, který reprezentuje informace o účtu úložiště. Použít následující kód k získání připojovacího řetězce úložiště a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -532,13 +532,13 @@ Jak je uvedeno v části hello [přidat tabulka entity tooa](#add-an-entity-to-a
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
     ```
 
-1. Získání **CloudTable** objekt, který reprezentuje odkaz na tabulku toohello ze kterého jsou načítání hello entity. 
+1. Získání **CloudTable** objekt, který reprezentuje odkaz na tabulku, ze kterého jsou načítání entity. 
    
     ```csharp
     CloudTable table = tableClient.GetTableReference("TestTable");
     ```
 
-1. Vytváření instancí **TableQuery** objekt zadat dotaz hello v hello **kde** klauzule. Pomocí hello **CustomerEntity** třídy a data uvedená v části hello [přidat dávky entit tooa tabulky](#add-a-batch-of-entities-to-a-table), hello následující kód fragment kódu dotazy hello tabulky pro všechny entity, kde hello  **PartitionKey** (příjmení zákazníka) má hodnotu "Smith":
+1. Vytváření instancí **TableQuery** zadat dotaz v objektu **kde** klauzule. Pomocí **CustomerEntity** třídy a data uvedená v části [dávky entit přidat do tabulky](#add-a-batch-of-entities-to-a-table), následující fragment kódu dotazuje tabulku pro všechny entity kde **PartitionKey** (příjmení zákazníka) má hodnotu "Smith":
 
     ```csharp
     TableQuery<CustomerEntity> query = 
@@ -546,7 +546,7 @@ Jak je uvedeno v části hello [přidat tabulka entity tooa](#add-an-entity-to-a
         .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Smith"));
     ```
 
-1. V rámci smyčku, volání hello **CloudTable.ExecuteQuerySegmented** metoda předávání můžete vytvořit instanci objektu dotazu hello v předchozím kroku hello.  Hello **CloudTable.ExecuteQuerySegmented** metoda vrátí **TableContinuationToken** objektu, který – když **null** – označuje, že neexistují žádné další entity tooretrieve. V rámci hello smyčky používají jiné tooiterate smyčky přes hello vrátí entity. V hello následující ukázka kódu se přidá každou vrácenou entitu tooa seznamu. Jednou hello cyklus skončí, hello seznam je předán zobrazení tooa pro zobrazení: 
+1. V rámci smyčku, volání **CloudTable.ExecuteQuerySegmented** metoda předání objektu dotazu instanci v předchozím kroku.  **CloudTable.ExecuteQuerySegmented** metoda vrátí **TableContinuationToken** objektu, který - při **null** – označuje, že neexistují žádné další entity načíst. V rámci smyčky Iterujte přes vrácené entity pomocí jiné smyčky. V následujícím příkladu kódu je každou vrácenou entitu přidat do seznamu. Po skončení smyčky seznamu byla předána do zobrazení pro zobrazení: 
 
     ```csharp
     List<CustomerEntity> customers = new List<CustomerEntity>();
@@ -565,11 +565,11 @@ Jak je uvedeno v části hello [přidat tabulka entity tooa](#add-an-entity-to-a
     return View(customers);
     ```
 
-1. V hello **Průzkumníku řešení**, rozbalte položku hello **zobrazení** složku, klikněte pravým tlačítkem na **tabulky**a z hello kontextové nabídky, vyberte **Přidat -> zobrazení**.
+1. V **Průzkumníku řešení**, rozbalte **zobrazení** složku, klikněte pravým tlačítkem na **tabulky**a v místní nabídce vyberte **Přidat -> zobrazení**.
 
-1. Na hello **přidat zobrazení** dialogové okno, zadejte **GetPartition** pro hello název zobrazení, vyberte **přidat**.
+1. Na **přidat zobrazení** dialogové okno, zadejte **GetPartition** pro název zobrazení, vyberte **přidat**.
 
-1. Otevřete `GetPartition.cshtml`a upravit ho tak, aby vypadal jako hello následující fragment kódu:
+1. Otevřete `GetPartition.cshtml`a upravit ho tak, aby vypadal jako následující fragment kódu:
 
     ```csharp
     @model IEnumerable<StorageAspnet.Models.CustomerEntity>
@@ -596,40 +596,40 @@ Jak je uvedeno v části hello [přidat tabulka entity tooa](#add-an-entity-to-a
     </table>
     ```
 
-1. V hello **Průzkumníku řešení**, rozbalte položku hello **-zobrazení > sdílené** složky a otevřete `_Layout.cshtml`.
+1. V **Průzkumníku řešení**, rozbalte **-zobrazení > sdílené** složky a otevřete `_Layout.cshtml`.
 
-1. Po hello poslední **Html.ActionLink**, přidejte následující hello **Html.ActionLink**:
+1. Za poslední **Html.ActionLink**, přidejte následující **Html.ActionLink**:
 
     ```html
     <li>@Html.ActionLink("Get partition", "GetPartition", "Tables")</li>
     ```
 
-1. Spuštění aplikace hello a vyberte **získat oddílu** toosee výsledky podobné toohello následující snímek obrazovky:
+1. Spusťte aplikaci a vyberte **získat oddílu** a zobrazte výsledky podobné následujícím snímku obrazovky:
   
     ![Získat oddílu](./media/vs-storage-aspnet-getting-started-tables/get-partition-results.png)
 
 ## <a name="delete-an-entity"></a>Odstranění entity
 
-Tato část ukazuje způsob toodelete entity z tabulky.
+Tato část ukazuje postup odstranění entity z tabulky.
 
 > [!NOTE]
 > 
-> Této části se předpokládá dokončení kroků hello v [nastavení prostředí pro vývoj hello](#set-up-the-development-environment)a používá data z [přidat dávky entit tooa tabulky](#add-a-batch-of-entities-to-a-table). 
+> V této části se předpokládá dokončení kroků v [nastavení vývojového prostředí](#set-up-the-development-environment)a používá data z [dávky entit přidat do tabulky](#add-a-batch-of-entities-to-a-table). 
 
-1. Otevřete hello `TablesController.cs` souboru.
+1. Otevřete soubor `TablesController.cs`.
 
 1. Přidejte metodu s názvem **DeleteEntity** , který vrací **ActionResult**.
 
     ```csharp
     public ActionResult DeleteEntity()
     {
-        // hello code in this section goes here.
+        // The code in this section goes here.
 
         return View();
     }
     ```
 
-1. V rámci hello **DeleteEntity** metody get **CloudStorageAccount** objekt, který reprezentuje informace o účtu úložiště. Použití hello následující kód tooget hello připojovací řetězec a úložiště informace o účtu úložiště z konfigurace služby Azure hello: (Změna  *&lt;název účtu úložiště >* toohello název hello úložiště Azure účet, ke které přistupujete.)
+1. V rámci **DeleteEntity** metody get **CloudStorageAccount** objekt, který reprezentuje informace o účtu úložiště. Použít následující kód k získání připojovacího řetězce úložiště a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -642,36 +642,36 @@ Tato část ukazuje způsob toodelete entity z tabulky.
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
     ```
 
-1. Získání **CloudTable** objekt, který reprezentuje referenční tabulku toohello, ze kterého chcete odstranit hello entity. 
+1. Získání **CloudTable** objekt, který reprezentuje odkaz na tabulku, ze kterého chcete odstranit entitu. 
    
     ```csharp
     CloudTable table = tableClient.GetTableReference("TestTable");
     ```
 
-1. Vytvořit objekt operaci odstranění, která přebírá objekt entity, který je odvozen od **TableEntity**. V tomto případě používáme hello **CustomerEntity** třídy a data uvedená v části hello [přidat dávky entit tooa tabulky](#add-a-batch-of-entities-to-a-table). Hello entity **značka ETag** musí být nastavena tooa platnou hodnotu.  
+1. Vytvořit objekt operaci odstranění, která přebírá objekt entity, který je odvozen od **TableEntity**. V tomto případě používáme **CustomerEntity** třídy a data uvedená v části [dávky entit přidat do tabulky](#add-a-batch-of-entities-to-a-table). Entity **značka ETag** musí být nastavena na platnou hodnotu.  
 
     ```csharp
     TableOperation deleteOperation = 
         TableOperation.Delete(new CustomerEntity("Smith", "Ben") { ETag = "*" } );
     ```
 
-1. Provést operace odstranění hello.   
+1. Provést operaci odstranění.   
 
     ```csharp
     TableResult result = table.Execute(deleteOperation);
     ```
 
-1. Předejte hello výsledek toohello zobrazení pro zobrazení.
+1. Výsledek předejte zobrazení pro zobrazení.
 
     ```csharp
     return View(result);
     ```
 
-1. V hello **Průzkumníku řešení**, rozbalte položku hello **zobrazení** složku, klikněte pravým tlačítkem na **tabulky**a z hello kontextové nabídky, vyberte **Přidat -> zobrazení**.
+1. V **Průzkumníku řešení**, rozbalte **zobrazení** složku, klikněte pravým tlačítkem na **tabulky**a v místní nabídce vyberte **Přidat -> zobrazení**.
 
-1. Na hello **přidat zobrazení** dialogové okno, zadejte **DeleteEntity** pro hello název zobrazení, vyberte **přidat**.
+1. Na **přidat zobrazení** dialogové okno, zadejte **DeleteEntity** pro název zobrazení, vyberte **přidat**.
 
-1. Otevřete `DeleteEntity.cshtml`a upravit ho tak, aby vypadal jako hello následující fragment kódu:
+1. Otevřete `DeleteEntity.cshtml`a upravit ho tak, aby vypadal jako následující fragment kódu:
 
     ```csharp
     @model Microsoft.WindowsAzure.Storage.Table.TableResult
@@ -696,20 +696,20 @@ Tato část ukazuje způsob toodelete entity z tabulky.
 
     ```
 
-1. V hello **Průzkumníku řešení**, rozbalte položku hello **-zobrazení > sdílené** složky a otevřete `_Layout.cshtml`.
+1. V **Průzkumníku řešení**, rozbalte **-zobrazení > sdílené** složky a otevřete `_Layout.cshtml`.
 
-1. Po hello poslední **Html.ActionLink**, přidejte následující hello **Html.ActionLink**:
+1. Za poslední **Html.ActionLink**, přidejte následující **Html.ActionLink**:
 
     ```html
     <li>@Html.ActionLink("Delete entity", "DeleteEntity", "Tables")</li>
     ```
 
-1. Spuštění aplikace hello a vyberte **odstranit entity** toosee výsledky podobné toohello následující snímek obrazovky:
+1. Spusťte aplikaci a vyberte **odstranit entity** a zobrazte výsledky podobné následujícím snímku obrazovky:
   
     ![Získat jeden](./media/vs-storage-aspnet-getting-started-tables/delete-entity-results.png)
 
 ## <a name="next-steps"></a>Další kroky
-Zobrazte další funkce příručky toolearn o dalších možnostech pro ukládání dat v Azure.
+Projděte si další průvodce funkcemi, kde najdete další informace o dalších možnostech pro ukládání dat v Azure.
 
   * [Začínáme s Azure blob storage a Visual Studio připojené služby (ASP.NET)](../storage/vs-storage-aspnet-getting-started-blobs.md)
   * [Začínáme s Azure queue storage a Visual Studio připojené služby (ASP.NET)](../storage/vs-storage-aspnet-getting-started-queues.md)

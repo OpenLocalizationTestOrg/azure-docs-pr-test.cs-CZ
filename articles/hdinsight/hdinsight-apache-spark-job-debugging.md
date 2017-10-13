@@ -1,6 +1,6 @@
 ---
-title: "aaaDebug Apache Spark úlohy spuštěné v Azure HDInsight | Microsoft Docs"
-description: "Pomocí uživatelského rozhraní YARN, Spark uživatelského rozhraní a Spark historie serveru tootrack a ladění úloh spuštěných v clusteru Spark v Azure HDInsight"
+title: "Ladění Apache Spark úlohy spuštěné v Azure HDInsight | Microsoft Docs"
+description: "Použít uživatelském rozhraní YARN, Spark uživatelského rozhraní a Spark historie serveru ke sledování a ladění úloh spuštěných na clusteru Spark v Azure HDInsight"
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -16,103 +16,103 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: nitinme
-ms.openlocfilehash: 33d352a5773920735aa4e5e8532b78122f381377
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: bf66757cc9439a969c9f28abc0b95055ff697c3b
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Ladění Apache Spark úlohy spuštěné v Azure HDInsight
 
-V tomto článku se dozvíte, jak tootrack a ladění úloh spuštěných na clusterů HDInsight pomocí hello uživatelském rozhraní YARN, Spark uživatelského rozhraní, Spark a hello Spark historie serveru. V tomto článku jsme spustí úlohu Spark pomocí poznámkového bloku dostupné s clusterem Spark hello, **strojového učení: prediktivní analýzy dat kontroly potravin pomocí MLLib**. Můžete použít následující tootrack aplikace, která jste odeslali pomocí jakékoli jiné přístup také, například postup hello **odeslání spark**.
+V tomto článku se dozvíte, jak sledovat a ladit spuštěné v clusterech prostředí HDInsight pomocí uživatelského rozhraní YARN, Spark uživatelského rozhraní a serveru Spark historie úlohy Spark. V tomto článku jsme spustí úlohu Spark pomocí poznámkového bloku dostupné s clusterem Spark **strojového učení: prediktivní analýzy dat kontroly potravin pomocí MLLib**. Následující postup můžete použít ke sledování aplikace, která jste odeslali pomocí jakékoli jiné přístup také, například **odeslání spark**.
 
 ## <a name="prerequisites"></a>Požadavky
-Musíte mít následující hello:
+Musíte mít následující:
 
 * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Cluster Apache Spark v HDInsight. Pokyny najdete v tématu [clusterů vytvořit Apache Spark v Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
-* Můžete by měl mít spuštění hello Poznámkový blok,  **[strojového učení: prediktivní analýzy dat kontroly potravin pomocí MLLib](hdinsight-apache-spark-machine-learning-mllib-ipython.md)**. Návod, jak toorun tento poznámkový blok, postupujte podle hello odkaz.  
+* Můžete by měl mít spuštění poznámkového bloku,  **[strojového učení: prediktivní analýzy dat kontroly potravin pomocí MLLib](hdinsight-apache-spark-machine-learning-mllib-ipython.md)**. Návod, jak spustit tento poznámkový blok pomocí následujícího odkazu.  
 
-## <a name="track-an-application-in-hello-yarn-ui"></a>Sledování aplikace v uživatelském rozhraní YARN hello
-1. Spusťte hello uživatelském rozhraní YARN. V okně hello clusteru, klikněte na tlačítko **řídicí panel clusteru**a potom klikněte na **YARN**.
+## <a name="track-an-application-in-the-yarn-ui"></a>Sledování aplikace v uživatelském rozhraní YARN
+1. Spuštění uživatelského rozhraní YARN. V okně clusteru, klikněte na tlačítko **řídicí panel clusteru**a potom klikněte na **YARN**.
    
     ![Spustit uživatelské rozhraní YARN](./media/hdinsight-apache-spark-job-debugging/launch-yarn-ui.png)
    
    > [!TIP]
-   > Alternativně můžete také spustit hello uživatelském rozhraní YARN z hello uživatelského rozhraní Ambari. Klikněte na tlačítko toolaunch hello uživatelského rozhraní Ambari, v okně clusteru hello, **řídicí panel clusteru**a potom klikněte na **řídicí panel clusteru HDInsight**. Z hello uživatelského rozhraní Ambari, klikněte na tlačítko **YARN**, klikněte na tlačítko **rychlé odkazy**, klikněte na tlačítko hello active resource Manageru a pak klikněte na **uživatelského rozhraní ResourceManager**.    
+   > Alternativně můžete také spustit uživatelské rozhraní YARN z uživatelského rozhraní Ambari. Chcete-li spustit uživatelské rozhraní Ambari, v okně clusteru, klikněte na tlačítko **řídicí panel clusteru**a potom klikněte na **řídicí panel clusteru HDInsight**. V uživatelském rozhraní Ambari, klikněte na **YARN**, klikněte na tlačítko **rychlé odkazy**, klikněte na tlačítko Správce prostředků active a pak klikněte na tlačítko **uživatelského rozhraní ResourceManager**.    
    > 
    > 
-2. Protože jste spustili úlohy Spark hello pomocí Jupyter notebooks, aplikace hello má název hello **remotesparkmagics** (to je hello název pro všechny aplikace, které jsou spuštěné z poznámkových bloků hello). Další informace o úloze hello klikněte na tlačítko ID aplikace hello proti tooget název aplikace hello. Spustí zobrazení aplikace hello.
+2. Protože jste spustili úlohy Spark pomocí Jupyter notebooks, aplikace, má název **remotesparkmagics** (to je název pro všechny aplikace, které jsou spuštěné z poznámkových bloků). Klikněte na tlačítko ID aplikace proti název aplikace, chcete-li získat další informace o úloze. Spustí zobrazení aplikací.
    
     ![Vyhledání ID aplikací Spark](./media/hdinsight-apache-spark-job-debugging/find-application-id.png)
    
-    Pro tyto aplikace, které jsou spouštěny z poznámkových bloků Jupyter hello hello stav je vždy **systémem** do ukončení hello Poznámkový blok.
-3. Z hlediska aplikace hello podrobnostem další toofind out hello kontejnery přidružené aplikace hello a protokoly hello (stdout/stderr). Hello Spark uživatelského rozhraní můžete také spustit kliknutím hello propojení odpovídající toohello **sledování adresy URL**, jak je uvedeno níže. 
+    Takové aplikace, které jsou spouštěny z Jupyter notebooks, stav je vždy **systémem** do ukončení poznámkového bloku.
+3. Z pohledu aplikace podrobnostem dál zjistěte kontejnery přidružené aplikace a protokoly (stdout/stderr). Můžete také spustit uživatelské rozhraní Spark kliknutím serveru linking odpovídající **sledování adresy URL**, jak je uvedeno níže. 
    
     ![Stažení protokolů o kontejneru](./media/hdinsight-apache-spark-job-debugging/download-container-logs.png)
 
-## <a name="track-an-application-in-hello-spark-ui"></a>Sledování aplikace hello Spark uživatelského rozhraní
-V hello Spark uživatelského rozhraní můžete se přejděte do hello Spark úlohy, které jsou vytvořený službou hello aplikaci, kterou jste spustili dříve.
+## <a name="track-an-application-in-the-spark-ui"></a>Sledování aplikace v uživatelském rozhraní Spark
+V uživatelském rozhraní Spark podrobnostem do úlohy Spark, které jsou v aplikaci, kterou jste spustili dříve vytvořený.
 
-1. toolaunch hello Spark uživatelského rozhraní, ze zobrazení aplikace hello, klikněte na odkaz hello proti hello **sledování adresy URL**, jak ukazuje snímek obrazovky hello výše. Zobrazí se všechny úlohy Spark hello, které jsou spouštěny podle hello aplikace běžící v hello Poznámkový blok Jupyter.
+1. Spuštění rozhraní Spark ze zobrazení aplikací, klikněte na odkaz proti **sledování adresy URL**, jak je uvedeno výše uvedený snímek obrazovky. Zobrazí se všechny úlohy Spark, které jsou v aplikaci běžící v poznámkového bloku Jupyter spouštěny.
    
     ![Zobrazit úlohy Spark](./media/hdinsight-apache-spark-job-debugging/view-spark-jobs.png)
-2. Klikněte na tlačítko hello **vykonavatelů** kartě toosee zpracování a ukládání informací pro každý prováděcího modulu. Můžete také načíst zásobník volání hello kliknutím na hello **vláken Dump** odkaz.
+2. Klikněte **vykonavatelů** karty zobrazíte informace o zpracování a úložiště pro každý prováděcího modulu. Můžete také kliknutím na načíst zásobníku volání **vláken Dump** odkaz.
    
     ![Zobrazit vykonavatelů Spark](./media/hdinsight-apache-spark-job-debugging/view-spark-executors.png)
-3. Klikněte na tlačítko hello **fázích** kartě toosee hello fázemi, přidruženou k aplikaci hello.
+3. Klikněte na tlačítko **fázích** karty zobrazíte fázích přidružené k aplikaci.
    
     ![Zobrazit Spark fáze](./media/hdinsight-apache-spark-job-debugging/view-spark-stages.png)
    
     Každá fáze může mít více úloh, pro které je možné zobrazit provádění statistiky, jako vidíte níže.
    
     ![Zobrazit Spark fáze](./media/hdinsight-apache-spark-job-debugging/view-spark-stages-details.png) 
-4. Na stránce Podrobnosti hello fáze můžete spustit DAG vizualizace. Rozbalte hello **DAG vizualizace** odkaz v horní části hello hello stránky, jak je uvedeno níže.
+4. Na stránce podrobností fázi můžete spustit DAG vizualizace. Rozbalte **DAG vizualizace** odkaz v horní části stránky, jak je uvedeno níže.
    
     ![Zobrazit vizualizace Spark fázích DAG](./media/hdinsight-apache-spark-job-debugging/view-spark-stages-dag-visualization.png)
    
-    DAG nebo přímé Aclyic grafu představuje hello různých fázích v aplikaci hello. Každé pole blue v grafu hello představuje Spark operace, vyvolané z aplikace hello.
-5. Na stránce podrobnosti fáze hello můžete také spustit zobrazení časové osy aplikace hello. Rozbalte hello **časová osa událostí** odkaz v horní části hello hello stránky, jak je uvedeno níže.
+    DAG nebo přímé Aclyic grafu představuje různých fázích v aplikaci. Každé pole blue v grafu představuje Spark operace, vyvolané z aplikace.
+5. Na stránce podrobností fázi můžete také spustit zobrazení časové osy aplikace. Rozbalte **časová osa událostí** odkaz v horní části stránky, jak je uvedeno níže.
    
     ![Zpracuje událost časová osa zobrazení Spark](./media/hdinsight-apache-spark-job-debugging/view-spark-stages-event-timeline.png)
    
-    Zobrazí se události hello Spark v podobě hello časové osy. Časová osa zobrazení Hello je k dispozici ve třech úrovních mezi úlohami v rámci úlohy a v rámci úsek. Hello obrázku výše zaznamená hello časová osa zobrazení pro danou fázi.
+    Zobrazí se události Spark ve formě časové osy. Zobrazení časové osy je k dispozici ve třech úrovních mezi úlohami v rámci úlohy a v rámci úsek. Na obrázku výše zaznamená zobrazení časové osy pro danou fázi.
    
    > [!TIP]
-   > Pokud vyberete hello **zapnout zvětšování** zaškrtávací políčko můžete posunete doleva a doprava napříč hello časová osa zobrazení.
+   > Pokud jste vybrali **zapnout zvětšování** zaškrtávací políčko můžete posunete doleva a doprava napříč zobrazení časové osy.
    > 
    > 
-6. Ostatní karty v hello uživatelského rozhraní Spark poskytují užitečné informace o hello Spark také instanci.
+6. Ostatní karty v uživatelském rozhraní Spark poskytují užitečné informace o instanci Spark také.
    
-   * Karta úložiště – Pokud vaše aplikace vytvoří RDDs, může najít informace o těch, na kartě úložiště hello.
-   * Karta prostředí – tato karta obsahuje mnoho užitečných informací o vaší instanci Spark, jako je například hello 
+   * Karta úložiště – Pokud vaše aplikace vytvoří RDDs, může najít informace o těch, na kartě úložiště.
+   * Karta prostředí – tato karta obsahuje mnoho užitečných informací o instanci Spark, jako 
      * Verze Scala
-     * Adresář protokolu událostí související s clusterem hello
-     * Počet jader vykonavatele pro aplikaci hello
+     * Adresář protokolu událostí související s clusterem
+     * Počet jader vykonavatele pro aplikaci
      * Atd.
 
-## <a name="find-information-about-completed-jobs-using-hello-spark-history-server"></a>Najít informace o dokončené úlohy pomocí Spark historie Server hello
-Po dokončení úlohy je v hello Spark historie serveru jako trvalý hello informace o úloze hello.
+## <a name="find-information-about-completed-jobs-using-the-spark-history-server"></a>Najít informace o používání serveru historie Spark dokončené úlohy
+Po dokončení úlohy je v serveru Spark historie jako trvalý informace o úloze.
 
-1. Klikněte na tlačítko toolaunch hello serveru Spark historie, v okně clusteru hello, **řídicí panel clusteru**a potom klikněte na **Spark historie serveru**.
+1. Ke spuštění serveru Spark historie, v okně clusteru, klikněte na tlačítko **řídicí panel clusteru**a potom klikněte na **Spark historie serveru**.
    
     ![Spusťte Server historie Spark](./media/hdinsight-apache-spark-job-debugging/launch-spark-history-server.png)
    
    > [!TIP]
-   > Alternativně můžete také spustit hello uživatelské rozhraní serveru Spark historie z hello uživatelského rozhraní Ambari. Klikněte na tlačítko toolaunch hello uživatelského rozhraní Ambari, v okně clusteru hello, **řídicí panel clusteru**a potom klikněte na **řídicí panel clusteru HDInsight**. Z hello uživatelského rozhraní Ambari, klikněte na tlačítko **Spark**, klikněte na tlačítko **rychlé odkazy**a potom klikněte na **uživatelské rozhraní serveru Spark historie**.
+   > Alternativně můžete také spustit rozhraní Spark historie serveru z uživatelského rozhraní Ambari. Chcete-li spustit uživatelské rozhraní Ambari, v okně clusteru, klikněte na tlačítko **řídicí panel clusteru**a potom klikněte na **řídicí panel clusteru HDInsight**. V uživatelském rozhraní Ambari, klikněte na **Spark**, klikněte na tlačítko **rychlé odkazy**a potom klikněte na **uživatelské rozhraní serveru Spark historie**.
    > 
    > 
-2. Zobrazí se všechny aplikace hello dokončit uvedené. Klikněte na tlačítko toodrill ID aplikace dolů do aplikace pro další informace.
+2. Zobrazí všechny dokončené aplikace uvedené. Klikněte na tlačítko ID aplikací k podrobnostem aplikace pro další informace.
    
     ![Spusťte Server historie Spark](./media/hdinsight-apache-spark-job-debugging/view-completed-applications.png)
 
 ## <a name="see-also"></a>Viz také
-*  [Správa prostředků hello cluster Apache Spark v Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
+*  [Správa prostředků v clusteru Apache Spark v Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
 
 ### <a name="for-data-analysts"></a>Pro analytiky dat
 
 * [Spark s Machine Learning: Používejte Spark v HDInsight pro analýzu teploty v budově pomocí dat HVAC](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
-* [Spark s Machine Learning: používejte Spark v výsledků kontroly potravin toopredict HDInsight](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
+* [Spark s Machine Learning: Používejte Spark v HDInsight k předpovědím výsledků kontrol potravin](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 * [Analýza protokolu webu pomocí Sparku v HDInsight](hdinsight-apache-spark-custom-library-website-log-analysis.md)
 * [Analýza dat telemetrie Application Insights pomocí Sparku v HDInsight](hdinsight-spark-analyze-application-insight-logs.md)
 * [Použití Caffe v Azure HDInsight Spark pro distribuované hloubkové learning](hdinsight-deep-learning-caffe-spark.md)
@@ -121,12 +121,12 @@ Po dokončení úlohy je v hello Spark historie serveru jako trvalý hello infor
 
 * [Vytvoření samostatné aplikace pomocí Scala](hdinsight-apache-spark-create-standalone-application.md)
 * [Vzdálené spouštění úloh na clusteru Sparku pomocí Livy](hdinsight-apache-spark-livy-rest-interface.md)
-* [Pomocí modulu plug-in nástroje HDInsight pro IntelliJ IDEA toocreate a odesílání aplikací Spark Scala](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Modul plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření a odesílání aplikací Spark Scala](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [Datové proudy Spark: Používejte Spark v HDInsight pro sestavení aplikací datových proudů v reálném čase](hdinsight-apache-spark-eventhub-streaming.md)
-* [Vzdáleně pomocí modulu plug-in nástroje HDInsight pro IntelliJ IDEA toodebug Spark aplikace](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Použití modulu plug-in nástroje HDInsight pro IntelliJ IDEA pro vzdálené ladění aplikací Spark](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Použití poznámkových bloků Zeppelin s clusterem Sparku v HDInsight](hdinsight-apache-spark-zeppelin-notebook.md)
 * [Jádra dostupná pro poznámkový blok Jupyter v clusteru Sparku pro HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 * [Použití externích balíčků s poznámkovými bloky Jupyter](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
-* [Do počítače nainstalovat Jupyter a připojte tooan clusteru HDInsight Spark](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
+* [Instalace Jupyteru do počítače a připojení ke clusteru HDInsight Spark](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 
 

@@ -6,7 +6,7 @@
 | Redis Cache repliky (pro vysokou dostupnost) |1 |
 | Horizontálních oddílů v mezipaměti premium s clusteringem |10 |
 
-Omezuje Azure Redis Cache a velikosti se liší u jednotlivých cenových úrovní. hello toosee cenové úrovně a jejich přidružené velikostí, najdete v části [Azure Redis Cache ceny](https://azure.microsoft.com/pricing/details/cache/).
+Omezuje Azure Redis Cache a velikosti se liší u jednotlivých cenových úrovní. Cenové úrovně a jejich přidružené velikosti najdete v tématu [Azure Redis Cache ceny](https://azure.microsoft.com/pricing/details/cache/).
 
 Další informace o limitech konfigurace Azure Redis Cache najdete v tématu [konfigurace serveru výchozí Redis](../articles/redis-cache/cache-configure.md#default-redis-server-configuration).
 

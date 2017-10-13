@@ -1,6 +1,6 @@
 ---
-title: "aaaWindows Universal integraci sady SDK zapojení aplikace"
-description: "Jak tooIntegrate Azure Mobile Engagement s univerzálních aplikací pro Windows"
+title: "Integraci sady Engagement SDK univerzálních aplikací pro Windows"
+description: "Postup pro integraci Azure Mobile Engagement univerzálních aplikací pro Windows"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 18543798099c233dbe55cc387ba0216e369c8596
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 898160814304fa8ec65622056a77ca9d4caf2c99
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="windows-universal-apps-engagement-sdk-integration"></a>Integraci sady Engagement SDK univerzálních aplikací pro Windows
 > [!div class="op_single_selector"]
@@ -29,12 +29,12 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Tento postup popisuje analýzy a monitorování funkce v aplikaci univerzální pro Windows hello nejjednodušší způsob, jak tooactivate Engagement.
+Tento postup popisuje nejjednodušší způsob, jak aktivovat Engagement analýzy a monitorování funkce v aplikaci univerzální pro Windows.
 
-Hello následující kroky jsou že dostatek tooactivate hello protokolů je nutná sestava toocompute všechny statistické údaje týkající se uživatelů, relací, aktivity, dojde k chybě a Technicals. Hello protokolů je nutná sestava toocompute další statistiky jako události a chyby úlohy je třeba provést ručně pomocí hello Engagement rozhraní API (v tématu [jak toouse hello advanced označování rozhraní API v aplikaci Windows Universal Mobile Engagement](mobile-engagement-windows-store-use-engagement-api.md) od Tyto statistické údaje jsou závislé aplikace.
+Následující kroky jsou dost aktivovat sestavy protokolů, které jsou potřebné k výpočtu všechny statistické údaje týkající se uživatelů, relací, aktivity, dojde k chybě a Technicals. Sestava protokolů, které jsou potřebné k výpočtu další statistiky, jako jsou události a chyby úlohy je třeba provést ručně pomocí rozhraní API Engagement (najdete v části [jak používat rozšířené Mobile Engagement označování rozhraní API v aplikaci Windows Universal](mobile-engagement-windows-store-use-engagement-api.md) vzhledem k tomu, že tyto statistické údaje jsou závislé aplikace.
 
 ## <a name="supported-versions"></a>Podporované verze
-Mobile Engagement SDK pro univerzální aplikace pro Windows Hello lze pouze integrovat do prostředí Windows Runtime a aplikací pro univerzální platformu Windows:
+Mobile Engagement SDK pro Windows Universal aplikace lze pouze integrovat do prostředí Windows Runtime a aplikací pro univerzální platformu Windows:
 
 * Windows 8
 * Windows 8.1
@@ -42,63 +42,63 @@ Mobile Engagement SDK pro univerzální aplikace pro Windows Hello lze pouze int
 * Windows 10 (desktop a mobile rodiny)
 
 > [!NOTE]
-> Pokud jsou cílem Windows Phone Silverlight pak odkazovat toohello [postup integrace Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md).
+> Pokud jsou cílem Windows Phone Silverlight pak odkazovat [postup integrace Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md).
 > 
 > 
 
-## <a name="install-hello-mobile-engagement-universal-apps-sdk"></a>Nainstalujte hello Universal SDK aplikace Mobile Engagement
+## <a name="install-the-mobile-engagement-universal-apps-sdk"></a>Nainstalovat sadu SDK Mobile Engagement univerzální aplikace
 ### <a name="all-platforms"></a>Všechny platformy
-Mobile Engagement SDK pro univerzální aplikace pro Windows Hello je k dispozici jako balíček Nuget s názvem *MicrosoftAzure.MobileEngagement*. Můžete ji nainstalovat ze hello Správce balíčků Nuget Visual Studio.
+Mobile Engagement SDK pro univerzální aplikace Windows je k dispozici jako balíček Nuget s názvem *MicrosoftAzure.MobileEngagement*. Můžete ho nainstalovat z Visual Studio Správce balíčků Nuget.
 
 ### <a name="windows-8x-and-windows-phone-81"></a>Windows 8.x a Windows Phone 8.1
-NuGet automaticky nasadí hello prostředků sady SDK v hello `Resources` složku v kořenovém adresáři projektu aplikace hello.
+NuGet automaticky nasadí prostředků sady SDK v `Resources` složku v kořenovém adresáři projektu aplikace.
 
 ### <a name="windows-10-universal-windows-platform-applications"></a>Aplikace Windows 10 univerzální platformu Windows
-NuGet automaticky Nenasazuje hello SDK prostředky v aplikaci UWP ještě. Je nutné ji ručně až prostředky nasazení je znovu zavedena v NuGet toodo:
+NuGet automaticky Nenasazuje prostředků sady SDK v aplikaci UWP ještě. Je nutné provést ručně dokud prostředky nasazení je znovu zavedena v NuGet:
 
 1. Otevřete váš Průzkumníka souborů.
-2. Přejděte toohello následující umístění (**x.x.x** je hello verzi Engagement instalujete): *% USERPROFILE %\\.nuget\packages\MicrosoftAzure.MobileEngagement\\*  *x.x.x**\\content\win81*
-3. Přetažení hello **prostředky** složku z hello souboru explorer toohello kořenového adresáře projektu v sadě Visual Studio.
-4. V sadě Visual Studio vyberte projekt a aktivovat hello **zobrazit všechny soubory** ikonu nad hello **Průzkumníku řešení**.
-5. Některé soubory nejsou zahrnuty v projektu hello. tooimport je najednou klikněte pravým tlačítkem na hello **prostředky** složky, **vyloučit z projektu** pak jiné klikněte pravým tlačítkem na hello **prostředky** složky, **zahrnout v projektu** toore-zahrnovat celou složku hello. Všechny soubory z hello **prostředky** složky jsou teď součástí projektu.
+2. Přejděte do následujícího umístění (**x.x.x** je verze Engagement instalujete): *% USERPROFILE %\\.nuget\packages\MicrosoftAzure.MobileEngagement\\**x.x.x**\\content\win81*
+3. Přetáhnout myší **prostředky** složky v Průzkumníku souborů do kořenového adresáře projektu v sadě Visual Studio.
+4. V sadě Visual Studio vyberte projekt a aktivovat **zobrazit všechny soubory** ikonu na **Průzkumníku řešení**.
+5. Některé soubory nejsou zahrnuty v projektu. K importu je najednou klikněte pravým tlačítkem na **prostředky** složky, **vyloučit z projektu** pak jiné klikněte pravým tlačítkem na **prostředky** složky, **zahrnout do projektu** znovu zahrnout celou složku. Všechny soubory z **prostředky** složky jsou teď součástí projektu.
 
-## <a name="add-hello-capabilities"></a>Přidání možností hello
-Některé možnosti hello Windows SDK v pořadí toowork musí Hello Engagement SDK správně.
+## <a name="add-the-capabilities"></a>Přidání funkcí
+Sady Engagement SDK potřebuje některé funkce sady Windows SDK správné fungování.
 
-Otevřete váš `Package.appxmanifest` soubor a zkontrolujte, zda jsou deklarovány této hello následující možnosti:
+Otevřete váš `Package.appxmanifest` souboru a ujistěte se, že jsou deklarovány následující možnosti:
 
 * `Internet (Client)`
 
-## <a name="initialize-hello-engagement-sdk"></a>Inicializace hello Engagement SDK
+## <a name="initialize-the-engagement-sdk"></a>Inicializace Engagement SDK
 ### <a name="engagement-configuration"></a>Konfigurace zapojení
-Konfigurace Engagement Hello je centralizovaná v hello `Resources\EngagementConfiguration.xml` souboru projektu.
+Konfigurace zapojení je centralizovaná v `Resources\EngagementConfiguration.xml` souboru projektu.
 
-Upravte tento soubor toospecify:
+Upravte tento soubor k určení:
 
 * Připojovací řetězec aplikací mezi značky `<connectionString>` a `<\connectionString>`.
 
-Pokud chcete, aby ho za běhu místo toho můžete volat hello následující toospecify metoda před inicializací agenta hello Engagement:
+Pokud chcete zadat za běhu, můžete volat metodu před Engagement inicializaci agenta:
 
           /* Engagement configuration. */
           EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
 
-          /* Set hello Engagement connection string. */
+          /* Set the Engagement connection string. */
           engagementConfiguration.Agent.ConnectionString = "Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}";
 
           /* Initialize Engagement angent with above configuration. */
           EngagementAgent.Instance.Init(e, engagementConfiguration);
 
-Hello připojovací řetězec pro vaši aplikaci se zobrazí na portálu Azure Classic hello.
+Připojovací řetězec pro vaši aplikaci se zobrazí na portálu Azure Classic.
 
 ### <a name="engagement-initialization"></a>Inicializace zapojení
-Když vytvoříte nový projekt, `App.xaml.cs` se vygeneruje soubor. Tato třída dědí z `Application` a obsahuje mnoho důležité metody. Bude také použít tooinitialize hello Engagement SDK.
+Když vytvoříte nový projekt, `App.xaml.cs` se vygeneruje soubor. Tato třída dědí z `Application` a obsahuje mnoho důležité metody. Je také použije k chybě při inicializaci sady Engagement SDK.
 
-Upravit hello `App.xaml.cs`:
+Změnit `App.xaml.cs`:
 
-* Přidat tooyour `using` příkazy:
+* Přidat do vaší `using` příkazy:
   
       using Microsoft.Azure.Engagement;
-* Definujte metoda tooshare hello Engagement inicializace jednou pro všechna volání:
+* Zadejte způsob, jak sdílet inicializace Engagement jednou pro všechna volání:
   
       private void InitEngagement(IActivatedEventArgs e)
       {
@@ -108,13 +108,13 @@ Upravit hello `App.xaml.cs`:
   
         EngagementAgent.Instance.Init(e, engagementConfiguration);
       }
-* Volání `InitEngagement` v hello `OnLaunched` metoda:
+* Volání `InitEngagement` v `OnLaunched` metoda:
   
       protected override void OnLaunched(LaunchActivatedEventArgs e)
       {
         InitEngagement(e);
       }
-* Při spuštění vaší aplikace pomocí vlastní schéma jiná aplikace nebo hello příkazového řádku pak hello `OnActivated` metoda je volána. Musíte taky tooinitiate hello Engagement SDK, když je aktivován vaší aplikace. toodo tedy přepsat `OnActivated` metoda:
+* Když je aplikace spuštěna pomocí vlastní schéma, jiná aplikace nebo příkazového řádku potom `OnActivated` metoda je volána. Musíte také zahájit sady Engagement SDK, když je aktivován vaší aplikace. Chcete-li to provést, přepište `OnActivated` metoda:
   
       protected override void OnActivated(IActivatedEventArgs args)
       {
@@ -122,20 +122,20 @@ Upravit hello `App.xaml.cs`:
       }
 
 > [!IMPORTANT]
-> Jsme důrazně bránit vám tooadd hello Engagement inicializace na jiném místě vaší aplikace.
+> Jsme důrazně bránit můžete přidat inicializace Engagement na jiném místě vaší aplikace.
 > 
 > 
 
 ## <a name="basic-reporting"></a>Vytváření základních sestav
 ### <a name="recommended-method-overload-your-page-classes"></a>Doporučená metoda: přetížení vaší `Page` třídy
-V pořadí tooactivate hello sestavu všechny protokoly hello vyžadují zapojení toocompute uživatelů, relací, aktivity, dojde k chybě a technické statistiky, můžete jednoduše provést všechny vaše `Page` dílčí třídy dědí hello `EngagementPage` třídy.
+Chcete-li aktivovat sestavu všechny protokoly, které vyžadují zapojení k výpočtu uživatelů, relací, aktivity, dojde k chybě a technické statistiky, můžete jednoduše provést všechny vaše `Page` dílčí třídy dědí `EngagementPage` třídy.
 
-Tady je příklad toho, jak toodo to pro stránku vaší aplikace. Můžete provést hello samé pro všechny stránky vaší aplikace.
+Tady je příklad toho, jak to udělat pro stránku vaší aplikace. Můžete to samé pro všechny stránky vaší aplikace.
 
 #### <a name="c-source-file"></a>C# zdrojový soubor
 Upravit stránku `.xaml.cs` souboru:
 
-* Přidat tooyour `using` příkazy:
+* Přidat do vaší `using` příkazy:
   
       using Microsoft.Azure.Engagement;
 * Nahraďte `Page` s `EngagementPage`:
@@ -163,14 +163,14 @@ Upravit stránku `.xaml.cs` souboru:
         }
 
 > [!IMPORTANT]
-> Pokud stránka přepíše hello `OnNavigatedTo` metoda, že toocall být `base.OnNavigatedTo(e)`. V opačném hello aktivita nebude hlášena (hello `EngagementPage` volání `StartActivity` uvnitř jeho `OnNavigatedTo` metoda).
+> Pokud stránka přepíše metodu `OnNavigatedTo`, nezapomeňte volat `base.OnNavigatedTo(e)`. Jinak aktivita nebude hlášena (`EngagementPage` volá `StartActivity` uvnitř své metody `OnNavigatedTo`).
 > 
 > 
 
 #### <a name="xaml-file"></a>Souboru XAML
 Upravit stránku `.xaml` souboru:
 
-* Přidejte tooyour deklarací oborů názvů:
+* Přidejte do deklarací oborů názvů:
   
       xmlns:engagement="using:Microsoft.Azure.Engagement"
 * Nahraďte `Page` s `engagement:EngagementPage`:
@@ -190,33 +190,33 @@ Upravit stránku `.xaml` souboru:
             ...
         </engagement:EngagementPage >
 
-#### <a name="override-hello-default-behaviour"></a>Přepsat výchozí chování hello
-Ve výchozím nastavení je název třídy hello stránku hello uvedená jako název aktivity hello a žádné navíc. Pokud třída hello používá příponu "Stránka" hello, Engagement také odebere.
+#### <a name="override-the-default-behaviour"></a>Přepsat výchozí chování
+Ve výchozím nastavení je název třídy stránky uvedená jako název aktivity, s žádné další. Pokud třída používá příponou "Stránka", Engagement také odebere.
 
-Pokud chcete toooverride hello výchozí chování pro název hello, jednoduše přidejte tento kód tooyour:
+Pokud chcete přepsat výchozí chování pro název, jednoduše přidejte tuto kódu:
 
-        // in hello .xaml.cs file
+        // in the .xaml.cs file
         protected override string GetEngagementPageName()
         {
           /* your code */
           return "new name";
         }
 
-Pokud chcete, tooreport některé další – informace s vaší aktivitou, můžete přidat tento kód tooyour:
+Pokud chcete ohlásit některé další – informace s vaší aktivitou, můžete to přidat do kódu:
 
-        // in hello .xaml.cs file
+        // in the .xaml.cs file
         protected override Dictionary<object,object> GetEngagementPageExtra()
         {
           /* your code */
           return extra;
         }
 
-Tyto metody jsou volat v rámci hello `OnNavigatedTo` metoda stránky.
+Tyto metody jsou volány prostřednictvím `OnNavigatedTo` metoda stránky.
 
 ### <a name="alternate-method-call-startactivity-manually"></a>Alternativní metoda: volání `StartActivity()` ručně
-Pokud nemůžete nebo nechcete, aby toooverload vaše `Page` třídy, můžete místo toho spustit vaše aktivity voláním `EngagementAgent` metody přímo.
+Pokud nemůžete nebo nechcete přetížení vaše `Page` třídy, můžete místo toho spustit vaše aktivity voláním `EngagementAgent` metody přímo.
 
-Doporučujeme, abyste toocall `StartActivity` uvnitř vaší `OnNavigatedTo` metoda stránky.
+Doporučujeme, abyste k volání `StartActivity` uvnitř vaší `OnNavigatedTo` metoda stránky.
 
             protected override void OnNavigatedTo(NavigationEventArgs e)
             {
@@ -227,31 +227,31 @@ Doporučujeme, abyste toocall `StartActivity` uvnitř vaší `OnNavigatedTo` met
 > [!IMPORTANT]
 > Zajistěte, aby že správně ukončete svou relaci.
 > 
-> Hello sady Windows Universal SDK automaticky volá hello `EndActivity` metoda při zavření aplikace hello. Z toho důvodu je **vysoce** doporučená toocall hello `StartActivity` metoda vždy, když aktivita hello hello uživatele změnit a příliš**nikdy** volání hello `EndActivity` metoda, tato metoda odesílá tooEngagement Server, že má aktuální uživatel aplikace hello ponechejte, budou ovlivňuje všechny protokoly aplikací.
+> Sady Windows Universal SDK automaticky zavolá `EndActivity` metoda při ukončení aplikace. Z toho důvodu je **vysoce** doporučuje volat `StartActivity` metoda vždy, když aktivita uživatele změnit a **nikdy** volání `EndActivity` metodu, tato metoda odešle na server zapojení, že aktuální uživatel má nechat aplikaci, budou ovlivňuje všechny protokoly aplikací.
 > 
 > 
 
 ## <a name="advanced-reporting"></a>Rozšířená tvorba sestav
-Volitelně můžete tooreport aplikace konkrétní události, chyb a úlohy, toodo tak, použijte hello další metody nalezeny v hello `EngagementAgent` třídy. Hello Engagement API umožňuje toouse všechny rozšířené možnosti Engagement.
+Volitelně můžete chtít sestav aplikace konkrétní události, chyb a úlohy, Uděláte to tak, použijte jiné metody v nalezen `EngagementAgent` třídy. Rozhraní API Engagement umožňuje používat všechny rozšířené možnosti Engagement.
 
-Další informace najdete v tématu [jak toouse hello advanced označování rozhraní API v aplikaci Windows Universal Mobile Engagement](mobile-engagement-windows-store-use-engagement-api.md).
+Další informace najdete v tématu [jak používat rozšířené Mobile Engagement označování rozhraní API v aplikaci Windows Universal](mobile-engagement-windows-store-use-engagement-api.md).
 
 ## <a name="advanced-configuration"></a>Pokročilá konfigurace
 ### <a name="disable-automatic-crash-reporting"></a>Zakázat automatické hlášení chyb
-Můžete vypnout automatické hlášení hello funkci Engagement generování sestav. Pak když dojde k neošetřené výjimce, Engagement nebude provádět žádné kroky.
+Můžete vypnout automatické hlášení funkci Engagement generování sestav. Pak když dojde k neošetřené výjimce, Engagement nebude provádět žádné kroky.
 
 > [!WARNING]
-> Pokud máte v plánu toodisable tuto funkci, mějte na paměti, když dojde k nezpracované chybě ve vaší aplikaci, nepošle Engagement hello havárií **a** nebude zavřete hello relace a úlohy.
+> Pokud budete chtít tuto funkci zakázat, mějte na paměti, když dojde k nezpracované chybě ve vaší aplikaci, nepošle Engagement havárii **a** nebude zavřete relaci a úlohy.
 > 
 > 
 
-Automatické hlášení toodisable vytváření sestav, stačí upravit konfiguraci v závislosti na způsob hello deklarujete objekt:
+Chcete-li zakázat automatické hlášení chyb, upravte konfiguraci. v závislosti na způsobu, jakým jste ji deklarovaný:
 
 #### <a name="from-engagementconfigurationxml-file"></a>Z `EngagementConfiguration.xml` souboru
-Nastavit sestavy zhroutí příliš`false` mezi `<reportCrash>` a `</reportCrash>` značky.
+Nastavte Sestavy havárií na `false` mezi `<reportCrash>` a `</reportCrash>` značky.
 
 #### <a name="from-engagementconfiguration-object-at-run-time"></a>Z `EngagementConfiguration` objektu v době běhu
-Nastavit toofalse havárií sestavy pomocí EngagementConfiguration objektu.
+Nastavit na hodnotu false pomocí objektu EngagementConfiguration sestavy havárií.
 
         /* Engagement configuration. */
         EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
@@ -261,18 +261,18 @@ Nastavit toofalse havárií sestavy pomocí EngagementConfiguration objektu.
         engagementConfiguration.Agent.ReportCrash = false;
 
 ### <a name="burst-mode"></a>Režim shluku
-Ve výchozím nastavení sestavy služby zapojení hello protokolů v reálném čase. Pokud vaše aplikace hlásí protokoly velmi často, je lepší toobuffer hello protokoly a tooreport je všechny najednou na pravidelné základní časové (tomu se říká hello "shluků režim").
+Ve výchozím nastavení sestavy služby zapojení protokolů v reálném čase. Pokud vaše aplikace hlásí protokoly velmi často, je lepší ukládat do vyrovnávací paměti protokoly a sestavy je všechny najednou pravidelné základní časové (to se nazývá "shluků režim").
 
-toodo tedy volat metodu hello:
+Chcete-li tak učinit, zavolejte metodu:
 
         EngagementAgent.Instance.SetBurstThreshold(int everyMs);
 
-Hello argument je hodnota **milisekundách**. Kdykoli Pokud chcete protokolování v reálném čase hello tooreactivate, stačí zavoláte metoda hello bez zadání parametru nebo s hodnotou hello 0.
+Argument je hodnota **milisekundách**. Kdykoli Pokud chcete znovu aktivovat protokolování v reálném čase, stačí zavoláte metoda bez zadání parametru nebo s hodnotou 0.
 
-Hello shluků režimu mírně zvýšit hello baterie životnosti ale má vliv na hello monitorování Engagement: všechny doba trvání relace a úlohy se prahová hodnota shluků zaokrouhlené toohello (tedy relací a úlohy kratší, než je prahová hodnota shluků hello nemusí být zobrazeny). Je doporučeno toouse práh shluků než 30000 (30s). Máte toobe vědět, které uložené protokoly jsou omezené too300 položky. Pokud odesílání je příliš dlouhý. může dojít ke ztrátě některých protokoly.
+Režim shluků mírně zvýšit výdrž baterie, ale má vliv na zapojení monitorování: všechny dobu trvání relace a úlohy zaokrouhlen shluků prahovou hodnotu (tedy relací a úlohy kratší, než je prahová hodnota shluků nemusí být zobrazeny). Doporučujeme používat práh shluků než 30000 (30s). Budete muset mějte na paměti, uložené protokoly jsou omezeny na 300 položek. Pokud odesílání je příliš dlouhý. může dojít ke ztrátě některých protokoly.
 
 > [!WARNING]
-> Prahová hodnota shluků Hello nelze konfigurovat tooa období menší než hodnotami 1. Pokud se pokusíte toodo tak, hello SDK bude zobrazit trasování s chybou hello a bude automaticky toohello výchozí hodnotu, tedy 0s obnovit. Tím se aktivuje hello SDK tooreport hello protokolů v reálném čase.
+> Prahová hodnota shluků nelze nakonfigurovat na dobu, která je menší než hodnotami 1. Pokud se pokusíte učinit, sady SDK se zobrazí trasování došlo k chybě a automaticky obnoví na výchozí hodnotu, tedy 0s. Tím se aktivuje sady SDK k hlášení protokolů v reálném čase.
 > 
 > 
 

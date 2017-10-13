@@ -1,6 +1,6 @@
 ---
-title: aaaManage Azure DC/OS cluster s Marathon REST API | Microsoft Docs
-description: "Nasazení clusteru Azure Container Service DC/OS tooan kontejnery pomocí rozhraní REST API Marathonu hello."
+title: Spravovat cluster Azure DC/OS s Marathon REST API | Microsoft Docs
+description: "Nasazení kontejnerů do clusteru Azure Container Service DC/OS pomocí rozhraní REST API Marathonu."
 services: container-service
 documentationcenter: 
 author: dlepow
@@ -17,35 +17,35 @@ ms.workload: na
 ms.date: 04/04/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: d926b9b90f5d4eda85a015d9ea0d96fea2c4b566
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 65f8e0170fa7b89162e811a1d5dd58775fd20d7b
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="dcos-container-management-through-hello-marathon-rest-api"></a>Správa kontejnerů DC/OS prostřednictvím hello rozhraní REST API Marathonu
-DC/OS poskytuje prostředí pro nasazování a škálování clusterových úloh a zároveň poskytuje abstrakci používaného hardwaru hello. Nad DC/OS je rozhraní, které spravuje plánování a provádění výpočetních úloh. I když jsou k dispozici pro mnoho populárních úloh rozhraní, tento dokument vám pomůže začít vytváření a škálování nasazení kontejnerů pomocí hello Marathon REST API. 
+# <a name="dcos-container-management-through-the-marathon-rest-api"></a>Správa kontejnerů DC/OS přes rozhraní REST API Marathonu
+DC/OS poskytuje prostředí pro nasazování a škálování clusterových úloh a zároveň poskytuje abstrakci používaného hardwaru. Nad DC/OS je rozhraní, které spravuje plánování a provádění výpočetních úloh. I když jsou k dispozici pro mnoho populárních úloh rozhraní, tento dokument vám pomůže začít vytváření a škálování nasazení kontejnerů pomocí rozhraní REST API Marathonu. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než si projdete tyto příklady, budete potřebovat cluster DC/OS nakonfigurovaný v Azure Container Service. Budete také potřebovat clusteru toothis toohave vzdáleného připojení. Další informace o těchto položek najdete v tématu hello následující články:
+Než si projdete tyto příklady, budete potřebovat cluster DC/OS nakonfigurovaný v Azure Container Service. Kromě toho je nutné mít možnost se k tomuto clusteru připojit vzdáleně. Další informace k těmto záležitostem najdete v těchto článcích:
 
 * [Nasazení clusteru Azure Container Service](container-service-deployment.md)
-* [Připojení clusteru Azure Container Service tooan](../container-service-connect.md)
+* [Připojení ke clusteru Azure Container Service](../container-service-connect.md)
 
-## <a name="access-hello-dcos-apis"></a>Přístup k rozhraní API DC/OS hello
-Jakmile se připojené toohello clusteru Azure Container Service můžete přistupovat hello DC/OS a související rozhraní REST API přes adresu http://localhost: Local-port. Hello příklady v tomto dokumentu předpokládají, že máte k dispozici tunel na portu 80. Například hello Marathon koncové body k dispozici na adrese identifikátory URI počínaje `http://localhost/marathon/v2/`. 
+## <a name="access-the-dcos-apis"></a>Přístup k rozhraní API DC/OS
+Až se připojíte ke clusteru Azure Container Service, budete mít na DC/OS a související rozhraní REST API přístup přes adresu http://localhost:local-port. Příklady v tomto dokumentu předpokládají, že máte k dispozici tunel na portu 80. Například Marathon koncové body k dispozici na adrese identifikátory URI počínaje `http://localhost/marathon/v2/`. 
 
-Další informace o hello různých rozhraních API, najdete v dokumentaci Mesosphere hello hello [Marathon API](https://mesosphere.github.io/marathon/docs/rest-api.html) a [Chronos API](https://mesos.github.io/chronos/docs/api.html)a v dokumentaci Apache pro hello [Mesos Scheduler API ](http://mesos.apache.org/documentation/latest/scheduler-http-api/).
+Další informace o různých rozhraních API najdete v dokumentaci Mesosphere pro rozhraní [Marathon API](https://mesosphere.github.io/marathon/docs/rest-api.html) a [Chronos API](https://mesos.github.io/chronos/docs/api.html) a v dokumentaci Apache pro rozhraní [Mesos Scheduler API](http://mesos.apache.org/documentation/latest/scheduler-http-api/).
 
 ## <a name="gather-information-from-dcos-and-marathon"></a>Získání informací z DC/OS a Marathonu
-Před nasazením clusteru DC/OS toohello kontejnery, zjistěte si určité informace o clusteru DC/OS hello, například názvy hello a stav agentů DC/OS hello. toodo tedy dotaz hello `master/slaves` koncový bod hello REST API DC/OS. Pokud všechno půjde dobře, hello dotaz vrátí seznam agentů DC/OS a několik vlastností, které pro každý.
+Než do clusteru DC/OS nasadíte kontejnery, zjistěte si určité informace o clusteru DC/OS, například názvy a stav agentů DC/OS. To provedete tak, že zašlete dotaz na koncový bod `master/slaves` rozhraní REST API DC/OS. Pokud všechno proběhne správně, dotaz vrátí seznam agentů DC/OS a u každého z nich několik vlastností.
 
 ```bash
 curl http://localhost/mesos/master/slaves
 ```
 
-Nyní pomocí Marathonu hello `/apps` toocheck koncový bod pro aktuální clusteru DC/OS toohello nasazení aplikace. Pokud je to nový cluster, uvidíte prázdné pole aplikací.
+Nyní pomocí koncového bodu Marathon `/apps` zkontrolujte aktuální nasazení aplikací v clusteru DC/OS. Pokud je to nový cluster, uvidíte prázdné pole aplikací.
 
 ```bash
 curl localhost/marathon/v2/apps
@@ -54,7 +54,7 @@ curl localhost/marathon/v2/apps
 ```
 
 ## <a name="deploy-a-docker-formatted-container"></a>Nasazení kontejneru formátovaného Dockerem
-Kontejnery formátované Dockerem prostřednictvím hello rozhraní REST API Marathonu nasadíte pomocí souboru JSON, který popisuje hello určený nasazení. Hello následující ukázka nasadí Nginx kontejneru tooa privátní agenta v clusteru hello. 
+Kontejnery formátované Dockerem prostřednictvím rozhraní REST API Marathonu nasadíte pomocí souboru JSON, který popisuje zamýšlené nasazení. Následující ukázka nasadí kontejner Nginx do privátní agenta v clusteru. 
 
 ```json
 {
@@ -75,42 +75,42 @@ Kontejnery formátované Dockerem prostřednictvím hello rozhraní REST API Mar
 }
 ```
 
-toodeploy kontejner formátovaný hello JSON soubor uložte do přístupného umístění. Dále toodeploy hello kontejner, spusťte následující příkaz hello. Zadejte název souboru JSON hello hello (`marathon.json` v tomto příkladu).
+Abyste mohli nasadit kontejner formátovaný, ukládat do přístupného umístění souboru JSON. Pak následujícím příkazem nasaďte kontejner. Zadejte název souboru JSON (`marathon.json` v tomto příkladu).
 
 ```bash
 curl -X POST http://localhost/marathon/v2/apps -d @marathon.json -H "Content-type: application/json"
 ```
 
-výstup Hello je podobné toohello následující:
+Výstup je podobný tomuto:
 
 ```json
 {"version":"2015-11-20T18:59:00.494Z","deploymentId":"b12f8a73-f56a-4eb1-9375-4ac026d6cdec"}
 ```
 
-Teď když Marathonu odešlete dotaz pro aplikace, tato nová aplikace se zobrazí ve výstupu hello.
+Nyní když Marathonu odešlete dotaz na aplikace, zobrazí se tato nová aplikace ve výstupu.
 
 ```bash
 curl localhost/marathon/v2/apps
 ```
 
-## <a name="reach-hello-container"></a>Dosažení hello kontejneru
+## <a name="reach-the-container"></a>Dosažení kontejneru
 
-Můžete ověřit, že hello Nginx je spuštěn v kontejneru v jednom z hello privátní agenti v clusteru hello. toofind hello hostitele a portu, kde hello kontejneru běží, dotaz Marathon pro hello spuštěných úloh: 
+Můžete ověřit, že Nginx běží v kontejneru na jednom ze soukromých agentů v clusteru. Chcete-li najít hostitele a portu, na kterém je spuštěný kontejneru, dotaz Marathon pro spuštěné úlohy: 
 
 ```bash
 curl localhost/marathon/v2/tasks
 ```
 
-Najít hodnotu hello `host` ve výstupu hello (IP adres podobné příliš`10.32.0.x`) a hodnota hello `ports`.
+Vrátí hodnotu `host` ve výstupu (podobně jako IP adresu `10.32.0.x`) a hodnota `ports`.
 
 
-Nyní proveďte SSH terminálu připojení (ne tunelového propojení) toohello správu plně kvalifikovaný název domény clusteru hello. Po připojení, zkontrolujte hello následující požadavek, nahraďte hello správné hodnoty z `host` a `ports`:
+Nyní terminálu připojení SSH (ne tunelového propojení) proveďte správu plně kvalifikovaný název domény clusteru. Po připojení, zkontrolujte následující požadavek, nahraďte správné hodnoty z `host` a `ports`:
 
 ```bash
 curl http://host:ports
 ```
 
-Hello výstup Nginx serveru je podobné toohello následující:
+Výstup serveru Nginx je podobný následujícímu:
 
 ![Nginx z kontejneru](./media/container-service-mesos-marathon-rest/nginx.png)
 
@@ -118,16 +118,16 @@ Hello výstup Nginx serveru je podobné toohello následující:
 
 
 ## <a name="scale-your-containers"></a>Škálování kontejnerů
-V nasazení aplikace můžete použít hello Marathon API tooscale out nebo určený počet číslic. V předchozím příkladu hello jste nasadili jednu instanci aplikace. Nyní škálování to zjistit toothree instancí aplikace. toodo tak, vytvořte soubor JSON s použitím hello následující JSON text a uložte ho do přístupného umístění.
+Můžete použít rozhraní API Marathonu horizontální navýšení kapacity nebo škálování v nasazení aplikace. V předchozím příkladu jste nasadili jednu instanci aplikace. Nyní škálování aplikace navyšme na tři instance. To provedete tak, že pomocí následujícího textu JSON vytvoříte soubor JSON a uložíte ho na dostupném místě.
 
 ```json
 { "instances": 3 }
 ```
 
-Z tunelového propojení spusťte následující příkaz tooscale se aplikace hello hello.
+Z tunelového propojení spusťte následující příkaz pro horizontální škálování aplikace.
 
 > [!NOTE]
-> Hello identifikátor URI je http://localhost/marathon/v2/apps/ následuje hello ID tooscale aplikace hello. Pokud používáte ukázku Nginx hello, která je k dispozici zde, hello URI by byl http://localhost/marathon/v2/apps/nginx.
+> Identifikátor URI je http://localhost/marathon/v2/apps/ a pak ID aplikace, která se bude škálovat. Pokud používáte ukázku Nginx, která je zde k dispozici, identifikátor URI by byl http://localhost/marathon/v2/apps/nginx.
 > 
 > 
 
@@ -135,7 +135,7 @@ Z tunelového propojení spusťte následující příkaz tooscale se aplikace h
 curl http://localhost/marathon/v2/apps/nginx -H "Content-type: application/json" -X PUT -d @scale.json
 ```
 
-Nakonec dotaz na koncový bod Marathonu hello pro aplikace. Vidíte, že tam jsou nyní tři kontejnery Nginx.
+Nakonec pošlete na koncový bod Marathon dotaz na aplikace. Vidíte, že tam jsou nyní tři kontejnery Nginx.
 
 ```bash
 curl localhost/marathon/v2/apps
@@ -144,13 +144,13 @@ curl localhost/marathon/v2/apps
 ## <a name="equivalent-powershell-commands"></a>Ekvivalentní příkazy PowerShellu
 V systému Windows můžete tyto stejné akce provést pomocí příkazů PowerShellu.
 
-toogather informace o clusteru DC/OS hello, jako jsou názvy agentů a stavu agentů, spusťte následující příkaz hello:
+Získat informace o clusteru DC/OS, jako jsou názvy agentů a stavu agentů, spusťte následující příkaz:
 
 ```powershell
 Invoke-WebRequest -Uri http://localhost/mesos/master/slaves
 ```
 
-Nasadíte kontejnery formátované Dockerem přes Marathon pomocí souboru JSON, který popisuje hello určený nasazení. Hello následující ukázka nasadí kontejner nginx a sváže hello vazby port 80 hello DC/OS agenta tooport 80 kontejneru hello.
+Kontejnery formátované Dockerem nasadíte přes Marathon pomocí souboru JSON, který popisuje zamýšlené nasazení. Následující ukázka nasadí kontejner Nginx a sváže port 80 agenta DC/OS s portem 80 kontejneru.
 
 ```json
 {
@@ -171,22 +171,22 @@ Nasadíte kontejnery formátované Dockerem přes Marathon pomocí souboru JSON,
 }
 ```
 
-toodeploy kontejner formátovaný hello JSON soubor uložte do přístupného umístění. Dále toodeploy hello kontejner, spusťte následující příkaz hello. Zadejte soubor JSON toohello cesta hello (`marathon.json` v tomto příkladu).
+Abyste mohli nasadit kontejner formátovaný, ukládat do přístupného umístění souboru JSON. Pak následujícím příkazem nasaďte kontejner. Zadejte cestu k souboru JSON (`marathon.json` v tomto příkladu).
 
 ```powershell
 Invoke-WebRequest -Method Post -Uri http://localhost/marathon/v2/apps -ContentType application/json -InFile 'c:\marathon.json'
 ```
 
-V nasazení aplikace můžete použít také hello Marathon API tooscale out nebo škálování. V předchozím příkladu hello jste nasadili jednu instanci aplikace. Nyní škálování to zjistit toothree instancí aplikace. toodo tak, vytvořte soubor JSON s použitím hello následující JSON text a uložte ho do přístupného umístění.
+Rozhraní Marathon API je možné použít i k nasazením aplikací se škálováním pro horizontální navýšení nebo snížení kapacity. V předchozím příkladu jste nasadili jednu instanci aplikace. Nyní škálování aplikace navyšme na tři instance. To provedete tak, že pomocí následujícího textu JSON vytvoříte soubor JSON a uložíte ho na dostupném místě.
 
 ```json
 { "instances": 3 }
 ```
 
-Spusťte následující příkaz tooscale se aplikace hello hello:
+Spusťte následující příkaz pro horizontální škálování aplikace:
 
 > [!NOTE]
-> Hello identifikátor URI je http://localhost/marathon/v2/apps/ následuje hello ID tooscale aplikace hello. Pokud používáte ukázku Nginx hello poskytuje zde, hello identifikátoru URI by http://localhost/marathon/v2/apps/nginx.
+> Identifikátor URI je http://localhost/marathon/v2/apps/ a pak ID aplikace, která se bude škálovat. Pokud používáte ukázku Nginx, která je zde k dispozici, identifikátor URI by byl http://localhost/marathon/v2/apps/nginx.
 > 
 > 
 
@@ -195,6 +195,6 @@ Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -Cont
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* [Další informace o koncových bodech Mesos HTTP hello](http://mesos.apache.org/documentation/latest/endpoints/)
-* [Další informace o hello rozhraní REST API Marathonu](https://mesosphere.github.io/marathon/docs/rest-api.html)
+* [Další informace o koncových bodech Mesos HTTP](http://mesos.apache.org/documentation/latest/endpoints/)
+* [Další informace o rozhraní REST API Marathonu](https://mesosphere.github.io/marathon/docs/rest-api.html)
 

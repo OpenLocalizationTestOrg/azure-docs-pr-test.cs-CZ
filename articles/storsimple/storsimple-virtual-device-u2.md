@@ -1,6 +1,6 @@
 ---
-title: "virtuální zařízení aaaStorSimple Update 2 | Microsoft Docs"
-description: "Zjistěte, jak toocreate, nasazovat a spravovat virtuální zařízení StorSimple ve službě Microsoft Azure virtual network. (Platí tooStorSimple Update 2)."
+title: "Virtuální zařízení StorSimple Update 2| Dokumentace Microsoftu"
+description: "Naučte se vytvářet, nasazovat a spravovat virtuální zařízení StorSimple ve službě Microsoft Azure Virtual Network. (Platí pro StorSimple Update 2)."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,224 +14,224 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/07/2017
 ms.author: alkohli
-ms.openlocfilehash: 8d2a0520f1ed30ebec929c2bdabb4838691b8ad6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 4ed93f9783efcd700db18aa21b5867c951bd2b97
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-and-manage-a-storsimple-virtual-device-in-azure"></a>Nasazení a správa virtuálního zařízení StorSimple v Azure
 ## <a name="overview"></a>Přehled
-virtuální zařízení řady StorSimple 8000 Hello je další schopností, která se dodává s vaším řešením Microsoft Azure StorSimple. virtuální zařízení StorSimple Hello běží ve virtuálním počítači ve virtuální síti Microsoft Azure a můžete ho tooback nahoru a klonování dat z hostitelů. Tento kurz popisuje, jak toodeploy a spravovat virtuální zařízení v Azure a použít tooall hello virtuální zařízení používající verzi softwaru Update 2 a nižší.
+Virtuální zařízení řady StorSimple 8000 je další schopností, která se dodává s vaším řešením Microsoft Azure StorSimple. Virtuální zařízení StorSimple běží na virtuálním počítači ve službě Microsoft Azure Virtual Network a slouží k zálohování a klonování dat z hostitelů. Tento návod popisuje, jak nasadit a spravovat virtuální zařízení v Azure, a vztahuje se na všechna virtuální zařízení používající verzi softwaru Update 2 nebo nižší.
 
 #### <a name="virtual-device-model-comparison"></a>Porovnání modelů virtuálního zařízení
-Hello StorSimple virtuální zařízení je k dispozici ve dvou modelech standardní 8010 (dříve označované jako hello 1100) a prémiový 8020 (zaveden v Update 2). Porovnání dvou modelů hello v následující tabulce.
+Virtuální zařízení StorSimple je k dispozici ve dvou modelech – standardní 8010 (dříve označovaný jako 1100) a prémiový 8020 (zaveden v Update 2). Porovnání obou modelů je v následující tabulce.
 
 | Model zařízení | 8010<sup>1</sup> | 8020 |
 | --- | --- | --- |
 | **Maximální kapacita** |30 TB |64 TB |
 | **Virtuální počítač Azure** |Standard_A3 (4 jádra, 7 GB paměti) |Standard_DS3 (4 jádra, 14 GB paměti) |
 | **Kompatibilita verzí** |Verze používající software před Update 2 nebo novější |Verze používající software Update 2 nebo novější |
-| **Dostupnost v oblastech** |Všechny oblasti Azure |Všechny oblasti Azure, které podporují službu Storage úrovně Premium a virtuální počítače Azure DS3<br></br> Použití [tento seznam](https://azure.microsoft.com/en-us/regions/services) toosee, pokud obě *virtuální počítače > DS-series* a *úložiště > Disk úložiště* jsou k dispozici ve vašem regionu. |
-| **Typ úložiště** |Pro místní disky používá službu Azure Standard Storage<br></br> Zjistěte, jak příliš[vytvořit standardní účet úložiště](../storage/common/storage-create-storage-account.md) |Pro místní disky používá Azure Premium Storage.<sup>2</sup> <br></br>Zjistěte, jak příliš[vytvořit účet úložiště úrovně Premium](../storage/common/storage-premium-storage.md) |
+| **Dostupnost v oblastech** |Všechny oblasti Azure |Všechny oblasti Azure, které podporují službu Storage úrovně Premium a virtuální počítače Azure DS3<br></br> Použijte [tento seznam](https://azure.microsoft.com/en-us/regions/services), abyste zjistili, jestli jsou ve vaší oblasti dostupné obě možnosti *Virtuální počítače > DS-series* a *Úložiště > Diskové úložiště*. |
+| **Typ úložiště** |Pro místní disky používá službu Azure Standard Storage<br></br> Zjistěte, jak [vytvořit účet služby Standard Storage](../storage/common/storage-create-storage-account.md) |Pro místní disky používá Azure Premium Storage.<sup>2</sup> <br></br>Zjistěte, jak [vytvořit účet služby Premium Storage](../storage/common/storage-premium-storage.md) |
 | **Pokyny týkající se úloh** |Načítání souborů ze zálohy na úrovni položek |Scénáře vývoje a testování v cloudu, nízká latence, náročnější úlohy <br></br>Sekundární zařízení pro zotavení po havárii |
 
-<sup>1</sup> *dříve označované jako hello 1100*.
+<sup>1</sup>*Dříve označované jako 1100*.
 
-<sup>2</sup> *obě hello 8010 a 8020 použít standardní úložiště Azure pro hello cloudu vrstvy. hello rozdíl existuje pouze v hello místní vrstvy v rámci zařízení hello*.
+<sup>2</sup>*Pro cloudovou vrstvu používají zařízení 8010 i 8020 službu Azure Standard Storage. Rozdíl je pouze u místní vrstvy v rámci zařízení*.
 
-Tento článek popisuje hello podrobný postup nasazení virtuálního zařízení StorSimple v Azure. Po přečtení tohoto článku:
+Tento článek popisuje podrobný postup nasazení virtuálního zařízení StorSimple v Azure. Po přečtení tohoto článku:
 
-* Pochopte, jak se liší od fyzického zařízení hello hello virtuální zařízení.
-* Být schopný toocreate a nakonfigurovat virtuální zařízení hello.
-* Připojte toohello virtuální zařízení.
-* Zjistěte, jak toowork s virtuálním zařízením hello.
+* Budete chápat, jak se liší virtuální zařízení od fyzického zařízení.
+* Budete schopni vytvořit a nakonfigurovat virtuální zařízení.
+* Připojíte se k virtuálnímu zařízení.
+* Naučíte se pracovat s virtuálním zařízením.
 
-V tomto kurzu platí tooall hello virtuální zařízení StorSimple verzi Update 2 a vyšší.
+Tento kurz se vztahuje na všechna virtuální zařízení StorSimple používající software verze Update 2 nebo vyšší.
 
-## <a name="how-hello-virtual-device-differs-from-hello-physical-device"></a>Jak se liší od fyzického zařízení hello hello virtuálního zařízení
-virtuální zařízení StorSimple Hello je jen pro software verze zařízení storsimple, která běží na jednom uzlu v virtuální počítač Microsoft Azure. Hello virtuální zařízení podporuje scénáře zotavení po havárii ve kterých fyzické zařízení není k dispozici a je vhodné pro použití v načítání na úrovni položek ze zálohy, místní zotavení po havárii a cloudu vývojářů a testovací scénáře.
+## <a name="how-the-virtual-device-differs-from-the-physical-device"></a>Jak se liší virtuální zařízení od fyzického zařízení
+Virtuální zařízení StorSimple je čistě softwarová verze zařízení StorSimple, která běží na jednom uzlu virtuálního počítače Microsoft Azure. Virtuální zařízení podporuje scénáře zotavení po havárii, ve kterých fyzické zařízení není k dispozici, a je vhodné pro použití v načítání na úrovni položek ze zálohy, místní zotavení po havárii a scénáře vývoje a testování v cloudu.
 
-#### <a name="differences-from-hello-physical-device"></a>Rozdíl oproti hello fyzického zařízení
-Hello následující tabulka uvádí některé hlavní rozdíly mezi hello virtuálního zařízení StorSimple a fyzickým zařízením StorSimple hello.
+#### <a name="differences-from-the-physical-device"></a>Rozdíl oproti fyzickému zařízení
+V následující tabulce jsou uvedeny některé hlavní rozdíly mezi virtuálním zařízením StorSimple a fyzickým zařízením StorSimple.
 
 |  | Fyzické zařízení | Virtuální zařízení |
 | --- | --- | --- |
-| **Umístění** |Se nachází v datovém centru hello. |Běží v Azure. |
+| **Umístění** |Nachází se v datovém centru. |Běží v Azure. |
 | **Síťová rozhraní** |Má šest síťových rozhraní: DATA 0 až DATA 5. |Má pouze jedno síťové rozhraní: DATA 0. |
-| **Registrace** |Během kroku konfigurace hello zaregistrovány. |Registrace je samostatná úloha. |
-| **Šifrovací klíč dat služby** |Obnovte na fyzickém zařízení hello a aktualizujte virtuální zařízení hello s hello nový klíč. |Nelze znovu vygenerovat z hello virtuální zařízení. |
+| **Registrace** |Registruje se během konfigurace. |Registrace je samostatná úloha. |
+| **Šifrovací klíč dat služby** |Obnovte na fyzickém zařízení a potom aktualizujte virtuální zařízení pomocí nového klíče. |Nelze znovu vygenerovat z virtuálního zařízení. |
 
-## <a name="prerequisites-for-hello-virtual-device"></a>Předpoklady pro virtuální zařízení hello
-Hello následující části popisují požadavky konfigurace hello virtuální zařízení StorSimple. Předchozí toodeploying virtuálního zařízení, přečtěte si hello [bezpečnostních aspektech použití virtuálního zařízení](storsimple-security.md#storsimple-virtual-device-security).
+## <a name="prerequisites-for-the-virtual-device"></a>Požadavky na virtuální zařízení
+Následující části popisují požadavky na konfiguraci pro virtuální zařízení StorSimple. Před nasazením virtuálního zařízení si přečtěte [požadavky na zabezpečení pro použití virtuálních zařízení](storsimple-security.md).
 
 #### <a name="azure-requirements"></a>Požadavky na Azure
-Než zřídíte virtuální zařízení hello, je třeba toomake hello následující přípravy v prostředí Azure:
+Než zřídíte virtuální zařízení, je třeba provést následující přípravy v prostředí Azure:
 
-* Pro virtuální zařízení hello [konfigurace virtuální sítě v Azure](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). Používáte-li službu Premium Storage, musíte vytvořit virtuální síť v oblasti Azure, která podporuje službu Premium Storage. oblasti úložiště Premium Hello jsou oblasti, které odpovídají toohello řádek pro *Disk úložiště* v seznamu hello [služby Azure podle oblasti](https://azure.microsoft.com/en-us/regions/services).
-* Je vhodné toouse hello výchozí server DNS poskytovaný platformou Azure místo zadávání vlastního názvu serveru DNS. Pokud není platný název serveru DNS nebo serveru DNS hello není možné tooresolve IP adresy správně, vytvoření hello hello virtuální zařízení se nezdaří.
+* Pro virtuální zařízení [nakonfigurujte virtuální síť na Azure](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). Používáte-li službu Premium Storage, musíte vytvořit virtuální síť v oblasti Azure, která podporuje službu Premium Storage. Oblasti služby Storage úrovně Premium jsou oblasti, které odpovídají řádku pro *Diskové úložiště* v seznamu [služeb Azure podle oblasti](https://azure.microsoft.com/en-us/regions/services).
+* Je vhodné použít výchozí server DNS poskytovaný platformou Azure místo zadávání vlastního názvu serveru DNS. Pokud název serveru DNS není platný nebo pokud server DNS není schopen správně přeložit IP adresy, vytvoření virtuálního zařízení se nezdaří.
 * Připojení point-to-site a site-to-site jsou volitelná, ale nejsou vyžadována. Pokud chcete, můžete nastavit tyto možnosti pro pokročilejší scénáře.
-* Můžete vytvořit [virtuální počítače Azure](../virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (hostitelské servery) ve virtuální síti hello, který můžete použít hello svazky vystavené virtuálním zařízením hello. Tyto servery musí splňovat následující požadavky hello:                             
+* Můžete vytvořit [virtuální počítače Azure Virtual Machines](../virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (hostitelské servery) ve virtuální síti, které mohou používat svazky vystavené virtuálním zařízením. Tyto servery musí splňovat následující požadavky:                             
 
   * Být virtuální počítače Windows nebo Linux s nainstalovaným softwarem iniciátoru iSCSI.
-  * Běžet ve hello stejné virtuální síti jako virtuální zařízení hello.
-  * Být schopný tooconnect toohello cíli iSCSI virtuálního zařízení hello prostřednictvím hello interní IP adresu hello virtuální zařízení.
-* Zajistěte, aby jste nakonfigurovali podporu pro iSCSI a cloudové přenosy na hello stejné virtuální síti.
+  * Běžet ve stejné virtuální síti jako virtuální zařízení.
+  * Moci se připojit k cíli iSCSI virtuálního zařízení prostřednictvím interní IP adresy virtuálního zařízení.
+* Ujistěte se, že jste nakonfigurovali podporu pro přenosy iSCSI a cloudové přenosy ve stejné virtuální síti.
 
 #### <a name="storsimple-requirements"></a>Požadavky na StorSimple
-Ujistěte se, hello následující službu Azure StorSimple tooyour aktualizace před vytvořením virtuálního zařízení:
+Před vytvořením virtuálního zařízení aktualizujte svoji službu Azure StorSimple následujícím způsobem:
 
-* Přidat [záznamy řízení přístupu](storsimple-manage-acrs.md) pro hello virtuálních počítačů, které budou servery toobe hostitele pro virtuální zařízení.
-* Použití [účet úložiště](storsimple-manage-storage-accounts.md#add-a-storage-account) v hello stejné oblasti jako virtuální zařízení hello. Účty úložiště v jiných oblastech mohou vést k nižšímu výkonu. Účet Standard nebo Premium Storage můžete použít s virtuálním zařízením hello. Další informace o toocreate [standardní účet úložiště](../storage/common/storage-create-storage-account.md) nebo [účtu Storage úrovně Premium](../storage/common/storage-premium-storage.md)
-* Použijte jiný účet úložiště pro vytvoření virtuálního zařízení z hello, jedna pro vaše data. Pomocí hello stejný účet úložiště může vést k nižšímu výkonu.
+* Přidejte [záznamy řízení přístupu](storsimple-manage-acrs.md) pro virtuální počítače, které budou představovat hostitelské servery pro virtuální zařízení.
+* Nastavte používání [účtu úložiště](storsimple-manage-storage-accounts.md#add-a-storage-account) ve stejné oblasti jako virtuální zařízení. Účty úložiště v jiných oblastech mohou vést k nižšímu výkonu. U virtuálního zařízení můžete použít účet služby Standard Storage nebo Premium Storage. Další informace o tom, jak vytvořit [účet služby Standard Storage](../storage/common/storage-create-storage-account.md) nebo [účet služby Premium Storage](../storage/common/storage-premium-storage.md)
+* Pro vytvoření virtuálního zařízení použijte jiný účet úložiště, než jaký se používá pro vaše data. Použití stejného účtu úložiště může vést k nižšímu výkonu.
 
-Ujistěte se, že máte hello následující informace, než můžete začít:
+Před zahájením se ujistěte, že máte k dispozici následující informace:
 
 * Účet portálu Azure Classic s přihlašovacími údaji.
-* Kopie šifrovacího klíče dat hello služby z fyzického zařízení.
+* Kopie šifrovacího klíče dat služby z fyzického zařízení.
 
-## <a name="create-and-configure-hello-virtual-device"></a>Vytvořit a nakonfigurovat virtuální zařízení hello
-Před provedením těchto postupů se ujistěte, že jste splnili hello [požadavky pro virtuální zařízení hello](#prerequisites-for-the-virtual-device).
+## <a name="create-and-configure-the-virtual-device"></a>Vytvoření a konfigurace virtuálního zařízení
+Před provedením těchto postupů se ujistěte, že jste splnili [požadavky na virtuální zařízení](#prerequisites-for-the-virtual-device).
 
-Po vytvoření virtuální sítě, nakonfigurované služby StorSimple Manager a registraci fyzického zařízení StorSimple službou hello, můžete použít následující kroky toocreate hello a nakonfigurovat virtuální zařízení StorSimple.
+Po vytvoření virtuální sítě, konfiguraci služby StorSimple Manager a registraci fyzického zařízení StorSimple u služby můžete pomocí následujících kroků vytvořit a nakonfigurovat virtuální zařízení StorSimple.
 
 ### <a name="step-1-create-a-virtual-device"></a>Krok 1: Vytvoření virtuálního zařízení
-Proveďte následující kroky toocreate hello StorSimple virtuální zařízení hello.
+Pomocí následujících kroků vytvořte virtuální zařízení StorSimple.
 
 [!INCLUDE [Create a virtual device](../../includes/storsimple-create-virtual-device-u2.md)]
 
-Pokud hello vytvoření virtuálního zařízení hello selže v tomto kroku, nemusí mít toohello připojení k Internetu. Další informace, přejděte příliš[vyřešit chyby připojení k Internetu](#troubleshoot-internet-connectivity-errors) při vytváření virtuálního zařízení.
+Pokud se vytváření virtuálního zařízení v tomto kroku nezdaří, je možné, že nemáte připojení k internetu. Další informace najdete v oddílu [řešení potíží při selhání připojení k internetu](#troubleshoot-internet-connectivity-errors) během vytváření virtuálního zařízení.
 
-### <a name="step-2-configure-and-register-hello-virtual-device"></a>Krok 2: Konfigurace a registrace virtuálního zařízení hello
-Před zahájením tohoto postupu se ujistěte, že máte kopii šifrovacího klíče dat služby hello. Hello šifrovacího klíče dat služby byl vytvořen při konfiguraci prvního zařízení StorSimple a byly pokyn toosave jej na bezpečném místě. Pokud nemáte kopii šifrovacího klíče dat služby hello, musí Microsoft Support požádejte o pomoc.
+### <a name="step-2-configure-and-register-the-virtual-device"></a>Krok 2: Konfigurace a registrace virtuálního zařízení
+Před zahájením tohoto postupu se ujistěte, že máte kopii šifrovacího klíče dat služby. Šifrovací klíč dat služby byl vytvořen při konfiguraci prvního zařízení StorSimple, přičemž jste dostali pokyn uložit jej na bezpečném místě. Pokud nemáte kopii šifrovacího klíče dat služby, obraťte se o pomoc na podporu společnosti Microsoft.
 
-Proveďte následující kroky tooconfigure hello a registraci virtuálního zařízení StorSimple.
+Pomocí následujících kroků proveďte konfiguraci a registraci virtuálního zařízení StorSimple.
 
 [!INCLUDE [Configure and register a virtual device](../../includes/storsimple-configure-register-virtual-device.md)]
 
-### <a name="step-3-optional-modify-hello-device-configuration-settings"></a>Krok 3: (Volitelné) upravit hello nastavení konfigurace pro zařízení
-Hello následující část popisuje nastavení konfigurace zařízení hello potřebné pro virtuální zařízení StorSimple hello, pokud chcete toouse CHAP, Snapshot Manager zařízení StorSimple nebo změnit heslo správce zařízení hello.
+### <a name="step-3-optional-modify-the-device-configuration-settings"></a>Krok 3 (nepovinný): Úprava konfiguračních nastavení zařízení
+Následující část popisuje konfigurační nastavení zařízení potřebná pro virtuální zařízení StorSimple, pokud chcete použít CHAP nebo Snapshot Manager zařízení StorSimple nebo změnit heslo správce zařízení.
 
-#### <a name="configure-hello-chap-initiator"></a>Konfigurace iniciátoru CHAP hello
-Tento parametr obsahuje přihlašovací údaje hello, které virtuální zařízení (cíl) očekává z iniciátorů hello (serverů), které se pokoušíte tooaccess hello svazky. iniciátory Hello poskytne CHAP uživatelské jméno a heslo tooidentify CHAP sami tooyour zařízení během tohoto ověřování. Podrobný postup je uveden příliš[konfigurace CHAP pro vaše zařízení](storsimple-configure-chap.md#unidirectional-or-one-way-authentication).
+#### <a name="configure-the-chap-initiator"></a>Konfigurace iniciátoru CHAP
+Tento parametr obsahuje přihlašovací údaje, které virtuální zařízení (cíl) očekává z iniciátorů (serverů), které se pokoušejí o přístup ke svazkům. Iniciátory se při ověření identifikují vašemu zařízení uvedením uživatelského jména a hesla CHAP. Podrobný postup je uveden v části [Konfigurace CHAP pro vaše zařízení](storsimple-configure-chap.md#unidirectional-or-one-way-authentication).
 
-#### <a name="configure-hello-chap-target"></a>Konfigurace cíle CHAP hello
-Tento parametr obsahuje přihlašovací údaje hello, které virtuální zařízení používá, když iniciátor podporou CHAP žádá vzájemné nebo obousměrné ověřování. Virtuální zařízení bude používat uživatelské jméno Reverse CHAP a Reverse CHAP heslo tooidentify samotné toohello iniciátor během tohoto procesu ověřování. Upozorňujeme, že nastavení cíle CHAP jsou globální nastavení. Při jejich použití, budou všechny hello svazky připojené toohello virtuální zařízení úložiště používat ověřování CHAP. Podrobný postup je uveden příliš[konfigurace CHAP pro vaše zařízení](storsimple-configure-chap.md#bidirectional-or-mutual-authentication).
+#### <a name="configure-the-chap-target"></a>Konfigurace cíle CHAP
+Tento parametr obsahuje přihlašovací údaje, které virtuální zařízení používá, když iniciátor s podporou CHAP žádá o vzájemné nebo obousměrné ověření. Virtuální zařízení se při ověření identifikuje iniciátoru pomocí uživatelského jména a hesla Reverse CHAP. Upozorňujeme, že nastavení cíle CHAP jsou globální nastavení. Při jejich použití budou všechny svazky připojené k virtuálnímu zařízení úložiště používat ověřování CHAP. Podrobný postup je uveden v části [Konfigurace CHAP pro vaše zařízení](storsimple-configure-chap.md#bidirectional-or-mutual-authentication).
 
-#### <a name="configure-hello-storsimple-snapshot-manager-password"></a>Konfigurace hesla Snapshot Manageru zařízení StorSimple hello
-Software Snapshot Manager zařízení StorSimple se nachází na hostiteli s Windows a umožňuje správci toomanage zálohy zařízení StorSimple ve formě hello místních a cloudových snímků.
+#### <a name="configure-the-storsimple-snapshot-manager-password"></a>Konfigurace hesla Snapshot Manageru zařízení StorSimple
+Software Snapshot Manager zařízení StorSimple se nachází na hostiteli systému Windows a umožňuje správcům spravovat zálohy zařízení StorSimple ve formě místních a cloudových snímků.
 
 > [!NOTE]
-> Hostiteli s Windows hello virtuální zařízení, je virtuální počítač Azure.
+> Pro virtuální zařízení je hostitelem systému Windows virtuální počítač Azure.
 >
 >
 
-Při konfiguraci zařízení v hello Snapshot Manager zařízení StorSimple, zobrazí se výzva tooprovide hello tooauthenticate StorSimple zařízení IP adresu a heslo zařízení úložiště. Podrobný postup je uveden příliš[konfigurace zařízení StorSimple Snapshot Manager heslo](storsimple-change-passwords.md#change-the-storsimple-snapshot-manager-password).
+Při konfiguraci zařízení ve Snapshot Manageru zařízení StorSimple budete vyzváni k zadání IP adresy a hesla zařízení StorSimple pro ověření zařízení úložiště. Podrobný postup je uveden v části [Konfigurace hesla Snapshot Manageru zařízení StorSimple](storsimple-change-passwords.md#change-the-storsimple-snapshot-manager-password).
 
-#### <a name="change-hello-device-administrator-password"></a>Heslo správce zařízení hello změn
-Při použití hello prostředí Windows PowerShell rozhraní tooaccess hello virtuální zařízení, budou požadované tooenter hesla správce zařízení. Hello zabezpečení vašich dat, se vyžaduje toochange toto heslo před hello virtuální zařízení se může používat. Podrobný postup je uveden příliš[konfigurace hesla správce zařízení](storsimple-change-passwords.md#change-the-device-administrator-password).
+#### <a name="change-the-device-administrator-password"></a>Změna hesla správce zařízení
+Pokud pro přístup k virtuálnímu zařízení použijete rozhraní Windows PowerShell, budete požádáni o zadání hesla správce zařízení. Pro zabezpečení vašich dat je před použitím virtuálního zařízení nutné toto heslo změnit. Podrobný postup je uveden v části [Konfigurace hesla správce zařízení](storsimple-change-passwords.md#change-the-device-administrator-password).
 
-## <a name="connect-remotely-toohello-virtual-device"></a>Vzdálené připojení toohello virtuálního zařízení
-Ve výchozím nastavení není povoleno vzdáleného přístupu tooyour virtuálního zařízení prostřednictvím rozhraní Windows PowerShell hello. Nejprve nutné tooenable vzdálené správy na hello virtuální zařízení a pak ji povolit na hello klienta, které budou použité tooaccess virtuální zařízení.
+## <a name="connect-remotely-to-the-virtual-device"></a>Vzdálené připojení k virtuálnímu zařízení
+Vzdálený přístup k virtuálnímu zařízení pomocí rozhraní Windows PowerShell není ve výchozím nastavení povolen. Nejprve musíte povolit vzdálenou správu virtuálních zařízení a pak ji povolit na straně klienta, který se použije pro přístup k virtuálnímu zařízení.
 
-Hello dvoustupňový proces tooconnect vzdáleně je podrobně popsán níže.
+Dvoustupňový proces vzdáleného připojení je podrobně popsán níže.
 
 ### <a name="step-1-configure-remote-management"></a>Krok 1: Konfigurace vzdálené správy
-Proveďte následující kroky tooconfigure vzdálené správy pro virtuální zařízení StorSimple hello.
+Proveďte následující kroky konfigurace vzdálené správy svého virtuálního zařízení StorSimple.
 
 [!INCLUDE [Configure remote management via HTTP for virtual device](../../includes/storsimple-configure-remote-management-http-device.md)]
 
-### <a name="step-2-remotely-access-hello-virtual-device"></a>Krok 2: Vzdálený přístup hello virtuálního zařízení
-Po povolení vzdálené správy na stránce konfigurace zařízení StorSimple hello, můžete použít prostředí Windows PowerShell vzdálenou komunikaci tooconnect toohello virtuální zařízení z jiného virtuálního počítače ve hello stejné virtuální síti; Například můžete připojit z hello hostitele virtuálních počítačů, že jste nakonfigurovali a používali tooconnect iSCSI. Ve většině nasazení bude máte už otevřený veřejný koncový bod tooaccess váš hostitel virtuálního počítače, který můžete použít pro přístup k virtuálnímu zařízení hello.
+### <a name="step-2-remotely-access-the-virtual-device"></a>Krok 2: Vzdálený přístup k virtuálnímu zařízení
+Po povolení vzdálené správy na stránce konfigurace zařízení StorSimple můžete použít vzdálenou komunikaci prostředí Windows PowerShell pro připojení k virtuálnímu zařízení z jiného virtuálního počítače ve stejné virtuální síti; například se můžete připojit z hostitelského virtuálního počítače, který jste nakonfigurovali a používali pro připojení k iSCSI. Ve většině nasazení již budete mít otevřen veřejný koncový bod pro přístup k hostitelskému virtuálnímu počítači, který můžete použít pro přístup k virtuálnímu zařízení.
 
 > [!WARNING]
-> **Pro zvýšení zabezpečení důrazně doporučujeme používat protokol HTTPS, pokud se připojujete toohello koncových bodů a pak odstraňte koncové body hello po dokončení vzdálené relace prostředí PowerShell.**
+> **Pro zvýšení zabezpečení důrazně doporučujeme používat pro připojování ke koncovým bodům protokol HTTPS a po dokončení vzdálené relace PowerShellu koncové body odstranit.**
 >
 >
 
-Postupujte podle pokynů hello v [vzdáleném připojení zařízení StorSimple tooyour](storsimple-remote-connect.md) tooset až vzdálené komunikace pro vaše virtuální zařízení.
+Při nastavování vzdálené komunikace pro vaše virtuální zařízení je vhodné dodržovat postupy uvedené v části [Vzdálené připojení k zařízení StorSimple](storsimple-remote-connect.md).
 
-## <a name="connect-directly-toohello-virtual-device"></a>Připojte se přímo toohello virtuálního zařízení
-Můžete také připojit přímo toohello virtuální zařízení. Pokud chcete tooconnect přímo toohello virtuální zařízení z jiného počítače mimo hello virtuální sítě nebo mimo prostředí Microsoft Azure hello, budete potřebovat další koncové body toocreate jak je popsáno v hello následující postup.
+## <a name="connect-directly-to-the-virtual-device"></a>Přímé připojení k virtuálnímu zařízení
+K virtuálnímu zařízení se lze také připojit přímo. Pokud se chcete k virtuálnímu zařízení připojit přímo z jiného počítače mimo virtuální síť nebo mimo prostředí Microsoft Azure, musíte vytvořit další koncové body níže popsaným postupem.
 
-Proveďte následující kroky toocreate veřejný koncový bod na virtuální zařízení hello hello.
+Prostřednictvím následujících kroků vytvořte na virtuálním zařízení veřejný koncový bod.
 
 [!INCLUDE [Create public endpoints on a virtual device](../../includes/storsimple-create-public-endpoints-virtual-device.md)]
 
-Doporučujeme vám, zda je připojit z jiného virtuálního počítače ve hello stejné virtuální sítě, protože tento postup minimalizuje hello počet veřejných koncových bodů ve virtuální síti. Pokud použijete tuto metodu, jednoduše připojíte toohello virtuálního počítače prostřednictvím relace vzdálené plochy a pak konfiguraci tohoto virtuálního počítače pro použití stejně jako u jiných klientů systému Windows v místní síti. Protože hello port již bude znám nepotřebujete tooappend hello veřejný port číslo.
+Doporučujeme připojit se z jiného virtuálního počítače ve stejné virtuální síti, protože tento postup minimalizuje počet veřejných koncových bodů ve virtuální síti. Při použití této metody se jednoduše připojíte k virtuálnímu počítači prostřednictvím relace vzdálené plochy a potom můžete provést konfiguraci tohoto virtuálního počítače pro použití stejně jako u jiných klientů systému Windows v místní síti. Nemusíte připojit číslo veřejného portu, protože port již bude znám.
 
-## <a name="work-with-hello-storsimple-virtual-device"></a>Práce s virtuální zařízení StorSimple hello
-Teď, když je vytvořen a nakonfigurován hello virtuálního zařízení StorSimple, jste připravené toostart práci s ním. Můžete pracovat kontejnery svazků, svazky a zásadami zálohování na virtuální zařízení stejně jako na fyzickém zařízení StorSimple; Hello jediným rozdílem je, že je potřeba toomake se, že jste vybrali hello virtuální zařízení ze seznamu zařízení. Odkazovat příliš[použít toomanage služby StorSimple Manager hello virtuálního zařízení](storsimple-manager-service-administration.md) podrobné postupy různých správy úloh pro virtuální zařízení hello hello.
+## <a name="work-with-the-storsimple-virtual-device"></a>Práce s virtuálním zařízením StorSimple
+Nyní, po vytvoření a konfiguraci virtuálního zařízení StorSimple, s ním můžete začít pracovat. S kontejnery svazků, svazky a zásadami zálohování na virtuální zařízení můžete pracovat stejně jako na fyzickém zařízení StorSimple; jediným rozdílem je, že nesmíte zapomenout vybrat virtuální zařízení ze seznamu zařízení. Podrobné postupy různých úloh správy pro virtuální zařízení jsou popsány v části [Použití služby StorSimple Manager pro správu virtuálních zařízení](storsimple-manager-service-administration.md) .
 
-Hello následující části popisují některé rozdíly hello, které můžete narazit při práci s virtuálním zařízením hello.
+Následující části popisují některé rozdíly, na které můžete narazit při práci s virtuálním zařízením.
 
 ### <a name="maintain-a-storsimple-virtual-device"></a>Údržba virtuálního zařízení StorSimple
-Protože jde o softwarové zařízení, údržby pro virtuální zařízení hello je minimální při porovnání toomaintenance pro hello fyzického zařízení. Máte hello následující možnosti:
+Protože jde čistě o softwarové zařízení, údržba je ve srovnání s údržbou fyzického zařízení minimální. Máte následující možnosti:
 
-* **Aktualizace softwaru** – můžete zobrazit hello datum poslední aktualizace softwaru hello společně s žádné aktualizace stavové zprávy. Můžete použít hello **kontrolovat aktualizace** tlačítko dole hello tooperform stránku hello ruční kontrolu, pokud chcete toocheck nové aktualizace. Pokud jsou k dispozici aktualizace, klikněte na tlačítko **instalovat aktualizace** tooinstall. Protože se nachází na virtuálním zařízení hello pouze jedno rozhraní, to znamená, že bude k mírnému přerušení služby při použití aktualizací. virtuální zařízení Hello bude vypnutí a restartování (v případě potřeby) tooapply všechny aktualizace, které byly vydány. Podrobný postup najdete příliš[aktualizace zařízení](storsimple-update-device.md#install-regular-updates-via-the-azure-classic-portal).
-* **Balíček pro podporu** – můžete vytvořit a nahrávání toohelp balíčku na podporu společnosti Microsoft Support řešení problémů s virtuálním zařízením. Podrobný postup najdete příliš[vytvoření a Správa balíčku pro podporu](storsimple-create-manage-support-package.md).
+* **Aktualizace softwaru** – můžete zobrazit datum poslední aktualizace softwaru spolu s případnými stavovými zprávami aktualizace. Kontrolu nových aktualizací můžete provést ručním vyhledáním pomocí tlačítka **Scan updates** (Vyhledat aktualizace) v dolní části stránky. Pokud jsou k dispozici aktualizace, nainstalujte je kliknutím na tlačítko **Install Updates** (Instalovat aktualizace). Vzhledem k tomu, že na virtuálním zařízení je pouze jedno rozhraní, dojde při použití aktualizací k mírnému přerušení služby. Virtuální zařízení se pro použití případných vydaných aktualizací vypne a restartuje (v případě potřeby). Podrobný postup je popsán v části [Aktualizace zařízení](storsimple-update-device.md#install-regular-updates-via-the-azure-classic-portal).
+* **Balíček pro podporu** – můžete vytvořit a odeslat balíček pro podporu, který podpoře společnosti Microsoft pomůže vyřešit vaše potíže s virtuálním zařízením. Podrobný postup je popsán v části [Vytvoření a správa balíčku pro podporu](storsimple-create-manage-support-package.md).
 
 ### <a name="storage-accounts-for-a-virtual-device"></a>Účty služby Storage pro virtuální zařízení
-Účty služby Storage jsou vytvořeny pro použití službou StorSimple Manager hello, hello virtuální zařízení a hello fyzického zařízení. Při vytváření účtů úložiště, doporučujeme použít oblast identifikátor v hello popisný název toohelp zkontrolujte danou oblast hello je konzistentní v rámci všech součástí systému hello. Pro virtuální zařízení je důležité, že všechny hello součásti se v hello stejné problémy s výkonem tooprevent oblast.
+Účty služby Storage jsou vytvořeny pro použití službou StorSimple Manager, virtuálním zařízením a fyzickým zařízením. Při vytváření účtů úložiště vám doporučujeme použít identifikátor oblasti s popisným názvem, který pomůže zajistit konzistentnost oblasti ve všech součástech systému. Pro virtuální zařízení je důležité mít všechny součásti ve stejné oblasti, aby se zabránilo problémům s výkonem.
 
-Podrobný postup najdete příliš[přidání účtu úložiště](storsimple-manage-storage-accounts.md#add-a-storage-account).
+Podrobný postup je popsán v části [Přidání účtu úložiště](storsimple-manage-storage-accounts.md#add-a-storage-account).
 
 ### <a name="deactivate-a-storsimple-virtual-device"></a>Deaktivace virtuálního zařízení StorSimple
-Deaktivace virtuálního zařízení odstraní hello virtuálních počítačů a hello prostředky vytvořené při jeho zřizování. Po deaktivaci virtuálního zařízení hello je nelze obnovit tooits předchozího stavu. Před deaktivací hello virtuální zařízení, ujistěte se, že toostop nebo odstranit klienty a hostitele, které na ní závisí.
+Deaktivace virtuálního zařízení odstraní virtuální počítač a prostředky vytvořené při jeho zřizování. Po deaktivaci virtuálního zařízení je nelze obnovit do předchozího stavu. Před deaktivací virtuálního zařízení nezapomeňte zastavit nebo odstranit klienty a hostitele, kteří na něm závisí.
 
-Deaktivace virtuálního zařízení má za následek hello následující akce:
+Deaktivace virtuálního zařízení má za následek následující akce:
 
-* Hello virtuální zařízení je odebráno.
-* disk Hello operačního systému a datové disky, které jsou vytvořené pro virtuální zařízení hello se odeberou.
-* Hello hostované služby a virtuální sítě vytvořené při zřizování zůstanou zachovány. Pokud je nepoužíváte, je nutné je odstranit ručně.
-* Cloudové snímky vytvořené pro hello virtuální zařízení zůstanou zachovány.
+* Virtuální zařízení je odebráno.
+* Je odebrán disk operačního systému a datové disky, které jsou vytvořeny pro virtuální zařízení.
+* Hostované služby a virtuální sítě vytvořené při zřizování zůstanou zachovány. Pokud je nepoužíváte, je nutné je odstranit ručně.
+* Cloudové snímky vytvořené pro virtuální zařízení zůstanou zachovány.
 
-Podrobný postup najdete příliš[deaktivace a odstranění zařízení StorSimple](storsimple-deactivate-and-delete-device.md).
+Podrobný postup je popsán v části [Deaktivace a odstranění zařízení StorSimple](storsimple-deactivate-and-delete-device.md).
 
-Jakmile hello virtuální zařízení zobrazeno jako deaktivované na stránce služby StorSimple Manager hello, hello virtuálního zařízení můžete odstranit ze seznamu zařízení na hello **zařízení** stránky.
+Jakmile je virtuální zařízení zobrazeno na stránce služby StorSimple Manager jako deaktivované, můžete je odstranit ze seznamu zařízení na stránce **Zařízení**.
 
 ### <a name="start-stop-and-restart-a-virtual-device"></a>Spuštění, zastavení a restartování virtuálního zařízení
-Na rozdíl od fyzického zařízení StorSimple hello neexistuje žádné napájení nebo vypnutí tlačítko toopush na virtuální zařízení StorSimple. Mohou však nastat situace, kde potřebujete toostop a restartování virtuálního zařízení hello. Některé aktualizace může například vyžadovat, že tento hello virtuálních počítačů se restartování procesu aktualizace toofinish hello. Hello nejjednodušší způsob, jak můžete toostart, zastavení a restartování virtuálního zařízení je toouse hello konzoly pro správu virtuálních počítačů.
+Na rozdíl od fyzického zařízení StorSimple nemá virtuální zařízení StorSimple žádné tlačítko pro zapnutí nebo vypnutí. Mohou však nastat situace, kdy potřebujete virtuální zařízení zastavit a restartovat. Některé aktualizace například mohou vyžadovat restart virtuálního počítače pro dokončení procesu aktualizace. Nejjednodušším způsobem spuštění, zastavení a restartování virtuálního zařízení je použití konzoly pro správu služby Virtual Machines.
 
-Když se podíváte na hello konzoly pro správu, hello virtuálního zařízení uveden stav **systémem** vzhledem k tomu, že je spuštěna ve výchozím nastavení po jeho vytvoření. Virtuální počítač můžete kdykoli spustit, zastavit nebo restartovat.
+Když se podíváte na konzolu pro správu, je u virtuálního zařízení uveden stav **Spuštěno**, protože je po vytvoření spuštěno ve výchozím nastavení. Virtuální počítač můžete kdykoli spustit, zastavit nebo restartovat.
 
 [!INCLUDE [Stop and restart virtual device](../../includes/storsimple-stop-restart-virtual-device.md)]
 
-### <a name="reset-toofactory-defaults"></a>Obnovit výchozí hodnoty toofactory
-Pokud se rozhodnete, že chcete toostart přes s virtuálním zařízením, jednoduše deaktivovat a odstranit a pak vytvořte novou. Stejně jako při obnovení fyzického zařízení nebude mít nové virtuální zařízení nainstalovány; žádné aktualizace proto zkontrolujte, zda toocheck aktualizací před jeho použitím.
+### <a name="reset-to-factory-defaults"></a>Obnovení na výchozí hodnoty z výroby
+Pokud se rozhodnete, že chcete s virtuálním zařízením začít znovu, můžete je jednoduše deaktivovat a odstranit a potom vytvořit nové. Stejně jako při obnovení fyzického zařízení nebude mít nové virtuální zařízení nainstalovány žádné aktualizace; proto nezapomeňte před jeho použitím provést kontrolu aktualizací.
 
-## <a name="fail-over-toohello-virtual-device"></a>Selhání toohello virtuálního zařízení
-Zotavení po havárii (DR) je jedním z hello klíčových scénářů, které hello virtuální zařízení je navržené pro zařízení StorSimple. V tomto scénáři hello fyzického zařízení StorSimple nebo celého datového centra nemusí být k dispozici. Naštěstí můžete použít virtuální zařízení toorestore operací v alternativním umístění. Hello kontejnery svazků ze hello zdrojového zařízení během zotavení po Havárii, změnit vlastnictví a jsou přenášená toohello virtuální zařízení. Hello požadavky pro zotavení po Havárii je, že hello virtuální zařízení bylo vytvořeno a nakonfigurováno, všechny svazky hello v rámci kontejneru svazků hello být offline, a hello kontejner svazků má přiřazený cloudový snímek.
+## <a name="fail-over-to-the-virtual-device"></a>Převzetí služeb při selhání virtuálního zařízení
+Zotavení po havárii je jedním z klíčových scénářů, pro něž je virtuální zařízení StorSimple určeno. Tento scénář předpokládá možnou nedostupnost fyzického zařízení StorSimple nebo celého datového centra. Naštěstí můžete použít virtuální zařízení k obnovení operací v alternativním umístění. Kontejnery svazků ze zdrojového zařízení během zotavení po havárii změní vlastnictví a jsou přeneseny na virtuální zařízení. Předpokladem pro zotavení po havárii je, že virtuální zařízení bylo vytvořeno a nakonfigurováno, všechny svazky v kontejneru svazků jsou v režimu offline a kontejner svazků má přiřazený cloudový snímek.
 
 > [!NOTE]
-> * Při použití virtuálního zařízení jako hello sekundární zařízení pro zotavení po Havárii, mějte na paměti, že hello 8010 má úložiště Standard Storage 30 TB a zařízení 8020 úložiště Premium Storage 64 TB. Hello vyšší kapacity 8020 virtuální zařízení může být vhodnější pro scénář zotavení po havárii.
-> * Nelze převzetí služeb při selhání nebo klonování z zařízení se systémem aktualizovat 2 zařízení tooa 1 softwarem před aktualizací. Můžete však převzít zařízení se systémem Update 2 tooa zařízení se softwarem Update 1 (1.1 nebo 1.2)
+> * Při použití virtuálního zařízení jako sekundárního zařízení pro zotavení po havárii mějte na paměti, že zařízení 8010 má k dispozici úložiště Standard Storage 30 TB a zařízení 8020 úložiště Premium Storage 64 TB. Vyšší kapacita virtuálního zařízení 8020 může být pro scénář zotavení po havárii vhodnější.
+> * Ze zařízení se softwarem Update 2 nelze převzít služby při selhání nebo klonovat na zařízení se softwarem starším než Update 1. Můžete však převzít služby při selhání ze zařízení se softwarem Update 2 na zařízení se softwarem Update 1 (1.1 nebo 1.2)
 >
 >
 
-Podrobný postup najdete příliš[převzetí služeb při selhání tooa virtuální zařízení](storsimple-device-failover-disaster-recovery.md#fail-over-to-a-storsimple-virtual-device).
+Podrobný postup je popsán v části [Převzetí služeb při selhání na virtuální zařízení](storsimple-device-failover-disaster-recovery.md#fail-over-to-a-storsimple-virtual-device).
 
-## <a name="shut-down-or-delete-hello-virtual-device"></a>Vypnutí nebo odstranění virtuálního zařízení hello
-Pokud jste dříve nakonfigurovali a používali StorSimple virtuální zařízení, ale nyní chcete toostop nabíhání poplatků za jeho použití, můžete vypnout hello virtuální zařízení. Vypínání hello virtuálního zařízení neodstraní jeho operační systém nebo datové disky v úložišti. Zastaví nabíhání poplatků za vaše předplatné, ale poplatky za úložiště pro hello operačního systému a datové disky bude pokračovat.
+## <a name="shut-down-or-delete-the-virtual-device"></a>Vypnutí nebo odstranění virtuálního zařízení
+Pokud jste již nakonfigurovali a používali virtuální zařízení StorSimple, ale nyní chcete zastavit nabíhání poplatků za jeho použití, můžete virtuální zařízení vypnout. Vypnutí virtuálního zařízení neodstraní jeho operační systém nebo datové disky v úložišti. Zastaví nabíhání poplatků za odběr, ale poplatky za úložiště pro disky operačního systému a dat budou pokračovat.
 
-Pokud odstraníte nebo vypnout hello virtuální zařízení, se zobrazí jako **Offline** na stránce zařízení hello hello služby StorSimple Manager. Můžete vybrat toodeactivate nebo odstranit hello zařízení, pokud také chcete toodelete hello zálohy vytvořené virtuálním zařízením hello. Další informace naleznete v tématu [Deaktivace a odstranění zařízení StorSimple](storsimple-deactivate-and-delete-device.md).
+Pokud virtuální zařízení odstraníte nebo vypnete, zobrazí se na stránce Zařízení služby StorSimple Manager jako **Offline**. Zařízení také můžete deaktivovat nebo odstranit, pokud chcete odstranit zálohy vytvořené virtuálním zařízením. Další informace naleznete v tématu [Deaktivace a odstranění zařízení StorSimple](storsimple-deactivate-and-delete-device.md).
 
 [!INCLUDE [Shut down a virtual device](../../includes/storsimple-shutdown-virtual-device.md)]
 
 [!INCLUDE [Delete a virtual device](../../includes/storsimple-delete-virtual-device.md)]
 
 ## <a name="troubleshoot-internet-connectivity-errors"></a>Řešení potíží s připojením k internetu
-Během vytváření hello virtuálního zařízení Pokud neexistuje žádné toohello připojení k Internetu, hello vytvoření selže. tootroubleshoot, pokud je hello selhání kvůli připojení k Internetu, proveďte hello proveďte kroky v hello portál Azure classic:
+Pokud během vytváření virtuálního zařízení není k dispozici připojení k internetu, daný krok vytváření se nezdaří. Chcete-li zjistit, zda za selhání může připojení k internetu, proveďte na klasickém webu Azure Portal následující kroky:
 
-1. Vytvořte v Azure virtuální počítač s Windows Serverem 2012. Tento virtuální počítač by měl použít hello stejný účet úložiště, virtuální síť a podsíť, protože používá virtuální zařízení. Pokud už máte existující hostitele Windows serveru v Azure pomocí hello stejný účet úložiště, virtuální síť a podsíť, můžete ji použít i připojení k Internetu tootroubleshoot hello.
-2. Vzdálené přihlášení do hello virtuální počítač vytvořený v předchozím kroku hello.
-3. Otevřete okno příkazového řádku uvnitř hello virtuálního počítače (Win + R a pak zadejte `cmd`).
-4. Spusťte následující cmd příkazového řádku hello hello.
+1. Vytvořte v Azure virtuální počítač s Windows Serverem 2012. Tento virtuální počítač by měl používat stejný účet úložiště, virtuální síť a podsíť jako vaše virtuální zařízení. Pokud již máte v Azure hostitele s Windows Serverem, který používá stejný účet úložiště, virtuální síť a podsíť, můžete jej také použít pro řešení potíží s připojením k internetu.
+2. Vzdáleně se přihlaste k virtuálnímu počítači, který jste vytvořili v předchozím kroku.
+3. Na virtuálním počítači otevřete okno příkazového řádku (stiskněte Win + R a zadejte `cmd`).
+4. V příkazovém řádku spusťte následující příkaz.
 
     `nslookup windows.net`
-5. Pokud `nslookup` nezdaří, pak selhání připojení k Internetu brání virtuálního zařízení hello registraci toohello služby StorSimple Manager.
-6. Proveďte změny hello požadované tooensure tooyour virtuální sítě, která hello virtuální zařízení je možné tooaccess Azure webů, jako je "windows.net".
+5. Pokud se `nslookup` nezdaří, pak problém s připojením k internetu brání virtuálnímu zařízení v registraci do služby StorSimple Manager.
+6. Proveďte požadované změny své virtuální sítě a ujistěte se, že virtuální zařízení může přistupovat k webům Azure, například „windows.net“.
 
 ## <a name="next-steps"></a>Další kroky
-* Zjistěte, jak příliš[použít toomanage služby StorSimple Manager hello virtuálního zařízení](storsimple-manager-service-administration.md).
-* Pochopit, jak příliš[obnovit svazek StorSimple ze zálohovacího skladu](storsimple-restore-from-backup-set.md).
+* Podívejte se, jak [použít službu StorSimple Manager pro správu virtuálního zařízení](storsimple-manager-service-administration.md).
+* Naučte se [obnovit svazek StorSimple ze zálohovacího skladu](storsimple-restore-from-backup-set.md).

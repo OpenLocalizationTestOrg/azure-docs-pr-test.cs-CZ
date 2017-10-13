@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure dokumentace k aplikace logiky – kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
-description: "Zjistěte, jak cloudové aplikace logiky toodevelop, které zautomatizovat a zjednodušit obchodní pracovních napříč místními a hello. Kurzy, šablony a reference k rozhraní API"
+title: "Dokumentace ke službě Azure Logic Apps – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
+description: "Naučte se vyvíjet aplikace logiky, které automatizují a zjednodušují obchodní pracovní postupy v místě i v cloudu. Kurzy, šablony a reference k rozhraní API"
 services: logic-apps
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 5cc3a730b1b6abcb3ec0132f6e8ebf2e54775836
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ff3f9ba6c225294e7570c5204701dd2f6b927318
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="logic-apps-documentation"></a>Dokumentace ke službě Logic Apps
 
-Zjistěte, jak hello toodevelop Logic Apps, které zjednodušují a integrovat škálovatelné pracovních postupů v cloudu. Kurzy, šablony a rozhraní API odkazuje na nápovědu k návrhu a nasazení automatizovaného firemního pracovních napříč místními a hello cloudu.
+Naučte se vyvíjet Logic Apps, které zjednodušují a integrují škálovatelné pracovní postupy v cloudu. Kurzy, šablony a reference k rozhraní API vám pomůžou navrhovat a nasazovat automatizované obchodní pracovní postupy v místě i v cloudu.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -106,7 +106,7 @@ Zjistěte, jak hello toodevelop Logic Apps, které zjednodušují a integrovat �
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začít vytvářet vlastní toouse rozhraní API s Logic Apps</h3>
+                        <h3>Začínáme s vytvářením vlastního rozhraní API pro použití s Logic Apps</h3>
                     </div>
                 </div>
             </div>

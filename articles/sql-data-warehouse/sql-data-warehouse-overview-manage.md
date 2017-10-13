@@ -1,5 +1,5 @@
 ---
-title: "aaaManage databází v Azure SQL Data Warehouse | Microsoft Docs"
+title: "Spravovat databáze v Azure SQL Data Warehouse | Microsoft Docs"
 description: "Přehled správy databází SQL Data Warehouse. Zahrnuje nástroje pro správu, Dwu a Škálováním na více systémů, řešení potíží s výkon dotazů, vytvoření zásad zabezpečení a obnovení databáze z poškození dat nebo z místní výpadku výkonu."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,16 +15,16 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
-ms.openlocfilehash: caec6572c4ab395107c3b095adc69a53eae8bd88
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b14d0aad5a1f50c225391dbab27ec6240423a65a
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="manage-databases-in-azure-sql-data-warehouse"></a>Spravovat databáze v Azure SQL Data Warehouse
-SQL Data Warehouse automatizuje mnoho aspektů správy vašich databází. Například tooscale výkonu stačí tooadjust a platit hello přímo úroveň výpočetní prostředky a potom nechat SQL Data Warehouse práci všechny hello škálování a škálování zpět.
+SQL Data Warehouse automatizuje mnoho aspektů správy vašich databází. Například škálování výkonu stačí upravit platit pro správnou úroveň výpočetní prostředky a potom umožní provádět všechny operace škálování a škálování zpět SQL Data Warehouse.
 
-Nepochybně můžete toomonitor vaše úlohy tooidentify výkon musí a také vyřešit dlouho běžící dotazy. Budete také potřebovat tooperform několik zabezpečení úlohy toomanage oprávnění pro uživatele a přihlášení.
+Nepochybně můžete sledovat vaše úlohy identifikace potřeb výkonu a také vyřešit dlouho běžící dotazy. Musíte také provést několik úloh zabezpečení ke správě oprávnění pro uživatele a přihlášení.
 
 Tento přehled popisuje tyto aspekty správy SQL Data Warehouse.
 
@@ -37,58 +37,58 @@ Tento přehled popisuje tyto aspekty správy SQL Data Warehouse.
 * Zálohování a obnovení
 
 ## <a name="management-tools"></a>Nástroje pro správu
-Můžete použít celou řadu nástrojů toomanage databází v SQL Data Warehouse. Jak budete spravovat databáze, budete vyvíjet předvoleb nástroje pro každý typ úlohy je nutné tooperform.
+Můžete použít celou řadu nástrojů pro správu databází v SQL Data Warehouse. Jak budete spravovat databáze, budete vyvíjet předvoleb nástroje pro každý typ úlohy, kterou je třeba provést.
 
 ### <a name="azure-portal"></a>portál Azure
-Hello [portál Azure] [ Azure portal] je webový portál, kde můžete vytvářet, aktualizovat a odstranit databáze a monitorovat prostředky v databázi. Tento nástroj je skvělým je, pokud jste se právě Začínáme s Azure, Správa malý počet databází datového skladu, nebo třeba tooquickly něco udělat.
+[Portál Azure] [ Azure portal] je webový portál, kde můžete vytvářet, aktualizovat a odstranit databáze a monitorovat prostředky v databázi. Tento nástroj je skvělým je, pokud jste právě Začínáme s Azure, Správa malý počet databází datového skladu, nebo třeba rychle něco udělat.
 
-tooget začít s hello portál Azure, najdete v části [vytvoření SQL Data Warehouse (portál Azure)][Create a SQL Data Warehouse (Azure portal)].
+Chcete-li začít používat portál Azure, přečtěte si téma [vytvoření SQL Data Warehouse (portál Azure)][Create a SQL Data Warehouse (Azure portal)].
 
 ### <a name="sql-server-data-tools-in-visual-studio"></a>Nástroje SQL Server Data Tools v sadě Visual Studio
-[SQL Server Data Tools] [ SQL Server Data Tools] (SSDT) v sadě Visual Studio můžete tooconnect pro správu a vývoj vaší databáze. Pokud jste vývojář aplikací obeznámeni s Visual Studio nebo jiné integrované vývojové prostředí (integrovaného vývojového prostředí), zkuste použít rozšíření SSDT v sadě Visual Studio.
+[SQL Server Data Tools] [ SQL Server Data Tools] (SSDT) v sadě Visual Studio umožňuje připojit, spravovat a vývoji vaší databáze. Pokud jste vývojář aplikací obeznámeni s Visual Studio nebo jiné integrované vývojové prostředí (integrovaného vývojového prostředí), zkuste použít rozšíření SSDT v sadě Visual Studio.
 
-Rozšíření SSDT zahrnuje hello Průzkumník objektů SQL serveru, což vám umožní toovisualize, připojit a spouštět skripty pro databáze SQL Data Warehouse. tooquickly připojit tooSQL datového skladu, jednoduše klikněte na hello **otevřete v sadě Visual Studio** tlačítka na panelu příkazů hello při zobrazení podrobností databáze hello hello portálu Azure Classic.  
+Rozšíření SSDT zahrnuje Průzkumník objektů SQL serveru, která umožňuje vizualizovat, připojit a spouštět skripty pro databáze SQL Data Warehouse. Chcete-li rychle se připojit k SQL Data Warehouse, můžete jednoduše klikněte na tlačítko **otevřete v sadě Visual Studio** tlačítko v příkazu panelu při zobrazení databáze podrobnosti v portálu Azure Classic.  
 
-tooget spuštění s rozšířením SSDT v sadě Visual Studio, najdete v části [dotazu Azure SQL Data Warehouse pomocí sady Visual Studio][Query Azure SQL Data Warehouse with Visual Studio].
+Chcete-li začít pracovat s rozšířením SSDT v sadě Visual Studio, přečtěte si téma [dotazu Azure SQL Data Warehouse pomocí sady Visual Studio][Query Azure SQL Data Warehouse with Visual Studio].
 
 ### <a name="command-line-tools"></a>Nástroje příkazového řádku
-Nástroje příkazového řádku jsou ideální pro automatizaci vašich úloh.  Prostředí PowerShell a sqlcmd jsou dva způsoby skvělé tooautomate procesů.  Doporučujeme, abyste tyto nástroje pro správu velkého počtu logických serverů a nasazení prostředků změny v produkčním prostředí, jako hello úlohy nezbytné jde skriptování a potom automatizovat.
+Nástroje příkazového řádku jsou ideální pro automatizaci vašich úloh.  Prostředí PowerShell a sqlcmd dvěma způsoby skvělé a automatizovat procesy.  Doporučujeme, abyste tyto nástroje pro správu velkého počtu logických serverů a jako úlohy plánování může být skripty a pak automatizované nasazení prostředků změny v produkčním prostředí.
 
 ### <a name="dynamic-management-views"></a>Zobrazení dynamické správy
-Zobrazení dynamické správy jsou hello chléb a másla správy SQL Data Warehouse. Téměř všechny informace, které poskytuje portálu hello spoléhá na zobrazení dynamické správy. toosee seznam SQL Data Warehouse zobrazení dynamické správy, najdete v části [zobrazení systému SQL Data Warehouse][SQL Data Warehouse system views].
+Zobrazení dynamické správy jsou másla a chléb správy SQL Data Warehouse. Téměř všechny informace, které se zobrazí na portálu spoléhá na zobrazení dynamické správy. Seznam SQL Data Warehouse zobrazení dynamické správy najdete v sekci [zobrazení systému SQL Data Warehouse][SQL Data Warehouse system views].
 
-tooget začít, najdete v části [připojit a zadávat dotazy pomocí sqlcmd][Connect and query with sqlcmd], a [vytvoření databáze (PowerShell)][Create a database (PowerShell)].
+Abyste mohli začít, najdete v části [připojit a zadávat dotazy pomocí sqlcmd][Connect and query with sqlcmd], a [vytvoření databáze (PowerShell)][Create a database (PowerShell)].
 
 ## <a name="scale-compute"></a>Škálování výpočetní kapacity
-V SQL Data Warehouse můžete rychle škálovat výkonu out nebo zpět zvýšením nebo snížením výpočetní prostředky procesoru, paměti a šířky pásma vstupně-výstupní operace. výkon tooscale, stačí toodo je upravit hello počet že SQL Data Warehouse přiděluje tooyour databáze jednotky datového skladu (Dwu). SQL Data Warehouse rychle vytvoří hello změnit a zpracovává všechny změny toohardware základní hello nebo softwaru.
+V SQL Data Warehouse můžete rychle škálovat výkonu out nebo zpět zvýšením nebo snížením výpočetní prostředky procesoru, paměti a šířky pásma vstupně-výstupní operace. Škálování výkonu, všechny, které je potřeba je upravit počet jednotky datového skladu (Dwu) které SQL Data Warehouse přiděluje k vaší databázi. SQL Data Warehouse rychle provede změnu a zpracovává všechny základní změny hardwaru nebo softwaru.
 
-toolearn Další informace o škálování Dwu, najdete v části [škálování výkonu].
+Další informace o škálování Dwu najdete v tématu [škálování výkonu].
 
 ## <a name="pause-and-resume"></a>Pozastavení a obnovení
-toosave náklady, můžete pozastavit a obnovit výpočetní prostředky na vyžádání. Například pokud nebudete používat hello databáze během noční hello a o víkendech, můžete pozastavit tyto v době a obnovit během dne hello. Vám nebude nic účtováno pro Dwu při hello databáze byla pozastavena.
+Abyste ušetřili náklady, můžete pozastavit a obnovit výpočetní prostředky na vyžádání. Například pokud nebudete používat databázi v noci a o víkendech, můžete pozastavit tyto v době a obnovit během dne. Zatímco databáze byla pozastavena, se nezapočítávají pro Dwu.
 
 Další informace najdete v tématu [pozastavit výpočetní][Pause compute], a [obnovit výpočty][Resume compute].
 
 ## <a name="performance-best-practices"></a>Osvědčené postupy z hlediska výkonu
-Při Začínáme s novou technologií, zjišťování hello tipy a triky, které fungují nejlepší vpravo od začátku hello můžete ušetřit spoustu času.  Osvědčené postupy v rámci řadu témata s našimi zjistíte.
+Při Začínáme s novou technologií, zjišťování tipy a triky, které fungují nejlepší vpravo od začátku můžete ušetřit spoustu času.  Osvědčené postupy v rámci řadu témata s našimi zjistíte.
 
-toosee mnoho souhrn hello nejdůležitější aspekty při vývoji úlohy, najdete v části [SQL Data Warehouse osvědčené postupy][SQL Data Warehouse Best Practices].
+Mnoho souhrn nejdůležitější aspekty při vývoji vaše úlohy najdete v sekci [SQL Data Warehouse osvědčené postupy][SQL Data Warehouse Best Practices].
 
 ## <a name="query-monitoring"></a>Monitorování dotazu
-Někdy dotazu běží příliš dlouho, ale nejsou opravdu který z nich je který hello. SQL Data Warehouse má zobrazení dynamické správy (zobrazení dynamické správy), které můžete použít toofigure limitu dotazu, který trvá příliš dlouho.
+Někdy dotazu běží příliš dlouho, ale nejsou opravdu které z nich je který. SQL Data Warehouse má zobrazení dynamické správy (zobrazení dynamické správy), které vám pomůže pochopit dotazu, který trvá příliš dlouho.
 
-toofind dlouho běžící dotazy, najdete v části [sledovat vaše úlohy pomocí zobrazení dynamické správy][Monitor your workload using DMVs].
+Dlouho běžící dotazy, najdete v tématu [sledovat vaše úlohy pomocí zobrazení dynamické správy][Monitor your workload using DMVs].
 
 ## <a name="security"></a>Zabezpečení
-toomaintain zabezpečení systému, musí být na hello upozornění a chránit proti libovolného typu neoprávněného přístupu. Zabezpečení systému musí toomake se, že jsou pravidla brány firewall na místě, takže jenom oprávnění IP adresy se mohou připojit. Musí být správné ověření přihlašovacích údajů uživatele. Poté, co uživatel má připojen toohello databáze, hello uživatele by měla mít pouze tooperform oprávnění minimální počet akcí. toosecure data, můžete použít šifrování. Je také důležité toohave auditování a sledování tak události můžete vrátit, pokud je podezřelé aktivity.
+K zachování zabezpečení systému, musí být na výstrahu a chránit proti libovolného typu neoprávněného přístupu. Zabezpečení systému je potřeba Ujistěte se, že jsou pravidla brány firewall na místě, takže jenom oprávnění IP adresy se mohou připojit. Musí být správné ověření přihlašovacích údajů uživatele. Jakmile se uživatel připojil k databázi, musí mít uživatel jenom oprávnění k provedení minimální počet akcí. K zabezpečení dat, můžete použít šifrování. Je také důležité, aby byly auditování a sledování tak události můžete vrátit, pokud je podezřelé aktivity.
 
-toolearn o správě zabezpečení, head přes toohello [Přehled zabezpečení][Security overview].
+Další informace o správě zabezpečení, přejděte na [Přehled zabezpečení][Security overview].
 
 ## <a name="backup-and-restore"></a>Zálohování a obnovení
-Spolehlivé backps vašich dat je nedílnou součást vámi vyžádaných žádné produkční databázi. SQL Data Warehouse zajišťuje dat bezpečné zálohováním automaticky aktivní databáze v pravidelných intervalech. Tyto zálohy povolit toorecover z scénáře, kde jste poškozená data nebo neúmyslně vyřazen data nebo databáze.  Pro hello plán zálohování dat, zásady uchovávání informací a jak zjistit, toorestore databáze, [obnovení ze snímku][Restore from snapshot].
+Spolehlivé backps vašich dat je nedílnou součást vámi vyžádaných žádné produkční databázi. SQL Data Warehouse zajišťuje dat bezpečné zálohováním automaticky aktivní databáze v pravidelných intervalech. Tyto zálohy umožňují obnovit z scénáře, kde jste poškozená data nebo neúmyslně vyřazen data nebo databáze.  Plán zálohování dat, zásady uchovávání informací a jak obnovit databázi, najdete v části [obnovení ze snímku][Restore from snapshot].
 
 ## <a name="next-steps"></a>Další kroky
-Pomocí zásady designu dobrý databáze bude snazší toomanage vaše databáze v SQL Data Warehouse. Další, toolearn head přes toohello [přehled vývoje][Development overview].
+Pomocí funkční databáze návrhu zásad bude bylo snazší spravovat databáze v SQL Data Warehouse. Další informace, přejděte na [přehled vývoje][Development overview].
 
 <!--Image references-->
 

@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure Mobile Engagement uživatelské rozhraní - dosáhnout obsahu"
-description: "Zjistěte, jak kampaně toomanage hello jedinečný obsah hello různé typy nabízených oznámení v Azure Mobile Engagement"
+title: "Azure Mobile Engagement uživatelské rozhraní - Reach obsahu"
+description: "Naučte se spravovat jedinečný obsah s různými typy kampaní nabízených oznámení v Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: de389eb4368d986ef00135036c26e26a2464663e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3741a43b74af5846e95e42d8a7b533621e780f2d
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toomanage-hello-unique-content-of-hello-different-types-of-push-notification-campaigns"></a>Jak toomanage hello jedinečný obsah hello různé typy kampaní nabízených oznámení
-Můžete použít oddíl obsahu hello nové reach kampaň toomodify hello obsahu oznámení, hlasování, datová oznámení a dlaždice (pouze Windows Phone). nastavení obsah Hello kampaní nabízených je typ konkrétní toohello kampaně. 
+# <a name="how-to-manage-the-unique-content-of-the-different-types-of-push-notification-campaigns"></a>Jak spravovat jedinečný obsah s různými typy kampaní nabízených oznámení
+Části obsahu nové kampaně reach můžete upravovat obsah oznámení, hlasování, datová oznámení a dlaždice (pouze Windows Phone). Nastavení obsahu kampaní nabízených je specifické pro daný typ kampaně. 
 
 ### <a name="content-types"></a>Typy obsahu:
 * Oznámení
@@ -32,26 +32,26 @@ Můžete použít oddíl obsahu hello nové reach kampaň toomodify hello obsahu
 ## <a name="content-of-announcements"></a>Obsah oznámení
  ![Reach Content1][30] 
 
-### <a name="choose-hello-type-of-your-announcement"></a>Zvolte typ sdělení hello:
-* Pouze oznámení: je jednoduchý standardní oznámení. Znamená, že pokud uživatel klikne na něm, bez dalšího zobrazení se zobrazí, ale pouze hello akce přidružené tooit dojde.
-* Text oznámení: je oznámení, že zapojí hello uživatele toohave podívejte se na zobrazení textu.
-* Sdělení webovém: je oznámení, že zapojí hello uživatele toohave podívejte se na webové zobrazení.
+### <a name="choose-the-type-of-your-announcement"></a>Zvolte typ sdělení:
+* Pouze oznámení: je jednoduchý standardní oznámení. Znamená to, že pokud uživatel klikne na něm, bez dalšího zobrazení se zobrazí, ale jenom akce, které jsou přidružené k ní dojde.
+* Text oznámení: je oznámení, že zapojí uživateli Podíváme se na zobrazení textu.
+* Sdělení webovém: je oznámení, že zapojí uživateli Podíváme se na webové zobrazení.
 
 ### <a name="see-also"></a>Viz také
 * [Dosažení – jak Tos – oznámení][Link 3] 
 
 ### <a name="about-web-view-announcements"></a>O sděleních ve webovém zobrazení:
-Výskyty vzoru hello "{deviceid}" hello HTML kód nebo kód jazyka JavaScript, které tady zadáte, se automaticky nahradí identifikátorem hello hello zařízení zobrazení hello oznámení. Jedná se snadný způsob tooretrieve Azure identifikátorů zařízení Mobile Engagement v externí webovou službu hostovanou na vašem interním systému.
-Pokud chcete, aby toocreate úplnou obrazovce webové zobrazení (bez hello výchozích tlačítek akce a ukončení poskytujeme) můžete použít následující funkce z Javascriptového kódu vašeho sdělení ve webovém zobrazení hello: 
+Výskyty vzoru "{deviceid}" v kódu HTML nebo kód jazyka JavaScript, které tady zadáte, se automaticky nahradí identifikátorem zařízení, se zobrazuje oznámení. Toto je snadný způsob, jak načíst identifikátory zařízení Azure Mobile Engagement přes externí webovou službu hostovanou na vašem interním systému.
+Pokud chcete vytvořit webové zobrazení na celou obrazovku (bez výchozích tlačítek akce a ukončení), můžete použít následující funkce z javascriptového kódu vašeho sdělení ve webovém zobrazení: 
 
-* provést akci sdělení hello: ReachContent.actionContent()
-* Ukončit ze sdělení hello: ReachContent.exitContent()
+* provést akci sdělení: ReachContent.actionContent()
+* Ukončit ze sdělení: ReachContent.exitContent()
 
 ### <a name="choose-your-action"></a>Vyberte akci:
 ### <a name="about-action-urls"></a>O adresy URL akce:
 Jako adresa URL akce se dá použít libovolná adresa URL, která jde interpretovat operačním systémem zacíleného zařízení.
-Jakoukoli vyhrazenou adresu URL, která vaše aplikace může podporu (například toomake uživatelé přejít tooa konkrétní obrazovku) lze také použít jako adresu URL akce.
-Každý výskyt vzoru hello {deviceid} se automaticky nahradí identifikátorem hello hello zařízení provedení akce hello. To může být identifikátory zařízení Azure Mobile Engagement použité tooeasily načtení přes externí webovou službu hostovanou na vašem interním systému.
+Jako adresu URL akce můžete použít rovněž jakoukoli vyhrazenou adresu URL, kterou vaše aplikace může podporovat (například k přechodu uživatelů na konkrétní obrazovku).
+Každý výskyt vzoru {deviceid} se automaticky nahradí identifikátorem zařízení, které provádí akce. To můžete použít k snadnému načtení identifikátorů zařízení Azure Mobile Engagement přes externí webovou službu hostovanou na vašem interním systému.
 
 * **Android a iOS akce**
   * Otevřít webovou stránku
@@ -67,14 +67,14 @@ Každý výskyt vzoru hello {deviceid} se automaticky nahradí identifikátorem 
   * Telefon:\[telefonní číslo\] 
   * Příklad: tel:2125551212
 * **Android pouze akce**
-  * Stáhnout aplikaci v obchodě Play hello
+  * Stáhnout aplikaci v obchodě Play
   * Market://details?ID=\[balíček aplikace\] 
   * Příklad: market://details?id=com.microsoft.office.word
   * Spustit hledání se zjištěním polohy
   * GEO:0, 0? q =\[vyhledávací dotaz.\] 
   * Příklad: geo:0, 0? q = starbucks, Paříž
 * **iOS pouze akce**
-  * Stáhnout aplikaci v hello obchodu s aplikacemi
+  * Stáhnout aplikaci v obchodě App Store
   * http://iTunes.Apple.com/ [Země] /app/ [název aplikace] /id [id aplikace]? mt = 8 
   * Příklad: http://itunes.apple.com/fr/app/briquet-virtuel/id430154748?mt=8
   * Akce Windows
@@ -90,7 +90,7 @@ Každý výskyt vzoru hello {deviceid} se automaticky nahradí identifikátorem 
   * Vytočit telefonní číslo (vyžaduje se aplikace Skype pro Store)
   * Telefon:\[telefonní číslo\] 
   * Příklad: tel:2125551212
-  * Stáhnout aplikaci v obchodě Play hello
+  * Stáhnout aplikaci v obchodě Play
   * MS-windows-úložiště: PDP? PFN =\[ID balíčku aplikace\] 
   * Příklad: ms-windows-úložiště: PDP? PFN = 4d91298a-07cb-40fb-aecc-4cb5615d53c1
   * Zahájit hledání v Mapách Bing
@@ -104,10 +104,10 @@ Každý výskyt vzoru hello {deviceid} se automaticky nahradí identifikátorem 
   * Example:myfolderdata.txt
 
 ### <a name="build-a-tracking-url"></a>Sestavte adresu URL pro sledování:
-* Najdete v části "Nastavení" hello hello <UI Documentation> pro pokyny k vytváření adresu URL pro sledování, které vám umožní uživatelům toodownload jeden z jiné aplikace.
+* Najdete v části "Nastavení" <UI Documentation> pro instrukce k sestavení sledovací adresu URL, která umožní uživatelům stáhnout jednu z jiné aplikace.
 
-### <a name="define-hello-texts-of-your-announcement"></a>Definujte texty sdělení hello
-Zadejte název hello, obsah a tlačítko texty sdělení. Můžete vybrat cílovou skupinu na základě názorů hello reach o tom, jak uživatelé odpověděl toothis kampaň budoucí kampaně. Cílení na publikum může být založen na hello zpětnou vazbu o tom, jestli se tato kampaň právě nabídnutých, zodpovězených, reakcí nebo ukončením.
+### <a name="define-the-texts-of-your-announcement"></a>Definujte texty sdělení.
+Zadejte název, obsah a tlačítko texty sdělení. Můžete vybrat cílovou skupinu na základě názorů reach o tom, jak odpověděl uživatelé tuto kampaň budoucí kampaně. Cílení na publikum může být založen na zpětnou vazbu o tom, jestli se tato kampaň právě nabídnutých, zodpovězených, reakcí nebo ukončením.
 
 ### <a name="see-also"></a>Viz také
 * [Nové nabízené kritérium dokumentace - Reach - uživatelského rozhraní][Link 28]
@@ -115,8 +115,8 @@ Zadejte název hello, obsah a tlačítko texty sdělení. Můžete vybrat cílov
 ## <a name="content-of-polls"></a>Obsah hlasování
 ![Reach Content2][31] 
 
-Vyplňte hello název, popis a tlačítko texty sdělení. Pak přidejte otázky a možnosti pro dotazy tooyour hello odpovědi.
-Můžete vybrat cílovou skupinu na základě názorů hello reach o tom, jak uživatelé odpověděl toothis kampaň budoucí kampaně. Cílení na publikum může být založené na tom, jestli se tato kampaň právě nabídnutých, zodpovězených, reakcí nebo ukončením. Cílení na publikum může být taky založené na dotazování odpovědí zpětnou vazbu, kde jsou hello otázku a odpověď volba použít jako kritéria.
+Zadejte název, popis a tlačítko texty sdělení. Pak přidejte otázky a možnosti pro odpovědi na otázky.
+Můžete vybrat cílovou skupinu na základě názorů reach o tom, jak odpověděl uživatelé tuto kampaň budoucí kampaně. Cílení na publikum může být založené na tom, jestli se tato kampaň právě nabídnutých, zodpovězených, reakcí nebo ukončením. Cílení na publikum může být taky založené na dotazování odpovědí zpětnou vazbu, kde jsou otázka a odpověď volba použít jako kritéria.
 
 ### <a name="see-also"></a>Viz také
 * [Nové nabízené kritérium dokumentace - Reach - uživatelského rozhraní][Link 28]
@@ -124,15 +124,15 @@ Můžete vybrat cílovou skupinu na základě názorů hello reach o tom, jak u�
 ## <a name="content-of-data-pushes"></a>Obsah datová oznámení
 ![Reach Content3][32] 
 
-### <a name="choose-hello-type-of-your-data"></a>Vyberte typ hello vašich dat:
+### <a name="choose-the-type-of-your-data"></a>Vyberte typ dat:
 * Text
 * Binární data
 * Data formátu Base64.
 
-### <a name="define-hello-content-of-your-data"></a>Definujte obsah dat. hello
-* Pokud jste vybrali toopush textová data, zkopírujte a vložte hello text do pole "obsah" hello.
-* Pokud jste vybrali toopush binární nebo base64 data, používat tooupload tlačítko "nahrát soubor" hello souboru.
-* Můžete vybrat cílovou skupinu na základě názorů hello reach o tom, jak uživatelé odpověděl toothis kampaň budoucí kampaně. Cílení na publikum může být založené na tom, jestli se tato kampaň právě nabídnutých, zodpovězených, reakcí nebo ukončením.
+### <a name="define-the-content-of-your-data"></a>Definujte obsah dat.
+* Pokud jste vybrali nabízet text data, zkopírujte a vložte text do pole "obsah".
+* Pokud jste vybrali nabízet data binární nebo base64, pomocí tlačítka "nahrát soubor" k odeslání souboru.
+* Můžete vybrat cílovou skupinu na základě názorů reach o tom, jak odpověděl uživatelé tuto kampaň budoucí kampaně. Cílení na publikum může být založené na tom, jestli se tato kampaň právě nabídnutých, zodpovězených, reakcí nebo ukončením.
 
 ### <a name="see-also"></a>Viz také
 * [Nové nabízené kritérium dokumentace - Reach - uživatelského rozhraní][Link 28]
@@ -140,9 +140,9 @@ Můžete vybrat cílovou skupinu na základě názorů hello reach o tom, jak u�
 ## <a name="content-of-tiles-windows-phone-only"></a>Obsah dlaždice (pouze Windows Phone)
 ![Reach Content4][33]
 
-### <a name="define-hello-content-of-your-tile"></a>Definujte obsah dlaždice hello
-datová část dlaždice Hello je toobe textu hello zobrazí na dlaždici hello své aplikace na zařízení Windows Phone.
-Push dlaždice je verze služby Microsoft nabízených oznámení (MPNS) hello nativního nabízení pro Windows Phone. Typ nabízeného dlaždice Hello je hello pouze nabízené typ, který nemá odpověď a proto nemůže být hello cílové skupiny kampaní budoucí založený na hello výsledků dlaždice nabízené kampaně. 
+### <a name="define-the-content-of-your-tile"></a>Definujte obsah dlaždice.
+Datová část dlaždice je text, který se zobrazí na dlaždici aplikace na zařízení Windows Phone.
+Push dlaždice je verze služby Microsoft nabízených oznámení (MPNS) nativního nabízení pro Windows Phone. Typ nabízeného dlaždice je pouze typ push, který nemá odpověď a proto nemůže být cílové skupiny kampaní budoucí založený na výsledky dlaždice nabízené kampaně. 
 
 ### <a name="see-also"></a>Viz také
 * [Rozhraní API dokumentace - Reach API - nativního nabízení][Link 4]

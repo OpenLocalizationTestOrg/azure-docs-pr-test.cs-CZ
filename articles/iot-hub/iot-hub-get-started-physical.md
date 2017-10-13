@@ -1,6 +1,6 @@
 ---
-title: "Začněte připojením tooAzure fyzických zařízení IoT Hub | Microsoft Docs"
-description: "Zjistěte, jak tooconnect fyzické zařízení a na panely tooAzure IoT Hub. Zařízení může odesílat telemetrii tooIoT rozbočovače a IoT Hub můžete sledovat a spravovat vaše zařízení."
+title: "Začínáme fyzického zařízení připojovat k službě Azure IoT Hub | Microsoft Docs"
+description: "Zjistěte, jak se připojit ke službě Azure IoT Hub fyzických zařízení a na panely. Zařízení může odesílat telemetrická data do služby IoT Hub a IoT Hub můžete sledovat a spravovat vaše zařízení."
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2017
 ms.author: dobett
-ms.openlocfilehash: 47ce289c438b2f495d499d724c38ddc4b3307425
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f4128b6b049aa876e170c56dcf2e40720644dc3d
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-iot-hub-get-started-with-physical-devices-tutorials"></a>Azure IoT Hub začít pracovat s kurzy fyzických zařízení
 
-Tyto kurzy vzniku tooAzure IoT Hub a sady SDK pro zařízení hello. kurzy Hello zahrnují běžné IoT scénáře toodemonstrate hello funkce služby IoT Hub. Hello kurzy také ilustrují jak toocombine IoT Hub s další Azure služby a další nástroje toobuild výkonné řešení IoT. Hello kurzy uvedené v hello následující tabulku zobrazit můžete jak toocreate fyzického zařízení IoT.
+Tyto kurzy vám představí Azure IoT Hub a sady SDK pro zařízení. Kurzů k zahrnují běžné scénáře IoT k předvedení funkcí služby IoT Hub. Kurzů k také znázorňují, jak kombinovat s jinými službami Azure a nástroje pro vytváření výkonnější IoT řešení IoT Hub. Kurzy uvedené v následující tabulce ukazují, jak vytvořit fyzického zařízení IoT.
 
 | Zařízení IoT                       | Programovací jazyk |
 |---------------------------------|----------------------|
@@ -33,7 +33,7 @@ Tyto kurzy vzniku tooAzure IoT Hub a sady SDK pro zařízení hello. kurzy Hello
 | Sparkfun ESP8266 věc vývojářů      | [Arduino][Th_Ard]              |
 | Prolnutí Adafruit M0             | [Arduino][M0_Ard]              |
 
-Kromě toho můžete Centrum IoT hraniční brány tooenable zařízení tooconnect tooyour IoT.
+Kromě toho můžete IoT vstupní brána k zařízením povolit, aby připojení do služby IoT hub.
 
 | Zařízení brány               | Programovací jazyk | Platforma         |
 |------------------------------|----------------------|------------------|

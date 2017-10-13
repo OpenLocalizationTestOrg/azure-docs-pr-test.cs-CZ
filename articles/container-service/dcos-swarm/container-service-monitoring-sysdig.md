@@ -1,5 +1,5 @@
 ---
-title: aaaMonitor Azure Container Service cluster s Sysdig | Microsoft Docs
+title: "Monitorování clusteru služby Azure Container Service pomocí služby Sysdig | Dokumentace Microsoftu"
 description: "Cluster služby Azure Container Service můžete monitorovat pomocí služby Sysdig."
 services: container-service
 documentationcenter: 
@@ -16,42 +16,42 @@ ms.workload: na
 ms.date: 08/08/2016
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 72f2d3d6f6885f9876fa158b88aae58b84a4610f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e61001161e632a5d2e513107e30f1eaf06103989
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="monitor-an-azure-container-service-cluster-with-sysdig"></a>Monitorování clusteru služby Azure Container Service pomocí služby Sysdig
-V tomto článku jsme nasadí Sysdig agenti tooall hello agenta uzlů v clusteru Azure Container Service. Pro tuto konfiguraci potřebujete účet se službou Sysdig. 
+V tomto článku nasadíme na všechny agentské uzly v clusteru služby Azure Container Service agenty služby Sysdig. Pro tuto konfiguraci potřebujete účet se službou Sysdig. 
 
 ## <a name="prerequisites"></a>Požadavky
-[Nasaďte](container-service-deployment.md) a [připojte](../container-service-connect.md) cluster nakonfigurovaný službou Azure Container Service. Prozkoumejte hello [uživatelského rozhraní Marathon](container-service-mesos-marathon-ui.md). Přejděte příliš[http://app.sysdigcloud.com](http://app.sysdigcloud.com) tooset si účet Sysdig cloudu. 
+[Nasaďte](container-service-deployment.md) a [připojte](../container-service-connect.md) cluster nakonfigurovaný službou Azure Container Service. Prozkoumejte [uživatelské rozhraní Marathon](container-service-mesos-marathon-ui.md). Přejděte na [http://app.sysdigcloud.com](http://app.sysdigcloud.com) a vytvořte si cloudový účet služby Sysdig. 
 
 ## <a name="sysdig"></a>Sysdig
-Sysdig je monitorování služba, která vám umožní toomonitor kontejnerů v rámci clusteru. Sysdig se označuje toohelp při řešení problémů, ale také obsahuje vaše základní monitorování metriky pro procesor, sítě, paměť a vstupně-výstupních operací. Sysdig umožňuje snadno toosee kontejnery, které pracují hello používá hardest nebo v podstatě hello většina paměti a procesoru. Toto zobrazení je v části "Přehled", který je aktuálně ve verzi beta hello. 
+Sysdig je monitorovací služba, která vám umožňuje monitorovat kontejnery v rámci vašeho clusteru. Služba Sysdig pomáhá s odstraňováním potíží, ale obsahuje taky základní monitorovací metriky procesoru, sítí, paměti a vstupně-výstupních procesů. Služba Sysdig nabízí přehled o tom, které kontejnery jsou nejvytíženější nebo využívají nejvíc paměti a výkonu procesoru. To zjistíte v části „Přehled“, který je v současné době dostupný v beta verzi. 
 
 ![Uživatelské rozhraní služby Sysdig](./media/container-service-monitoring-sysdig/sysdig6.png) 
 
 ## <a name="configure-a-sysdig-deployment-with-marathon"></a>Konfigurace nasazení služby Sysdig s uživatelským rozhraním Marathon
-Tyto kroky se dozvíte, jak tooconfigure a Sysdig aplikace tooyour cluster pomocí Marathonu nasadit. 
+Tento postup vám ukáže, jak nakonfigurovat aplikace služby Sysdig a nasadit je do clusteru pomocí Marathonu. 
 
-Přístup přes uživatelské rozhraní DC/OS [http://localhost:80 /](http://localhost:80/) jednou v hello uživatelského rozhraní DC/OS přejděte toohello "Universe", který je na hello dolů, doleva a poté vyhledejte "Sysdig."
+Otevřete uživatelské rozhraní DC/OS prostřednictvím adresy [http://localhost:80/](http://localhost:80/). V uživatelském rozhraní DC/OS potom vlevo dole přejděte na položku „Universe“ vyhledejte „Sysdig“.
 
 ![Sysdig v rozhraní DC/OS Universe](./media/container-service-monitoring-sysdig/sysdig1.png)
 
-Nyní toocomplete hello konfigurace nezbytné Sysdig cloudu účet nebo Bezplatný zkušební účet. Jakmile jste přihlášeni toohello Sysdig cloudu web, klikněte na své uživatelské jméno a na stránce hello byste měli vidět vaší "přístupový klíč." 
+K dokončení konfigurace budete potřebovat cloudový účet služby Sysdig nebo bezplatný zkušební účet. Po přihlášení na web cloudu Sysdig klikněte na uživatelské jméno. Zobrazí se stránka, na které byste měli najít svůj „přístupový klíč“. 
 
 ![Klíč rozhraní API služby Sysdig](./media/container-service-monitoring-sysdig/sysdig2.png) 
 
-Potom zadejte přístupový klíč do hello Sysdig konfigurace v rámci hello Universe DC/OS. 
+Svůj přístupový klíč zadejte do konfigurace služby Sysdig v rozhraní DC/OS Universe. 
 
-![Konfigurace Sysdig v hello Universe DC/OS](./media/container-service-monitoring-sysdig/sysdig3.png)
+![Konfigurace služby Sysdig v rozhraní DC/OS Universe](./media/container-service-monitoring-sysdig/sysdig3.png)
 
-Teď nastavte hello instancí too10000000 tak vždy, když je přidán nový uzel clusteru toohello Sysdig automaticky nasadit agenta toothat nový uzel. Toto je toomake dočasné řešení, která je opravdu že sysdig nasadí tooall nové agenty v rámci clusteru hello. 
+Teď nastavte instance na hodnotu 10000000, aby služba Sysdig při každém přidání nového uzlu do clusteru automaticky do tohoto nového uzlu nasadila agenta. Je to dočasné řešení, kterým zajistíte, aby se služba Sysdig nasadila do všech nových agentů v clusteru. 
 
-![Konfigurace Sysdig v hello DC/OS Universe-instance](./media/container-service-monitoring-sysdig/sysdig4.png)
+![Konfigurace služby Sysdig v rozhraní DC/OS Universe – instance](./media/container-service-monitoring-sysdig/sysdig4.png)
 
-Jakmile jste nainstalovali balíček hello přejděte zpět toohello Sysdig uživatelského rozhraní a budete moct tooexplore hello různých využití metriky pro hello kontejnery v rámci clusteru. 
+Po instalaci balíčku přejděte zpátky do uživatelského rozhraní služby Sysdig. Teď už budete moc prozkoumávat různé metriky využití kontejnerů v clusteru. 
 
 Můžete také nainstalovat řídicí panely specifické pro Mesos a Marathon prostřednictvím [průvodce novým řídicím panelem](https://app.sysdigcloud.com/#/dashboards/new).

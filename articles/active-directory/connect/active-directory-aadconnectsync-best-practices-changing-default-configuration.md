@@ -1,6 +1,6 @@
 ---
-title: "Synchronizace Azure AD Connect: Změna výchozí konfigurace hello | Microsoft Docs"
-description: "Obsahuje doporučené postupy pro změnu výchozí konfigurace hello synchronizace Azure AD Connect."
+title: "Synchronizace Azure AD Connect: Změna výchozí konfigurace | Microsoft Docs"
+description: "Obsahuje doporučené postupy pro změnu výchozí konfigurace synchronizace služby Azure AD Connect."
 services: active-directory
 documentationcenter: 
 author: andkjell
@@ -14,56 +14,56 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: aa05e935edd02c49c3c3fdc198b854f50327847c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b723ad800ccc0f3040eb480bb72960943b1fdb16
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="azure-ad-connect-sync-best-practices-for-changing-hello-default-configuration"></a>Synchronizace Azure AD Connect: osvědčené postupy pro změnu výchozí konfigurace hello
-účelem Hello tohoto tématu je toodescribe podporované a nepodporované změny tooAzure AD Connect sync.
+# <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Synchronizace Azure AD Connect: osvědčené postupy pro změnu výchozí konfigurace
+Účelem tohoto tématu je k popisu podporované a nepodporované změny synchronizace Azure AD Connect.
 
-Konfigurace Hello vytvořené Azure AD Connect funguje tak, jak je"pro většinu prostředí, které se synchronizují místní služby Active Directory s Azure AD. V některých případech je však nutné tooapply potřebovat tooa některé změny konfigurace toosatisfy konkrétní nebo požadavek.
+Konfigurace vytvořené Azure AD Connect funguje tak, jak je"pro většinu prostředí, které se synchronizují místní služby Active Directory s Azure AD. V některých případech je potřeba použít některé změny v konfiguraci, kterou chcete splňují konkrétní požadavky nebo požadavky.
 
-## <a name="changes-toohello-service-account"></a>Účet služby toohello změny
-Synchronizace Azure AD Connect je spuštěna pod účtem služby, který je vytvořený pomocí Průvodce instalací hello. Tento účet služby obsahuje hello šifrovací klíče toohello databáze používá synchronizaci. Bude vytvořen pomocí 127 znaků dlouhé heslo a hello heslo se nastavuje toonot vyprší.
+## <a name="changes-to-the-service-account"></a>Změny účtu služby
+Synchronizace Azure AD Connect je spuštěna pod účtem služby, který je vytvořený pomocí Průvodce instalací. Tento účet služby obsahuje šifrovací klíče do databáze používá synchronizaci. Bude vytvořen pomocí 127 znaků dlouhé heslo a heslo je nastaveno na nevyprší platnost.
 
-* Je **nepodporované** toochange nebo resetování hesla hello hello účtu služby. Díky tomu zničí hello šifrovacích klíčů a hello služby není možné tooaccess hello databáze a není možné toostart.
+* Je **nepodporované** změnit nebo resetování hesla účtu služby. Díky tomu zničí šifrovacích klíčů a služba nemůže získat přístup k databázi a není možné spustit.
 
-## <a name="changes-toohello-scheduler"></a>Změny toohello plánovače
-Počínaje verzí hello ze sestavení 1.1 (leden 2016) můžete nakonfigurovat hello [Plánovač](active-directory-aadconnectsync-feature-scheduler.md) toohave cyklus synchronizace jiný než výchozí hello 30 minut.
+## <a name="changes-to-the-scheduler"></a>Změny plánovače
+Od verze ze sestavení 1.1 (leden 2016) můžete nakonfigurovat [Plánovač](active-directory-aadconnectsync-feature-scheduler.md) tak, aby měl cyklus synchronizace jiný než výchozí 30 minut.
 
-## <a name="changes-toosynchronization-rules"></a>Změny tooSynchronization pravidla
-Průvodce instalací Hello nabízí konfiguraci, která by měla toowork pro hello nejběžnějších scénářů. V případě, že budete potřebovat toomake změny toohello konfigurace, potom postupujte podle těchto pravidel toostill mít na podporovanou konfiguraci.
+## <a name="changes-to-synchronization-rules"></a>Změny synchronizační pravidla
+Průvodce instalací nabízí konfiguraci, která by měla fungovat pro nejběžnějších scénářů. V případě, že potřebujete provést změny konfigurace, je třeba provést tyto pravidla, která ještě podporovanou konfiguraci.
 
-* Můžete [změnit toky atributů](active-directory-aadconnectsync-change-the-configuration.md#other-common-attribute-flow-changes) Pokud toky přímé atributů výchozí hello nejsou vhodné pro vaši organizaci.
-* Pokud chcete příliš[není toku atribut](active-directory-aadconnectsync-change-the-configuration.md#do-not-flow-an-attribute) a odeberte všechny existující atribut hodnoty ve službě Azure AD, pak je nutné toocreate pravidlo pro tento scénář.
+* Můžete [změnit toky atributů](active-directory-aadconnectsync-change-the-configuration.md#other-common-attribute-flow-changes) Pokud toky přímé atributů výchozí nejsou vhodné pro vaši organizaci.
+* Pokud chcete [není toku atribut](active-directory-aadconnectsync-change-the-configuration.md#do-not-flow-an-attribute) a odeberte všechny existující atribut hodnoty ve službě Azure AD, je třeba vytvořit pravidlo pro tento scénář.
 * [Zakázat pravidlo synchronizace nežádoucí](#disable-an-unwanted-sync-rule) místo odstranění. Během upgradu se znovu vytvoří pravidlo odstraněné.
-* příliš[změnit pravidlo out-of-box](#change-an-out-of-box-rule), by měl vytvořit kopii hello původní pravidlo a zakázat pravidlo out-of-box hello. Hello Editor pravidla synchronizace vyzve a vám pomůže.
-* Exportujte vaše vlastní synchronizační pravidla pomocí hello editoru pravidel synchronizace. Hello editor získáte pomocí skriptu prostředí PowerShell, můžete použít tooeasily je znovu vytvořit ve scénáři zotavení po havárii.
+* K [změnit pravidlo out-of-box](#change-an-out-of-box-rule), měli byste vytvořit kopii původní pravidlo a zakázat pravidlo out-of-box. Editor pravidla synchronizace vyzve a vám pomůže.
+* Exportujte vaše vlastní synchronizační pravidla pomocí editoru pravidla synchronizace. Editor vám poskytne Powershellový skript, který vám pomůže snadno je znovu vytvořit ve scénáři zotavení po havárii.
 
 > [!WARNING]
-> Hello out-of-box synchronizační pravidla mají kryptografický otisk. Pokud změníte toothese pravidel, je už odpovídající hello kryptografický otisk. V budoucích hello mohou mít problémy, když zkusíte tooapply novou verzi služby Azure AD Connect. Jenom zkontrolujte změny hello způsobem, který je popsaný v tomto článku.
+> Out-of-box synchronizační pravidla mají kryptografický otisk. Pokud změníte tato pravidla, je už odpovídající kryptografický otisk. Můžete mít problémy s v budoucnu, pokud se pokusíte použít novou verzi služby Azure AD Connect. Pouze změnit způsob, jakým je popsaný v tomto článku.
 
 ### <a name="disable-an-unwanted-sync-rule"></a>Zakázat pravidlo nežádoucí synchronizace
 Neodstraňujte pravidlo synchronizace out-of-box. Pak se znovu vytvoří při další upgradu.
 
-V některých případech se Průvodce instalací hello vytvořeného konfigurace, která nepracuje v topologii. Například pokud máte doménovou strukturu prostředků účtu, ale máte v doménové struktuře účtu hello se schématem systému Exchange hello hello rozšířené schéma, pravidla pro Exchange vytvoří se pro hello účet doménové struktury a doménové struktury prostředku hello. V takovém případě musíte toodisable hello synchronizační pravidlo pro Exchange.
+V některých případech se vytváří Průvodce instalací konfigurace, která nepracuje v topologii. Například pokud máte doménovou strukturu prostředků účtu, ale jste rozšířili schéma v doménové struktuře účtu se schématem systému Exchange, pravidla pro Exchange vytvoří se pro účet doménové struktury a doménové struktury prostředku. V takovém případě je nutné zakázat pravidlo synchronizace pro Exchange.
 
 ![Zakázané synchronizační pravidlo](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/exchangedisabledrule.png)
 
-Hello obrázku výše Průvodce instalací hello nalezl zadáno staré schéma Exchange 2003 v doménové struktuře účtu hello. Toto rozšíření schématu bylo přidáno před doménové struktury prostředku hello byla zavedená v prostředí společnosti Fabrikam. tooensure žádné atributy od původního implementace Exchange hello jsou synchronizovány, hello synchronizační pravidlo by mělo být zakázáno, jak je vidět.
+Na obrázku výše Průvodce instalací zjistil zadáno staré schéma Exchange 2003 v doménové struktuře účtu. Toto rozšíření schématu bylo přidáno před doménové struktury prostředku byla zavedená v prostředí společnosti Fabrikam. K zajištění, že jsou synchronizovány žádné atributy od původního implementace systému Exchange, pravidlo synchronizace je třeba zakázat jak je vidět.
 
 ### <a name="change-an-out-of-box-rule"></a>Změnit pravidlo out-of-box
-Hello by se měl změnit pravidlo out-of-box je pouze pokud budete potřebovat toochange hello spojení pravidlo. Pokud potřebujete toochange tok atributů, měli vytvořit synchronizační pravidlo s vyšší prioritou než hello out-of-box pravidla. Hello jen pravidlo potřebujete prakticky tooclone je pravidlo hello **v ze služby Active Directory - připojení uživatele k**. Můžete přepsat všechna pravidla s pravidlem vyšší prioritu.
+Měli byste změnit pravidlo out-of-box je pouze když potřebujete změnit pravidlo spojení. Pokud potřebujete změnit tok atributů, měli vytvořit synchronizační pravidlo s vyšší prioritou než pravidla out-of-box. Pouze pravidla potřebujete prakticky klonování je pravidlo **v ze služby Active Directory - připojení uživatele k**. Můžete přepsat všechna pravidla s pravidlem vyšší prioritu.
 
-Pokud potřebujete toomake změny tooan out-of-box pravidlo, vytvořit kopii hello out-of-box pravidlo a zakázat pravidlo původní hello. Proveďte hello změny toohello klonovaného pravidle. Hello Editor pravidla synchronizace vám pomáhá s těchto kroků. Když otevřete pravidlo out-of-box, se zobrazí toto dialogové okno:  
+Pokud potřebujete provést změny pravidlo out-of-box, vytvořit kopii pravidlo out-of-box a zakázat původní pravidlo. Proveďte změny klonovaného pravidle. Editor pravidla synchronizace vám pomáhá s těchto kroků. Když otevřete pravidlo out-of-box, se zobrazí toto dialogové okno:  
 ![Upozornění z pravidla pole](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/warningoutofboxrule.png)
 
-Vyberte **Ano** toocreate kopii hello pravidlo. Klonovaný pravidlo Hello je pak otevřít.  
+Vyberte **Ano** vytvoření kopie pravidla. Pak je otevřené klonovaného pravidle.  
 ![Klonovaný pravidlo](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/clonedrule.png)
 
-Na tomto klonovaného pravidle proveďte všechny potřebné změny tooscope, spojení a transformace.
+Na tomto klonovaného pravidle proveďte potřebné změny oboru, spojení a transformace.
 
 ## <a name="next-steps"></a>Další kroky
 **Témata s přehledem**

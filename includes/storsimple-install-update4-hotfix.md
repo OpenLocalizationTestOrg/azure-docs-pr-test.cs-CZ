@@ -1,45 +1,45 @@
 <!--author=alkohli last changed: 02/10/17-->
 
-#### <a name="toodownload-hotfixes"></a>toodownload opravy hotfix
+#### <a name="to-download-hotfixes"></a>Stažení oprav hotfix
 
-Proveďte následující kroky toodownload hello softwarové aktualizace z katalogu služby Microsoft Update hello hello.
+Provedením následujících kroků si stáhněte aktualizace softwaru z Katalogu služby Microsoft Update.
 
-1. Spusťte Internet Explorer a přejděte příliš[http://catalog.update.microsoft.com](http://catalog.update.microsoft.com).
-2. Pokud používáte hello katalogu služby Microsoft Update na tomto počítači poprvé, klikněte na tlačítko **nainstalovat** při výzvami tooinstall hello rozšíření katalogu služby Microsoft Update.
+1. Spusťte Internet Explorer a přejděte na [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com).
+2. Pokud na tomto počítači používáte Katalog služby Microsoft Update poprvé, po zobrazení výzvy k instalaci doplňku Katalog služby Microsoft Update klikněte na **Nainstalovat**.
 
     ![Instalace katalogu](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
 
-3. Do vyhledávacího pole hello hello katalogu služby Microsoft Update, zadejte číslo znalostní báze Knowledge Base (KB) hello opravy hotfix hello chcete toodownload, například **4011839**a potom klikněte na **vyhledávání**.
+3. Do vyhledávacího pole Katalogu služby Microsoft Update zadejte číslo opravy hotfix ve znalostní bázi, kterou chcete stáhnout, například **4011839**, a potom klikněte na **Vyhledat**.
    
-    Hello opravu hotfix seznamu se zobrazí, například **kumulativní 4.0 Update sady softwaru pro zařízení StorSimple řady 8000**.
+    Zobrazí se výpis opravy hotfix, například **Cumulative Software Bundle Update 4.0 for StorSimple 8000 Series** (Kumulativní aktualizace balíčku softwaru 4.0 pro StorSimple 8000 Series).
    
     ![Prohledávání katalogu](./media/storsimple-install-update2-hotfix/HCS_SearchCatalog1-include.png)
 
-4. Klikněte na **Stáhnout**. Zadejte nebo **Procházet** tooa místního umístění, kam má hello stáhne tooappear. Klikněte na tlačítko hello soubory toodownload toohello zadané umístění a složky. Hello složce může být také síťové sdílené složky zkopírovaný tooa, který je dosažitelný z hello zařízení.
-5. Vyhledejte všechny další opravy hotfix uvedené v předchozí tabulce hello (**4011841**), a stažení hello odpovídající soubory toohello určitých složek, jak je uvedeno v předcházející tabulce hello.
+4. Klikněte na **Stáhnout**. Zadejte místní umístění, do kterého chcete aktualizace stáhnout, nebo do něj přejděte pomocí tlačítka **Procházet**. Klikněte na tlačítko soubory ke stažení do zadaného umístění a složky. Složku je také možné zkopírovat do sdílené síťové složky dostupné ze zařízení.
+5. Vyhledejte všechny další opravy hotfix uvedené v předchozí tabulce (**4011841**) a stáhněte soubory, odpovídající týkající se určitých složek, jak je uvedeno v předchozí tabulce.
 
 > [!NOTE]
-> opravy hotfix Hello musí být dostupný z obou řadičích toodetect všechny potenciální chybové zprávy z hello sdílené řadiče.
+> Opravy hotfix musí být dostupný z obou řadičích ke zjištění potenciálních chybové zprávy z druhé strany řadiče.
 >
-> Hello opravy hotfix je nutné zkopírovat v 3 samostatné složky. Například aktualizace softwaru, SNS/MDS agenta hello zařízení je možné zkopírovat v _FirstOrderUpdate_ složky, všechny hello jiné omezovaly aktualizace může být zkopírovali v hello _SecondOrderUpdate_ složku, a aktualizace režimu údržby zkopírovali v _ThirdOrderUpdate_ složky.
+> Opravy hotfix je nutné zkopírovat do 3 oddělených složek. Například aktualizace softwaru, SNS/MDS agenta zařízení je možné zkopírovat v _FirstOrderUpdate_ složku, všechny ostatní omezovaly aktualizace může kopírovat v _SecondOrderUpdate_ složku, a aktualizace režimu údržby zkopírovali v _ThirdOrderUpdate_ složky.
 
-#### <a name="tooinstall-and-verify-regular-mode-hotfixes"></a>tooinstall a ověřte regulární režimu opravy hotfix
+#### <a name="to-install-and-verify-regular-mode-hotfixes"></a>Instalace a ověření oprav hotfix běžného režimu
 
-Proveďte následující kroky tooinstall hello a ověřte regular režimu opravy hotfix. Pokud jste již nainstalovali pomocí hello portál Azure classic, přeskočit příliš[instalaci a ověření opravy hotfix režimu údržby](#to-install-and-verify-maintenance-mode-hotfixes).
+Provedením následujících kroků nainstalujte a ověřte opravy hotfix běžného režimu. Pokud jste je již nainstalovali pomocí portálu Azure Classic, přeskočte k [instalaci a ověření oprav hotfix režimu údržby](#to-install-and-verify-maintenance-mode-hotfixes).
 
-1. tooinstall hello opravy hotfix, které rozhraní Windows PowerShell hello přístupu v konzole sériového portu zařízení StorSimple. Postupujte podle hello podrobné pokyny v [použití klienta PuTTy tooconnect toohello konzoly sériového portu](../articles/storsimple/storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console). Na příkazovém řádku hello, stiskněte klávesu **Enter**.
-2. Vyberte **možnost 1** toolog na toohello zařízení s úplným přístupem. Doporučujeme nejprve nainstalujte opravu hotfix hello na pasivní řadiči hello.
-3. tooinstall hello oprav hotfix, hello příkazového řádku, zadejte:
+1. Pokud chcete nainstalovat opravy hotfix, v konzole sériového portu zařízení StorSimple spusťte rozhraní Windows PowerShell. Postupujte podle podrobných pokynů v článku [Připojení ke konzole sériového portu pomocí klienta PuTTy](../articles/storsimple/storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console). Na příkazovém řádku stiskněte **Enter**.
+2. Vyberte **Možnost 1** a přihlaste se k zařízení s úplným přístupem. Doporučujeme opravu hotfix nejprve nainstalovat na pasivním kontroleru.
+3. Pokud chcete nainstalovat opravu hotfix, na příkazovém řádku zadejte:
    
-    `Start-HcsHotfix -Path <path tooupdate file> -Credential <credentials in domain\username format>`
+    `Start-HcsHotfix -Path <path to update file> -Credential <credentials in domain\username format>`
    
-    Používejte IP místo DNS v cestě sdílené složky v hello výše příkaz. Parametr credential Hello se používá pouze v případě, že se připojujete ověřené sdílené složky.
+    V cestě ke sdílené složce v předchozím příkazu používejte IP adresu místo DNS. Parametr Credential se používá pouze pro přístup ke sdílené složce s nutností ověření.
    
-    Doporučujeme použít hello sdílené složky tooaccess parametr přihlašovacích údajů. I sdílené složky, které jsou otevřené příliš "everyone" jsou obvykle otevřít toounauthenticated uživatele.
+    Parametr Credential doporučujeme používat pro přístup ke sdíleným složkám. I sdílené složky otevřené všem uživatelům obvykle nejsou otevřené pro neověřené uživatele.
    
-    Zadejte heslo hello po zobrazení výzvy.
+    Po zobrazení výzvy zadejte heslo.
    
-    Ukázkový výstup pro instalaci první pořadí aktualizací hello je uveden níže. Hello první pořadí aktualizací musíte toopoint toohello konkrétní soubor.
+    Ukázkový výstup instalace aktualizací prvního řádu najdete níž. Pro první pořadí aktualizací budete muset přejděte na konkrétní soubor.
    
         ````
         Controller0>Start-HcsHotfix -Path \\10.100.100.100\share
@@ -47,16 +47,16 @@ Proveďte následující kroky tooinstall hello a ověřte regular režimu oprav
    
         Confirm
    
-        This operation starts hello hotfix installation and could reboot one or
-        both of hello controllers. If hello device is serving I/Os, these will not
-        be disrupted. Are you sure you want toocontinue?
+        This operation starts the hotfix installation and could reboot one or
+        both of the controllers. If the device is serving I/Os, these will not
+        be disrupted. Are you sure you want to continue?
         [Y] Yes [N] No [?] Help (default is "Y"): Y
    
         ````
-4. Typ **Y** při výzvami tooconfirm hello instalace opravy hotfix.
-5. Monitorovat hello aktualizace pomocí hello `Get-HcsUpdateStatus` rutiny. aktualizace Hello nejprve dokončí na pasivní řadiči hello. Jakmile řadič pasivní hello je aktualizován, budou existovat převzetí služeb při selhání a aktualizace hello pak se použije na hello jiný řadič. Když jsou aktualizovány oba řadiče hello po dokončení aktualizace Hello.
+4. Po zobrazení výzvy k potvrzení instalace opravy hotfix zadejte **Y**.
+5. Průběh aktualizace můžete sledovat pomocí rutiny `Get-HcsUpdateStatus`. Aktualizace se nejdříve dokončí na pasivním kontroleru. Jakmile je pasivní kontroler aktualizovaný, proběhne převzetí služeb při selhání a potom se aktualizace nainstaluje i na druhý kontroler. Aktualizace je dokončena, když jsou aktualizované oba kontrolery.
    
-    Hello následující ukázkový výstup ukazuje hello aktualizace v průběhu. Hello `RunInprogress` bude `True` při hello Probíhá aktualizace.
+    Následující ukázkový výstup ukazuje probíhající aktualizaci. Když aktualizace probíhá, hodnota `RunInprogress` bude `True`.
 
     ```
     Controller0>Get-HcsUpdateStatus
@@ -67,7 +67,7 @@ Proveďte následující kroky tooinstall hello a ověřte regular režimu oprav
     Controller1Events   :
     ```
    
-     Následující ukázkový výstup Hello označuje, že po dokončení této aktualizace hello. Hello `RunInProgress` bude `False` po dokončení aktualizace hello.
+     Následující ukázkový výstup ukazuje dokončení aktualizace. Když se aktualizace dokončí, hodnota `RunInProgress` bude `False`.
    
     ```
     Controller0>Get-HcsUpdateStatus
@@ -79,40 +79,40 @@ Proveďte následující kroky tooinstall hello a ověřte regular režimu oprav
     ```
 
     > [!NOTE]
-    > V některých případech hello rutiny sestavy `False` po hello aktualizaci stále probíhá. tooensure, který hello opravu hotfix je dokončena, počkejte několik minut, spusťte tento příkaz znovu a ověřte, že hello `RunInProgress` je `False`. Pokud se jedná, byla dokončena hello opravu hotfix.
+    > Rutina občas hlásí `False`, i když aktualizace stále probíhá. Pokud chcete zkontrolovat, že se oprava hotfix dokončila, počkejte několik minut, znovu spusťte tento příkaz a ověřte, že hodnota `RunInProgress` je `False`. Pokud ano, oprava hotfix byla dokončena.
 
-6. Po dokončení aktualizace softwaru hello ověřte verzí softwaru systému hello. Zadejte:
+6. Po dokončení aktualizace softwaru zkontrolujte verze systémového softwaru. Zadejte:
    
     `Get-HcsSystem`
    
-    Měli byste vidět hello následující verze:
+    Měly by se zobrazit následující verze:
    
    * `FriendlySoftwareVersion: StorSimple 8000 Series Update 4.0`
    *  `HcsSoftwareVersion: 6.3.9600.17820`
    
-    Pokud hello číslo verze se nezmění po použití aktualizace hello, znamená to, že oprava hotfix hello se nezdařilo tooapply. Pokud je to váš případ a potřebujete další pomoc, kontaktujte [podporu Microsoftu](../articles/storsimple/storsimple-contact-microsoft-support.md).
+    Pokud se číslo verze po instalaci aktualizace nezměnilo, znamená to, že se instalace opravy hotfix nezdařila. Pokud je to váš případ a potřebujete další pomoc, kontaktujte [podporu Microsoftu](../articles/storsimple/storsimple-contact-microsoft-support.md).
      
     > [!IMPORTANT]
-    > Je nutné restartovat řadič active hello prostřednictvím hello `Restart-HcsController` rutiny před použitím hello další aktualizace.
+    > Je nutné restartovat řadič active prostřednictvím `Restart-HcsController` rutiny před použitím další aktualizace.
      
-7. Opakujte kroky 3 až 5 tooinstall hello tooyour stáhnout agenta položek konfigurace nebo MDS _FirstOrderUpdate_ složky. 
-8. Zopakujte kroky 3 až 5 tooinstall hello druhý pořadí aktualizací. **Druhý pořadí aktualizací, lze nainstalovat víc aktualizací právě spuštěním hello `Start-HcsHotfix cmdlet` a polohovací toohello složku, kde se nachází druhý pořadí aktualizací. hello rutiny, budou spuštěny všechny hello aktualizace k dispozici ve složce hello.** Pokud už je nainstalovaná aktualizace, logiku aktualizace hello rozpozná a tuto aktualizaci nelze použít. 
+7. Opakujte kroky 3 až 5 pro instalaci agenta položek konfigurace nebo MDS stáhnou do vaší _FirstOrderUpdate_ složky. 
+8. Opakujte kroky 3–5 a nainstalujte aktualizace druhého řádu. **Druhý pořadí aktualizací, lze nainstalovat víc aktualizací právě spuštěním `Start-HcsHotfix cmdlet` a přejdete na složku, kde jsou umístěny druhý pořadí aktualizací. Rutina spustí všechny aktualizace, které jsou k dispozici ve složce.** Pokud je aktualizace již nainstalovaná, logika aktualizace to pozná a nebude ji instalovat. 
 
-Po instalaci všech hello opravy hotfix, použijte hello `Get-HcsSystem` rutiny. verze Hello by měla být:
+Jakmile budou nainstalované všechny opravy hotfix, použijte rutinu `Get-HcsSystem`. Verze by měly být:
 
    * `CisAgentVersion:  1.0.9441.0`
    * `MdsAgentVersion: 35.2.2.0`
    * `Lsisas2Version: 2.0.78.00`
 
 
-#### <a name="tooinstall-and-verify-maintenance-mode-hotfixes"></a>tooinstall a ověřte opravy hotfix režimu údržby
-Aktualizace firmwaru disku tooinstall KB4011837 použijte. Tyto jsou rušivý aktualizace a trvat toocomplete přibližně 30 minut. Můžete zvolit tooinstall v plánované údržby pomocí připojování konzoly sériového portu zařízení toohello.
+#### <a name="to-install-and-verify-maintenance-mode-hotfixes"></a>Instalace a ověření oprav hotfix režimu údržby
+Pomocí KB4011837 nainstalujte aktualizace firmwaru disku. Jedná se o narušující aktualizace a jejich dokončení trvá přibližně 30 minut. Můžete se rozhodnout je nainstalovat během naplánovaného časového období údržby pomocí připojení ke konzole sériového portu zařízení.
 
-Všimněte si, že pokud firmware disku je již aktuální, nebudete potřebovat tooinstall tyto aktualizace. Spustit hello `Get-HcsUpdateAvailability` rutiny z toocheck konzoly sériového portu zařízení hello Pokud aktualizace jsou k dispozici a zda text hello aktualizace jsou rušivý (režim údržby) nebo omezovaly (regulární režim) aktualizace.
+Poznámka: Pokud je váš firmware disku aktuální, není třeba instalovat tyto aktualizace. Z konzoly sériového portu zařízení spusťte rutinu `Get-HcsUpdateAvailability`, která zkontroluje dostupnost aktualizací a jestli se jedná o narušující (režim údržby) nebo nenarušující (běžný režim) aktualizace.
 
-aktualizace firmwaru disku tooinstall hello, postupujte podle pokynů hello.
+Pokud chcete nainstalovat aktualizace firmwaru disku, postupujte podle následujících pokynů.
 
-1. Umístěte hello zařízení v režimu údržby hello. **Všimněte si, že byste neměli používat vzdálenou komunikaci prostředí Windows PowerShell, při připojování zařízení tooa v režimu údržby. Místo toho spusťte tuto rutinu v hello zařízení řadiče při připojení prostřednictvím sériové konzoly hello zařízení.** Zadejte:
+1. Umístíte zařízení do režimu údržby. **Upozorňujeme, že pro připojení k zařízení v režimu údržby byste neměli používat vzdálenou komunikaci prostředí Windows PowerShell. Místo toho se připojte prostřednictvím konzoly sériového portu zařízení a spusťte v kontroleru zařízení tuto rutinu.** Zadejte:
    
     `Enter-HcsMaintenanceMode`
    
@@ -121,14 +121,14 @@ aktualizace firmwaru disku tooinstall hello, postupujte podle pokynů hello.
         Controller0>Enter-HcsMaintenanceMode
         Checking device state...
    
-        In maintenance mode, your device will not service IOs and will be disconnected from hello Microsoft Azure StorSimple Manager service. Entering maintenance mode will end hello current session and reboot both controllers, which takes a few minutes toocomplete. Are you sure you want tooenter maintenance mode?
+        In maintenance mode, your device will not service IOs and will be disconnected from the Microsoft Azure StorSimple Manager service. Entering maintenance mode will end the current session and reboot both controllers, which takes a few minutes to complete. Are you sure you want to enter maintenance mode?
         [Y] Yes [N] No (Default is "Y"): Y
    
         -----------------------MAINTENANCE MODE------------------------
         Microsoft Azure StorSimple Appliance Model 8600
         Name: Update4-8600-mystorsimple
         Copyright (C) 2014 Microsoft Corporation. All rights reserved.
-        You are connected tooController0 - Passive
+        You are connected to Controller0 - Passive
         ---------------------------------------------------------------
    
         Serial Console Menu
@@ -138,26 +138,26 @@ aktualizace firmwaru disku tooinstall hello, postupujte podle pokynů hello.
         [4] Change language
         Please enter your choice>
    
-    Oba řadiče hello potom restartujte do režimu údržby.
-2. tooinstall hello disku aktualizaci firmwaru, typ:
+    Oba kontrolery se následně restartují do režimu údržby.
+2. Pokud chcete nainstalovat aktualizaci firmwaru disku, zadejte:
    
-    `Start-HcsHotfix -Path <path tooupdate file> -Credential <credentials in domain\username format>`
+    `Start-HcsHotfix -Path <path to update file> -Credential <credentials in domain\username format>`
    
     Ukázkový výstup najdete níž.
    
         Controller1>Start-HcsHotfix -Path \\10.100.100.100\share\ThirdOrderUpdates\ -Credential contoso\john
         Enter Password:
-        WARNING: In maintenance mode, hotfixes should be installed on each controller sequentially. After hello hotfix is installed on this controller, install it on hello peer controller.
+        WARNING: In maintenance mode, hotfixes should be installed on each controller sequentially. After the hotfix is installed on this controller, install it on the peer controller.
         Confirm
-        This operation starts a hotfix installation and could reboot one or both of hello controllers. By installing new updates you agree to, and accept any additional terms associated with, hello new functionality listed in hello release notes (https://go.microsoft.com/fwLink/?LinkID=613790). Are you sure you want toocontinue?
+        This operation starts a hotfix installation and could reboot one or both of the controllers. By installing new updates you agree to, and accept any additional terms associated with, the new functionality listed in the release notes (https://go.microsoft.com/fwLink/?LinkID=613790). Are you sure you want to continue?
         [Y] Yes [N] No (Default is "Y"): Y
-        WARNING: Installation is currently in progress. This operation can take several minutes toocomplete.
-3. Monitorování hello instalovat průběh pomocí `Get-HcsUpdateStatus` příkaz. Hello po dokončení aktualizace při hello `RunInProgress` změní příliš`False`.
-4. Po dokončení instalace hello hello řadiče, na které hello byla nainstalována oprava hotfix režimu údržby se restartuje. Přihlaste se jako možnost 1 s úplným přístupem a ověřit verzi firmwaru hello disku. Zadejte:
+        WARNING: Installation is currently in progress. This operation can take several minutes to complete.
+3. Průběh instalace můžete sledovat pomocí příkazu `Get-HcsUpdateStatus`. Když se `RunInProgress` změní na `False`, aktualizace je dokončena.
+4. Po dokončení instalace se kontroler, na který se instalovala oprava hotfix režimu údržby, restartuje. Přihlaste se jako Možnost 1 s úplným přístup a zkontrolujte verzi firmwaru disku. Zadejte:
    
    `Get-HcsFirmwareVersion`
    
-   Hello očekává, že jsou verzí firmwaru disku:
+   Očekávané verze firmwaru disku jsou:
    
    `XMGJ, XGEG, KZ50, F6C2, VR08, N002, 0106`
    
@@ -168,7 +168,7 @@ aktualizace firmwaru disku tooinstall hello, postupujte podle pokynů hello.
        Name: Update4-8600-mystorsimple
        Software Version: 6.3.9600.17820
        Copyright (C) 2014 Microsoft Corporation. All rights reserved.
-       You are connected tooController1
+       You are connected to Controller1
        ---------------------------------------------------------------
    
        Controller1>Get-HcsFirmwareVersion
@@ -244,9 +244,9 @@ aktualizace firmwaru disku tooinstall hello, postupujte podle pokynů hello.
               WD:WD4001FYYG-01SL3:VR08
               WD:WD4001FYYG-01SL3:VR08
    
-    Spustit hello `Get-HcsFirmwareVersion` příkaz na hello druhý řadič tooverify který hello verze softwaru se aktualizovala. Potom můžete ukončit režim údržby hello. toodo Ano, zadejte následující příkaz pro každý řadič zařízení hello:
+    Na druhém kontroleru spusťte příkaz `Get-HcsFirmwareVersion` a ověřte, že došlo k aktualizaci verze softwaru. Potom můžete ukončit režim údržby. Uděláte to tak, že na obou kontrolerech zařízení zadáte následující příkaz:
    
    `Exit-HcsMaintenanceMode`
 
-5. Hello řadiče restartovat po ukončení režimu údržby. Po hello disk firmware se úspěšně aktualizace a hello zařízení ukončilo režim údržby, návratový toohello portál Azure classic. Všimněte si, že tohoto portálu hello nemusí zobrazit, že jste nainstalovali aktualizace režimu údržby hello 24 hodin.
+5. Kontrolery se restartují, jakmile ukončíte režim údržby. Po úspěšné instalaci aktualizací firmwaru disku a ukončení režimu údržby na zařízení se vraťte na portál Azure Classic. Poznámka: Informace o instalaci aktualizací režimu údržby se na portálu může zobrazit až po 24 hodinách.
 

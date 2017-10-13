@@ -1,5 +1,5 @@
 ---
-title: "aaaDynamic skupin a spolupráce Azure Active Directory s B2B | Microsoft Docs"
+title: "Dynamické skupiny a spolupráce Azure Active Directory s B2B | Microsoft Docs"
 description: "Spolupráce Azure Active Directory s B2B lze použít s dynamickými skupinami Azure AD"
 services: active-directory
 documentationcenter: 
@@ -16,31 +16,31 @@ ms.workload: identity
 ms.date: 06/27/2017
 ms.author: curtand
 ms.reviewer: sasubram
-ms.openlocfilehash: b011298de5fd2c851c6d9caaf5c2b257807ef0a4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5818c41610c8c5df89abcb0dcd058bcbe9579ce7
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>Dynamické skupiny a spolupráce Azure Active Directory s B2B
 
 ## <a name="what-are-dynamic-groups"></a>Co jsou dynamické skupiny?
-Konfigurace dynamické členství ve skupině zabezpečení pro Azure Active Directory (Azure AD) je k dispozici v [hello portál Azure](https://portal.azure.com). Správci mohou nastavit pravidla, která toopopulate skupin, které jsou vytvořené v Azure Active Directory založit na atributech uživatelů (například userType, oddělení nebo země). Členové můžete automaticky přidají tooor odebrat ze skupiny zabezpečení na základě jejich atributů. Tyto skupiny může poskytovat přístup k tooapplications nebo cloudové prostředky (webů služby SharePoint, dokumenty) a tooassign licence toomembers. Další informace o dynamických skupin v [vyhrazené skupiny ve službě Azure Active Directory](active-directory-accessmanagement-dedicated-groups.md).
+Konfigurace dynamické členství ve skupině zabezpečení pro Azure Active Directory (Azure AD) je k dispozici v [portálu Azure](https://portal.azure.com). Správci mohou nastavit pravidla pro naplnění skupin, které jsou vytvořené v Azure Active Directory založit na atributech uživatelů (například userType, oddělení nebo země). Členové dají automaticky přidat nebo odebrat ze skupiny zabezpečení na základě jejich atributů. Tyto skupiny můžete poskytnout přístup k aplikacím nebo prostředkům cloudu (webů služby SharePoint, dokumenty) a přiřadit licence na členy. Další informace o dynamických skupin v [vyhrazené skupiny ve službě Azure Active Directory](active-directory-accessmanagement-dedicated-groups.md).
 
-Hello odpovídající [licencování Azure AD Premium P1 a P2](https://azure.microsoft.com/pricing/details/active-directory/) je požadovaná toocreate a používání dynamických skupin. Další informace najdete v článku hello [vytvořit pravidla založená na atributu pro dynamické členství ve skupině v Azure Active Directory](active-directory-groups-dynamic-membership-azure-portal.md).
+Odpovídající [licencování Azure AD Premium P1 a P2](https://azure.microsoft.com/pricing/details/active-directory/) je nutná k vytváření a použití dynamických skupin. Další informace najdete v článku [vytvořit pravidla založená na atributu pro dynamické členství ve skupině v Azure Active Directory](active-directory-groups-dynamic-membership-azure-portal.md).
 
-## <a name="what-are-hello-built-in-dynamic-groups"></a>Co jsou hello integrované dynamické skupiny?
-Hello **všichni uživatelé** dynamická skupina umožňuje toocreate Správci klienta skupina obsahující všechny uživatele v klientovi hello s jedním, klikněte na tlačítko. Ve výchozím nastavení, hello **všichni uživatelé** skupina obsahuje všechny uživatele v adresáři hello, včetně členů a hostů.
-V rámci hello nového portálu správce Azure Active Directory, můžete zvolit tooenable hello **všichni uživatelé** v nastavení skupiny zobrazit hello.
+## <a name="what-are-the-built-in-dynamic-groups"></a>Co jsou integrované dynamické skupiny?
+**Všichni uživatelé** dynamická skupina umožňuje správci klientů k vytvoření skupiny obsahující všechny uživatele v klientovi s jedním kliknutím. Ve výchozím nastavení **všichni uživatelé** skupina obsahuje všechny uživatele v adresáři, včetně členů a hostů.
+V rámci nový portál pro správu Azure Active Directory, můžete povolit **všichni uživatelé** skupiny v nastavení skupiny zobrazení.
 
 ![předdefinované skupiny](media/active-directory-b2b-dynamic-groups/built-in-groups.png)
 
-## <a name="hardening-hello-all-users-dynamic-group"></a>Posílení zabezpečení hello všechny dynamické skupiny uživatelů
-Ve výchozím nastavení, hello **všichni uživatelé** skupina obsahuje také uživatelům (Host) spolupráce B2B. Dále je možné zabezpečit vaše **všichni uživatelé** skupiny pomocí uživatele typu Host tooremove pravidla. Hello následující obrázek znázorňuje hello **všichni uživatelé** skupinu upravit tooexclude hostů.
+## <a name="hardening-the-all-users-dynamic-group"></a>Posílení zabezpečení všech dynamické skupiny uživatelů
+Ve výchozím nastavení **všichni uživatelé** skupina obsahuje také uživatelům (Host) spolupráce B2B. Dále je možné zabezpečit vaše **všichni uživatelé** skupiny pomocí pravidla odebrat uživatele typu Host. Následující obrázek ukazuje **všichni uživatelé** skupiny upravit tak, aby vyloučit hostů.
 
 ![Povolit všechny skupiny uživatelů](media/active-directory-b2b-dynamic-groups/enable-all-users-group.png)
 
-Může také pro vás užitečné toocreate nové dynamické skupiny, který obsahuje pouze uživatele typu Host, takže můžete použít toothem zásady (například zásady Azure AD podmíněného přístupu).
+Může také pro vás užitečné k vytvoření nové dynamické skupiny, která obsahuje pouze uživatele typu Host, tak, aby mohli použít zásady (například zásady Azure AD podmíněného přístupu) k nim.
 Jak taková skupina může vypadat:
 
 ![vyloučit uživatele typu Host](media/active-directory-b2b-dynamic-groups/exclude-guest-users.png)
@@ -51,7 +51,7 @@ Projděte si naše další články ohledně spolupráce B2B ve službě Azure A
 
 * [Co je spolupráce B2B ve službě Azure AD?](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Vlastnosti uživatele spolupráce B2B](active-directory-b2b-user-properties.md)
-* [Přidání role uživatele tooa spolupráce B2B](active-directory-b2b-add-guest-to-role.md)
+* [Přidání uživatele spolupráce B2B k roli](active-directory-b2b-add-guest-to-role.md)
 * [Delegovat pozvánek spolupráce B2B](active-directory-b2b-delegate-invitations.md)
 * [Kód spolupráce B2B a ukázky prostředí PowerShell](active-directory-b2b-code-samples.md)
 * [Konfigurace aplikací SaaS pro spolupráci B2B](active-directory-b2b-configure-saas-apps.md)

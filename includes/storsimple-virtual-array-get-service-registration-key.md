@@ -1,7 +1,7 @@
-#### <a name="tooget-hello-storsimple-service-registration-key"></a>registračního klíče služby StorSimple tooget hello
+#### <a name="to-get-the-storsimple-service-registration-key"></a>Získání registračního klíče služby StorSimple
 
-1.  Na hello **Manager zařízení StorSimple** okně klikněte hello službu, kterou jste vytvořili. Otevře se nové okno toohello právo.
+1.  V okně **Správce zařízení StorSimple** klikněte na službu, kterou jste vytvořili. Na pravé straně se otevře nové okno.
 
-2.  V okně hello, které se otevře, klikněte na tlačítko **spravovat &gt;**  **klíče**.
+2.  V okně, které se otevře, klikněte na tlačítko **spravovat &gt;**  **klíče**.
 
-3.  Klikněte na registrační klíč služby toocopy hello hello kopie ikonu a uložit pro pozdější použití.
+3.  Kliknutím na ikonu kopírování registrační klíč služby zkopírujte a uložte jej pro pozdější použití.

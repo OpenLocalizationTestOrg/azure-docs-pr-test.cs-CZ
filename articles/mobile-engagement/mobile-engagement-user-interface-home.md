@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure Mobile Engagement uživatelské rozhraní – Domovská"
-description: "Zjistěte, jak toomanage stávající aplikaci a projektů pomocí Azure Mobile Engagement"
+title: "Azure Mobile Engagement uživatelské rozhraní - Domů"
+description: "Naučte se spravovat stávající aplikaci a projektů pomocí Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,53 +14,53 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 727dad188c5876d09db84634a17e10b280039c49
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0f15cb975f57f6f5cab12d5118ff50a6fab14388
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toomanage-your-existing-application-and-projects"></a>Jak toomanage stávající aplikaci a projektů
-Tento článek popisuje hello **Domů** stránku hello **Mobile Engagement** portálu. Použít hello **Mobile Engagement** portálu toomonitor a spravovat své mobilní aplikace. Všimněte si, že toostart hello portálu musíte nejprve toocreate **Azure Mobile Engagement** účtu. 
+# <a name="how-to-manage-your-existing-application-and-projects"></a>Jak spravovat stávající aplikaci a projektů
+Tento článek popisuje **Domů** stránky **Mobile Engagement** portálu. Můžete použít **Mobile Engagement** portálu ke sledování a správě mobilních aplikací. Všimněte si, že pokud chcete začít používat portál musíte nejprve vytvořit **Azure Mobile Engagement** účtu. 
 
-tooget toohello domovskou stránku, klikněte na tlačítko **domácí** na hello levém horním rohu stránky hello. Obsahuje seznam všech aplikacích, které jsou součástí hello vybraná kolekce hello. Na této stránce zobrazí právě rychlý přehled o vašich aplikací.
+Chcete-li získat na domovskou stránku, klikněte na tlačítko **domácí** v levém horním rohu stránky. Obsahuje seznam všech aplikacích, které jsou součástí vybrané kolekce. Na této stránce zobrazí právě rychlý přehled o vašich aplikací.
 
-Hello Domovská stránka také obsahuje všechny projekty, které mohou obsahovat jakékoli aplikace, která je ve vašem účtu. Všimněte si, že všichni uživatelé přístup k domovské stránce hello hello uživatelského rozhraní tak, že vytvoříte účet, ale je nutné uživatele tooother toogrant oprávnění k němu toohave přístup tooyour vlastních aplikací v **projekty**.
+Domovská stránka také obsahuje všechny projekty, které mohou obsahovat jakékoli aplikace, která je ve vašem účtu. Všimněte si, že všichni uživatelé přístup k domovské stránce uživatelského rozhraní tak, že vytvoříte účet, ale je potřeba udělit oprávnění jiným uživatelům, aby měli přístup k vaší vlastní aplikace v **projekty**.
 
-Můžete také zobrazit hello Porovnávací graf pro hello vybrané aplikace. Nebo zvolte tooview hello Porovnávací graf pro vybrané aplikace v projektu.
+Můžete také zobrazit Porovnávací graf pro vybrané aplikace. Nebo vyberte, chcete-li zobrazit Porovnávací graf pro vybrané aplikace v projektu.
 
 ![Home1][0]
 
 ## <a name="my-applications"></a>Moje aplikace
-Hello rychlý přehled o vašich aplikací vám umožní aplikaci, pro kterou chcete tooselect tooopen tooview hello podrobné možnosti pásu karet. Klikněte na název hello umístění vaší aplikace toohello, naposledy navštívené tooreturn pásu karet v aplikaci nebo klikněte na tlačítko hello ozubené kolečko ikonu toogo přímo toohello "Nastavení" stránka vaší aplikace. Můžete hledat, filtr nebo řazení hello informace zobrazené na aplikace hello tabulky. Můžete také přetáhněte a vyřadit hello sloupec hlavičky toochange hello pořadí.
+Rychlý přehled o vašich aplikací umožňuje vybrat aplikaci, pro kterou chcete otevřít zobrazení možností podrobné pásu karet. Můžete klikněte na název vaší aplikace se vraťte do naposledy navštívené umístění pásu karet v aplikaci, nebo kliknutím na ikonu ozubené kolečko přejít přímo na stránku "Nastavení" vaší aplikace. Můžete hledat, filtrovat a řadit informace zobrazené v tabulkách aplikace. Můžete také přetáhněte a vyřadit změnit pořadí záhlaví sloupců.
 
-To mimo jiné obsahuje přehled hello aplikací:
+To mimo jiné obsahuje přehled aplikace:
 
-* **Nového uživatele trend**: vývoj nových uživatelů za poslední dva týdny hello.
-* **Aktivní uživatelé**: počet aktivních uživatelů za posledních 30 dní hello.
-* **Aktivní uživatelé trend**: vývoj aktivních uživatelů za poslední dva týdny hello.
-* **Relace**: relace je jedno použití aplikace hello prováděná uživatelem, od času hello hello používáním začne, dokud uživatel hello zastaví.
-* **Trendy relace**: vývoj relací v průběhu hello poslední dva týdny.
+* **Nového uživatele trend**: vývoj nových uživatelů za poslední dva týdny.
+* **Aktivní uživatelé**: počet aktivních uživatelů za posledních 30 dní.
+* **Aktivní uživatelé trend**: vývoj aktivních uživatelů za poslední dva týdny.
+* **Relace**: relace je jedno použití aplikace prováděná uživatelem, od okamžiku uživatele s používáním začne, až skončí.
+* **Trendy relace**: vývoj relací za poslední dva týdny.
 
-Jakmile kliknete na aplikaci, můžete začít monitorování a správu aplikací prostřednictvím hello uživatelského rozhraní. Například:    
+Jakmile kliknete na aplikaci, můžete začít monitorování a správu aplikací v uživatelském rozhraní. Například:    
 
 * [Monitorování v reálném čase dat o aplikaci](mobile-engagement-user-interface-monitor.md)
 * [Analýza historických dat o aplikaci](mobile-engagement-user-interface-analytics.md)
-* [Vytváření a správa segmentů uživatelů tooidentify vzorce](mobile-engagement-user-interface-segments.md)
-* [Oslovení toohello uživatelů vaší aplikace pomocí nabízených oznámení](mobile-engagement-user-interface-reach.md)
+* [Vytváření a správa segmentů uživatelů pro identifikaci vzorů využití](mobile-engagement-user-interface-segments.md)
+* [Oslovení uživatelů vaší aplikace pomocí nabízených oznámení](mobile-engagement-user-interface-reach.md)
 
 ## <a name="my-projects"></a>Moje projekty
-Můžete použít projekty toogroup vaše aplikace a udělit oprávnění tooother uživatelé tooaccess vaší aplikace. Oprávnění tooother uživatelům udělíte tím, že poskytuje e-mailovou adresu. Hello **nový projekt** tlačítko vám umožní toocreate nový projekt pouze zadáním "název" a "Popis" nový projekt. Po vytvoření projektu, můžete kliknutím na hello projektu název tooedit hello název a popis produktu a tooselect všechny aplikace hello chcete toosee v tomto projektu.
+Projekty můžete do skupiny aplikací a udělte oprávnění k ostatním uživatelům přístup k vaší aplikace. Udělit oprávnění ostatním uživatelům zadáním e-mailovou adresu. **Nový projekt** tlačítko vám umožní vytvořit nový projekt pouze zadáním "název" a "Popis" nový projekt. Po vytvoření projektu kliknutím na název projektu a upravit název a popis vašeho produktu a vyberte všechny aplikace, které chcete zobrazit v tomto projektu.
 
 ![Home6][60]
 
 Role zahrnují:
 
-* **Prohlížeč**: prohlížeč A je uživatel, který může obsahovat jenom zobrazit hello aplikace související tooa projektu. Prohlížeč může přístup analýzy a monitorovat data a podívejte se na výsledky Reach. Prohlížeč nelze změnit jakékoli informace, ani spravovat aplikace nebo uživatele. Prohlížeč nelze vytvořit nebo změnit stav kampaně Reach.
+* **Prohlížeč**: prohlížeč A je uživatel, který můžete zobrazit jenom aplikace přidružené k projektu. Prohlížeč může přístup analýzy a monitorovat data a podívejte se na výsledky Reach. Prohlížeč nelze změnit jakékoli informace, ani spravovat aplikace nebo uživatele. Prohlížeč nelze vytvořit nebo změnit stav kampaně Reach.
 * **Vývojáře**: A vývojáře je uživatel, který může dělat všechno, prohlížeč můžete provést, a také spravovat aplikace. Vývojář může povolit a zakázat aplikace, změnit informace o aplikace (např. balíček a podpis) a vytvářet kampaně Reach. Vývojář se nedají spravovat uživatele.
-* **Správce**: správce je uživatel, který může dělat všechno vývojář může udělat, stejně jako Správa uživatelů. Správce můžete pozvat uživatele toojoin projektu, můžete změnit role uživatelů a můžete změnit informace o projektu. Oprávnění na úrovni aplikace můžete také nastavit v "nastavení".
+* **Správce**: správce je uživatel, který může dělat všechno vývojář může udělat, stejně jako Správa uživatelů. Správce můžete uživatele pozvat, aby připojili k projektu, můžete změnit role uživatelů a můžete změnit informace o projektu. Oprávnění na úrovni aplikace můžete také nastavit v "nastavení".
 
-Klikněte na projekt tooview všechny hello aplikace, které jsou součástí tohoto projektu. Hello následující obrázek znázorňuje hello Porovnávací graf pro hello vybrané aplikace.
+Klikněte na projekt k zobrazení všech aplikací, které jsou součástí tohoto projektu. Následující obrázek znázorňuje Porovnávací graf pro vybrané aplikace.
 
 ![Home2][3]
 

@@ -1,6 +1,6 @@
 ---
-title: "Architektura hello aaaReview tooa replikace technologie Hyper-V s Azure Site Recovery sekundární lokality. | Microsoft Docs"
-description: "Tento článek obsahuje přehled o architektuře hello pro replikaci místní virtuální počítače Hyper-V tooa sekundární System Center VMM lokalitu s Azure Site Recovery."
+title: "Kontrola architektury pro replikaci Hyper-V do sekundární lokality s využitím služby Azure Site Recovery | Dokumentace Microsoftu"
+description: "Tento článek obsahuje přehled architektury pro replikaci místních virtuálních počítačů Hyper-V do sekundární lokality System Center VMM s využitím služby Azure Site Recovery."
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,53 +14,53 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/30/2017
 ms.author: raynew
-ms.openlocfilehash: 0de4b4e8601116c73e6fd710597ce4e561884368
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: b78cd0d5a5395873afaddc8856004775f447e8ea
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="step-1-review-hello-architecture-for-hyper-v-replication-tooa-secondary-site"></a>Krok 1: Posouzení hello Architektura technologie Hyper-V replikace tooa sekundární lokality
+# <a name="step-1-review-the-architecture-for-hyper-v-replication-to-a-secondary-site"></a>Krok 1: Kontrola architektury pro replikaci Hyper-V do sekundární lokality
 
-Tento článek popisuje hello součásti a procesů při replikaci místní virtuální počítače Hyper-V (VM) v cloudech System Center Virtual Machine Manager (VMM), sekundární lokalita VMM tooa pomocí hello [Azure Site Recovery](site-recovery-overview.md)služby v hello portálu Azure.
+Tento článek popisuje komponenty a procesy využívané při replikaci místních virtuálních počítačů Hyper-V v cloudech System Center Virtual Machine Manager (VMM) do sekundární lokality VMM s využitím služby [Azure Site Recovery](site-recovery-overview.md) na webu Azure Portal.
 
-Odeslat všechny komentáře dole hello v tomto článku, nebo v hello [fóru Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Jakékoli dotazy můžete publikovat na konci tohoto článku nebo na [fóru Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 
 
 ## <a name="architectural-components"></a>Komponenty architektury
 
-Zde je, co potřebujete pro replikaci virtuálních počítačů Hyper-V tooa sekundární lokalita VMM.
+Dál je uvedeno, co potřebujete pro replikaci virtuálních počítačů Hyper-V do sekundární lokality VMM.
 
 **Komponenta** | **Umístění** | **Podrobnosti**
 --- | --- | ---
-**Azure** | Předplatné Azure. | Vytvoření trezoru služeb zotavení v hello předplatné Azure, tooorchestrate a spravovat replikace mezi umístěními VMM.
-**Server VMM** | Potřebujete primární a sekundární umístění VMM. | Doporučujeme, abyste server VMM v primární lokalitě hello a po jednom v sekundární lokalitě hello 
-**Server Hyper-V** |  Jeden nebo více servery Hyper-V host v hello primárních a sekundárních cloudech VMM. | Data se replikují mezi hello primární a sekundární servery Hyper-V hostiteli prostřednictvím hello LAN nebo VPN pomocí protokolu Kerberos nebo ověření certifikátu.  
-**Virtuální počítače Hyper-V** | Na hostitelském serveru Hyper-V. | Hello zdrojový hostitelský server by měl mít aspoň jeden virtuální počítač, který má tooreplicate.
+**Azure** | Předplatné Azure. | V předplatném Azure vytvoříte trezor služby Recovery Services sloužící k orchestraci a správě replikace mezi umístěními VMM.
+**Server VMM** | Potřebujete primární a sekundární umístění VMM. | Doporučujeme jeden server VMM v primární lokalitě a další v sekundární lokalitě. 
+**Server Hyper-V** |  Jeden nebo několik hostitelských serverů Hyper-V v primárním a sekundárním cloudu VMM. | Data se replikují mezi primárním a sekundárním hostitelským serverem Hyper-V přes síť LAN nebo VPN na základě protokolu Kerberos nebo ověření certifikátem.  
+**Virtuální počítače Hyper-V** | Na hostitelském serveru Hyper-V. | Zdrojový hostitelský server musí mít alespoň jeden virtuální počítač, který chcete replikovat.
 
 ## <a name="replication-process"></a>Proces replikace
 
-1. Nastavit hello účet Azure, vytvořte trezor služeb zotavení a určit, co chcete tooreplicate.
-2. Nakonfigurujete hello zdrojové a cílové nastavení replikace, které zahrnuje instalaci hello zprostředkovatele Azure Site Recovery na servery VMM a agenta služeb zotavení Microsoft Azure hello na každém hostiteli technologie Hyper-V.
-3. Můžete vytvořit zásadu replikace pro zdroj hello cloudu VMM. zásady Hello je použité tooall virtuální počítače umístěné na hostitelích v cloudu hello.
-4. Povolení replikace pro každé VMM, a proběhne počáteční replikace virtuálního počítače, v souladu s nastavením text hello, které zvolíte.
+1. Nastavíte účet Azure, vytvoříte trezor služby Recovery Services a určíte, co chcete replikovat.
+2. Nakonfigurujete nastavení replikace zdroje a cíle, což zahrnuje instalaci zprostředkovatele služby Azure Site Recovery na serverech VMM a agenta Microsoft Azure Recovery Services na každém hostiteli Hyper-V.
+3. Vytvoříte zásady replikace pro zdrojový cloud VMM. Zásady se použijí pro všechny virtuální počítače na hostitelích v cloudu.
+4. Povolíte replikaci pro každou službu VMM a dojde k počáteční replikaci virtuálního počítače podle zvoleného nastavení.
 5. Po počáteční replikaci se zahájí replikace rozdílových změn. Sledované změny se pro jednotlivé položky ukládají do souboru .hrl.
 
 
-![Místní tooon místní](./media/vmm-to-vmm-walkthrough-architecture/arch-onprem-onprem.png)
+![Z lokálního prostředí do lokálního prostředí](./media/vmm-to-vmm-walkthrough-architecture/arch-onprem-onprem.png)
 
 ## <a name="failover-and-failback-process"></a>Proces převzetí služeb při selhání a navrácení služeb po obnovení
 
-1. Můžete spustit plánované nebo neplánované [převzetí služeb při selhání](site-recovery-failover.md) mezi místními lokalitami. Pokud spustíte plánované převzetí služeb při selhání, pak zdrojové virtuální počítače jsou vypnout tooensure nedošlo ke ztrátě dat.
-2. Můžete převzít jeden počítač nebo vytvořit [plány obnovení](site-recovery-create-recovery-plans.md) tooorchestrate převzetí služeb při selhání více počítačů.
-4. Pokud provádíte tooa sekundární lokality neplánované převzetí služeb při selhání, po převzetí služeb při selhání počítače hello v hello sekundárního umístění nejsou povolené pro ochranu nebo replikace. Pokud jste spustili plánované převzetí služeb při selhání, po převzetí služeb při selhání hello, jsou chráněné počítače v hello sekundárního umístění.
-5. Poté potvrďte hello převzetí služeb při selhání toostart přístupem hello zatížení z hello repliky virtuálních počítačů.
-6. Při primární lokality je opět k dispozici, můžete zahájit tooreplicate zpětná replikace z primární toohello sekundární lokality hello. Zpětná replikace přináší hello virtuální počítače v chráněném stavu, ale hello sekundárního datového centra je stále aktivní umístění hello.
-7. toomake hello primární lokalitu do umístění služby active hello znovu spustíte plánované převzetí služeb při selhání z sekundární tooprimary, za nímž následuje jiný zpětné replikace.
+1. Můžete spustit plánované nebo neplánované [převzetí služeb při selhání](site-recovery-failover.md) mezi místními lokalitami. Pokud spustíte plánovanou operaci, dojde k ukončení zdrojových virtuálních počítačů, aby se zcela předešlo možné ztrátě dat.
+2. Můžete převzít službu při selhání jednoho počítače nebo vytvořit [plány zotavení](site-recovery-create-recovery-plans.md) a orchestrovat převzetí služeb více počítačů.
+4. Pokud proběhlo neplánované převzetí služeb při selhání sekundární lokalitou, po provedení převzetí služeb nebudou počítače v sekundární lokalitě chráněné pomocí replikace. Pokud jste spustili plánované převzetí služeb při selhání, počítače v sekundárním umístění chráněné budou.
+5. Po potvrzení převzetí služeb můžete začít používat úlohu na replikovaném virtuálním počítači.
+6. Až bude primární lokalita opět dostupná, zahájíte zpětnou replikaci ze sekundární lokality do primární. Po zpětné replikaci budou virtuální počítače v chráněném stavu, ale sekundární datové centrum bude stále aktivním umístěním.
+7. Chcete-li z primární lokality opět udělat aktivní, zahajte plánované převzetí služeb ze sekundární lokality do primární, následované další zpětnou replikací.
 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Přejděte příliš[krok 2: Přečtěte si hello předpoklady a omezení](vmm-to-vmm-walkthrough-prerequisites.md).
+Přejděte ke [kroku 2: Kontrola požadavků a omezení](vmm-to-vmm-walkthrough-prerequisites.md).

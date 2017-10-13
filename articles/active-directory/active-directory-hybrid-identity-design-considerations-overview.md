@@ -1,5 +1,5 @@
 ---
-title: "aspekty návrhu rozšíření aaaAzure služby Active Directory hybridní identity – přehled | Microsoft Docs"
+title: "Azure Active Directory hybridní identity aspekty návrhu – přehled | Microsoft Docs"
 description: "Přehled a obsahu mapy Průvodce aspekty návrhu hybridní Identity"
 documentationcenter: 
 services: active-directory
@@ -14,45 +14,45 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 10aacb04c90abd100eb56d7c44d590946b052f18
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e2a70f2474298618dd8ee11c583f8f445d7eba7d
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Důležité informace k návrhu hybridní identity Azure Active Directory
-Spotřebitelské zařízení jsou Proliferující hello, world podnikové a jsou snadno tooadopt cloudové aplikace software jako služba (SaaS). V důsledku toho je náročné zachování kontroly nad přístup k aplikaci uživatelů napříč platformami interní datová centra a cloudu.  
+Zařízení se systémem příjemce jsou proliferating podnikové world a cloudové aplikace software jako služba (SaaS) se dají snadno přijmout. V důsledku toho je náročné zachování kontroly nad přístup k aplikaci uživatelů napříč platformami interní datová centra a cloudu.  
 
-Řešení společnosti Microsoft identity span místní a cloudové schopnosti, vytváření identitu jednoho uživatele pro ověřování a autorizaci tooall prostředků, bez ohledu na umístění. Říkáme toto hybridní identita. Existují různých možností návrhu a konfigurací pro hybridní identita pomocí řešení Microsoft a v některých případech může být obtížné toodetermine, která kombinace bude nejlépe vyhovovat potřebám vaší organizace hello. 
+Řešení společnosti Microsoft identity span místní a cloudové schopnosti, vytváření identitu jednoho uživatele pro ověřování a autorizaci pro všechny prostředky, bez ohledu na umístění. Říkáme toto hybridní identita. Existují různé návrhu a možnosti konfigurace pro hybridní identita pomocí řešení Microsoft a v některých případech může být obtížné určit, která kombinace bude nejlépe vyhovovat potřebám vaší organizace. 
 
-Tento průvodce aspekty návrhu hybridní Identity vám pomůže toounderstand jak toodesign hybridní řešení identit, které bude nejlépe vyhovovat hello obchodním a technologickým požadavkům vaší organizace.  Tento průvodce Detailně popisuje sérii kroků a úloh, můžete postupovat podle toohelp návrhu hybridní řešení identit, který splňuje požadavky vaší organizace jedinečný. V rámci hello kroků a úloh průvodce hello nabídne hello relevantní technologie a funkce Možnosti k dispozici tooorganizations toomeet funkční a kvalitu služeb (například dostupnost, škálovatelnost, výkon, možnosti správy a zabezpečení) požadavky na úroveň. 
+Tento průvodce aspekty návrhu hybridní Identity vám pomůže pochopit, jak k navržení řešení hybridní identity, nejlépe vyhovuje firmy a technologickým požadavkům vaší organizace.  Tento průvodce Detailně popisuje sérii kroků a úloh, které vám pomůžou při návrhu řešení hybridní identity, který splňuje požadavky vaší organizace jedinečný. V krocích a úlohách, bude k dispozici relevantní technologie a funkce možností organizace k dispozici funkční úroveň a kvalitu služeb (například dostupnost, škálovatelnost, výkon, možnosti správy a zabezpečení) v Průvodci úroveň požadavky. 
 
-Konkrétně hello hybridní identity návrhu aspekty Průvodce cíle jsou hello tooanswer následující otázky: 
+Konkrétně je cílů Průvodce aspekty návrhu hybridní identity odpovězte si na následující otázky: 
 
-* Co dělat otázky I potřebovat tooask a odpovědět toodrive navrhnout hybridní identity specifické technologii nebo doméně problému, nejlépe splňuje mé požadavky?
-* Jakou posloupnost aktivit měli dokončení toodesign hybridní řešení identit pro hello technologii nebo doménu problému? 
-* Jaké hybridní identity technologické a konfigurační možnosti jsou k dispozici toohelp mi splnění mých požadavků? Jaké jsou hello kompromis mezi těmito možnostmi, aby bylo možné vybrat nejlepší možnost hello pro firmy?
+* Jaké otázky potřebuji zodpovědět k dovedení navrhnout hybridní identity specifické technologii nebo doméně problému, nejlépe splňuje mé požadavky a požádejte?
+* Jakou posloupnost aktivit, by se měla dokončit k navržení řešení hybridní identity pro technologii nebo doménu problému? 
+* Jaké hybridní identity technologické a konfigurační možnosti jsou dostupné ke splnění mých požadavků? Jaké jsou kompromisy mezi těmito možnostmi, aby bylo možné vybrat nejlepší možnost pro firmy?
 
 ## <a name="who-is-this-guide-intended-for"></a>Komu je tato příručka určená?
  Ředitel IT, společností CITO, hlavní Identity architekty Enterprise architekty a architekti informačních technologií zodpovědní za návrhy řešení hybridní identity pro střední a velké organizace.
 
 ## <a name="how-can-this-guide-help-you"></a>Jak může tento průvodce pomoct?
-Můžete použít tento průvodce toounderstand jak toodesign hybridní řešení identit, které je možné toointegrate cloudu na základě systém správy identit s vaší stávající místní řešení identit. 
+Tento průvodce vám pomůže porozumět procesu návrhu hybridní řešení identit, aby bylo možné integrovat řešení aktuální identita místní systém správy cloudové identity. 
 
-Hello následující obrázek ukazuje příklad hybridní řešení identit, která umožňuje správci IT toomanage toointegrate jejich aktuální Windows Server Active Directory řešením místně s Microsoft Azure Active Directory tooenable uživatelé toouse jedním Přihlašování (SSO) ve všech aplikacích, které jsou umístěné v cloudu hello a místně.
+Následující obrázek ukazuje příklad hybridní řešení identit, která umožňuje správcům IT spravovat k integraci se službou Microsoft Azure Active Directory umožňuje uživatelům používat jednotné přihlašování (aktuální Windows Server Active Directory řešením místních Jednotné přihlašování) ve všech aplikacích, které jsou umístěné v cloudu a místně.
 
 ![](./media/hybrid-id-design-considerations/hybridID-example.png)
 
-Hello výše obrázek je příkladem řešení hybridní identity, které se využívají cloudové služby toointegrate s místních funkcí v pořadí tooprovide procesu ověřování koncový uživatel toohello jeden prostředí a toofacilitate IT Správa Tyto prostředky. I když může se jednat o velmi běžný scénář, každá organizace hybridní identity návrhu je pravděpodobné toobe liší od hello příkladu znázorněno na obrázku 1 z důvodu toodifferent požadavky. 
+Výše uvedený obrázek je příkladem řešení hybridní identity, které se využívají cloudové služby pro integraci místních funkcí za účelem jednotnému v procesu ověřování koncového uživatele a usnadnění Správa těch, které IT prostředky. I když může se jednat o velmi běžný scénář, každá organizace hybridní identity návrhu, bude pravděpodobně lišit od příkladu znázorněno na obrázku 1 kvůli různým požadavkům. 
 
-Tento průvodce popisuje řady kroků a úloh, můžete postupovat podle toodesign hybridní řešení identit, který splňuje požadavky vaší organizace jedinečný. V rámci hello následující kroky a úlohy, hello Průvodce uvede hello relevantní technologie a funkce Možnosti k dispozici tooyou toomeet kvality funkčnosti a služeb požadavky na úroveň pro vaši organizaci.
+Tento průvodce popisuje řady kroků a úloh, které vám pomůžou při návrhu řešení hybridní identity, který splňuje požadavky vaší organizace jedinečný. V následujících krocích a úlohách uvádí Průvodce relevantní technologie a možnosti funkcí, které jsou k dispozici na vás funkční úroveň a úrovně požadavky na kvalitu služeb pro vaši organizaci.
 
 **Předpoklady**: máte nějaké zkušenosti s Windows serverem, Active Directory Domain Services a Azure Active Directory. V tomto dokumentu předpokládáme, že hledáte jak řešení můžete splňují vaše obchodní potřeby samostatně nebo integrované řešení.
 
 ## <a name="design-considerations-overview"></a>Přehled aspektů návrhu
-Tento dokument obsahuje sadu kroků a úloh, můžete postupovat podle toodesign hybridní řešení identit, které nejlépe vyhovuje vašim požadavkům. Hello kroky uvádíme v seřazené posloupnosti. Aspekty návrhu, s nimiž se seznámíte v dalších krocích může vyžadovat toochange rozhodnutí, která jste udělali v dřívějších krocích, však kvůli tooconflicting rozhodnutích při návrhu. Každý pokus se uskuteční tooalert jste konflikty návrhů toopotential v dokumentu hello. 
+Tento dokument obsahuje sadu kroků a úloh, které vám pomůžou při návrhu řešení hybridní identity, které nejlépe vyhovuje vašim požadavkům. Kroky uvádíme v seřazené posloupnosti. Aspekty návrhu, s nimiž se seznámíte v dalších krocích může vyžadovat budete muset změnit rozhodnutí, která jste udělali v dřívějších krocích, však kvůli konfliktním volbám návrhu. Každý pokus se uskuteční vás upozorní na potenciální konflikty návrhu v celém dokumentu. 
 
-Bude přicházejí na hello návrhu, která nejlépe splňuje vaše požadavky dopracujete projdete kroky hello podle potřeby tooincorporate několikrát všechny aspekty uvedené hello v dokumentu hello. 
+Dorazí návrhu, která nejlépe splňuje vaše požadavky dopracujete projdete kroky tolikrát, kolikrát podle potřeby, abyste zapracovali všechny aspekty uvedené v dokumentu. 
 
 | Fáze hybridní Identity | Seznam témat |
 | --- | --- |
@@ -61,5 +61,5 @@ Bude přicházejí na hello návrhu, která nejlépe splňuje vaše požadavky d
 | Plánování životního cyklu hybridní identity |[Určení úlohy správy hybridní identity](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) <br> [Synchronizace správy](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)<br> [Určení strategie přijetí správy hybridní identity](active-directory-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md) |
 
 ## <a name="download-this-guide"></a>Stáhněte si tento průvodce
-Pdf verze Průvodce aspekty návrhu hybridní Identity hello můžete stáhnout z hello [galerii Technet](https://gallery.technet.microsoft.com/Azure-Hybrid-Identity-b06c8288). 
+Pdf verzi Průvodce aspekty návrhu hybridní Identity z si můžete stáhnout [galerii Technet](https://gallery.technet.microsoft.com/Azure-Hybrid-Identity-b06c8288). 
 

@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure AD v2 Windows Desktop Začínáme - instalace | Microsoft Docs"
+title: "Azure AD v2 Windows Desktop získávání spuštěno – nastavení | Microsoft Docs"
 description: "Jak aplikace Windows Desktop .NET (XAML) můžete volat rozhraní API, které vyžadují přístupové tokeny bodem v2 Azure Active Directory"
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,40 +15,40 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 097ea99bef01e15edaa5ff914ff4e18392b77c5a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4065727aef04d7969d438c6ef79127bb44568be1
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 ## <a name="set-up-your-project"></a>Nastavení projektu
 
-Tato část obsahuje podrobné pokyny, jak toocreate nový projekt toodemonstrate jak toointegrate Windows Desktop .NET aplikace (XAML) s *přihlášení se společností Microsoft* , se můžete dotazovat webové rozhraní API, která vyžaduje token.
+Tato část obsahuje podrobné pokyny pro vytvoření nového projektu do ukazují, jak integrovat aplikace Windows Desktop .NET (XAML) s *přihlášení se společností Microsoft* , se můžete dotazovat webové rozhraní API, která vyžaduje token.
 
-Hello aplikace vytvořené v této příručce zpřístupní tlačítko toograph a zobrazit výsledky na obrazovce a odhlášení tlačítko.
+Aplikace vytvořené v této příručce zpřístupní tlačítko graf a zobrazit výsledky na obrazovce a odhlášení tlačítko.
 
-> Dáváte přednost toodownload projektu sady Visual Studio Tato ukázka místo? [Stažení projektu](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/master.zip) a přeskočit toohello [krok konfigurace](#create-an-application-express) ukázka kódu hello tooconfigure před provedením.
+> Místo toho stáhněte projekt Visual Studio Tato ukázka dávají přednost? [Stažení projektu](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/master.zip) a pokračujte [krok konfigurace](#create-an-application-express) před provedením konfigurace ukázka kódu.
 
 
 ### <a name="create-your-application"></a>Vytvoření aplikace
 1. V sadě Visual Studio:`File` > `New` > `Project`<br/>
 2. V části *šablony*, vyberte možnost`Visual C#`
-3. Vyberte `WPF App` (nebo *aplikaci WPF* v závislosti na verzi hello sady Visual Studio)
+3. Vyberte `WPF App` (nebo *aplikaci WPF* v závislosti na verzi sady Visual Studio)
 
-## <a name="add-hello-microsoft-authentication-library-msal-tooyour-project"></a>Přidání projektu tooyour hello Microsoft ověřování knihovny (MSAL)
+## <a name="add-the-microsoft-authentication-library-msal-to-your-project"></a>Do projektu přidejte knihovny ověřování společnosti Microsoft (MSAL)
 1. V sadě Visual Studio:`Tools` > `Nuget Package Manager` > `Package Manager Console`
-2. Zkopírujte a vložte následující hello v hello okna konzoly Správce balíčků:
+2. Zkopírujte a vložte následující v okně konzoly Správce balíčků:
 
 ```powershell
 Install-Package Microsoft.Identity.Client -Pre
 ```
 
-> balíček Hello výše nainstaluje hello Microsoft ověřování knihovny (MSAL). MSAL zpracovává získávání, ukládání do mezipaměti a aktualizaci tooaccess toskens použít uživatelské rozhraní API, které jsou chráněné službou Azure Active Directory v2.
+> Výše uvedené balíček nainstaluje Microsoft ověřování knihovny (MSAL). MSAL zpracovává získávání, ukládání do mezipaměti a aktualizaci toskens uživatel používá pro přístup k rozhraní API, které jsou chráněné službou Azure Active Directory v2.
 
-## <a name="add-hello-code-tooinitialize-msal"></a>Přidat hello kódu tooinitialize MSAL
-Tento krok vám pomůže vytvořit třída toohandle interakci s MSAL knihovnu, jako je například zpracování tokenů.
+## <a name="add-the-code-to-initialize-msal"></a>Přidat kód pro inicializaci MSAL
+Tento krok vám pomůže vytvořit třídu pro zpracování interakci s MSAL knihovnu, jako je například zpracování tokenů.
 
-1. Otevřete hello `App.xaml.cs` souboru a přidat hello odkaz pro třídu toohello MSAL knihovny:
+1. Otevřete `App.xaml.cs` souboru a odkaz na MSAL knihovny přidejte do třídy:
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -56,15 +56,15 @@ using Microsoft.Identity.Client;
 <!-- Workaround for Docs conversion bug -->
 <ol start="2">
 <li>
-Aktualizujte následující toohello – třída aplikace hello:
+Aktualizace třídy aplikace takto:
 </li>
 </ol>
 
 ```csharp
 public partial class App : Application
 {
-    //Below is hello clientId of your app registration. 
-    //You have tooreplace hello below with hello Application Id for your app registration
+    //Below is the clientId of your app registration. 
+    //You have to replace the below with the Application Id for your app registration
     private static string ClientId = "your_client_id_here";
 
     public static PublicClientApplication PublicClientApp = new PublicClientApplication(ClientId);
@@ -73,9 +73,9 @@ public partial class App : Application
 ```
 
 ## <a name="create-your-applications-ui"></a>Vytvoření uživatelského rozhraní aplikace
-Hello části níže ukazuje, jak aplikaci můžete dotazovat chráněných back-end serveru, jako je Microsoft Graph. Soubor MainWindow.xaml by měl automaticky vytvoří jako součást vaše šablona projektu. Tento soubor otevřít tento soubor a pak postupujte podle pokynů hello níže:
+Následující části ukazuje, jak aplikaci můžete dotazovat chráněných back-end serveru, jako je Microsoft Graph. Soubor MainWindow.xaml by měl automaticky vytvoří jako součást vaše šablona projektu. Tento soubor otevřít tento soubor a pak postupujte podle pokynů níže:
 
-Nahraďte aplikace `<Grid>` být hello následující:
+Nahraďte aplikace `<Grid>` být následující:
 
 ```xml
 <Grid>

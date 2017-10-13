@@ -1,6 +1,6 @@
 ---
-title: "aaaESP8266 toocloud - tooAzure připojit Sparkfun ESP8266 věc Dev IoT Hub | Microsoft Docs"
-description: "Zjistěte, jak toosetup a připojte Sparkfun ESP8266 věc Dev tooAzure IoT Hub pro něj toosend data toohello Azure Cloudová platforma v tomto kurzu."
+title: "ESP8266 do cloudu - připojení Sparkfun ESP8266 věc Dev do služby Azure IoT Hub | Microsoft Docs"
+description: "Zjistěte, jak nastavit a připojení k Azure IoT Hub pro něj k odesílání dat do Azure Cloudová platforma v tomto kurzu Sparkfun ESP8266 věc vývojářů."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2017
 ms.author: xshi
-ms.openlocfilehash: 19b249df23b6df516634853521c6d532f51014da
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 557f0cdf375b345e0dbe0526f5a5bd3c050dec38
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="connect-sparkfun-esp8266-thing-dev-tooazure-iot-hub-in-hello-cloud"></a>Připojit Sparkfun ESP8266 věc Dev tooAzure IoT Hub v cloudu hello
+# <a name="connect-sparkfun-esp8266-thing-dev-to-azure-iot-hub-in-the-cloud"></a>Připojení k Azure IoT Hub v cloudu Sparkfun ESP8266 věc vývojářů
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
@@ -29,36 +29,36 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="what-you-will-do"></a>Co provedete
 
-Připojte Sparkfun ESP8266 věc Dev tooan IoT hub, které vytvoříte. Pak spusťte ukázkovou aplikaci na ESP8266 toocollect teploty a vlhkosti data z DHT22 senzoru. Nakonec odešlete hello senzor data tooyour IoT hub.
+Sparkfun ESP8266 věc vývojářů připojte do služby IoT hub, které vytvoříte. Pak spusťte ukázkovou aplikaci na ESP8266 ke shromažďování dat teploty a vlhkosti ze DHT22 senzoru. Nakonec odešlete data snímačů do služby IoT hub.
 
 > [!NOTE]
-> Pokud používáte jiné ESP8266 panely, můžete stále postupujte podle těchto kroků tooconnect ho tooyour IoT hub. V závislosti na hello ESP8266 Tabule, kterou používáte, může být nutné tooreconfigure hello `LED_PIN`. Například pokud používáte ESP8266 z AI Thinker, můžete změnit z `0` příliš`2`. Ještě není hotová kit?: klikněte na tlačítko [sem](http://azure.com/iotstarterkits)
+> Pokud používáte jiné ESP8266 panely, můžete stále následujícím postupem pro připojení do služby IoT hub. V závislosti na ESP8266 Tabule, kterou používáte, bude pravděpodobně třeba překonfigurovat `LED_PIN`. Například pokud používáte ESP8266 z AI Thinker, můžete změnit z `0` k `2`. Ještě není hotová kit?: klikněte na tlačítko [sem](http://azure.com/iotstarterkits)
 
 ## <a name="what-you-will-learn"></a>Co se dozvíte
 
-* Jak toocreate služby IoT hub a registrovat zařízení za účelem věcí
-* Jak tooconnect věc Dev s hello senzor a váš počítač.
-* Jak data snímačů toocollect spuštěním ukázkovou aplikaci na věc účelem
-* Jak toosend hello senzor data tooyour IoT hub.
+* Postup vytvoření služby IoT hub a registrovat zařízení za účelem věcí
+* Postup připojení věc Dev s senzoru a váš počítač.
+* Postup shromažďování dat snímačů spuštěním ukázkovou aplikaci na věc účelem
+* Jak odesílat data snímačů do služby IoT hub.
 
 ## <a name="what-you-will-need"></a>Co budete potřebovat
 
-![součásti potřebné pro kurz hello](media/iot-hub-sparkfun-thing-dev-get-started/2_parts-needed-for-the-tutorial.png)
+![součásti potřebné pro tento kurz](media/iot-hub-sparkfun-thing-dev-get-started/2_parts-needed-for-the-tutorial.png)
 
-toocomplete tuto operaci je třeba hello následujících částí z vaší věc Dev Starter Kit:
+Pro dokončení této operace, musíte z vaší věc Dev Starter Kit následujících částí:
 
-* Hello Tabule Sparkfun ESP8266 věc vývojářů.
-* Micro USB tooType kabelu A USB.
+* Panel Sparkfun ESP8266 věc vývojářů.
+* Micro USB na kabelu USB typ A.
 
-Potřebujete taky následující hello vývojové prostředí:
+Vývojové prostředí musíte také následující:
 
 * Aktivní předplatné Azure. Pokud nemáte účet Azure [vytvořit Bezplatný zkušební účet Azure](https://azure.microsoft.com/free/) za několik minut.
 * Mac nebo počítači se systémem Windows nebo Ubuntu.
-* Bezdrátové sítě pro tooconnect Sparkfun ESP8266 věc Dev k.
-* Nástroj pro konfiguraci internetové připojení toodownload hello.
-* [Arduino IDE](https://www.arduino.cc/en/main/software) verze 1.6.8 (nebo novější), dřívější verze nebudou pracovat s knihovnou AzureIoT hello.
+* Bezdrátové sítě pro Sparkfun ESP8266 věc vývojářů pro připojení k.
+* Připojení k Internetu stahovat nástroj konfigurace.
+* [Arduino IDE](https://www.arduino.cc/en/main/software) verze 1.6.8 (nebo novější), dřívější verze nebudou pracovat s knihovnou AzureIoT.
 
-Hello následující položky jsou volitelné v případě, že nemáte senzoru. Máte také možnost hello použití dat snímačů simulované.
+Následující položky jsou volitelné, v případě, že nemáte senzoru. Máte také možnost používat data snímačů simulované.
 
 * Adafruit DHT22 teploty a vlhkosti senzoru.
 * Breadboard.
@@ -66,15 +66,15 @@ Hello následující položky jsou volitelné v případě, že nemáte senzoru.
 
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
-## <a name="connect-esp8266-thing-dev-with-hello-sensor-and-your-computer"></a>Připojit ESP8266 věc Dev s hello senzor a počítače
+## <a name="connect-esp8266-thing-dev-with-the-sensor-and-your-computer"></a>Připojit ESP8266 věc Dev s senzoru a počítače
 
-### <a name="connect-a-dht22-temperature-and-humidity-sensor-tooesp8266-thing-dev"></a>Senzor teploty a vlhkosti DHT22 připojit tooESP8266 věc vývojářů
+### <a name="connect-a-dht22-temperature-and-humidity-sensor-to-esp8266-thing-dev"></a>Senzor teploty a vlhkosti DHT22 připojit k ESP8266 věc vývojářů
 
-Použijte hello breadboard a můstek vodičům toomake hello připojení následujícím způsobem. Pokud nemáte senzoru, tuto část přeskočte, protože data snímačů simulované můžete použít místo.
+Pomocí vedení breadboard a můstek k připojení následujícím způsobem. Pokud nemáte senzoru, tuto část přeskočte, protože data snímačů simulované můžete použít místo.
 
 ![odkaz na připojení](media/iot-hub-sparkfun-thing-dev-get-started/15_connections_on_breadboard.png)
 
-Pro kód PIN senzor použijeme následující kabeláž hello:
+Pro kód PIN senzor použijeme následující kabeláž:
 
 | Spuštění (senzor)           | End (panelu)           | Kabel barev   |
 | -----------------------  | ---------------------- | ------------: |
@@ -89,83 +89,83 @@ Teď vaše Sparkfun ESP8266 věc Dev by měly být připojené s pracovní senzo
 
 ![připojit dht22 s ESP8266 věc vývojářů](media/iot-hub-sparkfun-thing-dev-get-started/8_connect-dht22-thing-dev.png)
 
-### <a name="connect-sparkfun-esp8266-thing-dev-tooyour-computer"></a>Připojte počítač tooyour Sparkfun ESP8266 věc vývojářů
+### <a name="connect-sparkfun-esp8266-thing-dev-to-your-computer"></a>Připojte k počítači Sparkfun ESP8266 věc vývojářů
 
-Použijte hello Micro USB tooType A USB kabel tooconnect Sparkfun ESP8266 věc Dev tooyour počítači následujícím způsobem.
+USB Micro kabelem USB typ A slouží k připojení Sparkfun ESP8266 věc vývojářů v počítači následujícím způsobem.
 
-![Připojte počítač tooyour huzzah prolnutí](media/iot-hub-sparkfun-thing-dev-get-started/9_connect-thing-dev-computer.png)
+![prolnutí huzzah připojte k počítači](media/iot-hub-sparkfun-thing-dev-get-started/9_connect-thing-dev-computer.png)
 
 ### <a name="add-serial-port-permissions--ubuntu-only"></a>Přidání oprávnění sériového portu – pouze Ubuntu
 
-Pokud používáte Ubuntu, zkontrolujte, zda že má uživatel normální hello oprávnění toooperate na hello USB port z Sparkfun ESP8266 věc účelem tooadd sériového portu oprávnění pro běžné uživatele, postupujte takto:
+Pokud používáte Ubuntu, zkontrolujte, zda že normální uživatel má oprávnění k provozu na USB port z Sparkfun ESP8266 věc účelem Pokud chcete přidat oprávnění sériového portu pro běžné uživatele, postupujte takto:
 
-1. Spusťte následující příkazy v terminálu hello:
+1. V terminálu, spusťte následující příkazy:
 
    ```bash
    ls -l /dev/ttyUSB*
    ls -l /dev/ttyACM*
    ```
 
-   Zobrazí jednu z následujících výstupy hello:
+   Zobrazí jednu z následujících výstupy:
 
    * CRW-rw---1 kořenové uucp xxxxxxxx
    * CRW-rw---xxxxxxxx síti službou 1 root
 
-   Ve výstupu hello, Všimněte si `uucp` nebo `dialout` tedy hello vlastníka název skupiny hello portu USB.
+   Ve výstupu, Všimněte si `uucp` nebo `dialout` který je vlastníkem název skupiny portu USB.
 
-1. Přidáte skupinu toohello uživatelů hello spuštěním hello následující příkaz:
+1. Přidejte uživatele do skupiny tak, že spustíte následující příkaz:
 
    ```bash
    sudo usermod -a -G <group-owner-name> <username>
    ```
 
-   `<group-owner-name>`je název skupiny vlastníka hello, kterou jste získali v předchozím kroku hello. `<username>`je Ubuntu uživatelské jméno.
+   `<group-owner-name>`je název vlastníka skupiny, kterou jste získali v předchozím kroku. `<username>`je Ubuntu uživatelské jméno.
 
-1. Odhlaste Ubuntu a přihlaste se znovu pro hello změnit tootake efekt.
+1. Odhlaste se Ubuntu a přihlaste se znovu pro změna se projeví.
 
-## <a name="collect-sensor-data-and-send-it-tooyour-iot-hub"></a>Shromažďování dat snímačů a odeslat tooyour IoT hub
+## <a name="collect-sensor-data-and-send-it-to-your-iot-hub"></a>Shromažďování dat snímačů a odeslat do služby IoT hub
 
-V této části můžete nasazení a spuštění ukázkové aplikace na Sparkfun ESP8266 věc účelem Hello ukázkovou aplikaci bliká hello DIODU na Sparkfun ESP8266 věc vývojářů a odešle hello teploty a vlhkosti data shromážděná z hello DHT22 senzor tooyour služby IoT hub.
+V této části můžete nasazení a spuštění ukázkové aplikace na Sparkfun ESP8266 věc účelem Ukázkovou aplikaci bliká DIODU na Sparkfun ESP8266 věc vývojářů a odešle teploty a vlhkosti data shromážděná z senzoru DHT22 do služby IoT hub.
 
-### <a name="get-hello-sample-application-from-github"></a>Získat hello ukázkovou aplikaci z webu GitHub
+### <a name="get-the-sample-application-from-github"></a>Získat ukázkovou aplikaci z webu GitHub
 
-Ukázková aplikace Hello jsou hostované na Githubu. Klonování úložiště hello ukázka, která obsahuje ukázkovou aplikaci hello z Githubu. tooclone hello Ukázka úložiště, postupujte takto:
+Ukázkové aplikace jsou hostované na Githubu. Naklonujte úložiště ukázka, která obsahuje ukázkovou aplikaci z webu GitHub. Klonovat úložiště ukázkové, postupujte takto:
 
 1. Otevřete příkazový řádek nebo okno terminálu.
-1. Přejděte tooa složku, kam chcete hello ukázkové aplikace toobe uložené.
-1. Spusťte následující příkaz hello:
+1. Přejděte do složky, kam chcete ukázkovou aplikaci k uložení.
+1. Spusťte následující příkaz:
 
    ```bash
    git clone https://github.com/Azure-Samples/iot-hub-SparkFun-ThingDev-client-app.git
    ```
 
-Instalovat balíček hello pro vývojáře věc ESP8266 Sparkfun v integrovaném vývojovém prostředí Arduino:
+Instalace balíčku pro vývojáře věc ESP8266 Sparkfun v integrovaném vývojovém prostředí Arduino:
 
-1. Otevřete složku hello se uloží hello ukázkovou aplikaci.
-1. Otevřete soubor app.ino hello ve složce aplikace hello v Arduino IDE.
+1. Otevřete složku, kde je uložen ukázkovou aplikaci.
+1. Otevřete soubor app.ino ve složce aplikace v integrovaném vývojovém prostředí Arduino.
 
-   ![Otevřete hello ukázkovou aplikaci v arduino ide](media/iot-hub-sparkfun-thing-dev-get-started/10_arduino-ide-open-sample-app.png)
+   ![Otevřete ukázkovou aplikaci v arduino ide](media/iot-hub-sparkfun-thing-dev-get-started/10_arduino-ide-open-sample-app.png)
 
-1. V hello Arduino IDE, klikněte na **soubor** > **Předvolby**.
-1. V hello **Předvolby** dialogové okno pole, klikněte na tlačítko Další toohello ikonu hello **další adresy URL Manager panely** textové pole.
-1. V místním okně hello, zadejte následující adresu URL hello a pak klikněte na tlačítko **OK**.
+1. V prostředí IDE Arduino, klikněte na tlačítko **soubor** > **Předvolby**.
+1. V **Předvolby** dialogové okno pole, klikněte na ikonu vedle **další adresy URL Manager panely** textové pole.
+1. V místním okně, zadejte následující adresu URL a pak klikněte na tlačítko **OK**.
 
    `http://arduino.esp8266.com/stable/package_esp8266com_index.json`
 
-   ![Adresa url balíčku bodu tooa v arduino ide](media/iot-hub-sparkfun-thing-dev-get-started/11_arduino-ide-package-url.png)
+   ![přejděte na adresu url balíčku v arduino ide](media/iot-hub-sparkfun-thing-dev-get-started/11_arduino-ide-package-url.png)
 
-1. V hello **předvoleb** dialogové okno, klikněte na tlačítko **OK**.
+1. V **předvoleb** dialogové okno, klikněte na tlačítko **OK**.
 1. Klikněte na tlačítko **nástroje** > **Tabule** > **Manager panely**a poté vyhledejte esp8266.
    Musí být nainstalován ESP8266 verzí 2.2.0 nebo novější.
 
-   ![je nainstalovaný balíček esp8266 Hello](media/iot-hub-sparkfun-thing-dev-get-started/12_arduino-ide-esp8266-installed.png)
+   ![instalaci balíčku esp8266](media/iot-hub-sparkfun-thing-dev-get-started/12_arduino-ide-esp8266-installed.png)
 
 1. Klikněte na tlačítko **nástroje** > **Tabule** > **Sparkfun ESP8266 věc Dev**.
 
 ### <a name="install-necessary-libraries"></a>Instalace nezbytné knihovny
 
-1. V hello Arduino IDE, klikněte na **nákresu** > **zahrnují knihovny** > **spravovat knihovny**.
-1. Vyhledejte následující názvy knihoven jeden po druhém hello. Pro každou hello knihovně zjistíte, klikněte na tlačítko **nainstalovat**.
+1. V prostředí IDE Arduino, klikněte na tlačítko **nákresu** > **zahrnují knihovny** > **spravovat knihovny**.
+1. Vyhledejte následující knihovny názvy po jednom. Pro každou z knihovny zjistíte, klikněte na tlačítko **nainstalovat**.
    * `AzureIoTHub`
    * `AzureIoTUtility`
    * `AzureIoTProtocol_MQTT`
@@ -175,24 +175,24 @@ Instalovat balíček hello pro vývojáře věc ESP8266 Sparkfun v integrovaném
 
 ### <a name="dont-have-a-real-dht22-sensor"></a>Nemáte skutečné senzor DHT22?
 
-Hello ukázkovou aplikaci můžete simulovat teploty a vlhkosti dat v případě, že nemáte skutečné DHT22 senzoru. data pro toouse simulated tooenable hello ukázkové aplikace, postupujte takto:
+Ukázkové aplikace můžete simulovat teploty a vlhkosti dat v případě, že nemáte skutečné DHT22 senzoru. Pokud chcete povolit ukázkovou aplikaci pro simulované data použít, postupujte takto:
 
-1. Otevřete hello `config.h` souboru v hello `app` složky.
-1. Vyhledejte následující řádek kódu hello a změňte hodnotu hello z `false` příliš`true`:
+1. Otevřete `config.h` v soubor `app` složky.
+1. Vyhledejte následující řádek kódu a změňte hodnotu z `false` k `true`:
    ```c
    define SIMULATED_DATA true
    ```
-   ![Konfigurace hello ukázková aplikace toouse simulated data](media/iot-hub-sparkfun-thing-dev-get-started/13_arduino-ide-configure-app-use-simulated-data.png)
+   ![Nakonfigurujte ukázkovou aplikaci používat simulované dat](media/iot-hub-sparkfun-thing-dev-get-started/13_arduino-ide-configure-app-use-simulated-data.png)
    
 1. Uložit s `Control-s`.
 
-### <a name="deploy-hello-sample-application-toosparkfun-esp8266-thing-dev"></a>Nasazení hello ukázkové aplikace tooSparkfun ESP8266 věc vývojářů
+### <a name="deploy-the-sample-application-to-sparkfun-esp8266-thing-dev"></a>Nasadit ukázkovou aplikaci pro Sparkfun ESP8266 věc vývojářů
 
-1. V hello Arduino IDE, klikněte na **nástroj** > **Port**a potom klikněte na sériového portu hello za účelem co ESP8266 Sparkfun
-1. Klikněte na tlačítko **nákresu** > **nahrát** toobuild a nasadit hello ukázkové aplikace tooSparkfun ESP8266 věc účelem
+1. V prostředí IDE Arduino, klikněte na tlačítko **nástroj** > **Port**a potom klikněte na sériového portu za účelem co ESP8266 Sparkfun
+1. Klikněte na tlačítko **nákresu** > **nahrát** sestavení a nasazení ukázkové aplikace na Sparkfun ESP8266 věc účelem
 
 > [!Note]
-> Pokud používáte systému macOS by mohli pravděpodobně zobrazit následující zprávy při odesílání hello. `warning: espcomm_sync failed`,`error: espcomm_open failed`. Otevřete okno vaší ternimal a dokončit následující akce toosolve tento problém.
+> Pokud používáte systému macOS během nahrávání se pravděpodobně může zobrazit následující zprávy. `warning: espcomm_sync failed`,`error: espcomm_open failed`. Otevřete okno vaší ternimal a dokončit následující akce pro tento problém vyřešit.
 > ```bash
 > cd /System/Library/Extensions/IOUSBFamily.kext/Contents/PlugIns
 > sudo mv AppleUSBFTDI.kext AppleUSBFTDI.disabled
@@ -201,28 +201,28 @@ Hello ukázkovou aplikaci můžete simulovat teploty a vlhkosti dat v případě
 
 ### <a name="enter-your-credentials"></a>Zadejte přihlašovací údaje.
 
-Po úspěšném dokončení nahrávání hello postupujte podle kroků tooenter hello vaše přihlašovací údaje:
+Po úspěšném dokončení nahrávání, postupujte podle kroků k zadání přihlašovacích údajů:
 
-1. V hello Arduino IDE, klikněte na **nástroje** > **sériové monitorování**.
-1. V okně hello sériové sledování Všimněte si, rozevírací seznamy hello dva na hello dolního rohu.
-1. Vyberte **žádný řádek ukončování** pro hello levém rozevíracího seznamu.
-1. Vyberte **115200 přenosová** pro hello právo rozevíracího seznamu.
-1. Hello vstupní pole umístěné v hello horní části okna sériové sledování hello, zadejte následující informace, pokud se zobrazí výzva tooprovide hello a potom klikněte na **odeslat**.
+1. V prostředí IDE Arduino, klikněte na tlačítko **nástroje** > **sériové monitorování**.
+1. V okně serial monitorování Všimněte si dva rozevírací seznamy v pravém horním rohu.
+1. Vyberte **žádný řádek ukončování** pro levý rozevíracího seznamu.
+1. Vyberte **115200 přenosová** pro právo rozevíracího seznamu.
+1. Do vstupního pole umístěné v horní části okna sériové sledování, zadejte následující informace, pokud se zobrazí výzva k poskytování je a pak klikněte na tlačítko **odeslat**.
    * SSID sítě Wi-Fi
    * Heslo Wi-Fi
    * Řetězec připojení zařízení
 
 > [!Note]
-> Hello pověření informace jsou uloženy v hello EEPROM z Sparkfun ESP8266 věc účelem Pokud klepnete na tlačítko Obnovit hello na hello Tabule Sparkfun ESP8266 věc vývojářů, hello ukázkovou aplikaci požádá, pokud chcete, aby tooerase hello informace. Zadejte `Y` toohave hello informace vymazat a jste vyzváni tooprovide hello informace znovu.
+> Informace o přihlašovacích údajích je uložené v paměti EEPROM ESP8266 věc účelem Sparkfun Pokud kliknete na tlačítko Obnovit na panelu Sparkfun ESP8266 věc vývojářů, ukázkové aplikace zobrazí dotaz, pokud chcete vymazat informace. Zadejte `Y` tak, aby měl informace vymazat a budete vyzváni k zadání informace znovu.
 
-### <a name="verify-hello-sample-application-is-running-successfully"></a>Zkontrolujte, zda hello ukázkové aplikace je úspěšně spuštěna.
+### <a name="verify-the-sample-application-is-running-successfully"></a>Zkontrolujte, zda že ukázkové aplikace je úspěšně spuštěna.
 
-Pokud se zobrazí následující hello výstup z okna hello sériové sledování a hello blikat DIODU na Sparkfun ESP8266 věc vývojářů, hello ukázkové aplikace je úspěšně spuštěna.
+Pokud se zobrazí následující výstup z okna sériové monitorování a blikající LED na Sparkfun ESP8266 věc vývojářů, ukázkové aplikace je úspěšně spuštěna.
 
 ![závěrečný výstup v integrovaném vývojovém prostředí arduino](media/iot-hub-sparkfun-thing-dev-get-started/14_arduino-ide-final-output.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Úspěšně jste připojené vývojářů věc ESP8266 Sparkfun tooyour IoT hub a odeslaných hello zachytit senzor data tooyour IoT hub. 
+Úspěšně jste připojené Sparkfun ESP8266 věc Dev do služby IoT hub a data zaznamenaná senzor odeslané do služby IoT hub. 
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

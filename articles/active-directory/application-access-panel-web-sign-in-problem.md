@@ -1,6 +1,6 @@
 ---
-title: "aaaProblem přihlášení toohello přístup k panelu webu | Microsoft Docs"
-description: "Pokyny tootroubleshoot problémy, ke kterým může dojít při pokusu o toosign v toouse hello přístupového panelu"
+title: "Potíže s přihlášením k webu přístup panely | Microsoft Docs"
+description: "Pokyny k odstraňování problémů, které můžete narazit při pokusu o přihlášení k použití na přístupovém panelu"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.reviwer: japere
-ms.openlocfilehash: 1037f7c5fbaa9425760ad5739b383c716d5fc3a3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 28d91237adf745e591b02322de7881c8122827ac
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="problem-signing-in-toohello-access-panel-website"></a>Potíže s přihlášením toohello přístup k panelu webu
+# <a name="problem-signing-in-to-the-access-panel-website"></a>Potíže s přihlášením k webu přístup k panelu
 
-Hello přístupový Panel je, že je webový portál, který umožňuje uživatel, který má pracovní nebo školní účet v Azure Active Directory (Azure AD) tooview a spouštět cloudové aplikace tento správce hello Azure AD udělil přístup. Uživatel, který má edice Azure AD můžete také skupiny samoobslužné služby a možnosti správy aplikace prostřednictvím hello přístupového panelu. Hello přístupový Panel je oddělená od hello portál Azure a nevyžaduje, aby uživatelé toohave předplatné Azure.
+Přístupový Panel je webový portál, který uživatel, který má pracovní nebo školní účet ve službě Azure Active Directory (Azure AD) umožňuje zobrazovat a spouštět cloudové aplikace, které je správce Azure AD udělil přístup. Uživatel, který má edice Azure AD můžete také skupiny samoobslužné služby a možnosti správy aplikace prostřednictvím na přístupovém panelu. Přístupový Panel je nezávislý na portálu Azure a nevyžaduje, aby uživatelé měli předplatné Azure.
 
-Uživatelé můžou přihlásit toohello přístupového panelu v případě, že mají pracovní nebo školní účet ve službě Azure AD.
+Uživatele můžete přihlásit k přístupovému panelu případě, že mají pracovní nebo školní účet ve službě Azure AD.
 
 -   Uživatelé se můžou ověřovat službou Azure AD přímo.
 
@@ -32,33 +32,33 @@ Uživatelé můžou přihlásit toohello přístupového panelu v případě, ž
 
 -   Uživatelé se můžou ověřovat pomocí služby Windows Server Active Directory.
 
-Pokud je uživatel má předplatné Azure nebo Office 365 a používá hello portál Azure nebo Office 365 aplikaci, bude se mít toouse hello přístupový Panel bezproblémově bez nutnosti toosign v akci. Uživatelé, kteří nejsou ověřené být výzvami toosign v pomocí hello uživatelské jméno a heslo pro svůj účet ve službě Azure AD. Pokud organizace hello nakonfiguroval federace, zadejte uživatelské jméno hello je dostačující.
+Pokud je uživatel má předplatné Azure nebo Office 365 a používá portál Azure nebo aplikace Office 365, budou moci bez problémů používat na přístupovém panelu bez nutnosti se znovu přihlásit. Uživatelé, kteří nejsou ověřené vyzváni k přihlášení pomocí uživatelského jména a hesla pro svůj účet ve službě Azure AD. Pokud organizace nemá nakonfigurovali federaci, zadejte uživatelské jméno je dostačující.
 
-## <a name="general-issues-toocheck-first"></a>Obecné problémy toocheck nejprve 
+## <a name="general-issues-to-check-first"></a>Běžné problémy a proveďte nejprve kontrolu 
 
--   Zajistěte, aby uživatel hello přihlašuje toohello **opravte adresu URL**: <https://myapps.microsoft.com>
+-   Ujistěte se, že uživatel je přihlášení k **opravte adresu URL**: <https://myapps.microsoft.com>
 
--   Zajistěte, aby prohlížeče hello uživatele přidala hello URL tooits **Důvěryhodné servery**
+-   Zajistěte, aby prohlížeče uživatele přidala adresu URL na jeho **Důvěryhodné servery**
 
--   Zkontrolujte, zda text hello uživatelský účet je **povoleno** pro přihlášení.
+-   Zkontrolujte, zda je účet uživatele **povoleno** pro přihlášení.
 
--   Zkontrolujte, zda text hello uživatelský účet je **není uzamčen.**
+-   Zkontrolujte, zda je účet uživatele **není uzamčen.**
 
--   Ujistěte se, zda text hello uživatele **není platnost nebo zapomenete heslo.**
+-   Zkontrolujte, že uživatele **není platnost nebo zapomenete heslo.**
 
 -   Zajistěte, aby **Multi-Factor Authentication** neblokuje přístup uživatelů.
 
 -   Zajistěte, aby **zásady podmíněného přístupu** nebo **Identity Protection** zásad neblokuje přístup uživatelů.
 
--   Ujistěte se, že uživatele **ověřování kontaktní údaje** je toodate tooallow ověřování Multi-Factor Authentication nebo podmíněného přístupu zásady toobe vynucené.
+-   Ujistěte se, že uživatele **ověřování kontaktní údaje** je aktuální povolit Multi-Factor Authentication nebo podmíněného přístupu zásad, která budou vynucena.
 
--   Zkontrolujte že tooalso zkuste vymazání souborů cookie v prohlížeči a toosign v zkusit to znovu.
+-   Zkontrolujte, zda také zkuste vymazání souborů cookie v prohlížeči a zkusit se přihlásit znovu.
 
-## <a name="meeting-browser-requirements-for-hello-access-panel"></a>Splňuje požadavky na prohlížeč pro hello přístupového panelu
+## <a name="meeting-browser-requirements-for-the-access-panel"></a>Splňuje požadavky na prohlížeč pro přístup k panelu
 
-Hello přístupový Panel vyžaduje prohlížeč, který podporuje jazyk JavaScript a aktivoval šablon stylů CSS. toouse založené na heslech jednotné přihlašování (SSO) v hello přístupový Panel hello přístupový Panel rozšíření musí být nainstalován v prohlížeči hello uživatele. Toto rozšíření je stažen automaticky, když uživatel vybere aplikaci, která je nakonfigurována pro jednotné přihlašování založené na heslech.
+Přístupový Panel vyžaduje prohlížeč, který podporuje jazyk JavaScript a aktivoval šablon stylů CSS. Pokud chcete používat založené na heslech jednotné přihlašování (SSO) na přístupovém panelu, musí být nainstalované rozšíření přístupového panelu v prohlížeče uživatele. Toto rozšíření je stažen automaticky, když uživatel vybere aplikaci, která je nakonfigurována pro jednotné přihlašování založené na heslech.
 
-Pro jednotné přihlašování založené na heslech může být prohlížeče hello koncového uživatele:
+Pro jednotné přihlašování založené na heslech může být prohlížeče koncového uživatele:
 
 -   Internet Explorer 8, 9, 10, 11 – v systému Windows 7 nebo novější
 
@@ -69,9 +69,9 @@ Pro jednotné přihlašování založené na heslech může být prohlížeče h
 -   Firefox 26.0 nebo později – do systému Windows XP SP2 nebo novější a v systému Mac OS X 10,6 nebo novější
 
 
-## <a name="problems-with-hello-users-account"></a>Problémy s hello uživatelský účet
+## <a name="problems-with-the-users-account"></a>Problémy s uživatelského účtu
 
-Přístup toohello přístupového panelu můžete blokovat z důvodu tooa problém s hello uživatelský účet. Tady jsou některé způsoby řešení problémů a řešení problémů s uživateli a jejich nastavení účtu:
+Přístup k přístupovému panelu můžete blokovaný z důvodu problému s účtem uživatele. Tady jsou některé způsoby řešení problémů a řešení problémů s uživateli a jejich nastavení účtu:
 
 -   [Zkontrolujte, jestli uživatelský účet existuje v Azure Active Directory](#check-if-a-user-account-exists-in-azure-active-directory)
 
@@ -93,188 +93,188 @@ Přístup toohello přístupového panelu můžete blokovat z důvodu tooa probl
 
 ### <a name="check-if-a-user-account-exists-in-azure-active-directory"></a>Zkontrolujte, jestli uživatelský účet existuje v Azure Active Directory
 
-toocheck, pokud se nachází uživatelský účet, postupujte podle následujících kroků hello:
+Pokud chcete zkontrolovat, zda účet uživatele je přítomen, postupujte podle následujících kroků:
 
-1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
 
-2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
 
-3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce hello.
+4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce.
 
 5.  Klikněte na tlačítko **všichni uživatelé**.
 
-6.  **Hledání** pro uživatele hello vás zajímá a **klikněte na řádek hello** tooselect.
+6.  **Hledání** pro uživatele, které vás zajímají a **klikněte na řádek** vybrat.
 
-7.  Zkontrolujte vlastnosti hello hello uživatele objektu toobe se, že zobrazují se podle očekávání a nebyla nalezena žádná data.
+7.  Zkontrolujte vlastnosti objektu uživatele a ujistěte se, že zobrazují se podle očekávání a nebyla nalezena žádná data.
 
 ### <a name="check-a-users-account-status"></a>Zkontrolujte stav účtu uživatele
 
-toocheck uživatele pro účet stavu, postupujte podle následujících kroků hello:
+Pokud chcete zkontrolovat stav účtu uživatele, postupujte podle následujících kroků:
 
-1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
 
-2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
 
-3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce hello.
+4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce.
 
 5.  Klikněte na tlačítko **všichni uživatelé**.
 
-6.  **Hledání** pro uživatele hello vás zajímá a **klikněte na řádek hello** tooselect.
+6.  **Hledání** pro uživatele, které vás zajímají a **klikněte na řádek** vybrat.
 
 7.  Klikněte na tlačítko **profil**.
 
-8.  V části **nastavení** Ujistěte se, že **bloku přihlásit** je nastaven příliš**ne**.
+8.  V části **nastavení** Ujistěte se, že **bloku přihlásit** je nastaven na **ne**.
 
 ### <a name="reset-a-users-password"></a>Resetovat heslo uživatele
 
-tooreset heslo uživatele, postupujte podle následujících kroků hello:
+Pokud chcete resetovat heslo uživatele, postupujte podle následujících kroků:
 
-1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
 
-2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
 
-3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce hello.
+4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce.
 
 5.  Klikněte na tlačítko **všichni uživatelé**.
 
-6.  **Hledání** pro uživatele hello vás zajímá a **klikněte na řádek hello** tooselect.
+6.  **Hledání** pro uživatele, které vás zajímají a **klikněte na řádek** vybrat.
 
-7.  Klikněte na tlačítko hello **resetovat heslo** tlačítko hello horní části okna hello uživatele.
+7.  klikněte **resetovat heslo** tlačítka v horní části okna uživatele.
 
-8.  Klikněte na tlačítko hello **resetovat heslo** na hello tlačítko **resetovat heslo** okno, které se zobrazí.
+8.  klikněte **resetovat heslo** na tlačítko **resetovat heslo** okno, které se zobrazí.
 
-9.  Kopírování hello **dočasné heslo** nebo **zadat nové heslo** pro uživatele hello.
+9.  Kopírování **dočasné heslo** nebo **zadat nové heslo** pro uživatele.
 
-10. Komunikaci tohoto nového uživatele toohello heslo, ale měly požadované toochange toto heslo při příštím přihlášení tooAzure služby Active Directory.
+10. Komunikaci tohoto nového hesla pro uživatele, budou muset změnit toto heslo při příštím přihlášení v do Azure Active Directory.
 
 ### <a name="enable-self-service-password-reset"></a>Povolit samoobslužné resetování hesla
 
-tooenable samoobslužné služby heslo resetovat, postupujte podle následujících pokynů hello nasazení:
+Pokud chcete povolit samoobslužné resetování hesla, postupujte podle následujících kroků nasazení:
 
--   [Povolit uživatelům tooreset hesel služby Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started#enable-users-to-reset-their-azure-ad-passwords)
+-   [Umožnění resetování hesel služby Azure Active Directory uživatelům](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started#enable-users-to-reset-their-azure-ad-passwords)
 
--   [Povolit uživatelům tooreset nebo změnit své heslo místní služby Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started#enable-users-to-reset-or-change-their-ad-passwords)
+-   [Povolit uživatelům resetovat nebo změnit své heslo místní služby Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started#enable-users-to-reset-or-change-their-ad-passwords)
 
 ### <a name="check-a-users-multi-factor-authentication-status"></a>Zkontrolujte stav služby Multi-Factor authentication uživatele
 
-toocheck uživatele je vícefaktorového ověřování stavu, postupujte podle následujících kroků hello:
+Pokud chcete zkontrolovat stav uživatele služby Multi-Factor authentication, postupujte podle následujících kroků:
 
-1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
 
-2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
 
-3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce hello.
+4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce.
 
 5.  Klikněte na tlačítko **všichni uživatelé**.
 
-6.  Klikněte na tlačítko hello **Multi-Factor Authentication** tlačítko hello horní části okna hello.
+6.  klikněte **Multi-Factor Authentication** tlačítka v horní části okna.
 
-7.  Jednou hello **portálu pro správu služby Multi-Factor Authentication** zatížení, ujistěte se, jsou na hello **uživatelé** kartě.
+7.  Jednou **portálu pro správu služby Multi-Factor Authentication** zatížení, ujistěte se, jsou na **uživatelé** kartě.
 
-8.  Najít hello uživatele v seznamu hello uživatelů ve vyhledávání, filtrování a řazení.
+8.  Vyhledejte uživatele pomocí vyhledávání, filtrování a řazení v seznamu uživatelů.
 
-9.  Vyberte hello uživatele z hello seznam uživatelů a **povolit**, **zakázat**, nebo **vynutit** služby Multi-Factor authentication podle potřeby.
+9.  Vyberte uživatele ze seznamu uživatelů a **povolit**, **zakázat**, nebo **vynutit** služby Multi-Factor authentication podle potřeby.
 
    >[!NOTE]
-   >Pokud je uživatel v **vynucené** stavu, je pravděpodobně příliš nastavit**zakázané** dočasně toolet je zpět do svého účtu. Jakmile se zpět, můžete změnit jejich stavu příliš**povoleno** znovu toorequire je toore registrace své kontaktní informace při příštím přihlášení. Alternativně můžete provést kroky hello v hello [zkontrolovat kontaktní informace o ověřování uživatele](#check-a-users-authentication-contact-info) tooverify nebo pro ně nastavit tato data.
+   >Pokud je uživatel v **vynucené** stavu, může je nastaven **zakázané** dočasně a dát jim zpět do svého účtu. Jakmile se zpět, můžete změnit svůj stav na **povoleno** znovu, aby je znovu zaregistrovat své kontaktní informace při příštím přihlášení v vyžadují. Alternativně můžete podle kroků v [zkontrolovat kontaktní informace o ověřování uživatele](#check-a-users-authentication-contact-info) ověření nebo pro ně nastavit tato data.
    >
    >
 
 ### <a name="check-a-users-authentication-contact-info"></a>Zkontrolovat kontaktní informace o ověřování uživatele
 
-toocheck ověřování uživatele kontaktní informace pro vícefaktorové ověřování, podmíněného přístupu, ochrany identit a resetování hesla, postupujte podle kroků hello níže:
+Pokud chcete zkontrolovat uživatele ověřování kontaktní údaje pro službu Multi-Factor authentication, podmíněného přístupu, ochrany identit a resetování hesla, postupujte podle následujících kroků:
 
-1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
 
-2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
 
-3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce hello.
+4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce.
 
 5.  Klikněte na tlačítko **všichni uživatelé**.
 
-6.  **Hledání** pro uživatele hello vás zajímá a **klikněte na řádek hello** tooselect.
+6.  **Hledání** pro uživatele, které vás zajímají a **klikněte na řádek** vybrat.
 
 7.  Klikněte na tlačítko **profil**.
 
-8.  Posuňte se dolů příliš**ověřování kontaktní údaje**.
+8.  Přejděte dolů k položce **ověřování kontaktní údaje**.
 
-9.  **Zkontrolujte** hello dat registrované pro uživatele hello a aktualizace podle potřeby.
+9.  **Zkontrolujte** data zaregistrovaný pro uživatele a aktualizovat podle potřeby.
 
 ### <a name="check-a-users-group-memberships"></a>Zkontrolujte členství uživatele ve skupinách
 
-toocheck uživatele na členství ve skupinách, postupujte podle následujících kroků hello:
+Pokud chcete zkontrolovat členství uživatele ve skupinách, postupujte podle následujících kroků:
 
-1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
 
-2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
 
-3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce hello.
+4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce.
 
 5.  Klikněte na tlačítko **všichni uživatelé**.
 
-6.  **Hledání** pro uživatele hello vás zajímá a **klikněte na řádek hello** tooselect.
+6.  **Hledání** pro uživatele, které vás zajímají a **klikněte na řádek** vybrat.
 
-7.  Klikněte na tlačítko **skupiny** toosee, které skupiny hello uživatel je členem skupiny.
+7.  Klikněte na tlačítko **skupiny** zobrazíte, které skupiny uživatel je členem skupiny.
 
 ### <a name="check-a-users-assigned-licenses"></a>Zkontrolujte uživatele přiřazené licence
 
-toocheck uživatele je přiřazena licence, postupujte podle následujících kroků hello:
+Pokud chcete zkontrolovat uživatele přiřazené licence, postupujte podle následujících kroků:
 
-1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
 
-2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
 
-3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce hello.
+4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce.
 
 5.  Klikněte na tlačítko **všichni uživatelé**.
 
-6.  **Hledání** pro uživatele hello vás zajímá a **klikněte na řádek hello** tooselect.
+6.  **Hledání** pro uživatele, které vás zajímají a **klikněte na řádek** vybrat.
 
-7.  Klikněte na tlačítko **licence** toosee, kteří uživatelé hello licence má přiřazeny.
+7.  Klikněte na tlačítko **licence** zobrazíte, které uživatel aktuálně licence jeho přiřazení.
 
 ### <a name="assign-a-user-a-license"></a>Přiřazení licence uživatele 
 
-tooassign licence tooa uživatele, postupujte podle kroků hello níže:
+Chcete-li přiřadit licenci pro uživatele, postupujte následujícím způsobem:
 
-1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
 
-2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
 
-3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce hello.
+4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce.
 
 5.  Klikněte na tlačítko **všichni uživatelé**.
 
-6.  **Hledání** pro uživatele hello vás zajímá a **klikněte na řádek hello** tooselect.
+6.  **Hledání** pro uživatele, které vás zajímají a **klikněte na řádek** vybrat.
 
-7.  Klikněte na tlačítko **licence** toosee, kteří uživatelé hello licence má přiřazeny.
+7.  Klikněte na tlačítko **licence** zobrazíte, které uživatel aktuálně licence jeho přiřazení.
 
-8.  Klikněte na tlačítko hello **přiřadit** tlačítko.
+8.  klikněte **přiřadit** tlačítko.
 
-9.  Vyberte **jeden nebo více produktů** z hello seznam dostupných produktů.
+9.  Vyberte **jeden nebo více produktů** ze seznamu dostupných produktů.
 
-10. **Volitelné** klikněte na tlačítko hello **přiřazení možností** položky toogranularly přiřadit produkty. Klikněte na tlačítko **Ok** po dokončení.
+10. **Volitelné** klikněte na tlačítko **přiřazení možností** položky granularly přiřadit produkty. Klikněte na tlačítko **Ok** po dokončení.
 
-11. Klikněte na tlačítko hello **přiřadit** tlačítko tooassign tyto licence toothis uživatele.
+11. Klikněte **přiřadit** tlačítko tyto licence přiřadit tomuto uživateli.
 
-## <a name="if-these-troubleshooting-steps-do-not-resolve-hello-issue"></a>Pokud tyto kroky řešení potíží Nepokoušejte se vyřešit problém hello
+## <a name="if-these-troubleshooting-steps-do-not-resolve-the-issue"></a>Pokud tyto kroky řešení potíží problém nevyřeší
 
-Otevřete lístek podpory se hello, pokud je k dispozici následující informace:
+Otevřete lístek podpory s následujícími informacemi, pokud je k dispozici:
 
 -   ID chyby korelace
 
@@ -289,4 +289,4 @@ Otevřete lístek podpory se hello, pokud je k dispozici následující informac
 -   Fiddler trasování
 
 ## <a name="next-steps"></a>Další kroky
-[Zadejte tooyour přihlašování aplikací pomocí Proxy aplikace](active-directory-application-proxy-sso-using-kcd.md)
+[Zadejte jednotné přihlašování pro vaše aplikace s Proxy aplikace](active-directory-application-proxy-sso-using-kcd.md)

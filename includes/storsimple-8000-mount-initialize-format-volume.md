@@ -1,22 +1,22 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### <a name="toomount-initialize-and-format-a-volume"></a>toomount, inicializace a formátování svazků
-1. Spusťte iniciátor iSCSI společnosti Microsoft hello.
-2. V hello **vlastnosti iniciátoru iSCSI** okně na hello **zjišťování** , klikněte na **vyhledat portál**.
-3. V hello **zjistit cílový portál** dialogové okno, zadejte hello IP adresu vašeho iSCSI povolený síťového rozhraní a pak klikněte na tlačítko **OK**. 
-4. V hello **vlastnosti iniciátoru iSCSI** okně na hello **cíle** najděte hello **zjištěné cíle**. Stav zařízení Hello by měla zobrazovat jako **neaktivní**.
-5. Vyberte cílové zařízení hello a pak klikněte na tlačítko **Connect**. Po připojení zařízení hello, stav hello by se měl změnit příliš**připojeno**. (Další informace o použití iniciátoru iSCSI společnosti Microsoft hello najdete v tématu [instalace a konfigurace Microsoft iSCSI Initiator][1]).
-6. Na hostiteli s Windows, stiskněte klávesu s logem Windows hello + X a potom klikněte na **spustit**. 
-7. V hello **spustit** dialogové okno, typ **Diskmgmt.msc**. Klikněte na tlačítko **OK**a hello **Správa disků** se zobrazí dialogové okno. Hello pravém podokně se zobrazí hello svazky na hostiteli.
-8. V hello **Správa disků** okně hello připojené svazky zobrazí jak ukazuje následující obrázek hello. Klikněte pravým tlačítkem na hello zjištěné svazek (klikněte na název disku hello) a potom klikněte na **Online**.
+#### <a name="to-mount-initialize-and-format-a-volume"></a>Připojení, inicializace a formátování svazku
+1. Spusťte iniciátor iSCSI od Microsoftu.
+2. V okně **iSCSI Initiator Properties (Vlastnosti iniciátoru iSCSI)** na kartě **Zjišťování** klikněte na **Vyhledat portál**.
+3. V dialogovém okně **Zjistit cílový portál** zadejte IP adresu svého síťového rozhraní s podporou iSCSI a potom klikněte na **OK**. 
+4. V okně **iSCSI Initiator Properties** (Vlastnosti iniciátoru iSCSI) na kartě **Cíle** najděte část **Zjištěné cíle**. U zařízení by se měl zobrazovat stav **Neaktivní**.
+5. Vyberte cílové zařízení a potom klikněte na **Připojit**. Po připojení zařízení by se měl stav změnit na **Připojeno**. (Další informace o použití iniciátoru iSCSI od Microsoftu najdete v tématu [Instalace a konfigurace iniciátoru Microsoft iSCSI][1]).
+6. Na hostiteli s Windows stiskněte klávesu s logem Windows + X a potom klikněte na **Spustit**. 
+7. V dialogovém okně **Spustit** zadejte **Diskmgmt.msc**. Klikněte na **OK**. Zobrazí se dialogové okno **Správa disků**. V pravém podokně se zobrazí svazky na vašem hostiteli.
+8. V okně **Správa disků** se připojené svazky zobrazí tak, jak znázorňuje následující obrázek. Klikněte pravým tlačítkem myši na zjištěný svazek (klikněte na název disku) a potom klikněte na **Online**.
    
      ![Inicializace a formátování svazku](./media/storsimple-8000-mount-initialize-format-volume/step7initializeformatvolume.png) 
-9. Klikněte pravým tlačítkem na hello svazek (klikněte na název disku hello) znovu a potom klikněte na **inicializovat**.
-10. tooformat jednoduchý svazek, proveďte následující kroky hello:
+9. Znovu klikněte pravým tlačítkem myši na svazek (klikněte na název disku) a potom klikněte na **Inicializovat**.
+10. Pokud chcete naformátovat jednoduchý svazek, postupujte takto:
     
-    1. Vyberte svazek hello, pravým tlačítkem myši (klikněte na pravou část hello) a klikněte na tlačítko **nový jednoduchý svazek**.
-    2. V průvodci Nový jednoduchý svazek hello zadejte hello svazek velikost a písmeno jednotky a nakonfigurujte hello svazek jako systém souborů NTFS.
-    3. Zvolte velikost alokační jednotky 64 kB. Tato velikost alokační jednotky dobře funguje s algoritmy pro odstranění duplicit hello používá v hello řešení StorSimple.
+    1. Vyberte svazek, klikněte na něj pravým tlačítkem myši (klikněte na pravou část) a klikněte na **Nový jednoduchý svazek**.
+    2. V průvodci Nový jednoduchý svazek zadejte písmeno svazku a písmeno jednotky a nakonfigurujte u svazku systém souborů NTFS.
+    3. Zvolte velikost alokační jednotky 64 kB. Tato velikost alokační jednotky dobře funguje s algoritmy pro odstranění duplicit, které používá řešení StorSimple.
     4. Proveďte rychlé formátování.
 
 <!--Link references-->

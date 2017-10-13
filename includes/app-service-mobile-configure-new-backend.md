@@ -1,17 +1,17 @@
 
-1. Klikněte na tlačítko hello **App Services** tlačítko vyberte vaše mobilní aplikace back-endu, vyberte **rychlý Start**a pak vybrat klientskou platformu (iOS, Android, Xamarin, Cordova).
+1. Klikněte na tlačítko **App Services**, vyberte svůj back-end Mobile Apps, vyberte **Rychlý start** a potom vyberte svou klientskou platformu (iOS, Android, Xamarin, Cordova).
 
     ![Azure Portal se zvýrazněnou možností Rychlý start Mobile Apps][quickstart]
 
-2. Pokud není nakonfigurováno připojení k databázi, vytvořte jednu pomocí tohoto postupu hello následující:
+2. Pokud není nakonfigurované připojení k databázi, vytvořte ho následujícím způsobem:
 
-    ![Portál Azure s mobilní aplikací připojení toodatabase][connect]
+    ![Azure Portal s připojením k databázi pro Mobile Apps][connect]
 
     a. Vytvořte novou databázi SQL a server.
 
     ![Azure Portal s vytvořením nové databáze a serveru pro Mobile Apps][server]
 
-    b. Počkejte, dokud hello datové připojení se úspěšně vytvořil.
+    b. Počkejte na úspěšné vytvoření datového připojení.
 
     ![Oznámení na webu Azure Portal o úspěšném vytvoření datového připojení][notification]
 
@@ -21,11 +21,11 @@
 
 3. V části **2. Vytvoření rozhraní API tabulky** vyberte jako **Jazyk back-endu** možnost Node.js. 
  
-4. Přijměte potvrzení hello a pak vyberte **vytvořit tabulku TodoItem**.  
+4. Přijměte potvrzení a potom vyberte **Create TodoItem table** (Vytvořit tabulku TodoItem).  
     Tato akce ve vaší databázi vytvoří novou tabulku úkolů. 
 
     >[!IMPORTANT]
-    > Přepínání existující tooNode.js back-end přepíše veškerý obsah. Místo toho najdete v článku .NET back-end toocreate [pracovat s hello .NET back-end serveru SDK pro Mobile Apps][instructions].
+    > Přepnutím stávajícího back-endu na Node.js se přepíše veškerý obsah. Pokud místo toho chcete vytvořit back-end v .NET, přečtěte si téma [Práce se sadou SDK serveru back-end v .NET pro Mobile Apps][instructions].
 
 <!-- Images. -->
 [quickstart]: ./media/app-service-mobile-configure-new-backend/quickstart.png

@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure mřížky události doručení a zkuste to znovu"
+title: "Azure mřížky události doručení a zkuste to znovu"
 description: "Popisuje, jak Azure událostí mřížky doručí události a jak zpracovává nedoručených zpráv."
 services: event-grid
 author: djrosanova
@@ -8,32 +8,32 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: darosa
-ms.openlocfilehash: 874b3bf8892fbf803ef40f29d0ec10eb50150916
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e0f8afdfd84ea3c0c061459c27da285f6ae8957e
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Doručení zpráv událostí mřížky a zkuste to znovu 
 
 Tento článek popisuje, jak Azure událostí mřížky zpracovává události, když není potvrdí doručení.
 
-Událost mřížky poskytuje trvanlivý doručení. Zajišťuje každou zprávu alespoň jednou pro každé předplatné. Události se posílají toohello zaregistrován webhooku každého předplatného okamžitě. Webhook, jehož není potvrdil přijetí události do 60 sekund od první doručení hello pokus, události mřížky opakování doručení hello události.
+Událost mřížky poskytuje trvanlivý doručení. Zajišťuje každou zprávu alespoň jednou pro každé předplatné. Události se posílají okamžitě registrované webhooku každého předplatného. Webhook, jehož není potvrdil přijetí události do 60 sekund od první pokus o doručení, události mřížky opakuje doručení události.
 
 ## <a name="message-delivery-status"></a>Stav doručení zpráv
 
-Událost mřížky používá HTTP odpovědi kódy tooacknowledge příjmu událostí. 
+Událost mřížky používá kódy odpovědi HTTP potvrdit k přijetí události. 
 
 ### <a name="success-codes"></a>Kódy úspěch
 
-Hello následující kódy odpovědi HTTP znamenat, že událost byla doručena úspěšně tooyour webhooku. Událost mřížky zvažuje doručení dokončení.
+Následující kódy odpovědi HTTP znamenat, že událost byla doručena úspěšně vaší webhooku. Událost mřížky zvažuje doručení dokončení.
 
 - 200 OK
 - 202 platných
 
 ### <a name="failure-codes"></a>Selhání kódy
 
-Hello následující kódy odpovědi HTTP znamenat, že události doručení pokus se nezdařil. Mřížky událostí se pokusí znovu toosend hello událostí. 
+Následující kódy odpovědi HTTP znamenat, že události doručení pokus se nezdařil. Mřížky událostí se pokusí znovu odeslat událost. 
 
 - 400 – Chybný požadavek
 - 401 unauthorized
@@ -48,7 +48,7 @@ Další kód odpovědi nebo nedostatek odpověď znamená chybu. Událost mří�
 
 ## <a name="retry-intervals"></a>Opakujte intervaly
 
-Událost mřížky používá zásady opakování exponenciálního omezení rychlosti pro odeslání události. Pokud vaše webhooku neodpovídá nebo vrací kód chyby, opakování mřížky události doručení na hello následující plánu:
+Událost mřížky používá zásady opakování exponenciálního omezení rychlosti pro odeslání události. Pokud vaše webhooku neodpovídá nebo vrací kód chyby, opakování mřížky události doručení podle plánu, následující:
 
 1. 10 sekund.
 2. 30 sekund
@@ -58,13 +58,13 @@ Událost mřížky používá zásady opakování exponenciálního omezení ryc
 6. 30 minut
 7. 1 hodina
 
-Událost mřížky přidá malé náhodné přeskupování tooall opakování intervalech.
+Událost mřížky přidá malé náhodné přeskupování všechny intervalech zkuste to znovu.
 
 ## <a name="retry-duration"></a>Opakujte doba trvání
 
-Během hello preview vyprší mřížky událostí Azure všechny události, které nejsou doručeny během dvou hodin. Před zveřejněním tentokrát bude vyšší too24 hodin. 
+Ve verzi Preview vyprší mřížky událostí Azure všechny události, které nejsou doručeny během dvou hodin. Před zveřejněním tentokrát se zvýší na 24 hodin. 
 
 ## <a name="next-steps"></a>Další kroky
 
-* TooEvent Úvod mřížky, najdete v části [o mřížky událostí](overview.md).
-* tooquickly začít používat mřížky událostí najdete v tématu [vytvořit a směrování vlastních událostí s Azure událostí mřížky](custom-event-quickstart.md).
+* Úvod k mřížce událostí, naleznete v části [o mřížky událostí](overview.md).
+* Chcete-li rychle začít používat událostí mřížky, přečtěte si téma [vytvořit a směrování vlastních událostí s Azure událostí mřížky](custom-event-quickstart.md).

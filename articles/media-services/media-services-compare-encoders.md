@@ -1,6 +1,6 @@
 ---
-title: "aaaComparison Azure na vyžádání média kodéry | Microsoft Docs"
-description: "Toto téma porovnává možnosti kódování hello ** Media Encoder Standard ** a ** Media Encoder Premium pracovního postupu **."
+title: "Porovnání Azure na vyžádání média kodéry | Microsoft Docs"
+description: "Toto téma porovnává kódování možnosti ** Media Encoder Standard ** a ** Media Encoder Premium pracovního postupu **."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
-ms.openlocfilehash: ee04ad10d8e7c5f4f3c6e91e9b7679c2aba82c99
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3bba48d5425ae47c72aca893af7c11fe270c2929
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="comparison-of-azure-on-demand-media-encoders"></a>Porovnání Azure na vyžádání média kodéry
 
-Toto téma porovnává možnosti kódování hello **Media Encoder Standard** a **Media Encoder Premium pracovního postupu**.
+Toto téma porovnává kódování možnosti **Media Encoder Standard** a **Media Encoder Premium pracovního postupu**.
 
 ## <a name="video-and-audio-processing-capabilities"></a>Možnosti zpracování videa a zvuku
 
-Hello následující tabulka porovnává funkce hello mezi Media Encoder Standard (MES) a Media Encoder Premium pracovního postupu (MEPW). 
+Následující tabulka porovnává funkce mezi Media Encoder Standard (MES) a Media Encoder Premium pracovního postupu (MEPW). 
 
 |Schopnost|Media Encoder Standard|Pracovní postup kodéru Media Encoder Premium|
 |---|---|---|
-|Použít podmíněnou logiku při kódování<br/>(například pokud vstup hello HD, pak kódování 5.1 zvuku)|Ne|Ano|
+|Použít podmíněnou logiku při kódování<br/>(například pokud vstupní HD, pak kódování 5.1 zvuku)|Ne|Ano|
 |Titulky|Ne|[Ano](media-services-premium-workflow-encoder-formats.md#closed_captioning)|
 |[Oprava Dolby® Professional hlasitosti](http://www.dolby.com/us/en/technologies/dolby-professional-loudness-solutions.pdf)<br/> pomocí dialogu Intelligence™|Ne|Ano|
 |Odstraňování prokládání, inverzní telecine|Basic|Vysílání kvality|
@@ -44,8 +44,8 @@ Hello následující tabulka porovnává funkce hello mezi Media Encoder Standar
 ## <a id="billing"></a>Fakturace měření používá každý kodér
 | Název procesoru média | Platných cenách | Poznámky |
 | --- | --- | --- |
-| **Media Encoder Standard** |KODÉR |Kódování úlohy se bude účtovat poplatek na dobu trvání hello v minutách, všechny soubory médií hello vytvořeného jako výstup hello sazby uvedené základě [sem][1], v části hello KODÉR sloupce. |
-| **Pracovní postup kodéru Media Encoder Premium** |KODÉR ÚROVNĚ PREMIUM |Kódování úlohy se bude účtovat poplatek na dobu trvání hello v minutách, všechny soubory médií hello vytvořeného jako výstup hello sazby uvedené základě [sem][1], v části sloupec hello KODÉR úrovně PREMIUM. |
+| **Media Encoder Standard** |KODÉR |Kódování úlohy se bude účtovat poplatek podle celková doba trvání v minutách, všechny soubory médií vytvořil jako výstup rychlostí zadaný [sem][1], ve sloupci KODÉR. |
+| **Pracovní postup kodéru Media Encoder Premium** |KODÉR ÚROVNĚ PREMIUM |Kódování úlohy se bude účtovat poplatek podle celková doba trvání v minutách, všechny soubory médií vytvořil jako výstup rychlostí zadaný [sem][1], ve sloupci KODÉR úrovně PREMIUM. |
 
 ## <a name="input-containerfile-formats"></a>Zadejte kontejner nebo formátů
 | Zadejte kontejner nebo formátů | Media Encoder Standard | Pracovní postup kodéru Media Encoder Premium |
@@ -67,11 +67,11 @@ Hello následující tabulka porovnává funkce hello mezi Media Encoder Standar
 ## <a name="input-video-codecs"></a>Vstupní video kodeky
 | Vstupní Video kodeky | Media Encoder Standard | Pracovní postup kodéru Media Encoder Premium |
 | --- | --- | --- |
-| AVC 8-bit nebo 10-bit, až too4:2:2, včetně AVCIntra |8 bitů 4:2:0, 4:2:2 |Ano |
+| AVC 8-bit nebo 10-bit, až 4:2:2, včetně AVCIntra |8 bitů 4:2:0, 4:2:2 |Ano |
 | Avid DNxHD (v MXF) |Ano |Ano |
 | DVCPro/DVCProHD (v MXF) |Ano |Ano |
 | JPEG2000 |Ano |Ano |
-| MPEG-2 (too422 profil a vysokou úroveň, včetně například XDCAM, XDCAM HD, XDCAM IMX, CableLabs® a D10 variant) |Too422 profil |Ano |
+| MPEG-2 (až 422 profil a vysokou úroveň, včetně například XDCAM, XDCAM HD, XDCAM IMX, CableLabs® a D10 variant) |Až 422 profilu |Ano |
 | MPEG-1 |Ano |Ano |
 | Windows Media Video/VC-1 |Ano |Ano |
 | Canopus Ústředí/HQX |Ne |Ne |
@@ -91,7 +91,7 @@ Hello následující tabulka porovnává funkce hello mezi Media Encoder Standar
 | Dolby® E |Ne |Ano |
 | Digitální Dolby® (AC3) |Ne |Ano |
 | Digitální Dolby® Plus (E-AC3) |Ne |Ano |
-| AAC (AAC-LC, AAC HE a AAC-HEv2; nahoru too5.1) |Ano |Ano |
+| AAC (AAC-LC, AAC HE a AAC-HEv2; až 5.1) |Ano |Ano |
 | MPEG vrstvy 2 |Ano |Ano |
 | MP3 (MPEG-1 zvuk vrstvy 3) |Ano |Ano |
 | Zvuk média systému Windows |Ano |Ano |
@@ -116,9 +116,9 @@ Hello následující tabulka porovnává funkce hello mezi Media Encoder Standar
 ## <a name="output-video-codecs"></a>Výstup kodeky videa
 | Výstup kodeky videa | Media Encoder Standard | Pracovní postup kodéru Media Encoder Premium |
 | --- | --- | --- |
-| AVC (H.264; 8bitové; až tooHigh profilu, úroveň 5.2; Ultra HD 4 kB; Uvnitř AVC) |Pouze 8 bitů 4:2:0 |Ano |
+| AVC (H.264; 8bitové; až profil vysokou úroveň 5.2; 4 kB Ultra HD; Uvnitř AVC) |Pouze 8 bitů 4:2:0 |Ano |
 | Avid DNxHD (v MXF) |Ne |Ano |
-| MPEG-2 (too422 profil a vysokou úroveň, včetně například XDCAM, XDCAM HD, XDCAM IMX, CableLabs® a D10 variant) |Ne |Ano |
+| MPEG-2 (až 422 profil a vysokou úroveň, včetně například XDCAM, XDCAM HD, XDCAM IMX, CableLabs® a D10 variant) |Ne |Ano |
 | MPEG-1 |Ne |Ano |
 | Windows Media Video/VC-1 |Ne |Ano |
 | Vytváření miniatur JPEG |Ano |Ano |
@@ -130,14 +130,14 @@ Hello následující tabulka porovnává funkce hello mezi Media Encoder Standar
 | --- | --- | --- |
 | AES (SMPTE 331 M a 302 M, AES3-2003) |Ne |Ano |
 | Digitální Dolby® (AC3) |Ne |Ano |
-| Dolby® Digital Plus (E-AC3) až too7.1 |Ne |Ano |
-| AAC (AAC-LC, AAC HE a AAC-HEv2; nahoru too5.1) |Ano |Ano |
+| Dolby® Digital Plus (E-AC3) až 7.1 |Ne |Ano |
+| AAC (AAC-LC, AAC HE a AAC-HEv2; až 5.1) |Ano |Ano |
 | MPEG vrstvy 2 |Ne |Ano |
 | MP3 (MPEG-1 zvuk vrstvy 3) |Ne |Ano |
 | Zvuk média systému Windows |Ne |Ano |
 
 >[!NOTE]
->Pokud kódování tooDolby® digitální (AC3), výstup hello lze zapsat pouze do souboru ISO MP4.
+>Pokud jste dekódovat digitální® Dolby (AC3), výstup lze zapsat pouze do souboru ISO MP4.
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

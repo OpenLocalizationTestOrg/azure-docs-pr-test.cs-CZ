@@ -1,6 +1,6 @@
 ---
-title: "tajný klíč trezoru aaaKey pomocí šablony Resource Manageru | Microsoft Docs"
-description: "Ukazuje, jak toopass tajný klíč z klíče trezoru jako parametr během nasazení."
+title: "Tajný klíč Key Vault pomocí šablony Resource Manageru | Microsoft Docs"
+description: "Ukazuje, jak předat tajného klíče z trezoru klíčů jako parametr během nasazení."
 services: azure-resource-manager,key-vault
 documentationcenter: na
 author: tfitzmac
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: 0bb7760c95b3b4ef34c9e5cc2e3421be56b5e5e3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1ca72599e67e79d42a3d430dbb13e89ea7265334
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="use-key-vault-toopass-secure-parameter-value-during-deployment"></a>Použít hodnotu zabezpečené parametru toopass Key Vault během nasazení
+# <a name="use-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Předejte hodnotu parametru zabezpečení při nasazení pomocí Key Vault
 
-Pokud budete potřebovat toopass zabezpečenou hodnotu (jako jsou hesla) jako parametr během nasazení, můžete načíst hodnotu hello [Azure Key Vault](../key-vault/key-vault-whatis.md). Můžete načíst hodnotu hello odkazem hello trezoru klíčů a tajný klíč v souboru parametrů. Hodnota Hello je nikdy vystavena, protože budete odkazovat pouze na jeho ID trezoru klíčů. Není nutné toomanually zadejte hello hodnotu pro tajný klíč hello pokaždé, když nasazujete hello prostředky. Hello trezoru klíčů může existovat v jiném předplatném. než hello skupinu prostředků, které nasazujete. Při odkazování na hello trezoru klíčů, můžete zahrnout hello ID předplatného.
+Když potřebujete předat hodnotu zabezpečení (třeba heslo) jako parametr během nasazení, můžete získat hodnotu z [Azure Key Vault](../key-vault/key-vault-whatis.md). Načíst hodnotu odkazem trezoru klíčů a tajný klíč v souboru parametrů. Hodnota je nikdy vystavena, protože budete odkazovat pouze na jeho ID trezoru klíčů. Nemusíte ručně zadat hodnotu pro tajný klíč pokaždé, když nasazujete prostředky. Trezor klíčů může existovat v jiném předplatném. než skupině prostředků, které nasazujete. Při odkazování na trezor klíčů, můžete zahrnout ID předplatného.
 
-Při vytváření trezoru klíčů hello nastavte hello *enabledForTemplateDeployment* vlastnost příliš*true*. Nastavením této hodnoty tootrue můžete povolit přístup ze šablon Resource Manager během nasazení.  
+Při vytváření trezoru klíčů, nastavte *enabledForTemplateDeployment* vlastnost *true*. Nastavením této hodnoty na hodnotu true, můžete povolit přístup ze šablon Resource Manager během nasazení.  
 
 ## <a name="deploy-a-key-vault-and-secret"></a>Nasazení trezoru klíčů a tajný klíč
 
-toocreate trezoru klíčů a tajný klíč, pomocí rozhraní příkazového řádku Azure nebo PowerShell. Všimněte si, že tento trezor klíčů hello je povolená pro šablonu nasazení. 
+Vytvoření trezoru klíčů a tajný klíč, pomocí rozhraní příkazového řádku Azure nebo PowerShell. Všimněte si, že key vault je povolena pro šablonu nasazení. 
 
 Pokud používáte Azure CLI, použijte:
 
@@ -53,14 +53,14 @@ $secretvalue = ConvertTo-SecureString $password -AsPlainText -Force
 Set-AzureKeyVaultSecret -VaultName $vaultname -Name "examplesecret" -SecretValue $secretvalue
 ```
 
-## <a name="enable-access-toohello-secret"></a>Povolit přístup toohello tajný klíč
+## <a name="enable-access-to-the-secret"></a>Povolení přístupu k tajný klíč
 
-Ať používáte nového trezoru klíčů nebo stávající, zajistěte, aby hello nasazení šablony hello mohli uživatelé přistupovat hello tajný klíč. uživatel Hello nasazení šablonu, která odkazuje na tajný klíč musí mít hello `Microsoft.KeyVault/vaults/deploy/action` oprávnění pro trezor klíčů hello. Hello [vlastníka](../active-directory/role-based-access-built-in-roles.md#owner) a [Přispěvatel](../active-directory/role-based-access-built-in-roles.md#contributor) role obou udělit přístup. Můžete také vytvořit [vlastní role](../active-directory/role-based-access-control-custom-roles.md) který uděluje toto oprávnění a přidat roli toothat hello uživatele. Informace o přidávání tooa roli uživatele najdete v tématu [přiřadit uživatele tooadministrator role v Azure Active Directory](../active-directory/active-directory-users-assign-role-azure-portal.md).
+Ať používáte nového trezoru klíčů nebo stávající, zajistí, že uživatel nasazení šablony můžete přístup tajný klíč. Uživatel nasazení šablonu, která odkazuje na tajný klíč musí mít `Microsoft.KeyVault/vaults/deploy/action` oprávnění pro trezor klíčů. [Vlastníka](../active-directory/role-based-access-built-in-roles.md#owner) a [Přispěvatel](../active-directory/role-based-access-built-in-roles.md#contributor) role obou udělit přístup. Můžete také vytvořit [vlastní role](../active-directory/role-based-access-control-custom-roles.md) který uděluje toto oprávnění a přidejte uživatele do této role. Informace o přidání uživatele k roli najdete v tématu [přiřazení uživatele k rolí správce ve službě Azure Active Directory](../active-directory/active-directory-users-assign-role-azure-portal.md).
 
 
 ## <a name="reference-a-secret-with-static-id"></a>Referenční tajný klíč s ID statické
 
-Hello šablona, která přijímá tajný klíč trezoru klíčů je jako libovolné jiné šablony. Je to způsobeno **odkazujete hello trezoru klíčů v souboru parametrů hello, není hello šablony.** Například následující šablony hello nasadí databázi SQL, která zahrnuje heslo správce. Parametr hesla Hello nastavena tooa zabezpečený řetězec. Ale hello šablony neurčuje, kde tato hodnota pochází z.
+Šablony, která přijímá tajný klíč trezoru klíčů je jako libovolné jiné šablony. Je to způsobeno **odkazujete trezoru klíčů v souboru parametrů, není šablona.** Například následující šablony nasadí databázi SQL, která zahrnuje heslo správce. Parametr hesla je nastaven na zabezpečený řetězec. Ale šablony neurčuje, kde tato hodnota pochází z.
 
 ```json
 {
@@ -146,7 +146,7 @@ Hello šablona, která přijímá tajný klíč trezoru klíčů je jako libovol
 }
 ```
 
-Teď vytvořte soubor parametrů pro hello předcházející šablony. V souboru parametrů hello zadejte parametr, který odpovídá názvu hello hello parametru v šabloně hello. Hodnota parametru hello referenční hello tajných klíčů v trezoru hello. Tajný klíč hello odkazujete předáním hello identifikátor prostředku trezoru klíčů hello a hello název hello tajný klíč. V následujícím příkladu hello tajný klíč trezoru klíčů hello již musí existovat a zadejte statickou hodnotu pro jeho ID prostředku.
+Teď vytvořte soubor parametrů pro předchozí šablonu. V souboru parametrů zadejte parametr, který odpovídá názvu parametru v šabloně. Pro hodnotu parametru odkazovat tajného klíče z trezoru klíčů. Tajný klíč odkazujete předáním identifikátor prostředku služby key vault a název tajný klíč. V následujícím příkladu tajný klíč trezoru klíčů již musí existovat a zadejte statickou hodnotu pro jeho ID prostředku.
 
 ```json
 {
@@ -194,9 +194,9 @@ Teď vytvořte soubor parametrů pro hello předcházející šablony. V souboru
 
 ## <a name="reference-a-secret-with-dynamic-id"></a>Referenční tajný klíč s dynamické ID
 
-předchozí části Hello vám ukázal, jak toopass ID statické prostředku pro hello klíč trezoru tajný klíč. Ale v některých scénářích musíte tooreference trezoru klíčů tajný klíč, který se liší podle hello aktuální nasazení. V takovém případě nemůžete ID prostředku hello pevný kód v souboru parametrů hello. Bohužel nelze generovat dynamicky hello ID prostředku v souboru parametrů hello vzhledem k tomu, že šablona výrazy nejsou povoleny v souboru parametrů hello.
+V předchozí části vám ukázal, jak předat ID statické prostředku pro tajný klíč trezoru klíčů. Ale v některých scénářích musíte tak, aby odkazovaly trezor klíčů tajný klíč, který se liší podle aktuální nasazení. V takovém případě nemůžete pevně ID prostředku v souboru parametrů. Bohužel nelze generovat dynamicky ID prostředku v souboru parametrů vzhledem k tomu, že šablona výrazy nejsou povoleny v souboru parametrů.
 
-toodynamically generovat hello ID prostředku pro tajný klíč trezoru klíčů, je nutné přesunout hello prostředek, který potřebuje hello tajný klíč do vnořené šablony. V šabloně hlavní přidání hello vnořené šablony a předat v parametru, který obsahuje ID hello dynamicky generované prostředku.
+K dynamickému generování ID prostředku pro tajný klíč trezoru klíčů, musíte přesunout prostředek, který potřebuje tajný klíč do vnořené šablony. V šabloně hlavní přidání vnořené šablony a předat v parametru, který obsahuje ID dynamicky generovaném prostředku.
 
 ```json
 {

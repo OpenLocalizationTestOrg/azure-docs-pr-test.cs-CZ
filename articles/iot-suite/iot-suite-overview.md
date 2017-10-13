@@ -1,6 +1,6 @@
 ---
-title: "Přehled Azure IoT Suite aaaMicrosoft | Microsoft Docs"
-description: "Přehled o tom, jak Azure IoT Suite nabízí internet věcí toocollect předkonfigurovaných řešení, analyzovat a ukládání dat, vizualizacím a integraci s jinými systémy."
+title: "Přehled Microsoft Azure IoT Suite | Dokumentace Microsoftu"
+description: "Přehled předkonfigurovaných řešení pro internet věcí v sadě Azure IoT Suite určených ke sběru, analyzování a uchovávání dat, vizualizacím a integraci s ostatními systémy."
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -16,15 +16,15 @@ ms.workload: na
 ms.date: 07/24/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 385025c5ec0d37c74689a928bc09e85b33439634
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: bfa8dbbd0b1d943a9eb7a042df0bac25189d9ac9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-azure-iot-suite"></a>Přehled sady Azure IoT Suite
 
-Hello Azure pro internet věcí (IoT) services nabízí celou řadu funkcí. Tyto služby na úrovni řešení pro velké firmy umožňují:
+Služby v sadě Azure IoT Suite nabízejí celou řadu funkcí. Tyto služby na úrovni řešení pro velké firmy umožňují:
 
 * sběr dat ze zařízení
 * analýzu datových proudů za provozu
@@ -33,37 +33,37 @@ Hello Azure pro internet věcí (IoT) services nabízí celou řadu funkcí. Tyt
 * integraci se systémy administrativní podpory (back-office)
 * správu zařízení
 
-toodeliver tyto funkce Azure IoT Suite balíčky současně více služeb Azure s vlastními rozšířeními v podobě *předkonfigurovaných řešení*. Tato předkonfigurovaná řešení jsou základní implementací běžných vzorů řešení IoT, které pomáhají tooreduce hello čas trvat toodeliver řešení IoT. Pomocí hello [IoT software development Kit][lnk-sdks], můžete přizpůsobit a rozšířit těchto řešení toomeet vlastní požadavky. Tato řešení můžete využít i jako příklady či šablony při vývoji nových řešení IoT.
+K zajištění těchto funkcí kombinuje Azure IoT Suite více služeb Azure s vlastními rozšířeními v podobě *předkonfigurovaných řešení*. Tato předkonfigurovaná řešení jsou základní implementací běžných vzorů řešení v oblasti IoT, které by vám měly pomoci snížit časovou náročnost implementace vašich vlastních IoT řešení. Pomocí [sad SDK pro IoT][lnk-sdks] je možné tato řešení přizpůsobit a rozšířit tak, aby vyhovovala vašim požadavkům. Tato řešení můžete využít i jako příklady či šablony při vývoji nových řešení IoT.
 
-Hello následující video obsahuje úvod tooAzure IoT Suite:
+Následující video obsahuje úvod k Azure IoT Suite:
 
 > [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON309/player]
 > 
 > 
 
 ## <a name="azure-iot-services-in-azure-iot-suite"></a>Služby Azure IoT v Azure IoT Suite
-Hello předkonfigurované řešení obvykle využívají hello následující služby:
+Předkonfigurovaná řešení obvykle využívají následující služby:
 
-* Základní tooAzure IoT Suite je hello [Azure IoT Hub] [ lnk-iot-hub] služby. Tato služba poskytuje hello zařízení cloud a funkce pro zasílání zpráv typu cloud zařízení a jednání jako hello brány toohello cloudu a hello jiných klíčovým službám IoT Suite. Hello služba vám umožní tooreceive zpráv ze zařízení v měřítku a odesílat příkazy tooyour zařízení. Hello služba vám také umožní příliš[spravovat vaše zařízení][lnk-device-management]. Můžete například nakonfigurovat, restartovat nebo obnovit tovární nastavení na jeden nebo více zařízení připojených toohello rozbočovače.
-* Služba [Azure Stream Analytics][lnk-asa] umožňuje analyzovat data za provozu. IoT Suite využívá tuto službu tooprocess příchozí telemetrii, vytváření agregací a zjišťování událostí. Hello předkonfigurovaná řešení dále s využitím stream analytics tooprocess informační zprávy, které obsahují data, jako je například metadata nebo odezvy ze zařízení. Hello řešení pomocí služby Stream Analytics tooprocess hello zpráv ze zařízení a přenosu těchto zpráv tooother služby.
-* [Úložiště Azure] [ lnk-azure-storage] a [Azure Cosmos DB] [ lnk-document-db] poskytují možnosti úložiště dat hello. Hello předkonfigurovaná řešení využívají telemetrie toostore úložiště objektů blob a toomake je k dispozici pro analýzu. Hello řešení pomocí metadat zařízení toostore Cosmos DB a povolit možnosti správy zařízení hello hello řešení.
-* [Azure Web Apps] [ lnk-web-apps] a [Microsoft Power BI] [ lnk-power-bi] poskytovat funkce pro vizualizaci dat hello. Hello flexibilitu Power BI vám umožní tooquickly sestavení vlastní interaktivní řídicí panely, které používají data IoT Suite.
+* Základem Azure IoT Suite je služba [Azure IoT Hub][lnk-iot-hub]. Tato služba zajišťuje obousměrnou výměnu zpráv mezi zařízením a cloudem a funguje jako brána ke cloudu a ostatním klíčovým službám IoT Suite. Umožňuje příjem zpráv z vašich zařízení a odesílání příkazů do zařízení. Tato služba také umožňuje [správu zařízení][lnk-device-management]. Můžete třeba nakonfigurovat, restartovat nebo obnovit tovární nastavení na jednom nebo několika zařízeních připojených k rozbočovači.
+* Služba [Azure Stream Analytics][lnk-asa] umožňuje analyzovat data za provozu. IoT Suite využívá tuto službu ke zpracování příchozích telemetrických dat, vytváření agregací a zjišťování událostí. Předkonfigurovaná řešení dále s využitím analýzy datových proudů zpracovávají informační zprávy, které obsahují například metadata nebo odezvy zařízení na příkazy. Řešení využívají službu Stream Analytics ke zpracování zpráv ze zařízení a přenosu těchto zpráv do dalších služeb.
+* Služby [Azure Storage][lnk-azure-storage] a [Azure Cosmos DB][lnk-document-db] zajišťují funkce pro ukládání dat. Tato předkonfigurovaná řešení využívají úložiště objektů blob k ukládání telemetrie a její zpřístupnění pro analýzu. Řešení používají službu Cosmos DB k ukládání metadat zařízení a zpřístupnění funkcí pro správu zařízení v těchto řešeních.
+* Funkce pro vizualizaci dat zajišťují služby [Azure Web Apps][lnk-web-apps] a [Microsoft Power BI][lnk-power-bi]. Díky flexibilitě služby Power BI si rychle sestavíte svůj vlastní interaktivní řídicí panel, který bude využívat data ze sady IoT Suite.
 
-Přehled hello architektura typického řešení IoT najdete v tématu [Microsoft Azure a Internet věcí (IoT) hello][iot-suite-what-is-azure-iot].
+Informace o tom, jak vypadá architektura typického řešení IoT, najdete v tématu [Microsoft Azure a Internet věcí (IoT)][iot-suite-what-is-azure-iot].
 
 ## <a name="preconfigured-solutions"></a>Předkonfigurovaná řešení
 
-Sada IoT Suite zahrnuje předkonfigurovaná řešení tohoto povolení tooquickly můžete začít pracovat s a tooexplore hello běžným scénářům IoT, jako například:
+IoT Suite zahrnuje předkonfigurovaná řešení, která vám umožní rychle začít s běžnými scénáři IoT, jako jsou:
 
 * Vzdálené monitorování
 * Prediktivní údržba
 * Propojená továrna
 
-Můžete nasadit tyto řešení tooyour předplatného Azure a pak spusťte scénář IoT dokončení, začátku do konce.
+Tato řešení můžete nasadit ve svém předplatném Azure a následně spustit kompletní scénář IoT od začátku do konce.
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když máte přehled co IoT Suite dělat a jaké jsou jeho hlavní součásti, můžete další informace o hello předkonfigurované řešení IoT Suite. Další informace najdete v tématu [co jsou hello Azure IoT předkonfigurovaných řešení?][lnk-what-are-preconfig]
+Teď, když máte přehled o tom, co sada IoT Suite dokáže a jaké jsou její hlavní součásti, se můžete blíž seznámit s předkonfigurovanými řešeními v sadě IoT Suite. Další informace najdete v tématu [Co jsou předkonfigurovaná řešení Azure IoT?][lnk-what-are-preconfig].
 
 [lnk-sdks]: https://azure.microsoft.com/documentation/articles/iot-hub-sdks-summary/
 [lnk-iot-hub]: https://azure.microsoft.com/documentation/services/iot-hub/

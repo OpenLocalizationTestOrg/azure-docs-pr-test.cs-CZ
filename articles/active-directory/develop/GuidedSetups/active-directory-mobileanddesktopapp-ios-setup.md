@@ -1,5 +1,5 @@
 ---
-title: "iOS v2 aaaAzure AD Začínáme - instalace | Microsoft Docs"
+title: "Azure AD v2 iOS Začínáme - instalace | Microsoft Docs"
 description: "Jak aplikace pro iOS (Swift) můžete volat rozhraní API, které vyžadují přístupové tokeny bodem v2 Azure Active Directory"
 services: active-directory
 documentationcenter: dev-center-name
@@ -13,37 +13,37 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
-ms.openlocfilehash: 62c4ee9a2d4ccaec780bee09fb4bc34cff2eb6df
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d25353a61b2a60bff28aa0679d38110e77d19e64
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 ## <a name="setting-up-your-ios-application"></a>Nastavení aplikace iOS
 
-Tato část obsahuje podrobné pokyny, jak toocreate nový projekt toodemonstrate jak toointegrate aplikace pro iOS (Swift) s *přihlášení se společností Microsoft* , může se dotázat webovým rozhraním API, které vyžadují token.
+Tato část obsahuje podrobné pokyny pro vytvoření nového projektu do ukazují, jak integrovat aplikace pro iOS (Swift) s *přihlášení se společností Microsoft* , může se dotázat webovým rozhraním API, které vyžadují token.
 
-> Dáváte přednost toodownload tento ukázkový projekt XCode místo? [Stažení projektu](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip) a přeskočit toohello [krok konfigurace](#create-an-application-express) ukázka kódu hello tooconfigure před provedením.
+> Stáhněte si tento ukázkový projekt XCode místo dávají přednost? [Stažení projektu](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip) a pokračujte [krok konfigurace](#create-an-application-express) před provedením konfigurace ukázka kódu.
 
 
-## <a name="install-carthage-toodownload-and-build-msal"></a>Nainstalujte Carthage toodownload a sestavení MSAL
-Správce balíčků Carthage se používá během období preview hello MSAL – integruje se s XCode při zachování schopnosti hello Microsoft toomake změny toohello knihovny.
+## <a name="install-carthage-to-download-and-build-msal"></a>Nainstalujte Carthage ke stažení a sestavení MSAL
+Správce balíčků Carthage se používá během období preview MSAL – integruje se s XCode při zachování schopnost Microsoft provést změny do knihovny.
 
-- Stáhněte a nainstalujte nejnovější verzi Carthage hello [sem](https://github.com/Carthage/Carthage/releases "Carthage adresa URL pro stahování")
+- Stáhněte a nainstalujte nejnovější verzi Carthage [sem](https://github.com/Carthage/Carthage/releases "Carthage adresa URL pro stahování")
 
 ## <a name="creating-your-application"></a>Vytvoření vaší aplikace
 
 1.  Otevřete Xcode a vyberte`Create a new Xcode project`
 2.  Vyberte `iOS`  >  `Single view Application` a klikněte na tlačítko *další*
 3.  Zadejte název produktu a klikněte na *další*
-4.  Vyberte složku toocreate vaší aplikace a klikněte na *vytvořit*
+4.  Vyberte složku pro vytvoření aplikace a klikněte na tlačítko *vytvořit*
 
-## <a name="build-hello-msal-framework"></a>Sestavení hello MSAL Framework
+## <a name="build-the-msal-framework"></a>Sestavení rozhraní MSAL
 
-Postupujte podle pokynů hello níže toopull a následně vytvořit hello nejnovější verzi knihovny MSAL pomocí Carthage:
+Postupujte podle pokynů pro vyžádání obsahu a následně vytvořit nejnovější verze knihoven MSAL pomocí Carthage:
 
-1.  Otevřete terminál hello bash a přejděte toohello aplikace kořenové složky
-2.  Hello níže zkopírujte a vložte hello bash terminálu toocreate soubor 'Cartfile':
+1.  Otevřete terminál bash a přejděte do kořenové složky aplikace
+2.  Kopírování níže a vkládání v terminálu bash k vytvoření souboru 'Cartfile':
 
 ```bash
 echo "github \"AzureAD/microsoft-authentication-library-for-objc\" \"master\"" > Cartfile
@@ -51,7 +51,7 @@ echo "github \"AzureAD/microsoft-authentication-library-for-objc\" \"master\"" >
 <!-- Workaround for Docs conversion bug -->
 <ol start="3">
 <li>
-Zkopírujte a vložte hello níže. Tento příkaz načte závislosti do složky Carthage/rezervace, a poté vytvoří hello MSAL knihovny:
+Zkopírujte a vložte níže. Tento příkaz načte závislosti do složky Carthage/rezervace, a poté vytvoří MSAL knihovny:
 </li>
 </ol>
 
@@ -59,15 +59,15 @@ Zkopírujte a vložte hello níže. Tento příkaz načte závislosti do složky
 carthage update
 ```
 
-> proces Hello výše je použité toodownload a sestavení hello Microsoft ověřování knihovny (MSAL). MSAL zpracovává získávání, ukládání do mezipaměti a aktualizaci tooaccess tokeny použít uživatelské rozhraní API chráněn hello v2 Azure Active Directory.
+> Výše uvedené procesu se používá ke stažení a sestavení knihovny ověřování společnosti Microsoft (MSAL). MSAL zpracovává získávání, ukládání do mezipaměti a aktualizaci tokeny uživatel používá pro přístup k rozhraní API, které jsou chráněné službou Azure Active Directory v2.
 
-## <a name="add-hello-msal-framework-tooyour-application"></a>Přidání hello MSAL framework tooyour aplikace
-1.  V Xcode otevřete hello `General` karta
-2.  Přejděte toohello `Linked Frameworks and Libraries` a klikněte na`+`
+## <a name="add-the-msal-framework-to-your-application"></a>Přidání rozhraní MSAL do aplikace
+1.  V Xcode otevřete `General` karta
+2.  Přejděte na `Linked Frameworks and Libraries` a klikněte na`+`
 3.  Vyberte `Add other…`
-4.  Vyberte: `Carthage`  >  `Build`  >  `iOS`  >  `MSAL.framework` a klikněte na tlačítko *otevřete*. Měli byste vidět `MSAL.framework` přidat toohello seznamu.
-5.  Přejděte příliš`Build Phases` a klikněte na `+` ikonu, zvolte`New Run Script Phase`
-6.  Přidejte následující obsah toohello hello *skript oblasti*:
+4.  Vyberte: `Carthage`  >  `Build`  >  `iOS`  >  `MSAL.framework` a klikněte na tlačítko *otevřete*. Měli byste vidět `MSAL.framework` přidán do seznamu.
+5.  Přejděte na `Build Phases` a klikněte na `+` ikonu, zvolte`New Run Script Phase`
+6.  Přidejte následující obsah *skript oblasti*:
 
 ```text
 /usr/local/bin/carthage copy-frameworks
@@ -76,7 +76,7 @@ carthage update
 <!-- Workaround for Docs conversion bug -->
 <ol start="7">
 <li>
-Přidejte následující hello příliš<code>Input Files</code> kliknutím <code>+</code>:
+Přidejte následující <code>Input Files</code> kliknutím <code>+</code>:
 </li>
 </ol>
 
@@ -85,10 +85,10 @@ $(SRCROOT)/Carthage/Build/iOS/MSAL.framework
 ```
 
 ## <a name="creating-your-applications-ui"></a>Vytvoření uživatelského rozhraní aplikace
-Soubor Main.storyboard by měl automaticky vytvoří jako součást vaše šablona projektu. Postupujte podle pokynů hello níže toocreate hello aplikace uživatelského rozhraní:
+Soubor Main.storyboard by měl automaticky vytvoří jako součást vaše šablona projektu. Postupujte podle pokynů k vytvoření aplikace uživatelského rozhraní:
 
-1.  CTRL + klikněte na tlačítko `Main.storyboard` toobring až hello kontextové nabídky a potom klikněte na:`Open As` > `Source Code`
-2.  Nahraďte hello `<scenes>` uzel s hello kódu níže:
+1.  CTRL + klikněte na tlačítko `Main.storyboard` zprovoznit v kontextové nabídce a potom klikněte na:`Open As` > `Source Code`
+2.  Nahraďte `<scenes>` uzel s následující kód:
 
 ```xml
  <scenes>

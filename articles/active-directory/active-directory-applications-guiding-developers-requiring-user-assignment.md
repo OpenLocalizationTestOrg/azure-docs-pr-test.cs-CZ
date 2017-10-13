@@ -1,6 +1,6 @@
 ---
-title: "přiřazení uživatelů aaaRequire – Azure AD | Microsoft Docs"
-description: "Jak toorequire přiřazení uživatelů pro aplikace Azure."
+title: "Vyžadovat přiřazení uživatelských – Azure AD | Microsoft Docs"
+description: "Jak vyžadovat přiřazení uživatelů pro aplikace Azure."
 services: active-directory
 documentationcenter: 
 author: kgremban
@@ -15,24 +15,24 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: kgremban
 robots: noindex
-ms.openlocfilehash: b72037cb2321fe03a8ecbbefb568029ce903a126
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 079b806c041a4a21e9350342867aee581c57bf45
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-ad-and-applications-require-user-assignment"></a>Azure AD a aplikace: vyžadovat přiřazení uživatelů
 ## <a name="requiring-user-assignment"></a>Vyžadování přiřazení uživatelů
-1. Přihlaste se toohello portálu Azure pomocí účtu správce.
-2. Klikněte na hello **všechny položky** položku v hlavní nabídce hello.
-3. Vyberte hello adresář, který používáte pro aplikaci hello.
-4. Klikněte na hello **aplikace** kartě.
-5. Vyberte aplikaci hello hello seznamu aplikací přidružených k tomuto adresáři.
-6. Klikněte na tlačítko hello **konfigurace** kartě.
-7. Změna hello **vyžaduje přiřazení uživatele tooAccess aplikace** přepnutí tooYes.
-8. Klikněte na tlačítko hello **Uložit** tlačítko dole hello úvodní obrazovka.
+1. Přihlaste se k portálu Azure pomocí účtu správce.
+2. Klikněte na **všechny položky** položku v hlavní nabídce.
+3. Vyberte adresář, který používáte pro aplikaci.
+4. Klikněte na **aplikace** kartě.
+5. Vyberte aplikaci ze seznamu aplikací přidružených k tomuto adresáři.
+6. Klikněte **konfigurace** kartě.
+7. Změna **uživatele přiřazení vyžaduje přístup k aplikaci** přepnutí na Ano.
+8. Klikněte **Uložit** tlačítko v dolní části obrazovky.
 
-Nyní máte tooassign uživatelů nebo skupin toohello aplikace. V tématu [přiřazování uživatelů aplikace tooan](active-directory-applications-guiding-developers-assigning-users.md) a [přiřazení skupiny aplikací tooan](active-directory-applications-guiding-developers-assigning-groups.md).
+Nyní je nutné přiřadit uživatele nebo skupiny do aplikace. V tématu [přiřazování uživatelů k aplikaci](active-directory-applications-guiding-developers-assigning-users.md) a [přiřazení skupin k aplikaci](active-directory-applications-guiding-developers-assigning-groups.md).
 
 ## <a name="next-steps"></a>Další kroky
 [!INCLUDE [active-directory-applications-guiding-developers-for-lob-applications-toc.md](../../includes/active-directory-applications-guiding-developers-for-lob-applications-toc.md)]

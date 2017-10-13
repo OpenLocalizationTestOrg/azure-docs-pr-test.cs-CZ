@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure dokumentace k serveru Analysis Services – kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
-description: "Zjistěte, jak cloudové tooset až modelování dat pomocí služby Analysis Services v hello. Dokumentace se dozvíte, jak toocreate podnikové řešení BI pomocí tabulková data."
+title: "Dokumentace ke službě Azure Analysis Services – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
+description: "Naučte se nastavit modelování dat pomocí Analysis Services v cloudu. Dokumentace ukazuje, jak vytvořit podnikové řešení BI pomocí tabelárních dat."
 services: analysis-services
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 077b13f9eb6eea87b96833452382b8e019f09a6f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 3f66f61651aab5f1cf0850cdbbd069b0a9a65543
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="analysis-services-documentation"></a>Dokumentace ke službě Analysis Services
 
-Zjistěte, jak tooset a správa data modelování služba Analysis Services. Kurzy a další dokumentaci ukazují, jak toocreate podnikové úrovni BI řešení pomocí tabulková data v hello cloudu nebo místně.
+Naučte se nastavit a spravovat modelování dat pomocí Analysis Services. Kurzy a další dokumentace ukazují, jak vytvořit podnikové řešení BI pomocí tabelárních dat v cloudu i v místě.
 
 <ul class="panelContent cardsFTitle">
     <li>

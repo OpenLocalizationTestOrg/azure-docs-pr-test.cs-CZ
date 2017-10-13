@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure dokumentace k automatizaci – kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
-description: "Zjistěte, jak procesy tooautomate toouse automatizace a správa konfigurace v pořadí toosave čas a zvýšit spolehlivost běžných administrativních úloh."
+title: "Dokumentace ke službě Azure Automation – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
+description: "Naučte se používat službu Automation k automatizaci procesů a správy konfigurací s cílem šetřit čas a zvyšovat spolehlivost běžných administrativních úloh."
 services: automation
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: eda979bac2434d9b4a91a4e661f5b46a6540a1d2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ed25b6abaacbdd44b718a1a5febce5a02dacc334
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="automation-documentation"></a>Dokumentace ke službě Automation
 
-Zjistěte, jak hello toouse automatizace, čas toosave a zvýšit spolehlivost běžných administrativních úloh provést v cloudovém prostředí. Kurzy, odkazy na rozhraní API a další dokumentaci ukazují, jak tooautomate procesů pomocí runbooků nebo automatizovat správu konfigurace pomocí konfigurace požadovaného stavu.
+Naučte se používat službu Automation, a tím šetřit čas a zvyšovat spolehlivost běžných administrativních úloh prováděných v cloudovém prostředí. Kurzy, reference k rozhraním API a další dokumentace obsahují informace o tom, jak automatizovat procesy pomocí runbooků nebo jak automatizovat správu konfigurace pomocí DSC (požadovaný stav konfigurace).
 
 <ul class="panelContent cardsFTitle">
     <li>

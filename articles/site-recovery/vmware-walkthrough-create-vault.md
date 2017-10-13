@@ -1,6 +1,6 @@
 ---
-title: "aaaSet až do trezoru pro tooAzure replikace VMware pomocí Azure Site Recovery | Microsoft Docs"
-description: "Shrnuje kroky hello potřebujete tooset až do trezoru pro tooAzure replikace VMware pomocí Azure Site Recovery"
+title: "Nastavení trezoru pro replikace VMware do Azure pomocí Azure Site Recovery | Microsoft Docs"
+description: "Shrnuje kroky, které budete muset nastavit trezor pro replikace VMware do Azure pomocí Azure Site Recovery"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
-ms.openlocfilehash: 8a7755a6c9a3f55f241c615e425285bc4b782493
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: dca95ad46b8de587140c3573ba6ed5702a122032
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="step-7-set-up-a-vault-for-vmware-replication-tooazure"></a>Krok 7: Nastavení trezoru pro tooAzure replikace VMware
+# <a name="step-7-set-up-a-vault-for-vmware-replication-to-azure"></a>Krok 7: Nastavení trezoru pro replikace VMware do Azure
 
 
-Tento článek popisuje, jak tooset až do trezoru a určit, co chcete tooreplicate z místního umístění, tooAzure pomocí hello [Azure Site Recovery](site-recovery-overview.md) služby v hello portálu Azure.
+Tento článek popisuje, jak nastavit trezor a určit, co chcete replikaci z vaší místní umístění, do Azure pomocí [Azure Site Recovery](site-recovery-overview.md) službu na portálu Azure.
 
 
-POST dotazy a na konci hello tohoto článku nebo na hello [fóru Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+POST dotazy a na konci tohoto článku nebo na [fóru Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 
 
@@ -37,14 +37,14 @@ POST dotazy a na konci hello tohoto článku nebo na hello [fóru Azure Recovery
 
 ## <a name="select-a-protection-goal"></a>Vyberte cíl ochrany
 
-Vyberte, co chcete tooreplicate, a místo, kam chcete tooreplicate k.
+Vyberte, jak chcete počítače replikovat a kam je chcete replikovat.
 
 1. Klikněte na tlačítko **trezory služeb zotavení** > trezoru.
-2. V hello prostředků nabídky, klikněte na **Site Recovery** > **Příprava infrastruktury** > **cíl ochrany**.
-3. V **cíl ochrany**, vyberte **tooAzure** > **Ano, s hypervisoru VMware vSphere**.
+2. V nabídce prostředků, klikněte na tlačítko **Site Recovery** > **Příprava infrastruktury** > **cíl ochrany**.
+3. V **cíl ochrany**, vyberte **do Azure** > **Ano, s hypervisoru VMware vSphere**.
 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Přejděte příliš[krok 8: nastavit zdroje a cíle](vmware-walkthrough-source-target.md)
+Přejděte na [krok 8: nastavit zdroje a cíle](vmware-walkthrough-source-target.md)

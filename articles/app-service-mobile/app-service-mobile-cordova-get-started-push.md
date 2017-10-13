@@ -1,6 +1,6 @@
 ---
-title: "tooApache aaaAdd nabízených oznámení aplikace Cordova s Azure Mobile Apps | Microsoft Docs"
-description: "Zjistěte, jak Azure Mobile Apps toosend toouse nabízená oznámení tooyour Apache Cordova app."
+title: "Přidání nabízených oznámení do aplikace Apache Cordova s Azure Mobile Apps | Microsoft Docs"
+description: "Naučte se používat Azure Mobile Apps k odesílání nabízených oznámení do vaší aplikace Apache Cordova."
 services: app-service\mobile
 documentationcenter: javascript
 manager: syntaxc4
@@ -14,24 +14,24 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: glenga
-ms.openlocfilehash: 8e1b23d6145b446b6f01599337b677e2f2b31d7e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: dc3cab0a6a8b4a56ab0fba1a02e5bba9d0ed1b1f
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="add-push-notifications-tooyour-apache-cordova-app"></a>Přidat nabízená oznámení tooyour Apache Cordova aplikaci
+# <a name="add-push-notifications-to-your-apache-cordova-app"></a>Přidání nabízených oznámení do vaší aplikace Apache Cordova
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 ## <a name="overview"></a>Přehled
-V tomto kurzu přidáte projekt nabízených oznámení toohello [Apache Cordova úvodní] tak, aby nabízených oznámení je odesláno toohello zařízení pokaždé, když vložení záznamu.
+V tomto kurzu přidání nabízených oznámení do projektu [Apache Cordova úvodní] tak, aby nabízených oznámení se odešle do zařízení pokaždé, když vložení záznamu.
 
-Pokud nepoužijete hello stáhli úvodní serverový projekt, třeba hello nabízených oznámení v balíčku rozšíření. Další informace najdete v tématu [pracovat s hello .NET back-end serveru SDK pro Azure Mobile Apps][1].
+Pokud použijete serverový projekt stažené rychlý start, je třeba balíček rozšíření nabízená oznámení. Další informace najdete v tématu [pracovat s .NET back-end serveru SDK pro Azure Mobile Apps][1].
 
 ## <a name="prerequisites"></a>Požadavky
-Tento kurz se zaměřuje Apache Cordova aplikace vytvořené s Visual Studiem 2015, která běží na hello emulátor Google Android, zařízení se systémem Android, zařízení se systémem Windows a zařízení s iOS.
+Tento kurz se zaměřuje Apache Cordova aplikace vytvořené s Visual Studiem 2015, která běží na emulátor Google Android, zařízení se systémem Android, zařízení se systémem Windows a zařízení s iOS.
 
-toocomplete tohoto kurzu potřebujete:
+Pro absolvování tohoto kurzu potřebujete:
 
 * Počítač s nástrojem [Visual Studio Community 2015] [ 2] nebo novější verze.
 * [Nástroje sady Visual Studio pro Apache Cordova][4].
@@ -46,72 +46,72 @@ toocomplete tohoto kurzu potřebujete:
 
 [Přehrát video, zobrazující kroky v této části][9]
 
-## <a name="update-hello-server-project"></a>Aktualizace projektu server hello
+## <a name="update-the-server-project"></a>Aktualizace server project
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
 ## <a name="add-push-to-app"></a>Upravit aplikaci Cordova
-Zkontrolujte, zda projektu aplikace Apache Cordova připraven toohandle nabízená oznámení pomocí instalaci hello nabízené cordovu plus žádné specifické pro platformu nabízených služeb.
+Zkontrolujte, zda že je připraven ke zpracování nabízených oznámení nainstalováním nabízené cordovu plus žádné specifické pro platformu nabízené služby projektu aplikace Apache Cordova.
 
-#### <a name="update-hello-cordova-version-in-your-project"></a>Aktualizujte verzi Cordova hello ve vašem projektu.
-Pokud váš projekt používá starší než v6.1.1 verzi aplikace Apache Cordova, aktualizujte hello klientského projektu. tooupdate hello projektu:
+#### <a name="update-the-cordova-version-in-your-project"></a>Aktualizujte verzi Cordova ve vašem projektu.
+Pokud váš projekt používá starší než v6.1.1 verzi aplikace Apache Cordova, aktualizujte projektu klienta. Aktualizace projektu:
 
-* Klikněte pravým tlačítkem na `config.xml` tooopen hello configuration designer.
-* Vyberte kartu platformy hello.
-* Zvolte 6.1.1 v hello **Cordova CLI** textové pole.
-* Zvolte **sestavení**, pak **sestavit řešení** tooupdate hello projektu.
+* Klikněte pravým tlačítkem na `config.xml` otevřete návrháře konfigurace.
+* Vyberte kartu platformy.
+* Zvolte 6.1.1 v **Cordova CLI** textové pole.
+* Zvolte **sestavení**, pak **sestavit řešení** aktualizujte projekt.
 
-#### <a name="install-hello-push-plugin"></a>Instalace modulu plug-in nabízené hello
-Aplikace Apache Cordova nezpracuje nativně možnosti sítě nebo zařízení.  Tyto možnosti jsou poskytovány buď modulů plug-in, které jsou publikovány na [npm] [ 10] nebo na Githubu.  Hello `phonegap-plugin-push` modul plug-in je použité toohandle sítě nabízená oznámení.
+#### <a name="install-the-push-plugin"></a>Instalace modulu plug-in push
+Aplikace Apache Cordova nezpracuje nativně možnosti sítě nebo zařízení.  Tyto možnosti jsou poskytovány buď modulů plug-in, které jsou publikovány na [npm] [ 10] nebo na Githubu.  `phonegap-plugin-push` Modulu plug-in se používá ke zpracování nabízených oznámení sítě.
 
-Modul plug-in nabízené hello můžete nainstalovat jedním z těchto způsobů:
+Modul plug-in nabízené můžete nainstalovat jedním z těchto způsobů:
 
-**Z hello příkazového řádku:**
+**Z příkazového řádku:**
 
-Spusťte následující příkaz hello:
+Spusťte následující příkaz:
 
     cordova plugin add phonegap-plugin-push
 
 **Z v sadě Visual Studio:**
 
-1. V Průzkumníku řešení otevřete hello `config.xml` klikněte na soubor **modulů plug-in** > **vlastní**, vyberte **Git** jako zdroj instalace pak zadejte `https://github.com/phonegap/phonegap-plugin-push`jako zdroj hello.
+1. V Průzkumníku řešení otevřete `config.xml` klikněte na soubor **modulů plug-in** > **vlastní**, vyberte **Git** jako zdroj instalace pak zadejte `https://github.com/phonegap/phonegap-plugin-push`jako zdroj.
 
    ![][img1]
 
-2. Klikněte na tlačítko zdroj další toohello instalace hello šipku.
-3. V **SENDER_ID**, pokud již máte ID číselné projektu pro projekt hello vývojářské konzole Google, můžete přidat sem. Jinak zadejte hodnotu zástupného symbolu, jako je 777777.  Pokud cílíte na Android, můžete je aktualizovat tuto hodnotu v config.xml později.
+2. Klikněte na šipku vedle zdroje instalace.
+3. V **SENDER_ID**, pokud již máte ID číselné projektu pro projekt vývojářské konzole Google, můžete přidat sem. Jinak zadejte hodnotu zástupného symbolu, jako je 777777.  Pokud cílíte na Android, můžete je aktualizovat tuto hodnotu v config.xml později.
 4. Klikněte na tlačítko **Přidat**.
 
-modul plug-in nabízené Hello je nyní nainstalován.
+Modul plug-in nabízené je nyní nainstalován.
 
-#### <a name="install-hello-device-plugin"></a>Instalace modulu plug-in hello zařízení
-Postupujte podle hello stejný postup používá tooinstall hello nabízené modulu plug-in.  Přidání modulu plug-in hello zařízení ze seznamu modulů plug-in základní hello (klikněte na tlačítko **modulů plug-in** > **základní** toofind ji). Je třeba tento název modulu plug-in tooobtain hello platformy.
+#### <a name="install-the-device-plugin"></a>Instalace modulu plug-in zařízení
+Postupujte podle stejného postupu, který jste použili k instalaci modulu plug-in push.  Přidání modulu plug-in zařízení ze seznamu modulů plug-in jádra (klikněte na tlačítko **modulů plug-in** > **základní** ji najít). Je nutné tento modul plug-in získat název platformy.
 
 #### <a name="register-your-device-on-application-start-up"></a>Zaregistrovat zařízení při spuštění aplikace
-Na začátku jsme obsahovat určitý minimální kód pro Android. Později upravte hello toorun aplikace v iOS nebo Windows 10.
+Na začátku jsme obsahovat určitý minimální kód pro Android. Později upravte aplikaci spustit v iOS nebo Windows 10.
 
-1. Přidejte volání příliš**registerForPushNotifications** během hello zpětného volání pro hello procesu přihlášení, nebo na konci hello hello **onDeviceReady** metoda:
+1. Přidejte volání **registerForPushNotifications** během zpětného volání pro proces přihlášení nebo v dolní části **onDeviceReady** metoda:
 
-        // Login toohello service.
+        // Login to the service.
         client.login('google')
             .then(function () {
                 // Create a table reference
                 todoItemTable = client.getTable('todoitem');
 
-                // Refresh hello todoItems
+                // Refresh the todoItems
                 refreshDisplay();
 
-                // Wire up hello UI Event Handler for hello Add Item
+                // Wire up the UI Event Handler for the Add Item
                 $('#add-item').submit(addItemHandler);
                 $('#refresh').on('click', refreshDisplay);
 
-                    // Added tooregister for push notifications.
+                    // Added to register for push notifications.
                 registerForPushNotifications();
 
             }, handleError);
 
     Tento příklad ukazuje volání **registerForPushNotifications** po úspěšném provedení ověřování.  Můžete volat `registerForPushNotifications()` tak často, jako je povinný.
 
-2. Přidat nové hello **registerForPushNotifications** metoda následujícím způsobem:
+2. Přidejte nové **registerForPushNotifications** metoda následujícím způsobem:
 
         // Register for Push Notifications. Requires that phonegap-plugin-push be installed.
         var pushRegistration = null;
@@ -122,13 +122,13 @@ Na začátku jsme obsahovat určitý minimální kód pro Android. Později upra
               wns: {}
           });
 
-        // Handle hello registration event.
+        // Handle the registration event.
         pushRegistration.on('registration', function (data) {
-          // Get hello native platform of hello device.
+          // Get the native platform of the device.
           var platform = device.platform;
-          // Get hello handle returned during registration.
+          // Get the handle returned during registration.
           var handle = data.registrationId;
-          // Set hello device-specific message template.
+          // Set the device-specific message template.
           if (platform == 'android' || platform == 'Android') {
               // Register for GCM notifications.
               client.push.register('gcm', handle, {
@@ -155,27 +155,27 @@ Na začátku jsme obsahovat určitý minimální kód pro Android. Později upra
 
         pushRegistration.on('error', handleError);
         }
-3. (Android) V předchozích kód hello, nahraďte `Your_Project_ID` s hello číselného projektu ID pro vaši aplikaci z [vývojářské konzole Google][18].
+3. (Android) V předchozím kódu, nahraďte `Your_Project_ID` s numerická projektu ID pro vaši aplikaci z [vývojářské konzole Google][18].
 
-## <a name="optional-configure-and-run-hello-app-on-android"></a>(Volitelné) Konfigurace a spuštění aplikace hello v systému Android
-Dokončení této části tooenable nabízená oznámení pro Android.
+## <a name="optional-configure-and-run-the-app-on-android"></a>(Volitelné) Konfigurace a spuštění aplikace v systému Android
+Dokončení této části ke zprovoznění nabízených oznámení pro Android.
 
 #### <a name="enable-gcm"></a>Povolit Firebase cloudu zasílání zpráv
-Vzhledem k tomu, že původně jsme jsou cílem hello Google Android platformu, musíte povolit zasílání zpráv cloudu Firebase.
+Vzhledem k tomu, že jsme se původně cílené na platformu Google Android, musíte povolit zasílání zpráv cloudu Firebase.
 
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
-#### <a name="configure-backend"></a>Konfigurace hello mobilní aplikace back-end toosend nabízené požadavky pomocí FCM
+#### <a name="configure-backend"></a>Konfigurace back-end mobilní aplikace k odeslání žádosti o nabízenou pomocí FCM
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push.md)]
 
 #### <a name="configure-your-cordova-app-for-android"></a>Konfigurace aplikace Cordova pro Android
-V aplikaci Cordova otevřete config.xml a nahraďte `Your_Project_ID` s hello číselného projektu ID pro vaši aplikaci z hello [vývojářské konzole Google][18].
+V aplikaci Cordova otevřete config.xml a nahraďte `Your_Project_ID` s numerická projektu ID pro vaši aplikaci z [vývojářské konzole Google][18].
 
         <plugin name="phonegap-plugin-push" version="1.7.1" src="https://github.com/phonegap/phonegap-plugin-push.git">
             <variable name="SENDER_ID" value="Your_Project_ID" />
         </plugin>
 
-Otevřete index.js a aktualizujte hello kód toouse vaše ID číselné projektu.
+Otevřete index.js a aktualizujte kód, který použije vaše ID číselné projektu.
 
         pushRegistration = PushNotification.init({
             android: { senderID: 'Your_Project_ID' },
@@ -184,116 +184,116 @@ Otevřete index.js a aktualizujte hello kód toouse vaše ID číselné projektu
         });
 
 #### <a name="configure-device"></a>Konfigurace zařízení s Androidem pro ladění USB
-Před nasazením vaší aplikace tooyour zařízení s Androidem, musíte tooenable ladění USB.  Na váš telefon se systémem Android, proveďte následující kroky:
+Než bude možné nasadit aplikace do zařízení se systémem Android, budete muset povolit ladění USB.  Na váš telefon se systémem Android, proveďte následující kroky:
 
-1. Přejděte příliš**nastavení** > **o telefonu**, potom klepněte na hello **číslo sestavení** dokud režim vývojáře je povolen (o sedm časy).
-2. Zpět v **nastavení** > **možnosti pro vývojáře** povolit **ladění USB**, připojte se váš telefon se systémem Android tooyour vývoj počítači pomocí kabelu USB.
+1. Přejděte na **nastavení** > **o telefonu**, klepněte **číslo sestavení** dokud režim vývojáře je povolen (o sedm časy).
+2. Zpět v **nastavení** > **možnosti pro vývojáře** povolit **ladění USB**, telefon s Androidem se potom připojují k vaší vývoj počítači pomocí kabelu USB.
 
-Jsme testovali to pomocí Google Nexus 5 X zařízení se systémem Android 6.0 (Marshmallow).  Techniky hello jsou však společné pro všechny moderní Android verze.
+Jsme testovali to pomocí Google Nexus 5 X zařízení se systémem Android 6.0 (Marshmallow).  Technik jsou však společné pro všechny moderní Android verze.
 
 #### <a name="install-google-play-services"></a>Nainstalujte služby Google Play
-modul plug-in nabízené Hello spoléhá na Android služby Google Play pro nabízená oznámení.
+Modul plug-in nabízené spoléhá na Android služby Google Play pro nabízená oznámení.
 
-1. V sadě Visual Studio, klikněte na tlačítko **nástroje** > **Android** > **Android SDK Manager**, rozbalte položku hello **funkce** složky a zkontrolujte hello pole toomake jistí, že každý z následujících sad SDK hello je nainstalován.
+1. V sadě Visual Studio, klikněte na tlačítko **nástroje** > **Android** > **Android SDK Manager**, rozbalte **funkce** složka a zaškrtněte políčka zajistí každé z následujících sad SDK je nainstalována.
 
    * Android 2.3 nebo vyšší
    * Revize Google úložiště 27 nebo vyšší
    * Služby Google Play 9.0.2 nebo vyšší
 
-2. Klikněte na tlačítko **instalace balíčků** a počkejte toocomplete instalace hello.
+2. Klikněte na tlačítko **instalace balíčků** a počkejte na dokončení instalace.
 
-Hello aktuální požadované knihovny jsou uvedeny v hello [phonegap-plugin nabízené instalace dokumentace][19].
+Aktuální požadované knihovny jsou uvedeny v [phonegap-plugin nabízené instalace dokumentace][19].
 
-#### <a name="test-push-notifications-in-hello-app-on-android"></a>Nabízená oznámení v aplikaci hello v systému Android
-Můžete teď nabízená oznámení spuštěním hello aplikace a vložení položek v tabulce TodoItem hello. Můžete otestovat z hello stejné zařízení nebo z druhé zařízení, tak dlouho, dokud používáte hello stejný back-end. Testování aplikace Cordova na platformě Android hello v jednom z následujících způsobů hello:
+#### <a name="test-push-notifications-in-the-app-on-android"></a>Nabízená oznámení v aplikaci pro Android
+Spuštěním aplikace a vložení položek v tabulce TodoItem můžete nyní nabízená oznámení. Ze stejného zařízení nebo z druhé zařízení, můžete otestovat tak dlouho, dokud používají stejný back-end. Testování aplikace Cordova na platformě Android v jednom z následujících způsobů:
 
-* **Na fyzické zařízení:** připojit zařízení se systémem Android tooyour vývojovém počítači pomocí kabelu USB.  Místo **emulátor Google Android**, vyberte **zařízení**. Visual Studio nasadí hello aplikace toohello zařízení a pak spustí aplikace hello.  Potom můžete pracovat s aplikací hello na hello zařízení.
+* **Na fyzické zařízení:** přiřadit vývojovém počítači pomocí kabelu USB zařízení se systémem Android.  Místo **emulátor Google Android**, vyberte **zařízení**. Visual Studio nasadí aplikaci do zařízení a pak aplikaci spustí.  Potom můžete pracovat s aplikací na zařízení.
 
-  Zlepšení vývojové prostředí.  Sdílení aplikací, jako obrazovky [Mobizen] [ 20] vám může pomoci při vývoji aplikace platformy Android.  Mobizen projekty webového prohlížeče tooa Android obrazovky ve vašem počítači.
+  Zlepšení vývojové prostředí.  Sdílení aplikací, jako obrazovky [Mobizen] [ 20] vám může pomoci při vývoji aplikace platformy Android.  Mobizen projektů Android obrazovky na webový prohlížeč ve vašem počítači.
 
 * **V emulátoru Androidu:** existují další konfigurační kroky potřebné při spuštění v emulátoru.
 
-    Ujistěte se, že nasazujete tooa virtuální zařízení, která má nastavit jako cíl hello rozhraní Google API, jak je vidět ve Správci hello virtuální zařízení Android (AVD).
+    Ujistěte se, že nasazujete virtuální zařízení, která má rozhraní Google API nastavenou jako cíl, jak je vidět ve Správci virtuální zařízení Android (AVD).
 
     ![](./media/app-service-mobile-cordova-get-started-push/google-apis-avd-settings.png)
 
-    Pokud chcete toouse rychlejší x86 emulátoru, můžete [nainstalovat ovladač HAXM hello] [ 11] a nakonfigurujte hello emulátoru toouse ho.
+    Pokud chcete použít rychlejší x86 emulátoru, můžete [nainstalujte ovladač HAXM] [ 11] a nakonfigurujte emulátoru ji použít.
 
-    Kliknutím na Přidat zařízení Android toohello účet Google **aplikace** > **nastavení** > **přidejte účet**, postupujte podle pokynů hello.
+    Kliknutím na Přidat účet Google do zařízení s Androidem **aplikace** > **nastavení** > **přidejte účet**, postupujte podle pokynů.
 
     ![](./media/app-service-mobile-cordova-get-started-push/add-google-account.png)
 
-    Spusťte aplikaci seznamu úkolů hello jako před a vložit novou položku úkolů. Tentokrát ikonu oznámení se zobrazí v oznamovací oblasti hello. Můžete otevřít hello oznámení nástroj drawer tooview hello textu v plném znění hello oznámení.
+    Spusťte aplikaci seznamu úkolů jako před a vložit novou položku úkolů. Tentokrát ikonu oznámení se zobrazí v oznamovací oblasti. Můžete otevřít panel oznámení k zobrazení textu v plném znění oznámení.
 
     ![](./media/app-service-mobile-cordova-get-started-push/android-notifications.png)
 
 ## <a name="optional-configure-and-run-on-ios"></a>(Volitelné) Nakonfigurujte a spusťte v systému iOS
-Tato část se týká spuštění projektu Cordova hello na zařízeních s iOS. Pokud nepracujete s zařízení s iOS, můžete tuto část přeskočit.
+Tato část se týká spuštění projektu Cordova na zařízení s iOS. Pokud nepracujete s zařízení s iOS, můžete tuto část přeskočit.
 
-#### <a name="install-and-run-hello-ios-remote-build-agent-on-a-mac-or-cloud-service"></a>Instalace a spuštění hello iOS vzdálené sestavení agenta na Mac nebo cloudové služby
-Před spuštěním aplikace Cordova v iOS pomocí sady Visual Studio projít kroky hello v hello [Průvodce nastavením iOS] [ 12] tooinstall a vzdálené spuštění hello sestavení agenta.
+#### <a name="install-and-run-the-ios-remote-build-agent-on-a-mac-or-cloud-service"></a>Nainstalujte a spusťte agenta vzdáleného sestavení iOS Mac nebo cloudové služby
+Před spuštěním aplikace Cordova v iOS pomocí sady Visual Studio projít kroky v [Průvodce nastavením iOS] [ 12] k instalaci a spuštění agenta vzdáleného sestavení.
 
-Ujistěte se, že můžete vytvořit hello aplikace pro iOS. Hello kroky v Průvodci instalací hello jsou požadované toobuild pro iOS ze sady Visual Studio. Pokud nemáte algoritmu Mac, můžete vytvořit pro iOS pomocí agenta vzdáleného sestavení hello na službě, jako je MacInCloud. Další informace najdete v tématu [spuštění aplikace pro iOS v cloudu hello][21].
+Ujistěte se, že můžete vytvořit aplikaci pro iOS. K sestavení pro iOS ze sady Visual Studio je potřeba udělat kroky v Průvodci instalací. Pokud nemáte algoritmu Mac, můžete vytvořit pro iOS pomocí agenta vzdáleného sestavení na službě, jako je MacInCloud. Další informace najdete v tématu [spuštění aplikace pro iOS v cloudu][21].
 
 > [!NOTE]
-> XCode 7 nebo novější, je modul plug-in nabízené hello požadované toouse v systému iOS.
+> XCode 7 nebo novější, je potřeba použít modul plug-in nabízené v systému iOS.
 
-#### <a name="find-hello-id-toouse-as-your-app-id"></a>Najít hello ID toouse jako vaše ID aplikace
-Než si zaregistrujete aplikaci pro nabízená oznámení, otevřete config.xml v aplikaci Cordova, najde hello `id` atribut hodnota v elementu pomůcky hello a zkopírujte jej pro pozdější použití. V hello následující XML, je hello ID `io.cordova.myapp7777777`.
+#### <a name="find-the-id-to-use-as-your-app-id"></a>Najít ID, aby vám poskytla vaše ID aplikace
+Najít před registrace aplikace pro nabízená oznámení, otevřete config.xml v aplikaci Cordova `id` atribut hodnota v elementu pomůcky a zkopírujte jej pro pozdější použití. V následující soubor XML, je ID `io.cordova.myapp7777777`.
 
         <widget defaultlocale="en-US" id="io.cordova.myapp7777777"
           version="1.0.0" windows-packageVersion="1.1.0.0" xmlns="http://www.w3.org/ns/widgets"
             xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
 
-Později použijte tento identifikátor při vytvoření ID aplikace na portálu pro vývojáře Apple. Pokud vytvoříte na portálu pro vývojáře hello jiné ID aplikace, musí provést několik kroků navíc později v tomto kurzu. ID Hello v elementu pomůcky musí odpovídat hello ID aplikace na portálu pro vývojáře hello.
+Později použijte tento identifikátor při vytvoření ID aplikace na portálu pro vývojáře Apple. Pokud vytvoříte jiné ID aplikace na portálu pro vývojáře, vyžaduje několik kroků navíc později v tomto kurzu. ID v elementu pomůcky se musí shodovat s ID aplikace na portálu pro vývojáře.
 
-#### <a name="register-hello-app-for-push-notifications-on-apples-developer-portal"></a>Zaregistrovat hello aplikace pro nabízená oznámení na portál pro vývojáře společnosti Apple
+#### <a name="register-the-app-for-push-notifications-on-apples-developer-portal"></a>Registraci aplikace pro nabízená oznámení na portál pro vývojáře společnosti Apple
 [!INCLUDE [Enable Apple Push Notifications](../../includes/enable-apple-push-notifications.md)]
 
 [Podívejte se na video zobrazující podobný postup.](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-5-Set-up-apns-for-push)
 
-#### <a name="configure-azure-toosend-push-notifications"></a>Konfigurace Azure toosend nabízená oznámení
+#### <a name="configure-azure-to-send-push-notifications"></a>Konfigurace Azure k odesílání nabízených oznámení
 [!INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-apns-configure-push.md)]
 
 #### <a name="verify-that-your-app-id-matches-your-cordova-app"></a>Zkontrolujte, zda vaše ID aplikace odpovídá vaší aplikace Cordova
-Pokud hello ID aplikace, které jste vytvořili v Apple vývojářský účet již odpovídá hello ID elementu hello pomůcka v config.xml, můžete tento krok přeskočit. Ale pokud hello ID neshodují, proveďte hello následující kroky:
+Pokud jste vytvořili už ve vašem účtu vývojáře Apple ID aplikace odpovídá ID elementu pomůcka v config.xml, můžete tento krok přeskočit. Pokud ID neshodují, proveďte následující kroky:
 
-1. Odstraňte složku platformy hello ze svého projektu.
-2. Odstraňte složku modulů plug-in hello ze svého projektu.
-3. Odstraňte složku node_modules hello ze svého projektu.
-4. Aktualizujte hello atributu id elementu pomůcky hello config.xml toouse hello ID aplikace, kterou jste vytvořili ve vašem účtu vývojáře Apple.
+1. Odstraňte složku platformy ze svého projektu.
+2. Odstraňte složku moduly plug-in z projektu.
+3. Odstraňte složku node_modules ze svého projektu.
+4. Aktualizujte atributu id elementu pomůcka v config.xml používat ID aplikace, kterou jste vytvořili ve vašem účtu vývojáře Apple.
 5. Znovu sestavte projekt.
 
 ##### <a name="test-push-notifications-in-your-ios-app"></a>Nabízená oznámení v aplikaci s iOS
-1. V sadě Visual Studio, ujistěte se, že **iOS** je vybrán jako cíl hello nasazení a potom vyberte **zařízení** toorun na zařízení s iOS připojené.
+1. V sadě Visual Studio, ujistěte se, že **iOS** je vybrán jako cíl nasazení a potom vyberte **zařízení** ke spuštění na vašem připojené zařízení s iOS.
 
-    Můžete spustit na tooyour zařízení připojené iOS počítači pomocí iTunes. simulátoru iOS Hello nabízená oznámení nepodporuje.
+    Můžete spustit na zařízení s iOS připojené k vašemu počítači pomocí iTunes. Simulátoru iOS nabízená oznámení nepodporuje.
 
-2. Stiskněte klávesu hello **spustit** tlačítko nebo **F5** v sadě Visual Studio toobuild hello aplikaci v zařízení se systémem iOS hello projektu a spusťte a potom klikněte na **OK** tooaccept nabízená oznámení.
+2. Stiskněte **spustit** tlačítko nebo **F5** v sadě Visual Studio pro sestavení projektu a spusťte aplikaci v zařízení s iOS, pak klikněte na tlačítko **OK** přijímat nabízená oznámení.
 
    > [!NOTE]
-   > aplikace Hello požádá o potvrzení pro nabízená oznámení při prvním spuštění hello.
+   > Aplikace požádá o potvrzení pro nabízená oznámení při prvním spuštění.
 
-3. V aplikaci hello, zadejte úlohu a potom klikněte na hello plus (+) ikona.
-4. Ověřte, že přijetí oznámení a pak klikněte na OK toodismiss hello oznámení.
+3. V aplikaci zadejte úlohu a potom klikněte na tlačítko plus (+) ikona.
+4. Ověřte, že přijetí oznámení a potom kliknutím na tlačítko OK zavření oznámení.
 
 ## <a name="optional-configure-and-run-on-windows"></a>(Volitelné) Nakonfigurujte a spusťte v systému Windows
-Tato část se týká spuštění projektu aplikace hello Apache Cordova na zařízení s Windows 10 (modul plug-in nabízené hello PhoneGap podporuje se ve Windows 10). Pokud nepracujete s zařízení se systémem Windows, můžete tuto část přeskočit.
+Tato část se týká spuštění projektu aplikace Apache Cordova na zařízení s Windows 10 (modul plug-in nabízené PhoneGap podporuje se ve Windows 10). Pokud nepracujete s zařízení se systémem Windows, můžete tuto část přeskočit.
 
 #### <a name="register-your-windows-app-for-push-notifications-with-wns"></a>Registrace aplikace systému Windows pro nabízená oznámení s WNS
-možnosti úložiště hello toouse v sadě Visual Studio, vyberte cíl Windows hello seznamu řešení platformy, jako je třeba **Windows x64** nebo **Windows x86** (vyhnout **Windows AnyCPU** nabízená oznámení).
+Použití možností úložiště v sadě Visual Studio, vyberte cíl Windows ze seznamu řešení platformy, jako je třeba **Windows x64** nebo **Windows x86** (vyhnout **Windows AnyCPU** pro nabízená oznámení).
 
 [!INCLUDE [app-service-mobile-register-wns](../../includes/app-service-mobile-register-wns.md)]
 
 [Podívejte se na video s podobným způsobem][13]
 
-#### <a name="configure-hello-notification-hub-for-wns"></a>Konfigurace centra oznámení hello u WNS
+#### <a name="configure-the-notification-hub-for-wns"></a>Konfigurace centra oznámení pro WNS
 [!INCLUDE [app-service-mobile-configure-wns](../../includes/app-service-mobile-configure-wns.md)]
 
-#### <a name="configure-your-cordova-app-toosupport-windows-push-notifications"></a>Konfigurace aplikace Cordova toosupport Windows nabízených oznámení
-Otevřete hello configuration designer (klikněte pravým tlačítkem na config.xml a vyberte **Návrhář zobrazení**), vyberte hello **Windows** a klikněte na příkaz **Windows 10** pod **Windows cílové verze**.
+#### <a name="configure-your-cordova-app-to-support-windows-push-notifications"></a>Konfigurace aplikace Cordova pro podporu nabízených oznámení Windows
+Otevřete návrháře konfigurace (klikněte pravým tlačítkem na config.xml a vyberte **Návrhář zobrazení**), vyberte **Windows** a klikněte na příkaz **Windows 10** pod  **Cílová verze Windows**.
 
-sestaví toosupport nabízená oznámení do výchozí (ladění), otevřete build.json soubor. Zkopírujte "verze" Konfigurace tooyour ladění.
+Pro podporu nabízených oznámení do výchozí (ladění) sestaveních otevřete build.json souboru. Konfigurace ladění zkopírujte konfigurace "verze".
 
         "windows": {
             "release": {
@@ -302,7 +302,7 @@ sestaví toosupport nabízená oznámení do výchozí (ladění), otevřete bui
             }
         }
 
-Po aktualizaci hello hello build.json by měl obsahovat hello následující kód:
+Po aktualizaci build.json by měl obsahovat následující kód:
 
     "windows": {
         "release": {
@@ -315,22 +315,22 @@ Po aktualizaci hello hello build.json by měl obsahovat hello následující kó
             }
         }
 
-Sestavení aplikace hello a ověřte, zda máte žádné chyby. Klientská aplikace by měl nyní zaregistrovat hello oznámení z back-end mobilní aplikace hello. Tato část opakujte pro každý projekt Windows ve vašem řešení.
+Sestavte aplikaci a ověřte, že máte žádné chyby. Klientská aplikace by teď zaregistrovat pro oznámení z back-end mobilní aplikace. Tato část opakujte pro každý projekt Windows ve vašem řešení.
 
 #### <a name="test-push-notifications-in-your-windows-app"></a>Nabízená oznámení v aplikaci Windows
-V sadě Visual Studio, musí být vybrána, platformu Windows hello cíl nasazení, jako například **Windows x64** nebo **Windows x86**. Zvolte toorun hello aplikace na počítači s Windows 10 hostování Visual Studio, **místního počítače**.
+V sadě Visual Studio, musí být vybrána, platforma Windows cíl nasazení, jako například **Windows x64** nebo **Windows x86**. Spustit aplikaci na počítač s Windows 10 hostování sady Visual Studio, použijte příkaz **místního počítače**.
 
-Stiskněte klávesu hello spusťte tlačítko toobuild hello projekt a spusťte aplikace hello.
+Klikněte na tlačítko spustit pro sestavení projektu a spusťte aplikaci.
 
-V hello aplikace, zadejte název nové todoitem a pak klikněte na hello plus (+) ikona tooadd ho.
+V aplikaci, zadejte název nové todoitem a pak klikněte na tlačítko plus (+) ikona Přidat.
 
-Ověřte, že se při přidání položky hello přijato oznámení.
+Ověřte, že se při přidání položky přijato oznámení.
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si informace o [Notification Hubs] [ 17] toolearn o nabízená oznámení.
-* Pokud jste tak již neučinili, pokračovat v kurzu hello podle [přidání ověřování] [ 14] tooyour aplikace Apache Cordova.
+* Přečtěte si informace o [Notification Hubs] [ 17] Další informace o nabízených oznámení.
+* Pokud jste tak již neučinili, pokračovat v kurzu podle [přidání ověřování] [ 14] do vaší aplikace Apache Cordova.
 
-Zjistěte, jak toouse hello sady SDK.
+Zjistěte, jak používat sady SDK.
 
 * [Apache Cordova SDK][15]
 * [ASP.NET Server SDK][1]

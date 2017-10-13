@@ -1,6 +1,6 @@
 ---
 title: "Řešení potíží s aktivita služby Azure Active Directory protokolů chyb balíček obsahu | Microsoft Docs"
-description: "Poskytuje seznam chybových zpráv toofix aktivita služby Azure Active Directory hello obsahu pack a postup je."
+description: "Poskytuje seznam chybových zpráv balíček obsahu aktivita služby Azure Active Directory a kroky k jejich řešení."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,56 +15,56 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 325de65ff1572a2f8f8319c0a52350bda03af3de
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c880e9eb6d48bd1e38075fbd867d3906ec67b547
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Řešení potíží s aktivita služby Azure Active Directory protokolů chyb balíček obsahu 
 
 
-Při práci s hello balíček obsahu Power BI pro Azure Active Directory Preview, je možné, že spustíte do hello následujícím chybám: 
+Při práci s balíček obsahu Power BI pro Azure Active Directory Preview, je možné, že můžete spustit do následující chyby: 
 
 - [Aktualizace se nezdařila](active-directory-reporting-troubleshoot-content-pack.md#refresh-failed) 
-- [Pověření ke zdroji dat neúspěšné tooupdate](active-directory-reporting-troubleshoot-content-pack.md#failed-to-update-data-source-credentials) 
+- [Nepodařilo se aktualizovat pověření ke zdroji dat](active-directory-reporting-troubleshoot-content-pack.md#failed-to-update-data-source-credentials) 
 - [Import dat trvá příliš dlouho](active-directory-reporting-troubleshoot-content-pack.md#importing-of-data-is-taking-too-long) 
  
-Toto téma poskytuje informace o možných příčinách hello a jak toofix tyto chyby.
+Toto téma poskytuje informace o možných příčinách a jak tyto chyby opravit.
  
 ## <a name="refresh-failed"></a>Aktualizace se nezdařila 
  
-**Jak se tato chyba prezentované**: e-mailu z Power BI nebo stav selhání v historii aktualizace hello. 
+**Jak se tato chyba prezentované**: e-mailu z Power BI nebo stav selhání v historii aktualizace. 
 
 
-| Příčina | Jak toofix |
+| Příčina | Informace o vyřešení |
 | ---   | ---        |
-| Aktualizujte selhání chyby může být způsobeno při hello přihlašovací údaje uživatelů hello připojení toohello balíček obsahu byly resetovat, ale neaktualizuje v nastavení připojení hello hello hello balíček obsahu. | V Power BI Najděte odpovídající toohello datovou sadu hello řídicí panel protokoly aktivita služby Azure Active Directory (protokoly aktivita služby Azure Active Directory), zvolte plán aktualizace a pak zadejte přihlašovací údaje Azure AD. |
-| Obnovení může selhat z důvodu problémů toodata v hello základní balíček obsahu. | Soubor lístek podpory. Další podrobnosti najdete v tématu [jak tooget podporu pro Azure Active Directory](active-directory-troubleshooting-support-howto.md).|
+| Aktualizujte selhání chyby může dojít, když přihlašovací údaje uživatelů, kteří se připojují k balíčku obsahu byly resetovat, ale neaktualizuje v nastavení připojení obsahu sady. | V Power BI vyhledejte sadu dat odpovídající řídicí panel protokoly aktivita služby Azure Active Directory (protokoly aktivita služby Azure Active Directory), vyberte plán aktualizace a pak zadejte přihlašovací údaje Azure AD. |
+| Obnovení může selhat z důvodu problémů dat v základní balíček obsahu. | Soubor lístek podpory. Další podrobnosti najdete v tématu [jak získat podporu pro Azure Active Directory](active-directory-troubleshooting-support-howto.md).|
  
  
-## <a name="failed-tooupdate-data-source-credentials"></a>Pověření ke zdroji dat neúspěšné tooupdate 
+## <a name="failed-to-update-data-source-credentials"></a>Nepodařilo se aktualizovat pověření ke zdroji dat 
  
-**Jak se tato chyba prezentované**: V Power BI, když se připojujete toohello aktivita služby Azure Active Directory balíček obsahu protokoly (preview). 
+**Jak se tato chyba prezentované**: V Power BI, když se připojujete k balíčku obsahu protokoly (preview) aktivita služby Azure Active Directory. 
 
-| Příčina | Jak toofix |
+| Příčina | Informace o vyřešení |
 | ---   | ---        |
-| Hello uživatel připojuje, patří ani globální správce ani čtečku zabezpečení nebo správce zabezpečení. | Použijte účet, který je globálním správcem nebo čtečku zabezpečení nebo zabezpečení Správce tooaccess hello balíčky obsahu. |
-| Váš klient není klienta Premium nebo nemá alespoň jeden uživatel s licencí Premium souboru. | Soubor lístek podpory. Další podrobnosti najdete v tématu [jak tooget podporu pro Azure Active Directory](active-directory-troubleshooting-support-howto.md).|
+| Je připojující se uživatel je ani globální správce ani čtečku zabezpečení nebo správce zabezpečení. | Použijte účet, který je buď globální správce nebo čtečku zabezpečení nebo správce zabezpečení pro přístup k obsahu sady. |
+| Váš klient není klienta Premium nebo nemá alespoň jeden uživatel s licencí Premium souboru. | Soubor lístek podpory. Další podrobnosti najdete v tématu [jak získat podporu pro Azure Active Directory](active-directory-troubleshooting-support-howto.md).|
  
 
  
 
 ## <a name="importing-of-data-is-taking-too-long"></a>Import dat trvá příliš dlouho 
  
-**Jak se tato chyba prezentované**: V Power BI, jakmile se připojíte svůj balíček obsahu proces importu dat hello spustí tooprepare řídicího panelu pro protokol aktivita služby Azure Active Directory. Zobrazí zpráva hello: "*importu dat...* "  
+**Jak se tato chyba prezentované**: V Power BI, jakmile se připojíte svůj balíček obsahu procesu importu dat spustí Příprava řídicího panelu pro protokol aktivita služby Azure Active Directory. Zobrazí se zpráva: "*importu dat...* "  
 
-| Příčina | Jak toofix |
+| Příčina | Informace o vyřešení |
 | ---   | ---        |
-| V závislosti na velikosti hello klienta služby tento krok může trvat několik minut too30 minut. | Právě se pacienta. Pokud zpráva hello nezmění tooshowing řídicího panelu v rámci hodiny, prosím soubor lístek podpory. Další podrobnosti najdete v tématu [jak tooget podporu pro Azure Active Directory](active-directory-troubleshooting-support-howto.md).|
+| V závislosti na velikosti tenanta tento krok může trvat od několika minut až 30 minut. | Právě se pacienta. Pokud zpráva nezmění na zobrazení řídicího panelu v rámci hodiny, prosím soubor lístek podpory. Další podrobnosti najdete v tématu [jak získat podporu pro Azure Active Directory](active-directory-troubleshooting-support-howto.md).|
 
 ## <a name="next-steps"></a>Další kroky
 
-Klikněte na tlačítko tooinstall hello balíček obsahu Power BI pro Azure Active Directory ve verzi Preview [zde](https://powerbi.microsoft.com/en-us/blog/azure-active-directory-meets-power-bi/).
+Chcete-li nainstalovat balíček obsahu Power BI pro Azure Active Directory Preview, klikněte na tlačítko [zde](https://powerbi.microsoft.com/en-us/blog/azure-active-directory-meets-power-bi/).
 
 

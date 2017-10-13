@@ -1,5 +1,5 @@
 ---
-title: "Připojit virtuální síti Azure tooanother virtuální sítě: prostředí PowerShell | Microsoft Docs"
+title: "Připojení virtuální sítě Azure k jiné virtuální síti: PowerShell | Dokumentace Microsoftu"
 description: "Tento článek vás provede propojováním virtuálních sítí s použitím Azure Resource Manageru a prostředí PowerShell."
 services: vpn-gateway
 documentationcenter: na
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: cherylmc
-ms.openlocfilehash: 2da30c76867cc3f71d040e63e0dd15d153e15c10
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 537e80937289d6b46283843c2ee0725e7e08fefc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Konfigurace připojení brány VPN typu VNet-to-VNet pomocí PowerShellu
 
-Tento článek ukazuje, jak toocreate připojení k bráně VPN mezi virtuálními sítěmi. Hello virtuální sítě může být v hello stejné nebo různých oblastí, a z hello stejné nebo různých předplatných. Při připojování virtuální sítě z různých předplatných, odběry hello nemusí toobe přidružené hello stejné klienta služby Active Directory. 
+Tento článek ukazuje, jak vytvořit připojení brány VPN mezi virtuálními sítěmi. Virtuální sítě se můžou nacházet ve stejné oblasti nebo v různých oblastech a můžou patřit do stejného předplatného nebo do různých předplatných. Pokud připojujete virtuální sítě z různých předplatných, tato předplatná nemusí být přidružená ke stejnému tenantovi Active Directory. 
 
-Hello kroky v tomto článku použít toohello modelu nasazení Resource Manager a pomocí prostředí PowerShell. Můžete také vytvořit této konfigurace pomocí nástroje pro jiné nasazení nebo model nasazení tak, že vyberete jinou možnost z hello následující seznamu:
+Postupy v tomto článku se týkají modelu nasazení Resource Manager a používají PowerShell. Tuto konfiguraci můžete vytvořit také pomocí jiného nástroje nasazení nebo pro jiný model nasazení, a to výběrem jiné možnosti z následujícího seznamu:
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
@@ -37,45 +37,45 @@ Hello kroky v tomto článku použít toohello modelu nasazení Resource Manager
 >
 >
 
-Propojení virtuální sítě tooanother virtuální síť (VNet-to-VNet) je podobné tooconnecting umístění lokality tooan místní virtuální síť. Oba typy připojení využívají bránu tooprovide sítě VPN přes zabezpečené tunelové propojení prostřednictvím protokolu IPsec/IKE. Pokud vaše virtuální sítě jsou v hello stejné oblasti, může být vhodné tooconsider připojení pomocí virtuální sítě partnerský vztah. Partnerské vztahy virtuálních sítí nepoužívají bránu VPN. Další informace najdete v tématu [Partnerské vztahy virtuálních sítí](../virtual-network/virtual-network-peering-overview.md).
+Propojení virtuální sítě s jinou virtuální sítí (VNet-to-VNet) je podobné propojení virtuální sítě s místním serverem. Oba typy připojení využívají bránu VPN k poskytnutí zabezpečeného tunelového propojení prostřednictvím protokolu IPsec/IKE. Pokud se virtuální sítě nacházejí ve stejné oblasti, můžete uvažovat o jejich propojení vytvořením partnerského vztahu virtuálních sítí. Partnerské vztahy virtuálních sítí nepoužívají bránu VPN. Další informace najdete v tématu [Partnerské vztahy virtuálních sítí](../virtual-network/virtual-network-peering-overview.md).
 
-Komunikaci typu VNet-to-VNet můžete kombinovat s konfiguracemi s více servery. To umožňuje vytvářet topologie sítí, které spojují připojení mezi různými místy s připojením propojování virtuálních sítí, jak je znázorněno v následujícím diagramu hello:
+Komunikaci typu VNet-to-VNet můžete kombinovat s konfiguracemi s více servery. Díky tomu je možné vytvářet topologie sítí, ve kterých se používá propojování více míst i propojování virtuálních sítí, jak je znázorněno v následujícím schématu:
 
 ![Informace o připojeních](./media/vpn-gateway-vnet-vnet-rm-ps/aboutconnections.png)
 
 ### <a name="why-connect-virtual-networks"></a>Proč propojovat virtuální sítě?
 
-Tooconnect virtuální sítě může být vhodné pro hello následujících důvodů:
+Virtuální sítě může být vhodné propojit z následujících důvodů:
 
 * **Geografická redundance napříč oblastmi a geografická přítomnost**
 
   * Můžete nastavit vlastní geografickou replikaci nebo synchronizaci se zabezpečeným připojením bez procházení koncovými body připojenými k internetu.
-  * Pomocí Azure Traffic Manageru a služby Load Balancer je možné vytvářet úlohy s vysokou dostupností s geografickou redundancí nad několika oblastmi Azure. Jedním z důležitých příkladů je tooset až SQL Always On se skupinami dostupnosti nad několika oblastmi Azure.
+  * Pomocí Azure Traffic Manageru a služby Load Balancer je možné vytvářet úlohy s vysokou dostupností s geografickou redundancí nad několika oblastmi Azure. Jedním z důležitých příkladů je nastavení technologie SQL Always On se skupinami dostupnosti nad několika oblastmi Azure.
 * **Regionální vícevrstvé aplikace s izolací nebo administrativní hranicí**
 
-  * Hello uvnitř stejné oblasti, můžete nastavit vícevrstvé aplikace s několika virtuálními sítěmi propojenými z důvodu tooisolation nebo požadavků na správu.
+  * V rámci stejné oblasti můžete vytvářet vícevrstvé aplikace s několika virtuálními sítěmi propojenými z důvodu izolace nebo požadavků na správu.
 
-Další informace o připojení VNet-to-VNet, najdete v části hello [nejčastější dotazy týkající se propojení VNet-to-VNet](#faq) na konci hello tohoto článku.
+Další informace o propojeních VNet-to-VNet najdete v části [Nejčastější dotazy týkající se propojení VNet-to-VNet](#faq) na konci tohoto článku.
 
 ## <a name="which-set-of-steps-should-i-use"></a>Kterou posloupnost kroků provést?
 
-V tomto článku uvidíte dvě různé sady kroků. Jednu sadu kroky pro [hello virtuální sítě, které jsou umístěny ve stejné předplatné](#samesub)a druhý pro [patřící do různých předplatných](#difsub). Hello klíčovým rozdílem mezi sadami hello je jestli můžete vytvořit a nakonfigurovat všechny virtuální sítě a brány prostředky v rámci hello stejné relace prostředí PowerShell.
+V tomto článku uvidíte dvě různé sady kroků. Jedna sada kroků pro [virtuální sítě spadající do stejného předplatného](#samesub) a druhá sada kroků pro [virtuální sítě v různých předplatných](#difsub). Hlavní rozdíl mezi oběma postupy spočívá v tom, jestli je možné vytvářet a konfigurovat všechny prostředky virtuální sítě a brány v téže relaci prostředí PowerShell.
 
-Hello kroky v tomto článku používají proměnné, které jsou deklarované v hello začátku každého oddílu. Pokud již pracujete s existující virtuální sítě, upravte hello proměnné tooreflect hello nastavení ve svém vlastním prostředí. Pokud chcete překlad IP adres pro virtuální sítě, přečtěte si téma [Překlad IP adres](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+Kroky v tomto článku používají proměnné, které jsou deklarované na začátku každé části. Pokud již pracujete s existujícími virtuálními sítěmi, upravte proměnné tak, aby odrážely nastavení vašeho prostředí. Pokud chcete překlad IP adres pro virtuální sítě, přečtěte si téma [Překlad IP adres](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
-## <a name="samesub"></a>Jak tooconnect virtuální sítě, jsou v hello stejného předplatného.
+## <a name="samesub"></a>Postup při propojování virtuálních sítí patřících ke stejnému předplatnému
 
 ![Diagram v2v](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
 ### <a name="before-you-begin"></a>Než začnete
 
-Než začnete, musíte tooinstall hello nejnovější verzi rutin Powershellu pro Azure Resource Manager hello alespoň 4.0 nebo novější. Další informace o instalaci rutin prostředí PowerShell hello najdete v tématu [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
+Než začnete, bude třeba nainstalovat nejnovější verzi rutin PowerShellu pro Azure Resource Manager, alespoň verzi 4.0 nebo novější. Další informace o instalaci rutin PowerShellu najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).
 
 ### <a name="Step1"></a>Krok 1: Plánování rozsahů IP adres
 
-V hello následující kroky vytvoříme dvě virtuální sítě spolu s jejich příslušnými podsítěmi brány a konfigurace. Poté vytvoříme připojení VPN mezi hello dvě virtuální sítě. Je důležité tooplan rozsahy IP adres hello pro konfiguraci sítě. Mějte na paměti, že je třeba zajistit, aby se žádné rozsahy virtuálních sítí ani místní síťové rozsahy žádným způsobem nepřekrývaly. V těchto příkladech nezahrnujeme server DNS. Pokud chcete překlad IP adres pro virtuální sítě, přečtěte si téma [Překlad IP adres](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+V následujících krocích vytvoříme dvě virtuální sítě spolu s příslušnými podsítěmi a konfiguracemi brány. Poté vytvoříme propojení VPN mezi oběma virtuálními sítěmi. Je důležité určit rozsahy IP adres pro konfiguraci vaší sítě. Mějte na paměti, že je třeba zajistit, aby se žádné rozsahy virtuálních sítí ani místní síťové rozsahy žádným způsobem nepřekrývaly. V těchto příkladech nezahrnujeme server DNS. Pokud chcete překlad IP adres pro virtuální sítě, přečtěte si téma [Překlad IP adres](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
-Můžeme použít následující hodnoty v příkladech hello hello:
+V příkladech používáme následující hodnoty:
 
 **Hodnoty pro virtuální síť TestVNet1:**
 
@@ -111,7 +111,7 @@ Můžeme použít následující hodnoty v příkladech hello hello:
 
 ### <a name="Step2"></a>Krok 2: Vytvoření a konfigurace virtuální sítě TestVNet1
 
-1. Deklarujte proměnné. Tento příklad deklaruje hello proměnné pomocí hello hodnot pro toto cvičení. Ve většině případů má nahradit hello hodnoty vlastními. Tyto proměnné však můžete použít, pokud používáte prostřednictvím toobecome kroky hello seznámili s tímto typem konfigurace. Umožňuje změnit proměnné hello v případě potřeby pak zkopírujte a vložte je do konzoly prostředí PowerShell.
+1. Deklarujte proměnné. V tomto příkladu jsou proměnné deklarovány s použitím hodnot pro tento ukázkový postup. Ve většině případů byste měli hodnoty nahradit vlastními. Tyto hodnoty proměnných ale můžete použít, pokud procházíte kroky, abyste se seznámili s tímto typem konfigurace. Upravte proměnné podle potřeby a pak je zkopírujte a vložte do konzoly PowerShell.
 
   ```powershell
   $Sub1 = "Replace_With_Your_Subcription_Name"
@@ -133,19 +133,19 @@ Můžeme použít následující hodnoty v příkladech hello hello:
   $Connection15 = "VNet1toVNet5"
   ```
 
-2. Připojte tooyour účet. Použijte následující příklad toohelp, ke kterým se připojujete hello:
+2. Připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
 
   ```powershell
   Login-AzureRmAccount
   ```
 
-  Zkontrolujte předplatná hello pro účet hello.
+  Zkontrolujte předplatná pro příslušný účet.
 
   ```powershell
   Get-AzureRmSubscription
   ```
 
-  Zadejte hello předplatné, které chcete toouse.
+  Určete předplatné, které chcete použít.
 
   ```powershell
   Select-AzureRmSubscription -SubscriptionName $Sub1
@@ -155,9 +155,9 @@ Můžeme použít následující hodnoty v příkladech hello hello:
   ```powershell
   New-AzureRmResourceGroup -Name $RG1 -Location $Location1
   ```
-4. Vytvoření konfigurací podsítě pro virtuální síť TestVNet1 hello. Tato ukázka vytvoří virtuální síť s názvem TestVNet1 a tři podsítě: jednu s názvem GatewaySubnet, jednu s názvem FrontEnd a jednu s názvem BackEnd. Při nahrazování hodnot je důležité vždy přiřadit podsíti brány konkrétní název GatewaySubnet. Pokud použijete jiný název, vytvoření brány se nezdaří.
+4. Vytvořte konfigurace podsítí pro virtuální síť TestVNet1. Tato ukázka vytvoří virtuální síť s názvem TestVNet1 a tři podsítě: jednu s názvem GatewaySubnet, jednu s názvem FrontEnd a jednu s názvem BackEnd. Při nahrazování hodnot je důležité vždy přiřadit podsíti brány konkrétní název GatewaySubnet. Pokud použijete jiný název, vytvoření brány se nezdaří.
 
-  Hello následující příklad používá hello proměnné, které jste nastavili dříve. V tomto příkladu používá podsíť brány hello 27. I když je možné toocreate podsíť brány jako malé/29, doporučujeme vytvořit větší podsíť, která zahrnuje víc adres výběrem minimálně/28 nebo /27. To vám umožní dostatek adresy tooaccommodate možné další konfigurace, které můžete ve hello budoucí.
+  Následující příklad používá proměnné, které jste nastavili dříve. V příkladu používá podsíť brány možnost /27. I když je možné vytvořit podsíť brány s minimální velikostí /29, doporučujeme vytvořit větší podsíť, která pojme více adres, tzn. vybrat velikost alespoň /28 nebo /27. Tím vznikne dostatečný prostor pro adresy, který umožní nastavení případných dalších konfigurací v budoucnu.
 
   ```powershell
   $fesub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
@@ -170,13 +170,13 @@ Můžeme použít následující hodnoty v příkladech hello hello:
   New-AzureRmVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 `
   -Location $Location1 -AddressPrefix $VNetPrefix11,$VNetPrefix12 -Subnet $fesub1,$besub1,$gwsub1
   ```
-6. Požádat o veřejné IP adresy toobe přidělené toohello bránu, které vytvoříte pro virtuální síť. Všimněte si, že hello AllocationMethod je dynamický. Nelze zadat, které chcete toouse hello IP adresu. Je dynamicky přidělené tooyour brány. 
+6. Vyžádejte si veřejnou IP adresu, která bude přidělena bráně, kterou vytvoříte pro příslušnou virtuální síť. Všimněte si, že metoda AllocationMethod je dynamická. Není možné určit IP adresu, kterou chcete používat. Přiděluje se pro bránu dynamicky. 
 
   ```powershell
   $gwpip1 = New-AzureRmPublicIpAddress -Name $GWIPName1 -ResourceGroupName $RG1 `
   -Location $Location1 -AllocationMethod Dynamic
   ```
-7. Vytvoření konfigurace brány hello. Hello konfigurace brány definuje podsíť hello a toouse hello veřejnou IP adresu. Příklad toocreate hello používejte vlastní konfiguraci brány.
+7. Vytvořte konfiguraci brány. Konfigurace brány definuje podsíť a veřejnou IP adresu, která se bude používat. Podle následující ukázky vytvořte vlastní konfiguraci brány.
 
   ```powershell
   $vnet1 = Get-AzureRmVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1
@@ -184,7 +184,7 @@ Můžeme použít následující hodnoty v příkladech hello hello:
   $gwipconf1 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName1 `
   -Subnet $subnet1 -PublicIpAddress $gwpip1
   ```
-8. Vytvoření hello brány pro virtuální síť TestVNet1. V tomto kroku vytvoříte bránu virtuální sítě hello pro virtuální síť TestVNet1. Konfigurace propojení VNet-to-VNet vyžadují typ sítě VPN RouteBased. Vytvoření brány může trvat často 45 minut nebo déle, v závislosti na vybrané skladová položka brány hello.
+8. Vytvořte bránu pro virtuální síť TestVNet1. V tomto kroku vytvoříte bránu virtuální sítě pro virtuální síť TestVNet1. Konfigurace propojení VNet-to-VNet vyžadují typ sítě VPN RouteBased. Vytvoření brány může obvykle trvat 45 minut nebo déle, a to v závislosti na vybrané skladové jednotce (SKU) brány.
 
   ```powershell
   New-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 `
@@ -194,9 +194,9 @@ Můžeme použít následující hodnoty v příkladech hello hello:
 
 ### <a name="step-3---create-and-configure-testvnet4"></a>Krok 3: Vytvoření a konfigurace virtuální sítě TestVNet4
 
-Po konfiguraci virtuální sítě TestVNet1 vytvořte virtuální síť TestVNet4. Postupujte podle kroků hello níže nahraďte hello hodnoty vlastními v případě potřeby. Tento krok lze provést v rámci hello stejné relace prostředí PowerShell protože je v hello stejné předplatné.
+Po konfiguraci virtuální sítě TestVNet1 vytvořte virtuální síť TestVNet4. Postupujte podle následujících kroků a podle potřeby nahrazujte hodnoty vlastními. Tento krok lze provést v rámci stejné relace prostředí PowerShell, protože se jedná o stejné předplatné.
 
-1. Deklarujte proměnné. Být jisti tooreplace hello hodnoty hello ty, které jsou chcete toouse pro vaši konfiguraci.
+1. Deklarujte proměnné. Nezapomeňte nahradit hodnoty těmi, které chcete použít pro svou konfiguraci.
 
   ```powershell
   $RG4 = "TestRG4"
@@ -220,7 +220,7 @@ Po konfiguraci virtuální sítě TestVNet1 vytvořte virtuální síť TestVNet
   ```powershell
   New-AzureRmResourceGroup -Name $RG4 -Location $Location4
   ```
-3. Vytvoření konfigurací podsítě pro virtuální síť TestVNet4 hello.
+3. Vytvořte konfigurace podsítí pro virtuální síť TestVNet4.
 
   ```powershell
   $fesub4 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName4 -AddressPrefix $FESubPrefix4
@@ -239,14 +239,14 @@ Po konfiguraci virtuální sítě TestVNet1 vytvořte virtuální síť TestVNet
   $gwpip4 = New-AzureRmPublicIpAddress -Name $GWIPName4 -ResourceGroupName $RG4 `
   -Location $Location4 -AllocationMethod Dynamic
   ```
-6. Vytvoření konfigurace brány hello.
+6. Vytvořte konfiguraci brány.
 
   ```powershell
   $vnet4 = Get-AzureRmVirtualNetwork -Name $VnetName4 -ResourceGroupName $RG4
   $subnet4 = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet4
   $gwipconf4 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName4 -Subnet $subnet4 -PublicIpAddress $gwpip4
   ```
-7. Vytvoření brány virtuální sítě TestVNet4 hello. Vytvoření brány může trvat často 45 minut nebo déle, v závislosti na vybrané skladová položka brány hello.
+7. Vytvořte bránu virtuální sítě TestVNet4. Vytvoření brány může obvykle trvat 45 minut nebo déle, a to v závislosti na vybrané skladové jednotce (SKU) brány.
 
   ```powershell
   New-AzureRmVirtualNetworkGateway -Name $GWName4 -ResourceGroupName $RG4 `
@@ -254,43 +254,43 @@ Po konfiguraci virtuální sítě TestVNet1 vytvořte virtuální síť TestVNet
   -VpnType RouteBased -GatewaySku VpnGw1
   ```
 
-### <a name="step-4---create-hello-connections"></a>Krok 4 – vytvoření připojení hello
+### <a name="step-4---create-the-connections"></a>Krok 4: Vytvoření připojení
 
-1. Získejte obě brány virtuální sítě. Pokud jsou obě brány hello v hello stejného předplatného, jako v příkladu hello, můžete použít tento krok v hello stejné relace prostředí PowerShell.
+1. Získejte obě brány virtuální sítě. Pokud jsou obě brány ve stejném předplatném, jako je tomu v příkladu, můžete tento krok dokončit ve stejné relaci PowerShellu.
 
   ```powershell
   $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
   $vnet4gw = Get-AzureRmVirtualNetworkGateway -Name $GWName4 -ResourceGroupName $RG4
   ```
-2. Vytvořte připojení tooTestVNet4 hello virtuální sítě TestVNet1. V tomto kroku vytvoříte hello připojení z virtuální sítě TestVNet1 tooTestVNet4. Zobrazí se sdílený klíč uváděný v příkladech hello. Můžete použít vlastní hodnoty pro sdílený klíč hello. pro obě připojení musí shodovat Hello důležité věc, je tento sdílený klíč hello. Vytvoření připojení může trvat malou chvíli toocomplete.
+2. Vytvořte připojení virtuální sítě TestVNet1 k virtuální síti TestVNet4. V tomto kroku vytvoříte připojení z virtuální sítě TestVNet1 do virtuální sítě TestVNet4. Zobrazí se sdílený klíč uváděný v příkladech. Pro sdílený klíč můžete použít vlastní hodnoty. Důležité je, že se sdílený klíč pro obě připojení musí shodovat. Vytvoření připojení může nějakou dobu trvat.
 
   ```powershell
   New-AzureRmVirtualNetworkGatewayConnection -Name $Connection14 -ResourceGroupName $RG1 `
   -VirtualNetworkGateway1 $vnet1gw -VirtualNetworkGateway2 $vnet4gw -Location $Location1 `
   -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
   ```
-3. Vytvořte připojení tooTestVNet1 virtuální sítě TestVNet4 hello. Tento krok je podobný toohello jeden vyšší, s výjimkou toho, kterou vytváříte hello připojení z virtuální sítě TestVNet4 tooTestVNet1. Zkontrolujte, zda text hello sdílené klíče shodují. Po několika minutách bude vytvořeno připojení Hello.
+3. Vytvořte připojení virtuální sítě TestVNet4 k virtuální síti TestVNet1. Tento krok je podobný předchozímu, vytváříte však připojení z virtuální sítě TestVNet4 do virtuální sítě TestVNet1. Ověřte, že se sdílené klíče shodují. Připojení se vytvoří během několika minut.
 
   ```powershell
   New-AzureRmVirtualNetworkGatewayConnection -Name $Connection41 -ResourceGroupName $RG4 `
   -VirtualNetworkGateway1 $vnet4gw -VirtualNetworkGateway2 $vnet1gw -Location $Location4 `
   -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
   ```
-4. Ověřte své propojení. Části hello [jak tooverify připojení](#verify).
+4. Ověřte své propojení. Viz část [Ověření připojení](#verify).
 
-## <a name="difsub"></a>Jak tooconnect virtuální sítě, jsou v různých předplatných
+## <a name="difsub"></a>Postup při propojování virtuálních sítí patřících k různým předplatným
 
 ![Diagram v2v](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
-V tomto scénáři propojíme sítě TestVNet1 a TestVNet5. Virtuální sítě TestVNet1 a TestVNet5 patří do různých předplatných. odběry Hello nemusí toobe přidružené hello stejné klienta služby Active Directory. Hello rozdíl mezi tyto kroky a předchozí sadu hello je, že některé z kroků konfigurace hello nutné toobe provést v samostatné relaci prostředí PowerShell v kontextu hello hello druhého předplatného. Zejména při hello dva předplatná patří toodifferent organizace.
+V tomto scénáři propojíme sítě TestVNet1 a TestVNet5. Virtuální sítě TestVNet1 a TestVNet5 patří do různých předplatných. Předplatná nemusí být přidružená ke stejnému tenantovi Active Directory. Rozdíl mezi těmito kroky a předchozí sadou spočívá v tom, že část kroků konfigurace je třeba provést v samostatné relaci PowerShellu v kontextu druhého předplatného. To je zvláště podstatné, když druhé předplatné patří jiné organizaci.
 
 ### <a name="step-5---create-and-configure-testvnet1"></a>Krok 5: Vytvoření a konfigurace virtuální sítě TestVNet1
 
-Je třeba provést [kroku 1](#Step1) a [kroku 2](#Step2) z hello předchozí část toocreate a konfigurace virtuální sítě TestVNet1 a hello brána sítě VPN pro virtuální síť TestVNet1. Pro tuto konfiguraci nemůžete se vyžaduje toocreate virtuální sítě TestVNet4 z předchozí části hello, ale pokud ho vytvoříte, se nebude v konfliktu s tyto kroky. Po dokončení kroku 1 a 2 kroku v kroku 6 toocreate virtuální sítě TestVNet5 pokračujte. 
+Je třeba vytvořit a konfigurovat virtuální síť TestVNet1 a bránu VPN Gateway pro virtuální síť TestVNet1 provedením [kroku 1](#Step1) a [kroku 2](#Step2) z předchozí části. Pro tuto konfiguraci není nutné vytvářet virtuální síť TestVNet4 z předchozí části, ale pokud ji vytvoříte, nebude to s těmito kroky v konfliktu. Po dokončení kroků 1 a 2 pokračujte krokem 6 a vytvořte síť TestVNet5. 
 
-### <a name="step-6---verify-hello-ip-address-ranges"></a>Krok 6 – ověření hello rozsahy IP adres
+### <a name="step-6---verify-the-ip-address-ranges"></a>Krok 6: Ověření rozsahů IP adres
 
-Je důležité toomake jistotu, že prostor IP adres hello nové virtuální sítě TestVNet5 hello nepřekrývá s žádným z rozsahů virtuálních sítí ani rozsahů bran místních sítí. V tomto příkladu hello virtuální sítě může patřit toodifferent organizace. Pro tento postup můžete použít následující hodnoty pro hello virtuální sítě TestVNet5 hello:
+Je důležité zajistit, aby se prostor IP adres nové virtuální sítě TestVNet5 nepřekrýval se žádným z rozsahů virtuálních sítí ani rozsahů bran místních sítí. V tomto příkladu můžou virtuální sítě různým organizacím. Pro tento postup použijte následující hodnoty pro virtuální síť TestVNet5:
 
 **Hodnoty pro virtuální síť TestVNet5:**
 
@@ -309,9 +309,9 @@ Je důležité toomake jistotu, že prostor IP adres hello nové virtuální sí
 
 ### <a name="step-7---create-and-configure-testvnet5"></a>Krok 7: Vytvoření a konfigurace virtuální sítě TestVNet5
 
-Tento krok je třeba provést v kontextu hello hello nové předplatné. Tuto část může provést pomocí Správce hello v jiné organizaci, který vlastní hello předplatné.
+Tento krok je třeba provést v rámci nového předplatného. Tuto část může provést správce v organizaci, která je vlastníkem druhého předplatného.
 
-1. Deklarujte proměnné. Být jisti tooreplace hello hodnoty hello ty, které jsou chcete toouse pro vaši konfiguraci.
+1. Deklarujte proměnné. Nezapomeňte nahradit hodnoty těmi, které chcete použít pro svou konfiguraci.
 
   ```powershell
   $Sub5 = "Replace_With_the_New_Subcription_Name"
@@ -331,19 +331,19 @@ Tento krok je třeba provést v kontextu hello hello nové předplatné. Tuto č
   $GWIPconfName5 = "gwipconf5"
   $Connection51 = "VNet5toVNet1"
   ```
-2. Připojte toosubscription 5. Otevřete konzolu prostředí PowerShell a připojte tooyour účtu. Použijte následující ukázka toohelp, ke kterým se připojujete hello:
+2. Připojte se k předplatnému 5. Otevřete konzolu prostředí PowerShell a připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
 
   ```powershell
   Login-AzureRmAccount
   ```
 
-  Zkontrolujte předplatná hello pro účet hello.
+  Zkontrolujte předplatná pro příslušný účet.
 
   ```powershell
   Get-AzureRmSubscription
   ```
 
-  Zadejte hello předplatné, které chcete toouse.
+  Určete předplatné, které chcete použít.
 
   ```powershell
   Select-AzureRmSubscription -SubscriptionName $Sub5
@@ -353,7 +353,7 @@ Tento krok je třeba provést v kontextu hello hello nové předplatné. Tuto č
   ```powershell
   New-AzureRmResourceGroup -Name $RG5 -Location $Location5
   ```
-4. Vytvoření konfigurací podsítě pro virtuální sítě TestVNet5 hello.
+4. Vytvořte konfigurace podsítí pro virtuální síť TestVNet5.
 
   ```powershell
   $fesub5 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName5 -AddressPrefix $FESubPrefix5
@@ -372,38 +372,38 @@ Tento krok je třeba provést v kontextu hello hello nové předplatné. Tuto č
   $gwpip5 = New-AzureRmPublicIpAddress -Name $GWIPName5 -ResourceGroupName $RG5 `
   -Location $Location5 -AllocationMethod Dynamic
   ```
-7. Vytvoření konfigurace brány hello.
+7. Vytvořte konfiguraci brány.
 
   ```powershell
   $vnet5 = Get-AzureRmVirtualNetwork -Name $VnetName5 -ResourceGroupName $RG5
   $subnet5  = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet5
   $gwipconf5 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName5 -Subnet $subnet5 -PublicIpAddress $gwpip5
   ```
-8. Vytvoření brány virtuální sítě TestVNet5 hello.
+8. Vytvořte bránu virtuální sítě TestVNet5.
 
   ```powershell
   New-AzureRmVirtualNetworkGateway -Name $GWName5 -ResourceGroupName $RG5 -Location $Location5 `
   -IpConfigurations $gwipconf5 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1
   ```
 
-### <a name="step-8---create-hello-connections"></a>Krok 8 – vytvoření připojení hello
+### <a name="step-8---create-the-connections"></a>Krok 8: Vytvoření připojení
 
-V tomto příkladu protože hello brány jsou v hello různých předplatných, rozdělíme tento krok do dvou relací prostředí PowerShell označených [předplatné 1] a [předplatné 5].
+Jelikož brány v tomto příkladu patří do různých předplatných, rozdělíme tento krok do dvou relací prostředí PowerShell označených [Předplatné 1] a [Předplatné 5].
 
-1. **[Předplatné 1]**  Get hello brány virtuální sítě pro předplatné 1. Přihlaste se a připojit tooSubscription 1 před spuštěním hello následující ukázka:
+1. **[Předplatné 1]** Získejte bránu virtuální sítě pro předplatné 1. Před spuštěním následujícího příkladu se přihlaste a připojte k předplatnému 1:
 
   ```powershell
   $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
   ```
 
-  Zkopírujte výstup hello hello následujících prvků a pošlete tyto toohello správci předplatného 5 prostřednictvím e-mailu nebo jiným způsobem.
+  Zkopírujte výstup následujících prvků a pošlete je správci předplatného 5 prostřednictvím e-mailu nebo jiným způsobem.
 
   ```powershell
   $vnet1gw.Name
   $vnet1gw.Id
   ```
 
-  Tyto dva prvky budou mít hodnoty podobné toohello následující příklad výstupu:
+  Tyto dva prvky budou mít hodnoty podobné výstupu v následujícím příkladu:
 
   ```
   PS D:\> $vnet1gw.Name
@@ -411,20 +411,20 @@ V tomto příkladu protože hello brány jsou v hello různých předplatných, 
   PS D:\> $vnet1gw.Id
   /subscriptions/b636ca99-6f88-4df4-a7c3-2f8dc4545509/resourceGroupsTestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW
   ```
-2. **[Předplatné 5]**  Get hello brány virtuální sítě pro předplatné 5. Přihlaste se a připojit tooSubscription 5 před spuštěním hello následující ukázka:
+2. **[Předplatné 5]** Získejte bránu virtuální sítě pro předplatné 5. Před spuštěním následujícího příkladu se přihlaste a připojte k předplatnému 5:
 
   ```powershell
   $vnet5gw = Get-AzureRmVirtualNetworkGateway -Name $GWName5 -ResourceGroupName $RG5
   ```
 
-  Zkopírujte výstup hello hello následující prvky a odesílat tyto toohello správci předplatného 1 prostřednictvím e-mailu nebo jiným způsobem.
+  Zkopírujte výstup následujících prvků a pošlete jej správci předplatného 1 prostřednictvím e-mailu nebo jiným způsobem.
 
   ```powershell
   $vnet5gw.Name
   $vnet5gw.Id
   ```
 
-  Tyto dva prvky budou mít hodnoty podobné toohello následující příklad výstupu:
+  Tyto dva prvky budou mít hodnoty podobné výstupu v následujícím příkladu:
 
   ```
   PS C:\> $vnet5gw.Name
@@ -432,9 +432,9 @@ V tomto příkladu protože hello brány jsou v hello různých předplatných, 
   PS C:\> $vnet5gw.Id
   /subscriptions/66c8e4f1-ecd6-47ed-9de7-7e530de23994/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW
   ```
-3. **[Předplatné 1]**  Vytvořit připojení hello tooTestVNet5 virtuální sítě TestVNet1. V tomto kroku vytvoříte hello připojení z virtuální sítě TestVNet1 tooTestVNet5. Hello rozdíl zde spočívá v tom že $vnet5gw nelze získat přímo, protože je v jiném předplatném. Budete potřebovat toocreate nový objekt prostředí PowerShell s hello hodnotami zjištěnými z předplatného 1 v předchozích krocích hello. Použijte následující příklad hello. Nahraďte hello název, Id a sdílený klíč vlastními hodnotami. pro obě připojení musí shodovat Hello důležité věc, je tento sdílený klíč hello. Vytvoření připojení může trvat malou chvíli toocomplete.
+3. **[Předplatné 1]** Vytvořte připojení virtuální sítě TestVNet1 k virtuální síti TestVNet5. V tomto kroku vytvoříte propojení z virtuální sítě TestVNet1 do sítě TestVNet5. Rozdíl zde spočívá v tom, že hodnotu $vnet5gw nelze získat přímo, protože patří do jiného předplatného. Je třeba vytvořit nový objekt prostředí PowerShell s hodnotami zjištěnými z předplatného 1 v předchozích krocích. Postupujte podle následujícího příkladu. Nahraďte název, ID a sdílený klíč vlastními hodnotami. Důležité je, že se sdílený klíč pro obě připojení musí shodovat. Vytvoření připojení může nějakou dobu trvat.
 
-  Připojte tooSubscription 1 před spuštěním hello následující ukázka:
+  Před spuštěním následujícího příkladu se připojte k předplatnému 1:
 
   ```powershell
   $vnet5gw = New-Object Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
@@ -443,9 +443,9 @@ V tomto příkladu protože hello brány jsou v hello různých předplatných, 
   $Connection15 = "VNet1toVNet5"
   New-AzureRmVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -VirtualNetworkGateway2 $vnet5gw -Location $Location1 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
   ```
-4. **[Předplatné 5]**  Vytvoření připojení virtuální sítě TestVNet5 tooTestVNet1 hello. Tento krok je podobný toohello jeden vyšší, s výjimkou toho, kterou vytváříte hello připojení z virtuální sítě TestVNet5 tooTestVNet1. Hello stejný postup vytváření objektu prostředí PowerShell na základě hello hodnot zjištěných z předplatného 1 používá i zde. V tomto kroku se ujistěte, že hello sdílené klíče shodují.
+4. **[Předplatné 5]** Vytvořte připojení virtuální sítě TestVNet5 k virtuální síti TestVNet1. Tento krok je podobný předchozímu, vytváříte však připojení z virtuální sítě TestVNet5 do virtuální sítě TestVNet1. Stejný postup vytváření objektu prostředí PowerShell na základě hodnot zjištěných z předplatného 1 se používá i zde. V tomto kroku ověřte, že se sdílené klíče shodují.
 
-  Připojte tooSubscription 5 před spuštěním hello následující ukázka:
+  Před spuštěním následujícího příkladu se připojte k předplatnému 5:
 
   ```powershell
   $vnet1gw = New-Object Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
@@ -454,7 +454,7 @@ V tomto příkladu protože hello brány jsou v hello různých předplatných, 
   New-AzureRmVirtualNetworkGatewayConnection -Name $Connection51 -ResourceGroupName $RG5 -VirtualNetworkGateway1 $vnet5gw -VirtualNetworkGateway2 $vnet1gw -Location $Location5 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
   ```
 
-## <a name="verify"></a>Jak tooverify připojení
+## <a name="verify"></a>Ověření připojení
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
@@ -462,9 +462,9 @@ V tomto příkladu protože hello brány jsou v hello různých předplatných, 
 
 ## <a name="faq"></a>Nejčastější dotazy týkající se propojení VNet-to-VNet
 
-[!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
+[!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-* Po dokončení připojení můžete přidat virtuální počítače tooyour virtuální sítě. V tématu hello [virtuální počítače dokumentaci](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) Další informace.
-* Informace o protokolu BGP najdete v tématu hello [přehled protokolu BGP](vpn-gateway-bgp-overview.md) a [jak tooconfigure BGP](vpn-gateway-bgp-resource-manager-ps.md).
+* Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Další informace najdete v [dokumentaci ke službě Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
+* Informace o protokolu BGP najdete v tématech [Přehled protokolu BGP](vpn-gateway-bgp-overview.md) a [Postup při konfiguraci protokolu BGP](vpn-gateway-bgp-resource-manager-ps.md).

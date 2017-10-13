@@ -1,6 +1,6 @@
 ---
-title: "obsah aaaPublish Azure Media Services pomocí rozhraní .NET | Microsoft Docs"
-description: "Zjistěte, jak toocreate Lokátor, který je použité toobuild adresu URL pro streamování. Ukázky kódu jsou napsané v jazyce C# a použít hello sady Media Services SDK pro .NET."
+title: "Publikovat obsah Azure Media Services pomocí rozhraní .NET | Microsoft Docs"
+description: "Naučte se vytvořit lokátor, který je použit k vytvoření adresy URL streamování. Ukázky kódu jsou napsané v jazyce C# a pomocí sady Media Services SDK pro .NET."
 author: juliako
 manager: cfowler
 editor: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.openlocfilehash: c941cd93c252a96e66546cce2793bb426afac059
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2bcb012eef84faa7c1e13ed22e88e45e4300ed54
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="publish-azure-media-services-content-using-net"></a>Publikovat obsah Azure Media Services pomocí rozhraní .NET
 > [!div class="op_single_selector"]
@@ -29,30 +29,30 @@ ms.lasthandoff: 10/06/2017
 > 
 
 ## <a name="overview"></a>Přehled
-Můžete datového proudu s adaptivní přenosovou rychlostí sady souborů MP4 vytvořením Lokátor streamování OnDemand a vytvoření adresy URL streamování. Hello [kódování prostředek](media-services-encode-asset.md) téma ukazuje, jak nastavit tooencode do MP4 adaptivní přenosovou rychlostí. 
+Můžete datového proudu s adaptivní přenosovou rychlostí sady souborů MP4 vytvořením Lokátor streamování OnDemand a vytvoření adresy URL streamování. [Kódování prostředek](media-services-encode-asset.md) téma ukazuje, jak ke kódování do sady souborů MP4 adaptivní přenosovou rychlostí. 
 
 > [!NOTE]
 > Pokud váš obsah je zašifrován, konfigurace zásad doručení assetu (jak je popsáno v [to](media-services-dotnet-configure-asset-delivery-policy.md) tématu) před vytvořením lokátoru. 
 > 
 > 
 
-Můžete také použít toobuild Lokátor tento bod tooMP4 soubory, které lze progresivně stáhnout – adresy URL pro streamování OnDemand.  
+Lokátor streamování OnDemand. můžete také použít k vytvoření adresy URL, které odkazují na soubory MP4, které lze progresivně stáhnout.  
 
-Toto téma ukazuje, jak toocreate asset a sestavení Smooth, MPEG DASH a adresy URL streamování HLS streamování toopublish Lokátor OnDemand. Také ukazuje aktivní toobuild adresa URL progresivního stahování. 
+Toto téma ukazuje, jak vytvořit k publikování asset a vytvoření Smooth, MPEG DASH a adresy URL streamování HLS Lokátor streamování OnDemand. Také ukazuje aktivní pro vytvoření adres URL progresivního stahování. 
 
 ## <a name="create-an-ondemand-streaming-locator"></a>Vytvořit lokátor streamování OnDemand.
-toocreate hello Lokátor streamování OnDemand a získání adres URL, musíte toodo hello následující věci:
+Pokud chcete vytvořit lokátor streamování OnDemand a získání adres URL, musíte udělat následující věci:
 
-1. Pokud obsah hello je zašifrován, definujte zásady přístupu.
+1. Pokud je obsah šifrovat, definujte zásady přístupu.
 2. Vytvořte Lokátor streamování OnDemand.
-3. Pokud máte v plánu toostream, získáte hello vysílání datového proudu souboru manifestu (.ism) v hello asset. 
+3. Pokud máte v plánu k vysílání datového proudu, získáte streamování souboru manifestu (.ism) v prostředku. 
    
-   Pokud máte v plánu tooprogressively stahování, získáte hello názvy souborů MP4 v hello asset.  
-4. Vytvoření souboru manifestu toohello adresy URL nebo soubory MP4. 
+   Pokud budete chtít progresivně stahovat, získáte názvy soubory MP4 v prostředku.  
+4. Sestavení adresy URL k souboru manifestu nebo soubory MP4. 
 
 
 >[!NOTE]
->Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Použití hello stejné ID zásad, pokud vždy používáte hello stejné dny / přístupová oprávnění. Například zásady pro lokátory, které jsou určené tooremain zavedené po dlouhou dobu (bez odeslání zásady). Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) tématu.
+>Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Stejné ID zásady použijte, pokud vždy používají stejné dny / přístupová oprávnění. Například zásady pro lokátory, které jsou určeny k zůstat na místě po dlouhou dobu (bez odeslání zásady). Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) tématu.
 
 ### <a name="use-media-services-net-sdk"></a>Používání Media Services .NET SDK
 Vytvoření datových proudů adres URL 
@@ -66,46 +66,46 @@ Vytvoření datových proudů adres URL
             TimeSpan.FromDays(30),
             AccessPermissions.Read);
 
-        // Create a locator toohello streaming content on an origin. 
+        // Create a locator to the streaming content on an origin. 
         ILocator originLocator = _context.Locators.CreateLocator(LocatorType.OnDemandOrigin, asset,
             policy,
             DateTime.UtcNow.AddMinutes(-5));
 
-        // Display some useful values based on hello locator.
+        // Display some useful values based on the locator.
         Console.WriteLine("Streaming asset base path on origin: ");
         Console.WriteLine(originLocator.Path);
         Console.WriteLine();
 
-        // Get a reference toohello streaming manifest file from hello  
-        // collection of files in hello asset. 
+        // Get a reference to the streaming manifest file from the  
+        // collection of files in the asset. 
         var manifestFile = asset.AssetFiles.Where(f => f.Name.ToLower().
                                     EndsWith(".ism")).
                                     FirstOrDefault();
 
-        // Create a full URL toohello manifest file. Use this for playback
+        // Create a full URL to the manifest file. Use this for playback
         // in streaming media clients. 
         string urlForClientStreaming = originLocator.Path + manifestFile.Name + "/manifest";
-        Console.WriteLine("URL toomanifest for client streaming using Smooth Streaming protocol: ");
+        Console.WriteLine("URL to manifest for client streaming using Smooth Streaming protocol: ");
         Console.WriteLine(urlForClientStreaming);
-        Console.WriteLine("URL toomanifest for client streaming using HLS protocol: ");
+        Console.WriteLine("URL to manifest for client streaming using HLS protocol: ");
         Console.WriteLine(urlForClientStreaming + "(format=m3u8-aapl)");
-        Console.WriteLine("URL toomanifest for client streaming using MPEG DASH protocol: ");
+        Console.WriteLine("URL to manifest for client streaming using MPEG DASH protocol: ");
         Console.WriteLine(urlForClientStreaming + "(format=mpd-time-csf)"); 
         Console.WriteLine();
     }
 
-výstupy Hello:
+Výstupy:
 
-    URL toomanifest for client streaming using Smooth Streaming protocol:
+    URL to manifest for client streaming using Smooth Streaming protocol:
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest
-    URL toomanifest for client streaming using HLS protocol:
+    URL to manifest for client streaming using HLS protocol:
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=m3u8-aapl)
-    URL toomanifest for client streaming using MPEG DASH protocol:
+    URL to manifest for client streaming using MPEG DASH protocol:
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=mpd-time-csf)
 
 
 > [!NOTE]
-> Můžete také Streamovat obsah pomocí připojení SSL. toodo to přístupu, ujistěte se, spustíte adresy URL streamování s protokolem HTTPS. V současné době nepodporuje AMS SSL s vlastní domény.
+> Můžete také Streamovat obsah pomocí připojení SSL. Chcete-li provést tento postup, ujistěte se, spustíte adresy URL streamování s protokolem HTTPS. V současné době nepodporuje AMS SSL s vlastní domény.
 > 
 > 
 
@@ -118,12 +118,12 @@ Vytvoření adres URL progresivního stahování
             TimeSpan.FromDays(30),
             AccessPermissions.Read);
 
-        // Create an OnDemandOrigin locator toohello asset. 
+        // Create an OnDemandOrigin locator to the asset. 
         ILocator originLocator = _context.Locators.CreateLocator(LocatorType.OnDemandOrigin, asset,
             policy,
             DateTime.UtcNow.AddMinutes(-5));
 
-        // Display some useful values based on hello locator.
+        // Display some useful values based on the locator.
         Console.WriteLine("Streaming asset base path on origin: ");
         Console.WriteLine(originLocator.Path);
         Console.WriteLine();
@@ -134,12 +134,12 @@ Vytvoření adres URL progresivního stahování
             .ToList()
             .Where(af => af.Name.EndsWith(".mp4", StringComparison.OrdinalIgnoreCase));
 
-        // Create a full URL toohello MP4 files. Use this tooprogressively download files.
+        // Create a full URL to the MP4 files. Use this to progressively download files.
         foreach (var pd in mp4AssetFiles)
             Console.WriteLine(originLocator.Path + pd.Name);
     }
 
-výstupy Hello:
+Výstupy:
 
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_400kbps_AAC_und_ch2_96kbps.mp4
@@ -149,7 +149,7 @@ výstupy Hello:
     . . . 
 
 ### <a name="use-media-services-net-sdk-extensions"></a>Pomocí rozšíření Media Services .NET SDK
-Hello následující kód volá .NET SDK rozšíření metody, které vytvořit Lokátor a generovat hello technologie Smooth Streaming, HLS a adresy URL pro MPEG-DASH pro adaptivní streamování.
+Následující kód volá metody rozšíření .NET SDK, které vytvořit Lokátor a generovat technologie Smooth Streaming, HLS a adres URL pro MPEG-DASH pro adaptivní streamování.
 
     // Create a loctor.
     _context.Locators.Create(
@@ -158,7 +158,7 @@ Hello následující kód volá .NET SDK rozšíření metody, které vytvořit 
         AccessPermissions.Read,
         TimeSpan.FromDays(30));
 
-    // Get hello streaming URLs.
+    // Get the streaming URLs.
     Uri smoothStreamingUri = inputAsset.GetSmoothStreamingUri();
     Uri hlsUri = inputAsset.GetHlsUri();
     Uri mpegDashUri = inputAsset.GetMpegDashUri();

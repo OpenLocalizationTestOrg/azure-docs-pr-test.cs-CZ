@@ -1,44 +1,44 @@
 <!--author=alkohli last changed: 08/04/17-->
 
-#### <a name="tooinstall-an-update-from-hello-azure-portal"></a>tooinstall aktualizace z hello portálu Azure
+#### <a name="to-install-an-update-from-the-azure-portal"></a>Instalace aktualizace z webu Azure Portal
 
-1. Na stránce služby StorSimple hello vyberte zařízení.
+1. Na stránce služby StorSimple vyberte zařízení.
 
     ![Vyberte zařízení](./media/storsimple-8000-install-update5-via-portal/update1.png)
 
-2. Přejděte příliš**nastavení zařízení** > **aktualizace zařízení**.
+2. Přejděte na **nastavení zařízení** > **aktualizace zařízení**.
 
     ![Klikněte na tlačítko aktualizace zařízení](./media/storsimple-8000-install-update5-via-portal/update2.png)
 
-2. Zobrazí se upozornění, pokud jsou k dispozici nové aktualizace. Můžete taky v hello **aktualizace zařízení** okně klikněte na tlačítko **kontrolovat aktualizace**. Úloha je vytvořena tooscan dostupné aktualizace. Budete informováni hello úloha úspěšně dokončena.
+2. Zobrazí se upozornění, pokud jsou k dispozici nové aktualizace. Můžete taky v **aktualizace zařízení** okně klikněte na tlačítko **kontrolovat aktualizace**. Vytvoří se úloha vyhledávání dostupných aktualizací. Po úspěšném dokončení úlohy se zobrazí zpráva.
 
     ![Klikněte na tlačítko aktualizace zařízení](./media/storsimple-8000-install-update5-via-portal/update3.png)
 
-3. Doporučujeme, abyste zkontrolovali hello poznámky k verzi před instalací aktualizace na vašem zařízení. Klikněte na tlačítko tooapply aktualizace **nainstalovat aktualizace**. V hello **potvrďte pravidelné aktualizace** okno, zkontrolujte hello požadavky toocomplete před instalací aktualizace. Vyberte zaškrtávací políčko tooindicate hello jsou připravené tooupdate hello zařízení a potom klikněte na **nainstalovat**.
+3. Doporučujeme, abyste si před instalací aktualizace na zařízení prošli poznámky k verzi. Chcete-li použít aktualizace, klikněte na tlačítko **nainstalovat aktualizace**. V **potvrďte pravidelné aktualizace** okno, přečtěte si požadavky pro provedení úkolu před použití aktualizací. Zaškrtněte políčko s informací, že budete chtít aktualizovat zařízení a potom klikněte na o **nainstalovat**.
 
     ![Klikněte na tlačítko aktualizace zařízení](./media/storsimple-8000-install-update5-via-portal/update4.png)
 
 6. Spustí se sada kontrol požadavků. Mezi tyto kontroly patří:
    
-   * **Kontroly stavu řadiče** tooverify obě text hello řadiče zařízení jsou v pořádku a online.
-   * **Kontroly stavu součásti hardwaru** tooverify, že všechny hardwarové součásti v zařízení StorSimple hello jsou v pořádku.
-   * **Ověří DATA 0** tooverify, že DATA 0 je povolena na vašem zařízení. Pokud toto rozhraní není povolené, musíte jej povolit a poté to zkusit znovu.
+   * **Kontroly stavu kontrolerů** pro ověření, že oba kontrolery zařízení jsou v pořádku a online.
+   * **Kontroly stavu hardwarových komponent** pro ověření, že všechny hardwarové komponenty v zařízení StorSimple jsou v pořádku.
+   * **Kontroly rozhraní DATA 0** pro ověření, že je na zařízení povolené rozhraní DATA 0. Pokud toto rozhraní není povolené, musíte jej povolit a poté to zkusit znovu.
 
-    aktualizace Hello je stažen a nainstalován pouze v případě, že jsou všechny kontroly hello úspěšně dokončil. Budete upozorněni, když byly v průběhu kontroly hello. Pokud hello prechecks selže, pak vám bude poskytnuta s hello příčiny chyby. Vyřešit tyto problémy a poté opakujte operaci hello. Pokud nelze vyřešit tyto problémy tak, že sami může být nutné toocontact Microsoft Support.
+    Aktualizace je stažen a nainstalován pouze v případě, že jsou všechny kontroly úspěšně dokončeny. Na probíhání kontrol budete upozorněni. Pokud prechecks selže, pak vám bude poskytnuta s příčiny chyby. Vyřešit tyto problémy a poté operaci opakujte. Pokud si s těmito problémy neporadíte sami, bude muset kontaktovat podporu Microsoftu.
 
-7. Po úspěšném dokončení hello prechecks se vytvoří úloha aktualizace. Budete informováni hello aktualizace úlohy je úspěšně vytvořen.
+7. Po úspěšném dokončení prechecks se vytvoří úloha aktualizace. Po úspěšném vytvoření úlohy aktualizace se zobrazí upozornění.
    
     ![Vytvoření úlohy aktualizace](./media/storsimple-8000-install-update5-via-portal/update6.png)
    
-    aktualizace Hello se potom použije ve vašem zařízení.
+    Aktualizace se potom nainstaluje na vašem zařízení.
 
-9. aktualizace Hello trvat několik hodin toocomplete. Vyberte hello aktualizace úlohu a klikněte na tlačítko **podrobnosti** tooview hello podrobnosti úlohy hello kdykoli.
+9. Dokončení aktualizace trvá několik hodin. Podrobnosti o úloze můžete kdykoli zobrazit výběrem úlohy aktualizace a kliknutím na **Podrobnosti**.
 
     ![Vytvoření úlohy aktualizace](./media/storsimple-8000-install-update5-via-portal/update8.png)
 
-     Také můžete monitorovat průběh hello hello aktualizace úlohy z **nastavení zařízení > úlohy**. Na hello **úlohy** okně uvidíte hello aktualizovat průběh.
+     Můžete také sledovat průběh úlohy aktualizace z **nastavení zařízení > úlohy**. Na **úlohy** okně uvidíte průběh aktualizace.
 
      ![Vytvoření úlohy aktualizace](./media/storsimple-8000-install-update5-via-portal/update7.png)
 
-10. Po dokončení úlohy hello přejděte toohello **nastavení zařízení > aktualizace zařízení**. verzi softwaru Hello nyní aktualizovat.
+10. Po dokončení úlohy, přejděte na **nastavení zařízení > aktualizace zařízení**. Nyní je třeba aktualizovat verze softwaru.
 

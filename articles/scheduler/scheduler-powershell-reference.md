@@ -1,5 +1,5 @@
 ---
-title: "aaaScheduler odkaz rutiny prostředí PowerShell"
+title: Reference rutin Powershellu pro Scheduler
 description: Reference rutin Powershellu pro Scheduler
 services: scheduler
 documentationcenter: .NET
@@ -14,16 +14,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
-ms.openlocfilehash: a2b23bcd3e4493ffba1dbf21fbb87818be7c01e5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 141919ab4506b3de4c4a69670dcf54c60ee6409c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="scheduler-powershell-cmdlets-reference"></a>Reference rutin Powershellu pro Scheduler
-Hello následující tabulka popisuje a propojuje stránka s referencemi k toohello jednotlivých hello hlavní rutiny ve službě Azure Scheduler.
+Následující tabulka popisuje a obsahuje odkazy na stránce odkaz každé hlavní rutiny ve službě Azure Scheduler.
 
-tooinstall prostředí Azure PowerShell a přidružit ho ke svému předplatnému Azure, najdete v části [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview). 
+Chcete-li nainstalovat Azure PowerShell a přidružit ho ke svému předplatnému Azure, prohlédněte si téma [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview). 
 
 Další informace o [rutiny Azure Resource Manager](/powershell/azure/overview), najdete v části [použití Azure Powershellu s Azure Resource Manager](../powershell-azure-resource-manager.md).
 
@@ -47,7 +47,7 @@ Další informace o [rutiny Azure Resource Manager](/powershell/azure/overview),
 | [Set-AzureRmSchedulerServiceBusTopicJob](/powershell/module/azurerm.scheduler/set-azurermschedulerservicebustopicjob) |Upravuje úlohu tématu service bus. |
 | [Set-AzureRmSchedulerStorageQueueJob](/powershell/module/azurerm.scheduler/set-azurermschedulerstoragequeuejob) |Upravuje úlohy fronty úložiště. |
 
-Podrobnější informace můžete spustit některý hello následující rutiny: 
+Podrobnější informace můžete spustit některý z následujících rutin: 
 
 ```
 Get-Help <cmdlet name> -Detailed
@@ -64,7 +64,7 @@ Get-Help <cmdlet name> -Full
 
  [Koncepty, terminologie a hierarchie entit Azure Scheduleru](scheduler-concepts-terms.md)
 
- [Začněte používat plánovače v hello portálu Azure](scheduler-get-started-portal.md)
+ [Úvod do používání Scheduleru na portálu Azure Portal](scheduler-get-started-portal.md)
 
  [Plány a fakturace v Azure Scheduleru](scheduler-plans-billing.md)
 

@@ -1,6 +1,6 @@
 ---
-title: "na stránce aplikace po přihlášení aaaError | Microsoft Docs"
-description: "Jak tooresolve problémy s Azure AD přihlášení během vlastní aplikace hello vysílá chybu"
+title: "Chyby na stránce aplikace po přihlášení | Microsoft Docs"
+description: "Postup řešení potíží s Azure AD přihlášení při vlastní aplikace vysílá chybu"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,111 +13,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 317b6f8e6417520ead80ae4e26c591ba6b134683
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a8cd93256f79ece268ec3411dfbdf590f4b24447
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="error-on-an-applications-page-after-signing-in"></a>Chyby na stránce aplikace po přihlášení
 
-V tomto scénáři podepsané hello uživatele v Azure AD, ale aplikace hello zobrazuje chybu neumožňuje hello uživatele toosuccessfully dokončit hello přihlašovací v toku. V tomto scénáři aplikace hello nepřijímá hello odpovědi problém službou Azure AD.
+V tomto scénáři podepsané uživatele v Azure AD, ale aplikace zobrazuje chybu neumožňuje uživateli úspěšně dokončit přihlášení toku. V tomto scénáři aplikace nepřijímá problém odpovědi službou Azure AD.
 
-Existují některé možné důvody, proč nebylo aplikace hello přijímat hello odpověď z Azure AD. Pokud hello Chyba v aplikaci hello není dostatečně zrušte tooknow toho, co chybí v hello odpověď, a pak:
+Existují některé možné důvody, proč nebylo aplikace přijmout odpověď z Azure AD. Pokud chyba v aplikaci není dostatečně zrušte vědět, co je v odpovědi chybí pak:
 
--   Pokud aplikace hello Galerie hello Azure AD, ověřte všechny kroky hello v článku hello [jak toodebug na základě SAML jeden přihlašování tooapplications v Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging).
+-   Pokud je aplikace galerii Azure AD, ověřte jste postupovali podle pokynů v článku [ladění na základě SAML jednotného přihlašování k aplikacím v Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging).
 
--   Pomocí některého nástroje, například [Fiddler](http://www.telerik.com/fiddler) toocapture SAML požadavků, odpověď SAML a tokenu SAML.
+-   Pomocí některého nástroje, například [Fiddler](http://www.telerik.com/fiddler) zaznamenat žádost SAML, odpověď SAML a tokenu SAML.
 
--   Sdílet odpověď SAML hello s tooknow dodavatele aplikace hello toho, co chybí.
+-   Odpověď SAML sdílet se na dodavatele aplikace potřebujete vědět, co chybí.
 
-## <a name="missing-attributes-in-hello-saml-response"></a>Chybějící atributů v hello odpověď SAML
+## <a name="missing-attributes-in-the-saml-response"></a>Chybějící atributy v odpovědi SAML
 
-tooadd atribut v toobe konfigurace Azure AD hello odeslaný v odpovědi hello Azure AD, postupujte podle následujících kroků hello:
+Pokud chcete přidat atribut v konfiguraci služby Azure AD k odeslání v odpovědi Azure AD, použijte následující postup:
 
-1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
+1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
 
-2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
 
-3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace, které** z hello Azure Active Directory levém navigační nabídky.
+4.  Klikněte na tlačítko **podnikové aplikace, které** v navigační nabídce vlevo Azure Active Directory.
 
-5.  Klikněte na tlačítko **všechny aplikace** tooview seznam všech aplikací.
+5.  Klikněte na tlačítko **všechny aplikace** Chcete-li zobrazit seznam všech aplikací.
 
-   * Pokud chcete zobrazit vytvořit tady aplikace hello nevidíte, pomocí hello **filtru** řízení hello horní části hello **seznam všech aplikací** a sadu hello **zobrazit** možnost příliš **Všechny aplikace.**
+   * Pokud aplikaci chcete, aby se zobrazí tady nevidíte, pomocí **filtru** ovládací prvek v horní části **seznam všech aplikací** a nastavte **zobrazit** možnost k **všechny aplikace.**
 
-6.  Vyberte hello aplikaci tooconfigure jednotné přihlašování.
+6.  Vyberte aplikaci, kterou chcete konfigurovat jednotné přihlašování.
 
-7.  Jakmile aplikace hello načte, klikněte na možnost hello **jednotného přihlašování** z aplikace hello levém navigační nabídky.
+7.  Po načtení aplikace, klikněte na **jednotného přihlašování** navigační nabídce vlevo aplikace.
 
-8.  Klikněte na tlačítko **prohlížení a úpravy atributy všechny ostatní uživatele v části** hello **uživatelské atributy** části tooedit hello atributy aplikace toohello toobe odeslaných v tokenu SAML hello při přihlášení uživatele.
+8.  Klikněte na tlačítko **prohlížení a úpravy atributy všechny ostatní uživatele v části** **uživatelské atributy** části, chcete-li upravit atributy, které se při přihlášení uživatele odeslat do aplikace v tokenu SAML.
 
-   tooadd atribut:
+   Chcete-li přidat atribut:
 
-   * Klikněte na tlačítko **přidat atribut**. Zadejte hello **název** a vyberte hello hello **hodnotu** z rozevíracího seznamu hello.
+   * Klikněte na tlačítko **přidat atribut**. Zadejte **název** a vyberte položku **hodnotu** z rozevíracího seznamu.
 
-   * Klikněte na tlačítko **uložit.** Zobrazí hello nový atribut v tabulce hello.
+   * Klikněte na tlačítko **uložit.** Zobrazí nový atribut v tabulce.
 
-9.  Uložte konfiguraci hello.
+9.  Uložte konfiguraci.
 
-Při příštím přihlášení uživatele hello toohello aplikace Azure AD odeslat hello nový atribut v hello odpověď SAML.
+Při příštím přihlášení uživatele k aplikaci, Azure AD odeslat nový atribut v odpovědi SAML.
 
-## <a name="hello-application-expects-a-different-user-identifier-value-or-format"></a>aplikace Hello očekává formát nebo jinou hodnotu identifikátor uživatele
+## <a name="the-application-expects-a-different-user-identifier-value-or-format"></a>Aplikace se očekává formát nebo jinou hodnotu identifikátor uživatele
 
-Hello přihlášení toohello aplikace selhává protože hello odpověď SAML chybí atributy, jako je například role nebo aplikace hello je očekáván jiný formát hello EntityID atribut.
+Přihlášení k aplikaci se nedaří protože odpověď SAML chybí atributy, jako je například role nebo protože aplikace je očekáván jiný formát atribut EntityID.
 
-## <a name="add-an-attribute-in-hello-azure-ad-application-configuration"></a>Přidáte atribut v konfiguraci aplikace hello Azure AD:
+## <a name="add-an-attribute-in-the-azure-ad-application-configuration"></a>Přidáte atribut v konfiguraci aplikace Azure AD:
 
-toochange hello hodnota identifikátoru uživatele, postupujte podle následujících kroků hello:
+Chcete-li změnit hodnotu identifikátoru uživatele, postupujte podle následujících kroků:
 
-1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
+1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
 
-2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
 
-3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace, které** z hello Azure Active Directory levém navigační nabídky.
+4.  Klikněte na tlačítko **podnikové aplikace, které** v navigační nabídce vlevo Azure Active Directory.
 
-5.  Klikněte na tlačítko **všechny aplikace** tooview seznam všech aplikací.
+5.  Klikněte na tlačítko **všechny aplikace** Chcete-li zobrazit seznam všech aplikací.
 
-   * Pokud chcete zobrazit vytvořit tady aplikace hello nevidíte, pomocí hello **filtru** řízení hello horní části hello **seznam všech aplikací** a sadu hello **zobrazit** možnost příliš **Všechny aplikace.**
+   * Pokud aplikaci chcete, aby se zobrazí tady nevidíte, pomocí **filtru** ovládací prvek v horní části **seznam všech aplikací** a nastavte **zobrazit** možnost k **všechny aplikace.**
 
-6.  Vyberte hello aplikaci tooconfigure jednotné přihlašování.
+6.  Vyberte aplikaci, kterou chcete konfigurovat jednotné přihlašování.
 
-7.  Jakmile aplikace hello načte, klikněte na možnost hello **jednotného přihlašování** z aplikace hello levém navigační nabídky.
+7.  Po načtení aplikace, klikněte na **jednotného přihlašování** navigační nabídce vlevo aplikace.
 
-8.  V části hello **uživatelské atributy**, vyberte hello jedinečný identifikátor pro uživatele v hello **uživatelský identifikátor** rozevíracího seznamu.
+8.  V části **uživatelské atributy**, vyberte jedinečný identifikátor pro uživatele v **uživatelský identifikátor** rozevíracího seznamu.
 
 ## <a name="change-entityid-user-identifier-format"></a>Změna formátu EntityID (identifikátor uživatele)
 
-Pokud aplikace hello očekává jiného formátu pro atribut EntityID hello. Potom nebudete moct tooselect hello EntityID (identifikátor uživatele) formát, Azure AD odešle toohello aplikace v odpovědi hello po ověření uživatele.
+Pokud aplikace očekává jiného formátu pro atribut EntityID. Potom nebudete moci vybrat formát EntityID (identifikátor uživatele), který odešle aplikaci v odpovědi po ověření uživatele Azure AD.
 
-Azure AD vyberte hello formátu pro atribut NameID hello (identifikátor uživatele) na základě hodnoty hello vybrané nebo hello formátu požadoval hello aplikace hello SAML AuthRequest. Další informace najdete článku hello [protokolu SAML přihlašování](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) pod hello části NameIDPolicy.
+Azure AD vyberte formát pro atribut NameID (identifikátor uživatele) na základě hodnoty vybraných nebo formát požadovanou aplikaci v SAML AuthRequest. Další informace najdete v článku [protokolu SAML přihlašování](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) části NameIDPolicy.
 
-## <a name="hello-application-expects-a-different-signature-method-for-hello-saml-response"></a>aplikace Hello očekává jiný podpis metody pro hello odpověď SAML
+## <a name="the-application-expects-a-different-signature-method-for-the-saml-response"></a>Aplikace očekává jiný podpis metody pro odpověď SAML
 
-toochange, které části tokenu SAML hello jsou digitálně podepsané službou Azure Active Directory. Postupujte podle následujících kroků hello:
+Chcete-li změnit, které části tokenu SAML jsou digitálně podepsané službou Azure Active Directory. Postupujte následovně:
 
-1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
+1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
 
-2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
 
-3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace, které** z hello Azure Active Directory levém navigační nabídky.
+4.  Klikněte na tlačítko **podnikové aplikace, které** v navigační nabídce vlevo Azure Active Directory.
 
-5.  Klikněte na tlačítko **všechny aplikace** tooview seznam všech aplikací.
+5.  Klikněte na tlačítko **všechny aplikace** Chcete-li zobrazit seznam všech aplikací.
 
-  * Pokud chcete zobrazit vytvořit tady aplikace hello nevidíte, pomocí hello **filtru** řízení hello horní části hello **seznam všech aplikací** a sadu hello **zobrazit** možnost příliš **Všechny aplikace.**
+  * Pokud aplikaci chcete, aby se zobrazí tady nevidíte, pomocí **filtru** ovládací prvek v horní části **seznam všech aplikací** a nastavte **zobrazit** možnost k **všechny aplikace.**
 
-6.  Vyberte hello aplikaci tooconfigure jednotné přihlašování.
+6.  Vyberte aplikaci, kterou chcete konfigurovat jednotné přihlašování.
 
-7.  Jakmile aplikace hello načte, klikněte na možnost hello **jednotného přihlašování** z aplikace hello levém navigační nabídky.
+7.  Po načtení aplikace, klikněte na **jednotného přihlašování** navigační nabídce vlevo aplikace.
 
-8.  Klikněte na tlačítko **zobrazit upřesňující nastavení podpisový certifikát** pod hello **SAML podpisový certifikát** části.
+8.  Klikněte na tlačítko **zobrazit upřesňující nastavení podpisový certifikát** pod **SAML podpisový certifikát** části.
 
-9.  Vyberte odpovídající hello **podepisování možnost** očekávanou hello aplikace:
+9.  Vyberte odpovídající **podepisování možnost** očekává aplikací:
 
   * Přihlašování SAML odpovědi
 
@@ -125,35 +125,35 @@ toochange, které části tokenu SAML hello jsou digitálně podepsané službou
 
   * Přihlašovací kontrolního výrazu SAML
 
-Při příštím přihlášení uživatele hello toohello aplikace Azure AD přihlášení hello součástí vybrané odpověď SAML hello.
+Při příštím přihlášení uživatele k aplikaci, Azure AD přihlášení součástí vybrané odpověď SAML.
 
-## <a name="hello-application-expects-hello-signing-algorithm-toobe-sha-1"></a>aplikace Hello očekává hello podepisování toobe algoritmus SHA-1
+## <a name="the-application-expects-the-signing-algorithm-to-be-sha-1"></a>Aplikace očekává podpisový algoritmus SHA-1
 
-Ve výchozím nastavení Azure AD podepisuje tokeny SAML hello pomocí hello většina algoritmus zabezpečení. Změna hello přihlašovací algoritmus tooSHA-1 se nedoporučuje, pokud se vyžaduje aplikace hello.
+Ve výchozím nastavení Azure AD přihlášení pomocí algoritmu většina zabezpečení tokenu SAML. Změna přihlašovací algoritmus SHA-1 se nedoporučuje, pokud požadované aplikací.
 
-toochange hello podpisový algoritmus, postupujte podle následujících kroků hello:
+Chcete-li změnit podpisový algoritmus, postupujte podle následujících kroků:
 
-1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
+1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
 
-2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
 
-3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace, které** z hello Azure Active Directory levém navigační nabídky.
+4.  Klikněte na tlačítko **podnikové aplikace, které** v navigační nabídce vlevo Azure Active Directory.
 
-5.  Klikněte na tlačítko **všechny aplikace** tooview seznam všech aplikací.
+5.  Klikněte na tlačítko **všechny aplikace** Chcete-li zobrazit seznam všech aplikací.
 
-   * Pokud chcete zobrazit vytvořit tady aplikace hello nevidíte, pomocí hello **filtru** řízení hello horní části hello **seznam všech aplikací** a sadu hello **zobrazit** možnost příliš **Všechny aplikace.**
+   * Pokud aplikaci chcete, aby se zobrazí tady nevidíte, pomocí **filtru** ovládací prvek v horní části **seznam všech aplikací** a nastavte **zobrazit** možnost k **všechny aplikace.**
 
-6.  Vyberte hello aplikaci tooconfigure jednotné přihlašování.
+6.  Vyberte aplikaci, kterou chcete konfigurovat jednotné přihlašování.
 
-7.  Jakmile aplikace hello načte, klikněte na možnost hello **jednotného přihlašování** z aplikace hello levém navigační nabídky.
+7.  Po načtení aplikace, klikněte na **jednotného přihlašování** navigační nabídce vlevo aplikace.
 
-8.  Klikněte na tlačítko **zobrazit upřesňující nastavení podpisový certifikát** pod hello **SAML podpisový certifikát** části.
+8.  Klikněte na tlačítko **zobrazit upřesňující nastavení podpisový certifikát** pod **SAML podpisový certifikát** části.
 
-9.  Vyberte algoritmus SHA-1, v hello **podpisový algoritmus**.
+9.  Vyberte algoritmus SHA-1, v **podpisový algoritmus**.
 
-Uživatel se přihlásí v aplikaci toohello hello příště, Azure AD přihlášení hello tokenu SAML pomocí algoritmu SHA-1.
+Při příštím přihlášení uživatele k aplikaci, Azure AD přihlášení tokenu SAML pomocí algoritmu SHA-1.
 
 ## <a name="next-steps"></a>Další kroky
-[Jak toodebug na základě SAML jeden přihlašování tooapplications v Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging)
+[Postup ladění na základě SAML jednotného přihlašování k aplikacím v Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging)

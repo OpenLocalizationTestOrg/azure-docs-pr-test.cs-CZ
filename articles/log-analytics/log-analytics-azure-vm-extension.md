@@ -1,6 +1,6 @@
 ---
-title: "virtuální počítače Azure tooLog aaaConnect Analytics | Microsoft Docs"
-description: "Pro systém Windows a Linux virtuální počítače běžící v Azure, hello nedoporučuje způsob, jak shromažďovat protokoly a metriky, je instalace rozšíření virtuálního počítače Azure Log Analytics hello. Můžete použít hello portál Azure nebo PowerShell tooinstall hello analýzy protokolů rozšíření virtuálního počítače na virtuálních počítačích Azure."
+title: "Připojit virtuální počítače Azure k analýze protokolů | Microsoft Docs"
+description: "Pro systém Windows a Linux virtuální počítače běžící v Azure je doporučeným způsobem shromažďovat protokoly a metriky instalace rozšíření virtuálního počítače Azure Log Analytics. Instalace rozšíření virtuálního počítače analýzy protokolů na virtuálních počítačích Azure můžete portál Azure nebo PowerShell."
 services: log-analytics
 documentationcenter: 
 author: richrundmsft
@@ -15,63 +15,63 @@ ms.topic: article
 ms.date: 04/27/2017
 ms.author: richrund
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ac96c242d03ed3a22ca96368e5a8cc53f9a993db
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: cdae291b546fef4d7fdb8b067c8e4f4c9708d43f
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="connect-azure-virtual-machines-toolog-analytics-with-a-log-analytics-agent"></a>Připojit virtuální počítače Azure tooLog Analytics s agentem analýzy protokolů
+# <a name="connect-azure-virtual-machines-to-log-analytics-with-a-log-analytics-agent"></a>Připojit virtuální počítače Azure k analýze protokolů s agentem analýzy protokolů
 
-Pro počítače s Windows a Linux hello doporučená metoda pro shromažďování protokolů a metriky, je instalace agenta analýzy protokolů hello.
+Doporučené metody pro shromažďování protokolů a metriky pro počítače s Windows a Linux, je instalace agenta analýzy protokolů.
 
-Hello nejjednodušší způsob, jak tooinstall hello analýzy protokolů agent na virtuálních počítačích Azure je prostřednictvím hello rozšíření virtuálního počítače pro analýzu protokolu.  Pomocí rozšíření hello zjednodušuje proces instalace hello a automaticky nakonfiguruje hello agenta toosend data toohello pracovní prostor analýzy protokolů, které zadáte. Hello agent je také automaticky aktualizovány, zajistíte, že máte hello nejnovější funkce a opravy.
+Nejjednodušší způsob, jak nainstalovat agenta analýzy protokolů na virtuálních počítačích Azure je prostřednictvím rozšíření protokolu analýzy virtuálního počítače.  Pomocí rozšíření zjednodušuje proces instalace a automaticky nakonfiguruje agenta k odesílání dat do pracovního prostoru analýzy protokolů, který určíte. Agent je také automaticky aktualizovány, zajistíte, že máte nejnovější funkce a opravy.
 
-Pro virtuální počítače s Windows, povolíte hello *agenta Microsoft Monitoring Agent* rozšíření virtuálního počítače.
-Pro virtuální počítače s Linuxem, povolíte hello *OMS agenta pro Linux* rozšíření virtuálního počítače.
+Pro virtuální počítače s Windows, povolíte *agenta Microsoft Monitoring Agent* rozšíření virtuálního počítače.
+Pro virtuální počítače s Linuxem, povolíte *OMS agenta pro Linux* rozšíření virtuálního počítače.
 
-Další informace o [rozšíření virtuálního počítače Azure](../virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a hello [agenta systému Linux](../virtual-machines/linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Další informace o [rozšíření virtuálního počítače Azure](../virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a [agenta systému Linux](../virtual-machines/linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Pokud používáte kolekce založené na agentovi pro data protokolu, je nutné nakonfigurovat [zdroje dat v analýzy protokolů](log-analytics-data-sources.md) toospecify hello protokoly a metriky, které chcete toocollect.
+Pokud používáte kolekce založené na agentovi pro data protokolu, je nutné nakonfigurovat [zdroje dat v analýzy protokolů](log-analytics-data-sources.md) k určení protokoly a metriky, které chcete shromažďovat.
 
 > [!IMPORTANT]
-> Pokud nakonfigurujete data protokolu tooindex analýzy protokolů pomocí [Azure diagnostics](log-analytics-azure-storage.md), a nakonfigurujte hello agenta toocollect hello stejné protokoly, pak hello protokoly se shromažďují dvakrát. Budou se vám účtovat pro obě datové zdroje. Pokud máte nainstalován agent hello, shromažďování dat protokolu pomocí pouze hello agenta – není konfigurace dat protokolu toocollect analýzy protokolů z Azure diagnostics.
+> Pokud nakonfigurujete analýzy protokolů pro data protokolu index pomocí [Azure diagnostics](log-analytics-azure-storage.md)a konfigurace agenta shromažďování stejné protokoly a protokoly se shromažďují dvakrát. Budou se vám účtovat pro obě datové zdroje. Pokud máte nainstalovaného agenta, shromažďování dat protokolu pomocí jenom agenta – není konfigurace analýzy protokolů pro shromažďování dat protokolu z Azure diagnostics.
 >
 >
 
-Existují tři způsoby snadné rozšíření virtuálního počítače analýzy protokolů tooenable hello:
+Existují tři způsoby snadno povolit rozšíření virtuálního počítače analýzy protokolů:
 
-* Pomocí hello portálu Azure
+* Pomocí portálu Azure
 * Pomocí prostředí Azure PowerShell
 * Pomocí šablony Azure Resource Manager
 
-## <a name="enable-hello-vm-extension-in-hello-azure-portal"></a>Povolit hello rozšíření virtuálního počítače v hello portálu Azure
-Můžete nainstalovat agenta hello pro analýzy protokolů a připojit hello Azure virtuální počítač, který běží na pomocí hello [portál Azure](https://portal.azure.com).
+## <a name="enable-the-vm-extension-in-the-azure-portal"></a>Povolit rozšíření virtuálního počítače na portálu Azure
+Můžete nainstalovat agenta pro analýzy protokolů a připojit virtuální počítač Azure, který běží na pomocí [portál Azure](https://portal.azure.com).
 
-### <a name="tooinstall-hello-log-analytics-agent-and-connect-hello-virtual-machine-tooa-log-analytics-workspace"></a>tooinstall hello agenta analýzy protokolů a připojte hello pracovní prostor analýzy protokolů tooa virtuálního počítače
-1. Přihlaste se k hello [portál Azure](http://portal.azure.com).
-2. Vyberte **Procházet** na hello levé straně hello portálu a pak přejděte příliš**analýzy protokolů (OMS)** a vyberte ho.
-3. V seznamu analýzy protokolů pracovních prostorů vyberte hello jeden, které chcete toouse s hello virtuálního počítače Azure.  
+### <a name="to-install-the-log-analytics-agent-and-connect-the-virtual-machine-to-a-log-analytics-workspace"></a>Instalace agenta analýzy protokolů a připojte virtuální počítač do pracovního prostoru analýzy protokolů
+1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).
+2. Vyberte **Procházet** na levé straně portálu, a potom přejděte na **analýzy protokolů (OMS)** a vyberte ho.
+3. V seznamu analýzy protokolů pracovních prostorů vyberte ten, který chcete používat s virtuálním Počítačem Azure.  
    ![Pracovní prostory OMS](./media/log-analytics-azure-vm-extension/oms-connect-azure-01.png)
 4. V části **protokolu správy analytics**, vyberte **virtuální počítače**.  
    ![Virtual Machines](./media/log-analytics-azure-vm-extension/oms-connect-azure-02.png)
-5. V seznamu hello **virtuální počítače**, vyberte hello virtuální počítač, na kterém chcete tooinstall hello agenta. Hello **stav připojení OMS** hello virtuálního počítače označuje, že IT oddělení je **Nepřipojeno**.  
+5. V seznamu **virtuální počítače**, vyberte virtuální počítač, na kterém chcete nainstalovat agenta. **Stav připojení OMS** pro virtuální počítač naznačuje, že je **Nepřipojeno**.  
    ![Virtuální počítač není připojen.](./media/log-analytics-azure-vm-extension/oms-connect-azure-03.png)
-6. V hello podrobnosti pro virtuální počítač, vyberte **Connect**. je automaticky nainstalován a nakonfigurován pro pracovní prostor analýzy protokolů Hello agent. Tento proces trvá několik minut, během které doby hello stav připojení OMS je *připojení...*  
+6. V podrobnostech pro virtuální počítač, vyberte **Connect**. Agent je automaticky nainstalovat a nakonfigurovat pro pracovní prostor analýzy protokolů. Tento proces trvá několik minut, během které doby je stav připojení OMS *připojení...*  
    ![Připojení virtuálního počítače](./media/log-analytics-azure-vm-extension/oms-connect-azure-04.png)
-7. Po instalaci a připojit agenta hello hello **OMS připojení** stav bude aktualizované tooshow **tento pracovní prostor**.  
+7. Po dokončení instalace a připojit agenta, **OMS připojení** stav bude aktualizován zobrazíte **tento pracovní prostor**.  
    ![Připojení](./media/log-analytics-azure-vm-extension/oms-connect-azure-05.png)
 
-## <a name="enable-hello-vm-extension-using-powershell"></a>Povolit hello rozšíření virtuálního počítače pomocí prostředí PowerShell
-Když nakonfigurujete virtuální počítač pomocí prostředí PowerShell, je nutné tooprovide hello **workspaceId** a **workspaceKey**. názvy vlastností Hello ve vaší konfiguraci json jsou **malá a velká písmena**.
+## <a name="enable-the-vm-extension-using-powershell"></a>Povolit rozšíření virtuálního počítače pomocí prostředí PowerShell
+Když nakonfigurujete virtuální počítač pomocí prostředí PowerShell, budete muset zadat **workspaceId** a **workspaceKey**. Názvy vlastností, které ve vaší konfiguraci json jsou **malá a velká písmena**.
 
-Můžete najít hello Id a klíč na hello **nastavení** stránku hello OMS portálu nebo pomocí prostředí PowerShell, jak je uvedeno v předchozím příkladu hello.
+Můžete najít Id a klíč na **nastavení** stránky portálu OMS nebo pomocí prostředí PowerShell, jak je znázorněno v předchozím příkladu.
 
 ![ID pracovního prostoru a primární klíč](./media/log-analytics-azure-vm-extension/oms-analyze-azure-sources.png)
 
 Existují jiné příkazy pro virtuální počítače Azure classic a Resource Manager virtuální počítače. Následují příklady pro classic i Resource Manager virtuálních počítačů.
 
-Klasické virtuální počítače použijte následující příklad PowerShell hello:
+Klasické virtuální počítače použijte následující příklad PowerShell:
 
 ```PowerShell
 Add-AzureAccount
@@ -82,19 +82,19 @@ $hostedService = "enter hosted service here"
 
 $vm = Get-AzureVM –ServiceName $hostedService
 
-# For Windows VM uncomment hello following line
+# For Windows VM uncomment the following line
 # Set-AzureVMExtension -VM $vm -Publisher 'Microsoft.EnterpriseCloud.Monitoring' -ExtensionName 'MicrosoftMonitoringAgent' -Version '1.*' -PublicConfiguration "{'workspaceId': '$workspaceId'}" -PrivateConfiguration "{'workspaceKey': '$workspaceKey' }" | Update-AzureVM -Verbose
 
-# For Linux VM uncomment hello following line
+# For Linux VM uncomment the following line
 # Set-AzureVMExtension -VM $vm -Publisher 'Microsoft.EnterpriseCloud.Monitoring' -ExtensionName 'OmsAgentForLinux' -Version '1.*' -PublicConfiguration "{'workspaceId': '$workspaceId'}" -PrivateConfiguration "{'workspaceKey': '$workspaceKey' }" | Update-AzureVM -Verbose
 ```
 
-Pro virtuální počítače s Linuxem Resource Manager pomocí rozhraní příkazového řádku následující hello
+Pro virtuální počítače s Linuxem Resource Manager pomocí rozhraní příkazového řádku následující
 ```azurecli
 az vm extension set --resource-group myRGMonitor --vm-name myMonitorVM --name OmsAgentForLinux --publisher Microsoft.EnterpriseCloud.Monitoring --version 1.3 --protected-settings ‘{"workspaceKey": "<workspace-key>"}’ --settings ‘{"workspaceId": "<workspace-id>"}’ 
 ```
 
-Pro virtuální počítače správce prostředků použijte následující příklad PowerShell hello:
+Pro virtuální počítače správce prostředků použijte následující příklad PowerShell:
 
 ```PowerShell
 Login-AzureRMAccount
@@ -108,7 +108,7 @@ $workspace = (Get-AzureRmOperationalInsightsWorkspace).Where({$_.Name -eq $works
 
 if ($workspace.Name -ne $workspaceName)
 {
-    Write-Error "Unable toofind OMS Workspace $workspaceName. Do you need toorun Select-AzureRMSubscription?"
+    Write-Error "Unable to find OMS Workspace $workspaceName. Do you need to run Select-AzureRMSubscription?"
 }
 
 $workspaceId = $workspace.CustomerId
@@ -117,28 +117,28 @@ $workspaceKey = (Get-AzureRmOperationalInsightsWorkspaceSharedKeys -ResourceGrou
 $vm = Get-AzureRmVM -ResourceGroupName $VMresourcegroup -Name $VMresourcename
 $location = $vm.Location
 
-# For Windows VM uncomment hello following line
+# For Windows VM uncomment the following line
 # Set-AzureRmVMExtension -ResourceGroupName $VMresourcegroup -VMName $VMresourcename -Name 'MicrosoftMonitoringAgent' -Publisher 'Microsoft.EnterpriseCloud.Monitoring' -ExtensionType 'MicrosoftMonitoringAgent' -TypeHandlerVersion '1.0' -Location $location -SettingString "{'workspaceId': '$workspaceId'}" -ProtectedSettingString "{'workspaceKey': '$workspaceKey'}"
 
-# For Linux VM uncomment hello following line
+# For Linux VM uncomment the following line
 # Set-AzureRmVMExtension -ResourceGroupName $VMresourcegroup -VMName $VMresourcename -Name 'OmsAgentForLinux' -Publisher 'Microsoft.EnterpriseCloud.Monitoring' -ExtensionType 'OmsAgentForLinux' -TypeHandlerVersion '1.0' -Location $location -SettingString "{'workspaceId': '$workspaceId'}" -ProtectedSettingString "{'workspaceKey': '$workspaceKey'}"
 
 
 ```
 
 
-## <a name="deploy-hello-vm-extension-using-a-template"></a>Nasazení rozšíření hello virtuálního počítače pomocí šablony
-Pomocí Azure Resource Manager můžete vytvořit šablonu (ve formátu JSON), která definuje hello nasazení a konfiguraci vaší aplikace. Tato šablona se označuje jako šablony Resource Manageru a nabízí deklarativní způsob toodefine nasazení. Pomocí šablony můžete opakovaně nasazení aplikace v průběhu životního cyklu aplikace hello a mít jistotu, že se prostředky nasadí v konzistentním stavu.
+## <a name="deploy-the-vm-extension-using-a-template"></a>Nasazení rozšíření virtuálního počítače pomocí šablony
+Pomocí Azure Resource Manager můžete vytvořit šablonu (ve formátu JSON), která definuje nasazení a konfiguraci vaší aplikace. Tato šablona se označuje jako šablona Resource Manageru a nabízí deklarativní způsob, jak definovat nasazení. Pomocí šablony můžete opakovaně nasazení aplikace v průběhu životního cyklu aplikace a mít jistotu, že se prostředky nasadí v konzistentním stavu.
 
-Zahrnutím hello analýzy protokolů agenta v rámci šablony Resource Manageru můžete zajistit, že každý virtuální počítač je předem nakonfigurovaný tooreport pracovní prostor analýzy protokolů tooyour.
+Zahrnutím agenta analýzy protokolů v rámci šablony Resource Manageru můžete zajistit, že každý virtuální počítač je předem nakonfigurovaná tak, aby odesílaly pracovní prostor analýzy protokolů.
 
 Další informace o šablonách Resource Manager najdete v tématu [šablon pro tvorbu Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md).
 
-Tady je příklad šablony Resource Manageru, který se používá pro nasazení virtuálního počítače se systémem Windows s hello rozšíření agenta Microsoft Monitoring Agent nainstalována. Tato šablona je šablonu typické virtuálního počítače s hello následující dodatky:
+Tady je příklad šablony Resource Manageru, který se používá pro nasazení virtuálního počítače se systémem Windows s příponou agenta Microsoft Monitoring Agent nainstalována. Tato šablona je šablonu typické virtuálního počítače s těmito přídavky:
 
 * ID pracovního prostoru a workspaceName parametry
 * Microsoft.EnterpriseCloud.Monitoring oddílu rozšíření prostředků
-* Výstupy toolook hello workspaceId a workspaceSharedKey
+* Výstupy k vyhledání ID pracovního prostoru a workspaceSharedKey
 
 ```json
 {
@@ -148,19 +148,19 @@ Tady je příklad šablony Resource Manageru, který se používá pro nasazení
     "adminUsername": {
       "type": "string",
       "metadata": {
-        "description": "Username for hello Virtual Machine."
+        "description": "Username for the Virtual Machine."
       }
     },
     "adminPassword": {
       "type": "securestring",
       "metadata": {
-        "description": "Password for hello Virtual Machine."
+        "description": "Password for the Virtual Machine."
       }
     },
     "dnsLabelPrefix": {
        "type": "string",
        "metadata": {
-          "description": "DNS Label for hello Public IP. Must be lowercase. It should match with hello following regular expression: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$ or it will raise an error."
+          "description": "DNS Label for the Public IP. Must be lowercase. It should match with the following regular expression: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$ or it will raise an error."
        }
     },
     "workspaceId": {
@@ -185,7 +185,7 @@ Tady je příklad šablony Resource Manageru, který se používá pro nasazení
         "Windows-Server-Technical-Preview"
       ],
       "metadata": {
-        "description": "hello Windows version for hello VM. This will pick a fully patched image of this given Windows version. Allowed values: 2008-R2-SP1, 2012-Datacenter, 2012-R2-Datacenter, Windows-Server-Technical-Preview."
+        "description": "The Windows version for the VM. This will pick a fully patched image of this given Windows version. Allowed values: 2008-R2-SP1, 2012-Datacenter, 2012-R2-Datacenter, Windows-Server-Technical-Preview."
       }
     }
   },
@@ -365,60 +365,60 @@ Tady je příklad šablony Resource Manageru, který se používá pro nasazení
 }
 ```
 
-Šablonu můžete nasadit pomocí hello následující příkaz prostředí PowerShell:
+Šablonu můžete nasadit pomocí následujícího příkazu Powershellu:
 
 ```PowerShell
 New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile $templateFilePath
 ```
 
-## <a name="troubleshooting-hello-log-analytics-vm-extension"></a>Řešení potíží s rozšíření virtuálního počítače Analytics protokolu hello
+## <a name="troubleshooting-the-log-analytics-vm-extension"></a>Řešení potíží s rozšíření virtuálního počítače analýzy protokolů
 Obvykle zobrazí zprávu po věcí nefungují z portálu Azure nebo Azure powershell.
 
-1. Přihlaste se k hello [portál Azure](http://portal.azure.com).
-2. Najde hello virtuálního počítače a otevřete tak podrobnosti virtuálního počítače.
-3. Klikněte na tlačítko **rozšíření** toocheck, pokud je povolené rozšíření OMS, nebo ne.
+1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).
+2. Najít virtuálního počítače a otevřete tak podrobnosti virtuálního počítače.
+3. Klikněte na tlačítko **rozšíření** ke kontrole, pokud je povolené rozšíření OMS, nebo ne.
 
    ![Zobrazení rozšíření virtuálního počítače](./media/log-analytics-azure-vm-extension/oms-vmview-extensions.png)
 
-4. Klikněte na tlačítko hello *MicrosoftMonitoringAgent*(Windows) nebo *OmsAgentForLinux*rozšíření a zobrazení podrobností (Linux). 
+4. Klikněte *MicrosoftMonitoringAgent*(Windows) nebo *OmsAgentForLinux*rozšíření a zobrazení podrobností (Linux). 
 
    ![Podrobnosti o rozšíření virtuálního počítače](./media/log-analytics-azure-vm-extension/oms-vmview-extensiondetails.png)
 
 ### <a name="troubleshooting-windows-virtual-machines"></a>Řešení potíží virtuální počítače s Windows
-Pokud hello *agenta Microsoft Monitoring Agent* není instalaci rozšíření agenta virtuálního počítače nebo vytváření sestav, můžete provést následující kroky tootroubleshoot hello problém hello.
+Pokud *agenta Microsoft Monitoring Agent* není instalaci rozšíření agenta virtuálního počítače nebo vytváření sestav, můžete provést následující kroky k odstranění problému.
 
-1. Zkontrolujte, zda je agent virtuálního počítače Azure hello nainstalovaný a funkční správně pomocí hello kroky [KB 2965986](https://support.microsoft.com/kb/2965986#mt1).
-   * Můžete také zkontrolovat soubor protokolu agenta virtuálního počítače hello`C:\WindowsAzure\logs\WaAppAgent.log`
-   * Pokud hello protokolu neexistuje, není nainstalován agent virtuálního počítače hello.
-     * [Nainstalujte agenta virtuálního počítače Azure hello na klasické virtuální počítače](../virtual-machines/windows/classic/agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-2. Potvrďte hello Microsoft Monitoring Agent je spuštěn úkol prezenčního signálu rozšíření pomocí hello následující kroky:
-   * Přihlaste se toohello virtuálního počítače
-   * Otevřete Plánovač úloh a najde hello `update_azureoperationalinsight_agent_heartbeat` úloh
-   * Potvrďte hello úloh je povolená a běží každou minutu
-   * Zkontrolujte v souboru protokolu hello prezenčního signálu`C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\heartbeat.log`
-3. Zkontrolujte soubory protokolu rozšíření virtuálního počítače agenta monitorování Microsoft hello ve`C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent`
-4. Ujistěte se, že hello virtuálního počítače můžete spouštět skripty prostředí PowerShell
+1. Zkontrolujte, zda je nainstalován agent virtuálního počítače Azure a že fungují správně pomocí kroků v [KB 2965986](https://support.microsoft.com/kb/2965986#mt1).
+   * Můžete také zkontrolovat soubor protokolu agenta virtuálního počítače`C:\WindowsAzure\logs\WaAppAgent.log`
+   * Pokud v protokolu neexistuje, není nainstalován agent virtuálního počítače.
+     * [Nainstalujte agenta virtuálního počítače Azure na klasické virtuální počítače](../virtual-machines/windows/classic/agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+2. Potvrďte, že je spuštěn úkol prezenčního signálu agenta Microsoft Monitoring Agent rozšíření, pomocí následujících kroků:
+   * Přihlaste se k virtuálnímu počítači
+   * Otevřete Plánovač úloh a najít `update_azureoperationalinsight_agent_heartbeat` úloh
+   * Potvrďte úloha je povolená a běží každou minutu
+   * Zkontrolujte v souboru protokolu prezenčního signálu`C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\heartbeat.log`
+3. Zkontrolujte soubory protokolů rozšíření Microsoft Monitoring Agent virtuálního počítače v`C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent`
+4. Zajistěte, aby byl že virtuální počítač můžete spouštět skripty prostředí PowerShell
 5. Ujistěte se, že oprávnění C:\Windows\temp nezměnily
-6. Zobrazit stav hello hello agenta Microsoft Monitoring Agent tak, že zadáte následující příkaz v okně Powershellu se zvýšenými oprávněními na virtuálním počítači hello hello`  (New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`
-7. Zkontrolujte soubory protokolu instalace agenta Microsoft Monitoring Agent hello ve`C:\Windows\System32\config\systemprofile\AppData\Local\SCOM\Logs`
+6. Zobrazit stav služby Microsoft Monitoring Agent zadáním následujícího příkazu v okně prostředí PowerShell se zvýšenými oprávněními na virtuálním počítači`  (New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`
+7. Zkontrolujte soubory protokolu instalace agenta Microsoft Monitoring Agent v`C:\Windows\System32\config\systemprofile\AppData\Local\SCOM\Logs`
 
 Další informace najdete v tématu [řešení potíží s rozšířeními Windows](../virtual-machines/windows/extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ### <a name="troubleshooting-linux-virtual-machines"></a>Řešení potíží virtuální počítače s Linuxem
-Pokud hello *OMS agenta pro Linux* není instalaci rozšíření agenta virtuálního počítače nebo vytváření sestav, můžete provést následující kroky tootroubleshoot hello problém hello.
+Pokud *OMS agenta pro Linux* není instalaci rozšíření agenta virtuálního počítače nebo vytváření sestav, můžete provést následující kroky k odstranění problému.
 
-1. Pokud je stav rozšíření hello *neznámé* zkontrolujte, zda je nainstalován agent virtuálního počítače Azure hello a funguje správně, a to prohlédnutím souboru protokolu agenta virtuálního počítače hello`/var/log/waagent.log`
-   * Pokud hello protokolu neexistuje, není nainstalován agent virtuálního počítače hello.
-   * [Nainstalujte na virtuální počítače s Linuxem hello agenta virtuálního počítače Azure](../virtual-machines/linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-2. Pro ostatní stavy není v pořádku, zkontrolujte hello agenta OMS pro rozšíření virtuálního počítače s Linuxem protokolové soubory `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` a`/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log`
-3. Pokud stav rozšíření hello je v pořádku, ale není odesílání dat zkontrolujte hello OMS agenta pro Linux soubory protokolu`/var/opt/microsoft/omsagent/log/omsagent.log`
+1. Pokud je stav rozšíření *neznámé* zkontrolujte, zda je nainstalován agent virtuálního počítače Azure a že fungují správně, a to prohlédnutím souboru protokolu agenta virtuálního počítače`/var/log/waagent.log`
+   * Pokud v protokolu neexistuje, není nainstalován agent virtuálního počítače.
+   * [Nainstalujte agenta virtuálního počítače Azure na virtuální počítače s Linuxem](../virtual-machines/linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+2. Pro ostatní stavy není v pořádku, zkontrolujte agenta OMS pro rozšíření virtuálního počítače s Linuxem soubory protokolů `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` a`/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log`
+3. Pokud je v pořádku stav rozšíření, ale není odesílání dat zkontrolujte OMS agenta pro Linux soubory protokolu v`/var/opt/microsoft/omsagent/log/omsagent.log`
 
 ## <a name="next-steps"></a>Další kroky
-* Konfigurace [zdroje dat v analýzy protokolů](log-analytics-data-sources.md) toospecify hello protokoly a metriky toocollect.
-* toogather data z virtuálních počítačů [řešení přidat analýzy protokolů z hello řešení Galerie](log-analytics-add-solutions.md).
+* Konfigurace [zdroje dat v analýzy protokolů](log-analytics-data-sources.md) k určení ke shromažďování metrik a protokolování.
+* Chcete-li shromažďovat data z virtuálních počítačů [řešení přidat analýzy protokolů z Galerie řešení](log-analytics-add-solutions.md).
 * [Shromažďování dat pomocí Azure Diagnostics](log-analytics-azure-storage.md) další zdroje, které jsou spuštěné v Azure.
 
-Pro počítače, které nejsou v Azure můžete nainstalovat agenta analýzy protokolů hello pomocí hello metod, které jsou popsány v hello následující články:
+Pro počítače, které nejsou v Azure můžete nainstalovat agenta analýzy protokolů pomocí metody, které jsou popsané v následujících článcích:
 
-* [Připojení Windows počítače tooLog Analytics](log-analytics-windows-agents.md)
-* [Připojení počítače tooLog Linux Analytics](log-analytics-linux-agents.md)
+* [Připojení počítače se systémem Windows k analýze protokolů](log-analytics-windows-agents.md)
+* [Připojení počítačů se systémem Linux k analýze protokolů](log-analytics-linux-agents.md)

@@ -1,6 +1,6 @@
 ---
-title: aaaHow tooUse Azure Redis Cache | Microsoft Docs
-description: "Zjistěte, jak tooimprove hello výkon aplikací Azure pomocí Azure Redis Cache"
+title: "Použití Azure Redis Cache | Dokumentace Microsoftu"
+description: "Zjistěte, jak zlepšit výkon aplikací Azure pomocí Azure Redis Cache."
 services: redis-cache,app-service
 documentationcenter: 
 author: steved0x
@@ -14,13 +14,13 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 07/27/2017
 ms.author: sdanie
-ms.openlocfilehash: 763d70c10972eec9a1885969e8da5bf1c4084727
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 3dfc026490093523446650c510dbebdd660e8b6b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-toouse-azure-redis-cache"></a>Jak tooUse Azure mezipaměti Redis
+# <a name="how-to-use-azure-redis-cache"></a>Použití Azure Redis Cache
 > [!div class="op_single_selector"]
 > * [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
 > * [ASP.NET](cache-web-app-howto.md)
@@ -30,83 +30,83 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Tento průvodce vám ukáže, jak tooget spuštění pomocí **Azure Redis Cache**. Microsoft Azure Redis Cache je založená na populární open source hello Redis Cache. Nabízí přístup k tooa zabezpečené, vyhrazené mezipaměti Redis spravované microsoftem. Mezipaměť vytvořená pomocí Azure Redis Cache je přístupná ze všech aplikací v rámci Microsoft Azure.
+Tento průvodce vám ukáže, jak začít používat **Azure Redis Cache**. Microsoft Azure Redis Cache je založená na populární Open Source mezipaměti Redis Cache. Umožňuje vám přístup do zabezpečené, vyhrazené mezipaměti Redis spravované Microsoftem. Mezipaměť vytvořená pomocí Azure Redis Cache je přístupná ze všech aplikací v rámci Microsoft Azure.
 
-Microsoft Azure Redis Cache je dostupná v hello následující úrovně:
+Microsoft Azure Redis Cache je dostupná na následujících úrovních:
 
-* **Basic** – jeden uzel. Více velikostí až too53 GB.
-* **Standard** – dva uzly Primární/Replika. Více velikostí až too53 GB. 99,9% SLA.
-* **Premium** – dva uzly primární/replika s po až too10 horizontálních oddílů. Více velikosti od 6 GB too530 GB. Všechny funkce úrovně Standard a navíc podpora [clusteru Redis](cache-how-to-premium-clustering.md), [trvalosti Redis](cache-how-to-premium-persistence.md) a [služby Azure Virtual Network](cache-how-to-premium-vnet.md). 99,9% SLA.
+* **Basic** – jeden uzel. Více velikostí až do 53 GB.
+* **Standard** – dva uzly Primární/Replika. Více velikostí až do 53 GB. 99,9% SLA.
+* **Premium** – dva uzly Primární/Replika s až 10 horizontálními oddíly. Více velikostí od 6 GB do 530 GB. Všechny funkce úrovně Standard a navíc podpora [clusteru Redis](cache-how-to-premium-clustering.md), [trvalosti Redis](cache-how-to-premium-persistence.md) a [služby Azure Virtual Network](cache-how-to-premium-vnet.md). 99,9% SLA.
 
 Každá úroveň se liší z hlediska funkcí a cen. Informace o cenách najdete na stránce [Podrobnosti o cenách Azure Redis Cache][Cache Pricing Details].
 
-Tento průvodce vám ukáže, jak toouse hello [StackExchange.Redis] [ StackExchange.Redis] klienta pomocí C\# kódu. Hello pokryté scénáře zahrnují **vytváření a konfiguraci mezipaměti**, **konfiguraci klientů mezipaměti**, a **přidávání a odebírání objektů z mezipaměti hello**. Další informace o používání Azure Redis Cache najdete v části [Další kroky][Next Steps]. Podrobný kurz vytvoření webové aplikace s Redis Cache ASP.NET MVC, najdete v části [jak toocreate webové aplikace s Redis Cache](cache-web-app-howto.md).
+Tento průvodce vám ukáže, jak použít klienta [StackExchange.Redis][StackExchange.Redis] pomocí kódu v C\#. Pokryté scénáře zahrnují **vytvoření a konfiguraci mezipaměti**, **konfiguraci klientů mezipaměti** a **přidávání a odebírání objektů z mezipaměti**. Další informace o používání Azure Redis Cache najdete v části [Další kroky][Next Steps]. Podrobný kurz vytvoření webové aplikace s Redis Cache pomocí ASP.NET MVC najdete v tématu [Vytvoření webové aplikace s Redis Cache](cache-web-app-howto.md).
 
 <a name="getting-started-cache-service"></a>
 
 ## <a name="get-started-with-azure-redis-cache"></a>Začínáme s Azure Redis Cache
-Začít s Azure Redis Cache je jednoduché. tooget spustili, můžete zřídit a nakonfigurujete mezipaměť. Dále nakonfigurujete klienty mezipaměti hello tak bude mít přístup k mezipaměti hello. Po nakonfigurování klientů mezipaměti hello můžete začít pracovat s nimi.
+Začít s Azure Redis Cache je jednoduché. Abyste mohli začít, zřídíte a nakonfigurujete mezipaměť. Dále nakonfigurujete klienty mezipaměti pro přístup do mezipaměti. Po nakonfigurování klientů mezipaměti s nimi můžete začít pracovat.
 
-* [Vytvoření mezipaměti hello][Create hello cache]
-* [Konfigurace klientů mezipaměti hello][Configure hello cache clients]
+* [Vytvoření mezipaměti][Create the cache]
+* [Konfigurace klientů mezipaměti][Configure the cache clients]
 
 <a name="create-cache"></a>
 
 ## <a name="create-a-cache"></a>Vytvoření mezipaměti
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
-### <a name="tooaccess-your-cache-after-its-created"></a>tooaccess vaší mezipaměti po jeho vytvoření
+### <a name="to-access-your-cache-after-its-created"></a>Přístup do vaší mezipaměti po jejím vytvoření
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-browse.md)]
 
-Další informace o konfiguraci mezipaměti najdete v tématu [jak tooconfigure Azure Redis Cache](cache-configure.md).
+Další informace o konfiguraci mezipaměti najdete v tématu [Konfigurace Azure Redis Cache](cache-configure.md).
 
 <a name="NuGet"></a>
 
-## <a name="configure-hello-cache-clients"></a>Konfigurace klientů mezipaměti hello
+## <a name="configure-the-cache-clients"></a>Konfigurace klientů mezipaměti
 [!INCLUDE [redis-cache-configure](../../includes/redis-cache-configure-stackexchange-redis-nuget.md)]
 
-Po konfiguraci klientského projektu je nakonfigurován pro ukládání do mezipaměti, můžete hello technik popsaných v následující části pro práci s mezipamětí hello.
+Po konfiguraci klientského projektu pro používání mezipaměti můžete pro práci s mezipamětí použít techniky popsané v následujících sekcích.
 
 <a name="working-with-caches"></a>
 
 ## <a name="working-with-caches"></a>Práce s mezipamětí
-Hello kroky v této části popisují, jak tooperform běžné úkoly s mezipamětí.
+Kroky v tomto oddílu popisují, jak provádět běžné úkoly s mezipamětí.
 
-* [Připojit toohello mezipaměti][Connect toohello cache]
-* [Přidejte a načtení objektů z mezipaměti hello][Add and retrieve objects from hello cache]
-* [Práce s objekty .NET v mezipaměti hello](#work-with-net-objects-in-the-cache)
+* [Připojení k mezipaměti][Connect to the cache]
+* [Přidání objektů do mezipaměti a jejich načtení][Add and retrieve objects from the cache]
+* [Práce s objekty .NET v mezipaměti](#work-with-net-objects-in-the-cache)
 
 <a name="connect-to-cache"></a>
 
-## <a name="connect-toohello-cache"></a>Připojit toohello mezipaměti
-tooprogrammatically práci s mezipamětí, potřebujete odkaz toohello mezipaměti. Přidejte následující toohello horní části souboru, ve kterém chcete toouse hello StackExchange.Redis klienta tooaccess Azure Redis Cache hello.
+## <a name="connect-to-the-cache"></a>Připojení k mezipaměti
+Chcete-li pracovat s mezipamětí prostřednictvím kódu programu, potřebujete odkaz na mezipaměť. Přidejte následující řádek na začátek souboru, ve kterém chcete použít klienta StackExchange.Redis pro přístup do Azure Redis Cache.
 
     using StackExchange.Redis;
 
 > [!NOTE]
-> Hello klient StackExchange.Redis vyžaduje rozhraní .NET Framework 4 nebo vyšší.
+> Klient StackExchange.Redis vyžaduje rozhraní .NET Framework 4 nebo vyšší.
 > 
 > 
 
-Hello toohello připojení Azure Redis Cache spravuje hello `ConnectionMultiplexer` třídy. Tato třída by měla být sdílena a opětovné použití v rámci klientské aplikace a není nutné toobe vytvořena na každou operaci zvlášť. 
+Připojení k Azure Redis Cache spravuje třída `ConnectionMultiplexer`. Tato třída by se měla sdílet a opětovně používat v rámci klientské aplikace, a není nutné vytvářet ji pro každou operaci zvlášť. 
 
-tooconnect tooan Azure Redis Cache a vrátit instanci připojeného `ConnectionMultiplexer`, volání hello statické `Connect` metoda a předejte jí hello mezipaměti koncový bod a klíč. Použijte hello klíč vygenerovaný na portálu Azure jako parametr hesla hello hello.
+Chcete-li se připojit k Azure Redis Cache a vrátit instanci připojeného `ConnectionMultiplexer`, zavolejte statickou metodu `Connect` a předejte jí koncový bod mezipaměti a klíč. Jako parametr hesla použijte klíč vygenerovaný na webu Azure Portal.
 
     ConnectionMultiplexer connection = ConnectionMultiplexer.Connect("contoso5.redis.cache.windows.net,abortConnect=false,ssl=true,password=...");
 
 > [!IMPORTANT]
-> Upozornění: Neuchovávejte přihlašovací údaje ve zdrojovém kódu. tookeep Tato ukázka jednoduché I mě zobrazující je v hello zdrojového kódu. V tématu [fungování řetězců aplikace a připojovacích řetězců] [ How Application Strings and Connection Strings Work] informace o tom toostore přihlašovací údaje.
+> Upozornění: Neuchovávejte přihlašovací údaje ve zdrojovém kódu. Pro zjednodušení této ukázku je ve zdrojovém kódu uvádíme. Informace o tom, jak ukládat přihlašovací údaje, najdete v tématu [Fungování řetězců aplikace a připojovacích řetězců][How Application Strings and Connection Strings Work].
 > 
 > 
 
-Pokud nechcete, aby toouse SSL, nastavte `ssl=false` nebo vynechejte hello `ssl` parametr.
+Nechcete-li používat protokol SSL, nastavte hodnotu `ssl=false` nebo vynechejte parametr `ssl`.
 
 > [!NOTE]
-> port bez SSL Hello je ve výchozím nastavení pro nové mezipaměti zakázán. Pokyny pro povolení portu bez SSL hello najdete v tématu [přístupové porty](cache-configure.md#access-ports).
+> Port bez SSL je ve výchozím nastavení pro nové mezipaměti zakázán. Pokyny pro povolení portu bez SSL najdete v tématu [Přístupové porty](cache-configure.md#access-ports).
 > 
 > 
 
-Jeden ze způsobů toosharing `ConnectionMultiplexer` instance v aplikaci je toohave statické vlastnosti, která vrací připojenou instanci, podobně jako toohello následující ukázka. Tento přístup poskytuje způsob vláken tooinitialize pouze jedné připojené `ConnectionMultiplexer` instance. V těchto příkladech `abortConnect` je sada toofalse, což znamená, že i když nebude navázáno připojení toohello Azure Redis Cache je úspěšné volání hello. Klíčovou vlastností `ConnectionMultiplexer` je, že automaticky obnoví připojení k mezipaměti toohello po hello problém sítě nebo jiných příčin jsou vyřešeny.
+Jeden ze způsobů sdílení instance `ConnectionMultiplexer` v aplikaci je pomocí statické vlastnosti, která vrací připojenou instanci, podobně jako v následujícím příkladu.  Tento přístup poskytuje způsob inicializace jedné připojené instance `ConnectionMultiplexer`, který je bezpečný pro přístup z více vláken. V těchto příkladech je hodnota `abortConnect` nastavená na false, to znamená, že volání je úspěšné i v případě, že nedojde k vytvoření připojení k Azure Redis Cache. Klíčovou vlastností `ConnectionMultiplexer` je automatické obnovení připojení k mezipaměti po vyřešení problémů se sítí nebo jiných příčin.
 
     private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
     {
@@ -125,50 +125,50 @@ Další informace o rozšířených možnostech konfigurace připojení najdete 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
-Po navázání připojení hello vrátit databázi mezipaměti redis toohello odkaz podle volání hello `ConnectionMultiplexer.GetDatabase` metoda. Hello objekt byl vrácen ze hello `GetDatabase` metoda je prostý průchozí objekt a není nutné toobe uložené.
+Po vytvoření připojení vrátíte odkaz na databázi mezipaměti Redis zavoláním metody `ConnectionMultiplexer.GetDatabase`. Objekt vrácený metodou `GetDatabase` je prostý průchozí objekt a není nutné jej ukládat.
 
-    // Connection refers tooa property that returns a ConnectionMultiplexer
-    // as shown in hello previous example.
+    // Connection refers to a property that returns a ConnectionMultiplexer
+    // as shown in the previous example.
     IDatabase cache = Connection.GetDatabase();
 
-    // Perform cache operations using hello cache object...
-    // Simple put of integral data types into hello cache
+    // Perform cache operations using the cache object...
+    // Simple put of integral data types into the cache
     cache.StringSet("key1", "value");
     cache.StringSet("key2", 25);
 
-    // Simple get of data types from hello cache
+    // Simple get of data types from the cache
     string key1 = cache.StringGet("key1");
     int key2 = (int)cache.StringGet("key2");
 
-Azure Redis Cache úrovní mít konfigurovat počet databází (výchozí 16), které se dají použít toologically samostatné hello data v mezipaměti Redis. Další informace najdete v tématu [Co jsou databáze Redis?](cache-faq.md#what-are-redis-databases) a [Výchozí konfigurace serveru Redis](cache-configure.md#default-redis-server-configuration).
+Mezipaměti Azure Redis Cache mají konfigurovatelný počet databází (výchozí je 16), který lze použít k logickému oddělení dat v rámci mezipaměti Redis. Další informace najdete v tématu [Co jsou databáze Redis?](cache-faq.md#what-are-redis-databases) a [Výchozí konfigurace serveru Redis](cache-configure.md#default-redis-server-configuration).
 
-Teď, když víte, jak instanci Azure Redis Cache tooan tooconnect a vrátit odkaz toohello mezipaměti databáze, podíváme se na práci s mezipamětí hello.
+Nyní, když už víte, jak se připojit k instanci služby Azure Redis Cache a vrátit odkaz na databázi mezipaměti, se podíváme na práci s mezipamětí.
 
 <a name="add-object"></a>
 
-## <a name="add-and-retrieve-objects-from-hello-cache"></a>Přidejte a načtení objektů z mezipaměti hello
-Položky lze ukládat a načítat z mezipaměti pomocí hello `StringSet` a `StringGet` metody.
+## <a name="add-and-retrieve-objects-from-the-cache"></a>Přidání objektů do mezipaměti a jejich načtení
+Položky lze ukládat a načítat z mezipaměti pomocí metod `StringSet``StringGet`
 
     // If key1 exists, it is overwritten.
     cache.StringSet("key1", "value1");
 
     string value = cache.StringGet("key1");
 
-Redis ukládá většinu dat jako řetězce Redis, ale tyto řetězce mohou obsahovat mnoho typů dat, včetně serializovaných binárních dat, který můžete použít při ukládání objektů .NET v mezipaměti hello.
+Redis ukládá většinu dat jako řetězce Redis, ale tyto řetězce mohou obsahovat mnoho typů dat, včetně serializovaných binárních dat, která lze použít při ukládání objektů .NET v mezipaměti.
 
-Při volání metody `StringGet`, pokud existuje hello objektu, se vrátí, a pokud ne, `null` je vrácen. Pokud `null` se vrátí, můžete načíst hodnotu hello z hello požadovaného zdroje dat a uložte ho hello mezipaměti pro pozdější použití. Tento vzor používání se označuje jako hello doplňováním mezipaměti.
+Při volání metody `StringGet` se vrátí objekt, pokud existuje, a hodnota `null` Pokud je vrácena hodnota `null`, můžete načíst hodnotu z požadovaného zdroje dat a uložit ji do mezipaměti pro pozdější použití. Tento způsob použití se označuje jako princip s doplňováním mezipaměti.
 
     string value = cache.StringGet("key1");
     if (value == null)
     {
-        // hello item keyed by "key1" is not in hello cache. Obtain
-        // it from hello desired data source and add it toohello cache.
+        // The item keyed by "key1" is not in the cache. Obtain
+        // it from the desired data source and add it to the cache.
         value = GetValueFromDataSource();
 
         cache.StringSet("key1", value);
     }
 
-Můžete také použít `RedisValue`, jak ukazuje následující příklad hello. Typ `RedisValue` má implicitní operátory pro práci s celočíselnými datovými typy a může být užitečný v případě, že očekávanou hodnotou pro položku v mezipaměti je `null`.
+Můžete použít také typ `RedisValue`, jak ukazuje následující příklad. Typ `RedisValue` má implicitní operátory pro práci s celočíselnými datovými typy a může být užitečný v případě, že očekávanou hodnotou pro položku v mezipaměti je `null`.
 
 
     RedisValue value = cache.StringGet("key1");
@@ -179,14 +179,14 @@ Můžete také použít `RedisValue`, jak ukazuje následující příklad hello
     }
 
 
-toospecify hello vypršení platnosti položky v mezipaměti hello, použijte hello `TimeSpan` parametr `StringSet`.
+Chcete-li zadat vypršení platnosti položky v mezipaměti, použijte parametr `TimeSpan` metody `StringSet`.
 
     cache.StringSet("key1", "value1", TimeSpan.FromMinutes(90));
 
-## <a name="work-with-net-objects-in-hello-cache"></a>Práce s objekty .NET v mezipaměti hello
-Azure Redis Cache může do mezipaměti ukládat objekty .NET i primitivní datové typy. Objekty .NET je však nutné před uložením do mezipaměti serializovat. Tento objekt serializace rozhraní .NET je zodpovědností hello vývojář aplikace hello a poskytuje flexibilitu vývojáře hello v hello volbu hello serializátor.
+## <a name="work-with-net-objects-in-the-cache"></a>Práce s objekty .NET v mezipaměti
+Azure Redis Cache může do mezipaměti ukládat objekty .NET i primitivní datové typy. Objekty .NET je však nutné před uložením do mezipaměti serializovat. Serializaci objektů .NET má na starosti vývojář aplikace, kterému je tak poskytnuta flexibilita při výběru serializátoru.
 
-Jeden jednoduchý způsob tooserialize objekty, je toouse hello `JsonConvert` metody serializace v [Newtonsoft.Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/8.0.1-beta1) a serializovat tooand z formátu JSON. Hello následující příklad ukazuje získání a nastavení pomocí `Employee` instance objektu.
+Jeden způsob, jak serializovat objekty, je použít metody serializace `JsonConvert` v balíčku [Newtonsoft.Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/8.0.1-beta1) a serializovat a deserializovat tak objekty do a z formátu JSON. Následující příklad ukazuje získání a nastavení pomocí instance objektu `Employee`
 
     class Employee
     {
@@ -200,7 +200,7 @@ Jeden jednoduchý způsob tooserialize objekty, je toouse hello `JsonConvert` me
         }
     }
 
-    // Store toocache
+    // Store to cache
     cache.StringSet("e25", JsonConvert.SerializeObject(new Employee(25, "Clayton Gragg")));
 
     // Retrieve from cache
@@ -209,36 +209,36 @@ Jeden jednoduchý způsob tooserialize objekty, je toouse hello `JsonConvert` me
 <a name="next-steps"></a>
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste se naučili základy hello, postupujte podle těchto odkazů toolearn Další informace o Azure Redis Cache.
+Nyní, když jste se naučili základy, pokračujte následujícími odkazy a zjistěte více o Azure Redis Cache.
 
-* Podívejte se na hello poskytovatele ASP.NET pro Azure Redis Cache.
+* Prohlédněte si poskytovatele ASP.NET pro Azure Redis Cache.
   * [Zprostředkovatel stavu relace Azure Redis](cache-aspnet-session-state-provider.md)
   * [Poskytovatel výstupní mezipaměti ASP.NET služby Azure Redis Cache](cache-aspnet-output-cache-provider.md)
-* [Povolte diagnostiku mezipaměti](cache-how-to-monitor.md#enable-cache-diagnostics) , abyste mohli [monitorování](cache-how-to-monitor.md) hello stav svojí mezipaměti. Můžete zobrazit hello metriky ve hello portál Azure a může taky [stáhnout a revidovat](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring) je pomocí hello nástrojů dle vašeho výběru.
-* Podívejte se na hello [dokumentaci ke klientu mezipaměti StackExchange.Redis][StackExchange.Redis cache client documentation].
+* [Povolte diagnostiku mezipaměti](cache-how-to-monitor.md#enable-cache-diagnostics), abyste mohli [monitorovat](cache-how-to-monitor.md) stav svojí mezipaměti. Metriky lze zobrazit na webu Azure Portal a můžete je také [stáhnout a revidovat](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring) pomocí nástrojů dle vašeho výběru.
+* Prohlédněte si [dokumentaci ke klientu mezipaměti StackExchange.Redis][StackExchange.Redis cache client documentation].
   * K Azure Redis Cache lze přistupovat z mnoha klientů Redis a programovacích jazyků. Další informace najdete na stránce [http://redis.io/clients][http://redis.io/clients].
 * Azure Redis Cache lze rovněž použít se službami a nástroji třetích stran, jako jsou Redsmin a Redis Desktop Manager.
-  * Další informace o Redsmin najdete v tématu [jak tooretrieve připojení k Azure Redis řetězec a jeho použití s Redsmin][How tooretrieve an Azure Redis connection string and use it with Redsmin].
+  * Další informace o nástroji Redsmin najdete v tématu [Načtení připojovacího řetězce Azure Redis a jeho použití s Redsmin][How to retrieve an Azure Redis connection string and use it with Redsmin].
   * [RedisDesktopManager](https://github.com/uglide/RedisDesktopManager) umožňuje získat přístup k datům v Azure Redis Cache a zkoumat je pomocí grafického uživatelského rozhraní.
-* V tématu hello [redis] [ redis] dokumentaci a přečtěte si o [datových typech redis] [ redis data types] a [15minutový Úvod datové typy tooRedis][a fifteen minute introduction tooRedis data types].
+* Prohlédněte si dokumentaci k [Redis][redis] a přečtěte si o [datových typech Redis][redis data types] a [15minutový úvod do datových typů Redis][a fifteen minute introduction to Redis data types].
 
 <!-- INTRA-TOPIC LINKS -->
 [Next Steps]: #next-steps
-[Introduction tooAzure Redis Cache (Video)]: #video
+[Introduction to Azure Redis Cache (Video)]: #video
 [What is Azure Redis Cache?]: #what-is
 [Create an Azure Cache]: #create-cache
 [Which type of caching is right for me?]: #choosing-cache
-[Prepare Your Visual Studio Project tooUse Azure Caching]: #prepare-vs
-[Configure Your Application tooUse Caching]: #configure-app
+[Prepare Your Visual Studio Project to Use Azure Caching]: #prepare-vs
+[Configure Your Application to Use Caching]: #configure-app
 [Get Started with Azure Redis Cache]: #getting-started-cache-service
-[Create hello cache]: #create-cache
-[Configure hello cache]: #enable-caching
-[Configure hello cache clients]: #NuGet
+[Create the cache]: #create-cache
+[Configure the cache]: #enable-caching
+[Configure the cache clients]: #NuGet
 [Working with Caches]: #working-with-caches
-[Connect toohello cache]: #connect-to-cache
-[Add and retrieve objects from hello cache]: #add-object
-[Specify hello expiration of an object in hello cache]: #specify-expiration
-[Store ASP.NET session state in hello cache]: #store-session
+[Connect to the cache]: #connect-to-cache
+[Add and retrieve objects from the cache]: #add-object
+[Specify the expiration of an object in the cache]: #specify-expiration
+[Store ASP.NET session state in the cache]: #store-session
 
 
 <!-- IMAGES -->
@@ -267,7 +267,7 @@ Teď, když jste se naučili základy hello, postupujte podle těchto odkazů to
 <!-- LINKS -->
 [http://redis.io/clients]: http://redis.io/clients
 [Develop in other languages for Azure Redis Cache]: http://msdn.microsoft.com/library/azure/dn690470.aspx
-[How tooretrieve an Azure Redis connection string and use it with Redsmin]: https://redsmin.uservoice.com/knowledgebase/articles/485711-how-to-connect-redsmin-to-azure-redis-cache
+[How to retrieve an Azure Redis connection string and use it with Redsmin]: https://redsmin.uservoice.com/knowledgebase/articles/485711-how-to-connect-redsmin-to-azure-redis-cache
 [Azure Redis Session State Provider]: http://go.microsoft.com/fwlink/?LinkId=398249
 [How to: Configure a Cache Client Programmatically]: http://msdn.microsoft.com/library/windowsazure/gg618003.aspx
 [Session State Provider for Azure Cache]: http://go.microsoft.com/fwlink/?LinkId=320835
@@ -276,16 +276,16 @@ Teď, když jste se naučili základy hello, postupujte podle těchto odkazů to
 [Azure Shared Caching]: http://msdn.microsoft.com/library/windowsazure/gg278356.aspx
 [Team Blog]: http://blogs.msdn.com/b/windowsazure/
 [Azure Caching]: http://www.microsoft.com/showcase/Search.aspx?phrase=azure+caching
-[How tooConfigure Virtual Machine Sizes]: http://go.microsoft.com/fwlink/?LinkId=164387
+[How to Configure Virtual Machine Sizes]: http://go.microsoft.com/fwlink/?LinkId=164387
 [Azure Caching Capacity Planning Considerations]: http://go.microsoft.com/fwlink/?LinkId=320167
 [Azure Caching]: http://go.microsoft.com/fwlink/?LinkId=252658
-[How to: Set hello Cacheability of an ASP.NET Page Declaratively]: http://msdn.microsoft.com/library/zd1ysf1y.aspx
+[How to: Set the Cacheability of an ASP.NET Page Declaratively]: http://msdn.microsoft.com/library/zd1ysf1y.aspx
 [How to: Set a Page's Cacheability Programmatically]: http://msdn.microsoft.com/library/z852zf6b.aspx
 [Configure a cache in Azure Redis Cache]: http://msdn.microsoft.com/library/azure/dn793612.aspx
 
 [StackExchange.Redis configuration model]: https://stackexchange.github.io/StackExchange.Redis/Configuration
 
-[Work with .NET objects in hello cache]: http://msdn.microsoft.com/library/dn690521.aspx#Objects
+[Work with .NET objects in the cache]: http://msdn.microsoft.com/library/dn690521.aspx#Objects
 
 
 [NuGet Package Manager Installation]: http://go.microsoft.com/fwlink/?LinkId=240311
@@ -295,16 +295,16 @@ Teď, když jste se naučili základy hello, postupujte podle těchto odkazů to
 [Overview of Azure Redis Cache]: http://go.microsoft.com/fwlink/?LinkId=320830
 [Azure Redis Cache]: http://go.microsoft.com/fwlink/?LinkId=398247
 
-[Migrate tooAzure Redis Cache]: http://go.microsoft.com/fwlink/?LinkId=317347
+[Migrate to Azure Redis Cache]: http://go.microsoft.com/fwlink/?LinkId=317347
 [Azure Redis Cache Samples]: http://go.microsoft.com/fwlink/?LinkId=320840
-[Using Resource groups toomanage your Azure resources]: ../azure-resource-manager/resource-group-overview.md
+[Using Resource groups to manage your Azure resources]: ../azure-resource-manager/resource-group-overview.md
 
 [StackExchange.Redis]: http://github.com/StackExchange/StackExchange.Redis
 [StackExchange.Redis cache client documentation]: http://github.com/StackExchange/StackExchange.Redis#documentation
 
 [Redis]: http://redis.io/documentation
 [Redis data types]: http://redis.io/topics/data-types
-[a fifteen minute introduction tooRedis data types]: http://redis.io/topics/data-types-intro
+[a fifteen minute introduction to Redis data types]: http://redis.io/topics/data-types-intro
 
 [How Application Strings and Connection Strings Work]: http://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/
 

@@ -1,6 +1,6 @@
 ---
-title: "aaaH264 jednou přenosovou rychlostí 16 x 9 SD Media Encoder Standard přednastavených - Azure | Microsoft Docs"
-description: "Hello téma nabízí přehled hello ** přednastavení úloh H264 jednou přenosovou rychlostí 16 x 9 SD **."
+title: "H264 jednou přenosovou rychlostí 16 x 9 SD Media Encoder Standard přednastavených - Azure | Microsoft Docs"
+description: "Téma nabízí přehled ** přednastavení úloh H264 jednou přenosovou rychlostí 16 x 9 SD **."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: e5fbf6b8accaf779014bee67ee4f5fd6910b2d25
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 746dc845f1e32d6be3f207448523d8966da9f8a0
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="h264-single-bitrate-16x9-sd"></a>H264 SD jednou přenosovou rychlostí 16 x 9
-`Media Encoder Standard`definuje sadu kódování přednastavení, které můžete použít při vytváření úlohy kódování. Můžete použít `preset name` toospecify do formátu, který chcete tooencode mediálního souboru. Nebo můžete vytvořit vlastní JSON nebo na základě XML přednastavení (pomocí kódování UTF-8 nebo UTF-16. By pak předejte kodér vlastní přednastavené toohello hello. Hello seznam všech hello přednastavení názvy podporovaných touto `Media Encoder Standard` kodér, najdete v části [přednastavení úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
+`Media Encoder Standard`definuje sadu kódování přednastavení, které můžete použít při vytváření úlohy kódování. Můžete použít `preset name` zadat do formátu, který chcete zakódovat váš soubor média. Nebo můžete vytvořit vlastní JSON nebo na základě XML přednastavení (pomocí kódování UTF-8 nebo UTF-16. By pak předejte vlastní přednastavení kodéru. Seznam všech názvů přednastavené podporovaných touto `Media Encoder Standard` kodér, najdete v části [přednastavení úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
   
- Toto téma ukazuje hello `H264 Single Bitrate 16x9 SD` přednastavení ve formátu XML a JSON.  
+ Toto téma ukazuje `H264 Single Bitrate 16x9 SD` přednastavení ve formátu XML a JSON.  
   
- Tento soubor přednastavené vytváří jeden MP4 s přenosovou rychlostí 2200 kb/s a stereo AAC zvukovém souboru. Podrobné informace o profilu přenosovou rychlostí, vzorkování rychlost atd tohoto přednastavení, zkontrolujte hello XML nebo JSON definovaná níže. Vysvětlení co každý prvek v těchto přednastavení znamená a hello platné hodnoty pro každý element, najdete v části hello [Media Encoder Standard schématu](media-services-mes-schema.md) tématu.  
+ Tento soubor přednastavené vytváří jeden MP4 s přenosovou rychlostí 2200 kb/s a stereo AAC zvukovém souboru. Podrobné informace o profilu přenosovou rychlostí, vzorkování rychlost atd tohoto přednastavení, zkontrolovat, XML nebo JSON definovaná níže. Vysvětlení co každý prvek v těchto přednastavení znamená a platné hodnoty pro každý element, najdete v článku [Media Encoder Standard schématu](media-services-mes-schema.md) tématu.  
   
  XML  
   

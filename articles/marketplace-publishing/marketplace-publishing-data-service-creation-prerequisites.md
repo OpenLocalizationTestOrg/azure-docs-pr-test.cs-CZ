@@ -1,6 +1,6 @@
 ---
-title: "aaaTechnical požadavky pro vytváření dat služby pro hello Marketplace | Microsoft Docs"
-description: "Rady pro pochopení hello požadavky pro vytváření dat služby toodeploy a prodeje na hello Azure Marketplace"
+title: "Technické požadavky pro vytváření dat služby pro Marketplace | Microsoft Docs"
+description: "Pochopit požadavky pro vytvoření datové služby pro nasazení a prodeje na Azure Marketplace"
 services: marketplace-publishing
 documentationcenter: 
 author: HannibalSII
@@ -14,56 +14,56 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
-ms.openlocfilehash: 2bba4282473fed63c3fcab43043a97e179705844
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 52827723477677bc292c645e2390c435fbad3ee4
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="technical-pre-requisites-for-creating-a-data-service-offer-for-hello-azure-marketplace"></a>Nabídka služeb pro Azure Marketplace hello technické požadavky pro vytvoření datové služby
+# <a name="technical-pre-requisites-for-creating-a-data-service-offer-for-the-azure-marketplace"></a>Nabídka služeb pro Azure Marketplace technické požadavky pro vytvoření datové služby
 > [!IMPORTANT]
-> **V tuto chvíli jsme již nejsou registrace všechny nové služby Data vydavatele. Nové dataservices nebude získat schválení pro výpis.** Pokud máte obchodní aplikace SaaS chcete toopublish na AppSource najdete další informace [zde](https://appsource.microsoft.com/partners). Pokud máte IaaS aplikace nebo služba vývojáře by jako toopublish na webu Azure Marketplace můžete najít další informace [zde](https://azure.microsoft.com/marketplace/programs/certified/).
+> **V tuto chvíli jsme již nejsou registrace všechny nové služby Data vydavatele. Nové dataservices nebude získat schválení pro výpis.** Pokud máte SaaS obchodní aplikace, který chcete publikovat na AppSource můžete najít další informace [zde](https://appsource.microsoft.com/partners). Pokud máte IaaS aplikace nebo služby vývojáře, které chcete publikovat na webu Azure Marketplace můžete najít další informace [zde](https://azure.microsoft.com/marketplace/programs/certified/).
 > 
 > 
 
-Přečtěte si hello proces důkladně před zahájením a pochopit, kde a proč se provádí každý krok. Co nejvíce, měli byste Příprava informací o společnosti a další data, stáhněte potřebné nástroje, a vytvořit technické součásti před zahájením procesu vytváření nabídka hello.
+Přečtěte si důkladně před zahájením procesu a pochopit, kde a proč se provádí každý krok. Co nejvíce, měli byste Příprava informací o společnosti a další data, stáhněte potřebné nástroje, a vytvořit technické součásti před zahájením procesu vytvoření nabídky.
 
-Měli byste hello následující položky, které jsou připravené před zahájením procesu hello:
+Musí mít připravené před zahájením procesu následující položky:
 
-## <a name="make-a-decision-on-what-technology-will-be-used-toopublish-your-data-service-offer"></a>A rozhodnout, na jakou technologii bude použité toopublish vaši nabídku Data Service
-Vydavatel můžete rozhodnout mezi více technologií při publikování dat služby v Azure Marketplace. Hello hlavní technologie, které jsou podporované popsané dole. Bez ohledu na to jakou technologii je použité toopublish hello dat služby, koncový uživatel hello používá hello data prostřednictvím hello **datový kanál OData** vystavený službou Azure Marketplace. Úplné informace týkající se služby OData lze najít na [http://www.odata.org/](http://www.odata.org/)
+## <a name="make-a-decision-on-what-technology-will-be-used-to-publish-your-data-service-offer"></a>Rozhodnutí, na jakou technologii bude používat k publikování vaši nabídku Data Service
+Vydavatel můžete rozhodnout mezi více technologií při publikování dat služby v Azure Marketplace. Hlavní technologie, které jsou podporovány popsané dole. Bez ohledu na to jakou technologii se používá k publikování dat služby, koncový uživatel používá data prostřednictvím **datový kanál OData** vystavený službou Azure Marketplace. Úplné informace týkající se služby OData lze najít na [http://www.odata.org/](http://www.odata.org/)
 
 ## <a name="sql-azure-database"></a>SQL databáze Azure
-Datová sada připravena v produktech SQL Azure je odpovědnost vydavatele. Budete potřebovat toosubscribe tooAzure zřizovat odpovídající velikost databáze a nahrát Data do databáze SQL Azure. Vydavatel je také zodpovědná tookeep jejich vždy aktuální data. Další informace o přihlášení k odběru služby tooAzure můžete najít na [https://azure.microsoft.com/services/sql-database/](https://azure.microsoft.com/services/sql-database/)
+Datová sada připravena v produktech SQL Azure je odpovědnost vydavatele. Budete potřebovat pro předplatné Azure, zřídit odpovídající velikost databáze a nahrát Data do databáze SQL Azure. Vydavatel zodpovídá taky zachovat jejich data vždy aktuální. Další informace o odběru služby Azure můžete najít na [https://azure.microsoft.com/services/sql-database/](https://azure.microsoft.com/services/sql-database/)
 
-Při přesouvání hello dat do SQL Azure, můžou zpřístupnit hello Azure Marketplace, tabulky a zobrazení. Hello vydavatele můžete určit, které tabulek nebo zobrazení a sloupce jsou zveřejněné toohello koncového uživatele. Další hello poskytovateli obsahu můžete také určit sloupce, které může dotazovat hello koncového uživatele a ty, které jsou vrácena pouze v datové části hello. To poskytuje vysokou úroveň flexibilitu o tom, které by měly být vystaveny data v databázi hello. Sloupce, které může být dotazován potřebovat toobe založenou na jeden nebo více indexů databáze.
+Při přesunu dat do SQL Azure, Azure Marketplace můžete vystavit tabulek a zobrazení. Vydavatele můžete určit, které tabulek nebo zobrazení a sloupce jsou viditelné na koncový uživatel. Dále můžete také zadat poskytovateli obsahu sloupce, které může být dotazován koncový uživatel a ty, které jsou vrácena pouze v datové části. To poskytuje vysokou úroveň flexibilitu o tom, které by měly být vystaveny data v databázi. Sloupce, které může být dotazován musí být založenou na jeden nebo více indexů databáze.
 
 ## <a name="rest-based-web-service"></a>Na základě REST webové služby
 Podporované protokol: **pouze HTTPS**
 
-Existující služby REST, na základě mohou být zpřístupněny prostřednictvím hello Azure Marketplace. Protože hello datová sada vždy zveřejněné toohello koncového uživatele jako kanálu OData, hello služby Azure Marketplace musí mít toomap toobe hello tooa služby OData na základě služby. toodo, takže koncové body REST na základě hello třeba tooexpose všech parametrů jako parametry protokolu HTTP.
+Existující služby REST, na základě mohou být zpřístupněny prostřednictvím Azure Marketplace. Protože datovou sadu je vždy vystavený pro koncového uživatele jako datový kanál OData, je nutné službu Azure Marketplace mohli mapovat službu OData na základě služby. K tomu, aby ZBÝVAJÍCÍ na základě koncové body nutné vystavit všech parametrů jako parametry protokolu HTTP.
 
-datová část Hello musí toobe ve formuláři, který lze mapovat do odpovědi ATOM. Proto hello odpověď ze služby hello potřebuje toobe ve formátu XML a může obsahovat pouze jednu opakující se element, který obsahuje hodnoty hello datová část (např. sada záznamů). Hello služby Azure Marketplace namapuje hello uzlu toohello položka uzel ATOM a hello datové hodnoty opakování do vlastnost uzlů v rámci uzlu položka hello.
+Datová část musí být ve formuláři, který lze mapovat do odpovědi ATOM. Proto odpověď ze služby musí být ve formátu XML a můžete je jenom obsahovat jednu opakující se element, který obsahuje hodnoty datová část (např. sada záznamů). Službu Azure Marketplace namapuje uzlu s opakováním do uzlu položka ATOM a datové hodnoty do vlastnosti uzlů v rámci uzlu položka.
 
-Informace o ověření (například rozhraní API klíče, ověřování tokenu, atd.) musí toobe zadaný jako parametr HTTP nebo v hlavičce protokolu HTTP hello (pár klíčových hodnot) – základní ověřování je podporováno také. Platný klíč musí zadat toobe a tento klíč jsou určené všechny požadavky prostřednictvím Azure Marketplace. Ve vrstvě hello Azure Marketplace se stane uživatele monitorování a fakturace.
+Informace o ověření (například rozhraní API klíče, ověřování tokenu, atd.) musí být zadaný jako parametr HTTP nebo v hlavičce protokolu HTTP (pár klíčových hodnot) – základní ověřování je podporováno také. Je třeba zadat platný klíč a tento klíč jsou určené všechny požadavky prostřednictvím Azure Marketplace. Ve vrstvě Azure Marketplace se stane uživatele monitorování a fakturace.
 
-Chyby vrácené službou hello potřebovat toobe namapovat na stavové kódy HTTP. V případě, že služba hello vrací kód XML, který obsahuje chybu hello tyto budou toobe mapovat pomocí hello Azure Marketplace služby tooHTTP stavové kódy.
+Chyby vrácené služby musí být namapována na stavové kódy HTTP. V případě, že služba vrátí kód XML, který obsahuje chybu tyto se chystáte mapovat pomocí služby Azure Marketplace stavové kódy HTTP.
 
 ## <a name="soap-based-web-services"></a>Webové služby SOAP na základě
 Protokol: **pouze HTTPS**
 
-Hello požadavky jsou stejné jako části služby REST, na základě hello hello. Hello jediným rozdílem je, že parametry se dá zadat i v textu XML účtované služby toohello vydavatele s každou žádost odeslanou prostřednictvím Azure Marketplace. To znamená, že uživatel hello parametry protokolu HTTP poskytuje v hello front-end jsou se překlad vztahuje do elementů XML dokumentu XML účtované hello toohello obsahu zprostředkovatel požadavků na webové službě.
+Požadavky jsou stejné jako ostatní založené na části služby. Jediným rozdílem je, že parametry se dá zadat i v textu XML účtované službě vydavatele s každou žádost odeslanou prostřednictvím Azure Marketplace. To znamená, že jsou se překlad vztahuje HTTP parametry, které uživatel nezadá na front-endu, do elementů XML dokumentu XML účtované se žádostí o poskytovateli obsahu webové služby.
 
 ## <a name="odata-based-web-services"></a>OData na základě webové služby
 Protokol: **pouze HTTPS**
 
-Data mohou být zpřístupněny jako tooAzure služby OData Marketplace. Hello systému je toopass má služba hello prostřednictvím a nahradí hello kořenový server služby hello kořenovém adresáři služby Azure Marketplace hello – tooensure, všechny následné volání procházejí přes Azure Marketplace.
+Data mohou být zpřístupněny jako služba OData do Azure Marketplace. Systém bude předat služby pomocí a nahradí kořenový adresář služby Azure Marketplace kořenový adresář – zajistit, že všechny následné volání procházejí přes Azure Marketplace.
 
-Služby OData pouze nepotřebují toogo na databázi v back-end hello. OData podporuje jakýkoli druh úložiště nebo obchodní logiky toodrive hello služby.
+Služby OData nepotřebují pouze přejdete na databázi v back-end. OData podporuje jakýkoli druh úložiště nebo obchodní logiku k řízení služby.
 
 ## <a name="next-steps"></a>Další kroky
-Zkontrolovat hello předpoklady a dokončit nezbytné úlohy hello, můžete dál přesunout s hello vytváření vaši nabídku služby Data jako podrobné v hello [Průvodce publikování dat služby](marketplace-publishing-data-service-creation.md).
+Zkontrolovat požadavky a dokončit nezbytné úlohy, můžete dál přesunout s vytvářením vaši nabídku služba dat podle popisu v [Průvodce publikování dat služby](marketplace-publishing-data-service-creation.md).
 
-Nebo, pokud chcete tooreview hello celkové procesů a hello příslušné články pro každou hello publikování fáze, naleznete v článku hello [Začínáme: jak toopublish toohello nabídka Azure Marketplace](marketplace-publishing-getting-started.md).
+Nebo, pokud chcete zkontrolovat celkový proces a příslušné články pro každou z publikování fází, najdete v článku [Začínáme: postup publikování nabídky pro Azure Marketplace](marketplace-publishing-getting-started.md).
 
 [link-acct]:marketplace-publishing-accounts-creation-registration.md

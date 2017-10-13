@@ -1,6 +1,6 @@
 ---
-title: "upgrady aplikací aaaRolling – Azure SQL Database | Microsoft Docs"
-description: "Zjistěte, jak toouse geografická replikace databáze SQL Azure toosupport online upgrady cloudové aplikace."
+title: "Vrácení upgradu aplikace – Azure SQL Database | Microsoft Docs"
+description: "Další informace o použití geografická replikace databáze SQL Azure pro podporu online upgrady cloudových aplikací."
 services: sql-database
 documentationcenter: 
 author: anosov1960
@@ -15,127 +15,127 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/16/2016
 ms.author: sashan
-ms.openlocfilehash: 18c56300916d129bff141624cc5c416b500408d4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4b59c8aa3dea3e8fba692ab66420295a09210d3b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="managing-rolling-upgrades-of-cloud-applications-using-sql-database-active-geo-replication"></a>Správa postupné upgrady cloudových aplikací pomocí SQL Database aktivní geografickou replikaci
 > [!NOTE]
 > [Aktivní geografickou replikací](sql-database-geo-replication-overview.md) je nyní k dispozici pro všechny databáze na všech úrovních.
 > 
 
-Zjistěte, jak toouse [geografická replikace](sql-database-geo-replication-overview.md) v databázi SQL tooenable vrácení upgrady cloudových aplikací. Protože upgrade je rušivý operace, je nutné součást vaší firmy kontinuity plánování a návrhu. V tomto článku, který se podíváme na dvě různé metody Orchestrace hello procesu upgradu a popisují výhody hello a kompromis jednotlivých možností. Pro účely tohoto článku hello použijeme jednoduchou aplikaci, která se skládá z jedné databáze webu připojené tooa jako jeho datové vrstvy. Naším cílem je tooupgrade verze 1 hello aplikace tooversion 2 bez žádný významný dopad na hello činnost koncového uživatele. 
+Další informace o použití [geografická replikace](sql-database-geo-replication-overview.md) v databázi SQL za účelem povolení postupné upgrady cloudových aplikací. Protože upgrade je rušivý operace, je nutné součást vaší firmy kontinuity plánování a návrhu. V tomto článku jsme podívejte se na dvou různých metod Orchestrace procesu upgradu a popisují výhody a kompromis jednotlivých možností. Pro účely tohoto článku použijeme jednoduchou aplikaci, která se skládá z webu připojené k jedné databáze jako jeho datové vrstvy. Naším cílem je pro upgrade verze 1 aplikace a verze 2 bez významného dopadu na činnost koncového uživatele. 
 
-Při vyhodnocování hello možnosti upgradu je třeba zvážit hello následující faktory:
+Při vyhodnocování možnosti upgradu byste měli zvážit následující faktory:
 
-* Dopad na dostupnost aplikace během upgradu. Jak dlouho může být funkce aplikace hello omezené nebo snížení.
-* Možnost tooroll zpět v případě selhání upgradu.
-* Chyba zabezpečení aplikace hello během upgradu hello dojde k nesouvisejícími závažné chybě.
-* Celkový počet dolaru náklady.  To zahrnuje další redundanci a přírůstkové náklady hello dočasné komponenty používané stránkami hello procesu upgradu. 
+* Dopad na dostupnost aplikace během upgradu. Jak dlouho může být funkce aplikací omezené nebo snížený výkon.
+* Možnost vrácení v případě selhání upgradu.
+* Chyba zabezpečení aplikace během upgradu dojde k nesouvisejícími závažné chybě.
+* Celkový počet dolaru náklady.  To zahrnuje další redundanci a přírůstkové náklady dočasné komponenty používané stránkami proces upgradu. 
 
 ## <a name="upgrading-applications-that-rely-on-database-backups-for-disaster-recovery"></a>Upgrade aplikací, které jsou závislé na zálohování databází můžete pro zotavení po havárii
-Pokud vaše aplikace spoléhá na automatické zálohování databází a používá geografické obnovení pro zotavení po havárii, je obvykle nasazené tooa jedné oblasti Azure. V takovém případě procesu upgradu hello zahrnuje, vytvoření účastnící se hello upgrade zálohování nasazení všech součástí aplikace. toominimize hello přerušení koncového uživatele bude využívat Azure provoz Manager (WATM) s profilem hello převzetí služeb při selhání.  Hello následující diagram znázorňuje proces upgradu předchozí toohello hello provozní prostředí. Hello koncový bod <i>contoso-1.azurewebsites.net</i> představuje produkční slot hello aplikace vyžadující toobe upgradovat. tooenable hello možnost tooroll zpět hello upgrade, musí vytvořit slot fáze s plně synchronizované kopie aplikace hello. Hello následující kroky jsou požadované tooprepare hello aplikace hello upgrade:
+Pokud vaše aplikace spoléhá na automatické zálohování databází a používá geografické obnovení pro zotavení po havárii, je obvykle nasadit do jedné oblasti Azure. V takovém případě proces upgradu zahrnuje, vytvoření zálohy nasazení všech součástí aplikace zahrnutých v upgradu. Chcete-li minimalizovat narušení koncového uživatele využíváte Azure provoz Manager (WATM) s profilem převzetí služeb při selhání.  Následující diagram znázorňuje před upgradem v provozním prostředí. Koncový bod <i>contoso-1.azurewebsites.net</i> představuje produkční slot aplikace, která musí být upgradován. Povolit možnost vrácení upgradu potřebovat vytvoříte slot fáze s plně synchronizované kopie aplikace. Následující kroky jsou nezbytné pro Příprava aplikací pro upgrade:
 
-1. Vytvořte pro hello upgrade fáze slot. toodo, který vytvořit sekundární databázi (1) a nasadit identické webu v hello stejné oblasti Azure. Monitorování sekundární toosee hello, pokud dokončení synchronizace replik indexů proces hello.
+1. Vytvořte slot fáze upgradu. Chcete provést, vytvořte sekundární databázi (1) a nasadit identické webu ve stejné oblasti Azure. Monitorování sekundární chcete zobrazit, pokud proces synchronizace replik indexů je dokončený.
 2. Vytvoření profilu převzetí služeb při selhání v WATM s <i>contoso-1.azurewebsites.net</i> jako koncový bod online a <i>contoso-2.azurewebsites.net</i> v režimu offline. 
 
 > [!NOTE]
-> Poznámka: hello přípravné kroky nebude mít vliv hello aplikace hello produkční slot a může fungovat v režimu úplný přístup.
+> Všimněte si, přípravné kroky nebude mít vliv na aplikaci v produkčním slotu a může fungovat v režimu úplný přístup.
 >  
 
 ![Konfigurace replikace přejít databáze SQL. Cloud zotavení po havárii.](media/sql-database-manage-application-rolling-upgrade/Option1-1.png)
 
-Po dokončení hello přípravné kroky hello aplikace je připravena k vlastním upgradem hello. Hello následující diagram znázorňuje hello kroky v procesu upgradu hello. 
+Po dokončení přípravné kroky aplikace je připravená na skutečném upgradu. Následující diagram znázorňuje kroky v procesu upgradu. 
 
-1. Nastavit primární databáze hello hello produkčním slotu tooread pouze v režimu (3). Tím se zaručí, že hello produkční instanci aplikace hello (V1) zůstane jen pro čtení během upgradu hello, takže si hello odchylkami dat mezi hello V1 a V2 instance databáze.  
-2. Odpojte hello sekundární databáze pomocí hello plánované ukončení režimu (4). Vytvoří kopii plně synchronizované nezávislé hello primární databáze. Tato databáze budou upgradovány.
-3. Zapnutí režimu zápisu tooread hello primární databáze a spusťte skript upgradu hello ve slotu fáze hello (5).     
+1. Nastavte primární databázi v produkčním slotu do režimu jen pro čtení (3). Tím se zaručí, že instance produkční aplikace (V1) zůstane jen pro čtení během upgradu, takže si odchylkami dat mezi instancemi databáze V1 a V2.  
+2. Odpojte sekundární databáze v režimu plánované ukončení (4). Vytvoří kopii plně synchronizované nezávislé primární databáze. Tato databáze budou upgradovány.
+3. Zapnout primární databázi do režimu pro čtení a zápis a spusťte skript pro upgrade ve fázi slotu (5).     
 
 ![Konfigurace geografická replikace databáze SQL. Cloud zotavení po havárii.](media/sql-database-manage-application-rolling-upgrade/Option1-2.png)
 
-Pokud hello upgrade úspěšně dokončen jste nyní připraven tooswitch hello koncoví uživatelé toohello připravený kopie hello aplikace. Nyní se stane hello produkční slot aplikace hello.  To zahrnuje několik další kroky, jak je znázorněno na následujícím diagramu hello.
+Pokud se upgrade úspěšně dokončit nyní jste připraveni přepnutí koncoví uživatelé na dvoufázové instalace kopie aplikace. Nyní bude aplikace produkční slot.  To zahrnuje několik další kroky, jak je znázorněno na následujícím diagramu.
 
-1. Přepnout online koncový bod hello v profilu WATM hello příliš<i>contoso-2.azurewebsites.net</i>, která verze toohello V2 body hello webové stránky (6). Nyní bude hello produkční slot s hello V2 aplikace a provoz hello koncového uživatele je směrovanou tooit.  
-2. Pokud již nepotřebujete součásti aplikace hello V1, abyste mohli bezpečně odeberte je (7).   
+1. Přepnout online koncový bod v profilu WATM k <i>contoso-2.azurewebsites.net</i>, která odkazuje na verzi V2 webového serveru (6). Nyní bude produkční slot s aplikací V2 a provoz koncový uživatel se přesměruje k němu.  
+2. Pokud již nepotřebujete součásti aplikace V1, abyste mohli bezpečně odeberte je (7).   
 
 ![Konfigurace geografická replikace databáze SQL. Cloud zotavení po havárii.](media/sql-database-manage-application-rolling-upgrade/Option1-3.png)
 
-Pokud neproběhne hello upgradu, například z důvodu chyby tooan ve skriptu upgradu hello, hello fáze slotu považovat za ohrožení zabezpečení. tooroll zpět hello toohello před upgradem stav aplikace můžete jednoduše vrátit hello aplikace hello produkčním slotu toofull přístup. Hello kroky jsou uvedeny v diagramu další hello.    
+Pokud neproběhne proces upgradu, například z důvodu chyby ve skriptu pro upgrade, slotu fáze považovat za narušení. Vrácení aplikace do stavu před upgradem jednoduše obnovit aplikaci v produkčním slotu úplný přístup. Kroky jsou uvedeny další diagram.    
 
-1. Nastavit režim tooread zápisu kopírování databáze hello (8). Tato akce obnoví hello úplné V1 funkčně v hello produkční slot.
-2. Proveďte analýza hello hlavní příčiny a odebrat součásti hello ohrožení zabezpečení ve slotu fáze hello (9). 
+1. Nastavte kopie databáze do režimu pro čtení a zápis (8). Tato akce obnoví úplné V1 funkčně v produkčním slotu.
+2. Provedení analýzy příčina kořenové a odebrat ohrožené součásti ve fázi slotu (9). 
 
-V tomto okamžiku aplikace hello je plně funkční a lze je opakovat postup upgradu hello.
+V tomto okamžiku je plně funkční aplikaci a lze je opakovat jednotlivé kroky upgradu.
 
 > [!NOTE]
-> Hello vrácení nevyžaduje změny v profilu WATM jako již odkazuje příliš<i>contoso-1.azurewebsites.net</i> jako hello aktivní koncový bod.
+> Vrácení zpět nevyžaduje změny v profilu WATM jako již odkazuje na <i>contoso-1.azurewebsites.net</i> jako aktivní koncový bod.
 > 
 > 
 
 ![Konfigurace geografická replikace databáze SQL. Cloud zotavení po havárii.](media/sql-database-manage-application-rolling-upgrade/Option1-4.png)
 
-klíč Hello **využít** této možnosti je, že můžete upgradovat aplikaci v jedné oblasti používáte sadu jednoduchých kroků. náklady na dolaru Hello hello upgradu je relativně nízký. Hello hlavní **kompromis** je, pokud dojde k závažné chybě během hello upgradu hello obnovení toohello před upgradem stavu bude zahrnovat opakované nasazení aplikace hello v jiné oblasti a obnovení databáze hello z zálohování pomocí geografické obnovení. Tento proces bude způsobit významné výpadky.   
+Klíč **využít** této možnosti je, že můžete upgradovat aplikaci v jedné oblasti používáte sadu jednoduchých kroků. Náklady na dolaru upgradu je relativně nízký. Hlavní **kompromis** je, že pokud při upgradu dojde k závažné chybě, bude zahrnovat obnovení do stavu před upgradem opakované nasazení aplikace v jiné oblasti a obnovit databázi ze zálohy pomocí geografické obnovení. Tento proces bude způsobit významné výpadky.   
 
 ## <a name="upgrading-applications-that-rely-on-database-geo-replication-for-disaster-recovery"></a>Upgrade aplikací, které jsou závislé na geografické replikace databáze pro zotavení po havárii
-Pokud vaše aplikace využívá geografická replikace pro kontinuitu podnikových procesů, je nasazené tooat minimálně dva různé oblasti s aktivní nasazení v primární oblasti a pohotovostní nasazení v oblasti zálohování. Kromě toho toohello faktory již bylo zmíněno dříve, procesu upgradu hello musí zaručit, že:
+Pokud vaše aplikace využívá geografická replikace pro kontinuitu podnikových procesů, se nasadí do alespoň dva různé oblasti s aktivní nasazení v primární oblasti a pohotovostní nasazení v oblasti zálohování. Kromě faktory, již bylo zmíněno dříve proces upgradu musí zaručit, že:
 
-* aplikace Hello i nadále chráněn před závažné selhání za všech okolností během procesu upgradu hello
-* geograficky redundantní komponenty aplikace hello Hello upgradují paralelně s komponentami active hello
+* Aplikace i nadále chráněn před závažné selhání za všech okolností během procesu upgradu
+* Geograficky redundantní komponenty aplikace jsou upgradovat paralelně s active součásti
 
-tooachieve těchto cílů využije hello převzetí služeb při selhání Azure provoz Manager (WATM) profil s jednu aktivní a tři zálohy koncové body.  Hello následující diagram znázorňuje proces upgradu předchozí toohello hello provozní prostředí. Hello weby <i>contoso-1.azurewebsites.net</i> a <i>contoso-dr.azurewebsites.net</i> představují produkční slot hello aplikace s úplné geografická redundance. tooenable hello možnost tooroll zpět hello upgrade, musí vytvořit slot fáze s plně synchronizované kopie aplikace hello. Vzhledem k tomu, že budete potřebovat tooensure, hello aplikace můžete rychle obnovit v případě, že během procesu upgradu hello dojde k závažné chybě, hello fáze slotu musí toobe geograficky redundantní také. Hello následující kroky jsou požadované tooprepare hello aplikace hello upgrade:
+K dosažení těchto cílů využije profil převzetí služeb při selhání pomocí jednu aktivní a tři zálohy koncové body Azure provoz Manager (WATM).  Následující diagram znázorňuje před upgradem v provozním prostředí. Na webech <i>contoso-1.azurewebsites.net</i> a <i>contoso-dr.azurewebsites.net</i> představují produkční slot aplikace s úplné geografická redundance. Povolit možnost vrácení upgradu potřebovat vytvoříte slot fáze s plně synchronizované kopie aplikace. Vzhledem k tomu, že je potřeba zajistit, že aplikace může rychle obnovit v případě, že během procesu upgradu dojde k závažné chybě, musí být geograficky redundantní také fáze slot. Následující kroky jsou nezbytné pro Příprava aplikací pro upgrade:
 
-1. Vytvořte pro hello upgrade fáze slot. toodo, který vytvořit sekundární databázi (1) a nasadit identické kopii hello webovou stránku hello stejné oblasti Azure. Monitorování sekundární toosee hello, pokud dokončení synchronizace replik indexů proces hello.
-2. Vytvoření geograficky redundantní sekundární databáze ve slotu fáze hello geografickou replikací hello sekundární databáze toohello zálohování oblast (to se označuje jako "zřetězené geografická replikace"). Monitorování zálohování sekundární toosee hello, pokud hello synchronizace replik indexů proces je dokončené (3).
-3. Vytvořit kopii pohotovostní hello webové stránky v oblasti zálohování hello a propojit jej toohello geograficky redundantní sekundární (4).  
-4. Přidat další koncové body hello <i>contoso-2.azurewebsites.net</i> a <i>contoso-3.azurewebsites.net</i> toohello profil převzetí služeb při selhání v WATM jako offline koncové body (5). 
+1. Vytvořte slot fáze upgradu. Chcete provést, vytvořte sekundární databázi (1) a nasadit identické kopii webu ve stejné oblasti Azure. Monitorování sekundární chcete zobrazit, pokud proces synchronizace replik indexů je dokončený.
+2. Vytvoření geograficky redundantní sekundární databáze ve fázi slotu geografickou replikací sekundární databáze pro zálohování oblast (to se označuje jako "zřetězené geografická replikace"). Monitorování sekundární zálohy zjistit, jestli proces synchronizace replik indexů dokončené (3).
+3. Vytvořit kopii webu pohotovostní v oblasti zálohování a tu propojit na geograficky redundantní sekundární (4).  
+4. Přidat další koncové body <i>contoso-2.azurewebsites.net</i> a <i>contoso-3.azurewebsites.net</i> profilu převzetí služeb při selhání v WATM jako offline koncové body (5). 
 
 > [!NOTE]
-> Poznámka: hello přípravné kroky nebude mít vliv hello aplikace hello produkční slot a může fungovat v režimu úplný přístup.
+> Všimněte si, přípravné kroky nebude mít vliv na aplikaci v produkčním slotu a může fungovat v režimu úplný přístup.
 > 
 > 
 
 ![Konfigurace geografická replikace databáze SQL. Cloud zotavení po havárii.](media/sql-database-manage-application-rolling-upgrade/Option2-1.png)
 
-Po dokončení kroků přípravy hello slot fáze hello je připraven k upgradu hello. Hello následující diagram znázorňuje postup upgradu hello.
+Po dokončení kroků přípravy slot fáze je připravený na upgrade. Následující diagram znázorňuje jednotlivé kroky upgradu.
 
-1. Nastavit primární databáze hello hello produkčním slotu tooread pouze v režimu (6). Tím se zaručí, že hello produkční instanci aplikace hello (V1) zůstane jen pro čtení během upgradu hello, takže si hello odchylkami dat mezi hello V1 a V2 instance databáze.  
-2. Odpojit hello sekundární databáze v hello pomocí stejné oblasti hello plánované ukončení režimu (7). Vytvoří kopii plně synchronizované nezávislé hello primární databázi, která se automaticky stane primární po ukončení hello. Tato databáze budou upgradovány.
-3. Zapnout hello primární databázi v režimu zápisu tooread slotu fáze hello a spusťte skript pro upgrade hello (8).    
+1. Nastavte primární databázi v produkčním slotu do režimu jen pro čtení (6). Tím se zaručí, že instance produkční aplikace (V1) zůstane jen pro čtení během upgradu, takže si odchylkami dat mezi instancemi databáze V1 a V2.  
+2. Odpojte sekundární databázi ve stejné oblasti pomocí plánované ukončení režimu (7). Vytvoří kopii plně synchronizované nezávislé primární databázi, která se automaticky stane primární po ukončení. Tato databáze budou upgradovány.
+3. Zapnout primární databáze ve fázi slotu do režimu pro čtení a zápis a spusťte upgrade skriptu (8).    
 
 ![Konfigurace geografická replikace databáze SQL. Cloud zotavení po havárii.](media/sql-database-manage-application-rolling-upgrade/Option2-2.png)
 
-Pokud hello upgrade úspěšně dokončen jste nyní připraven tooswitch hello koncoví uživatelé toohello V2 verze aplikace hello. Hello následující diagram znázorňuje hello kroky.
+Pokud aktualizace byla úspěšně dokončena nyní jste připraveni k přepínači koncoví uživatelé na V2 verzi aplikace. Následující diagram znázorňuje kroky.
 
-1. Přepínač hello aktivní koncový bod v profilu WATM hello příliš<i>contoso-2.azurewebsites.net</i>, které teď body toohello V2 verzi hello webový server (9). Nyní bude produkční slot s hello V2 aplikace a provoz koncového uživatele je řízené tooit. 
-2. Pokud již nepotřebujete hello V1 aplikace, abyste mohli bezpečně odeberte ji (10 a 11).  
+1. Přepínač aktivní koncový bod v WATM profil, který se <i>contoso-2.azurewebsites.net</i>, které nyní odkazuje na verze V2 webového serveru (9). Nyní bude produkční slot s aplikací V2 a provoz koncový uživatel se přesměruje k němu. 
+2. Pokud již nepotřebujete V1 aplikace, abyste mohli bezpečně odeberte ji (10 a 11).  
 
 ![Konfigurace geografická replikace databáze SQL. Cloud zotavení po havárii.](media/sql-database-manage-application-rolling-upgrade/Option2-3.png)
 
-Pokud neproběhne hello upgradu, například z důvodu chyby tooan ve skriptu upgradu hello, hello fáze slotu považovat za ohrožení zabezpečení. tooroll zpět hello toohello před upgradem stav aplikace můžete jednoduše vrátit aplikace hello toousing v produkční slot hello s úplným přístupem. Hello kroky jsou uvedeny v diagramu další hello.    
+Pokud neproběhne proces upgradu, například z důvodu chyby ve skriptu pro upgrade, slotu fáze považovat za narušení. Vrácení aplikace do stavu před upgradem jednoduše obnovit pomocí aplikace v produkčním slotu s úplným přístupem. Kroky jsou uvedeny další diagram.    
 
-1. Sada hello kopie primární databázi v režimu tooread zápis pozici provozního hello (12). Tato akce obnoví hello úplné V1 funkčně v hello produkční slot.
-2. Proveďte analýza hello hlavní příčiny a odebrat součásti hello ohrožení zabezpečení ve fázi slotu hello (13 a 14). 
+1. Nastavte kopie primární databáze v produkčním slotu do režimu pro čtení a zápis (12). Tato akce obnoví úplné V1 funkčně v produkčním slotu.
+2. Provedení analýzy příčina kořenové a odebrat ohrožené součásti ve fázi slotu (13 a 14). 
 
-V tomto okamžiku aplikace hello je plně funkční a lze je opakovat postup upgradu hello.
+V tomto okamžiku je plně funkční aplikaci a lze je opakovat jednotlivé kroky upgradu.
 
 > [!NOTE]
-> Hello vrácení nevyžaduje změny v profilu WATM jako již odkazuje příliš <i>contoso-1.azurewebsites.net</i> jako hello aktivní koncový bod.
+> Vrácení zpět nevyžaduje změny v profilu WATM jako již odkazuje na <i>contoso-1.azurewebsites.net</i> jako aktivní koncový bod.
 > 
 > 
 
 ![Konfigurace geografická replikace databáze SQL. Cloud zotavení po havárii.](media/sql-database-manage-application-rolling-upgrade/Option2-4.png)
 
-klíč Hello **využít** této možnosti je, aniž by to ohrozilo vaší kontinuity podnikových procesů během upgradu hello můžete upgradovat hello aplikace a její geograficky redundantní kopie paralelně. Hello hlavní **kompromis** je, že vyžaduje dvojité redundance jednotlivých součástí aplikace a proto způsobuje vyšší dolaru náklady. Zahrnuje také složitější pracovního postupu. 
+Klíč **využít** této možnosti je, aniž by to ohrozilo vaší kontinuity podnikových procesů během upgradu můžete upgradovat aplikaci a její geograficky redundantní kopie paralelně. Hlavní **kompromis** je, že vyžaduje dvojité redundance jednotlivých součástí aplikace a proto způsobuje vyšší dolaru náklady. Zahrnuje také složitější pracovního postupu. 
 
 ## <a name="summary"></a>Souhrn
-Hello dva upgradu metody popsané v článku hello se liší v složitost a hello dolaru náklady, ale obě soustředit na minimalizovat hello čas, kdy hello koncového uživatele je omezena pouze tooread operace. Tento čas je přímo definované hello doba trvání upgradu skriptu hello. Nezávisí na velikost databáze hello, vrstvy hello služeb, můžete pokusit, hello konfiguraci webového serveru a dalších faktorů, které nelze snadno řídit. Je to proto, že všechny hello přípravné kroky jsou odpojené od postup upgradu hello a lze provést bez dopadu na produkční aplikace hello. Hello efektivitu upgradovací skript pro hello je hello klíčovým faktorem, který určuje hello činnost koncového uživatele při upgradech. Proto hello nejlepší způsob je možné zvýšit je vaše úsilí se zaměříte na provedení upgradu skriptu hello co nejúčinnější.  
+Tyto dvě metody upgradu, které jsou popsané v článku se liší v složitost a dolaru náklady ale oba soustředit na minimalizovat čas, kdy je omezený na jen pro čtení operace koncového uživatele. Tento čas je přímo definované doba trvání upgradu skriptu. Nezávisí na velikost databáze, úroveň služby, které jste zvolili, konfiguraci webu a dalších faktorů, které nelze snadno řídit. Je to proto, že všechny přípravné kroky jsou odpojené od jednotlivé kroky upgradu a lze provést bez dopadu na produkční aplikaci. Efektivitu skriptu pro upgrade je klíčovým faktorem, který určuje činnost koncového uživatele při upgradech. Proto je nejlepší způsob je možné zvýšit činnosti spojené se zaměříte na provedení upgradu skriptu co nejúčinnější.  
 
 ## <a name="next-steps"></a>Další kroky
 * Přehled kontinuity obchodních a scénářů najdete v tématu [obchodní kontinuity přehled](sql-database-business-continuity.md).
-* toolearn o zálohování Azure SQL Database automatizované, najdete v části [automatizované zálohování SQL Database](sql-database-automated-backups.md).
-* toolearn o použití automatizované zálohování pro obnovení, najdete v části [obnovit databázi ze zálohy pro automatické](sql-database-recovery-using-backups.md).
-* toolearn o rychlejší možnosti obnovení, najdete v části [aktivní geografickou replikací](sql-database-geo-replication-overview.md).
+* Další informace o Azure SQL Database automatizované zálohování najdete v tématu [automatizované zálohování SQL Database](sql-database-automated-backups.md).
+* Další informace o použití automatizované zálohování pro obnovení, najdete v části [obnovit databázi ze zálohy pro automatické](sql-database-recovery-using-backups.md).
+* Další informace o možnosti rychlejší obnovení najdete v tématu [aktivní geografickou replikací](sql-database-geo-replication-overview.md).
 
 

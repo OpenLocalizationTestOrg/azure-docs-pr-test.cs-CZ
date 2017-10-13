@@ -1,6 +1,6 @@
 ---
-title: "aaaGet začít s automatické škálování podle vlastní metriky v Azure | Microsoft Docs"
-description: "Zjistěte, jak tooscale prostředku podle vlastní metriky v Azure."
+title: "Začínáme s automatické škálování podle vlastní metriky v Azure | Microsoft Docs"
+description: "Zjistěte, jak se škálovat prostředek podle vlastní metriky v Azure."
 author: anirudhcavale
 manager: orenr
 editor: 
@@ -14,39 +14,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2017
 ms.author: ancav
-ms.openlocfilehash: d3e268ec322698d0d367361cd9c156b21e0fb6e6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: de8f7acadc282e4b81c657b1723f00fd3e5fd4f2
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Začínáme s automatické škálování podle vlastní metriky v Azure
-Tento článek popisuje, jak tooscale prostředku podle vlastní metriky v portálu Azure.
+Tento článek popisuje postup škálování prostředku podle vlastní metriky v portálu Azure.
 
-Azure monitorování automatického škálování se vztahují pouze tooVirtual počítač škálování sady (VMSS), cloudové služby, plány služby app a prostředí app service. 
+Azure monitorování automatického škálování se vztahuje pouze na virtuální počítač škálování sady (VMSS), cloudové služby, plány služby app a prostředí app service. 
 
 # <a name="lets-get-started"></a>Umožňuje Začínáme
 Tento článek předpokládá, že máte webovou aplikaci pomocí nástroje application insights nakonfigurované. Pokud nemáte již, můžete [nastavte Application Insights pro váš web ASP.NET][1]
 
 - Otevřete [portálu Azure][2]
-- Klikněte na ikonu monitorování Azure v levém navigačním podokně hello.
+- Klikněte na ikonu monitorování Azure v levém navigačním podokně.
   ![Spustit sledování Azure][3]
-- Klikněte na nastavení tooview všechny hello prostředky, na které automatického škálování se vztahuje, společně s jeho aktuální stav škálování škálování ![zjistit automatického měřítka v Azure monitorování][4]
-- Otevřete okno 'Škálování' v Azure monitorování a vyberte prostředek, který chcete tooscale
-> Poznámka: následující postup hello použít plán služby app service přidružené k webové aplikaci, která má Statistika aplikace nakonfigurovaná.
-- V okně Nastavení hello škálování pro prostředek hello Všimněte si, že je aktuální počet instancí hello 1. Klikněte na 'Povolit škálování'.
+- Klikněte na nastavení automatického škálování, chcete-li zobrazit všechny prostředky, na které automatického škálování se vztahuje, společně s jeho aktuální stav škálování ![zjistit automatického měřítka v Azure monitorování][4]
+- Otevřete okno 'Škálování' v Azure monitorování a vyberte prostředek, který chcete škálovat
+> Poznámka: Následující postup použijte plán služby app service přidružené k webové aplikaci, která má Statistika aplikace nakonfigurovaná.
+- V okně Nastavení škálování pro prostředek Všimněte si, že je aktuální počet instancí 1. Klikněte na 'Povolit škálování'.
   ![Nastavení škálování pro novou webovou aplikaci][5]
-- Zadejte název pro nastavení rozsahu hello a hello klikněte na "Přidat pravidlo". Všimněte si hello škálování pravidlo možnosti, které se otevře jako kontext podokno v hello pravé straně. Ve výchozím nastavení nastaví tooscale možnost hello instanci počet o 1, pokud percetage procesoru hello hello prostředku překročí 70 %. Zdroj metriky hello změny v horní části hello příliš "Application Insights", vyberte hello prostředek Statistika aplikace v rozevírací hello 'prostředků a pak vyberte hello vlastní metriku na základě ve které chcete tooscale.
+- Zadejte název pro nastavení škálování a klikněte na "Přidat pravidlo". Všimněte si, že pravidlo škálování možnostech, které se otevře jako kontext podokno v pravé straně. Ve výchozím nastavení nastaví možnost škálování vašeho počet instancí 1, pokud percetage procesoru prostředku je vyšší než 70 %. Změnit metriky zdroje v horní části na "Application Insights", vyberte prostředek Statistika aplikace v rozevírací nabídce 'prostředků a pak vyberte vlastní metrika na základě na kterou chcete škálovat.
   ![Škálování podle vlastní metriky][6]
-- Podobně jako toohello krok výše, přidejte pravidlo škálování, které bude škálovat v a snížit počet škálování hello o 1, pokud vlastní metrika hello je pod prahovou hodnotu.
+- Podobně jako výše, přidejte pravidlo škálování, který bude škálovat v a snížit počet škálování o 1, pokud vlastní metrika je pod prahovou hodnotu.
   ![Škálování podle využití procesoru][7]
-- Nastavit hello instance omezení. Například pokud chcete tooscale mezi instancemi 2 až 5 v závislosti na vlastní metriky kolísání hello, nastavte příliš "2", "minimální", maximální' příliš "5" a "default" příliš 2
-> Poznámka: V případě, že je potíže při čtení hello metrika prostředků a kapacity aktuální hello je nižší než hello výchozí kapacitu, pak tooensure hello dostupnost prostředků hello škálování bude škálovat toohello výchozí hodnotu. Pokud aktuální kapacita hello již vyšší než výchozí kapacita, nebude v škálovat škálování.
+- Nastavit vy instance omezení. Například pokud chcete změnit měřítko mezi instancemi 2 až 5 v závislosti na vlastní metriky kolísání, nastavte minimální na "2", maximální "5" a "default" na "2"
+> Poznámka: V případě, že je potíže při čtení metrika prostředků a aktuální kapacita je nižší než výchozí kapacity, pak pro zajištění dostupnosti prostředků, automatické škálování bude škálovat na výchozí hodnotu. Pokud je aktuální kapacita již vyšší než výchozí kapacita, nebude v škálovat škálování.
 - Klikněte na 'uložit.
 
-Blahopřejeme. Je teď úspěšně vytvořili vaší tooauto nastavení škálování škálovat vaší webové aplikace založené na vlastní metriku.
+Blahopřejeme. Jste teď úspěšně vytvořili vaší škálování nastavení na automatické škálování webové aplikace založené na vlastní metriku.
 
-> Poznámka: hello stejné kroky jsou příslušné tooget spuštění s rolí služby VMSS nebo cloud.
+> Poznámka: Stejný postup platí pro začít pracovat s rolí služby VMSS nebo cloud.
 
 <!--Reference-->
 [1]: https://docs.microsoft.com/en-us/azure/application-insights/app-insights-asp-net

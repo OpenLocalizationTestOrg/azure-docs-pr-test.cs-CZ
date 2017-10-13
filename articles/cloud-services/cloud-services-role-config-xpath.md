@@ -1,6 +1,6 @@
 ---
-title: "aaaCloud roli služby konfigurace XPath tahák | Microsoft Docs"
-description: "Hello různá nastavení XPath, které můžete použít v tooexpose konfigurační nastavení pro hello cloudové služby role jako proměnné prostředí."
+title: "Cloudové služby Role konfigurace XPath tahák | Microsoft Docs"
+description: "Různá nastavení XPath můžete v konfiguračním cloudové služby role vystavit nastavení jako proměnné prostředí."
 services: cloud-services
 documentationcenter: 
 author: Thraka
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: adegeo
-ms.openlocfilehash: 27f98f956a1c790c9bb30f9fefe1ab1736b2b150
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: fd6efac829d3fd9e2840362b8d2ff423add566d9
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>Vystavit nastavení konfigurace role v proměnné prostředí, jejichž výraz XPath
-V souboru definice služby role webový nebo hello cloudové služby pracovního procesu můžete vystavit hodnoty konfigurace modulu runtime v proměnné prostředí. Hello následující XPath hodnoty jsou podporovány (která odpovídají tooAPI hodnoty).
+V pracovní cloudové služby nebo v souboru definice služby role Webový můžou zpřístupnit hodnoty konfigurace modulu runtime jako proměnné prostředí. Následující výraz XPath hodnoty jsou podporovány (které odpovídají hodnotám rozhraní API).
 
-Tyto hodnoty XPath jsou také k dispozici prostřednictvím hello [Microsoft.WindowsAzure.ServiceRuntime](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.aspx) knihovny. 
+Tyto hodnoty XPath jsou také k dispozici prostřednictvím [Microsoft.WindowsAzure.ServiceRuntime](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.aspx) knihovny. 
 
 ## <a name="app-running-in-emulator"></a>Aplikaci spuštěnou v emulátoru
-Označuje, že tuto aplikaci hello běží v emulátoru hello.
+Označuje, že aplikace běží v emulátoru.
 
 | Typ | Příklad |
 | --- | --- |
@@ -34,7 +34,7 @@ Označuje, že tuto aplikaci hello běží v emulátoru hello.
 | Kód |var x = RoleEnvironment.IsEmulated; |
 
 ## <a name="deployment-id"></a>ID nasazení
-Načte ID hello nasazení pro instanci hello.
+Načte identifikátor ID nasazení pro instanci.
 
 | Typ | Příklad |
 | --- | --- |
@@ -42,7 +42,7 @@ Načte ID hello nasazení pro instanci hello.
 | Kód |var deploymentId = RoleEnvironment.DeploymentId; |
 
 ## <a name="role-id"></a>Role ID
-Načte hello aktuální ID role pro instanci hello.
+Načte aktuální ID role pro instanci.
 
 | Typ | Příklad |
 | --- | --- |
@@ -50,7 +50,7 @@ Načte hello aktuální ID role pro instanci hello.
 | Kód |var id = RoleEnvironment.CurrentRoleInstance.Id; |
 
 ## <a name="update-domain"></a>Aktualizace domény
-Načte hello aktualizace domény hello instance.
+Načte aktualizace domény instance.
 
 | Typ | Příklad |
 | --- | --- |
@@ -58,7 +58,7 @@ Načte hello aktualizace domény hello instance.
 | Kód |var ud = RoleEnvironment.CurrentRoleInstance.UpdateDomain; |
 
 ## <a name="fault-domain"></a>Doména selhání
-Načte doména selhání hello hello instance.
+Načte domény selhání instance.
 
 | Typ | Příklad |
 | --- | --- |
@@ -66,7 +66,7 @@ Načte doména selhání hello hello instance.
 | Kód |var fd = RoleEnvironment.CurrentRoleInstance.FaultDomain; |
 
 ## <a name="role-name"></a>Název role
-Načte název role hello hello instancí.
+Načte název role instance.
 
 | Typ | Příklad |
 | --- | --- |
@@ -74,7 +74,7 @@ Načte název role hello hello instancí.
 | Kód |var rname = RoleEnvironment.CurrentRoleInstance.Role.Name; |
 
 ## <a name="config-setting"></a>Nastavení konfigurace
-Načte hodnotu hello hello zadat nastavení konfigurace.
+Načte hodnotu zadaného konfiguračního nastavení.
 
 | Typ | Příklad |
 | --- | --- |
@@ -82,7 +82,7 @@ Načte hodnotu hello hello zadat nastavení konfigurace.
 | Kód |var nastavení = RoleEnvironment.GetConfigurationSettingValue("Setting1"); |
 
 ## <a name="local-storage-path"></a>Cesta k místnímu úložišti
-Načte cestu hello místní úložiště pro instanci hello.
+Načte cestu místní úložiště pro instanci.
 
 | Typ | Příklad |
 | --- | --- |
@@ -90,7 +90,7 @@ Načte cestu hello místní úložiště pro instanci hello.
 | Kód |var localResourcePath = RoleEnvironment.GetLocalResource("LocalStore1"). RootPath; |
 
 ## <a name="local-storage-size"></a>Velikost místní úložiště
-Načte hello velikost hello místní úložiště pro instanci hello.
+Získá velikost místního úložiště pro instanci.
 
 | Typ | Příklad |
 | --- | --- |
@@ -98,7 +98,7 @@ Načte hello velikost hello místní úložiště pro instanci hello.
 | Kód |var localResourceSizeInMB = RoleEnvironment.GetLocalResource("LocalStore1"). MaximumSizeInMegabytes; |
 
 ## <a name="endpoint-protocol"></a>Koncový bod protokolu
-Načte hello koncový bod protokolu pro instanci hello.
+Načte protokol koncový bod pro instanci.
 
 | Typ | Příklad |
 | --- | --- |
@@ -106,7 +106,7 @@ Načte hello koncový bod protokolu pro instanci hello.
 | Kód |var ochranu = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"]. Protokol; |
 
 ## <a name="endpoint-ip"></a>Koncový bod IP
-Získá hello zadaný pro koncový bod IP adresu.
+Získá zadaný koncový bod IP adresu.
 
 | Typ | Příklad |
 | --- | --- |
@@ -114,7 +114,7 @@ Získá hello zadaný pro koncový bod IP adresu.
 | Kód |var adresu = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"]. IPEndpoint.Address |
 
 ## <a name="endpoint-port"></a>koncový port
-Načte hello koncový port pro instanci hello.
+Načte koncový port pro instanci.
 
 | Typ | Příklad |
 | --- | --- |
@@ -122,7 +122,7 @@ Načte hello koncový port pro instanci hello.
 | Kód |var port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"]. IPEndpoint.Port; |
 
 ## <a name="example"></a>Příklad
-Tady je příklad role pracovního procesu, který vytváří úloha spuštění s proměnnou prostředí s názvem `TestIsEmulated` nastavit toohello [ @emulated hodnotu xpath](#app-running-in-emulator). 
+Tady je příklad role pracovního procesu, který vytváří úloha spuštění s proměnnou prostředí s názvem `TestIsEmulated` nastavte na [ @emulated hodnotu xpath](#app-running-in-emulator). 
 
 ```xml
 <WorkerRole name="Role1">
@@ -162,7 +162,7 @@ Tady je příklad role pracovního procesu, který vytváří úloha spuštění
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o hello [souboru ServiceConfiguration.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) souboru.
+Další informace o [souboru ServiceConfiguration.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) souboru.
 
 Vytvoření [ServicePackage.cspkg](cloud-services-model-and-package.md#servicepackagecspkg) balíčku.
 

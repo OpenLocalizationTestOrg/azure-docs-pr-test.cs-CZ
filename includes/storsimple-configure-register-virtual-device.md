@@ -1,19 +1,19 @@
-#### <a name="tooconfigure-and-register-hello-virtual-device"></a>tooconfigure a registrace virtuálního zařízení hello
+#### <a name="to-configure-and-register-the-virtual-device"></a>Konfigurace a registrace virtuálního zařízení
 
-1. Vyberte hello StorSimple virtuální zařízení, kterou jste právě vytvořili hello **zařízení** stránky.
-2. Klikněte na **Complete device setup** (Provést nastavení zařízení). Spustí se Průvodce konfigurace zařízení hello.
+1. Vyberte virtuální zařízení StorSimple, které jste právě vytvořili, na stránce **Zařízení**.
+2. Klikněte na **Complete device setup** (Provést nastavení zařízení). Spustí se průvodce Konfigurace zařízení.
     
     ![Možnost Complete device setup (Provést nastavení zařízení) StorSimple na stránce Zařízení](./media/storsimple-configure-register-virtual-device/StorSimple_CompleteDeviceSetupSVA1M.png)
 
-4. Zadejte hello **šifrovacího klíče dat služby** v poskytnutém prostoru hello.
+4. Do vyhrazeného prostoru zadejte **Service Data Encryption Key** (Šifrovací klíč dat služby).
 
-5. Zadejte hesla Snapshot Manager a Správce zařízení hello hello délku a nastavení zadaná.
+5. Zadejte heslo Snapshot Manager a správce zařízení se zadanou délkou a nastavením.
 
-6. Klikněte na tlačítko hello zaškrtnutí toofinish hello počáteční konfiguraci a registraci virtuálního zařízení hello. 
+6. Kliknutím na symbol zaškrtnutí dokončete počáteční konfiguraci a registraci virtuálního zařízení. 
     
     ![Nastavení virtuálního zařízení StorSimple](./media/storsimple-configure-register-virtual-device/StorSimple_VirtualDeviceSettings1.png)
 
-Po dokončení hello konfigurace a registrace hello zařízení přejde do režimu online. (To může trvat několik minut, než zařízení toocome hello online.)
+Po dokončení konfigurace a registrace zařízení přejde do režimu online. (Přechod zařízení do režimu online může několik minut trvat.)
 
 ![Fáze režimu online virtuálního zařízení StorSimple](./media/storsimple-configure-register-virtual-device/StorSimple_VirtualDeviceOnline1M.png)
 

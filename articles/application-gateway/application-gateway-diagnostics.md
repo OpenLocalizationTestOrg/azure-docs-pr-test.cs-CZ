@@ -1,6 +1,6 @@
 ---
-title: "aaaMonitor přístup protokoly, protokoly výkonu, back-end stavu a metrik pro službu Application Gateway | Microsoft Docs"
-description: "Zjistěte, jak tooenable a spravovat přístup k protokolům a protokolování výkonu pro službu Application Gateway"
+title: "Monitorovat přístup k protokolům, protokolování výkonu, back-end stavu a metrik pro službu Application Gateway | Microsoft Docs"
+description: "Zjistěte, jak povolit a spravovat přístup k protokolům a protokolování výkonu pro službu Application Gateway"
 services: application-gateway
 documentationcenter: na
 author: amitsriva
@@ -15,46 +15,46 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/17/2017
 ms.author: amitsriva
-ms.openlocfilehash: 36ebf15c28f776158350ef8e73d617ef68e09266
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 12c252340b82aba5ee69b12db83353750782e7c5
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Stav back-end, diagnostické protokoly a metriky pro službu Application Gateway
 
-Pomocí Azure Application Gateway můžete sledovat prostředky v hello následující způsoby:
+Pomocí Azure Application Gateway můžete sledovat prostředky následujícími způsoby:
 
-* [Back-end stavu](#back-end-health): Application Gateway poskytuje hello schopností toomonitor hello hello stav serverů stavu v hello back endové fondy prostřednictvím hello portál Azure a pomocí prostředí PowerShell. Můžete také získat stav hello hello back endové fondy prostřednictvím hello výkonu diagnostické protokoly.
+* [Back-end stavu](#back-end-health): Application Gateway poskytuje schopnost sledovat stav serverů v back endové fondy prostřednictvím portálu Azure a pomocí prostředí PowerShell. Můžete také získat stav fondu back-end prostřednictvím protokolování diagnostiky výkonu.
 
-* [Protokoly](#diagnostic-logs): protokoly umožňují pro výkon, přístup, a další data toobe uložit, nebo využívat z prostředku pro účely monitorování.
+* [Protokoly](#diagnostic-logs): protokoly umožňují pro výkon, přístupu a další data ukládání nebo používán z prostředků pro účely monitorování.
 
-* [Metriky](#metrics): Aplikační brána má aktuálně jeden metriku. Tato metrika měří hello propustnost hello Aplikační brána v bajtech za sekundu.
+* [Metriky](#metrics): Aplikační brána má aktuálně jeden metriku. Tato metrika měří propustnost Aplikační brána v bajtech za sekundu.
 
 ## <a name="back-end-health"></a>Back-end stavu
 
-Application Gateway poskytuje hello schopností toomonitor hello stavu jednotlivých členů fondu back-end hello prostřednictvím portálu hello, prostředí PowerShell a hello rozhraní příkazového řádku (CLI). Můžete také vyhledat agregovaný stav souhrn back endové fondy prostřednictvím hello výkonu diagnostické protokoly. 
+Application Gateway poskytuje možnost pro sledování stavu jednotlivých členů fondu back-end prostřednictvím portálu, prostředí PowerShell a rozhraní příkazového řádku (CLI). Můžete také vyhledat agregovaný stav souhrn back endové fondy prostřednictvím protokolování diagnostiky výkonu. 
 
-Sestava stavu back-end Hello odráží výstup hello instancí hello Application Gateway stavu testu toohello back-end. Při zjišťování proběhlo úspěšně a hello zpět end může přijímat provoz, bude považován za v pořádku. Jinak považuje není v pořádku.
+Sestava stavu back-end odráží výstup test stavu Application Gateway na back-end instance. Při zjišťování úspěšné a back-end může přijímat provoz, bude považován za v pořádku. Jinak považuje není v pořádku.
 
 > [!IMPORTANT]
-> Pokud je skupina zabezpečení sítě (NSG) na podsíť aplikační bránu, otevřete rozsahy portů 65503 65534 v podsíti hello aplikační brány pro příchozí provoz. Tyto porty jsou povinné pro toowork rozhraní API back-end stavu hello.
+> Pokud je skupina zabezpečení sítě (NSG) na podsíť aplikační bránu, otevřete rozsahy portů 65503 65534 na podsíť aplikační brány pro příchozí provoz. Tyto porty jsou povinné pro back-end stav rozhraní API pro práci.
 
 
-### <a name="view-back-end-health-through-hello-portal"></a>Zobrazit stav back-end prostřednictvím portálu hello
+### <a name="view-back-end-health-through-the-portal"></a>Zobrazit stav back-end prostřednictvím portálu
 
-Back-end stavu hello portál, je zadán automaticky. V existující aplikační brány, vyberte **monitorování** > **back-end stavu**. 
+Na portálu se automaticky poskytuje stavu back-end. V existující aplikační brány, vyberte **monitorování** > **back-end stavu**. 
 
-Každý člen ve fondu back-end hello je uvedený na této stránce (jestli je síťový adaptér, IP nebo plně kvalifikovaný název domény). Název fondu back-end, port, název nastavení HTTP back-end a stav se zobrazí. Platné hodnoty pro stav jsou **stavu v pořádku**, **není v pořádku**, a **neznámé**.
+Každý člen ve fondu back-end je uvedený na této stránce (jestli je síťový adaptér, IP nebo plně kvalifikovaný název domény). Název fondu back-end, port, název nastavení HTTP back-end a stav se zobrazí. Platné hodnoty pro stav jsou **stavu v pořádku**, **není v pořádku**, a **neznámé**.
 
 > [!NOTE]
-> Pokud se zobrazí back-end stav **neznámé**, ujistěte se, že přístup toohello back-end není blokován nastavením pravidlo NSG, trasy definované uživatelem (UDR) nebo vlastní DNS ve virtuální síti hello.
+> Pokud se zobrazí back-end stav **neznámé**, ujistěte se, zda není blokován přístup k back-end nastavením pravidlo NSG, trasy definované uživatelem (UDR) nebo vlastní DNS ve virtuální síti.
 
 ![Back-end stavu][10]
 
 ### <a name="view-back-end-health-through-powershell"></a>Zobrazit stav back-end pomocí prostředí PowerShell
 
-Hello následující kódu PowerShell ukazuje, jak tooview stavu back-end pomocí hello `Get-AzureRmApplicationGatewayBackendHealth` rutiny:
+Následující kód prostředí PowerShell ukazuje, jak zobrazit stav back-end pomocí `Get-AzureRmApplicationGatewayBackendHealth` rutiny:
 
 ```powershell
 Get-AzureRmApplicationGatewayBackendHealth -Name ApplicationGateway1 -ResourceGroupName Contoso
@@ -68,7 +68,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 ### <a name="results"></a>Výsledky
 
-Hello následující fragment kódu ukazuje příklad hello odpovědi:
+Následující fragment kódu ukazuje příklad odpovědi:
 
 ```json
 {
@@ -97,46 +97,46 @@ Hello následující fragment kódu ukazuje příklad hello odpovědi:
 
 ## <a name="diagnostic-logging"></a>Diagnostické protokoly
 
-Můžete použít různé typy protokolů v Azure toomanage a řešení potíží s application Gateway. Některé z těchto protokolů můžete přistupovat prostřednictvím portálu hello. Všechny protokoly lze extrahovat z Azure Blob storage a zobrazit v různých nástrojů, jako například [analýzy protokolů](../log-analytics/log-analytics-azure-networking-analytics.md), Excel a Power BI. Další informace o různých typech hello protokolů z hello následující seznamu:
+Různé typy protokolů v Azure můžete použít ke správě a odstraňování potíží application Gateway. Některé z těchto protokolů můžete přistupovat prostřednictvím portálu. Všechny protokoly lze extrahovat z Azure Blob storage a zobrazit v různých nástrojů, jako například [analýzy protokolů](../log-analytics/log-analytics-azure-networking-analytics.md), Excel a Power BI. Se více o různých typech protokolů z následujícího seznamu:
 
-* **Protokol aktivit**: můžete použít [protokoly Azure aktivity](../monitoring-and-diagnostics/insights-debugging-with-events.md) (dříve označovaný jako operační protokoly a protokoly auditu) tooview všechny operace, které jsou odeslána tooyour předplatného Azure a jejich stav. Ve výchozím nastavení se shromažďují položky protokolu aktivity a lze je zobrazit v hello portálu Azure.
-* **Přístup k protokolu**: můžete použít tento protokol tooview Application Gateway přístupové vzorce a analýza důležité informace, včetně hello volající IP, požadovanou adresu URL, latence odpovědi, návratový kód a bajtů a odhlášení. Protokol přístupu se shromažďují každých 300 sekund. Tento protokol obsahuje jeden záznam za instance aplikační brány. instance brány aplikace Hello lze identifikovat podle vlastnosti instanceId hello.
-* **Výkon protokolu**: můžete použít tento tooview protokolu výkonu instance aplikační brány. Tento protokol zaznamená informace o výkonu pro každou instanci, včetně celkový počet požadavků zpracovaných, propustnost v bajtech, celkový počet požadavků zpracovaných počet chybných požadavků a počet instancí back-end v pořádku a není v pořádku. Protokolu výkonu shromažďovaných každých 60 sekund.
-* **Protokol brány firewall**: můžete použít tento protokolu tooview hello žádosti, které se protokolují prostřednictvím zjišťování nebo zabránění režim služby application gateway, která je konfigurovaná pomocí brány firewall webových aplikací hello.
+* **Protokol aktivit**: můžete použít [protokoly Azure aktivity](../monitoring-and-diagnostics/insights-debugging-with-events.md) (dříve označovaný jako operační protokoly a protokoly auditu) Chcete-li zobrazit všechny operace, které se odešlou do vašeho předplatného Azure a jejich stav. Ve výchozím nastavení se shromažďují položky protokolu aktivity a lze je zobrazit na portálu Azure.
+* **Přístup k protokolu**: můžete tento protokol zobrazit Application Gateway přístupové vzorce a analyzovat důležité informace, včetně IP volajícího, požadovanou adresu URL, latence odpovědi, návratový kód a bajtů a odhlášení. Protokol přístupu se shromažďují každých 300 sekund. Tento protokol obsahuje jeden záznam za instance aplikační brány. Instance aplikační brány lze identifikovat podle vlastnost ID instance.
+* **Výkon protokolu**: Tento protokol můžete zobrazit, jak fungují instance aplikační brány. Tento protokol zaznamená informace o výkonu pro každou instanci, včetně celkový počet požadavků zpracovaných, propustnost v bajtech, celkový počet požadavků zpracovaných počet chybných požadavků a počet instancí back-end v pořádku a není v pořádku. Protokolu výkonu shromažďovaných každých 60 sekund.
+* **Protokol brány firewall**: Tento protokol můžete zobrazit žádosti, které se protokolují prostřednictvím zjišťování nebo zabránění režim služby application gateway, která je konfigurovaná pomocí brány firewall webových aplikací.
 
 > [!NOTE]
-> Protokoly jsou k dispozici pouze pro prostředky nasazené v modelu nasazení Azure Resource Manager hello. Protokoly nelze použít pro prostředky v modelu nasazení classic hello. Lépe porozumět hello dva modely, najdete v části hello [nasazení Resource Manager principy a nasazení classic](../azure-resource-manager/resource-manager-deployment-model.md) článku.
+> Protokoly jsou k dispozici pouze pro prostředky nasazené v modelu nasazení Azure Resource Manager. Protokoly nelze použít pro prostředky v modelu nasazení classic. Lépe pochopit dva modely, najdete v článku [nasazení Resource Manager principy a nasazení classic](../azure-resource-manager/resource-manager-deployment-model.md) článku.
 
 Máte tři možnosti pro ukládání protokolů:
 
 * **Účet úložiště**: účty úložiště jsou nejvhodnější pro protokoly při protokoly jsou uloženy delší dobu a zkontrolovat v případě potřeby.
-* **Služba Event hubs**: Event hubs je skvělou možnost pro integraci s další informace o zabezpečení a tooget výstrahy na vaše prostředky nástroje pro správu událostí (SEIM).
+* **Služba Event hubs**: Event hubs je skvělou možnost pro integraci s další informace o zabezpečení a získat výstrahy na vaše prostředky nástroje pro správu událostí (SEIM).
 * **Analýza protokolu**: analýzy protokolů je nejvhodnější pro obecné sledování v reálném čase vaší aplikace nebo při prohlížení trendy.
 
 ### <a name="enable-logging-through-powershell"></a>Povolit protokolování pomocí prostředí PowerShell
 
-Pro každý prostředek Resource Manager je automaticky povolené protokolování aktivit. Je nutné povolit přístup a toostart protokolování výkonu shromažďování dat hello k dispozici prostřednictvím tyto protokoly. tooenable protokolování, použijte hello následující kroky:
+Pro každý prostředek Resource Manager je automaticky povolené protokolování aktivit. Je nutné povolit přístup a výkon protokolování spustit shromažďování dat, které jsou k dispozici prostřednictvím tyto protokoly. Chcete-li protokolování povolit, použijte následující kroky:
 
-1. Poznamenejte si ID prostředku účtu úložiště, které jsou uložená data protokolu hello. Tato hodnota je ve formátu hello: /subscriptions/\<subscriptionId\>/resourceGroups/\<název skupiny prostředků\>/providers/Microsoft.Storage/storageAccounts/\<název účtu úložiště\>. Můžete použít libovolný účet úložiště v rámci vašeho předplatného. Tyto informace můžete použít hello Azure toofind portálu.
+1. Poznamenejte si ID prostředku účtu úložiště, které jsou uložená data protokolu. Tato hodnota je ve formátu: /subscriptions/\<subscriptionId\>/resourceGroups/\<název skupiny prostředků\>/providers/Microsoft.Storage/storageAccounts/\<název účtu úložiště\>. Můžete použít libovolný účet úložiště v rámci vašeho předplatného. Na portálu Azure můžete najít tyto informace.
 
     ![Portál: ID prostředku pro účet úložiště](./media/application-gateway-diagnostics/diagnostics1.png)
 
-2. Poznamenejte si ID prostředku Aplikační brána, pro které je povoleno protokolování. Tato hodnota je ve formátu hello: /subscriptions/\<subscriptionId\>/resourceGroups/\<název skupiny prostředků\>/providers/Microsoft.Network/applicationGateways/\<aplikační brány název\>. Tyto informace můžete použít portál toofind hello.
+2. Poznamenejte si ID prostředku Aplikační brána, pro které je povoleno protokolování. Tato hodnota je ve formátu: /subscriptions/\<subscriptionId\>/resourceGroups/\<název skupiny prostředků\>/providers/Microsoft.Network/applicationGateways/\<název brány aplikace \>. Na portálu můžete najít tyto informace.
 
     ![Portál: ID prostředku application Gateway.](./media/application-gateway-diagnostics/diagnostics2.png)
 
-3. Povolte protokolování diagnostiky pomocí hello následující rutiny prostředí PowerShell:
+3. Povolte protokolování diagnostiky pomocí následující rutiny prostředí PowerShell:
 
     ```powershell
     Set-AzureRmDiagnosticSetting  -ResourceId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/applicationGateways/<application gateway name> -StorageAccountId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name> -Enabled $true     
     ```
     
 > [!TIP] 
->Protokoly aktivity nevyžadují, aby účet samostatného úložiště. použití Hello úložiště pro přístup a protokolování výkonu způsobuje poplatky za služby.
+>Protokoly aktivity nevyžadují, aby účet samostatného úložiště. Používání úložiště pro přístup a protokolování výkonu způsobuje poplatky za služby.
 
-### <a name="enable-logging-through-hello-azure-portal"></a>Povolení protokolování prostřednictvím hello portálu Azure
+### <a name="enable-logging-through-the-azure-portal"></a>Povolit protokolování prostřednictvím portálu Azure
 
-1. V hello portálu Azure, najít prostředek a klikněte na **diagnostické protokoly**.
+1. Na portálu Azure najít prostředek a klikněte na tlačítko **diagnostické protokoly**.
 
    Pro službu Application Gateway jsou k dispozici tři protokoly:
 
@@ -144,46 +144,46 @@ Pro každý prostředek Resource Manager je automaticky povolené protokolován�
    * Protokolu výkonu
    * Protokol brány firewall
 
-2. toostart shromažďování dat, klikněte na tlačítko **zapněte diagnostiku**.
+2. Chcete-li spustit shromažďování dat, klikněte na tlačítko **zapněte diagnostiku**.
 
    ![Zapnutí diagnostiky][1]
 
-3. Hello **nastavení diagnostiky** okno poskytuje hello nastavení pro hello diagnostické protokoly. V tomto příkladu analýzy protokolů ukládá protokoly hello. Klikněte na tlačítko **konfigurace** pod **analýzy protokolů** tooconfigure pracovního prostoru. Můžete také použít centrům událostí a úložiště účet toosave hello diagnostické protokoly.
+3. **Nastavení diagnostiky** okno obsahuje nastavení pro diagnostické protokoly. V tomto příkladu analýzy protokolů ukládá protokoly. Klikněte na tlačítko **konfigurace** pod **analýzy protokolů** konfigurace pracovního prostoru. Můžete taky centrům událostí a účet úložiště pro uložení diagnostické protokoly.
 
-   ![Počáteční proces konfigurace hello][2]
+   ![Spuštění procesu konfigurace][2]
 
 4. Zvolte existujícímu pracovnímu prostoru služby Operations Management Suite (OMS) nebo vytvořte novou. Tento příklad používá nějaký existující.
 
    ![Možnosti pro OMS pracovní prostory][3]
 
-5. Potvrzení hello nastavení a klikněte na tlačítko **Uložit**.
+5. Potvrďte nastavení a klikněte na tlačítko **Uložit**.
 
    ![Okno nastavení diagnostiky se výběry][4]
 
 ### <a name="activity-log"></a>Protokol aktivit
 
-Ve výchozím nastavení vygeneruje Azure protokol aktivit hello. protokoly Hello se zachovají 90 dní v úložišti Azure protokoly událostí hello. Další informace o tyto protokoly načtením hello [zobrazování událostí a protokolu aktivity](../monitoring-and-diagnostics/insights-debugging-with-events.md) článku.
+Ve výchozím nastavení vygeneruje Azure protokolu aktivit. Protokoly se zachovají 90 dní v úložišti Azure protokoly událostí. Další informace o tyto protokoly načtením [zobrazování událostí a protokolu aktivity](../monitoring-and-diagnostics/insights-debugging-with-events.md) článku.
 
 ### <a name="access-log"></a>Přístup k protokolu
 
-Hello přístup protokol je generovaný pouze v případě, že jste ho povolili na každou instanci aplikace brány, podle popisu v předchozích krocích hello. Hello data se ukládají v účtu úložiště hello, kterou jste zadali, pokud jste povolili protokolování hello. Každý přístup Application Gateway je zaznamenána ve formátu JSON, jak ukazuje následující příklad hello:
+Přístup k protokolu se vygeneruje pouze v případě, že jste ho povolili každé instance aplikační brány, jak je podrobně uvedeno v předchozích krocích. Data je uložený v účtu úložiště, které jste zadali při jste povolili protokolování. Každý přístup Application Gateway je zaznamenána ve formátu JSON, jak je znázorněno v následujícím příkladu:
 
 
 |Hodnota  |Popis  |
 |---------|---------|
-|identifikátor instanceId     | Aplikační brána instanci tohoto požadavku obsloužit hello.        |
-|Když     | Původní IP pro požadavek hello.        |
-|clientPort     | Výchozí port pro požadavek hello.       |
-|HttpMethod     | Metoda HTTP používaný hello požadavku.       |
-|requestUri     | Identifikátor URI hello přijatý požadavek.        |
-|RequestQuery     | **Server směrovat**: instance fond Back-end, který vám byl zaslán požadavek hello. </br> **X-AzureApplicationGateway-LOG-ID**: ID korelace použitý pro požadavek hello. Může být použité tootroubleshoot provoz problémy na hello back-end serverů. </br>**Stav serveru**: kód odpovědi HTTP, který Application Gateway získali od hello back-end.       |
-|UserAgent     | Agent u uživatele z hlavičky požadavku hello HTTP.        |
-|httpStatus     | Stavový kód HTTP vrácená toohello klienta z aplikační brány.       |
-|httpVersion     | Verze protokolu HTTP žádosti hello.        |
+|identifikátor instanceId     | Instance brány aplikace, který žádost zpracoval.        |
+|Když     | Původní IP pro požadavek.        |
+|clientPort     | Výchozí port pro požadavek.       |
+|HttpMethod     | Metoda HTTP používaný žádosti.       |
+|requestUri     | Identifikátor URI přijatý požadavek.        |
+|RequestQuery     | **Server směrovat**: instance fond Back-end, který vám byl zaslán požadavek. </br> **X-AzureApplicationGateway-LOG-ID**: ID korelace použitou pro danou žádost. Může sloužit k řešení potíží provoz na back-end serverů. </br>**Stav serveru**: kód odpovědi HTTP, který Application Gateway dostali z back-end.       |
+|UserAgent     | Agent u uživatele z hlavičky žádosti HTTP.        |
+|httpStatus     | Stavový kód HTTP vrácen do klienta z aplikační brány.       |
+|httpVersion     | Verze protokolu HTTP žádosti.        |
 |ReceivedBytes     | Velikost paketu přijaté v bajtech.        |
 |SentBytes| Velikost paket odeslaný v bajtech.|
-|timeTaken| Délka dobu (v milisekundách), která je potřebná pro žádost o toobe, zpracování a jeho toobe odpovědi odeslat. Počítá se jako interval hello od času hello při Application Gateway přijímá první bajt hello doba toohello požadavku HTTP při odeslání odpovědi hello dokončení operace. Je důležité, že toonote, který hello Time-Taken pole obvykle zahrnuje hello čas požadavku a odpovědi pakety hello cestách přes síť hello. |
-|Protokol| Jestli komunikace toohello back endové fondy používat protokol SSL. Platné hodnoty jsou zapnout a vypnout.|
+|timeTaken| Délka dobu (v milisekundách), která je potřebná pro zpracování požadavku a odpovědi na odeslání. Počítá se jako interval od okamžiku, kdy Application Gateway přijímá první bajt požadavku HTTP na čas, kdy odpovědi odeslat dokončení operace. Je důležité si uvědomit, že pole Time-Taken obvykle zahrnuje čas, jsou pakety žádostí a odpovědí přenášeny po síti. |
+|Protokol| Jestli komunikaci s back endové fondy používat protokol SSL. Platné hodnoty jsou zapnout a vypnout.|
 ```json
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
@@ -210,18 +210,18 @@ Hello přístup protokol je generovaný pouze v případě, že jste ho povolili
 
 ### <a name="performance-log"></a>Protokolu výkonu
 
-Hello výkonu protokol je generovaný pouze v případě, že jste povolili na každou instanci aplikace brány, podle popisu v předchozích krocích hello. Hello data se ukládají v účtu úložiště hello, kterou jste zadali, pokud jste povolili protokolování hello. data protokolu výkonu Hello je vygenerována v intervalech 1 minutu. zaznamená se Hello následující data:
+V protokolu výkonu se vygeneruje pouze v případě, že jste povolili každé instance aplikační brány, jak je podrobně uvedeno v předchozích krocích. Data je uložený v účtu úložiště, které jste zadali při jste povolili protokolování. Data protokolu výkonu je generován v intervalech 1 minutu. Se protokolují tato data:
 
 
 |Hodnota  |Popis  |
 |---------|---------|
 |identifikátor instanceId     |  Instance brány aplikace, které výkonu je generován data. Pro bránu více instancí aplikace je jeden řádek pro každou instanci.        |
-|healthyHostCount     | Počet pořádku hostitelích ve fondu back-end hello.        |
-|unHealthyHostCount     | Počet není v pořádku hostitelích ve fondu back-end hello.        |
+|healthyHostCount     | Počet pořádku hostitelích ve fondu back-end.        |
+|unHealthyHostCount     | Počet není v pořádku hostitelích ve fondu back-end.        |
 |RequestCount     | Počet požadavků zpracovaných.        |
-|Čekací doba | Čekací doba (v milisekundách) požadavků od hello instance toohello back-end, který obsluhuje žádosti hello. |
+|Čekací doba | Latence (v milisekundách) požadavků z instance back end, který obsluhuje žádosti. |
 |failedRequestCount| Počet neúspěšných požadavků.|
-|Propustnost| Průměrná propustnost od poslední protokolu hello měřená v bajtech za sekundu.|
+|Propustnost| Průměrná propustnost od poslední protokolu měřená v bajtech za sekundu.|
 
 ```json
 {
@@ -243,30 +243,30 @@ Hello výkonu protokol je generovaný pouze v případě, že jste povolili na k
 ```
 
 > [!NOTE]
-> Latencí se počítá z hello čas, kdy hello první bajt požadavku hello HTTP přijatých toohello čas odeslání poslední bajt hello hello odpověď HTTP. Jeho hello součet hello Application Gateway doba zpracování plus hello sítě náklady toohello zpět ukončení, plus hello dobu, po kterou hello back-end trvá tooprocess hello požadavku.
+> Latencí se počítá z čas, kdy je první bajt požadavku HTTP přijal čas odeslání poslední bajt odpovědi HTTP. Jedná se o součet bude čas zpracování aplikační brány a náklady na síť s back-end plus dobu, která back-end potřebná pro zpracování požadavku.
 
 ### <a name="firewall-log"></a>Protokol brány firewall
 
-Hello brány firewall protokol je generovaný pouze v případě, že jste je povolili pro každý aplikační brány, podle popisu v předchozích krocích hello. Tento protokol taky vyžaduje, že aby brána firewall hello webové aplikace je nakonfigurovaná na aplikační brány. Hello data se ukládají v účtu úložiště hello, kterou jste zadali, pokud jste povolili protokolování hello. zaznamená se Hello následující data:
+Protokol brány firewall se vygeneruje pouze v případě, že jste je povolili pro každý application gateway, jak je podrobně uvedeno v předchozích krocích. Tento protokol taky vyžaduje, aby brány firewall webových aplikací je nakonfigurovaný na aplikační brány. Data je uložený v účtu úložiště, které jste zadali při jste povolili protokolování. Se protokolují tato data:
 
 
 |Hodnota  |Popis  |
 |---------|---------|
 |identifikátor instanceId     | Instance brány aplikace, které brány firewall data jsou generována. Pro bránu více instancí aplikace je jeden řádek pro každou instanci.         |
-|Když     |   Původní IP pro požadavek hello.      |
-|clientPort     |  Výchozí port pro požadavek hello.       |
-|requestUri     | Adresa URL hello přijatý požadavek.       |
-|ruleSetType     | Typ sady pravidel. k dispozici hodnota Hello je OWASP.        |
+|Když     |   Původní IP pro požadavek.      |
+|clientPort     |  Výchozí port pro požadavek.       |
+|requestUri     | Adresa URL přijatý požadavek.       |
+|ruleSetType     | Typ sady pravidel. K dispozici hodnota je OWASP.        |
 |ruleSetVersion     | Verze použitá sady pravidel. Dostupné jsou hodnoty 2.2.9 a 3.0.     |
-|RuleId     | ID pravidla hello spuštěním události.        |
-|Zpráva     | Uživatelsky přívětivý zpráva pro hello spuštěním události. Další podrobnosti najdete v části Podrobnosti o hello.        |
-|Akce     |  Akce na vyžádání hello. Dostupné hodnoty jsou blokované a povolené.      |
-|Lokality     | Web, pro které hello byla vygenerována protokolu. V současné době pouze globální se má zobrazit, protože pravidla jsou globální.|
-|Podrobnosti     | Podrobnosti o hello spuštěním události.        |
-|details.Message     | Popis pravidla hello.        |
-|details.data     | Konkrétní data nalezena v žádosti o tomto pravidle odpovídající hello.         |
-|details.File     | Konfigurační soubor, který obsahoval hello pravidlo.        |
-|details.Line     | Číslo řádku v hello konfigurační soubor, který aktivoval hello událostí.       |
+|RuleId     | ID pravidla spouštěcí události.        |
+|Zpráva     | Uživatelsky přívětivý zpráva pro aktivační událost. Další podrobnosti najdete v části Podrobnosti.        |
+|Akce     |  Akce v žádosti. Dostupné hodnoty jsou blokované a povolené.      |
+|Lokality     | Web, pro které byla vygenerována v protokolu. V současné době pouze globální se má zobrazit, protože pravidla jsou globální.|
+|Podrobnosti     | Podrobnosti o aktivační událost.        |
+|details.Message     | Popis pravidla.        |
+|details.data     | Konkrétní data uvedená v požadavek, který odpovídá pravidlo.         |
+|details.File     | Konfigurační soubor, který obsahoval pravidlo.        |
+|details.Line     | Číslo řádku v konfiguračním souboru, který spustil událost.       |
 
 ```json
 {
@@ -296,63 +296,63 @@ Hello brány firewall protokol je generovaný pouze v případě, že jste je po
 
 ```
 
-### <a name="view-and-analyze-hello-activity-log"></a>Zobrazit a analyzovat protokol aktivit hello
+### <a name="view-and-analyze-the-activity-log"></a>Zobrazení a analýza protokolu aktivit
 
-Můžete zobrazit a analyzovat data protokolu aktivit pomocí některé z hello následující metody:
+Můžete zobrazit a analyzovat data protokolu aktivit pomocí některé z následujících metod:
 
-* **Nástroje Azure**: načtení informací z protokolu aktivit hello pomocí Azure Powershellu hello rozhraní příkazového řádku Azure, hello REST API služby Azure, nebo hello portálu Azure. Podrobné pokyny pro jednotlivé metody jsou podrobně popsané na hello [operací aktivit s Resource Managerem](../azure-resource-manager/resource-group-audit.md) článku.
-* **Power BI**: Pokud ještě nemáte [Power BI](https://powerbi.microsoft.com/pricing) účet, můžete zkusit je zdarma. Pomocí hello [obsahu protokoly aktivity Azure pack pro Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/), můžete analyzovat svá data pomocí předkonfigurované řídicí panely, které můžete použít nebo přizpůsobit.
+* **Nástroje Azure**: načtení informací z protokolu činnosti pomocí prostředí Azure PowerShell, rozhraní příkazového řádku Azure, REST API služby Azure nebo portálu Azure. Podrobné pokyny pro jednotlivé metody jsou podrobně popsané na [operací aktivit s Resource Managerem](../azure-resource-manager/resource-group-audit.md) článku.
+* **Power BI**: Pokud ještě nemáte [Power BI](https://powerbi.microsoft.com/pricing) účet, můžete zkusit je zdarma. Pomocí [obsahu protokoly aktivity Azure pack pro Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/), můžete analyzovat svá data pomocí předkonfigurované řídicí panely, které můžete použít nebo přizpůsobit.
 
-### <a name="view-and-analyze-hello-access-performance-and-firewall-logs"></a>Zobrazit a analyzovat hello přístup, výkonu a protokoly brány firewall
+### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>Zobrazit a analyzovat přístup, výkonu a protokoly brány firewall
 
-Azure [analýzy protokolů](../log-analytics/log-analytics-azure-networking-analytics.md) můžete shromažďovat soubory protokolů událostí a čítače hello z vašeho účtu úložiště objektů Blob. Obsahuje vizualizace a výkonné vyhledávání možnosti tooanalyze protokolů.
+Azure [analýzy protokolů](../log-analytics/log-analytics-azure-networking-analytics.md) z vašeho účtu úložiště objektů Blob můžete shromažďovat soubory protokolů událostí a čítače. Obsahuje vizualizace a výkonné možnosti vyhledávání k analýze protokolů.
 
-Můžete se také připojit tooyour účet úložiště a načíst položky protokolu hello JSON pro přístup a protokoly výkonu. Po stažení hello soubory JSON, můžete je převést tooCSV a zobrazit je v aplikaci Excel, Power BI nebo jakýkoli jiný nástroj, vizualizace dat.
+Můžete také připojit k účtu úložiště a načítat položky protokolu JSON pro přístup a protokoly výkonu. Po stažení soubory JSON, můžete je převést na sdílený svazek clusteru a zobrazit je v aplikaci Excel, Power BI nebo jakýkoli jiný nástroj, vizualizace dat.
 
 > [!TIP]
-> Pokud jste obeznámeni s Visual Studio a základní koncepty změna hodnoty konstanty a proměnné v jazyce C#, můžete použít hello [protokolu nástroje Převaděč](https://github.com/Azure-Samples/networking-dotnet-log-converter) dostupné z Githubu.
+> Pokud jste obeznámeni s Visual Studio a základní koncepty změna hodnoty konstanty a proměnné v jazyce C#, můžete použít [protokolu nástroje Převaděč](https://github.com/Azure-Samples/networking-dotnet-log-converter) dostupné z Githubu.
 > 
 > 
 
 ## <a name="metrics"></a>Metriky
 
-Metriky jsou funkce u některých prostředků Azure, kde můžete zobrazit čítače výkonu portálu hello. Pro službu Application Gateway jedna metrika je k dispozici nyní. Tato metrika je propustnost a zobrazí se na portálu hello. Procházet tooan aplikační brány a klikněte na tlačítko **metriky**. tooview hello hodnoty, vyberte propustnost v hello **dostupné metriky** části. V hello následující bitové kopie vidíte příklad s filtry hello používané toodisplay hello data v různých časových rozsahů.
+Metriky jsou funkce u některých prostředků Azure, kde můžete zobrazit čítače výkonu v portálu. Pro službu Application Gateway jedna metrika je k dispozici nyní. Tato metrika je propustnost a zobrazí se na portálu. Přejděte do služby application gateway a klikněte na tlačítko **metriky**. Chcete-li zobrazit hodnoty, vyberte propustnost v **dostupné metriky** části. Na následujícím obrázku uvidíte příklad s filtry, které můžete použít k zobrazení dat v různých časových rozsahů.
 
 ![Zobrazení metriky s filtry][5]
 
-toosee aktuální seznam metriky, najdete v části [podporované metriky s Azure monitorování](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
+Pokud chcete zobrazit aktuální seznam metriky, najdete v části [podporované metriky s Azure monitorování](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
 
 ### <a name="alert-rules"></a>Pravidla výstrah
 
-Můžete spustit na základě metriky pro prostředek pravidla výstrah. Výstrahu můžete například volat webhook, jehož nebo e-mailu správce, pokud hello propustnost hello aplikační brány je výše, níže nebo na prahovou hodnotu v zadaném období.
+Můžete spustit na základě metriky pro prostředek pravidla výstrah. Výstrahu můžete například volat webhook, jehož nebo e-mailu správce, pokud propustnost aplikační brány je výše, níže nebo na prahovou hodnotu v zadaném období.
 
-Následující ukázka Hello vás provede vytvořením pravidlo, které pošle e-mailu správce tooan za narušení propustnost a prahové hodnoty:
+Následující příklad vás provede vytvořením pravidlo výstrahy, která odešle e-mail na správce po narušení propustnost a prahové hodnoty:
 
-1. Klikněte na tlačítko **přidat metriky upozornění** tooopen hello **přidat pravidlo** okno. Mohou být využity také toto okno, v okně metriky hello.
+1. Klikněte na tlačítko **přidat metriky upozornění** otevřete **přidat pravidlo** okno. Mohou být využity také toto okno, v okně metriky.
 
    ![Tlačítko "Přidat metriky upozornění"][6]
 
-2. Na hello **přidat pravidlo** okně vyplnit hello název, stav a upozornit části a klikněte na tlačítko **OK**.
+2. Na **přidat pravidlo** okno, zadejte název, stav a upozornit části a klikněte na tlačítko **OK**.
 
-   * V hello **podmínku** selektor, vyberte jednu z hodnot hello čtyři: **větší než**, **větší než nebo rovna**, **menší než**, nebo  **Menší než nebo rovna hodnotě**.
+   * V **podmínku** selektor, vyberte jednu ze čtyř hodnot: **větší než**, **větší než nebo rovna**, **menší než**, nebo **Menší než nebo rovna hodnotě**.
 
-   * V hello **období** selektor, vyberte dobu od 5 minut too6 hodin.
+   * V **období** selektor, vyberte období od 5 minut do 6 hodin.
 
-   * Pokud vyberete **e-mailu vlastníci, přispěvatelé a čtenáři**, e-mailu hello může být dynamické na základě hello uživatelů, kteří mají přístup toothat prostředků. Jinak, můžete zadat čárkami oddělený seznam uživatelů v hello **email(s) další správce** pole.
+   * Pokud vyberete **e-mailu vlastníci, přispěvatelé a čtenáři**, e-mailu, může být dynamické podle uživatelů, kteří mají přístup k prostředku. Jinak, můžete zadat čárkami oddělený seznam uživatelů v **email(s) další správce** pole.
 
    ![Přidat pravidlo okno][7]
 
-Pokud je prahová hodnota hello nedodržení, dorazí e-mail, který je podobný toohello, jeden v hello následující bitové kopie:
+Pokud je prahová hodnota nedodržení, dorazí e-mail, který je podobný tomu na následujícím obrázku:
 
 ![E-mailu pro porušení prahové hodnoty][8]
 
-Po vytvoření metriky upozornění se zobrazí seznam výstrah. Poskytuje přehled o všech hello pravidla výstrah.
+Po vytvoření metriky upozornění se zobrazí seznam výstrah. Poskytuje přehled o všech pravidla výstrah.
 
 ![Seznam výstrah a pravidla][9]
 
-toolearn Další informace o oznámení o výstrahách, najdete v části [dostávat oznámení o výstrahách](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
+Další informace o oznámeních výstrah najdete v tématu [dostávat oznámení o výstrahách](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
 
-toounderstand informace o webhooky a jak je možné používat s výstrahy, navštivte [konfigurace webhook, jehož na výstrahu Azure metriky](../monitoring-and-diagnostics/insights-webhooks-alerts.md).
+Bližší informace o webhooky a jak je možné používat s výstrahy, navštivte [konfigurace webhook, jehož na výstrahu Azure metriky](../monitoring-and-diagnostics/insights-webhooks-alerts.md).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory Domain Services: Aktualizace nastavení DNS pro hello virtuální síť Azure | Microsoft Docs"
+title: "Azure Active Directory Domain Services: Aktualizace nastavení DNS pro virtuální síť Azure | Dokumentace Microsoftu"
 description: "Začínáme se službou Azure Active Directory Domain Services"
 services: active-directory-ds
 documentationcenter: 
@@ -12,39 +12,39 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/27/2017
+ms.date: 09/26/2017
 ms.author: maheshu
-ms.openlocfilehash: e6eaff555cb9b7bb89ab7581d8de0b8cfc844529
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ab8e3215e8e73d3943af06cffafa730cf1b7744b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="enable-azure-active-directory-domain-services-preview"></a>Povolení služby Azure Active Directory Domain Services (Preview)
+# <a name="enable-azure-active-directory-domain-services"></a>Povolení služby Azure Active Directory Domain Services
 
-## <a name="task-4-update-dns-settings-for-hello-azure-virtual-network"></a>Úloha 4: aktualizace nastavení DNS pro hello virtuální síť Azure
-V předchozích úlohy konfigurace hello povolíte úspěšně Azure Active Directory Domain Services pro svůj adresář. Další úlohou Hello je tooensure, můžete počítače v rámci virtuální sítě hello připojit a využívat tyto služby. V tomto článku aktualizace hello nastavení serveru DNS pro vaši virtuální síť toopoint toohello dvě IP adresy kde je k dispozici ve virtuální síti hello Azure Active Directory Domain Services.
+## <a name="task-4-update-dns-settings-for-the-azure-virtual-network"></a>Úloha 4: Aktualizace nastavení DNS pro virtuální síť Azure
+V předchozích úlohách konfigurace jste úspěšně povolili službu Azure Active Directory Domain Services pro svůj adresář. Dalším úkolem je zajistit, že se počítače v rámci virtuální sítě mohou k těmto službám připojit a využívat je. V tomto článku provedete aktualizaci nastavení serveru DNS svojí virtuální sítě tak, aby odkazoval na dvě IP adresy, kde je ve virtuální síti dostupná služba Azure Active Directory Domain Services.
 
-tooupdate hello serveru DNS pro hello virtuální síť, ve kterém jste povolili Azure Active Directory Domain Services dokončení hello následující kroky:
+Podle následujících kroků aktualizujte server DNS virtuální sítě, ve které jste povolili službu Azure Active Directory Domain Services:
 
-1. Hello **přehled** karta obsahuje sadu **požadované kroky konfigurace** toobe provést po vaší spravované domény plně zřízený. prvním krokem konfigurace Hello je **nastavení serveru DNS aktualizace pro vaši virtuální síť**.
+1. Na kartě **Přehled** je uveden seznam **požadovaných kroků konfigurace**, které je potřeba provést po úplném zřízení spravované domény. Prvním konfiguračním krokem je **aktualizace nastavení serveru DNS pro virtuální síť**.
 
     ![Domain Services – Karta Přehled po úplném zřízení](./media/getting-started/domain-services-provisioned-overview.png)
 
 2. Když je doména úplně zřízená, zobrazují se na této dlaždici dvě IP adresy. Každý z těchto IP adres představuje řadič vaší spravované domény.
 
-3. toocopy hello první IP adresa tooclipboard, klikněte na další tooit tlačítko hello kopírování. Pak klikněte na tlačítko hello **servery DNS nakonfigurujte** tlačítko.
+3. Klikněte na tlačítko pro kopírování vedle první IP adresy a zkopírujte ji do schránky. Potom klikněte na tlačítko **Konfigurovat servery DNS**.
 
-4. Vložte hello první IP adresu do hello **server DNS přidat** textového pole v hello **servery DNS** okno. Posuňte vodorovně toohello zbývajících toocopy hello druhou IP adresu a vložte jej do hello **server DNS přidat** textové pole.
+4. První IP adresu vložte do textového pole **Přidat server DNS** v okně **Servery DNS**. Posuňte se vodorovně doleva, zkopírujte druhou IP adresu a vložte ji do textového pole **Přidat server DNS**.
 
     ![Domain Services – Aktualizace DNS](./media/getting-started/domain-services-update-dns.png)
 
-5. Klikněte na tlačítko **Uložit** po dokončení tooupdate hello servery DNS pro virtuální síť hello.
+5. Až to budete mít, klikněte na **Uložit**. Provedete tak aktualizaci serverů DNS pro vaši virtuální síť.
 
 > [!NOTE]
-> Virtuální počítače v síti hello získat nové nastavení DNS hello pouze po restartu. Chcete-li nastavení DNS tooget hello aktualizovat hned, aktivovat restartování hello portál, prostředí PowerShell nebo hello rozhraní příkazového řádku.
+> Virtuální počítače v síti získají nové nastavení DNS až po restartování. Pokud chcete, aby aktualizované nastavení DNS získaly hned, aktivujte restartování z portálu, pomocí PowerShellu nebo pomocí rozhraní příkazového řádku.
 >
 >
 
 ## <a name="next-step"></a>Další krok
-[Úloha 5: povolení tooAzure synchronizace hesla Active Directory Domain Services](active-directory-ds-getting-started-password-sync.md)
+[Úloha 5: Povolení synchronizace hesel do služby Azure Active Directory Domain Services](active-directory-ds-getting-started-password-sync.md)

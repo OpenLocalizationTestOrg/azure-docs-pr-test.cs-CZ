@@ -1,6 +1,6 @@
 ---
-title: aaaCreate aplikaci pro iOS v Azure App Service Mobile Apps | Microsoft Docs
-description: "Postupujte podle tohoto kurzu tooget začít s pomocí back-EndY mobilní aplikace Azure pro vývoj pro iOS v Objective-C nebo Swiftu."
+title: "Vytvoření aplikace pro iOS v Azure App Service Mobile Apps | Dokumentace Microsoftu"
+description: "V tomto kurzu začnete používat back-endy mobilních aplikací Azure pro vývoj pro iOS v Objective-C nebo Swiftu."
 services: app-service\mobile
 documentationcenter: ios
 author: ggailey777
@@ -14,27 +14,27 @@ ms.devlang: objective-c
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.openlocfilehash: 869fa971f7b5ab4a7119bbfa92808185d2ecdf8a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 36936ae66c458fcbedeec95cfa2f573a40c8af53
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-ios-app"></a>Vytvoření aplikace pro iOS
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
 ## <a name="overview"></a>Přehled
-Tento kurz ukazuje, jak tooadd [Azure Mobile Apps](app-service-mobile-value-prop.md), Cloudová služba back-end, tooan aplikace pro iOS. Nejdříve vytvoříme nový mobilní back-end. Potom použijeme jednoduchou *seznam úkolů* data toostore iOS aplikace v Azure.
+Tento kurz ukazuje, jak do aplikace pro iOS přidat cloudovou back-end službu [Azure Mobile Apps](app-service-mobile-value-prop.md). Nejdříve vytvoříme nový mobilní back-end. Poté pomocí jednoduché aplikace pro iOS *Seznam úkolů* uložíme data do Azure.
 
-toocomplete tohoto kurzu budete potřebovat Mac a [účet Azure](https://azure.microsoft.com/pricing/free-trial/)
+K dokončení tohoto kurzu potřebujete Mac a [účet Azure ](https://azure.microsoft.com/pricing/free-trial/)
 
 ## <a name="step-i-create-a-new-azure-mobile-app-backend"></a>Krok I: Vytvoření nového back-endu mobilní aplikace Azure
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="step-ii-configure-hello-backend-project"></a>Krok II: Konfigurace back-end projektu hello
+## <a name="step-ii-configure-the-backend-project"></a>Krok II: Konfigurace back-end projektu
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="step-iii-download-and-run-hello-ios-app"></a>Krok III: Stažení a spuštění aplikace iOS hello
+## <a name="step-iii-download-and-run-the-ios-app"></a>Krok III: Stažení a spuštění aplikace pro iOS
 [!INCLUDE [app-service-mobile-ios-run-app](../../includes/app-service-mobile-ios-run-app.md)]
 
 <!-- URLs -->

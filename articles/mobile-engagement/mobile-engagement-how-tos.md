@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure Mobile Engagement uživatelské rozhraní – přístup jak pro"
+title: "Azure Mobile Engagement uživatelské rozhraní - Reach postup"
 description: "Přehled uživatelského rozhraní pro Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 4b6dafd09d894214d4c386f5c6f157a77671606f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 33a0a9d0c399cb7f0a791c4c16dde2e2d62364ca
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-tooget-started-using-and-managing-pushes-tooreach-out-tooyour-end-users"></a>Jak tooget spuštění používáním a správou nabízených oznámení tooreach out tooyour koncovým uživatelům
-Jakmile hello SDK je plně integrována do vaší aplikace, abyste mohli začít pomocí hello hello Reach části hello uživatelského rozhraní tooPush oznámení toohello uživatele vaší aplikace.  
+# <a name="how-to-get-started-using-and-managing-pushes-to-reach-out-to-your-end-users"></a>Jak začít pracovat, používáním a správou nabízených oznámení k oslovení koncových uživatelů
+Jakmile sada SDK je plně integrována do vaší aplikace, můžete začít používat pomocí části Reach uživatelského rozhraní pro nabízená oznámení uživatelům vaší aplikace.  
 
 ## <a name="do-your-first-push-notification-campaign"></a>Proveďte své první kampaně nabízených oznámení
-* Potvrďte, že vaše kampaně Reach je integrována do vaší aplikace pomocí hello SDK. 
+* Potvrďte, že vaše kampaně Reach je integrována do vaší aplikace pomocí sady SDK. 
 * Vyberte svou aplikaci
 
 ![First1][1]
 
-* Přejděte toohello část "Reach" a klikněte na tlačítko "nové oznámení"
+* Přejděte do části "Reach" a klikněte na tlačítko "nové oznámení"
 
 ![First2][2]
 
@@ -37,19 +37,19 @@ Jakmile hello SDK je plně integrována do vaší aplikace, abyste mohli začít
   
 ![First3][3]
 
-* Vyberte, jak by měla doručen hello oznámení, jako v aplikaci jenom
+* Vyberte, jak bude doručena oznámení, jako v aplikaci jenom
 
 ![First4][4]
 
-* Vytvoření uvítací zprávu, že chcete toopush
+* Vytvořte zprávu, kterou chcete push
 
 ![First5][5]
 
-* Název může zapisovat na hello oznámení (volitelné).
+* Název může zapisovat na oznámení (volitelné).
 * Zápis předávaný obsah zprávy.
-* Můžete nahrát bitovou kopii. Upozorňujeme, že velikost hello hello souboru nesmí překročit 32 768 bajtů.
-* Máte také tooselect možnost hello další možnosti, ale pro hello zaměřit tohoto kurzu, zjistíme, který později.
-* Vyberte typ obsahu hello pouze jako oznámení
+* Můžete nahrát bitovou kopii. Upozorňujeme, že velikost souboru nesmí překročit 32 768 bajtů.
+* Máte také možnost vybrat další možnosti, ale pro výběr v tomto kurzu, zjistíme, který později.
+* Vyberte typ obsahu pouze jako oznámení
 
 ![First6][6]
 
@@ -61,58 +61,58 @@ Jakmile hello SDK je plně integrována do vaší aplikace, abyste mohli začít
 ![test1][8]
 
 * Zaregistrujte zařízení.
-* Klikněte na zaškrtávací políčko hello hello zařízení chcete toopush.
-* Klikněte na hello "Test" tlačítko toosend hello nabízené toohello zařízení.
+* Klikněte na zaškrtávací políčko zařízení, které chcete push.
+* Klikněte na tlačítko "Test" k odeslání nabízeného oznámení do zařízení.
 
 ![test2][9]
 
-* Aktivovat kampaň hello
+* Aktivovat kampaň
 
 ![Test3][10]
 
-* Teď, když jste vytvořili kampaň stačí tooactivate pro hello oznámení toobe nabídnutých tooyour uživatele.
+* Teď, když jste vytvořili kampaň stačí pro oznámení poslat uživatelům aktivovat.
 
 ## <a name="send-personalized-pushes"></a>Odeslat přizpůsobené nabízených oznámení
-* Tento příklad vytvoří push, kde je zadán kód vlastní slevu do hello nabízených oznámení.
+* Tento příklad vytvoří push, kde je zadán kód vlastní slevu do nabízených oznámení.
 
 ![Personalize1][11]
 
-Přizpůsobení funguje tak, že nahradíte značku podle z značku informace o aplikaci tak, budete mít jistotu, že má uživatel hello hello správné app-info definované nejprve toomake. V tento příklad hello cílové uživatele bude mít značku informace o aplikaci s názvem rebate_code definované.
-Jak vidíte výše hello nabízená oznámení obsah zahrnuje hello značky ${rebate_code}, které označují, že se jedná o toobe nahrazuje hello skutečný obsah značky hello informace o aplikaci.
+Přizpůsobení funguje tak, že nahradíte značku podle z značku informace o aplikaci tak, budete muset zkontrolujte, zda že má uživatel správnou app-info definován jako první. V tomto příkladu bude mít cílových uživatelů značku informace o aplikaci s názvem rebate_code definované.
+Jak je zobrazen výše nabízených oznámení obsah obsahuje značky ${rebate_code}, což bude znamenat, že ho nahradit za skutečný obsah značky informace o aplikaci.
 
 > [!WARNING]
-> Pokud značka informace o aplikaci hello není definován pro hello uživatele, uživatel hello neobdrží nabízené hello.
+> Pokud informace o značce aplikace není definován pro uživatele, uživatel neobdrží nabízeného oznámení.
 
 * výsledek
 
 ![Personalize2][12]
 
-### <a name="you-can-further-personalize-hello-text-your-notification"></a>Můžete upravit hello text oznámení
+### <a name="you-can-further-personalize-the-text-your-notification"></a>Můžete upravit text oznámení
 ![Personalize3][13]
 
-* Včetně hello název hello oznámení
-* A hello obsah zprávy hello.
-* Zvolte typ hello oznámení (textového zobrazení nebo zobrazení webové stránky)
+* Název oznámení, včetně
+* A obsah zprávy.
+* Zvolte typ sdělení (textového zobrazení nebo zobrazení webové stránky)
 
 ![Personalize4][14]
 
-### <a name="hello-body-of-an-announcement-may-also-be-personalized-with"></a>Hello textu oznámení může také přizpůsobit, pokud:
-* Adresa URL akce Hello, budete chtít toocustomize hello úvodní stránka
-* Název Hello
-* Hello těla zprávy hello.
+### <a name="the-body-of-an-announcement-may-also-be-personalized-with"></a>Text oznámení může také přizpůsobit, pokud:
+* Adresa URL akce, budete chtít cílovou stránku můžete přizpůsobit
+* Název,
+* Tělo zprávy.
 
 ## <a name="differentiate-your-push-notification-in-or-out-of-app"></a>Rozlišení vašeho Push Notification (uvnitř nebo mimo aplikaci)
-* Vyberte typ hello oznámení push, vyberte svou aplikaci, přejděte v části "Reach" toohello, vyberte nebo vytvoříte kampaně nabízených a přejděte toohello části "Oznámení".
-* Klikněte na hello "doručení režim" Chcete.
-* Klikněte na hello k "Omezit aktivity" zaškrtávací políčko, pokud chcete oznámení hello dochází na konkrétní aktivitami (obrazovkami).
+* Vyberte typ oznámení push, vyberte aplikaci, přejděte k části "Připojit", vyberte nebo vytvoříte kampaně nabízených a přejděte k části "Oznámení".
+* Klikněte na "doručení režim" Chcete.
+* Klikněte na zaškrtávací políčko "Omezit aktivity", pokud chcete oznámení proběhne konkrétní aktivitami (obrazovkami).
 
 ![Differentiate1][15]
 
 ### <a name="out-of-app-only-delivery-mode"></a>"Pouze mimo aplikaci" režimu doručení
 ![Differentiate2][16]
 
-"Pouze mimo aplikaci" způsob dodání poskytuje nabízené oznámení při zavření aplikace hello. Toto je hello standardní nabízených oznámení.
-Když vyberete "pouze mimo aplikaci", musí již zadanými hello certifikáty z hello platforma, která vaše aplikace je vychází (APNS nebo GCM).
+"Pouze mimo aplikaci" způsob dodání poskytuje nabízené oznámení při ukončení aplikace. Toto je standardní nabízených oznámení.
+Když vyberete "pouze mimo aplikaci", musí již zadanými certifikáty z platformy, na které aplikace je vychází (APNS nebo GCM).
 
 ### <a name="see-also"></a>Viz také
 * [Certifikáty Apple Push Notification Service –](http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9), [Google Cloud Messaging – certifikát](http://developer.android.com/google/gcm/index.html) 
@@ -120,75 +120,75 @@ Když vyberete "pouze mimo aplikaci", musí již zadanými hello certifikáty z 
 ### <a name="in-app-only-delivery-mode"></a>"v aplikaci pouze" způsob dodání.
 ![Differentiate3][17]
 
-Režim doručení "V aplikaci pouze" poskytuje nabízené oznámení hello aplikace běží.
-Pro toto oznámení není nutné toogo prostřednictvím hello APNS a GCM systému.
-Můžete v aplikaci doručení systému tooreach hello koncovým uživatelům.
-Můžete plně přizpůsobit hello oznámení a rozhodnout, jaké aktivity (obrazovky) se zobrazí oznámení hello.
+"V aplikaci jenom" doručení režim poskytuje nabízených oznámení, když aplikace běží.
+Pro toto oznámení není potřeba projít APNS a GCM systému.
+V aplikaci systému doručení může použít k dosažení koncovým uživatelům.
+Můžete plně přizpůsobit oznámení a rozhodnout, ve kterém se zobrazí aktivity (obrazovky) oznámení.
 
 ### <a name="anytime-delivery-mode"></a>"Kdykoliv" doručení režimu
-Můžete zvolit způsob dodání "Kdykoliv", máte jistotu, že tooreach, zda text hello mohl koncový uživatel aplikace běží, nebo ne.
-Když vyberete "Kdykoliv", musí již zadanými hello certifikáty z hello platformy, které vytváří vaše aplikace (APNS nebo GCM). 
+Můžete zvolit způsob dodání "Kdykoliv", zajišťuje vám k dosažení koncovému uživateli, jestli aplikace běží, nebo ne.
+Když vyberete "Kdykoliv", musí již zadanými certifikáty z platformy, na které vytváří vaše aplikace (APNS nebo GCM). 
 
 ## <a name="schedule-a-push-campaign"></a>Plán kampaně nabízených
-### <a name="plan-toostart-a-campaign"></a>Plánování tooStart kampaň
+### <a name="plan-to-start-a-campaign"></a>Chcete spustit na kampaň
 ![Shedule1][18]
 
-Je hello 21. března a máte toomake oznámení a plánované pro hello 22nd března půlnoci. Nemáte toostay před hello rozhraní toodo push! Můžete naplánovat předem minutu přesný hello, které se budou odesílat oznámení.
+Je 21 z března a máte hlášení aby a plánované pro 22 z března půlnoci. Nemusíte zůstat před rozhraní udělat push! Můžete naplánovat předem přesný minutu, které se budou odesílat oznámení.
 
-* Zrušte zaškrtnutí hello "Žádný" zaškrtávací políčko a vyberte čas spuštění 
-* Zvolte hello datum a čas hello chcete toostart hello nabízené kampaně.
+* Zrušte zaškrtnutí "Žádný" zaškrtávací políčko a vyberte čas spuštění 
+* Vyberte datum a čas, který chcete spustit kampaně nabízených.
 
-### <a name="plan-tooend-a-campaign"></a>Plánování tooend kampaň
+### <a name="plan-to-end-a-campaign"></a>Plán pro ukončení kampaně
 ![Shedule2][19]
 
-Chcete, aby vaše kampaň toostop na hello 25th března ve 3. hodině, ale vy víte, že nebudete existuje toodo ho.
-Nemáte toostay před hello rozhraní toopush! Můžete naplánovat předem minutu přesný text hello, kterou vaše kampaň se zastaví.
+Chcete kampaň zastavit na 25 z března ve 3. hodině ale víte, že nebudete existuje provést.
+Nemusíte zůstat před rozhraní tak, aby nabízel! Můžete naplánovat předem přesný minutu, kterou vaše kampaň se zastaví.
 
-* Klikněte na hello "Žádný" zaškrtávací políčko nebo vyberte čas ukončení
-* Zvolte hello datum a čas hello chcete toofinish hello nabízené kampaně.
+* Klikněte na "Žádný" zaškrtávací políčko nebo vyberte čas ukončení
+* Vyberte datum a čas chcete kampaň nabízených dokončit.
 
 ### <a name="end-a-campaign-manually"></a>Ručně ukončete kampaň
 ![Shedule3][20]
 
-Ve výchozím nastavení hello "Žádný" jsou vybrané zaškrtávací políčka.
-To znamená, které hello kampaň se spustí, jakmile ji aktivujete v hello dosáhnout části a dosáhnou konec při zastaví na hello části.
+Ve výchozím nastavení, "Žádný" jsou vybrané zaškrtávací políčka.
+To znamená, že tato kampaň spustí, jakmile ji aktivovat v části reach a skončí, když se zastaví v oddílu reach.
 
 > [!NOTE]
-> Kampaně vytvořen bez koncové datum hello nabízené místně uložených na zařízení hello a zobrazit ji hello při příštím otevření aplikace hello i v případě, že ručně hello kampaň skončí.
+> Kampaně vytvořen bez koncové datum místně uložených nabízeného oznámení na zařízení a zobrazit ji při příštím otevření aplikace i v případě, že se tato kampaň ručně ukončí.
 
 ## <a name="enhance-a-push-notification-with-a-text-view"></a>Vylepšení nabízená oznámení pomocí textového zobrazení
 ### <a name="what-is-a-text-view"></a>Co je textového zobrazení?
 ![TextView1][21]
 
-Zobrazení textu je automaticky otevírané okno s textového obsahu. Toto automaticky otevírané okno se zobrazí po hello uživatel klikne na nabízené oznámení hello.
-Zobrazení textu umožňuje toopresent více obsahu tooyour koncového uživatele. Toto je také možnost toopresent hello volání tooaction například přechod tooa stránku aplikace, přesměrování tooa úložiště, otevření webové stránky, odesílání e-mailu, spouštění zjištěnou vyhledávání atd...
+Zobrazení textu je automaticky otevírané okno s textového obsahu. Toto automaticky otevírané okno se zobrazí, jakmile uživatel klikne na nabízené oznámení.
+Zobrazení textu umožňuje prezentovat další obsah koncovému uživateli. Toto je také možnost předložit volání akce, jako přechod na stránku aplikace, přesměrování k úložišti, otevření webové stránky, odesílání e-mailu, spouštění hledání zjištěnou atd...
 
 ### <a name="example-text-view"></a>Příklad: Zobrazení textu
-* Vytvořte kampaň nabízených oznámení v části "Připojit" hello a zadejte název kampaně
+* Vytvořte kampaň nabízených oznámení v části "Reach" a zadejte název kampaně
 
 ![TextView2][22]
 
-* Zápis uvítací zprávu, která se zobrazí na hello oznámení.
-* Vyberte typ obsahu oznámení "text" hello
+* Zapište zprávu, která se zobrazí na oznámení.
+* Vyberte typ obsahu oznámení "text"
 
 ![TextView3][23]
 
 > [!NOTE]
 > Když stisknete textového zobrazení, je vždy se dodává s oznámení nejdřív. 
 
-* Zadejte hello text (po výběru obsah oznámení text hello, hello dílčí části se zobrazí, umožní vám toodefine hello text, který má toobe zobrazit.)
+* Zadejte text (po výběru textového obsahu oznámení, dílčí části se zobrazí, umožní vám zadat text, který chcete zobrazit.)
 
 ![TextView4][24]
 
-* Zápis hello název, který se zobrazí v horní části hello hello zprávy.
-* Zápis hello hlavní obsah zobrazení textu hello.
-* Zápis hello obsah, který se zobrazí na hello tlačítko akce (tlačítko akce umožňuje toomake aplikace hello určité akci například otevřete stránku aplikace hello přesměrování tooan App store nebo jakýkoli jiný typu zdroje, které můžete zadat).
-* Zápis hello obsah, který se zobrazí na tlačítko Konec hello (kliknutím na tlačítko Konec hello zobrazení textu hello zmizí.)
-* Vytvořte kampaň nabízených oznámení a zobrazí se v seznamu kampaň hello.
+* Napište název, který se zobrazí v horní části zprávy.
+* Zadejte hlavní obsah textu zobrazení.
+* Zapište obsah, který se zobrazí na tlačítko akce (tlačítko akce umožňuje aplikaci, aby se určité akci například otevřete stránku aplikace, přesměrovat na obchod s aplikacemi nebo jakýkoli jiný typu zdroje, které můžete zadat).
+* Zápis obsahu, který se zobrazí na tlačítko Konec (kliknutím na tlačítko konec textového zobrazení zmizí.)
+* Vytvořte kampaň nabízených oznámení a zobrazí se v seznamu kampaně.
 
 ![TextView5][25]
 
-* Aktivujte uživatelům nabízená oznámení kampaň toosend hello text zobrazení tooyour.
+* Aktivujte kampaň nabízených oznámení k odesílání textového zobrazení pro vaše uživatele.
 
 ![TextView6][26]
 
@@ -196,51 +196,51 @@ Zobrazení textu umožňuje toopresent více obsahu tooyour koncového uživatel
 
 ![TextView7][27]
 
-* Hello uživatel obdrží hello oznámení a klepněte na něj.
-* zobrazení textu Hello se zobrazí automaticky otevírané okno toointeract uživatele pro povolení hello s ním.
+* Uživatel obdrží oznámení a klepněte na něj.
+* Textového zobrazení se zobrazí automaticky otevírané okno, které uživateli umožňují pracovat s ním.
 
 ## <a name="enhance-a-push-notification-with-a-web-view"></a>Vylepšení nabízených oznámení s webové zobrazení
 ### <a name="what-is-a-web-view"></a>Co je webové zobrazení?
 ![WebView1][28]
 
-Webové zobrazení je automaticky otevírané okno s obsahem serveru. Toto automaticky otevírané okno se zobrazí, když hello uživatel klikne na nabízené oznámení hello.
-Webové zobrazení umožňuje toohave větší interakce s koncovým uživatelem hello.
-Toto je také možnost toopresent hello volání tooaction například přesměrování tooApp úložiště, otevření webové stránky, odesílání e-mailu, spouštění zjištěnou vyhledávání atd...
+Webové zobrazení je automaticky otevírané okno s obsahem serveru. Toto automaticky otevírané okno se zobrazí, když uživatel klikne na nabízené oznámení.
+Webové zobrazení umožňuje dosáhnout větší interakce s koncovým uživatelem.
+Toto je také možnost k dispozici volání akce, jako je přesměrování na App Store, otevření webové stránky, odesílání e-mailu, spuštění vyhledávání zjištěnou, atd...
 
 ### <a name="example-web-view"></a>Příklad: Webové zobrazení
-* Vytvořte kampaň nabízených v části "Připojit" hello a zadejte název kampaně.
+* Vytvořte kampaň nabízených v části "Reach" a zadejte název kampaně.
 
 ![WebView2][29]
 
-* Zápis uvítací zprávu, která se zobrazí na hello oznámení.
-* Vyberte typ obsahu oznámení hello jako "web"
+* Zapište zprávu, která se zobrazí na oznámení.
+* Vyberte typ obsahu, oznámení jako "web"
 
 ![WebView3][30]
 
 ### <a name="about-announcement-types"></a>O typech oznámení:
-* Pouze oznámení: je jednoduchý standardní oznámení. Znamená, že pokud uživatel klikne na něm, bez dalšího zobrazení se zobrazí, ale pouze hello akce přidružené tooit dojde.
-* Text oznámení: je oznámení, že zapojí hello uživatele toohave podívejte se na zobrazení textu.
-* Sdělení webovém: je oznámení, že zapojí hello uživatele toohave podívejte se na webové zobrazení.
-  Vyberte hello "Sdělení webovém" obsah.
+* Pouze oznámení: je jednoduchý standardní oznámení. Znamená to, že pokud uživatel klikne na něm, bez dalšího zobrazení se zobrazí, ale jenom akce, které jsou přidružené k ní dojde.
+* Text oznámení: je oznámení, že zapojí uživateli Podíváme se na zobrazení textu.
+* Sdělení webovém: je oznámení, že zapojí uživateli Podíváme se na webové zobrazení.
+  Vyberte obsah "Web oznámení".
 
 > [!NOTE]
 > Po stisknutí webové zobrazení, je vždy se dodává s oznámení nejdřív.
 
-* Definování hello webového obsahu (po výběru hello webového obsahu oznámení, část hello se zobrazí, umožní vám toodefine hello webové zobrazení obsah, který chcete zobrazit toobe.)
+* Definovat webového obsahu (po výběru webový obsah oznámení, zobrazí se část, umožňuje definovat webový obsah zobrazení, které chcete zobrazit.)
 
 ![WebView4][31]
 
-* Zápis hello název, který se zobrazí v horní části hello hello zprávy (volitelné).
+* Zapsat název, který se zobrazí v horní části (volitelné) zprávy.
 * Zápis váš HTML kód.
-* Klikněte na zdroj hello úpravy režimu tlačítko tooswitch edition a v tématu jak to vypadá.
-* Zápis hello obsah, který se zobrazí na hello tlačítko akce (tlačítko akce umožňuje toomake aplikace hello určité akci například otevřete stránku aplikace hello přesměrování tooa Store nebo jakýkoli jiný typu zdroje, které můžete zadat).
-* Zápis hello obsah, který se zobrazí na tlačítko Konec hello (kliknutím na tlačítko Konec hello hello webové zobrazení zmizí).
+* Klikněte na zdroj úpravy tlačítka režimu Přepnout edition a v tématu jak to vypadá.
+* Zapište obsah, který se zobrazí na tlačítko akce (tlačítko akce umožňuje aplikaci, aby se určité akci například otevřete stránku aplikace, přesměrování Store nebo jakýkoli druh zdroje, které můžete zadat).
+* Zápis obsahu, který se zobrazí na tlačítko Konec (kliknutím na tlačítko Konec webového zobrazení zmizí).
 * výsledek
 
 ![WebView5][32]
 
-* Hello uživatel přijímat oznámení hello a klepněte na ni.
-* zobrazení textu Hello se zobrazí automaticky otevírané okno toointeract uživatele pro povolení hello s ním.
+* Příjem oznámení a klepněte na ni uživatele.
+* Textového zobrazení se zobrazí automaticky otevírané okno, které uživateli umožňují pracovat s ním.
 
 <!--Image references-->
 [1]: ./media/mobile-engagement-how-tos/First1.png

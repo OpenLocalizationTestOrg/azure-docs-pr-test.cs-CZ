@@ -1,6 +1,6 @@
 ---
-title: "aaaMonitor clusterů systému Hadoop v HDInsight pomocí hello Ambari API - Azure | Microsoft Docs"
-description: "Použijte hello Apache Ambari API pro vytvoření, správě a monitoringu clusterů systému Hadoop. Operátor intuitivní nástroje a rozhraní API skrýt hello složitost systému Hadoop."
+title: "Monitorování clusterů systému Hadoop v HDInsight pomocí nástroje Ambari API - Azure | Microsoft Docs"
+description: "Použití rozhraní Apache Ambari API pro vytvoření, správě a monitoringu clusterů systému Hadoop. Operátor intuitivní nástroje a rozhraní API překonávají složitost systému Hadoop."
 services: hdinsight
 documentationcenter: 
 tags: azure-portal
@@ -16,53 +16,53 @@ ms.topic: article
 ms.date: 04/07/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: d61a8aae5ddfcd7d44f2e4cc899e0a4da5e5fdcc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b6fc2098027690eb76b69b1427f0e9541b8a7a69
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="monitor-hadoop-clusters-in-hdinsight-using-hello-ambari-api"></a>Monitorování clusterů systému Hadoop v HDInsight pomocí Ambari API hello
-Zjistěte, jak toomonitor HDInsight clustery pomocí rozhraní Ambari API.
+# <a name="monitor-hadoop-clusters-in-hdinsight-using-the-ambari-api"></a>Sledování clusterů Hadoop ve službě HDInsight pomocí rozhraní API Ambari
+Naučte se monitorovat clusterů HDInsight pomocí Ambari API.
 
 > [!NOTE]
-> Hello informace v tomto článku je určen pro clustery HDInsight se systémem Windows, které poskytují jen pro čtení verzi hello Ambari REST API. V clusterech se systémem Linux naleznete v části [clusterů systému Hadoop spravovat pomocí nástroje Ambari](hdinsight-hadoop-manage-ambari.md).
+> Informace v tomto článku je určen pro clustery HDInsight se systémem Windows, které poskytují jen pro čtení verzi Ambari REST API. V clusterech se systémem Linux naleznete v části [clusterů systému Hadoop spravovat pomocí nástroje Ambari](hdinsight-hadoop-manage-ambari.md).
 > 
 > 
 
 ## <a name="what-is-ambari"></a>Co je Ambari?
-[Apache Ambari] [ ambari-home] se používá pro zřizování, správě a monitoringu clusterů systému Apache Hadoop. Obsahuje intuitivní nástrojů pro operátory a výkonnou sadu rozhraní API, které překonávají složitost hello systému Hadoop a zjednodušují operace hello s clustery. Další informace o hello rozhraní API najdete v tématu [referenční dokumentace rozhraní API Ambari][ambari-api-reference]. 
+[Apache Ambari] [ ambari-home] se používá pro zřizování, správě a monitoringu clusterů systému Apache Hadoop. Obsahuje intuitivní sadu nástrojů pro operátory a výkonnou sadu rozhraní API, které překonávají složitost systému Hadoop a zjednodušují operace s clustery. Další informace o rozhraních API najdete v tématu [referenční dokumentace rozhraní API Ambari][ambari-api-reference]. 
 
-HDInsight aktuálně podporuje pouze hello Ambari funkce monitorování. Clustery HDInsight verze 3.0 a 2.1 podporuje Ambari API 1.0. Tento článek se týká přístupu k rozhraní API Ambari v clusterech HDInsight verze 3.1 nebo 2.1. Hello spočívá hlavní rozdíl mezi hello dva je, že některé součásti hello mít změněn s hello zavedením nové funkce (například hello Server historie úloh). 
+HDInsight aktuálně podporuje pouze monitorování funkce Ambari. Clustery HDInsight verze 3.0 a 2.1 podporuje Ambari API 1.0. Tento článek se týká přístupu k rozhraní API Ambari v clusterech HDInsight verze 3.1 nebo 2.1. Klíčovým rozdílem mezi těmito dvěma je, že některé součásti změnily se zavedením nové funkce (například Server historie úlohy). 
 
 **Požadavky**
 
-Než začnete tento kurz, musíte mít hello následující položky:
+Před zahájením tohoto kurzu musíte mít tyto položky:
 
 * **Pracovní stanice s prostředím Azure PowerShell**.
-* (Volitelné) [cURL][curl]. tooinstall, najdete v části [cURL verze a soubory ke stažení][curl-download].
+* (Volitelné) [cURL][curl]. Ho Pokud chcete nainstalovat, najdete v části [cURL verze a soubory ke stažení][curl-download].
   
   > [!NOTE]
-  > Když použijte příkaz cURL hello v systému Windows, použijte dvojité uvozovky značky místo jednoduchých uvozovek pro hodnoty možnosti hello.
+  > Když v systému Windows, použijte dvojité uvozovky značky místo jednoduchých uvozovek pro hodnoty možnosti použít příkaz cURL.
   > 
   > 
-* **Cluster Azure HDInsight**. Pokyny o zřizování clusteru najdete v tématu [začněte používat HDInsight] [ hdinsight-get-started] nebo [zřizování clusterů HDInsight][hdinsight-provision]. Hello následující toogo data prostřednictvím hello kurzu potřebujete:
+* **Cluster Azure HDInsight**. Pokyny o zřizování clusteru najdete v tématu [začněte používat HDInsight] [ hdinsight-get-started] nebo [zřizování clusterů HDInsight][hdinsight-provision]. Je třeba projít tento kurz následující data:
   
   | Vlastnost clusteru | Název proměnné Azure PowerShell | Hodnota | Popis |
   | --- | --- | --- | --- |
-  |   Název clusteru HDInsight |$clusterName | |Hello název clusteru HDInsight. |
-  |   Uživatelské jméno clusteru |$clusterUsername | |Vytvoření clusteru hello zadané clusteru uživatelské jméno. |
+  |   Název clusteru HDInsight |$clusterName | |Název clusteru HDInsight. |
+  |   Uživatelské jméno clusteru |$clusterUsername | |Vytvoření clusteru zadané clusteru uživatelské jméno. |
   |   Heslo clusteru |$clusterPassword | |Heslo uživatele clusteru. |
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 
 ## <a name="jump-start"></a>Rychle začít s prací
-Existuje několik způsobů toouse Ambari toomonitor HDInsight clustery.
+Existuje několik způsobů monitorování clusterů HDInsight pomocí Ambari.
 
 **Použití Azure Powershellu**
 
-Hello následující skript prostředí Azure PowerShell získá hello informací o sledování úloh MapReduce *v clusteru služby HDInsight 3.5.*  Hello klíčovým rozdílem je, že jsme pro vyžádání obsahu tyto podrobnosti ze služby YARN hello (nikoli MapReduce).
+Následující skript prostředí Azure PowerShell získá informace o sledování úlohy MapReduce *v clusteru služby HDInsight 3.5.*  Klíčovým rozdílem je, že jsme pro vyžádání obsahu tyto podrobnosti z YARN služby (nikoli MapReduce).
 
     $clusterName = "<HDInsightClusterName>"
     $clusterUsername = "<HDInsightClusterUsername>"
@@ -78,7 +78,7 @@ Hello následující skript prostředí Azure PowerShell získá hello informac�
 
     $response.metrics.'yarn.queueMetrics'
 
-Následující skript prostředí PowerShell Hello získá hello informací o sledování úloh MapReduce *v clusteru služby HDInsight 2.1*:
+Následující skript prostředí PowerShell získá informace o sledování úloh MapReduce *v clusteru služby HDInsight 2.1*:
 
     $clusterName = "<HDInsightClusterName>"
     $clusterUsername = "<HDInsightClusterUsername>"
@@ -94,17 +94,17 @@ Následující skript prostředí PowerShell Hello získá hello informací o sl
 
     $response.metrics.'mapred.JobTracker'
 
-výstup Hello je:
+Výstup je:
 
 ![Výstup Jobtracker][img-jobtracker-output]
 
 **Použití cURL**
 
-Hello následující příklad získá informace o clusteru pomocí cURL:
+Následující příklad získá informace o clusteru pomocí cURL:
 
     curl -u <username>:<password> -k https://<ClusterName>.azurehdinsight.net:443/ambari/api/v1/clusters/<ClusterName>.azurehdinsight.net
 
-výstup Hello je:
+Výstup je:
 
     {"href":"https://hdi0211v2.azurehdinsight.net/ambari/api/v1/clusters/hdi0211v2.azurehdinsight.net/",
      "Clusters":{"cluster_name":"hdi0211v2.azurehdinsight.net","version":"2.1.3.0.432823"},
@@ -121,12 +121,12 @@ výstup Hello je:
         "Hosts":{"cluster_name":"hdi0211v2.azurehdinsight.net",
                  "host_name":"headnode0.{ClusterDNS}.azurehdinsight.net"}}]}
 
-**Pro verzi 8/10/2014 hello**:
+**Pro tuto verzi 8/10/2014**:
 
-Při použití hello Ambari koncový bod, "https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}" hello *název_hostitele* pole Vrátí hello plně kvalifikovaný název domény (FQDN) uzlu hello místo názvu hostitele hello. Před hello verze 8/10/2014, v tomto příkladu vrátil jednoduše "**headnode0**". Po vydání hello 8/10/2014, získáte hello plně kvalifikovaný název domény "**headnode0. { ClusterDNS} gt; .azurehdinsight .net**", jak je uvedeno v předchozím příkladu hello. Tato změna byla požadovaná toofacilitate scénáře, kde lze nasadit více typů clusteru (například HBase a Hadoop) v jednu virtuální síť (VNET). K tomu dojde, například při použití HBase jako back-end platformy pro Hadoop.
+Při použití Ambari koncového bodu, "https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}" *název_hostitele* pole Vrátí plně kvalifikovaný název domény (FQDN) uzlu místo názvu hostitele. Před vydáním 8/10/2014, v tomto příkladu vrátil jednoduše "**headnode0**". Po vydání 8/10/2014 získat plně kvalifikovaný název domény "**headnode0. { ClusterDNS} gt; .azurehdinsight .net**", jak je uvedeno v předchozím příkladu. Tato změna vyžaduje usnadnění scénáře, kde je možné nasadit více typů clusteru (například HBase a Hadoop) v jednu virtuální síť (VNET). K tomu dojde, například při použití HBase jako back-end platformy pro Hadoop.
 
 ## <a name="ambari-monitoring-apis"></a>Ambari monitorování rozhraní API
-Hello následující tabulka uvádí některé z hello nejběžnější Ambari monitorování volání rozhraní API. Další informace o hello rozhraní API najdete v tématu [referenční dokumentace rozhraní API Ambari][ambari-api-reference].
+Následující tabulka uvádí některé z nejběžnějších Ambari monitorování volání rozhraní API. Další informace o rozhraní API najdete v tématu [referenční dokumentace rozhraní API Ambari][ambari-api-reference].
 
 | Volání rozhraní API monitorování | IDENTIFIKÁTOR URI | Popis |
 | --- | --- | --- |
@@ -144,9 +144,9 @@ Hello následující tabulka uvádí některé z hello nejběžnější Ambari m
 | Získáte informace o konfiguraci. |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/configurations?type=<ConfigType>&tag=<VersionName>` |Konfigurace typů: základní site, hdfs-site, mapred-site, hive-site |
 
 ## <a name="next-steps"></a>Další kroky
-Nyní jste se naučili, jak se volá toouse Ambari API monitorování. toolearn více, najdete v části:
+Nyní jste se naučili použití Ambari monitorování volání rozhraní API. Další informace naleznete v tématu:
 
-* [Správa clusterů HDInsight pomocí hello portálu Azure][hdinsight-admin-portal]
+* [Správa clusterů HDInsight pomocí portálu Azure][hdinsight-admin-portal]
 * [Správa clusterů HDInsight pomocí prostředí Azure PowerShell][hdinsight-admin-powershell]
 * [Správa clusterů HDInsight pomocí rozhraní příkazového řádku][hdinsight-admin-cli]
 * [Dokumentace prostředí HDInsight][hdinsight-documentation]

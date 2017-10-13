@@ -1,6 +1,6 @@
 ---
-title: "zařízení IoT aaaAzure SDK pro jazyk C - serializátor | Microsoft Docs"
-description: "Jak toouse hello serializátor knihovny zařízení Azure IoT hello SDK pro aplikace C toocreate zařízení, které komunikují pomocí služby IoT hub."
+title: "Pro zařízení Azure IoT SDK pro jazyk C - serializátor | Microsoft Docs"
+description: "Jak používat knihovnu serializátor v zařízení Azure IoT SDK pro jazyk C vytvoření aplikace pro zařízení, které komunikují pomocí služby IoT hub."
 services: iot-hub
 documentationcenter: 
 author: olivierbloch
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2016
 ms.author: obloch
-ms.openlocfilehash: c5776e9b50ffea71df96cb2d342ea2fc045f5a0b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: aa03c29c54d75538b1fdf987cac5f09d5d344f73
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>Pro zařízení Azure IoT SDK pro jazyk C – informace o serializátor
-Hello [nejprve článek](iot-hub-device-sdk-c-intro.md) v této řady zavedená hello **zařízení Azure IoT SDK pro jazyk C**. hello následující článek poskytuje podrobnější popis hello [ **IoTHubClient** ](iot-hub-device-sdk-c-iothubclient.md). Tento článek poskytuje podrobnější popis hello zbývající součásti dokončí pokrytí hello SDK: hello **serializátor** knihovny.
+[Nejprve článek](iot-hub-device-sdk-c-intro.md) této série zavedená **zařízení Azure IoT SDK pro jazyk C**. Další článek poskytuje podrobnější popis [ **IoTHubClient**](iot-hub-device-sdk-c-iothubclient.md). Tento článek poskytuje podrobnější popis zbývající součásti dokončí pokrytí sady SDK: **serializátor** knihovny.
 
-Hello úvodní článek popisuje, jak toouse hello **serializátor** knihovny toosend události tooand přijímat zprávy ze služby IoT Hub. V tomto článku jsme rozšířit tento diskuzi o podrobnější vysvětlení způsobu toomodel svá data pomocí hello **serializátor** makro jazyk. článek Hello také obsahuje další podrobnosti o tom, jak hello knihovně serializuje zprávy (a v některých případech jak můžete řídit chování serializace hello). Popíšeme také některé parametry, které můžete upravit určující velikost hello hello modelů, které vytvoříte.
+Úvodní článek popisuje postup použití **serializátor** knihovnu, která se události odesílat a přijímat zprávy ze služby IoT Hub. V tomto článku jsme rozšířit tento diskuzi o podrobnější vysvětlení způsobu modelu svá data pomocí **serializátor** makro jazyk. Článek také obsahuje další podrobnosti o tom, jak knihovny serializuje zprávy (a v některých případech, jak můžete řídit chování serializace). Popíšeme také některé parametry, které můžete upravit určující velikost modely, které vytvoříte.
 
-Nakonec hello článku znovu navštíví některá témata popsaná v předchozích články například zprávu a vlastnosti zpracování. Jak jsme najdete na těchto pracovních funkcí v hello stejným způsobem pomocí hello **serializátor** knihovny stejně jako s hello **IoTHubClient** knihovny.
+Nakonec článek znovu navštíví některá témata popsaná v předchozích články například zprávu a vlastnosti zpracování. Až budete zjistěte těchto pracovních funkcí ve stejném způsobem pomocí **serializátor** knihovny stejně jako s **IoTHubClient** knihovny.
 
-Všechno, co popsané v tomto článku je založena na hello **serializátor** ukázky SDK. Pokud chcete toofollow společně, najdete v části hello **simplesample\_amqp** a **simplesample\_http** aplikace, které jsou součástí zařízení Azure IoT hello SDK pro C.
+Všechno, co popsané v tomto článku je založena na **serializátor** ukázky SDK. Pokud chcete sledovat, najdete v článku **simplesample\_amqp** a **simplesample\_http** aplikace, které jsou součástí sady SDK zařízení Azure IoT pro C.
 
-Můžete najít hello [ **zařízení Azure IoT SDK pro jazyk C** ](https://github.com/Azure/azure-iot-sdk-c) Githubu úložiště a zobrazte podrobnosti o hello rozhraní API v hello [referenční dokumentace rozhraní API jazyka C](https://azure.github.io/azure-iot-sdk-c/index.html).
+Můžete najít [ **zařízení Azure IoT SDK pro jazyk C** ](https://github.com/Azure/azure-iot-sdk-c) Githubu úložiště a zobrazte podrobnosti o rozhraní API v [referenční dokumentace rozhraní API jazyka C](https://azure.github.io/azure-iot-sdk-c/index.html).
 
-## <a name="hello-modeling-language"></a>představuje Modelovací jazyk Hello
-Hello [úvodní článek](iot-hub-device-sdk-c-intro.md) v této řady zavedená hello **zařízení Azure IoT SDK pro jazyk C** Modelovací jazyk prostřednictvím hello příkladu v hello **simplesample\_amqp**  aplikace:
+## <a name="the-modeling-language"></a>Představuje Modelovací jazyk
+[Úvodní článek](iot-hub-device-sdk-c-intro.md) této série zavedená **zařízení Azure IoT SDK pro jazyk C** Modelovací jazyk prostřednictvím v příkladu v **simplesample\_amqp** aplikace:
 
 ```
 BEGIN_NAMESPACE(WeatherStation);
@@ -48,21 +48,21 @@ WITH_ACTION(SetAirResistance, int, Position)
 END_NAMESPACE(WeatherStation);
 ```
 
-Jak je vidět, hello Modelovací jazyk je založena na maker v jazyce C. Je třeba nejprve vaší definice s **BEGIN\_obor názvů** a vždy končit **END\_obor názvů**. Je běžné tooname hello obor názvů pro vaši společnost nebo, jako v následujícím příkladě hello projekt, který právě pracujete.
+Jak vidíte, který představuje Modelovací jazyk je založena na maker v jazyce C. Je třeba nejprve vaší definice s **BEGIN\_obor názvů** a vždy končit **END\_obor názvů**. Je běžné název oboru názvů pro vaši společnost nebo, jako v následujícím příkladu, projekt, který právě pracujete.
 
-Co v oboru názvů hello jsou definice modelu. V takovém případě je jeden model anemometer. Ještě jednou hello modelu může být název nic, ale to má obvykle název pro hello zařízení nebo typ dat chcete tooexchange službou IoT Hub.  
+Co v oboru názvů jsou definice modelu. V takovém případě je jeden model anemometer. Ještě jednou může být název modelu, nic, ale obvykle to jmenuje pro zařízení nebo typ dat, kterou chcete exchange službou IoT Hub.  
 
-Modely obsahují definice hello událostí můžete příjem příchozích dat tooIoT centra (hello *data*) a také můžete přijímat ze služby IoT Hub zprávy hello (hello *akce*). Jak je vidět z příkladu hello události mít typ a název; název a volitelné parametry (každý s typem) mají akce.
+Modely obsahují definice událostí můžete příjem příchozích dat do služby IoT Hub ( *data*) a také zprávy může přijímat ze služby IoT Hub ( *akce*). Jak je vidět z příkladu události mít typ a název; název a volitelné parametry (každý s typem) mají akce.
 
-Co není ukázáno v této ukázce jsou další datové typy, které jsou podporovány hello SDK. Jsme zaměříme tento další.
+Co není ukázáno v této ukázce jsou další datové typy, které jsou podporované sadou SDK. Jsme zaměříme tento další.
 
 > [!NOTE]
-> IoT Hub odkazuje toohello data zařízení odesílá tooit jako *události*, zatímco hello Modelovací jazyk odkazuje tooit jako *data* (definovat pomocí **WITH_DATA**). Podobně IoT Hub odkazuje toohello data, která odešlete toodevices jako *zprávy*, zatímco hello Modelovací jazyk odkazuje tooit jako *akce* (definovat pomocí **WITH_ACTION**). Upozorňujeme, že tyto podmínky mohou být použity zcela zaměnitelným významem v tomto článku.
+> IoT Hub odkazuje na data, která zařízení odesílá do ní jako *události*, zatímco jazyk modelování odkazuje na jej jako *data* (definovat pomocí **WITH_DATA**). Podobně IoT Hub odkazuje na data, která odešlete na zařízení jako *zprávy*, zatímco jazyk modelování odkazuje na jej jako *akce* (definovat pomocí **WITH_ACTION**). Upozorňujeme, že tyto podmínky mohou být použity zcela zaměnitelným významem v tomto článku.
 > 
 > 
 
 ### <a name="supported-data-types"></a>Podporované datové typy
-v modelů vytvořených pomocí hello jsou podporovány následující typy dat Hello **serializátor** knihovny:
+Jsou podporovány následující typy dat v modelů vytvořených pomocí **serializátor** knihovny:
 
 | Typ | Popis |
 | --- | --- |
@@ -81,7 +81,7 @@ v modelů vytvořených pomocí hello jsou podporovány následující typy dat 
 | EDM\_BINÁRNÍ |Binární |
 | DEKLAROVAT\_– STRUKTURA |Komplexní datový typ |
 
-Začněme s datovým typem poslední hello. Hello **DECLARE\_struktura** můžete toodefine komplexní datové typy, které jsou seskupení hello jiné primitivní typy. Tato seskupení nám umožňují toodefine model, který vypadá takto:
+Začněme s posledním datovým typem. **DECLARE\_struktura** můžete zadat rozšířené datové typy, které jsou seskupení primitivní typy. Tato seskupení povolit nám definovat model, který vypadá takto:
 
 ```
 DECLARE_STRUCT(TestType,
@@ -106,9 +106,9 @@ WITH_DATA(TestType, Test)
 );
 ```
 
-Naše model obsahuje událostí jednoho datového typu **TestType**. **TestType** jedná o komplexní typ, který zahrnuje několik členů, které se souhrnně ukazují hello primitivní typy podporované systémem hello **serializátor** Modelovací jazyk.
+Naše model obsahuje událostí jednoho datového typu **TestType**. **TestType** jedná o komplexní typ, který zahrnuje několik členů, které se souhrnně ukazují primitivní typy podporované systémem **serializátor** Modelovací jazyk.
 
-S modelem takhle jsme zápisu kódu toosend data tooIoT rozbočovače, který se zobrazí následujícím způsobem:
+S takového modelu jsme můžete napsat kód pro odesílání dat do služby IoT Hub, který se zobrazí následujícím způsobem:
 
 ```
 TestModel* testModel = CREATE_MODEL_INSTANCE(MyThermostat, TestModel);
@@ -139,7 +139,7 @@ testModel->Test.aBinary = binaryData;
 SendAsync(iotHubClientHandle, (const void*)&(testModel->Test));
 ```
 
-V podstatě, jsme se přiřazení členem hodnota tooevery hello **Test** strukturu a pak volání **SendAsync** toosend hello **Test** toohello dat události v cloudu. **SendAsync** je pomocné funkce, která odesílá události tooIoT jednoho datového centra:
+V podstatě, jsme se přiřazení hodnoty k každý člen **testovací** strukturu a pak volání **SendAsync** k odeslání **testovací** dat událostí do cloudu. **SendAsync** je pomocné funkce, která odesílá události jednoho datového do služby IoT Hub:
 
 ```
 void SendAsync(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const void *dataEvent)
@@ -148,7 +148,7 @@ void SendAsync(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const void *dataEvent
     size_t destinationSize;
     if (SERIALIZE(&destination, &destinationSize, *(const unsigned char*)dataEvent) ==
     {
-        // null terminate hello string
+        // null terminate the string
         char* destinationAsString = (char*)malloc(destinationSize + 1);
         if (destinationAsString != NULL)
         {
@@ -168,9 +168,9 @@ void SendAsync(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const void *dataEvent
 }
 ```
 
-Tato funkce serializuje hello určitá událost data a odešle ji tooIoT centra pomocí **IoTHubClient\_SendEventAsync**. Toto je stejný kód popsané v předchozí články hello (**SendAsync** zapouzdří hello logiku do vhodného funkce).
+Tato funkce serializuje daná data události a odesílá do služby IoT Hub pomocí **IoTHubClient\_SendEventAsync**. Toto je stejný kód popsané v předchozí články (**SendAsync** zapouzdří logiku do vhodného funkce).
 
-Jeden další pomocné funkce použitá v předchozí kód hello je **GetDateTimeOffset**. Tato funkce transformuje zadaný čas do hodnoty typu hello **EDM\_datum\_čas\_posun**:
+Jeden další pomocné funkce použitá v předchozí kód je **GetDateTimeOffset**. Tato funkce transformuje daném čase na hodnotu typu **EDM\_datum\_čas\_posun**:
 
 ```
 EDM_DATE_TIME_OFFSET GetDateTimeOffset(time_t time)
@@ -188,29 +188,29 @@ EDM_DATE_TIME_OFFSET GetDateTimeOffset(time_t time)
 }
 ```
 
-Pokud spustíte tento kód, je odeslána hello následující zprávou tooIoT rozbočovače:
+Pokud spustíte tento kód, následující zpráva odeslána do služby IoT Hub:
 
 ```
 {"aDouble":1.100000000000000, "aInt":2, "aFloat":3.000000, "aLong":4, "aInt8":5, "auInt8":6, "aInt16":7, "aInt32":8, "aInt64":9, "aBool":true, "aAsciiCharPtr":"ascii string 1", "aDateTimeOffset":"2015-09-14T21:18:21Z", "aGuid":"00010203-0405-0607-0809-0A0B0C0D0E0F", "aBinary":"AQID"}
 ```
 
-Upozorňujeme, že hello serializace JSON, který je formát hello generované hello **serializátor** knihovny. Také Všimněte si, že každý člen hello serializovat objekt JSON odpovídající hello členy hello **TestType** , definovaného v našem modelu. hodnoty Hello také přesně odpovídat používaných v kódu hello. Ale Všimněte si, že binární data hello kódováním base64: "AQID" je text hello, kódování base64 {0x01, 0x02, 0x03}.
+Upozorňujeme, že serializaci JSON, který je ve formátu vygenerované pomocí **serializátor** knihovny. Všimněte si, že každý člen serializovaný objekt JSON odpovídá členů **TestType** , definovaného v našem modelu. Hodnoty také přesně shodovat s hodnotami používá v kódu. Ale Všimněte si, že binární data s kódováním base64, pomocí: "AQID" je Base64, pomocí kódování {0x01, 0x02, 0x03}.
 
-Tento příklad ukazuje hello výhodou použití hello **serializátor** knihovna – umožňuje nám toosend JSON toohello cloudu, bez nutnosti tooexplicitly řešit serializace v naší aplikaci. Všechny, které máme tooworry o je nastavení hello hodnot hello dat události v našich modelu a poté volání jednoduché rozhraní API toosend tyto události toohello cloudu.
+Tento příklad ukazuje výhodou použití **serializátor** knihovna – umožňuje poslat JSON do cloudu, bez nutnosti explicitně serializace v naší aplikaci. Všechny, které máme si dělat starosti se nastaví hodnoty dat události v našem modelu a poté volání jednoduché rozhraní API k odeslání události do cloudu.
 
-Pomocí těchto informací jsme můžete definovat modelů, které obsahují hello rozsah podporované datové typy, včetně komplexní typy (může i zahrnuta komplexních typů v rámci jiné komplexní typy). Však mohl serializovat JSON vygenerované pomocí hello příkladu výše, na které se vyvolá bod důležité. *Jak* jsme odesílat data s hello **serializátor** knihovny určuje přesně jak je vytvořen hello JSON. Zda je konkrétní bodu, co jsme zaměříme Další.
+Pomocí těchto informací jsme můžete definovat modely, které zahrnují řadu podporované datové typy, včetně komplexní typy (může i zahrnuta komplexních typů v rámci jiné komplexní typy). Však mohl serializovat JSON vygenerovaných v předchozím příkladu se vyvolá bod důležité. *Jak* odešleme dat pomocí **serializátor** knihovny určuje přesně jak je formátu JSON. Zda je konkrétní bodu, co jsme zaměříme Další.
 
 ## <a name="more-about-serialization"></a>Další informace o serializaci
-Příklad výstupu hello generované hello označuje předchozí části Hello **serializátor** knihovny. V této části vám objasníme, jak hello knihovně serializuje data a jak můžete řídit tohoto chování pomocí hello serializace rozhraní API.
+V předchozí části jsou zdůrazněné příklad výstupu generované **serializátor** knihovny. V této části vám objasníme, jak knihovny serializuje data a jak můžete řídit tohoto chování pomocí serializace rozhraní API.
 
-V pořadí tooadvance hello zabývat serializace jsme budete pracovat s nový model podle termostatu. Nejprve umožňuje zadat základní na scénáři hello pokoušíme tooaddress.
+Chcete-li zálohy diskuse o serializaci, jsme budete pracovat se nový model podle termostatu. Nejprve umožňuje zadat základní na scénáři Pokoušíme se adresa.
 
-Chceme toomodel termostatu, které měří teploty a vlhkosti. Každá položka dat bude toobe jinak odeslané tooIoT rozbočovače. Ve výchozím nastavení hello termostatu ingresses teploty událostí jednou za 2 minut; událost vlhkosti je ingressed jednou za 15 minut. Pokud se buď událostí ingressed, musí obsahovat časové razítko, který zobrazuje čas hello této odpovídající teplotě hello nebo vlhkosti se měří.
+Chceme modelu termostatu, které měří teploty a vlhkosti. Každá položka dat je přejdete k odeslání do služby IoT Hub jinak. Ve výchozím nastavení ingresses termostatu teploty událostí jednou za 2 minut; událost vlhkosti je ingressed jednou za 15 minut. Po ingressed buď událostí musí obsahovat časové razítko, které zobrazuje čas, že se měří odpovídající teploty a vlhkosti.
 
-Zadané v tomto scénáři, budete ukážeme dva různé způsoby toomodel hello dat a vysvětlíme hello vliv, modelování má na hello serializovat výstup.
+Tento scénář, vám ukážeme dva různé způsoby, jak model dat, a vysvětlíme účinek, modelování měl na serializovaných výstup.
 
 ### <a name="model-1"></a>Model 1
-Tady je hello první verzi modelu, podporuje hello předchozí situaci:
+Tady je první verze součásti model, který podporuje předchozí situaci:
 
 ```
 BEGIN_NAMESPACE(Contoso);
@@ -231,9 +231,9 @@ WITH_DATA(HumidityEvent, Humidity)
 END_NAMESPACE(Contoso);
 ```
 
-Všimněte si, že hello modelu zahrnuje dvě data události: **teploty** a **vlhkosti**. Na rozdíl od předchozích příkladech hello typu jednotlivých událostí je struktura definovat pomocí **DECLARE\_struktura**. **TemperatureEvent** zahrnuje měření teploty a časové razítko; **HumidityEvent** obsahuje měření vlhkosti a časové razítko. Tento model nám dává dat přirozené způsob toomodel hello hello scénář popsaný výše. Když jsme poslat svůj cloud toohello událostí, buď pošleme teploty/časové razítko nebo pár vlhkosti/časové razítko.
+Všimněte si, že tento model zahrnuje dvě data události: **teploty** a **vlhkosti**. Na rozdíl od předchozích příkladech typ jednotlivých událostí je struktura definovat pomocí **DECLARE\_struktura**. **TemperatureEvent** zahrnuje měření teploty a časové razítko; **HumidityEvent** obsahuje měření vlhkosti a časové razítko. Tento model nám poskytuje přirozené způsob, jak model data pro scénář popsaný výše. Když jsme odeslání události do cloudu, buď pošleme teploty/časové razítko nebo pár vlhkosti/časové razítko.
 
-Vám můžeme poslat cloudu toohello událostí teploty pomocí kódu třeba hello následující:
+Vám můžeme poslat teploty událostí v cloudu pomocí kódu, například následující:
 
 ```
 time_t now;
@@ -249,9 +249,9 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature) == IOT_AG
 }
 ```
 
-Jsme budete používat pevně definovaných hodnot pro teploty a vlhkosti v hello ukázkový kód, ale Představte si, že jsme se ve skutečnosti načítání tyto hodnoty vzorkováním hello odpovídající senzorů na termostatu hello.
+Jsme budete používat pevně definovaných hodnot pro teploty a vlhkosti v ukázkovém kódu, ale Představte si, že jsme se ve skutečnosti načítání tyto hodnoty vzorkováním odpovídající snímače na termostatu.
 
-výše uvedený kód Hello používá hello **GetDateTimeOffset** pomocné rutiny, která byla zavedená dříve. Z důvodů, které se stanou zrušte novější se tento kód explicitně odděluje hello úlohy serializaci a odesílat události hello. Předchozí kód Hello serializuje hello teploty událostí do vyrovnávací paměti. Potom **sendMessage** je pomocné funkce (součástí **simplesample\_amqp**), odešle hello event tooIoT Hub:
+Kód výše používá **GetDateTimeOffset** pomocné rutiny, která byla zavedená dříve. Z důvodů, které se stanou zrušte novější se tento kód explicitně odděluje úlohu serializaci a odeslání události. Předchozí kód serializuje teploty událostí do vyrovnávací paměti. Potom **sendMessage** je pomocné funkce (součástí **simplesample\_amqp**), odešle událost do služby IoT Hub:
 
 ```
 static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned char* buffer, size_t size)
@@ -268,15 +268,15 @@ static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned 
 }
 ```
 
-Tento kód je podmnožinou hello **SendAsync** pomocné rutiny popsané v předchozí části hello, takže jsme nebude projít ho znovu sem.
+Tento kód je podmnožinou **SendAsync** pomocné rutiny popsané v předchozí části, takže jsme nebude projít ho znovu sem.
 
-Při spuštění jsme hello předchozí kód toosend hello teploty událostí, tento serializovaných formulář hello událostí je odeslána tooIoT rozbočovače:
+Když jsme spustí předchozí kódu pro odeslání události teploty, tento formulář serializovaných události je odeslána do služby IoT Hub:
 
 ```
 {"Temperature":75, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-Byla odeslána teploty, které je typu **TemperatureEvent** a že struktura obsahuje **teploty** a **čas** člen. To se projeví přímo v datech hello serializovat.
+Byla odeslána teploty, které je typu **TemperatureEvent** a že struktura obsahuje **teploty** a **čas** člen. To se projeví přímo v serializovaných datech.
 
 Podobně vám můžeme poslat vlhkosti událostí s tímto kódem:
 
@@ -289,7 +289,7 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Humidity) == IOT_AGENT
 }
 ```
 
-Hello serializovat formulář, který odeslal tooIoT rozbočovače vypadá takto:
+Serializovaná formulář, který je odeslán do služby IoT Hub vypadá takto:
 
 ```
 {"Humidity":45, "Time":"2015-09-17T18:45:56Z"}
@@ -297,12 +297,12 @@ Hello serializovat formulář, který odeslal tooIoT rozbočovače vypadá takto
 
 To je opět podle očekávání.
 
-V tomto modelu, který chcete mít jak další události lze snadno přidat. Můžete definovat další struktur pomocí **DECLARE\_struktura**a zahrnovat hello odpovídající události v hello pomocí modelu **WITH\_DATA**.
+V tomto modelu, který chcete mít jak další události lze snadno přidat. Můžete definovat další struktur pomocí **DECLARE\_struktura**a zahrnovat odpovídající události v modelu pomocí **WITH\_DATA**.
 
-Nyní Pojďme upravit hello modelu tak, že obsahují hello stejná data, ale s jinou strukturu.
+Nyní Pojďme upravit modelu tak, že obsahují stejná data, ale s jinou strukturu.
 
 ### <a name="model-2"></a>Model 2
-Vezměte v úvahu tato alternativní modelu toohello jeden výše:
+Vezměte v úvahu tento alternativní model tomu výše:
 
 ```
 DECLARE_MODEL(Thermostat,
@@ -312,9 +312,9 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 );
 ```
 
-V takovém případě jsme vyloučili hello **DECLARE\_struktura** makra a jsou jednoduše definování hello datové položky z našich scénář pomocí jednoduché typy z hello Modelovací jazyk.
+V takovém případě jsme vyloučili **DECLARE\_struktura** makra a jsou jednoduše definování datové položky z našich scénář pomocí jednoduché typy z představuje Modelovací jazyk.
 
-Jenom pro hello chvíli umožňuje ignorovat hello **čas** událostí. S vyhraďte, zde je kód tooingress hello **teploty**:
+Jenom pro tuto chvíli umožňuje ignorovat **čas** událostí. S vyhraďte, zde je kód pro příjem příchozích dat **teploty**:
 
 ```
 time_t now;
@@ -329,13 +329,13 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature) == IOT_AG
 }
 ```
 
-Tento kód odešle hello následující serializovat event tooIoT Hub:
+Tento kód následující událostí serializovaný odešle do služby IoT Hub:
 
 ```
 {"Temperature":75}
 ```
 
-A hello kód pro odesílání událostí vlhkosti hello vypadat takto:
+A kód pro odesílání událostí vlhkosti vypadat takto:
 
 ```
 thermostat->Humidity = 45;
@@ -345,15 +345,15 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Humidity) == IOT_AGENT
 }
 ```
 
-Tento kód odešle tento tooIoT rozbočovače:
+Tento kód to odešle do služby IoT Hub:
 
 ```
 {"Humidity":45}
 ```
 
-Pokud existují ještě žádné výskyt nečekaných událostí. Nyní změníme jak používáme makro hello SERIALIZACE.
+Pokud existují ještě žádné výskyt nečekaných událostí. Nyní změníme jak používáme makro SERIALIZACE.
 
-Hello **SERIALIZACE** makro může trvat několik dat události jako argumenty. To umožňuje nám tooserialize hello **teploty** a **vlhkosti** událostí společně a jejich odeslání tooIoT rozbočovače jedno volání:
+**SERIALIZACE** makro může trvat několik dat události jako argumenty. To umožňuje nám k serializaci **teploty** a **vlhkosti** událostí společně a odešlete je do služby IoT Hub v jednom volání:
 
 ```
 if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature, thermostat->Humidity) == IOT_AGENT_OK)
@@ -362,7 +362,7 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature, thermosta
 }
 ```
 
-Může uhodnout, že hello výsledek tohoto kódu je, že dvě data události se posílají tooIoT rozbočovače:
+Může uhodnout, že výsledkem tohoto kódu je, že se dvěma datovými události posílají do služby IoT Hub:
 
 [
 
@@ -372,7 +372,7 @@ Může uhodnout, že hello výsledek tohoto kódu je, že dvě data události se
 
 ]
 
-Jinými slovy, můžou očekávat, že tento kód je text hello stejné jako odesílání **teploty** a **vlhkosti** samostatně. Je právě usnadnění práce toopass obou události příliš**SERIALIZACE** v hello stejné volat. Ale to není hello případ. Místo toho výše uvedený kód hello odešle tento tooIoT událostí jednoho datového centra:
+Jinými slovy, můžou očekávat, že tento kód je stejný jako odesílání **teploty** a **vlhkosti** samostatně. Je právě v zájmu usnadnění předat obou události **SERIALIZACE** ve stejném volání. Nicméně, který tak není. Místo toho výše uvedený kód odešle tato událost jednoho datového do služby IoT Hub:
 
 {"Teploty": 75, "vlhkosti": 45}
 
@@ -386,7 +386,7 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 );
 ```
 
-Další toohello bodu jsme nebyl model tyto události kde **teploty** a **vlhkosti** jsou v hello stejnou strukturu:
+Více bodu jsme nebyl model tyto události kde **teploty** a **vlhkosti** jsou ve stejné struktuře:
 
 ```
 DECLARE_STRUCT(TemperatureAndHumidityEvent,
@@ -399,9 +399,9 @@ WITH_DATA(TemperatureAndHumidityEvent, TemperatureAndHumidity),
 );
 ```
 
-Pokud jsme použili tento model, by bylo snazší toounderstand jak **teploty** a **vlhkosti** mají být odeslány v hello stejné serializovat zprávy. Ale nemusí být zřejmé, proč funguje tímto způsobem při předání obou událostí data příliš**SERIALIZACE** pomocí modelu 2.
+Pokud jsme použili tento model, bude možné snadněji pochopit, jak **teploty** a **vlhkosti** se využije stejné serializovaná zpráva. Ale nemusí být zřejmé, proč funguje tímto způsobem při předání obě data události **SERIALIZACE** pomocí modelu 2.
 
-Toto chování je snazší toounderstand Pokud znáte hello předpoklady tohoto hello **serializátor** je zajistit knihovny. smyslu toomake Vraťme back tooour modelu:
+Toto chování je jednodušší zjistit, pokud víte, předpokladů že **serializátor** je zajistit knihovny. Chcete-li mít smysl to přejděte zpět do našeho modelu:
 
 ```
 DECLARE_MODEL(Thermostat,
@@ -413,7 +413,7 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 
 Tento model si můžete představit v objektově orientované podmínky. V takovém případě jsme se modelování fyzického zařízení (termostatu) a zařízení zahrnuje atributů, například **teploty** a **vlhkosti**.
 
-Vám můžeme poslat hello celý stav našeho modelu s kódem například hello následující:
+Vám můžeme poslat celý stav našeho modelu s kódem například následující:
 
 ```
 if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature, thermostat->Humidity, thermostat->Time) == IOT_AGENT_OK)
@@ -422,36 +422,36 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature, thermosta
 }
 ```
 
-Za předpokladu, že jsou nastavené hodnoty hello z teploty a vlhkosti, čas, jsme zobrazen událost podobně jako tento odeslané tooIoT rozbočovače:
+Za předpokladu, že hodnoty z teploty, nastavení vlhkosti a času, vidíme by událost takto odeslané do služby IoT Hub:
 
 ```
 {"Temperature":75, "Humidity":45, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-V některých případech může být pouze vhodné toosend *některé* vlastností hello modelu toohello cloudu (to je obzvláště hodnota true, pokud model obsahuje velké množství dat událostí). Je užitečné toosend pouze podmnožinu dat události, například v našem příkladu starší:
+Někdy může jenom chcete odeslat *některé* vlastnosti modelu do cloudu (to je obzvláště hodnota true, pokud model obsahuje velké množství dat událostí). Je užitečné k odeslání pouze podmnožinu dat události, například v našem příkladu starší:
 
 ```
 {"Temperature":75, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-Tím se vygeneruje přesně hello stejné serializovat události, jako kdyby měl definovaného **TemperatureEvent** s **teploty** a **čas** člena, stejně jako jsme s modelu 1. V tomto případě nebylo možné toogenerate přesně hello stejné serializovat událostí pomocí jiného modelu (model 2), protože volali jsme **SERIALIZACE** jiným způsobem.
+Tím se vygeneruje přesně stejnou událostí serializovaný jako kdyby měl definovaného **TemperatureEvent** s **teploty** a **čas** člena, stejně jako jsme s modelu 1. V takovém případě jsme byli schopni generování přesně stejnou událostí serializovaný pomocí jiného modelu (model 2), protože volali jsme **SERIALIZACE** jiným způsobem.
 
-Hello bodu důležité je, že pokud předáte více dat událostí příliš**SERIALIZACE,** pak předpokládá, že každá událost je vlastnost v jeden objekt JSON.
+Důležité je, že pokud předáte více dat událostí do **SERIALIZACE,** pak předpokládá, že každá událost je vlastnost v jeden objekt JSON.
 
-Nejlepším postupem Hello závisí na a jak si myslíte o modelu. Pokud odesíláte "události" toohello cloudu a každé události, obsahuje sada vlastností, hello prvním přístupem je velké množství smysl. V takovém případě byste použili **DECLARE\_struktura** toodefine hello struktura jednotlivých událostí a zahrnout je do modelu pomocí hello **WITH\_DATA** makro. Každá událost se pak odeslat jako jsme to udělali v prvním příkladu hello výše. V tomto přístupu by pouze předáte jednoho datového událostí příliš**SERIALIZÁTOR**.
+Nejlepší metodou závisí na a jak si myslíte o modelu. Pokud odesíláte "události" do cloudu a každé události, obsahuje sada vlastností, prvním přístupem je velké množství smysl. V takovém případě byste použili **DECLARE\_struktura** definovat strukturu každé události a zahrnout je do modelu pomocí **WITH\_DATA** makro. Pak je odeslat všechny události, jako jsme to udělali v prvním příkladu výše. V tomto přístupu jenom předáte jednoho datového událost pro **SERIALIZÁTOR**.
 
-Pokud si myslíte o modelu způsobem objektově orientované, může vyhovovat hello druhý postup je. V takovém případě hello elementy definovat pomocí **WITH\_DATA** jsou hello "vlastnosti" objektu. Ať podmnožinu události předáte příliš**SERIALIZACE** , že se vám líbí, podle toho, kolik z vaší "" stav objektu chcete toosend toohello cloudu.
+Pokud si myslíte o modelu způsobem objektově orientované, může vyhovovat druhý postup je. V takovém případě elementy definovat pomocí **WITH\_DATA** jsou "vlastnosti" objektu. Předat ať podmnožinu události **SERIALIZACE** , se vám líbí, podle toho, kolik z vaší "" stav objektu se mají posílat do cloudu.
 
-Nether přístup je pravé nebo nesprávné. Právě zajímat, jak hello **serializátor** funguje knihovny a vybrat hello modelování přístup, který nejlépe vyhovuje vašim potřebám.
+Nether přístup je pravé nebo nesprávné. Právě zajímat, jak **serializátor** funguje knihovny a vybrat přístup modelování, který nejlépe vyhovuje vašim potřebám.
 
 ## <a name="message-handling"></a>Zpracování zpráv
-Tento článek, pokud má pouze popsané odesílání událostí tooIoT rozbočovače a nebyl řešit přijímání zpráv. Hello důvod pro to, co potřebujeme tooknow o přijímání zpráv má z velké části popsaná v [dříve článek](iot-hub-device-sdk-c-intro.md). Z tohoto článku odvolat, zpracování zpráv tak, že zaregistrujete funkci zpětného volání zpráva:
+Tento článek, pokud má pouze popsané odesílání událostí do služby IoT Hub a nebyl řešit přijímání zpráv. Z důvodu pro to, co je potřeba vědět o přijímání zpráv má z velké části popsaná v [dříve článek](iot-hub-device-sdk-c-intro.md). Z tohoto článku odvolat, zpracování zpráv tak, že zaregistrujete funkci zpětného volání zpráva:
 
 ```
 IoTHubClient_SetMessageCallback(iotHubClientHandle, IoTHubMessage, myWeather)
 ```
 
-Potom napíšete hello funkce zpětného volání, která je volána, když je obdržena zprávu:
+Funkce zpětného volání, která je volána, když je obdržena zprávu zapište:
 
 ```
 static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
@@ -461,7 +461,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE mess
     size_t size;
     if (IoTHubMessage_GetByteArray(message, &buffer, &size) != IOTHUB_MESSAGE_OK)
     {
-        printf("unable tooIoTHubMessage_GetByteArray\r\n");
+        printf("unable to IoTHubMessage_GetByteArray\r\n");
         result = EXECUTE_COMMAND_ERROR;
     }
     else
@@ -470,7 +470,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE mess
         char* temp = malloc(size + 1);
         if (temp == NULL)
         {
-            printf("failed toomalloc\r\n");
+            printf("failed to malloc\r\n");
             result = EXECUTE_COMMAND_ERROR;
         }
         else
@@ -489,7 +489,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE mess
 }
 ```
 
-Tato implementace **IoTHubMessage** volání hello konkrétní funkce pro každou akci do modelu. Například pokud váš model definuje tato akce:
+Tato implementace **IoTHubMessage** volá konkrétní funkci pro každou akci do modelu. Například pokud váš model definuje tato akce:
 
 ```
 WITH_ACTION(SetAirResistance, int, Position)
@@ -501,51 +501,51 @@ Je nutné definovat funkce s Tento podpis:
 EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
 {
     (void)device;
-    (void)printf("Setting Air Resistance Position too%d.\r\n", Position);
+    (void)printf("Setting Air Resistance Position to %d.\r\n", Position);
     return EXECUTE_COMMAND_SUCCESS;
 }
 ```
 
-**SetAirResistance** pak je volána při odeslání zprávy tooyour zařízení.
+**SetAirResistance** pak je volána při odeslání zprávy do vašeho zařízení.
 
-Co jsme nebyly vysvětlené je ještě Jaká zpráva vypadá jako verze hello serializovat. Jinými slovy Pokud chcete, aby toosend **SetAirResistance** zpráva tooyour zařízení, co typu?
+Co jsme nebyly vysvětlené ještě je serializovaná verze zprávy, která bude vypadat takto. Jinými slovy Pokud chcete odeslat **SetAirResistance** zpráva do zařízení, co typu?
 
-Pokud chcete odeslat zprávu tooa zařízení, krok lze provést pomocí sady SDK služby Azure IoT hello. Je stále nutné tooknow řetězec toosend tooinvoke určité akce. Hello obecný formát pro odesílání zprávy vypadá takto:
+Pokud odesíláte zprávy do zařízení, krok lze provést pomocí sady SDK služby Azure IoT. Dál potřebujete vědět, jaké řetězec k odeslání do volání určité akce. Obecný formát pro odesílání zprávy vypadá takto:
 
 ```
 {"Name" : "", "Parameters" : "" }
 ```
 
-Odesíláte serializovaný objekt JSON s dvě vlastnosti: **název** je hello název akce hello (zprávy) a **parametry** obsahuje parametry hello této akce.
+Odesíláte serializovaný objekt JSON s dvě vlastnosti: **název** je název akce (zprávy) a **parametry** obsahuje parametry této akce.
 
-Například tooinvoke **SetAirResistance** můžete odeslat tuto zprávu tooa zařízení:
+Například pro vyvolání **SetAirResistance** tuto zprávu můžete odeslat do zařízení:
 
 ```
 {"Name" : "SetAirResistance", "Parameters" : { "Position" : 5 }}
 ```
 
-Název akce Hello musí přesně shodovat akce definované v modelu. Hello názvy parametrů musí odpovídat také. Všimněte si také malá a velká písmena. **Název** a **parametry** jsou vždy velká písmena. Ujistěte se, že případ hello toomatch názvu akce a parametrů do modelu. V tomto příkladu je název akce hello "SetAirResistance" a není "setairresistance".
+Název akce musí přesně shodovat akce definované v modelu. Názvy parametrů musí odpovídat také. Všimněte si také malá a velká písmena. **Název** a **parametry** jsou vždy velká písmena. Ujistěte se, že malá a velká písmena názvu akce a parametrů do modelu. V tomto příkladu je název akce "SetAirResistance" a není "setairresistance".
 
-Hello dva další akce **TurnFanOn** a **TurnFanOff** nelze vyvolat odesláním těchto zpráv tooa zařízení:
+Další dvě akce **TurnFanOn** a **TurnFanOff** nelze vyvolat odesláním těchto zpráv do zařízení:
 
 ```
 {"Name" : "TurnFanOn", "Parameters" : {}}
 {"Name" : "TurnFanOff", "Parameters" : {}}
 ```
 
-Tato část popisuje všechno, co potřebujete tooknow při odesílání událostí a přijímání zpráv s hello **serializátor** knihovny. Než budete pokračovat, můžeme zahrnují některé parametry, které můžete nakonfigurovat, které řídí, jak velké je váš model.
+Tato část popisuje všechno, co potřebujete vědět, kdy události odesílání a příjem zpráv s **serializátor** knihovny. Než budete pokračovat, můžeme zahrnují některé parametry, které můžete nakonfigurovat, které řídí, jak velké je váš model.
 
 ## <a name="macro-configuration"></a>Konfigurace – makro
-Pokud používáte hello **serializátor** knihovny důležitou součástí toobe SDK hello vědět, se nachází v hello azure-c sdílené – knihovna nástrojů.
-Při naklonování úložiště hello Azure-iot-sdk-c z Githubu pomocí možnosti--rekurzivní hello zjistíte této sdílené nástroj knihovny:
+Pokud používáte **serializátor** knihovny důležitou součástí sady SDK zajímat se nachází v knihovně azure-c sdílené – nástroj.
+Při naklonování úložišti Azure-iot-sdk-c z Githubu pomocí možnosti--rekurzivní zjistíte této sdílené nástroj knihovny:
 
 ```
 .\\c-utility
 ```
 
-Pokud nebyly klonovat hello knihovně, můžete ji najít [zde](https://github.com/Azure/azure-c-shared-utility).
+Pokud nebyly klonovat knihovny, můžete ji najít [zde](https://github.com/Azure/azure-c-shared-utility).
 
-V rámci hello nástroj sdílené knihovny zjistíte hello následující složku:
+V knihovně Sdílené nástroj najdete následující složku:
 
 ```
 azure-c-shared-utility\\macro\_utils\_h\_generator.
@@ -555,9 +555,9 @@ Tato složka obsahuje řešení sady Visual Studio názvem **makro\_utils\_h\_ge
 
   ![](media/iot-hub-device-sdk-c-serializer/01-macro_utils_h_generator.PNG)
 
-Hello program v tomto řešení generuje hello **makro\_utils.h** souboru. Je výchozí makro\_utils.h souboru součástí hello SDK. Toto řešení vám umožní toomodify některé parametry a pak znovu vytvořte hello hlavičkový soubor na základě těchto parametrů.
+Generuje program v tomto řešení **makro\_utils.h** souboru. Je výchozí makro\_utils.h soubor je součástí sady SDK. Toto řešení umožňuje změnit některé parametry a pak znovu vytvořte soubor hlaviček na základě těchto parametrů.
 
-Hello dva klíče parametry toobe problémem jsou **nArithmetic** a **nMacroParameters** které jsou definované v těchto dvou řádcích najít v makro\_utils.tt:
+Jsou dva klíče parametry se to týká s **nArithmetic** a **nMacroParameters** které jsou definované v těchto dvou řádcích najít v makro\_utils.tt:
 
 ```
 <#int nArithmetic=1024;#>
@@ -565,12 +565,12 @@ Hello dva klíče parametry toobe problémem jsou **nArithmetic** a **nMacroPara
 
 ```
 
-Tyto hodnoty jsou součástí hello SDK hello výchozí parametry. Každý parametr má hello následující význam:
+Tyto hodnoty jsou výchozí parametry součástí sady SDK. Jednotlivé parametry mají následující význam:
 
 * nMacroParameters – Určuje, kolik parametry může mít v jedné DECLARE\_definici makra modelu.
-* nArithmetic – ovládací prvky hello celkový počet členů v modelu povolené.
+* nArithmetic – ovládací prvky celkový počet členů v modelu povolené.
 
-Důvod Hello, které tyto parametry jsou důležité je, protože tím i určovat, jak velká může být váš model. Představte si třeba tuto definici modelu:
+Z důvodu, který tyto parametry jsou důležité je, protože tím i určovat, jak velká může být váš model. Představte si třeba tuto definici modelu:
 
 ```
 DECLARE_MODEL(MyModel,
@@ -578,21 +578,21 @@ WITH_DATA(int, MyData)
 );
 ```
 
-Jak je uvedeno nahoře, **DECLARE\_modelu** je právě makro C. Hello názvy hello modelu a hello **WITH\_DATA** – příkaz (ještě jiné makro) jsou parametry **DECLARE\_modelu**. **nMacroParameters** definuje, kolik parametry můžou být součástí **DECLARE\_modelu**. Definuje efektivně, kolik dat událostí a akce deklarace může mít. Jako takový hello výchozí limit 124 to znamená, že můžete definovat model pomocí kombinace o 60 akce a data události. Pokud se pokusíte tooexceed tento limit, dostanete chyby kompilátoru, které vypadají podobně jako toothis:
+Jak je uvedeno nahoře, **DECLARE\_modelu** je právě makro C. Názvy modelu a **WITH\_DATA** – příkaz (ještě jiné makro) jsou parametry **DECLARE\_modelu**. **nMacroParameters** definuje, kolik parametry můžou být součástí **DECLARE\_modelu**. Definuje efektivně, kolik dat událostí a akce deklarace může mít. Jako takový výchozí limit 124 to znamená, že můžete definovat model pomocí kombinace o 60 akce a data události. Pokud se pokusíte překročí toto omezení, dostanete chyby kompilátoru, které vypadají podobně jako tento:
 
   ![](media/iot-hub-device-sdk-c-serializer/02-nMacroParametersCompilerErrors.PNG)
 
-Hello **nArithmetic** parametr je více informací o interní chodu hello hello makro jazyka než vaší aplikace.  Ovládá hello celkový počet členů, může mít v modelu, včetně **DECLARE_STRUCT** makra. Pokud spustíte zobrazuje chyby kompilátoru, jako je tato, pak doporučujeme zvýšit **nArithmetic**:
+**NArithmetic** parametr se o vnitřní strukturu a funkci jazyka – makro víc než vaše aplikace.  Jimi řídí celkový počet členů, může mít v modelu, včetně **DECLARE_STRUCT** makra. Pokud spustíte zobrazuje chyby kompilátoru, jako je tato, pak doporučujeme zvýšit **nArithmetic**:
 
    ![](media/iot-hub-device-sdk-c-serializer/03-nArithmeticCompilerErrors.PNG)
 
-Pokud chcete tyto parametry toochange, upravte hodnoty hello v hello makro\_utils.tt soubor, pak ji znovu zkompilovat hello makro\_utils\_h\_generator.sln řešení a spuštění hello zkompilovaný program. Když uděláte, nové makro\_utils.h souboru je generována a umístit do hello.\\ běžné\\inc adresáře.
+Pokud chcete změnit tyto parametry, upravte hodnoty v makro\_utils.tt souboru, znovu zkompiluje makro\_utils\_h\_generator.sln řešení a spusťte zkompilovaný program. Když uděláte, nové makro\_utils.h soubor je vygenerována a uložena v umístění.\\ běžné\\inc adresáře.
 
-V pořadí toouse hello novou verzi makro\_utils.h, odeberte hello **serializátor** balíček NuGet, řešení a v jeho místní zahrnovat hello **serializátor** projektu sady Visual Studio. To umožňuje váš kód toocompile proti hello zdrojového kódu hello serializátor knihovny. To zahrnuje hello aktualizovat makro\_utils.h. Pokud chcete, aby toodo to pro **simplesample\_amqp**, začněte tím, že balíček NuGet hello hello serializátor knihovny odebráním hello řešení:
+Chcete-li použít novou verzi – makro\_utils.h, odebrat **serializátor** balíček NuGet, řešení a v jeho místní zahrnovat **serializátor** projektu sady Visual Studio. To umožňuje váš kód mohl zkompilovat proti zdrojový kód knihovny serializátor. To zahrnuje aktualizované makro\_utils.h. Pokud chcete to udělat pro **simplesample\_amqp**, začněte tím, že balíček NuGet pro knihovnu serializátor odebráním řešení:
 
    ![](media/iot-hub-device-sdk-c-serializer/04-serializer-github-package.PNG)
 
-Pak přidejte tento projekt tooyour řešení sady Visual Studio:
+Pak přidejte tento projekt do řešení sady Visual Studio:
 
 > . \\c\\serializátor\\sestavení\\windows\\serializer.vcxproj
 > 
@@ -602,16 +602,16 @@ Když jste hotovi, řešení by měl vypadat přibližně takto:
 
    ![](media/iot-hub-device-sdk-c-serializer/05-serializer-project.PNG)
 
-Teď když zkompilujete řešení, hello aktualizovat makro\_utils.h je součástí vaší binární.
+Nyní když zkompilujete řešení aktualizované makro\_utils.h je součástí vaší binární.
 
-Všimněte si, že zvýšení tyto hodnoty dostatečně vysoký může překročit omezení kompilátoru. toothis bod, hello **nMacroParameters** je hlavní parametr hello s které toobe obavy. Specifikace C99 Hello Určuje, že jsou definice makra povolen minimálně 127 parametry. Hello kompilátoru Microsoft přesně dodržuje specifikaci hello (a může obsahovat maximálně 127 znaků), takže nebudete moct tooincrease **nMacroParameters** nad výchozí hello. Další kompilátory může umožňují toodo tak (například hello GNU kompilátoru podporuje vyšší limit).
+Všimněte si, že zvýšení tyto hodnoty dostatečně vysoký může překročit omezení kompilátoru. K tomuto bodu **nMacroParameters** je hlavní parametr, pomocí kterého se to týká. Specifikace C99 Určuje, že minimálně 127 parametry jsou povoleny v definici makra. Kompilátor Microsoft přesně odpovídá o specifikace (a může obsahovat maximálně 127 znaků), takže nebude možné zvýšit **nMacroParameters** nad výchozí. Další kompilátory může umožňují Uděláte to tak (například kompilátoru GNU podporuje vyšší limit).
 
-Dosavadní téměř všechno, co potřebujete tooknow o tom, jak toowrite kód s hello jste zahrnutých jsme **serializátor** knihovny. Před uzavřením, můžeme pokroku některá témata z předchozí články, které asi vás zajímá o.
+Dosavadní téměř všechno, co potřebujete vědět o tom, jak psát kód, který představuje jste zahrnutých jsme **serializátor** knihovny. Před uzavřením, můžeme pokroku některá témata z předchozí články, které asi vás zajímá o.
 
-## <a name="hello-lower-level-apis"></a>Hello nižší úrovně rozhraní API
-je Hello ukázkovou aplikaci, na kterém se tento článek zaměřuje **simplesample\_amqp**. Tato ukázka používá hello vyšší úrovně (hello bez – "vše") rozhraní API toosend události a přijímat zprávy. Používáte-li tato rozhraní API, spustí vlákna na pozadí, který se stará o odesílání událostí i přijímání zpráv. Můžete však použít hello nižší úrovni (vše) rozhraní API tooeliminate tento vlákna na pozadí a trvat explicitní kontrolu nad při odesílání událostí nebo příjem zpráv z cloudu hello.
+## <a name="the-lower-level-apis"></a>Rozhraní API nižší úrovně
+Ukázkovou aplikaci, na kterém se tento článek zaměřuje je **simplesample\_amqp**. Této ukázce se používá vyšší úrovni (jiný-"UDOU") rozhraní API pro události odesílat a přijímat zprávy. Používáte-li tato rozhraní API, spustí vlákna na pozadí, který se stará o odesílání událostí i přijímání zpráv. Můžete však použít rozhraní API nižší úrovni (vše) Pokud chcete odstranit tento vlákna na pozadí a proveďte explicitní kontrolu nad při odesílání událostí nebo příjem zpráv z cloudu.
 
-Jak je popsáno v [předchozí článek](iot-hub-device-sdk-c-iothubclient.md), je sada funkcí, které se skládá z hello vyšší úrovně rozhraní API:
+Jak je popsáno v [předchozí článek](iot-hub-device-sdk-c-iothubclient.md), je sada funkcí, které se skládá z vyšší úrovně rozhraní API:
 
 * IoTHubClient\_CreateFromConnectionString
 * IoTHubClient\_SendEventAsync
@@ -627,12 +627,12 @@ K dispozici je také podobá sadu rozhraní API nižší úrovně.
 * IoTHubClient\_UDOU\_SetMessageCallback
 * IoTHubClient\_UDOU\_Destroy
 
-Všimněte si, že hello nižší úrovně rozhraní API pracovní přesně hello stejným způsobem, jak popsané v předchozí článcích hello. Hello první sadu rozhraní API můžete použít, pokud chcete, aby vlákno toohandle pozadí, události odesílání a přijímání zpráv. Pokud chcete, aby explicitní ovládat, kdy odesílat a přijímat data ze služby IoT Hub použijete hello druhá sada rozhraní API. Buď sadu rozhraní API pro práci s hello stejně dobře **serializátor** knihovny.
+Některé nižší úrovně rozhraní API funkční stejným způsobem, jak je popsáno v předchozí článcích. První sadu rozhraní API můžete použít, pokud chcete, aby vlákna na pozadí pro zpracování událostí odesílání a příjmu zprávy. Druhá sada rozhraní API použijte, pokud chcete, aby explicitní ovládat, kdy odesílat a přijímat data ze služby IoT Hub. Buď sadu rozhraní API pracovní stejnou měrou i s **serializátor** knihovny.
 
-Pro příklad hello nižší úrovně používají rozhraní API s hello **serializátor** knihovny, najdete v části hello **simplesample\_http** aplikace.
+Příklad použití rozhraní API nižší úrovně s **serializátor** knihovny, najdete v článku **simplesample\_http** aplikace.
 
 ## <a name="additional-topics"></a>Další témata
-Několik dalších tématech důležité zmínit, znovu se vlastnost zpracování, pomocí přihlašovacích údajů jiného zařízení a možnosti konfigurace. Toto jsou všechna témata popsaná v [předchozí článek](iot-hub-device-sdk-c-iothubclient.md). Hello hlavní bod je, že všechny tyto funkce pracovat v hello stejný způsob s hello **serializátor** knihovny stejně jako s hello **IoTHubClient** knihovny. Pokud chcete tooattach vlastnosti tooan událostí z modelu, můžete použít například **IoTHubMessage\_vlastnosti** a **mapy**\_**AddorUpdate**, stejným způsobem, jak jsme je už popsali hello:
+Několik dalších tématech důležité zmínit, znovu se vlastnost zpracování, pomocí přihlašovacích údajů jiného zařízení a možnosti konfigurace. Toto jsou všechna témata popsaná v [předchozí článek](iot-hub-device-sdk-c-iothubclient.md). Hlavní bod je, že všechny tyto funkce fungovat stejně jako s **serializátor** knihovny stejně jako s **IoTHubClient** knihovny. Například pokud chcete přiřadit vlastnosti události z modelu, použijete **IoTHubMessage\_vlastnosti** a **mapy**\_**AddorUpdate**, stejným způsobem, jak je popsáno dříve:
 
 ```
 MAP_HANDLE propMap = IoTHubMessage_Properties(message.messageHandle);
@@ -640,13 +640,13 @@ sprintf_s(propText, sizeof(propText), "%d", i);
 Map_AddOrUpdate(propMap, "SequenceNumber", propText);
 ```
 
-Jestli se vygeneroval hello událostí ze hello **serializátor** knihovny nebo vytvořit ručně pomocí hello **IoTHubClient** knihovny nezáleží.
+Zda událost byla vygenerována z **serializátor** knihovny nebo vytvořit ručně pomocí **IoTHubClient** knihovny nezáleží.
 
-Pro hello alternativní přihlašovací údaje zařízení, pomocí **IoTHubClient\_UDOU\_vytvořit** funguje stejně dobře jako **IoTHubClient\_CreateFromConnectionString** pro přidělování **IOTHUB\_klienta\_zpracování**.
+Pro přihlašovací údaje jiného zařízení, pomocí **IoTHubClient\_UDOU\_vytvořit** funguje stejně dobře jako **IoTHubClient\_CreateFromConnectionString** pro přidělování **IOTHUB\_klienta\_zpracování**.
 
-Nakonec pokud používáte hello **serializátor** knihovny, můžete nastavit možnosti konfigurace s **IoTHubClient\_UDOU\_SetOption** stejně jako jste to udělali při použití hello **IoTHubClient** knihovny.
+Nakonec pokud používáte **serializátor** knihovny, můžete nastavit možnosti konfigurace s **IoTHubClient\_UDOU\_SetOption** stejně jako jste to udělali při použití **IoTHubClient** knihovny.
 
-Funkce, která je jedinečný toohello **serializátor** knihovny jsou hello inicializace rozhraní API. Před zahájením práce s hello knihovně, musí volat **serializátor\_init**:
+Funkce, které jsou jedinečné pro **serializátor** knihovny se inicializace rozhraní API. Před zahájením práce s knihovny, musí volat **serializátor\_init**:
 
 ```
 serializer_init(NULL);
@@ -654,22 +654,22 @@ serializer_init(NULL);
 
 To se provádí těsně před voláním **IoTHubClient\_CreateFromConnectionString**.
 
-Podobně po dokončení práce s hello knihovně, budete provedete posledním volání hello je příliš**serializátor\_deinit**:
+Podobně po dokončení práce s knihovnou, posledním volání budete provedete je **serializátor\_deinit**:
 
 ```
 serializer_deinit();
 ```
 
-Jinak, všechny další funkce uvedené výše hello pracovní stejné hello v hello **serializátor** knihovny stejně jako v hello **IoTHubClient** knihovny. Další informace o všech těchto tématech najdete v tématu hello [předchozí článek](iot-hub-device-sdk-c-iothubclient.md) této série.
+Jinak, všechny ostatní funkce výše uvedených fungovat stejně **serializátor** knihovny nebudou **IoTHubClient** knihovny. Další informace o kterékoli z těchto témat, najdete v článku [předchozí článek](iot-hub-device-sdk-c-iothubclient.md) této série.
 
 ## <a name="next-steps"></a>Další kroky
-Tento článek popisuje, v podrobností hello jedinečné aspekty hello **serializátor** obsažené v hello knihovně **zařízení Azure IoT SDK pro jazyk C**. S hello informací by měl mít dostatečné povědomí o tom, jak toouse modelů toosend události a přijímat zprávy ze služby IoT Hub.
+Tento článek podrobně popisuje jedinečné aspekty **serializátor** knihovny, které jsou součástí **zařízení Azure IoT SDK pro jazyk C**. S informacemi, pokud že byste měli mít dostatečné povědomí o tom, jak používat modely odesílat události a přijímat zprávy ze služby IoT Hub.
 
-To se taky ukončí hello třemi částmi řady na jak hello toodevelop aplikace s **zařízení Azure IoT SDK pro jazyk C**. To by měl být dostatek informace toonot pouze get, kterou jste zahájili ale získáte důkladné znalosti o fungování hello rozhraní API. Další informace naleznete několik ukázky v nejsou hello SDK nejsou zahrnuté v tomto poli. V opačném hello [dokumentaci k sadě SDK](https://github.com/Azure/azure-iot-sdk-c) je dobré prostředku pro další informace.
+To se taky ukončí řady třemi částmi o tom, jak vyvíjet aplikace s **zařízení Azure IoT SDK pro jazyk C**. To by měl být dostatek informací pro jenom vám pomůžou začít ale získáte důkladné znalosti o fungování rozhraní API. Další informace nejsou několik ukázky v sadě SDK, které nejsou zahrnuté v tomto poli. Jinak [dokumentaci k sadě SDK](https://github.com/Azure/azure-iot-sdk-c) je dobré prostředku pro další informace.
 
-toolearn Další informace o vývoji pro IoT Hub, najdete v části hello [SDK služby Azure IoT][lnk-sdks].
+Další informace o vývoji pro IoT Hub, najdete v tématu [SDK služby Azure IoT][lnk-sdks].
 
-toofurther prozkoumat hello služby IoT Hub, najdete v tématu:
+Pokud chcete prozkoumat další možnosti IoT Hub, najdete v části:
 
 * [Simulaci zařízení s Azure IoT Edge][lnk-iotedge]
 

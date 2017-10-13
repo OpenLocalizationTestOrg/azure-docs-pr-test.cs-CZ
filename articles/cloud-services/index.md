@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure cloudové služby dokumentace - kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
-description: "Kurzy, odkazy na rozhraní API a další dokumentaci ukazují, jak toohost toouse cloudové služby a spusťte vysoce dostupné a škálovatelné cloudové aplikace a rozhraní API."
+title: "Dokumentace ke službě Azure Cloud Services – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
+description: "Kurzy, reference k rozhraní API a další dokumentace ukazují, jak využívat Cloud Services k hostování a spouštění vysoce dostupných a škálovatelných cloudových aplikací a rozhraní API."
 services: cloud-services
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 80793de5a66c9f125c23caf2664fbf08015298ab
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 566daede7e0b32110ceae2afa473e427992bc3a8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="cloud-services-documentation"></a>Dokumentace ke službě Cloud Services
 
-Zjistěte, jak toouse cloudové služby toohost a spouštět vysoce dostupné a škálovatelné cloudové aplikace a rozhraní API.  Kurzy, odkazy na rozhraní API a další dokumentaci ukazují, jak je hostitelem toomanage virtuálního počítače a konfiguraci, opravy a instalovat software.
+Naučte se používat Cloud Services k hostování a spouštění vysoce dostupných škálovatelných cloudových aplikací a rozhraní API.  Kurzy, reference k rozhraní API a další dokumentace ukazují, jak spravovat hostitele virtuálních počítačů a konfigurovat, opravovat a instalovat software.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -107,8 +107,14 @@ Zjistěte, jak toouse cloudové služby toohost a spouštět vysoce dostupné a 
                 <div class="card">
                     <div class="cardText">
                         <h3>Jazyky</h3>
-                        <p><a href="https://msdn.microsoft.com/library/azure/ee758711">.csdef XMLSchema</a></p>
-                        <p><a href="https://msdn.microsoft.com/library/azure/ee758710">.cscfg XMLSchema</a></p>
+                        <p><a href="/azure/cloud-services/schema-csdef-file">Schéma .csdef XML</a></p>
+                        <p><a href="/azure/cloud-services/schema-csdef-loadbalancerprobe">Schéma LoadBalancerProbe</a></p>
+                        <p><a href="/azure/cloud-services/schema-csdef-webrole">Schéma WebRole</a></p>
+                        <p><a href="/azure/cloud-services/schema-csdef-workerrole">Schéma WorkerRole</a></p>
+                        <p><a href="/azure/cloud-services/schema-csdef-networktrafficrules">Schéma NetworkTrafficRules</a></p>
+                        <p><a href="/azure/cloud-services/schema-cscfg-file">Schéma .cscfg XML</a></p>
+                        <p><a href="/azure/cloud-services/schema-cscfg-role">Schéma rolí</a></p>
+                        <p><a href="/azure/cloud-services/schema-cscfg-networkconfiguration">Schéma NetworkConfiguration</a></p>
                     </div>
                 </div>
             </div>
@@ -127,5 +133,3 @@ Zjistěte, jak toouse cloudové služby toohost a spouštět vysoce dostupné a 
         </div>
     </li>
 </ul>
-
-

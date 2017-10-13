@@ -1,6 +1,6 @@
 ---
-title: "aaaScenario – aplikace logiky aktivační událost s funkcemi Azure a Azure Service Bus | Microsoft Docs"
-description: "Vytvoření aplikace logiky tootrigger funkce pomocí funkce Azure a Azure Service Bus"
+title: "Scénář – aplikace logiky aktivační událost s funkcemi Azure a Azure Service Bus | Microsoft Docs"
+description: "Vytvořit funkci pro aktivaci aplikace logiky pomocí funkce Azure a Azure Service Bus"
 services: logic-apps,functions
 documentationcenter: .net,nodejs,java
 author: jeffhollan
@@ -14,35 +14,35 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/23/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: a7b78ebcfe492eee2e08ceeae6b9c5f8ed4717bb
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 088f10bc32dd492f82f0a10a7e5829e76f588758
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="scenario-trigger-a-logic-app-with-azure-functions-and-azure-service-bus"></a>Scénář: Aktivovat aplikaci logiky s funkcemi Azure a Azure Service Bus
 
-Pokud budete potřebovat toodeploy dlouhodobé naslouchacího procesu nebo úlohy, můžete použít Azure Functions toocreate aktivační událost pro aplikace logiky. Můžete například vytvořit funkci, která naslouchá na frontu a okamžitě fire aplikace logiky jako aktivační událost nabízené.
+Azure Functions můžete vytvořit aktivační událost pro aplikace logiky, když potřebujete nasadit dlouho běžící naslouchacího procesu nebo úlohy. Můžete například vytvořit funkci, která naslouchá na frontu a okamžitě fire aplikace logiky jako aktivační událost nabízené.
 
-## <a name="build-hello-logic-app"></a>Vytvoření aplikace logiky hello
-V tomto příkladu máte funkci systémem pro každou aplikaci logiky, který potřebuje toobe aktivaci. Nejprve vytvořte aplikaci logiky, který má aktivační procedury pro požadavek HTTP. vždy, když je přijatá zpráva fronty, Funkce Hello volá tohoto koncového bodu.  
+## <a name="build-the-logic-app"></a>Vytvoření aplikace logiky
+V tomto příkladu máte funkci pro každou aplikaci logiky, která musí být aktivována systémem. Nejprve vytvořte aplikaci logiky, který má aktivační procedury pro požadavek HTTP. Vždy, když je přijatá zpráva fronty, zavolá funkci tohoto koncového bodu.  
 
 1. Vytvoření aplikace logiky.
-2. Vyberte hello **ruční – když je obdržena požadavek HTTP** aktivační události.
-   Volitelně můžete zadat toouse schématu JSON s uvítací zprávu fronty pomocí některého nástroje, například [jsonschema.net](http://jsonschema.net). Vložte hello schématu hello aktivační události. Schémata pomoct pochopit hello tvar vlastnosti data a toku hello snadněji prostřednictvím hello pracovního postupu návrháře hello.
-2. Přidáte žádné další kroky, které mají toooccur po přijetí zprávy fronty. Například odešlete e-mailu prostřednictvím Office 365.  
-3. Uložte hello logiku toogenerate hello zpětného volání adresu URL aplikace pro aplikaci logiky toothis hello aktivační události. Hello URL se objeví na kartě hello aktivační události.
+2. Vyberte **ruční – když je obdržena požadavek HTTP** aktivační události.
+   Volitelně můžete zadat schématu JSON pro použití s zprávy ve frontě pomocí některého nástroje, například [jsonschema.net](http://jsonschema.net). Vložte schéma aktivační událost. Schémata pomoct pochopit obrazec vlastnosti data a toku snadněji prostřednictvím pracovního postupu návrháře.
+2. Přidáte další kroky, které mají být provedeny po přijetí zprávy fronty. Například odešlete e-mailu prostřednictvím Office 365.  
+3. Uložte aplikaci logiky ke generování adresy URL zpětného volání pro aktivační událost pro tuto aplikaci logiky. Adresa URL se zobrazí na kartě aktivační události.
 
-![Hello zpětného volání adresy URL se zobrazí na kartě aktivační událost hello][1]
+![Zpětné volání adresy URL se zobrazí na kartě aktivační události][1]
 
-## <a name="build-hello-function"></a>Vytvořte funkci hello
-Dále musíte vytvořit funkci, která funguje jako hello aktivační události a naslouchá toohello fronty.
+## <a name="build-the-function"></a>Vytvoření funkce
+Dále musíte vytvořit funkci, která funguje jako aktivační události a naslouchá do fronty.
 
-1. V hello [portálu Azure Functions](https://functions.azure.com/signin), vyberte **novou funkci**a potom vyberte hello **ServiceBusQueueTrigger - C#** šablony.
+1. V [portálu Azure Functions](https://functions.azure.com/signin), vyberte **novou funkci**a pak vyberte **ServiceBusQueueTrigger - C#** šablony.
    
     ![Azure Functions na portálu][2]
-2. Konfigurace hello připojení toohello fronty Service Bus, která používá hello Azure Service Bus SDK `OnMessageReceive()` naslouchací proces.
-3. Základní funkce toocall hello logiku aplikace koncový bod (vytvořenou dříve) zapsat pomocí zprávu fronty hello jako trigger. Tady je příklad úplné funkce. Příklad Hello používá `application/json` obsahu typ zprávy, ale můžete změnit podle potřeby tohoto typu.
+2. Konfigurace připojení do fronty Service Bus, která používá Azure Service Bus SDK `OnMessageReceive()` naslouchací proces.
+3. Write – základní funkce k volání koncový bod aplikace logiky (vytvořenou dříve) pomocí zprávy ve frontě aktivační události. Tady je příklad úplné funkce. V příkladu se používá `application/json` obsahu typ zprávy, ale můžete změnit podle potřeby tohoto typu.
    
    ```
    using System;
@@ -63,7 +63,7 @@ Dále musíte vytvořit funkci, která funguje jako hello aktivační události 
    }
    ```
 
-tootest, přidat zprávu fronty pomocí nástroje podobného [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer). V tématu aplikace logiky hello fire ihned po hello funkce přijme zprávu hello.
+Chcete-li otestovat, přidejte zprávu fronty pomocí některého nástroje, například [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer). V tématu aplikace logiky fire ihned po funkce obdrží zprávu.
 
 <!-- Image References -->
 [1]: ./media/logic-apps-scenario-function-sb-trigger/manualtrigger.png

@@ -1,6 +1,6 @@
 ---
-title: "hello aaaProblems přihlášení tooan místní aplikací pomocí proxy aplikace služby Azure AD | Microsoft Docs"
-description: "Odstraňování běžných problémů potýkají po nelze toosign v tooan místní aplikace integrované s Azure AD pomocí hello proxy aplikace služby Azure AD"
+title: "Potíže při přihlašování k místní aplikace pomocí proxy aplikace služby Azure AD | Microsoft Docs"
+description: "Řešení běžných problémů potýkají Pokud nelze se přihlásit k aplikaci místně integrované s Azure AD pomocí Azure AD Application Proxy"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,47 +13,47 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 8a13b9b886160f4bbad5b33001b22950b6a2bb00
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5687f789355cc9769d26b53e98486bb213c66419
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="problems-signing-in-tooan-on-premises-application-using-hello-azure-ad-application-proxy"></a>Potíže s přihlášením pomocí aplikace tooan místní hello proxy aplikace služby Azure AD
+# <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Potíže při přihlašování k místní aplikace pomocí proxy aplikace služby Azure AD
 
-Pokud máte potíže při přihlašování v aplikaci místně, můžete zkusit následující hello kroků tooresolving váš problém.
+Pokud máte potíže při přihlašování v aplikaci místně, můžete zkusit následujících kroků pro řešení potíží.
 
-## <a name="i-can-load-my-application-but-something-on-hello-page-looks-broken"></a>I může načíst Moje aplikace, ale něco na stránce hello vypadá porušený
+## <a name="i-can-load-my-application-but-something-on-the-page-looks-broken"></a>I může načíst Moje aplikace, ale něco na stránce vypadá porušený
 
-Hello následující dokumenty vám může pomoct tooresolve některé z nejběžnějších problémů hello v této kategorii.
+Následující dokumenty vám mohou pomoci při řešení některých nejběžnějších problémů v této kategorii.
 
-  * [Zobrazuje toomy aplikace, ale stránky aplikace hello nezobrazuje správně](https://docs.microsoft.com/azure/active-directory/application-proxy-page-appearance-broken-problem/)
-  * [Zobrazuje toomy aplikace, ale aplikace hello trvá příliš dlouho tooload](https://docs.microsoft.com/azure/active-directory/application-proxy-page-load-speed-problem/)
-  * [Zobrazuje toomy aplikace, ale hello odkazů na stránky aplikace hello nefungují.](https://docs.microsoft.com/azure/active-directory/application-proxy-page-links-broken-problem/)
+  * [Můžu se k aplikaci dostat, ale stránka aplikace se nezobrazuje správně](https://docs.microsoft.com/azure/active-directory/application-proxy-page-appearance-broken-problem/)
+  * [Můžu se k aplikaci dostat, ale načítá se příliš dlouho](https://docs.microsoft.com/azure/active-directory/application-proxy-page-load-speed-problem/)
+  * [Můžu se k aplikaci dostat, ale odkazy na stránce aplikace nefungují](https://docs.microsoft.com/azure/active-directory/application-proxy-page-links-broken-problem/)
 
 ## <a name="im-having-a-connectivity-problem-my-application"></a>Došlo k potížím s připojením Moje aplikace
-  Hello následující dokumenty vám může pomoct tooresolve některé z nejběžnějších problémů hello v této kategorii.
-  * [Nevíte, jaké porty tooopen pro Moje aplikace](https://docs.microsoft.com/azure/active-directory/application-proxy-connectivity-ports-how-to/)
+  Následující dokumenty vám mohou pomoci při řešení některých nejběžnějších problémů v této kategorii.
+  * [Nevím, které porty pro aplikaci otevřít](https://docs.microsoft.com/azure/active-directory/application-proxy-connectivity-ports-how-to/)
   * [Vyskytl se problém, protože ve skupině konektorů pro aplikaci nebyl žádný funkční konektor](https://docs.microsoft.com/azure/active-directory/application-proxy-connectivity-no-working-connector/)
 
-## <a name="im-having-a-problem-configuring-hello-azure-ad-application-proxy-in-hello-admin-portal"></a>Konfigurace hello problém proxy aplikace služby Azure AD došlo v portálu pro správu hello
-  Hello následující dokumenty vám může pomoct tooresolve některé z nejběžnějších problémů hello v této kategorii.
+## <a name="im-having-a-problem-configuring-the-azure-ad-application-proxy-in-the-admin-portal"></a>Došlo k potížím konfigurace Azure AD Application Proxy v portálu pro správu
+  Následující dokumenty vám mohou pomoci při řešení některých nejběžnějších problémů v této kategorii.
   * [Mám potíže s konfigurací aplikace aplikačního proxy serveru](https://docs.microsoft.com/azure/active-directory/application-proxy-config-how-to/)
-  * [Nevíte, jak tooconfigure jednotného přihlašování toomy aplikace Proxy aplikace](https://docs.microsoft.com/azure/active-directory/application-proxy-config-sso-how-to/)
+  * [Nevím, jak nakonfigurovat jednotné přihlašování k aplikaci aplikačního proxy serveru](https://docs.microsoft.com/azure/active-directory/application-proxy-config-sso-how-to/)
   * [Vyskytl se problém při vytváření aplikace na portálu pro správu](https://docs.microsoft.com/azure/active-directory/application-proxy-config-problem/)
 
-## <a name="im-having-a-problem-setting-up-back-end-authentication-toomy-application"></a>Došlo problém při nastavování aplikace toomy back-end ověřování
-  Hello následující dokumenty vám může pomoct tooresolve některé z nejběžnějších problémů hello v této kategorii.
-  * [Nevíte, jak tooconfigure omezené delegování Kerberos](https://docs.microsoft.com/azure/active-directory/application-proxy-back-end-kerberos-constrained-delegation-how-to/)
-  * [Nevíte, jak tooconfigure Moje aplikace s PingAccess](https://docs.microsoft.com/azure/active-directory/application-proxy-back-end-ping-access-how-to/)
+## <a name="im-having-a-problem-setting-up-back-end-authentication-to-my-application"></a>Došlo problému s nastavením ověřování back-end pro Moje aplikace
+  Následující dokumenty vám mohou pomoci při řešení některých nejběžnějších problémů v této kategorii.
+  * [Nevím, jak nakonfigurovat omezené delegování Kerberos](https://docs.microsoft.com/azure/active-directory/application-proxy-back-end-kerberos-constrained-delegation-how-to/)
+  * [Nevím, jak nakonfigurovat aplikaci pro používání PingAccessu](https://docs.microsoft.com/azure/active-directory/application-proxy-back-end-ping-access-how-to/)
 
-## <a name="im-having-a-problem-when-signing-in-toomy-application"></a>Došlo potížím při přihlášení toomy aplikace
-  Hello následující dokumenty vám může pomoct tooresolve některé z nejběžnějších problémů hello v této kategorii.
+## <a name="im-having-a-problem-when-signing-in-to-my-application"></a>Došlo potížím při přihlašování k Moje aplikace
+  Následující dokumenty vám mohou pomoci při řešení některých nejběžnějších problémů v této kategorii.
   * [Zobrazuje se chyba „Není přístup k podnikové aplikaci“](https://docs.microsoft.com/azure/active-directory/application-proxy-sign-in-bad-gateway-timeout-error/)
 
-## <a name="im-having-a-problem-with-hello-application-proxy-agent-connector"></a>Došlo k potížím s hello agenta konektor Proxy aplikace
-  Hello následující dokumenty vám může pomoct tooresolve některé z nejběžnějších problémů hello v této kategorii.
-  * [Dochází k problémům s instalací hello agenta konektor Proxy aplikace](https://docs.microsoft.com/azure/active-directory/application-proxy-connector-installation-problem/)
+## <a name="im-having-a-problem-with-the-application-proxy-agent-connector"></a>Došlo k potížím s agenta konektor Proxy aplikace
+  Následující dokumenty vám mohou pomoci při řešení některých nejběžnějších problémů v této kategorii.
+  * [Vyskytují se potíže při instalaci konektoru agenta aplikačního proxy serveru](https://docs.microsoft.com/azure/active-directory/application-proxy-connector-installation-problem/)
 
 ## <a name="next-steps"></a>Další kroky
-[Jak tooprovide zabezpečený vzdálený přístup tooon místní aplikace](active-directory-application-proxy-get-started.md)
+[Jak poskytnout zabezpečený vzdálený přístup k místním aplikacím](active-directory-application-proxy-get-started.md)

@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure dokumentace k centra oznámení – kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
-description: "Zjistěte, jak toosend nabízená oznámení z jakéhokoli back-end tooany mobilních zařízení pomocí Notification Hubs. Kurzy, reference k rozhraní API a další dokumentace"
+title: "Dokumentace ke službě Azure Notification Hubs – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
+description: "Naučte se, jak pomocí Notification Hubs odesílat nabízená oznámení z jakéhokoli back-endu na jakékoli mobilní zařízení. Kurzy, reference k rozhraní API a další dokumentace"
 services: notification-hubs
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 050c70c32f50eb495cd53a6bfa5549d6ae189d89
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f7b8560d4ce7374e36d5f7e8a5d2056396e4f089
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="notification-hubs-documentation"></a>Dokumentace ke službě Notification Hubs
 
-Zjistěte, jak toouse Notification Hubs, více platformami, škálovatelné nabízených oznámení modul pro rychle odesílání miliony zpráv. Kurzy, odkazy na rozhraní API a další dokumentaci ukazují, jak tooset nahoru a odesílat nabízená oznámení z jakéhokoli back-end tooany mobilních zařízení. 
+Naučte se, jak můžete používat Notification Hubs, škálovatelný modul pro více platforem k zasílání nabízených oznámení, k rychlému rozesílání milionů zpráv. Kurzy, reference k rozhraní API a další dokumentace ukazují postupy nastavení a odesílání nabízených oznámení z jakéhokoli back-endu na jakékoli mobilní zařízení. 
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -70,7 +70,7 @@ Zjistěte, jak toouse Notification Hubs, více platformami, škálovatelné nab�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáme odesílání nabízených oznámení tooAndroid (FCM) pomocí Azure Notification Hubs</h3>
+                        <h3>Začínáme s odesíláním nabízených oznámení do Androidu (FCM) pomocí služby Azure Notification Hubs</h3>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@ Zjistěte, jak toouse Notification Hubs, více platformami, škálovatelné nab�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáme odesílání nabízených oznámení tooChrome aplikace pomocí Azure Notification Hubs</h3>
+                        <h3>Začínáme s odesíláním nabízených oznámení do aplikací pro Chrome pomocí služby Azure Notification Hubs</h3>
                     </div>
                 </div>
             </div>
@@ -124,7 +124,7 @@ Zjistěte, jak toouse Notification Hubs, více platformami, škálovatelné nab�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáme odesílání tooiOS nabízená oznámení pomocí Azure Notification Hubs</h3>
+                        <h3>Začínáme s odesíláním nabízených oznámení do iOS pomocí služby Azure Notification Hubs</h3>
                     </div>
                 </div>
             </div>

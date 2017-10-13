@@ -1,6 +1,6 @@
 ---
-title: "aaaFilter telemetrie Azure Application Insights ve webové aplikace Java | Microsoft Docs"
-description: "Omezit přenos telemetrie filtrováním hello událostí toomonitor nepotřebujete."
+title: "Filtrovat telemetrie Azure Application Insights ve webové aplikace Java | Microsoft Docs"
+description: "Omezit přenos telemetrie filtrováním událostí, které nepotřebujete k monitorování."
 services: application-insights
 documentationcenter: 
 author: CFreemanwa
@@ -12,25 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: bwren
-ms.openlocfilehash: 95713e11d5f86472777c67e4e7f3177fbf2cd0b4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5f6d6d4ad590b85810c42e9f9520850024c5446a
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Filtr telemetrie webové aplikace Java
 
-Filtry stanovit způsob tooselect hello telemetrie, že vaše [webovou aplikaci Java odešle tooApplication Insights](app-insights-java-get-started.md). Existují některé filtry se na pole, které můžete použít, a můžete je zapsat také vlastní filtry.
+Filtry poskytnout způsob, jak vybrat telemetrii, vaše [webovou aplikaci Java odešle do služby Application Insights](app-insights-java-get-started.md). Existují některé filtry se na pole, které můžete použít, a můžete je zapsat také vlastní filtry.
 
-Hello se na pole filtry zahrnují:
+Filtry se na pole zahrnují:
 
 * Úroveň závažnosti trasování
 * Konkrétní adresy URL, klíčová slova nebo kódy odpovědí
-* Rychlou odezvu – tj. požadavky toowhich aplikace odpověděl tooquickly
+* Rychlou odezvu – to znamená, na které aplikace odpověděl rychle požadavky
 * Názvy konkrétním událostí
 
 > [!NOTE]
-> Filtry zkreslit hello metrik vaší aplikace. Například můžete rozhodnout, že v pořadí toodiagnose pomalé odezvy, nastavíte filtru toodiscard krátké doby odezvy. Ale musíte být vědomi hello průměrná odezvy hlášené Application Insights bude nižší než rychlosti hello true, a bude menší než skutečná počet hello hello počet požadavků.
+> Filtry zkreslit metrik vaší aplikace. Například můžete rozhodnout, že chcete-li diagnostikovat pomalé odezvy, můžete nastavit filtr vyřadí krátké doby odezvy. Ale je potřeba si uvědomit, že průměrná odezvy hlášené Application Insights bude nižší než skutečná rychlost a počet požadavků bude menší než skutečná počet.
 > Pokud se jedná o problém, použijte [vzorkování](app-insights-sampling.md) místo.
 
 ## <a name="setting-filters"></a>Nastavení filtrů
@@ -60,7 +60,7 @@ Přidejte soubor ApplicationInsights.xml, `TelemetryProcessors` části jako ten
            </Processor>
 
            <Processor type="TelemetryEventFilter">
-                  <!-- Names of events we don't want toosee -->
+                  <!-- Names of events we don't want to see -->
                   <Add name="NotNeededNames" value="Start,Stop,Pause"/>
            </Processor>
 
@@ -88,7 +88,7 @@ Přidejte soubor ApplicationInsights.xml, `TelemetryProcessors` části jako ten
 
 
 
-[Zkontrolujte hello úplnou sadu předdefinovaných procesorů](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).
+[Zkontrolujte úplnou sadu předdefinovaných procesorů](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).
 
 ## <a name="built-in-filters"></a>Integrované filtry
 
@@ -115,9 +115,9 @@ Přidejte soubor ApplicationInsights.xml, `TelemetryProcessors` části jako ten
            </Processor>
 ```
 
-* `DurationThresholdInMS`-Doba trvání odkazuje toohello doba tooload hello stránky. Pokud je toto nastaveno, nejsou hlášeny stránky, které načtené rychleji, než tuto chvíli.
+* `DurationThresholdInMS`-Doba trvání odkazuje na čas potřebný k načtení stránky. Pokud je toto nastaveno, nejsou hlášeny stránky, které načtené rychleji, než tuto chvíli.
 * `NotNeededNames`-Čárkami oddělený seznam názvů stránky.
-* `NotNeededUrls`-Fragmenty čárkami oddělený seznam adresy URL. Například `"home"` odfiltruje všechny stránky, které mají "Domů" v adrese URL hello.
+* `NotNeededUrls`-Fragmenty čárkami oddělený seznam adresy URL. Například `"home"` odfiltruje všechny stránky, které mají "Domů" v adrese URL.
 
 
 ### <a name="request-telemetry-filter"></a>Filtr Telemetrie požadavku
@@ -136,7 +136,7 @@ Přidejte soubor ApplicationInsights.xml, `TelemetryProcessors` části jako ten
 
 ### <a name="synthetic-source-filter"></a>Syntetické zdrojový filtr
 
-Odfiltruje všechny telemetrická data, která mají hodnoty v hello SyntheticSource vlastnost. Mezi ně patří požadavky od robotů, pavouci a testy dostupnosti.
+Odfiltruje všechny telemetrická data, která mají hodnoty ve vlastnosti SyntheticSource. Mezi ně patří požadavky od robotů, pavouci a testy dostupnosti.
 
 Filtrovat telemetrická data pro všechny syntetické požadavky:
 
@@ -187,7 +187,7 @@ Filtry protokolu trasování (přihlášení pomocí [TrackTrace()](app-insights
 
 * `FromSeverityLevel`Platné hodnoty jsou:
  *  VYPNOUT - vyfiltrovat všech trasování
- *  TRASOVÁNÍ – žádné filtrování. úroveň tooTrace je rovno
+ *  TRASOVÁNÍ – žádné filtrování. hodnotu úroveň trasování
  *  Informace o - filtru na úroveň trasování
  *  VAROVÁNÍ - trasování a informace o filtru
  *  Chyba: filtru se varování, informace trasování
@@ -208,18 +208,18 @@ V kódu, vytvořte třídu, která implementuje `TelemetryProcessor`:
 
     public class SuccessFilter implements TelemetryProcessor {
 
-       /* Any parameters that are required toosupport hello filter.*/
+       /* Any parameters that are required to support the filter.*/
        private final String successful;
 
-       /* Initializers for hello parameters, named "setParameterName" */
+       /* Initializers for the parameters, named "setParameterName" */
        public void setNotNeeded(String successful)
        {
           this.successful = successful;
        }
 
-       /* This method is called for each item of telemetry toobe sent.
-          Return false toodiscard it.
-          Return true tooallow other processors tooinspect it. */
+       /* This method is called for each item of telemetry to be sent.
+          Return false to discard it.
+          Return true to allow other processors to inspect it. */
        @Override
        public boolean process(Telemetry telemetry) {
         if (telemetry == null) { return true; }
@@ -235,7 +235,7 @@ V kódu, vytvořte třídu, která implementuje `TelemetryProcessor`:
 ```
 
 
-### <a name="2-invoke-your-filter-in-hello-configuration-file"></a>2. Vyvolání filtru v konfiguračním souboru hello
+### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2. Vyvolání filtru v konfiguračním souboru
 
 V ApplicationInsights.xml:
 
@@ -258,7 +258,7 @@ V ApplicationInsights.xml:
 
 *Moje filtru není funkční.*
 
-* Zkontrolujte, zda jste zadali platný parametr hodnoty. Například doby trvání musí být celá čísla. Neplatné hodnoty způsobí, že toobe filtru hello ignorovány. Pokud vaše vlastní filtr vyvolá výjimku z konstruktoru nebo metoda set, se budou ignorovat.
+* Zkontrolujte, zda jste zadali platný parametr hodnoty. Například doby trvání musí být celá čísla. Neplatné hodnoty způsobí, že filtr budou ignorovány. Pokud vaše vlastní filtr vyvolá výjimku z konstruktoru nebo metoda set, se budou ignorovat.
 
 ## <a name="next-steps"></a>Další kroky
 

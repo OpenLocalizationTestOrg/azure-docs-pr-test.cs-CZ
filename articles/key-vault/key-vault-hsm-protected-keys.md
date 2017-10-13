@@ -1,6 +1,6 @@
 ---
-title: "aaaHow toogenerate a přenos klíčů chráněných pomocí HSM pro Azure Key Vault | Microsoft Docs"
-description: "Použijte tento článek toohelp plánování, generovat a potom přeneste vlastní toouse klíčů chráněných pomocí HSM s Azure Key Vault. Taky označovaný jako BYOK nebo přineste si vlastní klíč."
+title: "Postup generování a přenos klíčů chráněných pomocí HSM pro Azure Key Vault | Microsoft Docs"
+description: "Použijte tento článek vám pomohou plánovat, generovat a potom přeneste vlastní klíčů chráněných pomocí HSM pro použití s Azure Key Vault. Taky označovaný jako BYOK nebo přineste si vlastní klíč."
 services: key-vault
 documentationcenter: 
 author: cabailey
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: ambapat
-ms.openlocfilehash: 3bb234bd1c4b81770542ccf7110e256385ca3309
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5dbee1221f64045c64fecb344de1e03b2183dfb1
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toogenerate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Jak toogenerate a přenos klíčů chráněných pomocí HSM pro Azure Key Vault
+# <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Klíče postup generování a přenos chráněných pomocí HSM pro Azure Key Vault
 ## <a name="introduction"></a>Úvod
-Pro lepší kontrolu Pokud používáte Azure Key Vault, můžete importovat nebo generovat klíče v modulech hardwarového zabezpečení (HSM), které nikdy neopustí hranice HSM hello. Tento scénář je často označují tooas *přineste si vlastní klíč*, nebo BYOK. Hello moduly hardwarového zabezpečení jsou FIPS 140-2 Level 2 ověřit. Azure Key Vault používá klíče Thales nShield řadu tooprotect moduly hardwarového zabezpečení.
+Pro lepší kontrolu Pokud používáte Azure Key Vault, můžete importovat nebo generovat klíče v modulech hardwarového zabezpečení (HSM), které nikdy neopustí hranice HSM. Tento scénář se často označuje jako *přineste si vlastní klíč*, nebo BYOK. Moduly hardwarového zabezpečení jsou ověřené podle standardu FIPS 140-2 Level 2. Azure Key Vault používá k ochraně klíče Thales nShield řadu moduly hardwarového zabezpečení.
 
-Použijte hello informace v této toohelp téma plánování, generovat a potom přeneste vlastní toouse klíčů chráněných pomocí HSM s Azure Key Vault.
+Použijte informace v tomto tématu vám pomohou plánovat, generovat a potom přeneste vlastní klíčů chráněných pomocí HSM pro použití s Azure Key Vault.
 
 Tato funkce není dostupná pro Azure China.
 
@@ -35,63 +35,63 @@ Tato funkce není dostupná pro Azure China.
 >
 >
 
-Další informace o generování a přenos klíč chráněný HSM pomocí přes hello Internetu:
+Další informace o generování a přenos klíč chráněný HSM pomocí přes Internet:
 
-* Vygenerování klíče hello z offline pracovní stanici, což snižuje prostor pro útoky hello.
-* Hello je klíč zašifrovaný pomocí klíč výměny klíčů (KEK), který zůstává zašifrovaný, dokud nebude přenášená toohello Azure Key Vault moduly hardwarového zabezpečení. Pouze hello zašifrovaná verze vašeho klíče ponechá původní pracovní stanici hello.
-* Sada nástrojů Hello nastaví vlastnosti pro klíč klienta, která se sváže vaše klíče toohello Azure Key Vault architektury security world. Proto po hello Azure Key Vault moduly hardwarového zabezpečení přijmou a dešifrují váš klíč, pouze tyto moduly hardwarového zabezpečení můžete použít. Klíč se nedá exportovat. Tuto vazbu vynucují moduly HSM Thales hello.
-* Hello klíč výměny klíčů (KEK), je použít tooencrypt váš klíč se generuje uvnitř hello Azure Key Vault moduly hardwarového zabezpečení a není exportovatelný. Moduly hardwarového zabezpečení Hello vynutit, aby může existovat žádná čitelná verze hello KEK mimo hello moduly hardwarového zabezpečení. Kromě toho hello nástrojů obsahuje záruku od společnosti Thales, že hello KEK nedá exportovat a byl vygenerovaný v originálním modulu HSM vyrobeným společností Thales.
-* Hello sada nástrojů obsahuje záruku od společnosti Thales, že hello Azure Key Vault architektury security world také vygenerovaná na originálním modulu HSM vyrobeném společností Thales. Toto ověření prokáže, že Microsoft používá originální hardware tooyou.
-* Společnost Microsoft používá jiné klíče Kek a jiné architektury Security World v každé geografické oblasti. Toto oddělení zajišťuje, že váš klíč lze použít pouze v datových centrech v hello oblast, ve kterém jste ho zašifrovali. Například klíč od Evropského zákazníka nelze použít v datových centrech v Severní Americe nebo Asii.
+* Vygenerování klíče z offline pracovní stanice, která omezuje prostor pro útok.
+* Že je klíč zašifrovaný pomocí klíč výměny klíčů (KEK), který zůstává zašifrovaný, dokud se přenese do HSM Azure Key Vault. Jenom zašifrovaná verze vašeho klíče ponechá původní pracovní stanici.
+* Sada nástrojů nastaví vlastnosti pro klíč klienta, která se sváže klíč do architektury security world Azure Key Vault. Proto po HSM Azure Key Vault přijmou a dešifrují váš klíč, pouze tyto moduly hardwarového zabezpečení můžete použít. Klíč se nedá exportovat. Tuto vazbu vynucují moduly HSM Thales.
+* Klíč výměny klíčů (KEK) používaný k šifrování vašeho klíče se generuje uvnitř HSM Azure Key Vault a není exportovatelný. Moduly hardwarového zabezpečení vynutit, aby může existovat žádná čitelná verze klíče kek mimo tyto moduly Hsm. Kromě toho sada nástrojů obsahuje záruku od společnosti Thales, že se klíč KEK nedá exportovat a byl vygenerovaný v originálním modulu HSM vyrobeným společností Thales.
+* Sada nástrojů obsahuje záruku od společnosti Thales, že architektury security world Azure Key Vault vygenerovalo také na originálním modulu HSM vyrobeném společností Thales. Toto ověření vám poskytuje důkaz, že Microsoft používá originální hardware.
+* Společnost Microsoft používá jiné klíče Kek a jiné architektury Security World v každé geografické oblasti. Toto oddělení zajišťuje, že váš klíč lze použít pouze v datových centrech v oblasti, ve kterém jste ho zašifrovali. Například klíč od Evropského zákazníka nelze použít v datových centrech v Severní Americe nebo Asii.
 
 ## <a name="more-information-about-thales-hsms-and-microsoft-services"></a>Další informace o modulech HSM Thales a služby Microsoft
-Thales e-Security je přední globální poskytovatel šifrování dat a kybernetického zabezpečení řešení toohello finančních služeb, špičkové technologie, výroby, government a technologie. S 40-let chrání firemní i vládní informace řešení společnosti Thales využívají je čtyři hello pěti největších energetických a letecký společností. Svá řešení jsou také používány 22 členských zemí NATO a zabezpečení více než 80 % po celém světě platebních transakcí.
+Thales e-Security je přední globální poskytovatel šifrování dat a řešení kybernetického zabezpečení finančních služeb, špičkové technologie, výroby, government a technologie. S 40-let chrání firemní i vládní informace řešení společnosti Thales využívají je čtyři z pěti největších energie a letecký společností. Svá řešení jsou také používány 22 členských zemí NATO a zabezpečení více než 80 % po celém světě platebních transakcí.
 
-Microsoft spolupracoval se stavem hello tooenhance Thales obrázky pro moduly hardwarového zabezpečení. Tato vylepšení umožňují tooget hello typické výhod hostované služby bez vzdát kontrolu nad klíče. Konkrétně tato vylepšení umožňují Microsoftu spravovat hello moduly hardwarového zabezpečení, takže není nutné. Jako cloudové služby, Azure Key Vault škálování na krátké oznámení toomeet špičky využití vaší organizace. Na hello stejný čas, váš klíč je uvnitř modulů HSM Microsoftu chráněný: ponecháte si kontrolu nad hello životního cyklu u klíče, protože generování klíče hello a přenést na tooMicrosoft moduly hardwarového zabezpečení.
+Microsoft spolupracoval se společností Thales k vylepšení stav obrázky pro moduly hardwarového zabezpečení. Tato vylepšení umožňují získat typické výhod hostované služby bez vzdát kontrolu nad klíče. Konkrétně tato vylepšení umožňují Microsoftu spravovat moduly HSM, takže není nutné. Jako cloudová služba Azure Key Vault škálování krátkodobě ke splnění nárazovým zvýšením požadavků vaší organizace. Ve stejnou dobu, vaše klíč uvnitř modulů HSM Microsoftu chráněný: ponecháte si kontrolu nad životním cyklem klíče, protože klíč vygenerujete a jeho přenesení do HSM společnosti Microsoft.
 
 ## <a name="implementing-bring-your-own-key-byok-for-azure-key-vault"></a>Implementace funkce přineste si vlastní klíč (BYOK) pro Azure Key Vault
-Hello použijte následující informace a postupy, pokud chcete vygenerovat si vlastní klíč chráněný HSM a pak ho přenést tooAzure Key Vault – hello přineste si vlastní klíč (BYOK) scénář.
+Použijte následující informace a postupy, pokud chcete vygenerovat si vlastní klíč chráněný HSM a pak ho přenést do Azure Key Vault – přineste si vlastní klíč (BYOK) scénář.
 
 ## <a name="prerequisites-for-byok"></a>Předpoklady pro funkci BYOK
-Viz následující tabulka obsahuje seznam požadavků pro hello přineste si vlastní klíč (BYOK) pro Azure Key Vault.
+Najdete v následující tabulce najdete seznam požadavků pro přineste si vlastní klíč (BYOK) pro Azure Key Vault.
 
 | Požadavek | Další informace |
 | --- | --- |
-| TooAzure předplatného |toocreate Azure Key Vault, budete potřebovat předplatné Azure: [zaregistrovat bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/) |
-| Hello Azure Key Vault Premium služby vrstvě toosupport klíčů chráněných pomocí HSM |Další informace o úrovních služeb hello a možnosti pro Azure Key Vault najdete v tématu hello [Azure Key Vault ceny](https://azure.microsoft.com/pricing/details/key-vault/) webu. |
-| Modulu HSM společnosti Thales, čipové karty a podpůrný software |Musíte mít přístup k tooa modulu hardwarového zabezpečení Thales a základní provozní znalosti o modulech HSM Thales. V tématu [modulu hardwarového zabezpečení Thales](https://www.thales-esecurity.com/msrms/buy) hello seznam kompatibilních modelů nebo toopurchase modul hardwarového zabezpečení, pokud nemáte jeden. |
-| Hello následující hardware a software:<ol><li>Offline x64 pracovní stanice s minimální operační systém Windows Windows 7 a Thales software nshield od, který je minimálně verze 11.50.<br/><br/>Pokud tato pracovní stanice používá Windows 7, musíte [instalace rozhraní Microsoft .NET Framework 4.5](http://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Pracovní stanice, která je připojená toohello Internet a má minimální operační systém Windows Windows 7 a [prostředí Azure PowerShell](/powershell/azure/overview) **minimální verzi 1.1.0** nainstalována.</li><li>USB Flash disk nebo jiné přenosné úložné zařízení, která obsahuje aspoň 16 MB volného místa.</li></ol> |Z bezpečnostních důvodů doporučujeme, abyste že tento hello první pracovní stanice není připojený tooa sítí. Toto doporučení se však nevynucuje prostřednictvím kódu programu.<br/><br/>Všimněte si, že v hello pokynech, této pracovní stanici odkazované tooas hello odpojená pracovní stanice.</p></blockquote><br/>Kromě toho pokud váš klíč tenanta je pro produkční síť, doporučujeme používat druhou, samostatnou pracovní stanici toodownload hello nástrojů a nahrání hello klíč tenanta. Ale pro účely testování můžete použít jako hello první hello pracovní stanici.<br/><br/>Upozorňujeme, že v hello pokynech se druhá pracovní stanice se stanice připojené k Internetu odkazované tooas hello.</p></blockquote><br/> |
+| Předplatné Azure |K vytvoření Azure Key Vault, budete potřebovat předplatné Azure: [zaregistrovat bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/) |
+| Úroveň služby Azure Key Vault Premium pro podporu klíčů chráněných pomocí HSM |Další informace o úrovních služeb a možnosti pro Azure Key Vault najdete v tématu [Azure Key Vault ceny](https://azure.microsoft.com/pricing/details/key-vault/) webu. |
+| Modulu HSM společnosti Thales, čipové karty a podpůrný software |Musíte mít přístup k modulu hardwarového zabezpečení Thales a základní provozní znalosti o modulech HSM Thales. V tématu [modulu hardwarového zabezpečení Thales](https://www.thales-esecurity.com/msrms/buy) seznam kompatibilních modelů nebo modul HSM zakoupit, pokud nemáte jeden. |
+| Následující hardware a software:<ol><li>Offline x64 pracovní stanice s minimální operační systém Windows Windows 7 a Thales software nshield od, který je minimálně verze 11.50.<br/><br/>Pokud tato pracovní stanice používá Windows 7, musíte [instalace rozhraní Microsoft .NET Framework 4.5](http://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Pracovní stanice, která je připojený k Internetu a má minimální operační systém Windows Windows 7 a [prostředí Azure PowerShell](/powershell/azure/overview) **minimální verzi 1.1.0** nainstalována.</li><li>USB Flash disk nebo jiné přenosné úložné zařízení, která obsahuje aspoň 16 MB volného místa.</li></ol> |Z bezpečnostních důvodů doporučujeme, aby první pracovní stanice nebyla připojená k síti. Toto doporučení se však nevynucuje prostřednictvím kódu programu.<br/><br/>Všimněte si, že v následujících pokynech, tento pracovní stanice se označuje jako odpojené pracovní stanici.</p></blockquote><br/>Kromě toho pokud váš klíč tenanta je pro produkční síť, doporučujeme použít druhou, samostatnou pracovní stanici stáhnete sadu nástrojů a odešlete klíč tenanta. Ale pro účely testování můžete použít jako první pracovní stanici.<br/><br/>Všimněte si, že v následujících pokynech, druhá pracovní stanice se označuje jako stanice připojené k Internetu.</p></blockquote><br/> |
 
-## <a name="generate-and-transfer-your-key-tooazure-key-vault-hsm"></a>Generování a přenos vašeho klíče tooAzure klíč trezoru modulu hardwarového zabezpečení
-Budete používat hello následujících pět toogenerate kroky a přenos vašeho klíče tooan Azure Key Vault modulu hardwarového zabezpečení:
+## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>Generování a přenos vašeho klíče do Azure Key Vault HSM
+Následující kroky pět použije k vygenerování a přenos vašeho klíče do Azure Key Vault HSM:
 
 * [Krok 1: Příprava pracovní stanice připojené k Internetu](#step-1-prepare-your-internet-connected-workstation)
 * [Krok 2: Příprava odpojené pracovní stanice](#step-2-prepare-your-disconnected-workstation)
 * [Krok 3: Vygenerování klíče](#step-3-generate-your-key)
 * [Krok 4: Příprava klíče pro přenos](#step-4-prepare-your-key-for-transfer)
-* [Krok 5: Přenos vašeho klíče tooAzure Key Vault](#step-5-transfer-your-key-to-azure-key-vault)
+* [Krok 5: Přenos vašeho klíče do Azure Key Vault](#step-5-transfer-your-key-to-azure-key-vault)
 
 ## <a name="step-1-prepare-your-internet-connected-workstation"></a>Krok 1: Příprava pracovní stanice připojené k Internetu
-Pro tento první krok text hello následující postupy na pracovní stanici, která je připojená toohello Internetu.
+Pro tento první krok proveďte následující postupy na pracovní stanici, která je připojena k Internetu.
 
 ### <a name="step-11-install-azure-powershell"></a>Krok 1.1: Nainstalování prostředí Azure PowerShell
-Z hello stanice připojené k Internetu stáhněte a nainstalujte modul Azure PowerShell text hello, který obsahuje toomanage hello rutiny Azure Key Vault. To vyžaduje minimální verzi 0.8.13.
+Z pracovní stanice připojené k Internetu stáhněte a nainstalujte modul Azure PowerShell, který obsahuje rutiny pro správu Azure Key Vault. To vyžaduje minimální verzi 0.8.13.
 
-Pokyny k instalaci naleznete v tématu [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
+Pokyny k instalaci naleznete v tématu [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
 
 ### <a name="step-12-get-your-azure-subscription-id"></a>Krok 1.2: Získání ID předplatného Azure
-Spusťte relaci prostředí Azure PowerShell a přihlaste se pomocí hello následující příkaz tooyour účet Azure:
+Spusťte relaci prostředí Azure PowerShell a přihlaste se k účtu Azure pomocí následujícího příkazu:
 
         Add-AzureAccount
-V okně hello automaticky otevírané okno prohlížeče zadejte účet Azure uživatelské jméno a heslo. Poté použijte hello [Get-AzureSubscription](/powershell/module/azure/get-azuresubscription?view=azuresmps-3.7.0) příkaz:
+V automaticky otevřeném okně prohlížeče zadejte svoje uživatelské jméno a heslo k účtu Azure. Potom použít [Get-AzureSubscription](/powershell/module/azure/get-azuresubscription?view=azuresmps-3.7.0) příkaz:
 
         Get-AzureSubscription
-Z výstupu hello vyhledejte ID hello hello předplatného, které chcete použít pro Azure Key Vault. Toto ID předplatného budete potřebovat později.
+Z výstupu vyhledejte ID pro odběr, který budete používat pro Azure Key Vault. Toto ID předplatného budete potřebovat později.
 
-Nezavírejte okno Azure PowerShell hello.
+Nezavírejte okno Azure PowerShell.
 
-### <a name="step-13-download-hello-byok-toolset-for-azure-key-vault"></a>Krok 1.3: Stažení sady nástrojů funkce BYOK hello pro Azure Key Vault
-Přejděte toohello Microsoft Download Center a [stažení nástrojů Azure Key Vault BYOK hello](http://www.microsoft.com/download/details.aspx?id=45345) pro zeměpisné oblasti nebo instanci Azure. Použijte hello informace tooidentify hello balíčku název toodownload a jeho odpovídající SHA-256 balíčku hash:
+### <a name="step-13-download-the-byok-toolset-for-azure-key-vault"></a>Krok 1.3: Stažení sady nástrojů funkce BYOK pro Azure Key Vault
+Přejděte na web Microsoft Download Center a [stáhnete sadu nástrojů Azure Key Vault BYOK](http://www.microsoft.com/download/details.aspx?id=45345) pro zeměpisné oblasti nebo instanci Azure. Název balíčku pro stahování a jeho odpovídající hodnotu hash SHA-256 balíčku pomocí následující informace:
 
 - - -
 **Spojené státy americké:**
@@ -186,11 +186,11 @@ ED331A6F1D34A402317D3F27D5396046AF0E5C2D44B5D10CCCE293472942D268
 
 - - -
 
-toovalidate hello integritu vašeho stažené sady nástrojů funkce BYOK, z relace prostředí Azure PowerShell, použijte hello [Get-FileHash](https://technet.microsoft.com/library/dn520872.aspx) rutiny.
+Chcete-li ověřit integritu vašeho stažené sady nástrojů funkce BYOK, z relace prostředí Azure PowerShell, použijte [Get-FileHash](https://technet.microsoft.com/library/dn520872.aspx) rutiny.
 
     Get-FileHash KeyVault-BYOK-Tools-*.zip
 
-Sada nástrojů Hello zahrnuje hello následující:
+Sada nástrojů obsahuje následující:
 
 * Balíček klíče výměny klíčů (KEK), který má název začíná **BYOK-KEK - pkg-.**
 * Balíček architektury Security World, jehož název začíná **BYOK-SecurityWorld - pkg-.**
@@ -198,64 +198,64 @@ Sada nástrojů Hello zahrnuje hello následující:
 * Spustitelný soubor příkazového řádku, s názvem **KeyTransferRemote.exe** a přidružené knihovny DLL.
 * Visual C++ Redistributable balíčku, s názvem **vcredist_x64.exe.**
 
-Zkopírujte hello balíček tooa USB Flash disku nebo jiného přenosného úložiště.
+Zkopírujte balíček na USB Flash disk nebo jiného přenosného úložiště.
 
 ## <a name="step-2-prepare-your-disconnected-workstation"></a>Krok 2: Příprava odpojené pracovní stanice
-Pro tento druhý krok text hello následující postupy na hello pracovní stanici, která není připojená tooa sítí (hello Internet nebo interní síti).
+Pro tento druhý krok proveďte následující postupy na pracovní stanici, který není připojen k síti (Internet nebo interní síti).
 
-### <a name="step-21-prepare-hello-disconnected-workstation-with-thales-hsm"></a>Krok 2.1: Příprava hello odpojená pracovní stanice s modulu HSM společnosti Thales
-Nainstalujte na počítač s Windows podpůrný software nCipher (Thales) hello a pak připojte počítač toothat modulu HSM společnosti Thales.
+### <a name="step-21-prepare-the-disconnected-workstation-with-thales-hsm"></a>Krok 2.1: Příprava odpojené pracovní stanice s modulu HSM společnosti Thales
+Nainstalujte na počítači s Windows podpůrný software nCipher (Thales) a pak k tomuto počítači připojte modul HSM společnosti Thales.
 
-Ujistěte se, že hello nástroje Thales jsou ve své cestě (**%nfast_home%\bin**). Můžete například zadáte následující hello:
+Zajistěte, aby byly nástroje Thales ve své cestě (**%nfast_home%\bin**). Můžete například zadejte následující:
 
         set PATH=%PATH%;"%nfast_home%\bin"
 
-Další informace najdete v tématu hello uživatelské příručce dodané s hello modulu HSM společnosti Thales.
+Další informace najdete v tématu v uživatelské příručce dodané s modulem HSM Thales.
 
-### <a name="step-22-install-hello-byok-toolset-on-hello-disconnected-workstation"></a>Krok 2.2: Instalace hello sady nástrojů funkce BYOK na pracovní stanici hello odpojení
-Zkopírujte balíček sady nástrojů funkce BYOK hello z hello USB Flash disku nebo jiného přenosného úložiště a pak hello následující:
+### <a name="step-22-install-the-byok-toolset-on-the-disconnected-workstation"></a>Krok 2.2: Instalace sady nástrojů funkce BYOK na odpojené pracovní stanice
+Zkopírujte balíček sady nástrojů funkce BYOK z USB Flash disku nebo jiného přenosného úložiště a potom postupujte takto:
 
-1. Extrahujte soubory hello z hello stáhli balíčku do libovolné složky.
+1. Extrahujte soubory ze staženého balíčku do libovolné složky.
 2. Z této složky spusťte program vcredist_x64.exe.
-3. Postupujte podle pokynů hello toohello nainstalovat hello komponenty modulu runtime Visual C++ pro Visual Studio 2013.
+3. Postupujte podle pokynů pro instalaci běhových součástí Visual C++ pro Visual Studio 2013.
 
 ## <a name="step-3-generate-your-key"></a>Krok 3: Vygenerování klíče
-Pro tento třetí krok text hello následující postupy na pracovní stanici hello odpojen. toocomplete tento krok vašeho HSM musí být v režimu inicializace. 
+Pro tento třetí krok proveďte následující postupy na odpojené pracovní stanici. K dokončení tohoto kroku vašeho HSM musí být v režimu inicializace. 
 
 
-### <a name="step-31-change-hello-hsm-mode-tooi"></a>Krok 3.1: Změnit too'I režimu hello HSM.
-Pokud používáte Thales nShield okraji a toochange hello režim: 1. Použijte hello režimu tlačítko toohighlight hello požadovaný režim. 2. Během pár sekund stiskněte a podržte tlačítko Vymazat hello z několika sekund. Pokud se změní hello režimu, hello nový režim DIODU přestane blikat a zůstane po. Hello Indikátor stavu může nepravidelně flash na několik sekund a pak bliká pravidelně při hello zařízení je připraveno. V opačném lit hello zařízení zůstanou v aktuálním režimu hello s Indikátor příslušné režimu hello.
+### <a name="step-31-change-the-hsm-mode-to-i"></a>Krok 3.1: Změňte režim modulu hardwarového zabezpečení na "I"
+Pokud používáte Thales nShield Edge, chcete-li změnit režim: 1. Pomocí tlačítka režimu zvýrazněte požadovaný režim. 2. Během pár sekund stiskněte a podržte tlačítko Vymazat z několika sekund. Pokud se změní režim, nový režim DIODU přestane blikat a zůstane po. Indikátor stavu může nepravidelně flash na několik sekund a pak bliká pravidelně v případě, že zařízení není připraveno. Jinak zařízení zůstane v aktuálním režimu, s odpovídající režim DIODU lit.
 
 ### <a name="step-32-create-a-security-world"></a>Krok 3.2: Vytvoření architektury security world
-Otevřete příkazový řádek a spusťte program společnosti Thales nové architektury Security world hello.
+Spusťte příkazový řádek a spusťte program společnosti Thales nové architektury Security world.
 
     new-world.exe --initialize --cipher-suite=DLf1024s160mRijndael --module=1 --acs-quorum=2/3
 
-Tento program vytvoří **architektury Security World** soubor v adresáři % NFAST_KMDATA%\local\world, který odpovídá toohello C:\ProgramData\nCipher\Key správu aplikací\Místní složky. Můžete použít jiné hodnoty pro hello kvorum, ale v našem příkladu jste výzvami tooenter tři prázdné karty a kódy PIN pro každé z nich. Jakékoli dvě karty potom poskytnout úplný přístup toohello security world. Tyto karty tvoří hello **Administrator Card Set** pro hello, world nové zabezpečení.
+Tento program vytvoří **architektury Security World** soubor v adresáři % NFAST_KMDATA%\local\world, který odpovídá složce aplikací\Místní C:\ProgramData\nCipher\Key správy. Pro kvorum můžete použít jiné hodnoty, ale v našem příkladu se zobrazí výzva k zadání pro každé z nich tři prázdné karty a kódy PIN. Jakékoli dvě karty potom poskytnout úplný přístup k architektury security world. Tyto karty tvoří **Administrator Card Set** pro nové architektury security world.
 
-Potom hello následující:
+Potom udělejte následující:
 
-* Zálohujte soubor hello world. Zabezpečení a ochraně soubor hello world, karty Správce hello a kódu PIN a ujistěte se, že jeden člověk měl přístup toomore než jedné karty.
+* Zálohujte soubor world. Zabezpečení a ochraně soubor world, karty správce a jejich kódy PIN a ujistěte se, že jeden člověk měl přístup k více než jednu kartu.
 
-### <a name="step-33-change-hello-hsm-mode-tooo"></a>Krok 3.3: Změnit too'O režimu hello HSM.
-Pokud používáte Thales nShield okraji a toochange hello režim: 1. Použijte hello režimu tlačítko toohighlight hello požadovaný režim. 2. Během pár sekund stiskněte a podržte tlačítko Vymazat hello z několika sekund. Pokud se změní hello režimu, hello nový režim DIODU přestane blikat a zůstane po. Hello Indikátor stavu může nepravidelně flash na několik sekund a pak bliká pravidelně při hello zařízení je připraveno. V opačném lit hello zařízení zůstanou v aktuálním režimu hello s Indikátor příslušné režimu hello.
+### <a name="step-33-change-the-hsm-mode-to-o"></a>Krok 3.3: Změnit režim HSM, o.
+Pokud používáte Thales nShield Edge, chcete-li změnit režim: 1. Pomocí tlačítka režimu zvýrazněte požadovaný režim. 2. Během pár sekund stiskněte a podržte tlačítko Vymazat z několika sekund. Pokud se změní režim, nový režim DIODU přestane blikat a zůstane po. Indikátor stavu může nepravidelně flash na několik sekund a pak bliká pravidelně v případě, že zařízení není připraveno. Jinak zařízení zůstane v aktuálním režimu, s odpovídající režim DIODU lit.
 
 
-### <a name="step-34-validate-hello-downloaded-package"></a>Krok 3.4: Ověření hello Stáhnout balíček
-Tento krok je volitelný, ale doporučujeme, aby mohli ověřit hello následující:
+### <a name="step-34-validate-the-downloaded-package"></a>Krok 3.4: Ověření staženého balíčku
+Tento krok je volitelný, ale doporučujeme, aby mohli ověřit tyto:
 
-* Hello klíč výměny klíče, který je součástí sady nástrojů hello byl vygenerovaný na originálním modulu HSM společnosti Thales.
-* Hodnota hash Hello hello World zabezpečení, která je součástí sady nástrojů hello byla vygenerovaná na originálním modulu HSM společnosti Thales.
-* Hello klíč pro výměnu klíčů je neexportovatelného.
+* Klíč pro výměnu klíčů, který je součástí sady nástrojů, byl vygenerovaný na originálním modulu HSM společnosti Thales.
+* Hodnota hash architektury Security World, který je součástí sady nástrojů, byla vygenerovaná na originálním modulu HSM společnosti Thales.
+* Klíč pro výměnu klíčů je neexportovatelného.
 
 > [!NOTE]
-> toovalidate hello stáhli balíček, hello modulu hardwarového zabezpečení musí být připojený, zapnutý a musí mít architektury security world v něm (například hello jeden, který jste právě vytvořili).
+> Chcete-li ověření staženého balíčku, modul hardwarového zabezpečení musí být připojený, zapnutý a musí mít architektury security world v něm (třeba tu, kterou jste právě vytvořili).
 >
 >
 
-toovalidate hello Stáhnout balíček:
+Ověření staženého balíčku:
 
-1. Spusťte skript verifykeypackage.py hello zadáním jedné z následujících hello, v závislosti na zeměpisné oblasti nebo instanci Azure:
+1. Spusťte skript verifykeypackage.py tak, že zadáte jednu z těchto, v závislosti na zeměpisné oblasti nebo instanci Azure:
 
    * Pro Severní Ameriku:
 
@@ -278,7 +278,7 @@ toovalidate hello Stáhnout balíček:
    * Pro Austrálii:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-AUS-1 -w BYOK-SecurityWorld-pkg-AUS-1
-   * Pro [Azure Government](https://azure.microsoft.com/features/gov/), který používá hello US government instanci Azure:
+   * Pro [Azure Government](https://azure.microsoft.com/features/gov/), který používá instanci Azure US government:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-USGOV-1 -w BYOK-SecurityWorld-pkg-USGOV-1
    * Pro US Government DOD:
@@ -294,45 +294,45 @@ toovalidate hello Stáhnout balíček:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-INDIA-1 -w BYOK-SecurityWorld-pkg-INDIA-1
      > [!TIP]
-     > Hello software společnosti Thales obsahuje python v %NFAST_HOME%\python\bin
+     > Software společnosti Thales obsahuje python v %NFAST_HOME%\python\bin
      >
      >
-2. Zkontrolujte, jestli hello následující příkaz, který znamená úspěšné ověření: **výsledek: Úspěch**
+2. Zkontrolujte, jestli následující příkaz, který znamená úspěšné ověření: **výsledek: Úspěch**
 
-Tento skript ověřuje řetězec podepisujících hello až toohello kořenovému klíči Thales. ve skriptu hello vložené Hello hash tohoto kořenového klíče a jeho hodnota by měla být **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**. Tuto hodnotu můžete potvrdit samostatně návštěvou hello [webu společnosti Thales](http://www.thalesesec.com/).
+Tento skript ověřuje řetězec podepisujících až ke kořenovému klíči Thales. Hodnota hash tohoto kořenového klíče je vložená ve skriptu a jeho hodnota by měla být **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**. Tuto hodnotu můžete potvrdit samostatně navštivte stránky [webu společnosti Thales](http://www.thalesesec.com/).
 
-Nyní jste připravené toocreate nový klíč.
+Nyní jste připraveni vytvořit nový klíč.
 
 ### <a name="step-35-create-a-new-key"></a>3.5 krok: Vytvořte nový klíč
-Generování klíče pomocí hello Thales **generatekey** program.
+Generování klíče pomocí společnosti Thales **generatekey** program.
 
-Spusťte následující příkaz toogenerate hello klíč hello:
+Spusťte následující příkaz k vygenerování klíče:
 
     generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey plainname=contosokey nvram=no pubexp=
 
 Když spustíte tento příkaz, použijte tyto pokyny:
 
-* Hello parametr *chránit* musí být nastavena hodnota toohello **modulu**, jak je vidět. Tím se vytvoří klíč chráněný modulem. Hello sady nástrojů funkce BYOK nepodporuje klíče chráněné OCS.
-* Nahraďte hodnotu hello *contosokey* pro hello **ident** a **plainname** s libovolnou hodnotou řetězce. správní režie toominimize a snížit riziko hello chyb, doporučujeme použít stejnou hodnotu pro oba hello. Hello **ident** hodnota musí obsahovat jenom čísla, pomlčky a malá písmena.
-* Hello parametr pubexp je prázdný (výchozí nastavení) v tomto příkladu, ale můžete zadat konkrétní hodnoty. Další informace najdete v tématu hello dokumentace společnosti Thales.
+* Parametr *chránit* musí být nastavena na hodnotu **modulu**, jak je vidět. Tím se vytvoří klíč chráněný modulem. Sada nástrojů BYOK nepodporuje klíče chráněné OCS.
+* Nahraďte hodnotu *contosokey* pro **ident** a **plainname** s libovolnou hodnotou řetězce. Chcete-li minimalizovat správní režie a snížilo riziko chyby, doporučujeme použít stejnou hodnotu pro oba. **Ident** hodnota musí obsahovat jenom čísla, pomlčky a malá písmena.
+* Pubexp je v prázdné (výchozí) v tomto příkladu, ale můžete zadat konkrétní hodnoty. Další informace naleznete v dokumentaci společnosti Thales.
 
-Tento příkaz vytvoří soubor Tokenizovaného klíče ve složce %NFAST_KMDATA%\local s názvem začínajícím textem **key_simple_**, za nímž následují hello **ident** zadaný v příkazu hello. Příklad: **key_simple_contosokey**. Tento soubor obsahuje šifrovaný klíč.
+Tento příkaz vytvoří soubor Tokenizovaného klíče ve složce %NFAST_KMDATA%\local s názvem začínajícím textem **key_simple_**, za nímž následují **ident** zadaný v příkazu. Příklad: **key_simple_contosokey**. Tento soubor obsahuje šifrovaný klíč.
 
 Zálohujte tento soubor Tokenizovaného klíče do bezpečného umístění.
 
 > [!IMPORTANT]
-> Pokud později přenést vaše klíče tooAzure Key Vault, Microsoft nelze exportovat tento klíč back tooyou tak bude velmi důležité, abyste zálohovali váš klíč a architekturu security world bezpečně. Pokyny a osvědčené postupy pro zálohování klíčů získáte od společnosti Thales.
+> Když budete chtít klíč později přenést do Azure Key Vault, Microsoft nelze exportovat tento klíč vám tak bude velmi důležité, abyste zálohovali váš klíč a architekturu security world bezpečně. Pokyny a osvědčené postupy pro zálohování klíčů získáte od společnosti Thales.
 >
 >
 
-Můžete je nyní připraven tootransfer vaše klíče tooAzure Key Vault.
+Nyní jste připraveni přenos vašeho klíče do Azure Key Vault.
 
 ## <a name="step-4-prepare-your-key-for-transfer"></a>Krok 4: Příprava klíče pro přenos
-Pro tento čtvrtý krok text hello následující postupy na pracovní stanici hello odpojen.
+Pro tento čtvrtý krok proveďte následující postupy na odpojené pracovní stanici.
 
 ### <a name="step-41-create-a-copy-of-your-key-with-reduced-permissions"></a>Krok 4.1: Vytvoření kopie klíče se sníženými oprávněními
 
-Otevřete nový příkazový řádek a změňte hello aktuální toohello umístění adresáře kde jste rozbalené soubor zip BYOK hello. tooreduce hello oprávnění na váš klíč z příkazového řádku, spusťte jeden z následujících hello, v závislosti na zeměpisné oblasti nebo instanci Azure:
+Otevřete nový příkazový řádek a změňte aktuální adresář na umístění, kde unzipped BYOK souboru zip. Chcete-li omezit oprávnění pro váš klíč z příkazového řádku, spusťte jeden z následujících, v závislosti na zeměpisné oblasti nebo instanci Azure:
 
 * Pro Severní Ameriku:
 
@@ -355,7 +355,7 @@ Otevřete nový příkazový řádek a změňte hello aktuální toohello umíst
 * Pro Austrálii:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-AUS-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-AUS-1
-* Pro [Azure Government](https://azure.microsoft.com/features/gov/), který používá hello US government instanci Azure:
+* Pro [Azure Government](https://azure.microsoft.com/features/gov/), který používá instanci Azure US government:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-USGOV-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-USGOV-1
 * Pro US Government DOD:
@@ -371,13 +371,13 @@ Otevřete nový příkazový řádek a změňte hello aktuální toohello umíst
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-INDIA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-INDIA-1
 
-Když spustíte tento příkaz, nahraďte *contosokey* s hello stejnou hodnotu, kterou jste zadali v **3.5 krok: Vytvořte nový klíč** z hello [vygenerování klíče](#step-3-generate-your-key) krok.
+Když spustíte tento příkaz, nahraďte *contosokey* nahraďte stejnou hodnotou, kterou jste zadali v **3.5 krok: Vytvořte nový klíč** z [vygenerování klíče](#step-3-generate-your-key) krok.
 
-Zobrazí se výzva tooplug v karty Správce security world.
+Zobrazí se výzva k připojení karet správce zabezpečení world.
 
-Pokud příkaz hello dokončení zobrazí **výsledek: Úspěch** a hello kopie vašeho klíče se sníženými oprávněními jsou v hello soubor s názvem key_xferacId_<contosokey>.
+Až se příkaz dokončí, zobrazí **výsledek: Úspěch** a kopii klíče se sníženými oprávněními jsou v souboru s názvem key_xferacId_<contosokey>.
 
-Může zkontroluje hello seznamy ACL pomocí následujících příkazů pomocí nástrojů Thales hello:
+Může zkontroluje seznamy řízení přístupu pomocí následujících příkazů pomocí nástrojů Thales:
 
 * aclprint.PY:
 
@@ -385,10 +385,10 @@ Může zkontroluje hello seznamy ACL pomocí následujících příkazů pomocí
 * kmfile-dump.exe:
 
         "%nfast_home%\bin\kmfile-dump.exe" "%NFAST_KMDATA%\local\key_xferacld_contosokey"
-  Při spuštění těchto příkazů, nahraďte contosokey hello stejnou hodnotu, kterou jste zadali v **3.5 krok: Vytvořte nový klíč** z hello [vygenerování klíče](#step-3-generate-your-key) krok.
+  Při spuštění těchto příkazů, nahraďte contosokey stejnou hodnotu, která jste zadali v **3.5 krok: Vytvořte nový klíč** z [vygenerování klíče](#step-3-generate-your-key) krok.
 
 ### <a name="step-42-encrypt-your-key-by-using-microsofts-key-exchange-key"></a>Krok 4.2: Zašifrování klíče pomocí klíč pro výměnu klíčů společnosti Microsoft
-Spusťte jeden z následujících příkazů, v závislosti na zeměpisné oblasti nebo instanci Azure hello:
+Spusťte jeden z následujících příkazů, v závislosti na zeměpisné oblasti nebo instanci Azure:
 
 * Pro Severní Ameriku:
 
@@ -411,7 +411,7 @@ Spusťte jeden z následujících příkazů, v závislosti na zeměpisné oblas
 * Pro Austrálii:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-AUS-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-AUS-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
-* Pro [Azure Government](https://azure.microsoft.com/features/gov/), který používá hello US government instanci Azure:
+* Pro [Azure Government](https://azure.microsoft.com/features/gov/), který používá instanci Azure US government:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-USGOV-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-USGOV-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
 * Pro US Government DOD:
@@ -429,21 +429,21 @@ Spusťte jeden z následujících příkazů, v závislosti na zeměpisné oblas
 
 Když spustíte tento příkaz, použijte tyto pokyny:
 
-* Nahraďte *contosokey* s hello identifikátor, který jste použili klíč hello toogenerate v **3.5 krok: Vytvořte nový klíč** z hello [vygenerování klíče](#step-3-generate-your-key) krok.
-* Nahraďte *SubscriptionID* s ID hello hello předplatné Azure, která obsahuje váš trezor klíčů. Načíst tuto hodnotu dříve, v **krok 1.2: získání ID předplatného Azure** z hello [Příprava pracovní stanice připojené k Internetu](#step-1-prepare-your-internet-connected-workstation) krok.
+* Nahraďte *contosokey* nahraďte identifikátorem, který jste použili k vygenerování klíče v **3.5 krok: Vytvořte nový klíč** z [vygenerování klíče](#step-3-generate-your-key) krok.
+* Nahraďte *SubscriptionID* s ID předplatného Azure, která obsahuje váš trezor klíčů. Načíst tuto hodnotu dříve, v **krok 1.2: získání ID předplatného Azure** z [Příprava pracovní stanice připojené k Internetu](#step-1-prepare-your-internet-connected-workstation) krok.
 * Nahraďte *ContosoFirstHSMKey* s popiskem, který se používá pro názvu výstupního souboru.
 
-Po dokončení této akce úspěšně, zobrazí **výsledek: Úspěch** a nový soubor existuje v aktuální složce hello, který má následující název hello: KeyTransferPackage -*ContosoFirstHSMkey*.byok
+Po dokončení této akce úspěšně, zobrazí **výsledek: Úspěch** a nový soubor existuje v aktuální složce, která má následující název: KeyTransferPackage -*ContosoFirstHSMkey*.byok
 
-### <a name="step-43-copy-your-key-transfer-package-toohello-internet-connected-workstation"></a>Krok 4.3: Kopírování vaše klíče přenosu balíčku toohello stanice připojené k Internetu
-Použijte USB Flash disk nebo jiné přenosné úložné toocopy hello výstupní soubor z hello předchozího kroku (KeyTransferPackage-ContosoFirstHSMkey.byok) tooyour stanice připojené k Internetu.
+### <a name="step-43-copy-your-key-transfer-package-to-the-internet-connected-workstation"></a>Krok 4.3: Zkopírování balíčku pro přenos klíče na pracovní stanici připojené k Internetu
+Pomocí USB Flash disk nebo jiného přenosného úložiště zkopírujte výstupní soubor z předchozího kroku (KeyTransferPackage-ContosoFirstHSMkey.byok) do pracovní stanice připojené k Internetu.
 
-## <a name="step-5-transfer-your-key-tooazure-key-vault"></a>Krok 5: Přenos vašeho klíče tooAzure Key Vault
-Tento poslední krok, hello stanice připojené k Internetu, použít hello [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurermkeyvaultkey) rutiny tooupload hello přenos klíče balíček, který jste zkopírovali ze hello odpojená pracovní stanice toohello Azure Key Vault modulu hardwarového zabezpečení:
+## <a name="step-5-transfer-your-key-to-azure-key-vault"></a>Krok 5: Přenos vašeho klíče do Azure Key Vault
+Tento poslední krok, na pracovní stanici připojené k Internetu, použijte [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurermkeyvaultkey) rutinu k odeslání balíčku pro přenos klíče, který jste zkopírovali z odpojené pracovní stanici do Azure Key Vault HSM:
 
     Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMkey' -KeyFilePath 'c:\KeyTransferPackage-ContosoFirstHSMkey.byok' -Destination 'HSM'
 
-Pokud je hello nahrání úspěšné, zobrazí vlastnosti zobrazené hello hello klíče, který jste právě přidali.
+Pokud bude odesílání úspěšné, zobrazí zobrazí vlastnosti klíče, který jste právě přidali.
 
 ## <a name="next-steps"></a>Další kroky
-Teď můžete použít tento klíč chráněný HSM v trezoru klíčů. Další informace najdete v tématu hello **Pokud budete chtít toouse modul hardwarového zabezpečení (HSM)** část v hello [Začínáme s Azure Key Vault](key-vault-get-started.md) kurzu.
+Teď můžete použít tento klíč chráněný HSM v trezoru klíčů. Další informace najdete v tématu **Pokud chcete použít modul hardwarového zabezpečení (HSM)** tématu [Začínáme s Azure Key Vault](key-vault-get-started.md) kurzu.
