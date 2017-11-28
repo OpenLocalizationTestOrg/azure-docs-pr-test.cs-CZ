@@ -1,0 +1,139 @@
+---
+title: "schémata sledování aaaAS2 pro monitorování B2B - Azure Logic Apps | Microsoft Docs"
+description: "Použít AS2 sledování zpráv toomonitor B2B schémata z transakcí ve vašem účtu integrace Azure."
+author: padmavc
+manager: anneta
+editor: 
+services: logic-apps
+documentationcenter: 
+ms.assetid: f169c411-1bd7-4554-80c1-84351247bf94
+ms.service: logic-apps
+ms.workload: integration
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 01/27/2017
+ms.author: LADocs; padmavc
+ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: fe3c5845e2e80160d6857d8c308d836e88af7331
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/06/2017
+---
+# <a name="start-or-enable-tracking-of-as2-messages-and-mdns-toomonitor-success-errors-and-message-properties"></a><span data-ttu-id="7c530-103">Spuštění nebo povolení sledování AS2 zprávy a MDNs toomonitor úspěch, chyb a vlastnosti zprávy</span><span class="sxs-lookup"><span data-stu-id="7c530-103">Start or enable tracking of AS2 messages and MDNs toomonitor success, errors, and message properties</span></span>
+<span data-ttu-id="7c530-104">Můžete použít tyto schémata sledování AS2 ve vašem účtu toohelp integrace se službou Azure sledování transakcí business-to-business (B2B):</span><span class="sxs-lookup"><span data-stu-id="7c530-104">You can use these AS2 tracking schemas in your Azure integration account toohelp you monitor business-to-business (B2B) transactions:</span></span>
+
+* <span data-ttu-id="7c530-105">Schéma sledování AS2 zpráv</span><span class="sxs-lookup"><span data-stu-id="7c530-105">AS2 message tracking schema</span></span>
+* <span data-ttu-id="7c530-106">Schéma sledování AS2 MDN</span><span class="sxs-lookup"><span data-stu-id="7c530-106">AS2 MDN tracking schema</span></span>
+
+## <a name="as2-message-tracking-schema"></a><span data-ttu-id="7c530-107">Schéma sledování AS2 zpráv</span><span class="sxs-lookup"><span data-stu-id="7c530-107">AS2 message tracking schema</span></span>
+````java
+
+    {
+       "agreementProperties": {  
+            "senderPartnerName": "",  
+            "receiverPartnerName": "",  
+            "as2To": "",  
+            "as2From": "",  
+            "agreementName": ""  
+        },  
+        "messageProperties": {
+            "direction": "",
+            "messageId": "",
+            "dispositionType": "",
+            "fileName": "",
+            "isMessageFailed": "",
+            "isMessageSigned": "",
+            "isMessageEncrypted": "",
+            "isMessageCompressed": "",
+            "correlationMessageId": "",
+            "incomingHeaders": {
+            },
+            "outgoingHeaders": {
+            },
+        "isNrrEnabled": "",
+        "isMdnExpected": "",
+        "mdnType": ""
+        }
+    }
+````
+
+| <span data-ttu-id="7c530-108">Vlastnost</span><span class="sxs-lookup"><span data-stu-id="7c530-108">Property</span></span> | <span data-ttu-id="7c530-109">Typ</span><span class="sxs-lookup"><span data-stu-id="7c530-109">Type</span></span> | <span data-ttu-id="7c530-110">Popis</span><span class="sxs-lookup"><span data-stu-id="7c530-110">Description</span></span> |
+| --- | --- | --- |
+| <span data-ttu-id="7c530-111">senderPartnerName</span><span class="sxs-lookup"><span data-stu-id="7c530-111">senderPartnerName</span></span> | <span data-ttu-id="7c530-112">Řetězec</span><span class="sxs-lookup"><span data-stu-id="7c530-112">String</span></span> | <span data-ttu-id="7c530-113">Název odesílatele zprávy AS2 partnera.</span><span class="sxs-lookup"><span data-stu-id="7c530-113">AS2 message sender's partner name.</span></span> <span data-ttu-id="7c530-114">(Volitelné)</span><span class="sxs-lookup"><span data-stu-id="7c530-114">(Optional)</span></span> |
+| <span data-ttu-id="7c530-115">receiverPartnerName</span><span class="sxs-lookup"><span data-stu-id="7c530-115">receiverPartnerName</span></span> | <span data-ttu-id="7c530-116">Řetězec</span><span class="sxs-lookup"><span data-stu-id="7c530-116">String</span></span> | <span data-ttu-id="7c530-117">Příjemce zprávu AS2 název partnera.</span><span class="sxs-lookup"><span data-stu-id="7c530-117">AS2 message receiver's partner name.</span></span> <span data-ttu-id="7c530-118">(Volitelné)</span><span class="sxs-lookup"><span data-stu-id="7c530-118">(Optional)</span></span> |
+| <span data-ttu-id="7c530-119">as2To</span><span class="sxs-lookup"><span data-stu-id="7c530-119">as2To</span></span> | <span data-ttu-id="7c530-120">Řetězec</span><span class="sxs-lookup"><span data-stu-id="7c530-120">String</span></span> | <span data-ttu-id="7c530-121">Příjemce zprávu AS2 název z hlavičky hello hello AS2 zprávy.</span><span class="sxs-lookup"><span data-stu-id="7c530-121">AS2 message receiver’s name, from hello headers of hello AS2 message.</span></span> <span data-ttu-id="7c530-122">(Povinné)</span><span class="sxs-lookup"><span data-stu-id="7c530-122">(Mandatory)</span></span> |
+| <span data-ttu-id="7c530-123">as2From</span><span class="sxs-lookup"><span data-stu-id="7c530-123">as2From</span></span> | <span data-ttu-id="7c530-124">Řetězec</span><span class="sxs-lookup"><span data-stu-id="7c530-124">String</span></span> | <span data-ttu-id="7c530-125">Název odesílatele zprávy AS2 z hlavičky hello hello AS2 zprávy.</span><span class="sxs-lookup"><span data-stu-id="7c530-125">AS2 message sender’s name, from hello headers of hello AS2 message.</span></span> <span data-ttu-id="7c530-126">(Povinné)</span><span class="sxs-lookup"><span data-stu-id="7c530-126">(Mandatory)</span></span> |
+| <span data-ttu-id="7c530-127">agreementName</span><span class="sxs-lookup"><span data-stu-id="7c530-127">agreementName</span></span> | <span data-ttu-id="7c530-128">Řetězec</span><span class="sxs-lookup"><span data-stu-id="7c530-128">String</span></span> | <span data-ttu-id="7c530-129">Název hello AS2 smlouvy toowhich hello zpráv se překládají.</span><span class="sxs-lookup"><span data-stu-id="7c530-129">Name of hello AS2 agreement toowhich hello messages are resolved.</span></span> <span data-ttu-id="7c530-130">(Volitelné)</span><span class="sxs-lookup"><span data-stu-id="7c530-130">(Optional)</span></span> |
+| <span data-ttu-id="7c530-131">Směr</span><span class="sxs-lookup"><span data-stu-id="7c530-131">direction</span></span> | <span data-ttu-id="7c530-132">Řetězec</span><span class="sxs-lookup"><span data-stu-id="7c530-132">String</span></span> | <span data-ttu-id="7c530-133">Směr toku zpráv hello, přijímat nebo odesílat.</span><span class="sxs-lookup"><span data-stu-id="7c530-133">Direction of hello message flow, receive or send.</span></span> <span data-ttu-id="7c530-134">(Povinné)</span><span class="sxs-lookup"><span data-stu-id="7c530-134">(Mandatory)</span></span> |
+| <span data-ttu-id="7c530-135">messageId</span><span class="sxs-lookup"><span data-stu-id="7c530-135">messageId</span></span> | <span data-ttu-id="7c530-136">Řetězec</span><span class="sxs-lookup"><span data-stu-id="7c530-136">String</span></span> | <span data-ttu-id="7c530-137">ID zprávy AS2, z hlavičky hello hello AS2 zprávy (volitelné)</span><span class="sxs-lookup"><span data-stu-id="7c530-137">AS2 message ID, from hello headers of hello AS2 message (Optional)</span></span> |
+| <span data-ttu-id="7c530-138">dispositionType</span><span class="sxs-lookup"><span data-stu-id="7c530-138">dispositionType</span></span> |<span data-ttu-id="7c530-139">Řetězec</span><span class="sxs-lookup"><span data-stu-id="7c530-139">String</span></span> | <span data-ttu-id="7c530-140">Hodnota typu dispozice zpráva dispozice oznámení (MDN).</span><span class="sxs-lookup"><span data-stu-id="7c530-140">Message Disposition Notification (MDN) disposition type value.</span></span> <span data-ttu-id="7c530-141">(Volitelné)</span><span class="sxs-lookup"><span data-stu-id="7c530-141">(Optional)</span></span> |
+| <span data-ttu-id="7c530-142">fileName</span><span class="sxs-lookup"><span data-stu-id="7c530-142">fileName</span></span> | <span data-ttu-id="7c530-143">Řetězec</span><span class="sxs-lookup"><span data-stu-id="7c530-143">String</span></span> | <span data-ttu-id="7c530-144">Název souboru z hlavičky hello hello AS2 zprávy.</span><span class="sxs-lookup"><span data-stu-id="7c530-144">File name, from hello header of hello AS2 message.</span></span> <span data-ttu-id="7c530-145">(Volitelné)</span><span class="sxs-lookup"><span data-stu-id="7c530-145">(Optional)</span></span> |
+| <span data-ttu-id="7c530-146">isMessageFailed</span><span class="sxs-lookup"><span data-stu-id="7c530-146">isMessageFailed</span></span> |<span data-ttu-id="7c530-147">Logická hodnota</span><span class="sxs-lookup"><span data-stu-id="7c530-147">Boolean</span></span> | <span data-ttu-id="7c530-148">Tom, zda text hello AS2 zpráv se nezdařilo.</span><span class="sxs-lookup"><span data-stu-id="7c530-148">Whether hello AS2 message failed.</span></span> <span data-ttu-id="7c530-149">(Povinné)</span><span class="sxs-lookup"><span data-stu-id="7c530-149">(Mandatory)</span></span> |
+| <span data-ttu-id="7c530-150">isMessageSigned</span><span class="sxs-lookup"><span data-stu-id="7c530-150">isMessageSigned</span></span> | <span data-ttu-id="7c530-151">Logická hodnota</span><span class="sxs-lookup"><span data-stu-id="7c530-151">Boolean</span></span> | <span data-ttu-id="7c530-152">Jestli hello AS2 zpráva byla podepsána.</span><span class="sxs-lookup"><span data-stu-id="7c530-152">Whether hello AS2 message was signed.</span></span> <span data-ttu-id="7c530-153">(Povinné)</span><span class="sxs-lookup"><span data-stu-id="7c530-153">(Mandatory)</span></span> |
+| <span data-ttu-id="7c530-154">isMessageEncrypted</span><span class="sxs-lookup"><span data-stu-id="7c530-154">isMessageEncrypted</span></span> | <span data-ttu-id="7c530-155">Logická hodnota</span><span class="sxs-lookup"><span data-stu-id="7c530-155">Boolean</span></span> | <span data-ttu-id="7c530-156">Jestli hello AS2 zpráva byla zašifrována.</span><span class="sxs-lookup"><span data-stu-id="7c530-156">Whether hello AS2 message was encrypted.</span></span> <span data-ttu-id="7c530-157">(Povinné)</span><span class="sxs-lookup"><span data-stu-id="7c530-157">(Mandatory)</span></span> |
+| <span data-ttu-id="7c530-158">isMessageCompressed</span><span class="sxs-lookup"><span data-stu-id="7c530-158">isMessageCompressed</span></span> |<span data-ttu-id="7c530-159">Logická hodnota</span><span class="sxs-lookup"><span data-stu-id="7c530-159">Boolean</span></span> | <span data-ttu-id="7c530-160">Jestli byla komprimována hello AS2 zprávy.</span><span class="sxs-lookup"><span data-stu-id="7c530-160">Whether hello AS2 message was compressed.</span></span> <span data-ttu-id="7c530-161">(Povinné)</span><span class="sxs-lookup"><span data-stu-id="7c530-161">(Mandatory)</span></span> |
+| <span data-ttu-id="7c530-162">correlationMessageId</span><span class="sxs-lookup"><span data-stu-id="7c530-162">correlationMessageId</span></span> | <span data-ttu-id="7c530-163">Řetězec</span><span class="sxs-lookup"><span data-stu-id="7c530-163">String</span></span> | <span data-ttu-id="7c530-164">ID zprávy AS2, toocorrelate zprávy s MDNs.</span><span class="sxs-lookup"><span data-stu-id="7c530-164">AS2 message ID, toocorrelate messages with MDNs.</span></span> <span data-ttu-id="7c530-165">(Volitelné)</span><span class="sxs-lookup"><span data-stu-id="7c530-165">(Optional)</span></span> |
+| <span data-ttu-id="7c530-166">incomingHeaders</span><span class="sxs-lookup"><span data-stu-id="7c530-166">incomingHeaders</span></span> |<span data-ttu-id="7c530-167">Slovník JToken</span><span class="sxs-lookup"><span data-stu-id="7c530-167">Dictionary of JToken</span></span> | <span data-ttu-id="7c530-168">Podrobnosti záhlaví zprávy příchozí AS2.</span><span class="sxs-lookup"><span data-stu-id="7c530-168">Incoming AS2 message header details.</span></span> <span data-ttu-id="7c530-169">(Volitelné)</span><span class="sxs-lookup"><span data-stu-id="7c530-169">(Optional)</span></span> |
+| <span data-ttu-id="7c530-170">outgoingHeaders</span><span class="sxs-lookup"><span data-stu-id="7c530-170">outgoingHeaders</span></span> |<span data-ttu-id="7c530-171">Slovník JToken</span><span class="sxs-lookup"><span data-stu-id="7c530-171">Dictionary of JToken</span></span> | <span data-ttu-id="7c530-172">Odchozí AS2 podrobnosti záhlaví zprávy.</span><span class="sxs-lookup"><span data-stu-id="7c530-172">Outgoing AS2 message header details.</span></span> <span data-ttu-id="7c530-173">(Volitelné)</span><span class="sxs-lookup"><span data-stu-id="7c530-173">(Optional)</span></span> |
+| <span data-ttu-id="7c530-174">isNrrEnabled</span><span class="sxs-lookup"><span data-stu-id="7c530-174">isNrrEnabled</span></span> | <span data-ttu-id="7c530-175">Logická hodnota</span><span class="sxs-lookup"><span data-stu-id="7c530-175">Boolean</span></span> | <span data-ttu-id="7c530-176">Použijte výchozí hodnotu, pokud hodnota hello není znám.</span><span class="sxs-lookup"><span data-stu-id="7c530-176">Use default value if hello value is not known.</span></span> <span data-ttu-id="7c530-177">(Povinné)</span><span class="sxs-lookup"><span data-stu-id="7c530-177">(Mandatory)</span></span> |
+| <span data-ttu-id="7c530-178">isMdnExpected</span><span class="sxs-lookup"><span data-stu-id="7c530-178">isMdnExpected</span></span> | <span data-ttu-id="7c530-179">Logická hodnota</span><span class="sxs-lookup"><span data-stu-id="7c530-179">Boolean</span></span> | <span data-ttu-id="7c530-180">Použijte výchozí hodnotu, pokud hodnota hello není znám.</span><span class="sxs-lookup"><span data-stu-id="7c530-180">Use default value if hello value is not known.</span></span> <span data-ttu-id="7c530-181">(Povinné)</span><span class="sxs-lookup"><span data-stu-id="7c530-181">(Mandatory)</span></span> |
+| <span data-ttu-id="7c530-182">mdnType</span><span class="sxs-lookup"><span data-stu-id="7c530-182">mdnType</span></span> | <span data-ttu-id="7c530-183">výčet</span><span class="sxs-lookup"><span data-stu-id="7c530-183">Enum</span></span> | <span data-ttu-id="7c530-184">Povolené hodnoty jsou **NotConfigured**, **synchronizace**, a **asynchronní**.</span><span class="sxs-lookup"><span data-stu-id="7c530-184">Allowed values are **NotConfigured**, **Sync**, and **Async**.</span></span> <span data-ttu-id="7c530-185">(Povinné)</span><span class="sxs-lookup"><span data-stu-id="7c530-185">(Mandatory)</span></span> |
+
+## <a name="as2-mdn-tracking-schema"></a><span data-ttu-id="7c530-186">Schéma sledování AS2 MDN</span><span class="sxs-lookup"><span data-stu-id="7c530-186">AS2 MDN tracking schema</span></span>
+````java
+
+    {
+        "agreementProperties": {
+                "senderPartnerName": "",
+                "receiverPartnerName": "",
+                "as2To": "",
+                "as2From": "",
+                "agreementName": "g"
+            },
+            "messageProperties": {
+                "direction": "",
+                "messageId": "",
+                "originalMessageId": "",
+                "dispositionType": "",
+                "isMessageFailed": "",
+                "isMessageSigned": "",
+                "isNrrEnabled": "",
+                "statusCode": "",
+                "micVerificationStatus": "",
+                "correlationMessageId": "",
+                "incomingHeaders": {
+                },
+                "outgoingHeaders": {
+                }
+            }
+    }
+````
+
+| <span data-ttu-id="7c530-187">Vlastnost</span><span class="sxs-lookup"><span data-stu-id="7c530-187">Property</span></span> | <span data-ttu-id="7c530-188">Typ</span><span class="sxs-lookup"><span data-stu-id="7c530-188">Type</span></span> | <span data-ttu-id="7c530-189">Popis</span><span class="sxs-lookup"><span data-stu-id="7c530-189">Description</span></span> |
+| --- | --- | --- |
+| <span data-ttu-id="7c530-190">senderPartnerName</span><span class="sxs-lookup"><span data-stu-id="7c530-190">senderPartnerName</span></span> | <span data-ttu-id="7c530-191">Řetězec</span><span class="sxs-lookup"><span data-stu-id="7c530-191">String</span></span> | <span data-ttu-id="7c530-192">Název odesílatele zprávy AS2 partnera.</span><span class="sxs-lookup"><span data-stu-id="7c530-192">AS2 message sender's partner name.</span></span> <span data-ttu-id="7c530-193">(Volitelné)</span><span class="sxs-lookup"><span data-stu-id="7c530-193">(Optional)</span></span> |
+| <span data-ttu-id="7c530-194">receiverPartnerName</span><span class="sxs-lookup"><span data-stu-id="7c530-194">receiverPartnerName</span></span> | <span data-ttu-id="7c530-195">Řetězec</span><span class="sxs-lookup"><span data-stu-id="7c530-195">String</span></span> | <span data-ttu-id="7c530-196">Příjemce zprávu AS2 název partnera.</span><span class="sxs-lookup"><span data-stu-id="7c530-196">AS2 message receiver's partner name.</span></span> <span data-ttu-id="7c530-197">(Volitelné)</span><span class="sxs-lookup"><span data-stu-id="7c530-197">(Optional)</span></span> |
+| <span data-ttu-id="7c530-198">as2To</span><span class="sxs-lookup"><span data-stu-id="7c530-198">as2To</span></span> | <span data-ttu-id="7c530-199">Řetězec</span><span class="sxs-lookup"><span data-stu-id="7c530-199">String</span></span> | <span data-ttu-id="7c530-200">Název partnera, který přijme zprávu hello AS2.</span><span class="sxs-lookup"><span data-stu-id="7c530-200">Partner name who receives hello AS2 message.</span></span> <span data-ttu-id="7c530-201">(Povinné)</span><span class="sxs-lookup"><span data-stu-id="7c530-201">(Mandatory)</span></span> |
+| <span data-ttu-id="7c530-202">as2From</span><span class="sxs-lookup"><span data-stu-id="7c530-202">as2From</span></span> | <span data-ttu-id="7c530-203">Řetězec</span><span class="sxs-lookup"><span data-stu-id="7c530-203">String</span></span> | <span data-ttu-id="7c530-204">Název partnera, který odešle zprávu hello AS2.</span><span class="sxs-lookup"><span data-stu-id="7c530-204">Partner name who sends hello AS2 message.</span></span> <span data-ttu-id="7c530-205">(Povinné)</span><span class="sxs-lookup"><span data-stu-id="7c530-205">(Mandatory)</span></span> |
+| <span data-ttu-id="7c530-206">agreementName</span><span class="sxs-lookup"><span data-stu-id="7c530-206">agreementName</span></span> | <span data-ttu-id="7c530-207">Řetězec</span><span class="sxs-lookup"><span data-stu-id="7c530-207">String</span></span> | <span data-ttu-id="7c530-208">Název hello AS2 smlouvy toowhich hello zpráv se překládají.</span><span class="sxs-lookup"><span data-stu-id="7c530-208">Name of hello AS2 agreement toowhich hello messages are resolved.</span></span> <span data-ttu-id="7c530-209">(Volitelné)</span><span class="sxs-lookup"><span data-stu-id="7c530-209">(Optional)</span></span> |
+| <span data-ttu-id="7c530-210">Směr</span><span class="sxs-lookup"><span data-stu-id="7c530-210">direction</span></span> |<span data-ttu-id="7c530-211">Řetězec</span><span class="sxs-lookup"><span data-stu-id="7c530-211">String</span></span> | <span data-ttu-id="7c530-212">Směr toku zpráv hello, přijímat nebo odesílat.</span><span class="sxs-lookup"><span data-stu-id="7c530-212">Direction of hello message flow, receive or send.</span></span> <span data-ttu-id="7c530-213">(Povinné)</span><span class="sxs-lookup"><span data-stu-id="7c530-213">(Mandatory)</span></span> |
+| <span data-ttu-id="7c530-214">messageId</span><span class="sxs-lookup"><span data-stu-id="7c530-214">messageId</span></span> | <span data-ttu-id="7c530-215">Řetězec</span><span class="sxs-lookup"><span data-stu-id="7c530-215">String</span></span> | <span data-ttu-id="7c530-216">ID AS2 zprávy.</span><span class="sxs-lookup"><span data-stu-id="7c530-216">AS2 message ID.</span></span> <span data-ttu-id="7c530-217">(Volitelné)</span><span class="sxs-lookup"><span data-stu-id="7c530-217">(Optional)</span></span> |
+| <span data-ttu-id="7c530-218">OriginalMessageId</span><span class="sxs-lookup"><span data-stu-id="7c530-218">originalMessageId</span></span> |<span data-ttu-id="7c530-219">Řetězec</span><span class="sxs-lookup"><span data-stu-id="7c530-219">String</span></span> | <span data-ttu-id="7c530-220">ID AS2 původní zprávy.</span><span class="sxs-lookup"><span data-stu-id="7c530-220">AS2 original message ID.</span></span> <span data-ttu-id="7c530-221">(Volitelné)</span><span class="sxs-lookup"><span data-stu-id="7c530-221">(Optional)</span></span> |
+| <span data-ttu-id="7c530-222">dispositionType</span><span class="sxs-lookup"><span data-stu-id="7c530-222">dispositionType</span></span> | <span data-ttu-id="7c530-223">Řetězec</span><span class="sxs-lookup"><span data-stu-id="7c530-223">String</span></span> | <span data-ttu-id="7c530-224">Hodnota typu MDN dispozice.</span><span class="sxs-lookup"><span data-stu-id="7c530-224">MDN disposition type value.</span></span> <span data-ttu-id="7c530-225">(Volitelné)</span><span class="sxs-lookup"><span data-stu-id="7c530-225">(Optional)</span></span> |
+| <span data-ttu-id="7c530-226">isMessageFailed</span><span class="sxs-lookup"><span data-stu-id="7c530-226">isMessageFailed</span></span> |<span data-ttu-id="7c530-227">Logická hodnota</span><span class="sxs-lookup"><span data-stu-id="7c530-227">Boolean</span></span> | <span data-ttu-id="7c530-228">Tom, zda text hello AS2 zpráv se nezdařilo.</span><span class="sxs-lookup"><span data-stu-id="7c530-228">Whether hello AS2 message failed.</span></span> <span data-ttu-id="7c530-229">(Povinné)</span><span class="sxs-lookup"><span data-stu-id="7c530-229">(Mandatory)</span></span> |
+| <span data-ttu-id="7c530-230">isMessageSigned</span><span class="sxs-lookup"><span data-stu-id="7c530-230">isMessageSigned</span></span> |<span data-ttu-id="7c530-231">Logická hodnota</span><span class="sxs-lookup"><span data-stu-id="7c530-231">Boolean</span></span> | <span data-ttu-id="7c530-232">Jestli hello AS2 zpráva byla podepsána.</span><span class="sxs-lookup"><span data-stu-id="7c530-232">Whether hello AS2 message was signed.</span></span> <span data-ttu-id="7c530-233">(Povinné)</span><span class="sxs-lookup"><span data-stu-id="7c530-233">(Mandatory)</span></span> |
+| <span data-ttu-id="7c530-234">isNrrEnabled</span><span class="sxs-lookup"><span data-stu-id="7c530-234">isNrrEnabled</span></span> | <span data-ttu-id="7c530-235">Logická hodnota</span><span class="sxs-lookup"><span data-stu-id="7c530-235">Boolean</span></span> | <span data-ttu-id="7c530-236">Použijte výchozí hodnotu, pokud hodnota hello není znám.</span><span class="sxs-lookup"><span data-stu-id="7c530-236">Use default value if hello value is not known.</span></span> <span data-ttu-id="7c530-237">(Povinné)</span><span class="sxs-lookup"><span data-stu-id="7c530-237">(Mandatory)</span></span> |
+| <span data-ttu-id="7c530-238">statusCode</span><span class="sxs-lookup"><span data-stu-id="7c530-238">statusCode</span></span> | <span data-ttu-id="7c530-239">výčet</span><span class="sxs-lookup"><span data-stu-id="7c530-239">Enum</span></span> | <span data-ttu-id="7c530-240">Povolené hodnoty jsou **platných**, **zamítnutý**, a **AcceptedWithErrors**.</span><span class="sxs-lookup"><span data-stu-id="7c530-240">Allowed values are **Accepted**, **Rejected**, and **AcceptedWithErrors**.</span></span> <span data-ttu-id="7c530-241">(Povinné)</span><span class="sxs-lookup"><span data-stu-id="7c530-241">(Mandatory)</span></span> |
+| <span data-ttu-id="7c530-242">micVerificationStatus</span><span class="sxs-lookup"><span data-stu-id="7c530-242">micVerificationStatus</span></span> | <span data-ttu-id="7c530-243">výčet</span><span class="sxs-lookup"><span data-stu-id="7c530-243">Enum</span></span> | <span data-ttu-id="7c530-244">Povolené hodnoty jsou **NotApplicable**, **úspěšné**, a **se nezdařilo**.</span><span class="sxs-lookup"><span data-stu-id="7c530-244">Allowed values are **NotApplicable**, **Succeeded**, and **Failed**.</span></span> <span data-ttu-id="7c530-245">(Povinné)</span><span class="sxs-lookup"><span data-stu-id="7c530-245">(Mandatory)</span></span> |
+| <span data-ttu-id="7c530-246">correlationMessageId</span><span class="sxs-lookup"><span data-stu-id="7c530-246">correlationMessageId</span></span> | <span data-ttu-id="7c530-247">Řetězec</span><span class="sxs-lookup"><span data-stu-id="7c530-247">String</span></span> | <span data-ttu-id="7c530-248">ID korelace.</span><span class="sxs-lookup"><span data-stu-id="7c530-248">Correlation ID.</span></span> <span data-ttu-id="7c530-249">Hello původní messaged ID (ID zprávy hello zprávy, pro který je nakonfigurovaný MDN hello).</span><span class="sxs-lookup"><span data-stu-id="7c530-249">hello original messaged ID (hello message ID of hello message for which MDN is configured).</span></span> <span data-ttu-id="7c530-250">(Volitelné)</span><span class="sxs-lookup"><span data-stu-id="7c530-250">(Optional)</span></span> |
+| <span data-ttu-id="7c530-251">incomingHeaders</span><span class="sxs-lookup"><span data-stu-id="7c530-251">incomingHeaders</span></span> | <span data-ttu-id="7c530-252">Slovník JToken</span><span class="sxs-lookup"><span data-stu-id="7c530-252">Dictionary of JToken</span></span> | <span data-ttu-id="7c530-253">Určuje podrobnosti záhlaví příchozí zprávy.</span><span class="sxs-lookup"><span data-stu-id="7c530-253">Indicates incoming message header details.</span></span> <span data-ttu-id="7c530-254">(Volitelné)</span><span class="sxs-lookup"><span data-stu-id="7c530-254">(Optional)</span></span> |
+| <span data-ttu-id="7c530-255">outgoingHeaders</span><span class="sxs-lookup"><span data-stu-id="7c530-255">outgoingHeaders</span></span> |<span data-ttu-id="7c530-256">Slovník JToken</span><span class="sxs-lookup"><span data-stu-id="7c530-256">Dictionary of JToken</span></span> | <span data-ttu-id="7c530-257">Určuje odchozí podrobnosti záhlaví zprávy.</span><span class="sxs-lookup"><span data-stu-id="7c530-257">Indicates outgoing message header details.</span></span> <span data-ttu-id="7c530-258">(Volitelné)</span><span class="sxs-lookup"><span data-stu-id="7c530-258">(Optional)</span></span> |
+
+## <a name="next-steps"></a><span data-ttu-id="7c530-259">Další kroky</span><span class="sxs-lookup"><span data-stu-id="7c530-259">Next steps</span></span>
+* <span data-ttu-id="7c530-260">Další informace o hello [Enterprise integračního balíčku](../logic-apps/logic-apps-enterprise-integration-overview.md).</span><span class="sxs-lookup"><span data-stu-id="7c530-260">Learn more about hello [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md).</span></span>    
+* <span data-ttu-id="7c530-261">Další informace o [sledování zpráv B2B](logic-apps-monitor-b2b-message.md).</span><span class="sxs-lookup"><span data-stu-id="7c530-261">Learn more about [monitoring B2B messages](logic-apps-monitor-b2b-message.md).</span></span>   
+* <span data-ttu-id="7c530-262">Další informace o [B2B vlastní sledování schémata](logic-apps-track-integration-account-custom-tracking-schema.md).</span><span class="sxs-lookup"><span data-stu-id="7c530-262">Learn more about [B2B custom tracking schemas](logic-apps-track-integration-account-custom-tracking-schema.md).</span></span>   
+* <span data-ttu-id="7c530-263">Další informace o [X12 sledování schémata](logic-apps-track-integration-account-x12-tracking-schema.md).</span><span class="sxs-lookup"><span data-stu-id="7c530-263">Learn more about [X12 tracking schemas](logic-apps-track-integration-account-x12-tracking-schema.md).</span></span>   
+* <span data-ttu-id="7c530-264">Další informace o [sledování zpráv B2B portálu Operations Management Suite hello](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).</span><span class="sxs-lookup"><span data-stu-id="7c530-264">Learn about [tracking B2B messages in hello Operations Management Suite portal](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).</span></span>

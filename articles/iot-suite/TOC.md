@@ -1,0 +1,62 @@
+# Přehled
+## [Azure a IoT](iot-suite-what-is-azure-iot.md)
+## [Co je IoT Suite?](iot-suite-overview.md)
+## [Jaké jsou hello předkonfigurované řešení?](iot-suite-what-are-preconfigured-solutions.md)
+
+
+# Začínáme
+## [Začínáme s hello předkonfigurované řešení](iot-suite-getstarted-preconfigured-solutions.md)
+## [Oprávnění na webu azureiotsuite.com](iot-suite-permissions.md)
+## [Přehled řešení prediktivní údržby](iot-suite-predictive-overview.md)
+## [Přehled řešení propojené továrny](iot-suite-connected-factory-overview.md)
+## [Seznámení s řešením vzdáleného monitorování](iot-suite-remote-monitoring-sample-walkthrough.md)
+## [Seznámení s řešením prediktivní údržby](iot-suite-predictive-walkthrough.md)
+## [Názorný postup řešení propojené továrny](iot-suite-connected-factory-sample-walkthrough.md)
+## [Připojte Raspberry Pi](iot-suite-raspberry-pi-kit-get-started.md)
+### Použití jazyka C
+#### [Simulovaná data](iot-suite-raspberry-pi-kit-c-get-started-simulator.md)
+#### [Použití reálných senzorů](iot-suite-raspberry-pi-kit-c-get-started-basic.md)
+#### [Implementace aktualizací firmwaru](iot-suite-raspberry-pi-kit-c-get-started-advanced.md)
+### Použití Node.js
+#### [Simulovaná data](iot-suite-raspberry-pi-kit-node-get-started-simulator.md)
+#### [Použití reálných senzorů](iot-suite-raspberry-pi-kit-node-get-started-basic.md)
+#### [Implementace aktualizací firmwaru](iot-suite-raspberry-pi-kit-node-get-started-advanced.md)
+## Připojení brány Intel NUC
+### [Simulovaná data](iot-suite-gateway-kit-get-started-simulator.md)
+### [Použití reálných senzorů](iot-suite-gateway-kit-get-started-sensortag.md)
+
+# Postup
+## Připojení simulovaného zařízení
+### [C ve Windows](iot-suite-connecting-devices.md)
+### [C v Linuxu](iot-suite-connecting-devices-linux.md)
+### [Node.js](iot-suite-connecting-devices-node.md)
+## [Připojit aplikaci logiky toohello řešení vzdáleného monitorování](iot-suite-logic-apps-tutorial.md)
+## [Přizpůsobení předkonfigurovaného řešení](iot-suite-guidance-on-customizing-preconfigured-solutions.md)
+## [Použití dynamické telemetrie s hello řešení vzdáleného sledování](iot-suite-dynamic-telemetry.md)
+## [Vytvoření vlastního pravidla v řešení vzdáleného monitorování hello](iot-suite-custom-rule.md)
+## [Informace o zařízení v řešení vzdáleného sledování hello](iot-suite-remote-monitoring-device-info.md)
+## [Nasazení brány pro propojenou továrnu](iot-suite-connected-factory-gateway-deployment.md)
+## [Přizpůsobení propojené továrny](iot-suite-connected-factory-customize.md)
+
+# Referenční informace
+## [Architektura zabezpečení](iot-security-architecture.md)
+## [Osvědčené postupy zabezpečení](iot-security-best-practices.md)
+## [Zabezpečení nasazení IoT](iot-suite-security-deployment.md)
+## [Zabezpečení z hello pozadí](securing-iot-ground-up.md)
+
+# Související
+## [Stream Analytics](/azure/stream-analytics/)
+## [Event Hubs](/azure/event-hubs/)
+## [IoT Hub](/azure/iot-hub/)
+## [Machine Learning](/azure/machine-learning/)
+
+# Zdroje a prostředky
+## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/)
+## [Nejčastější dotazy](iot-suite-faq.md)
+## [Propojená továrna – nejčastější dotazy](iot-suite-faq-cf.md)
+## [Postup výuky pro IoT Suite](https://azure.microsoft.com/documentation/learning-paths/iot-suite/)
+## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)
+
+
+
+

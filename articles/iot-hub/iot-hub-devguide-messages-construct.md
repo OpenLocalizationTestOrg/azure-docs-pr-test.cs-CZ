@@ -1,0 +1,78 @@
+---
+title: "Formát zprávy aaaUnderstand Azure IoT Hub | Microsoft Docs"
+description: "Příručka vývojáře - popisuje hello formátu a očekávaný obsah zprávy IoT Hub."
+services: iot-hub
+documentationcenter: .net
+author: dominicbetts
+manager: timlt
+editor: 
+ms.assetid: 3fc5f1a3-3711-4611-9897-d4db079b4250
+ms.service: iot-hub
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 05/25/2017
+ms.author: dobett
+ms.openlocfilehash: 3b1567e47bc32f70c0c252996648c4035ae81243
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/06/2017
+---
+# <a name="create-and-read-iot-hub-messages"></a><span data-ttu-id="6379d-103">Vytvoření a čtení zpráv služby IoT Hub</span><span class="sxs-lookup"><span data-stu-id="6379d-103">Create and read IoT Hub messages</span></span>
+
+<span data-ttu-id="6379d-104">toosupport bezproblémové interoperabilita mezi protokoly, IoT Hub definuje běžné formát zprávy pro všechny protokoly zařízení přístupem.</span><span class="sxs-lookup"><span data-stu-id="6379d-104">toosupport seamless interoperability across protocols, IoT Hub defines a common message format for all device-facing protocols.</span></span> <span data-ttu-id="6379d-105">Používá se tento formát zprávy pro [zařízení cloud] [ lnk-d2c] a [cloud zařízení] [ lnk-c2d] zprávy.</span><span class="sxs-lookup"><span data-stu-id="6379d-105">This message format is used for both [device-to-cloud][lnk-d2c] and [cloud-to-device][lnk-c2d] messages.</span></span> <span data-ttu-id="6379d-106">[IoT Hub zpráva] [ lnk-messaging] se skládá z:</span><span class="sxs-lookup"><span data-stu-id="6379d-106">An [IoT Hub message][lnk-messaging] consists of:</span></span>
+
+* <span data-ttu-id="6379d-107">Sadu *vlastnosti systému*.</span><span class="sxs-lookup"><span data-stu-id="6379d-107">A set of *system properties*.</span></span> <span data-ttu-id="6379d-108">Vlastnosti, které Centrum IoT interpretuje nebo nastaví.</span><span class="sxs-lookup"><span data-stu-id="6379d-108">Properties that IoT Hub interprets or sets.</span></span> <span data-ttu-id="6379d-109">Tato sada je předem určený.</span><span class="sxs-lookup"><span data-stu-id="6379d-109">This set is predetermined.</span></span>
+* <span data-ttu-id="6379d-110">Sadu *vlastnosti aplikace*.</span><span class="sxs-lookup"><span data-stu-id="6379d-110">A set of *application properties*.</span></span> <span data-ttu-id="6379d-111">Slovník vlastností řetězce, které hello aplikace můžete definovat a získat přístup, a to bez nutnosti tělo zprávy toodeserialize hello.</span><span class="sxs-lookup"><span data-stu-id="6379d-111">A dictionary of string properties that hello application can define and access, without needing toodeserialize hello message body.</span></span> <span data-ttu-id="6379d-112">IoT Hub nikdy upravuje tyto vlastnosti.</span><span class="sxs-lookup"><span data-stu-id="6379d-112">IoT Hub never modifies these properties.</span></span>
+* <span data-ttu-id="6379d-113">Neprůhledné binární text.</span><span class="sxs-lookup"><span data-stu-id="6379d-113">An opaque binary body.</span></span>
+
+<span data-ttu-id="6379d-114">Názvy a hodnoty vlastností mohou obsahovat pouze alfanumerické znaky ASCII, plus ``{'!', '#', '$', '%, '&', "'", '*', '*', '+', '-', '.', '^', '_', '`', '|', '~'}`\` při můžete:</span><span class="sxs-lookup"><span data-stu-id="6379d-114">Property names and values can only contain ASCII alphanumeric characters, plus ``{'!', '#', '$', '%, '&', "'", '*', '*', '+', '-', '.', '^', '_', '`', '|', '~'}`\` when you:</span></span>
+
+* <span data-ttu-id="6379d-115">Odesílání zpráv typu zařízení cloud pomocí protokolu HTTP hello.</span><span class="sxs-lookup"><span data-stu-id="6379d-115">Send device-to-cloud messages using hello HTTP protocol.</span></span>
+* <span data-ttu-id="6379d-116">Odesílání zpráv typu cloud zařízení.</span><span class="sxs-lookup"><span data-stu-id="6379d-116">Send cloud-to-device messages.</span></span>
+
+<span data-ttu-id="6379d-117">Další informace o tom, tooencode a dekódování zprávy odeslané pomocí různých protokolů, najdete v části [SDK služby Azure IoT][lnk-sdks].</span><span class="sxs-lookup"><span data-stu-id="6379d-117">For more information about how tooencode and decode messages sent using different protocols, see [Azure IoT SDKs][lnk-sdks].</span></span>
+
+<span data-ttu-id="6379d-118">Hello následující tabulka uvádí hello sadu vlastností systému ve zprávách služby IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="6379d-118">hello following table lists hello set of system properties in IoT Hub messages.</span></span>
+
+| <span data-ttu-id="6379d-119">Vlastnost</span><span class="sxs-lookup"><span data-stu-id="6379d-119">Property</span></span> | <span data-ttu-id="6379d-120">Popis</span><span class="sxs-lookup"><span data-stu-id="6379d-120">Description</span></span> |
+| --- | --- |
+| <span data-ttu-id="6379d-121">messageId</span><span class="sxs-lookup"><span data-stu-id="6379d-121">MessageId</span></span> |<span data-ttu-id="6379d-122">Identifikátor uživatele nastavit hello zprávě použité pro vzory požadavku a odpovědi.</span><span class="sxs-lookup"><span data-stu-id="6379d-122">A user-settable identifier for hello message used for request-reply patterns.</span></span> <span data-ttu-id="6379d-123">Formát: Malá a velká písmena řetězec (až too128 znaků) z alfanumerických znaků ASCII 7bitového + `{'-', ':',’.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`.</span><span class="sxs-lookup"><span data-stu-id="6379d-123">Format: A case-sensitive string (up too128 characters long) of ASCII 7-bit alphanumeric characters + `{'-', ':',’.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`.</span></span> |
+| <span data-ttu-id="6379d-124">Pořadové číslo</span><span class="sxs-lookup"><span data-stu-id="6379d-124">Sequence number</span></span> |<span data-ttu-id="6379d-125">Číslo (jedinečný pro každé zařízení fronty) přiřazené službou IoT Hub tooeach cloud zařízení zpráv.</span><span class="sxs-lookup"><span data-stu-id="6379d-125">A number (unique per device-queue) assigned by IoT Hub tooeach cloud-to-device message.</span></span> |
+| <span data-ttu-id="6379d-126">příliš</span><span class="sxs-lookup"><span data-stu-id="6379d-126">too</span></span>|<span data-ttu-id="6379d-127">Cíl zadaný v [Cloud-zařízení] [ lnk-c2d] zprávy.</span><span class="sxs-lookup"><span data-stu-id="6379d-127">A destination specified in [Cloud-to-Device][lnk-c2d] messages.</span></span> |
+| <span data-ttu-id="6379d-128">ExpiryTimeUtc</span><span class="sxs-lookup"><span data-stu-id="6379d-128">ExpiryTimeUtc</span></span> |<span data-ttu-id="6379d-129">Datum a čas vypršení platnosti zprávy.</span><span class="sxs-lookup"><span data-stu-id="6379d-129">Date and time of message expiration.</span></span> |
+| <span data-ttu-id="6379d-130">EnqueuedTime</span><span class="sxs-lookup"><span data-stu-id="6379d-130">EnqueuedTime</span></span> |<span data-ttu-id="6379d-131">Datum a čas hello [Cloud-zařízení] [ lnk-c2d] zpráva byla přijata službou IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="6379d-131">Date and time hello [Cloud-to-Device][lnk-c2d] message was received by IoT Hub.</span></span> |
+| <span data-ttu-id="6379d-132">CorrelationId</span><span class="sxs-lookup"><span data-stu-id="6379d-132">CorrelationId</span></span> |<span data-ttu-id="6379d-133">Vlastnosti řetězce v zprávu odpovědi, která obvykle obsahuje hello MessageId hello požadavku v vzory požadavku a odpovědi.</span><span class="sxs-lookup"><span data-stu-id="6379d-133">A string property in a response message that typically contains hello MessageId of hello request, in request-reply patterns.</span></span> |
+| <span data-ttu-id="6379d-134">ID uživatele</span><span class="sxs-lookup"><span data-stu-id="6379d-134">UserId</span></span> |<span data-ttu-id="6379d-135">ID použít toospecify hello původ zprávy.</span><span class="sxs-lookup"><span data-stu-id="6379d-135">An ID used toospecify hello origin of messages.</span></span> <span data-ttu-id="6379d-136">Když zprávy generované IoT Hub, se nastaví příliš`{iot hub name}`.</span><span class="sxs-lookup"><span data-stu-id="6379d-136">When messages are generated by IoT Hub, it is set too`{iot hub name}`.</span></span> |
+| <span data-ttu-id="6379d-137">Potvrzení</span><span class="sxs-lookup"><span data-stu-id="6379d-137">Ack</span></span> |<span data-ttu-id="6379d-138">Generátor zpráva zpětnou vazbu.</span><span class="sxs-lookup"><span data-stu-id="6379d-138">A feedback message generator.</span></span> <span data-ttu-id="6379d-139">Tato vlastnost se používá v zprávy typu cloud zařízení toorequest IoT Hub toogenerate zpětnou vazbu zprávu v důsledku hello spotřeby uvítací zprávu hello zařízení.</span><span class="sxs-lookup"><span data-stu-id="6379d-139">This property is used in cloud-to-device messages toorequest IoT Hub toogenerate feedback messages as a result of hello consumption of hello message by hello device.</span></span> <span data-ttu-id="6379d-140">Možné hodnoty: **žádné** (výchozí): je vygenerována žádná zpráva zpětnou vazbu, **kladné**: Pokud uvítací zprávu byl dokončen, se zobrazí zpráva zpětné vazby **záporné**: přijímat zpráva zpětné vazby, pokud platnost zprávy hello (nebo bylo dosaženo maximální doručení počet) bez jeho dokončení hello zařízení nebo **úplné**: kladné a záporné.</span><span class="sxs-lookup"><span data-stu-id="6379d-140">Possible values: **none** (default): no feedback message is generated, **positive**: receive a feedback message if hello message was completed, **negative**: receive a feedback message if hello message expired (or maximum delivery count was reached) without being completed by hello device, or **full**: both positive and negative.</span></span> <span data-ttu-id="6379d-141">Další informace najdete v tématu [zprávy zpětné vazby][lnk-feedback].</span><span class="sxs-lookup"><span data-stu-id="6379d-141">For more information, see [Message feedback][lnk-feedback].</span></span> |
+| <span data-ttu-id="6379d-142">ConnectionDeviceId</span><span class="sxs-lookup"><span data-stu-id="6379d-142">ConnectionDeviceId</span></span> |<span data-ttu-id="6379d-143">ID nastavit službou IoT Hub na zpráv typu zařízení cloud.</span><span class="sxs-lookup"><span data-stu-id="6379d-143">An ID set by IoT Hub on device-to-cloud messages.</span></span> <span data-ttu-id="6379d-144">Obsahuje hello **deviceId** hello zařízení, která odeslána zpráva hello.</span><span class="sxs-lookup"><span data-stu-id="6379d-144">It contains hello **deviceId** of hello device that sent hello message.</span></span> |
+| <span data-ttu-id="6379d-145">ConnectionDeviceGenerationId</span><span class="sxs-lookup"><span data-stu-id="6379d-145">ConnectionDeviceGenerationId</span></span> |<span data-ttu-id="6379d-146">ID nastavit službou IoT Hub na zpráv typu zařízení cloud.</span><span class="sxs-lookup"><span data-stu-id="6379d-146">An ID set by IoT Hub on device-to-cloud messages.</span></span> <span data-ttu-id="6379d-147">Obsahuje hello **generationId** (dle [vlastnosti identity zařízení][lnk-device-properties]) hello zařízení, která odeslána zpráva hello.</span><span class="sxs-lookup"><span data-stu-id="6379d-147">It contains hello **generationId** (as per [Device identity properties][lnk-device-properties]) of hello device that sent hello message.</span></span> |
+| <span data-ttu-id="6379d-148">ConnectionAuthMethod</span><span class="sxs-lookup"><span data-stu-id="6379d-148">ConnectionAuthMethod</span></span> |<span data-ttu-id="6379d-149">Metoda ověřování, nastavit službou IoT Hub na zpráv typu zařízení cloud.</span><span class="sxs-lookup"><span data-stu-id="6379d-149">An authentication method set by IoT Hub on device-to-cloud messages.</span></span> <span data-ttu-id="6379d-150">Tato vlastnost obsahuje informace o hello ověřování metodu použitou tooauthenticate hello zařízení odesílání zprávy hello.</span><span class="sxs-lookup"><span data-stu-id="6379d-150">This property contains information about hello authentication method used tooauthenticate hello device sending hello message.</span></span> <span data-ttu-id="6379d-151">Další informace najdete v tématu [zařízení toocloud ochranu proti falšování][lnk-antispoofing].</span><span class="sxs-lookup"><span data-stu-id="6379d-151">For more information, see [Device toocloud anti-spoofing][lnk-antispoofing].</span></span> |
+
+## <a name="message-size"></a><span data-ttu-id="6379d-152">Velikost zpráv</span><span class="sxs-lookup"><span data-stu-id="6379d-152">Message size</span></span>
+
+<span data-ttu-id="6379d-153">IoT Hub měří velikost zprávy způsobem, bez ohledu na protokol, vzhledem k tomu jenom skutečné datové části hello.</span><span class="sxs-lookup"><span data-stu-id="6379d-153">IoT Hub measures message size in a protocol-agnostic way, considering only hello actual payload.</span></span> <span data-ttu-id="6379d-154">Hello velikost v bajtech se počítá jako součet hello hello následující:</span><span class="sxs-lookup"><span data-stu-id="6379d-154">hello size in bytes is calculated as hello sum of hello following:</span></span>
+
+* <span data-ttu-id="6379d-155">velikost textu Hello v bajtech.</span><span class="sxs-lookup"><span data-stu-id="6379d-155">hello body size in bytes.</span></span>
+* <span data-ttu-id="6379d-156">Hello velikost v bajtech všech hello hodnot vlastností hello zpráv systému.</span><span class="sxs-lookup"><span data-stu-id="6379d-156">hello size in bytes of all hello values of hello message system properties.</span></span>
+* <span data-ttu-id="6379d-157">Hello velikost v bajtech všechny názvy vlastností uživatele a hodnoty.</span><span class="sxs-lookup"><span data-stu-id="6379d-157">hello size in bytes of all user property names and values.</span></span>
+
+<span data-ttu-id="6379d-158">Názvy a hodnoty vlastností jsou omezené tooASCII znaky, takže hello délka řetězce hello rovná hello velikost v bajtech.</span><span class="sxs-lookup"><span data-stu-id="6379d-158">Property names and values are limited tooASCII characters, so hello length of hello strings equals hello size in bytes.</span></span>
+
+## <a name="next-steps"></a><span data-ttu-id="6379d-159">Další kroky</span><span class="sxs-lookup"><span data-stu-id="6379d-159">Next steps</span></span>
+
+<span data-ttu-id="6379d-160">Informace o omezení velikosti zpráv v centru IoT najdete v tématu [IoT Hub kvót a omezování][lnk-quotas].</span><span class="sxs-lookup"><span data-stu-id="6379d-160">For information about message size limits in IoT Hub, see [IoT Hub quotas and throttling][lnk-quotas].</span></span>
+
+<span data-ttu-id="6379d-161">toolearn jak toocreate a čtení zpráv služby IoT Hub v různých programovacích jazyků, najdete v části hello [Začínáme] [ lnk-get-started] kurzy.</span><span class="sxs-lookup"><span data-stu-id="6379d-161">toolearn how toocreate and read IoT Hub messages in various programming languages, see hello [Get started][lnk-get-started] tutorials.</span></span>
+
+[lnk-messaging]: iot-hub-devguide-messaging.md
+[lnk-quotas]: iot-hub-devguide-quotas-throttling.md
+[lnk-get-started]: iot-hub-get-started.md
+[lnk-sdks]: iot-hub-devguide-sdks.md
+[lnk-c2d]: iot-hub-devguide-messages-c2d.md
+[lnk-d2c]: iot-hub-devguide-messages-d2c.md
+[lnk-feedback]: iot-hub-devguide-messages-c2d.md#message-feedback
+[lnk-device-properties]: iot-hub-devguide-identity-registry.md#device-identity-properties
+[lnk-antispoofing]: iot-hub-devguide-messages-d2c.md#anti-spoofing-properties

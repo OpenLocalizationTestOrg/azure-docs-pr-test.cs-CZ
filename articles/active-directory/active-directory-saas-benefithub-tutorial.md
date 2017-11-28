@@ -1,0 +1,248 @@
+---
+title: 'Kurz: Azure Active Directory integrace s BenefitHub | Microsoft Docs'
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a BenefitHub."
+services: active-directory
+documentationCenter: na
+author: jeevansd
+manager: femila
+ms.assetid: 4069fe32-a452-463f-973e-7aa0baa4c2fa
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 06/13/2017
+ms.author: jeedes
+ms.openlocfilehash: c07d6e44e8cbc79afd79c900664011b059206b56
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/06/2017
+---
+# <a name="tutorial-azure-active-directory-integration-with-benefithub"></a><span data-ttu-id="b066f-103">Kurz: Azure Active Directory integrace s BenefitHub</span><span class="sxs-lookup"><span data-stu-id="b066f-103">Tutorial: Azure Active Directory integration with BenefitHub</span></span>
+
+<span data-ttu-id="b066f-104">V tomto kurzu zjistíte, jak toointegrate BenefitHub s Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="b066f-104">In this tutorial, you learn how toointegrate BenefitHub with Azure Active Directory (Azure AD).</span></span>
+
+<span data-ttu-id="b066f-105">Integrace BenefitHub s Azure AD poskytuje hello následující výhody:</span><span class="sxs-lookup"><span data-stu-id="b066f-105">Integrating BenefitHub with Azure AD provides you with hello following benefits:</span></span>
+
+- <span data-ttu-id="b066f-106">Můžete řídit ve službě Azure AD, který má přístup tooBenefitHub</span><span class="sxs-lookup"><span data-stu-id="b066f-106">You can control in Azure AD who has access tooBenefitHub</span></span>
+- <span data-ttu-id="b066f-107">Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooBenefitHub (jednotné přihlášení) s jejich účty Azure AD</span><span class="sxs-lookup"><span data-stu-id="b066f-107">You can enable your users tooautomatically get signed-on tooBenefitHub (Single Sign-On) with their Azure AD accounts</span></span>
+- <span data-ttu-id="b066f-108">Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure</span><span class="sxs-lookup"><span data-stu-id="b066f-108">You can manage your accounts in one central location - hello Azure portal</span></span>
+
+<span data-ttu-id="b066f-109">Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="b066f-109">If you want tooknow more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
+
+## <a name="prerequisites"></a><span data-ttu-id="b066f-110">Požadavky</span><span class="sxs-lookup"><span data-stu-id="b066f-110">Prerequisites</span></span>
+
+<span data-ttu-id="b066f-111">Integrace služby Azure AD s BenefitHub tooconfigure, je třeba hello následující položky:</span><span class="sxs-lookup"><span data-stu-id="b066f-111">tooconfigure Azure AD integration with BenefitHub, you need hello following items:</span></span>
+
+- <span data-ttu-id="b066f-112">Předplatné služby Azure AD</span><span class="sxs-lookup"><span data-stu-id="b066f-112">An Azure AD subscription</span></span>
+- <span data-ttu-id="b066f-113">BenefitHub jednotného přihlašování povolené předplatné</span><span class="sxs-lookup"><span data-stu-id="b066f-113">A BenefitHub single-sign on enabled subscription</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="b066f-114">tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.</span><span class="sxs-lookup"><span data-stu-id="b066f-114">tootest hello steps in this tutorial, we do not recommend using a production environment.</span></span>
+
+<span data-ttu-id="b066f-115">tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:</span><span class="sxs-lookup"><span data-stu-id="b066f-115">tootest hello steps in this tutorial, you should follow these recommendations:</span></span>
+
+- <span data-ttu-id="b066f-116">Nepoužívejte provozním prostředí, pokud to není nutné.</span><span class="sxs-lookup"><span data-stu-id="b066f-116">Do not use your production environment, unless it is necessary.</span></span>
+- <span data-ttu-id="b066f-117">Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="b066f-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+
+## <a name="scenario-description"></a><span data-ttu-id="b066f-118">Popis scénáře</span><span class="sxs-lookup"><span data-stu-id="b066f-118">Scenario description</span></span>
+<span data-ttu-id="b066f-119">V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí.</span><span class="sxs-lookup"><span data-stu-id="b066f-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="b066f-120">Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:</span><span class="sxs-lookup"><span data-stu-id="b066f-120">hello scenario outlined in this tutorial consists of two main building blocks:</span></span>
+
+1. <span data-ttu-id="b066f-121">Přidání BenefitHub z Galerie hello</span><span class="sxs-lookup"><span data-stu-id="b066f-121">Adding BenefitHub from hello gallery</span></span>
+2. <span data-ttu-id="b066f-122">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="b066f-122">Configuring and testing Azure AD single sign-on</span></span>
+
+## <a name="adding-benefithub-from-hello-gallery"></a><span data-ttu-id="b066f-123">Přidání BenefitHub z Galerie hello</span><span class="sxs-lookup"><span data-stu-id="b066f-123">Adding BenefitHub from hello gallery</span></span>
+<span data-ttu-id="b066f-124">tooconfigure hello integrace BenefitHub do Azure AD, je nutné tooadd BenefitHub hello Galerie tooyour seznamu spravovaných aplikací SaaS.</span><span class="sxs-lookup"><span data-stu-id="b066f-124">tooconfigure hello integration of BenefitHub into Azure AD, you need tooadd BenefitHub from hello gallery tooyour list of managed SaaS apps.</span></span>
+
+<span data-ttu-id="b066f-125">**tooadd BenefitHub z Galerie hello, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="b066f-125">**tooadd BenefitHub from hello gallery, perform hello following steps:**</span></span>
+
+1. <span data-ttu-id="b066f-126">V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="b066f-126">In hello **[Azure portal](https://portal.azure.com)**, on hello left navigation panel, click **Azure Active Directory** icon.</span></span> 
+
+    ![Active Directory][1]
+
+2. <span data-ttu-id="b066f-128">Přejděte příliš**podnikové aplikace, které**.</span><span class="sxs-lookup"><span data-stu-id="b066f-128">Navigate too**Enterprise applications**.</span></span> <span data-ttu-id="b066f-129">Potom přejděte příliš**všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="b066f-129">Then go too**All applications**.</span></span>
+
+    ![Aplikace][2]
+    
+3. <span data-ttu-id="b066f-131">tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.</span><span class="sxs-lookup"><span data-stu-id="b066f-131">tooadd new application, click **New application** button on hello top of dialog.</span></span>
+
+    ![Aplikace][3]
+
+4. <span data-ttu-id="b066f-133">Hello vyhledávacího pole zadejte **BenefitHub**.</span><span class="sxs-lookup"><span data-stu-id="b066f-133">In hello search box, type **BenefitHub**.</span></span>
+
+    ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-benefithub-tutorial/tutorial_benefithub_search.png)
+
+5. <span data-ttu-id="b066f-135">Na panelu výsledků hello vyberte **BenefitHub**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.</span><span class="sxs-lookup"><span data-stu-id="b066f-135">In hello results panel, select **BenefitHub**, and then click **Add** button tooadd hello application.</span></span>
+
+    ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-benefithub-tutorial/tutorial_benefithub_addfromgallery.png)
+
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="b066f-137">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="b066f-137">Configuring and testing Azure AD single sign-on</span></span>
+<span data-ttu-id="b066f-138">V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s BenefitHub podle testovacího uživatele názvem "Britta Simon."</span><span class="sxs-lookup"><span data-stu-id="b066f-138">In this section, you configure and test Azure AD single sign-on with BenefitHub based on a test user called "Britta Simon."</span></span>
+
+<span data-ttu-id="b066f-139">Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v BenefitHub je tooa uživatele ve službě Azure AD.</span><span class="sxs-lookup"><span data-stu-id="b066f-139">For single sign-on toowork, Azure AD needs tooknow what hello counterpart user in BenefitHub is tooa user in Azure AD.</span></span> <span data-ttu-id="b066f-140">Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v BenefitHub musí toobe navázat.</span><span class="sxs-lookup"><span data-stu-id="b066f-140">In other words, a link relationship between an Azure AD user and hello related user in BenefitHub needs toobe established.</span></span>
+
+<span data-ttu-id="b066f-141">V BenefitHub, přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.</span><span class="sxs-lookup"><span data-stu-id="b066f-141">In BenefitHub, assign hello value of hello **user name** in Azure AD as hello value of hello **Username** tooestablish hello link relationship.</span></span>
+
+<span data-ttu-id="b066f-142">tooconfigure a testu Azure AD jednotné přihlašování s BenefitHub, potřebujete následující stavební bloky hello toocomplete:</span><span class="sxs-lookup"><span data-stu-id="b066f-142">tooconfigure and test Azure AD single sign-on with BenefitHub, you need toocomplete hello following building blocks:</span></span>
+
+1. <span data-ttu-id="b066f-143">**[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.</span><span class="sxs-lookup"><span data-stu-id="b066f-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - tooenable your users toouse this feature.</span></span>
+2. <span data-ttu-id="b066f-144">**[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="b066f-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - tootest Azure AD single sign-on with Britta Simon.</span></span>
+3. <span data-ttu-id="b066f-145">**[Vytvoření zkušebního uživatele BenefitHub](#creating-a-benefithub-test-user)**  -toohave protějšek Britta Simon v BenefitHub, která je propojená toohello Azure AD reprezentace uživatele.</span><span class="sxs-lookup"><span data-stu-id="b066f-145">**[Creating a BenefitHub test user](#creating-a-benefithub-test-user)** - toohave a counterpart of Britta Simon in BenefitHub that is linked toohello Azure AD representation of user.</span></span>
+4. <span data-ttu-id="b066f-146">**[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="b066f-146">**[Assigning hello Azure AD test user](#assigning-the-azure-ad-test-user)** - tooenable Britta Simon toouse Azure AD single sign-on.</span></span>
+5. <span data-ttu-id="b066f-147">**[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.</span><span class="sxs-lookup"><span data-stu-id="b066f-147">**[Testing Single Sign-On](#testing-single-sign-on)** - tooverify whether hello configuration works.</span></span>
+
+### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="b066f-148">Konfigurace Azure AD jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="b066f-148">Configuring Azure AD single sign-on</span></span>
+
+<span data-ttu-id="b066f-149">V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci BenefitHub.</span><span class="sxs-lookup"><span data-stu-id="b066f-149">In this section, you enable Azure AD single sign-on in hello Azure portal and configure single sign-on in your BenefitHub application.</span></span>
+
+<span data-ttu-id="b066f-150">**tooconfigure Azure AD jednotné přihlašování s BenefitHub, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="b066f-150">**tooconfigure Azure AD single sign-on with BenefitHub, perform hello following steps:**</span></span>
+
+1. <span data-ttu-id="b066f-151">V portálu Azure, na hello hello **BenefitHub** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.</span><span class="sxs-lookup"><span data-stu-id="b066f-151">In hello Azure portal, on hello **BenefitHub** application integration page, click **Single sign-on**.</span></span>
+
+    ![Konfigurovat jednotné přihlašování][4]
+
+2. <span data-ttu-id="b066f-153">Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="b066f-153">On hello **Single sign-on** dialog, select **Mode** as   **SAML-based Sign-on** tooenable single sign-on.</span></span>
+ 
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-benefithub-tutorial/tutorial_benefithub_samlbase.png)
+
+3. <span data-ttu-id="b066f-155">Na hello **BenefitHub domény a adresy URL** část, proveďte následující kroky hello:</span><span class="sxs-lookup"><span data-stu-id="b066f-155">On hello **BenefitHub Domain and URLs** section, perform hello following steps:</span></span>
+
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-benefithub-tutorial/tutorial_benefithub_url1.png)
+  
+    <span data-ttu-id="b066f-157">a.</span><span class="sxs-lookup"><span data-stu-id="b066f-157">a.</span></span> <span data-ttu-id="b066f-158">V hello **identifikátor** textovému poli, typ:`urn:benefithub:passport`</span><span class="sxs-lookup"><span data-stu-id="b066f-158">In hello **Identifier** textbox, type: `urn:benefithub:passport`</span></span>
+    
+    <span data-ttu-id="b066f-159">b.</span><span class="sxs-lookup"><span data-stu-id="b066f-159">b.</span></span> <span data-ttu-id="b066f-160">V hello **adresa URL odpovědi** textovému poli, typ:`https://passport.benefithub.info/saml/post/ac`</span><span class="sxs-lookup"><span data-stu-id="b066f-160">In hello **Reply URL** textbox, type: `https://passport.benefithub.info/saml/post/ac`</span></span>
+
+4. <span data-ttu-id="b066f-161">Hello BenefitHub aplikace očekává hello SAML kontrolní výrazy ve specifickém formátu, který vyžaduje jste tooadd vlastních atributů mapování tooyour tokenu atributy konfigurace SAML.</span><span class="sxs-lookup"><span data-stu-id="b066f-161">hello BenefitHub application expects hello SAML assertions in a specific format, which requires you tooadd custom attribute mappings tooyour SAML token attributes configuration.</span></span> <span data-ttu-id="b066f-162">Nakonfigurujte hello následující deklarace identity pro tuto aplikaci.</span><span class="sxs-lookup"><span data-stu-id="b066f-162">Configure hello following claims for this application.</span></span> <span data-ttu-id="b066f-163">Můžete spravovat hello hodnoty těchto atributů z hello "**uživatelské atributy**" části na stránce integrace aplikace.</span><span class="sxs-lookup"><span data-stu-id="b066f-163">You can manage hello values of these attributes from hello "**User Attributes**" section on application integration page.</span></span> 
+
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-benefithub-tutorial/tutorial_benefithub_attribute.png)
+
+5. <span data-ttu-id="b066f-165">V hello **uživatelské atributy** část hello **jednotného přihlašování** dialogové okno, nakonfigurovat atribut tokenu SAML, jak je znázorněno v hello předcházející bitové kopie a provést hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="b066f-165">In hello **User Attributes** section on hello **Single sign-on** dialog, configure SAML token attribute as shown in hello preceding image and perform hello following steps:</span></span>
+    
+    | <span data-ttu-id="b066f-166">Název atributu</span><span class="sxs-lookup"><span data-stu-id="b066f-166">Attribute Name</span></span> | <span data-ttu-id="b066f-167">Hodnota atributu</span><span class="sxs-lookup"><span data-stu-id="b066f-167">Attribute Value</span></span> |
+    | ------------------- | -------------------- |    
+    | <span data-ttu-id="b066f-168">kódu organizace</span><span class="sxs-lookup"><span data-stu-id="b066f-168">organizationid</span></span> | <span data-ttu-id="b066f-169">< kódu organizace ></span><span class="sxs-lookup"><span data-stu-id="b066f-169">< organizationid ></span></span> |
+
+    > [!NOTE]
+    > <span data-ttu-id="b066f-170">Hodnota tohoto atributu není skutečné.</span><span class="sxs-lookup"><span data-stu-id="b066f-170">This attribute value is not real.</span></span> <span data-ttu-id="b066f-171">Aktualizujte tuto hodnotu s skutečné kódu organizace.</span><span class="sxs-lookup"><span data-stu-id="b066f-171">Update this value with actual organizationid.</span></span> <span data-ttu-id="b066f-172">Obraťte se na [tým podpory BenefitHub](https://www.benefithub.com/Home/ContactUs) tooget hello skutečné kódu organizace.</span><span class="sxs-lookup"><span data-stu-id="b066f-172">Contact [BenefitHub support team](https://www.benefithub.com/Home/ContactUs) tooget hello actual organizationid.</span></span>
+    
+    <span data-ttu-id="b066f-173">a.</span><span class="sxs-lookup"><span data-stu-id="b066f-173">a.</span></span> <span data-ttu-id="b066f-174">Klikněte na tlačítko **přidat atribut** tooopen hello **přidat atribut** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="b066f-174">Click **Add attribute** tooopen hello **Add Attribute** dialog.</span></span>
+
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-benefithub-tutorial/tutorial_attribute_04.png)
+
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-benefithub-tutorial/tutorial_attribute_05.png)
+
+    <span data-ttu-id="b066f-177">b.</span><span class="sxs-lookup"><span data-stu-id="b066f-177">b.</span></span> <span data-ttu-id="b066f-178">V hello **název** textovému poli, název atributu pro typ hello zobrazený pro tento řádek.</span><span class="sxs-lookup"><span data-stu-id="b066f-178">In hello **Name** textbox, type hello attribute name shown for that row.</span></span>
+    
+    <span data-ttu-id="b066f-179">c.</span><span class="sxs-lookup"><span data-stu-id="b066f-179">c.</span></span> <span data-ttu-id="b066f-180">Z hello **hodnotu** seznamu, hodnota atributu hello typ zobrazený pro tento řádek.</span><span class="sxs-lookup"><span data-stu-id="b066f-180">From hello **Value** list, type hello attribute value shown for that row.</span></span>
+    
+    <span data-ttu-id="b066f-181">d.</span><span class="sxs-lookup"><span data-stu-id="b066f-181">d.</span></span> <span data-ttu-id="b066f-182">Klikněte na tlačítko **OK**.</span><span class="sxs-lookup"><span data-stu-id="b066f-182">Click **Ok**.</span></span>
+
+    > [!NOTE] 
+    > <span data-ttu-id="b066f-183">Před konfigurací hello kontrolního výrazu SAML, je nutné toocontact vaše [BenefitHub podporu](https://www.benefithub.com/Home/ContactUs) a požadovat hello hodnotu atributu hello jedinečný identifikátor pro vašeho klienta.</span><span class="sxs-lookup"><span data-stu-id="b066f-183">Before you can configure hello SAML assertion, you need toocontact your [BenefitHub support](https://www.benefithub.com/Home/ContactUs) and request hello value of hello unique identifier attribute for your tenant.</span></span> <span data-ttu-id="b066f-184">Je nutné tuto hodnotu tooconfigure hello vlastních deklarací identity pro vaši aplikaci.</span><span class="sxs-lookup"><span data-stu-id="b066f-184">You need this value tooconfigure hello custom claim for your application.</span></span>
+
+6. <span data-ttu-id="b066f-185">Na hello **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat hello ve vašem počítači.</span><span class="sxs-lookup"><span data-stu-id="b066f-185">On hello **SAML Signing Certificate** section, click **Metadata XML** and then save hello metadata file on your computer.</span></span>
+
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-benefithub-tutorial/tutorial_benefithub_certificate.png) 
+
+7. <span data-ttu-id="b066f-187">Klikněte na tlačítko **Uložit** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="b066f-187">Click **Save** button.</span></span>
+
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-benefithub-tutorial/tutorial_general_400.png)
+
+8. <span data-ttu-id="b066f-189">tooconfigure jednotného přihlašování na **BenefitHub** straně, je nutné stáhnout hello toosend **soubor XML s metadaty** příliš[tým podpory BenefitHub](https://www.benefithub.com/Home/ContactUs).</span><span class="sxs-lookup"><span data-stu-id="b066f-189">tooconfigure single sign-on on **BenefitHub** side, you need toosend hello downloaded **Metadata XML** too[BenefitHub support team](https://www.benefithub.com/Home/ContactUs).</span></span> <span data-ttu-id="b066f-190">Nastavují hello toohave tato nastavení jednotného přihlašování SAML připojení správně nastavena na obou stranách.</span><span class="sxs-lookup"><span data-stu-id="b066f-190">They set this setting toohave hello SAML SSO connection set properly on both sides.</span></span>
+
+> [!TIP]
+> <span data-ttu-id="b066f-191">Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!</span><span class="sxs-lookup"><span data-stu-id="b066f-191">You can now read a concise version of these instructions inside hello [Azure portal](https://portal.azure.com), while you are setting up hello app!</span></span>  <span data-ttu-id="b066f-192">Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello.</span><span class="sxs-lookup"><span data-stu-id="b066f-192">After adding this app from hello **Active Directory > Enterprise Applications** section, simply click hello **Single Sign-On** tab and access hello embedded documentation through hello **Configuration** section at hello bottom.</span></span> <span data-ttu-id="b066f-193">Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="b066f-193">You can read more about hello embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
+
+### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="b066f-194">Vytváření testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="b066f-194">Creating an Azure AD test user</span></span>
+<span data-ttu-id="b066f-195">Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.</span><span class="sxs-lookup"><span data-stu-id="b066f-195">hello objective of this section is toocreate a test user in hello Azure portal called Britta Simon.</span></span>
+
+![Vytvořit uživatele Azure AD][100]
+
+<span data-ttu-id="b066f-197">**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="b066f-197">**toocreate a test user in Azure AD, perform hello following steps:**</span></span>
+
+1. <span data-ttu-id="b066f-198">V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="b066f-198">In hello **Azure portal**, on hello left navigation pane, click **Azure Active Directory** icon.</span></span>
+
+    ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-benefithub-tutorial/create_aaduser_01.png) 
+
+2. <span data-ttu-id="b066f-200">toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="b066f-200">toodisplay hello list of users, go too**Users and groups** and click **All users**.</span></span>
+    
+    ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-benefithub-tutorial/create_aaduser_02.png) 
+
+3. <span data-ttu-id="b066f-202">tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.</span><span class="sxs-lookup"><span data-stu-id="b066f-202">tooopen hello **User** dialog, click **Add** on hello top of hello dialog.</span></span>
+ 
+    ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-benefithub-tutorial/create_aaduser_03.png) 
+
+4. <span data-ttu-id="b066f-204">Na hello **uživatele** dialogové okno proveďte hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="b066f-204">On hello **User** dialog page, perform hello following steps:</span></span>
+ 
+    ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-benefithub-tutorial/create_aaduser_04.png) 
+
+    <span data-ttu-id="b066f-206">a.</span><span class="sxs-lookup"><span data-stu-id="b066f-206">a.</span></span> <span data-ttu-id="b066f-207">V hello **název** textovému poli, typ **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="b066f-207">In hello **Name** textbox, type **BrittaSimon**.</span></span>
+
+    <span data-ttu-id="b066f-208">b.</span><span class="sxs-lookup"><span data-stu-id="b066f-208">b.</span></span> <span data-ttu-id="b066f-209">V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="b066f-209">In hello **User name** textbox, type hello **email address** of BrittaSimon.</span></span>
+
+    <span data-ttu-id="b066f-210">c.</span><span class="sxs-lookup"><span data-stu-id="b066f-210">c.</span></span> <span data-ttu-id="b066f-211">Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.</span><span class="sxs-lookup"><span data-stu-id="b066f-211">Select **Show Password** and write down hello value of hello **Password**.</span></span>
+
+    <span data-ttu-id="b066f-212">d.</span><span class="sxs-lookup"><span data-stu-id="b066f-212">d.</span></span> <span data-ttu-id="b066f-213">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="b066f-213">Click **Create**.</span></span>
+ 
+### <a name="creating-a-benefithub-test-user"></a><span data-ttu-id="b066f-214">Vytvoření zkušebního uživatele BenefitHub</span><span class="sxs-lookup"><span data-stu-id="b066f-214">Creating a BenefitHub test user</span></span>
+
+<span data-ttu-id="b066f-215">V této části vytvoříte volal Britta Simon v BenefitHub uživatele.</span><span class="sxs-lookup"><span data-stu-id="b066f-215">In this section, you create a user called Britta Simon in BenefitHub.</span></span> <span data-ttu-id="b066f-216">Práce s [tým podpory BenefitHub](https://www.benefithub.com/Home/ContactUs) pro přidání uživatelů hello hello BenefitHub platformy.</span><span class="sxs-lookup"><span data-stu-id="b066f-216">Work with [BenefitHub support team](https://www.benefithub.com/Home/ContactUs) to add hello users in hello BenefitHub platform.</span></span> <span data-ttu-id="b066f-217">Uživatelé musí být vytvořen a aktivovat dříve, než použijete jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="b066f-217">Users must be created and activated before you use single sign-on.</span></span> 
+
+### <a name="assigning-hello-azure-ad-test-user"></a><span data-ttu-id="b066f-218">Přiřazení hello Azure AD testovacího uživatele</span><span class="sxs-lookup"><span data-stu-id="b066f-218">Assigning hello Azure AD test user</span></span>
+
+<span data-ttu-id="b066f-219">V této části povolíte tak, že udělíte přístup tooBenefitHub toouse Britta Simon Azure jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="b066f-219">In this section, you enable Britta Simon toouse Azure single sign-on by granting access tooBenefitHub.</span></span>
+
+![Přiřadit uživatele][200] 
+
+<span data-ttu-id="b066f-221">**tooassign Britta Simon tooBenefitHub, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="b066f-221">**tooassign Britta Simon tooBenefitHub, perform hello following steps:**</span></span>
+
+1. <span data-ttu-id="b066f-222">V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="b066f-222">In hello Azure portal, open hello applications view, and then navigate toohello directory view and go too**Enterprise applications** then click **All applications**.</span></span>
+
+    ![Přiřadit uživatele][201] 
+
+2. <span data-ttu-id="b066f-224">V seznamu aplikace hello vyberte **BenefitHub**.</span><span class="sxs-lookup"><span data-stu-id="b066f-224">In hello applications list, select **BenefitHub**.</span></span>
+
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-benefithub-tutorial/tutorial_benefithub_app.png) 
+
+3. <span data-ttu-id="b066f-226">V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.</span><span class="sxs-lookup"><span data-stu-id="b066f-226">In hello menu on hello left, click **Users and groups**.</span></span>
+
+    ![Přiřadit uživatele][202] 
+
+4. <span data-ttu-id="b066f-228">Klikněte na tlačítko **přidat** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="b066f-228">Click **Add** button.</span></span> <span data-ttu-id="b066f-229">Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="b066f-229">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
+
+    ![Přiřadit uživatele][203]
+
+5. <span data-ttu-id="b066f-231">Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.</span><span class="sxs-lookup"><span data-stu-id="b066f-231">On **Users and groups** dialog, select **Britta Simon** in hello Users list.</span></span>
+
+6. <span data-ttu-id="b066f-232">Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="b066f-232">Click **Select** button on **Users and groups** dialog.</span></span>
+
+7. <span data-ttu-id="b066f-233">Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="b066f-233">Click **Assign** button on **Add Assignment** dialog.</span></span>
+    
+### <a name="testing-single-sign-on"></a><span data-ttu-id="b066f-234">Testování jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="b066f-234">Testing single sign-on</span></span>
+
+<span data-ttu-id="b066f-235">V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.</span><span class="sxs-lookup"><span data-stu-id="b066f-235">In this section, you test your Azure AD single sign-on configuration using hello Access Panel.</span></span>
+
+<span data-ttu-id="b066f-236">Když kliknete na dlaždici BenefitHub hello v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour BenefitHub aplikace.</span><span class="sxs-lookup"><span data-stu-id="b066f-236">When you click hello BenefitHub tile in hello Access Panel, you should get automatically signed-on tooyour BenefitHub application.</span></span>
+<span data-ttu-id="b066f-237">Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](https://msdn.microsoft.com/library/dn308586).</span><span class="sxs-lookup"><span data-stu-id="b066f-237">For more information about the Access Panel, see [introduction to the Access Panel](https://msdn.microsoft.com/library/dn308586).</span></span>
+
+## <a name="additional-resources"></a><span data-ttu-id="b066f-238">Další zdroje</span><span class="sxs-lookup"><span data-stu-id="b066f-238">Additional resources</span></span>
+
+* [<span data-ttu-id="b066f-239">Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="b066f-239">List of Tutorials on How tooIntegrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="b066f-240">Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="b066f-240">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+
+<!--Image references-->
+
+[1]: ./media/active-directory-saas-benefithub-tutorial/tutorial_general_01.png
+[2]: ./media/active-directory-saas-benefithub-tutorial/tutorial_general_02.png
+[3]: ./media/active-directory-saas-benefithub-tutorial/tutorial_general_03.png
+[4]: ./media/active-directory-saas-benefithub-tutorial/tutorial_general_04.png
+
+[100]: ./media/active-directory-saas-benefithub-tutorial/tutorial_general_100.png
+
+[200]: ./media/active-directory-saas-benefithub-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-benefithub-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-benefithub-tutorial/tutorial_general_202.png
+[203]: ./media/active-directory-saas-benefithub-tutorial/tutorial_general_203.png
+

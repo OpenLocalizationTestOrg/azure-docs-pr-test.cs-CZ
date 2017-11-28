@@ -1,0 +1,92 @@
+---
+title: "AAA \"události po dokončení úlohy Azure Batch | Microsoft Docs\""
+description: "Referenční dokumentace pro událost po dokončení úlohy Batch."
+services: batch
+author: tamram
+manager: timlt
+ms.assetid: 
+ms.service: batch
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: vm-windows
+ms.workload: big-compute
+ms.date: 04/20/2017
+ms.author: tamram
+ms.openlocfilehash: c126bf897071c008be3d24190cf77bba5878b807
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/06/2017
+---
+# <a name="task-complete-event"></a><span data-ttu-id="5548e-103">Události po dokončení úloh</span><span class="sxs-lookup"><span data-stu-id="5548e-103">Task complete event</span></span>
+
+ <span data-ttu-id="5548e-104">Tato událost je vygenerované po dokončení úlohy, bez ohledu na to hello ukončovací kód.</span><span class="sxs-lookup"><span data-stu-id="5548e-104">This event is emitted once a task is completed, regardless of hello exit code.</span></span> <span data-ttu-id="5548e-105">Tato událost může být použité toodetermine hello dobu trvání nějakého úkolu, kde byla spuštěna úloha hello a jestli byl opakovat.</span><span class="sxs-lookup"><span data-stu-id="5548e-105">This event can be used toodetermine hello duration of a task, where hello task ran, and whether it was retried.</span></span>
+
+
+ <span data-ttu-id="5548e-106">Hello následující příklad ukazuje textu hello události dokončení úlohy.</span><span class="sxs-lookup"><span data-stu-id="5548e-106">hello following example shows hello body of a task complete event.</span></span>
+
+```
+{
+    "jobId": "job-0000000001",
+    "id": "task-5",
+    "taskType": "User",
+    "systemTaskVersion": 0,
+    "nodeInfo": {
+        "poolId": "pool-001",
+        "nodeId": "tvm-257509324_1-20160908t162728z"
+    },
+    "multiInstanceSettings": {
+        "numberOfInstances": 1
+    },
+    "constraints": {
+        "maxTaskRetryCount": 2
+    },
+    "executionInfo": {
+        "startTime": "2016-09-08T16:32:23.799Z",
+        "endTime": "2016-09-08T16:34:00.666Z",
+        "exitCode": 0,
+        "retryCount": 0,
+        "requeueCount": 0
+    }
+}
+```
+
+|<span data-ttu-id="5548e-107">Název elementu</span><span class="sxs-lookup"><span data-stu-id="5548e-107">Element name</span></span>|<span data-ttu-id="5548e-108">Typ</span><span class="sxs-lookup"><span data-stu-id="5548e-108">Type</span></span>|<span data-ttu-id="5548e-109">Poznámky</span><span class="sxs-lookup"><span data-stu-id="5548e-109">Notes</span></span>|
+|------------------|----------|-----------|
+|<span data-ttu-id="5548e-110">JobId</span><span class="sxs-lookup"><span data-stu-id="5548e-110">jobId</span></span>|<span data-ttu-id="5548e-111">Řetězec</span><span class="sxs-lookup"><span data-stu-id="5548e-111">String</span></span>|<span data-ttu-id="5548e-112">id Hello hello úlohy, která obsahuje úlohu hello.</span><span class="sxs-lookup"><span data-stu-id="5548e-112">hello id of hello job containing hello task.</span></span>|
+|<span data-ttu-id="5548e-113">id</span><span class="sxs-lookup"><span data-stu-id="5548e-113">id</span></span>|<span data-ttu-id="5548e-114">Řetězec</span><span class="sxs-lookup"><span data-stu-id="5548e-114">String</span></span>|<span data-ttu-id="5548e-115">id Hello hello úlohy.</span><span class="sxs-lookup"><span data-stu-id="5548e-115">hello id of hello task.</span></span>|
+|<span data-ttu-id="5548e-116">taskType</span><span class="sxs-lookup"><span data-stu-id="5548e-116">taskType</span></span>|<span data-ttu-id="5548e-117">Řetězec</span><span class="sxs-lookup"><span data-stu-id="5548e-117">String</span></span>|<span data-ttu-id="5548e-118">Typ Hello hello úlohy.</span><span class="sxs-lookup"><span data-stu-id="5548e-118">hello type of hello task.</span></span> <span data-ttu-id="5548e-119">To může být JobManager oznamující, že je úkol správce nebo uživatel oznamující, že se nejedná o úkolu Správce úloh.</span><span class="sxs-lookup"><span data-stu-id="5548e-119">This can either be 'JobManager' indicating it is a job manager task or 'User' indicating it is not a job manager task.</span></span> <span data-ttu-id="5548e-120">Tato událost není vygenerované pro spuštění úlohy, uvolnění úloh nebo přípravy úlohy.</span><span class="sxs-lookup"><span data-stu-id="5548e-120">This event is not emitted for job preparation tasks, job release tasks or start tasks.</span></span>|
+|<span data-ttu-id="5548e-121">systemTaskVersion</span><span class="sxs-lookup"><span data-stu-id="5548e-121">systemTaskVersion</span></span>|<span data-ttu-id="5548e-122">Int32</span><span class="sxs-lookup"><span data-stu-id="5548e-122">Int32</span></span>|<span data-ttu-id="5548e-123">Toto je interní opakování čítač hello na úlohu.</span><span class="sxs-lookup"><span data-stu-id="5548e-123">This is hello internal retry counter on a task.</span></span> <span data-ttu-id="5548e-124">Služba Batch hello interně může pokus zopakovat tooaccount úloh pro přechodné problémy.</span><span class="sxs-lookup"><span data-stu-id="5548e-124">Internally hello Batch service can retry a task tooaccount for transient issues.</span></span> <span data-ttu-id="5548e-125">Tyto problémy mohou zahrnovat interní plánování chyby nebo pokusy o toorecover z výpočetních uzlů ve špatném stavu.</span><span class="sxs-lookup"><span data-stu-id="5548e-125">These issues can include internal scheduling errors or attempts toorecover from compute nodes in a bad state.</span></span>|
+|[<span data-ttu-id="5548e-126">nodeInfo</span><span class="sxs-lookup"><span data-stu-id="5548e-126">nodeInfo</span></span>](#nodeInfo)|<span data-ttu-id="5548e-127">Komplexní typ</span><span class="sxs-lookup"><span data-stu-id="5548e-127">Complex Type</span></span>|<span data-ttu-id="5548e-128">Obsahuje informace o hello výpočetním uzlu, na které hello úloha spustila.</span><span class="sxs-lookup"><span data-stu-id="5548e-128">Contains information about hello compute node on which hello task ran.</span></span>|
+|[<span data-ttu-id="5548e-129">multiInstanceSettings</span><span class="sxs-lookup"><span data-stu-id="5548e-129">multiInstanceSettings</span></span>](#multiInstanceSettings)|<span data-ttu-id="5548e-130">Komplexní typ</span><span class="sxs-lookup"><span data-stu-id="5548e-130">Complex Type</span></span>|<span data-ttu-id="5548e-131">Určuje, že tuto úlohu hello je úkol s více instancemi nutnosti několika výpočetních uzlech.</span><span class="sxs-lookup"><span data-stu-id="5548e-131">Specifies that hello task is a Multi-Instance Task requiring multiple compute nodes.</span></span>  <span data-ttu-id="5548e-132">V tématu [multiInstanceSettings](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) podrobnosti.</span><span class="sxs-lookup"><span data-stu-id="5548e-132">See [multiInstanceSettings](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) for details.</span></span>|
+|[<span data-ttu-id="5548e-133">omezení</span><span class="sxs-lookup"><span data-stu-id="5548e-133">constraints</span></span>](#constraints)|<span data-ttu-id="5548e-134">Komplexní typ</span><span class="sxs-lookup"><span data-stu-id="5548e-134">Complex Type</span></span>|<span data-ttu-id="5548e-135">Hello provádění omezení, která platí toothis úloh.</span><span class="sxs-lookup"><span data-stu-id="5548e-135">hello execution constraints that apply toothis task.</span></span>|
+|[<span data-ttu-id="5548e-136">executionInfo</span><span class="sxs-lookup"><span data-stu-id="5548e-136">executionInfo</span></span>](#executionInfo)|<span data-ttu-id="5548e-137">Komplexní typ</span><span class="sxs-lookup"><span data-stu-id="5548e-137">Complex Type</span></span>|<span data-ttu-id="5548e-138">Obsahuje informace o provádění hello hello úlohy.</span><span class="sxs-lookup"><span data-stu-id="5548e-138">Contains information about hello execution of hello task.</span></span>|
+
+###  <span data-ttu-id="5548e-139"><a name="nodeInfo"></a>nodeInfo</span><span class="sxs-lookup"><span data-stu-id="5548e-139"><a name="nodeInfo"></a> nodeInfo</span></span>
+
+|<span data-ttu-id="5548e-140">Název elementu</span><span class="sxs-lookup"><span data-stu-id="5548e-140">Element name</span></span>|<span data-ttu-id="5548e-141">Typ</span><span class="sxs-lookup"><span data-stu-id="5548e-141">Type</span></span>|<span data-ttu-id="5548e-142">Poznámky</span><span class="sxs-lookup"><span data-stu-id="5548e-142">Notes</span></span>|
+|------------------|----------|-----------|
+|<span data-ttu-id="5548e-143">poolId</span><span class="sxs-lookup"><span data-stu-id="5548e-143">poolId</span></span>|<span data-ttu-id="5548e-144">Řetězec</span><span class="sxs-lookup"><span data-stu-id="5548e-144">String</span></span>|<span data-ttu-id="5548e-145">id Hello hello fond, na které hello úloha spustila.</span><span class="sxs-lookup"><span data-stu-id="5548e-145">hello id of hello pool on which hello task ran.</span></span>|
+|<span data-ttu-id="5548e-146">nodeId</span><span class="sxs-lookup"><span data-stu-id="5548e-146">nodeId</span></span>|<span data-ttu-id="5548e-147">Řetězec</span><span class="sxs-lookup"><span data-stu-id="5548e-147">String</span></span>|<span data-ttu-id="5548e-148">id Hello hello uzlu, na které hello úloha spustila.</span><span class="sxs-lookup"><span data-stu-id="5548e-148">hello id of hello node on which hello task ran.</span></span>|
+
+###  <span data-ttu-id="5548e-149"><a name="multiInstanceSettings"></a>multiInstanceSettings</span><span class="sxs-lookup"><span data-stu-id="5548e-149"><a name="multiInstanceSettings"></a> multiInstanceSettings</span></span>
+
+|<span data-ttu-id="5548e-150">Název elementu</span><span class="sxs-lookup"><span data-stu-id="5548e-150">Element name</span></span>|<span data-ttu-id="5548e-151">Typ</span><span class="sxs-lookup"><span data-stu-id="5548e-151">Type</span></span>|<span data-ttu-id="5548e-152">Poznámky</span><span class="sxs-lookup"><span data-stu-id="5548e-152">Notes</span></span>|
+|------------------|----------|-----------|
+|<span data-ttu-id="5548e-153">numberOfInstances</span><span class="sxs-lookup"><span data-stu-id="5548e-153">numberOfInstances</span></span>|<span data-ttu-id="5548e-154">Int32</span><span class="sxs-lookup"><span data-stu-id="5548e-154">Int32</span></span>|<span data-ttu-id="5548e-155">Hello počet výpočetních uzlů, které vyžadují hello úloh.</span><span class="sxs-lookup"><span data-stu-id="5548e-155">hello number of compute nodes required by hello task.</span></span>|
+
+###  <span data-ttu-id="5548e-156"><a name="constraints"></a>omezení</span><span class="sxs-lookup"><span data-stu-id="5548e-156"><a name="constraints"></a> constraints</span></span>
+
+|<span data-ttu-id="5548e-157">Název elementu</span><span class="sxs-lookup"><span data-stu-id="5548e-157">Element name</span></span>|<span data-ttu-id="5548e-158">Typ</span><span class="sxs-lookup"><span data-stu-id="5548e-158">Type</span></span>|<span data-ttu-id="5548e-159">Poznámky</span><span class="sxs-lookup"><span data-stu-id="5548e-159">Notes</span></span>|
+|------------------|----------|-----------|
+|<span data-ttu-id="5548e-160">maxTaskRetryCount</span><span class="sxs-lookup"><span data-stu-id="5548e-160">maxTaskRetryCount</span></span>|<span data-ttu-id="5548e-161">Int32</span><span class="sxs-lookup"><span data-stu-id="5548e-161">Int32</span></span>|<span data-ttu-id="5548e-162">Hello maximální počet opakovaných úkolů hello.</span><span class="sxs-lookup"><span data-stu-id="5548e-162">hello maximum number of times hello task may be retried.</span></span> <span data-ttu-id="5548e-163">Hello služba Batch úkol zopakuje, pokud je jeho ukončovací kód nenulové hodnoty.</span><span class="sxs-lookup"><span data-stu-id="5548e-163">hello Batch service retries a task if its exit code is nonzero.</span></span><br /><br /> <span data-ttu-id="5548e-164">Všimněte si, že tato hodnota řídí konkrétně hello počet opakování.</span><span class="sxs-lookup"><span data-stu-id="5548e-164">Note that this value specifically controls hello number of retries.</span></span> <span data-ttu-id="5548e-165">Služba Batch Hello se pokusí hello úloh jednou a mohou zkuste si toothis limit.</span><span class="sxs-lookup"><span data-stu-id="5548e-165">hello Batch service will try hello task once, and may then retry up toothis limit.</span></span> <span data-ttu-id="5548e-166">Například pokud hello maximální počet opakování je 3, Batch pokusí úlohu až too4 dobu (jeden počáteční pokus a 3 opakování).</span><span class="sxs-lookup"><span data-stu-id="5548e-166">For example, if hello maximum retry count is 3, Batch tries a task up too4 times (one initial try and 3 retries).</span></span><br /><br /> <span data-ttu-id="5548e-167">Pokud hello maximální počet opakování 0, služba Batch hello neopakuje úlohy.</span><span class="sxs-lookup"><span data-stu-id="5548e-167">If hello maximum retry count is 0, hello Batch service does not retry tasks.</span></span><br /><br /> <span data-ttu-id="5548e-168">Pokud hello maximální počet opakování −1, služba Batch hello opakuje úlohy bez omezení.</span><span class="sxs-lookup"><span data-stu-id="5548e-168">If hello maximum retry count is -1, hello Batch service retries tasks without limit.</span></span><br /><br /> <span data-ttu-id="5548e-169">Hello výchozí hodnota je 0 (bez opakování).</span><span class="sxs-lookup"><span data-stu-id="5548e-169">hello default value is 0 (no retries).</span></span>|
+
+###  <span data-ttu-id="5548e-170"><a name="executionInfo"></a>executionInfo</span><span class="sxs-lookup"><span data-stu-id="5548e-170"><a name="executionInfo"></a> executionInfo</span></span>
+
+|<span data-ttu-id="5548e-171">Název elementu</span><span class="sxs-lookup"><span data-stu-id="5548e-171">Element name</span></span>|<span data-ttu-id="5548e-172">Typ</span><span class="sxs-lookup"><span data-stu-id="5548e-172">Type</span></span>|<span data-ttu-id="5548e-173">Poznámky</span><span class="sxs-lookup"><span data-stu-id="5548e-173">Notes</span></span>|
+|------------------|----------|-----------|
+|<span data-ttu-id="5548e-174">startTime</span><span class="sxs-lookup"><span data-stu-id="5548e-174">startTime</span></span>|<span data-ttu-id="5548e-175">Data a času</span><span class="sxs-lookup"><span data-stu-id="5548e-175">DateTime</span></span>|<span data-ttu-id="5548e-176">Hello čas, který úkol hello spuštění.</span><span class="sxs-lookup"><span data-stu-id="5548e-176">hello time at which hello task started running.</span></span> <span data-ttu-id="5548e-177">"Spuštěný" odpovídá toohello **systémem** stavu, takže pokud úloha hello Určuje soubory prostředků nebo balíčky aplikací, pak počáteční čas hello odráží hello čas, který hello úloha spuštěna stahování nebo nasazování těchto.</span><span class="sxs-lookup"><span data-stu-id="5548e-177">'Running' corresponds toohello **running** state, so if hello task specifies resource files or application packages, then hello start time reflects hello time at which hello task started downloading or deploying these.</span></span>  <span data-ttu-id="5548e-178">Pokud úloha hello byl restartován nebo opakovat, je to hello spuštění poslední čas, který úkol hello.</span><span class="sxs-lookup"><span data-stu-id="5548e-178">If hello task has been restarted or retried, this is hello most recent time at which hello task started running.</span></span>|
+|<span data-ttu-id="5548e-179">endTime</span><span class="sxs-lookup"><span data-stu-id="5548e-179">endTime</span></span>|<span data-ttu-id="5548e-180">Data a času</span><span class="sxs-lookup"><span data-stu-id="5548e-180">DateTime</span></span>|<span data-ttu-id="5548e-181">Hello čas, který hello úkol dokončit.</span><span class="sxs-lookup"><span data-stu-id="5548e-181">hello time at which hello task completed.</span></span>|
+|<span data-ttu-id="5548e-182">exitCode</span><span class="sxs-lookup"><span data-stu-id="5548e-182">exitCode</span></span>|<span data-ttu-id="5548e-183">Int32</span><span class="sxs-lookup"><span data-stu-id="5548e-183">Int32</span></span>|<span data-ttu-id="5548e-184">ukončovací kód Hello hello úlohy.</span><span class="sxs-lookup"><span data-stu-id="5548e-184">hello exit code of hello task.</span></span>|
+|<span data-ttu-id="5548e-185">retryCount</span><span class="sxs-lookup"><span data-stu-id="5548e-185">retryCount</span></span>|<span data-ttu-id="5548e-186">Int32</span><span class="sxs-lookup"><span data-stu-id="5548e-186">Int32</span></span>|<span data-ttu-id="5548e-187">Hello počet oznámení, která má byla hello úloha opakovat hello služby Batch.</span><span class="sxs-lookup"><span data-stu-id="5548e-187">hello number of times hello task has been retried by hello Batch service.</span></span> <span data-ttu-id="5548e-188">Hello úlohy se pokus o Pokud ukončí nenulový ukončovací kód, až toohello zadaný MaxTaskRetryCount.</span><span class="sxs-lookup"><span data-stu-id="5548e-188">hello task is retried if it exits with a nonzero exit code, up toohello specified MaxTaskRetryCount.</span></span>|
+|<span data-ttu-id="5548e-189">requeueCount</span><span class="sxs-lookup"><span data-stu-id="5548e-189">requeueCount</span></span>|<span data-ttu-id="5548e-190">Int32</span><span class="sxs-lookup"><span data-stu-id="5548e-190">Int32</span></span>|<span data-ttu-id="5548e-191">Hello kolikrát hello úloh má byla zařazena službou Batch hello hello důsledku požadavku uživatele.</span><span class="sxs-lookup"><span data-stu-id="5548e-191">hello number of times hello task has been requeued by hello Batch service as hello result of a user request.</span></span><br /><br /> <span data-ttu-id="5548e-192">Pokud odebere uživatele hello uzly z fondu (nebo změnou velikosti zmenšení fondu hello) nebo když je úloha hello zakázaná, hello uživatele můžete určit, že spuštění úlohy v uzlech hello být zařazena pro provedení.</span><span class="sxs-lookup"><span data-stu-id="5548e-192">When hello user removes nodes from a pool (by resizing or shrinking hello pool) or when hello job is being disabled, hello user can specify that running tasks on hello nodes be requeued for execution.</span></span> <span data-ttu-id="5548e-193">Tento počet sleduje počet opakování úkolů hello byla zařazena. z těchto důvodů.</span><span class="sxs-lookup"><span data-stu-id="5548e-193">This count tracks how many times hello task has been requeued for these reasons.</span></span>|

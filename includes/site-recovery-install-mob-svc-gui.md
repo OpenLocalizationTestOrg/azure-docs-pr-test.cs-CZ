@@ -1,0 +1,15 @@
+1. <span data-ttu-id="7ac35-101">Zkopírujte instalaci na server a potom spusťte instalační program.</span><span class="sxs-lookup"><span data-stu-id="7ac35-101">Copy the installation to the server, and then open the installer.</span></span>
+2. <span data-ttu-id="7ac35-102">Na **možnost instalace** vyberte **instalaci služby Mobility**.</span><span class="sxs-lookup"><span data-stu-id="7ac35-102">On the **Installation Option** blade, select **Install Mobility Service**.</span></span>
+
+    ![<span data-ttu-id="7ac35-103">Stránku možnost instalace služby mobility</span><span class="sxs-lookup"><span data-stu-id="7ac35-103">Mobility Service Install Option Page</span></span> ](./media/site-recovery-install-mob-svc-gui/mobility1.png)
+3. <span data-ttu-id="7ac35-104">Vyberte umístění instalace a klikněte na **nainstalovat** stal postup instalace.</span><span class="sxs-lookup"><span data-stu-id="7ac35-104">Select the install location  and click **Install** to being the installation procedure.</span></span>
+
+    ![<span data-ttu-id="7ac35-105">Stránka umístění instalace služby mobility</span><span class="sxs-lookup"><span data-stu-id="7ac35-105">Mobility Service Install Location Page</span></span> ](./media/site-recovery-install-mob-svc-gui/mobility2.png)
+4. <span data-ttu-id="7ac35-106">Můžete použít **průběh instalace** stránky můžete sledovat průběh instalačního programu.</span><span class="sxs-lookup"><span data-stu-id="7ac35-106">You can use **Installation Progress** page to monitor the installer's progress.</span></span>
+    <span data-ttu-id="7ac35-107">![Probíhá instalace služby mobility](./media/site-recovery-install-mob-svc-gui/mobility3.png)</span><span class="sxs-lookup"><span data-stu-id="7ac35-107">![Mobility Service Install Progress ](./media/site-recovery-install-mob-svc-gui/mobility3.png)</span></span>
+
+5. <span data-ttu-id="7ac35-108">Po dokončení instalace klikněte na tlačítko **pokračujte konfigurace** tlačítko pro registraci služba Mobility se konfigurační server.</span><span class="sxs-lookup"><span data-stu-id="7ac35-108">Once installation is complete, click the **Proceed to Configuration** button to register the Mobility Service with your Configuration server.</span></span>
+    <span data-ttu-id="7ac35-109">![Služba mobility zaregistrovat stránky](./media/site-recovery-install-mob-svc-gui/mobility4.png)</span><span class="sxs-lookup"><span data-stu-id="7ac35-109">![Mobility service Register Page ](./media/site-recovery-install-mob-svc-gui/mobility4.png)</span></span>
+
+6. <span data-ttu-id="7ac35-110">Klikněte na **zaregistrovat** tlačítko k dokončení registrace.</span><span class="sxs-lookup"><span data-stu-id="7ac35-110">Click on the **Register** button to complete the registration.</span></span>
+    <span data-ttu-id="7ac35-111">![Služba mobility zaregistrovat stránky](./media/site-recovery-install-mob-svc-gui/mobility5.png)</span><span class="sxs-lookup"><span data-stu-id="7ac35-111">![Mobility service Register Page ](./media/site-recovery-install-mob-svc-gui/mobility5.png)</span></span>

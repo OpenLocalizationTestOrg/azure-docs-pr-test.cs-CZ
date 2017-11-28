@@ -1,0 +1,87 @@
+---
+title: "aaaGet začít s testování v produkčním prostředí pro webové aplikace"
+description: "Další informace o hello Test v provozním (TiP) funkce v Azure App Service Web Apps."
+services: app-service\web
+documentationcenter: 
+author: cephalin
+manager: erikre
+editor: 
+ms.assetid: 4623468d-886e-4203-8012-8f86deb2790b
+ms.service: app-service-web
+ms.workload: web
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 01/13/2016
+ms.author: cephalin
+ms.openlocfilehash: 2ddbd532ffe2a4f3e07fd386d9741a3fde3639ca
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/06/2017
+---
+# <a name="get-started-with-test-in-production-for-web-apps"></a><span data-ttu-id="a29a7-103">Začínáme s testováním v produkčním prostředí pro Web Apps</span><span class="sxs-lookup"><span data-stu-id="a29a7-103">Get started with test in production for Web Apps</span></span>
+<span data-ttu-id="a29a7-104">Testování v produkčním prostředí, nebo za provozu testování vaší webové aplikace pomocí za provozu zákazníka provoz, je test strategie, vývojáři aplikací stále integrovat do svých [agile vývoj](https://en.wikipedia.org/wiki/Agile_software_development) metody.</span><span class="sxs-lookup"><span data-stu-id="a29a7-104">Testing in production, or live-testing your web app using live customer traffic, is a test strategy that app developers increasingly integrate into their [agile development](https://en.wikipedia.org/wiki/Agile_software_development) methodology.</span></span> <span data-ttu-id="a29a7-105">Umožní vám tootest hello kvalitu aplikace s provozu generovaného uživateli za provozu v provozním prostředí, jako názvem na rozdíl od toosynthesized data v testovacím prostředí.</span><span class="sxs-lookup"><span data-stu-id="a29a7-105">It enables you tootest hello quality of your apps with live user traffic in your production environment, as opposed toosynthesized data in a test environment.</span></span> <span data-ttu-id="a29a7-106">Díky zpřístupnění noví uživatelé tooreal aplikace, může být informován o hello skutečné problémy, které vaše aplikace může být vystaven po jejím nasazení.</span><span class="sxs-lookup"><span data-stu-id="a29a7-106">By exposing your new app tooreal users, you can be informed on hello real problems your app may face once it is deployed.</span></span> <span data-ttu-id="a29a7-107">Můžete ověřit funkčnost hello, výkon a hodnota vaše aplikace aktualizace před hello svazku a rychlosti a řadu přenos reálný uživatel, který můžete nikdy Přibližná v testovacím prostředí.</span><span class="sxs-lookup"><span data-stu-id="a29a7-107">You can verify hello functionality, performance, and value of your app updates against hello volume, velocity, and variety of real user traffic, which you can never approximate in a test environment.</span></span>
+
+## <a name="traffic-routing-in-app-service-web-apps"></a><span data-ttu-id="a29a7-108">Přenosy dat směrování ve službě App Service Web Apps</span><span class="sxs-lookup"><span data-stu-id="a29a7-108">Traffic Routing in App Service Web Apps</span></span>
+<span data-ttu-id="a29a7-109">S hello směrování provozu funkci v [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714), nasměrujete část tooone provozu za provozu uživatele nebo více [nasazovací sloty](web-sites-staged-publishing.md)a potom analyzovat vaší aplikace pomocí [aplikace Azure Statistika](/services/application-insights/) nebo [Azure HDInsight](/services/hdinsight/), nebo jako nástroj třetí strany [New Relic](/marketplace/partners/newrelic/newrelic/) toovalidate změny.</span><span class="sxs-lookup"><span data-stu-id="a29a7-109">With hello Traffic Routing feature in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714), you can direct a portion of live user traffic tooone or more [deployment slots](web-sites-staged-publishing.md), and then analyze your app with [Azure Application Insights](/services/application-insights/) or [Azure HDInsight](/services/hdinsight/), or a third-party tool like [New Relic](/marketplace/partners/newrelic/newrelic/) toovalidate your change.</span></span> <span data-ttu-id="a29a7-110">Například můžete implementovat hello následující scénáře službou App Service:</span><span class="sxs-lookup"><span data-stu-id="a29a7-110">For example, you can implement hello following scenarios with App Service:</span></span>
+
+* <span data-ttu-id="a29a7-111">Zjistit funkční chyby nebo přesně určit kritické body ve vašem nasazení aktualizace předchozí toosite celou</span><span class="sxs-lookup"><span data-stu-id="a29a7-111">Discover functional bugs or pinpoint performance bottlenecks in your updates prior toosite-wide deployment</span></span>
+* <span data-ttu-id="a29a7-112">"Řízené testovací lety" změny provést měření použitelnost metriky pro beta verzi aplikace hello</span><span class="sxs-lookup"><span data-stu-id="a29a7-112">Perform "controlled test flights" of your changes by measuring usability metrics on hello beta app</span></span>
+* <span data-ttu-id="a29a7-113">Postupně rychle pochopit práci tooa nové aktualizace a řádně zpět dolů toohello aktuální verze, pokud dojde k chybě</span><span class="sxs-lookup"><span data-stu-id="a29a7-113">Gradually ramp up tooa new update, and gracefully back down toohello current version if an error occurs</span></span> 
+* <span data-ttu-id="a29a7-114">Optimalizace aplikace obchodní výsledky spuštěním [A / B testy](https://en.wikipedia.org/wiki/A/B_testing) nebo [multivariační testy](https://en.wikipedia.org/wiki/Multivariate_testing_in_marketing) v počet nasazovacích slotů</span><span class="sxs-lookup"><span data-stu-id="a29a7-114">Optimize your app's business results by running [A/B tests](https://en.wikipedia.org/wiki/A/B_testing) or [multivariate tests](https://en.wikipedia.org/wiki/Multivariate_testing_in_marketing) in multiple deployment slots</span></span>
+
+### <a name="requirements-for-using-traffic-routing-in-web-apps"></a><span data-ttu-id="a29a7-115">Požadavky pro použití ke směrování provozu ve službě Web Apps</span><span class="sxs-lookup"><span data-stu-id="a29a7-115">Requirements for using Traffic Routing in Web Apps</span></span>
+* <span data-ttu-id="a29a7-116">Webové aplikace, musí běžet v **standardní** nebo **Premium** vrstvy, jako je povinný pro více nasazovací sloty.</span><span class="sxs-lookup"><span data-stu-id="a29a7-116">Your web app must run in **Standard** or **Premium** tier, as it is required for multiple deployment slots.</span></span>
+* <span data-ttu-id="a29a7-117">V pořadí toowork správně, směrování provozu vyžaduje toobe soubory cookie v prohlížeči hello uživatelů povolené.</span><span class="sxs-lookup"><span data-stu-id="a29a7-117">In order toowork properly, Traffic Routing requires cookies toobe enabled in hello users' browser.</span></span> <span data-ttu-id="a29a7-118">Směrování provozu používá soubory cookie toopin slotu nasazení tooa prohlížeč klienta pro relaci klienta hello hello životnosti.</span><span class="sxs-lookup"><span data-stu-id="a29a7-118">Traffic Routing uses cookies toopin a client browser tooa deployment slot for hello life hello client session.</span></span>
+* <span data-ttu-id="a29a7-119">Směrování provozu podporuje pokročilé scénáře TiP pomocí rutin prostředí Azure PowerShell.</span><span class="sxs-lookup"><span data-stu-id="a29a7-119">Traffic Routing supports advanced TiP scenarios through Azure PowerShell cmdlets.</span></span>
+
+## <a name="route-traffic-segment-tooa-deployment-slot"></a><span data-ttu-id="a29a7-120">Směrování provozu segment tooa nasazovací slot.</span><span class="sxs-lookup"><span data-stu-id="a29a7-120">Route traffic segment tooa deployment slot</span></span>
+<span data-ttu-id="a29a7-121">Na základní úrovni hello v každý scénář TiP směrovat předdefinované procento vaší živé provoz tooa mimo produkční nasazovací slot.</span><span class="sxs-lookup"><span data-stu-id="a29a7-121">At hello basic level in every TiP scenario, you route a predefined percentage of your live traffic tooa non-production deployment slot.</span></span> <span data-ttu-id="a29a7-122">toodo tento, postupujte podle kroků hello níže:</span><span class="sxs-lookup"><span data-stu-id="a29a7-122">toodo this, follow hello steps below:</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="a29a7-123">Hello zde uvedených kroků se předpokládá, že už máte [mimo produkční nasazovací slot](web-sites-staged-publishing.md) a že hello požadovaného obsahu webové aplikace je již [nasazené](web-sites-deploy.md) tooit.</span><span class="sxs-lookup"><span data-stu-id="a29a7-123">hello steps here assumes that you already have a [non-production deployment slot](web-sites-staged-publishing.md) and that hello desired web app content is already [deployed](web-sites-deploy.md) tooit.</span></span>
+> 
+> 
+
+1. <span data-ttu-id="a29a7-124">Přihlaste se k hello [portálu Azure](https://portal.azure.com/).</span><span class="sxs-lookup"><span data-stu-id="a29a7-124">Log into hello [Azure Portal](https://portal.azure.com/).</span></span>
+2. <span data-ttu-id="a29a7-125">V okně vaší webové aplikace, klikněte na tlačítko **nastavení** > **směrování provozu**.</span><span class="sxs-lookup"><span data-stu-id="a29a7-125">In your web app's blade, click **Settings** > **Traffic Routing**.</span></span>
+   ![](./media/app-service-web-test-in-production/01-traffic-routing.png)
+3. <span data-ttu-id="a29a7-126">Vyberte hello slotu, který chcete tooroute provoz tooand hello procento celkového provozu hello požadavky a pak klikněte na **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="a29a7-126">Select hello slot that you want tooroute traffic tooand hello percentage of hello total traffic you desire, then click **Save**.</span></span>
+   
+    ![](./media/app-service-web-test-in-production/02-select-slot.png)
+4. <span data-ttu-id="a29a7-127">Okno přejděte toohello nasazovací slot.</span><span class="sxs-lookup"><span data-stu-id="a29a7-127">Go toohello deployment slot's blade.</span></span> <span data-ttu-id="a29a7-128">Teď byste měli vidět za provozu provoz se směruje tooit.</span><span class="sxs-lookup"><span data-stu-id="a29a7-128">You should now see live traffic being routed tooit.</span></span>
+   
+    ![](./media/app-service-web-test-in-production/03-traffic-routed.png)
+
+<span data-ttu-id="a29a7-129">Po nakonfigurování směrování provozu hello zadat, že procento klientů, bude mít náhodně směrované tooyour mimo produkční slot.</span><span class="sxs-lookup"><span data-stu-id="a29a7-129">Once Traffic Routing is configured, hello specified percentage of clients will be randomly routed tooyour non-production slot.</span></span> <span data-ttu-id="a29a7-130">Je však důležité toonote, jakmile je klient automaticky směrované tooa konkrétní pozici, bude slotu "definovaného" toothat dobu životnosti hello této relace klienta.</span><span class="sxs-lookup"><span data-stu-id="a29a7-130">However, it is important toonote that once a client is automatically routed tooa specific slot, it will be "pinned" toothat slot for hello life of that client session.</span></span> <span data-ttu-id="a29a7-131">To provést pomocí souboru cookie toopin hello uživatelské relace.</span><span class="sxs-lookup"><span data-stu-id="a29a7-131">This done using a cookie toopin hello user session.</span></span> <span data-ttu-id="a29a7-132">Je-li si prohlédnout hello HTTP požadavků, najdete `TipMix` souborů cookie v každé další požadavek.</span><span class="sxs-lookup"><span data-stu-id="a29a7-132">If you inspect hello HTTP requests, you will find a `TipMix` cookie in every subsequent request.</span></span>
+
+![](./media/app-service-web-test-in-production/04-tip-cookie.png)
+
+## <a name="force-client-requests-tooa-specific-slot"></a><span data-ttu-id="a29a7-133">Vynutit klienta požadavky tooa konkrétní pozici</span><span class="sxs-lookup"><span data-stu-id="a29a7-133">Force client requests tooa specific slot</span></span>
+<span data-ttu-id="a29a7-134">App Service v přidání tooautomatic ke směrování provozu, je možné tooroute požadavky tooa konkrétní pozici.</span><span class="sxs-lookup"><span data-stu-id="a29a7-134">In addition tooautomatic traffic routing, App Service is able tooroute requests tooa specific slot.</span></span> <span data-ttu-id="a29a7-135">To je užitečné, když chcete, aby vaši uživatelé toobe možné tooopt-do nebo výslovný nesouhlas s beta verzi aplikace.</span><span class="sxs-lookup"><span data-stu-id="a29a7-135">This is useful when you want your users toobe able tooopt-into or opt-out of your beta app.</span></span> <span data-ttu-id="a29a7-136">toodo, použijte hello `x-ms-routing-name` parametr dotazu.</span><span class="sxs-lookup"><span data-stu-id="a29a7-136">toodo this, you use hello `x-ms-routing-name` query parameter.</span></span>
+
+<span data-ttu-id="a29a7-137">tooreroute uživatelé tooa konkrétní pozici pomocí `x-ms-routing-name`, ujistěte se, že hello slotu je již přidána toohello směrování provozu seznamu.</span><span class="sxs-lookup"><span data-stu-id="a29a7-137">tooreroute users tooa specific slot using `x-ms-routing-name`, you must make sure that hello slot is already added toohello Traffic Routing list.</span></span> <span data-ttu-id="a29a7-138">Vzhledem k tomu, že chcete tooroute tooa slotu explicitně, není důležité hello skutečné směrování procento, které nastavíte.</span><span class="sxs-lookup"><span data-stu-id="a29a7-138">Since you want tooroute tooa slot explicitly, hello actual routing percentage you set doesn't matter.</span></span> <span data-ttu-id="a29a7-139">Pokud chcete, můžete vytvořit "beta link", který mohou uživatelé kliknout tooaccess hello beta verzi aplikace.</span><span class="sxs-lookup"><span data-stu-id="a29a7-139">If you want, you can craft a "beta link" that users can click tooaccess hello beta app.</span></span>
+
+![](./media/app-service-web-test-in-production/06-enable-x-ms-routing-name.png)
+
+### <a name="opt-users-out-of-beta-app"></a><span data-ttu-id="a29a7-140">OPT uživatelé mimo aplikaci beta</span><span class="sxs-lookup"><span data-stu-id="a29a7-140">Opt users out of beta app</span></span>
+<span data-ttu-id="a29a7-141">Uživatelé toolet vyjádření výslovného nesouhlasu s beta verze aplikace, například můžete vložit tento odkaz na webové stránce:</span><span class="sxs-lookup"><span data-stu-id="a29a7-141">toolet users opt out of your beta app, for example, you can put this link in your web page:</span></span>
+
+    <a href="<webappname>.azurewebsites.net/?x-ms-routing-name=self">Go back tooproduction app</a>
+
+<span data-ttu-id="a29a7-142">Hello řetězec `x-ms-routing-name=self` určuje hello produkční slot.</span><span class="sxs-lookup"><span data-stu-id="a29a7-142">hello string `x-ms-routing-name=self` specifies hello production slot.</span></span> <span data-ttu-id="a29a7-143">Jakmile hello klienta browser link hello přístup a ne jenom ho přesměruje toohello produkční slot, ale každý další požadavek bude obsahovat hello `x-ms-routing-name=self` souboru cookie, který PIN kódy hello relace toohello produkční slot.</span><span class="sxs-lookup"><span data-stu-id="a29a7-143">Once hello client browser access hello link, not only is it redirected toohello production slot, but every subsequent request will contain hello `x-ms-routing-name=self` cookie that pins hello session toohello production slot.</span></span>
+
+![](./media/app-service-web-test-in-production/05-access-production-slot.png)
+
+### <a name="opt-users-in-toobeta-app"></a><span data-ttu-id="a29a7-144">OPT uživatele v aplikaci toobeta</span><span class="sxs-lookup"><span data-stu-id="a29a7-144">Opt users in toobeta app</span></span>
+<span data-ttu-id="a29a7-145">Uživatelé toolet vyjádřit výslovný souhlas tooyour beta verze aplikace, sada hello stejný dotaz na název parametru toohello hello mimo produkční slot, například:</span><span class="sxs-lookup"><span data-stu-id="a29a7-145">toolet users opt in tooyour beta app, set hello same query parameter toohello name of hello non-production slot, for example:</span></span>
+
+        <webappname>.azurewebsites.net/?x-ms-routing-name=staging
+
+## <a name="more-resources"></a><span data-ttu-id="a29a7-146">Další zdroje informací</span><span class="sxs-lookup"><span data-stu-id="a29a7-146">More resources</span></span>
+* [<span data-ttu-id="a29a7-147">Nastavení přípravných prostředí pro webové aplikace v Azure App Service</span><span class="sxs-lookup"><span data-stu-id="a29a7-147">Set up staging environments for web apps in Azure App Service</span></span>](web-sites-staged-publishing.md)
+* [<span data-ttu-id="a29a7-148">Nasazení aplikace komplexní předvídatelné v Azure</span><span class="sxs-lookup"><span data-stu-id="a29a7-148">Deploy a complex application predictably in Azure</span></span>](app-service-deploy-complex-application-predictably.md)
+* [<span data-ttu-id="a29a7-149">Agile software development službou Azure App Service</span><span class="sxs-lookup"><span data-stu-id="a29a7-149">Agile software development with Azure App Service</span></span>](app-service-agile-software-development.md)
+* [<span data-ttu-id="a29a7-150">Efektivně používat DevOps prostředí pro webové aplikace</span><span class="sxs-lookup"><span data-stu-id="a29a7-150">Use DevOps environments effectively for your web apps</span></span>](app-service-web-staged-publishing-realworld-scenarios.md)
+

@@ -1,0 +1,10 @@
+
+
+1. <span data-ttu-id="7aaec-101">Přihlaste se ke [konzole Firebase](https://firebase.google.com/console/).</span><span class="sxs-lookup"><span data-stu-id="7aaec-101">Sign in to the [Firebase console](https://firebase.google.com/console/).</span></span> <span data-ttu-id="7aaec-102">Vytvořte nový projekt Firebase, pokud jej ještě nemáte.</span><span class="sxs-lookup"><span data-stu-id="7aaec-102">Create a new Firebase project if you don't already have one.</span></span>
+2. <span data-ttu-id="7aaec-103">Po vytvoření projektu klikněte na tlačítko **Add Firebase to your Android app** (Přidat Firebase do aplikace pro Android) a postupujte podle pokynů.</span><span class="sxs-lookup"><span data-stu-id="7aaec-103">After your project is created, click **Add Firebase to your Android app** and follow the instructions provided.</span></span>
+
+    ![](./media/notification-hubs-enable-firebase-cloud-messaging/notification-hubs-add-firebase-to-android-app.png)
+3. <span data-ttu-id="7aaec-104">V konzole Firebase klikněte na ozubené kolečko vašeho projektu a pak klikněte na **Project Settings** (Nastavení projektu).</span><span class="sxs-lookup"><span data-stu-id="7aaec-104">In the Firebase console, click the cog for your project and then click **Project Settings**.</span></span>
+
+    ![](./media/notification-hubs-enable-firebase-cloud-messaging/notification-hubs-firebase-console-project-settings.png)
+4. <span data-ttu-id="7aaec-105">Klikněte na kartu **Cloud Messaging** v nastavení projektu a zkopírujte hodnotu **Server key** (Klíč serveru) a **Sender ID** (ID odesílatele).</span><span class="sxs-lookup"><span data-stu-id="7aaec-105">Click the **Cloud Messaging** tab in your project settings, and copy the value of the **Server key** and **Sender ID**.</span></span> <span data-ttu-id="7aaec-106">Tyto hodnoty se později použijí ke konfiguraci zásad přístupu centra oznámení a vaší obslužné rutiny oznámení v aplikaci.</span><span class="sxs-lookup"><span data-stu-id="7aaec-106">These values will be used later to configure the notification hub access policy, and your notification handler in the app.</span></span>

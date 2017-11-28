@@ -1,0 +1,42 @@
+---
+title: "aaaConfigure ověřování pomocí Amazon Web Services | Microsoft Docs"
+description: "Tento článek popisuje, jak toocreate a ověření pověření AWS pro sady runbook ve službě Azure Automation, které spravují prostředky AWS."
+services: automation
+documentationcenter: 
+author: mgoedtel
+manager: jwhit
+editor: tysonn
+keywords: "ověřování aws, konfigurace aws"
+ms.assetid: b6dde4bb-26ac-4876-9aa9-e586bed30d6b
+ms.service: automation
+ms.workload: tbd
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 11/11/2016
+ms.author: magoedte
+ms.openlocfilehash: 6edaa000c1b206d80fe64b18c729dac124849070
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/06/2017
+---
+# <a name="authenticate-runbooks-with-amazon-web-services"></a><span data-ttu-id="e8db9-104">Ověření runbooků pomocí Amazon Web Services</span><span class="sxs-lookup"><span data-stu-id="e8db9-104">Authenticate Runbooks with Amazon Web Services</span></span>
+<span data-ttu-id="e8db9-105">Automatizaci běžných úkolů pomocí prostředků ve službě Amazon Web Services můžete provést pomocí runbooků Automation v Azure.</span><span class="sxs-lookup"><span data-stu-id="e8db9-105">Automating common tasks with resources in Amazon Web Services (AWS) can be accomplished with Automation runbooks in Azure.</span></span>  <span data-ttu-id="e8db9-106">V AWS můžete automatizovat celou řadu úloh pomocí runbooků Automation, stejně to děláte s prostředky v Azure.</span><span class="sxs-lookup"><span data-stu-id="e8db9-106">You can automate many tasks in AWS using Automation runbooks just like you can with resources in Azure.</span></span>  <span data-ttu-id="e8db9-107">Potřebujete jen dvě věci:</span><span class="sxs-lookup"><span data-stu-id="e8db9-107">All that is required are two things:</span></span>
+
+* <span data-ttu-id="e8db9-108">Předplatné AWS a sadu přihlašovacích údajů.</span><span class="sxs-lookup"><span data-stu-id="e8db9-108">An AWS subscription and a set of credentials.</span></span>  <span data-ttu-id="e8db9-109">Zejména přístupový klíč a tajný klíč AWS.</span><span class="sxs-lookup"><span data-stu-id="e8db9-109">Specifically your AWS Access Key and Secret Key.</span></span>  <span data-ttu-id="e8db9-110">Další informace najdete v článku hello [pomocí přihlašovacích údajů AWS](http://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html).</span><span class="sxs-lookup"><span data-stu-id="e8db9-110">For more information, please review hello article [Using AWS Credentials](http://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html).</span></span>
+* <span data-ttu-id="e8db9-111">Předplatné Azure a účet Automation.</span><span class="sxs-lookup"><span data-stu-id="e8db9-111">An Azure subscription and Automation account.</span></span>  <span data-ttu-id="e8db9-112">Další informace o nastavení účtu Azure Automation, přečtěte si článek hello [konfigurace Azure účet Spustit jako](automation-sec-configure-azure-runas-account.md).</span><span class="sxs-lookup"><span data-stu-id="e8db9-112">For more information on setting up an Azure Automation account, please review hello article [Configure Azure Run As Account](automation-sec-configure-azure-runas-account.md).</span></span>  
+
+<span data-ttu-id="e8db9-113">tooauthenticate pomocí AWS, zadejte sadu tooauthenticate přihlašovacích údajů AWS svoje runbooky spuštěné ve službě Azure Automation.</span><span class="sxs-lookup"><span data-stu-id="e8db9-113">tooauthenticate with AWS, you must specify a set of AWS credentials tooauthenticate your runbooks running from Azure Automation.</span></span> <span data-ttu-id="e8db9-114">Pokud už máte vytvořený účet Automation a chcete toouse této tooauthenticate pomocí AWS, můžete provést hello kroky v následující části hello.</span><span class="sxs-lookup"><span data-stu-id="e8db9-114">If you already have an Automation account created and you want toouse that tooauthenticate with AWS, you can follow hello steps in hello following section.</span></span>  <span data-ttu-id="e8db9-115">Pokud chcete toodedicated účet pro prostředky AWS které se budou zaměřovat sady runbook, měli byste nejprve vytvořit novou [účtu Automation spustit jako](automation-sec-configure-azure-runas-account.md) (přeskočit hello možnost toocreate instanční objekt) a pak postupujte podle následujících kroků hello.</span><span class="sxs-lookup"><span data-stu-id="e8db9-115">If you want toodedicated an account for runbooks targetting AWS resources, you should first create a new [Automation Run As account](automation-sec-configure-azure-runas-account.md) (skip hello option toocreate a service principal) and then follow hello steps below.</span></span>
+
+## <a name="configure-automation-account"></a><span data-ttu-id="e8db9-116">Konfigurace účtu Automation</span><span class="sxs-lookup"><span data-stu-id="e8db9-116">Configure Automation account</span></span>
+<span data-ttu-id="e8db9-117">Pro Azure Automation toocommunicate pomocí AWS bude nejprve nutné tooretrieve přihlašovací údaje AWS a uložit je jako assety ve službě Azure Automation.</span><span class="sxs-lookup"><span data-stu-id="e8db9-117">For Azure Automation toocommunicate with AWS, you will first need tooretrieve your AWS credentials and store them as assets in Azure Automation.</span></span>  <span data-ttu-id="e8db9-118">Proveďte následující kroky popsané v dokumentu AWS hello hello [Správa přístupových klíčů k vašemu účtu AWS](http://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html) toocreate přístupový klíč a zkopírujte hello **Access Key ID** a **tajný přístupový klíč** (případně stáhnout váš soubor klíče toostore bezpečné místo).</span><span class="sxs-lookup"><span data-stu-id="e8db9-118">Perform hello following steps documented in hello AWS document [Managing Access Keys for your AWS Account](http://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html) toocreate an Access Key and copy hello **Access Key ID** and **Secret Access Key** (optionally download your key file toostore it somewhere safe).</span></span>
+
+<span data-ttu-id="e8db9-119">Poté, co jste vytvořili a zkopírovali zabezpečovacích klíčů AWS, budete potřebovat toocreate asset přihlašovacích údajů s toosecurely účet Azure Automation. Uložte a odkazujte na ně ve svých runboocích.</span><span class="sxs-lookup"><span data-stu-id="e8db9-119">After you have created and copied your AWS security keys, you will need toocreate a Credential asset with an Azure Automation account toosecurely store them and reference them with your runbooks.</span></span>  <span data-ttu-id="e8db9-120">Postupujte podle kroků hello v části hello **vytvoření nového prostředku pověření** v hello [assety přihlašovacích údajů ve službě Azure Automation](automation-credentials.md) a zadejte hello následující informace:</span><span class="sxs-lookup"><span data-stu-id="e8db9-120">Follow hello steps in hello section **Creating a new credential asset** in hello [Credential assets in Azure Automation](automation-credentials.md) article and enter hello following information:</span></span>
+
+1. <span data-ttu-id="e8db9-121">V hello **název** zadejte **AWScred** nebo odpovídající hodnotu v souladu standardy pro vytváření názvů.</span><span class="sxs-lookup"><span data-stu-id="e8db9-121">In hello **Name** box, enter **AWScred** or an appropriate value following your naming standards.</span></span>  
+2. <span data-ttu-id="e8db9-122">V hello **uživatelské jméno** zadejte vaše **ID přístupu** a **tajný přístupový klíč** v hello **heslo** a **potvrzení heslo** pole.</span><span class="sxs-lookup"><span data-stu-id="e8db9-122">In hello **User name** box type your **Access ID** and your **Secret Access Key** in hello **Password** and **Confirm password** box.</span></span>   
+
+## <a name="next-steps"></a><span data-ttu-id="e8db9-123">Další kroky</span><span class="sxs-lookup"><span data-stu-id="e8db9-123">Next steps</span></span>
+* <span data-ttu-id="e8db9-124">Hello článku najdete [automatizace nasazení virtuálního počítače ve službě Amazon Web Services](automation-scenario-aws-deployment.md) toolearn jak toocreate sady runbook tooautomate úloh v AWS.</span><span class="sxs-lookup"><span data-stu-id="e8db9-124">Reivew hello solution article [Automating deployment of a VM in Amazon Web Services](automation-scenario-aws-deployment.md) toolearn how toocreate runbooks tooautomate tasks in AWS.</span></span>
+

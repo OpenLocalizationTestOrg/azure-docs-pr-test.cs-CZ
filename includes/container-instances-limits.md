@@ -1,0 +1,3 @@
+| <span data-ttu-id="89c0d-101">Prostředek</span><span class="sxs-lookup"><span data-stu-id="89c0d-101">Resource</span></span> | <span data-ttu-id="89c0d-102">Výchozí omezení</span><span class="sxs-lookup"><span data-stu-id="89c0d-102">Default Limit</span></span> |
+| --- | --- |
+| <span data-ttu-id="89c0d-103">Skupiny kontejnerů na [předplatné](../articles/billing-buy-sign-up-azure-subscription.md)</span><span class="sxs-lookup"><span data-stu-id="89c0d-103">Container groups per [subscription](../articles/billing-buy-sign-up-azure-subscription.md)</span></span> | <span data-ttu-id="89c0d-104">20</span><span class="sxs-lookup"><span data-stu-id="89c0d-104">20</span></span> |

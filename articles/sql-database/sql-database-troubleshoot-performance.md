@@ -1,0 +1,70 @@
+---
+title: "aaaMonitoring & optimalizace výkonu – Azure SQL Database | Microsoft Docs"
+description: "Tipy k ladění ve službě Azure SQL Database pomocí vyhodnocení a zlepšování výkonu."
+services: sql-database
+documentationcenter: 
+author: v-shysun
+manager: felixwu
+editor: 
+keywords: "ladění, ladění, ladění tipy, výkonu sql databáze výkonu výkonu SQL optimalizace výkonu databáze sql"
+ms.assetid: eb7b3f66-3b33-4e1b-84fb-424a928a6672
+ms.service: sql-database
+ms.custom: monitor & tune
+ms.workload: data-management
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 06/13/2017
+ms.author: v-shysun
+ms.openlocfilehash: 9e196831902aa6ea841ef14caf5713e82ebfc62d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/06/2017
+---
+# <a name="monitoring-and-performance-tuning"></a><span data-ttu-id="078c7-104">Monitorování a optimalizace výkonu</span><span class="sxs-lookup"><span data-stu-id="078c7-104">Monitoring and performance tuning</span></span>
+
+<span data-ttu-id="078c7-105">Databáze SQL Azure je automaticky prováděna a flexibilní datová služba, kde můžete snadno sledovat využití, přidat nebo odebrat prostředky (procesor, paměť, vstupně-výstupní operace), najít doporučení, které může zlepšit výkon vaší databáze, nebo nechat databáze přizpůsobit tooyour zatížení a automaticky optimalizace výkonu.</span><span class="sxs-lookup"><span data-stu-id="078c7-105">Azure SQL Database is automatically managed and flexible data service where you can easily monitor usage, add or remove resources (CPU, memory, io), find recommendations that can improve performance of your database, or let database adapt tooyour workload and automatically optimize performance.</span></span>
+
+<span data-ttu-id="078c7-106">Tento článek obsahuje přehled monitorování a možností, které jsou k dispozici ve službě Azure SQL Database ladění výkonu.</span><span class="sxs-lookup"><span data-stu-id="078c7-106">This article provides overview of monitoring and performance tuning options that are available in Azure SQL Database.</span></span>
+
+[!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+
+## <a name="monitoring-and-troubleshooting-database-performance"></a><span data-ttu-id="078c7-107">Monitorování a řešení potíží s výkonem databáze</span><span class="sxs-lookup"><span data-stu-id="078c7-107">Monitoring and troubleshooting database performance</span></span>
+
+<span data-ttu-id="078c7-108">Azure SQL Database umožňuje tooeasily můžete sledovat využití vaší databáze a identifikovat dotazy, které by mohly způsobit problémy s výkonem hello.</span><span class="sxs-lookup"><span data-stu-id="078c7-108">Azure SQL Database enables you tooeasily monitor your database usage and identify queries that might cause hello performance issues.</span></span> <span data-ttu-id="078c7-109">Můžete sledovat výkon databáze pomocí Azure zobrazení portálu nebo systému.</span><span class="sxs-lookup"><span data-stu-id="078c7-109">You can monitor database performance using Azure portal or system views.</span></span> <span data-ttu-id="078c7-110">Máte následující možnosti pro monitorování a řešení potíží s výkonem databáze hello:</span><span class="sxs-lookup"><span data-stu-id="078c7-110">You have hello following options for monitoring and troubleshooting database performance:</span></span>
+
+1. <span data-ttu-id="078c7-111">V hello [portál Azure](https://portal.azure.com), klikněte na tlačítko **databází SQL**, vyberte hello databáze a potom pomocí hello monitorování grafu toolook blíží jejich maximální počet zdrojů.</span><span class="sxs-lookup"><span data-stu-id="078c7-111">In hello [Azure portal](https://portal.azure.com), click **SQL databases**, select hello database, and then use hello Monitoring chart toolook for resources approaching their maximum.</span></span> <span data-ttu-id="078c7-112">Spotřeba DTU se zobrazí ve výchozím nastavení.</span><span class="sxs-lookup"><span data-stu-id="078c7-112">DTU consumption is shown by default.</span></span> <span data-ttu-id="078c7-113">Klikněte na tlačítko **upravit** toochange hello časové rozmezí a hodnoty zobrazené.</span><span class="sxs-lookup"><span data-stu-id="078c7-113">Click **Edit** toochange hello time range and values shown.</span></span>
+2. <span data-ttu-id="078c7-114">Použití [Query Performance Insight](sql-database-query-performance.md) tooidentify hello dotazy, které potřebují hello nejvíc prostředků.</span><span class="sxs-lookup"><span data-stu-id="078c7-114">Use [Query Performance Insight](sql-database-query-performance.md) tooidentify hello queries that spend hello most of resources.</span></span>
+3. <span data-ttu-id="078c7-115">Můžete použít zobrazení dynamické správy (zobrazení dynamické správy), rozšířených událostí (`XEvents`), a hello úložiště dotazů v aplikaci SSMS tooget výkonnostních parametrů v reálném čase.</span><span class="sxs-lookup"><span data-stu-id="078c7-115">You can use dynamic management views (DMVs), Extended Events (`XEvents`), and hello Query Store in SSMS tooget performance parameters in real time.</span></span>
+
+<span data-ttu-id="078c7-116">V tématu hello [výkonu pokyny tématu](sql-database-performance-guidance.md) toofind techniky, které můžete použít tooimprove výkonu databáze SQL Azure, je-li identifikovat některé problém pomocí těchto sestav a zobrazení.</span><span class="sxs-lookup"><span data-stu-id="078c7-116">See hello [performance guidance topic](sql-database-performance-guidance.md) toofind techniques that you can use tooimprove performance of Azure SQL Database if you identify some issue using these reports or views.</span></span>
+
+> [!IMPORTANT] 
+> <span data-ttu-id="078c7-117">Se doporučuje hello vždy použít nejnovější verzi tooremain Management Studio synchronizovat se službou aktualizace tooMicrosoft Azure a SQL Database.</span><span class="sxs-lookup"><span data-stu-id="078c7-117">It is recommended that you always use hello latest version of Management Studio tooremain synchronized with updates tooMicrosoft Azure and SQL Database.</span></span> <span data-ttu-id="078c7-118">[Aktualizovat aplikaci SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).</span><span class="sxs-lookup"><span data-stu-id="078c7-118">[Update SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).</span></span>
+>
+
+## <a name="optimize-database-tooimprove-performance"></a><span data-ttu-id="078c7-119">Optimalizace výkonu databáze tooimprove</span><span class="sxs-lookup"><span data-stu-id="078c7-119">Optimize database tooimprove performance</span></span>
+
+<span data-ttu-id="078c7-120">Databáze SQL Azure vám umožní tooimprove tooidentify příležitostí a optimalizovat výkon dotazů beze změny prostředky kontrolou [doporučení ladění výkonu](sql-database-advisor.md).</span><span class="sxs-lookup"><span data-stu-id="078c7-120">Azure SQL Database enables you tooidentify opportunities tooimprove and optimize query performance without changing resources by reviewing [performance tuning recommendations](sql-database-advisor.md).</span></span> <span data-ttu-id="078c7-121">Častým důvodem toho, že databáze je pomalá, jsou chybějící indexy a nedostatečně optimalizované dotazy.</span><span class="sxs-lookup"><span data-stu-id="078c7-121">Missing indexes and poorly optimized queries are common reasons for poor database performance.</span></span> <span data-ttu-id="078c7-122">Můžete použít tyto vyladění výkonu tooimprove doporučení vašich úloh.</span><span class="sxs-lookup"><span data-stu-id="078c7-122">You can apply these tuning recommendations tooimprove performance of your workload.</span></span>
+<span data-ttu-id="078c7-123">Můžete také umožňují Azure SQL database příliš[automaticky optimalizovat výkon vašich dotazů](sql-database-automatic-tuning.md) použitím všechny identifikovat doporučení a ověřování, že se zlepšit výkon databáze.</span><span class="sxs-lookup"><span data-stu-id="078c7-123">You can also let Azure SQL database too[automatically optimize performance of your queries](sql-database-automatic-tuning.md) by applying all identified recommendations and verifying that they improve database performance.</span></span> <span data-ttu-id="078c7-124">Můžete použít následující možnosti tooimprove výkon vaší databáze hello:</span><span class="sxs-lookup"><span data-stu-id="078c7-124">You can use hello following options tooimprove performance of your database:</span></span>
+
+1. <span data-ttu-id="078c7-125">Použití [Poradce pro funkci SQL Database](sql-database-advisor-portal.md) tooview doporučení pro vytváření a rušení indexů, parametrické dotazy a opravit problémy schématu.</span><span class="sxs-lookup"><span data-stu-id="078c7-125">Use [SQL Database Advisor](sql-database-advisor-portal.md) tooview recommendations for creating and dropping indexes, parameterizing queries, and fixing schema issues.</span></span>
+2. <span data-ttu-id="078c7-126">[Povolit automatické ladění](sql-database-automatic-tuning-enable.md) a nechat Azure SQL databáze automaticky oprava identifikovat problémy s výkonem.</span><span class="sxs-lookup"><span data-stu-id="078c7-126">[Enable automatic tuning](sql-database-automatic-tuning-enable.md) and let Azure SQL database automatically fix identified performance issues.</span></span>
+
+## <a name="improving-database-performance-with-more-resources"></a><span data-ttu-id="078c7-127">Zvýšení výkonu databáze s další prostředky</span><span class="sxs-lookup"><span data-stu-id="078c7-127">Improving database performance with more resources</span></span>
+
+<span data-ttu-id="078c7-128">Nakonec pokud nejsou žádné řešitelné položky, které může zlepšit výkon vaší databáze, můžete změnit hello objem prostředků, které jsou k dispozici ve službě Azure SQL Database.</span><span class="sxs-lookup"><span data-stu-id="078c7-128">Finally, if there are no actionable items that can improve performance of your database, you can change hello amount of resources available in Azure SQL Database.</span></span> <span data-ttu-id="078c7-129">Další zdroje informací můžete přiřadit změnou hello [vrstvy služby](sql-database-service-tiers.md) samostatné databáze nebo kdykoli zvýšit hello počet jednotek Edtu fondu elastické databáze.</span><span class="sxs-lookup"><span data-stu-id="078c7-129">You can assign more resources by changing hello [service tier](sql-database-service-tiers.md) of a standalone database or increase hello eDTUs of an elastic pool at any time.</span></span>
+1. <span data-ttu-id="078c7-130">Pro samostatné databáze, můžete [Změna úrovně služeb](sql-database-service-tiers.md) výkonu databáze tooimprove na vyžádání.</span><span class="sxs-lookup"><span data-stu-id="078c7-130">For standalone databases, you can [change service tiers](sql-database-service-tiers.md) on-demand tooimprove database performance.</span></span>
+2. <span data-ttu-id="078c7-131">V případě více databází, zvažte použití [elastické fondy](sql-database-elastic-pool-guidance.md) tooscale prostředky automaticky.</span><span class="sxs-lookup"><span data-stu-id="078c7-131">For multiple databases, consider using [elastic pools](sql-database-elastic-pool-guidance.md) tooscale resources automatically.</span></span>
+
+## <a name="tune-and-refactor-application-or-database-code"></a><span data-ttu-id="078c7-132">Ladění a refactor aplikace nebo kódu databáze</span><span class="sxs-lookup"><span data-stu-id="078c7-132">Tune and refactor application or database code</span></span>
+
+<span data-ttu-id="078c7-133">Toomore kód aplikace, můžete změnit optimálně použijte hello databáze, změňte indexy, vynutit plány nebo použijte pomocné parametry toomanually přizpůsobit hello databáze tooyour zatížení.</span><span class="sxs-lookup"><span data-stu-id="078c7-133">You can change application code toomore optimally use hello database, change indexes, force plans, or use hints toomanually adapt hello database tooyour workload.</span></span> <span data-ttu-id="078c7-134">Najít některé pokyny a tipy pro ruční ladění a přepisování hello kód v hello [výkonu pokyny tématu](sql-database-performance-guidance.md) článku.</span><span class="sxs-lookup"><span data-stu-id="078c7-134">Find some guidance and tips for manual tuning and rewriting hello code in hello [performance guidance topic](sql-database-performance-guidance.md) article.</span></span>
+
+
+## <a name="next-steps"></a><span data-ttu-id="078c7-135">Další kroky</span><span class="sxs-lookup"><span data-stu-id="078c7-135">Next steps</span></span>
+
+- <span data-ttu-id="078c7-136">tooenable automatické ladění v Azure SQL Database a umožňují automatické ladění funkce plně spravovat vaše úlohy najdete v tématu [povolit automatické ladění](sql-database-automatic-tuning-enable.md).</span><span class="sxs-lookup"><span data-stu-id="078c7-136">tooenable automatic tuning in Azure SQL Database and let automatic tuning feature fully manage your workload, see [Enable automatic tuning](sql-database-automatic-tuning-enable.md).</span></span>
+- <span data-ttu-id="078c7-137">toouse ruční ladění, můžete zkontrolovat [ladění doporučení na portálu Azure](sql-database-advisor-portal.md) a použít ručně hello ty, které zlepšit výkon vašich dotazů.</span><span class="sxs-lookup"><span data-stu-id="078c7-137">toouse manual tuning, you can review [Tuning recommendations in Azure portal](sql-database-advisor-portal.md) and manually apply hello ones that improve performance of your queries.</span></span>
+- <span data-ttu-id="078c7-138">Změnit prostředky, které jsou k dispozici ve vaší databázi změnou [úrovních služby databáze SQL Azure](sql-database-performance-guidance.md)</span><span class="sxs-lookup"><span data-stu-id="078c7-138">Change resources that are available in your database by changing [Azure SQL Database service tiers](sql-database-performance-guidance.md)</span></span>

@@ -1,0 +1,102 @@
+---
+title: "aaaAnalyze dat v Data Lake Store pomocí Power BI | Microsoft Docs"
+description: "Použijte Power BI tooanalyze data uložená v Azure Data Lake Store"
+services: data-lake-store
+documentationcenter: 
+author: nitinme
+manager: jhubbard
+editor: cgronlun
+ms.assetid: 57d19d27-e135-49d9-a7ea-46c48ef4e3bd
+ms.service: data-lake-store
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: big-data
+ms.date: 05/10/2017
+ms.author: nitinme
+ms.openlocfilehash: 6a1bfa80fd1b0dda59b7eaaae9ca1585ba42783e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/06/2017
+---
+# <a name="analyze-data-in-data-lake-store-by-using-power-bi"></a><span data-ttu-id="da7bf-103">Analýza dat v Data Lake Store pomocí Power BI</span><span class="sxs-lookup"><span data-stu-id="da7bf-103">Analyze data in Data Lake Store by using Power BI</span></span>
+<span data-ttu-id="da7bf-104">V tomto článku se dozvíte, jak Power BI Desktop tooanalyze toouse a vizualizovat data uložená v Azure Data Lake Store.</span><span class="sxs-lookup"><span data-stu-id="da7bf-104">In this article you will learn how toouse Power BI Desktop tooanalyze and visualize data stored in Azure Data Lake Store.</span></span>
+
+## <a name="prerequisites"></a><span data-ttu-id="da7bf-105">Požadavky</span><span class="sxs-lookup"><span data-stu-id="da7bf-105">Prerequisites</span></span>
+<span data-ttu-id="da7bf-106">Než začnete tento kurz, musíte mít následující hello:</span><span class="sxs-lookup"><span data-stu-id="da7bf-106">Before you begin this tutorial, you must have hello following:</span></span>
+
+* <span data-ttu-id="da7bf-107">**Předplatné Azure**.</span><span class="sxs-lookup"><span data-stu-id="da7bf-107">**An Azure subscription**.</span></span> <span data-ttu-id="da7bf-108">Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="da7bf-108">See [Get Azure free trial](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+* <span data-ttu-id="da7bf-109">**Účet Azure Data Lake Store**.</span><span class="sxs-lookup"><span data-stu-id="da7bf-109">**Azure Data Lake Store account**.</span></span> <span data-ttu-id="da7bf-110">Postupujte podle pokynů hello [Začínáme s Azure Data Lake Store pomocí portálu Azure hello](data-lake-store-get-started-portal.md).</span><span class="sxs-lookup"><span data-stu-id="da7bf-110">Follow hello instructions at [Get started with Azure Data Lake Store using hello Azure Portal](data-lake-store-get-started-portal.md).</span></span> <span data-ttu-id="da7bf-111">Tento článek předpokládá, že jste již vytvořili účet Data Lake Store, názvem **mybidatalakestore**a odesláno ukázkový datový soubor (**Drivers.txt**) tooit.</span><span class="sxs-lookup"><span data-stu-id="da7bf-111">This article assumes that you have already created a Data Lake Store account, called **mybidatalakestore**, and uploaded a sample data file (**Drivers.txt**) tooit.</span></span> <span data-ttu-id="da7bf-112">Tento ukázkový soubor je k dispozici ke stažení [úložiště Git Azure Data Lake](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt).</span><span class="sxs-lookup"><span data-stu-id="da7bf-112">This sample file is available for download from [Azure Data Lake Git Repository](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt).</span></span>
+* <span data-ttu-id="da7bf-113">**Power BI Desktop**.</span><span class="sxs-lookup"><span data-stu-id="da7bf-113">**Power BI Desktop**.</span></span> <span data-ttu-id="da7bf-114">Si můžete stáhnout z [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=45331).</span><span class="sxs-lookup"><span data-stu-id="da7bf-114">You can download this from [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=45331).</span></span> 
+
+## <a name="create-a-report-in-power-bi-desktop"></a><span data-ttu-id="da7bf-115">Vytvoření sestavy v Power BI Desktop</span><span class="sxs-lookup"><span data-stu-id="da7bf-115">Create a report in Power BI Desktop</span></span>
+1. <span data-ttu-id="da7bf-116">Power BI Desktop spustíte ve vašem počítači.</span><span class="sxs-lookup"><span data-stu-id="da7bf-116">Launch Power BI Desktop on your computer.</span></span>
+2. <span data-ttu-id="da7bf-117">Z hello **Domů** pásu karet, klikněte na tlačítko **načíst Data**a pak klikněte na tlačítko Další.</span><span class="sxs-lookup"><span data-stu-id="da7bf-117">From hello **Home** ribbon, click **Get Data**, and then click More.</span></span> <span data-ttu-id="da7bf-118">V hello **načíst Data** dialogové okno, klikněte na tlačítko **Azure**, klikněte na tlačítko **Azure Data Lake Store**a potom klikněte na **Connect**.</span><span class="sxs-lookup"><span data-stu-id="da7bf-118">In hello **Get Data** dialog box, click **Azure**, click **Azure Data Lake Store**, and then click **Connect**.</span></span>
+   
+    <span data-ttu-id="da7bf-119">![Připojit tooData Lake Store](./media/data-lake-store-power-bi/get-data-lake-store-account.png "Connect tooData Lake Store")</span><span class="sxs-lookup"><span data-stu-id="da7bf-119">![Connect tooData Lake Store](./media/data-lake-store-power-bi/get-data-lake-store-account.png "Connect tooData Lake Store")</span></span>
+3. <span data-ttu-id="da7bf-120">Pokud se zobrazí dialogové okno o konektoru hello používán fáze vývoje, opt toocontinue.</span><span class="sxs-lookup"><span data-stu-id="da7bf-120">If you see a dialog box about hello connector being in a development phase, opt toocontinue.</span></span>
+4. <span data-ttu-id="da7bf-121">V hello **Microsoft Azure Data Lake Store** dialogové okno, zadejte účet Data Lake Store tooyour hello adresy URL a pak klikněte na tlačítko **OK**.</span><span class="sxs-lookup"><span data-stu-id="da7bf-121">In hello **Microsoft Azure Data Lake Store** dialog box, provide hello URL tooyour Data Lake Store account, and then click **OK**.</span></span>
+   
+    <span data-ttu-id="da7bf-122">![Adresa URL pro Data Lake Store](./media/data-lake-store-power-bi/get-data-lake-store-account-url.png "adresu URL pro Data Lake Store")</span><span class="sxs-lookup"><span data-stu-id="da7bf-122">![URL for Data Lake Store](./media/data-lake-store-power-bi/get-data-lake-store-account-url.png "URL for Data Lake Store")</span></span>
+5. <span data-ttu-id="da7bf-123">V hello další dialogové okno, klikněte na **přihlášení** toosign do účtu Data Lake Store.</span><span class="sxs-lookup"><span data-stu-id="da7bf-123">In hello next dialog box, click **Sign in** toosign into Data Lake Store account.</span></span> <span data-ttu-id="da7bf-124">Budete přesměrování tooyour organizace přihlašovací stránku.</span><span class="sxs-lookup"><span data-stu-id="da7bf-124">You will be redirected tooyour organization's sign in page.</span></span> <span data-ttu-id="da7bf-125">Postupujte podle pokynů toosign hello v úvahu hello.</span><span class="sxs-lookup"><span data-stu-id="da7bf-125">Follow hello prompts toosign into hello account.</span></span>
+   
+    <span data-ttu-id="da7bf-126">![Přihlaste se k Data Lake Store](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "přihlásit ke službě Data Lake Store")</span><span class="sxs-lookup"><span data-stu-id="da7bf-126">![Sign into Data Lake Store](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "Sign into Data Lake Store")</span></span>
+6. <span data-ttu-id="da7bf-127">Po úspěšném přihlášení, klikněte na tlačítko **Connect**.</span><span class="sxs-lookup"><span data-stu-id="da7bf-127">After you have successfully signed in, click **Connect**.</span></span>
+   
+    <span data-ttu-id="da7bf-128">![Připojit tooData Lake Store](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "Connect tooData Lake Store")</span><span class="sxs-lookup"><span data-stu-id="da7bf-128">![Connect tooData Lake Store](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "Connect tooData Lake Store")</span></span>
+7. <span data-ttu-id="da7bf-129">Další dialogové okno Hello ukazuje hello soubor, který jste nahráli tooyour účtu Data Lake Store.</span><span class="sxs-lookup"><span data-stu-id="da7bf-129">hello next dialog box shows hello file that you uploaded tooyour Data Lake Store account.</span></span> <span data-ttu-id="da7bf-130">Ověřte informace o hello a pak klikněte na tlačítko **zatížení**.</span><span class="sxs-lookup"><span data-stu-id="da7bf-130">Verify hello info and then click **Load**.</span></span>
+   
+    <span data-ttu-id="da7bf-131">![Načtení dat z Data Lake Store](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "načtení dat z Data Lake Store")</span><span class="sxs-lookup"><span data-stu-id="da7bf-131">![Load data from Data Lake Store](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "Load data from Data Lake Store")</span></span>
+8. <span data-ttu-id="da7bf-132">Po hello úspěšně načtení dat do Power BI, zobrazí se následující pole v hello hello **pole** kartě.</span><span class="sxs-lookup"><span data-stu-id="da7bf-132">After hello data has been successfully loaded into Power BI, you will see hello following fields in hello **Fields** tab.</span></span>
+   
+    <span data-ttu-id="da7bf-133">![Importovat pole](./media/data-lake-store-power-bi/imported-fields.png "importovat pole")</span><span class="sxs-lookup"><span data-stu-id="da7bf-133">![Imported fields](./media/data-lake-store-power-bi/imported-fields.png "Imported fields")</span></span>
+   
+    <span data-ttu-id="da7bf-134">Ale toovisualize a analyzovat hello data, jsme raději toobe data hello k dispozici pro následující pole hello</span><span class="sxs-lookup"><span data-stu-id="da7bf-134">However, toovisualize and analyze hello data, we prefer hello data toobe available per hello following fields</span></span>
+   
+    <span data-ttu-id="da7bf-135">![Požadovaného pole](./media/data-lake-store-power-bi/desired-fields.png "požadovaných polí")</span><span class="sxs-lookup"><span data-stu-id="da7bf-135">![Desired fields](./media/data-lake-store-power-bi/desired-fields.png "Desired fields")</span></span>
+   
+    <span data-ttu-id="da7bf-136">V dalších krocích hello budeme aktualizovat hello dotazu tooconvert hello importovat data ve formátu požadované hello.</span><span class="sxs-lookup"><span data-stu-id="da7bf-136">In hello next steps, we will update hello query tooconvert hello imported data in hello desired format.</span></span>
+9. <span data-ttu-id="da7bf-137">Z hello **Domů** pásu karet, klikněte na tlačítko **upravit dotazy**.</span><span class="sxs-lookup"><span data-stu-id="da7bf-137">From hello **Home** ribbon, click **Edit Queries**.</span></span>
+   
+    <span data-ttu-id="da7bf-138">![Upravit dotazy](./media/data-lake-store-power-bi/edit-queries.png "úpravy dotazů")</span><span class="sxs-lookup"><span data-stu-id="da7bf-138">![Edit queries](./media/data-lake-store-power-bi/edit-queries.png "Edit queries")</span></span>
+10. <span data-ttu-id="da7bf-139">V editoru dotazů hello pod hello **obsahu** sloupce, klikněte na tlačítko **binární**.</span><span class="sxs-lookup"><span data-stu-id="da7bf-139">In hello Query Editor, under hello **Content** column, click **Binary**.</span></span>
+    
+    <span data-ttu-id="da7bf-140">![Upravit dotazy](./media/data-lake-store-power-bi/convert-query1.png "úpravy dotazů")</span><span class="sxs-lookup"><span data-stu-id="da7bf-140">![Edit queries](./media/data-lake-store-power-bi/convert-query1.png "Edit queries")</span></span>
+11. <span data-ttu-id="da7bf-141">Zobrazí se ikona souboru, který představuje hello **Drivers.txt** soubor, který jste nahráli.</span><span class="sxs-lookup"><span data-stu-id="da7bf-141">You will see a file icon, that represents hello **Drivers.txt** file that you uploaded.</span></span> <span data-ttu-id="da7bf-142">Klikněte pravým tlačítkem na soubor hello a klikněte na tlačítko **CSV**.</span><span class="sxs-lookup"><span data-stu-id="da7bf-142">Right-click hello file, and click **CSV**.</span></span>    
+    
+    <span data-ttu-id="da7bf-143">![Upravit dotazy](./media/data-lake-store-power-bi/convert-query2.png "úpravy dotazů")</span><span class="sxs-lookup"><span data-stu-id="da7bf-143">![Edit queries](./media/data-lake-store-power-bi/convert-query2.png "Edit queries")</span></span>
+12. <span data-ttu-id="da7bf-144">Měli byste vidět výstup, jak je uvedeno níže.</span><span class="sxs-lookup"><span data-stu-id="da7bf-144">You should see an output as shown below.</span></span> <span data-ttu-id="da7bf-145">Vaše data jsou nyní k dispozici ve formátu, které můžete použít toocreate vizualizace.</span><span class="sxs-lookup"><span data-stu-id="da7bf-145">Your data is now available in a format that you can use toocreate visualizations.</span></span>
+    
+    <span data-ttu-id="da7bf-146">![Upravit dotazy](./media/data-lake-store-power-bi/convert-query3.png "úpravy dotazů")</span><span class="sxs-lookup"><span data-stu-id="da7bf-146">![Edit queries](./media/data-lake-store-power-bi/convert-query3.png "Edit queries")</span></span>
+13. <span data-ttu-id="da7bf-147">Z hello **Domů** pásu karet, klikněte na tlačítko **zavřete a použít**a potom klikněte na **zavřete a použít**.</span><span class="sxs-lookup"><span data-stu-id="da7bf-147">From hello **Home** ribbon, click **Close and Apply**, and then click **Close and Apply**.</span></span>
+    
+    <span data-ttu-id="da7bf-148">![Upravit dotazy](./media/data-lake-store-power-bi/load-edited-query.png "úpravy dotazů")</span><span class="sxs-lookup"><span data-stu-id="da7bf-148">![Edit queries](./media/data-lake-store-power-bi/load-edited-query.png "Edit queries")</span></span>
+14. <span data-ttu-id="da7bf-149">Po aktualizaci dotazu hello hello **pole** karta zobrazí hello nová pole, které jsou k dispozici pro vizualizaci.</span><span class="sxs-lookup"><span data-stu-id="da7bf-149">Once hello query is updated, hello **Fields** tab will show hello new fields available for visualization.</span></span>
+    
+    <span data-ttu-id="da7bf-150">![Aktualizovat pole](./media/data-lake-store-power-bi/updated-query-fields.png "aktualizovat pole")</span><span class="sxs-lookup"><span data-stu-id="da7bf-150">![Updated fields](./media/data-lake-store-power-bi/updated-query-fields.png "Updated fields")</span></span>
+15. <span data-ttu-id="da7bf-151">Dejte nám vytvořte toorepresent výsečového grafu hello ovladače v každé město pro dané země.</span><span class="sxs-lookup"><span data-stu-id="da7bf-151">Let us create a pie chart toorepresent hello drivers in each city for a given country.</span></span> <span data-ttu-id="da7bf-152">toodo tedy zkontrolujte hello následující možnosti.</span><span class="sxs-lookup"><span data-stu-id="da7bf-152">toodo so, make hello following selections.</span></span>
+    
+    1. <span data-ttu-id="da7bf-153">Z karty vizualizace hello klikněte na symbol hello pro výsečového grafu.</span><span class="sxs-lookup"><span data-stu-id="da7bf-153">From hello Visualizations tab, click hello symbol for a pie chart.</span></span>
+       
+        <span data-ttu-id="da7bf-154">![Vytvoření výsečového grafu](./media/data-lake-store-power-bi/create-pie-chart.png "vytvořit výsečového grafu")</span><span class="sxs-lookup"><span data-stu-id="da7bf-154">![Create pie chart](./media/data-lake-store-power-bi/create-pie-chart.png "Create pie chart")</span></span>
+    2. <span data-ttu-id="da7bf-155">Hello sloupce, které přidáme jsou toouse **sloupec 4** (název města hello) a **7 sloupci** (název země hello).</span><span class="sxs-lookup"><span data-stu-id="da7bf-155">hello columns that we are going toouse are **Column 4** (name of hello city) and **Column 7** (name of hello country).</span></span> <span data-ttu-id="da7bf-156">Přetáhněte tyto sloupce z **pole** kartě příliš**vizualizace** kartě, jak je uvedeno níže.</span><span class="sxs-lookup"><span data-stu-id="da7bf-156">Drag these columns from **Fields** tab too**Visualizations** tab as shown below.</span></span>
+       
+        <span data-ttu-id="da7bf-157">![Vytváření vizualizací](./media/data-lake-store-power-bi/create-visualizations.png "vytváření vizualizací")</span><span class="sxs-lookup"><span data-stu-id="da7bf-157">![Create visualizations](./media/data-lake-store-power-bi/create-visualizations.png "Create visualizations")</span></span>
+    3. <span data-ttu-id="da7bf-158">Výsečový graf Hello by měl nyní vypadat podobně jako hello níže.</span><span class="sxs-lookup"><span data-stu-id="da7bf-158">hello pie chart should now resemble like hello one shown below.</span></span>
+       
+        <span data-ttu-id="da7bf-159">![Výsečový graf](./media/data-lake-store-power-bi/pie-chart.png "vytváření vizualizací")</span><span class="sxs-lookup"><span data-stu-id="da7bf-159">![Pie chart](./media/data-lake-store-power-bi/pie-chart.png "Create visualizations")</span></span>
+16. <span data-ttu-id="da7bf-160">Výběrem konkrétní země z úrovně filtry stránku hello nyní můžete vidět hello počet ovladačů v každé město hello vybrané země.</span><span class="sxs-lookup"><span data-stu-id="da7bf-160">By selecting a specific country from hello page level filters, you can now see hello number of drivers in each city of hello selected country.</span></span> <span data-ttu-id="da7bf-161">Například v položce hello **vizualizace** v části **stránky úrovně filtry**, vyberte **Brazílie**.</span><span class="sxs-lookup"><span data-stu-id="da7bf-161">For example, under hello **Visualizations** tab, under **Page level filters**, select **Brazil**.</span></span>
+    
+    <span data-ttu-id="da7bf-162">![Vyberte zemi](./media/data-lake-store-power-bi/select-country.png "vyberte zemi")</span><span class="sxs-lookup"><span data-stu-id="da7bf-162">![Select a country](./media/data-lake-store-power-bi/select-country.png "Select a country")</span></span>
+17. <span data-ttu-id="da7bf-163">Výsečový graf Hello je automaticky aktualizovány toodisplay hello ovladače v hello města Brazílie.</span><span class="sxs-lookup"><span data-stu-id="da7bf-163">hello pie chart is automatically updated toodisplay hello drivers in hello cities of Brazil.</span></span>
+    
+    <span data-ttu-id="da7bf-164">![Ovladače v určité zemi](./media/data-lake-store-power-bi/driver-per-country.png "ovladače podle země")</span><span class="sxs-lookup"><span data-stu-id="da7bf-164">![Drivers in a country](./media/data-lake-store-power-bi/driver-per-country.png "Drivers per country")</span></span>
+18. <span data-ttu-id="da7bf-165">Z hello **soubor** nabídky, klikněte na tlačítko **Uložit** toosave hello vizualizace jako soubor Power BI Desktop.</span><span class="sxs-lookup"><span data-stu-id="da7bf-165">From hello **File** menu, click **Save** toosave hello visualization as a Power BI Desktop file.</span></span>
+
+## <a name="publish-report-toopower-bi-service"></a><span data-ttu-id="da7bf-166">Publikování sestav tooPower BI služby</span><span class="sxs-lookup"><span data-stu-id="da7bf-166">Publish report tooPower BI service</span></span>
+<span data-ttu-id="da7bf-167">Po vytvoření hello vizualizace v Power BI Desktop, můžete ji sdílet s ostatními ji publikujete toohello služby Power BI.</span><span class="sxs-lookup"><span data-stu-id="da7bf-167">Once you have created hello visualizations in Power BI Desktop, you can share it with others by publishing it toohello Power BI service.</span></span> <span data-ttu-id="da7bf-168">Návod, jak toodo, který najdete v části [publikování z Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-upload-desktop-files/).</span><span class="sxs-lookup"><span data-stu-id="da7bf-168">For instructions on how toodo that, see [Publish from Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-upload-desktop-files/).</span></span>
+
+## <a name="see-also"></a><span data-ttu-id="da7bf-169">Viz také</span><span class="sxs-lookup"><span data-stu-id="da7bf-169">See also</span></span>
+* [<span data-ttu-id="da7bf-170">Analýza dat v Data Lake Store pomocí Data Lake Analytics</span><span class="sxs-lookup"><span data-stu-id="da7bf-170">Analyze data in Data Lake Store using Data Lake Analytics</span></span>](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+

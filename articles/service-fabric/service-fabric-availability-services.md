@@ -1,0 +1,55 @@
+---
+title: "aaaAvailability služby Service Fabric | Microsoft Docs"
+description: "Popisuje zjišťování chyb, převzetí služeb při selhání a obnovení pro služby"
+services: service-fabric
+documentationcenter: .net
+author: masnider
+manager: timlt
+editor: 
+ms.assetid: 279ba4a4-f2ef-4e4e-b164-daefd10582e4
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 08/18/2017
+ms.author: masnider
+ms.openlocfilehash: c443aadfe31a1413359b08d34c4b7dd5db4edd16
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/06/2017
+---
+# <a name="availability-of-service-fabric-services"></a><span data-ttu-id="6d3dc-103">Dostupnost služeb Service Fabric</span><span class="sxs-lookup"><span data-stu-id="6d3dc-103">Availability of Service Fabric services</span></span>
+<span data-ttu-id="6d3dc-104">Tento článek poskytuje přehled o tom, jak Service Fabric udržuje dostupnosti služby.</span><span class="sxs-lookup"><span data-stu-id="6d3dc-104">This article gives an overview of how Service Fabric maintains availability of a service.</span></span>
+
+## <a name="availability-of-service-fabric-stateless-services"></a><span data-ttu-id="6d3dc-105">Dostupnost bezstavové služby Service Fabric</span><span class="sxs-lookup"><span data-stu-id="6d3dc-105">Availability of Service Fabric stateless services</span></span>
+<span data-ttu-id="6d3dc-106">Služby Azure Service Fabric může být stavová nebo bezstavové.</span><span class="sxs-lookup"><span data-stu-id="6d3dc-106">Azure Service Fabric services can be either stateful or stateless.</span></span> <span data-ttu-id="6d3dc-107">Bezstavové služby je služba aplikace, která nemá žádné [lokálního stavu](service-fabric-concepts-state.md) potřebného toobe vysoce k dispozici nebo není spolehlivá.</span><span class="sxs-lookup"><span data-stu-id="6d3dc-107">A stateless service is an application service that does not have any [local state](service-fabric-concepts-state.md) that needs toobe highly available or reliable.</span></span>
+
+<span data-ttu-id="6d3dc-108">Vytvoření bezstavové služby vyžaduje definování `InstanceCount`.</span><span class="sxs-lookup"><span data-stu-id="6d3dc-108">Creating a stateless service requires defining an `InstanceCount`.</span></span> <span data-ttu-id="6d3dc-109">počet instancí Hello definuje hello počet instancí hello bezstavové služby aplikační logiky, která by měla být spuštěná v clusteru hello.</span><span class="sxs-lookup"><span data-stu-id="6d3dc-109">hello instance count defines hello number of instances of hello stateless service's application logic that should be running in hello cluster.</span></span> <span data-ttu-id="6d3dc-110">Zvýšením počtu hello instancí je hello doporučená způsob škálování bezstavové služby.</span><span class="sxs-lookup"><span data-stu-id="6d3dc-110">Increasing hello number of instances is hello recommended way of scaling out a stateless service.</span></span>
+
+<span data-ttu-id="6d3dc-111">Pokud instance bezstavové s názvem služby nezdaří, je vytvořena nová instance na některé oprávněné uzlu v clusteru hello.</span><span class="sxs-lookup"><span data-stu-id="6d3dc-111">When an instance of a stateless named service fails, a new instance is created on some eligible node in hello cluster.</span></span> <span data-ttu-id="6d3dc-112">Například instance bezstavové služby může dojít k selhání na Uzel1 a znovu vytvořen na počítač Uzel5.</span><span class="sxs-lookup"><span data-stu-id="6d3dc-112">For example, a stateless service instance might fail on Node1 and be recreated on Node5.</span></span>
+
+## <a name="availability-of-service-fabric-stateful-services"></a><span data-ttu-id="6d3dc-113">Dostupnost stavové služby Service Fabric</span><span class="sxs-lookup"><span data-stu-id="6d3dc-113">Availability of Service Fabric stateful services</span></span>
+<span data-ttu-id="6d3dc-114">Stavová služba má některé stavu s ním spojená.</span><span class="sxs-lookup"><span data-stu-id="6d3dc-114">A stateful service has some state associated with it.</span></span> <span data-ttu-id="6d3dc-115">V Service Fabric stavové služby je modelovaná jako sadu replik.</span><span class="sxs-lookup"><span data-stu-id="6d3dc-115">In Service Fabric, a stateful service is modeled as a set of replicas.</span></span> <span data-ttu-id="6d3dc-116">Každá replika je spuštěné instance hello kódu hello služby, která má také kopii hello stavu pro danou službu.</span><span class="sxs-lookup"><span data-stu-id="6d3dc-116">Each replica is a running instance of hello code of hello service that also has a copy of hello state for that service.</span></span> <span data-ttu-id="6d3dc-117">Operace čtení a zápisu jsou prováděny v jedné replice (nazývané hello primární).</span><span class="sxs-lookup"><span data-stu-id="6d3dc-117">Read and write operations are performed at one replica (called hello Primary).</span></span> <span data-ttu-id="6d3dc-118">Změny toostate z operace zápisu jsou *replikovat* toohello replikami v sady replik hello (označovaný jako aktivní sekundární databáze) a použít.</span><span class="sxs-lookup"><span data-stu-id="6d3dc-118">Changes toostate from write operations are *replicated* toohello other replicas in hello replica set (called Active Secondaries) and applied.</span></span> 
+
+<span data-ttu-id="6d3dc-119">Může existovat pouze jedna primární replika, ale může být více aktivní sekundární repliky.</span><span class="sxs-lookup"><span data-stu-id="6d3dc-119">There can be only one Primary replica, but there can be multiple Active Secondary replicas.</span></span> <span data-ttu-id="6d3dc-120">Hello počet aktivní sekundární repliky se dají konfigurovat a vyšší počet replik tolerovat větší počet souběžných softwaru a selhání hardwaru.</span><span class="sxs-lookup"><span data-stu-id="6d3dc-120">hello number of Active Secondary replicas is configurable, and a higher number of replicas can tolerate a greater number of concurrent software and hardware failures.</span></span>
+
+<span data-ttu-id="6d3dc-121">Pokud se primární repliky hello přestane fungovat, Service Fabric provede jeden hello aktivní sekundární repliky hello nové primární replice.</span><span class="sxs-lookup"><span data-stu-id="6d3dc-121">If hello Primary replica goes down, Service Fabric makes one of hello Active Secondary replicas hello new Primary replica.</span></span> <span data-ttu-id="6d3dc-122">Tato aktivní sekundární replika už má verzi hello aktualizovat stav hello (prostřednictvím *replikace*), a můžete pokračovat ve zpracovávání pro další čtení a zápisu operace.</span><span class="sxs-lookup"><span data-stu-id="6d3dc-122">This Active Secondary replica already has hello updated version of hello state (via *replication*), and it can continue processing further read and write operations.</span></span>
+
+<span data-ttu-id="6d3dc-123">Tento koncept je buď primární, nebo aktivní sekundární repliky se označuje jako hello Role repliky.</span><span class="sxs-lookup"><span data-stu-id="6d3dc-123">This concept, of a replica being either a Primary or Active Secondary, is known as hello Replica Role.</span></span>
+
+### <a name="replica-roles"></a><span data-ttu-id="6d3dc-124">Role repliky</span><span class="sxs-lookup"><span data-stu-id="6d3dc-124">Replica roles</span></span>
+<span data-ttu-id="6d3dc-125">Hello role repliky je použité toomanage hello životní cyklus hello stavu spravuje repliky.</span><span class="sxs-lookup"><span data-stu-id="6d3dc-125">hello role of a replica is used toomanage hello life cycle of hello state being managed by that replica.</span></span> <span data-ttu-id="6d3dc-126">Požadavků na čtení repliku, jejichž role je primární služby.</span><span class="sxs-lookup"><span data-stu-id="6d3dc-126">A replica whose role is Primary services read requests.</span></span> <span data-ttu-id="6d3dc-127">Hello primární také zpracovává všechny požadavky na zápis aktualizace stavu a replikace změn hello.</span><span class="sxs-lookup"><span data-stu-id="6d3dc-127">hello Primary also handles all write requests by updating its state and replicating hello changes.</span></span> <span data-ttu-id="6d3dc-128">Tyto změny jsou použité toohello aktivní sekundární databáze v hello sady replik.</span><span class="sxs-lookup"><span data-stu-id="6d3dc-128">These changes are applied toohello Active Secondaries in hello replica set.</span></span> <span data-ttu-id="6d3dc-129">Úloha Hello Active sekundárního objektu je tooreceive změny stavu, které hello primární repliky replikována a aktualizujte jeho zobrazení stavu hello.</span><span class="sxs-lookup"><span data-stu-id="6d3dc-129">hello job of an Active Secondary is tooreceive state changes that hello Primary replica has replicated and update its view of hello state.</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="6d3dc-130">Vyšší úrovně programování modelů, jako [Reliable Actors](service-fabric-reliable-actors-introduction.md) a [spolehlivé služby](service-fabric-reliable-services-introduction.md) skrýt hello konceptu role repliky z hello developer.</span><span class="sxs-lookup"><span data-stu-id="6d3dc-130">Higher-level programming models such as [Reliable Actors](service-fabric-reliable-actors-introduction.md) and [Reliable Services](service-fabric-reliable-services-introduction.md) hide hello concept of replica role from hello developer.</span></span> <span data-ttu-id="6d3dc-131">V aktéři je zbytečné, při služby je z velké části jednodušší pro většinu scénářů hello představu o roli.</span><span class="sxs-lookup"><span data-stu-id="6d3dc-131">In Actors, hello notion of role is unnecessary, while in Services it is largely simplified for most scenarios.</span></span>
+>
+
+## <a name="next-steps"></a><span data-ttu-id="6d3dc-132">Další kroky</span><span class="sxs-lookup"><span data-stu-id="6d3dc-132">Next steps</span></span>
+<span data-ttu-id="6d3dc-133">Další informace o konceptech Service Fabric najdete v tématu hello následující články:</span><span class="sxs-lookup"><span data-stu-id="6d3dc-133">For more information on Service Fabric concepts, see hello following articles:</span></span>
+
+- [<span data-ttu-id="6d3dc-134">Škálování služby Service Fabric</span><span class="sxs-lookup"><span data-stu-id="6d3dc-134">Scaling Service Fabric services</span></span>](service-fabric-concepts-scalability.md)
+- [<span data-ttu-id="6d3dc-135">Vytváření oddílů služby Service Fabric</span><span class="sxs-lookup"><span data-stu-id="6d3dc-135">Partitioning Service Fabric services</span></span>](service-fabric-concepts-partitioning.md)
+- [<span data-ttu-id="6d3dc-136">Definování a správu stavu</span><span class="sxs-lookup"><span data-stu-id="6d3dc-136">Defining and managing state</span></span>](service-fabric-concepts-state.md)
+- [<span data-ttu-id="6d3dc-137">Reliable Services</span><span class="sxs-lookup"><span data-stu-id="6d3dc-137">Reliable Services</span></span>](service-fabric-reliable-services-introduction.md)

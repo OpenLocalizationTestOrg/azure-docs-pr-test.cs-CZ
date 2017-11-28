@@ -1,0 +1,5 @@
+> [!IMPORTANT]
+> <span data-ttu-id="4d01e-101">Při práci s podsítěmi brány nepřidružujte skupinu zabezpečení sítě (NSG) k podsíti brány.</span><span class="sxs-lookup"><span data-stu-id="4d01e-101">When working with gateway subnets, avoid associating a network security group (NSG) to the gateway subnet.</span></span> <span data-ttu-id="4d01e-102">Pokud byste k této podsíti přidružili skupinu zabezpečení sítě, brána sítě VPN by mohla přestat fungovat podle očekávání.</span><span class="sxs-lookup"><span data-stu-id="4d01e-102">Associating a network security group to this subnet may cause your VPN gateway to stop functioning as expected.</span></span> <span data-ttu-id="4d01e-103">Další informace o skupinách zabezpečení sítě najdete v článku [Co je skupina zabezpečení sítě (NSG)](../articles/virtual-network/virtual-networks-nsg.md).</span><span class="sxs-lookup"><span data-stu-id="4d01e-103">For more information about network security groups, see [What is a network security group?](../articles/virtual-network/virtual-networks-nsg.md)</span></span>
+> 
+> 
+

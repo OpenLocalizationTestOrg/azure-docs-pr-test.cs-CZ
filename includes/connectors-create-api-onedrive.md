@@ -1,0 +1,21 @@
+#### <a name="prerequisites"></a><span data-ttu-id="de04e-101">Požadavky</span><span class="sxs-lookup"><span data-stu-id="de04e-101">Prerequisites</span></span>
+* <span data-ttu-id="de04e-102">Účet Azure; můžete vytvořit [bezplatný účet](https://azure.microsoft.com/free)</span><span class="sxs-lookup"><span data-stu-id="de04e-102">An Azure account; you can create a [free account](https://azure.microsoft.com/free)</span></span>
+* <span data-ttu-id="de04e-103">A [OneDrive](https://www.microsoft.com/store/apps/onedrive/9wzdncrfj1p3) účtu</span><span class="sxs-lookup"><span data-stu-id="de04e-103">A [OneDrive](https://www.microsoft.com/store/apps/onedrive/9wzdncrfj1p3) account</span></span> 
+
+<span data-ttu-id="de04e-104">Než účtem Onedrivu můžete použít v aplikaci logiky, autorizovat aplikaci logiky se připojit ke svému účtu OneDrive.</span><span class="sxs-lookup"><span data-stu-id="de04e-104">Before you can use your OneDrive account in a logic app, authorize the logic app to connect to your OneDrive account.</span></span>  <span data-ttu-id="de04e-105">Můžete k tomu snadno v rámci aplikace logiky na portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="de04e-105">You can do this easily within your logic app on the Azure portal.</span></span> 
+
+<span data-ttu-id="de04e-106">Autorizace aplikace logiky pro připojení k účtu OneDrive pomocí následujících kroků:</span><span class="sxs-lookup"><span data-stu-id="de04e-106">Authorize your logic app to connect to your OneDrive account using the following steps:</span></span>
+
+1. <span data-ttu-id="de04e-107">Vytvoření aplikace logiky.</span><span class="sxs-lookup"><span data-stu-id="de04e-107">Create a logic app.</span></span> <span data-ttu-id="de04e-108">V Návrháři Logic Apps vyberte **zobrazit Microsoft spravované rozhraní API** v rozevíracím seznamu a potom zadejte do vyhledávacího pole "onedrive".</span><span class="sxs-lookup"><span data-stu-id="de04e-108">In the Logic Apps designer, select **Show Microsoft managed APIs** in the drop down list, and then enter "onedrive" in the search box.</span></span> <span data-ttu-id="de04e-109">Vyberte jednu z aktivační události nebo akce:</span><span class="sxs-lookup"><span data-stu-id="de04e-109">Select one of the triggers or actions:</span></span>  
+   ![](./media/connectors-create-api-onedrive/onedrive-1.png)
+2. <span data-ttu-id="de04e-110">Pokud jste dosud nevytvořili všechna připojení k Onedrivu, budete vyzváni k přihlášení pomocí přihlašovacích údajů OneDrive:</span><span class="sxs-lookup"><span data-stu-id="de04e-110">If you haven't previously created any connections to OneDrive, you are prompted to sign in using your OneDrive credentials:</span></span>  
+   ![](./media/connectors-create-api-onedrive/onedrive-2.png)
+3. <span data-ttu-id="de04e-111">Vyberte **přihlášení**a zadejte uživatelské jméno a heslo.</span><span class="sxs-lookup"><span data-stu-id="de04e-111">Select **Sign in**, and enter your user name and password.</span></span> <span data-ttu-id="de04e-112">Vyberte **přihlášení**:</span><span class="sxs-lookup"><span data-stu-id="de04e-112">Select **Sign in**:</span></span>  
+   ![](./media/connectors-create-api-onedrive/onedrive-3.png)   
+   
+    <span data-ttu-id="de04e-113">Tyto přihlašovací údaje se používají k autorizaci aplikace logiky pro připojení k a přístupu k datům v účtu OneDrive.</span><span class="sxs-lookup"><span data-stu-id="de04e-113">These credentials are used to authorize your logic app to connect to, and access the data in your OneDrive account.</span></span> 
+4. <span data-ttu-id="de04e-114">Vyberte **Ano** autorizovat aplikaci logiky, aby používala účtu OneDrive:</span><span class="sxs-lookup"><span data-stu-id="de04e-114">Select **Yes** to authorize the logic app to use your OneDrive account:</span></span>  
+   ![](./media/connectors-create-api-onedrive/onedrive-4.png)   
+5. <span data-ttu-id="de04e-115">Všimněte si, že existuje připojení.</span><span class="sxs-lookup"><span data-stu-id="de04e-115">Notice the connection has been created.</span></span> <span data-ttu-id="de04e-116">Nyní pokračujte další kroky v aplikaci logiky:</span><span class="sxs-lookup"><span data-stu-id="de04e-116">Now, proceed with the other steps in your logic app:</span></span>  
+   ![](./media/connectors-create-api-onedrive/onedrive-5.png)
+
