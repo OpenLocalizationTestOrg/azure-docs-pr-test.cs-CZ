@@ -16,7 +16,7 @@ ms.date: 01/07/2017
 ms.author: xerners
 ms.openlocfilehash: 6480be75c314ede1b786e959a79c0385dd2edea8
 ms.sourcegitcommit: 73f159cdbc122ffe42f3e1f7a3de05f77b6a4725
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/28/2017
 ---
@@ -756,7 +756,7 @@ Chyba 401 je odpověď, kterou si přejete. Označuje, že se vrstva Passportu p
 ## <a name="you-now-have-a-rest-api-service-that-uses-oauth2"></a>Nyní máte službu REST API, která používá OAuth2
 Implementovali jste rozhraní REST API s použitím Restify a OAuth! Nyní máte dostatek kódu pro pokračování ve vývoji vlastní služby a navázání na tento příklad. S tímto serverem jste došli nejdál, co to jde bez použití klienta kompatibilního s OAuth2. Pro tento další krok použijte další podrobný postup, například náš návod [Připojení k webovému rozhraní API pomocí iOS s B2C](active-directory-b2c-devquickstarts-ios.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Nyní se můžete přesunout k pokročilejším tématům, jako například:
 
 [Připojení k webovému rozhraní API pomocí iOS s B2C](active-directory-b2c-devquickstarts-ios.md)
